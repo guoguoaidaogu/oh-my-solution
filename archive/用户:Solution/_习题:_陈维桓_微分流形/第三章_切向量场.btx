@@ -1,0 +1,583 @@
+
+	\begin {itemize}
+        \item[2.]
+	${\forall} p \in M$，${\forall} h \in  C^\infty_p$，我们有：
+\begin{equation*} %加*表示不对公式编号
+	  	\begin{split}
+	  	(1)&\quad\ \,	[aX+bY,Z](h)\\
+	  		& = (aX+bY)\circ Z(h)-Z\circ(aX+bY)(h)\\
+	  		& = aX\circ Z(h)-aZ\circ X(h)+bY\circ Z(h)-bZ\circ Y(h) \\
+	  		& = a[X,Z](h)+b[Y,Z](h)\\
+	  		& =(a[X,Z]+b[Y,Z]) (h);\\
+	  	(2)&\quad\,	[X,Y](h)\\
+  		& = X\circ Y(h)-Y\circ X(h)\\
+  		& = -(Y\circ X(h)-X\circ Y(h))\\
+  		& = -[Y,X](h);\\
+  		(3)&\quad\,	([X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]])(h)\\
+		& = X\circ Y\circ Z(h)- X\circ Y\circ (h)- Y\circ Z\circ X(h)+Z\circ Y\circ X(h)\\
+		& \quad +Y\circ Z\circ X(h)- Y\circ X\circ Z(h)- Z\circ X\circ Y(h)+ X\circ Z\circ Y(h)\\
+		& \quad +Z\circ X\circ Y(h)- Z\circ Y\circ X(h)- X\circ Y\circ Z(h)+Y\circ X\circ Z(h)\\
+	    &=0.
+    \end{split}
+  \end{equation*} 
+ 
+	  
+\item[4.]
+	我们只需要在局部上证明。\\
+    必要性：设$M$为$m$维光滑流形，在$p$处取局部坐标系$(U,\varphi)$，则切向量场$X$可以局部表示为
+    \[X|_U=X^i\frac{\partial}{\partial x^i}, \quad X^i \in C^\infty(U)\qquad(\forall i=1,\cdots, m).\]
+    从而$X(f)|_U=X^i\frac{\partial f}{\partial x^i} \in C^\infty(U),\,\forall f \in C^\infty(U)$.
+    \\
+    充分性：设$M$为$m$维光滑流形，在$p$处取局部坐标系$(U,\varphi)$,则切向量场$X$可以局部的表示为
+    \[X|_U=X^i\frac{\partial}{\partial x^i},\]
+    则只要证\[X^i \in C^\infty (U),\quad \forall i=1,\cdots, m.\]
+    而$\forall x \in U $，
+    \[(X(f))(x)=X^i(x)·\frac{\partial f}{\partial x^i}(x),\]
+    其中
+    \[\frac{\partial f}{\partial x^i}(x)=\frac{\partial (f\circ \varphi ^{-1})}{\partial x^i}\bigg|_{\phi(x)},\]
+    则只需要依次取$f=x^i\ (i=1,\cdots, m)$即可得到命题成立。
+  
+\item[5.]
+    复习：给定微分流形$M$以及光滑函数$f \in C^\infty(M)$，切向量场$X,\tilde{X}\in \mathscr{X}(M)$是$f$- 相关的当且仅当
+    $f_*X_p=\tilde{X}_{f(p)},\,\forall p \in M$.
+	\begin{enumerate}
+        \item[(1)]
+        由于$\forall h,g \in C^\infty (M)$，$\alpha \in \mathbf{R}$，
+        \begin{equation*} 
+		\begin{split}
+			(\textup{a})\qquad 
+			&f_*X(h+g)\\
+			& = X((h+g)\circ f)\circ f^{-1}\\
+			& = X(h\circ f)\circ f^{-1}+X(g\circ f)\circ f^{-1} \\
+			& = f_*X(h)+f_*X(g),\\
+			(\textup{b})\qquad 
+			&f_*X(\alpha h)\\
+			& = X(\alpha h\circ f)\circ f^{-1}\\
+			& = \alpha X( h\circ f)\circ f^{-1}\\
+			& = \alpha f_*X( h),\\
+			(\textup{c})\qquad 
+			&f_*X(h·g)\\
+			& = X((h\circ f)·(g\circ f))\circ f^{-1}\\
+			& = (g\circ f)X((h\circ f)\circ f^{-1}+(h\circ f)X((g\circ f)\circ f^{-1} \\
+			& = h· f_*X( g)+g·f_*X( h),\\
+            (\textup{d})\qquad
+            &f_*X(g)=X(g\circ f)\circ f^{-1}\in C^\infty(M).\\
+		\end{split}
+	\end{equation*} 
+则由定理2.3（P129），$f_*X$是$N$上的光滑切向量场.\\
+又$\forall p \in N$，$\forall g \in C^\infty (N)$，
+
+\begin{equation*} 
+	\begin{split}
+		&(f_*X)_{f(p)}(g)\\
+		& = X(g\circ f)\circ f^{-1}(f(p))\\
+		& = X(g\circ f)(p), \\
+        & = f_*X_p(g),
+	\end{split}
+\end{equation*} 
+可见$f_*X$与$X$是$f$- 相关的。
+
+\item[(2)]
+结合（1）与定理2.6（P133）结论告诉我们，$f_*$保持Poisson括号积，我们只需要证明其是线性的双射。线性在(1)(b)中已经证明，下证其为双射：
+\\
+由(1)(c)知$f_*(0)=0$故$f_*$是单射，又对$N$上任意的光滑切向量场$Y$有
+\begin{equation*} 
+	\begin{split}
+		&(f_*((f^{-1})_*Y))(g)\\
+		& =((f^{-1})_*Y)(g\circ f)\circ f^{-1}\\
+		& =Y(g\circ f\circ f^{-1})\circ f^{-1}\circ f\\
+		& =Y(g),
+	\end{split}
+\end{equation*} 
+因此$f_*$是满射。
+\end{enumerate}
+
+\item[7.]
+	假设存在这样的光滑切向量场$Y=y\dfrac{d}{dt}$，
+    其中$y \in C^\infty (\mathbf{R})$，
+	则$\forall t_0 \in \mathbf{R}$，$f \in C^\infty(\mathbf{R})$，
+	\begin{equation*} 
+		\begin{split}
+			&\Phi_*(\dfrac{d}{dt}\bigg |_{t=t_0})(f)=Y\bigg |_{t=t_0^2}(f)\\
+			& \Rightarrow \dfrac{df(t^2)}{dt}\bigg |_{t=t_0}= y\dfrac{df(t)}{dt}\bigg |_{t=t_0^2}\\
+			& \Rightarrow y(t_0^2)=2t_0,\\
+			\end{split}
+	\end{equation*}
+从而$y(t)=2\sqrt{t},\,\forall t\geq0$, 那么$y$在$t=0$处不光滑，假设不成立。
+
+\item[10.]
+    未必存在，下一题就是一个反例。
+
+    错误示例：如果$\varphi$是满射的话就存在这样的光滑切向量场$Y$.\\
+    $\forall p \in N$，令
+    \[Y_p=\varphi_*X_{\varphi^{-1}(p)}.\]
+    因为$\varphi (p)=\varphi (q)$时
+    \[\varphi_{*\,p}X(p)=\varphi_{*\,q}X(q),\]
+    这样的定义是合理的，利用定理2.3容易验证这样定义出的$Y$是光滑切向量场，
+    则根据定义易见$Y$和$X$是$\varphi$- 相关的。
+
+    (原作者注：确实，利用定理2.3是无法验证向量场的光滑性的，草率了，感谢同学指正)
+
+\item[11.]
+    为使记号方便，我们用$f$来表示题目中的$\varphi$，再沿用第二章$\S$1例2中的记号（P58），则
+    \[\psi\circ f\circ\varphi^{-1}:\mathbf{R}\rightarrow\mathbf{R},\]
+    \[\psi\circ f\circ\varphi^{-1}(x)=x^3,\]
+    于是$f$是$C^\infty$- 映射。
+    
+    类似于第10题，假设存在这样的光滑切向量场$Y=y\dfrac{d}{dt}$，
+    其中$y \in C^\infty (\mathbf{R})$，
+    则$\forall t_0 \in \mathbf{R}$，$g \in C^\infty (\mathbf{R})$，
+    \begin{equation*} 
+	\begin{split}
+		&f_*(\dfrac{d}{dt}\bigg |_{t=t_0})(g)=Y\bigg |_{t=t_0}(g)\\
+		& \Rightarrow \dfrac{dg(t^3)}{dt}\bigg |_{t=t_0}= y\dfrac{dg}{dt}\bigg |_{t=t_0^2}\\
+		& \Rightarrow y(t_0^3)=3t_0^2,\\
+	\end{split}
+    \end{equation*}
+    于是$y$在$t_0=0$处不光滑，假设不成立。
+
+\item[12.]
+    计算得
+    \begin{align*}
+        [X,Y]&=x\dfrac{\partial}{\partial z}-z\dfrac{\partial}{\partial x},\\
+        [Y,Z]&=-\dfrac{\partial}{\partial y}+\dfrac{\partial}{\partial z},\\
+        [X,Z]&=-\dfrac{\partial}{\partial y}+\dfrac{\partial}{\partial x}.
+    \end{align*}
+
+\item[13.]
+    先计算向量场经过点$p=(x_0,y_0)$的积分曲线$\gamma_p(t)$。
+    设$\gamma_p(t)=(x(t),y(t))$，则
+    \[\dfrac{d}{dt}\gamma_p(t)=(y(t),-x(t)),\]
+    得到方程组
+    \begin{equation*}\begin{cases}
+        \dfrac{dx}{dt}=y,\\
+        \dfrac{dy}{dt}=-x,
+    \end{cases}\end{equation*}
+    
+    代入初始点$\gamma_p(0)=(x_0,y_0)$得到积分曲线
+    \[\gamma_p(t)=\sqrt{x_0^2+y_0^2}(\cos(t_0-t),\sin(t_0-t)),\]
+    其中$t_0$满足
+    \[\sqrt{x_0^2+y_0^2}(\cos(t_0),\sin(t_0))=p=(x_0,y_0).\]
+    因此$X$所生成的单参数变换群为
+    \[\varphi (t,p)=\sqrt{x_0^2+y_0^2}(\cos(t_0-t),\sin(t_0-t)).\]
+
+\item[14.]
+    设向量场$Y$经过点$p$的积分曲线为$\gamma(t)$满足$\gamma(t_0)=p$。
+    因为
+    \[f_*(\dfrac{d}{dt}\gamma(t)\bigg|_{t=t_0})=X\big |_{f(p)}
+    =\dfrac{d}{dt}f\circ\gamma(t)\bigg|_{t=t_0},\]
+    所以$f\circ\gamma$是$X$的积分曲线。
+
+\item[15.]
+    验证其是单参数变换群是容易的。
+    \[\dfrac{\partial\varphi}{\partial t}=(\lambda xe^{\lambda t},\mu y e^{\mu t}),\]
+    由此可知单参数变换群诱导的切向量场为
+    $\lambda x\dfrac{\partial}{\partial x}+\mu y\dfrac{\partial}{\partial y}$。
+
+    \item[16.](i)
+    \begin{equation*}
+		\theta(0,x,y)=(x,y),\\
+	\end{equation*}
+	\begin{align*}
+		\theta(s,\theta(t,x,y))&=\theta(s,x\cos\lambda t+y\sin\lambda t,-x\sin\lambda t+y\cos\lambda t)\\
+		&=(x\cos\lambda(s+t)+y\sin\lambda(s+t),-x\sin\lambda(s+t)+y\cos\lambda(s+t))\\
+		&=\theta(s+t,x,y),
+	\end{align*}
+	故$\theta$是单参数变换群。\par
+	(ii)计算可知，
+	\begin{equation*}
+		\frac{\partial}{\partial t}\theta(t,x,y)|_{t=0}=(\lambda y,-\lambda x),
+	\end{equation*}
+	故诱导切向量场为$X_{(x,y)}=\lambda y\frac{\partial}{\partial x}
+    -\lambda x\frac{\partial}{\partial y}$。
+
+    \item[17.]
+    (i)
+	\begin{equation*}
+		\theta(0,A)=I\cdot A=A,
+	\end{equation*}
+	\begin{align*}
+		\theta(s,\theta(t,A))&=\begin{bmatrix}
+			1&&s\\
+			0&&1
+		\end{bmatrix}\cdot\theta(t,A)\\
+		&=\begin{bmatrix}
+			1&&s\\
+			0&&1
+		\end{bmatrix}\cdot
+		\begin{bmatrix}
+			1&&t\\
+			0&&1
+		\end{bmatrix}\cdot A\\
+		&=\begin{bmatrix}
+			1&&s+t\\
+			0&&1
+		\end{bmatrix}\cdot A\\
+		&=\theta(s+t,A),
+	\end{align*}
+	故$\theta$是单参数变换群。\par
+	(ii)计算可知，
+	\begin{equation*}
+		\frac{\partial}{\partial t}\theta(t,A)|_{t=0}=\begin{bmatrix}
+			1&&1\\
+			0&&1
+		\end{bmatrix}\cdot A,
+	\end{equation*}
+	故诱导切向量场为$X=(x_{11}+x_{21})\frac{\partial}{\partial x_{11}}+(x_{12}+x_{22})\frac{\partial}{\partial x_{12}}+x_{21}\frac{\partial}{\partial x_{21}}+x_{22}\frac{\partial}{\partial x_{22}}$。
+
+    \item[18.]
+    我们有微分方程
+	\begin{equation*}
+		\begin{cases}
+			\frac{\partial}{\partial t}\varphi(t,x)|_{t=0}=\varphi(t,x)^2,\\
+			\varphi(0,x)=x,
+		\end{cases}
+	\end{equation*}
+	解得$\varphi(t,x)=\frac{x}{1-xt}$。通过初始点选取恰当的定义域即可。
+
+    \item[19.]
+    本问题仅为计算题，以下直接给出答案：\par
+	(i) $X=x\frac{\partial}{\partial x}+y\frac{\partial}{\partial y}$，$\varphi(t,x,y)=(xe^t,ye^t).$\par
+	(ii) $X=-x\frac{\partial}{\partial x}-y\frac{\partial}{\partial y}$，$\varphi(t,x,y)=(xe^{-t},ye^{-t}).$\par
+	(iii) $X=-y\frac{\partial}{\partial x}+x\frac{\partial}{\partial y}$，$\varphi(t,x,y)=(x\cos t-y\sin t,x\sin t+y\cos t).$\par
+	(iv) $X=(x^2-y^2)\frac{\partial}{\partial x}+2xy\frac{\partial}{\partial y}$，$\varphi(t,x,y)=(\frac{x-tx^2-ty^2}{(1-tx)^2+(ty)^2},\frac{y}{(1-tx)^2+(ty)^2}).$\par
+	(v) $X=-x\frac{\partial}{\partial x}+y\frac{\partial}{\partial y}$，$\varphi(t,x,y)=(xe^{-t},ye^t).$\par
+	(vi) $X=(y^2-x^2)\frac{\partial}{\partial x}+2xy\frac{\partial}{\partial y}.$
+
+    \item[20.]
+    充分性：对等式两边关于$t$求偏导，得到
+	\begin{align*}
+		F_*(X_p)&=F_*\circ \frac{\partial \varphi}{\partial t}(0,p)\\
+		&=\frac{\partial}{\partial t}F\circ\varphi(t,x)|_{t=0,x=p}\\
+		&=\frac{\partial}{\partial t}\psi(t,F(x))|_{t=0,x=p}\\
+		&=Y_{F(p)},
+	\end{align*}
+	故$Y$和$X$是$F$- 相关的。\par
+	必要性：由第14题可直接推出。$Y$和$X$是$F$- 相关的，
+    且$\varphi(t,p)$在固定$p$时为$X$的积分曲线，
+    故由第14题可知$F\circ \varphi(t,p)$为$Y$的积分曲线。
+	注意到$\psi(t,F(p))$也为$Y$的积分曲线，
+    由积分曲线的唯一性可知$F\circ \varphi_t=\psi_t\circ F$。
+
+    \item[21.]
+    由定理3.5（P145），$\mathscr{L}_{\widetilde{X}}  \widetilde{Y} 
+    =[\widetilde{X} ,\widetilde{Y} ]$，$\mathscr{L}_X Y=[X,Y]$。\par
+	由定理2.6（P133），$[\widetilde{X} ,\widetilde{Y} ]$和$[X,Y]$是$f$- 相关的。\par
+	故$\mathscr{L}_{\widetilde{X}}  \widetilde{Y}$和$\mathscr{L}_X Y$是$f$- 相关的。
+
+    \item[22.]
+    $\forall Z\in \mathscr{X}(M)$，有
+	\begin{align*}
+		\mathscr{L}_{[X,Y]}Z&=[[X,Y],Z]\\
+		&=[X,Y]\circ Z-Z\circ [X,Y]\\
+		&=X\circ Y\circ Z-Y\circ X\circ Z-Z\circ X\circ Y+Z\circ Y\circ X.
+	\end{align*}\par
+	另一方面，
+	\begin{align*}
+		(\mathscr{L}_X\circ \mathscr{L}_Y-\mathscr{L}_Y\circ \mathscr{L}_X)Z&=\mathscr{L}_X[Y,Z]-\mathscr{L}_Y[X,Z]\\
+		&=[X,[Y,Z]]-[Y,[X,Z]]\\
+		&=X\circ (Y\circ Z-Z\circ Y)-(Y\circ Z-Z\circ Y)\circ X\\
+		&\ \ \ \ -Y\circ(X\circ Z-Z\circ X)+(X\circ Z-Z\circ X)\circ Y\\
+		&=X\circ Y\circ Z-Y\circ X\circ Z-Z\circ X\circ Y+Z\circ Y\circ X,
+	\end{align*}
+	故$\mathscr{L}_{[X,Y]}=\mathscr{L}_X\circ \mathscr{L}_Y-\mathscr{L}_Y\circ \mathscr{L}_X$。
+
+    \item[23.]
+    \begin{align*}
+		\mathscr{L}_X Y&=[X,Y]=[X,Y^je_j]\\
+		&=X(Y^j)e_j+Y^j[X,e_j]\\
+		&=X(Y^j)e_j+Y^j[X^ie_i,e_j]\\
+		&=X(Y^j)e_j+X^iY^j[e_i,e_j]-Y^je_j(X^i)e_i\\
+		&=X(Y^j)e_j+X^iY^jc^k_{ij}e_k-Y^je_j(X^i)e_i\\
+		&=(X(Y^i)+(X^kc^i_{kj}-e_j(X^i))Y^j)e_i\\
+		&=(X(Y^i)-a^i_jY^j)e_i.
+	\end{align*}
+
+    \item[24.]
+    (i)
+	\begin{equation*}
+		\mathscr{L}_{X+Y}Z=[X+Y,Z]=[X,Z]+[Y,Z]=(\mathscr{L}_X+\mathscr{L}_Y)Z,
+	\end{equation*}
+	故有$\mathscr{L}_{X+Y}=\mathscr{L}_X+\mathscr{L}_Y$。\par
+	(ii)
+	\begin{equation*}
+		\mathscr{L}_{f\cdot X}Y=[f\cdot X,Y]=f[X,Y]-Y(f)X=f\mathscr{L}_X Y-Y(f)X.
+	\end{equation*}
+
+    \item[25.]
+    首先, 通过计算得到
+    \begin{align*}
+        \mathscr{L}_X Y & = [X, Y] = X \circ Y - Y \circ X\\
+        & = x^2 \frac{\partial^2}{\partial x^2}
+        - \Big(2x \frac{\partial}{\partial x}
+        + x^2 \frac{\partial^2}{\partial x^2}\Big)\\
+        & = -2x \frac{\partial}{\partial x}.
+    \end{align*}
+    代入 $u = x$, $v = x + y$, 得到
+    \begin{align*}
+        \mathscr{L}_X Y & = -2x \frac{\partial}{\partial x}\\
+        & = -2u\Big(\frac{\partial u}{\partial x} \frac{\partial}{\partial u}
+        + \frac{\partial v}{\partial x} \frac{\partial}{\partial v}\Big)\\
+        & = -2u\Big(\frac{\partial}{\partial u} + \frac{\partial}{\partial v}\Big).
+    \end{align*}
+
+    \item[26.]
+    在 $\mathbf{R}$ 上, 取 $p = 0$, 以及
+    \[
+        X = 0,\, \tilde{X} = x \frac{\partial}{\partial x},\, Y = \frac{\partial}{\partial x},
+    \]
+    则在 $p$ 点成立 $X(p) = 0 = \tilde{X}(p)$. 但经过计算, 我们分别得到
+    \[
+        \mathscr{L}_X Y (p) = 0,\quad
+        \mathscr{L}_{\tilde{X}} Y (p) = \frac{\partial}{\partial x},
+    \]
+    两者并不相等.
+
+    \item[27.]
+    根据定理 $2.7$（P134）, $f_*$ 保Poisson括号积, 故成立
+    \[
+        f_* \mathscr{L}_X Y = f_* [X, Y] = [f_* X, f_* Y] = \mathscr{L}_{f_* X} f_* Y.
+    \]
+
+    \item[28.]
+    由于 $L^h$ 是 $U$ 上的 $h$ 维光滑分布, 存在 $p$ 的某个邻域 $V \subset U$, 
+    以及定义在 $V$ 上的 $h$ 个处处线性无关的向量场, 记为 $X_1, \cdots, X_h$, 
+    满足 $L^h |_V = \operatorname{span}\{X_1, \cdots, X_h\}$.
+    那么 $v$ 可以表示为 $v = c_1 X_1(p) + \cdots + c_h X_h(p)$, 
+    其中 $c_i \in \mathbf{R}$. 
+    那么 $X := c_1 X_1 + \cdots + c_h X_h$ 为 属于光滑分布 $L^h |_V$  的光滑切向量场. 
+    由定理 $4.1$ （P147）可知, 存在 $p$ 的一个局部坐标系 $(W;y^i)$, $W \subset V$, 
+    使得 $X|_W = \frac{\partial}{\partial y^1}$.
+    那么 $X$ 有积分曲线 $y = (y^1, 0, \cdots, 0)$, 满足 $y(0) = p$, $y'(0) = v$. 
+    因为 $X \in L^h |_V$, 这也是 $L^h$ 的一条积分曲线.
+
+    \item[30.]
+    假设 $\{\varphi_t\}$ 与 $\{\psi_s\}$ 在 $M$ 上的作用可交换. 
+    对任意的 $t$, 因为 $\varphi_t \colon M \rightarrow M$ 为局部光滑同胚， 
+    所以根据推论 $3.4$（P144）, 有 $(\varphi_t)_* Y = Y$.
+    进而在局部上, 根据定理 $3.5$（P145）, 成立
+    \[
+        [X, Y] = \lim_{t \rightarrow 0} \frac{Y - (\varphi_t)_* Y}{t} = \lim_{t \rightarrow 0} 0 = 0.
+    \]
+    于是在 $M$ 上, $[X, Y] = 0$ 恒成立.\\
+    假设 $[X, Y] \equiv 0$. 根据推论 $3.4$, 只要证明 $(\varphi_t)_* Y = Y$ 对所有 $t$ 成立. 
+    由于 $t = 0$ 时命题成立, 我们希望证明 $(\varphi_t)_* Y$ 关于 $t$ 不变. 
+    对任意的 $g \in C^\infty(M)$ 和 $t_0 \in \mathbf{R}$, 根据定理 $3.5$, 我们有
+    \begin{align*}
+        \left. \frac{\operatorname{d}}{\operatorname{d} t}  \right|_{t = t_0} [(\varphi_t)_*Y (g)] & = \left. \frac{\operatorname{d}}{\operatorname{d} t} \right|_{t = t_0} [Y (g \circ \varphi_t)]\\
+        & = \lim_{s \rightarrow 0} \frac{Y (g \circ \varphi_{t_0 + s}) - Y (g \circ \varphi_{t_0})}{s}\\
+        & = \lim_{s \rightarrow 0} \frac{(\varphi_s)_*Y (g \circ \varphi_{t_0}) - Y (g \circ \varphi_{t_0})}{s}\\
+        & = \lim_{s \rightarrow 0} \frac{(\varphi_s)_*Y - Y}{s}(g \circ \varphi_{t_0})\\
+        & = [X, Y](g \circ \varphi_{t_0}) = 0.
+    \end{align*}
+    所以对任意的 $t$, 成立 $(\varphi_t)_* Y(g) = (\varphi_0)_* Y(g) = Y(g)$, 也即 $(\varphi_t)_* Y = Y$.
+
+    \item[31.]
+    每个 $X_i$ 在 $p$ 的某个邻域 $V_i$ 上生成了一个局部单参数变换群, 
+    记为 $\{\varphi_t^{(i)}\}$. 
+    令 $V = \cap V_i$, 则 $V$ 仍是 $p$ 的邻域. 
+    任取 $V$ (或更小的邻域) 上的一个坐标系 $(V;x^i)$, 
+    其中 $1 \leq i \leq n := \dim M$.
+    在 $V$ 上, 由线性无关性, $\operatorname{span}\{X_1, \cdots, X_h\}$ 是一个 $h$ 维的线性空间. 所以可以假设
+    \[
+        X_1, \cdots, X_h, \frac{\partial}{\partial x^{h+1}}, \cdots, \frac{\partial}{\partial x^n}
+    \]
+    线性无关, 进而构成了 $\mathscr{X}(V)$ 上的一组基.
+    由上一题的结论, 因为 $[X_i, X_j] = 0$, $\varphi_t^{(i)}$ 与 $\varphi_s^{(j)}$ 可交换. 定义
+    \[
+        \varphi(y^1, \cdots, y^n) := \varphi_{y^1}^{(1)} \circ \cdots \circ \varphi_{y^h}^{(h)}(0, \cdots, 0, y^{h+1}, \cdots y^n),
+    \]
+    则 $\varphi^{-1}$ 给出了一个 $V$ 上的坐标系, 且满足 
+    $X_i = \frac{\partial}{\partial y^i},\, \forall 1 \leq i \leq h$.
+
+    \item[32.]
+    \begin{enumerate}
+        \item[(1)]
+        在每个分量 $\frac{\partial}{\partial x^{i_\alpha}}$ 或 $\operatorname{d} x^{j_\beta}$ 上, 
+        分别有 $(\varphi_{-(t+s)})_* = (\varphi_{-t})_* \circ (\varphi_{-s})_*$, 
+        以及 $(\varphi_{-(t+s)})^* = (\varphi_{-t})^* \circ (\varphi_{-s})^*$. 
+        根据 $(5.14)$ 的定义, 就有$\Phi_{t + s} = \Phi_{t} \circ \Phi_{s}$. 
+        同理, $\Phi_{t + s} = \Phi_{s} \circ \Phi_{t}$.
+        \item[(2)]
+        我们首先有
+        \[
+            \left. \frac{\operatorname{d}}{\operatorname{d} t} \right|_{t = s} \Phi_t \tau = \lim_{t \rightarrow 0} \frac{\Phi_{t+s} \tau - \Phi_s \tau}{t}.
+        \]
+        利用上一小问的两个等式和定义 $5.2$（P163）, 我们分别得到
+        \[
+            \left. \frac{\operatorname{d}}{\operatorname{d} t} \right|_{t = s} \Phi_t \tau = \lim_{t \rightarrow 0} \frac{\Phi_t(\Phi_s \tau) - \Phi_s \tau}{t} = \mathscr{L}_X(\Phi_s \tau),
+        \]
+        以及
+        \begin{align*}
+            \left. \frac{\operatorname{d}}{\operatorname{d} t} \right|_{t = s} \Phi_t \tau & = \lim_{t \rightarrow 0} \frac{\Phi_s(\Phi_t \tau) - \Phi_s \tau}{t}\\
+            & = \Phi_s \left( \lim_{t \rightarrow 0} \frac{\Phi_t \tau - \tau}{t} \right)\\
+            & = \Phi_s \mathscr{L}_X(\tau).
+        \end{align*}
+    \end{enumerate}
+
+    \item[33.]
+    我们用 $t_0$ 表示确定的实数 $t$, 以示区别.
+    边界条件显然成立. 为了凑 $X^i(x)$ 这一项, 
+    考虑 $f_{t_0} := g \circ \varphi_{t_0} \circ \varphi$, 
+    有 $f(t + t_0, x) \equiv f_{t_0}(t, x)$. 所以
+    \begin{align*}
+        \frac{\partial f}{\partial t}(t_0, x) & = \frac{\partial f_{t_0}}{\partial t}(0, x) = X_x(g \circ \varphi_{t_0})\\
+        & = \sum_{i = 1}^n X^i(x)\frac{\partial (g \circ \varphi_{t_0})}{\partial x^i}(x).
+    \end{align*}
+    而 $g \circ \varphi_{t_0}(x) = f(t_0, x)$, 故
+    \[
+        \frac{\partial f}{\partial t}(t_0, x) = \sum_{i = 1}^n X^i(x)\frac{\partial f}{\partial x^i}(t_0, x).
+    \]
+
+    \item[34.] 
+    这里$X=(X_1,X_2)=(y,-x)$，它生成的局部单参数变换群为
+	\[
+    \varphi_t(r\sin\theta,r\cos\theta)=(r\sin(\theta+t),r\cos(\theta+t)).
+    \]
+	由第33题，由$g(x,y)=y\sin x$，
+    \[
+        f(t,\mathbf{x})=g(\varphi(t,\mathbf{x}))=r\cos(\theta+t)\sin(r\sin(\theta+t)).
+    \]
+	
+	
+	\item[35.] 
+    考虑另一个局部坐标系$(V,y^i)$, 设$\frac{\partial}{\partial x^i}=a^j_i\frac{\partial}{\partial y^j}$, 则$dy^j=a^j_idx^i$.
+	\begin{align*}
+	(\Phi_t(\tau))(\mathbf{x})
+	&=\tau^{i_1\cdots i_p}_{j_1\cdots j_q}(\gamma_\mathbf{x}(t))(\varphi_{-t})_*(\frac{\partial}{\partial x^{i_1}}|_{\gamma_\mathbf{x}(t)})\otimes \cdots  \otimes (\varphi_t)^*(dx^{j_q}|_{\gamma_\mathbf{x}(t)})\\
+	&=\tau^{i_1\cdots i_p}_{j_1\cdots j_q}(\gamma_\mathbf{x}(t))(\varphi_{-t})_*(a^{s_1}_{i_1}\frac{\partial}{\partial y^{s_1}}|_{\gamma_\mathbf{x}(t)})\otimes \cdots  \otimes (\varphi_t)^*(a^{j_q}_{l_q}dy^{l_q}|_{\gamma_\mathbf{x}(t)})\\
+	&=\tau^{i_1\cdots i_p}_{j_1\cdots j_q}(\gamma_\mathbf{x}(t))a^{s_1}_{i_1}\cdots a^{s_p}_{i_p}\cdot a^{j_1}_{l_1}\cdots a^{j_q}_{l_q}(\varphi_{-t})_*(\frac{\partial}{\partial y^{s_1}}|_{\gamma_\mathbf{x}(t)})\otimes \cdots  \otimes (\varphi_t)^*(dy^{l_q}|_{\gamma_\mathbf{x}(t)})\\
+	&=\tau^{s_1\cdots s_p}_{l_1\cdots l_q}(\gamma_\mathbf{x}(t))(\varphi_{-t})_*(\frac{\partial}{\partial y^{s_1}}|_{\gamma_\mathbf{x}(t)})\otimes \cdots  \otimes (\varphi_t)^*(dy^{l_q}|_{\gamma_\mathbf{x}(t)}).
+	\end{align*}
+	
+	\item[36.] 
+    若函数$f_1$, $f_2$, $\cdots$, $f_r$可以作为点$p\in U$的某个邻域内的坐标函数$F$的组成部分，
+	即存在函数$g_{r+1}$, $\cdots$, $g_n$使得
+	$F=\begin{pmatrix}
+		f_1,
+		\cdots,
+		f_r,
+		g_{r+1},
+		\cdots,
+		g_n
+		\end{pmatrix}^t$是坐标函数.\par 则有
+		$dF=\begin{pmatrix}
+		df_1,
+		\cdots,
+		df_r,
+		dg_{r+1},
+		\cdots,
+		dg_n
+		\end{pmatrix}^t$满秩, 因此有$df_1$, $\cdots$, $df_r$线性无关.\par
+		
+		另一方面，若$df_1$, $\cdots$, $df_r$线性无关, 我们用自然坐标扩充该线性无关组，得到坐标函数
+		$F=\begin{pmatrix}
+		f_1,
+		\cdots,
+		f_r,
+		x^{i_{r+1}},
+		\cdots,
+		x^{i_n}
+		\end{pmatrix}^t$, 则函数$f_1$, $f_2$, $\cdots$, $f_r$可以作为点$p\in U$的邻域$U$内的这个坐标函数$F$的组成部分.
+	
+	
+	
+	\item[37.] 
+    若关于$a$, $b$的方程$0=a\omega^1+b\omega^2=(ax^1+bx^2)dx^1+(ax^2+bx^1)dx^2$只有零解，即
+	$\begin{pmatrix}
+		x^1& x^2\\
+		x^2& x^1
+	\end{pmatrix}
+	\begin{pmatrix}
+		a\\
+		b
+	\end{pmatrix}=0$只有零解 $\iff$  $\begin{vmatrix}
+		x^1& x^2\\
+		x^2& x^1
+	\end{vmatrix}\neq0$, 即$(x^1)^2\neq(x^2)^2$, 
+	由此得到区域$$U=\mathbf{R}^2\setminus (\{y=x\}\cup \{y=-x\}).$$
+	
+	$\begin{cases}
+	\omega^1=x^1dx^1+x^2dx^2\\
+	\omega^2=x^2dx^1+x^1dx^2
+	\end{cases}$
+	\ $\Rightarrow$\ 
+	$\begin{cases}
+	\frac{\partial}{\partial x^1}=x^1\delta_1+x^2\delta_2\\
+	\frac{\partial}{\partial x^2}=x^2\delta_1+x^1\delta_2
+	\end{cases}$
+	\ $\Rightarrow$\ 
+	$\begin{cases}
+	\delta_1=\frac{1}{(x^1)^2-(x^2)^2}\big(x^1\frac{\partial}{\partial x^1}-x^2\frac{\partial}{\partial x^2}\big)\\
+	\delta_2=\frac{1}{(x^1)^2-(x^2)^2}\big(-x^2\frac{\partial}{\partial x^1}+x^1\frac{\partial}{\partial x^2}\big)
+	\end{cases}.$
+	
+
+	
+	\item[38.] 
+        设有$2$重$C^\infty(M)$- 线性映射$\Phi$: 
+        $\mathscr{X}(M)\times \mathscr{X}(M) \rightarrow C^\infty(M)$, 
+        我们要在$M$上定义一个光滑的$(0,2)$型张量场$\tilde{\Phi}$, 
+        使得在每一点$p\in M$, 有
+		$$\tilde{\Phi}(p)(X(p)\otimes Y(p))=\Phi(X,Y)(p),\ \ \forall X,\ Y\in \mathscr(M).$$
+		 \begin{enumerate}
+	     \item[(1)]
+         首先注意到, 映射$\Phi$: $\mathscr{X}(M)\times \mathscr{X}(M) \rightarrow C^\infty(M)$有局部性.\par
+		若$(X,Y)$, $(X_1,Y_1)\in \mathscr{X}(M)\times \mathscr{X}(M)$, 
+        且在开子集$U\subset M$上有$(X,Y)|_U=(X_1,Y_1)|_U$, 
+        我们证明有$\Phi(X,Y)|_U=\Phi(X_1,Y_1)|_U\in C^\infty(U)$.\par
+		事实上，$\forall p\in U$，存在$p$的邻域$V$，
+        使得$\overline{V}$紧致, 且$p\in V\subset \overline{V}\subset U$. 
+        且存在函数$f\in C^\infty(M)$使得$f|_V\equiv 1$, $f|_{M\setminus U}\equiv 0$. 
+        于是$f\cdot (X-X_1)$是$M$上的零向量场.\par
+		而$\Phi(0,Y)=\Phi(0,Y)+\Phi(0,Y)=2\Phi(0,Y)$ $\Rightarrow$ $\Phi(0,Y)=0$, 故有
+			$$0=\Phi(f\cdot(X-X_1),Y)=f\Phi(X-X_1,Y)=f(\Phi(X,Y)-\Phi(X_1,Y)).$$
+		特别地，在$p$点，有$\Phi(X,Y)(p)=\Phi(X_1,Y)(p)$, 
+        故有$\Phi(X,Y)|_U=\Phi(X_1,Y)|_U$.\par
+		同理可证$\Phi(X,Y)|_U=\Phi(X,Y_1)|_U$, 
+        则由$2$重$C^\infty(M)$- 线性知，$\Phi(X,Y)|_U=\Phi(X_1,Y_1)|_U$.\par
+		
+	     \item[(2)]
+         由$\Phi$的局部性，对于$M$上的任意开子集$U$, 
+         $\Phi|_U$是$2$重$C^\infty(M)$ - 线性映射: 
+         $\mathscr{X}(U)\times \mathscr{X}(U) \rightarrow C^\infty(U)$.\par
+	
+	     \item[(3)]
+         设$(U, x^i)$是$p$点的任意一个局部坐标系，
+         又设$\mathbf{w}$, $\mathbf{v}\in \mathscr{X}(U)$，
+         且有局部表示$\mathbf{w}=w^i\frac{\partial}{\partial x^i}$, $\mathbf{v}=v^j\frac{\partial}{\partial x^j}$.\par
+         特别地，我们有：
+		\begin{equation*}
+		\Phi(\mathbf{w},\mathbf{v})(p)=w^iv^j\Phi(\frac{\partial}{\partial x^i},\frac{\partial}{\partial x^j})(p),
+		\end{equation*}
+        $\Phi(\mathbf{w},\mathbf{v})(p)$线性地依赖于切向量场$\mathbf{w}$, $\mathbf{v}$在$p$点处的分量，与$\mathbf{w}$, $\mathbf{v}$在$p$以外的值无关.\par
+        现在可以在每一个点$p\in M$定义$(0,2)$型张量场$\tilde{\Phi}\in T_p^*M\otimes T_p^*M$如下: 
+        任取$\mathbf{w}_0$, $\mathbf{v}_0\in T_pM$, 作$\mathbf{w}_0$, 
+        $\mathbf{v}_0$在$p$点邻域$U$内的任意光滑扩张$\mathbf{w}$, 
+        $\mathbf{v}\in \mathscr{X}(U)$, 
+        使得$(\mathbf{w},\mathbf{v})(p)=(\mathbf{w}_0,\mathbf{v}_0)(p)$.\par
+        令$(\tilde{\Phi}(p))(\mathbf{w}_0,\mathbf{v}_0)=\Phi(\mathbf{w},\mathbf{v})(p)$, 
+        由上式知此式有意义，即$(\tilde{\Phi}(p))(\mathbf{w}_0,\mathbf{v}_0)$的值
+        与光滑扩张$\mathbf{w}$, $\mathbf{v}\in \mathscr{X}(U)$的选取无关.\par
+        这样，我们便得到了光滑流形$M$上的$(0,2)$型张量场$\tilde{\Phi}$（光滑性是显然的）.
+	 \end{enumerate}
+  
+	
+	\item[39.] 
+        定义$\tilde{\varphi}(X,\alpha)=\alpha(\varphi(X))$, 
+        容易验证这是一个$2$重线性映射，且对每个自变量都是$C^\infty(M)$- 线性的，
+        由定理5.1（P159）知命题成立.
+	
+	
+	\item[40.] 
+    $\forall f, g\in C^\infty(M)$, $Y, Z\in \mathscr{X}(M)$，
+	\begin{align*}
+	\mathscr{L}_X\varphi(fY+gZ)
+	&=[X,\varphi(fY+gZ)]-\varphi([X,fX+gZ])\\
+	&=[X,f\varphi(Y)+g\varphi(Z)]-\varphi(f[X,Y]+g[X,Z])\\
+	&=f[X,\varphi(Y)]+g[X,\varphi(Z)]-f\varphi([X,Y])-g\varphi([X,Z])\\
+	&=f\mathscr{L}_X\varphi(Y)+g\mathscr{L}_X\varphi(Z).
+	\end{align*}
+	
+
+\end{itemize}

@@ -1,0 +1,281 @@
+\setdisplaytitle{最优化方法\ 试题}
+\sethtmltitle{最优化方法\ 试题}
+
+== 最优化方法2024学年春季学期期末试题 ==
+
+\begin{itemize}
+\item[一、] (1) 请写出（连续可微）凸函数判定的一阶条件和（二阶可微）凸函数判定的二阶条件。
+
+(2) $\theta \in \R^{n},x_{n} \in \R^{n}, y_{n} \in \{0,1\}$, 
+$h(x,\theta)= \dfrac{1}{1+e^{-\theta^{T}x}}$。
+
+\[
+f( \theta ) = - \sum_{1 \leq i \leq n} \left[ y_{i}\ln h(x_{i},\theta) +(1-y_{i})\ln (1- h(x_{i}, \theta))\right] 
+\]
+
+求证：$f(\theta )$ 是凸函数。
+
+\item[二、] (1)写出 $f(x)$ 的共轭函数 $f^{*}(y)$ 的表达式.
+
+(2) $x \in \mathbb{R}^{n}$, $x_{i} > 0$是 $x $ 的分量, 
+求 $f(x) = \sum\limits_{1 \leq i \leq n} x_{i} \ln x_{i}  $ 的共轭函数 $f^{*} (y)$.
+
+\item[三、] (1) $F(x)$ 是凸函数，请写出 $\partial F(x)$ 的定义.
+
+(2) $\varepsilon >0 $, 定义 $F(a,b)= a - \max\{0,a-\varepsilon b\}$,
+求$F(a,b)=0$ 的充要条件.
+
+(3) 求$F(a,b)$的次微分.
+
+\item[四、] $f(x)$ 是凸函数，且满足梯度 $L$--利普希茨连续，
+即 $\left\| \nabla f(x)- \nabla f(y) \right\| \leq L \left\| x-y \right\| $. 
+$x^*$ 是 $f$ 的全局最小值点.
+
+(1) 求证：$\forall x,y \in \mathbf{dom} f$, 有：
+\[
+f(y) \leq f(x) + \nabla f(x)^{T}(y-x) + \frac{L}{2}\left\| x-y \right\|^{2}
+\]
+
+(2) 求证：
+\[
+\frac{1}{2L}\left\| \nabla f(x) \right\|^{2} 
+\leq f(x) - f(x^*) \leq \frac{L}{2}\left\| x-x^* \right\|^{2}
+\]
+
+\item[五、] $f(x)$ 是凸函数.$x^*$ 是 $f$ 的全局最小值点.
+
+(1) 写出临近算子 $\operatorname{prox}_{tf}(x)$ 的定义。
+
+(2) 写出近似点算法的迭代公式和大致流程。
+
+(3) 已知从 $x_{k}$ 到 $x_{k+1}$ 的迭代系数为 $t_k$,
+求证： $\dfrac{x_{k} - x_{k+1}}{t_{k}} \in \partial f(x_{k+1})$. 
+
+(4) 证明：\[
+f(x_{k+1}) \leq f(x_{k}) - \frac{   1}{t_{k}}\left\| x_{k   } - x_{k+1} \right\|^2
+\]
+
+(5) 证明：
+\[
+f(x_{k+1}) \leq f(x^*)+\frac{1}{2t_{k}}\left( \left\| x_{k} - x^* \right\|^2 -\left\| x_{k+1} - x^* \right\|^2 \right) 
+\]
+
+(6) 证明：
+
+\[
+f(x_{k}) - f(x^*) \leq \frac{\left\| x_0 - x^* \right\|^2}
+{2\sum_{1 \leq i \leq k-1}t_{i}} 
+\]
+
+\item[六、] (1) $t>0,f(x)= \left\| x \right\|_{1}$,
+求 $\operatorname{prox}_{tf}(x)$.
+
+(2) $t>0,f(x)= \left\| x \right\|_{2}$,求 $\operatorname{prox}_{tf}(x)$.
+
+\[
+f(x) = \frac{1}{2} x^{T}Qx +q^T x + \left\| x \right\|_{1}
+\]
+\[
+A x =b
+\]
+
+其中 $Q$ 是 $n \times n$ 正定矩阵，$q \in \R^{n}$.
+
+(3) 写出用增广拉格朗日法求解 $\min f$ 的表达式。
+
+(4) 写出用交替方向乘子法求解 $\min f$ 的表达式，并说明这样做的理由。
+\end{itemize}
+
+\begin{proofc}[提示]
+    \begin{itemize}
+    \item[一、](1)一阶条件:对于定义在凸集上的可微函数$f,f$是凸函数当且仅当$f(y)\geq f(x)+\nabla f^\top(x)(y-x),\quad\forall x,y\in\textbf{dom}f$\par
+    二阶条件:对于定义在凸集上的可微函数$f,f$是凸函数当且仅当$\nabla^2f(x)\geq0,\quad\forall x\in\textbf{dom}f$\par
+    (2)由于凸函数的线性组合仍是凸函数,故原问题等价于证明$n=1$时的情况,等价于证明$\ln h(x_1,\cdot)$和$\ln(1-h(x_1,\cdot))$均为凸函数.又注意到$\theta^\top x$关于$\theta$线性,从而只需要证明$\ln\frac{1}{1+e^{-z}}$和
+    $\ln\frac{e^{-z}}{1+e^{-z}}(z\in\mathbb{R})$是凸函数即可.
+    $$(\ln\frac{1}{1+e^{-z}})''=(-\frac{e^{-z}}{1+e^{-z}})'=-(\frac{1}{1+e^{-z}})'=\frac{e^{-z}}{(1+e^{-z})^2}>0$$
+    $$(\ln\frac{e^{-z}}{1+e^{-z}})''=(\frac{1+e^{-z}}{e^{-z}}(\frac{e^{-z}}{1+e^{-z}})')'=(-\frac{1}{1+e^{-z}})'=\frac{e^{-z}}{(1+e^{-z})^2}>0$$
+\end{itemize}
+\end{proofc}
+
+
+
+
+
+
+
+== 最优化方法2025学年春季学期期末试题 ==
+\begin{itemize}
+\item[一、] (1) 请写出（连续可微）凸函数判定的一阶条件和（二阶可微）凸函数判定的二阶条件。
+
+(2)对于$x\in\mathbb{R}^n,y\in\mathbb{R},y>0$,证明函数
+$$f(x,y)=\frac{\|x\|^2_2}{y}$$
+是凸函数.
+
+\item[二、](1)写出临近算子$\text{prox}_h(x)$的定义.\par
+(2)$h(x)=\|x\|_1$时,计算$\text{prox}_{th}(x)$.\par
+(3)设$h(x)=g(\lambda x+a)$($\lambda\neq0$).证明$\text{prox}_h(x)=\frac{1}{\lambda}(\text{prox}_{\lambda^2g}(\lambda x+a)-a)$
+
+\item[三、]考虑凸问题
+$$\min\limits_x \quad\frac{1}{2}x^\top Ax+b^\top x$$
+$$l\leq x\leq u$$
+其中$A$是半正定对称阵.\par
+(1)把该问题改写为可以使用交替方向乘子法的形式,并写出该问题的增广拉格朗日函数.\par
+(2)写出用交替方向乘子法求解的算法步骤并说明理由.
+
+\item[四、](1)设$f$是凸函数,满足$\|\nabla f(x)-\nabla f(y)\|\leq L\|x-y\|$.$\forall x
+,y\in\textbf{dom}(f),$求证
+$$|f(y)-f(x)-\nabla f^\top(x)(y-x)|\leq \frac{L}{2}\|x-y\|^2$$
+(2)设$f$是凸函数,满足$\|\nabla^2 f(x)-\nabla^2 f(y)\|\leq L\|x-y\|$.$\forall x
+,y\in\textbf{dom}(f)$,写出
+$$|f(y)-f(x)-\nabla f^\top(x)(y-x)-\frac{1}{2}(\nabla^2f(x)(x-y),(x-y))|$$
+应满足的不等式.
+
+\item[五、](1)写出 $f(x)$ 的次梯度的定义.\par
+(2)写出 $f(x)$ 的二次共轭函数 $f^{**}(x)$ 的定义.\par
+(3)设$f$还是闭凸函数,那么我们知道$\forall x\in\textbf{dom}(f), f(x)=f^{**}(x)$.求证
+$$y\in\partial f(x) \Leftrightarrow x\in\partial f^{*}(y)$$
+
+\item[六、]设$t\in\mathbb{R},x\in\mathbb{R}^n$.定义$f(t,x)=\ln (t^2-x^\top x),\textbf{dom}(f)=\{(t,x)|t>0,t^2-x^\top x>0\}$.求$f(t,x)$的共轭函数.
+
+
+\end{itemize}
+\begin{proofc}[提示]
+    \begin{itemize}
+    \item[一、]
+
+\end{itemize}
+\end{proofc}
+
+== 最优化方法2026学年春季学期期末试题 ==
+\begin{itemize}
+
+\item[一、] 
+(1) 请写出连续可微凸函数判定的一阶条件，以及二阶可微凸函数判定的二阶条件。
+
+(2) 设 $0<\alpha<1$，函数 $f:\mathbb{R}_{++}^2\to\mathbb{R}$ 定义为
+\[
+    f(x,y)=-x^\alpha y^{1-\alpha}.
+\]
+证明 $f$ 在其定义域上是凸函数。
+
+(3) 设 $f:\mathbb{R}^n\to\mathbb{R}$ 二阶连续可微，且对任意 $x\in\mathbb{R}^n$，Hessian 矩阵正定。
+是否一定可以推出 $f$有下界? 若正确，请给出证明；若错误，请举出反例。
+进一步地，
+若 $f$有下界，是否一定可以推出$f$有最优值?
+若正确，请给出证明；若错误，请举出反例。
+
+\item[二、] 
+(1) 写出函数 $f$ 为 $L$-光滑函数的定义。
+
+(2) 可引用如下引理：
+
+\textbf{引理 6.1.} 设 $g:\mathbb{R}^n\to\mathbb{R}$ 为可微凸函数。则以下命题等价：
+\[
+    g\text{ 是 }L\text{-光滑函数};
+\]
+\[
+    x\mapsto \frac{L}{2}\|x\|_2^2-g(x)\text{ 是凸函数};
+\]
+\[
+    g\text{ 满足余强制性，即对任意 }x,y\in\mathbb{R}^n,
+\]
+\[
+    \langle \nabla g(x)-\nabla g(y),x-y\rangle
+    \geq
+    \frac{1}{L}\|\nabla g(x)-\nabla g(y)\|_2^2.
+\]
+
+证明：若 $f$ 可微，则 $f$ 是 $L$-光滑函数当且仅当
+\[
+    x\mapsto \frac{L}{2}\|x\|_2^2-f(x)
+    \quad\text{与}\quad
+    x\mapsto \frac{L}{2}\|x\|_2^2+f(x)
+\]
+均为凸函数。
+
+\item[三、] 
+(1) 写出共轭函数 $f^*(y)$ 的定义。
+
+(2) 设
+\[
+    f(x)=\max_{1\leq i\leq n}x_i,
+    \qquad x=(x_1,\dots,x_n)^\top\in\mathbb{R}^n.
+\]
+求 $f$ 的共轭函数 $f^*$。
+
+(3) 设 $a_1,\dots,a_m\in\mathbb{R}^n$，$b_1,\dots,b_m\in\mathbb{R}$，函数 $f:\mathbb{R}^n\to\mathbb{R}$ 定义为
+\[
+    f(x)=\max_{1\leq i\leq m}\{a_i^\top x+b_i\}.
+\]
+求 $f$ 的共轭函数 $f^*$。
+
+\item[四、] 
+(1) 写出函数 $f$ 在点 $x_0$ 沿方向 $d$ 的方向导数
+\[
+    f'(x_0;d)
+\]
+的定义。
+
+(2) 设
+\[
+    f(x)=\|x\|_1,
+    \qquad x\in\mathbb{R}^n.
+\]
+求方向导数 $f'(x;d)$ 的表达式，并说明在什么条件下有
+\[
+    f'(x;d)=-f'(x;-d).
+\]
+
+\item[五、] 
+设 $e=(1,\dots,1)^\top\in\mathbb{R}^n$。
+
+(1) 写出临近算子 $\operatorname{prox}_{t h}(x)$ 的定义，其中 $t>0$。
+
+(2) 设 $h(x)=\|x\|_1$, 定义域为 $\{x\in\mathbb{R}^n:x\leq e\}$,
+求 $\operatorname{prox}_{t h}(x)$ 的显式表达式。
+
+(3) 考虑优化问题
+\[
+    \min_{x\in\mathbb{R}^n}
+    \quad
+    \frac{1}{2}x^\top Qx+q^\top x+\|x\|_1
+\]
+\[
+    \text{s.t.}\quad x\leq e,
+\]
+其中 $Q\in\mathbb{R}^{n\times n}$ 为对称正定矩阵，$q\in\mathbb{R}^n$。
+
+为了使用交替方向乘子法，写出该问题对应的增广拉格朗日函数。
+
+(4) 写出对应优化问题的交替方向乘子法的算法步骤，要求每一步写出解的显式表达式。
+
+\item[六、] 
+设 $f:\mathbb{R}^n\to\mathbb{R}$ 为凸可微函数，且存在最小值点 $x^*$。考虑梯度法迭代
+\[
+    x_{k+1}=x_k-\alpha \nabla f(x_k),
+\]
+其中 $\alpha>0$ 为步长。假设迭代满足下降条件
+\[
+    f(x_{k+1})
+    \leq
+    f(x_k)-\frac{\alpha}{2}\|\nabla f(x_k)\|_2^2.
+\]
+
+(1) 证明对任意 $k\geq 0$，
+\[
+    f(x_{k+1})-f(x^*)
+    \leq
+    \frac{1}{2\alpha}
+    \left(
+        \|x_k-x^*\|_2^2-\|x_{k+1}-x^*\|_2^2
+    \right).
+\]
+
+(2) 证明对任意 $k\geq 1$，
+\[
+    f(x_k)-f(x^*)
+    \leq
+    \frac{1}{2\alpha k}\|x_0-x^*\|_2^2.
+\]
+
+\end{itemize}

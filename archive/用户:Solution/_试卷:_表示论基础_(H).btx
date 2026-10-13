@@ -1,0 +1,78 @@
+\setdisplaytitle{试卷：表示论基础（H）}
+\sethtmltitle{试卷：表示论基础（H）}
+
+
+王庆雪老师的表示论基础课程大纲与现代代数学II相同，
+可参考[[User:Solution/\qquad 试卷：现代代数学II|之前的试卷]]。
+
+\begin{center}
+    \textsize{24pt}{复旦大学数学科学学院\\
+    2025$\sim$2026学年第一学期期中考试试卷\\
+    $\boxtimes$ $\text{A}$ 卷 \qquad $\square$ $\text{B}$ 卷 \qquad $\square$ $\text{C}$ 卷}
+
+    开课院系：\ \ $\underline{\quad\ \ \,数学科学学院\quad\ \ \,}$\quad    \textsize{22pt}{课程名称：\ \ $\underline{\qquad\ 表示论基础（{\rm H}）\qquad\ }$\quad课程代码：\ \ $\underline{\text{MATH30030h.02}}$考试形式：\ \ $\underline{\qquad\qquad\quad闭卷\qquad\qquad\quad}$考试时间：\ \ $\underline{\qquad\qquad\quad\text{2026 年 4 月 20 日 13：30--15：10}\qquad\qquad\quad}$\\
+    姓\qquad名：\ \ $\underline{\qquad\qquad\qquad\qquad\ \ \ }$\quad学\qquad号：\ \ $\underline{\qquad\qquad\qquad\qquad\qquad\quad\ \ \ }$}
+\end{center}
+\qquad 提示：请同学们秉持诚实守信宗旨，谨守考试纪律，摒弃考试作弊。
+学生如有违反学校考试纪律的行为，学校将按《复旦大学学生纪律处分条例》规定予以严肃处理$\!。$
+\begin{table}
+\begin{tabular}{|c|c|c|c}
+\textbf{题号} &\quad一\quad&\quad二\quad&\quad三\quad&\quad四\quad&\quad五\quad&\textbf{总分}\\
+\textbf{得分} & & & & & & 
+\end{tabular}
+\end{table}
+\begin{enumerate}
+    \item \textbf{试卷共五道题，满分100分，共六页。}
+    \item \textbf{请将自己的学号、姓名填写清楚。}
+    \item \textbf{答题时请将计算或证明的过程写完整，否则会扣分。}
+    \item \textbf{约定所有的环都不是零环且含有幺元。}
+    \item \textbf{$\mathbb{Z}, \mathbb{Q}, \mathbb{R}, \mathbb{C}$ 分别表示整数环、有理数域、实数域和复数域。}
+\end{enumerate}
+
+
+\begin{enumerate}
+\item (20分)
+设 \( D \) 是可除环，\( M \) 是左 \( D \)-模。证明 \( M \) 是自由模。
+
+
+\item (20分)
+考虑环 \( R = \mathbb{Q} \times \mathbb{Q} \)，
+\( I = \{ (a, 0) \mid a \in \mathbb{Q} \} \)，
+\( J = \{ (0, b) \mid b \in \mathbb{Q} \} \)。 证明：
+
+（i）\( I, J \) 是 \( R \) 的理想。作为 \( R \)-模，问 \( I \) 与 \( J \) 是否同构？说明理由。
+
+（ii）设 \( \mathbb{Q}^*=\mathbb{Q} - \{0\} \)是有理数乘法群.作为$\mathbb{Z}$-模，问$\mathbb{Q}^*$是否为平坦模？说明理由.
+
+\item (20分)设 \( F \) 是域，考虑 \( M_4(F) \) 中的矩阵
+\[
+A = \begin{pmatrix}
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+1 & 0 & 0 & 0
+\end{pmatrix}, \quad
+B = \begin{pmatrix}
+1 & 1 & 0 & 0 \\
+0 & 1 & 1 & 0 \\
+0 & 0 & 1 & 1 \\
+0 & 0 & 0 & 1
+\end{pmatrix}
+\]
+问 \( A, B \) 在 \( M_4(F) \) 中是否相似？说明理由。
+
+\item (20分)
+设 \( R \) 是主理想整区，\( n \) 是正整数，\( R^n \) 是秩为\(n\)的自由模，\( M \) 是 \( R^n \) 的一个子模。
+若存在$R^n$的子模$T$使得$R^n=M \oplus T$,则称\( M \) 是 \( R^n \) 的直和项。
+
+
+(i) 证明：\( M \) 是 \( R^n \) 的直和项当且仅当商模 \(R^n/M \) 是无挠的 (torsion-free)。
+
+
+(ii) 若两个不同的子模 \( M, N \) 都是 \( R^n \) 的直和项，
+则 \( M \cap N \) 是否也是 \( R^n \) 的直和项？说明理由。
+
+
+\item (20分)
+设 \( R \) 是交换环，\( I \) 是 \( R \) 的理想。若 \( R/I \) 是平坦 \( R \)-模，证明：\( I = I^2 \)。
+\end{enumerate}

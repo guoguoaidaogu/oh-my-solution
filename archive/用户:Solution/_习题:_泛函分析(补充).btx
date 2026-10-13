@@ -1,0 +1,184 @@
+\theoremstyle{plain}\newtheorem*{1}{习题1}
+\theoremstyle{plain}\newtheorem*{2}{习题2}
+\theoremstyle{plain}\newtheorem*{3}{习题3}
+\theoremstyle{plain}\newtheorem*{4}{习题4}
+\theoremstyle{plain}\newtheorem*{5}{习题5}
+\theoremstyle{plain}\newtheorem*{6}{习题6}
+\theoremstyle{plain}\newtheorem*{7}{习题7}
+\theoremstyle{plain}\newtheorem*{8}{习题8}
+\theoremstyle{plain}\newtheorem*{9}{习题9}
+\theoremstyle{plain}\newtheorem*{10}{习题10}
+\theoremstyle{plain}\newtheorem*{11}{习题11}
+\theoremstyle{plain}\newtheorem*{12}{习题12}
+\theoremstyle{plain}\newtheorem*{13}{习题13}
+\theoremstyle{plain}\newtheorem*{14}{习题14}
+\theoremstyle{plain}\newtheorem*{15}{习题15}
+\theoremstyle{plain}\newtheorem*{17}{习题17}
+\theoremstyle{plain}\newtheorem*{23}{习题23}
+\theoremstyle{plain}\newtheorem*{24}{习题24}
+\theoremstyle{plain}\newtheorem*{25}{习题25}
+\theoremstyle{plain}\newtheorem*{26}{习题26}
+
+
+== 度量空间 ==
+
+\subsection{1.2 赋范线性空间及内积空间}
+\begin{11}
+    设$(X,\|\cdot\|)$是赋范线性空间。如果对$X$中任意元素$x,y$，都成立平行四边形公式
+    $$\|x+y\|^2+\|x-y\|^2=2\bigl(\|x\|^2+\|y\|^2\bigr),$$
+    那么可以在$X$中定义内积$\langle\cdot,\cdot\rangle$，使得$\|\cdot\|$是由内积$\langle\cdot,\cdot\rangle$诱导的范数。
+\end{11}
+\begin{proof}
+    \begin{itemize}
+        \item[(1)] 若$X$是实线性空间:\\
+        定义
+        $$B(x,y)=\|x+y\|^2-\|x-y\|^2$$
+        和内积
+        $$\langle x,y\rangle =\frac{1}{4}B(x,y).$$
+        下面验证$\langle \cdot,\cdot\rangle $确实是$X$上满足$\|x\|^2=\langle x,x\rangle $的内积.\\
+        对称性:
+        $$B(y,x)=\|y+x\|^2-\|y-x\|^2
+        =\|x+y\|^2-\|x-y\|^2=B(x,y).$$
+        正定性:
+        $$\langle x,x\rangle =\frac14\bigl(\|2x\|^2-\|0\|^2\bigr)=\|x\|^2,$$
+        所以$\langle x,x\rangle \ge0$, 且等号成立当且仅当$x=0$, 正定性成立.\\
+        下面验证线性性:
+        对任意$u,v,z\in X$, 由平行四边形公式,
+        \begin{align*}
+            B(u+v,z)+B(u-v,z)
+            &=\|u+v+z\|^2+\|u-v+z\|^2\\
+            &\quad-\|u+v-z\|^2-\|u-v-z\|^2\\
+            &=2\|u+z\|^2+2\|v\|^2
+            -2\|u-z\|^2-2\|v\|^2\\
+            &=2B(u,z).
+        \end{align*}
+        又因为
+        $$B(-u,z)=\|u-z\|^2-\|u+z\|^2=-B(u,z),$$
+        所以对$x,y,z\in X$,
+        \begin{align*}
+            4(\langle x,z\rangle +\langle y,z\rangle )
+            &=B(x,z)+B(y,z)\\
+            &=\frac12\bigl(B(x+y,z)+B(x-y,z)\bigr)\\
+            &\quad+\frac12\bigl(B(x+y,z)+B(y-x,z)\bigr)\\
+            &=B(x+y,z)
+            =4\langle x+y,z\rangle .
+        \end{align*}
+        这证明了第一变量的可加性.
+        对任意正整数$n$, 由可加性,
+        $$\langle nx,z\rangle =n\langle x,z\rangle .$$
+        结合$\langle 0,z\rangle =0$和$\langle -x,z\rangle =-\langle x,z\rangle $,
+        得到对任意$m\in\mathbb Z$, 都有$\langle mx,z\rangle =m\langle x,z\rangle $.
+        再对任意正整数$n$, 有
+        $$n\left\langle \frac{m}{n}x,z\right\rangle 
+        =\langle mx,z\rangle =m\langle x,z\rangle ,$$
+        因此
+        $$\langle rx,z\rangle =r\langle x,z\rangle ,\qquad \forall r\in\mathbb Q.$$
+        由于范数连续, $x\mapsto B(x,z)$连续.
+        对任意$t\in\mathbb R$, 取有理数列$r_n\to t$, 则
+        $$\|r_nx-tx\|=|r_n-t|\|x\|\to0,$$
+        从而
+        $$\langle tx,z\rangle =\lim_{n\to\infty}\langle r_nx,z\rangle 
+        =\lim_{n\to\infty}r_n\langle x,z\rangle =t\langle x,z\rangle .$$
+        因此线性性成立, 故$\langle \cdot,\cdot\rangle $是满足所需条件的内积.
+
+        \item[(2)] 若$X$是复线性空间: \\
+        仍令
+        $$B(x,y)=\|x+y\|^2-\|x-y\|^2.$$
+        定义内积
+        $$\langle x,y\rangle =\frac{1}{4}(B(x,y)+iB(x,iy)).$$
+        类似实的情况可知,
+        $B(x,y)$对第一变量具有实线性, 因此$\langle x,y\rangle $对第一变量也具有实线性.
+
+        计算可知$B(ix,y)=-B(x,iy),B(ix,iy)=B(x,y)$. 
+        于是
+        \begin{align*}
+            4\langle ix,y\rangle 
+            &=B(ix,y)+iB(ix,iy)\\
+            &=-B(x,iy)+iB(x,y)\\
+            &=4i\langle x,y\rangle .
+        \end{align*}
+        可知第一变量的复线性成立.
+
+        又由$B(y,x)=B(x,y)$和$B(y,ix)=B(ix,y)=-B(x,iy)$, 得到
+        \begin{align*}
+            4\langle y,x\rangle 
+            &=B(y,x)+iB(y,ix)\\
+            &=B(x,y)-iB(x,iy)
+            =4\overline{\langle x,y\rangle }.
+        \end{align*}
+        这证明了共轭对称性. 
+
+        最后, 由于$B(x,ix)=\|(1+i)x\|^2-\|(1-i)x\|^2=0$, 故
+        $$\langle x,x\rangle =\frac14B(x,x)
+        =\frac14\|2x\|^2=\|x\|^2.$$
+        所以$\langle x,x\rangle \ge0$, 且等号成立当且仅当$x=0$.
+        故$\langle \cdot,\cdot\rangle $是满足所需条件的内积.
+    \end{itemize}
+\end{proof}
+
+\subsection{1.3 Hilbert空间的正交系}
+\begin{3}
+    令$L^2([0,2\pi]\times[0,2\pi])$上的内积为
+    $$\langle f,g\rangle
+    =\iint_{[0,2\pi]\times[0,2\pi]}
+    f(x,y)\overline{g(x,y)}\,\frac{\mathrm{d}x\,\mathrm{d}y}{4\pi^2}.$$
+    证明: $\{e^{imx}e^{iny}:m,n\in\mathbb Z\}$构成$L^2([0,2\pi]\times[0,2\pi])$的一组标准正交基.
+\end{3}
+\begin{proof}
+    \begin{itemize}
+        \item[方法一.] 我们证明一个更一般的结论.
+
+    \begin{theorem}
+        设$(X,\mathcal{F},\mu)$和$(Y,\mathcal{G},\nu)$是两个$\sigma$-有限的测度空间,
+        $\{e_n\}_{n\in\N}$和$\{f_m\}_{m\in\N}$分别是$L^2(X,\mu)$和$L^2(Y,\nu)$的一组标准正交基,
+        则$\{(x,y)\mapsto e_n(x)f_m(y)\}_{m,n\in\N}$是
+        $L^2(X\times Y,\mu\times\nu)$的一组标准正交基.
+        这里$X\times Y$上的$\sigma$-代数可以取$\mathcal{F}\otimes\mathcal{G}$,
+        也可以取它关于$\mu\times\nu$的完备化.
+    \end{theorem}
+
+    \begin{proof}
+        由 Fubini 定理, 对任意$m,m',n,n'\in\N$, 有
+        $$\langle e_nf_m,e_{n'}f_{m'}\rangle_{L^2(X\times Y)}
+        =\langle e_n,e_{n'}\rangle_{L^2(X)}
+        \langle f_m,f_{m'}\rangle_{L^2(Y)}
+        =\delta_{nn'}\delta_{mm'}.$$
+        因此$\{e_nf_m\}$是标准正交系.
+        下面证明它的完全性.
+
+        设$h\in L^2(X\times Y,\mu\times\nu)$满足
+        $$\langle h,e_nf_m\rangle_{L^2(X\times Y)}=0,
+        \qquad \forall m,n\in\N.$$
+        由 Tonelli 定理, 对几乎所有$x\in X$,
+        都有$h(x,\cdot)\in L^2(Y,\nu)$. 对每个$m$, 在这些$x$上定义
+        $$a_m(x)=\int_Yh(x,y)\overline{f_m(y)}\,d\nu(y),$$
+        并在余下的零测集上令$a_m(x)=0$.
+        由 Cauchy--Schwarz 不等式,
+        $$|a_m(x)|^2\leq\int_Y|h(x,y)|^2\,d\nu(y),$$
+        故$a_m\in L^2(X,\mu)$. 再由 Fubini 定理, 对所有$n$都有
+        $$\langle a_m,e_n\rangle_{L^2(X)}
+        =\langle h,e_nf_m\rangle_{L^2(X\times Y)}=0.$$
+        因为$\{e_n\}$是标准正交基, 所以$a_m=0\ a.e.$, 即存在零测集$N_m$, 满足$ a_m(x)=0,\forall x\in X\backslash N_m$. 
+        由于$m$只有可数多个, 可以取同一个零测集$N=\cup_m N_m\subseteq X$, 使得对任意
+        $x\in X\setminus N$和任意$m\in\N$, 都有
+        $$\langle h(x,\cdot),f_m\rangle_{L^2(Y)}=a_m(x)=0.$$
+        再由$\{f_m\}$的完全性, 对任意$x\in X\setminus N$, 在$L^2(Y)$中有
+        $h(x,\cdot)=0$. 于是由 Tonelli 定理,
+        $$\|h\|_{L^2(X\times Y)}^2
+        =\int_X\|h(x,\cdot)\|_{L^2(Y)}^2\,d\mu(x)=0.$$
+        从而$h=0\ a.e.$, 完全性得证.
+    \end{proof}
+    \item[方法二.]
+    记
+    $$C_{\mathrm{per}}
+    =\{f\in C([0,2\pi]^2):
+    f(0,y)=f(2\pi,y),\ f(x,0)=f(x,2\pi),
+    \forall x,y\in[0,2\pi]\}.$$
+    由 Stone--Weierstrass 定理, $\operatorname{span}\{e^{inx}e^{imy}:m,n\in\mathbb Z\}$
+    在$C_{\mathrm{per}}$中关于$\|\cdot\|_\infty$稠密.
+    又因为
+    $$C_c^\infty((0,2\pi)^2)\subseteq C_{\mathrm{per}}$$
+    且$C_c^\infty((0,2\pi)^2)$在$L^2([0,2\pi]^2)$中稠密,
+    故$\overline{\operatorname{span}}{\{e^{inx}e^{imy}:m,n\in\mathbb Z\}}=L^2([0,2\pi]^2)$.
+    \end{itemize}
+\end{proof}

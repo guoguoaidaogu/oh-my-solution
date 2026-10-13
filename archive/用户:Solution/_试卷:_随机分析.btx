@@ -1,0 +1,355 @@
+\setdisplaytitle{试卷：随机分析}
+\sethtmltitle{试卷：随机分析}
+
+
+\section{2024--2025 学年第二学期随机分析(本研)期末试卷(李利平)}
+
+
+
+\quad 如无说明，$\left(B_{t}\right)_{t \geq 0}$ 指一维标准布朗运动。
+部分题目含附加分，总分超过 100 的按 100 分计。
+
+\textbf{一（每空5分，共25分）、}填空题
+\begin{enumerate}[label=(\arabic*)]
+\item $\left\{\xi_{k}: k \geq 1\right\}$ 是一列独立同分布，以概率 $\frac{1}{6}, \frac{1}{3}$ 和 $\frac{1}{2}$ 分别等于 $-1,0$ 和 $1$ 的随机变量。
+使得 $\prod_{k=1}^{n} a^{\xi_{k}}$ 是鞅的正常数 $a=\underline{\qquad\qquad\qquad}$。
+
+\item $\mathrm{e}^{B_{t}^{2}}+B_{t}^{3}-\int_{0}^{t} B_{t}^{2} \mathrm{d} B_{t}+1$ 和 $\arctan B_{t}+\int_{0}^{t} B_{s} \mathrm{d} s$ 的协变差过程是 $\underline{\qquad\qquad\qquad}$。
+
+\item 方程 $\mathrm{d} X_{t}=2025 B_{t}^{6} X_{t} \mathrm{d} t+X_{t} B_{t}^{5} \mathrm{d} B_{t}$ 的满足 $X_{0}=1$ 的解 \footnote{不用写出架构，只需写出 $X$ 的解析表达式。} 是 $\underline{\qquad\qquad\qquad}$。
+
+\item 记 $\xi_{k}:=\int_{0}^{\infty} t^{\frac{1}{k}} \mathrm{e}^{-\frac{t^{2}}{2}} \mathrm{d} B_{t},\ k \geq 1$。\footnote{$\int_{0}^{\infty}$ 表示 $\lim_{T \rightarrow \infty} \int_{0}^{T}$ 在 a.s. 意义下的极限。} 
+它们的前 $n$ 项算数平均 $\frac{\xi_{1}+\cdots+\xi_{n}}{n}$ 随着 $n \rightarrow \infty$ 依概率收敛到 $\xi=\underline{\qquad\qquad\qquad}$；
+$\xi$ 的分布密度函数是$\underline{\qquad\qquad\qquad}$。
+\end{enumerate}
+
+\printfootnotes
+
+
+
+\textbf{二（8 分）、}假设 $\left(X_{t}\right)_{t \geq 0}$ 是连续时间，右连续下鞅。
+证明：$t \mapsto \mathbb{E} X_{t}$ 是右连续函数。
+
+
+\textbf{三（12 分，另含附加分 10 分）、}给定正整数 $d \geq 1$，$S^{d-1}$ 表示 $\mathbb{R}^{d}$ 中以原点为球心的单位球面，$\sigma$ 表示 $S^{d-1}$ 上的均匀分布概率测度。
+$\mathbb{R}^{d}$ 上的实值连续函数 $f$ 如果满足
+$$f(x) \geq \int_{S^{d-1}} f(x+r \theta) \sigma(\mathrm{d} \theta), 
+\quad \forall x \in \mathbb{R}^{d}, r>0,$$
+则称它是 $\mathbb{R}^{d}$ 上的上调和函数。当等号成立时，称 $f$ 为调和函数。
+
+假设 $f$ 是 $\mathbb{R}^{d}$ 上的非负上调和函数，$B=\left(B_{t}\right)_{t \geq 0}$ 表示 $\mathbb{R}^{d}$ 上的标准布朗运动。证明下述结论：
+\begin{enumerate}[label=(\arabic*)]
+\item 对于任何 $x \in \mathbb{R}^{d}$ 以及 $t \geq 0$，$\mathbb{E} f(B_{t}+x) \leq f(x)$。
+
+\item $X_{t}:=f(B_{t}), t \geq 0$，是连续上鞅。
+
+\item 当 $t \rightarrow \infty$ 时，$X_{t}$ 在 a.s. 意义下收敛到某个可积随机变量 $X_{\infty}$。
+
+\item ${}^*$(附加 10 分) $X_{\infty}$ a.s. 等于某个常数。据此证明 $\mathbb{R}^{d}$ 上的 Liouville 性质：有界调和函数恒等于某个常数．
+\end{enumerate}
+
+\textbf{四（15 分）、}对于 $p \in \mathbb{R}$ 和 $[0, T]$ 上的实值函数 $f$，如果下述极限存在 (可以是无穷大)，则记
+$$V_{p}(f):=\lim_{|D| \rightarrow 0} \sum_{i=1}^{n} |f(t_{i})-f(t_{i-1})|^{p},$$
+其中 $D:=\left\{0=t_{0}<t_{1}<\cdots<t_{n}=T\right\}$ 取遍 $[0, T]$ 的满足 $|D|:=\sup_{1 \leq i \leq n}\left|t_{i}-t_{i-1}\right| \rightarrow 0$ 的有限划分列．
+
+假设 $[0, T]$ 上的实值连续函数 $f$ 是一个连续半鞅，并且 $f$ 不恒为常数。
+证明：对于任何 $p \in \mathbb{R}$，$V_{p}(f)$ 存在；并且，
+\begin{enumerate}[label=(\arabic*)]
+\item $V_{p}(f)=0$ 当且仅当 $p>1$。
+
+\item $V_{p}(f)=+\infty$ 当且仅当 $p<1$。
+\end{enumerate}
+
+
+\textbf{五（20 分）、}给定常数 $b, c, \sigma$，其中 $b \neq 0$。考虑一维随机微分方程
+$$\mathrm{d} X_{t}=(b X_{t}+c) \mathrm{d} t+\sigma \mathrm{d} B_{t}.$$
+\begin{enumerate}[label=(\arabic*)]
+\item 用 Yamada--Watanabe 定理证明这个方程有唯一强解。
+
+\item 证明：$X$ 是 Gauss 过程，当且仅当 $X_{0}$ 服从广义 Gauss 分布。
+\end{enumerate}
+
+\textbf{六（20 分，另含附加分 30 分）、}考虑架构 $\left(\Omega, \mathscr{F}, \mathscr{F}_{t}, \mathbb{P}, B_{t}\right)$ 上满足 $\mathrm{d} X_{t}=-X_{t} \mathrm{d} t+\mathrm{d} B_{t}$ 和 $X_{0}=0$ 的过程 $X$。
+记 $N_{t}:=\int_{0}^{t} X_{s} \mathrm{d} B_{s},\ t \geq 0$。
+符号 $\mathbb{E}$ 表示 $\mathbb{P}$ 对应的期望。证明下述结论：
+\begin{enumerate}[label=(\arabic*)]
+\item ${}^*$(附加 10 分) $N$ 的随机指数 $\mathscr{E}(N)$ 是鞅。
+
+\item 对于任何 $T>0$，定义 $\mathbb{Q}_{T}:=\mathscr{E}(N)_{T} \cdot \mathbb{P}$。
+那么，$\left(X_{t}\right)_{0 \leq t \leq T}$ 是 $\left(\Omega, \mathscr{F}_{T},\left(\mathscr{F}_{t}\right)_{0 \leq t \leq T}, \mathbb{Q}_{T}\right)$上的连续局部鞅且 $\langle X\rangle_{t}=t$。
+
+\item 对于任何 $T>0$，
+$$\mathbb{E} \exp \left\{-\frac{1}{2} \int_{0}^{T} B_{t}^{2} \mathrm{d} t\right\}
+=\mathbb{E} \exp \left\{\frac{1}{2} X_{T}^{2}-\frac{T}{2}\right\}
+=\frac{1}{\sqrt{\cosh T}}.$$
+
+其中，$\cosh T=\frac{\mathrm{e}^{T}+\mathrm{e}^{-T}}{2}$。
+
+\item ${}^*$(附加 20 分) 利用上一问的结论证明：
+$$\mathbb{E} \exp \left\{\frac{1}{2} \int_{0}^{T} B_{t}^{2} \mathrm{d} t\right\}
+=\begin{cases}
+\dfrac{1}{\sqrt{\cos T}}, & 0 \leq T<\dfrac{\pi}{2}, \\ \\
++\infty, & \quad\ \ \ T \geq \dfrac{\pi}{2}.
+\end{cases}$$
+（提示：考虑复变函数 $F(z):=\mathbb{E} \exp \left\{\frac{z^{2}}{2} \int_{0}^{1} B_{t}^{2} \mathrm{d} t\right\}$.）
+\end{enumerate}
+
+
+
+
+
+
+
+{{comment|下面是试卷答案和李利平老师对每题的评论。“讲义”指李利平老师对课本的注解与习题解答。有需要这一届讲义和手写讲稿的同学可以找
+上过这门课的同学参考。}}
+
+    \textbf{一、}
+    \begin{enumerate}[label=(\arabic*)]
+    \item $1$ 或 $1/3$。
+    \item $2 \int_{0}^{t} \frac{B_{s}^{2}+B_{s} e^{B_{s}^{2}}}{1+B_{s}^{2}} \mathrm{d} s, t \geq 0$。
+    \item $X_{t}=\mathrm{e}^{\int_{0}^{t} B_{s}^{5} \mathrm{~d} B_{s}+2025 \int_{0}^{t} B_{s}^{6} \mathrm{d} s-\frac{1}{2} \int_{0}^{t} B_{s}^{10} \mathrm{d} s}$。
+    \item $\int_{0}^{\infty} \mathrm{e}^{-\frac{t^{2}}{2}} \mathrm{d} B_{t} ; \pi^{-3/4} \mathrm{e}^{-x^{2}/\sqrt{\pi}}$。
+    \end{enumerate}
+
+    记 $M_{t}:=\int_{0}^{t} \mathrm{e}^{-\frac{u^{2}}{2}} \mathrm{d} B_{u}$，它是平方可积鞅，从而是一致可积鞅。
+    时间集 $[0, \infty]$ 可以类比有界时间集处理。注意到
+    $$\frac{t+\cdots+t^{1/n}}{n} \leq(1 \vee t) ;$$
+
+    右边局部有界，左边收敛到 $1$ (用 Stolz 公式)。用随机积分的控制收敛定理即得到算数平均依概率收敛到
+    $$\xi=M_{\infty}=\int_{0}^{\infty} \mathrm{e}^{-\frac{t^{2}}{2}} \mathrm{d} B_{t}.$$
+
+    容易验证，$\xi$ 服从高斯分布 ($M_{t}$ 服从高斯分布，注意高斯分布在弱收敛下封闭；或者用连续局部鞅的时间变换刻画)，
+    并且 $\mathbb{E} \xi=0, \mathbb{E} \xi^{2}=\int_{0}^{\infty} \mathrm{e}^{-t^{2}} \mathrm{d} t=\frac{\sqrt{\pi}}{2}$，
+    因此，$\xi \sim N(0, \frac{\sqrt{\pi}}{2})$。
+
+    \textcolor{0000cc}{\qquad 填空题平均得分 14.5 分，得分率最低的是最后一空，约为 $26 \%$。
+    除了最后一题稍微有点难度之外，前三道题都是在熟悉基本理论的前提下进行的不算特别简单（但计算量应当可以接受）的直接计算。
+    得分基本符合预期，也说明大家对基本理论的理解（以及计算基本功）还是比较扎实的。下面是一些常见的错误：
+    \begin{itemize}
+    \item 第一个空：个别同学不知出于什么原因舍去了 $a=1$ 的情况。舍去 $1$ 的扣 2 分。
+
+    \item 第二个空：有人只写了被积项 $\frac{2B_{t}^{2}+2B_{t} \mathrm{e}^{B_{t}^{2}}}{1+B_{t}^{2}}$。
+    还有同学用，来表示积分 $\frac{2B_{t}^{2}+2B_{t} \mathrm{e}^{B_{t}^{2}}}{1+B_{t}^{2}}.t$（其中一位同学连$.$都忘写了）。
+    我仍然判对（没写$.$的扣了 1 分）．虽然我们在课上确实使用过类似的记号，但前提是不引起混淆，在考试时建议大家避免使用这种写法。
+    另外，如果大家对计算二次变差过程或协变差过程比较熟悉的话，应当会发现：这道题目中的有界变差项都是干扰项，包括用伊藤公式做计算时也只需要写出鞅的部分。
+
+    \item 第三个空：仍然有几位同学用 ODE 的方式给出 $X_{t}=\mathrm{e}_{0}^{\int_{0}^{t} B_{s}^{5} \mathrm{d} B_{s}+2025 \int_{0}^{t} B_{s}^{6} \mathrm{d} s}$。按照我在第十四周课上所解释的，这种情况得分为 0。
+
+    \item 第四个空常见的错误答案是 $0$。据推测，大概是以为这道题目考察的大数定律，而每一项看起来都是鞅，所以期望为 $0$。然而，大数定律显然是不适用的。
+
+    \item 第五个空：有几位同学在得到 $\xi$ 的正确表达式之后，最后一个空没算出来。不知道是什么原因。
+    更神奇的是，还有一位同学写的 $\xi=0$，但给出的 $\xi$ 的分布密度函数居然是正确的，并且写的是（没有雷同的）
+    $$f(x)=\frac{1}{\sqrt{\pi \Gamma(1/2)}} \mathrm{e}^{-\frac{x^{2}}{\Gamma(1/2)}}$$
+    的形式。这让我百思不得其解。
+    \end{itemize}}
+
+    \textbf{二、}
+    
+    \textbf{证明：}
+    任取 $t \geq 0$ 和递减到 $t$ 的序列 $t_{n}$，即 $t_{n} \downarrow t$。
+    只需要证明 $\mathbb{E} X_{t_{n}} \rightarrow \mathbb{E} X_{t}$。事实上，由于
+    $$\inf \mathbb{E} X_{t_{n}} \geq \mathbb{E} X_{t}>-\infty,$$
+
+    因而根据倒向鞅收敛定理，$\left\{X_{t_{n}}: n \geq 1\right\}$ 是一致可积的。
+    由 $X$ 的右连续性可知 $X_{t_{n}} \rightarrow X_{t}$，a.s.。
+    由 Vitali 收敛定理即得到 $X_{t_{n}}$ 在 $L^{1}$ 的意义下收敛到 $X_{t}$。
+    特别的， $\mathbb{E} X_{t_{n}} \rightarrow \mathbb{E} X_{t}$。证毕。
+
+    \textcolor{0000cc}{\qquad 这道题目的背景是下鞅的正则化。
+    $t \mapsto \mathbb{E} X_{t}$ 的右连续性是下鞅存在右连续修正的充分条件；这道题目的结论说明它也是必要的。
+    这件事实我在习题解答 note §2.3.2 节条目 4 中提到过，同时也简短地说明了主要证明技巧。
+    证明写起来虽然非常容易，但如果没有想到用倒向鞅收敛定理，在考场上确实不太容易做出来。
+    这道题目的得分率在 $29 \%$，还是可以接受的。
+
+    \qquad 这道题目出现了很多稀奇古怪的错误，主要是关于极限与期望交换顺序的。
+    有各种胡乱使用控制收敛定理，Fatou 引理等的情况。
+    我不确定这部分同学是因为证明不出来而``气急败坏''，所以乱写的？
+    还是本身对这些重要工具的适用条件不熟悉。如果是后者，希望大家还是多加注意。
+
+    \qquad 下面出现的一些错误也请大家避免：
+    \begin{itemize}
+    \item 由 $X_{t}$ 是下鞅得到 $\left|X_{t}\right|$ 是上（下）鞅。
+
+    \item 由于 $X_{t}$ 右连续，因而对于任何 $s$，$\mathbb{E}[X_{t} | \mathscr{F}_{s}]$ 关于 $t$ 右连续。
+    \end{itemize}}
+
+    \textbf{三、}
+    \begin{enumerate}[label=(\arabic*)]
+    \item 当 $t=0$ 时结论显然成立。下面假设 $t>0$。由于 $f$ 非负，我们用极坐标变换得到
+    \begin{align*}
+    \mathbb{E} f(B_{t}+x) & =\frac{1}{(2 \pi t)^{d/2}} \int_{\mathbb{R}^{d}} f(x+y) \mathrm{e}^{-\frac{|y|^{2}}{2t}} \mathrm{d} y \\
+    & =\frac{\left|S^{d-1}\right|}{(2 \pi t)^{d/2}} \int_{0}^{\infty} \mathrm{e}^{-\frac{r^{2}}{2t}} r^{d-1} \mathrm{d} r \int_{S^{d-1}} f(x+r \theta) \sigma(\mathrm{d} \theta),
+    \end{align*}
+
+    其中，$\left|S^{d-1}\right|$ 表示 $S^{d-1}$ 的``面积''。进而由 $f$ 的上调和性质可得，
+    $$\mathbb{E} f(B_{t}+x) \leq f(x) \frac{\left|S^{d-1}\right|}{(2 \pi t)^{d/2}} \int_{0}^{\infty} \mathrm{e}^{-\frac{r^{2}}{2t}} r^{d-1} \mathrm{d} r
+    =\frac{f(x)}{(2 \pi t)^{d/2}} \int_{\mathbb{R}^{d}} \mathrm{e}^{-\frac{|y|^{2}}{2t}} \mathrm{d} y=f(x).$$
+    \item 注意到 $f$ 非负，由上一问的结论可知 $\mathbb{E} f(B_{t}) \leq f(0)<\infty$，即 $X_{t}$ 可积。
+    进而，用条件期望的 Fubini 定理和布朗运动的平稳独立增量性，对于 $0 \leq s<t$，我们有
+    \begin{align*}
+    \mathbb{E}[f(B_{t}) | \mathscr{F}_{s}] & =\mathbb{E}[f(B_{t}-B_{s}+B_{s}) | \mathscr{F}_{s}]=\mathbb{E}[f(B_{t}-B_{s}+x)]|_{x=B_{s}} \\
+    & =\mathbb{E}[f(B_{t-s}+x)]|_{x=B_{s}} \leq f(x)|_{x=B_{s}}=f(B_{s}).
+    \end{align*}
+
+    显然，$X_{t}$ 连续。因此，$X$ 是连续上鞅。
+
+    \item 注意到 $-X$ 是连续下鞅，且 $\sup _{t} \mathbb{E}(-X)_{t}^{+}=0$。
+    由 Doob 上穿不等式即得到 $X_{\infty}:=\lim_{t \rightarrow \infty} X_{t}$ 在 a.s. 的意义下存在 (可能是无穷大)。
+    显然，$X_{\infty}$ 非负。且由 Fatou 引理可得，$\mathbb{E} X_{\infty} \leq \liminf_{t} \mathbb{E} X_{t} \leq \mathbb{E} X_{0}=f(0)<\infty$。
+    即得 $X_{\infty}$ 是可积随机变量 (可测性显然)。
+
+    \item 显然，$X_{\infty}=\lim_{t \rightarrow \infty} f(B_{t}) \in \bigcap_{t>0} \sigma(B_{s}: s \geq t)$。
+    这个尾 $\sigma$-代数服从 0-1 律。（见教材 §3.6 节习题 9.）因此，$X_{\infty}$ 几乎处处等于某个常数。
+
+    考虑任何一个有界调和函数，假设对于某个常数 $c$ 成立 $f(x) \geq-c, \forall x \in \mathbb{R}^{d}$。
+    那么，$\tilde{f}:=f+c$ 是一个有界、非负调和函数。我们只需要说明 $\tilde{f}$ 恒等于某个常数。
+    重复上面的证明可以得到，$\tilde{f}(B_{t})$ 是一个有界连续鞅，且存在某个正常数 $C$ 使得
+    $$\lim_{t \rightarrow \infty} \tilde{f}(B_{t}) \rightarrow C, \quad \text { a.s.}.$$
+
+    有界鞅是一致可积鞅。因此，$\tilde{f}(B_{t}), 0 \leq t \leq \infty$，是一致可积鞅，从而是右闭鞅。特别的，
+    $$\tilde{f}(B_{1})=\mathbb{E}[C | \mathscr{F}_{1}]=C, \quad \text{ a.s. } \tag{1}$$
+
+    由于 $B_{1}$ 的分布与 Lebesgue 测度等价，因而 $\tilde{f}=C$，a.e.。
+    （记开集 $U:=\{x \in \mathbb{R}^{d}: \tilde{f}(x) \neq C\}$；
+    那么 $\mathbb{P}(B_{1} \in U)=0$，从而 $U$ 的 Lebesgue 测度为 $0$.）
+    结合 $\tilde{f}$ 的连续性，我们就可以得到 $\tilde{f}$ 在 $\mathbb{R}^{d}$ 上恒等于 $C$。
+    \end{enumerate}
+
+    \textcolor{0000cc}{\qquad 这道题目是 Doob 的鞅论在调和分析中非常有名的一个应用。
+    同时，第二问的结论也是上鞅／下鞅命名的由来 (我在某次课上简单说明过这件事实)。
+    鞅论甚至可以认为是经典调和分析 $1: 1$ 的概率复刻，对此感兴趣的同学可以阅读 Doob 的名著：Classical potential theory and its probabilistic counterpart.
+
+    \qquad 对于非负上调和函数 $f$，$f(B_{t})$ 是上鞅的结论通常是用马氏性来证明的。有几位同学确实是这么做的，这很好。
+    这里为了避免用马氏性，我用第一问提示了另一种用条件期望 Fubini 定理的证明方式。
+    而且为了提醒大家用极坐标变换，我特意用球平均的方式定义上调和性。但我没想到，第一问就拦住了不少人。
+    部分同学似乎把问题想得太复杂了，想到了各种有关停时的高深技巧，却没有想到直接计算朴素的积分。
+    在第二问的证明中，能严格清晰地使用条件期望的 Fubini 定理的同学比较少，少数同学似乎有些感觉，但不知道如何严格的表述。
+    大家似乎对条件期望的这条性质非常生疏，希望这次考试能让大家对它刻骨铭心。
+    第三问是鞅论的基本结果，课后作业也做过。这一问整体完成得不错，说明大家对鞅论的基础知识掌握得还是非常熟练的。
+
+    \qquad 关于附加分部分的第一个结论，我最后一次课提过尾 $\sigma$-代数的结论 (而且课上构造的例子是完全相同的 $t \rightarrow \infty$ 的方式)，
+    还特意将这道课后题留作了不用交的作业，就是希望特别主动认真的学生能做出来这道附加题。
+    但完全没有人注意到 $X_{\infty}$ 是常数这个结论是如此显然。
+    有两位同学在承认 $X_{\infty}$ 是常数的前提下基本解决了后半部分，这非常好。
+
+    \qquad 这道题目前三问各 4 分，整体得分率为 $56 \%$。下面是一些其它常见错误：
+    \begin{itemize}
+    \item 出现了一些很奇怪的坐标变换方式，比如令 $r:=\left|B_{t}\right|$，则
+    $$\mathbb{E} \int_{S^{d-1}} f(x+r \theta) \sigma(\mathrm{d} \theta)
+    =\mathbb{E} f(x+B_{t}).$$
+    
+    \item 有人用课后习题的结论断言：$B_{t}$ 服从球面上的均匀分布。
+    原命题应该是 $B_{\tau}$ 服从这个均匀分布，其中 $\tau$ 是单位球面的首中时。
+    
+    \item 由上调和的条件得到 $f$ 是凸函数，然后用 Jensen 不等式。这种方式仅对一维是适用的。
+    
+    \item 有同学用伊藤公式来证明前两问。这似乎是可行的。但问题在于，如果没有函数 $f$ 的更多性质 (需要 $f$ 的一阶导局部平方可积)，很难得到
+    $$\sum_{i} \int_{0}^{t} \frac{\partial f}{\partial x_{i}}(B_{s}+x) \mathrm{d} B_{s}^{(i)}$$
+    是一个鞅。
+    
+    \item 不清楚 Doob 鞅收敛（上穿不等式）适用的条件。
+    
+    \item 有人论述：当 $x$ 是常返态时，若 $t \rightarrow \infty$，$B_{t}=x$，i.o. 这是不对的。
+    对于二维以上的布朗运动，单点集总是 polar 集，肯定不满足这条性质。
+    \end{itemize}}
+
+
+    \textbf{四、}
+
+    用 §4.5 习题12相同的方法可以证明 $f$ 是有界变差函数 (建议写一点必要的过程)，即下述极限存在且有限：
+    $$V_{1}(f)=\lim_{|D| \rightarrow 0} \sum_{i=1}^{n} |f(t_{i})-f(t_{i-1})|<\infty$$
+    由于 $f$ 不恒为常数，因而 $V_{1}(f)>0$。总的来说，$0<V_{1}(f)<\infty$。记
+    $$w_{f}(|D|):=\sup _{0 \leq t, s \leq T,|t-s|<|D|}|f(t)-f(s)|.$$
+    对于任何 $p>1$，我们有
+    $$\sum_{i=1}^{n}|f(t_{i})-f(t_{i-1})|^{p} \leq w_{f}(|D|)^{p-1} \sum_{i=1}^{n}|f(t_{i})-f(t_{i-1})|.$$
+    由 $f$ 的一致连续性可得 $\lim_{|D| \rightarrow 0} w_{f}(|D|)=0$。于是，
+    $$\limsup_{|D| \rightarrow 0} \sum_{i=1}^{n} | f(t_{i})-f(t_{i-1})|^{p} 
+    \leq \lim_{|D| \rightarrow 0} w_{f}(|D|)^{p-1} \sum_{i=1}^{n}|f(t_{i})-f(t_{i-1})|=0.$$
+    因此，$V_{p}(f)$ 存在，且等于 $0$。当 $p<1$ 时，我们有
+    $$\sum_{i=1}^{n}|f(t_{i})-f(t_{i-1})|^{p} 
+    \geq w_{f}(|D|)^{p-1} \sum_{i=1}^{n}|f(t_{i})-f(t_{i-1})|.$$
+    由于 $V_{1}(f)>0$，因此 $V_{p}(f)$ 也存在，且等于 $+\infty$。
+
+    \textcolor{0000cc}{\qquad 这道题目完全是为了检查大家是否有认真完成课后作业。作业原题出自 Revuz ＆Yor 书上第四章的练习 1.38，是我做的全部课后作业里印象最深刻的。
+    第一次看到函数 $f$ 是连续半鞅这个条件感到非常奇怪，不知道这道题目究竟想说什么。但是仔细想过才感到回味无穷。
+    我相信认真做过这道题目肯定也有类似的感觉 (个别同学在试卷上``连续半鞅''旁边打了几个大大的问号，大概也是出于相同的原因)。
+    而且，就算忘了它的证明过程，应该对题目的结论也印象深刻。
+
+    \qquad 由于后续讨论非常简单，如果没有对 $f$ 有界变差的结论作出必要的解释，那么这道题目最多只能得 10 分。
+    这道题目的整体得分率为 $41 \%$。给出 $f$ 有界变差的证明细节的同学比较少，而没有做过这道作业题的同学基本不可能做出来这道题目。
+    由此粗略估算，应该有 $41 \% / 66.7 \% \approx 61 \%$的同学（这个比例和总分 20 分以上的人数比例差不多，和平时上课的出勤率也比较一致）的确是在认真学习，而且基本能跟上学习进度。这个比例还是让人比较满意的。}
+
+    \textbf{五、}
+
+    （1）解有解析表达式：
+    $$X_{t}={e}^{bt} X_{0}+\frac{c}{b}(\mathrm{e}^{bt}-1)+\sigma \mathrm{e}^{bt} \int_{0}^{t} \mathrm{e}^{-bs} \mathrm{d} B_{s}. \tag{2}$$
+
+    注意用架构，伊藤公式给出弱存在性的说明，并用解析表达式或其它方式证明轨道唯一性(这种问题的范式参见手写讲稿)。
+
+    （2）必要性显然，下面证明充分性。记 $Y_{t}:=\int_{0}^{t} \mathrm{e}^{-bs} \mathrm{d} B_{s}$。
+    它是连续局部鞅，且 $\langle Y\rangle_{t}=\frac{1}{2b}(1-\mathrm{e}^{-2bt})=: c(t)$ 是确定性函数。
+    因此，存在与 $X_{0}$ 独立的布朗运动 $\beta$ 使得 $Y_{t}=\beta_{c(t)}$。
+    特别的，对于任何 $0 \leq t_{1}<t_{2}<\cdots<t_{n}$，容易用特征函数证明
+    $$(1, X_0, Y_{t_1}, \cdots, Y_{t_n})
+    =(1, X_0, \beta_{c(t_1)}, \cdots, \beta_{c(t_n)}) \tag{3}$$
+    是广义正态随机向量。(除去前两个分量，布朗运动的部分显然服从广义正态，再利用布朗运动和 $1, X_{0}$ 的相互独立性.) 固定 $t_{1}<\cdots<t_{n}$。
+    根据解析表达式 (2)，随机向量 $(X_{t_{1}}, \cdots, X_{t_{n}})$ 可以由（3）的某个线性变换得到 (建议写出线性变换对应的矩阵)。
+    因此，$(X_{t_{1}}, \cdots, X_{t_{n}})$ 也是广义正态随机向量。最终就建立了充分性。
+
+    \textcolor{0000cc}{\qquad 这道题目是 ${\rm O}$-${\rm U}$ 过程做了简单的变形，
+    目的是检验大家对随机微分方程几种解的理解，同时也在为压轴题做准备。
+    在数学学习过程中，对概念的理解是极其重要的，这种重要性丝毫不亚于一些重要工具的熟练使用。
+
+    \qquad 尽管在课上强调过很多次，仍然出现了下面这些常见错误：
+    \begin{itemize}
+    \item 断言： $\mathrm{e}^{bt} \int_{0}^{t} \mathrm{e}^{-bs} \mathrm{d} B_{s}$ 是局部鞅。
+    （或者类似地，断言 ${\rm O}$-${\rm U}$ 过程是局部鞅.）这是不对的，这是两个半鞅 $\mathrm{e}^{bt}$ 和 $\int_{0}^{t} \mathrm{e}^{-bs} \mathrm{d} B_{s}$ 的乘积，用分部积分公式可以验证它只是个半鞅。
+    还有同学断言
+    $$\left\langle\mathrm{e}^{bt} \int_{0}^{t} \mathrm{e}^{-bs} \mathrm{d} B_{s}\right\rangle
+    =\mathrm{e}^{2bt}\left\langle\int_{0} \mathrm{e}^{-bs} \mathrm{d} B_{s}\right\rangle_{t}
+    =\mathrm{e}^{-2bt} \int_{0}^{t} \mathrm{e}^{-2bs} \mathrm{d} s.$$
+    用分部积分公式验算下，这个式子错在哪里。
+    
+    \item 忽略了初值 $X_{0}$ 与架构中布朗运动的独立性，这一点在第二问的证明中是至关重要的．
+    
+    \item 只有少数同学记得验证 $X_{t}$ 满足基本条件：$\int_{0}^{T}\left|b X_{t}+c\right| \mathrm{d} t<\infty$。
+    
+    \item 有一个同学用 Girsanov 变换来证明弱解的存在性，证明过程写得非常详细、清楚。说明他在这部分内容上确实下了很大功夫。
+    但由于漂移函数并非有界函数，要验证 Girsanov 变换对应的随机指数是鞅，这并不是一件容易的事情。这一点要格外注意。
+    \end{itemize}
+
+    \qquad 第二问能完整证出来的同学不是太多，其实这里要用的只是我们在课上提到的关于广义正态随机向量的一些基本工具。
+    这里要特别注意 (我在课上也强调过好几次)，正态随机向量和几个正态随机变量组合成向量是不一样的。
+    上述证明中，(3) 式子中的向量是正态随机向量并不是自然成立的，这需要 $X_{0}, 1$ 和布朗运动部分的独立性。类似出现的错误还有
+    \begin{itemize}
+    \item 断言：正态随机变量的线性组合仍然是正态随机变量。这也是不对的。正态随机向量的线性变换仍然是正态随机向量。
+    除非断言里用来算和的这组随机变量来自某个正态随机向量，否则结论未必成立。
+    \end{itemize}
+    \qquad 这道题目两问各 10 分，大多数同学能完成第一问。整体得分率为 $41 \%$。}
+
+    \textbf{六、}
+
+    详细证明参见讲义附录 D。下面简要说明第二问和第三问的证明思路。第二问直接用 Girsanov 变换得到
+    $$B_{t}-\langle B, N\rangle_{t}=B_{t}-\int_{0}^{t} X_{s} \mathrm{d} s=X_{t}$$
+    是 $\mathbb{Q}_{T}$ 下的连续局部鞅，且二次变差为 $t$。
+
+    第三问：根据连续局部鞅的时间变换刻画，$X$ 在 $\mathbb{Q}_{T}$ 下是某个布朗运动在时间 $T$ 之前的部分．因而
+    $$\mathbb{E} \exp \left\{-\frac{1}{2} \int_{0}^{T} B_{t}^{2} \mathrm{d} t\right\}
+    =\mathbb{Q}_{T} \exp \left\{-\frac{1}{2} \int_{0}^{T} X_{t}^{2} \mathrm{d} t\right\}
+    =\mathbb{E}\left(\exp \left\{-\frac{1}{2} \int_{0}^{T} X_{t}^{2} \mathrm{d} t\right\} \mathscr{E}(N)_{T}\right).$$
+    代入 $\mathscr{E}(N)_{T}$ 的表达式就可以得到第一个等式。
+    $X_{T}$ 在 $\mathbb{P}$ 下服从高斯分布，分布函数在上一题已经算过了。第二个等式是直接的积分计算。
+
+    \textcolor{0000cc}{\qquad 压轴题源自对最后一问中的期望计算问题的探讨。
+    我在补充材料里介绍过一些文献对这个问题的处理方式，但方法不够初等 (说实话，我也没完全看懂)。
+    后来憋了几天，终于想出来这个比较初等的证明方法。第一问和第四问确实是比较难的。
+    第一问要用补充材料里提过的 Benes 判别法，直接验证 Novikov 条件似乎不太可行。这一问没有人能做些有效的尝试。
+    但第四问确实有一位同学按照提示做了些尝试，虽然不太严谨，但部分讨论是可取的。这很让人欣慰。
+
+    \qquad 中间两问其实非常容易 (如果对 Girsanov 变换非常熟悉的话)，但完整做出来的同学并不多。
+    可能 Girsanov 变换的内容对大部分同学来说，还是太过抽象了。
+    其实我第一次学习这部分内容的时候也是一团浆糊的感觉，所以在讲授这部分内容的时候花了很大的精力，希望能帮助大家减少一些学习的困难。
+    但这无法一蹴而就，需要时间去消化。上周末答疑时，有学生问我：Girsanov变换这么抽象，到底有什么用。
+    除了课上讲到的它对解方程的应用 (尽管我们没有时间进一步展开相关讨论)，希望这道压轴题也能部分回答同学们的类似疑惑。
+
+    \qquad 这道题目第二问 8 分，第三问 12 分，整体得分率是 $31 \%$。}

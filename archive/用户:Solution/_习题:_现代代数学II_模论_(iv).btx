@@ -1,0 +1,432 @@
+\setcounter{section}{6}
+
+\section{内射模}
+    \begin{enumerate}
+        \item[7.2] 设$p$是一个素数, $\mathbb{Z}[\frac{1}{p}]
+        =\{\frac{a}{b}\in\mathbb{Q}\mid a\in\mathbb{Z},b=p^n,n\in \mathbb{N}\}$. 
+        则$\mathbb{Z}[\frac{1}{p}]$是有理数域$\mathbb{Q}$的子环，且包含整数环$\Z$。
+        证明: 作为$\mathbb{Z}$-模，$\mathbb{Z}[\frac{1}{p}]/\mathbb{Z}$是内射模.
+        \item[\textbf{证明:}]  因为$\mathbb{Z}$是PID, 
+        所以只需要证明$\mathbb{Z}[\frac{1}{p}]/\mathbb{Z}$可除.
+        (此性质只要求PI.)\par
+        对于任意$\big[\frac{a}{p^k}\big]\in\Z[\frac{1}{p}]/\Z$以及$s\in \mathbb{Z}$, 
+        设$s=s_0p^l$, 其中$\gcd(s_0,p)=1$. 
+        取$t\in\mathbb{Z}$使得$s_0t\equiv a\,(\!\!\!\mod p^k)$, 有
+        $$s\cdot \left[\frac{t}{p^{k+l}}\right]=\left[\frac{st}{p^{k+l}}\right]
+        =\left[\frac{s_0t}{p^k}\right]=\left[\frac{a}{p^k}\right].$$
+
+        \item[7.3] 设$A$是一个非零Abel群, $0\neq a\in A$. 
+        证明: 存在一个群同态$f:A\rightarrow \mathbb{Q}/\mathbb{Z}$使得$f(a)\neq 0$.
+        \item[\textbf{证明:}] 考虑$g:\langle a\rangle
+        \rightarrow \mathbb{Q}/\mathbb{Z}$. 
+        若$o(a)=n$, 则定义$g(ka)=\big[\frac{k}{n}\big]$. 
+        若$o(a)=\infty$, 定义$g(ka)=\big[\frac{k}{2}\big]$. 
+        验证$g$是群同态且$g(a)\neq 0$.\par
+        对于正合列$0\rightarrow \langle a\rangle\stackrel{i}{\rightarrow} A$, 
+        因为$\mathbb{Q}/\mathbb{Z}$是内射模, 
+        存在群同态$f: A\rightarrow \mathbb{Q}/\mathbb{Z}$使得$f(a)=g(a)\neq 0$.
+
+        \item[7.4] 设$R$是一个主理想整区, $M$是一个有限生成$R$-模. 确定何时$M$是内射模.
+        \item[\textbf{证明:}] 
+            $M$是内射模(等价于可除)等价于$M=\{0\}$或$R$是域.\par
+            设$M$是内射模. $M$有限生成, 故存在$d_i\neq 1$使得
+            $M\cong \Big(\bigoplus\limits_{i=1}^l R/(d_i)\Big)
+            \oplus \Big(\bigoplus\limits_{j=1}^s R\Big)$. \par
+            若$l\neq 0$, $M$可除, 故$R/(d_i)$可除(直和性质), 
+            但$d_i\cdot R/(d_i)=\{0\}$, 矛盾.\par
+            若$s\neq 0$, $M=\bigoplus\limits_{j=1}^s R$可除, 则对于任意$r\in R$, 
+            存在$(a_1,\cdots,a_s)\in \bigoplus\limits_{j=1}^s R$, 
+            使得$r(a_1,\cdots,a_s)=(1,0,\cdots,0)$, 进而$ra_1=1$. 
+            再说明$r$和$a_1$互为逆. 由$r$的任意性知$R$是域.\par
+            若$s=0$, 即$M=\{0\}$自然内射.\par
+            另外一个方向显然.
+
+        \item[7.5] 设$R$是一个整区. 若$R$-模$M$是无扭可除模, 证明：$M$是内射模.\par
+        \item[\textbf{证明:}]  
+            对于$R$的任意理想$I$, 任意$R$-模同态$f:I\rightarrow M$.\par
+            若$I=\{0\}$, 取$\tilde{f}:R\rightarrow M$, 
+            $\tilde{f}(r)=0,\ \forall r\in R$. 则这是模同态, 
+            且$f=\tilde{f}\circ j$, 其中$j:I\rightarrow R$是自然嵌入.\par
+            若$I\neq \{0\}$, 任取$i\neq 0 \in I$, 则$f(i)\in M$.
+            由$M$可除, 有$iM=M$. 特别地, 存在$m\in M$, 使得$im=f(i)$.\par
+            这样的$m$是唯一的：设$m'\in M$同样满足$im'=f(i)$, 
+            则$0=f(i)-f(i)=im-im'=i(m-m')$, 又$M$无扭, 故$m-m'=0$, 即$m=m'$.\par
+            对于任意$j\in I$, 考虑$f(j)-jm$. 
+            $$i(f(j)-jm)=f(ij)-ijm=f(ji)-(ji)m=j(f(i)-im)=0.$$
+            由于$M$无扭, 故$f(j)=jm$.\par
+            取$\tilde{f}:R\rightarrow M$, $\tilde{f}(r)=rm,\ \forall r\in R$, 
+            则$\tilde{f}$是$R$-模同态, 且$\tilde{f}\circ j=f$.
+            由Baer判别法知$M$是内射模. \qed
+
+        \item[7.6] 设$R$是一个主理想整区, $I$是$R$的非平凡理想. 证明: $R/I$是内射$R/I$-模.
+        \item[\textbf{证明:}] 考虑$R/I$的任意理想, 我们知道其具有$J/I$的形式, 
+            其中$J\supset I$是$R$的理想.\par
+            因为$R$是PID, 存在$d, d'\in R$, 使得$J=Rd'$, $I=Rd$. 
+            因为$J\supset I$, 存在$\lambda\neq 0 \in R$使得$d=\lambda d'$.\par
+            对于任意模同态$f:J/I\rightarrow R/I$, 设$f(\overline{d'})=\overline{b}$. 
+            我们想要$\overline{a}\in R/I$, 使得
+            $\tilde{f}(\overline{d'})=\overline{ad'}=\overline{b}$.\par
+            注意到$\overline{\lambda b}=\overline{\lambda}f(\overline{d'})
+            =f(\overline{\lambda d'})=0.$ 
+            因此存在$t\in R$, 使得$\lambda b=td=t\lambda d'=\lambda td'$. 
+            进而$\lambda(b-td')=0$, 故$b=td'$. 取$a=t$再验证即可. \qed
+
+        \item[7.7] $R,S$是含幺环, $\alpha:R\rightarrow S$是环同态. 
+        通过$\alpha$将$S$视作$(R,S)$-双模. 设$M$是一个内射左$R$-模. 
+        证明: $\operatorname{Hom}_R(S,M)$作为左$S$-模是内射模. 
+        \item[\textbf{证明:}] 对于任意左$S$-模正合列: 
+            $0\rightarrow M_1\rightarrow M_2$, 
+            将证明$\operatorname{Hom}_S(M_2,\operatorname{Hom}_R(S,M))
+            \stackrel{\alpha^*}{\rightarrow}\operatorname{Hom}_S(M_1,\operatorname{Hom}_R(S,M))$是满射.\par
+            注意到$\operatorname{Hom}_S(M_2,\operatorname{Hom}_R(S,M))
+            \cong \operatorname{Hom}_R(S\otimes_S M_2,M) 
+            \cong \operatorname{Hom}_R(M_2,M)$, 最后是将$M$通过$\alpha$视作左$R$-模.\par
+            同理有$\operatorname{Hom}_S(M_1,\operatorname{Hom}_R(S,M))
+            \cong \operatorname{Hom}_R(M_1,M)$. 由$M$内射知满射.
+        \end{enumerate}
+
+\section{半单模}
+    \begin{enumerate}
+        \item[8.1] 
+        \begin{itemize}
+            \item[(i)] 对哪些正整数$n$，$\Z/n\Z$是半单$\Z$-模？
+        \end{itemize}
+        \item[\textbf{证明:}]
+            $\Z/n\Z$是半单$\Z$-模当且仅当$n$是无平方因子数.
+
+            首先，设$n = p^{l}$，其中$p$是素数，$l$是正整数.\\
+            当$l > 1$时，存在$\Z/p^{l}\Z$的子群$H$同构于$\Z/p\Z$.
+            假如$\Z/p^{l}\Z$是半单的，则$\Z/p^{l}\Z = H \oplus G$，
+            其中$G$是$\Z/p^{l}\Z$的子群.
+            那么$|G|=p^{l-1}$，从而$H \oplus G$中元的阶数不超过$p^{l-1}$.
+            但$\Z/p^{l}\Z$中含$p^{l}$阶元，矛盾！\\
+            当$l=1$时，$\Z/p^{l}\Z = \Z/p\Z$是单模，从而是半单的.
+
+            一般地，设$n = p_{1}^{l_{1}} \cdots p_{m}^{l_{m}}$，
+            其中$p_{i}$均是素数.
+            由中国剩余定理，$\Z/n\Z \cong 
+            \Z/p_{1}^{l_{1}}\Z \oplus \cdots \oplus \Z/p_{m}^{l_{m}}\Z$.\\
+            那么若$\max\{l_{1},\cdots,l_{m}\}>1$，
+            则$\Z/n\Z$的上述直和分解中有不半单的项，从而$\Z/n\Z$不半单. \\
+            若$l_{1} = \cdots = l_{m} = 1$，则$\Z/n\Z$是半单模的直和，故半单.\qed
+
+        \item[(ii)] 设$R$是含幺环，$M$是$R$-模，$N$是$M$的一个子模.
+            如果$N$与$M/N$都是半单模，问$M$是否也是半单模？说明理由.
+        \item[\textbf{证明:}]
+            不一定. 取$R = \Z$，$M = \Z/4\Z$，$N$为$M$中同构于$\Z/2\Z$的子群，是半单的.
+            那么$M/N \cong \Z/2\Z$，从而也半单.
+            但由(i)知$M$不是半单的.
+
+        \item[(iii)] 设$R$是整区，$F = \operatorname{Frac}(R)$是$R$的分式域，
+            通过乘法将$F$看成$R$-模，问$F$是否是半单$R$-模？说明理由.
+        \item[\textbf{证明:}]
+            若$R$本身是域，则$F = R$，而域中无非平凡理想，从而半单.
+
+            若$R$不是域，那么$F$不是半单$R$-模.
+            否则$R$是$F$的$R$-子模，故存在$F$的另一个非平凡$R$-子模$M$使得
+            $F = R \oplus M$. 那么$M$中的非零元素都能写成$m=\frac{r}{s}$，
+            其中$0 \neq r,s \in R$且$s \notin R^{*}$，
+            否则$m \in R$，从而$m \in R \cap M = \{0\}$. 矛盾！
+            但$sm=r \in R$，而$sm \in M$，故$sm \in R \cap M = \{0\}$，
+            从而$r=0$，矛盾！\qed
+
+        \item[8.2] 
+        \begin{itemize}
+            \item[(i)] 设$D$是可除环, $V$是一个有限维左$D$-模, 
+            $n=\dim_D V$, $R=\operatorname{End}_D(V)$是$V$的自同态环, 
+            $M_n(D)$是$D$上的$n$阶矩阵环. 证明: 作为环, 
+            $R$同构于$M_n(D^{\operatorname{op}})$.\par
+            \item[\textbf{证明:}]
+            令$V\cong nD$. 由习题8.7，$\operatorname{End}_{D}(nD)\cong M_{n}(A)$, 
+            其中$A=\operatorname{End}_{D}(D) \cong D^{\operatorname{op}}$.\par
+            则$R=\operatorname{End}_D(V)=\operatorname{End}_{D}(nD)
+            \cong M_n(D^{\operatorname{op}})$. \qed
+            \item[(ii)] 设$R$是半单环，$I$是$R$的左理想.
+            证明：存在$a \in I$，使得$I = Ra$且$a^{2} = a$.
+            \item[\textbf{证明:}]
+            由$R$半单，存在$R$的左理想$M$使得$R = I \oplus M$.
+            考虑$1 \in R$的分解$1 = a + a'$，其中$a \in I,a' \in M$.
+            那么对$a \in R$有$a = a \cdot 1 = a^{2} + aa'$，又$a = a + 0$，
+            由分解的唯一性，$a^{2}=a$，且$aa'=0$.
+            显然$Ra \subset I$；
+            反之，对于$i \in I$，有分解$i = ia + ia' = ia + 0$，
+            所以$i=ia \in Ra$. 故$I = Ra$，
+            $a$即为所求的幂等元. \qed
+        \end{itemize}
+
+        \item[8.3] 设$D$是可除环，$V$是一个有限维左$D$-模，$n = \dim_{D}V$，
+        $R = \operatorname{End}_{D}(V)$是$V$的自同态环.
+        设$I$是$R$的左理想，定义
+        \[\alpha(I) = \{u \in V \mid f(u) = 0,\forall \, f \in I\}.\]
+        设$W$是$V$的$D$-子模，定义
+        \[\beta(W) = \{f \in R \mid f(w)=0,\forall \, w \in W\}.\]
+        设$A = \{R\text{ 的左理想}\}$，$B=\{V\text{ 的 }D\text{-子模}\}$.
+        \item[(i)]
+            设$I \in A$，$W \in B$，证明$\alpha(I) \in B$，$\beta(W) \in A$.
+        \item[\textbf{证明:}]
+            由定义，略去. \qed
+        \item[(ii)]
+            由(i)，我们有映射$\alpha:A \rightarrow B, I \mapsto \alpha(I)$；
+            $\beta:B \rightarrow A, W \mapsto \beta(W)$；
+            证明$\alpha \circ \beta = \operatorname{id}_{B}$，
+            $\beta \circ \alpha = \operatorname{id}_{A}$.
+        \item[\textbf{证明:}]
+            对于任意$u \in \alpha(I)$，显然对于任意$f \in I$，
+            有$f(u) = 0$，从而$I \subset \beta \circ \alpha(I)$.
+            而由于$R$半单，故存在幂等元$a \in R$，使得$I = Ra$.
+            若$\ker f \supset \alpha(I)$，则考虑$f$的分解
+            $f = f \circ a + f \circ (1 - a)$.
+            由于$\operatorname{im}(1-a) = \ker a$，
+            但$\ker f \supset \alpha(I) = \ker a$，故$f \circ (1-a) = 0$.
+            从而$f = f \circ a \in Ra = I$. 这证明了$I = \beta \circ \alpha(I)$. 
+            
+            而对于前者，显然有$W \subset \alpha \circ \beta(W)$.
+            而若$U \subsetneq W$，则考虑$U$在$V$中的直和补$T$，则对$T$的投影$\pi$
+            满足$\ker \pi = U$. 这意味着$\beta(W) \subsetneq \beta(U)$.
+            故若$W \subsetneq \alpha \circ \beta(W)$，
+            则$\beta(W) \supsetneq \beta \circ \alpha \circ \beta(W) = \beta(W)$. 矛盾！
+            这证明了$W = \alpha \circ \beta(W)$. \qed
+        \item[(iii)] 设$I$是$R$的（双边）理想，
+            证明$\alpha(I)$是$V$的$R$-子模，由此证明$I = \{0\}$或$R$.
+        \item[\textbf{证明:}]
+            若$v \in V$满足$f(v) = 0$对于任意$f \in I$成立，
+            则对于任意$g \in \operatorname{End}(V)$，
+            由于$I$是双边理想，故$f \circ g \in I$，从而$f(g(v)) = 0$.
+            这即$g(v) \in \alpha(I)$. 从而$\alpha(I)$是$V$的$R$-子模.
+            但$V$是单$R$-模，故$\alpha(I) = \{0\}$或$V$.
+            由(ii)给出的一一对应知$I = \{0\}$或$R$. \qed
+        \item[(iv)] 设$I$是$R$的左理想，
+            证明$I$是极大左理想当且仅当$\dim_{D}\alpha(I) = 1$，
+            由此证明$R$的所有极大左理想的交等于$\{0\}$.
+        \item[\textbf{证明:}]
+            由(ii)容易验证左理想$I \subsetneq J$当且仅当
+            $\alpha(I) \supsetneq \alpha(J)$.
+            若$I$是极大左理想，则$\alpha(I)$不能有平凡$D$-子模，
+            从而$\dim_{D}\alpha(I) = 1$.
+            另一个方向是类似的.
+
+            若$a$属于所有极大左理想，则$\alpha(Ra)$包含所有一维$D$-子模.
+            这意味着$\alpha(Ra) = V$，从而$Ra = 0$，即$a = 0$. \qed
+
+        \item[8.4]
+        设$R$是环，$J(R)$是$R$的Jacobson根. 设$I$是一个左理想，证明下列命题等价：
+        \begin{itemize}
+            \item[(i)] $I \subseteq J(R)$.
+            \item[(ii)] $\forall \, a \in I$，$1+a$有左逆元，
+            即$\exists r \in R$使得$r(1+a) = 1$.
+            \item[(iii)] 设$M$是有限生成$R$-模，如果$IM = M$，则$M = 0$.
+        \end{itemize}
+        \item[\textbf{证明:}]
+        \begin{itemize}
+            \item[(i) $\Rightarrow$ (ii)]
+            否则，$R(1+a)$被包含在$R$的极大左理想中，设$R(1+a) \subset M$，
+            其中$M$是$R$的左极大理想.
+            那么由定义$a \in M$. 但$1+a \in M$，故$1 \in M$，矛盾！
+            故$R(1+a) = R$，从而存在$r \in R$使得$r(1+a)=1$.\par
+            另证: $(1-a)(1+a)=1-a^2=1$, $a^2=0$是因为$a\in J(R)$.
+            \item[(ii) $\Rightarrow$ (iii)]
+            若$M \neq 0$. 考虑$M$的一个有限生成元集$\{e_1,\cdots,e_s\}$, 
+            因为$IM=M$, 故存在$a_i\in I, m_i\in M$, 使得$e_i=a_im_i$.\par
+            故任意$m=\sum\limits_{i=1}^s r_ie_i=\sum\limits_{i=1}^s r_i a_im_i$, 
+            其中$r_ia_i\in I$. 故$M$可以由$\{m_i\}_{i=1}^s$ $I$-线性生成.
+
+            取$M$的最小$I$-生成元组$x_{1},\cdots,x_{n}$，其中$n\ge1$.
+            由$IM=M$知，$x_{1} = r_{1}x_{1} + \cdots + r_{n}x_{n}$，
+            其中$r_{1},\cdots,r_{n} \in I$.
+            那么$(1-r_{1})x_{1} + \cdots + r_{n}x_{n} = 0$.
+            由于$1-r_{1}$存在左逆，设为$a$，故
+            $x_{1} = -(ar_{2}x_{2} + \cdots + ar_{n}x_{n})$.
+            从而$x_{2},\cdots,x_{n}$可生成$M$，与$n$的最小性矛盾.
+            故$M = 0$.
+            \item[(iii) $\Rightarrow$ (i)]
+            对于任意$R$-单模$M$，$IM$是$M$的子模.
+            若$IM = M$，则$M=0$，矛盾！
+            由单性，$IM=0$，即$I \subset \operatorname{Ann}(M)$.
+            由于$M$的任意性，
+            故$I \subset \bigcap\limits_{M\text{是}R\text{-单模}}
+            \operatorname{Ann}(M) = J(R)$. \qed
+        \end{itemize}
+
+        \item[8.5] 设$V$是域$F$上的一个向量空间，$B$是其一组基，
+        而且$B$是一个无限可数集合. 考虑其$F$-自同态环$R = \operatorname{End}(V)$.
+        设
+        \[I = \{f \in R \mid \operatorname{Im} f = f(V)\text{ 是有限维的}\}.\]
+        \item[(i)] 证明：$I$是$R$的非平凡（双边）理想.
+        \item[\textbf{证明:}]
+            若$f,g \in I$，则$\dim_{k}(f(V) + g(V)) 
+            \leq \operatorname{rk}(f) + \operatorname{rk}(g) < \infty$，
+            故$f+g \in I$.
+            对任一线性变换$h$，$f \circ h(V) \subset f(V)$，故也是有限维空间，
+            又$\dim_{k}(h \circ f(V)) \leq \dim_{k}(f(V)) < \infty$，
+            故$f\circ h,h\circ f\in I$. \qed
+        \item[(ii)] 证明：商环$R/I$只有平凡的理想；Jacobson根$J(R/I) = \{0\}$.
+        \item[\textbf{证明:}]
+            否则，若$h$是一无限秩算子.
+            记$V = \operatorname{Ker} h \oplus W$，那么$W$也是无限维的.
+            否则记$B = \{e_{i}\}_{i \in \N}$以及
+            $e_{i} = u_{i} + w_{i}$，其中$u_{i} \in \operatorname{Ker} h$，$w_{i} \in W$.
+            那么$h(e_{i}) = h(u_{i}) + h(w_{i}) = h(w_{i}) \subset h(W)$.
+            但$W$是有限维的，故$h(W)$是有限维的，从而$h(V)$是有限维的，矛盾！            
+            取$W$的一组基底$\{d_{i}\}_{i \in \N}$满足$\{h(d_{i})\}_{i \in \N}$线性无关. 
+            这样一来，$h$就是$W$与$\operatorname{Im}(h)$间的同构.
+            那么存在既单又满的线性映射$g:V \rightarrow W$及$f:V \rightarrow V$
+            使得$f$限制在$\operatorname{Im}(f)$上是既单又满的.
+            那么$f \circ h \circ g:V \rightarrow V$也是既单又满的.
+            这说明$f \circ h \circ g$是$V$上的可逆线性变换.
+            故$R/I$中包含$h$的双边理想一定是$R/I$本身. 
+            由$h$的任意性，知$R/I$只有平凡双边理想.
+            
+            而注意到$J(R/I)$也是双边理想，故$J(R/I) = 0$.  \qed
+        \item[(iii)] 证明：商环$R/I$不是半单环.
+        \item[\textbf{证明:}]
+            我们证明$R/I$不是左Artin环，从而不是半单环.
+            
+            引用习题8.3的记号$\beta(-)$. 若有子空间包含$W \subset U$，
+            则$\beta(W) \supset \beta(U)$. 
+            进一步地，若$\dim_{F}U/W = \infty$，
+            断言$I + \beta(U) \subset I + \beta(W)$.
+            令$\{e_{i}\}_{i \in I}$是$W$的一组基，
+            并扩充至$U$上得$U$的一组基$\{e_{i}\}_{i \in I} \cup
+            \{d_{j}\}_{j \in J}$，其中$|J| = \infty$. 
+            我们继续将$\{e_{i}\}_{i \in I} \cup
+            \{d_{j}\}_{j \in J}$扩充至$V$上得$V$的基
+            $\{e_{i}\}_{i \in I} \cup \{d_{j}\}_{j \in J} \cup \{u_{k}\}_{k \in K}$.
+            考虑线性函数$f:V \rightarrow V$使
+            $f(e_{i})=0$，$f(d_{j})=d_{j}$及$f(u_{k})=u_{k}$.
+            那么$f \in \beta(W)$，从而$f \in I + \beta(W)$.
+            但$f \notin I + \beta(U)$. 
+            否则，记$f = g + h$，其中$g \in I$，$h \in \beta(U)$.
+            那么由定义$\operatorname{rk}(f-h) < \infty$.
+            但$g(d_{j}) = f(d_{j}) - h(d_{j}) = f(d_{j}) = d_{j}$，
+            与$g$有限秩矛盾！故$I + \beta(U) \subset I + \beta(W)$.
+
+            下证$R/I$不是左Artin的. 令$\{e_{i}\}_{i \in \N}$为$V$的一组基.
+            我们取$\N$的子集升链$I_{1} \subsetneq I_{2} \subsetneq \cdots$，
+            使得$|I_{k+1} \backslash I_{k}| = \infty$对于任意$k \in \N$成立.
+            令$W_{n} = \operatorname{span}\{e_{i}\}_{i \in I_{n}}$.
+            显然$W_{n} \subset W_{n+1}$，且$\dim_{F}W_{n+1}/W_{n} = \infty$.
+            由上述准备工作，我们有$\{I + \beta(W_{n})\}_{n  \in \N}$为
+            $R/I$中的左理想严格降链，从而$R/I$不是Artin环. \qed
+
+    \item[9.1] 设$R$是环. (i) 设$M,N$是同构的$R$-模，
+        证明：化零理想$\operatorname{Ann}_{R}(M)=\operatorname{Ann}_{R}(N)$.
+    \item[\textbf{证明:}]
+        设$\phi\colon M\to N$是同构，$\operatorname{Ann}_{R}(M)=\{r\in R\mid rM=0\}
+        =\{r\in R\mid \phi(rM)=0\}=\{r\in R\mid rN=0\}=\operatorname{Ann}_{R}(N)$.
+    \item[(ii)] 设$M,N$是同构的$R$-模，
+        证明：作为环，$\operatorname{End}_{R}(M)$同构于$\operatorname{End}_{R}(N)$.
+    \item[\textbf{证明:}]
+        设$\varphi:M \rightarrow N$与$\psi:N \rightarrow M$为互逆的同构，
+        那么定义$f:\operatorname{End}_{R}(M) \rightarrow \operatorname{End}_{R}(N);
+        \rho \mapsto \psi \circ \rho \circ \varphi$与
+        $g:\operatorname{End}_{R}(N) \rightarrow \operatorname{End}_{R}(M);
+        \tau \mapsto \varphi \circ \tau \circ \psi$. 
+        容易验证这是$\operatorname{End}_{R}(M)$与$\operatorname{End}_{R}(N)$
+        间的互逆环同态，从而是同构. \qed
+
+    \item[(iii)] 设$M_{n}(R)$是$R$上的$n$阶矩阵环.
+        证明：作为环，$M_{n}(R^{\mathrm{op}})$同构于$(M_{n}(R))^{\mathrm{op}}$.
+    \item[\textbf{证明:}]
+        定义$\varphi:M_{n}(R^{\mathrm{op}}) \rightarrow (M_{n}(R))^{\mathrm{op}};A \mapsto A^{T}$
+        以及$\psi:(M_{n}(R))^{\mathrm{op}} \rightarrow M_{n}(R^{\mathrm{op}});A^{T} \mapsto A$.
+        我们只验证$\varphi$是环同态. 记$\cdot$为$M_{n}(R^{\mathrm{op}})$的乘法，
+        而$\times$为$R^{\mathrm{op}}$的乘法，且$\widetilde{a_{ij}}:=a_{ji}$，
+        那么
+        \begin{equation*}\begin{aligned}
+            \varphi([a_{ij}]) \cdot \varphi([b_{ij}]) 
+            &= \varphi([b_{ij}])\varphi([a_{ij}])
+            = [\widetilde{b_{ij}}][\widetilde{a_{ij}}]
+            = [\sum_{k=1}^{n}\widetilde{b_{ik}}\widetilde{a_{kj}}]
+            = [\sum_{k=1}^{n}b_{ki}a_{jk}]
+            = [\sum_{k=1}^{n}a_{jk} \times b_{ki}] \\
+            &= [\widetilde{\sum_{k=1}^{n}a_{ik} \times b_{kj}}]
+            = [\sum_{k=1}^{n}a_{ik}b_{kj}]^{T}
+            = \varphi([\sum_{k=1}^{n}a_{ik}b_{kj}])
+            = \varphi([a_{ij}][b_{ij}]). 
+        \end{aligned}\end{equation*}
+        而其余验证都是平凡的. \qed
+
+        \item[9.2]
+        设$R$是环，$M$是$R$-模，$n$是正整数.
+        用$nM$表示$n$个$M$的直和.
+        记$A = \operatorname{End}_{R}(M)$是$M$的自同态环.
+        证明：作为环，$\operatorname{End}_{R}(nM)$同构于$M_{n}(A)$，
+        其中$M_{n}(A)$表示$A$上的$n$阶矩阵环.
+        \item[\textbf{证明:}]
+        我们记$\pi_{i}:nM \rightarrow M$为$nM$到其第$i$个分量上的取值，
+        $\iota_{i}:M \rightarrow nM$为$M$到$nM$第$i$个分量的嵌入，
+        即$\iota_{i}(m) = (0,\cdots,0,m,0,\cdots,0)$.
+        定义
+        \[\varphi:\operatorname{End}(nM) \rightarrow M_{n}(A);
+        \quad f \mapsto [\pi_{i} \circ f \circ \iota_{j}].\]
+        那么
+        \begin{equation*}\begin{aligned}
+            \varphi(fg) &= \varphi(f \circ g)
+            = [\pi_{i} \circ f \circ g \circ \iota_{j}]
+            = [\pi_{i} \circ f \circ \operatorname{id}_{nM} \circ g \circ \iota_{j}]
+            = [\pi_{i} \circ f \circ \bigg(\sum_{k=1}^{n}\iota_{k} \circ \pi_{k}\bigg) \circ g \circ \iota_{j}] \\
+            &= [\sum_{k=1}^{n}\pi_{i} \circ f \circ \iota_{k} \circ \pi_{k} \circ g \circ \iota_{j}]
+            = [\pi_{i} \circ f \circ \iota_{j}][\pi_{i} \circ g \circ \iota_{j}]
+            = \varphi(f)\varphi(g).
+        \end{aligned}\end{equation*}
+        再定义
+        \[\psi:M_{n}(A) \rightarrow \operatorname{End}(nM);
+        \quad [f_{ij}] \mapsto \sum\limits_{i,j=1}^{n}\iota_{i} \circ f_{ij} \circ \pi_{j}.\]
+        这也给出了一个环同态：
+        \begin{equation*}\begin{aligned}
+            \psi([f_{ij}])\psi([g_{ij}]) 
+            = \bigg(\sum_{i,j=1}^{n}\iota_{i} \circ f_{ij} \circ \pi_{j}\bigg) \circ
+            \bigg(\sum_{i,j=1}^{n}\iota_{i} \circ g_{ij} \circ \pi_{j}\bigg)
+            = \sum_{i,j=1}^{n}\iota_{i} \circ \bigg(\sum_{k=1}^{n}f_{ik} \circ g_{kj}\bigg) \circ \pi_{j}
+            = \psi([f_{ij}][g_{ij}]),
+        \end{aligned}\end{equation*}
+        其中第二个等号是因为$\pi_{j} \circ \iota_{i} = \delta_{ij}\operatorname{id}_{M}$.
+        所以
+        \begin{equation*}\begin{aligned}
+        \psi \circ \varphi(f) = g((\pi_{i} \circ f \circ \iota_{j})) 
+        = \sum_{i,j=1}^{n}\iota_{i} \circ \pi_{i} \circ f \circ \iota_{j} \circ \pi_{j}
+        = \sum_{j=1}^{n}f \circ \iota_{j} \circ \pi_{j} 
+        = f,
+        \end{aligned}\end{equation*}
+        且
+        \begin{equation*}\begin{aligned}
+        \varphi \circ \psi([f_{ij}]) = f\bigg(\sum_{i,j=1}^{n}\iota_{i} \circ f_{ij} \circ \pi_{j}\bigg)
+        = [\pi_{i} \circ \bigg(\sum_{k,l=1}^{n}\iota_{k} \circ f_{kl} \circ \pi_{l}\bigg) \circ \iota_{j}]
+        = [f_{ij}].
+        \end{aligned}\end{equation*}        
+        这证明了$\psi \circ \varphi = \operatorname{id}_{\operatorname{End}(nM)}$以及
+        $\varphi \circ \psi = \operatorname{id}_{M_{n}(A)}$. \qed
+
+        \item[9.3] 记号同上题.
+        设$M_{1},\cdots,M_{s}$是$s$个两两不同构的单$R$-模；
+        $n_{1},\cdots,n_{s}$是$s$个正整数；
+        $M = \bigoplus\limits_{i=1}^{s}n_{i}M_{i}$.
+        证明：作为环，$\operatorname{End}_{R}(M)$同构于直积
+        $\prod\limits_{i=1}^{s}\operatorname{End}_{R}(n_{i}M_{i})
+        = \operatorname{End}_{R}(n_{1}M_{1}) \times \cdots 
+        \times \operatorname{End}_{R}(n_{s}M_{s})$.
+        \item[\textbf{证明:}]
+        记$\iota_{i}$为$n_{i}M_{i}$至$M$第$i$直和项的嵌入，
+        而$\pi_{i}$为$M$在$M$第$i$直和项上的取值. 
+        定义\[f:\operatorname{End}_{R}(M) 
+        \rightarrow \prod\limits_{i=1}^{s}\operatorname{End}_{R}(n_{i}M_{i});\quad
+        \varphi \mapsto (\pi_{i} \circ \varphi \circ \iota_{i})_{1 \leq i \leq s}.\]
+        我们证明其良定性.
+        若存在$i \neq j$使得$\pi_{j} \circ \varphi \circ \iota_{i} \neq 0$，
+        则存在$1 \leq k \leq n_{j}$使得
+        $\pi_{j,k} \circ \pi_{j} \circ \varphi \circ \iota_{i}(M) \neq 0$.
+        其中$\pi_{j,k}$是$n_{j}M_{j}$在其第$k$分量上的取值.
+        由单性，$\pi_{j,k} \circ \pi_{j} \circ \varphi \circ \iota_{i}(M) = M_{j,k}$.
+        记$\iota_{i,l}$为$M_{i}$至$n_{i}M_{i}$第$l$直和项的嵌入，那么同理，
+        存在$1 \leq l \leq n_{i}$使得
+        $\pi_{j,k} \circ \pi_{j} \circ \varphi \circ \iota_{i} \circ \iota_{i,l}(M_{i,l}) \neq 0$，
+        从而$h := \pi_{j,k} \circ \pi_{j} \circ \varphi \circ \iota_{i} \circ \iota_{i,l}$是单模间的满射.
+        且$\ker h < M_{i,l}$，故$\ker h = 0$.
+        故$h$是单模间的同构，矛盾！
+        故$\sum\limits_{j=1}^{s}\pi_{j} \circ \varphi \circ \iota_{i} 
+        = \pi_{i} \circ \varphi \circ \iota_{i}$.
+        又定义
+        \[g:\prod\limits_{i=1}^{s}\operatorname{End}_{R}(n_{i}M_{i}) \rightarrow \operatorname{End}_{R}(M);\quad
+        (\varphi_{i}) \mapsto \sum\limits_{i=1}^{s} \iota_{i} \circ \varphi_{i} \circ \pi_{i}.\]
+        容易验证$f,g$是互逆的，从而是同构. \qed
+    \end{enumerate}

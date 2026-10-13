@@ -1,0 +1,2097 @@
+\begin{center}
+    \textsize{28pt}{\textbf{代数几何初步 2022秋 9.5—11.23}} \\ 绝赞更新中qwqqqqqqqq 
+    \\ （注：本文内容忠于上课内容，但不忠于顺序，并会在适当处做补充.）
+\end{center}
+
+\section{代数簇}
+    \subsection{代数簇}
+    \begin{definition}[仿射空间（Affine Space）]
+        称域$k$上的$n$维线性空间为$n$维仿射空间，记作$\mathbb{A}^{n}_{k}$. 
+        以下无歧义时简记为$\mathbb{A}^{n}$.
+    \end{definition}
+
+    \begin{definition}[零点（Zero）]
+        给定域$K$上的$n$元多项式环$A=k[X_{1},\cdots,X_{n}]$. 
+        对于其中的多项式$f(X_{1},\cdots,X_{n}) \in A$，
+        称$a \in \mathbb{A}^{n}$为$f$的零点，若$f(a)=0$. 
+        以下多项式$f$的零点集为$\mathcal{V}(f)$.
+    \end{definition}
+      
+    \begin{definition}[代数簇（Algebraic Variety）]
+        称仿射空间$\mathbb{A}^{n}$中的子集$F$为代数簇, 若存在$A$中的子集$S$, 
+        使得$F=\{a \in \mathbb{A}^{n} \mid f(a)=0,\,\forall f \in S\}$. 
+        记$S$对应的代数簇为$\mathcal{V}(S)$.
+    \end{definition}
+
+    \begin{example}
+        \begin{enumerate}
+            \item[(1)] $\mathcal{V}(1) = \varnothing$，$\mathcal{V}(0)=\mathbb{A}^{n}$
+            \item[(2)] 若$S=\{X_{1}-x_{1},\ldots,X_{n}-x_{n}\}$，
+                  则$\mathcal{V}(S)=\{(x_{1},\cdots,x_{n})\}$. 故而单点集是代数簇.
+            \item[(3)] 若$S_{1} \subset S_{2}$，则$\mathcal{V}(S_{1}) \supset \mathcal{V}(S_{2})$.
+            \item[(4)] 若$S \subset A$，且$I_{S}:=\left< S \right>$，
+                  则$\mathcal{V}(S)=\mathcal{V}(I_{S})$. 这是由定义可验证的. 
+                  故而定义1.3中考虑$A$的子集与$A$的理想并无区别.
+            \item[(5)] 定义$I \lhd A$的根理想
+                  $\sqrt{I}:=\{f \in A \mid 存在正整数n使得 f^{n} \in I \}$. 
+                  可验证$\sqrt{I}$确实是一个理想，
+                  且$\mathcal{V}(I) = \mathcal{V}(\sqrt{I})$. 
+                  （这是因为$k$中无非零幂零元.）
+            \item[(6)] 素理想都是根理想.
+        \end{enumerate}
+    \end{example}
+
+    \begin{remark}
+        也可以将代数簇定义为有限集$F \subset k[x_{1},\ldots,x_{n}]$的公共零点. 
+        这则定义与定义1.3是等价的. 一个方向是由例1.4.4得到的，
+        而另一个方向则是由Hilbert基定理
+        （若$R$是诺特环，则$R[x_{1},\ldots,x_{n}]$是诺特环），若$I \lhd A$，
+        则$I$有有限生成元$f_{1},\cdots,f_{n}$，
+        故$\mathcal{V}(I)=\mathcal{V}(f_{1},\cdots,f_{n})$.    
+    \end{remark}
+
+      仿射簇对任意交与有限并封闭.
+
+    \begin{proposition}
+        对于一组子集$\{S_{\alpha}\}_{\alpha \in I} \subset A$，其中$I$为指标集，我们有
+        \begin{enumerate}
+            \item[(1)] $\bigcap_{\alpha} \mathcal{V}(S_{\alpha}) = \mathcal{V}(\bigcup_{\alpha}S_{\alpha})$.
+            \item[(2)] $\mathcal{V}(S_{1}) \cup \mathcal{V}(S_{2}) = \mathcal{V}(S_{1}S_{2})$.
+        \end{enumerate}
+    \end{proposition}
+    \begin{proof}
+        \begin{enumerate}
+            \item[(1)] "$\subset$"：若$p \in \bigcap_{\alpha} \mathcal{V}(S_{\alpha})$，
+                        则对任意$f \in S_{\alpha}$与$\alpha \in I$有$f(p)=0$，即
+                        $p \in \mathcal{V}(\bigcup_{\alpha}S_{\alpha})$. \par
+                       "$\supset$"：若对于任意$f \in \bigcup_{\alpha}S_{\alpha}$有$f(p)=0$，
+                        则对于任意$\alpha \in I$有$p \in \mathcal{V}(S_{\alpha})$，
+                        即$p \in \bigcap_{\alpha} \mathcal{V}(S_{\alpha})$.
+            \item[(2)] "$\subset$"：若$p \in \mathcal{V}(S_{1}) \cup \mathcal{V}(S_{2})$，
+                        则不妨设对于任意$f \in S_{1}$，有$f(p)=0$. 
+                        那么任意$g \in S_{1}S_{2}$，有$g=fh$
+                        其中$f \in S_{1}$，$h \in S_{2}$. 
+                        那么$g(p) = f(p)h(p) = 0$，即$p \in \mathcal{V}(S_{1}S_{2})$. \par
+                       "$\supset$"：反之，若$p \notin \mathcal{V}(S_{1})\cup\mathcal{V}(S_{2})$，
+                        则存在$f \in S_{1}$与$g \in S_{2}$使得
+                        $f(p),g(p) \neq 0$，故由整性知$f(p)g(p) \neq 0$. 但$fg \in S_{1}S_{2}$，
+                        故$p \notin \mathcal{V}(S_{1}S_{2})$.
+        \end{enumerate}
+    \end{proof}
+
+    这实际上是说，$\mathbb{A}^{n}$中的全体代数簇有闭集结构. 
+    我们可以在$\mathbb{A}^{n}$定义一个全新的拓扑结构，使其中闭集恰好为全体代数簇.
+    
+    \begin{definition}[$\mathbb{A}^{n}$上的Zariski拓扑]
+        记拓扑空间$\mathbb{A}^{n}_{Zariski} := (\mathbb{A}^{n},\mathcal{X})$，其中
+        $\mathcal{X}=\{V(S)^{c} \mid S \subset A=k[X_{1},\cdots,X^{n}]\}$.
+        以下$\mathbb{A}^{n}$皆被赋予Zariski拓扑，并简记为$\mathbb{A}^{n}$.
+    \end{definition}
+
+    \begin{remark}
+        注意到取$k$为$\R$或$\mathbb{C}$，则Zariski拓扑其实严格粗于Euclid拓扑. 
+        这是由于Euclid拓扑下，多项式都是连续函数. 此时若$n=1$，则Zariski拓扑即余有限拓扑. \par
+        而取$k$为有限域，则Zariski拓扑就是离散拓扑（见Serge Lang Algebra习题IV.7）.
+    \end{remark}
+
+    \begin{remark}
+        Zariski拓扑不是Haudorff拓扑. $\mathbb{A}^{n}$不是Hausdorff空间.
+    \end{remark}
+
+    \begin{remark}
+        仿射开集即形如$\mathcal{V}(S)^{c}$的子集. 容易验证$\mathbb{A}^{n}$
+        中的仿射开集全体构成$\mathbb{A}^{n}$拓扑基. 
+    \end{remark}
+
+    我们也可以定义子簇：
+
+    \begin{definition}[代数子簇（Algebraic Subvariety）]
+        称$U$为代数簇$V$的子簇，若$U$是$V$的闭子集. 这也等价于说$U$是代数簇且$U \subset V$.
+    \end{definition}
+
+    在代数几何中，我们时常用到一些$\R^{n}$中不太可能出现的拓扑性质.
+
+    \begin{definition}[诺特空间（Noetherian Space）]
+        称拓扑空间$X$为诺特空间，若$X$满足闭集降链条件，
+        即任一闭集降链$F_{1} \subsetneq \cdots \subsetneq F_{n} \subsetneq \cdots$长度有限.
+        （也即满足开集升链条件，即开集升链有界.）
+    \end{definition}
+
+    \begin{example}
+        \begin{enumerate}
+            \item[(1)] 欧式空间$\R^{n}$中的诺特子空间即有限点集与空集.
+            \item[(2)] 仿射空间$\mathbb{A}^{n}$是诺特空间. 
+                  这是因为对任一闭集降链
+                  $V(I_{1}) \supsetneq \cdots \supsetneq V(I_{m}) \supsetneq \cdots$，
+                  有$I_{1} \subsetneq \cdots \subsetneq I_{m} \subsetneq \cdots$. 
+                  而由于$A = k[X_{1},\cdots,X_{n}]$是诺特环，故理想升链有界. 
+                  故而对应的闭集降链有界.
+            \item[(3)] 诺特空间的子空间都诺特. （由子空间拓扑定义）
+            \item[(4)] 在代数几何中，”紧“通常称为“拟紧”，而”紧“一词指代“拟紧且Hausdorff”. 
+                  对于拓扑空间$X$，其诺特性等价于每一个子空间都拟紧. (见Atiyah习题6.6.)
+        \end{enumerate}
+    \end{example}
+
+    另一个代数几何中的特有拓扑概念是”不可约“性.
+
+    \begin{definition}[不可约空间（Irreducible Space）]
+        称拓扑空间$X$不可约，若它不能写为两个真闭子集的并. 这也等价于任意开子集稠密. \par
+        称$X$的子集不可约，若该子集作为子空间不可约.
+    \end{definition}
+
+    \begin{remark}
+        \begin{enumerate}
+            \item 在欧式空间中，不可约子集只有单点集与空集.
+            \item 取$k=\mathbb{C}$，则仿射直线$\mathbb{A}^{1}_{\mathbb{C}}$不可约. 
+                  (只需注意到这时的Zariski拓扑是余有限拓扑.)
+            \item 连续映射正向保持不可约性. 
+            \item 子集$V$为不可约集\textbf{当且仅当}$\overline{V}$为不可约集.
+            \item 不可约空间是连通的.
+        \end{enumerate}
+    \end{remark}
+
+    我们将会看到，不可约集是一个很好处理的对象. 下述定理保证了不可约集在诺特空间中具有某种一般性.
+
+    \begin{theorem}[不可约分解（Irreducible Decompostion）]
+        对于诺特空间$X$，存在\textbf{有限}个不可约闭子集$Y_{i} \subset X$
+        使得
+        \begin{enumerate}
+            \item[(1)] $X=\bigcup_{i=1}^{n} Y_{i}$;
+            \item[(2)] 且对于任意$i \neq j$有$Y_{i} \not\subset Y_{j}$.
+        \end{enumerate}
+        且这样的分解在差一个$\{Y_{i}\}$的重排的意义下是\textbf{唯一}的.
+    \end{theorem}
+    \begin{proof} \par
+        \textbf{存在性}：先证明满足条件(1)的分解存在. \par
+        不妨设$X$可约，否则$X=X$即为这样的分解. 若$X$不满足这样的性质（即不能写为有限个不可约闭子集的并），
+        令$X = X_{1} \cup Y_{1}$，
+        其中$X_{1},Y_{1}$是$X$的真闭子集.
+        由假设，不妨设$X_{1}$可约，则可分解为$X_{1}=X_{2} \cup Y_{2}$，
+        其中$X_{2},Y_{2}$是$X_{1}$的真闭子集，故自动是$X$的真闭子集
+        （由于可写为两个闭集的交）. 由假设，不妨设$X_{i}$可约，则继续操作得真闭子集$X_{i+1}$.
+        如此得一闭子集降链$X \supset X_{1} \supset \cdots \supset X_{i} \supset \cdots$
+        与诺特性矛盾. \par
+
+        \textbf{唯一性}：若$Y=\bigcup_{i=1}^{n} Y_{i} = \bigcup_{j=1}^{m} Z_{j}$是满足条件(1)与(2)的分解，
+        则$Z_{j} = Z_{j} \cap Y = \bigcup_{i=1}^{n}(Z_{j} \cap Y_{i})$. 
+        由$Z_{j}$的不可约性及条件(2)，
+        存在唯一$\sigma(j)$使得$Z_{j}=Y_{\sigma(j)} \cap Z_{j}$，即$Z_{j} \supset Y_{\sigma(j)}$.
+        同理，存在$\tau(\sigma(j))$使得$Z_{\tau(\sigma(j))} \subset Y_{\sigma(j)} \subset Z_{j}$. 
+        由条件(2)知$\tau(\sigma(j))=j$，且$Z_{j} = Y_{\sigma{j}}$. 
+        那么$\sigma:\{1,\cdots,m\} \rightarrow \{1,\cdots,n\}$与
+        $\tau:\{1,\cdots,n\} \rightarrow \{1,\cdots,m\}$是互逆的映射，从而$\tau$是双射，且$n=m$.
+        故$\{Z_{j}\}$实则是$\{Y_{i}\}$的一个重排. 
+    \end{proof}
+      
+    \begin{remark}
+        不可约分解不一定是无交并. 例如$V(xy) \subset \mathbb{A}^{2}$的不可约分解为
+        $V(xy) = V(x) \cup V(y)$. 两个不可约分支有交点$(0,0)$. 
+        但当$V$是代数群时，不可约分解确实是无交并.
+    \end{remark}
+
+    上述定理用在$\mathbb{A}^{n}$上即：
+    \begin{corollary}
+        若$V$是一个代数簇，则存在有限个互不包含不可约子簇$\{V_{i}\}_{i=1}^{n}$，
+        使得$V=\bigcup_{i=1}^{n}V_{i}$. 且这样的分解是唯一的.
+    \end{corollary}
+
+    \begin{definition}[仿射代数簇（Affine variety）]
+        称不可约的代数簇为\textbf{仿射代数簇}.
+    \end{definition}
+
+    \begin{remark}
+        老师上课时，将全体代数簇称为Affine Subvarieties. 
+        笔者认为这不好，故这些术语将统一按照Hartshorne的术语进行.
+    \end{remark}
+
+    进而许多关于代数簇的命题将得以化归到仿射代数簇上讨论.
+
+    \subsection{Hilbert零点定理}
+    对于理想$I \lhd A=k[X_{1},\cdots,X_{n}]$，可以定义代数簇$\mathcal{V}(I) \subset \mathbb{A}^{n}$.
+    反之，我们也可以定义一个代数簇对应的理想.
+    \begin{definition}[定义理想]
+        对于仿射空间$\mathbb{A}^{n}$中的代数簇$V$，
+        定义$\mathcal{I}(V):=\{f \in A \mid f(p)=0 \, \forall p \in V\}$.     
+    \end{definition}
+
+    可以注意到以下事实：
+    \begin{proposition}
+        若$V \subset \mathbb{A}^{n}$是一个代数簇，
+        则$V$是仿射代数簇\textbf{当且仅当}$\mathcal{I}(V)$是素理想.
+    \end{proposition}
+    \begin{proof}
+        若$V$是仿射代数簇，则$V$不可约，则若多项式$f$与$g$满足$fg \in \mathcal{I}(V)$，
+        则$V \subset V(fg) = V(f) \cup V(g)$. 那么由不可约性，不妨设$V \subset V(f)$.
+        这意味着$f \in \mathcal{I}(V)$. 这即证明$\mathcal{I}(V)$是素理想. \par
+        反之，若$V$可约，则存在真闭子集分解$V=V_{1} \cup V_{2}$. 
+        故而$\mathcal{I}(V_{i}) \supsetneq \mathcal{I}(V)$. 
+        取$f_{i} \in \mathcal{I}(V_{i}) \backslash \mathcal{I}(V)$，
+        则$f_{1}f_{2} \in \mathcal{I}(V)$. 这说明$\mathcal{I}(V)$不是素理想.
+    \end{proof}
+
+    \begin{remark}
+        由上述命题可知对于无限域$k$来说，$\mathbb{A}^{n}$不可约，因为$\mathcal{I}(\mathbb{A}^{n})=(0)$.
+        若$k$是有限域$\mathbb{F}_{p^{l}}$，
+        则$\mathcal{I}(\mathbb{A}^{n})=(\prod_{i=1}^{n}(X_{i}^{p^{l}}-X_{i}))$. 这并不是一个素理想.
+      \end{remark}
+
+    对于$\mathcal{V}(-)$与$\mathcal{I}(-)$，若$Z \subset \mathbb{A}^{n}$，
+    则具有$\mathcal{V}(\mathcal{I}(Z))=\overline{Z}$. 这是因为
+    显然$Z \subset \mathcal{V}(\mathcal{I}(Z))$，且$\mathcal{V}(\mathcal{I}(Z))$闭，
+    故有$\mathcal{V}(\mathcal{I}(Z)) \supset \overline{Z}$. 
+    反之，若$p \in \mathcal{V}(\mathcal{I}(Z))$，
+    那么对于任意$V(S) \supset Z$，$f \in S$，有$f \mid_{Z}=0$，则依定义有$f(p)=0$，
+    即$p \in V(S)$. 故而$p \in \bigcap_{V(S) \supset Z} V(S) = \overline{Z}$. \par
+    
+    那么对于$\mathcal{I}(\mathcal{V}(I))$有无类似结果呢？Hilbert给出了在代数闭域下的解答. 
+    该问题的结果被称为Nullstellensatz，即Hilbert零点定理. 德语中的Nullstelle是零点集的意思，而satz则是定理的意思.
+
+    \begin{theorem}[强形式Hilbert零点定理]
+      若$k$是代数闭域，则$\mathcal{I}(\mathcal{V}(I))=\sqrt{I}$.
+    \end{theorem}
+    \begin{proof}
+      只需证明$\mathcal{I}(\mathcal{V}(I)) \subset \sqrt{I}$. 
+      由Hilbert基定理，令$I=\left<f_{1},\cdots,f_{m}\right>$. 
+      对于$g \in \mathcal{I}(\mathcal{V}(I))$，取环$k[X_{1},\cdots,X_{n},Y]$中的理想
+      $J=\left<f_{1},\cdots,f_{m},Yg-1\right>$. 
+      由于$f_{i}$与$g$都是与$Y$无关的多项式，且由定义若$p \in \mathbb{A}^{n+1}$使得$f_{i}(p)=0$，
+      则有$g(p)=0$，故$p_{n+1}g(p)-1=-1$. 故$\mathcal{V}(J) \subset \mathbb{A}^{n+1}$是空集，
+      即$J=k[X_{1},\cdots,X_{n},Y]$. 故而存在$h_{i} \in k[X_{1},\cdots,X_{n},Y]$
+      使得$1=h_{1}f_{1}+\cdots+h_{m}f_{m}+h_{m+1}(Yg-1)$. 
+      视右端为$k[X_{1},\cdots,X_{n}](Y)$的元素，并令$Z=Y^{-1}$，则诸$h_{i}$可视为以$X_{i}$
+      与$Z^{-1}$为变元的多项式. 则存在充分大的$N$
+      使得$Z^{N}=Z^{N}(h_{1}f_{1}+\cdots+h_{m}f_{m}+h_{m+1}(Yg-1))=j_{1}f_{1}+\cdots+j_{m}f_{m}+j_{m+1}(g-Z)$.
+      其中$j_{i}=Z^{N}h_{i}$与$j_{m+1}=Z^{N-1}h_{m+1}$为以$Z$与$X_{i}$为变量的多项式.
+      带入$Z=g$（即考虑这些多项式在$k[X_{1},\cdots,X_{n}](Y)/(Y^{-1}-g)$中的像）即得$g^{N}=j_{1}f_{1}+\cdots+j_{m}f_{m}$. 
+      由于经过赋值（即在商环中的像），$j_{i}$都是以$X_{i}$为变元的多项式，
+      故$g^{N} \in \mathcal{I}(\mathcal{V}(I)$. 故$\mathcal{I}(\mathcal{V}(I)) \subset \sqrt{I}$.
+    \end{proof}
+
+    若$I$是根理想，那么$\mathcal{I}(\mathcal{V}(I))=I$. 
+    且若$V$是是代数簇，则$\mathcal{V}(\mathcal{I}(V))=V$.
+    加之命题1.16，我们可以得到以下一一对应：
+
+    \begin{theorem}
+        若$k$是代数闭域，则有如下一一对应
+        \begin{equation*}\begin{aligned}
+            \{\mathbb{A}^{n}中是代数簇\} 
+            &\overset{1:1}{\longleftrightarrow} \{A=k[X_{1},\cdots,X_{n}]中的根理想\}； \\
+            \{\mathbb{A}^{n}中是仿射代数簇\}
+            &\overset{1:1}{\longleftrightarrow} \{A=k[X_{1},\cdots,X_{n}]中的素理想\} = \operatorname{Spec}k[X_{1},\cdots,X_{n}]； \\
+            V &\longmapsto \mathcal{I}(V)；\\
+            \mathcal{V}(I) &\longleftarrow I;
+        \end{aligned}\end{equation*}
+        事实上，由$\mathcal{V}(-)$与$\mathcal{I}(-)$的反向包含关系知还有如下对应：
+        \begin{equation*}\begin{aligned}
+            \{\mathbb{A}^{n}中的点\} 
+            &\overset{1:1}{\longleftrightarrow} \{A=k[X_{1},\cdots,X_{n}]中的极大理想\} = \operatorname{Max}k[X_{1},\cdots,X_{n}]； \\
+        \end{aligned}\end{equation*}
+    \end{theorem}
+
+    \begin{remark}
+        代数闭域的条件是必要的. 若$k=\R$，
+        则$(X^{2}+1)$是$\R[X]$的极大理想，但$V(X^{2}+1)=\varnothing$. 这时单点集与极大理想不再一一对应.
+        不过一则有趣的事实是$\operatorname{Max}\R[X,Y]/(X^{2}+Y^{2}+1)$与$\mathbb{R}\mathbb{P}^{2}\backslash(0,0,1)$是一一对应的.
+        (见刘青习题2.1.3.)
+    \end{remark}
+
+    作为Hilbert零点定理的应用，我们可以得到一个符合直觉的命题：
+
+    \begin{corollary}[弱形式Hilbert零点定理]
+        若$k$是代数闭域，$f_{1},\cdots,f_{m} \in A=k[X_{1},\cdots,X_{n}]$是有限个多项式，
+        则$f_{1},\cdots,f_{m}$没有公共零点\textbf{当且仅当}存在
+        $g_{1},\cdots,g_{m} \in A$使得$\sum_{i=1}^{m}f_{i}g_{i}=1$.
+    \end{corollary}
+    \begin{proof}
+        “$\Leftarrow$”是显然的. 我们只证明“$\Rightarrow$”. 
+        这是由于$\sqrt{\left<f_{1},\cdots,f_{m}\right>}=A$，故而$\left<f_{1},\cdots,f_{m}\right>=A$
+        故存在$g_{1},\cdots,g_{m} \in A$使得$\sum_{i=1}^{m}f_{i}g_{i}=1$.
+    \end{proof}
+
+    我们也有相对版本的Hilbert零点定理.
+
+    \begin{theorem}[相对版本的Hilbert零点定理]
+        记$\pi_{V}:k[X_{1},\cdots,X_{n}] \rightarrow A(V)$
+        以及$\mathcal{V}(W):=\pi_{V}(\mathcal{I}(W))$. 
+        则$W \mapsto \mathcal{I}_{V}(W)$与$\pi_{V}(I) \mapsto V \cap \mathcal{V}(I)$
+        建立了如下一一对应：
+        \begin{equation*}\begin{aligned}
+            \{V中代数子簇\} 
+            &\overset{1:1}{\longleftrightarrow} \{A(V)中的根理想\}； \\
+            \{V中是仿射代数子簇\}
+            &\overset{1:1}{\longleftrightarrow} \{A(V))中的素理想\}； \\
+            \{V中的点\} 
+            &\overset{1:1}{\longleftrightarrow} \{A(V))中的极大理想\}； \\
+        \end{aligned}\end{equation*}
+    \end{theorem}
+
+
+    \subsection{代数簇的态射}
+    我们来研究代数簇之间的态射.
+    \begin{definition}[正则映射（Regular Morphisms）]
+        对于代数簇$V \subset \mathbb{A}^{n}$与$W \subset \mathbb{A}^{m}$，
+        称映射$\varphi:V \rightarrow W$为正则映射，
+        若$\varphi:x \mapsto (f_{1}(x),\cdots,f_{m}(x))$，其中$f_{i}$为多项式. 
+        这即是说在$m$个分量上均为多项式的映射.
+    \end{definition}
+
+    \begin{definition}[坐标环（Coordinate Ring）]
+        对于代数簇$V$，
+        定义$A(V):=k[X_{1},\cdots,X_{n}]/\mathcal{I}(V)$为$V$的坐标环.
+    \end{definition}
+
+    \begin{example}
+        \begin{enumerate}
+            \item[(1)] $A(\mathbb{A}^{n})=k[X_{1},\cdots,X_{n}]$.
+            \item[(2)] 取$V=\mathcal{V}(XY-1) \subset \mathbb{A}^{2}$，则
+                       $A(V) \cong k[X,X^{-1}]$.
+        \end{enumerate}
+    \end{example}
+
+    \begin{remark}
+        \begin{enumerate}
+          \item 在Zariski拓扑意义下，正则态射是连续的，因为Zariski拓扑本身是使多项式连续的最粗拓扑.
+          \item 正则映射的复合仍是正则映射.
+          \item 恒等态射是正则态射.
+        \end{enumerate}
+    \end{remark}
+
+    一个自然的问题是，仿射簇间的正则映射是否在坐标环的层面反映出来. 
+    事实上，我们可以反变地定义坐标环间的映射
+
+    \begin{definition}[伴随映射（Associated Map）]
+        若$\varphi:V \rightarrow W$是仿射簇间的态射，
+        则定义$\varphi^{*}:A(W) \rightarrow A(V);f \mapsto f \circ \varphi$.
+    \end{definition}
+
+    由Hilbert零点定理，事实上仿射簇$V$与$\operatorname{Max}A(V)$有着一一对应. 
+    事实上，我们有如下重要的一一对应：
+
+    \begin{theorem}
+        若$V \subset \mathbb{A}^{n}$与$W \subset \mathbb{A}^{m}$是两个代数簇，
+        则$\varphi \mapsto \varphi^{*}$建立了如下一一对应：
+        \begin{equation*}\begin{aligned}
+            \{V与W间的正则映射\} 
+            &\overset{1:1}{\longleftrightarrow} \{A(W)与A(V)间的k-代数态射\}； \\
+            \varphi &\mapsto \varphi^{*}
+        \end{aligned}\end{equation*}
+    \end{theorem}
+    \begin{proof}
+        单：令$Y_{1},\cdots,Y_{m}$为$\mathbb{A}^{m}$上的坐标函数（即对分量的投影），
+        且容易知道它们都是$W \rightarrow \mathbb{A}^{1}$的正则映射. 那么注意到
+        \begin{equation*}\begin{aligned}
+            \varphi(p)
+            &=(\overline{Y_{1}}\circ\varphi(p),\cdots,\overline{Y_{m}}\circ\varphi(p))
+            =(\varphi^{*}(\overline{Y_{1}})(p),\cdots,\varphi^{*}(\overline{Y_{m}})(p)) \\
+            &=(\varphi^{*}(\overline{Y_{1}}),\cdots,\varphi^{*}(\overline{Y_{m}}))(p)
+        \end{aligned}\end{equation*}
+        而$\overline{Y_{i}}$生成了$A(W)$，故$\varphi^{*}(Y_{i})$完全决定了$\varphi$. 即证单性. \par
+
+        满：若$\phi:A(W) \rightarrow A(V)$是一个$k$-代数同态. 
+        那么$\widetilde{\phi}:V \rightarrow \mathbb{A}^{m};
+        p \mapsto (\widetilde{\phi}(\overline{Y_{1}}),\cdots,\widetilde{\phi}(\overline{Y_{m}}))$
+        是一个正则映射. 而对于任意$f \in \mathcal{I}(W)$，$p \in V$，那么
+        \begin{equation*}\begin{aligned}
+            f(\widetilde{\phi}(p))
+            =f((\widetilde{\phi}(\overline{Y_{1}}),\cdots,\widetilde{\phi}(\overline{Y_{m}})))
+            =\phi(f(\overline{Y_{1}},\cdots,\overline{Y_{m}}))(p)=\phi(0)(p)=0.
+        \end{aligned}\end{equation*}
+        故$\widetilde{\phi}(V) \subset W$，即$\widetilde{\phi}:V \rightarrow W$. 且
+        $\widetilde{\phi}^{*}=\phi$，故知满性.
+    \end{proof}
+
+    \begin{remark}
+        今后论及代数簇间的正则映射时，我们称正则映射为\textbf{态射}（morphism）.
+    \end{remark}
+
+    \begin{definition}[代数簇的同构]
+        称代数簇$V$与$W$同构，若存在态射$\varphi:V \rightarrow W$与$\phi:W \rightarrow V$
+        使得$\varphi \circ \phi = \operatorname{id}_{W}$且
+        $\phi \circ \varphi = \operatorname{id}_{V}$.
+    \end{definition}
+
+    上述一一对应为我们提供了一个两个代数簇是否同构的重要判据：
+
+    \begin{corollary}
+        代数簇$V$与$W$同构\textbf{当且仅当}坐标环$A(W) \cong A(V)$.
+    \end{corollary}
+
+    \begin{remark}
+        坐标环是代数簇的内蕴环. 
+        换句话说，当代数簇$V$以不同的方式嵌入任何仿射空间中时，坐标环是同构意义下的不变量.
+    \end{remark}
+
+    我们来看一些例子：
+    \begin{example}
+        \begin{enumerate}
+            \item 抛物线$V=\mathcal{V}(X_{1}^{2}-X_{2}) \subset \mathbb{A}^{2}$
+                  那么$\varphi:V \rightarrow \mathbb{A}^{1};(x_{1},x_{2}) \mapsto x_{1}$.
+                  若$k$是代数闭域，那么$\varphi$是双射. 
+                  且$\varphi:k[X] \mapsto A(V)=k[X_{1},X_{2}]/(X_{1}^{2}-X_{2});X \mapsto X_{1}$
+                  是一个环同构，故而$V$与$\mathbb{A}^{1}$是同构的.
+            \item 若$V=\mathcal{V}(X^{2}-Y^{3}) \subset \mathbb{A}^{2}$，则
+                  $A(V)=k[X,Y]/(X^{2}-Y^{3})$不是一个UFD
+                  （由于$\overline{X}^{2} - \overline{Y}^{3}$），
+                  故$V$与仿射直线$\mathbb{A}^{1}$不可能同构.
+        \end{enumerate}
+    \end{example}
+
+    我们还有如下命题：
+
+    \begin{proposition}
+        设$\varphi:V \rightarrow W$是态射，
+        若$\varphi^{*}:A(W) \rightarrow A(V)$满，则$\varphi:V \rightarrow W$单.
+    \end{proposition}
+    \begin{proof}
+        若$p$与$q$是$V$中两个不同的点，
+        则$p$与$q$可用一个正则映射$f:V \rightarrow \mathbb{A}^{1}$分离
+        （即$f(p)=0$，$f(q)\neq 0$）. 由$\varphi^{*}$满知存在正则映射$g:V \rightarrow \mathbb{A}^{1}$
+        使得$\varphi^{*}(g)=f$，即$g \circ \varphi(p) = 0$
+        而$g \circ \varphi(q) \neq 0$. 故而$\varphi(p) = \varphi(q)$.
+    \end{proof}
+
+    下面引入一则重要的正则态射，称为支配态射.
+
+    \begin{definition}[支配态射（Dominant Morphism）]
+        称正则态射$\varphi:V \rightarrow W$是一个支配态射，若$\varphi(V)$在$W$中稠密.
+    \end{definition}
+
+    这可以理解为泛函分析中的稠值域映射. 支配态射有着很方便的刻画.
+
+    \begin{proposition}
+        正则映射$\varphi:V \rightarrow W$是一个支配态射
+        \textbf{当且仅当}$\varphi^{*}:A(W) \rightarrow A(V)$是单射.
+    \end{proposition}
+    \begin{proof}
+        “$\Rightarrow$”：若$\varphi$是支配态射，则若$f \in \ker\varphi^{*}$，则
+        $f \circ \varphi =0$. 令$f = \overline{F}$，
+        其中$F \in k[Y_{1},\cdots,Y_{m}]$. 那么这等价于证明$F \circ \phi =0$，其中
+        $\phi$是$V$至$W$的多项式映射，且$\phi \mid_{V} = \varphi$. 
+        那么$\varphi$支配即意味着$\phi(V)$在$W$中稠密. 
+        由于$\mathcal{V}(F) \supset \phi(V)$，故取闭包即有$W \subset \mathcal{V}(F)$.
+        但依定义有$\mathcal{V}(F) \subset W$，故$\mathcal{V}(F)=W$. 
+        故而$f=0 \in A(W)$.
+
+        "$\Leftarrow$"： 若$\varphi^{*}$单，
+        则若$\overline{\varphi(V)} \subsetneq W$，则存在$A(W)$中的函数
+        $g \neq 0$使得$g\mid_{\overline{\varphi(V)}} = 0$. 
+        这即$g \circ \varphi(V)=0$，即$\varphi^{*}(g)=0$，矛盾！
+    \end{proof}
+
+
+\section{射影簇}
+    \subsection{射影空间与射影簇}
+    \begin{definition}[射影空间（Projective Space）]
+      在$\mathbb{A}^{n+1}-\{0\}$中定义等价关系
+      “$u \sim v$若存在$\lambda \in k^{\times}$$u=\lambda v$”，
+      并记$u$所在的等价类为$u=(x_{0}:\cdots:x_{n})$.
+      定义$n$维射影空间$\mathbb{P}^{n}:=\{[u] \mid u \in \mathbb{A}^{n+1}-\{0\}\}$.
+    \end{definition}
+
+    对于$k$-线性空间$E$，可定义$\mathbb{P}(E)$为$E$穿过原点的所有直线. 
+    显然，若$F \subset E$是线性空间的包含，则$\mathbb{P}(F) \subset \mathbb{P}(E)$.
+
+    \begin{definition}[标准开集（Standard Affine Charts）]
+      在$\mathbb{P}^{n}$中定义$U_{i}:=\{(x_{0}:\cdots:x_{n}) \mid x_{i} \neq 0\}$.
+      作为集合（事实上，是代数簇间的同构）有$U_{i} \cong \mathbb{A}^{n}$，
+      其映射由$(x_{0}:\cdots:x_{n}) \mapsto 
+      (\frac{x_{0}}{x_{i}}:\cdots:\frac{x_{i-1}}{x_{i}}:\frac{x_{i+1}}{x_{i}}:\cdots:\frac{x_{n}}{x_{i}})$. 
+      故而$\mathbb{P}^{n}$实则可以为$n+1$个$\mathbb{A}^{n}$所覆盖. 
+      事实上，在建立了$\mathbb{P}^{n}$上的Zariski拓扑后，我们会知道$U_{i}$都是开集.
+    \end{definition}
+
+    在射影空间中定义良定的代数集，我们需要多项式是齐次的，也即
+    \begin{definition}[齐次多项式（Homogeneous Polynomial）]
+        称$f \in A=k[X_{0},\cdots,X_{n}]$是$d$次齐次多项式，
+        若$f(\lambda x_{0},\cdots,\lambda x_{n})=\lambda^{d}f(x_{0},\cdots,x_{n})$.
+    \end{definition}
+
+    这样的多项式都形如$f=\sum_{|I|=d}a_{I}X^{I}$. 
+    且注意到$f(x)=0$与$f(\lambda x)=0,\forall \lambda \in k^{\times}$等价. 
+    故对于射影空间中的点$x = (x_{0}:\cdots:x_{n}) \in \mathbb{P}^{n}$，
+    记号$f(x)=0$是良定的. 故可以定义射影空间中与代数簇对应的概念.
+
+    \begin{definition}[射影簇（Projective Variety）]
+        对于齐次多项式子集$S \subset k[X_{0},\cdots,X_{n}]$，
+        定义$\mathbb{P}^{n}$的子集
+        $\mathcal{V}(S):=\{(x_{0}:\cdots:x_{n})\mid f(x_{0},\cdots,x_{n})=0, \forall f \in S\}$.
+        称$\mathcal{V}(S)$为射影簇.
+    \end{definition}    
+
+    今后，”代数簇“指代仿射情形的多项式公共零点集，而”射影簇“则指代射影空间的情形.
+
+    我们称由一个齐次多项式定义的射影簇$\mathcal{V}(S)$为\textbf{超曲面}（hypersurfaces）. 
+    若$\deg(F)=n$，则称$\mathcal{V}(S)$为$n$次曲面. \par
+
+    \begin{remark}
+        上述提到的标准开集$U_{i}$实则上即$\mathcal{V}(X_{i})^{c}$，故确实是开集. 
+        且由于映射与逆映射都逆向保持闭集，故上面定义的$U_{i}$到$\mathbb{A}^{n}$的双射实际上是同胚.
+    \end{remark}
+
+    我们也可以定义齐次理想的概念：
+
+    \begin{definition}[齐次理想（Homegeneous Ideal）]
+        称$I \lhd R = k[X_{0},\cdots,X_{n}]$为齐次理想，若$I$可由齐次多项式生成. \par
+        若定义$R_{d}:=\{f \mid f 齐次，且\deg(f)=d\}$. 
+        显然$R = \bigoplus_{n \geq 0} R_{n}$. 
+        那么齐次理想也可以等价地定义为满足$I = \bigoplus_{n \geq 0}(R_{n} \cap I)$的理想.
+    \end{definition}
+
+    类似于仿射空间中的情形，我们也可以对每个齐次理想定义
+    $\mathcal{V}(I)=\{(x_{0}:\cdots:x_{n}) \mid f((x_{0}:\cdots:x_{n}))=0,\forall f \in I\}$.
+    且仍具有$\mathcal{V}(S)=\mathcal{V}(\left<S\right>)$. 这里注意到
+    齐次多项式子集$S$生成的理想是齐次理想.
+
+    与仿射情形类似，射影簇也具有闭集结构，即：
+    \begin{proposition} 若$S_{i}$是$k[X_{0},\cdots,X_{n}]$中由齐次多项式子集，则
+        \begin{enumerate}
+            \item[(1)] $\bigcap_{i \in I}\mathcal{V}(S_{i})=\mathcal{V}(\bigcup_{i \in I}S_{i})$.
+            \item[(2)] $V(S_{1}S_{2})=V(S_{1}) \cup V(S_{1})$. 注意到齐次多项式全体是乘闭的.
+        \end{enumerate}
+    \end{proposition}
+
+    该证明与仿射情形完全类似，故略去. 需要注意的一点是，$\mathbb{P}^{n}$也不是Hausdorff空间.
+
+    \begin{remark}
+        若$I$是齐次理想，则$\sqrt{I}$也是. 令$f=f_{k}+f_{k+1}+\cdots+f_{d}$，
+        其中$f_{i}$为$f$的$i$次项，若$f^{m} \in I$，
+        则$f_{d}^{m}$正好是$f^{m}$的$dm$次项. 依定义$f_{d}^{m} \in I$. 
+        故而$f_{d},f-f_{d} \in \sqrt{I}$. 由归纳，任意$f_{i}$均属于$\sqrt{I}$. 
+        这即是说$\sqrt{I}$是根理想.
+    \end{remark}
+
+    这保证了我们可以将Hilbert零点定理推广到射影空间的情形上去. 
+    与仿射情形类似，定义$\mathcal{I}(V):=\{f 齐次\mid f(p)=0,\forall p \in V \}$.
+
+    \begin{theorem}[射影Hilbert零点定理]
+        假定$k$代数闭，$I$是$k[X_{0},\cdots,X_{n}]$的齐次理想. 那么
+        \begin{enumerate}
+            \item[(1)] $\mathcal{V}(I)=\varnothing$
+                       \textbf{当且仅当}存在$n \in \N$
+                       使得$I \supset \mathfrak{m}^{n}$.
+                       其中$\mathfrak{m}=\left<X_{0},\cdots,X_{n}\right>$. 
+            \item[(2)] 若$\mathcal{V}(I)\neq\varnothing$，
+                       则$\mathcal{I}(\mathcal{V}(I))=\sqrt{I}$.
+        \end{enumerate}
+    \end{theorem}
+    \begin{proof}
+        对于齐次理想，我们引入\textbf{仿射锥}（Affine Cone）的概念：定义$\mathcal{CV}(I) \subset \mathbb{A}^{n+1}$
+        为$\mathcal{V}(I)$在$\mathbb{A}^{n+1}$中对应的簇. 该概念是形象的.
+        \begin{enumerate}
+            \item[(1)] 记投影
+                       $\pi:\mathbb{A}^{n+1}\backslash\{0\} \rightarrow \mathbb{P}^{n};
+                       (X_{0},\cdots,X_{n}) \mapsto (X_{0}:\cdots:X_{n})$.
+                       那么事实上，我们有
+                       $\mathcal{CV}(I)\backslash\{0\} = \pi^{-1}(\mathcal{V}(I))$.
+                       那么$\mathcal{V}(I) = \varnothing$等价于$\mathcal{CV}(I) \subset \{0\}$.
+                       而由仿射Hilbert零点定理，这即
+                       $\sqrt{I}=\mathfrak{m}$或$\sqrt{I}=k[X_{0},\cdots,X_{n}]$，
+                       也即存在$n \in \N$使得$I \supset \mathfrak{m}^{n}$.
+            \item[(2)] 作为齐次理想，显然具有$f\mid\mathcal{V}(I)=0$当且仅当$f|\mathcal{CV}(I)$，
+                       故由仿射Hilbert零点定理，我们有
+                       $\mathcal{I}(\mathcal{V}(I))=\mathcal{I}(\mathcal{CV}(I))=\sqrt{I}$.
+        \end{enumerate}
+    \end{proof}
+
+    
+    \begin{corollary}射影Hilbert零点定理给出了如下一一对应：
+        \begin{equation*}\begin{aligned}
+          \{\mathbb{P}^{n}中的射影簇\} &\overset{1:1}{\longleftrightarrow} 
+          \{不为\mathfrak{m}的齐次根理想\}; \\
+          V &\longmapsto \mathcal{I}(V); \\
+          \mathcal{V}(I) &\longleftarrow I.
+        \end{aligned}\end{equation*}
+    \end{corollary}
+
+
+    \subsection{正则映射}
+    \textbf{以下假设$k$代数闭.}
+    \begin{definition}[拟射影簇（Quasi-projective Variety）]
+      射影簇$V \subset P^{n}$的Zariski开子集称为\textbf{拟射影簇}，
+      即形如$U^{c} \cap V$的子集，其中$U,V$都是射影簇.
+    \end{definition}
+    
+    下文众多命题讲广泛地建立在拟射影簇上，因为该概念已经包含仿射簇与射影簇. 
+
+    \begin{definition}[正则函数（Regular Function）]
+        若$X$是一个拟射影簇，则称$X$上的函数$f:X \mapsto k$在$p \in X$处正则，
+        若存在\textbf{次数相等}的齐次多项式$F$与$G$，$G(p) \neq 0$
+        使得在$p$的一个开领域$p \in U \subset X$上有$f(x)=\frac{F(x)}{G(X)}$.
+        称$f$是$X$上的正则函数，若$f$在$X$的每点处均正则.
+    \end{definition}
+
+    \begin{definition}[正则函数环（Regular Function Ring）]
+        簇$X$上的全体正则函数构成一个环，记作$A(X)$. 
+        这个记号与仿射簇情形的坐标环实际上没有冲突. （见下文）
+    \end{definition}
+
+    \begin{theorem}
+        若$X$是仿射代数簇，则$A(X)$中的元素全是多项式. 
+        这即是说$A(X)=k[X_{1},\cdots,X_{n}]/\mathcal{I}(X)$
+        那么这与第一章定义的坐标环并无矛盾.
+    \end{theorem}
+    \begin{proof}
+        定义嵌入$\varphi:k[X_{1},\cdots,X_{n}]/\mathcal{I}(X) \hookrightarrow A(X)$. 
+        只需证明这是满射.
+        对于$X$上的正则函数$f$，由于$X$拟紧，
+        故存在有限个开子集$U_{i}$使得$\bigcup_{i=1}^{m} U_{i} =X$，
+        且$f \mid_{U_{i}} = \frac{G_{i}}{H_{i}}$. 
+        其中$G_{i}$与$H_{i}$均是$A/\mathcal{I}(X)$中的多项式，且$H_{i}$在$U_{i}$上取值恒非零. 
+        由定义，$U_{i} \cap U_{j} \neq \varnothing$，
+        且在其上有$\frac{G_{i}}{H_{i}}=\frac{G_{j}}{H_{j}}$. 
+        这即是说在$U_{i} \cap U_{j}$上有$G_{i}H_{j}-G_{j}H_{i}=0$
+        由于$X$不可约，故$U_{i} \cap U_{j}$在$X$中稠密，
+        故这说明$G_{i}H_{j}-G_{j}H_{i} \in \mathcal{I}(X)$. 
+        由于诸$H_{i}$在$X$上没有公共零点，故由Hilbert零点定理，
+        存在$a_{i} \in k[X_{1},\cdots,X_{n}]/\mathcal{I}(X)$，
+        使得$\sum_{i=1}^{n}a_{i}H_{i}=1$. 令$g=\sum_{i=1}^{m}a_{i}G_{i}$，
+        则在$U_{i}$上，有$H_{i}g=\sum_{j=1}^{m}a_{j}H_{i}G_{j} = G_{i}$， 
+        故而$g\mid_{U_{i}}=\frac{G_{i}}{H_{i}}$. 故$\varphi(g)=f$. \par
+    \end{proof}
+
+    \begin{remark}
+        上述命题中，$k$代数闭的假设是必要的. 
+        取$f:\R \rightarrow \R;t \mapsto \frac{1}{1+t^{2}}$，则$f$不可能写为多项式.
+    \end{remark}
+
+    \begin{definition}[拟射影簇的态射]
+        若$X$与$Y$是拟射影簇，则称映射$\varphi:X \rightarrow Y$正则，
+        若$\varphi$连续，且对于任意$Y$上的开集$V$以及$V$上的正则函数$k$，
+        有$f \circ \varphi:\varphi^{-1}(V) \rightarrow k$
+        是$\varphi^{-1}(V)$上的正则函数. 
+        我们定义拟射影簇间的态射为正则映射
+    \end{definition}
+
+    与仿射情形类似，我们也可以定义两个簇之间的同构.
+
+    \begin{example}[Veronese映射]
+        定义$v_{d}:\mathbb{P}^{n} \rightarrow \mathbb{P}^{{n+d \choose n}-1};
+        (x_{0}:\cdots:x_{n}) \mapsto 
+        (x_{0}^{d}:x_{0}^{d-1}x_{1}:x_{0}^{d}x_{n},\cdots,x_{n}^{d})$，
+        其中分量遍历$k[X_{0},\cdots,X_{n}]$
+        中所有$d$阶齐次多项式. 
+        这是一个正则态射，且是闭嵌入. 这是因为该映射显然是嵌入，且像集为
+        $\mathcal{V}(\{Z_{I_{1}}Z_{I_{2}}-Z_{I_{3}}Z_{I_{4}} \mid I_{1}+I_{2}=I_{3}+I_{4}\})$.
+        这里$I_{i}$均是$n+1$元序列$(i_{0},\cdots,i_{n})$，且$i_{0}+\cdots+i_{n}=d$. 
+        序列的加法为逐点加法. 而$Z_{I}:=X_{0}^{i_{0}}\cdots X_{n}^{i_{n}}$.
+    \end{example}
+
+    \subsection{有理映射}
+    \begin{definition}[有理映射（Rational Map）]
+        设$X$与$Y$是拟射影簇. 所谓有理映射即下述等价类：
+        对于$X$中的稠密开集$U$以及正则映射$f_{U}:U \rightarrow Y$，
+        称$(U,f_{U}) \sim (V,f_{V})$，若在$U \cap V$上有$f_{U}=f_{V}$.
+        有理映射记为$f:X \dashrightarrow Y$. 
+    \end{definition}
+
+    上述等价类确实是一个映射，因为其在每个点上的取值都是良定义的. 
+    我们可以在$X$中找到有理映射$f:X \dashrightarrow Y$的最大定义域（是个开集）
+
+    \begin{example}
+      令映射$f:\mathbb{P}^{2} \rightarrow \mathbb{P}^{1};(x:y:z) \mapsto (x:y)$，
+      则该映射在$(0:0:1)$处无法定义，故而不是簇的正则映射. 
+      但其在别处都可定义，且在任一点$p \neq (0:0:1)$，
+      $U=\mathbb{P}^{2}-(0:0:1)$都是$f$可定义其上的$p$的开邻域. 
+      故$f$是有理映射.
+    \end{example}
+
+    \begin{definition}[有理函数（Rational Function）]
+        设$X$是拟射影簇，则有理映射$f:X \mapsto \mathbb{A}^{1} = k$被称为有理函数.
+    \end{definition}
+
+    显然，簇$X$上的所有有理函数构成一个环，记为$k(X)$. 这里有理映射的加法与乘法分别由
+    $(U,f)+(V,g)=(U \cap V,f+g)$与$(U,f)\cdot(V,g)=(U \cap V,fg)$给出.
+    \begin{proposition}
+        设$X$是拟射影簇.
+        \begin{enumerate}
+            \item[(1)] 对于$X$的稠密开子集$U$，有$k(X)=k(U)$.
+            \item[(2)] 若$X$不可约，则$k(X)$是域.
+            \item[(3)] 若$X$是仿射代数簇，则$k(X)=\operatorname{Frac}(A(X))$.
+        \end{enumerate}
+    \end{proposition}
+    \begin{proof}
+        \begin{enumerate}
+            \item[(1)] 定义$\varphi:k(X) \mapsto k(U);[(V,f_{V})] \mapsto [(V \cap U,f_{V}\mid_{V \cap U})]$.
+                       这显然良定义，且是满射. 
+                       且若$\varphi([V,f_{V}])=0$，则对于$f_{V}\mid(U \cap V)=0$. 
+                       由于$U \cap V$在$V$中稠密，故$f_{V}=0$，
+                       则依定义有$[V,f_{V}]=[X,0]$为$k(X)$的零元.
+            \item[(2)] 若$(U,f_{U})$是$X$中的非零元，则$D(f_{U}) = (\mathcal{V}(f_{U}))^{c}$
+                       是$X$的开子集，故稠密，则$(D(f_{U}),\frac{1}{f_{U}\mid_{D(f_{U})}})$是$(U,f_{U})$的逆元.
+            \item[(3)] 由定理2.14知有嵌入$A(X) \hookrightarrow k(X);f \mapsto (X,f)$. 
+                       故由分式域的泛性质知有嵌入$\operatorname{Frac}(A(X)) \hookrightarrow K(X)$.
+                       只需证明满. 若$f:U \rightarrow k$是正则函数，其中$U$开，
+                       则存在$h \in A(X)$使得$D(h) \subset U$. 由于$D(h)$是仿射的，
+                       故$f$在$D(h) \cap U$上是有理函数（即可写为多项式的商），
+                       故$(f,U)$是$f\mid_{D(h) \cap U}$的像.
+        \end{enumerate}
+    \end{proof}
+
+    \begin{remark}
+        对$\mathbb{P}^{n}$中的不可约拟射影簇，其上的有理映射
+        $f:X \rightarrow \mathbb{P}^{m}$可由
+        $x \mapsto (F_{0}(x),\cdots,F_{m}(x))$表出，
+        其中$F_{i}$是齐次多项式. 且$f$在$\mathcal{V}(F_{0},\cdots,F_{m})$外正则.
+    \end{remark}
+
+    \begin{definition}[支配有理映射]
+        称有理映射$f:X \dashrightarrow Y$是支配的，若$f$可被一个支配态射表出.
+    \end{definition}
+
+    \begin{remark}
+        一般来说，两个有理映射的复合不一定能做复合，但两个支配有理映射可以做复合. 
+        若$\phi:X \dashrightarrow Y$与$\varphi:Y \dashrightarrow Z$是两个支配有理映射，
+        且由$(U,\phi_{U})$与$(V,\varphi_{V})$，
+        其中$U \subset X$，$V \subset Y$. 定义$W:=U \cap{-1}(V)$，则
+        $\varphi \circ \phi = (W,\varphi_{V} \circ \phi_{U})$.
+        事实上，只需要$\phi$是有理映射即可.
+    \end{remark}
+    
+    事实上，我们有如下范畴的反变等价：
+    \begin{theorem}
+        若$X$与$Y$是两个不可约拟射影簇，则存在
+        \[\{支配有理映射\phi:X \dashrightarrow Y\}\]
+        与
+        \[\{k-代数嵌入\varphi^{*}:k(Y) \rightarrow k(X)\}\]
+        间的一一对应.
+    \end{theorem}
+    \begin{proof}
+        若$\theta:k(Y) \rightarrow k(X)$是$k$-代数嵌入，我们要以$\theta$定义
+        一个$X$到$Y$的有理映射$\tau$使得$\tau^{*}=\theta$. 
+        由于$Y$总能被仿射簇覆盖，故我们不妨设$Y$仿射.
+        令$A(X)=k(X_{1},\cdots,X_{m})$，而$A(Y)=k(Y_{1},\cdots,Y_{n})$，则
+        $\theta(y_{i})=\frac{a_{i}}{b_{i}}$，
+        其中$a_{i},b_{i} \in k[X_{1},\cdots,X_{m}]$，
+        那么我们有正则映射
+        $\tau:U=X-\mathcal{V}(b_{1},\cdots,b_{n}) \rightarrow Y;p \mapsto
+        (\frac{a_{1}}{b_{1}}(p),\cdots,\frac{a_{n}}{b_{n}}(p))$. 由于
+        $\tau^{*}=\theta$，且$\theta$单，故$\tau$是支配态射，从而$(U,\tau)$
+        是所求的有理映射.
+
+        反之，若支配有理映射$\phi:X \dashrightarrow Y$由$(U,\phi_{U})$表出，
+        则令$f \in k(Y)$为有理函数，由$(V,f)$表出，
+        则$\phi_{U}(U)$在$Y$中稠密，故$\phi_{U}(U) \cap V \neq \varnothing$，
+        故$\phi_{U}^{-1}(V) \neq \varnothing$.
+        故$f \circ \phi_{U}$是$\phi_{U}^{-1}(V)$上的正则函数，那么
+        $(\phi_{U}^{-1}(V),f \circ \phi_{U})$是$X$上的有理函数，
+        故$\phi^{*}$是良定的. 而$\phi \mapsto \phi^{*}$是单的，
+        这是因为若$\phi^{*}=\varphi^{*}$，则对于任意$f \in k(Y)$，假定由
+        $(W,f)$表出，则$f \circ \phi = f \circ \varphi$.
+        若$\phi$与$\varphi$分别由$(U,\phi_{U})$与$(V,\varphi_{V})$，
+        则令$f$是坐标函数，那么$\phi_{U}$与$\varphi_{V}$在$U \cap V$上一致，
+        故$\phi=\varphi$.
+    \end{proof}
+
+    代数几何的一个初始任务是在同构意义下分类所有的代数簇. 但这则任务过于困难. 但是人们
+    在稍弱一点的等价关系下给出了部分分类. 这个弱一些的条件是“双有理等价”.
+    \begin{definition}[双有理等价（Birational Equivalence）]
+        对于拟射影簇$X$与$Y$，称它们\textbf{双有理等价}，若存在有理映射
+        $\varphi:X \dashrightarrow Y$与$\phi:Y \dashrightarrow X$
+        使得作为有理映射，有$\varphi \circ \phi = \operatorname{id}_{Y}$
+        且$\phi \circ \varphi = \operatorname{id}_{X}$.
+    \end{definition}
+
+    关于双有理等价，有如下令人振奋的刻画.
+    \begin{theorem}
+        对于拟射影簇$X$与$Y$，则TFAE
+        \begin{enumerate}
+            \item[(1)] 拟射影簇$X$与$Y$双有理等价.
+            \item[(2)] 存在开子集$U \subseteq X$与$V \subseteq Y$满足$U$与$V$同构.
+            \item[(3)] 存在$k$代数同构$K(X) \cong K(Y)$.
+        \end{enumerate}
+    \end{theorem}
+    \begin{proof}
+        \begin{enumerate}
+            \item[(1) $\Rightarrow$ (2)]
+            令$\varphi:X \dashrightarrow Y$与$\phi:Y \rightarrow X$为对应的双有理映射.
+            令$\varphi$的代表元为$(U,\varphi)$，
+            而$\phi$的代表元为$(V,\phi)$，那么$\phi \circ \varphi$可由
+            $(\varphi^{-1}(V),\phi \circ \varphi)$表出. 
+            由于$\phi \circ \varphi = \operatorname{id}_{X}$，
+            故$\phi \circ \varphi$在$\varphi^{-1}(V)$上是恒等映射. 
+            类似地，$\varphi \circ \phi$在$\phi^{-1}(U)$上也是恒等映射.
+            故我们取$X$中的开集$\varphi^{-1}(\phi^{-1}(U))$与
+            $Y$中的开集$\phi^{-1}(\varphi^{-1}(V))$，这就是我们所求的开集.
+            \item[(2) $\Rightarrow$ (3)]
+            由于此时$k(X)=k(U) \cong k(V)=k(Y)$.
+            \item[(3) $\Rightarrow$ (1)]
+            这直接是由于上面的范畴等价.
+        \end{enumerate}
+    \end{proof}
+
+    对于拟射影簇，由于其不一定能嵌入仿射空间，所以我们通常不能用仿射空间的性质直接研究它们.
+    但是以下命题告诉我们，我们可以局部地认为它们是处于仿射空间中的.
+   
+    \begin{lemma}
+        若$Y$是$\mathbb{A}^{n}$中的超曲面，且$Y = \mathcal{V}(F)$，
+        则$\mathbb{A}^{n}-Y$同构于
+        $\mathbb{A}^{n+1}$中的超曲面$H=\mathcal{V}(X_{n+1}F-1)$.
+        从而，$A(\mathbb{A}^{n}-Y) = k[X_{1},\cdots,X_{n}]_{f}$.
+    \end{lemma}
+    \begin{proof}
+        令$\pi:\mathbb{A}^{n+1} \rightarrow \mathbb{A}^{n}$是前$n$个分量的投影，
+        而$\varphi:\mathbb{A}^{n} \dashrightarrow \mathbb{A}^{n+1};
+        (X_{1},\cdots,X_{n}) \mapsto (X_{1},\cdots,X_{n},\frac{1}{f(X_{1},\cdots,X_{n})})$.
+        注意到限制在$\varphi$与$\pi$的定义域与值域都限制在$\mathbb{A}^{n}-Y$
+        与$H$上时，它们都是正则映射（*），且是互逆的. 
+        而$A(\mathbb{A}^{n}-Y) = A(H) 
+        = k[X_{1},\cdots,X_{n+1}]/\left<X_{n+1}F-1\right> \cong k[X_{1},\cdots,X_{n}]_{f}$.
+    \end{proof}
+
+    \begin{theorem}
+        若$X$是拟射影簇，则$X$中的全体仿射开集构成$X$的拓扑基.
+    \end{theorem}
+    \begin{proof}
+        若$p \in X$且开集$p \in U \subset X$，
+        则由于$U$也是拟射影簇，故不妨认为$U = X$. 
+        由于$X$可被$\{U_{i} \cap X\}$覆盖，其中$U_{i}$是标准开集，
+        我们可以认为$X$是拟代数簇，即代数簇的开子集. 
+        令$Y = \overline{X} - X$，那么$Y$是$\mathbb{A}^{n}$中的闭集.
+        故我们可以找到$f \in \mathcal{I}(Y)$使得$f(p) \neq 0$. 
+        令$H = \mathcal{V}(f)$，则$Y \subset H$且$p \notin H$. 
+        故$p \in Y - Y \cap H$，而这是$Y$中的开子集，
+        由引理，也是$\mathbb{A}^{n}-H$中的闭子集，故是仿射的. 
+        故$p \in Y - Y \cap H \subset X$.
+    \end{proof}
+
+    最后我们给出一个有趣且常用的结论：对不可约簇的刻画. 这个技术手段将使我们能够
+    由一般的拟射影簇化为超曲面来研究.
+
+    \begin{proposition}
+        若$X$是不可约拟射影簇, 且$\operatorname{trdeg}(K(X)/k)=r$，即$\dim X=r$
+        则$X$与$\mathbb{P}^{r+1}$中的某个超曲面$Y$双有理等价.
+    \end{proposition}
+    \begin{proof}
+        令$k(X)$的一组可分超越基为$X_{1},\cdots,X_{r}$，
+        且$k(X)/k(X_{1},\cdots,X_{r})$是有限扩张可分.
+        由本原元定理，
+        存在$y \in k(X)$，使得$k(X)=k(X_{1},\cdots,X_{r})(y)$.
+        令$y$在$k(X_{1},\cdots,X_{r})$上的极小多项式为
+        $f=a_{0}+a_{1}Y\cdots+a_{l}Y^{l}$，
+        其中$a_{i}=\frac{g_{i}}{h_{i}}$，
+        且$g_{i},h_{i} \in k[X_{1},\cdots,X_{r}]$.
+        令$h=h_{1}\cdots h_{l}$，则
+        $fh=k[X_{1},\cdots,X{r},Y]$. 
+        那么令$H=\mathcal{V}(fh)$，
+        则$k(H)=A(H)=k[X_{1},\cdots,X_{r},Y]/\left<fh\right> \cong
+        k[X_{1},\cdots,X_{r},y]=A(X)=k(X)$. 故$H$与$X$是双有理等价.
+    \end{proof}
+
+    \subsection{乘积簇}
+    对于簇$X$与$Y$，我们可以赋予$X \times Y$一个拟射影簇的结构.
+    \begin{proposition}[Segre嵌入]
+        定义Segre映射
+        \begin{equation*}\begin{aligned}
+            \mathcal{S}_{m,n}:\mathbb{P}^{m} \times \mathbb{P}^{n} &\rightarrow \mathbb{P}^{(m+1)(n+1)-1} = \mathbb{P}^{mn+m+n};\\
+            ((X_{0}:\cdots:X_{m}),(Y_{0},\cdots,Y_{n})) &\mapsto 
+            (X_{0}Y_{0}:\cdots:X_{0}Y_{n}:X_{1}Y_{0}:\cdots:X_{1}Y_{n}:\cdots:X_{m}Y_{0}:\cdots:X_{m}Y_{n}). 
+        \end{aligned}\end{equation*}
+        Segre映射是单射，且其像闭.
+    \end{proposition}
+    \begin{proof}
+        若$(p,q),(p',q') \in \mathbb{P}^{m} \times \mathbb{P}^{n}$，
+        其中$p=(x_{0}:\cdots:x_{m})$，$q=(y_{0}:\cdots:y_{n})$，
+        $p'=(x_{0}':\cdots:x_{m}')$，$q'=(y_{0}':\cdots:y_{n}')$.
+        不妨设$x_{i},y_{j} \neq 0$，
+        则若$x_{i}'=0$或$y_{j}'=0$，则有$x_{i}'y_{j}'=0$，但$x_{i}y_{j} \neq 0$，
+        故$\mathcal{S}_{m,n}((p,q)) \neq \mathcal{S}_{m,n}((p',q'))$.
+        故乘以适当系数后，我们可以假设$x_{i}=x_{i}'=y_{j}=y_{j}'=1$. 
+        由于$(p,q) \neq (p',q')$，故存在$x_{k} \neq x_{k}'$.
+        故$x_{i}y_{j}=x_{i}'y_{j}'$但$x_{k}y_{j} \neq x_{k}'y_{j}'$. 
+        这即说明$\mathcal{S}_{m,n}((p,q)) \neq \mathcal{S}_{m,n}((p',q'))$. \par
+        关于像闭，注意到
+        $\mathcal{S}_{m,n}(\mathbb{P}^{m} \times \mathbb{P}^{n})=\mathcal{V}(\bigcup_{M为T的二阶子式}\det(M))$.
+        其中$T=(Z_{ij})_{1 \leq i \leq m,1\leq j \leq n}$.
+    \end{proof}
+
+    为了让上述单射变为嵌入，我们定义$\mathbb{P}^{m} \times \mathbb{P}^{n}$上的
+    拓扑结构为$\mathcal{S}_{m,n}(\mathbb{P}^{m} \times \mathbb{P}^{n})$同构Segre映射的诱导拓扑.
+    这赋予了$\mathbb{P}^{m} \times \mathbb{P}^{n}$上的簇结构，称赋予该结构的
+    $\mathbb{P}^{m} \times \mathbb{P}^{n}$为乘积簇.
+
+    \begin{example}
+        取$m=n=1$，则该映射即为
+        \begin{equation*}\begin{aligned}
+            \mathbb{P}^{1} \times \mathbb{P}^{1} &\rightarrow \mathbb{P}^{3};\\
+            ((X_{0}:X_{1}),(Y_{0}:Y_{1})) &\mapsto (X_{0}Y_{0}:X_{0}Y_{1}:X_{1}Y_{0}:X_{1}Y_{1}).
+        \end{aligned}\end{equation*}
+    \end{example}
+
+    \begin{remark}
+        对于Segre嵌入的一种简单看法是两个空间的射影空间乘积
+        到其张量积的射影空间的乘积的映射，即
+        \[\varphi:\mathbb{P}(V) \times \mathbb{P}(W) \rightarrow \mathbb{P}(V \otimes W);
+        ([v],[w]) \mapsto ([v \otimes w]).\]
+    \end{remark}
+
+    \begin{definition}[双齐次多项式（Bihomogeneous Polynomial）]
+        称多项式$f \in k[X_{0},\cdots,X_{m},Y_{0},\cdots,Y_{n}]$为双齐次多项式，
+        若$f(\lambda X_{0},\cdots,\lambda X_{m},\mu Y_{0},\cdots,\mu Y_{n})=
+        \lambda^{d}\mu^{e}f(X_{0},\cdots,X_{m},Y_{0},\cdots,Y_{n})$，次数记为$(d,e)$
+        这类多项式形如$\sum_{|I|=d,|I|=e}a_{I,J}X^{I}Y^{J}$.
+    \end{definition}
+
+    我们可以用双齐次多项式来刻画$\mathbb{P}^{m} \times \mathbb{P}^{n}$上的拓扑结构.
+    \begin{proposition}
+        乘积簇$\mathbb{P}^{m} \times \mathbb{P}^{n}$上的闭集
+        恰好是双齐次多项式的公共零点集.
+    \end{proposition}
+    \begin{proof}
+        由于$\mathbb{P}^{m} \times \mathbb{P}^{n}$中的闭集形如
+        $\mathcal{S}_{m,n}^{-1}(\mathcal{V}(F_{1},\cdots,F_{k}))$，
+        其中$F_{i} \in k[Z_{00},\cdots,Z_{mn}]$，且记$d_{i} = \deg F_{i}$. 
+        那么$F_{i} \circ S_{m,n}$是一个双齐次多项式，次数为$(d_{i},d_{i})$. 
+        那么$\mathcal{S}_{m,n}^{-1}(\mathcal{V}(F_{1},\cdots,F_{k})) = 
+        \mathcal{V}(F_{1} \circ \mathcal{S}_{m,n},\cdots,F_{k} \circ \mathcal{S}_{m,n})$. \par
+        反之，若$G_{k}$是一族双齐次多项式，并记次数为$(d_{k},e_{k})$，
+        那么$\mathcal{V}(\{G_{k}\})=
+        \mathcal{V}(\{X_{0}^{e_{k}}\cdots X_{m}^{e_{k}}Y_{0}^{d_{k}}\cdots Y_{n}^{d_{k}}G_{k}\})$，
+        且$X_{0}^{e_{k}}\cdots X_{m}^{e_{k}}Y_{0}^{d_{k}}\cdots Y_{n}^{d_{k}}G_{k}$
+        是$d_{k}+e_{k}$次的齐次多项式. 
+        故而$X_{0}^{e_{k}}\cdots X_{m}^{e_{k}}Y_{0}^{d_{k}}\cdots Y_{n}^{d_{k}}G_{k}$
+        可写为以诸$X_{i}Y_{j}$为变元的多项式，记作$g_{k}$.
+        那么$\mathcal{V}(\{G_{k}\})=\mathcal{S}_{m,n}^{-1}(\mathcal{V}(\{g_{k}\}))$.
+    \end{proof}
+
+    \begin{remark}
+        乘积簇的拓扑并不是乘积拓扑. 事实上，它比乘积拓扑更细. 考虑对角线
+        $\Delta \subset \mathbb{P}^{n} \times \mathbb{P}^{n}$. 在乘积簇的意义下
+        $\Delta=\mathcal{V}(X_{0}-Y_{0},\cdots,X_{n}-Y_{n})$是闭集. 
+        但由于$\mathbb{P}^{n}$不是Hausdorff的，故$\Delta$在乘积拓扑下不闭.
+    \end{remark}
+
+    我们可以证明：若$X \subset \mathbb{P}^{m}$，$Y \mathbb{P^{n}}$都是射影簇，则
+    $X \times \mathbb{P}^{n}$，$\mathbb{P}^{m} \times Y$，$X \times Y$都是
+    $\mathbb{P}^{m} \times \mathbb{P}^{n}$的闭子集. 
+    这是由于$X \times \mathbb{P}^{n} = \mathcal{V}(\mathcal{I}(X))$. \par
+
+    \begin{remark}
+        拟射影簇，的乘积仍是拟射影簇. 考虑射影簇$X$与$Y$，令它们分别是射影簇$U$与$V$
+        的开子集，那么$U \times V$仍然是射影簇，而$X \times Y$在$U \times V$中开.
+    \end{remark}
+
+    \begin{remark}
+        对于仿射空间，在左式为乘积簇，右式为Zariski拓扑的意义下，
+        $\mathbb{A}^{m} \times \mathbb{A}^{n} = \mathbb{A}^{m+n}$.
+        这只需考虑$\mathbb{A}^{m}=\mathbb{P}^{m} \backslash \mathcal{V}(X_{0})$
+        与$\mathbb{A}^{n}=\mathbb{P}^{n} \backslash \mathcal{V}(Y_{0})$.
+        此时，$\mathbb{A}^{m} \times \mathbb{A}^{n}$中的子簇的定义多项式形如
+        $F_{i}(X,Y)$. 但在射影空间中，取$X_{0}=Y_{0}=1$，
+        则零点集没有发生任何改变. 反之，对于$F \in k[X_{1},\cdots,X_{m},Y_{1},\cdots,Y_{n}]$，
+        可对其进行齐次化.
+        齐次化即$\sum_{I,J}a_{I,J}X^{I}Y^{J} \Rightarrow 
+        \sum_{I,J}a_{I,J}X_{0}^{d-|I|}X^{I}Y_{0}^{e-|J|}Y^{J}$，
+        其中$d = \max\{I\}$，$e = \max\{J\}$.
+    \end{remark}
+
+    \begin{definition}[图像（Graph）]
+        若$\varphi:X \rightarrow Y$是簇的态射，则称$X \times Y$的子集
+        $\Gamma:=\{(x,\varphi(x)) \mid x \in X\}$为$\varphi$的图像. 
+    \end{definition}
+
+    \begin{proposition}
+        若$\varphi:X \rightarrow \mathbb{P}^{n}$是拟射影簇的态射，
+        图像$\Gamma$是一个拟射影簇，且与$X$同构.
+    \end{proposition}
+    \begin{proof}
+        这是因为$\Gamma = 
+        (\varphi \times \operatorname{id}_{\mathbb{P}^{n}})^{-1}(\Delta)$.
+        且$\operatorname{id}_{\mathbb{P}^{n}} \times \varphi$
+        与$\pi_{X}$定义了$X$与$\Gamma$的同构.
+    \end{proof}
+
+    \begin{remark}
+        后文中时常会用到这么一个技巧：对于拟射影簇的态射$\varphi:X \mapsto Y \subset \mathbb{P}^{n}$，
+        以$\varphi$的图像代替$X$. 这样，我们有如下交换图：
+        \begin{tikzcd}
+            \Gamma \arrow[r, hook]         & X \times Y \arrow[d, "\pi_{Y}"] \\
+            X \arrow[r] \arrow[u, "\cong"] & Y                              
+        \end{tikzcd}
+        而上述命题实则为这个技巧提供了保障.
+    \end{remark}
+
+    \subsection{爆破}
+    令$O=(1:0:\cdots:0) \in \mathbb{P}^{n}$.
+    则$\pi:\mathbb{P}^{n} \rightarrow \mathbb{P}^{n-1};
+    (x_{0}:\cdots:x_{n}) \mapsto (x_{1}:\cdots:x_{n})$是一个支配有理映射，
+    且$\pi_{O}$在$\mathbb{P}^{n}\backslash \{O\}$上正则. \par
+    但是其在零点处无法定义. 
+
+    为了修补这个bug，我们定义$\mathbb{P}^{n} \times \mathbb{P}^{n-1}$中的簇
+    $\mathcal{V}(\{X_{i}Y_{j}-Y_{i}X_{j}\mid 1 \leq i,j \leq n\})$. 我们把
+    这个簇记为$\operatorname{Bl}_{0}\mathbb{P}^{n}$，并注意到形如
+    $((x_{0}:\cdots:x_{n}),(x_{1}:\cdots:x_{n}))$的元素均列其中. 
+    换句话说，$\pi$在$\mathbb{P}^{n}-O$上的图像均在$\operatorname{Bl}_{O}\mathbb{P}^{n}$中.
+    但这不是其中的全部内容.
+
+    考虑如下投影：
+    \begin{tikzcd}
+               & \mathbb{P}^{n} \times \mathbb{P}^{n-1}                                                                                            &                  \\
+               & \operatorname{Bl}_{O}\mathbb{P}^{n} \arrow[ld, "p"'] \arrow[rd, "q"] \arrow[u, "i", hook] &                  \\
+            \mathbb{P}^{n} &                                                                                                                                   & \mathbb{P}^{n-1}
+    \end{tikzcd}
+    一些基本的观察是，对于$a \in \mathbb{P}^{n} - O$，
+    我们有$p^{-1}(a)$都是单点，
+    ，
+    但对于$O$，我们发现
+    $\pi_{\mathbb{P}^{n}}^{-1}(O)$中$\mathbb{P}^{n-1}$上的分量可取任意值. 
+    这即意味着$\pi_{\mathbb{P}^{n}}^{-1}(O) = O \times \mathbb{P}^{n-1}$.
+    
+    事实上，$p$是$\mathbb{P}^{n}$与$\operatorname{Bl}_{O}\mathbb{P}^{n}$间的双有理等价.
+    这是因为$p$建立了$\mathbb{P}^{n}-O$至$\operatorname{Bl}_{O}\mathbb{P}^{n} - O \times \mathbb{P}^{n-1}$
+    之间的同构，而两者均是相应空间的稠密开集.
+
+    再考虑$q$. 对于$b \in \mathbb{P}^{n-1}$，令$b = (b_{1}:\cdots:b_{n})$，则
+    若$q((x_{0}:x_{1}:\cdots:x_{n}),(x_{1}:\cdots:x_{n}))=b$，
+    则$(b_{1}:\cdots:b_{n})=(x_{1}:\cdots:x_{n})$.
+    那么一共有两种情形. 一种是$(x_{0},\cdots,x_{n}) \neq O$时，这时
+    原像为$((t:b),b)$. 另一种情形是$(x_{0},\cdots,x_{n}) = O$，那么这时原像为
+    $(O,b)$. 换句话说，$q^{-1}(b)=\overline{Ob} \times b$，其中$\overline{Ob}$
+    是连接$O$与$(0:b)$的直线. 再换句话说，$p^{-1}(b) \cong \mathbb{P}^{1}$.
+
+    若$V_{i}$是$\mathbb{P}^{n-1}$中的标准开集，则$q^{-1}(V_{i})$也同构于$V_{i}\times \mathbb{P}^{1}$.
+    这个证明与计算$p^{-1}(b)$的证明完全是一回事，这里就不重复了.
+
+    上述对象$\operatorname{Bl}_{O}\mathbb{P}^{n}$与$\mathbb{P}^{n}$双有理等价，
+    且从这个对象出发，在$\mathbb{P}^{n}$分量上就可以取$O$这个点了. 
+    这相当于是把不好的点通过某种双有理等价给“炸掉”，故得名“爆破（Blowing Up）”.
+
+    更一般地，我们可以对$\mathbb{P}^{n}$中的拟射影簇$X$爆破. 对于$z_{0} \in X$，
+    我们可以构造$X$在$z_{0}$处的爆破为
+    $\operatorname{Bl}_{z_{0}}X := \overline{p^{-1}(X - z_{0})}$.
+    自然，我们也可以对$\mathbb{A}^{n}$中的原点$O$爆破，
+    也可以对$\mathbb{A}^{n}$中的任何子簇中的点进行爆破. 爆破常常会带来好的性质.
+    我们来看一些例子.
+    
+    \begin{example}
+        令椭圆曲线$C = \mathcal{V}(Y^{2}-X^{2}-X^{3}) \subset \mathbb{A}^{2}$，
+        则$C$上的奇点为$z_{0}=(0,0)$（参见光滑性章节）.
+        我们计算$C$在$z_{0}$处的爆破. 令$\mathbb{P}^{1}$中的齐次坐标为$S,T$
+        由定义，$\operatorname{Bl}_{z_{0}}\mathbb{A}^{2}=\mathcal{V}(XT-YS)$.
+        那么$\operatorname{Bl}_{z_{0}}C \subset \mathbb{A}^{2} \times \mathbb{P}^{1}$
+        就由两个方程$Y^{2}-X^{2}-X^{3}$与$XT-YS$定义.
+
+        若$S \neq 0$，则我们可认为$S=1$. 
+        此时，爆破的这部分由方程
+        \begin{equation*}\begin{aligned}
+            \begin{cases}
+                Y^{2} &= X^{2} + X^{3} \\
+                Y &=XT
+            \end{cases}
+        \end{aligned}\end{equation*}
+        定义，化简即$X^{2}T^{2}-X^{2}(X+1)=0$. 这个对象有两个不可约分支组成：
+        一个是$X=Y=0$，而$T$任意，即$((0,0),(1:T))$. 另一部分是$X \neq 0$，
+        即$((T^{2}-1,T^{3}-T),(1:T))$. 这两部分相交于$T=\pm 1$时的两点，
+        而这两点正好是$z_{0}$的原像. 在原本的曲线$C$中，$z_{0}$是二重点，形象来说就是打结的点.
+        但在爆破处理后，它变成了两个单重点.
+
+        而$S = 0$的部分相当简单. 这部分由
+        \begin{equation*}\begin{aligned}
+            \begin{cases}
+                Y^{2} &= X^{2} + X^{3} \\
+                0 &=XT
+            \end{cases}
+        \end{aligned}\end{equation*}
+        定义. 而$S = 0$意味着$T \neq 0$，故$X=0$，从而$Y \neq 0$. 故这部分的内容
+        即$((0,0),(0,T))$，其中$T \neq 0$. 注意到$T = 0$时，$\mathbb{A}^{2}$分量
+        上刚好时原来的椭圆曲线$C$，也意味着不好的性质. 但射影空间将这种情况拒之门外了.
+        故而爆破后，我们得到了与原对象双有理等价，但性质更好的东西.
+    \end{example}
+
+    \begin{example}
+        考虑射影空间$\mathbb{P}^{2}$的有理自映射
+        $\varphi:\mathbb{P}^{2} \dashrightarrow \mathbb{P}^{2};
+        (X,Y,Z) \mapsto (YZ,XZ,XY)$.
+        注意到$\varphi^{2} = \operatorname{id}$，故$\varphi$是$\mathbb{P}^{2}$
+        的双有理自等价. 这个映射在除了$p_{1}=(1:0:0)$，$p_{2}=(0:1:0)$与
+        $p_{3}=(0:0:1)$外的地方都是正则映射.
+    \end{example}
+
+    上述例子中，如果将有理映射限制为正则映射，则$\mathbb{P}^{2}$的自同构群
+    正好是$\operatorname{Aut}(\mathbb{P}^{2}) = \operatorname{PGL}_{3}(k)$.
+    但如果考虑双有理映射，那这个群显然大得多，且包含自同构群. 
+    我们记$\mathbb{P}^{2}$上的双有理自同构全体记作$\operatorname{Bir}(\mathbb{P}^{2})$.
+    
+    人类已经证明了以下结论：
+
+    \begin{theorem}[Max $\cdot$ Noether, Castelnoro]
+        双有理自映射群$\operatorname{Bir}(\mathbb{P}^{2})=\left<\operatorname{Aut}(\mathbb{P}^{2}),\varphi\right>$.
+        其中$\varphi$是上述例子中的双有理映射. 
+        且其中元素形如$\phi_{1} \circ \varphi \circ \phi_{2} \circ \varphi \circ \cdots \circ \phi_{l} \circ \varphi$.
+        其中$\phi_{i}$均是双有理映射.
+    \end{theorem}
+
+    这个群被称为Cremona群，但是这个群的生成关系异常复杂，导致人类现在也没有完全搞清. 而对于$n \geq 3$，
+    群$\operatorname{Bir}(\mathbb{P}^{n})$更是连生成元都没搞清，是代数几何悬而未决的问题之一.
+
+    我们可以对$n=2$情形时的映射$\varphi$做更多描述：
+
+    我们可以对$\mathbb{P}^{2}$中的上述三点$p_{1},p_{2},p_{3}$做三次爆破，使得$\varphi$
+    被提升为一个正则映射. 先爆破$p_{1}$. 这是先前我们已经进行过的步骤. 
+    \begin{tikzcd}
+        \operatorname{Bl}_{p_{1}}\mathbb{P}^{2} \arrow[d, "p"'] \arrow[rd, "\widetilde{\varphi}"] &                \\
+        \mathbb{P}^{2} \arrow[r, "\varphi"]                                                       & \mathbb{P}^{2}
+    \end{tikzcd}
+    这里先考虑$U = \mathbb{P}^{2} \times V_{1} \subset \mathbb{P}^{2} \times \mathbb{P}^{1}$.
+    设$\mathbb{P}^{1}$上的齐次坐标为$S,T$，
+    那么在$U$上$S \neq 0$（不妨设$S=1$），且$Z = Y \frac{T}{S}$.
+    在$U \cap \operatorname{Bl}_{p_{1}}\mathbb{P}^{2}=
+    \{((X:Y:YT),(1:T))\}$. 那么$\widetilde{\varphi}_{1}$在其上满足
+    \[((X:Y:YT),(1:T)) \mapsto (Y^{2}T:XYT:XY)=(YT:XT:Y)\]
+    那么在$X=1，Y=YT=0$的情形下，相应的像为$(0:1:0)$，故$p_{1}$这个奇点被消去了.
+    \begin{tikzcd}
+        \mathbb{P}^{2} \arrow[d, "\varphi"] \arrow[r, "p_{1}"] & \operatorname{Bl}_{p_{1}}\mathbb{P}^{2} \arrow[ld, "\widetilde{\varphi}_{1}"'] \arrow[r, "p_{2}"] & \operatorname{Bl}_{p_{2}}\operatorname{Bl}_{p_{1}}\mathbb{P}^{2} \arrow[lld, "\widetilde{\varphi}_{2}"'] \arrow[r, "p_{3}"] & \operatorname{Bl}_{p_{3}}\operatorname{Bl}_{p_{2}}\operatorname{Bl}_{p_{1}}\mathbb{P}^{2} \arrow[llld, "\widetilde{\varphi}_{3}"'] \\
+        \mathbb{P}^{2}                                         &                                                                                                   &                                                                                                                             &                                                                                                                                   
+    \end{tikzcd}
+    
+    \subsection{完备性}
+    \begin{definition}[完备性（Completeness）]
+        称一个拟射影簇$X$是完备的，若对于任何拟射影簇$Y$，投影
+        \[\pi_{Y}:X \times Y \rightarrow Y\]
+        是闭映射.
+    \end{definition}
+
+    \begin{theorem}
+        射影簇都是完备的. 这即是说对于射影簇$X$以及任何拟射影簇$Y$，
+        投影$\pi:X \times Y \rightarrow Y$是闭映射.
+    \end{theorem}
+    \begin{proof}
+        先证明$X = \mathbb{P}^{1}$与$Y = \mathbb{P}^{n}$的情形. 
+        欲证明$Z \subset \mathbb{P}^{1} \times \mathbb{P}^{n}$是闭子集时，
+        $\pi(Z)$也闭. 令$\overline{F}$是$F$的去齐次化，即对任意$F \in \mathcal{I}(Z)$，
+        定义$\overline{F}=F(X_{0},\cdots,X_{n},1,Y)$. 令$F_{1},F_{2}$为
+        两个双齐次多项式，且次数为$(s_{1},d_{1})$与$(s_{2},d_{2})$.
+        令$\mathcal{R}(\overline{F_{1}},\overline{F_{2}})$为
+        $\overline{F_{1}}$与$\overline{F_{2}}$的结式. 
+        我们断言$\mathcal{I}(\pi(Z))=
+        \sqrt{\left<\mathcal{R}(\overline{F_{1}},\overline{F_{2}}) \mid F_{1},F_{2} \in \mathcal{I}(Z)\right>}$. 记右边为$I$. 
+        这里注意到$\mathcal{R}(\overline{F_{1}},\overline{F_{2}})$是与$Y$无关的.
+        
+        首先，$\pi(Z)\subset \mathcal{V}(I)$. 若$x \in \pi(Z)$，则存在$y_{0},y_{1} \in k$，使得$(x,(y_{0}:y_{1}))\in Z$.
+        \begin{enumerate}
+            \item[(1)] 若$y_{0}=0$，则对于任意双齐次多项式$F \in \mathcal{I}(Z)$，有$F(x,0,y_{1})=0$，
+                       记$F=a_{0}(X)Y_{0}^{e}+a_{1}(X)Y^{e-1}Y_{1}+\cdots+a_{d}(X)Y_{1}^{e}$. 
+                       由于$y_{1}\neq 0$，我们有$a_{d}(x) = 0$.
+                       故$\mathcal{R}(\overline{F_{1}},\overline{F_{2}})(x)$的最后一列为$0$，
+                       即$\mathcal{R}(\overline{F_{1}},\overline{F_{2}})(x)=0$. 
+            \item[(2)] 若$y_{0} \neq 0$，则不妨设$y_{0}=1$.
+                       此时$(x,(1:y_{1})) \in Z$，
+                       那么$y_{1}$是$\overline{F}(x,Y)$的公共零点，其中$F$取遍$I$中的齐次多项式.
+                       故$x$是任意结式$\mathcal{R}(\overline{F_{1}},\overline{F_{2}})$的零点.
+        \end{enumerate}
+        综上，我们有$\pi(Z)\subset \mathcal{V}(I)$.
+
+        其次，$\pi(Z)\supset \mathcal{V}(I)$. 若$x\in \mathbb{P}^{n}$是所有
+        结式$\mathcal{R}(\overline{F_{1}},\overline{F_{2}})$的零点，那么若$x$是
+        $\mathcal{I}(Z)$中所有双齐次多项式的首项系数的零点，其中首项系数指代$Y_{0}$次数达到最高次的项的系数，即$a_{0}(X)$.
+        如此一来，有$F(x,0,1)=a_{d}(x)=0$，则$(x,(0:1)) \in Z$. 那么完成了证明.
+
+        否则，存在双齐次多项式$F\in\mathcal{I}(Z)$使得$x$不是$a_{0}(X)$的根.
+        由$x$的定义，对于任意$G \in \mathcal{I}(Z)$，$\overline{F}(x,Y)$与$\overline{G}(x,Y)$
+        有公共零点，而$\overline{F}(x,Y)$只有有限个零点，记作$y_{1},\cdots,y_{N}$.
+        断言存在$i$使得$(x,(1:y_{i})) \in Z$. 从而完成证明.
+
+        否则，若上述断言不成立，则对于任意$i$，存在$G_{i} \in \mathcal{I}(Z)$使得
+        $G_{i}(x,1,y_{i}) \neq 0$. 可乘以一些$X^{s}Y^{t}$使得诸$G_{i}$具有相同的次数.
+        那么对于任意一组$a=(a_{1},\cdots,a_{N}) \in k^{N}$，有
+        $G_{a}=\sum_{i=1}^{N}a_{i}G_{i}\in \mathcal{I}(Z)$是双齐次的.
+        故$G_{a}$与$\overline{F}$都有公共零点，即$G_{a}(x,1,y_{\sigma(a)})=0$，其中
+        $\sigma:k^{n} \rightarrow \{1,\cdots,N\}$. 构造线性映射
+        \[\Phi:k^{N} \rightarrow k^{N};a \mapsto (G_{a}(x,1,y_{1}),\cdots,G_{a}(x,1,y_{N}))\]
+        记$H_{i}$为$k^{N}$中的超平面$\{x_{i}=0\}$. 由于$k$代数闭，故$|k|=\infty$.
+        那么，$\Phi(k^{N}) \subset \bigcup_{i=1}^{N}H_{i}$.
+        故由子空间回避定理，存在$j$使得$\Phi(k^{N}) \subset H_{j}$，即
+        $G_{a}(x,1,y_{j})=0$对于任意$a \in k^{N}$. 但这与$G_{i}$的选取矛盾.
+
+        故断言成立，从而我们证明了$\pi(Z)\supset \mathcal{V}(I)$. 综上，我们证明了
+        $\pi(Z) = \mathcal{V}(I)$，从而证明了这种情况下$\pi$是闭映射.
+
+        这便完成了初始情况的证明.
+
+        先将$Y$改为任意拟射影簇，对于$Z \subset \mathbb{P}^{1} \times Y$闭，
+        存在$V \subset \mathbb{P}^{1} \times \mathbb{P}^{n}$闭，使得
+        $Z = V \cap (\mathbb{P}^{1} \times Y)$. 
+        由前一情形知$\pi(V) \subset \mathbb{P}^{n}$闭
+        故$\pi(Z)=\pi(V \cap (\mathbb{P}^{1} \cap Y)) = \pi(V) \cap Y$闭. 
+        故在这种情况下，$\pi$是闭映射.
+
+        再将$X$改进为$\mathbb{P}^{n}$. 我们归纳地证明这件事.
+        对于$Z \subset \mathbb{P}^{n} \times Y$，考虑$\mathbb{P}^{n}$的爆破$\operatorname{Bl}_{O}(\mathbb{P}^{n})$.
+        \begin{tikzcd}
+                       & \operatorname{Bl}_{O}\mathbb{P}^{n} \arrow[”q“,ld] \arrow["p",rd] &                \\
+                       H\cong\mathbb{P}^{n-1} &                                                           & \mathbb{P}^{n}
+        \end{tikzcd}
+        可知$\widetilde{Z}:=(p\times\operatorname{id})^{-1}(Z)$在$\operatorname{Bl}_{O}\mathbb{P}^{n}\times Y \subset \mathbb{P}^{n}\times\mathbb{P}^{n-1}\times Y$中闭.
+        我们只需证明$(q\times\operatorname{id})(\widetilde{Z}) \subset H \times X$闭.
+        如此一来，由归纳假设及下图交换，我们立刻有$\pi$闭.
+        \begin{tikzcd}
+                                            & \operatorname{Bl}_{O}\mathbb{P}^{n}\times Y \arrow[r, "p \times \operatorname{id}"] \arrow[d, "q \times \operatorname{id}"'] & \mathbb{P}^{n}\times Y \arrow[d, "\pi"] \\
+            \mathbb{P}^{n-1}\times Y \arrow[r, "\cong"] & H\times Y \arrow[r, "\pi'"]                                                                                                  & Y                                      
+        \end{tikzcd}
+        而证明$(q\times\operatorname{id})(\widetilde{Z}) \subset H \times Y$闭，
+        只需对每个标准开集$U_{i} \subset \mathbb{P}^{n-1}$证明
+        $(q\times\operatorname{id})(\widetilde{Z}) \cap (U_{i}\times Y)\subset U_{i}\times Y$闭
+        由于$q^{-1}(U_{i}) \cong U_{i} \times \mathbb{P}^{1}$，可知下图交换
+        \begin{tikzcd}
+            \widetilde{Z}\cap(q^{-1}(U_{i})\times Y) \arrow[d, "q \times \operatorname{id}"'] \arrow[r, hook] & q^{-1}(U_{i})\times Y \arrow[d, "q \times \operatorname{id}"] \arrow[r, "\cong"] & U_{i}\times\mathbb{P}^{1}\times Y \arrow[d, "\pi"] \\
+            (q \times \operatorname{id})(\widetilde{Z}) \cap (U_{i} \times Y) \arrow[r, hook]                 & U_{i}\times Y \arrow[r, no head, Rightarrow]                                           & U_{i}\times Y                                     
+        \end{tikzcd}
+        而由情形2，$\tilde{\pi}:U_{i}\times \mathbb{P}^{1}\times Y \rightarrow U_{i}\times Y$是闭映射
+        故$(q\times\operatorname{id})(\widetilde{Z})\cap(U_{i}\times Y) \subset U_{i} \times Y$闭.
+
+        最后，令$X$是任意射影簇. 那么由以下交换图
+        \begin{tikzcd}
+            X \times Y \arrow[r, "\pi_{X}"] \arrow[d, "i \times \operatorname{id}"', hook] & Y \arrow[d, no head, Rightarrow] \\
+            \mathbb{P}^{n}\times Y \arrow[r, "\pi_{X}", hook]                              & Y                               
+        \end{tikzcd}
+        知投影$\pi:X \times Y \rightarrow Y$闭.
+    \end{proof}
+
+    这则事实有许多重要推论：
+
+    \begin{corollary}
+        若$X$是射影簇，则正则映射$f:X \rightarrow \mathbb{P}^{n}$像闭.
+    \end{corollary}
+    \begin{proof}
+        以图像$\Gamma \subset X \times \mathbb{P}^{n}$代替$X$，则由于
+        $\pi:X \times \mathbb{P}^{n} \rightarrow \mathbb{P}^{n}$闭，
+        故加之$\Gamma \subset X \times \mathbb{P}^{n}$闭，
+        有$\operatorname{im}f闭$.
+    \end{proof}
+
+    \begin{remark}
+        这事实也断言了完备拟射影簇的像都是闭的.
+    \end{remark}
+
+    \begin{corollary}
+        若$f:X \rightarrow k$是正则函数，且$X$是连通射影簇，则$f$是常值映射.
+    \end{corollary}
+    \begin{proof}
+        考虑分解$f:X \rightarrow k \hookrightarrow \mathbb{P}^{1}$.
+        则$f$可视作$X$到$\mathbb{P}^{1}$的正则映射.
+        由上一推论知$f$是闭映射，故$f(X) \subsetneq \mathbb{P}^{1}$闭，
+        但$\mathbb{P}^{1}$中的闭集只有其本身与有限点集，故$|f(X)|<\infty$.
+        由$f$的连续性及$X$的连通性，我们有$|f(X)|=1$.
+    \end{proof}
+    
+    \begin{corollary}
+        若$X \subset \mathbb{P}^{n}$是连通射影簇，且$|X|>1$，
+        则$\mathbb{P}^{n}$中的任意超曲面与$X$交非空.
+    \end{corollary}
+    \begin{proof}
+        否则，令$\mathbb{P}^{n}$中的超曲面$H$满足$H \cap X = \varnothing$，则
+        令$H=\mathcal{V}(F)$是$d$次超曲面，则考虑Venerose映射
+        \[v_{d}:\mathbb{P}^{n} \rightarrow \mathbb{P}^{{n+d \choose d}-1}.\]
+        令$F=\sum_{|I|=d}a_{I}X^{I}$，
+        则$H_{F}=\mathcal{V}(\sum_{I}a_{I}Z_{I}) \subset \mathbb{P}^{{n+d \choose d}-1}$是$\mathbb{P}^{{n+d \choose d}-1}$
+        中的超平面，且$H=v_{d}^{-1}(H_{F})$. 而$\mathbb{P}^{{n+d \choose d}-1}-H_{F}$
+        同构于一个代数簇.
+
+        由于$v_{d}^{-1}(H_{f}) \cap X = \varnothing$，故$v_{d}(X) \cap H = \varnothing$.
+        对于任意$d$次齐次多项式$G$，$\frac{G}{F}$是$X$上的正则函数. 
+        由上一推论$\frac{G}{F}$是常数，故若$G$是单项式，则$|v_{d}(X)|=1$. 
+        由$v_{d}$单，$|X|=1$，矛盾！
+    \end{proof}
+
+    \begin{remark}
+        注意到，也存在不是射影簇的完备拟射影簇.
+    \end{remark}
+
+    当然，也有如下值得注意但显然的事情：
+    \begin{proposition}
+        \begin{enumerate}
+            \item[(1)] 若$X$与$Y$都是完备拟射影簇，则$X \times Y$也是. 
+            \item[(2)] 若$X$是完备拟射影簇，则其正则像闭且完备.
+        \end{enumerate}
+    \end{proposition}
+
+
+
+\section{维数}
+    \subsection{簇与环的Krull维数}
+      \begin{definition}[拓扑空间的Kurll维数]
+       若$X$是一个拓扑空间, 则定义$X$的维数为不可约闭集升链的最大长度, 即
+       \[\dim_{Krull}X:= \sup\{n \mid F_{0} \subsetneq F_{1} \subsetneq \cdots \subsetneq F_{n}, \, F_{i} 不可约闭\}.\]
+       以下简记$\dim X$.
+      \end{definition}
+
+    这实际上是与我们的一般认知兼容的. 下文会证明$\dim \mathbb{A^{n}} =n$. 这与其作为线性空间的维数一致.
+    
+    \begin{proposition}
+        我们整理一些Krull维数的基本刻画：
+        \begin{enumerate}
+            \item[(1)] 若$Y \subset X$，则$\dim Y \leq \dim X$.
+            \item[(2)] 若$Y \subsetneq X$且$\dim X < \infty$，且$X$不可约，$Y$闭，则$\dim Y < \dim X$.
+            \item[(3)] 若$\{X_{i}\}_{i=1}^{n}$是$X$的开覆盖，
+                       则$\dim X = \max\limits_{1 \leq i \leq n}\{\dim X_{i}\}$.
+        \end{enumerate}
+    \end{proposition}
+    \begin{proof}
+        \begin{enumerate}
+            \item[(1)] 若$Y_{0} \subsetneq Y_{1} \subsetneq \cdots \subsetneq Y_{n}$是
+                       $Y$中不可约闭集升链，则
+                       $\overline{Y_{0}} \subsetneq \overline{Y_{1}} \subsetneq \cdots \subsetneq \overline{Y_{n}}$
+                       是$X$中不可约闭集升链. 因而$\dim Y \leq \dim X$.
+            \item[(2)] 若$Y_{0} \subsetneq Y_{1} \subsetneq \cdots \subsetneq Y_{n}$是
+                       $Y$中不可约闭集升链，则
+                       $Y_{0} \subsetneq Y_{1} \subsetneq \cdots \subsetneq Y_{n} \subset X$
+                       是$X$中的不可约闭集升链. 因而$\dim Y < \dim X$.
+            \item[(3)] 显然$\dim X \geq \max\limits_{1 \leq i \leq n}\{\dim X_{i}\}$.
+                       若$Y_{0} \subsetneq Y_{1} \subsetneq \cdots \subsetneq Y_{n}$是
+                       $X$中不可约闭集升链，则存在$X_{j}$使得$X_{j} \cap Y_{0} \neq \varnothing$.
+                       故$X_{j} \cap Y_{0}$是$Y_{0}$的开子集，故不可约. 
+                       而$X_{j} \cap Y_{0}$是$X_{j}$的闭子集，
+                       故$X_{j} \cap Y_{0} \subset X_{j} \cap Y_{0} \subset \cdots \subset X_{j} \cap Y_{0}$
+                       是$X_{j}$中的闭子集升链. 该升链事实上是严格的，
+                       因为$Y_{i} \cap X_{j}$在$Y_{i}$中的闭包即$X$中的闭包（由于$Y_{i}$闭）.
+                       且由不可约性，$\overline{Y_{i} \cap X_{j}}=Y_{i}$. 
+                       这说明了$\dim X \leq \dim X_{j}$. 这证明了反向的不等式.
+        \end{enumerate}
+    \end{proof}
+
+    \begin{proposition}
+        若$X$是零维簇，则$|X| < \infty$.
+    \end{proposition}
+    \begin{proof}
+        令$X=\bigcup_{i=1}^{n}X_{i}$为不可约分解，则$\dim X_{i}=0$. 
+        若$X_{i}$不是单点集，则取$p \in X$，则$p$是$X_{i}$的真闭子集，故而$\dim X < 0$，矛盾！
+        故而$|X_{i}|=1$，进而$|X|=n < \infty$.
+    \end{proof}
+
+    \begin{definition}[等维数空间（Space of Pure Dimension）]
+        称$X$是等维数的，若其不可约分支具有相等的维数.
+    \end{definition}
+
+    \begin{example}
+        如$\mathcal{V}(XY)=\mathcal{V}(X)\cup\mathcal{V}(Y)$.
+    \end{example}
+
+    \begin{definition}[局部维数（Local Dimension）]
+        对于拓扑空间$X$，我们可以定义$p \in X$处的局部维数为
+        $\dim_{p}X:=\sup\{n \mid {p} \subsetneq F_{1} \subsetneq \cdots \subsetneq F_{n}, \, F_{i} 不可约闭\}$
+    \end{definition}
+
+    \begin{remark}
+        局部维数显然不高于拓扑空间的维数. （注：这里不使用“整体维数”一词，
+        因为其在同调代数中另有所指.）
+    \end{remark}
+
+    我们也可以定义环的Krull维数.
+    \begin{definition}[交换幺环的Krull维数]
+        定义$\dim_{Krull} R = \sup\{n \mid \mathfrak{p_{0}} \subsetneq \mathfrak{p_{1}} \subsetneq \cdots \subsetneq \mathfrak{p_{n}}, \, \mathfrak{p_{i}} \in \operatorname{Spec}R\}$.
+        (为了避免两个Krull维数的混肴，以及环存在别的维数，下文将不省略下标的”Krull“.)
+    \end{definition}
+
+    一则大定理告诉我们两个Krull维数间的关系.
+    \begin{theorem}
+        若$X$是不可约仿射簇，则$\dim X = \dim A(X)$.
+    \end{theorem}
+
+    而计算环的Krull维数又有另一则结论.
+    \begin{theorem}
+        若$R$是一个有限生成$k$-代数，且是整环，则有
+        $\dim R = \operatorname{tr.deg}_{k} R$.
+    \end{theorem}
+
+    \begin{proposition}
+        若$X$是簇，且$\dim X < \infty$. 若$U$是$X$的稠密开子集，则$\dim U =\dim X$.
+    \end{proposition}
+    
+    \begin{example}
+        \begin{enumerate}
+            \item[(1)] $\dim \mathbb{A}^{n} = n$. 
+                       因为$A(\mathbb{A}^{n})=k[X_{1},\cdots,X_{n}]$. 而其超越度显然是$n$.
+            \item[(2)] $\dim \mathbb{P}^{n} = n$.
+                       因为标准开集$U_{i} \cong \mathbb{A}^{n}$稠密.
+            \item[(3)] $\dim (\mathbb{P}^{n} \times \mathbb{P}^{m}) = n+m$.
+                       因为标准开集的乘积簇$U_{i} \times V_{j} \cong \mathbb{A}^{n}\times\mathbb{A}^{m} \cong \mathbb{A}^{n+m}$仍不可约，开，且稠密.
+        \end{enumerate}
+    \end{example}
+
+    以下是交换代数中的一个大定理——Hauptidealsatz，翻译过来即“主理想定理”.
+
+    \begin{theorem}[Krull主理想定理]
+        若$R$是一个有限生成$k$-代数，且是整环，则对于其中非零主理想$\left<f\right>$，
+        若$\mathfrak{p}$是包含$\left<f\right>$的极小素理想，
+        则$\dim R/\mathfrak{p} = \dim R - 1$.
+    \end{theorem}
+    \begin{proof}
+        以局部化$R_{\mathfrak{p}}$代替$R$，可假设$\mathfrak{p}$是极大的，
+        且$\dim_{Krull} R/p=0$. 那么这等价于证明$\dim_{Krull}R=0$. 
+        这即证若$\mathfrak{q} \subsetneq \mathfrak{p}$，则$\mathfrak{q}=0$.
+        考虑环$R/\left<f\right>$，则$R/\left<f\right>$是一个Artin局部环（由于零维诺特）.
+        定义形式$n$次幂$\mathfrak{q}^{(n)}:=\{r \in R\mid 存在s \notin \mathfrak{q}使rs\in\mathfrak{q}^{n}\}$. 
+        显然$\mathfrak{q}^{(k+1)} \subset \mathfrak{q}^{(k)}$，故降链
+        $\mathfrak{q}^{(1)}/\left<f\right> \supset \cdots \supset \mathfrak{q}^{(k)}/\left<f\right> \supset \cdots$.
+        由Artin性，存在$n\in \N$使得$\mathfrak{q}^{(n)}/\left<f\right>=\mathfrak{q}^{(n+1)}/\left<f\right>$.
+        故而$\mathfrak{q}^{n} \subset \mathfrak{q}^{(n+1)}+\left<f\right>$.
+        故任取$r \in \mathfrak{q}^{(n)}$，存在$s \in \mathfrak{q}^{(n+1)}$及$a \in R$，
+        使得$r=s+af$，从而$af=f-g \in \mathfrak{q}^{(n)}$. 由定义$a \in \mathfrak{q}^{(n)}$
+        故$\mathfrak{q}^{(n)} \subset f\mathfrak{q}^{(n)}+\mathfrak{q}^{(n+1)}$，
+        从而$\mathfrak{q}^{(n)}/\mathfrak{q}^{(n+1)}=f\mathfrak{q}^{(n)}/\mathfrak{q}^{(n
+        =1)}$. 由中山引理，$\mathfrak{q}^{(n)}=\mathfrak{q}^{(n+1)}$.
+        这即是说$\mathfrak{q}^{n}R_{\mathfrak{q}}=\mathfrak{q}^{(n+1)}R_{\mathfrak{q}}$，
+        而这又即$(\mathfrak{q}_{\mathfrak{q}})^{n}=(\mathfrak{q}_{\mathfrak{q}})^{n+1}$. 
+        再由中山引理得，$(\mathfrak{q}_{\mathfrak{q}})^{n}=0$. 故$R_{\mathfrak{q}}$是零维的，也即$\mathfrak{q}=0$.
+    \end{proof}
+
+    \begin{remark}
+        Krull主理想定理的一般形式为：诺特环中，若$\mathfrak{p} \supset 
+        \left<f_{1},\cdots,f_{r}\right>$，则$\operatorname{ht}\mathfrak{p}\leq r$.
+        并且其具有逆定理：诺特环中，若素理想$\mathfrak{p}$满足$\operatorname{ht}\mathfrak{p} = r$，
+        则存在$f_{1},\cdots,f_{r}\in R$使得$\mathfrak{p}$是包含
+        $\left<f_{1},\cdots,f_{r}\right>$的极小素理想.
+    \end{remark}
+
+    \begin{theorem}
+        若$X$是$\mathbb{P}^{N}$中的拟射影簇，且$f_{1},\cdots,f_{r}$是
+        $r$个$n+1$元齐次多项式，
+        则
+        \begin{enumerate}
+            \item[(1)] 若$X$等维数，且维数为$n$，则$X \cap \mathcal{V}(f_{1},\cdots,f_{r})$
+                       的任一不可约分支维数不小于$n-r$.
+            \item[(2)] 若$X$是$n$维射影簇，且$n \geq r$，
+                       则$X \cap \mathcal{V}(f_{1},\cdots,f_{r}) \neq \varnothing$.
+        \end{enumerate}
+    \end{theorem}
+    \begin{proof}
+        \begin{enumerate}
+            \item[(1)] 我们对多项式的个数$r$做归纳. 初始情形$r=0$是显然的.
+                       若$Z$是$X \cap \mathcal{V}(F_{1},\cdots,F_{r})$，
+                       则$Z$被$X \cap \mathcal{V}(F_{1},\cdots,F_{r-1})$的
+                       一个不可约分支$Y$.
+                       由归纳假设，我们有$\dim Y \geq n - r + 1$.
+                       则$Z$是$Y \cap \mathcal{V}(F_{r})$的连通分支. \par
+                       若$Y \subset \mathcal{V}(F_{r})$，则$Z = Y$，从而
+                       $\dim Z = \dim Y \geq n - r + 1 > n - r$. \par
+                       否则$x \in Z \subset Y$. 令$U$是$Y$中包含$x$的
+                       一个仿射开邻域，且不妨设其被包含在$\mathbb{P}^{N}$的
+                       第$i$个标准开集中. 由于$Y$不可约，
+                       故$U \cap (Y \backslash \mathcal{V}(F_{r})) \neq \varnothing$，
+                       故而$U \not\subset \mathcal{V}(U)$. 
+                       令$U$上的正则函数$f_{r}=\dfrac{F_{r}}{X_{i}^{\deg_{X_{i}} F_{r}}}$，
+                       则$f_{r} \neq 0 \in A(U)$. 且$Z \cap U$是
+                       $U \cap \mathcal{V}(F_{r}) = U \cap (Y \cap \mathcal{V}(F_{r}))$的
+                       不可约分支.
+                       故$Z \cap U$对应了$A(U)$中的一个包含$f_{r}$的极小素理想$\mathfrak{p}_{Z}$. 
+                       由Krull主理想定理，$\dim(Z \cap U) = \dim(U) - 1$.
+                       而$\dim(Z \cap U) = \dim Z$，且$\dim Y = \dim U$. 
+                       故$\dim Z = \dim Y - 1 \geq n - r$. 
+            \item[(2)] 不妨设$X$不可约. 仍归纳. \par
+                       对于$r=1$，由于$\dim X \geq 1$，$X$非单点集，故$X \cap \mathcal{V}(f_{1}) \neq \varnothing$.
+                       而对于$r$，由归纳假设，$X \cap \mathcal{V}(F_{1},\cdots,F_{r-1}) \neq \varnothing$.
+                       取其中不可约分支$Y$，则由上一命题，$\dim Y \geq n - r + 1 \geq 1$.
+                       故由$r=1$的证明类似得$Y \cap \mathcal{V}(f_{r}) \neq \varnothing$.
+                       故$X \cap \mathcal{V}(F_{1},\cdots,F_{r}) \neq \varnothing$.
+        \end{enumerate}
+    \end{proof}
+
+    \begin{corollary}
+        $\mathbb{A}^{n}$或$\mathbb{P}^{n}$中的超曲面即对应空间的$n-1$维的等维数子簇.
+    \end{corollary}
+    \begin{proof}
+        只证仿射情形. 
+        若$X \subset \mathbb{A}^{n}$，其中$X=\mathcal{V}(F)$，$\deg F \geq 1$.
+        则由Krull主理想定理，对于任意不可约分支$X_{i}$，$\dim X_{i} = n - 1$. 
+        故$\dim X = n - 1$. \par
+        反之，若$X$是$n-1$维的等维数子簇，则不妨设$X$不可约（否则即是定义多项式的乘积），则
+        对于任意非零$f \in \mathcal{I}(X)$，将$f$分解为不可约多项式的乘积
+        $f_{1}\cdots f_{r}$. 则存在$j$使$f_{j} \in \mathcal{I}(X)$. 这意味着
+        $\left< f_{j} \right> \subset \mathcal{I}(X)$. 
+        故而$X \subset \mathcal{V}(f_{j})$. 
+        但此时，$\dim \mathcal{V}(f_{j}) = \dim X = n - 1$. 
+        故$X = \mathcal{V}(f_{j})$.
+    \end{proof}
+
+
+    \subsection{一般有限态射}
+    有限映射是一类重要的态射：
+    \begin{definition}[有限映射（Finite Map）]
+        称拟射影簇间的态射$f:X \rightarrow Y$有限，
+        若$f^{*}:k(Y) \rightarrow k(X)$是有限环扩张.
+    \end{definition}
+
+    容易知道，有限映射的复合仍是有限映射.
+    
+    \begin{theorem}
+        若$f:X \rightarrow Y$是不可约拟射影簇的支配态射，
+        则存在稠密开集$V \subset Y$使得对于任意$y \in V$都有$f^{-1}(y)$都是有限集
+        \textbf{当且仅当}$f^{*}:k(Y) \rightarrow k(X)$是代数的有限同态
+        （即$k(X)$是$f(k(Y))$的有限扩张. 由于$f$是支配态射，且$X$，$Y$都
+        不可约，故$f^{*}$是域之间的单射.）这也即$f$是有限映射. \par
+        在此情形下，显然有$\dim X = \dim Y$，并且
+        对于$y \in V$，我们有$|f^{-1}(y)| \leq [k(X):f(k(Y))]$.
+        该等号成立当且仅当$k(Y)/k(X)$可分.
+    \end{theorem}
+    \begin{proof}
+        先设$X \subset \mathbb{A}^{n}$与$Y \subset \mathbb{A}^{m}$是代数簇，且
+        以$f$的图像$\Gamma \subset \mathbb{A}^{n+m}$代替$X$. 
+        当原先的$X \subset \mathbb{A}^{1}$时，则以图像代替后，
+        我们可以认为$A(X)$是由$A(Y)$添加一个超越元$X$得到的.
+        这样就有
+        \begin{tikzcd}
+            X \arrow[d, "f"'] \arrow[r, hook] & \mathbb{A}^{m+1} \arrow[d, "\pi"] & x \arrow[d, maps to] \arrow[r, maps to] & {(x,f(x))} \arrow[d, maps to] \\
+            Y \arrow[r, hook]                 & \mathbb{A}^{m}                    & f(x) \arrow[r, maps to]                 & f(x)                         
+        \end{tikzcd}
+        若$x$在$k(Y)$是代数的，则令$G(T) \in k(Y)[T]$是$x$的极小多项式.
+        令$d=[k(X):k(Y)]=\deg G(T)$，则令$G(T)=a_{d}(Y)T^{d}+\cdots+a_{0}(Y)$.
+        其中$a_{i}(y)\in A(Y)$. 对于$y \in Y$，若$a_{d}(y) \neq 0$，则
+        $G_{y}(T)=a_{d}(y)T^{d}+\cdots+a_{0}(y)$有至多$d$个互不相同的解.
+        且$f^{-1}(y)\subset\{(x,y)\mid G_{y}(x)=0\}$，故$|f^{-1}(y)|\leq d$.
+
+        若$k(X):k(Y)$可分，则$G(T)$是$k(Y)$的可分多项式. 
+        这等价于说$G(T)$与$G'(T)$在$k(Y)[T]$中互素，故存在$A(T),B(T) \in k(Y)[T]$使得
+        $A(T)G(T)+B(T)G'(T)=1$. 乘以公分母后，存在$C(T) \in A(Y)[T]$使得
+        $a(T)G(T)+b(T)G'(T)=c(T)$，其中$a(T),b(T) \in A(Y)[T]$.
+        如此一来，存在$y \in Y$使得$C(y) \neq 0$. 故$G_{y}(T)$与$G_{y}'T$在$k[T]$中互素.
+        次数$G_{y}(T)$正好有$d$个互不相同的解，即$|f^{-1}(y)|=d$.
+
+        反之，若$[k(Y):k(X)]=\infty$，则取$F \in \mathcal{I}(X)$，记
+        $F(x,Y)=b_{e}(Y)x^{e}+\cdots+b_{0}(Y)$，则$F=0 \in k(X)=k(Y)(x)$.
+        由$x$超越，对于所有$y \in Y$，$b_{i}(y)=0$，即
+        $b_{i}(Y)$在$Y$上为$0$. 故$b_{i}(Y) \in \mathcal{I}(Y)$，且
+        $F(y,x)=0$对任意$x\in k$与$y \in Y$成立，故$\pi^{-1}(Y)=X$，即$X \cong Y \times \mathbb{A}^{1}$.
+        这即完成了对$n=1$维情况的证明.
+
+        对于一般情形，我们对$n$做归纳. 我们可以将映射$f$分解为如下情形:
+        \begin{tikzcd}
+            X=X_{n} \arrow[r] \arrow[d, hook]           & X_{n-1} \arrow[r] \arrow[d, hook]    & \cdots \arrow[r]          & X_{1} \arrow[r, hook] \arrow[d, hook] & X_{0}=Y \arrow[d, hook] \\
+            \mathbb{A}^{m+n} \arrow[r]                  & \mathbb{A}^{m+n-1} \arrow[r]         & \cdots \arrow[r]          & \mathbb{A}^{m+1} \arrow[r]            & \mathbb{A}^{m}          \\
+            {(y,x_{1},\cdots,x_{n})} \arrow[r, maps to] & {(y,x_{1},\cdots,x_{n-1})} \arrow[r] & \cdots \arrow[r, maps to] & {(y,x_{1})} \arrow[r, maps to]        & y                      
+        \end{tikzcd}
+        其中$X_{k+1} \rightarrow X_{k}$为对前$k$个分量的投影. 
+        那么存在开集$V \subset Y=X_{0}$使得任意$y \in V$上的纤维$f^{-1}(y)$有限等价于
+        任一$X_{k+1} \rightarrow X_{k}$的纤维一般有限（即存在$V_{k} \in X_{k}$使得
+        任意$y \in V_{k}$，$y$上的纤维有限）. 依据$n=1$的情形，这等价于
+        $k(X_{k+1})/k(X_{k})$都是有限扩张，也等价于$k(X)/k(Y)$有限. 
+        而$k(X)/k(Y)$可分也等价于诸$k(X_{k+1})/k(X_{k})$可分，
+        也等价于诸$X_{k+1} \rightarrow X_{k}$的纤维元素个数等于$[k(X_{k+1}):K(X_{k})]$.
+
+        现在回到一般情形，令$V \subset Y$是仿射开集，则$f:f^{-1}(V) \rightarrow V$是支配态射.
+        现取仿射开集$U \subset f^{-1}(V)$（自动也是$X$的仿射开集），
+        则可对$f\mid_{U}:U \rightarrow V$运用仿射情形的结论. 由于$X$，$Y$均不可约，
+        故$U$和$V$均在对于的簇中稠密. 而由于$k(Y)=k(V)$，且$k(X)=k(U)$，故存在这样的开集$V$
+        可推出$k(Y)/k(X)$有限. 
+
+        而这种情况下，$\operatorname{trdeg}k(X)=\operatorname{trdeg}k(Y)$，故而$\dim X =\dim Y$.
+    \end{proof}
+
+    \begin{corollary}
+        若$X$是$n$维不可约拟射影簇，则存在有限支配态射$f:X \rightarrow \mathbb{P}^{n}$.
+    \end{corollary}
+    \begin{proof}
+        不妨设$X$是射影簇（否则取闭包），则$X \subset \mathbb{P}^{N}$是闭集.  
+        若$n=N$，则无需证明. 否则$\dim X \leq n-1$.
+
+        否则取$p \in \mathbb{P}^{N}\backslash X$.
+        考虑沿着投影$\pi_{p}:\mathbb{P}^{N} \dashrightarrow \mathbb{P}^{N-1}$.
+        那我们有$\pi_{p}:\mathbb{P}^{N}\backslash p \dashrightarrow \mathbb{P}^{N-1}$.
+        那么$\pi_{x_{0}}\mid_{X}$像闭，且对于$q \in \mathbb{P}^{N-1}$，
+        $(\pi_{x_{0}}\mid_{X})^{-1}(q) \subsetneq l_{q}$，其中$l_{q}$是
+        连接$p$与$q \in \mathbb{P}^{N-1}$的直线，
+        故$\dim(\pi_{x_{0}}\mid_{X})^{-1}(p)=0$. 
+        这意味着$|(\pi_{x_{0}}\mid_{X})^{-1}(p)| < \infty$，
+        即$\pi_{x_{0}}\mid_{X}$有有限纤维.
+
+        如此一来，考虑映射$f:X \rightarrow \mathbb{P}^{N-1} \rightarrow \mathbb{P}^{n}$.
+        由于其中每一步都是有限的，故$f$是有限的. 由上一命题，$n=\dim X=\dim f(X)$. 
+        而$f(X)$是$\mathbb{P}^{n}$中的闭子集，故$f(X) = \mathbb{P}^{n}$. 
+        故$f$是支配态射. 取上述构造的$f$即可. 
+    \end{proof}
+
+    \begin{corollary}
+        对于拟射影簇$X$与$Y$，其具有$\dim (X \times Y) = \dim X + \dim Y$.
+    \end{corollary}
+    \begin{proof}
+        不妨设$X,Y$都不可约. 取支配有限态射$f:X \rightarrow \mathbb{P}^{m}$，
+        $g:Y \rightarrow \mathbb{P}^{n}$，则
+        $f \times g:X \times Y \rightarrow \mathbb{P}^{n} \times \mathbb{P}^{m}$是有限映射.
+        故$\dim(X \times Y)=\dim(\mathbb{P}^{m}\times\mathbb{P}^{n})=m+n$.
+    \end{proof}
+
+    \begin{corollary}
+        若$X,Y \subset \mathbb{P}^{n}$是拟射影簇.
+        \begin{enumerate}
+            \item[(1)] 若$X,Y$都不可约，则
+                       $\dim(X \cap Y) \geq \dim X + \dim Y -n$.
+            \item[(2)] 若$X$与$Y$都闭，且$\dim X + \dim Y \geq n$则$X \cap Y \neq \varnothing$.
+        \end{enumerate}
+    \end{corollary}
+    \begin{proof}
+        \begin{enumerate}
+            \item[(1)] 考虑仿射锥$\mathcal{C}X$与$\mathcal{C}Y$. 
+                       那么$\dim\mathcal{C}X=\dim X+1$
+                       且$\dim\mathcal{C}Y=\dim Y+1$.
+                       故$\dim(\mathcal{C}X \times \mathcal{C}Y) =\dim\mathcal{C}X + \dim\mathcal{C}Y = \dim X + \dim Y + 2$.
+                       且$\dim(\mathcal{C}X \times \mathcal{C}Y) \leq \dim(\mathbb{A}^{n+1}\times\mathbb{A}^{n+1}) = 2n+2$.
+                       而注意到$\mathcal{C}(X \cap Y)=\mathcal{C}X \cap \dim\mathcal{C}Y \cong (\mathcal{C}X \times \mathcal{C}Y) \cap \Delta$，
+                       其中$\Delta$是$\mathbb{A}^{n+1}\times\mathbb{A}^{n+1}$中的对角线.
+                       注意到$\Delta$是由$n+1$个线性方程定义的，
+                       故$(\mathcal{C}X \times \mathcal{C}Y) \cap \Delta$中的每个不可约分支$Z$（自动等维数）均有维数
+                       $\dim Z \geq \dim X + \dim Y + 2 - (n+1) = \dim X + \dim Y - n + 1$.
+                       这说明$\dim(\mathcal{C}(X \cap Y)) = \dim((\mathcal{C}X \times \mathcal{C}Y) \cap \Delta) \geq \dim X + \dim Y - n + 1$，
+                       故$\dim(X \cap Y) \geq \dim X + \dim Y - n$.
+            \item[(2)] 此时$\dim \mathcal{C}X \times \mathcal{C}Y >0$，且
+                       $\dim((\mathcal{C}X \times \mathcal{C}Y) \cap \Delta) \geq \dim X + \dim Y - n + 1
+                       \geq 1$，
+                       故$\mathcal{C}(X \cap Y) \cong (\mathcal{C}X \times \mathcal{C}Y) \cap \Delta$有正维数，
+                       从而$X \cap Y \neq \varnothing$.
+        \end{enumerate}
+    \end{proof}
+
+
+    \subsection{纤维的维数}
+    先做一个记号约定：对于簇的态射$\varphi:X \rightarrow Y$及$x \in X$，
+    $X_{x}:=\varphi^{-1}(\varphi(x))$.
+
+    \begin{lemma}
+        若$Y$是等维数$d$维代数簇，且$y \in Y$，
+        则存在$Y$上的正则函数$f_{1},\cdots,f_{d}$
+        使得$y$是$\mathcal{V}(f_{1},\cdots,f_{d})$的孤立不可约分支（即单点不可约分支），
+        且此时有$\dim Y\cap\mathcal{V}(f_{1},\cdots,f_{d}) = 0$.
+    \end{lemma}
+    \begin{proof}
+        假设$Y=\bigcup_{i} Y_{i}$是不可约分解，且$Y \subset \mathbb{A}^{n}$.
+        简便起见，不妨设$y$是原点，
+        那么可取$\mathcal{f_{1}}$是不包含任一$Y$的其他不可约分支的超平面，
+        即可保证存在 $y\in Y_{i}$ 使得 $f(y)\neq 0$. 
+        这样我们得到一个更小的闭子簇 
+        $Y^{(1)}:=Y\cap \mathcal{f_{1}},\dim Y^{(1)}=d-1$，同样的步骤做归纳即得
+        $Y=Y^{(0)}\supsetneq Y^{(1)}\supsetneq \cdots \supsetneq Y^{(d)}$，
+        其中$ Y^{(k)}=Y\cap \mathcal{V}(f_{1},\cdots,f_{k})$.
+    \end{proof}
+
+    \begin{theorem}
+        若$\varphi:X \rightarrow \mathbb{P}^{n}$是拟射影簇的态射，则映射
+        \[ \delta: X \rightarrow \Z_{\geq 0};x \mapsto \dim_{x}X_{x}\]
+        是上半连续的. 这即是说$\delta^{-1}(\Z_{\geq n}) \subset X$都是闭子集.
+
+        进一步地，若$X$不可约，则
+        $\dim X = \dim \overline{\varphi(X)} + \min\limits_{x \in X}\delta(x)$.
+    \end{theorem}
+    \begin{proof}
+        不妨设$X$不可约. 否则取不可约分解$X = \bigcup_{i=1}^{n}X_{i}$，
+        我们有$\delta^{-1}(\Z_{\geq r}) 
+        = \bigcup_{i=1}^{n}\{x \in X_{i} \mid \dim_{x}(X_{i}) \geq r\}$. 
+        由不可约情形的闭性即得一般情形的闭性.
+
+        在不可约的假设下，
+        令$Y = \overline{\varphi(X)} \subset \mathbb{P}^{n}$，
+        则$\varphi:X \rightarrow Y$是支配态射.
+        对$y \in Y$，取$y$包含在$Y$中的开邻域，则
+    \end{proof}
+
+    \begin{corollary}
+        若$X$是不可约拟射影簇，且$\varphi:X \rightarrow \mathbb{P}^{n}$是簇的态射
+        记$Y:= \overline{\varphi(X)}$，则
+        \begin{enumerate}
+            \item[(1)] 对于任意$y \in \varphi(X)$，
+                       $\varphi^{-1}(y)$的任一不可约分支维数不小于$\dim X - \dim Y$.
+            \item[(2)] 存在$Y$中的稠密开集，使得对于任意$y \in Y$，有
+                       $\dim \varphi^{-1}(y) = \dim X - \dim Y$.
+        \end{enumerate}
+    \end{corollary}
+
+    \begin{proposition}
+        若$\varphi:X \rightarrow Y$是闭态射，则$\delta:Y \rightarrow \Z_{\geq 0};\dim \varphi^{-1}(y)$
+        是上半连续的.
+    \end{proposition}
+
+    \begin{proposition}
+        若$\varphi:X \rightarrow Y$是支配闭态射，且$Y$不可约，
+        且$\varphi$的任一纤维不可约，且维数相等（记为$r$）.
+        那么$X$也不可约，且$\dim X = \dim Y + r$.
+    \end{proposition}
+
+    \begin{theorem}[刚性引理（Rigidity Lemma）]
+        若$X$是不可约射影簇，$Y$是不可约拟射影簇. 若$y_{0} \in Y$，
+        若$\varphi:X \times Y \rightarrow Z$是簇的态射，且$\varphi(X \times y_{0})$
+        是单点集，则对于任意$y \in Y$都有$\varphi(X \times y)$为单点集.
+    \end{theorem}
+    \begin{proof}
+        令$\Gamma$为$\varphi$的图像. 
+        考虑后两个分量的投影$q:X \times Y \times Z \rightarrow Y \times Z$.
+        由于$X$是射影簇，且$q$是闭映射，故$q(\Gamma) \subset Y \times Z$闭.
+        由于$Z$分量上的投影$p:Y \times Z \rightarrow Z$. 若$\varphi(X \times y_{0})=z_{0}$.
+        则$p^{-1}(y_{0})=(y_{0},z_{0})$，则$\min\limits_{(y,z)} \delta(y,z)=0$.
+        由上面引理，这即是说$\dim q(\Gamma) = \dim Y$. 且对于任意$w=(y,z) \in q(\Gamma)$，
+        则$\dim q^{-1}(w) \geq \dim \Gamma - \dim q(\Gamma) = \dim X + \dim Y - \dim Y = \dim X$.
+        即$q^{-1}(w)=X$. 故而$\varphi(X \times y)=z$.
+    \end{proof}
+
+    \begin{remark}
+        这件事是高度非平凡的. 其一般版本为$X$是紧合（七字经：拟紧泛闭有限型），几何整
+        的不可约簇，而$Y$是不可约簇. 详情见Vakil.10.3.12. 下面是该定理的强大应用. 
+    \end{remark}
+
+
+    \subsection{应用：Abel簇}
+    \begin{definition}[代数群（Algebraic Group）]
+        设$X$为簇. 
+        若存在簇的态射$m:X \times X \rightarrow X$，$\operatorname{inv}:X \rightarrow X$
+        以及$e \in X$（并记相应的包含映射为$i$）使得下图交换：
+        \begin{tikzcd}
+          V \times V \times V \arrow[r, "\operatorname{id} \times m"] \arrow[d, "m \times \operatorname{id}"'] & V \times V \arrow[d, "m"] \\
+          V  \times V \arrow[r, "m"]                                                                            & V                        
+        \end{tikzcd} 
+        \begin{tikzcd}
+          V \arrow[r, "{(\operatorname{id},\operatorname{inv})}"] \arrow[d] & V \times V \arrow[d, "m"] & V \arrow[l, "{(\operatorname{inv},\operatorname{id})}"'] \arrow[d] \\
+          e \arrow[r]                                                       & V                         & e \arrow[l]                                                       
+        \end{tikzcd}
+        \begin{tikzcd}
+          e \times V \arrow[r, "i \times \operatorname{id}"] \arrow[rd, "\pi_{V}"'] & V \times V \arrow[d, "m"] & V \times e \arrow[l, "\operatorname{id} \times i"'] \arrow[ld, "\pi_{V}"] \\
+                                                                   & V                         &                                                                    
+        \end{tikzcd}
+        则称$(V,m,\operatorname{inv},e)$为一个代数群.
+    \end{definition}
+
+    \begin{definition}[代数群的态射]
+        设$G_{1}$与$G_{2}$是代数群. 
+        称簇的映射$\varphi:G_{1} \mapsto G_{2}$是代数群的态射，若$\varphi$还是一个群同态.
+    \end{definition}
+
+    \begin{example}
+        \begin{enumerate}
+            \item[(1)] 全体可逆方阵$GL_{n}(k)$是一个拟射影簇，且乘法与取逆均为正规态射，故是一个代数群.
+                       同理，$SL_{n}(k)$，即行列式为$1$的方阵全体，也是一个代数群. 称$GL_{n}(k)$的闭子群为\textbf{线性代数群}.
+            \item[(2)] 椭圆曲线. 详情参见相关条目，这是一个非线性代数群.
+        \end{enumerate}
+    \end{example}
+    
+    在$k=\mathbb{C}$的情形下，线性代数群已被完全分类.
+
+    \begin{definition}[Abel簇（Abelian Variety）]
+        称不可约的射影代数群为$Abel$簇. (即作为簇是射影簇的代数群)
+    \end{definition}
+    
+    \begin{theorem}
+        Abel簇都是交换代数群.
+    \end{theorem}
+    \begin{proof}
+        令$X$是Abel簇，定义$u:X \times X \rightarrow X; (x,y) \mapsto x^{-1}y^{-1}xy$.
+        注意到$u(X \times e)=e$，故由上述命题知$u(X \times \{y\})$都是单点集. 
+        但$u(e \times \{y\})=e$，故这意味着$x^{-1}y^{-1}xy=1$对于任意$x,y \in X$成立. 
+        这即$X$交换.
+    \end{proof}
+
+    一维的复Abel簇就是椭圆曲线，故上述命题证明椭圆曲线上的群结构是交换的.
+
+    \subsection{可构造集}
+    \begin{definition}[可构造集（Constructible Set）]
+      称拓扑空间$X$的子集$Y$是可构造的，若$Y$是有限个相对闭集的并. 
+      这也即$Y = \bigcup_{i=1}^{n} U_{i} \cap V_{i}$，其中$U_{i}$开而$V_{i}$闭.
+    \end{definition}
+
+    \begin{remark}
+        开闭集显然都是可构造集.
+    \end{remark}
+
+    \begin{theorem}[Chevalley]
+        若$\varphi:X \rightarrow Y$是簇的态射，则$\varphi$保持可构造集. 
+        作为推论，簇的像是可构造的.
+    \end{theorem}
+    \begin{proof}
+        由于可构造集对有限并封闭，故不妨设$X$不可约. 
+        由于$X$的相对闭集也是簇，故只需证$\varphi(X)$可构造. 
+        若$\varphi$不是支配态射，则将$Y$缩小至$\overline{\varphi(X)}$. 
+        对$\dim Y =0$，命题显然成立. 若命题对维数小于$\dim\varphi(X)$成立.
+        由上述内容知，存在开集$V \subset Y$使得对于任意$y \in V$有
+        $\dim \varphi^{-1}(y) = \dim X - \dim Y$.
+        令$Z = \varphi^{-1}(V)^{c}$，则由不可约性有$\varphi(X)=\varphi(Z) \cup U$. 
+        那么由归纳假设，$\varphi(Z)$是可构造的，故而$\varphi(X)$可构造. 
+        故归纳假设成立，命题得证.
+    \end{proof}
+
+    \begin{example}
+        Chevalley定理证明了代数群的像都是闭子群. 这是因为代数子群的闭性等价于可构造性. 
+        而若$\varphi:G_{1} \rightarrow G_{2}$是代数群的态射，那么$\varphi(G_{1})$依Chevalley定理
+        是可构造的，故而在$G_{2}$中闭.
+    \end{example}
+
+    \subsection{应用：Grassmannian簇}
+    记$\operatorname{G}(r,n)$为仿射空间$\mathbb{A}^{n}$的全体$r$维线性子空间. 
+    我们将在$\operatorname{G}(r,n)$上赋予簇结构. 
+    记$V = \mathbb{A}^{n}$，定义如下映射：
+    \begin{equation*}\begin{aligned}
+      \mathcal{P}:\operatorname{G}(r,n) 
+      &\longrightarrow \mathbb{P}(\bigwedge\nolimits^{r}V)=\mathbb{P}^{{n \choose r}-1} \\
+      W &\longmapsto [\bigwedge\nolimits^{r}W]
+    \end{aligned}\end{equation*}
+    该映射是良定的：我们要证明这与$\mathcal{P}(W)$与$W$的基的选取无关. 
+    显然$\bigwedge\nolimits^{r}W$是一个$1$维线性空间.
+    若$\mathcal{U}=\{e_{1},\cdots,e_{r}\}$与$\mathcal{V}=\{f_{1},\cdots,f_{r}\}$都是$W$的一组基，
+    那么存在可逆方阵$A \in GL_{r}(k)$使得$(e_{1},\cdots,e_{r})A=(f_{1},\cdots,f_{r})$.
+    那么我们立即有
+    $\det(A)e_{1}\wedge\cdots\wedge e_{r}=f_{1}\wedge\cdots\wedge f_{r}$. 
+    这说明$[W_{\mathcal{U}}]=[W_{\mathcal{V}}]$. \par
+    \begin{example}
+        当$r=1$时的Grassmannian簇即射影空间$\mathbb{P}^{n}$.
+    \end{example}
+
+    进一步地，上述映射是单射.
+
+    \begin{proposition}[Plucker嵌入]
+        $\mathcal{P}$是单射.
+    \end{proposition}
+    \begin{proof}
+        注意到
+        $W=\{v \in V \mid v \wedge w=0 \in \bigwedge\nolimits^{r+1}V,\, \forall w \in \bigwedge\nolimits^{r} W\}$. 
+        若$W \neq V$，则存在$u \in W \backslash V$，那么存在$w \in \bigwedge\nolimits^{r} W$
+        使得$u \wedge w \neq 0$. 
+    \end{proof}
+    我们称$\mathcal{P}$为\textbf{Plucker嵌入}，
+    并称$W$在Plucker嵌入下的像在$\mathbb{P}(\bigwedge\nolimits^{r}V)$的齐次坐标为
+    $W$的\textbf{Plucker坐标}.
+    
+    \begin{remark}
+        事实上，这组坐标是可以显式地写出来的. 
+        首先，$W$由一个$r \times n$阶矩阵表出
+        （记$V$的一组基为$\{e_{1},\cdots,e_{n}\}$，
+        则$W$中的一组基向量的每一个都由$V$中的基向量线性表出. 
+        而这对应了一个$r \times n$阶矩阵）.
+        该矩阵在相差一个$r$阶可逆方阵的左乘下是唯一的，记作$M_{W}$. 
+        那么Plucker坐标显然是$M_{W}$的所有$r \times r$阶子式的行列式构成的.
+        这个表示方法是良定的，因为相差一个$r$阶方阵，
+        即意味着两者的所有$r \times r$阶子式的行列式相应地相差一个非零常数. 
+        而在$\mathbb{P}^{{n \choose r}-1}$中，两者是一样的.
+    \end{remark}
+
+    更进一步地，Plucker嵌入是闭嵌入. 
+    这即是说$\mathcal{P}(\operatorname{G}(r,n))$
+    是$\mathbb{P}^{{n \choose r}-1}$中的一个簇.
+
+    \begin{definition}[可分解性（Decomposibility）]
+        称$w \in \bigwedge\nolimits^{r} V$是一个\textbf{可分解}的，
+        若存在$v_{1},\cdots,v_{r} \in V$，使得$w=v_{1} \wedge \cdots \wedge v_{r}$.
+        若存在$\varphi \in \bigwedge\nolimits^{r-1} V$，使得$w=v \wedge \varphi$.
+        其中$v \in V$，则称\textbf{$v$整除$w$}，并记作$v | w$\par
+        若$w = v_{1} \wedge \cdots \wedge v_{r}$，则称$w$是\textbf{完全可分解}（totally decomposable）的.
+    \end{definition}
+
+    \begin{lemma}
+        若$v \in V$，且$w \in \bigwedge\nolimits^{r} V$，
+        则$v$整除$w$\textbf{当且仅当}$v \wedge w = 0$.
+    \end{lemma}
+    \begin{proof}
+        “$\Rightarrow$”：显然. \par
+        “$\Leftarrow$”：不妨设$v \neq 0$，则取$V$包含$v=v_{1}$的一组基，
+        记为$\{v_{1},v_{2},\cdots,v_{n}\}$. \par
+        令$w=\sum_{i_{1}<\cdots<i_{r}}a_{i_{1}\cdots i_{r}}v_{i_{1}}\wedge\cdots\wedge v_{i_{r}}$.
+        则$v \wedge w=0$即$a_{i_{1}\cdots i_{r}}=0$对于任意$i_{1}\neq 1$成立.
+    \end{proof}
+
+    \begin{lemma}
+        记$D_{w}=\{v \in V \mid v | w, \; w \in \bigwedge\nolimits^{r}V\}$，
+        则这是$V$的一个线性子空间. 那么$w$完全可分\textbf{当且仅当}$\dim D_{w} = r$.
+    \end{lemma}
+    \begin{proof}
+        若$w$完全可分解，令$w=v_{1} \wedge \cdots \wedge v_{r}$，
+        其中$v_{1},\cdots,v_{r}$线性无关，
+        则$D_{w}=\{v \in V \mid v \wedge v_{1} \wedge \cdots \wedge v_{r} =0\}$.
+        将$\{v_{1},\cdots,v_{r}\}$延拓为$V$的一组基
+        $\{v_{1},\cdots,v_{r},v_{r+1},\cdots,v_{n}\}$，
+        则令$v=a_{1}v_{1}+\cdots+a_{n}v_{n}$，故若$v \in D_{w}$，则
+        $(a_{1}v_{1}+\cdots+a_{n}v_{n})\wedge v_{1} \wedge \cdots \wedge v_{r}=0$，
+        这意味着$a_{i}=0 \; \forall i=r+1,\cdots,n$. 
+        故$v \in \operatorname{span}(v_{1},\cdots,v_{r})$，
+        从而$D_{w}=\operatorname{span}(v_{1},\cdots,v_{r})$，从而$\dim D_{w}=r$.
+
+        反之，令$D_{w}=\operatorname{span}(v_{1},\cdots,v_{r})$，
+        则将其延拓至$\{v_{1},\cdots,v_{r},v_{r+1},\cdots,v_{n}\}$. 
+        令
+        $w=\sum_{|I|=r}a_{I}v_{I}$，其中$I=i_{1},\cdots,i_{r}$且$i_{j} < i_{j+1}$，
+        而$v_{I}=v_{i_{1}} \wedge \cdots \wedge v_{i_{r}}$.
+        由于$v_{j} \wedge w=0$对$j=1,\cdots,r$成立，故$a_{I}v_{I} \neq 0$
+        当且仅当$I$中出现所有的$1,\cdots,r$. 这意味着$I=\{1,\cdots,r\}$，
+        从而$w=a_{1,\cdots,r}v_{1} \wedge \cdots \wedge v_{r}$. 
+        故$w$完全可分解.
+    \end{proof}
+
+    \begin{corollary}
+        考虑映射
+        \begin{equation*}\begin{aligned}
+          \varphi(w):V &\longrightarrow \bigwedge\nolimits^{r+1}V;\\
+          v &\mapsto v \wedge w.
+        \end{aligned}\end{equation*}
+        以及$\varphi:w \mapsto \varphi(w)$，
+        那么$w$完全可分解\textbf{当且仅当}$\operatorname{rank}(\varphi(w))=n-r$.
+    \end{corollary}
+    \begin{proof}
+        这是因为由引理，$w$完全可分解当且仅当$\dim_{k}D_{w}=r$，
+        而$D_{w}=\ker \varphi(w)$，故该推论得证.
+    \end{proof}
+
+    有了以上准备后，我么便可以给$\operatorname{G}(r,n)$赋予簇结构.
+
+    \begin{proposition}[Grassmanian簇]
+        像集$\mathcal{P}(\operatorname{G}(r,n))$是一个射影簇.
+    \end{proposition}
+    \begin{proof}
+        由于$w \in \bigwedge\nolimits^{r}V$为完全可分解元
+        当且仅当存在某个$r$维子空间$W$使得
+        $\operatorname{span}(w) = \bigwedge\nolimits^{r}W$.
+        而$w$完全可分解又当且仅当$\operatorname{rank}(\varphi(w))=n-r$，
+        这再次当且仅当$\varphi(w)$的$(n-r+1)\times(n-r+1)$阶子式的行列式（都是多项式）全为零.
+        而$\varphi(w)$一定是${n \choose r+1} \times n$阶矩阵，
+        故$\mathcal{P}(\operatorname{G}(r,n))$事实上是有限多项式的公共零点集.
+    \end{proof}
+    
+    \begin{remark}
+        事实上，Grassmanian簇是一族二次多项式的零点. 
+    \end{remark}
+
+    \begin{example}
+        不妨设$\operatorname{Char} k \neq 2$. 考虑一种最简单的非平凡Grassmannian簇：$G(2,4)$.
+        其Plucker映射为$\mathcal{P}:\operatorname{G}(2,4) \rightarrow 
+        \mathcal{P}(\bigwedge\nolimits^{2}\mathbb{A}^{4})=\mathcal{P}^{5}$.
+        由于$w \in \bigwedge\nolimits^{2}V$可分解当且仅当$\operatorname{rank}(\varphi(w)) \geq 2$.
+        这当且仅当$w \wedge w = 0$. 写成坐标分量，这即
+        \[X_{12}X_{34}-X_{13}X_{24}+X_{14}X_{23}=0.\]
+        其中$w=(X_{12}e_{1}+X_{34}e_{2})\wedge(X_{14}e_{3}+X_{23}e_{4})$.
+        这是事实上给出了${4 \choose 2}=6$个二次曲面. 由上述事实，这$6$个二次曲面生成了$\mathcal{I}(G(2,4))$.
+    \end{example}
+
+    \begin{definition}[有理簇（Rational Variety）]
+        称拟射影簇$X$是有理的，若其双有理等价于某个$\mathbb{P}^{n}$.
+    \end{definition}
+
+    我们将要证明以下三个事实：
+    \begin{enumerate}
+        \item[(1)] Grassmannian簇是有理簇.
+        \item[(2)] 簇$\operatorname{G}(k,n)$维数为$k(n-k)$.
+        \item[(3)] Grassmannian簇不可约.
+    \end{enumerate}
+
+    \begin{proposition}
+        簇$\operatorname{G}(k,n)$不可约.
+    \end{proposition}
+    \begin{proof}
+        考虑代数群$GL(V)$在$\operatorname{G}(k,n)$上的自然传递作用，
+        那么固定$W \in \operatorname{G}(k,n)$，作用$\varphi:GL(V) \rightarrow \operatorname{G}(k,n);
+        M \mapsto M \cdot W$是满射，且是簇的态射，故连续. 
+        由于代数群$GL(V)$不可约（因为是$\mathbb{A}^{n^{2}}$的开子集），
+        故其连续像$\varphi(GL(V))=\operatorname{G}(k,n)$不可约.
+    \end{proof}
+
+    \begin{proposition}
+        簇$\operatorname{G}(k,n)$是$k(n-k)$维有理簇.
+    \end{proposition}
+    \begin{proof}
+        由于我们已经证得$\operatorname{G}(k,n)$的不可约性，
+        故$\mathcal{P}(\operatorname{G}(k,n))$也不可约，且我们只需要研究
+        $\mathcal{P}(\operatorname{G}(k,n)) \subset \mathbb{P}(\bigwedge\nolimits^{k}V))$即可.
+
+        令$\Gamma \subset V$是一个$n-k$维子空间，而$V$是一个$n$维线性空间. 其对应的$k$次楔积
+        $w_{\Gamma} \in \bigwedge\nolimits^{n-k}V = (\bigwedge\nolimits^{n-k}V)^{*}$
+        可被认为是$\mathbb{P}(\bigwedge\nolimits^{k}V)$中的一个齐次线性映射. 
+        取一个标准开集$U = \{w_{\Gamma} \neq 0\}$，则
+        $[w] \in \mathcal{P}(\operatorname{G}(k,n)) \cap U$当且仅当
+        $w \wedge w_{\Gamma} \neq 0 \in \bigwedge\nolimits^{n}V$. 
+        这也等价于$W \cap \Gamma = 0$，其中$\mathcal{P}(W)=[w]$. 
+        故$\operatorname{G}(k,n) \cap U$正好是$\Gamma$在$V$中的全体直和补空间.
+        而这些子空间都可被等同于$V/\Gamma \rightarrow \Gamma$的线性映射的图像，
+        从而$\operatorname{G}(k,n) \cap U \cong \operatorname{Hom}(V/\Gamma,\Gamma)\cong \mathbb{A}^{k(n-k)}$.
+        这即证明了$\dim \operatorname{G}(k,n) = k(n-k)$.
+
+        加之$\mathbb{P}^{k(n-k)}$的任一标准开集也同构于$\mathbb{A}^{k(n-k)}$，
+        故$\operatorname{G}(k,n)$与$\mathbb{P}^{k(n-k)}$是双有理等价的.
+    \end{proof}
+
+    \begin{remark}
+        一些题外话：
+        
+        当$k=\R$或$\mathbb{C}$时，Grassmannian簇$\operatorname{G}(k,n)$也是微分几何的研究对象，即一个微分流形. 它的一组坐标卡是
+        \[U_{v_{1},\cdots,v_{n}}:=
+        \{\operatorname{span}(v_{1}+\sum_{i=k+1}^{n}a_{1,i}v_{i},\cdots,v_{k}+\sum_{i=k+1}^{n}a_{k,i}v_{i}) \mid a_{ij} \in k\}.\]
+        这其中$\{v_{1},\cdots,v_{n}\}$取遍$\mathbb{A}^{n}$的基. 另外，作为微分流形，
+        $\operatorname{G}(k,n)$也是$k(n-k)$维的.
+
+    \end{remark}
+
+    所谓线性空间中的旗（Flag）即一个子空间降链. 令$V$为$n$维线性空间，而
+    正整数$0 < a_{1} < \cdots < a_{k}$，则定义相应的旗簇为
+    \[\operatorname{Fl}(a_{1},\cdots,a_{k};V) = 
+    \{V_{1} \subset \cdots \subset V_{k} \mid \dim V_{i} = a_{i}\}.\]
+    这是$\operatorname{G}(a_{1},V) \times \cdots \times 
+    \operatorname{G}(a_{k},V)$的一个子簇.
+
+    \subsection{例子：入射面簇}
+    对于正整数$k<n$，定义入射面$I_{k,n} \subset \operatorname{G}(k,n) \times \mathbb{P}^{n}$为
+    $I_{k,n}=\{(W,[p]) \mid p \in W\}$.
+
+    若$X \subset \mathbb{P}^{n}$是射影簇，则定义
+    $\mathscr{C}_{k}(X) \subset \operatorname{G}(k,n)$为与$X$相交的所有$k$维子空间.
+
+    容易注意到，$\mathscr{C}_{k}(X)$即$X$同过$I_{k,n}$的”反射像“. 这是说
+    \begin{tikzcd}
+                                  & {I_{k,n}} \arrow[rd, "p"] \arrow[ld, "q"'] &                  \\
+        {\operatorname{G}(k,n)}           &                                            & \mathbb{P}^{n} \\
+        \mathscr{C}_{k}(X) \arrow[u, "i"] &                                            &                 
+    \end{tikzcd}
+    $\mathscr{C}_{k}(X)$即$q(p^{-1}(X))$. 其中$p$与$q$分别为投影，而$i$是包含.
+
+    \subsection{例子：连接簇}
+    若$X,Y \subset \mathbb{P}^{n}$是射影簇，且$X \cap Y = \varnothing$，则定义
+    $\mathcal{J}(X,Y):=\{直线l\subset\mathbb{P}^{n} \mid l \cap X,l \cap Y \neq \varnothing\}=
+    \bigcup_{x \in X,y \in Y}L_{xy}$. 其中，$L_{xy}$指连接$x$与$y$两点的直线.
+
+    我们可以用入射面簇描述$\mathcal{J}(X,Y)$. 
+    事实上，这即$p^{-1}(q(\mathscr{C}(X)\cap\mathscr{C}(Y)))$. 这里取$k=1$.
+
+    \subsection{例子：正割簇}
+    若$X \subset \mathbb{P}(V)$是一个闭子簇，则称
+    \[\varphi: X \times X - \Delta(X) \rightarrow G(1,\mathbb{P}(V))\]
+    为\textbf{割线映射}. \par
+    记$\operatorname{Sec}(X) = \overline{\operatorname{im}(\varphi)}$，以及
+    $\mathcal{S}(X)=q \circ p^{-1}(\operatorname{Sec}(X))$. 则称$\mathcal{S}(X)$
+    为$X$的正割簇.
+
+    \subsection{例子：Fano簇}
+    我们初步研究Grassmannian簇的一种重要子簇——Fano簇.
+    \begin{definition}[Fano簇]
+        设$X \subset \mathbb{P}^{n}$，则定义Fano簇
+        $\mathcal{F}_{k}(X):=\{Y \in \operatorname{G}(k,n)\mid Y \subset X\}$.
+    \end{definition}
+    首先，我们证明这确实是一个簇.
+
+    \begin{proof}
+        Fano簇$\mathcal{F}_{k}(X)$确实是一个簇.
+    \end{proof}
+    \begin{proof}
+        首先处理$X$为$\mathbb{P}^{n}$中超曲面的情况. 
+        令$X = \mathcal{V}(f)$
+    \end{proof}
+
+    \subsection{例子：行列式簇}
+    令$\operatorname{Char} k = 0$，$V = M_{m \times n}(k)$. 
+    这是一个$mn$维线性空间，则$\mathbb{P}(V)=\mathbb{P}^{mn-1}$.
+    定义$k$阶行列式簇$\mathcal{M}_{k}^{m,n}:=\{[M] \in \mathbb{P}^{mn-1}
+    \mid \operatorname{rank}(M) \leq k\}$.
+    这显然是个簇，其定义多项式为全体$(k+1)\times(k+1)$阶子式的行列式
+    （显然都是齐次多项式）.
+
+    我们来计算行列式簇$\mathcal{M}_{k}^{m,n}$的维数：
+
+    对于矩阵$M \in M_{m \times n}(k)$，
+    记$\varphi(M)$为其对应的线性映射$\mathbb{A}^{m} \rightarrow \mathbb{A}^{n}$.
+    那么$[M] \in \mathcal{M}_{k}^{m,n}$当且仅当$\dim_{k}(\ker(\varphi(M))) \geq n-k$.
+    考虑入射面$I=\{(M,W)\mid W \subset \ker(\varphi(M))\} \subset \mathscr{M}_{k}^{m \times n} \times G(n-k,n)$.
+    \begin{tikzcd}
+                                  & {I} \arrow[rd, "p"] \arrow[ld, "q"'] &                           \\
+        \mathscr{M}_{k}^{m \times n}      &                                            & {\operatorname{G}(n-k,n)} \\                                         &                          
+    \end{tikzcd}
+    我们有$p^{-1}(W) = \{[M] \in \mathscr{M}_{k}^{m \times n}\mid W \subset \ker \varphi(M) \}$.
+    若$W=\operatorname{span}(e_{1},\cdots,e_{n-k})$，则将$W$零化的矩阵$M \in \mathscr{M}_{k}^{m \times n}$
+    可刻画为$M=(O,M')$，其中$O$是$m \times n-k$阶零矩阵，而$M'$是一个$m \times k$阶矩阵.
+    如上刻画意味着$p^{-1}(W) \cong \mathbb{P}^{mk-1}$. 
+    由于$p$显然满，且其每根纤维的维数都是$mk-1$，故由$G(n-k,n)$的不可约性，
+    我们得到了$I$的不可约性以及维数$\dim I = mk + k(n-k) - 1$.
+
+    令$\widetilde{\mathscr{M}_{k}^{m \times n}} 
+    = \mathscr{M}_{k}^{m \times n} - \mathscr{M}_{k-1}^{m \times n}$.
+    这是$M_{k}^{m \times n}$的一个开子集，
+    且对于$[M] \in \widetilde{\mathscr{M}_{k}^{m \times n}}$，
+    有$q^{-1}(M)=\{(M,\ker\varphi(M))\}$，故$q$是一般有限映射，且纤维都是一元的
+    从而$k(I) \cong k(M_{\mathscr{M}_{k}^{m \times n}})$，
+    故$q$是双有理映射，从而
+    $\dim \mathscr{M}_{k}^{m \times n} = k(m+n)-k^{2}-1$.

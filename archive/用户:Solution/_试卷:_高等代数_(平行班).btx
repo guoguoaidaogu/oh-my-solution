@@ -1,0 +1,697 @@
+\setdisplaytitle{试卷：高等代数（平行班）}
+\sethtmltitle{试卷：高等代数（平行班）}
+
+
+== 26年高等代数II期末考试（谢启鸿） ==
+\textbf{一、\,选择题（每题2分，共16分）}
+
+\begin{enumerate}
+    \item 下列不一定正确的是（\quad）\\
+          A.\ $|AB|=|BA|$ \\ 
+          B.\ $AB$ 与 $BA$ 特征多项式相同 \\ 
+          C.\ $\mathrm{tr}(AB)=\mathrm{tr}(BA)$ \\ 
+          D.\ $AB$ 与 $BA$ 极小多项式相同
+
+    \item 矩阵 $A$ 可对角化的充要条件不是（\quad）\\
+          A.\ 特征多项式无重根 \\ 
+          B.\ 有完全的特征向量系  \\ 
+          C.\ 极小多项式无重根 \\ 
+          D.\ 有 $n$ 个线性无关的特征向量
+
+    \item （暂缺）
+
+    \item （暂缺）
+
+    \item $A(\lambda)$ 可逆的充要条件不是（\quad）\\
+          A.\ $A(\lambda)$ 的秩是 $n$ \\ 
+          B.\ $A(\lambda)$ 的行列式值为非零常数 \\ 
+          C.\ $A(\lambda)$ 的相抵标准型是 $I_n$ \\ 
+          D.\ $A(\lambda)$ 可以被表示为若干初等矩阵的乘积
+
+    \item 设 $A=J_{3k}(0)$，则 $A^3$ 相似于（\quad）\\
+          A.\ （遗忘）\\ 
+          B.\ $\mathrm{diag}\{J_k(0),J_k(0),J_k(0)\}$ \\
+          C.\ （遗忘） \\ 
+          D.\ $\mathrm{diag}\{0,J_{k-1}(0),J_k(0),J_k(0)\}$
+
+    \item $A$ 半正定的充要条件不是（\quad）\\
+          A.\ $A=C'C$ \\ 
+          B.\ 顺序主子式均 $\ge 0$ \\ 
+          C.\ 所有主子式均 $\ge 0$ \\ 
+          D.\ 所有特征值均 $\ge 0$ \\ 
+
+    \item 算子 $\varphi$ 正规的充要条件是（\quad）\\
+          A.\ 存在多项式 $f$，满足 $\varphi^*=f(\varphi)$ \\ 
+          B.\ 存在两个自伴随算子 $\varphi_1,\varphi_2$，满足 $\varphi_1+i\varphi_2=\varphi$，且 $\varphi_1\varphi_2=\varphi_2\varphi_1$ \\ 
+          C.\ $\varphi=\omega\eta$，其中 $\omega$ 正交，$\eta$ 半正定自伴随矩阵 \\ 
+          D.\ 若 $\lambda_0$ 为 $\varphi$ 的特征值，则 $\ker(\varphi-\lambda_0 I)\perp \mathrm{Im}(\varphi-\lambda_0 I)$
+\end{enumerate}
+
+\textbf{二、\,填空/计算题（每题3分，共24分）}
+
+\begin{enumerate}
+    \item 设 $f=x^3+x^2-x-1$，$g=x^2-x-2$，则 $R(f,g)=$$\underline{\qquad\qquad}$.
+
+    \item 已知 $A$ 的特征值为 $3,2,1$，求 $A^2-6A^{-1}+(A^*)^2$ 的特征值：$\underline{\qquad\qquad}$.
+
+    \item 设 $\mathrm{tr}(A)=a$，且对 $2\le i\le n$ 有 $\mathrm{tr}(A^i)=0$，求 $|A|=$ $\underline{\qquad\qquad}$.
+
+    \item 矩阵 $A$ 的初等因子为：$\lambda,\lambda^2,\lambda^3,\ (\lambda-1),(\lambda-1)^2,(\lambda+1),(\lambda+1)^2$，求 $A$ 的 Frobenius 标准型：$\underline{\qquad\qquad}$.
+
+    \item 已知不变因子为：$\lambda(\lambda^2-1),\ \lambda(\lambda^2-1),\ \lambda^2(\lambda^2-1)^2$，求 Jordan 标准型：$\underline{\qquad\qquad}$.
+
+    \item 矩阵 $A=\begin{pmatrix}1&a&a\\a&1&a\\0&0&2\end{pmatrix}$ 不可对角化，求参数 $a=$ $\underline{\qquad\qquad}$.
+
+    \item 求一个四阶矩阵的正负惯性指数（具体矩阵遗忘，答案 $(3,1)$）：$\underline{\qquad\qquad}$.
+
+    \item 二次型 $x_1^2+x_2^2+x_3^2+2tx_1x_2+2tx_1x_3$ 正定，求参数 $t$ 的取值范围：$\underline{\qquad\qquad}$.
+\end{enumerate}
+
+\textbf{三、\,（10分）}
+已知 $A^*$ 以 $\begin{pmatrix}1\\2\\0\end{pmatrix}$ 为特征向量，且
+\[
+A=\begin{pmatrix}2&3&a\\-b&\text{（缺失）}&\text{（缺失）}\\\text{（缺失）}&\text{（缺失）}&\text{（缺失）}\end{pmatrix},
+\]
+（矩阵部分元素缺失），求对应的特征值与参数 $a,b$.
+
+\textbf{四、\,（10分）}
+设
+\[
+A = \begin{pmatrix} 2 & -5 & 4 \\ 1 & -4 & 4 \\ 1 & -5 & 5 \end{pmatrix},
+\]
+求非奇异矩阵 $P$，使得 $P^{-1}AP$ 为 Jordan 标准型.
+
+\textbf{五、\,（10分）}
+$A$ 是四阶实对称矩阵（具体数字缺失，仅知第三行与第三列均为 $0\ 0\ 4\ 0$）。求正交矩阵 $P$，使 $P'AP$ 为对角阵.
+
+\textbf{六、\,（10分）}
+若 $r(A)=1$，证明：$A$ 可对角化是 $\mathrm{tr}(A)\neq 0$ 的充分必要条件.
+
+\textbf{七、\,（10分）}
+对于 $n$ 阶方阵 $A$，证明：存在非奇异矩阵 $P$ 满足 $PA+AP=O$ 是 $A$ 的 Jordan 标准型形如
+\[
+\mathrm{diag}\left\{J_{r_1}(\lambda_1),J_{r_1}(-\lambda_1),\ J_{r_2}(\lambda_2),J_{r_2}(-\lambda_2),\dots,J_{r_k}(\lambda_k),J_{r_k}(-\lambda_k),\ J_{s_1}(0),J_{s_2}(0),\dots,J_{s_t}(0)\right\}
+\]
+的充分必要条件.
+
+\textbf{八、\,（10分）}
+设 $A$ 是 $n$ 阶方阵，$A=(\alpha_1,\alpha_2,\dots,\alpha_n)$，记 $a_{ii}$ 为矩阵 $A$ 的 $(i,i)$ 元，证明：
+\[
+r(A)\ge \sum_{i=1}^n \frac{a_{ii}^2}{\alpha_i'\alpha_i}.
+\]
+
+
+== 25--26春季学期期中（谢启鸿） ==
+
+\textbf{一、\ 填空题（每题4分，共32分）}
+
+\begin{enumerate}
+    \item 多项式 $2x^3 - 17x^2 + 33x - 18$ 的判别式为 $\underline{\qquad\qquad}$.
+
+    \item 设多项式 $3x^3 + 96x^2 + 11x + 1$ 的根为 $x_1, x_2$ 和 $x_3$，则 $(x_1 - x_2)^2 + (x_2 - x_3)^2 + (x_3 - x_1)^2 = \underline{\qquad\qquad}$.
+
+    \item 设 $a$ 为参数，若如下两个矩阵
+    $$A = \begin{pmatrix}
+        0 & -4 & -6 \\
+        1 & 4 & 3 \\
+        0 & 0 & 2
+    \end{pmatrix} \quad \text{和} \quad B = \begin{pmatrix}
+        4 & 2 & 2 \\
+        1 & 3 & 1 \\
+        -3 & a & -1
+    \end{pmatrix}$$
+    相似，则 $a$ 的值为 $\underline{\qquad\qquad}$.
+
+    \item 设含参矩阵
+    $$A = \begin{pmatrix}
+        3 & 1 & a \\
+        2 & 4 & 2 \\
+        1 & b & 3
+    \end{pmatrix} \in M_3(\mathbb{R}),$$
+    其中 $a$ 和 $b$ 为未知参数. 已知向量 $v = (1, 2, 1)'$ 是矩阵 $A$ 的一个特征向量，则 $a$ 和 $b$ 的值分别为 $\underline{\qquad\qquad}$.
+
+    \item 设矩阵 
+    $$A = \begin{pmatrix}
+        1 & -2 & -1 & 1 \\
+        1 & 3 & 1 & 0 \\
+        0 & 1 & 2 & -1 \\
+        1 & 1 & 1 & 2
+    \end{pmatrix},$$ 
+    则 $A$ 的极小多项式为 $\underline{\qquad\qquad}$.
+
+    \item 设六阶矩阵 $A$ 的初等因子组为 $\lambda - 1, (\lambda - 1)^2, (\lambda - 1)^2$ 和 $\lambda + 1$，则 $A$ 的不变因子组为 $\underline{\qquad\qquad}$.
+
+    \item 矩阵 
+    $$A = \begin{pmatrix}
+        1 & 1 & 1 \\
+        0 & 2 & 0 \\
+        -1 & 1 & 3
+    \end{pmatrix}$$ 
+    的有理标准型为 $\underline{\qquad\qquad}$.
+
+    \item 设 $A$ 为 $4$ 阶复方阵，其特征多项式为 $f(\lambda) = (\lambda - 1)^3(\lambda - 2)$，且 $r(A - I) = 2$，则 $A$ 的 Jordan 标准型为 $\underline{\qquad\qquad}$.
+\end{enumerate}
+
+\textbf{二、\,(12分)}
+
+判断矩阵 
+$$A = \begin{pmatrix}
+    3 & 0 & 0 \\
+    1 & 2 & 1 \\
+    1 & k & -1
+\end{pmatrix}$$ 
+何时可以在复数域上对角化？针对不同情形，写出矩阵相应的 Jordan 标准型.
+
+\textbf{三、\,(12分)}
+
+设 
+$$A = \begin{pmatrix}
+    4 & 0 & 0 \\
+    -3 & 1 & 0 \\
+    -4 & -2 & 2
+\end{pmatrix}.$$
+对任意正整数 $n \ge 1$，求 $A^n$.
+
+\textbf{四、\,(14分)}
+
+设 
+$$A = \begin{pmatrix}
+    2 & -5 & 4 \\
+    1 & -4 & 4 \\
+    1 & -5 & 5
+\end{pmatrix}.$$
+求非异阵 $P$ 使得 $P^{-1}AP$ 为 Jordan 标准型.
+
+\textbf{五、\,(10分)}
+
+设 $n$ 阶复系数方阵 $A$ 和 $B$ 满足 $AB - BA = B$.
+\begin{itemize}
+    \item 证明：$B$ 是幂零阵.
+    \item 如果 $r(B) = n - 1$，求证：$A$ 的特征值构成公差为一的等差数列.
+\end{itemize}
+
+\textbf{六、\,(10分)}
+
+设 $K$ 是一个数域，$\lambda_0 \in K, A \in M_n(K), X, Y \in K^n$，满足
+$$AX = \lambda_0 X, \quad Y'A = \lambda_0 Y', \quad Y'X \neq 0,$$
+与 $r(A - \lambda_0 I_n) = n - 1$. 证明：$\lambda_0$ 是 $A$ 的一重特征值.
+
+\textbf{七、\,(10分)}
+
+给定两个有理系数的 $2 \times 2$ 矩阵
+$$M_0 = \begin{pmatrix}
+    1 & 2 \\
+    0 & 1
+\end{pmatrix}, \quad \text{和} \quad M_1 = \begin{pmatrix}
+    1 & 0 \\
+    -2 & 1
+\end{pmatrix}.$$
+令 $M_{\infty} = (M_0M_1)^{-1}$. 求证：对任意三个 $2 \times 2$ 非异阵 $P, Q$ 和 $R$，若
+$$A_0 = P^{-1}M_0P, \quad A_1 = Q^{-1}M_1Q, \quad \text{和} \quad A_{\infty} = R^{-1}M_{\infty}R$$
+满足关系 $A_0A_1A_{\infty} = I_2$，则存在非异阵 $S$ 使得 $S^{-1}A_iS = M_i$, 对任意 $i = 0, 1, \infty$.
+
+
+
+== 25--26年秋季学期期末(谢启鸿) ==
+\begin{quotation}
+谢帅高代题型（实在没有题目）
+
+八个填空，八个单选。
+
+三个计算大题：\\
+第一道大题是行列式计算，\\
+第二道是解线性方程组 (带$a,b$两个参数)，\\
+第三道是已知线性映射的表示矩阵求核空间和像空间，\\
+第一道大题（行列式计算）是
+$$\begin{vmatrix}
+a_1^2 + 1 & a_1 a_2 & \cdots & a_1 a_n \\
+a_2 a_1 & a_2^2 + 2 & \cdots & a_2 a_n \\
+\vdots & \vdots & \ddots & \vdots \\
+a_n a_1 & a_n a_2 & \cdots & a_n^2 + n
+\end{vmatrix}$$
+\begin{itemize}
+    \item 选择最后一题：
+    若 $\varphi$ 为实平面 $\mathbb{R}^2$ 上的线性变换，且 $\varphi$ 只有有限个不变子空间，则 $\varphi$ 的不变子空间个数不可能为 $(\quad)$ \\
+    A.~2个 \qquad B.~3个 \qquad C.~4个 \qquad D.~5个
+    \item[六.] 求证：若$A$为$n$阶方阵，则$A$为对合阵（$A^2=I_n$）的充分必要条件是
+    \[r(I_n-A)+r(I_n+A)=n.\]
+    \item[七.] 设$\varphi,\psi$为线性空间$V$上的线性变换，其中$\varphi$满足$\varphi^3=\varphi$。
+    证明：$\psi\circ\varphi=\varphi\circ\psi$的充分必要条件为
+    $\operatorname{Ker}\varphi,\,\operatorname{Ker}(I_V+\varphi),\,\operatorname{Ker}(I_V-\varphi)$均为$\psi$-不变子空间。
+    \item[八.] 已知$A,B,C,D$均为$n$阶实方阵，满足$I_n-AB$和$I_n-CD$均为反对称阵。证明：$AD+B'C'$为非异阵。
+\end{itemize}
+\end{quotation}
+
+== 25--26年秋季学期期中(谢启鸿) ==
+\textbf{一、\ 填空题（每空4分，共32分）}
+
+\begin{enumerate}
+    \item 计算 $\begin{vmatrix}
+        1 & 0 & 2 & 1 \\ \\
+        2 & -1 & 1 & 0 \\ \\
+        1 & 0 & 0 & 3 \\ \\
+        -1 & 0 & 2 & 1
+    \end{vmatrix} = \underline{\qquad}$.
+
+    \item 计算 $n$ 阶行列式 $\begin{vmatrix}
+        2 & 0 & 0 & \cdots & 0 & 1 \\ \\
+        -1 & 2 & 0 & \cdots & 0 & 1 \\ \\
+        0 & -1 & 2 & \cdots & 0 & 1 \\ \\
+        \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+        0 & 0 & 0 & \cdots & 2 & 1 \\ \\
+        0 & 0 & 0 & \cdots & -1 & 2
+    \end{vmatrix} = \underline{\qquad}$.
+
+    \item 设 $A = \begin{pmatrix}
+        1 & a & 0 \\
+        0 & 1 & a \\
+        0 & 0 & 1
+    \end{pmatrix}$，则 $A^{2025} = \underline{\qquad}$.
+
+    \item 设 $A = \begin{pmatrix}
+        1 & 1 & 0 \\
+        -2 & 1 & -1 \\
+        3 & 1 & 1
+    \end{pmatrix}$，则 $A^{-1} = \underline{\qquad}$.
+
+    \item 设 $X \in M_{2 \times 3}(\mathbb{R})$ 满足 $X \begin{pmatrix}
+        2 & 2 & 3 \\
+        1 & -1 & 0 \\
+        -1 & 2 & 1
+    \end{pmatrix} = \begin{pmatrix}
+        1 & 1 & 2 \\
+        0 & -1 & 3
+    \end{pmatrix}$，则 $X = \underline{\qquad}$.
+
+    \item 设 $\alpha_1 = (1, 4, 1)$, $\alpha_2 = (2, 1, -5)$, $\alpha_3 = (4, 2, -16)$，$\beta = (2, t, 3)$ 可以被 $\alpha_1, \alpha_2, \alpha_3$ 线性表示，则 $t = \underline{\qquad}$.
+
+    \item 设 $\alpha = \{(1, 0, -1), (2, 1, 1), (1, 1, 1)\}$ 和 $\beta = \{(0, 1, 1), (-1, 1, 0), (1, 2, 1)\}$ 是 $\mathbb{R}^3$ 的两组基，
+    则从基 $\alpha$ 到基 $\beta$ 的过渡矩阵为 $\underline{\qquad}$.
+
+    \item 设三阶方阵 $A$ 的秩为 $1$，$B = \begin{pmatrix}
+        1 & 0 & 2 \\
+        0 & b & 1 \\
+        3 & 2 & 3
+    \end{pmatrix}$，且 $AB = O$，则 $b = \underline{\qquad}$.
+\end{enumerate}
+
+\textbf{二、\,(12分)}
+
+设 $n \ge 2$, $x_1, \cdots, x_n$ 为非零实数，计算下列 $n$ 阶行列式的值：
+\[
+|A| = \begin{vmatrix}
+    x_1 & x_1^2 & \cdots & x_1^{n-1} & x_1^{-1} \\ \\
+    x_2 & x_2^2 & \cdots & x_2^{n-1} & x_2^{-1} \\ \\
+    \vdots & \vdots & \ddots & \vdots & \vdots \\ \\
+    x_n & x_n^2 & \cdots & x_n^{n-1} & x_n^{-1}
+\end{vmatrix}.
+\]
+
+\textbf{三、\,(12分)}
+
+求解下列线性方程组，其中 $k$ 为参数：
+\[
+\begin{cases}
+    k x_1 + x_2 + x_3 = 1, \\
+    x_1 + k x_2 + x_3 = 1, \\
+    x_1 + x_2 + k x_3 = 1.
+\end{cases}
+\]
+
+\textbf{四、\,(12分)}
+
+记 $n$ 阶复方阵全体构成的向量空间为 $M_n(\mathbb{C})$。
+对任意矩阵 $A \in M_n(\mathbb{C})$，定义集合
+\[
+C(A) = \{ B \in M_n(\mathbb{C}) \mid AB = BA \}.
+\]
+\begin{enumerate}
+    \item 验证 $C(A)$ 为 $M_n(\mathbb{C})$ 的非零子空间。
+    \item 设 $A$ 是一个对角矩阵，对角元由互不相同的 $a_1, a_2, \cdots, a_r$ 构成，且 $a_i$ 重复 $n_i$ 次，即 $A = \operatorname{diag}\{a_1, \cdots, a_1, a_2, \cdots, a_2, \cdots, a_r, \cdots, a_r\}$，其中 $n_i \geq 1$ 为 $r$ 个正整数，满足 $n = n_1 + n_2 + \cdots + n_r$。求 $C(A)$ 的维数。
+\end{enumerate}
+
+\textbf{五、\,(12分)}
+
+设 $n$ 阶方阵 $A$ 满足 $A A' = I_n$ 且 $|A| < 0$，求证：$I_n + A$ 是奇异阵。
+
+\textbf{六、\,(10分)}
+
+设 $A, B \in M_n(\mathbb{R})$，定义关于 $t$ 的多项式 $P(t) := |t \cdot A + B|$，
+证明：$\deg P(t) \leq \operatorname{rank}(A)$，且等号成立当且仅当
+\[
+\operatorname{rank} \begin{pmatrix}
+    A & B \\
+    O & A
+\end{pmatrix} = n + \operatorname{rank}(A)
+\]
+成立。(注：$\deg$ 表示多项式的次数)
+
+\textbf{七、\,(10分)}
+
+设 $V$ 是数域 $\mathbb{K}$ 上的 $n$ 维线性空间，
+$W_1, \cdots, W_r$ 是 $V$ 的维数为 $d$ 的子空间，
+证明：存在 $V$ 的维数为 $n-d$ 的子空间 $U$，
+使得 $U \oplus W_i = V$ 对任意的 $i$ 成立。
+
+
+
+== 24--25年秋季学期期中(谢启鸿) ==
+\begin{center}
+    \textsize{24pt}{复旦大学数学科学学院\\
+    2024$\sim$2025学年第一学期期中考试试卷\\
+    $\square\ \ \ \textbf{A}\ \,\textbf{卷}$}
+
+    \textsize{22pt}{课程名称：\ \ $\underline{\qquad\ 高等代数\ \,\text{I}\qquad\ }$课程代码：\ \ $\underline{\text{MATH120011}}$\\
+    开课院系：\ $\underline{\quad\ \ \ 数学科学学院\quad\ \ \ }$考试形式：\ \ $\underline{\qquad\,闭卷\qquad\,}$\\
+    姓\ \ 名：\ $\underline{\qquad\quad\ \ \ }$\ \ \ 学\ \ 号：\ $\underline{\qquad\quad\ \ \ }$\ \ \ 专\ \ 业：\ $\underline{\qquad\qquad\quad\ \ \ \,}$}
+
+    \begin{table}
+    \begin{tabular}{|c|c|c|c|}
+        题\ \ 目 &\quad$1$\quad&\quad$2$\quad&\quad$3$\quad&\quad$4$\quad&\quad$5$\quad&\quad$6$\quad&\quad$7$\quad&\quad$8$\quad&\ \ 总\ \ 分\ \ \\
+        得\ \ 分 & & & & & & & & & 
+    \end{tabular}
+    \end{table}
+\end{center}
+\textbf{一、\ 填空题 (每空 4 分，共 32 分)}
+\begin{enumerate}
+\item 计算 $\begin{vmatrix}1 & 2 & 3 & 4 \\ \\ 3 & 1 & -2 & 3 \\ \\ 4 & -3 & 1 & 2 \\ \\ -1 & 2 & -2 & 3\end{vmatrix}=\_\_\_\_\_\_\_\_$．
+\item 设行列式 $|A|=\begin{vmatrix}1 & 3 & 5 & \cdots & 2n-1 \\ \\ 1 & 2 & 0 & \cdots & 0 \\ \\ 1 & 0 & 3 & \cdots & 0 \\ \\ \vdots & \vdots & \vdots & & \vdots \\ \\ 1 & 0 & 0 & \cdots & n\end{vmatrix}$，
+则第一行元素的代数余子式之和 $A_{11}+A_{12}+\cdots+A_{1n}=\_\_\_\_\_\_\_\_$。
+\item 设 $A=\begin{pmatrix}-1 & -2 & -1 \\ \\ 1 & 2 & 1 \\ \\ 1 & 2 & 1\end{pmatrix}$，则 $A^{2024}=\_\_\_\_\_\_\_\_$。
+\item 设 $A=\begin{pmatrix}1 & 1 & 0 \\ \\ 0 & 1 & 1 \\ \\ 0 & 0 & 1\end{pmatrix}$，找一个方阵 $B=\_\_\_\_\_\_\_\_$ 满足条件 $B^{2}=A$。
+\item 设 $A=\begin{pmatrix}1 & 2 \\ \\ 2 & 3\end{pmatrix}, 
+B=\begin{pmatrix}1 & 0 & 0 \\ \\ -1 & 1 & 0 \\ \\ 0 & 2 & 1\end{pmatrix}, 
+C=\begin{pmatrix}0 & 1 & 0 \\ \\ -1 & 0 & 2\end{pmatrix}$，
+则矩阵方程 $AXB=C$ 的解 $X=\_\_\_\_\_\_\_\_$。
+\item 设三阶方阵 $A$ 的秩为 $2$，$B=\begin{pmatrix}1 & 0 \\ \\ 0 & b \\ \\ 3 & 0\end{pmatrix}$，且 $AB=O$，则 $b=\_\_\_\_\_\_\_\_$。
+\item 设 $\left\{\alpha_{1}=(-3,1,-2), \alpha_{2}=(1,-1,1), \alpha_{3}=(2,3,-1)\right\}$ 
+和 $\left\{\beta_{1}=(1,1,1), \beta_{2}=(1,2,3), \beta_{3}=(2,0,1)\right\}$ 是 $3$ 维行向量空间的两组基，
+则从基 $\left\{\alpha_{1}, \alpha_{2}, \alpha_{3}\right\}$ 到基 $\left\{\beta_{1}, \beta_{2}, \beta_{3}\right\}$ 的过渡矩阵为 $\_\_\_\_\_\_\_\_$。
+\item 设 $Ax=\beta$ 是数域 $\mathbb{F}$ 上的 $n$ 元\textbf{非齐次}线性方程组，
+它的所有解张成的子空间恰为全空间 $\mathbb{F}^{n}$，则 $\operatorname{rank}(A)=\_\_\_\_\_\_\_\_$。
+\end{enumerate}
+\\
+\textbf{二、\ (12 分)}计算下列行列式的值：
+$$|A|=\begin{vmatrix}
+1 & x_{1} & x_{1}^{2} & \cdots & x_{1}^{n} \\ \\
+1 & x_{2} & x_{2}^{2} & \cdots & x_{2}^{n} \\ \\
+\vdots & \vdots & \vdots & & \vdots \\ \\
+1 & x_{n} & x_{n}^{2} & \cdots & x_{n}^{n} \\ \\
+0 & a & a & \cdots & a
+\end{vmatrix}.$$
+\\
+\textbf{三、\ (12 分)}设 $V$ 是次数不超过 $2$ 的实系数一元多项式全体构成的实线性空间。
+\begin{enumerate}[label=(\arabic*)]
+\item 考虑三个多项式 $x^{2}+x+1,2x^{2}+x+5$，和 $x^{2}-3x+13$，问：这三个向量是否线性相关？
+\item 求方程 $\sqrt{x^{2}+x+1}+\sqrt{2x^{2}+x+5}=\sqrt{x^{2}-3x+13}$ 的实数解。
+\end{enumerate}
+\\
+\textbf{四、\ (12 分)}求解下列线性方程组，其中 $a, b$ 为参数：
+$$\begin{cases}
+x_{1}+x_{2}-x_{3}=1, \\ \\
+2x_{1}+(a+2)x_{2}-(b+2) x_{3}=2, \\ \\
+-3ax_{2}+(a+2b)x_{3}=a.
+\end{cases}$$
+\\
+\textbf{五、\ (12 分)}设 $A, B$ 是 $n$ 阶方阵且 $A^{2}=A$ 和 $B^{2}=B$。令 $M=AB$，求证：
+$$\operatorname{rank}(I_{n}-M) \leq 2(n-\operatorname{rank}(M)).$$
+\\
+\textbf{六、\ (10分)}设 $A, B$ 是 $n$ 阶实方阵，且 $AB=BA$。
+设 $\{\alpha_{1}, \cdots, \alpha_{s}\}$ 和 $\{\beta_{1}, \cdots, \beta_{t}\}$分别是 $Ax=0$ 和 $Bx=0$ 的基础解系。
+求证：$\{\alpha_{1}, \cdots, \alpha_{s}, \beta_{1}, \cdots, \beta_{t}\}$ 恰好是 $ABx=0$ 的基础解系的充要条件是，
+存在 $n$ 阶实方阵 $C, D$，使得 $CA+DB=I_{n}$。
+\\ \\
+\textbf{七、\ (10分)}设 $m \geq 2$ 为正整数，$\Omega$ 为一些 $n$ 阶方阵的集合，满足以下两个条件：
+\begin{enumerate}[label=(\roman*)]
+\item 对任意的 $A, B \in \Omega$，均有 $AB \in \Omega$；
+\item 对任意的 $A, B \in \Omega$，均有 $(AB)^{m}=BA$。
+\end{enumerate}
+证明以下两个结论成立：
+\begin{enumerate}[label=(\arabic*)]
+\item 对任意的 $A, B \in \Omega$，均有 $AB=BA$。
+\item 对任意的 $A \in \Omega$，均有 $|A|=0$ 或 $|A|^{m-1}=1$。
+\end{enumerate}
+
+
+
+== 24--25学年春季学期期中(谢启鸿) ==
+\textbf{一、\ 填空题（每题4分，共32分）}
+
+\begin{enumerate}
+    \item 设$4$阶方阵 $A$ 满足 $\operatorname{tr}(A)=4, \operatorname{tr}(A^{2})=6, \operatorname{tr}(A^{3})=10, \operatorname{tr}(A^{-1})=2$，则 $A$ 的行列式为 $\underline{\qquad\qquad}$.
+
+    \item 已知多项式 $f(x)=x^{2}+(m+4)x+3m+1$ 和 $g(x)=x^{2}+(m+1)x+m$ 的结式 $R(f,g)=0$，则 $m = \underline{\qquad\qquad}$.
+
+    \item 设 $\alpha$ 和 $\beta$ 是两个 $n$ 维列向量，$A$ 为 $n$ 阶方阵且 $\beta'A\alpha\ne 0$，则矩阵 $I_{n}+A\alpha\beta'$ 的特征值为 $\underline{\qquad\qquad}$.
+
+    \item 已知矩阵
+    $$A = \begin{pmatrix}
+        5 & 4 & -3 \\
+        0 & 2 & 0 \\
+        -3 & a & 5
+    \end{pmatrix}, \quad B = \begin{pmatrix}
+        2 & & \\
+        & 2 & \\
+        & & b
+    \end{pmatrix}$$
+    相似，则 $a,b$ 的值为 $\underline{\qquad\qquad}$.
+
+    \item 设矩阵
+    $$A = \begin{pmatrix}
+        1 & 2 & 1 \\
+        2 & -1 & 4 \\
+        -1 & 3 & 0
+    \end{pmatrix},$$
+    $\mathbb{K}[A]=\{f(A) \mid f(x)\in\mathbb{K}[x]\}$，则 $\dim_{\mathbb{K}}\mathbb{K}[A] = \underline{\qquad\qquad}$.
+
+    \item 设矩阵 $A$ 的初等因子组为 $\lambda, \lambda^{2}, \lambda+1, (\lambda+1)^{3}, \lambda+2, \lambda+2, (\lambda+2)^{2}$，
+    则 $A$ 的不变因子组为 $\underline{\qquad\qquad}$.
+
+    \item 设矩阵 $A$ 的特征多项式和极小多项式分别为 $f(\lambda)=(\lambda+1)^{2}(\lambda+2)^{2}(\lambda+3)^{3}$， $m(\lambda)=(\lambda+1)(\lambda+2)(\lambda+3)^{2}$，
+    则 $A$ 的有理标准型为 $\underline{\qquad\qquad}$.
+
+    \item 设矩阵 $A$ 的不变因子组为 $1, \cdots, 1, (\lambda-1)(\lambda^{2}+1), (\lambda-1)^{2}(\lambda^{2}+1), (\lambda^{2}-1)^{2}(\lambda^{2}+1)^{2}$，
+    则 $A$ 的 Jordan 标准型为 $\underline{\qquad\qquad}$.
+\end{enumerate}
+
+\textbf{二、\,(12分)}
+
+已知矩阵
+$$A = \begin{pmatrix}
+    1 & 2 & -3 \\
+    -1 & 4 & -3 \\
+    -1 & k & 5
+\end{pmatrix}$$
+有一个二重特征值，求 $k$ 的值并判断 $A$ 能否对角化？
+
+\textbf{三、\,(12分)}
+
+设
+$$A = \begin{pmatrix}
+    2 & -1 & 2 \\
+    5 & -3 & 3 \\
+    -1 & 0 & -2
+\end{pmatrix},$$
+求非异阵 $P$，使 $P^{-1}AP$ 为 Jordan 标准型。
+
+\textbf{四、\,(14分)}
+
+设矩阵
+$$A = \begin{pmatrix}
+    -2 & 0 & 0 \\
+    2 & a & 2 \\
+    3 & 1 & 1
+\end{pmatrix},$$
+且 $\lambda_{1}=-1$ 是 $A$ 的一个特征值。
+\begin{enumerate}
+    \item[(1)] 求 $a$ 的值。
+    \item[(2)] 问：$A$ 可否对角化？若可对角化，求可逆矩阵 $P$，使得 $P^{-1}AP$ 为对角阵。
+    \item[(3)] 设 $B$ 是 $3$ 阶方阵且 $AB=BA$，证明：$B$ 可对角化。
+\end{enumerate}
+
+\textbf{五、\,(10分)}
+
+设 $n\ (n \ge 2)$ 阶方阵 $A$ 的伴随阵为 $A^*$，
+证明：$A^*$ 是幂零阵的充要条件是，$0$ 是 $A$ 的特征值，并且其代数重数大于等于 $2$。
+
+\textbf{六、\,(10分)}
+
+设 $C$ 为 $n$ 阶幂零阵，证明：$I_{n}+C$ 与 $(I_{n}-C)^{-1}$ 相似。
+
+\textbf{七、\,(10分)}
+
+设 $V=M_{m\times n}(\mathbb{C})$，$A\in M_{m}(\mathbb{C})$，
+$B\in M_{n}(\mathbb{C})$，$V$ 上的线性变换定义为 $\varphi(X)=AXB$。
+证明：$\varphi$ 可对角化的充要条件是 $A, B$ 中至少有一个为零矩阵，或者 $A, B$ 均可对角化。
+
+
+
+== 23--24年春季学期期中(谢启鸿) ==
+
+
+\textbf{一、\ 填空题（每题 4 分，共 32 分）}
+
+\begin{enumerate}
+    \item 将对称多项式 $f(x_1, x_2, x_3) = (x_1 - x_2)^2(x_2 - x_3)^2 + (x_2 - x_3)^2(x_3 - x_1)^2 + (x_3 - x_1)^2(x_1 - x_2)^2$ 化为初等对称多项式的多项式是 $\underline{\qquad\qquad\qquad\qquad\qquad\qquad\qquad}$．
+
+    \item 多项式 $f(x) = x^3 + x^2 + x + 1$ 和 $g(x) = x^2 + x + 1$ 的结式等于 $\underline{\qquad\qquad\qquad}$．
+
+    \item 设矩阵 $A = \begin{pmatrix}
+        2 & -1 & 0 \\
+        1 & -1 & 1 \\
+        -1 & -1 & 1
+    \end{pmatrix}$，则 $\operatorname{tr}(A^{100}) = \underline{\qquad\qquad\qquad\qquad\qquad}$．
+
+    \item 已知矩阵 $A = \begin{pmatrix}
+        1 & -1 & -1 \\
+        -1 & 1 & a \\
+        -1 & a & 1
+    \end{pmatrix}$ 与 $B = \begin{pmatrix}
+        2 & & \\
+         & b & \\
+         & & 2
+    \end{pmatrix}$ 相似，则 $a, b$ 的值
+    为 $\underline{\qquad\qquad\qquad\qquad}$．
+
+    \item 设 $n$ 阶矩阵 $A$ 满足 $|A| = 6$ 且 $A + A^* = 5I_n$，其中 $A^*$ 表示 $A$ 的伴随矩阵，
+    则 $A$ 的极小多项式等于 $\underline{\qquad\qquad\qquad\qquad\qquad}$．
+
+    \item 设矩阵 $A = \begin{pmatrix}
+        3 & 1 & 0 & 0 \\
+        -4 & -1 & 0 & 0 \\
+        6 & 1 & 2 & 1 \\
+        -14 & -5 & -1 & 0
+    \end{pmatrix}$，则 $A$ 的初等因子组为 $\underline{\qquad\qquad\qquad\qquad}$．
+
+    \item 设 $3$ 维复线性空间 $V$ 上的线性变换 $\varphi$ 在一组基下的表示矩阵为 $A = \begin{pmatrix}
+        3 & 0 & 0 \\
+        1 & 1 & 1 \\
+        1 & -1 & 3
+    \end{pmatrix}$，
+    则 $V$ 的 $\varphi$-不变子空间的总个数等于 $\underline{\qquad\qquad\qquad}$．
+
+    \item 设矩阵 $A$ 的不变因子组为
+    $1, \cdots, 1, \lambda(\lambda+1)^2, \lambda^2(\lambda+1)^3$，
+    则 $A$ 的 Frobenius 标准型为 $\underline{\qquad\qquad\qquad\qquad\qquad\qquad\qquad}$．
+\end{enumerate}
+
+\textbf{二、\,(10分)} 已知矩阵 $A = \begin{pmatrix}
+    a & c & -1 \\
+    1-c & -a & 0 \\
+    5 & 3 & b
+\end{pmatrix}$ 的伴随矩阵 $A^*$ 有一个特征向量 $\alpha = (-1, 1, -1)'$ 且 $|A| = -1$，求 $a, b, c$ 的值。
+
+\textbf{三、\,(12分)} 设 $A = \begin{pmatrix}
+    3 & 2 & 2 \\
+    2 & 3 & 2 \\
+    -4 & -4 & -3
+\end{pmatrix}$，求非异阵 $P$，使 $P^{-1}AP$ 为 Jordan 标准型。
+
+
+\textbf{四、\,(16分)} 设 $V$ 为实数域上次数小于 $n$ 的多项式全体构成的线性空间，$V$ 上的
+线性变换 $\varphi$ 定义为：
+\[
+\varphi(f(x)) = f(2-x) + f'(x), \quad f(x) \in V.
+\]
+(1) 当 $n=4$ 时，求 $\varphi$ 的 Jordan 标准型.\\
+(2) 证明：当 $n \ge 3$ 时，$\varphi$ 不可对角化。
+
+\textbf{五、\,(10分)} 设实矩阵 $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$，其中 $a, b, c, d$ 均大于 $0$。证明：一定存在 $A$ 的特征向量 $(x, y)' \in \mathbb{R}^2$，使得 $x, y$ 均大于 $0$。
+
+\textbf{六、\,(10分)} 设 $C$ 为 $n$ 阶幂零阵，证明：存在 $n$ 阶非异阵 $P$，使得 $CP + PC = O$。
+
+\textbf{七、\,(10分)} 问：是否存在 $A \in M_3(\mathbb{C})$，使得 $A^2 + A' = I_3$ 且 $\operatorname{tr}(A) = 0$？若存在，请构造；若不存在，请证明。
+
+
+== 23--24年秋季学期期中(谢启鸿) ==
+\textbf{一、\,填空题 (每空 4 分，共 32 分)}
+
+1. 计算 $|A| = \begin{vmatrix} 
+1 & 2 & 3 & 4 & 5 \\ \\
+2 & 2 & 2 & 1 & 1 \\ \\
+3 & 1 & 2 & 4 & 5 \\ \\
+1 & 1 & 1 & 2 & 2 \\ \\
+4 & 3 & 1 & 5 & 0 
+\end{vmatrix} = \underline{\hspace{2cm}}$.
+
+2. 设 $n\,(n \ge 2)$ 阶方阵 $A$ 的行列式 $|A| = a \neq 0$，且 $A$ 中的每行元素之和均为 $b$，则 $A$ 中第二列元素的代数余子式之和为 $\underline{\hspace{2cm}}$.
+
+3. 设 $n\,(n \ge 2)$ 阶方阵 $A$ 满足 $A^m = 2I_n$，其中 $m$ 为正整数。若将 $A$ 中所有的元素 $a_{ij}$ 用其代数余子式 $A_{ij}\,(1 \le i, j \le n)$ 代替，得到的矩阵记作 $B$，则 $B^m = \underline{\hspace{2cm}}$.
+
+4. 设 $A = \begin{pmatrix} t & 2 & 1 \\ \\ 3 & t & t \\ \\ -1 & 2 & 3 \end{pmatrix}$，$B$ 为 $3$ 阶非零矩阵，且 $AB=O$，则 $t = \underline{\hspace{2cm}}$.
+
+5. 设行向量组 $\{(1,1,1,1), (2,1,-1,0), (-1,0,2,1), (3,2,a,1)\}$ 的秩等于 $2$，则 $a = \underline{\hspace{2cm}}$.
+
+6. 设 $A = \begin{pmatrix} 0 & -1 \\ \\ 1 & 0 \end{pmatrix}$，$C(A) = \{X \in M_2(\mathbb{K}) \mid AX = XA\}$，则 $\dim C(A) = \underline{\hspace{2cm}}$.
+
+7. 线性空间 $\mathbb{K}^4$ 中有两组基 $\{f_1, f_2, f_3, f_4\}$ 和 $\{g_1, g_2, g_3, g_4\}$，其中
+   \[f_1 = (1,0,1,0),\ f_2 = (0,1,0,1),\ f_3 = (1,1,0,0),\ f_4 = (0,1,1,0);\]
+   \[g_1 = (1,2,3,4),\ g_2 = (2,3,4,1),\ g_3 = (3,4,1,2),\ g_4 = (4,1,2,3).\]
+   则从基 $\{f_1, f_2, f_3, f_4\}$ 到基 $\{g_1, g_2, g_3, g_4\}$ 的过渡矩阵为 $\underline{\hspace{2cm}}$.
+
+8. 设 $(2I_4 - C^{-1}B)A' = C^{-1}$，其中
+   \[B = \begin{pmatrix} 1 & 1 & -2 & 3 \\ \\ 0 & 1 & 1 & -2 \\ \\ 0 & 0 & 1 & 1 \\ \\ 0 & 0 & 0 & 1 \end{pmatrix}, \quad 
+   C = \begin{pmatrix} 1 & 0 & 2 & 0 \\ \\ 0 & 1 & -1 & 0 \\ \\ 0 & 0 & 1 & 3 \\ \\ 0 & 0 & 0 & 1 \end{pmatrix}.\]
+   则矩阵 $A = \underline{\hspace{2cm}}$.
+
+   \textbf{二、(12 分)} 计算 $f(x+1) - f(x)$，其中
+
+\[
+f(x) = \begin{vmatrix} 
+1 & 0 & 0 & 0 & \cdots & 0 & x \\ \\
+1 & 2 & 0 & 0 & \cdots & 0 & x^2 \\ \\
+1 & 3 & 3 & 0 & \cdots & 0 & x^3 \\
+\vdots & \vdots & \vdots & \vdots & & \vdots & \vdots \\ \\
+1 & n & C_n^2 & C_n^3 & \cdots & C_n^{n-1} & x^n \\ \\
+1 & n+1 & C_{n+1}^2 & C_{n+1}^3 & \cdots & C_{n+1}^{n-1} & x^{n+1}
+\end{vmatrix}.
+\]
+
+\textbf{三、\,(12 分)}
+已知向量组 $\alpha_1 = (1, 2, 1, -2), \alpha_2 = (2, 3, 1, 0), \alpha_3 = (1, 2, 2, -3)$，
+$\beta_1 = (1, 1, 1, 1), \beta_2 = (1, 0, 1, -1), \beta_3 = (1, 3, 0, -4)$。
+设子空间 $V_1 = L(\alpha_1, \alpha_2, \alpha_3)$，$V_2 = L(\beta_1, \beta_2, \beta_3)$。
+求 $V_1 + V_2$ 和 $V_1 \cap V_2$ 的维数。
+
+\textbf{四、\,(12 分)}
+求解下列线性方程组，其中 $a_1, \cdots, a_n, b$ 为参数且 $\sum\limits_{i=1}^n a_i \neq 0$：
+
+\[
+\begin{cases} 
+(a_1+b)x_1 + a_2x_2 + a_3x_3 + \cdots + a_nx_n = 0, \\ \\
+a_1x_1 + (a_2+b)x_2 + a_3x_3 + \cdots + a_nx_n = 0, \\ \\
+a_1x_1 + a_2x_2 + (a_3+b)x_3 + \cdots + a_nx_n = 0, \\ \\
+\qquad\qquad\qquad\cdots\,\cdots\,\cdots\,\cdots \\ \\
+a_1x_1 + a_2x_2 + a_3x_3 + \cdots + (a_n+b)x_n = 0.
+\end{cases}
+\]
+
+\textbf{五、\,(12 分)}
+设 $n$ 阶方阵 $A$ 满足 $AA^T = I_n$ 且 $|A| < 0$，证明：$I_n + A$ 是奇异阵。
+
+\textbf{六、\,(10 分)}
+设 $n$ 阶方阵 $A=(a_{ij})$，下列 $n$ 个行列式称为 $A$ 的 $n$ 个顺序主子式：
+\[
+|A_k| = \begin{vmatrix} 
+a_{11} & a_{12} & \cdots & a_{1k} \\ \\
+a_{21} & a_{22} & \cdots & a_{2k} \\ \\
+\vdots & \vdots & & \vdots \\ \\
+a_{k1} & a_{k2} & \cdots & a_{kk}
+\end{vmatrix}, \quad k=1, 2, \cdots, n.
+\]
+设 $r(A)=r$，证明：可对 $A$ 实施若干次行对换和列对换，使所得矩阵 $B$ 的前 $r$ 个顺序主子式全不为零，并且后 $n-r$ 个顺序主子式全为零。
+
+\textbf{七、\,(10 分)}
+给定非负实数 $a_{ij}\,(1 \le i \neq j \le n)$ 满足下列两个条件：
+\begin{enumerate}
+    \item[(i)] $a_{ij} = a_{ji}\,(1 \le i < j \le n)$;
+    \item[(ii)] 存在 $1, 2, \cdots, n$ 的全排列 $k_1, k_2, \cdots, k_n$，使得 $a_{k_1k_2} a_{k_2k_3} \cdots a_{k_{n-1}k_n} a_{k_nk_1} > 0$.
+\end{enumerate}
+令 $a_i = a_{i1} + \cdots + a_{i,i-1} + a_{i,i+1} + \cdots + a_{in} \, (1 \le i \le n)$，定义 $n$ 阶方阵 $B=(b_{ij})$ 为：
+$b_{ii} = -1 \, (1 \le i \le n), b_{ij} = \dfrac{a_{ij}}{a_i} \, (1 \le i \neq j \le n)$。证明：
+
+\begin{enumerate}[label=(\arabic*)]
+    \item 线性方程组 $Bx = 0$ 的解空间为 $L(e)$，其中 $e = (1, 1, \cdots, 1)'$;
+    \item 线性方程组 $B'y = 0$ 的解空间为 $L(\alpha)$，其中 $\alpha = (a_1, a_2, \cdots, a_n)'$;
+    \item 设 $\beta = (b_1, b_2, \cdots, b_n)' \in \mathbb{R}^n$，则 $Bx = \beta$ 有解的充要条件是 $\alpha'\beta = \sum\limits_{i=1}^n a_i b_i = 0$.
+\end{enumerate}

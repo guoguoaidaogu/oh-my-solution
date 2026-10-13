@@ -1,0 +1,940 @@
+\theoremstyle{plain}\newtheorem*{1}{习题1}
+\theoremstyle{plain}\newtheorem*{2}{习题2}
+\theoremstyle{plain}\newtheorem*{3}{习题3}
+\theoremstyle{plain}\newtheorem*{4}{习题4}
+\theoremstyle{plain}\newtheorem*{5}{习题5}
+\theoremstyle{plain}\newtheorem*{6}{习题6}
+\theoremstyle{plain}\newtheorem*{7}{习题7}
+\theoremstyle{plain}\newtheorem*{8}{习题8}
+\theoremstyle{plain}\newtheorem*{9}{习题9}
+\theoremstyle{plain}\newtheorem*{10}{习题10}
+
+\setcounter{section}{-1}
+\newtheorem{prop}{性质}
+\section{导论}
+
+\begin{definition}
+Random Matrix是取矩阵值的随机变量。\\
+一个矩阵 $A=(a_{ij})_{1\le i,j \le n}$，其中每个元素 $a_{ij}$ 均为随机变量或随机选择。
+\end{definition}
+
+\begin{example}[对称随机矩阵]
+考虑对称阵 $a_{ij}=a_{ji}$，且 $a_{ij} \in \{-1, 1\}$。
+\begin{itemize}
+    \item 当 $n=1$ 时: 有 2 种矩阵。
+    \item 当 $n=2$ 时: 有 8 种矩阵。
+\end{itemize}
+\end{example}
+
+Stochastic Matrix和Random Matrix不同，
+某种意义上可以理解为随机过程中的转移矩阵。
+
+
+\subsection*{研究对象与现象}
+研究对象主要是随机矩阵的 (奇异) 特征值、特征向量。
+\begin{itemize}
+    \item \textbf{半圆律 (Semicircle Law)}: \\
+    对上述例子，将特征值数值绘制成直方图，在 N 很大时，会出现规律。当 $N \to \infty$，经过适当尺度化 (scaling) 后，特征值的密度函数趋向于 $\frac{1}{2\pi}\sqrt{4-x^2}$。
+
+    \item \textbf{普适性现象 (Universality)}: \\
+    特征值的宏观极限规律不依赖于矩阵元素的具体分布。例如，无论 $a_{ij}$ 是来自：
+    \begin{itemize}
+        \item $\{1,2,3,4\}$
+        \item Gauss 分布
+        \item 其他独立同分布
+    \end{itemize}
+    只要限制矩阵的对称性以保证实特征值，宏观现象是相似的。
+
+    \item \textbf{循环律 (Circular Law)}: \\
+    对于非对称的复矩阵 G，当 $N \to \infty$ 时，其特征值在复平面的单位圆内呈均匀分布。
+\end{itemize}
+
+\subsection*{Ulam 问题}
+\begin{definition}
+令 $S_N := \{ \pi | \pi: \{1,2,...,N\} \to \{1,2,...,N\} \}$ 为 $N$ 阶置换群 (permutation group)。
+
+对于一个置换 $\pi \in S_N$，如果存在下标序列 $1 \le i_1 < i_2 < \dots < i_k \le N$ 使得 $\pi(i_1) < \pi(i_2) < \dots < \pi(i_k)$，则称序列 $(\pi(i_1), \dots, \pi(i_k))$ 为一个长度为 $k$ 的\textbf{增长子列}。
+
+$L_N(\pi)$ 定义为 $\pi$ 中\textbf{最长增长子列}的长度。
+\end{definition}
+
+\begin{example}
+对于 $N=5$，置换 $\pi: (1,2,3,4,5) \to (5,1,3,2,4)$。
+其增长子列有 (1,3,4), (1,2,4) 等。最长长度为 3，即 $L_5(\pi) = 3$。
+\end{example}
+
+在 $S_N$ 上赋予均匀分布, 即 $P(\pi) = \frac{1}{N!}$。此时 $L_N(\pi): S_N \to \mathbb{R}$ 成为一个随机变量。
+
+我们关心的问题是：当 $N \to \infty$ 时，$L_N$ 的分布是什么？ \\
+定义 $q_{n,N} := \text{Prob}(L_N(\pi) \le n) = \frac{f_{n,N}}{N!}$，其中 $f_{n,N} = \# \{ \pi \in S_N | L_N(\pi) \le n \}$。
+
+\subsubsection*{$L_N$ 与下列问题有关}
+\begin{itemize}
+    \item $S_N$ 的表示问题 (杨图，Young Tableaux)。
+    \item 统计力学的粒子系统。
+    \item 首达渗流问题、增长模型、排斥过程。
+    \item 曲面上的随机拓扑。
+    \item 排序问题: 对 N 本编号为 1~N 的书进行排序，需要操作的次数为 $n = N - L_N(\pi)$ 次才能恢复原始排序。
+\end{itemize}
+
+\subsubsection*{历史 (History)}
+\begin{itemize}
+    \item \textbf{1935}: Erdős-Szekeres, $E(L_N) \ge \frac{1}{2}\sqrt{N-1}$。
+    \item \textbf{1961}: Ulam 用蒙特卡洛方法，猜测极限 $\lim_{N \to \infty} \frac{E(L_N)}{\sqrt{N}} = C$ 存在。
+    \item \textbf{1968}: Hammersley, 猜测 $C=2$。
+    \item \textbf{1972}: Logan-Shepp, 证明了极限存在。
+    \item \textbf{1977}: Vershik-Kerov, 证明了 $C \ge 2$, 从而确认了 $C=2$。
+    \item \textbf{1999}: Baik-Deift-Johansson, 证明了 $L_N$ 的涨落分布：
+    \[ \frac{L_N - 2\sqrt{N}}{N^{1/6}} \xrightarrow{\text{dist}} \chi \]
+    其中 $\chi$ 是 Tracy-Widom (TW) 分布，该分布也描述了 GUE 随机矩阵最大特征值的分布。
+\end{itemize}
+
+
+\section{ 高斯随机阵的解析分布}
+\subsection*{随机矩阵的定义方式}
+\begin{enumerate}
+    \item 给定具体元素的具体分布。
+    \item 给定一个矩阵空间，在空间上赋予一定测度。
+\end{enumerate}
+
+\subsection*{Gaussian Orthogonal Ensemble, GOE}
+\begin{definition}[GOE 的两种等价定义]
+\begin{enumerate}
+    \item[(一)] 矩阵 $A_N$ 是 $N \times N$ 的实对称矩阵 ($A_N^T=A_N$)。其元素 $A_N(i,j)$ ($i \le j$) 是相互独立的、均值为 0 的正态分布随机变量，方差为：
+    \[ \text{Var}(A_N(i,j)) = \begin{cases} 1/N, & i < j \\ 2/N, & i = j \end{cases} \]
+    \item[(二)] 在 $N$ 阶实对称矩阵的空间 $\Omega_N$ 上，赋予如下的概率测度：
+    \[ d\mathbb{P}_N(A_N) = C_N \exp\left(-\frac{N}{4} \text{tr}(A_N^2)\right) \prod_{ i \le j } dx_{ij} \]
+    其中 $C_N$ 是归一化常数。
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+\begin{itemize}
+    \item[a)] 该测度在正交变换下不变。
+    记 O 为正交阵 ($OO^T = I_N$)，对于变换 $B = OAO^T$，
+    有
+     \[\text{Tr}(B^2) = \text{Tr}(OAO^T OAO^T) = \text{Tr}(O A^2 O^T) = \text{Tr}(O^T O A^2) = \text{Tr}(A^2).\]
+     进而有$dB=dA$。
+    \item[b)] 对于 $N=2$, 
+    $A=\begin{pmatrix} x_{11} & x_{12} \\ x_{12} & x_{22} \end{pmatrix}$。第二种定义给出的分布（忽略常数）为 
+    \begin{equation*}
+        \begin{aligned}
+            \exp(-\frac{1}{2} \text{Tr} A^2) &= \exp(-\frac{1}{2}(x_{11}^2 + 2x_{12}^2 + x_{22}^2)) \\
+            &= \exp(-\frac{x_{11}^2}{2})\exp(-x_{12}^2)\exp(-\frac{x_{22}^2}{2})
+        \end{aligned}
+    \end{equation*}
+    这与第一种定义中各元素独立的方差设定是相符的。
+    一般情形类似可推得，故在 Gaussian 情形下，两种定义等价。
+\end{itemize}
+\end{remark}
+
+\subsection*{高斯酉系综 (Gaussian Unitary Ensemble, GUE)}
+\begin{definition}[GUE]
+矩阵 $A_N = (a_{ij})$ 是 $N \times N$ 的复厄米矩阵 ($A_N^* = A_N$) ($a_{ij} = \overline{a_{ji}}$)。
+其中 $a_{ij} = x_{ij} + i y_{ij}$ ($i<j$) 和 $a_{ii} = x_{ii}$ 的实部和虚部是 i.i.d 的高斯随机变量，且 $E(|a_{ij}|^2) = 1/N$。
+其概率测度为：
+\[ d\mathbb{P}(A_N) = C_N \exp\left(-\frac{N}{2} \text{Tr}(A_N^2)\right) dA_N \]
+其中 $dA_N = \prod\limits_{i=1}^N dx_{ii} \prod\limits_{i<j} dx_{ij} dy_{ij}$.
+\end{definition}
+
+\begin{remark}
+\begin{itemize}
+    \item[a)] GUE 的概率分布在酉变换 ($A \to U^*AU$) 下不变。
+    \item[b)] 更一般的概率测度可以定义为 $\frac{1}{Z_N} \exp(-N \text{Tr} V(M)) dM$, 其中 $V(M)$ 称为势函数，$Z_N$ 称为配分函数 (partition function)。
+    \item 对于一般的 V, 可以定义一个能量泛函 
+    $E(\mu) = \iint \log|x-y| d\mu(x)d\mu(y) + \int V(x) d\mu(x)$。通过求解其
+    极小值问题（平衡测度问题）可以得到 $N\to\infty$ 时的极限分布。以上仅是大致叙述，
+    详细论述本课程不做讨论。
+\end{itemize}
+\end{remark}
+
+\subsection{GUE 和 GOE 特征值分布的解析表达式}
+任何厄米/对称矩阵可以被对角化，$A_N = U^*DU$ (或 $O^TDO$)，其中 $D = \text{diag}(\lambda_1, \dots, \lambda_N)$。
+
+\begin{example}[考查 GOE(2) 以体会特征值分布]
+$A = \begin{pmatrix} x_{11} & x_{12} \\ x_{12} & x_{22} \end{pmatrix}$，其概率密度为 $P(A) = C_2 \exp(-\frac{1}{2}\text{Tr}A^2)$。
+
+进行变量代换 $A=O^TDO$，其中 $D = \begin{pmatrix} \lambda_1 & \\ & \lambda_2 \end{pmatrix}$，$O = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$。由此可得 $x_{ij}$ 与 $(\lambda_1, \lambda_2, \theta)$ 的关系。
+
+取$\lambda_1<\lambda_2,\quad \cos \theta\geq 0,\quad \theta\in(-\pi/2,\pi/2)$，则
+可求得$x_{ij}$与新参数的变量代换关系。
+
+计算得到变换的雅可比行列式为 $\det J = -(\lambda_1-\lambda_2)$。
+因此，新的联合概率密度函数为 ：
+\[q(\lambda_1, \lambda_2, \theta) = P(A(\lambda, \theta))|\det J| = C_2 \exp(-\frac{1}{2}(\lambda_1^2 + \lambda_2^2)) |\lambda_1 - \lambda_2|.\]
+
+该密度与 $\theta$ 无关。对任意函数 $f(\lambda_1, \lambda_2)$，其期望为：
+$E[f] = \iiint q(\lambda_1, \lambda_2, \theta) f(\lambda_1, \lambda_2) d\lambda_1 d\lambda_2 d\theta$。
+积分掉 $\theta$ 后，得到特征值的联合概率密度 (jpdf) 为：
+\[ p(\lambda_1, \lambda_2) = \tilde{C}_2 \exp(-\frac{1}{2}(\lambda_1^2 + \lambda_2^2)) |\lambda_1 - \lambda_2| \]
+这里$\tilde{C}_2=\pi C_2.$
+\end{example}
+
+\begin{theorem}[GOE 特征值 jpdf]
+GOE(N) 的特征值 $\lambda_1 < \lambda_2 < \dots < \lambda_N$ 的联合概率密度函数为：
+\[ p(\lambda_1, \dots, \lambda_N) = \tilde{C}_N \exp\left(-\frac{N}{4} \sum_{i=1}^N \lambda_i^2\right) \prod_{1 \le k < l \le N} (\lambda_l - \lambda_k) \]
+乘积项 $\prod (\lambda_l - \lambda_k)$ 称为 interacting term，它表明特征值之间存在“排斥”(repulsion)，即两个特征值靠得很近的概率会变小。
+\end{theorem}
+
+\begin{proof}[证明思路]
+$A=(X_{kl})$ 的概率密度为 $\mathbb{P}(A) = C_N \exp(-\frac{N}{4} \text{Tr} A^2)$。
+
+进行变量变换 $A=O^TDO$，其中 $D=\text{diag}(\lambda_1, \dots, \lambda_N)$，$\lambda_1 < \dots < \lambda_N$。
+
+利用 Lie 群 $SO(N)$ 及其 Lie 代数 $so(N)$ 进行参数化，令 $O = e^{-H}$，其中 H 为反对称矩阵 ($H^T=-H$)。则 $O^T = (e^{-H})^T = e^{-H^T} = e^H$，故 $O^TO = e^H e^{-H} = I_N$。从而 $A=O^TDO = e^HDe^{-H}$。
+
+我们需要计算该变换的雅可比行列式 (Jacobian)。
+在 $H=0$ 点计算 Jacobian ，此时 $O=I_N$。变换的微分形式为：
+\[ dA = (dH)D - D(dH) + dD \]
+写出分量形式： 
+\[ dx_{ij} = \lambda_j dh_{ij} - \lambda_i dh_{ij} + \delta_{ij} d\lambda_i = (\lambda_j - \lambda_i) dh_{ij} + \delta_{ij} d\lambda_i \]
+由此可得 Jacobian $J = \det(\frac{\partial x}{\partial (\lambda, h)}) = \prod\limits_{k<l} (\lambda_l - \lambda_k)$。
+
+最终联合密度为 $P(A) |J| = C_N \exp(-\frac{N}{4}\sum \lambda_i^2) \prod\limits_{k<l}(\lambda_l - \lambda_k)$。
+\end{proof}
+\begin{remark}
+    这个证明也许有些不严谨，请参考别的随机矩阵书籍。
+\end{remark}
+\begin{theorem}[GUE 特征值 jpdf]
+GUE(N) 的特征值 $\lambda_1 < \dots < \lambda_N$ 的 jpdf 为：
+\[ p(\lambda_1, \dots, \lambda_N) = \hat{C}_N \exp\left(-\frac{N}{2}\sum_{i=1}^N\lambda_i^2\right)\prod_{1 \le k < l \le N}(\lambda_l-\lambda_k)^2 \]
+证明是类似的，但使用酉矩阵 $U=e^{-iH}$ (H为厄米矩阵) 进行参数化。
+\end{theorem}
+
+\begin{remark}[$\beta$-系综]
+对 GSE (辛系综, S为辛矩阵)，结论变为 $\prod(\lambda_l-\lambda_k)^4$。
+
+从而可定义 $\beta$-系综：
+$\exp(-D\sum \lambda_i^2) \prod\limits_{k<l}(\lambda_l-\lambda_k)^\beta$ ($\beta>0$)
+
+一般的酉系综为 $C_{V,N} \exp(-\frac{N}{2} \sum V(\lambda_i)) \prod\limits_{k<l}(\lambda_l-\lambda_k)^2$。
+\end{remark}
+
+\begin{remark}[Vandermonde 行列式]
+注意到 $\prod\limits_{k<l}(\lambda_l-\lambda_k)$ 是范德蒙行列式，由行列式的性有：
+\[ \prod_{1 \le k < l \le N}(\lambda_l - \lambda_k) = \det 
+\begin{pmatrix}
+1 & 1 & \dots & 1 \\
+\lambda_1 & \lambda_2 & \dots & \lambda_N \\
+\vdots & \vdots & \ddots & \vdots \\
+\lambda_1^{N-1} & \lambda_2^{N-1} & \dots & \lambda_N^{N-1}
+\end{pmatrix}
+= \det(P_{i-1}(\lambda_j))_{i,j=1}^N
+\]
+其中 $P_k(x)$是至多$k$次多项式。
+在 GUE 的 jpdf 中，可以选取特殊的 $P_k$：Hermite 多项式。
+\end{remark}
+
+\subsection{ GUE 与 Hermite 核}
+\begin{definition}[Hermite 多项式]
+\begin{itemize}
+    \item[a)] $H_n(x)$ 是首项系数为1的 n 次多项式。
+    \item[b)] $\forall n,m \ge 0$,
+    \[ \int_{\mathbb{R}} \frac{1}{\sqrt{2\pi}} e^{-x^2/2} H_m(x) H_n(x) dx = n! \delta_{n,m} \]
+\end{itemize}
+\end{definition}
+\begin{remark}
+$H_n$ 可通过 Gram-Schmidt 正交化得到。
+\end{remark}
+
+\begin{prop}
+    (1)Rodrigues 公式:
+\[H_n(x)=(-1)^{n}e^{\frac {x^2}{2}}\frac{d^n}{dx^n}(e^{-\frac{x^2}2}) \]
+\[H_0(x)=1,\quad H_1(x)=x,\quad H_2(x)=x^2-1.\]
+(2)Three terms recurrence relation:
+    $$X H_n (x) = H_{n+1} (x) + n H_{n-1} (x)$$
+(3) Differential equation:
+    $$y''(x) - xy'(x) + ny (x) = 0$$
+    \[L(f) = f'' -xf' ,\quad L(H_n) = -n H_n (x)\]
+\end{prop}
+
+\begin{1}
+    证明性质1.13.
+\end{1}
+
+还有几个其他常用的多项式，如：
+
+\begin{itemize}
+    \item \textbf{Laguerre多项式}: \\
+    \[I=(0,+\infty),\quad \omega_L(x)=x^\alpha e^{-x}.\]
+
+    \item \textbf{Jacobi多项式}: \\
+   \[I=(-1,1),\quad \omega(x)=(x+1)^\alpha(1-x)^\beta\]
+   若$\alpha=\beta=0$，则Jacobi 多项式成为 Legendre多项式；
+   若$\alpha=\beta=\pm\frac12$,则Jacobi多项式成为Chebyshev 多项式。
+\end{itemize}
+
+用处：\textbf{Gauss积分法则}
+
+$$\int_I f(x) w(x) dx \approx \sum f(x_i) w_i $$
+这里$x_i$是节点，$\omega_i$可以看做权重。
+
+$f(x)=x^{i}, \quad i=0,1,...,2n-1$时,上式等号严格成立.
+这里$x_{i}$取成 $P_n(x)$的零点.
+
+现在我们回到上小节节末，使用$Hermite$核来处理$GUE$的联合特征值分布函数。既有：
+$$\Delta (\lambda_1, \ldots, \lambda_N) = \det (H_{i-1} (\lambda_j))_{i,j=1}^N$$
+从而
+\begin{equation*}
+    \begin{aligned}
+        q(\lambda_1, \ldots, \lambda_N) &= \hat{C}_N e^{-\frac{1}{2} \sum\limits_{i=1}^N \lambda_i^2} \Delta (\lambda_1, \ldots, \lambda_N)^2\\
+        &=(\text{做换元}\mu_i=\sqrt{N}\lambda_i) \quad \hat{C}_N e^{-\frac{1}{2N} \sum\limits_{i=1}^N \mu_i^2} \Delta (\frac{\mu_1}{\sqrt{N}}, \ldots, \frac{\mu_N}{\sqrt{N}})^2 (\frac{1}{\sqrt{N}})^{N(N-1)}
+    \end{aligned}
+\end{equation*}
+
+
+这里$\mu_i$为未归一的GUE矩阵$\sqrt{N} A_N$的特征值，
+($\mu_1, \ldots, \mu_N$) $\in \mathbb{R}^N$, 未排序。
+
+进而$\mu_i$的联合分布为：
+\begin{equation*}
+    \begin{aligned}
+    p(\mu_1, \ldots, \mu_N) &= \tilde{C}_N e^{-\frac{1}{2} (\mu_1^2 + \ldots + \mu_N^2)} \Delta (\mu_1, \ldots, \mu_N)^2\\
+    &=\tilde{C}_N e^{-\frac{1}{2} (\mu_1^2 + \ldots + \mu_N^2)} \det [H_{i-1} (\mu_j)]^2\\
+    &=\tilde{C}_N [ \det (e^{-\frac{1}{4} \mu_j^2} H_{i-1} (\mu_j))]^2\\    
+    \end{aligned}
+\end{equation*}
+这里$\tilde{C}_N = \hat{C}_N (\frac{1}{\sqrt{N}})^{N(N-1)} N!$.
+
+\begin{definition}
+    $H_n$是n次$Hermite$多项式。定义$Hermite$函数：
+    \[\Psi_n(x) = (2\pi)^{-\frac{1}{4}} (n!)^{-\frac{1}{2}} e^{-\frac{1}{4}x^2} H_n(x).\]
+    则其满足：
+    \[\int_{\mathbb{R}} \Psi_n(x) \Psi_m(x) dx = \frac{1}{\sqrt{2\pi}} \frac{1}{\sqrt{n!m!}} \int_{\mathbb{R}} H_n(x) H_m(x) e^{-\frac{1}{2}x^2} dx=\delta_{n,m}\]
+\end{definition}
+
+
+那么，由于$(\det M)^2=\det M\cdot \det M^t=\det(M\cdot M^t)$,有
+\[p(\mu_1, \ldots, \mu_N) = C_N [ \det (\Psi_{i-1} (\mu_j))_{i,j=1}^N ]^2=C_N (\det K_N(\mu_i, \mu_j)_{i,j=1}^N).\]
+这里$K_N(x,y) = \sum\limits_{k=0}^{N-1} \Psi_k(x) \Psi_k(y)$，其中$\Psi_k$是$Hermite$函数，称$K_N$为$Hermite$核。
+
+类似地,对一般权函数$\omega(x)$,可以写成
+$$\prod_{i=1}^N \omega(x_i) \Delta(x_1, \ldots, x_n)^2 = \det (K_N(x_i, x_j))$$
+其中$K_N$用$\omega$表示(这里用的是$Hermite$多项式对应的权函数).
+
+\begin{prop}
+     $N$阶$ Hermite$ 核是一个再生核(reproducing kernel),i.e.$\int_{\mathbb{R}} K_N(x,u) K_N(u,y) du = K_N(x,y)$.
+\end{prop}
+\begin{proof}
+    \begin{equation*}
+\begin{aligned}
+\text{LHS} &= \int_{\mathbb{R}} \left(\sum_{k=0}^{N-1} \Psi_k(x) \Psi_k(u)\right) \left(\sum_{l=0}^{N-1} \Psi_l(u) \Psi_l(y)\right) du \\
+&= \sum_{k=0}^{N-1} \sum_{l=0}^{N-1} \Psi_k(x) \Psi_l(y) \int_{\mathbb{R}} \Psi_k(u) \Psi_l(u) du \\
+&= \sum_{k=0}^{N-1} \Psi_k(x) \Psi_k(y) = K_N(x,y).
+\end{aligned}
+\end{equation*}
+\end{proof}
+
+\begin{lemma}
+    $K: \mathbb{R}^2 \to \mathbb{R}$ 是再生核,则对 $n \ge 2$,
+    $$\int_{\mathbb{R}} \det (K(x_i, x_j))_{i,j=1}^n dx_n = (d-n+1) \det (K(x_i, x_j))_{i,j=1}^{n-1}$$
+    其中$d=\int K(x,x)dx$.
+\end{lemma}
+\begin{proof}
+  n=2时,
+\begin{equation*}
+    \begin{aligned}
+        &\int_{\mathbb{R}} \det \begin{pmatrix} K(x_1, x_1) & K(x_1, x_2) \\ K(x_2, x_1) & K(x_2, x_2) \end{pmatrix} dx_2\\
+        &= \int_{\mathbb{R}} (K(x_1, x_1) K(x_2, x_2) - K(x_1, x_2) K(x_2, x_1)) dx_2\\
+        &= d K(x_1, x_1) - K(x_2, x_2) = (d-1) K(x_1, x_1).
+    \end{aligned}
+\end{equation*}
+
+$n\geq 2$时留作习题.
+  
+\begin{2}
+    对一般的$n$证明引理1.16.
+\end{2}
+
+\end{proof}
+
+\begin{corollary}
+    记$K_N$为$Hermite$ 核,由于
+    $d = \int K_N(x,x)dx = \sum_{i=0}^{N-1} \int \Psi_i(x) \Psi_i(x)dx=n$
+    \begin{equation*}
+        \begin{aligned}
+            &\int_{\mathbb{R}} \ldots \int_{\mathbb{R}} (\det (K_N(x_i, x_j)))_{i,j=1}^n dx_1 \ldots dx_n\\
+            &=(d-n+1) \int_{\mathbb{R}} \ldots \int_{\mathbb{R}} (\det (K_N(x_i, x_j)))_{i,j=1}^{n-1} dx_1 \ldots dx_{n-1}\\
+&= \ldots = (d-n+1) \ldots (d-1)d = n!
+        \end{aligned}
+    \end{equation*}
+    
+又因为
+\begin{equation*}
+    \begin{aligned}
+        1 &= \int_{\mathbb{R}^N}p_N (\mu_1, \ldots, \mu_N) d\mu_1 \ldots d\mu_N\\
+        &=C_N \int_{\mathbb{R}^N} det(K_N (\mu_i, \mu_j))_{i,j=1}^n \prod_{i=1}^n d\mu_i
+    \end{aligned}
+\end{equation*}
+
+因此 $C_N = \frac{1}{n!}$
+\end{corollary}
+
+\begin{theorem}
+    未归一的$GUE(N)$的平均特征值密度是
+    \begin{equation*}
+        \begin{aligned}
+            P_N(\mu) &= \frac{1}{N} K_N(\mu,\mu) = \frac{1}{N} \sum_{k=0}^{N-1} \Psi_k(\mu)^2\\
+            &= \frac{1}{\sqrt{2\pi}} \frac{1}{N} \sum_{k=0}^{N-1} \frac{1}{k!} H_k(\mu)^2 e^{-\frac{1}{2}\mu^2}.
+        \end{aligned}
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    $P(\mu_1, \ldots, \mu_N)$是jpdf,即$N$个特征值位于$\mu_1, \ldots, \mu_N$ 的概率.
+\begin{equation*}
+    \begin{aligned}
+        P_N(y) = \int_{\mathbb{R}^{N-1}} P(y_1, \ldots, y_{N-1}, y) d y_1 \ldots d y_{N-1}
+    \end{aligned}
+\end{equation*}
+
+\begin{equation*}
+    \begin{aligned}
+        P_N(\mu) &= \int_{\mathbb{R}^{N-1}} P(\mu_1, \ldots, \mu_{N-1}, \mu) d \mu_1 \ldots d \mu_{N-1}\\
+        &= \frac{1}{N!} \int_{\mathbb{R}^{N-1}} \det (K_N(\mu_i, \mu_j))_{i,j=1}^N d\mu_1 \ldots d\mu_{N-1}\\
+        &= \frac{(N-1)!}{N!} K_N(\mu,\mu) = \frac{1}{N} K_N(\mu,\mu)
+    \end{aligned}
+\end{equation*}
+
+\end{proof}
+
+
+\section{行列式点过程(Determinantal Point Process)}
+\subsection{点过程}
+
+\begin{definition}
+    $\mathcal{X}$称为 配置 (configuration),若它是实轴上一个子集,
+且 $\#(\mathcal{X} \cap [a,b]) < +\infty$, $[a,b]$ 是 $\mathbb{R}$ 上的有界区间,
+一个配置可以有限,也可以是可数无限且没有可数
+聚点.
+
+$\mathbb{R}$ 上的 (局部有限) 的点过程是所有配置构成空间
+上的概率测度.
+
+一个点过程被称为 $n$-点过程,若 $P(\#\mathcal{X}=n)=1$
+\end{definition}
+
+\begin{example}
+    例: P($x_1, \ldots, x_n$)是$\mathbb{R}^n$上关于Lebesgue测度 的pdf,且关于坐标置换(permutation)不变,即
+P($x_{\sigma(1)}, \ldots, x_{\sigma(n)}$) = P($x_1, \ldots, x_n$),
+其中$\sigma \in S_n$,则这就定义了一个点过程.
+\end{example}
+
+\subsection{关联函数}
+给定了一个 $\mathbb{R}$ 上的点过程 $P$,  $\forall \mathbb{R}$ 上的 Borel 集 $A \subset \mathbb{R}$,
+映射 $A \longmapsto E(\#(\mathcal{X} \cap A))$ 是 $\mathbb{R}$ 上的测度,
+这里的期望是关于点过程取的.
+若进一步假设该测度关于 Lebesgue 测度具有密
+度函数 $\rho_1$,则称 $\rho_1$ 是强度 (intensity) 或1-点关联
+函数.
+$\rho_1(x) dx$ 表示 在 $[x,x+dx]$ 具有一个点的概率.
+
+$k$-点关联函数记为 $\rho_k$，
+$\rho_k(x_1, \ldots, x_k) dx_1 \ldots dx_k$, \quad$x_i \ne x_j$, $i \ne j$.
+表示在每个无穷小区间 $[x_j, x_j+dx_j]$, $j=1,\ldots,k$ 有一个点的概率.
+\begin{equation*}
+    \begin{aligned}
+        \Rightarrow \int_A \ldots \int_A \rho_k(x_1, \ldots, x_k) dx_1 \ldots dx_k\\
+        = E(\prod_{j=1}^k\#(\mathcal{X} \cap A_k)), \quad A_j \text{ 互不相交}
+    \end{aligned}
+\end{equation*}
+
+表示满足 ($x_1, \ldots, x_k$) $\in \mathcal{X}^k$, $x_j \in A_j$ 的期望数目.
+
+\begin{remark}
+    (1) 若 $A_j=A$, 则 $\frac{1}{k!} \int_A \ldots \int_A P_k(x_1, \ldots, x_k) dx_1 \ldots dx_k$
+表示有序数组 ($x_1, \ldots, x_k$), $x_1 < \ldots < x_k$, $x_i \in A$
+的期望.
+
+$\frac{1}{k!} \int_{\mathbb{R}^k} P(x_1, \ldots, x_k) dx_1 \ldots dx_k = E\begin{pmatrix}
+    \#(\mathcal{X} \cap A)\\
+    k
+\end{pmatrix}$
+
+(2) 若 $p(x_1, \ldots, x_n)$ 是 $\mathbb{R}^n$ 上的概率密度函数,
+且在坐标置换下保持不变,则 $p$ 对应点过程的
+$k$-点关联函数
+\end{remark}
+
+$\rho_k(x_1, \ldots, x_k) = \frac{n!}{(n-k)!} \int_{\mathbb{R}} \ldots \int_{\mathbb{R}}p(x_1, \ldots, x_n) dx_{k+1} \ldots dx_n$.
+
+\subsection{行列式点过程}
+\begin{definition}
+    $\mathbb{P}$是$\mathbb{R}$上的关联函数为$\rho_k$的点过程,该点过程被称为行列式点过程(determinantal),若存在核函
+数$K(x,y)$,s.t.$\forall$k,有$\rho_k(x_1, \ldots, x_k) = det[K(x_i, x_j)]_{i,j=1}^k.$
+核$K$被称为是行列式点过程的关联核(Correlation Kernel).
+\end{definition}
+
+\begin{remark}
+    (1) 关联核不唯一,事实上对关联核做变换
+\[ K(x,y)\rightarrow\frac{R(x)}{R(y)} k(x,y) \quad (R(x) \neq 0). \]
+则得到同一个DPP.
+
+(2) 在DPP中, 相邻点互相强排斥. 在物理文献中也被称为费米点过程.
+\end{remark}
+ 
+\begin{theorem}
+    设有核函故K满足条件(a)-(c):
+    
+(a) $\int_{-\infty}^{\infty}K(x,x)dx=n$
+
+(b) $\forall x_{1},...,x_{n}\in\mathcal{R},$ 有 $\det(K(x_i, x_j))_{i,j=1}^n$ 非负定,
+
+(c) 再生核 (reproducing)
+\[ \int_{-\infty}^{\infty} K(x,s)K(s,y)ds = K(x,y). \]
+
+则 $P_{n}(x_{1},...,x_{n})=\frac{1}{n!}\det(K(x_{i},x_{j}))_{i,j=1}^{n}$
+定义了$\mathbb{R}^n$上的关于坐标置换不变的相无密度函数，
+则其对应的$n$点过程是DPP且以k为关联核.
+    
+\end{theorem}
+
+\begin{proof}
+    $P_n$对应的DPP的k点关联函数
+\[ \frac{n!}{(n-k)!}\int...\int P(x_{1},...,x_{n})dx_{k+1}...dx_{n} \]
+故现在只要验证
+\[ \int...\int \det(k(x_{i},x_{j}))_{i,j=1}^{n}dx_{k+1}...dx_{n} 
+=(n-k)!\det(k(x_{i},x_{j}))_{i,j=1}^{k} \quad  \]
+留做习题。
+\end{proof}
+
+\subsection{ Gap probability(间隙概率) \& Fredholm determinant}
+
+给定Borel集 A中没有点的概率.
+
+$P_{A}(n)$: A中仅有n个点的概率,
+
+$P_{A}(0)$: gap probability.
+
+\begin{equation*}
+    \begin{aligned}
+        \frac{1}{k!}\int_{A^{k}}\rho(x_{1},...,x_{k})dx_{1}...dx_{k}&=\text{ $A$中有序$k$元组个数的期望}\\
+        &=\sum_{n=k}^{\infty}P_{A}(n)\binom{n}{k}
+    \end{aligned}
+\end{equation*}
+
+从而结合$\sum\limits_{k=0}^{n}(-1)^{k}\binom{n}{k}=\begin{cases} 1 & n=0 \\ 0 & n \neq 0 \end{cases}$,得到：
+\begin{equation*}
+    \begin{aligned}
+        &\sum_{k=0}^{\infty}\frac{(-1)^{k}}{k!}\cdot\int_{A^{k}}P_{k}(x_{1},...,x_{k})dx_{1}...dx_{k}\\
+        =&\sum_{k=0}^{\infty}\sum_{n=k}^{\infty}(-1)^{k}\binom{n}{k}P_{A}(n)\\
+        =&\sum_{n=0}^{\infty}(\sum_{k=0}^{n}(-1)^{k}\binom{n}{k})P_{A}(n)=P_A(0)
+    \end{aligned}
+\end{equation*}
+
+当$\rho_k$是DPP时，则有：
+\begin{equation*}
+    \begin{aligned}
+         P_{A}(0)=\sum_{k=0}^{\infty}\frac{(-1)^{k}}{k!}\int_{A^{k}} \det(K(x_{i},x_{j}))_{i,j=1}^{k}dx_{1}...dx_{k}=\det(I-K_{A})
+    \end{aligned}
+\end{equation*}
+上式称为Fredholm determinant.
+
+其中算子$K_A$定义为：
+\begin{equation*}
+    \begin{aligned}
+        K_{A}:L^{2}(A)&\rightarrow L^{2}(A)\\
+        f&\mapsto\int_{A}k(x,y)f(y)dy
+    \end{aligned}
+\end{equation*}
+
+若$K_A$是迹算子 (trace class operater)，可以验证行列式是良定的。
+事实上，若 $k$关于两个变量连续, $A$有限,可以验证 $\det(I-K_A)$中的级数绝对收敛.
+
+\subsection{ DPP \& non-intersecting path}
+
+考虑整数格点上的随机游走.
+$Y_k$: k时刻的位置,
+$i\rightarrow i-1$的转移概率为$p_i$,$i\rightarrow i+1$的为$q_i$.
+满足$p_i + q_i = 1$.
+
+Q: n条在t=0时从不同$x_i$出发的路径不相交的概率?
+
+
+\begin{theorem}{(Karlin-McGregor)}
+    考虑$n$个$Y_k$,即 $Y_{k}^{(1)}, ..., Y_{k}^{(n)}$(表示$n$个路径), 满足 $Y_{0}^{(i)}=x_i$
+$(x_{1}>x_{2}>\cdot\cdot\cdot>x_{n})$.
+
+设 $t \in \mathbb{N}$ 及 $y_1 > ... > y_n$.
+
+记 $P_{t}(x_{i},y_{j})=P(Y_{t}=y_{j}|Y_{0}=x_{i})$ (t步从$X_i$到$y_j$的概率)
+
+则路径不交的概率为
+\begin{equation*}
+    \begin{aligned}
+        &P(Y_{t}^{(i)}=y_i, \quad 1\leq i\leq n, \quad Y_{s}^{(1)}>Y_{s}^{(2)}>...>Y_{s}^{(n)}, \forall 0\le s\le t)\\
+        =&\det(P_{t}(x_{i},y_{j}))_{i,j=1}^{n}
+    \end{aligned}
+\end{equation*}
+
+\end{theorem}
+
+\begin{example}
+    $Y_t$: 对称随机游走
+
+    $P_{2}(0,2)=\frac{1}{4}$, $P_{2}(0,-2)=\frac{1}{4}$, $P_{2}(0,0)=\frac{1}{2}$
+    
+考虑两个这样的随机游走: $x_{1}=2=y_1$, $x_2=0=y_2$
+\begin{equation*}
+    \begin{aligned}
+        &P(Y_{2}^{(1)}=2=Y_0^{(1)}, Y_{2}^{(2)}=0=Y_0^{(2)}, Y_1^{(1)} > Y_1^{(2)} )\\
+        =& \det \begin{pmatrix} P_2(2,2) & P_2(2,0) \\ P_2(0,2) & P_2(0,0) \end{pmatrix}\\
+        =&\begin{vmatrix} \frac{1}{2} & \frac{1}{4} \\ \frac{1}{4} & \frac{1}{2} \end{vmatrix} = \frac{3}{16}.
+    \end{aligned}
+\end{equation*}
+
+\end{example}
+
+回到定理证明:
+\begin{proof}
+$\Omega_{ij}$: t步由$x_i$到$y_j$的路径全体.
+
+$P(\pi)$: $\pi\in\Omega_{ij}$, 取到这样一条路径的概率.
+
+$P_{t}(x_{i},y_{j})=\sum\limits_{\pi\in\Omega_{ij}} P(\pi)$
+
+先考察$n=2$情形:
+\begin{equation*}
+    \begin{aligned}
+        \det \begin{pmatrix} P_t(x_1, y_1) & P_t(x_1, y_2) \\ P_t(x_2, y_1) & P_t(x_2, y_2) \end{pmatrix}&=P_{t}(x_1,y_1)P_{t}(x_2,y_2) - P_{t}(x_1,y_2)P_{t}(x_2,y_1)\\
+        &=\textcolor{red}{\sum_{\pi\in\Omega_{11}} P(\pi) \cdot \sum_{\sigma\in\Omega_{22}} P(\sigma)} - \textcolor{green}{\sum_{\pi\in\Omega_{12}} P(\pi) \sum_{\sigma\in\Omega_{21}} P(\sigma)}
+    \end{aligned}
+\end{equation*}
+
+标红部分表示 $x_1 \rightarrow y_1,
+x_2 \rightarrow y_2$的所有路径对求和，可以相交。
+
+我们想求的是不相交的路径对的概率和。故希望标绿部分是所有相交路径的概率和。
+
+事实上，由反射原理可得，$x_1 \rightarrow y_1,
+x_2 \rightarrow y_2$中的所有相交路径与$x_1 \rightarrow y_2,
+x_2 \rightarrow y_1$的路径对有一个一一对应。从而标绿部分即为相交的概率和。从而$n=2$情形证毕。
+
+对一般的$n$，留做习题。
+ 
+\end{proof}
+
+\begin{3}
+    对一般的$n$证明定理2.7结论.
+\end{3}
+
+\subsection{ Tracy-Widom 分布}
+
+
+GUE: 无序特征值的分布。
+
+\[
+P(y_{1},...,y_{N}) = \frac{1}{N!} \det(k_{N}(y_{i}, y_{j}))_{i,j=1}^{N}.
+\]
+其中，\( K_{N}(x, y) \) 为Hermite核，定义为：
+\[
+K_{N}(x,y) = \sum_{k=0}^{N-1} \psi_{k}(x) \psi_{k}(y).
+\]
+
+接下来，我们考虑最大特征值的分布问题。首先有：
+\[
+P(\lambda_{\max}^{(N)} \leq t) = P(\text{在}(t, +\infty) \text{中没有特征值})= \det(I - K_{N}|_{(t,+\infty)}).
+\]
+
+进一步展开得到：
+\[
+P(\lambda_{\max}^{(N)} \leq t) = 1 + \sum_{r=1}^{N} \frac{(-1)^r}{r!} \int_{t}^{\infty} \cdots \int_{t}^{+\infty} \det(K_{N}(\mu_{i}, \mu_{j}))_{i,j=1}^{r} d\mu_{1} \cdots d\mu_{r}.
+\]
+
+假设最大特征值的近似形式为：
+\[
+\lambda_{\max}^{(N)} \approx 2\sqrt{N} + ?.
+\]
+在区间 \( (2-t, 2) \) 内，特征值的个数可以表示为：
+\[
+N \int_{2-t}^{2} P(x) dx = \frac{N}{2\pi} \int_{2-t}^{2} \sqrt{4 - x^2} dx.
+\]
+令上式量级为$O(1)$,由此可以得到：
+\[
+t = O(N^{-\frac{2}{3}}),
+\]
+
+因此，最大特征值的表达式写为：
+\[
+\lambda_{\max}^{(N)} = \sqrt{N} \left( 2 + t N^{-\frac{2}{3}} \right) = 2\sqrt{N} + t N^{-\frac{1}{6}}.
+(t\text{是}r.v)\]
+做一个尺度化：
+\[
+\text{令}\tilde{K}_{N}(x, y) = N^{-\frac{1}{6}} K_N(2\sqrt{N} + x N^{-\frac{1}{6}}, 2\sqrt{N} + y N^{-\frac{1}{6}}).
+\]
+则
+\[
+P\left( \left(\lambda_{\max}^{(N)} - 2\sqrt{N}\right) N^{\frac{1}{6}} \leq t \right) = \sum_{r=0}^{N} \frac{(-1)^r}{r!} \int_{t}^{\infty} \cdots \int_{t}^{\infty} \det(\tilde{k}_{N}(x_{i}, y_{j}))_{i,j=1}^{r} dx_{1} \cdots dx_{r}.
+\]
+当 \( N \to +\infty \) 时，这个概率分布会收敛到一个极限分布 \( F_{2}(t) \).这就是TW分布。
+
+接下来，我们考虑Hermite核 \( K_{N}(x, y) \) 的表达式：
+\[
+K_{N}(x, y) = \frac{1}{\sqrt{2\pi}} \sum_{k=0}^{N-1} \frac{1}{k!} e^{-\frac{1}{4}(x^2 + y^2)} H_k(x) H_k(y),
+\]
+其中 \( H_k(x) \) 是Hermite多项式。通过应用Christoffel-Darboux公式,即：
+\[
+\sum_{k=0}^{N-1} \frac{H_k(x) H_k(y)}{k!} = \frac{H_N(x) H_{N-1}(y) - H_{N-1}(x) H_N(y)}{(x - y)(N - 1)!}.
+\]
+将核函数表示为：
+\begin{equation*}
+    \begin{aligned}
+        K_{N}(x, y) &= \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2 + y^2}{4}} \frac{H_N(x) H_{N-1}(y) - H_{N-1}(x) H_N(y)}{(x - y)(N - 1)!}\\
+        &=\sqrt{N}\frac{\Psi_{N}(x)\Psi_{N-1}(y)-\Psi_{N-1}(y)\Psi_{N}(x)}{x-y}\\
+        &=\frac{\Psi_N(x)\Psi_N'(y) - \Psi_N'(x)\Psi_N(y)}{x-y} - \frac{1}{2}\Psi_{N}(x)\Psi_{N}(y) 
+    \end{aligned}
+\end{equation*}
+其中用到$\Psi_{N}'(x)=-\frac{x}{2}\Psi_{N}(x) + \sqrt{N}\Psi_{N-1}(x)$.
+
+
+然后，我们引入标准化后的函数 \(\tilde{\Psi}_N(x)\)，其定义为：
+\[
+\tilde{\Psi}_{N}(x) = N^{\frac{1}{2}} \Psi_{N}(2\sqrt{N} + x N^{-\frac{1}{6}}).
+\]
+则
+\[
+\tilde{\Psi}_{N}'(x) = N^{\frac{1}{3}}  \Psi_{N}'(2\sqrt{N} + x N^{-\frac{1}{6}}).
+\]
+
+\[
+\tilde{k}_{N}(x, y) = \frac{\tilde{\psi}_{N}(x) \tilde{\psi}_{N}'(y) - \tilde{\psi}_{N}'(x) \tilde{\psi}_{N}(y)}{x - y} - \frac{1}{2 N^{-\frac{1}{3}}} \tilde{\psi}_{N}(x) \tilde{\psi}_{N}(y).
+\]
+
+接着，我们讨论当 \( N \to \infty \) 时的极限行为。我们有以下事实：
+\[
+\lim_{N \to \infty} \tilde{\Psi}_N(x) = A_i(x),
+\]
+\[\lim_{N \to \infty} \tilde{\Psi}_N'(x) = A_i'(x)\]
+其中 \( A_i(x) \) 满足 Airy 方程：
+\[
+A_i''(x) = x A_i(x).
+\]
+在 \( x \to +\infty \) 时，\( A_i(x) \) 的渐近形式为：
+\[
+A_i(x) \sim \frac{1}{2\sqrt{\pi}} x^{-\frac{1}{4}} \exp \left( -\frac{2}{3} x^{\frac{3}{2}} \right).
+\]
+
+因此，极限核函数为：
+\[
+\lim_{N \to \infty} \tilde{k}_N(x, y) = \frac{A_i(x) A_i'(y) - A_i'(x) A_i(y)}{x - y},
+\]
+ 称之为Airy kernel .
+
+ 我们体会一下$\lim_{N \to \infty} \tilde{\Psi}_N(x) = A_i(x)$:
+计算可得 $\Psi_{N}''(x)+(N+\frac{1}{2}-\frac{x^{2}}{4})\Psi_{N}(x)=0$.
+由于$\tilde{\Psi}_{N}(x)=N^{\frac{1}{12}}\Psi_{N}(2\sqrt{N}+xN^{-\frac{1}{6}})$,
+\begin{equation*}
+    \begin{aligned}
+        \Rightarrow\tilde{\psi}_{N}''(x)&=-N^{-\frac{1}{4}}(N+\frac{1}{2}-\frac{(2\sqrt{N}+xN^{-\frac{1}{6}})^{2}}{4})\Psi_{N}(2\sqrt{N}+xN^{-\frac{1}{6}}) \\
+        &=-N^{-\frac{1}{3}}(\frac{1}{2}-\frac{4xN^{\frac{1}{3}}+x^{2}N^{-\frac{1}{3}}}{4})\tilde{\Psi}_{N}(x) \\
+        &\approx x\tilde{\Psi}_{N}(x)\quad(N\rightarrow+\infty)
+    \end{aligned}
+\end{equation*}
+
+这和Airy函数满足的微分方程相同。
+
+我们还有以下结论：
+\begin{theorem}
+    随机变量 $N^{\frac{2}{3}}(\lambda_{max}(A_{N})-2)$ 在 $N\rightarrow \infty$ 时, 有极限分布
+\begin{equation*}
+    \begin{aligned}
+        F_{2}(t)&=\lim\limits_{N\rightarrow+\infty} P(N^{\frac{2}{3}}(\lambda_{max}(A_N)-2)\le t)\\
+        &=\sum_{r=0}^{\infty}\frac{(-1)^{r}}{r!}\int_{t}^{\infty}...\int_{t}^{\infty}\det(K_{A_{i}}(x_{i},y_{j}))_{i,j=1}^{r}dx_{1}...dx_{r} \\
+ &=\det(I-K_{Ai}|_{(t,+\infty)})
+    \end{aligned}
+\end{equation*}
+\end{theorem}
+
+\begin{theorem}
+    \[
+F_2(t) = \exp \left( -\int_{t}^{\infty} (x - t) q^2(x) \, dx \right),
+\]
+其中 \( q(x) \) 满足 Painlevé II 方程：
+\[
+q''(x) = 2q^3(x) - x q(x).
+\]
+当 \( x \to \infty \) 时，\( q(x) \sim A_i(x) \)。
+
+\end{theorem}
+
+\section{弱收敛}
+
+\subsection{连读函数空间}
+
+$\mathbb{R}$: 实轴, $\mathcal{B}$: Borel $\sigma$-代数, $f: \mathbb{R} \rightarrow \mathbb{R}$
+
+$Supp(f) = \overline{\{x \in \mathbb{R} | f(x) \neq 0\}}$ 中闭集.
+
+f在无穷远处消失:$ \lim_{x\rightarrow\pm\infty}f(x)=0.$
+
+几类常用连续函数空间:
+\begin{itemize}
+    \item $C(\mathbb{R}) := \{f: \mathbb{R} \rightarrow \mathbb{R} \text{ 连续}\}$
+    \item $C_{b}(\mathbb{R}) := \{f \in C(\mathbb{R}), f \text{ 有界}\}$
+    \item $C_{0}(\mathbb{R}) := \{f \in C(\mathbb{R}), f \text{ 在无穷远处消失}\}$
+    \item $C_{c}(\mathbb{R}) := \{f \in C(\mathbb{R}), \text{ 有紧支集}\}$
+\end{itemize}
+\begin{theorem}
+   以上函数空间有如下性质:
+   \begin{enumerate}
+    \item[(1)] $C_{b}(\mathbb{R})$ 是完备的但不可分
+    \item[(2)] $C_{0}(\mathbb{R})$ 完备且可分
+    \item[(3)] $C_{c}(\mathbb{R})$ 不完备但可分 
+    \item[(4)] $C_{c}(\mathbb{R})$ 在 $C_{0}(\mathbb{R})$ 中稠密.
+   \end{enumerate}
+    
+\end{theorem}
+
+
+\subsection{ 概率测度的收敛}
+$\mathcal{M}(\mathbb{R})$: $(\mathbb{R}, \mathcal{B})$ 上的测度全体
+
+$\mathcal{M}_f(\mathbb{R})$: 有限测度全体
+
+$\mathcal{M}_1(\mathbb{R})$: 概率测度全体
+
+
+$\mathcal{M}_{\le1}(\mathbb{R})$: 次概率测度全体.
+\[ \mathcal{M}_1(\mathbb{R}) \subseteq \mathcal{M}_{\le1}(\mathbb{R}) \subseteq \mathcal{M}_f(\mathbb{R}) \subseteq \mathcal{M}(\mathbb{R})(\text{均是真包含}). \]
+
+若 $\mu \in \mathcal{M}(\mathbb{R})$, f可测, 记 $\langle \mu, f \rangle = \int f d\mu$.
+$\langle \mu, x^k \rangle = \int x^k d\mu$.
+
+\begin{lemma}
+     $\mathcal{F} \subseteq C_{b}(\mathbb{R})$ 是一个线性空间且 $C_c(\mathbb{R}) \subseteq \mathcal{F}$,
+则 $\forall \mu \in \mathcal{M}_f(\mathbb{R})$, 映射 $I_\mu: \mathcal{F} \rightarrow \mathbb{R}$,
+\[ f \rightarrow \langle \mu, f \rangle, \]
+定义了 $\mathcal{F}$ 上的正有界连续泛函且算子范数 $||I_\mu||_{op} = \mu(\mathbb{R})$.
+
+\end{lemma}
+\begin{remark}
+     正: $f \ge 0$, $I_{\mu}(f) \ge 0$
+\[ ||I_\mu||_{op} =\sup_{||f||=1} |I_\mu(f)|= \mu(\mathbb{R}). \]
+
+\end{remark}
+
+\begin{proof}
+    先定义Cutoff function:$\forall u > L \ge 0$, 定义
+$\phi_{L}^{u}: \mathbb{R} \rightarrow [0,1]$,
+\[
+\phi_{L}^{u}(x) = 
+\begin{cases} 
+1, & x \in [-l,l] \\
+\frac{u-|x|}{u-L}, & l < |x| < u \\
+0, & |x| > u
+\end{cases}
+\]
+只需证算子范数 $||I_\mu||_{op} = \mu(\mathbb{R})$.
+
+$\forall k$, $\phi_{k}^{k+1} \in \mathcal{F}$.\quad $\phi_{k}^{k+1} \ge 0$,$||\phi_{k}^{k+1}|| = 1$.
+
+$I_\mu(\phi_{k}^{k+1}) = \langle \mu, \phi_{k}^{k+1} \rangle \ge \mu([-k,k])$
+$\Rightarrow ||I_{\mu}|| \ge \mu(\mathbb{R})$.
+
+又$\langle \mu,f \rangle = |\int f d\mu| \le ||f|| \mu(\mathbb{R})$,
+
+$\Rightarrow ||I_\mu||_{op} \le \mu(\mathbb{R})\Rightarrow ||I_\mu||_{op} = \mu(\mathbb{R})$.
+\end{proof}
+
+
+\begin{theorem}{\textbf{(Riesz表示定理:)}}
+设 $\mathcal{F}$ 满足 $C_c(\mathbb{R}) \subseteq \mathcal{F} \subseteq C_0(\mathbb{R})$
+的线性空间且装备无穷范数.
+
+则对 $\mathcal{F}$ 上任何正有界连续泛函 $I$, $\exists! \mu \in \mathcal{M}_{f}(\mathbb{R})$,
+s.t. $I=I\mu$ and $||I||_{op}=\mu(\mathbb{R})$. 
+\end{theorem}
+
+
+如何判定两个测度相同?
+\begin{lemma}
+    设 $\mu, \nu \in \mathcal{M}_f(\mathbb{R})$, 且 $\mathcal{F}$ 在 $C_c(\mathbb{R})$ 中的稠密子集.
+    
+(i) $\mu = \nu \iff \mu(I) = \nu(I)$, 其中I是边界测度为0的区间 $(\mu(\partial I) = \nu(\partial I) = 0)$
+
+(ii) $\mu = \nu \iff \forall f \in C_c(\mathbb{R}), \langle \mu, f \rangle = \langle \nu, f \rangle$.
+$\iff \forall f \in \mathcal{F}, \langle \mu, f \rangle = \langle \nu, f \rangle$ (由Riesz定理可得)
+\end{lemma}
+
+\begin{proof}
+  (i): "$\Rightarrow$" $\checkmark$
+
+"$\Leftarrow$" 只需说明在有限开集上测度相同.
+注意到 $\forall \rho \in \mathcal{M}_{f}(\mathbb{R})$,  $A_{\rho} := \{x \in \mathbb{R} | \rho(\{x\}) > 0\}$ 至多可数,故
+$\mathbb{R} \setminus (A_\mu \cup A_\nu)$ 在 $\mathbb{R}$ 中稠密.
+
+
+$\forall a<b$, $\exists \{a_n\}, \{b_n\} \in \mathbb{R} \setminus (A_\mu \cup A_\nu)$
+s.t. $a_n \uparrow a, b_n \downarrow b$, $a_n < b_n$.
+
+故$\mu((a,b)) = \lim_{n\rightarrow\infty} \mu((a_n, b_n)) = \lim_{n\rightarrow\infty} \nu((a_n, b_n)) = \nu((a,b))$.  
+\end{proof}
+
+\begin{definition}
+     设 $\{\mu_n\}$ 是 $\mathcal{M}_{\le1}(\mathbb{R})$ 中的一个序列.
+
+(1) $\{\mu_n\}_{n \in \mathbb{N}}$ 弱收敛 (converge weakly) 于 $\mu \in \mathcal{M}_1(\mathbb{R})$, 若
+$\forall f \in C_b(\mathbb{R})$, 有 $\langle \mu_n, f \rangle \rightarrow \langle \mu, f \rangle$.
+
+(2) $\{\mu_n\}_{n \in \mathbb{N}}$ 淡收敛 (converge vaguely) 到 $\mu \in \mathcal{M}_{\le1}(\mathbb{R})$,
+$\forall f \in C_c(\mathbb{R})$, $\langle \mu_n, f \rangle \rightarrow \langle \mu, f \rangle$.
+
+\end{definition}
+
+\begin{remark}
+    1) weak convergence $\Rightarrow$ vague convergence
+    
+2) $\forall f \in C_b(\mathbb{R})$, 都有 $\lim_{n\rightarrow\infty} \langle \mu_n, f \rangle = \langle \mu, f \rangle$.
+$\Rightarrow \mu \in \mathcal{M}_1(\mathbb{R})$(取 $f=1$ 即可).
+
+3) $\forall f \in C_c(\mathbb{R})$, $\mu_n \in \mathcal{M}_{\le1}(\mathbb{R})$,
+$\lim_{n\rightarrow\infty} \langle \mu_n, f \rangle = \langle \mu, f \rangle, \Rightarrow \mu \in \mathcal{M}_{\le1}(\mathbb{R})$
+\begin{proof}
+     $\phi_m^{m+1} \in C_c(\mathbb{R})$
+
+$\langle \mu_n, \phi_m^{m+1} \rangle \rightarrow \langle \mu, \phi_m^{m+1} \rangle\quad \Rightarrow\langle \mu, \phi_m^{m+1} \rangle \le 1$.
+
+$\mu([-m,m]) \le \langle \mu, \phi_m^{m+1} \rangle \le 1 \Rightarrow \mu(\mathbb{R}) \le 1$.
+
+另一方面, $\mu \in \mathcal{M}_{\le1}(\mathbb{R})$, $\alpha = 1 - \mu(\mathbb{R}) \in [0,1]$.
+
+令$\mu_n = \mu + \alpha \delta_n$($\delta_n$是 $n$处的Dirac函数),则
+$\mu_n(\mathbb{R}) = \mu(\mathbb{R}) + \alpha = 1$,故 $\mu_n \in \mathcal{M}_1(\mathbb{R})$.
+事实上, $\mu_n \rightarrow \mu$ vaguely，则
+$\forall f \in C_c(\mathbb{R})$, $\langle \mu_n, f \rangle = \int f d\mu + \alpha f(n)$
+
+由 $f \in C_c(\mathbb{R})$, $\langle \mu_n, f \rangle \rightarrow \langle \mu, f \rangle$.
+
+\end{proof}
+4) $\mathcal{M}_1(\mathbb{R}) \subset \mathcal{M}_{\le1}(\mathbb{R})$
+概率测度在次概率测度中稠密 (在淡收敛意义下).
+
+5) $\mu_n \in \mathcal{M}_1(\mathbb{R})$, $\mu \in \mathcal{M}_{\le1}(\mathbb{R})$
+$\mu_n$ 弱/淡收敛至 $\mu$
+$\iff$ $\mu_n$ 的任何子列存在相应的收敛子列.
+
+6) $\mu_n \rightarrow \mu$ vaguely
+
+$\iff \forall f \in C_0(\mathbb{R})$, s.t. $\lim\limits_{n\rightarrow\infty} \langle \mu_n, f \rangle = \langle \mu, f \rangle$
+
+这是因为 $C_c(\mathbb{R})$ 在 $C_0(\mathbb{R})$ 中稠密.
+\end{remark}
+
+\begin{lemma}
+     设 $\mu_n \rightarrow \mu$ weakly, $\mu_n, \mu \in \mathcal{M}_1(\mathbb{R})$. $h \in C(\mathbb{R})$.
+$\langle \mu_n, h \rangle \rightarrow \langle \mu, h \rangle$ 的一个充分条件为:
+$\exists$ 一个严格正的连续函数 $g: \mathbb{R} \rightarrow (0, +\infty)$
+，s.t. $\sup_n \langle \mu_n, g \rangle < \infty$ 且 $\frac{h}{g}$ 在无穷远处消失.
+
+\end{lemma}
+\begin{4}
+证明引理3.8.(提示：用控制收敛定理)
+\end{4}
+
+淡收敛的极限未必是概率测度；
+淡收敛 + 紧性(tightness) $\Rightarrow$ 淡收敛的极限是概率测度。
+\begin{definition}
+    $(\mathbb{R}, \mathcal{B})$ 上的一列概率测度 $\{\mu_n\}$ 被称为是
+紧的, 若 $\forall \epsilon > 0, \exists$ $\mathbb{R}$中的紧集 K, s.t. $\forall n$, $\mu_n(K^c) < \epsilon$.
+$K^c = \mathbb{R} \setminus K$.
+\end{definition}

@@ -1,0 +1,1722 @@
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\bnh}{\mathcal{B}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\A}{\hat{A}}
+\newcommand{\cc}{\mathcal{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\1}{\mathbb{1}}
+\newcommand{\pu}{\mathcal{P}}
+\newcommand{\G}{\hat{G}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Map}{\operatorname{Map}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\as}{|\ \ |}
+\newcommand{\f}{\hat{f}}
+\newcommand{\Hil}{\mathcal{H}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\dd}{\:\mathrm{d}}
+\newcommand{\tpq}{\mathbf{TopGrp}}
+\newcommand{\ad}{\mathbb{A}}
+\newcommand{\Oo}{\mathcal{O}}
+%第二周、第十周因故未授课。
+编者按：本页面是复旦大学2024春季学期石荣刚老师《拓扑群》（《群上的调和分析》）课程的笔记。大致上是授课内容的忠实记录，部分课上讲得不是很清楚的证明
+按照自己的理解进行了修补或是搬用了参考书籍。老师给出的参考书籍是\cite{Pr}，个人认为讲得还是相当清楚的。本课程前十二周大致涵盖\cite{Pr}的一、二、三
+、六章，主要牵涉局部紧群上的调和分析（或者说局部紧群的表示论），核心的结果是Pontryagin对偶、Fourier反演公式、Plancherel定理等。石老师每学期开的课
+基本都不重样，所以没有特别大的\textbf{作为课程资料}的价值，但可供感兴趣的同学学习交流。
+\section{第一周}
+拓扑群的范畴$\tpq$，对象：拓扑群全体。态射：连续群同态。基本性质：
+\begin{proposition}
+    \begin{enumerate}
+        \item 左、右平移都是同胚。
+        \item $U$开$\implies U^{-1}$开。
+        \item $A,B$紧$\implies AB$紧。
+        \item $A$开，$B$非空$\implies AB$开。
+        \item $A$紧，$B$闭$\implies AB$闭。
+        \item 非空集合$A$的闭包$\overline{A} = \bigcap\limits_{1 \in U\text{开}} AU$。
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    \begin{enumerate}
+        \item[1.2.4.]平凡。
+        \item[3.]$A \times B$是集合$G \times G$中的紧集，在连续映射$(a,b) \mapsto ab$下的像自然也是紧集。
+        \item[5.]考虑$AB$中收敛的网$(a_ib_i)_{i \in I}$，其中$a_i \in A, b_i \in B$。
+通过取子列的方式，不妨假设$a_i$本身在$A$中收敛。现在$b_i = a_i^{-1}a_ib_i$也是收敛的。由于$B$是闭集，$b_i$收敛至$b \in B$。因此$a_ib_i$的极限在$AB$中。
+\item[6.]对落在右边的任何$x$以及单位开邻域$U$，则$xU \cap A \neq \emptyset \iff \{x\} \cap AU^{-1} \neq \emptyset$，显然。
+又任取$x \in \overline{A}$，则对$x$的任何开邻域$U$都有$xU^{-1} \cap A \neq \emptyset \implies x \in AU$。\qedhere
+    \end{enumerate}
+\end{proof}
+\begin{proposition}
+    开子群也是闭子群；有限指标的闭子群也是开子群。
+\end{proposition}
+\begin{proof}
+    平凡。
+\end{proof}
+\begin{definition}
+    拓扑空间$X$被称为$\sigma$-紧的，若其可以表示成$X = \bigcup\limits_{n = 1}^\infty X_n$，其中诸$X_n$是紧空间。
+\end{definition}
+\begin{definition}
+    拓扑空间$X$被称为\textbf{局部紧的}，若它Hausdorff且每点都存在紧邻域。
+\end{definition}
+\begin{remark}
+    Hausdorff空间$X$局部紧的充要条件是对任意$x \in X$以及开邻域$x \in U$
+    都存在$x$的开邻域$V$使得$\overline{V} \subseteq U$且$\overline{V}$紧。
+\end{remark}
+局部紧群是极度重要的一类群，因为局部紧群上可以建立Haar测度。我们课程之后都是在讨论
+局部紧群。
+\begin{proposition}
+    局部紧群$G$上有$\sigma$-紧的开子群$H$。
+\end{proposition}
+\begin{proof}
+    选一个对称的单位开邻域$V$，满足$\overline{V}$紧。取$H = \bigcup\limits_{n = 1}^\infty V^n = \bigcup\limits_{n = 1}^\infty \overline{V}^n$。
+    自行验证这是个群（注意$V$对称）；对后一个等号，自行验证$\overline{V}^n \subseteq V^{2n}$。
+\end{proof}
+\begin{remark}
+    除了拓扑群以外，还有拓扑环、拓扑域等概念，可以与群的情形类似地定义。
+\end{remark}
+\begin{definition}
+    一个\textbf{局部域}是一个第二可数的、非离散的局部紧拓扑域。
+\end{definition}
+\begin{proposition}
+    局部域的完全分类：$\R$、$\C$（阿基米德）；$\F_q((x))$、$\Q_p$及其有限扩张（非阿）。
+\end{proposition}
+\begin{proof}
+    可参考相关代数学书籍。
+\end{proof}
+
+\begin{example}
+    回忆：$\F_q((x))$上的赋值给出了其上的拓扑结构。
+    对于$f = \sum\limits_{n \geqslant m} a_nx^n$，其中$a_m \neq 0$，
+    定义$|f| = q^{-m}$。这是一个非阿赋值。如果
+    \[f_k = \sum_{n \geqslant m_k} a_n^{k}x^n \to f = \sum_{n \geqslant m}a_nx^n,\]
+    那么对任何充分大的$n_0$，都存在$k_0$使得对任何$k \geqslant k_0$都有$a_n^k = a_n$对任意$n \leqslant n_0$成立。
+\end{example}
+\begin{proposition}
+    $\F_q((x))$的子环$\F_q[[x]]$满足以下性质：
+    \begin{enumerate}
+        \item $\F_q[[x]]$同胚于$\prod\limits_{n \geqslant 0} \F_q$；
+        \item $\F_q[[x]]$是$\F_q((x))$的开子环；
+        \item $x^n \to 0$；
+        \item $\F_q[[x]]$是极大紧子环。
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    \begin{enumerate}
+        \item[1.3.]略。
+        \item[2.]$\F_q[[x]]$落在以原点为心$1.1$为半径的开球内。
+        \item[4.]不包含在$\F_q[[x]]$中的元素绝对值全都大于$1$。\qedhere
+    \end{enumerate}
+\end{proof}
+\begin{definition}
+    域$k$上的绝对值是映射$\as \colon k \to \R_{\geqslant 0}$使得
+    \begin{enumerate}
+        \item $|x| = 0 \iff x = 0$；
+        \item $|xy| = |x||y|$；
+        \item $|x+y| \leqslant C(|x|+|y|)$，其中$C\geqslant 1$是常数。
+    \end{enumerate}
+\end{definition}
+注意这里和常见的定义相比其实宽泛了一些。
+\begin{remark}
+    \begin{enumerate}
+        \item 称绝对值$\as,\as'$等价，若$\as' = \as^t$，其中$t > 0$。
+        \item 等价的绝对值诱导了相同的拓扑结构。
+        \item $\as$被称为平凡的，若对任意$x\neq 0$都有$|x| = 1$。
+    \end{enumerate}
+\end{remark}
+\begin{theorem}
+    每个赋值域$(k,\as)$关于$\as$均存在唯一的完备化。
+\end{theorem}
+\begin{proof}
+    略。
+\end{proof}
+\begin{definition}
+    绝对值$\as$被称为是一个\textbf{超度量}，若$|x+y| \leqslant \max\{|x|,|y|\}$。
+\end{definition}
+$k$在超度量下的完备化$\tilde{k}$，$\tilde{k}$上的赋值也是超度量。
+关于超度量完备化前后的值群一致。
+
+我们还是来看$\F((x))$，其中$\F = \F_q$是$q$元有限域，
+它上面的赋值是如何从$\F[x]$的赋值延拓而来。
+把$f \in \F[x]$写成$f = x^mg$，其中$g(0) \neq 0$。
+令$|f| = q^{-m}$，这可以唯一地延拓为分式域$\F(x)$上的赋值。
+显然前面$\F((x))$上的赋值限制在$\F(x)$上就是这里所说的赋值。
+容易验证，$\F((x))$也确实是$(\F(x),\as)$的完备化。
+$\Q_p$的情形也是一样，它是$\Q$在$p$进赋值下的完备化。
+
+接下来讨论局部紧群上最重要的Haar测度。
+\begin{definition}
+给定局部紧空间$X$，记其上的Borel $\sigma$-代数为$\bnh$。
+$(X,\bnh)$上的一个局部有限正则测度被称为Radon测度。
+局部有限指的是每点都存在一个邻域$U$使得$\mu(U) < +\infty$。
+正则指的是对任何可测集$A$有\[\mu(A) = \inf\{\mu(U) \mid A \subseteq U, U\text{ 开}\}\]
+以及对任何开集$U$有\[\mu(U) = \sup\{\mu(K) \mid K \subseteq U\text{ 紧}\}.\]
+\end{definition}
+泛函分析的结果表明Radon测度与$C_c(X)$上的正线性泛函一一对应。
+\begin{definition}
+    局部紧群$G$上的一个Haar测度是一个非零左不变Radon测度。
+    左不变说的是对任何$g \in G$和可测集$A \subseteq G$都有$\mu(A) = \mu(gA)$。
+\end{definition}
+\begin{theorem}[Haar]
+局部紧群上的左不变Haar测度存在，且在相差一个数乘的意义下唯一。
+\end{theorem}
+\begin{proof}
+    见\cite{Pr}。
+\end{proof}
+\begin{example}[常见空间上的Haar测度]
+Haar测度在$\R^d$和$\C^d$上都是Lebesgue测度。在$\F_q((x))$上，对于$0$的邻域基$x^m\F_q[[x]]$，成立
+$\mu(x^m\F_q[[x]]) = q^{-m}$；在$\Q_p$上，对$0$的邻域基$p^m\Z_p$，成立$\mu(p^m\Z_p) = p^{-m}$。
+（如固定一个使得$\mu(\F_q[[x]]) = 1$或者$\mu(\Z_p) = 1$的测度）
+\end{example}
+\begin{proof}
+    Lebesgue测度当然满足Haar测度的公理。对后半段话算指标就行，比如$[\Z_p:p^n\Z_p] = p^n (n \geqslant 0)$。
+\end{proof}
+%第一周施工完毕。
+\section{第三周}
+回顾：我们知道在LCG上有一个左不变的Haar测度，且Haar测度在相差一个数乘的意义下唯一。
+我们梳理一下唯一性的证明思路。
+
+假设有左不变的Haar测度$\mu,\nu$。对于$f \in C_c(G)$，我们定义$D_f = \dfrac{I_\nu(f)}{I_\mu(f)}$。
+需要说明的是对任何$f,f_1$都有$D_f = D_{f_1}$。
+
+对每个$g \in G$，$g$在$C_c(G)$上有作用$\rho_g$满足$\rho_gf(x) = f(xg)$。
+
+这个作用是连续的：固定$f \in C_c(G)$、$g \in G$和$\varepsilon > 0$，
+当$g_1$充分接近$g$的时候$|f(xg_1) - f(xg)| < \varepsilon$对任何$x$均成立。取$f_1 \in C_c(G)$
+使得$\|f - f_1\| < \varepsilon$，容易验证$|f_1(xg_1) - f(xg)| < 2\varepsilon$。
+
+今定义$D_f(s) = \dfrac{I_\nu(\rho_sf)}{I_\mu(f)}$。我们计算
+\begin{align*}
+    I_\mu(f)I_\nu(h) & = \iint f(x)h(y)d\mu(x)d\nu(y) = \iint f(x)h(x^{-1}y)d\mu d\nu \\ 
+    & = \iint f(yx)h(x^{-1})d\mu d\nu = \int I_\nu(\rho_xf)h(x^{-1})d\mu\\ 
+    & = I_\mu(f) \int D_f(x)h(x^{-1})d\mu,
+\end{align*}
+因此$\displaystyle I_\nu(h) = \int D_f(x)h(x^{-1}) d\mu$。
+这说明$D_f(x) = D_{f_1}(x)$几乎处处成立，又$D_f$连续知处处成立。
+
+接着考虑模函数。固定$G$上的一个（左不变）Haar测度，右平移作用$R_s \colon G \to G$，$g \mapsto gs$
+给出了测度的推出$(R_s)_*\mu(A) = \mu(As^{-1})$。$(R_s)_*\mu$当然也是一个Haar测度，因此是$\mu$的某个倍数。
+\begin{definition}
+    定义$(R_s)_*\mu = \mu_s = \Delta(s)\mu$。
+\end{definition}
+\begin{remark}
+    课程中模函数的定义和\cite{Pr}中的相差了一个逆。
+\end{remark}
+由定义知$d(sxs^{-1}) = \Delta(s)dx$，$\displaystyle \int f(xs) dx = \Delta(s) \int f(x) dx$。
+\begin{proposition}
+    $\Delta \colon G \to \R_+$是连续群同态。
+\end{proposition}
+\begin{proof}
+同态性显然。选取$0 \neq f \in C_c^+(G)$，则
+\[\int \rho_sf(x) dx = \Delta(s)\int f(x) dx,\]
+左边的连续性导致了右边的连续性。
+\end{proof}
+\begin{theorem}
+    $dx^{-1} = \Delta(x)dx$。
+\end{theorem}
+\begin{proof}
+    $dx^{-1}$是一个右不变Haar测度。首先说明右边亦然。这是因为
+    \[\int f(xg) \Delta(x)dx = \int f(x)\Delta(xg^{-1})\Delta(g)dx = \int f(x) \Delta(x)dx.\]
+    故存在常数$c$使得$dx^{-1} = c\Delta(x)dx$。接着取$1$的对称开邻域$V$，在$V$上积分有
+    \[\int_V dx^{-1} = \int_V dx = \mu(V) = c\int_V \Delta(x) dx,\]
+    令$V$充分小使得$\Delta(x) \to 1$，得到$c = 1$。
+\end{proof}
+\begin{definition}
+    对LCG $G$以及闭子群$H \leqslant G$，$G/H$上赋予商拓扑形成的空间被称为\textbf{齐性空间}。
+\end{definition}
+\begin{example}
+    $\R/\Z$；$\F((x))/\F[x^{-1}]$；$\mathrm{SL}_n(\R)/\mathrm{SL}_n(\Z)$。
+\end{example}
+我们有如下性质：
+\begin{proposition}
+    \begin{enumerate}
+        \item $G/H$是Hausdorff空间；
+        \item $G/H$局部紧。
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    \begin{enumerate}
+        \item 假设$xH \neq yH$。由于$yH$是闭集，存在$x$的开邻域$U$使得$U \cap yH = \emptyset$。
+        选取对称单位开邻域$V$使得$V^2x \subseteq U$。
+        此时容易验证$VxH \cap VyH = \emptyset$。故开集$Vx$和$Vy$的典则像构成了$G/H$中分离$xH,yH$的开邻域。
+        \item 对$xH$，选取$x$的紧邻域$V$，由商映射的连续性知$V$的典则像是$xH$的紧邻域。\qedhere
+    \end{enumerate}
+\end{proof}
+
+接着我们考查$G/H$上测度的性质。
+\begin{definition}
+    设$\chi\in \Hom(G,\R_{>0}^\times) \colon G \to \R_{>0}^\times$是连续群同态，
+    $\mu$是$G/H$上的非零Radon测度。若对任意$x \in G/H$都有$d\mu(gx) = \chi(g)d\mu(x)$（也即$\mu(gE) = \chi(g)\mu(E)$），
+    则称$\mu$关于特征$\chi$半$G$-不变。
+\end{definition}
+\begin{theorem}
+    记$G,H$上的模函数分别是$\Delta_G$和$\Delta_H$，那么有
+    \[\{\chi \mid \chi|_H = \Delta_G\Delta_H^{-1}\}\]以及
+    \[\{G/H\text{ 上的半不变 Radon 测度}\}/\R_{>0}^\times\]之间的一一对应。
+\end{theorem}
+\begin{proof}
+    假设$G/H$上有关于$\chi$的半不变Radon测度$\mu$。考虑$I\colon C_c(G) \to C_c(G/H)$满足
+    \[I(\varphi)(\bar{g}) = \int_H \varphi(gx) dx,\]注意这里积分是关于$H$上的Haar测度的。
+    不难验证$I(\varphi)$良定、$\Supp I(\varphi) \subseteq \Supp \varphi H$
+    并且$I(\varphi)$确实连续，因此$I(\varphi)$确实落在$C_c(G/H)$中。而
+    \[\mu \circ I(\varphi(s^{-1}\cdot)) = \mu(I(\varphi)(s^{-1}\cdot)) = \chi(s)\mu \circ I(\varphi).\]
+    记测度$\nu = \mu \circ I$，则\[\int_G \varphi(s^{-1}x)d\nu = \chi(s)\int \varphi d\nu.\]
+    容易验证$\chi(x)^{-1}d\nu$是一个左不变Haar测度。通过对$\nu$做数乘，可不妨设$d\nu = \chi(x)dx$成立。
+    下面说明$\chi(h) = \Delta_G(h)\Delta_H(h)^{-1}$。考虑\begin{align*}
+        \int_G \rho_h\varphi d\nu & = \int_G \varphi(xh)\chi(x) dx \\
+        & = \chi(h)^{-1} \int_G \varphi(xh)\chi(xh)dx \\
+        & = \chi(h)^{-1}\Delta_G(h)\int \varphi(x)\chi(x) dx \\
+        & = \chi(h)^{-1}\Delta_G(h)\mu \circ I(\varphi),
+    \end{align*}
+    另一方面由\[ \int_G \rho_h\varphi d\nu = \mu \circ I(\rho_h\varphi) = \Delta_H(h)\mu \circ I(\varphi)\]可知
+\[\Delta_H(h) = \chi(h)^{-1}\Delta_G(h) \implies \chi(h) = \Delta_G(h)\Delta_H(h)^{-1}.\]
+
+另一方面，取满足$\chi|_H = \Delta_G\Delta_H^{-1}$的特征$\chi$。利用以下两个引理，
+我们可以定义良定的$\mu$为$\displaystyle \mu\circ I(\varphi) = \int \varphi(x)\chi(x) dx$。这明显是一个正线性泛函。
+容易验证，$\mu\circ I(\varphi)(s^{-1} \cdot) = \chi(s)\mu \circ I(\varphi)$，即$\mu$的确关于$\chi$半不变。
+\end{proof}
+\begin{lemma}
+    $I \colon C_c(G) \to C_c(G/H)$是满射。
+\end{lemma}
+\begin{proof}
+    如果$H$是紧子群，则对$f \in C_c(G/H)$，可以选取合适的$c>0$并令
+    $\tilde{f} = cf \circ \pi$（不难验证$\tilde{f}$连续且具紧支集）。此时$\displaystyle I(\tilde{f})(\bar{g}) = \int_H cf(\overline{gx}) dx = cm(H)f(\bar{g}) = f(\bar{g})$。
+
+    一般地，如果$H$不紧，则令$\Omega = \pi^{-1}(\Supp f)$，由$\pi$是商映射
+    可得$\Omega$是紧集，并且$\pi(\Omega) = \Supp f$。取$\psi \in C_c(G)$使得
+    $\psi|_\Omega \equiv 1$且$\psi \geqslant 0$。此时对任何$\bar{g} \in \Supp f$显然
+    $I(\psi)(\bar{g}) > 0$。今定义$f_1 \colon G/H \to \C$满足$f_1(\bar{g}) = \begin{cases}
+        I(\psi)(\bar{g})^{-1}f(\bar{g}), & \bar{g} \in \Supp f; \\ 0, & \bar{g} \not\in \Supp f.
+    \end{cases}$显然$f_1 \in C_c(G/H)$，诱导了$\tilde{f}_1 = f_1 \circ \pi$，并且有$\psi\tilde{f}_1 \in C_c(G)$。
+    不难验证$I(\psi \tilde{f}_1) = I(\psi)f_1 = f$。
+\end{proof}
+\begin{lemma}
+    设$\varphi \in C_c(G)$，若$I(\varphi) = 0$，则$\displaystyle \int_G \varphi(x)\chi(x) dx = 0$。
+\end{lemma}
+\begin{proof}
+    由于$I(\varphi) = 0$，对任何$g \in G$都有$\displaystyle \int_H \varphi(gh) dh = 0$。
+    待定$\psi \in C_c(G)$，则\[\int_G \chi(g)\psi(g)\left( \int_H\varphi(gh)dh \right)dg = 0.\]
+    不难验证$\chi(g)\psi(g)\varphi(gh) \in C_c(G \times H)$，此时计算
+    \begin{align*}
+        \iint \chi(g)\varphi(gh)\psi(g) dgdh 
+        & \xlongequal{g \mapsto gh^{-1}} \iint \chi(g)\chi(h^{-1})\Delta_G(h)\psi(gh^{-1})\varphi(g)dgdh
+        \\ & \xlongequal{\chi = \Delta_G\Delta_H^{-1}} \iint \chi(g)\varphi(g)\Delta_H(h)\psi(gh^{-1})dgdh
+        \\ & \xlongequal{\text{Fubini}} \int_G \chi(g)\varphi(g)I(\psi)(g) dg = 0.
+    \end{align*}
+\end{proof}
+%第三周施工完毕。
+\section{第四周}
+回顾：对LCG $G$以及子群$H$，$G/H$上有关于$\chi \colon G \to \R_{>0}^\times$
+的半不变测度$\mu$（即$\mu(sE) = \chi(s)\mu(E)$），
+它与$H$上同态$\Delta_G\Delta_H^{-1}$的延拓一一对应。
+
+接下来我们研究局部紧群$G$的表示论。
+\begin{definition}
+    $G$的一个酉表示是群同态$\rho \colon G \to \U(\Hil)$（Hilbert空间$\Hil$上的酉算子全体），
+    使得映射$G \times \Hil \to \Hil,(g,\xi) \mapsto \rho(g)(\xi)$连续。
+\end{definition}
+对于$G$的酉表示的范畴，态射$\Hom_G(\Hil_1,\Hil_2)$是是所有使得如下图表:
+    \begin{cd}
+\Hil_1 \ar[d, "\pi"] \ar[r, "\rho_1(g)"] & \Hil_1 \ar[d, "\pi"] \\
+\Hil_2 \ar[r, "\rho_2(g)"]                  & \Hil_2                 
+\end{cd}对任意$g \in G$均交换的有界算子$\pi \in \bnh(\Hil_1,\Hil_2)$。
+\begin{definition}
+    称$G$的酉表示$(\rho,\Hil)$不可约, 若:
+    \begin{enumerate}
+        \item[(i)] $\Hil \neq 0$;
+        \item[(ii)] $\Hil$没有非平凡的$G$-不变闭子空间.
+    \end{enumerate}
+\end{definition}
+\begin{definition}
+    我们用$\G$代表$G$不可约的酉表示(在同构意义下)构成的等价类.
+\end{definition}
+关于酉表示, 首先有Schur引理:
+\begin{theorem}[Schur]\label{Schur}
+    若$(\rho,\Hil)$是$G$的不可约表示, 则$\Hom_G(\Hil,\Hil) = \C I$, $I$代表单位映射.
+\end{theorem}
+
+为证明Schur引理, 我们需要泛函分析的知识:
+
+回忆: Hilbert空间$\Hil$上的有界线性算子$\bnh(\Hil)$是一个$C^*$-代数. 对$T \in \bnh(\Hil)$, 它的共轭算子$T^* \in \bnh(\Hil)$是以如下方式定义的:
+\[\langle T\xi, \eta\rangle = \langle \xi, T^*\eta\rangle.\]
+\begin{definition}
+    $T \in \bnh(\Hil)$称为正规算子, 若$T^*T = TT^*$. $T$称为自伴算子, 若$T^* = T$.
+\end{definition}
+在有限维空间中, 正规算子就等同于正规矩阵, 可对角化. 回忆在泛函分析中学过正规算子$T$有所谓谱的概念: $\sigma(T) = \{\lambda \in \C\mid \lambda I - T\text{ 不可逆}\}$. $\sigma(T)$是一个非空紧集.
+
+在$\sigma(T)$的Borel代数$\bnh(\sigma(T))$上, 我们有谱测度\begin{equation*}
+    \begin{split}
+        P : \bnh(\sigma(T)) & \to \pu(\Hil) \\ E & \mapsto P(E),
+    \end{split}
+\end{equation*}其中$\pu(\Hil)$代表$\Hil$上的投影算子全体. 
+$E$的特征空间定义为$P(E)\Hil$. 方便起见也将$P(E)$简写为$P_E$. 回顾一些基本的性质:
+\begin{proposition}
+    \begin{enumerate}
+        \item[(i)] $P_{\sigma(T)} = I, P_\emptyset = 0$;
+        \item[(ii)] $E_1 \subseteq E_2 \implies P_{E_1}\Hil \subseteq P_{E_2}\Hil$。
+        \item[(iii)] $E_1 \cap E_2 = \emptyset \implies P_{E_1}\Hil \bot P_{E_2}\Hil$。
+        \item[(iv)] 若$E$包含$\sigma(T)$的非空开集，则$P_E\Hil \neq \{0\}$。
+        \item[(v)] 若$L \in \bnh(\Hil)$与$T$交换，则$LP_E = P_EL$。
+    \end{enumerate}
+\end{proposition}
+
+最后两条是我们证明Schur引理所需要的. 我们来证明Schur引理:
+\begin{proof}[\ref{Schur}的证明]
+    对任意$T \in \Hom_G(\Hil,\Hil)$，$\Re T = \displaystyle \frac{T+T^*}{2}$以及$\Im T = \displaystyle \frac{T-T^*}{2i}$
+    都是自伴的，并且它们也是态射。这是因为对$\rho(g)T = T\rho(g)$
+    取伴随后有$T^*\rho(g^{-1}) = \rho(g^{-1})T^*$（注意$\rho(g)$是酉算子），
+    表明$T^*$是态射。
+
+    由于$T = \Re T+i\Im T$，我们只需考虑$T$自伴的情形。此时对任意$E \in \bnh(\sigma(T))$均有
+    $\rho(g)P_E = P_e\rho(g)$。如果$\sigma(T)$不为单点集，则存在$E$使得$\{0\} \subsetneq P_E\Hil \subsetneq \Hil$。
+    此时对任意$\xi \in \Hil$，由$\rho(g)P_E\xi = P_E\rho(g)\xi$知$P_E\Hil$是$G$-不变子空间，这与$\Hil$
+    不可约矛盾。因此$\sigma(T)$只能是单点集，这确保$T  = \lambda I$（\cite{Pr} P111）。
+\end{proof}
+\begin{corollary}
+    对Abel局部紧群$A$，$\A$自然地等同于$\{\chi \colon A \to \T \mid \chi\text{ 是连续群同态}\}$.
+\end{corollary}
+\begin{proof}
+任取不可约酉表示$(\rho,\Hil) \in \A$，则任取$a \in A$都有$\rho(a) \in \Hom_A(\Hil,\Hil)$。
+因此存在$\chi(a) \in \C$使得$\rho(a) = \chi(a)I$。
+显然$\Hil$的任何子空间都是$A$-不变的，因而$\dim \Hil = 1$。
+
+显然$a \mapsto \chi(a)$是一个群同态，并且由酉表示的连续性可知$\chi$是连续的。
+又因为$\rho(a) \in \U(\Hil)$，$\chi(a) \in \T$。因此$(\rho,\Hil)$诱导了一个连续群同态$\chi \colon A \to \T$。
+
+反过来对于特征$\chi$，通过$a \mapsto \chi(a)I$的方式也在同构意义下确定了唯一的一个酉表示
+$(\rho,\Hil)$。这样的作用当然是互逆的。
+\end{proof}
+
+我们将赋予$\A$以局部紧Abel群结构。首先Abel群结构是很容易的，令$(\chi_1\cdot \chi_2)(a) = \chi_1(a)\chi_2(a)$即可。
+逆元就是$\chi^{-1} = \overline{\chi}$。其上的拓扑则是所谓紧开拓扑：
+\begin{definition}
+    对于局部紧空间$X$，$X \to \C$的连续函数$C(X)$构成的空间上具备紧开拓扑。
+    对于紧集$K \subseteq X$与开集$U \subseteq \C$，令$L(K,U) = \{f\in C(X) \mid f(K) \subseteq U\}$。
+    由这些$L(K,U)$生成的拓扑称为紧开拓扑。
+\end{definition}
+
+（小小的回忆：$C(X)$赋予上界范数之后是一个$C^*$-代数，对合就是复共轭。）
+不难验证，$\A$是$C(A)$的闭子空间。
+
+任取$x \in X$，有一个赋值映射$\delta_x \colon C(X) \to \C$满足$\delta_x(\varphi) = \varphi(x)$。
+\begin{proposition}
+    $\delta_x$是连续映射。
+\end{proposition}
+\begin{proof}
+    任取开集$U \subseteq \C$，$\delta_x^{-1}(U) = L(\{x\},U)$。
+\end{proof}
+对于具备紧开拓扑的$C(X)$，我们有以下性质：
+\begin{proposition}
+\begin{enumerate}
+    \item $C(X)$是Hausdorff空间。
+    \item 若$X$第二可数，则$C(X)$第二可数。
+    \item $B_{K,\varepsilon}(\varphi) = \{\psi \mid |\psi - \varphi| < \varepsilon \forall x \in K\}$
+    是一组开基。（作为推论，紧开拓扑下的网收敛等价于在每个紧子集上一致收敛）
+    \item 若$X$紧，则紧开拓扑等价于$\|\cdot\|_\infty$诱导的拓扑。
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+    3、4是平凡的。
+
+    对于1，取$f \neq g \in C(X)$，那么存在$x \in X$使得$f(x)\neq g(x)$。
+    分别取$f(x),g(x)$的不交邻域$U_f,U_g$，则$L(\{x\},U_f) \cap L(\{x\},U_g) = \emptyset$。
+
+    对于2，由于$X$是第二可数的局部紧空间，可以取到可数基$\{U_i\}$使得每个$\overline{U_i}$紧。
+    再取$\C$的可数基$\{V_i\}$，$\{L(U_i,V_j) \mid 1 \leqslant i,j < +\infty\}$就是一组基。
+\end{proof}
+\begin{theorem}
+    如果$A$是局部紧Abel群，那么$\A$配备紧开拓扑也是局部紧Abel群。
+\end{theorem}
+\begin{proof}
+    首先需要证$\A$是拓扑群。我们必须证$(\chi,\eta) \mapsto \chi\eta^{-1}$的作用是连续的。
+
+    取$B_{K,\varepsilon}(\chi\eta^{-1})$。给定$\chi',\eta'$，则对任意$x \in K$，\begin{equation*}
+        \begin{split}
+            |\chi(x)\bar{\eta}(x) - \chi'(x)\bar{\eta}'(x)| & \leqslant |\chi(x)\bar{\eta}(x) - \chi'(x)\bar{\eta}(x)|+|\chi'(x)\bar{\eta}(x) - \chi'(x)\bar{\eta}'(x)|
+            \\ & = |\chi(x) - \chi'(x)|+|\eta(x) - \eta'(x)|.
+        \end{split}
+    \end{equation*}
+    因此对任何$\chi' \in B_{K,\varepsilon/2}(\chi)$以及$\eta' \in B_{K,\varepsilon/2}(\eta)$，
+    有$\chi'\bar{\eta}' \in B_{K,\varepsilon}(\chi\eta^{-1})$。
+
+    接着需要证$\A$局部紧，这需要更多准备工作，这里不给出。
+    之后会证明$\A$与局部紧空间$\Delta_{C^*(A)}$同胚。
+\end{proof}
+\begin{example}
+    局部域的对偶：$\widehat{\R} \cong \R$。
+\end{example}
+%第四周施工完毕
+\section{第五周}
+回顾：$A$是LCAG，$\A$是$A$的对偶，也就是所有$A \to \T$的连续同态。
+在其上赋予紧开拓扑，构成局部紧Abel群。
+
+\begin{proposition}
+    \begin{enumerate}
+        \item 上节课说明了$\hat{\R} = \R$；另一个相对平凡的例子是$\widehat{\Z/m\Z} = \{\chi_n\}_{n=0}^{m-1} \cong \Z/m\Z$，其中$\chi_n(1) = e^{2\pi in/m}$。
+        因此有限群$\bigoplus\limits_{i=1}^m \Z/m_i\Z$的对偶也是其本身，对偶群的每个元素$\chi$通过$\chi(1_k) = e^{2\pi i n_k/m_k}$给出。
+        这里$1_k$代表第$k$位是$1$而其余位是$0$的元素。
+        \item 若$A$紧，则$\A$离散。
+        \item 若$A$离散，则$\A$紧。
+        \item 局部域的对偶：$\widehat{\Q_p} = \Q_p$；$\widehat{\F((x))} = \F((x))$。
+    \end{enumerate}
+\end{proposition}
+$1$无需证明，我们证明$2 \sim 4$。
+
+$2$的证明: 
+\begin{proof}
+    只需说明$\{\1\}$是开集。为此我们证明$B_{A,\varepsilon}(\1) = \{\1\}$。（这里$\1$是$\A$中单位元，即$\1(a) \equiv 1$。）
+
+    取$\varepsilon$充分小。若$\chi \in B_{A,\varepsilon}(1)$，则因为$\chi(A)$是群，明显只有$\chi(A) = \{1\}$满足需求。因此$\chi = \1$。
+\end{proof}
+$3$的证明：
+\begin{proof}
+    将$\Map(A,\T)$与$\prod_{a \in A} \T$等同, 有自然的嵌入
+\[\A \hookrightarrow \prod_{a \in A} \T, \chi \mapsto (\chi(a))_{a \in A}.\]
+
+由Tychonoff定理，$\prod_{a \in A} \T$是紧空间。$\A$是$\prod_{a \in A} \T$中的闭集
+（因为它首先是$C(A)$中的闭集）。由于$A$的拓扑是离散的，$(\chi_i(a)) \to (\chi(a))$蕴含了$\chi \to \chi \in \A = \Hom(A,\T)$。
+包含映射诱导了$\A$到其像的同胚，而紧空间的闭子集是紧集，故$\A$紧。
+\end{proof}
+4的证明：
+\begin{proof}
+    考虑$\Z$关于$\{p^n\}_{n \geqslant 0}$的分式环
+    \[\Z_{(p)} = \bigg\{\frac{m}{p^n} \mid m \in \Z, n \geqslant 0\bigg\} \subseteq \Q \subseteq \Q_p,\]
+    明显$\Z_{(p)}$在$\Q_p$中稠密。考虑群同态\[\omega:\Z_{(p)} \to \T,\omega(a) = e^{2\pi i a},\]
+    则$\omega \neq \1$。$\omega^{-1}(1) = \Z \cap \Z_{(p)} = \Z$是$\Z_{(p)}$中的开集。
+    这是因为记$\gamma = |p|_p$, 则$\omega^{-1}(1)$是$\dfrac{1+\gamma^{-1}}{2}$-开球. 
+    因此$\omega$关于$\as_p$是连续映射. 而$\Z_{(p)}$在$\Q_p$中稠密, 
+    故$\omega$可唯一地延拓为$\Q_p \to \T$的映射, 通过
+    \[\omega(a) = \lim_{n \to \infty} \omega(x_n),x_n \to a\]的方式.
+    
+    其实我们可以直接写出这个延拓：设$a = \sum_n a_np^n$，则$\omega(a) = \omega(\sum_{n < 0}a_np^n)$. 现在考虑$\varphi:\Q_p \to \widehat{\Q_p}$满足$\varphi(s) = \omega_s$, $\omega_s(a):=\omega(sa)$. 这明显是一个单同态.
+
+    先证明$\varphi$连续。要证：若$s_n \to s$，则对任何紧集$K$都有$\omega_{s_n} \rightrightarrows \omega_s$.
+
+    对任何$k$均存在$N$使得$|s_n-s| < \gamma^k$, $n \geqslant N$. $K$是紧集, 故存在$m$使得$|a| < \gamma^m$, $a \in K$. 因此
+    \[|\omega_{s_n}(a) - \omega_{s}(a)| = |e^{2\pi i (s_n-s)a}| \to 0, n \to \infty.\]
+
+    现在证明$\varphi$满. 对任意$\chi \in \widehat{\Q_p}$, 则$\chi^{-1}(B_\varepsilon(1))$是$0$的开邻域. 因此存在$k$使得$p^k\Z_p \subseteq \chi^{-1}(B_\varepsilon(1))$. 但$\chi(p^k\Z_p)$是群, 故只能是$\{1\}$. 因此$p^k\Z_p \subseteq \ker \chi$.
+
+    以$\chi(p^{-k}\cdot)$替换$\chi$, 我们不妨设$\Z_p \subseteq \ker \chi$. 
+    那么$\chi^p\Big(\dfrac{1}{p}\Big) = 1$. 故存在$a_0\in \{0,\ldots,p-1\}$
+    使得$\chi\Big(\dfrac{1}{p}\Big) = \omega\Big(\dfrac{a_0}{p}\Big)$. 接下来由
+    \[\chi^p\Big(\frac{1}{p^2}\Big) = \chi\Big(\frac{1}{p}\Big)\]
+    可得存在$a_1 \in \{0,\ldots,p-1\}$使得
+    \[\chi\Big(\frac{1}{p^2}\Big) = \omega\Big(\frac{a_0+a_1p}{p^2}\Big).\]
+    
+    归纳地, 存在一列$\{a_n\} \subseteq \{0,\ldots,p-1\}$使得
+    \[\chi\Big(\frac{1}{p^{n+1}}\Big) 
+    = \omega\Big(\frac{a_0+a_1p+\ldots+a_np^n}{p^{n+1}}\Big) 
+    = \omega\Big(\frac{s}{p^{n+1}}\Big), s = \sum_{k=0}^\infty a_kp^k\in \Z_p.\]
+
+    又对$a \in \Z_p$有$\chi(a) = 1 = \omega(sa)$, 故$\chi = \omega_s$.
+
+    $\varphi^{-1}$连续: 也就是要证明, 若$\omega_{s_n} \to \omega_s$, 则$s_n \to s$.
+
+    若$s_n \to t$ (pass to 子列), 则由$\varphi$的连续性有$\omega_{s_n} \to \omega_t$. 而$\varphi$是单射导出$t = s$.
+
+    下证不可能$s_n \to \infty$. 否则存在$t_n \to 0$ (因此$t_n \in \Z_p$, $n$充分大)使得$\omega_{s_n}(t_n) = \omega(s_nt_n) = \omega\Big(\dfrac{1}{p}\Big)$. 
+    考虑$\omega_{s_n}$在紧集$K = \Z_p$上一致收敛到$\omega_s$. 
+    则$\omega_{s_n}(t_n) - \omega_s(t_n) \to 0$. 
+    但又由具体构造可计算极限是$e^{2\pi i 1/p} - 1$, 矛盾!
+
+    对$\widehat{\F((x))}$的情况, 记$p > 0$是$\F$的特征, 
+    $\Tr:\F \to \F_p$是取特征映射, $\theta:\F_p \to \T$满足$\theta(1) = e^{2\pi i 1/p}$. 
+    则不难验证$\theta \circ \Tr:\F \to \T$非常值映射. 定义$\omega:\F((x)) \to \T$如下:
+    \[\omega(\sum_n a_nx^n) = \theta \circ \Tr(a_{-1}).\]
+
+    类似前述过程, $s \to \omega_s$是$\F((x))$到$\widehat{\F((x))}$的同胚.
+\end{proof}
+
+对于$A \times \A$, 我们很自然有\begin{align*}
+    \varphi:A \times \A & \to \T \\ (a,\chi) & \to \chi(a).
+\end{align*}
+\begin{proposition}
+    $\varphi$是连续映射.
+\end{proposition}
+\begin{proof}
+    任取$\varepsilon > 0$. 由$\chi$连续, 存在紧邻域$K$使得
+    $\chi(K) \subseteq B_\varepsilon(\chi(a))$. 
+    对任意$b \in K^\circ$, $\eta \in B_{K,\varepsilon}(\chi)$, 有
+    \[|\eta(b) - \chi(a)| \leqslant |\eta(b) - \chi(b)| + |\chi(b) - \chi(a)| 
+    \leqslant 2\varepsilon.\qedhere\]
+\end{proof}
+我们引出本章中最重要的定理——庞特里亚金对偶.
+\begin{theorem}[庞特里亚金对偶]\label{ptlyj}
+    \begin{equation*}
+        \begin{split}
+            \delta:A & \to \,\hat{\!\A} \\ a & \mapsto \delta(a)(\chi) = \chi(a)
+        \end{split}
+    \end{equation*}是拓扑群间的同构.
+\end{theorem}
+\begin{remark}
+    已说明对局部域的正确性.
+\end{remark}
+未来数周都将为证明庞特里亚金对偶而建立工具，本节后续我们在承认它的基础上给出一个简单的应用。
+但先来看一个引理：
+\begin{lemma}
+    $\delta$是连续群同态。
+\end{lemma}
+\begin{proof}
+    只需证明$\delta$在$a = 0$处连续。也就是说，对任意紧集$K^* \subseteq \A$和$\varepsilon > 0$, 需要找到$0$的邻域$U$使得$\delta(U) \subseteq B_{K^*,\varepsilon}(\1)$。
+
+    固定$0$的紧邻域$L$, 用有限个$B_{L,\frac{\varepsilon}{2}}(\chi_j)(1 \leqslant j \leqslant k)$覆盖$K^*$. 令\[U_j = \{a \in A \mid |\chi_j(a) - 1| < \frac{\varepsilon}{2}\}\]是$0$的开邻域.
+
+    断言: $\delta$将$L^\circ \cap U_1 \cap \ldots \cap U_k$送入$B_{K^*,\varepsilon}(\1)$.
+
+    任取$a \in L^\circ \cap U_1 \cap \ldots \cap U_k$. 
+    任取$\eta \in K^*$, 则存在某个$j$使得$\eta \in B_{L,\frac{\varepsilon}{2}}(\chi_j)$. 此时
+    \[|\delta(a)(\eta)-1| <|\eta(a) - \chi_j(a)| + |\chi_j(a) - 1| < \varepsilon.\qedhere\]
+\end{proof}
+
+对$A$的闭子群$S \leqslant A$, 在$A/S$上赋予商拓扑, 使得其构成ALCG (局部紧Abel群). 
+这样, 我们有\textbf{作为拓扑群}的正合列\begin{cd}
+0 \ar[r] & S \ar[r] & A \ar[r] & A/S \ar[r] & 0.
+\end{cd}
+
+在ALCG的范畴中, 有反变函子$\widehat{\cdot}$ : 
+它将态射 (即连续群同态) $\varphi:A \to B$映射到$\hat{\varphi}:\hat{B} \to \A$
+使得$\langle a,\hat{\varphi}(\eta) \rangle = \langle \varphi(a),\eta \rangle$.
+
+一个自然的问题是, 这个正合列诱导的\begin{cd}
+0 \ar[r] & \widehat{A/S} \ar[r] & \A \ar[r] & \hat{S} \ar[r] & 0
+\end{cd}是否依旧正合?
+
+\begin{remark}
+    需要注意这里的拓扑问题. 一般来讲, 对连续满同态\begin{cd}
+A \ar[r, "\varphi", two heads] & B,
+\end{cd}未必有\textbf{作为拓扑群}的同构$B \cong A/\ker \varphi$.
+
+一个反例如下: 令$A = \R$赋予离散拓扑, $B = \R/\Z$赋予通常拓扑, 
+$\varphi$取商映射. $A/\ker \varphi$就是$\R/\Z$赋予离散拓扑, 当然与$B$不同构.
+\end{remark}
+
+首先定义
+\begin{definition}
+    对闭子群$S \leqslant A$, 定义\[S^\bot = \{\chi \in \A \mid \chi(a) = 1,\forall a \in S\}.\]
+
+    不难验证, 这是$\A$的一个闭子群.
+\end{definition}
+
+我们有:
+\begin{lemma}\label{a}
+    自然映射$\widehat{A/S} \to \A$将$\widehat{A/S}$同胚地映到$S^\bot$.
+\end{lemma}
+\begin{proof}
+    首先显然$\widehat{A/S} \to S^\bot$是单同态. 
+    对任意$\chi \in S^\bot$, 由交换图\begin{cd}
+A \ar[d, "\pi"] \ar[rd, "\chi"] &    \\
+A/S \ar[r, "\bar{\chi}"]           & \T
+\end{cd}知$\chi$诱导了$\bar{\chi}$且是连续的.
+
+因为在$A/S$中$\bar{K}$紧当且仅当在$A$中$K$紧, 
+由紧开拓扑的定义可知在$\widehat{A/S}$中$\chi_j \to \chi$
+当且仅当在$\A$中$\chi_j \to \chi$. 故这是一个同胚.
+\end{proof}
+\begin{lemma}\label{b}
+    $(S^\bot)^\bot = S$.
+\end{lemma}
+\begin{proof}
+    显然$S \subseteq (S^\bot)^\bot$.
+
+    对任意$a \in (S^\bot)^\bot$, 由定义知$\chi(a) = 1$, 对任意$\chi \in S^\bot$. 
+    将$\chi$限制到$A/S$, 就是说$\chi(a+S) = 1$恒成立. 
+    由庞特里亚金对偶, $a+S$可视为$\widehat{\widehat{A/S}}$中的元素, 
+    由前述论断知是零元. 因此$a+S = 0 \in A/S$, 也就是说$a \in S$.
+\end{proof}
+
+首先由\ref{a}, 我们有以下典则的交换图\begin{cd}
+\A \ar[d, "="] & \widehat{A/S} \ar[d, "\tilde{q}"] \ar[l] & 0 \ar[l] \\
+\A             & S^\bot \ar[l]                            & 0. \ar[l]
+\end{cd}
+
+对正合列\begin{cd}
+0 \ar[r] & S^\bot \ar[r] & \A \ar[r] & \A/S^\bot \ar[r] & 0
+\end{cd}用\ref{a}并结合\ref{b}和庞特里亚金对偶, 我们有$\hat{S} \cong \A/S^\bot$. 因此我们有典则的交换图\begin{cd}
+0 & \hat{S} \ar[l] \ar[d, "\cong"] & \A \ar[d, "="] \ar[l] & \widehat{A/S} \ar[d, "\tilde{q}"] \ar[l] & 0 \ar[l] \\
+0 & \A/S^\bot \ar[l]               & \A \ar[l]             & S^\bot \ar[l]                            & 0. \ar[l]
+\end{cd}
+\begin{corollary}
+    任一$\chi \in \hat{S}$可延拓为$\chi \in \A$.
+\end{corollary}
+
+为证明庞特里亚金对偶, 我们需要利用$A$的表示.
+
+\begin{definition}
+    对$f \in L^1(A)$, $f$的Fourier变换$\f \in C(\A)$定义为
+    \[\f(\chi) = \int_A f(a)\overline{\chi(a)} \dd a.\]
+\end{definition}
+回顾: LCG $G$的一个酉表示是群同态$\rho:G \to \U(\Hil)$. 
+它诱导(方式将在下一节课介绍)了一个代数表示\[\rho:L^1(G) \to \bnh(\Hil),\]
+其中$\bnh(\Hil)$是$\Hil$上的有界算子全体，它是一个Banach-*-代数。回忆泛函:
+
+\begin{definition}
+    一个Banach-*-代数$\bnh$是一个配备了映射$*:\bnh \to \bnh,a \mapsto a^*$ (称为对合)的Banach空间, 满足对任意$a,b \in \bnh$与$\lambda \in \C$均有:
+    \begin{enumerate}
+        \item[(i)] $a^{**} = a$;
+        \item[(ii)] $(ab)^* = b^*a^*$;
+        \item[(iii)] $(\lambda a+b)^* = \bar{\lambda} a^*+b^*$;
+        \item[(iv)] $\|a^*\| = \|a\|$. 
+    \end{enumerate}
+
+    一个$C^*$-代数$\cA$是满足如下条件的Banach-*-代数:
+    \begin{enumerate}
+        \item[(iv)'] $\|a^*a\| = \|a\|^2$, 对任意$a \in \cA$.
+    \end{enumerate}
+\end{definition}
+不难验证以下命题:
+\begin{proposition}
+    若$C^*$-代数$\cA$含幺, 则$(1_{\cA})^*  = 1_{\cA}$且$\|1_{\cA}\| = 1$.
+\end{proposition}
+我们在$L^1(G)$上构造Banach-*-代数结构 (关于左不变Haar测度), 
+首先是乘法, 由卷积给出: 对$\psi,\varphi \in L^1(G)$, 测度的运算\begin{align*}
+    G \times G & \overset{m}{\to} G \\ (\varphi \dd g, \psi \dd g) & \overset{m_*}{\mapsto} \varphi * \psi \dd g
+\end{align*}给出了乘法\[(\varphi*\psi)(h) = \int_G \varphi(hg)\psi(g^{-1})\dd g = \int_G \varphi(g)\psi(g^{-1}h)\dd g.\]
+这是因为, 任取$f \in C_c(G)$, \begin{align*}
+    \int f \dd m_*(\varphi \dd g * \psi \dd g) 
+    &= \iint f(gh)\varphi(g)\psi(h) \dd g\dd h \\
+    &\xlongequal[\text{Fubini}]{h \mapsto g^{-1}h} \iint f(h)\varphi(g)\psi(g^{-1}h) \dd g \dd h \\ 
+    &\xlongequal{\text{Fubini}} \int_G f(h)\bigg(\int_G \varphi(g)\psi(g^{-1}h)\dd g\bigg)\dd h \\
+    &= \int_G f(h)(\varphi * \psi)(h) \dd h.
+\end{align*}
+
+由定义不难验证以下性质:
+\begin{proposition}
+    \begin{enumerate}
+        \item[(i)] $(\varphi * \psi) * \eta = \varphi * (\psi * \eta)$;
+        \item[(ii)] $\|\varphi * \psi\|_1 \leqslant \|\varphi\|_1\|\psi\|_1$. 
+    \end{enumerate}
+\end{proposition}
+
+对合则定义为\[\varphi^*(g) = \Delta(g)\overline{\varphi(g^{-1})}.\]
+%第五周施工完毕。
+\section{第六周}
+回顾：对LCG $G$，研究其酉表示。研究$L^1(G)$（关于某个左Haar测度$\dd g$），
+这是一个Banach代数。卷积具有性质：
+\[\|\psi* \varphi\|_1 \leqslant \|\psi\|_1\|\varphi\|_1\]
+
+同时有一个$*$结构: $\varphi^*(h) = \Delta(h)\overline{\varphi(h^{-1})}$，
+它满足对合具有的所有公理。
+
+其他三条的验证是平凡的，只验证最后一条：
+\[\|\varphi^*\|_1 = \int \Delta(h)|\varphi(h^{-1})| dh = \int |\varphi(h^{-1})| dh^{-1}.\]
+
+再回顾，一个$C^*$-代数$\cA$是满足如下条件的Banach-*-代数:
+    \begin{enumerate}
+        \item[(iv)'] $\|a^*a\| = \|a\|^2$, 对任意$a \in \cA$.
+    \end{enumerate}
+
+且不难验证以下命题：
+\begin{proposition}
+    若$C^*$-代数$\cA$含幺，则$(1_{\cA})^*  = 1_{\cA}$且$\|1_{\cA}\| = 1$。
+\end{proposition}
+
+\begin{remark}
+    $(L^1(G),*)$\textbf{不是}一个$C^*$代数，除非$G$是平凡群。（\cite{Pr} 2.6.2）
+\end{remark}
+
+$(\rho,\Hil)$是$G$的一个酉表示，则依定义有如下的连续映射：
+\begin{align*}
+    G \times \Hil & \to \Hil \\ (g,\xi) & \mapsto \rho(g)(\xi)
+\end{align*}
+我们可以知道：$\rho:G \to \U(\Hil)$是在强算子拓扑下连续的。
+这是因为取网$(g_j) \to g$，则对任意的$\xi \in \Hil$，由上述映射的连续性
+知$\rho(g_j)\xi \to \rho(g)\xi$。
+
+$\rho$诱导了映射 (仍记为$\rho$)\begin{align*}
+    L^1(G) & \to \bnh(\Hil) \\ \varphi&  \mapsto \rho(\varphi)(\xi) = \int \varphi(g)\rho(g)(\xi) \dd g.
+\end{align*}
+
+这是一个形式上的记号. 具体地说, 对任意$\eta \in \Hil$, \[\langle \rho(\varphi)\xi,\eta\rangle = \int \varphi(g)\langle \rho(g)\xi,\eta\rangle \dd g.\]
+
+这唯一确定了$\rho(\varphi)\xi$的值. 我们再说明这样的$\rho(\varphi)$的确有界:
+
+\begin{align*}\langle \rho(\varphi)\xi,\eta\rangle 
+&\leqslant \int |\varphi(g)||\langle \rho(g)\xi,\eta\rangle| \dd g\\ 
+&\leqslant \int |\varphi(g)|\|\xi\|\|\eta\| \dd g 
+\leqslant \|\varphi\|_1\|\xi\|\|\eta\|,\end{align*}
+
+其中第二个不等号是因为$\rho(g)$是一个酉算子. 因此
+\[\|\rho(\varphi)\xi\| \leqslant \|\varphi\|_1\|\xi\|.\]
+即$\rho(\varphi) \in \bnh(\Hil)$且$\|\rho(\varphi)\| \leqslant \|\varphi\|_1$.
+
+\begin{definition}
+    $\cA$是Banach-$*$-代数。一个$*$-表示是一个代数映射$\rho:\cA \to \bnh(\Hil)$, 保持$*$, 即$\rho(a^*) = \rho(a)^*$.
+
+    我们称$\rho$含幺，若$\cA$含幺且$\rho(1_{\cA}) = 1$（恒等映射）。
+\end{definition}
+\begin{proposition}
+    诱导映射$\rho:L^1(G) \to \bnh(\Hil)$是$*$-表示.
+\end{proposition}
+\begin{proof}
+    显然保加法和数乘.
+    \begin{itemize}
+        \item $\rho(\varphi * \psi) = \rho(\varphi) \circ \rho(\psi)$:
+
+\begin{align*}
+    \langle \rho(\varphi * \psi)\xi,\eta\rangle 
+    &= \iint \varphi(g)\psi(g^{-1}h) \dd g \langle \rho(h)\xi,\eta\rangle \dd h \\ 
+    &= \int \varphi(g)\int \psi(h)\langle \rho(gh)\xi,\eta\rangle \dd h \dd g \\ 
+    &= \int \varphi(g)\int \psi(g)\langle \rho(h)\xi,\rho(g^{-1})\eta\rangle \dd h \dd g \\ 
+    &= \int \varphi(g) \langle \rho(g)\rho(\psi)\xi,\eta\rangle \dd g = \langle \rho(\varphi)\rho(\psi)\xi,\eta\rangle.
+\end{align*}
+\item $\rho(\varphi^*) = \rho(\varphi)^*$:
+
+\begin{align*}
+\langle \rho(\varphi^*)\xi,\eta\rangle 
+&= \int \overline{\varphi(g^{-1})} \langle \overline{\rho(g)}\xi,\eta\rangle \dd g^{-1} \\
+&= \int \varphi(g)\langle \xi,\rho(g) \eta \rangle \dd g \\ 
+&= \overline{\int \varphi(g)\langle \rho(g)\eta,\xi \rangle \dd g} \\
+&= \overline{\langle \rho(\varphi)\eta,\xi \rangle} 
+= \langle \xi,\rho(\varphi)\eta \rangle = \langle \rho(\varphi)^* \xi,\eta\rangle.
+\end{align*}\qedhere
+    \end{itemize}
+\end{proof}
+
+因此, $G$上的酉表示$\rho:G \curvearrowright \Hil$, 诱导了$L^1(G) \to \bnh(\Hil)$的$*$-代数映射. 
+接下来我们研究如何把$\rho:L^1(G) \to \bnh(\Hil)$拉回来. 首先我们需要介绍Dirac net及其一些性质.
+
+\begin{definition}
+    一个Dirac net是满足如下条件的网$(f_U)$: 对任意开邻域$U$, \begin{enumerate}
+        \item 存在$f_U:G \to [0,+\infty)$使得$f_U \in C_c(G), \Supp f_U \subseteq U$.
+        \item $\int f_U \dd g = 1$.
+        \item $U \supseteq V \implies \Supp f_U \supseteq \Supp f_V$.
+        \item $f_U(g^{-1}) = f_U(g)$.
+    \end{enumerate}
+\end{definition}
+
+可以验证$\rho(f_U) = \rho(f_U^*) = \rho(f_U)^*$. 对任何一个函数$f$以及$g \in G$, 我们定义$L_gf(x) := f(g^{-1}x)$.
+\begin{lemma}\label{31}
+    $\rho:G \to \U(\Hil)$是酉表示, $(f_U)$是Dirac net, 则对任意$g \in G,\xi \in \Hil$, $\lim_U \rho(L_gf_U)\xi = \rho(g)\xi$.
+\end{lemma}
+\begin{proof}
+    不难自证$\|\rho(L_gf_U)\xi\|\leqslant \|\rho(g)\xi\|$. 所以我们只需证对任意$\eta$均有$\langle \rho(L_gf_U)\xi,\eta \rangle  = \langle \rho(g)\rho(f_U)\xi,\eta \rangle\to \langle \rho(g)\xi,\eta\rangle$.
+
+    这等于$\displaystyle \int \langle f_U(g^{-1}h)\rho(h)\xi,\eta\rangle \dd h$. 我们只需考虑$g = e$的情形. 我们有
+    \[\int \langle f(h)\rho(h)\xi,\eta \rangle \dd h 
+    = \int \langle f(h)[\rho(h)\xi-\xi],\eta \rangle \dd h 
+    + \langle \xi,\eta \rangle.\]
+
+    由表示的定义知存在$e$的邻域$U_0$使得对任何$h \in U_0$均有$\|\rho(h)\xi-\xi\| < \varepsilon$. 对任意$U \subseteq U_0$, 
+    \[|\langle \rho(f_U)\xi,\eta \rangle - \langle \xi,\eta \rangle| 
+    \leqslant \int f(h)\|\rho(h)\xi - \xi\|\|\eta\| \dd h < \varepsilon \|\eta\|.\]
+
+    这便得到了命题。
+\end{proof}
+特别地，我们知道$\Hil = L^2(G)$也是一个Hilbert空间，在这上面我们应当有：
+\begin{proposition}
+    对$f \in C_c(G)$以及$\varphi \in \Hil = L^2(G)$，$\rho(f)\varphi = f * \varphi$。
+\end{proposition}
+\begin{proof}
+    \begin{align*}
+        \langle \rho(f)\varphi,\psi\rangle &= \int f(g)\int \varphi(g^{-1}x)\overline{\psi(x)} \dd x\dd g \\
+        &\xlongequal{\text{Fubini}} \int(\int f(g)\varphi(g^{-1}x)\dd g) \overline{\psi(x)} \dd x = \langle f*\varphi, \psi \rangle.
+    \end{align*}
+\end{proof}
+特别地，结合\ref{31}, 可以得到：
+\begin{corollary}
+    任取一列Dirac net $(f_U)$，有$f_U * \varphi \to \varphi$（在$L^2$范数下）, 
+    因此$C_c(G)$在$L^2(G)$中稠密.
+\end{corollary}
+这样的表示，可以拉回到$G$上的一个酉表示，定义如下：
+\begin{align*}
+    G \times L^2(G) & \to L^2(G) \\ (g,\varphi) & \mapsto L_g\varphi.
+\end{align*}
+我们不难验证这个作用是连续的。
+
+现在我们需要正式思考将$L^1(G)$上的表示拉回来. 研究$L^1(G)$的结构, 有一大坏处就是$L^1(G)$\textbf{并不是一个$C^*$-代数!} 所以我们需要修改范数以将$L^1(G)$变成好一些的赋范线性空间.
+\begin{definition}
+    设有酉表示$(\rho,\Hil)$。称向量$v \in \Hil$是一个循环向量，
+    如果$\{\rho(g)v\mid g \in G\}$张成的子空间是稠密的。
+    如果$(\rho,\Hil)$存在非零循环向量，则称$(\rho,\Hil)$是一个循环表示。
+\end{definition}
+很容易看出，一个酉表示不可约当且仅当它的每个非零向量都是循环向量。
+我们在$L^1(G)$上定义新的范数：$\|\varphi\| = \sup_\rho \|\rho(\varphi)\| \leqslant \|\varphi\|_1$，其中
+$\rho$跑遍所有的循环表示。
+\begin{lemma}
+    新的范数$\|\ \ \|$确实是$L^1(G)$上的范数。
+\end{lemma}
+\begin{proof}
+    只需证明$\|\varphi\| = 0$蕴含了$\varphi = 0$，其余容易验证。
+
+    取Dirac net $(f_U)$，则考虑$L^2(G)$上的酉表示，有$0 = \rho(\varphi)(f_U) = \varphi * f_U$。
+    我们希望证明：在$L^1(G)$中成立$\varphi * f_U \to \varphi$。
+
+    首先当$g \to e$时有$\|\varphi(\cdot g)-\varphi(\cdot)\|_1 \to 0$。任取$\varepsilon > 0$，
+    存在邻域$U'$使得对任意邻域$U \subseteq U'$均有$\|\varphi(\cdot g)-\varphi(\cdot)\|_1 < \varepsilon$。此时
+    \[\|\varphi * f_U -\varphi\| \leqslant \iint |\varphi(hg)f_U(g)-\varphi(h)f_U(g)|\dd g\dd h < \varepsilon.\qedhere\]
+\end{proof}
+
+我们令$C^*(G)$为$L^1(G)$在新范数下的完备化，那么：
+\begin{proposition}
+$C^*(G)$确实是一个$C^*$-代数。
+\end{proposition}
+\begin{proof}
+    只需在稠子空间$L^1(G)$上证明。
+    
+    对任何循环表示$\rho$以及$\varphi \in L^1(G)$都有
+    \[\|\rho(\varphi^* * \varphi)\| = \|\rho(\varphi^*)\rho(\varphi)\| 
+    = \|\rho(\varphi)^*\rho(\varphi)\| = \|\rho(\varphi)\|^2.\qedhere\]
+\end{proof}
+%第六周施工完毕。
+
+\section{第七周}
+回顾：一个LCG $G$，酉表示$\rho \colon G \to \U(\Hil)$诱导了$\rho \colon L^1(G) \to \bnh(\Hil)$，
+形式上$\displaystyle \rho(\varphi) = \int_G \varphi(g)\rho(g)\dd g$。
+这是一个*-表示并且$\|\rho(\varphi)\| \leqslant \|\varphi\|_1$。
+
+但是$L^1(G)$有一个坏处：它不是$C^*$-代数。
+为此我们需要考虑在$L^1(G)$上定义新的范数：$\|\varphi\| = \sup_{\rho}\|\rho(\varphi)\| (\leqslant \|\varphi\|_1)$，$\rho$跑遍循环表示。
+$L^1(G)$在这个范数下做完备化得到$C^*(G)$，它是一个$C^*$-代数。
+
+接下来我们希望证明：$G$的酉表示构成的范畴等价于$L^1(G)$非退化（即$\rho(L^1(G))\Hil$稠密）的*-代数表示。
+那么，对于一个*-代数表示$\pi \colon L^1(G) \to \bnh(\Hil)$，我们要问如何让它回到酉表示$\rho$。
+
+由于$\pi(L^1(G))\Hil$是稠密的，我们先在稠子空间上定义$\rho$：
+对于$\xi \in \Hil$以及$\varphi \in L^1(G)$，定义$\rho(g)(\pi(\varphi)\xi) = \pi(l_g\varphi)\xi$。
+\begin{lemma}
+    如此定义的$\pi \mapsto \rho$是良定的。
+\end{lemma}
+\begin{proof}
+    首先我们需要以下公式：
+    \begin{itemize}
+        \item 对于Dirac net $(f_U)$以及$\varphi \in L^1(G)$，则在$L^1(G)$中有
+        $f_U * \varphi \to \varphi$。（已证）
+        \item 对于$\varphi,\psi \in L^1(G)$，有$l_g(\psi * \varphi) = (l_g \psi) * \varphi$。（直接计算即可）
+    \end{itemize}
+
+    现在假设$\pi(\varphi)\xi = \pi(\psi)\eta$，则\[\rho(g)(\pi(\varphi)\xi) = \pi(l_g\varphi)\xi 
+     = \lim_U \pi(l_gf_U * \varphi)\xi = \lim_U \pi(l_gf_U)\pi(\varphi)\xi = \lim_U \pi(l_gf_U)\pi(\psi)\eta
+      = \rho(g)\pi(\psi)\eta.\]
+
+    一般地假设$\sum_{i=1}^k \pi(\varphi_i)\xi_i = \sum_{i=1}^r \pi(\psi_i)\eta_i$，思路是一样的。
+\end{proof}
+
+\begin{proposition}
+    $(l_g\psi)^* * (l_g\varphi) = \psi^* * \varphi$
+\end{proposition}
+\begin{proof}
+    \begin{align*}
+        (l_g\psi)^* * (l_g\varphi) (h) &= \int \Delta(x)\overline{\varphi(g^{-1}x^{-1})}\psi(g^{-1}x^{-1}h)\dd x \\
+        &= \int \Delta(xg)\overline{\varphi((xg)^{-1})}\psi((xg)^{-1}h)\dd xg = \varphi^* * \psi(h).
+    \end{align*}
+\end{proof}
+\begin{lemma}
+    $\pi \mapsto \rho$保持内积。
+\end{lemma}
+\begin{proof}
+    \begin{align*}
+        &\langle \rho(g)\pi(\varphi)\xi,\rho(g)\pi(\psi)\eta \rangle 
+        = \langle \pi(l_g\varphi)\xi,\pi(l_g\psi)\eta \rangle 
+        = \langle \pi(l_g\psi)^*\pi(l_g\varphi)\xi,\eta \rangle \\
+        &= \langle \pi((l_g\psi)^* * l_g\varphi)\xi,\eta \rangle
+        = \langle \pi(\psi^* * \varphi)\xi,\eta \rangle 
+        = \langle \pi(\varphi)\xi,\pi(\psi)\eta \rangle. 
+    \end{align*}
+\end{proof}
+因此由于$\pi(L^1(G))\Hil$稠密，$\rho$可以延拓为整个$\Hil$上的酉算子。
+同时不难验证我们定义的$\rho \mapsto \pi$与$\pi \mapsto \rho$是互逆映射。
+这就得到了所需要的等价关系。
+
+我们的下一个目标是证明，对于LCAG $A$，$C^*(A) = C_0(\Delta) = C_0(\hat{A})$。
+
+回顾泛函分析。对含幺Banach代数$\cA$，由$1_\cA^2 = 1_\cA$可推$\|1_\cA\| \geqslant 1$。
+通过替换$\cA$上的等价范数，可以假设$\|1_\cA\| = 1$。（其实就是换成了算子范数，细节见\cite{Pr} P38）
+因此今后我们谈论含幺Banach代数，总假设$\|1_\cA\| = 1$。
+
+对$a \in \cA$，可以谈论$a$的谱$\sigma_\cA(a) = \{\lambda \mid \lambda-a \not\in \cA^\times\}$，其中
+$\cA^\times$代表$\cA$中的乘法可逆元。
+\begin{lemma}
+    $\cA^\times$是$\cA$中的开集，且是一个拓扑群（在子空间拓扑下）。
+\end{lemma}
+\begin{proof}
+  对任意$a \in \cA$满足$\|a\| < 1$，不难验证$(1-a)^{-1} = \sum\limits_{n=0}^\infty a^n$。
+  因此$B_1(1) \subseteq \cA^\times$。
+  
+  对一般的$y \in \cA^\times$，由于$\cA$上的乘法运算是连续的，
+  左乘$y$的映射是同胚。因此也有开集$yB_1(1) \subseteq \cA^\times$，
+  故$\cA^\times$开。
+
+  为验证$\cA^\times$是拓扑群，只需再证明取逆运算是连续的。$a \mapsto \sum\limits_{n=0}^\infty a^n = (1-a)^{-1}$
+  在$B_1(0)$上连续，因此取逆在$B_1(1)$上连续$1-a \mapsto a \mapsto (1-a)^{-1}$。
+  进而对任何$y \in \cA^\times$，取逆运算在$yB_1(1)$上连续。
+\end{proof}
+\begin{lemma}
+    $\sigma_\cA(a)$是包含于闭球$\overline{B_{\|a\|}(0)}$中的闭子集。
+\end{lemma}
+\begin{lemma}\label{pbk}
+    对任何$a \in \cA$都有$\sigma_\cA(a) \neq \emptyset$。
+\end{lemma}
+\begin{definition}
+    对于复平面上的区域$D$以及Banach空间$V$，称$f\colon D \to V$全纯，
+    如果对任意$z \in D$都有$\displaystyle f'(z):= \lim\limits_{h \to 0}\frac{f(z+h)-f(z)}{h}$存在。
+\end{definition}
+\begin{remark}
+    若$f$全纯且$\alpha \colon V \to \C$是连续线性泛函，则$\alpha \circ f$是通常意义下的全纯函数。全纯映射一定连续。
+\end{remark}
+\begin{lemma}
+    $f \colon \C\backslash \sigma_\cA(a) \to \cA, \lambda \mapsto (\lambda-a)^{-1}$是全纯映射。
+\end{lemma}
+\begin{proof}
+    直接计算。
+\end{proof}
+\begin{proof}[\ref{pbk}的证明]
+否则$\lambda \mapsto (\lambda - a)^{-1}$是整函数，并且当$\lambda \to \infty$时
+趋于$0$，从而恒等于$0$，矛盾。
+\end{proof}
+\begin{corollary}
+    若$\cA^\times = \cA\backslash\{0\}$，那么$\cA \cong \C$。
+\end{corollary}
+\begin{proof}
+    否则存在$a \in \cA\backslash\C$，则对任意$\lambda \in \C$均有
+    $\lambda-a \neq 0 \implies \lambda-a \in \cA^\times$。因此$\sigma_\cA(a) = \emptyset$，与谱不空矛盾。
+\end{proof}
+\begin{definition}
+    对$a \in \cA$，$a$的谱半径$r(a):=\sup\{|\lambda| \mid \lambda \in \sigma_\cA(a)\}$。
+\end{definition}
+\begin{theorem}
+    $\displaystyle r(a) = \lim\limits_{n \to +\infty} \|a^n\|^{\frac{1}{n}}$。
+\end{theorem}
+\begin{proof}
+    任取$\lambda \in \sigma_\cA(a)$，$\lambda^n - a^n = (\lambda - a)(\cdots)$表明$\lambda^n \in \sigma_\cA(a^n)$，
+    因而$|\lambda^n| \leqslant \|a^n\|$，给出了$r(a) \leqslant \liminf \|a^n\|^{\frac{1}{n}}$。
+
+    对另一边，当$|\lambda| > \|a\|$时有展开\[(\lambda - a)^{-1} = \lambda^{-1}(1-\frac{a}{\lambda})^{-1} = \sum_{n = 0}^\infty \frac{a^n}{\lambda^{n+1}},\]
+    它可以延拓为$\{|\lambda| > r(a)\}$内的全纯函数。因而对任意$|\lambda| > r(a)$，
+    $\displaystyle \frac{a^n}{\lambda^{n+1}}$有界，也就是说存在$C$使得$\|a^n\| \leqslant C|\lambda|^{n+1}$，
+    给出$\limsup \|a^n\|^{\frac{1}{n}} \leqslant r(a)$。
+\end{proof}
+\begin{lemma}
+    $\bnh$是含幺Banach代数，$\cA$是$\bnh$的含幺子代数。则对任意$a \in \cA$都有
+    $\partial \sigma_\cA(a) \subseteq \sigma_\bnh(a) \subseteq \sigma_\cA(a)$。
+\end{lemma}
+\begin{proof}
+    第二个包含关系容易。对第一个包含关系，任取$\lambda \in \partial \sigma_{\cA}(a)$，
+    可取一列$\lambda_n$使得$\lambda_n \to \lambda$并且$\lambda_n - a$在$\cA$中可逆。
+    若$\lambda \not\in \sigma_\bnh(a)$，那么由于$(\lambda_n - a)^{-1} \to (\lambda - a)^{-1}$
+    并且$\cA$在$\bnh$中闭，$(\lambda - a)^{-1} \in \cA$，有悖于$\lambda \in \sigma_{\cA}(a)$。
+\end{proof}
+%第七周施工完毕。
+
+\section{第八周}
+研究一个局部紧Abel群（LCAG）$A$，我们目前的终极目标是希望得到同构$C^*(A) \cong C_0(\hat{A})$，
+且同构限制在稠子空间$L^1$上就是Fourier变换。为此我们需要泛函分析的知识。
+
+回顾一下，设$\cA$是一个交换Banach代数，元素$a \in \cA$的谱$\sigma_\cA(a)$是
+那些使得$\lambda-a$不可逆的复数$\lambda$。$a$的谱半径
+\[ r(a) = \sup_{\lambda \in \sigma(a)} |\lambda| 
+= \lim_{n \to +\infty} \|a^n\|^{\frac{1}{n}} \leqslant \|a\|.\]
+
+从定义上来说，$r(a)$描述的是$a$的代数性质，而谱半径公式则涉及了$a$的分析性质。
+\begin{lemma}
+    设$a$是含幺$C^*$-代数中的自伴元，则$r(a) = \|a\|$。
+\end{lemma}
+\begin{proof}
+    对自伴元$a$来说，$\|a^2\| = \|a^*a\| = \|a\|^2$。进而可推出对任何正整数$n$有
+    $\|a^{2^n}\| = \|a\|^{2^n}$，再由谱半径公式立得。
+\end{proof}
+\begin{remark}
+    任取$a \in \cA$，则$aa^*$是自伴元，故$\|a\|^2 = \|aa^*\| = r(aa^*)$，
+    这说明$\cA$的范数由代数结构决定。
+\end{remark}
+但是含幺毕竟太好了，我们通常研究的是不含幺的$C^*$-代数（或者Banach代数）。
+例如，对非紧群$G$来说，$L^1(G)$就不含幺。怎么办呢？遂需要将Banach代数加上一个幺元。
+
+假设$\cA$是不含幺的Banach代数，我们定义一个含幺Banach代数$\cA^e = \C \times \cA$。
+其上的Banach代数结构：
+\begin{itemize}
+    \item $\|(\alpha,a)\| = |\alpha| + \|a\|$；
+    \item $(\alpha,a)\cdot(\beta,b) = (\alpha\beta,\alpha b+\beta a+ab)$；
+    \item $\lambda(\alpha,a) = (\lambda \alpha,\lambda a) = (\lambda,0)(\alpha,a)$。
+\end{itemize}
+\begin{proposition}
+    $\cA^e$确实是一个Banach代数，且$\cA \to \cA^e,a \mapsto (0,a)$是
+    Banach代数的等距嵌入。以后我们常视$\cA$为$\cA^e$的子代数，就是在这个意义下的。
+\end{proposition}
+\begin{proof}
+    由定义不难验证。
+\end{proof}
+现在如果$\cA$还是一个Banach*-代数，则定义$\cA^e$上的对合运算：$(\alpha,a)^* = (\overline{\alpha},a^*)$。
+\begin{proposition}
+    在此对合运算下，$\cA^e$是一个Banach*-代数。
+\end{proposition}
+\begin{proof}
+    不难自证。
+\end{proof}
+但是到了$\cA$是$C^*$-代数的情况，就会不太一样。如果我们还是考虑$\cA^e$的前述范数，
+则必须有\[(|\alpha|+\|a\|)^2 = \|(\alpha,a)(\alpha,a)^*\| 
+= \|(|\alpha|^2,\alpha a^*+\overline{\alpha}a+aa^*)\| 
+= |\alpha|^2+\|\alpha a^*+\overline{\alpha}a+aa^*\|,\]
+而这很难做到！所以我们需要更改$\cA^e$上的范数。
+
+定义$l:\cA^e \to \bnh(\cA)$满足$l(\alpha,a)(b) = (\alpha +a)b$。
+我们来说明$l$将给出合适的范数。
+\begin{lemma}
+    若$\cA$是不含幺$C^*$-代数，则$l$是单代数同态，且限制在$\cA$上是等距。
+\end{lemma}
+\begin{remark}
+    在这样的情况下，我们定义$\|(\alpha,a)\| = \|l(\alpha,a)\|$，这就是所希望的范数，
+    使得$\cA^e$成为$C^*$-代数。
+\end{remark}
+\begin{proof}
+    验证代数同态是容易的。现假设$l(\alpha,a) = 0$。若$\alpha \neq 0$，则对任何$b$
+    都有$b = -\dfrac{1}{\alpha}ab$，因此$h = -\dfrac{a}{\alpha}$
+    是左乘法单位元。由\cite{Pr}练习2.4知$h$是幺元，这与$\cA$不含幺矛盾！
+    因此$\alpha = 0$，从而$ab = 0$对任何$b$都成立。特别地$aa^* = 0$。
+    由于$\cA$是$C^*$-代数，取范数后得$a = 0$。
+
+    $\|l(0,a)\| = \|a\|_{\text{opp}} \leqslant \|a\|$。
+    又因为$\|aa^*\| = \|a\|\|a^*\|$，知等号可以取到。
+\end{proof}
+此时我们定义$\|(\alpha,a)\| = \|l(\alpha,a)\|$，在此范数下$\cA^e$首先是一个Banach代数。我们断言：
+\begin{proposition}
+    在此范数下$\cA^e$还是一个$C^*$-代数。也就是说，$\|(\alpha,a)(\alpha,a)^*\| = \|(\alpha,a)\|^2$。
+\end{proposition}
+\begin{proof}
+    先证明$\geqslant$。对任意$\varepsilon > 0$，均存在$b \in \cA$使得$\|b\| = 1$且
+    $\|l(\alpha,a)b\| \geqslant \|(\alpha,a)\|(1-\varepsilon)$。因此
+    \begin{align*}
+        \|(\alpha,a)^*(\alpha,a)\| &\geqslant \|l(\alpha,a)^*(\alpha,a)b\| 
+        = \|(\alpha,a)^*(\alpha,a)(0,b)\|\\
+        &\geqslant \|(0,b)^*(\alpha,a)^*(\alpha,a)(0,b)\| 
+        = \|[l(\alpha,a)b]^*[l(\alpha,a)b]\| = \|l(\alpha,a)b\|^2 \\
+        &\geqslant \|(\alpha,a)\|^2(1-\varepsilon)^2.
+    \end{align*}
+
+    令$\varepsilon \to 0^+$即可。
+
+    而因为$\|(\alpha,a)^*\|\|(\alpha,a)\| \geqslant \|(\alpha,a)^*(\alpha,a)\| \geqslant \|(\alpha,a)\|^2$，有
+    $\|(\alpha,a)^*\| \geqslant \|(\alpha,a)\|$，再以对合替换可得等于号。由此得到$\leqslant$。
+\end{proof}
+
+考虑Banach代数同态$\varphi:\cA \to \bnh$。
+如果$\cA$含幺，我们用$\overline{\varphi(\cA)}$替换$\bnh$，
+不妨假设$\bnh$含幺，$\varphi$将单位映到单位。
+后面一句是因为$\overline{\varphi(\cA)}$中的任何元素都是一系列$\varphi(b_n)$的极限，
+而$\varphi(1)\varphi(b_n) = \varphi(b_n)$。
+如果$\cA$不含幺，考虑$\varphi^e\colon \cA^e \to \begin{cases}
+    \bnh, & 1\in \bnh; \\ \bnh^e, &  1 \not\in \bnh,
+\end{cases}$满足$\varphi^e(\alpha,a) = \begin{cases}
+    \alpha+\varphi(a), & 1 \in \bnh; \\ (\alpha,\varphi(a)), & 1 \not\in \bnh.
+\end{cases}$无论哪种情况，最终我们都得到了单位同态。
+
+如果$\cA$和$\bnh$都是Banach*-代数且$\varphi$是*-代数同态，则$\varphi^e$也是。
+我们还希望延拓之后可以保持同态的有界性。幸运地，我们有
+\begin{lemma}
+    设$\varphi:\cA \to \bnh$是从Banach*-代数$\cA$到$C^*$-代数$\bnh$的*-同态，
+    则对任意$a \in \cA$都有$\|\varphi(a)\| \leqslant \|a\|$。
+\end{lemma}
+\begin{proof}
+    不妨设$\varphi$是单位同态。若$a$自伴，则$\varphi(a)$自伴。
+    显然若$\lambda-a \in \cA^\times$，则$\lambda-\varphi(a) \in \bnh^\times$。
+    因此$\sigma_\cA(a)^c \subseteq \sigma_\bnh(\varphi(a))^c \implies \sigma_\bnh(\varphi(a)) \subseteq \sigma_\cA(a)$。
+    因此$\|\varphi(a)\| = r(\varphi(a)) \leqslant r(a) = \|a\|$。
+
+    一般地，由于$\bnh$是$C^*$-代数，我们有
+    \[\|\varphi(a)\|^2 = \|\varphi(a^*a)\| \leqslant \|a^*a\| 
+    = \|a\|^2 \implies \|\varphi(a)\| \leqslant \|a\|.\qedhere\]
+\end{proof}
+
+假设$\cA$是交换Banach代数，例如$\cA = L^1(A)$，其中$A$是一个LCAG。
+又如，设$X$是局部紧空间，考虑$C_0(X)$（在“无穷远处”趋于$0$的连续函数）赋予上确界范数，
+对合定义为复共轭。那么在此情况下$C_0(X)$构成一个交换$C^*$-代数。
+
+我们接下来的目标是证明所有交换$C^*$-代数都同构于某个$C_0(X)$。
+对于交换$C^*$-代数$\cA$，我们定义$\Delta_\cA$为所有$\cA$到$\C$的满代数同态
+（注意，代数同态满当且仅当不为零）。我们研究$\Delta_\cA$的一些性质。
+\begin{lemma}
+    $\Delta_\cA \subseteq \cA'$，其中$\cA'$代表$\cA$的对偶。
+    事实上，对任何$m \in \Delta_\cA$都有
+    $\|m\| \leqslant 1$。若$\cA$含幺，不等号将变成等号。
+\end{lemma}
+\begin{proof}
+    若$\cA$含幺，则由$m(1_\cA) = 1$可知$\|m\| \geqslant 1$。
+
+    任取$a \in \cA$，设$m(a) = \lambda \in \C$，则$m(\lambda-a) = 0$，
+    故$\lambda \in \sigma_\cA(a)$。
+    但$|\lambda| \leqslant \|a\|$说明了$\|m\| \leqslant 1$。
+\end{proof}
+\begin{lemma}
+    设$\cA$是交换$C^*$-代数，则对任意$m \in \Delta_\cA$与$a \in \cA$均有$m(a^*) = \overline{m(a)}$。
+\end{lemma}
+\begin{proof}
+    不失一般性，设$\cA$与$m$是含幺的。记$\displaystyle \Re a = \frac{a+a^*}{2}$以及$\displaystyle \Im a = \frac{a-a^*}{2i}$,
+    则$\Re a,\Im a$都自伴并且$a = \Re a+i\Im a$。因此只需证明对自伴元素$a$有$m(a) \in \R$。
+
+    记$m(a) = x+iy$，其中$x,y \in \R$。对任意实数$t$，有$m(a+it) = x+i(y+t)$。
+    不难验证$(a+it)^*(a+it) = a^2+t^2$，那么\[|m(a+it)|^2 = x^2+2yt+t^2+y^2 \leqslant \|a+it\|^2 = \|(a+it)^*(a+it)\| = \|a^2+t^2\| \leqslant \|a\|^2+t^2.\]
+
+    由于$t$是任意的，为使上述不等式恒成立，只能是$y = 0$。
+\end{proof}
+
+研究LCAG $A$上的表示，我们希望$A$的酉对偶$\hat{A}$与$\Delta_{C^*(A)}$之间建立同构。
+目标则是建立同构$C^*(A) \cong C_0(\Delta_{C^*(A)})$。
+对一般的$C^*$-代数$\cA$，我们利用Gelfand变换构造同构$\cA \cong C_0(\Delta_\cA)$，
+其中$\check{a}(m) = m(a)$。在$\cA = C^*(A)$的特例下，
+考虑稠子空间$L^1(A)$，每个$f \in L^1(A)$都对应到一个$\check{f}$，
+它将$\chi \in \hat{A}$（不区分$\hat{A}$和$\Delta_{C^*(A)}$）
+映到$\displaystyle \check{f}(\chi) = \chi(f) = \int f(a)\chi(a)\dd a$。
+
+对Banach代数$\cA$，我们赋予$\Delta_\cA \subseteq B_1(\cA')$（$\cA'$中的单位闭球）以弱*拓扑，
+由定义知$\check{a} \in C(\Delta_\cA)$对任何$a \in \cA$。
+\begin{lemma}
+    若$\cA$含幺，则$\Delta_\cA$是$B_1(\cA')$的闭子集。
+    进而，由于$B_1(\cA')$是Hausdorff以及紧的（Banach-Alaoglu），$\Delta_\cA$亦然。
+\end{lemma}
+\begin{proof}
+    取$\Delta_\cA$中的网$(m_j)$，通过取子列不妨设$m_j \to \xi \in B_1(\cA')$。
+    因为$m_j(1) \equiv 1$，有$\xi(1) = 1$。因此$\xi$是非零代数同态。
+\end{proof}
+\begin{lemma}
+    若$\cA$不含幺，则$\Delta_\cA \hookrightarrow \Delta_{\cA^e}$是$\Delta_\cA$到其像的同胚，
+    且$\Delta_{\cA^e} = \Delta_\cA \cup \{0\}$（右边在自然嵌入的意义下视为$\cA^e \to \C$的代数同态）。
+    因此，$\Delta_\cA$局部紧且$\Delta_{\cA^e}$是$\Delta_\cA$的一点紧化。
+\end{lemma}
+\begin{proof}
+    显然$m \mapsto m^e$是单射。取$\Delta_\cA$中的一列网$(m_j)$且$m_j \to m \in \Delta_\cA$。
+    此时$m_j^e(\lambda,a) = \lambda+m_j(a) \to \lambda+m(a) = m^e(\lambda,a)$。
+    反过来也是对的，因此的确是同胚。对一切$m \in \Delta_\cA$，显然$m^e \neq 0$。
+    而任取$m \in \Delta_{\cA^e}$，$m|_\cA$是$\cA$到$\C$的代数同态，故
+    要么落在$\Delta_\cA$中要么是$0$。不难验证此时必有$(m|_\cA)^e = m$。
+\end{proof}
+%第八周施工完毕。
+\section{第九周}
+考虑$\cA$是一个交换Banach代数。我们关心的例子有：$L^1(A)$，其中$A$是局部紧Abel群；
+或者$L^1(A)$的完备化$C^*(A)$。
+
+我们定义过\[\Delta_\cA = \{m\colon \cA \to \C \mid m\text{ 是满代数同态}\}.\]
+
+上节课中我们证明了对任意$m \in \Delta_\cA$都有$\|m\| \leqslant 1$，
+因此$\Delta_\cA \subseteq B_1(\cA')$，这里$\cA'$代表$\cA$的对偶。
+
+我们赋$\Delta_\cA$以弱*拓扑，也就是适合于如下条件的最粗拓扑：
+\begin{center}
+    对任意$a \in \cA$，Gelfand变换$\check{a}:\Delta_\cA \to \C$，
+    $\check{a}(m) := m(a)$连续。
+\end{center}
+
+上节课中，我们证明了：
+\begin{proposition}
+    \begin{enumerate}
+        \item 若$\cA$含幺，则$\Delta_\cA$紧；
+        \item 若$\cA$不含幺，则$\Delta_\cA \cup \{0\} \cong \Delta_{\cA^e}$。
+    \end{enumerate}
+\end{proposition}
+这里我们自动将$\Delta_\cA$中的元素与$0$嵌入到$\Delta_{\cA^e}$中。
+那么$\Delta_{\cA^e}$可以视作$\Delta_\cA$的一点紧化，
+从而我们知道$\Delta_\cA$是局部紧Hausdorff空间。
+
+\begin{theorem}[(Gelfand-Naimark)]
+    设$\cA$是交换$C^*$-代数，则Gelfand变换$\check{\cdot} \colon \cA \to C_0(\Delta_\cA)$
+    是等距的*-同构。
+\end{theorem}
+\begin{proof}
+    首先验证$\check\cdot$是*-代数同态，唯一非平凡的是验证$\widecheck{a^*} = \check{a}^*$：
+    任取$m \in \Delta_\cA$，则$\widecheck{a^*}(m) = m(a^*) = \overline{m(a)} = \overline{\check{a}(m)} = \check{a}^*(m)$。
+
+    $\check\cdot$的单性将由$\check\cdot$是等距自动得到。
+
+    接着证明$\check\cdot$确实将$\cA$映到$\C_0(\Delta_\cA)$中。
+    如果$\cA$含幺，则$C_0(\Delta_\cA) = C(\Delta_\cA)$显然。若$\cA$不含幺，
+    我们注意到$\Delta_{\cA^e}$是$\Delta_\cA$的一点紧化，所以我们验证$\check{a}^e(0) = 0$，
+    就是说$\check{a}$在无穷远处取值为$0$，即$\check{a} \in C_0(\Delta_\cA)$。
+    
+    若$\cA$不含幺，不难验证$\|\check{a}\| = \|a^e\|$，
+    因此为了说明$\check\cdot$是等距，我们只需证明$\cA$含幺的情况。我们有
+    \begin{align*}
+    \|a\|^2 & = \|a^*a\| = r(a^*a) = \sup\{|z| \mid z \in \sigma(a^*a)\} \\ 
+    & \xlongequal{\text{lemma 8.3}} \sup\{|m(a)|^2 \mid m \in \Delta_\cA\} = \|\check{a}\|^2.
+    \end{align*}
+
+    最后证明$\check{\cA} := \{\check{a} \mid a \in \cA\}$在$C_0(\Delta_\cA)$中稠密。
+    若能证明此，则由Gelfand变换是等距且有稠密像不难推出是同构。
+    显然$\check{\cA}$分离$\Delta_\cA$中的点；
+    且我们既然要求$m \in \Delta_\cA$是非零同态，则一定存在$a \in \cA$使得$\check{a}(m) \neq 0$。
+    又在复共轭下，$\overline{\check{a}} = \widecheck{a^*}$，即$\check{\cA}$在复共轭下不变。
+    因此由Stone-Weierstrass定理（参见\cite{Pr} P282）可得$\check{\cA}$稠密。
+\end{proof}
+
+接着讨论上述过程中用到的引理：
+\begin{lemma}\label{m}
+    设$\cA$是含幺Banach代数，则$\sigma_{\cA}(a) = \{m(a) \mid m \in \Delta_{\cA}\}$。
+\end{lemma}
+
+首先我们需要$\cA$中理想的一些刻画。
+考虑$I \subseteq \cA$是一个理想，不难证明它的闭包$\overline{I}$也是理想。
+假设$I$是极大理想，则$I \cap \cA^\times = \emptyset$。
+可是$\cA^\times$是开集，说明$\overline{I} \cap \cA^\times = \emptyset$。
+那么理想$I \subseteq \overline{I} \subsetneq \cA$。
+由于$I$是极大的，只可能是$\overline{I} = I$，也就是说极大理想一定是闭的。
+
+我们断言：$\Delta_\cA$与$\cA$的极大理想一一对应。
+对于$m \in \Delta_\cA$，$\ker m$是理想且$\cA/\ker m \cong \C$，因此$\ker m$极大。
+反过来任取极大理想$I$，则$\cA/I$自动也是一个含幺Banach代数，且是个域。
+由Gelfand-Mazur定理（\cite{Pr} P42）可得$\cA/I \cong \C$，
+因此$I$是商映射$\cA \to \cA/I \cong \C$的核。
+不难验证给出的映射的确互逆。
+
+最后我们证明引理：
+\begin{proof}[引理\ref{m}的证明]
+    先说明$a \in \cA^\times$当且仅当$m(a) \neq 0$对任意$m \in \Delta_\cA$成立。
+    一边显然，而若$a \not\in \cA^\times$，则存在极大理想$I$使得$a \in I$。
+    $I$给出了$m \in \Delta_\cA$使得$I  =\ker m$，因此$m(a) = 0$。
+
+    回到证明本身。任取$\lambda \in \sigma(a)$，则$\lambda-a \not\in \cA^\times$，
+    故存在$m \in \Delta_\cA$使得$0 = m(\lambda-a) = \lambda -m(a)$。
+    反之若$\lambda = m(a)$，则$m(\lambda-a) = 0$表明
+    $\lambda-a \not\in \cA^\times$。
+\end{proof}
+
+对于一个LCAG $A$，我们希望证明$A$的对偶$\widehat{A} = \{\chi:A \to \T\}$
+（回顾：其上的拓扑是紧开拓扑，且也是局部紧的）
+与$\Delta_{C^*(A)}$（在弱*拓扑下局部紧）是同胚的。
+这也是我们建立$\A$的局部紧性的手段。
+
+每个$\chi \in \A$诱导了一个$\chi \in \Delta_{C^*(A)}$，使得
+在稠子空间$L^1(A)$上\[\chi(f) = \check{f}(\chi) = \int f(a)\chi(a) da.\]
+下面我们说明这就是想要的同构。分两步证明：一是证明$\A \cong \Delta_{L^1(A)}$，
+二是证明$\Delta_{L^1(A)} \cong \Delta_{C^*(A)}$。
+
+\begin{theorem}
+    $\chi \mapsto d_\chi$是$\A$到$\Delta_{L^1(A)}$的同胚，
+    其中$d_\chi(f) = \f(\chi)$。因而$\A$是局部紧群。
+\end{theorem}
+\begin{proof}
+通过紧支函数逼近不难说明$d$是单射。
+
+$d$满：给定$m \in \Delta_{L^1(A)}$，
+由于$C_c(A)$在$L^1(A)$里稠密，存在$g \in C_c(A)$使得$m(g)\neq 0$。
+定义\[\chi(x) = \frac{\overline{m(L_xg)}}{\overline{m(g)}}.\]
+
+显然$\chi$是$A$上的连续函数。并且计算得到\[m(L_xg)m(L_yg) = m(L_xg*L_yg) = m(L_{xy}g*g) = m(L_{xy}g)m(g),\]
+由此$\chi(xy) = \chi(x)\chi(y)$。由$m$的连续性可知
+\begin{align*}
+    \int_A f(x)\overline{\chi(x)} dx & = \frac{1}{m(g)}\int_A f(x)m(L_xg) dx \\
+    & = \frac{1}{m(g)}m\left( \int_A f(x)L_xg dx \right) \\ 
+    & = \frac{1}{m(g)} m(f*g) = m(f).
+\end{align*}
+也就是说，如果$\chi$是一个特征，那么$d_\chi(f) = \f(\chi) = m(f)$。
+给定Dirac net $(\phi_U)$，由于$\phi_U*\overline{\chi}$逐点收敛到$\overline{\chi}$，
+对任意$x \in A$以及$\varepsilon > 0$都存在单位开邻域$U$使得
+\begin{align*}
+    |\chi(x)| & \leqslant |\phi_U*\overline{\chi(x)}|+\varepsilon 
+    = \left| \int_AL_x\phi_U(y)\overline{\chi(y)} dy\right|+\varepsilon
+    \\ & = \left| m(L_x\phi_U) \right|+\varepsilon \leqslant \|L_x\phi_U\|_1+\varepsilon = 1+\varepsilon.
+\end{align*}
+令$\varepsilon \to 0$得到$|\chi(x)| \leqslant 1$，
+又考虑$\chi(x^{-1})$得到$|\chi(x)| = 1$，故$\chi \in \A$。
+
+$d$连续：令$\chi_j \to \chi$是$\A$中的网。因此$\chi_j$在$A$的每个紧集上一致收敛。
+任取$f \in L^1(A)$，希望找到$j_0$使得当$j \geqslant j_0$时恒有$|\f(\chi_j) - \f(\chi)|<\varepsilon$。
+取$g \in C_c(A)$使得$\|f - g\|_1 < \varepsilon$。由$\chi_j$在$\Supp g$上一致收敛到$\chi$知存在$j_0$使得$j \geqslant j_0$时
+恒有$|\hat{g}(\chi_j) - \hat{g}(\chi)|<\varepsilon$。遂有$|\f(\chi_j) - \f(\chi)|<3\varepsilon$。
+
+$d^{-1}$的连续性由下面的引理立刻得到，因为满足下面引理条件的$\chi$是$\A$中的一个开集。
+\end{proof}
+\begin{lemma}
+    设$\chi_0 \in \A$，$K$是$A$中的紧集，$\varepsilon > 0$，那么存在$l \in \N$
+    以及$f_0,\ldots,f_l \in L^1(A)$和$\delta>0$使得对任何$\chi \in \A$，只要
+    $|\f_j(\chi) - \f_j(\chi_0)| < \varepsilon$对任何$j$都成立，就有$\sup\limits_{x \in K} |\chi(x) - \chi_0(x)|<\varepsilon$。
+\end{lemma}
+\begin{proof}
+    不妨假设$\chi_0 = 1$（为什么？）。取$f \in L^1(A)$使得$\f(1) = 1$。
+    那么存在单位开邻域$U$使得对任何$u \in U$都有$\|L_uf - f\|_1 < \varepsilon/3$。
+    由于$K$是紧集，存在$x_1,\ldots,x_l \in A$使得$\{x_iU\}$覆盖$K$。此时，
+    定义$f_0 = f$以及$f_i = L_{x_i}f$（$1 \leqslant i \leqslant l$），$\delta = \varepsilon/3$。
+    兹取$\chi \in \A$满足对任何$0 \leqslant j \leqslant l$都有$|\f_j(\chi) - 1| < \varepsilon/3$。
+    任取$x \in K$，不妨设$x = x_ju$，其中$u \in U$。此时
+    \begin{align*}
+        |\chi(x)-1| & = |\overline{\chi(x)} - 1| 
+        \\ & \leqslant |\overline{\chi(x)} - \overline{\chi(x)}\f(x)| + |\overline{\chi(x)}\f(x) - \f_j(x)| + |\f_j(x)-1|
+        \\ & |1-\f(\chi)|+|\f_j(\chi)-1|+|\widehat{L_xf}(\chi) - \widehat{L_{x_j}f}(\chi)| < \varepsilon. 
+    \end{align*}
+    这里，最后一个不等号是因为
+    \[|\widehat{L_xf}(\chi) - \widehat{L_{x_j}f}(\chi)| 
+    \leqslant \|L_xf - L_{x_j}f\|_1 = \|L_{x_j}(L_uf - f)\|_1 
+    < \varepsilon/3.\qedhere\]
+\end{proof}
+\begin{lemma}
+    设有交换Banach代数之间的代数同态$\phi \colon \cA \to \bnh$，
+    且对任何$m \in \Delta_{\bnh}$都有$m \circ \phi \neq 0$。
+    那么，$\phi$诱导的$\phi^*\colon \Delta_{\bnh} \to \Delta_{\cA}$连续，
+    且$\phi^*$是同胚当且仅当$\phi^*$是双射。
+\end{lemma}
+\begin{proof}
+    取网$(m_j) \subseteq \Delta_{\bnh}$，它的弱$*$收敛性，也就是逐点收敛，导出了
+    $(\phi^* m_j)$的弱$*$收敛，故$\phi^*$连续。
+
+    若$\phi$是双射，考虑$\phi$典则地延拓到含幺Banach代数$\phi^e \colon \cA^e \to \bnh^e$上。
+    此时$(\phi^e)^*$是$\Delta_{\cA}$与$\Delta_{\bnh}$的一点紧化之间的双射，因此是同胚。因此限制
+    映射$\phi^*$也是同胚。
+\end{proof}
+\begin{theorem}
+    嵌入映射$L \colon L^1(A) \to C^*(A)$诱导的$L^* \colon \Delta_{C^*(A)} \to \Delta_{L^1(A)}$
+    是同胚。因此，$\A$同胚于$\Delta_{C^*(A)}$。
+\end{theorem}
+\begin{proof}
+    由于$L$具稠密像，对任何$m \in \Delta_{C^*(A)}$都有$L^*m = m \circ L \neq 0$并且$m$是单射。
+    由前一引理只需证明$L$满。
+
+    任取$m \in \Delta_{L^1(A)}$。由于$\A \cong \Delta_{L^1(A)}$，可选取$\chi \in \A$使得
+    $m(f) = \f(\chi)$对任何$f \in L^1(A)$成立。只需证明$m$在$C^*$范数下也是连续的，因为这样$m$就可以
+    唯一地延拓为$\tilde{m} \in \Delta_{C^*(A)}$。固定$\mu_0 \in \Delta_{C^*(A)}$，则
+    存在$\chi_0 \in \A$使得在$L^1(A)$上恒有$\f(\chi_0) = \mu_0(f)$。容易计算得
+    \[m(f) = \int f(x)\overline{\chi(x)} dx = \int f(x)\overline{\chi(x)}\chi_0(x)\overline{\chi_0(x)} dx = \mu_0(f\overline{\chi}\chi_0).\]
+
+    是以$|m(f)| \leqslant \|f\overline{\chi}\chi_0\|_{C^*(A)}$。接着就要证明对任何对任何特征$\eta$
+    都有$\|f\|_{C^*(A)} = \|f\eta\|_{C^*(A)}$，由对称性只需证某个方向的不等号。
+
+    任取$\phi,\psi \in L^2(A)$，则
+    \begin{align*}
+        \langle L(\eta f)\phi,\psi \rangle & = \int \eta(x)f(x)\langle L_x\phi,\psi \rangle dx
+        \\ & = \int \eta(x)f(x)\int \phi(x^{-1}y)\overline{\psi(y)}dydx
+        \\ & = \int f(x)\int (\bar{\eta}\phi)(x^{-1}y)\overline{(\bar{\eta}\psi)(y)}dydx
+        \\ & = \langle L(f)(\bar{\eta}\phi),\bar{\eta}\psi \rangle.
+    \end{align*}
+
+    令$\psi = L(\eta f)\phi$，就有
+    \[\|L(\eta f)\phi\|_2^2 
+    \leqslant \|L(f)(\bar{\eta}\phi)\|_2\|\bar{\eta}L(\eta f)\phi\|_2 
+    = \|L(f)(\bar{\eta}\phi)\|_2\|L(\eta f)\phi\|_2.\]
+    因此，$\|L(\eta f)\phi\|_2 \leqslant \|L(f)(\bar{\eta}\phi)\|_2 \leqslant \|L(f)\|\|\phi\|_2$，
+    可得$\|L(\eta f)\| \leqslant \|L(f)\|$。证毕。
+\end{proof}
+%第九周施工完毕。
+\section{第十一周}
+本周我们的目标是证明Plancherel定理在局部紧Abel群上的版本。
+
+我们之前已经证明$C_0(A) \cong C^*(A)$，且Fourier变换将$L^1(A)$稠密地映到
+$C_0(\A)$中。回顾，如下的基本事实表明了Fourier变换是一个$*$-代数同态：
+\begin{proposition}
+$\widehat{f_1*f_2} = \f_1\f_2$；$\widehat{f^*} = \overline{\f} = \f^*$。
+\end{proposition}
+现在考虑$C^*(A)$的另一种刻画。对于任何的$f \in L^1(A)$以及$\phi,\psi \in L^2(A)$，考虑如下积分：
+\[\int_A f(y)\langle L_y\phi,\psi \rangle dy \leqslant \|f\|_1\|\phi\|_2\|\psi\|_2,\]
+表明$\displaystyle \int_A f(y)\langle L_y\phi,- \rangle dy$是一个有界泛函。
+由Riesz表示定理，在$L^2(A)$中存在唯一的元素，记为$L(f)\phi$，满足\[\int_A f(y)\langle L_y\phi,\psi \rangle dy = \langle L(f)\phi,\psi \rangle.\]
+
+此外，对于固定的$f$来说，$\phi \mapsto L(f)\phi$是$L^2(A)$上的一个有界算子，
+满足$\|L(f)\| \leqslant \|f\|_1$。因此有作用$L\colon L^1(A) \to \bnh(L^2(A))$。
+
+令$\cA = \overline{L(L^1(A))}$，它是一个$C^*$-代数。同时，$L^1(A)$在$C_0(\A)$中的
+嵌入诱导了$\pi \colon C_0(\A) = C^*(A) \to \cA$。我们有
+\begin{theorem}
+    $\pi$是等距同构。
+\end{theorem}
+因此，我们对$C^*(A)$有了一个新的刻画。
+\begin{remark}
+    其实\cite{Pr}就是这么定义$C^*(A)$的。
+\end{remark}
+
+考虑$L^2$上的卷积。
+\begin{proposition}
+    对于$\phi,\psi \in L^2(A)$，$\phi*\psi \in C_0(A)$。
+\end{proposition}
+\begin{proof}
+    \begin{align*}
+\phi*\psi(a) & = \int \phi(ax)\psi(x^{-1})dx \\
+& \leqslant \sqrt{\int |\phi(ax)|^2 dx}\sqrt{\int |\psi(x^{-1})|^2 dx} = \|\phi\|_2\|\psi\|_2.
+\end{align*}
+        因此我们找一列$\phi_n,\psi_n \in C_c(A)$在$L^2$范数下趋于$\phi,\psi$。
+        此时\begin{align*}
+            \|\phi*\psi - \phi_n*\psi_n\|_A & \leqslant \|\phi*\psi - \phi_n*\psi\|_A+\|\phi_n*\psi-\phi_n*\psi_n\|_A\\ 
+            & \leqslant \|\psi\|_2\|\phi-\phi_n\|_2+\|\phi_n\|_2\|\psi - \psi_n\|_2 \to 0.
+        \end{align*}
+        故由诸$\phi_n*\psi_n$落在$C_c(A)$中以及$C_0(A)$关于$\|\cdot\|_A$完备知$\phi*\psi \in C_0(A)$。
+\end{proof}
+\begin{proposition}
+    $\phi*\phi^*(1) = \|\phi\|_2^2$；对$f \in L^1(A)$以及$\phi \in L^1(A) \cap L^2(A)$
+    有$L(f)\phi = f*\phi$。
+\end{proposition}
+\begin{proof}
+    直接验证即可。
+\end{proof}
+
+现在我们要在$\A$上定义一个Haar积分，使得Plancherel定理确实成立，即对一些合适的$f$
+成立$\|f\|_2^2 = \|\f\|_2^2$。
+
+那么什么是合适的$f$呢？在$\R^d$上，适合于做Fourier分析的空间当然是Schwartz空间。
+而在局部紧群$A$上，我们将介绍如下的$C_0^*(A)$，它是建立对偶测度的基础。
+
+考虑$\cc = C_0(A) \times C_0(\A)$，其上的范数定义为$\|(f,\eta)\| = \max(\|f\|,\|\eta\|)$。
+$L^1(A) \cap C_0(A)$通过$f \mapsto (f,\f)$的方式嵌入到$\cc$里。
+\begin{definition}
+    $C_0^*(A)$被定义为$L^1(A) \cap C_0(A)$的闭包。
+\end{definition}
+\begin{proposition}
+    投影映射$p \colon C_0^*(A) \to C_0(A)$以及$p_* \colon C_0^*(A) \to C_0(\A)$都是单射。
+\end{proposition}
+\begin{proof}
+    假设$(f_n,\f_n) \to (f_0,f_*)$。由定义知$\|f_n-f\| \to 0$以及$\|\f_n - f_*\| \to 0$。
+    任取$\phi \in C_c(A)$，这也就是说$\|f_n*\phi - f_*(\phi)\|_2 \to 0$。故对任何
+    $\psi \in C_c(A)$有$\langle f_n*\phi,\psi \rangle \to \langle f_*(\phi),\psi \rangle$。
+    同时因为$\|f_n - f\| \to 0$，也有$\langle f_n*\phi,\psi \rangle \to \langle f_0*\phi,\psi \rangle$.
+    这对任何$\phi,\psi \in C_c(A)$都成立，故不难验证$f_0 = 0 \iff f_* = 0$。
+\end{proof}
+这个定理表明我们可以灵活地视$C_0^*(A)$为$C_0(A)$或$C_0(\A) = C^*(A)$的子空间，正所谓
+“在魏国是魏国人，在吴国是吴国人”。习惯上说，对$f \in C_0^*(A)$，如果希望强调其是$C_0(\A)$
+子空间的一面，会用$\f$指代之。对于$g \in C^*(A)$，会用$L(g)\phi$指代$g(\phi)$。
+\begin{lemma}\label{yl87}
+    对$f \in C_0^*(A)$，
+    \begin{enumerate}
+        \item 若$\f \subseteq \R$，那么$f(1) \in \R$。
+        \item 若$\f \geqslant 0$，那么$f(1) \geqslant 0$。
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    \begin{enumerate}
+        \item $\widehat{f^*} = \overline{\f} = \f$表明$f(x) = f^*(x) = \overline{f(x^{-1})}$，
+        因此$f(1)\in \R$。
+        \item 此时存在非负函数$g \in C_0(\A)$满足$\f = g^2$。
+        又存在一列$g_n \in L^1(A)$满足$\hat{g}_n \to g$
+        （或者说$L(g_n) \to g = L(g)$）。
+
+        取满足$\phi = \phi^*$的$\phi \in C_c(A)$（如Dirac函数），有\begin{align*}
+            \|L(g_n)\phi\|_2^2 & = L(g_n)\phi * (L(g_n)\phi)^* (1) = g_n*\phi*\phi^* * g_n^*(1) \\ 
+            & = g_n*g_n^* *\phi * \phi(1) = L(|g_n|^2) *\phi*\phi(1) \\ & \to L(f)(\phi*\phi)(1) \geqslant 0,
+        \end{align*}
+        从而$f(1) \geqslant 0$（可让$\phi$跑遍一个Dirac net）。\qedhere
+    \end{enumerate}
+\end{proof}
+在我们将要建立的对偶测度中，有\[f(1) = \int_{\A} \f(\chi) d\chi,\]引理的结果直观上符合这个积分应有的性质。
+
+\begin{lemma}
+    \begin{enumerate}
+        \item $L^1(A)*C_c(A) \subseteq C_0(A)$。
+        \item 设$f \in C^*(A)$且$\phi,\psi \in C_c(A)$，那么
+        $L(f)(\phi*\psi) \in C_0^*(A) \cap L^2(A)$，并且$\widehat{L(f)(\phi*\psi)} = \f\hat{\phi}\hat{\psi}$。
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    \begin{enumerate}
+        \item 任取$f \in L^1(A)$以及$\phi \in C_c(A)$。
+        取一列$f_n \in C_c(A)$使得$\|f_n-f\|_1 \to 0$。此
+        时$\|f_n*\phi - f*\phi\| \leqslant \|f_n-f\|_1\|\phi\|_\infty$
+        并结合$C_0(A)$完备可得$f*\phi \in C_0(A)$。
+        \item 假设$f$是$f_n \in C_c(A)$在$C^*(A)$中的极限。因此
+        \[L(f)(\phi*\psi) = \lim L(f_n)(\phi*\psi) = \lim f_n*\phi*\psi,\]
+        显然$L(f_n)(\phi*\psi) \in L^2(A) \cap C_0(A)$，故$L(f)(\phi*\psi)$亦然。
+        后面一个论断对$L(f_n)(\phi*\psi) = f_n*\phi*\psi$做Fourier变换即可。\qedhere
+    \end{enumerate}
+\end{proof}
+
+接着考虑Dirac net $\phi_U \in C_c(A)$做卷积的收敛性。
+\begin{proposition}
+    对任何$f \in C^*(A),C_0(A),C_0^*(A)$，都有$\phi_U*f$在各自的空间里收敛至$f$。
+    在$\A$上，$\widehat{\phi_U}$收敛至$1$（即在每个紧集上都一致收敛）。
+\end{proposition}
+\begin{proof}
+    $C_0^*(A)$的情况就是前两个的推论。
+
+    对于$C^*(A)$的稠子空间$L^1(A)$来说有$\phi_U*f \to f$（依$L^1$范数）。
+    既然$L^1$范数不小于$C^*(A)$范数，明显可推导对一般的$C^*(A)$也成立。
+
+    对$C_0(A)$的情况考虑与前一引理一样的论述。
+
+    对于最后一个命题，任取紧集$K \subseteq \A$和$\varepsilon > 0$，希望证明对任意$\chi \in K$，当$U$
+    充分小时就有$|\widehat{\phi_U}(\chi) - 1|<\varepsilon$。也就是要证对任何$\psi \in C_0(\A)$都有
+    $\widehat{\phi_U}\psi \to \psi$。对于$\psi$落在稠子空间$\widehat{C_c(A)}$的情况对，因此整体也对。
+\end{proof}
+
+接着要说明$C_0^*(A)$包含了$C_c(\A)$中充分多的元素。
+\begin{proposition}\label{appro}
+    任取$\eta \in C_c(\A)$以及$\varepsilon > 0$，则存在$f_1,f_2 \in C_0^*(A)$满足：
+    \begin{enumerate}
+        \item $\Supp \f_i \subseteq \Supp \phi$；
+        \item $\f_1 \leqslant \eta \leqslant \f_2$且$\|\f_2-\f_1\|_{\A} \leqslant \varepsilon$；
+        \item $0 \leqslant f_2(1) - f_1(1) < \varepsilon$。
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    记$K = \Supp \eta$。由于存在任意小支集的Dirac函数且这些函数的Fourier变换趋于$1$，任取$\delta > 0$，
+    可以找到$\phi_\delta \in C_c^+(A)$使得$\psi_\delta = \phi_\delta * \phi_\delta^*$
+    满足对任意$\chi \in K$都有\[|\hat{\psi}_\delta(\chi)-1| \leqslant \delta.\]
+
+    现在固定$\phi \in  C_c^+(A)$使得对任意$\chi \in K$都有$\psi = \phi * \phi^*$满足$\hat{\psi}(\chi) \geqslant 1$。
+    设$f \in C^*(A)$使得$\f = \eta$（只是个心理习惯上的记法），并考虑$f_1 = L(f)(\psi_\delta - \delta\psi)$以及
+    $f_2 = L(f)(\psi_\delta + \delta\psi)$。Fourier变换后得到$\f_i = \eta(\hat{\psi}_\delta \pm \delta\hat{\psi})$。令$\delta$充分小，
+    对应的$f_i$就能满足要求。
+\end{proof}
+最后，对偶测度$d\chi$定义如下：
+\begin{proposition}
+    设$\psi \in C_c(\A)$是实函数。那么\[\{f(1)\mid f\in C_0^*(A),\f \leqslant\psi\}\]的上确界
+    与\[\{f(1)\mid f\in C_0^*(A),\f \geqslant\psi\}\]的下确界一样，记为$I(\psi)$。
+    对于一般的$\psi = u+iv \in C_c(\A)$，定义$I(\psi) = I(u)+iI(v)$，其中$u,v$
+    是实值函数。这样确定的$I(\psi)$是$C_c(\A)$上的Haar积分。
+\end{proposition}
+\begin{proof}
+    由\ref{yl87}与前一引理就知道上下确界一致。由\ref{yl87}又知$I$是正线性泛函。接着证明左不变性。
+
+    首先明显$f \in C_0^*(A) \iff f\chi_0 \in C_0^*(A)$，其中$\chi_0$是特征。容易验证$\f(\chi_0^{-1}\chi) = \widehat{f\chi_0}(\chi)$。
+    那么\[\int_{\A} \f d\chi = f(1) = f\chi_0(1) = \int \widehat{f\chi_0}d\chi 
+    = \int \f(\chi_0^{-1}\chi)d\chi\]确保了左不变性。
+\end{proof}
+%第十一周施工完毕。
+\section{第十二周}
+本周我们将证明两个结果：一是庞特里亚金对偶；二是上一周所说的Plancherel定理。
+
+回顾：我们有作用$\delta \colon A \to \hat{\A}$将$a \in A$送到$\delta_a$使得$\delta_a(\chi) = \chi(a)$。已经证明这是一个
+连续同态，接着需要证明$\delta$是同胚。
+\begin{lemma}[Fourier反演公式]
+若$f \in C_0^*(A)$使得$\f \in C_c(\A)$，那么$f(a) = \,\hat{\!\hat{f}}(\delta_{a^{-1}})$。
+\end{lemma}
+\begin{proof}
+    \[f(a) = L_{a^{-1}}f(1) = \int \widehat{L_{a^{-1}}f}(\chi)d\chi 
+    = \int \f(\chi)\delta_a(\chi)d\chi = \hat{\f}(\delta_{a^{-1}}).\qedhere\]
+\end{proof}
+\begin{lemma}\label{dualdense}
+    \begin{enumerate}
+        \item $C_c(A)$在$C_0^*(A)$中稠密。
+        \item $C_c(\A) \cap \{\f \colon f \in C_0^*(A) \cap L^2(A)\}$在$C_0^*(\A)$中稠密。
+        \item $C_c(\A) \cap \{\f \colon f \in C_0^*(A) \cap L^2(A)\}$在$L^2(\A)$中稠密。
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    首先由定义知道$L^1(A) \cap C_0(A)$在$C_0^*(A)$里稠密。任取$f \in L^1(A) \cap C_0(A)$，
+    我们需要找到$\varphi \in C_c(A)$使得$\|\varphi - f\|_A < \varepsilon$且$\|\varphi - f\|_1 < \varepsilon$，那么
+    此时就会有$\|\varphi - f\|_{C_0^*(A)} < \varepsilon$。对任意正整数$n$，都存在$K_n$使得在$K_n$以外恒有$\displaystyle |f| < \frac{1}{n}$。
+    取$\chi_n \in C_c(A)$使得$\chi_n$在$K_n$上恒为$1$且$0 \leqslant \chi_n \leqslant 1$。令$f_n = \chi_nf$，由控制收敛定理知
+    $f_n$在$L^1$范数下收敛于$f$；显然$f_n$在上界范数下亦然。
+
+    至于后面两个命题，首先$C_c(\A)$在那两个空间中都是稠密的，再由\ref{appro}即可得到结论。
+    注意$L^2$范数收敛是因为可以在$\delta$充分小的情况下取$\f_1$，同样由控制收敛定理可得$\f_1$逼近于
+    $C_c(\A)$中的函数。
+\end{proof}
+\begin{lemma}
+    设局部紧Hausdorff空间$X,Y$之间的连续映射$\phi \colon X \to Y$。
+    若$\phi$逆紧，则$\phi$闭。
+\end{lemma}
+\begin{proof}
+    任取$T\subseteq X$为闭空间。断言：对任何紧集$L \subseteq Y$都有
+    $\phi(T) \cap L$是闭集。不难验证$\phi(T) \cap L = \phi(\phi^{-1}(L) \cap T)$，
+    由$\phi$逆紧与$T$闭得到$\phi^{-1}(L) \cap T$是紧集，因此$L \cap \phi(T)$作为紧集的连续像
+    是紧集。又由Hausdorff性得到是闭集。
+
+    现在任取$y \in \overline{\phi(T)}$，则存在$y$的紧邻域$L$。此时$\phi \in \overline{\phi(T) \cap L} = \phi(T) \cap L$，故$y \in \phi(T)$。
+\end{proof}
+\begin{proof}[\ref{ptlyj}的证明]
+已经证明$\delta$是连续群同态。
+
+$\delta$单：如果$a \neq 1$使得$\delta_a = 1$，即对任意$\chi$都有$\chi(a) = 1$。
+显然存在$f \in C_c(A)$使得$L_{a^{-1}}f \neq f$。但做Fourier变换以后得到
+\[\widehat{L_{a^{-1}}f}(\chi) = \f(\chi)\chi(a) = \f(\chi),\]
+与Fourier变换是单射矛盾！
+
+$\delta$具备稠密像：若不然，存在与$\delta(A)$不交的开集$U$。此时由\ref{appro}
+得存在非零函数$\psi \in C_0^*(\A)$使得$\Supp \widehat{\psi} \subseteq U$。
+因此对任何$a \in A$都有$\widehat{\psi}(\delta_a) = 0$。
+由\ref{dualdense}，存在$C_0^*(A)$中的一列$f_n$使得
+$\psi_n := \f_n$在$C_0^*(\A)$中逼近于$\psi$且$\psi_n \in C_c(\A)$。
+由反演公式，$f_n(x) = \widehat{\psi_n}(\delta_{x^{-1}})$。
+故在$A$中$f_n$一致收敛于$0$。而这表明$\f_n$的极限$\psi$是$0$，矛盾！
+
+$\delta$逆紧（因此由前一引理知是闭映射，遂完成证明）：取定$\widehat{\widehat{A}}$中的紧集$K$。
+我们来验证$\delta'(x) :=\delta(x^{-1})$是逆紧的。首先存在$\psi \in C_0^*(\A)$使得$\widehat{\psi}$
+是非负紧支函数，且在$K$上不小于$1$。类似于前，存在$\{f_n\} \subseteq C_0^*(A)$使得$\psi_n := \f_n \in C_c(\A)$
+非负且在$C_0^*(\A)$中趋近于$\psi$。固定$n$使得$\|\widehat{\psi_n} - \widehat{\psi}\|_{\widehat{\widehat{A}}} < 1/2$，
+同样地，$f_n(x) = \widehat{\psi_n}(\delta'(x))$。因为$f_n \in C_0(A)$，存在紧集$C \subseteq A$使得
+在$C$外有$|f_n|<1/2$。而在$K$上$\widehat{\psi_n} \geqslant 1/2$，故
+$K$在$\delta'$下的原像包含于$C$。现在$K$是闭集，在连续映射$\delta'$下的原像也是闭集，而紧集中的闭集也是紧集，证毕。
+\end{proof}
+
+\begin{proposition}
+    Fourier变换给出了$C_0^*(A)$到$C_0^*(\A)$的等距同构。
+\end{proposition}
+\begin{proof}
+置$E = \{f \in C_0^*(A) \mid \f \in C_c(\A)\}$。任取$f \in E$，我们有
+\[\|\f\|_{C_0^*} = \max(\|\f\|_{\A},\|\ \hat{\!\!\f}\|_{\,\hat{\!\A}}) 
+= \max(\|f\|_A,\|\f\|_{\A}) = \|f\|_{C_0^*},\]
+因此Fourier变换限制在$E$上是等距。由\ref{dualdense}知$E$有稠密像，
+故Fourier变换定义了$\overline{E}$到$C_0^*(\A)$的等距双射（Fourier变换当然是单射）。
+接着就需要说明$\overline{E} = C_0^*(A)$。
+这是由于$\widehat{E}$在$C_c(\A)$中稠密、$\widehat{C_c(\A)}$在$C_0^*(\widehat{\widehat{A}})$中稠密和庞特里亚金对偶。
+\end{proof}
+\begin{theorem}[Fourier反演公式]
+设$f \in L^1(A)$使得$\f \in L^1(\A)$，则Fourier反演公式对$f$几乎处处成立。
+\end{theorem}
+\begin{proof}
+    首先$\f \in L^1(\A) \cap C_0(\A) \subseteq C_0^*(\A)$。因此存在$h \in C_0^*(A)$
+    使得$\f = \hat{h}$。现在Fourier反演公式对$h$成立，我们需要说明$h = f$几乎处处成立。
+    这是因为Fourier变换在$C^*(A)$上是单射。
+\end{proof}
+\begin{proposition}
+    若$\varphi,\psi \in L^1(A) \cap L^2(A)$，则$f = \varphi*\psi \in L^1(A) \cap C_0(A)$并且
+    $\f \in L^1(\A)$。特别地，Fourier反演公式对$f$成立。
+\end{proposition}
+\begin{proof}
+$\varphi,\psi \in L^1(A)$导出$f \in L^1(A)$；$\varphi,\psi \in L^2(A)$
+导出$f \in C_0(A)$。做Fourier变换后有$\f = \widehat{\varphi}\widehat{\psi}$，
+我们断言：$\widehat{\varphi},\widehat{\psi} \in L^2(\A)$，从而$\f \in L^1(\A)$。
+
+这是因为我们有$|\widehat{\varphi}|^2 = \widehat{\varphi * \varphi^*}$，又
+明显$\varphi * \varphi^* \in L_1(A) \cap C_0(A) \subseteq C_0^*(A)$表明
+\[\|\widehat{\varphi}\|_2^2 = \int |\widehat{\varphi}|^2 d\chi 
+= \varphi*\varphi^*(1) = \|\varphi\|_2^2.\qedhere\]
+\end{proof}
+
+\begin{theorem}[Plancherel公式]
+对$\varphi \in L^1(A) \cap L^2(A)$，Fourier变换保持$L^2$范数。进一步，有等距同构
+$L^2(A) \cong L^2(\A)$。
+\end{theorem}
+\begin{proof}
+    前一段话就是之前讨论过的内容；又因为$L^1 \cap L^2$在$L^2$中稠密，定理成立。
+\end{proof}
+%第十二周施工完毕。
+\section{第十三周及之后}
+由庞特里亚金对偶我们知道$A$是紧群当且仅当$\A$是离散群。考虑其上测度：
+\begin{proposition}
+    $A$上的Haar测度$da$是概率测度当且仅当$\A$上的对偶测度$d\chi$是计数测度。
+\end{proposition}
+\begin{proof}
+    假设$da$是概率测度。此时$A$紧，断言：$\widehat{1_A}(\chi) = \begin{cases}
+        1, & \chi = 1; \\ 0, & \chi \neq 1.
+    \end{cases}$这是因为若$\chi \neq 1$，则存在$b \in A$使得$\chi(b) \neq 1$。此时
+    \[\widehat{1_A}(\chi) = \int \overline{\chi}(a) da 
+    = \overline{\chi}(b) \int \overline{\chi}(a) da.\]
+    因此，\[1_A(a) = \int_{\A} \widehat{1_A}(\chi)\chi(a)d\chi = \mu_{\A}(1_{\A}) = 1,\]
+    也就是说$\A$上配备计数测度。由庞特里亚金对偶，反过来也是对的。
+\end{proof}
+
+接着考虑Poisson求和公式。对LCA群$A$和其闭子群$B$，
+我们知道$f \in C_c(A)$诱导了$f^B \in C_c(A/B)$使得
+\[f^B(\bar{a}) = \int_B f(ab) db,\]
+并且选取合适的Haar测度后有\[\int_{A/B} f^B(\bar{a})d\bar{a} 
+= \int_{A/B}\left( \int_B f(ab)db \right) d\bar{a} = \int_A f(a) da.\]
+在$L^1$范数下逼近后，任何的$f \in L^1(A)$也给出了$f^B \in L^1(A/B)$使得上面的式子成立。
+
+之前我们这曾经说过有自然的同构$\widehat{A/B} \cong B^\bot$，后者是$\A$的一个闭子群。
+对任何$f \in L^1(A)$，其诱导了$\widehat{f^B} \in C_0(\widehat{A/B})$；
+另一方面，我们还有$\f|_{B^\bot} \in C_0(B^\bot)$。我们说：
+\begin{theorem}[Poisson求和公式]
+如果将$\widehat{A/B}$与$B^\bot$等同起来，那么$\widehat{f^B} = \f|_{B^\bot}$。
+若还有$\f|_{B^\bot} \in L^1(B^\bot)$，则
+\[\int_B f(xb)db = \int_{B^\bot} \f(\chi)\chi(x) d\chi\]对几乎所有$x \in A$成立。
+\end{theorem}
+
+课程的最后，我们用Tate理论作为局部紧群理论的一个应用。考虑$k$是一个数域。
+\begin{definition}
+    $k$上非平凡的绝对值的等价类被称为$k$的素位。素位$v$称为阿基米德素位，如果$\{|n|_v\}$无界。
+\end{definition}
+\begin{theorem}
+    $\Q$上的素位只有$\as_\infty$和$\as_p$。
+\end{theorem}
+对于$k$的非阿素位$v$，有整数环$\Oo_k$以及素理想$\pu$，以及对应的赋值环$\Oo_v$和极大理想$\pu_v$。
+设$\pi_v$是$k_v$的一个uniformizer，则可标准化使得$|\pi_v|_v^{-1} = \sharp \Oo_v/\pu_v = \sharp \Oo_k/\pu$。
+\begin{definition}
+    定义Adele环\[\ad_k = \widehat{\prod_v} k_v = \{(x_v) \mid x_v \in \Oo_v\text{ 几乎处处成立}\}.\]
+\end{definition}
+%\begin{proposition}
+%    $\ad_{\Q} = \Q + [-1/2,1/2] \times \prod \Z_p$。
+%\end{proposition}
+%\begin{proof}
+%    任取$(a_p) \in \ad_{\Q}$，把不落在$\Z_p$中的那些$a_{p_i}$找出来，取它们的分数部分$b_{p_i}$。
+%    容易验证$\alpha = (a_p) - \sum b_{p_i} \in \R \times \prod \Z_p$，再选取一个合适的$n \in \Z$使得
+%    $\alpha - n \in [-1/2,1/2] \times \prod \Z_p $。
+%\end{proof}
+\subsection**{Reference}
+\begin{references}
+    \bibitem[Pr]{Pr}
+        A. Deitmar, S. Echterhoff. \textit{Principles of Harmonic Analysis}. 
+        Universitext. Springer, 2014.
+\end{references}

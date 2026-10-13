@@ -1,0 +1,98 @@
+\newcommand{\cov}{\operatorname{Cov}}
+\newcommand{\mor}{\operatorname{Mor}}
+\newcommand{\ob}{\operatorname{Ob}}
+\newcommand{\open}{\operatorname{Top}}
+\newcommand{\et}{\mathrm{ét}}
+\newcommand{\fppf}{\mathrm{fppf}}
+\newcommand{\sch}[1]{\operatorname{Sch}_{#1}}
+
+本节的目的是介绍模空间理论发展的重要对象兼里程碑——代数叠的构造.
+它的出现使得一大部分模函子在更广义的代数几何空间中获得了可表性.
+本节内容写作时假定读者具有一定的范畴基础，并知道何为“群胚”. 
+我们将在范畴上做几何.
+
+\section{纤维范畴}
+\subsection{纤维范畴}
+设$\mathcal{C}$为范畴. 
+约定如下术语：\textbf{$\mathcal{S}$上的范畴$\mathcal{X}$}指
+一个函子$p:\mathcal{X} \to \mathcal{S}$.
+
+\begin{definition}
+    设$p:\mathcal{X} \to \mathcal{S}$为$\mathcal{S}$上的范畴.
+    称交换图表
+    \begin{center}
+        \begin{tikzcd}
+        x' \arrow[r, "\varphi"] \arrow[d, "p"', maps to] & x \arrow[d, "p", maps to] \\
+        S \arrow[r, "f"]                                 & S'                       
+        \end{tikzcd}    
+    \end{center}
+    为\textbf{Cartesian}的，若对于任何交换图表
+    \begin{center}
+        \begin{tikzcd}
+        y \arrow[d, maps to] \arrow[rrd] &                                                 &                           \\
+        T \arrow[rd] \arrow[rrd, dotted] & x' \arrow[r, "\varphi"] \arrow[d, "p", maps to] & x \arrow[d, "p", maps to] \\
+                                        & S \arrow[r, "f"]                                & S'                       
+        \end{tikzcd}
+    \end{center}
+    存在唯一$\phi:y \to x'$使得图表
+    \begin{center}
+        \begin{tikzcd}
+        y \arrow[d, maps to] \arrow[rrd] \arrow[rd, "\exists!\phi", dashed] &                                                 &                           \\
+        T \arrow[rd] \arrow[rrd, dotted]                                    & x' \arrow[r, "\varphi"] \arrow[d, "p", maps to] & x \arrow[d, "p", maps to] \\
+                                                                            & S \arrow[r, "f"]                                & S'                       
+        \end{tikzcd}
+    \end{center}
+    交换
+\end{definition}
+
+\begin{definition}
+    我们称$\mathcal{X}$是$\mathcal{S}$上的\textbf{纤维范畴}，
+    若对于任何$x \in \ob{\mathcal{X}}$与$S',S \in \ob{\mathcal{S}}$
+    存在Cartesian图表
+    \begin{center}
+        \begin{tikzcd}
+        x' \arrow[r, "\varphi"] \arrow[d, "p"', maps to] & x \arrow[d, "p", maps to] \\
+        S \arrow[r, "f"]                                 & S'                       
+        \end{tikzcd}    
+    \end{center}
+    对于$S \in \mathcal{S}$，定义子范畴$\mathcal{X}_{S}$的对象为
+    $\mathcal{X}$全体打到$S$的对象，而范畴为全体打到$1_{S}$的态射. 
+    我们称$\mathcal{X}_{S}$为$S$的\textbf{纤维}.
+\end{definition}
+
+\subsection{CFG}
+\begin{definition}
+    给定范畴$\mathcal{S}$. $\mathcal{S}$上的一个\textbf{群胚}
+    是指满足下列性质的函子$p:\mathcal{X} \to \mathcal{S}$：
+    \begin{itemize}
+        \item[(1)] 若有态射$[f:X \to Y] \in \mor{\mathcal{S}}$且
+        对象$\eta \in \ob(\mathcal{S})$，
+        则存在$[\varphi:\xi \to \eta] \in \mor$使得$p(\varphi) = f$.
+
+        \item[(2)] 
+    \end{itemize}
+\end{definition}
+
+\section{叠}
+\subsection{预叠与叠}
+
+\subsection{叠的态射与叠化}
+
+\section{叠的态射}
+\subsection{可表态射}
+
+\subsection{态射的性质}
+
+\section{代数叠}
+\subsection{代数叠与Deligne-Mumford叠初探}
+\begin{definition}
+    我们称$\sch{S}$上的叠$\mathcal{X}$是\textbf{代数}的，若
+    \begin{itemize}
+        \item[(1)] 对角态射$\Delta:\mathcal{X} \to \mathcal{X} \times \mathcal{X}$
+        是拟紧、分离的可表态射；
+        \item[(2)] 存在概形$U$以及平展满射$U \to \mathcal{X}$. 
+        该态射称为$\mathcal{X}$的图表.
+    \end{itemize}
+\end{definition}
+
+\subsection{叠上的层论}

@@ -1,0 +1,270 @@
+
+\section{Set up for sheaf theory}
+There are four common settings for the study of sheaves in algebraic geometry and representation theory:
+
+\begin{enumerate}
+    \item \textbf{Betti setting:} We consider complex analytic spaces endowed with the classical topology (not the Zariski topology). \\
+    \textit{\textbf{Note: We will exclusively focus on this setting for the duration of this course.}}
+    
+    \item \textbf{\'Etale setting over $\mathbb{C}$:} We consider complex varieties equipped with the \'etale topology, using $l$-adic coefficients. This topology acts as a remedy for the topological shortcomings of the Zariski topology.
+    
+    \item \textbf{Algebraic (de Rham) setting:} We consider complex varieties endowed with the Zariski topology. This setting heavily relies on the theory of $\mathcal{D}$-modules (which behave significantly differently from standard coherent sheaves).
+    
+    \item \textbf{Positive characteristic setting:} We consider varieties defined over a finite field $\mathbb{F}_q$, equipped with the \'etale topology and using $l$-adic coefficients.
+\end{enumerate}
+
+\textbf{Relations:}
+\begin{center}
+    \begin{tikzcd}[row sep=large, column sep=huge]
+        \text{Betti} \arrow[r, "\simeq"] \arrow[d, "\text{certain conditions}","\simeq"'] & \text{\'Etale} / \mathbb{C} \text{ (Comparison isomorphism)} \arrow[d, "\text{spread out technique}"] \\
+             \text{de Rham} & \text{\'Etale} / \mathbb{F}_q
+    \end{tikzcd}
+\end{center}
+
+\begin{itemize}
+    \item Why not use $\mathbb{C}$-sheaves on the Zariski topology?
+\end{itemize}
+
+\begin{lemma}
+Any locally constant sheaf on an irreducible topological space is constant.
+\end{lemma}
+
+\begin{remark}
+    The Zariski topology has too few open sets, making it inconvenient to use sheaves to study topological properties.
+\end{remark}
+
+
+
+\section{Local Systems}
+
+\begin{definition}
+A \textbf{local system} (of $\mathbb{C}$-vector spaces) on a topological space $X$ is a locally constant sheaf. 
+i.e., $\forall x \in X$, $\exists$ open $x \in U \subset X$ such that $\mathcal{F}|_U$ is constant.
+\end{definition}
+
+\begin{example}
+    Let $X = \mathbb{C} \setminus \{0\}$, for any $U \subset X$:
+\[ \mathcal{F}(U) = \left\{ \text{holomorphic functions } f \text{ on } U \mid \partial_z f = \frac{1}{2z} f \right\} \]
+then $\mathcal{F}$ is a local system 
+and we can find $\mathcal{F}_x \cong \mathbb{C} z^{1/2} \quad \forall x \in X$. \\
+But $z^{1/2}$ can't be defined on $X$, so $\mathcal{F}$ is not a constant sheaf.
+\end{example}
+
+
+\begin{lemma}
+Any local system on $[0,1]$ is constant.
+\end{lemma}
+
+\begin{proof}[\textbf{Proof}]
+Let $\mathcal{L}$ be a local system on $[0,1]$ (compact). 
+There exists a finite open covering $[0,1] = \bigcup_{i} U_i$ such that $\mathcal{L}|_{U_i}$ is constant.
+We may assume the finite open covering consists of intervals $U_i = (a_i, b_i)$ (or half-open intervals like $[0, b_i)$ and $(a_i, 1]$) such that $b_i \in U_{i+1}$. For example, let $U_1 = [0, b_1)$ and $U_2 = (a_2, b_2)$, so that their intersection is $U_1 \cap U_2 = (a_2, b_1)$, and so forth. We consider the restriction maps:
+\[ \mathcal{L}(U_1) \xrightarrow{\cong} \mathcal{L}(U_1 \cap U_2) \xleftarrow{\cong} \mathcal{L}(U_2). \]
+This implies that the local system $\mathcal{L}$ is constant on the union $U_1 \cup U_2$. By continuing this process with induction, we conclude that $\mathcal{L}$ is constant on the entire interval $[0,1]$.
+\end{proof}
+
+Similarly, any local system on $[0,1] \times [0,1]$ is constant.
+
+\begin{lemma}
+For any continuous map $f: X \rightarrow Y$ and a local system $\mathcal{L}$ on $Y$, the pullback $f^* \mathcal{L}$ is a local system on $X$.
+\end{lemma}
+
+\begin{proof}[\textbf{Proof}]
+Locally, the pullback functor $f^*$ sends a constant sheaf to a constant sheaf.
+\end{proof}
+
+\section{Monodromy representations}
+
+Let $\mathrm{Loc}(X)$ denote the category of local systems on $X$.
+
+\begin{proposition}
+For a locally connected topological space $X$, $\mathrm{Loc}(X)$ is an abelian category.
+\end{proposition}
+
+Fix a base point $x_0 \in X$. Our goal is to construct a functor
+\[ \mathrm{Loc}(X) \longrightarrow \mathrm{Rep}(\pi_1(X, x_0)) \]
+where $\mathrm{Rep}(\pi_1(X, x_0))$ represents the category of finite dimensional representations $\{ (V,\pi_1(X, x_0) \rightarrow \mathrm{GL}(V)) \}$.
+
+For any path $\gamma: [0,1] \rightarrow X$ and any local system $\mathcal{L} \in \mathrm{Loc}(X)$, note that the pullback $\gamma^* \mathcal{L}$ is constant on $[0,1]$ by the previous lemma. This gives us a natural isomorphism $\rho(\gamma)$ through the global sections $\Gamma([0,1], \gamma^*\mathcal{L})$. Specifically, we have the following identifications of stalks:
+\[ \mathcal{L}_{\gamma(1)} = (\gamma^*\mathcal{L})_1 \xleftarrow{\cong} \Gamma([0,1], \gamma^*\mathcal{L}) \xrightarrow{\cong} (\gamma^*\mathcal{L})_0 = \mathcal{L}_{\gamma(0)}. \]
+For a loop where $\gamma(0) = \gamma(1) = x_0$, we obtain an isomorphism
+\[ \rho(\gamma): \mathcal{L}_{x_0} \xrightarrow{\cong} \mathcal{L}_{x_0}. \]
+That is, $\rho(\gamma) \in \mathrm{GL}(\mathcal{L}_{x_0})$.
+
+
+\begin{lemma}
+The assignment $\rho(\gamma)$ induces a well-defined action of the fundamental group $\pi_1(X, x_0)$ on the vector space $V = \mathcal{L}_{x_0}$.
+\end{lemma}
+
+\begin{proof}[\textbf{Proof}]
+To show that this action is well-defined, we need to verify the following properties:
+\begin{enumerate}
+    \item If $\gamma$ is the identity path, then $\rho(\gamma)$ is the identity isomorphism.
+    \item The assignment respects path composition.
+    \item The assignment is invariant under homotopy. That is, if two paths are homotopic ($\gamma \sim \gamma'$), then their induced isomorphisms are equal, meaning $\rho(\gamma) = \rho(\gamma')$.
+\end{enumerate}
+
+To prove the homotopy invariance, let $H: [0,1] \times [0,1] \rightarrow X$ be a homotopy between $\gamma$ and $\gamma'$, such that $H(t,0) = \gamma(t)$ and $H(t,1) = \gamma'(t)$. Since the pullback $H^*\mathcal{L}$ is a constant local system on the square $[0,1] \times [0,1]$, its restriction to the boundary paths is also constant. 
+This yields $\gamma^*\mathcal{L}=\gamma'^*\mathcal{L}$, which implies that $\rho(\gamma) = \rho(\gamma')$.
+\end{proof}
+
+We have thus defined the monodromy representation functor:
+\begin{align*}
+    \mathrm{Mon}_{x_0}: \mathrm{Loc}(X) &\longrightarrow \mathrm{Rep}(\pi_1(X, x_0)) \\
+    \mathcal{L} &\longmapsto \mathcal{L}_{x_0}.
+\end{align*}
+
+\begin{example}
+    Consider the previous example of the local system associated with $z^{1/2}$ on $X = \mathbb{C} \setminus \{0\}$. Let the base point be $x_0 = 1$. The fundamental group is $\pi_1(X, x_0) \cong \mathbb{Z}$. The monodromy representation maps the generator of the fundamental group to an element in $\mathrm{GL}(\mathbb{C}) \cong \mathbb{C}^*$. Specifically, as $z$ goes around the origin once, the branch of $z^{1/2}$ changes sign, so the generator $1 \in \mathbb{Z}$ is mapped to $-1 \in \mathbb{C}^*$ (i.e., $z^{1/2} \mapsto -z^{1/2}$).
+\end{example}
+
+\begin{theorem}
+Suppose the topological space $X$ is connected, locally path-connected, and locally simply-connected. Then the monodromy functor $\mathrm{Mon}_{x_0}$ is an equivalence of categories.
+\end{theorem}
+
+\begin{remark}
+    For example, topological manifolds satisfy these local conditions. 
+    In addition, cones also satisfy these local conditions.
+\end{remark}
+
+\textbf{Fact}:
+For the inverse functor,
+Let $p: \tilde{X} \rightarrow X$ be the universal covering space. The fundamental group $\pi_1(X, x_0)$ acts on $\tilde{X}$ via deck transformations on the fibers of $p$. 
+
+Given a representation $V \in \mathrm{Rep}(\pi_1(X, x_0))$, we define a presheaf $\mathcal{L}_V$ by assigning to each open set $U \subseteq X$:
+\begin{align*}
+\mathcal{L}_V(U) = \left\{ 
+\begin{array}{l}
+\text{locally constant, } \pi_1(X, x_0)\text{-equivariant maps } \phi: p^{-1}(U) \rightarrow V \\
+\text{i.e., } \phi(g \cdot y) = g \cdot \phi(y) \text{ for any } g \in \pi_1(X, x_0) \text{ and } y \in p^{-1}(U)
+\end{array} 
+\right\}.
+\end{align*}
+One can verify that $\mathcal{L}_V$ is indeed a sheaf. Furthermore, we have an isomorphism on the stalk at the base point: $(\mathcal{L}_V)_{x_0} \cong V$. 
+And for any local system $\mathcal{L}$, we have $\mathcal{L}_{\mathcal{L}_{x_0}} \cong \mathcal{L}$.
+(\textit{Hint:} Fix a point $\tilde{x}_0 \in p^{-1}(x_0)$. For any $x \in X$, fix a path $\alpha_x$ from $x_0$ to $x$ (fixing this data ensures consistency), with the condition that the chosen path for the base point $\alpha_{x_0}$ is the identity path.)
+
+\begin{lemma}
+Let $X$ be as in the previous theorem (which implies $X$ is path-connected). For any local system $\mathcal{L} \in \mathrm{Loc}(X)$ corresponding to a representation $V \in \mathrm{Rep}(\pi_1(X, x_0))$, there is an isomorphism of global sections:
+\[ \Gamma(X, \mathcal{L}) \cong V^{\pi_1(X, x_0)}. \]
+\end{lemma}
+
+\begin{proof}[\textbf{Proof}]
+We have a natural evaluation map $\Gamma(X, \mathcal{L}) \rightarrow \mathcal{L}_{x_0} = V$.
+
+For any loop $\gamma \in \pi_1(X, x_0)$ where $\gamma(0) = \gamma(1) = x_0$, the monodromy action is given by the composition of isomorphisms:
+\[ \rho(\gamma): V = \mathcal{L}_{x_0} \xleftarrow{\cong} \Gamma([0,1], \gamma^*\mathcal{L}) \xrightarrow{\cong} \mathcal{L}_{x_0}. \]
+For any global section $s \in \Gamma(X, \mathcal{L})$, its pullback along the loop yields $s|_{[0,1]} \in \Gamma([0,1], \gamma^*\mathcal{L})$. This implies that $\rho(\gamma)(s_{x_0}) = s_{x_0}$. Thus, the image of the evaluation map lies in the invariant subspace $V^{\pi_1(X, x_0)}$.
+
+To show this map is an isomorphism, we prove injectivity and surjectivity separately:
+
+\begin{itemize}
+    \item \textbf{Injectivity:} For any two global sections $s, s' \in \Gamma(X, \mathcal{L})$, suppose their stalks at $x_0$ are equal, meaning $s_{x_0} = s'_{x_0}$. For any arbitrary point $x \in X$, take a path $\alpha$ such that $\alpha(0) = x_0$ and $\alpha(1) = x$. This path induces an isomorphism $\rho(\alpha): \mathcal{L}_{x_0} \xrightarrow{\cong} \mathcal{L}_x$. Because $s$ and $s'$ are global sections, we have $\rho(\alpha)(s_{x_0}) = s_x$ and $\rho(\alpha)(s'_{x_0}) = s'_x$. Given that $s_{x_0} = s'_{x_0}$, it follows immediately that $s_x = s'_x$. Since $x$ is arbitrary, we conclude that $s = s'$.
+    
+    \item \textbf{Surjectivity:} Let $v \in V^{\pi_1(X, x_0)}$ be an invariant element. For any $x \in X$, take a path $\alpha$ from $x_0$ to $x$. This path induces an isomorphism $\rho(\alpha): \mathcal{L}_{x_0} \xrightarrow{\cong} \mathcal{L}_x$. We can define the stalk at $x$ by setting $v_x := \rho(\alpha)(v)$. Because $v$ is invariant under the action of the fundamental group $\pi_1(X, x_0)$, this definition is independent of the choice of the path $\alpha$. This process yields a well-defined global section $s \in \Gamma(X, \mathcal{L})$ such that $s_{x_0} = v$.
+\end{itemize}
+\end{proof}
+
+\section{Constructible Sheaves}
+
+It is not enough to consider the category of local systems $\mathrm{Loc}(X)$ for the following reasons:
+\begin{enumerate}
+    \item It only detects the fundamental group $\pi_1(X, x_0)$.
+    \item It is not stable under functors.
+\end{enumerate}
+
+\begin{example}
+    Let $\mathcal{L}$ be the local system associated with $z^{1/2}$ on $X = \mathbb{C} \setminus \{0\}$. Consider the inclusion map $j: X \hookrightarrow Y = \mathbb{C}$, and the pushforward sheaf $j_* \mathcal{L}$ on $Y$. Let us compute the stalk at the origin:
+\[ (j_* \mathcal{L})_0 = \varinjlim_{0 \in V \subseteq Y} (j_* \mathcal{L})(V) = \varinjlim_{0 \in V} \mathcal{L}(V \setminus \{0\}) = 0. \]
+Since the stalk at $0$ is zero but the stalks elsewhere are non-zero, the sheaf $j_* \mathcal{L}$ is not a local system on $Y$. Thus, $j_* \mathcal{L} \notin \mathrm{Loc}(Y)$.
+\end{example}
+
+\begin{definition}
+A \textbf{stratification} of a topological space $X$ is a finite collection of subspaces $(X_i)_{i \in I}$ of $X$, called \textbf{strata}, such that:
+\begin{enumerate}
+    \item $X = \bigcup_{i \in I} X_i$.
+    \item $X_i \cap X_j = \emptyset$ for any $i \neq j$.
+    \item Every stratum $X_i$ is a connected topological manifold.
+    \item Every stratum $X_i$ is locally closed in $X$.
+    \item If $X_i \cap \overline{X_j} \neq \emptyset$, then $X_i \subseteq \overline{X_j}$. (This is equivalent to the frontier condition: the boundary $\partial X_i = \overline{X_i} \setminus X_i$ is a union of some strata $X_j$).
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+    When $X$ is an algebraic variety, we require that each stratum $X_i$ is a smooth, connected, Zariski locally closed subvariety.
+\end{remark}
+
+\begin{definition}
+A \textbf{refinement} of a stratification $X = \bigsqcup_{i \in I} X_i$ is another stratification $X = \bigsqcup_{j \in J} X_j$ such that every stratum $X_j$ is contained in some stratum $X_i$.
+\end{definition}
+
+\begin{example}
+    \begin{enumerate}
+    \item If $X$ is a manifold, then it has a trivial stratification $X = X_1$.
+    \item Let $X = \{(x,y) \in \mathbb{C}^2 \mid xy = 0\} \subset \mathbb{C}^2$. We can stratify $X$ as:
+    \[ X = \{0\} \sqcup (X \setminus \{0\}) = \{0\} \sqcup (\text{$x$-axis} \setminus \{0\}) \sqcup (\text{$y$-axis} \setminus \{0\}). \]
+    \item Let $G$ be an algebraic group (for example, $\mathrm{GL}_n(\mathbb{C})$) and $X$ be an algebraic variety equipped with a $G$-action that has finitely many orbits. This naturally induces a stratification $X = \bigsqcup (\text{$G$-orbits})$. 
+    
+    As a specific case, consider the general linear group $\mathrm{GL}_n(\mathbb{C})$ acting by conjugation on the nilpotent cone $\mathcal{N} = \{A \in M_{n \times n}(\mathbb{C}) \mid A^n = 0\}$. The set of orbits $|\mathrm{GL}_n(\mathbb{C}) \setminus \mathcal{N}|$ is in bijection with the set of partitions of $n$. 
+\end{enumerate}
+\end{example}
+
+\begin{lemma}
+Let $X$ be an algebraic variety.
+\begin{enumerate}
+    \item Any two stratifications of $X$ have a common refinement.
+    \item For any locally closed subvariety $Y \subseteq X$, $Y$ is a union of strata for some stratification of $X$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}[\textbf{Proof}]
+(1) This is left as a homework exercise. The general strategy is to consider the smooth locus of the variety and proceed using Noetherian induction.
+
+(2) The proof follows a similar idea.
+\end{proof}
+
+\begin{remark}
+    In more general topological settings, there exist certain regularity conditions one might need to impose on a stratification, such as the Whitney stratification conditions. However, we can safely avoid these technical conditions when we are working exclusively with algebraic varieties.
+\end{remark}
+
+\begin{definition}
+Let $X$ be a topological space equipped with a stratification $(X_i)_{i \in I}$. 
+
+A sheaf $\mathcal{F}$ on $X$ is \textbf{weakly constructible} with respect to $I$ if its restriction $\mathcal{F}|_{X_i} \in \mathrm{Loc}(X_i)$ for all $i \in I$. A sheaf is simply called weakly constructible if it is weakly constructible with respect to some stratification $I$.
+
+Furthermore, a sheaf is \textbf{constructible} (with respect to $I$) if, moreover, for all $i \in I$, the restriction $\mathcal{F}|_{X_i}$ is of finite rank (i.e., all of its stalks are finite-dimensional vector spaces).
+\end{definition}
+
+We denote the category of constructible sheaves on $X$ (with respect to a fixed stratification $I$) by $\mathrm{Sh}_c(X)$ (respectively, $\mathrm{Sh}_I(X)$).
+
+\begin{example}
+    \begin{enumerate}
+    \item If $X$ is a smooth variety, then the category of finite-rank local systems $\mathrm{Loc}^{\mathrm{fin}}(X)$ is a subcategory of $\mathrm{Sh}_c(X)$.
+    \item For the local system $\mathcal{L}$ associated with $z^{1/2}$ on $\mathbb{C} \setminus \{0\}$, let $j: \mathbb{C} \setminus \{0\} \hookrightarrow \mathbb{C}$ be the inclusion map. Then the pushforward sheaf $j_*\mathcal{L}$ belongs to $\mathrm{Sh}_c(X)$ (where $X = \mathbb{C}$).
+\end{enumerate}
+\end{example}
+
+
+On derived categories:
+\begin{definition}
+A complex of sheaves $\mathcal{F}^\bullet$ is called \textbf{(weakly) constructible} (with respect to $I$) if its $k$-th cohomology sheaf $\mathcal{H}^k(\mathcal{F}^\bullet)$ satisfies the same property for all $k \in \mathbb{Z}$.
+\end{definition}
+
+We denote the corresponding derived categories as $D_I^b(X) \subseteq D^b(X)$ and $D_c^b(X) \subseteq D^b(X)$, where $D^b(X)$ stands for the bounded derived category of sheaves on $X$. Both $D_I^b(X)$ and $D_c^b(X)$ form full triangulated subcategories.
+
+There is a natural functor connecting the derived category of constructible sheaves to the constructible derived category:
+\[ D^b(\mathrm{Sh}_c(X)) \longrightarrow D_c^b(X). \]
+
+\begin{theorem}
+For any complex algebraic variety $X$, the natural functor from the bounded derived category of constructible sheaves to the constructible derived category, 
+\[ D^b(\mathrm{Sh}_c(X)) \xrightarrow{\simeq} D_c^b(X), \]
+is an equivalence of categories.
+\end{theorem}
+
+\begin{proof}[\textbf{Proof}]
+It can be found in Beilinson's foundational notes, specifically in the work titled ``On the derived category of perverse sheaves''.
+\end{proof}
+
+\begin{remark}
+    It is important to note that this equivalence generally fails for complex analytic spaces. However, interestingly, the equivalence still holds for real analytic spaces.
+\end{remark}

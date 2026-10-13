@@ -1,0 +1,68 @@
+\newenvironment{solution}{\begin{proofc}[解答]}{\end{proofc}}
+
+时长：20分钟 $\quad$ 题量：10道判断题
+
+\textbf{判断题：判断以下命题的真伪，用 T/F 表示，不必说明原因.}
+\begin{enumerate}
+    \item[1.]$\displaystyle \lim_{n\to+\infty}a_n=A$ 当且仅当 $\forall \epsilon>0,\,\exists N>0,\,$ 
+    使得当 $n\geq 98N$ 时，$\left| a_n-A \right|\leq 88\epsilon$.
+    
+    \item[2.]若 $\exists N>0,\,\forall \epsilon>0$，成立 $\forall n>N$，有 $\left|a_n-A\right|<\epsilon$，则
+    $\displaystyle \lim_{n\to+\infty}a_n=A$.
+
+    \item[3.]$\displaystyle \lim_{n\to+\infty}a_n=A$ 当且仅当 $\forall \epsilon>0,\,\exists N\geq 0$，使得 
+    $\displaystyle A-\epsilon<\inf_{n\geq N}a_n\leq \sup_{n\geq N}a_n<A+\epsilon$.
+
+    \item[4.]数列 $\{a_n\}$ 收敛当且仅当 $\forall\epsilon>0,\,\exists N>0$，使得对任何 $n>N$ 以及 $p>0$，
+    成立 $\left| a_{n+p}-a_n \right|\leq \epsilon$.
+    
+    \item[5.]若非负数列 $\{a_n\}$ 满足 $\forall\epsilon\in(0,1),\,\exists N>0$，使得当 $n>N$ 时，
+    $a_n\leq 1-\epsilon$，则数列 $\{a_n\}$ 可能无极限.
+
+    \item[6.]$\displaystyle \lim_{n\to+\infty}a_n=a$ 当且仅当存在 $\mathbb{R}$ 上的函数 $f$，满足以下条件：
+    $f(0)=0,\,\forall\epsilon>0,\,\exists N\geq 1$ 使得当 $n>N$ 时，$\left| a_n-a \right|\leq f(\epsilon)$ 成立.
+
+    \item[7.]$\displaystyle \lim_{n\to+\infty}a_n=a$ 当且仅当存在 $\mathbb{R}$ 上的严格单减函数 $f$ 使得
+    $\forall \epsilon>0$，当 $n>f(\epsilon)$ 时，$\left| a_n-a \right|\leq \epsilon$ 成立.
+
+    \item[8.]若数列 $\{a_n\}$ 有一个子列 $\{a_{n_j}\}$ 收敛于 $a$，且对于任意的 $k\geq 1$，
+    $\{a_{n_j+k}\}$ 收敛于 $a$，则数列 $\{a_n\}$ 收敛.
+    
+    \item[9.]数列 $\{a_n\}$ 收敛当且仅当 $\displaystyle \sup_{k\geq 1}\inf_{n\geq k}a_n=\inf_{k\geq 1}\sup_{n\geq k}a_n$ 成立(且两者均非 $\pm\infty$).
+
+    \item[10.]若数列 $\{a_n\}$ 满足 $\displaystyle\sup_{k\geq 1}\inf_{n\geq k}a_n=\inf_{k\geq 1}\sup_{n\geq k}a_k$ 成立，则
+    数列 $\{a_n\}$ 收敛.
+
+    \begin{solution}
+        答案： 1-5 TTTTF；6-10 FFFTF.
+
+        \textbf{第4题延伸:}若 $p$ 是某个确定的正整数，则结论不再成立，例如 $a_n=\ln n$.
+
+        \textbf{第7题：}取 $\displaystyle a_n=\frac{1}{n}$，则 $a=0$. 只需证不存在符合题意的 $f$.\\
+        用反证法. 假若存在符合题意的 $f$，则由 $f$ 的定义域为 $\mathbb{R}$ 可知 $f(0)$ 有定义且为有限数.\\
+        取 $\displaystyle\epsilon=\frac{1}{\lceil\max\{f(0),\,0\}\rceil+1000}>0$，取 $n=\lceil\max\{f(0),\,0\}\rceil+100$，则 $\displaystyle \left| a_n-a \right|=\frac{1}{n}>\epsilon$，矛盾.
+
+        \textbf{第8题：}取
+        \[
+        a_n=
+        \begin{cases}
+        1 &,\,n=j^2\\
+        0 &,\,n\neq j^2.
+        \end{cases}
+        \]
+        其中 $n,\,j \in\mathbb{N}_{+}$. 该数列显然不收敛. 取 $n_j=j^2+1$，则 $a_{n_j}=0,\,a=0$. \\
+        而 $\forall k\in\mathbb{N}_{+}$，$j^2<j^2+k+1=n_j+k<(j+1)^2$ 对一切 $j>1000k$ 均成立.
+
+        \textbf{第9题：}只用证明 $\mathrm{RHS}\Rightarrow\mathrm{LHS}$.\\
+        由$\displaystyle \sup_{k\geq 1}\inf_{n\geq k}a_n=\inf_{k\geq 1}\sup_{n\geq k}a_n$ 成立(且两者均非 $\pm\infty$)可知 
+        $\displaystyle \liminf_{n\to+\infty}a_n=\limsup_{n\to+\infty}a_n\eqqcolon L$.\\
+        从而 $\forall \epsilon>0,\,\exists N>0$ 使得 $\displaystyle\left| \inf_{n\geq N}a_n-L \right|<\epsilon,\,\left| \sup_{n\geq N}a_n-L \right|<\epsilon$.\\
+        则 $\forall \epsilon>0,\,\exists N>0$ 使得 $\displaystyle L-\epsilon<\inf_{n\geq N}a_n\leq \sup_{n\geq N}a_n<L+\epsilon$，从而数列 $\{a_n\}$ 收敛.
+
+        \textbf{第10题：}观察可得 $\displaystyle \inf_{k\geq 1}\sup_{n\geq k}a_k=a_1$.\\
+        这是因为 $\displaystyle \sup_{k\leq n}a_k=\sup\{a_1,\,a_2,\,\cdots\,a_n\}=\max\{a_1,\,a_2,\,\cdots\,a_n\}$.\\
+        当 $n$ 增大时，$\{a_1,\,a_2,\,\cdots\,a_n\}$ 作为集合，元素增加，从而 $\displaystyle\sup_{k\leq n}a_k$ 单调递增，\\
+        从而 $\displaystyle \left.\inf_{k\geq 1}\sup_{n\geq k}a_k=\sup_{k\leq n}a_k\right|_{n=1}=a_1$.\\
+        因此可以轻松举出反例 $\displaystyle a_n=(-1)^n$.
+    \end{solution}
+\end{enumerate}

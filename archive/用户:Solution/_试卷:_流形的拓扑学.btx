@@ -1,0 +1,156 @@
+\setdisplaytitle{试卷：流形的拓扑学（本）/微分拓扑（研）}
+\sethtmltitle{试卷：流形的拓扑学/微分拓扑}
+
+{{comment|本课程为本研合开，本科生课名为《流形的拓扑学》，研究生课名为《微分拓扑》。
+两者授课内容一致，均为张筑生《微分拓扑新讲》的大致第一至六章（每年可能有略微的不同），
+不过期末试题是不同的，如下用相应的课名来区分本科和研究生试题。}}
+
+==2025秋\ 微分拓扑\ 期末试卷（12.24）==
+
+\begin{enumerate}
+    \item[一.] (25分)
+    \begin{itemize}
+        \item[1.] 写出微分流形的定义.
+        \item[2.] 写出子流形的定义.
+        \item[3.] 写出浸入的定义.
+        \item[4.] 固定$a\in\mathbb{R}$为无理数,定义$f:\mathbb{R}\to S^1\times S^1,f(t)=(\mathrm{e}^{2\pi t\mathrm{i}},\mathrm{e}^{2a\pi t\mathrm{i}})$.证明$f$是单射、浸入,但不是嵌入.
+    \end{itemize}
+    \item[二.] (15分) 假设常微分方程组的解的存在唯一性,
+    证明紧支光滑向量场$\Gamma$诱导单参数变换群$\gamma:\mathbb{R}^1\times M \to M$, 
+    当把$\gamma(t,p)$视作$M$中过$p$点的曲线时,
+    恰有$\dot{\gamma}(t)=\Gamma(\gamma(t))$,且$\gamma(0,p)=p$.
+    \item[三.] (15分) 证明光滑流形的切丛$TM$上必然存在黎曼度量.
+    \item[四.] (15分)
+    \begin{itemize}
+        \item[1.]证明淹没是开映射,即淹没将开集映到开集.
+        \item[2.]设$M$是紧致微分流形, $N$是连通微分流形, $f:M\to N$是淹没.证明$f(M)=N$.
+    \end{itemize}
+    \item[五.] (15分)
+    \begin{itemize}
+        \item[1.]叙述临界点的定义.
+        \item[2.]叙述Morse函数的定义.
+        \item[3.]在$\mathbb{R}P^2$上构造一个恰有3个临界点的Morse函数.
+    \end{itemize}
+    \item[六.] (15分) 设$L$是开Möbius带,即Möbius带去掉边界.
+    \begin{itemize}
+        \item[1.]试赋予$L$上适当的丛结构,使得$L$同构于$S^1$上的非平凡$\mathbb{R}^1$丛.
+        \item[2.]往证Whitney和$L\oplus L$同构于$S^1$上的平凡$\mathbb{R}^2$丛.
+    \end{itemize}
+\end{enumerate}
+
+
+==2024秋\ 流形的拓扑学\ 期末试卷==
+
+\begin{itemize}
+    \item[1.] 给出下面名词的定义：(1)微分流形；(2)子流形；(3)临界点；(4) Morse函数；(5)给出$T^n=S^1\times\cdots\times S^1$上恰有 $2^n$个临界点的Morse函数.
+    \item[2.] 在承认以下两个结论成立的前提下：
+\begin{itemize}
+	\item [(a)] 设$U$是$\R^m$中的开集，$n\geq 2m$，$f\in C^\infty(U,\R^n)$. 
+    则对于任意给定的实数$\gamma$，存在$n\times m$矩阵$A=(a_{ij})$，满足条件
+	$$|A|=\max_{i,j}\{|a_{ij}|\}<\gamma,$$使得$g(x)=f(x)+Ax$在$U$上是浸入.
+	\item [(b)] 设$K\subset U$为紧致集. 如果$f\in C^1(U,\R^n)$在$K$上是浸入，
+    那么存在$\delta>0$使得对任何
+	$$g\in C^1(U,\mathbb{R}^n), \quad |g-f|_K^{(1)}<\delta,$$
+    都有$g$在$K$上为浸入.
+\end{itemize}
+试证明Whitney浸入定理：\\
+设$M$是$m$维光滑流形，$n\ge2m$，则对任何的$f\in C^\infty(M,\R^n)$
+和任何$\varepsilon>0$，存在$g\in C^\infty(M,\R^n)$，使得\\
+ (a) $g$是从$M$到$\R^n$的浸入；\\
+ (b) $\|g(p)-f(p)\|<\varepsilon$，$\forall\,p\in M$。
+    \item[3.]设$M$是所有$n\times n$实矩阵构成的集合，
+$N$是所有$n\times n$对称阵构成的集合，均赋予$\R^{n^2}$的欧氏拓扑。
+设$f\colon M\to N$是光滑映射，$f(A)=AA^T$。证明：
+
+(1) 证明单位阵$I$是$f$的正则值，证明 $f^{-1}(I)$是$M$的光滑的正则子流形，试计算 $f^{-1}(I)$的维数. \\
+
+(2) 证明$f^{-1}(I)$是个紧致集.
+\item[4.] 记$M(n,m;k)$是$n\times m$实矩阵中秩为$k$的矩阵全体，
+赋予$\R^{nm}$上的子空间拓扑（看作是$n\times m$实矩阵全体的子空间）。
+证明：它是一个$nm-(n-k)(m-k)$维光滑流形.
+
+\item[5.]在承认Morse引理和第六章引理4.10的前提下，证明Reeb定理.
+\item[6.](1) 证明：在 $\mathbb{R}P^n=S^n/(x\sim -x)$上，
+$E:=\{([x],v)\in\mathbb{R}P^n\times \mathbb{R}^{n+1}|v=kx, k\in\mathbb{R}^1\}$不是平凡的 $\mathbb{R}^1$-丛。
+
+(2) $F_g$是亏格为 $g$的可定向曲面，请给出 $F_g$上无穷多个 $\mathbb{R}^2$-丛。
+\end{itemize}
+
+==2023秋\ 流形的拓扑学\ 期末试卷==
+
+\begin{itemize}
+\item[1.] 设$M$为微分流形且$p\in M$为其上一点，
+请给出切空间$T_pM$的定义，并说明它是一个与$M$维数相同的线性空间.
+\item[2.] 设$M$是$\R^n$的正则光滑子流形且$f\in C^\infty(M,\R)$. 
+试证明几乎所有的$\lambda\in \R^n$都使得如下定义的$g\colon M\to \R$成为Morse函数：
+$$g(x)=f(x)+\lambda\cdot x,$$
+其中$\lambda\cdot x$指$\lambda$与$x$的数量积.
+\item[3.] 设$M$和$N$是$C^r$流形$(r\geq 1)$，
+$S$是$N$的$C^r$正则子流形，$f\colon M\to N$是$C^r$映射. 
+如果$f\pitchfork S$，则$f^{-1}(S)$为$M$的$C^r$正则子流形.
+\item[4.] 试陈述并证明浸入的典范表示.
+\item[5.] 
+\begin{itemize}
+	\item [(a)] 设$U$是$\R^m$中的开集，$n\geq 2m$，$f\in C^\infty(U,\R^n)$. 
+    则对于任意给定的实数$\gamma$，存在$n\times m$矩阵$A=(a_{ij})$，满足条件
+	$$|A|=\max_{i,j}\{|a_{ij}|\}<\gamma,$$使得$g(x)=f(x)+Ax$在$U$上是浸入.
+	\item [(b)] 设$K\subset U$为紧致集. 如果$f\in C^1(U,\R^n)$在$K$上是浸入，
+    那么存在$\delta>0$使得对任何
+	$$g\in C^1(U,\mathbb{R}^n), \quad |g-f|_K^{(1)}<\delta,$$
+    都有$g$在$K$上为浸入.
+\end{itemize}
+\item[6.] 
+\begin{itemize}
+	\item [(a)] 请各举两例互不同构的$S^1$为底空间的一维与二维丛.（共举四例）
+	\item [(b)] 试说明切丛$TS^1$与$TS^3$为平凡丛.
+\end{itemize}
+\end{itemize}
+
+
+==2017秋\ 流形的拓扑学\ 期末试卷==
+\begin{enumerate}
+\item[1.] (20分) \begin{itemize}
+    \item[(1)] 叙述微分流形的定义.
+    \item[(2)] 说明$\mathbb{R}P^2$是个光滑流形.
+    \item[(3)] 叙述子流形（正则子流形）的定义.
+    \item[(4)]设$a$是个无理数，证明：映射$f\colon\R^1\to T^2=S^1\times S^1$，
+$$t\mapsto(e^{2\pi ti},e^{2a\pi ti})$$
+是个单射、浸入，但非光滑嵌入.
+\end{itemize}
+
+\item[2.] (10分) 记$M(n,m;k)$是$n\times m$实矩阵中秩为$k$的矩阵全体，
+赋予$\R^{nm}$上的子空间拓扑（看作是$n\times m$实矩阵全体的子空间）。
+证明：它是一个$nm-(n-k)(m-k)$维光滑流形。
+\item[3.] (20分) (1) 叙述临界点的定义。\\
+(2) 叙述Morse函数的定义。\\
+(3) 构造一个$\mathbb{R}P^3$上的Morse函数，使之恰好具有$4$个临界点。
+\item[4.] (15分) 设$M$是所有$n\times n$实矩阵构成的集合，
+$N$是所有$n\times n$对称阵构成的集合，均赋予$\R^{n^2}$的欧氏拓扑。
+设$f\colon M\to N$是光滑映射，$f(A)=AA^T$。证明：
+
+(1) 单位阵$I$是$f$的正则值。\\
+(2) $f^{-1}(I)$是个紧致集。
+\item[5.] (15分) 
+在承认以下两个结论成立的前提下：
+\begin{itemize}
+	\item [(a)] 设$U$是$\R^m$中的开集，$n\geq 2m$，$f\in C^\infty(U,\R^n)$. 
+    则对于任意给定的实数$\gamma$，存在$n\times m$矩阵$A=(a_{ij})$，满足条件
+	$$|A|=\max_{i,j}\{|a_{ij}|\}<\gamma,$$使得$g(x)=f(x)+Ax$在$U$上是浸入.
+	\item [(b)] 设$K\subset U$为紧致集. 如果$f\in C^1(U,\R^n)$在$K$上是浸入，
+    那么存在$\delta>0$使得对任何
+	$$g\in C^1(U,\mathbb{R}^n), \quad |g-f|_K^{(1)}<\delta,$$
+    都有$g$在$K$上为浸入.
+\end{itemize}
+试证明Whitney浸入定理：\\
+设$M$是$m$维光滑流形，$n\ge2m$，则对任何的$f\in C^\infty(M,\R^n)$
+和任何$\varepsilon>0$，存在$g\in C^\infty(M,\R^n)$，使得\\
+$\circ$ (a) $g$是从$M$到$\R^n$的浸入；\\
+$\circ$ (b) $\|g(p)-f(p)\|<\varepsilon$，$\forall\,p\in M$。
+
+\item[6.] (10分) 
+证明：切丛$TS^1$与$TS^3$为平凡丛.
+
+\item[7.] (10分) 
+设$M$是紧致光滑流形，$N$是连通光滑流形，
+$f\in C^\infty(M,N)$是淹没，证明：$f(M)=N$。
+\end{enumerate}

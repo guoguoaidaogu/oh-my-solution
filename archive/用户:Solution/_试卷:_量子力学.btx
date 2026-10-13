@@ -1,0 +1,112 @@
+\setdisplaytitle{试卷：量子力学}
+\sethtmltitle{试卷：量子力学}
+
+{{comment|这门课两年一开，资料比较缺乏。非常遗憾由于肖江老师的卷子较难记忆（有诸多简答、画图，计算题题干也很长），2025年的期末试卷暂时遗失了。
+但是肖江老师的出卷风格和他在物理系往年的比较近似，因此附上此前出给物理系的一张卷子作为参考。}}
+{{comment|物理系的量子力学1和开给数学英才班的物理部分内容不同。
+具体的，物理系多讲了含时微扰、散射；开给数院的多讲了相对论量子力学、路径积分、量子计算与量子信息。
+至于数学部分讲的比较混乱，主要是参考GTM267以及姚一隽老师翻译的谱理论讲义，
+大概是讲一些无穷维算子的性质。}}
+
+
+
+== 2023春 量子力学(肖江)期末 ==
+\subsection*{填空题}
+
+\begin{equation*}
+|\Psi\rangle = A[e^{i\theta}\phi_{200}|\uparrow_z\rangle + (\phi_{211} + \phi_{21\bar{1}})|\downarrow_z\rangle]e^{iE_2t/\hbar}
+\end{equation*}
+式中 $\bar{1} = -1$，$\phi_{nlm}$ 为氢原子电子的波函数
+
+\begin{enumerate}
+    \item 求归一化常数 $A =$____.
+    \item 测得 $\phi_{200}$ 的概率为____?
+    \item $L_z$ 可以测得的轨道角动量值为____？
+    \item $S_z$ 可以测得的自旋角动量值为____？测量得到 $+\hbar/2$ 后波函数变为？
+    \item 如果用频率为 $\omega = \frac{E_3-E_2}{\hbar}$ 的光微扰，波函数可能会变为？
+\end{enumerate}
+
+\subsection*{画图题}
+
+\begin{enumerate}
+    \item 无限深方势阱的基态和第一激发态波函数.
+    \item 半无限深方势阱的基态和散射态.
+    \item 势垒的散射态.
+    \item $V = \alpha|x|$ 的高能激发态.
+\end{enumerate}
+
+\subsection*{简答题}
+
+\begin{enumerate}
+    \item 利用不确定关系估算氢原子半径.
+    \item 说明以下条件下，物理量守恒：
+    \begin{enumerate}
+        \item[A.] 自由粒子动量守恒.
+        \item[B.] 氢原子轨道角动量的各个分量守恒.
+    \end{enumerate}
+    \item 无限深方势阱下微扰一个简谐势能
+    \begin{equation*}
+    V = \begin{cases}
+    \beta x^2, & |x| < a \\
+    +\infty, & \text{others}
+    \end{cases}
+    \end{equation*}
+    \begin{enumerate}
+        \item[A.] 计算微扰下的本征能量变化（只需给出表达式）.
+        \item[B.] 利用WKB近似给出本征能量满足的表达式.
+    \end{enumerate}
+    \item 写出以下全同粒子在谐振子势下的波函数，空间波函数用 $|n\rangle$ 表示，不用写出坐标表象的具体形式.
+    \begin{enumerate}
+        \item 自旋为$0$的玻色子.
+        \item 自旋为$1/2$的费米子.
+    \end{enumerate}
+    \item 利用变分法求有限深方势阱的波函数，自行选取变分波函数，并且说明变分参数的物理意义，只需给出能量期待值的表达式，不需要具体求解.
+    \item 写下你在学习本课程中遇到的一个问题，并尝试解答它.
+\end{enumerate}
+
+\subsection*{计算题}
+
+1. $V = -\beta\delta(x) + U\Theta(x)$
+\begin{equation*}
+\Theta = \begin{cases}
+1, & x \geq 0 \\
+-1, & x < 0
+\end{cases}
+\end{equation*}
+\begin{enumerate}
+    \item[A.] $U = 0$ 时，求束缚态的本征能量和波函数.
+    \item[B.] $U > 0$ 时，给出束缚态的本征能量和波函数，并且解释本征能量取值的条件(你可以定义一个无量纲量).
+    \item[C.] 画出上述两问波函数的图像.
+\end{enumerate}
+
+2. 对于处于三维谐振子势的电子(忽略自旋)，记能级为 $|n_xn_yn_z\rangle$
+\begin{enumerate}
+    \item 写出基态、第一激发态、第二激发态的态矢和简并数.
+    \item 证明 $L_z = -i\hbar[a_x^\dagger a_y - a_x a_y^\dagger]$.
+    \item 若在第一激发态加以 $\vec{B} = B_z\hat{z}$，计算能级的变化，简并消失了吗？.
+    \item 同上，若加 $\vec{E} = E\hat{z}$？
+\end{enumerate}
+
+3. 对于 $H = \mu_B\vec{\sigma} \cdot \vec{B}$ ，记 $\vec{B} = (B_x, B_y, B_z)$ $\vec{\sigma} = (\sigma_x, \sigma_y, \sigma_z)$ 为泡利矩阵
+\begin{enumerate}
+    \item 写出 $H$ 的矩阵表示.
+    \item 如果 $\vec{B} = B\hat{z}$ ，写出系统本征能量和本征旋量.
+    \item 如果初始时 $\chi = \frac{1}{\sqrt{2}}(1, 1)^T$，写出 $t$ 时刻 $\chi$ 的值.
+    \item 如果在 $t = 0$ 时，给基态一个 $\vec{B}' = (B_x, 0, 0)$ 的微扰，持续到 $t = T$。那么经过时间 $T$ 之后，跃迁到激发态的概率为多少？
+\end{enumerate}
+
+4. 有散射势
+\begin{equation*}
+V = \begin{cases}
+-U, & r < a \\
+0, & r > a
+\end{cases}
+\end{equation*}
+\begin{enumerate}
+    \item[A.] 利用Born近似，给出微分散射截面.
+    \item[B.] 在低能 $ka \ll 1$ 下，给出微分散射截面的近似解。提示：
+    $x \cos x - \sin x \sim -\frac{x^3}{3}$.
+    \item[C.] 利用低能近似 $ka \ll \frac{\sqrt{2mU}}{\hbar}a \ll 1$，求解径向薛定谔方程，计算散射的相移。给出 $l = 0$ 时，s波的散射截面。提示：$r = 0$ 时 $\psi(r)$ 有限，
+    $\frac{\tan x}{x} - 1 \sim \frac{x^2}{3}$.
+    \item[D.] 解释s波散射截面和Born近似求出的截面的关系.
+\end{enumerate}

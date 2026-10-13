@@ -1,0 +1,7 @@
+关于1.3.2上课内容的注记
+
+对于向量值函数
+$\alpha,\beta,\Delta (\alpha \cdot \beta)=\Delta \alpha \cdot \beta+2\nabla  \alpha \cdot \nabla \beta + \alpha  \cdot \Delta \beta.$
+这里$\nabla \alpha$为矩阵，矩阵之间的点乘默认为$Frobenius$内积，即$A\cdot B=\sum\limits_{i,j=1}^n a_{ij}b_{ij}$.
+
+上课讲的$\mid\nabla \varphi\mid^2\mid\nabla u\mid^2+16\varphi^2\mid\nabla ^2u\mid^2\geq 8\varphi(\nabla \varphi\cdot \nabla^2u\cdot\nabla u)$，对应的一般性结论即$\alpha^2\beta^2+\operatorname{tr}(A^tA)\geq 2\alpha^tA\beta.$这个命题的验证是直接的.

@@ -1,0 +1,487 @@
+\begin{center}
+    \textsize{28pt}{\textbf{代数几何初步 2022秋 9.5—11.23}} \\ 绝赞更新中qwqqqqqqqq 
+    \\ （注：本文内容忠于上课内容，但不忠于顺序，并会在适当处做补充.）
+
+\end{center}
+
+\begin{flushleft}
+    更新日志： \\
+    v.1.0（2022.11.20） 上课基本内容，内容未作合理性调整. \\
+    v.1.1（2022.11.22） 将$6$章内容分为$1$-$3$章与$4$-$6$章. \\
+    v.1.5（2023.02.13） 将$1$-$3$章与$3$-$6$章划分为$1$、$2$、$3$、$4$、$5$、$6$章.
+\end{flushleft}
+
+\section{代数簇}
+    \subsection{代数簇}
+    \begin{definition}[仿射空间]
+        称域$k$上的$n$维线性空间为$n$维仿射空间，记作$\mathbb{A}^{n}_{k}$. 
+        以下无歧义时简记为$\mathbb{A}^{n}$.
+    \end{definition}
+
+    \begin{definition}[零点]
+        给定域$K$上的$n$元多项式环$A=k[X_{1},\cdots,X_{n}]$. 
+        对于其中的多项式$f(X_{1},\cdots,X_{n}) \in A$，
+        称$a \in \mathbb{A}^{n}$为$f$的零点，若$f(a)=0$. 
+        以下多项式$f$的零点集为$\mathcal{V}(f)$.
+    \end{definition}
+      
+    \begin{definition}[仿射代数簇]
+        称仿射空间$\mathbb{A}^{n}$中的子集$F$为代数簇, 若存在$A$中的子集$S$, 
+        使得$F=\{a \in \mathbb{A}^{n} \mid f(a)=0,\,\forall f \in S\}$. 
+        记$S$对应的代数簇为$\mathcal{V}(S)$.
+    \end{definition}
+
+    \begin{example}
+        \begin{enumerate}
+            \item[(1)] $\mathcal{V}(1) = \varnothing$，$\mathcal{V}(0)=\mathbb{A}^{n}$
+            \item[(2)] 若$S=\{X_{1}-x_{1},\ldots,X_{n}-x_{n}\}$，
+                  则$\mathcal{V}(S)=\{(x_{1},\cdots,x_{n})\}$. 故而单点集是代数簇.
+            \item[(3)] 若$S_{1} \subset S_{2}$，则$\mathcal{V}(S_{1}) \supset \mathcal{V}(S_{2})$.
+            \item[(4)] 若$S \subset A$，且$I_{S}:=\left< S \right>$，
+                  则$\mathcal{V}(S)=\mathcal{V}(I_{S})$. 这是由定义可验证的. 
+                  故而定义1.3中考虑$A$的子集与$A$的理想并无区别.
+            \item[(5)] 定义$I \lhd A$的根理想
+                  $\sqrt{I}:=\{f \in A \mid 存在正整数n使得 f^{n} \in I \}$. 
+                  可验证$\sqrt{I}$确实是一个理想，
+                  且$\mathcal{V}(I) = \mathcal{V}(\sqrt{I})$. 
+                  （这是因为$k$中无非零幂零元.）
+            \item[(6)] 素理想都是根理想.
+        \end{enumerate}
+    \end{example}
+
+    \begin{remark}
+        也可以将代数簇定义为有限集$F \subset k[x_{1},\ldots,x_{n}]$的公共零点. 
+        这则定义与定义1.3是等价的. 一个方向是由例1.4.4得到的，
+        而另一个方向则是由Hilbert基定理
+        （若$R$是诺特环，则$R[x_{1},\ldots,x_{n}]$是诺特环），若$I \lhd A$，
+        则$I$有有限生成元$f_{1},\cdots,f_{n}$，
+        故$\mathcal{V}(I)=\mathcal{V}(f_{1},\cdots,f_{n})$.    
+    \end{remark}
+
+      仿射簇对任意交与有限并封闭.
+
+    \begin{proposition}
+        对于一组子集$\{S_{\alpha}\}_{\alpha \in I} \subset A$，其中$I$为指标集，我们有
+        \begin{enumerate}
+            \item[(1)] $\bigcap_{\alpha} \mathcal{V}(S_{\alpha}) = \mathcal{V}(\bigcup_{\alpha}S_{\alpha})$.
+            \item[(2)] $\mathcal{V}(S_{1}) \cup \mathcal{V}(S_{2}) = \mathcal{V}(S_{1}S_{2})$.
+        \end{enumerate}
+    \end{proposition}
+    \begin{proof}
+        \begin{enumerate}
+            \item[(1)] "$\subset$"：若$p \in \bigcap_{\alpha} \mathcal{V}(S_{\alpha})$，
+                        则对任意$f \in S_{\alpha}$与$\alpha \in I$有$f(p)=0$，即
+                        $p \in \mathcal{V}(\bigcup_{\alpha}S_{\alpha})$. \par
+                       "$\supset$"：若对于任意$f \in \bigcup_{\alpha}S_{\alpha}$有$f(p)=0$，
+                        则对于任意$\alpha \in I$有$p \in \mathcal{V}(S_{\alpha})$，
+                        即$p \in \bigcap_{\alpha} \mathcal{V}(S_{\alpha})$.
+            \item[(2)] "$\subset$"：若$p \in \mathcal{V}(S_{1}) \cup \mathcal{V}(S_{2})$，
+                        则不妨设对于任意$f \in S_{1}$，有$f(p)=0$. 
+                        那么任意$g \in S_{1}S_{2}$，有$g=fh$
+                        其中$f \in S_{1}$，$h \in S_{2}$. 
+                        那么$g(p) = f(p)h(p) = 0$，即$p \in \mathcal{V}(S_{1}S_{2})$. \par
+                       "$\supset$"：反之，若$p \notin \mathcal{V}(S_{1})\cup\mathcal{V}(S_{2})$，
+                        则存在$f \in S_{1}$与$g \in S_{2}$使得
+                        $f(p),g(p) \neq 0$，故由整性知$f(p)g(p) \neq 0$. 但$fg \in S_{1}S_{2}$，
+                        故$p \notin \mathcal{V}(S_{1}S_{2})$.
+        \end{enumerate}
+    \end{proof}
+
+    这实际上是说，$\mathbb{A}^{n}$中的全体代数簇有闭集结构. 
+    我们可以在$\mathbb{A}^{n}$定义一个全新的拓扑结构，使其中闭集恰好为全体代数簇.
+    
+    \begin{definition}[$\mathbb{A}^{n}$上的Zariski拓扑]
+        记拓扑空间$\mathbb{A}^{n}_{Zariski} := (\mathbb{A}^{n},\mathcal{X})$，其中
+        $\mathcal{X}=\{V(S)^{c} \mid S \subset A=k[X_{1},\cdots,X^{n}]\}$.
+        以下$\mathbb{A}^{n}$皆被赋予Zariski拓扑，并简记为$\mathbb{A}^{n}$.
+    \end{definition}
+
+    \begin{remark}
+        注意到取$k$为$\R$或$\mathbb{C}$，则Zariski拓扑其实严格粗于Euclid拓扑. 
+        这是由于Euclid拓扑下，多项式都是连续函数. 此时若$n=1$，则Zariski拓扑即余有限拓扑. \par
+        而取$k$为有限域，则Zariski拓扑就是离散拓扑（见Serge Lang Algebra习题IV.7）.
+    \end{remark}
+
+    \begin{remark}
+        Zariski拓扑不是Haudorff拓扑. $\mathbb{A}^{n}$不是Hausdorff空间.
+    \end{remark}
+
+    \begin{remark}
+        仿射开集即形如$\mathcal{V}(S)^{c}$的子集. 容易验证$\mathbb{A}^{n}$
+        中的仿射开集全体构成$\mathbb{A}^{n}$拓扑基. 
+    \end{remark}
+
+    我们也可以定义子簇：
+
+    \begin{definition}[子簇]
+        称$U$为代数簇$V$的子簇，若$U$是$V$的闭子集. 这也等价于说$U$是代数簇且$U \subset V$.
+    \end{definition}
+
+    在代数几何中，我们时常用到一些$\R^{n}$中不太可能出现的拓扑性质.
+
+    \begin{definition}[诺特空间]
+        称拓扑空间$X$为诺特空间，若$X$满足闭集降链条件，
+        即任一闭集降链$F_{1} \subsetneq \cdots \subsetneq F_{n} \subsetneq \cdots$长度有限.
+        （也即满足开集升链条件，即开集升链有界.）
+    \end{definition}
+
+    \begin{example}
+        \begin{enumerate}
+            \item[(1)] 欧式空间$\R^{n}$中的诺特子空间即有限点集与空集.
+            \item[(2)] 仿射空间$\mathbb{A}^{n}$是诺特空间. 
+                  这是因为对任一闭集降链
+                  $V(I_{1}) \supsetneq \cdots \supsetneq V(I_{m}) \supsetneq \cdots$，
+                  有$I_{1} \subsetneq \cdots \subsetneq I_{m} \subsetneq \cdots$. 
+                  而由于$A = k[X_{1},\cdots,X_{n}]$是诺特环，故理想升链有界. 
+                  故而对应的闭集降链有界.
+            \item[(3)] 诺特空间的子空间都诺特. （由子空间拓扑定义）
+            \item[(4)] 在代数几何中，”紧“通常称为“拟紧”，而”紧“一词指代“拟紧且Hausdorff”. 
+                  对于拓扑空间$X$，其诺特性等价于每一个子空间都拟紧. (见Atiyah习题6.6.)
+        \end{enumerate}
+    \end{example}
+
+    另一个代数几何中的特有拓扑概念是”不可约“性.
+
+    \begin{definition}[不可约空间]
+        称拓扑空间$X$不可约，若它不能写为两个真闭子集的并. 这也等价于任意开子集稠密. \par
+        称$X$的子集不可约，若该子集作为子空间不可约.
+    \end{definition}
+
+    \begin{remark}
+        \begin{enumerate}
+            \item 在欧式空间中，不可约子集只有单点集与空集.
+            \item 取$k=\mathbb{C}$，则仿射直线$\mathbb{A}^{1}_{\mathbb{C}}$不可约. 
+                  (只需注意到这时的Zariski拓扑是余有限拓扑.)
+            \item 连续映射正向保持不可约性. 
+            \item 子集$V$为不可约集\textbf{当且仅当}$\overline{V}$为不可约集.
+            \item 不可约空间是连通的.
+        \end{enumerate}
+    \end{remark}
+
+    我们将会看到，不可约集是一个很好处理的对象. 下述定理保证了不可约集在诺特空间中具有某种一般性.
+
+    \begin{theorem}[不可约分解]
+        对于诺特空间$X$，存在\textbf{有限}个不可约闭子集$Y_{i} \subset X$
+        使得
+        \begin{enumerate}
+            \item[(1)] $X=\bigcup_{i=1}^{n} Y_{i}$;
+            \item[(2)] 且对于任意$i \neq j$有$Y_{i} \not\subset Y_{j}$.
+        \end{enumerate}
+        且这样的分解在差一个$\{Y_{i}\}$的重排的意义下是\textbf{唯一}的.
+    \end{theorem}
+    \begin{proof} \par
+        \textbf{存在性}：先证明满足条件(1)的分解存在. \par
+        不妨设$X$可约，否则$X=X$即为这样的分解. 若$X$不满足这样的性质（即不能写为有限个不可约闭子集的并），
+        令$X = X_{1} \cup Y_{1}$，
+        其中$X_{1},Y_{1}$是$X$的真闭子集.
+        由假设，不妨设$X_{1}$可约，则可分解为$X_{1}=X_{2} \cup Y_{2}$，
+        其中$X_{2},Y_{2}$是$X_{1}$的真闭子集，故自动是$X$的真闭子集
+        （由于可写为两个闭集的交）. 由假设，不妨设$X_{i}$可约，则继续操作得真闭子集$X_{i+1}$.
+        如此得一闭子集降链$X \supset X_{1} \supset \cdots \supset X_{i} \supset \cdots$
+        与诺特性矛盾. \par
+
+        \textbf{唯一性}：若$Y=\bigcup_{i=1}^{n} Y_{i} = \bigcup_{j=1}^{m} Z_{j}$是满足条件(1)与(2)的分解，
+        则$Z_{j} = Z_{j} \cap Y = \bigcup_{i=1}^{n}(Z_{j} \cap Y_{i})$. 
+        由$Z_{j}$的不可约性及条件(2)，
+        存在唯一$\sigma(j)$使得$Z_{j}=Y_{\sigma(j)} \cap Z_{j}$，即$Z_{j} \supset Y_{\sigma(j)}$.
+        同理，存在$\tau(\sigma(j))$使得$Z_{\tau(\sigma(j))} \subset Y_{\sigma(j)} \subset Z_{j}$. 
+        由条件(2)知$\tau(\sigma(j))=j$，且$Z_{j} = Y_{\sigma{j}}$. 
+        那么$\sigma:\{1,\cdots,m\} \rightarrow \{1,\cdots,n\}$与
+        $\tau:\{1,\cdots,n\} \rightarrow \{1,\cdots,m\}$是互逆的映射，从而$\tau$是双射，且$n=m$.
+        故$\{Z_{j}\}$实则是$\{Y_{i}\}$的一个重排. 
+    \end{proof}
+      
+    \begin{remark}
+        不可约分解不一定是无交并. 例如$V(xy) \subset \mathbb{A}^{2}$的不可约分解为
+        $V(xy) = V(x) \cup V(y)$. 两个不可约分支有交点$(0,0)$. 
+        但当$V$是代数群时，不可约分解确实是无交并.
+    \end{remark}
+
+    上述定理用在$\mathbb{A}^{n}$上即：
+    \begin{corollary}
+        若$V$是一个仿射代数簇，则存在有限个互不包含不可约子簇$\{V_{i}\}_{i=1}^{n}$，
+        使得$V=\bigcup_{i=1}^{n}V_{i}$. 且这样的分解是唯一的.
+    \end{corollary}
+
+    进而许多关于代数簇的命题将得以化归到仿射代数簇上讨论.
+    
+    \subsubsection*{习题1.1}
+    \begin{itemize}
+        \item[1.1] 试计算下列仿射代数簇的不可约分解：
+        \begin{itemize}
+            \item[(1)] $\mathcal{V}(x^{2} - yz, xz-x)$;
+        \end{itemize}
+    \end{itemize}
+
+
+    \subsection{Hilbert零点定理}
+    对于理想$I \lhd A=k[X_{1},\cdots,X_{n}]$，可以定义代数簇$\mathcal{V}(I) \subset \mathbb{A}^{n}$.
+    反之，我们也可以定义一个代数簇对应的理想.
+    \begin{definition}[定义理想]
+        对于仿射空间$\mathbb{A}^{n}$中的代数簇$V$，
+        定义$\mathcal{I}(V):=\{f \in A \mid f(p)=0 \, \forall p \in V\}$.     
+    \end{definition}
+
+    可以注意到以下事实：
+    \begin{proposition}
+        若$V \subset \mathbb{A}^{n}$是一个代数簇，
+        则$V$是仿射代数簇\textbf{当且仅当}$\mathcal{I}(V)$是素理想.
+    \end{proposition}
+    \begin{proof}
+        若$V$是仿射代数簇，则$V$不可约，则若多项式$f$与$g$满足$fg \in \mathcal{I}(V)$，
+        则$V \subset V(fg) = V(f) \cup V(g)$. 那么由不可约性，不妨设$V \subset V(f)$.
+        这意味着$f \in \mathcal{I}(V)$. 这即证明$\mathcal{I}(V)$是素理想. \par
+        反之，若$V$可约，则存在真闭子集分解$V=V_{1} \cup V_{2}$. 
+        故而$\mathcal{I}(V_{i}) \supsetneq \mathcal{I}(V)$. 
+        取$f_{i} \in \mathcal{I}(V_{i}) \backslash \mathcal{I}(V)$，
+        则$f_{1}f_{2} \in \mathcal{I}(V)$. 这说明$\mathcal{I}(V)$不是素理想.
+    \end{proof}
+
+    \begin{remark}
+        由上述命题可知对于无限域$k$来说，$\mathbb{A}^{n}$不可约，因为$\mathcal{I}(\mathbb{A}^{n})=(0)$.
+        若$k$是有限域$\mathbb{F}_{p^{l}}$，
+        则$\mathcal{I}(\mathbb{A}^{n})=(\prod_{i=1}^{n}(X_{i}^{p^{l}}-X_{i}))$. 这并不是一个素理想.
+      \end{remark}
+
+    对于$\mathcal{V}(-)$与$\mathcal{I}(-)$，若$Z \subset \mathbb{A}^{n}$，
+    则具有$\mathcal{V}(\mathcal{I}(Z))=\overline{Z}$. 这是因为
+    显然$Z \subset \mathcal{V}(\mathcal{I}(Z))$，且$\mathcal{V}(\mathcal{I}(Z))$闭，
+    故有$\mathcal{V}(\mathcal{I}(Z)) \supset \overline{Z}$. 
+    反之，若$p \in \mathcal{V}(\mathcal{I}(Z))$，
+    那么对于任意$V(S) \supset Z$，$f \in S$，有$f \mid_{Z}=0$，则依定义有$f(p)=0$，
+    即$p \in V(S)$. 故而$p \in \bigcap_{V(S) \supset Z} V(S) = \overline{Z}$. \par
+    
+    那么对于$\mathcal{I}(\mathcal{V}(I))$有无类似结果呢？Hilbert给出了在代数闭域下的解答. 
+    该问题的结果被称为Nullstellensatz，即Hilbert零点定理. 德语中的Nullstelle是零点集的意思，而satz则是定理的意思.
+
+    \begin{theorem}[强形式Hilbert零点定理]
+      若$k$是代数闭域，则$\mathcal{I}(\mathcal{V}(I))=\sqrt{I}$.
+    \end{theorem}
+    \begin{proof}
+      只需证明$\mathcal{I}(\mathcal{V}(I)) \subset \sqrt{I}$. 
+      由Hilbert基定理，令$I=\left<f_{1},\cdots,f_{m}\right>$. 
+      对于$g \in \mathcal{I}(\mathcal{V}(I))$，取环$k[X_{1},\cdots,X_{n},Y]$中的理想
+      $J=\left<f_{1},\cdots,f_{m},Yg-1\right>$. 
+      由于$f_{i}$与$g$都是与$Y$无关的多项式，且由定义若$p \in \mathbb{A}^{n+1}$使得$f_{i}(p)=0$，
+      则有$g(p)=0$，故$p_{n+1}g(p)-1=-1$. 故$\mathcal{V}(J) \subset \mathbb{A}^{n+1}$是空集，
+      即$J=k[X_{1},\cdots,X_{n},Y]$. 故而存在$h_{i} \in k[X_{1},\cdots,X_{n},Y]$
+      使得$1=h_{1}f_{1}+\cdots+h_{m}f_{m}+h_{m+1}(Yg-1)$. 
+      视右端为$k[X_{1},\cdots,X_{n}](Y)$的元素，并令$Z=Y^{-1}$，则诸$h_{i}$可视为以$X_{i}$
+      与$Z^{-1}$为变元的多项式. 则存在充分大的$N$
+      使得$Z^{N}=Z^{N}(h_{1}f_{1}+\cdots+h_{m}f_{m}+h_{m+1}(Yg-1))=j_{1}f_{1}+\cdots+j_{m}f_{m}+j_{m+1}(g-Z)$.
+      其中$j_{i}=Z^{N}h_{i}$与$j_{m+1}=Z^{N-1}h_{m+1}$为以$Z$与$X_{i}$为变量的多项式.
+      带入$Z=g$（即考虑这些多项式在$k[X_{1},\cdots,X_{n}](Y)/(Y^{-1}-g)$中的像）即得$g^{N}=j_{1}f_{1}+\cdots+j_{m}f_{m}$. 
+      由于经过赋值（即在商环中的像），$j_{i}$都是以$X_{i}$为变元的多项式，
+      故$g^{N} \in \mathcal{I}(\mathcal{V}(I)$. 故$\mathcal{I}(\mathcal{V}(I)) \subset \sqrt{I}$.
+    \end{proof}
+
+    若$I$是根理想，那么$\mathcal{I}(\mathcal{V}(I))=I$. 
+    且若$V$是是代数簇，则$\mathcal{V}(\mathcal{I}(V))=V$.
+    加之命题1.16，我们可以得到以下一一对应：
+
+    \begin{theorem}
+        若$k$是代数闭域，则有如下一一对应
+        \begin{equation*}\begin{aligned}
+            \{\mathbb{A}^{n}中是代数簇\} 
+            &\overset{1:1}{\longleftrightarrow} \{A=k[X_{1},\cdots,X_{n}]中的根理想\}； \\
+            \{\mathbb{A}^{n}中是仿射代数簇\}
+            &\overset{1:1}{\longleftrightarrow} \{A=k[X_{1},\cdots,X_{n}]中的素理想\} = \operatorname{Spec}k[X_{1},\cdots,X_{n}]； \\
+            V &\longmapsto \mathcal{I}(V)；\\
+            \mathcal{V}(I) &\longleftarrow I;
+        \end{aligned}\end{equation*}
+        事实上，由$\mathcal{V}(-)$与$\mathcal{I}(-)$的反向包含关系知还有如下对应：
+        \begin{equation*}\begin{aligned}
+            \{\mathbb{A}^{n}中的点\} 
+            &\overset{1:1}{\longleftrightarrow} \{A=k[X_{1},\cdots,X_{n}]中的极大理想\} = \operatorname{Max}k[X_{1},\cdots,X_{n}]； \\
+        \end{aligned}\end{equation*}
+    \end{theorem}
+
+    \begin{remark}
+        代数闭域的条件是必要的. 若$k=\R$，
+        则$(X^{2}+1)$是$\R[X]$的极大理想，但$V(X^{2}+1)=\varnothing$. 这时单点集与极大理想不再一一对应.
+        不过一则有趣的事实是$\operatorname{Max}\R[X,Y]/(X^{2}+Y^{2}+1)$与$\mathbb{R}\mathbb{P}^{2}\backslash(0,0,1)$是一一对应的.
+        (见刘青习题2.1.3.)
+    \end{remark}
+
+    作为Hilbert零点定理的应用，我们可以得到一个符合直觉的命题：
+
+    \begin{corollary}[弱形式Hilbert零点定理]
+        若$k$是代数闭域，$f_{1},\cdots,f_{m} \in A=k[X_{1},\cdots,X_{n}]$是有限个多项式，
+        则$f_{1},\cdots,f_{m}$没有公共零点\textbf{当且仅当}存在
+        $g_{1},\cdots,g_{m} \in A$使得$\sum_{i=1}^{m}f_{i}g_{i}=1$.
+    \end{corollary}
+    \begin{proof}
+        “$\Leftarrow$”是显然的. 我们只证明“$\Rightarrow$”. 
+        这是由于$\sqrt{\left<f_{1},\cdots,f_{m}\right>}=A$，故而$\left<f_{1},\cdots,f_{m}\right>=A$
+        故存在$g_{1},\cdots,g_{m} \in A$使得$\sum_{i=1}^{m}f_{i}g_{i}=1$.
+    \end{proof}
+
+    我们也有相对版本的Hilbert零点定理.
+
+    \begin{theorem}[相对版本的Hilbert零点定理]
+        记$\pi_{V}:k[X_{1},\cdots,X_{n}] \rightarrow A(V)$
+        以及$\mathcal{V}(W):=\pi_{V}(\mathcal{I}(W))$. 
+        则$W \mapsto \mathcal{I}_{V}(W)$与$\pi_{V}(I) \mapsto V \cap \mathcal{V}(I)$
+        建立了如下一一对应：
+        \begin{equation*}\begin{aligned}
+            \{V中代数子簇\} 
+            &\overset{1:1}{\longleftrightarrow} \{A(V)中的根理想\}； \\
+            \{V中是仿射代数子簇\}
+            &\overset{1:1}{\longleftrightarrow} \{A(V))中的素理想\}； \\
+            \{V中的点\} 
+            &\overset{1:1}{\longleftrightarrow} \{A(V))中的极大理想\}； \\
+        \end{aligned}\end{equation*}
+    \end{theorem}
+
+
+    \subsection{代数簇的态射}
+    我们来研究代数簇之间的态射.
+    \begin{definition}[正则映射（Regular Morphisms）]
+        对于代数簇$V \subset \mathbb{A}^{n}$与$W \subset \mathbb{A}^{m}$，
+        称映射$\varphi:V \rightarrow W$为正则映射，
+        若$\varphi:x \mapsto (f_{1}(x),\cdots,f_{m}(x))$，其中$f_{i}$为多项式. 
+        这即是说在$m$个分量上均为多项式的映射.
+    \end{definition}
+
+    \begin{definition}[坐标环（Coordinate Ring）]
+        对于代数簇$V$，
+        定义$A(V):=k[X_{1},\cdots,X_{n}]/\mathcal{I}(V)$为$V$的坐标环.
+    \end{definition}
+
+    \begin{example}
+        \begin{enumerate}
+            \item[(1)] $A(\mathbb{A}^{n})=k[X_{1},\cdots,X_{n}]$.
+            \item[(2)] 取$V=\mathcal{V}(XY-1) \subset \mathbb{A}^{2}$，则
+                       $A(V) \cong k[X,X^{-1}]$.
+        \end{enumerate}
+    \end{example}
+
+    \begin{remark}
+        \begin{enumerate}
+          \item 在Zariski拓扑意义下，正则态射是连续的，因为Zariski拓扑本身是使多项式连续的最粗拓扑.
+          \item 正则映射的复合仍是正则映射.
+          \item 恒等态射是正则态射.
+        \end{enumerate}
+    \end{remark}
+
+    一个自然的问题是，仿射簇间的正则映射是否在坐标环的层面反映出来. 
+    事实上，我们可以反变地定义坐标环间的映射
+
+    \begin{definition}[伴随映射（Associated Map）]
+        若$\varphi:V \rightarrow W$是仿射簇间的态射，
+        则定义$\varphi^{*}:A(W) \rightarrow A(V);f \mapsto f \circ \varphi$.
+    \end{definition}
+
+    由Hilbert零点定理，事实上仿射簇$V$与$\operatorname{Max}A(V)$有着一一对应. 
+    事实上，我们有如下重要的一一对应：
+
+    \begin{theorem}
+        若$V \subset \mathbb{A}^{n}$与$W \subset \mathbb{A}^{m}$是两个代数簇，
+        则$\varphi \mapsto \varphi^{*}$建立了如下一一对应：
+        \begin{equation*}\begin{aligned}
+            \{V与W间的正则映射\} 
+            &\overset{1:1}{\longleftrightarrow} \{A(W)与A(V)间的k-代数态射\}； \\
+            \varphi &\mapsto \varphi^{*}
+        \end{aligned}\end{equation*}
+    \end{theorem}
+    \begin{proof}
+        单：令$Y_{1},\cdots,Y_{m}$为$\mathbb{A}^{m}$上的坐标函数（即对分量的投影），
+        且容易知道它们都是$W \rightarrow \mathbb{A}^{1}$的正则映射. 那么注意到
+        \begin{equation*}\begin{aligned}
+            \varphi(p)
+            &=(\overline{Y_{1}}\circ\varphi(p),\cdots,\overline{Y_{m}}\circ\varphi(p))
+            =(\varphi^{*}(\overline{Y_{1}})(p),\cdots,\varphi^{*}(\overline{Y_{m}})(p)) \\
+            &=(\varphi^{*}(\overline{Y_{1}}),\cdots,\varphi^{*}(\overline{Y_{m}}))(p)
+        \end{aligned}\end{equation*}
+        而$\overline{Y_{i}}$生成了$A(W)$，故$\varphi^{*}(Y_{i})$完全决定了$\varphi$. 即证单性. \par
+
+        满：若$\phi:A(W) \rightarrow A(V)$是一个$k$-代数同态. 
+        那么$\widetilde{\phi}:V \rightarrow \mathbb{A}^{m};
+        p \mapsto (\widetilde{\phi}(\overline{Y_{1}}),\cdots,\widetilde{\phi}(\overline{Y_{m}}))$
+        是一个正则映射. 而对于任意$f \in \mathcal{I}(W)$，$p \in V$，那么
+        \begin{equation*}\begin{aligned}
+            f(\widetilde{\phi}(p))
+            =f((\widetilde{\phi}(\overline{Y_{1}}),\cdots,\widetilde{\phi}(\overline{Y_{m}})))
+            =\phi(f(\overline{Y_{1}},\cdots,\overline{Y_{m}}))(p)=\phi(0)(p)=0.
+        \end{aligned}\end{equation*}
+        故$\widetilde{\phi}(V) \subset W$，即$\widetilde{\phi}:V \rightarrow W$. 且
+        $\widetilde{\phi}^{*}=\phi$，故知满性.
+    \end{proof}
+
+    \begin{remark}
+        今后论及代数簇间的正则映射时，我们称正则映射为\textbf{态射}（morphism）.
+    \end{remark}
+
+    \begin{definition}[代数簇的同构]
+        称代数簇$V$与$W$同构，若存在态射$\varphi:V \rightarrow W$与$\phi:W \rightarrow V$
+        使得$\varphi \circ \phi = \operatorname{id}_{W}$且
+        $\phi \circ \varphi = \operatorname{id}_{V}$.
+    \end{definition}
+
+    上述一一对应为我们提供了一个两个代数簇是否同构的重要判据：
+
+    \begin{corollary}
+        代数簇$V$与$W$同构\textbf{当且仅当}坐标环$A(W) \cong A(V)$.
+    \end{corollary}
+
+    \begin{remark}
+        坐标环是代数簇的内蕴环. 
+        换句话说，当代数簇$V$以不同的方式嵌入任何仿射空间中时，坐标环是同构意义下的不变量.
+    \end{remark}
+
+    我们来看一些例子：
+    \begin{example}
+        \begin{enumerate}
+            \item 抛物线$V=\mathcal{V}(X_{1}^{2}-X_{2}) \subset \mathbb{A}^{2}$
+                  那么$\varphi:V \rightarrow \mathbb{A}^{1};(x_{1},x_{2}) \mapsto x_{1}$.
+                  若$k$是代数闭域，那么$\varphi$是双射. 
+                  且$\varphi:k[X] \mapsto A(V)=k[X_{1},X_{2}]/(X_{1}^{2}-X_{2});X \mapsto X_{1}$
+                  是一个环同构，故而$V$与$\mathbb{A}^{1}$是同构的.
+            \item 若$V=\mathcal{V}(X^{2}-Y^{3}) \subset \mathbb{A}^{2}$，则
+                  $A(V)=k[X,Y]/(X^{2}-Y^{3})$不是一个UFD
+                  （由于$\overline{X}^{2} - \overline{Y}^{3}$），
+                  故$V$与仿射直线$\mathbb{A}^{1}$不可能同构.
+        \end{enumerate}
+    \end{example}
+
+    我们还有如下命题：
+
+    \begin{proposition}
+        设$\varphi:V \rightarrow W$是态射，
+        若$\varphi^{*}:A(W) \rightarrow A(V)$满，则$\varphi:V \rightarrow W$单.
+    \end{proposition}
+    \begin{proof}
+        若$p$与$q$是$V$中两个不同的点，
+        则$p$与$q$可用一个正则映射$f:V \rightarrow \mathbb{A}^{1}$分离
+        （即$f(p)=0$，$f(q)\neq 0$）. 由$\varphi^{*}$满知存在正则映射$g:V \rightarrow \mathbb{A}^{1}$
+        使得$\varphi^{*}(g)=f$，即$g \circ \varphi(p) = 0$
+        而$g \circ \varphi(q) \neq 0$. 故而$\varphi(p) = \varphi(q)$.
+    \end{proof}
+
+    下面引入一则重要的正则态射，称为支配态射.
+
+    \begin{definition}[支配态射（Dominant Morphism）]
+        称正则态射$\varphi:V \rightarrow W$是一个支配态射，若$\varphi(V)$在$W$中稠密.
+    \end{definition}
+
+    这可以理解为泛函分析中的稠值域映射. 支配态射有着很方便的刻画.
+
+    \begin{proposition}
+        正则映射$\varphi:V \rightarrow W$是一个支配态射
+        \textbf{当且仅当}$\varphi^{*}:A(W) \rightarrow A(V)$是单射.
+    \end{proposition}
+    \begin{proof}
+        “$\Rightarrow$”：若$\varphi$是支配态射，则若$f \in \ker\varphi^{*}$，则
+        $f \circ \varphi =0$. 令$f = \overline{F}$，
+        其中$F \in k[Y_{1},\cdots,Y_{m}]$. 那么这等价于证明$F \circ \phi =0$，其中
+        $\phi$是$V$至$W$的多项式映射，且$\phi \mid_{V} = \varphi$. 
+        那么$\varphi$支配即意味着$\phi(V)$在$W$中稠密. 
+        由于$\mathcal{V}(F) \supset \phi(V)$，故取闭包即有$W \subset \mathcal{V}(F)$.
+        但依定义有$\mathcal{V}(F) \subset W$，故$\mathcal{V}(F)=W$. 
+        故而$f=0 \in A(W)$.
+
+        "$\Leftarrow$"： 若$\varphi^{*}$单，
+        则若$\overline{\varphi(V)} \subsetneq W$，则存在$A(W)$中的函数
+        $g \neq 0$使得$g\mid_{\overline{\varphi(V)}} = 0$. 
+        这即$g \circ \varphi(V)=0$，即$\varphi^{*}(g)=0$，矛盾！
+    \end{proof}

@@ -1,0 +1,10 @@
+\setdisplaytitle{Foundations of Differentiable Manifolds and Lie Groups}
+\sethtmltitle{Foundations of Differentiable Manifolds and Lie Groups}
+\begin{structure}
+    \subpage{Manifolds}
+    \subpage{Tensors and Differential Forms}
+    \subpage{Lie Groups}
+    \subpage{Integration on Manifolds}
+    \subpage{Sheaves, Cohomology, and the de Rham Theorem}
+    \subpage{The Hodge Theorem}
+\end{structure}

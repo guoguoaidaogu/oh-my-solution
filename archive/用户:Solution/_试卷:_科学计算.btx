@@ -1,0 +1,38 @@
+\setdisplaytitle{试题：科学计算}
+\sethtmltitle{试题：科学计算}
+
+== 2025--2026学年秋科学计算期末试题（魏益民） ==
+
+\begin{itemize}
+    \item[1.]（20分）证明$2$范数下SVD是最优的秩$k$逼近，且等于$k+1$的奇异值。
+
+    \item[2.]（20分）叙述CUR分解及其特点。
+
+    \item[3.]（20分）叙述T-SVD与其特点并给出其数学形式。
+
+    \item[4.]（20分）叙述矩阵的随机SVD分解，并画出算法框图。
+
+    \item[5.]（20分）叙述本学期科研小活动的开展成果。
+\end{itemize}
+
+== 2024--2025学年秋科学计算期末试题（魏益民） ==
+
+\begin{itemize}
+    \item[1.]（20分）叙述矩阵的SVD分解，并用SVD分解给出矩阵的Moore–Penrose逆的表示。
+
+    \item[2.]（20分）$A,B$均为$n$阶实方阵，且矩阵$A+iB$为正定Hermitian阵。证明：矩阵\[
+    \begin{bmatrix}
+        A & B \\
+        B & A
+    \end{bmatrix}
+    \]为正定对称阵。$c,d,x,y$均为实向量，如何用实数计算求解$(A+iB)(c+id)=x+iy$？
+
+    \item[3.]（20分）证明迭代序列：\[
+        X_{k+1}=2X_k(I-AX_k)
+    \]收敛到$A$的Moore–Penrose逆。讨论初值$X_0$的选取。
+
+    \item[4.]（20分）叙述矩阵的随机SVD分解，并证明其收敛性。
+
+
+    \item[5.]（20分）叙述本学期科研小活动的开展成果。
+\end{itemize}

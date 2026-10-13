@@ -1,0 +1,15 @@
+\section{有理奇点}
+\begin{definition}
+    设$p \in S'$是孤立奇点，$S'$是正规曲面. 
+    若存在一个奇点解消$\pi \colon S \to S'$，
+    使得$R^{i}\pi_{*}\mathscr{O}_{S} = 0$对于任意$i > 0$成立，
+    则称$p$是\textbf{有理奇点}，并称$\pi$是\textbf{有理解消}.
+\end{definition}
+
+\section{ADE曲线}
+\begin{definition}
+    设$C = \sum C_{i} \hookrightarrow S$是光滑曲面$S$上的
+    例外曲线. 
+    若诸$C_{i}^{2} = -2$且$C_{i} \cong \mathbb{P}^{1}$，
+    则称$C$为ADE曲线.
+\end{definition}

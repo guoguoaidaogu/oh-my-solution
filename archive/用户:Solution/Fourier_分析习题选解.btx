@@ -1,0 +1,60 @@
+推广形式的Hardy-Littlewood-Sobolev不等式：
+
+设$(X,\mu)$，$(Y,\nu)$为两个测度空间，$1<q<\infty$，
+$K(x,y)$为$X\times Y$上的可测函数，且存在$c>0$ s.t.
+$$||K(x,\cdot)||_{L^{q,\infty}(Y,\nu)}\leq c,\quad \textup{a.e.}\ x\in X,$$
+$$||K(\cdot,y)||_{L^{q,\infty}(X,\mu)}\leq c,\quad \textup{a.e.}\ y\in Y.$$
+若$f\in L^p(Y,\nu)$（$1\leq p<+\infty)$，则
+$$Tf(x)=\int_Y K(x,y)f(y)d\nu(y)\quad存在\quad \textup{a.e.}\ x\in X,$$
+且$1<p<\infty$且$1+\frac{1}{r}=\frac{1}{p}+\frac{1}{q}$，
+$\exists\ C(p,q,r,c)>0$ s.t.
+$$||Tf||_{L^{r,\infty}(X,\mu)}\leq C(p,q,r,c)||f||_{L^p(Y,\nu)},\ \forall f\in L^p(Y,\nu).$$
+
+~\\
+证明：
+
+分解$K=K_1+K_2$，$K_1=K\chi_{K>\beta}$，$K_2=K\chi_{K\leq\beta}$，
+其中$\beta>0$待定。
+
+首先，估计
+$$||K_1(x,\cdot)||_{L^1(Y,\nu)}=\int_0^\beta d_{K_1(x,\cdot)}(\alpha)d\alpha+\int_\beta^\infty d_{K_1(x,\cdot)}(\alpha)d\alpha
+\leq \beta c^q\beta^{-q}+\int_\beta^\infty c^q\alpha^{-q}d\alpha=\frac{q}{q-1}c^q\beta^{1-q},$$
+同理有
+$$||K_1(\cdot,y)||_{L^1(X,\mu)}\leq\frac{q}{q-1}c^q\beta^{1-q},$$
+于是
+\begin{align*}
+    \int_Y K_1(x,y)f(y)d\nu
+    &=\int_Y K_1(x,y)^{\frac{1}{p'}}(K_1(x,y)^{\frac{1}{p}}f(y))d\nu
+    \quad其中\frac{1}{p}+\frac{1}{p'}=1\\
+    &\leq\big(\int_Y K_1(x,y)d\nu\big)^{\frac{1}{p'}}\big(\int_Y K_1(x,y)f(y)^p d\nu\big)^{\frac{1}{p}}\\
+    &\leq\big(\frac{q}{q-1}c^q\beta^{1-q}\big)^{\frac{1}{p'}}\big(\int_Y K_1(x,y)f(y)^p d\nu\big)^{\frac{1}{p}},
+\end{align*}
+由此得到
+\begin{align*}
+    ||\int_Y K_1(x,y)f(y)d\nu||_{L^p(X,\mu)}
+    &\leq\big(\frac{q}{q-1}c^q\beta^{1-q}\big)^{\frac{1}{p'}}\big(\int_X\int_Y K_1(x,y)f(y)^p d\nu d\mu\big)^{\frac{1}{p}}\\
+    &\leq\big(\frac{q}{q-1}c^q\beta^{1-q}\big)^{\frac{1}{p'}}\big(\int_Y\big(\int_X K_1(x,y)d\mu\big)f(y)^p d\nu\big)^{\frac{1}{p}}\\
+    &\leq\frac{q}{q-1}c^q\beta^{1-q}||f||_{L^p(Y,\nu)}\quad因\frac{1}{p}+\frac{1}{p'}=1.\quad\textcircled{1}
+\end{align*}
+其次，估计
+$$||K_2(x,\cdot)||_{L^{p'}(Y,\nu)}^{p'}=p'\int_0^\beta \alpha^{p'-1}d_{K_2(x,\cdot)}(\alpha)d\alpha
+\leq p'\int_0^\beta \alpha^{p'-1-q}c^qd\alpha=\frac{p'}{p'-q}c^q\beta^{p'-q},$$
+得到
+$$||\int_Y K_2(x,y)f(y)d\nu||_{L^\infty(X,\mu)}\leq\big(\frac{p'}{p'-q}c^q\beta^{p'-q}\big)^{\frac{1}{p'}}||f||_{L^p}.\quad\textcircled{2}$$
+现在用$\textcircled{1},\textcircled{2}$来估计$d_{Tf}(\alpha)$。
+
+由$Tf(x)=\int_Y K_1(x,y)f(y)d\nu+\int_Y K_2(x,y)f(y)d\nu:=T_1f(x)+T_2f(x)$
+得到
+$$d_{Tf}(\alpha)\leq d_{T_1f}(\alpha/2)+d_{T_2f}(\alpha/2).$$
+取$\beta$ s.t. $\big(\frac{p'}{p'-q}c^q\beta^{p'-q}\big)^{\frac{1}{p'}}||f||_{L^p}=\alpha/2$，
+则由$\textcircled{2}$得
+$$d_{T_2f}(\alpha/2)=0,$$
+于是
+\begin{align*}
+    d_{Tf}(\alpha)&\leq d_{T_1f}(\alpha/2)\\
+    &\leq\big(\alpha/2\big)^{-p}||\int_Y K_1(x,y)f(y)d\nu||_{L^p(X,\mu)}^p\\
+    &\leq\big(\alpha/2\big)^{-p}\big(\frac{q}{q-1}c^q\beta^{1-q}\big)^p||f||_{L^p}^p\quad由\textcircled{1}\\
+    &=C(p,q,c)\alpha^{-p}\big(\alpha||f||_{L^p}^{-1}\big)^{\frac{(1-q)pp'}{p-q}}||f||_{L^p}^p\\
+    &=C(p,q,c)\big(\alpha^{-1}||f||_{L^p}\big)^r\quad因-p+\frac{(1-q)pp'}{p-q}=-r,
+\end{align*}
+即$||Tf||_{L^{r,\infty}(X,\mu)}\leq C(p,q,r,c)||f||_{L^p(Y,\nu)}.$

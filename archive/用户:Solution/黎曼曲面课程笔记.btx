@@ -1,0 +1,212 @@
+
+
+
+
+
+
+\section{第一周}
+			
+			笛卡尔：代数--坐标系--几何\qquad 
+			牛顿：几何--微积分--动力学\qquad 
+			黎曼：分析--黎曼面--几何\par
+		\begin{example}	
+		$\sqrt{z}$: 多值函数. $\sqrt{z}$的黎曼面.
+		\end{example}
+		
+			
+		\begin{definition}
+			$2$维连通流形$X$, $X$上一个坐标指一个同胚$\varphi:U\subset X\rightarrow V\subset \mathbb{C}$.
+		\end{definition}
+			
+		\begin{definition}
+			称两个坐标$\varphi_i:U_i\rightarrow V_i$, $i=1,2$是全纯相容的，若$\varphi_2\circ \varphi_1^{-1}:\varphi_1(U_1\cap U_2)\rightarrow \varphi_2(U_1\cap U_2)$双全纯.
+		\end{definition}
+			
+			
+		\begin{definition}
+			$X$上一个复图表指一族全纯相容的坐标$\mathscr{U}=\{\varphi_j:U_j\rightarrow V_j, j\in J\}$使得$X=\bigcup\limits_j U_j$.
+		\end{definition}
+		
+		\begin{definition}
+			$X$上一个复结构$\Sigma=[\mathscr{U}]$, $\mathscr{U}:X$上的复图表，$\mathscr{U}\sim \mathscr{U}'$等价于其中任意两个坐标全纯相容.
+		\end{definition}
+			
+		\begin{definition}
+			$(X,\Sigma)$称为一个Riemann面.--H. Weyl.
+		\end{definition}
+
+		
+		\begin{example}
+			$X$: Riemann面, $Y\subset X$开、连通，则$Y$也是Riemann面.\par
+			\qquad 设$\mathscr{U}$是$X$上的一个开图表，则$\mathscr{U}|_Y$也是$Y$的一个开图表.
+		\end{example}
+		
+		\begin{example}
+			$\Omega\subset \mathbb{C}$中的区域均为$Riemann$面，取$\mathscr{U}=\{id:\Omega\rightarrow \Omega\}$.
+		\end{example}
+
+		\begin{example}
+			Riemann球面$\mathbb{P}^1$是（紧）Riemann面.\par
+			\qquad $\mathbb{P}^1=\mathbb{C}\cup \{\infty\}$. 利用球极投影$\mathbb{P}^1\cong \mathbb{S}^2$. 故$\mathbb{P}^1$是紧连通流形.\par
+		
+			\qquad 取$U_1=\mathbb{C}$, $U_2=\mathbb{C}^*\cup \{\infty\}$.\par
+			\qquad 定义：$\varphi_1:U_1\rightarrow \mathbb{C}$, $z\mapsto z$. $\varphi_2:U_2\rightarrow \mathbb{C}, z\mapsto \frac{1}{z}, \infty \mapsto 0$.\par
+			\qquad $U_1\cap U_2=\mathbb{C}^*$. $\varphi_1(U_1\cap U_2)=\varphi_2(U_1\cap U_2)=\mathbb{C}^*$.\par
+			\qquad $\varphi_2\circ \varphi_1^{-1}: \mathbb{C}^*\rightarrow \mathbb{C}^*, z\mapsto \frac{1}{z}$是双全纯. 故$\mathscr{U}=\{\varphi_j:j=1,2\}$是$\mathbb{P}^1$的一个复图表.
+		\end{example}
+
+		\begin{example} 环面是Riemann面.\par
+			\qquad 设$\omega_1, \omega_2$是$\mathbb{R}-$线性无关的向量. 称$\Gamma:=\mathbb{Z}\omega_1+\mathbb{Z}\omega_2=\{m\omega_1+n\omega_2:m,n\in \mathbb{Z}\}$是$\mathbb{C}$中的一个格.\par
+			\qquad 定义$z\sim z'$等价于$z-z'\in \Gamma$. 称$\mathbb{C}/\Gamma:=\mathbb{C}/\sim$为一个环面. 商映射$\pi: z\mapsto [z]$给出了$\mathbb{C}/\Gamma$上的一个拓扑，其是一个紧连通流形.\par
+			\qquad 设$V\subset \mathbb{C}$是一个区域，使得$V$中任何两个点不等价，则$\pi:V\rightarrow U:=\pi(V)$是一个同胚. 进而$\varphi:=\pi^{-1}:U\rightarrow V$是一个坐标.\par
+			\qquad 设$\varphi_i:U_i\rightarrow V_i$为坐标，$i=1,2$. 令$\psi:=\varphi_2\circ \varphi_1^{-1}:\varphi_1(U_1\cap U_2)\rightarrow \varphi_2(U_1\cap U_2)$.\par
+			\qquad 因为$\pi\circ \psi(z)=\varphi_1^{-1}(z)=\pi(z)$，所以有$\psi(z)-z\in \Gamma$.\par
+			\qquad 因为$\psi(z)-z$连续，且取值在一个离散集上，所以$\psi(z)-z$在$\varphi_1(U_1\cap U_2)$的任何一个连通分支上均为常数. 因此$\psi$是双全纯函数. 覆盖是容易的.
+		\end{example}
+		
+		
+		\begin{example}
+			设$f\in C(\mathbb{C})$, 考虑$f$的图像$\Gamma(f):=\{(z,f(z))\in \mathbb{C}\times \mathbb{C}:z\in \mathbb{C}\}$. 取$$\mathscr{U}=\{P:\Gamma(f)\rightarrow \mathbb{C}, (z,f(z))\mapsto z\},$$
+	推出$\Gamma(f)$为Riemann面.
+		\end{example}
+		
+		\begin{remark}
+			Riemann面是由“同胚”来定义的，只是两个坐标的转换函数是双全纯的.
+		\end{remark}
+		
+		
+		\begin{theorem}(Gauss证明实解析情形；Korn-Lichtenstein证明一般情形)\par
+			\qquad 任何一个可定向的光滑曲面，均存在一个复结构，使得其称为一个Riemann面.\par
+			参见Jost, 紧Riemann面.(有关pde).
+		\end{theorem}
+		
+		\begin{definition}
+			$X$是Riemann面，称函数$f:X\rightarrow \mathbb{C}$为一个全纯函数，若对任意坐标$\varphi:U\rightarrow V$，有$f\circ \varphi^{-1}: V\rightarrow \mathbb{C}$全纯. 记$\mathcal{O}(X)$为$X$上的全纯函数全体.
+		\end{definition}
+		
+		\begin{remark}
+			使用$\mathcal{O}$是为了纪念Oka.
+		\end{remark}
+		
+		\begin{theorem} Riemann可去奇点定理.\par
+			\qquad $X$: Riemann面，$U\subset X$是开集，$a\in U$. 若$f\in \mathcal{O}(U\backslash \{a\})\cap L^\infty(U)$, 则存在唯一的$\tilde{f}\in \mathcal{O}(U)$使得$\tilde{f}|_{U\backslash \{a\}}=f$.\par
+			\qquad 利用平面区域的情形.
+		\end{theorem}
+		
+		\begin{definition}
+			$X, Y$: Riemann面，$f\in C(X,Y)$. 若对所有的坐标$\varphi_1:U_1\subset X\rightarrow V_1$, $\varphi_2: U_2\subset Y\rightarrow V_2$, 其中$f(U_1)\subset U_2$, 有
+					$$\varphi_2\circ f \circ \varphi_1^{-1}:V_1\rightarrow V_2$$
+		全纯.\par
+			\qquad 记$\mathcal{O}(X,Y)$为$X\rightarrow Y$的全纯映射全体.
+		\end{definition}
+		
+		\begin{remark}
+			验证此处$f\in C(X,Y)$不可少. 
+		\end{remark}
+		
+		\begin{definition}
+			若$f:X\rightarrow Y$同胚，且$f, f^{-1}$全纯，则称$f$为双全纯映射.
+		\end{definition}
+		
+		\begin{proposition}恒等原理.\par
+			\qquad $f_1, f_2\in \mathcal{O}(X,Y)$, 记$A:=\{x\in X: f_1(x)=f_2(x)\}$. 若$A$有聚点，则$f_1\equiv f_2$.
+		\end{proposition}
+		
+		\begin{proof}
+			令$G:=\{x\in X:$ 存在邻域$W\ni x, s.t. f_1|_W=f_2|_W\}$. 则$G$是开集.\par
+			\qquad $G\subset X$闭：设$b\in \partial G\cap X$，因为$f_i$连续，所以有$f_1(b)=f_2(b)$.\par
+			\qquad 取坐标$\varphi:b\in U\subset X\rightarrow V$, $\psi:U'\subset Y\rightarrow V'$使得$f_i(U)\subset U'$且$U$连通. 记$g_i=\psi\circ f_i\circ \varphi^{-1}$. 由平面区域上的恒等原理，推出$g_1=g_2$在$V$上. 进而$f_1=f_2$在$U$上，故$b\in G$. 所以$G$是闭集.\par
+			\qquad 再由平面区域恒等原理，有$a\in G$.\par
+			\qquad 因为$X$连通，非空，且既开又闭，故有$G=X$. 进而$f_1\equiv f_2$.
+		\end{proof}
+	
+		\begin{definition}
+			$X$: Riemann面. $X$上的一个亚纯函数(Meromorphic)指，$f\in \mathcal{O}(X')$，其中$X'\subset X$开且使得\par
+				\qquad 1. $X\backslash X'$离散.\par
+				\qquad 2. $\forall p\in X\backslash X'$为$f$的级点，即$f(x)\to \infty(x\to p)$.\par
+			记$\mathcal{M}(X)$为$X$上的亚纯函数全体.
+		\end{definition}
+		
+		\begin{example}
+			$p(z)=z^n+c_1z^{n-1}+\cdots+c_n\in \mathcal{O}(\mathbb{C})$. $p(z)\to \infty(z\to \infty$, 故$p\in \mathcal{M}(\mathbb{P}^1)$.
+		\end{example}
+
+		\begin{theorem}
+			$f\in \mathcal{M}(X)$, 补充定义$f$在极点处取值为$\infty$, 则$f\in \mathcal{O}(X,\mathbb{P}^1)$. 反之，若$f\in \mathcal{O}(X,\mathbb{P}^1)$, 则$f\equiv \infty$或$f\in \mathcal{M}(X)$.
+		\end{theorem}
+		
+		\begin{proof}
+			设$f\in \mathcal{M}(X)$, $f\neq \infty$, 则$P=f^{-1}(\infty)$为离散的. 考虑坐标$\varphi:U\subset X\rightarrow V$, $\psi:U'\subset \mathbb{P}^1\rightarrow V'$, 使得$f(U)\subset U'$, 且$V'$有界.\par
+			\qquad 在$U$中有限个极点，进而在$\varphi(U)$上亦为有限个极点，而$\psi\circ f\circ \varphi^{-1}$是有界的. 由Riemann可去起点定理，使得$\psi\circ f\circ \varphi^{-1}\in \mathcal{O}(V)$, 进而$f\in \mathcal{O}(X,\mathbb{P}^1)$.
+		\end{proof}
+	
+		\begin{theorem} 全纯映射局部行为.\par
+			\qquad $f\in \mathcal{O}(X,Y)$非常值，$a\in X$, $b:=f(a)\in Y$. 则存在$k\in \mathbb{Z}^+$，以及坐标$\varphi:U\subset X\rightarrow V$, $\psi:U'\subset Y\rightarrow V'$使得$f(U)\subset U'$, $\varphi(a)=\psi(b)=0$且
+					\begin{equation} \tag{*}
+					F(z):=\psi\circ f\circ \varphi^{-1}(z)=z^k.
+					\end{equation}
+		称$k$为$f$在$a$处的重数.
+		\end{theorem}
+	
+		\begin{proof}
+			首先可取坐标$\varphi, \psi$使得其满足除了*以外的所有性质.\par
+			\qquad 定义$f_1:=\psi\circ f\circ \varphi^{-1}\in \mathcal{O}(V,V')$, 使得$f_1(0)=0$且$f_1$不是常值. 进而$f_1(z)=z^kg(z)$, 其中$g\in \mathcal{O}(V)$, $g(0)\neq 0$. \par
+			\qquad 适当选取$U$, 可使$V$单连通，且$|g||_V>0$. 故存在$g^\frac{1}{k}$的一个单值分支$h$, 使得$f_1(z)=(z\cdot h(z))^k$. $z\mapsto z\cdot h(z)$双全纯(适当收缩$U$).\par
+			\qquad 记$\alpha(z):=z\cdot h(z)$. 只需用$\alpha\circ \varphi$来代替$\varphi$即可.
+		\end{proof}
+		
+	
+		\begin{corollary}(开映射)$f\in \mathcal{O}(X,Y)$不是常值映射，则$f$是开映射.\par
+			\qquad 证明：对于任意$a$, 任意邻域$U$, 则$f(U)$是$f(a)$的一个邻域.
+		\end{corollary}
+		
+		\begin{corollary}
+			$f\in \mathcal{O}(X,Y)$且单，则$f:X\rightarrow f(X)$双全纯.\par
+			\qquad 证明：$f$单叶，则$f$在任何点的重数为$1$，故$f^{-1}$全纯.
+		\end{corollary}
+		
+		
+		\begin{corollary} (最大模) $f\in \mathcal{O}(X)$非常值，则$f$不能在$X$内部取最大值.\par
+			\qquad 证明：假设存在$a\in X$, 使得$|f(a)|=R:=\sup\limits_X |f|$, 则$f(X)\subset K:=\{z\in \mathbb{C}:|z|\leq R\}$. 因为$f(X)$开，所以$f(X)\subset \overset{\circ}{K}$，但$f(a)\in \partial K$，矛盾.
+		\end{corollary}
+	
+		\begin{theorem}
+			$X, Y$: Riemann面，$X$紧，$f\in \mathcal{O}(X,Y)$非常值，则$f$满且$Y$紧.
+		\end{theorem}
+		
+		\begin{proof}
+			$\varnothing \neq f(X)\subset Y$开，且$f(X)\subset Y$是紧集进而闭集. 又因为$Y$连通，所以$Y=f(X)$.
+		\end{proof}
+		
+		\begin{corollary}
+			$X$是紧Riemann面，$f\in \mathcal{O}$, 则$f$是常数.
+		\end{corollary}
+		
+		\begin{corollary}
+			$f\in \mathcal{M}(\mathbb{P}^1)$非常值，则$f$是有理函数，即$f=\frac{P_1}{P_2}$，其中$P_2, P_2$是多项式.
+		\end{corollary}
+	
+		\begin{proof}
+			因为$\mathbb{P}^1$是紧的，且$f^{-1}(\infty)$离散，所以$f^{-1}(\infty)$有限. 不妨设$f(\infty)\neq \infty$(否则用$\frac{1}{f}$来代替$f$). 进而$f^{-1}(\infty)=\{a_1,\cdots,a_n\}\subset \mathbb{C}$.\par
+			\qquad 令$h_\nu$为$f$在$a_\nu$处的主部，则$g:=f-\sum\limits_{\nu=1}{n} h_\nu\in \mathcal{O}(\mathbb{P}^1)$，进而$g$是常数.
+		\end{proof}
+	
+		\begin{corollary} Liouville定理: $f\in \mathbb{O}(\mathbb{C})$且有界，则$f$是常数.
+		\end{corollary}
+		
+		\begin{proof}
+			由Riemann可去奇点定理，有$f\in \mathcal{O}(\mathbb{P}^1)$. 又因为$\mathbb{P}^1$紧，故$f$是常数.
+		\end{proof}
+
+        \begin{corollary} 代数学基本定理: $p(z)=z^n+a_1z^{n-1}+\cdots+a_n$, 则$p(z)=0$至少有一个复根.
+		\end{corollary}
+		
+		\begin{proof}
+			$p\in \mathcal{O}(\mathbb{P}^1,\mathbb{P}^1)$, $f^{-1}(\infty)=\{\infty\}$.\par
+			\qquad $p$非常值，所以$p$是满射，进而$p^{-1}(0)\cap \mathbb{C}\neq \varnothing$.
+		\end{proof}
+	
+	
+		\begin{remark}
+			Gauss是第一个定义复数的数学家：复整数.
+		\end{remark}

@@ -1,0 +1,151 @@
+\begin{itemize}
+
+\item[1.] 推广形式的Hardy-Littlewood-Sobolev不等式：
+
+设$(X,\mu)$，$(Y,\nu)$为两个测度空间，$1<q<\infty$，
+$K(x,y)$为$X\times Y$上的可测函数，且存在$c>0$ s.t.
+$$\|K(x,\,\cdot\,)\|_{L^{q,\infty}(Y,\nu)}\leq c,\quad \textup{a.e.}\ x\in X,$$
+$$\|K(\,\cdot\,,y)\|_{L^{q,\infty}(X,\mu)}\leq c,\quad \textup{a.e.}\ y\in Y.$$
+若$f\in L^p(Y,\nu)$（$1\leq p<+\infty)$，则
+$$Tf(x)=\int_Y K(x,y)f(y)d\nu(y)\ \ 存在\ \  \textup{a.e.}\ x\in X,$$
+且对于$1<p<\infty$与$1+\frac{1}{r}=\frac{1}{p}+\frac{1}{q}$，
+$\exists\ C(p,q,r,c)>0$ s.t.
+$$\|Tf\|_{L^{r,\infty}(X,\mu)}\leq C(p,q,r,c)\|f\|_{L^p(Y,\nu)},\ \ \forall f\in L^p(Y,\nu).$$
+
+~\\
+\item[\textit{Proof:}]
+
+分解$K=K\chi_{|K|>\beta}+K\chi_{|K|\leq\beta}:=K_1+K_2$，
+其中$\beta>0$待定。
+
+首先，估计
+$$\|K_1(x,\,\cdot\,)\|_{L^1(Y,\nu)}=\int_0^\beta d_{K_1(x,\,\cdot\,)}(\alpha)d\alpha+\int_\beta^\infty d_{K_1(x,\,\cdot\,)}(\alpha)d\alpha
+\leq \beta c^q\beta^{-q}+\int_\beta^\infty c^q\alpha^{-q}d\alpha=\frac{q}{q-1}c^q\beta^{1-q},$$
+同理有
+$$\|K_1(\,\cdot\,,y)\|_{L^1(X,\mu)}\leq\frac{q}{q-1}c^q\beta^{1-q}.$$
+于是
+\begin{align*}
+    \Big|\int_Y K_1(x,y)f(y)d\nu\Big|
+    &\leq\int_Y |K_1(x,y)|^{\frac{1}{p'}}(|K_1(x,y)|^{\frac{1}{p}}|f(y)|)d\nu
+    \quad其中\frac{1}{p}+\frac{1}{p'}=1\\
+    &\leq\Big(\int_Y |K_1(x,y)|d\nu\Big)^{\frac{1}{p'}}\Big(\int_Y |K_1(x,y)||f(y)|^p d\nu\Big)^{\frac{1}{p}}\\
+    &\leq\Big(\frac{q}{q-1}c^q\beta^{1-q}\Big)^{\frac{1}{p'}}\Big(\int_Y |K_1(x,y)||f(y)|^p d\nu\Big)^{\frac{1}{p}},
+\end{align*}
+由此得到
+\begin{align*}
+    \Big\|\int_Y K_1(x,y)f(y)d\nu\Big\|_{L^p(X,\mu)}
+    &\leq\Big(\frac{q}{q-1}c^q\beta^{1-q}\Big)^{\frac{1}{p'}}\Big(\int_X\int_Y |K_1(x,y)||f(y)|^p d\nu d\mu\Big)^{\frac{1}{p}}\\
+    &=\Big(\frac{q}{q-1}c^q\beta^{1-q}\Big)^{\frac{1}{p'}}\Big(\int_Y\Big(\int_X |K_1(x,y)|d\mu\Big)|f(y)|^p d\nu\Big)^{\frac{1}{p}}\\
+    &\leq\frac{q}{q-1}c^q\beta^{1-q}\|f\|_{L^p(Y,\nu)}\quad\text{因 }\frac{1}{p}+\frac{1}{p'}=1.\quad\textcircled{1}
+\end{align*}
+其次，估计
+$$\|K_2(x,\,\cdot\,)\|_{L^{p'}(Y,\nu)}^{p'}=p'\int_0^\beta \alpha^{p'-1}d_{K_2(x,\,\cdot\,)}(\alpha)d\alpha
+\leq p'\int_0^\beta \alpha^{p'-1-q}c^qd\alpha=\frac{p'}{p'-q}c^q\beta^{p'-q},$$
+得到
+$$\Big\|\int_Y K_2(x,y)f(y)d\nu\Big\|_{L^\infty(X,\mu)}\leq\Big(\frac{p'}{p'-q}c^q\beta^{p'-q}\Big)^{\frac{1}{p'}}\|f\|_{L^p(Y,\nu)}.\quad\textcircled{2}$$
+现在用$\textcircled{1},\textcircled{2}$来估计$d_{Tf}(\alpha)$。
+
+由$\displaystyle{Tf(x)=\int_Y K_1(x,y)f(y)d\nu+\int_Y K_2(x,y)f(y)d\nu:=T_1f(x)+T_2f(x)}$
+得到
+$$d_{Tf}(\alpha)\leq d_{T_1f}(\alpha/2)+d_{T_2f}(\alpha/2).$$
+取$\beta$ s.t. $\big(\frac{p'}{p'-q}c^q\beta^{p'-q}\big)^{\frac{1}{p'}}\|f\|_{L^p}=\alpha/2$，
+则由$\textcircled{2}$得
+$$d_{T_2f}(\alpha/2)=0.$$
+于是
+\begin{align*}
+    d_{Tf}(\alpha)&\leq d_{T_1f}(\alpha/2)\\
+    &\leq\big(\alpha/2\big)^{-p}\Big\|\int_Y K_1(x,y)f(y)d\nu\Big\|_{L^p(X,\mu)}^p\\
+    &\leq\big(\alpha/2\big)^{-p}\Big(\frac{q}{q-1}c^q\beta^{1-q}\Big)^p\|f\|_{L^p}^p\quad\text{由 }\textcircled{1}\\
+    &=C(p,q,c)\alpha^{-p}\big(\alpha\|f\|_{L^p}^{-1}\big)^{\frac{(1-q)pp'}{p'-q}}\|f\|_{L^p}^p\\
+    &=C(p,q,c)\big(\alpha^{-1}\|f\|_{L^p}\big)^r\quad\text{因}-p+\frac{(1-q)pp'}{p'-q}=-\frac{qp'}{p'-q}=-r,
+\end{align*}
+即$$\|Tf\|_{L^{r,\infty}(X,\mu)}\leq C(p,q,c)\|f\|_{L^p(Y,\nu)}.$$
+
+\item[2.]
+Let $1\leq p_i\leq q_i\leq\infty$. Let $T$ be a quasi-linear operator defined on 
+$L^{p_0}(X,\mu)+L^{p_1}(X,\mu)$ and taking values in the set of measurable functions on $(Y,\nu)$, 
+where $K\geq1$ is the constant that makes $|T(f+g)|\leq K(|Tf|+|Tg|)$. 
+Assume that 
+$\|Tf\|_{L^{q_i,\infty}(Y,\nu)}\leq A_i\|f\|_{L^{p_i}(X,\mu)}$ for some $A_i$, $i=0,1$.
+Fix $0<t<1$ and let
+$$\frac{1}{p}=\frac{1-t}{p_0}+\frac{t}{p_1},\quad\frac{1}{q}=\frac{1-t}{q_0}+\frac{t}{q_1}.$$
+Then there exists a constant $C=C(p_0,p_1,q_0,q_1,K,A_0,A_1,t)$ such that
+$$\|Tf\|_{L^q(Y,\nu)}\leq C\|f\|_{L^p(X,\mu)}.$$
+
+\item[\textit{Proof:}]
+
+This is the lower triangular form of the Marcinkiewicz interpolation theorem. 
+See Theorem 3.8 of the paper $I\hspace{-0.06em}nterpolation$ $Theorems$ $and$ $Applications$ by Calista Bernard.
+
+Note that in the paper $T$ is assumed to be sublinear instead of quasi-linear, yet for the problem above, we have 
+$d_{T(f+g)}(2K\alpha)\leq d_{Tf}(\alpha)+d_{Tg}(\alpha)$ all the same.
+
+\item[3.]
+A solution to the heat equation on $\R^n$
+$$\begin{cases}(\frac{\partial}{\partial t}-\Delta)u(t,x)=0,\\
+    \qquad\quad\ \ \ u(0,x)=f(x)
+\end{cases}$$
+is $e^{t\Delta}f= f*P_t$, where $P_t(x)=(4\pi t)^{-\frac{n}2}e^{-\frac{\vert x\vert ^2}{4t}}.$ 
+Prove the following:\\
+(a) $\Vert e^{t\Delta}\Vert _{L^p\rightarrow L^p}\leq 1$, $\forall$ $1\leq p \leq \infty$.\\
+(b) $\Vert e^{t\Delta}\Vert _{L^1\rightarrow L^\infty}\leq C(n)t^{-\frac{n}2}$, $\forall$ $t>0$.\\
+(c) $\Vert e^{t\Delta}\Vert _{L^p\rightarrow L^q}\leq C(n)t^{-\frac{n}2(\frac1p-\frac1q)}$, $\forall$ $t>0$.
+
+
+\item[\textit{Proof:}]
+
+(a) By Hölder's inequality, 
+\begin{align*}\vert e^{t\Delta}f(x)\vert &=\Big\vert \int_{\R^n} f(x-y)P_t(y)\mathrm{d}y\Big\vert\\ 
+&\leq \big\Vert P_t^{\frac{p-1}p}\big\Vert_{L^{\frac{p}{p-1}}}\big\Vert f(x-\,\cdot\,)P_t(\,\cdot\,)^{\frac1p}\big\Vert_{L^{p}}=
+\Big(\int_{\R^n} \vert f(x-y)\vert^p P_t(y) \mathrm{d}y\Big) ^{\frac1p}\end{align*}
+as $\|P_t\|_{L^1}=1$. Then by Fubini's theorem, $$\Vert e^{t\Delta}f(x)\Vert_{L^p}\leq 
+\Big( \int_{\R^n} \int_{\R^n} \vert f(x-y)\vert^p P_t(y)\mathrm{d}y\mathrm{d}x\Big) ^{\frac1p}=
+\Big( \int_{\R^n} \Big(\int_{\R^n} \vert f(x-y)\vert^p \mathrm{d}x\Big)P_t(y)\mathrm{d}y\Big) ^{\frac1p}=\Vert f\Vert _{L^p}.$$
+(b) For any $x$, we have $\vert e^{t\Delta}f\vert \leq \Vert P_t\Vert _{L^\infty} \Vert f\Vert _{L^1}=(4\pi t)^{-\frac{n}{2}}\Vert f\Vert _{L^1}$.\\
+(c) The result follows from combining part (a) and (b), using the Riesz-Thorin interpolation theorem. 
+Still, we present a direct proof. 
+
+By Hölder's inequality,
+\begin{align*}\vert e^{t\Delta}f\vert &\leq \int_{\R^n} \vert f(x-y)\vert^\alpha\vert f(x-y)\vert^{1-\alpha} P_t(y) \mathrm{d}y\\ 
+&\leq \Vert \vert f\vert^\alpha \Vert _{L^{\frac{p}\alpha}}\Vert \vert f(x-\,\cdot\,)\vert^{1-\alpha} P_t(\,\cdot\,)\Vert _{L^{\frac{p}{p-\alpha}}}
+= \Vert f\Vert _{L^p}^\alpha\Big(\int_{\R^n} \big(\vert f(x-y)\vert^{1-\alpha}P_t(y)\big)^\frac{p}{p-\alpha}\mathrm{d}y\Big)^{\frac{p-\alpha}p}.\end{align*}
+And by Hölder's inequality again,
+$$ \int_{\R^n} \big(\vert f(x-y)\vert^{1-\alpha} P_t(y)\big)^\frac{p}{p-\alpha}\mathrm{d}y
+\leq \Big(\int_{\R^n} \vert f(x-y)\vert^{(1-\alpha)q} P_t(y)^\frac{p}{p-\alpha}\mathrm{d}y\Big)^\frac{p}{(p-\alpha)q}\Big(\int_{\R^n} P_t(y)^{\frac{p}{p-\alpha}}\mathrm{d}y\Big)^{1-\frac{p}{(p-\alpha)q}}.$$
+So we have
+\begin{align*}\Vert e^{t\Delta}f\Vert _{L^q}&\leq \Vert f\Vert _{L^p}^\alpha\Big(\int_{\R^n}\Big(\int_{\R^n} \big(\vert f(x-y)\vert^{1-\alpha}P_t(y)\big)^\frac{p}{p-\alpha}\mathrm{d}y\Big)^{\frac{(p-\alpha)q}p}\mathrm{d}x\Big)^{\frac1q}\\
+&\leq \Vert f\Vert _{L^p}^\alpha\Big(\int_{\R^n}\int_{\R^n} \vert f(x-y)\vert^{(1-\alpha)q}P_t(y)^\frac{p}{p-\alpha}\mathrm{d}y\mathrm{d}x\Big)^\frac1q\Big(\int_{\R^n} P_t(y)^{\frac{p}{p-\alpha}}\mathrm{d}y\Big)^{\frac{p-\alpha}{p}-\frac1q}.\end{align*}
+Taking  $\alpha =1-\frac{p}{q}$, we see that
+$$\Vert e^{t\Delta}f\Vert _{L^q}\leq \Vert f\Vert _{L^p}\Big(\int_{\R^n} P_t(y)^{\frac{1}{1-\frac1p+\frac1q}}\mathrm{d}y\Big)^{1-\frac1p+\frac1q}
+=C(n)t^{-\frac{n}2(\frac1p-\frac1q)}\Vert f\Vert _{L^p}.$$ 
+
+\item[4.]
+For a semipositive matrix $A\in \mathbb{\R}_{n\times n}$, 
+define the function $F_A(x)=e^{-\langle Ax,x\rangle}$ on $\R^n$, which is bounded. 
+Compute $\widehat{F_A}$.
+
+\item[\textit{Proof:}]
+For $\varepsilon>0$, the matrix $A+\varepsilon I$ is positive, hence nondegenerate. 
+Then for all $f\in\mathscr{S}(\R^n)$, we have
+
+\begin{align*}
+    &\langle\widehat{F_A},f\rangle\\
+    =&\int_{\R^n} F_A(x)\hat{f}(x)\mathrm{d}x\\
+    =&\lim\limits_{\varepsilon\rightarrow 0^+}\int_{\R^n} e^{-\langle(A+\varepsilon I)x,x\rangle}\hat {f}(x)\mathrm{d}x\\
+    =&\lim\limits_{\varepsilon\rightarrow 0^+}\int_{\R^n} \big(e^{-\langle(A+\varepsilon I)x,x\rangle}\big)^\wedge f(x)\mathrm{d}x\\
+    =&\lim\limits_{\varepsilon\rightarrow 0^+}\int_{\R^n} \pi^\frac{n}2\det (A+\varepsilon I)^{-\frac12}e^{-\pi^2\langle(A+\varepsilon I)^{-1}x,x\rangle} f(x)\mathrm{d}x\\
+    =&\lim\limits_{\varepsilon\rightarrow 0^+}\int_{\R^n} \pi^\frac{n}2e^{-\pi^2|x|^2} f( (A+\varepsilon I)^{\frac12}x)\mathrm{d}x\\
+    =&\int_{\R^n} \pi^\frac{n}2e^{-\pi^2|x|^2}f( A^{\frac12}x)\mathrm{d}x.
+\end{align*}
+The second equality above is from the Lebesgue dominated convergence theorem, and the fifth from substituting $x$ with $(A+\varepsilon I)^{\frac12}x$.
+To verify the fourth, it suffices to consider the case when $A+\varepsilon I$ is a diagonal matrix after a rotation of $x\in\R^n$, 
+reducing matters to the multiplication of the $\R^1$ case: to be specific, the computation is 
+\begin{align*}(e^{-\langle (A+\varepsilon I)x,x\rangle})^\wedge &= (e^{-\langle Px,D(Px)\rangle})^\wedge = (e^{- \lambda_{1}x_{1}^{2} - \cdots - \lambda_{n}x_{n}^{2}})^\wedge \circ P\\ 
+    &= \pi^{\frac{n}{2}}(\lambda_{1}\cdots\lambda_{n})^{-\frac12}e^{-\pi^2(\lambda_{1}^{-1}x_{1}^{2} + \cdots + \lambda_{n}^{-1}x_{n}^{2})} \circ P \\
+    &= \pi^{\frac{n}{2}}\det(A+\varepsilon I)^{-\frac12}e^{-\pi^2 \langle D^{-1}x,x\rangle} \circ P \\
+    &= \pi^{\frac{n}{2}}\det(A+\varepsilon I)^{-\frac12}e^{-\pi^2 \langle(A+\varepsilon I)^{-1}x,x\rangle},\end{align*}
+where $A+\varepsilon I = P^{T}DP$ is the decomposition such that $P$ is orthogonal 
+and $D$ is the diagonal matrix $\operatorname{diag}(\lambda_1,\cdots,\lambda_n)$.
+
+Thus $\widehat {F_A}(x)=\pi^\frac{n}2e^{-\pi^2x^2}\delta^{A^{\frac12}}$, where $\delta^{A^{\frac12}}f=f\circ A^{\frac12}.$
+\end{itemize}

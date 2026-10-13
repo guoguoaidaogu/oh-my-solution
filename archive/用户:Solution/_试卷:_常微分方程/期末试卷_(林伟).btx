@@ -1,0 +1,530 @@
+\setdisplaytitle{期末试题：常微分方程}
+\sethtmltitle{期末试题：常微分方程}
+
+\section{25--26年期末考试试卷（林伟）}
+
+考生注意：
+\begin{enumerate}
+\item 这份试卷共 9 道试题，满分 100 分，共 8 页。考试时间：2025年 12 月 30 日 8:30-10:30（延长到11：15）.
+\item 请考生依旧秉持诚实守信宗旨，谨守考试纪律，摒弃考试作弊.
+学生如有违反学校考试纪律的行为，将按《复旦大学学生纪律处分条例》规定予以严肃处理.
+\item 本课程学期总评分（满分 100 分）由平时成绩（满分 50 分，包含期中，作业以及小论文成绩）与本试卷成绩的 $50 \%$ 组合计算（方案A）；
+若考生确实仅选择计算本试卷成绩的 $92 \%$ 与小论文成绩（满分 8 分）作为学期总评分（方案B），
+请在答卷最开始注明``\textit{选择方案}B''。
+\end{enumerate}
+\textbf{一、\ 填空题（本大题满分 25 分）本大题共有 3 题，
+将答案直接写在题后的横线上或者绘制在对应的坐标系中，第一题满分 9 分，第2-3题满分 8 分.}
+\begin{enumerate}
+\item 考虑矩阵值函数：$\boldsymbol{\Psi}(t)=\begin{pmatrix}
+    \mathrm{e}^{t-1}  & \mathrm{e}^{-t+1}  \\ \\
+    \mathrm{e}^{-t+1}  & -\mathrm{e}^{t-1} \end{pmatrix}$ 
+和 $\boldsymbol{\Phi}(t)=\begin{pmatrix}
+   3 \mathrm{e}^{4t} & 2 \mathrm{e}^{-t}  \\ \\
+   - \mathrm{e}^{4t}  & \mathrm{e}^{-t} \end{pmatrix}$.
+当上述矩阵值函数\textbf{是}二维自治系统 $[*] \dot{\boldsymbol{x}}=\boldsymbol{A x}$ 的\textbf{基本解方阵}时，
+分别计算 $\|\boldsymbol{A}\|_1$， $\det\left[\mathrm{e}^{\boldsymbol{A}^{\top}+ \boldsymbol{A}^{-2}}\right]$ 的值，
+并求二次型 $\mathcal{V}(\boldsymbol{x})=\langle\boldsymbol{x}, \boldsymbol{H} \boldsymbol{x}\rangle$ 的具体形式，
+使其沿着上述自治系统的全导数 $\frac{\mathrm{d} \mathcal{V}}{\mathrm{d} t}\big|_{[*]}(\boldsymbol{x})=-\|\boldsymbol{x}\|_2^{2}$
+（以上的 $\|\cdot\|_p$ 表示 $\mathbb{R}^{2}$ 中的向量 $p$-范数或由该向量范数诱导的矩阵范数）：$\underline{\qquad\qquad}$。
+
+\item 设常数 $a_{i j}$ $(i, j=1,2)$ 中至少有两个不为 $0$，且 $f$ 在一定的区域中为足够光滑的函数. 
+若方程 $(a_{11} x+a_{12} y+3xy) dx+(a_{21} x+a_{22} y+xy)dy=0$ 存在形如 $f(xy)$ 的积分因子，
+则该微分方程奇点 $O(0,0)$ 的类型是：$\underline{\qquad\qquad}$。
+
+\item 考虑方程$$\left\{\begin{array}{l}
+\dot{x}=(3+ \sin t) f(x), \\
+x(t_0)=1,
+\end{array}\right.$$
+其中$f$是定义在开区间$(0,+\infty)$上取负值的光滑函数，此时方程解的最大存在区间是$(-\infty,T),t_0 < T < +\infty$,若存在参数$\alpha,\beta > 0$,使得
+$\lim\limits_{x \rightarrow+\infty} \frac{f(x)}{|x-1|^{\alpha}}=\lim\limits_{x \rightarrow0^+} \frac{f(x)}{x^{\beta}}=-5$
+,那么参数$\alpha,\beta$的取值范围是：$\underline{\qquad\qquad}$。
+
+\end{enumerate}
+
+\textbf{二、 辨析题（本大题满分 17 分）本大题共有 2 题，
+每题都给出了若干个结论，分别判断这些结论是否正确，
+正确的在结论前的方括号内打``$\sqrt{ }$''，否则打``$\times$''，
+同时根据每题的要求完成证明或说理。}
+\begin{enumerate}\setcounter{enum-{list-level}}{3}
+\item \textbf{（本题满分 8 分）}设 $\boldsymbol{\varphi}(t)$ 是向量场充分光滑的 $n$ 维自治系统 $\dot{\boldsymbol{x}}=\boldsymbol{f}(\boldsymbol{x})$ 一特解。
+\begin{enumerate}[label=$【\qquad】$]
+\item 若 $\limsup\limits_{\|\boldsymbol{x}\| \rightarrow+\infty} \frac{\sqrt{\|\boldsymbol{f}(\boldsymbol{x})\|}}{\|\boldsymbol{x}\|}=2025$，
+那么上述系统的任何一个解的最大存在区间是 $\mathbb{R}$；
+\item 若存在满足 $\lim\limits_{k \rightarrow \infty} t_{k}=+\infty$ 的数列 $\{t_{k}\}_{k=0}^{\infty}$，成立 $\lim\limits_{k \rightarrow \infty} \boldsymbol{\varphi}(t_{k})=\boldsymbol{x}^{*}$，
+那么 $\boldsymbol{x}^{*}$为上述系统的奇点；
+\item 若 $n = 2$ 且 $\boldsymbol{\varphi}(t)$ 是非平凡周期解，则该解一定不是 Lyapunov 意义下渐近吸引的；
+\item 若 Jacobian 矩阵 $\boldsymbol{D} \boldsymbol{f}(\boldsymbol{\varphi}(t))$ 所有的特征值在 $[0,+\infty)$ 上都小于 $-2025$，
+则上述系统的解 $\boldsymbol{\varphi}(t)$ 在 Lyapunov 意义下是渐近稳定的。
+\end{enumerate}
+在以上结论中，任意选择一个你认为错误的结论，说明理由。
+
+[证明]
+
+\item \textbf{（本题满分 9 分）}考虑二阶微分方程 $\ddot{x}+a(t) \dot{x}+b(t)x=c(t)$，
+其中 $a(t), b(t), c(t)$ 是 $\mathbb{R}$ 上的连续函数.
+\begin{enumerate}[label=$【\qquad】$]
+\item 该方程的解的全体同构于$\mathbb{R}^3$;
+\item 该方程至少有一个解的最大存在区间不是$\mathbb{R}$；  
+\item 若$c(t) \equiv 0$, $\Phi_1(t)$与$\Phi_2(t)$是该方程的两个线性无关的解，并且$\Phi_1(0)=\Phi_1(1)=0$，$\Phi_1(t)$在$(0,1)$上恒正，则$\Phi_2(t)$在$(0,1)$上一定存在零点；
+\item 若$b(t)<0$,则方程有唯一的满足$x(0)=x(1)=0$的解；
+\item 若 $a(t) \equiv a, b(t) \equiv b < 0 ,\lim_{t \rightarrow \pm \infty}c(t)=1$，
+该方程唯一的解在$\mathbb{R}$上有界。
+\end{enumerate}
+在以上结论中，任意选择一个你认为正确的结论，说明理由.
+
+[理由]
+\end{enumerate}
+
+\textbf{三、 解答题（本大题满分 58 分）本大题共有 4 题，解答下列各题须写明推理过程.}
+\begin{enumerate}\setcounter{enum-{list-level}}{5}
+\item \textbf{（本题满分10分）}
+从以下两个题目中任选一个完成，都做了以第一个计分。
+
+叙述并证明：自治系统的零解在 Lyapunov 意义下渐近稳定的判定定理（不用证明稳定性）．
+
+叙述并证明：平面自治系统\textbf{同宿轨}不存在的 Bendixson 判别法．
+
+(6) [叙述定理]
+
+(6) [证明]
+
+\item \textbf{（本题满分 22 分）本题共有 2 个小题，
+第 1 小题满分 12 分，第 2 小题满分 10 分}
+
+考虑系统
+\[
+\begin{cases}
+\dot{x} = qx+ h(x, y, t), \\
+\dot{y} = -qy + g(x, y, t),
+\end{cases}
+\]
+其中 $h(x, y, t), g(x, y, t)$ 均为光滑函数。
+\begin{enumerate}
+    \item[(1)] 试用压缩映像原理证明：存在 $h > 0$，使得以上系统满足条件 $x(0) = 20,\; y(0) = 9$ 的解在 $[0, h]$ 上存在。
+    
+    \item[(2)] 设 $q \not = \pm 1$，
+    \[
+    h(x, y, t) = y - y^4 (2y + 2qx), \quad
+    g(x, y, t) = -x + y^4 (2x + 2qy).
+    \]
+    试确定自洽系统的奇点 $(0, 0)$ 的类型，并确定该奇点对应的零解在 Lyapunov 意义下的稳定性。
+\end{enumerate}
+
+提示，考虑$V(x,y)=x^2+y^2+2qxy$,以及对应的平面系统首次积分的轨线。
+
+(7-1) [证明]
+
+(7-2) [解]
+
+
+\item \textbf{（本题满分 16 分）本题共有 3 个小题，
+第 1 小题满分 4 分，第 2 小题满分 6 分，第 3 小题满分 6 分.}
+
+考量二阶微分方程 
+\[
+x'' + \bigl[\omega^2 + \varepsilon  a(t)\bigr] x = 0,
+\] 
+其中参数 $\omega > 0$，$\varepsilon \geqslant 0$。而 $a(t)$ 是 $\mathbb{R}$ 上的以 $T > 0$ 为周期的连续函数，设 $\Phi_{\varepsilon}(T)$ 是上述二阶方程对应的二维线性系统 $[x, \dot{x}]^T$ 的 $2 \times 2$ 基本解方阵，且 $\Phi_{\varepsilon}(0)$ 是单位矩阵。
+
+\begin{enumerate}
+    \item[(1)] 当 $\epsilon = 0$ 时，求矩阵 $\Phi_0(T)$ 的特征值；
+    
+    \item[(2)] 证明：当$\omega \not = \dfrac{k\pi}{T}$时，上述方程的解关于参数 $\varepsilon$ 是连续依赖的。进一步，基于该连续依赖的结论证明：若参数 $\omega \neq 0$ 或 $\varepsilon > 0$，则存在无穷小的 $\delta > 0$，当 $\varepsilon > 0$ 时，成立 $|\operatorname{tr}[\Phi_0(T)]| < 2$ 且矩阵 $\Phi_{\varepsilon}(T)$ 的特征值在复平面中的单位圆上；
+    
+    \item[(3)] 在第(2)小题给出的关于参数 $\varepsilon$ 与 $\omega$ 的条件下，判断上述方程的零解在Lyapunov意义下的稳定性。
+
+\end{enumerate}
+
+提示：考虑$\Phi(t+T)=\Phi(t)\textbf{B}$.
+
+(8-1) [解]
+
+(8-2) [证明]
+
+(8-3) [解]
+
+\item \textbf{（本题满分 8 分）}
+
+    
+    记一个在单位圆上运动的质点的轨迹为 $x(t) = [\cos \theta (t), \sin \theta (t)]$, $\dot{\theta} = a+ \cos \theta$。
+    
+    (1) 若该质点作周期运动，求出$a$的范围，并求出相应的最小正周期（写出表达式即可）；
+    
+    (2) 若$a$不在（1）所给定的范围之内，试画出质点的运动轨迹。
+
+(9-1) [解]
+
+(9-2) [解]
+
+\end{enumerate}
+
+\section{22--23年期末考试试卷（林伟）}
+
+考生注意：
+\begin{enumerate}
+\item 这份试卷共 9 道试题，满分 100 分，共 8 页。考试时间：2022年 12 月 28 日 8:30～10:30.
+\item 请在自备的纸张上，依次写清题号（阿拉伯数字）并答题。
+考试结束后，请扫描答卷并上传``姓名+学号+学院.pdf''文件。
+\item 线上考试，请考生依旧秉持诚实守信宗旨，谨守考试纪律，摒弃考试作弊.
+学生如有违反学校考试纪律的行为，将按《复旦大学学生纪律处分条例》规定予以严肃处理.
+\item 本课程学期总评分（满分 100 分）由平时成绩（满分 50 分，包含期中，作业以及小论文成绩）与本试卷成绩的 $50 \%$ 组合计算（方案A）；
+若考生确实仅选择计算本试卷成绩的 $90 \%$ 与小论文成绩（满分 10 分）作为学期总评分（方案B），
+请在答卷最开始注明``\textit{选择方案}B''。
+\end{enumerate}
+\textbf{一、\ 填空题（本大题满分 27 分）本大题共有 3 题，
+将答案直接写在题后的横线上或者绘制在对应的坐标系中，每题满分 9 分.}
+\begin{enumerate}
+\item 考虑矩阵值函数：$\boldsymbol{\Psi}(t)=\begin{pmatrix}
+    \mathrm{e}^{-t} \sin t & \mathrm{e}^{-t} \cos t \\ \\
+    \mathrm{e}^{-t} \cos t & -\mathrm{e}^{-t} \sin t\end{pmatrix}$ 
+和 $\boldsymbol{\Phi}(t)=\begin{pmatrix}
+    \mathrm{e}^{-t} \cos t & \mathrm{e}^{-t} \sin t \\ \\
+    \mathrm{e}^{-t} \sin t & \mathrm{e}^{-t} \cos t\end{pmatrix}$.
+当上述矩阵值函数\textbf{是}二维自治系统 $[*] \dot{\boldsymbol{x}}=\boldsymbol{A x}$ 的\textbf{基本解方阵}时，
+分别计算 $\|\boldsymbol{A}\|$， $\det\left[\mathrm{e}^{\boldsymbol{A}^{\top}+5 \boldsymbol{A}}\right]$ 的值，
+并求二次型 $\mathcal{V}(\boldsymbol{x})=\langle\boldsymbol{x}, \boldsymbol{H} \boldsymbol{x}\rangle$ 的具体形式，
+使其沿着上述自治系统的全导数 $\frac{\mathrm{d} \mathcal{V}}{\mathrm{d} t}\big|_{[*]}(\boldsymbol{x})=-\|\boldsymbol{x}\|^{2}$
+（以上的 $\|\cdot\|$ 表示 $\mathbb{R}^{2}$ 中的向量 $2$-范数或由该向量范数诱导的矩阵范数）：$\underline{\qquad\qquad}$。
+
+\item 设常数 $a_{i j}$ $(i, j=1,2)$ 中至少有两个不为 $0$，且 $f$ 在一定的区域中为足够光滑的函数. 
+若方程组 $\dot{x}=a_{11} x+a_{12} y+x^{2}, \dot{y}=-a_{21} x-a_{22} y$ 存在形如 $f(x)=C$ 的首次积分，
+则该微分方程奇点 $O(0,0)$ 的类型是：$\underline{\qquad\qquad}$。
+
+\item 考虑极坐标 $(r, \theta)$ 下的平面系统：$\dot{r}=100 r(-6+r^{2}), \dot{\theta}=1+100 c(-6+r^{2})$，其中 $c$ 为参数。
+试在对应的欧氏坐标系 $x$--$O$--$y$ 中，分别绘制参数 $c<0, c=0, c>0$三种情形下系统轨线的大致图形 $(x=r \cos \theta, y=r \sin \theta)$：
+\begin{tikzpicture}
+    \foreach \i in{-3,0,3} \draw[->,>=stealth] (\i,-1.3)to(\i,1.3);
+    \foreach \i in{-4.3,-1.3,1.7} \draw[->,>=stealth] (\i,0)to({\i+2.6},0);
+    \foreach \i in{-1.7,1.3,4.3} \draw (\i,-0.2) node {$x$};
+    \foreach \i in{-3.17,-0.17,2.83} \draw (\i,1.27) node {$y$};
+    \foreach \i in{-3.17,-0.17,2.83} \draw (\i,-0.19) node {$O$};
+    \draw (-3,-1.6) node {$c<0$};\draw (0,-1.6) node {$c=0$};\draw (3,-1.6) node {$c>0$}
+\end{tikzpicture}
+\end{enumerate}
+
+\textbf{二、\ 辨析题（本大题满分 17 分）本大题共有 2 题，
+每题都给出了若干个结论，分别判断这些结论是否正确，
+正确的在结论前的方括号内打``$\sqrt{ }$''，否则打``$\times$''，
+同时根据每题的要求完成证明或说理。}
+\begin{enumerate}\setcounter{enum-{list-level}}{3}
+\item \textbf{（本题满分 8 分）}设 $\boldsymbol{\varphi}(t)$ 是向量场充分光滑的 $n$ 维自治系统 $\dot{\boldsymbol{x}}=\boldsymbol{f}(\boldsymbol{x})$ 一特解。
+\begin{enumerate}[label=$【\qquad】$]
+\item 若 $\limsup\limits_{\|\boldsymbol{x}\| \rightarrow+\infty} \frac{\|\boldsymbol{f}(\boldsymbol{x})\|}{\sqrt{\|\boldsymbol{x}\|}}=2023$，
+那么上述系统的任何一个解的最大存在区间是 $\mathbb{R}$；
+\item 若存在满足 $\lim\limits_{k \rightarrow \infty} t_{k}=+\infty$ 的数列 $\{t_{k}\}_{k=0}^{\infty}$，成立 $\lim\limits_{k \rightarrow \infty} \boldsymbol{\varphi}(t_{k})=\boldsymbol{x}^{*}$，
+那么 $\boldsymbol{x}^{*}$为上述系统的奇点或周期轨道上的点；
+\item 若 $n \geq 3$ 且 $\boldsymbol{\varphi}(t)$ 是非平凡周期解，则该解一定不是 Lyapunov 意义下渐近吸引的；
+\item 若 Jacobian 矩阵 $\boldsymbol{D} \boldsymbol{f}(\boldsymbol{\varphi}(t))$ 所有的特征值在 $[0,+\infty)$ 上都小于 $-2023$，
+则上述系统的解 $\boldsymbol{\varphi}(t)$ 在 Lyapunov 意义下是渐近稳定的。
+\end{enumerate}
+在以上结论中，任意选择一个你认为正确的结论，证明之。
+
+[证明]
+
+\item \textbf{（本题满分 9 分）}考虑二阶微分方程 $\ddot{x}+a(t) x+b(t)=f(t, \dot{x})$，
+其中 $a(t)$ 与 $b(t)$ 是 $\mathbb{R}$ 上的连续函数，
+$f(t, y)$ 是 $\mathbb{R} \times \mathbb{R}$ 上充分光滑的二元函数。
+\begin{enumerate}[label=$【\qquad】$]
+\item 存在上述函数 $a, b$ 及 $f$，使得上述方程任意两个不同的解在平面 $x$--$O$--$\dot{x}$ 上对应的轨线于有限时刻相交，相交也不重合；
+\item 存在上述函数 $a, b$ 及 $f$，使得 $\eta(t)=\mathrm{e}^{t}-1, \xi(t)=t \cos 2 t$ 都为上述方程的解；
+\item 对于任意给定的上述函数 $a, b$ 及 $f$，以上方程一切解的最大存在区间为 $\mathbb{R}$；
+\item 若 $f(t, y) \equiv 2 t$，存在上述函数 $a$ 和 $b$，
+使得上述方程的任意一解关于初值在 $[0,+\infty)$ 上是连续依赖的；
+\item 若 $a(t) \equiv 1, b(t) \equiv 0$ 且 $f(t, y) \equiv f(y)$，
+存在这样的 $f$ 使得上述微分方程的零解是渐近稳定的.
+\end{enumerate}
+在以上结论中，任意选择一个你认为错误的结论，说明错误的理由.
+
+[理由]
+\end{enumerate}
+
+\textbf{三、\ 解答题（本大题满分 56 分）本大题共有 4 题，解答下列各题须写明推理过程.}
+\begin{enumerate}\setcounter{enum-{list-level}}{5}
+\item \textbf{（本题满分8分）}
+
+叙述并证明：自治系统的零解在 Lyapunov 意义下是\textit{渐近稳定}的判定定理.
+
+(6) [叙述定理]
+
+(6) [证明]
+
+\item \textbf{（本题满分 21 分）本题共有 3 个小题，
+第 1 小题满分 10 分，第 2 小题满分 6 分，第 3 小题满分 5 分.}
+
+设 $\varPhi(x, y)$ 为 $\mathbb{R}^{2}$ 上充分光滑的函数，
+考虑含有\textbf{不全为零}的参数 $a, b$ 的平面系统：
+$$\dot{x}=\frac{\partial \varPhi}{\partial y}-a \frac{\partial \varPhi}{\partial x}, \quad 
+\dot{y}=-\frac{\partial \varPhi}{\partial x}-b \frac{\partial \varPhi}{\partial y}.$$
+\begin{enumerate}[label=(\arabic*)]
+    \item 试用\textbf{压缩映象原理}证明：对于给定的 $h>0$，
+    存在 $T<h$，使得以上系统满足条件 $x(h)=0, y(h)=1$ 的解在 $[T, h]$ 上存在；
+    \item 若 $a b=0$ 且 $\varPhi(x, y)=x^{6}+y^{4}+x^{2} y^{2}$，
+    证明：上述系统在相平面中没有闭轨线；
+    \item 若 $a>0, b>0$ 且原点 $O(0,0)$ 是 $\varPhi(x, y)$ 孤立的极小值点，
+    证明：原点 $O$ 对应的零解在 Lyapunov 意义下是稳定的.
+\end{enumerate}
+(7-1) [证明]
+
+(7-2) [证明]
+
+(7-3) [证明]
+
+\item \textbf{（本题满分 20 分）本题共有 3 个小题，
+第 1 小题满分 7 分，第 2 小题满分 5 分，第 3 小题满分 8 分.}
+
+考虑如下二维平面自治系统：
+$$\left\{\begin{array}{l}
+\dot{x}=\alpha x-\beta x y, \\
+\dot{y}=-\gamma y+\zeta x y,
+\end{array}\right.$$
+其中，参数 $\alpha, \beta, \gamma, \zeta$ 均大于零.
+\begin{enumerate}[label=(\arabic*)]
+\item 求上述系统在相平面 $x$--$O$--$y$ 中坐标轴上及第一象限内的奇点，并确定奇点类型；
+\item 证明：系统在第一象限内出发的轨线永远停留在第一象限中；
+\item 若 $x>0$ 表示蝗虫数量，$y>0$ 表示益鸟数量。
+如果对于蝗虫使用杀虫剂，同时这个杀虫剂对于益鸟也有同样的抑制作用。
+若视这样的抑制作用为对于参数 $\alpha$ 和 $\gamma$的扰动，
+试讨论蝗虫、益鸟在一个周期内平均数量如何分别与这样的扰动连续依赖。
+\end{enumerate}
+(8-1) [解]
+
+(8-2) [证明]
+
+\item \textbf{（本题满分 7 分）}
+
+设常数 $\tau>0$，且实值函数 $x(t)$ 满足：
+$$x \in C([-\tau,+\infty)) \cap C^1(\cup_{n=0}^{\infty} \mathcal{T}_n), 
+\quad x(0) \neq 0,$$
+其中区间 $\mathcal{T}_n \triangleq (n \tau-\tau, n \tau)$ $(n=0,1,2, \cdots)$.
+若 $x(t)$ 在 $[0,+\infty)$ 中的可导处成立：
+$$\frac{{\rm d} x(t)}{{\rm d} t}=a \cdot x(t)+b \cdot h(t) \cdot x(t-\tau), 
+\quad \text { 其中 } \quad h(t)
+=\left\{\begin{array}{ll}
+0, & t \in \mathcal{T}_{2 m+1}, \\
+1, & t \in \mathcal{T}_{2 m+2},
+\end{array} \quad m=0,1,2, \cdots .\right.$$
+试确定参数 $a$ 与 $b$ 的范围使得 $\lim\limits_{t \rightarrow+\infty} x(t)=0$.
+
+(9) [解]
+\end{enumerate}
+
+\section{13--14年期末考试试卷（林伟）}
+
+考生注意：
+\begin{enumerate}
+\item 这份试卷共 8 道试题, 满分 100 分, 共 8 页.
+\item 考试时间：2014年1月16日 13:00～15:00.
+\item 请将每张试卷装订线内的学号、姓名及专业填写清楚。
+\item 学期总评分（满分 100 分）由平时成绩（满分 50 分）与本试卷成绩的 $50 \%$ 组合计算。
+\end{enumerate}
+
+\textbf{一、\ 填空题（本大题满分 14 分）本大题共有 2 题，将答案直接写在题后的横线上，每题满分 7 分。}
+\begin{enumerate}
+\item 设参数 $a, b, c \in \mathbb{R}$，而平面自治系统 $\dot{x}=c y+x^{2}, \dot{y}=a x+b y+x y^{3}$ 具有一个连续的首次积分 $f(x, y)=C$, 且其一次近似系统的系数矩阵行列式不等于零. 
+那么该系统的奇点 $(0,0)$ 的类型是$\underline{\qquad\qquad}$。
+
+\item 设参数 $\lambda \in \mathbb{R}$，$3$ 阶矩阵 $\boldsymbol{A}$ 满足： 
+$\boldsymbol{A} \boldsymbol{p}_{1}+\lambda \boldsymbol{p}_{1}=\mathbf{0}, 
+\boldsymbol{A} \boldsymbol{p}_{2}+\lambda \boldsymbol{p}_{2}=\mathbf{0}, 
+\boldsymbol{A} \boldsymbol{p}_{3}+\lambda \boldsymbol{p}_{3}=\boldsymbol{p}_{2}$，
+其中 $\boldsymbol{p}_{1,2,3}$ 为线性无关的向量. 
+则微分方程组 $\dot{\boldsymbol{x}}=\boldsymbol{A} \boldsymbol{x}+\left[0, \cos t, \mathrm{e}^{2 t}\right]^{\top}$ 的任意一解在 Lyapunov 意义下的稳定性是$\underline{\qquad\qquad}$。
+\end{enumerate}
+
+\textbf{二、\ 辨析题（本大题满分 24 分）本大题共有 2 题，每题都给出了五个结论，
+分别判断这些结论是否正确，正确的在结论前的方括号内打``$\checkmark$''，
+否则打``$\times$''，同时根据要求完成说理或证明，每题满分 12 分。}
+\begin{enumerate}\setcounter{enum-{list-level}}{2}
+\item 考虑 $2$ 阶微分方程 $\ddot{x}+p(t) x=q(t)$，
+其中实值函数 $p(t), q(t)$ 在 $\mathbb{R}$ 上连续。
+\begin{enumerate}[label=$【\qquad】$]
+\item 该方程的任意一解的存在区间均为 $\mathbb{R}$;
+\item 该方程至多有 $3$ 个线性无关的解；
+\item 若 $p(t) \equiv-1$, $q(t)$ 是周期为 $\pi$ 的函数，则该方程有且仅有一个周期为 $\pi$ 的周期解.
+\item 若 $q(t) \not \equiv 0$，且该方程有惟一的满足条件 $x(0)=x(1)=0$ 的解，则该方程对应的齐次方程满足条件 $x(0)=x(1)=0$ 的只有零解;
+\item 若 $q(t) \equiv 0$, 则该方程的零解在 Lyapunov 意义下可以是渐近稳定的;
+\end{enumerate}
+在以上结论中，任意选择一个你认为错误的结论，说明错误的理由。
+
+[理由]
+
+\item 考虑右端在区域 $\mathcal{D} \subset \mathbb{R}^{n}$ 上具有连续可微的向量场的 $n$ 维自治系统 $\dot{\boldsymbol{x}}=\boldsymbol{f}(\boldsymbol{x})$.
+\begin{enumerate}[label=$【\qquad】$]
+\item 系统 $\dot{\boldsymbol{x}}=\boldsymbol{f}(\boldsymbol{x}) /[\|\boldsymbol{f}(\boldsymbol{x})\|+1]$ 任意一解的最大存在区间为 $\mathbb{R}$；
+\item 若维数 $n=1$, 则该系统可以有非平凡的周期解;
+\item 记上述系统从 $(0, \boldsymbol{x}_{0})$ 出发的解为 $\boldsymbol{x}(t, \boldsymbol{x}_{0})$, 
+则对于充分小的任意 $t_{1}, t_{2}$ 成立 $\boldsymbol{x}(t_{1}+t_{2}, \boldsymbol{x}_{0})=\boldsymbol{x}(t_{2}, \boldsymbol{x}(t_{1}, \boldsymbol{x}_{0}))$；
+\item 若 $\boldsymbol{x}=\mathbf{0}$ 是上述系统的零解，
+且对于初始时刻 $t_{0}$，该解是 Lyapunov 意义下稳定的，
+则对于任意其它的初始时刻 $\hat{t} \neq t_{0}$，该解亦是 Lyapunov 意义下稳定的；
+\item 若 $\boldsymbol{x}_{0}$ 是上述系统的奇点，
+并且一次近似线性系统 $\dot{\boldsymbol{x}}=D \boldsymbol{f}(\boldsymbol{x}_{0}) \boldsymbol{x}$ 的零解在 Lyapunov 意义下是不稳定的，
+则奇点 $\boldsymbol{x}_{0}$ 在 Lyapunov 意义下是不稳定的。
+\end{enumerate}
+在以上结论中，任意选择一个你认为正确的结论，证明之。
+
+[证明]
+\end{enumerate}
+\textbf{三、\ 解答题 (本大题满分 62 分) 本大题共有 4 题，解答下列各题须写明推理过程.}
+
+\textbf{5. (本题满分 10 分) 从以下两个小题中选择一个完成.}
+\begin{enumerate}[label=(\arabic*)]
+\item 叙述并证明：自治系统的零解在 Lyapunov 意义下\textit{渐近稳定}的判定定理.
+\item 叙述并证明：平面自治系统\textit{同宿轨}不存在的 Bendixson 判定定理
+（其中，\textit{同宿轨}指相平面中从奇点出发又回到该奇点的奇异闭轨线).
+\end{enumerate}
+(5) [叙述定理]
+
+(5) [证明]
+
+\textbf{6. (本题满分 25 分) 本题共有 3 个小题, 第 1 小题满分 12 分, 第 2 小题满分 7 分, 第 3 小题满分 6 分.}
+
+考虑以 $\mu, \xi$ 为参数的平面系统 
+$\begin{cases}\dot{x}=\mu x-2 y+\xi x(x^{2}+y^{2}), \\ 
+\dot{y}=2 x+\mu y+\xi y(x^{2}+y^{2}). \end{cases}$
+\begin{enumerate}[label=(\arabic*)]
+\item 利用压缩映象原理证明: 存在 $h>0$, 上述系统满足初值条件 $x(0)=x_{0}, y(0)=y_{0}$ 的解在区间 $[0, h]$ 上存在且惟一;
+\item 若 $\xi=1$，则上述系统的解是否关于参数 $\mu$ 连续依赖？论证你的结论;
+\item 若 $\xi=-1$，分别绘制当 $\mu<0, \mu=0, \mu>0$ 时, 上述系统在相平面上轨线的大致图形.
+\end{enumerate}
+(6-1) [证明]
+
+(6-2) [结论与论证]
+
+(6-3) [作图]
+
+\textbf{7. (本题满分 20 分) 本题共有 3 个小题, 第 1 小题满分 7 分,第 2 小题满分 7 分, 第 3 小题满分 6 分.}
+
+设 $\varPhi(x, y)$ 是定义在 $\mathbb{R} \times \mathbb{R}$ 上无穷次可微的二元函数，考虑如下平面系统：
+\[
+\frac{\mathrm{d} x}{\mathrm{d} t}=\frac{\partial \varPhi(x, y)}{\partial y}, \quad 
+\frac{\mathrm{d} y}{\mathrm{d} t}=-\frac{\partial \varPhi(x, y)}{\partial x}. \tag{$\cdots\,\cdots[\divideontimes]$}
+\]
+\begin{enumerate}[label=(\arabic*)]
+\item 若设 $\varPhi(x, y)=a x^{2}+b x y+c y^{2}+y^{4}$，
+试确定非零参数 $a, b, c$ 满足的条件，使得系统$[\divideontimes]$的零解在 Lyapunov 意义下是不稳定的;
+\item 若 $(0,0)$ 是函数 $\varPhi(x, y)$ 孤立的极小值点，证明：系统$[\divideontimes]$的零解是 Lyapunov 意义下稳定的；
+\item 证明: 系统$[\divideontimes]$任意的平衡点对应的解都不是 Lyapunov 意义下渐近稳定的.
+\end{enumerate}
+(7-1) [解]
+
+(7-2) [证明]
+
+\textbf{8. (本题满分 7 分) }
+
+若连续函数 $p(t)>2$, 考虑平面系统: $\dot{x}=2 y, \dot{y}=-2 x-p(t) y^{3}$. 
+试证明: 存在 $x^{*} \in \mathbb{R}$ 使得 $x(t) \rightarrow x^{*}, y(t) \rightarrow 0$ $(t \rightarrow+\infty)$.
+
+(8) [证明]
+
+\section{12--13年期末考试试卷（林伟）}
+
+考生注意：
+\begin{enumerate}
+\item 这份试卷共 8 道试题, 满分 100 分, 共 8 页.
+\item 考试时间：2013年1月18日 8:30～10:30.
+\item 请将每张试卷装订线内的学号、姓名及专业填写清楚。
+\item 学期总评分（满分 100 分）由平时成绩（满分 50 分）与本试卷成绩的 $50 \%$ 组合计算。
+\end{enumerate}
+
+\textbf{一、\ 填空题（本大题满分 14 分）本大题共有 2 题，将答案直接写在题后的横线上，每题满分 7 分.}
+\begin{enumerate}
+\item 设参数 $\lambda \in \mathbb{R}$, $3$ 阶矩阵 $\boldsymbol{A}$ 满足：
+$\boldsymbol{A} \boldsymbol{p}_{1}=\lambda \boldsymbol{p}_{1}, 
+\boldsymbol{A} \boldsymbol{p}_{2}=\lambda \boldsymbol{p}_{2}, 
+\boldsymbol{A} \boldsymbol{p}_{3}=\lambda \boldsymbol{p}_{3}+\boldsymbol{p}_{2}$，
+其中 $\boldsymbol{p}_{1,2,3}$为线性无关的向量。
+则微分方程组 $\dot{\boldsymbol{x}}=\boldsymbol{A} \boldsymbol{x}+\left[\sin t, 0, \mathrm{e}^{-t}\right]^{\top}$ 的任意一解在 Lyapunov意义下的稳定性是$\underline{\qquad\qquad}$。
+
+\item 设参数 $a, b, c \in \mathbb{R}$，
+平面自治系统 $\dot{x}=a x+b y+x^{3} y, \dot{y}=c x+y^{2}$ 
+具有连续的首次积分 $f(x, y)=C$，且其一次近似系统的系数矩阵行列式不等于零。
+那么该系统的奇点 $(0,0)$的类型是$\underline{\qquad\qquad}$。
+\end{enumerate}
+
+\textbf{二、\ 辨析题（本大题满分 24 分）本大题共有 2 题，
+每题都给出了五个结论，分别判断这些结论是否正确，
+正确的在结论前的方括号内打``$\sqrt{ }$''，否则打``$\times$''，
+同时根据要求完成说理或证明，每题满分 12 分.}
+\begin{enumerate}\setcounter{enum-{list-level}}{2}
+\item 考虑 $2$ 阶微分方程 $\ddot{x}+p(t) x=q(t)$，
+其中实值函数 $p(t), q(t)$ 在 $\mathbb{R}$ 上连续.
+\begin{enumerate}[label=$【\qquad】$]
+    \item 该方程的任意一解的存在区间均为 $\mathbb{R}$；
+    \item 该方程至多有 $3$ 个线性无关的解；
+    \item 若 $q(t) \not \equiv 0$，且该方程有惟一的满足条件 $x(0)=x(1)=0$ 的解，
+    则该方程对应的齐次方程满足条件 $x(0)=x(1)=0$ 的只有零解；
+    \item 若 $q(t) \equiv 0$，则该方程的零解在 Lyapunov 意义可以是渐近稳定的；
+    \item 若 $p(t) \equiv-1$, $q(t)$ 是周期为 $\pi$ 的函数，
+    则该方程有且仅有一个周期为 $\pi$ 的周期解。
+\end{enumerate}
+在以上结论中，任意选择一个你认为错误的结论，说明错误的理由。
+
+[理由]
+
+\item 考虑右端在 $\mathcal{D} \subset \mathbb{R}^n$ 上具有连续可微的向量场的 $n$ 维自治系统 
+$\dot{\boldsymbol{x}}=\boldsymbol{f}(\boldsymbol{x})$.
+\begin{enumerate}[label=$【\qquad】$]
+    \item 系统 $\dot{\boldsymbol{x}}=\boldsymbol{f}(\boldsymbol{x}) /[\|\boldsymbol{f}(\boldsymbol{x})\|+1]$ 任意一解的最大存在区间为 $\mathbb{R}$；
+    \item 若维数 $n=1$，则该系统可以有非平凡的周期解；
+    \item 若 $\lim\limits_{t \rightarrow+\infty} \boldsymbol{x}(t ; 0, \boldsymbol{x}_1)=\boldsymbol{x}_0$ 
+    且 $\boldsymbol{x}_0 \neq \boldsymbol{x}_1$，则 $\boldsymbol{x}_0$ 是系统的奇点；
+    \item 若 $\boldsymbol{x}_0$ 是上述系统的奇点，
+    并且线性系统 $\dot{\boldsymbol{x}}=D \boldsymbol{f}(\boldsymbol{x}_0) \boldsymbol{x}$ 的零解在 Lyapunov 意义下是不稳定的，
+    则奇点 $\boldsymbol{x}_0$ 在 Lyapunov 意义下是不稳定的；
+    \item 若上述系统具有稳定的极限圈，则该极限圈对应的解在 Lyapunov 意义下是渐近稳定的。
+\end{enumerate}
+在以上结论中，任意选择一个你认为正确的结论，证明之.
+
+[证明]
+\end{enumerate}
+\textbf{三、\ 解答题（本大题满分 62 分）本大题共有 4 题，解答下列各题须写明推理过程．}
+\begin{enumerate}\setcounter{enum-{list-level}}{4}
+\item \textbf{（本题满分 11 分）从以下两个小题中选择一个完成.}
+\begin{enumerate}[label=(\arabic*)]
+\item 叙述并证明：自治系统的零解在 Lyapunov 意义下渐近稳定的判定定理．
+\item 叙述并证明：平面自治系统闭轨线不存在的 Bendixson 判别法．
+\end{enumerate}
+
+\item \textbf{（本题满分 24 分）本题共有 3 个小题，
+第 1 小题满分 12 分，第 2 小题满分 6 分，第 3 小题满分 6 分.}
+
+考虑以 $\mu, \xi$ 为参数的平面系统 $\left\{\begin{array}{l}\dot{x}=\mu x-y+\xi x(x^{2}+y^{2}), \\ 
+    \dot{y}=x+\mu y+\xi y(x^{2}+y^{2}).\end{array}\right.$
+\begin{enumerate}[label=(\arabic*)]
+\item 利用压缩映象原理证明：存在 $h>0$，上述系统满足初值条件 $x(0)=x_{0}, y(0)=y_{0}$ 的解在区间 $[0, h]$ 上存在且惟一；
+\item 若 $\xi=1$，则上述系统的解是否关于参数 $\mu$ 连续依赖？论证你的结论；
+\item 若 $\xi=-1$，分别绘制当 $\mu<0, \mu=0, \mu>0$ 时，上述系统在相平面上轨线的大致图形.
+\end{enumerate}
+(6-1) [证明]
+
+(6-2) [结论与论证]
+
+(6-3) [作图]
+
+\item \textbf{（本题满分 19 分）本题共有 3 个小题，
+第 1 小题满分 5 分，第 2 小题满分 5 分，第 3 小题满分 9 分.}
+
+二元函数 $\varPhi(p, q)=\lambda p^{2}+q^{4}$ $(\lambda \neq 0)$，
+考虑以 $\lambda, \xi$ 为参数的平面系统：
+$$\frac{{\rm d} x}{{\rm d} t}=2 y^{3}+\frac{\xi}{\lambda} x y^{4}, \quad 
+\frac{{\rm d} y}{{\rm d} t}=-\lambda x-3 x^{2} y,\tag{$\cdots\,\cdots[\xi]$}$$
+\begin{enumerate}[label=(\arabic*)]
+\item 如果 $\varPhi(x, y)=C$（$C$ 为任意正常数）是方程组 $[\xi_{0}]$ 的一个首次积分，试确定 $\xi_{0}$ 的值；
+\item 若 $\xi \neq \xi_{0}$，证明：在相平面中不存在系统 $[\xi]$ 的闭轨线；
+\item 若 $\lambda>0, \xi \leqslant \xi_{0}$，
+试利用 \textbf{李雅普诺夫直接方法 } 确定系统 $[\xi]$ 的零解的稳定性.
+\end{enumerate}
+(7-1) [解]
+
+(7-2) [证明]
+
+(7-3) [解]
+
+\item \textbf{（本题满分 8 分）}
+
+若连续函数 $p(t)>2$，考虑平面系统：$\dot{x}=2 y, \dot{y}=-2 x-p(t) y^{3}$. 
+试证明：存在 $x^{*} \in \mathbb{R}$ 使得 $x(t) \rightarrow x^{*}, y(t) \rightarrow 0$ $(t \rightarrow+\infty)$.
+
+(8) [解]
+\end{enumerate}

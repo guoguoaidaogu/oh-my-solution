@@ -1,0 +1,886 @@
+\setdisplaytitle{笔记：Riemann曲面 (iii)}
+\sethtmltitle{笔记：Riemann曲面 (iii)}
+\numberwithin{equation}{subsection}
+
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\scrH}{\mathscr{H}}
+\newcommand{\scrL}{\mathscr{L}}
+\newcommand{\scrU}{\mathscr{U}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\Ima}{\operatorname{Im}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Div}{\operatorname{Div}}
+\newcommand{\Reg}{\operatorname{Reg}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\Opartial}{\overline{\partial}}
+\newcommand{\varep}{\varepsilon}
+\newcommand{\Over}{\overline}
+
+
+
+\section{非紧Riemann面}
+目标：证明下面的单值化定理.
+\begin{theorem}[单值化定理(Koebe 1907, Poincaré 1907)]
+
+	每个单连通Riemann面都双全纯同胚于$\Delta, \bbC$或$\mathbb{P}^1$.
+\end{theorem}
+
+证明方法：
+1. PDE (解Dirichlet问题)；\quad 2. 拓扑；\quad 3.复分析.
+
+动机：如何把一条代数曲线单参数化？
+
+\begin{remark}
+	高维不成立，如$\mathbb{B}^2$不全纯同胚于$\Delta\times \Delta$ (Poincaré).
+\end{remark}
+
+
+\subsection{Dirichlet问题}
+\begin{lemma}
+	$X$是Riemann面，$G\subset X$单连通区域. 
+    若$u\in \scrH(G;\R)$，则存在$f\in \calO(G)$使得$u=\Re f$.
+\end{lemma}
+
+\begin{proof}
+	令$\sigma=du$，则$\sigma\in \scrH^1(G)$且$\Over{\sigma}=\sigma$，
+    故存在$\omega\in \Omega(X)$使得$\sigma=\Re \omega$.\par
+	取定$a\in X$，定义$f(x):=\int_a^x \omega$. 
+    因为$G$单连通，所以积分与路径的选取无关，$f\in \calO(G)$且$df=\omega$.
+
+	$\sigma=\Re \omega$等价于$du=\Re df=d \Re f$，故$u=\Re (f+\text{常数})$.
+\end{proof}
+
+\begin{proposition}[最大值原理]
+	设$u\in \scrH(X)$不恒为常数，则$u$不能在$X$内部取最大值.
+\end{proposition}
+
+\begin{proof}
+	假设存在$x_0\in X$使得$u(x_0)=\max\limits_X u$，
+    则$S:=\{x\in X: u(x)=\max\limits_X u\}\subset X$是闭的.
+
+	同时$S\subset X$是开的：设$a\in S$，取$G\ni a$单连通，
+    则存在$f\in \calO(G)$使得$\Re f=u$，进而$\vert e^f\vert =e^u$. 
+    由全纯函数最大模原理，$e^f$是常数，
+    进而$u|_G$恒等于$u$的最大值，故$G\subset S$，即$S$开.
+
+	$S$是非空的既开又闭的集合，故$S$是全集$X$.
+\end{proof}
+
+\begin{proposition}[Dirichlet问题]
+	设$Y\subset X$开，$f\in C(\partial Y,\R)$，
+    是否存在$u\in C(\Over{Y})\cap \scrH(Y)$使得$u|_{\partial Y}=f$.
+\end{proposition}
+
+\begin{proposition}
+	若$Y\subset \subset X$，则Dirichlet问题有唯一解.
+\end{proposition}
+
+\begin{proof}
+	若$u_1,u_2$均为Dirichlet问题的解，
+    则$u_1-u_2, u_2-u_1\in \scrH(Y) \cap C(\Over{Y})$，且在$\partial Y$取值为$0$. 
+    由最大值原理，$u_1-u_2, u_2-u_1$在$Y$上均非正，故$u_1\equiv u_2$.
+\end{proof}
+
+\begin{theorem}[Poisson]
+	$$u(z):=\frac{1}{2\pi} \int_0^{2\pi} 
+    \frac{R^2-|z|^2}{|Re^{i\theta}-z|^2}f(Re^{i\theta})\,d\theta$$
+	为$\Delta_R=\{|z|<R\}$上由$f$为边值的Dirichlet问题的解.
+\end{theorem}
+
+\begin{corollary}
+	$\{u_n\}\subset \scrH(\Delta_R)$，且$u_n \xrightarrow{\text{内闭}} u$，
+    则$u\in \scrH(\Delta_R)$.
+\end{corollary}
+
+\begin{corollary}[Harnack定理]
+	若$\{u_n\}\subset \scrH(\Delta_R)$且单增且有上界($u_n \leq C$，$C$是常数)，
+    则$u_n \xrightarrow{\text{内闭}}u$.
+
+	再进而由上一推论，$u\in \scrH(\Delta_R)$.
+\end{corollary}
+
+\begin{definition}
+	$X$是Riemann面，$Y\subset X$开. 
+    记$\Reg Y:=\{D\subset \subset Y\text{ 开}: D\text{ 上的 Dirichlet 问题可解}\}$. 
+    坐标圆盘在$\Reg Y$内(Poisson定理).
+		
+	对于$u\in C(Y, \R)$，定义$P_Du:=\begin{cases} u, &Y\backslash D\\ 
+    \text{以 } u|_{\partial D} \text{ 为边值的 Dirichlet 问题的解}, &D\end{cases}$. 
+    则$u\in \scrH(Y)$等价于$P_Du=u, \forall D\in \Reg Y$.
+\end{definition}
+
+\begin{definition}
+	称$u\in C(Y,\R)$次调和(subharmonic)，若$P_Du\geq u$，$\forall D\in \Reg Y$.
+
+	称$u$为局部次调和的，若$\forall a\in Y$，存在邻域$U\ni a$使得$u$在$U$上次调和.
+
+	记$SH(Y)=\{Y\text{ 上的次调和函数}\}$，$SH(Y,{\rm loc})=\{Y\text{ 上的局部次调和函数}\}$.
+\end{definition}
+
+\begin{proposition}[最大值原理]
+	$u\in SH(Y,{\rm loc})$，若存在$x_0\in Y$
+    使得$u(x_0)=\max\limits_Y u$，则$u\equiv u(x_0)$.
+\end{proposition}
+
+\begin{proof}
+	令$S:=\{x\in Y: u(x)=u(x_0)\}$，则$S\subset Y$闭. 
+    假设$S\neq Y$，则存在$a\in Y \cap \partial S$. 因为$u$连续，所以$u(a)=u(x_0)$. 
+    取$D\subset \Reg Y$使得$a\in D$，$u\in SH(\Over{D})$
+    且存在$x\in \partial D$使得$u(x)<u(x_0)$.
+
+	$u\leq P_Du =:v $. $v\in \scrH(D) \cap C(\Over{D})$
+    且$v|_{\partial D}=u\leq u(x_0)$，由调和函数的最大值原理，
+    $v=P_Du\leq u(x_0)$于$D$，但$v(a)\geq u(a)=u(x_0)$. 
+    由最大值原理，$v\equiv u(x_0)$. 因为$v|_{\partial D}=u|_{\partial D}$，
+    所以$u|_{\partial D}\equiv u(x_0)$，矛盾.
+\end{proof}
+
+\begin{corollary}
+	$u\in SH(Y)$等价于$u\in SH(Y,{\rm loc})$.
+\end{corollary}
+
+\begin{proof}
+	只需考虑右推左. 设$D\in \Reg Y$，$u\in SH(Y,{\rm loc})$，
+    $v:=u-P_Du\in SH(D,{\rm loc})$，且$v|_{\partial D}=0$. 
+    由最大值原理，$v\leq 0$于$D$, 即$u\leq P_Du$于$D$，故$u\in SH(Y)$.
+\end{proof}
+
+\begin{proposition}[次调和函数的一些性质]
+	\begin{enumerate}
+		\item[1.] $u,v\in SH(Y)$，$\lambda,\mu \geq 0$，
+        则$\lambda u+\mu v \in SH(Y)$.
+		$$P_D(\lambda u+\mu v)=\lambda P_D(u)+\mu P_D(v) \geq \lambda u+\mu v.$$
+		\item[2.] $u,v\in SH(Y)$，则$\max\{u,v\}\in SH(Y)$. 
+		$$u\leq P_Du\leq P_D\max\{u,v\},$$
+		$$v\leq P_Dv\leq P_D\max\{u,v\}.$$
+		\item[3.] $u\in SH(Y)$，则$P_D u\in SH(Y)$.
+	\end{enumerate}
+\end{proposition}
+		
+\begin{proof}
+	性质3的证明. 令$v=P_D u$，须证：$\forall D'\in \Reg Y$，$P_{D'} v\geq v$.
+
+	在$Y\backslash D'$，$P_{D'} v=v$.
+
+	在$Y\backslash D$，因为$v\geq u$，
+    由最大值原理，有$P_{D'} v \geq P_{D'} u\geq u=v$.
+
+	因为$(Y\backslash D')\cup (Y\backslash D)=Y\backslash (D\cap D')$
+    且$v-P_{D'}v\in \scrH(D\cap D')$且在$\partial (D\cap D')$上非正. 
+    所以由最大值原理，$v\leq P_{D'}v$于$D\cap D'$.
+\end{proof}
+
+\begin{lemma}[Perron]
+	设$\calF \subset SH(Y)$非空，使得
+	\begin{itemize}
+		\item[1.] $u,v\in \calF$，则$\max\{u,v\} \in \calF$.
+		\item[2.] $u\in \calF$，$D\in \Reg Y$，则$P_Du \in \calF$.
+		\item[3.] 存在$C\in \R$，使得$u\leq C$，$\forall u\in \calF$.
+	\end{itemize}
+	则$u^*(x):=\sup\{u(x): u\in \calF\} \in \scrH(Y)$.
+\end{lemma}
+
+\begin{proof}[引理的证明]
+	设$a\in Y$，取$D\in \Reg Y$为$a$的一个坐标邻域圆盘，目标：证明$u^*\in \scrH(D)$.
+
+	取一列$\{u_n\}\subset \calF$使得$u_n(a)\to u^*(a)(n\to \infty)$. 
+    若用$\max \{u_1,\cdots, u_{n-1}\}$代替$u_n$，
+    则不妨设$u_1\leq u_2\leq \cdots (\leq C)$且$u_n(a) \to u^*(a)$. 
+    令$v_n:=P_D u_n$，则$v_1\leq v_2\leq\cdots (\leq C)$. 
+    由Harnack定理，$v_n \xrightarrow{\text{内闭}} v\in \scrH(D)$
+    且$v\leq u^*$且$v(a)=u^*(a)$.
+
+	$v\leq u^*$：因为$v_n \in \calF$，所以$v_n\leq u^*$进而$v\leq u^*$.
+
+	$v(a)=u^*(a)$：$u^*(a)\geq v(a) \geq v_n(a) \geq u_n(a)\to u^*(a)$.
+
+	只需证明：$u^*=v$于$D$.
+
+	设$x\in D$，取$\{w_n\}\subset \calF$使得$w_n(x)\to u^*(x)$. 
+    利用$\max\{w_1,\cdots, w_{n-1},v_n\}$代替$w_n$，
+    可设$w_n$是单调增加的，且$v_n\leq w_n(\leq C)$. 
+    同样地，由Harnack定理，设$P_Dw_n$收敛到$w\in \scrH(D)$，
+    则$v\leq w\leq u^*$，$w(x)=u^*(x)$.
+
+	$u^*(a)=v(a)\leq w(a)\leq u^*(a)$，则$v(a)=w(a)$. 
+    因为$v-w$是$D$上非正的调和函数，又在内点$a$处取$0$，故$v\equiv w$于$D$. 
+    $u^*(x)=w(x)=v(x)$, $\forall x\in D$.
+\end{proof}
+
+\begin{definition}
+	设$f\in C(\partial Y, \R)$使得$\Vert f\Vert_\infty <\infty$. 
+    记$K:=\sup\limits_{\partial Y} f(<\infty)$.
+
+	令$\mathcal{P}_f:=\{u\in C(\Over{Y})\cap SH(Y): 
+    u\leq K, u|_{\partial Y}\leq f\}$，称其为一个Perron族. 
+    $\mathcal{P}_f\neq \varnothing$，
+    因为$u=-\Vert f\Vert_\infty\in \mathcal{P}_f$.
+	且Perron族满足Perron引理条件，
+    故$u_f^*(x):=\sup\{u(x):u\in \mathcal{P}_f\}\in \scrH(Y)$. 
+    这样，若要解以$f$为边值的Dirichlet问题，
+    只需证明$u_f^*(x) \rightarrow f(x_0)$，若$x\to x_0\in \partial Y$.
+\end{definition}
+
+\begin{definition}
+	称$x\in \partial Y$为一个正则点，若存在邻域$U\ni x$
+    以及$\beta \in SH(Y\cap U)\cap C(\Over{Y}\cap U)$，
+    使得$\beta(x)=0$且$\beta(y)<0$，$\forall y\in \Over{Y}\cap (U\backslash \{x\})$. 
+    称$\beta$为$x$处的一个障碍(barrier).
+\end{definition}
+
+\begin{example}
+	$0$不是$\Delta^*$的一个障碍.
+
+	若否，则存在$0$处的一个障碍$\beta<0$. 则$0$是$\beta$的可去奇点，与最大值原理矛盾.
+\end{example}
+
+\begin{lemma}\label{csh}
+	设$x\in \partial Y$是一个正则点，$V\ni x$是邻域，$m\leq c$，
+    则存在$v\in C(\Over{Y},\R)\cap SH(Y)$使得
+
+	(1) $v(x)=c$. (2) $v|_{\Over{Y}\cap V}\leq c$. 
+    (3) $v|_{\Over{Y}\backslash V}=m$.
+\end{lemma}
+
+\begin{proof}
+	不妨设$c=0$，设$U\ni x$及$\beta\in C(\Over{Y}\cap U,\R)$为$x$处的一个障碍. 
+    不妨设$V\subset \subset U$，则
+	$$\sup \{\beta(y): y \in \Over{Y}\cap \partial V \}<0.$$
+	则存在$k\gg1$，使得$k\beta|_{\Over{Y}\cap \partial V} <0$.
+
+	取$V:=\begin{cases} \max\{m,k\beta\}, &\text{于 } \Over{Y}\cap V \\ 
+    m, &\text{于 } \Over{Y}\backslash V.\end{cases}$，
+    $V\in SH(Y\backslash V)$，$V\in SH(Y\backslash \Over{V})$.
+
+	另一方面，$V=m$于$Y\cap \partial Y$的一个充分小邻域，
+    其在那里也次调和，故$V\in SH(Y)$.
+\end{proof}
+		
+\begin{theorem}[Perron]
+	设$Y\subset X$开，使得任意$x\in \partial Y$正则，
+    则相应于$\partial Y$上的有界的连续函数的Dirichlet问题可解.
+\end{theorem}
+
+\begin{proof}
+	$\forall \varep >0$，存在邻域$V\ni x$使得
+	$$\vert f(y)-f(x)\vert <\varep,\quad \forall y\in \partial Y \cap V,$$
+	设$k\leq f(y)\leq K$于$\partial Y$.
+
+	由引理\ref{csh}，存在$\nu \in SH(Y)\cap C(\Over{Y},\R)$使得
+	$\begin{cases} \nu(x)=f(x)-\varep\\
+		\nu|_{\Over{Y}\cap V} \leq f(x)-\varep\\
+		\nu|_{\Over{Y}\backslash V}=k-\varep \end{cases}$，
+	则$\nu|_{\partial Y}\leq f$. 进而推出$\nu \in \mathcal{P}_f$，故$\nu \leq u_f^*$，
+    故$\varliminf\limits_{y\to x}u_f^*(y)\geq \nu(x)=f(x)-\varep$.
+    
+    同样，存在$\omega\in SH(Y)\cap C(\Over{Y},\R)$使得
+    $\begin{cases} \omega(x)=-f(x)\\ \omega|_{\Over{Y}\cap V}\leq -f(x)\\
+    \omega|_{\Over{Y}\backslash V}=-K \end{cases}$，
+    则对于任意$\mu\in \mathcal{P}_f$，任意$y\in \partial Y\cap V$，
+    有$\mu(y)\leq f(y)<f(x)+\varep \leq -\omega(y)+\varep$，
+    进而$(\mu+\omega)|_{\partial Y\cap V}\leq \varep$.
+
+	另一方面，$(\mu+\omega)|_{\Over{Y}\cap \partial V}\leq K-K=0\leq \varep$.
+
+	因为$\mu +\omega\in SH(Y\cap V)$，所以由最大值原理，
+    $\mu+\omega\leq \varep$于$Y\cap V$，$\forall \mu \in \mathcal{P}_f$. 
+    故$\varlimsup\limits_{y\to x} u_f^*(y)\leq \varep w(x)=f(x)+\varep$.
+\end{proof}
+
+\begin{example}
+	$Y\subsetneq \bbC$单连通，$a\in \partial Y$. 不妨设$a=0$. 
+    取$\beta(z):=\Re (1/\log z)$于$\Over{Y} \cap \Delta$. 因为
+    $$\beta(z)=\Re \frac{\Over{\log z}}{\vert \log z\vert^2}
+    =\frac{\log \vert z\vert}{\vert \log z \vert^2}\leq 0$$
+    于$\Over{Y}\cap \Delta$，且
+    $$-\beta(z)=\frac{-\log \vert z\vert}{\vert \log z\vert^2} 
+    \leq \frac{1}{-\log \vert z\vert},$$
+    进而$\beta$为$0\in \partial Y$处的一个障碍.
+\end{example}
+
+\begin{proposition}
+	$X$是Riemann面，$Y\subset X$开，$x\in \partial Y$. 
+    若存在邻域$V\ni x$使得$Y\cap V$单连通，则$x$为$Y$的正则点. 
+    特别地，若$\partial Y$为$C^1$光滑的，则任意$x\in \partial Y$是正则点.
+\end{proposition}
+
+\begin{remark}
+	$Y\subset \subset X$，$\partial Y$分段光滑，
+    此时Dirichlet问题的解属于Riemann本人. 
+    Riemann采用了下面的所谓Dirichlet原理：
+
+	设$\mathscr{F}=\{u\text{ 在 }\Omega\text{ 内部分片 }C^2\text{ 且 }u|_{\partial Y}=f, 
+    \text{ 在 }\Over{\Omega}\text{ 上分片 }C^1\}$，则使得能量积分
+    $$\int_Y du\wedge *du=:D(u), \quad u\in \mathscr{F}$$
+    达到最小值的$u_0$为Dirichlet问题的解.
+
+	$D(u,w):=\int_Y du\wedge *dw$，$t\in \R$，
+    则$D(u_0+tw)=D(u_0)+2tD(u_0,w)+t^2D(w)$，推出
+    $$\int_Y \Delta u_0\cdot w=D(u_0,w)=0,\quad \forall w,$$
+    故$\Delta u_0=0$.（变分法）
+	Weierstrass提出了严厉的批评：一个变分问题一般情形下最小值不一定能达到！
+
+	但在1900年左右，Hilbert给出了Dirichlet原理的正确叙述，从而挽救了Dirichlet原理.
+\end{remark}
+		
+\subsection{可数拓扑}
+
+
+设 $Y \subset\subset X$ 为开集, 且边界 $\partial Y$ 正则. 给定 $y \in Y$, 我们定义一个函数族:
+\[ \mathcal{F}_y := \{u \in \mathrm{SH}(Y \setminus \{y\}) : u \geqslant 0, \mathrm{supp}\, u \subset Y, \text{且 } u(z) + \log|z| \text{ 在 } y \text{ 的某坐标邻域上次调和}\}. \]
+称 $g_Y(x, y) := \sup\{u(x) : u \in \mathcal{F}_y\}$ 为 $Y$ 上的 Green 函数.
+
+\begin{theorem}
+Green 函数 $g_Y(x,y)$ 具有以下性质:
+\begin{enumerate}
+    \item $g_Y(x, y) > 0$, 对于任意的 $x \neq y$;
+    \item $g_Y(\cdot, y) \in \mathrm{Harm}(Y \setminus \{y\})$;
+    \item $g_Y(\cdot, y)|_{\partial Y} = 0$;
+    \item $g_Y(z, y) + \log|z|$ 在 $y$ 的某坐标邻域上调和;
+    \item 对称性: 若 $\partial Y$ 分段光滑, 则有 $g_Y(x, y) = g_Y(y, x)$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+首先证明 $\mathcal{F}_y \neq \emptyset$. 我们可以构造如下函数:
+\[
+u_0(z) := 
+\begin{cases} 
+-\log|z| & |z| < 1 \\ 
+0 & |z| \geqslant 1 
+\end{cases}
+\]
+由于在 $\{|z| = 1\}$ 的一个邻域中, 该函数可以表示为 $u_0(z) = \max\{-\log|z|, 0\}$, 由次调和函数的性质可知其在全空间上次调和, 从而推得 $u_0 \in \mathcal{F}_y$, 即该函数族非空.
+
+接下来证明 $\mathcal{F}_y$ 在 $\overline{Y} \setminus \{y\}$ 上局部一致有上界. 令圆盘 $\Delta_r := \{z : |z| < r\}$, 其中 $0 < r < 1$. 由 Perron 定理可知, 存在 $W_r \in \mathrm{Harm}(Y \setminus \overline{\Delta}_r) \cap C(\overline{Y} \setminus \Delta_r)$, 使得 $W_r|_{\partial Y} = 0$ 且 $W_r|_{\partial \Delta_r} = 1$. 由调和函数的最大值原理可得, 在 $Y \setminus \overline{\Delta}_r$ 上有 $0 < W_r < 1$. 
+
+我们记 $\lambda_r := \max\limits_{|z|=1} W_r < 1$. 对于任意的 $u \in \mathcal{F}_y$, 令 $U_r := \max\limits_{|z|=r} u$. 我们断言在 $Y \setminus \Delta_r$ 上有 $u \leqslant U_r \cdot W_r$. 事实上, 考察函数 $u - U_r \cdot W_r$, 显然有 $u - U_r \cdot W_r \in \mathrm{SH}(Y \setminus \overline{\Delta}_r)$, 并且它在边界 $\partial \Delta_r$ 以及 $\partial Y$ 上均满足小于等于 $0$. 由次调和函数的最大值原理即可直接推得该断言成立.
+
+另一方面, 因为$u + \log|z| \in \mathrm{SH}(\Delta)$, 故
+\[ U_r + \log r \leqslant \max_{|z|=1} u + \log 1 \leqslant \lambda_r \cdot U_r, \]
+所以通过移项解得 $U_r \leqslant \frac{-\log r}{1-\lambda_r}$. 进一步由最大值原理可以推得, 在 $Y \setminus \overline{\Delta}_r$ 上恒有
+\[ u \leqslant \frac{-\log r}{1-\lambda_r}. \]
+
+由前面的 Perron 方法的构造过程, 我们可以直接得出性质 (2) 和 (3) 成立. 
+此外, 因为 $g_Y(\cdot, y) \geqslant 0$, 所以对于任意的 $0 < r < 1$, 均有 $-g_Y(\cdot, y) \in \mathrm{Harm}^-(Y \setminus \overline{\Delta}_r)$. 再结合其在边界 $\partial Y$ 上取值为 $0$ 的条件, 即可验证性质 (1) 成立.
+
+对于性质 (4), 首先注意到当 $|z| < 1$ 时, 有 $g_Y(z, y) \geqslant u_0(z) \geqslant -\log|z|$. 另一方面, 对于任意的 $u \in \mathcal{F}_y$, 当 $|z| < r < 1$ 时, 满足
+\[ u + \log|z| \leqslant U_r + \log r \leqslant \frac{-\log r}{1-\lambda_r}. \]
+从而推得当 $|z| < r$ 时, $g_Y(z, y) \leqslant -\log|z| + \frac{-\log r}{1-\lambda_r}$. 这说明 $g_Y(z, y) + \log|z|$ 在 $y$ 的一个去心邻域内是有界的, 进而推得 $y$ 为其可去奇点. 至此性质 (4) 证毕.
+
+为了证明性质 (5) 的对称性, 我们首先需要引入并证明如下的 Green 公式引理:
+
+\begin{lemma}[Green 公式]
+设 $Y \subset\subset X$, 且边界 $\partial Y$ 分段光滑. 则对于任意的 $u_1, u_2 \in C^1(\overline{Y})$, 均有
+\[ \int_Y (u_1 d'd''u_2 - u_2 d'd''u_1) = \int_{\partial Y} (u_1 d''u_2 + u_2 d'u_1). \]
+\end{lemma}
+
+\begin{proof}
+我们对等式左边的两项分别运用外微分工具与 Stokes 定理进行分部积分展开. 对于第一项有:
+\begin{align*}
+\int_Y u_1 d'd''u_2 &= \int_Y u_1 d d''u_2 = \int_Y \left[ d(u_1 d''u_2) - du_1 \wedge d''u_2 \right] \\
+&= \int_{\partial Y} u_1 d''u_2 - \int_Y d'u_1 \wedge d''u_2.
+\end{align*}
+同理, 考虑到微分算子的反交换性 $d'd'' = -d''d'$, 对于第二项有:
+\begin{align*}
+\int_Y u_2 d'd''u_1 &= -\int_Y u_2 d''d'u_1 = -\int_Y u_2 d d'u_1 \\
+&= -\int_Y \left[ d(u_2 d'u_1) - du_2 \wedge d'u_1 \right] \\
+&= -\int_{\partial Y} u_2 d'u_1 - \int_Y d'u_1 \wedge d''u_2.
+\end{align*}
+将上述两式展开结果相减, 积分项 $\int_Y d'u_1 \wedge d''u_2$ 恰好抵消, 即可得到引理中的等式.
+\end{proof}
+
+现在我们利用 Green 公式来证明 Green 函数的对称性. 对于充分小的 $\varepsilon \ll 1$, 我们在区域 $Y$ 中挖去分别在 $x_1$ 和 $x_2$ 附近的局部坐标圆盘, 构造截断区域:
+\[ Y_\varepsilon := Y \setminus (\{|z_1| < \varepsilon\} \cup \{|z_2| < \varepsilon\}). \]
+
+记 $u_j = g_Y(\cdot, x_j)$, 其中 $j=1, 2$. 由于 $u_1, u_2$ 在区域 $Y_\varepsilon$ 内均为调和函数, 满足 $d'd'' u_j = 0$, 因此由前面引入的 Green 公式可得
+\[ 0 = \int_{Y_\varepsilon} (u_1 d'd''u_2 - u_2 d'd''u_1) = \int_{\partial Y_\varepsilon} (u_1 d''u_2 + u_2 d'u_1). \]
+
+注意到 $u_j$ 在外边界 $\partial Y$ 上取值为 $0$, 故边界积分仅在内部挖去的圆周边上进行. 同时, 奇点附近的非主部积分量级约为 $\varepsilon \log \varepsilon$, 当 $\varepsilon \to 0$ 时会趋于零. 因此取极限后, 对于积分的第一项我们有:
+\begin{align*}
+\lim_{\varepsilon \to 0} \int_{\partial Y_\varepsilon} u_1 d''u_2 &= -\lim_{\varepsilon \to 0} \int_{|z_1|=\varepsilon} u_1 d''u_2 - \lim_{\varepsilon \to 0} \int_{|z_2|=\varepsilon} u_1 d''u_2 \\
+&= \lim_{\varepsilon \to 0} \int_{|z_2|=\varepsilon} u_1 d'' \log|z_2| \\
+&= \frac{1}{2} \lim_{\varepsilon \to 0} \int_{|z_2|=\varepsilon} u_1 \frac{dz_2}{z_2} = \pi i u_1(x_2).
+\end{align*}
+
+同理, 对于积分的第二项, 通过类似的极限计算可以得到
+\[ \lim_{\varepsilon \to 0} \int_{\partial Y_\varepsilon} u_2 d'u_1 = -\pi i u_2(x_1). \]
+
+将上述两项极限代入到总积分为 $0$ 的等式中, 即可推出 $u_1(x_2) = u_2(x_1)$, 即
+\[ g_Y(x_2, x_1) = g_Y(x_1, x_2). \]
+至此定理性质 (5) 证毕.
+\end{proof}
+
+\begin{example}
+单位圆盘 $\Delta$ 上的 Green 函数具有如下显式表达:
+\[ g_\Delta(x, y) = \log\frac{|1-\bar{y}x|}{|x-y|}. \]
+\end{example}
+
+\begin{proof}
+令 $h(x,y)$ 为上述等式右端的函数表达式. 容易验证 $g_\Delta(\cdot, y)$ 和 $h(\cdot, y)$ 在 $y$ 处具有相同的对数奇异性. 因此它们的差值是一个全纯的调和函数:
+\[ g_\Delta(\cdot, y) - h(\cdot, y) \in \mathrm{Harm}(\Delta). \]
+并且当 $x$ 趋于边界 $\partial \Delta$ 时, 由于分子分母模长相等, 此差值的边界值为 $0$. 从而由调和函数的最大值原理即可得出, 在整个 $\Delta$ 上有 $g_\Delta(x,y) \equiv h(x,y)$.
+\end{proof}
+
+\begin{lemma}\label{3.2.4}
+设 $X, Y$ 为拓扑空间, 连续映射 $f \in C(X, Y)$ 为开的满射. 若 $X$ 具有可数拓扑, 则 $Y$ 也具有可数拓扑.
+\end{lemma}
+
+\begin{proof}
+设 $\mathcal{U}$ 为 $X$ 的一个可数拓扑基. 令 $\mathcal{B} = \{f(U) : U \in \mathcal{U}\}$. 由于 $f$ 是开映射, 则 $\mathcal{B}$ 为 $Y$ 中可数个开集所组成的集合.
+
+接下来证明 $\mathcal{B}$ 为 $Y$ 的拓扑基: 给定任意开集 $D \subset Y$ 及其中的一点 $y \in D$. 因为 $f$ 为满射, 所以存在 $x \in X$, 使得 $f(x) = y$. 
+又因为 $f$ 连续, 所以 $f^{-1}(D)$ 是包含 $x$ 的开邻域; 再结合 $\mathcal{U}$ 为 $X$ 的拓扑基, 可知必定存在 $U \in \mathcal{U}$, 使得 $x \in U \subset f^{-1}(D)$.
+
+令 $V := f(U) \in \mathcal{B}$, 对上述包含关系两边作用 $f$, 即有 $y \in V \subset D$. 这说明 $\mathcal{B}$ 确实是 $Y$ 的一个拓扑基.
+\end{proof}
+
+
+\begin{lemma}[Poincar\'e-Volterra]
+设 $X$ 为连通流形, $Y$ 为 Hausdorff 空间且具有可数拓扑. 若连续映射 $f \in C(X, Y)$ 满足条件: 对于任意的 $y \in Y$, 其原像 $f^{-1}(y)$ 均为离散集, 则 $X$ 也具有可数拓扑.
+\end{lemma}
+
+\begin{proof}
+设 $\mathcal{U}$ 为 $Y$ 的一个可数拓扑基. 记 $\mathcal{B}$ 为满足以下条件的开集 $V \subset X$ 的全体:
+\begin{enumerate}
+    \item $V$ 具有可数拓扑;
+    \item 存在 $U \in \mathcal{U}$, 使得 $V$ 为 $f^{-1}(U)$ 的一个连通分支.
+\end{enumerate}
+
+接下来分三步进行论证:
+\begin{itemize}
+    \item [$(\alpha)$]\qquad 首先证明 $\mathcal{B}$ 为 $X$ 的拓扑基: 给定任意开集 $D \subset X$ 以及其中的一点 $x \in D$. 因为 $X$ 为流形, 所以存在紧包含于 $D$ 中的坐标邻域 $W$ 满足 $x \in W \subset\subset D$, 使得 $\partial W \cap f^{-1}(f(x)) = \emptyset$ (这是因为 $f$ 为离散映射, 使得其原像在局部没有极限点). 从而 $f(\partial W)$ 是 $Y$ 中的紧集, 并且 $f(x) \notin f(\partial W)$. 
+
+    \qquad 又因为 $Y$ 是 Hausdorff 空间, 故可以将点与紧集分离, 即存在拓扑基元素 $U \in \mathcal{U}$, 使得 $f(x) \in U$ 但 $U \cap f(\partial W) = \emptyset$. 现设 $V$ 为 $f^{-1}(U)$ 中包含 $x$ 的连通分支. 由于 $V \cap \partial W = \emptyset$ 且 $V$ 连通, 故必有 $V \subset W$. 进一步, 由于 $W$ 是坐标邻域从而具有可数拓扑, 因此其子空间 $V$ 也具有可数拓扑. 这就说明了 $V \in \mathcal{B}$, 并且满足 $x \in V \subset W \subset D$. 由此证明了 $\mathcal{B}$ 是 $X$ 的一个拓扑基.
+
+    \item [$(\beta)$]\qquad 其次证明: 对于任意的 $V_0 \in \mathcal{B}$, 存在至多可数个 $V \in \mathcal{B}$ 使得 $V_0 \cap V \neq \emptyset$. 事实上, 对于任意给定的 $U \in \mathcal{U}$, $f^{-1}(U)$ 的各个连通分支是互不相交的. 因为 $V_0$ 具有可数拓扑, 所以它至多与可数个 $f^{-1}(U)$ 的连通分支相交. 再结合 $\mathcal{U}$ 本身是可数的这一事实, 即可推得上述结论成立.
+
+    \item[$(\gamma)$]\qquad 最后证明 $\mathcal{B}$ 是可数的: 任意固定一个 $V^* \in \mathcal{B}$. 我们归纳定义集合族 $\mathcal{B}_n$ 如下: 对于任意的 $V \in \mathcal{B}_n$, 存在一系列集合 $V_0, V_1, \cdots, V_n \in \mathcal{B}$, 使得 $V_0 = V^*$, $V_n = V$, 并且相邻集合始终相交, 即 $V_{k-1} \cap V_k \neq \emptyset$. 
+
+\qquad 因为 $X$ 是连通的, 由连通空间的链覆盖性质可知全空间基 $\mathcal{B} = \bigcup_n \mathcal{B}_n$. 此时只需证明每个 $\mathcal{B}_n$ 都是至多可数的即可. 我们采用数学归纳法: 假设 $\mathcal{B}_{n-1}$ 至多可数, 那么根据前面 $(\beta)$ 的结论, $\mathcal{B}_{n-1}$ 中的每个元素至多与可数个 $\mathcal{B}$ 中的元素相交, 从而推得下一层的 $\mathcal{B}_n$ 也至多可数. 既然所有的 $\mathcal{B}_n$ 均可数, $\mathcal{B}$ 也必然可数. 证毕.
+\end{itemize}
+\end{proof}
+
+\begin{theorem}[Rad\'o]
+Riemann 面具有可数拓扑.
+\end{theorem}
+
+\begin{proof}
+设 $U \subset X$ 为一个坐标邻域, $K_1, K_2$ 为 $U$ 中两个互不相交的闭圆盘. 令 $Y = X \setminus (K_1 \cup K_2)$. 
+
+因为边界 $\partial Y = \partial K_1 \cup \partial K_2$ 是正则的, 所以存在调和函数 $u \in \mathrm{Harm}(Y) \cap C(\overline{Y})$, 使得其在边界上满足 $u|_{\partial K_1} = 0$ 且 $u|_{\partial K_2} = 1$. 从而推得 $\omega := d'u \in \Omega(Y)$ 且 $\omega \not\equiv 0$ (否则 $u$ 在整个连通分支上将为常数).
+
+令 $P: \widetilde{Y} \to Y$ 为万有覆盖映射. 定义函数 $f(x) := \int_a^x P^*\omega$, 由于全纯微分的积分与路径选取无关, 故有 $f \in \mathcal{O}(\widetilde{Y})$ 且 $f$ 不为常数.
+
+由此说明, 全纯映射 $f: \widetilde{Y} \to \mathbb{C}$ 满足了 Poincar\'e-Volterra 引理的条件, 进而推得覆盖空间 $\widetilde{Y}$ 具有可数拓扑. 进一步由前面的引理 \ref{3.2.4} 可知, 映射的像空间 $Y$ 也具有可数拓扑. 最后, 既然 $X = Y \cup U$, 而 $U$ 作为坐标邻域自然具有可数拓扑, 两个可数拓扑空间的并集仍具有可数拓扑, 故 $X$ 也具有可数拓扑. 证毕.
+\end{proof}
+
+
+\begin{definition}
+设 $X$ 为 Riemann 面, $Y \subset X$. 我们记
+\[ h(Y) := Y \sqcup \bigcup \{D : D \text{ 为 } X \setminus Y \text{ 的相对紧连通分支}\}. \]
+称一个开集 $Y$ 为 Runge 的, 若其满足 $Y = h(Y)$.
+\end{definition}
+
+\begin{proposition}$\ $
+    \begin{enumerate}
+        \item 对于任意的 $Y \subset X$, 均有 $h(h(Y)) = h(Y)$;
+        \item 若 $Y_1 \subset Y_2$, 则有 $h(Y_1) \subset h(Y_2)$.
+    \end{enumerate}
+\end{proposition}
+
+
+\begin{theorem}
+对于上述定义的 $h(Y)$, 我们有以下结论:
+\begin{enumerate}
+    \item 若 $Y$ 为闭集, 则 $h(Y)$ 也为闭集;
+    \item 若 $Y$ 为紧集, 则 $h(Y)$ 也为紧集.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item \qquad 证明 $h(Y)$ 为闭集：记 $(C_j)_{j \in J}$ 为补集 $X \setminus Y$ 的连通分支全体. 由于 $X \setminus Y$ 是开集且底空间 $X$ 为流形, 因此所有的连通分支 $C_j$ 均为开集. 我们记 $J_0 := \{j \in J : C_j \text{ 相对紧}\}$ 为相对紧分支的指标集. 根据 $h(Y)$ 的定义, 其补集可表示为 $X \setminus h(Y) = \bigcup \{C_j : j \in J \setminus J_0\}$. 由于它是若干开集之并, 故必为开集, 从而推得 $h(Y)$ 是闭集. 
+\item \qquad 证明当 $Y$ 紧时 $h(Y)$ 亦紧：不妨假设 $Y \neq \emptyset$. 取 $Y$ 的一个相对紧邻域 $U$. 接下来分两步分析连通分支与该邻域的关系. 
+\begin{enumerate}
+    \item 首先证明：对于任意的 $j \in J_0$, $C_j \cap \overline{U} \neq \emptyset$. 若不然, 必定存在某个分支满足 $\overline{C}_j \subset X \setminus U \subset X \setminus Y$. 因为闭包 $\overline{C}_j$ 必然包含 $C_j$, 这说明 $\overline{C}_j$ 本身也成为了 $X \setminus Y$ 的一个连通分支, 从而推得 $C_j = \overline{C}_j$. 这意味着 $C_j$ 既是开集又是闭集, 这与连通空间 $X$ 的连通性相矛盾. 
+\item 其次证明：在所有的连通分支中, 仅有有限个 $C_j$ 与边界 $\partial U$ 相交（即 $C_j \cap \partial U \neq \emptyset$）. 这是因为边界 $\partial U$ 为紧集, 并且被一族互不相交的开集 $C_j$ 所覆盖, 由 Heine-Borel 定理即可得出存在有限子覆盖的结论. 
+\end{enumerate}
+\qquad 综合上述两点断言, 假设仅有指标 $j_1, \cdots, j_m \in J_0$ 使得 $C_{j_k} \cap \partial U \neq \emptyset$. 结合断言 (a) 的反证逻辑可知, 对于剩余的全体相对紧分支, 即对于任意的 $j \in J_0$ 且 $j \neq j_k$ ($1 \leqslant k \leqslant m$), 必定完全包含在 $U$ 内部, 即 $C_j \subset U$. 因此, 整个包络 $h(Y)$ 被完全包含在有限并集 $U \cup C_{j_1} \cup \cdots \cup C_{j_m}$ 之中. 由于该并集是紧集, 从而推得 $h(Y)$ 本身也是紧集. 定理证毕. 
+    \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+设 $X$ 为非紧的 Riemann 面, 则存在一列 $X$ 的紧子集 $(K_j)_{j=1}^\infty$, 满足以下三个条件：
+\begin{itemize}
+    \item [(1)] 对于任意的 $j$, 均有 $K_j = h(K_j)$；
+    \item [(2)] 对于任意的 $j \geqslant 1$, 均有 $K_{j-1} \subset \mathring{K}_j$；
+    \item [(3)] 全空间可以被该序列穷竭, 即 $X = \bigcup_j K_j$. 
+\end{itemize}
+\end{corollary}
+
+\begin{proof}
+因为 $X$ 具有可数拓扑, 所以 $X$ 必然存在一个可数的开覆盖. 从而我们可以选取一个逐渐扩大的紧集序列 $K_1' \subset K_2' \subset \cdots$, 使得它们的并集覆盖全空间, 即 $X = \bigcup_j K_j'$. 
+
+下面我们通过归纳法来构造满足要求的序列 $K_j$. 首先取 $K_1 = h(K_1')$, 由算子 $h$ 的基本性质易知此时必定有 $K_1 = h(K_1)$. 
+
+假设满足条件的前 $n$ 个紧集 $K_1, \cdots, K_n$ 均已构造完毕. 我们选取一个足够大的紧集 $M$, 使得 $K_n' \cup K_n \subset \mathring{M}$. 接着令 $K_{n+1} := h(M)$. 如此归纳构造下去, 所得的序列 $(K_j)$ 即满足推论所需的全部穷竭条件. 证毕. 
+\end{proof}
+
+\begin{lemma}\label{3.2.11}
+设 $K_1, K_2 \subset X$ 为紧集, 且满足 $K_1 \subset \mathring{K}_2$ 以及 $K_2 = h(K_2)$. 则存在 Runge 集 $Y \subset X$, 使得 $K_1 \subset Y \subset K_2$, 并且边界 $\partial Y$ 分段光滑.
+\end{lemma}
+
+\begin{proof}
+因为边界 $\partial K_2$ 为紧集, 所以存在有限个坐标圆盘 $D_1, \cdots, D_k$ 覆盖 $\partial K_2$, 并且满足对于任意的 $1 \leqslant j \leqslant k$, 均有 $K_1 \cap \overline{D}_j = \emptyset$. 此时我们只需构造集合
+\[ Y := \mathring{K}_2 \setminus (\overline{D}_1 \cup \cdots \cup \overline{D}_k), \]
+易知该集合 $Y$ 即可满足引理所需的所有条件. 证毕.
+\end{proof}
+
+\begin{theorem}\label{3.2.12}
+若 $Y \subset X$ 为一个 Runge 开集, 则 $Y$ 的任何一个连通分支也是 Runge 的.
+\end{theorem}
+
+\begin{theorem}\label{3.2.13}
+设 $X$ 为非紧的 Riemann 面, 则存在一列相对紧的 Runge 域满足 $Y_1 \subset\subset Y_2 \subset\subset Y_3 \subset\subset \cdots$, 使得全空间可以被穷竭即 $X = \bigcup_j Y_j$, 并且每个区域的边界 $\partial Y_j$ 均分段光滑.
+\end{theorem}
+
+\begin{proof}
+为了证明该定理, 我们只需证明如下断言即可: 对于任意给定的紧集 $K \subset X$, 均存在相对紧的 Runge 域 $Y \subset\subset X$, 使得 $K \subset Y$ 且边界 $\partial Y$ 分段光滑.
+
+事实上, 我们可以选取一个包含 $K$ 的连通紧集 $K_1$, 并再选取一个紧集 $K_2$, 使得它们满足 $K_1 \subset \mathring{K}_2$ 且 $K_2 = h(K_2)$. 根据前面的引理 \ref{3.2.11} 可知, 存在一个 Runge 开集 $Y'$, 满足 $K_1 \subset Y' \subset K_2$, 并且其边界 $\partial Y'$ 是分段光滑的.
+
+此时, 我们只需取 $Y$ 为 $Y'$ 中包含 $K_1$ 的那个连通分支. 结合定理 \ref{3.2.12} 可知, Runge 开集的连通分支依然是 Runge 的, 从而该 $Y$ 即为满足条件的 Runge 域. 定理证毕.
+\end{proof}
+
+\textbf{特别地,} 若 $X$ 为一个非紧的单连通 Riemann 面, 则存在一列相对紧的单连通区域满足 
+\[ X_1 \subset\subset X_2 \subset\subset \cdots, \]
+使得全空间可以被其穷竭, 即 $X = \bigcup_j X_j$, 并且每个边界 $\partial X_j$ 均分段光滑.
+
+\begin{proof}
+由定理 \ref{3.2.13} 可知, 全空间可以被一列相对紧的 Runge 域穷竭. 因此, 为了证明上述穷竭区域也是单连通的, 我们只须证明: 若 $Y \subset X$ 为 Runge 域且母空间 $X$ 是单连通的, 则 $Y$ 也必定是单连通的.
+
+我们采用反证法. 假设 $Y$ 非单连通, 从拓扑结构来看, 则只有以下两种可能的情形:
+
+第一种情形是 $Y$ 有一个“柄” (即在 $Y$ 内存在一条闭曲线 $\gamma$ 不能收缩于一点). 但是, 如果这种情形发生, 则推得全空间 $X$ 也有一个柄, 这与 $X$ 是单连通的前提相矛盾, 故不可能.
+
+第二种情形是其补集 $X \setminus Y$ 有紧的连通分支 (这同样表现为存在围绕该紧分支的闭曲线 $\gamma$ 不能收缩于一点). 但是, 根据定义, 如果其补集出现了紧的连通分支, 则推得 $Y$ 是非 Runge 的开集, 这与 $Y$ 是 Runge 域的前提相矛盾, 故也不可能.
+
+综上所述, 这两种导致非单连通的情形均不成立, 从而 $Y$ 必然是单连通的. 证毕.
+\end{proof}
+
+\subsection{单值化定理}
+关于单值化定理，可参考同一作者的如下外部笔记：\href{https://liquid-geo.github.io/Kewei.github.io/Complex\%20Geometry.pdf}{pdf}.
+
+\begin{theorem}[单值化定理 (Poincar\'e, Kobe)]
+任何一个单连通 Riemann 面均双全纯等价于以下三者之一：$\mathbb{P}^1, \mathbb{C}, \Delta$, 即 $\simeq \mathbb{P}^1, \mathbb{C}, \Delta$.
+\end{theorem}
+
+\begin{lemma}[Riemann]\label{3.3.2}
+设 $Y \subset\subset X$ 为一个单连通区域且边界 $\partial Y$ 分段光滑, 则 $Y \simeq \Delta$.
+\end{lemma}
+
+\begin{theorem}[单值性定理 (Riemann-Weierstrass)]
+设 $X$ 为 Riemann 面,  $x_0, x_1 \in X$, 给定函数元 $P_0 \in \mathcal{O}_{x_0}$, 使得其可沿 $X$ 内任一条以 $x_0$ 为起点的曲线进行解析延拓. 假设 $\gamma_0, \gamma_1$ 为连接 $x_0$ 与 $x_1$ 的两条曲线, 若 $\gamma_0$ 同伦于 $\gamma_1$, 则 $P_0$ 分别沿 $\gamma_0, \gamma_1$ 解析延拓的终元必然相等.
+\end{theorem}
+
+\begin{proof}[引理的证明]
+固定点 $x_0 \in Y$, 并记 $U_0$ 为 $x_0$ 处的一个坐标圆盘. 
+
+因为函数 $g_Y(x, x_0) + \log|z(x)| \in \mathrm{Harm}(U_0)$, 所以存在全纯函数 $h_0 \in \mathcal{O}(U_0)$, 使得实部满足 $\mathrm{Re}h_0 = g_Y(\cdot, x_0) + \log|\cdot|$. 
+
+基于此, 我们构造函数 $f_0 := z \cdot e^{-h_0}$. 则易知 $f_0 \in \mathcal{O}(U_0)$, 并且 $f_0$ 在 $x_0$ 处恰有一个一阶零点. 此外, 根据其构造, 该函数的模长满足 $|f_0| = e^{-g_Y(\cdot, x_0)} < 1$.
+
+接下来考虑解析延拓的过程. 设 $\gamma \subset Y$ 为一条以 $x_0$ 为起点的任意曲线. 我们可以沿该曲线选取有限个坐标圆盘 $U_1, \cdots, U_n$, 使得它们满足如下的链式覆盖条件：
+\begin{enumerate}
+    \item 对于任意的 $j \geqslant 1$, $x_0 \notin U_j$；
+    \item 每个圆盘 $U_j$ 仅与其相邻的 $U_{j-1}$ 和 $U_{j+1}$ 相交非空；
+    \item 曲线的终点位于最后一个圆盘内, 即 $\gamma(1) \in U_n$；
+    \item 整条曲线被这些圆盘完全覆盖, 即 $\gamma \subset \bigcup_{j=0}^n U_j$.
+\end{enumerate}
+% (后续证明见下文)
+因为对于任意 $j \geqslant 1$, 均有 $g_Y(\cdot, x_0) \in \mathrm{Harm}(U_j)$, 所以存在全纯函数 $h_j \in \mathcal{O}(U_j)$, 使得其实部满足 $\mathrm{Re}h_j = g_Y(\cdot, x_0)$. 
+
+令 $f_j := e^{-h_j}$, 则易知 $f_j \in \mathcal{O}(U_j)$. 并且在相邻圆盘的交集 $U_j \cap U_{j+1}$ 上, 由于它们的模长相等, 故有 $|f_{j+1} / f_j| = 1$. 从而推得 $f_{j+1} = f_j \cdot e^{i\theta_j}$, 其中 $\theta_j \in \mathbb{R}$ 为一常数. 通过将 $f_{j+1}$ 替换为 $e^{-i\theta_j} \cdot f_{j+1}$ 后, 我们不妨设在 $U_j \cap U_{j+1}$ 上恒有 $f_{j+1} = f_j$. 这说明局部构造的函数 $f_0$ 可以沿曲线 $\gamma$ 进行解析延拓. 
+
+进一步, 因为区域 $Y$ 是单连通的, 由单值性定理可知, $f_0$ 的解析延拓结果是一个全局单值的全纯函数 $f \in \mathcal{O}(Y)$, 并且满足以下两点性质：(i) $x_0$ 为 $f$ 的一个一阶零点；(ii) 其模长满足 $|f| = e^{-g_Y(\cdot, x_0)} < 1$. 
+
+接下来, 我们只需证明 $f$ 给出了 $Y$ 到单位圆盘 $\Delta$ 的双全纯映射（即 $f: Y \simeq \Delta$）. 
+
+\begin{itemize}
+    \item [(a)]\qquad 证明 $f$ 为单叶函数：
+注意到 $f(x_0) = 0$, 则根据单位圆盘上 Green 函数的性质有 $g_\Delta(f(x), f(x_0)) = -\log|f(x)| = g_Y(x, x_0)$. 利用 Green 函数的对称性, 这等价于 $g_\Delta(f(x_0), f(x)) = g_Y(x_0, x)$. 为了证明单叶性, 我们来证明一个更一般的等式：
+\[ g_\Delta(f(y), f(x)) = g_Y(y, x), \quad \forall y \in Y. \qquad (*) \]
+若等式 (*) 已获证, 则当 $x \neq y$ 时, 必有 $g_Y(y, x) < \infty$；结合 (*) 即可推得 $g_\Delta(f(y), f(x)) < \infty$, 这必然要求 $f(x) \neq f(y)$, 即证明了 $f$ 是单叶的. 
+
+\qquad \textbf{断言 (*) 的证明：} 
+给定 $x \in Y$, 构造辅助函数 $u(y) := -g_\Delta(f(y), f(x)) + g_Y(y, x)$. 易知该函数满足 $u \in \mathrm{Harm}(Y \setminus f^{-1}(f(x)))$. 对于任意的 $x' \in f^{-1}(f(x))$, 选取局部坐标 $z$ 使得 $z(x') = 0$, 则在 $x'$ 附近 $u$ 有如下渐近展开：
+\[ u(z) \sim -\log|z| + \log|f(z) - f(0)| = \log \frac{|f(z) - f(0)|}{|z|}. \]
+由此可见, 若导数 $f'(0) \neq 0$, 则 $0$ 为函数 $u$ 的可去奇点；若导数 $f'(0) = 0$, 则当 $z \to 0$ 时有 $u(z) \to -\infty$. 
+
+\qquad 最后, 因为在边界上 $u|_{\partial Y} \leqslant 0$, 且由前面的推导已知 $u(x_0) = 0$, 所以由调和函数的最大值原理可得, 在全局必须有 $u \equiv 0$. 这同时说明上述 $f'(0) = 0$ 导致趋于 $-\infty$ 的第二种情形是不可能出现的. 至此, 断言 (*) 证毕, 进而 $f$ 的单叶性得证. 
+\item [(b)]\qquad 证明 $f$ 为满射：
+假设满射性不成立, 即边界相交不为空 $\partial f(Y) \cap \Delta \neq \emptyset$. 我们在该交集中取一点 $P \in \partial f(Y) \cap \Delta$. 
+
+\qquad 根据边界点的性质, 可以在区域 $Y$ 内取一个点列 $\{x_n\} \subset Y$, 使得当 $n \to \infty$ 时, 其像 $f(x_n) \to P$. 由于全空间是紧致的（或取单点紧化）, 通过用 $\{x_n\}$ 的一个收敛子列来代替原点列后, 我们不妨设 $x_n \to q \in \partial Y$. 
+
+\qquad 由于 $q$ 位于边界 $\partial Y$ 上, 根据 Green 函数的边界性质以及前面的等式关系, 我们取极限得到：
+\[ 0 = \lim_{n \to \infty} g_Y(x_n, x_0) = -\lim_{n \to \infty} \log|f(x_n)| = -\log|P|. \]
+但是, 由于点 $P$ 严格位于单位圆盘 $\Delta$ 内部, 即 $|P| < 1$, 故必定有 $-\log|P| > 0$. 这就得出了 $0 > 0$ 的矛盾. 
+
+\qquad 因此假设不成立, 必有 $f(Y) = \Delta$. 结合前面的单叶性证明, 证毕. 
+\end{itemize}
+\end{proof}
+
+\begin{lemma}\label{3.3.4}
+设 $G \subset \mathbb{C}$ 为一个区域, 并且满足其补集 $\mathbb{C} \setminus G$ 含有内点. 给定 $W_0 \in G$, 则函数族
+\[ \mathcal{F}_0 := \{f \in \mathcal{O}(\Delta, G) : f(0) = W_0\} \]
+是一个正规族. 
+\end{lemma}
+
+\begin{proof}
+取补集的一个内点 $a \in (\mathbb{C} \setminus G)^\circ$. 我们作如下的分式线性映射：
+\[ F: G \to \mathbb{C} \setminus \{a\}, \quad z \mapsto \frac{1}{z-a}. \]
+
+因为 $a$ 为 $\mathbb{C} \setminus G$ 的内点, 它与区域 $G$ 有严格的正距离, 所以映射 $F(G)$ 是有界的, 即存在充分大的半径 $r \gg 1$, 使得 $F(G) \subset \Delta_r$. 
+
+考虑复合函数族 $F \circ \mathcal{F}_0$. 由于它是一族取值于有界圆盘 $\Delta_r$ 内的全纯函数, 由 Montel 定理可知, $F \circ \mathcal{F}_0$ 构成一个正规族. 
+
+进一步地, 由于映射 $F$ 是双全纯的（可逆的）, 从而推得 $\mathcal{F}_0 = F^{-1}(F \circ \mathcal{F}_0)$ 也必定是一个正规族. 引理证毕. 
+\end{proof}
+
+\begin{lemma}[Kobe 引理]\label{3.3.5}
+定义函数族
+\[ \mathcal{S} := \{f \in \mathcal{O}(\Delta) \text{ 且为单叶函数 } : f(0)=0, f'(0)=1\}, \]
+则 $\mathcal{S}$ 是一个正规族.
+\end{lemma}
+
+\begin{proof}
+设 $\{f_n\} \subset \mathcal{S}$ 为该族中的任意函数序列. 根据正规族的定义, 我们只需证明存在一个子列收敛于某个 $f \in \mathcal{S}$ 即可. 
+
+首先考虑像集包含的最大圆盘. 令 $r_n := \sup\{r > 0 : \Delta_r \subset f_n(\Delta)\}$ 为使得中心在原点的圆盘 $\Delta_r$ 包含于 $f_n(\Delta)$ 的最大半径. 考虑其逆映射 $f_n^{-1} : \Delta_{r_n} \to \Delta$. 由于原函数满足 $f_n(0)=0$ 且 $f_n'(0)=1$, 故逆映射同样将原点映射到原点, 且 $(f_n^{-1})'(0) = 1$. 根据 Schwarz 引理 (对于映射 $F: \Delta_r \to \Delta_{r'}$ 且 $F(0)=0$, 有 $|F'(0)| \leqslant r'/r$), 将其应用于 $f_n^{-1}$ 得到:
+\[ 1 = |(f_n^{-1})'(0)| \leqslant \frac{1}{r_n}. \]
+从而推得 $r_n \leqslant 1$.
+
+接下来构造辅助函数. 选取边界点 $a_n \in \partial \Delta_{r_n}$, 使得 $a_n \notin f_n(\Delta)$. 作归一化函数 $g_n := f_n/a_n$. 因为 $\Delta_{r_n} \subset f_n(\Delta)$, 对两边同除以 $a_n$ 即可推得 $\frac{1}{a_n}\Delta_{r_n} \subset g_n(\Delta)$. 考虑到 $|a_n| = r_n$, 这意味着单位圆盘 $\Delta \subset g_n(\Delta)$. 同时, 由于 $a_n \notin f_n(\Delta)$, 显然有 $1 \notin g_n(\Delta)$. 因为区域 $g_n(\Delta)$ 是单连通的且不包含点 $1$, 所以其上存在全纯的平方根分支 $\psi(z) = \sqrt{z-1}$.
+
+令 $h_n := \psi \circ g_n$, 则有 $h_n^2 = g_n - 1$. 我们断言集合 $h_n(\Delta)$ 与其关于原点的对称集 $-h_n(\Delta)$ 是互不相交的. 假设不然, 存在 $z_1, z_2 \in \Delta$, 使得 $h_n(z_1) = -h_n(z_2)$. 两边平方得到 $g_n(z_1) - 1 = g_n(z_2) - 1$, 即 $g_n(z_1) = g_n(z_2)$. 由于 $f_n$ 单叶, 从而 $g_n$ 也单叶, 这要求 $z_1 = z_2$. 代回原式得出 $h_n(z_1) = 0$, 进而 $g_n(z_1) = 1$. 但已知 $1 \notin g_n(\Delta)$, 产生矛盾. 故 $h_n(\Delta) \cap (-h_n(\Delta)) = \emptyset$.
+
+令固定区域 $U := \psi(\Delta)$. 因为已知 $\Delta \subset g_n(\Delta)$, 所以有 $U \subset h_n(\Delta)$. 结合上一段的结论, 必然有 $h_n(\Delta) \cap (-U) = \emptyset$. 这说明函数序列 $\{h_n\}$ 的像集避开了某个具有内点的闭集. 由引理 \ref{3.3.4} 可知, $\{h_n\}$ 存在收敛子列. 又因为 $f_n = a_n(h_n^2+1)$, 且序列 $\{a_n\}$ 的模长 $|a_n| = r_n \leqslant 1$ 有界, 所以通过抽取子列, 我们不妨设 $\{h_n\}$ 收敛且 $\{a_n\}$ 也收敛. 因此 $\{f_n\}$ 存在收敛子列, 记其极限为 $f \in \mathcal{O}(\Delta)$. 根据内闭一致收敛的性质, 保留了原点处的值和导数, 故 $f(0)=0$ 且 $f'(0)=1$.
+
+最后证明极限函数 $f$ 是单叶的. 假设不然, 存在某点 $a \in \mathbb{C}$, 使得方程 $f(z) = a$ 在 $\Delta$ 内的根的个数 $\# f^{-1}(a) \geqslant 2$. 那么必定存在一个稍小的半径 $r < 1$, 使得 $f(z)-a$ 在圆盘 $\Delta_r$ 内有 $k \geqslant 2$ 个零点, 且在边界 $\partial \Delta_r$ 上没有零点. 根据辐角原理, 零点个数可以表示为积分:
+\[ k = \frac{1}{2\pi i} \int_{|z|=r} \frac{f'(z)}{f(z)-a} dz. \]
+由于 $\{f_n\}$ 在 $\partial \Delta_r$ 上一致收敛于 $f$, 且分母不为零, 因此相应的积分值也会收敛. 这意味着对于足够大的 $n \gg 1$, $f_n(z)-a$ 在 $\Delta_r$ 内也会有 $k \geqslant 2$ 个零点. 但这与 $f_n \in \mathcal{S}$ 均为单叶函数的已知条件相矛盾. 综上所述, 极限函数 $f$ 必定是单叶的, 即 $f \in \mathcal{S}$. 引理证毕.
+\end{proof}
+
+\begin{lemma}\label{3.3.6}
+设 $0 < R \leqslant \infty$, 且 $0 \in Y \subsetneq \Delta_R$ 为一个单连通区域. 则存在 $r < R$ 及全纯映射 $f \in \mathcal{O}(Y, \Delta_r)$, 使得 $f(0)=0$ 且 $f'(0)=1$.
+\end{lemma}
+
+\begin{proof}
+首先考虑 $R < \infty$ 的情形. 通过缩放, 我们不妨假设 $R=1$ (即 $\Delta_R = \Delta$). 既然 $Y$ 严格包含于 $\Delta$, 我们可以选取一点 $a \in \Delta \setminus Y$.
+
+定义分式线性变换 $\varphi(z) = \frac{z-a}{1-\bar{a}z}$, 易知 $\varphi \in \mathrm{Aut}(\Delta)$. 因为 $a \notin Y$, 所以原点 $0 \notin \varphi(Y)$. 既然 $\varphi(Y)$ 是一个不包含原点的单连通区域, 其上必然存在全纯的平方根分支. 从而存在 $g \in \mathcal{O}(Y)$, 使得在 $Y$ 上有 $g^2 = \varphi$, 并且像集 $g(Y) \subset \Delta$.
+
+记 $b = g(0)$. 类似地, 我们取自同构变换 $\psi(z) = \frac{z-b}{1-\bar{b}z}$. 现构造复合映射
+\[ h := \psi \circ g : Y \to \Delta. \]
+显然 $h$ 是全纯的, 并且满足 $h(0) = \psi(g(0)) = \psi(b) = 0$.
+
+接下来计算 $h$ 在原点的导数, 记为 $\rho := h'(0)$. 根据链式法则有 $\rho = \psi'(b) \cdot g'(0)$. 对等式 $g^2 = \varphi$ 两边求导得到 $2g(z)g'(z) = \varphi'(z)$, 故在 $z=0$ 处有 $g'(0) = \frac{\varphi'(0)}{2g(0)}$. 另一方面, 直接求导可得:
+\[ \varphi'(z) = \frac{1-\bar{a}z + (z-a)\bar{a}}{(1-\bar{a}z)^2} = \frac{1-|a|^2}{(1-\bar{a}z)^2}. \]
+代入原点值, 得到 $\varphi'(0) = 1-|a|^2$. 同理可计算出 $\psi'(b) = \frac{1}{1-|b|^2}$. 
+
+将上述导数值代入 $\rho$ 的表达式中, 得到:
+\[ \rho = \frac{1}{1-|b|^2} \cdot \frac{1-|a|^2}{2b}. \]
+注意到 $b^2 = (g(0))^2 = \varphi(0) = -a$, 因此有 $|a| = |b|^2$. 将其代入并化简上式:
+\[ \rho = \frac{1}{1-|b|^2} \cdot \frac{1-|b|^4}{2b} = \frac{1+|b|^2}{2b}. \]
+由于 $|b| < 1$, 根据基本不等式容易验证其模长满足 $|\rho| = \frac{1+|b|^2}{2|b|} > 1$. 
+
+最后, 我们令 $r := 1/|\rho| < 1$, 并定义 $f := h/\rho$. 显然 $f \in \mathcal{O}(Y, \Delta_r)$, 且满足 $f(0)=0$, $f'(0) = h'(0)/\rho = 1$. 这就证明了 $R < \infty$ 的情形.
+
+对于 $R = \infty$ 的情形 (即 $Y \subsetneq \mathbb{C}$), 我们同样可以在补集中取点, 通过开根号的共形映射将 $Y$ 转化为有界区域, 从而转化为上述 $R < \infty$ 的情形加以解决. 引理证毕.
+\end{proof}
+
+
+
+\begin{proof}[单值化定理的证明]
+\begin{itemize}
+    \item [(a)]\qquad 设 $X$ 为紧 Riemann 面. 给定任意全纯微分 $\omega \in \Omega(X)$, 因为 $X$ 是单连通的, 所以沿路径的积分 $f(z) := \int_a^z \omega$ 定义了一个全局全纯函数 $f \in \mathcal{O}(X)$. 由紧黎曼面上的最大模原理可知, 全纯函数必然为常数, 即 $f \equiv \mathrm{const}$. 从而推得 $\omega = df \equiv 0$. 这说明 $X$ 上的全纯微分空间维度 $g(X) = 0$（即亏格为 0）, 由此即可得出 $X \simeq \mathbb{P}^1$. 
+
+    \item[(b)]\qquad 设 $X$ 为非紧 Riemann 面. 由前文所述, 必定存在一列单连通区域的穷竭列
+\[ Y_0 \subset\subset Y_1 \subset\subset Y_2 \subset\subset \cdots \]
+使得全空间 $X = \bigcup_j Y_j$, 并且每个区域的边界 $\partial Y_j$ 均分段光滑. 根据引理 \ref{3.3.2}, 对于任意的 $n$, 均有 $Y_n \simeq \Delta$. 
+此时我们在基础区域 $Y_0$ 中固定一点 $a \in Y_0$, 并选取其附近的局部坐标邻域 $(U, z)$. 由 Riemann 映射定理可知, 对于每个 $Y_n$, 均存在某个半径 $r_n > 0$ 以及相应的双全纯映射 $f_n : Y_n \to \Delta_{r_n}$, 使得它们均满足归一化条件：$f_n(a) = 0$ 且 $f_n'(a) = 1$. 
+
+\item[(c)]\qquad 证明序列 $\{r_n\}$ 单调递增：
+对于相邻的映射, 我们构造复合过渡映射 $h := f_{n+1} \circ f_n^{-1} : \Delta_{r_n} \to \Delta_{r_{n+1}}$. 显然 $h$ 是一个全纯映射, 且满足 $h(0)=0$. 根据链式法则计算其在原点的导数：
+\[ h'(0) = \frac{f_{n+1}'(a)}{f_n'(a)} = 1. \]
+将 Schwarz 引理应用于上述映射 $h$, 可以得到如下的不等式估计：
+\[ 1 = |h'(0)| \leqslant \frac{r_{n+1}}{r_n}, \]
+从而推得 $r_n \leqslant r_{n+1}$. 这说明 $\{r_n\}$ 是一个单调递增数列, 故其极限必定存在, 记为 $R := \lim_{n \to \infty} r_n \in (0, \infty]$. 
+
+\item[(d)]\qquad 运用对角线法则构造收敛子列：
+我们断言存在 $\{f_n\}$ 的一个公共子列 $\{f_{n_k}\}$, 使得对于任意的 $m$, 从某个 $k$ 开始, 序列 $\{f_{n_k}|_{Y_m}\}_{k \geqslant m}$ 在紧致子区域 $Y_m$ 上内闭一致收敛. 
+
+\qquad 事实上, 我们定义归一化函数 $g_n(z) := \frac{1}{r_0} f_n(f_0^{-1}(r_0 z))$. 易知 $g_n \in \mathcal{O}(\Delta)$ 且为单叶函数, 同时满足 $g_n(0)=0$ 和 $g_n'(0)=1$. 根据引理 \ref{3.3.5}, $\{g_n\}$ 构成一个正规族. 由于 $f_n$ 可以由 $g_n$ 线性表出, 故推得必定存在一个子列 $\{f_{n_{0k}}\} \subset \{f_n\}$, 在 $Y_0$ 上内闭一致收敛. 
+同理可推, 对于该子列, 必定存在进一步的子列 $\{f_{n_{1k}}\} \subset \{f_{n_{0k}}\}$, 在扩大的区域 $Y_1$ 上内闭一致收敛. 以此类推, 我们能不断提取出在更大区域 $Y_m$ 上收敛的子列 $\{f_{n_{mk}}\} \subset \{f_{n_{m-1,k}}\}$. 此时, 只需采用 Cantor 对角线法则, 提取对角元序列 $f_{n_k} := f_{n_{kk}}$, 即可满足上述断言. 
+
+\item[(e)]\qquad 由于全空间 $X$ 可以被上述紧致区域穷竭, 因此上述对角线子列的极限定义了一个全局全纯映射, 设为 $f_{n_k} \to f \in \mathcal{O}(X)$. 根据一致收敛的性质, 极限函数保留了原归一化条件, 即 $f(a)=0$, $f'(a)=1$, 并且根据单叶函数的极限性质, 易知极限函数 $f$ 依然是单叶的. 
+
+\item[(f)]\qquad 最后证明满射性 $f: X \simeq \Delta_R$：
+显然有像集 $f(X) \subset \Delta_R$. 假设该映射并非满射, 即 $f(X) \subsetneq \Delta_R$. 则由于 $f(X)$ 为单连通区域且不为全空间, 根据引理 \ref{3.3.6}, 必定存在某个半径 $r < R$ 以及全纯映射 $g \in \mathcal{O}(f(X), \Delta_r)$, 使得 $g(0)=0$ 且 $g'(0)=1$. 
+
+\qquad 此时我们构造复合映射 $h := g \circ f \circ f_n^{-1} : \Delta_{r_n} \to \Delta_r$. 易知 $h$ 为全纯映射且满足 $h(0)=0$ 以及 $h'(0)=1$. 再次运用 Schwarz 引理于此复合映射, 可得：
+\[ 1 = |h'(0)| \leqslant \frac{r}{r_n}. \]
+从而推得对于任意的 $n$, 均有 $r_n \leqslant r$. 令 $n \to \infty$ 取极限, 得到 $R \leqslant r$. 这与前提中假定的 $r < R$ 构成了矛盾. 
+
+\qquad 综上所述, 假设不成立, 必定有 $f(X) = \Delta_R$. 从而 $X$ 双全纯等价于圆盘 $\Delta_R$（当 $R<\infty$ 时对应于 $\Delta$, 当 $R=\infty$ 时对应于 $\mathbb{C}$）. 单值化定理证毕. 
+\end{itemize}
+\end{proof}
+
+\begin{definition}
+设 $X$ 为 Riemann 面, $\widetilde{X}$ 为其万有覆盖. 我们根据万有覆盖的同构类型对 $X$ 进行如下分类：
+称 $X$ 为椭圆的, 若 $\widetilde{X} \simeq \mathbb{P}^1$; 
+称 $X$ 为抛物的, 若 $\widetilde{X} \simeq \mathbb{C}$; 
+称 $X$ 为双曲的, 若 $\widetilde{X} \simeq \Delta$.
+\end{definition}
+
+\begin{theorem}[Riemann 面的分类]
+基于上述定义, Riemann 面具有如下等价分类结论:
+\begin{enumerate}
+    \item 椭圆 Riemann 面双全纯等价于 $\mathbb{P}^1$;
+    \item 抛物 Riemann 面双全纯等价于 $\mathbb{C}$, $\mathbb{C}^*$, 或是环面 $\mathbb{C}/\Gamma$;
+    \item 双曲 Riemann 面则包含所有其余的情形.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+我们分别对前两种情形进行证明:
+\begin{enumerate}
+    \item \qquad 设 $X$ 为紧 Riemann 面, 且其万有覆盖为 $\mathbb{P}^1$. 对于任意的全纯微分 $\omega \in \Omega(X)$, 它都可以提升为 $\Omega(\mathbb{P}^1)$ 中的一个元素. 由于 $\mathbb{P}^1$ 上的全纯微分空间仅有零元素, 即 $\Omega(\mathbb{P}^1) = \{0\}$, 因此必然有 $\omega = 0$. 这意味着全纯微分空间的维度 $g(X) = 0$ (即亏格为 0), 从而推得 $X \simeq \mathbb{P}^1$.
+\item \qquad 此时流形可表示为商空间 $X = \mathbb{C}/\Gamma$, 其中 $\Gamma \subset \mathrm{Aut}(\mathbb{C})$ 为离散子群. 
+若 $\Gamma = \{\mathrm{id}\}$, 则显然有 $X = \mathbb{C}$. 
+
+\qquad 接下来考虑 $\Gamma \neq \{\mathrm{id}\}$ 的情形. 因为对于任意的自同构变换 $\gamma \in \Gamma$, 其均可写为 $\gamma(z) = az+b$ (其中 $a \neq 0$). 假设 $\gamma \in \Gamma \setminus \{\mathrm{id}\}$ 无不动点, 那么必然要求 $a=1$. 这说明 $\Gamma$ 中的元素均为平移变换, 从而推得离散群 $\Gamma$ 只有两种可能的形式: 
+要么是单生成元生成的 $\Gamma = \mathbb{Z}\cdot b$, 要么是双生成元生成的 $\Gamma = \mathbb{Z}\cdot b_1 + \mathbb{Z}\cdot b_2$ (其中 $b_1, b_2$ 在 $\mathbb{R}$ 上线性无关).
+
+\qquad 对于后者, 对应的商空间即为环面. 而对于前者, 我们可构造如下映射:
+\[ \pi: \mathbb{C} \to \mathbb{C}^*, \quad z \mapsto \exp\left(\frac{2\pi i}{b} z\right). \]
+易知该映射即为其万有覆盖映射, 从而对应于 $X \simeq \mathbb{C}^*$. 定理证毕.
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}[Picard 小定理]
+设非常数全纯函数 $f \in \mathcal{O}(\mathbb{C})$，则其遗漏的值的个数至多为一个，即 $\#(\mathbb{C} \setminus f(\mathbb{C})) \leqslant 1$.
+\end{theorem}
+
+\begin{proof}
+我们采用反证法. 假设存在两点 $a, b \in \mathbb{C} \setminus f(\mathbb{C})$ 未被函数 $f$ 取到. 
+
+令 $X := \mathbb{C} \setminus \{a, b\}$. 由前面的分类定理可知，该穿孔复平面 $X$ 是双曲的，其万有覆盖为单位圆盘 $\Delta$. 既然 $f$ 遗漏了 $a, b$ 两点，这说明其像集满足 $f(\mathbb{C}) \subset X$. 
+
+由此，我们可以将原函数看作一个全纯映射 $f \in \mathcal{O}(\mathbb{C}, X)$. 根据覆盖空间提升定理，该映射可以提升为以其万有覆盖为目标空间的全纯映射 $\widetilde{f} \in \mathcal{O}(\mathbb{C}, \Delta)$. 但是，由 Liouville 定理可知，定义在整个复平面上且有界的全纯函数必为常数，即 $\widetilde{f} \equiv \mathrm{const}$. 这进一步推得 $f \equiv \mathrm{const}$，这与定理前提中 $f$ 为非常数函数相矛盾. 
+
+综上所述，假设不成立，故遗漏点的个数至多为一个. 定理证毕.
+\end{proof}
+
+
+
+设 $X$ 为单连通 Riemann 面，我们可以在其上引入共形 Riemann 度量，其局部表达式为 $ds^2 = \lambda(z) dz \otimes d\bar{z}$. 针对三种不同类型的单连通面，其度量共形因子 $\lambda(z)$ 分别定义如下:
+\[
+\lambda(z) = 
+\begin{cases} 
+\frac{4}{(1+|z|^2)^2}, & \text{当 } X = \mathbb{P}^1 \text{ 时 (Fubini-Study 度量)} \\[1ex]
+1, & \text{当 } X = \mathbb{C} \text{ 时 (欧氏度量)} \\[1ex]
+\frac{4}{(1-|z|^2)^2}, & \text{当 } X = \Delta \text{ 时 (Poincar\'e 度量)} 
+\end{cases}
+\]
+
+基于上述共形度量，我们定义对应的 Gauss 曲率为:
+\[ K := -\frac{2}{\lambda} \frac{\partial^2 \log \lambda}{\partial z \partial \bar{z}}. \]
+
+\begin{theorem}
+对于上述三种标准度量，具有如下基本性质:
+\begin{enumerate}
+    \item 欧氏度量在平移作用下保持不变，且其 Gauss 曲率 $K = 0$;
+    \item Poincar\'e 度量在自同构群 $\mathrm{Aut}(\Delta)$ 的作用下保持不变，度量是完备的，且其 Gauss 曲率 $K = -1$;
+    \item Fubini-Study 度量对应的 Gauss 曲率为 $K = 1$.
+\end{enumerate}
+\end{theorem}
+
+\begin{corollary}[Riemann 面的几何分类]
+Riemann 面的分类与其上完备度量的曲率之间具有如下等价关系:
+\begin{enumerate}
+    \item 一个 Riemann 面为椭圆的，当且仅当其上存在完备 Riemann 度量使得 $K=1$;
+    \item 一个 Riemann 面为双曲的，当且仅当其上存在完备 Riemann 度量使得 $K=-1$;
+    \item 一个 Riemann 面为抛物的，当且仅当其上存在完备 Riemann 度量使得 $K=0$.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+对于性质 (1)，欧氏度量曲率为零的结论显然成立.
+
+我们先来计算性质 (3) 中 Fubini-Study 度量的曲率. 计算其对数偏导数可得：
+\[ \frac{\partial^2 \log(1+|z|^2)}{\partial z \partial \bar{z}} = \frac{1}{1+|z|^2} - \frac{|z|^2}{(1+|z|^2)^2} = \frac{1}{(1+|z|^2)^2}. \]
+代入 Gauss 曲率的定义公式进行化简，得到：
+\[ K = \frac{(1+|z|^2)^2}{2} \cdot \frac{2}{(1+|z|^2)^2} = 1. \]
+
+对于性质 (2) 中 Poincar\'e 度量的曲率计算，类似地有：
+\[ -\frac{\partial^2 \log(1-|z|^2)}{\partial z \partial \bar{z}} = \frac{1}{1-|z|^2} + \frac{|z|^2}{(1-|z|^2)^2} = \frac{1}{(1-|z|^2)^2}. \]
+从而其 Gauss 曲率为：
+\[ K = -\frac{(1-|z|^2)^2}{2} \cdot \frac{2}{(1-|z|^2)^2} = -1. \]
+
+接下来验证 Poincar\'e 度量的自同构不变性. 设 $g \in \mathrm{Aut}(\Delta)$. 由 Schwarz-Pick 定理可知，对于任意 $z, w \in \Delta$ 有：
+\[ \left| \frac{g(z)-g(w)}{1-\overline{g(w)}g(z)} \right| = \left| \frac{z-w}{1-\bar{w}z} \right|. \]
+在上述等式中令 $z \to w$，取极限推得如下关于微分形式的等式：
+\[ \frac{|g'(w)| |dw|}{1-|g(w)|^2} = \frac{|dw|}{1-|w|^2}. \]
+这直接说明了度量在拉回下保持不变，即 $g^*(ds_P^2) = ds_P^2$.
+
+最后，我们计算原点到任意一点 $z$ 的 Poincar\'e 距离 $d_P(0, z) = \log \frac{1+|z|}{1-|z|}$ (由此表达式可知，当趋于边界即 $|z| \to 1$ 时距离趋于无穷，从而推得度量 $ds_P^2$ 是完备的).
+
+为了证明该距离公式，不失一般性，设 $0 < x \leqslant 1$，$\gamma$ 为连接 $0$ 与 $x$ 的任意一条分段光滑曲线. 我们计算该曲线在 Poincar\'e 度量下的长度：
+\[ l(\gamma) = \int_0^1 \frac{2|\gamma'(t)|}{1-|\gamma(t)|^2} dt \geqslant 2 \left| \int_0^1 \frac{\gamma'(t)}{1-\gamma^2(t)} dt \right| = \log \frac{1+x}{1-x}. \]
+另外，若选取直射线段 $\gamma(t) = tx$ (其中 $t \in [0,1]$)，则上述不等式中的等号可以确切取到. 由此推得原点到 $x$ 的测地距离即为：
+\[ d_P(0, x) = \log \frac{1+x}{1-x}. \]
+
+进一步，对于圆盘内一般的点 $z$，由于 Poincar\'e 度量 $ds_P^2$ 在绕原点的旋转变换下是保持不变的，从而推得原点到 $z$ 的距离等价于原点到正实轴上 $|z|$ 处的距离，即有：
+\[ d_P(0, z) = d_P(0, |z|) = \log \frac{1+|z|}{1-|z|}. \]
+定理证毕.
+\end{proof}
+
+\begin{theorem}[Poincar\'e 定理]
+高维复分析中的复球 $\mathbb{B}^2 = \{(z_1, z_2) : |z_1|^2 + |z_2|^2 < 1\}$ 与多圆柱 $\Delta^2 = \Delta \times \Delta$ 是不双全纯等价的, 即 $\mathbb{B}^2 \not\simeq \Delta^2$.
+\end{theorem}
+
+
+\begin{theorem}[Poincar\'e]
+若 $X$ 为紧 Riemann 面, 且其亏格 $g \geqslant 2$, 则其万有覆盖双全纯等价于单位圆盘, 即 $\widetilde{X} \simeq \Delta$.
+\end{theorem}
+
+\begin{proof}[度量构造与方程求解思路]
+为了证明万有覆盖为 $\Delta$, 其核心在于在 $X$ 上构造出一个具有常负曲率 (如 $K=-1$) 的完备 Riemann 度量. 
+
+我们从 $X$ 上任意给定的一组光滑共形度量 $ds^2 = \lambda dz \otimes d\bar{z}$ 出发, 设其对应的 Gauss 曲率为 $K$. 我们的目标是寻找一个光滑函数 $u \in C^\infty(X)$, 通过共形因子缩放得到新度量, 这归结为求解如下的非线性偏微分方程:
+\[ e^{\frac{u}{2}} = \Box u - K, \qquad (*)\]
+其中定义的微分算子为 $\Box = \frac{1}{\lambda} \frac{\partial^2}{\partial z \partial \bar{z}}$.
+
+若上述方程 $(*)$ 是可解的, 我们即可定义新的共形度量因子 $\widetilde{\lambda} = \lambda \cdot e^{\frac{u}{2}}$, 从而得到全新的度量 $\widetilde{ds}^2 = \widetilde{\lambda} dz \otimes d\bar{z}$.
+
+接下来计算新度量 $\widetilde{ds}^2$ 对应的 Gauss 曲率 $\widetilde{K}$. 根据定义及对数求导法则展开:
+\begin{align*}
+\widetilde{K} &= - \frac{2}{\widetilde{\lambda}} \frac{\partial^2 \log \widetilde{\lambda}}{\partial z \partial \bar{z}} \\
+&= - \frac{2}{\lambda e^{\frac{u}{2}}} \left[ \frac{\partial^2 \log \lambda}{\partial z \partial \bar{z}} + \frac{1}{2} \frac{\partial^2 u}{\partial z \partial \bar{z}} \right].
+\end{align*}
+利用原度量曲率的定义式 $\frac{\partial^2 \log \lambda}{\partial z \partial \bar{z}} = -\frac{\lambda K}{2}$, 以及算子定义 $\frac{\partial^2 u}{\partial z \partial \bar{z}} = \lambda \Box u$, 我们可以将方括号内的式子进行代换与化简. 提出公共因子 $\lambda/2$ 后, 上式化为:
+\[ \widetilde{K} = e^{-\frac{u}{2}} \big[ K - \Box u \big]. \]
+最后, 将我们要求解的非线性方程 $(*)$ 的条件 $K - \Box u = -e^{\frac{u}{2}}$ 代入上式, 恰好得到:
+\[ \widetilde{K} = -1. \]
+这说明, 只要方程存在光滑解, 我们就能够在紧面 $X$ 上构造出常曲率为 $-1$ 的度量, 从而由几何分类原理推得其万有覆盖必定为双曲圆盘 $\Delta$. 证毕.
+\end{proof}

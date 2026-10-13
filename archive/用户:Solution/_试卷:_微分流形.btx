@@ -1,0 +1,248 @@
+\setdisplaytitle{试卷：微分流形}
+\sethtmltitle{试卷：微分流形}
+
+== 2025--2026学年期末(陈曦) ==
+一、\ (40分)
+\begin{enumerate}
+    \item 叙述光滑流形的定义，并验证
+    $$S^2:=\Bigl\{(x,y,z)\in\mathbb{R}^3\mid x^2+y^2+z^2=1\Bigr\}$$
+    是光滑流形.
+    \item 叙述正则子流形的定义。设$g:\mathbb{R}^n\to\mathbb{R}$光滑，设
+    $$f:\mathbb{R}^{n+1}\to\mathbb{R};(x_1,\ldots,x_n,x_{n+1})\mapsto x_{n+1}-g(x_1,\ldots,x_n).$$
+    证明$f^{-1}(0)$是$\mathbb{R}^{n+1}$的正则子流形.
+    \item 对$F:N\to M$, 叙述推前映射$F_{*,p}:T_pN\to T_{F(p)}M$的定义, 并用一组基表示它。
+    \item 构造外微分$d$。对$N$上的$k$-形式以及$F:N\to M$, 叙述拉回$F^*$的定义.
+    \item 叙述Stokes定理。设$D$是平面中的闭圆盘，
+    $$\omega=(x^2-y)dx+(y^2+x)dy,$$
+    使用Stokes定理计算$\int_{\partial D}\omega.$
+\end{enumerate}
+二、\ (60分)
+\begin{enumerate}
+    \item 考虑$\mathbb{R}^4=\{(x,y,z,t)\}$, 记
+    $$E=E_1dx+E_2dy+E_3dz,$$
+    $$B=B_1dy\wedge dz+B_2dz\wedge dx+B_3dx\wedge dy,$$
+    $$F=E\wedge dt+B.$$
+    \begin{enumerate}[label=(\arabic*)]
+        \item 计算$dF$.
+        \item 证明$dF=0$等价于：
+        $$\nabla\times E=-\frac{dB}{dt},\quad\operatorname{div}B=0.$$
+    \end{enumerate}
+    \item 考虑导子$D:C^\infty(M)\to C^\infty (M)$满足Leibniz律
+    $$D(fg)=D(f)g+fD(g).$$
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明：若$f|_U\equiv 0,$ 则$Df|_U\equiv0.$
+        \item 证明：存在唯一的向量场$X$, 使得对任意$f$成立$Df=Xf$. 给出$\{x^1,\ldots,x^n\}$下$X$的表达式.
+    \end{enumerate}
+    \item 考虑$$SO(2):=\Bigl\{A\in GL(2,\mathbb{R})\mid A^TA=I,\det A=1\Bigr\}.$$
+    \begin{enumerate}[label=(\arabic*)]
+        \item 验证$SO(2)$是一维李群并给出其李代数$\mathfrak{so}(2)=T_ISO(2).$
+        \item 证明$SO(2)$中元素都形如
+        $$\begin{pmatrix}
+            \cos\theta&-\sin\theta\\\sin\theta&\cos\theta
+        \end{pmatrix}.$$
+        \item 证明：
+        $$\Phi:S^1\to SO(2);\cos\theta+i\sin\theta\mapsto\begin{pmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{pmatrix}$$
+        是Lie群的同构，并给出$\Phi_{*,1}$的表达式.
+    \end{enumerate}
+    \item 考虑Liouville $1$-形式$\lambda$. (试卷上有完整的定义)
+    \begin{enumerate}[label=(\arabic*)]
+        \item 叙述余切簇$T^*M$的定义. 设其上的坐标卡为$(U,x^1,\ldots,x^n,p_1,\ldots,p_n)$, 证明：$\lambda=\sum_{i=1}^n p_idx^i.$
+        \item 计算$d\lambda$, 证明$(d\lambda)^n$是一个在$\pi^{-1}U$上非退化的$2n$-形式.
+        \item 证明$(d\lambda)^n$非退化与坐标卡的选取无关，由此说明它在$M$上非退化.
+    \end{enumerate}
+
+\end{enumerate}
+
+== 2025--2026学年期末(王志张) ==
+=== 1 简答题（每题 7 分）===
+\begin{enumerate}
+\item 证明：不存在紧致的极小曲面。
+\item 证明：无边界紧致曲面有局部凸点。
+\item 证明：$SL(n)$ 是流形。
+\item 给定流形 $M$，给出函数芽的定义。如果记 $F_m$ 是所有在 $m$ 点处消失的函数芽构成的理想，那么 $F_m / F_m^2$ 作为线性空间的维数是什么？为什么？
+\item 记 $\mathcal{X}(M)$ 是 $M$ 上光滑切向量场构成的集合。如果 $\omega$ 是一个 $k$ 形式，证明
+\[\omega: \mathcal{X}(M) \times \mathcal{X}(M) \times \cdots \times \mathcal{X}(M) \rightarrow C^{\infty}(M)\]
+给出了一个交错的 $C^\infty(M)$-多重线性函数。反过来对么？为什么？
+\item 线性空间的定向是什么？光滑流形的定向是什么？给出可定向的另外两个等价定义？Lie 群总是可定向的么？为什么？
+\item 在分布 $\mathscr{D}$ 上消失的 $q$ 形式的定义是什么？什么是微分理想？证明： $\mathscr{D}$ 是对合的当且仅当 $\mathscr{J}(\mathscr{D})$ 是微分理想。
+\end{enumerate}
+
+=== 2 作业题（每题8分）===
+\begin{enumerate}
+\item GTM 94 第四章第 18 题。
+\item GTM 94 第四章第 19 题。（无提示）
+\end{enumerate}
+
+=== 3 定理默写题（15 分）===
+给出奇异 $p$ 链的定义，再给出奇异同调空间的定义，
+定义形式 $\omega$ 在 $p$ 链上的积分，叙述并证明 $p$ 链形式的 Stokes 定理。
+
+=== 4 自己挑战（20分）===
+同 22--23 年最后一题。
+
+== 2022--2023学年期末(王志张) ==
+\qquad 本次考试延长了30分钟。
+\begin{itemize}
+    \item[1.]
+    （每小题7分，共49分）
+    \begin{enumerate}
+        \item[(1)]
+        什么是正则曲面的定向？能否用外法向量定义定向？证明你的结论。
+        \item[(2)]
+        证明：$\mathbb{R}^3$中的紧致无边曲面一定有严格凸点。
+        \item[(3)]
+        什么是微分流形？证明矩阵群$SL(n)$是微分流形。
+        \item[(4)]
+        什么是全纯向量丛？回忆复切丛的构造过程，并证明复切丛是全纯向量丛。
+        \item[(5)]
+        定义$R$- 模$M,N$的张量积。定义$M$的张量代数、外代数、$k$次外积。
+        \item[(6)]
+        什么是$\Omega^k(M)$？写出$v_1\wedge v_2\in \Omega^2(M)$在$T^2M^*$中的嵌入.已知$\omega\in \Omega^1(M)$,证明：$2!\langle \mathrm{d}\omega,X,Y\rangle = X\langle \omega,Y \rangle - Y\langle \omega,X \rangle -\langle \omega,[X,Y] \rangle$,其中$[\cdot,\cdot]$代表Lie括号。
+        \item[(7)]
+        证明：de Rham上同调是微分同胚不变量。
+    \end{enumerate}
+    
+    \item[2.]
+    （8分）设$M,N$都是连通的光滑流形.证明:
+        \begin{enumerate}
+        \item[(1)]若$M,N$都是可定向的,则$M \times N$也是可定向的.
+        \item[(2)]若$M,N$之中有一个是不可定向的,则$M \times N$是不可定向的.
+    \end{enumerate}
+
+    \item[3.]
+    （8分）\\
+    定义映射$f:D\to \mathbb{R}^3$为
+    \begin{align}
+        f(u,v)=(u,v,u^2+v^2+1)
+    \end{align}
+    其中$D=[0,1]\times [0,1]$,设
+    \begin{align}
+        \omega = y\mathrm{d}y\wedge \mathrm{d}z +xz \mathrm{d}x \wedge \mathrm{d}z
+    \end{align}
+    是$\mathbb{R}^3$上的$2$次微分式.求积分$\int\limits_D f^* \omega.$
+    
+    \item[4.]
+    （15分）
+    \begin{enumerate}
+        \item[(1)]
+        什么是投射模？
+        \item[(2)]
+        证明：若$B$是紧致无边光滑流形，$E$是$B$上的光滑向量丛，则$E(B)$是投射模.(Swan定理)
+        \item[(3)]
+        证明：若$B$是紧致无边光滑流形，$M$是投射$C^{\infty} (B)$- 模，则存在$B$上的光滑向量丛$E$使得$E(B)=M$.
+    \end{enumerate}
+
+    \item[5.]
+    （20分）研究环面上的Hodge算子.将环面$\mathbb{S}^1 \times \mathbb{S}^1$与$D = [0,1] \times [0,1] $商掉对边同向对应顶点后等同起来.
+    因而此时对环面上的光滑函数$f(x,y)$,有$f(0,y)=f(1,y),f(x,0)=f(x,1)$ (且任意阶导数也满足该相等条件). 
+    定义Hodge算子$\delta := -*\mathrm{d}\,*$是从$\Omega^k(D)$到$\Omega^{k-1}(D)$的线性映射，其中$*$满足：
+    \begin{center}
+        $*1 = \mathrm{d}x \wedge \mathrm{d}y, \quad *\mathrm{d}x = \mathrm{d}y, \quad *\mathrm{d}y = -\mathrm{d}x, \quad *\mathrm{d}x \wedge \mathrm{d}y = 1$。
+    \end{center}
+    \begin{enumerate}
+        \item[(1)]
+        对$\varphi , \psi \in \Omega^k(D)$，定义$\langle \varphi , \psi \rangle = \int\limits_D \varphi \wedge *\psi$。
+        证明$\langle \cdot ,\cdot \rangle$是$\mathbb{R}$线性空间$\Omega^k(D)$上的内积。
+        \item[(2)]
+        证明：在(1)的内积下，$\delta$是$\mathrm{d}$的对偶算子. (只需写$\varphi$为$0$-形式，$\psi$为$1$-形式的情形下，成立$d\varphi$和$\psi$的内积等于$\varphi$和$\delta\psi$的内积即可)
+        \item[(3)]
+        定义$\Omega^k(D)$到自身的Laplace算子$\Delta\omega = \mathrm{d}\delta \omega +\delta \mathrm{d} \omega$。
+        证明：$\Delta \omega =0$的充要条件是$\mathrm{d} \omega =0$，$\delta \omega =0$。
+        \item[(4)]
+        若$\omega=f\mathrm{d}x+g\mathrm{d}y$，证明：$-\Delta \omega = \big(\frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2}\big) \mathrm{d} x + \big(\frac{\partial^2 g}{\partial x^2} + \frac{\partial^2 g}{\partial y^2}\big) \mathrm{d} y$。
+        \item[(5)]
+        定义$1$-调和形式$H^1(M)=\{\omega\in\Omega^1(M):\Delta\omega=0\}$.
+        已知以下事实:定义$Z^1(M)=\{\omega\in\Omega^1(M):d\omega=0\}$,
+        我们有$Z^1(M)=H^1(M)\oplus d(C^\infty(M))$.
+        根据该事实证明本题中所定义的该环面上的$1$-调和形式所构成的空间同构于该环面的$1$维de Rham上同调群.
+        \item[(6)]
+        利用(4) (5)以及Liouville定理，计算该环面的$1$维de Rham上同调群。
+
+        注:本题内容可参考陈维桓第五章黎曼几何关于Hodge分解的相关内容,或查阅其他黎曼几何教材.
+    \end{enumerate}
+
+\end{itemize}
+
+== 2021--2022学年期末(王志张) ==
+\qquad 本次考试延长了15分钟。
+\begin{itemize}
+    \item[1.]
+    （每小题7分，共49分）
+    \begin{enumerate}
+        \item[(1)]
+        什么是正则曲面？正则曲面上是否存在微分结构？
+        \item[(2)]
+        叙述曲面上奇点指标的定义，并证明它不依赖于局部共形映射的选取。
+        \item[(3)]
+        给出簇的光滑点的定义。证明由$\R^n$上的光滑函数$f(x)=0$定义的簇是开的光滑流形。
+        \item[(4)]
+        写出复射影空间$\mathbb{CP}^n$的定义，并给出$\mathbb{CP}^n$上的一个复结构。
+        \item[(5)]
+        写出向量丛的cocyle条件，简要说明cocyle条件与向量丛的存在性的联系。
+        \item[(6)]
+        给出局部坐标系下外微分$d:A^r(M)\rightarrow A^{r+1}(M)$的定义。
+        写出外微分所需满足的四条性质，并验证$d$的定义满足这四条性质。
+        \item[(7)]
+        什么是de Rham上同调？说明平面$\R^2$去掉一个闭圆盘的$1$阶de Rham上同调群非平凡。
+    \end{enumerate}
+    
+    \item[2.]
+    （10分）
+    \begin{enumerate}
+        \item[(1)]给出$\R^{n+1}$的单位球面$S^n$的标准微分结构。
+        \item[(2)]定义映射$f:S^n\rightarrow RP^n$如下：
+        \[f(x_1,\cdots,x_{n+1})=[(x_1,\cdots,x_{n+1})].\]
+    证明：$f$是光滑映射，并且它的秩处处是$n$。
+    \end{enumerate}
+
+    \item[3.]
+    （10分）\\
+    设
+    \[\omega=Ady\wedge dz+Bdz\wedge dx+Cdx\wedge dy\]
+    是$\R^3$上的$2$次外微分式，且$d\omega=0$。令
+    \begin{align*}
+        \alpha=&\int_0^1tA(tx,ty,tz)dt(ydz-zdy)\\
+        +&\int_0^1tB(tx,ty,tz)dt(zdx-xdz)\\
+        +&\int_0^1tC(tx,ty,tz)dt(xdy-ydx),
+    \end{align*}
+    验证$d\alpha=\omega$。
+    
+    \item[4.]
+    （15分）
+    \begin{enumerate}
+        \item[(1)]
+        给出$C^\infty(U)$上的导算子的定义。
+        证明$C^\infty(U)$上的导算子全体$\mathcal{F}(U)$是$C^\infty(U)$- 模。
+        \item[(2)]
+        切丛$TM$在$U$上的截面$TM(U)$是$C^\infty(U)$- 模。
+        \item[(3)]
+        证明$TM(U)$与$\mathcal{F}(U)$模同构。
+    \end{enumerate}
+
+    \item[5.]
+    （16分）\\
+    定义层$\mathcal{S}$是$X$的所有开集$U$到Abel群的映射。对于开集$V \subset U$，定义层上的限制映射$r_{VU}$，满足以下条件：
+    * $r_{UU}=id_U$，
+    * 对于$U\subset V\subset W$，$r_{WU}=r_{WV}\circ r_{VU}$，
+    * 对于开集$U=\bigcup\limits_{\alpha\in I}U_{\alpha}$与
+    $f_\alpha \in \mathcal{S}(U_{\alpha})$，其中$I$是指标集，
+    若满足$r_{WU_\alpha}(f_{\alpha})=r_{WU_\beta}(f_{\beta})$，其中$W=U_\alpha\cap U_\beta$，
+    则存在$f \in \mathcal{S}(U)$使得$r_{U_\alpha U}(f)=f_\alpha$。
+
+    \begin{enumerate}
+        \item[(1)]对照向量丛之间的态射的概念，试给出层之间的映射的定义。进一步地，试给出层同构的定义。
+        \item[(2)]设$E$是$X$上的向量丛，记$E(U)$为$X$的开集$U$上的截面。试证明$E(U)$给出了$X$上连续函数环的模层。
+        \item[(3)]定义$X$的所有开集$U$到Abel群$G$的摩天大楼层为
+        \begin{equation*}
+            i_p(G)(U)=\left\{
+        \begin{aligned}
+            G \quad & p\in U,\\
+            0 \quad & p\notin U.
+        \end{aligned}
+        \right.
+        \end{equation*}
+试说明它是层。
+        \item[(4)]对于拓扑空间$X$，证明其上的任何向量丛不与摩天大楼层同构。
+    \end{enumerate}
+
+\end{itemize}

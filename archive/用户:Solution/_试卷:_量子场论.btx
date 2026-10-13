@@ -1,0 +1,71 @@
+\setdisplaytitle{试卷：量子场论}
+\sethtmltitle{试卷：量子场论}
+
+==2025秋 SIMIS 量子场论(一)期末试卷 ==
+\textbf{Exercise 1.} (12 points) \textit{In this exercise, we consider a massive real scalar field, with the mode decomposition}
+\begin{equation}
+\Phi(x) = \frac{1}{(2\pi)^{3/2}} \int \frac{d^3\mathbf{k}}{2k^0} (a_{\mathbf{k}} e^{-ikx} + a^\dagger_{\mathbf{k}} e^{ikx}), \quad [a_{\mathbf{k}}, a^\dagger_{\mathbf{k}'}] = 2k^0 \delta^{(3)}(\mathbf{k} - \mathbf{k}'),
+\end{equation}
+\textit{and $[a_{\mathbf{k}}, a_{\mathbf{k}'}] = [a^\dagger_{\mathbf{k}}, a^\dagger_{\mathbf{k}'}] = 0$.}
+
+1. \textit{Show that the operator $\Phi(x)$ satisfies the Klein-Gordon equation. (1 point)}
+
+2. \textit{Compute the commutator $[\Phi(x), :\Phi(y)\Phi(y):]$. (1 point)}
+
+3. \textit{Compute the following correlator, (2 points)}
+\begin{equation}
+\langle 0 | : \Phi(x_1)\Phi(x_2)\Phi(x_3) : : \Phi(x_4)\Phi(x_5)\Phi(x_6) : | 0 \rangle.
+\end{equation}
+
+4. \textit{We consider the following 2-particles state}
+\begin{equation}
+|2\rangle = \frac{1}{\sqrt{2}} \int \frac{d^3\mathbf{k}_1}{2k^0_1} \frac{d^3\mathbf{k}_2}{2k^0_2} f(\mathbf{k}_1)f(\mathbf{k}_2) a^\dagger_{\mathbf{k}_1} a^\dagger_{\mathbf{k}_2} |0\rangle, \quad \text{with} \quad \int \frac{d^3\mathbf{k}}{2k^0} |f(\mathbf{k})|^2 = 1.
+\end{equation}
+\textit{Compute the energy $E_2$ and energy dispertion $\Delta E_2$ of this state,}
+\begin{equation}
+E_2 = \frac{\langle 2 | H | 2 \rangle}{\langle 2 | 2 \rangle}, \quad \Delta E_2 = \sqrt{\frac{\langle 2 | H^2 | 2 \rangle}{\langle 2 | 2 \rangle} - (E_2)^2}
+\end{equation}
+\textit{where $H$ is the free field Hamiltonian $H = \frac{1}{2} \int d^3\mathbf{k} \, a^\dagger_{\mathbf{k}} a_{\mathbf{k}}$. Express the result in terms of the moments}
+\begin{equation}
+\mu_n = \int \frac{d^3\mathbf{k}}{2k^0} (k^0)^n |f(\mathbf{k})|^2.
+\end{equation}
+\textit{(3 points)}
+
+5. \textit{We introduce the parity operator}
+\begin{equation}
+P = \exp \left( -\frac{i\pi}{2} \int \frac{d^3\mathbf{k}}{2k^0} (a^\dagger_{\mathbf{k}} a_{\mathbf{k}} - \eta_p a^\dagger_{\mathbf{k}} a_{-\mathbf{k}}) \right),
+\end{equation}
+
+\textit{where $\eta_p = \pm 1$ is the intrinsic parity of the field. Show that the Hamiltonian commutes with $P$. (2 points)}
+
+6. \textit{Show that the field $\Phi(t, \mathbf{x})$ transforms under parity as $P \Phi(t, \mathbf{x}) P^{-1} = \Phi(t, -\mathbf{x})$. (3 points)}
+
+\textbf{Exercise 2.} (10 points) \textit{In this exercise, we study spinor QED, denote the massive Dirac field $\Psi(x)$, and the massless vector field $A_\mu(x)$.}
+
+1. \textit{We consider the following operator appearing in Dyson's perturbative series,}
+\begin{equation}
+\mathcal{O}_3(x_1, x_2, x_3) = (ie)^3 : 
+\overbrace{\bar{\Psi}^+(x_1) \gamma^{\mu_1} A^-_{\mu_1}(x_1) \overbrace{\Psi^+(x_1) \bar{\Psi}^+(x_2)}^{\text{}} \gamma^{\mu_2} A^-_{\mu_2}(x_2) \Psi^-(x_2)}^{\text{}} \overbrace{\bar{\Psi}^-(x_3) \gamma^{\mu_3} A^+_{\mu_3}(x_3) \Psi^-(x_3)}^{\text{}} :
+\end{equation}
+\textit{Write down the corresponding Feynman diagram assuming $x^0_1 < x^0_2 < x^0_3$. Indicate the type of particle on the diagram. (2 points)}
+
+2. \textit{Write down the operator $\mathcal{O}_3(x_1, x_2, x_3)$ in terms of Feynman propagators and a normal ordered product. (3 points)}
+
+3. \textit{We consider an initial state with two photons of momentum $\mathbf{p}_1, \mathbf{p}_2$ and polarization $\lambda_1, \lambda_2$, and a final state with a single photon of momentum $\mathbf{q}$ and polarization $\rho$, namely}
+\begin{equation}
+|i\rangle = a^{(\lambda_1)\dagger}_{\mathbf{p}_1} a^{(\lambda_2)\dagger}_{\mathbf{p}_2} |0\rangle, \quad |f\rangle = a^{(\rho)\dagger}_{\mathbf{q}} |0\rangle.
+\end{equation}
+\textit{Compute the following matrix element, (3 points)}
+\begin{equation}
+\langle f | : A^-_{\mu_1}(x_1) A^-_{\mu_2}(x_2) A^+_{\mu_3}(x_3) : |i\rangle.
+\end{equation}
+
+4. \textit{Deduce the corresponding S-matrix element}
+\begin{equation}
+S_{fi}^{[3]} = \frac{1}{6} \int d^4x_1 d^4x_2 d^4x_3 \langle f | \mathcal{O}_3(x_1, x_2, x_3) | i \rangle,
+\end{equation}
+\textit{and show that it can be written in the form}
+\begin{equation}
+S_{fi}^{[3]} = \delta^{(4)}(q - p_1 - p_2) \sum_{\sigma \in S_2} \mathcal{P}^{(\lambda_{\sigma(1)}, \lambda_{\sigma(2)}, \rho)}_{\mu_1, \mu_2, \mu_3} (\mathbf{p}_{\sigma(1)}, \mathbf{p}_{\sigma(2)}) \int d^4k \, R^{\mu_1, \mu_2, \mu_3}(p_{\sigma(1)}, p_{\sigma(2)}, k)
+\end{equation}
+\textit{where $\mathcal{P}^{(\lambda_1, \lambda_2, \rho)}_{\mu_1, \mu_2, \mu_3} (\mathbf{p}_1, \mathbf{p}_2)$ denotes the contribution of the polarization, and $R^{\mu_1, \mu_2, \mu_3}(p_1, p_2, k)$ is a rational function of its arguments. What is the interpretation of the remaining integral over $k$? Explain why this process must be discarded as non-physical. (4 points)}

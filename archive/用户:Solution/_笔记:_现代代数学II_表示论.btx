@@ -1,0 +1,1293 @@
+\newtheorem{exercise}{练习}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\nosectionnumbers
+\section{表示论的基本定义}
+\begin{definition}
+    $k$是域, $V$为$k$-向量空间, 
+    $GL(V)=\{f:V\rightarrow V\text{ 是 }k\text{-线性同构}\}$, $n=\dim_k V$.\par
+    \qquad 取$V$的一组基$\{e_1,\cdots,e_n\}$, 则$GL(V)\cong GL_n(k)$.
+\end{definition}
+
+\begin{definition} \textbf{群表示}\par
+    \qquad $G$为群, $k,V$同上, $G$在$k$上的线性表示（linear representation）
+    指群同态$\rho:G\rightarrow GL(V)$, 称$V$为表示空间, $n$为表示次数.
+\end{definition}
+
+\begin{example} 
+    \qquad $\rho:G\rightarrow GL(V)$, $\rho(g)=1_V, \forall g\in G$.
+\end{example}
+
+\begin{example} \textbf{一次表示}\par
+    \qquad $\dim V=1$, $GL(V)\cong k^*$，$f\mapsto \lambda_f$, 
+    其中$\lambda_f\cdot e_1=f(e_1)$（与基的选取无关）.\par
+    \qquad $\rho:G\rightarrow k^*$群同态, 
+    则$G/\Ker\rho \cong \Im\rho$是Abel群, 因此$\Ker\rho \supset [G,G]$，
+    其中$[G,G]=\{g_1g_2g_1^{-1}g_2^{-1}\mid g_1,g_2\in G\}$是$G$的换位子群.
+\end{example}
+
+\begin{example} \textbf{置换表示}\par
+    \qquad $X$非空, $G$左作用在$X$上, $G\times X\rightarrow X$, 
+    $(g,x)\mapsto g\cdot x$满足
+    \begin{itemize}\item[$\circ$] $1\cdot x=x, \forall x\in X$,\\
+    \item[$\circ$] $(g_1g_2)\cdot x=g_1\cdot (g_2x), \forall x\in X, g_1, g_2\in G$.\end{itemize}
+    \qquad 考虑以$\{e_x:x\in X\}$为基的$k$-向量空间$V_X$, 
+    定义$\rho:G\rightarrow GL(V_X)$, 
+    $\rho(g)(e_x)=e_{g\cdot x}, \forall x\in X, g\in G$.
+\end{example}
+
+\begin{definition} \textbf{子表示}\par
+    \qquad $(\rho,V)$是表示, $W\subset V$称为一个子表示(或$G$-不变子空间). 若\par
+    \qquad 1. $W$是子空间,\par
+    \qquad 2. $\forall g\in G$, $\rho(g)(W)\subset W$.
+
+\end{definition}
+
+\begin{definition} \textbf{商表示}\par
+    设$W$是$V$的一个子表示, 定义商表示: 
+    $\tilde{\rho}:G\rightarrow GL(V/W)$, $\tilde{\rho}(g)(v+W)=\rho(g)(v)+W$.
+
+\end{definition}
+
+\begin{exercise}
+    $\tilde{\rho}$是$G$的一个表示.
+\end{exercise}
+
+\begin{example} \textbf{正则表示}\par
+    \qquad $V_G=\langle e_g\rangle_{g\in G}$, 
+    $\rho_G:G\rightarrow GL(V_G)$, $\rho(g)(e_a)=e_{ga}$.
+\end{example}
+
+\begin{example}
+    $W=\{0\}$为平凡子表示.
+\end{example}
+
+\begin{definition} \textbf{不可约表示}\par
+    \qquad $(\rho,V)$为$G$的表示, 称它为不可约表示, 若它只有$\{0\}$和$V$两个子表示.
+\end{definition}
+
+\begin{definition} \textbf{完全可约表示}\par
+    \qquad 称$(\rho,V)$为完全可约表示, 
+    若$V=\bigoplus\limits_{i\in I} V_i$, $V_i$是不可约表示.
+\end{definition}
+
+\begin{exercise}
+    一次表示都是不可约的.
+\end{exercise}
+
+\begin{definition} \textbf{$G$-同态}\par
+    \qquad $(\rho_1,V_1), (\rho_2,V_2)$为$G$的表示, 
+    称映射$f:V_1\rightarrow V_2$为$G$-同态, 若\par
+    \qquad 1. $f$为$k$-向量空间同态.\par
+    \qquad 2. $\forall g\in G$, $f\circ \rho_1(g)=\rho_2(g)\circ f$.\par
+    \qquad 称$f$是$G$-同构, 若$f$是双射且$f,\textcolor{red}{f^{-1}}$均为$G$-同态(等价于$f$是双射且是$G$-同态).\par
+    \qquad 用$\Hom_G(V_1, V_2)$表示全体$V_1$到$V_2$的$G$-同态, 它是一个$k$-代数.
+\end{definition}
+
+\begin{exercise}
+    $f:V_1\rightarrow V_2$是$G$-同态, 则$\Ker f$是$V_1$的子表示, 
+    且$f$诱导出$G$-同构$\tilde{f}: V/\Ker f\cong \Im f$.
+\end{exercise}
+
+\begin{definition}
+    $G$为群, $k$为域, $k[G]=\Big\{\sum\limits_{g\in G}\lambda_g\cdot g\Bigm| 
+    \lambda_g\in k, \lambda_g=0\text{ 除有限个 }g\text{ 以外}\Big\}$.
+\end{definition}
+
+\begin{proposition} 群表示和模.\par
+    \qquad 1. $k[G]$-模 $\leftrightarrow$ $\rho$在$k$上的表示.\par
+    \qquad 2. 子模, 商模, 模同态 $\leftrightarrow$ 子表示, 商表示, $G$-同态.\par
+    \qquad 3. 单模, 半单模 $\leftrightarrow$ 不可约表示, 完全可约表示.
+\end{proposition}
+\begin{proof}
+	$(\rho,V)$是表示，定义$V$的$k[G]$模结构如下：
+	$\forall x=\sum_{g\in G}\lambda_g g\in k[G],
+    xv=\sum_{g\in G} \lambda_g \rho(g)(v)$.
+	
+	反之，$T$是$k[G]$模，则$T$可看作$k$-向量空间，
+    $\forall t\in T,\lambda \in k,\lambda t=(\lambda 1_G)t$.
+    定义$\rho:G\rightarrow GL(T),\rho(g)(t)=(1_k g)(t).$
+\end{proof}
+\begin{lemma}[Schur] $(\rho_1,V_1)$为不可约表示, $(\rho_2,V_2)$为表示,\par
+   
+    \qquad 1. 设$f\in \Hom_G(V_1,V_2)$, 则$f$单或者$f=0$.\par
+    \qquad 2. 设$g\in \Hom_G(V_2,V_1)$, 则$g$满或者$g=0$.\par
+    \qquad 3. $\End_G(V_1)$是可除环.\par
+    \qquad 4. 若$k$是代数闭域, $\dim_k V<\infty$, 
+    则$\End_G(V_1)=\{\lambda I_{V_1}\mid\lambda\in k\}\cong k$作为$k$-代数.
+\end{lemma}
+\begin{proof}
+	$\forall \lambda \in k,\lambda \cdot 1_V\in \End_{k[G]}(V)$.
+    设$f\in \End_{k[G]}(V)$，由$k$是代数闭域和$\dim_k V<+\infty$
+    知$f$在$k$上有特征值$\lambda$.
+	存在$0\neq v_0 \in V$，使得$f(v_0)=\lambda v_0$.
+    则$f-\lambda \cdot1_V\in \End_{k[G]}(V)$但$f-\lambda\cdot 1_V$不是同构，
+    所以$f-\lambda \cdot 1_V=0,f=\lambda \cdot 1_V$.
+\end{proof}
+\begin{proposition}
+    设$G$为有限群, $(\rho,V)$是不可约表示, 则$\dim_k V\leq |G|$.
+\end{proposition}
+\begin{proof}
+	取$v_0\neq 0\in V ,G=\{g_1,\cdots,g_n\}$，
+    令$W$是$\{\rho(g_i)(v_0)|1\leq i\leq n\}$生成的$k$-子空间.
+	
+	下证$W$是子表示.$\forall g \in G,\rho(g)\rho(g_i)(v_0)=\rho(gg_i)(v_0)\in W$，
+    则$W$是子表示，则由不可约性$V=W,\dim V=\dim W\leq n$.
+\end{proof}
+\begin{theorem} [Maschke]\par
+    \qquad 设$G$为有限群, $k$为域, 且$\operatorname{char} k=0$或$p$，
+    其中$p$是一个不整除$|G|$的素数，则$k[G]$是半单环.
+
+\end{theorem}
+\begin{proof}
+	$V$是$k[G]$子模，则$V$是$k$-线性空间，由基延拓，
+    存在$k$-线性空间$W$，使得$V\oplus W=k[G]$作为$k$-线性空间.
+	
+	定义$\pi :k[G]\rightarrow V$为投影映射，
+    由$\operatorname{char}k \nmid n$知道$n$可逆，记作$\frac{1}{n}$.
+	
+	定义$p:k[G]\rightarrow k[G],p(x)=\frac{1}{n}\sum_{g\in G} g\pi g^{-1}(x)$.
+	验证$p$为$k[G]$模同态，只需验证$\forall h\in G,x\in k[G],p(hx)=hp(x).$
+	而$p(hx)=\frac{1}{n}\sum_{g\in G} g\pi g^{-1}(hx)
+    =\frac{1}{n}\sum_{g\in G} hg^{-1}\pi g(x)=hp(x).$
+	
+	再证明$p^2=p$.$\forall x \in k[G],p^2(x)
+    =\frac{1}{n^2}\sum_{g_1\in G} \sum_{g_2\in G} g_1g_2\pi g_2^{-1}g_1^{-1}(x)
+    =\frac{1}{n}\sum_{g\in G} g\pi g^{-1}(x)=p(x)$.
+	
+	再证明$\Im p=V.$一方面$\pi g^{-1}(x)\in V$，则由$V$是$k[G]$子模
+    知$g\pi g^{-1}(x)\in V,p(x)\in V$，从而$\Im p \subset V$.
+    另一方面$\forall v\in V,p(v)=\frac{1}{n}\sum_{g\in G} g\pi g^{-1}(v)
+    =\frac{1}{n}\sum_{g\in G} g g^{-1}(v)=v$，知$V\subset \Im p$.
+	
+	综合以上，$k[G]=\Im p\oplus \Ker p=V\oplus \Ker p$
+    且$ \Ker p $为$k[G]$子模，由此知$k[G]$半单.
+\end{proof}
+\begin{lemma}
+    $R$是环, $M$是$R$-模, $p\in \End_R(M)$, 且$p^2=p$, 
+    则$M=\Ker p\oplus \Im p$.
+\end{lemma}
+
+\begin{example}
+    无限群$(\Z,+)$, $\rho:\Z\rightarrow GL_2(\R)$, $V=\R^2$, 
+    $\rho(n)=\begin{pmatrix} 1& n\\ 0& 1 \end{pmatrix}$.\par
+    \qquad 设$W$是$\R^2$的一维子表示, 
+    $W=\langle\begin{pmatrix} x_0\\y_0 \end{pmatrix}\rangle$, 
+    则$\rho(n)\begin{pmatrix} x_0\\y_0 \end{pmatrix}\in W$对于任意整数$n$成立.\par
+    \qquad 故有$\begin{pmatrix} x_0+ny_0\\y_0 \end{pmatrix}
+    =\lambda \begin{pmatrix} x_0\\y_0 \end{pmatrix}$, 
+    进而$W=\{\begin{pmatrix} x\\0 \end{pmatrix}:x\in \R\}$.\par
+    \qquad 因为$\R^2$只有一个一维子表示, 故不存在一维子表示$T$, 
+    使得$\R^2=W\oplus T$, 故$(\rho,\R^2)$不是半单的.
+\end{example}
+
+\begin{example}
+    对于素数$p$, $F_p=(\Z/p\Z,+)$, $\rho: \Z/p\Z\rightarrow GL_2(F_p)$, 
+    $\rho(\overline{a})=\begin{pmatrix} \overline{1} &\overline{a}\\
+     0 &\overline{1} \end{pmatrix}$.\par
+    练习: 这只有一个一维子表示.
+\end{example}
+
+\begin{definition}
+    设$G$是有限群, $k[G]$是半单环, $R=k[G]$是$k$-代数, 
+    则$\End_R(_RR)\cong R^{\mathrm{op}}$.
+\end{definition}
+
+\begin{proposition}
+    $_RR=M_1\oplus \cdots \oplus M_s$, 其中$M_i$是单子模(极小左理想). 
+    设$M_1,\cdots, M_l$是$M_i$中两两不同构的, 
+    则$_RR\cong n_1M_1\oplus \cdots \oplus n_lM_l$.\par
+    \qquad 若$M$是不可约表示, 则存在$i_0$使得$M\cong M_{i_0}$.
+\end{proposition}
+
+\begin{proposition}
+    $$\End_R(_RR)\cong \prod\limits_{i=1}^l \End_R(n_iM_i)
+    =\prod\limits_{i=1}^l M_{n_i}(D_i),$$
+    其中$D_i=\End_R(M_i)$. \par
+    \qquad 则$R\cong \prod\limits_{i=1}^l M_{n_i}(D_i^{\mathrm{op}})$, 
+    作为$k$代数. 进而$|G|=\sum\limits_{i=1}^n n_i^2\dim_k D_i$.
+\end{proposition}
+
+\begin{proposition}
+    设$k$是代数闭域, 则$D_i\cong k$, 进而$|G|=\sum\limits_{i=1}^l n_i^2$.\par
+    \qquad $n_1M_1$是$M_{n_1}(D_1)$-模, $M_{n_1}(D_1)$的单模$\cong D_1^{n_1}$, 
+    故$\prod\limits_{i=1}^l M_{n_i}(D_i)$在同构意义下有$l$个单模$D_i^{n_i}$.
+\end{proposition}
+
+\begin{proposition}
+    对于$D_i^{n_i}$, $\forall r_j\in n_jM_j$, $r_jD_i^{n_i}=0$若$i\neq j$. 
+    因此$D_i^{n_i}\ncong M_j$对于$i\neq j$.\par
+    \qquad 故$M_i\cong D_i^{n_i}$, 进而$\dim_kM_i=n_i\dim_kD_i$, 
+    $|G|=\sum\limits_{i=1}^l n_i^2\dim_k D_i
+    =\sum\limits_{i=1}^l n_i \dim_k M_i$.
+\end{proposition}
+
+\begin{corollary}
+    $k$是代数闭域, $k[G]$是半单模. 由Schur引理, $D_i\cong k$. 
+    若$k[G]\cong n_1M_1\oplus \cdots \oplus n_lM_l$, 
+    则$\dim_kM_i=n_i$, 且$|G|=\sum\limits_{i=1}^l n_i^2$.
+\end{corollary}
+
+\begin{proposition}
+    $k$是域, $G$是有限群, $Z(k[G])=\{x\in k[G]\mid xy=yx, \forall y\in k[G]\}$
+    是一个子代数, 称为$k[G]$的中心. $\dim_k Z(k[G])=l$, 其中$l$是$G$的共轭类个数.
+\end{proposition}
+\begin{proof}
+	1.$\alpha_i\in Z(k[G]).\forall h\in k[G],\alpha _ih=\sum_{g\in C_i}gh
+    =\sum_{g\in C_i}h(h^{-1}gh)=\sum_{\tilde{g}\in C_i}h\tilde{g}=h\alpha_i.$
+	
+	$\forall x=\sum_{h\in G}\lambda_h h,\alpha_i x
+    =\alpha_i\sum_{h\in G}\lambda_hh=\sum_{h\in G}\lambda_h \alpha_i h
+    =\sum_{h\in G}\lambda_h h \alpha_i 
+    =(\sum_{h\in G}\lambda_hh) \alpha_i=x\alpha_i . $
+	
+	2.$\alpha_1,\cdots,\alpha_t$线性无关. $\sum_{i=1}^{t}\lambda_i\alpha_i=0,\lambda_i \in k
+    \rightarrow \sum_{i=1}^{t}(\sum_{g\in C_i}\lambda_i g)=0\in k[G]$.
+    注意到$G=C_1\cup\cdots\cup C_t$为无交并，则$\lambda_i=0.$
+	
+	3.设$x=\sum_{h\in C_i}\lambda_h h\in Z(k[G])
+    \rightarrow xg=gx ,\forall g\in G\rightarrow g^{-1}xg=x
+    \rightarrow g^{-1}xg=\sum_{h\in C_i}\lambda_h g^{-1}hg=x.$
+	
+	令$u=g^{-1}hg\rightarrow h=gug^{-1}
+    \rightarrow g^{-1}xg=\sum_{u\in C_i}\lambda_{gug^{-1}}u=x=\sum_{u\in C_i}\lambda_uu
+    \rightarrow \lambda_{gug^{-1}}=\lambda_u$，
+    记$\lambda_i=\lambda_{g_i},\forall g_i\in C_i
+    \rightarrow x=\sum_{i=1}^{t}\lambda_i\alpha_i\rightarrow \dim_k Z(k[G])=t$.
+	
+\end{proof}
+\begin{corollary}
+    设$k$是代数闭域, $k[G]$半单, 则在同构意义下$k[G]$恰好有$l$个单模, 
+    其中$l$是$G$的共轭类个数.
+\end{corollary}
+\begin{proof}
+	作为$k$-代数，$k[G]\cong M_{n_1}(\tilde{D_1})\times \cdots \times M_{n_l}(\tilde{D_l})$，
+    那么$Z(k[G])\cong Z(M_{n_1}(\tilde{D_1}))\times \cdots \times Z(M_{n_l}(\tilde{D_l}))$，
+    而$Z(M_{n_i}(\tilde{D_i}))=\{\lambda I_{n_i}\mid\lambda\in Z(\tilde{D_i})\}\cong Z(\tilde{D_i})$，
+    得$t=\sum_{i=1}^{l}\dim_k Z(\tilde{D_i})=l$.
+\end{proof}
+
+
+\section{特征标理论}
+\begin{definition} \textbf{特征}\par
+    \qquad 设$\rho:G\rightarrow GL(V)$是有限维表示, 
+    定义$\chi_\rho:G\rightarrow k$, 
+    $\chi_\rho(g)=\tr(\rho(g))$, 称为$\rho$的特征（character）.
+
+\end{definition}
+
+\begin{example}
+    一次表示即是它的特征.
+\end{example}
+
+\begin{example} 置换表示的特征\par
+    \qquad 群$G$作用在$X=\{1,\cdots,n\}$上, $V_X=\{e_1,\cdots,e_n\}$, 
+    $\rho(g)(e_i)=e_{g\cdot i}$. 设$A_g=(a_{ij})$是$\rho(g)$的表示矩阵, 
+    则$a_{ij}=1$当且仅当$gi=i$.\par
+    \qquad $\forall g\in G$, $\operatorname{Fix}(g):=\{i\in X: gi=i\}$, 
+    则$\chi_\rho (g)=|\operatorname{Fix}(g)|$.\par
+    \qquad 特别地, 对于正则表示$\rho_G$, 记$\chi_G=\chi_{\rho_G}$, 
+    则$\chi_G(g)=\begin{cases} 0, &g\neq 1\\ |G|, &g=1 \end{cases}$.
+\end{example}
+
+\begin{definition}
+    设$(\rho,V)$是表示, $V^G:=\{v\in V\mid gv=v, \forall g\in G\}$
+    是一个$G$-不变子空间. 记$m=\dim_k V^G$, 
+    $\rho_1:G\rightarrow k$, $\rho_1(g)=1, \forall g\in G$. 
+    则$V^G\cong \rho_1\oplus \cdots \oplus \rho_1$, 共$m$个.
+\end{definition}
+
+
+\begin{proposition}
+    $\operatorname{char} k=0$, $\rho:G\rightarrow GL(V)$是表示, 
+    $\chi$是$\rho$的特征, 则$\dim_k V^G=
+    \dfrac{1}{|G|}\sum\limits_{g\in G} \chi(g)$.
+\end{proposition}
+\begin{proof}
+    易见$V^{G}$是$V$作为左$\mathbb{k}G$-模的一个子模, 
+    并且$\operatorname{char}\mathbb{k}=0$使得可构造满$\mathbb{k}G$-模同态
+    $$p:V\to V^{G},x\mapsto \frac{1}{|G|} \sum_{g \in G} gx$$
+    使得对标准嵌入$i:V^{G}\to V$有$pi=\operatorname{id}_{V^{G}}$, 
+    因此$p$是$V$在直和因子$V^{G}$上的投射. 
+    我们把$p$视作$V$上线性变换$\tilde{p}:V\to V$并设$\dim_{\mathbb{k}}V^{G}=t$, 
+    那么可取$V$的一个基$B$使得$\tilde{p}:V\to V$在$B$下的表示矩阵为
+$$\left(\begin{array}{cc}
+I_{t} & 0 \\
+0 & 0
+\end{array}\right),$$
+所以$\tr(\tilde{p})=\dim_{\mathbb{k}}V^{G}$. 
+另一方面, 由$p$的定义可以看出$\tilde{p}=(1/|G|)\sum\limits_{g\in G}\rho(g)$, 
+对该等式两边取迹得
+$$\tilde{p}=\frac{1}{|G|} \sum_{g \in G}\chi_{\rho}(g).\qedhere$$
+\end{proof}
+
+\begin{definition}
+    设$(\rho_1,V_1),(\rho_2,V_2)$是两组表示, 
+    $\rho_1\oplus \rho_2:G\rightarrow GL(V_1\oplus V_2)$, 
+    $(\rho_1\oplus \rho_2)(g)(v_1,v_2)=(\rho_1(g)(v_1),\rho_2(g)(v_2))$. 
+\end{definition}
+
+\begin{proposition}
+    $\chi_{\rho_1\oplus \rho_2}=\chi_{\rho_1}+\chi_{\rho_2}.$
+\end{proposition}
+
+\begin{definition}
+    设$(\rho_1,V_1),(\rho_2,V_2)$是域$k$上的两组表示, 
+    定义$\rho_1\otimes \rho_2:G\rightarrow GL(V_1\otimes_k V_2)$, 
+    $(\rho_1\otimes \rho_2)(g)=\rho_1(g)\otimes \rho_2(g)$是线性同构.
+\end{definition}
+
+\begin{proposition}
+    记$\chi_1, \chi_2$分别是$(\rho_1,V_1),(\rho_2,V_2)$的特征, 
+    $\chi_1\otimes\chi_2$是$(\rho_1\otimes\rho_2, V_1\otimes V_2)$的特征, 
+    则$\chi_1\otimes \chi_2=\chi_1\cdot \chi_2$.
+\end{proposition}
+\begin{proof}
+	$e_i\otimes f_j$是$V_1\otimes_k V_2$的一组基，$g \in G$.
+	
+	设$\rho_1(g)(e_l)=\sum_{r=1}^{n}a_{lr}e_r,\rho_2(g)(f_t)
+    =\sum_{s=1}^{n}b_{ts}f_s$.$\rho_1\otimes \rho_2(g)(e_l\otimes f_t)
+    =\rho _1(g)(e_l)\otimes\rho_2(g)(f_t)
+    =\sum_{r=1}^{n} a_{lr}e_r\otimes \sum_{s=1}^{n} b_{ts}f_s
+    =\sum_{r=1}^{n} a_{lr}\sum_{s=1}^{n} b_{ts} (e_r\otimes f_s)$.
+    当$r=l,s=t$时，对角线上的值为$a_{ll}b_{tt}
+    \rightarrow \chi_{1}\otimes \chi_2 (g)
+    =\sum_{l=1}^{n} a_{ll}\sum_{t=1}^{n} b_{tt}=\chi_1 (g)\chi_2(g).$
+\end{proof}
+\begin{definition}
+    $\forall g\in G, \alpha \in \Hom_k(V_1,V_2)$, 
+    定义$g\cdot \alpha:V_1\rightarrow V_2$, 
+    $g\cdot \alpha(v)=\rho_2(g)\circ \alpha\circ \rho_1(g^{-1})(v)$, 
+    则$\Hom_k(V_1,V_2)$是$k[G]$-模.
+\end{definition}
+\begin{proof}
+	1.$gf \in \Hom(V_1,V_2)$.
+	
+	2.$((g_1g_2)f)(v)=g_1g_2f((g_1g_2)^{-1}v)$,
+    $g_1(g_2f)v=g_1((g_2f)g_1^{-1}v)=g_1g_2f((g_1g_2)^{-1}v).$
+\end{proof}
+\begin{definition} \textbf{对偶表示}\par
+    \qquad 设$(\rho,V)$是表示, $k$为$G$的平凡一次表示: 
+    $\forall g\in G, x\in k, g\cdot x=x$. 
+    称$V^*=\operatorname{Hom}_k(V,k)$是$V$的对偶表示.\par
+    \qquad $\forall g\in G, \alpha\in V^*, g\cdot \alpha(v)
+    =\alpha\circ \rho(g^{-1})(v)$, $\rho^*(g)(\alpha):=g\cdot \alpha$.
+\end{definition}
+
+\begin{proposition}
+    设$\chi$是$(\rho,V)$的特征, $\chi^*$是$(\rho^*,V^*)$的特征, 
+    则$\chi^*(g)=\chi(g^{-1}), \forall g\in G$.
+\end{proposition}
+\begin{proof}
+	取$V$的一组基为$\{e_1,\cdots,e_n\}$，对偶基为$\{e_1^{*},\cdots,e_n^{*}\}$.
+    $e_i^{*}(e_j)=\delta^j_i.\rho^{*}(g)(e_l^{*})(e_s)=e_l^{*}(\rho(g^{-1}))(e_s)$.
+	
+	设$(\rho(g^{-1}))(e_s)=\sum_{t=1}^{n} a_{st}(g^{-1})e_t.
+    \rho^{*}(g)(e_l^{*})(e_s)=e_l^{*}(\sum_{t=1}^{n} a_{st}(g^{-1})e_t)
+    =a_{sl}(g^{-1}).$
+	
+	由$f=\sum_{i=1}^{n} f(e_i)e_i^{*}\rightarrow \rho^{*}(g)(e_l^{*})
+    =\sum_{s=1}^{n} a_{sl}(g^{-1})e^{*}_s\rightarrow \chi_{\rho ^{*}}(g)
+    =\sum_{l=1}^{n} a_{ll}(g^{-1})=\chi_{\rho}(g^{-1}).$
+\end{proof}
+\begin{proposition}
+    设$V,W$是$k[G]$-模, $n=\dim_k V$, 则有$k[G]$-模同构
+    $\operatorname{Hom}_k(V,W)\cong V^*\otimes_k W$.
+\end{proposition}
+\begin{proof}
+	$\alpha_0 :V_1^{*}\times V_2\rightarrow \Hom_k(V_1,V_2),(f,w)
+    \rightarrow \alpha_0(f,w)(v)=f(v)w$.
+    $\alpha_0$为$k$-双线性映射，则存在唯一$k$-模同态
+    $\alpha:V_1^{*}\otimes V_2\rightarrow \Hom_k(V_1,V_2),
+    f\otimes w\rightarrow\alpha(f\otimes w)(v)=f(v)(w).$
+	
+	取$V$的一组基为$\{e_1,\cdots,e_n\}$，
+    对偶基为$\{e_1^{*},\cdots,e_n^{*}\}$.$e_i^{*}(e_j)=\delta^j_i.$
+    定义$\beta :\Hom_k(V_1,V_2)\rightarrow V_1^{*}\otimes V_2,
+    f\rightarrow \beta(f)=\sum_{i=1}^{n} e_i^{*}\otimes f(e_i)$.
+    $\beta$为$k$-线性映射.
+	
+	$\alpha\circ\beta (f)=\alpha(\sum_{i=1}^{n} e_i^{*}\otimes f(e_i))
+    =\sum_{i=1}^{n} \alpha(e^{*}_i\otimes f(e_i)).$
+	设$v=\sum_{i=1}^{n} \lambda_ie_i$.$\alpha\circ\beta (f)(v)
+    =\sum_{i=1}^{n} e^{*}_i(v) f(e_i)=\sum_{i=1}^{n} \lambda_if(e_i)
+    =f(v)\rightarrow\alpha\circ\beta=1.$
+	
+	$\beta\circ\alpha(f\otimes w)=\beta(\alpha_0(f,w))
+    =\sum_{i=1}^{n} e_i^{*}\otimes \alpha_0(f,w)(e_i)
+    =\sum_{i=1}^{n} e_i^{*}\otimes f(e_i)w
+    =(\sum_{i=1}^{n} f(e_i)e_i^{*})\otimes w=f\otimes w$.
+	
+	练习：$\alpha$是$k[G]$模同构，
+    $\forall h\in G,\alpha(h(f\otimes w))=h\alpha(f\otimes w)$.
+\end{proof}
+\begin{proposition}
+    $V,W$是同构的$k[G]$-模, 有$\chi_V=\chi_W$.
+\end{proposition}
+\begin{proof}
+	存在$k$-同构$\alpha:V_1\rightarrow V_2$使得
+    $\forall g\in G,\rho_2(g)\alpha=\alpha \rho_1(g)$.
+    此时，$\rho _1(g)=\alpha^{-1}\rho_2(g)\alpha$，取定一组基后，
+    $\tr(\rho_1(g))=\tr(\alpha^{-1}\rho_2(g)\alpha)=\tr(\rho_2(g))$.
+\end{proof}
+\begin{proposition}
+    $\chi$是$(\rho,V)$的特征, 则$\forall g,h\in G, \chi(ghg^{-1})=\chi(h).$
+\end{proposition}
+
+\begin{proposition}
+    $V,W$是$k[G]$-模, 设$\chi$是$\Hom_k(V,W)$的特征, 
+    则$\forall g\in G$, $\chi(g)=\chi_V(g^{-1})\chi_W(g)$.
+\end{proposition}
+
+\begin{proposition}
+    $\Hom_k(V,W)^G=\Hom_G(V,W)$.
+\end{proposition}
+\begin{proof}
+	$f\in \Hom_k(V_1,V_2)^G\Longleftrightarrow \forall g\in G.g\cdot f=f
+    \Longleftrightarrow\forall v\in V,gfg^{-1}(v)=f(v)
+    \Longleftrightarrow fg^{-1}(v)=g^{-1}f(v)
+    \Longleftrightarrow fg=gf \Longleftrightarrow f\in \Hom_{k[G]}(V_1,V_2)$.
+\end{proof}
+\begin{proposition}
+    $$\dim_k(\Hom_G(V,W))=\dim_k(\Hom_k(V,W)^G)
+    =\frac{1}{|G|}\sum_{g\in G} \chi_V(g^{-1})\chi_W(g)
+    =\frac{1}{|G|}\sum_{g\in G} \chi_V(g)\chi_W(g^{-1}).$$
+\end{proposition}
+
+\begin{definition}
+    $$\langle\chi_V,\chi_W\rangle=\dim_k(\Hom_G(V,W))
+    =\frac{1}{|G|}\sum_{g\in G} \chi_V(g)\chi_W(g^{-1}).$$
+\end{definition}
+
+\begin{proposition}
+    设$k$是代数闭域，$\operatorname{char}k=0$，$V,W$是不可约表示，
+    则$\langle\chi_V,\chi_W\rangle=\begin{cases} 0 &V\ncong W\\ 
+    1 &V\cong W \end{cases}$.
+\end{proposition}
+\begin{proof}
+	设$(\rho,V)$不可约，由Schur引理$\End_{k[G]}(V)\cong k
+    \rightarrow\langle \chi_V,\chi_V \rangle=\dim_k\End_{k[G]}(V)=1$，
+    若$V\ncong W,\Hom_{k[G]}(V,W)=0\rightarrow\langle \chi _V,\chi _W \rangle=0$.
+\end{proof}
+\begin{theorem}
+    设$k$是代数闭域，$\operatorname{char}k=0$，$V$是有限维表示，
+    则$V$不可约等价于$\langle\chi_V,\chi_V\rangle=1$.
+
+\end{theorem}
+\begin{proof}
+	设$ \langle \chi,\chi \rangle =1$，由$k[G]$半单，
+    $V=n_1V_1\oplus\cdots\oplus n_sV_s$.
+	$ \langle \chi,\chi \rangle =\langle \sum_{i=1}^{s} n_i\chi_i ,
+    \sum_{i=1}^{s} n_i\chi_i\rangle=\sum_{i=1}^{s} n_i^2=1
+    \rightarrow n_j=1,n_k=0(\forall k\neq j)\rightarrow V\cong V_j$不可约.
+\end{proof}
+
+\begin{definition} \textbf{不可约特征}\par
+    \qquad 称特征$\chi$是不可约的, 若$\chi$是一个不可约表示的特征. 
+    记不可约特征全体为$\operatorname{Irr}_k(G)$.
+\end{definition}
+
+\begin{proposition}
+    设$k$是代数闭域, $\operatorname{char}k=0$, $V,W$是$G$在$k$上的有限维表示, 
+    $\chi_V, \chi_W$是对应特征, 则$V\cong W$（作为$k[G]$-模）等价于$\chi_V=\chi_W$.
+\end{proposition}
+\begin{proof}
+	设$\chi_1=\chi_2.$由$k$代数闭域，$k[G]=n_1I_1\oplus \cdots \oplus n_lI_l$，
+    $V_1,V_2$是不可约表示，则$V_1\cong m_1I_1\oplus \cdots \oplus m_lI_l,
+    V_2\cong t_1I_1\oplus \cdots \oplus t_lI_l$.
+	
+	$\chi_1=m_1\mu_1+\cdots+m_l\mu _l,\chi_2=t_1\mu_1+\cdots+t_l\mu _l$，
+    其中$\mu _i$是$I_i$特征.
+	
+	$m_i=\langle \chi_1,\mu_i\rangle=\langle \chi_2,\mu_i\rangle=t_i\rightarrow V_1\cong V_2$.
+\end{proof}
+\begin{definition} \textbf{类函数}\par
+    \qquad 称$f:G\rightarrow k$是类函数（class function）, 
+    若$f(aga^{-1})=f(g), \forall a, g\in G$. 
+    记$L_k(G)$是类函数全体, 则$L_k(G)$是$k$-向量空间.
+\end{definition}
+
+\begin{proposition}
+    记$\operatorname{Irr}_k(G)=\{\chi_1,\chi_2,\cdots,\chi_l\}$, 
+    $l$是$G$的共轭类个数. 设$C_1,\cdots,C_l$是$G$的所有共轭类, 取$g_i\in C_i$.\par
+    \qquad 1. $\langle\chi_i,\chi_j\rangle=\delta_{ij}
+    =\dfrac{1}{|G|}\sum\limits_{s=1}^l |C_s|\chi_i(g_s)\chi_j(g_s^{-1})$, \\
+    \qquad\quad\ \ $|C_s|=(G:C_G(g_s))$($C_G(g)=\{a\in G:ag=ga\}$).\par
+    \qquad 2. $\dim_k L_k(G)=l:$ $G$的共轭类个数, 
+    $\operatorname{Irr}(G)$是$L_k(G)$的一组基.
+\end{proposition}
+
+\begin{corollary}
+    当$g_j\neq 1$时, $\sum\limits_{s=1}^l \chi_s(1)\chi_s (g_k)=0$.\par
+    \qquad $\sum\limits_{s=1}^l \chi_s(a)\chi_s(b^{-1})
+    =\begin{cases} 0, &如果\,a,b\,不共轭\\ |C_G(a)|, &如果\,a, b\,共轭\end{cases}$.
+\end{corollary}
+\begin{proof}
+	设$\alpha_i=\sum_{j=1}^{l} \lambda_{ij}\chi_j,\alpha_i(g)=\begin{cases} 1 &g\in C_i \\ 0 &g\notin C_i\end{cases}$
+	
+	$\langle  \alpha_i,\chi_r\rangle=\langle  \sum \lambda_{ij}\chi_j,\chi_r\rangle=\lambda _{ir}=\frac{1}{|G|}\sum_{g\in G}\alpha_i(g)\chi_r(g^{-1})=\frac{1}{|G|}|C_i|\chi_r(a_i^{-1})=\frac{|C_i|}{|G|}\chi_r(a_i^{-1})$.
+	
+	$\alpha_i=\sum_{r=1}^{l} \frac{|C_i|}{|G|}\chi_r(a_i^{-1})\chi_r.$
+	$\sum_{j=1}^{l}\chi_j(a_i^{-1})\chi_j(a_i)=\frac{|G|}{|C_i|}=|C_G(a_i)|,\sum_{j=1}^{l}\chi_j(a_i^{-1})\chi_j(a_r)=0$.
+\end{proof}
+\begin{definition} \textbf{正则表示特征}\par
+    \qquad 设$k[G]\cong n_1M_1\oplus \cdots \oplus n_lM_l$, $n_i=\chi_i(1)$.\par
+    \qquad 正则表示特征$\chi_G(g)=\sum\limits_{s=1}^l n_s\chi_s(g)
+    =\sum\limits_{s=1}^l \chi_s(1)\chi_s(g)
+    =\begin{cases} 0, &g\neq 1\\ |G|, &g=1 \end{cases}$. 
+    则$|G|=\sum\limits_{s=1}^l n_s^2$.
+
+\end{definition}
+
+\begin{definition}\textbf{特征表}
+\begin{center}
+\begin{tabular}{c|c|c|c|c} 
+    $\chi \backslash G$ & $g_1=1$ & $g_2$ & $\cdots$ & $g_l$ \\
+    $\chi_1=1$ & $1$ & $1$ & $\cdots$ & $1$\\
+    $\chi_2$ & $\chi_2(1)$ & $\cdot$ & $\cdots$ & $\cdot$ \\
+    $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$ \\
+    $\chi_l$ & $\chi_l(1)$ & $\cdot$  & $\cdots$ & $\cdot$
+\end{tabular}
+\end{center}
+\end{definition}
+
+\begin{example} $S_3$的特征表
+    \begin{center}
+    \begin{tabular}{c|c|c|c} 
+    $\chi \backslash S_3$ & $g_1=1$ & $g_2=(12)$ & $g_3=(123)$ \\
+    $\chi_1=1$ & $1$ & $1$ &  $1$\\
+    $\chi_2=\operatorname{sgn}$ & $1$ & $-1$ &  $1$\\
+    $\chi_3$ & $2$ & $0$ &  $-1$
+    \end{tabular}
+    \end{center}
+\end{example}
+
+\begin{example} $A_4$的特征表
+    \begin{center}
+    \begin{tabular}{c|c|c|c|c} 
+    $\chi \backslash A_4$ & $g_1=1$ & $g_2=(12)(34)$ & $g_3=(123)$ & $g_4=(132)$\\
+    $\chi_1=1$ & $1$ & $1$ &  $1$ & $1$\\
+    $\chi_2$ & $1$ & $1$ &  $\omega=e^{2\pi i/3}$ & $\omega^2$\\
+    $\chi_3$ & $1$ & $1$ &  $\omega^2$ & $\omega$ \\
+    $\chi_4$ & $3$ & $-1$ & $0$ & $0$
+    \end{tabular}
+    \end{center}
+\end{example}
+
+\begin{example} $8$阶非交换群$G$的特征表(无论是二面体群还是四元数群,均得到该表)
+    \begin{center}
+    \begin{tabular}{c|c|c|c|c|c} 
+    $\chi \backslash G$ & $g_1$ & $g_2$ & $g_3$ & $g_4$ & $g_5$\\
+    $\chi_1=1$ & $1$ & $1$ &  $1$ & $1$ & $1$\\
+    $\chi_2$ & $1$ & $-1$ &  $1$ & $-1$ & $1$\\
+    $\chi_3$ & $1$ & $1$ &  $-1$ & $-1$ & $1$\\
+    $\chi_4$ & $1$ & $-1$ & $-1$ & $1$ & $1$\\
+    $\chi_5$ & $2$ & $0$ & $0$ & $0$ & $-2$
+    \end{tabular}
+    \end{center}
+这个例子说明特征表并不能唯一决定$n$阶群.
+\end{example}
+
+\begin{example} $A_5$的特征表
+    \begin{center}
+    \begin{tabular}{c|c|c|c|c|c} 
+    $\chi \backslash G$ & $g_1$ & $g_2$ & $g_3$ & $g_4$ & $g_5$\\
+    $\chi_1=1$ & $1$ & $1$ &  $1$ & $1$ & $1$\\
+    $\chi_2$ & $4$ & $0$ &  $1$ & $-1$ & $-1$\\
+    $\chi_3$ & $5$ & $1$ &  $-1$ & $0$ & $0$\\
+    $\chi_4$ & $3$ & $-1$ & $0$ & $\epsilon+\epsilon^4+1$ & $\epsilon^2+\epsilon^3+1$\\
+    $\chi_5$ & $3$ & $-1$ & $0$ & $\epsilon^2+\epsilon^3+1$ & $\epsilon+\epsilon^4+1$
+    \end{tabular}
+    \end{center}
+    其中$\epsilon=e^{2\pi i/5}$.
+\end{example}
+
+\begin{exercise}
+    观察上述表格,验证是否有以下的性质,如有,请给出一般情况下的证明:
+
+    \qquad 1.共轭类数等于表格的行数和列数(不算表头行、列,下同).
+
+    \qquad 2.第一行所有元素均为$1$.
+
+    \qquad 3.每列元素模长平方和等于群元素总数除以该共轭类中元素数.
+
+    \qquad 4.每行元素模长平方和乘以对应共轭类中元素数等于群元素总数.
+
+    \qquad 5.任意一列的元素乘以另一列元素的共轭之和等于$0$.
+
+    \qquad 6.任意一行的元素乘以另一行元素的共轭再乘以对应共轭类中元素数之和等于$0$.
+
+    \qquad 7.第一列中元素是群阶数的因数.
+
+    \qquad 8.第一列中为$1$的元素个数等于群商掉交换子的商群中元素个数.
+
+    \qquad 9.第一列中的元素不大于群阶数与其极大Abel子群阶数的商.
+\end{exercise}
+
+\begin{definition}
+    $G=G_1\times G_2$, $(\rho_1,V_1), (\rho_2,V_2)$是$G_1,G_2$的表示, 
+    $V=V_1\otimes_k V_2$.\par
+    \qquad 定义$\rho_1\otimes \rho_2: G\rightarrow GL(V)$, 
+    $\rho_1\otimes \rho_2(g_1,g_2)=\rho_1(g_1)\otimes \rho_2(g_2)$, 
+    则$(\rho_1\otimes \rho_2,V_1\otimes_k V_2)$是$G$的表示.
+\end{definition}
+
+\begin{proposition}
+    设$\chi_i$是$V_i$的特征, $\chi_1\otimes \chi_2$是$\rho_1\otimes \rho_2$的特征, 
+    则$(\chi_1\otimes \chi_2)(g_1,g_2)=\chi_1(g_1)\chi_2(g_2)$.
+\end{proposition}
+\begin{proof}
+	$\{e_1,\cdots,e_m\}$是$V_1$一组基，$\{f_1,\cdots,f_n\}$是$V_2$一组基.
+	$\{e_i\otimes f_j\}$是$V_1\otimes V_2$一组基.
+	
+	$\rho _1(g_1)(e_r)=\sum_{l=1}^{m} a_{rl}(g_1)e_l,\rho _2(g_2)(f_s)=\sum_{t=1}^{n} b_{st}(g_2)f_t$.
+	
+	$(\rho_1\otimes \rho_2)(g_1,g_2)(e_i\otimes f_j)=\sum_{l=1}^{m} a_{il}(g_1)e_l\otimes\sum_{t=1}^{n} b_{jt}(g_2)f_t=\sum_{l=1}^{m} \sum_{t=1}^{n} a_{il}(g_1)b_{jt}(g_2)e_l\otimes f_t.$
+	
+	$\chi(g_1,g_2)=\sum_{i=1}^{m} \sum_{j=1}^{n} a_{ii}(g_1)b_{jj}(g_2)=\chi(g_1)\cdot \chi(g_2).$
+\end{proof}
+\begin{proposition}
+    设$k$是代数闭域, $\operatorname{char}k=0$, $G=G_1\times G_2$, 
+    $\operatorname{Irr}(G_1)=\{\chi_1,\cdots,\chi_l\}$, 
+    $\operatorname{Irr}(G_2)=\{\tilde{\chi}_1,\cdots,\tilde{\chi}_m\}$, 
+    则$\operatorname{Irr}(G_1\times G_2)=\{\chi_i\otimes \tilde{\chi}_j\}$.
+\end{proposition}
+
+\begin{corollary}
+    设$k$是代数闭域, $\operatorname{char}k=0$, $G$为有限Abel群. 
+    若$G$有$|G|$个共轭类, 则它的不可约表示都是一次的.\par
+    \qquad $G\cong \Z/d_1\mathbb{Z} \times \cdots \times \Z/d_m\Z$, 
+    $d_1|\cdots|d_m$. $\rho_i:\mathbb{Z}/d_i\mathbb{Z}\rightarrow k$共有$d_i$种, 
+    对应$x^{d_i}-1=0$的不同根. $\rho=\rho_1\otimes \cdots \otimes \rho_m$.
+\end{corollary}
+
+\begin{definition} \textbf{$\mathbb{Z}$-整的}\par
+    \qquad $\mathbb{Z}$是整数环, $R$是含幺交换环, 
+    $\mathbb{Z}\rightarrow R$, $n\rightarrow n\cdot 1$.\par
+    \qquad $a\in R$, 称$a$是$\Z$-整的, 
+    若存在首一多项式$f(x)\in \Z[x]$, 使得$f(a)=0$.
+\end{definition}
+
+\begin{proposition} 记号同上, 以下命题等价:\par
+    \qquad 1. $r\in R$是$\Z$-整的.\par
+    \qquad 2. $\Z[r]:=\{f(r)\mid f\in \Z[x]\}
+    =\Im(\Z[x]\rightarrow R, f(x)\mapsto f(r))$
+    作为$\Z$-模是有限生成的.\par
+    \qquad 3. 存在$R$的有限生成$\Z$-子模$M\supset \Z[r]$.
+
+\end{proposition}
+\begin{proof}
+	(1)$\rightarrow$(2) 作为$\Z$-模，$\Z[r]$由$\{1,r,\cdots,r^n\cdots\}$生成.
+    设$\deg f(x)=m$，$f(x)$首一且$f(r)=0$，
+    则$r^m\in \langle 1,r,\cdots,r^{m-1} \rangle_{\Z}$，
+    归纳可得$\Z[r]=\langle 1,r,\cdots,r^{m-1} \rangle_{\Z}$.
+	
+	(2)$\rightarrow$(3) 令$M=\Z[r]$即可.
+	
+	(3)$\rightarrow$(1) $\Z$是PID，$M$有限生成，则$\Z[r]$有限生成.
+    设$f_1(r),\cdots ,f_t(r)$是$\Z[r]$的一组生成元，$f_i(x)\in \Z[x]$.
+    令$m=\max\limits_{1\leq i\leq t}\deg f_i(x)$，
+    则$\{1,r,\cdots,r^m\}$是$\Z[r]$作为$\Z$-模的生成元.
+    此时，$r^{m+1}\in \langle 1,r,\cdots,r^{m} \rangle _{\Z}
+    \rightarrow r\in R[\Z]$.
+\end{proof}
+\begin{proposition}
+    $r_1, r_2$是$\Z$-整的，则$r_1\pm r_2, r_1r_2$是$\Z$-整的.\par
+    \qquad 记$R(\Z)=\{r\in R\mid r\text{ 是 }\Z\text{-整的}\}$, 
+    则$R(\Z)$是一个子环.
+\end{proposition}
+\begin{proof}
+	设$a,b\in R[\Z]$，$\Z[a],\Z[b]$有限生成，则存在$m,n\in N$，
+    $\Z[a]=\langle 1,a,\cdots,a^{m} \rangle_{\Z},
+    \Z[b]=\langle 1,b,\cdots,b^{n} \rangle _{\Z}$.
+    考虑$\mathbb Z[a,b]=\{f(a,b)|f\in \Z[x,y]\}$是$R$的子环，
+    $\Z[a,b]=\langle a^ib^j\mid i,j\geq 0\rangle_{\Z}$.
+    $\Z[a\pm b],\Z[ab]\subset \Z[a,b]$，由性质1(3)得$a\pm b,ab\in R[\Z]$.
+\end{proof}
+\begin{proposition}
+    $f:R_1\rightarrow R_2$是环同态, 则$\alpha(R_1(\Z))\subset R_2(\Z)$.
+\end{proposition}
+\begin{proof}
+	$r\in R_1(\Z)\rightarrow r^n=a_{n-1}r^{n-1}+\cdots +a_0,a_i\in \Z
+    \rightarrow f(r)^n=a_{n-1}f(r)^{n-1}+\cdots +a_0\rightarrow f(r)\in R_2(\Z)$.
+\end{proof}
+\begin{definition}
+    称$\alpha\in \mathbb{C}$是代数整数, 若$\alpha$是$\Z$-整的.
+    （则$\alpha$是代数数）
+\end{definition}
+
+\begin{proposition}
+    $x\in \mathbb{Q}$是代数整数, 等价于$x\in \Z$.
+\end{proposition}
+\begin{proof}
+	$0\neq r=\frac{b}{a}\in \mathbb Q,\gcd(a,b)=1,a,b\in \Z.$
+	$f(x)=x^n+\cdots +a_1x+a_0\in \Z[x],f(r)=0
+    \rightarrow 0=b^n+a_{n-1}ab^{n-1}+\cdots +a_0a^n$，
+    $a|b^n$，$a=\pm 1$，即$r\in \Z$.
+\end{proof}
+
+
+\begin{proposition} 设$k$是代数闭域, $\operatorname{char}k=0$, 
+    $(\rho,V)$是$G$的表示, $|G|=n$, $\chi$是$\rho$的特征.
+    \begin{itemize}
+            \item{1} $\forall g\in G$, $\rho(g)$可对角化.
+            \item{2} $\forall g\in G$, $\chi(g)$是$\mathbb{Z}$-整的.
+            \item{3} 若$k=\mathbb{C}$, 则$\forall g\in G$, 
+            $\chi(g^{-1})=\overline{\chi(g)}$.
+    \end{itemize}
+\end{proposition}
+
+\qquad $Z(k[G])=\big\{\sum \lambda_g \cdot g\bigm| \lambda_{a^{-1}ga}
+=\lambda_g, \forall a, g\in G\big\}$，
+$\dim_k Z(k[G])=l$是$G$的共轭类个数.
+
+\begin{proposition}
+    设$x=\sum \lambda_g \cdot g \in Z(k[G])$, 
+    且$\lambda_g\in k(\mathbb{Z}), \forall g\in G$, 
+    则$x$在$Z(k[G])$中是$\mathbb{Z}$-整的.
+\end{proposition}
+
+\begin{definition}
+    设$x\in Z(k[G])$, $k$是代数闭域, $\operatorname{char} k=0$, 
+    $|G|=N$, $(\rho,V)$是$G$的不可约表示, $\chi$是$\rho$的特征, 
+    定义$f:V\rightarrow V$, $v\mapsto x\cdot v
+    =\sum\limits_{g\in G} \lambda_g\cdot \rho(g)(v)$.
+\end{definition}
+
+\begin{proposition}
+    $f$是$k[G]$-模同态, 即$f\in \End_G(V)
+    =\{\lambda\cdot 1_V:\lambda\in k\}$（Schur引理）. 
+    则$f(v)=\lambda v$, $\lambda\chi(1)=\sum \lambda_g\chi(g)$, 
+    $\lambda=\frac{1}{\chi(1)}\sum \lambda_g\chi(g)$.
+\end{proposition}
+
+\begin{proposition}
+    记号同上, 定义$\alpha_\rho:Z(k[G])\rightarrow k$, 
+    $\forall x=\sum \lambda_g\cdot g$, 
+    $\alpha_\rho(x)=\frac{1}{\chi(1)}\sum \lambda_g\chi(g)$, 则\par
+    \qquad 1. $\alpha_\rho$是$k$-代数同态.\par
+    \qquad 2. 若$\lambda_g\in k(\Z)$, 则$\alpha_\rho(x)\in k(\Z)$.
+
+\end{proposition}
+\begin{proof}
+	容易验证$ \alpha_{\chi} $是$\mathbb C$-线性的.
+	$\forall u\in  Z(\mathbb C[G])$，
+    定义$f_u:V\rightarrow V,f_u(v)=uv=\sum_{g\in G} \lambda_g \rho (g)(v) $.
+    由中心性质知$f_u(gv)=ugv=guv=gf_u(v)$，
+    即有$f_u\in \operatorname{End}_{\mathbb C[G]}(V)\cong C$.
+    $\exists \lambda_u \in \mathbb C,f_u=\lambda_u\cdot 1_V
+    \rightarrow \operatorname{tr}(f_u)=\lambda_u\chi(1)\rightarrow \lambda _u
+    =\frac{1}{\chi(1)}\sum_{g\in G} \lambda_g\chi(g).$
+	
+    $\forall u_1,u_2\in  Z(\mathbb C[G]),f_{u_1\cdot u_2}
+    =\lambda_{u_1\cdot u_2}\cdot 1_V=u_1\cdot f_{u_2}
+    =u_1\lambda_{u_2}\cdot 1_V\rightarrow\lambda_{u_1.u_2}=u_1\lambda_{u_2}
+    \rightarrow \alpha_{\chi}(u_1u_2)=u_1\alpha_{\chi}(u_2).$
+
+    $\alpha_{\chi}: Z(\mathbb C[G])\rightarrow \mathbb C$.
+    由以上性质，只需证明$u\in  Z(\mathbb C[G])[\Z]$.
+    设$C_1,\cdots,C_l$是$G$的共轭类，
+    取$g_i\in C_i,e_i=\sum_{g\in C_i}g
+    \rightarrow u=\sum_{i=1}^{l}\lambda_{g_i}e_i
+    =\sum_{i=1}^{l}(\lambda_{g_i}\cdot1_G)e_i$.
+    注意到$\lambda_{g_i}\cdot1_G\in  Z(\mathbb C[G])[\Z],
+    e_i\in Z(\mathbb C[G])[\Z]$即证.
+\end{proof}
+\begin{corollary}
+    $\chi(1)$整除$|G|$.
+\end{corollary}
+	\begin{proof}
+		令$u=\sum_{g\in G} \chi (g^{-1})g$,
+        $\frac{1}{\chi (1)}\sum_{g\in G} \chi (g^{-1}) \chi (g)\in \mathbb C(\Z),
+        \frac{|G|}{\chi(1)}\langle \chi,\chi  \rangle=\frac{|G|}{\chi(1)}
+        \in \mathbb Q\cap\mathbb C(\Z)=\Z\rightarrow\chi(1) \big| |G|$.
+	\end{proof}
+\begin{proposition}
+    设$C$是$G$的一个共轭类, $a\in C$, $\chi$是不可约特征, $k$是代数闭域, 
+    则$\dfrac{|C|\chi(a)}{\chi(1)}\in k(\Z)$.
+\end{proposition}
+\begin{proof}
+	令$x=\sum_{g\in C}g\in Z(\mathbb C [G])
+    \rightarrow\frac{|C|}{\chi(1)}\chi (g_0)\in \mathbb C[\Z]$.
+\end{proof}
+\begin{proposition}
+    \begin{itemize}
+    \item[1] 设$z_1,\cdots,z_n\in \mathbb{C}$, $|z_i|=1$, 
+    $a=\dfrac{z_1+\cdots+z_n}{n}$. 若$|a|=1$, 则$z_1=\cdots=z_n=a$.
+    \item[2] 设$z_1,\cdots,z_n\in \mathbb{C}$, $z_i^N=1$, 
+    $a=\dfrac{z_1+\cdots+z_n}{n}$. 若$a\in \mathbb{C}(\mathbb{Z})$, 
+    则$a=0$或$a=z_1=\cdots=z_n$.
+    \end{itemize}
+\end{proposition}
+\begin{proof}
+	1易证.2，设$a\neq 0$，令$K$是$f(x)=x^N-1$的分裂域，
+    可分多项式的分裂域是有限Galois扩张，$\forall \sigma \in \Gal(K/\mathbb Q),
+    \sigma(a)=\dfrac{\sigma(z_1)+\cdots +\sigma(z_n)}{n}\in \mathbb C[\Z]$.
+	
+	令$ b= \prod_{\sigma \in \Gal(K/\mathbb Q)}\sigma(a)\in \mathbb C(\Z)$.
+    此时$\forall \tau \in \Gal(K/\mathbb Q),\tau(b)=b\rightarrow b\in \mathbb Q$.
+    即有$b\in \mathbb Q\cap \mathbb C(\Z)=\Z$.
+    注意到$\sigma(z_i)$是$N$次单位根，则$|\sigma(a)|\leq 1\rightarrow |b|\leq 1$
+    且由$a\neq 0\rightarrow b\neq 0$.综上有$|b|=1$.
+    此时$\forall \sigma \in \Gal(K/\mathbb Q),|\sigma(a)|=1$.
+    注意到$\operatorname{id}\in \Gal(K/\mathbb Q),|a|=1$.由1.即证！
+\end{proof}
+\begin{corollary}
+    $(\rho,V)$是$\mathbb{C}$上的表示, $\chi$是特征, $g\in G$, 
+    若$\frac{\chi(g)}{\chi(1)}\in \mathbb{C}(\mathbb{Z})$, 
+    则$\rho(g)=\lambda \cdot 1_V$.
+\end{corollary}
+
+\begin{proposition}
+    $G$为有限群, $C$为$G$的一个共轭类, $|C|=p^r$, 
+    $p$是素数, $r\geq 1$, 则$G$不是单群.
+\end{proposition}
+\begin{proof}
+	$g_0\notin C(G)\rightarrow G$非Abel，
+    设$\chi_1,\cdots,\chi_l$为$G$在$\mathbb C$上的不可约特征，
+    $\chi _1$为一次平凡表示特征，由正交关系，$\sum_{i=1}^{l}\chi_i(1)\chi_i(g_0)=0
+    \rightarrow -\frac{1}{p}=\sum_{i=2}^{l}\dfrac{\chi_i(1)\chi_i(g_0)}{p}
+    \notin \mathbb C(\Z)
+    \rightarrow \exists i_0,\dfrac{\chi_{i_0}(1)\chi_{i_0}(g_0)}{p}
+    \notin \mathbb C(\Z)
+    \rightarrow p\nmid \chi_{i_0}(1),\chi_{i_0}(g_0)\neq 0
+    \rightarrow \gcd(|C|=p^r,\chi_{i_0}(1))=1$.
+    由性质$\rho(g_0)=\lambda_0\cdot 1_V$.
+    考虑$\Ker\rho $为$G$的正规子群，下证$\Ker\rho$非平凡.
+	
+	若$\Ker\rho =G$，则$\rho $为平凡一次表示，矛盾!
+	
+	若$\Ker\rho=\{1\}$，则$\rho$单射，由$\rho(g_0)$为标量矩阵，
+    $\forall h\in G,\rho(hg_0)=\rho(g_0h)\rightarrow hg_0=g_0h
+    \rightarrow g_0\in C(G)$，矛盾！
+\end{proof}
+\begin{proposition}
+    $|G|=p^aq^b$, $p\neq q$是素数, 
+    $a,b\in \mathbb{N}$, 且$a+b\geq 2$, 则$G$不是单群.
+\end{proposition}
+\begin{proof}
+	$b=0$，$|G|=p^a$为$p$群，则中心$C(G)\neq\{1\}$，若$C(G)=G$，则$G$是$Abel$群，
+    任取$p$阶子群即为正规子群，若$C(G)\neq G$，$C(G)$为非平凡正规子群.若$a=0$同理可证.
+	
+	下设$a>0,b>0$.设$H$是$G$的Sylow $p$子群，则$C(H)\neq \{1\}$，
+    设$1\neq h\in C(H)$.考虑$C_G(h)=\{g\in G\mid gh=hg\}$.
+    $H\subseteq C_G(h)\rightarrow |C_G(h)|=p^aq^t,0\leq t\leq b$.
+    若$t=b$，则$h\in C(G)\rightarrow |C(G)|\neq 1$，同样讨论知$G$非单.
+	
+	若$t<b$，设$C$是$h$所在共轭类，$|C|=(G:C_G(h))=q^{b-t}$，即知$G$非单群.
+\end{proof}
+\begin{definition} \textbf{可解群}\par
+    \qquad 称群$G$是可解群, 若$G$有正规群列
+    $\{1\}=G_0\lhd G_1\lhd \cdots \lhd G_r=G$使得每个商因子$G_i/G_{i-1}$交换.\par
+    \qquad $G^{(1)}=[G,G], G^{(2)}=[G^{(1)},G^{(1)}],\cdots, 
+    G^{(i)}=[G^{(i-1)},G^{(i-1)}], \cdots$\par
+    \qquad 有如下两个判定定理:
+
+    (1)\ $G$可解等价于,存在$m\in \mathbb{N}$, 使得$G^{(m)}=\{1\}$.\par
+    (2)\ 如果$N\lhd G$,则$G$可解等价于$N$和$G/N$都可解.
+\end{definition}
+\begin{proof}
+    (1)的证明较为显然,我们证明(2).
+
+    $"\Leftarrow"  $ 可设存在合成群列$\{1\}  = N_0 \triangleleft N_1 \triangleleft \cdots \triangleleft N_l = N$和$\{1\}  = T_0 \triangleleft T_1 \triangleleft \cdots \triangleleft T_s = G/N$,
+
+    考虑同态:$j: G \to G/N$, 并且取$\tilde{T}_i = j^{-1}(T_i)$,那么$\tilde{T}_i/\tilde{T}_{i-1} \simeq j^{-1}(T_i/T_{i-1}) $为Abel群,因此我们得到了$G$的合成群列:
+    $$\{1\} = N_0 \triangleleft \cdots \triangleleft N \triangleleft = \tilde{T}_0 \triangleleft \tilde{T}_1 \triangleleft \cdots \triangleleft \tilde{T}_s = G.$$
+
+    $"\Rightarrow"  $设$G$可解,那么由$H^{(k)} \leq G^{(k)}$可以推出$H\leq G \Rightarrow H$可解,
+    而$N \triangleleft G \Rightarrow (G/N) ^{(k)} = 1$,因此$G/N$可解.
+\end{proof}
+\begin{theorem} \textbf{Burnside定理}\par
+    \qquad $|G|=p^aq^b$, $p,q$是素数, 
+    $a,b\in \mathbb{N}$, $a+b\geq 1$, 则$|G|$是可解群.
+\end{theorem}
+\begin{proof}
+	归纳证明，$a+b=1$容易证明，假设$a+b<n$时已经证明，下设$2\leq a+b=n$.
+	
+	由$G$非单群，存在非平凡正规子群$N$，对$N,G/N$使用归纳假设，则$N,G/N$可解，则$G$可解.
+	
+\end{proof}
+
+\section{表示的态射}
+
+\begin{definition} \textbf{诱导表示}\par
+    \qquad 设$(\rho,V)$是$G$的表示, $H\leq G$, 
+    $\rho_H:H\rightarrow G\rightarrow GL(V)$. 
+
+   $$ \{(\rho,V)\mid G\text{ 的表示}\} \rightarrow 
+   \{(\rho_H,V)\mid H\text{ 上的表示}\}.$$
+\end{definition}
+\begin{proposition}
+    若$\rho_H$在$H$上不可约, 则$\rho$在$G$上不可约.
+\end{proposition}
+\begin{proof}
+    反设$\rho$在$G$上可约,则存在$V$的$G$-不变子空间$V_0$,由于$\rho_H$是限制表示,从而$\rho_H(H)(V_0) = \rho_(H) (V_0) \subseteq \rho_(G) (V_0) \subseteq V_0$,从而$V_0$也是$H$-不变子空间,与$\rho_H$不可约矛盾!.
+\end{proof}
+
+
+
+\begin{proposition}
+    设$H$是$G$的一个Abel子群, $n=(G:H)$, 
+    $(\rho,V)$是$G$的不可约表示, 则$\dim_kV\leq n$.
+\end{proposition}
+
+\begin{proof}
+	$H$是Abel群，则$H$在$\mathbb C$上的不可约表示都是$1$次的，
+    进而存在$V$的$\mathbb C[H]$子模$W=\langle w_0\rangle,w_0\neq 0. $
+	设$G/H=\{g_1H,\cdots ,g_sH\},V_0
+    =\langle \rho(g_1)w_0,\cdots,\rho(g_s)(w_0)\rangle$.
+    断言，$V_0$是$\mathbb C[G]$子模.
+	
+	$\forall g\in G,\rho(g)(\rho(g_i)w_0)=\rho(gg_i)w_0
+    =\rho(g_{g_i})\rho(h_i)(w_0)=\rho(g_{g_i})\lambda w_0\subset V_0$.
+    其中$gg_i=g_{g_i}h_i$，由$W_0$是$\mathbb C[H]$一维子模，
+    $\rho(h_i)(w_0)=\lambda_iw_0$.
+    且易知，$V_0\neq0$，由$V$不可约知$V_0=V
+    \rightarrow \dim V=\dim V_0\leq s=(G:H)$.
+\end{proof}
+
+\begin{example} \textbf{二面体群$D_n$}\par
+    \qquad $|D_n|=2n$, $\sigma:$逆时针旋转$\frac{2\pi}{n}$, 
+    $\tau:$关于对称轴反射.\par
+    \qquad $H_n=\langle\sigma\rangle$是Abel子群，且$(D_n:H_n)=2$，
+    故$D_n$的不可约表示的次数为$1$或$2$.
+\end{example}
+
+
+\begin{definition}
+    $H\leq G$, $W$为左$k[H]$-模, $k[H]$为$k[G]$的子代数, 
+    故$k[G]$是$(k[G],k[H])$-双模.\par
+    \qquad 定义$\operatorname{Ind}_H^G(W):=k[G]\otimes_{k[H]}W$
+    为由$W$诱导的$k[G]$-模.
+\end{definition}
+
+\begin{proposition}
+    作为右$k[H]$-模, $k[G]$是自由的. 
+    记$G/H=\{g_iH\mid i\in I\}$, 则$\{g_i\mid i\in I\}$为一组基.
+\end{proposition}
+\begin{proof}
+	设$g=g_{i,g}h_g$，$x=\sum_{g\in G}\lambda_gg
+    =\sum_{g\in G}\lambda_gg_{i,g}h_g=\sum_{g\in G} g_{i,g}(\lambda_g h_g)
+    \in \langle g_1,\cdots,g_s\rangle_{k[H]}$.
+	
+	设$\sum_{i=1}^{s} g_iy_i=0$，$y_i\in k[H],y_i=\sum_{h\in H} \lambda_{h,i}h$.
+    则$0=\sum_{i=1}^{s} g_iy_i=\sum_{i=1}^{s} g_i(\sum_{h\in H} \lambda_{h,i}h)
+    =\sum_{i=1}^{s}\sum_{h\in H} \lambda_{h,i}(g_ih)
+    \rightarrow \lambda_{h,i}=0\rightarrow y_i=0$.
+    这是因为$g_ih_i=g_jh_i\Longleftrightarrow g_i=g_j,h_i=h_j$.
+	
+	
+\end{proof}
+\begin{corollary}
+    $k[G]=\bigoplus\limits_{i\in I} g_i\cdot k[H]$.\par
+    \qquad 则$\operatorname{Ind}_H^G(W)=k[G]\bigotimes_{k[H]}W
+    \cong \bigoplus\limits_{i\in I} (g_i\cdot k[H]\otimes_{k[H]} W)
+    \cong \bigoplus\limits_{i\in I} W$作为$k$-向量空间.
+\end{corollary}
+\begin{proof}
+
+$\operatorname{Ind}_H^{G}W=k[G]\otimes_{k[H]}W
+    =\oplus (g_ik[H]\otimes_{k[H]}W)\cong \oplus (g_ik[G]\otimes_{k[H]}W)
+    \cong (k[H]\otimes_{k[H]}W)\cong \oplus W.$
+\end{proof}
+\begin{proposition} 记号同上, $G$为有限群, $W$为有限维$k$-向量空间, 则\par
+    \qquad 1. $\dim_k \operatorname{Ind}(W)=(G:H)\dim_k W$.\par
+    \qquad 2. $G/H=\{g_iH\mid i\in I\}$, $W$有基$\{w_1,\cdots,w_m\}$, 
+    则$\{g_i\otimes w_j\}$为$\operatorname{Ind}(W)$的一组$k$-基.
+\end{proposition}
+\begin{proof}
+由$|I| = [G:H]$结合推论$94$即得.
+\end{proof}
+\begin{example}
+考虑$H$的正则表示$k[H]$,则有$\operatorname{Ind}_H^G(k[H]) = k[H] \otimes_{k[G]} k[G] = k[G]$,因此得到了$G$上的正则表示.
+\end{example}
+\begin{proposition}
+    记号同上, 设$\chi_W$是$W$的特征, $\operatorname{Ind}_H^G(\chi_W)$
+    为$\operatorname{Ind}_H^G(W)$的特征. 
+    $G/H=\{g_iH\}$, $w_1,\cdots,w_m$为$W$的一组基, 则
+    $$\operatorname{Ind}_H^G(\chi_W)(a)
+    =\sum\limits_{i=1}^r \stackrel{\circ}{\chi}_W(g_i^{-1}ag_i).$$
+    这里我们对任意的$f:H\to k$,定义$\stackrel{\circ}{f}:G\to k, g\mapsto\begin{cases}
+        f(g), &  g\in H \\
+        0, & g\notin H
+    \end{cases}.$
+
+\end{proposition}
+
+\begin{proof}
+    由命题$95$,只需要考虑$\mathrm{Ind}_H^G(\chi_W)(a)$作用在$\{g_i \otimes_H w_j\}_{i,j}$上的取值即可.
+
+    \begin{align}
+        \forall a\in G, \mathrm{Ind}_H^G(\chi_W)(a)(g_i \otimes_H w_j) &= (ag_i) \otimes_G w_j \\
+        &= g_{i(a)} \cdot h_i \otimes w_j,  \qquad \text{其中}(g_{i(a)}h_i = ag_i, h_i \in H)\\
+        &= g_{i(a)} \otimes (h_i w_j) \in H \\
+        &= \sum_{l=1}^m \lambda_{jl}(g_{i(a)} \otimes_H w_l),\qquad \text{其中} h_i v_j = \sum \lambda_{jl} v_l.\\
+    
+
+
+
+     \end{align}
+     并且$g_i(a) = g_i \Leftrightarrow g_i^{-1} a g_i \in H$,
+
+     因此$\displaystyle \mathrm{Ind}_H^G(\chi_W)(a) = \sum_{i,j, \\  {g_i^{-1} a g_i \in H}} \lambda_{jj} = \sum_{i} \stackrel{\circ}{\chi_W} (h_i)  =  \sum_{i} \stackrel{\circ}{\chi_W} (g_i^{-1} a g_i).$
+
+\end{proof}
+
+
+\begin{proposition}
+    设$N\leq H\leq G$, $W:k[G]$-模, 则有自然的$k[G]$-模同构
+    $$\operatorname{Ind}_H^G(\operatorname{Ind}_N^H(W))
+    \cong \operatorname{Ind}_N^G(W).$$
+\end{proposition}
+
+\begin{proof}
+    这是由于 $k[G] \otimes_H (k[H]\otimes_N W) \simeq (k[G] \otimes_H k[H]) \otimes_N W = k[G] \otimes_N W$,且上述同构是自然的.
+\end{proof}
+\begin{definition} $\operatorname{Ind}$的函子性质: $H\leq G$,\par
+     \begin{align*}
+        \{k[H]\text{-}模\} 
+        &\xrightleftharpoons[\operatorname{Res}]{\operatorname{Ind}} 
+        \{k[G]\text{-}模\}\\
+        W &\ \ \mapsto\ \ \operatorname{Ind}_H^G(W)
+    \end{align*}    
+
+    \begin{align*}
+        \Hom_H(W_1,W_2) &\rightarrow 
+        \Hom_G(\operatorname{Ind}_H^G(W_1),
+        \operatorname{Ind}_H^G(W_2))\\
+        f &\mapsto \operatorname{Ind}_H^G(f):=\operatorname{id} \otimes f
+    \end{align*}
+\end{definition}
+
+\begin{proposition}
+    $\operatorname{Ind}(f\circ g)=\operatorname{Ind}(f)\circ \operatorname{Ind}(g)$, 
+    $\operatorname{Ind}(1_W)=1_{\operatorname{Ind}(W)}$.
+\end{proposition}
+
+\begin{proposition}[Frobenius Reciprocity Law]
+    \begin{itemize}
+
+    \item[(1)]
+    记号同上, 设$W$为$k[H]$-模, $T$为$k[G]$-模, 则有作为$k$-模的自然同构
+    $$\Hom_G(\operatorname{Ind}_H^G(W),T)
+    \cong \Hom_H(W,\operatorname{Res}_H^G(T)).$$
+    \item[(2)]
+    $\langle \mathrm{Ind}_H^G \chi_W, \chi_V\rangle_G = \langle \chi_W, \mathrm{Res}_H^G \chi_V\rangle_H.$
+    \end{itemize}
+\end{proposition}
+
+\begin{proof}
+    (1):
+
+    考虑$f:k[G] \otimes_H W \to V$为一个$G$-同态,那么定义:
+    $$\alpha(f) : W \to V, w \mapsto f(1 \otimes w),$$
+    $\forall h \in H, \alpha(f)(hw) = f(1\otimes_H hw) = f(h \cdot 1 \otimes w) = h\cdot f(1\otimes w),$
+    并且$\alpha(f_1+f_2) = \alpha(f_1) + \alpha(f_2)$,因此$\alpha(f)$确为一个$H-$模同态,那么$\alpha$良定,且
+    $\alpha:\Hom_G(\operatorname{Ind}_H^G(W),T)
+    \to \Hom_H(W,\operatorname{Res}_H^G(T)) $确为Abel群同态.
+
+    然后再考虑定义$\beta : 
+    \Hom_H(W,\operatorname{Res}_H^G(T)) \to \Hom_G(\operatorname{Ind}_H^G(W),T)$,
+    对于$g\in 
+     \Hom_H(W,\operatorname{Res}_H^G(T))$,
+    
+    定义$U: k[G] \times W \to V, (x, w ) \mapsto x \cdot g(w)$,
+    那么容易验证$U$是一个$H$-平衡映射,
+    
+    知$\exists ! U' : \mathrm{Ind}_H^G W \to V$,
+    使得$x\otimes_H w \mapsto x\cdot g(w)$,
+
+    因此定义$\beta(g) = U'$,这样的定义是良定的,并且$\beta$确实给出了Abel群同态.
+
+    我们注意到$f(h \otimes w) = h f(1 \otimes w) = h \cdot \alpha(f)(w)$,因此由唯一性即得$\beta \circ \alpha (f) = f$,
+
+    并且$\alpha(\beta(g)) (w) = \beta(g) (1\otimes w) = 1 \cdot g(w) = g(w)$,因此$\alpha\circ \beta (g) = g$,
+
+    因此$\alpha, \beta$给出了$\Hom_G(\operatorname{Ind}_H^G(W),T)
+    ,\Hom_H(W,\operatorname{Res}_H^G(T))$之间的同构,因而得证.
+
+    (2)
+    由(1),结合定义50,
+    
+    $$\langle \mathrm{Ind}_H^G \chi_W, \chi_V\rangle_G = \dim_k(\Hom_G(\operatorname{Ind}_H^G(W),T))) = 
+    \dim_k (\Hom_H(W,\operatorname{Res}_H^G(T))) = \langle \chi_W, \mathrm{Res}_H^G \chi_V\rangle_H.$$
+    
+    
+
+\end{proof}
+\begin{proposition}
+    $\operatorname{Ind}$与$\operatorname{Res}$是一对伴随函子.
+\end{proposition}
+
+% \begin{proposition}
+%     $H\leq G$, $\operatorname{char} k=0$, $\chi$为$H$的特征, $\psi$为$G$的特征, 
+%     则$$\langle\operatorname{Ind}(\chi),\psi\rangle_G
+%     =\langle\chi,\operatorname{Res}(\psi)\rangle_H.$$
+% \end{proposition}
+
+\begin{proposition}
+    \begin{itemize}
+        \item[(1)]
+        $H\leq G$. 设$W$为$k[H]$-模, $V$为$k[G]$-模, 则有$k[G]$-模的同构
+        $$(\operatorname{Ind}^G_HW)\otimes_kV\simeq
+        \operatorname{Ind}^G_H(W\otimes_k\operatorname{Res}^G_H)V$$
+        \item[(2)]
+        $\chi_W$是$W$的特征, $\chi_V$是$V$的特征, 则有
+        $$(\operatorname{Ind}^G_H \chi _W)\cdot\chi _V
+        =\operatorname{Ind}^G_H(\chi_W\cdot\operatorname{Res}^G_H\chi_V)$$
+    \end{itemize}
+\end{proposition}
+
+\begin{corollary}
+    设$H\leq G$, $V$是$k[G]-$模, 则有
+    $$\operatorname{Ind}^G_H\operatorname{Res}^G_H V
+    \simeq V_{G/H}\otimes_k V$$
+    其中$V_{G/H}$是$G$在左陪集$G/H$上的置换表示.
+\end{corollary}
+
+\begin{proof}
+    $$\operatorname{Ind}^G_H\operatorname{Res}^G_H V\simeq
+    \operatorname{Ind}^G_H(k \otimes_k \operatorname{Res}^G_H V)\simeq
+    \operatorname{Ind}^G_H k \otimes_k V\simeq
+    V_{G/H}\otimes_k V
+    $$
+\end{proof}
+
+\begin{proposition}
+    设$\rho:G\rightarrow GL(V)$是表示. 
+    设$V=\bigoplus\limits_{i\in I}V_i$作为$k$-向量空间，
+    且$G$置换作用在$\Gamma=\{V_i\mid i\in I\}$上，
+    即$\forall V_i, \forall a\in G$，$aV_i=\rho(A)(V_i)\in \Gamma$，
+    且这个作用是可迁的. 取定$i_0\in I$，令$H=\operatorname{Stab}(V_{i_0})$，则\par
+    \qquad 1. $V_{i_0}$是$H$的一个表示.\par
+    \qquad 2. $V\cong \operatorname{Ind}_H^G(\rho_H,V_{i_0})=k[G]\otimes_{k[H]} V_{i_0}.$
+\end{proposition}
+
+\begin{definition} \textbf{双陪集}\par
+    \qquad 设$K,H\leq G$, $s\in G$, $KsH:=\{asb\mid a\in K, b\in H\}$
+    称为$G$的一个双陪集（double coset）. \par
+    \qquad 称$s\sim t$, 若$t\in KsH$. $K\backslash G/H:=\{KsH\mid s\in G\}$. 
+    $[s]:=KsH=\bigcup\limits_{a\in K} asH$.\par
+    \qquad 考虑作用$K\times G/H\rightarrow G/H$, $(a,gH)\mapsto (ag)H$. 
+    设$K_{\sigma_1},\cdots,K_{\sigma_l}$是$G/H$的所有不同轨道, $\sigma_i=s_iH$, 
+    则$\{K\sigma_1,\cdots, K\sigma_l\}\rightarrow K\backslash G/H$是双射.\par
+    \qquad $\operatorname{Stab}(\sigma_i)
+    =\{a\in K:as_iH=s_iH\}=K\cap (s_iHs_i^{-1})$. 
+    $\forall s\in G$, 记$H_s=K\cap sHs^{-1}=\operatorname{Stab}(sH)$.\par
+    \qquad 记$\rho^s:H_s\rightarrow GL(W)$, $\rho^s(x)(w)=\rho(s^{-1}xs)(w)$, 
+    则$(\rho^s,W)$是$H_s$的表示.
+\end{definition}
+
+\begin{proposition}
+    记号同上, 作为$k[K]$-模,
+        $$\operatorname{Res}_K^G\operatorname{Ind}_H^G\cong 
+        \bigoplus\limits_{s\in K\backslash G/H} \operatorname{Ind}^K_{H_s} (\rho^s,W).$$
+\end{proposition}
+
+\begin{definition}
+    称$G$的表示$\rho_1,\rho_2$是不相交的, 
+    若任意$\rho_1$和$\rho_2$的不可约子表示都不同构.
+\end{definition}
+
+\begin{theorem} \textbf{Mackey定理}\par
+    \qquad $k$为特征$0$的代数闭域, $G$为有限群, $H\leq G$, 
+    $\rho:H\rightarrow GL(W)$是表示, 
+    则$\operatorname{Ind}_H^G(W)$是不可约的, 等价于\par
+    \qquad 1. $(\rho,W)$不可约;\par
+    \qquad 2. $\forall s\in G-H$, 记$H_s=H\cap (sHs^{-1})$, 
+    $(\rho^s,H_s)$与$\operatorname{Res}_{H_s}^H\rho$不相交.
+\end{theorem}
+
+\begin{corollary}
+    若$H\lhd G$, $(\rho,W)$是$H$的不可约表示, 
+    则$\operatorname{Ind}_H^G(W)$是不可约的, 
+    等价于 $\forall s\in G-H$, $\rho$与$\rho^s$不相交.
+\end{corollary}
+
+\begin{corollary}
+    $H\leq G$, $(\rho,W)$为$H$的一次表示, 则以下三个命题等价：\par
+    \qquad 1. $\operatorname{Ind}_H^G(W)$是不可约的.\par
+    \qquad 2. $\forall s\in G-H$, 
+    $\operatorname{Res}_{H_s}^H\rho$与$\rho^s$不相交.\par
+    \qquad 3. $\rho|_{H_s}\neq \rho^s, \forall s\in G-H$.
+\end{corollary}
+
+\begin{theorem}[对不可约表示维度的加强定理]
+    $(\rho, V)$是$G$的一个不可约表示,$C(G)$是$G$的中心, 那么有$\mathrm{dim}_{\mathbb{C}} (V) | \frac{|G|}{|C(G)|}$.
+\end{theorem}
+
+\begin{proof}
+    我们考虑由$\rho$诱导的表示:$\rho^m : G^m \to \mathrm{End}(V^{\otimes m})$, 
+
+    $(g_1, g_2, \cdots, g_m) \mapsto \rho(g_1 ) \otimes \cdots \otimes \rho(g_m)(= v_1 \otimes \cdots \otimes v_m \mapsto \rho(g_1)(v_1) \otimes \cdots \otimes \rho(g_m)(v_m))$,
+
+    然后记$\chi^{(m)}$为$\rho^m$的特征,那么会有$\chi^{(m)}(g_1, \cdots, g_m) = \chi(g_1)\cdots \chi(g_m)$.
+    因此有:$$\langle \chi^{(m)}, \chi^{(m)} \rangle = \sum_{(g_1, \cdots, g_m) \in G^m} \chi(g_1) \cdots \chi(g_m) = (\sum_{g\in G} \chi(g))^m = \langle \chi, \chi \rangle^m.$$
+
+    因此$\rho$不可约$\Rightarrow$ $\rho^m$不可约.
+
+    那么记$N = \{(g_1, \cdots, g_m)\in G^m | g_i \in C(G), g_1\cdots g_m = e\}$,
+    对任何$(h_1, \cdots, h_m) \in G^m,(g_1, \cdots, g_m)\in N$, 我们有:
+    $$(h_1, \cdots, h_m)^{-1}(g_1, \cdots, g_m)(h_1, \cdots, h_m) = (h_1^{-1}g_1h_1 , \cdots h_m^{-1}g_mh_m) \in C(G)^m,$$
+    并且有$h_1^{-1}\cdot g_1\cdot h_1  \cdots h_m^{-1}\cdot g_m\cdot h_m = e $,因此$N \trianglelefteq G$.
+    并且$|N| = |C(G)|^{n-1}$.
+
+    由于对于$g\in C(G)$,有$\rho(g)\in C(\mathrm{End}_{\mathbb{C}}(V))$,故$\rho(g) = \lambda \cdot \mathrm{id}$.
+    因此$g_1 \cdots g_m = e\Rightarrow \lambda_1 \cdots \lambda_m = 1$.
+
+    这样就有$\rho^{m}(g_1, \cdots, g_m) (v_1, \cdots, v_m) = \lambda_1v_1 \otimes \cdots \lambda_mv_m = \lambda_1\cdots \lambda_m v_1 \otimes \cdots \otimes v_m = v_1 \otimes \cdots \otimes v_m$.
+
+    因此$N \trianglelefteq \ker(\rho^m)$.
+    这样就可以有如下的提升:
+    $\tilde{\rho^m} : G^m/N \to GL(V^{\otimes m})$,
+    $a + N \mapsto \rho^m(a)$,
+    并且$\tilde{\rho^m}$也不可约.
+
+    那么由不可约表示维度整除群维度,得到:$d^m = \mathrm{dim}_{\mathbb{C}}{\rho^m} \mid |G^m/N| = \frac{|G|^m}{|C(G)|^{m-1}}$.
+
+    这可以得到对于每一个$p | d$,都有:$v_p(d) \leq \frac{m\cdot v_p(|G|)-(m-1)\cdot v_p(|C(G)|)}{m} = v_p(|G|) - \frac{m}{m-1} v_p(|C(G)|)$.
+    
+    取$m\to +\infty$得到:$v_p(d) \leq v_p(|G|) - v_p(|C(G)|) = v_p(\frac{|G|}{|C(G)|})$,故$d|\frac{|G|}{|C(G)|}$.
+    
+\end{proof}
+
+\begin{definition}[半直积]
+    设$A \trianglelefteq G, H \leq G, G = AH, A\cap H = {1}$,那么称$G$为$A$和$H$的半直积,记为$A\rtimes H$.
+
+    其相比于直积,少了$A$中元素和$H$中元素交换的条件.
+
+\end{definition}
+
+\begin{example}
+    二面体群D_n中有$D_n = \langle r,s | r^n = s^2 = 1, srsr = e \rangle$,那么$D_n = \langle r \rangle \rtimes \langle s \rangle$.
+\end{example}
+
+\begin{theorem}
+    设$G$为有限群, $A$为正规Abel子群, $G = A \rtimes H$, 记$\hat{A} = \mathrm{Hom}(A,\mathbb C ^{\times})$,
+    
+    定义$H$在$\hat{A}$上的作用:$H \times \hat A \to \hat A, \  (h,x) \mapsto (a \mapsto x(h^{-1} ah))$,并记
+    $H_1, \cdots, H_l$是$H$在$\hat A$上作用的轨道,
+    $G_i \triangleq  A \rtimes H_i$,
+    记$\chi_1,\cdots, \chi_s$是$A$的全体一阶不可约表示,那么可以定义:
+
+    $\hat{\chi_i}:G_i \to \mathbb C^{\times}, ah \mapsto \chi_i(a)$, 容易验证:$\hat{\chi_i}(a_1a_2)= \hat{\chi_i}(a_1)\hat{\chi_i}(a_2)$,  则$\hat{\chi_i}$是$G_i$的一次表示.
+    
+    设$(\rho,V)$是$H_i$的一个不可约表示, 利用自然的满同态$G_i \to H_i, (ah) \mapsto h$可以将$\rho$提升至:
+    $G_i$上的表示$(\tilde{\rho}, V)$,那么通过计算$\langle \tilde{\rho}, \tilde{\rho}\rangle_{G_i} = \frac {1}{|G_i|} \cdot [G_i : H_i] \cdot [H_i] \langle \rho, \rho \rangle_{H_i} = 1$,
+    因此不可约.
+
+    那么$\hat{\chi_i} \otimes \tilde{\rho}$是$G_i$的不可约表示.
+    具体地,$\hat{\chi_i} \otimes \tilde{\rho}(ah)(v)= \chi_i(a) \cdot \rho(h)(v)$.
+    如果记$\theta_{i,\rho} = \mathrm{Ind}^{G}_{G_i}(\hat{\chi_i} \otimes \tilde{\rho})$,那么:
+
+    \begin{itemize}
+        \item $\theta_{i,\rho}$是$G$的不可约表示, 
+        \item $\theta_{i,\rho} \simeq \theta_{i', \rho'} \Leftrightarrow i = i', \rho \simeq \rho'$,
+        \item 上述$\{i,\rho\}$给出了$G$的全体不可约表示.
+    \end{itemize}
+
+\end{theorem}

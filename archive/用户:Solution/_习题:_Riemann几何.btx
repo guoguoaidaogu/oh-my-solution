@@ -1,0 +1,203 @@
+\setdisplaytitle{Riemann几何\ 课堂习题}
+\sethtmltitle{Riemann几何\ 课堂习题}
+
+\qquad 2024春，丁琪在课堂上布置的习题。
+
+\begin{itemize}
+    \item[1.] Let $F\colon M^n\to\R^N$ be an immersion. 
+    $F$ induces a metric $F^*(ds^2)$ on $M$, as well as a connection
+    \[\nabla^M_YX:=\sum_{i=1}^n\langle \nabla_Y X,e_i \rangle e_i\]
+    on $M$, where $e_1,\cdots,e_n$ is a unitary frame on $M$. 
+    Verify that $\nabla^M$ is the Levi-Civita connection on $M$.
+
+    \item[Pf.]
+    The problem is a special case of Exercise 3 of Chapter 2, 
+    of which we use the notation and provide a proof here. 
+    That is mainly to check
+
+    (i) let $f\in C^\infty(M)$ be extended arbitrarily to $\overline{M}$, 
+    using $\overline{X}f=Xf$, then
+    \[\nabla_X^\top(fY)
+    =\big(\overline{\nabla}_{\overline{X}}(f\overline{Y})\big)^\top
+    =\big(f\overline{\nabla}_{\overline{X}}\overline{Y}\big)^\top
+    +({\overline{X}}f)\overline{Y}=f\nabla_X^\top Y+(Xf)Y.\]
+    (ii) $\nabla^\top$ is also symmetric, i.e. 
+    (the last equality is since $[X,Y]$ is tangent to $M$ as long as $X,Y$ are)
+    \[\nabla_X^\top Y-\nabla_Y^\top X
+    =(\overline{\nabla}_{\overline{X}}\overline{Y}
+    -\overline{\nabla}_{\overline{Y}}\overline{X})^\top
+    =[\overline{X},\overline{Y}]^\top=[X,Y].\]
+    (iii) $\nabla^\top$ is compatible with the induced metric, i.e.
+    \begin{align*}
+    X\langle Y,Z \rangle_M
+    &=\overline{X}\langle \overline{Y},\overline{Z} \rangle_{\overline{M}}
+    =\langle \overline{\nabla}_{\overline{X}}\overline{Y},\overline{Z} \rangle_{\overline{M}}
+    +\langle \overline{Y},\overline{\nabla}_{\overline{X}}\overline{Z} \rangle_{\overline{M}}\\
+    &=\langle (\overline{\nabla}_{\overline{X}}\overline{Y})^\top,Z \rangle_M
+    +\langle Y,(\overline{\nabla}_{\overline{X}}\overline{Z})^\top \rangle_M\\
+    &=\langle \nabla_X^\top Y,Z \rangle_M+\langle Y,\nabla_X^\top Z \rangle_M.
+    \end{align*}
+
+    \item[2.] Show that $R(X,Y)(fZ)=fR(X,Y)Z$.
+
+    \item[Pf.]
+    We have
+    \begin{align*}
+        \nabla_Y\nabla_X(fZ)&=\nabla_Y\big(f\nabla_XZ+(Xf)Z\big)\\
+        &=f\nabla_Y\nabla_XZ+(Yf)\nabla_XZ+(Xf)\nabla_YZ+(Y(Xf))Z.
+    \end{align*}
+    Therefore,
+    \[\nabla_Y\nabla_X(fZ)-\nabla_X\nabla_Y(fZ)
+    =f(\nabla_Y\nabla_X-\nabla_X\nabla_Y)Z+((YX-XY)f)Z,\]
+    hence
+    \begin{align*}
+        R(X,Y)(fZ)&=f(\nabla_Y\nabla_X-\nabla_X\nabla_Y)Z+([Y,X]f)Z\\
+        &+([X,Y]f)Z+f\nabla_{[X,Y]}Z=fR(X,Y)Z.
+    \end{align*}
+
+    \item[3.] 证明\cite{Xin}第7章最后的附注 (p.45)。
+    
+    \item[Pf.] 见\cite{Jo} Theorem 5.5.2 (pp.231--3)。
+
+    \item[4.] 验证$B^3$在双曲度量下的截面曲率是$-1$。
+
+    \item[Pf.] 见\cite{Xin} 命题 10.2 (pp.53--4)，
+    最后一步用到了\cite{dC} Lemma 3.4 (p.96)。
+    
+    \item[5.] 在双曲空间的上半空间模型下，计算它的截面曲率，并确定它的测地线。
+
+    \item[Pf.]
+    见\cite{dC} Chapter 8 section 3 (pp.160--2).
+
+    \item[6.] 对于\cite{Xin}第11章定义的Laplace算子(p.65)，
+    验证其局部表达式为（记$g=\det(g_{ij})$）
+    \[\triangle f=\frac{1}{\sqrt{g}}\partial_i(\sqrt{g}g^{ij}\partial_jf).\]
+
+    \item[Pf.] （直接计算）由于对$X=X^i\partial_i,Y=Y^j\partial_j$，有
+    \begin{align*}
+        \nabla_YX&=Y^j\nabla_{\partial_j}(X^i\partial_i)
+        =Y^j(\partial_jX^i\partial_i+X^i\nabla_{\partial_j}\partial_i)\\
+        &=Y^j(\partial_jX^i\partial_i+X^i\Gamma_{ij}^k\partial_k)\\
+        &=Y^j(\partial_jX^k+X^i\Gamma_{ij}^k)\partial_k,
+    \end{align*}
+    得到
+    \begin{align*}
+        \operatorname{div}X&=\operatorname{tr}(Y\mapsto\nabla_YX)\\
+        &=\partial_jX^j+X^i\Gamma_{ij}^j\\
+        &=\partial_jX^j+X^ig^{jk}\partial_ig_{jk}/2,
+    \end{align*}
+    其中
+    \begin{align*}
+        \Gamma_{ij}^j&=g^{jk}(\partial_ig_{jk}+\partial_jg_{ik}-\partial_kg_{ij})/2\\
+        &=g^{jk}\partial_ig_{jk}/2.\quad(\text{对称的 }j,k\text{ 消去})
+    \end{align*}
+    用第9题，进而有
+    \begin{align*}
+        \operatorname{div}X&=\partial_jX^j+X^i\partial_i(\ln g)/2\\
+        &=\partial_jX^j+X^i\partial_i(\ln\sqrt{g})\\
+        &=(1/\sqrt{g})\partial_i(X^i\sqrt{g}).
+    \end{align*}
+    接着，为了$Xf=\langle\operatorname{grad}f,X\rangle$，即
+    \[X^j\partial_jf=g_{ij}(\operatorname{grad}f)^iX^j,\]
+    得出
+    \[\operatorname{grad}f=g^{ij}\partial_jf\partial_i.\]
+    最后，结合两表达式得
+    \[\triangle f=\operatorname{div}(\operatorname{grad}f)
+    =(1/\sqrt{g})\partial_i(\sqrt{g}g^{ij}\partial_jf).\]
+    
+    （对偶法）幺正坐标系下，\cite{Xin}与上式均有$\triangle f=\sum\partial_{ii}f$，
+    故说明上式不取决于坐标系的选取即可。这只需注意到，
+    对任何局部坐标区域$U$，对于测试函数$\phi\in C_c^\infty(U)$，
+    \[\int_U\triangle f\phi\sqrt{g}dx
+    =\int_U\partial_i(\sqrt{g}g^{ij}\partial_jf)\phi dx
+    =-\int_U g^{ij}\partial_jf\partial_i\phi\sqrt{g}dx,\]
+
+    $g^{ij}\partial_i\otimes\partial_j$是$g_{ij}dx^i\otimes dx^j$的对偶，
+    所以在不同坐标系下是相同的；$\sqrt{g}dx$亦同坐标系无关。
+    再用Riesz表示定理，得$\triangle f$在$U$上无关乎坐标系。
+
+    \item[7.] 设$M$是完备单连通的Riemann流形，其截面曲率$\le\kappa$，$\kappa>0$。
+    设$o\in M$，距离函数$\rho(x)=d(o,x)$，
+    那么$\rho^2(x)$在$B_\frac{\pi}{\sqrt{\kappa}}(o)$上是光滑凸的。
+
+    \item[Pf.] 基本是\cite{Xin}定理11.3的证明，除了改成
+    \[L''(0)\ge\int_0^r|\.U^\perp|^2-\kappa|U^\perp|^2dt.\]
+    上式对$r\le\frac{\pi}{\sqrt{\kappa}}$非负，
+    是用$U^\perp(r)=0$与Wirtinger不等式，后者见\cite{dC} Exercise 11.2 (p.250)。
+
+    \item[8.] 设Riemann流形$M$的截面曲率$K$满足$0<L\le K\le H$，
+    其中$H$和$L$是常数。设$\gamma$是$M$中的测地线，
+    那么，$\gamma$上相邻共轭点沿着$\gamma$的距离$d$满足
+    \[\frac{\pi}{\sqrt{H}}\le d \le\frac{\pi}{\sqrt{L}}.\]
+
+    \item[Pf.] 见\cite{dC} Chapter 10 Proposition 2.4 (p.218)。
+
+    \item[9.] 设方阵$A=(a_{ij})_{1\le i,j\le n}$，
+    其元素$a_{ij}$均是连续可微的$t$的函数。
+    验证$\partial_t\big(\ln\det A\big) 
+    =\sum\limits_{i,j=1}^na^{ij}\partial_ta_{ij}$。
+
+    \item[Pf.] 记$n-1$阶方阵$A_{ij}=(-1)^{k+l}(a_{kl})_{k\ne i,l\ne j}$
+    是$a_{ij}$的代数余子式，则
+    \[\partial_t(\det A)=\sum_{i,j=1}^n\det A_{ij}\partial_ta_{ij}
+    =\sum_{i,j=1}^n \det A\,a^{ij}\partial_ta_{ij}.\]
+    第一个等号是Leibniz法则，第二个是由于$AA^*=(\det A)I$
+    说明$A_{ij}=\det A\,a^{ij}$，其中伴随矩阵$A^*=(A_{ij})_{1\le i,j\le n}$。
+
+    \item[10.] 所谓悬链面（catenoid），是$\R^3$中的曲面
+    \[\Sigma=\{x_1^2+x_2^2=\cosh^2x_3\}.\]
+    (i) 证明$\Sigma$是极小的。 (ii) 计算Gauss曲率的积分$\int_\Sigma K\,dV$。
+    (iii) 证明$\Sigma$上的正的上调和函数是常数。
+
+    注：$\cosh x=(e^x+e^{-x})/2$，$\sinh x=(e^x-e^{-x})/2.$
+
+    \item[Pf.] (i) $\Sigma$是$r(u,v)=(\cosh v\cos u,\cosh v\sin u,v)$的图像，有
+    \begin{align*}
+        r_u&=(-\cosh v\sin u,\cosh v\cos u,0),\\
+        r_v&=(\sinh v\cos u,\sinh v\sin u,1),
+    \end{align*}
+    从而$dr^2=Edu^2+2Fdudv+Gdv^2$的分量为
+    \begin{align*}
+        E&=|r_u|^2=\cosh^2v,\\
+        F&=r_u\cdot r_v=0,\\
+        G&=|r_v|^2=\sinh^2v+1=\cosh^2v,
+    \end{align*}
+    故$r$是等温坐标。由\cite{dC'} p.204的corollary，
+    其三个坐标分量都是调和函数表明$\Sigma$是极小的。
+    
+    (ii) 对于$2$维流形上的共形度量$g=\rho^2\tilde{g}$，成立Yamabe方程
+    \[K=[\tilde{K}-\triangle(\ln\rho)]/\rho^2,\]
+    其中$\tilde{K}$为$\tilde{g}$的Gauss曲率（见\cite{YS}第五章）。由此，
+    \[K=-[\ln(\cosh v)]''/\cosh^2v=-\cosh^{-4}v.\]
+    故
+    \begin{align*}
+        &\int_\Sigma K\,dV=-2\pi\int_\R\frac{\cosh^2v\,dv}{\cosh^4v}\\
+        &=-2\pi\int_\R\frac{dv}{[(e^v+e^{-v})/2]^2}\\
+        &=-4\pi\int_0^\infty\frac{d(e^{2v})}{(e^{2v}+1)^2}=-4\pi.
+    \end{align*}
+
+    (iii) $r\colon\R^2\to\Sigma$诱导了$\Sigma$上的Riemann度量
+    $dr^2=\cosh^2v(du^2+dv^2)$，由此
+    \[\triangle_\Sigma=\cosh^{-2}v\triangle_{\R^2}.\]
+    故设$f\colon\Sigma\to\R$是上调和函数，
+    则$f\circ r\colon\R^2\to\R$同样是上调和函数。
+    由Hadamard三圆定理，可以说明$\R^2$上的正的上调和函数是常数。
+
+\end{itemize}
+\subsection**{Reference}
+\begin{references}
+    \bibitem[dC]{dC}
+        M.P. do Carmo. \textit{Riemannian Geometry}. 
+        Mathematics: Theory & Applications. 
+        Boston: Birkhäuser, 1992.
+    \bibitem[dC']{dC'}
+        M.P. do Carmo. \textit{Differential Geometry of Curves and Surfaces}. 
+        Dover Publications Inc., 2016.
+    \bibitem[Jo]{Jo}
+        J. Jost. \textit{Riemannian Geometry and Geometric Analysis}.
+        Universitext. Springer, 2011.
+    \bibitem[Xin]{Xin}
+        忻元龙. 黎曼几何讲义. 研究生教学用书. 复旦大学出版社, 2010.
+    \bibitem[YS]{YS}
+        丘成桐, 孙理察. 微分几何讲义. 高等教育出版社, 2018.
+\end{references}

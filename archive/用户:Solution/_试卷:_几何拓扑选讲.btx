@@ -1,0 +1,93 @@
+\setdisplaytitle{试卷：几何拓扑选讲}
+\sethtmltitle{试卷：几何拓扑选讲}
+
+== 25年秋季期末试题（李平） ==
+\begin{enumerate}
+    \item 给出同伦等价的定义和$p$是复叠映射的定义.再给出第一基本型和第二基本型的定义，
+    同时不加解释地给出标准的曲面$\{r;r_1,r_2,n\}$的运动方程，不需要解释每个记号的含义.  
+    \item 
+    \begin{itemize}
+        \item 如果$A$是$X$的收缩核而$X$是可缩空间，说明$A$也是可缩空间.
+        \item 考虑实心圆盘商掉两个点，证明其边界不是他的收缩核.
+    \end{itemize}
+    \item 考虑$X$是一个道路连通的$CW$ 复形.
+    \begin{itemize}
+        \item 如果$X$是由2个$0$-cell 和3个$1$-cell 以及4个$3$-cell 组成的，给出他的基本群.
+        \item 说明$f:X\to T^2=S^1\times S^1$如果不是零伦的，那么$X$的基本群是无限群.
+    \end{itemize}
+    \item 证明曲线\[
+    r(s)=\left(\frac{1}{3}(1+s)^{3/2},\frac{1}{3}(1-s)^{3/2},\frac{s}{\sqrt{2}}\right)\qquad (-1<s<1)
+    \]
+    以$s$为弧长参数，并求其曲率，挠率以及Frenet标架.
+    \item 证明：有两个不同的常主曲率的曲面一定落在圆柱面上.
+    \item 
+    \begin{itemize}
+    \item 设$\mathbb{R}^3$中弧长参数曲线$r(s)$的曲率和挠率分别为$\kappa$和$\tau$，
+    且在定义域内恒不为$0$.如果$r(s)$的像集包含在以$R$为半径的球面上，证明：
+    \[
+    R^2\kappa^4\tau^2=\kappa^2\tau^2+(\kappa')^2.
+    \]
+    \item 给出所有由2个$0$-cell，1个$1$-cell，1个$3$-cell组成的CW-复形的同伦等价类.
+    \end{itemize}
+\end{enumerate}
+
+== 24年秋季期末试题 ==
+\begin{enumerate}
+\item[一] (1) 写出收缩核与形变收缩核的定义。\\
+(2) 写出 [$\,\,\cdots$回忆缺失$\cdots\,\,$] 的定义。
+\item[二] 求证：对任意$m\ge2,n\ge1$，从$m$维射影平面$\R P^m$到$n$维环面$T^n$的所有映射都零伦。
+\item[三] 设$\{X_i\}_{i=1}^{n}$是$\R^m$中的一列凸开集，满足对任意的$i,j,k$，
+$X_i \cap X_j \cap X_k\ne\varnothing$。求证：$X=\bigcup\limits_{i=1}^{n}X_i$单连通。
+\item[四] 设曲面$S$的定义为
+\[\vec{r}(u,v)=\big((a+b \cos u) \cos v,(a+b \cos u) \sin v, b \sin u\big),\]
+其中 $a,b$ 为正实数且 $a>b$。\\
+(1) 求该曲面的第一和第二基本型。\\
+(2) 若曲面$S'$与$S$有相同的第一基本型，求$S'$的Gauss曲率$K(u,v)$。
+\item[五] 1. $\mathbb{R}^3$ 中正则曲线的所有主法线过一个定点，则该曲线必包含在圆周上。\\
+2. 设 $\mathbb{R}^3$ 中弧长参数曲线 $\vec{r}(s)$ 的曲率 $\kappa(s)$ 与挠率 $\tau(s)$ 在定义域内均恒不为零。
+若 $\vec{r}(s)$ 的像集包含在以原点为圆心的单位球面上，证明
+\[\kappa^4 \tau^2=\kappa^2 \tau^2+(\kappa^{\prime})^2.\]
+\item[六] 给出两个图$X_1,X_2$，满足：\\
+(1) $X_1,X_2$有公共的覆叠空间$\tilde{X}$，且$\tilde{X}$对于$X_1,X_2$的覆叠次数有限。\\
+(2) $X_1,X_2$不能作为同一拓扑空间的覆叠空间。
+\end{enumerate}
+
+== 22年秋季期末试题 ==
+\begin{enumerate}
+\item[一] \textbf{1. (8分)} 将曲线 $\vec{r}(t):[1,\infty) \rightarrow \mathbb{R}^3, t \mapsto e^{-t}(\cos t,\sin t,1)$ 写成弧长参数曲线的形式。
+
+\textbf{2. (12 分)} 设曲面 $\vec{r}(u,v):(0,2\pi) \times(-\pi,\pi) \rightarrow \mathbb{R}^3$ 定义为
+\[(u,v) \mapsto \big((a+b \cos u) \cos v,(a+b \cos u) \sin v, b \sin u\big),\]
+其中 $a,b$ 为正实数且 $a>b$。求该曲面的第一和第二基本型。
+
+\item[二] 设曲面的第一基本形式为 $\mathrm{I}=\mathrm{d}u\mathrm{d}u+G(u,v)\mathrm{d}v\mathrm{d}v$，其中定义域为包含 $(0,0)$ 的某个开邻域。\\
+\textbf{(1) (8 分)} 求曲面的Gauss曲率 $K(u,v)$；\\
+\textbf{(2) (8分)} 若 $G(0,v)=1, G_u(0,v)=0$，证明\\
+$$G(u,v)=1-u^2K(0,v)+o(u^2), \quad u \rightarrow 0.$$
+
+\item[三] \textbf{1. (10分)} $\mathbb{R}^3$ 中正则曲线的所有主法线过一个定点，则该曲线必包含在圆周上。\\
+\textbf{2. (10分)} 设 $\mathbb{R}^3$ 中弧长参数曲线 $\vec{r}(s)$ 的曲率 $\kappa(s)$ 与挠率 $\tau(s)$ 在定义域内均恒不为零。
+若 $\vec{r}(s)$ 的像集包含在以原点为圆心的单位球面上，证明
+\[\kappa^4 \tau^2=\kappa^2 \tau^2+(\kappa^{\prime})^2.\]
+
+\item[四]（8分）选择题（答案未必唯一）：\\
+\textbf{1.} 设 $X$ 是一个是拓扑空间，则下列正确的答案是 $\underline{\qquad\qquad}$。\\
+A. $X$ 是连通空间当且仅当 $X$ 是道路连通空间；\\
+B. 若 $X$ 是连通且局部道路连通的，则 $X$ 是道路连通的。但反之未必；\\
+C. 若 $X=\{a,b\}$ 是两个点构成的集合，则 $X$ 共有三个互不同肧的拓扑；\\
+D. 若 $X$ 是有限集，则 $X$ 的任意一个连通分支是既开又闭的。
+
+\textbf{2.} 设 $(X,\mathcal{T})$ 是一个拓扑空间，则下列正确的答案是 $\underline{\qquad\qquad}$。\\
+A. $\mathcal{T}$ 的子集族 $\mathcal{B}$ 是 $\mathcal{T}$ 的一个拓扑基当且仅当 $X=\cup_{U \in \mathcal{B}} U$；\\
+B. 实数轴 $\mathbb{R}$ 赋予上极限拓扑或下极限拓扑后均为不连通的拓扑空间；\\
+C. 若 $(X,\mathcal{T})$ 是Hausdorff的，则 $X$ 中单点集必为闭集；\\
+D. $(X,\mathcal{T})$ 中紧集的闭包还是紧集。
+
+\item[五] \textbf{(1) (8分)} 设 $X$ 是两个圆周的一点并，即 $X$ 是 $\mathbb{R}^2$ 中以 $(1,0)$ 和 $(-1,0)$ 为圆心，半径为 $1$ 的两个圆周的并集。
+请用严格的点集拓扑语言证明 $X$ 与圆周 $S^1$（均取欧氏拓扑）不同肧。\\
+\textbf{(2) (8分)} 证明从 $[0,1]$ 到 $[0,1] \times [0,1]$（均取欧氏拓扑）的任何连续满射都不是单射。
+
+\item[六] \textbf{(1) (12分)} 试用图示方式将两维球面 $S^2$，两维环面 $T^2$，
+Möbius带 $M$，两维实射影平面 $P^2$，Klein 瓶 $K$，平环（即圆柱面）$A$ 等表示为实心正方形的商空间。\\
+\textbf{(2) (8分)} 试用图示将文字形式为 $abcda^{-1}bc^{-1}d$ 的闭曲面的多边形表示的顶点类写出，并决定该闭曲面的类型。
+\end{enumerate}

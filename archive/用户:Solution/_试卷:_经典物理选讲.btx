@@ -1,0 +1,85 @@
+==24秋\quad 经典物理选讲\quad 期末试卷==
+\def\r{\boldsymbol{r}}
+\def\v{\boldsymbol{v}}
+\def\a{\boldsymbol{a}}
+\def\p{\boldsymbol{p}}
+\def\T{\boldsymbol{T}}
+\def\N{\boldsymbol{N}}
+\def\J{\boldsymbol{J}}
+\def\q{\boldsymbol{q}}
+\def\n{\boldsymbol{n}}
+\def\f{\boldsymbol{f}}
+\def\E{\boldsymbol{E}}
+\def\B{\boldsymbol{B}}
+\def\A{\boldsymbol{A}}
+\def\j{\boldsymbol{j}}
+\begin{itemize}
+    \item[1.]选择题
+    \item[(1)]自由旋转刚体的Euler角有$\underline{\qquad\quad}$个自由度。\\
+    (A) 1;\quad (B) 2;\quad (C) 3;\quad (D) 4;\quad.
+    \item[(2)]给定坐标系正向$(z,y,x)$, $\omega=Adx+Bdy.$则$*\omega=\underline{\qquad\quad}$.\\
+    (A) $Ady\wedge dz+Bdz\wedge dx$;\\
+    (B) $Ady\wedge dz-Bdz\wedge dx$;\\
+    (C) $-Ady\wedge dz+Bdz\wedge dx$;\\
+    (D) $-Ady\wedge dz-Bdz\wedge dx$.\\
+    \item[(3)]假设地球均匀，则在$\underline{\qquad\quad}$处，地球表面质点所受的Coriolis力沿地表的切向分量为$0$.\\
+    (A)南北极点;\quad (B)南北极圈;\quad (C)南北回归线;\quad (D)赤道.
+    \item[(4)]$L\frac{dI}{dt}=U$, $\omega$是正弦交流电的角频率。$U=ZI$, 则
+    感抗$Z=\underline{\qquad\quad}$.\\
+    (A) $i\omega L$;\quad (B) $\frac{iL}{\omega}$;\quad 
+    (C) $\frac{1}{i\omega L}$;\quad (D) $\frac{\omega}{iL}$.
+    \item[(5)](多选)在规范变换下$\underline{\qquad\quad}$保持不变。\\
+    (A) $\E\cdot\B$;\quad (B) $\varphi\A$;\quad 
+    (C) $\j\cdot\E$;\quad (D) $\nabla\times\A$.
+    \item[(6)](多选)已知Lagrange函数的形式为$L(x,y,\dot{x},\dot{y},\dot{z})$，即显式中不含$t,z$。那么以下量哪个是守恒量？\\
+    (A) 机械能;\quad (B) $x,y$的动量;\quad (C) $z$的动量;\quad (D) $z$的角动量。
+    \item[(7)]参考系$K'$相对$K$以$x$正向速度$v$运动，$K'$中有一个与$x'$夹角为为$\theta$的长为$l$的直杆，
+    为求$K$中这条杆的长度，除了Lorentz变换式，还需要以下条件：\\
+    (A) $\Delta x=0$;\quad(B) $\Delta x=\Delta y=0$;\quad 
+    (C) $\Delta t=0$;\quad(D) $\Delta t'=0.$
+    \item[(8)]现在有一个边长为$2a$,质量为$m$的正方体$ABCD-A'B'C'D'$,
+    设$E$是面$ABB'A'$的中心，$F$是面$CDD'C'$的中心，
+    已知正方体绕$EF$的转动惯量是$\frac{2}{3}ma^2$,
+    则绕$A'C$与$BC$的转动惯量分别为：$\underline{\qquad\quad},\underline{\qquad\quad}$.\\
+    (A) $\frac23 ma^2,\frac53 ma^2$;\\
+    (B) $\frac23 ma^2,\frac83 ma^2$;\\
+    (C) $2ma^2,\frac53 ma^2$;\\
+    (D) $2ma^2,\frac83 ma^2$.
+    
+    \item[2.]$(q(t),p(t))$满足Hamilton函数$H$的正则方程，证明：
+    \[\frac{d}{dt} \varphi (q(t), p(t))=\{\varphi ,H \}.\]
+    \item[3.]已知麦克斯韦方程组(已经把所有系数变成了$1$ (Gauss单位制) ),
+        \[\begin{cases}
+         \nabla \cdot \E = \rho \\
+         \nabla \cdot \B = 0  \\
+         \nabla \times \E = -\dfrac{\partial \B}{\partial t} \\
+         \nabla \times \B = \j +\dfrac{\partial \E}{\partial t} \\
+        \end{cases}\]
+    求证：$\B$满足非齐次波动方程。
+    \item[4.]对于两个指向未来的类时向量$\v_1,\v_2$, 证明:\\
+    (1) $\langle\v_1,\v_2\rangle >0 $;\\
+    (2) $\langle\v_1,\v_2\rangle \geq \|\v_1\|\cdot\|\v_2\| $.
+    \item[5.]已知一个倾角为$\alpha$的质量为$2m$的直角三角形斜面，顶部有一个定滑轮，通过长为$l$的细绳连接两端两个质量为$m$的质点。左边的质点被一个管道控制住，只能相对斜面上下运动。
+    试以定滑轮中心的$x$坐标和定滑轮中心到斜面上质点的距离$z$为广义坐标，\\
+    (1)写出系统的Lagrange函数;\\
+    (2)求出斜面的加速度。
+    \begin{tikzpicture}
+    \draw (0,0)to(4,0)to(0,2)to(0,0);\draw (-0.4,0)to(-0.4,2);
+    \draw (-0.36,0.9)to(-0.04,0.9)to(-0.04,1.2)to(-0.36,1.2)to(-0.36,0.9);
+    \draw (0,2) circle (0.2);
+    \draw (-0.2,1.2)to(-0.2,2);\draw (0.09,2.18)to(2.475,0.95);
+    \draw (2.4,0.8)to(2.55,1.1)to(2.85,0.95)to(2.7,0.65);
+    \draw (-0.6,1.05) node {$m$};\draw (3.04,0.8) node {$m$};
+    \draw (1,0.6) node {$2m$};\draw (3.4,0.15) node {$\alpha$};
+    \draw (0,2.34) node {$x$};\draw (-0.8,0.5) node {pipe};
+    \end{tikzpicture}
+
+    \item[6.]现有$2$-形式$F=\B\cdot d\boldsymbol{\sigma}+c^{-1}\E\cdot d\r\wedge dx^0$，回答以下问题：\\
+    (1)计算$dF$；\\
+    (2)说明为什么由$dF=0$可得电磁势存在；\\
+    (3)通过计算$F\wedge *F$,来说明$\|\B\|^2+c^{-2}\|\E\|^2$在正Lorentz变换下不可能不变。
+    \item[7.]一个质量为$m$的质点限制在平面上运动，
+    受力为$kr$,且指向原点，这里$r=\sqrt{x^2+y^2}$.
+    运动到离原点最近和最远的点时，质点相对原点的角速度分别为$\omega_1,\omega_2$.
+    证明：$\omega_1\omega_2$仅与$m,k$有关。
+\end{itemize}

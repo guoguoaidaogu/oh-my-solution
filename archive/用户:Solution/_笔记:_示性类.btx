@@ -1,0 +1,820 @@
+\newtheorem{exercise}{练习}
+
+\section{第一课：导论}
+
+\qquad 示性类：Chern类，Stiefel-Whitney类，Pontryagin类。
+
+\subsection{Euler数}
+
+\begin{example}
+    二维曲面的Euler数。
+\end{example}
+
+\qquad 组合意义：三角剖份的面$-$边$+$点。
+
+\qquad de Rham同调：$\dim H^0 - \dim H^1 + \dim H^2$。
+
+\qquad Riemann-Roch定理：二维带近复结构流形上Cauchy-Riemann方程
+        $$\overline{\partial} f = 0$$
+的解的维数。
+
+\qquad Poincaré-Hopf定理：流形上向量场的奇点个数（带符号，记重数）。
+
+$$\text{组合：数胞腔} \leftrightarrow \text{分析：解的维数} \xleftrightarrow{\text{Atiyah-Singer}}
+\text{流形：奇点个数} \leftrightarrow \text{几何：Gauss 曲率}.$$
+
+\begin{definition} Euler数的第一个定义。
+
+    \qquad 设$M$是定向流形，考虑$M$上的一个由Morse函数诱导的一般位置向量场（零点离散），奇点附近的Taylor展开可被对角化为
+            $$f= x_1^2 +x_2^2 +\cdots + x_n^2 - x_{n+1}^2 -\cdots - x_{m+n}^2.$$
+定义奇点重数为$(-1)^m$. Euler数定义为奇点指标和。
+\end{definition}
+
+{{warning|当流形维数大于$1$时, 因为一般位置的向量场的奇点离散，
+所以我们可以考虑任何一个奇点的球形邻域的表面(对于$n+1$维流形则同胚于$S^n$)，
+此时球面上每一点对应于一个$\mathbb{R}^{n+1}$里的非零向量，
+我们将其单位化之后则对应于$\mathbb{R}^{n+1}$中单位球面上的一个点.
+这样我们就得到了一个从 $S^n$ 到 $S^n$ 的映射，我们将这个映射的映射度定义为这个奇点的重数.}}
+
+\begin{theorem}
+    Euler数不依赖于向量场的选取。
+\end{theorem}
+
+    \qquad $X$是$M$上的向量场，$g$是其单参数变换群。
+    $\Gamma_g \in M\times M$是$g$的图像。
+    $\Delta=\{(x,x)\mid x\in M\}$是$M\times M$中的对角线。
+    则$X$的奇点个数等于$\Gamma_g$与$\Delta$的相交数。
+
+    \qquad 但$g$与$\operatorname{id}$同痕，则$\Gamma_g$与$\Delta$同伦，因此
+    $$\langle \Gamma_g, \Delta \rangle = \langle \Delta, \Delta \rangle.$$
+
+\begin{definition} Euler数的第二个定义。
+
+    \qquad $M$的Euler数定义为$\Delta$在$M$中的自交数。
+\end{definition}
+
+切丛，余切丛，向量丛（略）。
+
+\qquad 向量丛不一定有整体基，放宽条件想问有没有处处非零的截面？
+
+\qquad \qquad 错误：找一个一般位置的截面？零点集可能是子流形。
+
+\qquad \qquad 正确：考虑$X$的零点的同调类？进一步是否与$X$无关。
+
+\begin{definition} Euler数的第三个定义。
+
+    \qquad $\Gamma_g \subset M \times M$, $V \rightarrow M$，
+    $\Gamma_0: M \rightarrow V$是零截面。
+
+    \qquad Euler类$= \Gamma_0 \cdot \Gamma_g = \Gamma_0 \cdot \Gamma_0$（Poincaré对偶意义下）。
+
+    \qquad 以上乘法在什么空间中发生？$V$的``一点紧化''，Thom空间$Th(V)$.
+\end{definition}
+
+\subsection{Stiefel-Whitney类}
+
+\qquad 问：是否存在两个处处线性无关的光滑向量场？
+
+\qquad 考虑一般位置的$2$个截面$x, y$，考虑它们线性相关的点集，
+其Poincaré对偶称为（二阶）Stiefel-Whitney类。
+
+\qquad Čech同调$S^1$-丛$\leftrightarrow$ $H^*(M;S^1)$系数群正合列
+        $$0 \rightarrow \mathbb{Z} \rightarrow \mathbb{R} \rightarrow S^1 \rightarrow 0$$
+诱导长正合列
+        $$H^1(X; \mathbb{R}) \rightarrow H^1(X; S^1) \rightarrow H^2(X; \mathbb{Z}) \rightarrow \cdots,$$
+考虑$\mathbb{R}$上的连续拓扑，则$H^1(X; \mathbb{R})\equiv 0$，故有定理。
+
+\begin{theorem}\label{thm-Chern}
+    $S^1$-丛 $\iff H^2(X; \mathbb{Z})$，即复线丛由其第一Chern类唯一决定。
+\end{theorem}
+
+\qquad 如何分类一般丛？考虑$V \rightarrow M$上的联络。
+
+\qquad 设$M$连通，联络可以看成闭路空间$\Omega M \rightarrow G= \operatorname{Aut}(V)$，保乘法。
+
+\qquad 这是什么结构之间的映射？$\Omega M$一般不是群。
+
+\qquad 定义$BG$，使得$G \sim \Omega BG$，则这是道路空间之间的保基点映射。
+
+\qquad IDEA: $M$上的$G$-丛 $\iff [M, BG]$。
+
+\begin{example}
+    $G= \mathbb{Z}/ 2\mathbb{Z}$，
+    则$BG\cong \mathbb{RP}^\infty = S^\infty/(\mathbb{Z}/ 2\mathbb{Z})$。
+
+    \begin{tikzcd}
+        & &S^\infty \dar\\
+        &S^1 \urar \rar &BG
+    \end{tikzcd}
+同伦提升定理。
+    
+    \qquad 故$\mathbb{R}P^\infty$的闭路空间有两个连通分支，
+    同时$S^\infty$可缩保证了$\mathbb{R}P^{\infty}$的每个连通分支都可缩，
+    因此$\Omega \mathbb{RP}^\infty \simeq \mathbb{Z}/ 2\mathbb{Z}$.
+
+\end{example}
+
+
+\qquad 示性类有自然性。
+
+\qquad 对于任意$G$-丛$V\rightarrow B$，其任何一种示性类都对应自然变换:
+$\psi: V\to \psi(V)\in H^*(B)$。
+自然性体现为：对于任意的底空间之间的映射$f: A\rightarrow B$，拉回与示性类交换，即
+        $$f^*(\psi(V)) = \psi( f^*(V)),$$
+或者说，示性类就是从
+$\mathbf{Top}^{\mathrm{op}}$
+到
+$\mathbf{Set}$
+的可表函子
+$M\mapsto M\text{上}G\text{-丛的同构类}$ 到上同调函子 $M\mapsto H^*(M)$
+的自然变换。由[[Yoneda引理]]可以知道，示性类可以由 $H^*(BG)$ 来分类。
+
+\qquad 本课程的目标：
+\begin{enumerate}
+    \item 对Abel群$G$, 计算$H^*(BG)$；
+    \item 与示性类的其它定义方式相联系。
+\end{enumerate}
+
+\qquad 为什么 $BG$可计算？看两个具体的例子
+
+\begin{example}
+    套叠构造
+    \begin{tikzcd}
+        S^1 \arrow[r, hook] \arrow[d] & S^2 \arrow[r, hook] \arrow[d] & S^3 \arrow[r, hook] \arrow[d] & ... \\
+        \mathbb{R} P^1 \arrow[r]      & \mathbb{R} P^2 \arrow[r]      & \mathbb{R} P^3 \arrow[r]      & ...
+    \end{tikzcd}
+    给出了 $\mathbb{R}P^\infty$的CW复形结构。即
+    $$
+        \mathbb{R}P^\infty=e^0 \cup e^1 \cup e^2 \cup \cdots,
+    $$
+    粘接映射均为 $\times 2$.所以
+    $$
+        H^*(\mathbb{R}P^\infty;\mathbb{F}_2)\sim \mathbb{F}_2[x], |x|=1.
+    $$
+    类似地，Grassmann流形均可以用胞腔分解来计算 $BG$.
+\end{example}
+
+\begin{example}[Splitting Principle]
+    由定理~\ref{thm-Chern}，$S^1$丛一一对应于$H^2(X;\mathbb{Z})$的上同调类，
+    因为 $\mathbb{C}P^\infty=K(\mathbb{Z},2)=BS^1$, 由 Brown Representability Theorem, 
+    所以$H^2(X;\mathbb{Z})$的上同调类一一对应于 $X$到 $\mathbb{C}P^\infty$的映射同伦类.
+
+    Splitting Principle是说，
+    $$
+        H^*(BU(n);\mathbb{Z})\rightarrow H^*(B(S^1)^n;\mathbb{Z})
+    $$
+    是单射，其中 $BU(n)$ 分类复丛, $B(S^1)^n$ 分类可裂复丛。
+    所以欲验证一个关于示性类的等式，只需在可裂丛上验证。
+
+    \qquad Chern类的一个定义是，因为
+    $$
+        \begin{aligned}
+            H^{*}(BU(n);\mathbb{Z}) & \simeq \left( H^*(S^1;\mathbb{Z})^{\otimes n} \right)^{\Sigma_n}
+             \text{（在}\Sigma_n\text{作用下的不动点）}\\
+            & \simeq \mathbb{Z}[x_1,\ldots , x_n]^{\Sigma_n} \\
+            & \simeq \mathbb{Z}[\sigma_1,\ldots , \sigma_n],
+        \end{aligned}
+    $$
+    其中$\sigma_i$为$i$次对称多项式，可定义 $\sigma_i:=c_i$是Chern类。
+
+    \qquad 对一般的紧李群 $G$，考虑其极大环面
+    $$
+        (S^1)^n\hookrightarrow G\text{的极大环面},
+    $$
+    并考虑$G$在$G\text{的极大环面}$上的作用，以及其Weyl子群 $W$ 在$(S^1)^n$上的作用，有
+    $$
+        H^*(BG;\mathbb{Q})\simeq H^*(B(S^1)^n;\mathbb{Q})^{W}
+    $$
+\end{example}
+
+\begin{example}
+    $H^*(BO(n);\mathbb{Q})\simeq \mathbb{Q}[P_1,\cdots,P_{[\frac{n}{2}]}]$，
+    $P_i$是Pontryagin类。
+\end{example}
+
+\section{第二课：向量丛}
+    \qquad 粗略地说，拓扑空间 $X$上的向量丛就是以$x\in X$为参数的一族向量空间。
+    我们希望它有某种连续性。
+    \begin{itemize}
+        \item 一种办法是，考虑$\infty$-范畴$\mathscr{X}$，
+        其对象是$x\in X$，态射是道路的同伦类。
+        一个向量丛就是函子$\mathscr{X}\rightarrow \mathrm{Vect}$.
+        \item 局部平凡化的方法
+    \end{itemize}
+    
+    \begin{definition}[向量丛]
+        拓扑空间$B$上的向量丛$E$含有如下信息：
+        \begin{enumerate}
+            \item 拓扑空间 $E$，称为向量丛的\textbf{全空间}；
+            \item 投影映射 $\pi :E\rightarrow B$；
+            \item 对所有 $b\in B$，$\pi^{-1}(b)$是一个实向量空间。
+        \end{enumerate}
+        满足\textbf{局部平凡性}：对所有的 $b\in B$，存在$b$在$B$中的开邻域
+        $U$及同胚 $h:U\times \mathbb{R}^n \rightarrow \pi^{-1}(U)$,
+        使得下图交换：
+        $$
+            \begin{tikzcd}
+            E \arrow[d, "\pi"] & \pi^{-1}(U) \arrow[l, hook'] \arrow[d, "\pi|_U"] & U\times \mathbb{R}^n \arrow[l, "h"'] \\
+            B                  & U \arrow[l]                                      &                                     
+            \end{tikzcd}
+        $$
+    \end{definition}
+
+    \begin{exercise}
+        验证在向量丛上数乘 $\mathbb{R}\times E\rightarrow E$,
+        加法 $E\underset{x}{\times}E\rightarrow E$连续。这里$E\underset{x}{\times}E$是纤维积。
+    \end{exercise}
+
+    \begin{example}[切丛]
+        设$M$是光滑流形，$\forall x\in M$，$T_x M=\{x\text{ 处切向量}\}\simeq \mathbb{R}^m$.
+        则 $TM\rightarrow M$是向量丛，称为 $M$的切丛。
+    \end{example}
+    
+    \begin{exercise}
+        熟知 $S^2\simeq \mathbb{C}P^1$。用复坐标给出 $T\mathbb{C}P^1$的方程。
+    \end{exercise}
+
+    \begin{example}
+        $TS^2$、$S^2\times \mathbb{R}^2$都是$S^2$上的$\mathbb{R}^2$-丛，
+        在课程的后面我们将证明它们不同伦等价。
+    \end{example}
+
+    \begin{example}[Möbius带]
+        嵌入 $\mathbb{C}^2$，$S^1$上的实线丛Möbius带$M$可写成
+        $$
+            M=\left\{ (z,w): 
+            z,w\in \mathbb{C},z=e^{i\theta},w=\lambda e^{i\theta/2},
+            \theta,\lambda \in \mathbb{R} \right\}.
+        $$
+        通过 $(z,w)\sim (-z,iw)$（或者在上式中用$2\theta$替代$\theta$），
+        可以将Möbius带视作 $\mathbb{R}P^1$上的丛，它就是$\mathbb{R}P^1$的\textbf{重言丛}。
+    \end{example}
+
+    \qquad 一般地，可以用过原点的直线与$\mathbb{R}^{n+1}$中
+    一个不过原点的$n$维超平面$\Gamma$的交来表示$x\in \mathbb{R}P^n$。
+    但仍然有不可这样表示的点，即与 $\Gamma$平行的直线。
+    所有这样的直线构成一个低一维的射影空间，所以
+    $\mathbb{R}P^n=\mathbb{R}P^{n-1}\cup \mathbb{R}^n$.$n$维实射影空间上的重言丛
+    $\gamma=\left\{ (x,A): x\in \mathbb{R}P^n, A\in x \right\}$.
+
+    \begin{definition}[法丛]
+        设$M\hookrightarrow L$是正则子流形，对任何$x\in M$，
+        $N_x M:= T_x M^{\perp}$ 是 $T_x M$在$T_x L$中的正交补。
+        $NM:=\bigsqcup_{x\in M}N_x M$称为子流形$M$的法丛。
+    \end{definition}
+
+    {{warning|虽然上述定义需要使用Riemann度量，但法丛是与度量选取无关的。
+    这依赖于以下两个事实：}}
+
+    \begin{lemma}
+        假设拓扑流形 $X$上存在单位分解，则$X$上的向量丛都存在度量。
+    \end{lemma}
+
+    \begin{lemma}
+        设$E\rightarrow X$是向量丛，$g_1,g_2$是 $E$上度量，
+        则存在丛自同构$f:E\rightarrow E$是等距。
+    \end{lemma}
+    \begin{proof}
+        即我们需要证明存在$f\in \operatorname{Aut}(E)$使得$f g_1 f^T = g_2$.
+
+        \qquad 取一组基将$g_1$和$g_2$同时对角化，且使$g_1=I_n$, 在每个纤维上定义 $f=\sqrt{g_2}$.
+
+        \qquad 验证$f$不依赖于基的选取，由定义则有$fg_1f^{T}=g_2$。
+    \end{proof}
+
+    \qquad 作为例子，考虑 $\mathbb{R}P^1\hookrightarrow \mathbb{R}P^2$的法丛。
+    \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+        \draw    (154,68.39) -- (479,52.39) ;
+        \draw   (228,178.5) .. controls (228,135.7) and (262.7,101) .. (305.5,101) .. controls (348.3,101) and (383,135.7) .. (383,178.5) .. controls (383,221.3) and (348.3,256) .. (305.5,256) .. controls (262.7,256) and (228,221.3) .. (228,178.5) -- cycle ;
+        \draw    (235,249.39) -- (448,38.39) ;
+        \draw (397,183.4) node [anchor=north west][inner sep=0.75pt]    {$\mathbb{R} P^{2}$};
+        \draw (484,44.4) node [anchor=north west][inner sep=0.75pt]    {$\infty \text{\mbox{-}line} \simeq \mathbb{R} P^{1}$};
+        \draw (433,62.4) node [anchor=north west][inner sep=0.75pt]    {$x$};
+        \draw (318,178.4) node [anchor=north west][inner sep=0.75pt]    {$O$};
+    \end{tikzpicture}
+    
+    每一点$x\in \mathbb{R}P^1$的纤维是过$x$与$0$的直线。
+    经过一次纤维反演，$x$变为原点，$O$变为无穷远点，因此
+    $N\mathbb{R}P^1\simeq \gamma_1$.
+    类似地，可以得到$\mathbb{R}P^n\hookrightarrow\mathbb{R}P^{n+1}$的法丛
+    $$
+        \mathbb{R}P^{n+1}/\{0\}\stackrel{\pi}{\rightarrow}\mathbb{R}P^n,
+    $$
+    $$
+        x\mapsto \overline{xO}\cap \mathbb{R}P^n.
+    $$
+    它同构于$\mathbb{R}P^n$的重言丛。但注意反演依赖于度量，所以法丛与重言丛的同构不是自然的。
+
+    \begin{definition}[向量丛的截面]
+        设$E\stackrel{p}{\rightarrow}B$是向量丛。
+        向量丛的一个截面是连续映射$s:B\rightarrow E$，满足$ps=\operatorname{id}_B$.
+    \end{definition}
+
+    \begin{example}
+        平凡丛$X\times \mathbb{R}^n$的截面就是$X$上的$n$个连续函数;
+
+        \qquad $TX$的截面是切向量场; $NX$的截面是法向量场。
+    \end{example}
+
+    \qquad   在微分流形（王志张老师开设）这门课中，证明的一个主要定理就是
+    \begin{theorem}[Serre--Swan 定理]
+        设$X$是紧流形，则$X$上向量丛一一对应于$C^{\infty}(X)$上的有限投射模。
+        具体的对应关系是向量丛 $\xi$ 对应其截面模 $\Gamma(\xi)$.
+    \end{theorem}
+
+    \qquad 一个显然的观察是，若向量丛 $\xi$平凡，则 $\xi$ 存在处处非零的截面。
+    由此立即得到$S^1$上的$\mathbb{R}^1$丛Möbius带非平凡。
+    因为其截面相当于$\mathbb{R}$上连续的周期奇函数，其必有零点。进而有
+    \begin{proposition}
+        $\mathbb{R}P^n$上重言丛 $\gamma_n$非平凡。
+    \end{proposition}
+    \begin{proof}
+        Möbius带非平凡，所以$\gamma_1$非平凡。
+        嵌入$\mathbb{R}P^n\hookrightarrow\mathbb{R}P^{n+1}$给出了丛的限制
+        $\gamma_n\subseteq \gamma_{n+1}$，
+        所以$\gamma_{n+1}$上的处处非零截面可以给出$\gamma_n$上的处处非零截面。
+        归纳可得$\gamma_{n}$没有处处非零截面，所以$\gamma_{n}$非平凡。
+    \end{proof}
+    \begin{definition}
+        向量丛的截面 $s_1,\ldots,s_k$称为处处无关，
+        如果 $\forall x\in X$, $s_i(x)$在 $V_x$中线性无关。
+    \end{definition}
+
+    \begin{theorem}\label{thm:Criterion}
+        $n$维向量丛 $\xi$平凡当且仅当$\xi$有$n$个处处无关的截面。
+    \end{theorem}
+
+    \begin{lemma}
+        设 $\xi$，$\eta$是$X$上向量丛，
+        若存在保纤维的映射$f:E(\xi)\rightarrow E(\eta)$（$E(\xi)$表示向量丛的全空间）
+        连续，且$f$限制在每个纤维上是线性同构，则$f$为同胚。
+    \end{lemma}
+    \begin{proof}
+        利用局部平凡化证明$f$是开映射。
+    \end{proof}
+
+    \qquad 有了这个引理，定理~\ref{thm:Criterion}证明如下：
+    \begin{proof}
+        只需证充分性。设$s_1,\ldots,s_n$是$n$维向量丛$\xi$的$n$个处处无关截面，则映射
+        $$
+            \begin{aligned}
+                X\times \mathbb{R}^n & \rightarrow E(\xi) \\
+                (x,\lambda_1,\ldots,\lambda_n) & \mapsto (x,\lambda_1 s_1(x),\ldots, \lambda_n s_n(x))
+            \end{aligned}
+        $$
+        连续、保纤维、在每个纤维上是线性同构。所以$\xi$是平凡丛。
+    \end{proof}
+
+    \begin{example}
+        $S^3$的切丛平凡。
+    \end{example}
+    \begin{proof}
+        证明思路：嵌入到四元数体，验证三个处处无关的截面分别是$xi,xj,xk$。
+        由定理~\ref{thm:Criterion}立得结论。
+    \end{proof}
+
+    \qquad 实际上，有
+    \begin{theorem}
+        三维可定向闭流形的切丛平凡。
+    \end{theorem}
+
+    \begin{example}
+        类似地，嵌入到八元数，可以取出$S^7$的$7$个处处无关的截面，所以$S^7$的切丛平凡。
+    \end{example}
+
+    \begin{lemma}
+        对于$\xi$和$\eta$是向量丛，$f:E(\xi)\to E(\eta)$连续，满足如下交换图
+        \begin{tikzcd}
+        E(\xi) \arrow[d] \arrow[r, "f"]  & E(\eta) \arrow[d] \\
+        X \arrow[r, no head, Rightarrow] & X                
+        \end{tikzcd}
+        并且假设$f|_{F_x(\xi)}$是线性同构，那么$f$是同胚。（从而为向量丛的同构）
+    \end{lemma}
+    \begin{proof}
+        因为已知$f$是连续双射，只需证明$f$为开映射即可。
+        即只需证明$\forall V$开，$\forall x\in V$，$f(x)$为$f(V)$的内点。
+
+        \qquad 在$x$选定时，只需取一个$U$为$\pi(x)$的开邻域，
+        且上面$\xi,\eta$为平凡丛，并说明$f|_{\pi^{-1}(U)}$为同胚。
+
+        \qquad 选取$\xi|_U$和$\eta|_U$上面的平凡化，
+        由于$f$在每个纤维上都是线性空间的同构，
+        所以此时$f$形如$f=(f_{ij}(x))_{1\le i,j\le n},x\in U$。
+
+        \qquad 首先$f_{ij}(x)$连续。
+        因为取$e_i:U\to U\times\mathbb{R}^n$为$\xi|_U$这个平凡丛上一个标准的截面，
+        $p_j$为$\eta|_U\equiv U\times\mathbb{R}^n\to \mathbb{R}$到第$j$个分量的投影，
+        那么$f_{ij}=p_j\circ f\circ e_i$为连续映射的复合，所以连续。
+
+        \qquad 而此时$f^{-1}$可以用矩阵求逆的公式直接给出，
+        由于该矩阵值函数逐点可逆，所以其逆也是连续函数。从而$f|_{\pi^{-1}(U)}$为同胚。
+    \end{proof}
+
+    \qquad 有了该引理，现在可以证明如下定理
+
+    \begin{theorem}
+        $\xi$为平凡丛的充要条件是存在$n$个处处无关的截面。
+    \end{theorem}
+    \begin{proof}
+        必要性显然。
+
+        \qquad 如果存在$n$个处处无关的截面$s_1,\cdots,s_n$，那么可构造从平凡丛到$\xi$的映射
+        $$
+            \begin{aligned}
+                (x,\lambda_1,\cdots,\lambda_n)\mapsto 
+                (x,\lambda_1 s_1(x)+\cdots+\lambda_n s_n(x)),
+            \end{aligned}
+        $$
+        并且该映射连续（用到了向量丛关于加法和数乘的连续性），保纤维，且逐点为线性同构。
+        由上面引理知该映射为向量丛的同构。
+    \end{proof}
+
+    \begin{exercise}
+        思考为什么要判断向量丛是否平凡？
+    \end{exercise}
+
+    \begin{definition}
+        一个每点纤维上都给了一个连续变化的度量(正定二次函数)的向量丛称为欧氏丛。
+    \end{definition}
+
+    \begin{proposition}
+        如果底空间$X$存在单位分解，那么$X$上任一向量丛都可给一个度量使其为欧氏丛。
+    \end{proposition}
+    
+    \begin{proof}
+        取使得向量丛$E$局部平凡的开集构成的开覆盖$\{U_i\}$，
+        则由同构$E|_{U_i}\cong U_i\times \mathbb{R}^n$，
+        由该平凡丛上的标准度量可以给出$E|_{U_i}$上一个正定二次函数
+        $g_i:E|_{U_i}\to \mathbb{R}$。
+        由于$\mathbb{R}^n$上正定二次函数全体构成一个凸锥，
+        对于单位分解（这个和是局部有限的）$1=\sum k_i$从属于$U_i$，
+        $g=\sum k_i g_i$就给出了所需要的一个$E$上度量。
+    \end{proof}
+
+    \begin{proposition}
+        固定向量丛$E$，如果$g_1,g_2$为$E$上两个度量，
+        那么存在从$(E,g_1)\to(E,g_2)$的等距同构
+    \end{proposition}
+    \begin{proof}
+        需要找$f:E\to E$为一个向量丛的自同构，使得$fg_1f^t=g_2$，
+        这里$g_1,g_2$都看做逐点定义的二次型，也就是对称矩阵。
+        这个式子就是线性代数中基变换对于二次型的影响。
+
+        \qquad 而由于对于正定自伴随的线性算子，都可以开根号，并且得到的仍然是自伴正定的。
+        所以可以定义$f=\sqrt{g_2}\sqrt{g_1}^{-1}$。
+        由开根运算的连续性加上$g_1,g_2$的连续性，可得到$f$的连续性。
+    \end{proof}
+
+    \begin{remark}
+        所以给向量丛加上度量不会影响向量丛的分类。
+    \end{remark}
+
+
+
+\section{第三课}
+
+\section{第四课: Euler类}
+
+    \qquad Euler类动机：一般位置截面与零截面交点的Poincaré对偶。
+
+    \subsection{Poincaré对偶}
+        \qquad 设$M$是定向闭流形，则存在$[M]\in H_k(M)$使得
+        $[M]|_{H_*(M, M-\operatorname{pt})}$是一个生成元。
+        
+        \qquad 有Poincaré同构
+            \begin{align*}
+            D: H^k(M) &\rightarrow H_{n-k}(M)\\
+                x &\mapsto x\setminus [M]
+            \end{align*}
+    则
+        $$D^{-1}: H_{n-k}(M) \rightarrow H^k(M).$$
+
+        \qquad 考虑$N^n$是$M^m$的定向子流形，$[N] \in H_n(N)$，
+        故$i_* [N]\in H_n(M)$，进而定义$N$的Poincaré对偶为
+            $$[N]^* := D^{-1} i_*[N] \in H^{m-n}(M).$$
+且对于$x\in H_{m-n}(M)$，有
+            $$\langle x, [N]^* \rangle = \# x \cap N,$$
+其中$x$需要形变到一般位置。
+
+        \qquad 若$N_1$与$N_2$横截，则$[N_1 \cap N_2]^* =[N_1]^* \cup [N_2]^*$。
+
+    \begin{exercise}
+        $N_1 \cap N_2$选取说明定向使得上式成立？
+    \end{exercise}
+
+        \qquad 一般地，$f: M' \rightarrow M$，$N\subset M$，若$f$与$N$横截，则
+            $$f^*([N]^*) =[f^{-1}(N)]^*.$$
+
+    非紧的Poincaré对偶:
+
+        \qquad $M$是定向流形，有紧支集下同调$H^c_m(M)$, 和同构
+            $$D: H_k(M) \rightarrow H^{m-k}_c(M),$$
+            $$\langle D(x), y\rangle = \# x\cap y.$$
+    
+\subsection{Euler 类}
+    \qquad $V \rightarrow M$是$n$维向量丛，$M$是$m$维可定向闭流形。
+    $$[\text{一般截面}\cap \text{零截面}]^* = [\text{一般截面}]^* \cup [\text{零截面}]^* = ([\text{零截面}]^*)^2.$$
+我们之后会知道，这个上同调在Thom同构下对应于$M$上的Euler类。
+
+    \qquad 问题：其中零截面是在什么意义下取的？
+    $$[\text{零截面}] \in H_m(V) \mapsto u(V):=[\text{零截面}]^* \in H^n_c(V),$$
+记为Thom类。
+
+    \qquad 记$i_0: M \rightarrow V$是零截面，则我们将
+        $$e(V):= i_0^*(u) \in H_c^n(M) =H^n(M)$$
+称为是可定向闭流形$M$关于向量丛$E$的Euler类（目前“可定向闭流形”的条件是必要的）。
+
+\subsection{Thom类}
+    \qquad 观察: $H^n_c(V) \cong H^n(V, V-i_0(M)) \ni u$.
+
+    \qquad Thom类满足的条件：
+        $$u|_{\text{fiber}} \in H^n( \mathbb{R}^n, \mathbb{R}^n-\{0\})= \mathbb{Z}$$
+    是生成元，即$u$限制在每条纤维上是一个生成元。由此可以在不闭的流形上定义Thom类。
+
+    \qquad 设$V \rightarrow B$是一个向量丛，则如下的$u$称作一个Thom类
+        
+        \qquad \qquad 1. $u\in H^*(V, V- B)$.\\
+
+        \qquad \qquad 2. $\forall b \in B$, $u|_B =1\in H^n(F_b, F_b - \{0\})$, 
+        其中$f_b \cong \mathbb{R}^n$带标准定向。
+
+    \begin{theorem}
+        若$B$是CW复形，则对于任意向量丛$V\rightarrow B$，Thom类存在且唯一。
+    \end{theorem}
+
+    \begin{theorem}
+        Thom同构定理。
+
+        \qquad $p: V\rightarrow B$是定向向量丛，则有同构
+            \begin{align*}
+                H^*(B) &\stackrel{\cong}{\rightarrow} H^{*+n}(V, V-B)\\
+                x &\mapsto p^* x \cup u(V)
+            \end{align*}
+    \end{theorem}
+
+    这两个定理的证明可参考Milnor & Stasheff 的示性类第十章。
+
+    \begin{proposition}
+        Gysin列
+
+       $$ \begin{tikzcd}
+        & &H^{k-1}(S) \dar["\cong"] & &H^k(B) \dar["\cong"']{p^*} &H^k(S) \dar["\cong"] & \\
+        &\cdots \rar &H^{k-1}(V-B) \rar \drar &H^k(V, V-B)\urar["i_0^*"] \rar &H^k(V) \rar &H^k(V/B) \rar &\cdots\\
+        & & &H^{k-n}(B) \uar["\cong"']{\cup u} \urar & & &
+       \end{tikzcd}$$
+    其中$S$是$V$对应的球丛。因此我们有正合列
+        $$\cdots \rightarrow H^{k-1}(S) \rightarrow H^{k-n}(B) 
+        \stackrel{\cup e}{\longrightarrow} H^k(B) 
+        \stackrel{p^*}{\longrightarrow} H^k(S) \rightarrow \cdots.$$
+    \end{proposition}
+
+    \begin{example}
+        考虑$\mathbb{C}P^{n-1} \subset \mathbb{C}P^n$的法丛$\gamma$, 
+        其全空间为$\mathbb{C}P^n-\infty$.
+
+        $$H^*(\mathbb{C} P^{n-1}\cong \mathbb{Z}[x]/(x^n=0) = \mathbb{Z} \{1, x ,\cdots, x^{n-1}\},$$
+        $$H^*(V, V-B) \cong H^*(\mathbb{C} P^n, \mathbb{C} P^n - \mathbb{C} P^{n-1}) = \mathbb{Z}\{x, \cdots, x^n\},$$
+        $$H^*(V-B) \cong H^*(\mathbb{C}^n- 0) \cong H^*(S^{2n-1}).$$
+        $u=\pm x$, $e= \pm x$. 由Gysin列，有
+        $$0=H^k(S) \rightarrow H^{k-1}(B) \stackrel{\cup e}{\longrightarrow} H^k(B) \rightarrow H^k(S)=0$$
+    有同构$H^{k-1}(B) \stackrel{\cup e}{\longrightarrow} H^k(B) $, 对于$k\leq 2n-2$.
+
+    \end{example}
+
+\subsection{Euler类的基本性质}
+    1. 自然性
+        $$\begin{tikzcd}
+            &f^*V \rar \dar &V\dar \\
+            &B \rar{f} &B
+        \end{tikzcd}$$
+    $e:\text{Vect} \rightarrow H^*$是自然变换，即拉回丛的Euler类是Euler类的拉回。
+
+    2. $e(\text{平凡丛})=0$.
+        $$\begin{tikzcd}
+            &f^*(\mathbb{R}^n) \rar \dar &\mathbb{R}^n \dar \\
+            &B \rar{f} &\text{pt}
+        \end{tikzcd}$$
+
+    3. Whitney Formula.
+
+    \qquad Künneth公式：$H^*(A, B) \otimes H^*(C, D) \cong H^*(A\times C, A\times D \cup B \times C)$, 假设$H^*(A, B)$ 或 $H^*(C, D)$是平坦的。
+
+    \qquad 现在在每个纤维上，$(\mathbb{R}^m - 0) \times \mathbb{R}^n \cup \mathbb{R}^m \times (\mathbb{R}^n -0) = \mathbb{R}^{m+n} -0$. 因此有纤维积
+            $$(V_1 - B) \times B)\times_B V_2 \cup V_1 \times_B (V_2- B) =(V_1 \times_B V_2) -B. $$
+    因此对于向量丛$V_1 \rightarrow B$和$V_2 \rightarrow B$的Thom类$u_1$和$u_2$，
+    有$u_1\otimes u_2$是$V_1 \times V_2$的Thom类。
+        $$\begin{tikzcd}
+            &V_1 \oplus V_2 \rar \dar &V_1 \times V_2\dar \\
+            &B \rar{\Delta} &B \times B
+        \end{tikzcd}$$
+    有
+        $$(u_1\otimes u_2)|_{B\times B} = u_1|_B \otimes u_2|_B = e(V_1) \otimes e(V_2) \in H^*(B\times B).$$
+    用$\Delta$拉回，并注意cup积是张量积的拉回
+        $$e(V_1 \oplus V_2) =e(V_1) \cup e(V_2).$$
+
+\begin{corollary}
+    若$V$有一个处处非零的截面，则$e(V)=0$.
+\end{corollary}
+\begin{proof}
+    若$V=V_1\oplus \mathbb{R}$, 则$e(V) =e(V_1) \cup e(\mathbb{R}) =0$.
+\end{proof}
+    
+\begin{definition}
+    一个示性类是$\text{Vect}_F \rightarrow H^*(-, G)$的一个自然变换。
+\end{definition}
+
+\qquad 向量丛是可表函子，即$BGL(n, \mathbb{R}) := Gr_{0, \infty}$,
+    $$\text{Vect}_n(B) \cong [B, BGL(n, \mathbb{R})]$$
+    $$\text{Vect}^\mathbb{C}_n(B) \cong [B, BGL(n, \mathbb{C})]$$
+    $$\text{Vect}^\text{定向}_n(B) \cong [B, BGL^+(n, \mathbb{R})]$$
+
+\begin{theorem}[Yoneda引理]
+    $\text{Vect}_n$ 上的示性类 $\leftrightarrow$ $H^*(BGL(n))$.
+\end{theorem}
+\begin{proof}
+    $\rightarrow$ 对于一个示性类$\Phi$, 只需要取 $\Phi(\gamma_n)$, 
+    其中 $\gamma_n$ 为 $BGL_n$ 上的重言丛.\par
+    $\leftarrow$ 对于 $x\in H^*(BGL(n))$, 我们定义一个示性类 $\Phi_x$ 如下: 
+    对于 $n$ 维丛 $E\to B$, 它可以由 $f:B\to BGL(n)$ 拉回 $\gamma_n$ 得到.
+    则定义 $\Phi_x(v)=f^*(x)$.\par 
+    剩下的验证留作习题.
+\end{proof}
+
+
+
+\section{第五课：Chern类}
+\quad Goal: 分类复丛的示性类
+
+\subsection{Chern类构造}
+
+\begin{definition}
+    称向量丛$V\rightarrow B$是复向量丛, 若存在$J: V \rightarrow V$，满足
+    
+    \quad 1, $J$线性. 2, $J^2=-1$, 3, $J$连续.
+\end{definition}
+
+    \quad 复空间的相交系数一般是正的。
+
+\begin{definition}
+    称$M$是近复流形, 若$TM$有一个复向量丛结构.
+\end{definition}
+
+\begin{definition}
+    称$N$是$M$的近复子流形, 若$TN \hookrightarrow TM \stackrel{J}{\longrightarrow} TM$可以分裂为
+    $$TN \stackrel{J|_{TN}}{\longrightarrow} TN \hookrightarrow TM.$$
+\end{definition}
+
+
+{{warning|跳了一大段}}
+
+\begin{definition}
+    定义$c_n = e(\gamma_n) = \pm e(\gamma_n^*)$, $\vert c_n \vert =2n$.
+\end{definition}
+
+\quad 则有$H^*(Gr_1) = \mathbb{Z} [c_1]$, $H^*(Gr_2)= \mathbb{Z}[c_1, c_2]$等.
+
+\begin{proposition}
+    $c_1, \cdots, c_{n-1}$是唯一定义的, 称$c_i$为第$i$个Chern类.
+\end{proposition}
+
+\quad 设$V\rightarrow X$是$n$维复向量丛, 
+则存在唯一的$f: X \rightarrow Gr_n$使得$f^*\gamma_n \cong V$.
+
+\begin{proposition} Chern类的性质.
+
+    \quad 1. $c_k(V) = f^*(c_k)$.
+
+    \quad 2. $c_n(V) = e(V)$.
+
+    \quad 3. $i^*(c_k)=c_k$, 其中$i: Gr_{n-1, m-1} \rightarrow Gr_{n, m}$.
+
+    \quad 4. $c_k(V\oplus \mathbb{C}) = c_k(V)$.
+\end{proposition}
+
+\quad 所以我们得到以下定理
+
+\begin{theorem}
+    存在唯一的一组复示性类$c_1, c_2, \cdots$, 使得
+
+    \quad 1. 对于任意$n$维复丛$V$, $c_n(V) = e(V)$; $c_k(V)=0$若$k>n$.
+
+    \quad 2. $c_k(V \oplus \mathbb{C}) = c_k(V)$.
+\end{theorem}
+
+\begin{proposition}
+    $\mathbb{C}P^n$上重言丛的$c_1$是$-[\mathbb{C}P^{n-1}]$.
+\end{proposition}
+
+\begin{proposition}
+    若$V$是复丛, 则$V^*$和$\overline{V}$满足
+        $$c_k(V^*) = c_k(\overline{V}) = (-1)^k c_k(V).$$
+\end{proposition}
+\begin{proof}
+    考虑$d_k(V) :=(-1)^k c_k(V^*)$, 需证明$d_k=c_k$.
+
+    \quad 1. $d_n(V) = (-1)^n e(V^*) = e_n(V)$.
+
+    \quad 2. $d_k(V \oplus \mathbb{C})=d_k(V)$.
+
+    \quad 故由唯一性有$d_k=c_k$.
+\end{proof}
+
+\quad 问题: $c_k(V_1 \oplus V_2)=$? $c_k(V_1\otimes V_2)=$?
+
+\subsection{Splitting principle}
+
+\quad 最简单的例子: $\gamma_1 +\gamma_1 +\cdots + \gamma_1 
+\rightarrow (\mathbb{C}P^\infty)^n$的拉回是$\gamma_n \rightarrow Gr_n$.
+
+问: $c_k(\gamma_1 + \gamma_1 +\cdots +\gamma_1)=$?
+
+\quad $n=1$时, $c_1(\gamma_1) =c_1$, $c_2(\gamma_1) = 0$.
+
+\quad $n=2$时, 
+    $$\begin{tikzcd}
+        &\gamma_1 + \mathbb{C} \dar &\gamma_1 +\gamma_1 \dar\\
+        &\mathbb{C}P^\infty \times * \rar &\mathbb{C}P^\infty\times \mathbb{C}P^\infty
+    \end{tikzcd}$$
+则有
+    \begin{align*}
+            \mathbb{Z} [x, y] &\rightarrow \mathbb{Z}[x]\\
+                y &\mapsto 0.
+    \end{align*}
+$x=c_1(\gamma_1 + \mathbb{C})$, $y=c_1(\mathbb{C} +\gamma_1)$.
+
+\quad $c_1(\gamma_1+\gamma_1)$在$\Sigma_2$作用下不变, 
+故$c_1(\gamma_1 +\gamma_1) = k(x+y)$. 而在映射$y\mapsto 0$的
+拉回下$c_1(\gamma_1+\gamma_1)$被拉到$c_1(\gamma_1+\mathbb{C})=x$, 故$k=1$. 
+因此$c_1(\gamma_1 +\gamma_1)=x+y$, $c_2(\gamma_1 +\gamma_1)=xy$.
+
+\quad $n=3$时
+    $$\begin{tikzcd}
+        & &\gamma_1 +\gamma_1+\gamma_1 \dar\\
+        & (\mathbb{C}P^\infty)^2 \times * \rar &(\mathbb{C}P^\infty)^3
+    \end{tikzcd}$$
+
+同样地, 由$(\mathbb{C}P^\infty)^2 \times *\hookrightarrow (\mathbb{C}P^\infty)^3$作拉回, 
+$c_1(\gamma_1 +\gamma_1 +\gamma_1)$在$\Sigma_3$的作用下不变
+    $$c_1(\gamma_1 +\gamma_1+\gamma_1) = k(x_1+x_2+x_3) 
+    \stackrel{i_3^*}{\longrightarrow} x_1 +x_2
+    = c_1(\gamma_1+\gamma_1+\mathbb{C})$$
+故$k=1$, 即$c_1(\gamma_1 +\gamma_1+\gamma_1) = x_1 +x_2+ x_3$.
+
+    $$c_2(\gamma_1+\gamma_1+\gamma_1) 
+    = k(x_1+x_2+x_3)^2 + l(x_1x_2+x_2x_3+x_3x_1) 
+    \stackrel{i_3^*}{\longrightarrow} x_1x_2 
+    = c_2(\gamma_1+\gamma_1+\mathbb{C}) =k(x_1+x_2)^2 +lx_1x_2$$
+推出$k=0, l=1$, 则$c_2(\gamma_1+\gamma_1+\gamma_1) = x_1x_2+x_2x_3+x_3x_1$.
+
+\quad 应用归纳法得到
+
+\begin{theorem}
+    $c_k(\gamma_1 +\gamma_1+\cdots +\gamma_1) = \sigma_k(x_1, \cdots, x_n)$.
+\end{theorem}
+
+\quad 一般地, 有
+
+\begin{theorem}
+    $V_1, \cdots, V_n$是复线丛, 则
+        $$c_k(V_1\oplus \cdots \oplus V_n) = \sigma_k(c_1(V_1), \cdots, c_1(V_n)).$$
+\end{theorem}
+
+\begin{align*}
+        Gr_n &\leftarrow (\mathbb{C}P^\infty)^n\\
+        \mathbb{Z}[c_1, \cdots, c_n] &\mapsto \mathbb{Z}[x_1, \cdots, x_n]
+\end{align*}
+是单射, $\vert x_i\vert=2$, $\vert c_i \vert=2i$. 推出Splitting principle.
+
+
+\begin{exercise}
+    计算$c_k(V_1\oplus V_2)$和$c_k(V_1 \otimes V_2)$.
+\end{exercise}
+
+
+
+\section{第六课：Chern类续}
+
+\begin{proposition} Whitney Product Formula.
+    $$c_n(V_1 \oplus V_2) = \sum\limits_{k=0}^n c_k(V_1) \cup c_{n-k}(V_2),$$
+其中$c_0 \equiv 1$.
+
+    \quad 记全Chern类为$c(V) = 1+c_1(V) + \cdots $, 则命题可重述为
+        $$c(V_1 \oplus V_2) = c(V_1) \cup c(V_2).$$
+\end{proposition}
+
+\begin{remark}
+    这给出了一种联系通常上同调(加法群)和$K$-理论(乘法群)的方式.
+\end{remark}
+
+
+
+
+
+
+
+
+
+\section{第七课: Pontryagin类}
+
+
+\section{第八课}

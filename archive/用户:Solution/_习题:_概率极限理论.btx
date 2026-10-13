@@ -1,0 +1,42 @@
+\setdisplaytitle{习题：概率极限理论}
+\sethtmltitle{习题：概率极限理论}
+
+\section{2026春习题}
+\subsection{Homework\quad1}
+
+\begin{enumerate}
+    \item  Are the following distributions infinitely divisible?
+
+    \begin{enumerate}
+        \item[(i)] \(\displaystyle \mathbb{P}(X = k) = a^k (1 + a)^{-k-1}, \ a > 0, \ k = 0, 1, 2, \dots;\)
+        
+        \item[(ii)] \(\displaystyle p_0 = \mathbb{P}(X = 0) = (1 + \alpha \lambda)^{-1/\alpha}, \ \alpha, \lambda > 0,\) and
+        \[
+        \mathbb{P}(X = k) = \left( \frac{\alpha \lambda}{1 + \alpha \lambda} \right)^k \frac{(1 + \alpha) \cdots (1 + (k - 1)\alpha)}{k!}, \quad k = 1, 2, \dots.
+        \]
+        
+        \item[(iii)] The density function \(\displaystyle f(x) = \frac{1}{\pi (1 + x^2)}, \ x \in \mathbb{R}.\)
+    \end{enumerate}
+
+    \item  Let \(\varphi\) be a characteristic function. Suppose there is an integer sequence \(n_k\) satisfying \(\lim_{k \to \infty} n_k = \infty\) such that for every \(k \ge 1\), there exists a characteristic function \(\varphi_k\) satisfying \(\varphi = (\varphi_k)^{n_k}\). Show that \(\varphi\) is infinitely divisible.
+
+    \item  Compute the Lévy-Khintchine representation for the following characteristic functions.
+
+    \begin{enumerate}
+        \item[(i)] \(\displaystyle \varphi(t) = (1 - it / \beta)^{-\alpha}, \ \alpha, \beta > 0;\)
+        \item[(ii)] \(\displaystyle \varphi(t) = e^{-\theta |t|}, \ \theta > 0;\)
+        \item[(iii)] \(\displaystyle \varphi(t) = (1 + t^2)^{-1}.\)
+    \end{enumerate}
+
+    \item  Let \(X\) and \(Y\) be independent, infinitely divisible random variables. If \(X + Y\) has Normal distribution, show that \(X\) and \(Y\) also have Normal distributions.
+
+    \item  Let \(\{X_{nk}\}_{n \ge 1, 1 \le k \le n}\) be independent random variables having distributions
+    \[
+    \mathbb{P}(X_{nk} = k/n) = \mathbb{P}(X_{nk} = -k/n) = 1/n \quad \text{and} \quad \mathbb{P}(X_{nk} = 0) = 1 - 2/n.
+    \]
+    Let \(\displaystyle S_n := \sum_{k=1}^n X_{nk}\). Show that
+    \begin{enumerate}
+        \item[(i)] For any \(n \ge 1\), \(S_n\) is not infinitely divisible.
+        \item[(ii)] There exists a non-Normal, infinitely divisible random variable \(S\) such that \(\displaystyle S_n \xrightarrow{d} S\).
+    \end{enumerate}
+\end{enumerate}

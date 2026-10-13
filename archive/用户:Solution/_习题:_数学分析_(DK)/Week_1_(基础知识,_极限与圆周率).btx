@@ -1,0 +1,241 @@
+\newenvironment{solution}{\begin{proofc}[解答]}{\end{proofc}}
+
+== 习题A ==
+
+\begin{enumerate}
+    \item[1.]有限集合 $E$ 中元素个数记为 $\# E$ 或 $|E|$. 
+    $E$ 的所有子集组成的集合称为 $E$ 的\textbf{幂集}，记为 $2^{E}$. 
+    证明:若 $E$ 是有限集,则 $|2^{E}| = 2^{|E|}$.
+
+    \item[2.]若 $a$ 能写成两个整数之比,则称 $a$ 是有理数,否则称为无理数. 证明:
+    \begin{enumerate}
+    \item[(a)]若 $a$ 是有理数, $x$ 是无理数,则 $a + x$ 是无理数;
+    若 $a\neq 0$,则 $ax$ 也是无理数.
+    \item[(b)]任意两个有理数之间至少存在一个无理数.
+    \end{enumerate}
+
+    \item[3.]求双曲正弦函数 $\displaystyle y = \sinh x = \frac{e^{x} - e^{-x}}{2} (x\in \mathbb{R})$ 的反函数.
+
+    \item[4.]设实数 $x\in (0,2\pi)$.
+    \begin{enumerate}
+    \item[(a)]证明: 若 $n$ 为正整数，则以下等式成立：
+
+    \[\sin x + \sin (2x) + \sin (3x) + \cdots +\sin (nx) 
+    = \frac{\sin\frac{nx}{2}\sin\frac{(n + 1)x}{2}}{\sin\frac{x}{2}}.\]
+    
+    \item[(b)]计算: $\cos x + \cos (2x) + \cos (3x) + \cdots +\cos (nx).$
+    \end{enumerate}
+
+    \item[5.]既是单射亦是满射的映射称为\textbf{双射}. 构造一个双射 $f:(0,1)\to (-\infty, + \infty).$
+    \begin{solution}
+        定义函数 $\displaystyle f(x) = \ln\left(\frac{x}{1-x}\right)$.
+
+        当 $x \in (0,1)$ 时，$\displaystyle \frac{x}{1-x} \in (0,+\infty)$，且 $y=\ln{x}$ 是从 $(0, +\infty)$ 到 $(-\infty, +\infty)$ 的双射.\\
+        从而，$\displaystyle f(x)$ 为双射.
+
+        (此外，$\displaystyle f(x)=\tan\left(\pi x-\frac{\pi}{2}\right)$ 也符合题意.)
+    \end{solution}
+
+    \item[6.]构造一个双射 $f:[0,1]\to [0,1]$,它在 $[0,1]$ 的任一子区间上都不是
+    单调的.
+    \begin{solution}
+        考虑对 Dirichlet 函数的改造. 定义函数 $f: [0,1] \to [0,1]$ 如下：
+        \[
+        f(x) = 
+        \begin{cases}
+            x & \text{，若 } x \text{ 是无理数} \\
+            1 - x & \text{，若 } x \text{ 是有理数}
+        \end{cases}
+        \]
+        \begin{enumerate}
+            \item[(1)]证明 $f$ 是双射.\\
+            \textbf{单射}：设 $f(x) = f(y)$.\\
+            $\cdot$若 $x$ 和 $y$ 均为无理数，则 $x=y$；\\
+            $\cdot$若均为有理数，则 $1-x=1-y$，故 $x=y$；\\
+            $\cdot$若有理数与无理数各一个，不妨设$x$为有理数、$y$为无理数，则 $1-x = y$，但左边为有理数，右边为无理数，矛盾.\\
+            故 $f$ 是单射.\\
+            \textbf{满射}：$\forall y \in [0,1]$，\\
+            $\cdot$若 $y$ 为无理数，则取 $x=y$(均为无理数)，有 $f(x)=y$；\\
+            $\cdot$若 $y$ 为有理数，则取 $x=1-y$(均为有理数)，有 $f(x)=1-(1-y)=y$.\\
+            故 $f$ 是满射.
+            \item[(2)]证明$f$在$[0, 1]$的任一子区间上都不是单调的. \\
+            在$[0, 1]$的任一子区间上，既包含有理数也包含无理数，而有理点处函数严格减，无理点处函数严格增，故不可能单调. 从而$f$符合题意.
+        \end{enumerate}
+    \end{solution}
+
+    \item[7.]设 $n$ 为大于1的正整数, $x > 0$,证明: $(1 + x)^{n}\geq (n + 2)x.$
+
+    \item[8.]设 $n$ 为正整数,证明:
+
+    \[2(\sqrt{n + 1} -1)< 1 + \frac{1}{\sqrt{2}} +\frac{1}{\sqrt{3}} 
+    +\dots +\frac{1}{\sqrt{n}} < 2\sqrt{n}.\]
+
+    \item[9.]直线与圆的参数方程:
+
+    \begin{enumerate}
+    \item[(a)]写出过点 $P(2,3)$ 且方向向量为 $\vec{v} = (1, - 2)$ 的直线的参数方程.
+    \item[(b)]写出圆心在原点,半径为5的圆的参数方程.
+    \item[(c)]将参数方程 $\left\{ \begin{array}{l}x = 2 + 3\cos t \\ 
+        y = -1 + 3\sin t \end{array} \right.$ 化为普通方程,并说明它表示什么曲线.
+    \end{enumerate}
+
+    \item[10.]摆线(旋轮线)参数方程:
+    
+    \textbf{摆线}是一个圆在一条直线上无滑动地滚动时,圆上一个固定点所形成的轨迹. 设圆的半径为 $r$ ,
+    固定点初始位置在原点,圆在 $x$ 轴上方且沿 $x$ 轴正方向滚动.
+
+    \begin{enumerate}
+    \item[(a)]推导摆线的参数方程(提示:考虑圆心坐标和固定点相对于圆心的位置).
+    \item[(b)]取 $r = 1$,计算当参数 $t$ (圆转过的角度)分别
+        取 $\displaystyle 0,\frac{\pi}{2},\pi ,\frac{3\pi}{2},2\pi$ 时摆线上的点坐标.
+    \item[(c)]根据(b)的结果,描述摆线在第一拱 $(0\leq t\leq 2\pi)$ 的大致形状.
+    \end{enumerate}
+
+\end{enumerate}
+
+== 习题B ==
+
+定义1(\textbf{运算封闭性}):设 $S$ 是一个集合, $*$ 是一个二元运算.
+如果对于任意 $a,b\in S$ 都有 $a*b\in S$,则称 $S$ 对运算 $*$ 封闭.
+
+定义2(\textbf{最小扩张}):设 $S$ 是一个集合, $*$ 是一个二元运算.
+如果集合 $T$ 满足:
+\begin{enumerate}
+    \item[I.]$S\subseteq T$;
+    \item[II.]$T$ 对运算 $*$ 封闭;
+    \item[III.]对任意满足 $S\subseteq U$ 且对运算 $*$ 封闭的集合 $U$,
+    都有 $T\subseteq U$;
+\end{enumerate}
+则称 $T$ 是 $S$ 关于运算 $*$ 的\textbf{最小扩张}.
+
+注:上述概念可推广到一元运算,如开方运算 $\sqrt{\cdot}$.
+
+\begin{enumerate}
+    \item[1.]考虑自然数集 $\mathbb{N}$ 和加法运算 $+$.验证 $\mathbb{N}$ 对加法运算封闭.
+    
+    \item[2.]考虑自然数集 $\mathbb{N}$ 和减法运算 $-$.
+        \begin{enumerate}
+            \item[(a)]证明 $\mathbb{N}$ 对减法运算不封闭.
+            \item[(b)]证明整数集 $\mathbb{Z}$ 是 $\mathbb{N}$ 关于减法运算的最小扩张.
+        \end{enumerate}
+    
+    \item[3.]考虑正整数集 $\mathbb{Z}^{+}$ 和除法运算 $\div$.
+        \begin{enumerate}
+            \item[(a)]证明 $\mathbb{Z}^{+}$ 对除法运算不封闭.
+            \item[(b)]证明正有理数集 $\mathbb{Q}^{+}$ 是 $\mathbb{Z}^{+}$ 关于除法运算的最小扩张.
+        \end{enumerate}
+    
+    \item[4.]$(\star)$ 考虑实数集 $\mathbb{R}$ 和平方根运算 $\sqrt{\cdot}$ 
+    (定义为 $\sqrt{x} = y$ 当且仅当 $y\geq 0$ 且 $y^{2} = x$ ).
+        \begin{enumerate}
+            \item[(a)]证明 $\mathbb{R}$ 对平方根运算不封闭.
+            \item[(b)]找出 $\mathbb{R}$ 关于平方根运算的最小扩张,并证明你的结论.
+        \end{enumerate}
+    
+    \item[5.]$(\star)$ 考虑集合 $A = \{a + b\sqrt{2}\mid a,b\in \mathbb{Q}\}$.
+    证明:集合 $A$ 关于四则运算均是封闭的.
+\end{enumerate}
+
+== 习题C ==
+
+\begin{enumerate}
+    \item[1.]计算极限:
+        \begin{enumerate}
+            \item[(a)]$\displaystyle \lim_{n\to+\infty}(\sqrt{n + 1} -\sqrt{n})\sqrt{2n + 1}$.
+            \item[(b)]$\displaystyle \lim_{n\to+\infty} \frac{\sqrt{4x^4+5x}-2x^2}{\sqrt[3]{27x^6-x}}$.
+        \end{enumerate}
+    
+    \item[2.]数列 $a_{n}$ 满足 $a_{1} = 1$, 且对所有 $n \geq 1$ 有 $a_{n + 1} - a_{n} = a_{n}^{\gamma}$, 
+    其中 $\gamma \in (-\infty , 1)$. 试估算 $a_{n}$ 的增长率, 写成阶数的形式.
+    \begin{solution}
+        数列 \(a_n\) 满足 \(a_1 = 1\)，且 \(a_{n+1} - a_n = a_n^\gamma\)，其中 \(\gamma \in (-\infty, 1)\).\\
+        由 $\displaystyle a_{n}^\gamma=\frac{a_{n+1}-a_{n}}{(n+1)-n}$ 的形式，考虑连续近似：
+        \[
+        \frac{\mathrm{d}a}{\mathrm{d}n} = a^\gamma \implies \int a^{-\gamma} \mathrm{d}a = \int \mathrm{d}n \implies \frac{a^{1-\gamma}}{1-\gamma} = n + C.
+        \]
+        对于充分大的 \(n\)，有 \(a^{1-\gamma} \sim (1-\gamma)n\)，所以 \(a_n \sim [(1-\gamma)n]^{1/(1-\gamma)}\).\\
+        因此，增长率为 \(\Theta(n^{1/(1-\gamma)})\).
+    \end{solution}
+
+    \item[3.]试构造一个双参数的数列 $a_{m,n}$, 其中 $m, n$ 为正整数, 使得以下三个极限存在 (并求出极限的值) 且互不相等:
+
+    \[\lim_{m\to +\infty}\left(\lim_{n\to +\infty}a_{m,n}\right),\quad \lim_{n\to +\infty}
+    \left(\lim_{m\to +\infty}a_{m,n}\right),\quad \lim_{m\to +\infty}a_{m,m}.\]
+
+    \begin{solution}
+        令 $\displaystyle a_{m,n} = \frac{m}{m+n}$，$m,n\in\mathbb{N}_{+}$. 则：
+        \[
+        \begin{aligned}
+        \lim_{m \to +\infty} (\lim_{n \to +\infty} a_{m,n}) &= \lim_{m \to +\infty} 0 = 0, \\
+        \lim_{n \to +\infty} (\lim_{m \to +\infty} a_{m,n}) &= \lim_{n \to +\infty} 1 = 1, \\
+        \lim_{m \to +\infty} a_{m,m} &= \lim_{m \to +\infty} \frac{m}{2m} = \frac{1}{2}.
+        \end{aligned}
+        \]
+        可见此时三个极限分别为 \(0\), \(1\), \(\displaystyle \frac{1}{2}\)，均存在且互不相等.
+    \end{solution}
+
+    \item[4.]设 $n$ 是正整数, 计算曲线 $y = x^{n}$ 在 $x = a$ 处的切线方程.
+
+    \item[5.]证明: 从抛物线焦点射出的光线经抛物线反射后均平行于对称轴.
+
+    \item[6.]用 Riemann 积分的定义计算曲线 $y = x^{2}$, 直线 $x = a$ 与 $x$ 轴围成的面积.
+\end{enumerate}
+
+== 习题D ==
+
+\begin{enumerate}
+    \item[1.]证明: 对任意自然数 $n$ 均存在正整数 $k$ 使得
+
+    \[(\sqrt{2} -1)^{n} = \sqrt{k} -\sqrt{k - 1}.\]
+
+    \item[2.]$(\star)$ 记 $\lfloor x\rfloor$ 为不超过 $x$ 的最大整数, 证明:
+
+    \[\lfloor \sqrt{n} +\sqrt{n + 1}\rfloor = \lfloor \sqrt{n} +\sqrt{n + 2}\rfloor 
+    \quad \forall n\in \mathbb{N}.\]
+
+    \begin{solution}
+        反证法. 假设存在正整数 $k$ 使得 $\displaystyle \sqrt{n}+\sqrt{n+1}<k\leq \sqrt{n}+\sqrt{n+2}$.\\
+        那么有 $\displaystyle 2\sqrt{n+\frac{1}{4}}\leq\sqrt{n}+\sqrt{n+1}<k\leq\sqrt{n}+\sqrt{n+2}<2\sqrt{n+1}$.\\
+        从而有 $4n+1<k^2<4n+4$，因此 $k^2\equiv 2,3 \left(\operatorname{mod} 4\right)$，但这不可能，故假设不成立. 
+    \end{solution}
+
+    \item[3.]$(\star)$ (Archimedes) 任意抛物弓形与其最大内接三角形的面积比是 $4:3$. 
+    (联结抛物线上两点的线段与两点之间的抛物弧线围成的图形称为\textbf{抛物弓形}.)
+\end{enumerate}
+
+== 习题E ==
+
+中国古代数学家(如刘徽、祖冲之)使用割圆术方法计算圆周率 $\pi$, 本题目中我们尝试学习该方法
+进行计算, 并证明该方法能够正确逼近圆周率 $\pi$.
+
+本题目中, 我们定义 $\pi$ 为平面上单位圆的面积, 并且假设如果两个平面区域 $A$ 与 $B$ 有集合
+包含关系, 即 $A \subseteq B$, 则有 $A$ 的面积小于等于 $B$ 的面积, 即 $|A| \leq |B|$.
+
+割圆术的思路是使用单位圆的内接正 $N$ 边形 (即顶点在单位圆上, 且各边长度相等) 的面积来逼近
+单位圆的面积 $\pi$. 记 $S(N)$ 为位圆的内接正 $N$ 边形的面积. 例如 $N = 3$ 时, 单位圆
+的内接正 3 边形 (三角形) 的面积为 $\displaystyle\frac{3\sqrt{3}}{4}$, 故有 $S(3) = \displaystyle\frac{3\sqrt{3}}{4}$.
+
+\begin{enumerate}
+    \item[1.]计算 $S(4)$ 与 $S(6)$ 的值.
+    \item[2.]对所有 $N \geq 3$, 写出 $S(N)$ 关于 $N$ 的表达式 (三角函数形式).
+    \item[3.]利用上述表达式, 计算 $S(12)$ 与 $S(24)$ 的值, 可使用计算器给出小数形式.
+    \item[4.]$(\star)$ 从微积分中导数的视角, 证明 $S(N)$ 趋于 $\pi$.
+    \item[5.]从几何的角度, 利用区域包含关系 $A \subseteq B$ 推出面积关系 $|A| \leq |B|$ 的假设, 证明下述刘徽不等式: 对 $N \geq 3$ 有
+
+   \[S(2N) \leq \pi \leq 2S(2N) - S(N).\]
+
+    (提示: 考虑 $S(2N) - S(N)$ 的几何含义.)
+    \item[6.]利用刘徽不等式证明:
+
+    \[\lim_{k \to +\infty} S(3 \cdot 2^k) = \pi.\]
+
+    此极限等式证明了使用割圆术方法能够正确逼近圆周率 $\pi$.
+    \item[7.]在古代, 可使用迭代方法计算 $S(3 \cdot 2^k)$, 从而避免三角函数运算. 证明: 对 $N \geq 6$ 有
+
+    \[\left(\frac{S(2N)}{N}\right)^2 = \frac{1 - \sqrt{1 - \left(\frac{S(N)}{N / 2}\right)^2}}{2}.\]
+
+    (提示: 可使用 $S(N)$ 的三角函数表达式, 并使用三角函数倍角公式, 亦可从几何角度利用相似三角形证明上述递推式.)
+    \item[8.]$(\star)$ 以 $S(6)$ 为迭代初值, 计算 $S(3072)$ (此为刘徽的计算结果) 
+    与 $S(24576)$ (此为祖冲之的计算结果), 可以使用计算机编程给出小数形式. 
+    其中, $3072 = 3 \cdot 2^{10}$, $24576 = 3 \cdot 2^{13}$.
+\end{enumerate}

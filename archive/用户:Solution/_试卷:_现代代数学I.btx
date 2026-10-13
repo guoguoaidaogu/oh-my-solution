@@ -1,0 +1,140 @@
+\setdisplaytitle{现代代数学I\ 试卷}
+\sethtmltitle{现代代数学I\ 试卷}
+
+== 2025春 ==
+
+\begin{itemize}
+\item[一] 计算$X^4-2$在$\mathbb{Q}$和$\mathbb{F}_5$上的分裂域，Galois群，中间域。
+\item[二] $R=\mathbb{C}[X,Y]/(X^2+Y^2-1)$为整环，
+$\operatorname{Frac}(R)/\mathbb{C}$是几次超越扩张？是纯超越扩张吗？并证明。
+\item[三] $\mathbb{F}_p$的代数闭包为$\Omega$，$\sigma$为Frobenius自同构，
+请在$\operatorname{Gal}(\Omega/\mathbb{F}_p)$中找出一个不在$\langle\sigma\rangle$中的元素。
+\item[四] 对于多项式$f(X)=X^4+aX^3+bX^2+cX+d$，记
+\begin{align*}
+    p&=\frac{1}{8}(-3a^2+8b),\\
+    q&=\frac{1}{8}(a^3-4ab+8c),\\
+    r&=\frac{1}{256}(-3a^4+16a^2b-64ac+256d),
+\end{align*}
+其预解式为
+\[16p^4r-4p^3q^2-128p^2r^2+144pq^2r-27q^4+256r^3.\]
+令$f(X)=X^4-4X^3+4X^2+2$，
+计算$G_f$，子群，并画出子群树，及中间域。
+\end{itemize}
+
+== 2024春 ==
+
+\begin{itemize}
+\item[一]（20分）、令$E/F$为有限Galois扩张.设$α,β∈E$在$F$上分别为$m$次和$n$次元, $\mathrm{gcd}(m,n)=1$, 
+并且$[F[α,β]:F]=mn$. 证明：\\
+$\cdot$\ 对于任意$α$在$E$中共轭元$α'$及$β$在$E$中共轭元$β'$，
+存在$σ∈\operatorname{Gal}(E/F)$使得$σ(α)=α',σ(β)=β'$.\\
+$\cdot$\ $F[α,β]=F[α+β]$.(这一小问为错题)
+\item[二]（40分）、令$F$为特征不为$2$的域。考虑$4$次方程$f(X)=X^4-2aX^2+c∈F[X]$。
+令$b=a^2-c$。设$a$与$b$不是$F$上的平方数。\\
+$\cdot$\ 说明$f(X)$为可分多项式。\\
+$\cdot$\ 设$bc$为$F$上平方数，证明$f(X)$在$F$上的Galois群同构于$\mathbb{Z}_4$。\\
+$\cdot$\ 设$c=c'^2$为$F$上平方数，证明当$2(a+c')$及$2(a-c')$都不是$F$上平方数时，
+$f(X)$的Galois群同构于$\mathbb{Z}_2×\mathbb{Z}_2$，
+当其中之一为平方数时$f(X)$的Galois群为$\mathbb{Z}_2$。\\
+$\cdot$\ 设$bc$及$c$均不是平方数时，$f(X)$的Galois群为$8$阶群$D_4$。
+\item[三]（20分）、设$F$为特征为$p$的完美域。
+令$F(X)$为$F$的一次纯超越扩张，并令$Ω$为$F(X)$的一个代数闭包。
+令$E=\bigcup\limits_{k=1}^\infty F(X^\frac{1}{p^k}⊂Ω)$，
+其中$X^\frac{1}{p^k}∈Ω$为多项式$T^{p^k}-X∈F(X)[T]$在$Ω$中的一个根。\\
+$\cdot$\ 说明$E$为$Ω$的子域；\\
+$\cdot$\ 计算$E/F$的超越度；\\
+$\cdot$\ $E/F$是否有可分超越基？给出判断依据。
+\item[四]（20分）、令$\mathbb{F}_2(X)$为$\mathbb{F}_2$的纯超越扩张，
+并令$G=\operatorname{Aut}(\mathbb{F}_2(X)/\mathbb{F}_2)$。
+计算$G$的阶，并列出使得$\mathbb{F}_2(X)/L$为有限Galois扩张的
+所有$\mathbb{F}_2(X)/\mathbb{F}_2$的中间域$L$。
+\end{itemize}
+
+== 2023春 ==
+
+\begin{itemize}
+\item[一]（20分）、$F$是一个特征为$p>0$的域.$a\in F,a\notin F^p$。\\
+$\cdot$\ 证明：$\forall n \in \mathbb{N}^*$，$ X^{p^n}-a \in F[X]$不可约。\\
+$\cdot$\ 证明：$\alpha$在$F$上可分当且仅当$\forall n\in \mathbb{N}^*$，$F(\alpha)=F(\alpha^{p^n})$。
+\item[二]（25分）、给定域扩张$\mathbb{F}_5(X)/\mathbb{F}_5$，其中$X$是未定元。
+$\sigma ,\tau \in \operatorname{Aut}(\mathbb{F}_5(X)/\mathbb{F}_5)$，
+其中$\sigma(X)=X+1,\tau(X)=\frac{1}{X}$。
+$G$是由$\sigma$生成的群，$H$是由$\sigma,\tau$生成的群。\\
+$\cdot$\ 计算$[\mathbb{F}_5(X):\mathbb{F}_5(X)^G]$，
+并求$f\in \mathbb{F}_5(X)$使得$\mathbb{F}_5(X)^G=\mathbb{F}_5(f)$.\\
+$\cdot$\ 求$H$的阶数。
+\item[三]（25分）、已知$E/F$是Galois扩张。$H$是$G:=\operatorname{Gal}(E/F)$的子群。
+证明：$H$在$G$中稠密当且仅当对于任何$E/F$的中间域$K$且$K/F$是有限Galois扩张，
+$H/(H\cap \operatorname{Gal}(E/K))\cong \operatorname{Gal}(K/F)$.
+\item[四]（20分）、讨论$X^4+pX+p\in \mathbb{Q}[X]$的Galois群，其中$p$是素数.
+\item[五]（10分）、$F$是一个特征为$p>0$的域。称一个扩张$E/F$是根式扩张，如果存在一列域扩张
+$F=F_0\subset F_1\subset \ldots \subset F_n=E$满足：$F_{i+1}=F_i[u_i]$，
+且要么存在一个与$p$互素的$n_i\in\mathbb{N}^*$使得$u_i^{n_i}\in F_i$，
+要么$u_i^p-u_i\in F_i$.\\
+证明：对于可分多项式$f(X)\in F[X]$，$E_f/F$是根式扩张当且仅当
+$\operatorname{Gal}(E_f/F)$是可解群.
+\end{itemize}
+
+== 2022春 ==
+
+\begin{itemize}
+\item[一] (20分)、 写出一个域上多项式根式可解的定义。
+令$f(X)=X^{4}+101X^{3}-78X^{2}+3\in  \mathbb{Q}[X]$，
+$f(X)$在$\mathbb{Q}$上是否根式可解？并解释原因。
+\item[二](30分)、 计算如下多项式的Galois群: 
+$X^{5}-2 \in \mathbb{Q}[X],\ X^{5}-2 \in \mathbb{F}_{3}[X],\ X^{4}-4X^{2}+2 \in \mathbb{Q}[X]$。
+\item[三] (25分)、 令$E$为$f(X)=(X^{3}-5)(X^{3}-7) \in \mathbb{Q}[X]$的分裂域。
+描述$E/\mathbb{Q}$的Galois群并写出所有的的中间域。
+\item[四] (25分)、 令$E:=\mathbb{F}_{2}(X)$为 $\mathbb{F}_{2}$ 上单变量多项式函数环的分式域。
+写出$E/\mathbb{F}_{2}$ 的中间域 $ K_{i}$，$1 \leqslant i \leqslant 4$，使得
+\begin{itemize}
+    \item
+    $E/K_{1}$ 为有限不可分扩张;
+    \item
+    $E/K_{2}$ 为$2$次Galois扩张;
+    \item
+    $E/K_{3}$ 为$3$次Galois扩张;
+    \item
+    $E/K_{4}$ 为有限不正规扩张。
+\end{itemize}
+\end{itemize}
+
+== 2021春 ==
+
+\begin{itemize}
+\item[一、] $\mu_n$为$n$次单位根全体构成的群。证明：
+$\mathbb{Q}[\bigcup\limits_{n\geq 0}\mu_n]/\mathbb{Q}$为Galois扩张，
+并用逆极限描述其Galois群.
+\item[二、] 取$\sigma\in \operatorname{Aut}(\mathbb{C}(X)/\mathbb{C})$，
+$\sigma(X)=-\frac1{X+1}$，$G$为$\sigma$生成的循环群。
+求$f(x)\in \mathbb{C}(X)$，使得$\mathbb{C}(X)^G=\mathbb{C}(f)$.
+\item[三、] $E,F$为有限可分扩张，且$[E:F]=n$。\\
+(1)证明$E/F$为单扩张，(2)证明$E/F$至多有$2^{n-1}$个中间域.
+\item[四、] $F$为域，$\operatorname{char} F=0$。若存在素数$p$，
+使得$F[X]$上任一不可约多项式$f$，都存在$n\geq0$，使得$\deg f=p^n$，
+证明：任何$g(X)\in F[X]$均根式可解.
+\item[五、] (1)\,求$\mathbb{F}_3$上所有$2$次不可约多项式；\\
+\quad\ \ \,(2)\,记$E$为$\mathbb{F}_2$上$X^5-1$的分裂域，求$[E:\mathbb{F}_2]$；\\
+\quad\ \ \,(3)\,计算$X^5+2X^3+1\in \mathbb{Q}[X]$的Galois群.
+\end{itemize}
+
+== 2020春 ==
+
+\begin{itemize}
+\item[一] (30分)、\ 给出如下域$F$上不可约方程$f(T)$的Galois群的描述，并说明理由：\\
+(1) $F=\mathbb{C}(X)$，$f(T)=T^{n}-X \in F[T]$；\\
+(2) $F=\mathbb{Q}$，$f(T)=T^p-a \in F[T]$，
+其中$p$为素数，$a \in F$使得$f(T)$不可约.
+\item[二] (20分)、\ 令$L=\mathbb{F}_{3}(X)$。考虑$L$的如下自同构：
+$\sigma \in \operatorname{Aut}(L/\mathbb{F}_{3})$，
+$\sigma(X)=1+\frac{1}{X}$。令
+$G<\operatorname{Aut}(L/\mathbb{F}_{3})$为 $\sigma$ 生成的循环群。
+计算$[L:L^{G}]$并给出 $L^{G}$ 的具体描述。
+\item[三] (30分)、\ 如下方程在有理数域$\mathbb{Q}$上可解吗？
+可解的给出根式可解的步骤，不可解的给出不可解的证明：
+$X^{6}-X^{3}+1,\ X^{5}-X^{2}-X-2,\ X^{5}-9X-3$.
+\item[四] (20分)、\ 令$E/F$为有限域扩张。设 $\alpha,\beta \in E$
+使得$F[\alpha]/F$和$F[\beta]/F$都是正则扩张，
+并且$F[\alpha] \cap F[\beta]=F$。
+证明$[F[\alpha,\beta]:F]=[F[\alpha]:F][F[\beta]:F]$.
+\end{itemize}

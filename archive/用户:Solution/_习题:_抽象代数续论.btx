@@ -1,0 +1,66 @@
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\ct}{\mathcal{C}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Sh}{\textit{Sh}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\G}{\mathcal{G}}
+\section{同调代数习题}
+\begin{enumerate}
+    \item[11.1]Let $\ct$ be a category and $X, Y$ be objects in $\ct$. Suppose we have a natural
+isomorphism between funtors\[\eta_X \colon \Hom(-,X) \to \Hom(-,Y).\]
+Then we have\[\Hom(X,X) \cong \Hom(X,Y)\quad\text{and}\quad\Hom(Y,X) \cong \Hom(Y,Y).\]
+Let $f \in \Hom(X,Y)$ be the image of $1_X$ and $g \in \Hom(Y,X)$ be the
+preimage of $1_Y$ . Use the naturality of $\eta$ to show that $fg = 1_Y$.
+    \item[\textbf{证明：}]
+    \item[11.2]Let $F \colon \ct \to \D$ be an additive functor between abelian categories and
+suppose $G$ is its right adjoint. Show that $G$ is also an additive functor.
+[Hint: By definition, the zero object $0$ is both the initial and the terminal
+object. Use this to show that $G$ takes zero morphisms to zero morphisms.
+Then consider direct sums.]
+    \item[\textbf{证明：}]
+    \item[11.3]Recall that a chain map $f \colon \ct \to \D$ is a chain-homotopy equivalence if
+there is a chain map $g \colon \D \to \ct$ such that $fg$ and $gf$ are both chain-homotopic to the identity map. We say $\ct$ and $\D$ are chain-homotopy
+equivalent if there exists a chain-homotopy equivalence from $\ct$ to $\D$. This
+is obviously an equivalence relation.
+
+Show that the complex\[\cdots \to 0 \to A \to B \to C \to 0 \to \cdots\]is chain-homotopy equivalent to the $0$ complex if and only if
+\[0 \to A \to B \to C \to 0\]is a split short exact sequence.
+    \item[\textbf{证明：}]
+    \item[11.4] Let $G$ be a finite group and let $\mathcal{A}$ be the category of $G$-representations over
+$\C$. Prove that every object of $\mathcal{A}$ is projective.
+    \item[\textbf{证明：}]$\mathcal{A}$与$\C[G]-\textbf{Mod}$等价。$\C[G]$是半单环，半单环上的模都是投射模。
+    \item[11.5]Recall that a subgroup of a free abelian group is free. What are the
+projective objects in the category of abelian groups?
+    \item[\textbf{证明：}]自由群。
+    \item[11.6]Let $\A$ be the category of abelian groups and let $n$ be a positive integer.
+Let $F \colon \A \to \A$ be the functor $F(A) = A/nA$. Directly from definition
+of derived functors, show that $L_i F(A) = 0$ for $i \geqslant 2$ and $L_1F(A) = \{a \in
+A \mid na = 0\}$ is the subgroup of $n$-torsion. Do not forget to describe how
+$L_1(F)$ acts on morphisms. (We will have a better way of computing this
+soon.)
+    \item[\textbf{证明：}]
+    \item[13.1] Suppose $(\bigoplus\limits_{i,j \geqslant 0}A^{i,j},d)$ is a double complex, i.e.
+    \[d(A^{i,j}) \subseteq A^{i+1,j} \oplus A^{i,j+1},d^2 = 0.\]
+    Suppose all rows are exact.
+
+    (a) Prove that the total complex $\operatorname{Tot}(A)$ is exact.
+
+    (b) Is it necessary that all columns are exact?
+    \item[\textbf{证明：}]
+    \item[13.2] Let $R$ be a ring such that every submodule of a projective module is
+projective. Show that every quotient of a injective module is injective.
+    \item[\textbf{证明：}]
+    \item[13.3] In the following two exercises, let $X$ be a topological space and $\Sh(X)$ be the category of sheaves
+of abelian groups on $X$. Let $\phi \colon \F \to \G$ be a morphism in $\Sh(X)$. Suppose that for each $x \in X$, the
+induced morphism on stalks\[\F_x \to \G_x\]is surjective. Show that $\phi$ is an epimorphism
+in the category $\Sh(X)$.
+    \item[\textbf{证明：}]
+    \item[13.4] Let $x \in X$ and $I$ be an injective Abelian group. Denote by $I_{x,X}$ the
+    skyscraper sheaf at $x$ with stalk $I$. Show that $I_{x,X}$ is an injective object in $\Sh(X)$.
+
+    [Hint: Having fixed $x$, find the functor adjoint to the "skyscraper sheaf functor" $\mathcal{A}b \to \Sh(X)$.
+     Then mimic the proof that $\Hom_{\mathcal{A}b}(R,\mathbb{Q}/\Z)$ is injective.]
+     \item[\textbf{证明：}]
+\end{enumerate}

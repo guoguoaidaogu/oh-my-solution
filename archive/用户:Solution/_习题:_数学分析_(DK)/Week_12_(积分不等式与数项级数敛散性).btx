@@ -1,0 +1,212 @@
+\newenvironment{solution}{\begin{proofc}[解答]}{\end{proofc}}
+
+== 习题A ==
+
+\begin{enumerate}
+    \item[1.]讨论积分型 $\mathrm{H\ddot{o}lder}$ 不等式等号成立的充要条件. 
+    $\mathrm{H\ddot{o}lder}$不等式:设 \(p,q > 1\) 且 \(\displaystyle \frac{1}{p} +\frac{1}{q} = 1\)，则对任何 \(\displaystyle f,g\in \mathcal{R}[a,b]\) 成立
+    \[\displaystyle \left|\int_{a}^{b}f(x)g(x)\right|\leq \lVert f\rVert_{p}\lVert g\rVert_{q}.\]
+    \begin{solution}\\
+        \textbf{充要条件：} 存在常数 $A, B \geq 0$ 且 $A^2 + B^2 > 0$, 使得 \[ A|f(x)|^p = B|g(x)|^q \quad \text{a.e.} \quad \text{且}\quad  f(x)g(x) \geq 0 \quad  \text{a.e.}\]
+        \textbf{证明：} \\
+        充分性：若条件成立，直接代入验证可知等号成立.\\
+        必要性：假设等号成立，由Young不等式，取 
+        \[ a = \frac{|f(x)|}{\|f\|_p}, \quad b = \frac{|g(x)|}{\|g\|_q}. \]
+        则 
+        \[ \frac{|f(x)g(x)|}{\|f\|_p\|g\|_q} \leq \frac{1}{p}\frac{|f(x)|^p}{\|f\|_p^p} + \frac{1}{q}\frac{|g(x)|^q}{\|g\|_q^q}.\]
+        积分得 
+        \[ \frac{\displaystyle \int |fg|}{\|f\|_p\|g\|_q} \leq \frac{1}{p} + \frac{1}{q} = 1.\]
+        等号成立要求几乎处处有 
+        \[ \frac{|f(x)|^p}{\|f\|_p^p} = \frac{|g(x)|^q}{\|g\|_q^q}.\]
+        即存在常数 $C$ 使得 $|f(x)|^p = C|g(x)|^q$ a.e. \\
+        同时由 $\displaystyle \left|\int fg\right| = \int |fg|$ 得 $f(x)g(x) = |f(x)g(x)|\, a.e.$ , 即 $f(x)g(x) \geq 0\, a.e$. 
+    \end{solution}
+    
+    \item[2.]设 \(\displaystyle 1< p< q< +\infty\), 证明:对任何 \(f\in \mathcal{R}[a,b]\) 成立
+    \[\displaystyle \lVert f\rVert_{p}\leq (b - a)^{\frac{1}{p} -\frac{1}{q}}\lVert f\rVert_{q}.\]
+    \begin{solution}
+        由Hölder不等式, 取 $\displaystyle r = \frac{q}{p} > 1$, $\displaystyle r' = \frac{q}{q-p}$，则 $q=pr$，且有：
+        \[ \int_a^b |f(x)|^p \mathrm{d}x \leq \left(\int_a^b 1\,\mathrm{d}x\right)^{\frac{1}{r'}} \left( \int_a^b |f(x)|^{pr} \mathrm{d}x \right)^{\frac{1}{r}} = (b-a)^{\frac{q-p}{q}} \|f\|_q^p. \]
+        故 $\displaystyle \|f\|_p \leq (b-a)^{\frac{1}{p} - \frac{1}{q}} \|f\|_q$.
+    \end{solution}
+    
+    \item[3.]设 \(\displaystyle u(t),f(t)\geq 0\) 连续, \(\displaystyle \varphi :[0,+\infty)\to [0,+\infty)\) 连续单增,且当 \(u > 0\) 时 \(\displaystyle\varphi (u) > 0\). 
+    设
+    \[\displaystyle u(t)\leq a + \int_{0}^{t}f(s)\varphi (u(s))\mathrm{d}s,\quad t\geq 0.\]
+    其中 \(a\geq 0\). 定义 \(\displaystyle G(x) = \int_{x_{0}}^{x}\frac{\mathrm{d}s}{\varphi(s)}\). 证明:当 \(\displaystyle G(a) + \int_{0}^{t}f(s)\mathrm{d}s\) 在 \(G\) 的值域内时,有
+
+    \[\displaystyle u(t)\leq G^{-1}\left(G(a) + \int_{0}^{t}f(s)\mathrm{d}s\right).\]
+    \begin{solution}
+        令
+        \[
+        v(t) = a + \int_0^t f(s)\varphi(u(s)) \mathrm{d}s.
+        \]
+        则 $u(t) \leq v(t)$，且由 $\varphi$ 连续单增且恒大于等于零可知 
+        \[
+        v'(t)=f(t)\varphi(u(t)) \leq f(t)\varphi(v(t)).
+        \]
+        即
+        \[
+        \frac{v'(t)}{\varphi(v(t))}\leq f(t).
+        \]
+        两边同时积分，由 $G(x)$ 单调递增可知：
+        \[
+        G(u(t))-G(a)\leq G(v(t)) - G(a) \leq \int_0^t f(s) \mathrm{d}s.
+        \]
+        故 
+        \[
+        u(t) \leq G^{-1}(G(a) + \int_0^t f(s) \mathrm{d}s).
+        \]
+    \end{solution}
+    
+    \item[4.]证明: Hardy不等式中的常数 \(\displaystyle\left(\frac{p}{p - 1}\right)^{p}\) 是最优的,即存在一列 \(\displaystyle f_{n}\in \mathcal{R}[0,1]\) 满足
+
+    \[\displaystyle\frac{\displaystyle\int_{0}^{1}|H_{n}(x)|^{p}\mathrm{d}x}{\displaystyle\int_{0}^{1}|f_{n}(x)|^{p}\mathrm{d}x}\to \left(\frac{p}{p - 1}\right)^{p}.\]
+
+    其中 \(\displaystyle H_{n}(x) = \displaystyle \frac{1}{x}\int_{0}^{x}f_{n}(t)\mathrm{d}t.\)
+    \begin{solution}
+        取当 $\displaystyle x \in [\frac{1}{n}, 1]$ 时, $\displaystyle f_n(x) = x^{-\frac{1}{p}}$；当 $\displaystyle x \in [0, \frac{1}{n}]$ 时，$f_n(x) = 0$. \\
+        从而
+        \[ \|f_n\|_p^p = \int_{\frac{1}{n}}^1 x^{-1}\mathrm{d}x = \ln n. \]
+        对于 $\displaystyle x \geq \frac{1}{n}$，有: 
+        \[ H_n(x) = \frac{1}{x} \int_{\frac{1}{n}}^x t^{-\frac{1}{p}} \mathrm{d}t = \frac{p}{p-1}\cdot\frac{1}{x} \left(x^{1-\frac{1}{p}} - \left(\frac{1}{n}\right)^{1-\frac{1}{p}}\right). \]
+        于是 
+        \[ |H_n(x)|^p = \left(\frac{p}{p-1}\right)^p \left|x^{-\frac{1}{p}} - \frac{1}{x}\left(\frac{1}{n}\right)^{1-\frac{1}{p}}\right|^p. \]
+        计算积分: 
+        \[ \int_0^1 |H_n(x)|^p \mathrm{d}x = \left(\frac{p}{p-1}\right)^p \int_{\frac{1}{n}}^1 \left|x^{-\frac{1}{p}} - \frac{1}{x}\left(\frac{1}{n}\right)^{1-\frac{1}{p}}\right|^p \mathrm{d}x. \]
+        当 $n \to +\infty$ 时, 
+        \[
+        \frac{\displaystyle \int_0^1 \left|H_{n}(x)\right|^p\mathrm{d}x}{\displaystyle \int_0^1\left|f_{n}(x)\right|^p\mathrm{d}x}\to \left(\frac{p}{p-1}\right)^p.
+        \]
+    \end{solution}
+    
+    \item[5.]$(\star)$ 设 \(\displaystyle f\in C^{1}[0,\pi ]\) 且 \(\displaystyle \int_{0}^{\pi}f(x)\mathrm{d}x = 0\), 证明:
+    \[\displaystyle \int_{0}^{\pi}|f(x)|^{2}\mathrm{d}x\leq \int_{0}^{\pi}|f^{\prime}(x)|^{2}\mathrm{d}x.\]
+    另外讨论不等式的最优性.(提示:选择恰当的三角函数.)
+    \begin{solution}
+        我们对 $f$ 进行\textbf{偶延拓}. \\
+        对于不可导点，可以使用磨光算子(例如 $\displaystyle e^{-\frac{1}{x^2}}$)进行磨光，但这些点本来产生的影响也微乎其微.\\
+        从而我们得到 $f$ 为 $[0,2\pi]$ 上的光滑函数，且 $\displaystyle\int_0^{2\pi}f(x)\mathrm{d}x=0$.\\
+        只要证明 $\displaystyle \int_0^{2\pi}\left| f(x) \right|^2\mathrm{d}x\leq\int_0^{2\pi}\left| f'(x) \right|\mathrm{d}x$. 下证：存在 $a\in[0,2\pi]$ 使得 $f(a)=f(a+\pi)$.\\
+        令 $g(x)\coloneqq f(x)-f(x+\pi)$，$f(\cdot)$ 在 $\mathrm{mod}\, 2\pi$ 意义下理解，则 $g(0)=f(0)-f(\pi)=-(f(\pi)-f(0))=-g(\pi)$. \\
+        由介值性可知存在 $a\in[0,2\pi]$ 使得 $f(a)=f(a+\pi)$.\\
+        不妨设 $a=0$. 令 $h(x)\coloneqq f(x)-f(a)=f(x)-f(0)$，则 $h(0)=h(\pi)=0$.\\
+        若有 $\displaystyle \int_0^\pi h^2(x)\mathrm{d}x\leq \int_0^\pi (h'(x))^2\mathrm{d}x (*)$，
+        则也有 $\displaystyle \int_\pi^{2\pi} h^2(x)\mathrm{d}x\leq \int_\pi^{2\pi} (h'(x))^2\mathrm{d}x$.\\
+        从而 
+        \[
+        \begin{aligned}
+        \displaystyle
+        \int_0^{2\pi}(f'(x))^2\mathrm{d}x&=\int_0^{2\pi}(h'(x))^2\mathrm{d}x \geq \int_0^{2\pi}h^2(x)\mathrm{d}x\\
+        &=\int_0^{2\pi}(f(x)-f(0))^2\mathrm{d}x=\int_0^{2\pi}f^2(x)\mathrm{d}x+2\pi f^2(0)-2f(0)\int_0^{2\pi}f(x)\mathrm{d}x\\
+        &=\int_0^{2\pi}f^2(x)\mathrm{d}x+2\pi f^2(0) \geq \int_0^{2\pi}f^2(x)\mathrm{d}x
+        \end{aligned}
+        \]
+        所以只需证明 $(*)$. 注意到要证明的不等式的取等条件包含 $f(x)=\sin{x}$，因此令 $\displaystyle T(x)=\frac{h(x)}{\sin{x}}$.\\
+        则 
+        \[
+        \begin{aligned}
+            RHS&=\int_0^\pi (\cos{x}\cdot T(x)+\sin{x}\cdot T'(x))^2\mathrm{d}x\\
+            &=\int_0^\pi (\cos^2{x}\cdot T^2(x)+2\sin{x}\cos{x}T(x)T'(x)+\sin^2{x}(T'(x))^2)\mathrm{d}x\\
+            &\geq \int_0^\pi (\cos^2{x}\cdot T^2(x)+2\sin{x}\cos{x}\cdot T(x)T'(x))\mathrm{d}x\\
+            &=\int_0^\pi \cos^2{x}\cdot T^2(x)\mathrm{d}x + \left.T^2(x)\sin{x}\cos{x}\right|_0^\pi-\int_0^\pi T^2(x)(\sin{x}\cos{x})'\mathrm{d}x\\
+            &=\int_0^\pi T^2(x)(\cos^2{x}-\cos^2{x}+\sin^2{x})\mathrm{d}x+0=\int_0^\pi T^2(x)\sin^2{x}\mathrm{d}x=LHS.
+        \end{aligned}
+        \]
+    \end{solution}
+    \item[6.]$(\star)$ 一条长度为 \(2\pi\) 的二维闭曲线可以写作关于弧长参数的参数曲线,即 
+    \(\left\{ 
+        \begin{array}{l}
+            x = x(t) \\ 
+            y = y(t).
+        \end{array} 
+        \right.\) 
+    其中 \(t \in [0,2\pi ]\) . 
+    我们还要求 \(\displaystyle\dot{x}^{2} + \dot{y}^{2} = 1\) , 
+    \(\left\{ 
+        \begin{array}{l}
+            x(0) = x(2\pi) \\ 
+            y(0) = y(2\pi).
+        \end{array} 
+        \right.\) , 
+        \(\left\{ 
+        \begin{array}{l}
+            \dot{x}(0) = \dot{x}(2\pi) \\ 
+            \dot{y}(0) = \dot{y}(2\pi).
+        \end{array} \right.\) 
+        (在单侧导数意义下). 
+        通过适当地平移曲线,我们可以假设 \(\displaystyle\int_{0}^{2\pi} x(t)\mathrm{d}t = \displaystyle\int_{0}^{2\pi} y(t)\mathrm{d}t = 0\) .
+    \begin{enumerate}
+        \item[(a)]求 \(\displaystyle\int_{0}^{2\pi}[x(t)^{2} + y(t)^{2}]\mathrm{d}t\) 的最大值;
+        \item[(b)]已知可以用环路积分式 \(\displaystyle A = \oint \frac{x\mathrm{d}y - y\mathrm{d}x}{2}\) 来求出闭曲面所围区域的面积,求该区域面积的最大值.(此为二维平面上的\textbf{等周不等式}.)
+    \end{enumerate}
+    \begin{solution}
+        \begin{enumerate}
+            \item[(a)]由第五题可知 $\displaystyle \int_{0}^{2\pi}[x(t)^{2} + y(t)^{2}]\mathrm{d}t\leq \int_{0}^{2\pi}[\dot{x}(t)^{2} + \dot{y}(t)^{2}]\mathrm{d}t = 2\pi$，当曲线为单位圆时取等.
+            \item[(b)]由上一问可知 $\displaystyle A=\int_0^{2\pi}\frac{x\dot{y}-y\dot{x}}{2}\mathrm{d}t\overset{A.G.}{\leq} \int_0^{2\pi}\frac{x^2+\dot{y}^2+y^2+\dot{x}^2}{4}=\int_0^{2\pi}\frac{x^2+y^2+1}{4}\mathrm{d}t\overset{(a)}{\leq}\pi$，当曲线为单位圆时取等.
+        \end{enumerate}
+    \end{solution}
+\end{enumerate}
+
+== 习题B ==
+\begin{enumerate}
+    \item[1.]讨论级数的敛散性(指明绝对收敛、条件收敛或发散):
+    \begin{enumerate}
+        \item[(a)]$\displaystyle \sum_{n = 1}^{\infty}\frac{n^{2}}{2^{n}}$;
+        \item[(b)]$\displaystyle \sum_{n = 1}^{\infty}n^{2}e^{-n}$;
+        \item[(c)]$\displaystyle \sum_{n = 1}^{\infty}\frac{2^{n}n!}{n^{n}}$;
+        \item[(d)]$\displaystyle \sum_{n = 1}^{\infty}\left(\sqrt{n^{2} + 1} -\sqrt{n^{2} - 1}\right)$;
+        \item[(e)]$\displaystyle \sum_{n = 1}^{\infty}\ln \frac{n^{2} + 1}{n^{2} - 1}$;
+        \item[(f)]$\displaystyle \sum_{n = 1}^{\infty}\left(-\ln \cos \frac{\pi}{n}\right)$;
+        \item[(g)]$\displaystyle \sum_{n = 1}^{\infty}\frac{a^{n}}{(1 + a)(1 + a^{2})\cdots(1 + a^{n})},a > 0$;
+        \item[(h)]$\displaystyle \sum_{n = 1}^{\infty}\frac{(-1)^{n-1}}{\sqrt{n}+(-1)^{n-1}}$;
+        \item[(i)]$\displaystyle \sum_{n = 1}^{\infty}\frac{(-1)^{n-1}}{n+(-1)^{n-1}}$;
+        \item[(j)]$\displaystyle \sum_{n = 1}^{\infty}\frac{(-1)^n}{\sqrt[n]{n}}$;
+        \item[(k)]$\displaystyle \sum_{n = 1}^{\infty}\left( \frac{1}{\sqrt[n]{n^2}}-1 \right)$;
+        \item[(l)]$\displaystyle \sum_{n = 1}^{\infty}(-1)^n\left( \frac{1}{\sqrt[n]{n}}-1 \right)$;
+        \item[(m)]$\displaystyle \sum_{n = 1}^{\infty}(-1)^n\sqrt{n}\left( \frac{1}{\sqrt[n]{n}}-1 \right)$.
+    \end{enumerate}
+    \item[2.](\textbf{Cauchy凝聚判别法}) 设 \(\{a_{n}\}\) 非负单调, 证明: \(\displaystyle\sum_{n = 1}^{+\infty}a_{n}\) 收敛当且仅当 \(\displaystyle\sum_{k = 1}^{+\infty}2^{k}a_{2^{k}}\) 收敛.
+    \begin{solution}
+        由于 $\{a_n\}$ 非负单调，对于 $2^k \leq n < 2^{k+1}$，有 $a_{2^{k+1}} \leq a_n \leq a_{2^k}$，所以
+        \[ \sum_{k=1}^{\infty} 2^k a_{2^{k+1}} \leq \sum_{n=2}^{\infty} a_n \leq \sum_{k=1}^{\infty} 2^k a_{2^k}. \]
+        即
+        \[ \frac{1}{2} \sum_{k=1}^{\infty} 2^{k+1} a_{2^{k+1}} \leq \sum_{n=2}^{\infty} a_n \leq \sum_{k=1}^{\infty} 2^k a_{2^k}.\]
+        故 $\displaystyle \sum a_n$ 收敛当且仅当 $\displaystyle \sum 2^k a_{2^k}$ 收敛.
+    \end{solution}
+    \item[3.]设 \(\{a_{n}\}\) 非负单调,证明:若 \(\displaystyle \sum_{n = 1}^{+\infty}a_{n}\) 收敛,则 \(\displaystyle\lim_{n\to +\infty}n a_{n} = 0\).
+    \begin{solution}
+        由 $\displaystyle \sum_{n=1}^{+\infty}a_{n}$ 收敛，可知数列$\{a_{n}\}$非负且单调递减，对任意给定的$\epsilon>0$，存在正整数$N'>0$，对一切$m>n>N'$成立
+        \[
+        0<a_{n+1}+a_{n+2}+...+a_{m}<\frac{\epsilon}{2}.
+        \]
+        取 $N=2N'+3$，则当 $n>N$ 时，有 $\displaystyle[\frac{n}{2}]>N'+1$，于是成立
+        \[
+        0<\frac{n}{2}a_{n}<a_{[\frac{n}{2}]}+a_{[\frac{n}{2}]+1}+...+a_{n}<\frac{\epsilon}{2}.
+        \]
+        即
+        \[
+        0<na_{n}<\epsilon.
+        \]
+        从而
+        \[
+        \lim_{n\to+\infty}na_{n}=0. 
+        \]
+    \end{solution}
+    \item[4.]讨论级数 \(\displaystyle\sum_{n = 1}^{+\infty} \frac{1}{n^p (\ln n)^q (\ln \ln n)^r}\) 的敛散性，其中 \(p, q, r\) 为实数.
+    \item[5.]证明：对任意实数 \(x\)，
+    \[\displaystyle \sin x - \sin \sin x + \sin \sin \sin x - \sin \sin \sin \sin x + \cdots.\]
+    收敛.
+    \begin{solution}
+        令 $a_1 = \sin x$, $a_{n+1} = \sin a_n$, 则 $|a_n|$ 单调递减趋于0, 由 Leibniz 判别法可知 $\displaystyle \sum_{n=1}^{+\infty}a_{n}$ 收敛.
+    \end{solution}
+    
+    \item[6.]试利用 Dirichlet 判别法证明 Abel 判别法.
+    \begin{solution}
+        设 $\displaystyle \sum_{k=1}^{n} a_k$ 收敛, $\{b_n\}$ 单调有界. 
+        从而由单调收敛准则可知数列 $\{b_{n}\}$ 收敛.\\
+        令 $\displaystyle c_n = b_n - \underset{n\to+\infty}{\lim} b_n$, 则数列$\{c_{n}\}$单调趋于零，从而 
+        \[ \sum_{k=1}^{n} a_k b_k = \sum_{k=1}^{n} a_k c_k + \left(\lim_{n\to+\infty} b_n\right)\sum_{k=1}^{n} a_k. \]
+        由 Dirichlet 判别法可知级数 $\displaystyle \sum_{n=1}^{+\infty}a_{n}b_{n}$ 收敛.
+    \end{solution}
+\end{enumerate}

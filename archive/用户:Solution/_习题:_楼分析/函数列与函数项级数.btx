@@ -1,0 +1,882 @@
+\theoremstyle{remark}\newtheorem{quiza}{A}
+\theoremstyle{remark}\newtheorem{quizb}{B}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\dd}{\mathrm{d}}
+\pdef\(#+1\){\@setfalse{math-display}\@@enter{math}\displaystyle{#1}\@@exit{math}}
+
+\setdisplaytitle{第9章\ 函数列与函数项级数}
+\sethtmltitle{第9章\ 函数列与函数项级数}
+
+\section{函数列与函数项级数的一致收敛及其性质}
+\subsection{函数列与函数项级数的一致收敛性及其性质, Cauchy准则}
+\begin{quiza}
+\begin{enumerate}
+\item 利用有限覆盖定理证明Dini定理.
+\begin{proof}
+由于\(f_n(x)\rightarrow f(x)\) \((n\rightarrow+\infty)\), 
+则对于任何\(\varepsilon>0,x_0\in [a,b]\), 存在\(N_{x_0}\in\mathbb{N}\)使得
+\[\left|f_{N_{x_0}}(x)-f(x)\right|<\frac{\varepsilon}{3},\]
+由$f_{N_{x_0}}$和$f$的连续性，限制$x\in U(x_0,\delta_{x_0})$，其中$\delta_{x_0}$很小，则
+\[\left|f_{N_{x_0}}(x)-f(x)\right|\leqslant\left|f_{N_{x_0}}(x_0)-f(x_0)\right|
++\left|f_{N_{x_0}}(x)-f_{N_{x_0}}(x_0)\right|+\left|f(x)-f(x_0)\right|<\varepsilon,\]
+这样, 当\(n>N_{x_0}\)时, 有
+\[\left|f_n(x)-f(x)\right|\leqslant\left|f_{N_{x_0}}(x)-f(x)\right|<\varepsilon.\]
+取区间\([a,b]\)的一个开覆盖\[H=\{U(x_i,\delta_{x_i})\big| x_i\in[a,b],i\in\Lambda\},\]
+其中\(\delta_{x_i}\)满足存在\(N_{x_i}\), 当\(n>N_{x_i},\, x\in U(x_i,\delta_{x_i})\)时有
+\[\left|f_n(x)-f(x)\right|<\varepsilon,\]利用有限覆盖定理选取有限覆盖即证结论.
+\end{proof}
+\item 试考察本节例题中哪些函数列(函数项级数)的一致收敛性可用Dini定理解决.
+\item 设函数\(f\in C^{\infty}(\mathbb{R})\), 
+而且\(\forall x\in\mathbb{R},n\geqslant 1\), 
+有\(|f^{(n)}(x)-f^{(n-1)}(x)|<\frac{1}{n^2}\). 
+证明: \(\lim_{n\rightarrow+\infty}f^{(n)}(x)=C\ee^x\), 其中\(C\)为一常数.
+\begin{proof}
+由题设可知对于任意\(x\in\R\)有
+\[\sum_{n=1}^{\infty}|f^{(n)}(x)-f^{(n-1)}(x)|
+<\sum_{n=1}^{\infty}\frac{1}{n^2}=\frac{\pi^2}{6},\]
+从而\(\sum_{n=1}^{\infty}|f^{(n)}(x)-f^{(n-1)}(x)|\)收敛. 
+于是\(\forall\varepsilon>0,\exists N\)使得
+\[\sum_{n=N}^{\infty}|f^{(n)}(x)-f^{(n-1)}(x)|<\varepsilon,\]
+任取\(k>j>N\), 则有\[\begin{split}
+&\quad|f^{(k)}(x)-f^{(j)}(x)|=|f^{(k)}(x)-f^{(k-1)}(x)+f^{(k-1)}(x)-\cdots+f^{(j+1)}(x)-f^{(j)}(x)|\\
+&\leqslant|f^{(k)}(x)-f^{(k-1)}(x)|+|f^{(k-1)}(x)-f^{(k-2)}(x)|+\cdots+|f^{(j+1)}(x)-f^{(j)}(x)|<\varepsilon,
+\end{split}\]
+从而\(\{f^{(n)}(x)\}\)一致收敛, 设\(\lim_{n\rightarrow+\infty}f^{(n)}(x)=F(x)\), 
+则有\(\lim_{n\rightarrow+\infty}f^{(n+1)}(x)=F'(x)\), 从而\(F(x)=F'(x)\), 容易解得\(F(x)=C\ee^x\).
+\end{proof}
+\item 计算\(\lim_{n\rightarrow+\infty}\left(1+\frac{1^2}{n^3}\right)\left(1+\frac{2^2}{n^3}\right)\cdots\left(1+\frac{n^2}{n^3}\right).\)
+\begin{proof}[解答]
+取对数. 注意到\(-\frac{1}{2}x^2<\ln(1+x)-x<0\) \((\forall x\in (0,1))\), 所以
+\[-\frac{1}{2}\sum_{k=1}^{n}\frac{k^4}{n^6}
+<\sum_{k=1}^{n}\left[\ln\left(1+\frac{k^2}{n^3}\right)-\frac{k^2}{n^3}\right]<0,\]
+而\[\lim_{n\rightarrow+\infty}\sum_{k=1}^{n}\frac{k^4}{n^6}
+=\lim_{n\rightarrow+\infty}\frac{1}{n^2}\cdot\sum_{k=1}^{n}\frac{k^4}{n^4}
+=\lim_{n\rightarrow+\infty}\frac{1}{n}\int_{0}^{1}x^4\,\dd x=0.\]
+所以\[\lim_{n\rightarrow+\infty}\sum_{k=1}^{n}\ln\left(1+\frac{k^2}{n^3}\right)
+=\lim_{n\rightarrow+\infty}\sum_{k=1}^{n}\frac{k^2}{n^3}=\frac{1}{3},\] 即
+\[\lim_{n\rightarrow+\infty}\left(1+\frac{1^2}{n^3}\right)\left(1+\frac{2^2}{n^3}\right)\cdots\left(1+\frac{n^2}{n^3}\right)=\ee^{1/3}.\qedhere\]
+\end{proof}
+
+还有另一种行之有效的方法, 使用不等式\[\frac{k}{n+k}<\ln\left(1+\frac{k}{n}\right)<\frac{k}{n},\]我们有\[\frac{k}{n^3+k}<\ln\left(1+\frac{k}{n^3}\right)<\frac{k}{n^3},\]
+于是\[\sum_{k=1}^{n}\frac{k^2}{n^3+n^2}<\sum_{k=1}^{n}\frac{k^2}{n^3+k^2}<\sum_{k=1}^{n}\ln\left(1+\frac{k^2}{n^3}\right)<\sum_{k=1}^{n}\frac{k^2}{n^3},\]
+而\(\sum_{k=1}^{n}k^2=\frac{n(n+1)(2n+1)}{6}\), 代入即得\(\lim_{n\rightarrow+\infty}\sum_{k=1}^{n}\ln\left(1+\frac{k^2}{n^3}\right)=\frac{1}{3}\).
+\item 设\(\{g_n\}\)是\([a,b]\)上一致有界的可测函数列, \(f_n(x)=\alpha_n+\int_{a}^{x}g_n(t)\,\dd t\) \((x\in [a,b];n\geqslant 1)\), \(\{\alpha_n\}\)收敛. 进一步, 以下条件之一成立:
+\begin{enumerate}[label=(\roman*)]
+\item \(\{g_n\}\)在\([a,b]\)上一致收敛到\(g\), 且对每个\(n\geqslant 1,\lim_{x\rightarrow a^+}\frac{1}{x-a}\int_{a}^{x}g_n(t)\,\dd t=g_n(a)\).
+\item \(\{g_n\}\)在\([a,b]\)上几乎处处收敛到\(g\), 且\(\lim_{x\rightarrow a^+}\frac{1}{x-a}\int_{a}^{x}g(t)\,\dd t=g(a)\).
+\end{enumerate}
+证明: \(\{f_n\}\)在\([a,b]\)上一致收敛到某个函数\(f\), 且\(f\)在点\(a\)的右导数等于\(g(a)\).
+\begin{proof}
+由Lebesgue控制收敛定理，(i)或(ii)都表明$\{f_n\}$在$[a,b]$上一致收敛到
+\[f(x)=\alpha+\int_a^xg(t)\,\dd t,\]
+其中$\{\alpha_n\}\to\alpha$。所谓的$f$在$a$的右导数为$g(a)$就是
+\[\lim_{x\rightarrow a^+}\frac{1}{x-a}\int_{a}^{x}g(t)\,\dd t=g(a),\]
+(ii)直接给出了这个结果，(i)中令$n\to\infty$亦有之。
+\end{proof}
+\end{enumerate}
+\end{quiza}
+\begin{quizb}
+\begin{enumerate}
+\item 设\(\sum_{n=1}^{\infty}u_n(\cdot)\)在\([a,b]\)上收敛. 
+若对任何\(\varepsilon>0\)及\(N\geqslant 1\), 存在区间\((a_1,b_1),(a_2,b_2),\cdots,(a_k,b_k)\)以及\(n_1,n_2,\cdots,n_k\geqslant N\)使得\(\bigcup_{j=1}^{k}(a_j,b_j)\supset [a,b]\), 且
+\[\left|\sum_{l=n_j}^{\infty}u_l(x)\right|\leqslant\varepsilon,\quad\forall x\in(a_j,b_j)\cap[a,b];j=1,2,\cdots,k,\]
+则称\(\sum_{n=1}^{\infty}u_n(\cdot)\)在\([a,b]\)上\textbf{拟一致收敛}.
+
+证明: 若\(u_n\)都在\([a,b]\)上连续\((n\geqslant 0)\), 则\(\sum_{n=0}^{\infty}u_n\)在\([a,b]\)上连续当且仅当它在\([a,b]\)上拟一致收敛.
+\begin{proof}
+见Г. M. 菲赫金哥尔茨，《微积分学教程》（第二卷，第8版），俄罗斯数学教材选译系列，徐献瑜等译，高等教育出版社，2006年，432节，pp.364--5.
+\end{proof}
+\item 试将上一题的结果推广到\(\mathbb{R}^n\)中.
+\item 设\(\{f_k\}\)是\(\mathbb{R}^n\)中的实连续函数列, 它在\(\mathbb{R}^n\)上逐点收敛于\(f\). 试证明以下结论:\begin{enumerate}[label=(\roman*)]
+\item \(F=\bigcup_{\substack{p<q\\p,q\in\mathbb{Q}}}\left[f^{-1}(p,q)\setminus(f^{-1}(p,q))^\circ\right]\)是\(f\)的不连续点全体.
+\item 对于\(p<q\),\[\begin{split}
+f^{-1}((p,q))&=\left\lbrace \boldsymbol{x}\in\mathbb{R}^n\big|\exists m,k\geqslant 1,\text{ s.t. }\ p+\frac{1}{m}\leqslant f_j(\boldsymbol{x})\leqslant q-\frac{1}{m},\forall j\geqslant k\right\rbrace\\
+&=\bigcup_{m=1}^{\infty}\bigcup_{k=1}^{\infty}\bigcap_{j=k}^{\infty}\left\lbrace\boldsymbol{x}\in\mathbb{R}^n\big| p+\frac{1}{m}\leqslant f_j(\boldsymbol{x})\leqslant q-\frac{1}{m}\right\rbrace. 
+\end{split}\]
+\item 集合\(F\)是一列无处稠密集的并.
+\item 函数\(f\)一定有连续点.
+\end{enumerate}
+\begin{proof}
+\begin{enumerate}[label=(\roman*)]
+\item $f$在$\boldsymbol{x}$不连续，等价于存在包含$f(\boldsymbol{x})$的以有理数为端点的区间$(p,q)$，
+使得存在距离$\boldsymbol{x}$任意近的$\boldsymbol{y}$满足$f(\boldsymbol{y})\notin(p,q)$，
+换种表述就是：存在以有理数为端点的区间$(p,q)$满足$\boldsymbol{x}\in f^{-1}(p,q)$，
+使得$\boldsymbol{x}$不是$f^{-1}(p,q)$的内点。
+\item 显然。
+\item 闭集\[F_{p,q,m,k}=\bigcap_{j=k}^{\infty}\left\lbrace\boldsymbol{x}\in\mathbb{R}^n\big| p+\frac{1}{m}\leqslant f_j(\boldsymbol{x})\leqslant q-\frac{1}{m}\right\rbrace\]
+的内点当然也是$f^{-1}(p,q)$的内点，从而$F_{p,q,m,k}\setminus(f^{-1}(p,q))^\circ$无内点，是无处稠密集。
+\item (iii)结合Baire纲定理可知$F$不是整个$\R^n$。\qedhere
+\end{enumerate}
+\end{proof}
+\item 设\(f\)在区间\((a,b)\)处处可导, 证明: \(f'\)必有连续点.
+\item 设\(\{a_n\}\)是递增数列, \(a_1>1\). 求证: 级数\(\sum_{n=1}^{\infty}\frac{a_{n+1}-a_n}{a_n\ln a_{n+1}}\)收敛的充要条件是\(\{a_n\}\)有界. 
+又问级数通项分母中的\(a_n\)能不能换成\(a_{n+1}\)?
+\begin{proof}
+充分性. 若\(\{a_n\}\)有界, 设\(a_n\leqslant M\), 则
+\[\sum_{n=1}^{m}\frac{a_{n+1}-a_n}{a_n\ln a_{n+1}}\leqslant\sum_{n=1}^{m}\frac{a_{n+1}-a_n}{a_1\ln a_1}=\frac{a_{m+1}-a_1}{a_1\ln a_1}\leqslant\frac{M}{a_1\ln a_1},\]
+由此可知\(\sum_{n=1}^{m}\frac{a_{n+1}-a_n}{a_n\ln a_{n+1}}\)收敛.
+
+必要性. 若\(\sum_{n=1}^{m}\frac{a_{n+1}-a_n}{a_n\ln a_{n+1}}\)收敛, 由于
+\[\ln a_{n+1}-\ln a_n=\ln\left(1+\frac{a_{n+1}-a_n}{a_n}\right)\leqslant\frac{a_{n+1}-a_n}{a_n},\]
+所以\(\frac{b_{n+1}-b_n}{b_{n+1}}\leqslant\frac{a_{n+1}-a_{n}}{a_n\ln a_{n+1}}\), 其中\(b_n=\ln a_n\), 因此\(\sum_{n=0}^{\infty}\frac{b_{n+1}-b_n}{b_{n+1}}\)收敛.
+
+由Cauchy收敛准则, 存在自然数\(m\), 使得对一切自然数\(p\), 有
+\[\frac{1}{2}>\sum_{n=m}^{m+p}\frac{b_{n+1}-b_n}{b_{n+1}}
+\geqslant\sum_{n=m}^{m+p}\frac{b_{n+1}-b_n}{b_{m+p+1}}=1-\frac{b_m}{b_{m+p+1}}.\]
+由于\(p\)是任意的, 可知\(\{b_n\}\)有界, 从而\(\{a_n\}\)有界.
+
+题中级数通项的分母\(a_n\)不能换成\(a_{n+1}\). 如取\(a_n=\ee^{n^2}\)无界, 
+但\(\sum_{n=1}^{\infty}\frac{a_{n+1}-a_n}{a_{n+1}\ln a_{n+1}}\)收敛.
+\end{proof}
+\item 对于二元函数\(f\), 考虑以下各种情形中两种运算的次序交换问题. 
+利用已学的结果, 你可以给出哪些情形的结果:
+\begin{center}
+\begin{tabular}{c|c|c|c}
+&关于\(y\)的极限&关于\(y\)的积分&关于\(y\)的导数\\
+关于\(x\)的极限&\(\lim_{x\rightarrow x_0}\lim_{y\rightarrow y_0}f(x,y)=\)
+\(\lim_{y\rightarrow y_0}\lim_{x\rightarrow x_0}f(x,y)\)
+&\(\lim_{x\rightarrow x_0}\int_{c}^{d}f(x,y)\,\dd y=\)
+\(\int_{c}^{d}\lim_{x\rightarrow x_0}f(x,y)\,\dd y\)
+&\(\lim_{x\rightarrow x_0}\frac{\partial}{\partial y}f(x,y)=\)
+\(\frac{\partial}{\partial y}\lim_{x\rightarrow x_0}f(x,y)\)\\
+关于\(x\)的积分& &\(\int_{a}^{b}\left(\int_{c}^{d}f(x,y)\,\dd y\right)\dd x=\)
+\(\int_{c}^{d}\left(\int_{a}^{b}f(x,y)\,\dd x\right)\dd y\)
+&\(\int_{a}^{b}\frac{\partial}{\partial y}f(x,y)\,\dd x=\)
+\(\frac{\partial}{\partial y}\int_{a}^{b}f(x,y)\,\dd x\) \\
+关于\(x\)的导数& & &\(\frac{\partial}{\partial x}\left(\frac{\partial}{\partial y}f(x,y)\right)=\)
+\(\frac{\partial}{\partial y}\left(\frac{\partial}{\partial x}f(x,y)\right)\)
+\end{tabular}
+\end{center}
+\item 设\(a_n>0\). \(\sum_{n=1}^{\infty}\frac{1}{a_n}\)收敛, 
+证明: \(\sum_{n=1}^{\infty}\frac{n}{a_1+a_2+\cdots+a_n}\)收敛.
+\begin{proof}
+只需指出\(n=2m\) \((m\in\mathbb{N})\)时
+\[\sum_{k=1}^{n}\frac{k}{a_1+a_2+\cdots+a_k}\leqslant 4\sum_{k=1}^{n}\frac{1}{a_k}\]
+即可. 为此, 对\(n\)个数\(a_1,a_2,\cdots,a_n\)作重新排列为\(b_1\leqslant b_2\leqslant \cdots\leqslant b_n\), 则对正整数\(p\geqslant 1\), 我们有
+\[a_1+a_2+\cdots+a_{2p}\geqslant a_1+a_2+\cdots+a_{2p-1}\geqslant b_1+b_2+\cdots+b_{2p-1}\geqslant pb_{p},\]
+从而\[\frac{2p-1}{a_1+\cdots+a_{2p-1}}\leqslant \frac{2p-1}{pb_p}<\frac{2}{b_p},
+\quad\frac{2p}{a_1+\cdots+a_{2p}}\leqslant\frac{2}{b_p},\]
+相加有\[\frac{2p-1}{a_1+\cdots+a_{2p-1}}+\frac{2p}{a_1+\cdots+a_{2p}}<\frac{4}{b_p}.\]
+由此可得
+\[\sum_{p=1}^{N}\left(\frac{2p-1}{a_1+a_2+\cdots+a_{2p-1}}+\frac{2p}{a_1+\cdots+a_{2p}}\right)<\sum_{p=1}^{N}\frac{4}{b_p},\]
+即\[\sum_{k=1}^{n}\frac{k}{a_1+\cdots+a_k}\leqslant\sum_{p=1}^{n}\frac{4}{b_p}=4\sum_{k=1}^{n}\frac{1}{a_k}.\]
+令\(n\rightarrow\infty\)即证.
+\end{proof} 
+\item 推广第5题. 比如考察单调增加趋于无穷的函数\(f\)以及
+\(\sum_{n=1}^{\infty}\big(f(S_n)-f(S_{n-1})\big)\); 
+又或者考察在\((0,M)\)内单调下降且\(F(0^+)=+\infty\)的函数\(F\)
+以及\(\sum_{n=1}^{\infty}\left(F(S_n^{-1})-F(S_{n-1}^{-1})\right)\).
+\end{enumerate}
+\end{quizb}
+
+\section{函数项级数一致收敛性的判别法}
+\subsection{Weierstrass判别法, Abel判别法, Dirichlet判别法}
+\begin{theorem}\label{Th:AD}
+考虑\(E\subseteq\mathbb{R}^n\)上的函数项级数
+\(\sum_{k=1}^{\infty}u_k(\cdot)v_k(\cdot)\). 
+设\(\{v_k(\cdot)\}\)在\(E\)上一致有界, 
+对每个\(\boldsymbol{x}\in E\), 数列\(\{v_k(\boldsymbol{x})\}\)单调.
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{(Abel判别法)} 若\(\sum_{k=1}^{\infty}u_k(\cdot)\)在\(E\)上一致收敛, 
+则\(\sum_{k=1}^{\infty}u_k(\cdot)v_k(\cdot)\)在\(E\)上一致收敛.
+\item \textbf{(Dirichlet判别法)} 若\(\sum_{k=1}^{\infty}u_k(\cdot)\)的部分和函数列
+\(\left\lbrace\sum_{j=1}^{k}u_j(\cdot)\right\rbrace\)在\(E\)上一致有界, 
+\(\{v_k(\cdot)\}\)在\(E\)上一致收敛到零, 
+则\(\sum_{k=1}^{\infty}u_k(\cdot)v_k(\cdot)\)在\(E\)上一致收敛.
+\end{enumerate}
+\end{theorem}
+\begin{quiza}
+\begin{enumerate}
+\item 考察\(\sum_{n=1}^{\infty}\frac{\cos nx}{n^2}\)的连续性, 可微性.
+\begin{proof}[解答]
+易见\(\left|\frac{\cos nx}{n^2}\right|\leqslant\frac{1}{n^2}\), 
+由Weierstrass判别法可知\(\sum_{n=1}^{\infty}\frac{\cos nx}{n^2}\)
+在\(\R\)上一致收敛, 因而和函数在\(\R\)上连续.
+
+考察级数\(\sum_{n=1}^{\infty}\frac{\cos nx}{n^2}\)形式求导后的级数
+\(-\sum_{n=1}^{\infty}\frac{\sin nx}{n}\), 对于\(x\in(0,2\pi)\), 有
+\[\left|\sum_{n=1}^{N}\sin nx\right|
+=\left|\frac{\cos(x/2)-\cos(N+1/2)x}{2\sin(x/2)}\right|
+\leqslant\frac{1}{|\sin(x/2)|},\quad x\ne 2k\pi,\]
+由Dirichlet判别法易见\(-\sum_{n=1}^{\infty}\frac{\sin nx}{n}\)
+关于\(x\in(0,2\pi)\)内闭一致收敛, 
+从而\(\sum_{n=1}^{\infty}\frac{\cos nx}{n^2}\)在\((0,2\pi)\)上连续可导. 
+
+记\(S(x)=\sum_{n=1}^{\infty}\frac{\cos nx}{n^2},\,S'(x)=-\sum_{n=1}^{\infty}\frac{\sin nx}{n}\). 
+下面考察\(S(x)\)在\(x=2k\pi\)处的可微性, 只需讨论\(x=0\)的情况即可. 由于
+\[-\sum_{n=1}^{\infty}\frac{\sin nx}{n}=\frac{x-\pi}{2},\quad 0<x<2\pi,\]
+事实上, 由Dirichlet判别法可知\(\sum_{n=1}^{\infty}\frac{\ee^{\ii nx}}{n}\)收敛, 于是由Abel定理,\[\begin{split}
+\sum_{n=1}^{\infty}\frac{\ee^{\ii nx}}{n}
+&=\lim_{t\rightarrow 1^-}\sum_{n=1}^{\infty}\frac{\ee^{\ii nx}t^n}{n}
+=\int_{0}^{1}\sum_{n=1}^{\infty}t^{n-1}\ee^{\ii nx}\,\dd t
+=\int_{0}^{1}\frac{\ee^{\ii x}}{1-t\ee^{\ii x}}\,\dd t\\
+&=\int_{0}^{1}\frac{\ee^{\ii x}-t}{(t-\cos x)^2+\sin^2x}\,\dd t
+=-\ln\left(2\sin\frac{x}{2}\right)+\frac{\ii(\pi-x)}{2},
+\end{split}\]于是\[\sum_{n=1}^{\infty}\frac{\sin nx}{n}=\frac{\pi-x}{2},
+\quad\sum_{n=1}^{\infty}\frac{\cos nx}{n}=-\ln\left(2\sin\frac{x}{2}\right),
+\qquad x\in\left(0,\frac{\pi}{2}\right),\]
+则有\[\lim_{x\rightarrow 0^+}\frac{x-\pi}{2}=-\frac{\pi}{2},\quad \lim_{x\rightarrow 2\pi^-}\frac{x-\pi}{2}=\frac{\pi}{2},\]
+这意味着\[\lim_{x\rightarrow 0^+}S'(x)=-\frac{\pi}{2},\quad \lim_{x\rightarrow 0^-}S(x)=\frac{\pi}{2},\]
+而由Lagrange中值定理有\[\lim_{x\rightarrow 0^+}\frac{S(x)-S(0)}{x}
+=\lim_{x\rightarrow 0^+}S'(\xi),\quad \left(0<\xi<x\right),\]
+由于\(\lim_{x\rightarrow 0^+}S'(x)=-\frac{\pi}{2}\), 
+从而\(\lim_{x\rightarrow0^+}\frac{S(x)-S(0)}{x}=-\frac{\pi}{2}\), 
+同理可知\(\lim_{x\rightarrow0^-}\frac{S(x)-S(0)}{x}=\frac{\pi}{2}\). 
+即\(S(x)\)在\(x=0\)处单侧导数不等, 从而和函数在\(x=2k\pi\)处不可微.
+\end{proof}
+\item 求实数\(a\)的取值范围,  使得\(\sum_{n=20}^{\infty}\frac{(-1)^nx}{n^{ax}+(-1)^nx}\)关于\(x\in\left[1,+\infty\right)\)一致收敛.
+\begin{proof}[解答]
+当\(a\leqslant 0\)时, 由于\(\lim_{n\rightarrow+\infty}\frac{(-1)^nx}{n^{ax}+(-1)^nx}\ne 0\), 从而级数收敛意味着\(a>0\).
+
+考虑级数\(\sum_{n=20}^{+\infty}\frac{(-1)^nx}{n^{ax}}\), 
+由Dirichlet判别法可知其在题设范围内一致收敛. 于是
+\[\frac{(-1)^nx}{n^{ax}}-\frac{(-1)^nx}{n^{ax}+(-1)^nx}
+=\frac{x}{n^{ax}(n^{ax}+(-1)^nx)}\sim\frac{x}{n^{2ax}},\]
+由此知当且仅当\(a>\frac{1}{2}\)时原级数关于\(x\in\left[1,+\infty\right)\)一致收敛. 
+\end{proof}
+\item 求实数\(a\)的取值范围, 使得函数项级数\(\sum_{n=2}^{\infty}\frac{\sin nx}{n^{ax}+\sin nx}\)关于\(x\in\left[\pi,+\infty\right)\)一致收敛.
+\begin{proof}[解答]
+当\(a\leqslant 0\)时, 由于\(\lim_{n\rightarrow+\infty}\frac{\sin nx}{n^{ax}+\sin nx}\ne 0\), 从而级数收敛蕴含着\(a>0\).
+
+由于
+\[\frac{\sin nx}{n^{ax}+\sin nx}=\frac{\sin nx}{n^{ax}}-\frac{\sin^2 nx}{n^{ax}(n^{ax}+\sin nx)},\]
+在 $a>0$ 的前提下，由 Dirichlet 判别法，\(\sum_{n=2}^{+\infty} \frac{\sin nx}{n^{ax}}\) 在 $x \in[\pi,+\infty)$ 时总是收敛，
+而对于 $x \in[\pi,+\infty), x \neq k\pi$, \(\sum_{n=2}^{+\infty} \frac{\sin^2 nx}{n^{ax}(n^{ax}+\sin nx)}\) 收敛的条件是 $2ax>1$。
+因此，级数 \(\sum_{n=2}^{+\infty} \frac{\sin nx}{n^{ax}}\) 当 $x \in[\pi,+\infty)$ 时收敛的条件是 \(a \geqslant \frac{1}{2\pi}\)。
+
+但当 \(\frac{1}{2\pi} \leqslant a \leqslant \frac{1}{\pi}\) 时，
+对于 $n \geqslant 2$，取 \(x=\pi+\frac{1}{2n}\)，有
+\[\left|\sum_{k=n}^{2n-1} \frac{\sin kx}{k^{ax}+\sin kx}\right| 
+\geqslant \sum_{k=n}^{2n-1} \frac{\sin \frac{1}{2}}{k^{1+\frac{1}{2n\pi}}+1} 
+\geqslant \frac{1}{\sqrt[n]{2n}+1} \sin \frac{1}{2},\]
+因此，此时级数 \(\sum_{n=2}^{+\infty} \frac{\sin nx}{n^{ax}+\sin nx}\) 关于 $x \in[\pi,+\infty)$ 不一致收敛。
+这表明要使得级数一致收敛，必须有 \(a>\frac{1}{\pi}\)。
+
+反过来，当 \(a>\frac{1}{\pi}\) 时，由 Weierstrass 判别法即可得 \(\sum_{n=2}^{+\infty} \frac{\sin nx}{n^{ax}+\sin nx}\) 关于 $x \in[\pi,+\infty)$ 一致收敛。
+\end{proof}
+\item 证明定理 \ref{Th:AD}, 即Abel判别法和Dirichlet判别法.
+\begin{proof}
+我们先证明这样一件事: 设\(b_1\geqslant b_2\geqslant\cdots\geqslant b_n\)
+或\(b_1\leqslant b_2\leqslant\cdots\leqslant b_n\), 记\(A_k=\sum_{i=1}^{k}a_i\), 
+如果\(|A_k|\leqslant M\) \((k=1,2,\cdots,n)\), 
+那么\(\left|\sum_{k=1}^{n}a_kb_k\right|\leqslant M(|b_1|+2|b_n|)\).
+
+由Abel变换, 有\[\begin{split}
+\left|\sum_{k=1}^{n}a_kb_k\right|
+&=\left|A_nb_n-\sum_{k=1}^{n-1}A_k(b_{k+1}-b_k)\right|
+\leqslant\left|A_n\right|\left|b_n\right|
++\sum_{k=1}^{n-1}\left|A_k\right|\left|b_{k+1}-b_k\right|\\
+&\leqslant M\left(\sum_{k=1}^{n-1}\left|b_k-b_{k+1}\right|+|b_n|\right)
+= M(|b_1-b_n|+|b_n|)\leqslant M(|b_1|+2|b_n|).
+\end{split}\]这正是Abel引理. 
+
+\textbf{Abel判别法.} 设对任意\(\boldsymbol{x}\in E\)与\(n\in\mathbb{N}_+\)
+有\(\left|v_n(\boldsymbol{x})\right|\leqslant M\). 
+因为\(\sum_{k=1}^{\infty}u_k(\boldsymbol{x})\)在\(E\)上一致收敛, 
+所以\(\forall\varepsilon>0\), 存在\(N\)使得\(n>N\)时有
+\(\left|\sum_{k=n+1}^{n+p}u_k(\boldsymbol{x})\right|<\frac{\varepsilon}{3M}\)
+对任意\(\boldsymbol{x}\in E\)与\(p\in\mathbb{N}_+\)成立, 于是由Abel引理, 即得
+\[\left|\sum_{k=n+1}^{n+p}u_k(\boldsymbol{x})v_k(\boldsymbol{x})\right|
+\leqslant\frac{\varepsilon}{3M}\left(|v_{n+1}(\boldsymbol{x})|+2|v_{n+p}(\boldsymbol{x})|\right)<\varepsilon,\]
+因而级数\(\sum_{k=1}^{\infty}u_k(\boldsymbol{x})v_k(\boldsymbol{x})\)在\(E\)上一致收敛.
+
+\textbf{Dirichlet判别法.} 设对任意\(\boldsymbol{x}\in E\)与\(n\in\mathbb{N}_+\)
+有\(\left|\sum_{k=1}^{n}u_k(\boldsymbol{x})\right|\leqslant M\). 
+则对\(n+1\leqslant m\leqslant n+p\), 有
+\[\left|\sum_{k=n+1}^{m}u_k(\boldsymbol{x})\right|
+=\left|\sum_{k=1}^{m}u_k(\boldsymbol{x})
+-\sum_{k=1}^{n}u_k(\boldsymbol{x})\right|
+\leqslant\left|\sum_{k=1}^{m}u_k(\boldsymbol{x})\right|
++\left|\sum_{k=1}^{n}u_k(\boldsymbol{x})\right|\leqslant 2M,\]
+另外, 由于\(\{v_k(\boldsymbol{x})\}\)在\(E\)上一致收敛到零, 
+则对任意\(\varepsilon>0\), 有\(N\)使\(n>N\)时有
+\(|v_n(\boldsymbol{x})|<\frac{\varepsilon}{6M}\), 于是结合Abel引理有
+\[\left|\sum_{k=n+1}^{n+p}u_k(\boldsymbol{x})v_k(\boldsymbol{x})\right|
+\leqslant 2M(|v_{n+1}(\boldsymbol{x})|+2|v_{n+p}(\boldsymbol{x})|)<\varepsilon,\]
+因而级数\(\sum_{k=1}^{\infty}u_k(\boldsymbol{x})v_k(\boldsymbol{x})\)在\(E\)上一致收敛.
+\end{proof}
+\item 设\(S(x)=\sum_{n=1}^{\infty}\frac{\sin 2^nx}{2^n}\). 
+证明: 对任意\(j,k\in\mathbb{Z}\), \(S\)在点\(\frac{j}{2^k}\)不可导.
+\begin{proof}见例12.3.3.\end{proof}
+\begin{proofc}[好像是错误的解答]
+易见\(S(x)\)的一般项\(\frac{\sin 2^nx}{2^n}\)都是可导的, 
+对于任意\(k\in\Z\), 置\(x=\frac{t}{2^k}\), 我们有
+\[\sum_{n=1}^{\infty}\frac{\sin 2^nx}{2^n}
+=\sum_{n=1}^{\infty}\frac{\sin 2^{n-k}t}{2^n}
+=\frac{1}{2^k}\sum_{n=1}^{\infty}\frac{\sin 2^{n-k}t}{2^{n-k}}
+=\frac{1}{2^{k}}\left(\sum_{n=1}^{k}\frac{\sin 2^{n-k}t}{2^{n-k}}
++\sum_{n=1}^{\infty}\frac{\sin 2^nt}{2^n}\right),\]
+这意味着, 我们只需证\(S(x)\)在点\(j\)处不可导.
+
+记\(u_k(x)=\frac{\sin 2^kx}{2^k}\), 取序列\(j_n=j+\frac{\pi}{2^n}\), 
+则\(\lim_{n\rightarrow+\infty}j_n=j\).  若
+\[\lim_{n\rightarrow+\infty}\frac{S(j_n)-S(j)}{j_n-j}\]
+不存在, 则\(S(x)\)在\(j\)处不可导, 注意到\(u_k(x)\)以\(\frac{\pi}{2^{k-1}}\)为周期, 
+于是有\[u_k(j_n)=\frac{\sin\left(2^kj+2^{k-n}\pi\right)}{2^k}=u_k(j),\quad k=n+1,n+2,\cdots,\]
+则\[\frac{u_k(j_n)-u_k(j)}{j_n-j}=\begin{cases}
+\dfrac{\sin(2^kj+2^{k-n}\pi)-\sin 2^kj}{2^{k-n}\pi},\quad &k=1,2,\cdots,n\\
+0,&k=n+1,n+2,\cdots
+\end{cases}\]于是有\[\begin{split}
+&\frac{S(j_n)-S(j)}{j_n-j}=\sum_{k=1}^{\infty}\frac{u_k(j_n)-u_k(j)}{j_n-j}
+=\sum_{k=1}^{n}\frac{u_k(j_n)-u_k(j)}{j_n-j}\\
+&=\sum_{k=1}^{n}2^{n-k}\pi\left(\sin\left(2^kj+2^{k-n}\pi\right)-\sin 2^kj\right)\\
+&=\sum_{k=1}^{n}\pi^2\cos\left(2^kj+\xi_k\right),\quad \xi_k\in(0,2^{k-n}\pi)\subset(0,\pi),
+\end{split}\]
+下证\(\lim_{k\rightarrow+\infty}\cos\left(2^kj+\xi_k\right)\ne 0\). 
+否则对于充分大的\(k\), 存在\(k_1,k_2\in\Z\)以及任意小的\(\varepsilon_1,\varepsilon_2\)使得
+\[2^kj+\xi_k=k_1\pi+\frac{\pi}{2}+\varepsilon_1,\quad 2^{k-1}j+\xi_{k-1}=k_2\pi+\frac{\pi}{2}+\varepsilon_2,\]
+二倍右式减去左式得\[2\xi_{k-1}-\xi_k=(2k_2-k_1)\pi+\frac{\pi}{2}+2\varepsilon_2-\varepsilon_1,\]
+进一步有\[\frac{2\xi_{k-1}-\xi_k-\pi/2}{\pi}=2k_2-k_1+\frac{2\varepsilon_2-\varepsilon_1}{\pi},\]
+注意\(\frac{2\varepsilon_2-\varepsilon_1}{\pi}\)可以任意小, 而
+\[-\frac{3}{2}-\frac{2\varepsilon_2-\varepsilon_1}{\pi}
+<\frac{2\xi_{k-1}-\xi_k-\pi/2}{\pi}
+<\frac{3}{2}-\frac{2\varepsilon_2-\varepsilon_1}{\pi},\]
+这意味着\(2k_2-k_1\)只能取\(-1,0,1\)这三个值,如果\(S'(j)\)存在则
+\[\lim_{x\rightarrow j}\frac{1}{(x-j)^2}\int_{j}^{x}\left(S(x)-S(j)\right)\dd x
+=\lim_{x\rightarrow j}\frac{S(x)-S(j)}{2(x-j)}=\frac{1}{2}S'(0),\]
+另一方面\[\begin{split}
+&\frac{1}{(x-j)^2}\int_{j}^{x}\left(S(x)-S(j)\right)\dd x
+=\frac{1}{(x-j)^2}\int_{j}^{x}\left(\sum_{n=1}^{\infty}\frac{\sin 2^nx}{2^n}-\sum_{n=1}^{\infty}\frac{\sin 2^nj}{2^n}\right)\dd x\\
+&=\sum_{n=1}^{\infty}\left(\frac{\cos 2^n j-\cos 2^n x}{4^n(x-j)^2}-\frac{\sin 2^nj}{2^n\left(x-j\right)}\right)=:M,
+\end{split}\]对函数\(f(x)=\cos 2^nx\)在\(x=j\)处Taylor展开有
+\[\cos 2^n x=\cos 2^nj-2^n(x-j)\sin 2^nj-\frac{4^n(x-j)^2}{2!}\cos 2^nj+(x-j)^3\sum_{p=3}^{\infty}\frac{f^{(p)}(j)}{p!}(x-j)^{p-3},\]
+将此代入\(M\), 即得\[\begin{split}
+M=\sum_{n=1}^{\infty}\left(\frac{1}{2}\cos 2^nj-(x-j)\sum_{p=3}^{\infty}\frac{f^{(p)}(j)}{4^np!}(x-j)^{p-3}\right)
+\rightarrow\sum_{n=1}^{\infty}\frac{\cos 2^nj}{2},\quad x\rightarrow j,
+\end{split}\]后者一般项不趋于零, 从而\(M\)发散, 矛盾. 因而结论得证.
+\end{proofc}
+\end{enumerate}
+\end{quiza}
+\begin{quizb}
+\begin{enumerate}
+\item 设\(S(x)=\sum_{n=1}^{\infty}\frac{\sqrt{x}}{\sqrt{n}}\ee^{-nx}\), 
+求\(S\)的定义域并讨论其连续性, 可微性.
+\begin{proof}[解答]
+我们先证明这样一个命题, 事实证明, 该命题对于今后证明某函数项级数非一致收敛是十分方便的: 
+
+设\(u_n(x)\) \((n=1,2,\cdots)\)是定义在区间\(I\)上的函数, 且满足下列条件之一, 
+则函数项级数\(\sum_{n=1}^{\infty}u_n(x)\)在\(I\)上不一致收敛.
+\begin{enumerate}[label=(\arabic*)]
+\item 存在数列\(\{x_n\}\subset I\), 使得\(\sum_{n=1}^{\infty}u_n(x_n)\)发散.
+\item \(\forall x\in I\), 有\(u_n(x)>0\) \((n=1,2,\cdots)\), 且存在数列\(\{x_n\}\subset I\)使得
+\[\varliminf_{n\rightarrow+\infty}n^\lambda u_n(x_n)>0,\quad \lambda\leqslant 1.\]
+\item \(u_n(x)=\frac{a_n(x)}{b_n(x)}\) \((x\in I,n=1,2,\cdots)\), 
+对于每个\(x\in I\), \(a_n(x)\)与\(b_n(x)\)均为关于\(n\)的单调增加的正值函数, 且存在数列\(\{x_n\}\subset I\)使得
+\[\varliminf_{n\rightarrow+\infty}\frac{na_n(x_n)}{b_{2n}(x_n)}>0.\]
+\end{enumerate}
+
+只要\(x\geqslant\delta>0\), 结合\[\ee^{nx}\geqslant 1+nx+\frac{1}{2}(nx)^2
+\geqslant \frac{(nx)^2}{2}\Rightarrow \ee^{-nx}\leqslant\frac{2}{(nx)^2},\]
+有\[\frac{\sqrt{x}}{\sqrt{n}}\ee^{-nx}
+\leqslant\frac{\sqrt{x}}{\sqrt{n}}\cdot\frac{2}{n^2x^2}
+=\frac{2}{n^{5/2}x^{3/2}}\leqslant\frac{2}{n^{5/2}\delta^{3/2}},\]
+由Weierstrass判别法可知\(S(x)\)在\(\left[\delta,+\infty\right)\)上一致收敛. 
+
+另一方面, 记\(u_n=\frac{\sqrt{x}}{\sqrt{n}}\ee^{-nx}\), 
+取\(x_n=\frac{1}{n}\), 则\(u_n(x_n)=\frac{1}{\ee n}\), 
+易见\(\sum_{n=1}^{\infty}u_n(x_n)\)发散, 
+从而\(S(x)\)在\((0,\delta)\)上不一致收敛. 
+\end{proof}
+\item 设\(x=-a_n\)是方程\(1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots+\frac{x^{2n-1}}{(2n-1)!}=0\)的\textbf{实数}解, 
+\(f(x)=\sum_{n=1}^{\infty}a_nx^p\ee^{-a_nx}\), 其中\(p\in\mathbb{R}\)为常数. 证明: 
+\begin{enumerate}[label=(\arabic*)]
+\item 存在正常数\(C_1,C_2\)使得\(C_1n\leqslant a_n\leqslant C_2n\) \((n=1,2,\cdots)\);
+\item \(f\)在\((0,+\infty)\)内连续.
+\end{enumerate}
+\begin{proof}[证明1]
+对于 $n \geqslant 0$，记 \(f_{n}(x)=\sum_{k=0}^{n} \frac{x^{k}}{k!}, x \in \mathbb{R}\)。
+
+首先，归纳易证 $f_{2n}(x)$ 在 $\mathbb{R}$ 上有正的最小值，
+而 $f_{2n+1}(x)$ 在 $\mathbb{R}$ 上严格单增，有唯一的零点。
+具体地，对于 $f_{0}(x)$ 与 $f_{1}(x)$，上述结论成立。
+现归纳假设对于某个 $n \geqslant 0$, $f_{2n}(x)$ 在 $\mathbb{R}$ 上有正的最小值，
+而 $f_{2n+1}(x)$ 在 $\mathbb{R}$ 上严格单增，且有唯一的零点 $t_{2n+1}$。
+则注意到 $f_{2n+2}^{\prime}(x)=f_{2n+1}(x)$，我们知道
+$$f_{2n+2}(x) \geqslant f_{2n+2}(t_{2n+1})
+=f_{2n+1}(t_{2n+1})+\frac{t_{2n+1}^{2n+2}}{(2n+2)!}
+=\frac{t_{2n+1}^{2n+2}}{(2n+2)!}>0, \qquad \forall\, x \in \mathbb{R}.$$
+即 $f_{2n+2}(x)$ 在 $\mathbb{R}$ 上有正的最小值。
+进一步，由 $f_{2n+3}^{\prime}(x)=f_{2n+2}(x)$，
+得到而 $f_{2n+3}(x)$ 在 $\mathbb{R}$ 上严格单增，
+结合 $f_{2n+3}(-\infty)=-\infty, f_{2n+3}(+\infty)=+\infty$ 
+知 $f_{2n+3}(x)$ 在 $\mathbb{R}$ 上有唯一的零点。
+当 $n \geqslant 1, x \geqslant 0$ 时，$f_{2n-1}(x)>0$，
+可知满足 $f_{2n-1}(-a_{n})=0$的 $a_{n}$ 唯一且为正。
+
+（1）法 I. 由 Taylor 展式，我们有 $\xi_{n} \in (0, a_{n})$ 使得
+$$\ee^{-a_{n}}=f_{2n-1}(-a_{n})+\frac{\ee^{-\xi_{n}}}{(2n)!} a_{n}^{2n}
+=\frac{\ee^{-\xi_{n}}}{(2n)!} a_{n}^{2n}.$$
+于是
+$$a_{n}=\left(\frac{(2n)!\ee^{\xi_{n}}}{\ee^{a_{n}}}\right)^{\frac{1}{2n}} 
+\leqslant\big((2n)!\big)^{\frac{1}{2n}} \leqslant 2n.$$
+即可取 $C_{2}=2$。进一步，又有
+$$a_{n}=\left(\frac{(2n)!\ee^{\xi_{n}}}{\ee^{a_{n}}}\right)^{\frac{1}{2n}} 
+\geqslant\left(\frac{(2n)!}{\ee^{2n}}\right)^{\frac{1}{2n}} 
+\sim \frac{2n}{\ee^{2}}, \qquad n \rightarrow \infty.$$
+所以存在 $C_{1}>0$ 使得 $\forall\, n \geqslant 1, a_{n} \geqslant C_{1} n$。
+
+法 II. 我们有 $a_{1}=1$。对于 $n \geqslant 2$，当 $x \leqslant -(2n-1)$ 时，
+$$f_{2n-1}(x)=\sum_{k=0}^{n-1} \frac{x^{2k}}{(2k)!}\left(1+\frac{x}{2k+1}\right)<0.$$
+因此，$a_{n}<2n-1$ $(n \geqslant 2)$。
+
+另一方面，在 $(-(2n+1),+\infty)$ 内，$f_{2n+1}(x)>f_{2n-1}(x)$。因此，
+$$f_{2n-1}(-a_{n+1})<f_{2n+1}(-a_{n+1})=0.$$
+这表明 $a_{n}<a_{n+1}$ $(n \geqslant 1)$。
+
+总之，有 $a_{n}<a_{n+1}<2n+1$。
+
+注意到 $f_{2n}^{\prime}(x)=f_{2n-1}(x)$ 在 $(-\infty,-a_{n})$ 内为负，
+从而在 $[-a_{n+1},-a_{n})$ 为负，所以
+$$\begin{gathered}
+f_{2n}(x) \geqslant f_{2n}(-a_{n})=\frac{a_{n}^{2n}}{(2n)!}, \qquad x \in [-a_{n+1},-a_{n}], \\
+f_{2n}(x) \leqslant f_{2n}(-a_{n+1})=\frac{a_{n+1}^{2n+1}}{(2n+1)!}, \qquad x \in [-a_{n+1},-a_{n}].
+\end{gathered}$$
+由中值定理，我们有 $\xi_{n} \in (-a_{n+1},-a_{n})$ 使得
+$$0=f_{2n+1}(-a_{n+1})=f_{2n+1}(-a_{n})-f_{2n}(\xi_{n})(a_{n+1}-a_{n}).$$
+所以
+\begin{align*}
+0 & =\frac{a_{n}^{2n}}{(2n)!}-\frac{a_{n}^{2n+1}}{(2n+1)!}-f_{2n}(\xi_{n})(a_{n+1}-a_{n}) \\
+& \leqslant \frac{a_{n}^{2n}}{(2n)!}-\frac{a_{n}^{2n+1}}{(2n+1)!}-\frac{a_{n}^{2n}}{(2n)!}(a_{n+1}-a_{n}).
+\end{align*}
+由此得到
+$$a_{n+1}-a_{n} \leqslant 1-\frac{a_{n}}{2n+1} \leqslant 1.$$
+从而
+$$a_{n} \leqslant n, \qquad \forall\, n \geqslant 1.$$
+另一方面，
+\begin{align*}
+0 & =\frac{a_{n}^{2n}}{(2n)!}-\frac{a_{n}^{2n+1}}{(2n+1)!}-f_{2n}(\xi_{n})(a_{n+1}-a_{n}) \\
+& \geqslant \frac{a_{n}^{2n}}{(2n)!}-\frac{a_{n}^{2n+1}}{(2n+1)!}-\frac{a_{n+1}^{2n+1}}{(2n+1)!}(a_{n+1}-a_{n}).
+\end{align*}
+于是
+\begin{align*}
+& a_{n+1}-a_{n} \geqslant \frac{2n+1}{a_{n+1}}\left(\frac{a_{n}}{a_{n+1}}\right)^{2n}\left(1-\frac{a_{n}}{2n+1}\right) \\
+& \geqslant 1 \cdot\left(\frac{a_{n}}{a_{n}+1}\right)^{2n} \cdot\left(1-\frac{n}{2n+1}\right) 
+\geqslant \frac{1}{2\left(1+\frac{1}{n}\right)^{2n}} \geqslant \frac{1}{2\ee^{2}}.
+\end{align*}
+因此，
+$$a_{n} \geqslant \frac{n}{2\ee^{2}}, \qquad \forall\, n \geqslant 1.$$
+即取 \(C_{1}=\frac{1}{2\ee^{2}}, C_{2}=1\) 时成立 $C_{1} n \leqslant a_{n} \leqslant C_{2} n$ $(n=1,2, \ldots)$。
+
+（2）对于 $X>1$，
+$$0<a_{n} x^{p} \ee^{-a_{n}x} \leqslant n X^{|p|} \ee^{-\frac{n}{2X\ee^{2}}}, 
+\quad \forall\, x \in\Big[\frac{1}{X}, X\Big],$$
+由此可得 \(\sum_{n=1}^{\infty} a_{n} x^{p} \ee^{-a_{n}x}\) 在 $\left[\frac{1}{X}, X\right]$ 上一致收敛。
+即 \(\sum_{n=1}^{\infty} a_{n} x^{p} \ee^{-a_{n}x}\) 在 $(0,+\infty)$ 内闭一致收敛。
+由于级数的一般项连续，因此 $f(x)$ 在 $(0,+\infty)$ 内连续。
+\end{proof}
+\begin{proof}[证明2]
+(1)原方程有且仅有一实根\(x_n\) (可见6.3.\(\boldsymbol{\mathcal{B}}\)第9题), 
+且\(x_n<0\), 否则\(x_n\geqslant 0\), 此时
+\[1+x_n+\frac{x_n^2}{2!}+\frac{x_n^3}{3!}+\cdots+\frac{x_n^{2n-1}}{(2n-1)!}>0.\]
+由于\(a_n=-x_n\), 故\(a_n>0\). 由Taylor公式
+\[\ee^{x}=1+x+\frac{x^2}{2!}+\cdots+\frac{x^{2n-1}}{(2n-1)!}
++\frac{\ee^{\xi}x^{2n}}{(2n)!},\quad \xi\text{ 介于 }0\text{ 与 }x\text{ 之间 },\]
+将\(x=-a_n\)代入上式, 得到
+\[\ee^{-a_n}=\frac{\ee^{\xi}a_n^{2n}}{(2n)!},\quad\xi\in(-a_n,0).\]
+注意到\(\frac{\ee^{-a_n}a_n^{2n}}{(2n)!}
+\leqslant\frac{\ee^{\xi}a_n^{2n}}{(2n)!}\leqslant\frac{a_n^{2n}}{(2n)!}\), 
+于是\[\frac{\ee^{-a_n}a_n^{2n}}{(2n)!}
+\leqslant\ee^{-a_n}\Rightarrow a_n\leqslant\sqrt[2n]{(2n)!},\]
+下面我们证明一个有用的不等式
+\[\Big(\frac{n}{\ee}\Big)^n<n!<\ee\left(\frac{n}{2}\right)^n,\]
+由\(\sqrt{k(n-k)}\leqslant\frac{n}{2}\), 
+则\(\frac{1}{2}\left(\ln k+\ln(n-k)\right)\leqslant\ln\frac{n}{2}\), 从而
+\[\sum_{k=1}^{n-1}\ln k\leqslant(n-1)\ln\frac{n}{2}\Rightarrow (n-1)!
+\leqslant\left(\frac{n}{2}\right)^{n-1},\]
+即有\(\frac{n}{2}\cdot (n-1)!\leqslant\left(\frac{n}{2}\right)^n\), 
+于是\(n!\leqslant 2\left(\frac{n}{2}\right)^n<\ee\left(\frac{n}{2}\right)^n\). 
+另外, 令\(x_n=\left(\frac{n}{\ee}\right)^n\), 于是有
+\[\frac{x_n}{x_{n-1}}=\frac{n^n}{(n-1)^{n-1}\ee}
+=\frac{\left(1+\frac{1}{n-1}\right)^{n-1}n}{\ee}<n,\]
+并且\(x_1=\frac{1}{\ee}<1\), 于是\(x_n=x_1\cdot\frac{x_2}{x_1}\cdot\cdots\cdot\frac{x_n}{x_{n-1}}<n!\), 即得\(\left(\frac{n}{\ee}\right)^n<n!\).
+
+利用上述不等式, 有\[a_n\leqslant\sqrt[2n]{(2n)!}<\sqrt[2n]{\ee\left(\frac{2n}{2}\right)^{2n}}=\sqrt[2n]{\ee}\cdot n<\sqrt{\ee}\cdot n,\]
+另一方面,\[\ee^{-a_n}\leqslant\frac{a_n^{2n}}{(2n)!}\Rightarrow 
+a_n\geqslant\sqrt[2n]{\ee^{-a_n}(2n)!}>\sqrt[2n]{\ee^{-\sqrt{\ee} n}}\cdot \frac{2n}{\ee}=2\ee^{-\sqrt{\ee}/2-1}n,\]
+即得\(2\ee^{-\sqrt{\ee}/2-1}n\leqslant a_n\leqslant\sqrt{\ee}\cdot n.\)
+\end{proof}
+\end{enumerate}
+\end{quizb}
+
+\section{幂级数与函数的幂级数展开}
+\subsection{幂级数的收敛半径, Abel第一定理, Cauchy--Hadamard公式,幂级数的性质, Abel第二定理,函数的幂级数展开, Taylor级数, Maclaurin级数,直接法,间接法,幂级数在复数域内的性质,非切向极限,实解析函数,复解析函数,复区域上函数的复导数, Cauchy--Riemann条件}
+\begin{quiza}
+\begin{enumerate}
+\item 举例说明存在幂级数使得其收敛域分别为
+\[\{0\},\quad(-1,1),\quad[-1,1),\quad(-1,1],\quad[-1,1],\quad(-\infty,+\infty).\]
+\begin{proof}[解答]
+级数\(\sum_{n=0}^{\infty}n!x^n\)仅在\(x=0\)处收敛, 
+因为除此之外的任何\(x\)都使级数的一般项不趋于零.
+
+容易验证其他题设的收敛域可以对应以下级数:
+\[\sum_{n=1}^{\infty}\frac{x^{2n}}{n},\quad
+\sum_{n=1}^{\infty}\frac{x^{n}}{n},\quad
+\sum_{n=1}^{\infty}\frac{(-1)^nx^{n}}{n},\quad
+\sum_{n=1}^{\infty}\frac{x^{2n}}{n^2},\quad
+\sum_{n=0}^{\infty}\frac{x^{n}}{n!}.\qedhere\]
+\end{proof}
+\item 考虑收敛半径为\(1\)的幂级数\(\sum_{n=0}^{\infty}a_nx^n\). 
+举例或证明:\begin{enumerate}[label=(\arabic*)]
+\item 是否存在例子使得\(\sum_{n=0}^{\infty}a_nx^n\)及其形式求导后的级数在\([-1,1]\)上收敛?
+\item 是否存在例子使得\(\sum_{n=0}^{\infty}a_nx^n\)在\([-1,1]\)上收敛, 
+而其形式求导后的级数的收敛域是\(\left(-1,1\right]\)?
+\item 当\(\sum_{n=0}^{\infty}a_nx^n\)的收敛域是\(\left(-1,1\right]\)时, 
+使得级数形式求导\(k\)次后的级数的收敛域依然为\(\left(-1,1\right]\), 这样的\(k\)可以有多大?
+\end{enumerate}
+\begin{proof}[解答]
+(1)易见级数\(\sum_{n=1}^{\infty}\frac{x^n}{n^3}\)的收敛半径为\(1\), 
+形式求导后得到\(\sum_{n=1}^{\infty}\frac{x^{n-1}}{n^2}\), 其收敛域为\([-1,1]\).
+
+(2)存在这样的例子.
+
+取
+\[
+a_0=0,\qquad a_n=\frac{(-1)^{n-1}}{n^2}\ (n\ge 1).
+\]
+则
+\[
+\sum_{n=0}^{\infty}a_nx^n=\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n^2}x^n,
+\]
+收敛半径仍为 \(1\), 且在 \(x=\pm1\) 处都绝对收敛, 因而在 \([-1,1]\) 上收敛.
+
+其形式求导级数为
+\[
+\sum_{n=1}^{\infty}na_nx^{n-1}
+=\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n}x^{n-1}.
+\]
+当 \(x=1\) 时为交错调和级数, 收敛; 当 \(x=-1\) 时为
+\[
+-\sum_{n=1}^{\infty}\frac1n,
+\]
+发散. 因此该导数级数的收敛域正是 \(\left(-1,1\right]\).
+
+(3)这样的 \(k\) 最大为 \(1\).
+
+先说明 \(k=1\) 可达到. 取(\(n\ge2\))
+\[
+a_n=\frac{(-1)^n}{n\ln n},
+\]
+前若干项任意补齐. 该级数收敛半径为 \(1\).
+
+在 \(x=1\) 处,
+\[
+\sum_{n=2}^{\infty}\frac{(-1)^n}{n\ln n}
+\]
+按Leibniz判别收敛; 在 \(x=-1\) 处,
+\[
+\sum_{n=2}^{\infty}\frac{1}{n\ln n}
+\]
+发散, 所以原收敛域为 \(\left(-1,1\right]\).
+
+一次求导后在 \(x=1\) 处得到
+\[
+\sum_{n=2}^{\infty}\frac{(-1)^n}{\ln n},
+\]
+仍按Leibniz判别收敛; 在 \(x=-1\) 处得到
+\[
+-\sum_{n=2}^{\infty}\frac1{\ln n},
+\]
+发散. 因而一次求导后收敛域仍为 \(\left(-1,1\right]\).
+
+再证 \(k\ge2\) 不可能. 若 \(k\) 次形式导数在 \(x=1\) 处收敛, 则其一般项必趋于0:
+\[
+n(n-1)\cdots(n-k+1)a_n\to0.
+\]
+故存在常数 \(C\) 与充分大 \(n\), 使
+\[
+|a_n|\le \frac{C}{n(n-1)\cdots(n-k+1)}\le \frac{2C}{n^k}.
+\]
+当 \(k\ge2\) 时有 \(\sum|a_n|<\infty\), 从而原级数在 \(x=-1\) 处绝对收敛, 这与原收敛域是 \(\left(-1,1\right]\) (即在 \(-1\) 处发散) 矛盾.
+
+故最大可能值为
+\[
+k_{\max}=1.
+\]
+\end{proof}
+\item 试将以下函数展开成Maclaurin级数, 并求其收敛域:
+\begin{center}
+\begin{tabular}{ll}
+\((1)\,\frac{x^2+x+4}{x^2+3x+2}\);&\((2)\,\frac{x}{x^2+2x+2}\);\\
+\((3)\,\frac{1}{x^4+4x^2+4}\);&\((4)\,\ee^x\cos x\);\\
+\((5)\,\int_{0}^{x}\frac{\ee^t-1}{t}\,\dd t\);&\((6)\,\ln(x+\sqrt{1+x^2})\).
+\end{tabular}
+\end{center}
+\begin{proof}[解答]
+(1)由\[\frac{x^2+x+4}{x^2+3x+2}=1+\frac{3}{1+x}-\frac{4}{2+x}
+=1+3\sum_{n=0}^{\infty}(-1)^nx^n-2\sum_{n=0}^{\infty}(-1)^n\left(\frac{x}{2}\right)^n,\]
+级数的收敛域为\((-1,1)\).
+
+(2)记
+\[f(x)=\frac{x}{x^2+2x+2}
+=\frac{\frac{1+i}{2}}{x+1-i}+\frac{\frac{1-i}{2}}{x+1+i}.\]
+于是
+\[f(x)=\frac{i}{2}\sum_{n=0}^{\infty}(-1)^n\frac{x^n}{(1-i)^n}
+-\frac{i}{2}\sum_{n=0}^{\infty}(-1)^n\frac{x^n}{(1+i)^n}
+=\sum_{n=0}^{\infty}(-1)^{n+1}2^{-\frac n2}\sin\frac{n\pi}{4}\,x^n.\]
+记
+\[c_n=(-1)^{n+1}2^{-\frac n2}\sin\frac{n\pi}{4}.\]
+取子列 \(n=4k+2\), 有 \(|\sin\frac{n\pi}{4}|=1\), 从而
+\[\varlimsup_{n\to\infty}\sqrt[n]{|c_n|}
+=\varlimsup_{k\to\infty}\sqrt[4k+2]{2^{-\frac{4k+2}{2}}}
+=\frac{1}{\sqrt2}.\]
+由 Cauchy-Hadamard 公式得 \(R=\sqrt2\). 在边界点 \(x=\pm\sqrt2\) 时,
+\[c_{4k+2}x^{4k+2}=(-1)^{4k+3}\sin\frac{(4k+2)\pi}{4}=\pm1,\]
+一般项不趋于 0, 故两端点发散. 因而收敛域为
+\[(-\sqrt2,\sqrt2).\]
+(3)\[\frac{1}{x^4+4x^2+4}
+=\frac{1}{(x^2+2)^2}
+=\frac14\Bigl(1+\frac{x^2}{2}\Bigr)^{-2}.\]
+由
+\[(1+u)^{-2}=\sum_{n=0}^{\infty}(-1)^n(n+1)u^n\quad(|u|<1)\]
+得
+\[\frac{1}{x^4+4x^2+4}
+=\sum_{n=0}^{\infty}(-1)^n\frac{n+1}{2^{n+2}}x^{2n},
+\qquad |x|<\sqrt2.\]
+把它写成 \(\sum_{m=0}^{\infty}c_mx^m\), 其中
+\[c_{2n}=(-1)^n\frac{n+1}{2^{n+2}},\qquad c_{2n+1}=0.\]
+则
+\[\varlimsup_{m\to\infty}\sqrt[m]{|c_m|}
+=\varlimsup_{n\to\infty}\sqrt[2n]{\frac{n+1}{2^{n+2}}}
+=\frac{1}{\sqrt2},\]
+故收敛半径 \(R=\sqrt2\). 在 \(x=\pm\sqrt2\) 时,
+\[c_{2n}x^{2n}=(-1)^n\frac{n+1}{4}\not\to0,\]
+故两端点发散. 收敛域为 \((-\sqrt2,\sqrt2)\).
+(4)\[\ee^x\cos x=\Re\bigl(\ee^{(1+i)x}\bigr)
+=\Re\sum_{n=0}^{\infty}\frac{(1+i)^n}{n!}x^n
+=\sum_{n=0}^{\infty}\frac{2^{n/2}\cos\frac{n\pi}{4}}{n!}x^n.\]
+记系数 \(c_n=\frac{2^{n/2}\cos(n\pi/4)}{n!}\), 则
+\[\varlimsup_{n\to\infty}\sqrt[n]{|c_n|}
+\le \varlimsup_{n\to\infty}\frac{\sqrt2}{\sqrt[n]{n!}}=0,\]
+由 Cauchy-Hadamard 公式得 \(R=+\infty\), 收敛域为 \(( -\infty,+\infty)\).
+(5)先展开被积函数:
+\[\frac{\ee^t-1}{t}
+=\sum_{n=1}^{\infty}\frac{t^{n-1}}{n!}
+=\sum_{n=0}^{\infty}\frac{t^n}{(n+1)!}
+\quad(t\in\mathbb R).\]
+逐项积分得
+\[\int_0^x\frac{\ee^t-1}{t}\,\dd t
+=\sum_{n=0}^{\infty}\frac{x^{n+1}}{(n+1)(n+1)!}
+=\sum_{m=1}^{\infty}\frac{x^m}{m\,m!}.\]
+记 \(c_0=0,\ c_m=\frac{1}{m\,m!}(m\ge1)\), 则
+\[\varlimsup_{m\to\infty}\sqrt[m]{|c_m|}
+=\varlimsup_{m\to\infty}\frac{1}{\sqrt[m]{m}\,\sqrt[m]{m!}}=0,\]
+故收敛半径 \(R=+\infty\), 收敛域为 \(( -\infty,+\infty)\).
+(6)设
+\[g(x)=\ln(x+\sqrt{1+x^2}),\]
+则 \(g(0)=0\), 且
+\[g'(x)=\frac{1}{\sqrt{1+x^2}}=(1+x^2)^{-1/2}.\]
+由二项级数
+\[(1+u)^{-1/2}=\sum_{n=0}^{\infty}(-1)^n\frac{\binom{2n}{n}}{4^n}u^n,
+\qquad |u|<1\]
+令 \(u=x^2\), 得
+\[g'(x)=\sum_{n=0}^{\infty}(-1)^n\frac{\binom{2n}{n}}{4^n}x^{2n},
+\qquad |x|<1.\]
+再由 \(g(0)=0\) 逐项积分:
+\[\ln(x+\sqrt{1+x^2})
+=\sum_{n=0}^{\infty}(-1)^n\frac{\binom{2n}{n}}{4^n(2n+1)}x^{2n+1}.\]
+记 \(\sum_{m=0}^{\infty}c_mx^m\), 其中
+\[c_{2n}=0,\qquad c_{2n+1}=(-1)^n\frac{\binom{2n}{n}}{4^n(2n+1)}.\]
+由 \(\binom{2n}{n}\sim\frac{4^n}{\sqrt{\pi n}}\) 得
+\[|c_{2n+1}|\sim \frac{1}{2\sqrt\pi\,n^{3/2}},\]
+故
+\[\varlimsup_{m\to\infty}\sqrt[m]{|c_m|}=1,\]
+从而由 Cauchy-Hadamard 公式得收敛半径 \(R=1\). 又因
+\[\sum_{n=0}^{\infty}\left|\frac{\binom{2n}{n}}{4^n(2n+1)}\right|\]
+与 \(\sum n^{-3/2}\) 比较收敛, 故在 \(x=\pm1\) 处绝对收敛. 因而收敛域为 \([-1,1]\).
+\end{proof}
+\item 试给出\(\arctan x\)在点\(1\)处的Taylor展开式及其收敛域.
+\begin{proof}[解答]
+由于\(\left(\arctan x\right)'=\frac{1}{1+x^2}=\sum_{n=0}^{\infty}(-1)^nx^{2n}\), 
+于是\[\arctan x=\int_{0}^{x}\sum_{n=0}^{\infty}(-1)^nt^{2n}\,\dd t
+=\sum_{n=0}^{\infty}\frac{(-1)^{n}x^{2n+1}}{2n+1},\]
+\end{proof}
+\item 设\(f\)的Maclaurin展开式在点\(x=1\)处绝对收敛, 
+证明\(f^2\)的Maclaurin展开式在点\(x=-1\)处绝对收敛.
+\begin{proof}
+记\(f(x)=\sum_{n=0}^{\infty}a_nx^n\), 有\(\sum_{n=0}^{\infty}\left|a_n\right|<+\infty\), 则
+\[f^2(x)\big|_{x=-1}=\left(\sum_{n=0}^{\infty}(-1)^na_n\right)^2
+\leqslant\left(\sum_{n=0}^{\infty}|a_n|\right)^2<+\infty.\qedhere\]
+\end{proof}
+\item 证明: 对任何\(n\geqslant 1\), \((1-x)^n\ee^{1/(1-x)}\)
+的Maclaurin展开式的收敛半径为\(1\), 但在点\(x=1\)处发散.
+\begin{proof}
+记
+\[f(x)=(1-x)^n\ee^{\frac{1}{1-x}},\qquad n\ge1.\]
+当 \(|x|<1\) 时,由
+\[\frac{1}{1-x}=\sum_{k=0}^{\infty}x^k\]
+\[\ee^u=\sum_{m=0}^{\infty}\frac{u^m}{m!}\quad(u\in\mathbb R),\]
+把 \(u=\frac{1}{1-x}\) 代入可得
+\[\ee^{\frac{1}{1-x}}=\sum_{m=0}^{\infty}\frac1{m!}\Bigl(\frac{1}{1-x}\Bigr)^m,\]
+并且可直接验证其绝对收敛性: 固定 \(|x|<1\), 记 \(r=|x|\in(0,1)\), 则
+\[|1-x|\ge 1-|x|=1-r,\]
+从而
+\[\left|\frac{1}{1-x}\right|\le\frac{1}{1-r}=:M<\infty.\]
+于是
+\[\sum_{m=0}^{\infty}\left|\frac1{m!}\Bigl(\frac{1}{1-x}\Bigr)^m\right|
+\le \sum_{m=0}^{\infty}\frac{M^m}{m!}
+=\ee^M<\infty,\]
+故该级数对每个固定 \(|x|<1\) 绝对收敛. 再乘上多项式 \((1-x)^n\), 仍得到在 \((-1,1)\) 内的解析函数,
+因此 \(f\) 在 \((-1,1)\) 内可表示为某个 Maclaurin 幂级数.故有
+\[R\ge1.\]
+
+下面证 \(R\le1\). 若反设 \(R>1\), 则该 Maclaurin 级数在 \(x=1\) 处收敛, 并且其和函数在
+\((-1,1)\) 上等于 \(f(x)\). 由 Abel 第二定理(或幂级数在收敛区间端点处的连续性结论)可知
+\(\lim_{x\to1^-}f(x)\)
+应当存在且有限.
+
+但令 \(u=1-x\to0^+\), 有
+\[f(x)=u^n\ee^{1/u}=\frac{\ee^{1/u}}{u^{-n}}\xrightarrow[u\to0^+]{}+\infty,\]
+因为指数函数增长快于任何幂函数. 矛盾.
+故 \(R\le1\), 结合 \(R\ge1\), 得
+\[R=1.\]
+再看点 \(x=1\): 若该 Maclaurin 级数在 \(x=1\) 收敛, 仍由 Abel 第二定理应有
+\(\lim_{x\to1^-}f(x)\) 有限; 但上式已知该极限为 \(+\infty\).
+故其 Maclaurin 级数在 \(x=1\) 处发散.
+\end{proof}
+\item 考虑\(\frac{1}{1-x}\)的Maclaurin展开式的余项, 可得
+\[\int_{0}^{x}\frac{(n+1)(x-t)^n}{(1-t)^{n+2}}\,\dd t
+=\frac{x^{n+1}}{1-x},\quad x\in[0,1).\]
+试利用上式估计\((1+x)^\alpha\)的\(n\)阶Maclaurin展开式的余项
+\[r_n(x)=\int_{0}^{x}(n+1)(x-t)^n\binom{\alpha}{n+1}(1+t)^{\alpha-n-1}\,\dd t,\quad x\in(-1,1).\]
+进而, 证明\((1+x)^\alpha\)在\((-1,1)\)内可展开成Maclaurin级数.
+由带积分型余项的 Taylor 公式,
+\[(1+x)^\alpha=\sum_{k=0}^{n}\binom{\alpha}{k}x^k+r_n(x),\qquad x\in(-1,1),\]
+其中
+\[r_n(x)=\binom{\alpha}{n+1}\int_{0}^{x}(n+1)(x-t)^n(1+t)^{\alpha-n-1}\,\dd t.\]
+
+先证一个配套恒等式(由题给恒等式作代换 \(t\mapsto -t\) 即得): 对 \(x\in[0,1)\),
+\[\int_0^x\frac{(n+1)(x-t)^n}{(1+t)^{n+2}}\,\dd t=\frac{x^{n+1}}{1+x}.\]
+
+\textbf{(i) 当 \(x\in[0,1)\) 时}
+\[|r_n(x)|
+\le \left|\binom{\alpha}{n+1}\right|
+\max_{0\le t\le x}(1+t)^{\alpha+1}
+\int_0^x\frac{(n+1)(x-t)^n}{(1+t)^{n+2}}\,\dd t\]
+\[=\left|\binom{\alpha}{n+1}\right|\,M_+(x,\alpha)\,\frac{x^{n+1}}{1+x},\]
+其中 \(M_+(x,\alpha):=\max_{0\le t\le x}(1+t)^{\alpha+1}<\infty\).
+
+\textbf{(ii) 当 \(x\in(-1,0)\) 时}
+令 \(y=-x\in(0,1)\), 再令 \(t=-s\), 得
+\[|r_n(x)|
+\le\left|\binom{\alpha}{n+1}\right|
+\max_{0\le s\le y}(1-s)^{\alpha+1}
+\int_0^y\frac{(n+1)(y-s)^n}{(1-s)^{n+2}}\,\dd s\]
+\[=\left|\binom{\alpha}{n+1}\right|\,M_-(x,\alpha)\,\frac{|x|^{n+1}}{1-|x|},\]
+其中 \(M_-(x,\alpha):=\max_{0\le s\le |x|}(1-s)^{\alpha+1}<\infty\).
+
+综上, 对任意固定 \(x\in(-1,1)\), 存在常数 \(C(x,\alpha)>0\), 使
+\[|r_n(x)|\le C(x,\alpha)\left|\binom{\alpha}{n+1}\right||x|^{n+1}.\tag{*}\]
+
+再看右端. 设
+\[b_n:=\left|\binom{\alpha}{n+1}\right||x|^{n+1},\]
+则
+\[\frac{b_{n+1}}{b_n}
+=\left|\frac{\alpha-(n+1)}{n+2}\right||x|
+\xrightarrow[n\to\infty]{}|x|<1.\]
+故 \(b_n\to0\). 再由 \((*)\)
+\[|r_n(x)|\le C(x,\alpha)\,b_n,\]
+且 \(C(x,\alpha)>0\) 与 \(n\) 无关, 于是
+\[0\le |r_n(x)|\le C(x,\alpha)b_n\xrightarrow[n\to\infty]{}0.\]
+由夹逼定理可得 \(|r_n(x)|\to0\), 从而
+\[r_n(x)\to0.\]
+
+于是
+\[(1+x)^\alpha=\sum_{k=0}^{\infty}\binom{\alpha}{k}x^k,\qquad x\in(-1,1).\]
+即 \((1+x)^\alpha\) 在 \((-1,1)\) 内可展开成 Maclaurin 级数.
+\item 设\(\sum_{n=0}^{\infty}a_nx^n\)的收敛半径大于\(1\), 其和函数为\(f\), 
+满足\(\min_{x\in [-1,1]}\left|f(x)\right|\geqslant 1\). 设\(g=\frac{1}{f}\). 依次证明:
+\begin{enumerate}[label=(\arabic*)]
+\item 存在常数\(C>0\)使得\[\left|\frac{f^{(n)}(x)}{n!}\right|\leqslant \frac{C^n}{(1-|x|)^n},\quad n\geqslant 0,\,|x|\leqslant 1.\]
+\item 记\(A=C+1\), 则\[\left|\frac{g^{(n)}(x)}{n!}\right|\leqslant\frac{A^{n+1}}{(1-|x|)^n},\quad n\geqslant 0,\,|x|\leqslant 1.\]
+\item \(g\)在点\(0\)可以展开成幂级数.
+\end{enumerate}
+\begin{proof}
+(1) 复变函数中有Cauchy积分公式
+\[\frac{f^{(n)}(z)}{n!}=\frac{1}{2\pi\ii}\int_{|\xi-z|=r}\frac{f(\xi)}{(\xi-z)^{n+1}}\,\dd\xi,\]
+进而有如下重要的不等式\[\left|\frac{f^{(n)}(z)}{n!}\right|\leqslant\frac{\max\limits_{|\xi-z|=r}|f(\xi)|}{r^n}.\]
+取$z=x,r=1-|x|$，这时$\{\xi:|\xi-z|=r\}$是单位闭圆盘$\overline{\mathbb{D}}=\{\xi:|\xi|\leqslant1\}$的子集，代入上式得
+\[\left|\frac{f^{(n)}(x)}{n!}\right|\leqslant\frac{C}{(1-|x|)^n},\]
+其中$C=\max\limits_{\overline{\mathbb{D}}}|f|$。这样来看，题目中$C^n$应当是$C$。
+
+(2) $n=0$时$|g(x)|\leqslant1<A$成立（题意只是对$x\in[-1,1]$，而不是$x\in\overline{\mathbb{D}}$），
+设命题对小于等于$n-1$均成立，考察$n$的情形（这里$n\geqslant1$）。由于$fg=1$，有
+\[\sum_{k=0}^{n}\frac{f^{(k)}}{k!}\frac{g^{(n-k)}}{(n-k)!}=\frac{(fg)^{(n)}}{n!}=0,\]
+从而\begin{align*}\left|\frac{g^{(n)}(x)}{n!}\right|
+&=\left|\sum_{k=1}^{n}\frac{f^{(k)}(x)}{k!}\frac{g^{(n-k)}(x)}{(n-k)!}\right|\\
+&\leqslant\sum_{k=1}^{n}\left|\frac{f^{(k)}(x)}{k!}\right|\left|\frac{g^{(n-k)}(x)}{(n-k)!}\right|\\
+&\leqslant\sum_{k=1}^{n}\frac{C}{(1-|x|)^k}\frac{A^{n-k+1}}{(1-|x|)^{n-k}}\\
+&=\frac{A^{n+1}-A}{(1-|x|)^n}.
+\end{align*}
+
+(3) 余项大小为\[|r_n(x)|=\left|\frac{g^{(n+1)}(\theta x)}{(n+1)!}x^{n+1}\right|
+\leqslant A\left(\frac{A|x|}{1-|x|}\right)^{n+1},\]
+其趋于零只需\(\frac{A|x|}{1-|x|}<1\)，也就是邻域的半径小于\(\dfrac{1}{A+1}\)即可。
+\end{proof}
+\item 设\(R\)为正实数, 若\(f\)在\((-R,R)\)内实解析, 
+其Maclaurin展开式的收敛半径是\(r\in \left(0,R\right]\). 
+问: 在收敛域内, \(f\)的Maclaurin展开式是否等于\(f\).
+\begin{proof}[解答]
+
+\end{proof}
+\end{enumerate}
+\end{quiza}
+\begin{quizb}
+\begin{enumerate}
+\item 举例说明存在收敛半径为\(1\)的幂级数\(\sum_{n=0}^{\infty}a_nx^n\), 
+它任意次逐项求导后的级数均在点\(x=1\)处收敛. 
+进一步, 证明: 此类级数也一定在点\(-1\)处收敛.
+\begin{proof}
+下面这些例子都满足条件：
+\[\sum_{n=0}^{\infty} 2^{-\frac{n}{\ln n}} x^n, \quad \sum_{n=0}^{\infty} n^{-\ln n} x^n, 
+\quad \sum_{n=0}^{\infty} \mathrm{e}^{-\sqrt{n}} x^n.\]
+由条件可知下面两个级数收敛：
+\[\sum_{n=0}^{\infty} n a_n, \quad \sum_{n=0}^{\infty} n(n-1)a_n,\]
+从而其和
+\[\sum_{n=0}^{\infty} n^2 a_n\]
+亦收敛。于是，当 $n$ 足够大时，$|a_n|<1/n^2$。
+特别地，\(\sum_{n=0}^{\infty} a_n x^n\) 在 $x=-1$ 收敛。
+\end{proof}
+\item 举例说明存在收敛半径为\(1\)的幂级数\(\sum_{n=0}^{\infty}a_nx^n\), 
+它任意次逐项积分后得到的级数均在点\(x=1\)处发散. 
+进一步, 证明: 此类级数也一定在点\(-1\)处发散.
+\begin{proof}
+例子：\(\sum_{n=0}^{\infty} \mathrm{e}^{\sqrt{n}}x^n\)。
+
+用反证法，假设 \(\sum_{n=0}^{\infty} a_n(-1)^n\) 收敛，那么当 $n$ 足够大时，$|a_n|<1$。于是，
+\[\sum_{n=0}^{\infty} \frac{a_n}{(n+1)(n+2)}<\infty,\]
+和条件矛盾。
+\end{proof}
+\item 设\(x_0\in\left(0,\frac{\pi}{2}\right)\), 
+试考察\(\tan x\)在点\(x_0\)处的Taylor展开式的收敛半径.
+\begin{proof}[解答]
+首先，我们知道 $\tan x$ 的 Maclaurin 展开式的收敛半径是 \(\frac{\pi}{2}\)（例 9.3.7）。
+根据定理 9.3.6，它在 $x_0$ 处的 Taylor 展开式收敛半径至少是 \(\frac{\pi}{2}-x_0\)。
+于是，$\tan x$ 在 $x_0$ 处的 Taylor 展开式可以写作：
+\[\tan x=\sum_{n=0}^{\infty} a_n(x-x_0)^n, \quad|x-x_0|<\frac{\pi}{2}-x_0,\]
+只需说明右边的级数在 \(\frac{\pi}{2}\) 不收敛。否则，应用定理 9.3.2，
+\[\sum_{n=0}^{\infty} a_n\left(\frac{\pi}{2}-x_0\right)^n
+=\lim_{x \rightarrow \frac{\pi}{2}-} \sum_{n=0}^{\infty} a_n(x-x_0)^n
+=\lim_{x \rightarrow \frac{\pi}{2}-} \tan x=+\infty,\]
+矛盾。
+\end{proof}
+\item 对于Riemann \(\zeta\)函数\(\zeta(x)=\sum_{n=1}^{\infty}\frac{1}{n^x}\). 
+证明: \(\zeta\)在\((1,+\infty)\)上实解析.
+\begin{proof}
+    由级数的一致收敛性得$\zeta$在$\{\operatorname{Re}z>1\}$上复解析，从而实解析。
+\end{proof}
+\item 考察是否存在\(n\geqslant 1\), 使得\((1-x)^n\sin\frac{1}{1-x}\)的Maclaurin展开式在点\(x=1\)处收敛.
+\item 证明: \((a,b)\)上的实解析函数是一个复区域\(D\)上的复解析函数在\((a,b)\)上的限制.
+\item 设\(\varphi\in C_c^{\infty}(\mathbb{R})\)满足\(\operatorname{supp}\varphi\subseteq [-2,2]\)以及\(\varphi\big|_{[-1,1]}=1\). 
+对于实数列\(\{a_k\}_{k=0}^{\infty}\), 定义
+\[f(x)=\sum_{n=0}^{\infty}\frac{a_n}{n!}\varphi(a_nx)x^n,\quad\forall\, x\in\mathbb{R}.\]
+证明: \(f\in C^{\infty}(\mathbb{R})\), 且\(f^{(n)}(0)=a_n\) \((\forall n\geqslant 0)\). 
+此结果表明任何幂级数都是某个函数的Taylor展开式.
+\begin{proof}
+参考JR. William F. Donoghue, \textit{Distributions and Fourier Transforms}, 
+Pure and Applied Mathematics Vol.32, Academic Press, 1969, Section 10, pp.49--51.
+\end{proof}
+\end{enumerate}
+\end{quizb}
+
+请移步[[User:Solution/转存|转存]]，全部放上去常常会编译错误。

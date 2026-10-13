@@ -1,0 +1,14 @@
+\setdisplaytitle{随机矩阵理论：笔记及习题解答}
+\sethtmltitle{随机矩阵理论：笔记及习题解答}
+
+{{comment|这份讲义的内容和习题是25秋随机矩阵理论课程的，每届习题不同。}}
+\begin{structure}
+    \subpage{导论}
+    \subpage{高斯随机阵的解析分布}
+    \subpage{行列式点过程(Determinantal Point Process)}
+    \subpage{弱收敛}
+    \subpage{随机矩阵的极限律}
+    \subpage{矩方法}
+    \subpage{半圆律矩方法的证明}
+    \subpage{Stieltjes变换法}
+\end{structure}

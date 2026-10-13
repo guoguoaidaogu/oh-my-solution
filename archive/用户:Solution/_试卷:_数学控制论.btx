@@ -1,0 +1,143 @@
+\setdisplaytitle{试卷：数学控制论}
+\sethtmltitle{试卷：数学控制论}
+
+== 2024年期末 ==
+
+1．给定矩阵 $A \in \mathbb{R}^{n \times n}, B \in \mathbb{R}^{n \times m}$，考虑控制系统
+$$
+\dot{y}(t)=A y(t)+B u(t), \quad t \in[0,+\infty) .
+$$
+
+如果对于任意的 $\rho>0$，都存在 $F_{\rho} \in \mathbb{R}^{m \times n}$ 以及 $M \geq 1$ 满足
+$$
+\left\|e^{(A+B F_{\rho}) t}\right\| \leq M e^{-\rho t}, \quad t \in[0,+\infty),
+$$
+
+试证明原控制系统能控。
+
+2．给定两个稳定的正实系数多项式 $f, g$，且 $\operatorname{deg}(f)=\operatorname{deg}(g)$。证明：若
+$$
+\operatorname{Im}\left(\frac{f(i \omega)}{g(i \omega)}\right) \neq 0, \quad \forall \, \omega \in \mathbb{R} \setminus\{0\},
+$$
+
+则 $f+g$ 也稳定。
+
+3．给定矩阵 $A \in \mathbb{R}^{n \times n}, B_{1} \in \mathbb{R}^{n \times m_{1}}, B_{2} \in \mathbb{R}^{n \times m_{2}}$。试求控制系统
+$$
+\dot{y}(t)=A y(t)+B_{1} u_{1}(t)+B_{2} u_{2}(t), \quad y(0)=0
+$$
+
+如下能达集
+$$
+\mathcal{A}_{2024} \triangleq\big\{y(2024 ; 0,0, u_{1}, u_{2}) \mid u_{1} \in L^{2}(0,2024 ; \mathbb{R}^{m_{1}}), u_{2} \in L^{2}(0,2024 ; \mathbb{R}^{m_{2}}), u_{1}(t)=0 \text{ 和 } u_{2}(t)=0\text{ 至少一个成立, }\forall \, t \in [0,2024]\big\}.
+$$
+
+4．试讨论控制系统
+$$
+\dot{y}(t)=y(t)+u(t), \quad y(0)=x
+$$
+
+在性能指标
+$$
+\int_{0}^{+\infty}\left[4 y^{2}(t)+2 y(t) u(t)+u^{2}(t)\right] \mathrm{d} t
+$$
+
+取最小值时的最优控制。
+
+5．考虑时间最优控制问题：对于任意的 $(t, x) \in[0,+\infty) \times \mathbb{R}^{n}$，考虑控制系统
+$$
+\begin{cases}
+\,\dot{y}(s)=f(s, y(s), u(s)), \quad s \geq t, \\
+\,y(t)=x,
+\end{cases}
+$$
+
+打到 $0$。值函数作如下定义
+$$
+V(t, x) \triangleq \inf \big\{t_{f} \geq t \mid \text { exists } u \in L^{2}(t, t_{f} ; \mathbb{R}^{m}) \text { so that } y(t_{f} ; t, x, u)=0\big\}.
+$$
+
+试给出形式的HJB方程．
+
+6．考虑如下最优控制问题：
+$$
+\begin{cases}
+\,\dot{y}(t)=u(t),\ t \in(0,1) \\
+\,y(0)=1,
+\end{cases}
+$$
+
+其中控制约束集 $U=[-1,1]$，约束条件
+$$
+y(1 / 2)=1,
+$$
+
+性能指标
+$$
+J(u)=\int_{0}^{1} y(t) u(t) \mathrm{d} t.
+$$
+
+请给出最大值原理，并求相应的最优控制．
+
+== 2023年期末 ==
+
+\begin{itemize}
+    \item[一、]假设
+    \[\left[\begin{pmatrix}A_1&A_2\\A_3&A_4\end{pmatrix},\quad
+    \begin{pmatrix}B\\0\end{pmatrix}\right]\quad\text{能稳.}\]
+    证明：$(A_4,A_3)$能稳。
+
+    \item[二、]已知正系数多项式
+    \[f(s)=\sum_{j=0}^{2n+1}a_js^j\]
+    稳定。试问以下两个多项式是否稳定？说明理由。
+    \[\sum_{k=0}^n a_{2k}s^{2k+1}+\sum_{k=0}^n a_{2k+1}s^{2k};\qquad
+    \sum_{k=0}^n a_{2(n-k)+1}s^{2k+1}+\sum_{k=0}^n a_{2(n-k)}s^{2k}.\]
+
+    \item[三、]设$A\in\R^{n\times n}$，$B\in\R^{n\times m}$，
+    $C\in\R^{l\times n}$，$T>0$。
+
+    考虑系统
+    \[\begin{cases}\.x(t)=Ax(t)+Bu(t),\\y(t)=Cx(t)\end{cases}
+    \qquad t\in[0,+\infty).\]
+    假定$A$稳定，且控制函数$u\in L_{\rm loc}^1(0,+\infty;\R^m)$
+    是以$T$为周期的周期函数。
+
+    对于任意的初值$x(0)=x_0\in\R^{n\times1}$，问
+    \[\lim_{t\to+\infty}y(t)\]
+    是否存在？请说明理由。若存在，给出刻画。
+
+    \item[四、]试举出一个时间最优控制问题的例子，最优控制存在但都没有Bang--Bang性。
+
+    \item[五、]设$\xi$是取值于$[0,1]$上的连续型随机变量。对于任意$\lambda\in[0,1]$，
+    问是否存在$[0,1]$上的可测集$M$使得以下结论成立？请说明理由。
+    \[\lambda\big(E(\xi^2)+\lambda\mu(E(\xi))^2\big)
+    =E\big(\xi^2\cdot\chi_M(\xi)\big)+\mu\big[E\big(\xi\cdot\chi_M(\xi)\big)\big]^2,
+    \quad\forall\mu\in\R.\]
+
+    \item[六、]对于脉冲控制系统
+    \[\begin{cases}
+        \.y(s)=f(y(s)),\qquad s\in(t,+\infty)\setminus\mathbb{N},\\
+        y(k)=y(k-)+\xi_k,\qquad k\ge t,\\
+        y(t-)=x,
+    \end{cases}\]
+    性能指标为
+    \[J_{t,x}(\xi)=\int_t^{+\infty}e^{-\lambda s}g(y(s))\,{\rm d}s
+    +\sum_{k\ge t}^\infty e^{-\lambda k}h(\xi_k),\]
+    其中$\xi=\{\xi_k\}_{k\ge t}\subseteq U$。试写出最优性原理以及形式上的HJB方程。
+\end{itemize}
+\begin{proofc}[提示]
+    \begin{itemize}
+    \item[二、]用Hurwitz判据，两者都不稳定。
+
+    \item[三、]存在当且仅当$\displaystyle \int_{t-T}^t Ce^{A(t-s)}Bu(s)\,{\rm d}s$同$t$无关。
+
+    \item[五、]对$\begin{pmatrix}\xi^2\\\xi\end{pmatrix}\colon[0,1]\to\R^2$
+    用Liapounoff定理。
+
+    \item[六、]\[\begin{cases}
+        V(t-,x)=\inf\limits_{\xi_t\in U}\big[e^{-\lambda t}h(\xi_t)
+        +V(t+,x+\xi_t)\big],\quad t\in\mathbb{N},\\
+        V_t(t,x)+\langle V_x(t,x),f(x)\rangle=0,\quad t\notin\mathbb{N}.
+    \end{cases}\qedhere\]
+\end{itemize}
+\end{proofc}

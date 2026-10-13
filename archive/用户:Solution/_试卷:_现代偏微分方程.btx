@@ -1,0 +1,285 @@
+\setdisplaytitle{试卷：现代偏微分方程}
+\sethtmltitle{试卷：现代偏微分方程}
+
+== 2026春期末（张永前授课, 周忆命题）==
+\begin{enumerate}
+    \item[一.] (10分) 设$f(x)\in C^1[0,+\infty)$，定义：
+    \begin{equation*}
+        \varphi(x)=
+        \begin{cases}
+            f(x),&x\geqslant 0,\\
+            0,&x<0,
+        \end{cases}
+        \qquad
+        \psi(x)=
+        \begin{cases}
+            f'(x),&x\geqslant 0,\\
+            0,&x<0.
+        \end{cases}
+    \end{equation*}
+    证明：在广义函数的意义下，
+    \[
+        \frac{\mathrm{d}\varphi(x)}{\mathrm{d}x}
+        =\psi(x)+f(0)\delta(x),
+    \]
+    其中$\delta$是Dirac函数。
+    \item[二.] (10分) 试叙述下列概念的定义：
+    \begin{itemize}
+        \item[1.] 广义函数的极限；
+        \item[2.] 广义函数的乘子；
+        \item[3.] 广义函数的卷积；
+        \item[4.] 广义函数的Fourier变换。
+    \end{itemize}
+    \item[三.] (20分) 试证明Sobolev不等式
+    \[
+        \|u\|_{L^p(\R^n)}\leq C\|\nabla u\|_{L^q(\R^n)},
+    \]
+    其中$1<p<+\infty$，$\dfrac{n}{p}=\dfrac{n}{q}-1$，$C$是正常数。
+    \item[四.] (20分) 试证明$(C^\infty(\R^n))'$的广义函数一定有紧支集。
+    \item[五.] (20分) 设$f\in H^s(\R^n)$，$g\in H^s(\R^n)$，实数$s>\dfrac{n}{2}$，证明：存在常数$C$，使得
+    \[
+        \|fg\|_{H^s(\R^n)}
+        \leq C\|f\|_{H^s(\R^n)}\|g\|_{H^s(\R^n)}.
+    \]
+    \item[六.] (20分) 试用Galerkin方法证明波动方程初边值问题解的存在性。对方程
+    \[
+        \begin{cases}
+            Lu=f, \quad (t,x)\in[0,T]\times\Omega,\\
+            \left.u\right|_{\partial\Omega}=0,\\
+            u(0,x)=u_0(x),\qquad u_t(0,x)=u_1(x),
+        \end{cases}
+    \]
+    其中，
+    \[
+        Lu=\frac{\partial^2u}{\partial t^2}
+        -\sum_{i,j=1}^n\frac{\partial}{\partial x_i}
+        \left(a_{ij}(t,x)\frac{\partial u}{\partial x_j}\right)
+        -\sum_{i=1}^n\frac{\partial}{\partial x_i}
+        \left(a_{0i}(t,x)\frac{\partial u}{\partial t}\right),
+    \]
+    $u_0\in H_0^1(\Omega)$，$u_1\in L^2(\Omega)$，对任何
+    $f\in L^2([0,T]\times\Omega)$都存在解
+    \[
+        u\in L^\infty([0,T],H_0^1(\Omega))
+        \cap W^{1,\infty}([0,T],L^2(\Omega)),
+    \]
+    其中$\Omega$是$\R^n$中具有光滑边界的有界区域，$a_{ij},a_{0i}\in C^1$，且满足一致椭圆性条件
+    \[
+        \sum_{i,j=1}^n a_{ij}(x)\xi_i\xi_j
+        \geq \alpha|\xi|^2,\qquad \xi\in\R^n,
+    \]
+    其中$\alpha$是正常数。
+\end{enumerate}
+
+== 2025秋期末（周忆, 12.26）==
+\begin{enumerate}
+    \item[一.] 叙述下列概念的定义：
+    \begin{itemize}
+        \item[1.]Dirac函数$\delta(x)$.
+        \item[2.]广义函数的极限.
+        \item[3.]广义函数的导数.
+        \item[4.]广义函数的Fourier变换.
+    \end{itemize}
+    \item[二.] 设$f(x)$是$[0,+\infty)$上的光滑函数，且当$x\to+\infty$时$f(x)\to0$，定义：
+    \begin{equation*}
+        F(x)=\begin{cases}
+            f(x),&x\geqslant0\\
+            0,&x<0
+        \end{cases},\quad
+        G(x)=\begin{cases}
+            f'(x),&x\geqslant0\\
+            0,&x<0
+        \end{cases}.
+    \end{equation*}
+    证明:在广义函数的意义下，$$
+        \frac{\mathrm{d}}{\mathrm{d}x}F(x)=G(x)+f(0)\delta(x),
+    $$其中$\delta$是Dirac函数。
+    \item[三.] 证明Sobolev不等式\[\|u\|_{L^q(\R^n)}\leq C\|\nabla u\|_{L^p(\R^n)},\]其中$p<q<+\infty$，$n/q=n/p-1$，$C$是正常数.
+    \item[四.] 设$t<s$,证明$H^s(\R^n)$到$H_{\textup{loc}}^t(R^n)$的嵌入映射是紧的.
+    \item[五.] 试用Galerkin方法证明椭圆方程
+    \[\begin{cases}
+        -\displaystyle\sum_{i,j=1}^n\frac{\partial}{\partial x_i}\left(a_{ij}(x)\frac{\partial u}{\partial x_j}\right)=f(x), x\in\Omega\\
+        \left.u\right|_{\partial\Omega}=0
+    \end{cases}\]
+    对任何$f\in H^{-1}(\Omega)$都存在一个解$u\in H_0^1(\Omega)$，并且在弱解意义下满足原方程。
+    其中$\Omega$是$\mathbb{R}^n$中具有光滑边界的有界区域, $a_{ij}\in L^{\infty}(\Omega)$满足
+    \[C_1|\xi|^2\leqslant\sum_{i,j=1}^na_{ij}(x)\xi_i\xi_j\leqslant C_2|\xi|^2,\quad \xi\in\R^n,\]
+    其中$C_1,C_2$是正常数.
+    \item[六.] 设实数$s>\dfrac{n}{2}$,证明:存在常数$C$,使得对任意的$f,g\in H^s(\R^n)$成立
+        \[\|fg\|_{H^s(\R^n)}\leqslant C\|f\|_{H^s(\R^n)}\|g\|_{H^s(\R^n)}.\]
+    
+\end{enumerate}
+
+
+== 2025春期末（张永前）==
+\begin{enumerate}
+    \item 设$T\in\mathcal{D}'(\R^n)$，$\operatorname{supp}T=\{0\}$，
+    证明：$T=\sum\limits_{|\alpha| \le m}C_\alpha\partial^\alpha\delta$
+    对某个$m\in\N^*$和某些常数$C_\alpha$成立。(20分)
+    \item 设$u \in H^1(\R^n)$，证明：$\max\{u,0\} \in H^1(\R^n)$并计算其导数。(20分)
+    \item 叙述并证明Morrey不等式。(20分)
+    \item 设$\Omega$是$\R^n$中的有界光滑区域，$n>2$。考虑方程 (20分)
+    \[-\Delta u+a(x)\nabla_xu+c(x)u=g(x) \in H^{-1}(\Omega).\]
+    (1) 给出这个方程的弱解的定义。\\
+    (2) 若存在$\varepsilon_0>0$使得$\|a\|_{L^\infty}+\|c\|_{L^{n/2}}<\varepsilon_0$，
+    证明方程存在唯一解$u \in H^\frac{1}{2}(\Omega)$。
+    \begin{proofc}[提示]
+        记$2^*=\frac{2n}{n-2}$，有
+        \[\left|\int_\Omega cuv\,dx\right|\le\|c\|_{L^{n/2}}\|u\|_{L^{2^*}}\|v\|_{L^{2^*}}
+        \lesssim\varepsilon_0\|u\|_{H^1}\|v\|_{H^1}.\qedhere\]
+    \end{proofc}
+    \item 设$\Omega$是$\R^n$中的有界光滑区域，
+    $c,a_{ij} \in C^\infty(\overline{\Omega}\times[0,T])$，
+    $a_{ij}$对称且一致椭圆，
+    \[Lu=\frac{\partial^2u}{\partial t^2}-\sum_{i,j=1}^n\frac{\partial}{\partial x_i}
+    \bigg(a_{ij}\frac{\partial u}{\partial x_j}\bigg)+cu.\]
+    给出下列方程解的能量估计，其中$u \in C^2(\overline{\Omega}\times[0,T])$。(20分)
+    \[\begin{cases}
+        Lu=f,\\u|_{t=t_0}=\phi_0,u_t|_{t=t_0}=\phi_1,\\
+        \displaystyle\sum_{i,j=1}^na_j\frac{\partial u}{\partial x_i}\nu_j+(1+c^2)u=0,
+        \quad\text{on }\partial\Omega\times[0,T],
+    \end{cases}\]
+    其中$\nu$是$\partial\Omega$的外法向量。
+\end{enumerate}
+附加题 (20分)：如果你做得太烂，可以写一点东西用于捞人，不计入最终得分；直博生要做附加题。
+
+叙述$H^1(\R^n_+)$上的迹/逆迹定理，证明逆迹定理。
+
+== 2024秋期末（周忆） ==
+\begin{itemize}
+     \item[一] (10分)已知$T\in [C^{\infty}(\mathbb{R}^n)]^{\prime}$满足$\frac{\partial T}{\partial x_{1}}\equiv 0$,试证明$T\equiv 0$.
+     \item[二] (10分)试求狄拉克函数的Fourier变换.
+     \item[三] (20分)试证明Sobolev嵌入 $\dot{H}^{1,p}(\mathbb{R}^n)\rightarrow \dot{C}^{0,\alpha}(\mathbb{R}^n)$, 
+     其中$-\alpha = \frac{n}{p}-1$, $\alpha\in(0,1)$, 并由此推出Sobolev不等式
+     \[\|u\|_{L^{\infty}(\mathbb{R}^n)}\leq C \|u\|_{H^{1,p}(\mathbb{R}^n)}\]
+     \item[四] (20分)试证明Sobolev紧嵌入 $H^{1,p}(\mathbb{R}^{n})\rightarrow L^{q}_{loc}(\mathbb{R}^n)$,其中$\frac{1}{q}>\frac{1}{p}-\frac{1}{n}$.
+     \item[五] (20分)试用Minkowski不等式证明: $\forall s>0$,存在常数$C>0$,使得$\forall u,v\in H^{s}(\mathbb{R}^n)$,成立
+     \[\|uv\|_{H^{s}(\mathbb{R}^n)}\leq C \big(\|u\|_{H^{s}(\mathbb{R}^n)}\|\hat{v}\|_{L^1(\mathbb{R}^n)}+\|v\|_{H^{s}(\mathbb{R}^n)}\|\hat{u}\|_{L^1(\mathbb{R}^n)}\big)\]
+     \item[六] (20分) 设$\Omega$是$\R^n$上的有界区域，$\partial\Omega\in C^1$，
+    试用伽辽金方法证明椭圆方程
+    \[\begin{cases}
+        \displaystyle-\sum_{i,j=1}^n\frac{\partial}{\partial x_i}
+        \bigg(a_{ij}(x)\frac{\partial u}{\partial x_j}\bigg)
+        =f(x),\quad x\in\Omega,\\
+        u|_{\partial\Omega}=0,
+    \end{cases}\]
+    对任何$f\in H^{-1}(\Omega)$，都存在一个解
+    \[u\in H_0^1(\Omega).\]
+    其中$a_{ij}\in L^\infty(\Omega)$，
+    $\lambda_0|\xi|^2\leq\sum\limits_{i,j=1}^na_{ij}(x)\xi_i\xi_j\leq\Lambda_0|\xi|^2$
+    对一切$x\in\Omega,\xi\in\R^n$都成立，$\lambda_0,\Lambda_0>0$是常数，$\text{a.e. }x\in\Omega$。
+\end{itemize}
+
+== 2022秋期末（周忆） ==
+
+\begin{itemize}
+    \item[一] (10分) 试说明什么是
+
+    （一）广义函数的支集\quad（二）广义函数的极限\quad（三）广义函数的导数
+
+    （四）广义函数的Fourier变换\quad（五）广义函数的卷积
+    \item[二] (10分) 假设$u(x),v(x)$和$u_k(x)$是$\R^n$上的可测函数，$1<p,q<\infty$，
+    \begin{center}
+        $\hspace{1.3em}u_k\rightharpoonup u$，\quad 在$L^p(\R^n)$中弱$^*$收敛\\
+        $\partial_{x_1}u_k\rightharpoonup v$，\quad 在$L^q(\R^n)$中弱$^*$收敛
+    \end{center}
+    试证明
+    \[v=\partial_{x_1}u.\]
+    \item[三] (20分) 试证明Sobolev不等式
+    \[\|\varphi\|_{L^q(\R^n)}\le C\sum_{i=1}^n
+    \bigg\|\frac{\partial\varphi}{\partial x_i}\bigg\|_{L^1(\R^n)}\]
+    其中$q=\frac{n}{n-1}$，并证明$q\ne\frac{n}{n-1}$时，上述不等式不成立。
+    \item[四] (20分) 试完整叙述光滑有界区域上的Sobolev紧嵌入定理，并予以证明。
+    \item[五] (20分) 设$\Omega$是$\R^n$上的有界区域，$\partial\Omega\in C^1$，
+    试用伽辽金方法证明椭圆方程
+    \[\begin{cases}
+        \displaystyle-\sum_{i,j=1}^n\frac{\partial}{\partial x_i}
+        \bigg(a_{ij}(x)\frac{\partial u}{\partial x_j}\bigg)
+        +c(x)u=f(x),\quad x\in\Omega,\\
+        u|_{\partial\Omega}=0,
+    \end{cases}\]
+    对任何$f\in H^{-1}(\Omega)$，都存在一个解
+    \[u\in H_0^1(\Omega).\]
+    其中$a_{ij}\in L^\infty(\Omega)$，
+    $\sum\limits_{i,j=1}^na_{ij}(x)\xi_i\xi_j\ge\lambda_0|\xi|^2$
+    对一切$x\in\Omega,\xi\in\R^n$都成立，$\lambda_0>0$是一个常数，
+    $c\in L^\infty(\R^n)$，$c(x)\ge0,\text{ a.e. }x\in\Omega$。
+    \item[六] (20分) 试利用压缩算子半群理论，证明抛物方程的初边值问题
+    \[\begin{cases}
+        \displaystyle\frac{\partial u}{\partial t}
+        =\sum_{i,j=1}^n\frac{\partial}{\partial x_i}
+        \bigg(a_{ij}(x)\frac{\partial u}{\partial x_j}\bigg),
+        &0<t<T,x\in\Omega,\\
+        u|_{\partial\Omega}=0,&0<t<T,\\
+        t=0:u=u_0(x),&x\in\Omega.
+    \end{cases}\]
+    对任何$u_0\in L^2(\Omega)$都存在一个解$u(t,x)\in C([0,T];L^2)$，
+    使得$\|u(t)\|_{L^2(\Omega)}\le\|u_0\|_{L^2(\Omega)}$。
+    其中$a_{ij}\in L^\infty(\Omega)$，
+    \[\sum\limits_{i,j=1}^na_{ij}(x)\xi_i\xi_j\ge\lambda_0|\xi|^2,
+    \quad\forall\ x\in\Omega,\ \forall\ \xi\in\R^n\]
+    $\lambda_0$是一个正常数。
+\end{itemize}
+
+== 2023秋期中（张永前） ==
+
+\begin{itemize}
+    \item[一] 设$K$于$\R^n\backslash\{0\}$上连续，
+    且 (1) $K(t\omega)=t^{-n}K(\omega),t>0,\omega\ne0$，
+    (2) $\displaystyle\int_{\{|\omega|=1\}}K(\omega)\,d\omega=0$，并定义
+    \[T(\phi)=\lim_{\varepsilon\to0+0}
+    \int_{|x|\ge\varepsilon}K(x)\phi(x)\,dx,\]
+    试证：$T\in\mathcal{D}'(\R^n)$。
+    \item[二] 设$u$于$\overline{\R^2\times\R^1_+}$上具有连续的二阶导数且满足
+    \[|u(x,y,t)|\le C(1+|x|+|y|+t)^k,\quad(x,y,t)\in\overline{\R^2\times\R^1_+},\]
+    其中$C$是一个常数，$k$是正整数，并有
+    \[\begin{cases}
+        \displaystyle\frac{\partial^2u}{\partial x^2}
+        +5\frac{\partial^2u}{\partial y^2}
+        -\frac{\partial u}{\partial t}=0,&(x,y)\in\R^2,t>0,\\
+        u(x,y,0)=0,&(x,y)\in\R^2.
+    \end{cases}\]
+    试证明：$u(x,y,t)=0$，$(x,y)\in\R^2,t>0$。
+    \href{https://mp.weixin.qq.com/s/4ID0b9EYiEzNIYo7Ifbjcg}{[解答]}
+    \item[三] (1) 试确立整数$k$的范围使得狄拉克广义函数
+    $\delta\in H^{k,p}(\R^n)$。其中$n\ge1,p>1$。\\
+    (2) 证明：当$s<-\frac{n}{2}$时，
+    $\lim\limits_{\varepsilon\to0+0}\|\rho_\varepsilon-\delta\|_{H^s(\R^n)}=0$，
+    其中$\rho\in C_c^\infty(\R^n)$，$\int\rho\,dx=1$，
+    $\rho\ge0$，$\rho_\varepsilon(x)=\varepsilon^{-n}
+    \rho\big(\frac{x}{\varepsilon}\big),\varepsilon>0$。
+    \item[四] 记$X=\{u\in H^1(\R^n_+)\mid\Delta u\in L^2(\R^n_+)\}$，定义
+    \[\|u\|_X=\big(\|u\|^2_{H^1(\R^n_+)}
+    +\|\Delta u\|^2_{L^2(\R^n_+)}\big)^{1/2},\]
+    试证：(1) $(X,\|\cdot\|_{X})$是Hilbert空间；
+    (2) $\overline{X\cap C^\infty(\overline{\R^n_+})}^{\|\cdot\|_X}=X$。
+    \item[五] 记$\R^n_+=\{x_n>0\}$，试证：
+    若$u\in H_0^1(\R^n_+)\cap H^2(\R^n_+)$，则
+    $\dfrac{\partial u}{\partial x_i}\in H_0^1(\R^n_+),\ 1\le i\le n-1$。
+    \item[六] 设实数$s>t\ge0$，证明或否定下述结论：\\
+    集合$\{u\bigm|\|u\|_{H^s(\R^n)}\le1,\operatorname{supp}u\subset B_1\}$
+    是$H^t(\R^n)$中的致密集，其中$B_1=\{x\in\R^n\bigm||x|\le1\}$。
+\end{itemize}
+
+== 2019秋期末(周忆) ==
+\begin{itemize}
+    \item[一] 求函数 $\delta(x)$ 的Fourier变换，并问其属于什么样的Sobolev空间？
+    \item[二] 试证明下列Sobolev不等式：
+    $$|\phi|_{\dot{C}^{\alpha}\left(\mathbb{R}^{n}\right)} 
+    \leq C \sum_{i=1}^{n}\left|\frac{\partial \phi}{\partial x_{i}}\right|_{L^{p}\left(\mathbb{R}^{n}\right)}$$
+    其中 $p>n, \alpha=1-n/p$, $0<\alpha<1$, $C$ 为常数。 
+    并说明对 $\alpha \neq 1-n/p$ 时上述不等式不成立。
+    \item[三] 设 $\varphi$ 为一个 $\varepsilon^{\prime}(\mathbb{R}^{n})$ 广义函数，若在广义函数意义下的导数满足：
+    $$\partial_{i} \varphi \equiv 0\ \ (i=1,2, \ldots, n)$$
+    试证明：$\varphi \equiv 0$ 。
+    \item[四] 证明迹定理：$\phi \in H^{s}(\mathbb{R}^{n})$, $s>1/2$, 
+    则 $\left.\phi\right|_{x_{1}=0} \in H^{s-\frac{1}{2}}(\mathbb{R}^{n-1})$.
+    \item[五] 设 $u(t, x), t>0, x \in \mathbb{R}^{n}$, 
+    $u=(u_{1}, u_{2}, \ldots u_{m})^{T}$ 满足：
+    $$A_{0}(t, x) u_{t}+\sum_{i=1}^{n} A_{i}(t, x) u_{x_{i}}=0$$
+    其中 $A_{0}$ 为正定对称矩阵且有 $A_{0}(t, x)>\alpha I$, 
+    $\alpha>0$ 为一常数，$A_{i}(t, x)$ 为对称矩阵，
+    $A_{0}, A_{i}$ $(i=1,2, \ldots n)$ 中元素均是属于 $C^{1}$。试求初值为：
+    $$t=0: \quad u(0, x)=f(x)$$
+    Cauchy问题的能量估计。
+\end{itemize}

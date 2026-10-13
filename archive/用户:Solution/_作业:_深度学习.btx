@@ -1,0 +1,19 @@
+\def\p{\mathbb{P}}
+\def\e{\mathbb{E}}
+\def\v{\mathbb{V}\mathrm{ar}\,}
+\def\o{\omega}
+\def\l{\,\big|\,}
+\def\st{\text{ st }}
+\def\dis{\displaystyle}
+\def\and{\text{ and }}
+\def\g{\operatorname{Geo}}
+\def\G{\mathcal{G}}
+\def\lm{\lim\limits_{n\to\infty}}
+\def\ls{\varlimsup\limits_{n\to\infty}}
+\def\li{\varliminf\limits_{n\to\infty}}
+\newcommand{\cu}[1]{\bigcup\limits_{#1}^\infty}
+\newcommand{\ca}[1]{\bigcap\limits_{#1}^\infty}
+\newcommand{\sm}[1]{\sum\limits_{#1}^\infty}
+\def\lf{\lfloor}\def\rf{\rfloor}
+
+== HW1 ==

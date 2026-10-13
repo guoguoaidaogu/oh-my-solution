@@ -1,0 +1,1580 @@
+\newcommand{\s}{\sigma}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\B}{\mathfrak{B}}
+\newcommand{\K}{\mathcal{K}}
+\newcommand{\rr}{\mathfrak{R}}
+\newcommand{\ind}{\operatorname{ind}}
+\theoremstyle{plain}\newtheorem*{1}{习题1}
+\theoremstyle{plain}\newtheorem*{2}{习题2}
+\theoremstyle{plain}\newtheorem*{3}{习题3}
+\theoremstyle{plain}\newtheorem*{4}{习题4}
+\theoremstyle{plain}\newtheorem*{5}{习题5}
+\theoremstyle{plain}\newtheorem*{6}{习题6}
+\theoremstyle{plain}\newtheorem*{7}{习题7}
+\theoremstyle{plain}\newtheorem*{8}{习题8}
+\theoremstyle{plain}\newtheorem*{9}{习题9}
+\theoremstyle{plain}\newtheorem*{10}{习题10}
+\theoremstyle{plain}\newtheorem*{11}{习题11}
+\theoremstyle{plain}\newtheorem*{12}{习题12}
+\theoremstyle{plain}\newtheorem*{13}{习题13}
+\theoremstyle{plain}\newtheorem*{14}{习题14}
+\theoremstyle{plain}\newtheorem*{15}{习题15}
+\theoremstyle{plain}\newtheorem*{16}{习题16}
+\theoremstyle{plain}\newtheorem*{17}{习题17}
+\theoremstyle{plain}\newtheorem*{18}{习题18}
+\theoremstyle{plain}\newtheorem*{20}{习题20}
+\theoremstyle{plain}\newtheorem*{21}{习题21}
+\theoremstyle{remark}\newtheorem*{remark*}{注}
+\theoremstyle{definition}\newtheorem*{definition*}{定义}
+\setdisplaytitle{泛函分析\ 第四章解答}
+\sethtmltitle{泛函分析\ 第四章解答}
+
+\setcounter{section}{3}
+
+== 谱理论初步 ==
+
+\subsection{4.1 预解集与谱集}
+\begin{1}
+    设$T$是复Banach空间$X$上的有界线性算子。
+    对于$\mathbb{C}$上的一个多项式$\displaystyle p(z)=\sum_{k=0}^na_kz^k$，
+    定义$\displaystyle p(T)=\sum_{k=0}^na_kT^k$。证明：
+    \[\s(p(T))=p(\s(T)).\]
+\end{1}
+\begin{proof}
+    $n=0$时$p(z)$为常数$a_0$，那么$\s(p(T))=p(\s(T))=\{a_0\}$，
+    下设$n\geqslant1$，$a_n\ne0$。设多项式$p(z)-\lambda$在$\mathbb{C}$上分裂为
+    \[p(z)-\lambda=a_n\prod_{k=1}^n(z-\lambda_k),\]
+    则有
+    \[p(T)-\lambda I=a_n\prod_{k=1}^n(T-\lambda_kI).\]
+    如果$\lambda\in\s(p(T))$，即$p(T)-\lambda I$不可逆，
+    必有其中某个$T-\lambda_kI$不可逆，这就是说$\lambda_k\in\s(T)$，
+    从而$\lambda=p(\lambda_k) \in p(\s(T))$。
+
+    如果$\lambda \in p(\s(T))$，即$p(z)-\lambda$有$\s(T)$中的根，
+    那么这个根就是某个$\lambda_k$，因而相应的$T-\lambda_k I$不可逆，
+    进而$p(T)-\lambda I$不可逆，即$\lambda\in\s(p(T))$。
+\end{proof}
+
+\begin{2}
+    设$T$是复Banach空间$X$上的有界线性算子。
+    若存在正整数$m$使得$\|T^m\|<1$，证明$I-T$可逆。
+\end{2}
+\begin{proof}
+    假定$I-T$不可逆，即$1\in\s(T)$，由上题有$\s(T^m)=\s(T)^m$，
+    则$1\in\s(T^m)$，也就是$I-T^m$可逆，那么$\|T^m\|<1$不成立。
+\end{proof}
+
+\begin{4}
+    设$A,B$是复Banach空间$X$上的有界线性算子。证明：$I-AB$可逆当且仅当$I-BA$可逆。
+\end{4}
+\begin{proof}
+    设$I-AB$可逆，注意到$I+B(I-AB)^{-1}A$就是$I-BA$的逆。事实上，
+    \[\big(I+B(I-AB)^{-1}{\color{gray}A}\big)({\color{gray}I-BA})
+    =I-BA+B(I-AB)^{-1}{\color{gray}(I-AB)A}=I,{\ \ \,}\]
+    \[({\color{gray}I-BA})\big(I+{\color{gray}B}(I-AB)^{-1}A\big)
+    =I-BA+{\color{gray}B(I-AB)}(I-AB)^{-1}A=I.\qedhere\]
+\end{proof}
+\begin{remark*}
+    为何会有这么惊人的注意力呢？背后的道理在于，形式上有展开式
+    \[(I-AB)^{-1}=I+AB+ABAB+\cdots,\]
+    两边作用$B$和$A$，就翻转了$AB$序列变成
+    \[B(I-AB)^{-1}A=BA+BABA+BABABA+\cdots.\]
+\end{remark*}
+
+\begin{5}
+    对Lebesgue可测函数$\varphi \in L^\infty[0,1]$，
+    定义$L^2[0,1]$上的有界线性算子$M_\varphi$为
+    \[M_\varphi(f)=\varphi f.\]
+    求$\s(M_\varphi),\s_p(M_\varphi),\s_c(M_\varphi),\s_r(M_\varphi)$。
+\end{5}
+\begin{proof}[解答]
+    由习题3.2第3题，$M_\varphi-\lambda I=M_{\varphi-\lambda}$是可逆的当且仅当
+    存在$\varepsilon>0$使得$|\varphi-\lambda|>\varepsilon$几乎处处成立。取补集有
+    \[\s(M_\varphi)=\{\lambda\in\mathbb{C}:\text{对任何 }\varepsilon>0,
+    \,\{|\varphi-\lambda|\leqslant\varepsilon\}\,\text{的测度都}>0\},\]
+    这也就是$\varphi$的本性值域 (其定义参考习题4.6第5题的注)。另外，容易知道
+    \[\s_p(M_\varphi)=\{\lambda\in\mathbb{C}:\{\varphi=\lambda\}\,\text{的测度}>0\},\]
+    下面再说明对$\lambda\notin\s_p(M_\varphi)$都有
+    $\overline{\rr(M_\varphi-\lambda I)}=L^2[0,1]$，就得到
+    \[\s_c(M_\varphi)=\s(M_\varphi)\setminus\s_p(M_\varphi),
+    \qquad\s_r(M_\varphi)=\varnothing.\]
+    这是因为，对于$g \in L^2[0,1]$，令
+    \[f_n=\begin{cases}
+        g/(\varphi-\lambda),&|\varphi-\lambda|\geqslant1/n,\\
+        0,&|\varphi-\lambda|<1/n,
+    \end{cases}\]
+    有$\|f_n\|_2 \leqslant n\|g\|_2<\infty$。
+    如果$\lambda\notin\s_p(M_\varphi)$，即$\{\varphi=\lambda\}$的测度为$0$，
+    那么$(\varphi-\lambda)f_n$几乎处处收敛于$g$，
+    由控制收敛定理，$(\varphi-\lambda)f_n\stackrel{L^2}{\longrightarrow}g$。
+\end{proof}
+
+\begin{6}
+    对于有界序列$\{a_n\}$，定义$l^2$上的有界线性算子$T$为
+    \[T(x_1,x_2,\cdots)=(a_1x_1,a_2x_2,\cdots).\]
+    求$\s(T),\s_p(T),\s_c(T),\s_r(T)$。
+\end{6}
+\begin{proof}[解答]
+    显然$\s_p(T)=\{a_n:n=1,2,\cdots\}$，简写为$\{a_n\}$。
+    下面说明$\s(T)=\overline{\{a_n\}}$。
+
+    如果$\lambda\notin\s(T)$，即$\lambda I-T$可逆，有
+    \[\inf_n|\lambda-a_n|=\inf_n\|(\lambda I-T)e_n\|
+    \geqslant\inf_{\|x\|=1}\|(\lambda I-T)x\|>0,\]
+    即$\lambda\notin\overline{\{a_n\}}$。
+    反过来，当$\lambda\notin\overline{\{a_n\}}$时，
+    \[S(x_1,x_2,\cdots)=\big(\tfrac{x_1}{\lambda-a_1},\tfrac{x_2}{\lambda-a_2},\cdots\big)\]
+    是$\lambda I-T$的逆算子，且$\|S\|=\left(\inf\limits_n|\lambda-a_n|\right)^{-1}<\infty$，故$\lambda\notin\s(T)$。
+
+    再来说明$\s_c(T)=\overline{\{a_n\}}\setminus\{a_n\}$，
+    $\s_r(T)=\varnothing$。这是因为对于$\lambda\notin\s_p(T)$，
+    \[(\lambda I-T)\big(\tfrac{x_1}{\lambda-a_1},\cdots,\tfrac{x_n}{\lambda-a_n},0,\cdots\big)=(x_1,\cdots,x_n,0,\cdots)\]
+    说明所有的有限项非零的数列都在$\rr(\lambda I-T)$中，从而$\overline{\rr(\lambda I-T)}=l^2$。
+\end{proof}
+
+\begin{7}
+    令$S$是Hilbert空间$l^2$上的左移位算子
+    \[S(x_1,x_2,\cdots)=(x_2,x_3,\cdots).\]
+    求$\s_p(S),\s_c(S),\s_r(S)$。
+\end{7}
+\begin{proof}[解答]
+    由例4.1.8可知$\s_p(S)=\{|\lambda|<1\}$和$\s(S)=\{|\lambda|\leqslant1\}$，
+    从而$\s_c(S)\cup\s_r(S)=\{|\lambda|=1\}$。
+    下面再说明$\s_r(S)=\varnothing$，就得出$\s_c(S)=\{|\lambda|=1\}$。
+
+    如果数$\lambda$使得$\overline{\rr(\lambda I-S)} \ne l^2$，
+    那么$\ker(\bar{\lambda}I-S^*)\ne0$，
+    这就是说$\s_r(S)\subset\{\bar{\lambda}:\lambda\in\s_p(S^*)\}$。
+    容易说明右移位算子$S^*$的点谱$\s_p(S^*)=\varnothing$，从而$\s_r(S)=\varnothing$。
+\end{proof}
+
+\begin{8}设$T$是复Hilbert空间$H$上的有界算子。若$T$为自伴算子，即$T=T^*$，证明：
+    \begin{enumerate}[label=(\roman*)]
+        \item 对任意$x \in H$，成立$\|(T+{\rm i}I)x\|\geqslant\|x\|$，
+        $\|(T-{\rm i}I)x\|\geqslant\|x\|$。
+        \item $T\pm{\rm i}I$均是可逆的。
+        \item $\s(T)\subset\R$。
+    \end{enumerate}
+\end{8}
+\begin{proof}
+    \begin{enumerate}[label=(\roman*)]
+    \item 下证前一命题，后者同理。
+    \begin{align*}
+        &\|(T+{\rm i}I)x\|^2=\langle Tx+{\rm i}x,Tx+{\rm i}x \rangle\\
+        &=\langle Tx,Tx \rangle+\langle {\rm i}x,Tx \rangle
+        +\langle Tx,{\rm i}x \rangle+\langle {\rm i}x,{\rm i}x \rangle\\
+        &=\|Tx\|^2+{\rm i}\langle x,Tx \rangle-{\rm i}\langle Tx,x \rangle+\|x\|^2
+        \geqslant\|x\|^2.
+    \end{align*}
+    \item 由(i)，$T\pm{\rm i}I$均是单射，且$\rr(T\pm{\rm i}I)$均是闭的。闭值域定理进而推出
+    \[\rr(T\pm{\rm i}I)={ }^\perp\!\ker(T\pm{\rm i}I)^*={ }^\perp\!\ker(T\mp{\rm i}I)=H.\]
+    \item 对于复数$\alpha+\beta{\rm i}\notin\R$ (即$\beta\ne0$)，
+    $(T-\alpha I)/\beta$是自伴算子，(ii)说明$(T-\alpha I)/\beta-{\rm i}I$可逆，
+    也就是$T-(\alpha+\beta{\rm i})I$可逆。\qedhere
+    \end{enumerate}
+\end{proof}
+
+\begin{9}
+    设$T,S$是复Banach空间$X$上的有界线性算子，$T$可逆，
+    $\|S-T\|<\dfrac{1}{\|T^{-1}\|}$。证明：$S$可逆，且
+    \[\|S^{-1}-T^{-1}\|\leqslant\frac{\|T^{-1}\|^2\|S-T\|}{1-\|T^{-1}\|\|S-T\|}.\]
+\end{9}
+\begin{proof}
+    记$Q=(S-T)T^{-1}$。由条件，
+    \[\|Q\|\leqslant\|S-T\|\|T^{-1}\|<1,\]
+    那么$ST^{-1}=I+Q$是可逆的，则$S$同样可逆，且有
+    \[TS^{-1}=(I+Q)^{-1}=\sum_{n=0}^\infty(-Q)^n,\]
+    从而\[\|TS^{-1}-I\|\leqslant\sum_{n=1}^\infty\|Q\|^n=\frac{\|Q\|}{1-\|Q\|}.\]
+    所以，
+    \begin{align*}
+        \|S^{-1}-T^{-1}\|&\leqslant\|T^{-1}\|\|TS^{-1}-I\|
+        \leqslant\frac{\|T^{-1}\|\|Q\|}{1-\|Q\|}\\
+        &\leqslant\frac{\|T^{-1}\|^2\|S-T\|}{1-\|T^{-1}\|\|S-T\|}.
+    \end{align*}
+\end{proof}
+
+\begin{10}
+    设$T$是复Banach空间$X$上的有界线性算子。
+    若预解集$\rho(T)$中的一个点列$\{\lambda_n\}$收敛于点$\lambda$，
+    证明：$\lambda\in\s(T)$当且仅当$\|(\lambda_n I-T)^{-1}\|\to\infty$ $(n\to\infty)$。
+\end{10}
+\begin{proof}
+    由推论4.1.1，对每个$\lambda_n$，
+    开圆盘$O(\lambda_n,(2\|(\lambda_nI-T)^{-1}\|)^{-1})$都是$\rho(T)$的子集
+    (事实上由上一题，$O(\lambda_n,\|(\lambda_nI-T)^{-1}\|^{-1})$同样是$\rho(T)$的子集)。
+    那么当$\lambda\in\s(T)$时，\[(2\|(\lambda_nI-T)^{-1}\|)^{-1}
+    \leqslant|\lambda_n-\lambda|\to0,\]也就是$\|(\lambda_nI-T)^{-1}\|\to\infty$。
+
+    当$\lambda\notin\s(T)$时，即$\lambda I-T$可逆，由推论4.1.1，
+    \[\|(\lambda_nI-T)^{-1}-(\lambda I-T)^{-1}\|
+    \leqslant2\|(\lambda I-T)^{-1}\||\lambda_n-\lambda|\to0,\]
+    那么$\|(\lambda_nI-T)^{-1}\|$收敛于$\|(\lambda I-T)^{-1}\|$，从而是有界的。
+\end{proof}
+
+\begin{13}
+    验证例4.1.15，$L^1(\R)$是一个交换Banach代数，且不具有单位元。
+\end{13}
+\begin{proof}
+    假设存在$\delta\in L^1(\R)$使得$f*\delta=f$对所有的$f\in L^1(\R)$都成立，
+    两边作Fourier变换得到$\hat{f}\hat{\delta}=\hat{f}$，则$\hat{\delta}\equiv1$，
+    同$\hat{\delta}\in c_0(\R)$矛盾。
+\end{proof}
+
+\begin{14}
+    对于矩阵$A \in M_2(\mathbb{C})$，直接计算验证$r(A)=\lim\limits_{n\to\infty}\|A^n\|^\frac{1}{n}$。
+\end{14}
+\begin{proof}
+    设$A=P^{-1}JP$，其中$J$是$A$的Jordan标准型。如果
+    \[J=\begin{pmatrix}\lambda_1&0\\0&\lambda_2\end{pmatrix},\quad
+    J^n=\begin{pmatrix}\lambda_1^n&0\\0&\lambda_2^n\end{pmatrix},\]
+    那么
+    \begin{align*}
+        \lim_{n\to\infty}\|A^n\|^\frac{1}{n}
+        &=\lim_{n\to\infty}\|P^{-1}J^nP\|^\frac{1}{n}
+        =\lim_{n\to\infty}\|J^n\|^\frac{1}{n}\\
+        &=\lim_{n\to\infty}\max\{|\lambda_1^n|,|\lambda_2^n|\}^\frac{1}{n}
+        =\max\{|\lambda_1|,|\lambda_2|\}=r(A).
+    \end{align*}
+    如果
+    \[J=\begin{pmatrix}\lambda&1\\0&\lambda\end{pmatrix},\quad
+    J^n=\begin{pmatrix}\lambda^n&n\lambda^{n-1}\\0&\lambda^n\end{pmatrix},\]
+    由于有限维线性空间上的范数都是等价的，不妨选一个方便运算的范数，比如四个元素的最大模长，那么
+    \[\lim_{n\to\infty}\|A^n\|^\frac{1}{n}=\lim_{n\to\infty}\|J^n\|^\frac{1}{n}
+    =\lim_{n\to\infty}\max\{|\lambda^n|,|n\lambda^{n-1}|\}^\frac{1}{n}=|\lambda|=r(A).\qedhere\]
+\end{proof}
+
+\begin{15}
+    设$A,B$是复Banach空间$X$上的有界线性算子。证明：
+    \begin{enumerate}[label=(\roman*)]
+        \item $r(AB)=r(BA)$。
+        \item 当$A,B$可交换时，$r(A+B) \leqslant r(A)+r(B)$。
+        并举例说明，对非交换的情况不等式不成立。
+    \end{enumerate}
+\end{15}
+\begin{proof}[解答]
+    \begin{enumerate}[label=(\roman*)]
+    \item 由习题4，对$\lambda\ne0$，有$\lambda\in\s(AB)\Leftrightarrow
+    \lambda\in\s(BA)$，可写为$\s(AB)\cup\{0\}=\s(BA)\cup\{0\}$。那么
+    \begin{align*}
+        r(AB)&=\sup\big\{|\lambda|:\lambda\in\s(AB)\cup\{0\}\big\}\\
+        &=\sup\big\{|\lambda|:\lambda\in\s(BA)\cup\{0\}\big\}=r(BA).
+    \end{align*}
+    \item 由附录G习题6，$\s(A+B)\subset\s(A)+\s(B)$，可以推出
+    \begin{align*}
+        r(A+B)&=\sup\{|\lambda|:\lambda\in\s(A+B)\}\\
+        &\leqslant\sup\{|\lambda_A+\lambda_B|:
+        \lambda_A\in\s(A),\lambda_B\in\s(B)\}\\
+        &\leqslant\sup\{|\lambda_A|:\lambda_A\in\s(A)\}
+        +\sup\{|\lambda_B|:\lambda_B\in\s(B)\}\\
+        &=r(A)+r(B).
+    \end{align*}
+    当$A,B$不交换，如$X=\mathbb{C}^2$，
+    \[A=\begin{pmatrix}0&0\\1&0\end{pmatrix},\quad
+    B=\begin{pmatrix}0&1\\0&0\end{pmatrix},\quad
+    A+B=\begin{pmatrix}0&1\\1&0\end{pmatrix},\]
+    这时$r(A)=r(B)=0$，$r(A+B)=1$。
+
+    不用附录G的结果而用谱半径公式强行放缩也能说明$A,B$交换时$r(A+B) \leqslant r(A)+r(B)$，
+    尽管看上去会有些复杂。对任何$\varepsilon>0$，当$n\geqslant$某个$N$时，有
+    \[\|A^n\|\leqslant(r(A)+\varepsilon)^n,
+    \quad\|B^n\|\leqslant(r(B)+\varepsilon)^n.\]
+    简写$a=r(A)+\varepsilon,b=r(B)+\varepsilon$，对于$n\geqslant2N$，有估计
+    \[\|(A+B)^n\|\leqslant\sum_{0 \leqslant k<N}\binom{n}{k}\|A^k\|\|B^{n-k}\|
+    +\sum_{N \leqslant k \leqslant n-N}\binom{n}{k}\|A^k\|\|B^{n-k}\|
+    +\sum_{0\leqslant k<N}\binom{n}{k}\|A^{n-k}\|\|B^k\|.\]
+    中间的项是较大的，有上界
+    \[\sum_{N \leqslant k \leqslant n-N}\binom{n}{k}\|A^k\|\|B^{n-k}\|
+    \leqslant\sum_{N \leqslant k \leqslant n-N}\binom{n}{k}a^kb^{n-k}
+    \leqslant(a+b)^n,\]
+    旁边的两项相较而言不太大，具体来说
+    \[\sum_{0 \leqslant k<N}\binom{n}{k}\|A^k\|\|B^{n-k}\|
+    \leqslant\sum_{0 \leqslant k<N}\binom{n}{k}\|A^k\|b^{n-k}
+    \leqslant n^{N-1}\left[\sum_{0 \leqslant k<N}\frac{\|A^k\|}{b^k}\right]b^n,\]
+    和
+    \[\sum_{0 \leqslant k<N}\binom{n}{k}\|A^{n-k}\|\|B^k\|
+    \leqslant\sum_{0 \leqslant k<N}\binom{n}{k}a^{n-k}\|B^k\|
+    \leqslant n^{N-1}\left[\sum_{0 \leqslant k<N}\frac{\|B^k\|}{a^k}\right]a^n.\]
+    三者相加，得出
+    \[\frac{\|(A+B)^n\|}{(a+b)^n}\leqslant
+    1+n^{N-1}\left[\sum_{0 \leqslant k<N}\frac{\|A^k\|}{b^k}\right]\left(\frac{b}{a+b}\right)^n
+    +n^{N-1}\left[\sum_{0 \leqslant k<N}\frac{\|B^k\|}{a^k}\right]\left(\frac{a}{a+b}\right)^n,\]
+    这里两个方括号内的求和都是无关于$n$的常数，
+    并且$\dfrac{b}{a+b},\dfrac{a}{a+b}\in(0,1)$，因此$n\to\infty$时右端趋于$1$。\qedhere
+    \end{enumerate}
+\end{proof}
+
+\begin{16}
+    设$T$是有单位元$e$的Banach代数$\mathcal{A}$中元素，$\lambda_0\in\rho(T)$。
+    记$r_0=\lim\limits_{n\to\infty}\|(\lambda_0e-T)^{-n}\|^\frac{1}{n}$。
+    证明：当$\lambda$满足$|\lambda-\lambda_0|<\frac{1}{r_0}$时，有$\lambda\in\rho(T)$，且
+    \[(\lambda e-T)^{-1}=\sum_{n=0}^{\infty}(-1)^n(\lambda_0e-T)^{-(n+1)}(\lambda-\lambda_0)^n.\]
+\end{16}
+\begin{proof}
+    注意到
+    \begin{align*}
+        \lambda e-T&=(\lambda_0e-T)+(\lambda-\lambda_0)e\\
+        &=\big[e+(\lambda-\lambda_0)(\lambda_0e-T)^{-1}\big](\lambda_0e-T),
+    \end{align*}
+    其中
+    \[\lim_{n\to\infty}\big\|\big[(\lambda-\lambda_0)(\lambda_0e-T)^{-1}\big]^n\big\|^\frac{1}{n}
+    =|\lambda-\lambda_0|r_0<1.\]
+    由定理4.1.3有
+    \begin{align*}
+        (\lambda e-T)^{-1}&=(\lambda_0e-T)^{-1}\big[e+(\lambda-\lambda_0)(\lambda_0e-T)^{-1}\big]^{-1}\\
+        &=\sum_{n=0}^{\infty}(-1)^n(\lambda_0e-T)^{-(n+1)}(\lambda-\lambda_0)^n.
+    \end{align*}
+\end{proof}
+
+\begin{17}
+    令$\varGamma=(V,E)$是一个局部有限图，$\Delta$是$l^2(\varGamma)$上的
+    离散Laplace算子 (定义见习题2.1第9题)。对$f \in l^2(\varGamma)$，令
+    \[|\nabla f|^2=\frac{1}{2}\sum_{x \sim y}|f(x)-f(y)|^2.\]
+    \begin{enumerate}[label=(\roman*)]
+    \item 对于$u \in C_c(V)$，证明$\langle\Delta u,u\rangle=\langle u,\Delta u \rangle=-|\nabla u|^2$。
+    并说明当$u \in l^2(\varGamma)$时，公式也是成立的。
+    \item 证明：$\Delta$是$l^2(\varGamma)$上的自伴算子。
+    \item 若$u\in\ker\Delta$，证明：$u$是一个常数函数。若$V$是无限集，那么$u$恒为$0$。
+    \item 证明：$\sigma(-\Delta)\subset[0,2]$。
+    \end{enumerate}
+\end{17}
+\begin{proof}
+    \begin{enumerate}[label=(\roman*)]
+    \item 由于$C_c(V)$在$l^2(\varGamma)$中稠密，后者是前者的推论。
+    前者只涉及有限项求和从而能随便交换求和次序，故
+    \begin{align*}
+        \langle\Delta u,u\rangle&=\sum_xm_x\Delta u(x)\,\overline{u(x)}\\
+        &=\sum_x\sum_{y \sim x}(u(y)-u(x))\,\overline{u(x)}=-|\nabla u|^2.
+    \end{align*}
+    \item 由于$l^2(\varGamma)$是复线性空间，(i)推出$\Delta$自伴。
+    \item 若$\Delta u=0$，由(i)得$\nabla u=0$，当$V$连通时$u$是常数。
+    若$V$是无限集且$u$是非零常数，那么$\|u\|=\infty$，即$u \notin l^2(\varGamma)$。
+    \item 由(i)可知$\langle-\Delta u,u\rangle\geqslant0$，
+    结合习题4.6第9题，得到$\sigma(-\Delta)\subset[0,\infty)$。
+    习题2.1第9题中证明了$\|\Delta\|\leqslant2$，得出$\sigma(-\Delta)\subset[-2,2]$。\qedhere
+    \end{enumerate}
+\end{proof}
+
+\begin{18}
+    设$\varGamma=(\Z,E)$，其中$(x,y) \in E$当且仅当$|x-y|=1$。
+    $\Delta$是$l^2(\varGamma)$上的离散Laplace算子。
+    \begin{enumerate}
+    \item[(i)] 对于$f \in l^2(\varGamma)$，计算$(\Delta+I)f$。
+    \item[(ii)] 证明：$\sigma(-\Delta)=[0,2]$。
+    \end{enumerate}
+\end{18}
+\begin{proof}[解答]
+    (i) 由于
+    \[(\Delta f)(x)=\frac{1}{2}\sum_{|y-x|=1}(f(y)-f(x))
+    =\frac{f(x+1)+f(x-1)}{2}-f(x),\]
+    得\[[(\Delta+I)f](x)=\frac{f(x+1)+f(x-1)}{2}.\]
+    (ii) 上题已证明了$\s(-\Delta)\subset[0,2]$，
+    这里只要说明反向的包含关系即可。想到一个恒等式
+    \[\frac{\cos[(x+1)\theta]+\cos[(x-1)\theta]}{2}=\cos(x\theta)\cos\theta.\]
+    受此启发，取$f(x)=\cos(x\theta)$，其中$\theta$为待定的数，则有
+    \[[(\Delta+I)f](x)=f(x)\cos\theta,\]
+    那么$\sigma(\Delta+I)\supset\{\cos\theta:\theta\in\R\}=[-1,1]$，
+    从而有$\sigma(-\Delta)=1-\sigma(\Delta+I)\supset[0,2]$。
+
+    ⚠ 不过前面取的$f$不属于$l^2(\varGamma)$，要对其有所调整。
+    截取$f$的第$-k$到$k$位，其余位置都改为$0$，得到的数列记为$f_k$，
+    这些才是$l^2(\varGamma)$中的元素。
+    \begin{tikzpicture}
+        \foreach \i in {-1,-0.5,0,0.5,1} \draw[fill=black] (\i,0.5) circle (0.05);
+        \foreach \i in {-2,-1.5} \draw[fill=blue] (\i,0.5) circle (0.05);
+        \foreach \i in {-3,-2.5,1.5,2,2.5,3} \draw (\i,0.5) circle (0.05);
+        \foreach \i in {-1,-0.5,0,0.5,1} \draw[fill=black] (\i,0) circle (0.05);
+        \foreach \i in {-3,-2.5,-2,2,2.5,3} \draw (\i,0) circle (0.05);
+        \foreach \i in {-1.5,1.5} \draw[fill=blue] (\i,0) circle (0.05);
+        \foreach \i in {-1,-0.5,0,0.5,1} \draw[fill=black] (\i,-0.5) circle (0.05);
+        \foreach \i in {-3,-2.5,-2,-1.5,2.5,3} \draw (\i,-0.5) circle (0.05);
+        \foreach \i in {1.5,2} \draw[fill=blue] (\i,-0.5) circle (0.05);
+        \draw (4.5,0.5) node {$f_k(x+1)$};
+        \draw (4.5,0) node {$f_k(x)$};
+        \draw (4.5,-0.5) node {$f_k(x-1)$};
+    \end{tikzpicture}
+    相较于原来，
+    \[[(\Delta+I)f_k](x)-f_k(x)\cos\theta
+    =\frac{f_k(x+1)+f_k(x-1)}{2}-f_k(x)\cos\theta\]
+    在$-(k-1) \leqslant x \leqslant k-1$的时候不受影响还是$0$，
+    $x=\pm k$时的模长不超过$\frac{1}{2}+1=\frac{3}{2}$，
+    $x=\pm(k+1)$时的模长不超过$\frac{1}{2}$，其余位置为$0$，这样
+    \[\|(\Delta+I)f_k-f_k\cos\theta\|^2
+    \leqslant2\big[\big(\tfrac{1}{2}\big)^2+\big(\tfrac{3}{2}\big)^2
+    +\big(\tfrac{3}{2}\big)^2+\big(\tfrac{1}{2}\big)^2\big]=10\]
+    有着无关乎$k$的上界，而$\|f_k\|^2 \approx k$，
+    这说明$(\Delta+I)-I\cos\theta$不是下有界的算子，从而不可逆。
+\end{proof}
+
+\begin{20}
+    设$T,S$是复Hilbert空间$H$上的有界线性算子。
+
+    (i) 若$ST=TS$，证明：${\rm e}^T{\rm e}^S={\rm e}^{T+S}$。
+
+    (ii) 若$T$是自伴算子，证明${\rm e}^{{\rm i}T}$是酉算子。反之，结论是否成立？
+\end{20}
+\begin{proof}
+    (i) 由于$ST=TS$，有
+    \[(T+S)^n=\sum_{k=0}^{n}\binom{n}{k}T^kS^{n-k}
+    =n!\sum_{p+q=n}\frac{T^pS^q}{p!\,q!},\]
+    从而
+    \[{\rm e}^T{\rm e}^S=\sum_{p=0}^{\infty}\sum_{q=0}^{\infty}\frac{T^pS^q}{p!\,q!}
+    =\sum_{n=0}^{\infty}\left(\sum_{p+q=n}\frac{T^pS^q}{p!\,q!}\right)
+    =\sum_{n=0}^{\infty}\frac{(T+S)^n}{n!}={\rm e}^{T+S}.\]
+
+    (ii) 若$T$是自伴算子，$({\rm e}^{{\rm i}T})^*={\rm e}^{({\rm i}T)^*}
+    ={\rm e}^{-{\rm i}T^*}={\rm e}^{{-\rm i}T}=({\rm e}^{{\rm i}T})^{-1}$。
+
+    反过来结论不对。令$T$是幂等而不自伴的算子(如$(x,y)\mapsto(x+\lambda y,0)$，
+    这里$\lambda\ne0$)，$2\pi T$同样不是自伴的。由于
+    \[\sum_{k=1}^\infty\frac{({\rm i}2\pi)^k}{k!}
+    =\sum_{k=0}^\infty\frac{({\rm i}2\pi)^k}{k!}-1={\rm e}^{{\rm i}2\pi }-1=0,\]
+    得出\[{\rm e}^{{\rm i}2\pi T}=\sum_{k=0}^\infty\frac{({\rm i}2\pi T)^k}{k!}
+    =I+\sum_{k=1}^\infty\frac{({\rm i}2\pi)^k}{k!}T=I.\qedhere\]
+\end{proof}
+
+\begin{21}
+    设$T$是复Banach空间$X$上的有界线性算子，
+    区域$\varOmega$包含了闭圆盘$\{z\in\mathbb{C}:|z|\leqslant r(T)\}$，
+    函数$f$在$\varOmega$上解析。
+
+    (i) 取某个严格大于$r(T)$的正数$R$，使得
+    $\{z\in\mathbb{C}:|z|\leqslant R\}$包含在$\varOmega$中。证明：
+    \[f(T)=\frac{1}{2\pi{\rm i}}\int_{|z|=R}f(z)(z-T)^{-1}{\rm d}z.\]
+
+    (ii) 设$\varGamma$是$\varOmega$中的一条光滑正定向简单闭曲线，
+    $\varGamma$内部包含$\sigma(T)$。证明：
+    \[f(T)=\frac{1}{2\pi{\rm i}}\int_{\varGamma}f(z)(z-T)^{-1}{\rm d}z.\]
+\end{21}
+\begin{proof}
+    (i) 由定理4.1.3，对于$|z|=R>r(T)$成立
+    \[(z-T)^{-1}=\sum_{n=0}^{\infty}\frac{T^n}{z^{n+1}},\]
+    从而有
+    \begin{align*}
+        f(T)&=\sum_{n=0}^{\infty}\left(\frac{1}{2\pi{\rm i}}\int_{|z|=R}\frac{f(z)}{z^{n+1}}\,{\rm d}z\right)T^n\\
+        &=\frac{1}{2\pi{\rm i}}\int_{|z|=R}f(z)\left(\sum_{n=0}^{\infty}\frac{T^n}{z^{n+1}}\right){\rm d}z\\
+        &=\frac{1}{2\pi{\rm i}}\int_{|z|=R}f(z)(z-T)^{-1}{\rm d}z.
+    \end{align*}
+    (ii) 对任何$\B(X)$上的有界线性泛函$\varphi$，都有
+    \[\varphi\left(\frac{1}{2\pi{\rm i}}\int_{|z|=R}f(z)(z-T)^{-1}{\rm d}z\right)
+    =\frac{1}{2\pi{\rm i}}\int_{|z|=R}f(z)\varphi((z-T)^{-1})\,{\rm d}z,\]
+    和
+    \[\varphi\left(\frac{1}{2\pi{\rm i}}\int_{\varGamma}f(z)(z-T)^{-1}{\rm d}z\right)
+    =\frac{1}{2\pi{\rm i}}\int_{\varGamma}f(z)\varphi((z-T)^{-1})\,{\rm d}z,\]
+    其中$\varphi((z-T)^{-1})$是$\s(T)$外的解析函数。
+    由普通版本的Cauchy积分公式，上面两式的右边是相等的，从而左边亦如此。
+\end{proof}
+\begin{remark*}
+    这是Dunford积分，更多性质可参考\cite{Yo} VIII.7 (pp.225--8)，
+    如$f(T)g(T)=(fg)(T)$。(ii)也可以把复变函数中Cauchy积分公式的证明过程照搬过来，
+    唯一的区别是解析函数的值域从$\mathbb{C}$变为$\B(X)$。
+\end{remark*}
+
+\subsection{4.2 紧算子}
+\begin{6}
+    对Lebesgue可测函数$\varphi \in L^\infty[0,1]$，
+    定义$L^2[0,1]$上的有界线性算子$M_\varphi$为
+    \[M_\varphi(f)=\varphi f.\]
+    证明：$M_\varphi$是紧算子当且仅当$\varphi=0$。
+\end{6}
+\begin{proof}
+    设$\varphi\ne0$，那么存在一个正测集$E$和$c>0$使得$|\varphi|>c$在$E$上成立。
+    $M_\varphi$限制在子空间$\{f \in L^2[0,1]:f|_{[0,1] \setminus E}=0\}$上是可逆算子
+    ($M_{\chi_E/\varphi}$是其逆算子，范数不超过$c^{-1}$)，
+    这是个无穷维空间，从而$M_\varphi$不是其上的紧算子，
+    那就更不是全空间$L^2[0,1]$上的紧算子了。
+\end{proof}
+
+\begin{7}
+    设$T$是可分的Hilbert空间$H$上有界线性算子。证明：$T$是紧算子
+    当且仅当$T^*T$是紧的，也当且仅当$TT^*$是紧的。
+\end{7}
+\begin{proof}
+    设$\{x_n\}$是有界的序列，记$\|x_n\| \leqslant M$对所有的$n$成立。
+    如果$T^*T$是紧的，那么$\{T^*Tx_n\}$有子列收敛，记为其本身，这时
+    \[\|Tx_n-Tx_m\|^2=\langle x_n-x_m,T^*Tx_n-T^*Tx_m\rangle
+    \leqslant2M\|T^*Tx_n-T^*Tx_m\|,\]
+    $\{T^*Tx_n\}$收敛从而是Cauchy列，则$\{Tx_n\}$是Cauchy列从而收敛，
+    这就说明了$T$是紧算子。
+\end{proof}
+
+\begin{8}
+    设$\{e_1,e_2,\cdots,e_n,\cdots\}$是Hilbert空间$H$的一个正交基，
+    令$P_n(x)=\sum\limits_{k=1}^n\langle x,e_k \rangle e_k$
+    是到子空间$\operatorname{span}\{e_1,e_2,\cdots,e_n\}$上的投影算子。
+    若$H$上有界线性算子$T$是紧的，证明：$P_nT$按范数收敛于$T$。
+\end{8}
+\begin{proof}
+    记$B$为单位闭球，任意取定$\varepsilon>0$。
+    由于$T$紧，存在有限个点$x_1,\cdots,x_m$使得
+    \[T(B)\subset\bigcup_{1\leqslant i\leqslant m}B(Tx_i,\varepsilon/3),\]
+    即对于任何的$x \in B$，存在$x_i\ (1\leqslant i\leqslant m)$
+    使得$\|Tx-Tx_i\|\leqslant\varepsilon/3$，那么
+    \begin{align*}
+        \|P_nTx-Tx\|&\leqslant\|P_n(Tx-Tx_i)\|+\|P_nTx_i-Tx_i\|+\|Tx-Tx_i\|\\
+        &\leqslant\varepsilon/3+\|P_nTx_i-Tx_i\|+\varepsilon/3,
+    \end{align*}
+    其中中间的项只涉及有限个可能的点$Tx_i\ (1\leqslant i\leqslant m)$，
+    则$n$充分大时就有$\|P_nTx_i-Tx_i\|\leqslant\varepsilon/3$。
+    因此有$\|P_nT-T\|\leqslant\varepsilon$。
+\end{proof}
+
+\begin{10}
+    设$X,Y$是Banach空间，$A,B\in\B(X,Y)$，且$\rr(A)\subset\rr(B)$。
+    \begin{enumerate}[label=(\roman*)]
+        \item (Douglas (道格拉斯)) 若$B$是单射，那么存在$C\in\B(X)$使得$A=BC$。
+        \item 证明：若$B$是紧算子，则$A$也是紧的。
+    \end{enumerate}
+\end{10}
+\begin{proof}
+    \begin{enumerate}[label=(\roman*)]
+    \item 由于$B\colon X\to\rr(B)$是双射，存在逆映射$B^{-1}\colon\rr(B)\to X$，
+    $B$连续推出$B^{-1}$是闭算子 (具体来说就是，设$B^{-1}$的图像上
+    有收敛的点列$(Bx_n,x_n)\to(y,z)$，则
+    \[y=\lim_{n\to\infty}Bx_n=B\lim_{n\to\infty}x_n=Bz;\]
+    特别要注意$\rr(B)$不一定是闭子空间，
+    所以这里不能推出$B^{-1}\colon\rr(B)\to X$是有界线性算子)。
+    $\rr(A)\subset\rr(B)$的作用是能在$B^{-1}$前面复合算子$A$，
+    令$C=B^{-1}A$，这是Banach空间$X$上的闭算子，由闭图像定理知$C$是有界的。
+    \[X\stackrel{A}{\longrightarrow}\rr(A)\subset\rr(B)
+    \stackrel{B^{-1}}{\longrightarrow}X\qquad\quad{\ \ \ }\]
+    \item 考虑双射$\tilde{B}\colon X/\ker B\to\rr(B),[x]\mapsto Bx$，
+    不难验证$\{\tilde{B}[x]:\|[x]\|<1\}=\{Bx:\|x\|<1\}$，
+    从而$\tilde{B}$亦是紧算子。同(i)可得，存在闭的逆算子
+    $\tilde{B}^{-1}\colon\rr(B)\to X/\ker B$。
+    $\rr(\tilde{B})=\rr(B)$确保了$\rr(A)\subset\rr(\tilde{B})$依然成立，
+    那么令$C=\tilde{B}^{-1}A$，同(i)有$C\in\B(X,X/\ker B)$。
+    $\tilde{B}$是紧的且$C$有界，则$A=\tilde{B}C$也是紧的。
+    \[X\stackrel{A}{\longrightarrow}\rr(A)\subset\rr(\tilde{B})
+    \stackrel{\tilde{B}^{-1}}{\longrightarrow}X/\ker B\qedhere\]
+    \end{enumerate}
+\end{proof}
+
+\subsection{4.3 紧算子的谱}
+\begin{2}
+    设$T$是Banach空间$X$上的紧算子，$\lambda$是非零复数。记$S=\lambda I-T$，
+    $N(S)=\ker S$。那么
+    \begin{itemize}
+    \item[(i)] \[N(S)\subset N(S^2)\subset\cdots\subset N(S^n)
+    \subset N(S^{n+1})\subset\cdots,\]
+    并且存在$K$，使得$N(S^K)=N(S^{K+1})=N(S^{K+2})=\cdots$。
+    记$m$为最小的非负整数，使得$N(S^m)=N(S^{m+1})$，如果$N(S)=0$，则$m=0$。
+    \item[(ii)] \[\rr(S)\supset \rr(S^2)\supset\cdots\supset \rr(S^n)
+    \supset \rr(S^{n+1})\supset\cdots,\]
+    并且存在$L$，使得$\rr(S^L)=\rr(S^{L+1})=\rr(S^{L+2})=\cdots$。
+    记$r$为最小的非负整数，使得$\rr(S^r)=\rr(S^{r+1})$，如果$\rr(S)=X$，则$r=0$。
+    \end{itemize}
+\end{2}
+\begin{proof}
+\begin{itemize}
+    \item[(i)] 假设有无限个$n$使$N(S^{n-1})\subsetneq N(S^n)$，
+    由F. Riesz引理，可取$x_n\in N(S^n),\|x_n\|=1$，
+    且$\rho(x_n,N(S^{n-1}))>\frac{1}{2}$。对序列中的任意两个下标$p>q$，
+    \[Tx_p-Tx_q=\lambda x_p-Sx_p-\lambda x_q+Sx_q,\]
+    从$\lambda x_q\in N(S^q),Sx_p\in N(S^{p-1}),Sx_q\in N(S^{q-1})$，
+    且$N(S^{q-1}) \subset N(S^q) \subset N(S^{p-1})$，得
+    \[\|Tx_p-Tx_q\|\geqslant\rho(\lambda x_p,N(S^{p-1}))
+    >\frac{|\lambda|}{2},\]
+    同$\{Tx_n\}$是列紧的矛盾。如果$N(S)=0$，则$S$可逆，$S^n$都可逆，$m=0$。
+    \item[(ii)] 假设有无限个$n$使$\rr(S^n)\supsetneq \rr(S^{n+1})$，
+    由F. Riesz引理，可取$x_n\in\rr(S^n),\|x_n\|=1$，
+    且$\rho(x_n,\rr(S^{n+1}))>\frac{1}{2}$。对序列中的任意两个下标$p>q$，
+    \[Tx_p-Tx_q=\lambda x_p-Sx_p-\lambda x_q+Sx_q,\]
+    从$\lambda x_p\in\rr(S^p),Sx_p\in\rr(S^{p+1}),Sx_q\in\rr(S^{q+1})$，
+    且$\rr(S^{q+1}) \supset \rr(S^p) \supset \rr(S^{p+1})$，得
+    \[\|Tx_p-Tx_q\|\geqslant\rho(\lambda x_q,\rr(S^{q+1}))
+    >\frac{|\lambda|}{2},\]
+    同$\{Tx_n\}$是列紧的矛盾。如果$\rr(S)=X$，则$S$可逆，$S^n$都可逆，$r=0$。\qedhere
+\end{itemize}
+\end{proof}
+\begin{3}
+    $X,T,S,r$如第2题，记$X_1=\rr(S^r),X_2=N(S^r)$，证明：
+    \begin{itemize}
+    \item[(iii)] 算子$S$将$X_1$一对一到上映射到自身。
+    \item[(iv)] $X_2$是有限维的，$S$将$X_2$映射到$X_2$。
+    \item[(v)] $X$中的每个向量都可以唯一地表示成：
+    \[x=x_1+x_2,\quad\text{其中 }x_1\in X_1,x_2\in X_2,\]
+    并且存在常数$M>0$，使得$\|x_1\|\leqslant M\|x\|,\|x_2\|\leqslant M\|x\|$，
+    即$X=X_1\oplus X_2$。
+    \item[(vi)] 算子$T$可以表示成
+    \[T=T_1+T_2,\]
+    其中$T_1$是从$X$到$X_1$的紧算子，$T_2$是从$X$到$X_2$的紧算子，$T_1T_2=0$。
+    将算子$S_1=\lambda I-T_1$看成从$X_1$到$X_1$的算子是可逆的。
+    \end{itemize}
+\end{3}
+\begin{proof}
+\begin{itemize}
+    \item[(iii)] $\rr(S^r)=\rr(S^{r+1})$即$X_1=SX_1$，
+    也就是$S$在$X_1$上是满的。由引理4.3.1，$S$在$X_1$上可逆。
+    \item[(iv)] 注意到$S^r=(\lambda I-T)^r=\lambda^rI-p(T)$，
+    其中$p$是常数项为零的多项式，
+    那么$X_2$就是紧算子$p(T)$关于$\lambda^r$的特征向量空间，所以是有限维的。
+    此外$SX_2\subset N(S^{r-1})\subset N(S^r)=X_2$。
+    \item[(v)] 设$x\in X_1\cap X_2$，
+    由$S$在$X_1$上可逆知$S^r$亦如是，故$S^rx=0$推出$x=0$。
+
+    记$Q$为$S^r$在$X_1$上的逆算子，分解$x$为
+    \[x=QS^rx+(x-QS^rx):=x_1+x_2\in X_1\oplus X_2,\]
+    且有$\|x_1\|\leqslant\|QS^r\|\|x\|,\|x_2\|\leqslant\|I-QS^r\|\|x\|$。
+    \item[(vi)] 记$X$到$X_1$的投影为$P_1$，
+    $X$到$X_2$的投影为$P_2$，令$T_1=TP_1$，$T_2=TP_2$。
+    
+    由于$\rr(SP_1)\subset\rr(S^{r+1})\subset\rr(S^r)=X_1$，有
+    \[\rr(T_1)=\rr((\lambda I-S)P_1)\subset\rr(P_1)+\rr(SP_1)=X_1.\]
+    由于$\rr(SP_2)\subset N(S^{r-1})\subset N(S^r)=X_2$，有
+    \[\rr(T_2)=\rr((\lambda I-S)P_2)\subset\rr(P_2)+\rr(SP_2)=X_2.\]
+    结合两式得$T_1T_2=0$。在$X_1$上$T_1=T$则$S_1=S$，
+    由(iii)得出$S_1$在$X_1$上可逆。\qedhere
+\end{itemize}
+\end{proof}
+
+\begin{4}
+    $X,T,S,r,m$如第2题，证明：$r=m$。
+\end{4}
+\begin{proof}
+    $\rr(S^n)=\rr(S^{n+1})$就是$S$在$\rr(S^n)$上是满射，
+    $N(S^n)=N(S^{n+1})$就是$S$在$\rr(S^n)$上是单射，两者是充要的，故$r=m$。
+    
+    另一种表述方法是，由于$S^n=\lambda^nI-$紧算子，
+    得到$\dim X/\rr(S^n)=\dim N(S^n)<\infty$，
+    从而$\rr(S^n)=\rr(S^{n+1})$当且仅当$N(S^n)=N(S^{n+1})$，故$r=m$。
+\end{proof}
+
+\begin{5}
+    设$T$是复Banach空间$X$上的紧算子。若$T^2=T$，证明：$T$为有限秩算子。
+\end{5}
+\begin{proof}
+    $T$是$\rr(T)$上的单位算子，从而$\rr(T)$是有限维空间。
+\end{proof}
+
+\begin{6}
+    设$p$是常数项非零的多项式，$T$为无穷维Banach空间上的有界线性算子。
+    若$p(T)=0$，证明：$T$不是紧算子。
+\end{6}
+\begin{proof}
+    设$p(T)=\sum\limits_{k=0}^na_kT^k$，有$\sum\limits_{k=1}^na_kT^k=-a_0I$。
+    假设$T$是紧算子，则左边是紧算子而右边不是，矛盾。
+\end{proof}
+
+\begin{7}
+    设$T$是无限维Banach空间$X$上的有界线性算子。
+    假设$T$是下有界的：存在数$c>0$使得对任意$x \in X$
+    成立$\|Tx\| \geqslant c\|x\|$。证明: $T$不是紧的。
+\end{7}
+\begin{proof}
+    任取$\|x_1\|=1$，设已有$x_1,\cdots,x_n$，记其张成的子空间为$E_n$，
+    由F. Riesz引理，可取$\|x_{n+1}\|=1$使得$d(x_{n+1},E_n)>\frac{1}{2}$。
+    那么对于任意的$m>n$都有
+    \[\|Tx_m-Tx_n\|\geqslant c\|x_m-x_n\|>\tfrac{c}{2},\]
+    从而有界集$\{x_n\}$的像集$\{Tx_n\}$不列紧，故$T$不是紧算子。
+\end{proof}
+
+\begin{8}
+    设$X$是Banach空间，$A,K\in\B(X)$。若$K$还是紧算子，证明：
+    \[\s(A+K)\subset\s_p(A+K)\cup\s(A).\]
+\end{8}
+\begin{proof}
+    设$\lambda\notin\s_p(A+K)\cup\s(A)$，即$A-\lambda I$可逆且
+    \[A+K-\lambda I=(A-\lambda I)\big[I+(A-\lambda I)^{-1}K\big]\]
+    是单射，从而$I+(A-\lambda I)^{-1}K$同样是单射。
+    由于$(A-\lambda I)^{-1}K$是紧算子，得到$I+(A-\lambda I)^{-1}K$可逆，
+    那么$A-\lambda I+K$亦可逆，也就是说$\lambda\notin\s(A+K)$。
+\end{proof}
+
+\begin{9}
+    设Hilbert空间$l^2$上的有界线性算子$W$定义为
+    \[W(x_1,x_2,\cdots,x_n,\cdots)
+    =\left(0,x_1,\frac{1}{2}x_2,\cdots,\frac{1}{n}x_n,\cdots\right).\]
+    \begin{enumerate}[label=(\roman*)]
+        \item 证明：$W$是紧算子。
+        \item 求$\s(W),\s_p(W)$。
+        \item 给出$W$的一个非平凡不变子空间。
+    \end{enumerate}
+\end{9}
+\begin{proof}[解答]
+    (i) 略。
+
+    (ii) 易知$\s_p(W)=\varnothing$，从而$\s(W)=\s_p(W)\cup\{0\}=\{0\}$。
+
+    (iii) 前$100$项均为$0$的数列全体，或者$\rr(W^{100})$也可以。
+\end{proof}
+
+\begin{10}
+    设$C[0,1]$上的有界线性算子$T$定义为
+    \[(Tf)(x)=\int_0^1[\sin(x-y)\pi]f(y)\,{\rm d}y.\]
+    证明：$T$为紧算子，并求$\sigma(T),\sigma_p(T)$。
+\end{10}
+\begin{proof}[解答]
+    由例4.2.4有$T$是紧算子。设$\lambda$为$T$的特征值，即
+    \begin{align*}
+        \lambda f(x)&=\frac{1}{2{\rm i}}\int_0^1\big(e^{{\rm i}(x-y)\pi}-e^{-{\rm i}(x-y)\pi}\big)f(y)\,{\rm d}y\\
+        &=e^{{\rm i}x\pi}\underbrace{\left[\frac{1}{2{\rm i}}\int_0^1e^{-{\rm i}y\pi}f(y)\,{\rm d}y\right]}_{=\,a}
+        -e^{-{\rm i}x\pi}\underbrace{\left[\frac{1}{2{\rm i}}\int_0^1e^{{\rm i}y\pi}f(y)\,{\rm d}y\right]}_{=\,b},
+    \end{align*}
+    那么
+    \begin{align*}
+        \lambda a&=\frac{1}{2{\rm i}}\int_0^1e^{-{\rm i}y\pi}[\lambda f(y)]\,{\rm d}y
+        =\frac{1}{2{\rm i}}\int_0^1e^{-{\rm i}y\pi}(e^{{\rm i}y\pi}a-e^{-{\rm i}y\pi}b)\,{\rm d}y=\frac{a}{2{\rm i}},\\
+        \lambda b&=\frac{1}{2{\rm i}}\int_0^1\ \ e^{{\rm i}y\pi}[\lambda f(y)]\,{\rm d}y
+        =\frac{1}{2{\rm i}}\int_0^1\ \ e^{{\rm i}y\pi}(e^{{\rm i}y\pi}a-e^{-{\rm i}y\pi}b)\,{\rm d}y=-\frac{b}{2{\rm i}}.
+    \end{align*}
+    ➢ 当$\lambda\ne0$时，$a,b$不全为$0$，
+    * 若$a\ne0$，则$\lambda=\frac{1}{2{\rm i}}=-\frac{\rm i}{2}$，对应的特征向量为$e^{{\rm i}x\pi}$，
+    * 若$b\ne0$，则$\lambda=-\frac{1}{2{\rm i}}=\frac{\rm i}{2}$，对应的特征向量为$e^{-{\rm i}x\pi}$。
+
+    ➣ 当$\lambda=0$时，$a,b$都等于$0$，只需要$f$同$e^{{\rm i}x\pi},e^{-{\rm i}x\pi}$均正交即可。
+
+    因此，$\sigma(T)=\sigma_p(T)=\big\{\!-\!\frac{\rm i}{2},\frac{\rm i}{2},0\big\}$。
+\end{proof}
+
+\begin{11}
+    设$C[0,1]$上的有界线性算子$T$定义为
+    \[(Tf)(x)=\int_0^{1-x}f(y)\,{\rm d}y.\]
+    证明：$T$为紧算子，并求$\sigma(T),\sigma_p(T)$。
+\end{11}
+\begin{proof}[解答]
+    $T$将$C[0,1]$中的有界集映成等度连续的有界集，故$T$是紧算子。
+    容易说明$0$不是$T$的特征值，以下设$\lambda\ne0$是$T$的特征值，即
+    \[\lambda f(x)=\int_0^{1-x}f(y)\,{\rm d}y.\]
+    求导有
+    \[\lambda f'(x)=-f(1-x),\]
+    进而
+    \begin{align*}
+        \lambda^2f''(x)&=\lambda\big(\lambda f'(x)\big)'\\
+        &=\lambda\big(\!-\!f(1-x)\big)'\\
+        &=\lambda f'(1-x)=-f(x),
+    \end{align*}
+    结合$f(1)=0$可知
+    \[f(x)=c\,\sin\frac{1-x}{\lambda}, \quad c\ne0.\]
+    代入$\lambda f'(x)=-f(1-x)$得到
+    \[\cos\frac{1-x}{\lambda}=\sin\frac{x}{\lambda},\]
+    这就要求$\lambda\in\big\{\big(2k\pi+\frac{\pi}{2}\big)^{-1}:k\in\Z\big\}=\sigma_p(T)$。
+    此外，$\sigma(T)=\sigma_p(T)\cup\{0\}$。
+\end{proof}
+
+\begin{12}
+    令$[0,1]\times[0,1]$上二元函数$K(x,y)=\begin{cases}(1-x)y,&y \leqslant x,\\
+    (1-y)x,&x \leqslant y.\end{cases}$它给出的$L^2[0,1]$上的有界Fredholm积分算子为
+    \[(Tf)(x)=\int_0^1K(x,y)f(y)\,{\rm d}y.\]
+    \begin{enumerate}[label=(\roman*)]
+        \item 证明：$T$是$L^2[0,1]$上的紧的自伴算子。
+        \item 证明$\s_p(T)=\left\{\dfrac{1}{(n\pi)^2}:n=1,2,\cdots\right\}$。
+        并求$\lambda=\dfrac{1}{(n\pi)^2}$时的$\ker(\lambda I-T)$。
+        \item 求$\|T\|$。
+    \end{enumerate}
+\end{12}
+\begin{proof}[解答]
+    \begin{enumerate}[label=(\roman*)]
+    \item 由例4.2.5，$T$是紧算子；由例3.3.4以及$K(x,y)$是关于$x,y$对称的实值函数，得出$T$自伴。
+    \item 记
+    \[e_n(y)=\sqrt{2}\sin(n\pi y), \quad f_n(y)=\sqrt{2}\cos(n\pi y).\]
+    可以说明$\{e_n:n=1,2,\cdots\}$是$L^2[0,1]$的一组标准正交基
+    (见\cite{Xu} \S7.3练习4(1), pp.225 & 497)，且观察到
+    \begin{align*}
+        (Te_n)(x)&=\int_0^1K(x,y)e_n(y)\,{\rm d}y\\
+        &=\int_0^x(1-x)y\,e_n(y)\,{\rm d}y+\int_x^1(1-y)x\,e_n(y)\,{\rm d}y\\
+        &=\frac{1}{n\pi}\left[-(1-x)\int_0^xy\,{\rm d}f_n(y)
+        -x\int_x^1(1-y)\,{\rm d}f_n(y)\right]\\
+        &=\frac{1}{n\pi}\left[(1-x)\left(\int_0^xf_n(y)\,{\rm d}y-yf_n(y)\big|_0^x\right)
+        -x\left(\int_x^1f_n(y)\,{\rm d}y+(1-y)f_n(y)\big|_x^1\right)\right]\\
+        &=\frac{1}{n\pi}\left[(1-x)\left(\frac{e_n(x)}{n\pi}-xf_n(x)\right)
+        -x\left(-\frac{e_n(x)}{n\pi}-(1-x)f_n(x)\right)\right]\\
+        &=\frac{1}{(n\pi)^2}e_n(x).
+    \end{align*}
+    那么如果$\lambda$是$T$的特征值，即有非零的$\displaystyle h=\sum_{n=1}^\infty \alpha_ne_n$
+    使得$Th=\lambda h$，就有
+    \[\sum_{n=1}^\infty \frac{\alpha_n}{(n\pi)^2}e_n=\sum_{n=1}^\infty \lambda\alpha_ne_n,\]
+    比较系数即得$\lambda$属于$\left\{\dfrac{1}{(n\pi)^2}:n=1,2,\cdots\right\}$，
+    且$\lambda=\dfrac{1}{(n\pi)^2}$对应的$\ker(\lambda I-T)=\mathbb{C}e_n$。
+    \item 由引理4.4.3，$\|T\|=\max\limits_{\lambda\in\s_p(T)}|\lambda|=1/\pi^2$。\qedhere
+    \end{enumerate}
+\end{proof}
+\begin{remark*}
+    解释一下这个奇怪的核函数$K(x,y)$是怎么来的。为此，先算一个无穷级数的和。令
+    \[p(\theta)=\frac{(\pi-\theta)^2}{4}\]
+    是$[0,2\pi]$上的连续函数，其Fourier级数为
+    \[\hat{p}(0)=\int_0^{2\pi}p(\theta)\,\frac{{\rm d}\theta}{2\pi}=\frac{\pi^2}{12},\quad
+    \hat{p}(n)=\int_0^{2\pi}p(\theta)e^{-{\rm i}n\theta}\,\frac{{\rm d}\theta}{2\pi}=\frac{1}{2n^2}\ (n\ne0),\]
+    从而对$\theta\in[0,2\pi]$有
+    \[p(\theta)=\frac{\pi^2}{12}+\sum_{n=1}^{\infty}\frac{\cos(n\theta)}{n^2},\]
+    进而对$\vartheta\in[0,2]$有
+    \[\sum_{n=1}^{\infty}\frac{\cos(n\pi\vartheta)}{(n\pi)^2}
+    =\frac{1}{6}-\frac{\vartheta}{2}+\frac{\vartheta^2}{4}.\]
+    准备工作结束，现在开始考察$(0,1)$上的Dirichlet问题
+    \[\begin{cases}-u''(x)=f(x), \quad x\in(0,1),\\u(0)=u(1)=0.\end{cases}\]
+    既然$\{e_n(x)=\sqrt{2}\sin(n\pi x):n=1,2,\cdots\}$
+    是由这个方程的特征向量构成的一组标准正交基，
+    $\{\lambda_n=1/(n\pi)^2:n=1,2,\cdots\}$是相应的特征值，形式上有
+    \[u(x)=\sum_{n=1}^{\infty}\lambda_n\alpha_ne_n(x),
+    \quad f(x)=\sum_{n=1}^{\infty}\alpha_ne_n(x),\]
+    这也就是说
+    \[u(x)=\int_0^1\left(\sum_{n=1}^{\infty}\lambda_ne_n(x)e_n(y)\right)f(y)\,{\rm d}y,\]
+    因此如果令$\displaystyle K(x,y)=\sum_{n=1}^{\infty}\lambda_ne_n(x)e_n(y)$，
+    那么本题的$T$就是求二阶导数的逆算子，$K$就是Green函数，其具体表达式为
+    \begin{align*}
+        K(x,y)&=\sum_{n=1}^{\infty}\frac{2\sin(n\pi x)\sin(n\pi y)}{(n\pi)^2}\\
+        &=\sum_{n=1}^{\infty}\frac{\cos(n\pi(x-y))}{(n\pi)^2}
+        -\sum_{n=1}^{\infty}\frac{\cos(n\pi(x+y))}{(n\pi)^2}\\
+        &=\left[-\frac{|x-y|}{2}+\frac{(x-y)^2}{4}\right]
+        -\left[-\frac{x+y}{2}+\frac{(x+y)^2}{4}\right]\\
+        &=\begin{cases}(1-x)y,&y \leqslant x,\\
+        (1-y)x,&x \leqslant y.\end{cases}
+    \end{align*}
+\end{remark*}
+
+\subsection{4.4 自伴紧算子}
+\begin{definition*}
+    设$H$是Hilbert空间，对$u,v \in H$，
+    定义秩为$1$的算子$v \otimes u$为
+    \[(v \otimes u)(x)=\langle x,u \rangle v.\]
+    由于紧算子常常可用有限秩算子（在多种不同的意义下）逼近，
+    这个记号在有关紧算子的推理中有助于简化表达。
+    为了适应这个写法，可自行验证一下如下的性质：
+    \[(v \otimes u)^*=u \otimes v.\]
+\end{definition*}
+\begin{1}
+    设$N$是无限维可分Hilbert空间$H$上的紧正规算子。
+    令$R=\dfrac{N+N^*}{2},S=\dfrac{N-N^*}{2{\rm i}}$。证明：
+    \begin{itemize}
+    \item[(i)] $R,S$是自伴算子，且$RS=SR$。
+    \item[(ii)] 存在$H$中的一组标准正交基$\{u_n\}$与实数列$\{\alpha_n\},\{\beta_n\}$使得
+    \[Rx=\sum_{n=1}^{\infty}\alpha_n\langle x,u_n \rangle u_n,\quad\forall x \in H\]
+    以及
+    \[Sx=\sum_{n=1}^{\infty}\beta_n\langle x,u_n \rangle u_n,\quad\forall x \in H.\]
+    且
+    \[Nx=\sum_{n=1}^{\infty}(\alpha_n+\beta_n{\rm i)}\langle x,u_n \rangle u_n,\quad\forall x \in H.\]
+    \end{itemize}
+\end{1}
+\begin{proof}
+    (i)是简单的，(ii)的思路是对角化了$R$以后在其各个特征子空间上对角化$S$。
+
+    具体来讲，设$\{\alpha_n\}_{n\geqslant1}$是自伴紧算子$R$的非零特征值全体，
+    $E_n$为$\alpha_n$的特征子空间，那么
+    \[R=\sum_{n\geqslant1}\alpha_nP_{E_n}.\]
+    首先，由于对$x \in E_n$有
+    \[R(Sx)=S(Rx)=S(\alpha_nx)=\alpha_n(Sx),\]
+    得到$Sx \in E_n$。因此，$E_n$是$S$的约化子空间，
+    就有标准正交基$\mathcal{E}_n=\{e_n^1,\cdots,e_n^{k_n}\}$
+    和实数列$\{\beta_n^1,\cdots,\beta_n^{k_n}\}$使得
+    \[S \upharpoonright E_n=\beta_n^1e_n^1 \otimes e_n^1
+    +\cdots+\beta_n^{k_n}e_n^{k_n} \otimes e_n^{k_n}.\]
+    $\{E_n\}_{n\geqslant1}$是互相正交的子空间，
+    从而$\bigcup\limits_{n\geqslant1}\mathcal{E}_n$
+    是$\overline{\rr(R)}=\bigoplus\limits_{n\geqslant1}E_n$的标准正交基。
+
+    接着，由于对$x\in\ker R$有
+    \[R(Sx)=S(Rx)=0,\]
+    得到$Sx\in\ker R$。因此，$\ker R$也是$S$的约化子空间，
+    有标准正交基$\mathcal{E}_0=\{e_0^1,e_0^2,\cdots\}$
+    和实数列$\{\beta_0^1,\beta_0^2,\cdots\}$使得
+    \[S \upharpoonright \ker R=\beta_0^1e_0^1 \otimes e_0^1
+    +\beta_0^2e_0^2 \otimes e_0^2+\cdots.\]
+    最终得出，$\bigcup\limits_{n\geqslant0}\mathcal{E}_n$
+    是$H=\overline{\rr(R)}\oplus\ker R$的标准正交基，使得$R,S$能同时对角化。
+\end{proof}
+
+\begin{2}
+    设$H$是无限维可分Hilbert空间，$T$是$H$中的紧算子。
+    \begin{itemize}
+    \item[(i)] 证明：存在$H$中一组标准正交基$\{u_n\}$与非负数列$\{\lambda_n\}$使得
+    \[T^*Tx=\sum_{n=1}^{\infty}\lambda_n^2\langle x,u_n \rangle u_n,\quad\forall x \in H.\]
+    这里我们假设$\{\lambda_n\}$是按绝对值从大到小排列的。
+    \item[(ii)] 当$\lambda_n\ne0$时，记$v_n=\dfrac{Tu_n}{\lambda_n}$。
+    证明：$\{v_n:\lambda_n\ne0\}$是一组标准正交系。
+    \item[(iii)] 证明：$\displaystyle Tx=\sum_{\lambda_n\ne0}\lambda_n\langle x,u_n \rangle v_n\,(\forall x \in H)$。
+    \end{itemize}
+\end{2}
+\begin{proof}
+    下面几题中，称紧算子$T$在(iii)中的形式为其标准展开式。
+    \begin{itemize}
+    \item[(i)] $T^*T$是非负的自伴紧算子。
+    \item[(ii)] 这是因为
+    \begin{align*}
+        \langle v_n,v_m \rangle&=\left\langle\frac{Tu_n}{\lambda_n},
+        \frac{Tu_m}{\lambda_m}\right\rangle
+        =\frac{\langle T^*Tu_n,u_m \rangle}{\lambda_n\lambda_m}\\
+        &=\frac{\lambda_n^2\langle u_n,u_m \rangle}{\lambda_n\lambda_m}
+        =\frac{\lambda_n\delta_{nm}}{\lambda_m}=\delta_{nm}.
+    \end{align*}
+    \item[(iii)] 由于算子$\displaystyle P=\sum_{\lambda_n=0}u_n \otimes u_n$是到子空间
+    \[\overline{\operatorname{span}}\{u_n:\lambda_n=0\}=\ker(T^*T)=\ker T\]
+    的投影，得到$TP=0$，进而
+    \[T=T(I-P)=T\sum_{\lambda_n\ne0}u_n \otimes u_n
+    =\sum_{\lambda_n\ne0}Tu_n \otimes u_n
+    =\sum_{\lambda_n\ne0}\lambda_nv_n \otimes u_n.\qedhere\]
+    \end{itemize}
+\end{proof}
+\begin{remark*}
+    应当能看出，本题是要从标准正交基的角度来展示极分解中的算子$W$ (称为偏等距) 的作用。
+    由于$|T|u_n=\lambda_nu_n$，并且$\lambda_n\ne0$时$Tu_n=\lambda_nv_n$，可知
+    \[Wu_n=\begin{cases}v_n,&\lambda_n\ne0,\\0,&\lambda_n=0.\end{cases}\]
+\end{remark*}
+
+\begin{3}
+    验证定理4.4.4中的(i),\,(iv)以及$\mathcal{S}_2$的完备性。
+\end{3}
+\begin{proof}
+    (i) 对任何单位向量$x \in H$，将$x$扩充成一组标准正交基$\{e_n\}$，有
+    \[\|Tx\|^2\leqslant\sum_n\|Te_n\|^2=\|T\|_2^2.\]
+    (iv) 设$\{e_n\}$是一组标准正交基，则有
+    \[\|ST\|_2^2=\sum_n\|STe_n\|^2\leqslant\sum_n\|S\|^2\|Te_n\|^2=\|S\|^2\|T\|_2^2,\]
+    并且由于算子在对偶下的$\mathcal{S}_2$范数不变，有
+    \[\|TS\|_2=\|S^*T^*\|_2\leqslant\|S^*\|\|T^*\|_2=\|S\|\|T\|_2.\]
+    完备性是因为，设$\{T_k\}$是$(\mathcal{S}_2,\|\cdot\|_2)$中的Cauchy列，
+    则亦是算子范数下的Cauchy列，从而收敛于某个$T\in\B(H)$。对任何的$N$有
+    \[\sum_{n \leqslant N}\|(T_k-T)e_n\|^2
+    =\lim_{\ell\to\infty}\sum_{n \leqslant N}\|(T_k-T_\ell)e_n\|^2
+    \leqslant\lim_{\ell\to\infty}\|T_k-T_\ell\|_2^2,\]
+    令$N\to\infty$得到
+    \[\|T_k-T\|_2^2=\sum_n\|(T_k-T)e_n\|^2
+    \leqslant\lim_{\ell\to\infty}\|T_k-T_\ell\|_2^2,\]
+    从而$\lim\limits_{k\to\infty}\|T_k-T\|_2=0$，
+    并且$T\in\mathcal{S}_2$是由于
+    \[\|T\|_2\leqslant\|T_k-T\|_2+\|T_k\|_2<\infty.\qedhere\]
+\end{proof}
+
+\begin{4}
+    证明例4.4.2中给出的映射$K \mapsto T_K$是从$L^2([a,b]\times[a,b])$
+    到$\mathcal{S}_2$的Hilbert空间同构。
+\end{4}
+\begin{proof}
+    只需再说明这个映射是满的。由第2题中的标准展开式，对每个$T\in\mathcal{S}_2$，
+    都有$L^2[a,b]$的两组标准正交系$\{u_n\},\{v_n\}$和正数列$\{\lambda_n\}$使得
+    \[T=\sum_n \lambda_n v_n \otimes u_n,\]
+    并且$T\in\mathcal{S}_2$是说
+    \[\|T\|_2^2=\sum_n\|Tu_n\|^2=\sum_n\lambda_n^2<\infty.\]
+    现在算一下
+    \begin{align*}
+        (Tf)(x)&=\sum_n\lambda_n\langle f,u_n \rangle v_n(x)\\
+        &=\sum_n\lambda_n\left(\int_a^bf(y)\overline{u_n(y)}\,{\rm d}y\right)v_n(x)\\
+        &=\int_a^bf(y)\left(\sum_n\lambda_n\overline{u_n(y)}v_n(x)\right){\rm d}y.
+    \end{align*}
+    既然如此，令$\displaystyle K(x,y)=\sum_n\lambda_n\overline{u_n(y)}v_n(x)$，就有
+    \begin{align*}
+        \int_a^b\int_a^b|K(x,y)|^2\,{\rm d}x{\rm d}y
+        &=\int_a^b\int_a^b\left(\sum_n\lambda_n\overline{u_n(y)}v_n(x)\right)
+        \left(\sum_m\lambda_mu_m(y)\overline{v_m(x)}\right){\rm d}x{\rm d}y\\
+        &=\sum_n\sum_m\lambda_n\lambda_m\langle u_m,u_n \rangle\langle v_n,v_m \rangle
+        =\sum_n\lambda_n^2<\infty,
+    \end{align*}
+    即$K \in L^2([a,b]\times[a,b])$。
+\end{proof}
+
+\begin{5}
+    若$T$是Hilbert空间$H$上的迹类算子，则$T$也是Hilbert--Schmidt的。
+\end{5}
+\begin{proof}
+    通过取实部和虚部，只需考察$T$是自伴的迹类算子时的情形。设$T$的极分解为
+    \[T=W|T|=W\!\sqrt{|T|}^2,\]
+    其中$W\in\B(H)$，且$T$是迹类算子说明
+    （规定$\{\lambda_n\}$可重复，就不用乘上$\dim E_n$了，下同）
+    \[\big\|\sqrt{|T|}\big\|_2^2=\sum_n\sqrt{|\lambda_n|}^2
+    =\sum_n|\lambda_n|<\infty,\]
+    即$\sqrt{|T|}\in\mathcal{S}_2$。
+    由定理4.4.4 (iv)，得到$T\in\mathcal{S}_2$。
+\end{proof}
+
+\begin{6}
+    设$H$是Hilbert空间，$T\in\B(H)$。证明以下三个条件等价：
+    \begin{enumerate}[label=(\roman*)]
+    \item $T\in\mathcal{S}_1$。
+    \item 存在$T_1,T_2\in\mathcal{S}_2$使得$T=T_1T_2$。
+    \item 存在数$M$，使得对$H$中任意两组标准正交系$\{e_n\},\{f_n\}$，
+    有$\displaystyle\sum_n|\langle Te_n,f_n \rangle| \leqslant M$。
+    \end{enumerate}
+    并说明若$T$满足上述条件之一，$S\in\B(H)$，那么$TS$和$ST$也都是迹类算子。
+\end{6}
+\begin{proof}
+    (i)推(ii)是简单的，极分解出$T=W|T|=(W\!\sqrt{|T|})\sqrt{|T|}$，
+    其中$W\!\sqrt{|T|},\sqrt{|T|}\in\mathcal{S}_2$。
+
+    (ii)推(iii)是因为当$T=T_1T_2$时，对$H$中任意两组标准正交系$\{e_n\},\{f_n\}$都有
+    \begin{align*}
+        \sum_n|\langle Te_n,f_n \rangle|
+        &=\sum_n|\langle T_2e_n,T_1^*f_n \rangle|\\
+        &\leqslant\sum_n\|T_2e_n\|\|T_1^*f_n\|\\
+        &\leqslant\bigg(\sum_n\|T_2e_n\|^2\bigg)^\frac{1}{2}
+        \bigg(\sum_n\|T_1^*f_n\|^2\bigg)^\frac{1}{2}\\
+        &=\|T_2\|_2\|T_1^*\|_2=\|T_1\|_2\|T_2\|_2.
+    \end{align*}
+    (iii)推(i)的关键点是要说明$T$是紧算子，这个问题交给下面的引理来解决。
+
+    一旦说明了$T$是紧算子，通过取实部和虚部，不妨设$T$是自伴的，则其可对角化为
+    \[T=\sum_n\lambda_nu_n \otimes u_n,\]
+    其中$\{u_n\}$是$H$的一组标准正交基。$\{e_n\},\{f_n\}$都取为$\{u_n\}$，得到
+    \[\sum_n|\lambda_n|=\sum_n|\langle Tu_n,u_n\rangle|<\infty.\]
+    若$T$满足上述条件之一，则$T$能写成$T_1,T_2\in\mathcal{S}_2$的乘积，
+    那么$T_2S,ST_1\in\mathcal{S}_2$，从而$T_1(T_2S),(ST_1)T_2$都是迹类算子。
+    最后，我们来建立一个非常好用的引理。
+
+    \textbf{引理.} 设$H$是Hilbert空间，$T\in\B(H)$。
+    如果对$H$中任意两组标准正交系$\{e_n\},\{f_n\}$，
+    都有$\lim\limits_{n\to\infty}\langle Te_n,f_n \rangle=0$，那么$T$是紧算子。
+
+    \textbf{引理的证明.} 首先，取单位向量$e_1,f_1$使得
+    \[\langle Te_1,f_1 \rangle
+    \geqslant0.99\sup\{\langle Tx,y \rangle:\|x\|\leqslant1,\|y\|\leqslant1\}=0.99\|T\|.\]
+    接着，对每个正整数$n$，选好了标准正交系$\mathcal{E}_n=\{e_1,\cdots,e_n\}$
+    和$\mathcal{F}_n=\{f_1,\cdots,f_n\}$之后，
+    取单位向量$e_{n+1}\perp\mathcal{E}_n,f_{n+1}\perp\mathcal{F}_n$使得
+    \[\langle Te_{n+1},f_{n+1} \rangle
+    \geqslant0.99\sup\{\langle Tx,y \rangle:\|x\|\leqslant1,\|y\|\leqslant1,
+    x\perp\mathcal{E}_n,y\perp\mathcal{F}_n\}:=0.99s_n.\]
+    设$P_n$为到子空间$(\operatorname{span}\mathcal{E}_n)^\perp$的投影，
+    $Q_n$为到子空间$(\operatorname{span}\mathcal{F}_n)^\perp$的投影。
+    由于对任何$\|x\|\leqslant1,\|y\|\leqslant1$都有
+    \[P_nx\perp\mathcal{E}_n,\ \ \|P_nx\|\leqslant1,\quad
+    Q_ny\perp\mathcal{F}_n,\ \ \|Q_ny\|\leqslant1,\]
+    可知
+    \[s_n\geqslant\sup\{\langle T(P_nx),Q_ny \rangle:
+    \|x\|\leqslant1,\|y\|\leqslant1\}=\|Q_nTP_n\|.\]
+    记算子$F_n=T-Q_nTP_n$，变形为
+    \[F_n=T(I-P_n)+(I-Q_n)TP_n,\]
+    其中$I-P_n,I-Q_n$都是有限秩算子，则$F_n$亦是有限秩的。$s_n\to0$说明$\|T-F_n\|\to0$，
+    也就是说$T$可以用一列有限秩算子$\{F_n\}$在算子范数下逼近，故$T$是紧算子。
+\end{proof}
+
+\begin{7}
+    设$H$是Hilbert空间。对于$T\in\mathcal{S}_1$，规定
+    \[\|T\|_1=\sup\left\{\sum_n|\langle Te_n,f_n \rangle|:
+    \{e_n\},\{f_n\}\text{ 是 }H\text{ 的标准正交系}\right\}.\]
+    证明：
+    \begin{enumerate}[label=(\roman*)]
+    \item 若$T\in\mathcal{S}_1$，则$\|T\|\leqslant\|T\|_1$。
+    \item $(\mathcal{S}_1,\|\cdot\|_1)$是Banach空间，并且有限秩算子全体在它中稠密。
+    \item 若$T_1,T_2\in\mathcal{S_2}$，则$\|T_1T_2\|_1\leqslant\|T_1\|_2\|T_2\|_2$。
+    \item 若$T\in\mathcal{S}_1$，则$\|T\|_1=\operatorname{tr}(|T|)$。
+    \item 若$T_1\in\B(H),T_2\in\mathcal{S}_1$，则$\|T_1T_2\|_1\leqslant\|T_1\|\|T_2\|_1$。
+    \item 若$T_1,T_2\in\mathcal{S}_1$，则$\operatorname{tr}(|T_1+T_2|)
+    \leqslant\operatorname{tr}(|T_1|)+\operatorname{tr}(|T_2|)$。
+    \end{enumerate}
+\end{7}
+\begin{proof}
+    \begin{enumerate}[label=(\roman*)]
+    \item 这是因为
+    \[\|T\|=\sup\{\langle Tx,y \rangle:\|x\|=\|y\|=1\}\leqslant\|T\|_1.\]
+    \item 设$\{T_k\}$是$(\mathcal{S}_1,\|\cdot\|_1)$中的Cauchy列，
+    由(i)得其亦是算子范数下的Cauchy列，从而收敛于某个$T\in\B(H)$。
+    对任意两组标准正交系$\{e_n\},\{f_n\}$来说，对任何的$N$有
+    \[\sum_{n \leqslant N}|\langle (T_k-T)e_n,f_n \rangle|
+    =\lim_{\ell\to\infty}\sum_{n \leqslant N}|\langle (T_k-T_\ell)e_n,f_n \rangle|
+    \leqslant\lim_{\ell\to\infty}\|T_k-T_\ell\|_1,\]
+    令$N\to\infty$，再对$\{e_n\},\{f_n\}$取上确界，得到
+    \[\|T_k-T\|_1\leqslant\lim_{\ell\to\infty}\|T_k-T_\ell\|_1,\]
+    从而$\lim\limits_{k\to\infty}\|T_k-T\|_1=0$，
+    并且$T\in\mathcal{S}_1$是由于
+    \[\|T\|_1\leqslant\|T_k-T\|_1+\|T_k\|_1<\infty.\]
+    接下来说明有限秩算子全体是稠密的。对于$T\in\mathcal{S}_1$，设$T$的标准展开式为
+    \[T=\sum_n\lambda_nv_n \otimes u_n,\]
+    则有
+    \[|T|=\sum_n\lambda_nu_n \otimes u_n,\]
+    由(iv)有
+    \[\|T\|_1=\operatorname{tr}(|T|)
+    =\sum_n\langle|T|u_n,u_n\rangle=\sum_n\lambda_n<\infty.\]
+    那么有限秩算子
+    \[T_N=\sum_{n \leqslant N}\lambda_nv_n \otimes u_n\]
+    就在$\mathcal{S}_1$中收敛于$T$，这是因为
+    \[\|T-T_N\|_1=\sum_{n>N}\lambda_n\to0.\]
+    \item 第6题的(ii)推(iii)已经证过了。
+    \item 一方面，设极分解为$T=W|T|$，取$\overline{\rr(|T|)}$的一组标准正交基$\{e_n\}$，
+    其可扩展为$H$的一组标准正交基$\{e_n\}\cup\{f_m\}$。
+    不过加进去的$\{f_m\}$对$\operatorname{tr}(|T|)$的计算是无关紧要的，意思是说
+    \[\operatorname{tr}(|T|)=\sum_n\langle|T|e_n,e_n\rangle
+    +\sum_m\langle|T|f_m,f_m\rangle=\sum_n\langle|T|e_n,e_n\rangle.\]
+    $W$是$\overline{\rr(|T|)}$上的等距算子，
+    从而$\{We_n\}$是$\overline{\rr(T)}$的一组标准正交系。
+    $\{e_n\},\{We_n\}$当然也是$H$的标准正交系，因此
+    \[\operatorname{tr}(|T|)=\sum_n\langle|T|e_n,e_n\rangle
+    =\sum_n\langle W^*Te_n,e_n \rangle=\sum_n\langle Te_n,We_n \rangle
+    \leqslant\|T\|_1.\]
+    另一方面，对$H$的任意两组标准正交系$\{e_n\},\{f_n\}$，都有
+    \begin{align*}
+        \sum_n|\langle Te_n,f_n \rangle|
+        &=\sum_n\big|\big\langle\sqrt{|T|}e_n,\sqrt{|T|}W^*f_n\big\rangle\big|\\
+        &\leqslant\left(\sum_n\big\|\sqrt{|T|}e_n\big\|^2\right)^\frac{1}{2}
+        \left(\sum_n\big\|\sqrt{|T|}W^*f_n\big\|^2\right)^\frac{1}{2}\\
+        &\leqslant\big\|\sqrt{|T|}\big\|_2\big\|\sqrt{|T|}W^*\big\|_2
+        \leqslant\big\|\sqrt{|T|}\big\|_2^2,
+    \end{align*}
+    并且（任取$H$的一组标准正交基$\{h_n\}$）
+    \[\big\|\sqrt{|T|}\big\|_2^2=\sum_n\big\|\sqrt{|T|}h_n\big\|^2
+    =\sum_n\langle|T|h_n,h_n\rangle=\operatorname{tr}(|T|),\]
+    对$\{e_n\},\{f_n\}$取上确界就有$\|T\|_1\leqslant\operatorname{tr}(|T|)$。
+    \item 设极分解为$T_2=W|T_2|$，由(iii),\,(iv)有
+    \begin{align*}
+        \|T_1T_2\|_1&\leqslant\big\|T_1W\sqrt{|T_2|}\big\|_2\big\|\sqrt{|T_2|}\big\|_2\\
+        &\leqslant\|T_1W\|\big\|\sqrt{|T_2|}\big\|_2^2\leqslant\|T_1\|\|T_2\|_1.
+    \end{align*}
+    \item 由(iv)，这就是$\|T_1+T_2\|_1\leqslant\|T_1\|_1+\|T_2\|_1$，即
+    \[\sup\left\{\sum_n|\langle(T_1+T_2)e_n,f_n\rangle|\right\}
+    \leqslant\sup\left\{\sum_n|\langle T_1e_n,f_n \rangle|\right\}
+    +\sup\left\{\sum_n|\langle T_2e_n,f_n \rangle|\right\}.\qedhere\]
+    \end{enumerate}
+\end{proof}
+\begin{remark*}
+    (iv)的过程也可以如下表述。设$T$的标准展开式为
+    \[T=\sum_n\lambda_n v_n \otimes u_n.\]
+    一方面，
+    \[\operatorname{tr}(|T|)=\sum_n\langle|T|u_n,u_n\rangle
+    =\sum_n\lambda_n=\sum_n\langle Tu_n,v_n \rangle\leqslant\|T\|_1.\]
+    另一方面，把$T$的表达式直接代入可得
+    \[|\langle Te_k,f_k \rangle|\leqslant\sum_n\lambda_n
+    |\langle e_k,u_n \rangle||\langle v_n,f_k \rangle|,\]
+    从而推出
+    \begin{align*}
+        \sum_k|\langle Te_k,f_k \rangle|&\leqslant\sum_n\lambda_n
+        \sum_k|\langle e_k,u_n \rangle||\langle v_n,f_k \rangle|\\
+        &\leqslant\sum_n\lambda_n\left(\sum_k|\langle e_k,u_n \rangle|^2\right)^\frac{1}{2}
+        \left(\sum_k|\langle v_n,f_k \rangle|^2\right)^\frac{1}{2}\\
+        &\leqslant\sum_n\lambda_n\|u_n\|\|v_n\|
+        =\sum_n\lambda_n=\operatorname{tr}(|T|).
+    \end{align*}
+\end{remark*}
+
+\begin{8}
+    若$H$是Hilbert空间，$T_1\in\B(H),T_2\in\mathcal{S}_1$，那么
+    \[\operatorname{tr}(T_1T_2)=\operatorname{tr}(T_2T_1).\]
+\end{8}
+\begin{proof}
+    先看$T_1,T_2\in\mathcal{S}_2$的情形。这时
+    \begin{align*}
+        \operatorname{tr}(T_1T_2)&=\sum_n\langle T_1T_2e_n,e_n \rangle
+        =\sum_n\langle T_2e_n,T_1^*e_n \rangle\\
+        &=\frac{1}{4}\sum_n\sum_{k=0}^3{\rm i}^k\|(T_2+{\rm i}^kT_1^*)e_n\|^2\\
+        &=\frac{1}{4}\sum_{k=0}^3{\rm i}^k\|T_2+{\rm i}^kT_1^*\|_2^2,
+    \end{align*}
+    从而
+    \begin{align*}
+        \operatorname{tr}(T_1T_2)&=\frac{1}{4}\sum_{k=0}^3{\rm i}^k\|T_2+{\rm i}^kT_1^*\|_2^2\\
+        &=\frac{1}{4}\sum_{k=0}^3{\rm i}^k\|(T_2+{\rm i}^kT_1^*)^*\|_2^2\\
+        &=\frac{1}{4}\sum_{k=0}^3{\rm i}^k\|T_2^*+T_1/{\rm i}^k\|_2^2\\
+        &=\frac{1}{4}\sum_{k=0}^3{\rm i}^k\|T_1+{\rm i}^kT_2^*\|_2^2=\operatorname{tr}(T_2T_1).
+    \end{align*}
+    再来看$T_1\in\B(H),T_2\in\mathcal{S}_1$的情形。
+    这时有$Q_1,Q_2\in\mathcal{S}_2$使得$T_2=Q_1Q_2$，从而
+    \[\operatorname{tr}(T_1T_2)=\operatorname{tr}(T_1Q_1Q_2)
+    \xlongequal{T_1Q_1\in\mathcal{S}_2}\operatorname{tr}(Q_2T_1Q_1)
+    \xlongequal{Q_2T_1\in\mathcal{S}_2}\operatorname{tr}(Q_1Q_2T_1)
+    =\operatorname{tr}(T_2T_1).\qedhere\]
+\end{proof}
+
+\begin{9}[Lidskii (里德斯基)]
+    设$H$是Hilbert空间，$T\in\mathcal{S}_1$。
+    \begin{enumerate}[label=(\roman*)]
+    \item 若空间$M=\operatorname{span}\{f \in H:\text{存在非零 }\lambda
+    \text{ 使得 }Tf=\lambda f\}$在$H$中稠密，证明
+    \[\operatorname{tr}(T)=\sum_{\lambda\in\sigma_p(T)}\lambda\dim E_\lambda,\]
+    其中$E_\lambda=\ker(\lambda I-T)$。
+    \item 当$T$的谱半径$r(T)=0$时，可以说明$\operatorname{tr}(T)=0$。
+    基于这一事实，证明$\displaystyle\operatorname{tr}(T)
+    =\sum_{\lambda\in\sigma_p(T)}\lambda\dim E_\lambda$总是成立的。
+    \end{enumerate}
+\end{9}
+\begin{proof}
+    参考\cite{Ta} Chapter 9 Theorem A.1 (pp.275--7).
+\end{proof}
+
+\subsection{4.5 Fredholm算子与指标}
+\begin{3}
+    设$H$是复的Hilbert空间，$T\in\B(H)$。若$\dim\ker T<\infty$，
+    且线性空间$H/\rr(T)$的维数是有限的，那么$T$是Fredholm算子。
+\end{3}
+\begin{proof}
+    设$\{[x_1],\cdots,[x_n]\}$是$H/\rr(T)$的一组基，
+    取有限维空间$M=\operatorname{span}\{x_1,\cdots,x_n\}$ (从而是闭子空间)，
+    则有$\rr(T) \oplus M=H$。由习题3.2第6题，$\rr(T)$是闭的，
+    从而$H=\rr(T)\oplus\rr(T)^\perp$，进而$H/\rr(T)$同构于$\rr(T)^\perp$，
+    这说明$\rr(T)^\perp$的维数也是有限的，故$T$是Fredholm算子。
+\end{proof}
+
+\begin{4}
+    设$H$是复的Hilbert空间，$A,B\in\B(H)$且$BA$是Fredholm的。
+    若$\ker B<\infty$，证明：$A,B$都是Fredholm算子。
+\end{4}
+\begin{proof}
+    $\rr(BA)$是$\rr(B)$的子空间，由于$H/\rr(BA)$的维数是有限的，
+    得到$H/\rr(B)$的维数也是有限的。由上题，$B$是Fredholm算子，
+    从而由定理4.5.1和注4.5.2，有Fredholm算子$S$使得$I-SB$是紧算子，
+    那么$A=SBA+(I-SB)A$。这里$S$和$BA$都是Fredholm算子则$SBA$亦是，
+    并且$(I-SB)A$是紧算子，故$A$是Fredholm算子。
+\end{proof}
+
+\begin{5}
+    设$T$是复Hilbert空间$H$上的有界算子。若对某个正整数$n$，$I-T^n$是紧的，
+    那么$T$是Fredholm算子。
+\end{5}
+\begin{proof}
+    $T^n=I-(I-T^n)$是Fredholm算子，则存在$S\in\B(H)$使得$I-T^nS$和$I-ST^n$都是有限秩算子。
+    令$S_1=T^{n-1}S,S_2=ST^{n-1}$，有$I-TS_1$和$I-S_2T$都是紧算子，则$T$是Fredholm算子。
+\end{proof}
+
+\begin{6}
+    证明：Hilbert空间$H$中的Fredholm算子全体是$\B(H)$中的一个开集。
+\end{6}
+\begin{proof}
+    这就是定理4.5.4。不过用绕一点弯的方法解决本题会对接下来有用：考察商映射
+    \[\pi\colon\B(H)\to\B(H)/\K(H), \quad T\mapsto[T],\]
+    $\pi$显然是连续映射。$T$是Fredholm算子等价于存在$S\in\B(H)$
+    使得$I-TS,I-ST\in\K(H)$，即$[I]=[T][S]=[S][T]$，
+    也就是说$[T]$是$\B(H)/\K(H)$中的可逆元。
+
+    因此，\textcolor{cc3366}{$H$中的Fredholm算子全体
+    就是$\pi^{-1}(\B(H)/\K(H)\text{ 中的可逆元全体})$}。
+    由于含单位元的Banach代数中的可逆元全体是开集，
+    得到$H$中的Fredholm算子全体同样是开集。
+\end{proof}
+
+\begin{7}
+    设$H$是复的Hilbert空间，对于$T\in\B(H)$，定义$T$的本质谱为
+    \[\s_e(T)=\{\lambda\in\mathbb{C}:\lambda I-T\text{ 不是 Fredholm 的}\}.\]
+    证明：
+    \begin{itemize}
+        \item[(i)] $\s_e(T)$是一个有界闭集。
+        \item[(ii)] $\displaystyle\s_e(T)\subset\bigcap_{K\in\K(H)}\s(T+K)$。
+    \end{itemize}
+\end{7}
+\begin{proof}
+    (i) 沿用上题的记号，可以发现（用紫色的那句话）
+    \[\s_e(T)=\{\lambda\in\mathbb{C}:\lambda[I]-[T]\text{ 不可逆}\}.\]
+    换句话说，$\s_e(T)=\s([T])$，从而是有界闭集。
+
+    (ii) 对任何的$K\in\K(H)$，都有
+    \[\s_e(T)=\s([T])=\s([T+K])\subset\s(T+K).\qedhere\]
+\end{proof}
+\begin{remark*}
+    Fredholm算子$T$应当理解为一个可逆算子$\tilde{T}$和有限维空间之间的$0$映射的直和，即
+    \[\tilde{T}\oplus0\colon(\ker T)^\perp\oplus\ker T\to\rr(T)\oplus\rr(T)^\perp,
+    \quad(x,y)\mapsto(Tx,0).\]
+    当$\ind T=0$时，$\ker T$和$\rr(T)^\perp$是维数相同的空间，
+    从而两者间有可逆算子$F$，那么$\tilde{T} \oplus F$
+    相当于$T$加上一个从$F$延拓出的有限秩算子 (从而是紧算子)，
+    这就是整个空间上的可逆算子了。因此，对指标为$0$的Fredholm算子$\lambda I-T$，
+    总能找到一个紧算子$K$使得$\lambda I-T-K$可逆，即
+    \[\bigcup_{K\in\K(H)}\rho(T+K)
+    \supset\{\lambda\in\mathbb{C}:\lambda I-T\text{ 是指标为 }0\text{ 的 Fredholm 算子}\}.\]
+    反过来，对于有界算子$T$和紧算子$K$，当$\lambda$为$T+K$的特征值时，
+    $\lambda I-T$就是可逆算子$\lambda I-T-K$加一个紧算子$K$，必是指标为$0$的Fredholm算子，即
+    \[\bigcup_{K\in\K(H)}\rho(T+K)
+    \subset\{\lambda\in\mathbb{C}:\lambda I-T\text{ 是指标为 }0\text{ 的 Fredholm 算子}\}.\]
+    结合两方面知
+    \[\bigcup_{K\in\K(H)}\rho(T+K)
+    =\{\lambda\in\mathbb{C}:\lambda I-T\text{ 是指标为 }0\text{ 的 Fredholm 算子}\},\]
+    取补集有
+    \[\bigcap_{K\in\K(H)}\s(T+K)
+    =\{\lambda\in\mathbb{C}:\lambda I-T\text{ 不是指标为 }0\text{ 的 Fredholm 算子}\}.\]
+\end{remark*}
+
+\begin{8}
+    对$l^2$上算子$S(x_1,x_2,\cdots)=(0,x_1,x_2,\cdots)$，计算$\s_e(S)$。
+    并对每个$\lambda\in\mathbb{C}\backslash\s_e(S)$，给出$\ind(\lambda I-S)$。
+\end{8}
+\begin{proof}[解答]
+    简记$v_\lambda=(1,\lambda,\lambda^2,\cdots)$。由于$S^*$是左移位算子，有
+    \[\ker(\lambda I-S^*)=\mathbb{C}v_\lambda \cap l^2
+    =\begin{cases}\mathbb{C}v_\lambda,&|\lambda|<1,\\
+    0,&|\lambda|\geqslant1.\end{cases}\]
+    $\bullet$ 当$|\lambda|\ne1$时，注意到
+    \[\|(\lambda I-S)x\|\geqslant\big|\|\lambda x\|-\|Sx\|\big|
+    =\big||\lambda|-1\big|\|x\|,\]
+    则$\lambda I-S$是下有界的算子，其像是闭的，且是余维数有限的。
+    而$\lambda I-S$是单射，故$\lambda I-S$是Fredholm的，其指标为
+    \[\ind(\lambda I-S)=\dim\ker(\lambda I-S)-\dim\ker(\lambda I-S^*)
+    =\begin{cases}-1,&|\lambda|<1,\\0,&|\lambda|>1.\end{cases}\]
+    $\bullet$ 当$|\lambda|=1$时，下面说明$\rr(\lambda I-S)$不是闭的，
+    由此有$\s_e(S)=\{|\lambda|=1\}$。
+
+    假设$\rr(\lambda I-S)$是闭的，则由
+    \[\rr(\lambda I-S)^\perp=\ker(\lambda I-S^*)=0\]
+    得到$\lambda I-S$是满射，进而是可逆算子，即$\lambda\notin\s(S)$。
+    这和例4.1.8的结论$\s(S)=\{|\lambda|\leqslant1\}$矛盾。
+\end{proof}
+
+\subsection{4.6 正规算子的谱分解}
+\begin{5}
+    设$(X,\mathcal{R},E)$是Hilbert空间$H$上的谱测度空间，
+    $f$是$(X,\mathcal{R})$上的有界可测函数，
+    记谱积分$\displaystyle T=\int_Xf\,{\rm d}E$。
+    证明：$\lambda\in\rho(T)$当且仅当存在$S\in\mathcal{R},E(S)=0$使得
+    \[\inf_{x \in X \setminus S}|f(x)-\lambda|>0.\]
+\end{5}
+\begin{proof}
+    如果存在$S\in\mathcal{R},E(S)=0$
+    使得$\inf\limits_{x \in X \setminus S}|f(x)-\lambda|>0$，那么
+    \[g(x)=\begin{cases}
+        (f(x)-\lambda)^{-1},&x \in X \setminus S,\\
+        0,&x \in S
+    \end{cases}\]
+    是有界可测函数，并且
+    \[(f-\lambda)g=g(f-\lambda)=1-\chi_{S}.\]
+    记$\displaystyle Q=\int_Xg\,{\rm d}E$，进行谱积分得
+    \[(T-\lambda I)Q=Q(T-\lambda I)=I,\]
+    从而$T-\lambda I$可逆，即$\lambda\in\rho(T)$。
+
+    如果当$S\in\mathcal{R},E(S)=0$时
+    不会有$\inf\limits_{x \in X \setminus S}|f(x)-\lambda|>0$，
+    对充分小的$\varepsilon>0$，令
+    \[S=\{x \in X:|f(x)-\lambda|<\varepsilon\},\]
+    则$\inf\limits_{x \in X \setminus S}|f(x)-\lambda|\geqslant\varepsilon>0$，
+    从而$E(S)\ne0$，那么存在$y \in H$使得$E(S)y=y$。
+    由于
+    \[(T-\lambda I)E(S)=\int_X(f-\lambda)\chi_S\,{\rm d}E,\]
+    有
+    \[\|(T-\lambda I)E(S)\|\leqslant\|(f-\lambda)\chi_S\|_\infty\leqslant\varepsilon,\]
+    从而
+    \[\|(T-\lambda I)y\|=\|(T-\lambda I)E(S)y\|\leqslant\varepsilon\|y\|,\]
+    得出$T-\lambda I$不是下有界的，从而其不可逆，即$\lambda\notin\rho(T)$。
+\end{proof}
+\begin{remark*}
+本题的结论通常表述为$\sigma(T)=\operatorname{ess-ran}(f)$，
+这里的$\operatorname{ess-ran}(f)$称为$f$的本质值域，是指
+\begin{align*}
+    \operatorname{ess-ran}(f)&=\{\lambda:\text{对任何 }S\in\mathcal{R},E(S)=0
+    \text{ 都有 }\inf_{x \in X \setminus S}|f(x)-\lambda|=0\}\\
+    &=\{\lambda:\text{对任何 }\varepsilon>0
+    \text{ 都有 }E(\{|f-\lambda|\leqslant\varepsilon\})\ne0\}.
+\end{align*}
+\end{remark*}
+
+\begin{6}
+对于Hilbert空间$H$上正规算子$N$，令$E$为$\s(N)$上谱测度，使得
+$$\phi(N)=\int_{\s(N)}\phi\,{\rm d}E,\quad\forall\phi\in C(\s(N)).$$
+证明：$\lambda\in\s_p(N)$当且仅当$E(\{\lambda\})\ne0$.
+\end{6}
+\begin{proof}
+这里提前完成附录G的习题12，本题为其推论。
+
+\textbf{引理.} 若$\phi\in C(\s(N))$，$S=\phi^{-1}(0)$，则$\ker\phi(N)=\rr(E(S))$。
+
+\textbf{引理的证明.} 注意到$\phi(N)\chi_{S}(N)=(\phi\chi_S)(N)=0$，且
+\[\chi_S(N)=\int_{S}{\rm d}E=E(S),\]
+于是$\rr(E(S))\subset\ker\phi(N)$。
+
+反过来，对一切正整数$n$，记
+\[S_n=\big\{\lambda\in\sigma(N):
+\tfrac{1}{n}\leqslant|\phi(\lambda)|<\tfrac{1}{n-1}\big\},\]
+有$|\chi_{S_n}/\phi|\leqslant n$是有界可测函数，且
+$$(\chi_{S_n}/\phi)(N)\phi(N)=(\chi_{S_n})(N)=E(S_n).$$
+那么对$x\in\ker\phi(N)$，有$E(S_n)x=0$，
+由于$S=\s(N)\setminus\bigcup\limits_{n=1}^{\infty}S_n$，有
+$$E(S)x=\Big(I-\sum_{n=1}^\infty E(S_n)\Big)x=x,$$
+得$x\in\rr(E(S))$。
+
+回到原题。令$\phi(z)=z-\lambda$，即得
+\[\ker(N-\lambda I)=\rr(E(\{\lambda\})),\]
+从而$\ker(N-\lambda I)\ne0$当且仅当$\rr(E(\{\lambda\}))\ne0$，这也就是本题结论。
+\end{proof}
+
+\begin{7}
+对于Hilbert空间$H$上正规算子$N$，证明：$N$是自伴算子当且仅当$\s(N)\subset\R$.
+\end{7}
+\begin{proof}
+当$\s(N)\subset\R$，$N^*=\bar{x}(N)=x(N)=N$。
+
+若$N$是自伴算子，由附录引理G.1知$\sigma(N)\subset \mathbb{R}$。
+\end{proof}
+
+\begin{8}
+    对于Hilbert空间$H$上正规算子$N$，$f\in C(\s(N))$。证明：
+    $$\s(f(N))=f(\s(N)).$$
+\end{8}
+\begin{proof}
+    设$\mathcal{A}$是由$N$生成的含幺交换$C^*$--代数，由定理G.10及引理G.2，
+    映射$C(\s(N))\to\mathcal{A},f\mapsto f(N)$是$*$-等距同构，
+    所以$f-\lambda$不可逆等价于$f(N)-\lambda I$不可逆，
+    即$\lambda\in f(\s(N))$等价于$\lambda\in\s(f(N))$.
+\end{proof}
+
+\begin{9}
+设$T$是Hilbert空间$H$上有界线性算子。
+\begin{itemize}
+    \item[(i)] 若$T$是正算子，证明：存在自伴算子$F\in\B(H)$使得$F^2=T$。
+    \item[(ii)] 证明：$T$是正算子当且仅当$\la Tx,x \ra\geqslant0,\forall x \in H$。
+\end{itemize}
+\end{9}
+\begin{proof}
+(i) 取$F=\sqrt{T}$ (参考例4.6.3)，对$z\in\s(T)\subset\R$，
+$\overline{\sqrt{z}}=\sqrt{z}$，则$F^*=\overline{\sqrt{T}}=F$.
+
+(ii) 设$T$是正算子，由于$E_{x,x}(S)=\la E(S)x,x\ra\geqslant0$是正测度，得
+\[\la Tx,x\ra=\int_{[0,\infty)}z\,{\rm d}E_{x,x}\geqslant0.\]
+
+反过来，设$\la Tx,x\ra\geqslant0$，则有$\la Tx,x\ra=\la x,Tx\ra$，
+从而$T$自伴，于是$\s(T)\subset\R$。接下来给出两种做法。
+
+\textbf{方法I.} 对于$\lambda<0$，根据条件有
+$$(-\lambda)\|x\|^2=\la-\lambda x,x\ra
+\leqslant\la(T-\lambda I)x,x\ra\leqslant\|(T-\lambda I)x\|\|x\|,$$
+故$T-\lambda I$下有界，这既说明$T-\lambda I$是单射和$\rr(T-\lambda I)$是闭的，也说明
+\[\rr(T-\lambda I)={ }^\perp\!\ker(T-\lambda I)^*
+={ }^\perp\!\ker(T-\lambda I)={ }^\perp\{0\}=H,\]
+由此$\lambda\notin\s(T)$，于是$\s(T)\subset[0,\infty)$。
+
+\textbf{方法II.} 想法是把$T$拆成正部和负部，用$T$的性质推出负部是$0$。
+这就是说，把$z$拆成$z_+ = \max(z,0)$减去$z_- = \max(-z,0)$，
+两者都是$\s(T)$上的连续函数，有函数演算
+\[T_+ = \int_{\s(T)} z_+\,{\rm d}E,\quad T_- = \int_{\s(T)} z_-\,{\rm d}E.\]
+$T_+,T_-$亦是自伴的，且由谱映射定理知$\s(T_+),\s(T_-)$包含于
+$z_+,z_-$的值域$[0,\infty)$，从而$T_-$有平方根$T_-^\frac{1}{2}$。
+由于$z = z_+ - z_-$，有$T = T_+-T_-$；由于$z_+z_- = 0$，有$T_+T_- = 0$。于是对任何$x \in H$都有
+\[0 \leqslant \la T(T_-x),T_-x \ra = - \la T_-^2x,T_- x \ra
+= - \|T_-^\frac{3}{2}x\|^2 \leqslant 0,\]
+只能$\|T_-^\frac{3}{2}x\| = 0$，即$T_-^\frac{3}{2} = 0$。
+由例4.1.17可知$\|T_-\| = \lim\limits_{n \to \infty}\|T_-^n\|^\frac{1}{n} = 0$，
+最终得出$T = T_+$是正算子。
+\end{proof}
+
+\begin{10}
+    设$T$是Hilbert空间$H$上的有界线性算子。证明：$T$是紧算子
+    当且仅当$T$的值域$\rr(T)$不包含一个闭的无穷维线性子空间。
+\end{10}
+\begin{proof}
+    前推后是非常简单的，如果$T$是紧算子，设其值域包含闭子空间$V$，
+    记$P$为到$V$的投影算子，则有$\rr(P)\subset\rr(T)$，
+    由习题4.2第10题，$P$亦是紧算子。由于$P$在$V$上是单位算子，得出$V$是有限维空间。
+
+    后推前的大致思路是清楚的，$\rr(T)$不包含闭的无限维子空间
+    差不多就是说$T$大约是个有限秩的算子，
+    要处理的主要问题在于如何确保算子的像集是闭的。对此，自然的想法是让$T$变得下有界，
+    也就是要把$T$的特征值较小的部分截掉，方法显然是谱分解，
+    这样留下的算子的特征值有下界，那就是下有界的了。
+    不过题目没说$T$是正规算子，我们要设法将其变为正规的才能进行谱分解，
+    并且其值域要包含于$\rr(T)$，那么合适的考察对象无疑是$TT^*$，
+    至此，下面的过程就是顺理成章的了。
+
+    令$N=TT^*$，则$\s(N)$是$[0,\infty)$的子集，并设其谱分解为
+    \[N=\int_{\s(N)}x\,{\rm d}E.\]
+    对充分小的$\varepsilon>0$，定义$x$的截断函数
+    \[\phi(x)=\begin{cases}
+        x,&x \in S\ =\{\lambda\in\s(N):\lambda\geqslant\varepsilon\},\\
+        0,&x \in S^c=\{\lambda\in\s(N):\lambda<\varepsilon\},
+    \end{cases}\]
+    来关注算子$\phi(N)$。对$\phi(N)$的作用有如下的估计
+    \begin{align*}
+        \langle\phi(N)y,y\rangle=\int_{\s(N)}\phi\,{\rm d}E_{y,y}
+        &=\int_Sx\,{\rm d}E_{y,y}\\
+        &\geqslant\int_S\varepsilon\,{\rm d}E_{y,y}
+        =\varepsilon\langle E(S)y,y \rangle.
+    \end{align*}
+    因为$\phi(N)$限制于$(\ker\phi(N))^\perp$上不改变值域，
+    并注意到$\phi(N)=NE(S)$且$E(S)E(S^c)=0$，这意味着对$y\perp\ker\phi(N)$成立
+    \[\langle E(S)y,y \rangle=\langle E(S)y,y \rangle
+    +\langle E(S^c)y,y \rangle=\|y\|^2,\]
+    推出$\|\phi(N)y\|\geqslant\varepsilon\|y\|$，从而$\rr(\phi(N))$是闭的。
+    由于$\rr(\phi(N))\subset\rr(N)\subset\rr(T)$，
+    题目条件说这时$\rr(\phi(N))$是有限维的空间，即$\phi(N)$是有限秩算子。最终，通过
+    \[\|N-\phi(N)\|\leqslant\|x-\phi\|_\infty\leqslant\varepsilon,\]
+    可知$N$为紧算子，进而$T$亦为紧算子。
+\end{proof}
+\begin{remark*}
+    对于无穷基数$\alpha\leqslant\dim H$，令
+    \[\mathcal{I}_\alpha=\{T\in\B(H):\rr(T)\text{ 不包含闭的 }\alpha\text{ 维子空间}\},\]
+    那本题说的就是$\mathcal{I}_{\aleph_0}=\K(H)$。
+    这方面一个很有趣的结果是\cite{Co} Theorem 17.5 (pp.83--5)，
+    是说$\B(H)$的任何一个闭理想都形如$\mathcal{I}_\alpha$。
+\end{remark*}
+
+\begin{11}[von Neumann不等式]
+    设$T$是Hilbert空间$H$上的一个有界线性算子。
+    对$\mathbb{C}$上解析多项式$\displaystyle p(z)=\sum_{n=0}^{N}a_nz^n$，
+    令$\displaystyle p(T)=\sum_{n=0}^{N}a_nT^n$，
+    记$\|p\|_\infty=\sup\limits_{|z|\leqslant1}|p(z)|$。
+    \begin{enumerate}[label=(\roman*)]
+    \item 若$\|T\|\leqslant1$，证明：$T^*T$是一个自伴算子，且$\sigma(T^*T)\subset[0,1]$。
+    \item 设$\|T\|\leqslant1$。令$\mathcal{D}$为$\sqrt{1-T^*T}$的值域在$H$中的闭包，
+    $\tilde{H}\xlongequal{\rm def}H\oplus\mathcal{D}\oplus\mathcal{D}\oplus\cdots$
+    是$H$和可列个$\mathcal{D}$的直和给出的Hilbert空间 (见习题1.2第13题)。在$\tilde{H}$上定义
+    \[\tilde{T}(x_1,x_2,\cdots)=(Tx_1,\sqrt{1-T^*T}x_1,x_2,\cdots),
+    \quad \forall x_1 \in H,x_n \in \mathcal{D},\quad n=2,3,\cdots.\]
+    证明：$\tilde{T}$是一个等距算子 (即$\|\tilde{T}x\|=\|x\|,\forall x\in\tilde{H}$)。
+    \item 如果$T$是一个余等距算子 (即$T^*$是等距算子)，那么(ii)中定义的算子$\tilde{T}$还是酉算子。
+    \item 若$T$是酉算子，$p$是解析多项式，证明：$\|p(T)\|\leqslant\|p\|_\infty$。
+    \item 若$T$是余等距算子，$p$是解析多项式，证明：$\|p(T)\|\leqslant\|p\|_\infty$。
+    \item 若$T$是等距算子，$p$是解析多项式，证明：$\|p(T)\|\leqslant\|p\|_\infty$。
+    \item 若$\|T\|\leqslant1$，$p$是解析多项式，证明：$\|p(T)\|\leqslant\|p\|_\infty$。
+    \end{enumerate}
+\end{11}
+\begin{proof}
+    (i),\,(ii)略。下面简写自伴算子$\sqrt{1-T^*T}$为$S$。
+    \begin{enumerate}[label=(\roman*)]\setcounter{enum-{list-level}}{2}
+    \item 易知$\tilde{T}$的伴随算子为
+    \[\tilde{T}^*(x_1,x_2,\cdots)=(T^*x_1+Sx_2,x_3,\cdots),\]
+    那么$\tilde{T}^*\tilde{T}=I$，且
+    \[\tilde{T}\tilde{T}^*(x_1,x_2,\cdots)=(T(T^*x_1+Sx_2),S(T^*x_1+Sx_2),x_3,\cdots).\]
+    $T^*$是等距算子是说$TT^*=I$，其推论是
+    \[TS^2T^*=T(I-T^*T)T^*=(I-TT^*)TT^*=0,\]
+    从而$TS=ST^*=0$。由于
+    \[S^3=(I-T^*T)S=S,\]
+    结合$x_2\in\mathcal{D}=\overline{\rr(S)}$可知$S^2x_2=x_2$，因此$\tilde{T}\tilde{T}^*=I$。
+    \item 由于\[p(T)=\int_{\sigma(T)}p\,{\rm d}E,\]
+    有$\|p(T)\|\leqslant\sup\limits_{z\in\sigma(T)}|p(z)|$。
+    由于$\sigma(T)$是$\{|z|=1\}$的子集，结合最大模原理得
+    \[\|p(T)\|\leqslant\sup_{|z|=1}|p(z)|=\|p\|_\infty.\]
+    \item 将余等距算子$T$膨胀成酉算子$\tilde{T}$，则有
+    \[\|p(T)\|\leqslant\|p(\tilde{T})\|\leqslant\|p\|_\infty.\]
+    \item 记$p^*$为$p$的系数全都取共轭后的多项式，对$T^*,p^*$用上一小题的结论有
+    \[\|p(T)\|=\|(p(T))^*\|=\|p^*(T^*)\|\leqslant\|p^*\|_\infty=\|p\|_\infty.\]
+    \item 将模长$\leqslant1$的算子$T$膨胀成等距算子$\tilde{T}$，则有
+    \[\|p(T)\|\leqslant\|p(\tilde{T})\|\leqslant\|p\|_\infty.\qedhere\]
+    \end{enumerate}
+\end{proof}
+
+\begin{12}
+    设$T_1,T_2$是Hilbert空间$H$上的两个Fredholm算子。
+    证明：$\ind T_1=\ind T_2$当且仅当存在连续的Fredholm路径
+    $F\colon[0,1]\to H$上的Fredholm算子使得$F(0)=T_1,F(1)=T_2$。
+\end{12}
+\begin{proof}
+    前推后如下，后推前是推论4.5.1。
+    
+    \textbf{引理 1.} 设$T$是Fredholm算子且$\ind T=0$，则有连续的Fredholm路径
+    $\gamma_1\colon[0,1]\to\B(H)$将$T$和某个可逆算子$Q$连接起来。
+
+    \textbf{1的证明.} 由于$\dim\ker T=\dim\rr(T)^\perp<\infty$，
+    在有限秩算子$B$的扰动下，$Q=T+B$会变为可逆算子 (参考习题4.5第7题的注)，
+    这样一来，路径$\gamma_1(t)=T+tB$就连接了$T$和$Q$。
+    
+    \textbf{引理 2.} 设$U$是酉算子，则存在自伴算子$A$使得$U=e^{{\rm i}A}$。
+
+    \textbf{2的证明.} $U$是正规算子，并且$\s(U)$是$\{|z|=1\}$的子集，因而取Borel可测函数
+    \[\varphi\colon\{|z|=1\}\to[0,2\pi), \quad e^{{\rm i}\theta}\mapsto\theta\]
+    进行谱积分即可得$A$，也就是说，如果令$A=\varphi(U)$，
+    那么就有$U=e^{{\rm i}\varphi}(U)=e^{{\rm i}A}$。
+    
+    \textbf{引理 3.} 设$Q$是可逆算子，则有连续的Fredholm路径
+    $\gamma_2\colon[0,1]\to\B(H)$连接$Q$和$I$。
+    
+    \textbf{3的证明.} 设$Q=W|Q|$为其极分解，
+    $|Q|$是正算子，并且引理2说明$W$能写成$e^{{\rm i}A}$的形式。
+    记$E$是$|Q|$对应的谱测度，那么
+    \[\gamma_2(t)=e^{{\rm i}tA}|Q|^t
+    =e^{{\rm i}tA}\int_{\s(|Q|)}x^t\,{\rm d}E\]
+    就连接了$\gamma_2(0)=I$和$\gamma_2(1)=Q$。
+    既然$Q$是可逆的，$|Q|$也就可逆，即$0\notin\s(|Q|)$，
+    这确保了$x\in\s(|Q|)$有正下界$\delta$，
+    从而$\s(|Q|)\subset[\delta,\||Q|\|]$上的函数族
+    $\{x^t\}$关于参数$t\in[0,1]$一致连续，进而$|Q|^t$是对$t$连续的。
+
+    回到原题。设算子$T_1,T_2$使得$\ind T_1=\ind T_2$，
+    取Fredholm算子$S$使得$I-ST_2=K$，其中$K$是紧算子，则$\ind T_1S=\ind ST_2=0$。
+    结合引理1和3可知，有路径$\gamma:=\gamma_1\cup\gamma_2$
+    （二倍速播放）能连接$\gamma(0)=T_1S$和$\gamma(1)=I$，进而路径
+    \[F(t)=\gamma(t)T_2+(1-t)T_1K\]
+    连接了$F(0)=T_1ST_2+T_1K=T_1$和$F(1)=T_2$。
+\end{proof}
+
+\subsection**{参考文献}
+\begin{references}
+    \bibitem[Co]{Co}
+        J. B. Conway.
+        \textit{A Course in Operator Theory}.
+        American Mathematical Society, 2000.
+    \bibitem[Ta]{Ta}
+        M. E. Taylor. \textit{Partial Differential Equations II}.
+        Applied Mathematical Sciences 116. Springer, 2011.
+    \bibitem[Xu]{Xu}
+        徐胜芝. 实分析与泛函分析. 大学数学学习方法指导丛书 (II辑). 复旦大学出版社, 2006.
+    \bibitem[Yo]{Yo}
+        K. Yosida.
+        \textit{Functional Analysis}.
+        Classics in Mathematics. Springer, 1980.
+\end{references}

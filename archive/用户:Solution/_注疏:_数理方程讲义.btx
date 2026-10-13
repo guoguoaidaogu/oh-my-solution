@@ -1,0 +1,111 @@
+\setdisplaytitle{注疏：数理方程讲义}
+\sethtmltitle{注疏：数理方程讲义}
+\setcounter{section}{1}
+\section{调和方程}
+本章实际上就是\cite{HL}一书的Chapter 1，有删节.
+
+pp.18--9
+如下证明更简单：
+
+考虑$U=\{x\in\varOmega\mid u(x)=\underset{\overline{\varOmega}}{\max}\ u\}$。
+由(2.27) $U$是开集，又$U$是闭集，所以$U=\varnothing$或$\varOmega$，
+亦即$\underset{\overline{\varOmega}}{\max}\ u$不在$\varOmega$取到，或$u$为常数。
+
+p.27
+
+\begin{align*}
+    &\quad\ \Delta v\\
+    &=\Delta(\varphi^2)|\nabla u|^2+2\nabla(\varphi^2)\nabla|\nabla u|^2+\varphi^2\Delta(|\nabla u|^2)\\
+    &=(2\varphi\Delta \varphi+2|\nabla \varphi|^2)|\nabla u|^2
+    +2\cdot2\varphi(\partial_{x_i}\varphi)_{1\leqslant i\leqslant n}\cdot\left(\partial_{x_i}\Big(\sum_{j=1}^n(\partial_{x_j}u)^2\Big)\right)_{1\leqslant i\leqslant n}+\varphi^2\Delta(|\nabla u|^2)\\
+    &=(2\varphi\Delta \varphi+2|\nabla \varphi|^2)|\nabla u|^2
+    +8\varphi\sum_{i=1}^{n}\partial_{x_i}\varphi\sum_{j=1}^n\partial_{x_j}u\partial_{x_ix_j}u+2\varphi^2\sum_{i,j=1}^n(\partial_{x_ix_j}u)^2\quad\textup{由 (2.42)}\\
+    &=(2\varphi\Delta \varphi-6|\nabla \varphi|^2)|\nabla u|^2
+    +8|\nabla \varphi|^2|\nabla u|^2+8\varphi\sum_{i,j=1}^{n}\partial_{x_i}\varphi\partial_{x_j}u\partial_{x_ix_j}u+2\varphi^2\sum_{i,j=1}^n(\partial_{x_ix_j}u)^2\\
+    &=(2\varphi\Delta \varphi-6|\nabla \varphi|^2)|\nabla u|^2
+    +2\varphi\sum_{i,j=1}^{n}(2\partial_{x_i}\varphi\partial_{x_j}u+\varphi\partial_{x_ix_j}u)^2.
+\end{align*}
+
+p.30
+
+$n-1$维单位球面面积$\omega_{n-1}$的公式为
+$$\omega_{n-1}=\frac{2\pi^{n/2}}{\varGamma(n/2)}.$$
+复习：
+[[Gamma 函数]]$\varGamma(s)$是定义在$\mathbb{C}$上的亚纯函数，
+$\operatorname{Re}s>0$时表达式为
+$$\varGamma(s)=\int_0^\infty e^{-t}t^{s-1}dt.$$
+直接计算得$\varGamma(1)=1,\varGamma\big(\frac{1}{2}\big)=\sqrt{\pi}$。
+
+分部积分得到，当$\operatorname{Re}s>0$成立$\varGamma(s+1)=s\varGamma(s)$.
+
+p.30 注释
+
+$-\Delta\varGamma$是一个[[分布（泛函分析）|分布]]，
+即具有紧支集的光滑函数的空间$C_0^\infty(\varOmega)$上的一个连续线性泛函.
+
+形式运算中的第一个等式是因为，对于$u \in C_0^\infty(\varOmega)$，Green恒等式成为
+$$u(x)=\int_\varOmega\varGamma(x-y)(-\Delta u(y))\,dy.$$
+
+p.36
+
+没必要引入$|x-x^0|^\frac{1}{3}$这种奇怪的东西。
+
+把$|x-x^0|^\frac{1}{3}$换成$\delta>0$，
+先让$\delta$充分小使$|I_1(x)|$很小，
+再让$x\rightarrow x^0$于是
+$$\frac{(1-|x|^2)(g(y)-g(x^0))}{2\pi|x-y|^2}$$
+在$\partial B_1\cap\left\{|x-x^0|\leqslant\delta\right\}$一致趋于$0$
+（此时$\delta$已取定）使得$|I_2(x)|$很小即可。
+
+p.40
+
+当$\alpha=\dfrac{|x-x^0|}{1-|x^0|}<\sqrt{2}-1$时，
+$$\frac{2\sum\limits_{i=1}^n|(x-x^0)_i(y-x^0)_i|+|x-x^0|^2}{|y-x^0|^2}
+\leqslant2\alpha+\alpha^2<1.$$
+故由$(1-t)^{-\frac{3}{2}}$的幂级数展开在$|t|<1$时绝对一致收敛，得到
+$$\left(1-\frac{2(x-x^0)\cdot(y-x^0)-|x-x^0|^2}{|y-x^0|^2}\right)^{-\frac{3}{2}}$$
+展开后各项可任意重排，特别地，可以排成关于$x-x^0$的幂级数展开。
+
+p.44
+
+(2.68)的$\alpha_1$前面的负号是因为，在左端点$0$处
+$\dfrac{\partial u}{\partial \boldsymbol{n}}=-\dfrac{\partial u}{\partial x}$.
+
+Sturm--Liouville定理的证明见第二章习题解答的最后。
+
+\section{热方程}
+p.60 命题3.2.3
+
+\begin{align*}
+    \sum_{k=1}^\infty|a_k|^2k^2
+    &=\sum_{k=1}^\infty\bigg|\frac{2}{L}\int_0^L\varphi(x)\sin\frac{k\pi x}{L}dx\bigg|^2k^2\\
+    &=\sum_{k=1}^\infty\bigg|\frac{2}{L}\int_0^L\varphi'(x)\frac{L}{k\pi}\cos\frac{k\pi x}{L}dx\bigg|^2k^2\\
+    &=\Big(\frac{2}{\pi}\Big)^2\sum_{k=1}^\infty|\langle\varphi'(x),\cos\frac{k\pi x}{L}\rangle|^2\\
+    &\leqslant\Big(\frac{L}{\pi}\Big)^2\|\varphi'\|_{L^2[0,L]}^2<+\infty.
+\end{align*}
+
+\section{波动方程}
+
+pp.113--4
+
+(4.28)与(4.32)中$\displaystyle\partial_t\bigg(\cdots\bigg)$
+的形式仍能继续算下去，见定理4.3.2的证明过程以及4.2节习题4解答后的注。
+
+pp.119--20 4.3.2
+
+\qquad 举两个物理现象：
+正是由于在三维空间中声波的传播具有无后效现象（即Huygens原理），
+我们在谈话时可以清楚地听到对方的声音，而不是余音绕梁，三日不绝；
+而在二维空间（即平面）上波的传播会产生弥散现象，这就是一块石头投入水中，
+激起层层波浪而久久不消散的原因。\ （\cite{Zh} p.172，有改动）
+
+\section**{参考文献}
+\begin{references}
+    \bibitem[HL]{HL}
+    Qing Han, and Fanghua Lin.
+    \textit{Elliptic Partial Differential Equations}.
+    Courant lecture notes 1.
+    Courant Institute of Mathematical Sciences, 2000.
+    \bibitem[Zh]{Zh}
+    周蜀林. 偏微分方程. 北京大学数学教学系列丛书. 北京大学出版社, 2005.
+\end{references}

@@ -1,0 +1,582 @@
+\setdisplaytitle{试卷：随机过程}
+\sethtmltitle{试卷：随机过程}
+
+==2025--2026学年春季学期期末（李利平）==
+
+本次考试总时间为3小时5分钟 (9:55-13:00)
+
+满分 $100$ 分, 包含明面上的$15$分的附加分和第四大题的隐藏的$5$分的附加分, 共计$120$分, 超过 $100$ 分的按 $100$ 分记.
+每道题后附上了李利平老师的解答和评论
+
+如无特殊说明, 马氏链均指状态空间是可列集的离散时间马氏链; 符号系统
+$X=\{\Omega,\mathscr F,\mathscr F_n,X_n,\theta_n,\mathbb P^x\}$ 默认表示马氏链的典则实现.
+对于状态点 $a$,
+\[
+    \tau_a:=\inf\{n\geq 0:X_n=a\},\qquad
+    \tau_a^+:=\inf\{n\geq 1:X_n=a\}
+\]
+分别表示 $a$ 的进入时和首中时.
+
+\begin{enumerate}
+    \item[一、]填空题 $(5'\times 5=25')$
+    \begin{enumerate}[label=(\arabic*)]
+        \item 考虑 $\mathbb Z$ 上从 $0$ 出发, (向右) 参数为 $p=2026^{-1}$ 的简单随机游动
+        $X=(X_n)_{n\geq 0}$. 假设 $a>0$ 且 $a\neq 1$. 当 $a=\underline{\qquad\qquad\qquad}$
+        时, $(a^{X_n})_{n\geq 0}$ 是一个鞅.
+
+        \item 下图是一种简单的蛇梯棋. 游戏者抛硬币决定每步 (按数字编号顺序) 前进一格 (正面)
+        或两格 (反面): 进入梯子底部所在格子时, 自动跳入梯子顶部所在格子 (用向上的实线剪头表示); 进入蛇头所在
+        格子时, 则自动滑入蛇尾所在格子 (用向下的虚线剪头表示). 游戏者从起点 (编号为 $1$) 出发, 到达终点 (编号为
+        $9$) 时没有回过起点的概率是 $\underline{\qquad\qquad\qquad}$.
+        \begin{center} \begin{tikzpicture}[scale=0.8,>=stealth] \foreach \x in {0,1,2}{ \foreach \y in {0,1,2}{ \draw (\x,\y) rectangle ++(1,1); } } \node at (0.5,0.5) {1}; \node at (1.5,0.5) {2}; \node at (2.5,0.5) {3}; \node at (2.5,1.5) {4}; \node at (1.5,1.5) {5}; \node at (0.5,1.5) {6}; \node at (0.5,2.5) {7}; \node at (1.5,2.5) {8}; \node at (2.5,2.5) {9}; \draw[->,thick] (1.5,0.75) -- (0.5,2.25); \draw[->,thick] (2.5,0.75) -- (1.5,1.25); \draw[->,thick,dashed] (0.5,1.25) -- (0.5,0.75); \draw[->,thick,dashed] (1.5,2.25) -- (2.5,1.75); \node[below] at (0.5,0) {START}; \node[above] at (2.5,3) {FINISH}; \end{tikzpicture} \end{center}
+
+        \item 给定一列满足 $\sum_{k\geq 0}a_k=1$ 的正数 $a_k(>0)$. 考虑状态空间为 $E=\mathbb N$,
+        转移矩阵为
+        \[
+        P=
+        \begin{pmatrix}
+            a_0&a_1&a_2&a_3&\cdots\\
+            1&0&0&0&\cdots\\
+            \frac12&\frac12&0&0&\cdots\\
+            \vdots&\vdots&\vdots&\vdots&\ddots\\
+            \frac1i&\frac1i&\cdots&\frac1i&\cdots\\
+            \vdots&\vdots&\vdots&\vdots&\ddots
+        \end{pmatrix}
+        \]
+        的马氏链 $X$. 记 $\mu=(\mu_k)_{k\geq 0}$ 为其不变测度, 且 $\mu_0=1$. 对于
+        $k\geq 1$, $\mu_k=\underline{\qquad\qquad\qquad}$.
+
+        (\textbf{提示:} 记 $b_k:=\sum_{i\geq k}a_i$. 尝试用 $a_k$ 和 $b_k$ 给出表达式.)
+
+        \item 下图是由 $6$ 个节点构成的电路图, 每条边的电阻均为 $1$. 考虑与之对应的可逆马氏链
+        $X=(X_n)_{n\geq 0}$. 计算
+        $\mathbb P^a(\tau_c<\tau_d)=\underline{\qquad\qquad\qquad}$,
+        $\mathbb P^a(\tau_a^+<\tau_c)=\underline{\qquad\qquad\qquad}$.
+        \begin{center} \begin{tikzpicture}[scale=1, every node/.style={circle,fill=black,inner sep=1.5pt}] \node[label=left:$e$] (e) at (0,3) {}; \node[label=right:$f$] (f) at (3,3) {}; \node[label=left:$d$] (d) at (0,0) {}; \node[label=right:$c$] (c) at (3,0) {}; \node[label=below:$a$] (a) at (1,1.5) {}; \node[label=below:$b$] (b) at (2,1.5) {}; \draw (e)--(f)--(c)--(d)--(e); \draw (e)--(a)--(d); \draw (a)--(b); \draw (b)--(f); \draw (b)--(c); \end{tikzpicture} \end{center}
+        
+    \end{enumerate}
+
+    \begin{proofc}[解答]
+        \begin{enumerate}[label=(\arabic*)]
+            \item $\boxed{q/p=2025}$.
+
+            \item $\boxed{3/7}$.
+
+            记 $p_i$ 为从格子 $i$ 出发, 到达终点前没有回过起点的概率. 那么, 根据游戏规则,
+            有如下递推关系:
+            \[
+                p_1=\frac12p_7+\frac12p_5,\quad
+                p_5=\frac12p_7,\quad
+                p_7=\frac12p_4+1/2,\quad
+                p_4=\frac12p_5.
+            \]
+            联立计算即得 $p_1=3/7$.
+
+            \item $\boxed{\frac{1}{k+1}b_k+\frac{k}{k+1}a_k}$由第四大题结论可知, $X$ 存在唯一的不变测度. 由不变测度的条件
+            $\mu P=\mu$ 可以得到
+            \[
+                a_k+\frac{\mu_{k+1}}{k+1}+\frac{\mu_{k+2}}{k+2}+\cdots=\mu_k,\quad k\geq 0.
+            \]
+            计算前两项 (通过前后两个式子作差可以具体计算):
+            \[
+                \mu_1=\frac12(b_1+a_1),\qquad
+                \frac32\mu_2=\mu_1-a_1+a_2=\frac12(b_1-a_1)+a_2=\frac12b_2+a_2.
+            \]
+            不难猜测 $\mu_k$ 满足下面的表达式:
+            \[
+                \mu_k=\frac{1}{k+1}b_k+\frac{k}{k+1}a_k,\quad k\geq 1.
+            \]
+            用归纳法直接验证.
+
+            \item $\boxed{1/3}$; $(v(x):=\mathbb P^x(\tau_c<\tau_d)$ 满足 $v(c)=1$, $v(d)=0$: $e,a$
+            对称, $b,f$ 对称, 即得 $v(a)=v(e)$, $v(b)=v(f)$. 容易计算得到
+            $v(a)=v(e)=1/3$, $v(b)=v(f)=2/3$.)
+
+            $\boxed{6/11}$. $(v(x):=\mathbb P^x(\tau_a<\tau_c)$ 满足 $v(a)=1$, $v(c)=0$.
+            计算可得 $v(b)=5/11$, $v(d)=6/11$, $v(e)=7/11$, $v(f)=4/11$. 于是,
+            $C_{\mathrm{eff}}(a,c)=i(a\to c)=15/11$. 而 $c(a)=3$. 因此,
+            $\mathbb P^a(\tau_a^+<\tau_c)=1-C_{\mathrm{eff}}(a,c)/c(a)=6/11$.)\qedhere
+        \end{enumerate}
+        填空题没什么太大的问题. 第二道填空题参考解答给出的方法是基于直观完成的, 感兴趣的同学可以考虑如何用借助 i.i.d. 序列给出严格的证明. 
+        
+        最后一道电路图的题, 如果是用解相应位势的方法做, 注意两空对应的 potential $v(x)=\mathbb P^x(\tau_c<\tau_d)$ 和 $v(x)=\mathbb P^x(\tau_a<\tau_c)$ 是不一样的. 做错的同学请仔细检查为什么选取的应该是这两个 potential.
+    \end{proofc}
+
+    \item[二、]$(12')$ 任给 $\mathbb R$ 上严格正\footnote{即 $\mu((0,\infty))=1$. 
+    换言之, $\mu$ 的任意实现 $\xi$ 都是 a.s. 严格正的随机变量.}的分布 $\mu$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明: 存在两个随机变量 $\xi$ 和 $\eta$ 满足
+        \begin{enumerate}[label=\alph*)]
+            \item $\xi$ 服从分布 $\mu$;
+            \item $\mathbb E(1_{\{\eta>t\}}\mid \xi)=e^{-t\xi}$, $\forall t\geq 0$.
+        \end{enumerate}
+
+        (\textbf{提示:} 若随机变量 $e$ 服从参数为 $1$ 的指数分布, 那么对于任何 $\alpha>0$,
+        $e/\alpha$ 服从参数为 $\alpha$ 的指数分布.)
+
+        \item 令 $\xi,\eta$ 是满足上一问所有条件的任意随机变量. 假设 $1/\xi$ 可积.
+        证明: $\eta$ 可积, 并且 $\mathbb E(\eta\mid \xi)=1/\xi$, a.s.
+    \end{enumerate}
+
+    \begin{proofc}[证明]
+        (1) 在某个概率空间 $(\Omega,\mathscr F,\mathbb P)$ 上构造两个独立的随机变量
+        $\xi$ 和 $e$, 其中 $\xi$ 服从分布 $\mu$, $e$ 服从参数为 $1$ 的指数分布. 
+        (如果对乘积测度空间熟悉的话, 也可以简单表述一下这样的概率空间为什么存在.) 
+        再定义 $\eta:=e/\xi$.
+
+        我们来说明它们符合要求. 只需要证明条件 b) 成立. 
+        事实上, 由于 $\xi$ 严格正, 因而 $\eta>t$ 等价于 $e>t\xi$. 
+        用条件期望的 Fubini 定理, 我们有
+        \[
+            \mathbb E(1_{\{\eta>t\}}\mid \xi)
+            =\mathbb E(1_{\{e>t\xi\}}\mid \xi)
+            =\mathbb E(1_{\{e>ty\}})|_{y=\xi}=e^{-t\xi}.
+        \]
+
+        (2) 在条件 b) 两边求期望可知: $\mathbb P(\eta>t)=\mathbb E e^{-t\xi}$. 
+        特别地, 取 $t=0$ 得 $\eta>0$, a.s. 也就是说, $\eta$ 是严格正的随机变量. 那么, 用 Fubini 定理,
+        \[
+            \mathbb E\eta=\int_0^\infty\mathbb P(\eta>t)dt
+            =\int_0^\infty\mathbb E e^{-t\xi}dt
+            =\mathbb E\int_0^\infty e^{-t\xi}dt
+            =\mathbb E(1/\xi)<\infty.
+        \]
+        这就证明了 $\eta$ 的可积性.
+
+        为了证明最后一个等式, 注意到 $1/\xi$ 是 $\sigma(\xi)$ 可测的. 
+        因而只需要验证: 对于任何 $B\in\mathcal B(\mathbb R)$,
+        \[
+            \mathbb E(\eta 1_B(\xi))=\mathbb E\left(\frac{1_B(\xi)}{\xi}\right). \tag{1}
+        \]
+        事实上, 由 Fubini 定理, 左边等于
+        \[
+            \mathbb E\left(1_B(\xi)\int_0^\eta dt\right)
+            =\int_0^\infty \mathbb E(1_B(\xi)1_{\{\eta>t\}})dt.
+        \]
+        用条件 b) 及条件期望的定义可得
+        $\mathbb E(1_B(\xi)1_{\{\eta>t\}})=\mathbb E(e^{-t\xi}1_B(\xi))$.
+        代入上式得
+        \[
+            \mathbb E(\eta 1_B(\xi))
+            =\int_0^\infty \mathbb E(e^{-t\xi}1_B(\xi))dt
+            =\mathbb E\left(1_B(\xi)\int_0^\infty e^{-t\xi}dt\right)
+            =\mathbb E\left(\frac{1_B(\xi)}{\xi}\right).
+        \]
+        证毕.
+
+        这道题目是基于给定的 (随机) 信息, 构造符合要求的指数分布随机变量. 相关事实在很多连续时间的随机过程模型中会遇到, 构造出来的指数分布随机变量通常用来表示随机过程在某些位置的 holding time. 比如说, 可列状态空间 $E$ 上的连续时间马氏链在两次跳跃之间通常会有一段 “停留”, 停留的时长 (对应 $\eta$) 便是基于其嵌入链 (这是一个离散时间马氏链) 所在位置 (对应题目中的条件信息 $\xi$) 的指数分布随机变量. 
+        
+        解决这道题目的关键是下面几点: 1. 随机变量的独立耦合 (请回顾上学期概率论考试相同位置的大题); 2. 用条件期望的定义来证明和它有关的等式 (这是课上反复强调过的); 3. Fubini 定理的使用技巧 (请回顾 24 年秋概率论考试相同位置的大题). 不熟悉条件期望的 Fubini 定理 (当然, 我还是希望大家能熟练掌握这个工具) 的同学也可以用条件期望的定义和通常的 Fubini 定理来证明相应等式 (1): 
+        任取 $B\in\mathcal B(\mathbb R)$, \[ \begin{aligned} \mathbb E(1_{\{\eta>t\}}1_B(\xi)) &=\mathbb E(1_{\{e>t\xi\}}1_B(\xi)) =\iint_{x>ty}1_B(y)\mu_e(dx)\mu_\xi(dy)\\ &\overset{\mathrm{Fubini}}{=} \int_{\mathbb R}1_B(y)\mu_\xi(dy)\int_{ty}^\infty \mu_e(dx) =\int_{\mathbb R}e^{-ty}1_B(y)\mu_\xi(dy)\\ &=\mathbb E(e^{-t\xi}1_B(\xi)), \end{aligned} \] 其中, $\mu_e$ 和 $\mu_\xi$ 分别表示 $e$ 和 $\xi$ 的分布 (测度). 
+        
+        条件期望是概率论中最重要的概念之一. 希望大家多加注意, 熟练掌握其基本性质和常用技巧, 并在严格理论基础之上逐步建立起自己的直观认识. 这道题目出现的问题比较多 (得分率不到 30\%, 所有题目里最低), 比较典型的有: 
+        \begin{enumerate}[label=(\arabic*)] 
+            \item 构造 $e$ 和 $\xi$ 时没有要求二者独立, 但直接使用条件期望的 Fubini 定理. (请注意, Fubini 定理只能在独立假设下才能用, 对应实分析中的乘积测度.) 
+            \item 有不少同学直接交换积分和条件期望的顺序: \[ \mathbb E\left(\int_0^\infty 1_{\{\eta>t\}}dt\mid \xi\right) =\int_0^\infty \mathbb P(\eta>t\mid \xi)dt. \] 
+            少数同学大概意识到课上并没有讲到这个结论, 尝试用积分 $\int_0^\infty$ 的极限表示和条件期望的控制收敛定理 (或单调收敛定理) 来给出上述操作的证明. 
+            
+            然而, 这样做严格来说是有问题的. 最困难的地方在于, 右侧要同时处理 (积分) 不可数个条件期望 $\mathbb P(\eta>t\mid\xi)$. 请注意, 每个条件期望都是在 a.s. 意义下定义的. 也就是说, 对于每个 $t$, $\mathbb P(\eta>t\mid\xi)$ 都在某个零概率集 $N_t$ 上没有定义 (或随意指定定义). 同时处理所有 $\mathbb P(\eta>t\mid\xi)$ 时, 原则上要排除 $N=\bigcup_{t>0}N_t$ 中的所有元素. 而 $N$ 很难是一个零概率集. (这也是处理连续时间随机过程时会遇到的最本质困难之一.) 课上讲过的所有关于条件期望的讨论, 都只是同时处理至多可数个条件期望. 请大家仔细检查这一点. 
+            
+            同时处理不可数个条件期望, 需要用到正则条件概率 (regular conditional probability). 下学期的课程会略有涉及. 感兴趣的同学可以阅读 Strook \& Varadhan, Multidimensional diffusion processes, 13-17 页, Theorem 1.1.6-1.1.8. 
+            
+            \item 做第二问时, 很多同学先证明 $\mathbb E(\eta\mid\xi)=1/\xi$. 再在上式两边积分得到 $\mathbb E\eta=\mathbb E(1/\xi)$, 从而断言 $\eta$ 可积 (假设前面已经说明 $\eta$ 非负). 
+            
+            请注意, $\eta$ 的可积性是条件期望存在的前提. 你不能用结论去证明结论赖以成立的前提. 研究对象的存在性在数学讨论中是首要的, 所有数学学科皆是如此. 希望大家在学习和理解数学概念 (特别是一些重要的概念) 时一定要厘清它存在的前提, 遇到相关对象都应该以 “肌肉记忆” 般的习惯快速的检查这些前提条件是否成立. (在概率论中, 比如, 随机变量的可测性; 鞅的适应, 可积性等等.) 
+            \item 有同学在假设 $\mu$ 存在密度函数的前提下, 用 $\eta|\xi$ 的条件密度来讨论相关问题. 条件密度存在的前提较为苛刻, 并不容易简单判断. 如果对条件期望的理解和使用没有困难, 我不建议借助条件密度来处理问题. 
+            \item 第二问不能直接用 $\eta=e/\xi$ 的构造来证明. 这不是题意想表达的方式. (除非能够证明: 如果 $\xi,\eta$ 满足 a), b), 那么 $e:=\xi\eta$ 是和 $\xi$ 独立的, 服从指数分布的随机变量. 这件事实似乎并不容易证明.) 
+            \item 部分同学对条件期望的使用上可能还是有些混乱, 比如出现了类似于 $\mathbb P(e>t\xi\mid\xi)=\mathbb P(e>t\xi)=e^{-t\xi}$ 的表达式. 
+        \end{enumerate}
+    \end{proofc}
+
+    \item[三、]$(8')$ 考虑概率空间 $(\Omega,\mathscr F,\mathbb P)$ 上的一列独立同分布的
+    随机变量 $\{\xi_n,n\geq 1\}$. 假设 $\mathbb E\xi_1=0$, $0<\mathbb E\xi_1^2<\infty$.
+    记 $X_n:=\xi_1+\cdots+\xi_n$, $n\geq 1$. 证明:
+    \[
+        \sup_{n\geq 1}X_n=+\infty,\qquad \inf_{n\geq 1}X_n=-\infty,\quad a.s.
+    \]
+
+    (\textbf{提示:} $\mathbb Z$ 上的对称简单随机游动是特例.)
+
+    \begin{proofc}[证明]
+        和对称简单随机游动的证明完全一样. 用 Kolmogorov $0$-$1$ 律和中心极限定理.
+        细节略.
+
+        这道题目使用的技巧是这两个学期重叠的内容, 没有太多需要解释的地方. 下面几个典型错误请大家重视:
+        \begin{enumerate}[label=(\arabic*)] 
+            \item Kolmogorov $0$-$1$ 律是针对 i.i.d 序列对应的尾事件而言的 (请回顾它的证明过程). 这道题目中应该说明的是, $\{\sup_n X_n=+\infty\}$(有些同学表述事件时, 不习惯加大括号) 是 $\xi_1,\cdots,\xi_n,\cdots$ 的尾事件, 即和该序列的 (任意) 前 $n$ 项无关. 很多同学都错误的表述为和 $X_1,X_2\cdots$ 的前 $n$ 项无关. 
+            \item 少数同学断言: 对于固定常数 $a>0$, $\{\sup_n X_n>a\}$ 是尾事件. 这是不对的. 直观上来说, 前若干项只能提供有限值, 因而不会影响 $\sup_n X_n$ (或类似的极限) 是否无穷 (反过来, 是否有限); 但显然会影响 $\sup_n X_n$ 能否超过某个给定的阈值. 请尝试自行举反例. 
+            \item 部分同学注意到 $X_n$ 是鞅, 考虑使用 Doob 极大不等式估计 $X_N^*=\sup_{1\leq n\leq N}X_n$. 请注意, Doob 极大不等式只能针对非负 (下) 鞅使用, 原则上只能给出 $\sup_{1\leq n\leq N}|X_n|$ 的估计. (当然, 它也不能解决当前的问题.) 
+            \item 仍然有几个同学断言: 由 $\sup_n X_n<+\infty$, a.s., 可推知存在 $M>0$ 使得, $|X_n|<M$, a.s., $\forall n$. 
+            \item 有人断言 $X_n$ 是个马氏链. 注意, $X$ 的状态空间未必是可数集, 它的每步转移机制不能用矩阵表示. 它不一定是马氏链. (但它是独立增量过程, 即增量相互独立的过程; 这是另一个可以从简单随机游动出发加以推广的方向. 连续时间的独立增量过程即 Lévy 过程, 我们在课上应该提过这一点.) 
+            \item 有同学用下面的符号表示依分布收敛: $X_n\overset{f}{\to}N(0,n\mathbb E\xi_1^2)$. 首先, 在严格的证明叙述中, 极限右边最好不要出现 $n$; 其次, 我很少见到用 $f$ 来表示依分布收敛, 通常用 $d$ (in distribution), $w$ (weak convergence), 或 $v$ (vague convergence) 来表示. 
+        \end{enumerate}
+    \end{proofc}
+
+    \item[四、]$(15')$ 考虑状态空间为 $E=\mathbb N$, 转移矩阵为
+    \[
+    P=
+    \begin{pmatrix}
+        p_{0,0}&p_{0,1}&p_{0,2}&p_{0,3}&\cdots\\
+        p_{1,0}&0&0&0&\cdots\\
+        p_{2,0}&p_{2,1}&0&0&\cdots\\
+        p_{3,0}&p_{3,1}&p_{3,2}&0&\cdots\\
+        \vdots&\vdots&\vdots&\vdots&\ddots\\
+        p_{k,0}&p_{k,1}&\cdots&p_{k,k-2}&p_{k,k-1}&\cdots\\
+        \vdots&\vdots&\vdots&\vdots&\vdots&\ddots
+    \end{pmatrix},
+    \]
+    的马氏链 $X=(X_n)_{n\geq 0}$. 其中, $p_{0,k}>0$, $p_{i,j}>0$,
+    $\forall k\geq 0$, $i\geq 1$, $0\leq j\leq i-1$; 矩阵中的其余元素均为 $0$.
+    \footnote{$P$ 的第一行每个元素都是正的；
+    第 $n\,(\geq 2)$ 行的前 $n-1$ 个元素是正的，其余都是零. 填空题第三题是它的特例.}
+    证明: $X$ 是不可分, 非周期, 常返马氏链.
+
+    (\textbf{提示:} 考虑马氏链在 $0$ 之外的运动机制和事件 $\{\tau_0^+>m\}$ 的直观含义.)
+
+    \begin{proofc}[证明]
+        \textbf{不可分.} $0$ 和其它状态都互达. 任取 $0<i,j\in\mathbb N$. 
+        显然, $i\to 0$, $0\to j$. 因此 $i\to j$. 反之亦然.
+
+        \textbf{非周期.} $0\to 1\to 0$, 以及 $0\to 2\to 1\to 0$ (这里的箭头均表示一步可达).
+        这说明 $0$ 非周期. 再由不可分性就得到所有状态都非周期. (也可以直接验证状态 $i$ 非周期.)
+
+        \textbf{常返.} 只需证明 $\mathbb P^0(\tau_0^+=\infty)=0$. 
+        对于 $m\geq 1$, $\{\tau_0^+>m\}$ 相当于, $X$ 的前 $m$ 步没有返回 $0$. 
+        注意到, 若 $X_1(\omega)=i\leq m-1$, 则同一条轨道 $i$ 步之内必然回到 $0$. 
+        (每走一步, 离 $0$ 的距离至少减少 $1$.) 因此
+        \footnote{这是一种直观表述, 它可以按照下述方式严格证明.
+        
+        第一步, 用归纳法证明: 对于任何 $i\geq 1$, $\mathbb P^i(\tau_0^+>i)=0$. 
+        显然, 这个结论对 $i=1$ 成立. 假设对 $\leq i$ 均成立. 那么,
+        $\mathbb P^{i+1}(\tau_0^+>i+1)=
+        \mathbb E^{i+1}(\mathbb P^{X_1}(\tau_0>i))$.
+        注意到 $\mathbb P^{i+1}(X_1\leq i)=1$. 由归纳假设, 对于 $1\leq j\leq i$,
+        $\mathbb P^j(\tau_0>i)\leq \mathbb P^j(\tau_0^+>j)=0$; 而由 $\tau_0$ 是进入时可知
+        $\mathbb P^0(\tau_0>i)=0$. 由此推知 $\mathbb P^{i+1}(\tau_0^+>i+1)=0$.
+        第二步, 类似用马氏性,
+        $\mathbb P^0(\tau_0^+>m)=\mathbb P^0(\tau_0\circ\theta_1>m-1)
+        =\mathbb E^0(\mathbb P^{X_1}(\tau_0>m-1))$.
+        由第一步的结论可知, 当 $i\leq m-1$ 时, $\mathbb P^i(\tau_0>m-1)=0$. 因此,
+        $\mathbb P^0(\tau_0^+>m)=
+        \mathbb E^0(\mathbb P^{X_1}(\tau_0>m-1);X_1\geq m)
+        \leq \mathbb P^0(X_1\geq m)$.}
+        \[
+            \mathbb P^0(\tau_0^+>m)\leq \mathbb P^0(X_1\geq m)=\sum_{k\geq m}a_k.
+        \]
+        令 $m\uparrow\infty$ 即得 $\mathbb P^0(\tau_0^+=\infty)=0$.
+
+        这道题目对于严格证明 $\mathbb P^0(\tau_0^+>m)\leq \mathbb P^0(X_1\geq m)$ (或类似结论) 的步骤设置了最高 5 分的隐藏附加分, 有几位同学做得非常不错 (考试时来不及这样考虑的同学建议有空时也严格写一写). 大家应该能从这道题目进一步认识到马氏过程的直观性, 同时也应当能理解, 马氏性 (约 1906 年) 的出现为何会远早于概率论的公理化 (1933 年). 
+        
+        从公理化的角度来说, 转移矩阵只能给出过程的有限维分布族, 从而在数学上完全决定过程的分布 $\mathbb P^x$. 相关结论应该在公理化框架内由分布 $\mathbb P^x$ 来表述, 并完成证明. 对于初学者来说, 越是直观而简单的事实, 越值得花些力气严格写一写它在数学上应该如何完成证明. 这一方面可以巩固你对概率公理化的认识, 另一方面也能够帮助你建立直观和数学之间的联系. 以后遇到更复杂的问题, 才更有可能在直观的 “指导” 下完成严格的数学证明. 
+        
+        有几个典型错误请大家留意: 
+        \begin{enumerate}[label=(\arabic*)] 
+            \item 请注意, $\tau_0^+=\tau_0\circ\theta_1+1$ 对于所有的 $\omega$ 都成立, 不需要引入概率测度来考察. 但 $\tau_0^+=\tau_0^+\circ\theta_1+1$ 一般不对. 这是非常典型的错误. 
+            \item 有同学想到了用某次作业中的结论 (见补充问题 5.2.4) 来判断常返性: $0,1$ 互达, 它们的常返/暂留性是一致的; 常返, 等价于 $\mathbb P^0(\tau_1^+<\infty)=\mathbb P^1(\tau_0^+<\infty)=1$. 其中, $\mathbb P^1(\tau_0^+<\infty)=1$ 是显然的 (根据有限维分布的定义, $\mathbb P^1(X_1=0)=p_{1,0}=1$). 但 $\mathbb P^0(\tau_1^+<\infty)=1$ 却并不能直接得到. 需要注意, 这两个条件缺一不可; 参见补充问题 5.2.4 (3). 
+        \end{enumerate}
+    \end{proofc}
+
+    \item[五、]$(20')$ 考虑可列集 $E$ 上不可分, 正常返马氏链
+    $X=\{\Omega,\mathscr F,\mathscr F_n,X_n,\theta_n,\mathbb P^x\}$.
+    它的转移函数记作 $p(x,y)_{x,y\in E}$, 平稳分布记作 $\pi=(\pi_x)_{x\in E}$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item $(*$ 附加 $10$ 分$)$ 证明: 对于任何 $x,y\in E$, $\mathbb E^x\tau_y<\infty$.
+
+        (\textbf{提示:} 利用 $\mathbb E^y\tau_y^+<\infty$ 和马氏性证明, 
+        如果 $p(y,a)>0$, 且 $a\neq y$, 那么 $\mathbb E^a\tau_y^+<\infty$.)
+
+        \item 记 $p$ 的对偶为 $\widehat p(x,y):=\pi_y p(y,x)/\pi_x$, 相应的对偶马氏链记作
+        $\widehat X=\{\Omega,\mathscr F,\mathscr F_n,X_n,\theta_n,\widehat{\mathbb P}^{\,x}\}$.
+        证明: 对于任意 $n\geq 0$ 和任意状态序列 $x_0,\cdots,x_n\in E$,
+        \[
+            \pi_{x_0}\mathbb P^{x_0}(X_0=x_0,\cdots,X_n=x_n)
+            =
+            \pi_{x_n}\widehat{\mathbb P}^{\,x_n}(X_0=x_n,\cdots,X_n=x_0).
+        \]
+
+        \item 任取并固定 $o\in E$. 证明: 对于任何 $o\neq x,y\in E$, 以及 $n\geq 0$,
+        $\pi_x\mathbb P^x(X_n=y,n<\tau_o)=
+        \pi_y\widehat{\mathbb P}^{\,y}(X_n=x,n<\tau_o)$.
+
+        \item 记 $\mathbb E^\pi:=\sum_{x\in E}\pi_x\mathbb E^x$,
+        $\widehat{\mathbb E}^{\,\pi}:=\sum_{x\in E}\pi_x\widehat{\mathbb E}^{\,x}$.
+        证明: $\mathbb E^\pi\tau_o=\widehat{\mathbb E}^{\,\pi}\tau_o$.
+    \end{enumerate}
+
+    \begin{proofc}[证明]
+        (1) 利用马氏性和 $\tau_y^+=1+\tau_y\circ\theta_1$, 我们有
+        \footnote{事实上, 由于 $\tau_y$ 未必有界, 严格来说, (M3) 的使用需要做些调整. 注意到
+        $\mathbb E^y\tau_y^+=1+\mathbb E^y(\tau_y\circ\theta_1)
+        =1+\lim_{n\uparrow\infty}\mathbb E^y((\tau_y\wedge n)\circ\theta_1)$.
+        根据 (M3), $\mathbb E^y((\tau_y\wedge n)\circ\theta_1)
+        =\sum_{a\in E}p(y,a)\mathbb E^a(\tau_y\wedge n)$. 令 $n\uparrow\infty$,
+        应用单调收敛定理就得到最终的等式.}
+        \[
+            \mathbb E^y\tau_y^+
+            =1+\mathbb E^y(\mathbb E^y(\tau_y\circ\theta_1|\mathscr F_1))
+            =1+\mathbb E^y(\mathbb E^{X_1}(\tau_y))
+            =1+\sum_{a\in E}p(y,a)\mathbb E^a(\tau_y).
+        \]
+        于是, 当 $p(y,a)>0$, 且 $a\neq y$ 时, $\mathbb E^a\tau_y^+=\mathbb E^a\tau_y<\infty$.
+
+        只需要考虑 $x\neq y$ 的情形. 由于 $y$ 可达 $x$, 因而存在不包含 $x,y$ 的有限状态序列
+        $a_1,\cdots,a_n$, 满足 $p(y,a_1)>0$, $p(a_1,a_2)>0$, $\cdots$, $p(a_n,x)>0$.
+        由上一段的讨论可知, $\mathbb E^{a_1}(\tau_y^+)<\infty$. 重复上面的讨论可得
+        \[
+            \mathbb E^{a_1}\tau_y^+
+            =1+\sum_{a\in E}p(a_1,a)\mathbb E^a(\tau_y)
+            \geq p(a_1,a_2)\mathbb E^{a_2}\tau_y^+.
+        \]
+        由此推得 $\mathbb E^{a_2}\tau_y^+<\infty$. 不断递推, 最终可得
+        $\mathbb E^x\tau_y=\mathbb E^x\tau_y^+<\infty$.
+
+        (2) 用转移函数表示各自的有限维分布, 计算是容易的. (这是课上讲过的内容.)
+
+        (3) 在上一问的结论中固定 $x_0=x$, $x_n=y$. 将 $x_i$, $1\leq i\leq n-1$,
+        取遍所有非 $o$ 的状态, 对所有的等式左右两边分别求和. (和不变测度唯一性的证明步骤类似.)
+
+        (4) 在第三问得到的等式两边关于 $n\geq 0$ 求和可得
+        \[
+            \pi_x\mathbb E^x\sum_{n=0}^{\tau_o-1}1_{\{X_n=y\}}
+            =
+            \pi_y\widehat{\mathbb E}^{\,y}\sum_{n=0}^{\tau_o-1}1_{\{X_n=x\}}.
+        \]
+        对所有 $x\neq o$ 求和, 用 Fubini 定理得到
+        \[
+            \sum_{x\neq o}\pi_x\mathbb E^x\sum_{n=0}^{\tau_o-1}1_{\{X_n=y\}}
+            =
+            \pi_y\widehat{\mathbb E}^{\,y}\tau_o.
+        \]
+        再对所有的 $y\neq o$ 求和, 用 Fubini 定理得到
+        \[
+            \sum_{x\neq o}\pi_x\mathbb E^x(\tau_o)
+            =
+            \sum_{y\neq o}\pi_y\widehat{\mathbb E}^{\,y}\tau_o.
+        \]
+        最后, 只需要注意到 $\mathbb E^o(\tau_o)=\widehat{\mathbb E}^{\,o}(\tau_o)=0$.
+    
+        这道题目本计划引导大家用对偶链的技巧来证明下述结论. 但考虑到难度过大, 才改为证明现在的结论. (事实证明, 对你们不该这么心慈手软...) 感兴趣的同学可以自行尝试证明下述命题 (或查阅 Kenemy \& Snell, Finite Markov chains). 
+        
+        Theorem 1. 考虑有限状态空间 $E$ 上的不可分马氏链 $X$, 其平稳分布记作 $\pi$. 那么, $K(x):=\sum_{y\in E}\pi_y\mathbb E^x\tau_y$ 是一个与 $x\in E$ 无关的常数. (这个常数称作 Kenemy constant.) 
+        
+        下面是两种证明第一问的方法, 供大家参考. 
+        
+        法 II (谭蔚宇). 由不可分性可知, 存在最小的正整数 $n\geq 1$ 满足 $p_{yx}^{(n)}>0$. 于是, $\mathbb P^y(\tau_x<\tau_y^+)\geq \mathbb P^y(X_1\neq y,\cdots,X_{n-1}\neq y,X_n=x)=p_{yx}^{(n)}>0$.
+        注意到, 当 $\tau_y^+>\tau_x$ 时, $\tau_y^+=\tau_y^+\circ\theta_{\tau_x}+\tau_x$. 据此, 利用 $\{\tau_x<\tau_y^+\}\in\mathscr F_{\tau_x}$ 和强马氏性 (由常返性可知 $\tau_x,\tau_y^+<\infty$, a.s.) 可得 
+        \[ \begin{aligned} \infty>\mathbb E^y\tau_y^+ &\geq \mathbb E^y(\tau_y^+;\tau_x<\tau_y^+)\\ &=\mathbb E^y\bigl(\mathbb E^y(\tau_y^+\circ\theta_{\tau_x}+\tau_x\mid\mathscr F_{\tau_x});\tau_x<\tau_y^+\bigr)\\ &\geq \mathbb E^y\bigl(\mathbb E^{X_{\tau_x}}(\tau_y^+);\tau_x<\tau_y^+\bigr)\\ &=\mathbb P^y(\tau_x<\tau_y^+)\mathbb E^x(\tau_y^+). \end{aligned} \] 
+        最后, 由 (3) 即得 $\mathbb E^x\tau_y^+<\infty$. 
+        
+        用下面这种方式可以避免使用强马氏性 (如果对强马氏性实在不熟悉的话). 这几种证明本质上都在利用下述事实: 从 $y$ 出发, 回到 $y$ 之前到过 $x$, 这是一个正概率事件. 
+        
+        法 III (杨奕乐等). 由 $y$ 可达 $x$ 可知, 存在正整数 $n$ ($n$ 取为法 II 中相同的 $n$ 即可) 使得 $\mathbb P^y(\tau_x=n<\tau_y^+)>0$. 注意到, 当 $\tau_y^+>n$ 时, $\tau_y^+=n+\tau_y^+\circ\theta_n$. 用马氏性, \[ \begin{aligned} \infty>\mathbb E^y\tau_y^+ &\geq \mathbb E^y(\tau_y^+;\tau_y^+>n) =\mathbb E^y(n+\tau_y^+\circ\theta_n;\tau_y^+>n)\\ &\geq \mathbb E^y\bigl(\mathbb E^y(\tau_y^+\circ\theta_n\mid\mathscr F_n);\tau_y^+>n\bigr) =\mathbb E^y\bigl(\mathbb E^{X_n}\tau_y^+;\tau_y^+>n\bigr)\\ &\geq \mathbb E^y\bigl(\mathbb E^{X_n}\tau_y^+;\tau_y^+>n=\tau_x\bigr) =\mathbb P^y(\tau_y^+>n=\tau_x)\mathbb E^x\tau_y^+. \end{aligned} \] 同样得到 $\mathbb E^x\tau_y^+<\infty$. 
+        
+        下面出现的一些有关停时的使用错误请大家注意: (初学者考察停时的这些性质时确实很容易犯错, 所以平时做练习的时候一定格外谨慎; 把轨道图像画清楚, 仔细琢磨相关的轨道行为. 经过反复训练, 直观建立起来后, 用起来就得心应手了.) \begin{enumerate}[label=(\arabic*)] \item 当 $\tau_y^+>n$ 时, 下述等式成立: $\tau_y^+=\tau_y^+\circ\theta_n+n$; (4) 而不是 $\tau_y^+=\tau_y^+\circ\theta_n$. 出现这类错误的同学请仔细检查 $\tau_y^+\circ\theta_n$ 的含义. \item 作为 (4) 成立的前提, 条件 $\tau_y^+>n$ 在计算过程中是不能随便丢掉的. 比如说, 有同学写了下面的论述: 取 $n>k$, 由于 $\tau_y^+\geq n\Rightarrow \tau_y^+>k\Rightarrow \tau_y^+=\tau_y^+\circ\theta_k+k$, 因而 $\mathbb P^y(\tau_y^+\geq n,X_k=x)=\mathbb P^y(\tau_y^+\circ\theta_k+k\geq n,X_k=x)$. 但这个等式是不对的, 因为 $\tau_y^+\geq n$ 和 $\tau_y^+\circ\theta_k\geq n-k$ 并不等价. (当 $\theta_k\omega$ 首达 $y$ 的时间大于等于 $n-k$ 时, $\omega$ 完全可能在 $k$ 时刻之前到过 $y$.) 真正与 $\tau_y^+\geq n$ 等价的, 是 $\tau_y^+>k$, $\tau_y^+\circ\theta_k\geq n-k$. 也就是说, 上式要改为 $\mathbb P^y(\tau_y^+\geq n,X_k=x)=\mathbb P^y(\tau_y^+>k,\tau_y^+\circ\theta_k+k\geq n,X_k=x)$. 保证 $\tau_y^+=\tau_y^+\circ\theta_k+k$ 成立的前提 $\{\tau_y^+>k\}$ 不能随便丢掉. \item 有同学认为: $\lim_{n\to\infty}\frac1n\sum_{k=1}^n p_{xy}^{(k)}=\frac{1}{\mathbb E^x\tau_y^+}$. 这是不对的. 遍历性的本质即在于, 左边这个极限和初始位置 $x$ 无关. \item 很多同学在证明最后一问时, 没有单独说明 $x,y=o$ 的情况. 注意, 第三问的断言里并没有给出 $x$ or $y=o$ 时的逆转公式. 出现这类疏忽的同学都扣了 2 分. \end{enumerate}
+    \end{proofc}
+
+    \item[六、]$(20')$ 下图是平面三角格点系统 $G=(S,\mathcal E)$ 的示意图.
+    考虑 $S$ 上的简单随机游动 $X=(X_n)_{n\geq 0}$, 即每一步均等可能地 (以 $1/6$ 概率)
+    跳到当前位置的某个相邻格点的马氏链.
+    \begin{center}
+    \begin{tikzpicture}[
+    scale=0.8,
+    lattice/.style={line width=0.55pt, black},
+    dot/.style={black},
+    small dot/.style={black},
+]
+    \def\h{0.8660254037844386} % sqrt(3)/2
+    \def\rt{1.7320508075688772} % sqrt(3)
+    \begin{scope}
+        \clip
+            (-5.15,-3.45) --
+            (-4.15,-4.05) --
+            (4.15,-4.05) --
+            (5.15,-3.45) --
+            (5.15,3.45) --
+            (4.15,4.05) --
+            (-4.15,4.05) --
+            (-5.15,3.45) -- cycle;
+        \foreach \j in {-5,...,5}{
+            \draw[lattice] (-6,{\h*\j}) -- (6,{\h*\j});
+        }
+        \foreach \i in {-9,...,9}{
+            \draw[lattice]
+                ({\i+(-4.6)/\rt},-4.6) --
+                ({\i+(4.6)/\rt},4.6);
+        }
+        \foreach \s in {-9,...,9}{
+            \draw[lattice]
+                ({\s-(-4.6)/\rt},-4.6) --
+                ({\s-(4.6)/\rt},4.6);
+        }
+        \foreach \i in {-10,...,10}{
+            \foreach \j in {-6,...,6}{
+                \pgfmathsetmacro{\x}{\i+0.5*\j}
+                \pgfmathsetmacro{\y}{\h*\j}
+                \fill[dot] (\x,\y) circle[radius=2.7pt];
+            }
+        }
+    \end{scope}
+    \foreach \j in {-3,-2,-1,0,1,2,3}{
+        \fill[small dot] (-5.55,{\h*\j}) circle[radius=1.2pt];
+        \fill[small dot] (-5.75,{\h*\j}) circle[radius=1.2pt];
+        \fill[small dot] (5.55,{\h*\j}) circle[radius=1.2pt];
+        \fill[small dot] (5.75,{\h*\j}) circle[radius=1.2pt];
+    }
+    \foreach \x in {-3.5,-2,-0.5,1,2.5,4}{
+        \fill[small dot] (\x,4.25) circle[radius=1.2pt];
+        \fill[small dot] (\x,4.45) circle[radius=1.2pt];
+    }
+    \foreach \x in {-3.5,-2,-0.5,1,2.5,4}{
+        \fill[small dot] (\x,-4.25) circle[radius=1.2pt];
+        \fill[small dot] (\x,-4.45) circle[radius=1.2pt];
+    }
+    \foreach \k in {0,1,2}{
+        \fill[small dot] ({-5.35-0.17*\k},{3.55+0.17*\k}) circle[radius=1.2pt];
+        \fill[small dot] ({5.35+0.17*\k},{3.55+0.17*\k}) circle[radius=1.2pt];
+        \fill[small dot] ({-5.35-0.17*\k},{-3.55-0.17*\k}) circle[radius=1.2pt];
+        \fill[small dot] ({5.35+0.17*\k},{-3.55-0.17*\k}) circle[radius=1.2pt];
+    }
+    \node at (0.05,0.42) {$o$};
+    \end{tikzpicture}
+    \end{center}    
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明: $X$ 是不可分, 非周期, 零常返马氏链.
+
+        \item 任取并固定 $o\in S$, $X$ 从 $o$ 出发对应的概率空间记作
+        $(\Omega,\mathscr F,\mathbb P^o)$. 考虑上调和函数 $u:S\to\mathbb R$. 证明:
+        $(\Omega,\mathscr F,\mathbb P^o)$ 上的随机过程 $Y_n:=u(X_n)$, $n\geq 0$, 是上鞅.
+
+        (\textbf{注:} 记六个基本方向向量 (图中点 $o$ 的六条边) 为 $e_i$, $1\leq i\leq 6$.
+        上调和性可以表述为 $u(x)\geq \frac16\sum_{i=1}^6u(x+e_i)$, $\forall x\in S$;
+        即 $u$ 在每一点的值均大于等于 $u$ 在该点所有相邻格点值的算术平均.)
+
+        \item 考虑上一问中的 $u$ 和 $Y_n$. 假设 $u$ 有界. 证明: 对 $\mathbb P^o$-a.s. 的
+        $\omega\in\Omega$, 下述极限存在且有限: $Y_\infty(\omega)=\lim_{n\to\infty}Y_n(\omega)$.
+
+        \item ($*$ 附加 $5$ 分) 用上述结论证明: $S$ 上的有界, 上调和函数恒为常数.
+    \end{enumerate}
+
+    \begin{proofc}[证明]
+        (1) 不可分, 非周期的验证是容易的. 细节略. 
+        为了证明常返性, 将电路围着 $o$ 点逐圈短路 (可以在图上做些标记说明). 只需验证新的电路是常返的. 
+        将第 $n$ 圈短路后的节点记作 $n$. 那么, $n-1$ 和 $n$ 之间的电导率为 $c(n-1,n)=12n-6$. 据此可以计算得到
+        \[
+            R_{\mathrm{eff}}(o\to\infty)=\sum_{n\geq 0}\frac{1}{12n-6}=\infty.
+        \]
+        因此, 短路后的电路常返. 最后, $\mu_x\equiv 1$ 显然是马氏链的不变测度, 而
+        $\sum_{x\in S}\mu_x=\infty$. 因而马氏链是零常返的.
+
+        (2) 对于固定 $n$, 我们有 $d(X_n,o)\leq n$, 其中 $d$ 表示图上的最短路径距离.
+        特别的, $Y_n$ 是有界随机变量, 因而可积. 用马氏性可得
+        \[
+            \mathbb E^o(Y_n|\mathscr F_{n-1})
+            =\mathbb E^o(u(X_1)\circ\theta_{n-1}|\mathscr F_{n-1})
+            =\mathbb E^{X_{n-1}}(u(X_1)),\quad \mathbb P^o\text{-a.s.}.
+        \]
+        根据 $u$ 的上调和性,
+        $\mathbb E^x u(X_1)=\frac16\sum_{i=1}^6u(x+e_i)\leq u(x)$, $\forall x\in S$.
+        因此, $\mathbb E^o(Y_n|\mathscr F_{n-1})\leq u(X_{n-1})=Y_{n-1}$,
+        $\mathbb P^o$-a.s. 这就验证了, $Y_n$ 是上鞅.
+
+        (3) 对下鞅 $Z_n:=-Y_n$ 应用 Doob 上穿不等式, 立刻得到结论. 
+        注意 $u$ 是有界的, 因而极限也是有限的. 
+        \footnote{注意讲义中给出的上穿不等式成立的条件是:
+        $\sup_{n\geq 0}\mathbb E|Z_n|<\infty$. 当 $u$ 有界时显然满足.}
+
+        (4) 任取 $o\neq x\in S$. 只需要证明 $u(x)=u(o)$. 根据 $X$ 的不可分, 常返性,
+        \[
+            \mathbb P^o\left(\bigcap_{k\geq 1}\{\tau_x^{(k)}<\infty\}\right)
+            =
+            \mathbb P^o\left(\bigcap_{k\geq 1}\{\tau_o^{(k)}<\infty\}\right)=1.
+        \]
+        (上角标 $(k)$ 表达第 $k$ 次访问时间.) 于是, $\mathbb P^o$-a.s. 的 $\omega\in\Omega$
+        满足下面的条件: 存在两个时间序列 $n_k,m_k\uparrow\infty$, (与 $\omega$ 有关)
+        $X_{n_k}(\omega)=o$, $X_{m_k}(\omega)=x$, $\forall k\geq 1$.
+        根据第三问的结论, 任取这样的 $\omega$,
+        \[
+            Y_\infty(\omega)=\lim_{k\uparrow\infty}u(X_{n_k}(\omega))
+            =\lim_{k\uparrow\infty}u(X_{m_k}(\omega)).
+        \]
+        这说明 $u(x)=u(o)$. 证毕.
+
+        事实上, 上穿不等式只需要条件 $\sup_{n\geq 0}\mathbb E Z_n^+<\infty$ 就可以
+        (请仔细检查它的证明过程). 当 $u$ 非负时, $Z_n$ 的正部恒为 $0$, 总是满足上穿不等式的条件.
+        此时, 还需要应用 Fatou 引理和上鞅性质得到
+        $\mathbb E^oY_\infty\leq \liminf_n\mathbb E^oY_n\leq \mathbb E^oY_0$;
+        从而断言 $Y_\infty$ 是 a.s. 有限的. 换言之, 相同的思路可以得到比最后一问更强的结论:
+        对于不可分常返马氏链, 非负上调和函数恒为常数. 此即 (上) 调和函数的强 Liouville 性质.
+
+           这道题目是 Doob 鞅论非常有名的一个应用. “马氏性 $\Rightarrow$ 鞅性”+“鞅收敛” 的证明思想适用于很多不同的场景. 相关讨论在参考解答附录 A.1 中已经展开过了, 大部分同学应该很认真的看过. 证明第二问的鞅性时, 也可以模仿附录 A.1, 用 $X$ 的独立增量性 (严格来说, 题目的设定为 $X$ 是马氏链, 它的独立增量性是需要证明的), 和条件期望的 Fubini 定理来证明. 
+    
+    这道题目出现的关键错误不是太多, 有一些小问题请大家略作留意: \begin{enumerate}[label=(\arabic*)] \item 验证鞅性的时候大部分人都忘记说明 $X_n$ 是可积的. \item 有几位同学在证明第四问时, 断言 $u$ 可以在 $S$ 内取到最小值, 进而用最大值原理完成证明. 由于 $S$ 是无限集, 即便 $u$ 有界 (哪怕再加上极限 $\lim_{x\to\infty}u(x)$ 存在), 也不能直接断言它在 $S$ 内能取到最小值. \item 极限 $\lim_{x\to\infty}u(x)$ 存在也不能由第三问的结论简单得到. \item 有同学断言暂留马氏链不存在非零不变测度. 这是不对的: 不可分暂留马氏链可能存在, 也可能不存在; 存在时可能唯一, 也可能不唯一. \item 少数同学认为 $X_n$ 是鞅, 进而用 Jensen 不等式证明 $u(X_n)$ 的鞅性. 请注意, 鞅论默认的设定为: 鞅是实值随机过程; Jensen 不等式也是针对实变量下凸函数表述的. $X_n$ 看似符合鞅性, 本质上是因为它的独立增量性, 以及增量的分布是对称的 (往三组相反方向跳的概率均相等). \end{enumerate} 借此也提醒大家注意: 从马氏性得到鞅性容易忽视的细节. 马氏链 (或一般马氏过程) 的状态空间通常是抽象的非实数系, 它们不能直接作为鞅来考察; 而需要复合上实值函数 (上调和函数等; 在马氏过程理论中, 上调和函数又称作过分函数), 成为一个实值随机过程才可能具有鞅性.
+    \end{proofc}
+\end{enumerate}
+\printfootnotes
+
+==2024--2025学年春季学期期末（应坚刚）==
+本次考试延长了30分钟，考试时长共2.5小时。
+\begin{enumerate}
+    \item (10)
+    叙述并证明Kolmogorov $01$律。
+    \item (20)
+    设 \( (X_n) \) 是一维整数点上从零点出发的简单随机游动，\( p \leqslant q \)，\( T \) 是首次返回零点的时间。
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求 \( P(T < \infty) \)，任意方法均可，需要过程；
+        \item 当\( p < q \)时，定义 \( \xi = \sup_n X_n \)。证明 \( P(\xi < \infty) = 1 \)，并求 \( \xi \) 的分布。
+    \end{enumerate}
+    \item (20)
+    证明：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 设 \( X, Y \) 独立且期望为零，则\( \mathbb{E}|X| \leqslant \mathbb{E}|X+Y| \)；
+        \item 非负上鞅几乎所有的轨道在碰到零后都取值恒为零.
+    \end{enumerate}
+    \item (10)
+    证明有限状态不可分的马氏链正常返。
+    \item (20)
+    设\( abcd \)是正方形，连接处于对角的\( ac \)两点形成一电路图，每条导线的电导均为$1$。
+    求\( P^a(\tau_a<\tau_b^+) \)，\( E^a(\tau_a^+) \)与\( E^a(\tau_b^+) \)，其中\( \tau^+ \)表示首中时，\( \tau \)表示进入时。
+    \item (15)
+    设\( B=(B_t) \)是标准布朗运动。
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求随机变量\( \displaystyle\int_0^1 B_t{\rm d}t \)的数学期望和方差；
+        \item 求随机变量\( \displaystyle\int_0^1 B_t^2{\rm d}t \)的数学期望和方差；
+        \item 设\( 0<s<t \)，求\( E(B_t^2|B_s^2+(B_t-B_s)^2) \)。
+    \end{enumerate}
+    \item (5)
+    证明两个独立的泊松过程不会同时跳跃。
+\end{enumerate}
+
+==2023--2024学年春季学期期末（应坚刚）==
+\begin{enumerate}
+    \item (10)
+    设 \( X, Y \) 独立且期望为零，证明：\( \mathbb{E}|X| \leqslant \mathbb{E}|X+Y| \).
+    \item (20)
+    设 \( (X_n) \) 是一维整数点上零点出发的简单随机游动 \( p < q \)，\( T \) 是首次返回零点的时间。
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求 \( P(T < \infty) \)，需要过程；
+        \item 定义 \( \xi = \sup_n X_n \)。证明 \( P(\xi < \infty) = 1 \)，并求 \( \xi \) 的分布。
+    \end{enumerate}
+    \item (20)
+    设 \( (Y_n) \) 独立且等可能取值 \( \frac{1}{2} \) 和 \( \frac{3}{2} \)。令 \( X_n = Y_1 Y_2 \cdots Y_n \)。
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明 \( (X_n) \) 是鞅；
+        \item 证明 \( X_n \) 几乎处处趋于零。
+    \end{enumerate}
+    \item (20)
+    设 \( X \) 是正方形图 \( abcd \) 上的简单随机游动，\( a \) 与 \( b \) 相邻，与 \( c \) 对角。
+    求 \( P^a(\tau_b < \tau_a) \) 与 \( P^a(\tau_c < \tau_a) \)，其中 \( \tau_a = \inf\{n \geqslant 1: X_n = a\} \)。
+    \item (20)
+    设马氏链 \( X \) 的转移函数图如下：
+        \begin{enumerate}[label=(\arabic*)]
+            \item 问哪些状态暂留，常返，零常返，正常返？
+            \item 求 \( f_{1,4} \)，与 \( \mathbb{E}^4(\tau_4) \)。
+        \end{enumerate}
+    \begin{tikzcd}
+        \textcircled{1} \ar[r, "\frac{1}{3}"]\ar[d, "\frac{1}{3}"'] \ar[loop left, "\frac{1}{3}"]
+        &\textcircled{2} \ar[loop right, "1"]\\
+        \textcircled{4} \ar[r, bend left, "\frac{1}{2}"] \ar[loop left, "\frac{1}{2}"]
+        &\textcircled{3} \ar[l, bend left, "1"]
+    \end{tikzcd}
+    \item (10)
+    设 \( X \) 是一个有限状态马氏链。证明平稳分布存在。
+\end{enumerate}

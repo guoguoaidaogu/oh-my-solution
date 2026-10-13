@@ -1,0 +1,34 @@
+\setdisplaytitle{试卷：高指标理论}
+\sethtmltitle{试卷：高指标理论}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\T}{\mathbb{T}}
+
+==26春(徐胜芝)==
+本次考试总时间约为2.5小时(8:00--10:30)
+\begin{itemize}
+    \item[一、](30pts) Suppose that there is an exact sequence of smooth algebras
+    \[0\to J\xrightarrow{\varphi}A\xrightarrow{\psi}B\to 0.\]
+    \begin{itemize}
+        \item[(0)]Give the definition of the exponential and logarithm map to give the $6$-term exact sequence of K-groups.
+        \item[(1)]Prove that $K_j(B)=0$ if $B$ is trivial in multiplication: $b_1b_2=0$ for $b_1$, $b_2\in B$.
+        \item[(2)]Prove that $A^2$ as the closure of $\operatorname{span}(AA)$ is an ideal in $A$, and that $A/A^2$ is trivially multiplicated.
+        Prove that the inclusion map $\eta:A^2\to A$ induces an isomorphism on K-groups.
+    \end{itemize}
+    \item[二、](20pts) For $0\leqslant t\leqslant 1$, define $(h_tf)(z)=f(tz)$ for $f\in C(\D)$, where $\D=\{z\in\C:|z|\leqslant1\}$.
+    \begin{itemize}
+        \item[(1)]Prove that $(h_t:C(\D)\to C(\D))_{0\leqslant t\leqslant 1}$ is a homotopy. Compute the K-groups $K_j(C(\D))$.
+        \item[(2)]Recall that $K_0(C(\T))=\Z[1]$, $K_1(C(\T))=\Z[\zeta]$, where $\zeta(z)=z$. Prove that every continuous function $f:\D\to\D$ admits a fixed point.
+    \end{itemize}
+    \item[三、](20pts) Recall that the Morita invariance: for $n\in\Z_+$, the map $\theta_1:x\mapsto x\oplus0\oplus\cdots\oplus0$ and $\theta_n: x\mapsto 0\oplus\cdots\oplus0\oplus x$ from a smooth algebra $B$ to the matrix algebra $B(n)$ induce the same isomorphism on K-groups.
+    \begin{itemize}
+        \item[(1)]Let $B$ be a closed ideal of a unital smooth algebra $D$. Prove that the automorphism $ad_b:x\mapsto bxb^{-1}$ for $b\in D^{\times}$ induces the identical map on K-groups.
+        \item[(2)]Let $\varphi,\psi:A\to B$ be two morphisms between smooth algebras such that $\psi(x)=u\varphi(x)v$ and $\varphi(x)=v\psi(x)u$ for some $\{u,v\}\subseteq D$ with $uvu=u$ and $vuv=v$. Prove that $\varphi$ and $\psi$ induce the same morphism on K-groups.
+    \end{itemize}
+    \item[四、](30pts) Let $A$ be a $C^*$-algebra and $H_A$ be the canonical Hilbert $A$-module.
+    \begin{itemize}
+        \item[(1)]Prove that $K_A(H_A)=A\otimes K(l^2)$ and the morphism $\gamma:A\to A\otimes K(l^2),a\mapsto a\otimes e$ induces the same isomorphism on K-groups for any projection $e$ on $l^2$ of rank $1$.
+        \item[(2)]Prove that any adjointable isometry operator $V:X\to H_A$ between Hilbert $A$-modules induces a morphism $ad_V:T\mapsto VTV^*$ from $K_A(X)$ to $K_A(H_A)$ which induces a morphism on K-groups, denoted by $\gamma_X$, independent on $V$.
+        \item[(3)]Give the definition of (adjointable) Fredholm operators $T:X\to Y$ between Hilbert $A$-modules and construct its index if $X\oplus Y\oplus Z\cong H_A$ for some Hilbert $A$-module $Z$.
+    \end{itemize}
+\end{itemize}

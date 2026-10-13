@@ -1,0 +1,272 @@
+\setdisplaytitle{经典数学思想\ 试题}
+\sethtmltitle{经典数学思想\ 试题}
+
+==2026春经典数学思想2期末试卷==
+(杨翎、李平，考试时间：2026年6月25日8:30--10:30)
+
+\textbf{一、\ 非 Euclid 几何（60分）}
+\begin{itemize}
+\item[1.](6'$\times$4=24')判断下列命题是否正确，并说明理由(无论对错与否):
+\begin{enumerate}
+\item[(1)]已知 $\Gamma$ 为连通的局部 Euclid 曲面，$\pi:\,\mathbb{R}^2\rightarrow\Gamma$ 
+为局部等距映射，则 $\pi$ 为满射，且 $\pi$ 将 $\mathbb{R}^2$ 上的直线映为 $\Gamma$ 上的测地线. （编者按：《几何学》（杨翎著）第271页习题第5题改）
+\item[(2)]已知 $\Gamma$ 为完备、\,连通的局部 Euclid 曲面，$\pi:\,\mathbb{R}^2\rightarrow\Gamma$ 为等距覆盖映射，
+$\pi(a)=\pi(b)$，则存在唯一的等距覆盖变换 $\sigma$ 满足 $\sigma(a)=b$. (编者按：《几何学》（杨翎著）定理5.13(2)（第259页）)
+\item[(3)]已知 $G$ 为 $\operatorname{ISO}(\mathbb{R}^2)$ 的子群，且 $G$ 的任意非恒等变换都没有不动点，则 $\mathbb{R}^2/G$ 为局部 Euclid 曲面.
+\item[(4)]已知 $G$ 为 $\operatorname{ISO}(\mathbb{R}^2)$ 的子群，且 $\mathbb{R}^2/G$ 为不可定向的局部 Euclid 曲面，
+则 $G$ 中一定含有不保持定向的等距变换. (编者按：《几何学》（杨翎著）定理5.19（第271页）改)
+\end{enumerate}
+\item[2.](6'$\times$ 4=24')判断下列命题是否正确，并说明理由(无论对错与否):
+\begin{enumerate}
+\item[(1)]球面 $S^2$ 上保持定向的等距变换一定可以分解为至多两个镜面反射变换的复合. (编者按：《几何学》（杨翎著）第298页习题第2题改)
+\item[(2)]设 $0<a\leq b\leq c<π$ 且 $a+b>c$，则存在球面三角形 $\boldsymbol{a}\boldsymbol{b}\boldsymbol{c}$ 使得其三边
+分别为 $a,b,c$，且这样的三角形在相差球面上的一个等距变换的意义下唯一. (编者按：《几何学》（杨翎著）第298页习题第3题改，去掉了 $a+b+c<2\pi$ 的条件)
+\item[(3)]双曲平面 $\mathbb{H}$ 上保持定向的等距变换一定可以分解为至多两个反射变换的复合. (编者按：《几何学》（杨翎著）第322页习题第7题改)
+\item[(4)]设 $0<a\leq b\leq c$ 且 $a+b>c$，则存在双曲平面上的三角形 $\boldsymbol{a}\boldsymbol{b}\boldsymbol{c}$ 使得其三边
+分别为 $a,b,c$，且这样的三角形在相差双曲平面上的一个等距变换的意义下唯一.
+\end{enumerate}
+(注：双曲平面 $\mathbb{H}$ 上的反射 $\sigma$ 定义为：设 $\gamma$ 是 $\mathbb{H}$ 上向两端无限延伸的测地线，
+若 $\sigma$ 以 $\gamma$ 为不动点集合，则 $\sigma$ 称为 $\mathbb{H}$ 上的镜面反射.)
+\item[3.](12')已知 $\tilde{d}$ 为复射影直线 $\mathbb{CP}^{1}$ 上的距离函数，即对于 $[\boldsymbol{u}],[\boldsymbol{v}]\in\mathbb{CP}^{1}$，
+有 
+\[
+\tilde{d}\left( [\boldsymbol{u}],[\boldsymbol{v}] \right)=\arccos\left( \frac{\left| (\boldsymbol{u},\boldsymbol{v}) \right|}{\left| \boldsymbol{u} \right|\left| \boldsymbol{v} \right|} \right)
+\]
+其中 $(\boldsymbol{u},\boldsymbol{v})$ 为酉积. 记 
+\[
+\begin{aligned}
+\pi: \mathbb{CP}^{1}&\rightarrow\mathbb{C}^{\ast}\\
+[\boldsymbol{u}]=[(z_1,z_2)]&\mapsto \frac{z_1}{z_2} \left( \text{规定 } \frac{z_1}{0}=\infty \right)
+\end{aligned}
+\] 
+已知 $p: S^2\rightarrow \mathbb{C}^{\ast}$ 为球极投影, 证明：$\chi\coloneqq\pi^{-1}\circ p$ 为 $(S^2,d)$ 和 $(\mathbb{CP}^{1},2\tilde{d})$ 之间的等距同构.
+
+(编者按：《几何学》（杨翎著）定理5.27（第287页）, 注意无穷远点的情形要单独考虑）
+\end{itemize}
+
+\textbf{二、\ 点集拓扑（40分）}
+\begin{itemize}
+\item[4.](6')证明: 拓扑空间的有限个紧子集的并仍然是紧的.
+\item[5.](6'+10'=16')
+\begin{enumerate}
+\item[(1)]$X$ 为圆心分别在点 $(1,0)$ 和 $(-1,0)$ 的半径为 $1$ 的圆在点 $(0,0)$ 的一点并，请用严格的点集拓扑学语言
+证明: $X$ 与 $S^1$ 不同胚.
+\item[(2)]证明: 从 $[0,1]$ 到 $[0,1]\times[0,1]$ 的连续满射一定不是单射. 
+
+(编者按：同 2025 年经典数学思想 2 的第五题)
+\end{enumerate}
+\item[6.](12'+6'=18')
+\begin{enumerate}
+\item[(1)]用实心正方形的商空间图示表示
+球面 $S^2$、\,环面 $T$、\,Möbius 带 $M$、\,实射影平面 $P^2$、\,Klein 瓶 $K$、\,平环 $A$;
+\item[(2)]画出 $abcda^{-1}bc^{-1}d$ 的顶点类的图示，并判断闭曲面的类别.
+\end{enumerate}
+\end{itemize}
+
+==2025秋经典数学思想1期末试卷==
+\begin{itemize}
+    \item[一、(10分)]
+对三维欧氏空间中的二次曲面, 有哪些一定是直纹面？如果不是直纹面，请给出
+简单的例子；如果是直纹面，请给出简要的计算过程和理由.
+
+ \item[二、(15分)]
+给定二次曲面$S : x^2 - y^2 = z$ 和平面
+$\Pi_{\lambda, \mu} : z = \lambda x + \mu y + \nu$.
+说明当$\lambda, \mu$取不同值时交线$S \cap \Pi_{\lambda, \mu}$为何种曲线, 详细说明理由.
+
+ \item[三、(15分)]
+给定三条直线
+\[ L_1 : \frac{x}{0} = \frac{y}{0} = \frac{z}{1}, L_2 : \frac{x-1}{0} = \frac{y}{1} = \frac{z}{0}, L_3 : (s-1, s, s), s \in \R .\]
+求与这三条直线都相交的直线$L$的轨迹方程(用$x, y, z$表示).
+
+ \item[四、(15分)]
+将$\R P^2$视为$xy$平面再添上一条无穷远直线.
+
+(1) 对$xy$平面上的直线$3x + 4y = 2$, 写出其对应的无穷远点及射影直线.
+
+(2) 利用Pascal定理证明: 对圆内接六边形$ABCDEF$, 若$AB \parallel DE, BC \parallel EF$, 则$FA  \parallel CD$.
+
+ \item[五、(20分)]
+曲面$S : x^2 + y^2 = z^2 - 1$, $P(1, 0, \sqrt{2}) \in S$.
+
+(1) 写出一个点$P$附近$S$的局部光滑参数化;
+
+(2) 求出$S$在点$P$的切平面和一个单位法向量;
+
+(3) 求出$S$在点$P$的高斯曲率.
+
+ \item[六、(12分)]
+判断以下集合与$\R$是否等势, 并说明理由.
+
+(1) $A = \{\mathbb{Q}\text{的向下封闭子集} \}$. 其中称$D \subset \mathbb{Q}$向下封闭, 若
+\[\forall r \forall s,(r \in D \wedge s \leq r) \Rightarrow s \in D . \]
+
+(2) $B = \R^\mathbb{Q}$;
+
+(3) $C = \{\alpha \mid \alpha\text{是序数}, |\alpha| \leq |\R| \}$.
+
+ \item[七、(13分)]
+对良序集$(X, \leq)$, 若$a \in X$, 定义$s_X(a) = \{x \in X \mid x < a\}$. 证明:
+
+(1) $\mathcal{Y }= \{Y\subseteq X|Y\text{是}X\text{的真前段, 且}y\text{无最大元} \}$. 则$(\mathcal{Y}, \subseteq)$是良序集.
+
+(2) 对$x \in X$, 定义集合$Q_x:=\{ a \in X \mid a \leq x, s_X(a)\text{无最大元} \}$,则$Q_x$有最大元;
+
+(3) 对$x \in X$及(2)中定义的最大元$q_x$, 集合$R_x := \{ y \in X \mid q_x \leq y \leq x \}$是有限集(提示: 可利用作业中的结论);
+
+(4) $(X, \leq)$与$(Y \times \N, \preceq)$序同构. 其中$\preceq$是字典序, 即
+\[ (A, m) \preceq (B, n) \Leftrightarrow 
+((A \subsetneq B) \lor (A = B \land m \leq n)) \]
+
+(提示: 利用之前的$q_x$和$R_x$来构建双射)
+\end{itemize}
+
+
+
+== 2025春经典数学思想2期末试卷==
+
+\begin{itemize}
+\item[一、] 我们称$\mathbb{R}^2$上的没有不动点的不定向的等距变换为“滑反射”。\\
+(1) 证明，滑反射为平移与反射的复合。\\
+(2) $g(x,y)=(y+3,x-1)$, 证明它是滑反射，并给出平移向量$\mathbf{e}$与反射直线$l$.\\
+(3) 设
+    $$G:=\{g^n\mid n\in\mathbb{Z}\}$$
+    给出$\mathbb{R}^2/G$的度量$d$，并证明$(\mathbb{R}^2/G,d)$是一个局部Euclid曲面。\\
+(4) 求$[(1,0)],[(6,6)]$之间的距离。\\
+\item[二、] 在双曲平面中有测地三角形$ABC$, 设$\angle ABC=\angle BAC=\dfrac\pi4$, $A$点处的角平分线为中线。\\
+(1) 证明它是等边三角形。\\
+(2) 求该三角形的面积。\\
+\item[三、] 在球面上有测地三角形$ABC$, 设$\angle ABC=\angle BAC=\dfrac\pi4$, $A$点处的角平分线为中线。\\
+(1) 求$BC$长度。\\
+(2) 求该三角形面积。\\
+\item[四、]设$X$是Hausdorff空间，$X\times X,X\times X\times X \times X$配备乘积拓扑，定义：
+$$g:X\times X\rightarrow X\times X\times X\times X;(x,y)\mapsto(x,y,x,y)$$
+证明$g$的像集是闭集。
+\item[五、]若$f:[0,1]\rightarrow[0,1]^2$是连续的满射，证明它不是单射。
+\item[六、]若$X$是距离空间，证明度量$d:X\times X\rightarrow \mathbb{R}$连续，其中$X\times X$使用乘积拓扑，$\mathbb{R}$使用欧氏拓扑。
+\item[七、]下图所示多边形表示什么曲面？
+\begin{tikzpicture}[edge/.style = {draw, -Stealth, semithick, black},label/.style = {midway, font=\Large}]
+% 填充灰色背景（矩形减去两个正方形）
+\fill[gray!30, even odd rule] 
+    (0,0) rectangle (20,10)
+    (2.5,2.5) rectangle (7.5,7.5)   % 左正方形位置
+    (12.5,2.5) rectangle (17.5,7.5); % 右正方形位置
+
+% 绘制外矩形（有向边）
+\draw[edge] (0,0) -- node[label, left]  {$b$} (0,10);  % 左边
+\draw[edge] (0,10) -- node[label, above] {$a$} (20,10); % 上边
+\draw[edge] (20,10) -- node[label, right] {$b$} (20,0); % 右边
+\draw[edge] (0,0) -- node[label, below] {$a$} (20,0);   % 下边
+
+% 绘制左侧正方形（有向边）
+\draw[edge] (2.5,2.5) -- node[label, left]  {$e$} (2.5,7.5);   % 左边
+\draw[edge] (2.5,7.5) -- node[label, above] {$f$} (7.5,7.5);   % 上边
+\draw[edge] (7.5,7.5) -- node[label, right] {$g$} (7.5,2.5);   % 右边
+\draw[edge] (7.5,2.5) -- node[label, below] {$h$} (2.5,2.5);   % 下边
+
+% 绘制右侧正方形（有向边）
+\draw[edge] (12.5,2.5) -- node[label, left]  {$e$} (12.5,7.5); % 左边
+\draw[edge] (12.5,7.5) -- node[label, above] {$f$} (17.5,7.5); % 上边
+\draw[edge] (17.5,7.5) -- node[label, right] {$g$} (17.5,2.5); % 右边
+\draw[edge] (17.5,2.5) -- node[label, below] {$h$} (12.5,2.5); % 下边
+\end{tikzpicture}
+\end{itemize}
+
+== 2024春经典数学思想2期末试卷 ==
+
+\begin{itemize}
+\item[一、] $\Gamma$是连通完备Euclid曲面，判断以下命题的对错并说明理由。
+
+(1) $\forall\,r>0$，$\forall\,p\in\Gamma$，
+    $B_r(p)$与半径为$r$的Euclid圆盘等距对应。\\
+(2) 存在$R>0$，使得$\forall\,r\in(0,R)$，$\forall\,p\in\Gamma$，
+    $B_r(p)$与半径为$r$的Euclid圆盘等距对应。\\
+(3) $\forall\,P,Q\in\Gamma$，
+    $\Gamma$上存在一条弧长参数测地线连接$P,Q$。\\
+(4) $\forall\,P,Q\in\Gamma$，
+    $\Gamma$上的连接$P,Q$的弧长参数测地线唯一。
+
+\item[二、] 球面$\mathbb{S}^2$上有三角形$\vec{a}\vec{b}\vec{c}$，
+其三顶点$\vec{a},\vec{b},\vec{c}$的对角大小分别为$\alpha,\beta,\gamma$，
+对边长度分别为$a,b,c$。求证以下命题：
+
+(1) $a+b>c$.\\
+(2) $\cos c=\cos a\cos b+\sin a\sin b\cos\gamma$.\\
+(3) $\dfrac{\sin\alpha}{\sin a}
+=\dfrac{\sin\beta}{\sin b}=\dfrac{\sin\gamma}{\sin c}$.\\
+(4) $\alpha+\beta+\gamma>\pi$.
+
+\item[三、] 在球面$\mathbb{S}^2$上定义等价关系$\sim$：$\vec{a}\sim\vec{b}
+\Leftrightarrow\vec{a}=\vec{b}\text{ 或 }\vec{a}=-\vec{b}$。
+把$\mathbb{S}^2/\sim$称为椭圆平面。证明以下命题：
+
+(1) 任意$\R^3$中的正交变换$\phi$都满足：存在$\mathbb{S}^2/\sim$中唯一的等距变换$\sigma$，
+使得$\sigma([\vec{a}])=[\phi(\vec{a})]$。称$\sigma$为$\phi$诱导的等距变换。
+
+(2) 任意椭圆平面上的等距变换$\sigma$都满足：
+存在$\R^3$中唯一的特殊正交变换$\phi$，使得$\sigma$是$\phi$诱导的等距变换。
+
+\item[四、] 给出双环面的一个多边形剖分，满足：\\
+(a) 每个面的边数相等，\\
+(b) 每个顶点连接的边数相等。
+
+\item[五、] (1) 由$\{(x,y,z)\bigm||x+y|+|y+z|+|z+x|\le1\}$确定的多面体
+有 $\underline{\qquad\qquad}$ 个面，$\underline{\qquad\qquad}$ 条棱，$\underline{\qquad\qquad}$ 个顶点。
+
+(2) 设$f\colon X \to Y$是连续满射，考虑以下两个条件：\\
+\quad \ ($\alpha$) 对$X$的任意开子集$G$，
+$f(G) \subset Y \setminus f(X \backslash G)$.\\
+\quad \ ($\beta$) 对$X$的任意闭真子集$F$，$f(F)\ne Y$。\\
+问($\alpha$)是否能推出($\beta$)？($\beta$)是否能推出($\alpha$)？
+\end{itemize}
+
+== 2021秋经典数学思想1期末试卷 ==
+（傅吉祥、沈维孝，2022年1月10日）
+
+\textbf{一．解析几何（共六道题，共75分）}
+\begin{enumerate}
+\item（15 分）记 $\overrightarrow{OA}=\boldsymbol{a}, \overrightarrow{OB}=\boldsymbol{b}, \overrightarrow{OC}=\boldsymbol{c}$，
+以向量 $\boldsymbol{a}, \boldsymbol{b}, \boldsymbol{c}$ 为边构成一个平行六面体。\\
+（1）以 $C$ 为起点的对角线向量为$\underline{\qquad\qquad}$.\\
+（2）记以 $O$ 为起点的对角线与平面 $ABC$ 的交点为 $D$ 点，
+用 $\boldsymbol{a}, \boldsymbol{b}, \boldsymbol{c}$ 表示 $\overrightarrow{O D}$.\\
+（3）若 $a=-2 e_{1}+3 e_{2}, b=3 e_{2}-e_{3}, c=e_{1}+e_{2}+e_{3}$，
+则平行六面体的体积为$\underline{\qquad\qquad}$。
+\item（ 10 分）平面方程 $x+2 y+3 z+5=0$，
+请用适当的直角坐标变换将平面方程变换为 $z^{\prime}=0$．
+\item（10分）请用不等式描绘下列方程围成的图形，并作简图。
+$$x^{2}+y^{2}=16, \mathbb{Q}uad z=0, \mathbb{Q}uad z=x+4.$$
+\item（10分）平面上一个正五边形 $\Sigma$。\\
+（1）请问有多少种平面等距变换使得这个正五边形保持不变。\\
+（2）请问有多少种空间等距变换使得这个正五边形保持不变。\\
+（保持不变指的是形状不变，位置不变。）
+\item（10分）$\phi$ 是空间上的等距变换，$\phi(L)$ 是 $L$ 经过等距变换后得到的直线，
+已知 $\phi(L)$ 与 $L$ 是空间中两条不同的直线. 
+证明：所有 $L$ 上的点 $P$ 与 $\phi(P)$ 连线的中点要么共线，要么是同一个点.
+
+\item（20分）将曲面 $x^{2}-2 y^{2}-2 z=0$ 参数化为 $\left(x, y, \frac{x^{2}-2 y^{2}}{2}\right)$，
+已知曲面上一点 $P$ 的坐标是 $(0,-1,-1)$.\\
+（1）求 $P$ 的一个法向量.\\
+（2）求 $P$ 的切平面方程.\\
+（3）求 $P$ 点的 Gauss曲率.\\
+（4）证明：曲面上任意一点的 Gauss曲率均为负数.
+\begin{proofc}[(3),(4)的解答]
+    曲面$z=f(x,y)$的Gauss曲率为
+    \[K=\frac{f_{xx}f_{yy}-f_{xy}^2}{(1+f_x^2+f_y^2)^2}.\]
+    本题中$f_x=x,f_y=-2y,f_{xx}=1,f_{yy}=-2,f_{xy}=0$，从而
+    \[K=\frac{-2}{(1+x^2+4y^2)^2}<0.\]
+    特别地，$K(P)=-2/25$。
+\end{proofc}
+\end{enumerate}
+
+\textbf{二．集合论（共一道题，共25分）}
+\begin{enumerate}
+\item 定义 $f$ 为上连续函数，如果 $f$ 满足：
+$$U_{f, \alpha}=\{x \mid f(x)<\alpha\}$$
+均为 $\mathbb{R}$ 上的开子集。\\
+（1）证明：对任意 $f, g$（不一定是上连续函数），若 $\forall \alpha \in \mathbb{Q}$，
+均有 $U_{f, \alpha}=U_{g, \alpha}$，则 $f \equiv g$.\\
+（2）证明：从 $\mathbb{N}$ 到 $\mathbb{R}$ 的所有函数构成的集合与 $\mathbb{R}$ 等势.\\
+（3）证明： $\mathcal{F}$ 与 $\mathbb{R}$ 等势，其中
+$$\mathcal{F}=\{f \mid f \text { 为上连续函数 }\}.$$
+\end{enumerate}

@@ -1,0 +1,175 @@
+\theoremstyle{plain}
+\newtheorem{exercise}{习题}
+\nosectionnumbers
+
+\begin{exercise}[正向层]
+    设 $f: X \rightarrow Y$ 是一个连续映射， $\mathcal{F}$ 是 $X$ 上的预层。
+    按如下方式定义 $f_{*} \mathcal{F}:$ 对 $X$中的开集 $V$，
+    令 $f_{*} \mathcal{F}(V)=\mathcal{F}\left(f^{-1}(V)\right)$ 。
+    \begin{enumerate}
+        \item 证明 $f_{*} \mathcal{F}$ 是一个预层，
+        且如果 $\mathcal{F}$ 是层，那么 $f_{*} \mathcal{F}$ 也是。
+        我们称 $f_{*} \mathcal{F}$ 为\textbf{正向层}或 $\mathcal{F}$ 关于 $f$ 的\textit{推出}。
+        \item 设 $f(p)=q$, 试描述茎上的自然的映射 $\left(f_{*} \mathcal{F}(V)\right)_{q} \rightarrow \mathcal{F}_{p}$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{proofc}
+    对 $V''\subseteq V'\subseteq V$, $U:= f^{-1}(V)$,
+    有交换图
+    \begin{tikzcd}
+        f_* \mathcal{F}(V') \arrow[d, "\operatorname{res}^{V'}_{V''}"] \arrow[r, equal] & \mathcal{F}(f^{-1}(V)) \arrow[r]                & \varinjlim_{f^{-1}(q)\in U} \mathcal{F}(U) \\
+        f_* \mathcal{F}(V'') \arrow[r, equal]          & \mathcal{F}(f^{-1}(V'')) \arrow[ru, bend right] &                                           
+    \end{tikzcd}
+    由余极限的定义知这诱导了映射 $\varinjlim_{q\in V} f_* \mathcal{F}(V) = (f_* \mathcal{F}(V))_q \to \mathcal{F}_p = \varinjlim_{p \in U} \mathcal{F} (U)$.
+\end{proofc}
+
+\begin{exercise}[$\operatorname{Hom}$层]
+    假设 $\mathcal{F}$ 和 $\mathcal{G}$ 是 $X$ 上的两个集合的层。
+    定义 $\mathcal{Hom}(\mathcal{F}, \mathcal{G})$ 为
+    $$
+        \mathcal{Hom}(\mathcal{F}, \mathcal{G})(U):=\operatorname{Mor}(\left.\mathcal{F}\right|_{U},\left.\mathcal{G}\right|_{U}).
+    $$
+    证明这是 $X$ 上的一个集合的层。这个层被称为 $\mathbf{Hom}$\textbf{层}。
+    注意： $\mathcal{Hom}$ 不与取茎交换。更确切地说， $\mathcal{Hom}(\mathcal{F}, \mathcal{G})_{p}$ 并不与 $\operatorname{Hom}(\mathcal{F}_{p}, \mathcal{G}_{p})$ 同构，试找出一个反例。
+\end{exercise}
+
+\begin{proofc}
+    考虑 $X=\mathbb{R}$, 
+    $\mathcal{F}(V)=\mathcal{G}(V)=\begin{cases} \mathbb{Z} & 0 \notin V, \\ 0 & 0 \in V, \end{cases}$ 
+    限制映射为恒等映射或零映射. 
+    则对$0$的任一开邻域 $U$, $\mathcal{F}\mid _{U}$不是平凡层, 
+    故 $\operatorname{Hom}(\mathcal{F},\mathcal{F})_{0}=\varinjlim_{0 \in U}\operatorname{Hom}(\mathcal{F}\mid _{U}, \mathcal{F}\mid _{U})\neq 0$; 
+    另一方面, $\operatorname{Hom}(\mathcal{F}_{0},\mathcal{F}_{0})=0$. 此为一个反例.
+\end{proofc}
+
+\begin{exercise}[摩天大楼层]
+    假设 $X$ 是一个拓扑空间， $p \in X$，且 $S$ 是一个集合。
+    令 $i_{p}: p \rightarrow X$ 为包含映射。定义 $i_{p, *} S$ 由
+    $$
+        i_{p, *} S(U)= \begin{cases}S & \text { 如果 } p \in U, \\ \{*\} & \text { 如果 } p \notin U\end{cases}
+    $$
+    给出，这里 $\{*\}$ 是任何单元素集合。证明 $i_{p, *} S$ 是一个层。
+    这被称为\textbf{支撑在 $p$ 的摩天大楼层}。
+    注意：摩天大楼层的唯一非平凡茎在 $p$，这一说法并不正确，试给出反例。
+\end{exercise}
+
+\begin{proofc}
+    由定义知 $i_{p,*}S$是 $\{ p \}$上的常值层 $S$在映射 $i_{p}:\{ p \}\hookrightarrow X$下的直接像, 
+    因此由习题1知其是一个层; 
+    考虑任意一个不可约概形(或一个诺特拓扑空间)及其一般点 $p$的嵌入 $i_{p}:p \hookrightarrow X$, 
+    则由于 $\overline{\{ p \}}=X$, 知对任意开集 $U \subseteq X$, $i_{p,*}S(U)=S$, 
+    所以 $(i_{p,*}S)_{x}=S$, $\forall x \in X$.
+\end{proofc}
+
+\begin{exercise}[可构造集]
+    设 $X$ 是一个诺特拓扑空间，满足以下条件的最小的子集族中的元素称为\textbf{可构造集}：
+
+    \begin{itemize}
+        \item 每一个开集都在这个子集族中，
+        \item 子集族中的集合的有限交集也在族中，
+        \item 子集族中的集合的补集也在族中。
+    \end{itemize}
+
+    请证明如下事实：
+
+    \begin{enumerate}
+        \item 可构造集是局部闭集的有限并。
+        \item 证明 $\mathbb{A}_{k}^{1}$ 中的一般点（generic point）不构成一个可构造集。
+        \item 如果 $X$ 是诺特概形, $Z \subset X$ 是一个可构造子集，那么 $Z$ 是闭集当且仅当 $Z$ 在特殊化下稳定，
+        即如果 $x_{1}, x_{2}$ 是 $X$ 中两点且满足 $x_{1} \in \overline{x_{2}}$，那么 $x_{2} \in Z$ 蕴含 $x_{1} \in Z$。
+    \end{enumerate}
+\end{exercise}
+
+见 \cite{GoWe20} pp.249-251.
+
+\begin{exercise}[Grothendieck一般点自由引理]
+    如果一个 $B$ 代数 $A$ 满足，对任意有限生成的 $A$ 模 $M$ 都存在 $B$ 中非零元 $f$ 使得 $M_{f}$ 是自由 $B_{f}$ 模，那么我们称 $A$ 有性质 $(\dagger)$。
+    下面我们分步骤证明如果 $B$ 是一个诺特整环，那么任意的有限生成 $B$ 代数都有性质 $(\dagger)$。
+    \begin{enumerate}  
+        \item 证明 $B$ 本身满足性质 $(\dagger)$。
+        \item 说明我们只需证明如下事实即可：如果一个有限生成 $B$ 代数 $A$ 有性质 $(\dagger)$，那么 $A[T]$也有。下面几条致力于证明此事实。
+        \item 设 $M$ 是有限生成的 $A[T]$ 模，生成元集是有限集 $S$。
+        令 $M_{0}=0$, $M_{1}$ 是由 $S$ 生成的 $M$作为 $A$ 模的子模。
+        对 $n>0$，我们定义 $M$ 作为 $A$ 模的子模
+        $$M_{n+1}=M_{n}+T M_{n}.$$
+        证明乘 $T$ 给出了如下满射
+        $$\psi_{n}: M_{n} / M_{n-1} \rightarrow M_{n+1} / M_{n}.$$
+        \item 证明 $n$ 充分大时， $\psi_{n}$ 是同构。
+        \item 证明存在 $f \in B$ 使得对任意 $i$，都有 $\left(M_{i+1} / M_{i}\right)_{f}$ 是自由 $B_{f}$ 模。
+        \item (这是一般性结果) 设 $M$ 是一个 $B$ 模，且 $M=\bigcup M_{i}$，其中 $M_{i} \subset M_{i+1} \subset M$ 是子模。
+        如果 $M_{0}=0$ 且 $M_{i+1} / M_{i}$ 是自由 $B$ 模，证明 $M$ 也是自由模。
+    \end{enumerate}
+    综合以上，可得出结论。
+\end{exercise}
+
+见 [[广泛自由]].
+
+
+\begin{exercise}[Chevalley定理]
+    如果 $f: X \rightarrow Y$ 是一个诺特概形间的有限型态射，那么任意可构造集的像是可构造集。特别地， $f$ 的像是可构造集。分以下步骤证明。
+
+    \begin{enumerate}
+        \item 如果 $Y$ 不可约。证明存在 $Y$ 中稠密开集 $U$ 使得 $f$ 的像要么包含 $U$ 要么和 $U$ 不交。（提示：用上一题的结论）
+        \item 说明只需要证明 $f$ 的像是可构造集即可。
+        \item 说明可以假设 $Y$ 和 $X$ 都是仿射概形。
+        \item 使用诺特归纳法, 并将问题约化至(1)。
+    \end{enumerate}
+\end{exercise}
+
+见\cite{GoWe20} 定理10.20.
+
+\begin{exercise}[闭嵌入]
+    设 $B \rightarrow A$ 是一个环之间的满同态。证明对应的态射 $\operatorname{Spec} A \rightarrow \operatorname{Spec} B$ 是闭嵌入。
+\end{exercise}
+
+见\cite{GoWe20} 定理3.42.
+
+\begin{exercise}[粘合概形]
+    如果概形集合 $\left\{X_{i}\right\}$ 满足:
+    \begin{itemize}
+        \item 概形 $X_{i}, i \in I$，其中 $I$ 不一定是有限集。
+        \item 一些开子概形 $X_{i j} \subset X_{i}$, 其中 $X_{i i}=X_{i}$。
+        \item 一些同构 $f_{i j}: X_{i j} \rightarrow X_{j i}$，其中 $f_{i i}=i d$。
+        \item (闭链条件) 我们有 $f_{i k}|_{X_{i j} \cap X_{i k}}
+        =f_{j k}|_{X_{j i} \cap X_{j k}} \circ f_{i j}|_{X_{i j} \cap X_{i k}}$。
+    \end{itemize}
+    证明你可以将这些概形集合粘合在一起。
+\end{exercise}
+
+\begin{exercise}[粘合态射]
+    设 $X$ 和 $Y$ 是两个概形。 $X=\bigcup U_{i}$ 是一个开覆盖。
+    假设我们有一些概形间的态射 $f_{i}: U_{i} \rightarrow Y$ 且它们在公共部分相容，
+    即 $\left.f_{i}\right|_{U_{i} \cap U_{j}}=\left.f_{j}\right|_{U_{i} \cap U_{j}}$，
+    证明存在唯一的态射 $f: X \rightarrow Y$ 使得 $\left.f\right|_{U_{i}}=f_{i}$。
+\end{exercise}
+
+\begin{exercise}[闭嵌入对应的理想层]
+    \begin{enumerate}
+        \item 设 $X \hookrightarrow Y$ 是一个闭嵌入，$\mathcal{J}_{X / Y}$ 是对应的理想层。
+        假设 $\operatorname{Spec} B \hookrightarrow Y$ 是一个仿射开集。那么我们可以得到理想 $I(B) \subset B$。
+        对 $f \in B$，证明有一个自然的同构 $I(B)_{f} \rightarrow I(B_{f})$。
+        \item（困难）反过来，如果我们有 $Y$ 是一个概形，对 $Y$ 的任意仿射开集 $\operatorname{Spec} B \hookrightarrow Y$ 指定一个理想 $I(B) \subset B$。
+        且对任意的 $f \in B$ 局部化 $B \rightarrow B_{f}$ 给出了同构 $I(B)_{f} \rightarrow I(B_{f})$。
+        证明以上信息粘合成了唯一的闭子概形 $X \hookrightarrow Y$。
+    \end{enumerate}
+\end{exercise}
+
+见\cite{GoWe20} 命题7.33.
+
+\begin{exercise}[有限态射]
+    \begin{enumerate}
+        \item 证明有限态射是颇合的（proper）。
+        \item 如果 $f: X \rightarrow Y$ 是一个仿射概形间的颇合态射，证明 $f$ 是有限态射。
+    \end{enumerate}
+\end{exercise}
+
+见 \cite{GoWe20} 推论12.89.
+
+\subsection**{参考文献}
+\begin{references}
+    \bibitem[GöWe20]{GoWe20}
+        Ulrich Görtz, Torsten Wedhorn.
+        \textit{Algebraic Geometry I: Schemes}.
+        Springer Studium Mathematik. Springer, 2020.
+\end{references}

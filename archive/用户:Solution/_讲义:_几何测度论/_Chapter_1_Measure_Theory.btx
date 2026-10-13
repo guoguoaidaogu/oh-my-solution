@@ -1,0 +1,744 @@
+\setdisplaytitle{1 Measure Theory}
+\sethtmltitle{1 Measure Theory}
+\theoremstyle{definition}
+\newtheorem*{goal}{Goal}
+
+The main references of this chapter are [Bishop, Peres; Fractals in Probability and Analysis, Chapter 1], [Evans, Gariepy; Measure theory and fine properties of functions, Chapter 1 and 2], and [Mattila; Geometry of Sets and Measures in Euclidean Spaces-Fractals and Rectifiability, Chapter 3 and 4].
+
+\section{Middle-$\alpha$ Cantor Sets}
+    Let $\alpha \in (0,1)$, and let $C_\alpha$ be the middle-$\alpha$ Cantor set.
+    \begin{goal}
+        Construct $C_{\alpha,n}$, which is a union of $2^n$ disjoint closed intervals, indexed by $i=i_1,i_2, \ldots ,i_{n}\in \{0,1\}^{n}$, each of length $\left(\frac{1-\alpha}{2}\right)^n$, such that $C_\alpha = \bigcap_{n=0}^\infty C_{\alpha,n}$.
+    \end{goal}
+    \begin{example}
+        Classical Cantor set $\alpha=\frac{1}{3}$, $I=[0,1]$.
+        \begin{equation*}
+          \begin{aligned}
+          C_{\frac{1}{3},0}&:=I \\
+          C_{\frac{1}{3},1}&:=\left[0, \frac{1}{3}\right] \cup\left[\frac{2}{3}, 1\right] \\
+          C_{\frac{1}{3},2}&:=\left[0, \frac{1}{9}\right] \cup\left[\frac{2}{9}, \frac{1}{3}\right] \cup\left[\frac{2}{3}, \frac{7}{9}\right] \cup\left[\frac{8}{9}, 1\right] \\
+          (\text{Index}&: \frac{2}{3}\cdot 0 + \frac{2}{9}\cdot 0, \frac{2}{3}\cdot 0 + \frac{2}{9}\cdot 1, \frac{2}{3}\cdot 1 + \frac{2}{9}\cdot 0, \frac{2}{3}\cdot 1 + \frac{2}{9}\cdot 1 \text{ indicate where these intervals begin}) \\
+          \cdots \\
+          C_{\frac{1}{3},n}&:=\bigcup_{i_1,i_2,\ldots,i_n \in \{0,1\}} \left[\sum_{k=1}^n \frac{2}{3^k} i_k, \sum_{k=1}^n \frac{2}{3^k} i_k + \left(\frac{1}{3}\right)^n\right] \\
+          C_{\alpha,n}&:= \bigcup_{i \in \{0,1\}^{n}} I_{i}.
+          \end{aligned}
+        \end{equation*}
+    \end{example}
+    By removing from $I_{i}$ the open interval with the same center as $I_{i}$ and length $\alpha \left\vert I_{i} \right\vert $, we obtain two subintervals $I_{i_1i_2\cdots i_n 0}$ and $I_{i_1i_2\cdots i_{n}1}$.
+        $$
+        \begin{aligned}
+        C_{\alpha,n+1} &:= \bigcup_{i \in \{0,1\}^{n}} \left( I_{i0} \cup I_{i1} \right) \\
+        &= \bigcup_{i \in \{0,1\}^{n+1}} I_{i}.
+        \end{aligned}
+        $$
+    Clearly, $C_{\alpha,n+1} \subset C_{\alpha,n}$, and $\forall k, C_{\alpha,k}$ is compact. Thus $C_\alpha = \bigcap_{n=0}^\infty C_{\alpha,n}$ is compact and non-empty.
+
+    \begin{remark}
+        \begin{itemize}
+            \item[(i)] $\mathcal{L}^{1}(C_{\alpha})=0 ,\forall \alpha \in (0,1)$;
+            \item[(ii)] $C_\alpha$ are mutually homeomorphic.
+        \end{itemize}
+    \end{remark}
+
+    From the remark above we know that the Lebesgue measure is not a good tool to measure the size of Cantor sets. We will introduce Minkovski dimension to study the size of $C_\alpha$.
+
+    \section{Minkovski Dimension}
+    By talking about dimension, we want to know how a set scales. For example, a line segment of length $L$ can be covered by $\frac{L}{\epsilon}$ intervals of length $\epsilon$. A square of side length $L$ can be covered by $\left(\frac{L}{\epsilon}\right)^2$ squares of side length $\epsilon$. A cube of side length $L$ can be covered by $\left(\frac{L}{\epsilon}\right)^3$ cubes of side length $\epsilon$. Thus we have the following definition.
+    \begin{definition}
+        \begin{itemize}
+            \item[(i)] $\forall E \subset \mathbb{R}^{n}$, the diameter of $E$ is defined as $\operatorname{diam}E:= \sup_{x,y \in E} \left\vert x-y \right\vert $.
+            \item[(ii)] If $E \subset \bigcup_{\alpha \in A} E_{\alpha}$ then $\{ E_{\alpha} \}_{\alpha \in A}$ is a covering of $E$. If $\{ E_{\alpha} \}_{\alpha \in A}$ also satisfies $\operatorname{diam} E_{\alpha} \leq \delta, \forall \alpha \in A$, then it is called a $\delta$-covering of $E$.
+        \end{itemize}
+    \end{definition}
+    \begin{definition}
+        \begin{itemize}
+            \item[(i)] Given a bounded set $K \subset \mathbb{R}^{n}$, let $N(K,\delta)$ be the minimal cardinality of a $\delta$-covering of $K$, i.e., $N(K,\delta)=\min \left\{ J: K \subset \bigcup_{j=1}^{J} E_{j}, \operatorname{dim}(E_{j})\le \delta\right\}$.
+            \item[(ii)] The upper Minkovski dimension of a bounded set $K$ is
+            \begin{equation*}
+                \overline{\dim}_M(K):=\limsup_{\delta \to 0} \frac{\log N(K,\delta)}{-\log \delta}.
+            \end{equation*}
+            The lower Minkovski dimension of a bounded set $K$ is
+            \begin{equation*}
+                \underline{\dim}_M(K):=\liminf_{\delta \to 0} \frac{\log N(K,\delta)}{-\log \delta}.
+            \end{equation*}
+            \item[(iii)] If $\overline{\dim}_M(K)=\underline{\dim}_M(K)$, then we call it the Minkovski dimension of $K$, denoted by $\dim_M(K)$.
+        \end{itemize}
+    \end{definition}
+    \begin{remark}
+        \begin{itemize}
+            \item[(i)] $\operatorname{dim}_{M}(K) = \alpha$ iff $\forall \epsilon > 0, \exists \delta_{0}>0$, s.t.
+            $$
+            \delta^{-\alpha - \epsilon} \leq N(K,\delta) \leq \delta^{-\alpha + \epsilon}, \forall \delta \in (0,\delta_{0}).
+            $$
+            \item[(ii)] $\underline{\operatorname{dim}}_{M}(K) = \alpha$ iff $\forall \epsilon>0, \exists \delta_{0}>0$, s.t.
+            $$
+            -\alpha - \epsilon \leq \inf_{\eta \in (0,\delta)} \frac{\log N(K,\eta)}{\log \eta^{-1}} \leq -\alpha + \epsilon, \forall \delta \in (0,\delta_{0}).
+            $$
+            \item[(iii)] $E \subset F \Leftrightarrow \operatorname{dim}_{M} E \le \operatorname{dim}_{M} F$.
+        \end{itemize}
+    \end{remark}
+
+    \begin{lemma}
+        \begin{itemize}
+            \item[(i)] Let $N_{B}(K,\delta)$ be the minimal cardinality of a covering of $E$ consisting of balls of radius $\delta$. Then $\operatorname{dim}_{M}(K)= \lim_{\delta \to 0}\frac{\log N_{B}(K,\delta)}{-\log \delta}$ whenever $\operatorname{dim}_{M}(K)$ exists.
+            \item[(ii)] In (i), it is equivalent to use axis-aligned cubes of side length $\delta$ to cover $K$.
+            \item[(iii)] If $A \subset \mathbb{R}^{n}$ is bounded, then $\overline{\operatorname{dim}}_{M}(A)=\overline{\operatorname{dim}}_{M}(\bar{A})$, $\underline{\operatorname{dim}}_{M}(A)=\underline{\operatorname{dim}}_{M}(\bar{A})$.
+        \end{itemize}
+    \end{lemma}
+
+    \begin{proof}
+        (i) Let $N_{B}(K,\delta)$ be the minimal cardinality of a covering of $E$ consisting of balls of radius $\delta$. Then any such covering is also a $\delta$-covering, so $N(K,\delta) \leq N_{B}(K,\delta)$. On the other hand, if $\{ E_{j} \}_{j=1}^{N(K,\delta)}$ is a $\delta$-covering of $K$, then $\{ B(x_{j},\delta) \}_{j=1}^{N(K,\delta)}$ is a covering of $K$, where $x_{j} \in E_{j}$. Thus $N_{B}(K,\delta) \leq N(K,\delta)$. Hence $N(K,\delta)=N_{B}(K,\delta)$, and the result follows.
+
+        (ii) Similar to (i).
+
+        (iii) We fix a covering $\{ E_{j} \}_{j=1}^{J}$ of $A$ with $B_{j}=B(a_{j},\delta)$ satisfying $J=N_{B}(A,\delta)$. As $J$ is finite, we have
+        $$
+        \bar{A_{j}} \subseteq \overline{\bigcup_{j=1}^{J} B_{j}} = \bigcup_{j=1}^{J} \overline{B_{j}} = \bigcup_{j=1}^{J} B_{j}.\qedhere
+        $$
+    \end{proof}
+
+    \begin{example}
+        \begin{itemize}
+            \item[(i)] If $E$ is finite, then $\operatorname{dim}_{M}(E)=0$.
+            \item[(ii)] If $E$ is a line segment in $\mathbb{R}^{n}$, then $\operatorname{dim}_{M}(E)=1$. 
+            More generally, any compact $k$-dimensional $C^{1}$ submanifold of $\mathbb{R}^{n}$ has Minkovski dimension $k$.
+            \item[(iii)] Let $0<\alpha<1$, then $\operatorname{dim}_{M}(C_{\alpha})=\frac{\log 2}{\log 2 - \log (1-\alpha)}$.
+            \item[(iv)] If $E \subseteq \mathbb{R}^{n}$ and $\operatorname{dim}_{M}E<n$, then $\mathcal{L}^{n}(E)=0$.
+            \item[(v)] Let $E = \{ 0 \}\cup \{ 1,\frac{1}{2},\frac{1}{3}, \ldots  \}$, then $\operatorname{dim}_{M}E=\frac{1}{2}$.
+            
+            (Idea: cover the first $n$ points from 1, then cover the rest points from $\frac{1}{n}$ by $n$ intervals of length $\frac{1}{n^{2}}$.)
+        \end{itemize}
+    \end{example}
+
+    \begin{remark}
+        From $(v)$ we know that Minkovski dimension is not countably stable, i.e., $\operatorname{dim}_{M}(\bigcup_{i=1}^{\infty} E_{i}) \neq \sup_{i} \operatorname{dim}_{M}(E_{i})$ in general.
+    \end{remark}
+
+    For a given set $E \subset \mathbb{R}^{n}$, we define the $\delta$-neighborhood of $E$ as
+    $$
+    E_{\delta} := \{ y\in \mathbb{R}^{n}: \operatorname{dist}(y,E)<\delta \}.
+    $$
+
+    \begin{lemma}
+        Let $\alpha>0$, suppose that $\exists A_{\alpha}>0$ s.t. $\mathcal{L}(E_{\delta})\ge A_{\alpha}\delta^{\alpha}$, $\forall \delta>0$. Then $\underline{\operatorname{dim}}_{M}(E) \geq n-\alpha$.
+    \end{lemma}
+
+    \begin{proof}
+        Suppose $E \subseteq \bigcup_{j=1}^{J} B(x_{j},\delta)$, then $E_{\delta} \subseteq \bigcup_{j=1}^{J} B(x_{j},2\delta)$, which implies that $A_{\alpha}\delta^{\alpha}\le \mathcal{L}(E_{\delta})\le C_{n}J\delta^{n}$. As a result, $N_{B}(E,\delta)\ge A_{\alpha,n}\delta^{-(n-\alpha)}$. Therefore $\underline{\operatorname{dim}}_{M}(E)\ge n-\alpha$.
+    \end{proof}
+
+    \section{Measures}
+    Let $X$ be a non-empty set. Denote by $2^{X}$ be the power set of $X$, i.e., the set of all subsets of $X$.
+    \begin{definition}
+        A map $\mu: 2^{X} \to [0,+\infty]$ is called a measure on $X$ if
+        \begin{itemize}
+            \item[(i)] $\mu(\emptyset)=0$;
+            \item[(ii)] (Countable subadditivity) If $A \subseteq \bigcup _{k=1}^{\infty}A_{k}$, then $\mu(A)\le \sum_{k=1}^{\infty}\mu(A_{k})$.
+        \end{itemize}
+    \end{definition}
+
+    \begin{remark}
+        In most references, the measure as defined above is called an outer measure.
+    \end{remark}
+
+    \begin{definition}
+        Let $\mu$ be a measure on $X$. $C$ is a subset of $X$. Define the restriction of $\mu$ to $C$ as
+        $$
+        \mu|_{C}(A):=\mu(A\cap C), \forall A \subseteq X.
+        $$
+    \end{definition}
+
+    \begin{definition}
+        A set $A \subseteq X$ is called $\mu$-measurable if $\forall B \subseteq X$,
+        $$
+        \mu(B)=\mu(B\cap A)+\mu(B \cap A^{c}).
+        $$
+    \end{definition}
+
+    \begin{theorem}
+        Let $\mu$ be a measure on $X$.
+        \begin{itemize}
+            \item[(i)] If $A \subseteq B \subseteq X$, then $\mu(A)\le \mu(B)\le \mu(X)$.
+            \item[(ii)] If $A \subseteq X$ is $\mu$-measurable, then so is $A^{c}$.
+            \item[(iii)] $\varnothing$ and $X$ are $\mu$-measurable. Moreover, if $\mu(A)=0$, then $A$ is $\mu$-measurable.
+            \item[(iv)] Let $C \subseteq X$. Then any $\mu$-measurable set is also $\mu|_{C}$-measurable.
+        \end{itemize}
+    \end{theorem}
+
+    \begin{proof}
+        \begin{itemize}
+            \item[(ii)] $\mu(B)=\mu(B\cap A)+\mu(B\setminus A)=\mu(B\setminus A^{C})+\mu(B\cap A^{C})$.
+            \item[(iv)] $\mu|_{C}(B)=\mu(B\cap C)=\mu((B\cap C)\cap A)+\mu((B\cap C)\cap A^{c})=\mu|_{C}(B\cap A)+\mu|_{C}(B\cap A^{c})$.\qedhere
+        \end{itemize}
+    \end{proof}
+
+    \begin{theorem}
+        \label{thm:property of sequences of measurable sets}
+        Let $\{ A_{k} \}_{k=1}^{\infty}$ be a sequence of $\mu$-measurable sets.
+        \begin{itemize}
+            \item[(i)] If $A_{k}$ are pairwise disjoint, then $\mu(\bigcup_{k=1}^{\infty} A_{k})=\sum_{k=1}^{\infty}\mu(A_{k})$.
+            \item[(ii)] If $A_1\subseteq \cdots \subseteq A_{k} \subseteq A_{k+1} \subseteq \cdots$, then
+            $$
+            \lim_{k \to \infty} \mu(A_{k})=\mu\left(\bigcup_{k=1}^{\infty} A_{k}\right).
+            $$
+            \item[(iii)] If $A_1\supseteq \cdots \supseteq A_{k} \supseteq A_{k+1} \supseteq \cdots$ and $\mu(A_{1})<+\infty$, then
+            $$
+            \lim_{k \to \infty} \mu(A_{k})=\mu\left(\bigcap_{k=1}^{\infty} A_{k}\right).
+            $$
+            \item[(iv)] $\bigcup_{k=1}^{\infty}A_{k}$ and $\bigcap_{k=1}^{\infty}A_{k}$ are $\mu$-measurable.
+        \end{itemize}
+    \end{theorem}
+
+    \begin{proof}
+        First we prove that for finie $n$, $\bigcup_{k=1}^{n}A_{k}$ is measurable. By induction, we only need to prove the case $n=2$. For any $B \subseteq X$,
+        $$
+        \begin{aligned}
+        \mu(B)&= \mu(B\cap A_1)+\mu(B\cap A_1^{C}) \\
+        &= \mu(B\cap A_1)+\mu(B\cap A_1^{C}\cap A_2)+\mu(B\cap A_1^{C}\cap A_{2}^{C}) \\
+        &\ge \mu(B\cap (A_1 \cup A_2)) + \mu(B\cap (A_1 \cup A_2)^{C}).
+        \end{aligned}
+        $$
+        (Note that $A_1\cup A_2=A_1\cup (A_1^{C}\cap A_2)$.) Thus $A_1 \cup A_2$ is measurable. Now $(A_1\cap A_2)^{C}=A_1^{C}\cup A_2^{C}$, so $A_1\cap A_2$ is also measurable.
+        \begin{itemize}
+            \item[(i)] Let $B_{j}=\bigcup_{k=1}^{j}A_{k}$. Then
+            $$
+            \begin{aligned}
+            \mu(B_{j+1})&= \mu(B_{j+1}\cap A_{j+1}) + \mu(B_{j+1}\cap A_{j+1}^{C}) \\
+            &= \mu(A_{j+1}) + \mu(B_{j}),
+            \end{aligned}
+            $$
+            therefore $\mu(\bigcup_{k=1}^{\infty}A_{k})\ge \mu(\bigcup_{k=1}^{j}A_{k})=\sum_{k=1}^{j}\mu(A_{k})$. By letting $j \to \infty$, we obtain the result from subadditivity.
+            \item[(ii)] From (i) we know
+            $$
+            \begin{aligned}
+            \lim_{k \to \infty}\mu(A_{k}) &= \mu(A_1)+ \sum_{k=1}^{\infty}(\mu(A_{k+1})-\mu(A_{k})) \\
+            &= \mu(A_1)+\sum_{k=1}^{\infty}\mu(A_{k+1}\setminus A_{k}) \\
+            &= \mu\left(\bigcup_{k=1}^{\infty}A_{k}\right).
+            \end{aligned}
+            $$
+            \item[(iii)] Let $B_{k}=A_1\setminus A_{k}$, then by (ii) we have
+            $$
+            \begin{aligned}
+            \lim_{k \to \infty}&\mu(B_{k}) = \mu(\bigcup _{k=1}^{\infty}B_{k}) = \mu(A_1 \setminus \bigcap_{k=1}^{\infty} A_{k}) \\
+            &\stackrel{\mu(A_1)<+\infty}{\Longleftrightarrow} \lim_{k \to \infty}\mu(A_{k}) =\mu \left(\bigcap_{k=1}^{\infty}A_{k}\right).
+            \end{aligned}
+            $$
+            \item[(iv)] Since $B_{j}=\bigcup_{k=1}^{j}A_{k}$ is measurable, for any $B \subseteq X$ with $\mu(B)<\infty$, we have
+            $$
+            \begin{aligned}
+            \mu(B\cap \bigcup_{k=1}^{\infty}A_{k}) + \mu(B\setminus \bigcup_{k=1}^{\infty}A_{k}) &= \mu|_{B}(\bigcup_{k=1}^{\infty}A_{k}) + \mu|_{B}(\bigcap_{k=1}^{\infty}A_{k}) \\
+            &= \lim_{k \to \infty}\left[\mu|_{B}(B_{k})+\mu|_{B}(B_{k}^{C})\right]= \mu(B).
+            \end{aligned}
+            $$
+            That is, $\bigcup_{k=1}^{\infty}A_{k}$ is $\mu$-measurable. 
+            $\left(\bigcap_{k=1}^{\infty}A_{k}\right)^{C}=\bigcup _{k=1}^{\infty}A_{k}^{C}\Rightarrow \bigcap_{k=1}^{\infty}A_{k}$ is also $\mu$-measurable.\qedhere
+        \end{itemize}
+    \end{proof}
+
+    \begin{definition}
+        A collection of subsets $\mathscr{A}\subset 2^{X}$ is called a $\sigma$-algebra if
+        \begin{itemize}
+            \item[(i)] $\varnothing, X\in \mathscr{A}$;
+            \item[(ii)] $A \in \mathscr{A}\Rightarrow A^{c}:=X\setminus A\in \mathscr{A}$;
+            \item[(iii)] $A_{k}\in \mathscr{A},k \in \mathbb{Z}_{+}\Rightarrow \bigcup _{k=1}^{\infty}A_{k}\in \mathscr{A}$.
+        \end{itemize}
+    \end{definition}
+
+    \begin{remark}
+        $\bigcap _{k=1}^{\infty}A_{k}=\left( \bigcup _{k=1}^{\infty} A_{k}^{c}\right)^{c} \in \mathscr{A}$.
+    \end{remark}
+
+    \begin{theorem}
+        Let $\mu$ be a measure on a nonempty set $X$. Then the collection $M$ of all $\mu$-measurable subsets of $X$ is a $\sigma$-algebra.
+    \end{theorem}
+
+    \begin{remark}
+        By Theorem~\ref{thm:property of sequences of measurable sets}(i), $\mu$ is countably additive on $M$.
+    \end{remark}
+
+    \begin{definition}
+        If $\mathcal{C}\subset 2^{X}$ is a nonempty collection of subsets of $X$, the $\sigma$-algebra generated by $\mathcal{C}$, denoted by $\sigma(\mathcal{C})$, is the smallest $\sigma$-algebra containing $\mathcal{C}$.
+    \end{definition}
+
+    \begin{remark}
+        $\sigma(\mathcal{C})$ is the intersection of all $\sigma$-algebra containing $\mathcal{C}$.
+    \end{remark}
+
+    \begin{definition}
+        \begin{itemize}
+            \item[(i)] The Borel $\sigma$-algebra of $\mathbb{R}^{n}$ is the smallest $\sigma$-algebra $\mathscr{B}$ of $\mathbb{R}^{n}$ containing all open subsets of $\mathbb{R}^{n}$. An element in $\mathscr{B}$ is called a Borel set.
+            \item[(ii)] A measure $\mu$ is called Borel if every Borel set is $\mu$-measurable.
+        \end{itemize}
+    \end{definition}
+
+    \begin{theorem}[Caratheodory's criterion]\label{Caratheodory}
+        Let $\mu$ be a measure on $\mathbb{R}^{n}$. If for all sets $A,B \subset \mathbb{R}^{n}$, we have 
+        \begin{equation}
+            \mu(A \cup B)=\mu(A)+\mu(B) \quad \text{whenever } \operatorname{dist}(A,B)>0
+            \label{eq:caratheodory-additivity}
+        \end{equation}
+        then $\mu$ is a Borel measure.
+    \end{theorem}
+
+    \begin{proof}
+        It suffices to show that a closed set $C$ is $\mu$-measurable, which follows from the inequality
+        \begin{equation}
+            \mu(A)\geq \mu(A\cap C)+\mu(A\setminus C), \forall A \subset \mathbb{R}^{n}.
+            \label{eq:caratheodory-closed}
+        \end{equation}
+        We may assume $\mu(A)< \infty$, or otherwise \eqref{eq:caratheodory-closed} is trivial.
+
+        Define for all $n \in \mathbb{Z}_{+}$ 
+        \[
+            C_{n}:=\left\{  x \in \mathbb{R}^{n}:\operatorname{dist}(x,C)\leq \frac{1}{n}  \right\},
+        \]
+        then $\operatorname{dist}(A\cap C, A\cap C_{n}^{c})\geq \frac{1}{n}>0$.
+
+        By \eqref{eq:caratheodory-additivity},
+        \[
+            \mu(A\cap C)+\mu(A\cap C^{c}_{n})= \mu((A\cap C)\cup (A\cap C_{n}^{c})),
+        \]
+        we complete the proof if we have
+        \begin{equation}
+            \lim_{ n \to \infty } \mu(A\cap C_{n}^{c})=\mu(A\cap C^{c}).
+            \label{eq:caratheodory-limit}
+        \end{equation}
+        For $k\in \mathbb{Z}_{+}$, define
+        \[
+            R_{k}:=\{ x \in A:(k+1)^{-1}<\operatorname{dist}(x,C)\leq k^{-1} \}.
+        \]
+        Observe that $\operatorname{dist}(R_{i},R_{j})>0$ if $j\geq i+2$, therefore, by \eqref{eq:caratheodory-additivity},
+        \[
+            \sum _{k=1}^{j}\mu(R_{2k}) = \mu(\bigcup _{k=1}^{j}R_{2k})\leq \mu(A).
+        \]
+        Taking $j\to \infty$, and considering the odd terms, we have
+        \[
+            \sum _{k=1}^{\infty}\mu(R_{k})\leq 2\mu(A)<\infty.
+        \]
+        In particular,
+        \[
+            \lim_{ n \to \infty } \sum _{k=n}^{\infty}\mu(R_{k})=0.
+        \]
+        Recalling that $C$ is closed, $\operatorname{dist}(x,C)>0,\forall x \in C^{c}$, which implies that
+        \[
+            A\cap C^{c} = (A\cap C_{n}^{c})\cup \left( \bigcup _{k=n}^{\infty} R_{k} \right).
+        \]
+        As a result,
+        \[
+            \mu(A\cap C_{n}^{c})\leq \mu(A\cap C)\leq \mu(A\cap C_{n}^{c})+\sum _{k=n}^{\infty} \mu(R_{k}).
+        \]
+        Taking $n\to \infty$, we obtain \eqref{eq:caratheodory-limit}.
+    \end{proof}
+
+    \subsection{Radon Measures}
+
+    \begin{definition}
+        Let $\mu$ be a measure on $X$.
+        \begin{itemize}
+            \item[(i)] $\mu$ is locally finite if $\forall x \in X,\exists r>0$ s.t. $\mu(B(x,r))<\infty$.
+            \item[(ii)] $\mu$ is Borel regular if it is a Borel measure and $\forall A\subset X, \exists$ a Borel set $B \subset X$ s.t. $A\subset B$, and $\mu(A)=\mu(B)$.
+            \item[(iii)] $\mu$ is a Radon measure if it is Borel regular and locally finite.
+        \end{itemize}
+    \end{definition}
+
+    \begin{remark}
+        \begin{itemize}
+            \item[(i)] On $\mathbb{R}^{n}$, $\mu$ is locally finite iff $\mu(K)<\infty$ for all compact $K$. 
+            \item[(ii)] The initial definition of measure does not relate to topology, but Radon measures do.
+        \end{itemize}
+    \end{remark}
+
+    \begin{theorem}
+        Let $\mu$ be a Borel regular measure on $\mathbb{R}^{n}$. Suppose $A \subset \mathbb{R}^{n}$ is $\mu$-measurable and $\mu(A)<\infty$. Then $\mu|_{A}$ is a Radon measure.
+    \end{theorem}
+
+    \begin{remark}
+        If $A$ is a Borel set, then $\mu|_{A}$ is Borel regular even if $\mu(A)=\infty$.
+    \end{remark}
+
+    \begin{proof}
+        Denote $\nu:=\mu|_{A}$. Obviously, $\nu(K)<\infty$ for all compact $K$. As every $\mu$-measurable set is $\nu$-measurable, and $\mu$ is Borel, we have that $\nu$ is Borel.
+
+        It remains to show that $\forall C\subset \mathbb{R}^{n},\exists$ a Borel set $B\supset C$ s.t. $\nu(B)=\nu(C)$.
+
+        We may assume that $A$ is a Borel set. In fact, $\exists$ a Borel set $B$ s.t. $A \subset B$ and $\mu(A)=\mu(B)$ as $\mu$ is regular. Which implies that
+        \[
+        \begin{aligned}
+        \mu|_{B}(C)&=\mu(B\cap C\cap A)+\mu(B\cap C\cap A^{c}) \\
+        & \leq \mu(A\cap C)+\mu(B\cap A^{c}) \\
+        & = \mu(A\cap C)+\mu(B)-\mu(A) \\
+        & = \mu|_{A}(C)
+        \end{aligned}
+        \]
+        as $A$ is measurable, and $\mu(A)<\infty$.
+
+        Fix $C\subset \mathbb{R}^{n}$, then $\exists$ a Borel set $E$ s.t. $A\cap C\subset E$, and $\mu(A\cap C)=\mu(E)$. Let $D:=E\cup A^{c}$, which is Borel. Then $C\subset(A\cap C)\cup A^{c}\subset D$, and $\nu(D)=\mu(D\cap A)\leq \mu(E\cap A)\leq \mu(E)=\nu(C)$.
+        Hence $\nu(C)=\nu(D)$.
+    \end{proof}
+
+    \begin{remark}
+        Hausdorff measure is infinite on lower dimensional subspaces. But Radon measure requires a finite value on compact sets. Therefore, most Hausdorff measures are not Radon measures.
+    \end{remark}
+
+    \begin{lemma}
+        Let $\mu$ be a Borel measure on $\mathbb{R}^{n}$, and let $B$ be a Borel set.
+        \begin{itemize}
+            \item[(i)] If $\mu(B)<\infty$, then $\forall \epsilon>0, \exists$ a closed set $C$ s.t. $C\subset B$ and $\mu(B\setminus C)<\epsilon$.
+            \item[(ii)] If $\mu$ is a Radon measure, then $\forall \epsilon >0$, $\exists$ an open set $U$ s.t. $B\subset U, \text{ and }\mu(U\setminus B)<\epsilon$.
+        \end{itemize}
+    \end{lemma}
+
+    \begin{proof}
+        Let $\nu:=\mu|_{B}$, which is a finite Borel measure. Let 
+        \[
+            \mathscr{F}:=\{ A\subset \mathbb{R}^{n}:A\text{ is }\mu \text{-measurable, and }\forall \epsilon>0, \exists \text{ closed } C \text{ s.t. }\nu(A\setminus C)<\epsilon \}.
+        \]
+        Obviously, all closed sets are in $\mathscr{F}$. We will show that 
+        \[
+            \mathscr{G}:=\{ A\in \mathscr{F}:\mathbb{R}^{n}\setminus A \in \mathscr{F} \}
+        \]
+        is a $\sigma$-algebra containing all Borel sets. In particular, $B\in \mathscr{G}$, i.e., (i) holds.
+
+        \textbf{Claim 1} If $\{ A_{i} \}_{i=1}^{\infty}\subset \mathcal{F}$, then $A=\bigcap _{i=1}^{\infty}A_{i}\in \mathscr{F}$
+
+        \textit{Proof of Claim 1:} Fix $\epsilon >0$. Since $A_{i}\in \mathscr{F}$, $\exists$ a closed set $C_{i}\subset A_{i}$ s.t. $\nu(A_{i}\setminus C_{i})<2^{-i-1}\epsilon$. Let $C=\bigcap _{i=1}^{\infty}C_{i}$, then $C$ is closed, and 
+        \[
+            \nu(A\setminus C)\leq \nu\left( \bigcup _{i=1}^{\infty}(C_{i}^{c}\cap A_{i}) \right) <\epsilon.
+        \]
+
+        \textbf{Claim 2} If $\{ A_{i} \}_{i=1}^{\infty}\subset \mathscr{F}$, then $A:= \bigcup _{i=1}^{\infty}A_{i}\subset \mathscr{F}$.
+
+        \textit{Proof of Claim 2:} As $\nu(A)<\infty$, we have 
+        \[
+            \lim_{ m \to \infty } \nu\left( A\setminus\bigcup _{i=1}^{m}C_{i} \right)\leq \nu\left( \bigcup _{i=1}^{\infty}(A_{i}\cap C_{i}^{c}) \right) < \frac{\epsilon}{2}.
+        \]
+        Consequently, $\exists m$ s.t. $\mu\left( A\setminus \bigcup _{i=1}^{m}C_{i} \right)<\epsilon$, as $\bigcup _{i=1}^{m}C_{i}$ is closed, $A \in \mathscr{F}$.
+
+        As every open set in $\mathbb{R}^{n}$ can be written as a countable union of closed sets, we obtain from Claim 2 that $\mathscr{F}$ contains all open sets. By definition, $\mathscr{G}$ contains all open sets. Suppose $\{ A_{i} \}_{i=1}^{\infty}\subset \mathscr{G}$, then $A_{i},A_{i}^{c}\in \mathscr{F}$. By Claim 1 and 2, $\bigcup _{i=1}^{\infty} A_{i}, \bigcap _{i=1}^{\infty}A_{i}^{c} \in \mathscr{F}$, hence $\bigcup _{i=1}^{\infty}A_{i}\in \mathscr{G}$. As a result, $\mathscr{G}$ is a $\sigma$-algebra containing all Borel sets.
+
+        For (ii): Let $U_{m}:= B(0,m)= \{ x \in \mathbb{R}^{n}:|x|\leq m \}$. As $\mu$ is Radon, we have $\mu(U_{m}\setminus B)<\infty$. Applying (i), we find a closed set $C_{m}\subset U_{m}\cap B^{c}$ s.t. $\mu(U_{m}\cap B^{c}\cap C_{m}^{c})<2^{-m}\epsilon$. Let $U:= \bigcup _{m=1}^{\infty}(U_{m}\cup C_{m}^{c})$, which is open. As $C_{m}\subset B^{c}$, we have $B\subset C_{m}^{c}$, and therefore $U_{m}\cap B\subset U_{m}\cap C_{m}^{c}$. Consequently, $B\subset U$. Furthermore, $\mu(U\setminus B)\leq \sum _{m}\mu(U_{m}\cap C_{m}^{c}\cap B^{c})<\epsilon$.
+    \end{proof}
+
+    \begin{theorem}
+        Let $\mu$ be a Radon measure on $\mathbb{R}^{n}$. Then
+        \begin{itemize}
+            \item[(i)] $\forall A\subset \mathbb{R}^{n}$, 
+            \begin{equation}
+                \mu(A)= \operatorname{inf}\{ \mu(U):A\subset U, U\text{ is open} \}
+                \label{eq:radon-inner}
+            \end{equation}
+            (inner regularity)
+            \item[(ii)] $\forall \mu$-measurable set $A\subset \mathbb{R}^{n}$, 
+            \[
+                \mu(A)=\operatorname{sup}\{ \mu(K):K\subset A,K\text{ is compact} \}
+            \]
+            (outer regularity)
+        \end{itemize}
+    \end{theorem}
+
+    \begin{remark}
+        In many references this is taken as the definition of Radon measure, but geometric measure theory often uses the definition above.
+    \end{remark}
+
+    \begin{proof}
+        The conclusion is obvious if $\mu(A)=\infty$, so we assume $\mu(A)<\infty$.
+
+        Suppose $A$ is Borel. Fixing $\epsilon >0$, by Lemma above, $\exists$ an open set $U\supset A$ s.t. $\mu(U\setminus A)<\epsilon.$ As $A$ is $\mu$-measurable, we have $\mu(U)=\mu(A)+\mu(U\cap A^{c})$, which implies \eqref{eq:radon-inner}.
+
+        For an arbitrary set $A$, $\exists$ a Borel set $B$ s.t. $A\subset B$ and $\mu(A)=\mu(B)$. Then 
+        \[
+            \mu(A)=\mu(B) = \operatorname{inf}\{ \mu(U):B\subset U, U\text{ is open} \} \geq \operatorname{inf}\{ \mu(U):A\subset U, U\text{ is open} \}.
+        \]
+        The opposite inequality is trivial, so (i) holds.
+
+        For (ii): Consider first the case $\mu(A)<\infty$. Let $\nu:=\mu|_{A}$, which is Radon by previous theorem. Fixing $\epsilon>0$, and applying (i) to $\nu$ and $A^{c}$, $\exists$ an open set $U\supset A^{c}$ s.t. $\nu(U)\leq\epsilon$. Denote $C=U^{c}$, then $C$ is closed, and $C\subset A$. Moreover, $\mu(A\setminus C)=\nu(C^{c})\leq\epsilon$. Thus, $0\leq \mu(A)-\mu(C)\leq\epsilon$, and therefore $\mu(A)=\operatorname{sup}\{ \mu(C):C\subset A, C\text{ is closed} \}$.
+
+        Let $C_{m}:=C\cap \overline{B(0,m)},$ then $C_{m}$ is compact, and $\lim_{ m \to \infty } \mu(C_{m})=\mu(C)$. Then (ii) holds when $\mu(A)<\infty$.
+
+        Now suppose $\mu(A)=\infty$. Define $D_{k}:=\{ x \in \mathbb{R}^{n}:k-1\leq \lvert x \rvert <k \}$. Then $A=\bigcup _{k=1}^{\infty}(D_{k}\cap A),$ which implies that $\infty=\mu(A)=\sum _{k=1}^{\infty}\mu(D_{k}\cap A)$. Since $\mu$ is Radon, $\mu(D_{k}\cap A)<\infty$. Then $\exists$ a compact set $C_{k}\subset D_{k}\cap A$ s.t. $\mu(C_{k})\geq \mu(D_{k}\cap A)-2^{-k-1}$. As a result, $\bigcup _{k=1}^{\infty}C_{k}\subset A$, $\lim_{ m \to \infty } \left( \bigcup _{k=1}^{\infty} C_{k} \right)=\mu\left( \bigcup _{k=1}^{\infty}C_{k} \right)=\sum \mu(C_{k})=\infty$. This yields (ii) as $\bigcup _{k=1}^{m}C_{k}$ is compact.
+    \end{proof}
+
+    \begin{definition}
+        \begin{itemize}
+            \item[(i)] A topological space $X$ is called locally compact if every point has a compact neighborhood.
+            \item[(ii)] $X$ is called $\sigma$-compact if it is a countable union of compact sets.
+        \end{itemize}
+    \end{definition}
+
+    \begin{theorem}
+        Let $X$ be a locally compact Hausdorff space in which every open set is $\sigma$-compact. Then every Borel measure on $X$ that is finite on compact sets is Radon. (Proof omitted.)
+    \end{theorem}
+
+    \section{Hausdorff Measures and Hausdorff Dimensions}
+
+    \subsection{Hausdorff Measures}
+
+    \begin{definition}
+        \begin{itemize}
+            \item[(i)] 
+                Let $A\subset \mathbb{R}^{n}$, $0\leq s<\infty$, $0< \delta \leq \infty$. Define
+                \[
+                H_{\delta}^{s}(A):= \inf\left\{  \sum _{j=1}^{\infty}\alpha(s)\left( \frac{\operatorname{diam}C_{j}}{2} \right)^{s}:A\subset\bigcup _{j=1}^{\infty}C_{j}  ,\operatorname{diam}C_{j}\leq \delta\right\},
+                \]
+                where
+                \[
+                \alpha(s):= \frac{\pi ^{s/2}}{\Gamma\big( \frac{s}{2}+1 \big)}.
+                \]
+            \item[(ii)] 定义
+                \[
+                H^{s}(A):=\lim_{ \delta \to 0 } H_{\delta}^{s}(A)=\sup_{\delta>0}H_{\delta}^{s}(A).
+                \]
+        \end{itemize}
+    \end{definition}
+
+    \begin{remark}
+        $\alpha(s)$ 是一个与球体积有关的常数，是为了使 $s$ 取整时 Hausdorff 测度与经典 Lebesgue 测度相等。其并不会对 Hausdorff 维数产生本性影响。
+    \end{remark}
+
+    \begin{remark}
+        \begin{itemize}
+            \item[(i)] $\Gamma(s):= \int _{0}^{\infty}e^{-x}x^{s-1}\mathrm{d}x$.
+            \item[(ii)] $\alpha(n)=\mathcal{L}^{n}(B(0,1))$.
+            \item[(iii)] $H^{n}=\mathcal{L}^{n}$.
+            \item[(iv)] The definition remains equivalent if we assume that $C_{j}$ are closed balls.
+        \end{itemize}
+    \end{remark}
+
+    \begin{definition}
+        \begin{itemize}
+            \item[(i)] Let $A\subset \mathbb{R}^{n}$, $0\leq s<\infty$, $0< \delta \leq \infty$. Define
+                \[
+                H_{\delta}^{s}(A):= \inf\left\{  \sum _{i=1}^{\infty}\alpha(s)\left( \frac{\operatorname{diam}C_{j}}{2} \right)^{s}:A\subset\bigcup _{j=1}^{\infty}C_{j}  ,\operatorname{diam}C_{j}\leq \delta\right\},
+                \]
+                where $\alpha(s)$ is as above.
+            \item[(ii)] Define
+                \[
+                H^{s}(A):=\lim_{ \delta \to 0 } H_{\delta}^{s}(A)=\sup_{\delta>0}H_{\delta}^{s}(A).
+                \]
+        \end{itemize}
+    \end{definition}
+
+    \begin{theorem}\label{thm:hausdorff-borel-regular}
+        For all $0\leq s<n$, $H^{s}$ is a Borel regular measure in $\mathbb{R}^{n}$.
+    \end{theorem}
+    \begin{proof}
+        \textbf{Step 1} $H^{s}_{\delta}$ is a measure. Clearly $H^{s}_{\delta}\neq 0$. Suppose $A \subset \bigcup _{j=1}^{\infty}A_{j}$. Take a $\delta$-covering $\{ C_{j}^{k} \}_{k=1}^{\infty}$ of $A_{j}$ for each $j$, then $\{ C_{j}^{k} \}_{j,k=1,2,\dots}$ is a $\delta$-covering of $A$. This implies
+        \[
+        H^{s}_{\delta}(A)\leq \sum _{j=1}^{\infty}\sum _{k=1}^{\infty}(\operatorname{diam}C_{j}^{k})^{s}
+        \]
+        Taking the infimum, we get
+        \begin{equation}
+            H^{s}_{\delta}(A)\leq \sum _{j=1}^{\infty}H_{\delta}^{s}(A_{j}). \label{eq:hausdorff-measure-subadditivity}
+        \end{equation}
+
+        \textbf{Step 2} $H^{s}$ is a measure. By \eqref{eq:hausdorff-measure-subadditivity}, $H_{\delta}^{s}(A)\leq \sum _{j=1}^{\infty}H^{s}(A_{j})$. Letting $\delta\to 0$, we obtain
+        \[
+        H^{s}(A)\leq \sum _{j}H^{s}(A_{j}).
+        \]
+
+        \textbf{Step 3} $H^{s}$ is a Borel measure. By Caratheodory's criterion (see Theorem~\ref{Caratheodory}), it suffices to show that if $\operatorname{dist}(A,B)>0$, then
+        \[
+        H^{s}(A\cup B)= H^{s}(A)+H^{s}(B).
+        \]
+        Let $\delta< \frac{1}{4}\operatorname{dist}(A,B)$. Take a $\delta$-covering $\{ C_{j} \}$ of $A\cup B$. Then
+        \[
+        \sum _{j=1}^{\infty}(\operatorname{diam}C_{j})^{s}\geq \sum _{C_{j}\cap A\neq \varnothing}(\operatorname{diam}(C_{j})^{s})+\sum _{C_{j}\cap B\neq \varnothing}(\operatorname{diam}(C_{j})^{s})\geq H_{\delta}^{s}(A)+H_{\delta}^{s}(B).
+        \]
+        Taking infimum and letting $\delta\to 0$, we have $H^{s}(A\cup B)\geq H^{s}(A)+H^{s}(B)$. Furthermore, $H^{s}(A\cup B)=H^{s}(A)+H^{s}(B)$ since $H^{s}$ is a measure.
+
+        \textbf{Step 4} $H^{s}$ is Borel regular. Fix $A\subset \mathbb{R}^{n}$. It suffices to show that there exists a Borel set $B\supset A$ such that $H^{s}(A)=H^{s}(B)$. WLOG $H^{s}(A)<\infty$. By definition, there exists a $k^{-1}$-covering $\{ C_{j}^{k} \}$ of $A$ such that
+        \[
+        \sum _{j=1}^{\infty}(\operatorname{diam}C_{j}^{k})^{s}\leq H^{s}(A)+k^{-1}.
+        \]
+        As $\operatorname{diam}C=\operatorname{diam}\bar{C}$, we may assume that $C_{j}^{k}$ are closed. Let $B:=\bigcap _{k=1}^{\infty}\bigcup _{j=1}^{\infty}C_{j}^{k}$, then $B$ is a Borel set containing $A$, and
+        \[
+        H_{k^{-1}}^{s}(B)\leq H^{s}(A)+k^{-1}.
+        \]
+        Letting $k\to \infty$, we have $H^{s}(B)=H^{s}(A)$.
+    \end{proof}
+
+    \begin{theorem}\label{thm:hausdorff-radon-properties}
+        \begin{itemize}
+            \item[(i)] For $0\leq s<n$, $H^{s}$ is not locally finite. In particular, $H^{s}$ is not a Radon measure.
+            \item[(ii)] Let $A \subset \mathbb{R}^{n}$ be $H^{s}$-measurable, and $H^{s}(A)<\infty$. Then $H^{s}|_{A}$ is a Radon measure.
+            \item[(iii)] $H^{n}$ on $\mathbb{R}^{n}$ is a Radon measure.
+            \item[(iv)] For all $s>n$, $H^{s}\equiv 0$ on $\mathbb{R}^{n}$.
+        \end{itemize}
+    \end{theorem}
+    \begin{proof}
+        \begin{itemize}
+            \item[(i)] Let $B:=\{ x \in \mathbb{R}^{n}: |x|\leq1 \}$. It suffices to show that $H^{s}(B)=\infty$ for $0\leq s<n$. To cover $B$ using balls of radius $\delta$, we need at least $C_{n}\delta ^{-n}$ such balls. This yields
+            \[
+            H_{\delta}^{s}(B)\geq C_{s,n}\delta ^{-n}\delta ^{s}
+            \]
+            Letting $\delta\to 0$, we obtain $H^{s}(B)=\infty$ since $s<n$.
+            \item[(ii)] Apply Theorem~\ref{thm:hausdorff-borel-regular} and Theorem~\ref{thm:radon-restriction}.
+            \item[(iii)] It suffices to show that $H^{n}(B)<\infty$. For any $\delta>0$, we can find $C_{n}\delta ^{-n}$ balls of radius $\delta$ to cover $B$, then
+            \[
+            H^{n}_{\delta}(B)\leq C_{n}'
+            \]
+            This implies $H^{n}(B)\leq C_{n}'<\infty$.
+            \item[(iv)] Obvious.\qedhere
+        \end{itemize}
+    \end{proof}
+
+    \begin{theorem}\label{thm:hausdorff-basic-properties}
+        \begin{itemize}
+            \item[(i)] $H^{0}$ is the counting measure.
+            \item[(ii)] $H^{s}(\lambda A)=\lambda ^{s}H^{s}(A)$ for all $\lambda>0$, $A\subset \mathbb{R}^{n}$.
+            \item[(iii)] $H^{s}(L(A))=H^{s}(A)$ for any affine isometry $L:\mathbb{R}^{n}\to \mathbb{R}^{n}$, $A\subset \mathbb{R}^{n}$.
+        \end{itemize}
+    \end{theorem}
+    \begin{proof}
+        \begin{itemize}
+            \item[(i)] $\alpha(0)=1$, therefore $H^{0}(\{ x \})=1$ for any $x \in \mathbb{R}^{n}$. Since $\{ x \}$ is $H^{s}$-measurable, $H^{0}(\{ x_{1},\cdots,x_{i} \})=i$.
+            \item[(ii)] Trivial.
+            \item[(iii)] Trivial.\qedhere
+        \end{itemize}
+    \end{proof}
+
+    \begin{definition}
+        A Borel regular measure $\mu$ on a metric space $X$ is called uniformly distributed if
+        \[
+        0< \mu(B(x,r))=\mu(B(y,r))< \infty,\quad \forall x,y \in X, 0<r<\infty.
+        \]
+    \end{definition}
+
+    \begin{theorem}\label{thm:uniform-radon-unique}
+        Let $\mu$ and $\nu$ be uniformly distributed Radon measures on $\mathbb{R}^{n}$. Then there exists a constant $C$ such that $\mu=c \nu$.
+    \end{theorem}
+    \begin{proof}
+        Since $\mu$ and $\nu$ are Radon measures, it suffices to show that $\mu(U)=c\nu(U)$ for all open sets $U$. Since $\mu$ and $\nu$ are uniformly distributed, for $r>0$ define
+        \[
+        g(r) := \mu(B(x,r)),\quad h(r) := \nu(B(x,r))
+        \]
+        Clearly,
+        \[
+        \lim_{ r \to 0 } \frac{\nu(U\cap B(x,r))}{h(r)}=1,\quad \forall x \in U
+        \]
+        By Fatou's lemma,
+        \begin{align}
+        \mu (U)&=\int _{U}\lim_{ r \to 0 } \frac{\nu(U\cap B(x,r))}{h(r)}\mathrm{d}\mu(x) \\
+        &\leq \liminf_{r\to 0} \frac{1}{h(r)} \int _{U}\nu(U\cap B(x,r))\mathrm{d}\mu(x) \\
+        &= \liminf_{r\to 0} \frac{1}{h(r)}\int _{U}\mu(U\cap B(y,r))\mathrm{d}\nu(y) \\
+        &\leq \nu(U) \liminf_{r\to 0} \frac{g(r)}{h(r)}
+        \end{align}
+        Similarly,
+        \[
+        \nu(U)\leq \mu(U)\liminf_{r\to 0} \frac{h(r)}{g(r)}
+        \]
+        From the last two estimates,
+        \[
+        \lim_{ r \to 0 } \frac{g(r)}{h(r)}= \frac{\mu(U)}{\nu(U)}, \forall \text{ open }U
+        \]
+        Denote the left-hand side by $C$, and the proof is complete.
+    \end{proof}
+
+    \subsection{Hausdorff Dimension}
+
+    \begin{theorem}\label{thm:hausdorff-dimension-zero-infinity}
+        Let $0\leq s<t<\infty$ and $A\subset \mathbb{R}^{n}$.
+        \begin{itemize}
+            \item[(i)] If $H^{s}(A)<\infty$, then $H^{t}(A)=0$.
+            \item[(ii)] If $H^{t}(A)>0$, then $H^{s}(A)=\infty$.
+        \end{itemize}
+    \end{theorem}
+    \begin{proof}
+        \begin{itemize}
+            \item[(i)] By definition, there exists $\delta>0$ and a $\delta$-covering $\{ C_{j} \}$ such that
+            \[
+            \sum _{j}\operatorname{diam}(C_{j})^{s}\leq H^{s}_{\delta}(A)\leq H^{s}(A)+1
+            \]
+            As a result,
+            \begin{align}
+            H^{t}_{\delta}(A)&\leq \sum _{j}\operatorname{diam}(C_{j})^{t} \\
+            &\leq \delta ^{t-s}\sum _{j}(\operatorname{diam}C_{j})^{s} \\
+            &\leq \delta ^{t-s}(H^{s}(A)+1)
+            \end{align}
+            Letting $\delta\to 0$, we have $H^{t}(A)=0$.
+            \item[(ii)] Is equivalent to (i).\qedhere
+        \end{itemize}
+    \end{proof}
+
+    \begin{definition}
+        The Hausdorff dimension of a set $A\subset \mathbb{R}^{n}$ is
+        \begin{align}
+        \operatorname{dim}A & :=\sup\{ s:H^{s}(A)>0 \} \\
+         & :=\sup\{ s:H^{s}(A)=\infty \} \\
+         & :=\operatorname{inf}\{ t:H^{t}(A)=0 \} \\
+         & :=\operatorname{inf}\{ t:H^{t}(A)<\infty \}
+        \end{align}
+        By Theorem~\ref{thm:hausdorff-dimension-zero-infinity}, this is well-defined.
+    \end{definition}
+
+    \begin{remark}
+        \begin{itemize}
+            \item[(i)] $\operatorname{dim}\mathbb{R}^{n}=n$. This follows from the observations $H^{n}(\mathbb{R}^{n})>0$ and $s>n\Rightarrow H^{s}(\mathbb{R}^{n})=0$.
+        \end{itemize}
+    \end{remark}
+
+    \begin{proposition}\label{prop:hausdorff-dim-properties}
+        Let $A\subset \mathbb{R}^{n}, 0\leq s<\infty, 0<\delta\leq \infty$. The following are equivalent:
+        \begin{itemize}
+            \item[(i)] $H^{s}(A)=0$
+            \item[(ii)] $H^{s}_{\delta}(A)=0$
+            \item[(iii)] For all $\epsilon >0$, there exist $E_{1},E_{2},\dots \subset \mathbb{R}^{n}$ such that $A \subset\bigcup E_{j}$ and $\sum[\operatorname{diam}(E_{j})]^{s}<\epsilon$.
+        \end{itemize}
+    \end{proposition}
+    \begin{proof}
+        When $s=0$, all are equivalent to $A= \varnothing$. Assume $s>0$.
+        \begin{itemize}
+            \item[(i)$\Rightarrow$(ii)] $0\leq H_{\delta}^{s}(A)\leq H^{s}(A)\leq 0$.
+            \item[(ii)$\Rightarrow$(iii)] By definition.
+            \item[(iii)$\Rightarrow$(i)] Let $\delta =\epsilon ^{1/s}$. Then $H^{s}_{\delta}(A)<\delta ^{s}$. Letting $\delta\to 0$, we obtain (i).\qedhere
+        \end{itemize}
+    \end{proof}
+
+    \begin{proposition}\label{prop:hausdorff-dim-monotonicity}
+        \begin{itemize}
+            \item[(i)] If $A\subset B\subset \mathbb{R}^{n}$, then $\operatorname{dim}A\leq \operatorname{dim}B$.
+            \item[(ii)] If $A_{i}\subset \mathbb{R}^{n},i=1,2,\dots$, then $\operatorname{dim}\left( \bigcup _{i=1}^{\infty} A_{i}\right)=\sup_{i}\operatorname{dim}A_{i}$.
+        \end{itemize}
+    \end{proposition}
+    \begin{proof}
+        \begin{itemize}
+            \item[(i)] Follows from $H^{s}(A)\leq H^{s}(B)$ for all $s\geq 0$.
+            \item[(ii)] By (i), $\sup_{i}\operatorname{dim}A_{i}\leq \operatorname{dim}\left( \bigcup _{i}A_{i} \right)$. Denote the RHS by $t$, then for all $\epsilon> 0$,
+            \[
+            \infty=H^{t-\epsilon}\leq \sum _{i}H^{t-\epsilon}(A_{i})
+            \]
+            In particular, there exists $i$ such that $H^{t-\epsilon}(A_{i})>0$, which implies $\operatorname{dim}A_{i}\geq t-\epsilon$. As $\epsilon$ is arbitrary, we obtain the converse.\qedhere
+        \end{itemize}
+    \end{proof}
+
+    \begin{theorem}\label{thm:hausdorff-vs-minkowski}
+        Let $A\subset \mathbb{R}^{n}$, then
+        \[
+        \operatorname{dim}A\leq \underline{\operatorname{dim}}_{M}(A)
+        \]
+    \end{theorem}
+    \begin{proof}
+        It suffices to show that for any $\beta>\underline{\operatorname{dim}}_{M}(A)$, we have $\operatorname{dim}A\leq \beta$. Let $\alpha \in(\underline{\operatorname{dim}}_{M}A,\beta)$. By definition, for any $\delta_{0}>0$, there exists $\delta \in(0,\delta_{0})$ and a $\delta$-covering $\{ E_{j} \}_{j=1}^{J}$ such that $J\leq \delta ^{-\alpha}$, so
+        \[
+        \sum _{j}(\operatorname{diam}E_{j})^{\beta}\leq\delta ^{\beta-\alpha}\leq\delta_{0}^{\beta-\alpha}
+        \]
+        Since $\delta_{0}$ is arbitrary, by Proposition~\ref{prop:hausdorff-dim-properties}(iii), $H^{\beta}(A)=0$, i.e., $\operatorname{dim}A\leq \beta$.
+    \end{proof}
+
+    \begin{theorem}\label{thm:lipschitz-dim}
+        If $f:\mathbb{R}^{m}\to \mathbb{R}^{n}$ is Lipschitz, $0\leq s\leq m$, and $A\subset \mathbb{R}^{m}$, then
+        \begin{equation}
+            H^{s}(fA)\leq \operatorname{Lip}(f)^{s}H^{s}(A) \label{eq:lipschitz-hausdorff}
+        \end{equation}
+        In particular,
+        \begin{equation}
+            \operatorname{dim}(fA)\leq \operatorname{dim}(A) \label{eq:lipschitz-dim}
+        \end{equation}
+    \end{theorem}
+    \begin{proof}
+        Let $\{ E_{j} \}$ be a $\delta$-covering of $A$. Then $\{ fE_{j} \}$ is a $\operatorname{Lip}(f)\delta$-covering of $fA$. In particular,
+        \[
+        H_{\operatorname{Lip}(f)\delta}^{s}(fA)\leq \operatorname{Lip}(f)^{s}H_{\delta}^{s}(A)
+        \]
+        Letting $\delta\to 0$, we obtain \eqref{eq:lipschitz-hausdorff} and \eqref{eq:lipschitz-dim}.
+    \end{proof}

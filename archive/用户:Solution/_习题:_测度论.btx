@@ -1,0 +1,1141 @@
+\setdisplaytitle{测度论\ 习题解答}
+\sethtmltitle{测度论\ 习题解答}
+\theoremstyle{plain}\newtheorem*{1}{习题1}
+\theoremstyle{plain}\newtheorem*{2}{习题2}
+\theoremstyle{plain}\newtheorem*{3}{习题3}
+\theoremstyle{plain}\newtheorem*{4}{习题4}
+\theoremstyle{plain}\newtheorem*{5}{习题5}
+\theoremstyle{plain}\newtheorem*{6}{习题6}
+\theoremstyle{plain}\newtheorem*{7}{习题7}
+
+
+
+本页面是测度论讲义（第三版）（严加安）的部分习题解答
+{{comment|本页面还处于尚未完成的情况，感兴趣的同学也可以来编辑这个页面}}
+\section{集类与测度}
+    \subsection{1.1 集合运算与集类}
+        \begin{7}
+            设 $\mathcal{C}$ 为一集类, 且 $\varnothing\in\mathcal{C}$, 
+            令
+            \[
+                \mathcal{G}=\biggl\{A\mid A=\biggl(\bigcap_{i=1}^n A_i\biggl)\cap\biggl(\bigcap_{j=1}^m B_j^c\biggl),\ A_i,B_j\in\mathcal{C},\ 1\leqslant i\leqslant n,\ 1\leqslant j\leqslant m,\ n,m\geqslant 1\biggl\},
+            \]
+            则 $\mathcal{G}\supset\mathcal{C}$, 
+            且 $\mathcal{G}$ 为半环. 
+            特别若 $\mathcal{C}$ 对有限并及有限交封闭, 
+            则 $\{A\cap B^c\mid A,B\in\mathcal{C}\}$ 为半环.
+        \end{7}
+        \begin{proof}
+            这里唯一不平凡的地方是验证半环定义中的关于差集的部分, 即对任何 $A,B\in\mathcal{G}$, 
+            \[
+                A\setminus B\in\mathcal{G}_{\Sigma f}.
+            \]
+            
+            设
+            \[
+                B=\biggl(\bigcap_{k=1}^p C_k\biggr)\cap\biggl(\bigcap_{\ell=1}^q D_\ell^c\biggr).
+            \]
+            由 De Morgan 律,
+            \[
+                B^c=\biggl(\bigcup_{k=1}^p C_k^c\biggl)\cup\biggl(\bigcup_{\ell=1}^q D_\ell\biggl).
+            \]
+            依次记
+            \[
+                H_1=C_1^c,\ldots,H_p=C_p^c,\quad
+                H_{p+1}=D_1,\ldots,H_{p+q}=D_q,
+            \]
+            则有
+            \[
+                A\setminus B
+                =A\cap B^c
+                =\bigcup_{i=1}^{p+q} (A\cap H_i)
+            \]
+            为了使右边并起来的各项两两不交, 令
+            \[
+            E_r=A\cap H_r\cap\biggl(\bigcap_{1\leqslant s<r}H_s^c\biggl),\ 1\leqslant r\leqslant p+q,
+            \]
+            其中 $r=1$ 时最后一个交集略去. 于是诸 $E_r$ 两两不交, 且
+            \[
+            A\setminus B
+            =\bigsqcup_{r=1}^{p+q}E_r.
+            \]
+            又因每个 $H_r$ 及 $H_r^c$ 均为 $\mathcal{C}$ 中集合或其补集, 而 $A$ 本身具有 $\mathcal{G}$ 的形式, 故 $E_r\in\mathcal{G}$. 最终得到 $A\setminus B\in\mathcal{G}_{\scriptscriptstyle\sum f}$. 
+        \end{proof}
+    \subsection{1.2 单调类定理 (集合形式)}
+        \begin{2}
+            设 $\mathcal{F}$ 为 $\Omega$ 上的一个 $\sigma$ 代数, 
+            $\mathcal{C}=\{A_1, A_2,\cdots\}$ 为 $\Omega$ 的一个可数划分 
+            (即 $A_n\cap A_m=\varnothing, n\not=m, \displaystyle\sum_nA_n=\Omega$), 
+            则对任何 $B\in\sigma(\mathcal{F}\cup\mathcal{C})$, 存在 $B_n\in\mathcal{F}$, $n=1,2,\cdots$, 
+            使得
+            \[
+                B=\sum_{n=1}^\infty(B_n\cap A_n).
+            \]
+        \end{2}
+        \begin{proof}
+            本题所用到的思想也是测度论这门课程在许多定理和习题的证明中的\textbf{基本思想}: 要证明某个特定集类 ($\sigma$ 代数、$\lambda$ 类、$\pi$ 类等) 中的元素满足某一性质P, 
+            只需证明满足性质P的元素组成该种结构的集类即可.
+
+            令
+            \[
+                \mathcal{M}=\{\displaystyle\sum_{n=1}^\infty(B_n \cap A_n)\mid B_n\in\mathcal{F}, n=1,2,\cdots\}, 
+            \]
+            我们来验证这是一个$\sigma$代数. 首先, 容易验证 $\varnothing,\Omega\in\mathcal{M}$. 
+            验证对取余集运算封闭: 对 $\mathcal{M}$ 中任意一个元素 $\displaystyle\sum_{n=1}^\infty(B_n\cap A_n)$, 有
+            \[
+                (\sum_{n=1}^\infty(B_n\cap A_n))^c=\sum_{n=1}^\infty(B_n^c\cap A_n)\in\mathcal{M}.
+            \]
+            验证对可列交运算封闭: 对$\mathcal{M}$ 中任意一列元素 $D_m=\displaystyle\sum_{n=1}^\infty(B_{n,m}\cap A_n),B_{n,m}\in\mathcal{F},\forall m,n\geqslant1$, 有
+            \[
+                \bigcap_{m=1}^\infty D_m=\sum_{n=1}^\infty(\bigcap_{m=1}^\infty B_{n,m}\cap A_n)\in\mathcal{M}.
+            \]
+            因此, $\mathcal{M}$ 是一个 $\sigma$ 代数. 
+            容易验证 $\mathcal{F}\subset\mathcal{M}$, $\mathcal{C}\subset\mathcal{M}$, 
+            所以根据定义有 $\sigma(\mathcal{F}\cup\mathcal{C})\subset\mathcal{M}$, 
+            这正是需要证明的结论.
+        \end{proof}
+        \begin{3}
+            设 $\mathcal{C}$ 为一集类. 
+            则对任何 $A\in\sigma(\mathcal{C})$, 
+            存在 $\mathcal{C}$ 的可数子类 $\mathcal{D}$, 
+            使得 $A\in\sigma(\mathcal{D})$.
+        \end{3}
+        \begin{proof}
+            令\[
+            \mathcal{F}=\{A\mid A\in\sigma(\mathcal{C}),\ 存在 \mathcal{C} 的可数子类 \mathcal{D} 使得 A\in\sigma(\mathcal{D})\}, 
+            \] 
+            即满足题中要求性质的集合 $A$ 全体. 
+            显然 $\mathcal{C}\subset \mathcal{F}$, 为证明命题, 只需说明 $\mathcal{F}$ 是一个 $\sigma$ 代数. 
+            $\Omega\in\mathcal{F}$ 和 $\varnothing\in\mathcal{F}$ 是显然的, 
+            对取余和可列并封闭则从以下两个式子可以得到: 
+            \[
+                A\in\sigma(\mathcal{D})\Rightarrow A^c\in\sigma(\mathcal{D}), 
+            \]
+            \[
+                A_i\in\sigma(\mathcal{D}_i),\ \forall i\geqslant 1\Rightarrow \bigcup_{i=1}^\infty A_i\in\sigma\bigl(\bigcup_{i=1}^\infty \mathcal{D}_i\bigr).
+            \]
+
+            
+        \end{proof}
+        \begin{5}
+            设 $\mathcal{C}$ 为一集类, 如果
+            \[
+                A,\ B\in\mathcal{C}\Rightarrow A\cup B\in\mathcal{C}_{\Sigma\sigma},
+            \]
+            则有 $\lambda(\mathcal{C})=\sigma(\mathcal{C})$.
+        \end{5}
+        \begin{proof}
+            本题的证明思路和单调类定理 (定理1.2.1) 的证明是一样的, 本质上是在考察单调类定理的证明. 
+
+            由于 $\lambda$ 类对可列不交并封闭, 由题设
+            \[
+                A,B\in\mathcal{C}\Rightarrow A\cup B\in\lambda(\mathcal{C}).\tag{1}
+            \]
+
+            令
+            \[
+                \mathcal{G}_1=\{A\in\lambda(\mathcal{C})\mid A\cup B\in\lambda(\mathcal{C}),\ \forall B\in\mathcal{C}\}.
+            \]
+            我们先说明 $\mathcal{G}_1$ 为 $\lambda$ 类. 
+            显然 $\Omega\in\mathcal{G}_1$. 
+            若 $A_1,A_2\in\mathcal{G}_1$ 且 $A_1\supset A_2$, 
+            则对任意的 $B\in\mathcal{C}$, 
+            \[
+                A_2\setminus B=(A_2\cup B)\setminus B\in\lambda(\mathcal{C}),
+            \]
+            因而
+            \[
+                (A_1\setminus A_2)\cup B
+                =(A_1\cup B)\setminus(A_2\setminus B)\in\lambda(\mathcal{C}).
+            \]
+            故 $A_1\setminus A_2\in\mathcal{G}_1$.  
+            若 $A_n\in\mathcal{G}_1$ 且 $A_n\uparrow A$, 则
+            \[
+                A_n\cup B\uparrow A\cup B,
+            \]
+            故 $A\cup B\in\lambda(\mathcal{C})$, 
+            即 $A\in\mathcal{G}_1$. 
+            因此 $\mathcal{G}_1$ 为 $\lambda$ 类. 
+            由 (1) 知 $\mathcal{C}\subset\mathcal{G}_1$, 
+            故 $\mathcal{G}_1=\lambda(\mathcal{C})$
+
+            再令
+            \[
+                \mathcal{G}_2=\{A\in\lambda(\mathcal{C})\mid A\cup B\in\lambda(\mathcal{C}),\ \forall B\in\lambda(\mathcal{C})\}.
+            \]
+            由 $\mathcal{G}_1=\lambda(\mathcal{C})$ 可知 $\mathcal{C}\subset\mathcal{G}_2$, 
+            利用同样的方法可以证明 $\mathcal{G}_2$ 也是 $\lambda$ 类, 
+            因此 $\mathcal{G}_2=\lambda(\mathcal{C})$. 
+            从而 $\lambda(\mathcal{C})$ 关于有限并封闭. 
+            利用下面这个式子将有限并转化为有限交: 
+            \[
+                A\cap B=(A^c\cup B^c)^c.
+            \]
+            则 $\lambda(\mathcal{C})$ 为 $\pi$ 类, 由习题1.1.4, $\lambda(\mathcal{C})$ 是 $\sigma$ 代数, 因此 $\lambda(\mathcal{C})=\sigma(\mathcal{C})$.
+        \end{proof}
+    \subsection{1.3 测度与非负集函数}
+        \begin{3}
+            设 $(\Omega,\mathcal{F},\mu)$ 为一测度空间, 
+            $\mu(\Omega)<\infty$, 
+            $\mathcal{C}$ 为生成 $\mathcal{F}$ 的一个代数, 
+            则对任何 $A\in\mathcal{F}$, 我们有
+            \[
+                \mu(A)=\sup\{\mu(B)\mid B\in\mathcal{C}_{\delta},\ B\subset A\}=\inf\{\mu(B)\mid B\in\mathcal{C}_{\sigma},\ B\supset A\}.
+            \]
+        \end{3}
+        \begin{proof}
+            按照提示, 令 $\mathcal{G}$ 为 $\mathcal{F}$ 中满足题目中的式子的集 $A$ 全体. 
+            则显然有 $\mathcal{C}\subset\mathcal{G}$. 
+            由于 $\mathcal{C}$ 为代数, 
+            由单调类定理, 
+            只要证明 $\mathcal{G}$ 为单调类, 
+            就有 $\mathcal{G}\supset m(\mathcal{C})=\sigma(\mathcal{C})=\mathcal{F}$, 
+            从而命题成立.
+
+            对任意 $A_n\in\mathcal{G}$ 和 $\varepsilon>0$, 取
+            \[
+                D_n\subset A_n\subset E_n,\ 
+                D_n\in\mathcal{C}_\delta,\ 
+                E_n\in\mathcal{C}_\sigma,\ 
+                \mu(A_n\setminus D_n)<\frac{\varepsilon}{2^n},\  
+                \mu(E_n\setminus A_n)<\frac{\varepsilon}{2^n}.
+            \]
+            如果 $A_n\uparrow A$, 
+            那么由下连续性, 
+            存在足够大的正整数 $k$, 
+            使得 $\mu(A\setminus A_k)<\displaystyle\frac{\varepsilon}{2}$,  从而
+            \[
+                \mu(A\setminus D_k)<\varepsilon.
+            \]
+            另一方面, $\displaystyle\bigcup_{n=1}^\infty E_n\in\mathcal{C}_{\sigma}$, 且
+            \[
+                \mu\biggl(\big(\bigcup_{n=1}^\infty E_n\big)\setminus A\biggr)\leqslant\sum_{n=1}^\infty \mu(E_n\setminus A)\leqslant\sum_{n=1}^\infty\mu(E_n\setminus A_n)<\varepsilon.
+            \]
+            由 $\varepsilon$ 的任意性可得 $A\in\mathcal{G}$.
+
+            同理可得当 $A_n\downarrow A$ 时, 
+            $A\in\mathcal{G}$ (用 $\displaystyle\bigcap_{n=1}^\infty D_n$ 和 $E_k$ 来逼近). 
+            这就证明了 $\mathcal{G}$ 是单调类.
+        \end{proof}
+        \begin{4}
+            设 $(\Omega,\mathcal{F},\mu)$ 为一有限测度空间, 
+            $\mathcal{C}$ 为生成 $\mathcal{F}$ 的一个代数. 
+            若 $A\in\mathcal{F}$, 
+            则 $\forall\varepsilon>0$, 
+            存在 $B\in\mathcal{C}$, 
+            使得 $\mu(A\triangle B)<\varepsilon$.
+        \end{4}
+        \begin{proof}
+            本题只需要用到上一题的任意一个方向的结论即可。
+            
+            由上一题, 
+            对任意 $A\in\mathcal{F}$ 和 $\varepsilon>0$, 
+            存在 $D\in\mathcal{C}_\delta$, 使得
+            \[
+                D\subset A,\qquad
+                \mu(A\setminus D)<\frac{\varepsilon}{2}.
+            \]
+            由于 $D\in\mathcal{C}_\delta$, 可写成
+            \[
+                D=\bigcap_{n=1}^\infty C_n,\qquad C_n\in\mathcal{C}.
+            \]
+            令
+            \[
+                B_n=\bigcap_{k=1}^n C_k.
+            \]
+            由于 $\mathcal{C}$ 为代数, 有 $B_n\in\mathcal{C}$, 且
+            \[
+                B_n\downarrow D.
+            \]
+            又因为 $\mu(\Omega)<\infty$, 由测度的上连续性,
+            \[
+                \mu(B_n\setminus D)
+                =\mu(B_n)-\mu(D)\to0.
+            \]
+            故存在充分大的 $n$, 使得
+            \[
+                \mu(B_n\setminus D)<\frac{\varepsilon}{2}.
+            \]
+            注意到 $D\subset A\cap B_n$, 因此
+            \[
+                A\triangle B_n=(A\setminus B_n)\cup(B_n\setminus A)
+                \subset
+                (A\setminus D)\cup(B_n\setminus D).
+            \]
+            从而
+            \[
+            \begin{aligned}
+                \mu(A\triangle B_n)
+                &\leqslant
+                \mu(A\setminus D)+\mu(B_n\setminus D)\\
+                &<\varepsilon.
+            \end{aligned}
+            \]
+            取 $B=B_n\in\mathcal{C}$ 即得结论.
+        \end{proof}
+    \subsection{1.4 外测度与测度的扩张}
+        \begin{3}
+            设 $(\Omega,\mathcal{F},\mu)$ 为一有限测度空间, 
+            $\{A_n,n\geqslant1\}$ 为 $\mathcal{F}$ 中的极限存在的序列, 
+            则
+            \[
+                \lim_{n\to\infty}\mu(A_n)=\mu(\lim_{n\to\infty}A_n).
+            \]
+        \end{3}
+        \begin{proof}
+            $\{A_n\}$ 的极限存在的定义是
+            \[
+                \bigcap_{n=1}^\infty\big(\bigcup_{k=n}^\infty A_k\big)=\bigcup_{n=1}^\infty\big(\bigcap_{k=n}^\infty A_k\big).
+            \]
+            而
+            \[
+            \begin{aligned}
+                \mu\big(\bigcap_{n=1}^\infty\big(\bigcup_{k=n}^\infty A_k\big)\big)&=\lim_{n\to\infty}\mu\big(\bigcup_{k=n}^\infty A_k\big)\geqslant \limsup_{n\to\infty}\mu(A_n),\\
+                \mu\big(\bigcup_{n=1}^\infty\big(\bigcap_{k=n}^\infty A_k\big)\big)&=\lim_{n\to\infty}\mu\big(\bigcap_{k=n}^\infty A_k\big)\leqslant \liminf_{n\to\infty}\mu(A_n).\\
+            \end{aligned}
+            \]
+            注意第一个式子的第一个等号需要用到有限测度的条件.
+            
+            因此 $\displaystyle\limsup_{n\to\infty}\mu(A_n)\le\liminf_{n\to\infty}\mu(A_n)$, 即 $\displaystyle\lim_{n\to\infty}\mu(A_n)$ 存在, 并且等于 $\displaystyle\mu(\lim_{n\to\infty}A_n).$
+        \end{proof}
+        \begin{4}
+            设 $(\Omega,\mathcal{F},\mu)$ 为一测度空间. 令
+            \[
+                \mu^*(A)=\inf\{\mu(B)\mid B\supset A,\ B\in\mathcal{F}\},\ A\subset\Omega,
+            \]
+            则 $\mu^*$ 为 $\Omega$ 上的外测度. 令 $\mathcal{U}$ 为 $\mu^*$ 可测集全体, 则 $(\Omega,\mathcal{U},\mu^*)$ 为完备测度空间. 
+            若 $(\Omega,\mathcal{F},\mu)$ 为一 $\sigma$有限测度空间, 则 $\mathcal{U}$ 为 $\mathcal{F}$ 的 $\mu$ 完备化.
+        \end{4}
+        \begin{proof}
+            \textbf{1. $\mu^*$ 为 $\Omega$ 上的外测度.}
+
+            $\mu^*(\varnothing)=0$ 和单调性都是显然的, 下面证明次可列可加性.
+            对任意 $A_1,A_2,\cdots \subset \Omega$, 不妨设
+            \[
+                \sum_{n=1}^\infty \mu^*(A_n)<+\infty.
+            \]
+            对任意正整数 $n$ 和 $\varepsilon>0$, 
+            可取 $B_n\supset A_n,\ B_n\in\mathcal{F}$, 使得
+            \[
+                \mu(B_n)<\mu^*(A_n)+\frac{\varepsilon}{2^n}.
+            \]
+            由于 $\displaystyle\bigcup_{n=1}^\infty B_n\supset\bigcup_{n=1}^\infty A_n$, 有
+            \[
+                \mu^*\big(\bigcup_{n=1}^\infty A_n\big)\leqslant \mu\big(\bigcup_{n=1}^\infty B_n\big)\leqslant\sum_{n=1}^\infty\mu(B_n)<\sum_{n=1}^\infty\mu^*(A_n)+\varepsilon.
+            \]
+            令 $\varepsilon\to 0$ 即可得到次可列可加性.
+
+            \textbf{2. $(\Omega,\mathcal{U},\mu^*)$ 为完备测度空间.}
+
+            由定理1.4.2, 只需证明其中的完备性. 
+            
+            直接利用引理1.4.5即可. 对任意 $\mu^*$零测集 $A\subset\Omega$, 有
+            \[
+                \mu(C)=\mu^*(C)\geqslant\mu^*(C\cap A^c)=\mu^*(C\cap A^c)+\mu^*(C\cap A),\ \forall C\in\mathcal{F}.
+            \]
+            由引理1.4.5, $A$ 是$\mu^*$可测集, 结合外测度的单调性可知 $(\Omega,\mathcal{U},\mu^*)$ 完备.
+
+            \textbf{3. $\mathcal{F}\subset\mathcal{U}$, 且 $\mu^*$ 限制在 $\mathcal{F}$ 上等于 $\mu$.}
+
+            对任意 $A\in\mathcal{F}$, $D\subset\Omega$, 要证明
+            \[
+                \mu^*(D)=\mu^*(D\cap A)+\mu^*(D\cap A^c), 
+            \]
+            只需证明左边 $\geqslant$ 右边即可. 
+            不妨设 $\mu^*(D)<+\infty$, 
+            则对任意 $\varepsilon>0$, 
+            存在 $B\in\mathcal{F}$, $B\supset D$ 使得 $\mu(B)<\mu^*(D)+\varepsilon$, 从而
+            \[
+                \mu^*(D\cap A)+\mu^*(D\cap A^c)\leqslant \mu(B\cap A)+\mu(B\cap A^c)=\mu(B)<\mu^*(D)+\varepsilon.
+            \]
+            令 $\varepsilon\to 0$ 即可.
+
+            $\mu^*$ 限制在 $\mathcal{F}$ 上等于 $\mu$ 是显然的.
+
+            \textbf{4. 若 $(\Omega,\mathcal{F},\mu)$ 为一 $\sigma$有限测度空间, 则 $\mathcal{U}$ 为 $\mathcal{F}$ 的完备化.}
+
+            取 $\Omega_n\subset\Omega$, 
+            $\Omega_n\in\mathcal{F}$, 
+            $\mu(\Omega_n)<+\infty$, 
+            $\displaystyle\bigcup_n\Omega_n=\Omega$.
+
+            任取 $A\in\mathcal{U}$, 
+            由于 $\mu^*(A\cap\Omega_n)\leqslant\mu^*(\Omega_n)=\mu(\Omega_n)<+\infty$, 
+            可取 $B_{n,m}\in\mathcal{F}$, 使得
+            \[
+                A\cap\Omega_n\subset B_{n,m}\subset\Omega_n,\qquad \mu^*(A\cap\Omega_n)\leqslant\mu(B_{n,m})<\mu^*(A\cap\Omega_n)+\frac{1}{m}.
+            \]
+            由于 $A\cap\Omega_n\subset\displaystyle\bigcap_{m}B_{n,m}\subset B_{n,m},\ \forall m\geqslant1$, 有
+            \[
+                \mu\big(\bigcap_{m}B_{n,m}\big)=\mu^*(A\cap\Omega_n).
+            \]
+            令 $C_n=\big(\displaystyle\bigcap_{m}B_{n,m}\big)\setminus (A\cap\Omega_n)$. 由于 $A\cap\Omega_n\in\mathcal{U}$, 有
+            \[
+                \mu^*(C_n)=\mu\big(\bigcap_{m}B_{n,m}\big)-\mu^*(A\cap\Omega_n)=0.
+            \]
+            令 $C=\displaystyle\bigcup_{n}C_n$, 则 $A\cup C=\displaystyle\bigcup_{n}\bigcap_{m}B_{n,m}\in\mathcal{F}$, 且
+            \[
+                \mu^*(C)\leqslant\sum_{n}\mu^*(C_n)=0.
+            \]
+            这说明 $A\in\overline{\mathcal{F}}$. 
+            所以 $\mathcal{U}\subset\overline{\mathcal{F}}$, 
+            综合上面所有信息我们便得到 $\mathcal{U}=\overline{\mathcal{F}}$ 为 $\mathcal{F}$ 的 $\mu$ 完备化.
+
+
+        \end{proof}
+    \subsection{1.5 欧氏空间中的 Lebesgue--Stieltjes 测度}
+    \subsection{1.6 测度的逼近}
+        \begin{1}
+            设 $X$ 为一距离空间, $\mathcal{B}(X)$ 为 Borel $\sigma$ 代数, 
+            $\mathcal{F}$ 和 $\mathcal{G}$ 分别为 $X$ 的闭子集和开子集全体, 
+            $\mu$ 为 $(X,\mathcal{B}(X))$ 上的 $\sigma$-有限测度, 则有
+            \[
+            \begin{split}
+                \mu(B)&=\sup\{\mu(F)\mid F\subset B, F\in\mathcal{F}\}\\
+                &=\inf\{\mu(G)\mid B\subset G, G\in\mathcal{G}\},\ B\in\mathcal{B}(X).\\
+            \end{split}
+            \]
+        \end{1}
+        \begin{proof}
+            本题的第一个等号是测度逼近定理 (定理1.6.3) 的一个直接应用. 
+            为了从测度逼近定理得到第一个等号, 我们用到一个经典结论:  
+            度量空间中的开集都是 $F_\sigma$ 集. 
+            证明只需要注意到对任意不等于 $X$ 的开集 $G$ 
+            ($X$ 显然是 $F_\sigma$ 集), 
+            \[
+                G=\bigcup_{n=1}^\infty\{x\in X\mid d(x,G^c)\geqslant\frac{1}{n}\}.
+            \]
+            由于泛函 $x\mapsto d(x,G^c)$ 是连续的, 
+            故 $[\frac{1}{n},+\infty)$ 的原像是闭的, 
+            这就说明了 $G$ 是 $F_\sigma$ 集. 
+            应用测度逼近定理就得到
+            \[
+                \mu(B)=\sup\{\mu(F)\mid F\subset B, F\in\mathcal{F}\}.
+            \]
+            \textbf{但是, 一般情况下度量空间中的 $\sigma$-有限Borel测度不一定满足外正则性. 本题的第二个等号实际上不一定成立. }
+
+            反例如下: 令 $X=\mathbb{R}$, $\mu(B)=\#(B\cap\mathbb{Q})$ 为计数测度. 
+            则由
+            \[
+                \mathbb{R}=(\mathbb{R}\setminus\mathbb{Q})\cup\big(\displaystyle\bigcup_{q\in\mathbb{Q}}\{q\}\big)
+            \]
+            可知 $\mu$ 是 $\sigma$-有限的. 
+            考虑 $B=\{0\}$, 对任意包含 $0$ 的开集 $G$, 
+            $G$ 包含了某个区间 $(-\epsilon,\epsilon)$, 
+            因此 $\mu(G)=+\infty$, 从而
+            \[
+                \inf\{\mu(G)\mid B\subset G, G\in\mathcal{G}\}=+\infty\not=1=\mu(B).
+            \]
+
+        \end{proof}
+\section{可测映射}
+    \subsection{2.1 定义及基本性质}
+        \begin{1}
+            设 $(E,\mathcal{E})$ 为一可测空间, 
+            $\mathcal{C}$ 为生成 $\mathcal{E}$ 的一集类. 
+            设 $\mathcal{H}$ 为 $\Omega$ 到 $E$ 中的一族映射, 
+            $\mathcal{F}$ 为 $\mathcal{H}$ 在 $\Omega$ 上诱导的 $\sigma$ 代数, 则
+            \[
+                \mathcal{F}=\sigma\{\bigcup_{f\in\mathcal{H}}f^{-1}(\mathcal{C})\}.
+            \]
+            设 $\varphi$ 为 $\mathcal{F}$ 可测函数, 则存在 $\mathcal{H}$ 的可数子族 $\mathcal{H}_0=\{ f_1,f_2,\cdots\}$, 
+            使得 $\varphi$ 为 $\mathcal{F}_0$ 可测, 
+            其中 $\mathcal{F}_0$ 为 $\mathcal{H}_0$ 在 $\Omega$ 上诱导的 $\sigma$ 代数.
+        \end{1}
+        \begin{proof}
+            首先是这里的第一个命题\textbf{ (可别看漏了)}: 
+            \[
+                \sigma\{\bigcup_{f\in\mathcal{H}}f^{-1}(\mathcal{E})\}=\sigma\{\bigcup_{f\in\mathcal{H}}f^{-1}(\mathcal{C})\}.
+            \]
+            左边显然地包含右边, 
+            为证明右边包含左边, 
+            只需要证明: $\forall g\in\mathcal{H},\ A\in\mathcal{E}$, 有 $g^{-1}(A)\in\sigma\{\displaystyle\bigcup_{f\in\mathcal{H}}f^{-1}(\mathcal{C})\}$.
+
+            令\[
+                \mathcal{M}=\{A\mid A\subset E,\ g^{-1}(A)\in\sigma\{\bigcup_{f\in\mathcal{H}}f^{-1}(\mathcal{C})\}\}.
+            \]
+            容易验证 $\mathcal{M}$ 是一个 $\sigma$ 代数, 
+            且 $\mathcal{C}\subset\mathcal{M}$, 
+            故 $\mathcal{E}=\sigma(\mathcal{C})\subset\mathcal{M}$, 
+            即命题成立.
+
+            接下来证明这里的第二个命题, 注意命题里使用的术语是``可测函数'', 
+            所以这里的 $(E,\mathcal{E})$ 应当被替换为 $(\overline{\mathbb{R}},\mathcal{B}(\overline{\mathbb{R}}))$. 
+            实际上, 
+            在第二个命题中, 
+            只需要 $\mathcal{E}$ 存在一个生成它的可数集类 $\mathcal{C}$ 这个条件即可. 
+            在 $(\overline{\mathbb{R}},\mathcal{B}(\overline{\mathbb{R}}))$ 中, 
+            这里的 $\mathcal{C}$ 可取为 $\{[-\infty,q)\mid q\in\mathbb{Q}\}$. 
+            下面我们在假设 $\mathcal{C}$ 可数的情况下对一般的 $(E,\mathcal{E})$ 证明这个命题. 
+
+            令
+            \[
+                \mathcal{F}'=\bigcup_{\substack{\mathcal{H}_0\subset \mathcal{H}\\ \mathcal{H}_0 可数}}\sigma\{\bigcup_{f\in\mathcal{H}_0}f^{-1}(\mathcal{E})\}.
+            \]
+            容易验证 $\mathcal{F}'$ 是 $\sigma$ 代数 (为什么对可列并封闭？). 
+            对任意可数子族 $\mathcal{H}_0$, 
+            \[
+                \sigma\{\bigcup_{f\in\mathcal{H}_0}f^{-1}(\mathcal{E})\}\subset \sigma\{\bigcup_{f\in\mathcal{H}}f^{-1}(\mathcal{E})\}=\mathcal{F},
+            \]
+            所以 $\mathcal{F}'\subset\mathcal{F}$, 另外, 对任意 $f\in\mathcal{H}$, $f^{-1}(\mathcal{E})\subset\mathcal{F}'$, 所以 $\mathcal{F}\subset \mathcal{F}'$.
+            结合两者我们得到了 $\mathcal{F}'=\mathcal{F}$.
+
+            因为 $\varphi$ 是 $\mathcal{F}=\mathcal{F}'$ 可测的, 
+            对任意 $C\in\mathcal{C}$, 取 $\mathcal{H}_C\subset \mathcal{H}$ 为使得
+            \[
+                \varphi^{-1}(C)\in\sigma\{\bigcup_{f\in\mathcal{H}_C}f^{-1}(\mathcal{E})\}
+            \]
+            的可数子族. 令 $\mathcal{H}_\varphi=\displaystyle\bigcup_{C\in\mathcal{C}}\mathcal{H}_C$, 
+            则 $\mathcal{H}_\varphi$ 可数, 且
+            \[
+                \varphi^{-1}(\mathcal{C})\in\sigma\{\bigcup_{f\in\mathcal{H}_\varphi}f^{-1}(\mathcal{E})\}.
+            \]
+            设 $\mathcal{F}_0$ 为 $\mathcal{H}_\varphi$ 在 $\Omega$ 上诱导的 $\sigma$ 代数, 
+            则由命题2.1.3, $\varphi$ 为 $\mathcal{F}_0$ 可测函数.
+
+        \end{proof}
+        \begin{2}
+            设 $(\Omega,\mathcal{F}),(E,\mathcal{E}),(G,\mathcal{G})$ 为可测空间, 
+            $f$ 为 $\Omega$ 到 $E$ 中的$\mathcal{F}$ 可测映射, 
+            $h$ 为 $E$ 到 $G$ 中的 $\mathcal{E}$ 可测映射, 
+            令 $\varphi=h\circ f$, 
+            则 $\varphi$ 为 $\Omega$ 到 $G$ 中的 $\mathcal{F}$ 可测映射. 
+        \end{2}
+        \begin{proof}
+            直接按定义验证即可. 
+            对一切 $A\in\mathcal{G}$, 
+            $h^{-1}(A)\in\mathcal{E}$, 
+            所以 $\varphi^{-1}(A)=f^{-1}(h^{-1}(A))\in\mathcal{F}$, 
+            故 $\varphi$ 是 $\mathcal{F}$ 可测映射. 
+        \end{proof}
+        \begin{3}
+            设 $f$ 为 $(\Omega,\mathcal{F})$ 上的一有界可测函数, 
+            则存在简单可测函数序列 $(f_n)$, 使得 $|f_n|\leqslant|f|,\ n\geqslant 1$, 
+            且 $f_n$ 一致收敛于 $f$. 
+        \end{3}
+        \begin{proof}
+            当 $f$ 有界时, 由定理2.1.8 (1) 构造的简单函数列一致收敛于 $f$. 
+        \end{proof}
+        \begin{5}
+            设 $\Omega$ 为一距离空间, 
+            $\mathcal{B}(\Omega)$ 为 $\Omega$ 上的Borel $\sigma$ 代数. 
+            令 $\mathcal{C}_b(\Omega)$ 表示 $\Omega$ 上有界连续线性函数全体, 
+            则 $\mathcal{B}(\Omega)=\sigma\{f\mid f\in \mathcal{C}_b(\Omega)\}$. 
+        \end{5}
+        \begin{proof}
+            记
+            \[
+                \mathcal{G}=\sigma\{f\mid f\in\mathcal{C}_b(\Omega)\},
+            \]
+            即 $\mathcal{G}$ 是使所有 $f\in\mathcal{C}_b(\Omega)$ 可测的最小 $\sigma$ 代数.
+
+            由于每个连续函数都是Borel可测的, 
+            $\mathcal{B}(\Omega)$ 使所有
+            $f\in\mathcal{C}_b(\Omega)$ 可测, 
+            因而
+            \[
+                \mathcal{G}\subset\mathcal{B}(\Omega).
+            \]
+
+            反之, 
+            任取非空闭集 $F\subset\Omega$, 
+            定义
+            \[
+                f_F(x)=d(x,F)\wedge 1,\qquad x\in\Omega.
+            \]
+            由距离函数的性质, 
+            $x\mapsto d(x,F)$ 连续, 
+            故
+            $f_F\in\mathcal{C}_b(\Omega)$. 
+            又
+            \[
+                F=\{x\in\Omega\mid d(x,F)=0\}
+                =f_F^{-1}(\{0\}).
+            \]
+            因此 $F\in\mathcal{G}$. 
+            而 $\varnothing\in\mathcal{G}$ 显然成立, 
+            所以 $\mathcal{G}$ 包含 $\Omega$ 的所有闭集, 
+            从而 $\mathcal{B}(\Omega)\subset\mathcal{G}$. 
+            结合前面的包含关系即得
+            \[
+                \mathcal{B}(\Omega)
+                =\sigma\{f\mid f\in\mathcal{C}_b(\Omega)\}.
+            \]
+        \end{proof}
+        \begin{6}
+            设 $\{f_i,\ 1\leqslant i\leqslant m\}$ 为 $\mathbb{R}$ 上实值Borel函数, 
+            则 $(f_1,\cdots,f_m)$ 为 $(\mathbb{R}^m,\mathcal{B}(\mathbb{R}^m))$ 到自身的可测映射.
+        \end{6}
+        \begin{proof}
+            本题的 $(f_1,\cdots, f_m)$ 应理解为 $(x_1,\cdots,x_m)\mapsto (f_1(x_1),\cdots,f_m(x_m))$.
+
+            令 $\mathcal{C}$ 为 $\mathbb{R}^m$ 中的开矩形全体, 
+            则 $\mathcal{B}(\mathbb{R}^m)=\sigma(\mathcal{C})$. 
+            令 $f=(f_1,\cdots,f_m)$, 
+            对任意开矩形 $U_1\times \cdots \times U_m$, 
+            有
+            \[
+                f^{-1}(U_1\times \cdots\times U_m)=f_1^{-1}(U_1)\times\cdots\times f_m^{-1}(U_m)\in\mathcal{B}(\mathbb{R}^m).
+            \]
+            故 $f^{-1}(\mathcal{C})\subset \mathcal{B}(\mathbb{R}^m)$. 
+            由命题2.1.3, $f=(f_1,\cdots,f_m)$ 可测. 
+
+        \end{proof}
+        \begin{7}
+            $f:\Omega\to\mathbb{C}$ 为 $(\Omega,\mathcal{F})$ 上的复值可测函数, 
+            当且仅当 $f$ 为 $(\Omega,\mathcal{F})$ 到 $(\mathbb{C},\mathcal{B}(\mathbb{C}))$ 中的可测函数.
+        \end{7}
+        \begin{proof}
+            若 $f$ 为复值可测函数, 
+            即 $\operatorname{Re}f$ 和 $\operatorname{Im}f$都是可测的, 
+            则对于 $\mathbb{C}$ 上的开矩形 $U_1\times U_2$ ($U_1,U_2$ 是 $\mathbb{R}$ 中的开集), 
+            有
+            \[
+                f^{-1}(U_1\times U_2)=(\operatorname{Re}f)^{-1}(U_1)\cap(\operatorname{Im}f)^{-1}(U_2)\in\mathcal{F}.
+            \]
+            故由命题2.1.3可知 $f:(\Omega,\mathcal{F})\to(\mathbb{C},\mathcal{B}(\mathbb{C}))$ 可测.
+
+            反之, 如果 $f:(\Omega,\mathcal{F})\to(\mathbb{C},\mathcal{B}(\mathbb{C}))$ 可测, 
+            由于复平面到实轴和虚轴的投影 $\pi_1,\pi_2$ 是从 $(\mathbb{C},\mathcal{B}(\mathbb{C}))$ 到 $(\mathbb{R},\mathcal{B}(\mathbb{R}))$ 的可测映射, 
+            故 $\operatorname{Re}f=\pi_1\circ f$ 以及 $\operatorname{Im}f=\pi_2\circ f$ 都是可测的.
+        \end{proof}
+    \subsection{2.2 单调类定理 (函数形式)}
+    \subsection{2.3 可测函数序列的几种收敛}
+        \begin{1}
+            设 $(f_n)$ 为一实值可测函数序列, 
+            则为要 $(f_n)$ a.e. (相应地, 几乎一致或依测度 $\mu$) 收敛于某 $f$, 
+            必须且只需 $(f_n)$ 为相应的收敛基本列. 
+        \end{1}
+        \begin{proof}
+            几乎处处收敛的情况由Cauchy收敛定理立即可得.
+
+            \textbf{几乎一致收敛的情况}
+
+            若 $f_n\to f$ 几乎一致收敛, 则对任意 $\delta>0$, 存在
+            $E\in\mathcal{F}$ 满足 $\mu(E)<\delta$, 使得 $f_n$ 在 $E^c$ 上一致
+            收敛于 $f$. 因此 $(f_n)$ 在 $E^c$ 上为一致基本列, 即 $(f_n)$ 为
+            几乎一致收敛基本列.
+
+            反之, 设 $(f_n)$ 为几乎一致收敛基本列. 令
+            \[
+                N=\{x\in\Omega\mid \{f_n(x)\}\text{ 不是基本列}\}.
+            \]
+            显然 $N$ 可测 (为什么？尝试把 $N$ 写成某些可测集的可列交和可列并). 对任意 $\delta>0$, 由假设存在 $E\in\mathcal{F}$,
+            $\mu(E)<\delta$, 使得 $(f_n)$ 在 $E^c$ 上为一致基本列. 因而
+            $N\subset E$, 从而
+            \[
+                \mu(N)\leqslant\mu(E)<\delta.
+            \]
+            由 $\delta$ 的任意性知 $\mu(N)=0$.
+
+            于是对 $x\in N^c$ 可定义
+            \[
+                f(x)=\lim_{n\to\infty}f_n(x),
+            \]
+            并在 $N$ 上令 $f=0$. 则 $f$ 可测.
+
+            再任取 $\delta>0$, 取 $E\in\mathcal{F}$, $\mu(E)<\delta$, 使
+            $(f_n)$ 在 $E^c$ 上为一致基本列. 此时 $N\subset E$. 对任意
+            $\varepsilon>0$, 存在 $N_0$, 使得 $m,n\geqslant N_0$ 时
+            \[
+                |f_n(x)-f_m(x)|<\varepsilon,\qquad \forall x\in E^c.
+            \]
+            令 $m\to\infty$, 得
+            \[
+                |f_n(x)-f(x)|\leqslant\varepsilon,\qquad
+                \forall x\in E^c,\ n\geqslant N_0.
+            \]
+            故 $f_n\stackrel{\text{a.un.}}{\longrightarrow}f$.
+
+            \textbf{依测度收敛的情况}
+
+            若 $f_n\stackrel{\mu}{\longrightarrow}f$, 则对任意
+            $\varepsilon>0$,
+            \[
+                \{|f_n-f_m|>\varepsilon\}
+                \subset
+                \{|f_n-f|>\varepsilon/2\}
+                \cup
+                \{|f_m-f|>\varepsilon/2\}.
+            \]
+            因此
+            \[
+                \mu\{|f_n-f_m|>\varepsilon\}\to0
+                \qquad (m,n\to\infty),
+            \]
+            故 $(f_n)$ 为依测度收敛基本列.
+
+            反之, 设 $(f_n)$ 为依测度收敛基本列. 可递增地选取子列
+            $\{f_{n_k}\}$, 使得
+            \[
+                \mu\bigl\{|f_{n_{k+1}}-f_{n_k}|>2^{-k}\bigr\}<2^{-k},
+                \qquad k\geqslant1.
+            \]
+            记
+            \[
+                A_k=\{|f_{n_{k+1}}-f_{n_k}|>2^{-k}\}.
+            \]
+            则
+            \[
+                \sum_{k=1}^\infty\mu(A_k)<\infty,
+            \]
+            从而
+            \[
+                \mu\left(\limsup_{k\to\infty}A_k\right)=0.
+            \]
+            对$x\in(\displaystyle\limsup_{k\to\infty}A_k)^c$, 当 $k$ 充分大时,
+            \[
+                |f_{n_{k+1}}(x)-f_{n_k}(x)|\leqslant2^{-k}.
+            \]
+            于是 $\{f_{n_k}(x)\}$ 为基本列, 因而存在有限极限. 令
+            \[
+                f(x)=\lim_{k\to\infty}f_{n_k}(x)
+            \]
+            在上述零测集之外成立, 并在零测集上令 $f=0$, 则 $f$ 可测.
+
+            最后证明原序列依测度收敛于 $f$. 任取 $\varepsilon,\delta>0$.
+            由 $(f_n)$ 为依测度基本列, 存在 $N$, 使得对任意 $m,n\geqslant N$,
+            \[
+                \mu\{|f_n-f_m|>\varepsilon/2\}<\delta.
+            \]
+            固定 $n\geqslant N$. 当 $k$ 充分大时 $n_k\geqslant N$, 且
+            $f_{n_k}\to f$ a.e., 因此
+            \[
+                \{|f_n-f|>\varepsilon\}
+                \subset
+                \liminf_{k\to\infty}
+                \{|f_n-f_{n_k}|>\varepsilon/2\}.
+            \]
+            由 Fatou 引理,
+            \[
+            \begin{aligned}
+                \mu\{|f_n-f|>\varepsilon\}
+                &\leqslant
+                \liminf_{k\to\infty}
+                \mu\{|f_n-f_{n_k}|>\varepsilon/2\}\\
+                &\leqslant\delta.
+            \end{aligned}
+            \]
+            故
+            \[
+                f_n\stackrel{\mu}{\longrightarrow}f.
+            \]
+        \end{proof}
+        \begin{4}
+            设 $\mu$ 为有限测度, 则
+            \[
+                f_n\stackrel{\mu}{\longrightarrow}f \Rightarrow \frac{f_n}{1+|f_n|}\stackrel{\mu}{\longrightarrow}\frac{f}{1+|f|}.
+            \]
+        \end{4}
+        \begin{proof}
+            本题不需要 $\mu$ 为有限测度的假设. 只需要注意到函数 $x\mapsto \displaystyle\frac{x}{1+|x|}$ 具有 Lipschitz性质: 
+            \[
+                \left|\frac{x}{1+|x|}-\frac{y}{1+|y|}\right|\le |x-y|.
+            \]
+
+            因此，对任意 $\varepsilon>0$，
+            \[
+            \left\{
+            \left|
+            \frac{f_n}{1+|f_n|}
+            -
+            \frac{f}{1+|f|}
+            \right|>\varepsilon
+            \right\}
+            \subset
+            \left\{|f_n-f|>\varepsilon\right\}.
+            \]
+            由 $f_n\stackrel{\mu}{\longrightarrow}f$，有
+            \[
+            \mu\left(\left\{|f_n-f|>\varepsilon\right\}\right)\to 0.
+            \]
+            故
+            \[
+            \mu\left(
+            \left\{
+            \left|
+            \frac{f_n}{1+|f_n|}
+            -
+            \frac{f}{1+|f|}
+            \right|>\varepsilon
+            \right\}
+            \right)\to0,
+            \]
+            即
+            \[
+            \frac{f_n}{1+|f_n|}
+            \stackrel{\mu}{\longrightarrow}
+            \frac{f}{1+|f|}.
+            \]
+        \end{proof}
+        \begin{6}
+            设 $(\Omega,\mathcal{F})$ 为一可测空间, 
+            $A\subset \Omega$, 
+            则 $A$ 上的任一实值 $A\cap\mathcal{F}$ 可测函数可以延拓成为 $\Omega$ 上的实值 $\mathcal{F}$ 可测函数. 
+        \end{6}
+        \begin{proof}
+            注意本题并没有 $A\in\mathcal{F}$ 的条件, 因此不可以直接在 $A^c$ 上延拓.
+
+            设
+            \[
+                f:(A,A\cap\mathcal{F})\longrightarrow\mathbb{R}
+            \]
+            为可测函数. 对每个 $r\in\mathbb{Q}$, 由于
+            \[
+                \{x\in A\mid f(x)<r\}\in A\cap\mathcal{F},
+            \]
+            可取 $E_r\in\mathcal{F}$ 使得
+            \[
+                A\cap E_r=\{x\in A\mid f(x)<r\}.
+            \]
+            我们打算让 $f$ 从 $A\cap E_r$ 延拓到 $E_r$ 上, 保持 $f<r$, 为此, 我们先让 $E_r$ 依 $r$ 单调增大. 
+            令
+            \[
+                G_r=\bigcup_{\substack{q\in\mathbb{Q}\\q<r}}E_q,\qquad r\in\mathbb{Q}.
+            \]
+            则 $G_r\in\mathcal{F}$，且当 $r<s$ 时 $G_r\subset G_s$. 又由 $\mathbb{Q}$ 在 $\mathbb{R}$ 中稠密，
+            \[
+                A\cap G_r
+                =\bigcup_{\substack{q\in\mathbb{Q}\\q<r}}\{x\in A\mid f(x)<q\}
+                =\{x\in A\mid f(x)<r\}.
+            \]
+
+            定义
+            \[
+                g(x)=\inf\{r\in\mathbb{Q}\mid x\in G_r\},\qquad x\in\Omega,
+            \]
+            其中约定 $\inf\varnothing=+\infty$. 对任意 $t\in\mathbb{R}$，
+            \[
+                \{x\in\Omega\mid g(x)<t\}
+                =\bigcup_{\substack{r\in\mathbb{Q}\\r<t}}G_r\in\mathcal{F},
+            \]
+            故 $g$ 是 $\overline{\mathbb{R}}$ 值的 $\mathcal{F}$ 可测函数.
+
+            另一方面，$g$ 确实是 $f$ 的延拓: 对任意 $x\in A$，
+            \[
+                x\in G_r\iff f(x)<r,
+            \]
+            因而
+            \[
+                g(x)
+                =\inf\{r\in\mathbb{Q}\mid f(x)<r\}
+                =f(x).
+            \]
+            特别地，$g$ 在 $A$ 上只取有限值.
+
+            最后处理 $\pm\infty$ 的部分. 令
+            \[
+                \varphi(t)=
+                \begin{cases}
+                    t,&t\in\mathbb{R},\\
+                    0,&t=\pm\infty.
+                \end{cases}
+            \]
+            则 $\varphi:\overline{\mathbb{R}}\to\mathbb{R}$ 为 Borel 可测函数，故
+            \[
+                \widetilde f=\varphi\circ g
+            \]
+            是 $\Omega$ 上的实值 $\mathcal{F}$ 可测函数. 而对 $x\in A$ 有
+            \[
+                \widetilde f(x)=g(x)=f(x).
+            \]
+            因此 $\widetilde f$ 即为 $f$ 在 $\Omega$ 上的实值 $\mathcal{F}$ 可测延拓.
+        \end{proof}
+\section{积分和空间 $L^p$}
+    \subsection{3.1 积分的基本性质}
+        \begin{1}
+            举例说明命题3.1.8(2)中关于 $\mu$ 的 $\sigma$ 有限性条件不能去掉.
+        \end{1}
+        \begin{proof}
+            取
+            \[
+                \Omega=\{\omega\},\qquad
+                \mathcal{F}=\{\varnothing,\Omega\},
+            \]
+            并定义
+            \[
+                \mu(\varnothing)=0,\qquad \mu(\Omega)=+\infty.
+            \]
+            这样定义的 $\mu$ 是一个测度, 但不是 $\sigma$ 有限的. 
+
+            令
+            \[
+                f(\omega)=2,\qquad g(\omega)=1.
+            \]
+            则 $f,g$ 的积分均存在. 对任意 $A\in\mathcal{F}$，若 $A=\varnothing$，则
+            \[
+                \mu(fI_A)=\mu(gI_A)=0;
+            \]
+            若 $A=\Omega$，则
+            \[
+                \mu(fI_A)=\mu(gI_A)=+\infty.
+            \]
+            因此 $f,g$ 满足命题3.1.8中的条件, 
+            然而
+            \[
+                \mu(\{f>g\})=\mu(\Omega)=+\infty\neq0.
+            \]
+            所以 $f\leqslant g$ 并非 $\mathrm{a.e.}$ 成立.
+
+            故命题 3.1.8(2) 中 $\mu$ 的 $\sigma$ 有限性条件不能去掉.
+        \end{proof}
+        \begin{6}
+            设 $(\Omega,\mathcal{F})$ 及 $(E,\mathcal{E})$ 为两个可测函数空间, 
+            $f$ 为 $(\Omega,\mathcal{F})$ 到 $(E,\mathcal{E})$ 中的可测映射, 
+            $\mu$ 为 $(\Omega,\mathcal{F})$ 上一测度.
+            \begin{itemize}
+                \item[(1)] 令 $\mu f^{-1}(A)=\mu(f^{-1}(A)),\ A\in\mathcal{E}$. 
+                证明 $\mu f^{-1}$ 为 $(E,\mathcal{E})$ 上的测度.
+
+                \item[(2)] 设 $g$ 为 $(E,\mathcal{E})$ 上的可测函数. 证明: 为要 $g$ 关于测度 $\mu f^{-1}$ 的积分存在 (相应地, 可积), 
+                必须且只需 $g\circ f$ 关于 $\mu$ 的积分存在 (相应地, 可积). 
+                此外, 这时有
+                \[
+                    \int_\Omega g\circ f \operatorname{d}\!\mu=\int_E g\operatorname{d}(\mu f^{-1}).\tag{1}
+                \]
+
+                \item[(3)] (记 $\nu=\mu f^{-1}$) 设 $\mathcal{F}^\mu$ 和 $\mathcal{E}^\nu$ 分别表示 $\mathcal{F}$ 和 $\mathcal{E}$ 关于 $\mu$ 和 $\nu$ 的完备化. 
+                证明 $f$ 为 $(\Omega,\mathcal{F}^\mu)$ 到 $(E,\mathcal{E}^\nu)$ 中的可测映射.
+            \end{itemize}
+        \end{6}
+        \begin{proof}
+            \textbf{(1)}
+            按照测度的定义直接验证即可. 
+
+            \textbf{(2)}
+            利用简单函数逼近的方法证明定理是实分析和测度论的经典套路.
+
+            先设 $g=I_A$，其中 $A\in\mathcal{E}$，则
+            \[
+                I_A\circ f=I_{f^{-1}(A)},
+            \]
+            从而
+            \[
+                \int_\Omega I_A\circ f\,\operatorname d\!\mu
+                =\mu\bigl(f^{-1}(A)\bigr)
+                =\nu(A)
+                =\int_E I_A\,\operatorname d\!\nu.
+            \]
+            即 (1) 对示性函数成立, 
+            由积分的线性性，(1) 对任意非负简单函数也成立.
+
+            对于一般非负可测函数 $g$，取非负简单函数
+            $\{g_n\}$ 使得 $g_n\uparrow g$，则
+            \[
+                g_n\circ f\uparrow g\circ f.
+            \]
+            由单调收敛定理，
+            \[
+            \begin{aligned}
+                \int_\Omega g\circ f\,\operatorname d\!\mu
+                &=\lim_{n\to\infty}\int_\Omega g_n\circ f\,\operatorname d\!\mu\\
+                &=\lim_{n\to\infty}\int_E g_n\,\operatorname d\!\nu
+                =\int_E g\,\operatorname d\!\nu.
+            \end{aligned}
+            \tag{2}
+            \]
+            即 (1) 对任意非负可测函数成立. 
+
+            对任意实值可测函数 $g$，注意到
+            \[
+                (g\circ f)^+=g^+\circ f,
+                \qquad
+                (g\circ f)^-=g^-\circ f.
+            \]
+            由 (2)，
+            \[
+                \int_\Omega(g\circ f)^+\,\operatorname d\!\mu
+                =\int_Eg^+\,\operatorname d\!\nu,
+                \qquad
+                \int_\Omega(g\circ f)^-\,\operatorname d\!\mu
+                =\int_Eg^-\,\operatorname d\!\nu.
+            \]
+            因此，
+            $g$ 关于 $\nu$ 的积分存在，
+            当且仅当 $g\circ f$ 关于 $\mu$ 的积分存在, 且 (1) 成立. 
+
+            最后, 对 $|g|$ 应用 (2)，有
+            \[
+                \int_\Omega|g\circ f|\,\operatorname d\!\mu
+                =\int_E|g|\,\operatorname d\!\nu,
+            \]
+            故 $g$ 关于 $\nu$ 可积，当且仅当 $g\circ f$ 关于 $\mu$ 可积.
+
+            \textbf{(3)}
+            任取 $A\in\mathcal{E}^{\nu}$，由测度空间的完备化定义，存在
+            $B\in\mathcal{E}$ 以及 $N\subset N_0\in\mathcal{E}$，使得
+            \[
+                A=B\cup N,
+                \qquad
+                \nu(N_0)=0.
+            \]
+            由于 $f$ 为 $(\mathcal{F},\mathcal{E})$ 可测映射，
+            \[
+                f^{-1}(B),f^{-1}(N_0)\in\mathcal{F},
+            \]
+            且
+            \[
+                \mu\bigl(f^{-1}(N_0)\bigr)
+                =\nu(N_0)
+                =0.
+            \]
+            又
+            \[
+                f^{-1}(N)\subset f^{-1}(N_0),
+            \]
+            故由 $\mathcal{F}^{\mu}$ 的完备性，
+            \[
+                f^{-1}(N)\in\mathcal{F}^{\mu}.
+            \]
+            再由 $f^{-1}(B)\in\mathcal{F}\subset\mathcal{F}^{\mu}$，得到
+            \[
+                f^{-1}(A)=f^{-1}(B)\cup f^{-1}(N)\in\mathcal{F}^{\mu}.
+            \]
+            因此 $f$ 是
+            \[
+                (\Omega,\mathcal{F}^{\mu})
+                \longrightarrow
+                (E,\mathcal{E}^{\nu})
+            \]
+            的可测映射.
+        \end{proof}
+        \begin{7}
+            设 $(\Omega,\mathcal{F},\mu)$ 为一有限测度空间, 
+            在 $\mathcal{F}$ 可测实值函数全体构成的线性空间 $\mathcal{L}$ 上定义距离 $d(f,g)=\mu(|f-g|\wedge 1)$, 
+            证明按此距离收敛等价于按测度收敛.
+        \end{7}
+        \begin{proof}
+            注意到对任意 $0<\varepsilon<1$, 下式成立: 
+            \[
+                \varepsilon\mu(\{|f-g|>\varepsilon\})\leqslant d(f,g)\leqslant\mu(\{|f-g|>\varepsilon\})+\varepsilon\mu(\{|f-g|\leqslant\varepsilon\})\leqslant\mu(\{|f-g|>\varepsilon\})+\varepsilon\mu(\Omega).
+            \]
+            所以当 $d(f_n,f)\to 0$ 时, 对任意 $0<\varepsilon<1$, $\mu(\{|f_n-f|>\varepsilon\})\to 0$, 
+            即按距离收敛蕴含依测度收敛.
+
+            反之, 若 $f_n\stackrel{\mu}{\longrightarrow}f$, 则对任意 $0<\varepsilon<1$, 
+            当 $n$ 足够大时, 
+            $\mu(\{|f-f_n|>\varepsilon\})<\varepsilon$, 
+            从而 $d(f_n,f)\leqslant (1+\mu(\Omega))\varepsilon$, 
+            故 $f_n$ 按距离收敛到 $f$.
+        \end{proof}
+        \begin{itemize}
+            \item[\textbf{注.}] 此处的 $\mathcal{L}$ 准确来说应当定义为 $\mathcal{F}$ 可测函数全体构成的线性空间商去``几乎处处相等''这一等价关系后的商空间, 
+            否则 $d(f,g)=0$ 不能得出 $f=g$, 此时 $d$ 只是一个伪距离. 
+        \end{itemize}
+    \subsection{3.2 积分号取下极限}
+        \begin{1}
+            设 $f_n,h_n,g_n,f,h,g\in\mathcal{L}$, 
+            $h_n\leqslant f_n\leqslant g_n$, a.e., $\forall n\geqslant 1$. 
+            又设 $f_n\stackrel{\text{a.e.}}{\longrightarrow}f$ 或 $f_n\stackrel{\mu}{\longrightarrow}f$, 
+            $g_n\stackrel{\text{a.e.}}{\longrightarrow}g$ 或 $g_n\stackrel{\mu}{\longrightarrow}g$, 
+            $h_n\stackrel{\text{a.e.}}{\longrightarrow}h$ 或 $h_n\stackrel{\mu}{\longrightarrow}h$. 
+            如果 $h,g,h_n,g_n$ 都可积, 且 $\mu(h_n)\to\mu(h)$, $\mu(g_n)\to\mu(g)$, 
+            则 $f$ 可积, 且有 $\displaystyle\lim_{n\to\infty}\mu(f_n)=\mu(f)$.
+        \end{1}
+        \begin{proof}
+            首先假设 $f_n\stackrel{\text{a.e.}}{\longrightarrow}f$, 
+            $g_n\stackrel{\text{a.e.}}{\longrightarrow}g$, 
+            $h_n\stackrel{\text{a.e.}}{\longrightarrow}h$.
+
+            由 $h_n\leqslant f_n\leqslant g_n$, a.e., 可得
+            \[
+                |f_n|\leqslant |h_n|+|g_n|,\quad \text{a.e.}
+            \]
+            故每个 $f_n$ 均可积, 
+            取极限得
+            \[
+                |f|\leqslant |h|+|g|,\quad \text{a.e.}
+            \]
+            故 $f$ 可积.
+
+            下面证明积分收敛. 
+            对 $f_n-h_n$ 和 $g_n-f_n$ 应用Fatou引理可得
+            \[
+                \begin{aligned}
+                    \liminf_{n\to\infty}\mu(f_n)-\mu(h)&=\liminf_{n\to\infty} \mu(f_n-h_n)\geqslant \mu(\liminf_{n\to\infty}(f_n-h_n))=\mu(f-h)=\mu(f)-\mu(h),\\
+                    \mu(g)-\limsup_{n\to\infty}\mu(f_n)&=\liminf_{n\to\infty} \mu(g_n-f_n)\geqslant \mu(\liminf_{n\to\infty}(g_n-f_n))=\mu(g-f)=\mu(g)-\mu(f).\\
+                \end{aligned}
+            \]
+            从而
+            \[
+                \mu(f)\geqslant \limsup_{n\to\infty}\mu(f_n)\geqslant \liminf_{n\to\infty}\mu(f_n)\geqslant \mu(f).
+            \]
+            即 $\displaystyle\lim_{n\to\infty}\mu(f_n)=\mu(f)$.
+            
+            一般情况下, 即各函数列分别几乎处处收敛或依测度收敛的情况, 由于依测度收敛的序列存在几乎处处收敛的子列, 故通过之前的方法也可说明 $f_n,f$ 可积. 
+            
+            为证明积分收敛, 取子列 $\{n_k\}$ 使
+            \[
+                \mu(f_{n_k})\to\liminf_{n\to\infty}\mu(f_n).
+            \]
+            然后再取子列 (仍记为$\{n_k\}$)，使
+            \[
+                f_{n_k}\to f,\qquad
+                h_{n_k}\to h,
+                \quad \text{a.e.}
+            \]
+            对 $f_{n_k}-h_{n_k}$ 应用Fatou引理，
+            \[
+                \liminf_{n\to\infty}\mu(f_n)-\mu(h)=\liminf_{k\to\infty}\mu(f_{n_k}-h_{n_k})\geqslant \mu(\liminf_{k\to\infty}(f_{n_k}-h_{n_k}))=\mu(f-h)=\mu(f)-\mu(h).
+            \]
+            故
+            \[
+                \mu(f)\leqslant\liminf_{n\to\infty}\mu(f_n).
+            \]
+
+            同理，用同样的方法取子列并对 $g_{n_k}-f_{n_k}$ 应用Fatou引理可得
+            \[
+                \limsup_{n\to\infty}\mu(f_n)\leqslant\mu(f).
+            \]
+            从而
+            \[
+                \lim_{n\to\infty}\mu(f_n)=\mu(f).
+            \]
+        \end{proof}
+        \begin{3}
+            设 $(f_n)$ 为一可测函数列. 
+            若 $\displaystyle\sum_{n=1}^\infty \mu(f_n^+)<\infty$, 
+            或 $\displaystyle\sum_{n=1}^\infty \mu(f_n^-)<\infty$, 
+            则 $\displaystyle\sum_{n=1}^\infty f_n$ a.e.有意义, 
+            $\displaystyle\sum_{n=1}^\infty f_n$ 的积分存在, 
+            且有 $\displaystyle\mu\left(\sum_{n=1}^\infty f_n\right)=\sum_{n=1}^\infty \mu(f_n)$.
+        \end{3}
+        \begin{proof}
+            不妨设$\displaystyle\sum_{n=1}^{\infty}\mu(f_n^+)<\infty$.
+
+            由单调收敛定理,
+            \[
+                \mu\left(\sum_{n=1}^\infty f_n^+\right)=\sum_{n=1}^{\infty}\mu(f_n^+)<\infty.
+            \]
+            故 $\displaystyle\sum_{n=1}^\infty f_n^+<\infty$, a.e. 因而
+            \[
+                \sum_{n=1}^{\infty}f_n=\left(\sum_{n=1}^\infty f_n^+\right)-\left(\sum_{n=1}^\infty f_n^-\right)
+            \]
+            a.e. 有意义.
+
+            注意到
+            \[
+                \left(\sum_{n=1}^\infty f_n\right)^+\leqslant \sum_{n=1}^\infty f_n^+, 
+            \]
+            故
+            \[
+                \displaystyle\mu\left(\biggl(\sum_{n=1}^\infty f_n\biggr)^+\right)\leqslant \mu\left(\sum_{n=1}^\infty f_n^+\right), 
+            \]
+            从而 $\displaystyle\sum_{n=1}^\infty f_n$ 的积分存在. 再由单调收敛定理,
+            \[
+                \mu\left(\sum_{n=1}^\infty f_n^-\right)
+                =\sum_{n=1}^{\infty}\mu(f_n^-).
+            \]
+            因此
+            \[
+                \begin{aligned}
+                    \mu\left(\sum_{n=1}^{\infty}f_n\right)
+                    &=\mu\left(\sum_{n=1}^\infty f_n^+\right)-\mu\left(\sum_{n=1}^\infty f_n^-\right)\\
+                    &=\sum_{n=1}^{\infty}\mu(f_n^+)
+                    -\sum_{n=1}^{\infty}\mu(f_n^-)\\
+                    &=\sum_{n=1}^{\infty}
+                    \bigl(\mu(f_n^+)-\mu(f_n^-)\bigr)\\
+                    &=\sum_{n=1}^{\infty}\mu(f_n).
+                \end{aligned}
+            \]
+        \end{proof}

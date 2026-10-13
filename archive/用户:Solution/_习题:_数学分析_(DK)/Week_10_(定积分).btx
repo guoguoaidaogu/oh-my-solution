@@ -1,0 +1,666 @@
+\newenvironment{solution}{\begin{proofc}[解答]}{\end{proofc}}
+
+== 习题A ==
+\begin{enumerate}
+    \item[1.]用 Riemann 积分的定义计算下列定积分:
+    \begin{enumerate}
+        \item[(a)]$\displaystyle \int_{0}^{1}x^{3}\mathrm{d}x$;
+        \item[(b)]$\displaystyle \int_{0}^{1}a^{x}\mathrm{d}x,(a > 0)$;
+        \item[(c)]$\displaystyle \int_{0}^{\frac{\pi}{2}}\sin x\mathrm{d}x$.
+    \end{enumerate}
+    \item[2.]用微积分基本定理计算下列定积分:
+    \begin{enumerate}
+        \item[(a)]$\displaystyle \int_{1}^{2}\frac{(x - 1)(x^{2} - x + 1)}{2x^{2}} \mathrm{d}x$;
+        \item[(b)]$\displaystyle \int_{0}^{\frac{1}{2}}x(1 - 4x^{2})^{2}\mathrm{d}x$;
+        \item[(c)]$\displaystyle \int_{1}^{e}\sin (\ln x)\mathrm{d}x$;
+        \item[(d)]$\displaystyle \int_{0}^{\sqrt{\ln 2}}x^{3}e^{-x^{2}}\mathrm{d}x$;
+        \item[(e)]$\displaystyle \int_{1}^{\sqrt{2}}\frac{\mathrm{d}x}{x\sqrt{1 + x^{2}}}$;
+        \item[(f)]$\displaystyle \int_{0}^{1}\arcsin x\mathrm{d}x$.
+    \end{enumerate}
+    \item[3.]用递推法计算下列定积分:
+    \begin{enumerate}
+        \item[(a)]$\displaystyle \int_{0}^{\pi}\cos^{n}x \mathrm{d}x$;
+        \item[(b)]$\displaystyle \int_{-\pi}^{\pi}\sin^{n}x \mathrm{d}x$;
+        \item[(c)]$\displaystyle \int_{0}^{a}(a^{2} - x^{2})^{n}\mathrm{d}x$;
+        \item[(d)]$\displaystyle \int_{0}^{1}x^{n}\ln^{m}x \mathrm{d}x$;
+        \item[(e)]$\displaystyle \int_{1}^{e}x\ln^{n}x \mathrm{d}x$.
+    \end{enumerate}
+    \begin{solution}
+        \begin{enumerate}
+        \item[(a)] 
+        令
+        \[
+        I_n = \int_{0}^{\pi} \cos^n x \mathrm{d}x.
+        \]
+        当 $n=0$ 时，$I_0 = \pi$；当 $n=1$ 时，$I_1 = 0$.\\
+        对 $n \geq 2$，使用分部积分：令 $u = \cos^{n-1} x$，$\mathrm{d}v = \cos x \mathrm{d}x$，\\
+        则 $\mathrm{d}u = -(n-1)\cos^{n-2} x \sin x \mathrm{d}x$，$v = \sin x$，所以
+        \[
+        I_n = \int_{0}^{\pi} \cos^{n-1} x \cos x \mathrm{d}x = \left[\cos^{n-1} x \sin x\right]_{0}^{\pi} + (n-1) \int_{0}^{\pi} \cos^{n-2} x \sin^2 x \mathrm{d}x.
+        \]
+        第一项为 $0$，第二项中 $\sin^2 x = 1 - \cos^2 x$，所以
+        \[
+        I_n = (n-1) \int_{0}^{\pi} \cos^{n-2} x (1 - \cos^2 x) \mathrm{d}x = (n-1)(I_{n-2} - I_n).
+        \]
+        整理得
+        \[
+        I_n = \frac{n-1}{n} I_{n-2}.
+        \]
+        以此类推可知，当$n$为偶数时，$\displaystyle I_n = \frac{(n-1)!!}{n!!} \pi$；当 $n$ 为奇数时，$I_n = 0$.
+
+        \item[(b)]
+        当 $n$ 为奇数时，$\sin^n x$是奇函数；当 $n$ 为偶数时，$\sin^n x$是偶函数.\\
+        所以
+        \[
+        \int_{-\pi}^{\pi} \sin^n x \mathrm{d}x = \begin{cases}
+            \displaystyle 2 \int_{0}^{\pi} \sin^n x \mathrm{d}x & \text{若 } n \text{为偶数} \\
+            0 & \text{若 } n \text{为奇数}.
+        \end{cases}
+        \]
+        而
+        \[
+        \int_{0}^{\pi} \sin^n x \mathrm{d}x = \int_{0}^{\pi} \cos^n x \mathrm{d}x.
+        \] (通过代换$\displaystyle x \to \frac{\pi}{2}-x$可得)，所以
+        \[
+        \int_{-\pi}^{\pi} \sin^n x \mathrm{d}x = \begin{cases}
+            \displaystyle\frac{2(n-1)!!}{n!!} \pi & \text{若 } n \text{为偶数}, \\
+            0 & \text{若 } n \text{为奇数}.
+        \end{cases}
+        \]
+
+        \item[(c)]
+        令 $x = a \sin \theta$，则 $\mathrm{d}x = a \cos \theta \,\mathrm{d}\theta$. 当 $x=0$ 时，$\theta=0$；当 $x=a$ 时，$\displaystyle\theta=\frac{\pi}{2}$.\\
+        所以
+        \[
+        \int_{0}^{a} (a^2 - x^2)^n \mathrm{d}x = \int_{0}^{\frac{\pi}{2}} (a^2 \cos^2 \theta)^n a \cos \theta \mathrm{d}\theta = a^{2n+1} \int_{0}^{\frac{\pi}{2}} \cos^{2n+1} \theta \mathrm{d}\theta.
+        \]
+        而
+        \[
+        \int_{0}^{\frac{\pi}{2}} \cos^{2n+1} \theta \mathrm{d}\theta = \int_{0}^{\frac{\pi}{2}} \sin^{2n+1} \theta \mathrm{d}\theta = \frac{(2n)!!}{(2n+1)!!}.
+        \]
+        所以
+        \[
+        \int_{0}^{a} (a^2 - x^2)^n \mathrm{d}x = a^{2n+1} \frac{(2n)!!}{(2n+1)!!}.
+        \]
+
+        \item[(d)]
+        令
+        \[
+        I(n,m) = \int_{0}^{1} x^n \ln^m x \mathrm{d}x.
+        \]
+        令 $t = -\ln x$，则 $x = e^{-t}$，$\displaystyle\mathrm{d}x = -e^{-t} \mathrm{d}t$. 当 $x=0$ 时，$t \to +\infty$；当 $x=1$ 时，$t=0$.\\
+        所以
+        \[
+        I(n,m) = \int_{+\infty}^{0} e^{-nt} (-t)^m (-e^{-t}) \mathrm{d}t = (-1)^m \int_{0}^{+\infty} t^m e^{-(n+1)t} \mathrm{d}t.
+        \]
+        再令 $u = (n+1)t$，则
+        \[
+        I(n,m) = (-1)^m \int_{0}^{+\infty} \left(\frac{u}{n+1}\right)^m e^{-u} \frac{\mathrm{d}u}{n+1} = \frac{(-1)^m}{(n+1)^{m+1}} \int_{0}^{+\infty} u^m e^{-u} \mathrm{d}u = \frac{(-1)^m m!}{(n+1)^{m+1}}.
+        \]
+
+        \item[(e)]
+        令
+        \[
+        I(n) = \int_{1}^{e} x \ln^n x \mathrm{d}x
+        \]
+        使用分部积分：令 $u = \ln^n x$，$\mathrm{d}v = x \mathrm{d}x$，则 $\displaystyle \mathrm{d}u = n \ln^{n-1} x \cdot \frac{1}{x} \mathrm{d}x$，$\displaystyle v = \frac{x^2}{2}$.\\
+        所以
+        \[
+        I(n) = \left[\frac{x^2}{2} \ln^n x\right]_{1}^{e} - \int_{1}^{e} \frac{x^2}{2} \cdot n \ln^{n-1} x \cdot \frac{1}{x} \mathrm{d}x = \frac{e^2}{2} - \frac{n}{2} \int_{1}^{e} x \ln^{n-1} x \mathrm{d}x = \frac{e^2}{2} - \frac{n}{2} I(n-1).
+        \]
+        初始值
+        \[
+        I(0) = \int_{1}^{e} x \mathrm{d}x = \frac{e^2 - 1}{2}.
+        \]
+        因此
+        \[
+        \int_{1}^{e} x\ln^n{x} \mathrm{d}x = 
+        \begin{cases}
+        \displaystyle\frac{e^2-1}{2} & \text{若 } n=0, \\
+        \displaystyle\frac{1}{2}e^2\underset{k=0}{\overset{n}{\sum}}\left(-\frac{1}{2}\right)^kP_{n}^{k}+\left(-\frac{1}{2}\right)^{n+1}n! & \text{若 } n>0.
+        \end{cases}
+        \]
+        其中，$\displaystyle P_n^k$ 为排列数.
+        \end{enumerate}
+    \end{solution}
+
+    \item[4.]求下列极限:
+    \begin{enumerate}
+        \item[(a)]$\displaystyle \lim_{n\to +\infty}{\frac{1^{p}+2^{p}+\cdots+n^{p}}{n^{p+1}}} (p>0)$;
+        \item[(b)]$\displaystyle \lim_{n\to +\infty}{\frac{1}{n}}\Big(\sin {\frac{\pi}{n}} + \sin {\frac{2\pi}{n}} + \cdots +\sin {\frac{(n - 1)\pi}{n}}\Big)$;
+        \item[(c)]$\displaystyle \lim_{n\to +\infty}\sum_{i = 1}^{n}{\frac{n}{n^{2} + i^{2}}}$;
+        \item[(d)]$\displaystyle (\star)\lim_{n\to \infty}\sum_{i = 1}^{n^2}{\frac{n}{n^{2} + i^{2}}}$.
+    \end{enumerate}
+    \begin{solution}
+        只解答 (d). 我们使用 \textbf{截断策略}.
+        \[
+            \sum_{n=1}^{n^2}\frac{n}{n^2+i^2}=\sum_{i=1}^{kn}\frac{n}{n^2+i^2}+\sum_{i=kn+1}^{n^2}\frac{n}{n^2+i^2}\eqqcolon A_{k,n}+B_{k,n}.
+        \]
+        其中
+        \[
+            0\leq B_{k,n}\leq \sum_{i=kn+1}^{+\infty}\frac{n}{(i-1)i}=\frac{n}{kn+1-1}=\frac{1}{k}.
+        \]
+        对于任意 $\epsilon>0$，取充分大的正整数 $k$，使得 $\displaystyle \frac{1}{k}\leq \frac{\epsilon}{3}$ 且 $\displaystyle \frac{\pi}{2}-\arctan{k}\leq \frac{\epsilon}{3}$.\\
+        从而有 $\displaystyle B_{k,n}\leq\frac{1}{k}\leq\frac{\epsilon}{3}$. 对于充分大的正整数 $n$，有 $\displaystyle \left| A_{k,n}-\arctan{k} \right|\leq\frac{\epsilon}{3}$.
+        则有
+        \[
+            \left| \sum_{i=1}^{n^2}\frac{n}{n^2+i^2}-\frac{\pi}{2} \right|\leq \frac{1}{k}+\left| A_{k,n} -\arctan{k} \right|+\frac{\pi}{2}-\arctan{k}<\epsilon.
+        \]
+        因此
+        \[
+            \lim_{n\to+\infty}\sum_{i=1}^{n^2}\frac{n}{n^2+i^2}=\frac{\pi}{2}.
+        \]
+    \end{solution}
+
+    \item[5.]设 \(n\) 为正整数,证明:
+    \[\displaystyle\int_{0}^{1}{\frac{\mathrm{d}x}{(1 + x^{n})\sqrt[n]{1 + x^{n}}}} = \frac{1}{\sqrt[n]{2}}.\]
+    \begin{solution}
+        令 $t = x^n$，则 $\displaystyle x = t^{\frac{1}{n}}$，$\displaystyle\mathrm{d}x = \frac{1}{n} t^{\frac{1}{n}-1} \mathrm{d}t$.\\  
+        当 $x=0$ 时，$t=0$；当 $x=1$ 时，$t=1$.\\
+        所以
+        \[
+        \int_0^1 \frac{\mathrm{d}x}{(1+x^n) \sqrt[n]{1+x^n}} = \int_0^1 \frac{1}{(1+t)(1+t)^{\frac{1}{n}}} \cdot \frac{1}{n} t^{\frac{1}{n} - 1} \mathrm{d}t = \frac{1}{n} \int_0^1 \frac{t^{\frac{1}{n}- 1}}{(1+t)^{1+\frac{1}{n}}} \mathrm{d}t.
+        \]
+        令
+        \[
+        I = \int_0^1 \frac{t^{\frac{1}{n}- 1}}{(1+t)^{1+\frac{1}{n}}} \mathrm{d}t.
+        \]  
+        对 $I$ 作变量代换 $\displaystyle t = \frac{1}{u}$，则 $\displaystyle\mathrm{d}t = -\frac{1}{u^2} \mathrm{d}u$. 当 $t=0$ 时，$u \to +\infty$；当 $t=1$ 时，$u=1$.\\
+        代入可得
+        \[
+        I = \int_{+\infty}^1 \frac{(\frac{1}{u})^{\frac{1}{n} - 1}}{(1+\frac{1}{u})^{1+\frac{1}{n}}} \left(-\frac{1}{u^2}\right) \mathrm{d}u = \int_1^{+\infty} \frac{u^{1-\frac{1}{n}}}{(\frac{u+1}{u})^{1+\frac{1}{n}}} \cdot \frac{1}{u^2} \mathrm{d}u.
+        \]
+        化简可得
+        \[
+        I = \int_1^{+\infty} \frac{u^{1-\frac{1}{n}} \cdot u^{1+\frac{1}{n}}}{(u+1)^{1+\frac{1}{n}}} \cdot \frac{1}{u^2} \mathrm{d}u = \int_1^{+\infty} \frac{\mathrm{d}u}{(u+1)^{1+\frac{1}{n}}}.
+        \]
+        计算该积分：
+        \[
+        I = \int_1^{+\infty} (u+1)^{-1-\frac{1}{n}} \mathrm{d}u = \left[ \frac{(u+1)^{-\frac{1}{n}}}{-\frac{1}{n}} \right]_1^{+\infty} = n \left[ (u+1)^{-\frac{1}{n}} \right]_{+\infty}^1 = n \left( 2^{-\frac{1}{n}} - 0 \right) = n \cdot 2^{-\frac{1}{n}}.
+        \]
+        因此
+        \[
+        \frac{1}{n} \cdot I = \frac{1}{n} \cdot n \cdot 2^{-\frac{1}{n}} = 2^{-\frac{1}{n}} = \frac{1}{2^{\frac{1}{n}}} = \frac{1}{\sqrt[n]{2}}.
+        \]
+        故原积分：
+        \[
+        \int_0^1 \frac{\mathrm{d}x}{(1+x^n) \sqrt[n]{1+x^n}} = \frac{1}{\sqrt[n]{2}}.  
+        \]
+        (特别地，注意到 $\displaystyle LHS=\left.\frac{x}{\sqrt[n]{1+x^n}}\right|_0^1=\frac{1}{\sqrt[n]{2}}=RHS$.)
+    \end{solution}
+
+    \item[6.]利用 \(\sqrt{1 - x^{2}}\) 的 Taylor 展开估算半径为 $1$ 的半圆的面积,即分别计算 \(\displaystyle \sqrt{1 - x^{2}}\) 的二阶与四阶 Taylor 展开在 \([-1,1]\) 上的积分.
+    \item[7.]某段 $100$ 公里长的公路在 \(x\) 公里 \(\displaystyle(0\leq x\leq 100)\) 处的限速为 \(\displaystyle(60 + \frac{x}{5})\) 公里每小时, 问通过这段公路在不超速的情况下至少需要多少时间?
+\end{enumerate}
+
+== 习题B ==
+\begin{enumerate}
+    \item[1.]设 \(f(x)\) 是 \([0,2\pi ]\) 上的连续函数,证明: \(\displaystyle\lim_{n\to +\infty}\int_{0}^{2\pi}f(x)\sin (nx)\mathrm{d}x = 0.\)
+    \begin{solution}
+        将区间$[0,\,2\pi]$等分成$N$段. 由$f$在闭区间上连续，因此$f$在$[0,\,2\pi]$上Riemann可积.\\
+        从而
+        \[
+        \mathrm{Osc}(f;N)\coloneqq \sum_{i=1}^{N}\omega(f;I_{i})\cdot\frac{2\pi}{N}\rightarrow 0,\quad N\to +\infty.
+        \]
+        我们取$f$在$I_{i}$上的任一点的值作为$f_{N}$在$I_{i}$上的值，于是
+        \[
+        \left|\int_{0}^{2\pi}f(x)\sin{nx}\mathrm{d}x-\int_{0}^{2\pi}f_{N}(x)\sin{nx}\mathrm{d}x\right|\leq \int_{0}^{2\pi}\left|f(x)-f_{N}(x)\right|\mathrm{d}x\leq \mathrm{Osc}(f;N)\to 0.
+        \]
+        因此 $\forall \epsilon>0,\,\exists$ 充分大的 $N_{0}$ 使得对任意 $N>N_{0}$ 都有
+        \[
+        \left|\int_{0}^{2\pi}f(x)\sin{nx}\mathrm{d}x\right|<\epsilon+\left|\int_{0}^{2\pi}f_{N}(x)\sin{nx}\mathrm{d}x\right|.
+        \]
+        两边同时取 $\underset{n\to+\infty}{\limsup}$ 得到
+        \[
+        \limsup_{n\to+\infty}\left|\int_{0}^{2\pi}f(x)\sin{nx}\mathrm{d}x\right|\leq \epsilon.
+        \]
+        因此
+        \[
+        \limsup_{n\to+\infty}\int_{0}^{2\pi}f(x)\sin{nx}\mathrm{d}x=0. \quad\square
+        \]
+    \end{solution}
+
+    \item[2.]我们可以用 \(\displaystyle\frac{1}{n}\sum_{i = 1}^{n}f\left(\frac{2i - 1}{2n}\right)\) 来作为 \(\displaystyle\int_{0}^{1}f(x)\mathrm{d}x\) 的近似值,证明:
+    \begin{enumerate}
+        \item[(a)]若 \(\displaystyle f^{\prime}(x)\) 在 $[0,1]$ 上存在且有界,则近似值的误差为 \(\displaystyle O(n^{-1})\);
+        \item[(b)]若 \(\displaystyle f^{\prime \prime}(x)\) 在 $[0,1]$ 上存在且有界,则近似值的误差为 \(\displaystyle O(n^{-2})\).
+    \end{enumerate}
+    \begin{solution}
+        \begin{enumerate}
+        \item[(a)]
+        将$[0,\,1]$划分为$n$个小区间，在每个区间$[x_{i-1}, x_i]$上取中点 $\displaystyle c_i = \frac{x_{i-1}+x_i}{2}$，则误差：
+        \[
+        \left|\int_{x_{i-1}}^{x_i} f(x) \mathrm{d}x - f(c_i) \Delta x_i\right| = \left|\int_{x_{i-1}}^{x_i} [f(x)-f(c_i)] \mathrm{d}x\right|.
+        \]
+        由 Lagrange 中值定理，$|f(x)-f(c_i)| \leq M |x-c_i|$，其中$M=\underset{x\in[0,1]}{\sup}|f'|$.\\
+        所以
+        \[
+        \left|\int_{x_{i-1}}^{x_i} [f(x)-f(c_i)] \mathrm{d}x\right| \leq M \int_{x_{i-1}}^{x_i} |x-c_i| \mathrm{d}x = M \frac{\Delta x_i^2}{4}=\frac{M(b-a)^2}{4n^2}=\frac{M}{4n^2}.
+        \]
+        因此，近似值的总误差 $\displaystyle\leq n \cdot M \frac{(b-a)^2}{4n^2} = \frac{M(b-a)^2}{4n} =\frac{M}{4n}=O(n^{-1})$. 
+
+        \item[(b)]
+        使用 Taylor 展开，在 $c_i$ 处展开有
+        \[
+        f(x) = f(c_i) + f'(c_i)(x-c_i) + \frac{1}{2} f''(\xi)(x-c_i)^2.
+        \]
+        积分可得
+        \[
+        \int_{x_{i-1}}^{x_i} f(x) dx = f(c_i) \Delta x_i + \frac{1}{2} \int_{x_{i-1}}^{x_i} f''(\xi)(x-c_i)^2 \mathrm{d}x.
+        \]
+        所以误差：
+        \[
+        \left|\int_{x_{i-1}}^{x_i} f(x) \mathrm{d}x - f(c_i) \Delta x_i\right| \leq \frac{1}{2} M \int_{x_{i-1}}^{x_i} (x-c_i)^2 \mathrm{d}x = \frac{1}{2} M \frac{\Delta x_i^3}{12} = M \frac{\Delta x_i^3}{24}=\frac{M}{24n^3}.
+        \]
+        因此，近似值的总误差 $\displaystyle \leq n \cdot M \frac{(b-a)^3}{24n^3} = \frac{M(b-a)^3}{24n^2}=\frac{M}{24n^2}= O(n^{-2})$.
+        \end{enumerate}
+    \end{solution}
+    
+    \item[3.]证明 \textbf{Morrey 不等式}: 若定义在 \([a,b]\) 上的可导函数 \(u(x)\) 满足 \(\displaystyle \int_{a}^{b}|u^{\prime}(x)|^{p}\mathrm{d}x = 1\) (其中 \(\displaystyle 1< p< +\infty)\),
+    则对任意 \(\displaystyle \alpha \leq 1 - \frac{1}{p}\), 存在常数 \(C(a,b,\alpha)\), 使得 \(\displaystyle u(x)\in C^{\alpha}([a,b])\), 且 \(\displaystyle |u(x) - u(y)|\leq C(a,b,\alpha)|x - y|^{\alpha}\) 对任意 \(x,y\in [a,b]\) 成立.
+    另外,当 \(\displaystyle\alpha = 1 - \frac{1}{p}\) 时, 常数 \(C(a,b,\alpha)\) 可以与区间端点 \(a,b\) 无关.
+    \begin{solution}
+        设 $1 < p <+\infty$，$\displaystyle \frac{1}{p} + \frac{1}{q} = 1$，即 $\displaystyle q = \frac{p}{p-1}$.\\
+        对于任意 $x, y \in [a,b]$，由微积分基本定理 Newton-Leibniz 公式可知：
+        \[
+        |u(x) - u(y)| = \left| \int_y^x u'(t) \mathrm{d}t \right| \leq \int_{\min(x,y)}^{\max(x,y)} |u'(t)| \mathrm{d}t.
+        \]
+        应用 Hölder 不等式：
+        \[
+        \int_{\min(x,y)}^{\max(x,y)} |u'(t)| \mathrm{d}t \leq \left( \int_{\min(x,y)}^{\max(x,y)} |u'(t)|^p \mathrm{d}t \right)^{\frac{1}{p}} \left( \int_{\min(x,y)}^{\max(x,y)} 1^q \mathrm{d}t \right)^{\frac{1}{q}}.
+        \]
+        由于
+        \[
+        \int_a^b |u'(t)|^p \mathrm{d}t = 1.
+        \]
+        有
+        \[
+        \left( \int_{\min(x,y)}^{\max(x,y)} |u'(t)|^p dt \right)^{\frac{1}{p}} \leq 1
+        \]
+        且
+        \[
+        \left( \int_{\min(x,y)}^{\max(x,y)} 1^q \mathrm{d}t \right)^{\frac{1}{q}} = |x-y|^{\frac{1}{q}} = |x-y|^{1 - \frac{1}{p}}.
+        \]
+        因此
+        \[
+        |u(x) - u(y)| \leq |x-y|^{1 -\frac{1}{p}}.
+        \]
+
+        当 $\displaystyle\alpha = 1 - \frac{1}{p}$ 时，取 $C = 1$ 即可，与区间 $[a,b]$ 无关.
+
+        当 $\displaystyle\alpha < 1 - \frac{1}{p}$ 时，由于 $0<|x-y| \leq b-a$，有：
+        \[
+        |x-y|^\alpha = |x-y|^{1-\frac{1}{p}} \cdot |x-y|^{\alpha - (1-\frac{1}{p})} \geq |x-y|^{1-\frac{1}{p}} (b-a)^{\alpha - (1-\frac{1}{p})}.
+        \]
+        所以
+        \[
+        |u(x) - u(y)| \leq (b-a)^{(1-\frac{1}{p})-\alpha} |x-y|^\alpha.
+        \]
+        取 $\displaystyle C(a,b,\alpha) = (b-a)^{(1-\frac{1}{p})-\alpha}$ 即可.
+    \end{solution}
+
+    \item[4.]证明 Aleksandrov-Bakelman-Pucci 估计:定义在 \([a,b]\) 上的二阶可导函数 \(u(x)\) 满足 \(u(a) = u(b) = 0\) ,且 \(\displaystyle\int_{a}^{b}|u^{\prime \prime}(x)|\mathrm{d}x\leq M\),
+    则存在常数 \(C(a,b,M)\) 使得 \(\displaystyle |u(x)|\leq C(a,b,M)\) 对一切 \(x\in [a,b]\) 成立.
+    \begin{solution}\\
+        由于 $u(a) = u(b) = 0$，而且 $u(x)$ 在 $[a,\,b]$ 上二阶可导，因此由 Rolle 中值定理，存在 $c \in (a,b)$ 使得 $u'(c) = 0$.
+
+        对于任意 $x \in [a,b]$，有：
+        \[
+        u'(x) = u'(c) + \int_c^x u''(t)\mathrm{d}t = \int_c^x u''(t) \mathrm{d}t.
+        \]
+
+        所以：
+        \[
+        |u'(x)| = \left| \int_c^x u''(t) \mathrm{d}t \right| \leq \int_{\min(c,x)}^{\max(c,x)} |u''(t)| \mathrm{d}t \leq \int_a^b |u''(t)| \mathrm{d}t \leq M.
+        \]
+
+        现在考虑 $u(x)$：
+        \[
+        u(x) = u(a) + \int_a^x u'(t) \mathrm{d}t = \int_a^x u'(t) \mathrm{d}t.
+        \]
+
+        因此：
+        \[
+        |u(x)| = \left| \int_a^x u'(t) \mathrm{d}t \right| \leq \int_a^x |u'(t)| \mathrm{d}t \leq M(x-a) \leq M(b-a).
+        \]
+
+        取 $\displaystyle C(a,b,M) = M(b-a)$ 即可.
+    \end{solution}
+
+    \item[5.]定义函数 \(\displaystyle f(x):\mathbb{R}\to \mathbb{R}\) 的弱导数如下:我们称函数 \(g(x)\) 是 \(f(x)\) 的一个弱导数,若对任何光滑的紧支集(即在某一区间 \([-R,R]\) 之外恒为零)函数 \(\phi (x)\), 有下列积分等式成立:
+
+    \[\displaystyle \int_{\mathbb{R}}f(x)\cdot \varphi '(x)\mathrm{d}x = -\int_{\mathbb{R}}g(x)\cdot \varphi (x)\mathrm{d}x.\]
+
+    其中实数集 \(\mathbb{R}\) 上的广义积分定义为 \(\displaystyle[- L_{1},L_{2}]\) 上的定积分在 \(\displaystyle L_{1},L_{2}\to +\infty\) 时的极限. 
+    证明: 若 \(f(x) = |x|\), 则对任何实数 \(h\), 
+    \(\displaystyle g(x) = 
+    \left\{ 
+    \begin{array}{ll}
+    1, & x > 0 \\ 
+    h, & x = 0 \\ 
+    -1, & x< 0.
+    \end{array} 
+    \right.\) 
+    都是 \(f(x)\) 的弱导数.
+    \begin{solution}
+        设 $\varphi(x)$ 是任意光滑紧支集函数，存在 $R > 0$ 使得当 $|x| > R$ 时 $\varphi(x) = 0$.
+
+        计算上述积分等式的左边：
+        \[
+        \int_{\mathbb{R}} |x| \varphi'(x) \mathrm{d}x = \int_{-\infty}^0 (-x) \varphi'(x) \mathrm{d}x + \int_0^{+\infty} x \varphi'(x) \mathrm{d}x.
+        \]
+
+        对两部分分别使用分部积分：
+
+        对于第一项：
+        \[
+        \int_{-\infty}^0 (-x) \varphi'(x) \mathrm{d}x = \left[ (-x) \varphi(x) \right]_{-\infty}^0 - \int_{-\infty}^0 (-1) \varphi(x) \mathrm{d}x = 0 + \int_{-\infty}^0 \varphi(x) \mathrm{d}x.
+        \]
+
+        对于第二项：
+        \[
+        \int_0^{+\infty} x \varphi'(x) \mathrm{d}x = \left[ x \varphi(x) \right]_0^{+\infty} - \int_0^{+\infty} 1 \cdot \varphi(x) \mathrm{d}x = 0 - \int_0^{+\infty} \varphi(x) \mathrm{d}x.
+        \]
+
+        所以积分等式的左边为：
+        \[
+        \int_{-\infty}^0 \varphi(x) \mathrm{d}x - \int_0^{+\infty} \varphi(x) \mathrm{d}x.
+        \]
+
+        计算积分等式的右边：
+        \[
+        -\int_{\mathbb{R}} g(x) \varphi(x) \mathrm{d}x = -\left( \int_{-\infty}^0 (-1) \varphi(x) \mathrm{d}x + \int_0^{+\infty} 1 \cdot \varphi(x) \mathrm{d}x \right) = \int_{-\infty}^0 \varphi(x) \mathrm{d}x - \int_0^{\infty} \varphi(x) \mathrm{d}x.
+        \]
+        两边相等，故 $g(x)$ 是 $|x|$ 的弱导数. 注意在 $x=0$ 处 $g$ 的取值不影响积分值.\\
+        (注：其实在 $g$ 的个别几个点上(总共构成一个零测集)修改数值都仍然是 $f$ 的弱导数.)
+    \end{solution}
+
+    \item[6.]$(\star)$ 已知定义在 \([a,b]\) 上的有界函数 \(f(x)\) Riemann 可积的充要条件是 \(f(x)\) 的不连续点构成零测集, 即对任意 \(\epsilon >0\), 
+    s可以用可数个开区间覆盖所有不连续点, 且这些开区间的长度和不超过 \(\epsilon\) (此为 \textbf{Lebesgue 定理}). 现考虑 \(f,g:[0,1]\to [0,1]\), 其中 \(f(x)\) 黎曼可积而 \(g(x)\) 连续.
+    \begin{enumerate}
+        \item[(a)]证明: \(g(f(x))\) 在 $[0,1]$ 上 Riemann 可积;
+        \item[(b)]构造例子，使得 \(f(g(x))\) 在[0,1]上不是 Riemann 可积函数.
+        (提示:考虑不连续集为 Cantor 集的函数 \(f\) ,并选取 \(\mathrm{g}\), 使得复合函数的不连续点集测度非零.)
+    \end{enumerate}
+    \begin{solution}
+        \begin{enumerate}
+        \item[(a)]
+        设 $D_f$ 为 $f$ 的不连续点集，$D_{g\circ f}$ 为 $g\circ f$ 的不连续点集.
+        由于 $g$ 连续，若 $f$ 在 $x_0$ 连续，则 $g\circ f$ 在 $x_0$ 连续.\\
+        因此
+        \[
+        D_{g\circ f} \subseteq D_f.
+        \]
+
+        由已知，$f$ 黎曼可积，故 $D_f$ 是零测集，从而 $D_{g\circ f}$ 也是零测集.
+
+        由 Lebesgue 定理，$g\circ f$ 在$[0,\,1]$上Riemann可积. 
+
+        \item[(b)]
+        设 $C$ 为 $[0,1]$ 上的 Cantor 集，它是紧的、完全不连通的、无处稠密的零测集.
+
+        定义 $g: [0,1] \to [0,1]$ 为 Cantor 函数，它是连续的、单调递增的满射，且将 $C$ 映射到 $[0,1]$，即有：
+        \[
+        \begin{aligned}
+        &\forall x\leq y,\, g(x)\leq g(y).\\
+        &g(0)=0,\quad g\left(\frac{1}{3}x\right)=\frac{1}{2}g(x), \quad g(1-x)=1-g(x).
+        \end{aligned}
+        \]
+        定义 $f: [0,1] \to [0,1]$ 如下：
+        \begin{enumerate}
+            \item[i.] 在 $C$ 上，  若 $x$ 是 $C$ 中的有理点，则有$f(x) = 1$；若 $x$ 是 $C$ 中的无理点，则有$f(x) = 0$ .
+            \item[ii.] 在 $[0,1]\setminus C$ 上，令 $f(x) = 0$.
+        \end{enumerate}
+        则
+        \begin{enumerate}
+            \item[(i)] $f$ 的不连续点集是 $C$，而且 $C$ 是零测集，故 $f$ 在$[0,\,1]$上 Riemann 可积.
+            \item[(ii)] $f(g(x))$ 在 $[0,1]$ 上即为 Dirichlet 函数，它在 $[0,1]$ 上处处不连续，故不是Riemann可积函数. 
+        \end{enumerate}
+        \end{enumerate}
+    \end{solution}
+\end{enumerate}
+
+== 习题C ==
+
+\begin{enumerate}
+    \item[1.]证明:若 \(\displaystyle f\in \mathcal{R}[a,b]\), 则
+
+    \[\displaystyle \lim_{|\mathcal{P}|\to 0}\sum_{i = 1}^{\#\mathcal{P}}\omega (f;I_i)\Delta x_i = 0.\]
+
+    其中 \(\displaystyle I_{i} = [x_{i - 1},x_{i}],\omega (f;I) = \sup \{|f(z_{1}) - f(z_{2})|\mid z_{1},z_{2}\in I\}.\)
+    \begin{solution}
+        由于 $f$ 在 $[a,b]$ 上Riemann可积，则对于任意 $\epsilon > 0$，存在划分 $\mathcal{P}_0$ 使得：
+        \[
+        \sum_{j=1}^{m} \omega(f; J_j) \Delta y_j < \frac{\epsilon}{2}.
+        \]
+        其中 $J_j$ 是 $\mathcal{P}_0$ 的子区间.
+        令 $\displaystyle \delta = \frac{1}{2} \min\{\Delta y_j : 1 \leq j \leq m\}$.\\
+        现在考虑任意分割 $\mathcal{P}$ 满足 $|\mathcal{P}| < \delta$. 令 $\mathcal{P'} = \mathcal{P} \cup \mathcal{P}_0$ 为 $\mathcal{P}$ 和 $\mathcal{P}_0$ 的公共细化.
+
+        将 $\mathcal{P}$ 的子区间分为两类：
+        \begin{enumerate}
+            \item[第一类：] 包含 $\mathcal{P}_0$ 的分点的区间;
+            \item[第二类：] 不包含 $\mathcal{P}_0$ 的分点的区间.
+        \end{enumerate}
+
+        由于 $|\mathcal{P}| < \delta$，每个第一类区间至多包含一个 $\mathcal{P}_0$ 的分点（因为 $\delta$ 是 $\mathcal{P}_0$ 最小区间长度的一半），且第一类区间的个数不超过 $m$.
+
+        设 
+        \[
+        M = \sup_{[a,b]} |f|.
+        \]
+        则对于第一类区间：
+        \[
+        \sum_{\text{第一类}} \omega(f; I_i) \Delta x_i \leq 2M \cdot m \cdot |P| < 2M m \delta
+        \]
+
+        取 $\displaystyle \delta < \frac{\epsilon}{4Mm}$，则
+        \[
+        \sum_{\text{第一类}} \omega(f; I_i) \Delta x_i \leq 2M \cdot m \cdot |P| < 2M m \delta< \frac{\epsilon}{2}.
+        \]
+        对于第二类区间，每个这样的区间完全落在 $P_0$ 的某个子区间内，因此有
+        \[
+        \sum_{\text{第二类}} \omega(f; I_i) \Delta x_i \leq \sum_{j=1}^{m} \omega(f; J_j) \Delta y_j < \frac{\epsilon}{2}.
+        \]
+
+        综上：
+        \[
+        \sum_{i=1}^{\#P} \omega(f; I_i) \Delta x_i < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon.
+        \]
+        即
+        \[
+        \lim_{|P| \to 0} \sum_{i=1}^{\#P} \omega(f; I_i) \Delta x_i = 0.  \quad\square
+        \]
+    \end{solution}
+    
+    \item[2.]设 \(\displaystyle f\in C[0,1]\), 证明:
+
+    \[\displaystyle \int_{0}^{\pi}x f(\sin x)\mathrm{d}x = \frac{\pi}{2}\int_{0}^{\pi}f(\sin x)\mathrm{d}x.\]
+
+    并利用上式计算积分 \(\displaystyle \int_{0}^{\pi}{\frac{x\sin x}{1 + \cos^{2}x}}\mathrm{d}x.\)
+    \begin{solution}
+        令
+        \[
+        I = \int_0^\pi x f(\sin x) \mathrm{d}x
+        \]
+        代换 $\displaystyle x = \pi - t$：
+        \[
+        I = \int_0^\pi (\pi - t) f(\sin t) \mathrm{d}t = \pi \int_0^\pi f(\sin x) \mathrm{d}x - I.
+        \]
+        所以 $\displaystyle 2I = \pi \int_0^\pi f(\sin x) \mathrm{d}x$，即 $\displaystyle I = \frac{\pi}{2} \int_0^\pi f(\sin x) \mathrm{d}x$. 
+        接下来，计算 $\displaystyle \int_0^\pi \frac{x \sin x}{1 + \cos^2 x} \mathrm{d}x$.\\
+        \[
+        \int_0^\pi \frac{x \sin x}{1 + \cos^2 x} \mathrm{d}x = \frac{\pi}{2} \int_0^\pi \frac{\sin x}{1 + \cos^2 x} \mathrm{d}x.
+        \]
+        令 $u = \cos x$，则 $\displaystyle \mathrm{d}u = -\sin x \mathrm{d}x$，当$x=0$时，$u=1$；当$x=\pi$时，$u=-1$.\\
+        所以
+        \[
+        \int_0^\pi \frac{\sin x}{1 + \cos^2 x} \mathrm{d}x = \int_{1}^{-1} \frac{-\mathrm{d}u}{1+u^2} = \int_{-1}^{1} \frac{\mathrm{d}u}{1+u^2} = \arctan u \Big|_{-1}^{1} = \frac{\pi}{4} - (-\frac{\pi}{4}) = \frac{\pi}{2}.
+        \]
+        因此
+        \[
+        \int_0^\pi \frac{x \sin x}{1 + \cos^2 x} \mathrm{d}x = \frac{\pi}{2} \cdot \frac{\pi}{2} = \frac{\pi^2}{4}.
+        \]
+    \end{solution}
+    \item[3.]设 \(f\) 在 \((0, + \infty)\) 上单调递增, 记
+
+    \[\displaystyle F(x) = \frac{1}{x}\int_{0}^{x}f(t)\mathrm{d}t,\quad \forall x > 0.\]
+
+    证明: \(F\) 在 \((0, + \infty)\) 上单调递增.
+
+    \item[4.]设 \(f\) 是周期为 \(T\) 且在 \([0,T]\) 上可积的函数, 证明:
+    \[\displaystyle\lim_{\lambda \to +\infty}\frac{1}{\lambda}\int_{0}^{\lambda}f(x)\mathrm{d}x = \frac{1}{T}\int_{0}^{T}f(x)\mathrm{d}x.\]
+    \begin{solution}
+        令 $\displaystyle I = \frac{1}{T} \int_0^T f(x) \mathrm{d}x$，设 $\displaystyle\lambda = nT + r$，其中$n\in\mathbb{N},\,0 \leq r < T$(\textbf{带余除法})，则
+        \[
+        \int_0^{\lambda} f(x) \mathrm{d}x = n \int_0^T f(x) \mathrm{d}x + \int_0^r f(x) \mathrm{d}x.
+        \]
+        所以
+        \[
+        \frac{1}{\lambda} \int_0^{\lambda} f(x) \mathrm{d}x = \frac{n I T + \int_0^r f(x) \mathrm{d}x}{nT + r}.
+        \]
+        当 $n \to +\infty$ 时，
+        \[
+        \frac{n I T}{nT + r} \to I.
+        \]
+        而
+        \[
+        \frac{\displaystyle\int_0^r f(x) \mathrm{d}x}{nT + r} \to 0.
+        \]
+        故极限为 $I$，即有
+        \[
+        \lim_{\lambda \to +\infty} \frac{1}{\lambda} \int_0^{\lambda} f(x) \mathrm{d}x = \frac{1}{T} \int_0^T f(x) \mathrm{d}x.
+        \] 
+    \end{solution}
+
+    \item[5.]证明:
+    \[\displaystyle\int_{0}^{1}\frac{\mathrm{d}x}{1 + x^{n}} = 1 - \frac{\ln 2}{n} +o\left(\frac{1}{n}\right)\quad (n\to +\infty).\]
+    \begin{solution}
+        令
+        \[
+        I_n = \int_0^1 \frac{\mathrm{d}x}{1 + x^n} = 1 - \int_0^1 \frac{x^n}{1 + x^n} \mathrm{d}x.
+        \]
+        令 
+        \[
+        J_n = \int_0^1 \frac{x^n}{1 + x^n} \mathrm{d}x.
+        \]
+        则 $\displaystyle I_n = 1 - J_n$.
+
+        作变量代换 $\displaystyle x = 1 - \frac{y}{n}$，则 $\displaystyle \mathrm{d}x = -\frac{\mathrm{d}y}{n}$，当 $x=0$ 时 $y=n$，当 $x=1$ 时 $y=0$.
+        \[
+        J_n = \frac{1}{n} \int_0^n \frac{(1 - \frac{y}{n})^n}{1 + (1 - \frac{y}{n})^n} \mathrm{d}y.
+        \]
+        对于固定的 $y$，有：
+        \[
+        (1 - \frac{y}{n})^n = e^{n \ln(1 - \frac{y}{n})} = e^{-y - \frac{y^2}{2n} + O(\frac{1}{n^2})} = e^{-y} \left(1 - \frac{y^2}{2n} + O(\frac{1}{n^2})\right).
+        \]
+        因此
+        \[
+        \frac{(1 - \frac{y}{n})^n}{1 + (1 - \frac{y}{n})^n} = \frac{e^{-y}(1 - \frac{y^2}{2n} + O(\frac{1}{n^2}))}{1 + e^{-y}(1 - \frac{y^2}{2n} + O\left(\frac{1}{n^2}\right))}
+        = \frac{1}{e^y + 1} - \frac{y^2}{2n(e^y + 1)^2} + O(\frac{1}{n^2}).
+        \]
+        所以
+        \[
+        J_n = \frac{1}{n} \int_0^n \left( \frac{1}{e^y + 1} - \frac{y^2}{2n(e^y + 1)^2} + O\left(\frac{1}{n^2}\right) \right) \mathrm{d}y.
+        \]
+        将积分上限扩展到 $+\infty$，误差为 $\displaystyle O(e^{-n})$：
+        \[
+        J_n = \frac{1}{n} \int_0^{+\infty} \frac{1}{e^y + 1} \mathrm{d}y - \frac{1}{2n^2} \int_0^\infty \frac{y^2}{(e^y + 1)^2} \mathrm{d}y + O\left(\frac{1}{n^3}\right).
+        \]
+        计算：
+        \[
+        \int_0^{+\infty} \frac{1}{e^y + 1} \mathrm{d}y = \int_0^{+\infty} \frac{e^{-y}}{1 + e^{-y}} \mathrm{d}y = \sum_{k=1}^{+\infty} (-1)^{k-1} \int_0^{+\infty} e^{-ky} \mathrm{d}y = \sum_{k=1}^{+\infty} (-1)^{k-1} \frac{1}{k} = \ln 2.
+        \]
+        第二个积分是有限常数，故：
+        \[
+        J_n = \frac{\ln 2}{n} + O\left(\frac{1}{n^2}\right).
+        \]
+        因此：
+        \[
+        I_n = 1 - \frac{\ln 2}{n} + O\left(\frac{1}{n^2}\right) = 1 - \frac{\ln 2}{n} + o\left(\frac{1}{n}\right).  \quad\square
+        \]
+        (另外，注意到 $\displaystyle \int_0^1 \frac{x^{n-1}}{1+x^n}\mathrm{d}x=\frac{\ln{2}}{n}$，
+        则
+        \[0\leq A\coloneqq \int_0^1 \frac{\mathrm{d}x}{1+x^n}-1+\frac{\ln{2}}{n}=\int_0^1\left( \frac{1}{1+x^n}+\frac{x^{n-1}}{1+x^n}-1 \right)\mathrm{d}x=\int_0^1 \frac{x^{n-1}-x^n}{1+x^n}\mathrm{d}x\leq \int_0^1\left( x^{n-1}-x^n \right)\mathrm{d}x=\frac{1}{n}-\frac{1}{n+1}=\frac{1}{n(n+1)}\]，
+        从而上式右边可以改进为 $O(n^{-2})$.)
+    \end{solution}
+    
+    \item[6.]设 \(\displaystyle f \in C[-1,1]\), 证明:
+    \[\displaystyle\lim_{h\to 0^{+}}\int_{-1}^{1}{\frac{h f(x)}{h^{2} + x^{2}}}\mathrm{d}x = \pi f(0).\]
+    \begin{solution}
+        由于 $f$ 在 $[-1,1]$ 上连续，故在 $x=0$ 处连续.\\
+        对于任意 $\epsilon > 0$，存在 $\delta > 0$，使得当 $|x| < \delta$ 时 $|f(x) - f(0)| < \epsilon$.
+
+        考虑：
+        \[
+        I(h) = \int_{-1}^1 \frac{h f(x)}{h^2 + x^2} dx = f(0) \int_{-1}^1 \frac{h}{h^2 + x^2} dx + \int_{-1}^1 \frac{h (f(x) - f(0))}{h^2 + x^2} dx
+        \]
+
+        计算第一项：
+        \[
+        \int_{-1}^1 \frac{h}{h^2 + x^2} \mathrm{d}x \overset{t=\frac{1}{h}x}{=} \int_{-\frac{1}{h}}^{\frac{1}{h}} \frac{1}{1 + t^2} \mathrm{d}t = \arctan\left(\frac{1}{h}\right) - \arctan\left(-\frac{1}{h}\right) = 2 \arctan\left(\frac{1}{h}\right) \to \pi \quad (h \to 0^+).
+        \]
+
+        对于第二项，分成 $|x| < \delta$ 和 $|x| \geq \delta$ 两部分：
+
+        当 $|x| < \delta$ 时：
+        \[
+        \left| \int_{|x| < \delta} \frac{h (f(x) - f(0))}{h^2 + x^2} \mathrm{d}x \right| \leq \epsilon \int_{|x| < \delta} \frac{h}{h^2 + x^2} \mathrm{d}x \leq \epsilon \int_{-\infty}^{+\infty} \frac{h}{h^2 + x^2} \mathrm{d}x = \epsilon \pi.
+        \]
+
+        当 $|x| \geq \delta$ 时，设 $|f(x) - f(0)| \leq 2M$：
+        \[
+        \begin{aligned}
+        \left| \int_{\delta \leq |x| \leq 1} \frac{h (f(x) - f(0))}{h^2 + x^2} \mathrm{d}x \right| &\leq 2M \int_{\delta \leq |x| \leq 1} \frac{h}{h^2 + x^2} \mathrm{d}x \leq 2M \int_{\delta \leq |x|} \frac{h}{x^2} \mathrm{d}x\\
+        &= 4M h \int_{\delta}^\infty \frac{1}{x^2} \mathrm{d}x = \frac{4M h}{\delta} \to 0.	
+        \end{aligned}
+        \]
+        因此，当 $h \to 0^+$ 时，$I(h) \to \pi f(0)$.
+    \end{solution}
+    
+    \item[7.]设 \(\displaystyle f \in \mathcal{R}[c,d], [a,b] \subset (c,d)\), 证明:
+
+    \[\displaystyle\lim_{h\to 0}\int_{a}^{b}|f(x + h) - f(x)|\mathrm{d}x = 0.\]
+    \begin{solution}
+        由于$f$在$[c,\,d]$上 Riemann 可积，考虑用连续函数逼近.(类似习题B的前两题.)\\
+        $\forall \epsilon > 0$，$\exists$连续函数$g$使得
+        \[
+        \int_a^b |f-g| < \frac{\epsilon}{3}.
+        \]
+        则
+        \[
+        \int_a^b |f(x+h)-f(x)| \mathrm{d}x \leq \int_a^b |f(x+h)-g(x+h)| \mathrm{d}x + \int_a^b |g(x+h)-g(x)| \mathrm{d}x + \int_a^b |g(x)-f(x)| \mathrm{d}x.
+        \]
+        当$h$充分小时，第二项小于 $\displaystyle \frac{\epsilon}{3} $，第一、三项各小于 $\displaystyle \frac{\epsilon}{3}$，从而
+        \[
+        \begin{aligned}
+        \int_a^b |f(x+h)-f(x)| \mathrm{d}x &\leq \int_a^b |f(x+h)-g(x+h)| \mathrm{d}x + \int_a^b |g(x+h)-g(x)| \mathrm{d}x \\
+        &+ \int_a^b |g(x)-f(x)| \mathrm{d}x\\
+        &\leq \frac{\epsilon}{3}+\frac{\epsilon}{3}+\frac{\epsilon}{3}=\epsilon.
+        \end{aligned}
+        \]
+        故极限为0. \\
+        (注：亦可考虑振幅方法；条件改为 $f$ 在 $[c,d]$ 上 Lebesgue 可积亦正确.)
+    \end{solution}
+    
+    \item[8.]设 \(\displaystyle f \in C[a,b]\), 证明:
+    \[\displaystyle\lim_{n\to +\infty}\left(\int_{a}^{b}|f(x)|^{n}\mathrm{d}x\right)^{\frac{1}{n}} = \max_{a\leqslant x\leqslant b}|f(x)|.\]
+    \begin{solution}
+        令
+        \[
+        M = \max_{a \leq x \leq b} |f(x)|.
+        \]
+        则
+        \[
+        \left( \int_a^b |f(x)|^n dx \right)^{\frac{1}{n}} \leq M (b-a)^{\frac{1}{n}} \to M,\quad n\to +\infty.
+        \]
+        $\forall \epsilon > 0$，$\exists$ 区间 $I$ 使得 $|f| \geq M-\epsilon$，则
+        \[
+        \left( \int_a^b |f(x)|^n dx \right)^{\frac{1}{n}} \geq (M-\epsilon) |I|^{\frac{1}{n}} \to M-\epsilon,\quad n\to+\infty.
+        \]
+        所以极限为 $M$，即
+        \[
+        \lim_{n \to +\infty} \left( \int_a^b |f(x)|^n dx \right)^{\frac{1}{n}} = \max_{a \leq x \leq b} |f(x)|. 
+        \]
+    \end{solution}
+\end{enumerate}

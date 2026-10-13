@@ -1,0 +1,240 @@
+\setdisplaytitle{Chapter 6 The Hodge Theorem}
+\sethtmltitle{Chapter 6 The Hodge Theorem}
+\begin{enumerate}
+\item If $\Delta$ operates on $E^{p}(M)$, then
+\[\Delta=\delta d+d \delta=(-1)^{n(p+2)+1} * d * d+(-1)^{n(p+1)+1} d * d *.\]
+(Be careful with the signs.) Therefore
+\[* \Delta=(-1)^{n(p+2)+1+(n-p) p} d * d+(-1)^{n(p+1)+1} * d * d *\]
+and \[\Delta *=(-1)^{n(n-p+2)+1} * d * d *+(-1)^{n(n-p+1)+1+p(n-p)} d * d.\]
+Since \[n(p+2)+1+(n-p) p \equiv n(n-p+1)+1+p(n-p) \bmod 2\] and
+\[n(p+1)+1 \equiv n(n-p+2)+1 \bmod 2,\]
+$* \Delta=\Delta *$ as desired.
+\item (a) Obviously $G$ is linear. To show that it is bounded, 
+note that there exists a $c>0$ such that $\|\beta\| \leq$ $c\|\Delta \beta\|$ for all $\beta \in(H^{p})^{\perp}$ by 6.8(4). 
+Hence if we let $G(\alpha)=\omega$, then
+\[\|G(\alpha)\|=\|\omega\| \leq c\|\Delta \omega\|
+=c\|\alpha-H(\alpha)\| \leq c\|\alpha\|.\]
+Thus $G$ is bounded.
+
+(b) For all $\alpha, \beta \in (H^{p})^{\perp}$, $\Delta G \alpha=\alpha, \Delta G \beta=\beta$ by definition. Thus,
+\[\langle G \alpha, \beta\rangle=\langle G \alpha, \Delta G \beta\rangle
+=\langle\Delta G \alpha, G \beta\rangle=\langle\alpha, G \beta\rangle.\]
+
+(c) Suppose $\{\alpha_{n}\}$ is a bounded sequence. Then $\{G \alpha_{n}\}$ is also bounded by (a), and $\{\Delta G \alpha_{n}\}$ is also bounded because
+\[\|\Delta G \alpha_{n}\|=\|\alpha_{n}-H(\alpha_{n})\| \leq \|\alpha_{n}\|.\]
+Then use 6.6 to obtain the result.
+\item It suffices to show that
+\[\int_{\mathbb{R}^{n}}\left(1+x_{1}^{2}+\ldots+x_{n}^{2}\right)^{-k} dx_{1} \ldots dx_{n}\]
+converges for $k \geq\left[\frac{n}{2}\right]+1$. 
+By a change of variables $y_{i}=\frac{x_{i}}{\sqrt{1+x_{n}^{2}}}$ for $1 \leq i \leq n-1$ and $y_{n}=x_{n}$, 
+it is equal to
+\begin{align*}
+&\quad\ \int_{\mathbb{R}^{n}}\left(1+y_{n}^{2}\right)^{-k}\left(1+y_{1}^{2}+\ldots+y_{n-1}^{2}\right)^{-k}\left(1+y_{n}^{2}\right)^{\frac{n-1}{2}} dy_{1} \ldots dy_{n}\\
+&=\int_{\mathbb{R}^{n}}\left(1+y_{1}^{2}+\ldots+y_{n-1}^{2}\right)^{-k}\left(1+y_{n}^{2}\right)^{\frac{n-1}{2}-k} dy_{1} \ldots dy_{n}\\
+&=\int_{\mathbb{R}^{n-1}}\left(1+y_{1}^{2}+\ldots+y_{n-1}^{2}\right)^{-k} dy_{1} \ldots dy_{n-1}
+\int_{\mathbb{R}}\left(1+y_{n}^{2}\right)^{\frac{n-1}{2}-k} dy_{n}
+\end{align*}
+(because $\dfrac{\partial(x_{1}, \ldots, x_{n})}{\partial(y_{1} \ldots, y_{n})}=(1+y_{n}^{2})^{\frac{n-1}{2}}$). 
+The former part converges by induction on $n$, and the latter one converges when $2 k-(n-1)>1$, or $k>\frac{n}{2}$. 
+It is equivalent to $k \geq\left[\frac{n}{2}\right]+1$ because $k$ is an integer.
+\item \[\sum_{[\alpha]=0}^{t}\|D^{\alpha} \varphi\|^{2}
+=\sum_{[\alpha]=0}^{t} \sum_{\xi} \xi^{2 \alpha}|\varphi_{\xi}|^{2}.\]
+Thus we only need to show that there exists $c>0$ which depends on $t$ and $n$ such that
+\[c(1+|\xi|^{2})^{t} \leq \sum_{[\alpha]=0}^{t} \xi^{2 \alpha} \leq(1+|\xi|^{2})^{t}\]
+for all $\xi$. The second inequality is clear because each term in $\sum\limits_{[\alpha]=0}^{t} \xi^{2 \alpha}$ is in the expansion of $(1+|\xi|^{2})^{t}$ with coefficients $\geq 1$. 
+Also, if we set $c=n^{-t}$, then it is easy to see that the first inequality holds for similar reasons.
+\item Since both are defined by pointwise inner products, there exists a positive-definite Hermitian matrix $M_{x}$ for each $x \in \mathbb{R}^{n}$ such that $\varphi \circ^{\prime} \bar{\psi}=\varphi \circ \overline{A \psi}$. 
+Also it is smooth because the volume form on $M$ is smooth.
+\item I will deal only with the case of  $\alpha=f dx_{1} \wedge \ldots \wedge dx_{p}$. 
+The general case is similar. By definition,
+\[d \alpha=(-1)^{p} \sum_{i=p+1}^{n} \frac{\partial f}{\partial x_{i}} dx_{1} \wedge \ldots \wedge dx_{p} \wedge dx_{i},\]
+and \[* \alpha=f dx_{p+1} \wedge \ldots \wedge dx_{n}\]
+(assuming $* 1=dx_{1} \wedge \ldots \wedge dx_{n}$). Also
+\[\delta \alpha=(-1)^{n(p+1)+1} * d * \alpha
+=(-1)^{n(p+1)+1} \sum_{i=1}^{p}(-1)^{p(i-1)+(p-1)(p-i)} \frac{\partial f}{\partial x_{i}} dx_{1} \wedge \ldots \wedge \widehat{dx}_{i} \wedge \ldots \wedge dx_{p}.\]
+Furthermore, by tedious calculation, we get
+\[\Delta \alpha=-\sum_{i=1}^{n} \frac{\partial^{2} f}{\partial x_{i}^{2}} dx_{1} \wedge \ldots \wedge dx_{p}.\]
+\item By 6.16(14),
+\[-\frac{\partial^{2} \varphi}{\partial x \partial y}
+=\sum_{(a, b) \in \mathbb{Z}^{2}} a b \varphi_{(a, b)} e^{i(a x+b y)}.\]
+Thus \[\left\|\frac{\partial^{2} \varphi}{\partial x \partial y}\right\|^{2}
+=\sum_{(a, b) \in \mathbb{Z}^{2}} a^{2} b^{2}|\varphi_{(a, b)}|^{2}\]
+by the Parseval identity. Similarly, we get
+\[\|\Delta \varphi\|^{2}=\sum_{(a, b) \in \mathbb{Z}^{2}}(a^{2}+b^{2})^{2}|\varphi_{(a, b)}|^{2}.\]
+Thus the given inequality follows from $a^{2} b^{2} \leq \frac{(a^{2}+b^{2})^{2}}{4}$.
+\item If $\{f_{n}\}$ is bounded in $C^{1}$, then it is uniformly bounded and equicontinuous by the assumption, 
+thus by the Arzelà--Ascoli theorem it has a convergent subsequence.
+\item The differential operators given in the following 4 problems are all elliptic. 
+Therefore we can deduce that a solution exists if and only if 
+the given function is in the orthogonal complement of the kernel of the formal adjoint.
+
+(a) Adjoint: $D^{*}(u)=-u^{\prime}$
+
+(b) Adjoint: $D^{*}(u)=-u^{\prime}-u$
+
+(c) Adjoint: $D^{*}(u)=u^{\prime \prime}$
+
+(d) Adjoint: $D^{*}(u)=u^{\prime \prime}+\pi u$
+\item By the Hodge decomposition theorem, we may represent any form $\omega$ as
+\[\omega=\delta \alpha+d \beta+\gamma\]
+with $\gamma$ harmonic. If it is closed, then $d \omega=d \delta \alpha=0$. 
+Since $\langle\delta \alpha, \delta \alpha\rangle=\langle d \delta \alpha, \alpha\rangle=0$, 
+we see that $\delta \alpha=0$. Hence $\omega=d \beta+\gamma$ and the result follows.
+\item $(\Rightarrow)$ Since $\mathcal{P}$ is a (infinite dimensional) vector space, 
+the element $u=\sum\limits_{\xi} u_{\xi} e^{i x \cdot \xi}$ as a formal sum is uniquely determined. 
+It remains to show that in fact $u \in H_{-\infty}$. By 6.22(2), we know that
+\[|l(\varphi)| \leq \operatorname{const} \sum_{[\alpha] \leq k}\|D^{\alpha} \varphi\|_{\infty} \leq \operatorname{const} \|\varphi\|_{N}\]
+for some $N \gg 0$. In other words,
+\[\left|\sum_{\xi} u_{\xi} \varphi_{\xi}\right| \leq \operatorname{const}\|\varphi\|_{N}.\]
+By squaring both sides, it becomes
+\[\left|\sum_{\xi} u_{\xi} \varphi_{\xi}\right|^{2} \leq \operatorname{const} \|\varphi\|_{N}^{2}.\]
+Since multiplying $e^{i \theta}$ $(\theta \in \mathbb{R})$ does not change the absolute values of $\varphi_{\xi}$, 
+we may assume that $u_{\xi} \| \varphi_{\xi}$. Then
+\[\sum_{\xi}|u_{\xi}|^{2}|\varphi_{\xi}|^{2} \leq \left(\sum_{\xi}|u_{\xi}||\varphi_{\xi}|\right)^{2}
+=\left|\sum_{\zeta} u_{\xi} \varphi_{\xi}\right|^{2} \leq \operatorname{const} \|\varphi\|_{N}^{2}.\]
+Since $\mathcal{P}$ is dense in $H_{-N}$, 
+the inequality above is also true when $\varphi \in H_{-N}$. Now set
+\[|\varphi_{\xi}|=(1+|\xi|^{2})^{-\frac{N+M}{2}}\]
+for some $M>\left[\frac{n}{2}\right]+1$. 
+Then $\varphi \in H_{-N}$ by 6.16(7), and the inequality says that
+\[\sum_{\xi}|u_{\xi}|^{2}|\varphi_{\xi}|^{2}
+=\sum_{\xi}|u_{\xi}|^{2}(1+|\xi|^{2})^{-N-M}<\infty,\]
+that is to say $u \in H_{-N-M}$.
+
+$(\Leftarrow)$ If $u \in H_{-\infty}$, there exists $s<0$ such that $u \in H_{s}$. Then
+\begin{align*}
+|l(\varphi)| & =|\langle u, \varphi\rangle_{0}| \leq \|u\|_{s}\|\varphi\|_{-s} \\
+& \leq \text{const} \sqrt{\sum_{[\alpha] \leq -s}\|D^{\alpha} \varphi\|^{2}} \\
+& \leq \text{const} \sqrt{\sum_{[\alpha] \leq -s}\|D^{\alpha} \varphi\|_{\infty}^{2}} \\
+& \leq \text{const} \sum_{[\alpha] \leq -s}\|D^{\alpha} \varphi\|_{\infty}
+\end{align*}
+as desired.
+\item It suffices to show that if $\int_{M} \alpha=0$, then it is an exact form. 
+$E^{n}=\operatorname{im} d \oplus H_{n}$ because $\operatorname{im} \delta=0$. 
+Let $\alpha=d \gamma+\varepsilon$ with $\varepsilon$ harmonic. 
+Since $[\alpha] \mapsto \int_{M} \alpha$ is the natural isomorphism, $[\alpha]=[\varepsilon]=0$. 
+Hence by 6.11, $\varepsilon=0$. In other words, $\alpha$ is exact.
+\item Let $\displaystyle\varphi_{n}=\sum_{a \in \mathbb{Z}} u_{a}^{n} e^{i a x}$, where
+\[u_{a}^{n}=\begin{cases}\frac{1}{a^{2}} & \text { if }\,|a|<n \\ 0 & \text { otherwise }\end{cases}.\]
+Then \[\|\varphi_{n}\|^{2}=\sum_{a \in \mathbb{Z}}|u_{a}^{n}|^{2}<\sum_{a \in \mathbb{Z}} \frac{1}{a^{4}}\]
+and \[\|\Delta \varphi_{n}\|^{2}=\sum_{a \in \mathbb{Z}} a^{2}|u_{a}^{n}|^{2}<\sum_{a \in \mathbb{Z}} \frac{1}{a^{2}}\]
+are both bounded. Also, $\varphi_{n}$ is a finite sum, so $\varphi_{n} \in \mathcal{P}$. 
+However, its limit
+\[\varphi=\sum_{a \in \mathbb{Z}} \frac{1}{a^{2}} e^{i a x} \notin H_{3}.\]
+Thus it is not in $\mathcal{P}$.
+\item The statement can be proved by following the proof of 6.32. 
+The only property of $\Delta$ used here is that $\Delta$ is an elliptic operator. 
+Also, by a ``Reduction to the Periodic Case'' argument, we only need to show this locally.
+\item It is elliptic because $x+i y \neq 0$ for $(x, y) \neq(0,0)$. 
+Hence every holomorphic function is $\mathcal{C}^{\infty}$. 
+Also every holomorphic function is harmonic because
+\[\Delta=\frac{\partial^{2}}{\partial x^{2}}+\frac{\partial^{2}}{\partial y^{2}}
+=\left(\frac{\partial}{\partial x}-i \frac{\partial}{\partial y}\right)\left(\frac{\partial}{\partial x}+i \frac{\partial}{\partial y}\right).\]
+If a holomorphic function $f$ has compact support, then by Green's 1st identity,
+\[\int_{\partial D} f \frac{\partial f}{\partial n}
+=\int_{D}\langle \operatorname{grad} f, \operatorname{grad} f\rangle-\int_{D} f \Delta f\]
+for every disc $D$. Since $\Delta f=0$, 
+if we take a sufficiently large disc $D$, then it becomes
+\[\int_{D} \langle \operatorname{grad} f, \operatorname{grad} f \rangle=0.\]
+By letting the radius of $D$ go to infinity, we see that 
+\[\int_{\mathbb{C}}\langle\operatorname{grad} f, \operatorname{grad} f\rangle=0,\]
+and it means $\operatorname{grad} f=0$ everywhere, or $f$ is constant. 
+But $f$ has compact support, so $f$ has to be zero everywhere.
+\item (a) If $\Delta u=\lambda u$ and $u \neq 0$,
+\[\lambda\langle u, u\rangle=\langle\lambda u, u\rangle
+=\langle\Delta u, u\rangle=\langle(d \delta+\delta d) u, u\rangle
+=\langle d u, d u\rangle+\langle\delta u, \delta u\rangle \geq 0.\]
+Thus $\lambda \geq 0$.
+
+(b) If not, it contradicts 6.6 if we have an orthonormal sequence.
+
+(c) If not, it also contradicts 6.6 if we have an orthonormal sequence.
+
+(d) If $\Delta u=\lambda u$ and $\Delta v=\lambda^{\prime} v$, then
+\[\lambda\langle u, v\rangle=\langle\Delta u, v\rangle
+=\langle u, \Delta v\rangle=\lambda^{\prime}\langle u, v\rangle.\]
+Thus $\langle u, v\rangle=0$.
+
+(e) \[\langle\psi_{j}, G\psi_{j}\rangle=\langle\Delta G\psi_{j}, G\psi_{j}\rangle
+=\langle dG\psi_{j}, dG\psi_{j}\rangle+\langle\delta G\psi_{j}, \delta G\psi_{j}\rangle \geq 0.\]
+For the latter part, we need to show that $l\big((\Delta-1/\eta)^{*} \alpha\big)=0$. 
+It is equivalent to
+\[\lim_{j \rightarrow \infty} \eta\langle G\varphi_{j},(\Delta-1/\eta)^{*} \alpha\rangle=0 
+\Leftrightarrow \lim_{j \rightarrow \infty} \eta\langle(\Delta-1/\eta) G\varphi_{j}, \alpha\rangle=0 
+\Leftrightarrow \lim_{j \rightarrow \infty}\langle\eta \varphi_{j}-G\varphi_{j}, \alpha\rangle=0,\]
+which is true. Also it is not trivial; take $N$ such that $\|G\varphi_{N}-\eta\varphi_{N}\|<\varepsilon$ 
+and $\|G\varphi_{i}-G\varphi_{N}\|<\varepsilon$ for $i>N$. 
+Since $\|\varphi_{N}\|=1$ and by the inequality
+\[|\langle v, w\rangle| \geq \|v\|^2-|\langle v, v-w\rangle| \geq \|v\| (\|v\|-\|v-w\|),\]
+we see that $|\langle G\varphi_{i}, \eta \varphi_{N}\rangle| \geq \eta(\eta-2 \varepsilon)>0$ for sufficiently small $\varepsilon>0$. 
+Thus $l(\varphi_{N}) \neq 0$.
+
+(f) It is the same as (e).
+
+(g) $\alpha-\sum\limits_{i=1}^{k}\langle\alpha, u_{i}\rangle u_{i} \in(H^{p})^{\perp}$, 
+so there exists $\beta \in(H^{p})^{\perp}$. If $k+1 \leq j$,
+\[\left\langle\alpha, u_{j}\right\rangle=\left\langle\alpha-\sum_{i=1}^{k}\langle\alpha, u_{i}\rangle u_{i}, u_{j}\right\rangle
+=\langle G \beta, u_{j}\rangle=\langle\beta, G u_{j}\rangle=\frac{1}{\lambda_{j}}\langle\beta, u_{j}\rangle.\]
+Thus \[\langle\alpha, u_{j}\rangle u_{j}=\frac{1}{\lambda_{j}}\langle\beta, u_{j}\rangle u_{j}=G(\langle\beta, u_{j}\rangle u_{j}).\]
+Then it follows from it and the definition of $\lambda$. 
+$\lambda_{n} \rightarrow \infty$ because of (c).
+
+(h) Locally it is true, and by the compactness of $M$, 
+we can find $c$ and $k$ such that it is still true globally. Then it follows from (g).
+\item By the Hodge decomposition, $E^{p}(M)=\operatorname{im} \Delta \oplus H^{p}=\operatorname{im} \Delta^{2} \oplus V \oplus H^{p}$ with $V=\ker \Delta^{2} \cap \operatorname{im} \Delta$. 
+If $\Delta \alpha \in V$, $\langle\Delta \alpha, \Delta \alpha\rangle=\left\langle\Delta^{2} \alpha, \alpha\right\rangle=0$, so $\Delta \alpha=0$. 
+Thus $V=0$ and $E^{p}(M)=\operatorname{im} \Delta^{2} \oplus H^{p}$. 
+It means $\Delta^{2} \alpha=\beta$ is solvable if and only if $\beta \perp H^{p}$.
+
+\item We can assume the matrix consisting of the coefficients of the highest order terms is symmetric 
+because $\frac{\partial}{\partial x_{i}}$ and $\frac{\partial}{\partial x_{j}}$ commutes. 
+Also, $L$ is elliptic at $x$ if for all $v \in \mathbb{R}^{n} \backslash\{0\}$, $v^{t}(a_{ij}(x))_{ij}v>0$, which means that $(a_{ij}(x))_{ij}$ is positive definite. 
+But for $\square$, the corresponding matrix $\begin{pmatrix}1 & 0 \\ 0 & -1\end{pmatrix}$ is not positive definite, so it is not elliptic. For example, if we let
+$$u(x, y)=\begin{cases}
+x^{3}+3xy^{2} & \text { if }\ \ \ x \geq|y| \\ \\
+3x^{2}y+y^{3} & \text { if }\ \ \ -t \leq x \leq t \\ \\
+-3x^{2}y-y^{3} & \text { if }\ \ \ t \leq x \leq -t \\ \\
+-x^{3}-3xy^{2} & \text { if }\ \ \ x \leq |t|
+\end{cases}$$
+it is easy to see that $\square u=0$, but $u \notin \mathcal{C}^{3}$.
+\item Since $\Delta+c$ is elliptic, if $\beta \perp \ker(\Delta+c)$ then the equation can be solved. 
+But $(\Delta+c) \alpha=0 \Leftrightarrow \Delta \alpha=-c \alpha \Leftrightarrow \alpha=0$ by assumption, so it can be solved for all $\beta \in E^{p}(M)$. (In fact, the minimal eigenvalue of $\Delta$ is $0$.)
+\item The first assertion is true because $l_{\sigma}$ are isometries, thus they commute with $d$ and $\delta$. 
+Then the second assertion directly follows from it. 
+The third assertion is that $\varphi_{i} \circ l_{\sigma}$ is continuous as a function of $\sigma$, which is also true by the properties of Lie group.
+\item The formal adjoint exists by argument similar to 6.24 (integration by parts) 
+and the fact that the integral of exact forms over $M$ is zero. 
+Also, the proof of 6.5 and 6.6 is still valid because it is valid locally, 
+and we can glue the solution with respect to the transition maps of vector bundles. 
+Then (a) follows from 6.6, and (b) follows from arguments similar to 6.8.
+\item For $n$ sufficiently large, or $n>10$, then
+\[\|\varphi_{n}\|_{\infty}=\varphi(0,0)=\log \log n.\]
+On the other hand, by 6.16(15),
+\[\operatorname{const}\|\varphi_{n}\|_{1}^{2} \leq\|\varphi_{n}\|^{2}
++\left\|\frac{\partial \varphi_{n}}{\partial x}\right\|^{2}
++\left\|\frac{\partial \varphi_{n}}{\partial y}\right\|^{2}.\]
+Since $\{\varphi_{n}\}$ is monotonically increasing, 
+\[\|\varphi_{n}\|^{2} \rightarrow \int_{r \leq \frac{1}{2}}\left(\log \log \frac{1}{r}\right)^{2} dx dy<\infty\]
+by the monotone convergence theorem. Also,
+\[\frac{\partial \varphi_{n}}{\partial x}=\frac{x}{r\left(\frac{1}{n}+r\right)\log \left(\frac{1}{n}+r\right)}\]
+and we can use a similar argument to see that
+\[\left\|\frac{\partial \varphi_{n}}{\partial x}\right\|^{2} 
+\rightarrow \int_{r \leq \frac{1}{2}}\left(\frac{x}{r^{2} \log r}\right)^{2} dx dy=\frac{\pi}{\log 2}.\]
+Similarly,
+\[\left\|\frac{\partial \varphi_{n}}{\partial y}\right\|^{2} \rightarrow \frac{\pi}{\log 2}.\]
+Thus $\|\varphi_{n}\|_{1}$ is bounded and there is no constant $c$ satisfying the given condition.
+\item By the assumption, there exists a solution $u$ of $Lu=f$. 
+Also, since $\mathcal{C}^{\infty}(M)=\operatorname{im} L^{*} \oplus \ker L$, 
+we may take $u=L^{*} v \in \operatorname{im} L^{*}$. 
+Since $f=f \circ \gamma=L u \circ \gamma=L(u \circ \gamma)$, $u \circ \gamma$ is also a solution. 
+Meanwhile, $L(\beta \circ \gamma)=0 \Leftrightarrow L \beta \circ \gamma=0 \Leftrightarrow L \beta=0$, 
+$\varphi_{\gamma}\colon \mathcal{C}^{\infty}(M) \rightarrow \mathcal{C}^{\infty}(M), \beta \mapsto \beta \circ \gamma$ preserves $\ker L$. 
+Also, $\varphi_{\gamma}$ is an isomorphism (with the inverse $\varphi_{\gamma^{-1}}$) and preserves the inner product (because it preserves the volume form), 
+we conclude that $\varphi_{\gamma}$ also preserves $\operatorname{im} L^{*}$. 
+Thus $u \circ \gamma \in \operatorname{im} L^{*}$. Write $u \circ \gamma=L^{*} v^{\prime}$. Then
+\[LL^{*}v=LL^{*}v^{\prime} \Rightarrow LL^{*}(v-v^{\prime})=0 
+\Rightarrow 0=\langle LL^{*}(v-v^{\prime}), v-v^{\prime}\rangle
+=\langle L^{*}(v-v^{\prime}), L^{*}(v-v^{\prime})\rangle 
+\Rightarrow L^{*}v=L^{*}v^{\prime},\]
+we conclude that $u=u \circ \gamma$, or $u$ is invariant under $\gamma$.
+\end{enumerate}

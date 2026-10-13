@@ -1,0 +1,199 @@
+\theoremstyle{plain}\newtheorem*{1}{习题1}
+\theoremstyle{plain}\newtheorem*{2}{习题2}
+\theoremstyle{plain}\newtheorem*{3}{习题3}
+\theoremstyle{plain}\newtheorem*{4}{习题4}
+\theoremstyle{plain}\newtheorem*{5}{习题5}
+\theoremstyle{plain}\newtheorem*{6}{习题6}
+\theoremstyle{plain}\newtheorem*{7}{习题7}
+\theoremstyle{plain}\newtheorem*{8}{习题8}
+\theoremstyle{plain}\newtheorem*{9}{习题9}
+\theoremstyle{plain}\newtheorem*{10}{习题10}
+\def\E{\mathbb{E}}
+\def\R{\mathbb{R}}
+\def\N{\mathbb{N}}
+\def\B{\mathcal{B}}
+\def\M{\mathcal{M}}
+\def\prob{\mathbb{P}}
+\def\t{\underline{t}}
+\def\c{\underline{c}}
+\newtheorem{prop}{性质}
+
+
+\begin{10}
+    设 $A\in\mathbb{C}^{n\times n}$ 可逆，$1\le k\le n$，记
+$A^{(k)}$ 为删去第 $k$ 行和第 $k$ 列得到的主子矩阵。
+记
+\[
+r_k = (a_{k1},\dots,a_{k,k-1},a_{k,k+1},\dots,a_{kn})
+\]
+为 $A$ 的第 $k$ 行删去第 $k$ 个分量得到的行向量，
+\[
+c_k = (a_{1k},\dots,a_{k-1,k},a_{k+1,k},\dots,a_{nk})^{T}
+\]
+为 $A$ 的第 $k$ 列删去第 $k$ 个分量得到的列向量。
+
+我们已经在 $k=n$ 的情形证明了下列两个引理：
+
+\begin{itemize}
+  \item[(i)] 若 $A^{(n)}$ 可逆，则
+  \[
+  A^{-1}(n,n)
+    = \frac{1}{A(n,n)-r_n (A^{(n)})^{-1} c_n }.
+  \]
+  
+  \item[(ii)] 若 $A^{(n)}$ 可逆，则
+  \[
+  \mathrm{tr}\,A^{-1}-\mathrm{tr}\,(A^{(n)})^{-1}
+    = \frac{\,1 + r_n (A^{(n)})^{-2} c_n\,}
+           {A(n,n)-r_n (A^{(n)})^{-1} c_n }.
+  \]
+\end{itemize}
+
+请先证明
+\[
+\bigl(V_k A V_k^{T}\bigr)^{(n)} = A^{(k)},
+\]
+再利用结论
+\[
+\bigl(V_k A V_k^{T}\bigr)^{(n)} = A^{(k)},
+\]
+证明上述两个引理对任意 $k\in\{1,\dots,n\}$ 也成立，即
+
+\begin{itemize}
+  \item[(i')] 若 $A^{(k)}$ 可逆，则
+  \[
+  A^{-1}(k,k)
+    = \frac{1}{A(k,k)-r_k (A^{(k)})^{-1} c_k }.
+  \]
+  
+  \item[(ii')] 若 $A^{(k)}$ 可逆，则
+  \[
+  \mathrm{tr}\,A^{-1}-\mathrm{tr}\,(A^{(k)})^{-1}
+    = \frac{\,1 + r_k (A^{(k)})^{-2} c_k\,}
+           {A(k,k)-r_k (A^{(k)})^{-1} c_k }.
+  \]
+\end{itemize}
+
+\end{10}
+\begin{proof}
+    设 $A \in \mathbb{C}^{n \times n}$ 可逆，$1 \le k \le n$。记 $A^{(k)}$ 为 $A$ 删去第 $k$ 行和第 $k$ 列得到的 $(n-1)\times (n-1)$ 主子矩阵。记
+\[
+r_k = (a_{k1},\dots,a_{k,k-1},a_{k,k+1},\dots,a_{kn}), \quad 
+c_k = (a_{1k},\dots,a_{k-1,k},a_{k+1,k},\dots,a_{nk})^{\!T},
+\]
+其中 $a_{ij}$ 为 $A$ 的 $(i,j)$ 元素。
+
+已知当 $k=n$ 时，若 $A^{(n)}$ 可逆，则成立
+\begin{align}
+& A^{-1}(n,n)=\frac{1}{A(n,n)-r_n (A^{(n)})^{-1}c_n}, \label{eq:n_case_i} \\
+& \operatorname{tr}A^{-1}-\operatorname{tr}(A^{(n)})^{-1}= \frac{1+r_n (A^{(n)})^{-2}c_n}{A(n,n)-r_n (A^{(n)})^{-1}c_n}. 
+\end{align}
+
+现需先证明等式
+\[
+\bigl(V_k A V_k^{\!T}\bigr)^{(n)} = A^{(k)},
+\]
+其中 $V_k$ 为特定的置换矩阵，然后利用该结论证明对任意 $k\in\{1,\dots,n\}$，若 $A^{(k)}$ 可逆，则
+\begin{align}
+& A^{-1}(k,k)=\frac{1}{A(k,k)-r_k (A^{(k)})^{-1}c_k}, \label{eq:k_case_i} \tag{1}
+\end{align}
+\begin{align}
+& \operatorname{tr}A^{-1}-\operatorname{tr}(A^{(k)})^{-1}= \frac{1+r_k (A^{(k)})^{-2}c_k}{A(k,k)-r_k (A^{(k)})^{-1}c_k}. \tag{2}
+\end{align}
+
+定义置换 $\sigma$ 如下：
+\[
+\sigma(i)=
+\begin{cases}
+i, & i<k, \\
+n, & i=k, \\
+i-1, & k<i\le n .
+\end{cases}
+\]
+其逆置换 $\sigma^{-1}$ 为
+\[
+\sigma^{-1}(j)=
+\begin{cases}
+j, & j<k, \\
+k, & j=n, \\
+j+1, & k\le j\le n-1 .
+\end{cases}
+\]
+令 $V_k$ 为对应于 $\sigma^{-1}$ 的置换矩阵，即 $V_k$ 的第 $i$ 行为单位矩阵的第 $\sigma^{-1}(i)$ 行。易见 $V_k$ 是正交矩阵：$V_k^{-1}=V_k^{\!T}$，且 $V_k^{\!T}$ 对应置换 $\sigma$（因为 $V_k^{\!T}$ 的第 $j$ 列为单位矩阵的第 $\sigma^{-1}(j)$ 列，故左乘 $V_k^{\!T}$ 相当于按 $\sigma$ 进行行置换）。
+
+记 $B = V_k A V_k^{\!T}$。由定义，$B$ 的元素为
+\[
+B_{ij}=A_{\sigma^{-1}(i),\sigma^{-1}(j)},\qquad i,j=1,\dots,n.
+\]
+考虑 $B$ 的前 $n-1$ 行和前 $n-1$ 列构成的子矩阵 $B^{(n)}$，其元素为 $B_{ij}$，$i,j=1,\dots,n-1$。
+对于 $i,j=1,\dots,n-1$，有 $\sigma^{-1}(i),\sigma^{-1}(j)\in\{1,\dots,n\}\setminus\{k\}$，且映射
+\[
+i\mapsto \sigma^{-1}(i),\quad i=1,\dots,n-1
+\]
+正是 $\{1,\dots,n-1\}$ 到 $\{1,\dots,n\}\setminus\{k\}$ 的双射：
+\[
+\sigma^{-1}(i)=
+\begin{cases}
+i, & i<k, \\
+i+1, & i\ge k .
+\end{cases}
+\]
+该双射恰好也是 $A^{(k)}$ 的行（列）指标与原矩阵 $A$ 的行（列）指标之间的对应关系。具体地，若将 $A^{(k)}$ 的第 $i$ 行对应原 $A$ 的第 $\sigma^{-1}(i)$ 行，则 $A^{(k)}$ 的 $(i,j)$ 元素为 $A_{\sigma^{-1}(i),\sigma^{-1}(j)}$。因此
+\[
+B_{ij}=A_{\sigma^{-1}(i),\sigma^{-1}(j)}=A^{(k)}_{ij},\qquad i,j=1,\dots,n-1.
+\]
+故 $B^{(n)} = A^{(k)}$，即
+\[
+\bigl(V_k A V_k^{\!T}\bigr)^{(n)} = A^{(k)}.
+\]
+
+设 $A^{(k)}$ 可逆。考虑矩阵 $B = V_k A V_k^{\!T}$。由已证等式知 $B^{(n)} = A^{(k)}$，故 $B^{(n)}$ 也可逆。此外，直接计算可得：
+\begin{itemize}
+  \item $B$ 的 $(n,n)$ 元素： $B(n,n)=A_{\sigma^{-1}(n),\sigma^{-1}(n)}=A_{k,k}=A(k,k)$。
+  \item $B$ 的第 $n$ 行除去第 $n$ 个分量的行向量 $r'_n$：对 $j=1,\dots,n-1$，
+        \[
+        B_{nj}=A_{\sigma^{-1}(n),\sigma^{-1}(j)}=A_{k,\sigma^{-1}(j)}=
+        \begin{cases}
+          a_{kj}, & j<k, \\
+          a_{k,j+1}, & j\ge k,
+        \end{cases}
+        \]
+        因此 $r'_n = (a_{k1},\dots,a_{k,k-1},a_{k,k+1},\dots,a_{kn}) = r_k$。
+  \item $B$ 的第 $n$ 列除去第 $n$ 个分量的列向量 $c'_n$：对 $i=1,\dots,n-1$，
+        \[
+        B_{in}=A_{\sigma^{-1}(i),\sigma^{-1}(n)}=A_{\sigma^{-1}(i),k}=
+        \begin{cases}
+          a_{ik}, & i<k, \\
+          a_{i+1,k}, & i\ge k,
+        \end{cases}
+        \]
+        因此 $c'_n = (a_{1k},\dots,a_{k-1,k},a_{k+1,k},\dots,a_{nk})^{\!T} = c_k$。
+\end{itemize}
+
+现在将已知的 $k=n$ 情形的两个引理应用于矩阵 $B$。由于 $B^{(n)}=A^{(k)}$ 可逆，由式子(1) 得
+\[
+B^{-1}(n,n)=\frac{1}{B(n,n)-r'_n (B^{(n)})^{-1}c'_n}.
+\]
+代入 $B(n,n)=A(k,k)$，$r'_n=r_k$，$c'_n=c_k$，$B^{(n)}=A^{(k)}$，得
+\[
+B^{-1}(n,n)=\frac{1}{A(k,k)-r_k (A^{(k)})^{-1}c_k}. \tag{3}
+\]
+
+另一方面，由 $B=V_k A V_k^{\!T}$ 知 $B^{-1}=V_k A^{-1} V_k^{\!T}$。于是
+\[
+B^{-1}(n,n) = (V_k A^{-1} V_k^{\!T})_{n,n} = A^{-1}_{\sigma^{-1}(n),\sigma^{-1}(n)} = A^{-1}_{k,k}=A^{-1}(k,k).
+\]
+代入 式(3) 即得 式(1)。
+
+类似地，由 式(2) 应用于 $B$ 得
+\[
+\operatorname{tr}B^{-1}-\operatorname{tr}(B^{(n)})^{-1}= \frac{1+r'_n (B^{(n)})^{-2}c'_n}{B(n,n)-r'_n (B^{(n)})^{-1}c'_n}.
+\]
+注意 $\operatorname{tr}B^{-1}=\operatorname{tr}(V_k A^{-1} V_k^{\!T})=\operatorname{tr}A^{-1}$，且 $\operatorname{tr}(B^{(n)})^{-1}=\operatorname{tr}(A^{(k)})^{-1}$。代入各量得
+\[
+\operatorname{tr}A^{-1}-\operatorname{tr}(A^{(k)})^{-1}= \frac{1+r_k (A^{(k)})^{-2}c_k}{A(k,k)-r_k (A^{(k)})^{-1}c_k},
+\]
+此即 式(2)。
+
+综上，我们证明了对于任意 $k=1,\dots,n$，若 $A^{(k)}$ 可逆，则等式 (1) 和 (2) 成立。
+\end{proof}

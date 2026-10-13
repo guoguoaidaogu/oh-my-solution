@@ -1,0 +1,1275 @@
+\setdisplaytitle{参考答案：高等代数}
+\sethtmltitle{参考答案：高等代数}
+\newcommand{\Span}{\operatorname{span}}
+\newcommand{\Ker}{\operatorname{Ker}}
+
+== 26春高等代数（英才班）期末参考答案==
+
+\begin{center}
+\textsize{24pt}{复旦大学数学科学学院\\
+2025 $\sim$ 2026 学年第二学期期末考试\\
+参考答案与常见错误}
+
+$\blacksquare$ ${\rm A}$ 卷 \quad $\square$ ${\rm B}$ 卷 \quad $\square$ ${\rm C}$ 卷
+
+\textbf{课程名称}: $\underline{\quad\text{高等代数 II}\quad}$ \quad
+\textbf{课程代码:} $\underline{\quad\text{MATH10019.03--06}\quad}$
+
+\textbf{开课院系}: $\underline{\qquad\ 数学科学学院\qquad\ }$ \quad\ 
+\textbf{考试形式}: $\underline{\qquad\ \ 闭卷\qquad\ \ }$
+
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\textbf{题号} & 一 & 二 & 三 & 四 & 五 & 六 & \textbf{总分} \\
+\textbf{分数} & 20 分 & 20 分 & 20 分 & 20 分 & 20 分 & 20 分 & 100 分 (+20 分) \\
+\textbf{得分} & & & & & & & 
+\end{tabular}
+\end{center}
+
+\textbf{第一题，计算题，共 20 分。$\underline{不需要写计算过程}$。}
+
+令
+\[A =
+\begin{pmatrix}
+0 & 0 & 0 & 0 \\
+1 & 0 & 0 & 0 \\
+0 & -2 & 0 & 0 \\
+0 & 0 & 3 & 0
+\end{pmatrix},
+\qquad
+B =
+\begin{pmatrix}
+1 & 2 & 1 \\
+1 & 0 & 2 \\
+0 & 0 & 3
+\end{pmatrix}.\]
+\begin{enumerate}
+\item (5 分) 求 $A$ 的 Jordan 标准型, 写为下三角的形式.
+
+\textbf{【答】}
+\[
+\begin{pmatrix}
+0 & 0 & 0 & 0 \\
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0
+\end{pmatrix}
+\]
+
+\textbf{方法一：} 记 $\mathbb{C}^{4\times 1}$ 的标准基为 $\varepsilon_1,\varepsilon_2,\varepsilon_3,\varepsilon_4$。观察矩阵 $A$ 的结构，可以看出它对标准基的映射关系为：
+\[A\varepsilon_1=\varepsilon_2,\quad A\varepsilon_2=-2\varepsilon_3,\quad A\varepsilon_3=3\varepsilon_4,\quad A\varepsilon_4=0.\]
+为了得到下三角形式的 Jordan 块，只需构造一组新基 $\alpha_1,\alpha_2,\alpha_3,\alpha_4$，满足链式作用关系：
+\[A\alpha_1=\alpha_2,\ A\alpha_2=\alpha_3,\ A\alpha_3=\alpha_4,\ A\alpha_4=0.\]
+
+我们直接利用上述映射关系进行构造，取：
+\[\alpha_1=\varepsilon_1,\quad
+\alpha_2=A\alpha_1=\varepsilon_2,\quad
+\alpha_3=A\alpha_2=A\varepsilon_2=-2\varepsilon_3,\quad
+\alpha_4=A\alpha_3=A(-2\varepsilon_3)=-6\varepsilon_4.\]
+显然再作用一次 $A$ 得到 $A\alpha_4=A(-6\varepsilon_4)=0$。
+
+因为 $\alpha_1,\alpha_2,\alpha_3,\alpha_4$ 只是标准基的非零倍数，
+它们显然线性无关，构成 $\mathbb{C}^4$ 的一组基。
+
+在这组新基下，线性变换的矩阵天然就是所求的下三角 Jordan 标准型：
+\[J=
+\begin{pmatrix}
+0 & 0 & 0 & 0 \\
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0
+\end{pmatrix}\]
+
+\textbf{方法二：}
+\begin{itemize}
+\item 严格下三角矩阵的特征值全为 $0$，因此是幂零矩阵。
+\item 幂零阵的 Jordan 标准型完全由其各个特征值（本题为 $\lambda=0$）对应的 Jordan 块大小和数量决定。
+\item 属于特征值 $\lambda$ 的 Jordan 块的个数等于该特征值的几何重数，即 $\dim\Ker(A-\lambda I)$，本题中个数为 $1$。
+\end{itemize}
+
+\item (5 分) 求 $A$ 的所有非零奇异值.
+
+\textbf{【答】} $1,2,3$
+
+\textbf{方法一：} 记标准内积空间 $\mathbb{R}^{4\times1}$ 的标准正交基为 $\varepsilon_1,\varepsilon_2,\varepsilon_3,\varepsilon_4$。
+
+奇异值分解的核心几何意义是寻找两组规范正交基 $\{\alpha_i\}$ 和 $\{\beta_i\}$，使得 $A\alpha_i=\sigma_i\beta_i$，其中 $\sigma_i>0$ 即为非零奇异值。
+
+观察上述映射，因为标准基向量本身已是单位向量且相互正交，我们只需提取正数因子，将其调整为 $A\alpha_i=\sigma_i\beta_i$ 的形式：
+\[
+A\varepsilon_1=1\cdot\varepsilon_2,\quad
+A\varepsilon_2=2\cdot(-\varepsilon_3),\quad
+A\varepsilon_3=3\cdot\varepsilon_4,\quad
+A\varepsilon_4=0.
+\]
+
+我们只需顺势取：
+\begin{itemize}
+\item $\alpha_1=\varepsilon_1,\ \beta_1=\varepsilon_2$，此时 $A\alpha_1=1\cdot\beta_1$
+\item $\alpha_2=\varepsilon_2,\ \beta_2=-\varepsilon_3$，此时 $A\alpha_2=2\cdot\beta_2$
+\item $\alpha_3=\varepsilon_3,\ \beta_3=\varepsilon_4$，此时 $A\alpha_3=3\cdot\beta_3$
+\item $\alpha_4=\varepsilon_4,\ \beta_4=\varepsilon_4$, 此时 $A\alpha_4=0\cdot\beta_4$.
+\end{itemize}
+
+显然，$\{\alpha_1,\alpha_2,\alpha_3,\alpha_4\}$ 是正交规范基；$\{\beta_1,\beta_2,\beta_3,\beta_4\}$ 同样也是正交规范的, 
+左乘 $A$ 所定义的算子在这\textbf{两组规范正交基}下的矩阵为
+\[\begin{pmatrix}
+1 & & & \\
+ & 2 & & \\
+ & & 3 & \\
+ & & & 0
+\end{pmatrix}\]
+由此立即可得 $A$ 的所有非零奇异值为 $1,2,3$。
+
+\textbf{方法二：} 首先计算 $A^{\rm T}A$：
+\[A^{\rm T}A=
+\begin{pmatrix}
+0 & 1 & 0 & 0 \\
+0 & 0 & -2 & 0 \\
+0 & 0 & 0 & 3 \\
+0 & 0 & 0 & 0
+\end{pmatrix}
+\begin{pmatrix}
+0 & 0 & 0 & 0 \\
+1 & 0 & 0 & 0 \\
+0 & -2 & 0 & 0 \\
+0 & 0 & 3 & 0
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 4 & 0 & 0 \\
+0 & 0 & 9 & 0 \\
+0 & 0 & 0 & 0
+\end{pmatrix}\]
+我们发现 $A^{\rm T}A$ 恰好是一个对角矩阵，其特征值即为主对角线上的元素：$1,4,9,0$。
+
+因此，$A$ 的非零奇异值为这些非零特征值的平方根：
+\[\sigma_1=\sqrt{1}=1,\quad \sigma_2=\sqrt{4}=2,\quad \sigma_3=\sqrt{9}=3.\]
+所以 $A$ 的所有非零奇异值为 $1,2,3$。
+
+\item (10 分) 求实方阵 $Q,R$, 使得 $B=QR$, 
+其中 $Q$ 是正交阵, $R$ 是对角元都是正数的上三角阵.
+
+\textbf{【答】}
+\[
+Q=
+\begin{pmatrix}
+\sqrt{\tfrac12} & \sqrt{\tfrac12} & 0 \\
+\sqrt{\tfrac12} & -\sqrt{\tfrac12} & 0 \\
+0 & 0 & 1
+\end{pmatrix},
+\qquad
+R=
+\begin{pmatrix}
+\sqrt2 & \sqrt2 & \sqrt{\tfrac32} \\
+0 & \sqrt2 & -\sqrt{\tfrac12} \\
+0 & 0 & 3
+\end{pmatrix}
+\]
+
+\begin{itemize}
+\item 矩阵的 QR 分解本质上是对矩阵的列向量组进行 Schmidt (施密特) 正交化与单位化的过程。
+\item 若 $B=(\beta_1,\beta_2,\beta_3)$，$Q=(q_1,q_2,q_3)$，
+则 $R$ 的元素 $r_{ij}$ 满足：对角元 $r_{ii}$ 是正交化过程中第 $i$ 个正交向量的模长，
+非对角元 $r_{ij}=\langle\beta_j,q_i\rangle$ ($i<j$)。
+\end{itemize}
+
+\textbf{【计算过程】} 记 $B=(\beta_1,\beta_2,\beta_3)$，
+其中 $\beta_1=(1,1,0)^{\rm T},\ \beta_2=(2,0,0)^{\rm T},\ \beta_3=(1,2,3)^{\rm T}$。
+
+\textbf{步骤一：Schmidt 正交化}
+
+令 $\alpha_1=\beta_1=(1,1,0)^{\rm T}$。计算 $\alpha_2$：
+\[\alpha_2=\beta_2-\frac{\langle\beta_2,\alpha_1\rangle}{\langle\alpha_1,\alpha_1\rangle}\alpha_1\]
+其中
+\[\langle\beta_2,\alpha_1\rangle=2\times1+0\times1+0\times0=2,
+\quad\langle\alpha_1,\alpha_1\rangle=1^2+1^2=2,\]
+从而
+\[\alpha_2=
+\begin{pmatrix}2\\0\\0\end{pmatrix}
+-\frac{2}{2}
+\begin{pmatrix}1\\1\\0\end{pmatrix}
+=
+\begin{pmatrix}1\\-1\\0\end{pmatrix}\]
+
+计算 $\alpha_3$：
+\[\alpha_3=\beta_3-\frac{\langle\beta_3,\alpha_1\rangle}{\langle\alpha_1,\alpha_1\rangle}\alpha_1
+-\frac{\langle\beta_3,\alpha_2\rangle}{\langle\alpha_2,\alpha_2\rangle}\alpha_2\]
+其中
+\[\langle\beta_3,\alpha_1\rangle=1\times1+2\times1+3\times0=3,
+\quad\langle\alpha_2,\alpha_2\rangle=1^2+(-1)^2=2,
+\quad\langle\beta_3,\alpha_2\rangle=1\times1+2\times(-1)+3\times0=-1,\]
+从而
+\[\alpha_3=
+\begin{pmatrix}1\\2\\3\end{pmatrix}
+-\frac{3}{2}
+\begin{pmatrix}1\\1\\0\end{pmatrix}
+-\frac{-1}{2}
+\begin{pmatrix}1\\-1\\0\end{pmatrix}
+=
+\begin{pmatrix}1-1.5+0.5\\2-1.5-0.5\\3-0+0\end{pmatrix}
+=
+\begin{pmatrix}0\\0\\3\end{pmatrix}\]
+
+\textbf{步骤二：单位化生成 $Q$}
+
+分别求 $\alpha_1,\alpha_2,\alpha_3$ 的模长（即 $R$ 的对角线元素）：
+\[\|\alpha_1\|=\sqrt2,\quad \|\alpha_2\|=\sqrt2,\quad \|\alpha_3\|=3.\]
+单位化得到正交矩阵 $Q$ 的各列 $q_1,q_2,q_3$：
+\[q_1=\frac{\alpha_1}{\|\alpha_1\|}=
+\begin{pmatrix}\sqrt{\tfrac12}\\ \sqrt{\tfrac12}\\ 0\end{pmatrix},
+\quad
+q_2=\frac{\alpha_2}{\|\alpha_2\|}=
+\begin{pmatrix}\sqrt{\tfrac12}\\ -\sqrt{\tfrac12}\\ 0\end{pmatrix},
+\quad
+q_3=\frac{\alpha_3}{\|\alpha_3\|}=
+\begin{pmatrix}0\\0\\1\end{pmatrix}\]
+故
+\[Q=
+\begin{pmatrix}
+\sqrt{\tfrac12} & \sqrt{\tfrac12} & 0 \\
+\sqrt{\tfrac12} & -\sqrt{\tfrac12} & 0 \\
+0 & 0 & 1
+\end{pmatrix}\]
+
+\textbf{步骤三：构造上三角阵 $R$}
+
+由 $B=QR$，其中 $r_{ii}=\|\alpha_i\|$，且对于 $i<j$ 有 $r_{ij}=\langle\beta_j,q_i\rangle$。
+\begin{itemize}
+\item $r_{11}=\|\alpha_1\|=\sqrt2$
+\item $r_{22}=\|\alpha_2\|=\sqrt2$
+\item $r_{33}=\|\alpha_3\|=3$
+\item $r_{12}=\langle\beta_2,q_1\rangle=2\cdot\sqrt{\tfrac12}=\sqrt2$
+\item $r_{13}=\langle\beta_3,q_1\rangle=1\cdot\sqrt{\tfrac12}+2\cdot\sqrt{\tfrac12}=\sqrt{\tfrac32}$
+\item $r_{23}=\langle\beta_3,q_2\rangle=1\cdot\sqrt{\tfrac12}-2\cdot\sqrt{\tfrac12}=-\sqrt{\tfrac12}$
+\end{itemize}
+故
+\[R=
+\begin{pmatrix}
+\sqrt2 & \sqrt2 & \sqrt{\tfrac32} \\
+0 & \sqrt2 & -\sqrt{\tfrac12} \\
+0 & 0 & 3
+\end{pmatrix}\]
+\end{enumerate}
+
+\textbf{第二题，快速判断题，共 20 分。
+判断下列命题的真假，在对应的方格内画圈（$\bigcirc$）。}
+$\underline{\textbf{答对得 2 分，答错倒扣 1 分，扣完为止}}$。
+
+\begin{center}\begin{tabular}{lcc}
+命题 & \,真\, & \,假\, \\
+(示例) 在自然数中 $1+1=1$ & & $\bigcirc$ \\
+$T$ 有循环向量的充要条件是其特征多项式没有重根. & & $\bigcirc$ \\
+半正定实对称阵的特征值全部是非负实数. & $\bigcirc$ & \\
+若 $f$ 是非退化对称双线性型，$V_0$ 是 $V$ 的子空间，则 $V=V_0\oplus V_0^\perp$. & & $\bigcirc$ \\
+若 $f$ 是反对称双线性型，则 $\dim V$ 是偶数. & & $\bigcirc$ \\
+幂零阵的 Jordan 标准型中的 Jordan 块个数等于该矩阵的零空间的维数. & $\bigcirc$ & \\
+$V\otimes W=\{\alpha\otimes\beta\mid \alpha\in V,\beta\in W\}$. & & $\bigcirc$ \\
+$\dim(V\otimes W)=\dim V+\dim W$. & & $\bigcirc$ \\
+若 $A$ 是对称阵且正负惯性指数分别为 $p,q$, 则 $\operatorname{tr}(A)=p-q$. & & $\bigcirc$ \\
+若 $T$ 有循环向量, 则 $V$ 除 $\{0\}$ 与 $V$ 之外没有其他 $T$ 不变子空间. & & $\bigcirc$ \\
+正定实对称阵是可逆的, 且其逆也是正定实对称阵. & $\bigcirc$ & 
+\end{tabular}\end{center}
+
+\bigskip
+\begin{enumerate}
+\item \textbf{$T$ 有循环向量的充要条件是其特征多项式没有重根。}
+
+\textbf{判断：}假。
+
+\textbf{解析：}线性变换 $T$ 有循环向量的充要条件是其最小多项式等于特征多项式（即特征矩阵的各阶不变因子中只有一个不为 $1$）。
+特征多项式无重根只是一个充分条件（此时特征值互异，最小多项式必等于特征多项式）。
+反例：考虑矩阵 $J=\begin{pmatrix}\lambda&1\\0&\lambda\end{pmatrix}$，
+其特征多项式为 $(x-\lambda)^2$，有重根，
+但其最小多项式也是 $(x-\lambda)^2$，它存在循环向量（例如 $(0,1)^{\rm T}$）。
+
+\item \textbf{半正定实对称阵的特征值全部是非负实数。}
+
+\textbf{判断：}真。
+
+\textbf{解析：}实对称阵必可正交对角化，其特征值均为实数。
+设 $\lambda$ 为半正定实对称阵 $A$ 的任一特征值，
+$\alpha\neq0$ 为对应的特征向量，则 $A\alpha=\lambda\alpha$。
+由半正定性可知 $\alpha^TA\alpha\ge0$，
+即 $\alpha^T(\lambda\alpha)=\lambda\alpha^T\alpha\ge0$。
+因为 $\alpha\neq0$，所以 $\alpha^T\alpha>0$，从而推出 $\lambda\ge0$。
+
+\item \textbf{若 $f$ 是非退化对称双线性型，$V_0$ 是 $V$ 的子空间，则 $V=V_0\oplus V_0^\perp$。}
+
+\textbf{判断：}假。
+
+\textbf{解析：}该命题成立的条件是 $f$ 在子空间 $V_0$ 上的限制也必须是非退化的。
+如果 $f$ 存在非零的迷向向量（如在闵可夫斯基空间中），
+则可能出现 $V_0\cap V_0^\perp\neq\{0\}$ 的情况。
+例如，取 $V=\mathbb{R}^{2\times1}$，$f$ 在标准基下的矩阵为 
+$\begin{pmatrix}1&0\\0&-1\end{pmatrix}$，$V_0=\Span\{(1,1)^T\}$。
+此时对于 $\alpha\in V_0$，$f(\alpha,\alpha)=1-1=0$，
+即 $V_0\subseteq V_0^\perp$，两者无法构成直和。
+
+\item \textbf{若 $f$ 是反对称双线性型，则 $\dim V$ 是偶数。}
+
+\textbf{判断：}假。
+
+\textbf{解析：}只有当 $f$ 是\textbf{非退化}的反对称双线性型（即辛形式）时，空间的维数才必须是偶数。
+如果 $f$ 是退化的（例如零双线性型），它可以定义在任意维数（包括奇数维）的向量空间上。
+
+\item \textbf{幂零阵的 Jordan 标准型中的 Jordan 块个数等于该矩阵的零空间的维数。}
+
+\textbf{判断：}真。
+
+\textbf{解析：}对于任意方阵 $A$，属于特征值 $\lambda$ 的 Jordan 块的个数等于该特征值的几何重数，即 $\dim\Ker(A-\lambda I)$。
+由于幂零阵的唯一特征值是 $0$，所以其 Jordan 块的个数严格等于 $\dim\Ker(A)$，即零空间的维数。
+
+\item \textbf{$V\otimes W=\{\alpha\otimes\beta\mid\alpha\in V,\beta\in W\}$。}
+
+\textbf{判断：}假。
+
+\textbf{解析：}集合 $\{\alpha\otimes\beta\mid\alpha\in V,\beta\in W\}$ 只是张量积空间中的\textbf{单张量}（simple tensor）的集合。
+一般的张量积空间 $V\otimes W$ 中的元素是这些单张量的有限线性组合。并非所有张量都能写成单个 $\alpha\otimes\beta$ 的形式。
+
+\item \textbf{$\dim(V\otimes W)=\dim V+\dim W$。}
+
+\textbf{判断：}假。
+
+\textbf{解析：}这是直和 $V\oplus W$ 的维数公式。张量积空间的维数应为两空间维数的乘积，
+即 $\dim(V\otimes W)=\dim V\times \dim W$。
+
+\item \textbf{若 $A$ 是对称阵且正负惯性指数分别为 $p,q$，则 $\operatorname{tr}(A)=p-q$。}
+
+\textbf{判断：}假。
+
+\textbf{解析：}矩阵的迹等于其所有特征值之和，即 $\operatorname{tr}(A)=\sum\lambda_i$。
+正负惯性指数 $p,q$ 只代表正特征值和负特征值的个数，与特征值的具体大小无关。
+反例：取 $A=\begin{pmatrix}2&0\\0&-1\end{pmatrix}$，
+此时 $p=1,q=1$，$p-q=0$，但 $\operatorname{tr}(A)=2-1=1\neq0$。
+
+\item \textbf{若 $T$ 有循环向量，则 $V$ 除 $\{0\}$ 与 $V$ 之外没有其他 $T$ 不变子空间。}
+
+\textbf{判断：}假。
+
+\textbf{解析：}空间 $V$ 没有非平凡的 $T$-不变子空间的充要条件是 $T$ 的特征多项式（或最小多项式）在数域 $F$ 上是不可约的。
+有循环向量只能说明特征多项式等于最小多项式。反例：考虑 $V=\mathbb{R}^2$ 以及变换矩阵 $T=\begin{pmatrix}1&1\\0&1\end{pmatrix}$，
+它有循环向量 $(0,1)^{\rm T}$，但它有一个一维的非平凡不变子空间 $\Span\{(1,0)^{\rm T}\}$。
+
+\item \textbf{正定实对称阵是可逆的，且其逆也是正定实对称阵。}
+
+\textbf{判断：}真。
+
+\textbf{解析：}设 $A$ 是正定实对称阵，则其所有特征值 $\lambda_i>0$。
+因为 $\det(A)=\prod\lambda_i>0$，所以 $A$ 是可逆的。
+$A^{-1}$ 的特征值为 $\frac{1}{\lambda_i}>0$，
+且 $(A^{-1})^{\rm T}=(A^{\rm T})^{-1}=A^{-1}$，
+故 $A^{-1}$ 也是实对称阵，且其特征值全为正数，因此 $A^{-1}$ 也是正定实对称阵。
+\end{enumerate}
+
+\textbf{第三题，共 20 分。}
+\begin{enumerate}
+\item (10 分) 设 $A\in\mathbb{C}^{n\times n}$ 是可逆的正规阵, 
+证明存在正规阵 $B\in\mathbb{C}^{n\times n}$ 使得 $e^B=A$.
+
+\textbf{【解】} 因为 $A$ 为正规阵，由谱定理，
+存在酉矩阵 $U$ 和对角阵 $D=\operatorname{diag}(\lambda_1,\dots,\lambda_n)$ 使得 $A=UDU^*$。
+
+由于题目已知 $A$ 可逆，所以对于所有的 $k=1,\dots,n$ 均有 $\lambda_k\neq0$。
+因此我们可以选取复数 $\mu_k$ 使得 $e^{\mu_k}=\lambda_k$。
+
+令 $D'=\mathrm{diag}(\mu_1,\dots,\mu_n)$，取 $B=UD'U^*$。
+显然 $B$ 可酉对角化，故 $B$ 是正规阵。
+
+此时 $e^B=e^{UD'U^*}=Ue^{D'}U^*=UDU^*=A$，得证。
+
+\textbf{【常见错误】}
+\begin{itemize}
+\item 忘记解释为什么构造出来的 $B$ 是正规的，
+特别是有的同学一开始没有取 $A$ 酉相似于对角阵, 
+而只是说相似于对角阵。这无法保证构造出来的 $B$ 是正规的。
+\item 有些同学不知道如何找 $\mu_k$ 使得 $e^{\mu_k}=\lambda_k$：
+令 $\lambda_k=|\lambda_k|e^{i\theta_k},\theta_k\in\mathbb{R}$ 之后，
+误取 $\mu_k=\log(|\lambda_k|)\cdot(i\theta)$，
+应该是取 $\mu_k=\log(|\lambda_k|)+i\theta$。
+另有同时直接写 $\mu_k=\log(\lambda_k)$。
+这严格来说也是不对的, 因为 $e^{(\cdot)}$ 在 $\mathbb{C}$ 上不是单射，
+没有反函数 $\log$. 此处只酌情扣 1-2 分。
+\item 有的同学直接写 $B=\log(A)$, 并用Taylor展开定义 $\log$. 
+这是不对的，因为 $\log$ 的Taylor级数的收敛域很小.
+\end{itemize}
+
+\item (10 分) 若 $C\in\mathbb{C}^{n\times n}$ 满足 $e^C$ 是正规阵, 
+能否推出 $C$ 是正规阵? 若能, 证明这个结论; 若否, 给出反例并给出必要解释.
+
+\textbf{【解】} 不能推出。
+
+反例构造：构造的思想类似于正定阵有唯一平方根的证明. 
+注意到 $C$ 是正规阵的充要条件是它可以酉对角化, 
+这又等价于 $C$ 可以对角化且不同特征子空间相互正交。
+
+我们取 $C\in\mathbb{C}^{2\times2}$ 使得
+\begin{enumerate}[label=(\alph*)]
+\item $C$ 有两个互异特征值 $\lambda_1\neq\lambda_2$；
+\item $e^{\lambda_1}=e^{\lambda_2}=1$；
+\item $C$ 的两个特征子空间不正交；
+\end{enumerate}
+其中 (a) 保证了 $C$ 相似于 $\begin{pmatrix}\lambda_1&\\&\lambda_2\end{pmatrix}$. 
+结合 (b), $e^C$ 相似于单位阵，故 $e^C$ 本身是单位阵，正规。但 (c) 保证了 $C$ 不是正规的.
+
+具体地, 可取 $C=\begin{pmatrix}2\pi i & c\\0 & -2\pi i\end{pmatrix},\ c\neq0$。
+
+要验证 $C$ 不是正规阵，除了观察到 $C$ 的特征子空间不正交外, 还有以下方法:
+\begin{enumerate}[label=(\alph*)]
+\item 直接计算 $CC^*\neq C^*C$，
+\item 利用正规的上三角阵是对角阵这个结论,
+\item 如果 $C$ 是正规的, 那么 $C$ 与 $\begin{pmatrix}2\pi i&\\&-2\pi i\end{pmatrix}$ 酉相似. 
+Frobenius 范数是酉相似不变量, 但是两个矩阵的 Frobenius 范数不同.
+\end{enumerate}
+
+\textbf{【常见错误】} 有的同学作出了正确的判断“不能推出”，但给出的理由或者构造的反例不对。
+\begin{enumerate}[label=(\alph*)]
+\item 有的同学试图构造 $C$ 使得 $e^C$ 不可逆。
+这是做不到的，因为 $e^Ce^{-C}=I$, 因此 $e^C$ 总是可逆的。
+\item 有的同学试图使用不可对角化的 $C$ 来构造反例，这也是做不到的。
+由 Jordan 标准型或者 Jordan-Chevalley 分解可以证明，
+当 $C$ 不可对角化时，$e^C$ 总不可对角化。
+此时 $e^C$ 当然也不是酉对角化，因此不可能是正规的。
+\end{enumerate}
+
+这道题中出现的另一个常见错误是认为 $e^{A+B}=e^Ae^B$ 总成立。事实上这对一般的 $A,B$ 是不成立的。它成立的一个充分条件是 $AB=BA$.
+\end{enumerate}
+
+\textbf{第四题，共 20 分。} 设 $V$ 是有限维实线性空间, $f$ 是 $V$ 上的非退化双线性型, $T:V\to V$ 是 $V$ 上的线性映射. 定义 $T$ 关于 $f$ 的伴随为满足如下条件的线性映射 $T^*:V\to V$：
+\[f(T\alpha,\beta)=f(\alpha,T^*\beta),\quad \text{对任意}\ \alpha,\beta\in V.\]
+\begin{enumerate}
+\item (10 分) 证明: $T^*$ 存在且唯一.
+
+\textbf{【证明】} 固定 $\beta\in V$，定义映射 $\varphi_\beta:V\to\mathbb{R}$，
+$\varphi_\beta(\alpha)=f(T\alpha,\beta)$。
+由于 $T$ 和 $f$ 的线性性质，$\varphi_\beta$ 是 $V$ 上的线性泛函。
+
+因为 $f$ 是非退化双线性型，映射 $\Phi:V\to V^{\vee}$（定义为 $\Phi(\eta)(\alpha)=f(\alpha,\eta)$）是一个同构。
+
+因此，对于线性泛函 $\varphi_\beta\in V^{\vee}$，存在唯一的 $\gamma\in V$ 
+使得对所有 $\alpha\in V$，有 $\varphi_\beta(\alpha)=\Phi(\gamma)(\alpha)$，
+即 $f(T\alpha,\beta)=f(\alpha,\gamma)$。定义 $T^*\beta=\gamma$。
+唯一性由同构的性质直接保证。很容易验证如此定义的 $T^*$ 是线性的，故 $T^*$ 存在且唯一。
+也可以类似第二问用表示矩阵来证明 $T^*$ 的存在唯一性。
+
+\item (10 分) 证明: $T$ 与 $T^*$ 有相同的特征多项式.
+
+\textbf{【证明】} 设 $\varepsilon_1,\dots,\varepsilon_n$ 为 $V$ 的一组基。
+令 $M$ 为 $f$ 在此基下的表示矩阵（亦称度量矩阵或 Gram 矩阵），
+即 $m_{ij}=f(\varepsilon_i,\varepsilon_j)$。因为 $f$ 非退化，$M$ 是可逆矩阵。
+
+设 $T$ 在这组基下的矩阵为 $A$，$T^*$ 的矩阵为 $B$。
+对任意的坐标列向量 $x,y\in\mathbb{R}^n$，有
+\[f(T\alpha,\beta)=(Ax)^{\rm T}My=x^{\rm T}A^{\rm T}My,
+\qquad
+f(\alpha,T^*\beta)=x^{\rm T}M(By)=x^{\rm T}(MB)y.\]
+由于上式对一切坐标向量成立，故 $A^{\rm T}M=MB$。
+因为 $M$ 可逆，可得 $B=M^{-1}A^{\rm T}M$。这说明 $B$ 与 $A^{\rm T}$ 相似。
+
+相似矩阵具有相同的特征多项式，且转置不改变矩阵的特征多项式，
+故 $\det(\lambda I-B)=\det(\lambda I-A^{\rm T})=\det(\lambda I-A)$。得证。
+
+\textbf{【常见错误】} 认为 $f$ 是对称或者正定的, 直接用“惯性定理”或者找“规范正交基”.
+\end{enumerate}
+\textbf{第五题，共 20 分。}
+
+设 $V$ 是 $4$ 维复线性空间, 给定非零的 $\alpha\in V,\varphi\in V^\vee$. 定义两个线性映射
+\[T:\bigwedge{}^2V\to\bigwedge{}^3V,\qquad S:\bigwedge{}^3V\to\bigwedge{}^2V,\]
+满足对任意 $\beta_1,\beta_2,\beta_3\in V$，
+\[T(\beta_1\wedge\beta_2)=\beta_1\wedge\beta_2\wedge\alpha,\]
+\[S(\beta_1\wedge\beta_2\wedge\beta_3)=\varphi(\beta_1)\beta_2\wedge\beta_3
++a\varphi(\beta_2)\beta_1\wedge\beta_3+b\varphi(\beta_3)\beta_1\wedge\beta_2.\]
+其中 $a,b\in\mathbb{C}$ 是待定常数.
+\begin{enumerate}
+\item (4 分) 写出 $\bigwedge^2V$ 的的一组基.
+
+\textbf{【解】} 设 $\varepsilon_1,\varepsilon_2,\varepsilon_3,\varepsilon_4$ 为 $V$ 的一组基。则 $\bigwedge^2V$ 的一组基为：
+\[\{\varepsilon_1\wedge\varepsilon_2,\ \varepsilon_1\wedge\varepsilon_3,
+\ \varepsilon_1\wedge\varepsilon_4,\ \varepsilon_2\wedge\varepsilon_3,
+\ \varepsilon_2\wedge\varepsilon_4,\ \varepsilon_3\wedge\varepsilon_4\}.\]
+
+\item (8 分) 求 $a,b$ 使得 $S$ 是良定的 (即满足条件的 $S$ 存在且唯一), 并给出必要解释.
+
+\textbf{【解】} 由反对称张量积的泛性质, $S$ 良定的充要条件是其定义在张量空间上关于三个变元是完全交替的。
+
+考虑交换 $\beta_1,\beta_2$：
+\[S(\beta_2\wedge\beta_1\wedge\beta_3)=\varphi(\beta_2)\beta_1\wedge\beta_3
++a\varphi(\beta_1)\beta_2\wedge\beta_3+b\varphi(\beta_3)\beta_2\wedge\beta_1.\]
+这必须等于
+\[-S(\beta_1\wedge\beta_2\wedge\beta_3)=-\varphi(\beta_1)\beta_2\wedge\beta_3
+-a\varphi(\beta_2)\beta_1\wedge\beta_3+b\varphi(\beta_3)\beta_2\wedge\beta_1.\]
+比较系数可得 $a=-1$。
+
+考虑交换 $\beta_2,\beta_3$：
+\[S(\beta_1\wedge\beta_3\wedge\beta_2)=\varphi(\beta_1)\beta_3\wedge\beta_2
+-\varphi(\beta_3)\beta_1\wedge\beta_2+b\varphi(\beta_2)\beta_1\wedge\beta_3.\]
+这必须等于
+\[-S(\beta_1\wedge\beta_2\wedge\beta_3)=-\varphi(\beta_1)\beta_2\wedge\beta_3
++\varphi(\beta_2)\beta_1\wedge\beta_3-b\varphi(\beta_3)\beta_1\wedge\beta_2.\]
+比较系数可得 $b=1$。
+
+因此，$a=-1,\ b=1$。
+
+反过来，当 $a=-1,b=1$ 时，
+\[\varphi(\beta_1)\beta_2\wedge\beta_3+a\varphi(\beta_2)\beta_1\wedge\beta_3+b\varphi(\beta_3)\beta_1\wedge\beta_2\]
+确实关于 $\beta_1,\beta_2,\beta_3$ 是反对称三重线性的.
+
+\item (8 分) 设 $S$ 是良定的且 $\varphi(\alpha)=0$, 求 $ST$ 的 Jordan 标准型.
+
+\textbf{【解】} 由前一问，化简得
+\[ST(\beta_1\wedge\beta_2)=S(\beta_1\wedge\beta_2\wedge\alpha)
+=\varphi(\beta_1)\beta_2\wedge\alpha-\varphi(\beta_2)\beta_1\wedge\alpha
++\varphi(\alpha)\beta_1\wedge\beta_2.\]
+由于 $\varphi(\alpha)=0$，有
+\[ST(\beta_1\wedge\beta_2)=-\varphi(\beta_1)\alpha\wedge\beta_2
++\varphi(\beta_2)\alpha\wedge\beta_1.\]
+
+\textbf{方法一：} 取 $V$ 的一组基：令 $\varepsilon_1=\alpha$。
+由于 $\varphi\neq0$ 且 $\varphi(\alpha)=0$，
+可选 $\varepsilon_2$ 使 $\varphi(\varepsilon_2)=1$。
+再选 $\varepsilon_3,\varepsilon_4\in\ker\varphi$。则对基底求 $ST$ 的像：
+\[ST(\varepsilon_2\wedge\varepsilon_3)=\varphi(\varepsilon_2)\varepsilon_3\wedge\varepsilon_1=-\varepsilon_1\wedge\varepsilon_3,
+\qquad
+ST(\varepsilon_2\wedge\varepsilon_4)=\varphi(\varepsilon_2)\varepsilon_4\wedge\varepsilon_1=-\varepsilon_1\wedge\varepsilon_4.\]
+其余基向量 $\varepsilon_1\wedge\varepsilon_2,\varepsilon_1\wedge\varepsilon_3,\varepsilon_1\wedge\varepsilon_4,\varepsilon_3\wedge\varepsilon_4$ 在 $ST$ 下的像均为 $0$。
+
+易知 $\mathrm{Im}(ST)=\Span\{\varepsilon_1\wedge\varepsilon_3,\varepsilon_1\wedge\varepsilon_4\}$，
+$\dim(\mathrm{Im}(ST))=2$。且 $(ST)^2=0$。因此 $ST$ 的特征值全为 $0$。
+
+由于 $(ST)^2=0$ 且秩为 $2$，说明其 Jordan 块最大大小为 $2\times2$，
+并且有 $6-2=4$ 个 Jordan 块。故 $ST$ 的 Jordan 标准型为 $\operatorname{diag}(J_2(0),J_2(0),J_1(0),J_1(0))$，
+其中 $J_k(\lambda)$ 表示特征值为 $\lambda$ 的 $k$ 阶 Jordan 块.
+
+\textbf{方法二：} 同方法一，取 $V$ 的基 $\varepsilon_1=\alpha$，由于 $\varphi\neq0$，可取到 $\varphi(\varepsilon_2)=1$ 且 $\dim\ker\varphi=3$。
+因此可以将 $\{\varepsilon_1\}$ 扩充为 $\ker\varphi$ 的基 $\{\varepsilon_1,\varepsilon_3,\varepsilon_4\}$. 
+此时 $\{\varepsilon_1,\varepsilon_2,\varepsilon_3,\varepsilon_4\}$ 是 $V$ 的一组基。于是得到 $\bigwedge^2V$ 的一组基并适当排序：
+\[\eta_1=\varepsilon_2\wedge\varepsilon_3,\quad
+\eta_2=\varepsilon_1\wedge\varepsilon_3,\quad
+\eta_3=\varepsilon_2\wedge\varepsilon_4,\quad
+\eta_4=\varepsilon_1\wedge\varepsilon_4,\quad
+\eta_5=\varepsilon_1\wedge\varepsilon_2,\quad
+\eta_6=\varepsilon_3\wedge\varepsilon_4.\]
+
+计算基向量在 $ST$ 下的像：
+\[ST(\eta_1)=ST(\varepsilon_2\wedge\varepsilon_3)=-\varepsilon_1\wedge\varepsilon_3=-\eta_2;\qquad
+ST(\eta_2)=ST(\varepsilon_1\wedge\varepsilon_3)=0;\]
+\[ST(\eta_3)=ST(\varepsilon_2\wedge\varepsilon_4)=-\varepsilon_1\wedge\varepsilon_4=-\eta_4;\qquad
+ST(\eta_4)=ST(\varepsilon_1\wedge\varepsilon_4)=0;\]
+\[ST(\eta_5)=ST(\varepsilon_1\wedge\varepsilon_2)=0;\qquad
+ST(\eta_6)=ST(\varepsilon_3\wedge\varepsilon_4)=0.\]
+
+由此写出 $ST$ 在该基 $\{\eta_1,\dots,\eta_6\}$ 下的矩阵 $M$：
+\[M=
+\begin{pmatrix}
+0&0&0&0&0&0\\
+-1&0&0&0&0&0\\
+0&0&0&0&0&0\\
+0&0&-1&0&0&0\\
+0&0&0&0&0&0\\
+0&0&0&0&0&0
+\end{pmatrix}.\]
+
+观察矩阵的结构，存在两条长度为 $2$ 的 Jordan 链（$\eta_1\xrightarrow{ST}-\eta_2\xrightarrow{ST}0$ 和 $\eta_3\xrightarrow{ST}-\eta_4\xrightarrow{ST}0$），以及两个孤立的特征向量 $\eta_5,\eta_6$。
+故 Jordan 标准型为 $\mathrm{diag}(J_2(0),J_2(0),J_1(0),J_1(0))$，其中 $J_k(\lambda)$ 表示特征值为 $\lambda$ 的 $k$ 阶 Jordan 块.
+
+\textbf{【常见错误】} 在一般的基下求出的 $ST$ 的矩阵, 
+没有意识到 $ST$ 的 Jordan 标准型是确定的, 而是“分类讨论”得出了 Jordan 标准型的几种情况. 
+其中的逻辑错误是, 讨论的过程中只用到了这个矩阵的一部分性质.
+\end{enumerate}
+
+\textbf{第六题，附加题，共 20 分。}
+
+设实对称阵 $A=(a_{ij})\in\mathbb{R}^{n\times n}$ 满足 $a_{ij}\ge0,\ 1\le i,j\le n$. 
+设对任意 $\alpha,\beta\in(\mathbb{R}_{\ge0})^{n\times1}$, 恒有
+\[(\alpha^{\rm T}A\alpha)(\beta^{\rm T}A\beta)\le(\alpha^{\rm T}A\beta)^2.\]
+其中 $(\mathbb{R}_{\ge0})^{n\times1}$ 表示各分量都是非负实数的 $n$ 维列向量全体构成的集合.
+
+证明: $A$ 的正惯性指数不超过 $1$.
+
+\textbf{【证明】} 若 $A=0$, 其正惯性指数为 $0\le1$, 结论显然成立. 以下设 $A\neq0$.
+
+因为 $A\ge0$ 且非零, 取全 $1$ 列向量 $\gamma=(1,1,\dots,1)^{\rm T}\in\mathbb{R}^n$. 
+显然 $\gamma^{\rm T}A\gamma=\sum_{i,j}a_{ij}>0$.
+
+设 $f_A$ 是 $A$ 诱导的双线性型,
+\[W=\Span\{\gamma\}^\perp=\{\eta\in\mathbb{R}^n\mid \eta^{\rm T}A\gamma=0\}.\]
+因为 $\gamma^{\rm T}A\gamma=f_A(\gamma,\gamma)>0$, 
+$f_A$ 在 $\Span\{\gamma\}$ 上非退化, 
+故 $\mathbb{R}^n=\Span\{\gamma\}\oplus W$, 且 $\dim(W)=n-1$.
+
+任取 $\eta\in W$. 由于 $\gamma$ 的各个分量严格大于零, 
+必然存在充分大的实数 $t>0$, 使得向量 $\xi=t\gamma+\eta$ 的所有分量均非负, 
+即 $\xi\in(\mathbb{R}_{\ge0})^{n\times1}$. 
+由条件, $\gamma$ 和 $\xi$ 不满足关于 $A$ 的 Cauchy-Schwarz 不等式, 
+即 $f_A$ 在子空间 $\Span(\gamma,\eta)$ 上不正定. 
+由于 $f_A(\gamma,\eta)=0$ 且 $f_A(\gamma,\gamma)>0$, 
+我们有 $f_A(\eta,\eta)\le0$. 这说明 $f_A$ 在 $W$ 上半负定, 从而证毕.
+
+\textbf{【常见错误】}: 无视题目中的非负条件.
+
+== 26春高等代数（英才班）期中参考答案==
+
+\textbf{第一题，计算题，共 20 分，每题 5 分。$\underline{不需要写计算过程}$。}
+
+设
+\(A = \begin{pmatrix} 1 & 0 & 0 \\ 1 & 2 & 0 \\ 0 & -1 & 2 \end{pmatrix} \in \mathbb{R}^{3\times 3}\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  写出 $A$ 的特征多项式 \(f_{A}(x)\) 和极小多项式 \(p_{A}(x)\).
+\item
+  求 $A$ 的 (下三角) Jordan 标准型 $J$, 且特征值从小到大排列.
+\item
+  计算矩阵指数 (exponential) \(e^{J}\).
+\item
+  给出一个可逆矩阵 \(P \in \mathbb{R}^{3 \times 3}\) 
+  使得 \(P^{-1}AP = J\), 且 \(P\) 形如
+  \(\begin{pmatrix} * & * & *\\ -1 & 1 & *\\ * & -1 & * \end{pmatrix}\), 
+  其中 \(*\) 代表待定的复数.
+\end{enumerate}
+
+\textbf{解:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+
+\item
+  矩阵 \(A\) 为下三角矩阵, 故可直接写出其特征多项式:
+
+\[f_{A} (x) = \det (x I - A) = (x - 1) (x - 2)^{2}.\]
+
+故其极小多项式只能是 \((x-1)(x-2)^{2}\) 或 \((x-1)(x-2)\). 
+通过计算 \((A-I)(A-2I)\neq0\) 或者 \(\mathrm{Nullity} (A-2I)=1<2\) 知
+
+\[p_{A} (x) = (x - 1) (x - 2)^{2}.\]
+
+\item
+  根据特征多项式和极小多项式, 特征值从小到大排列为 $1, 2, 2$。
+  由于 \(\lambda = 2\) 对应的极小多项式因子次数为 $2$, 
+  故其对应一个 $2$ 阶的 Jordan 块。
+
+\[J = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 1 & 2 \end{pmatrix}\]
+
+\item
+  将 \(J\) 写成对角阵与幂零阵之和: \(J = D + N\), 其中
+  \[D = \operatorname{diag}(1, 2, 2), \quad 
+  N = \begin{pmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 1 & 0 \end{pmatrix}.\]
+  易见 \(D\) 与 \(N\) 可交换, 且 \(N^2 = 0\)。故
+\[e^{J} = e^{D} e^{N} = \mathrm{diag} (e, e^{2}, e^{2}) \cdot (I + N) 
+= \begin{pmatrix} e & 0 & 0 \\ 0 & e^{2} & 0 \\ 0 & e^{2} & e^{2} \end{pmatrix}.\]
+
+\item
+  由 \(AP = PJ\)，将 \(P\) 按列分块为 \(P = (p_1, p_2, p_3)\)，得到
+
+\[A p_{1} = p_{1}, \quad A p_{3} = 2 p_{3}, \quad A p_{2} = 2 p_{2} + p_{3}.\]
+
+即 \(p_1\) 是 \(\lambda = 1\) 的特征向量， \(p_3\) 是 \(\lambda = 2\)
+的特征向量， \(p_2\) 是满足 \((A - 2I)p_2 = p_3\) 的广义特征向量。
+
+由 \((A-I)p_{1}=0\) 解得 \(p_1=t(-1,1,1)^{\mathrm{T}}\)。
+要让 \(P\) 的第二行第一列为$-1$，即 \(p_1\) 的第二分量为$-1$，
+取 \(t=-1\)，得\(p_1=(1,-1,-1)^{\mathrm{T}}\)。
+由 \((A-2I)p_{3}=0\) 解得 \(p_3=(0,0,c)^{\mathrm{T}}\)。
+再由 \((A-2I)p_{2}=p_{3}\) 解得\(p_2=(0,-c,s)^{\mathrm{T}}\)。
+为满足 \(P\) 形式（第二列第二行为$1$、第三行为$-1$)，
+需 \(p_2\) 的第二分量为$1$，第三分量为$-1$，故取 \(c=-1,s=-1\)，
+此时 \(p_3=(0,0,-1)^{\mathrm{T}},p_2=(0,1,-1)^{\mathrm{T}}\)。
+
+由此得到
+\[P = \begin{pmatrix} 1 & 0 & 0 \\ - 1 & 1 & 0 \\ - 1 & - 1 & - 1 \end{pmatrix}.\]
+这是唯一满足题目要求的 $P$.
+\end{enumerate}
+
+\textbf{第二题，快速判断题，共 20 分。判断下列命题的真假，在对应的方格内画圈(○)。}
+$\underline{\textbf{答对得 2 分，答错倒扣 1 分，扣完为止。}}$
+
+以下若未做特殊说明, 均假设 \(V\) 是有限维复内积空间, \(T\) 是 \(V\) 上任给的线性算子, 
+\(A, B \in \mathbb{C}^{n \times n}\) 为任给的 \(n\) 阶复方阵.
+
+\begin{center}\begin{tabular}{lcc}
+命题 & \,真 & \,假 \\
+(示例)在自然数中$0 \neq 1$ & $\bigcirc$ & \\
+若$A$相似于 $\bar{A}$,则$A$的特征值都是实数. ($\bar{A}$表示将$A$中的元都取复数的共轭得到的矩阵.) & & \\
+若$A,B,AB$都是正规阵,则$AB=BA$. & & \\
+若$A$的有理标准型与Jordan标准型相同,则$A^{n}=0$. & & \\
+若$A,B \in \mathbb{C}^{4\times4}$有相同的特征多项式及相同的极小多项式,则它们相似. & & \\
+若$T$的所有特征值均为实数,则$T$是自伴算子. & & \\
+若$A$是正规阵且$A^{2026}=I_{n}$,则$A$是酉阵. & & \\
+若$T$是正规算子且$T^{2}=I$,则$T$是正交投影. & & \\
+$\text{Im}(T)$与 $\text{Ker}(T^*)$互为正交补. & & \\
+若$W$是$T$不变子空间,则$W^{ \perp}$也是$T$不变子空间. & & \\
+存在$V$的一组规范正交基 $\mathcal{B}$使得${[}T{]}_{ \mathcal{B}}$是有理标准型. & & 
+\end{tabular}\end{center}
+
+\textbf{解:}
+
+\begin{enumerate}
+\item
+  假 (F)。反例：找一个相似于
+  \(\begin{pmatrix} i & 0 \\ 0 & -i \end{pmatrix}\) 的实阵即可，
+  例如 \(A = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}\) 
+  满足 \(A = \bar{A}\)，相似于自身，但特征值为 \(\pm i\)。
+\item
+  假 (F)。反例: 酉矩阵是正规阵, 取非交换的酉矩阵
+  \(A = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}\) 和
+  \(B = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}\)，
+  其乘积仍为酉阵（正规阵），但 \(AB \neq BA\)（一个代表反射一个代表旋转 $90$ 度）。
+\item
+  假 (F)。反例: \(1 \times 1\) 矩阵 \(A = (1)\) 的两种标准型均为自身, 
+  但 \(A^n \neq 0\)。或者更一般地, \(A = aI_n\) 的两种标准型一样.
+\item
+  假 (F)。令特征值全为 $0$。设矩阵 $A$ 由两个 \(2 \times 2\) 的 Jordan 块组成，
+  而矩阵 \(B\) 由一个 \(2 \times 2\) 的 Jordan 块和两个 \(1 \times 1\) 的 Jordan 块组成：
+
+\[A = \begin{pmatrix} 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 \end{pmatrix}\]
+
+\[B = \begin{pmatrix} 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix}.\]
+
+特征多项式都是 \(x^{4}\)，极小多项式都是 \(x^{2}\)。
+但不相似 (Jordan 标准型唯一性/有理标准型唯一性/秩不同).
+\item
+  假 (F)。反例: \(A = \begin{pmatrix} 1 & 1 \\ 0 & 2 \end{pmatrix}\)
+  特征值为 $1, 2$ (实数), 但非对称矩阵, 不是自伴的 (关于标准内积).
+  也可以考虑 \(A = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}\).
+  由于它不可对角化, 因此关于任何内积都不是自伴的.
+\item
+  真 (T)。正规阵可酉对角化, \(A^{2026} = I_{n}\) 推出其所有特征值的模为 $1$, 故为酉阵.
+\item
+  假 (F)。反例: \(T = -I\) 是满足条件的正规算子,
+  但正交投影的特征值只能是 $0$ 或 $1$ (需满足 \(T^2 = T\))。
+\item
+  真 (T)。内积空间基本定理，
+  \(x \in \mathrm{Ker}(T^{*}) \iff \langle T^{*}x, y \rangle = 0 \iff \langle x, Ty \rangle = 0 \iff x \perp \mathrm{Im}(T)\)。
+\item
+  假 (F)。当 $T$ 是正规算子等特定情况下成立。反例：
+  \(T = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}\)，
+  取 \(W = \operatorname{Span}\{\epsilon_{1}\}\)，
+  其正交补 \(\epsilon_{2}\) 并非不变子空间。
+\item
+  假 (F)。设 \(V = \R^{2}\) 带有标准内积。
+  设线性算子 $T$ 在标准规范正交基下的表示矩阵为：
+
+反例一:
+
+\[A = \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}\]
+
+矩阵 $A$ 的极小多项式为 \(x^{2}-x\)。由此可以直接写出它的有理标准型（即伴随矩阵）$C$:
+
+\[C = \begin{pmatrix} 0 & 0 \\ 1 & 1 \end{pmatrix}.\]
+
+酉相似变换将 Hermite 阵变为 Hermite 阵, \(A\) 是 Hermite 阵, 
+但 \(C\) 显然不是 Hermite 阵.
+
+反例二:
+
+\[A = \begin{pmatrix} 0 & 2 \\ 0 & 0 \end{pmatrix}.\]
+
+其极小多项式为 \(x^{2}\)。由极小多项式可以直接写出其对应的伴随矩阵（即有理标准型）$C$:
+
+\[C = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}.\]
+
+$A$ 将某个单位向量送到模长为 $2$ 的向量, 这一性质在酉相似下不变, 
+但 $C$ 显然不满足这个性质.
+
+反例三 (用矩阵范数): 仍然考虑反例二中的 \(A, C\). 
+对于任意矩阵 \(M\), 其 Frobenius 范数的平方定义为 
+\(\|M\|_F^2 = \mathrm{tr}(M^* M)\), 
+它表示矩阵所有元素的模长平方和。酉相似变换保持 Frobenius范数不变。
+我们分别计算 \(A\) 和 \(C\) 的 Frobenius 范数平方: 
+对于 \(A\): \[\|A\|_F^2 = 0^2 + 2^2 + 0^2 + 0^2 = 4,\]
+对于 \(C\): \[\|C\|_F^2 = 0^2 + 0^2 + 1^2 + 0^2 = 1.\]
+由于 \(4 \neq 1\), 矩阵 \(A\) 与 \(C\) 的 Frobenius 范数不同, 故它们不酉相似.
+\end{enumerate}
+
+\textbf{第三题，共 20 分。}设 \(V = \R^{2 \times 1}\)，
+定义其上的内积 \(\langle -, - \rangle\) 为：
+
+\[\left\langle \left(u_ {1}, u_{2}\right)^{\mathsf {T}}, \left(v_{1}, v_{2}\right)^{\mathsf {T}} \right\rangle := 2u_{1}v_{1} + u_{2}v_{2}.\]
+
+设线性算子 \(T: V \to V\) 在标准基
+\(\{\epsilon_1 = (1,0)^{\mathsf {T}}, \epsilon_2 = (0,1)^{\mathsf {T}}\}\)
+下的表示矩阵为：
+
+\[
+A = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  使用 Gram-Schmidt 正交化过程, 将标准基 \(\{\epsilon_1, \epsilon_2\}\)
+  转化为关于内积 \(\langle -, - \rangle\) 的规范正交基
+  \(\{\alpha_1, \alpha_2\}\) .
+\item
+  求 \(T\) 关于该内积 \(\langle -, - \rangle\) 的伴随算子 \(T^{*}\)
+  在标准基 \(\{\epsilon_1, \epsilon_2\}\) 下的表示矩阵.
+\end{enumerate}
+
+\textbf{解:}
+
+\begin{enumerate}
+
+\item
+  使用 Gram-Schmidt 正交化过程求规范正交基对于标准基
+  \(\epsilon_{1} = (1,0)^{\rm T}, \epsilon_{2} = (0,1)^{\rm T}\)：
+  
+  首先计算 \(\epsilon_{1}\) 的模长：
+  \[\|\epsilon_{1}\|^{2} = \langle\epsilon_{1},\epsilon_{1}\rangle = 2(1)(1)+0=2.\]
+  归一化得到第一组基：
+
+\[\alpha_{1} = \frac{1}{\sqrt{2}} \epsilon_{1} = \binom{\frac {1}{\sqrt {2}}}{0}\]
+
+对于 \(\epsilon_{2}\)，计算其在 \(\alpha_{1}\) 上的投影：
+
+\[\langle \epsilon_{2}, \alpha_{1} \rangle = 2(0)\left(\frac{1}{\sqrt{2}}\right) + 1(0) = 0.\]
+
+可见 \(\epsilon_{2}\) 已经与 \(\alpha_{1}\) 正交。
+
+又 \(\|\epsilon_{2}\|^{2} = 0 + 1(1) = 1\)，故已归一化。因此，规范正交基为：
+
+\[\alpha_{1} = \binom{\frac{1}{\sqrt{2}}}{0}, \quad \alpha_{2} = \binom{0}{1}\]
+
+\item
+  做法一：令
+
+\[G = \begin{pmatrix} \langle \epsilon_{1}, \epsilon_{1} \rangle & \langle \epsilon_ {1}, \epsilon_ {2} \rangle \\ \\
+\langle \epsilon_{2}, \epsilon_{1} \rangle & \langle \epsilon_{2}, \epsilon_{2} \rangle \end{pmatrix} 
+= \begin{pmatrix} 2 & 0 \\ \\ 0 & 1 \end{pmatrix},\]
+
+则 \(B := [T^{*}]_{\{\epsilon_1, \epsilon_2\}}\) 需要满足
+\[Y^{\mathrm{T}}GAX = (BY)^{\mathrm{T}}GX\]
+对任意 \(X, Y \in \mathbb{R}^{2 \times 1}\) 成立. 
+即 \(GA = B^{T}G\)，或等价地 \(B = G^{-1}A^{T}G\)。
+
+\[B = \begin{pmatrix} \frac{1}{2} & 0 \\ 0 & 1 \end{pmatrix} 
+\begin{pmatrix} 1 & 0 \\ 1 & 1 \end{pmatrix} 
+\begin{pmatrix} 2 & 0 \\ 0 & 1 \end{pmatrix}  
+=  \begin{pmatrix} \frac{1}{2} & 0 \\ 0 & 1 \end{pmatrix} 
+\begin{pmatrix} 2 & 0 \\ 2 & 1 \end{pmatrix} 
+= \begin{pmatrix} 1 & 0 \\ 2 & 1 \end{pmatrix}\]
+
+故 \(T^{*}\) 在标准基下的表示矩阵为
+\(\begin{pmatrix} 1 & 0 \\ 2 & 1 \end{pmatrix}\)。
+
+做法二：先计算
+\begin{align*}
+    \langle \epsilon_1,\epsilon_1\rangle & = 2(1)(1) + 0 = 2,\\
+    \langle \epsilon_1,\epsilon_2\rangle 
+    = \langle \epsilon_2,\epsilon_1\rangle & = 2(1)(0) + 0(1) = 0,\\
+    \langle \epsilon_2,\epsilon_2\rangle & = 2(0)(0) + 1(1) = 1.
+\end{align*}
+
+设伴随算子 \(T^{*}\) 的表示矩阵为
+\(\begin{pmatrix} a & b \\ c & d \end{pmatrix}\)。
+
+根据伴随算子的定义，对任意向量 \(\alpha, \beta \in V\)，都满足：
+
+\[\langle \alpha, T ^ {*} (\beta) \rangle = \langle T (\alpha), \beta \rangle\]
+
+于是
+\begin{align*}
+左边 & = \langle \epsilon_1, T^*(\epsilon_1) \rangle = \langle (1,0)^{\rm T}, (a,c)^{\rm T} \rangle = 2(1)(a) + 0(c) = 2a\\
+右边 & = \langle T(\epsilon_1), \epsilon_1 \rangle = \langle \epsilon_1, \epsilon_1 \rangle = 2
+\end{align*}
+因此： \(2a = 2 \implies a = 1\)。类似地可以得到所有 \(a, b, c, d\).
+\end{enumerate}
+
+\textbf{第四题，共 20 分。}设 $V$ 是有限维实线性空间，$T$ 是 $V$ 上的线性算子，
+其特征多项式为 \(f_{T}(x) = (x^{2} + 1)^{2}(x^{2} + 2)\)，
+极小多项式为 \(p_{T}(x) = (x^{2} + 1)(x^{2} + 2)\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  写出 $T$ 的有理标准型 (不需要过程).
+\item
+  证明: 存在 \(V\) 的一组有序基 \(\mathcal{B}\) 
+  使得 \([T]_{\mathcal{B}}\) 是一个有如下分块形式的正规矩阵:
+
+\[[T]_ {\mathcal {B}} = \begin{pmatrix} B_{1} & & \\ \\ & B_{2} & \\ \\ & & B_{3} \end{pmatrix},\]
+
+其中 \(B_{1}, B_{2}, B_{3} \in \mathbb{R}^{2 \times 2}\). 
+并求出这样的一组 \(B_{1}, B_{2}, B_{3}\).
+
+\item
+  证明存在 \(V\) 上的 (实) 内积 \(\langle -, - \rangle\), 使得 \(T\) 为正规算子.
+\end{enumerate}
+
+\textbf{解:}
+
+\begin{enumerate}
+\item
+  该映射的不变因子必须后一个整除前一些, 
+  且它们的积为 \(f_{T}\), 最大不变因子为 \(p_{T}\)。
+  因此不变因子为 \(d_{1}(x) = x^{2} + 1\) 和 \(d_{2}(x) = x^{4} + 3x^{2} + 2\)。
+  有理标准型为由这两个不变因子对应的友阵 (companion matrix) 构成的分块对角阵:
+
+\[\begin{pmatrix} 0 & - 1 & & & \\ 1 & 0 & & & \\ \\ 
+& & 0 & 0 & 0 & - 2 \\ & & 1 & 0 & 0 & 0 \\ 
+& & 0 & 1 & 0 & - 3 \\ & & 0 & 0 & 1 & 0 \end{pmatrix}\]
+
+\item
+  $T$ 是可对角化的, 特征值为
+
+\[i, -i, i, -i, \sqrt{2}, -\sqrt{2}.\]
+
+故令
+
+\[B_{1} = B_{2} = \begin{pmatrix} 0 & - 1 \\ \\ 1 & 0 \end{pmatrix}, 
+\quad B_{3} = \begin{pmatrix} 0 & - \sqrt {2} \\ \\ \sqrt {2} & 0 \end{pmatrix}\]
+
+\[B = \begin{pmatrix} B_{1} & & \\ \\ & B_{2} & \\ \\ & & B_{3} \end{pmatrix}.\]
+
+则 \(B_{1}, B_{2}, B_{3}\) 正规, 故 \(B\) 正规. 
+设 \(A\) 是 \(T\)在某一组任取的基下的矩阵, 
+有多种办法证明 \(A\) 与 \(B\) (在实数域上) 相似.
+
+\begin{enumerate}
+\item
+  $A$ 与 $B$ 都可以对角化, 它们在复数域上的特征值 (计重数) 相同.
+  因此它们在复数域上相似. 由有理标准型的存在唯一性,
+  在复数域上相似可以推出它们在实数域上相似.
+\item
+  \(\operatorname{diag}(B_2, B_3)\) 的极小多项式等于特征多项式 \((x^2 + 1)(x^2 + 2)\), 
+  故存在循环向量, 故相似于这个多项式的友阵
+
+\[\begin{pmatrix} 0 & 0 & 0 & - 2 \\ 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & - 3 \\ 0 & 0 & 1 & 0 \end{pmatrix}.\]
+
+\item
+  计算 \(xI_{6} - A\) 与 \(xI_{6} - B\) 的行列式因子可知它们相似.
+  或者更直接地, 注意到 \(xI_{2} - B_{1}\) 相抵于
+  \(\begin{pmatrix}1 & \\ & x^{2} + 1 \end{pmatrix}\), 
+  \(xI_{2} - B_{2}\) 相抵于
+  \(\begin{pmatrix}1 & \\ & x^{2} + 1 \end{pmatrix}\), 
+  \(xI_{2} - B_{3}\) 相抵于
+  \(\begin{pmatrix}1 & \\ & x^{2} + 2 \end{pmatrix}\).
+  故 \(xI_{6} - B\) 相抵于
+  \(\operatorname{diag}(1, 1, 1, 1, x^{2} + 1, x^{2} + 1, x^{2} + 2)\).
+  而类似地, \(xI_{6} - A\) 相抵于
+  \(\operatorname{diag}(1, x^{2} + 1, 1, 1, 1, 1, (x^{2} + 1)(x^{2} + 2))\).
+ 故它们的行列式因子相同. 故有理标准型相同.
+  \end{enumerate}
+
+现在证明了 $A$ 与 $B$ 在实数域上相似, 故存在一组基 $\mathcal{B}$ 使得 \([T]_{\mathcal{B}} = B\).
+
+\def\labelenumi{\arabic{enumi}.}
+\item
+  令 \(\mathcal{B}\) 在新定义的内积 \(\langle -, - \rangle\) 下直接作为规范正交基。
+  则 \(T\) 关于此内积是正规算子当且仅当 \([T]_{\mathcal{B}}\) 是正规阵.
+\end{enumerate}
+
+\textbf{第五题，共 20 分。}设 \(A \in \mathbb{C}^{n \times n}\) 是正定阵.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  若 \(H \in \mathbb{C}^{n \times n}\) 是正定阵, 证明 $AHAHA$ 也是正定阵.
+\item
+  证明 \(H \mapsto AHAHA\) 定义了 \(n\) 阶正定阵全体构成的集合到自身的一个双射.
+\end{enumerate}
+
+\textbf{解:}
+
+\begin{enumerate}
+\item
+  首先, 证明 $AHAHA$ 是 Hermite 矩阵。因为 \(A\) 和 \(H\) 均为正定阵,
+  所以它们都是 Hermite 矩阵 (即 \(A^{*} = A\), \(H^{*} = H\))。
+  对 $AHAHA$ 取共轭转置:
+
+\[(A H A H A) ^ {*} = A ^ {*} H ^ {*} A ^ {*} H ^ {*} A ^ {*} = A H A H A\]
+
+因此，$AHAHA$ 是 Hermite 矩阵。
+对于任意非零列向量 \(v \in \mathbb{C}^{n}\) \((v \neq 0)\)，考察其二次型：
+
+\[v ^ {*} (A H A H A) v = v ^ {*} A H A H A v = (H A v) ^ {*} A (H A v)\]
+
+因为 $A$ 是正定阵，故 $A$ 可逆。由于 \(v \neq 0\)，则 \(Av \neq 0\)。
+同理，$H$ 是正定阵，故 $H$ 也可逆。由于 \(Av \neq 0\)，则 $HAv$ \(\neq 0\)。
+令非零列向量 $y = HAv$，则原式可写为：
+
+\[v ^ {*} (A H A H A) v = y ^ {*} A y\]
+
+由于 $A$ 是正定阵，且 \(y \neq 0\)，根据正定阵的定义恒有 \(y^{*}Ay > 0\)。
+综上所述，$AHAHA$ 是 Hermite 矩阵且二次型恒正，故 $AHAHA$ 也是正定阵。
+
+\item
+  我们需要证明映射 \(f: P_n \to P_n, f(H) = AHAHA\) 是双射。
+  由于 \(A\) 是正定阵，根据正定阵的性质，存在唯一的正定平方根矩阵 \(A^{1/2} \in P_n\)。
+  我们可以将映射 \(f\)拆解为三个独立的映射的复合：
+  映射 \(\varphi(M) = A^{1/2}MA^{1/2}\)：这是一个合同变换。
+  由于 \(A^{1/2}\) 是可逆的 Hermite 阵，
+  若 \(M \in P_n\)，则 \(A^{1/2}MA^{1/2} \in P_n\)。
+  显然其逆映射为 \(\varphi^{-1}(N) = A^{-1/2}NA^{-1/2}\)，
+  因此 \(\varphi\) 是 \(P_n\) 到 \(P_n\) 的双射。
+  映射 \(\psi(M) = M^2\)：根据正定矩阵的谱定理，任何正定阵都有唯一的正定平方根。
+  这意味着对于任意 \(N \in P_n\)，存在唯一的 \(M \in P_n\) 使得 \(M^{2}=N\)。
+  因此平方映射 \(\psi\) 也是 \(P_{n}\) 到 \(P_{n}\) 的双射。
+  现在我们考察这三个双射的复合 \(\varphi\circ\psi\circ\varphi\) 作用在 $H$ 上：
+
+\begin{align*}
+    (\varphi \circ \psi \circ \varphi) (H) 
+    & = \varphi (\psi (\varphi (H))) 
+    = \varphi (\psi (A^{1/2} H A^{1/2})) 
+    = \varphi ((A^{1/2} H A^{1/2})^{2}) \\
+    & = \varphi (A^{1/2} H A^{1/2} \cdot A^{1/2} H A^{1/2}) 
+    = \varphi (A^{1/2} H A H A^{1/2}) \\
+    & = A^{1/2} (A^{1/2} H A H A^{1/2}) A^{1/2} 
+    = A H A H A = f (H)
+\end{align*}
+
+因此 \(f = \varphi \circ \psi \circ \varphi\)
+是三个可逆映射的复合，故而是双射。证明完毕。
+
+\(H \mapsto HAH\) 是单射的另一证法. 设
+\(H_{1}AH_{1} = H_{2}AH_{2}\), \(H_{1}, H_{2}\) 正定, 考察
+\(B = H_{1}H_{2}^{-1}\). 由 \(H_{2}\) 正定, \(H_{2}^{-1}\) 也正定. 
+由于 \(B\) 是两个正定阵的乘积, 由习题, \(B\) 的特征值都是正实数,
+且可以对角化. 设 \(BX = \lambda X, X\) 是个非零特征向量, 则
+\(X^{*}B^{*} = \bar{\lambda}X^{*}\). 由于 \(A = B^{*}AB\) 两边左乘
+\(X^{*}\) 再右乘 \(X\) 得, \(|\lambda|^{2}X^{*}AX = X^{*}AX\). 由于
+\(A\) 正定 \(X^{*}AX > 0\), 故 \(\lambda = 1\). 所以 \(B\) 是单位阵.
+这个证法的原理是, 左乘 \(B\) 所定义的算子关于内积
+\(\langle X, Y \rangle = Y^{*}AX\) 是酉算子.
+\end{enumerate}
+
+\textbf{第六题，共20分。}设 \(A \in \mathbb{C}^{n \times n}\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  若 $A$ 是正规阵, 证明 $A$ 的所有特征值的实部构成的集合 (记重数) 
+  与 \(\frac{1}{2}(A + A^{*})\) 的所有特征值构成的集合 (记重数) 相同.
+\item
+  反之, 若 $A$ 的所有特征值的实部构成的集合 (记重数) 
+  与 \(\frac{1}{2}(A+A^{*})\) 的所有特征值构成的集合 (记重数) 相同, 
+  证明 $A$ 是正规阵.
+\end{enumerate}
+
+\textbf{解:}
+
+\begin{enumerate}
+\item
+  若 \(A\) 是正规阵，则 \(A\) 可以通过酉矩阵对角化。
+  存在酉阵 \(U\) 使得 \(A = UDU^{*}\)，
+  其中 \(D = \mathrm{diag}(\lambda_1, \ldots, \lambda_n)\) 
+  且 \(\lambda_j\) 为 \(A\) 的特征值。于是 \(A^{*} = U\bar{D}U^{*}\)。我们有：
+
+\[\frac {1}{2} (A + A ^ {*}) = \frac {1}{2} (U D U ^ {*} + U \bar {D} U ^ {*}) 
+= U \left(\frac {D + \bar {D}}{2}\right) U ^ {*}\]
+
+由于 $U$ 是酉阵，矩阵 \(\frac{D+\bar{D}}{2}\) 是对角阵，故其对角线元素
+\(\frac{\lambda_{j}+\bar{\lambda}_{j}}{2} = \operatorname{Re}(\lambda_{j})\)
+正是 \(\frac{1}{2}(A+A^{*})\) 的特征值（记重数）。它们正是 $A$ 的特征值的实部。
+
+常见错误: 不用对角化, 只能证明有相同的特征值 (没有证明重数).
+
+\item
+  由 Schur 上三角化定理可得, 存在酉阵 \(U\) 使得 \(A = UDU^{*}\), 
+  其中 \(D\) 为上三角阵. 矩阵 \(D\) 的对角线元素即为 \(A\) 的特征值
+  \(d_{jj} = \lambda_{j}\) ( \(j = 1, \ldots, n\) ). 
+  记 \(H = \frac{1}{2}(D + D^{*})\), 则 \(H\) 是 Hermite 阵, 其对角线元素为
+  \(h_{jj} = \frac{1}{2}\big(d_{jj} + \overline{d_{jj}}\big) = \operatorname{Re}(\lambda_{j})\).
+ 当 \(i < j\) 时, 有 \(h_{ij} = \frac{1}{2} d_{ij}\) 且
+  \(h_{ji} = \overline{h_{ij}}\). 由于 \(H\) 与
+  \(\frac{1}{2}(A + A^{*})\) 酉相似, \(H\) 的特征值恰为
+  \(\operatorname{Re}(\lambda_1), \ldots, \operatorname{Re}(\lambda_n)\).
+ 针对证明 \(d_{ij} = 0\) 这一关键步骤, 以下给出两种严格的证明方法.
+
+\textbf{证明方法一: 利用迹与对角化的性质}\ 
+因为 \(H\) 是 Hermite 阵, 故 \(H\) 可酉对角化. 存在酉阵 \(V\) 使得
+
+\[H = V \Lambda V^{*}\]
+
+其中 \(\Lambda = \operatorname{diag}(\mu_1, \ldots, \mu_n)\) 为实对角阵，
+且 \(\mu_1, \ldots, \mu_n\) 为 \(H\) 的特征值。
+根据题设，集合 \(\{\mu_1, \ldots, \mu_n\}\) 恰为
+\(\{\operatorname{Re}(\lambda_1), \ldots, \operatorname{Re}(\lambda_n)\}\)。
+考虑矩阵 \(H^{2}\) 的迹. 利用迹的循环性质 
+\(\operatorname{tr}(XY)=\operatorname{tr}(YX)\), 有:
+
+\[\operatorname{tr} \left(H^{2}\right) 
+= \operatorname{tr} \left(V \Lambda V^{*} V \Lambda V^{*}\right) 
+= \operatorname{tr} \left(V \Lambda^{2} V^{*}\right) 
+= \operatorname{tr} \left(\Lambda^{2} V^{*} V\right) 
+= \operatorname{tr} \left(\Lambda^{2}\right)\]
+
+由此得到:
+
+\[\operatorname{tr} (H^{2}) = \sum_{j=1}^{n} \mu_{j}^{2} 
+= \sum_{j=1}^{n} (\operatorname{Re} (\lambda_{j}))^{2}\]
+
+另一方面, 直接利用 $H$ 的矩阵元计算 \(\mathrm{tr}(H^{2})\). 
+由于 $H$ 是 Hermite 阵 \((H = H^{*})\), \(H^{2} = HH^{*}\), 
+故其迹 (即 Frobenius 范数的平方) 等于 $H$ 的所有元素的模长平方和:
+
+\[\operatorname{tr} (H^{2}) = \sum_{i=1}^{n} \sum_{j=1}^{n} h_{i j} h_{j i} 
+= \sum_{i=1}^{n} \sum_{j=1}^{n}|h_{i j}|^{2}\]
+
+将该和式拆分为对角线元素与非对角线元素:
+
+\[\operatorname{tr} \left(H^{2}\right) = \sum_{j=1}^{n} h_{j j}^{2} 
++ 2 \sum_{1 \leqslant i < j \leqslant n} |h_{i j}|^{2}\]
+
+代入 \(h_{jj} = \mathrm{Re}(\lambda_j)\)，可得:
+
+\[\operatorname{tr} (H^{2}) = \sum_{j=1}^{n} (\operatorname{Re} (\lambda_{j}))^{2} 
++ 2 \sum_{1 \leqslant i < j \leqslant n} |h_{i j}|^{2}\]
+
+对比上述两个关于 \(\mathrm{tr}(H^{2})\) 的等式, 必然有:
+
+\[2 \sum_ {1 \leqslant i < j \leqslant n} |h_{i j}|^{2} = 0\]
+
+因此对所有 $i \leqslant j$，均有 \(h_{ij} = 0\)。
+由于当 $i \leqslant j$ 时 \(h_{ij} = \frac{1}{2} d_{ij}\)，推得 \(d_{ij} = 0\)。
+这表明上三角阵 $D$ 的非对角线元素全为零，即 $D$ 是对角阵。
+因为 $A$ 酉相似于对角阵 $D$，所以 $A$ 是正规阵。
+
+\textbf{证明方法二：利用特征多项式与主子式}\ 
+考虑矩阵 $H$ 的特征多项式 \(P_{H}(x) = \det(xI - H)\). 
+已知 $H$ 的特征值恰为\(\operatorname{Re}(\lambda_{1}), \ldots, \operatorname{Re}(\lambda_{n})\)，
+则特征多项式可因式分解为:
+
+\[P_{H} (x) = \prod_{j=1}^{n} (x - \operatorname{Re} (\lambda_{j}))\]
+
+展开该多项式, 其中 \(x^{n-2}\) 的系数 (记为 \(c_{n-2}\)) 由根与系数的关系给出:
+
+\[c_{n-2} = (- 1)^{n-2} \sum_{1 \leqslant i < j \leqslant n} \operatorname{Re} (\lambda_{i}) \operatorname{Re} (\lambda_{j})\]
+
+另一方面, 根据线性代数中特征多项式的系数性质, 
+多项式 \(\det(xI-H)\) 中\(x^{n-2}\) 的系数等于 \((-1)^{n-2}\) 
+乘以 $H$ 的所有 \(2 \times 2\)主子式之和. 
+矩阵 $H$ 中由第 $i$ 行、第 $j$ 行 ($i \leqslant j$)
+及相应的列构成的 \(2 \times 2\) 主子式为:
+
+\[\Delta_{i j} = \det \begin{pmatrix} h_{i i} & h_{i j} \\ h_{j i} & h_{j j} \end{pmatrix} 
+= h_{i i} h_{j j} - h_{i j} h_{j i}\]
+
+由于 $H$ 为 Hermite 阵, \(h_{ji} = \overline{h_{ij}}\), 且
+\(h_{ii} = \operatorname{Re}(\lambda_i), h_{jj} = \operatorname{Re}(\lambda_j)\),
+ 故:
+
+\[\Delta_{i j} = \operatorname{Re} (\lambda_{i}) \operatorname{Re} (\lambda_{j}) - |h_{i j}|^{2}\]
+
+将所有 \(2 \times 2\) 主子式求和, 可得:
+
+\[c_{n-2} = (-1)^{n-2} \sum_{1 \leqslant i < j \leqslant n} \Delta_{i j} 
+= (-1)^{n-2} \left(\sum_{1 \leqslant i < j \leqslant n} \operatorname{Re} (\lambda_ {i}) \mathrm{Re} (\lambda_ {j}) - \sum_ {1 \leqslant i < j \leqslant n} | h_{i j} | ^ {2}\right)\]
+
+比较 \(c_{n-2}\) 的两个表达式, 即可消去交叉项
+\(\sum\operatorname{Re}(\lambda_{i})\operatorname{Re}(\lambda_{j})\), 得到:
+
+\[\sum_{1 \leqslant i < j \leqslant n} |h_{i j}|^{2} = 0\]
+
+这蕴含着对于任意 $i \leqslant j$，均有 \(h_{ij} = 0\)。
+再由 \(h_{ij} = \frac{1}{2}d_{ij}\) 得出 \(d_{ij} = 0\)。
+同理，$D$ 是对角阵，$A$ 酉相似于对角阵，故 $A$ 是正规阵。证明完毕。
+
+证明: 我们来证明原题的几何版本: 设 $V$ 是有限维复内积空间, 
+$T$ 是 $V$ 上的算子, 且 $T$ 的特征值的实部构成的集合 (以下均考虑重数) 与
+\(\frac{1}{2}(T + T^{*})\) 的特征值构成的集合一样, 则 $T$ 是正规的.
+
+我们对 \(\dim V\) 做归纳. 当 \(\dim V = 1\) 时结论显然. 
+现在假设 \(\dim V > 1\). 由于 \(\frac{1}{2}(T + T^{*})\) 是自伴的,
+我们可以找到一组 $V$ 的规范正交基 \((\alpha_{1}, \ldots, \alpha_{n})\) 使得
+\(\frac{1}{2}(T + T^{*})\alpha_{i} = \lambda_{i}\alpha_{i}, 1 \leqslant i \leqslant n\).
+ 这里不妨假设 \(\lambda_{1}, \lambda_{2}, \ldots, \lambda_{n}\)
+降序排列且 \(\lambda_{1} = \cdots = \lambda_{k} > \lambda_{k+1}\).
+由假设, 存在 $T$ 的一个非零特征向量 \(\alpha\) 
+使得 \(T\alpha = c\alpha\) 且 \(\operatorname{Re}c = \lambda_1\). 
+假设\(\displaystyle\alpha = \sum_{i=1}^{n} c_i \alpha_i\), 此时注意到
+
+\begin{align*}
+    & \langle T \alpha, \alpha \rangle + \langle T ^ {*} \alpha, \alpha \rangle 
+    = \langle T \alpha, \alpha \rangle + \langle \alpha, T \alpha \rangle \\ 
+    & = c \langle \alpha, \alpha \rangle + \bar{c} \langle \alpha, \alpha \rangle 
+    = 2 \lambda_{1} \langle \alpha, \alpha \rangle 
+    = 2 \lambda_{1} \sum_{i=1}^{n} |c_{i}|^{2}.
+\end{align*}
+
+另一方面, 我们有
+
+\[\langle T \alpha, \alpha \rangle + \langle T ^ {*} \alpha, \alpha \rangle 
+= \langle (T + T ^ {*}) \alpha, \alpha \rangle\]
+
+\[= \left\langle \sum_{i=1}^{n} 2 \lambda_{i} c_{i} \alpha_{i}, 
+\sum_{i=1}^{n} c_{i} \alpha_{i} \right\rangle 
+= \sum_ {i=1}^{n} 2 \lambda_{i} |c_{i}^{2}|.\]
+
+比较易得对任意 \(i > k\), \(c_{i} = 0\), 
+即 \(\alpha = \sum_{i=1}^{k} \alpha_{i}\) 
+是 \(\frac{1}{2}(T + T^{*})\) 关于 \(\lambda_{1}\) 的特征向量. 
+从而 \(\alpha\) 也是 \(T^{*}\) 的特征向量. 
+这说明 \(W = \operatorname{Span}(\alpha)\) 是 \(T\) 不变的及 \(T^{*}\) 不变的, 
+于是 \(W^{\perp}\) 也是是 \(T\) 不变的及 \(T^{*}\) 不变的. 
+注意到 \(T\) 的特征值构成的集合恰为 \(T|_{W^{\perp}}\)的特征值构成的集合并上 \(\{c\}\); 
+\(\frac{1}{2}(T + T^{*})\) 的特征值构成的集合恰为 
+\(\frac{1}{2}(T + T^{*})|_{W^{\perp}}\) 的特征值构成的集合并上 \(\{\lambda_{1}\}\), 
+故 \(T|_{W^{\perp}}\) 满足题目条件, 
+由归纳假设, \(T_{W^{\perp}}\) 是正规的, 从而 \(T\) 也是正规的.
+
+\textbf{证明 (利用 Rayleigh 商与数学归纳法):} 
+我们将对矩阵的阶数 \(n\) 使用数学归纳法. 
+当 \(n = 1\) 时, 矩阵仅包含单个元素, 显然是对角阵, 命题成立. 
+假设命题对于 \(n - 1\) 阶 Hermite 阵均成立. 
+下面证明其对 \(n\) 阶 Hermite 阵也成立. 
+对于 \(n\) 阶 Hermite 阵 \(H\), 设其特征值按从小到大的顺序排列为
+\(\lambda_1 \leqslant \lambda_2 \leqslant \cdots \leqslant \lambda_n\). 
+根据题意, \(H\) 的对角线元素构成的多重集与特征值多重集完全相同. 
+因此, \(H\) 的对角线元素中的最大值必然等于 \(\lambda_n\). 
+通过置换矩阵对 \(H\) 进行酉相似变换, 
+既能保持其 Hermite 性与特征值不变, 也能保持其对角线元素构成的多重集不变. 
+故不失一般性, 我们可以假设 \(H\) 的最后一个对角线元素恰为该最大值, 即 \(h_{nn} = \lambda_n\). 
+考虑 \(\mathbb{C}^n\) 空间中的第 \(n\) 个标准正交基向量 \(e_n = (0, \ldots, 0, 1)^{\rm T}\). 我们有二次型的值:
+
+\[e_{n}^{*} H e_{n} = h_{nn} = \lambda_{n}\]
+
+另一方面, 因为 \(H\) 是 Hermite 阵, 故存在酉阵 \(U\) 使得\(H = UDU^{*}\), 
+其中 \(D = \mathrm{diag}(\lambda_{1},\ldots,\lambda_{n})\). 
+令向量 \(y = U^{*}e_{n} = (y_{1},\ldots,y_{n})^{\rm T}\). 
+由于 \(U\) 是酉阵, \(y\) 的模长平方等于 \(e_{n}\) 的模长平方, 即
+\[\| y\| ^2 = y^{*}y = e_{n}^{*}UU^{*}e_{n} = e_{n}^{*}e_{n} = 1,\]
+故有 \(\displaystyle\sum_{i=1}^{n}|y_i|^2 = 1\). 
+我们将 \(H\) 代入二次型中展开可得 (此即 Rayleigh 商的上界证明原理):
+
+\[e_{n}^{*} H e_{n} = e_{n}^{*} U D U^{*} e_{n} = y^{*} D y 
+= \sum_{i=1}^{n} \lambda_ {i} |y_{i}|^{2}\]
+
+结合已知条件 \(e_n^* He_n = \lambda_n\)，我们可以建立等式：
+
+\[\sum_{i=1}^{n} \lambda_{i} |y_{i}|^{2} = \lambda_{n} 
+= \lambda_{n} \sum_{i=1}^{n} |y_{i}|^{2}\]
+
+将等式右侧移项合并, 得到:
+
+\[\sum_{i=1}^ {n-1} (\lambda_{n} - \lambda_{i}) |y_{i}|^{2} = 0\]
+
+由于 \(\lambda_{n}\) 是最大特征值, 对于所有 \(1 \leqslant i \leqslant n\), 
+均有 \(\lambda_{n} - \lambda_{i} \geq 0\). 
+因为各项都是非负实数的乘积, 其总和为零要求每一项必为零. 
+这意味着对于任何使得 \(\lambda_{i} < \lambda_{n}\) 的指标 \(i\), 
+必然有 \(y_{i} = 0\). 无论 \(\lambda_{i}\) 是否严格小于 \(\lambda_{n}\),
+上述结论都直接推导出在向量 \(y\) 上有 \(Dy = \lambda_{n}y\). 
+据此, 我们可以计算 \(H\) 作用于 \(e_{n}\) 的结果:
+
+\[H e_{n} = U D U ^ {*} e_{n} = U D y = U (\lambda_{n} y) 
+= \lambda_{n} U y = \lambda_ {n} U U ^ {*} e_{n} = \lambda_{n} e_{n}\]
+
+等式 \(He_{n} = \lambda_{n}e_{n}\) 在矩阵乘法上表明, 
+矩阵 \(H\) 的第 \(n\) 列就是向量 \((0,\dots,0,\lambda_{n})^{\rm T}\). 
+因此, 对于所有的 \(1 \leqslant i \leqslant n-1\), 均有非对角线元素 \(h_{in} = 0\). 
+又因为 \(H\) 为 Hermite 阵, 其对称位置的元素满足 \(h_{ni} = \overline{h_{in}} = 0\).
+这说明 \(H\) 具有如下的块对角形式:
+
+\[H = \begin{pmatrix} H_{n-1} & 0 \\ \\ 0 & \lambda_{n} \end{pmatrix}\]
+
+其中 \(H_{n-1}\) 是一个 $n-1$ 阶的 Hermite 主子阵. 
+显然, $H$ 的特征值多重集恰好是 \(H_{n-1}\) 的特征值多重集与 \(\{\lambda_{n}\}\) 的并集. 
+因此, \(H_{n-1}\) 的特征值多重集就是从 $H$ 的特征值多重集中移去一个 \(\lambda_{n}\) 后的剩余集合. 
+同时, \(H_{n-1}\) 的对角线元素多重集也是从 \(H\) 的对角线元素多重集中移去 \(h_{nn} = \lambda_n\) 后的剩余集合. 
+由题设条件可知, \(H_{n-1}\) 的对角线元素集合与其特征值集合必须完全相同. 
+根据归纳假设, \(n-1\) 阶 Hermite 阵 \(H_{n-1}\) 必须是对角矩阵. 
+既然 \(H_{n-1}\) 是对角矩阵, 且 \(H\) 的最后一行与最后一列的非对角块全为零, 
+那么 \(H\) 整体必然是对角矩阵. 由数学归纳法原理, 命题得证.
+\end{enumerate}

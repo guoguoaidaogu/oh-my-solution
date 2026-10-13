@@ -1,0 +1,115 @@
+\newcommand{\Q}{\mathbb{Q}}
+
+\section{纤维化与相对极小模型}
+\begin{definition}
+    设$f \colon X \to S$是代数簇间的紧合约化，且$S$是正规的，且维数满足
+    $\dim X > \dim S$，则称$f$是\bf{纤维化}.
+\end{definition}
+
+\begin{example}[Lefschetz线束]
+    设$X$是光滑射影簇，$H$是$X$上的非常丰沛除子.
+    取子线性系统$\Lambda \subset |H|$，由$H_{1}$、$H_{2}$生成
+    且$\dim \Lambda = 1$. 称$\Lambda$为\textbf{Lefschetz线束}. 
+
+    该$\Lambda$有基点，且$\operatorname{Bs}(\Lambda) \supseteq 
+    H_{1} \cap H_{2}$.
+    爆破后得纤维化$f \colon X' \to \mathbb{P}^{1}$.
+\end{example}
+
+\begin{lemma}
+    设$f \colon S \to C$为纤维化，其中$S$为光滑射影曲面，而$C$为光滑射影曲线.
+    则$f$的一般纤维的亏格不依赖于纤维的选取，并定义为$f$的亏格.
+\end{lemma}
+
+\begin{lemma}
+    设$f \colon S \to C$为曲面的纤维化，$F$是一般纤维，则
+    \begin{itemize}
+        \item[(1)] $\mathscr{O}_{F}(F) \cong \mathscr{O}_{F}$，
+        $F^{2} = 0$，且$F$是nef的；
+        \item[(2)] 若$F_{0} = \sum m_{i}\Gamma_{i}$为奇异纤维，
+        则$\forall \, i$，有$F_{0} \cdot \Gamma_{i} = 0$；
+        \item[(3)] 设$D = \sum a_{i}\Gamma_{i}$，$a_{i} \in \Q$，
+        则$D^{2} \leq 0$. 等号成立\textbf{当且仅当}$D$是$F_{0}$的有理数倍.
+    \end{itemize}
+    特别地，设$F_{0}$是可约奇异纤维，则对于$F_{0}$的任一不可约分支
+    $\Gamma$，有自交数$\Gamma^{2} < 0$，即奇异纤维的不可约分支对应的
+    相交矩阵是半负定的.
+\end{lemma}
+
+\begin{lemma}
+    设$f \colon S \to C$为曲面的纤维化. 
+    记$\Gamma_{1},\dots,\Gamma_{t}$为$f$的所有可约奇异纤维，
+    $\iota(\Gamma_{i})$为$\Gamma_{i}$的不可约分支数，
+    则$\rho(S) \geq \sum_{i=1}^{t}(\iota(\Gamma_{i})-1) + 2$.
+\end{lemma}
+
+我们称纤维化$f \colon S \to C$与$f' \colon S' \to C$双有理等价，
+是指存在双有理映射$\pi \colon S \dashrightarrow S'$使得$f' \circ \pi = f$.
+\begin{definition}
+    设$f \colon S \to C$为曲面的纤维化. 若$f$的任意纤维中不含$(-1)$-曲线，
+    则称$f$是\textbf{相对极小}的.
+\end{definition}
+
+\begin{lemma}
+    设$f \colon S \to C$为相对极小的曲面纤维化，
+    而$\Gamma \hookrightarrow F_{0}$是奇异纤维$F_{0}$中的一个不可约分支，
+    则$K_{S} \cdot \Gamma \geq 0$，且$K_{S} \cdot \Gamma = 0$
+    \textbf{当且仅当}$\Gamma$是$(-2)$-曲线.
+\end{lemma}
+
+\begin{lemma}
+    设$f \colon S \to C$是相对极小的曲面纤维化，且$\mathrm{g}(f) \geq 1$.
+    设$\Gamma$是$f$的纤维中的一个不可约分支，则$K_{S} \cdot \Gamma \geq 0$.
+\end{lemma}
+
+\begin{theorem}
+    设$f \colon S \to C$是曲面纤维化，则$f$必有相对极小模型. 
+    且若$\mathrm{g}(f) \geq 1$，则$f$的相对极小模型唯一.
+\end{theorem}
+
+\section{例外曲线}
+\begin{definition}
+    设$S$是光滑曲面. 若存在正规曲面$S'$及双有理态射
+    $\pi \colon S \to S'$以及$S$上的曲线$E$满足：
+    \begin{itemize}
+        \item[(1)] $\pi(E)$是$S'$上的一个闭点；
+        \item[(2)] $\pi|_{S\backslash E} \colon 
+        S \backslash E \to S'\backslash \pi(E)$是同构，
+    \end{itemize}
+    则称$E$为态射$\pi$的例外曲线.
+\end{definition}
+
+\begin{lemma}
+    设$S$是光滑曲面，而$S'$是正规射影曲面. 
+    若$E = \sum E_{i}$是态射$\pi \colon S \to S'$的例外曲线，
+    则相交矩阵$(E_{i} \cdot E_{j})$负定.
+\end{lemma}
+
+\begin{lemma}
+    设$S$是光滑曲面. $C_{i}$是$S$上的不可约曲线，$m_{i} \in \Z_{> 0}$.
+    设除子$F = \sum m_{i}C_{i}$，且诸$F \cdot C_{i} \leq 0$.
+    那么对于除子$D = \sum r_{i}C_{i} \neq 0$，其中$r_{i} \in \Q$，有：
+    \begin{itemize}
+        \item[(1)] $D^{2} \leq 0$. 由$D$的任意性，这即相交矩阵
+        $(C_{i} \cdot C_{j})$半负定；
+        \item[(2)] 若$F$连通，且$D^{2} = 0$，则$D$是$F$的有理数倍，且诸
+        $F \cdot C_{i} = 0$.
+    \end{itemize}
+\end{lemma}
+
+\begin{proposition}
+    若$E \hookrightarrow S$是例外曲线，则对于任意$m_{i} \geq 0$，
+    有$h^{0}(\sum m_{i}E_{i}) = 1$.
+\end{proposition}
+
+\begin{definition}
+    设$L$是$S$上的除子. 若存在$m \in \Z_{> 0}$使得$|mL|$无基点，
+    则称$L$是\textbf{半丰沛}的.
+\end{definition}
+
+\begin{theorem}
+    设$S$是光滑射影曲面，$L$是$S$上的半丰沛大除子，
+    则存在正规射影曲面$Z$与双有理态射$\pi \colon S \to Z$、正整数$m_{0}$
+    $Z$上的丰沛除子$H$，使得$m_{0}L \sim \pi^{*}H$.
+    这时，称$\pi$是$L$的半丰沛纤维化.
+\end{theorem}

@@ -1,0 +1,593 @@
+\newenvironment{solution}{\begin{proofc}[解答]}{\end{proofc}}
+
+== 习题A ==
+
+\begin{enumerate}
+    \item[1.]计算下列函数的\textbf{导数}和\textbf{二阶导数}(繁琐警告):
+    \begin{enumerate}
+        \item[(a)]$\displaystyle x\cos x + x^{2} + 3$;
+        \item[(b)]$\displaystyle \frac{x + \sin x}{\arctan x}$;
+        \item[(c)]$\displaystyle e^{2x}\sin 3x$;
+        \item[(d)]$\displaystyle \frac{1}{\sqrt{1 + x^{3}}}$;
+        \item[(e)]$\displaystyle \frac{1 + \ln^{2}x}{x\sqrt{1 - x^{2}}}$;
+        \item[(f)]$\displaystyle (x^{3} + \sin x)^{\frac{1}{2}}$;
+        \item[(g)]$\displaystyle \ln (\csc x - \cot x)$;
+        \item[(h)]$\displaystyle \ln (x + \sqrt{x^{2} + a^{2}})$.
+    \end{enumerate}
+    
+    \item[2.]对下列参数形式的函数求 $\displaystyle \frac{\mathrm{d}y}{\mathrm{d}x}, \frac{\mathrm{d}^{2}y}{\mathrm{d}x^{2}}$:
+    \begin{tabular}{l l}
+        \[
+        (a)
+        \begin{cases}
+            x=at^2&\\
+            y=bt^3.
+        \end{cases} 
+        \]
+        &
+        \[
+        (b)
+        \begin{cases}
+            x=t^2\sin{t}&\\
+            y=t^2\cos{t}.
+        \end{cases} 
+        \]
+        &
+        \[
+        (c)
+        \begin{cases}
+            x=\sqrt{1+t}&\\
+            y=\sqrt{1-t}.
+        \end{cases} 
+        \]
+        &
+        \[
+        (d)
+        \begin{cases}
+            x=\ln(1+t^2)&\\
+            y=t-\arctan{t}.
+        \end{cases} 
+        \]
+    \end{tabular}
+    \item[3.]求曲线 $\displaystyle y = \ln x$ 在 $(e,1)$ 处的切线方程与法线方程.
+    \item[4.]求椭圆 $\displaystyle \frac{x^{2}}{3} +\frac{y^{2}}{4} = 1$ 上所有切线斜率为2的点的坐标.
+    \item[5.]求曲线 $\displaystyle xy + \ln y = 1$ 在 $(1,1)$ 处的切线方程与法线方程.
+    \item[6.]试确定 $\lambda$ ,使得曲线 $\displaystyle\frac{x^{2}}{a^{2}} +\frac{y^{2}}{b^{2}} = 1$ 与 $\displaystyle xy = \lambda$ 相切,并求出切线方程.
+    \item[7.]试确定 $m$ ,使直线 $\displaystyle  y = mx$ 为曲线 $\displaystyle y = \ln x$ 的切线.
+    \item[8.]用数学归纳法证明： $\displaystyle (x^{n - 1}e^{\frac{1}{x}})^{(n)} = \frac{(-1)^{n}}{x^{n + 1}}e^{\frac{1}{x}}$.
+    \item[9.]确定常数 $a,b$ 使得函数
+    \[f(x)=
+    \begin{cases}
+        ax+b &,x>1\\
+        x^2  &,x\leq 1.
+    \end{cases}\]
+    有连续导数.
+    \item[10.]设曲线由隐式方程 $\displaystyle\sqrt[3]{x^{2}} +\sqrt[3]{y^{2}} = \sqrt[3]{a^{2}}$ ($a > 0$)给出.
+    \begin{enumerate}
+        \item[(a)]求证：曲线的切线被坐标轴所截的长度为一常数；
+        \item[(b)]写出曲线的参数式，利用参数式求导给出上一小题的另一证法.
+    \end{enumerate}
+    \begin{solution}
+        \begin{enumerate}
+        \item[(a)]
+        设切点为点 $(x_{0},y_{0})$.\\
+        对方程 $x^{\frac{2}{3}}+y^{\frac{2}{3}}=a^{\frac{2}{3}}$ 两侧关于 $x$ 进行求导得到：
+        \[
+        \displaystyle \frac{2}{3}x^{-\frac{1}{3}}+\frac{2}{3}y^{-\frac{1}{3}}y'=0
+        \]
+        从而有
+        \[
+        y'=-\frac{y^{\frac{1}{3}}}{x^{\frac{1}{3}}}.
+        \]
+        由此可得曲线 $x^{\frac{2}{3}}+y^{\frac{2}{3}}=a^{\frac{2}{3}}$ 在点 $(x_0,y_0)$ 处的切线方程为：
+        \[
+        y-y_0=-\frac{y_0^{\frac{1}{3}}}{x_0^{\frac{1}{3}}}(x-x_0).
+        \]
+        从而令 $y=0$ 得到曲线在 $x$ 轴上的截距：
+        \[
+        -y_0=-\frac{y_0^{\frac{1}{3}}}{x_0^{\frac{1}{3}}}(x-x_0).
+        \]
+        从而
+        \[
+        x=x_{0}+x_0^{\frac{1}{3}}y_0^{\frac{2}{3}}=x_0^{\frac{1}{3}}(x_0^{\frac{2}{3}}+y_0^{\frac{2}{3}})=x_0^{\frac{1}{3}}a^{\frac{2}{3}}.
+        \]
+        令 $x=0$ 得到曲线在 $y$ 轴上的截距：
+        \[
+        y-y_0=-\frac{y_0^{\frac{1}{3}}}{x_0^{\frac{1}{3}}}(-x_0).
+        \]
+        从而
+        \[
+        y=y_0+x_0^{\frac{2}{3}}y_0^{\frac{1}{3}}=y_0^{\frac{1}{3}}(x_0^{\frac{2}{3}}+y_0^{\frac{2}{3}})=y_0^{\frac{1}{3}}a^{\frac{2}{3}}.
+        \]
+        因此，曲线的切线被坐标轴所截的长度 $d$ 为：
+        \[
+        d=\sqrt{(x_0^{\frac{1}{3}}a^{\frac{2}{3}})^2+(y_0^{\frac{1}{3}}a^{\frac{2}{3}})^2}=\sqrt{a^{\frac{4}{3}}(x_0^{\frac{2}{3}}+y_0^{\frac{2}{3}})}=a.
+        \]
+        故曲线的切线被坐标轴所截的长度为一常数. 
+
+        \item[(b)]
+        曲线的参数方程为
+        \[
+        x=a\cos^3 t,\, y=a\sin^3 t.
+        \]
+        从而
+        \[
+        \frac{\mathrm{d}x}{\mathrm{d}t}=-3a\cos^2 t\sin t,\,
+        \frac{\mathrm{d}y}{\mathrm{d}t}=3a\sin^2 t\cos t.
+        \]
+        从而切线斜率为
+        \[
+        \frac{\mathrm{d}y}{\mathrm{d}x}=-\tan t.
+        \]
+        从而曲线的切线方程为：
+        \[
+        y-a\sin^3 t=-\tan t (x-a\cos^3 t).
+        \]
+        令$y=0$得到曲线在$x$轴上的截距：
+        \[
+        -a\sin^3 t=-\tan t(x-a\cos^3 t).
+        \]
+        从而
+        \[
+        x=a\cos^3 t+a\sin^3 t\cdot \tan t=a\cos t.
+        \]
+        令$x=0$得到曲线在$y$轴上的截距：
+        \[
+        y-a\sin^3 t=-\tan t(-a\cos^3 t).
+        \]
+        从而
+        \[
+        y=a\sin^3 t+\tan t\cdot a\cos^3 t=a\sin t.
+        \]
+        因此，曲线的切线被坐标轴所截的长度$d$为：
+        \[
+        d=\sqrt{(a\cos t)^2+(a\sin t)^2}=a.
+        \]
+        故曲线的切线被坐标轴所截的长度为一常数.
+        \end{enumerate}
+    \end{solution}
+
+    \item[11.]已知曳物线的参数方程为
+
+    \[\displaystyle x = a\left[\ln \left(\tan \frac{x}{2}\right) + \cos t\right],\quad y = a\sin t\quad (a > 0,0< t< \pi).\]
+
+    求证：在曳物线的任一切线上，自切点至该切线与 $x$ 轴交点之间的切线段为一定长.
+    \begin{solution}
+        曲线的参数方程为
+        \[
+        x=a\left[\ln\left(\tan{\frac{t}{2}}\right)+\cos t\right],\, y=a\sin t.
+        \]
+        从而
+        \[
+        \frac{\mathrm{d}x}{\mathrm{d}t}=a\left[\frac{1}{\tan{\frac{t}{2}}}\cdot \sec^2 \frac{t}{2}\cdot\frac{1}{2}-\sin t \right]=a\frac{\cos^2 t}{\sin t},\, \frac{\mathrm{d}y}{\mathrm{d}t}=a\cos t.
+        \]
+        从而切线斜率为
+        \[
+        \displaystyle\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{\frac{\mathrm{d}y}{\mathrm{d}t}}{\frac{\mathrm{d}x}{\mathrm{d}t}}=\tan t.
+        \]
+        因此曲线的切线方程为
+        \[
+        y-a\sin t=\tan t(x-a\left[\ln\left(\tan{\frac{t}{2}}\right)+\cos t\right]).
+        \]
+        令 $y=0$ 得到曲线在 $x$ 轴上的截距：
+        \[
+        -a\sin t=\tan t(x-a\left[\ln\left(\tan{\frac{t}{2}}\right)+\cos t\right]).
+        \]
+        从而
+        \[
+        x=a\ln\left(\tan \frac{t}{2}\right).
+        \]
+        因此切点坐标为
+        \[
+        \left(a\left[\ln\left(\tan{\frac{t}{2}}\right)+\cos t\right],a\sin t\right).
+        \]
+        切线与 $x$ 轴的交点坐标为
+        \[
+        \left(a\ln\left(\tan \frac{t}{2}\right),0\right).
+        \]
+        从而在曳物线的任一切线上，自切点至该切线与 $x$ 轴交点之间的切线段为一定长 $a$.
+    \end{solution}
+
+    \item[12.]设 $\displaystyle y = \frac{\arcsin x}{\sqrt{1 - x^{2}}}$.
+    \begin{enumerate}
+        \item[(a)]求证： $\displaystyle(1 - x^{2})y^{\prime} - xy = 1$;
+        \item[(b)]求 $y^{(n)}(0)$.
+    \end{enumerate}
+    \begin{solution}
+        \begin{enumerate}
+        \item[(a)] 
+        已知
+        \[
+        y=\frac{\arcsin{x}}{\sqrt{1-x^2}}.
+        \]
+        从而关于 $x$ 求导得到
+        \[
+        y'=\frac{\frac{1}{\sqrt{1-x^2}}\cdot \sqrt{1-x^2}-\arcsin{x}\cdot\frac{-x}{\sqrt{1-x^2}}}{1-x^2}=\frac{1+xy}{1-x^2}.
+        \]
+        因此有
+        \[
+        (1-x^2)y'-xy=1.
+        \]
+
+        \item[(b)] 
+        由 (a) 有 $(1-x^2)y'-xy=1$.
+        对其两侧关于 $x$ 求导有 $(1-x^2)y''-3xy'-y=0$.\\
+        令$x=0$，则
+        \[
+        y''(0)=y(0)=0.
+        \]
+        由数学归纳法可知，对 $(1-x^2)y''-3xy'-y=0$ 两侧不断对 $x$ 进行求导后，令 $x=0$ 可得
+        \[
+        y^{(n+1)}(0)=n^2y^{(n-1)}(0),\,\forall n\in\mathbb{N}_{+}.
+        \]
+        从而
+        \begin{enumerate}
+        \item[i.] 当$n$为偶数时，$y^{(n)}(0)=0$.
+        \item[ii.] 当$n$为奇数时，由$(a)$知$y'(0)=1$.\\
+        设$n=2k+1,\,k\in\mathbb{N}_{+}$，从而
+        \[
+        y^{(2k+1)}(0)=(2k)^2y^{(2k-1)}(0)=\cdots=2^{2k}(k!)^2\cdot 1=2^{2k}(k!)^2=2^{n-1}\left(\left(\frac{n-1}{2}\right)!\right)^2.
+        \] 
+        \end{enumerate}
+        因此
+        \[
+        y^{(n)}(0)=
+        \begin{cases}
+            0, & n \text{为偶数},\\
+            2^{n-1}\left(\left(\frac{n-1}{2}\right)!\right)^2, & n \text{为奇数}.
+        \end{cases}\]
+        \end{enumerate}
+    \end{solution}
+
+    \item[13.]求 $\displaystyle f(x) = \frac{x}{1 - x^{2}}$ 的 $n$ 阶导数.
+    \item[14.]设 $\displaystyle y = x^{n - 1}\ln x$ ，求证： $\displaystyle y^{(n)} = \frac{(n - 1)!}{x}$.
+    \item[15.]求证：双纽线 $\displaystyle r^{2} = a^{2}\cos 2\theta$ 的向径与的夹角等于极角的两倍加 $\displaystyle \frac{\pi}{2}$.
+    \begin{solution}
+        双纽线的方程为$r^2=a^2\cos 2\theta$.\\
+        对这个方程两侧关于 $\theta$ 求导可得
+        \[
+        2r\frac{\mathrm{d}r}{\mathrm{d}\theta}=-2a^2\sin{2\theta}.
+        \]
+        即
+        \[
+        \frac{\mathrm{d}r}{\mathrm{d}\theta}=-\frac{a^2\sin 2\theta}{r}.
+        \]
+        从而向径与切线的夹角 $\psi$ 满足
+        \[
+        \tan\psi=\frac{r}{\frac{\mathrm{d}r}{\mathrm{d}\theta}}=\frac{r}{-\frac{a^2\sin 2\theta}{r}}=-\frac{r^2}{a^2\sin 2\theta}=-\frac{a^2\cos{2\theta}}{a^2\sin{2\theta}}=-\cot{2\theta}=\tan(2\theta+\frac{\pi}{2}).
+        \]
+        所以
+        \[
+        \psi=2\theta+\frac{\pi}{2}+k\pi,\,k\in\mathbb{Z}.
+        \]
+        由所求的夹角的范围可知 $k=0$，即 $\psi=2\theta+\frac{\pi}{2}$.\\
+        从而双纽线的向径与切线的夹角等于极角的两倍加上 $\frac{\pi}{2}$.
+    \end{solution}
+    \item[16.]设曲线既可用参数式 $\displaystyle x=x(t),\,y=y(t)$ 表示，又可用极坐标 $r=r(\theta)$ 表示. 求证：
+    \[
+        \frac{1}{2}r^2\mathrm{d}\theta=\frac{1}{2}(x\mathrm{d}y-y\mathrm{d}x).
+    \] 
+    (提示：几何意义.)
+\end{enumerate}
+
+== 习题B ==
+
+\begin{enumerate}
+    \item[1.]试求 $\displaystyle f(g(h(x)))$ 的二阶导数.
+    \item[2.]试微分函数 $\displaystyle \log_{\nu (x)}u(x)$ (即以 $\nu (x)$ 为底的 $u(x)$ 的对数； $\nu (x) > 0)$.
+    \item[3.]为了使函数
+
+    \[\displaystyle \frac{\alpha x + \beta}{\sqrt{ax^2+2bx+c}}\]
+
+    处处具有有限的且不为零的导数，试问系数 $\displaystyle \alpha ,\beta ,a,b,c$ 必须满足怎样的条件？
+    \begin{solution}
+        首先，
+        \[
+        f(x):=\frac{\alpha x+\beta}{\sqrt{ax^2+2bx+c}}
+        \]
+        在 $\mathbb{R}$ 上有定义，从而
+        \[
+        \forall x\in\mathbb{R},\,ax^2+2bx+c>0.
+        \]
+        即
+        \[
+        a>0,\,\Delta=4b^2-4ac<0\Rightarrow b^2<ac.
+        \]
+        然后，考虑其导数存在且不为零.\\
+        \[
+        f'(x)=\frac{\alpha\sqrt{ax^2+2bx+c}-(\alpha x+\beta)\cdot\frac{ax+b}{\sqrt{ax^2+2bx+c}}}{ax^2+2bx+c}
+        =\frac{(\alpha b-\beta a)x+(\alpha c-\beta b)}{ax^2+2bx+c}.
+        \]
+        其存在且不为零，只需要分子恒不为零且分母恒正 (这已由前一部分的讨论保证)，即
+        \[
+        (\alpha b-\beta a)x+(\alpha c-\beta b)\neq 0,\forall x\in\mathbb{R}.
+        \]
+        即
+        \[
+        (\alpha b-\beta a,\,\alpha c-\beta b)\neq(0,0).
+        \]
+        综上所述，条件为
+        \[
+        a>0,\,b^2<ac,\,(\alpha b-\beta a,\,\alpha c-\beta b)\neq(0,0).
+        \]
+    \end{solution}
+
+    \item[4.]试证明： $\displaystyle \frac{\mathrm{d}^n(e^{\frac{x^2}{2}})}{\mathrm{d}x^n}=u_n(x)e^{\frac{x^2}{2}}$，其中 $u_n(x)$ 为 $n$ 次多项式.
+    试建立递推关系式 $u_{n+1}=xu_n+u^{\prime}_n$.
+    \item[5.]定义函数：
+    \[
+        f(x)=
+        \begin{cases}
+            \displaystyle e^{\frac{1}{x^2-1}}&,\left| x \right|<1\\
+            0 &,\left| x \right|\geq1.
+        \end{cases}
+    \]
+    证明：$f$ 为一个无限次可微的连续函数.
+    \item[6.]试求微分方程 $u^{\prime\prime}_n+xu^{\prime}_n-nu_n=0$ 的多项式的解
+    \[
+        \displaystyle u_n(x)=x^n+a_1x^{n-1}+\cdots+a_n.
+    \]
+    \begin{solution}
+        设 $ u_n(x) = x^n + a_1 x^{n-1} + \cdots + a_n $ 是微分方程的解.\\
+        分别计算一阶导数和二阶导数：
+        \[
+        u'_n(x) = n x^{n-1} + (n-1) a_1 x^{n-2} + \cdots + a_{n-1},
+        \]
+        \[
+        u''_n(x) = n(n-1) x^{n-2} + (n-1)(n-2) a_1 x^{n-3} + \cdots + 2a_{n-2}.
+        \]
+        代回微分方程并比较系数可得：
+        \begin{enumerate}
+        \item[i.] $x^n$ 项：$n - n = 0$，自动满足.
+        \item[ii.] $x^{n-1}$ 项：$(n-1)a_1 - n a_1 = -a_1 = 0$，故 $a_1 = 0$.
+        \item[iii.] $x^{n-k}(k\geq 2)$ 项：
+        \[
+        (n-k+2)(n-k+1) a_{k-2} +(n-k)a_k- n a_k = 0,
+        \]
+        即
+        \[
+        a_k = \frac{(n-k+2)(n-k+1)}{k}a_{k-2}.
+        \]
+        \end{enumerate}
+        初始条件：$a_0 = 1$ ($x^n$ 系数)，$a_1 = 0$.
+        由于 $a_1 = 0$，递推关系表明所有奇数下标系数为零. \\
+        令 $k = 2m$，则
+        \[
+        a_{2m} = \frac{(n-2m+2)(n-2m+1)}{2m} a_{2m-2}.
+        \]
+        迭代上式可得：
+        \[
+        a_{2m} = \frac{1}{(2m)!!} \prod_{i=0}^{m-1} (n-2i)(n-2i-1) = \frac{1}{(2m)!!} \cdot \frac{n!}{(n-2m)!}=\frac{n!}{2^mm!(n-2m)!}.
+        \]
+        因此，所求的多项式解为：
+        \[
+        u_n(x) = \sum_{m=0}^{\lfloor \frac{n}{2} \rfloor} a_{2m} x^{n-2m},
+        \]
+        其中
+        \[
+        a_{2m} = \frac{n!}{2^mm!(n-2m)!},\,m\in\mathbb{N}.
+        \]
+    \end{solution}
+
+    \item[7.](\textbf{Legendre 多项式})若
+    \[
+        \displaystyle P_n(x)=\frac{1}{2^nn!}\frac{\mathrm{d}^n}{\mathrm{d}x^n}(x^2-1)^n.
+    \]
+    试证明下列关系式：
+    \begin{enumerate}
+        \item[(a)]
+        \[
+            \displaystyle P^{\prime}_{n+1}=\frac{x^2-1}{2(n+1)}P^{\prime\prime}_n+\frac{(n+2)x}{n+1}P^{\prime}_n+\frac{n+2}{2}P_n.
+        \]
+        \item[(b)]
+        \[
+            \displaystyle P^{\prime}_{n+1}=xP^{\prime}_n + (n+1)P_n.
+        \]
+        \item[(c)]
+        \[
+            \displaystyle \frac{\mathrm{d}}{\mathrm{d}x}\left[ (x^2-1)P^{\prime}_n \right] - n(n+1)P_n =0.
+        \]
+    \end{enumerate}
+    \begin{solution}
+        由题知：
+        \[
+        P_n(x) = \frac{1}{2^n n!} \frac{\mathrm{d}^n}{\mathrm{d}x^n} (x^2-1)^n.
+        \]
+        首先证明 (b)：
+        计算 $P_{n+1}$ 的导数：
+        \[
+        P_{n+1}(x) = \frac{1}{2^{n+1}(n+1)!} \frac{\mathrm{d}^{n+1}}{\mathrm{d}x^{n+1}} (x^2-1)^{n+1},
+        \]
+        \[
+        P'_{n+1}(x) = \frac{1}{2^{n+1}(n+1)!} \frac{\mathrm{d}^{n+2}}{\mathrm{d}x^{n+2}} (x^2-1)^{n+1}.
+        \]
+        注意到
+        \[
+        \frac{\mathrm{d}}{\mathrm{d}x}(x^2-1)^{n+1} = 2x(n+1)(x^2-1)^n,
+        \]
+        所以
+        \[
+        \frac{\mathrm{d}^{n+2}}{\mathrm{d}x^{n+2}} (x^2-1)^{n+1} = \frac{\mathrm{d}^{n+1}}{\mathrm{d}x^{n+1}} \left[ 2x(n+1)(x^2-1)^n \right] = 2(n+1) \frac{\mathrm{d}^{n+1}}{\mathrm{d}x^{n+1}} \left[ x (x^2-1)^n \right].
+        \]
+        由 Leibniz 公式，对 $x (x^2-1)^n$ 求 $n+1$ 阶导数：
+        \[
+        \frac{\mathrm{d}^{n+1}}{\mathrm{d}x^{n+1}} [x (x^2-1)^n] = x \cdot \frac{\mathrm{d}^{n+1}}{\mathrm{d}x^{n+1}} (x^2-1)^n + (n+1) \cdot \frac{\mathrm{d}^n}{\mathrm{d}x^n} (x^2-1)^n.
+        \]
+        因此，
+        \[
+        P'_{n+1} = \frac{1}{2^{n+1}(n+1)!} \cdot 2(n+1) \left[ x \cdot \frac{\mathrm{d}^{n+1}}{\mathrm{d}x^{n+1}} (x^2-1)^n + (n+1) \cdot \frac{\mathrm{d}^n}{\mathrm{d}x^n} (x^2-1)^n \right].
+        \]
+        注意到
+        \[
+        \frac{\mathrm{d}^n}{\mathrm{d}x^n} (x^2-1)^n = 2^n n! P_n(x), \quad \frac{\mathrm{d}^{n+1}}{\mathrm{d}x^{n+1}} (x^2-1)^n = 2^n n! P'_n(x),
+        \]
+        代入得
+        \[
+        P'_{n+1} = \frac{1}{2^{n+1}(n+1)!} \cdot 2(n+1) \left[ x \cdot 2^n n! P'_n(x) + (n+1) \cdot 2^n n! P_n(x) \right] = \frac{1}{2^n n!} \left[ x P'_n(x) + (n+1) P_n(x) \right].
+        \]
+        即
+        \[
+        P'_{n+1} = x P'_n + (n+1) P_n.
+        \]
+        从而(b)得证.\\
+        下证 (a)：由 Legendre 方程 (将 $P_{n}$ 代入即知满足该方程)
+        \[
+        (1-x^2)P''_n - 2xP'_n + n(n+1)P_n = 0,
+        \]
+        即
+        \[
+        (x^2-1)P''_n + 2xP'_n - n(n+1)P_n = 0. \tag{1}
+        \]
+        由 (1) 得
+        \[
+        \frac{x^2-1}{2(n+1)} P''_n = \frac{-2xP'_n + n(n+1)P_n}{2(n+1)} = -\frac{x}{n+1} P'_n + \frac{n}{2} P_n.
+        \]
+        代入 (a) 式右边：
+        \[
+        \begin{aligned}
+        &\quad \left( -\frac{x}{n+1} P'_n + \frac{n}{2} P_n \right) + \frac{(n+2)x}{n+1} P'_n + \frac{n+2}{2} P_n \\
+        &= \left( -\frac{x}{n+1} + \frac{(n+2)x}{n+1} \right) P'_n + \left( \frac{n}{2} + \frac{n+2}{2} \right) P_n \\
+        &= x P'_n + (n+1) P_n=P'_{n+1}.
+        \end{aligned}
+        \]
+        所以 (a) 得证.\\
+        最后证明 (c)：
+        计算
+        \[
+        \frac{\mathrm{d}}{\mathrm{d}x} \left[ (x^2 - 1) P'_n \right] = (x^2-1) P''_n + 2x P'_n.
+        \]
+        由 Legendre 方程 (1) 知右边等于 $n(n+1)P_n$，所以
+        \[
+        \frac{\mathrm{d}}{\mathrm{d}x} \left[ (x^2 - 1) P'_n \right] = n(n+1) P_n,
+        \]
+        即
+        \[
+        \frac{\mathrm{d}}{\mathrm{d}x} \left[ (x^2 - 1) P'_n \right] - n(n+1) P_n = 0.
+        \]
+    \end{solution}
+
+    \item[8.]试求微分方程
+    \[
+        \displaystyle \frac{\mathrm{d}}{\mathrm{d}x}\left[ (x^2-1)P^{\prime}_n \right] - n(n+1)P_n =0.
+    \]
+    的多项式的解
+    \[
+        \displaystyle P_n=\frac{(2n)!}{2^n(n!)^2}x^n+a_1x^{n-1}+\cdots+a_n.
+    \]
+    \begin{solution}
+        题中的微分方程等价于
+        \[
+        (x^2 - 1) P''_n(x) + 2x P'_n(x) - n(n+1) P_n(x) = 0.
+        \]
+        设
+        \[
+        P_n(x) = \sum_{k=0}^n a_k x^k.
+        \]
+        其中
+        \[
+        a_n = \frac{(2n)!}{2^n (n!)^2}.
+        \]
+        回代到微分方程中并比较系数可知：
+        \[
+        a_{k+2} = \frac{k(k+1) - n(n+1)}{(k+2)(k+1)} a_k, \quad k=0,1,\ldots,n-2.
+        \]
+        此外，$a_{n-1} = 0$.\\
+        从 $a_n$ 开始，我们有：
+        \[
+        a_{n-2} = -\frac{n(n-1)}{2(2n-1)} a_n,
+        \]
+        \[
+        a_{n-4} = \frac{n(n-1)(n-2)(n-3)}{8(2n-3)(2n-1)} a_n,
+        \]
+        从而对 $\displaystyle m=0,1,\ldots,\lfloor \frac{n}{2} \rfloor$，我们有：
+        \[
+        a_{n-2m} = (-1)^m \frac{(2n-2m)!}{2^n m! (n-m)! (n-2m)!}.
+        \]
+        因此，原微分方程的多项式的解为：
+        \[
+        P_n(x) = \sum_{m=0}^{\lfloor \frac{n}{2} \rfloor} (-1)^m \frac{(2n-2m)!}{2^n m! (n-m)! (n-2m)!} x^{n-2m}.
+        \]
+    \end{solution}
+
+    \item[9.]证明：
+    \[
+        \frac{\mathrm{d}^n}{\mathrm{d}x^n}f(\ln x)=x^{-n}\frac{\mathrm{d}}{\mathrm{d}t}\left( \frac{\mathrm{d}}{\mathrm{d}t}-1 \right)\left( \frac{\mathrm{d}}{\mathrm{d}t}-2 \right)\cdots\left( \frac{\mathrm{d}}{\mathrm{d}t}-n+1 \right)f(t).
+    \]
+    其中 $t\log x$. 这里，我们使用记号
+    \[
+        \left( \frac{\mathrm{d}}{\mathrm{d}t}-k \right)\varphi=\frac{\mathrm{d}\varphi}{\mathrm{d}t}-k\varphi.
+    \]
+    其中 $\varphi$ 为 $t$ 的任一函数，$k$ 为常数.
+    \begin{solution}
+        用数学归纳法.\\
+        当 $n=1$ 时, 等式两边都是 $\displaystyle\frac{1}{x} f'(t)$. \\
+        假设 $n$ 时结论成立，则当 $n+1$ 时:
+        \[
+        \frac{\mathrm{d}^{n+1}}{\mathrm{d}x^{n+1}} f(\ln x) = \frac{\mathrm{d}}{\mathrm{d}x} \left( x^{-n} G_n f(t) \right) = x^{-n-1} \left( \frac{\mathrm{d}}{\mathrm{d}t} - n \right) G_n f(t) = x^{-n-1} G_{n+1} f(t),
+        \]
+        其中
+        \[
+        G_n = \prod_{j=0}^{n-1} \left( \frac{\mathrm{d}}{\mathrm{d}t} - j \right).
+        \]
+        因此结论在 $n+1$ 时也成立，从而原命题成立.
+    \end{solution}
+\end{enumerate}
+
+== 习题C ==
+
+\begin{enumerate}
+    \item[1.]已知:
+    \[f(x)=
+        \begin{cases}
+            x^2\sin\frac{1}{x} &,x\neq 0\\
+            0 &,x=0.
+        \end{cases}
+    \]
+    求 $f(x)$ 的导函数 $\displaystyle f^{\prime}(x)$ ,并说明 $\displaystyle f^{\prime}(x)$ 是否是连续函数.
+    \item[2.]给出三阶导数的链式法则,即假设 $h(x) = f(g(x))$ ,用 $f$ 与 $g$ 的各阶导函数表示 $h^{\prime \prime}$ .
+    \item[3.]设 $a,b$ 为参数,定义在 $\mathbb{R}$ 上的函数 $f(x)$ 满足:
+    \[f(x)=
+        \begin{cases}
+            x^2+ax+b &,x<0\\
+            e^x+a &,x\geq0.
+        \end{cases}
+    \]
+    求所有参数对 $(a,b)$ ,使得 $f(x)$ 在 $\mathbb{R}$ 上处处可导.
+    \item[4.]称实数 $a$ 是多项式 $P(x)$ 的一个 $m$ 重根 $(m\geq 0)$ ,
+    如果存在多项式 $Q(x)$ 使得 $\displaystyle P(x) = (x - a)^{m}Q(x)$ 且 $Q(a)\neq 0$ .
+    其中如果 $m\geq 2$ ,则称实数 $a$ 是多项式 $P(x)$ 的一个重根.
+    \begin{enumerate}
+        \item[(a)]证明:实数 $a$ 是多项式 $P(x)$ 的一个重根,当且仅当 $\displaystyle P(a) = P^{\prime}(a) = 0$;
+        \item[(b)]证明:多项式 $\displaystyle x^{m} + x - 1$ $(m\geq 1)$ 没有实数重根;
+        \item[(c)]求所有参数 $\displaystyle \beta \in \mathbb{R}$ ,使得多项式 $\displaystyle P(x) = 2x^{3} - 3x^{2} + \beta$ 至少有一个实数重根.
+    \end{enumerate}
+    \item[5.]设 $f(x)$ 在 $[a,b]$ 上连续且 $f(a) = f(b) = 0$ ,证明:
+    若 $\displaystyle f_{+}^{\prime}(a)\cdot f_{-}^{\prime}(b) > 0$ ,则 $f(x)$ 在区间 $(a,b)$ 中存在至少一个零点.
+    \begin{solution}
+        不妨设$f'_+(a)>0,\,f'_-(b)<0$.\\
+        由
+        \[
+        f'_+(a)=\lim_{h\to 0^+}\frac{f(a+h)-f(a)}{h}=\lim_{h\to 0^+}\frac{f(a+h)}{h}>0.
+        \]
+        可知
+        \[
+        \exists \delta_{1}>0,\,\forall h\in(0,\delta_{1}):\,\frac{f(a+h)}{h}>0\Rightarrow f(a+h)>0.
+        \]
+        特别地，可以取 $\displaystyle h_{1}=\frac{\delta_{1}}{2}$，则 $f(a+h_{1})>0$.\\
+        由
+        \[
+        f'_-(b)=\lim_{h\to 0^-}\frac{f(b+h)-f(b)}{h}=\lim_{h\to 0^+}\frac{f(b+h)}{h}>0.
+        \]
+        可知
+        \[
+        \exists \delta_{2}>0,\,\forall h\in(-\delta_{2},0):\,\frac{f(b+h)}{h}>0\Rightarrow f(b+h)<0.
+        \]
+        特别地，可以取 $\displaystyle h_{2}=-\frac{\delta_{2}}{2}$，则 $f(b+h_{2})<0$.\\
+        注意可以取足够小的 $\delta_{1},\,\delta_{2}$ 使得 $a<a+h_{1}<b+h_{2}<b$.\\
+        由 $f(x)$ 在 $[a,b]$ 上连续，且 $f(a+h_{1})>0,\,f(b+h_{2})<0$ 和零点存在定理可知
+        \[
+        \exists \,c\in(a+h_{1},b-h_{2}):\,f(c)=0.
+        \]
+        即 $f(x)$ 在区间 $(a,b)$ 中至少存在一个零点.
+    \end{solution}
+\end{enumerate}

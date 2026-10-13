@@ -1,0 +1,564 @@
+\setdisplaytitle{试卷：概率论}
+\sethtmltitle{试卷：概率论}
+
+
+== 26春概率论（吴波） ==
+\begin{enumerate}
+    \item[一、]求$n$个球随机放入$n$个盒子当中，恰好有$2$个空盒的概率。(15分)
+    \item[二、]一个家庭生3个孩子，假设男女概率均等。
+        
+        （1）3个孩子有男有女的情况下，求出至多一个女孩的概率。
+
+        （2）求一个家庭生3个孩子，这3个孩子有男有女的概率，并说明上述两个事件的独立性。
+    \item[三、]证明\[
+        \int nx^{n-1} \mathbb{P}(\xi > x) dx =\mathbb{E} (\xi ^n)
+    \]
+    \item[四、]设$(\xi,\eta)$是一个二维随机向量，密度为
+    \[f(x,y)=\begin{cases}
+        Ce^{-2(x+y)} & 0<x,y<+\infty\\
+        0 & else
+    \end{cases}\]
+
+    (1)求$C$；
+
+    (2)求分布函数$F$；
+
+    (3)求边缘分布函数$F_{\xi},F_{\eta}$,以及密度函数$f_{\xi},f_{\eta}$;
+
+    (4)设$D=\{(x,y) \in \mathbb{R}^2 | 0 \le x,0 \le y,x+y \le 1\}$，求$\mathbb{P}((\xi,\eta) \in D)$.
+    \item[五、] 定义$d(\xi,\eta)=\inf_{\delta > 0}(\mathbb{P} (|\xi-\eta|>\delta)+\delta)$.
+    那么，$d$是否是距离？并证明$\xi \xrightarrow{d} \eta \Leftrightarrow \xi \xrightarrow{\mathbb{P}} \eta$。
+
+    \item[六、]设$A_1,A_2,\cdots,A_n,\cdots$是事件列,任意有限多事件均独立。设$A=\limsup(A_n)$.
+
+    (1)证明，对任意$n \ge 2$,$A,A_1,A_2,\cdots,A_n$均独立.
+
+    (2)证明$\mathbb{P}(A)=0$或$1$.
+
+    \item[七、]叙述中心极限定理并证明
+    \[\lim_{n \to \infty}\dfrac{1}{(n-1)!} \int_0^n y^{n-1}e^{-y}dy=\frac{1}{2}\]
+
+
+
+       
+\end{enumerate}
+
+== 25秋概率论（李利平） ==
+满分 100 分, 另有附加题 10 分. 超过 100 分的按 100 分记.
+
+本次考试延长了30分钟.题目后附上了李利平老师的解答和评论.
+\begin{enumerate}
+    \item[一、]填空题(每空5分，共25分)\par
+        (1)在圆内独立, 随机的选取2026 个点. 这些点落在同一个半圆内的概率是 $\underline{\qquad\qquad\qquad}$.\\
+        (2)小明玩桌游时触发了一条掷骰子的惩罚规则. 只有连续掷出两次6 点, 紧接着再掷出一次5 点才能恢复游戏. 记 $\xi$ 为小明恢复游戏时掷骰子的次数. 计算 $\mathbb{E} \xi= \underline{\qquad\qquad\qquad}$.\\
+        (3)随机变量 $\xi_{1}, \cdots, \xi_{1159}$ 服从参数为 $\frac{1}{2318}$ 的指数分布, $\eta_{1}, \eta_{2}$ 服从标准正态分布. 假设它们都相互独立. 定义 $\xi:=\min \{\xi_{n}: 1 \leq n \leq 1159\}$ 及 $\eta:=\eta_{1}^{2}+\eta_{2}^{2}$. 计算 $\sqrt{\xi / \eta}$ 的分布函数 $F(x)= \underline{\qquad\qquad\qquad}$.\\
+        (4)服从 $\text{Cauchy}\left(\frac{1}{\sqrt{k}}\right)$ 分布\footnote{对于 $\alpha>0$, $\text{Cauchy}(\alpha)$ 分布的密度函数是 $f_{\alpha}(x)=\frac{\alpha}{\pi(\alpha^{2}+x^{2})}$.}
+        的 $\xi_{k}$, $k \geq 1$, 构成相互独立的随机变量列. 随着 $n \to \infty$, $\frac{\sum_{k=1}^{n} \xi_{k}}{n}$ 依概率收敛到 $\underline{\qquad\qquad\qquad}$; $\frac{\sum_{k=1}^{n} \xi_{k}}{\sqrt{n}}$ 依分布收敛极限的密度函数是 $\underline{\qquad\qquad\qquad}$.
+    \begin{proofc}[解答]
+        \begin{enumerate}[label=(\arabic*)]
+\item $\boxed{\dfrac{2026}{2^{2025}}}$
+
+对于 $\theta \in S$ (圆周), 记从 $\theta$ 开始, 沿着逆时针方向向前的半圆周为 $S_{+}(\theta)$, 另一个半圆周为 $S_{-}(\theta)$. 
+记概率空间为 $(\Omega, \mathscr{F}, \mathbb{P})$. 令 $\Lambda \subset \Omega$ 是要计算的样本全体. 
+对于 $\omega \in \Omega$, 点 $x_{n}(\omega)=r_{n}(\omega) e^{{\rm i} \theta_{n}(\omega)}$ 落在同一个半圆内, 相当于 $\theta_{n}(\omega)$ 落在同一个半圆周上.
+直观上来说, 事件 $\Lambda$ 相当于: 所有的点都落在某个 $\theta_{n}$ (而且是唯一的一个) 决定的半圆周 $S_{+}(\theta_{n})$ 内. 
+这个 $\theta_{n}$ 有2026 种不同的情况, 由对称性, 每种情况的概率是相同的. 
+再利用独立性, 其余2025 个点落在上述半圆周的概率是 $1 / 2^{2025}$. 因此 $\mathbb{P}(\Lambda)=2026 / 2^{2025}$.
+
+下面来严格地给出证明.由于 $x_{n}$ 独立, 都服从圆内的均匀分布, 这意味着 $\theta_{n}$ 独立, 且服从圆周 $S$ 上的均匀分布. 对于 $\omega \in \Omega$, 不妨设
+\[A(\omega ):=\left\{ \theta _{n}(\omega ):1\leq n\leq 2026\right\}\]
+中的点各不相同. 于是, $\omega \in \Lambda$, 当且仅当存在唯一的 $n$ 使得 $A(\omega) \subset S_{+}(\theta_{n}(\omega))$. 我们有
+\[
+\begin{aligned}
+\mathbb{P}(\Lambda) & =\mathbb{P}\left(\bigcup_{n=1}^{2026}\left\{\omega \in \Omega: A(\omega) \subset S_{+}(\theta_{n}(\omega))\right\}\right) \\
+& =\sum_{n=1}^{2026} \mathbb{P}(A \subset S_{+}(\theta_{n}))=2026 \mathbb{P}(A \subset S_{+}(\theta_{1})).
+\end{aligned}
+\]
+第二个等式是因为括号里的事件是无交并, 第三个等式用到了对称性(Fubini 定理保证). 
+用独立性容易计算 $\mathbb{P}(A \subset S_{+}(\theta_{1}))=1 / 2^{2025}$.
+
+\item $\boxed{216}$ (见第四章习题15; 模仿例4.5.1 的方法计算.)
+
+这一题出现的主要问题是: 不少同学算出来的答案$258$, 是连续出现三次6 的期望次数. 
+不知道是纯粹计算错误, 还是错误地以为665 和666 是一样的. 
+这两种情况的结果是不一样的, 感兴趣的同学可以仔细琢磨一下区别在什么地方.
+
+\item $\boxed{F(x)=\dfrac{x^{2}}{1+x^{2}} 1_{[0, \infty)}(x)}$
+
+显然, $\xi$ 服从参数为 $1159 / 2318=1 / 2$ 的指数分布, $\eta$ 服从 $\chi^{2}(2)=\Gamma(1,1 / 2)$, 也是参数为 $1/2$ 的指数分布. 也就是说, $\xi, \eta$ 独立, 服从参数为 $1/2$ 的指数分布. 对 $x \geq 0$,
+\[F(x)=\mathbb{P}\left(\xi / \eta \leq x^{2}\right)=\int_{s, t \geq 0, s / t \leq x^{2}} \frac{1}{4} e^{-(t+s) / 2} d t d s .\]
+直接求积分.
+
+这道题目的主要错误有:
+\begin{itemize}
+\item 没有加 $x \geq 0$ 的限制;
+\item 个别同学写出类似于 $\frac{1}{\pi} \frac{x^{2}}{1+x^{2}}$ 之类的表达式,我不知道计算步骤哪里出了错,但写的时
+候应该习惯检查一下,这个函数是不是分布函数?
+\item 有同学只列出了正确的积分表达式. (你别告诉我,这个积分你不会算.)
+\end{itemize}
+
+\item $\boxed{0}$; $\boxed{\dfrac{2}{\pi\left(4+x^{2}\right)}}$
+
+注意到: 若 $\xi \sim \text{Cauchy}(\alpha)$, 那么 $\xi / \alpha$ 服从$\text{Cauchy}(1)$. 而$\text{Cauchy}(1)$ 的特征函数是 $e^{-|t|}$. 据此容易得到 $\xi_{k}$ 的特征函数是 $\phi_{k}(t)=e^{-|t| / \sqrt{k}}$.
+因此, $(\xi_{1}+\cdots+\xi_{n}) / n$ 的特征函数是
+\[
+\prod_{k=1}^{n} \phi_{k}(t / n)=e^{-|t| \cdot \frac{\sum_{k=1}^{n} 1 / \sqrt{k}}{n}} .
+\]
+它逐点收敛到$1$. 由Lévy 连续性定理, $(\xi_{1}+\cdots+\xi_{n}) / n$ 依分布收敛到 $\xi=0$, 从而也依概率收敛到$0$.
+
+类似的, $(\xi_{1}+\cdots+\xi_{n}) / \sqrt{n}$ 的特征函数是
+\[
+\prod_{k=1}^{n} \phi_{k}(t / \sqrt{n})=e^{-|t| \cdot \frac{\sum_{k=1}^{n} 1 / \sqrt{k}}{\sqrt{n}}} .
+\]
+用Stolz 公式,
+\[
+\lim_{n \to \infty} \frac{\sum_{k=1}^{n} 1/\sqrt{k}}{\sqrt{n}}=\lim _{n \to \infty} \frac{1 / \sqrt{n}}{\sqrt{n}-\sqrt{n-1}}=2,
+\]
+即得 $e^{-|t| \cdot \frac{\sum_{k=1}^{n} 1 / \sqrt{k}}{\sqrt{n}}}$ 逐点收敛到 $e^{-2|t|}$. 极限服从$\text{Cauchy}(2)$ 分布.
+
+第一个空是可以直接猜出来的. 如果不收敛到$0$, 第二个空就没有意义了. 我推测大部分做对的同学都是猜出来的. 不过, 能猜出来本身就说明你对随机变量的收敛性有一定的理解.\qedhere
+        \end{enumerate}
+    \end{proofc}
+
+    \item[二、](8 分)
+    令 $f, g$ 是 $\mathbb{R}$ 上的有界增函数, $\xi$ 是随机变量. 证明下述不等式成立:
+$$
+\mathbb{E}[f(\xi)]\mathbb{E}[g(\xi)]\leq \mathbb{E}[f(\xi)g(\xi)].
+$$
+    \begin{proofc}
+        由于 $f, g$ 是增函数, 因而Borel 可测. 特别地, $f(\xi), g(\xi)$ 都是有界随机变量, 上述不等式中的期望均有意义.
+
+考虑另一个与 $\xi$ 独立同分布的随机变量 $\eta$. 由于 $f, g$ 递增, 因而
+\[
+(f(\xi)-f(\eta))(g(\xi)-g(\eta)) \geq 0 .
+\]
+在两边求期望, 利用 $\xi, \eta$ 独立同分布, 整理后就得到要证明的不等式.
+
+\textbf{注.} 上述证明中用到了独立耦合的思想. 若干分布的耦合是指构造合适的随机向量 $(\xi_{1}, \cdots, \xi_{n})$ 使得它们的边缘分布是这些给定的分布; 独立耦合意味着进一步要求随机向量不同维度之间的独立性. 
+耦合技巧在很多概率问题中都能发挥非常神奇的效果. 感兴趣的同学可以阅读Lindvall, T. (2002). \textit{Lectures on the coupling method}. Dover Publications, Incorporated.
+
+这个不等式的高维版本也成立, 被称为Harris 不等式. 具体来说, $\mathbb{R}^{d}$ 上的增函数 $f$ 是指满足下述条件的函数: 对于 $x=(x_{1}, \cdots, x_{d}), y=(y_{1}, \cdots, y_{d}) \in \mathbb{R}^{d}$, 如果 $x_{i} \leq y_{i}$, $\forall 1 \leq i \leq d$, 那么 $f(x) \leq f(y)$. 
+下述结论成立: 如果 $f, g$ 是 $\mathbb{R}^{d}$ 上的有界增函数, $\xi$ 是 $d$ 维随机向量, 那么 $\mathbb{E}[f(\xi)] \mathbb{E}[g(\xi)] \leq \mathbb{E}[f(\xi) g(\xi)]$. 感兴趣的同学可以尝试用归纳法证明. 另外参见前述文献的136 页.
+
+大部分同学都是用控制收敛定理转换成阶梯函数来处理的, 但要严格说清楚其实不太容易. 要证明的不等式对一般的示性函数不一定成立. 用Lebesgue 切割, 结合单调性, 才可以用形如 $1_{[a, \infty)}$ 的示性函数的线性组合来逼近 $f$ 或 $g$. (这个过程非常琐碎, 我并不推荐这么去做.) 要证明的不等式对于 $f=1_{[a, \infty)}$ 和 $g=1_{[b, \infty)}$ 才是成立的. 另一种可行的证明思路是用满足
+\[
+f(x)\geq \mathbb{E}f(\xi ), \forall x\geq x_{0}, \quad f(x)\leq \mathbb{E}f(\xi ), x\leq x_{0}
+\]
+的点 $x_{0}$ 去截断积分区间. 记 $c:=\mathbb{E} f(\xi)$, 得到
+\[
+\begin{aligned}
+\mathbb{E}[(f(\xi)-c) g(\xi)] & =\int_{(-\infty, x_{0}]}(f(x)-c) g(x) d F(x)+\int_{(x_{0}, \infty)}(f(x)-c) g(x) d F(x) \\
+& \geq g(x_{0}) \int_{(-\infty, x_{0}]}(f(x)-c) d F(x)+g(x_{0}) \int_{(x_{0}, \infty)}(f(x)-c) d F(x) \\
+& =0 .
+\end{aligned}
+\]
+
+还有下面一些出现的错误值得注意:
+\begin{itemize}
+\item 很多同学在写上述积分时没有注意 $\int_{(-\infty, x_{0}]}$ 是Lebesgue-Stieltjes 积分, 而误写为 $\int_{-\infty}^{x_0}$ 并按Riemann-Stieltjes 积分处理, 这是不严格的. 注意, $f, g$ 只是增函数, 即便右连续, 也不一定是RS-可积的.
+\item 有不少同学将期望写成RS-部分和的极限: $$\sum_{i} f(x_{i}) g(x_{i})(F(x_{i+1})-F(x_{i})),$$ 然后用排序不等式对部分和证明结论, 最后求极限. 严格来说, 这是不可行的. 因为 $f, g$ 或 $fg$ 关于 $F$ 都不一定是RS-可积的.
+\item 有同学断言: 存在 $x_{0}$ 使得 $f(x_{0})=\mathbb{E} f(\xi)$. 这其实也是做不到的.
+\item 另外有一个非常基础, 但常被忽略的问题. 几乎没有同学去验证 $f(\xi)$ 等的可测性, 从而得到期望有意义. (没有验证的都扣掉了1 分.) 这通常只体现在证明中非常简单的一句“废话”里, 其实至关重要. 我希望大家每次遇到积分时都能花几秒钟想想这个问题, 逐渐形成一种肌肉记忆.\qedhere
+\end{itemize}
+    \end{proofc}
+
+\item[三、](10 分)
+随机向量 $(X, Y, Z)$ 服从广义正态分布, 均值向量为 $0 \in \mathbb{R}^{3}$, 协方差矩阵是
+$$
+A=\begin{pmatrix}
+1 & \rho_{1} & \rho_{2} \\ \\
+\rho_{1} & 1 & \rho_{3} \\ \\
+\rho_{2} & \rho_{3} & 1
+\end{pmatrix},
+$$
+其中, $\rho_{1}+\rho_{2}+\rho_{3} \neq-3 / 2$. 证明:
+$$
+\mathbb{E}[X | X+Y+Z]=\frac{1+\rho_{1}+\rho_{2}}{3+2 \rho_{1}+2 \rho_{2}+2 \rho_{3}}(X+Y+Z) .
+$$
+
+\begin{proofc}
+    注意到 $X$ 服从广义正态分布, 因而可积. 特别地, 条件期望有意义. 
+    令 $c:=\frac{1+\rho_{1}+\rho_{2}}{3+2 \rho_{1}+2 \rho_{2}+2 \rho_{3}}$, 我们来证明
+\[
+\xi:=X-c(X+Y+Z), \quad \eta:=X+Y+Z
+\]
+独立. 事实上, 随机向量 $(\xi, \eta)$ 是 $(X, Y, Z)$ 经过线性变换后得到, 
+因而 $(\xi, \eta)$ 也服从广义正态分布. 而 $\xi, \eta$ 的均值为$0$, 协方差为
+\[
+\mathbb{E}[\xi \eta]=\cdots (计算过程省略) =0.
+\]
+因此, $\xi$ 与 $\eta$ 独立. 特别的,
+\[
+\mathbb{E}[\xi | \eta]=\mathbb{E} \xi=0 .
+\]
+代入 $\xi, \eta$ 的表达式就得到要证明的等式.
+
+少数同学尝试计算条件密度函数来解决这个问题. 
+计算量大得出奇不说(我最后一次课没讲条件密度函数, 就是因为它用起来非常不优雅), 
+这种方式还是不严格的. 随机向量 $(X, X+Y+Z)$ 只服从广义正态, 未必是严格正态. 
+没有联合密度函数, 就不会有条件密度函数.
+\end{proofc}
+
+\item[四、](15 分)
+任给随机变量 $\xi$, 证明下述结论:
+\begin{enumerate}[label=(\arabic*)]
+\item 存在一列离散型随机变量 $\xi_{n}$ 依分布收敛到 $\xi$;
+\item 假设标准正态随机变量 $\eta$ 与 $\xi$ 独立. 那么, $\xi+\eta$ 是连续型随机变量\footnote{连续型随机变量是指它的分布函数绝对连续.};
+\item 存在一列连续型随机变量 $\xi_{n}$ 依分布收敛到 $\xi$.
+\end{enumerate}
+
+\begin{proofc}
+    \begin{enumerate}[label=(\arabic*)]
+\item 令 \[f_{n}(x):=\sum_{k \in \mathbb{Z}} \frac{k}{2^{n}} 1_{[k / 2^{n},(k+1) / 2^{n})}(x), \qquad x \in \mathbb{R}.\] 
+显然, $f_{n}$ Borel 可测, 且 $f_{n}(x) \to x$, $\forall x \in \mathbb{R}$. 
+定义 $\xi_{n}:=f_{n}(\xi)$, 它是随机变量, 取值为可列集; 因而是离散型随机变量. 
+而 $f_{n}(x) \to x$ 保证 $\xi_{n}=f_{n}(\xi)$ a.s. 收敛到 $\xi$ (其实是对所有的 $\omega$ 都收敛). 特别地, $\xi_{n}$ 依分布收敛到 $\xi$.
+
+\item 证明方法很多, 比如用微分控制收敛定理对分布函数求微分. 
+我们用特征函数来完成证明. 记 $\xi$ 的特征函数为 $\phi_{\xi}$. 
+那么, $\xi+\eta$ 的特征函数是 $\phi_{\xi}(t) e^{-t^{2} / 2}$. 
+由于 $|\phi_{\xi}(t)| \leq 1$, 因而 $\phi_{\xi}(t) e^{-t^{2} / 2}$ 可积. 
+用反演公式即得, $\xi+\eta$ 的分布函数绝对连续.
+
+\item 令 $\eta$ 是与 $\xi$ 独立的标准正态随机变量. 定义 $\xi_{n}:=\xi+\frac{1}{n} \eta$. 
+和第二问类似的讨论可以得到: $\xi_{n}$ 是连续型随机变量. 显然, $\xi_{n} \to \xi$, a.s. 因此, $\xi_{n}$ 依分布收敛到 $\xi$.
+\end{enumerate}
+
+
+第一问有更简洁的构造方式 $\xi_{n}:=\frac{\lfloor n \xi\rfloor}{n}$. 大部分同学是从构造分布函数的角度完成证明的. 简单来说, 用 $\sum_{i} F(x_{i}) 1_{[x_{i}, x_{i+1})}$ 的形式就可以得到离散分布: 注意, 这里必须是左闭右开区间 $[x_{i}, x_{i+1})$ 以保证分布函数的右连续性. 绝对连续型的逼近可以通过 $(x_{i}, F(x_{i}))$ 点列的依次连线得到.
+
+下面是一些常见错误:
+\begin{itemize}
+\item 第二问本是为了第三问给的提示, 如果第三问用其它方法完成了证明, 即便第二问按照两个正态随机变量去做的(前提是没有出现错误, 有错误的话会被扣分; 真的还有不少人连这么简单的计算都出错了), 也不影响得分.
+\item 注意分布函数有特定的要求, 用简单函数去逼近 $F$, 而直接把简单函数作为离散分布函数是不严格的.
+\item 有同学想当然地断言: 两个依分布收敛序列的和, 一定依分布收敛. 这是不对的. 大家可以尝试举个反例, 或者求助AI.
+\item 但下面这个命题是对的: 一个序列依分布收敛, 另一个序列依概率收敛到常数, 它们的和是依分布收敛的. 这是个概率界广为人知的结论. 但我批改到某位同学的试卷时, 才第一次知道这个定理在某些时候被称作Slutsky 定理.
+\item AI 在很多时候是非常死板的, 它只会从已有的数据资料训练出的统计关系中比对出最匹配问题的形式化答案. 
+比如, 如果你把这道题整体喂给AI, 在解决第三问时, 它可能会先用第一问的结论找一列离散的 $\xi_{n}$ 依分布收敛到 $\xi$, 再找 $\eta_{n}:=\eta / n$ a.s. 收敛到$0$, 从而依概率收敛到$0$. 
+用第二问的结论, 得到 $\xi_{n}+\eta_{n}$ 是连续型. 最后, 利用大量语料中广泛使用的Slutsky 定理, 部分AI 可能也会直接断言: $\xi_{n}+\eta_{n}$ 依分布收敛到 $\xi$. 
+一位认真学过概率论的学生, 应该很容易发现这些推导步骤中的机器味: 如果能想到 $\eta / n$ a.s. 收敛到$0$, 谁会再去用 $\xi_{n}$ 逼近 $\xi$? 没苦硬吃吗?\qedhere
+\end{itemize}
+\end{proofc}
+
+\item[五、](18 分)
+考虑一列独立的标准正态随机变量 $\{\xi_{n}: n \geq 1\}$, 记 $S_{n}=\xi_{1}+\cdots+\xi_{n}$. 证明下述结论:
+\begin{enumerate}[label=(\arabic*)]
+\item[(0)] 证明$\mathbb{E} e^{c \xi_{1}}=e^{\frac{c^{2}}{2}}$. (这一问是考试中补充的,如果已证明了(1),则此问不做也算对)
+\item 对于任何 $\delta>0$ 和 $c>0$, $\mathbb{P}(S_{n}>\delta) \leq e^{-c \delta+\frac{n}{2} c^{2}}$;
+\item 考虑常数 $\alpha \in \mathbb{R}$. 那么,
+$$
+\lim_{n \to \infty} \frac{S_{n}}{n^{\alpha}}=0, \quad \text{a.s.}
+$$
+当且仅当 $\alpha>1 / 2$.
+\end{enumerate}
+\begin{proofc}
+    \begin{enumerate}[label=(\arabic*)]
+\item 由切比雪夫不等式, 我们有
+\[
+\mathbb{P}(S_{n}>\delta )=\mathbb{P}(e^{cS_{n}}>e^{c\delta })\leq e^{-c\delta }\mathbb{E}e^{cS_{n}}=e^{-c\delta }\left( \mathbb{E}e^{c\xi _{1}}\right) ^{n}.
+\]
+最后一个等式用到了 $\{\xi_{n}\}$ 独立同分布. 容易计算 $\mathbb{E} e^{c \xi_{1}}=e^{\frac{c^{2}}{2}}$, 因此要证明的不等式成立.
+
+\item 先证明充分性. 假设 $\alpha>1 / 2$. 由B-C 第一引理, 只需要证明: 对于任何 $\varepsilon>0$,
+\[
+\sum_{n=1}^{\infty} \mathbb{P}\left(\left|\frac{S_{n}}{n^{\alpha}}\right|>\varepsilon\right)<\infty .
+\]
+
+根据第一问的估计, 我们有
+\[
+\mathbb{P}\left( \left| \frac {S_{n}}{n^{\alpha }}\right | >\varepsilon \right) =2\mathbb{P}\left( \frac {S_{n}}{n^{\alpha }}>\varepsilon \right) =2\mathbb{P}(S_{n}>n^{\alpha }\varepsilon )\leq 2e^{-cn^{\alpha }\varepsilon +\frac {n}{2}c^{2}}, \quad \forall c>0.
+\]
+第一个等式用到了对称性, 具体来说, 随机向量 $(-\xi_{1}, \cdots,-\xi_{n})$ 和 $(\xi_{1}, \cdots, \xi_{n})$ 同分布. 取 $c$ 满足 $c n^{\alpha} \varepsilon=n c^{2}$, 即 $c=n^{\alpha-1} \varepsilon$, 我们得到
+\[
+\mathbb{P}\left(\left|\frac{S_{n}}{n^{\alpha}}\right|>\varepsilon\right) \leq 2 e^{-\frac{\varepsilon^{2}}{2} n^{2 \alpha-1}} .
+\]
+只需要说明 $\sum_{n=1}^{\infty} e^{-\frac{\varepsilon^{2}}{2} n^{2 \alpha-1}}<\infty$. (方法很多. 比如说,) 由于 $2 \alpha-1>0$, 因而存在正整数 $K$ 使得 $\beta:=K(2 \alpha-1)>1$, 从而
+\[
+e^{-\frac{\varepsilon^{2}}{2} n^{2 \alpha-1}} \leq \frac{K !}{\left(\frac{\varepsilon^{2}}{2} n^{2 \alpha-1}\right)^{K}}=\frac{2^{K} K !}{\varepsilon^{2 K}} \cdot \frac{1}{n^{\beta}} .
+\]
+因此, $\sum_{n=1}^{\infty} e^{-\frac{\varepsilon^{2}}{2} n^{2 \alpha-1}}<\infty$.
+
+再来证明必要性. 用反证法, 假设 $S_{n} / n^{\alpha} \to 0$, a.s., 但 $\alpha \leq1 / 2$. 那么,
+\[
+\frac{S_{n}}{\sqrt{n}}=n^{\alpha-1 / 2} \frac{S_{n}}{n^{\alpha}} \to 0, \quad \text{a.s.}
+\]
+从而 $S_{n} / \sqrt{n}$ 依分布收敛到$0$. 这和中心极限定理矛盾.
+\end{enumerate}
+
+\textbf{注.} 事实上, 当 $\alpha \leq1 / 2$, 根据Kolmogorov $0$-$1$ 律, 对a.s. $\omega \in \Omega$, $S_{n}(\omega) / n^{\alpha}$ 都没有极限.
+
+第一问用初等方法是可以解决的. 容易计算右边关于 $c$ 的最小值是 $e^{-\frac{\delta^{2}}{2 n}}$. 只需要证明
+\[
+\int_{\delta}^{\infty} \frac{1}{\sqrt{2 \pi n}} e^{-\frac{t^{2}}{2 n}} d t \leq e^{-\frac{\delta^{2}}{2 n}} .
+\]
+直接作变量代换 $x:=t-\delta$ 就能直接得到上述不等式. 左边等于
+\[
+\int _{0}^{\infty }\frac {1}{\sqrt {2\pi n}}e^{-\frac {(x+\delta )^{2}}{2n}}dx\leq e^{-\frac {\delta ^{2}}{2n}}\int _{0}^{\infty }\frac {1}{\sqrt {2\pi n}}e^{-\frac {x^{2}}{2n}}dx=\frac {1}{2}e^{-\frac {(x+\delta) ^{2}}{2n}}.
+\]
+
+部分同学将(2) 的左右两边作差(或者除法), 视作 $\delta$ 的函数, 求导数来讨论单调性解决问题. 这个方法是可行的. 但有几位同学讨论单调性时出错了, 比如: 作差之后关于 $\delta$ 是先递减后递增, 最大值其实是在 $\infty$ 处取到的.
+
+第二问的充分性, 有两位同学用标准的切比雪夫不等式完成的. 这非常好. 我把略作简化的证明写在下面. 考虑满足 $(2 \alpha-1) p>1$ 的参数 $p$, 我们有
+\[
+\mathbb{P}\left( \left| \frac {S_{n}}{n^{\alpha }}\right| >\varepsilon \right) \leq \mathbb{P}(|S_{n}|>n^{\alpha }\varepsilon )\leq \frac {1}{n^{2\alpha p}\varepsilon ^{2p}}\mathbb{E}|S_{n}|^{2p}.
+\]
+注意到 $S_{n} \sim N(0, n)$. 因而 $\eta:=S_{n} / \sqrt{n} \sim N(0,1)$. 因此,
+\[
+\mathbb{P}\left(\left|\frac{S_{n}}{n^{\alpha}}\right|>\varepsilon\right) \leq \frac{n^{p}}{n^{2 \alpha p} \varepsilon^{2 p}} \mathbb{E}|\eta|^{2 p} .
+\]
+剩下的证明和题目中的步骤是类似的.
+
+下面是一些常见错误:
+\begin{itemize}
+\item 有同学对 $S_{n}$ 相关的事件列使用了B-C-第二引理, 这是不可行的. $S_{n}$ 之间并不是相互独立的.
+\item 有同学使用了Kolmogorov $0$-$1$ 律, 这非常好. 它可以保证 $S_{n} / n^{\alpha}$ 要么a.s. 收敛, 要么a.s. 不收敛. 但只是证明了 $S_{n} / n^{\alpha}$ 依概率收敛(因而有子列收敛), 还不足以保证它是前种情况. 请仔细琢磨这其中的微妙关系.
+\item 有少数同学弄不清楚几种收敛性的关系, 在胡乱使用. 这几类收敛性和特征函数理论, 是概率论课程的两大基石. 希望还要继续学习概率相关课程的同学一定要理解透彻.\qedhere
+\end{itemize}
+\end{proofc}
+
+\item[六、](24 分, 另含附加分10 分)
+随机变量 $\xi$ 的特征函数记为 $\phi_{\xi}$。如果对于任何正整数 $n$，都存在 $n$ 个独立同分布的随机变量 $\xi_1,\cdots,\xi_n$ 使得 $\xi_1+\cdots+\xi_n$ 和 $\xi$ 同分布，那么称 $\xi$ 或 $\phi_{\xi}$ 无穷可分.证明下述结论：
+\begin{enumerate}[label=(\arabic*)]
+    \item $\xi$ 无穷可分, 当且仅当对于任何正整数 $n$, 存在特征函数 $\phi_{n}$ 使得 $\phi_{\xi}=\phi_{n}^{n}$. 据此说明: Poisson 分布, 广义正态分布随机变量均无穷可分.
+\item 如果 $\xi$ 无穷可分, 那么 $|\phi_{\xi}|^{2}$ 也是无穷可分的特征函数.
+\item 如果 $\xi$ 无穷可分, 那么 $\phi_{\xi}(t) \neq0$, $\forall t \in \mathbb{R}$.
+\item $^*$(附加10分) 假设 $\{\xi^{(k)}: k \geq1\}$ 是一列无穷可分的随机变量列, 并随着 $k \to \infty$ 依分布收敛到 $\xi$. 证明: $\xi$ 无穷可分.\footnote{提示: 形式上来说, 根据第一问的结论, 我们只需要说明对于任何 $n$, $\phi_{\xi}^{1 / n}=e^{\frac{1}{n} \log \phi_{\xi}}$ 是特征函数. 关键在于, $\log \phi_{\xi}$ 如何严格的定义?
+}
+\end{enumerate}  
+\begin{proofc}
+    \begin{enumerate}[label=(\arabic*)]
+\item 任取 $n$, 若 $\xi$ 无穷可分, 则 $\phi=\phi_{\xi_{1}}^{n}$, 其中 $\xi_{1}$ 是定义中的随机变量. 必要性成立. 
+反过来, 可以构造独立同分布的随机变量 $\xi_{1}, \cdots, \xi_{n}$, 它们的特征函数是 $\phi_{n}$. 
+于是, $\xi_{1}+\cdots+\xi_{n}$ 的特征函数是 $\phi_{n}^{n}=\phi_{\xi}$. 
+由反演公式即得, $\xi_{1}+\cdots+\xi_{n}$ 和 $\xi$ 同分布. 因此, $\xi$ 无穷可分.
+
+假设 $\xi$ 服从参数为 $\lambda$ 的Poisson 分布, 它的特征函数是 $\varphi_{\lambda}(t)=e^{-\lambda(1-e^{it})}$. 
+对于任何 $n$, 考虑 $n$ 个独立同分布, 服从参数为 $\lambda / n$ 的Poisson 分布随机变量 $\xi_{1}, \cdots, \xi_{n}$. 
+那么, $\xi_{1}+\cdots+\xi_{n}$ 的特征函数是
+\[
+\varphi_{\lambda / n}(t)^{n}=\left(e^{-\frac{\lambda}{n}\left(1-e^{i t}\right)}\right)^{n}=\varphi_{\lambda}(t) .
+\]
+因此, $\xi$ 是无穷可分分布. 对于广义正态分布 $N(a, \sigma^{2})$, 其中 $\sigma^{2} \geq0$. 
+类似地, 考虑 $n$ 个独立, 服从 $N(a / n, \sigma^{2} / n)$ 的广义正态随机变量, 
+可以证明它们的和服从 $N(a, \sigma^{2})$ 分布. 因此广义正态分布也是无穷可分分布.
+
+\item 对于任何 $n$, 令 $\xi_{1}, \cdots, \xi_{n}, \eta_{1}, \cdots, \eta_{n}$ 独立同分布, 并且 $\xi_{1}+\cdots+\xi_{n}$ 和 $\xi$ 同分布. 定义 $\zeta_{1}:=\xi_{1}-\eta_{1}, \cdots, \zeta_{n}:=\xi_{n}-\eta_{n}$. 显然, $\zeta_{1}, \cdots, \zeta_{n}$ 独立同分布, 特征函数是
+\[
+\phi_{\zeta_{1}}(t)=\mathbb{E} e^{{\rm i} t \xi_{1}} \mathbb{E} e^{-{\rm i} t \eta_{1}}=\phi_{\xi_{1}}(t) \overline{\phi_{\xi_{1}}(t)}=|\phi_{\xi_{1}}(t)|^{2}.
+\]
+进而, $\zeta_{1}+\cdots+\zeta_{n}$ 的特征函数是
+\[
+\phi_{\zeta_{1}}(t)^{n}=|\phi_{\xi_{1}}(t)|^{2n}=|\phi_{\xi}(t)|^{2}.
+\]
+根据第一问的结论, 要证明的事实成立.
+
+\item 只需要证明 $|\phi_{\xi}(t)|^{2} \neq0$, $\forall t$. 根据(2), 对于任何 $n$, $|\phi_{\xi}|^{2 / n}$ 是特征函数. 注意到下述极限总是存在:
+\[
+\varphi(t):=\lim _{n \to \infty}\left|\phi_{\xi}(t)\right|^{2 / n}= \begin{cases}1, & \phi_{\xi}(t) \neq 0, \\ 0, & \phi_{\xi}(t)=0 .\end{cases}
+\]
+由 $\phi_{\xi}$ 在 $t=0$ 附近的连续性可知, 存在 $\delta>0$ 使得, $\phi_{\xi}(t) \neq0$, $\forall t \in(-\delta, \delta)$. 
+因而 $\varphi(t)=1$, $\forall t \in(-\delta, \delta)$. 也就是说, $\varphi$ 是特征函数列 $|\phi_{\xi}|^{2 / n}$ 的点态极限, 并且在$0$ 处连续. 
+由Lévy 连续性定理, $\varphi$ 是特征函数. 因此, $\varphi$ 的连续性保证它不能取到$0$ 值. 这也就意味着, $\phi_{\xi}$ 不能取到$0$ 值.
+
+\item 记 $\xi^{(k)}$ 和 $\xi$ 的特征函数分别为 $\phi^{(k)}$ 和 $\phi$. 
+任取并固定正整数 $n$. 由于 $\phi^{(k)}$ 无穷可分, 因而存在特征函数 $\phi_{n}^{(k)}$ 使得 $\phi^{(k)}=\big(\phi_{n}^{(k)}\big)^{n}$. 
+根据上一问的结论, $\phi_{n}^{(k)}$ 和 $\phi^{(k)}$ 都不取$0$ 值. 
+令 $f_{n}^{(k)}$ 是 $\phi_{n}^{(k)}$ 的可区分对数, 于是, $n f_{n}^{(k)}$ 是 $\phi^{(k)}$ 的可区分对数.
+
+我们来说明 $\phi$ 不取$0$ 值( 如此, 可以定义它的可区分对数). 这相当于 $|\phi|^2$ 不取$0$ 值. 
+根据(3), $|\phi^{(k)}|^{2 / n}$ 是分布函数, 且随着 $k \to \infty$, 点态收敛到 $|\phi|^{2 / n}$. 后者在$0$ 点连续. 
+由Lévy 连续性定理即得, $|\phi|^{2/n}$ 是特征函数. 因此, 第一问的结论得到 $|\phi|^2$ 无穷可分. 由第三问的结论即得 $|\phi|^2$ 不取$0$ 值.
+
+记 $\phi$ 的可区分对数为 $f$. 它是 $\mathbb{R}$ 上的复值连续函数. 
+由于 $\phi^{(k)}$ 内闭一致收敛到 $\phi$, 因而 $n f_{n}^{(k)}$ 内闭一致收敛到 $f$. 
+进而 $f_{n}^{(k)}$ 内闭一致收敛到 $f / n$, 再得到特征函数 $\phi_{n}^{(k)}=e^{f_{n}^{(k)}}$ 内闭一致收敛到 $e^{\frac{1}{n} f}$. 后者在 $t=0$ 处连续. 
+由Lévy 连续性定理即得 $e^{\frac{1}{n} f}$ 是特征函数. 注意到 $\phi=\big(e^{\frac{1}{n} f}\big)^{n}$. 最终用第一问的结论就得到 $\phi$ 无穷可分.
+\end{enumerate}
+
+这道题目需要点评的地方不多. 有个别同学非常“大胆” 地使用了特征函数的开根号, 作 $\log$ 等操作. 这是要非常小心的. 请参阅习题参考解答中的补充阅读材料.
+
+直观上来说, 再生性是任意次的生长都能得到同类型的分布, 而无穷可分则是任意次的剖分而得到同类型的分布. 这是两种对偶的特性.
+\end{proofc}
+\printfootnotes
+\end{enumerate}
+
+\begin{proofc}[李利平老师对试卷的总结]
+    不算附加题的话, 这张试卷技巧性最强的几道题目分别是填空 1 和 5, 
+    第二大题和第六大题 (3). 其余题目的技巧性其实真的不算很强.
+    
+    填空 2 和去年的填空 3 是完全一样的类型, 递推三次解方程. 
+    填空 3 是为了考察大家对几类重要的连续型分布的熟悉程度. 
+    (看起来, 很多人都不太熟练.) 填空 4 和 5 多少有点抖机灵的成分, 
+    这两个填空的问题和去年的两空形式几乎一样, 做法却完全不同.
+    
+    第二大题是教材第十章习题 2 略作引申, 也是最后一次作业布置的第一题; 
+    第三大题是最后一次课讲的例题, 参见手写讲稿的最后一页. 
+    类似的问题也布置在了最后一次作业里, 比如教材第十章习题 17. 
+    这两道题目本来是打算送给那些认真学习的同学们的新年大礼, 奈何无人肯领. 
+    更让我痛心的是, 全班同学几乎都战略性地放弃了条件期望的内容, 
+    仅有三位同学完整地给出了第三大题的证明. (我记得课上讲这道例题时, 
+    还特意问过大家如何用对角阵来判断广义正态随机向量各分量之间的独立性. 
+    你们都知道是用特征函数. 当时有多欣慰, 我改这道题目的时候就有多难过.)
+    
+    第四大题是课上提过的两个结论: 离散型分布和连续型分布在全体分布中稠密. 
+    课上没有给出严格的证明, 所以想借考试的机会看一下大家是否对此有所思考, 
+    同时也想通过第二问的提示引导大家给出一种简洁而极具概率味道的证明. 
+    很显然, 这是一次失败的引导. 几乎所有同学都将第二问理解成了两个正态分布随机变量的问题. 
+    (这大概只能怪我自己, 没有把话说清楚. 但你们心里难道没有一丝疑惑吗? 
+    这么难的试卷怎么会在这里出现这么显而易见的命题? 有疑惑为什么不举手问啊......)
+    
+    第五大题可能一开始就加上第 (0) 问的提示会更好一点. 
+    我本以为第一问不等式的形式已经显而易见地指出来切比雪夫不等式的使用方法了, 
+    但很多同学似乎更习惯借助期望计算公式转换成分析问题去解决. 
+    这样可能就耽误了不少时间, 甚至算不出来. 
+    (当然, 这并不是说你们 “不够聪明”. 每个数学学科都有各自习惯使用的工具和技巧, 
+    这也体现了不同数学分支的特点和思想. 每个人只有在充分熟悉, 
+    并进行过一定程度的练习之后才能逐渐形成一种种难以言说的 “数学直观”. 
+    直观越多, 看待很多数学问题就会越容易. 
+    这肯定需要足够多的历练. 如果暂时做不到, 请慢慢来, 不要着急.) 
+    第二问大部分同学都知道用 B-C 第一引理给出的充分条件去证明 a.s. 收敛, 这非常好.
+    
+    第六大题的前两问, 接近 2/3 的同学都基本能证明出来. 
+    这说明大家对特征函数的基本理论掌握得非常扎实. 
+    第三问和附加问鲜有同学尝试, 只有个别同学给出了正确的思路, 
+    但没有给出严格的证明. 主要原因大概还是时间不太够用.
+\end{proofc}
+
+
+== 24秋概率论（应坚刚，李利平） ==
+本次考试延长了30分钟。
+
+\begin{itemize}
+    \item[一.]填空题(1空5分，共25分)\par
+    1.有标有从1到2218的卡片，每次随机抽取一张，不放回。已知第2024次抽出的数字是前2024次抽出的数字中的最大值，则第2024次抽出的数字是2218的概率为$\underline{\qquad\qquad}$.\par
+    2.每次随机从1到38中得到一个数字. 记$\xi$为1到38中每个数字都至少出现一次时的最小抽取次数, 则$\mathbb{E}\xi=\underline{\qquad\qquad}$.\par
+    3.袋子里有7个白球和1个黑球. 每次不放回地从袋中摸球, 当发生\\
+    \ \ \ \ (1)袋子中有6个球, 或\\
+    \ \ \ \ (2)摸到黑球\\
+    时, 将袋子中的球复原到初始状态.记$\xi_n$为$n$次摸球得到的黑球的总个数, 
+    则$\lim\limits_{n\to\infty}\frac{\mathbb{E}\xi_n}{n}=\underline{\qquad\qquad}$.\par
+    4. $\{U_n\}_{n=1}^{\infty}$为一列独立且都服从$[0,e]$上均匀分布的随机变量.则$\sqrt[n]{\prod\limits_{k=1}^{n}U_k}$弱收敛的极限分布是$\underline{\qquad\qquad}$, 
+    $\sqrt[n]{\prod\limits_{k=1}^{n^2}U_k}$弱收敛极限密度函数是$\underline{\qquad\qquad}$.\par
+    \begin{proofc}[解答]
+        \begin{center}\begin{tabular}{cc}
+        \ \ 1.\ \ &$\dfrac{1012}{1109}$\\
+        2.&$\sum\limits_{i=1}^{38} \dfrac{38}{i}$\\
+        3.&$\dfrac{2}{15}$\\
+        4.&$1_{[1,+\infty)}$, $\dfrac{1}{\sqrt{2\pi}x}e^{-\frac{(\log{x})^2}{2}}\cdot1_{x>0}$
+        \end{tabular}\end{center}
+        1.记第2024次抽出的数字是2218为事件$A$, 第2024次抽出的数字是前2024次抽出的数字中的最大值为事件$B$, 
+        则$P({A}\cap{B})=\frac{1}{2218}$, $P(B)=\frac{1}{2024}$(对称性). 
+        则由条件概率定义，\[P(A|B)=\frac{P({A}\cap{B})}{P(B)}=\frac{1012}{1109}.\]
+        \\
+        2.令$\xi_{i}$为抽中第$i$个数字到抽中第$i+1$个数字间需要的抽数(${0}\le{i}\le{37}$)，
+        则$\mathbb{E}\xi_{i}=\frac{38}{i+1}$。故
+        \[\mathbb{E}\xi=\sum_{i=0}^{37} \xi_{i}=\sum_{i=1}^{38} \frac{38}{i}.\]
+        \\
+        3.第一次复原袋子前会发生三种情况：\\
+        事件$A_1$：第一次摸到黑球\\
+        事件$A_2$：第一次摸到白球，第二次摸到黑球\\
+        事件$A_3$：第一第二次都摸到白球\\
+        $P(A_1)=\frac{1}{8}$, $P(A_2)=\frac{1}{8}$, $P(A_3)=\frac{3}{4}$.\\
+        则由\textbf{全概率公式}，\[P(\xi_{n}=k)=\sum_{i=1}^3 P(A_i)P(\xi_{n}=k|A_i)\]
+        即\[P(\xi_{n}=k)=\frac{1}{8}P(\xi_{n-1}=k-1)+\frac{1}{8}P(\xi_{n-2}=k-1)+\frac{3}{4}P(\xi_{n-2}=k)\]
+        则\[\mathbb{E}\xi_n=\sum_{k\ge1}kP(\xi_{n}=k)\\
+        =\frac{1}{8}\sum_{k\ge1}kP(\xi_{n-1}=k-1)+\frac{1}{8}\sum_{k\ge1}kP(\xi_{n-2}=k-1)+\frac{3}{4}\sum_{k\ge1}kP(\xi_{n-2}=k)\\
+        =\frac{1}{8}(\mathbb{E}\xi_{n-1}+1)+\frac{1}{8}(\mathbb{E}\xi_{n-2}+1)+\frac{3}{4}\mathbb{E}\xi_{n-2}\]
+        化简得\[8\mathbb{E}\xi_{n+2}+7\mathbb{E}\xi_{n+1}-2(n+1)=8\mathbb{E}\xi_{n+1}+7\mathbb{E}\xi_{n}-2n\] 所以
+        $8\mathbb{E}\xi_{n+1}+7\mathbb{E}\xi_{n}-2n=8\mathbb{E}\xi_{2}+7\mathbb{E}\xi_{1}-2$(常数)，除以$n$取极限得到答案。\\
+        \\
+        4.注意到$\mathbb{E}\log{U_k}=0$, $\mathbb{D}\log{U_k}=1$。
+        则由\textbf{大数定律}，$\dfrac{\sum_{n} {\log{U_n}}}{n}$弱收敛于$\mathbb{E}\log{U_1}=0$，
+        故$\sqrt[n]{\prod\limits_{k=1}^{n}U_k}$弱收敛于$1$，其极限分布为$1_{[1,+\infty)}$。
+
+        由\textbf{中心极限定理}，$\dfrac{\sum_{n} {\log{U_n}}}{\sqrt{n}}$弱收敛于标准正态分布，即
+        \[\lim_{n \to \infty}P(\frac{\sum_{k=1}^n \log{U_k}}{\sqrt{n}}\le{x})
+        =\int_{-\infty}^{x}\frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}t^2}\mathrm{d}t.\]
+        则$\sqrt[n]{\prod\limits_{k=1}^{n^2}U_k}$弱收敛的极限的分布函数是
+        \[\int_{-\infty}^{e^x}\frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}t^2}\mathrm{d}t,\]
+        对$t$作变量代换后得到密度函数是
+        \[\frac{1}{\sqrt{2\pi}x}e^{-\frac{(\log{x})^2}{2}}\cdot1_{x>0}.\qedhere\]
+    \end{proofc}
+    \item[二.]（10分）证明：随机变量$\xi$可积的充要条件是
+    $$\sum_{n=1}^{\infty}\mathbb{P}(|\xi|\geq n)<\infty$$
+    
+    \item[三.]（10分）证明：设$F$是随机变量$X$的分布函数.
+    记$Y=-\frac{\log{F(X)}}{\alpha}$, 其中$\alpha>0$. 
+    
+    证明：$F$连续的充分必要条件是$Y$服从参数$\alpha$的指数分布.
+
+    \item[四.]（15分）设随机变量$X=(X_1,\cdots,X_n)\in\mathbb{R}^n$服从正态分布$N(a,A)$.\par
+    1.证明：$(X-a)\sqrt{A^{-1}}$服从标准正态分布.\par
+    2.求$X$的特征函数.\par
+    3.证明：$X$服从正态分布的充要条件是对任意非零向量$(c_1,\cdots,c_n)\in\mathbb{R}^n$, 
+    $c_1X_1+\cdots+c_nX_n$服从正态分布.
+
+    \item[五.]$\{\xi_n\}_{n=1}^{\infty}$是一列独立同分布的非负随机变量.\par
+    1.（10分）证明：$\mathbb{E}\xi_1<\infty$等价于$\limsup\limits_{n\to\infty}\frac{\xi_n}{n}<\infty \quad a.s.$\par
+    2.（10分）设$\xi_1$服从参数$\alpha>0$的指数分布.证明：
+    $$\liminf\limits_{n\to\infty}\frac{\xi_n}{n}=0 \quad a.s.  ,  \limsup\limits_{n\to\infty}\frac{\xi_n}{n}=\frac{1}{\alpha} \quad a.s.$$
+
+    \item[六.]用$\mathcal{R}$表示非$a.s.$常数的随机变量全体.
+    设$\xi\in\mathcal{R}$, 用$\phi_{\xi}$表示$\xi$的特征函数, $M_{\xi}=\{y\in\mathrm{R}:\vert\phi_{\xi}(y)\vert=1\}$.\par
+    1.（10分）证明：任意$\xi\in\mathcal{R}$, 存在唯一的$t\geq0$, 满足$M_{\xi}=t\mathbb{Z}=\{tn:n\in\mathbb{Z}\}$.\par
+    2.（10分）举例说明, 给定任意$t\geq0$, 存在不同的离散型随机变量满足$M_{\xi}=t\mathbb{Z}$.
+
+\end{itemize}
+
+
+
+== 概率论2023--2024第一学期期末试题（应坚刚） ==
+\begin{center}
+\textsize{24pt}{复旦大学数学科学学院\\
+    2023$\sim$2024学年第一学期期末考试试卷\\
+    $\text{A}$ 卷}
+
+    课程名称：\ 概率论 \qquad\quad 课程代码：\ $\text{MATH130009.01}$\\
+    开课院系：\ 数学学院 \qquad\quad 考试形式：\ 闭卷\\
+    学生姓名：\ $\underline{\qquad\qquad\quad}$ \quad 学号：\ $\underline{\qquad\qquad\quad}$ \quad 专业：\ $\underline{\qquad\qquad\quad}$
+\end{center}
+
+提示：请同学们秉持诚实守信宗旨，谨守考试纪律，摒弃考试作弊。
+学生如有违反学校考试纪律的行为，学校将按《复旦大学学生纪律处分条例》规定予以严肃处理。
+
+\begin{table}\begin{tabular}{|c|c|c|c|}
+题\ \ \ 目 &\quad$1$\quad&\quad$2$\quad&\quad$3$\quad&\quad$4$\quad&\quad$5$\quad&\quad$6$\quad&\quad$7$\quad&\quad$8$\quad&\quad$9$\quad&\ \ \ $10$\ \ \ &\ 总分\ \\
+得\ \ \ 分 & & & & & & & & & & & 
+\end{tabular}\end{table}
+1,2两题只要填上答案即可。
+\begin{enumerate}
+\item（20分）一家庭生育有两个孩子，性别不知，大小不知。
+
+（1）已知大的一个是女孩，求两个都是女孩的概率。$\underline{\qquad\qquad}$
+
+（2）已知一个是女孩，求两个都是女孩的概率。$\underline{\qquad\qquad}$
+
+（3）看到一个孩子是个女孩，求两个都是女孩的概率。$\underline{\qquad\qquad}$
+
+（4）已知有一个孩子是女孩，求看到一个孩子是个女孩的概率。$\underline{\qquad\qquad}$
+
+\item（20分）重复掷 $n$ 次硬币，用 $u_n$ 表示其中没有$3$次或以上的连续正面的概率。求
+
+$u_4=\underline{\qquad\qquad},u_5=\underline{\qquad\qquad},
+u_6=\underline{\qquad\qquad},u_7=\underline{\qquad\qquad}$.
+
+\item（10分）设有编号为 $1$ 到 $n$ 的 $n$ 个座位和 $n$ 个人。
+第一个人随机选个座位坐下，第二个人如果看到同号的座位空，那么他坐该座位，否则任选一个座位坐下；
+第三个人如果看到同号的座位空，那么他坐该座位，否则任选一个座位坐下；
+这样一直下去，问最后一个人的同号座位被占的概率是多少？说明理由。
+
+\item（10分）证明：如果 $X,Y$ 独立同分布且 $ X+Y $ 平方可积，则 $X$ 是平方可积。
+
+\item（20分）设随机变量 $\xi_{1}, \cdots, \xi_{n}$独立且服从参数为 $1$ 的指数分布，
+令 $X_{n} = \max\{\xi_1,\cdots,\xi_n\}$. 证明：
+
+(1) $\sup_{n} \mathbb{E}[ X_{n} ]  = \infty$.
+(2) $\sup_{n} \mathbb{D}[ X_{n} ]  < \infty$.
+
+\item（20分）设  $\{\xi_{n}\}$ 是独立同分布的随机序列，
+$S_{n} = \xi_{1}+\cdots+\xi_{n}$. 证明：
+
+(a) 如果 $S_{n}/n$ 几乎处处收敛，则 $\xi_{1}$ 可积。
+
+(b) 如果 $S_{n}/\sqrt{n}$ 依分布收敛，则 $\xi_{1}$ 平方可积。
+\end{enumerate}

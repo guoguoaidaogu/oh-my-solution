@@ -1,0 +1,47 @@
+\setdisplaytitle{试卷：现代概率论基础 I}
+\sethtmltitle{试卷：现代概率论基础 I}
+
+== 2025--2026学年第一学期《现代概率论基础 I》（吴波）期末试题 ==
+(注:考试时间为120分钟, 考场上实际提前5分钟发卷, 延后5分钟收卷, 共130分钟)
+\begin{enumerate}
+    \item (10分) 设 $\mathscr{C}$ 是一个集类. 证明 $\forall A \in \sigma(\mathscr{C})$, 存在 $\mathscr{C}$ 的可数子集类 $\mathscr{C}_1$, 使得 $A \in \sigma(\mathscr{C}_1)$.
+
+    \begin{proofc}[提示]
+    考虑集类$\{A\in \sigma(\mathscr{C})|\text{存在 } \mathscr{C} \text{ 的可数子集类 } \mathscr{C}_1 \text{ 使得 } A \in \sigma(\mathscr{C}_1)\}$.
+    \end{proofc}
+
+    \item (10分) 设 $f, f_n, n \geq 1$ 为有限可测函数. 证明: $f_n \xrightarrow{\text{a.e.}} f$ 充要条件: 
+    $\forall \varepsilon > 0$, $$\mu\left(\bigcap_{n=1}^\infty \bigcup_{m=n}^\infty \{ \left\lvert f_m - f\right\rvert \geq \varepsilon \right)=0.$$
+    \item (15分) 随机变量 $\xi, \eta$ 独立充要条件: 对任意的有界可测函数 $f, g$ 有 $$\mathbb{E} \left(f(\xi)g(\eta)\right) = \mathbb{E}(f(\xi))\mathbb{E}(g(\eta)).$$
+    \item (15分) 设 $\{\xi_n\}_{n\geq 1}$ 为一列取值于 $\{1, \cdots, N\}$ 的独立同分布的随机变量, 且 $\mathbb{P}(\xi_i = k) = p(k) > 0, 1 \leq k \leq N$. 
+    令 $\eta_n(\omega) = p(\xi_1(\omega))\cdots p(\xi_n(\omega))$. 
+    证明: $$\frac{\log \eta_n}{n} \stackrel{\mathbb{P}}{\longrightarrow} \sum_{k=1}^N p(k) \log p(k).$$
+    \item (15分) 设 $\Omega$ 是 $[0,1]$ 中所有的有理数组成的集合, 令 $$\mathscr{F} := \{B_{a,b} = \{x\in \Omega \mid a \leq x \leq b\} \mid 0 \leq a \leq b \leq 1\}.$$ 
+    在 $\mathscr{F}$ 上定义 $\mu$: $$\mu(B_{a,b}) = b - a,$$ 试证明 $\mu$ 不是 $\mathscr{F}$ 上的一个测度.
+    \item (15分) 设事件类 $\mathscr{C}_1, \mathscr{C}_2$ 为两个子 $\sigma$ 代数, 则对任意可积的随机变量 $\xi$, 
+    $$\mathbb{E}(\mathbb{E}(\xi | \mathscr{C}_1) | \mathscr{C}_2) = \mathbb{E}(\mathbb{E}(\xi | \mathscr{C}_2) | \mathscr{C}_1)$$ 是否成立? 若成立, 给出证明, 否则举反例.
+    \item (20分) 设 $(\Omega, \mathscr{F}, \mathbb{P})$ 为一概率空间, $\{\mathscr{F}_n\}_{n \geq 1}$ 为 $\mathscr{F}$ 的一列子 $\sigma$ 代数, $\{\xi_n\}_{n \geq 1}$ 为一列非负可积的随机变量, 
+    证明: $\mathbb{E}(\xi_n | \mathscr{F}_n) \stackrel{\mathbb{P}}{\longrightarrow} 0 \Rightarrow \xi_n \stackrel{\mathbb{P}}{\longrightarrow} 0$. 反之则不成立, 请举反例. 
+    
+    \begin{proofc}[解答]
+    $\forall \varepsilon>0$, $\mathbb{E}[\xi_n|\mathscr{F}_n]\geq \mathbb{E}[\xi_n1_{\{\xi_n\geq \varepsilon\}}|\mathscr{F}_n]\geq \varepsilon \mathbb{E}[1_{\{\xi_n\geq \varepsilon\}}|\mathscr{F}_n], \mathbb{P}-$a.s.
+
+    固定$\varepsilon>0,\forall \delta>0,$
+    
+    $$
+    \begin{aligned}
+    \mathbb{P}(\xi_n\geq \varepsilon) &= \mathbb{E}[1_{\{\xi_n\geq \varepsilon\}}1_{\{ \mathbb{E}[\xi_n|\mathscr{F}_n] > \delta \}}  ]+ \mathbb{E}[1_{\{\xi_n\geq \varepsilon\}}1_{\{ \mathbb{E}[\xi_n|\mathscr{F}_n] \leq \delta \}} ] \\
+    &\leq \mathbb{E}[1_{\{ \mathbb{E}[\xi_n|\mathscr{F}_n] > \delta \}} ]+ \mathbb{E}[   \mathbb{E}[1_{\{\xi_n\geq \varepsilon\}}1_{\{ \mathbb{E}[\xi_n|\mathscr{F}_n]\leq \delta \}}|\mathscr{F}_n] ]\\
+    &= \mathbb{E}[1_{\{ \mathbb{E}[\xi_n|\mathscr{F}_n] > \delta \}} ]+ \mathbb{E}[ 1_{\{ \mathbb{E}[\xi_n|\mathscr{F}_n]\leq \delta \}}      \mathbb{E}[1_{\{\xi_{n}\geq \varepsilon\}}|\mathscr{F}_n] ]\\
+    &\leq \mathbb{E}[1_{\{ \mathbb{E}[\xi_n|\mathscr{F}_n] > \delta \}} ]+  \mathbb{E}[ 1_{\{ \mathbb{E}[\xi_n|\mathscr{F}_n]\leq \delta \}}     \frac{1}{\varepsilon}\mathbb{E}[\xi_n|\mathscr{F}_n]     ]\\
+    &\leq \mathbb{E}[1_{\{ \mathbb{E}[\xi_n|\mathscr{F}_n] > \delta \}} ]+\frac{\delta}{\varepsilon}
+    \end{aligned}
+    $$
+
+
+    固定$\delta>0$,令$n\to \infty$,则知$\varlimsup\limits_{n\to \infty}\mathbb{P}(\xi_n\geq \varepsilon)\leq \frac{\delta}{\varepsilon},$再令$\delta\to 0^+,$知$\varlimsup\limits_{n\to \infty}\mathbb{P}(\xi_n\geq \varepsilon)\leq 0$
+
+    反例: $\Omega=[0,1]$, 概率测度取为其上的Lebesgue测度, $\{\mathscr{F}_n\}_{n \geq 1}$全取为平凡$\sigma$代数$\{\emptyset,\Omega\}$, $\xi_n(\omega):=n1_{[0,\frac{1}{n}]}(\omega)$
+    \end{proofc}
+
+\end{enumerate}

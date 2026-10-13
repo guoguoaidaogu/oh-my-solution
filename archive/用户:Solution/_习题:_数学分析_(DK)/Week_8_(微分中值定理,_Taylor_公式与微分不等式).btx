@@ -1,0 +1,321 @@
+\newenvironment{solution}{\begin{proofc}[解答]}{\end{proofc}}
+
+== 习题A ==
+
+\begin{enumerate}
+    \item[1.]证明如下不等式:
+    \begin{enumerate}
+        \item[(a)]$\displaystyle \left|\sin x - \sin y\right|\leq \left|x - y\right|$;
+        \item[(b)]$\displaystyle \left|\arctan x - \arctan y\right|\leq \left|x - y\right|$;
+        \item[(c)]$\displaystyle ny^{n - 1}(x - y)< x^{n} - y^{n}< nx^{n - 1}(x - y)\quad (n > 1,x > y > 0)$;
+        \item[(d)]$\displaystyle \frac{b - a}{b} < \ln \frac{b}{a} < \frac{b - a}{a}\quad (b > a > 0)$;
+        \item[(e)]$\displaystyle e^x > 1+x+\frac{x^2}{2}\quad (x>0)$;
+        \item[(f)]$\displaystyle \frac{x}{1 + x} < \ln (1 + x)< x\quad (x > 0)$;
+        \item[(g)]$\displaystyle x-\frac{x^2}{2}<\ln(1+x)<x\quad (0<x<1)$;
+        \item[(h)]$\displaystyle \frac{2}{\pi}x<\sin{x}<x\quad (0<x<\frac{\pi}{2})$.
+    \end{enumerate}
+    \item[2.]证明: 若 $f$ 在一个开区间上可导且导数恒等于0, 则 $f$ 必是常数.
+    \item[3.]设 $f$ 在 $(0, + \infty)$ 上可微, 且
+    \[\displaystyle \lim_{x\to +\infty}f^{\prime}(x) = 0.\]
+    证明:
+    \[\displaystyle \lim_{x\to +\infty}\frac{f(x)}{x} = 0.\]
+    \begin{solution}
+        由
+        \[
+        \lim_{x\to +\infty}f'(x)=0.
+        \]
+        可知
+        \[
+        \forall \epsilon>0,\,\exists X'>0,\,\forall x>X':\,\left|f'(x)\right|<\frac{\epsilon}{2}.
+        \]
+        取定$x_{0}\geq X'$，则
+        \[
+        \exists X>x_{0},\,\forall x>X:\,\left|\frac{f(x_{0})}{x}\right|<\frac{\epsilon}{2}.
+        \]
+        应用 Lagrange 定理，则有
+        \[
+        \begin{aligned}
+        \frac{f(x)}{x}&=\left|\frac{f(x_{0})}{x}+\frac{f(x)-f(x_{0})}{x-x_{0}}\cdot \frac{x-x_{0}}{x}\right|\\
+        &\leq \left|\frac{f(x_{0})}{x}\right|+\left|\frac{f(x)-f(x_{0})}{x-x_{0}}\right|\cdot\left|\frac{x-x_{0}}{x}\right|\\
+        &=\left|\frac{f(x_{0})}{x}\right|+\left|f'(\xi)\right|\cdot \left|\frac{x-x_{0}}{x}\right|<\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon. 
+        \end{aligned}
+        \]
+        故
+        \[
+        \lim_{x\to +\infty}\frac{f(x)}{x}=0.
+        \]
+        成立.
+    \end{solution}
+
+    \item[4.]已知 $\displaystyle\lambda_{1},\cdots ,\lambda_{n}$ 为互不相同的实数, 另有不全为零的实数 $c_{1},\cdots ,c_{n}$. 证明:函数
+
+    \[\displaystyle f(t) = \sum_{i = 1}^{n}c_{i}e^{\lambda_{i}t}.\]
+
+    至多有 $(n - 1)$ 个互不相同的零点,并说明 $(n - 1)$ 是否是零点数目的最优上界.
+    \begin{solution}
+        (1) 首先证明至多有 $n-1$ 个互不相同的零点.\\
+        假设 $f(t)$ 有 $n$ 个互不相同的零点 $t_1, t_2, \ldots, t_n$.\\
+        考虑线性方程组：
+        \[
+        \sum_{i=1}^n c_i e^{\lambda_i t_j} = 0, \quad j = 1, 2, \ldots, n
+        \]
+        这个方程组的系数矩阵为 $A = (a_{ij})$，其中 $a_{ij} = e^{\lambda_i t_j}$.\\
+        我们可以将这个矩阵表示为：
+        \[
+        A = 
+        \begin{bmatrix}
+            e^{\lambda_1 t_1} & e^{\lambda_1 t_2} & \cdots & e^{\lambda_1 t_n} \\
+            e^{\lambda_2 t_1} & e^{\lambda_2 t_2} & \cdots & e^{\lambda_2 t_n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            e^{\lambda_n t_1} & e^{\lambda_n t_2} & \cdots & e^{\lambda_n t_n}
+        \end{bmatrix}
+        \]
+        其可以改写为：
+        \[
+        A = 
+        \begin{bmatrix}
+            e^{\lambda_1 t_1} & 0 & \cdots & 0 \\
+            0 & e^{\lambda_2 t_1} & \cdots & 0 \\
+            \vdots & \vdots & \ddots & \vdots \\
+            0 & 0 & \cdots & e^{\lambda_n t_1}
+        \end{bmatrix}
+        \cdot
+        \begin{bmatrix}
+            1 & e^{\lambda_1 (t_2-t_1)} & \cdots & e^{\lambda_1 (t_n-t_1)} \\
+            1 & e^{\lambda_2 (t_2-t_1)} & \cdots & e^{\lambda_2 (t_n-t_1)} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            1 & e^{\lambda_n (t_2-t_1)} & \cdots & e^{\lambda_n (t_n-t_1)}
+        \end{bmatrix}
+        \]
+
+        右边矩阵是广义Vandermonde矩阵，由于 $\lambda_i$ 互不相同且 $t_j$ 互不相同，此矩阵可逆.\\
+        左边的对角矩阵也是可逆的(因为 $e^{\lambda_i t_1} \neq 0$).\\
+        因此矩阵 $A$ 是可逆的，从而方程组只有零解 $c_i = 0$，与已知 $c_i$ 不全为零矛盾. \\
+        所以 $f(t)$ 至多有 $n-1$ 个互不相同的零点.
+
+        (2) 说明 $(n-1)$ 是最优上界.\\
+        考虑函数 
+        \[
+        g(t) = \prod_{k=1}^{n-1} (e^t - e^{t_k})
+        \]
+        其中 $t_1, t_2, \ldots, t_{n-1}$ 是任意 $n-1$ 个互不相同的实数.\\将 $g(t)$ 展开为：
+        \[
+        g(t) = \sum_{i=0}^{n-1} a_i e^{it}
+        \]
+        其可以表示为 
+        \[
+        f(t) = \sum_{i=0}^{n-1} a_i e^{it}
+        \]
+
+        显然，$g(t)$ 在 $t = t_1, t_2, \ldots, t_{n-1}$ 处为零，因为这些点使得 $e^t - e^{t_k} = 0$。因此 $f(t)$ 有 $n-1$ 个互不相同的零点.
+        因此，$(n-1)$ 是零点数目的最优上界.
+    \end{solution}
+
+    \item[5.] Newton 迭代法是求零点的快速算法. 设 $x^{*}$ 是函数 $f(x)$ 的一个零点,且已知在 $x^{*}$ 的一个邻域内, 
+    $\displaystyle|f^{\prime}(x)|\geq C_{1} > 0$, 且 $\displaystyle|f^{\prime \prime}(x)|\leq C_{2}$.
+    取 $x^{*}$ 邻域内的初值 $x_{1}$, 并归纳定义:
+
+    \[\displaystyle x_{n + 1} = x_{n} - \frac{f(x_{n})}{f^{\prime}(x_{n})},\quad \forall n\geq 1.\]
+
+    证明: $\displaystyle|x_{n + 1} - x^{*}|\leq C_{3}|x_{n} - x^{*}|^{2}$, 其中 $C_{3}$ 依赖于 $C_{1},C_{2}$.
+    \begin{solution}
+        设 $\displaystyle e_n = x_n - x^* $. 由 Taylor 公式：
+        \[
+        f(x^*) = f(x_n) + f'(x_n)(x^* - x_n) + \frac{1}{2} f''(\xi)(x^* - x_n)^2.
+        \]
+        由于 $\displaystyle f(x^*) = 0 $，有：
+        \[
+        0 = f(x_n) - f'(x_n) e_n + \frac{1}{2} f''(\xi) e_n^2.
+        \]
+        所以有
+        \[
+        \frac{f(x_n)}{f'(x_n)} = e_n - \frac{1}{2} \frac{f''(\xi)}{f'(x_n)} e_n^2.
+        \]
+        Newton 迭代为 $\displaystyle x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)} $，代入有：
+        \[
+        e_{n+1} = e_n - \frac{f(x_n)}{f'(x_n)} = \frac{1}{2} \frac{f''(\xi)}{f'(x_n)} e_n^2.
+        \]
+        由条件 $\displaystyle |f'(x)| \geq C_1 > 0 $ 和 $ |f''(x)| \leq C_2 $，得：
+        \[
+        |e_{n+1}| \leq \frac{1}{2} \frac{C_2}{C_1} |e_n|^2.
+        \]
+        所以 $\displaystyle C_3 = \frac{C_2}{2 C_1} $.
+    \end{solution}
+
+    \item[6.]设 $x^{*}$ 是函数 $f(x)$ 的一个零点, 且已知在 $x^{*}$ 的一个邻域内, $\displaystyle|f^{\prime}(x)|\geq C_{1} > 0$,
+    且 $\displaystyle|f^{\prime \prime}(x)|\leq C_{2}$ .取 $x^{*}$ 邻域内的初值 $x_{1}\neq x_{2}$, 并归纳定义:
+    \[\displaystyle x_{n + 1} = x_{n} - f(x_{n})\frac{x_{n} - x_{n - 1}}{f(x_{n}) - f(x_{n - 1})},\quad \forall n\geq 2.\]
+    证明: 假设在迭代过程中 $\displaystyle f(x_n) \neq f(x_{n-1})$, 则 $\displaystyle\ln(|x_n - x^*|) \leq -C_3 \alpha^n$, 其中 $\alpha \approx 1.618$. 
+    (提示: 不妨设 $x^* = 0$, 证明 $\displaystyle\frac{x_{n+2}}{x_{n+1}x_n}$ 有界.)
+    \begin{solution}
+        不妨设 $x^*=0$，则 $f(0)=0$. 根据递推关系，我们有
+        \[
+            \frac{x_{n+2}}{x_{n+1}}=\frac{x_{n+1}-f(x_{n+1})\cdot\frac{x_{n+1}-x_n}{f(x_{n+1})-f(x_n)}}{x_{n+1}}=\frac{f(x_{n+1})x_n-f(x_n)x_{n+1}}{x_{n+1}(f(x_{n+1}-f(x_n)))}.
+        \]
+        从而
+        \[
+            \frac{x_{n+2}}{x_{n+1}x_n}=\frac{f(x_{n+1})}{x_{n+1}(f(x_{n+1})-f(x_n))}-\frac{f(x_{n})}{x_{n}(f(x_{n+1})-f(x_n))}=\frac{1}{f(x_{n+1})-f(x_n)}\left( \frac{f(x_{n+1})}{x_{n+1}}-\frac{f(x_n)}{x_n} \right).
+        \]
+        令 $\displaystyle g(x)\coloneqq\frac{f(x)}{x}$，则有
+        \[
+            \left| \frac{x_{n+2}}{x_{n+1}x_n} \right|\overset{\mathrm{Lagrange}}{=}\left| \frac{g'(\eta)(x_{n+1}-x_n)}{f'(\xi)(x_{n+1}-x_n)} \right|=\left| \frac{g'(\eta)}{f'(\xi)} \right|\leq \frac{g'(\eta)}{C_1}.
+        \]
+        只需证明 $\displaystyle g'(x)=\frac{f'(x)x-f(x)}{x^2}$ 有界. 
+        可以使用 L'Hospital 法则：
+        \[
+            \limsup_{x\to 0}\left| g'(x) \right|\leq\limsup_{x\to0}\left| \frac{f''(x)}{2x} \right|\leq\frac{1}{2}C_2.
+        \]
+        从而 $\displaystyle \left| \frac{x_{n+2}}{x_{n+1}x_n} \right|\leq\frac{C_2}{2C_1}$ 有界.\\
+        也可以使用 Taylor 公式：
+        \[
+            0=f(0)=f(x)-f'(x)\cdot x+\frac{f''(\beta)}{2!}x^2.
+        \]
+        从而
+        \[
+            \left| g'(x) \right| = \left| \frac{\frac{1}{2}f''(\beta)x^2}{x^2} \right| = \left| \frac{1}{2}f''(\beta)\right| \leq \frac{1}{2}C_2.
+        \]
+        从而 $\displaystyle \left| \frac{x_{n+2}}{x_{n+1}x_n} \right|\leq\frac{C_2}{2C_1}\eqqcolon C_4.$ 有界.\\
+        故取对数有 $\displaystyle \ln\left| x_{n+2} \right|-\ln\left| x_{n+1} \right|-\ln\left| x_{n} \right|\leq \ln{C_4}$. \\
+        由此即知原命题得证.
+    \end{solution}
+\end{enumerate}
+
+== 习题B ==
+
+\begin{enumerate}
+    \item[1.]应用Taylor公式计算如下极限:
+    \begin{enumerate}
+        \item[(a)]$\displaystyle \lim_{x\to 0}\frac{\cos x - e^{-\frac{x^2}{2}}}{x^4}$;
+        \item[(b)]$\displaystyle \lim_{x\to 0}\frac{e^x\sin x - x(1 + x)}{x^3}$;
+        \item[(c)]$\displaystyle \lim_{x\to 0}\frac{1}{x}\left(\frac{1}{x} -\cot x\right)$;
+        \item[(d)]$\displaystyle \lim_{x\to 0}\frac{\sin\sin x - x\sqrt[3]{1 - x^2}}{x^5}$;
+        \item[(e)]$\displaystyle \lim_{x\to 0}\frac{1 - (\cos x)^{\sin x}}{x^3}$;
+        \item[(f)]$\displaystyle \lim_{x\to 0}\frac{\sinh\tan x - x}{x^3}$;
+        \item[(g)]$\displaystyle \lim_{x\to +\infty}\left(\sqrt[6]{x^6 + x^5} -\sqrt[6]{x^6 - x^5}\right)$;
+        \item[(h)]$\displaystyle \lim_{x\to 0}\frac{a^x + a^{-x} - 2}{x^2}\quad (a > 0)$;
+        \item[(i)]$\displaystyle \lim_{x\to 0}\left(\frac{1}{x} -\frac{1}{\sin x}\right)$.
+    \end{enumerate}
+    \begin{solution}
+        \begin{enumerate}
+            \item[(d)]\\
+            \[
+            \begin{aligned}
+            &\quad\lim_{x\to 0}\frac{\sin(\sin{x})-x\sqrt[3]{1-x^2}}{x^5}\\
+            &=\lim_{x\to 0}\frac{(\sin{x}-\frac{\sin^3x}{3!}+\frac{\sin^5x}{5!}+o(x^5))-x\cdot(1+\frac{1}{3}(-x^2)+\frac{1}{2}\cdot(-\frac{2}{9})(-x^2)^2+o(x^4))}{x^5}\\
+            &=\lim_{x\to 0}\frac{\left(x-\frac{x^3}{3!}+\frac{x^5}{5!}\right)-\frac{1}{3!}\left(x-\frac{x^3}{3!}\right)^3+\frac{1}{5!}\left(x^5+o(x^5)\right)-x+\frac{1}{3}x^3+\frac{2}{9}x^5}{x^5}\\
+            &=\frac{19}{90}.
+            \end{aligned}
+            \]
+            \item[(f)]\\
+            \[
+            \begin{aligned}
+            &\quad\lim_{x\to 0}\frac{\sinh\tan{x}-x}{x^3}=\lim_{x\to 0}\frac{e^{\tan{x}}-e^{-\tan{x}}-2x}{2x^3}\\
+            &=\lim_{x\to 0}\frac{\left(1+\tan{x}+\frac{1}{2!}\tan^2{x}+\frac{1}{3!}\tan^3{x}+o(x^3)\right)-\left(1-\tan{x}+\frac{1}{2!}\tan^2{x}-\frac{1}{3!}\tan^3{x}+o(x^3)\right)-2x}{2x^3}\\
+            &=\lim_{x\to 0}\frac{2\tan{x}+\frac{1}{3}\tan^3{x}-2x}{2x^3}=\lim_{x\to 0}\frac{2\left(x+\frac{x^3}{3}+o(x^3)\right)+\frac{1}{3}\left(x^3+o(x^3)\right)-2x}{2x^3}=\frac{1}{2}.
+            \end{aligned}
+            \]
+            \item[(h)]\\
+            \[
+            \begin{aligned}
+            &\quad\lim_{x\to 0}\frac{a^x+a^{-x}-2}{x^2}=\lim_{x\to 0}\frac{e^{x \ln a} + e^{-x \ln a} - 2}{x^2}=\lim_{x\to 0}\frac{2 \cosh(x \ln a) - 2}{x^2}\\
+            &=\lim_{x\to 0}\frac{2\left(1+\frac{1}{2}\left(x\ln a\right)^2+o(x^2)\right)}{x^2}=\ln^2a.
+            \end{aligned}
+            \]
+        \end{enumerate}
+    \end{solution}
+
+    \item[2.]在 $x = 0$ 处展开 $\displaystyle f(x) = \frac{1}{1 + x + x^2}$ 到 $x^4$, 即余项为 $\displaystyle o(x^4)$. 
+    (提示: 可以先将作为整体应用 Taylor 公式.)
+    \item[3.]如何选择 $a$ 和 $b$ 的值可以让 $\displaystyle x - (a + b \cos x) \sin x$ 是 $x^5$ 的同阶无穷小 $(x \to 0)$?
+    \item[4.]系数 $A, B, C, D$ 为何值时,
+
+\[\displaystyle e^x = \frac{1 + Ax + Bx^2}{1 + Cx + Dx^2} + O(x^5) \quad (x \to 0)?\]
+\end{enumerate}
+
+== 习题C ==
+
+\begin{enumerate}
+    \item[1.](\textbf{熵不等式}) 设 $\displaystyle p_i, q_i > 0$ 且 $\displaystyle\sum_{i=1}^{n} p_i = \sum_{i=1}^{n} q_i = 1$, 则
+
+\[\displaystyle \sum_{i=1}^{n} p_i \ln \frac{p_i}{q_i} \geq 0.\]
+
+等式成立当且仅当 $\displaystyle p_i = q_i, i = 1, 2, \ldots, n$.
+    \item[2.](O. A. Oleinik) 证明: 设 $\displaystyle f \in C^2(\mathbb{R})$ 是非负函数, 则对任意 $x \in \mathbb{R}$ 均成立
+
+\[\displaystyle |f'(x)|^2 \leq 2f(x) \sup_{z \in \mathbb{R}} f''(z).\]
+
+注: 这个不等式是研究退化型偏微分方程的重要工具.
+    \item[3.](E. Landau) 证明: 对任意 $\displaystyle f \in C^2(\mathbb{R})$ 均成立
+
+\[\displaystyle \sup_{x \in \mathbb{R}} |f'(x)|^2 \leq 2 \left( \sup_{x \in \mathbb{R}} |f(x)| \right) \left( \sup_{x \in \mathbb{R}} |f''(x)| \right).\]
+\end{enumerate}
+\begin{solution}
+    \begin{enumerate}
+    \item[1.]
+    显然有不等式 $\displaystyle \ln x \leq x - 1 $ (等号当且仅当 $ x = 1 $).\\
+    令 $\displaystyle x = \frac{q_i}{p_i}>0 $，则：
+    \[
+    \ln \frac{q_i}{p_i} \leq \frac{q_i}{p_i} - 1
+    \]
+    两边乘以 $ p_i $ 并求和：
+    \[
+    \sum p_i \ln \frac{q_i}{p_i} \leq \sum (q_i - p_i) = 0
+    \]
+    所以：
+    \[
+    - \sum p_i \ln \frac{p_i}{q_i} \leq 0 \quad \Rightarrow \quad \sum p_i \ln \frac{p_i}{q_i} \geq 0
+    \]
+    等号成立当且仅当 $\displaystyle \forall i,\, \frac{q_i}{p_i} = 1 $，即 $ p_i = q_i $. 
+
+    \item[2.]
+    令 $\displaystyle M = \underset{z\in\mathbb{R}}{\sup} f''(z) $，则 $M$ 不可能小于0，否则 $f(x)$ 不可能是非负函数，故 $ M \geq 0 $.\\
+    考虑函数：
+    \[
+    \varphi(t) = f(x) + f'(x) t + \frac{1}{2} M t^2
+    \]
+    由 Taylor 公式， $\forall t\in\mathbb{R} ,\, \exists \xi $ 使得：
+    \[
+    0\leq f(x+t) = f(x) + f'(x) t + \frac{1}{2} f''(\xi) t^2 \leq \varphi(t).
+    \]
+    所以二次函数 $ \phi(t) $ 非负，其判别式满足：
+    \[
+    [f'(x)]^2 - 2 f(x) M \leq 0
+    \]
+    即
+    \[
+    |f'(x)|^2 \leq 2 f(x) M. 
+    \]
+
+    \item[3.]
+    令 $\displaystyle M_0 = \sup_{x\in\mathbb{R}} |f(x)| $, $ M_2 = \sup_{x\in\mathbb{R}} |f''(x)| $.\\
+    由Taylor公式 (其中 $h\neq 0$)：
+    \[
+    f(x+h) = f(x) + f'(x) h + \frac{1}{2} f''(\xi) h^2.
+    \]
+    \[
+    f(x-h) = f(x) - f'(x) h + \frac{1}{2} f''(\eta) h^2.
+    \]
+    相减得
+    \[
+    f(x+h) - f(x-h) = 2 f'(x) h + \frac{1}{2} h^2 (f''(\xi) - f''(\eta)).
+    \]
+    所以
+    \[
+    |2 f'(x) h| \leq |f(x+h) - f(x-h)| + \frac{1}{2} h^2 |f''(\xi) - f''(\eta)| \leq 2 M_0 + M_2 h^2.
+    \]
+    即
+    \[
+    |f'(x)| \leq \frac{M_0}{|h|} + \frac{1}{2} M_2 |h|.
+    \]
+    令 $ t = |h| > 0 $，由$t$的任意性，可以求 $\displaystyle \frac{M_0}{t} + \frac{1}{2} M_2 t $最小值.\\
+    由基本不等式可知，其最小值为
+    \[
+    \sqrt{2 M_0 M_2}.
+    \]
+    所以：
+    \[
+    |f'(x)| \leq \sqrt{2 M_0 M_2} \quad \Rightarrow \quad |f'(x)|^2 \leq 2 M_0 M_2.
+    \]
+    关于 $x$ 取上确界即得证.
+    \end{enumerate}
+\end{solution}

@@ -1,0 +1,200 @@
+\setdisplaytitle{Chapter 4 Integration on Manifolds}
+\sethtmltitle{Chapter 4 Integration on Manifolds}
+\begin{enumerate}
+\item $(\Leftarrow)$ Let $\omega=d r_{1} \wedge \ldots \wedge d r_{d+1}$ be the volume form on $\mathbb{R}^{d+1}$ 
+and $\omega^{\prime}(x)=\delta f_{x}(i(N(x)) \omega_{f(x)})$ for a smooth nowhere-vanishing normal vector field $N$ along $(X, f)$. 
+Then it is a non-vanishing $d$-form on $X$, since for $x \in X$ and $X_{1}, \ldots, X_{d} \in X_{x}$ which are linearly independent, $\omega_{x}^{\prime}(X_{1}, \ldots, X_{d}) \neq 0$.
+
+$(\Rightarrow)$ Let $\omega^{\prime}$ be a nowhere-vanishing $d$-form on $X$. 
+For $x \in X$ choose $X_{1}, \ldots, X_{d} \in X_{x}$ which satisfies $\widetilde{X_{1}} \wedge \ldots \wedge \widetilde{X_{d}}=\omega_{x}$. 
+Then we can pick $N(x) \in\big(\mathbb{R}^{d+1}\big)_{f(x)}$ s.t. $N(x)$ is orthogonal to $d f(X_{x})$ and $\omega(d f(X_{1}), \ldots, d f(X_{d}), N(x))=1$ where $\omega=d r_{1} \wedge \ldots \wedge d r_{d+1}$. 
+$N(x)$ is independent of the choice of $X_{1}, \ldots, X_{d} \in X_{x}$, 
+since for $Y_{1}, \ldots, Y_{d}$ which also satisfies $\widetilde{Y}_{1} \wedge \ldots \wedge \widetilde{Y_{d}}=\omega_{x}$, 
+one can express $Y_{i}=\sum_{j} a_{ij} X_{j}$, 
+then using Exercise 2.10, we see that $\det a_{ij}=1$. 
+Thus $\omega(d f(Y_{1}), \ldots, d f(Y_{d}), N(x))=1$ also. 
+Then since $d f(X_{x})^{\perp}$ is $1$-dimensional, 
+$N(x)$ which satisfies the condition above is uniquely determined. 
+Also, it is by definition nowhere-vanishing. 
+It remains to show that $N$ is smooth, but locally on the neighborhood of $x \in X$ 
+we can choose smooth vector field $X_{1}, \ldots, X_{d}$ 
+which satisfies $\widetilde{X_{1}} \wedge \ldots \wedge \widetilde{X_{d}}=\omega^{\prime}$ on the neighborhood, 
+and $d f(X_{1}), \ldots, d f(X_{d})$ is also smooth on the neighborhood of $f(x)$ over $f(X)$. 
+Therefore locally $N$ is also smooth (locally you can use the Gram--Schmidt process, and scaling if necessary, 
+then the result $N(x)$ would be a smooth function of the local coordinates of $x$).
+\item Taking a nowhere-vanishing $n$-form on $\mathbb{P}^{n}$ is equivalent to 
+taking a nowhere-vanishing $n$-form on $S^{n}$ such that it is preserved by antipodal map. 
+Now regard $S^{n}$ as imbedded to $\mathbb{R}^{n+1}$, and let $N$ be the outward unit normal vector field on $S^{n}$ and $\omega=d r_{1} \wedge \ldots \wedge d r_{n+1}$. 
+Then $\omega^{\prime}=i(N) \omega$ is a nowhere-vanishing $n$-form on $S^{n}$. 
+If $\varphi\colon \mathbb{R}^{n+1} \rightarrow \mathbb{R}^{n+1}, x \mapsto-x$, 
+$\varphi|_{S^{n}}$ is the antipodal map, and
+\[\delta \varphi_{x} \omega_{x}^{\prime}=(-1)^{n} i(N(x)) \omega_{-x}
+=(-1)^{n+1} i(N(-x) \omega_{-x})=(-1)^{n+1} \omega_{-x}^{\prime}.\]
+Therefore, if $n$ is odd, $\varphi$ is orientation-preserving, therefore $\mathbb{P}^{n}$ is orientable. 
+But if $n$ is even, $\varphi$ is orientation-reversing, 
+so we cannot take a nowhere-vanishing $n$-form on $S^{n}$ which is preserved by the antipodal map, 
+which means $\mathbb{P}^{n}$ is not orientable.
+\item At first find local vector fields $X_{1}, \ldots, X_{n}$ near $p \in X$ 
+s.t. $X_{1, p}, \ldots, X_{n, p}$ is orthonormal, 
+and let $L(m)=\{g(X_{i, m}, X_{j, m})\}_{i, j}$ where $g$ is the given Riemannian metric. 
+Then near $p \in X$, it is a smooth function to the set of $n \times n$ matrix. Also $L(p)=I$. 
+Therefore locally $L$ is positive definite and also symmetric by definition. 
+Thus there is $R$ s.t. $R^{2}=L$, which is also smooth and symmetric. 
+Define $(Y_{1}, \ldots, Y_{n})^{t}=R^{-1}(X_{1}, \ldots, X_{n})^{t}$. 
+Then we see that $g(Y_{i}, Y_{j})=\delta_{ij}$, which means that they are local orthonormal frame fields.
+\item Use the notation on the problem. Let $V=f_{1} e_{1}+\ldots+f_{n} e_{n}$. 
+Then $\tilde{V}=f_{1} \omega_{1}+\ldots+f_{n} \omega_{n}$, so
+\[* \tilde{V}=f_{1} \omega_{2} \wedge \ldots \wedge \omega_{n}-\ldots+(-1)^{n-1} f_{n} \omega_{1} \wedge \ldots \wedge \omega_{n-1}.\]
+Therefore on $\partial D$,
+\[* \tilde{V}=f_{1} \omega_{2} \wedge \ldots \wedge \omega_{n}\]
+since $\omega_{1}|_{\partial D}=0$. 
+On the other hand, $\langle V, \vec{n}\rangle=f_{1}$ and $\omega_{2} \wedge \ldots \wedge \omega_{n}$ is the volume form on $\partial D$. Thus
+\[\int_{\partial D} * \tilde{V}=\int_{\partial D} f_{1}.\]
+Since
+\[\int_{D} \operatorname{div} V=\int_{D} * d * \tilde{V}
+=\int_{D} d * \tilde{V}=\int_{\partial D} * \tilde{V}\]
+by Stokes' theorem, the result follows.
+\item \begin{align*}
+-\int_{D} f \Delta g&=\int_{D} f(* d * d g)=\int_{D} f(d * d g)\\
+&=\int_{D} d(f * d g)-\int_{D} d f \wedge * d g\\
+&=\int_{D} d(f * d g)-\int_{D}\langle d f, d g\rangle.
+\end{align*}
+Therefore
+\begin{align*}
+\int_{D}\langle \operatorname{grad} f, \operatorname{grad} g\rangle-\int_{D} f \Delta g
+&=\int_{D}\langle\widetilde{d f}, \widetilde{d g}\rangle-\int_{D} f \Delta g=\int_{D} d(f * d g)\\
+&=\int_{\partial D} f * d g=\int_{\partial D} *(f d g).
+\end{align*}
+Using the proof of Exercise 4,
+\[*(f d g)=\langle\widetilde{f d g}, \vec{n}\rangle=f \frac{\partial g}{\partial n}\]
+on $\partial D$. Therefore Green's 1st identity follows. 
+
+For the 2nd identity, interchange $f$ and $g$ and subtract from the former one.
+\item If we establish the latter equation, the former one directly follows. 
+For the latter one, since the vector space of $1$-forms is $1$-dimensional, 
+we only need to show that they have the same nonzero value for some arbitrary $n$-tuples of vectors. 
+If we put $X_{1}, \ldots, X_{n}$, the left side becomes $\omega(X_{1}, \ldots, X_{n})^{2}$, 
+which is the same as $\tilde{X}_{1} \wedge \ldots \wedge \tilde{X}_{n}(X_{1}, \ldots, X_{n})
+=\det\{\left\langle X_{i}, X_{j}\right\rangle\}$ since $\omega$ is the volume form.
+\item Since $\bar{\lambda}(\sigma \tau)=\bar{\lambda}(\sigma) \bar{\lambda}(\tau)$, we only need to show that it is $\mathcal{C}^{\infty}$ at $e$. 
+On the local chart of $e$ with coordinate functions $x_{1}, \ldots, x_{n}$ centered at $e$, 
+$\omega$ can be expressed as $f(x_{1}, \ldots, x_{n}) d x_{1} \wedge \ldots \wedge d x_{n}$ where $f$ is $\mathcal{C}^{\infty}$. 
+Since $\bar{\lambda}(\sigma) \omega_{e}=\delta r_{\sigma}(\omega_{\sigma})$,
+\begin{align*}
+\bar{\lambda}(\sigma) f(0, \ldots, 0) d x_{1} \wedge \ldots \wedge d x_{n}
+&=f(x_{1}(\sigma), \ldots, x_{n}(\sigma)) d(x_{1} \circ r_{\sigma}) \wedge \ldots \wedge d(x_{n} \circ r_{\sigma})\\
+&=f(x_{1}(\sigma), \ldots, x_{n}(\sigma)) \frac{\det\{\langle d x_{i} \circ r_{\sigma}, d x_{j} \circ r_{\sigma}\rangle\}}{\det\{\langle d x_{i}, d x_{j}\rangle\}} d x_{1} \wedge \ldots \wedge d x_{n},
+\end{align*}
+so
+\[\bar{\lambda}(\sigma)=\frac{f(x_{1}(\sigma), \ldots, x_{n}(\sigma))}{f(0, \ldots, 0)} \frac{\det\{\langle d x_{i} \circ r_{\sigma}, d x_{j} \circ r_{\sigma}\rangle\}}{\det\{\langle d x_{i}, d x_{j}\rangle\}}\]
+which is $\mathcal{C}^{\infty}$.
+\item (This is one of the characteristics of the Haar measure on a unimodular Lie group. Here is the sketch of the proof.) Since
+\[\delta r_{\sigma} \delta \alpha(\omega)=\delta \alpha \delta l_{\sigma^{-1}}(\omega)=\delta \alpha(\omega),\]
+it is right invariant. Let $\omega^{\prime}=\delta \alpha(\omega)$ and think of $\mu, \mu^{\prime}$ as measures on $G$ corresponding to $\omega$ and $\omega^{\prime}$ respectively. 
+Then we can define $f \mapsto \int_{G} f \mu^{\prime}$ 
+which is a well--defined right--invariant integral on $G$. Now consider
+\[\int_{G \times G} f(\tau \sigma) \mu(\sigma) \mu^{\prime}(\tau);\]
+if we first integrate with respect to $\mu$ it gives $\left(\int_{G} f \omega\right)\left(\int_{G} \omega^{\prime}\right)$. 
+And if we integrate with respect to $\mu^{\prime}$ first, we get $\int_{G} f \omega^{\prime}$. 
+By Fubini's theorem, they must be the same. Also,
+\[\int_{G} \omega^{\prime}=\int_{G} \delta \alpha(\omega)=\int_{\alpha(G)} \omega=1,\]
+so $\int_{G} f \omega=\int_{G} f \omega^{\prime}$. 
+Since $\int_{G} f \omega^{\prime}=\int_{\alpha(G)}(f \circ \alpha) \omega$, the result follows.
+\item $(\Rightarrow)$ Since
+\[\langle d l_{\sigma} X, d l_{\sigma} Y\rangle
+=\langle d r_{\tau} X, d r_{\tau} Y\rangle=\langle X, Y\rangle,\]
+$\operatorname{Ad}(G)$ in $\operatorname{Aut}(g)$ is actually in $O(g)$. 
+Since $O(g)$ is compact, the closure of $\operatorname{Ad}(G)$ is also compact.
+
+$(\Leftarrow)$ Give to $g$ a non-degenerate inner product. Let $\ell \in \operatorname{Ad}(G)$. 
+Since $\operatorname{Ad}(G)$ is a subgroup of $\operatorname{Aut}(g)$ and has compact closure, 
+$\ell^{n}$ should be bounded for all $n \in \mathbb{Z}$. 
+It is satisfied only when $\|\ell\|=1$, so all elements of $\operatorname{Ad}(G)$ preserve the inner product. 
+Now for $\sigma \in G$ and $X, Y \in G_{\sigma}$, define
+\[\langle X, Y\rangle_{\sigma}=\left\langle d l_{\sigma^{-1}} X, d l_{\sigma^{-1}} Y\right\rangle_{e}.\]
+Then by definition it is left--invariant, and since
+\begin{align*}
+\langle d r_{\tau} X, d r_{\tau} Y\rangle_{\sigma \tau}
+&=\langle d l_{\tau^{-1} \sigma^{-1}} d r_{\tau} X, d l_{\tau^{-1} \sigma^{-1}} d r_{\tau} Y\rangle_{e}\\
+&=\langle d A d_{\tau^{-1}} d l_{\sigma^{-1}} X, d A d_{\tau^{-1}} d l_{\sigma^{-1}} Y\rangle_{e}\\
+&=\langle d l_{\sigma^{-1}} X, d l_{\sigma^{-1}} Y\rangle_{e}=\langle X, Y\rangle_{\sigma},
+\end{align*}
+it is also right--invariant.
+\item (a) Since $\mathbb{R}^{n} \cong D(0,1) \subset \mathbb{R}^{n}$, 
+the singular homology groups of the two must be the same. 
+Then by the de Rham theorem, they are also the same as the de Rham cohomology groups. 
+By Poincaré Lemma, it must be zero for given conditions.
+
+(b) By the de Rham theorem, it suffices to show that the $0$-th singular homology group is $\mathbb{R}$. 
+But since it is isomorphic to the free $\mathbb{R}$-module generated by the path-components, the result follows.
+\item By the de Rham theorem, it suffices to calculate the singular homology groups. 
+But it can be easily seen that ${ }_{\infty} H_{0}(M ; \mathbb{R})=\mathbb{R}, { }_{\infty} H_{1}(M ; \mathbb{R})=\mathbb{R}, { }_{\infty} H_{n}(M ; \mathbb{R})=0$ for $n \geq 2$.
+\item $d(\alpha \wedge \beta)=d \alpha \wedge \beta+(-1)^{k} \alpha \wedge d \beta=0$. 
+If $\beta=d \gamma$, then $d(\alpha \wedge \gamma)=d \alpha \wedge \gamma+(-1)^{k} \alpha \wedge \beta$, so $\alpha \wedge \beta$ is exact.
+\item By Stokes' theorem,
+\[\int_{z} \alpha=\int_{\operatorname{int}z} d \alpha
+=-8 \int_{\operatorname{int}z} dx \wedge dy=-8.\]
+\item It is closed by direct calculation. Also $d(\sin xy+x^{2})=\alpha$, it is exact. Therefore,
+\[\int_{z} \alpha=\int_{\operatorname{int}z} d d f=0.\]
+\item It is closed by direct calculation. Also,
+\[\int_{S^{1}} \alpha=\int_{S^{1}} \frac{x dy-y dx}{2 \pi}=\int_{D} \frac{dx \wedge dy}{\pi}=1.\]
+If $\delta i(\alpha)$ is exact, then its integral on $S^{1}$ must be zero since $S^{1}$ is a compact manifold without boundary. 
+Therefore $\delta i(\alpha)$ is not exact. Also, if $\alpha$ is exact, then $\delta i(\alpha)$ is also exact since $\delta$ and $d$ commute. 
+Therefore, $\alpha$ is also not exact.
+\item (a) It is because ${ }_{\infty} H_{1}(S^{2} ; \mathbb{R})=0$, and by the de Rham theorem.
+
+(b) By direct calculation.
+
+(c) \[\int_{S^{2}} \sigma=3 \operatorname{Vol}(S^{2}),\]
+so it is not zero. If it is exact it must be zero since $S^{2}$ is a compact manifold without boundary.
+
+(d) \[* \alpha=\frac{\sum_{i=1}^{n}(-1)^{i-1} r_{i} d r_{1} \wedge \ldots \wedge \widehat{d r}_{i} \wedge \ldots \wedge d r_{n}}{\big(\sum_{i=1}^{n} r_{i}^{2}\big)^{\frac{n}{2}}}.\]
+It is closed by calculation similar to (b).
+
+(e) \[\int_{S^{n-1}} * \alpha=n \operatorname{Vol}(S^{n-1}),\]
+so it is not zero, and $* \alpha$ is not exact.
+\item $H_{\text{de Rham}}^{1}(S^{2} ; \mathbb{R})=0 
+\neq \mathbb{R}^{2}=H_{\text {de Rham}}^{1}(T^{2} ; \mathbb{R})$, 
+using the singular homology theory and de Rham theorem.
+\item (a) Since $H_{1}(M ; \mathbb{R})=0$.
+
+(b) $\sigma$ in Exercise 16(b) satisfies the condition.
+
+(c) Since $H_{2}(D ; \mathbb{R})=0$ and $0 \neq[\sigma] \in H_{2}(M ; \mathbb{R})$.
+\item Let $t$ be a variable corresponding to the interval $(-\varepsilon, 1+\varepsilon)$ on $M \times(-\varepsilon, 1+\varepsilon)$. 
+For a $k$-form $\omega=\omega_{1}+d t \wedge \omega_{2}$ on $M \times(-\varepsilon, 1+\varepsilon)$, 
+$i\left(\frac{\partial}{\partial t}\right) \omega=\omega_{2}$ is a $(k-1)$-form, and its expression does not contain $d t$ term. 
+Therefore, we can define
+\[\int_{0}^{1} i\left(\frac{\partial}{\partial t}\right) \omega d t=\int_{0}^{1} \omega_{2} d t\]
+which is a $(k-1)$-form on $M$. Denote it $D_{k}(\alpha)$. 
+For convenience of the notation, denote $d_{M}$ as a differential operator on $M$, 
+and $d=d_{M}+d_{t}$ as a differential operator on $M \times(-\varepsilon, 1+\varepsilon)$. Then
+\begin{align*}
+D_{k} d(\omega)&=\int_{0}^{1} i\left(\frac{\partial}{\partial t}\right)(d \omega_{1}-d t \wedge d \omega_{2}) d t\\
+&=\int_{0}^{1} L_{\frac{\partial}{\partial t}}(\omega_{1})-d_{M} \omega_{2} d t,
+\end{align*}
+and \[d D_{k}(\omega)=d_{M} \int_{0}^{1} \omega_{2} d t=\int_{0}^{1} d_{M} \omega_{2} d t.\]
+Therefore \[d D_{k}(\omega)+D_{k} d(\omega)=i_{1}^{*} \omega_{1}-i_{0}^{*} \omega_{1}=i_{1}^{*} \omega-i_{0}^{*} \omega\]
+by definition of Lie derivative and $i_{0}, i_{1}$ 
+($i_{0}^{*}(d t \wedge \omega_{2})=i_{1}^{*}(d t \wedge \omega_{2})=0$). 
+It means $i_{0}^{*}$ and $i_{1}^{*}$ are the same map on the cohomology level. 
+Since $f=F \circ i_{0}$ and $g=F \circ i_{1}$, $f^{*}=i_{0}^{*} \circ F^{*}$ and $g^{*}=i_{1}^{*} \circ F^{*}$ also induce the same cohomology maps.
+\item (a) Since the vector space of $n$-forms on $M$ is $1$-dimensional on each fiber, 
+we only need to show that $\omega=\delta f(i(\vec{n})(d r_{1} \wedge \ldots \wedge d r_{n+1}))$ 
+satisfies $\omega(v_{1}, \ldots, v_{n})=1$ for each point $m \in M$ 
+and $v_{1}, \ldots, v_{n} \in M_{m}$ which is an oriented orthonormal basis of $M_{m}$. 
+Since
+\[\omega(v_{1}, \ldots, v_{n})=d r_{1} \wedge \ldots \wedge d r_{n+1}(\vec{n}, d f(v_{1}), \ldots, d f(v_{n}))=1\]
+by assumption, the result follows.
+
+(b) From vector calculus we obtain
+\[\vec{n}=\frac{1}{\sqrt{f_{x}^{2}+f_{y}^{2}+1}}\left(-f_{x} \frac{\partial}{\partial x}-f_{y} \frac{\partial}{\partial y}+\frac{\partial}{\partial z}\right).\]
+Therefore,
+\begin{align*}
+\omega & =\delta \varphi(i(\vec{n})(d x \wedge d y \wedge d z)) \\
+& =\delta \varphi\Bigg(\frac{1}{\sqrt{f_{x}^{2}+f_{y}^{2}+1}}\left(-f_{x} d y \wedge d z+f_{y} d x \wedge d z+d x \wedge d y\right)\Bigg) \\
+& =\frac{1}{\sqrt{f_{x}^{2}+f_{y}^{2}+1}}\left(-f_{x} d y \wedge d f+f_{y} d x \wedge d f+d x \wedge d y\right) \\
+& =\frac{1}{\sqrt{f_{x}^{2}+f_{y}^{2}+1}}\left(f_{x}^{2}+f_{y}^{2}+1\right) d x \wedge d y
+=\left(\sqrt{f_{x}^{2}+f_{y}^{2}+1}\right) d x \wedge d y.
+\end{align*}
+\end{enumerate}

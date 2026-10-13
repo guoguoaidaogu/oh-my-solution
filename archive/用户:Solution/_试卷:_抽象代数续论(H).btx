@@ -1,0 +1,53 @@
+\setdisplaytitle{抽象代数续论(H)试卷}
+\sethtmltitle{抽象代数续论(H)试卷}
+
+==26春(江智)==
+\begin{enumerate}
+    \item For a finite Abelian group \(A\), prove that \(\operatorname{Hom}(A,\mathbb{Q}/\mathbb{Z}) \simeq A\). 
+    If for finite Abelian groups \(A,A',A''\) we have an exact sequence
+    \[
+        0  \longrightarrow A'  \longrightarrow A  \longrightarrow A''  \longrightarrow 0,
+    \]
+    then we have
+    \[
+        0  \longrightarrow A''  \longrightarrow A  \longrightarrow A'  \longrightarrow 0.
+    \]
+
+
+    \item For an Abelian group \(A\), we say \(A\) is a whitehead group if \(\operatorname{Ext}^1(A,\mathbb{Z})=0\).
+    Prove that if \(A\) is a whitehead group, then a subgroup of \(A\) is still a whitehead group.
+    Also prove that if \(A\) is a torsion group, then \(\operatorname{Ext}^1(A,\mathbb{Z}) \simeq \operatorname{Hom}(A,S^1)\), 
+    where \(S^1\) is the circle group. So if \(A\) is a non-zero torsion group, \(A\) is not a whitehead group.
+
+
+    \item Find out free, projective, injective and free \(\mathbb{Z}\)-module in the following four \(\mathbb{Z}\)-modules:
+    \(\mathbb{Z}, \mathbb{Z}/m\mathbb{Z}, \mathbb{Q},\mathbb{Q} \oplus \mathbb{Z}\).
+
+    \item Let \(R\) be a commutative Noetherian ring and \(M,N\) be two finitely generated \(R\)-modules. 
+    Prove that \(\operatorname{Tor}^R_k(M,N)\) is a finitely generated \(R\)-module for arbitrary \(k\). 
+    Calculate \(\operatorname{Tor}^R_1(R/I,R/J)\) for ideals \(I,J\) of \(R\). 
+    If \(\operatorname{ann}(M)+\operatorname{ann}(N)=R\), prove that \(\operatorname{Tor}^R_k(M,N)=0\) for arbitrary \(k\). 
+
+
+
+\end{enumerate}
+
+==25春(易灵飞)==
+\begin{enumerate}
+    \item 设$k$是一个域, $R=k[x]/(x^n)$, 其中$n\geq 2$. 对$0\leq p,q \leq \frac{n}{2},m\geq 0$, 证明
+    $$\operatorname{Tor}^R_m(R/(x^p),R/(x^q))=R/(x^{\min\{p,q\}}).$$
+    
+    \item 设$k$是一个域, $R=\left\{ \begin{bmatrix}a&0&0\\b&c&d\\0&0&e \end{bmatrix} |a,b,c,d,e\in k \right\}$是$M_3(k)$的子环.
+    设$M$是$k$上三维列向量空间, 通过左乘将$M$看作一个$R$-模.
+    \item[(a)]$M$的$k$子空间$\left\{\begin{pmatrix}a\\b\\0\end{pmatrix}|a,b\in k\right\}$和$\left\{\begin{pmatrix}0\\a\\b\end{pmatrix}| a,b\in k\right\}$是否是$M$的投射子$R$-模？
+    \item[(b)]$M$是否是投射$R$-模？
+
+    \item $R=\mathbb{Z}[x,y], I=(x,y), A=R/(xy)$. 计算$\operatorname{Tor}^R_*(R/I,A)$作为Abel群的rank.
+
+    \item 设群$G$有挠元, 即存在阶数有限的非单位元. 将$\mathbb{Z}$看作平凡$G$-模, 求证$pd_{\mathbb{Z}G}(\mathbb{Z})=\infty$
+
+    \item 考虑Heisenberg群
+    $$H=\left\{ \begin{pmatrix}1&x&y\\0&1&z\\0&0&1\end{pmatrix}|x,y,z\in\mathbb{Z}\right\}$$
+    \item[(a)] 求$H$的中心.
+    \item[(b)] 将$\mathbb{Z}$看作平凡$H$-模, 计算$\operatorname{H}_*(H,\mathbb{Z})$(提示: 先直接计算出$\operatorname{H}_1(H,\mathbb{Z})$).
+\end{enumerate}

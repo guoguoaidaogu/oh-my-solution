@@ -1,0 +1,186 @@
+\setdisplaytitle{习题：几何测度论}
+\sethtmltitle{习题：几何测度论}
+
+\section{Dimensions}
+The main references of this chapter are [Bishop, Peres; Fractals in Probability and Analysis, Chapter 1], 
+[Evans, Gariepy; Measure Theory and fine properties of functions, Chapter 1 and 2], 
+and [Mattila; Geometry of Sets and Measures in Euclidean Spaces: Fractals and Rectifiability, Chapter 3 and 4].
+\subsection*{1.1}
+\begin{enumerate}
+    \item Let $\mathcal{A}\subset 2^{X}$ and $\mu:\mathcal{A}\rightarrow [0,\infty]$ be such that $\emptyset \in \mathcal{A},X\in\mathcal A$, and $\mu(\emptyset)=0$. 
+    For any set $A\subset X$, define
+    \[ \mu^*(A)=\inf\Big\{\sum_{j=1}^{\infty}\mu(E_j):E_j\in \mathcal A \hspace{0.3em} \text{and} \hspace{0.3em}A\subset \cup_{j=1}^\infty E_j\Big\}.\]
+    Show that $\mu^*$ is an outer measure.
+\end{enumerate}
+
+\subsection*{1.2}
+\begin{enumerate}
+    \item Let $\mu$ be a Borel regular measure on $\mathbb{R}^{n}$ 
+    satisfying $\mu(K)<\infty$ for any compact subset $K \subset \mathbb{R}^{n}$. 
+    Show that Property 1 implies Property 2.
+
+    \textbf{Property 1}: If $\mu(B)<\infty$, then, for any $\varepsilon>0$, 
+    there exists a closed set $C$ such that
+    $$C \subset B, \quad \mu(B \setminus C)<\varepsilon.$$
+    \textbf{Property 2}: If $B$ is a subset of $\mathbb{R}^{n}$, 
+    then, for any $\varepsilon>0$, there exists an open set $U$ such that
+    $$B \subset U, \quad \mu(U \setminus B)<\varepsilon.$$
+    \item Let $0<r<\infty$. Show that $\mathcal{H}^{n}(B(x, r)) \in(0, \infty)$. 
+    As a result, there exists $c \in(0, \infty)$ such that $\mathcal{H}^{n}=c \mathcal{L}^{n}$.
+    \item If $f: \mathbb{R}^{m} \rightarrow \mathbb{R}^{n}$ is Lipschitz, $0 \leq s \leq m$, and $A \subset \mathbb{R}^{m}$. Then
+    $$\mathcal{H}^{s}(A) \leq \operatorname{Lip}(f)^{s} \mathcal{H}^{s}(A).$$
+    In particular, $\dim(f A) \leq \dim A.$
+\end{enumerate}
+
+\section{Orthogonal projections}
+
+The main references of this chapter are [Folland; Real Analysis, Chapter 4 and Chapter 7], 
+[Evans, Gariepy; Measure theory and fine properties of functions, Chapter 1], 
+[Mattila; Geometry of Sets and Measures in Euclidean Spaces: Fractals and Rectifiability, Chapter 1 and 8], 
+and [Hochman; Lectures on fractal geometry and dynamics, Chapter 7].
+
+\subsection*{2.1}
+\begin{enumerate}
+    \item Let $X$ be an LCH space, $K$ a compact subset of $X$, 
+    and $\left\{U_{i}\right\}_{i=1}^{n}$ an open covering of $K$. 
+    There is a partition of unity on $K$ subordinate to $\left\{U_{i}\right\}_{i=1}^{n}$ consisting of compactly supported functions.
+\end{enumerate}
+
+\subsection*{2.2}
+\begin{enumerate}
+    \item Let $\mu$ be an $\alpha$-Frostman measure on $\mathbb{R}^{n}$ with $\alpha>n-1$, 
+    and $B(0, R):=\{x \in\mathbb{R}^{n}:|x| \leq R\}$. Show that
+    $$\mu(\partial B(0, R))=0.$$
+    \item Suppose that $\mu$ is an $\alpha$-Frostman measure. 
+    Let $\psi \in \mathcal{C}_{c}^{\infty}(\mathbb{R}^{n})$ satisfy $\psi \geq 0$ and $\int \psi=1$. 
+    Show that $\mu_{\varepsilon}:=\psi_{\varepsilon} * \mu$ are $\alpha$-Frostman measures (uniformly).
+    \item Suppose that $\mu$ is an $\alpha$-Frostman measure on $E$. 
+    Show that there exist two compact subsets $K_{1}$ and $K_{2}$ of $E$ 
+    with $\operatorname{dist}(K_{1}, K_{2})>0$ 
+    such that $\left.\mu\right|_{K_{1}}$ and $\left.\mu\right|_{K_{2}}$ 
+    are $\alpha$-Frostman measures.
+\end{enumerate}
+
+\subsection*{2.3}
+\begin{enumerate}
+    \item Let $B \subset \mathbb{R}^{n}$ be a Borel set of $\sigma$-finite $\mathcal{H}^{s}$-measure. Prove that
+    $$\mathcal{H}^{s}(B)=\sup \{\mathcal{H}^{s}(K): K \subset B \text { is a compact set with } \mathcal{H}^{s}(K)<\infty\}.$$
+    \item Prove that
+    $$\int_{\mathbb{R}^{n}}|f(x)|^{p} d x
+    =p \int_{0}^{\infty} t^{p-1}\left|\left\{x \in \mathbb{R}^{n}:|f(x)|>t\right\}\right| dt.$$
+    \item Let $\mu$ be the measure on $\mathbb{R}^{n}$ with density $g(x)$. 
+    Let $M_{\lambda}(x)=\lambda x$. Show that $(M_{\lambda})_\# \mu$ has density
+    $$\lambda^{-n} g(\lambda^{-1} x).$$
+\end{enumerate}
+
+\section{Differentiation of measures}
+
+The main references of this chapter are [Evans, Gariepy; Measure theory and fine properties of functions, Chapter 1], 
+[Mattila; Geometry of Sets and Measures in Euclidean Spaces: Fractals and Rectifiability, Chapter 2].
+
+\subsection*{3.1}
+\begin{enumerate}
+    \item Let $\mu$ and $\lambda$ be Radon measures on $\mathbb{R}^{n}$. 
+    Show that $D(\mu, \lambda, x)$ is a Borel function.
+    \item Let $\mu$ and $\lambda$ be Radon measures on $\mathbb{R}^{n}$. 
+    Suppose that $\mu \ll \lambda$. Show that
+    $$\int D(\mu, \lambda, x)^{2} d \lambda x=\int D(\mu, \lambda, x) d \mu x.$$
+    \item Let $\mu$ and $\lambda$ be Radon measures on $\mathbb{R}^{n}$.
+    \begin{enumerate}[label=(\roman*)]
+    \item Suppose $\mu \ll \lambda$. Show that
+    $$\int_{B} D(\mu, \lambda, x) d \lambda x=\mu(B).$$
+    \item Find $\mu$ and $\lambda$ such that
+    $$\int_{B} D(\mu, \lambda, x) d \lambda x<\mu(B)$$
+    for some $B$.
+    \end{enumerate}
+\end{enumerate}
+
+\section{Fourier Transforms}
+
+The main references of this chapter are [Folland; Real Analysis, Chapter 8], 
+[Mattila; Fourier analysis and Hausdorff dimension, Chapter 3, Chapter 4, Chapter 5], 
+and [Mattila 1987; Spherical averages of Fourier transforms of measures with finite energy; dimensions of intersections and distance sets].
+
+\subsection*{4.1}
+\begin{enumerate}
+    \item A measure is called continuous if each point has measure zero.
+    
+    Suppose $\{\mu_{N}\}, N=1,2 \ldots$, and $\nu$ are non-negative Radon measures on $\mathbb{R}$, and that $\nu$ is continuous. 
+    Assume that $\widehat{\mu}_N(\xi) \rightarrow \widehat{\nu}(\xi)$ as $N \rightarrow \infty$, for each $\xi \in \mathbb{R}$. 
+    Then $\mu_{N}((a, b)) \rightarrow \nu((a, b))$ for all $a<b$.
+    \item {[Steinhaus's Theorem]} Let $E$ be a measurable subset of $\mathbb{R}$ such that its Lebesgue measure is positive. Then
+    $$\Delta^{\prime}(E):=\{x-y: x, y \in E\}$$contains an open interval containing $0$.
+    \item Show that there exist compact sets $A \subset \mathbb{R}^{n}$ with $\dim A=n$ 
+    such that $\Delta(E)$ contains no interval $[0, \varepsilon], \varepsilon>0$.
+\end{enumerate}
+
+\subsection*{4.2}
+\begin{enumerate}
+    \item Let $\psi \in \mathcal{C}_{c}^{\infty}(\mathbb{R}^{n})$ satisfy $\int \psi=1$, 
+    $\operatorname{supp}\psi \subset B(0,1)$, and $\psi \geq 0$. 
+    Let $\mu \in$ $M(\mathbb{R}^{n})$, and $\mu_{\varepsilon}:=\mu * \psi_{\varepsilon}$. 
+    Show that $\delta_{\mu_{\varepsilon}}$ converges to $\delta_{\mu}$ weakly.
+    \item Let $\mu \in M(\mathbb{R}^{n})$. If there exists a constant $C$ such that, for some $s>0$, we have
+    $$\mu(B(x, r)) \geq C r^{S} \quad \forall \, x \in \operatorname{supp} \mu, \quad 0<r<1.$$
+    Show that, for $R>1$,
+    $$\int_{B(0, R)}|\widehat{\mu}(\xi)|^{2} d \xi \geq C R^{n-s}.$$
+\end{enumerate}
+
+\section{Self--similar sets}
+
+The main references of this chapter are [Hochman; Lectures on fractal geometry and dynamics, Chapter 5], 
+[Bishop, Peres; Fractals in Probability and Analysis, Chapter 2], 
+[Mattila; Fourier analysis and Hausdorff dimension, Chapter 9], 
+and [Shen; Lectures on Bernoulli Convolution].
+
+\subsection*{5.1}
+\begin{enumerate}
+    \item Let $0<\varepsilon<\delta$. Show that $A^{(\varepsilon)} \subset A^{(\delta)}$, 
+    where $A^{(\varepsilon)}:=\{x \in X: d(x, A)<\varepsilon\}$.
+    \item Let $(X, d)$ be a metric space, and $E \subset X$. 
+    Then the following statements are equivalent.
+    \begin{enumerate}[label=(\roman*)]
+    \item $E$ is complete and totally bounded.
+    \item Every sequence in $E$ has a subsequence convergent to a point in $E$.
+    \item $E$ is compact.
+    \end{enumerate}
+    \item Let $\{\ell_{j}\}$ be a sequence of lines in $\mathbb{R}^{2}$ such that
+
+    (i) $\ell_{j} \cap B(0,1) \neq \emptyset$ for any $j$, 
+    
+    and (ii) $\ell_{j}^{\prime}:=\ell_{j} \cap B(0,2)$ is convergent under the Hausdorff metric.
+    
+    Show that the limit of $\ell_{j}^{\prime}$ is of the form $\ell \cap B(0,2)$ for some line $\ell$.
+\end{enumerate}
+
+\subsection*{5.2}
+\begin{enumerate}
+    \item Let $\Lambda$ be a finite set. 
+    For $i, j \in \Lambda^{\mathbb{N}}$, we define $d(i, j)=2^{-N}$, 
+    where $N$ is the largest number such that
+    $$i_{1} \cdots i_{N}=j_{1} \cdots j_{N}.$$
+    Let $\tau_{d}$ be the topology on $\Lambda^{\mathbb{N}}$ induced by $d$, 
+    and $\tau$ the standard product topology on $\Lambda^{\mathbb{N}}$. 
+    Show that $\tau=\tau_{d}$.
+\end{enumerate}
+
+\subsection*{5.3}
+\begin{enumerate}
+    \item Show that the strong separation condition implies the open set condition.
+    \item Suppose $\Phi=\left\{\varphi_{i}\right\}_{i \in \Lambda}$ is an IFS of similitudes. 
+    For $i=(i_{1} i_{2} \cdots i_{n}) \in \Lambda^{*}$, 
+    we define $r_{i}=r_{i_{1}} r_{i_{2}} \cdots r_{i_{n}}$. 
+    Fix $r>0$, and define $S_{r}=\left\{i \in \Lambda^{*}: r_{i}<r \leq r_{i}^{\prime}\right\}$. 
+    Show that $S_{r}$ is a section.
+    \item Suppose $(X, \mathcal{A}, \mu)$ is a measurable space, 
+    and we call $A \in \mathcal{A}$ a $\mu$-atom if $\mu(A)>0$, 
+    and for any $B \in \mathcal{A}$ with $B \subset A$ 
+    we have either $\mu(B)=0$ or $\mu(A \setminus B)=0$. Show that
+    \begin{enumerate}[label=(\roman*)] 
+    \item Let $A$ be a $\mu$-atom. 
+    Then for any $B \in \mathcal{A}$ with $B \setminus A$ 
+    we have either $\mu(B)=\mu(A)$ or $\mu(B)=0$.
+    \item When $X=\mathbb{R}^{n}$, and $\mu$ is a Borel measure, 
+    show that a $\mu$-atom is a singleton $\{x\}$ with $\mu(\{x\})>0$.
+    \end{enumerate}
+\end{enumerate}

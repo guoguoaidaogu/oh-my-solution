@@ -1,0 +1,186 @@
+== 集合的势 ==
+
+p13.16.设集合$B$与$C$的并的势是$\aleph$, 证明: $B$与$C$其中有一个集合的势为$\aleph$, 
+进一步地, 如果$\bigcup\limits_{n=1}^{\infty} A_n$的势为$\aleph$, 
+证明至少存在一个$A_k$的势是$\aleph$.
+(使用选择公理,且避免使用连续统假设)
+
+\begin{proof}
+    直接证明第二问.
+    注意到: $\aleph ^ {\aleph_0}=2^{\aleph_0*\aleph_0} = 2^{\aleph_0} = \aleph$,
+    故可以构造一个一一映射 $\pi \colon [0,1]^{\mathbb{N}} \to \bigcup\limits_{n=1}^{\infty} A_n$.
+    
+    反设$\overline{\overline{A_n}} < \aleph, \forall n \in \mathbb{Z}_+$, 
+    则$\forall n \in \mathbb{Z}_+,$必然存在$\alpha_n \in [0,1]$, 使得
+    $E_n := \{(x_1,\cdots ,x_{n-1},\alpha_n, x_{n+1}, \cdots ) | x_k \in [0,1]\}$ 
+    满足$\pi{(E_n)} \cap A_n = \varnothing$.
+    (否则构造投射 $p_n\colon A_n \to [0,1]$, 便有$\overline{\overline{A_n}} \geq \overline{\overline{[0,1]}} = \aleph$, 矛盾!)
+    
+    在这种构造下,考虑$(\alpha_1, \alpha_2, \cdots ) \in [0,1]^{\mathbb{N}}$, 
+    有$\pi((\alpha_1, \alpha_2, \cdots))\notin A_n, \forall n\in \mathbb{Z}_+$, 
+    这与$\pi$是$[0,1]^{\mathbb{N}} $与$ \bigcup\limits_{n=1}^{\infty} A_n$之间的一一映射矛盾!
+\end{proof}
+\begin{remark}
+    此题在集合论中即证明了序数$\aleph$的共尾(cofinality)严格大于$\aleph_0$.
+
+    其中共尾定义为$\mathrm{cf}(\alpha) = \min\{\mathrm{type} (X)|X\subseteq \alpha, \sup X = \alpha\} .$
+\end{remark}
+
+p.13.17.直线上的点集$A$具有如下性质: 对任何$x\in (-\infty, +\infty)$, 
+存在包含$x$的某个非退化开区间$(x-\delta_x, x+\delta_x)$, 
+使得$(x-\delta_x, x+\delta_x)\cap A$只有至多可列个点, 证明: $A$至多可列.
+\begin{proof}
+    如题所示, $\forall x\in A$, $\exists \delta_x \in (0,+\infty)$, 
+    s.t. $\overline{\overline{(x-\delta_x,x+\delta_x) \cap A} }\leq \aleph_0$.
+
+    记$A_n= [-n,n] \cap A$, 那么$[-n,n] \subseteq  \bigcup\limits_{x\in A_n} (x-\delta_x, x+\delta_x)$,
+    
+    由有限覆盖定理可以得到一个有限点列$x_1,\cdots,x_m$, 使得
+    $[-n,n] \subseteq \bigcup\limits_{i=1}^m {(x_i-\delta_{x_i},x_i+\delta_{x_i})}$,
+    
+    因而$A_n \subseteq \bigcup\limits_{i=1}^m ((x_i-\delta_{x_i},x_i+\delta_{x_i}) \cap A)$,
+    故$\overline{\overline{A_n}} \leq \aleph_0$. 
+    利用$A = \bigcup\limits_{n=1}^{+\infty} A_n$得到
+    $\overline{\overline{A}} \leq \aleph_0 \times \aleph_0 = \aleph_0$.
+\end{proof}
+
+
+p.13.18.设$E$是一个正实数集合. 对于$E$的有限子集$F$, 记$s_F=\sum\limits_{x\in F} x$. 
+令$\sum\limits_{x\in E} x = \sup\{s_F | F\in \mathcal{F}\}$, 
+其中$\mathcal{F}$是$E$的所有有限子集构成的集族. 证明:
+
+(a)如果$\sum\limits_{x\in E} x < +\infty$, 那么$E$至多可列.
+
+(b)如果$E$至多可列, 并且将$E$中的元素记为$\{x_n\}$, 
+那么$\sum\limits_{x\in E} x = \sum\limits_{n=1}^{\infty} x_n$.
+
+\begin{proof}
+    (a)
+    反设$E$不可列, 注意到: $E=\bigcup\limits_{n=1}^{\infty} (E\cap [\frac1n,+\infty))$, 
+    因此必定存在$n\in \mathbb{Z}_+$, 
+    使得$\overline{\overline{E\cap [\frac1n,\infty)}} > \aleph_0$. 
+    任意多地从$E\cap [\frac1n,+\infty)$中取出元素, 
+    便与$\sum\limits_{x\in E} x < +\infty$矛盾, 
+    故$\overline{\overline{E}} \leq \aleph_0$.
+
+
+    (b)
+
+\end{proof}
+
+== 测度的定义与性质 ==
+
+p42.12.
+考虑如下的几个集合:
+$X=\{x=(x_1,x_2,\cdots)|\sum\limits_{n=1}^{\infty} \sqrt{x_n} < +\infty, x_n=\frac{j}{n^2}(j=0,1,2,\cdots, n^2)\}$.
+
+
+对于$x\in X$, $[x]_n = \{y\in X| y_1 = x_1, \cdots, y_n=x_n\}$,称为$n$级集.
+$\mathcal{R}_n$为所有$n$级集生成的$\sigma$环, $\mu_n$是$\mathcal{R}_n$上满足
+\[\mu_n([x]_n) = \prod \limits_{i=1}^{n} \frac{1}{1+i^2}\]
+的测度.
+
+(a)写出$\mathcal{R}_n$的元素的形式，以及$\mu_n$在$\mathcal{R}_n$上的定义.
+
+
+(b)证明: $\mathcal{R}_1 \subseteq \mathcal{R}_2\subseteq \cdots$, 
+且$\mathcal{R}:=\bigcup\limits_{n=1}^{\infty} \mathcal{R}_n$是一个环.
+
+(c)若$n<m$,求证: 对任意$E \in \mathcal{R}_n$, 均有$\mu_m(E)=\mu_n(E)$.
+
+(d)如下定义$\mathcal{R}$上集函数$\mu$:
+对于$E\in \mathcal{R}_n$, 令$\mu(E) = \mu_n(E)$,
+求证: $\mu$满足有限可加性,但是不满足可列可加性.
+
+\begin{proof}
+    (a) $\mathcal{R}_n$中元素为: $\varnothing $或$[x^1, x^2, \cdots , x^k]_n :=\{y\in X| y_1 = x_1^j,\cdots , y_n = x_n^j,\exists j \in \{1,\cdots, k\}\}$,其中$x^1,\cdots,x^k$为$X$中的$k$个不同元素.
+
+    测度$\mu_n$的严格表示为$\mu_n([x^1, x^2, \cdots , x^k]_n ) = k \cdot \prod \limits_{i=1}^n \frac{1}{1+i^2}$.
+
+
+    (b)对于每一个$n\in \mathbb{Z}_+,$只需要证明: $\mathcal{R}_n \subseteq \mathcal{R}_{n+1}$.
+
+    $\forall [x^1, x^2, \cdots , x^k]_n \in \mathcal{R}_n$,
+    取$x^{s,j} = (x_1^s,x_2^s,\cdots, x_n^s,j,\cdots), j=0,1,\cdots, (n+1)^2$.
+
+    则$[x^1, x^2, \cdots , x^k] _n  =[x^{1,0},x^{1,1},\cdots, x^{1,(n+1)^2}, \cdots, x^{k,(n+1)^2}]_{n+1} \in \mathcal{R}_{n+1} $,
+    故$\mathcal{R}_1 \subseteq \mathcal{R}_2\subseteq \cdots$.
+
+    欲证$\mathcal{R}$是一个环,只需验证有限交和有限并的封闭性.
+    $\forall v_1, v_2\in \mathcal{R}$,
+    必有$v_1 \in \mathcal{R}_{n_1}, v_2 \in \mathcal{R}_{n_2}$
+    对某$n_1, n_2 \in \Z_+$, 且不妨设$n_1 \leq n_2$.
+    此时$v_1\in \mathcal{R}_{n_1} \subseteq \mathcal{R}_{n_2}$, 
+    因此$v_1 \cup v_2 \in \mathcal{R}_{n_2}, v_1 \cap v_2 \in \mathcal{R}_{n_2}$.
+
+    (c)由于测度的可列可加性,只需验证测度在生成元上相等,
+    即只需验证$\mu_{n+1}([x]_n) = \mu_n([x]_n)$.
+
+    由(b),$[x]_n = [x^0, x^1, \cdots, x^{(n+1)^2}]_{n+1}$,
+    故$\mu_{n+1} ([x]_n) = ((n+1)^2 + 1) \cdot \prod \limits_{i=1}^{n+1} \frac{1}{1+i^2} = \prod \limits_{i=1}^{n} \frac{1}{1+i^2}=\mu_n([x]_n).$
+
+    (d)$\forall v_1, v_2\in \mathcal{R}$, $v_1\cap v_2 = \varnothing$,
+    必有$v_1 \in \mathcal{R}_{n_1}, v_2 \in \mathcal{R}_{n_2}$
+    对某$n_1, n_2 \in \Z_+$, 且不妨设$n_1 \leq n_2$.
+    则$v_1,v_2\in \mathcal{R}_{n_2}$, 
+    
+    因此$\mu(v_1 \cap v_2) = \mu_{n_2}(v_1 \cap v_2) = \mu_{n_2}(v_1 \cap v_2) + \mu_{n_2}(v_1 \cap v_2),$这验证了$\mu$具有有限可加性.
+
+    反设$\mu$具有可列可加性,则$\mu$是测度, 
+    考虑取$v_n = [x^1,\cdots, x^N]_n$, 
+    $x^1,\cdots ,x^N$为$X$中全体前$n$个分量不等于$0$的元素.
+    则$\mu_n(v_n) = N \cdot \prod \limits_{i=1}^n \frac{1}{1+i^2} 
+    = \prod \limits_{i=1}^n i^2 \cdot \prod \limits_{i=1}^n \frac{1}{1+i^2} 
+    = \prod \limits_{i=1}^n \frac{i^2}{1+i^2}.$
+    且有$v_1 \supseteq v_2 \supseteq \cdots, \mu(v_1) < \infty$.
+
+    故由测度的性质,
+    \[\mu (\bigcap_{i=1}^{\infty} v_i) = \inf_{i} \mu(v_i) 
+    =\inf_{n} \prod_{i=1}^n \frac{i^2}{1+i^2} 
+    = \prod_{i=1}^{+\infty}\frac{i^2}{1+i^2}. \]
+    
+    
+    由简单的分析估计,
+    \[\log \prod_{i=1}^{+\infty}\frac{i^2}{1+i^2} 
+    = \sum_{i=1}^{+\infty}\log \frac{i^2}{1+i^2} 
+    \geq \sum_{i=1} ^{+\infty}\Big(1-\frac{1+i^2}{i^2}\Big) 
+    = -\sum_{i=1}^{+\infty} \frac{1}{i^2} = -\frac{\pi^2}{6}.\]
+    故$\mu(\bigcap \limits_{i=1} ^{\infty} v_i) > 0$.
+
+    但是$\bigcap \limits_{i=1}^{\infty} v_i = \varnothing$.
+    (每个分量均为正的元素必定有$\sum \limits_{i=1}^{+\infty} \sqrt{x_n} = +\infty$, 
+    故不属于$X$.) 矛盾!
+
+    因此$\mu$不具有可列可加性.
+\end{proof}
+
+== 测度的扩张 ==
+
+13.设$E$是$\mathbb{R}$的子集,若对任意$x\in \mathbb{R}$,存在$r_x > 0$, 
+使得$m^*((x-r_x,x+r_x) \cap E) = 0$,证明:$m^*(E) = 0$.
+\begin{proof}
+    证明:反设$m^*(E) > 0$, 由Stein Chapter.1 Ex.28得到:
+    存在闭区间$I$, 使得$m^*(I \cap E) > 0$.
+    由条件, 对任意$x \in I$, 存在$r_x > 0$, 使得$m^*((x-r_x,x+r_x) \cap E) = 0$,
+    
+    由实数的有限覆盖定理,存在覆盖$\bigcup \limits_{x\in I} (x-r_x, x+r_x) \supseteq I$的有限子覆盖$\bigcup \limits_{i=1}^n (x_i-r_{x_i}, x_i+r_{x_i}) \supseteq I$.
+    
+    故$m^*(I\cap E) \leq m^*(\bigcup \limits_{i=1}^n (x_i-r_{x_i}, x_i+r_{x_i}) \cap E) $$\leq \sum \limits_{i=1}^n m^* ((x_i-r_{x_i}, x_i+r_{x_i}) \cap E) = 0.$
+    矛盾!
+\end{proof}
+
+== 可测集的结构 ==
+
+13.设$E,F$是直线中的子集,证明: $m^*(E\cap F) + m^*(E\cup F) \leq m^*(E) + m^*(F)$.
+\begin{proof}
+    取$E\cap F \subset G$使得$m(G)=m^*(E\cap F)$,$G$是Lebesgue可测集.
+    由Carathéodory条件:
+    \begin{equation*}\left\{\begin{aligned}
+        m^*(E) &= m^*(E\cap G) + m^*(E\backslash G),\\
+        m^*(F) &= m^*(F\cap G) + m^*(F\backslash G),\\
+        m^*(E\cup F) &= m^* ((E\cup F) \cap G) + m^*((E\cup F) \backslash G).
+    \end{aligned}\right.\end{equation*}
+    $(E\cup F) \backslash G= (E \backslash G) \cup (F \backslash G)$,$m^*((E\cup F) \backslash G)\leq m^*(E\backslash G) + m^*(F\backslash G)$.
+    
+    $m^*(E\cap F)\leq m^*(E\cap G),m^*(F\cap G),m^*((E\cup F)\cap G)\leq m^*(G)=m^*(E\cap F)$.
+\end{proof}

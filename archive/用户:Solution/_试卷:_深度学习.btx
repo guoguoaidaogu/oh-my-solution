@@ -1,0 +1,77 @@
+== 2021—2022学年春季学期期末 ==
+\newcommand{\Cov}{\mathbb{C}\mathrm{ov}}
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\Var}{\mathbb{V}\mathrm{ar}}
+\newcommand{\e}{\mathbb{E}}
+\def\H{\mathrm{H}}\def\T{\mathrm{T}}
+
+\begin{itemize}
+    \item [一、] 不定项选择题(每小题3分，共12分)
+
+\begin{enumerate}
+    \item 假定在神经网络的隐藏层中使用激活函数 $X$。在特定神经元给定输入，会得到输出 $-0.0001$，$X$ 可能是以下哪一个激活函数
+    \begin{itemize}
+        \item[A.] ReLU
+        \item[B.] tanh
+        \item[C.] Sigmoid
+        \item[D.] 以上都不是
+    \end{itemize}
+
+    \item 下列声明哪些是正确的？
+    \begin{itemize}
+        \item 声明1：可以通过将所有权重初始化为0来训练网络
+        \item 声明2：可以通过将偏置初始化为0来训练网络
+    \end{itemize}
+    \begin{itemize}
+        \item[A.] 1和2都错
+        \item[B.] 1和2都对
+        \item[C.] 1错2对
+        \item[D.] 1对2错
+    \end{itemize}
+        \item 假设你在解决一个数据分布有着非常不均衡的分类问题，即主要类别占据了训练数据的99\%。现在你的模型在测试集上表现为99\%的准确率。下面表述正确的是
+    \begin{itemize}
+        \item[A.] 准确率并不适合衡量不均衡类别问题
+        \item[B.] 准确率适合衡量不均衡类别问题
+        \item[C.] 精确率（查准率）和召回率（查全率）适合衡量不均衡类别问题
+        \item[D.] 精确率（查准率）和召回率（查全率）不适合衡量不均衡类别问题
+    \end{itemize}
+
+    \item 下面哪些情况可能导致神经网络训练失败
+    \begin{itemize}
+        \item[A.] 梯度消失
+        \item[B.] 梯度爆炸
+        \item[C.] 激活单元死亡
+        \item[D.] 边点
+    \end{itemize}
+\end{enumerate}
+
+\item [二、] 简答题(每小题5分，50分)
+
+
+\begin{enumerate}
+    \item 请用韦恩图表示深度学习、表示学习、机器学习三者之间的关系，并给出至少2个有代表性的深度学习框架名称。
+    \item 在深度学习中，$C, A$ 为矩阵，$b$ 为向量，$C = A + b$ 的计算结果是什么？当机器学习中零和非零元素之间的差异非常重要时，$L^1$ 和 $L^2$ 范数之中，通常会使用哪个？
+    \item 矩阵 $A \in \mathbb{R}^{m \times n}$ 的奇异值分解为 $A = UDV^T$，说明当 $m < n$，$\text{Rank}(A) = m$ 时，线性方程组 $Ax = y$ 所有可行解中，$\|x\|_2$ 最小的解可表示为 $x = A^+ y, A^+ = V D^+ U^T$
+    \item 随机变量 $X_2$ 和 $X_3$ 在给定随机变量 $X_1$ 时是条件独立的数学表达？给出上述 $X_1, X_2, X_3$ 三个变量的图形化表示（结构化概率图模型），并给出其联合概率密度函数。
+    \item $f(x) = x^3 + y^3 - 3xy$，给出求 $f(x)$ 极小值过程的牛顿法迭代公式，当前取 $x_n, y_n$ 处，$((x_n, y_n) \ne (0, 0))$
+    \item 请给出线性可分问题 $((x_n, y_n), n = 1, \cdots, N)$ 支持向量机算法的数学描述（目标函数、约束条件），其对应的广义拉格朗日函数、以及 KKT 条件。
+    \item 请说明经过连续两个 $3 \times 3$ 卷积运算和一个 $5 \times 5$ 卷积运算的优劣（从感受野、参数个数）？
+    \item 请给出简单循环神经网络（只有一个隐藏层）的数学描述（隐藏层、输出层的数学公式），其中记号如下：输入 $x_t$，状态-输入权重矩阵 $W$，偏置向量 $b$，隐藏层状态 $h_t$，$f(\cdot)$ 是非线性激活函数，线性输出权重矩阵 $V$，输出 $y_t$。并指出长短期记忆（LSTM）模型的特点（用语言描述）？
+    \item 随机猜测作为一个分类算法是否一定比 SVM 差？借此阐述你对“No Free Lunch Theorem”的理解。
+    \item 你有哪些深度学习调参经验？
+\end{enumerate}
+
+\item [三、] 问答题(每题9分，共18分)
+
+\begin{enumerate}
+    \item Logistic 回归是一种常用的处理二分类问题的离散因变量模型，$y \in \{0, 1\}$，$p(y = 1 | x) = \sigma(w^T x)$，$\sigma(x) = \frac{1}{1 + e^{-x}}$。给定 $N$ 个训练样本 $\{(x^{(n)}, y^{(n)})\}$，试用交叉熵作为损失函数，并使用小批量 AdaGrad 算法对参数进行更新，给出算法伪代码。
+    \item 给出利用拒绝-接受法生成标准正态分布的伪代码（可以利用的是 $(0, 1)$ 上的均匀分布），并对其中关键参数选择进行说明。
+\end{enumerate}
+
+\item [四、] 问答题(每题10分，共20分)
+
+\begin{enumerate}
+    \item 以线性回归模型为例，损失函数 $J(w)$ 取为均方误差，说明参数 $L^2$ 正则化的影响（分析参数的变化）。
+    \item 给定一个样本 $(x, y)$，将其输入到前馈神经网络模型（深度为 2）中，得到网络输出为 $\hat{y}$。假设损失函数为 $L(y, \hat{y}) = \frac{1}{2} \| y - \hat{y} \|_2^2$，计算损失函数关于网络中每个参数的导数。记号如下：层数（只考虑隐藏层和输出层）$L$，$M_l$ 为第 $l$ 层神经元的个数，$f_l(\cdot)$ 为第 $l$ 层神经元的激活函数，$W_l \in \mathbb{R}^{M_l \times M_{l-1}}$ 为第 $l-1$ 层到第 $l$ 层的权重矩阵，$b^{(l)} \in \mathbb{R}^{M_l}$ 为第 $l-1$ 层到第 $l$ 层的偏置，$z^l \in \mathbb{R}^{M_l}$ 为第 $l$ 层神经元的净输入，$a^l \in \mathbb{R}^{M_l}$ 为第 $l$ 层神经元的输出。
+\end{enumerate}
+\end{itemize}

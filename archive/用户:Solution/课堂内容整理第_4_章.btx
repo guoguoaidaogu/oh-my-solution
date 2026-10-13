@@ -1,0 +1,551 @@
+\setcounter{section}{3}
+
+\section{光滑性}
+    \subsection{Zariski切空间}
+    \begin{definition}[Zariski切空间（Tangent Space）]
+        令仿射簇$X \subset \mathbb{A}^{n}$由$\mathcal{I}(X)$定义. 
+        则对于$p \in X$，定义该点处的Zariski切空间
+        $T_{p}X:=\mathcal{V}(\{\sum_{i=1}^{n}\frac{\partial F}{\partial X_{i}}(p)X_{i}\mid F \in \mathcal{I}(X)\})$.
+    \end{definition}
+
+    \begin{definition}[导算子（Derivative）]
+        若$X$是仿射簇，且$A(X)$是其正则函数环，则在$p \in X$处，
+        $X$的一个导算子指一个$k$-线性映射$D:A(X) \rightarrow k$
+        满足$D(fg)=f(p)D(g)+D(f)g(p)$. 点$p$处的全体导算子在显然的意义下构成一个
+        $k$-模，记作$\Omega_{p}X$.
+    \end{definition}
+
+    点$p$处的导算子与其切空间$T_{p}X$是一一对应的. 
+    对于$a=(a_{1},\cdots,a_{n}) \in T_{p}X$，
+    定义$D_{a}(f)=\sum_{i=1}^{n}\frac{\partial f}{\partial X_{i}}a_{i}$. 
+    由定义，对于$f \in \mathcal{I}(X)$，有$D_{a}(f)=0$，故可将$D_{a}$定义在
+    $A(X)$上. 故$D:T_{p}X \rightarrow \Omega_{p}X;a \mapsto D(a)$是一个同态. \par
+    反之，$F:\Omega_{p}X \rightarrow T_{p}X;D \rightarrow (D(X_{i}))_{i}$
+    也是一个良定义的同态，且与$D$互逆. 故可视$T_{p}X$与$\Omega_{p}X$为等同.
+
+    \begin{definition}[Zariski余切空间（Cotangent Space）]
+        令仿射簇$X \subset \mathbb{A}^{n}$由$\mathcal{I}(X)$定义. 对于$p \in X$，
+        由Hilbert零点定理，令$\mathfrak{m}_{p}$为$p$对应的极大理想. 
+        定义$\mathfrak{m}_{p}/\mathfrak{m}_{p}^{2}$为$p$处的余切空间.
+        注意到$\mathfrak{m}_{p}/\mathfrak{m}_{p}^{2}$是一个
+        $A(X)/\mathfrak{m}_{p} \cong k$-线性空间. 
+    \end{definition}
+
+    可以证明$\mathfrak{m}_{p}/\mathfrak{m}_{p}^{2}$确实是$T_{p}M$的对偶空间.
+
+    \begin{proposition}
+        我们有$T_{p}X \cong (\mathfrak{m}_{p}/\mathfrak{m}_{p}^{2})^{*} 
+        = \operatorname{Hom}_{k}(\mathfrak{m}_{p}/\mathfrak{m}_{p}^{2},k)$.
+    \end{proposition}
+    \begin{proof}
+        若$D:A(X) \rightarrow k$是一个导算子，则$D\mid_{\mathfrak{m}_{p}^{2}}=0$.
+        （由于对于$f,g \in \mathfrak{m}_{p}$，我们有$D(fg)=D(f)g(p)+f(p)D(g)=0$.）
+        故$D \mid_{\mathfrak{m}_{p}}
+        \in (\mathfrak{m}_{p}/\mathfrak{m}_{p}^{2})^{*}$. 
+        故$F:T_{p}X \rightarrow (\mathfrak{m}_{p}/\mathfrak{m}_{p}^{2})^{*}$是一个$k$-模同态.
+        反之，对于$l \in (\mathfrak{m}_{p}/\mathfrak{m}_{p}^{2})^{*}$，定义
+        线性算子$D_{l}$为$D_{l}:=l(\overline{f-f(p)})$. 其$k$-线性性是显然的，
+        而
+        \begin{equation*}\begin{aligned}
+            {l}(fg) &= l(\overline{fg-f(p)g(p)}) = l(\overline{(f-f(p))g(p)}
+            + \overline{f(p)(g-g(p))} + \overline{(f-f(p))(g-g(p))})
+            \\&=g(p)l(\overline{f-f(p)}) + f(p)l(\overline{g-g(p)})
+            =D_{l}(f)g(p) + D_{l}(g)f(p).
+        \end{aligned}\end{equation*}
+        故$D_{l}$是一个导算子，从而$G:(\mathfrak{m}_{p}/\mathfrak{m}_{p}^{2})^{*} 
+        \rightarrow T_{p}X;l \mapsto D_{l}$.
+        而$F$与$G$互逆，故$T_{p}X = (\mathfrak{m}_{p}/\mathfrak{m}_{p}^{2})^{*}$.
+    \end{proof}
+
+    \subsection{光滑点与奇异点}
+    一则重要事实是$\dim_{p}X_{p} \leq \dim X \geq \dim_{k} T_{p}X$. 
+    前者是显然的，我们证明后者：
+    \begin{proposition}
+        若$X$是拟射影簇，则$\delta:X \rightarrow \Z_{\geq 0};x \mapsto \dim_{k}T_{x}X$
+        上半连续.
+    \end{proposition}
+    \begin{proof}
+        不妨设$X$是代数簇. 令$\mathcal{I}(X)=\left<F_{1},\cdots,F_{s}\right>$，
+        则对于任意$p \in X$，
+        由于$T_{p}X=\{(p_{1},\cdots,p_{n}) \in \mathbb{A}^{n}\mid \sum_{i=1}^{n}\frac{\partial F_{j}}{X_{i}}(p)p_{i}=0,1 \leq j \leq s\}$.
+        则$\delta(\Z_{\geq l})=\{x \mid \dim_{k} T_{x}X \geq l\}=
+        \{x \mid \dim \ker(M_{x}) \geq l\}
+        =\{x \mid \operatorname{rank}(M_{x}) \leq n-l\}
+        =\mathcal{V}(\bigcup_{M为M_{x}的(n-k+1)阶子式}\det(M))$是闭集.
+        其中$M_{x}=\begin{pmatrix}\frac{\partial F_{1}}{\partial X_{1}}(x) & \cdots & \frac{\partial F_{1}}{\partial X_{n}}(x) \\ \vdots & \ddots & \vdots \\ \frac{\partial F_{s}}{\partial X_{1}}(x) & \cdots & \frac{\partial F_{s}}{\partial X_{1}}(x)\end{pmatrix}$
+    \end{proof}
+
+    \begin{proposition}
+        若$X$是不可约拟射影簇，则对于任意$p \in X$，有$\dim_{k}T_{p}X \geq \dim X$.
+        且存在稠密开集$U \subset X$使得$\dim_{k}T_{p}X = \dim X$对于任意$p \in U$成立. 
+    \end{proposition}
+    \begin{proof}
+        令$\dim X = n$. 先设$X \subset \mathbb{A}^{n+1}$是一个超曲面，
+        即$X = \mathcal{V}(F)$，其中$F \in k[X_{1},\cdots,X_{n+1}]$不可约. 
+        那么对于任意$p \in X$，$T_{p}X$是由$\sum_{i=1}^{n+1}\frac{\partial F}{\partial X_{i}}(p)=0$定于的，
+        故$\dim_{k} T_{p}X \geq n = \dim X$. \par
+        若不存在$p \in X$使得$\dim_{k}T_{p}(X) = n$，
+        则这意味着$\sum_{i=1}^{n+1}\frac{\partial F}{\partial X_{i}}$是一个零线性泛函，
+        故$\frac{\partial F}{\partial X_{i}}$皆为零. 对于$\operatorname{Char} k = 0$，这是不可能的.
+        对于$\operatorname{Char} k = p > 0$，则存在多项式$G$使得
+        $F(X_{1},\cdots,X_{n})=G(X_{1}^{p},\cdots,X_{n+1}^{p})=(G(X_{1},\cdots,X_{n+1})^{p}$，与
+        $F$的不可约性矛盾. 故存在$p \in X$使得$\dim_{k}T_{p}(X) = n$. 
+        所以$\delta^{-1}(n) = X - \delta^{-1}(n+1)$是非空开集，故稠密. \par
+        对于一般情形，存在双有理映射$\varphi:X \dashrightarrow Y \subset \mathbb{A}^{n+1}$，
+        其中$Y$是不可约超曲面. 那么存在稠密开集$U \subset Y$使得对于任意
+        $q \in U$，有$\dim_{k} T_{q}Y = \dim Y = \dim X$. 
+        那么$\varphi^{-1}(U)$在$X$中稠密，且在其上有$\dim_{k} T_{p}X = \dim X$.
+        由于$X - \delta^{-1}(\Z_{\geq n})$开，故若其非空，则与$\varphi^{-1}(U)$有非空交，矛盾！
+        故$X - \delta^{-1}(\Z_{\geq n})$空. 这即完成了证明.
+    \end{proof}
+
+    由上述结果，我们可以定义光滑点与奇异点：
+    \begin{definition}[光滑点与奇异点（Smooth Point and Singularity）]
+        若$X$是一个拟射影簇，则称$p \in X$是一个光滑点，
+        若$\dim_{k} T_{p}X = \dim_{p} X$. 否则称$p$为奇异点.
+    \end{definition}
+
+    \begin{definition}[光滑簇（Smooth Variety）]
+        称拟射影簇$X$是光滑簇，若其每个点都是光滑的.
+    \end{definition}
+
+    \begin{remark}
+        记$X$上的全体奇异点为$\operatorname{Sing}(X)$，
+        则这即$\delta^{-1}(\Z_{\geq \dim X + 1})$，故闭，且是$X$的真闭子集.
+    \end{remark}
+
+    \begin{example}
+        取$X = \mathcal{V}(XZ,YZ) = \mathcal{V}(X,Y) \cup \mathcal{V}(Z) \subset \mathbb{A}^{3}$.
+        则在$\mathcal{V}(X,Y) - 0$上有$\dim_{p}\mathcal{V}(X,Y) = \dim_{k} T_{p}\mathcal{V}(X,Y) = 1$，
+        在$\mathcal{V}(Z) - 0$上有$\dim_{p}\mathcal{V}(Z) = \dim_{k} T_{p}\mathcal{V}(Z) = 2$.
+        但在$0$处，我们有$\dim_{0}X = 2 < 3 = \dim_{k} T_{0}X$.
+    \end{example}
+
+    \begin{remark}
+        若$X$与$Y$都是拟射影簇，则可证$\operatorname{Sing}(X \times Y)
+        = (\operatorname{Sing}(X) \times Y) \cup (X \times \operatorname{Sing}(Y))$.
+    \end{remark}
+
+    \subsection{正则局部环}
+    设$(R,\mathfrak{m}，k)$是诺特局部环.
+    \begin{definition}[正则局部环（Regular Local Ring）]
+        一般来说，对于诺特局部环$R$，我们有$\dim_{k} \mathfrak{m}/\mathfrak{m}^{2} 
+        \geq \dim R$. 若此处等号成立，我们就称$R$是一个\textbf{正则局部环}.
+    \end{definition}
+
+    下面我们给出一个后面常用的结果
+    \begin{proposition}
+        Assume $X$ is an irreducible variety with $\dim X=n$, $Y\subset X$ has pure codimension of $1$. 
+        Let $y\in Y$ be a smooth point of $X$, then there exist affine open neighborhood $y\in U$ and $f\in A(U)$ such that
+        $U\cap Y$ is defined by $f$.
+    \end{proposition}
+    \begin{remark}
+        pure codimension 仅仅保证我们可以“不妨设$Y$ 是不可约簇”，本命题见[Sh]定理2.10.
+    \end{remark}
+    有了上述命题，我们可以把它推广到一般的情形，即
+    \begin{corollary}
+        对于 $\operatorname{codim}=r$ 的子簇 $Y$ 上的光滑点 $x$ 找到仿射开集 $x\in U$ 以及 $f_{1},\cdots,f_{r}\in A(U)$ 使得 $U\cap Y$ 是 $\mathcal{V}(f_{1},\cdots,f_{r})$ 的不可约分支。
+    \end{corollary}
+
+    \subsection{Zariski主定理}
+    \begin{theorem}[Zariski主定理]
+        若$\varphi:X \dashrightarrow Y$是不可约拟射影簇间的双有理映射，且$Y$光滑，
+        则存在稠密开集$V \subset Y$，使得
+        \begin{enumerate}
+            \item[(1)] 有同构$\varphi^{-1}(V) \cong V$.
+            \item[(2)] 令$X \backslash \varphi^{-1}(U)$的不可约分解为
+                       $\bigcup_{i=1}^{r} E_{i}$，则$\dim E_{i} = n-1$，
+                       且$\dim \overline{\varphi(E_{i})} \leq n-2$.
+        \end{enumerate}
+    \end{theorem}
+    \begin{proof}
+        由于$\varphi$是双有理的，故存在$Y$中的极大开子集$U$
+        使得$\varphi^{-1}(U) \overset{\varphi}{\cong} U$.
+        令$x \in X$，而$y = \varphi(x) \in Y$，则取$x$的开邻域$\widetilde{U}$
+        与$y$的开邻域$\widetilde{V}$，
+        满足$\varphi(\widetilde{U})=\widetilde{V}$. 从而这诱导了交换图表
+        \begin{tikzcd}
+            A(\widetilde{V}) \arrow[d, "\varphi^{*}"'] \arrow[r, hook] & {\mathcal{O}_{Y,y}} \arrow[d, "\varphi_{*}"'] \arrow[r, hook] & k(Y) \arrow[d, "\varphi^{*}"] \\
+            A(\widetilde{U}) \arrow[r, hook]                           & {\mathcal{O}_{X,x}} \arrow[r, hook]                           & k(X)                         
+        \end{tikzcd}
+
+        若$\varphi^{*}:\mathcal{O}_{Y,y} \rightarrow \mathcal{O}_{X,x}$是同构，
+        则可找到$y$的开邻域$V$使得$\varphi:\varphi^{-1}(V) \rightarrow V$是同构，方法如下.
+        令$t_{1},\cdots,t_{n}$生成了$A(\widetilde{U})$. 
+        由同构，存在$\frac{a_{i}}{b_{i}} \in \mathcal{O}_{Y,y}$
+        使得$\varphi^{*}(\frac{a_{i}}{b_{i}})=t_{i}$，其中$a_{i},b_{i} \in A(\widetilde{V})$.
+        令$b=b_{1}\cdots b_{n}$，则令$V = \mathcal{V}(b)^{c} \subset \widetilde{V}$，而
+        $U = \mathcal{V}(\varphi^{*}(b))^{c} \subset \widetilde{U}$，
+        那么$A(V)=A(\widetilde{V})_{b}$，而$A(U)=A(\widetilde{U})_{\varphi^{*}(b)}$，
+        且$\varphi^{*}:A(V) \rightarrow A(U)$也是同构.
+        而对于$x' \in U_{x}$，$\varphi(x')\in \mathcal{V}(b)^{c} = V$. 
+        这等价于$b(\varphi(x')) \neq 0$，也即$\varphi^{*}(b)(x') \neq 0$. 这即$\vaarphi(x^{0}) \in V$.
+        故$\varphi:U=\varphi^{-1}(V) \rightarrow V$是同构.
+    \end{proof}
+
+    \begin{corollary}
+        \begin{enumerate}
+            \item[(1)] 若$X$是不可约曲线，而$Y$是光滑曲线，
+                       且$\varphi:X \dashrightarrow Y$是双有理映射，则$\varphi(X)$是$Y$中的开集，
+                       且$\varphi:X \rightarrow \varphi(X)$是同构. 特别地，$X$是光滑的.
+            \item[(2)] 若$X$是不可约曲面，$Y$是光滑曲面，
+                       且$\varphi:X \dashrightarrow Y$是双有理映射，
+                       则存在$p_{1},\cdots,p_{m} \in Y$，使得$\varphi^{-1}(p_{i})$是等维数曲线，
+                       且$X \backslash \bigcup_{i=1}^{m}\varphi^{-1}(p_{i})$是
+                       $Y \backslash \bigcup_{i=1}^{m}p_{i}$中的开集.
+        \end{enumerate}
+    \end{corollary}
+
+    \begin{corollary}
+        若$X$是光滑不可约拟射影簇，而$\varphi:X \dashrightarrow \mathbb{P}^{n}$是双有理映射，
+        则$\varphi$的定义域包含一个开集$U \subset X$，且$\operatorname{codim}(X \backslash U) \geq 2$.
+    \end{corollary}
+
+    \begin{corollary}
+        若$C$是一个光滑曲面，则任一有理映射$\varphi:C \dashrightarrow \mathbb{P}^{n}$都是簇的态射.
+    \end{corollary}
+
+    \begin{definition}[正规点（Normal Point）]
+        称簇$X$上的点$p$正规，若$O_{X,x}$是正规环，即整闭整环. 
+        若$X$上各点正规，则称$X$是\textbf{正规簇}（Normal Variety）.
+    \end{definition}
+
+    \begin{theorem}
+        若$X$是拟射影簇，且$\varphi:X \rightarrow Y$是支配态射，且存在开集$V \subset Y$
+        使得对于任意$y \in V$，有$\varphi^{-1}(y)$连通. 
+        若$y \in \varphi(X)$是正规点，则$\varphi^{-1}(y)$是连通的。
+    \end{theorem}
+
+
+    \subsection{光滑态射}
+    有了切空间后，我们自然可以仿照微分几何，定义切映射：
+    \begin{definition}[切映射（Tangent Map）]
+        若$\varphi:X \rightarrow Y$是簇之间的态射，且$\varphi(x)=y$，
+        那么$\varphi$诱导了局部环间的局部映射
+        $\varphi^{*}:O_{Y,y} \rightarrow O_{X,x}$，且
+        $(\varphi^{*})^{-1}(\mathfrak{m}_{x})=\mathfrak{m}_{y}$.
+        那么这进一步诱导了$k$-线性空间的线性映射
+        $\Omega_{y}Y=\mathfrak{m}_{y}/\mathfrak{m}_{y}^{2}
+        \rightarrow \Omega_{x}X=\mathfrak{m}_{x}/\mathfrak{m}_{x}^{2}$.
+        这再次诱导了对偶空间的映射：
+        \[ T_{x}\varphi:T_{x}X \rightarrow T_{y}Y.\]
+        该映射称为切映射.
+    \end{definition}
+
+    \begin{example}
+        考虑$\varphi:\mathbb{A}^{m} \rightarrow \mathbb{A}^{n};
+        p \mapsto (F_{1}(p),\cdots,F_{n}(p))$，
+        其中$F_{i}$均是$m$元多项式.
+        那么$T_{p}\varphi=(\frac{\partial F_{i}}{\partial{X_{j}}}(p))
+        _{1 \leq i \leq n,1 \leq j \leq m}$.
+    \end{example}
+
+    \begin{remark}
+        \begin{enumerate}
+            \item[(1)] 对于态射$\varphi:X \rightarrow Y$与
+            $\phi:Y \rightarrow Z$，由Leibniz法则有
+            $T_{p}(\phi\circ\varphi)=T_{\varphi(p)}\phi \circ 
+            T_{p}\varphi$.
+            \item[(2)] 令$X_{x}:=\varphi^{-1}(\varphi(x))$，
+            那么$\widetilde{\varphi}:\varphi \circ i$是常值映射，
+            其中$i:X_{x} \hookrightarrow X$. 
+            故而$T_{x}\widetilde{\varphi}$是零映射. 由（1）知
+            $T_{x}X_{x} \subset \ker(T_{x}\varphi)$. 这说明
+            $\operatorname{rank}(T_{x}\varphi) \leq \dim T_{x}X-\dim T_{x}X_{x}$.
+        \end{enumerate}
+    \end{remark}
+    
+    可以证明以下命题：
+
+    \begin{lemma}
+      设$\varphi:X \rightarrow Y$是簇的态射. 
+      那么映射$\delta:X \rightarrow \Z;
+      x \mapsto \dim(\ker T_{x}\varphi)$上半连续.
+    \end{lemma}
+    \begin{proof}
+      即证$\delta^{-1}(\Z_{\geq r})$闭.
+      不妨设$X \subset \mathbb{A}^{n}$由多项式$F_{1},\cdots,F_{s}$定义，
+      并令$\varphi$是多项式映射$\mathbb{A}^{n} \rightarrow \mathbb{A}^{m};
+      p \mapsto (G_{1}(p),\cdots,G_{m}(p))$在$X$上的限制. 
+      那么对于任意一点$p \in X$，$T_{p}\varphi$是
+      $(\frac{\partial G_{i}}{\partial{X_{j}}}(p))$限制在Zariski 切空间
+      $T_{p}X$，其中 $T_{p}X$ 是
+      $$
+        \left\{(X_1,\cdots,X_{j})|\;\sum_{j=1}^{n}\frac{\partial F_{i}}{\partial X_{j}}(p)X_{j}=0\right\}.
+      $$
+      记 $M_{p}=(\frac{\partial F_{i}}{\partial X_{j}}(p)), G_{p}=(\frac{\partial G_{i}}{\partial{X_{j}}}(p))$ 分别为 $s\times n,m\times n$ 的矩阵,
+      那么$\ker T_{p}\varphi = \ker M_{p}\cap \ker G_{p}$，
+      故$\dim(\ker T_{p}\varphi) \geq r$ 等价于 
+      $\operatorname{rank}\left(\begin{matrix}M_{p}\\G_{p}\end{matrix}\right)\leq n-r$.
+      
+    \end{proof}
+
+    \begin{example}
+      考虑$\varphi:\mathbb{A}^{3} \rightarrow \mathbb{A}^{2};
+      (x,y,z) \mapsto (z,x^{2}z+y^{2})$. 
+      注意到
+      \begin{equation*}\begin{aligned}
+        T_{(x,y,z)}\varphi =
+        \begin{pmatrix}
+          0 & 0 & 1 \\
+          2xz & 2y & z^{2}
+        \end{pmatrix}.
+      \end{aligned}\end{equation*}
+      和 $\operatorname{rank}\geq 1\Leftrightarrow \dim\ker\leq 2$,
+      于是 $\delta^{-1}(2)=\{(0,0,z),z\in k\}\cup \{(x,0,0),x\in k\}$ is closed, $\delta^{-1}(1)=\mathbb{A}^{3}$, too.
+    \end{example}
+
+
+    我们定义光滑态射的概念：
+    \begin{definition}[光滑态射（Smooth Morphism）]
+        若$X$与$Y$是不可约的光滑簇，而
+        $\varphi:X \rightarrow Y$是簇的态射. 
+        称$\varphi$在$x \in X$处光滑，若$T_{x}\varphi$满. 
+        称$\varphi$光滑，若它在每个$x \in X$处光滑.
+    \end{definition}
+
+    \begin{example}
+        还是上面的例子，由定义可知$\varphi$在$\delta^{-1}(2)$,即 $\mathcal{V}(Y)$与$\mathcal{V}(XZ)$处不光滑. 
+    \end{example}
+
+    \begin{remark}
+        $T_{x}\varphi$ 满只是关于切空间的一个局部性质，并不能推出 $X\to Y$ 是满的（当然后面会证是dominant），例如选择 $X$ 是光滑簇 $Y$ 中一个开集 $U$做嵌入。 
+    \end{remark}
+
+    \begin{proposition}
+        若$X$与$Y$是不可约的光滑簇，而
+        $\varphi:X \rightarrow Y$是光滑态射. 那么
+        \begin{enumerate}
+            \item[(1)] $\varphi$是支配态射. 且$\varphi$的非空纤维都是等维数的，
+            且维数为$\dim X - \dim Y$.
+            \item[(2)] 若$Z$是$Y$的光滑闭子簇，
+            则$\varphi^{-1}(Z)$也是光滑的.
+        \end{enumerate}
+    \end{proposition}
+    \begin{proof}
+        \begin{enumerate}
+            \item[(1)] 
+            $\dim_{k}T_{x}X_{x} \leq \dim X - \dim Y$：对于任意$x \in X$，
+            由于$T_{x}X_{x} \subset \ker T_{x}\varphi$，故
+            $\dim_{k} T_{x}X_{x} \leq \dim_{k}(\ker T_{x}\varphi)=
+            \dim_{k} T_{x} X - \dim_{k} T_{\varphi(x)} Y 
+            = \dim X - \dim Y$，其中最后一个等号用到了簇的光滑性条件. \par
+            另一方面，根据维数理论，我们有
+            $$
+            \dim_{k}T_{x}X_{x} \geq \dim_{x}X_{x} \geq
+            \dim X - \dim \overline{\varphi(X)} \geq \dim X - \dim Y（*）. 
+            $$
+            综上知$\dim_{k}T_{x}X_{x} = \dim X - \dim Y$. 且由（*）知
+            $\dim_{k}T_{x}X_{x}=\dim_{x} X_{x}$，故而$\varphi$的非空纤维都是等维数的.
+            且由（*）的最后一个不等号可取等，知$\dim Y =\dim \overline{\varphi(X)}$.
+            故$\varphi$是支配态射.
+            
+            \item[(2)]
+            对于$x \in \varphi^{-1}(Z)$，
+            由于$T_{x}\varphi^{-1}(Z) \subset T_{x}X$，
+            故$(T_{x}\varphi)(T_{x}X) \subset T_{\varphi(x)}Z$.
+            故而$\dim_{k}T_{x}\varphi^{-1}(Z) \leq 
+            \dim T_{\varphi(x)}Z + \dim(\ker T_{x}\varphi)
+            =\dim Z + (\dim X - \dim Y) = \dim X - \operatorname{codim}_{Y}Z$，其中第一个等号用到光滑性. \par
+            
+            而在$\varphi(x)$的一个仿射开邻域 $V$，存在$r$个多项式
+            $f_{1},\cdots,f_{r} \in \mathcal{I}(Z) \subset A(Y)$使得$Z\cap V$是
+            $\mathcal{V}(f_{1},\cdots,f_{r})$的不可约分支.
+            （课堂上老师没有证明这点，但本人认为这不是平凡的事实. 详见Remark.）
+            那么$\varphi^{-1}(Z)\cap \varphi^{-1}(V)$是一些
+            $\mathcal{V}(\varphi^{*}f_{1},\cdots,\varphi^{*}f_{r})$.
+            由Krull主理想定理，我们有
+            $\operatorname{codim}_{X}\varphi^{-1}(Z) \leq r \leq \operatorname{codim} _{Y} Z$.
+            这也即$\dim \varphi^{-1}(Z) \geq \dim X - \operatorname{codim}_{Y}Z$。
+
+            综上，有$\dim \varphi^{-1}(Z) \geq \dim X - \operatorname{codim}_{Y}Z \geq \dim_{k}T_{x}\varphi^{-1}(Z)$.
+            由于$x \in \varphi^{-1}(Z)$任取，故这即是说$\varphi^{-1}(Z)$光滑.
+
+        \end{enumerate}
+    \end{proof}
+
+    \begin{remark}
+        上述证明的解释：由于$Y$光滑，故$O_{Y,\varphi(x)}$是$r$维正则局部环，
+        故而$\mathfrak{m}_{\varphi(x)}$可由$r$个元素生成（见Atiyah命题11.22）. 
+        再由Shafarevich中P110页引理可得.   
+    \end{remark}
+
+    \begin{theorem}[一般光滑性（General Smoothness）]
+      假设$\operatorname{Char} k =0$. 令$X$与$Y$是不可约簇，
+      且$\varphi:X \rightarrow Y$是支配态射. 
+      那么存在$Y$的非空光滑开子集$V \subset Y$及
+      非空光滑开的$U \subset \varphi^{-1}(V)$，
+      使得$\varphi\mid_{U}:U \rightarrow V$是光滑态射.
+    \end{theorem}
+    \begin{proof}
+        不妨设$X \subset \mathbb{A}^{n}$与$Y \subset \mathbb{A}^{m}$
+        是闭子簇，且$\varphi$是多项式映射$u:\mathbb{A}^{n} \rightarrow \mathbb{A}^{m}$的限制
+        由于$X$与其图像$\Gamma \subset X \times Y$同构，故以$\Gamma$替代$X$. 可认为$\varphi$是投影映射
+        $\pi:\mathbb{A}^{n+m} \rightarrow \mathbb{A}^{m};(y,x_{1},\cdots,x_{n})\mapsto y$
+        在$\Gamma$上的限制. \par
+        不妨设$n=1$.
+        若$X_{1}$是$A(Y)$上的超越元，则$A(X)=k(Y) \otimes k[X_{1}] \cong A(Y \times \mathbb{A}^{1})$.
+        故$X \cong Y \times \mathbb{A}^{1}$. 此时$\varphi$是投影映射，故显然光滑. \par
+        若$X_{1}$是$A(Y)$上的代数元，那么考虑$X_{1}$的极小多项式
+        $G(T)=a_{d}(Y)T^{d}+\cdots+a_{1}(Y)T+a_{0}(Y)$，其中 故可缩小$Y$至$Y \cap \mathcal{V}(a_{d})$.
+        故可认为$a_{d}=1$，则$\mathcal{I}(X)=\left<\mathcal{I}(Y),G(T)\right>$. 
+        这里我们假设$A(\mathbb{A}^{n})=k[Y_{1},\cdots,Y_{m-1},T]$，如此假设成立是因为
+        经过调整后的$Y$维数正好是$m-1$. 对于点$p=(y,x) \in X$，其中$y \in Y$是光滑点，
+        可知$X$在$p$处光滑当且仅当$\frac{\partial G}{\partial T}(p) \neq 0$. 
+        且此时$T_{p}\varphi$是线性空间的投影，故必然满秩. 
+        由$\operatorname{Char}k = 0$以及$G(T)$不可约，知$R(G(T),\frac{\partial G}{\partial T}) \neq 0$
+        故令$V=\mathcal{V}(G(T))^{c} \cap X$以及$U=Y \cap \mathcal{V}(a_{d})$即可，
+        这里$Y$是原先未被缩小过的$Y$.
+    \end{proof}
+
+    \begin{remark}
+        这里$\operatorname{Char}k=0$的假设是必要的. 
+        若$\operatorname{Char}k=p>0$，则取$k$为完美域，并考虑Frobenius自同态
+        $f:\mathbb{A}^{1} \rightarrow \mathbb{A}^{1};x \mapsto x^{p}$. 
+        这显然是支配态射. 但对于任意$x \in X$，我们有$T_{x}f=0$. 故$f$无处光滑.
+    \end{remark}
+
+    \begin{theorem}[另一版本的一般光滑性]
+        假设$\operatorname{Char} k =0$. 令$X$与$Y$是不可约簇，
+        且$\varphi:X \rightarrow Y$是支配态射. 
+        那么存在$Y$的非空光滑开子集$V \subset Y$使得
+        $\varphi^{-1}(V) \backslash \operatorname{Sing}(X) \rightarrow V$是光滑态射.
+    \end{theorem}
+    \begin{proof}
+        不妨设$X$与$Y$都是光滑的（否则可取光滑开集）. 令$d=\dim Y$，
+        $Z:=\{x \in X\mid \operatorname{rank}(T_{x}\varphi) < d\}$. 
+        由上半连续，$Z$是闭集. 令$X^{\prime}$是$Z$的一个不可约分支，$Y^{\prime}$ 是 $\overline{\varphi(X')}$ 的一个不可约分支，
+        那么$\varphi\mid_{X'}:X'\rightarrow Y'$是支配态射. 
+        由一般光滑性，存在光滑开集$U' \subset X'$与$V' \subset Y'$使得
+        $\varphi\mid_{U'}:U' \rightarrow V'$是光滑态射. 
+        对于$x \in U'$，
+        $\operatorname{rank}T_{x}(\varphi\mid_{U'}) \leq \operatorname{T_{x}\varphi} <d$.
+        由光滑性，这即$\dim V' =\dim Y' <d$. 由于$\dim \overline{\varphi}(Z) < d =\dim Y$，
+        故$\overline{\varphi(Z)}$是$Y$中的真闭子簇. 故令$V = \overline{\varphi(Z)}$即可.
+    \end{proof}
+
+    \begin{remark}
+        这里$\operatorname{Char}k=0$的假设是必要的. 
+        若$\operatorname{Char}k=p>0$，则取$k$为完美域，并考虑
+        $f:\mathbb{A}^{2} \rightarrow \mathbb{A}^{1};(x,y) \mapsto x^{2}-y^{p}$. 
+        这显然是支配态射. 但对于任意$a \in \mathbb{A}^{1}$，
+        有$f^{-1}(a)=\mathcal{X^{2}-Y^{p}-a} \subset \mathbb{A}^{2}$.
+        故而$\varphi^{-1}(a)$上的点$(0,a)$永远都是奇点.
+    \end{remark}
+
+    \subsection{Bertini定理}
+    对于有关光滑性的命题，有一则定理保证了我们可以使用对空间维数做归纳的方法去研究. 
+    这即Bertini定理.
+    \begin{definition}
+        若$X \subset \mathbb{P}^{n}$是射影簇，则称$X \cap H$为超平面截面，
+        其中$H \subset \mathbb{P}^{n}$是超平面.
+    \end{definition}
+
+    \begin{remark}
+        可以认为超平面$H$是$(\mathbb{P}^{n})^{*}:=G(n-1,\mathbb{P}^{n})$中的元素.
+    \end{remark}
+
+    \begin{theorem}[Bertini-1]
+        假设$\operatorname{Char} k=0$，$X$是一个光滑簇，
+        且$\varphi:X \rightarrow \mathbb{P}^{n}$是一个态射，
+        则存在开集$U \subset (\mathbb{P}^{n})^{*}$，使得对于任意
+        超平面$H \in U$，$\varphi^{-1}(H)$是光滑的.
+    \end{theorem}
+    \begin{proof}
+        假设$X$不可约，且$\dim X \geq 1$.
+        考虑闭子簇$I \subset X \times (\mathbb{P}^{n})^{*}$，
+        其中$I:=\{(x,H)\in X \times (\mathbb{P}^{n})^{*} \mid \varphi(x)\in H\}$. 
+        考虑如下投影.
+        \begin{tikzcd}
+          & X \times (\mathbb{P}^{n})^{*}                     &                      \\
+          & I \arrow[ld, "p"'] \arrow[rd, "q"] \arrow[u, "i"] &                      \\
+          X &                                                   & (\mathbb{P}^{n})^{*}
+        \end{tikzcd}
+        则对于任意$x \in X$，纤维$p^{-1}(X) \cong \{包含$x$的超平面\} \cong \mathbb{P}^{n-1}$.
+        故而$I$不可约，且$\dim I = \dim X + n - 1$. \par
+        另一方面，对于任意$H \in (\mathbb{P}^{n})^{*}$，有$q^{-1}(H) \cong \varphi^{-1}(H)$.
+        则以第二形式的一般光滑性，存在稠密开集$V \subset (\mathbb{P}^{n})^{*}$
+        使得投影的限制$q:q^{-1}(V) \cap I_{Smooth} \rightarrow V$是光滑映射. 
+        故只需证$I$光滑，则有$\varphi^{-1}(V) \cong q^{-1}(V) \cong q^{-1}(V) \cap I_{Smooth}$光滑. \par
+        对于$(p,H_{0}) \in I$，不妨设$\varphi(p)=(1:0:\cdots:0)$，
+        且$H_{0} = \{X_{n} = 0\}$，
+        且$\varphi(x)=(1:f_{1}(x):\cdots:f_{n}(x))$
+        其中$f_{i}$在$p$的一个仿射开邻域中正则.
+        令$U_{n} \subset (\mathbb{P}^{n})^{*}$为包含$H_{0}$的标准开集，
+        则$U_{n}$中的超平面皆可表示为$\sum_{i=0}^{n-1}b_{i}X_{i}+X_{n}=0$.
+        故在$(p,H_{0}) \in U \times U_{n}=\{(x,b_{0},\cdots,b_{n-1})\} \subset X \times (\mathbb{P}^{n})^{*}$
+        其中$\{(x,b_{0},\cdots,b_{n-1})\}$是$(\mathbb{P}^{n})^{*}$的开子集.
+        则$I$由$b_{0}+b_{1}f_{1}(x)+\cdots+b_{n-1}f_{n-1}(x)+f_{n}(x)$. 
+        由于$\frac{\partial F}{\partial b_{0}}=1$，且$\frac{\partial F}{\partial b_{i}} \neq 0$，
+        故$I$在每个$(p,H_{0})$处都光滑，即$I$光滑.
+    \end{proof}
+    
+    \begin{remark}
+        上述定理中，$k$是代数闭域的条件是必须的. 
+        若$\operatorname{Char}k=p>0$，则
+        定义$\varphi:\mathbb{A}^{n} \rightarrow \mathbb{A}^{n};
+        (x_{1},\cdots,x_{n}) \mapsto (x_{1}^{p},\cdots,x_{n}^{p})$.
+        那么对于任一超平面$H = \mathcal{V}(\sum_{i=1}^{n}a_{i}X_{i})$，
+        总有$\varphi^{-1}(H) = \mathcal{V}(\sum_{i=1}^{n}a_{i}X_{i}^{p})$.
+        但该曲面上的Jacobi矩阵处处零秩.
+    \end{remark}
+
+    \begin{theorem}[Bertini-2]
+        若$X \subset \mathbb{P}^{n}$是一个光滑子簇，则存在开集$U \subset (\mathbb{P}^{n})^{*}$，使得对于任意
+        超平面$H \in U$，$H \cap X$是光滑的.
+    \end{theorem}
+    \begin{proof}
+        不妨设$X$不可约，且$\dim X \geq 1$. 
+        对于任意$x \in X$，定义$L_{x}:=\{H \in (\mathbb{P}^{n})^{*} \mid X \subset H 或 x \in H\cap X在处奇异\}$.
+        欲证$\bigcup_{x \in X}L_{x} \subsetneq (\mathbb{P}^{n})^{*}$. \par
+        不妨设$x=(1:0:\cdots:0) \in X$. 
+        则经过$X$的超平面可刻画为$\sum_{i=1}^{n}b_{i}X_{i}=0$，且全体这样的超平面
+        通过$\{\sum_{i=1}^{n}b_{i}X_{i}=0\} \mapsto (b_{1}:\cdots:b_{n}) \in \mathbb{P}^{n-1} = \mathbb{P}(V^{*})$，
+        其中$V=T_{x}\mathbb{P}^{*}$. 
+        注意到若$X \subset H$或$x \in H \cap X$奇异，则$T_{x}X \subset T_{x}H$.
+        前一条件显然，而后一条件是因为此时$X \not\subset H$，故$\dim X \cap H =\dim X - 1$.
+        而$x \in X \cap H$意味着
+        $\dim_{k}T_{x}(H \cap X) \geq \dim H \cap X + 1 = \dim X = \dim T_{x}X$.
+        故而$T_{x}(H \cap X) = T_{x}X \subset T_{x}H$.
+        故而$L_{x} \subset \{H \in (\mathbb{P}^{n})^{*} \mid T_{x}X \subset T_{x}H=H\} \cong \mathbb{P}^{n - 1 - \dim X}$.
+        定义$I=\{(x,H)\mid x \in H \in (\mathbb{P}^{n})^{*}\} \subset X \times (\mathbb{P}^{n})^{*}$，
+        而$Z = \{(x,H)\mid x \in H \in (\mathbb{P}^{n})^{*}，且X \subset H 或 x \in X \cap H 奇异\} \subset I$.
+        \begin{tikzcd}
+            Z \arrow[rr, "i_{Z}"] \arrow[rd, "\pi_{X}\mid_{Z}"] &   & I \arrow[rr, "i_{I}"] \arrow[ld, "\pi_{X}"] \arrow[rd, "\pi_{(\mathbb{P}^{n})^{*}}"] &                      & X \times (\mathbb{P}^{n})^{*} \\
+                                                    & X &                                                                                      & (\mathbb{P}^{n})^{*} &                              
+        \end{tikzcd}
+        由于$Z$是一个闭子簇，且$(\pi_{X}\mid_{Z})^{-1}(x) \cong L_{x}$. 
+        由于$\dim L_{x} \leq n - 1 - \dim X$，而$\dim Z \leq (n - 1 - \dim X) + \dim X = n - 1$.
+        故$\dim \overline{\pi_{(\mathbb{P}^{n})^{*}}(Z)} = \dim \pi_{(\mathbb{P}^{n})^{*}}(Z) \leq n-1$.
+        故取$U = (\overline{\pi_{(\mathbb{P}^{n})^{*}}(Z)})^{c}$即可.
+    \end{proof}
+
+    \begin{theorem}[Bertini-3]
+        若$X$是不可约簇，且$\varphi:X \rightarrow \mathbb{P}^{n}$是态射，
+        且$\overline{\varphi(X)} \geq 2$. 
+        则存在开集$U \subset (\mathbb{P}^{n})^{*}$，使得对于任意
+        超平面$H \in U$，$\varphi^{-1}(H)$是不可约的.
+    \end{theorem}
+    \begin{proof}
+        参见Hartshone第三章命题7.9.
+    \end{proof}
+
+    \begin{remark}(A Piece of Homework)
+        若$X \subset \mathbb{P}^{n}$是次数大于等于$2$光滑超曲面. 
+        若$\Gamma \subset X$是$\mathbb{P}^{n}$中的线性子空间，
+        则$\dim \Gamma \leq \frac{1}{2}\dim X$.
+    \end{remark}
+    \begin{proof}
+        否则，存在线性子空间$\Gamma \subset X$，
+        使得$\dim \Gamma \geq \frac{1}{2}\dim X = \frac{1}{2}(n-1)$. 
+        不妨设$\Gamma = \{(x_{0}:\cdots:x_{n})\mid x_{l+1}=\cdots=x_{n}=0\}$，
+        其中$l = \dim \Gamma$. 那么题目条件即为$2l \geq n-1$.
+        若$X = \mathcal{V}(f)$其中$f \in k[X_{0},\cdots,X_{n}]$是齐次多项式，
+        且$\deg f \geq 2$. 
+        故$f(x_{0},\cdots,x_{l},0,\cdots,0)=0$对于任意$x_{0},\cdots,x_{l} \in k$.
+        则对于$0 \leq i \leq l$有$\frac{\partial f}{\partial X_{i}}=0$.
+        由于$\deg f \geq 2$，故对于$l+1 \leq i \leq n$
+        有$\frac{\partial f}{\partial X_{i}}$都是非常数多项式. 由于$n-l \leq l+1 $，
+        故该$n-l$个多项式的公共零点$\mathcal{V}(\frac{\partial f}{\partial X_{l+1}},\cdots,\frac{\partial f}{\partial X_{n}}=0)$交$\Gamma$非空.
+        而这些零点是$X$的奇异点，故$X$非光滑，矛盾.
+    \end{proof}

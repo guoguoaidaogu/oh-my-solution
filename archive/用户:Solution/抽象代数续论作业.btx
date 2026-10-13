@@ -1,0 +1,26 @@
+\begin{itemize}
+    \item[1.1.1] 只需验证$\mathrm{id}$和复合态射的存在性.交非空的问题$\colon$只需把交中的元素在$Hom_{\mathcal{C}/A}(f,g)$和$Hom_{\mathcal{C}/A}(f',g')$里面分别看成两个不同的态射即可.
+
+    \item[1.1.2] $\mathbf{Set}\colon$ 单个元素的集合.
+
+    $\mathbf{Grp}\colon$ 整数加法群.
+
+    $\mathbf{Ab}\colon$ 整数加法群.
+
+    $\mathbf{Ring}\colon$ 整数系数一元多项式环.
+
+    $\mathbf{Rng}\colon$ 无常数项的整数系数一元多项式环.
+
+    例5:不太明白题目问的是什么.
+
+    $R-\mathbf{Mod}\colon$ 一维自由$R$-模.
+
+    $\mathbf{Top}\colon$ 单点空间.
+
+    \item[1.2.2] 即证对于任意Hausdorff空间$Z$,以及$f,g:X\to Z$使得$f|_Y=g|_Y$,则必有$f=g$.
+
+    如若不然,则取某个$x$使得$f(x)\neq g(x)$.从而由$Z$的Hausdorff性得到存在$U$,$V$为两个不交的开集,分别包含$f(x)$和$g(x)$.
+
+    则$f^{-1}(U)$和$g^{-1}(V)$都包含$x$,故它们的交是一个包含$x$的非空开集,记为$W$.根据稠密性,$W$与$Y$相交,一个交点设为$y$.
+
+    从而$U\ni f(y)=g(y)\in V$,这与$U$,$V$不交矛盾.故$f=g$.

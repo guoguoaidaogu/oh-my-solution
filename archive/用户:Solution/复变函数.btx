@@ -1,0 +1,275 @@
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\im}{\operatorname{Im}}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\english
+
+\section{The Complex Plane and Elementary Functions}
+
+\section{Analytic Functions}
+\begin{theorem}
+    A fractional linear transform maps circles in $\C^*$ to circles in $\C^*$.
+\end{theorem}
+
+\section{Line Integrals and Harmonic Functions}
+
+\section{Complex Integration and Analyticity}
+
+\begin{theorem}
+    If $f(z)$ is a complex-valued function on a domain $D$ such that $f'(z_0)$ 
+    exists at each point $z_0\in D$, then $f(z)$ is analytic on $D$.
+\end{theorem}
+
+\begin{theorem} (Morera)
+    Let $f(z)$ be a continuous function on a domain $D$. 
+    If $\int_{\partial R}f(z)dz=0$ for every rectangle $R$ contained in $D$ 
+    with sides parallel to the coordinate axes, then $f(z)$ is analytic on $D$.
+\end{theorem}
+
+\section{Power Series}
+
+\section{Laurent Series and Isolated Singularities}
+
+\begin{theorem}
+    Let $z_0$ be an isolated singularity of $f(z)$. If $f(z)$ is bounded 
+    near $z_0$, then $z_0$ is a removable singularity.
+\end{theorem}
+
+\begin{theorem}
+    A meromorphic function on $\C^*$ is rational.
+\end{theorem}
+
+\section{The Residue Calculus}
+
+\begin{theorem}
+    If $z_0$ is a simple pole of $f(z)$, and $C_\varepsilon$ 
+    is an arc of the circle $\{|z-z_0|=\varepsilon\}$ of angle $\alpha$, then 
+    $$\lim_{\varepsilon\rightarrow0}\int_{C_\varepsilon}f(z)\,dz=\alpha i\Res[f(z),z_0].$$
+\end{theorem}
+
+\begin{lemma} (Jordan)
+    Let $\Gamma_R$ be the semicircular contour 
+    $z(\theta)=Re^{i\theta},0\leq \theta\leq\pi$. We have
+    $$\int_{\Gamma_R}|e^{iz}||dz|<\pi.$$
+\end{lemma}
+
+\begin{definition}
+    Suppose that $f(z)$ is analytic for $|z|\geq R$, with Laurent expansion
+    $$f(z)=\sum_{n=-\infty}^\infty a_nz^n,\quad |z|\geq R.$$
+    The residue of $f(z)$ at $\infty$ is
+    $$\Res[f(z),\infty]=-a_{-1}.$$
+\end{definition}
+
+\begin{theorem}
+    Let $D$ be an exterior domain with piecewise smooth boundary. Suppose that 
+    $f(z)$ is analytic on $D\cup\partial D$, except for a finite number of 
+    isolated singularities $z_1,\cdots,z_m\in D$. Then
+    $$\int_{\partial D} f(z)\,dz=2\pi i\big(\Res[f(z),\infty]+\sum_{j=1}^m\Res[f(z),z_j]\,\big).$$
+\end{theorem}
+
+\section{The Logarithmic Integral}
+
+\begin{theorem}
+    Let $D$ be a bounded domain with piecewise smooth boundary, and 
+    let $f(z)$ be a meromorphic function on $D$ that extends to be analytic 
+    on $\partial D$ such that $f(z)\neq0$ on $\partial D$. Then
+    $$\frac{1}{2\pi}\int_{\partial D}d\arg(f(z))=
+    \frac{1}{2\pi i}\int_{\partial D}\frac{f'(z)}{f(z)}dz=N_0-N_\infty,$$
+    where $N_0$ and $N_\infty$ are the number of zeros and poles of $f(z)$ 
+    in $D$ respectively, counting multiplicities.
+\end{theorem}
+
+\begin{theorem} (Rouché)
+    Let $D$ be a bounded domain with piecewise smooth boundary. Let 
+    $f(z)$ and $h(z)$ be analytic on $D\cup\partial D$. 
+    If $|h(z)|<|f(z)|$ for $z\in\partial D$, then $f(z)$ and $f(z)+h(z)$ have the same 
+    number of zeros in $D$, counting multiciplicities.
+\end{theorem}
+
+\begin{theorem} (Hurwitz)
+    Suppose $\{f_k\}$ is a sequence of analytic functions on a domain $D$ 
+    that converges normally to $f(z)$, and $f(z)$ has a zero of order $N$ at $z_0$. 
+    Then there exists $\rho>0$ such that for $k$ large, 
+    $f_k(z)$ has exactly $N$ zeros in the disk $\{|z-z_0|<\rho\}$ counting multiplicity, 
+    and these zeros converge to $z_0$ as $k\rightarrow\infty$.
+\end{theorem}
+
+\begin{corollary}
+    Suppose $\{f_k\}$ is a sequence of univalent functions on a domain $D$ 
+    that converges normally to $f(z)$. Then $f(z)$ is either univalent or constant.
+\end{corollary}
+
+\begin{theorem} (Inverse Function)
+    Suppose $f(z)$ is analytic for $|z-z_0|<\rho$, and $f(z)-w_0$ 
+    has a simple zero at $z_0$ and $f(z)\neq w_0$ for $0<|z-z_0|\leq \rho$. 
+    Then for $w$ such that $|w-w_0|<\min\limits_{|z-z_0|=\rho}|f(z)-w_0|$, 
+    there is a unique $f^{-1}(w)\in\{|z-z_0|<\rho\}$, and
+    $$f^{-1}(w)=\frac{1}{2\pi i}\int_{|\zeta-z_0|=\rho}\frac{\zeta f'(\zeta)}{f(\zeta)-w}d\zeta.$$
+\end{theorem}
+
+\begin{theorem} (Open Mapping)
+    If $f(z)$ is analytic on a domain $D$, and $f(z)$ is not a constant, 
+    then $f(U)$ is open for each open subset $U$ of $D$.
+\end{theorem}
+
+\begin{theorem}
+    Let $f(z)$ be analytic on a domain $D$, and let $\gamma$ be 
+    a closed path in $D$. If $W(\gamma,\zeta)=0$ for all $\zeta\in\C\backslash D$, 
+    then $$\frac{1}{2\pi i}\int_\gamma\frac{f(z)}{z-z_0}dz=W(\gamma,z_0)f(z_0).$$
+\end{theorem}
+
+\begin{theorem}
+    The following properties are equivalent for a domain $D$ in $\C$:
+
+    (i) $D$ is simply connected;
+
+    (ii) every closed differential on $D$ is exact;
+
+    (iii) for each $z_0\in\C\backslash D$, there is an analytic branch of 
+    $\log(z-z_0)$ defined on $D$;
+
+    (iv) each closed curve $\gamma$ in $D$ has winding number $W(\gamma,z_0)=0$ 
+    about all points $z_0\in\C\backslash D$;
+
+    (v) $\C^*\backslash D$ is connected.
+\end{theorem}
+
+\section{The Schwartz Lemma and Hyperbolic Geometry}
+
+\begin{lemma} (Schwartz)
+    If $f(z)$ is analytic on $\D$ with $|f(z)|\leq 1$ and $f(0)=0$, then
+    $$|f(z)|\leq |z|.$$
+    Further, if equality holds at some point $z_0\neq0$, then $f(z)=\lambda z$ 
+    for some constant $\lambda$ of modulus $1$.
+\end{lemma}
+
+\begin{theorem}
+    $$\Aut(\D)=\Big\{e^{i\theta}\frac{z-a}{1-\bar{a}z}\Bigm| a\in\D,0\leq\theta<2\pi\Big\}.$$
+\end{theorem}
+
+\begin{lemma} (Pick)
+    If $f(z)$ is analytic on $\D$ with $|f(z)|<1$, then
+    $$\frac{|f'(z)|}{1-|f(z)|^2}\leq \frac{1}{1-|z|^2}.$$
+    If $f(z)\in\Aut(\D)$, then equality holds; 
+    otherwise, there is strict inequality for all $z\in\D$.
+\end{lemma}
+
+\section{Harmonic Functions and the Reflection Principle}
+
+\begin{theorem}
+    Let $D$ be a domain that is symmetric with respect to the real axis. 
+    Let $f(z)$ be an analytic function on $D\cap\{\im z>0\}$ such that 
+    $\im f(z)\rightarrow0$ as $z\rightarrow D\cap\R$. Then $f(z)$ extends 
+    to be analytic on $D$, and $f(\bar{z})=\overline{f(z)}$.
+\end{theorem}
+
+\begin{definition}
+    If every point of a curve $\gamma$ has an open neighborhood $U$ for which 
+    there exists a conformal map $\zeta\mapsto z(\zeta)$ of a disk centered 
+    on $\R$ to $U$ such that $z(D\cap\R)=U\cap\gamma$, 
+    then $\gamma$ is called an analytic arc. The map $z\mapsto z^*$ 
+    where $z^*=z(\,\bar{\cdot}\,)$ is called reflection across $\gamma$.
+\end{definition}
+
+\begin{theorem}
+    Suppose $\gamma$ is an analytic boundary arc of a domain $D$ 
+    such that every point of $\gamma$ is contained in a disk $U$ such that 
+    $U\backslash\gamma$ has two components, one contained in $D$ 
+    and the other disjoint from $D$. Let $f$ be analytic on $D$. 
+    If $|f(z)|\rightarrow1$ as $z\rightarrow\gamma$, then $f(z)$ extends to 
+    be analytic in a neighborhood of $\gamma$, and 
+    $f(z^*)=\frac{1}{\overline{f(z)}}$.
+\end{theorem}
+
+\section{Conformal Mapping}
+
+\section{Compact Families of Meromorphic Functions}
+
+\begin{theorem} (Picard's Big Theorem)
+    Suppose $f(z)$ is meromorphic on a punctured neighborhood 
+    $\{0<|z-z_0|<\delta\}$. If $f(z)$ omits three values of $\C^*$, 
+    then $f(z)$ extends to be meromorphic at $z_0$.
+\end{theorem}
+
+\begin{theorem} (Picard's Little Theorem)
+    A nonconstant entire function assumes every value of $\C$ 
+    with at most one exception.
+\end{theorem}
+
+\section{Approximation Theorems}
+
+\begin{theorem} (Runge)
+    Let $K$ be a compact subset of $\C$, and $f(z)$ be analytic 
+    on an open set containing $K$. Let $S$ be a set containing a point 
+    of each connected component of $\C^*\backslash K$. 
+    Then $f(z)$ can be approximated uniformly on $K$ 
+    by rational functions with poles in $S$.
+\end{theorem}
+
+\begin{theorem} (Mittag-Leffer)
+    Let $\{z_k\}$ be a sequence of distinct points in a domain $D$ 
+    with no accumulation point in $D$, and $P_k$ be a polynomial in $\frac{1}{z-z_k}$. 
+    There is a meromorphic function $f(z)$ on $D$ whose poles are the points $z_k$ 
+    with the principle part of $f(z)$ at $z_k$ being $P_k$.
+\end{theorem}
+
+\begin{proposition}
+    \begin{align*}
+        \Big(\frac{\pi}{\sin\pi z}\Big)^2=\sum_{k\in\Z}\frac{1}{(z-k)^2},\quad
+        \pi\cot\pi z=\frac{1}{z}+\sum_{k=1}^\infty\Big(\frac{1}{z-k}+\frac{1}{z+k}\Big),\quad
+        \frac{\sin\pi z}{\pi z}=\prod_{k=1}^\infty\Big(1-\frac{z^2}{k^2}\Big).
+    \end{align*}
+\end{proposition}
+
+\begin{theorem} (Weierstrass Product)
+    Let $\{z_k\}$ be a sequence of distinct points in a domain $D$ 
+    with no accumulation point in $D$, and $\{n_k\}$ be a sequence of integers 
+    (positive or negative). Then there is a meromorphic function $f(z)$ on $D$ 
+    whose zeros and poles are at the points $z_k$ with the order $n_k$.
+\end{theorem}
+
+\section{Some Special Functions}
+
+\section{The Dirichlet Problem}
+
+\begin{proposition} (Harnack's inequality)
+    Let $u(z)$ be a positive harmonic function on the disk $|z-z_0|<R$. 
+    For $|z-z_0|\leq r<R$, we have
+    $$\frac{R-r}{R+r}u(z_0)\leq u(z)\leq\frac{R+r}{R-r}u(z_0).$$
+\end{proposition}
+
+\section{Riemann Surfaces}
+
+\begin{theorem} (Uniformization Theorem)
+    Each simply connected Riemann surface is conformally equivalent to 
+    one of $\D$, $\C$, $\C^*$.
+\end{theorem}
+
+\begin{theorem}
+    For each Riemann surface $R$, there is a covering map $\pi\colon S\rightarrow R$ 
+    of a simply connected Riemann surface $S$ onto $R$. If $\pi(q_0)=\pi(q_1)=p\in R$, 
+    there is a unique covering transform $\varphi$ of $S$ such that $\varphi(q_0)=q_1$.
+\end{theorem}
+
+\section{More}
+
+\begin{theorem}
+    Let $D$ be a domain that contains $\{|z|\leq R\}$, and $f$ be analytic on $D$ 
+    with $f(0)\neq0$ and $f(z)\neq0$ for $|z|=R$. 
+    If $a_1,\cdots,a_N$ are the zeros of $f$ inside $\{|z|\leq R\}$, then
+    $$\sum_{n=1}^N\log\frac{|a_n|}{R}=\log|f(0)|-\frac{1}{2\pi}\int_0^{2\pi}\log|f(Re^{i\theta})|d\theta.$$
+\end{theorem}
+\begin{definition}
+    The order of growth $\rho_0$ of an entire function $f$ is the infimum of $\rho$ such that
+    $$|f(z)|\leq Ae^{B|z|^\rho}.$$
+\end{definition}
+
+\begin{theorem}
+    Suppose $f$ has growth order $\rho_0$ with $k=\lfloor\rho_0\rfloor$. Then
+    $$f(z)=e^{P(z)}z^m\prod_{n=1}^\infty E_k\Big(\frac{z}{a_n}\Big),$$
+    where $P(z)$ is a polynomial of degree $\leq k$, 
+    $m$ is the order of zero of $f$ at $0$, 
+    $a_1,a_2,\cdots$ are the nonzero zeros of $f$, and the canonical factor
+    $$E_k(z)=(1-z)e^{z+\frac{z^2}{2}+\cdots+\frac{z^k}{k}}\quad\text{(and }E_0(z)=1-z\text{)}.$$
+\end{theorem}

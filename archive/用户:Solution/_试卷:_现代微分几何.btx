@@ -1,0 +1,108 @@
+\setdisplaytitle{试卷：现代微分几何}
+\sethtmltitle{试卷：现代微分几何}
+
+== 26年春期末试卷 (谢纳庆) ==
+
+\begin{enumerate}
+    \item 考虑完备的二维黎曼流形$(M,g)$，其上Gauss曲率$K\leq -1$。
+
+    (1) 记$\gamma(t):[0,\infty)\to M$为测地线，证明$\gamma(t)$上的非零正交Jacobi场$J(t)$满足
+    $$|J(t)|\geq \sinh t.$$
+
+    (2) 证明$\gamma(t)$处的测地圆周长$L(t)$满足
+    $$L(t)\geq 2\pi\sinh t.$$
+
+    (3) 说明是否存在紧致无边的完备二维黎曼流形$(M,g)$，满足其上Gauss曲率$K\leq -1$。
+
+    \item 考虑二维黎曼流形$(M,g)$，其上度量为
+    $$ds^2=e^{2\lambda}(dx^2+dy^2).$$
+
+    (1) 求Gauss曲率$K$。
+
+    (2) (a) 在正交标架场$\{e_1,e_2\}$下，使用指标形式和共变导数表示第二Bianchi恒等式。
+
+    (b) 说明二维黎曼流形上的第二Bianchi恒等式是退化的。
+
+    \item 考虑旋转面
+    $$\begin{cases}
+        x=e^{-z}\cos\theta,\\
+        y=e^{-z}\sin\theta,\\
+        z=z,
+    \end{cases}$$
+    其中$z\in\R$，$\theta\in[0,2\pi)$。
+
+    (1) 计算其对应的第一基本形式以及对应的度量张量。给出点$(1,0,0)$处，即对应$z=0,\theta=0$处，切空间上的正交规范基底$\{e_1,e_2\}$，其中$e_1$沿$z$方向，$e_2$沿$\theta$方向。
+
+    (2) (a) 计算该旋转面上从点$(1,0,0)$处出发沿$e_1$的测地线$\gamma(t)$。
+
+    (b) 计算沿测地线$\gamma(t)$的Gauss曲率$K(\gamma(t))$。
+
+    (c) 说明$\gamma(t)$是否自交或回到出发点。
+
+    \item 考虑二维黎曼流形$(M,g)$，其上度量为
+    $$ds^2=E\,du^2+G\,dv^2,$$
+    对应的体积形式为
+    $$\mathrm{vol}_g=\sqrt{EG}\,du\wedge dv.$$
+    考虑Hodge星算子$\star$。
+
+    (1) 求$\star 1$，$\star du$，$\star dv$，$\star du\wedge dv$。
+
+    (2) 验证
+    $$\star\star\omega=(-1)^{k(2-k)}\omega$$
+    在$(M,g)$上对$k$-形式成立，其中$k=0,1,2$。
+
+    (3) 定义余微分算子
+    $$\delta=(-1)^{m(k+1)+1}\star d\star,$$
+    对$1$-形式$\omega=f\,du+g\,dv$，求$\delta\omega$。
+
+    考虑球极投影在平面上诱导的Riemann度量
+    $$g=\frac{4}{(1+x^2+y^2)^2}(dx^2+dy^2).$$
+
+    (4) 求对应的体积形式$\mathrm{vol}_g$。
+
+    (5) 求$\star 1$，$\star dx$，$\star dy$，$\star dx\wedge dy$。
+
+    (6) 对$1$-形式$\omega=u(x,y)\,dx+v(x,y)\,dy$，验证
+    $$\star\star\omega=-\omega.$$
+
+    (7)(题目有误，此题不应有负号) 对$0$-形式$\omega=u(x,y)$，验证
+    $$\star d\star du=-\frac{1}{\sqrt{EG}}\left[\frac{\partial}{\partial x}\left(\sqrt{\frac{G}{E}}\frac{\partial u}{\partial x}\right)+\frac{\partial}{\partial y}\left(\sqrt{\frac{E}{G}}\frac{\partial u}{\partial y}\right)\right].$$
+
+    考虑二维黎曼流形上的Maxwell方程，对$2$-形式$F$，即电磁场，成立
+    $$dF=0,\qquad d\star F=0.$$
+
+    (8)(题目有误，方程成立有条件) 解释这个方程为什么是自然成立的。
+
+    (9) 考虑$1$-形式$A$，即电磁势，令$F=dA$，则$F$满足Maxwell方程。考虑方程
+    $$d\star dA=0,$$
+    解释这一方程与Laplace方程$-\Delta A=0$的关系。
+
+    (10) 取$A=u(x,y)\,dx$，在球极投影对应的黎曼流形上，给出方程
+    $$d\star dA=0$$
+    对应的偏微分方程，但是不需要求解。
+\end{enumerate}
+
+
+
+
+== 25年春期末试卷 (谢纳庆) ==
+
+\begin{enumerate}
+    \item 所谓Lobatchevski平面，就是上半平面$\{(x,y)\in\R^2:y>0\}$赋予Riemann度量
+    \[ds^2=\frac{dx^2+dy^2}{y^2}.\]
+    (1) 在自然基$\{dx,dy\}$下求其联络系数。
+
+    (2) 点$(0,1)$处的向量$(0,1)$沿着直线$y=1$平行移动会如何变化？
+
+    \item 证明大于等于$3$维的Einstein流形都是常数量曲率的。
+
+    \item (1) 叙述Jacobi场的定义。
+
+    (2) 证明每个沿着测地线的Jacobi场都可以通过某个变分来得到。
+
+    (3) 设沿着测地线的Jacobi场$J$满足$J(0)=0$，求$|J|^2$在$0$处的$4$阶Taylor展开。
+
+    \item 设$\R^2$上有一个完备的Riemann度量，在这个度量下
+    \[\lim_{r\to\infty}\left(\inf_{x^2+y^2 \le r^2}K(x,y)\right)\]
+    有限，证明这个极限不能是正的。
+\end{enumerate}

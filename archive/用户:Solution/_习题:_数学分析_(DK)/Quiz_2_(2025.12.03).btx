@@ -1,0 +1,46 @@
+\newenvironment{solution}{\begin{proofc}[解答]}{\end{proofc}}
+
+时长：20分钟 $\quad$ 题量：填空题与判断题各五道
+
+\textbf{填空题：}\\
+    \begin{enumerate}
+        \item[1.]设 $\{x\}=x-\left[ x \right]$ 代表实数 $x$ 的小数部分，求
+        $\displaystyle \int_{1}^2\left\{ \frac{4}{x} \right\}\mathrm{d}x$.
+        \item[2.]计算 $\displaystyle \frac{\mathrm{d}}{\mathrm{d}x}\int_{2x+1}^{2x+2}\frac{\mathrm{d}t}{x+t}$ 
+        在 $x=0$ 处的值.
+        \item[3.]已知实数 $\displaystyle p\leq q$ 使得广义积分 $\displaystyle \int_{0}^{+\infty}\frac{\mathrm{d}x}{x^p+x^q}$ 可积，求 $p,q$ 的取值范围.
+        \item[4.]将 $xOz$ 平面上的圆 $\displaystyle (x-2)^2+z^2=1$ 绕 $z$ 轴旋转得到环面. 求该环面所围成区域(形似甜甜圈)的体积.
+        \item[5.]投掷一枚均匀的硬币(即假设出现正反面朝上的概率均为 $\displaystyle \frac{1}{2}$)若干次，直到首次出现硬币正面朝上，
+        求投掷硬币次数的数学期望.
+    \end{enumerate}
+\textbf{判断题(T/F)：}\\
+    \begin{enumerate}
+        \item[1.]级数 $\displaystyle \sum_{n=1}^{+\infty}\frac{(-1)^n}{n^2}$ 条件收敛但不是绝对收敛.
+        \item[2.]设 $\displaystyle f(x)\in C^1(\mathbb{R})$，则其连续的弱导数唯一，即若连续函数 $g(x)$ 与 $h(x)$ 均为
+        $f(x)$ 的弱导数，则 $g\equiv h$.
+
+        注：定义函数 \(\displaystyle f(x):\mathbb{R}\to \mathbb{R}\) 的\textbf{弱导数} 如下:我们称函数 \(g(x)\) 是 \(f(x)\) 的一个弱导数,
+        若对任何光滑的紧支集(即在某一区间 \([-R,R]\) 之外恒为零)函数 \(\varphi (x)\) ,有下列积分等式成立:
+        \[\displaystyle \int_{\mathbb{R}}f(x)\cdot \varphi '(x)\mathrm{d}x = -\int_{\mathbb{R}}g(x)\cdot \varphi (x)\mathrm{d}x.\]
+        其中实数集 \(\mathbb{R}\) 上的广义积分定义为 \(\displaystyle[- L_{1},L_{2}]\) 上的定积分在 \(\displaystyle L_{1},L_{2}\to +\infty\) 时的极限. 
+        \item[3.]正项级数 $\displaystyle \sum_{n=1}^{+\infty} x_n$ 收敛且 $\{x_n\}$ 单调递减，则 $\displaystyle \lim_{n\to+\infty}nx_n=0$.
+        \item[4.]级数 $\displaystyle \sum_{n=0}^{+\infty}x^n$ 在 $x\leq -2$ 时收敛到 $\displaystyle \frac{1}{1-x}$.
+        \item[5.]反常积分 $\displaystyle \int_{0}^{+\infty}\frac{\sin{x}}{1+x}\mathrm{d}x$ 收敛.
+    \end{enumerate}
+
+\begin{solution}
+    答案：
+    \begin{enumerate}
+        \item[填空题：]$\displaystyle 4\ln{2}-\frac{7}{3}\,$；$\,\displaystyle-\frac{1}{2}\,$；$\,p<1<q\,$；$\,\displaystyle 4\pi^2\,$；$\, 2$.
+        \item[判断题：] FTTFT.
+    \end{enumerate}
+    对于填空题第二题，我们有更一般的形式:
+    \[
+        \frac{\mathrm{d}}{\mathrm{d}x}\int_{\alpha(x)}^{\beta(x)}f(x,t)\mathrm{d}t=\int_{\alpha(x)}^{\beta(x)}f_x(x,t)\mathrm{d}t+f(x,\beta(x))\beta'(x)-f(x,\alpha(x))\alpha'(x).
+    \]
+    对于填空题第五题，其数学期望为 $\displaystyle \mathbb{E}[X]=\sum_{n=1}^{+\infty}\frac{n}{2^n}=2$.\\
+    对于判断题第二题，由弱导数定义可知 $\displaystyle\forall \varphi \text{\,为光滑紧支集},\,\int g\varphi=-\int f\varphi'=\int h\varphi$. 
+    令 $\displaystyle J(x)=g(x)-h(x)$，则 $\displaystyle J \text{\,为连续函数},\,\int J\varphi\equiv 0,\,\forall \varphi \text{\,为光滑紧支集}$，从而 $J\equiv 0$，即 $g\equiv h$. 
+    (但是若弱导数不要求连续，则不唯一.)\\
+    对于判断题第五题，由 Dirichlet 判别法即知该反常积分收敛.
+\end{solution}

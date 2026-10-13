@@ -1,0 +1,425 @@
+\section{互素多项式的应用}
+\textbf{Problem 1}
+\par
+数域: $\mathbb{Q}(\sqrt{2},\sqrt{3})=\{a + b\sqrt{2}+c\sqrt{3}+d\sqrt{6}\mid a,b,c,d\in\mathbb{Q}\}$.
+\par
+证明: $\forall\alpha\in\mathbb{Q}(\sqrt{2},\sqrt{3})$, $\alpha$可表示为$f(\sqrt{2}+\sqrt{3})$, $f\in\mathbb{Q}[x]$.
+\par
+\par
+\par
+证明: 考虑$\sqrt{2}+\sqrt{3}$的极小多项式
+\[
+\begin{align*}
+f(x)&=[x - (\sqrt{2}+\sqrt{3})][x-(\sqrt{2}-\sqrt{3})][x-(-\sqrt{2}+\sqrt{3})][x+(\sqrt{2}+\sqrt{3})]\\
+&=x^4 - 10x^2+1\in\mathbb{Z}[x]
+\end{align*}
+\]
+(1)若$f(\frac{p}{q}) = 0$,\ 则有$p\mid1,\ q\mid1$,\ 经检验$1,\ -1$都不是方程的根因此$f(x)$没有一次因式.
+\par
+(2)$f(x)=(x^2+ax + 1)(x^2+bx + 1)$经计算不可行.
+$\Rightarrow f(x)$在$\mathbb{Q}$上不可约$\Leftrightarrow f(x)$为$\sqrt{2}+\sqrt{3}$的极小多项式.
+\par
+显然$\mathbb{Q}(\sqrt{2},\sqrt{3})$为一个四维的线性空间.
+\par
+我们断言: $1,\sqrt{2}+\sqrt{3},(\sqrt{2}+\sqrt{3})^2,(\sqrt{2}+\sqrt{3})^3$为$\mathbb{Q}(\sqrt{2},\sqrt{3})$一组基. 由于$\dim\mathbb{Q}(\sqrt{2},\sqrt{3})=4$, 只需证$1,\sqrt{2}+\sqrt{3},(\sqrt{2}+\sqrt{3})^2,(\sqrt{2}+\sqrt{3})^3$线性无关.
+\par
+反证: 若4者线性相关
+\par
+$\exists c_1,c_2,c_3,c_4$不全为$0\in\mathbb{Q}$, $c_1+(\sqrt{2}+\sqrt{3})c_2+(\sqrt{2}+\sqrt{3})^2c_3+(\sqrt{2}+\sqrt{3})^3c_4 = 0$.
+\[
+\begin{align*}
+g(x)&=c_1 + c_2x + c_3x^2 + c_4x^3\in\mathbb{Q}[x]
+\end{align*}
+\]
+\par
+\begin{align*} g(\sqrt{2}+\sqrt{3})&=0\Rightarrow f(x)\mid g(x)\text{ 矛盾}. 
+\end{align*}
+$\Rightarrow\forall\alpha\in\mathbb{Q}(\sqrt{2},\sqrt{3})$, $\alpha=a_0 + a_1(\sqrt{2}+\sqrt{3})+a_2(\sqrt{2}+\sqrt{3})^2+a_3(\sqrt{2}+\sqrt{3})^3$.
+\section{多元多项式}
+\textbf{Problem 1}
+\par
+设数域$\mathbb{K}$上的二元多项式 \(f(x,y)\) 关于 \(x\) 的次数小于等于 \(n\)，关于 \(y\) 的次数小于等于 \(m\)，
+\(\mathbb{K}\)中有互不相同的 \((a_1, a_2, \cdots, a_n)\) 和 \((b_1, b_2, \cdots, b_m)\) 使得
+\[f(a_i, b_j) \quad 1\leq i\leq n \quad 1\leq j\leq m.\]
+证明：\(f(x,y)\) 为 \(0\) 多项式.
+证明: \(\forall a_i\)，\(f(a_i,y)\) 为关于 \(y\) 的多项式且 \(\text{deg} f(a_i, y)\leq m\)
+\par
+\(\forall b_j\)，\(f(a_i, b_j) = 0\quad j = 0,1,2,\cdots,m\)
+\(\Rightarrow f(a_i,y)=0\)
+\par
+将 \(f(x,y)\) 整理成 \(f(x,y)=f_n(y)x^n + f_{n - 1}(y)x^{n - 1}+\cdots + f_0(y)\)
+由 \(f(a_i,y)=0\)
+\(\Rightarrow\begin{pmatrix}1&a_0&\cdots&a_0^n\\1&a_1&\cdots&a_1^n\\\vdots&\vdots&\ddots&\vdots\\1&a_n&\cdots&a_n^n\end{pmatrix}\begin{pmatrix}f_0(y)\\f_1(y)\\\vdots\\f_n(y)\end{pmatrix}=\begin{pmatrix}0\\0\\\vdots\\0\end{pmatrix}\)
+
+由Cramer法则 \(f_i(y)=0\quad i = 0,1,2,\cdots,n\)  .
+
+法2. 考虑
+\(f(x,y)=f_n(y)x^n + f_{n - 1}(y)x^{n - 1}+\cdots + f_0(y)\)
+\(f(x,b_i)=f_n(b_i)x^n + f_{n - 1}(b_i)x^{n - 1}+\cdots + f_0(b_i)\quad \text{deg} f(x,b_i)\leq n\)
+\par
+易知 \(a_0,a_1,a_2,\cdots,a_n\) 均为 \(f(x,b_i)\) 的根.
+\(\Rightarrow f_n(b_i)=f_{n - 1}(b_i)=\cdots = f_0(b_i)\)
+由 \(i\) 的任意性
+\(b_0,b_1,\cdots,b_m\)都是 \(f_n(y),f_{n - 1}(y),\cdots,f_0(y)\) 的根
+\(\text{deg} f_i(y)\leq m\quad 0\leq i\leq n\)故
+\(f_i(y)=0\)  .
+
+\textbf{Problem 2} 
+\par 
+证明：\(\mathbb{K}\)上的非零\(n\)元多项式 \(f(x_1,x_2,\cdots,x_n)\) 为 \(m\) 次齐次多项式的充要条件为：
+\(\forall t\in\mathbb{K}, f(tx_1,tx_2,\cdots,tx_n)=t^m f(x_1,x_2,\cdots,x_n)\)。
+\\
+证明：必要性显然
+\\
+充分性：设 \(f = f_1 + f_2+\cdots + f_k\)，\(f_i\) 为 \(i\) 次齐次多项式。
+$f(tx_1,tx_2,\cdots,tx_n)$$=t f_1 + t^2 f_2+\cdots + t^k f_k=t^m(f_1 + f_2+\cdots + f_k)$
+
+$\Rightarrow t^m(f_1 + f_2+\cdots + f_{m - 1}+f_{m+1}+\cdots + f_k)$ $-t_{1}f_{1}-t_{2}f_{}-\cdots-t_{k}f_{k}=G(t)$
+
+将 \(G(t)\) 看作关于 \(t\) 的多项式，\(G(t)\) 有无穷多个根
+
+故 \(f_1 = f_2=\cdots = f_{m - 1}=f_{m+1}=\cdots = f_k = 0\)  .
+
+\section{特征值与特征多项式}  
+\textbf{Problem 1}
+\\
+\(A\in M_n(\mathbb{Q})\)，满足 \(A^p = I_n\)，其中 \(p\) 为素数，证明：对 \(A\) 的任一特征值 \(\lambda_0\)，以及任意整数 \(0 < k < p\)，\(\lambda_0^k\) 亦为 \(A\) 的特征值。
+\\
+证明：设 \(f(\lambda)=\lambda^p - 1\)
+且有 \(f(A)=0\)
+
+(1) \(f(\lambda)\)为 \(A\) 的极小多项式
+\par
+故 \(A\) 的所有特征根即为：\(1,\omega,\omega^2,\cdots,\omega^{p - 1}\ (\omega^p = 1)\)
+\par
+\(\forall 0 < t < p,0 < k < p\)
+显然有 \([\omega^{tk}]^p = 1\)
+\(\omega^{tk}=\omega^i\quad 0\leq i < p\)
+
+(2) \(f(\lambda)\)不是 \(A\) 的极小多项式
+\par
+设 \(g(\lambda)\)为 \(A\) 的极小多项式，\(g(\lambda)\in\mathbb{Q}[\lambda]\)
+\(g(\lambda)\mid f(\lambda)\)
+\par
+\(f(\lambda)=(\lambda - 1)(\lambda^{p - 1}+\lambda^{p - 2}+\cdots+\lambda + 1)=(\lambda - 1)h(\lambda)\)
+\par
+由Eisenstein判别法，\(h(\lambda)\)为 \(\mathbb{Q}\) 上的不可约多项式
+\par
+故 \(g(\lambda)=\lambda - 1\) 或 \(g(\lambda)=h(\lambda)\)
+
+Case I. \(g(\lambda)=\lambda - 1\)
+\(g(A)=A - I_n = 0\)
+结论显然成立
+
+Case II. \(g(\lambda)=h(\lambda)\)
+故 \(A\) 的全体特征值为 \(\omega,\omega^2,\cdots,\omega^{p - 1}\ (\omega^p = 1)\)
+\par
+要证结论，即证：\(\forall 0 < t < p,0 < k < p\quad\omega^{tk}\neq1\)
+\par
+假设 \(\omega^{tk}=1\)
+则有 \(p\mid tk\)，
+\par
+\(p\) 为素数
+故 \(p\mid t\) 或 \(p\mid k\)，而 \((p,t)=(p,k)=1\) 矛盾
+
+\textbf{Problem 2}
+\\
+\(A,B\in M_n(\mathbb{C})\)，\(A\)，\(B\)至少一个为非奇异阵，且满足 \(AB = BA\)，证明：存在 \(m\in\mathbb{Z}^+\)，使得 \(A^m + B^m\) 可逆。
+\\
+证明：由于 \(AB = BA\)
+故 \(A\)，\(B\) 可同时上三角化，因此 \(\exists P\) 可逆 s.t.
+\[P^{-1}AP=\begin{pmatrix}
+\lambda_1& & \\
+& \ddots& \\
+& & \lambda_n
+\end{pmatrix}\]
+\[P^{-1}BP=\begin{pmatrix}
+\mu_1& & \\
+& \ddots& \\
+& & \mu_n
+\end{pmatrix}\]
+\[P^{-1}(A^m + B^m)P=\begin{pmatrix}
+\lambda_1^m+\mu_1^m& & \\
+& \ddots& \\
+& & \lambda_n^m+\mu_n^m
+\end{pmatrix}\]
+不妨设 \(A\) 可逆，故 \(\lambda_i(i = 1,\cdots,n)\neq0\)
+\par
+\(A^m + B^m\) 可逆 \(\Leftrightarrow\exists m\in\mathbb{Z}^+\)，\(\lambda_i^m+\mu_i^m\) 均不为 \(0\).
+
+(1) 若 \(|\lambda_i|\neq|\mu_i|\)，则 \(\lambda_i^m+\mu_i^m\neq0\)
+\par
+(2) 若 \(|\lambda_i| = |\mu_i|\)，设 \(\lambda_i\)，\(\mu_i\) 辐角为 \(\theta_i\)，\(\theta_j\in[0,2\pi]\)
+
+Case I. 若 \(\frac{\pi}{|\theta_i - \theta_j|}\notin\mathbb{Q}\)，则 \(\lambda_i^m+\mu_i^m\neq0\)
+\par
+Case II. 若 \(\frac{\pi}{|\theta_i - \theta_j|}\in\mathbb{Q}\)，
+\par
+则对取定的 \(\theta_i\)，\(\theta_j\)
+\(\frac{\pi}{|\theta_i - \theta_j|}=\frac{p}{q}\)，\((p,q)=1\)，\(q\pi = p|\theta_i - \theta_j|\)，
+\par
+令 \(m_i = p\)
+显然这样的 \(m_i\) 只有有限个，不妨设有 \(k\) 个
+\par
+考虑 \(N=[m_1,m_2,\cdots,m_k]\)（最小公倍数）
+令 \(m = 2N\) 即可
+\par
+此时 \(\lambda_i\)，\(\mu_i\) 同向，\(\lambda_i^m+\mu_i^m\neq0\)（\(\lambda_i\)，\(\mu_i\) 不同时为 \(0\)）  .
+
+\section{矩阵可对角化的判定}
+\textbf{Problem 1}
+
+$A \in M_n(\mathbb{C})$, $B=(b_{ij}) \in M_n(\mathbb{C})$,其中 $b_{ij} = \mathrm{tr}(A^{i+j-2})$. 约定 $A^0=I_n$,\\
+求证: 若$B$非异, 则$A$可对角化
+
+\textit{证明}: 设 $S_k = \lambda_1^k + \lambda_2^k + \dots + \lambda_n^k$, 则 $\mathrm{tr}(A^k)=S_k$.\\
+由题意得
+\[B=\begin{pmatrix}
+S_0 & S_1 & \dots & S_{n-1} \\
+S_1 & S_2 & \dots & S_n \\
+\vdots & \vdots & \ddots & \vdots \\
+S_{n-1} & S_n & \dots & S_{2n-2}
+\end{pmatrix}\]
+由先前的习题: $|B| = \prod_{i<j \leq n} (\lambda_i - \lambda_j)^2 \neq 0$\\
+因此$A$的$n$个特征值互异 $\Rightarrow A$可对角化 $\square$.
+
+\textbf{Problem 2}
+
+设$V = M_n(\mathbb{C})$是$n$阶复方阵全体, 将$V$视作实线性空间, $V$上线性变换定义为$\varphi$, $\varphi(X) = \overline{X}$, 证明: $\varphi$可对角化
+
+\textit{证明}: 注意到 $\varphi^2 = \varphi \cdot \varphi = I_V$
+
+\textit{Claim}: $f(x)=x^2-1$为$\varphi$的极小多项式\\
+显然$\varphi$不适合$x+1, x-1$, 故$f(x)$为$\varphi$的极小多项式\\
+因此$\varphi$的特征值为$\pm 1$\\
+显然$1$对应特征子空间 $V_1$, 即全体实矩阵\\
+$-1$对应特征子空间 $V_2$, 即全体纯虚数矩阵\\
+$V_1 \cap V_2 = 0$\\
+故 $V_1 + V_2 = V_1 \oplus V_2$\\
+而 $\forall \alpha \in V$ 显然有 $\alpha_1 \in V_1, \alpha_2 \in V_2$ s.t. $\alpha = \alpha_1 + \alpha_2$\\
+$\Rightarrow V = V_1 \oplus V_2$\\
+$\Rightarrow \varphi$可对角化.
+
+\textit{remark}: 一些具有循环结构的映射, 我们可以得到其极小多项式从而得到其特征值.
+
+\textbf{Problem 3}
+
+$H_0=0$, 定义
+\[
+H_n = \begin{pmatrix} H_{n-1} & I_{2^{n-1}} \\ I_{2^{n-1}} & H_{n-1} \end{pmatrix} \quad (n\geq 1)
+\]
+证明: 当$n$为奇数时, $rank(H_n)=2^n$, $n$为偶数时 $rank(H_n)=2^n - C_n^{\frac{n}{2}}$.
+
+\textbf{证明}:
+
+\textbf{Lemma 1.}
+\[
+\begin{vmatrix} A & B \\ B & A \end{vmatrix} = |A+B||A-B|
+\]
+
+\textbf{Lemma 2.}
+$H_n$是实对称阵, 则必可对角化. 
+考虑$|H_{n}|$的特征多项式:
+\[
+|\lambda I_{2^{n}} - H_n| = \begin{vmatrix}
+\lambda I_{2^{n-1}} - H_{n-1} & -I_{2^{n-1}} \\
+-I_{2^{n-1}} & \lambda I_{2^{n-1}} - H_{n-1}
+\end{vmatrix} = |\lambda I_{2^{n-1}} - H_{n-1} + I_{2^{n-1}}| \cdot |\lambda I_{2^{n-1}} - H_{n-1} - I_{2^{n-1}}| \quad (\text{by Lemma 1})
+\]
+
+设$\lambda_i^{(n)}$为$H_n$的特征值, 则有
+\[
+\lambda_i^{(n)} = \lambda_i^{(n-1)} + 1 \quad \text{或} \quad \lambda_i^{(n)} = \lambda_i^{(n-1)} - 1
+\]
+由这个生成过程, $H_n$的特征值可按如下方式生成:
+\begin{enumerate}
+\item 共有$n$次操作, 每次操作加$+1$或$-1$;
+\item 初始值$\lambda_0 = 1$;
+\item 每种操作所得值即为$H_n$的一个特征值.
+\end{enumerate}
+
+由Lemma 2, $H_n$可对角化, 故$rank(H_n)$就是$H_n$非零特征值的个数.
+下面讨论矩阵的阶数
+\begin{enumerate}
+\item[(1)] $n \equiv 1 \pmod{2}$
+
+$\lambda_i^{(n)} \equiv 1 \pmod{1}$, 故所有$\lambda_i^{(n)} \neq 0$, 总共有$2^n$种操作方式, 因此 $rank(H_n) = 2^n$.
+
+\item[(2)] $n \equiv 0 \pmod{2}$
+
+若要生成0特征值，只需$n$次操作中有$\frac{n}{2}$次$+1$, $\frac{n}{2}$次$-1$, 共$C_n^{\frac{n}{2}}$个特征值为$0$,
+故
+$rank(H_n) = 2^n - C_n^{\frac{n}{2}}$.
+\section{极小多项式与Caley-Hamilton定理}
+\textbf{Problem 1}
+
+$A \in M_n(\mathbb{K})$, $m(x)$为$A$的极小多项式, $\mathbb{K}[A] = \{f(A) \mid f(x) \in \mathbb{K}[x]\}$, 证明: $\dim \mathbb{K}[A]=\mathrm{deg}m(x)$,并尝试给出$\mathbb{K}[A]$的一组基.
+
+\textbf{证明}: 由带余除法:
+\begin{align*}
+f(x) &= m(x)h(x)+r(x) \quad \deg r(x) < \deg m(x)=k \\
+f(A) &= m(A)h(A)+r(A) \\
+&= r(A)
+\end{align*}
+故$\forall f(A) \in K[A]$,都可被 $I_n, A, A^2, \dots, A^{k-1}$ 线性表示
+
+\textbf{Claim}: $I_n, A, A^2, \dots, A^{k-1}$ 线性无关.
+
+若不然 $\exists c_0, c_1, \dots, c_{k-1}$ 不全为0 s.t.
+$$c_0 I_n + c_1 A + c_2 A^2 + \dots + c_{k-1} A^{k-1} = 0$$
+设 $g(x) = c_0 + c_1 x + c_2 x^2 + \dots + c_{k-1} x^{k-1}$
+\begin{align*}
+g(A) &= 0 \\
+m(x) &| g(x) \quad 矛盾!
+\end{align*}
+故 $\dim K[A]=\mathrm{deg}m(x)$, $I_n, A, A^2, \dots, A^{k-1}$ 为其一组基
+
+remark:事实上我们有还有当极小多项式与特征多项式相同时，题中的$\mathbb{K}[A]$也是所有与矩阵A乘法可交换的矩阵.
+
+\textbf{Problem 2}
+
+$n$阶实方阵$A,B$满足：$A,B$的特征值均大于$0$，且存在$k \in \mathbb{Z}^+,\ m=2^k$，s.t. $A^m = B^m$\\
+求证: $A=B$
+\textbf{证明}:
+
+\textbf{Lemma}$\varphi: M_n(\mathbb{K}) \to M_n(\mathbb{K}),\ \varphi(X) = AX-XB$，$\varphi$为双射 $\iff A,B$无公共特征值
+
+注意到:
+
+$A^{2^{k-1}}\left(A^{2^{k-1}} - B^{2^{k-1}}\right) + \left(A^{2^{k-1}} - B^{2^{k-1}}\right)B^{2^{k-1}}=0\Leftrightarrow A^m = B^m$
+
+$A^{2^{k-1}}\left(A^{2^{k-1}} - B^{2^{k-1}}\right) - \left(A^{2^{k-1}} - B^{2^{k-1}}\right)\left(-B^{2^{k-1}}\right)=0$
+
+由于$A,B$只有正特征值\\
+故$A^{2^{k-1}},\ B^{2^{k-1}}$也只有正特征值 $\Rightarrow A^{2^{k-1}},\ -B^{2^{k-1}}$无公共特征值\\
+由lemma, $\varphi(x)=A^{2^{k-1}}x - x(-B^{2^{k-1}})$为双射, $\dim \ker\varphi=0$\\
+$A^{2^{k-1}} = B^{2^{k-1}}$\\
+递归地进行如上操作易得\\
+A=B.
+
+\textbf{Problem 3}
+
+设$A = \begin{pmatrix} 1 & 0 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix}$，证明: $\forall n\geq 1,\ \{A^n, A^{n+1}, A^{n+2}\}$都是$\mathbb{K}[A] = \{f(A) | f(x)\in \mathbb{K}[x]\}$的一组基.\\
+且
+\[
+-nA^{2n+2} + (n+1)A^{2n} = I_3 \qquad -nA^{2n+1} + A^{2n} + nA^{2n-1} = I_2
+\]
+
+\textbf{证明}：
+经计算$A的极小多项式为 m(\lambda)=(\lambda-1)^{2}(\lambda+1)$
+由Problem 1的结论$dim\mathbb{k}[A]=3$且${I_{n}, A , A^{2}}$为一组基
+
+\textbf{Claim}: $A^n$, $A^{n+1}$, $A^{n+2}$ 线性无关.\\
+若 $C_1 A^n + C_2 A^{n+1} + C_3 A^{n+2} = 0$\\
+$\Rightarrow\ C_1 I_n + C_2 A + C_3 A^2 = 0$\\
+由 $I_n, A, A^2$ 线性无关\\
+$C_1 = C_2 = C_3 = 0$\\
+故 $A^n, A^{n+1}, A^{n+2}$ 线性无关. 又由 $\dim \mathbb{k}[A]=3$ 故其为一组基\\
+
+设 $f(x) = -n x^{2n+2} + (n+1) x^{2n} - 1$\\
+
+\quad$g(x) = -n x^{2n+1} + x^{2n} + n x^{2n-1} - 1$\\
+
+要证: $f(A)=0 \ g(A)=0 \iff m(x)|f(x),\ m(x)|g(x)$\\
+$f'(x) = -n(2n+2) x^{2n+1} + (n+1)\cdot 2n x^{2n-1}$\\
+$f(1) = -n + n+1 -1 = 0 \quad f(-1) = -n + n+1 -1 = 0$\\
+$f'(1) = -n(2n+2) + 2n(n+1) = 0\Rightarrow m(x)|f(x)$同理$\ m(x)|g(x)$\\
+
+remark: 解决矩阵高次计算的问题我们还可以使用Jordan标准型\\
+$P^{-1}AP = \begin{pmatrix} 1 & 1 & 0\\0 & 1 & 0\\0 & 0 & -1 \end{pmatrix} = J \quad
+J_1 = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix} = I_2 + J(0) \quad
+J_1^k = I_2 + C_k^1 J(0)$\\
+$J^{2n+2} = \begin{pmatrix} 1 & 2n+2 & 0\\0 & 1 & 0\\0 & 0 & 1 \end{pmatrix} \quad
+J^{2n} = \begin{pmatrix} 1 & 2n & 0\\0 & 1 & 0\\0 & 0 & 1 \end{pmatrix}$\\
+$-n J^{2n+2} + (n+1) J^{2n} = \begin{pmatrix} 1 & 0 & 0\\0 & 1 & 0\\0 & 0 & 1 \end{pmatrix}.$
+\section{有理标准型的应用}
+\textbf{Problem 1}
+
+设$D$为$\mathbb{k}$上$n$阶矩阵，求证：存在纯量阵$C$，以及$A,B \in M_n(\mathbb{k})$，s.t.
+\[D = C + AB - BA\]
+
+\textbf{proof}: (lemma) $D \in M_n(\mathbb{k})$,若$\mathrm{tr}(D)=0$, 则$D$相似于一个主对角线全为0的矩阵.
+\begin{proof}
+对$D$的阶数进行归纳
+阶数较小的时候是平凡的.
+假设$n-1$时成立，下证$n$的情形
+
+由Frobenius标准型理论.
+
+$\exists P$可逆
+\[P^-DP = \begin{pmatrix}
+F_1 & & & \\
+ & F_2 & & \\
+ & & \ddots & \\
+ & & & F_k
+\end{pmatrix}\]
+
+\textbf{Case 1.} 所有有理块为1阶
+
+此时$d_1(\lambda)=d_2(\lambda)=\dots=d_n(\lambda)=\lambda-c$
+
+$P^{-}DP=\mathrm{tr}(P^{-}DP) = \mathrm{tr}(D) = nc=0 \Rightarrow c=0$
+
+\textbf{Case 2.} 有一个有理块阶数大于1
+将其移至第一位
+\[P^{-}DP = \begin{pmatrix} 0 & B' \\ \alpha & D_1 \end{pmatrix}\]
+
+由归纳假设$\exists Q$可逆 s.t. $Q^-D_1Q$对角元全为0
+
+考虑$\begin{pmatrix} 1 & \\ & Q^- \end{pmatrix} \begin{pmatrix} 0 & B' \\ \alpha & D_1 \end{pmatrix} \begin{pmatrix} 1 & \\ & Q \end{pmatrix} \quad 即可$
+\end{proof}
+
+适当调整$C$，显然可使 $\mathrm{tr}(D-C)=0$
+
+由lemma $\exists P$可逆
+\begin{align*}
+\text{s.t. } P^-(D-C)P &= P^-ABP - P^-BAP \\
+&= (P^-AP)(P^-BP) - (P^-BP)(P^-AP)
+\end{align*}
+
+此时令$P^-AP=\mathrm{diag}\{\lambda_1,\lambda_2,\dots,\lambda_n\}$（$n$个特征值互异）
+\[P^-ABP - P^-BAP = (\lambda_i-\lambda_j)b_{ij}\]
+
+① $i=j$ 时左右两侧均为0
+
+② $i\neq j时 令b_{ij} =\frac{c_{ij}}{\lambda_i-\lambda_j}$ 即得 $P^-(C-D)P=(c_{ij}) \quad \square.$
+
+\textit{remark}: 本题在数域$\mathbb{k}$上研究问题，因而无法直接利用Jordan标准型.\\
+\quad 进而也体现了Frobenius标准型的独特性质.
+\section{正定阵与半正定阵}
+\textbf{Problem 1}
+
+设$A=(a_{ij})$为$n$阶正定实对称矩阵，$B=(c_{ij})$为$n$阶半正定矩阵，证明：Hadamard积 $A \circ B = (a_{ij} b_{ij})$为正定阵
+$\iff B$的主对角元全正
+
+
+\textbf{证明}: 由子$B$半正定，$\exists C$为实矩阵 $B=C'C \quad b_{ij} = \sum\limits_{k=1}^n c_{ki} c_{kj}$
+
+\begin{align*}
+f &= x'A \circ Bx \\
+&= \sum_{i,j=1}^n a_{ij} b_{ij} x_i x_j = \sum_{i,j=1}^n a_{ij} \sum_{k=1}^n c_{ki} c_{kj} x_i x_j \\
+&= \sum_{k=1}^n \sum_{i,j=1}^n a_{ij} (c_{ki}x_i)(c_{kj}x_j) \\
+&= \sum_{k=1}^n y_k'A y_k
+\end{align*}
+
+$\Rightarrow$若主对角元不全正
+
+不妨设
+\[b_{ii} = \sum_{k=1}^n c^2_{ki} = 0 \quad c_{1i}=c_{2i}=\dots=c_{mi}=0\]
+令$y = (0, 0, \dots, 1, 0, \dots 0)^T$
+\quad 其中1在第i位
+
+则$y_k = 0 \quad k=1,2,\dots,n$
+
+与$f$为正定型矛盾
+
+$\Leftarrow$由主对角元全正
+\[b_{ii} = \sum_{k=1}^n C^2_{ki} > 0\]
+故至少有一个$c_{ki}$大于$0 \quad (i=1,2,\dots,n)$
+
+设$a\neq 0, a \in \mathbb{R}^n$
+
+不妨设$x_j \neq 0$
+
+由于$b_{jj} > 0$ 则不妨设$c_{tj} \neq 0$，$\Rightarrow c_{tj}x_j \neq 0 \Rightarrow y_t \neq 0 \Rightarrow y_t'A y_t > 0$
+$\Rightarrow f$正定 .

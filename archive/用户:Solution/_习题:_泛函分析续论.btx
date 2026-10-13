@@ -1,0 +1,1018 @@
+\newcommand{\hol}{\mathrm{Hol}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\con}{\operatorname{con}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathcal{F}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\sigmap}{\sigma_{p}}
+\setdisplaytitle{习题：泛函分析续论}
+\sethtmltitle{习题：泛函分析续论}
+
+{{comment|\qquad教材为郭坤宇的《算子理论基础》(第二版，2022年9月出版)，
+泛函分析续论II的课程内容是\S3.3，\S4.3至\S4.6与附录B.1。
+据说即将推出新版，以后的同学参考时可能题号会有微小的变动。
+下面的解答由多人合撰，我们对由此造成的符号和风格上的不统一提前表示歉意。
+------2025年5月22日}}
+
+\setcounter{section}{2}
+\renewcommand\thesection{3.\arabic{section}}
+
+== 直线上的Fourier变换(p.107) ==
+\begin{enumerate}
+    \item 假设$1\leqslant p\leqslant\infty$，$f\in L^1(\R)$，$g\in L^p(\R)$，
+    证明$f\ast g\in L^p(\R)$，并且$\|f\ast g\|_p\leqslant\|f\|_1\|g\|_p$.
+    \begin{proof}
+        由积分型Minkowski不等式立知\[\|f\ast g\|_p=\|\int_{\R}f(t)g(\cdot-t){\rm d}m(t)\|_p
+        \leqslant\int_{\R}|f(t)|\|g(\cdot-t)\|_p{\rm d}m(t)=\|f\|_1\cdot\|g\|_p,\]
+        故$f\ast g\in L^p(\R)$。
+    \end{proof}
+    \item 证明命题3.3.6：设$f,g\in L^2(\R)$，那么$f\ast g$是直线$\R$上一致连续的有界函数.
+    \begin{proof}
+        有界性：由Cauchy不等式，对任意$x\in\R$，$|(f\ast g)(x)|\leqslant\displaystyle
+        \int_{\R}|f(y)|\cdot|g(x-y)|{\rm d}m(y)\leqslant\|f\|_2\|g\|_2<+\infty$。
+
+        一致连续性：对任意$\delta>0$，$x\in\R$，由Cauchy不等式知
+        \[|(f\ast g)(x)-(f\ast g)(x+\delta)|\leqslant\int_{\R}|f(y)|\cdot|g(x-y)-g(x+\delta-y)|{\rm d}m(y)
+        \leqslant\|f\|_2\cdot\|g(\cdot)-g(\cdot+\delta)\|_2.\]由$\lim\limits_{\delta\to0^+}\|g(\cdot)-g(\cdot+\delta)\|_2=0$即证。
+    \end{proof}
+    \item 设$\varphi$是直线上的紧支撑连续函数，$f\in L^p(\R)$，$1\leqslant p\leqslant\infty$，
+    证明$\varphi\ast f$是直线上的连续函数. 当$\varphi$是直线上的紧支撑的可微函数时，讨论函数$\varphi\ast f$的可微性.
+    \begin{proof}
+        记$q$为$p$的对偶数，则$C_c(\R)\subseteq L^q(\R)$，从而仿照上一题，利用H\"older不等式可证$\varphi\ast f$有界且一致连续。
+
+        如果$\varphi$还可微，则由控制收敛定理易证$\frac{{\rm d}}{{\rm d}x}(\varphi\ast f)(x)=(\varphi'\ast f)(x)$，从而$\varphi\ast f$连续可微。
+    \end{proof}
+    \item 设$\varphi$是直线上的紧支撑的非负的光滑函数，满足$\int_{\R}\varphi\,\text{d}m=1$，并定义$\varphi_n(x)=n\varphi(nx)$. 证明：
+    \begin{enumerate}[label=(\roman*)]
+        \item 如果$f\in C_0(\R)$，那么当$n\to\infty$时，$f\ast\varphi_n$在$\R$上一致收敛到$f$.
+        \item 如果$1\leqslant p<\infty$，$f\in L^p(\R)$，那么当$n\to\infty$时，$\|f\ast\varphi_n-f\|_p\to0$.
+        \item 如果$f\in L^\infty(\R)$，那么当$n\to\infty$时，$f\ast\varphi_n\stackrel{\text{w}^*}{\rightarrow}f$.
+        \item 对每个点$x\in\R$，当$n\to\infty$时，$\hat{\varphi}_n(x)\to1$.
+    \end{enumerate}
+    \begin{proof}
+        (i)设$\operatorname{supp}\varphi\subseteq[-N,N]$. 由于对任意正整数$n$，$\int_{\R}\varphi_n\,{\rm d}m=1$，故对任意$x\in\R$，
+        \[|(f\ast\varphi_n)(x)-f(x)|=\left|\int_{\R}(f(x-y)-f(x))\varphi_n(y)\,{\rm d}m(y)\right|\leqslant\int_{\R}|f(x-\dfrac{y}{n})-f(x)|\cdot|\varphi(y)|\,{\rm d}m(y).\]
+        由于$f\in C_0(\R)$表明$f$一致连续，故\[\lim_{n\to\infty}\sup_{y\in[-N,N]}|f(x-\dfrac{y}{n})-f(x)|=0,\]故\[\lim_{n\to\infty}\sup_{x\in\R}|(f\ast\varphi_n)(x)-f(x)|=0.\]
+
+        (ii)由Minkowski不等式可知\[\|f\ast\varphi_n-f\|_p\leqslant\int_{-N}^N\|f(\cdot-\dfrac{y}{n})-f(\cdot)\|_p\cdot|\varphi(y)|\,{\rm d}m(y).\]
+        由于$1\leqslant p<\infty$，$f\in L^p(\R)$，故$\|f(\cdot-\dfrac{y}{n})-f(\cdot)\|_p\leqslant2\|f\|_p<+\infty$，且对任意$y\in[-N,N]$，
+        \[\lim_{n\to\infty}\|f(\cdot-\dfrac{y}{n})-f(\cdot)\|_p=0,\]从而由控制收敛定理即证.
+
+        (iii)任取$g\in L^1(\R)$，
+        \begin{align*}
+            \left|\int_{\R}(f\ast\varphi_n)(x)g(x)\,{\rm d}m(x)-\int_{\R}f(x)g(x)\,{\rm d}m(x)\right|&=\left|\int_{\R}\int_{\R}(f(x-\dfrac{y}{n})-f(x))\varphi(y)g(x)\,{\rm d}m(x){\rm d}m(y)\right|\\
+            &\leqslant \int_{\R}\int_{\R}|(f\cdot g)(x-\dfrac{y}{n})-(f\cdot g)(x)|\varphi(y)\,{\rm d}m(x){\rm d}m(y)\\
+            &\quad +\int_{\R}\int_{\R}|f(x-\dfrac{y}{n})|\cdot\varphi(y)\cdot|g(x-\dfrac{y}{n})-g(x)|\,{\rm d}m(x){\rm d}m(y).
+        \end{align*}
+        由于$g,f\cdot g\in L^1(\R)$，故由$\varphi\in C_c^\infty(\R)$与控制收敛定理可知
+        \[\lim_{n\to\infty}\left|\int_{\R}(f\ast\varphi_n)(x)g(x)\,{\rm d}m(x)-\int_{\R}f(x)g(x)\,{\rm d}m(x)\right|=0,\]
+        因此$f\ast\varphi_n\stackrel{\text{w}^*}{\rightarrow}f$.
+
+        (iv)对任意$x\in\R$，$n\in\Z_+$，\[\hat{\varphi}_n(x)=\int_{\R}\varphi_n(t)e^{-{\rm i}xt}\,{\rm d}m(t)=\int_{\R}\varphi(t)e^{-{\rm i}x\frac{t}{n}}\,{\rm d}m(t).\]
+        利用$\varphi\in C_c^\infty(\R)$与控制收敛定理可知$\lim_{n\to\infty}\hat{\varphi}_n(x)=1$.
+    \end{proof}
+    \item 设$\mu$是$\R$上一个复的Borel测度，$\mu$的Fourier变换定义为
+    \[\hat{\mu}(t)=\int_{\R}e^{-\text{i}st}\,{\rm d}\mu(s),\quad t\in\R.\] 证明$\hat{\mu}(t)$在直线$\R$上是有界且一致连续的.
+    \begin{proof}
+        任取$t\in\R$，\[|\hat{\mu}(t)|=\left|\int_{\R}e^{-{\rm i}st}\,{\rm d}\mu(s)\right|\leqslant\int_{\R}1\,{\rm d}|\mu|(s)=|\mu|(\R)<+\infty,\]故$\hat{\mu}(t)$有界.
+
+        任取$\varepsilon>0$，由$|\mu|(\R)<+\infty$知存在$N>0$使得$|\mu|(\R\backslash[-N,N])<\frac{\varepsilon}{4}$.
+        令$\delta_0=\frac{\varepsilon}{2|\mu|(\R)N}$，则对任意$s\in[-N,N]$，$\delta\in(0,\delta_0)$，
+        有\[|e^{-{\rm i}\delta s}-1|\leqslant|\delta s|\leqslant\dfrac{\varepsilon}{2|\mu|(\R)}.\]现任取$t\in\R$，$\delta\in(0,\delta_0)$，有
+        \begin{align*}
+            |\hat{\mu}(t+\delta)-\hat{\mu}(t)|&\leqslant\int_{\R}|e^{-{\rm i}s(t+\delta)}-e^{-{\rm i}st}|\,{\rm d}|\mu|(s)\\
+            &=\Big(\int_{-N}^N+\int_{\R\backslash[-N,N]}\Big)|e^{-{\rm i}\delta s}-1|\,{\rm d}|\mu|(s)\\
+            &\leqslant|\mu|(\R)\cdot\dfrac{\varepsilon}{2|\mu|(\R)}+\dfrac{\varepsilon}{4}\cdot2=\varepsilon.
+        \end{align*}
+        由$\varepsilon$的任意性知$\lim_{\delta\to0^+}\sup_{t\in\R}|\hat{\mu}(t+\delta)-\hat{\mu}(t)|=0$，即$\hat{\mu}$在$\R$上一致连续.
+    \end{proof}
+    \item 应用Banach逆算子定理证明Fourier变换$\F:L^1(\R)\to C_0(\R)$不是满的映射.
+    \begin{proof}
+        见[[用户：Solution/\qquad 习题：泛函分析 第三章|泛函分析3.2节习题7 (ii)]]。
+    \end{proof}
+\end{enumerate}
+
+\setcounter{section}{2}
+\renewcommand\thesection{4.\arabic{section}}
+
+== Riesz函数演算(p.146) ==
+若不加说明，$\A$表示有单位元$\mathbf{1}$的Banach代数。$X$表示Banach空间.
+\begin{enumerate}
+    \item 如果$a,b\in\A$，$ab=ba$，则对任何的$f\in\hol(a)$都有$f(a)b=bf(a)$.
+    \begin{proof}
+        设$G$是$\sigma(a)$的一个邻域且$f$在$G$上解析，在$G$中选取正定向闭合曲线组$\varGamma$使得$\sigma(a)\subseteq\operatorname{Ins}\varGamma$。
+        任取$z\in\varGamma$，由$b(z-a)=(z-a)b$知$(z-a)^{-1}b=b(z-a)^{-1}$，从而
+        \[f(a)b=\frac{1}{2\pi{\rm i}}\int_\varGamma f(z)(z-a)^{-1}b\,{\rm d}z
+        =\frac{1}{2\pi{\rm i}}\int_\varGamma f(z)b(z-a)^{-1}\,{\rm d}z=bf(a).\]
+        另一种方法是先说明结论对有理函数$f$成立，再用Runge定理逼近。
+    \end{proof}
+    \item 证明下面的结论：
+    \begin{enumerate}[label=(\roman*)]
+        \item 设$T\in\B(X)$，且$Tx=\alpha x,\,x\neq 0,\,x\in X$，则对任何的$f\in\hol(T)$都有$f(T)x=f(\alpha)x$.
+        \item $f(\sigmap(T))\subseteq\sigmap(f(T))$.
+        \item 如果$\alpha\in\sigmap(f(T))$，并且$\alpha-f(z)$在$\sigma(T)$的每个分支上都不恒为零,则$\alpha\in f(\sigmap(T))$.
+        \item 如果$f$在$\sigma(T)$的每个分支上都不为常数，则$f(\sigmap(T))=\sigmap(f(T))$.
+    \end{enumerate}
+    \begin{proof}
+        (i)设$G$是$\sigma(T)$的一个邻域且$f$在$G$上解析，在$G$中选取正定向闭合曲线组$\varGamma$使得$\sigma(T)\subseteq\operatorname{Ins}\varGamma$.
+        任取$z\in\varGamma$，由$(z-T)^{-1}x=(z-\alpha)^{-1}x$与Cauchy积分公式知
+        \[f(T)x=\frac{1}{2\pi{\rm i}}\int_\varGamma f(z)(z-T)^{-1}x\,{\rm d}z=\frac{1}{2\pi{\rm i}}\int_\varGamma f(z)(z-\alpha)^{-1}x\,{\rm d}z=f(\alpha)x.\]
+
+        (ii)是(i)的直接推论.
+
+        (iii)谱映射定理表明$\alpha\in\sigma_p(f(T))\subseteq\sigma(f(T))=f(\sigma(T))$，又因为$\sigma(T)$为紧集，
+        且$f(z)-\alpha$在$\sigma(T)$的每个连通分支上均不恒为零，因此$f(z)-\alpha$在$\sigma(T)$中有且仅有有限个零点，记为$z_1,\cdots,z_n$.
+        根据解析函数的性质，存在在$\sigma(T)$上无零点的$g\in\hol(T)$使得$f(z)-\alpha=g(z)(z-z_1)\cdots(z-z_n)$，
+        将该式利用Riesz函数演算作用于$T$可得$f(T)-\alpha=g(T)(T-z_1)\cdots(T-z_n)$.
+
+        由$g$在$\sigma(T)$上无零点可知$\frac{1}{g}\in\hol(T)$，利用Riesz函数演算可知$g(T)$可逆.
+        然而，$\alpha\in\sigma_p(f(T))$表明$f(T)-\alpha$不是单射，因此存在$1\leqslant j\leqslant n$使得$T-z_j$不是单射，故$\alpha=f(z_j)\in f(\sigma_p(T))$.
+
+        (iv)是(ii)和(iii)的直接推论.
+    \end{proof}
+    \item 设$H$是Hilbert空间，$A\in\B(H),f\in\hol(A)$。则有$f(A)^{*}=\tilde{f}(A^{*})$,其中$\tilde{f}(z)=\overline{f(\bar{z})}$.
+    \begin{proof}
+        对复平面上的集合$X$，记$X^*=\{\bar{z}:z\in X\}$. 易见$\sigma(A^*)=\sigma(A)^*$，且对任意$z\in\rho(A)$，有$[(z-A)^{-1}]^*=(\bar{z}-A^*)^{-1}$.
+
+        设$G$是$\sigma(A)$的一个邻域且$f$在$G$上解析，在$G$中选取正定向闭合曲线组$\varGamma$使得$\sigma(A)\subseteq\operatorname{Ins}\varGamma$，
+        则易见$\tilde{f}$在$G^*$上解析，且$\sigma(A^*)\subseteq\operatorname{Ins}(\varGamma^*)\subseteq G^*$.
+
+        任取$x,y\in H$，有
+        \begin{align*}
+            \langle f(A)x,y \rangle&=\frac{1}{2\pi{\rm i}}\int_\varGamma f(z)\langle (z-A)^{-1}x,y \rangle\,{\rm d}z\\
+            &=\frac{1}{2\pi{\rm i}}\int_\varGamma f(z)\langle x,(\bar{z}-A^*)^{-1}y \rangle\,{\rm d}z\\
+            &=\frac{1}{2\pi{\rm i}}\int_\varGamma f(\bar{z})\langle x,(z-A^*)^{-1}y \rangle\,{\rm d}\bar{z}\\
+            &=-\frac{1}{2\pi{\rm i}}\int_{\varGamma^*} f(\bar{z})\langle x,(z-A^*)^{-1}y \rangle\,{\rm d}z \quad (\text{负号是因为 $\varGamma$ 的正定向共轭后是 $\varGamma^*$ 的负定向})\\
+            &=-\frac{1}{2\pi{\rm i}}\overline{\int_{\varGamma^*} \tilde{f}(z)\langle (z-A^*)^{-1}y,x \rangle\,{\rm d}z}\\
+            &=\overline{\langle \tilde{f}(A^*)y,x\rangle}=\langle x,\tilde{f}(A^*)y\rangle.
+        \end{align*}
+    \end{proof}
+    \item 设$H$是Hilbert空间，$A\in\B(H),f\in\hol(A)$。若$A$正规，则$f(A)$正规.
+    \begin{proof}
+        由第1题有$f(A)A^*=A^*f(A)$，进而$f(A)\tilde{f}(A^*)=\tilde{f}(A^*)f(A)$（不难说明$\tilde{f}\in\hol(A^*)$），接着用第3题的结论即可。
+    \end{proof}
+    \item $\A$是Banach代数，$I$是其真理想，$a\in I,f\in\hol(a),f(0)=0$。证明$f(a)\in I$.
+    \begin{proof}
+        $a$在真理想$I$中从而不可逆，即$0\in\sigma(a)$。由于$f(0)=0$，存在$g\in\hol(a)$使得$f(z)=zg(z)$，从而$f(a)=ag(a)\in I$。
+    \end{proof}
+    \item $A\in\B(X)$，$P$在$X$上可逆，$f\in\hol(A)$，则$f(PAP^{-1})=Pf(A)P^{-1}$.
+    \begin{proof}
+        $P$可逆意味着$\sigma(PAP^{-1})=\sigma(A)$，则$f(PAP^{-1})$是良定的。
+        设$G$是$\sigma(a)$的一个邻域且$f$在$G$上解析，
+        $\varGamma$是$G$中正定向闭合曲线组使得$\sigma(a)\subseteq\operatorname{Ins}\varGamma$，则有
+        \begin{align*}
+            Pf(A)P^{-1}&=P\frac{1}{2\pi{\rm i}}\int_{\varGamma}f(z)(z-A)^{-1}\,{\rm d}zP^{-1}\\
+            &=\frac{1}{2\pi{\rm i}}\int_{\varGamma}f(z)P(z-A)^{-1}P^{-1}\,{\rm d}z\\
+            &=\frac{1}{2\pi{\rm i}}\int_{\varGamma}f(z)(z-PAP^{-1})^{-1}\,{\rm d}z\\
+            &=f(PAP^{-1}).
+        \end{align*}
+    \end{proof}
+    \item 设$A\in M_{n}(\C),\sigmap(A)=\{\lambda_{1},\cdots,\lambda_{m}\}$,其中$\lambda_{i}\neq\lambda_{j},i\neq j$. 
+    设$G_{i}$是$\lambda_{i}$的开邻域,且$G_{i}$两两不交.记$e_{i}$是$G_{i}$的特征函数,则$e_{i}(A)$是幂等元,且$\sum_{i}e_{i}(A)=I$.证明：
+        \begin{enumerate}[label=(\roman*)]
+            \item $\Ran e_{i}(A)=\ker(\lambda_{i}I-A)^{n}$.
+            \item $\C^{n}=\bigoplus_{i}\Ran(e_{i}(A))=\bigoplus_{i}\ker(\lambda_{i}I-A)^{n}$.
+            \item $A$相似于矩阵$A_{1}\oplus\cdots\oplus A_{m}$，$A_{i}$阶数为$\dim\ker(\lambda_{i}I-A)^{n}$,且$\sigmap(A_{i})=\{\lambda_{i}\}$.
+            \item 若$f\in\hol(A)$，则$$f(A)=\sum\limits_{\lambda_{i}\in\sigma(A)}\sum\limits_{k=0}^{n}\dfrac{f^{(k)}(\lambda_{i})}{k!}(A-\lambda_{i})^{k}e_{i}(A).$$
+        \end{enumerate}
+    \begin{proof}
+        先同时证明(i)和(ii). 首先，由推论4.3.5 (i)可知$\C^{n}=\bigoplus_{i}\Ran(e_{i}(A))$.
+
+        其次，$M_{n}(\C)$是有限维的表明$\sigma(A)=\sigmap(A)=\{\lambda_{1},\cdots,\lambda_{m}\}$. 记$A_i=A|_{\Ran(e_i(A))}$，
+        则由推论4.3.5 (ii)知$\sigmap(A_i)=\sigma(A_i)=\{\lambda_i\}$. 由定义知$A_i$的阶数等于$\dim\Ran(e_i(A))\leqslant n$，且$\lambda_i I-A_i$是幂零阵，
+        因此$(\lambda_i I-A_i)^n=(\lambda_i I-A)^n|_{\Ran(e_i(A))}=0$，即$\Ran(e_i(A))\subseteq\ker(\lambda_i I-A)^n$.
+
+        最后，假设存在$i\neq j$与$x\in\C^n$使得$(\lambda_i I-A)^nx=(\lambda_j I-A)^nx=0$. 由于多项式$(\lambda_i-z)^n$与$(\lambda_j-z)^n$互素，
+        Bezout定理表明存在多项式$p,q$使得$p(z)(\lambda_i-z)^n+q(z)(\lambda_j-z)^n=1$，从而$x=p(A)(\lambda_i I-A)^nx+q(A)(\lambda_j I-A)^nx=0$，
+        即各$\ker(\lambda_i I-A)^n$线性无关，结合上述结论即证(i)和(ii).
+
+        (iii) $A_i$定义同上，由(i)知其阶数为$\dim\ker(\lambda_{i}I-A)^{n}$，再由推论4.3.5 (iii)即证.
+
+        (iv)由$f\in\hol(A)$知对任意$1\leqslant i\leqslant m$，有\[f(z)=\sum_{k=0}^\infty \dfrac{f^{(k)}(\lambda_i)}{k!}(z-\lambda_i)^k,\]
+        作用在$A$上得\[f(A)=\sum_{k=0}^\infty \dfrac{f^{(k)}(\lambda_i)}{k!}(A-\lambda_i)^k.\] 由于$(A-\lambda_i)^n|_{\Ran(e_i(A))}=0$，故
+        \[f(A)e_i(A)=\sum\limits_{k=0}^{n}\dfrac{f^{(k)}(\lambda_{i})}{k!}(A-\lambda_{i})^{k}e_{i}(A),\]再由(ii)中直和分解即得结论.
+    \end{proof}
+    \item 设$A\in\B(X)$,若存在多项式$P(z)$使得$P(A)=0$,则
+        \begin{enumerate}[label=(\roman*)]
+            \item $\sigma(A)=\sigmap(A)\subseteq Z(P)$；
+            \item $A$有极小多项式$r$；
+            \item 设$f$是$\sigma(A)$某邻域$G$上的解析函数，
+            验证存在多项式$q$满足$\deg q<\deg r$，以及$G$上的解析函数$g$，
+            使得$f(z)=q(z)+r(z)g(z),f(A)=q(A)$.
+        \end{enumerate}
+    \begin{proof}
+        (i)是由于$P(\sigma(A))=\sigma(P(A))=\sigma(0)=\{0\}$。
+
+        (ii)显然。
+
+        (iii)的$g$是把$f/r$的极点$\{\alpha_1,\cdots,\alpha_s\} \subseteq Z(r)$处的Laurent展开式的主部减掉，即
+        \[g(z)=\frac{f(z)}{r(z)}-\sum_{i=1}^{s}\sum_{k=1}^{m_i}\frac{c_{ik}}{(z-\alpha_i)^k},\]
+        也就是\[r(z)g(z)=f(z)-\underbrace{r(z)\sum_{i=1}^{s}\sum_{k=1}^{m_i}\frac{c_{ik}}{(z-\alpha_i)^k}}_{q(z)}.\qedhere\]
+    \end{proof}
+    \item $a\in\A$。设$\tau:\hol(a)\to\A$是一个代数同态，满足：
+    \begin{enumerate}[label=(\roman*)]
+        \item $\tau(1)=1$； \item $\tau(z)=a$； 
+        \item $G$为$\C$上的开集，$\sigma(a)\subseteq G$。
+        $f_{1},f_{2},\cdots$是$G$上的解析函数且在其紧子集上一致收敛至$f$，
+        则成立$\tau(f_{n})\to\tau(f)$.\end{enumerate} 证明$\tau(f)=f(a)$.
+    \begin{proof}
+        任取非负整数$n$，有$\tau(z^n)=\tau(z)^n=a^n$，故对任意多项式$p$，有$\tau(p)=p(a)$.
+
+        任取一在$\sigma(a)$上无零点的多项式$q$，则$\frac{1}{q}\in\hol(a)$，从而$1=\tau(1)=\tau(q)\cdot\tau\big(\frac{1}{q}\big)=q(a)\cdot\tau\big(\frac{1}{q}\big)$，
+        这表明$q(a)$可逆且$\tau\big(\frac{1}{q}\big)=q(a)^{-1}=\big(\frac{1}{q})(a\big)$，从而易见对任意有理函数$f\in\hol(a)$，有$\tau(f)=f(a)$.
+
+        任取$f\in\hol(a)$，设$f$在开集$G\supseteq\sigma(a)$上解析，则由Runge定理，存在有理函数列$\{f_n\}\subseteq\hol(a)$在$G$上内闭一致收敛到$f$，
+        从而条件(iii)表明$\tau(f)=\displaystyle\lim_{n\to\infty}\tau(f_n)=\lim_{n\to\infty}f_n(a)=f(a)$.
+    \end{proof}
+    \item 设$\A$是Banach代数，$a\in\A$。用$\mathbf{C}_{a}$表示代数$\{f(a)\mid f\in\hol(a)\}$在$\A$中的闭包.证明：
+        \begin{enumerate}[label=(\roman*)]
+            \item $\mathbf{C}_{a}$是一个交换Banach代数；
+            \item $\sigma(a)=\sigma_{*}(a)$，这里$\sigma_{*}(a)$表示$a$在代数$\mathbf{C}_{a}$中的谱；
+            \item 对任何$b\in\mathbf{C}_{a}$，$\sigma(b)=\sigma_{*}(b)$；
+            \item 代数$\mathbf{C}_{a}$的极大理想空间通过如下给定对应与$a$的谱$\sigma(a)$一致:$$\varphi\mapsto\varphi(a).$$
+        \end{enumerate}
+    \begin{proof}
+        (i)记$\mathbf{F}_a=\{f(a):f\in\hol(a)\}$. 由于$f\mapsto f(a)$是$\hol(a)\to\A$的代数同态，故$\hol(a)$是一个交换代数表明$\mathbf{F}_a$也是一个交换代数，
+        从而$\mathbf{C}_a=\overline{\mathbf{F}}_a$也是. 此外，$\mathbf{C}_a$是闭的，而$\A$是完备的，故$\mathbf{C}_a$也是完备的.
+
+        (ii)只需证$\sigma_*(a)\subseteq\sigma(a)$. 任取$\lambda\notin\sigma(a)$，令$f(z)=\frac{1}{\lambda-z}$，
+        则$f\in\hol(a)$，从而$(\lambda-a)^{-1}=f(a)\in\mathbf{C}_a$，即$\lambda\notin\sigma_*(a)$.
+
+        (iii)与(ii)同理，只需证$\mathbf{C}_a$对在$\A$中取逆(若逆元存在)封闭即可. 任取$\mathbf{C}_a$中(在$\A$中)可逆的$x$，则由$\mathbf{C}_a=\overline{\mathbf{F}}_a$知
+        存在$\{f_n\}\subseteq\hol(a)$使得$f_n(a)\to x$，从而由$x$可逆知当$n$充分大时，$f_n(a)$可逆且$f_n(a)^{-1}\to x^{-1}$. 由谱映射定理知$f_n(a)$可逆时，
+        $0\notin\sigma(f_n(a))=f_n(\sigma(a))$，即$f_n^{-1}\in\hol(a)$且此时有$f_n(a)^{-1}=f_n^{-1}(a)$，故$x^{-1}=\displaystyle\lim_{n\to\infty}f_n^{-1}(a)\in\mathbf{C}_a$，即证.
+
+        (iv)根据定理4.2.3，只需证这是单射. 记$\mathbf{C}_{a}$的极大理想空间为$\Delta$. 若$\varphi_1,\varphi_2\in\Delta$使得$\varphi_1(a)=\varphi_2(a)$，
+        则对任意$b\in\mathbf{C}_a$，取$\{f_n\}\subseteq\hol(a)$使得$f_n(a)\to b$，由$\varphi_1,\varphi_2$的连续性可得
+        \[\varphi_1(b)=\lim_{n\to\infty}\varphi_1(f_n(a))=\lim_{n\to\infty}f_n(\varphi_1(a))=\lim_{n\to\infty}f_n(\varphi_2(a))=\lim_{n\to\infty}\varphi_2(f_n(a))=\varphi_2(b),\]
+        故$\varphi_1=\varphi_2$.
+    \end{proof}
+    \item 设$A$是Banach空间$X$上一个拟线性算子:$$\lim_{n\to\infty}\|A^{n}\|^{\frac{1}{n}}=0$$ $x\in X,x\neq 0$。证明
+    $$0\leqslant\varlimsup_{\lambda\to 0}\dfrac{\log\left\lVert (\lambda-A)^{-1}x\right\rVert}{\log\left\lVert (\lambda-A)^{-1}\right\rVert}\leqslant 1.$$
+    \begin{proof}
+        不妨设$A\neq0$. 由$\sigma(A)=\{0\}$知$\displaystyle\lim_{\lambda\to0}\|(\lambda-A)^{-1}\|=\infty$，$\displaystyle\lim_{\lambda\to0}\|\lambda-A\|^{-1}=\|A\|^{-1}\in(0,+\infty)$.
+        易见$\|\lambda-A\|^{-1}\|x\|\leqslant\|(\lambda-A)^{-1}x\|\leqslant\|(\lambda-A)^{-1}\|\|x\|$，代入即得结论.
+    \end{proof}
+\end{enumerate}
+
+== $C^*$代数简介 ==
+=== 4.4.2 Gelfand--Naimark定理 ===
+\begin{enumerate}
+\item[*]（p.153 顶上的练习）
+称形如$f(t)=\sum_{k=1}^n c_ke^{{\rm i}b_k t},b_k\in \mathbb{R},c_k\in \mathbb{C}$的函数为$\mathbb{R}$上的三角多项式，记$\mathcal{A}$为三角多项式全体在最大模范数下的完备化，在复共轭下$\mathcal{A}$成为交换的$C^*$-代数.证明其极大理想空间$\Delta$上有自然的群结构，且$\mathbb{R}$作为其子群是一个稠子群.\\
+\begin{proof}
+记$\overline{\mathbb{R}}:=\widehat{\mathbb{R}}_d:=\{ \phi:\mathbb{R}_d\rightarrow {\mathbb{T}},\phi(x+y)=\phi(x)\phi(y)\}$，赋予点态收敛拓扑.\\
+下证$\Delta$同胚于$\overline{\mathbb{R}}$.\\
+设$\tau: \Delta\rightarrow \overline{\mathbb{R}}$，对于$\psi\in \Delta$，
+设$\tau(\psi):\mathbb{R} \to \mathbb{T}, x \mapsto \psi(e^{{\rm i}xt})$，其中$t$为多项式的未定元.\\
+不难验证$\tau(\psi)\in \overline{\mathbb{R}}$；由于$e^{{\rm i}xt}$为酉元，可见$\psi(e^{{\rm i}xt})\in \mathbb{T}$。从而$\tau$良定.\\
+验证$\tau$连续：对于$\Delta$中的网$\{ \psi_\alpha \},\psi_\alpha\to \psi$，
+我们有$\psi_\alpha(e^{{\rm i}xt})\to \psi(e^{{\rm i}xt})$，从而$\tau(\psi_\alpha)\to \tau(\psi)$，即$\tau$连续.\\
+验证单射：若$\tau(\psi_1)=\tau(\psi_2)$，则对任一三角多项式$P$，$\psi_1(P)=\psi_2(P)$,可见$\psi_1=\psi_2$.\\
+验证满射：对于$\varphi\in \overline{\mathbb{R}}$，要找$\psi $使得$\tau(\psi)=\varphi$。
+由$\tau$的定义可见$\psi(e^{{\rm i}xt})=\varphi(x)$，从而可以得到$\psi$在三角多项式全体上的取值，
+下面要证明：对于三角多项式$P$，$|\varphi(P)|\leqslant\|P\|$，
+从而将$\psi$延拓为$\mathcal{A}$上的可乘泛函，这需要用到如下的Kronecker定理：\\
+对于$x_1, \ldots, x_n \in \mathbb{R}$，映射$\beta:\mathbb{R}\to \mathbb{T}^n,t\mapsto (e^{{\rm i}x_1t}, \ldots ,e^{{\rm i}x_nt})$。
+若$\{ x_1, \ldots ,x_n \}$为$\mathbb{Q}$-线性无关，则$\beta(\mathbb{R})$在$\mathbb{T}^n$中稠密.\\
+设$P(t)=\sum\limits_{n=1}^Na_ne^{{\rm i}x_nt}$。
+不难发现存在$\{ y_1, \ldots, y_M \}\subseteq \mathbb{R}$，
+$\mathbb{Q}$-线性无关且$x_n\in\operatorname{span}_{\mathbb{Z}}\{ y_1, \ldots, y_M \}$。(可以先找极大$\mathbb{Q}$-无关组，再提取公因子来实现).\\
+设$x_n=\sum c_{nm}y_m$，$\forall\,0<\varepsilon \ll 1$，存在$t\in \mathbb{R}$使得$|e^{{\rm i}y_nt}-\varphi(y_n)| < \varepsilon$。
+注意到$$|e^{{\rm i}x_nt}-\varphi(x_n)|
+=\bigg|\prod_{m=1}^{M} \big(e^{iy_mt}\big)^{c_{nm}}-\prod_{m=1}^{M}\varphi(y_n)^{c_{nm}}\bigg|,$$
+从而可见存在不依赖于$\varepsilon$的常数$C$，使得$|e^{{\rm i}x_nt}-\varphi(x_n)| < C\varepsilon$，
+于是可见$|\varphi(P)|\leqslant |P| +C\varepsilon$。由$\varepsilon$的任意性即证.\\
+由$\Delta$紧且$\overline{\mathbb{R}}$为Hausdorff空间，可见$\tau$为同胚.
+\end{proof}
+\end{enumerate}
+
+=== 4.4.3 $C^*$代数的正元(p.156) ===
+\begin{enumerate}
+\item[1] $A$作为$C^*$-代数$B(H)$中的元是正的当且仅当$A$是正算子，
+即对任意$h \in H$，$\langle Ah,h \rangle\geqslant0$。
+\begin{proof}
+    当$A$是正元，可写成$A=B^*B$，从而$\langle Ah,h \rangle=\langle Bh,Bh \rangle\geqslant0$。
+
+    当$\langle Ah,h \rangle\geqslant0$，有$\langle Ah,h \rangle=\langle h,Ah \rangle$，
+    从而$A$自伴，则$\sigma(A)\subseteq\R$，为了说明$\sigma(A)\subseteq\R_+$，假设$\lambda<0$，算一下
+    \[\|(\lambda I-A)h\|^2=|\lambda|^2\|h\|^2+\|Ah\|^2-2\lambda\langle Ah,h \rangle\geqslant\lambda^2\|h\|^2,\]
+    得出$\lambda I-A$下有界，从而$\lambda I-A$是单射且有闭值域，则有
+    \[\Ran(\lambda I-A)^\perp=\ker(\lambda I-A)^*=\ker(\lambda I-A)=0,\]
+    进而$\Ran(\lambda I-A)=H$，故有$\lambda\notin\sigma(A)$。
+\end{proof}
+\item[2] 设$A$是Hilbert空间$H$上的有界线性算子，$A^*=-A$，证明$\sigma(A)\subseteq{\rm i}\R$.
+\begin{proof}
+    易见${\rm i}A$自伴，故$\sigma({\rm i}A)\subseteq\R$，从而$\sigma(A)=\frac{1}{{\rm i}}\sigma({\rm i}A)\subseteq{\rm i}\R$.
+\end{proof}
+\item[3] 设$a,b\in\mathscr{A}_+$，$a \leqslant b$，则\\
+(i) $0\leqslant\alpha\leqslant1$时，$a^\alpha \leqslant b^\alpha$；\\
+(ii) $\|a\|\leqslant\|b\|$；\\
+(iii) $cac^* \leqslant cbc^*$, $\forall\,c\in\mathscr{A}$。
+\begin{proof}
+(i) 定义$S=\{\alpha\in[0,1]:a^\alpha \leqslant b^\alpha\}$，
+现有$0,1\in S$，由连续性，只需证明$\alpha,\beta\in S$能推出$\frac{\alpha+\beta}{2}\in S$即可，
+即从$a^\alpha \leqslant b^\alpha,a^\beta \leqslant b^\beta$
+得出$a^\frac{\alpha+\beta}{2} \leqslant b^\frac{\alpha+\beta}{2}$。
+由(iii)，这只需说明$b^{-\frac{\alpha+\beta}{4}}a^\frac{\alpha+\beta}{2}b^{-\frac{\alpha+\beta}{4}}\leqslant1$，
+又由(ii)的过程，这只需说明$\big\|b^{-\frac{\alpha+\beta}{4}}a^\frac{\alpha+\beta}{2}b^{-\frac{\alpha+\beta}{4}}\big\|\leqslant1$，如下。
+\begin{align*}
+    \big\|b^{-\frac{\alpha+\beta}{4}}a^\frac{\alpha+\beta}{2}b^{-\frac{\alpha+\beta}{4}}\big\|
+    &=r\big(b^{-\frac{\alpha+\beta}{4}}a^\frac{\alpha+\beta}{2}b^{-\frac{\alpha+\beta}{4}}\big) \quad (\text{定理 4.4.13})\\
+    &=r\big(b^{\frac{\alpha-\beta}{4}}b^{-\frac{\alpha+\beta}{4}}a^\frac{\alpha+\beta}{2}b^{-\frac{\alpha+\beta}{4}}b^{-\frac{\alpha-\beta}{4}}\big) \quad (r(xy)=r(yx))\\
+    &=r\big(b^{-\frac{\beta}{2}}a^\frac{\alpha+\beta}{2}b^{-\frac{\alpha}{2}}\big)\\
+    &\leqslant\big\|b^{-\frac{\beta}{2}}a^\frac{\alpha+\beta}{2}b^{-\frac{\alpha}{2}}\big\|\\
+    &\leqslant\big\|b^{-\frac{\beta}{2}}a^\frac{\beta}{2}\big\|\big\|a^\frac{\alpha}{2}b^{-\frac{\alpha}{2}}\big\|\leqslant1,
+\end{align*}
+其中最后一行是因为
+\[\|a^\frac{\alpha}{2}b^{-\frac{\alpha}{2}}\|^2
+=\big\|(a^\frac{\alpha}{2}b^{-\frac{\alpha}{2}})^*(a^\frac{\alpha}{2}b^{-\frac{\alpha}{2}})\big\|
+=\big\|b^{-\frac{\alpha}{2}}a^{\alpha}b^{-\frac{\alpha}{2}}\big\|\leqslant1.\]
+    
+(ii) 考虑Gelfand表示
+\[\Lambda_b\colon C^*(b) \to C(\Delta_b),\quad1\mapsto1,b\mapsto\hat{b},\]
+则$\{\varphi(b):\varphi\in\Delta\}=\sigma(b)\subseteq\R_+$，
+由定理4.4.13 (系$\|b\|=\|\hat{b}\|_\infty$)，$\|b\|-\hat{b}$是非负函数，从而
+\[\sigma(\|b\|-b)=\{(\|b\|-\hat{b})(\varphi):\varphi\in\Delta_b\},\]
+即$\|b\|-b\geqslant0$。进一步，$\mathscr{A}_+$是闭锥（命题4.4.24）推出$\|b\|-a\geqslant0$。
+
+再考虑Gelfand表示
+\[\Lambda_a\colon C^*(a) \to C(\Delta_a),\quad1\mapsto1,a\mapsto\hat{a},\]
+有\[\sigma(\|b\|-a)=\{(\|b\|-\hat{a})(\varphi):\varphi\in\Delta_a\},\]
+上一段的结论表明$\sigma(\|b\|-a)\subseteq\R_+$，即$\|b\|-\hat{a}$是非负函数，
+也就是$\|b\|\geqslant\|\hat{a}\|_\infty$，又由定理4.4.13，$\|\hat{a}\|_\infty=\|a\|$。
+    
+(iii) 由于$b-a\geqslant0$，存在$d$使得$b-a=d^*d$，
+从而$cbc^*-cac^*=c(b-a)c^*=cd^*dc^*=(dc^*)^*dc^*\geqslant0$。
+\end{proof}
+
+\item[4] 证明：若$a$是自伴的，则$|a|=a_++a_-$。
+\begin{proof}
+    由于$a_+a_-=0$和$a=a_+-a_-$，有$(a_++a_-)^2=(a_+-a_-)^2=a^2=a^*a$。
+\end{proof}
+
+\item[5] 若$a,b\in\mathscr{A}_+$，且$ab=ba$，证明$ab\in\mathscr{A}_+$。
+\begin{proof}
+首先，由$a,b$自伴易知$ab$自伴。考虑由$1,a,b$生成的$C^*$-代数$C^*(a,b)$，这是一个交换$C^*$-代数，
+对$\varphi\in\Delta_{C^*(a,b)}$，有$\varphi(a),\varphi(b)\geqslant0$，得$\varphi(ab)\geqslant0$，
+从而由定理4.4.9有，$\sigma_{\mathscr{A}}(ab)=\sigma_{C^*(a,b)}(ab)\subseteq\R_+$.
+\end{proof}
+
+\item[6] 若$\mathscr{J}$是$C^*$-代数$\mathscr{A}$的一个闭理想，证明$\mathscr{J}$是自伴的，即若$a\in\mathscr{J}$，
+则$a^*\in\mathscr{J}$。在Banach代数$\tilde{\mathscr{A}}=\mathscr{A}/\mathscr{J}$上，
+定义$*$运算$\tilde{a}^*=\widetilde{a^*}$，证明$*$运算是良定义的，且在此$*$运算下，$\tilde{\mathscr{A}}$是一个$C^*$-代数。
+\begin{proof}
+参考 \url{https://www.bilibili.com/read/cv11150434?spm_id_from=333.999.0.0}.
+\end{proof}
+
+\item[7] 若$\mathscr{A}$是没有单位元的$C^*$-代数，在$\tilde{\mathscr{A}}=\C\dotplus\mathscr{A}$上定义$*$运算和范数如下：
+\[(\lambda\dotplus a)^*=\bar{\lambda}\dotplus a^*,\quad\|\lambda\dotplus a\|=\sup_{b\in\mathscr{A},\|b\|\leqslant1}\|\lambda b+ab\|,\quad\lambda\in\C,a\in\mathscr{A}.\]
+证明在上述定义的范数和$*$运算下，$\tilde{\mathscr{A}}$是一个有单位的$C^*$-代数，其单位元为$1\dotplus\bm{0}$，
+并说明在$*$等距同构意义下，单位化后的$C^*$-代数是唯一的。
+\begin{proof}
+    前半部分命题参考 \url{https://www.bilibili.com/opus/507909530915281744/?from=readlist}。
+
+    下证$\tilde{\mathscr{A}}$在$*$等距同构意义下唯一。设$\mathscr{B}$为另一有单位元的$C^*$-代数，且$\rho:\mathscr{A}\to\mathscr{B}$为$*$等距嵌入，
+    定义$\tilde{\rho}:\tilde{\mathscr{A}}\to\mathscr{B}$为$\tilde{\rho}(\lambda\dotplus a)=\lambda1_{\mathscr{B}}+\rho(a)$，易见它是$*$同态。
+    根据单位化$C^*$-代数的定义可见$\mathscr{B}/\rho(\mathscr{A})\cong\C$，从而易见$\tilde{\rho}$是双射。
+    综上，$\tilde{\rho}$是$\tilde{\mathscr{A}}\to\mathscr{B}$的$*$等距同构，即证。
+\end{proof}
+\end{enumerate}
+
+=== 4.4.4 态和GNS构造(p.160) ===
+\begin{enumerate}
+\item[1]
+如果$\mathscr{A}$的一个态$\varphi$是$\varSigma(\mathscr{A})$的端点，称$\varphi$是纯的.
+证明：如果$\mathscr{A}$是交换的，那么$\varphi$是纯的当且仅当$\varphi$是可乘的.
+\begin{proof}
+由Gelfand--Naimark定理，可设$\mathscr{A}=C(X)$,其中$X$为紧Hausdorff空间.
+由Riesz表示定理，可知$\varSigma(\mathscr{A})$即为$X$上的正则Borel概率测度全体，
+则我们断言(i)任一端点$\varphi\in \varSigma(\mathscr{A})$是单点支撑的Dirac测度，
+(ii)任一Dirac测度都是端点。
+
+(i) 否则，$\varphi$支撑在至少两个点$x,y$，由Urysohn引理，
+可以找连续函数$f$使得$0 \leqslant f \leqslant 1,f(x)=0,f(y)\ne0$，从而可以证明$\varphi$不是端点.
+（具体来说，令${\rm d}\mu_1=f\,{\rm d}\mu,{\rm d}\mu_2=(1-f)\,{\rm d}\mu$，
+则$\|\mu_1\|+\|\mu_2\|=1$，且$\mu=\|\mu_1\|\frac{\mu_1}{\|\mu_1\|}+\|\mu_2\|\frac{\mu_2}{\|\mu_2\|}$。参见定理2.5.1的证明.）
+
+(ii) 反之，若$\delta_x=t\mu_1+(1-t)\mu_2$ $(0<t<1)$，对不含$x$的Borel集$U$，有
+\[0=\delta_x(U)=t\mu_1(U)+(1-t)\mu_2(U),\]
+则$\mu_1(U)=\mu_2(U)=0$，即$\mu_1,\mu_2$都支撑在$x$，只能是$\mu_1=\mu_2=\delta_x$。
+
+我们知道，$C(X)$上的可乘线性泛函全体正是$\{\delta_x:x\in X\}$,从而完成了证明.
+\end{proof}
+
+\item[2]
+给定一个表示$ \pi: \A \to B(H) $，如果$ \pi(\A) $ 是一个不可约的算子代数(即$ \pi(\A) $ 没有非平凡的闭不变子空间)，那么称$ \pi $ 为不可约的。
+证明：设表示$ \pi $ 是循环的，$ e $ 为循环向量，并设$ \varphi(a) = \langle \pi(a)e,e \rangle  $，那么$ \varphi $ 是纯的当且仅当$ \pi $ 是不可约的。
+
+\begin{proof}
+    必要性：反证法。若$ \pi $ 可约，我们有分解$ H = H_{1}\oplus H_{2} $，以及表示$ \pi_{i}: \A \to B(H_{i}) $，
+    使得$ \pi(a) = \mathrm{diag}\{\pi_{1}(a),\pi_{2}(a)\} $。另一方面有$ e $ 分解为$ \mathrm{diag}\{e_{1},e_{2}\} $，其中$ e_{i}\ne0 $，
+    且$ \| e_{1} \|^{2} + \| e_{2} \|^{2} = 1 $。定义
+    $$
+     \varphi_{i}(a) = \langle \pi_{i}(a)\frac{e_{i}}{\| e_{i} \| }, \frac{e_{i}}{\| e_{i} \| } \rangle,
+    $$ 
+    则$ \varphi_{i} $ 均为态，而$ \varphi = \| e_{1} \|^{2} \varphi_{1} + \| e_{2} \|^{2}\varphi_{2} $，非端点，矛盾。
+
+    充分性：若有$ \lambda \in (0,1) $ 使得$ \varphi = \lambda \varphi_{1} + (1-\lambda) \varphi_{2} $，其中$ \varphi_{i} $ 是态，
+    我们将证明$ \varphi_{i} = \varphi $。我们对$ \varphi_{1} $ 使用GNS构造，取得$ \A $ 的循环表示$ \pi_{1}: \A \to B(H_{1}) $，单位循环向量$ e_{1} $，
+    使得$ \varphi_{1}(a) = \langle \pi_{1}(a)e_{1}, e_{1} \rangle  $，我们在$ H $ 的稠子空间上定义算子$ U: H\to H_{1},\pi(a)e \mapsto \pi_{1}(a)e_{1} $，
+    下面的观察表明它是有界的：
+    $$
+     \| \pi_{1}(a)e_{1} \|^{2} = \langle \pi_{1}(a^{*}a)e_{1},e_{1} \rangle = \varphi_{1}(a^{*}a) 
+     \leqslant \frac{1}{\lambda}\varphi(a^{*}a) = \frac{1}{\lambda}\| \pi(a)e \|^{2}.
+    $$ 
+    于是可以延拓到$ H $ 上去，仍记为$ U $。
+
+    容易验证对任意的$ a\in \A $，都有$ \pi_{1}(a)U=U\pi(a) $，于是有$ \pi(a)U^{*}=U^{*}\pi_{1}(a) $。我们再考虑算子$ U^{*}U: H \to H $：
+    $$
+     U^{*}U\pi(a) = U^{*}\pi_{1}(a)U=\pi(a)U^{*}U, 
+    $$ 
+    于是$ U^{*}U $ 与$ \pi(a) $ 交换，由Schur引理 (见\cite{Simon} Theorem 6.8.9) 有 $ U^{*}U = cI $，则对任意的$ a,b\in \A $都有
+    \begin{align*}
+        \varphi_{1}(b^{*}a) &= \langle \pi_{1}(a)e_{1}, \pi_{1}(b)e_{1} \rangle = \langle U\pi(a)e, U\pi(b)e \rangle \\
+        &= \langle U^{*}U\pi(a)e, \pi(b)e \rangle = c\langle \pi(a)e, \pi(b)e \rangle = c\varphi(b^{*}a).
+    \end{align*}
+    这样的系数$ c $ 只能是$ 1 $，于是$ \varphi_{1}=\varphi $，证完。
+\end{proof}
+
+\item[3]
+对Hilbert空间$H$上的每个单位向量$e$，在$B(H)$上定义$\varphi_e(T)=\langle Te,e\rangle$，证明每个$\varphi_e$都是纯的.
+\begin{proof}
+    首先，任取$T\in B(H)$，有$T$是$B(H)$中的正元$\Leftrightarrow T$是正算子，
+    而此时$\varphi_e(T)=\langle Te,e\rangle\geqslant0$，且$\varphi_e(I)=1$，故$\varphi_e$是态.
+
+    由Hahn--Banach延拓定理知$\{Te:T\in B(H)\}=H$，故$\operatorname{id}:B(H)\to B(H)$是循环表示，$e$为对应的单位循环向量，
+    且$\varphi_e(T)=\langle \operatorname{id}(T)e,e\rangle$. 同样的方法可以证明$B(H)$没有非平凡的闭不变子空间，
+    故$\operatorname{id}$不可约，由第2题知$\varphi_e$是纯态.
+\end{proof}
+
+\item[4]
+$\mathscr{A}$为$C^*$-代数，则$a\in \mathscr{A}_+$当且仅当对于每一个态$\varphi$, $\varphi(a)\geqslant 0$.
+\begin{proof}
+“$\Leftarrow$”:由于$\varphi(a^*)=\overline{\varphi(a)}=\varphi(a)$，且态分离点，可见$a=a^*$.
+
+考虑由$1,a$生成的$C^*$-代数$C^*(a)$，这是一个交换$C^*$-代数，
+由定理4.4.9，$\sigma_{\mathscr{A}}(a)=\sigma_{C^*(a)}(a)$.
+
+由于$C^*(a)$上的可乘线性泛函可以延拓为$\mathscr{A}$上的态，
+从而对于可乘泛函$\varphi$, $\varphi(a)\geqslant 0$，
+从而$\sigma_{C^*(a)}(a)\subseteq [0,\infty)$，即证.
+\end{proof}
+
+\item[5]
+如果$a$是$\mathscr{A}$的正规元，证明：$\{ \varphi(a):\varphi\in \varSigma(\mathscr{A}) \}=\overline{\con(\sigma(a))}$，
+这里$\overline{\con(\sigma(a))}$表示$\sigma(a)$的闭凸包.
+\begin{proof}
+由于$C^*(a)$上的态可以延拓为$\mathscr{A}$上的态，
+且$\mathscr{A}$上的态限制在$C^*(a)$上也成为$C^*(a)$上的态，
+因此$\{\varphi(a):\varphi\in \varSigma(\mathscr{A})\}=\{\varphi(a):\varphi\in \varSigma(C^*(a)) \}$.
+
+由这一节习题1及Krein--Milman定理，$\varSigma(C^*(a))=\overline{\con\{\varphi:\varphi\in \Delta_{C^*(a)}\}}$，
+从而$\{\varphi(a):\varphi\in \varSigma(\mathscr{A})\}
+=\overline{\con\{\varphi(a):\varphi\in \Delta_{C^*(a)}\}}=\overline{\con(\sigma(a))}$.
+\end{proof}
+
+\item[8]
+设$\varphi$是$\mathscr{A}$上的一个连续的Hermite泛函，即当$x=x^*$时，$\varphi(x)\in\R$。
+证明存在唯一的正泛函$\varphi_+,\varphi_-$，使得$\varphi=\varphi_+-\varphi_-$，
+并且$\|\varphi\|=\|\varphi_+\|+\|\varphi_-\|$。对$\mathscr{A}$上的任何连续线性泛函$f$，令
+\[f_1(x)=\frac{1}{2}\big(f(x)+\overline{f(x^*)}\big), \quad 
+f_2(x)=\frac{1}{2{\rm i}}\big(f(x)-\overline{f(x^*)}\big),\]
+那么$f_1,f_2$是Hermite泛函，并且$f=f_1+{\rm i}f_2$，易见，这个分解是唯一的。
+因此，$\mathscr{A}$上的每个连续线性泛函可分解为至多四个正泛函的线性组合。
+\begin{proof}
+（本解答扩写自\cite{Takesaki} Chapter 3 \S2, Proposition 2.1.）
+
+令$\operatorname{Re}\mathscr{A}$是$\mathscr{A}$中的自伴元全体，
+由于对$x=a+{\rm i}b$ $(a,b\in\operatorname{Re}\mathscr{A})$
+有$\varphi(x)=\varphi(a)+{\rm i}\varphi(b)$，
+$\varphi$由其在$\operatorname{Re}\mathscr{A}$上的取值唯一确定。
+由此，可以把$\varphi$看作属于$(\operatorname{Re}\mathscr{A})^*$，
+即实Banach空间$\operatorname{Re}\mathscr{A}$上的连续线性泛函。
+
+令$\varSigma=\{\psi\in(\operatorname{Re}\mathscr{A})^*:\psi(1)=\|\psi\|=1\}$
+是这个空间上的态全体，记$C$为$\varSigma\cup(-\varSigma)$的凸包，即
+\[C=\{\lambda\psi_1-(1-\lambda)\psi_2:\psi_1,\psi_2\in\varSigma,0\leqslant\lambda\leqslant1\}.\]
+由于$\varSigma$是${\rm w}^*$-紧集，可知$C$亦是${\rm w}^*$-紧集。
+目标是说明$C$是$(\operatorname{Re}\mathscr{A})^*$上的单位闭球，用反证法：
+假设有$\Phi\in(\operatorname{Re}\mathscr{A})^*$，
+$\|\Phi\|\leqslant1$且$\Phi \notin C$，由凸集分离定理，
+存在$f\in((\operatorname{Re}\mathscr{A})^*,{\rm w}^*)^*$使得
+\[\sup\{f(\psi):\psi \in C\}<f(\Phi),\]
+由于$((\operatorname{Re}\mathscr{A})^*,{\rm w}^*)^*=\operatorname{Re}\mathscr{A}$ 
+(见\cite{Conway I} Chapter V Theorem 1.3)，
+$f(\cdot)$就是对泛函$\cdot$取在$a$ $(\in\operatorname{Re}\mathscr{A})$的值，即上式就是
+\[\sup\{\psi(a):\psi \in C\}<\Phi(a),\]
+可是\[\sup\{\psi(a):\psi \in C\}=\sup\{\lambda\psi_1(a)-(1-\lambda)\psi_2(a):
+\psi_1,\psi_2\in\varSigma,0\leqslant\lambda\leqslant1\}
+\,{\color{lightgray}=}\,\|a\|\geqslant\Phi(a),\]
+矛盾。$[$注：刚才的灰色的等号为什么成立？对这一节的第5题两边取上确界，且由于$\sigma(a)\subseteq\R$，有
+\[\sup\{\psi(a):\psi\in\varSigma\}=\sup\overline{\con(\sigma(a))}
+=\sup\sigma(a)=r(a)=\|a\|.\ ]\]
+现在达成了目标，即$(\operatorname{Re}\mathscr{A})^*$上的单位闭球中的元素$\varphi/\|\varphi\|$
+可写为$\varphi/\|\varphi\|=\lambda\psi_1-(1-\lambda)\psi_2$
+对$\psi_1,\psi_2\in\varSigma,0\leqslant\lambda\leqslant1$，
+令$\varphi_+=\|\varphi\|\lambda\psi_1,\varphi_-=\|\varphi\|(1-\lambda)\psi_2$。
+唯一性见\cite{Conway II} Theorem 7.12.
+\end{proof}
+\end{enumerate}
+
+=== 4.4.5 Fuglede--Putnam定理(p.162) ===
+\begin{enumerate}
+\item[1] 如果$M,N$是Hilbert空间$H$上的正规算子，且$T \in B(H)$满足$NT=TM$，
+那么$N^*T=TM^*$。提示：在$H \oplus H$上考虑算子
+\[A=\begin{pmatrix}N&0\\0&M\end{pmatrix}, \quad B=\begin{pmatrix}0&T\\0&0\end{pmatrix}.\]
+\begin{proof}
+    由于$A$是正规算子，有$A^*B=BA^*$，即
+    \[\begin{pmatrix}0&N^*T\\0&0\end{pmatrix}=\begin{pmatrix}0&TM^*\\0&0\end{pmatrix}.\qedhere\]
+\end{proof}
+\end{enumerate}
+
+== 连续函数代数的表示 ==
+=== 4.5.3 正规算子的谱分解(p.173) ===
+\begin{enumerate}
+\item[2]
+定义酉算子$U:L^2(\mathbb{R})\rightarrow L^2(\mathbb{R}),f(t)\rightarrow f(t+1)$。
+给出$U$的谱及谱分解.
+\begin{proof}
+对于Schwartz函数$f$，$(Uf)^\wedge(t)=e^{2\pi{\rm i}t}\hat{f}(t)$。
+记$\varphi(x)=e^{2\pi{\rm i}x}$，$M_\varphi$为相应的乘法算子。
+则在$L^2(\mathbb{R})$中，$U=\mathcal{F}^{-1}M_\varphi\mathcal{F}$。
+从而$\sigma(U)=\sigma(M_\varphi)=\operatorname{essrange}(\varphi)=\mathbb{T}$.
+
+定义谱测度$E(\omega)=M_{\chi_{\varphi^{-1}(\omega)}}$，$\omega$为$\mathbb{T}$的可测子集。
+则对$f,g\in L^2(\R)$，有
+\[\int_{\mathbb{T}}\chi_\omega \,\mathrm{d}E_{f,g}=\langle E(\omega)f,g\rangle  
+=\int_{\mathbb{T}}\chi_{\varphi^{-1}(\omega)}f\bar{g}
+=\int_\mathbb{R}(\chi_\omega\circ\varphi) f \bar{g} \,\mathrm{d}t.\]
+用简单函数逼近可知，\[\int_{\mathbb{T}}z \,\mathrm{d}E_{f,g}
+=\int_\mathbb{R}(z\circ\varphi) f \bar{g} \,\mathrm{d}t
+=\int_\mathbb{R}\varphi f \bar{g} \,\mathrm{d}t=\langle M_\varphi f,g \rangle,\]
+用$\hat{f},\hat{g}$替代$f,g$并用Parseval恒等式，得到
+\[\int_{\mathbb{T}}z\,\mathrm{d}E_{\hat{f},\hat{g}}
+=\langle M_\varphi\hat{f},\hat{g}\rangle=\langle Uf,g\rangle.\]
+设$P$是$U$的谱测度，对比上式和
+\[\int_{\mathbb{T}}z\,\mathrm{d}P_{f,g}=\langle Uf,g\rangle\]
+即得$\langle P(\omega)f,g \rangle=\langle E(\omega)\hat{f},\hat{g} \rangle$，
+从而$(P(\omega)f)^{\wedge}=E(\omega)\hat{f}$，
+也就是说$P(\omega)f=\big(\chi_{\varphi^{-1}(\omega)}\hat{f}\big)^{\vee}$。
+\end{proof}
+
+\item[3]
+设$X$是紧的Hausdorff空间，$\{x_n\}$是$X$中的一个序列. 取Hilbert空间$H$的一个正交基$\{e_n\}$.
+定义$C(X)$的一个表示以下列方式：$\pi(f)e_n=f(x_n)e_n,n=1,2,\cdots$. 给出这个表示的谱测度.
+\begin{proof}
+    对$X$的Borel可测子集$\omega$，定义$E(\omega)=\sum_{x_n\in\omega}P_n$，
+    其中$P_n$是向$\operatorname{span}\{e_n\}$的投影，由$\{e_n\}$为$H$的正交基知$E(\omega)$良定，
+    且$E(\varnothing)=0,E(X)=I$. 容易验证$E$为$X$上的谱测度，且对任意$f\in C(X)$，
+    有$\int f\,{\rm d}E=\sum_{n=1}^\infty f(x_n)P_n$，故由$\pi(f)e_n=f(x_n)e_n,n=1,2,\cdots$知$\pi(f)=\int f\,{\rm d}E$.
+\end{proof}
+
+\item[4]
+设$H$是可分Hilbert空间，证明集$\{A\in B(H)\mid 0\leqslant A\leqslant I\}$的端点正是投影.
+\begin{proof}
+$P=0$显然为端点。下面考虑投影$P\neq 0$，
+假设$P=tA_1+(1-t)A_2,t\in (0,1),0\leqslant A_i \leqslant I$，
+我们通过证明$A_i|_{(\Ran P)^\perp}=0,A_i|_{\Ran P}=I$来证明$P=A_i,i=1,2$。
+
+(i) 对$x\in(\Ran P)^\perp$，有$\langle Px,x\rangle  = 0$，
+从而$t\langle A_1x,x\rangle +(1-t)\langle A_2x,x\rangle =0$。
+由于$\langle A_ix,x\rangle=\|A_i^{\frac{1}{2}}x\|^2\geqslant0$，可见$A_ix=0,i=1,2$.
+
+(ii) 对$x\in \Ran P$，有$(I-P)x=0$，类似上述情形可以证明$A_i=I,I=1,2$.
+
+反之，对于这一集合的端点$A$，要证$A$为投影，只需证$A^2=A$。
+注意到$A=\frac{2A-A^2}2+\frac{A^2}2$，
+由$2x-x^2\leqslant 1,x\in \mathbb{R}$，可见$2A-A^2\leqslant I$。
+由于$A$为端点，从而$2A-A^2=A^2$，即证.
+\end{proof}
+
+\item[5]
+如果$N$是正规算子，证明$N$有分解$N=U|N|$，这里$U$是一个酉算子。
+\begin{proof}
+    定义$u(z)=\begin{cases}\frac{z}{|z|},&z\neq 0\\
+    \ 1,&z=0\end{cases}$，
+则$z=u(z)|z|$。作Borel函数演算，可见$N=u(N)|N|$，
+由$u\bar{u}=|u|^2=1$，可见$u(N)$为酉算子.
+\end{proof}
+
+\item[6]
+设$(\varOmega,\mathcal{B},E,H)$是一个谱测度空间，$f$是$\varOmega$上一个复的可测函数。令
+\[\mathcal{D}_f=\left\{ x\in H:\int_\varOmega \|f\|^2\,\mathrm{d}E_{x,x}< \infty \right\}.\]
+证明：\\
+(i) $\mathcal{D}_f$是$H$的一个稠子空间；\\
+(ii)如果$x,y\in H$，那么\[\int_{\varOmega} |f|\,\mathrm{d}|E_{x,y}|
+\leqslant \|y\| \Big(\int_{\varOmega} |f|^2\,\mathrm{d} E_{x,x}\Big)^{\frac{1}{2}};\]
+(iii)如果$f$是有界的，并且记$w=\pi(f)z$，那么$\mathrm{d}E_{x,w}=\bar{f}\,\mathrm{d}E_{x,z}$.\\
+\begin{proof}
+(i)记\[\omega_n:= \{\eta\in\varOmega:|f(\eta)| \leqslant n\}, \quad x_n:=E(\omega_n)x.\]
+由于$\bigcup_{n} \omega_n=\varOmega$，有$E(\omega_n)x\to E(\varOmega)x$，即$x_n\rightarrow x$。
+下面只需证明$\forall n,x_n\in \mathcal{D}_f$，
+即$\int_\varOmega |f|^2\,\mathrm{d}E_{x_n,x_n}< \infty $.由
+\[E_{x_n,x_n}(\omega)= \langle E(\omega)x_n,x_n\rangle  = \langle E(\omega\cap \omega_n)x,x\rangle,\]
+可见\[\int_\varOmega |f|^2\,\mathrm{d}E_{x_n,x_n} =\int_{\omega_n} |f|^2\,\mathrm{d}E_{x,x}< \infty.\]
+(ii)只需证明此不等式对简单函数成立，进一步，只需证对$f=\chi_\omega$成立。
+$$\int \chi_{\omega}\,\mathrm{d}|E_{x,y}|= |E_{x,y}|(\omega)
+=\sup\Big\{ \sum_{i=1}^n |E_{x,y}(\Delta_i)|:\omega=\bigsqcup_{i=1}^n \Delta_i\Big\}.$$
+
+\begin{align*}
+    \sum_{i=1}^n |E_{x,y}(\Delta_i)| &=\sum |\langle E(\Delta_i)x,E(\Delta_i)y\rangle|\\
+    &\leqslant \sum \|E(\Delta_i)x\| \cdot \|E(\Delta_i)y\|\\
+    &\leqslant \Big(\sum \|E(\Delta_i)x\|^2\Big)^{\frac{1}{2}}\Big(\sum\|E(\Delta_i)y\|^2\Big)^\frac{1}{2}\\
+    &\leqslant \|E(\omega)x\| \|y\|.
+\end{align*}即证.
+
+(iii)对$\omega$可测，
+\begin{align*}
+    \int \chi_\omega\,\mathrm{d}E_{x,w}&=E_{x,w}(\omega)= \langle E(\omega)x,w\rangle\\
+    &= \langle E(\omega)x,\pi(f)z\rangle  = \langle \pi (\bar{f})E(\omega)x,z\rangle\\
+    &= \langle \pi (f\chi_\omega)x,z\rangle  =\int \chi_\omega \bar{f}\,\mathrm{d}E_{x,z},
+\end{align*}即证.
+\end{proof}
+
+\item[7]
+在习题6的基础上证明：对每个复的可测函数$f$,在Hilbert空间$H$上存在唯一的闭的稠定算子$\pi(f)$，其定义域是$\mathcal{D}_f$，该算子由下式唯一确定：
+\[\langle \pi(f)x,y\rangle  =\int_{\varOmega}f\,\mathrm{d}E_{x,y},\qquad x\in \mathcal{D}_f,\,y\in H.\]
+且此算子满足$\|\pi(f)x\|^2=\int_{\Omega}|f|^2\,\mathrm{d}E_{x,x},\,x\in \mathcal{D}_f.$
+\begin{proof}
+对$x\in \mathcal{D}$，定义
+\[\Lambda :H\rightarrow \mathbb{C},\ y \mapsto\int_\varOmega f\,\mathrm{d}E_{x,y},\]
+由习题6知$\Lambda$是有界共轭线性算子,从而由Riesz表示定理知，存在$\pi(f),$使得
+\[\langle \pi(f)x,y\rangle =\int f\,\mathrm{d}E_{x,y}.\]不难看出$\pi(f),\pi$为线性算子.
+
+记$y_n:=\pi(f\chi_{\omega_n})$，则
+\[\langle \pi(f)x,y_n\rangle =\int f\,\mathrm{d}E_{x,y_n}
+= \int_{\omega_n} |f|^2\,\mathrm{d} E_{x,x} \rightarrow \int_{\varOmega} |f|^2\,\mathrm{d}E_{x,x}.\]
+下面我们证明$y_n$弱收敛到$ \pi(f)x$。若能证明此，则可见
+\[\|\pi(f)x\|^2=\int_{\varOmega}|f|^2\,\mathrm{d}E_{x,x},\qquad x\in \mathcal{D}_f.\]
+这是因为，对$y\in H$，有
+\begin{align*}|\langle y_n-\pi(f)x,y\rangle|
+    &=|\langle \pi(f\chi\omega_n)x,y\rangle -\langle \pi (f)x,y\rangle|\\
+    &= \bigg|\int f\chi_{\omega_n^c}\,\mathrm{d}E_{x,y}\bigg|\\
+    &\leqslant \|y\| \bigg(\int_{\omega_n^c} |f|^2\,\mathrm{d}E_{x,x}\bigg)^\frac{1}{2}\rightarrow 0.
+\end{align*}
+下证$\pi(f)$是闭算子：即若$x_n\in \mathcal{D}_f,x_n\rightarrow x,\pi(f)x_n\rightarrow y$，
+要证(1) $x\in \mathcal{D}_f$，(2) $\pi(f)x=y$。
+
+(1)对$\omega\in \mathcal{B}$，
+\begin{align*}
+    |E_{x_n,x_n}(\omega)-E_{x,x}(\omega)|&=|\langle E(\omega)x_n,x_n \rangle-\langle E(\omega)x,x \rangle|\\
+    &\leqslant |\langle E(\omega)(x_n-x),x_n\rangle|+|\langle E(\omega)x,x_n-x\rangle| \\
+    &\leqslant 2\sup{\|x_n\|} \cdot \|x_n-x\| \rightarrow 0.
+\end{align*}
+则\begin{align*}
+    \int |f|^2\,\mathrm{d}E_{x,x}&=\sum_m\int_{F_m} |f|^2\,\mathrm{d}E_{x,x}\\
+    &=\sum_m\lim_{n \to \infty}\int_{F_m} |f|^2\,\mathrm{d}E_{x_n,x_n}\\
+    &\leqslant \liminf_{n \to \infty}\sum_m \int_{F_m} |f|^2\,\mathrm{d}E_{x_n,x_n}\\
+    &=\liminf_{n \to \infty}\int |f|^2\,\mathrm{d}E_{x_n,x_n}\\
+    &=\liminf_{n \to \infty}\|\pi(f)x_n\|^2<\infty,
+\end{align*}
+其中小于等于号利用了Fatou引理。从而$x\in \mathcal{D}_f$.
+
+(2)即要证$\int |f|^2\,\mathrm{d}E_{x_n-x,x_n-x}\to 0$。类似(1)中分析可知，
+$$\int |f|^2\,\mathrm{d}E_{x_n-x,x_n-x}
+\leqslant \liminf_{m \to \infty}\int |f|^2\,\mathrm{d}E_{x_n-x_m,x_n-x_m}
+=\liminf_{m \to \infty}\|\pi(f)(x_n-x_m)\|^2.$$
+由于$\{\pi(f)x_n\}$为Cauchy列，可见
+$\lim\limits_{n \to \infty}\int |f|^2\,\mathrm{d}E_{x_n-x,x_n-x}=0$.
+\end{proof}
+\end{enumerate}
+
+=== 4.5.4 Stone定理(p.180) ===
+
+\begin{enumerate}
+
+\item[1]
+设$ U_{t} $ 是由函数$ e_{-t}(s) = \mathrm{e}^{-\mathrm{i}st} $ 在$ L^{2}(\R, \mathrm{d}m) $ 上定义的乘法算子，证明：
+
+(i) 直线上的单参数酉群$ \{U_{t}\} $ 是强算子拓扑连续的，即当$ f\in L^{2} $ 时，
+$$\lim_{t\to t_{0}} \|U_{t}f-U_{t_{0}}f\| = 0;$$
+
+(ii) 酉群$ \{U_{t}\} $ 在Stone定理中对应的直线$ \R $ 上的谱测度$ E(\Delta) $ 是由$ \Delta $ 的特征函数定义的乘法算子，这里$ \Delta $ 是$ \R $ 的Borel子集。
+写出该谱测度相应的谱系。
+
+(iii) 考虑$ L^{2}(\R, \mathrm{d}m) $ 上的单参数平移算子群$ \tau_{t} $，$ (\tau_{t}f)(s) = f(s-t) $。
+证明$ \{\tau_{t}\} $ 是强算子拓扑连续的。利用(ii)和命题3.3.8建立该平移酉群的Stone表示。
+
+\begin{proof}
+(i) 直接计算得
+\begin{align*}
+    \| U_{t}f-U_{t_{0}}f \|^{2} &= \int_{\R}{|U_{t}f-U_{t_{0}}f|^{2}\,\mathrm{d}m} \\
+    &= \int_{\R}{|\mathrm{e}^{-\mathrm{i}st}-\mathrm{e}^{-\mathrm{i}st_{0}}|^{2}|f(s)|^{2}\,\mathrm{d}m(s)}.
+\end{align*}
+在$ t\to t_{0} $ 时$ |\mathrm{e}^{-\mathrm{i}st}-\mathrm{e}^{-\mathrm{i}st_{0}}| $ 关于$ s $ 逐点（而不一致）收敛于$ 0 $，
+而$ f\in L^{2} $，由Lebesgue控制收敛定理，上式收敛于$ 0 $。
+
+(ii) Stone定理满足$ U_{t} = \int_{\R}{\mathrm{e}^{-\mathrm{i}st}\,\mathrm{d}E(s)} $，于是$ U_{t} = \pi(\mathrm{e}^{-\mathrm{i}st}) $。
+
+对于任意的$ g,h\in L^{2} $，有
+$$
+ \langle U_{t}g,h \rangle = \langle \pi(\mathrm{e}^{-\mathrm{i}st})g,h \rangle 
+ = \int_{\R}{\mathrm{e}^{-\mathrm{i}st}\,\mathrm{d}E_{g,h}(s)}.
+$$ 
+另一方面，按定义有
+$$
+ \langle U_{t}g,h \rangle = \int_{\R}{\mathrm{e}^{-\mathrm{i}st}g(s)\bar{h}(s)\,\mathrm{d}m(s)}.
+$$ 
+于是有$ \mathrm{d}E_{g,h} = g\bar{h}\,\mathrm{d}m $，
+从而对于任意的$ \Delta $，有$ E_{g,h}(\Delta) = \int_{\Delta}{g\bar{h}\,\mathrm{d}m} $，
+也即$ \langle E(\Delta)g,h \rangle = \langle M_{\chi_{\Delta}}g,h \rangle $，故$ E(\Delta) = M_{\chi_{\Delta}} $，证完。
+
+谱系为$ E_{t} = E(\left(-\infty,t\right]) = M_{\chi_{\left(-\infty,t\right]}} $。
+
+(iii) 对于$ f\in C_{c}^{\infty}(\R) $，结论的证明非常简单；
+而$ C_{c}^{\infty}(\R) $ 在$ L^{2} $ 中稠密，
+对于一般的$ f\in L^{2} $，可找到一列$ g_n \in C_c^\infty(\R) $在$L^2$意义下趋于$f$，
+使用$ 3\varepsilon $ 方法可证。
+
+建立Stone表示：因$ \tau_{t} = \F^{-1}U_{t}\F $，我们记
+\[ P(\Delta) = \F^{-1}E(\Delta)\F =\F^{-1}M_{\chi_{\Delta}}\F ,\]
+则对于任意的$ g,h\in L^{2} $，有
+\begin{align*}
+    P_{g,h}(\Delta) &= \langle P(\Delta)g, h \rangle = \langle \F^{-1}M_{\chi_{\Delta}}\F g, h \rangle \\
+    &= \langle M_{\chi_{\Delta}}\F g, \F h \rangle = E_{\hat{g},\hat{h}}(\Delta). 
+\end{align*}
+于是有$ \mathrm{d}P_{g,h} = \mathrm{d}E_{\hat{g},\hat{h}} $，我们得到
+\begin{align*}
+    \langle \tau_{t}g, h \rangle &= \langle \F^{-1}U_{t}\F g,h \rangle = \langle U_{t}\F g, \F h \rangle \\
+    &= \langle U_{t}\hat{g}, \hat{h} \rangle = \int_{\R}{\mathrm{e}^{-\mathrm{i}st}\,\mathrm{d}E_{\hat{g},\hat{h}}(s)} \\
+    &= \int_{\R}{\mathrm{e}^{-\mathrm{i}st}\,\mathrm{d}P_{g,h}(s)}.
+\end{align*}
+由此$ \tau_{t} = \int_{\R}{\mathrm{e}^{-\mathrm{i}st}\,\mathrm{d}P} $。
+\end{proof}
+
+\item[2]
+证明定理4.5.12，即以下等价：
+
+(1) 双向序列$ \mathbf{c} $ 是正定的；
+
+(2) 在单位圆周$ \T $ 上存在一个正Borel测度$ \mu $，使得$ c_{n}=\int_{\T}{z^{n}\,\mathrm{d}\mu(z)} $；
+
+(3) 在一个可分Hilbert空间$ H $ 上存在一个酉算子$ U $和$ e\in H $，使得$ c_{n}=\langle U^{n}e,e \rangle  $。
+
+\begin{proof}
+    $ (1)\Rightarrow(3) $：令$ K(m,n)=c_{m-n} $，由$ \mathbf{c} $ 正定得到$ K $ 正定。
+    再令$ K_{m}(n) = K(m,n) $，以及$ \F = \mathrm{span}\{K_{m}\colon m\in\Z\} $，
+    我们在$ \F $ 上有自然的内积:
+    $$
+     \left\langle \sum_{i=1}^{n}a_{i}K_{n_i}, \sum_{j=1}^{m}b_{j}K_{m_j} \right\rangle 
+     = \sum_{i,j}a_{i}\bar{b}_{j}K(n_i,m_j).
+    $$ 
+    内积完备化，有$ H_{\mathbf{c}} = \overline{\mathrm{span}}\{K_{m}\} $。令$ e=K_{0} $，
+    \[\tilde{U}\colon \F \to \F, \quad \sum{a_{i}K_{n_{i}}}\mapsto \sum{a_{i}K_{n_{i}+1}},\]
+    则$ \tilde{U} $ 是$ \F $ 上的酉算子，可延拓为$ H_{\mathbf{c}} $ 上的酉算子$ U $，于是有
+    $$
+     \langle U^{n}e,e \rangle = \langle U^{n}K_{0},K_{0} \rangle = \langle K_{n}, K_{0} \rangle = c_{n-0} = c_{n}.
+    $$ 
+
+    $ (3)\Rightarrow(2) $：由正规算子的谱定理，$ U = \int_{\T}z\,\mathrm{d}E $，令$ \mu=E_{e,e} $，有
+    $$
+      c_{n}=\langle U^{n}e,e \rangle = \Big\langle \Big(\int_{\T}{z^{n}\,\mathrm{d}E}\Big)e,e \Big\rangle 
+      = \int_{\T}{z^n\,\mathrm{d}E_{e,e}} = \int_{\T}{z^n\,\mathrm{d}\mu}.
+    $$ 
+
+    $ (2)\Rightarrow(1) $：对于任意的有限个复数$ a_{-n},\cdots,a_{-1},a_{0},a_{1},\cdots,a_{n} $，我们有
+    $$
+     \sum_{j,k=-n}^{n}{c_{j-k}a_{j}\bar{a}_{k}} = \sum_{j,k=-n}^{n}{\int_{\T}{z^{j-k}\,\mathrm{d}\mu(z)}\,a_{j}\bar{a}_{k}} 
+     = \int_{\T}{\Big|\sum_{j=-n}^{n}{a_{j}z^{j}}\Big|^{2}\mathrm{d}\mu(z)}\geqslant 0.\qedhere
+    $$ 
+\end{proof}
+
+\item[3]
+证明单位圆周上的三角多项式$p(z)$ 是正的当且仅当存在多项式$q(z)$ 使得$p(z)=|q(z)|^{2}$。
+\begin{proof}
+    充分性是自然的，必要性称为Fejér--Riesz定理，证明如下。
+    设$p(z)$有最高次和最低次项系数均不为$0$的Laurent展开式
+    \[p(z)=\sum_{i=-m}^{n}c_iz^i,\]
+    由于$p(1/z)$和$\overline{p(\bar{z})}$在$\mathbb{C}\setminus\{0\}$上都是全纯函数，
+    且在单位圆周$|z|=1$上相同 ($1/z=\bar{z}$，且$p$取实值)，
+    可知两者一模一样，对比系数得到$m=n$，
+    还能知道$p(1/z)=0 \Leftrightarrow p(\bar{z})=0$，
+    从而多项式$z^np(z)$的根的全体可写为$a_1,\cdots,a_n,1/\bar{a}_1,\cdots,1/\bar{a}_n$，即
+    \[p(z)=Cz^{-n}\prod_{i=1}^n(z-a_i)(z-1/\bar{a}_i)
+    =C'\prod_{i=1}^n(z-a_i)(1/z-\bar{a}_i).\]
+    单位圆周上$p(z)=C'\prod\limits_{i=1}^n|z-a_i|^2>0$，推出$C'>0$。取
+    \[q(z)=\sqrt{C'}\prod_{i=1}^n(z-a_i),\]
+    则
+    \[\overline{q(1/\bar{z})}=\sqrt{C'}\prod_{i=1}^n(1/z-\bar{a}_i),\]
+    相乘有$p(z)=q(z)\overline{q(1/\bar{z})}$，限定$|z|=1$时就有$p(z)=|q(z)|^2$。
+\end{proof}
+
+\item[4]
+设$ F $ 是$ \P(\T) $ 上的一个线性泛函，记$ c_{n}=F(z^{n}) $，其中$ n\in\Z $。
+证明泛函$ F $ 是正定的当且仅当对应的双向序列$ \{\cdots,c_{-1},c_{0},c_{1},\cdots\} $ 是正定的。
+\begin{proof}
+    充分性：设双向序列$\mathbf{c}$是正定的，对于任意的正元$ p\in\P(\T) $，由第3题有$ p=|q|^{2} $，
+    设$ q(z) = \sum_{j=-n}^{n}{a_{j}z^{j}} $，则有
+    $$
+     F(p) = F\left(\sum_{i,j=-n}^{n}{a_{j}z^{j}\bar{a}_{i}z^{-i}}\right) 
+     = \sum_{i,j=-n}^{n}{a_{j}\bar{a}_{i}F(z^{j-i})}
+     = \sum_{i,j=-n}^{n}{a_{j}\bar{a}_{i}c_{j-i}}\geqslant 0,
+    $$ 
+    于是泛函$ F $ 是正定的。
+
+    必要性：设泛函$F$是正定的，对于任意的有限个复数$ a_{-n},\cdots,a_{-1},a_{0},a_{1},\cdots,a_{n} $，
+    令$ q(z)=\sum_{j=-n}^{n}{a_{j}z^{j}} $，$ p(z)=|q(z)|^{2} $，
+    仍由第3题有$ p $ 是正元，于是$ F(p)\geqslant 0 $，展开即得
+    $$ 0 \leqslant F(p)=F\left(\sum_{i,j=-n}^{n}a_jz^j\bar{a}_iz^{-i}\right)
+    =\sum_{i,j=-n}^{n}a_j\bar{a}_iF(z^{j-i})
+    =\sum_{i,j=-n}^{n}{a_{j}\bar{a}_{i}c_{j-i}}, $$
+    于是双向序列$\mathbf{c}$是正定的。
+\end{proof}
+
+\item[7]
+设$\{N_t:t\in\R\}$是一个单参数正规算子群，并且$\sup_t\|N_t\|<\infty$，证明该算子群是单参数酉群.
+\begin{proof}
+    任取非零实数$t$与正整数$n$，有$N_{nt}=(N_t)^n$，谱映射定理表明$\sigma(N_{nt})=\{\lambda^n|\lambda\in\sigma(N_t)\}$，
+    故由$N_t$均为正规算子知$\|N_{nt}\|=\|N_t\|^n$.
+    由于\[\varlimsup_{n\to\infty}\|N_t\|^n=\varlimsup_{n\to\infty}\|N_{nt}\|\leqslant\sup_t\|N_t\|<\infty,\]
+    故$\|N_t\|\leqslant1$. 任取$x\in H$，
+    \[\|x\|=\|N_{-t}N_t x\|\leqslant\|N_{-t}\|\cdot\|N_t x\|\leqslant\|N_t x\|\leqslant\|x\|,\]
+    故$\|N_t x\|=\|x\|$. 由$N_t^{-1}=N_{-t}$，即$N_t$可逆，因此$N_t$为酉算子，$\{N_t:t\in\R\}$为单参数酉群.
+\end{proof}
+
+\end{enumerate}
+
+== von Neumann代数和二次换位子定理(p.184) ==
+\begin{enumerate}
+\item[1]
+设$S$是Hilbert空间$H= \overline{\operatorname{span}\{ e_n:n\geqslant 0 \}}$上重数为$1$的单向移位，
+证明：$W^*(S)=B(H)$,这里$W^*(S)$表示由$S$生成的$C^*$-代数的WOT-闭包.
+[\,注：重数的意思是$\dim(H \ominus SH)$.\,]
+\begin{proof}
+记$\mathscr{A}=W^*(S)$,我们断言$\mathscr{A}'=\mathbb{C} \cdot I$。
+如果我们证明了此，则由von Neumann定理，$\mathscr{A}=\mathscr{A}''=B(H)$.
+
+对$A\in \mathscr{A}'$, $A$与$e_0\langle\,\cdot\,,e_0\rangle =S^*S-SS^*$
+（即到子空间$\operatorname{span}\{e_0\}$上的投影算子，属于$\mathscr{A}$）交换，
+从而$Ae_0\langle \,\cdot\,,e_0\rangle  = e_0\langle A\,\cdot\,,e_0\rangle$。
+代入$\cdot=e_0$可知$Ae_0= \lambda e_0$，其中$\lambda= \langle Ae_0,e_0\rangle$。
+
+则$Ae_n=AS^ne_0=S^nAe_0=\lambda S^ne_0=\lambda e_n$，这意味着$A=\lambda I$，即证。
+\end{proof}
+
+\item[3]
+设$ \{A_{n}\} $ 是Hilbert空间上自伴的一致有界的单调算子序列，证明：该序列在强算子拓扑下收敛。
+\begin{proof}
+    不妨假定$ \{A_{n}\} $ 是单调递增的正算子序列，于是有
+    \begin{itemize}
+        \item 存在$ M>0 $，使得$ \sup_{n\in\N}{\| A_{n} \| } \leqslant M $；
+        \item 对于任意的$ x\in H $，$ \{\langle A_{n}x,x \rangle \} $ 是单调递增的正序列。
+    \end{itemize}
+    我们先验证$ \{A_{n}\} $ 在弱算子拓扑下收敛。
+
+    对于任意的$ x\in H $，$ \{\langle A_{n}x,x \rangle \} $是单调递增的有界序列，因此它是Cauchy列。
+
+    另一方面，对于任意的$ x,y\in H $，$n \geqslant m$时$A_n-A_m$是正算子，
+    从而$\langle(A_n-A_m)\,\cdot\,,\,\cdot\,\rangle$是一个内积，由Cauchy--Schwarz不等式有
+    $$
+     |\langle (A_{n}-A_{m})x,y \rangle | \leqslant \langle (A_{n}-A_{m})x,x \rangle^{1/2} \langle (A_{n}-A_{m})y,y \rangle^{1/2}.
+    $$ 
+    于是$ \{\langle A_{n}x,y \rangle\} $ 也是Cauchy列，故是收敛的数列，
+    记其极限为$ \lim_{n\to \infty}{\langle A_{n}x,y \rangle} = \alpha(x,y) $。
+
+    这样的$ \alpha $ 是$ H $ 上有界双线性泛函，故存在$ A\in B(H) $，
+    使得$\alpha(x,y)=\langle Ax,y \rangle$，即$ {A_{n}} $ 弱算子拓扑收敛到$ A $。
+
+    我们再验证$ {A_{n}} $ 实际上强算子拓扑收敛到$ A $。
+
+    对于任意的$ x\in H $，有
+    \begin{align*}
+        \| (A-A_{n})x \|_{2}^{2} &= \langle (A-A_{n})x, (A-A_{n})x \rangle \\
+        &\leqslant \langle (A-A_{n})x, x \rangle ^{1/2} \langle (A-A_{n})(A-A_{n})x, (A-A_{n})x \rangle ^{1/2} \\
+        &\leqslant \langle (A-A_{n})x, x \rangle ^{1/2} \| A-A_{n} \|^{3/2} \| x \|.
+    \end{align*}
+    其中$ \langle (A-A_{n})x, x \rangle $ 收敛于$ 0 $，而$\|A-A_{n}\|$ 有界，则整体收敛于$ 0 $，证完。
+\end{proof}
+
+\item[4] 设$ \A $ 是Hilbert空间$H$上的一个von Neumann代数。
+
+(i) 对于任意的$ a\in\A $，记$ P_{a} $ 是从$ H $ 到闭子空间$ \overline{aH} $ 的正交投影，证明$ P_{a}\in\A $。
+
+(ii) 对于任意的$ h\in H $，记$ Q_{h} $ 是从$ H $ 到闭子空间$ \overline{\A h} $ 上的正交投影，证明$ Q_{h}\in \A' $。
+
+(iii) 进一步证明每个von Neumann代数在弱算子拓扑下由投影生成。
+
+\begin{proof}
+    我们有命题：
+    
+    $ M $ 是Hilbert空间$ H $ 的闭子空间，$ P: H\to M $ 是正交投影，$ A\in B(H) $。则有：
+    \begin{itemize}
+        \item[(a)] $ M $ 是$ A $ 的不变子空间当且仅当$ PAP=AP $；
+        \item[(b)] $ M $ 是$ A $ 的约化子空间当且仅当$ AP=PA $。
+    \end{itemize}
+\begin{proofc}
+    (a) 不变子空间是说$AM \subseteq M$，即在$AP$的值域$AM$上$P=I$。
+
+    (b) 约化子空间是说$AM \subseteq M$且$AM^\perp \subseteq M^\perp$，
+    前者等价于$PAP=AP$，后者等价于$(I-P)A(I-P)=A(I-P)$，即$PAP=PA$，
+    联合两者得出$AP=PA$，反之$AP=PA$两端左乘、右乘$P$即得。
+\end{proofc}
+    
+    (i) 因为$ \A $ 是von Neumann代数，我们只需证明$ P_{a}\in \A'' $。对于任意的$ b\in \A' $，要证明$ P_{a}b=bP_{a} $。
+    由命题(b)，只需验证$ \overline{aH} $ 是$ b $ 的约化子空间，这只需验证$aH$是$b$的约化子空间。
+
+    首先，$ab=ba$说明$b(aH)=a(bH) \subseteq aH$；接着，$H \supseteq b^*H$且$ab^*=b^*a$表明
+    $\langle -,aH \rangle=0\Rightarrow\langle -,a(b^*H) \rangle=0\Rightarrow
+    \langle -,b^*(aH) \rangle=0\Rightarrow\langle b-,aH \rangle=0$，
+    即$b(aH)^\perp \subseteq (aH)^\perp$。
+
+    (ii) 对于任意的$ a\in \A $，要证明$ Q_{h}a=aQ_{h} $。
+    由命题(b)，只需验证$ \overline{\A h} $ 是$ a $ 的约化子空间，这只需验证$\A h$是$a$的约化子空间。
+
+    首先，$a\A\subseteq\A$说明$a(\A h)\subseteq\A h$；接着，$a^*\A\subseteq\A$说明
+    $\langle -,\A h \rangle=0\Rightarrow\langle -,a^*\A h \rangle=0
+    \Rightarrow\langle a-,\A h \rangle=0$，即$a(\A h)^\perp \subseteq (\A h)^\perp$。
+
+    (iii) 由第8题直接得到。
+
+    注：如果用约化子空间的等价定义$AM \subseteq M,A^*M \subseteq M$，上面的过程会更简短。
+\end{proof}
+
+\item[5] (算子的极分解) 设$A$是Hilbert空间$H$上的一个有界线性算子，$|A|=(A^*A)^{\frac{1}{2}}$，
+那么$\|Ax\|=\||A|x\|,\forall\,x\in H$. 因为$\ker A=\ker|A|$，故可建立等距算子
+\[S:\overline{\Ran|A|}\to\overline{\Ran A},\quad |A|x\to Ax,\,x\in H.\]
+在$H$上定义偏等距$V$如下：在$\overline{\Ran|A|}$上，$V=S$；在$\overline{\Ran|A|}^\perp$上，$V=0$. 证明下列结论：
+
+(i) $A=V|A|$;
+
+(ii) $V^*V=P_{\overline{\Ran|A|}}$;
+
+(iii) $VV^*=P_{\overline{\Ran A}}$,
+
+这里$P_{\overline{\Ran|A|}}$，$P_{\overline{\Ran A}}$分别表示到子空间$\overline{\Ran|A|}$和$\overline{\Ran A}$的正交投影.
+\begin{proof}
+    (i)任取$x\in H$，$|A|x\in\overline{\Ran|A|}$，故$V|A|x=S|A|x=Ax$，即$V|A|=A$.
+
+    (ii)任取$x,y\in H$，若$y\in\overline{\Ran|A|}^\perp=\ker|A|$，则$\langle Ax,Vy\rangle=0=\langle |A|x,y\rangle$；
+    若$y=|A|z\in\Ran|A|$，则\[\langle Ax,Vy\rangle=\langle Ax,Az\rangle=\langle |A|^2x,z\rangle=\langle |A|x,y\rangle.\]
+    总之，我们有$\langle Ax,Vy\rangle=\langle |A|x,y\rangle$，故$V^*A=|A|$，
+    结合(i)知$V^*V|_{\overline{\Ran|A|}}=I$，又显然$V^*V|_{\overline{\Ran|A|}^\perp}=0$，即证.
+
+    (iii)由(i)，(ii)知$A=V|A|=VV^*A$，即$VV^*|_{\overline{\Ran A}}=I$，
+    只需证$V^*|_{\overline{\Ran A}^\perp}=0$即可，而这是$\Ran V\subseteq\overline{\Ran A}$的直接推论.
+\end{proof}
+
+\item[6] 设$A$是Hilbert空间$H$上的一个有界线性算子，$V^*(A)$表示由恒等算子和$A$生成的von Neumann代数.
+证明出现在$A$的极分解中的偏等距$V$属于$V^*(A)$. 记$C^*(A)$表示由恒等算子和$A$生成的$C^*$-代数，举例说明这个偏等距$V$未必属于$C^*(A)$.
+\begin{proof}
+    先证明$V\in V^*(A)$，即证$V\in V^*(A)''$. 任取$T\in V^*(A)'$，由$V^*(A)\supseteq C^*(A)$知$T$与$A,|A|$均交换.
+    为证$VT=TV$，我们仍在稠子空间$\Ran|A|+\overline{\Ran|A|}^\perp$上考虑.
+
+    任取$x=|A|y\in\Ran|A|$，有\[VTx=VT|A|y=V|A|Ty=ATy=TAy=TV|A|y=TVx.\]任取$x\in\overline{\Ran|A|}^\perp=\ker|A|$，
+    有$|A|Tx=T|A|x=0$，即$Tx\in\ker|A|$，故$VTx=0=TVx$.
+
+    再举例说明$V$不一定属于$C^*(A)$. 令$A$为一个无限维且无限余维的紧算子(如$H=l^2,A((a_1,a_2,\cdots))=(a_1,0,\frac{a_2}{2},0,\frac{a_3}{3},\cdots)$).
+    由于$\C\cdot I+\mathcal{K}(H)$为$C^*$-代数，故若$V\in C^*(A)$，则存在$\gamma\in\C$与紧算子$K$使得$V=\gamma+K$.
+    由$V^*V=P_{\overline{\Ran|A|}}$知$|\gamma|=1$，从而$V^*V$形如$I-D$，其中$D$为紧算子. 
+    然而$D=P_{\overline{\Ran|A|}^\perp}$是无限秩投影算子，不是紧的，产生矛盾，因此$V\notin C^*(A)$.
+\end{proof}
+
+\item[7] 设$N$是Hilbert空间上的正规算子，且$N=V|N|$是它的极分解，
+证明存在$\sigma(N)$上的一个有界Borel函数$\varphi$，使得$V=\varphi(N)$，因此$VN=NV$。
+\begin{proof}
+定义$\varphi(z)=\begin{cases}\frac{z}{|z|},&z\neq 0\\
+    \ 0,&z=0\end{cases}$。
+记$V=\varphi(N)$，则由函数演算，$V|N|=N$. 下面证明这给出了极分解。
+
+首先，在稠密子空间$\Ran N$上有$V(|N|x)=Nx$，从而在$\overline{\Ran N}$上同样成立；
+
+由$\varphi\chi_{\{0\}}=0$，有$VE(\{0\})=0$，注意到
+\[\overline{\Ran|N|}^\perp=\ker|N|=\Ran E(\{0\})\]
+(这里用到了$\ker\varphi(N)=\Ran E(\varphi^{-1}(0))$，见系4.5.4 (i))，即$V$在$\overline{\Ran|N|}^\perp$上为$0$。
+\end{proof}
+
+\item[8]
+von Neumann代数$\mathscr{A}$中投影算子的线性组合全体在$\mathscr{A}$中按范数稠密.
+\begin{proof}
+$\mathscr{A}$中元素可写成自伴元的线性组合，因此只需考虑自伴算子$A=\int_{\sigma(A)}z\,\mathrm{d}E.$
+
+下面我们证明$E(\omega)\in \mathscr{A}$，如果我们证明了此，
+用简单函数逼近可知$A\in \mathscr{A}$ (写出来是，$\sum_n c_n\chi_{\omega_n}$一致收敛于$z$，
+则$\sum_n c_nE(\omega_n)$在算子范数意义下收敛于$A$).
+
+由von Neumann代数的定义，只需证$E(\omega)\in \mathscr{A}''$。
+任取$T\in \mathscr{A}'$，则$TA=AT,\forall A\in\mathscr{A}$，
+从而$TE(\omega)=E(\omega)T$ (谱测度的定义中蕴含着这一点)，即$E(\omega)\in \mathscr{A}''$。
+\end{proof}
+\end{enumerate}
+
+=== 参考文献 ===
+\begin{references}
+    \bibitem[Conway I]{Conway I}
+        John B. Conway, \textit{A Course in Functional Analysis}, 
+        GTM 96, Springer, 1990.
+    \bibitem[Conway II]{Conway II}
+        John B. Conway, \textit{A Course in Operator Theory}, AMS, 2000.
+    \bibitem[Takesaki]{Takesaki}
+        Masamichi Takesaki, \textit{Theory of Operator Algebras I},  
+        Springer, 1979.
+    \bibitem[Simon]{Simon}
+        Barry Simon, \textit{Operator Theory:
+        A Comprehensive Course in Analysis, Part 4}, AMS, 2015.
+\end{references}

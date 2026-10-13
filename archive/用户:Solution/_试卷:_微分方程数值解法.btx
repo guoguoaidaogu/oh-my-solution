@@ -1,0 +1,136 @@
+\setdisplaytitle{试题：微分方程数值解法}
+\sethtmltitle{试题：微分方程数值解法}
+
+== 2025--2026春微分方程数值解法期末试题（吴新明） ==
+\begin{enumerate}
+\item（20分）考虑常微分方程
+\[u_t = f(t,u).\]
+(a) 写出两步Adams-Bashforth格式的构造方法，论证其精度；
+
+(b) 写出两步Gear (BDF2)格式，论证其精度。
+
+\item（20分）考虑常微分方程
+\[u_t = f(t,u).\]
+对以下的数值格式
+\[u_{n+3}+\alpha(u_{n+2}-u_{n+1})-u_n
+= \frac{\tau}{2}(\alpha+3)(f_{n+2}+f_{n+1}),\]
+其中参数$\alpha\in\R$。
+
+(a) 分析数值格式的局部截断误差；
+
+(b) 分析数值格式的稳定性。
+
+\item（20分）考虑一维特征值问题
+\[\begin{cases}
+    - u'' = \lambda u, \qquad 0<x<1,\\ \\
+    u(0)=u(1),\quad u'(0) = u'(1).
+\end{cases}\]
+(a) 写出求解以上问题的三点差分格式及其对应矩阵；
+
+(b) 写出原问题及离散问题的特征对；
+
+(c) 分析最小正特征值的计算精度。
+
+\item（20分）考虑一维椭圆边值问题
+\[\begin{cases}
+    - u'' = f, \qquad 0<x<1,\\ \\
+    u(0)=0,\quad u'(1) + \gamma u(1) = g.
+\end{cases}\]
+(a) 给出有限差分离散格式、\ 二阶边界处理方法；
+
+(b) 写出变分问题、\ 线性有限元离散格式。
+
+\item（20分）考虑一维对流扩散方程
+\[u_t+ a u_x = u_{xx},\]
+其中$a>0$为常数。对以下数值格式
+\[\frac{u_j^{n+1}-u_j^n}{\tau} + a \frac{u_j^n-u_{j-1}^n}{h} 
+= \frac{u_{j+1}^{n+1}-2 u_j^{n+1}+u_{j-1}^{n+1}}{h^2}.\]
+(a) 分析数值格式的局部截断误差；
+
+(b) 分析数值格式的稳定性；
+
+(c) 如果$a<0$，格式是否适用，若不适用如何修正。
+\end{enumerate}
+
+
+== 2023--2024春微分方程数值解法期末试题（吴新明） ==
+
+\begin{enumerate}
+
+\item（20分）对于以下常微分方程：
+
+\[
+\begin{cases}
+    \dfrac{\mathrm{d}u}{\mathrm{d}t} = f(t,u)  \\
+    u(0) = u_0
+\end{cases}
+\]
+
+考虑以下数值格式：
+
+$$
+u_{n+1}=u_n+\Delta t\, f\left(t_n+\frac{\Delta t}{2}, u_n+\frac{\Delta t}{2} f(t_n, u_n)\right) .
+$$
+
+（1）分析局部截断误差.
+
+（2）求绝对稳定区域.
+
+\item（20分）对于与上题相同的常微分方程，考虑以下数值格式：
+
+$$
+u_{n+1}=u_n+\frac{\Delta t}{2}\left(f(t_n, u_n)+f(t_{n+1}, u_{n+1})\right) .
+$$
+
+（1）分析局部截断误差.
+
+（2）求绝对稳定区域.
+
+（3）构造迭代格式并证明，在 $f$ 关于 $u$ 满足利普希茨条件的假设下，
+以显式 Euler 格式算出初值进行迭代，则只需要一步就可以达到原误差的收敛阶.
+
+
+\item（20分）对于如下偏微分方程：
+
+\[
+\begin{cases}
+    - \Delta u + u =f , \quad \Omega = (0,1)\\
+    u(0)=\alpha,\ u'(1)=\beta
+\end{cases}
+\]
+
+（1）写出上述方程的变分问题和求出其有限元离散问题，并说明其有限元离散问题如何求解.
+
+（2）写出三点差分格式，并说明边界条件如何处理.
+
+\item（20分）对于如下偏微分方程：
+
+\[
+\frac{\partial u}{\partial t}= \frac{\partial^{2} u}{\partial x^{2}}
+\]
+
+考虑如下格式
+
+\[ \frac{3}{2} \cdot \frac{U_i^{n+1}-U_i^n}{\tau}-\frac{1}{2} \cdot \frac{U_i^n-U_i^{n-1}}{\tau}=\frac{U_{i+1}^{n+1}-2 U_i^{n+1}+U_{i-1}^{n+1}}{h^2} 
+\]
+
+（1）分析局部截断误差.
+
+（2）分析上述格式的稳定性.
+
+
+\item（20分）对于如下偏微分方程：
+
+\[
+ \frac{\partial u}{\partial t}=\frac{\partial^2 u}{\partial x^2}+\frac{\partial u}{\partial x}+u 
+\]
+
+考虑如下格式：
+
+\[
+ \frac{U_i^{n+1}-U_i^n}{\tau}=\frac{U_{i+1}^n-2 U_i^n+U_{i-1}^n}{h^2}+\frac{U_{i+1}^n-U_{i-1}^n}{2 h}+U_i^n
+\]
+
+
+分析上述格式的稳定性。
+\end{enumerate}

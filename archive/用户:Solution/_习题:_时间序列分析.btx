@@ -1,0 +1,424 @@
+\section{第一周作业及解答}
+\begin{enumerate}
+
+
+\item 给出多元线性回归框架的数学描述(4个条件).
+
+\begin{proofc}[提示]
+    \begin{enumerate}
+    \item 线性性:模型关于每个变量均为线性关系.
+    \item 外生性:即$E(\varepsilon | x)=0$
+    \item 无多重共线性
+    \item 同方差且无相关性:$Var(\varepsilon | x)=\sigma^2I_n$
+\end{enumerate}
+\end{proofc}
+
+\item 在多元线性回归框架下,推导普通最小二乘法的参数估计:(包括目标(损失)函数,利用一阶梯度为零来得到参数的普通最小二乘估计$b$,并继续计算目标函数关于参数二阶Hessian矩阵,说明为极小值点).
+\begin{proofc}[提示]
+    $$S(\beta)=\|Y-X\beta\|^2=Y^\top Y-2Y^\top X\beta+\beta^\top X^\top X\beta$$
+    求导,可得
+    $$\frac{\partial S}{\partial \beta}=-2X^\top Y+2X^\top X\beta$$
+    由于$X^\top X$正定,故其为可逆矩阵,从而$\beta=(X^\top X)^{-1}X^\top Y$.
+    继续求导可得
+    $$\frac{\partial ^2S}{\partial \beta^2}=2X^\top X$$
+    又$2X^\top X$正定,从而其为极小值点.
+\end{proofc}
+\item 证明 $E(b|X)=\beta, \quad Var(b|X)=\sigma^{2}(X^{\prime}X)^{-1}.$ 
+\begin{proofc}[提示]
+$$E(b|X)=E((X^\top X)^{-1}X^\top(X\beta+\varepsilon)|X)=(X^\top X)^{-1}X^\top E(\varepsilon|X)+\beta=\beta$$
+$$Var(b|X)=Var(b-\beta|X)=E((b-\beta)(b-\beta)^\top)=\sigma^2(X^\top X)^{-1}$$
+\end{proofc}
+\item 若 $\tilde{b}=Cy, E(\tilde{b}|X)=\beta$ 说明 $Var(\tilde{b}|X)\ge Var(b|X)$.
+
+\item 利用普通最小二乘法给出的参数估计公式,给出 $y_{1},\dots,y_{n}$ 关于常数1回归模型的参数估计.
+
+\item
+\begin{enumerate}
+
+    \item 为了分析随着解释变量X的变化,因变量的增长率变化情况,模型应设定为(含常数1)? 
+    \item 理解边际、弹性的概念 
+    \item $y\sim x$,普通最小二乘回归参数为b $z=xP, \det|P|\ne0, y\sim z$ 普通最小二乘回归参数为d,d和b的关系为? 两个回归下 $R^{2}$ 是否相同? 
+    \item 多元线性回归模型进行参数估计时,是否可以选择残差的均值作为损失函数? 
+\end{enumerate}
+
+\item 利用附件的数据分别采用普通最小二乘法进行参数估计,比较一下所得参数的变化是否大? 编程语言你们自己来选(R,python, matlab,...)均可,我这里仅以matlab为例.
+
+matlab可参考如下代码步骤: 
+\begin{enumerate}
+
+    \item 读入数据: \textit{data readmatrix(filename)},例：\textit{A=readmatrix('d:{/}my{/}weight_height.xls')}
+    \item 尝试画因变量和每一个自变量的散点图: \textit{M=mean(A), N=var(A)}
+    \item 尝试画因变量和每一个自变量的散点图 :
+    利用以下示例\\
+取第一列 \textit{x1=A(:,1)};\\
+取第二列 \textit{x2=A(:,1)};\\
+\textit{subplot(1,2,1);plot(x1,x2,'b--o')},\\
+\textit{subplot(1,2,2);plot(x1,x2,'r--*')}, 学习画图,并完成3的要求\\
+ 
+    
+    \item 用最小二乘公式直接计算 
+    \item 用matlab回归函数 
+    \item 比较两个附件中的数据和计算得到的,你有什么结论? 
+\end{enumerate}
+
+\item 思考题:数据预处理的方法你了解的有哪些? 
+
+\end{enumerate}
+
+\section{第二周}
+\begin{enumerate}
+
+
+\item 探索多元线性回归软件包.
+\begin{enumerate}
+
+    \item 在上次课代码基础上,利用上节课数据,自己编写代码计算残差平方和$e'e$, $\sigma^{2}$的无偏估计 $s^{2}=\frac{e^{\prime}e}{n-K}$ 以及进行参数标准差, 原假设 $\beta_i=0$ 计算 $t_{k^{\prime}}$, 并判断拒绝还是接受原假设(此处两种算法,一种给定显著性水平 $\alpha=5\%$,计算分布所对应的值,另一种计算$P(|t|>|b_k|)$).以及$R_{c}^{2}$(此处计算要求模型的解释变量含有1). 
+    \item 利用软件求解,对比1)自己计算的结果(试看一下软件里计算的每个值我们是如何计算的). 
+\end{enumerate}
+
+\item 含有1作为解释变量 $\sum_{i} e_{i}=0$,为什么? 
+
+\item 多元线性回归参数用偏回归来理解:如果解释变量所对的系数矩阵 $X=[X_{1},X_{2}]$,给出回归模型 $X_{1}$ 的普通最小二乘估计(被解释变量所对应Y).
+
+\item 一元回归模型 $y=b_{y1}+b_{yg}G+\epsilon_{1}$, 利用 $M_{0}=M_{X}|_{X=\boldsymbol{1}}$ 推导普通最小二乘法给出估计 $\hat{b}_{yg}$. 
+\item 令y对X和新增变量Z进行回归,其判定系数/可决系数为 $R_{Xz}^{2}$ 而 $R_{X}^{2}$ 为仅对X进行回归的判定系数, $r_{yz}^{*}$ 为在控制变量X后y和Z之间的偏相关系数,证明 $R_{Xz}^{2}=R_{X}^{2}+(1-R_{X}^{2})r_{yz}^{*2}$.
+
+\item 概率基础: \\
+\begin{enumerate}
+
+    \item $\xi\sim N(0,I), M^{T}=M, M^{2}=M, \xi^{T}M\xi\sim\chi^{2}(\text{Tr}(M))$ 
+    \item $\eta\sim N(0,\Sigma), \eta\in \mathbb{R}^{n}, \eta^{T}\Sigma^{-1}\eta\sim\chi^{2}(n)$ 
+    \item $X=A\xi, Y=B\xi, Z=\xi^{T}M\xi, \xi\sim N(0,I), M^{T}=M, M^{2}=M,$ 如果 $AB^{T}=0,$ X和Y独立,如果 $AM=0,$ X和Z独立. 
+\end{enumerate}
+
+\end{enumerate}
+
+\section{第三周}
+\begin{enumerate}
+
+\item 回归只有常数项的模型 $y_{i}=\alpha+u_{i}$, $u_{i}$ 是独立分布的,
+$u_{i}\sim N(0,\sigma^{2}\sigma_{1}^{2}) \quad (i=1,2,\dots,n_{1})$, 
+$u_{i}\sim N(0,\sigma^{2}\sigma_{2}^{2}) \quad (i=n_{1}+1,n_{1}+2,\dots,n)$.
+推导广义最小二乘估计量.
+
+\item 多元线性回归带约束 $R\beta=q, \text{Rank}(R)=r$, R行满秩, 利用拉格朗日乘子来推导.
+\[
+\frac{(e_{*}^{T}e_{*} - e^{T}e)/r}{(e^{T}e)/(n-K)} \sim F(r,n-K)
+\]
+\item 考虑如下模型\par
+\textbf{无约束模型(U):}
+\begin{align*}
+    \ln C_t = 0.31 &+ 0.87 \ln I_t &+ 0.64 \ln C_{t-1} &- 0.60 \ln I_{t-1} &+ 0.02 \ln P_{t-1} \\
+    t = (2.75) & (10.97) & (4.72) & (-4.86) & (2.09)
+\end{align*}
+残差平方和 = 0.67993, \quad DW = 1.95, \quad n=30
+
+\textbf{和约束模型(R):}
+\begin{align*}
+    \ln C_{t} = 0.19 &+ 0.96 \ln C_{t-1} &+ 0.01 \ln P_{t-1} \\
+    t = (0.88) & (19.95) & (-0.78)
+\end{align*}
+残差平方和 = 0.85163, \quad DW = 2.27, \quad n=30
+
+试用F检验判断, 对(U)式施加约束 $\ln I_t$ 和 $\ln I_{t-1}$ 的系数 $\beta_{0}=\beta_{1}=0$ 是否成立? (注: 显著性水平0.05时, $F(2,25)=3.39$)
+
+\item 
+\begin{enumerate}
+    \item[(1)] 为了分析随着解释变量X增长率的变化, 因变量的增长率变化情况, 模型应设定为?
+    \item[(2)] 已知模型为 $y=\beta_{1}+\beta_{2}x+u$, 在对模型的参数进行估计时测得残差的DW统计量为0.32, 表明扰动项具有? 为了采用普通最小二-乘进行参数估计, 需要对于数据进行如何处理?
+\end{enumerate}
+
+\item 请给出岭回归的数学描述.
+
+\item 
+\begin{enumerate}
+    \item[(1)] 模型拟合优度F统计量和 $R^{2}$ 的关系.
+    \item[(2)] 调整的 $\bar{R}^{2}$ 定义.
+\end{enumerate}
+
+\item 熟悉矩阵的性质(此题不用推导抄写熟悉一下记号):
+\begin{itemize}
+    \item $\text{tr}(A)=\sum_{i}a_{ii}, \quad \text{tr}(AB)=\text{tr}(BA), \quad \text{tr}(ABC)=\text{tr}(BCA), \quad E[\text{tr}(A)]=\text{tr}(E[A])$
+    \item $x^{\prime}x=\sum_{i}x_{i}^{2}, \quad \sum_{i}(x_{i}-\bar{x})^{\prime}(y_{i}-\bar{y})=x^{\prime}M_{0}y, \quad M_{0}=M_{X}|_{X=(1,\dots,1)^{T}}$
+    \item $e=M_{X}Y, \quad s^{2}=\frac{e^{\prime}e}{n-K}, \quad e=Y-\hat{Y}, \quad Es^{2}=\sigma^{2}$
+\end{itemize}
+
+\end{enumerate}
+
+
+\section{第四周}
+
+\begin{enumerate}
+
+
+\item 推导多元线性回归框架(1:5条)下,用最大似然法进行参数估计给出的估计公式, $\sigma^{2}$ , 并计算在此参数下的对数似然值 .
+
+\item 多元线性回归模型 $y=\beta_{0}+\beta_{1}x_{1}+\beta_{2}x_{2}+\epsilon, \vec{x}=(1,x_{1},x_{2})$ 为解释变量, 样本量为n, $\mathbb{B}=(x_{1},x_{2},1)/7$ 为工具变量, 给出参数的估计公式 $b_{IV}$, 并分析 $b_{IV}$ 与普通最小二乘估计量 $b_{ols}$ 之间的关系, 理解利用工具变量进行计算的方法(工具变量需要满足的条件以及用数据矩阵进行计算), 并说明 $b_{IV}$ 是无偏的.
+
+\item Logistic回归是一种常用的处理二分类问题的离散因变量模型,
+\begin{enumerate}
+    \item[(a)] 请给出模型描述.
+    \[ \sigma(x)=\frac{1}{1+e^{-x}} \]
+    \item[(b)] 给定N个训练样本 $\{(x^{(n)},y^{(n)})\}$, 试分别用极大似然作为损失函数 $L=\sum_{i=1}^{N}L_{i}$, 每个样本点的损失函数 $L_{i}=L(f(x^{(i)};\theta),y^{i}), i=1\dots,N$.请给出的表达式, 以及L取得极值时参数应满足的必要条件(利用 $\frac{\partial L}{\partial\beta}=0$, $\frac{\partial \ln x}{\partial x}=\frac{1}{x}, \sigma^{\prime}(x)=\sigma(x)(1-\sigma(x))$给出应满足的非线性方程).
+\end{enumerate}
+
+\item matlab:导入鸢尾花数据集,请用logistic回归进行建模,以下给出所需的主要函数形式,并说明模型分类效果.
+matlab示例代码: 
+
+
+\item 若 $y=\beta_{0}+\beta_{1}x_{1}+\beta_{2}x_{2}+\epsilon$, 请给出用怀特方法检验异方差的步骤, 可以生成具有 $\epsilon_{i}\sim N(0,x_{i}^{2})$ 的数据, 并检验之.
+
+\item 说明在什么情况下需要使用工具变量, 工具变量需要满足哪些条件, 用工具变量估计的解是否无偏和有效?
+
+\item 多元线性回归, 普通最小二乘和最大似然估计给出的回归系数和扰动项方差估计是否相同? 如不同, 分别是多少?
+
+\item 方差膨胀因子的定义, 用于判断什么问题?
+
+\end{enumerate}
+
+\section{第五周}
+一、考虑服从泊松分布的随机样本10个观测值：5,0,1,1,0,3,2,3,4,1,每个观测值的密度为$(y_i|\theta)=\frac{e^{-\theta}\theta^{y_i}}{y_i!}$,给出联合密度$f(y_1,y_2,\cdots,y_{10}|\theta)$,并最（极）大似然法估计参数.
+
+二、 一个由三个方程组成的联立模型的结构形式如下
+$\begin{array}{l}
+C_t=\alpha_{0}+\alpha_{1}Y_t+\alpha_{2}C_{t-1}+\alpha_{3}P_{t-1}+u_{1t}\\I_t=\beta_{0}+\beta_{1}Y_t+\beta_{2}Y_{t-1}+u_{2t}\\Y_t=C_t+I_t\\\end{array}$
+1）分别利用简化形式和结构化矩阵方法分析前2个方程是否为不可识别,过度识别或恰好识别？
+2）根据(a)的分析,判断应该采用哪种方法进行参数估计.
+
+3）给出间接最小二乘和两阶段最小二乘的算法描述.
+
+三、$A=$广告,$M=$价格成本边际,$S=$工业销售,$D=$耐用品工业(0/1),$C=$集中度
+
+$Gr=$工业增长率,$Cd=$消费者需求,$K=$资本存量,$MES=$有效规模,$Gd=$地理分散度
+
+工业结构和运行模型是由斯特里克蓝和韦斯(1976)估计,内生变量$C^2$出现在第一个方程里
+
+$\frac{A}{S}=\alpha_0+\alpha_1M+\alpha_2(\frac{Cd}{S})+\alpha_3C+\alpha_4C^2+\alpha_5Gr+\alpha_6D+\epsilon_1$
+
+$C=\beta_0+\beta_1(\frac{A}{S})+\beta_2(\frac{MES}{S})+\epsilon_2$
+
+$M=\gamma_0+\gamma_1(\frac{K}{S})+\gamma_2Gr+\gamma_3C+\gamma_4Gd+\gamma_5(\frac{A}{S})+\gamma_6(\frac{MES}{S})+\epsilon_3$
+
+此类模型非线性函数只涉及单个变量,将非线性函数$C^2$当做附加内生变量加入方程组,即
+
+$y^T=[\frac{A}{S},C,C^2,M]$
+
+$x^T=[1,\frac{Cd}{S},Gr,D,\frac{MES}{S},\frac{K}{S},Gd]$
+
+利用秩条件来判断（3个方程,若可以识别,需要秩为2）是否可以识别
+
+再来看阶条件（作为解释变量的内生变量个数和没有使用的前定变量个数关系）
+
+四、数据在文件1.xls.
+
+- MDR = Number of derogatory reports
+- Acc = Credit card application accepted (1=yes),
+- Age = Age in years+ 12ths of a year,
+- Income = Income, divided by 10,000 ,
+- Avgexp = Avg. monthly credit card expenditure,
+- Ownrent = OwnRent, individual owns (1) or rents (0) home.
+- Selfempl = Self employed (1=yes, 0=no)
+
+每月支出对常数、年龄（Age）、收入(Income)和收入的平方和住房所有权（Ownrent）建模,
+
+（1）普通最小二乘估计参数
+
+（2）异方差怀特检验
+
+五、数据在文件labor.xlsx
+
+- EXP =Work experience,
+- WKS =Weeks worked,
+- OCC =Occupation, 1 if blue collar,
+- IND =1 if manufacturing industry,
+- SOUTH =1 if resides in south,
+- SMSA =1 if resides in a city (SMSA),
+- MS =1 if married,
+- FEM =1 if female,
+- UNION =1 if wage set by union contract,
+- ED =Years of education,
+- BLK =1 if individual is black,
+- LWAGE=Log of wage.
+
+（1）建立回归模型$WKS\sim [1,LWAGE,ED,UNION,FEM]$普通最小二乘回归
+
+（2）利用工具变量$z_1=[1,IND,ED,UNION,FEM]$作为工具变量,工资和工作周数相关
+
+\section{第六周} 
+
+\begin{enumerate}
+    \item 给出广义最小二乘解 $b_{gls}$ 公式, 并计算 $E(b_{gls}|X)$ , $Var(b_{gls}|X)$ , 以及 $X\sim N(0,\sigma^{2}\Sigma)$ 时, $b_{gls}$ 服从什么分布.
+
+    \item 给出 $b_{IV}$ 公式, 并计算 $E(b_{IV}|X)$, $Var(b_{IV}|X)$.
+
+    \item 自己寻找数据或生成模拟数据, 建立单方程模型并进行模型分析, 通过图、表、统计量进行分析.
+\end{enumerate}
+
+\section{第七周}
+\begin{enumerate}
+
+\item 已知 $\{X_t\}$ 是独立随机变量序列
+\[
+\{X_{t}\}=\begin{cases}
+\sim Exponent(1), & t=2k+1, \\
+\sim N(0,1), & t=2k.
+\end{cases}
+\]
+$\{X_t\}$ 是否宽平稳, 是否严平稳,
+请给出宽平稳和严平稳之间的关系(什么情形下, 严平稳也是宽平稳, 宽平稳也是严平稳的).
+
+\item
+\begin{enumerate}
+    \item[(1)] 设均值为零的随机变量 $U, V$, 方差均为2. $U, V$ 独立, 令 $X_{t}=U \cos(wt)+V \sin(wt), t\in \mathbb{Z}$, $w \in [-\pi, \pi], w \ne 0$ 为常数, 则序列 $\{X_{t}, t\in \mathbb{Z}\}$ 的自相关函数 $\rho(h)$ 等于?
+    \item[(2)] 说明 $\rho(h)=\cos(wh), h\in \mathbb{Z}$ 是非负定序列(提示:利用(1)的结论).
+\end{enumerate}
+
+\item 设 $\gamma_{X}(k)$ 和 $\gamma_{Y}(k)$ 分别是平稳序列 $\{X_{t}\}$ 和 $\{Y_{t}\}$ 的自协方差函数, 记 $\mu_{X}=EX_{t}, \mu_{Y}=EY_{t}$, 定义 $Z_{t}=X_{t}+Y_{t}, t\in \mathbb{Z}$.
+\begin{enumerate}
+    \item[(1)] 如果 $\{X_{t}\}$ 和 $\{Y_{t}\}$ 正交, $\{Z_{t}\}$ 是否平稳, 若平稳, 自协方差函数为?
+    \item[(2)] 如果 $\{X_{t}\}$ 和 $\{Y_{t}\}$ 不相关, $\{Z_{t}\}$ 是否平稳, 若平稳, 自协方差函数为?
+\end{enumerate}
+
+\item 平稳序列 $\{X_{t}\}$ 的 $n$ 阶自协方差矩阵 $\Gamma_{n}=(\gamma_{i-j})_{i,j=1}^{n}$, 给出其表示, 说明其半正定.
+
+\item 设 $a_{t}=\epsilon_{t}+\theta_{1}\epsilon_{t-1}+\dots+\theta_{q}\epsilon_{t-q}$, $\{\epsilon_{t}\}$ 是 $WN(0,\sigma^{2})$ (0均值, 方差为 $\sigma^2$ 的白噪声).
+\begin{enumerate}
+    \item[1)] 判断 $a_t$ 是否平稳, $Ea_{t}, \text{Var}(a_{t}), \text{Cov}(a_{t},a_{s})$ 分别为?
+    \item[2)] 用滞后算子 $L$ 将模型表示为 $a_{t}=A(L)\epsilon_{t}$, $A(L)$ 是算子多项式, $A(L)=?$
+\end{enumerate}
+
+\item
+\begin{enumerate}
+    \item[1)] 设 $S_{t}=X_{1}+X_{2}+\dots+X_{t}$, $X_{1},\dots$ 独立同分布, $E(X_{1})=0, \text{Var}(X_{1})=\sigma^{2}$, $S_{t}$ 是否平稳?
+    \item[2)] $\nabla X_{t}=X_{t}-X_{t-1}=(1-B)X_{t}, \nabla^{2}X_{t}=?$, $m_{t}=c_{0}+c_{1}t+c_{2}t^{2}, \nabla^{2}m_{t}=?$
+    \item[3)] $X_{t}=m_{t}+s_{t}+Y_{t}, s_{t+d}=s_{t}, \nabla_{d}=1-B^{d}, \nabla_{d}X_{t}=?$
+\end{enumerate}
+
+\item 设 $X_{t}=Z_{t}+\theta Z_{t-1}, \theta=0.95, Z_{t} \text{ (i.i.d.)} \sim N(0,1)$.
+\begin{enumerate}
+    \item[1.] 画图模拟 $X_{t}$.
+    \item[2.] 计算自协方差 $\gamma(k)$ 和自相关函数 $\rho(k)$.
+    \item[3.] 令 $\theta=-0.95$, 重做以上1, 2.
+\end{enumerate}
+
+\item 生成数据 $X_{t}=1+0.5t+\sin\left(\frac{(t+0.3)\pi}{2}\right)+\epsilon_{t}, \epsilon\sim N(0,0.01), t=1,\dots,20$.
+\begin{enumerate}
+    \item[1.] 用回归模型进行时间序列分解 $X_{t}=T_{t}+S_{t}+R_{t}, \hat{T}_{t}=a+bt$.在同一张图上画 $X_{t}, \hat{T}_{t}, \hat{S}_{t}, \hat{R}_{t}$.
+    \item[2.] 用 $\alpha=0.9$ 的指数平滑公式, 在同一张图上画原始序列和平滑后的序列.
+\end{enumerate}
+
+\end{enumerate}
+
+
+
+\section{第八周}
+
+\begin{enumerate}
+    
+    \item 滞后差分算子 $B X_{t}=X_{t-1}$.假设 $f(B)=1+0.3B+0.5B^{2}$, $c$ 为常数, 则 $f(B)c=?$
+    
+    \item 多重季节模型 $w_{t}=(1-\theta B)(1-\Theta B^{s})a_{t}, s>1, s\in N$, 计算 $w_{t}$ 的ACF, 即 $\rho(l)$.
+    
+    \item 对某一数据经季节调整后进行建模, $r_{t}$ 表示季度增长率, 得到
+    \[ (1+0.5B)(1-0.5B+0.25B^{2})r_{t}=0.0047+a_{t}, \quad \sigma_{a}^{2}=0.0097 \]
+    利用特征函数分析该模型的平稳性及增长率是否具有周期性, 如具有周期性, 周期为多少.
+    
+    \item 
+    \begin{enumerate}
+        \item[(1)] $AR(2)$ 模型 $X_{t}=-0.1X_{t-1}+0.72X_{t-2}+\epsilon_{t}$. 计算 $\rho_{k}(k=1,2,3,4,5)$.
+        \item[(2)] 将 $\rho_k$ 用 $X$ 及其历史值表示？
+    \end{enumerate}
+    
+    \item $Y_{t}=\sum_{j=0}^{\infty}h_{j}X_{t-j}, \sum_{j=0}^{\infty}|h_{j}|<\infty, \{X_{t}\}$ 宽平稳, 证明：
+    \[ \gamma_Y(k) = \sum_{l,j=0}^{\infty}h_{j}h_{l}\gamma_{X}(k+l-j) = \sum_{l,j=0}^{\infty}h_{j}h_{l}\gamma_{X}(k+j-l) \]
+    
+    \item 证明: $MA(2)$ 模型 $Y_{t}=\xi_{t}+\phi_{1}\xi_{t-1}+\phi_{2}\xi_{t-2}, \{\xi_{t}\}\sim WN(0,\sigma^{2})$ 平稳性的参数条件:
+    \[ |\phi_{2}|<1, \quad \phi_{2}\pm\phi_{1}>-1 \]
+    (注: 分 $\Delta<0$ 和 $\Delta\ge 0$ 两种情况计算特征方程根的模)
+
+\end{enumerate}
+
+\section{第九周}
+\begin{enumerate}
+    \item AR(p)模型定阶可以采用?函数来定阶,根据其绝对值是否小于?进行判断(数据量为T).
+    
+    \item MA(q)模型定阶可以采用?函数来定阶?
+    
+    \item $AR(2)$ 模型 $X_{t}=-0.1X_{t-1}+0.72X_{t-2}+\epsilon_{t}$
+    \begin{enumerate}
+        \item $X_{t}$ 的自协方差生成函数 $g_{X}(z)$?
+        \item $X_{t}$ 的谱密度函数 $x(w)$?
+    \end{enumerate}
+    
+    \item 证明: $AR(2)$ 模型 $Y = \phi_{1}Y_{t-1} +\phi_{2}X_{t-2} +\xi \epsilon, \{\xi_{t}\}\sim WN(0,\sigma^{2})$,
+    平稳性的参数条件: $|\phi_{2}|<1,\phi_{2}\pm\phi_{1}<1$ (注: 分$\Delta<0\text{和}\Delta\ge0$ 两种情况计算特征方程根的模)
+
+    \item 根据数据,利用Yule-Walker求得系数如下: $a_{1}=0.5,$ 对应AR(1)模型, $a_{2}=(0.75,-0.5)$,对应AR(2)模型, $a_{3}=(0.75,-0.5,0)$,对应AR(3)模型,则可以得到模型应为?
+    谱密度为?画谱密度图像(横坐标为 $w\in[0,2\pi]$ 纵 坐标为 $s(w)$,谱密度极值点为?数据的大致周期为?
+
+    \item $X_{t}=\phi_{1}X_{t-1}+\phi_{p}X_{t-p}+Z_{t},\{Z_{t}\}\sim WN(0,\sigma^{2})$
+    \\ 给出 $X_{t}$ 自协方差满足的关系(Yule-Walker方程) 和 $X_{t}$ 方差满足的关系式
+    .
+
+    \item 平稳序列 $\{X_{t}\}$ 的样本方差为3.6840,样本数为 $T=1000$,三阶及以上偏自相关函数的绝对值均小于0.03,
+    样本自协方差 $\hat{\gamma}_{1}=2.2948 ,\hat{\gamma}_{2} = 1.8491$,
+    \begin{enumerate}
+        \item 利用以上信息建模,判断应建立什么模型,
+        \item 并给出模型参数的估计.
+    \end{enumerate}
+
+    \item $AR(1)$ 模型精确极大似然函数和条件似然函数
+
+    \item 利用三峡能源数据,先做对数差得到对数收益率,再尝试用软件建立AR或MA模型
+
+\end{enumerate}
+
+
+\section{第十周}
+\begin{enumerate}
+    \item
+    \begin{itemize}
+    \item[1)] 时间序列 $\{x_{t}\}, t=1,\dots,T$, 其中 $x_{1}=1, \rho=0.9$.利用指数平滑公式计算 $\hat{x}_{3}$.
+    
+    \item[2)] $T$ 个样本数据的 Ljung-Box 统计量 $Q(m)$ 的定义是什么? 它服从 $\chi^{2}(m)$ 分布, 如果对 ARMA(p,q) 模型的残差进行 Ljung-Box 检验, 其自由度将调整为多少? (注: 应为减去模型参数个数)
+    
+    \item[3)] 有几种准则可以进行参数选择或定阶? 对于高斯 AR(1) 模型, Akaike 信息准则 (AIC) 简化为? (Schwarz) 贝叶斯信息准则 (BIC) 简化为?
+    
+    \item[4)] 对于 AR(1) 过程 $Y_{t}=c+\phi Y_{t-1}+\epsilon_{t}$, 其中 $\epsilon_t$ 是方差为 $\sigma^{2}$ 的白噪声.
+    请写出谱密度 $S_{Y}(w)$.若 $Z_{t}=\frac{1}{2}Y_{t}+\frac{1}{2}Y_{t-1}$, 求 $Z$ 的谱密度 $S_{Z}(w)$.
+   \end{itemize}
+
+    \item 设 $X$ 服从 ARMA(1,1) 模型 $X_{t}=0.8X_{t-1}+\epsilon_{t}-0.6\epsilon_{t-1}, \epsilon_{t}\sim N(0,\sigma^{2})$.
+    其中 $X_{100}=0.3, \epsilon_{100}=0.01$.
+    \begin{enumerate}
+        \item[(a)] 给出未来 1、2 期的预测值.
+        \item[(b)] 给出未来 1、2 期的预测值的百分之九十五的预测区间. ($u_{0.975}=1.96$)
+    \end{enumerate}
+
+    \item 给出趋势模型 $y_{t}=\alpha+\delta \cdot t+\epsilon_{t}, \epsilon \overset{i.i.d.}{\sim} WN(0,\sigma^{2})$ 的参数普通最小二乘估计.
+
+    \item 考虑假设检验 $H_{0}: y_{t}=y_{t-1}+u_{t}$.
+    用普通最小二乘估计 $y_{t}=\rho y_{t-1}$ 的参数, 并计算 $T(\hat{\rho}-1)$.不需要求渐进分布, 只要给出表达式即可.
+
+    \item 对前面所给股票数据, 利用信息准则, 利用软件尝试建模 ARMA(p,q) 模型.(最后要进行残差白噪声检验)
+
+\end{enumerate}
+
+\section{第十一周}
+\begin{enumerate}
+    \item 判断：$|A| > 0, \frac{\ln|A|}{\partial A} = A^{-1}$
+
+    \item 
+    \begin{enumerate}
+        \item $(1 - B)^d X_t = \epsilon_t, -\frac{1}{2} < d < \frac{1}{2}, d \neq 0, \epsilon_t \sim WN(0, \sigma^2)$, 存在逆算子，请给出逆算子表达式
+        \item 计算 $X_t$ 的谱密度
+        \item $A(B)(1 - B)^d X_t = \theta(B)\epsilon_t$, $d$ 同上，请给出 $X_t$ 谱密度的表达式
+    \end{enumerate}
+
+    \item 给出多元正态分布的概率密度函数表达式
+
+    \item 模拟生成 ARIMA(0,0.3,0) 和 ARIMA(0,-0.3,0) 的平稳解，并计算样本自相关函数 $\hat{\rho}(l)$，并画图
+
+    \item 尝试用前面给的股票数据的收益率建立 ARCH(1) 模型
+
+\end{enumerate}

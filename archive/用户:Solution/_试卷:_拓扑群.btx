@@ -1,0 +1,23 @@
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\begin{itemize}
+    \item[一、] 设$A$是紧Abel拓扑群，$\chi$是非平凡特征。证明：$\displaystyle \int_A \chi(a) \mathrm{d}a = 0$。
+    \item[二、]求$\mathbb{1}_{b+p^n\Z_p} \colon \Q_p \to \C$的Fourier变换。
+    \item[三、]设$\chi \colon \Z \to \C^{(1)}$是conductor为$N \geqslant 1$的Dirichlet特征，即$N$是使得$\chi$可以从
+    特征$\chi \colon (\Z/n\Z)^\times \to \C^{(1)}$诱导而来的最小正整数。设$N = p^f$，$p$是素数，$f \geqslant 1$。对$\Q$
+    的每个素位$v$，定义$\tilde{\chi}_v$如下：若$v = \infty$，则$\tilde{\chi}_{\infty}(x_\infty) = \chi(\operatorname{sgn}(x_\infty))$；
+    若$v < \infty$且$v \neq p$，则$\tilde{\chi}_v(v^m\Z_v^\times) = \chi(v^m)$；若$v = p$，则$\tilde{\chi}_p(p^m(j+p^f\Z_p)) = \chi(j)^{-1}$，其中
+    $m,j \in \Z$并且$(j,p) = 1$。证明：\[\tilde{\chi}(x) = \prod_v \tilde{\chi}_v(x_v) \in \widehat{\mathbb{A}_\Q^\times/\Q^\times}.\]
+
+    （注：这样的$\tilde{\chi}$被称为$\chi$的Idelic提升。）
+    \item[四、]设$\chi$是conductor为$p^f$的Dirichlet特征，$\chi(-1) = 1$。设$\Phi = \prod \phi_v \in \mathcal{S}(\mathbb{A}_\Q)$，
+    其中$\phi_v$定义如下：$v = \infty$时$\phi_\infty(x) = e^{-\pi x^2}$；$v < \infty$且$v \neq p$时$\phi_v(x_v) = \mathbb{1}_{\Z_v}$；
+    $v = p$时$\phi_p(x_p) = $(忘了)。设$\displaystyle \Gamma(s) = \int_0^\infty t^{s-1}e^{-t}\mathrm{d}t$，$L(s,\chi) = \sum\limits_{n \geqslant 0} \chi(n)n^{-s}$。
+    证明：存在$\chi$的Idelic提升$\omega$使得\[\pi^{s/2}\Gamma(s/2)L(s,\chi)Z(s) = Z(\Phi,\omega,s) = \int_{\mathbb{A}_\Q^\times} \Phi(x)\omega(x)|x|_{\mathbb{A}}^s \mathrm{d}\mu,\]
+    其中$\mu = \prod \mu_v$是标准的Haar测度，\[Z(s) = (\text{忘了}).\]
+    \item[五、]设$f = \mathbb{1}_{[-1,1]} \colon \R \to \C$。
+
+    (1)求$\hat{f}$。
+
+    (2)计算\[\int_{-\infty}^{+\infty} \frac{\sin^4 t}{t^4} \mathrm{d}t.\]
+\end{itemize}

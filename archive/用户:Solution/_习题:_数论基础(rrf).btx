@@ -1,0 +1,1384 @@
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\LHS}{\operatorname{LHS}}
+\newtheorem{exercise}{练习}
+\newtheorem*{books}{参考书}
+\newtheorem*{definition*}{定义}
+
+\begin{books}
+\begin{itemize}
+    \item[①] Kenneth Ireland, Michael Rosen, \textit{A Classical Introduction to Modern Number Theory}, Chapter 1--8,10,11,16.\\
+    \item[②] Jurgen Neukirch, \textit{Algebraic Number Theory}, Chapter I, Section 2--7. \\
+    \item[③] Jeffrey Hoffstein, Jill Pipher, Joseph H. Silverman, \textit{An Introduction to Mathematical Cryptography}, Chapter 2--3. \\
+\end{itemize}
+\end{books}
+
+\begin{remark}
+    在2024秋课程中布置了Book②中Chapter I, Section 2--7几乎所有的习题，
+    其中不乏一些对于著名结论的证明且十分繁琐（例如证明Dedekind环的等价定义，这需要用到DVR，课上显然没讲），
+    建议自行网上搜索解答。
+\end{remark}
+
+\section{HW1}
+\begin{exercise}
+    求证：$\bbZ[\sqrt{-5}]$中由$2$和$1+\sqrt{-5}$生成的理想不是主理想。
+\end{exercise}
+\begin{proof}
+    反证法，假设$(2,1+\sqrt{-5})=(\alpha)$。\\
+    \qquad假设$\alpha$为单位元，记$a,b,c,d\in\bbZ$使得$2(a+b\sqrt{-5})+(1+\sqrt{-5})(c+d\sqrt{-5})=1$，
+    可得$c-5d$是奇数，$c+d$是偶数，矛盾。\\
+    \qquad下默认$\alpha$不是单位元，若$2=(x+y\sqrt{-5})(z+w\sqrt{-5})$，其中$x,y,z,w\in\bbZ$，
+    得到\begin{align*}
+    \left\{ 
+    \begin{aligned}
+        &xz-5yw=2\\
+        &xw=-yz
+    \end{aligned}
+     \right.
+     \end{align*}
+     假设$x,y,z,w$都是奇数，分析任何奇素数$p$对应的$V_p(x)$和$V_p(z)$得到$x=\plusmn z$，得到$x^2+5y^2=\plusmn 2$矛盾。
+     于是$x,y,z,w$中必有偶数。\\
+     \qquad容易发现
+     \begin{align*}
+    \left\{ 
+    \begin{aligned}
+        &xz+yw\equiv0(\operatorname{mod}2)\\
+        &xw+yz\equiv0(\operatorname{mod}2)
+    \end{aligned}
+     \right.
+     \end{align*}
+     由对称性可不妨$x$是偶数。若$y$是偶数，则$1=(x/2+y/2\sqrt{-5})(z+w\sqrt{-5})$，代表$z+w\sqrt{-5}$是单位元；
+     若$y$奇数，则$z,w$都是偶数，同理有$x+y\sqrt{-5}$是单位元。\\
+     \qquad于是$2$是不可约元，故$\alpha$和$2$就差一个单位元倍，故$2|1+\sqrt{-5}$矛盾。
+\end{proof}
+
+\begin{exercise}
+    $R$是一个PID，$a$是$R$的一个素元，求证：$R/a R$是一个域。
+\end{exercise}
+\begin{proof}
+    对$b\in R-aR$，由$R$是PID得$(a,b)=(c)$。
+    假设$c$不是$R$中单位，由$R$是PID知$a$不可约，故$a=c\cdot$一个单位，
+    故$(a,b)=(a)$，和$b\notin aR$矛盾。
+    因此$c$是单位，存在$s,t\in R$使得$as+bt=1$，
+    则$(b+aR)(t+aR)=1+aR$是$R/aR$中单位。
+\end{proof}
+
+\begin{exercise}
+    对于一个整环，如果任何由两个元素生成的理想都是主理想，
+    则称这个整环为Bezout整环。
+    求证：$R$是PID当且仅当$R$是Noether，Bezout整环。
+\end{exercise}
+\begin{proof}
+    $\Longrightarrow$显然；$\Longleftarrow$，由Noether和Bezout可以发现任何理想$I$有：
+    $I=(x_1,\ldots,x_n)=(x_1,\ldots,(x_{n-1},x_n))=(x_1,\ldots,x_{n-2},y_{n-1})=\cdots=(y_1)$。
+\end{proof}
+
+\begin{exercise}
+    $R$为交换环，对$R$中两个理想$I,J$，可以定义$I\cdot J:=\{由全体\,xy\,生成的理想;x\in I,y\in J\}$，
+    取$R=\bbZ[\sqrt{-5}]$，$I=2R+(1+\sqrt{-5})R$，$J=3R+(1+\sqrt{-5})R$，
+    求证：$I\cdot J=(1+\sqrt{-5})R$.
+\end{exercise}
+\begin{proof}
+    略
+\end{proof}
+
+\begin{exercise}
+    求证：$R$是PID，$P$是$R$的一个素理想，则有$R/P$是PID.
+\end{exercise}
+\begin{proof}
+    $R/P$整环，$f:R\to R/P$为自然同态，对于$R/P$中理想$I$，由$R$是PID，
+    有$f^{-1}(I)=(r)$，则$I=(r+P)$是由$r+P\in R/P$生成的主理想。
+\end{proof}
+
+\begin{exercise}
+    $\bbZ[x]$中：
+    \begin{itemize}
+        \item[(1)]$\bbZ[x]$是否为UFD？
+        \item[(2)]求证：$\{a+xf(x)|a\in2\bbZ,f(x)\in\bbZ[x]\}$是$\bbZ[x]$中理想。
+        \item[(3)]$\bbZ[x]$是否为PID？
+        \item[(4)]$\bbZ[x]$是否为ED？
+    \end{itemize}
+\end{exercise}
+\begin{proof}
+   (1)是，因为$R$为UFD$\Rightarrow R[x]$为UFD；(2)略；(3)不是，$I=(2,x)$不是主理想；(4)不是，因为ED自动是UFD。
+\end{proof}
+
+\begin{exercise}
+    求证：$x^2+y^2-1$在$\mathbb{Q}[x,y]$中不可约。
+\end{exercise}
+\begin{proof}
+    略
+\end{proof}
+
+\begin{exercise}
+    $F$是一个域，$f(x)\in F[x]$，$\deg f=n$，
+    称$g(x):=x^nf(1/x)$是$f(x)$的逆。
+    \begin{itemize}
+        \item[(1)]用$f$的系数描述$g$。
+        \item[(2)]求证：$f$不可约当且仅当$g$不可约。
+    \end{itemize}
+\end{exercise}
+\begin{proof}
+    略
+\end{proof}
+
+\begin{exercise}
+    \begin{itemize}
+        \item[(1)]求证：$x+1$是$\bbZ[[x]]$中单位，但不是$\bbZ[x]$的单位。
+        \item[(2)]求证：$x^2+3x+2$在$\bbZ[x]$中可约，但在$\bbZ[[x]]$中不可约。
+    \end{itemize}
+\end{exercise}
+\begin{proof}
+    (1) $1=(x+1)(1-x+x^2-x^3+\ldots)$；
+    (2)形如$1+a_1x+a_2x^2+\ldots$都是$\bbZ[[x]]$的单位，$x^2+3x+2=(a_0+a_1x+\ldots)(b_0+b_1x+\ldots)$中$a_0,b_0$必有一个为$\plusmn 1$.
+\end{proof}
+
+\begin{exercise}
+    求证：对任何$n\in\bbN^*$，$(x-1)(x-2)\ldots(x-n)-1\in\bbZ[x]$不可约。
+\end{exercise}
+\begin{proof}
+    假设可约，$(x-1)(x-2)\ldots(x-n)-1=f(x)g(x)$，则$f(1)g(1)=\ldots=f(n)g(n)=-1$，
+    则$f(1)+g(1)=f(2)+g(2)=\ldots=f(n)+g(n)=0$，则$(x-1)\ldots(x-n)|f+g$，有$\deg f+g\geqslant n$，
+    结合$\deg f+\deg g=n$以及首次系数可知$f,g$分别为$\plusmn(x-1)\ldots(x-n)$和$\plusmn 1$，矛盾.
+\end{proof}
+
+\section{HW2}
+\begin{exercise}
+    求证：$3x^2+2=y^2$没有整数解。
+\end{exercise}
+\begin{proof}
+    $\bmod\,3$即可。
+\end{proof}
+
+\begin{exercise}
+    $\{a_1,\ldots,a_{\phi(n)}\}$是$\operatorname{mod}n$的互素剩余全体，
+    $N$是$x^2\equiv1(\operatorname{mod}n)$的解的个数，
+    求证：$a_1\ldots a_{\phi(n)}\equiv(-1)^{N/2}(\operatorname{mod}n)$
+\end{exercise}
+\begin{proof}
+    $\{h_1,\ldots,h_N\}:=\{a_j|a_j^2\equiv1(\operatorname{mod}n)\}$，
+    任何$\alpha\in\{1,\dots,N\}$存在唯一的$j\in\{1,\dots,\phi(n)\}$使得$h_\alpha a_j\equiv-1(\operatorname{mod}n)$，
+    可发现存在$\beta\in \{1,\dots,N\}$使得$\beta\neq\alpha$且$h_\beta=a_j$。
+    就这样以上述$h_\alpha \sim h_\beta$形成$\{h_1,\ldots,h_N\}$中的两两配对，
+    可以得到$h_1\ldots h_N\equiv(-1)^{N/2}(\operatorname{mod}n)$.\\
+    \qquad 对于$\{a_1,\ldots,a_{\phi(n)}\}-\{h_1,\ldots,h_N\}$，
+    可以通过$a \sim a^{-1}$形成两两配对（注意到这个时候不会出现$a\equiv a^{-1}(\operatorname{mod}n)$），
+    于是$a_1\ldots a_{\phi(n)}\equiv h_1\ldots h_N(\operatorname{mod}n)$.
+\end{proof}
+
+\begin{exercise}
+    $p,q$为不同的奇素数使得$p-1|q-1$，
+    若$(n,pq)=1$，求证：$n^{q-1}\equiv1(\operatorname{mod}pq)$
+\end{exercise}
+\begin{proof}
+    Fermat小定理的简单应用.
+\end{proof}
+
+\begin{exercise}
+    用中国剩余定理求解\begin{align*}
+        \left\{ 
+        \begin{aligned}
+            &x\equiv1(\operatorname{mod}7)\\
+            &x\equiv4(\operatorname{mod}9)\\
+            &x\equiv3(\operatorname{mod}5)
+        \end{aligned}
+         \right.
+    \end{align*}
+\end{exercise}
+\begin{proof}
+    \begin{align*}
+        \left\{ 
+        \begin{aligned}
+            &225,280,441\equiv1,0,0(\operatorname{mod}7)\\
+            &225,280,441\equiv0,1,0(\operatorname{mod}9)\\
+            &225,280,441\equiv0,0,1(\operatorname{mod}5)
+        \end{aligned}
+         \right.
+    \end{align*}
+    得到$x\equiv148(\operatorname{mod}315)$
+\end{proof}
+
+\begin{exercise}\label{2.5}
+    $N$是$f(x)\equiv0(\operatorname{mod}n)$的解的个数，
+    $n=p_1^{a_1}\ldots p_t^{a_t}$素因子分解，
+    $N_i$是$f(x)\equiv0(\operatorname{mod}p_i^{a_i})$的解的个数，
+    求证：$N=N_1 N_2\ldots N_t$.
+\end{exercise}
+\begin{proof}
+    容易说明$\{x\in[0,n-1]|f(x)\equiv0(\operatorname{mod}n)\}$和
+    $\{x\in[0,p_1^{a_1}-1]|f(x)\equiv0(\operatorname{mod}p_1^{a_1})\}\times\ldots
+    \times\{x\in[0,p_t^{a_t}-1]|f(x)\equiv0(\operatorname{mod}p_t^{a_t})\}$
+    是一一对应，比较元素个数即可。
+\end{proof}
+
+\begin{exercise}\label{2.6}
+    若$p$是奇素数，求证：$1,-1$是$x^2\equiv1(\operatorname{mod}p^\alpha)$的唯二解。
+\end{exercise}
+\begin{proof}
+    略。
+\end{proof}
+
+\begin{exercise}\label{2.7}
+    求证：$x^2\equiv1(\operatorname{mod}p=2^b)$有一个解当且仅当$b=1$；两个解当且仅当$b=2$；四个解当且仅当$b\geqslant3$.
+\end{exercise}
+\begin{proof}
+    略。
+\end{proof}
+
+\begin{exercise}
+ 用\ref{2.5}, \ref{2.6}, \ref{2.7}求出满足$x^2\equiv1(\operatorname{mod}n)$的解数$N$。
+\end{exercise}
+\begin{proof}
+ $n=2^bp_1^{\alpha_1}\ldots p_t^{\alpha_t}$，
+ 则\begin{align*}
+    N=\left\{ 
+    \begin{aligned}
+        &2^t\quad&b=0,1\\
+        &2^{t+1}\quad&b=2\\
+        &2^{t+2}\quad&b\geqslant3\\
+    \end{aligned}
+     \right.
+ \end{align*}
+\end{proof}
+
+\begin{exercise}
+    求证：任何$a+bi\in\bbZ[i]$，都有$a+bi\equiv0$或$1(\operatorname{mod}1+i)$.
+\end{exercise}
+\begin{proof}
+    若$a\equiv b(\operatorname{mod}2)$，则$1+i|a+bi$；
+    若$a\not\equiv b(\operatorname{mod}2)$，则$1+i|a+bi-1$.
+\end{proof}
+
+\begin{exercise}
+    $\lambda=1-\omega\in\bbZ[\omega]$，
+    其中$\omega$是$3$次单位根，
+    若$\alpha\in\bbZ[\omega]$且$\alpha\equiv1(\operatorname{mod}\lambda)$，
+    求证：$\alpha^3\equiv1(\operatorname{mod}9)$.
+\end{exercise}
+\begin{proof}
+    记$\alpha=1+\beta\lambda$，$\beta\in\bbZ[\omega]$，可计算得$\alpha^3-1=3\beta(1-\beta\omega)(1+\beta)(1-\omega)$.
+    注意到$-\omega^2\lambda^2=3$，代表$\lambda^2\equiv0(\operatorname{mod}3)$。记$\beta=a+b\omega$，$a,b\in\bbZ$，
+    ``逐步去掉$\lambda^2$''得到：
+    \begin{align*}
+        \beta(1-\beta\omega)(1+\beta)(1-\omega)
+        &=\beta^2(1+\beta)\lambda^2+\beta(1-\beta^2)\lambda\\
+        &\equiv\beta(1-\beta^2)\lambda(\operatorname{mod}3)\\
+        &=(a+b-b\lambda)(1-\beta^2)\lambda\\
+        &\equiv(a+b)(1-\beta^2)\lambda(\operatorname{mod}3)\\
+        &\equiv(a+b)(1-a-b)(1-a+b)\lambda(\operatorname{mod}3)\\
+        &\equiv0(\operatorname{mod}3)
+    \end{align*}
+\end{proof}
+
+\begin{exercise}
+    求证：$2$是$\operatorname{mod}29$的原根。
+\end{exercise}
+\begin{proof}
+    $\{2^n:n=1,\cdots,28\}=\{2,4,8,16,3,6,12,24,19,9,18,7,14,28,27,25,21,13,26,23,17,5,10,20,11,22,15,1\}$。
+\end{proof}
+
+\begin{exercise}
+    考虑具有$4t+1$形式的素数$p$，
+    求证：$a$是$\operatorname{mod}p$的原根当且仅当$-a$是$\operatorname{mod}p$的原根.
+\end{exercise}
+\begin{proof}
+    若$a$是$\operatorname{mod}p$的原根，
+    反证法，$r$是$-a$$\operatorname{mod}p$的阶，
+    假设$r<p-1$，假设$r$为偶数，则直接矛盾，故$r$为奇数，
+    有$r|(p-1/2)$，由$p$是$4t+1$型得$a^{p-1/2}\equiv(-a)^{p-1/2}\equiv1$矛盾。
+\end{proof}
+
+\begin{exercise}\label{2.13}
+    考虑具有$4t+3$形式的素数$p$，求证：
+    $a$是$\operatorname{mod}p$的原根当且仅当$-a$ $\operatorname{mod}p$的阶是$p-1/2$.
+\end{exercise}
+\begin{proof}
+    $\Longleftarrow$：若$-a$ $\operatorname{mod}p$的阶是$(p-1)/2$，
+    由$p$是$4t+3$型得$a^{(p-1)/2}\equiv-1(\operatorname{mod}p)$，
+    $r$是$a$$\operatorname{mod}p$的阶，可发现$r$不能为奇数，否则$a^{(p-1)/2}\equiv1(\operatorname{mod}p)$矛盾，
+    故$r$被$(p-1)/2$整除，只能是$p-1$，代表$a$是$\operatorname{mod}p$的原根.\\
+    \qquad$\Longrightarrow$：若$a$是$\operatorname{mod}p$的原根，
+    可推出$(-a)^{(p-1)/2}\equiv1(\operatorname{mod}p)$，
+    $r$是$a$$\operatorname{mod}p$的阶，有$a^{2r}\equiv1(\operatorname{mod}p)$，
+    只能$r=(p-1)/2$.
+\end{proof}
+
+\begin{exercise}
+    设$p$是$8t+3$型素数，且$q=(p-1)/2$也是素数，
+    求证：$2$是$\operatorname{mod}p$的原根。
+\end{exercise}
+\begin{proof}
+    由\ref{2.13}，只要证$-2$ $\operatorname{mod}p$的阶是$q$：
+    容易发现$-2\operatorname{mod}p$的阶只能是$1,2,q,2q$其中之一，
+    $1,2$是不可能的，假设阶是$2q$，
+    由Legendre符号相关知识：$1=-(-1)\equiv -(-2)^{(p-1)/2}=2^{(p-1)/2}
+    \equiv \left( \frac{2}{p} \right) \equiv (-1)^{(p^2-1)/8}=-1$ 矛盾.
+\end{proof}
+
+\begin{exercise}
+    求证：所有原根的乘积$\operatorname{mod}p$余$(-1)^{\phi(p-1)}$.
+\end{exercise}
+\begin{proof}
+    $g$是$\operatorname{mod}p$原根，则$g^d$也是原根当且仅当$(d,\phi(p))=(d,p-1)=1$，
+$\sum_{d\in[0,p-1],(d,p-1)=1}d=\phi(p-1)\cdot(p-1)/2$.
+\end{proof}
+
+\section{HW3}
+以下默认$p$是奇素数。
+\begin{exercise}
+    求证：$1^k+\ldots+(p-1)^k\equiv
+    \begin{cases}
+        0(\operatorname{mod}p)\quad&若\ p-1\not|k\\
+        -1(\operatorname{mod}p)\quad&若\ p-1|k
+    \end{cases}$
+\end{exercise}
+\begin{proof}
+    $p-1|k$则Fermat小定理，$p-1\nmid k$则取原根.
+\end{proof}
+
+\begin{exercise}
+    $2$是$\operatorname{mod}29$的原根，求$x^7\equiv1(\operatorname{mod}29)$的解。
+\end{exercise}
+\begin{proof}
+    全体解为$\{2^{4n}:n=1,\cdots,7\}=\{16,24,7,25,23,20,1\}$。
+\end{proof}
+
+\begin{exercise}
+    求解：$1+x+x^2+\ldots+x^6\equiv0(\operatorname{mod}29)$
+\end{exercise}
+\begin{proof}
+    上题去掉$1$，得$\{16,24,7,25,23,20\}$。
+\end{proof}
+
+\begin{exercise}
+    如果$a\operatorname{mod}p$阶为$3$，求证：$1+a\operatorname{mod}p$阶为$3$
+\end{exercise}
+\begin{proof}
+ 验证$1+a$阶不为$1,2,3$即可，其中阶为$3$会推出$p=2$矛盾。
+\end{proof}
+
+\begin{exercise}
+    求证：$x^2\equiv-1(\operatorname{mod}p)$有解当且仅当$p\equiv1(\operatorname{mod}4)$\\
+    $x^4\equiv-1(\operatorname{mod}p)$有解当且仅当$p\equiv1(\operatorname{mod}8)$
+\end{exercise}
+\begin{proof}
+    前者当且仅当$\frac{p-1}{(p-1,2)}$是偶数，后者当且仅当$\frac{p-1}{(p-1,4)}$是偶数。
+\end{proof}
+
+\begin{exercise}
+    求证：$ax^m+by^n\equiv c(\operatorname{mod}p)$和$ax^{m'}+by^{n'}\equiv c(\operatorname{mod}p)$有相同个数的解，
+    其中$m'=(m,p-1),n'=(n,p-1)$.
+\end{exercise}
+\begin{proof}
+    对于存在$\operatorname{m}$原根的$m$，$m\nmid b$，熟知$x^n\equiv b(\operatorname{mod}m)$要么无解，要么有$(n,\phi(m))$个解。
+    于是有：
+    \begin{align*}
+        N(ax^m+by^n\equiv c)
+        &=\sum_{ai+bj\equiv c}N(x^m\equiv i)N(y^n\equiv j)\\
+        &=\sum_{ai+bj\equiv c}N(x^{m'}\equiv i)N(y^{n'}\equiv j)\\
+        &=N(ax^{m'}+by^{n'}\equiv c)
+    \end{align*}
+\end{proof}
+
+\begin{exercise}
+    Book③，Exercise 3.6
+\end{exercise}
+\begin{proof}[解]
+    (a) $45293$, (b) $810367$, (c) $514407$.
+\end{proof}
+
+\begin{exercise}
+    Book③，Exercise 3.7
+\end{exercise}
+\begin{proof}[解]
+    $4894$.
+\end{proof}
+
+\begin{exercise}
+    Book③，Exercise 2.4
+\end{exercise}
+\begin{proof}[解]
+    (a) $177$, (b) $(719,623)$, (c) $332$, (d) $365$.
+\end{proof}
+
+\begin{exercise}
+    Book③，Exercise 2.10
+\end{exercise}
+\begin{proof}[解]
+    略.
+\end{proof}
+
+\begin{exercise}
+    Book③，Exercise 2.17
+\end{exercise}
+\begin{proof}[解]
+    (a) $1+4\times9=37$, (b) $7+4\times13=59$, (c) $20+13\times23=319$.
+\end{proof}
+
+\begin{exercise}
+    Book③，Exercise 2.24
+\end{exercise}
+\begin{proof}[解]
+    (a)略, (b) $309086$, (c)要默认$p\nmid a,b$, (d)略, (e) $1075$.
+\end{proof}
+
+\begin{exercise}
+    Book③，Exercise 2.27
+\end{exercise}
+\begin{proof}
+    抄书上证明，略.
+\end{proof}
+
+\begin{exercise}
+    Book③，Exercise 2.28
+\end{exercise}
+\begin{proof}[解]
+    (a)得$\left\{ 
+    \begin{aligned}
+        &    x\equiv15(\operatorname{mod}2^4)\\
+        &    x\equiv20(\operatorname{mod}3^3)
+    \end{aligned}
+     \right\}\Longrightarrow x\equiv47(\operatorname{mod}432).$
+
+     (b)得$\left\{ 
+    \begin{aligned}
+        &    x\equiv523(\operatorname{mod}2^10)\\
+        &    x\equiv681(\operatorname{mod}3^6)
+    \end{aligned}
+     \right\}\Longrightarrow x\equiv223755(\operatorname{mod}746496).$
+
+     (c)得$\left\{ 
+    \begin{aligned}
+        &    x\equiv0(\operatorname{mod}2)\\
+        &    x\equiv13192165(\operatorname{mod}29^5)
+    \end{aligned}
+     \right\}\Longrightarrow x\equiv33703314(\operatorname{mod}41022298).$
+
+     (d)得$\left\{ 
+    \begin{aligned}
+        &    x\equiv0(\operatorname{mod}2)\\
+        &    x\equiv322(\operatorname{mod}709)\\
+        &    x\equiv534(\operatorname{mod}911)\\
+    \end{aligned}
+     \right\}\Longrightarrow x\equiv984414(\operatorname{mod}1291798).$
+\end{proof}
+
+\section{HW4}
+以下默认$p$是奇素数。
+\begin{exercise}
+    求证：若$p\nmid a$，则$\sum\limits_{x=0}^{p-1}\left( \dfrac{ax+b}{p} \right)=0$.
+\end{exercise}
+\begin{proof}
+    略.
+\end{proof}
+
+\begin{exercise}
+    求证：$x^2-y^2\equiv a(\operatorname{mod}p)$的解的个数是$
+    \left\{ 
+    \begin{aligned}
+        &p-1\quad&若\,p\nmid a\\
+        &2p-1\quad&若\,p\mid a\\
+    \end{aligned}
+     \right.
+    $
+\end{exercise}
+\begin{proof}
+    $(x+y)(x-y)=x^2-y^2$.
+\end{proof}
+
+\begin{exercise}
+    求证：$1^2\cdot3^2\cdot5^2\cdot\ldots\cdot(p-2)^2\equiv (-1)^{(p+1)/2}(\operatorname{mod}p)$.
+\end{exercise}
+\begin{proof}
+    Wilson定理的直接推论.
+\end{proof}
+
+\begin{exercise}
+    若$p\equiv 3(\operatorname{mod}4)$，并且$q=2p+1$也是素数，并且$p>3$，
+    求证：$2^p-1$不是素数。
+\end{exercise}
+\begin{proof}
+    $2^p-1\equiv\left( \frac{2}{q} \right)-1\equiv(-1)^{(q^2-1)/8}-1\equiv0(\operatorname{mod}q)$，
+    假设$q=2^p-1$会和$p>3$矛盾。
+\end{proof}
+
+\begin{exercise}\label{4.5}
+    $f(x)\in\bbZ[x]$，称素数$p$整除$f(x)$：如果存在$b\in\bbZ$使得$p\mid f(n)$，
+    描述$x^2+1$和$x^2-2$的素因子。
+\end{exercise}
+\begin{proof}
+    前者是$4t+1$型素数和$2$，后者是$8t+1,8t+7$型素数和$2$。
+\end{proof}
+
+\begin{exercise}
+    接\ref{4.5}，求证：$x^4-x^2+1$的任何素因子$\operatorname{mod}12$余$1$.
+\end{exercise}
+\begin{proof}
+    $x^4-x^2+1=(x^2-1)^2+x^2$可推得$\left( \frac{-1}{p} \right)=1$，
+    $x^4-x^2+1=(x^2+1)^2-3x^2$可推得$\left( \frac{3}{p} \right)=1$，
+    利用二次互反律可以推$p\equiv1\operatorname{mod}12$.
+\end{proof}
+
+\begin{exercise}
+    利用$(\bbZ/p\bbZ)^*$是循环群求证：$\left( \frac{-3}{p} \right)=1$在$p\equiv1\operatorname{mod}3$时成立。
+\end{exercise}
+\begin{proof}
+    $p\equiv1\operatorname{mod}3$时，$(\bbZ/p\bbZ)^*$有阶为$3$的元素$\rho$，
+    说明$(2\rho+1)^2\equiv-3(\operatorname{mod}p)$
+\end{proof}
+
+\begin{exercise}
+若$p\equiv1(\operatorname{mod}5)$，求证：$\left( \frac{5}{p} \right)=1$
+\end{exercise}
+\begin{proof}
+    $(\bbZ/p\bbZ)^*$有阶为$5$的元素$\rho$，说明$(2(\rho+\rho^4)+1)^2\equiv5(\operatorname{mod}p)$.
+\end{proof}
+
+\begin{exercise}
+    Book③，Exercise 3.13(a)
+\end{exercise}
+\begin{proof}
+    略.
+\end{proof}
+
+\begin{exercise}
+    Book③，Exercise 3.14(a)(b)
+\end{exercise}
+\begin{proof}[解]
+ (a) $2^{69},2^{2\times69},2^{4\times69},2^{8\times69}\equiv967,259,781,1(\operatorname{mod}1105)$.\\
+ (b) $2^{36801},2^{2\times36801},2^{4\times36801}\equiv512,262144,1(\operatorname{mod}294409)$.\\
+\end{proof}
+
+\begin{exercise}
+    Book③，Exercise 3.21
+\end{exercise}
+\begin{proof}[解]
+    (a) $(2^{6!}-1,1739)=37$, (b) $(2^{8!}-1,220459)=449$,\\
+    (c) $(2^{19!}-1,48356747)=6917$.
+\end{proof}
+
+\begin{exercise}
+    Book③，Exercise 3.32
+\end{exercise}
+\begin{proof}
+    略.
+\end{proof}
+
+\section{HW5}
+\begin{exercise}
+    计算：$\sum_{a=1}^{p-1}g_a$.
+\end{exercise}
+\begin{proof}
+    $\sum_{a=1}^{p-1}g_a=\sum_{a=1}^{p-1}\left( \frac{a}{p} \right)g_1=0$.
+\end{proof}
+
+\begin{exercise}
+    求证：$g=\sum_{t}\zeta^{t^2}$.
+\end{exercise}
+\begin{proof}
+    $\sum_{t}\zeta^{t^2}=\sum_{t}N(x^2\equiv t)\zeta^t=\sum_{t}\left( 1+\left( \frac{t}{p} \right) \right)\zeta^t=g$.
+\end{proof}
+
+\begin{exercise}\label{5.3}
+    记$\psi_a(t)=\zeta^{at}$，求证：
+    \begin{itemize}
+        \item[(1)] $\overline{\psi_a(t)}=\psi_a(-t)=\psi_{-a}(-t)$.
+        \item[(2)] $\displaystyle\frac{1}{p}\sum_{a=0}^{p-1}\psi_a(t-s)=\delta(t,s)$.
+    \end{itemize}
+\end{exercise}
+\begin{proof}
+    略.
+\end{proof}
+
+\begin{exercise}\label{5.4}
+    $f:\bbZ\to\bbC$，$p$素数且对任何$n\in\bbZ$有$f(n+p)=f(n)$，
+    记$\widehat{f}(a):=p^{-1}\sum_{t}f(t)\psi_{-a}(t)$，
+    求证：$f(t)=p^{-1}\sum_{a}\widehat{f}(a)\psi_{-a}(t)$.
+\end{exercise}
+\begin{proof}
+    $\widehat{f}(a)$的定义式代入$p^{-1}\sum_{a}\widehat{f}(a)\psi_{-a}(t)$，利用\ref{5.3}简化即可。
+\end{proof}
+
+\begin{exercise}
+接\ref{5.4}，取$f$是Legendre符号，求证：$\widehat{f}(a):=p^{-1}g_{-a}$.
+\end{exercise}
+\begin{proof}
+    略.
+\end{proof}
+
+\begin{exercise}
+    求证：$\displaystyle\left| \sum_{t=m}^{n}\left( \frac{t}{p} \right) \right|<\sqrt{p}\log p$
+\end{exercise}
+\begin{proof}
+    去证$\left| \sum\limits_{t=m}^{n}g_t \right|<p\log p$（如果证完那么两边同除$|g|=\sqrt{p}$就好）：
+     将$g_t$展开，对$\operatorname{LHS}$求和号换序，可以推出
+     \[\operatorname{LHS}\leqslant\sum_{a=1}^{p-1}
+     \left| \frac{1-\zeta^{(n-m+1)a}}{1-\zeta^a}\right|,\]
+      然后
+    \begin{align*}
+        \sum_{a=1}^{p-1}\left| \frac{1-\zeta^{(n-m+1)a}}{1-\zeta^a}\right|
+        &\leqslant\sum_{a=1}^{p-1}\left| \frac{2}{2\sin(\pi a/p)} \right|
+        =2\sum_{a=1}^{(p-1)/2}\frac{1}{\sin(\pi a/p)}
+        \leqslant2\sum_{a=1}^{(p-1)/2}\frac{1}{2a/p}\\
+        &<p\sum_{a=1}^{p-1}\frac{1}{a}
+        <p\sum_{a=1}^{p-1}\log\left(1+\frac{1}{a}\right)=p\log p.
+    \end{align*}
+\end{proof}
+
+\section{HW6}
+
+\begin{exercise}\label{6.1}
+    $\chi$是$\bbF_p$的非平凡乘法特征，
+    $\rho$是$\bbF_p$阶数为$2$的乘法特征，
+    求证：$\sum_{t}\chi(1-t^2)=J(\chi,\rho)$.
+\end{exercise}
+\begin{proof}
+    \begin{align*}
+        J(\chi,\rho)&=\sum_{a+b=1}\chi(a)(N(x^2=b)-1)\\
+        &=\chi(1)+\sum_{\left( \frac{b}{p} \right)=1,a+b=1}2\chi(a)-\sum_{a}\chi(a)\\
+        &=\sum_{t}\chi(1-t^2)
+    \end{align*}
+\end{proof}
+
+\begin{exercise}\label{6.2}
+    求证：若$k\in\bbF_p$，$k\neq0$，则$\sum_{t}\chi(t(k-t))=\chi(k^2/4)J(\chi,\rho)$.
+\end{exercise}
+\begin{proof}
+    用\ref{6.1}，中间过程换元，
+    \begin{align*}
+        J(\chi,\rho)&=\sum_{t}\chi(t)\chi(2-t)\\
+        &=\left( \sum_t\chi(t)\chi(1-t) \right)\chi(4)\\
+        &=\left( \sum_t\chi(t)\chi(k-t) \right)\chi(4/k^2)
+    \end{align*}
+\end{proof}
+
+\begin{exercise}\label{6.3}
+    若$\chi^2\neq\varepsilon$，
+    求证：$g(\chi)^2=\chi(2)^{-2}J(\chi,\rho)g(\chi^2)$
+\end{exercise}
+\begin{proof}
+    用\ref{6.2}，
+    \begin{align*}
+        g(\chi)^2&=\sum_{k}\sum_t\chi(t(k-t))\zeta^k\\
+        &=\sum_{t}\chi(-t^2)+\sum_{k\neq0}J(\chi,\rho)\chi(k^2/4)\zeta^k\\
+        &=0+J(\chi,\rho)g(\chi^2)\chi(2)^{-2}
+    \end{align*}
+\end{proof}
+
+\begin{exercise}\label{6.4}
+    $\chi^2\neq\varepsilon$，求证：$J(\chi,\chi)=\chi(2)^{-2}J(\chi,\rho)$.
+\end{exercise}
+\begin{proof}
+    用\ref{6.3}，
+    $J(\chi,\chi)=\dfrac{g(\chi)^2}{g(\chi^2)}=\chi(2)^{-2}J(\chi,\rho)$.
+\end{proof}
+
+\begin{exercise}\label{6.5}
+    设$p\equiv1(\operatorname{mod}4)$，
+    $\chi$是阶为$4$的乘法特征，
+    显然$\chi^2=\rho$，
+    求证：$J(\chi,\chi)=\chi(-1)J(\chi,\rho)$.
+\end{exercise}
+\begin{proof}
+    Chapter 8, Prop 8.3.3告诉我们$g(\chi)^4=\chi(-1)pJ(\chi,\chi)J(\chi,\rho)$，
+    同时由\ref{6.3}和此时$g(\rho)=g=\sqrt{p}$，
+    $g(\chi)^4=\chi(2)^{-4}J(\chi,\rho)^2g(\rho)^2=J(\chi,\rho)^2p$，
+    随后得证。
+\end{proof}
+
+\begin{exercise}\label{6.6}(\ref{6.1}的推广)\par
+    $p$是奇素数，求证：
+    $\sum_{t}\chi(1-t^m)=\sum_{\lambda^m=\varepsilon}J(\chi,\lambda)$，
+    随后求证：$|\sum_{t}\chi(1-t^m)|\leqslant(m-1)p^{1/2}$.
+\end{exercise}
+\begin{proof}
+    \begin{align*}
+        \sum_{t}\chi(1-t^m)
+        &=\sum_{y}\chi(1-y)N(x^m=y)\\
+        &=\sum_{y}\chi(1-y)\sum_{\lambda^m=\varepsilon}\lambda(y)\\
+        &=\sum_{\lambda^m=\varepsilon}J(\chi,\lambda)
+    \end{align*}
+    其中
+    \begin{align*}
+        |J(\chi,\lambda)|=
+        \left\{ 
+        \begin{aligned}
+            &0 \quad&(\lambda=\varepsilon)\\
+            &\sqrt{p} \quad&(\lambda\neq\varepsilon,\chi\lambda\neq\varepsilon)\\
+            &|-\chi(-1)|=1\quad&(\lambda\neq\varepsilon,\chi\lambda=\varepsilon)
+        \end{aligned}
+         \right.
+    \end{align*}
+    代表$|J(\chi,\lambda)|\leqslant\sqrt{p}$恒成立，
+    同时$\lambda$只和$\lambda(g)$有关（$g$是$\operatorname{mod}p$的原根），
+    故满足$\lambda^m=\varepsilon$且不为$\varepsilon$的$\lambda$最多有$m-1$个。
+\end{proof}
+
+\begin{exercise}\label{6.7}
+    若$p\equiv1(\operatorname{mod}3)$，
+    $\chi$是阶为$3$的乘法特征，
+    用\ref{6.3}求证：$g(\chi)^3=p\pi$，
+    其中$\pi=\chi(2)J(\chi,\rho)$.
+\end{exercise}
+\begin{proof}
+    由\ref{6.3}立刻得到$g(\chi)^3=\chi(2)J(\chi,\rho)g(\chi^2)g(\chi)$，
+    再由$g(\chi^2)g(\chi)=g(\chi^{-1})g(\chi)=\chi(-1)p=p$得证.
+\end{proof}
+
+\begin{exercise}\label{6.8}
+    接\ref{6.7}，求证：$\chi\rho$阶为$6$，且$g(\chi\rho)^6=(-1)^{(p-1)/2}p\overline{\pi}^4$.
+\end{exercise}
+\begin{proof}
+    先说明$(\chi\rho)^6=\varepsilon$且$(\chi\rho)^2,(\chi\rho)^3\neq\varepsilon$，
+    再由\ref{6.7}
+    \begin{align*}
+        g(\chi,\rho)^6&=\left( 
+        \dfrac{g(\chi)g(\rho)}{J(\chi,\rho)}
+         \right)^6\\
+         &=\dfrac{p^2\pi^2(-1)^{(p-1)/2}p^3}{(\pi\chi(2)^{-1})^6}\\
+         &=(-1)^{(p-1)/2}p^5(\pi\overline{\pi})^{-4}\overline{\pi}^{4}
+    \end{align*}
+    再由$|\pi|^2=|J(\chi,\rho)|^2=p$得证。
+\end{proof}
+
+\begin{exercise}\label{6.9}
+ 用Gauss定理（Chapter 8, Theorem 2）求$x^3+y^3=1$在$p=13,19,37,97$下解的个数。
+\end{exercise}
+\begin{proof}
+    先找满足$4p=A^2+27B^2$且$A\equiv1(\operatorname{mod}3)$的（已经证明是唯一的）$A$，
+    求$p-2+A$即可，$p=13,19,37,97$分别对应$A=-5,7,-11,19$，$B=1,1,1,1$，分别求得解的个数是$6,24,24,114$.
+\end{proof}
+
+\begin{exercise}\label{6.10}
+    若$p\equiv1(\operatorname{mod}n)$，$\chi$阶数是$n$，
+    求证：$g(\chi)^n\in\bbZ[\zeta]$，其中$\zeta=e^{2\pi i/n}$.
+\end{exercise}
+\begin{proof}
+    $n=2$平凡，$n>2$时
+    Chapter 8, Prop 8.3.3告诉我们$g(\chi)^n=\chi(-1)pJ(\chi,\chi)J(\chi,\chi^2)\ldots J(\chi,\chi^{n-2})$.
+    容易发现$\chi(-1)\in\bbZ,J(\chi,\chi^k)\in\bbZ[\zeta]$.
+\end{proof}
+
+\begin{exercise}\label{6.11}
+    若$p\equiv1(\operatorname{mod}4)$，$\chi$阶数是$4$，
+    $N$是$x^4+y^4=1$在$\bbF_p$中解的个数，
+    求证：$N=p+1-4\delta_4(-1)+2\Re J(\chi,\chi)+4\Re J(\chi,\rho)$.
+\end{exercise}
+\begin{proof}
+    Chapter 8 \S 4告诉我们$N=p+1-4\delta_4(-1)+\sum_{i\neq0,j\neq0,i+j\not\equiv0}(\operatorname{mod}4)J(\chi^i,\chi^j)$，
+    再把共轭的，对称的合并一下就得证。
+\end{proof}
+
+\begin{exercise}\label{6.12}
+    接\ref{6.11}，由\ref{6.5} $J(\chi,\chi)=\chi(-1)J(\chi,\rho)$，
+    记$\pi=-J(\chi,\rho)$，
+    求证：
+    \begin{itemize}
+        \item[(1)] $N=p-3-6\Re\pi$在$p\equiv1(\operatorname{mod}8)$时成立。
+        \item[(2)] $N=p+1-2\Re\pi$在$p\equiv5(\operatorname{mod}8)$时成立。
+    \end{itemize}
+\end{exercise}
+\begin{proof}
+    $\delta_4(-1)=1$当且仅当$\chi(-1)=1$，当且仅当$-1$是$\operatorname{mod}p$的$4$次剩余，
+    当且仅当$4y\equiv(p-1)/2(\operatorname{mod}p-1)$有解，当且仅当$p\equiv1(\operatorname{mod}8)$.
+\end{proof}
+
+\begin{exercise}\label{6.13}
+    接\ref{6.12}，
+ 记$\pi=a+bi\in\bbZ$，先默认一个事实：$a$奇数，$b$偶数，并且
+ \begin{align*}
+    \begin{cases}
+        a\equiv1(\operatorname{mod}4)&4\mid b\,时\\
+        a\equiv-1(\operatorname{mod}4)&4\nmid b\,时
+    \end{cases}
+ \end{align*}
+   设$p=A^2+B^2$且（已知）可通过$A\equiv1(\operatorname{mod}4)$唯一确定$A$，
+   求证：
+   \begin{itemize}
+    \item[(1)] $N=p-3-6A$在$p\equiv1(\operatorname{mod}8)$时成立.
+    \item[(2)] $N=p+1+2A$在$p\equiv5(\operatorname{mod}8)$时成立.
+   \end{itemize}
+\end{exercise}
+\begin{proof}
+    略，有兴趣可以试试看证明这个事实，大概是先证明$\pi\equiv1(\operatorname{mod}2(1+i))$，
+    再用Chapter 11 \S 5, Lemma即可。
+\end{proof}
+
+\begin{exercise}\label{6.14}
+   求出$\bbF_p$中$x_1^2+x_2^2+\ldots+x_r^2=0$的解数。
+\end{exercise}
+\begin{proof}
+    \begin{align*}
+        N&=p^{r-1}+J_0(\underbrace{\rho,\ldots,\rho}_{r})\\
+        &=\left\{ 
+        \begin{aligned}
+            &p^{r-1}\quad&(2\nmid r)\\
+            &p^{r-1}+\rho(-1)J(\underbrace{\rho,\ldots,\rho}_{r-1})(p-1)\quad&(2\mid r)
+        \end{aligned}
+         \right.
+    \end{align*}
+    其中
+    \begin{align*}
+        \rho(-1)J(\underbrace{\rho,\ldots,\rho}_{r-1})(p-1)
+        &=\rho(-1)\dfrac{\underbrace{g(\rho)\ldots g(\rho)}_{r-1}}{g(\rho)}(p-1)\\
+        &=(-1)^{(p-1)/2}(-1)^{(p-1)(r-2)/4}p^{(r-2)/2}(p-1)
+    \end{align*}
+\end{proof}
+
+\begin{exercise}\label{6.15}
+    (推广Chapter 8, Proposition 8.6.1)\\
+    求$\bbF_p$中$a_1x_1^2+\ldots+a_rx_r^2=1$的解数，其中$a_1,\ldots,a_r$均不为$0$.
+\end{exercise}
+\begin{proof}
+    \begin{align*}
+        N=p^{r-1}+J(\underbrace{\rho,\ldots,\rho}_{r})\rho(a_1\ldots a_r)^{-1}
+    \end{align*}
+    $2\nmid r$时在\ref{6.14}已经算出$J(\underbrace{\rho,\ldots,\rho}_{r})=(-1)^{(p-1)(r-1)/4}p^{(r-1)/2}$.\\
+    $2\mid r$时
+    \begin{align*}
+        J(\underbrace{\rho,\ldots,\rho}_{r})
+        &=-\rho(-1)J(\underbrace{\rho,\ldots,\rho}_{r-1})\\
+        &=-(-1)^{(p-1)r/4}p^{(r-2)/2}
+    \end{align*}
+\end{proof}
+
+\begin{exercise}\label{6.16}
+ 若$p\equiv1(\operatorname{mod}d)$，$\zeta=e^{2\pi i/p}$，
+ 求证：$\sum_{x}\zeta^{ax^d}=\sum_{r}N(x^d=r)\zeta^{ar}$
+\end{exercise}
+\begin{proof}
+    略。
+\end{proof}
+
+\begin{exercise}\label{6.17}
+ 接\ref{6.16}，并且$p\nmid a$，
+ 求证：$\sum_{x}\zeta^{ax^d}=\sum_{\chi^d=\varepsilon,\chi\neq\varepsilon}g_a(\chi)$.
+\end{exercise}
+\begin{proof}
+    略。
+\end{proof}
+
+\begin{exercise}\label{6.18}
+    $f(x_1,\ldots,x_n)\in\bbF_p[x_1,\ldots,x_n]$，
+    $N$是$f$在$\bbF_p$中解的个数，
+    求证：
+    $N=p^{n-1}+p^{-1}\sum_{a\neq0}\left( 
+    \sum_{x_1,\ldots,x_n}\zeta^{af(x_1,\ldots,x_n)}
+     \right)$
+\end{exercise}
+\begin{proof}
+    \begin{align*}
+        \sum_{a\neq0}\left( 
+    \sum_{x_1,\ldots,x_n}\zeta^{af(x_1,\ldots,x_n)}
+     \right)
+     &=\sum_{r}\left(\sum_{a\neq0}\zeta^{ar}\right)N(f(x_1,\ldots,x_n)=r)\\
+     &=(p-1)N(f(x_1,\ldots,x_n)=0)-\sum_{r\neq0}N(f(x_1,\ldots,x_n)=r)\\
+     &=pN-p^n
+    \end{align*}
+\end{proof}
+
+\begin{exercise}\label{6.19}
+ 接\ref{6.18}，
+ 取$f(x_1,\ldots,x_n)=a_1x_1^{m_1}+\ldots+a_nx_n^{m_n}$，
+ 其中$p\nmid a_1,\ldots,a_n$，
+ 记$d_i=(m_i,p-1)$，
+ 求证：
+ $N=p^{n-1}+p^{-1}\sum_{a\neq0}\prod_{i=1}^n\sum_{\chi_i^{d_i}=\varepsilon,\chi_i\neq\varepsilon}g_{aa_i}(\chi_i)$.
+\end{exercise}
+\begin{proof}
+    \begin{align*}
+        N
+        &=p^{n-1}+p^{-1}\sum_{a\neq0}\left( 
+    \sum_{x_1,\ldots,x_n}\zeta^{a(a_1x_1^{d_1}+\ldots+a_nx_n^{d_n})}
+     \right)\\
+     &=p^{n-1}+p^{-1}\sum_{a\neq0}
+     \left( 
+     \sum_{\chi^{d_1}=\varepsilon,\chi\neq\varepsilon}g_{aa_1}(\chi)
+      \right)
+      \ldots
+      \left( 
+     \sum_{\chi^{d_n}=\varepsilon,\chi\neq\varepsilon}g_{aa_n}(\chi)
+      \right)
+    \end{align*}
+    其中第一个等号用了\ref{6.18}，第二个等号用了\ref{6.17}.
+\end{proof}
+
+\begin{exercise}\label{6.20}
+    接\ref{6.19}，
+    求证：
+    $|N-p^{n-1}|\leqslant(p-1)(d_1-1)\ldots(d_n-1)p^{n/2-1}$.
+\end{exercise}
+\begin{proof}
+    略。
+\end{proof}
+
+\begin{exercise}\label{6.21}
+ 素数$p\equiv1(\operatorname{mod}4)$，
+ $\chi$是$\bbF_p$上阶为$4$的乘法特征，
+ $\rho$是Lebesgue符号，
+ 记$J(\chi,\rho)=a+bi\in\bbZ[i]$，
+ 求证：
+ \begin{itemize}
+    \item[(1)] $N(y^2+x^4=1)=p-1+2a$
+    \item[(2)] $N(y^2=1-x^4)=p+\sum_{x}\rho(1-x^4)$
+    \item[(3)] $2a\equiv-(-1)^{(p-1)/4}\operatorname{C}_{2m}^{m}(\operatorname{mod}p)$，其中$m=(p-1)/4$.
+    \item[(4)] 用$p=13,17,29$验证(3).
+ \end{itemize}
+\end{exercise}
+\begin{proof}
+    (a) \[N(y^2+x^4=1)=\sum_{i=0}^{1}\sum_{j=0}^{3}J(\rho^i,\chi^j)
+    =p-\rho(-1)+2\Re J(\rho,\chi)=p-1+2a.\]
+    (b) 用\ref{6.6}，\[\sum_{x}\rho(1-x^4)=\sum_{\lambda^4=\varepsilon}J(\rho,\lambda)=2a-1.\]
+    (c) 由(b)，\[2a\equiv1+\sum_{x=0}^{p-1}(1-x^4)^{(p-1)/2}
+    =1+1+\sum_{k=0}^{(p-1)/2}\operatorname{C}_{(p-1)/2}^k(-1)^k\sum_{x=1}^{p-1}x^{4k},\]
+    其中取原根分析可知$\sum\limits_{x=1}^{p-1}x^{4k}\not\equiv0(\operatorname{mod}p)$当且仅当$(p-1)/4\nmid k$，且此时一定余$-1$.
+    于是可以得到(c).
+
+    (d)用\ref{6.13}可以得到$a$，具体验证细节略.
+\end{proof}
+
+\section{HW7}
+\begin{exercise}\label{7.1}
+    $f(x_0,x_1.x_2)\in F[x_0,x_1,x_2]$是$n$次齐次多项式，
+    如果任意给定的不全为零的$a_0,a_1,a_2$，$a_0x_0+a_1x_1+a_2x_2=0$的解不全是$f(x_0,x_1,x_2)$的解，
+    求证：在射影空间$P^2(F)$中，$f=0$和$a_0x_0+a_1x_1+a_2x_2=0$最多有$n$个公共解。
+\end{exercise}
+\begin{proof}
+    不妨$a_0=1$，考虑$g(x,y)=f(-a_1x-a_2y,x,y)$，
+    那么``$[u_0,u_1,u_2]\in P^2(F)$是$f=0$和$a_0x_0+a_1x_1+a_2x_2=0$的公共解''
+    当且仅当``$g(u_1,u_2)=0$''，并且$u_1,u_2$不全为$0$。\\
+    可以说明：若$[v_1,v_2]\in P^1(F)$ ($v_1,v_2$不全为$0$) 是$g(x,y)=0$的解，
+    则$g(x,y)$含有因式$(v_2x-v_1y)$。\\
+    同时$g(x,y)$是$n$次齐次的，最多含有$n$个形如$(v_2x-v_1y)$的因式，
+    故上述$u_1,u_2$最多$n$种。
+\end{proof}
+
+\begin{exercise}\label{7.2}
+    $F$是$q$个元素的域，
+    求证：$\operatorname{Sl}_n(F)$可看做是$A^{n^2}(F)$的一个超曲面，
+    并求出这个超曲面上点的个数。
+\end{exercise}
+\begin{proof}
+    考虑行列式的多项式表示。$|\operatorname{Gl}_n(F)|=(q^n-1)(q^n-q)\ldots(q^n-q^{n-1})$，
+    $|\operatorname{Sl}_n(F)|=|\operatorname{Gl}_n(F)|(q-1)^{-1}$.
+\end{proof}
+
+\begin{exercise}\label{7.3}
+    $f\in F[x_0,x_1,\ldots,x_n]$，
+    自然可定义$\frac{\partial f}{\partial x_0},\frac{\partial f}{\partial x_1},\ldots,\frac{\partial f}{\partial x_n}$。
+    若$f$是$m$次齐次多项式，
+    求证：$\sum_{i=0}^n x_i \frac{\partial f}{\partial x_i}=mf$.
+\end{exercise}
+\begin{proof}
+    去证$x_0^{\alpha_0}\ldots x_n^{\alpha_n}$版本即可。
+\end{proof}
+
+\begin{exercise}\label{7.4}
+    接\ref{7.3}，
+    若$f$齐次，
+    $\overline{a}$是由$f$定义的超曲面上的一点，
+    则称$\overline{a}$是奇异的：如果它同时还是$\frac{\partial f}{\partial x_0},\frac{\partial f}{\partial x_1},\ldots,\frac{\partial f}{\partial x_n}$的零点。
+    如果$\deg f$和$\operatorname{char}F$互素，
+    求证：$\frac{\partial f}{\partial x_0},\frac{\partial f}{\partial x_1},\ldots,\frac{\partial f}{\partial x_n}$的公共零点自然是$f$的零点。
+\end{exercise}
+\begin{proof}
+    用\ref{7.3}结论即可。
+\end{proof}
+
+\begin{exercise}\label{7.5}
+    接\ref{7.4}，
+    若$\deg f$和$\operatorname{char}F$互素，
+    $a_0,\ldots,a_n\in F$全不为$0$，
+    求证：由$a_0x_0^m+\ldots+a_nx_n^m$定义的超曲面没有奇异点。
+\end{exercise}
+\begin{proof}
+    略。
+\end{proof}
+
+\begin{exercise}\label{7.6}
+    求证：对于任意$m\in \mathbb{N}^*$和有限域$\bbF_q$，
+    存在一个$m$元$m$次齐次多项式没有非平凡的零点。
+\end{exercise}
+\begin{proof}
+    考虑域扩张$\bbF_{q^m}/\bbF_q$下的一组基${\omega_1,\ldots,\omega_m}$，
+    取\begin{align*}
+        f(x_1,\ldots,x_m)=\prod_{i=0}^{m-1}(\omega_1^{q^i}x_1+\ldots+\omega_m^{q^i}x_m)
+    \end{align*}
+    先说明在Frobenius同态$\sigma:x\mapsto x^q$下$f$保持不变，
+    从而得到$f\in\bbF_q[x_1,\ldots,x_m]$是$m$次齐次多项式。\\
+    再反证法，假设$f$有一个非平凡的零点$\overline{a}:=[a_1,\ldots,a_m]$，
+    则存在$j\in[0,m-1]$使得：
+    \begin{align*}
+         \omega_1^{q^j}a_1+\ldots+\omega_m^{q^j}a_m=0
+    \end{align*}
+    对它作用$\sigma^{m-j}$可以得到$\omega_1a_1+\ldots+\omega_ma_m=0$，
+    只能$a_1=\ldots=a_m=0$矛盾。
+\end{proof}
+
+\begin{exercise}\label{7.7}
+    $g_1,\ldots,g_m\in\bbF_q[x_1,\ldots,x_n]$都是$d$次齐次多项式，
+    如果$n>md$，
+    求证：$g_1,\ldots,g_m$存在公共的非平凡零点。
+\end{exercise}
+\begin{proof}
+    利用上\ref{7.6}得到的$f(x_1,\ldots,x_m)$，
+    考虑$h(x_1,\ldots,x_n)=f(g_1(x_1,\ldots,x_n),\ldots,g_m(x_1,\ldots,x_n))$，
+    这是$md$次齐次多项式。\\
+    由Chevalley定理，$h$存在非平凡零点；
+    同时由\ref{7.6}，这个零点一定是$g_1,\ldots,g_m$的公共零点。
+\end{proof}
+
+\begin{exercise}\label{7.8}
+    求证：若$\alpha\in\bbF_q$，$\operatorname{char}F=p$，
+    且$\operatorname{Tr}\alpha=0$，
+    则存在$\beta\in\bbF_q$使得$\alpha=\beta-\beta^p$。
+\end{exercise}
+\begin{proof}
+    $q=p^n$，
+    熟知$\operatorname{Tr}$满，
+    从而有$\dim\ker\operatorname{Tr}=n-1$；
+    记$\tau=\operatorname{id}-\sigma:x\mapsto x-x^p$，
+    可发现$\operatorname{Im}\tau\subseteq\ker\operatorname{Tr}$；
+    同时$\ker\tau=\bbF_p$，故$\dim\operatorname{Im}\tau=n-1$。\\
+    综上，$\operatorname{Im}\tau=\ker\operatorname{Tr}$。
+\end{proof}
+
+\begin{exercise}\label{7.9}
+    $\psi:\bbF_q\to\bbC^*$且使得$\psi(\alpha+\beta)=\psi(\alpha)\psi(\beta)$，
+    求证：存在$\gamma\in\bbF_q$使得$\psi(x)=\zeta^{\operatorname{Tr}(\gamma x)}$，
+    其中$\zeta=e^{2\pi i/p}$.
+\end{exercise}
+\begin{proof}
+    取$\bbF_q/\bbF_p$的一组基$\omega_1,\ldots,\omega_n$，
+    记$\psi(\omega_j)=\zeta^{c_j}$，$c_j\in\bbF_p$.（因为$\psi(x)^p=\psi(px)=\psi(0)=1$.）\\
+    考虑$T:=\bigl( \operatorname{Tr}(\omega_i\omega_j) \bigr)_{1\leqslant i,j\leqslant n}\in\operatorname{M}_n(\bbF_p)$.
+    可以说明$\det T\neq0$（否则$T(a_1,\ldots,a_n)^{\operatorname{tr}}=0$存在非零解，
+    从而存在$\alpha\neq0\in\bbF_q$使得$\operatorname{Tr}(\alpha x)=0$恒成立，
+    这和$\ker\operatorname{Tr}\neq\bbF_q$矛盾）。\\
+    于是$T(\gamma_1,\ldots,\gamma_n)^{\operatorname{tr}}=(c_1,\ldots,c_n)^{\operatorname{tr}}$有解，
+    取$\gamma=\gamma_1\omega_1+\ldots+\gamma_n\omega_n$.去验证满足题意。
+\end{proof}
+
+\begin{exercise}\label{7.10}
+   若$g_a(\chi)$是$\bbF_q$上的Gauss和，
+   求证：
+   \begin{itemize}
+    \item[(1)] $g_a(\chi)=\chi(a)g(\chi)$.
+    \item[(2)] $g(\chi^{-1})=g(\overline{\chi})=\chi(-1)\overline{g(\chi)}$.
+    \item[(3)] $|g_a(\chi)|=q^{1/2}$.
+    \item[(4)] $g(\chi)g(\chi^{-1})=\chi(-1)q$.
+   \end{itemize}
+\end{exercise}
+\begin{proof}
+    $\bbF_p$上的Gauss和相关性质怎么证这个就怎么证，略。
+\end{proof}
+
+\begin{exercise}\label{7.11}
+    若$f:\bbF_q\to\bbC$，
+    定义$\widehat{f}(s)=q^{-1}\sum_{t}f(t)\overline{\psi(st)}$。
+    求证：$f(t)=\sum_{s}\widehat{f}(s)\psi(st)$.
+\end{exercise}
+\begin{proof}
+    略.
+\end{proof}
+
+\begin{exercise}\label{7.12}
+    若可以将幂级数$1+a_1u+a_2u^2+\ldots$写成两个多项式之商$P(u)/Q(u)$，
+    求证：自然可设$P(0)=Q(0)=1$.
+\end{exercise}
+\begin{proof}
+    略.
+\end{proof}
+
+\begin{exercise}\label{7.13}
+    计算$\bbF_p$上$x_0x_1-x_2x_3=0$的Zeta函数。
+\end{exercise}
+\begin{proof}
+    直接计算$N_s=p^{2s}+2p^s+1$，从而得到$Z_f(u)=(1-p^2u)^{-1}(1-pu)^{-2}(1-u)^{-1}$.
+\end{proof}
+
+\begin{exercise}\label{7.14}
+    $a_0,\ldots,a_n\in\bbF_q$全不为$0$，$2\nmid q$，
+    计算$\bbF_q$上$a_0x_0^2+\ldots+a_nx_n^2$的Zeta函数。
+    （注：会按$q\equiv1,3(\operatorname{mod}4)$，$n$的奇偶性分类）
+\end{exercise}
+\begin{proof}
+    由Chapter 11 \S 3，
+    \begin{align*}
+        N_s&=
+        \left\{ 
+        \begin{aligned}
+        &(q^{s(n-1)}+\ldots+q^s+1)\quad&2\mid n\\
+        &(q^{s(n-1)}+\ldots+q^s+1)+\dfrac{1}{q^s}(\chi^{(s)}(a_0a_1\ldots a_n))^{-1}
+        g(\chi^{(s)})^{n+1}
+        \quad&2\nmid n
+        \end{aligned}
+         \right.
+    \end{align*}
+    其中$2\nmid n$时
+    \begin{align*}
+        g(\chi^{(s)})^{n+1}
+        &=(\chi^{(s)}(-1)q^s)^{(n+1)/2}\\
+        &=(-1)^{\frac{q^s-1}{2}\cdot\frac{n+1}{2}}q^{\frac{n+1}{2}\cdot s}\\
+        &=\left\{ 
+        \begin{aligned}
+            &q^{\frac{n+1}{2}\cdot s}\quad&q\equiv1(\operatorname{mod}4)\\
+            &(-1)^{\frac{n+1}{2}\cdot s}q^{\frac{n+1}{2}\cdot s}\quad&q\equiv3(\operatorname{mod}4)
+        \end{aligned}
+         \right.
+    \end{align*}
+    \begin{align*}
+        (\chi^{(s)}(a_0a_1\ldots a_n))
+        =(a_0\ldots a_n)^{\frac{q-1}{2}\cdot(1+q+\ldots+q^{s-1})}
+        =(a_0\ldots a_n)^{\frac{q-1}{2}\cdot s}
+    \end{align*}
+    （这是因为$(a_0\ldots a_n)^{(q-1)/2}\in\{\pm 1\}$）
+    于是：
+    \begin{align*}
+        Z_f(u)=
+        \left\{ 
+        \begin{aligned}
+            &(1-q^{n-1}u)^{-1}\ldots(1-qu)^{-1}(1-u)^{-1}\quad&2\mid n\\
+            &(1-q^{n-1}u)^{-1}\ldots(1-qu)^{-1}(1-u)^{-1}
+            \bigl( 
+            1-(a_0\ldots a_n)^{\frac{q-1}{2}}q^{\frac{n-1}{2}}u
+             \bigr)^{-1}
+            \quad&2\nmid n,q\equiv1(\operatorname{mod}4)\\
+            &(1-q^{n-1}u)^{-1}\ldots(1-qu)^{-1}(1-u)^{-1}
+            \bigl( 
+            1-(-1)^{\frac{n+1}{2}}(a_0\ldots a_n)^{\frac{q-1}{2}}q^{\frac{n-1}{2}}u
+             \bigr)^{-1}
+            \quad&2\nmid n,q\equiv3(\operatorname{mod}4)\\
+        \end{aligned}
+         \right.
+    \end{align*}
+\end{proof}
+
+\begin{exercise}\label{7.15}
+    考虑$x_0^3+x_1^3+x_2^3=0$在$\bbF_4$中，
+    求证：$P^2(\bbF_4)$中存在$9$个点，并计算相应的Zeta函数。
+\end{exercise}
+\begin{proof}
+    $\chi$是$\bbF_4$上阶为$3$的乘法特征，
+    由Chapter 11 \S 3，
+    \begin{align*}
+        N_s=4^s+1+\dfrac{1}{4^s}\bigl( g(\chi^{(s)})^{3}+g(\chi^{(s)\ 2})^{3} \bigr)
+    \end{align*}
+    首先记$\bbF_4=\{0,1,g,g^2\}$，$\chi(g)=\omega:=\zeta_3=e^{2\pi i/3}$。
+    则有：
+    \begin{align*}
+        g(\chi)&=\chi(1)\cdot\zeta_2^{\operatorname{Tr}(1)}+
+        \chi(g)\cdot\zeta_2^{\operatorname{Tr}(g)}+
+        \chi(g^2)\cdot\zeta_2^{\operatorname{Tr}(g^2)}\\
+        &=1\cdot(-1)^0+\omega\cdot(-1)^1+\omega^2\cdot(-1)^1=2
+    \end{align*}
+    再由Chapter 11 \S 3, Theorem 1 (Hasse--Davenport定理)，
+    $g(\chi^{(s)})=-(-g(\chi))^s=-(-2)^s$。
+    同时$g(\chi^{(s)\ 2})=g(\chi^{(s)\ -1})=\chi^{(s)}(-1)g(\chi^{(s)})=-(-2)^s$.
+    于是：
+    \begin{align*}
+        N_s=4^s+1-2(-2)^s
+    \end{align*}
+    继而：
+    \begin{align*}
+        Z_f(u)=(1+2u)^{2}(1-4u)^{-1}(1-u)^{-1}
+    \end{align*}
+\end{proof}
+
+\begin{exercise}\label{7.16}
+    计算$\bbF_p$上$y^2=x^3+x^2$的Zeta函数。
+    (\textcolor{blue}{非齐次多项式的Zeta函数的定义方式要看Chapter 11, Exercise 8})
+\end{exercise}
+\begin{proof}
+    (Recall:$f(x_1,\ldots,x_n)\to\overline{f}(y_0,\ldots,y_n):=y_0^{\deg f}\cdot f(\frac{y_1}{y_0},\ldots,\frac{y_n}{y_0})$).\\
+    先看$x^3+x^2t-y^2t$，存在$[x,y,t]=[0,1,0]$作为“无穷远点的解”，
+    于是$N_s$是$y^2=x^3+x^2$在$\bbF_{p^s}$中解的个数$\textcolor{blue}{+1}$。\\
+    容易发现$\{y^2=x^3+x^2\}-\{(0,0)\}$和$\{z^2=x+1\}-\{(0,\pm 1)\}$之间存在双射（考虑换元$z=y/x$），
+    于是$N_s=p^s$，从而：
+    \begin{align*}
+        Z_f(u)=(1-pu)^{-1}
+    \end{align*}
+\end{proof}
+
+\begin{exercise}\label{7.17}
+    若$A\neq0\in\bbF_q$，$q\equiv1(\operatorname{mod}3)$，
+    求证：$\bbF_q$上$y^2=x^3+A$的Zeta函数是$Z(u)=(1+au+qu^2)(1-u)^{-1}(1-qu)^{-1}$，
+    其中$a\in\bbZ$且$|a|\leqslant2q^{1/2}$.
+\end{exercise}
+（这里应该要默认$q$是奇数）
+\begin{proof}
+    先看$x^3+y^2t-At^3$，存在$[x,y,t]=[0,1,0]$作为“无穷远点的解”，
+    于是$N_s$是$y^2=x^3+A$在$\bbF_{q^s}$中解的个数$\textcolor{blue}{+1}$。\\
+    $\chi,\rho$分别是$\bbF_q$上阶为$3,2$的乘法特征，
+    则\begin{align*}
+        N_s&=1+\sum_{i=0}^{1}\sum_{j=0}^2\bigl(\rho^{(s)}(A)\bigr)^i
+        (\chi^{(s)}(A)\bigr)^j
+        J\bigl( 
+        \rho^{(s)\ i},\chi^{(s)\ j}
+         \bigr)\\
+         &=1+q^s+2\Re\left( 
+         \rho^{(s)}(A)\chi^{(s)}(A)J(\rho^{(s)},\chi^{(s)})
+          \right)
+    \end{align*}
+    记$\pi_s= \rho^{(s)}(A)\chi^{(s)}(A)J(\rho^{(s)},\chi^{(s)})$。
+    在\ref{7.14}的中间过程中说明了$\chi^{(s)}(a)=\chi(a)^s$，
+    结合Hasse--Davenport定理我们有：
+    \begin{align*}
+        \pi_s&=\rho(A)^s\chi(A)^s\dfrac{(-g(\rho))^s(-g(\chi))^s}{-(-g(\rho\chi))^s}=-(-\pi_1)^s
+    \end{align*}
+    同时，由$|\rho(A)|,|\chi(A)|=1$，$|J(\rho,\chi)|=\sqrt{q}$可知$|\pi_1|=\sqrt{q}$。
+    于是：
+    \begin{align*}
+        Z(u)&=(1+\pi_1u)(1+\overline{\pi_1}u)(1-qu)^{-1}(1-u)^{-1}\\
+        &=(1+au+qu^2)(1-qu)^{-1}(1-u)^{-1}
+    \end{align*}
+    其中$a=2\Re\pi_1$，自然有$|a|\leqslant2\sqrt{q}$.
+\end{proof}
+
+
+\section{HW8}
+\begin{exercise}
+    $p_1,\ldots,p_n$均为$\operatorname{mod}4$余$1$的素数，
+    若素数$p$满足$p\mid \left( 
+    2\prod_{i=1}^np_i
+     \right)^2+1$，
+    求证：$p\equiv1(\operatorname{mod}4)$且$\forall i \in [1,n]\quad p\neq p_i$.
+\end{exercise}
+\begin{proof}
+    略.
+\end{proof}
+
+\begin{exercise}\label{8.2}
+$\chi$是$\bbF_p$上的Legendre符号，$g(\chi)=\sum_{x=1}^{p-1}\chi(x)\zeta^x$，
+定义$P=\prod_{n,r}(1-\zeta^n)(1-\zeta^r)^{-1}$，
+其中$n$遍历非二次剩余，$r$遍历二次剩余，
+求证：$P=\exp(g(\chi)L(1,\chi))$
+\end{exercise}
+\begin{proof}
+    \begin{align*}
+\log P&=\sum_{\chi(n)=-1}(-\chi(n))\log(1-\zeta^n)-\sum_{\chi(n)=1}\chi(n)\log(1-\zeta^n)\\
+&=\sum_{n=1}^{p-1}\sum_{m=1}^{+\infty}\dfrac{1}{m}\chi(n)\zeta^{mn}\\
+&=\sum_{p\mid m}\dfrac{1}{m}\sum_{n=1}^{p-1}\chi(n)\zeta^{mn}
++\sum_{p\nmid m}\dfrac{1}{m}\sum_{n=1}^{p-1}\chi(n)\zeta^{mn}\\
+&=\sum_{m=1}^{+\infty}\dfrac{1}{m}\chi(m)\sum_{n=1}^{p-1}\chi(n)\zeta^{n}\\
+&=L(1,\chi)g(\chi)
+    \end{align*}
+\end{proof}
+
+\begin{exercise}
+    $\chi$是$\operatorname{mod}3$的非平凡Dirichlet特征，
+    求证：$\displaystyle L(1,\chi)=\sum_{n=0}^{+\infty}\frac{1}{(3n+1)(3n+2)}$，
+    是否能找出$L(1,\chi)$的确切值？
+\end{exercise}
+\begin{proof}
+    $\chi(2)=-1$，代入$L(1,\chi)$的定义式即得等于$\displaystyle\sum_{n=0}^{+\infty}\frac{1}{(3n+1)(3n+2)}$。
+    另一方面，利用\ref{8.2}，对应$P=1+\omega$，$g(\chi)=\sqrt{3}i$，
+    得存在$k\in\bbZ$使得$L(1,\chi)=\pi/(3\sqrt{3})+k\cdot2\pi/\sqrt{3}$。
+    同时由一开始证明的等式可将$L(1,\chi)$限制在$0$和$\pi^2/54+1/2$中，得到$k=0$，
+    即$L(1,\chi)=\pi/(3\sqrt{3})$.
+\end{proof}
+
+\begin{exercise}
+    用\ref{8.2}计算$L(1,\chi)$，其中
+    $\chi$是$\operatorname{mod}5$的非平凡Dirichlet特征，阶为$2$.
+\end{exercise}
+\begin{proof}
+    $P=|1+\zeta|^2\in\mathbb{R}$，$g(\chi)=4\Re\zeta+1$，其中$\zeta=e^{2\pi i/5}$，
+    最后可算出$L(1,\chi)=\dfrac{1}{\sqrt{5}}\log\left( \dfrac{\sqrt{5}+3}{2} \right)$
+\end{proof}
+
+\begin{exercise}\label{8.5}
+    接\ref{8.2}，
+    任意选取一个$\operatorname{mod}p$的非二次剩余$C$，
+    假设$P=1$
+    求证：$1+x+x^2+\ldots+x^{p-1}\mid\prod_{\chi(r)=1}\frac{1-x^{Cr}}{1-x^r}-1$.
+    进一步推出上述假设不成立，即$P\neq1$，从而$L(1,\chi)\neq0$.
+\end{exercise}
+\begin{proof}
+    容易发现$\prod_{\chi(r)=1}\frac{1-x^{Cr}}{1-x^r}-1$是$(C-1)\sum_{\chi(r)=1}r$次首一整系数多项式，
+    由$P=1$可知$\prod_{\chi(r)=1}\frac{1-\zeta^{Cr}}{1-\zeta^r}-1=P-1=0$，
+    代表$\zeta$是$\prod_{\chi(r)=1}\frac{1-x^{Cr}}{1-x^r}-1$的一个根，
+    结合$\zeta$极小多项式是$1+x+x^2+\ldots+x^{p-1}$即可得证.\\
+    取$x=1$，发现$p\mid C^{(p-1)/2}-1$矛盾.
+\end{proof}
+
+\begin{exercise}\label{8.6}
+    $\chi$是$\operatorname{mod}m$的一个Dirichlet特征，
+    $\chi(2)\neq0$，
+    求证：$\displaystyle L(s,\chi)=(1-2^{-s}\chi(2))^{-1}\sum_{n=0}^{+\infty}\frac{\chi(2n+1)}{(2n+1)^s}$
+\end{exercise}
+\begin{proof}
+    $\displaystyle L(s,\chi)=\sum_{n=0}^{+\infty}\chi(2n+1)\cdot(2n+1)^{-s}+\chi(2)2^{-s}L(s,\chi)$.
+\end{proof}
+
+\begin{exercise}\label{8.7}
+    $p\equiv3(\operatorname{mod}4)$，求证：
+    $\sum_{x=1}^{p-1}\left( \frac{x}{p} \right)\sin\frac{2\pi x}{p}=\sqrt{p}$.
+\end{exercise}
+\begin{proof}
+    $\LHS=\Im g=\Im i\sqrt{p}=\sqrt{p}$.
+\end{proof}
+
+\begin{exercise}\label{8.8}
+    用\ref{8.7}求证：
+    \begin{align*}
+        \sum_{n正奇数}\left( \dfrac{n}{p} \right)\dfrac{1}{n}=
+    \dfrac{1}{\sqrt{p}}\sum_{t=1}^{p-1}\left(\dfrac{t}{p}\right)\sum_{m正奇数}\dfrac{\sin(2\pi tm/p)}{m}
+    \end{align*}
+\end{exercise}
+\begin{proof}
+    利用\ref{8.7}（代入$x=tn$）再稍加讨论（$p\mid n$与否）
+    可以说明对任何正奇数$n$有：
+    \begin{align*}
+        \left( \dfrac{n}{p} \right)\dfrac{1}{n}\sqrt{p}
+        =
+        \sum_{t=1}^{p-1}\left(\dfrac{nt}{p}\right)\left(\dfrac{n}{p}\right)\dfrac{\sin(2\pi tn/p)}{n}
+    \end{align*}
+    两边再对全体正奇数$n$求和即可。
+\end{proof}
+
+\begin{exercise}\label{8.9}
+    用Fourier级数的基本结论：
+    \begin{align*}
+        \sum_{n=1}^{+\infty}\dfrac{\sin(2n-1)x}{2n-1}=
+        \left\{ 
+        \begin{aligned}
+            &\pi/4\quad&0<x<\pi\\
+            &-\pi/4\quad&\pi<x<2\pi\\
+        \end{aligned}
+         \right.
+    \end{align*}
+    求证：
+    \begin{align*}
+        \sum_{n正奇数}\left(\dfrac{n}{p}\right)\dfrac{1}{n}&=
+        \dfrac{\pi}{4\sqrt{p}}
+        \left( 
+        \sum_{t=1}^{(p-1)/2}\left(\dfrac{t}{p}\right)-
+        \sum_{t=(p+1)/2}^{p-1}\left(\dfrac{t}{p}\right)
+         \right)\\
+         &=
+         \dfrac{\pi}{2\sqrt{p}}\sum_{t=1}^{(p-1)/2}\left(\dfrac{t}{p}\right)
+    \end{align*}
+\end{exercise}
+\begin{proof}
+    用\ref{8.8}.
+\end{proof}
+
+\begin{exercise}
+    先证明$\sum_{t=1}^{(p-1)/2}\left(\frac{t}{p}\right)\neq0$，
+    再求证：$\sum_{n正奇数}\left(\frac{n}{p}\right)\frac{1}{n}>0$，
+    从而有$\sum_{t=1}^{(p-1)/2}\left(\frac{t}{p}\right)>0$.
+\end{exercise}
+\begin{proof}
+    $\sum_{t=1}^{(p-1)/2}\left(\frac{t}{p}\right)$是奇数。
+    由\ref{8.6}，$\sum_{n正奇数}\left(\frac{n}{p}\right)\frac{1}{n}$和$L(1,\chi)$同号，
+    其中$\chi$是$\operatorname{mod}p$的非平凡Dirichlet特征，阶为$2$.
+    利用$s>1$时$L(s,\chi)=\prod_{q}(1-\chi(q)q^{-s})^{-1}$以及$\chi$非平凡时$L(s,\chi)$能解析延拓到$\Re s>0$上，
+    可知$L(1,\chi)\geqslant0$，
+    再由\ref{8.5}知$L(1,\chi)>0$，
+    从而$\sum_{n正奇数}\left(\frac{n}{p}\right)\frac{1}{n}>0$，
+    再由\ref{8.9}知$\sum_{t=1}^{(p-1)/2}\left(\frac{t}{p}\right)>0$。
+\end{proof}

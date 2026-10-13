@@ -1,0 +1,63 @@
+\setdisplaytitle{试卷：复分析}
+\sethtmltitle{试卷：复分析}
+
+\section{2024年复分析试卷}
+\begin{itemize}
+    \item[1.] (20分) 正确的写出Riemann映射定理，并对唯一性进行证明。
+    \item[2.] (20分) $u(z)$是$\mathbb{C}^*=\mathbb{C}\setminus\{0\}$上的有界调和函数，证明：$u(z)$是常数。
+    \item[3.] (20分) $\{f_n\}$是$\mathbb{D}$上的一列解析函数，$f_n(0)=0,f_n^\prime(0)>0,\Omega_n=f_n(\mathbb{D})$，
+    证明：$\{\Omega_n\}$核收敛于 $\mathbb{C}$当且仅当 $f_n^\prime(0)\to\infty$.
+    \item[4.] (20分) $A(r,R)=\{z\in\mathbb{C}:r<|z|<R\}$，这里 $0<r,R<+\infty$.
+    证明：不存在 $A(r,R)$上的解析函数 $f$,且$f\in C(\overline{A(r,R)})$,使得$|z|=r$时 $\operatorname{Re}f(z)\equiv0$，$|z|=R$时 $\operatorname{Re}f(z)\equiv1$.
+    \item[5.] (20分) 正确叙述双曲度量的Schwarz引理，用双曲度量的Schwarz引理证明Picard小定理。
+\end{itemize}
+
+
+\section{2023秋复分析试卷}
+\begin{itemize}
+    \item[1.] 叙述如下概念和定理. (1) Riemann映射定理; (2) Koebe-$\dfrac{1}{4}$定理; 
+    (3)调和函数的Poisson公式; (4)次调和函数; (5)双曲度量的Schwarz引理.
+
+    \item[2.] 求出上半平面 $\mathbb{H}$上的Green函数, 
+    关于边界 $E=[0,+\infty)$的调和测度 $\omega_{\mathbb{H}}(z,E)$以及其上的双曲度量.
+
+    \item[3.] 叙述并证明Marty定理.
+
+    \item[4.] 证明： $\mathbb{C}^*= \mathbb{C}\setminus\{0\}$上有界次调和函数必为常值函数.
+
+    \item[5.] 考虑奇性$\mathcal{S}$-类函数 $f(z) = z + a_1 z^3+ a_2 z^5+ \cdots$, 
+    请证明: (1)存在$\mathcal{S}$-类函数 $h$使得 $h(z^2) = f(z)^2$; (2)如下不等式成立
+    $$\dfrac{|z|}{1+|z|^2}\le |f(z)|\le \dfrac{|z|}{1-|z|^2}.$$
+
+
+    \item[6.] 考虑$\mathbb{D}$到 $\mathbb{C}_{0,1}$上的解析函数族 $\mathcal{F}$, 
+    证明：其球面导数内闭一致有界.
+\end{itemize}
+
+
+\section{2022秋复分析试卷}
+\begin{itemize}
+    \item[1.] （15分）给出平面区域$\Omega$上的Green函数的定义.
+
+    \item[2.] （17分）设$g$是$\mathbb{C}\setminus\overline{\mathbb{D}}$上的单叶函数，
+    $g(z)=z+b_0+\frac{b_1}{z}+\cdots$. 
+    证明：$|b_1|\leq1$，并给出等号成立的充要条件.
+
+    \item[3.] （17分）设$u(z)$是复平面$\mathbb{C}$上的调和函数，且在$|z|$充分大时成立
+    $u(z)\leq C\log(|z|^\alpha)$，其中$0<\alpha<1$. 证明：$u(z)$是常值函数.
+
+    \item[4.] （17分）证明：Riemann $\zeta$函数满足
+    $$\zeta(s)=-\frac{\Gamma(1-s)}{2\pi i}\int_\gamma
+    \frac{(-\zeta)^{s-1}}{e^\zeta-1}d\zeta,$$
+ 	其中$\gamma$是$\mathbb{C}\setminus[0,+\infty)$中的如下路径：在割缝上沿
+    从$+\infty$到$\varepsilon$，$0<\varepsilon<1$， 
+ 	在$|z|=\varepsilon$逆时针转一圈，再在割缝下沿从$\varepsilon$回到$+\infty$.
+
+    \item[5.] （17分）叙述并证明Picard小定理.
+
+    \item[6.] （17分）设$\Omega\subset\mathbb{C}$是单连通双曲区域，
+    $\rho_\Omega$是$\Omega$上的双曲度量的密度函数，$d_\Omega$是双曲距离. 
+    证明：对$z,w\in\Omega$，
+    $$e^{-2d_\Omega(z,w)}\leq\frac{\rho_\Omega(z)}{\rho_\Omega(w)}
+    \leq e^{2d_\Omega(z,w)}.$$
+\end{itemize}

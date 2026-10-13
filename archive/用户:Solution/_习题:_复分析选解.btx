@@ -1,0 +1,754 @@
+\setdisplaytitle{复分析选解}
+\sethtmltitle{复分析选解}
+\theoremstyle{remark}
+\newtheorem*{foreword}{写在前面}
+\def\mapsfrom{\longleftarrow{\raisebox{0.4pt}{$\hspace{-6pt}\shortmid$}}}
+
+\begin{foreword}
+
+\qquad 这是邱维元复分析课程的概要及部分习题解答.
+每年的内容不完全相同，单叶函数一章可能还会讲Loewner方程，另外可能有``极值长度和共形模''一章.
+课程提供了电子版讲义，故以下整理的定义、定理等算是课程内容的预览，也可用于期末复习.
+
+\qquad 习题整体上而言不太容易，这里选取了我认为较有难度的题目给出简要的解答.
+下面的$f$未加说明均默认为全纯函数，并且记$\mathbb{D}$是单位圆盘，
+$\mathbb{C}_\infty=\mathbb{C}\cup\{\infty\}$，
+$\mathbb{C}_{a,b}=\mathbb{C}\backslash\{a,b\}$.几本参考书如下：
+\begin{enumerate}
+\item 本课程的内容（除素数定理一节外）相当于\textbf{崔贵珍、程涛
+\href{https://book.douban.com/subject/26775353/}{\textcolor{333399}{《复分析》}}}
+的压缩版，这本书的各章内容更为丰富，是最重要的参考资料；
+
+\item 李忠的《复分析导引》的前两章简明扼要地介绍了共形映射、单叶函数、双曲度量；
+
+\item 调和函数与Dirichlet问题两章接近于John B. Conway的
+$\textit{Functions of One Complex Variable}$ (GTM 11), 
+Chapter X. $\text{Harmonic Functions}$以及
+$\textit{Functions of One Complex Variable II}$ (GTM 159), 
+Chapter 19. $\text{Harmonic Functions Redux}$
+\footnote{redux [adj.]用于名词后，意为brought back.}；
+
+\item 素数定理一章可以参考Elias M. Stein的$\textit{Complex Analysis}$, 
+Chapter 6. $\text{The Gamma and Zeta Functions}$及
+Chapter 7. $\text{The Zeta Function and Prime Number Theorem}$.
+\end{enumerate}
+\end{foreword}
+
+\section{共形映射}
+
+\begin{proposition}(Montel定理) 解析函数正规族（任何序列有子列内闭一致收敛）等价于内闭一致有界.\end{proposition}
+
+\begin{proposition}(Marty定理) 亚纯函数正规族
+（任何序列有子列按球面距离$\frac{2|dz|}{1+|z|^2}$内闭一致收敛）
+等价于球面导数$f^\#(z)=\frac{2|f'(z)|}{1+|f(z)|^2}$
+（对于极点$z$，$f^\#(z):=\lim\limits_{\zeta\rightarrow z}f^\#(\zeta)$）内闭一致有界.\end{proposition}
+
+\begin{proposition}(Riemann映射定理) 设单连通区域$\Omega\subsetneq\mathbb{C}$，$\forall a\in\Omega$，
+存在唯一的共形映射$\varphi\colon\Omega\rightarrow\mathbb{D}$使得
+$\varphi(a)=0,\varphi'(a)>0$.\end{proposition}
+
+\begin{proposition}(Hurwitz定理) 单叶函数列$f_n$内闭一致收敛于单叶函数$f$或常数.\end{proposition}
+
+\begin{proposition}（边界对应定理）$f$是$\mathbb{D}\rightarrow$有界单连通区域$\Omega$的共形映射，
+
+(1) (Carathéodory) $f$可延拓为$\overline{\mathbb{D}}\rightarrow\overline{\Omega}$的同胚
+当且仅当$\partial\Omega$是Jordan曲线.
+
+(2) $f$可延拓为$\overline{\mathbb{D}}\rightarrow\overline{\Omega}$的连续满射
+当且仅当$\partial\Omega$是局部连通的（即在每点有直径任意小的连通邻域）.\end{proposition}
+
+\textbf{习题. } $f$是整函数，$\{f(cz)\mid c\in\R\}$是圆环$\{r_1<|z|<r_2\}$上的正规族
+当且仅当$f$是多项式.
+
+\begin{proofc}
+    设$f$是多项式，对实数列$\{c_n\}$，若$c_n$有界，则存在子列$c_{n_k}\rightarrow c$，
+    那么$f(c_{n_k}z)$内闭一致收敛于$f(cz)$；若$c_n$无界，则存在子列$c_{n_k}\rightarrow\infty$，
+    那么$f(c_{n_k}z)$一致收敛于$\infty$.
+
+    设$\{f(cz)\mid c\in\R\}$是圆环$\{r_1<|z|<r_2\}$上的正规族，若存在无界序列$\{c_n\}$
+    使$f(c_nz)$内闭一致收敛于某全纯函数，由最大模原理得到$f$有界，是常数；
+    若对所有无界序列$\{c_n\}$都有$f(c_nz)$内闭一致收敛于$\infty$，
+    则当$z\rightarrow\infty$时$f(z)\rightarrow\infty$
+    （否则存在$z_n\rightarrow\infty$使$f(z_n)$有界，
+    那么$f(|z_n|\frac{z}{\sqrt{r_1r_2}})$不内闭一致收敛于$\infty$），
+    即$f$以$\infty$为极点，也就是多项式.
+\end{proofc}
+
+\textbf{习题. } $\Omega$上亚纯函数列$\{f_n\}$在球面距离下内闭一致收敛于$f$，
+则$f$亚纯或$f\equiv\infty$，且$\{f_n^\#\}$内闭一致收敛于$f^\#$.
+
+\begin{proofc}
+    对固定的点$z_0$，若$f(z_0)\neq\infty$，则球面距离和正常的距离在$z_0$附近等价，
+    因此$f$在$z_0$全纯，且由$\{f_n\}$内闭一致收敛于$f$
+    及$\{f_n'\}$内闭一致收敛于$f'$得$\{f_n^\#\}$内闭一致收敛于$f^\#$；
+    若$f(z_0)=\infty$，则$\frac{1}{f}(z_0)=0$，使用$\big(\frac{1}{f}\big)^\#=f^\#$，
+    由前一种情况得到$\frac{1}{f}$在$z_0$全纯，则$\frac{1}{f}$有孤立零点$z_0$或$\equiv0$，
+    且$\{f_n^\#\}=\{\big(\frac{1}{f_n}\big)^\#\}$内闭一致收敛于$f^\#$.
+\end{proofc}
+
+\textbf{习题. } 证明Marty定理.
+
+\begin{proofc}
+    假设$\mathscr{F}$是正规族但在一个紧集$K$上球面导数不一致有界，
+    即存在一列$f_n^\#(z_n)\rightarrow\infty$，取$z_n$子列并仍记为$z_n$使得
+    $z_n\rightarrow z_0\in K$，再取$f_n$子列并仍记为$f_n$使得
+    $f_n$在球面距离下内闭一致收敛于$f$，由上一题有$f$亚纯或$f\equiv\infty$，
+    但由$f_n^\#(z_n)\rightarrow\infty$可知$f$不可能亚纯，
+    而若$f\equiv\infty$则又能由$\infty\leftarrow f_n^\#(z_n)=\big(\frac{1}{f_n}\big)^\#(z_n)
+    \rightarrow0$（因为$\frac{1}{f_n}$内闭一致收敛于$0$）得出矛盾.
+\end{proofc}
+
+\textbf{习题. } 设$f\colon\mathbb{D}\rightarrow\mathbb{D}\backslash\{a\}$解析，
+$0<a<1$.证明$|f'(0)|\leq\frac{2a\log 1/a}{1-a^2}$，等号当且仅当
+$f(z)=\frac{a-h(z)}{1-ah(z)},
+h(z)=a^\frac{1-e^{i\theta}z}{1+e^{i\theta}z},\theta\in\R$.
+
+\begin{proofc}
+    \begin{align*}
+        \mathbb{D}&\xrightarrow{\frac{1-z}{1+z}}&\mathbb{H}&
+        \xrightarrow{a^z}&\mathbb{D}\backslash\{0\}
+        \xrightarrow{\frac{a-z}{1-az}}&\mathbb{D}\backslash\{a\}&
+        \xleftarrow{f}&\ \mathbb{D},\\
+        0&\xmapsto{-2}&1&\xmapsto{a\log a}&a\xmapsto{\frac{1}{a^2-1}}&
+        0&\stackrel{f'(0)}{\mapsfrom}&\ 0.
+    \end{align*}
+    第二行的箭头上面标的是该映射在该点的导数. 由Schwarz引理，
+    从右向左的复合映射在$0$的导数的模长$\leq1$，等号当且仅当这是$e^{i\theta}z$.
+\end{proofc}
+
+\section{单叶函数}
+
+\begin{definition}$\mathcal{S}=\{f\colon\mathbb{D}\rightarrow\mathbb{C}
+\mid f\ \text{单叶},f(0)=0,f'(0)=1\}$，
+
+\qquad\qquad\ \ $\Sigma=\{g\colon\mathbb{C}\backslash\overline{\mathbb{D}}
+\rightarrow\mathbb{C}
+\mid g\ \text{单叶},\lim\limits_{z\rightarrow\infty}\frac{g(z)}{z}=1\}$.\end{definition}
+
+\begin{proposition}设$g(z)=z+b_0+\frac{b_1}{z}+\cdots\in\Sigma$取不到的图形是$E$，有
+
+(1) $\operatorname{Area}(E)=\pi(1-\sum\limits_{n=1}^\infty n|b_n|^2)$，
+\quad(2) $E\subset\overline{D}(b_0,2)$.\end{proposition}
+
+\begin{proposition}(Bieberbach猜想，de Brange定理) 
+设$f(z)=z+a_2z^2+\cdots\in\mathcal{S}$，则
+$$|a_n|\leq n,$$
+等号对某个$n$成立当且仅当$f$是Koebe函数的旋转
+$\displaystyle{k_\theta(z)=\frac{z}{(1-e^{i\theta}z)^2}}$.\end{proposition}
+
+\begin{proposition}(Koebe-$\frac{1}{4}$定理) 
+设$f$是$\mathbb{D}$上的单叶函数，$\Omega=f(\mathbb{D})$，有
+$$\frac{1}{4}(1-|z|^2)|f'(z)|\leq d(f(z),\partial \Omega)\leq(1-|z|^2)|f'(z)|.$$
+特别地，对$f\in\mathcal{S}$，$$\frac{1}{4}\leq d(0,\partial\Omega)\leq1.$$\end{proposition}
+
+\begin{remark}即使不假定$f$单叶，仍有类似的结论成立，
+见GTM11 XII.1 $\text{Blôch's Theorem}$.\end{remark}
+
+\begin{proposition}(Koebe偏差定理) 设$f\in\mathcal{S}$，
+$$\frac{1-|z|}{(1+|z|)^3}\leq|f'(z)|\leq\frac{1+|z|}{(1-|z|)^3},$$
+$$\frac{|z|}{(1+|z|)^2}\leq|f(z)|\leq\frac{|z|}{(1-|z|)^2},$$
+$$|\arg f'(z)|\leq2\log\frac{1+|z|}{1-|z|}.$$\end{proposition}
+
+\begin{definition}设区域序列$\Omega_n$有公共点$w_0$，核为$w_0\cup
+\{w\mid\text{存在其邻域 }U\text{ 使得当 }n\text{ 充分大时 }U\subset\Omega_n\}$
+含$w_0$的连通分支. $\Omega_n$核收敛于$\Omega$是指任何子列皆以$\Omega$为核，
+记为$\Omega_n\rightarrow\Omega$.\end{definition}
+
+\begin{proposition}$f_n$是$\mathbb{D}$上的单叶函数，$f_n(0)=0$，$f_n'(0)>0$，
+内闭一致收敛于$f$，$\Omega_n=f_n(\mathbb{D})$，$\Omega=f(\mathbb{D})$.
+
+(1) $f_n$内闭一致收敛于$w_0$当且仅当$\Omega_n\rightarrow\{w_0\}$.
+
+(2) $f_n$内闭一致收敛于非常数$f$当且仅当$\Omega_n\rightarrow\Omega$.
+
+(3) $f_n$在$\mathbb{D}\backslash\{0\}$
+内闭一致趋于$\infty$当且仅当$\Omega_n\rightarrow\mathbb{C}$，
+也等价于$f_n'(0)\rightarrow\infty$.\end{proposition}
+
+\textbf{习题. } 对$f\in\mathcal{S}$，
+$\displaystyle{\frac{1-|z|}{1+|z|}\leq\bigg|\frac{zf'(z)}{f(z)}\bigg|\leq\frac{1+|z|}{1-|z|}}$.
+
+\begin{proofc}
+    对给定的$z$，$$h(\zeta)
+    =\frac{f\big(\frac{\zeta+z}{1+\bar{z}\zeta}\big)-f(z)}{(1-|z|^2)f'(z)}\in\mathcal{S}.$$
+    注意到$\displaystyle{\bigg|\frac{zf'(z)}{f(z)}\bigg|=\frac{|z|}{1-|z|^2}|h(-z)|^{-1}}$，
+    使用$$\frac{|z|}{(1+|z|)^2}\leq|h(-z)|\leq\frac{|z|}{(1-|z|)^2}.\qedhere$$
+\end{proofc}
+
+\textbf{习题. } 对$a\in\mathbb{D}\backslash\{0\}$，记$\mathcal{F}_a=\{f\mid 
+f\text{ 是 }\mathbb{D}\rightarrow\mathbb{D}\backslash\{a\}\text{ 的单叶函数},f(0)=0\}$. 
+求$\sup\limits_{f\in\mathcal{F}_a}|f'(0)|$，并说明此上界是可取到的.
+
+\begin{proofc}
+    先设$a<0$以方便表述，因为旋转全体$f\in\mathcal{F}_a$即可. 考虑
+    $$g\colon\mathbb{D}\xrightarrow{f}\mathbb{D}\backslash\{a\}\xrightarrow{k_0}
+    \mathbb{C}\backslash\big((-\infty,-\frac{1}{4}]\cup\big\{\frac{a}{(1-a)^2}\big\}\big),$$
+    其中$-\frac{1}{4}\leq\frac{a}{(1-a)^2}<0$，有$$\frac{1}{4}|f'(0)|\leq
+    \frac{1}{4}|g'(0)|\leq d(0,\partial g(\mathbb{D}))\leq\frac{-a}{(1-a)^2},$$
+    对$g=\frac{-4a}{(1-a)^2}k_0$等号成立. 
+    对一般的$a$，$\max\limits_{f\in\mathcal{F}_a}|f'(0)|=\frac{4|a|}{(1-|a|)^2}$.
+\end{proofc}
+
+\section{调和函数}
+
+\begin{definition}$\R^2$的区域$\Omega$上的实值$C^2$函数$u$若满足$\Delta u=0$，
+称为调和函数.\end{definition}
+
+\begin{proposition}$\Omega$上的调和函数$u$有共轭调和函数$v$等价于
+对任意闭曲线$\gamma$有$\displaystyle{\int_\gamma d^*u=0}$，
+其中$\displaystyle{d^*u\,(=dv)=-\frac{\partial u}{\partial y}dx+\frac{\partial u}{\partial x}dy}$.
+此时$\displaystyle{v=\int_{z_0}^z d^*u+c}$.\end{proposition}
+
+\begin{proposition}设$u$在$D(a,r)\backslash\{a\}$调和，
+
+(1) $u$有界，则$a$是可去奇点；
+
+(2) $\lim\limits_{z\rightarrow a}u(z)=\pm\infty$，则$u(z)=\alpha\log|z-a|+$调和函数
+$(\alpha\in\R\backslash\{0\})$，称$a$是对数奇点;
+
+(3) 其余情况称$a$是本性奇点.\end{proposition}
+
+\begin{proposition}(Poisson 公式) 设$u$在$\Omega$调和，对$z\in D(z_0,R)\Subset\Omega$
+（即$\overline{D(z_0,R)}\subset\Omega$），成立
+$$u(z)=\frac{1}{2\pi}\int_0^{2\pi}u(z_0+Re^{i\theta})
+\frac{R^2-|z-z_0|^2}{|Re^{i\theta}-(z-z_0)|^2}\,d\theta
+=\frac{1}{2\pi}\int_0^{2\pi}u(z_0+Re^{i\theta})\operatorname{Re}
+\frac{Re^{i\theta}+(z-z_0)}{Re^{i\theta}-(z-z_0)}\,d\theta.$$
+\end{proposition}
+
+\textbf{习题. } 设$\varphi=1,\theta\in[0,\pi)$，$\varphi=0,\theta\in[\pi,2\pi)$.
+求$\varphi$在$\mathbb{D}$上的Poisson积分$u_\varphi$.
+
+\begin{proofc}记上半单位圆弧逆时针方向为$\curvearrowleft$.
+    \begin{align*}
+        u_\varphi(z)&=\frac{1}{2\pi}\operatorname{Re}\int_\curvearrowleft
+    \frac{\zeta+z}{\zeta-z}\frac{d\zeta}{i\zeta}\\
+    &=\frac{1}{2\pi}\operatorname{Im}\int_\curvearrowleft
+    \frac{2d(\zeta-z)}{\zeta-z}-\frac{d\zeta}{\zeta}\\
+    &=\frac{1}{2\pi}\Big(2\arg\frac{-1-z}{1-z}+\pi\Big)\\
+    &=\frac{1}{\pi}\arg\frac{-1-z}{1-z}+\frac{1}{2}.
+    \end{align*}
+\end{proofc}
+
+\textbf{习题. } $u$在$\mathbb{H}$调和，在$\overline{\mathbb{H}}$连续有界，
+求证$\displaystyle{u(z)=\frac{1}{\pi}\int_{-\infty}^{+\infty}u(t)\frac{y}{(x-t)^2+y^2}\,dt}$.
+\begin{proofc}
+    单位圆盘上有调和函数$v\colon\mathbb{D}\rightarrow\mathbb{H}\rightarrow\R,\frac{i-z}{i+z}\mapsto z\mapsto u(z)$，于是
+    \begin{align*}
+        u(z)&=\frac{1}{2\pi}\int_{\partial\mathbb{D}}v(\zeta)\operatorname{Re}\frac{\zeta+\frac{i-z}{i+z}}{\zeta-\frac{i-z}{i+z}}\frac{d\zeta}{i\zeta}\\
+        &=\frac{1}{2\pi}\int_{\partial\mathbb{H}}u(t)\operatorname{Re}\frac{\frac{i-t}{i+t}+\frac{i-z}{i+z}}{\frac{i-t}{i+t}-\frac{i-z}{i+z}}\frac{d\frac{i-t}{i+t}}{i\frac{i-t}{i+t}}\\
+        &=\frac{1}{2\pi}\int_{\partial\mathbb{H}}u(t)\operatorname{Re}\frac{-zt-1}{i(-t+z)}\frac{2dt}{-1-t^2}\\
+        &=\frac{1}{\pi}\int_{\partial\mathbb{H}}u(t)\frac{y}{|t-z|^2}\,dt.
+    \end{align*}
+\end{proofc}
+
+\section{Dirichlet问题}
+
+\begin{definition}$\Omega$上连续实值函数$u$若满足对任何$D(z_0,R)\Subset\Omega$
+均有$$u(z_0)\leq\frac{1}{2\pi}\int_0^{2\pi}u(z_0+Re^{i\theta})\,d\theta,$$
+称$u$为次调和函数.\end{definition}
+
+\begin{proposition}$u$在$\Omega$次调和，等价于对任何$D(z_0,R)\subset\Omega$上的调和函数$v$，
+$u-v$满足最大值原理（在内部不取最大值）.\end{proposition}
+
+\begin{proposition}$u$在$\Omega$次调和，有$u(z)\leq
+\varlimsup\limits_{z\rightarrow\partial\Omega}u(z)$.\end{proposition}
+
+\begin{proposition}对$u\in C^2$，$u$次调和等价于$\Delta u\geq0$.\end{proposition}
+
+\begin{definition}Perron族$\mathcal{P}(\varphi,\Omega)=\{\text{次调和函数 }v\mid
+\varlimsup\limits_{z\rightarrow\zeta}v(z)
+\leq\varphi(\zeta),\forall\zeta\in\partial\Omega\}$.\end{definition}
+
+\begin{proposition}关于$\partial\Omega$上有界实值函数$\varphi$的Perron函数
+$u(z)=\sup\limits_{\mathcal{P}(\varphi,\Omega)}v(z)$是调和函数.\end{proposition}
+
+\begin{definition}对$\zeta_0\in\partial\Omega$，若对任何充分小的$\delta$都存在$\zeta_0$的邻域
+$U_\delta\subset D(\zeta_0,\delta)$使得其上存在调和函数$t_\delta(z)$满足
+$0<t_\delta(z)<1,\lim\limits_{z\rightarrow\zeta_0}t_\delta(z)=0,
+\lim\limits_{z\rightarrow\zeta}t_\delta(z)=1,
+\forall\zeta\in\partial U_\delta\cap\Omega$，
+则称$\{t_\delta\}_{\delta>0}$是$\zeta_0$处的闸函数\footnote{不少书上闸函数的定义与此不同.}.
+\end{definition}
+
+\begin{proposition}设$\zeta_0$处有闸函数，若$\varphi$在$\zeta_0$连续就有
+$\lim\limits_{z\rightarrow\zeta_0}u(z)=\varphi(\zeta_0)$.\end{proposition}
+
+\begin{proposition}$\Omega$是Dirichlet区域（任何Dirichlet问题都可解）当且仅当
+$\partial\Omega$每点都有闸函数.\end{proposition}
+
+\begin{proposition}$\mathbb{C}_\infty\backslash\Omega$含$\zeta_0$的连通分支不是$\{\zeta_0\}$，
+则$\zeta_0$处有闸函数.\end{proposition}
+
+\begin{definition}关于$z$的函数$g(z,z_0)$是以$z_0\in\Omega$为奇点的Green函数，若
+
+(1) $g(z,z_0)$是$\Omega\backslash\{z_0\}$上的正调和函数，
+
+(2) $\displaystyle{g(z,z_0)\sim \log\frac{1}{|z-z_0|}}$当$z\rightarrow z_0$，
+
+(3) 若$h$也符合(1)(2)，则$h\geq g$.\end{definition}
+
+\begin{proposition}设$u$是$\Omega$上的调和函数，有公式$$u(z)=-\frac{1}{2\pi}\int_{\partial\Omega}
+u(\xi)\frac{\partial g(\xi,z)}{\partial\boldsymbol{n}}\,ds
+=\int_{\partial\Omega}u(\xi)\,d\omega_\Omega(z,\xi),$$
+其中$\displaystyle{\omega_\Omega(z,E)=-\frac{1}{2\pi}\int_{E}
+\frac{\partial g(\xi,z)}{\partial\boldsymbol{n}}\,ds}$
+称为$\Omega$在$z$点的调和测度.\end{proposition}
+
+\textbf{习题. } $\mathbb{C}$上有上界的次调和函数是常数.
+
+\begin{proofc}
+    圆环$\{r<|z|<R\}$上，有
+    $$u(z)\leq\frac{\log R-\log|z|}{\log R-\log r}\max\limits_{|z|=r}u
+    +\frac{\log|z|-\log r}{\log R-\log r}\max\limits_{|z|=R}u,$$
+    这是因为左边次调和而右边调和，且不等式在边界上成立.
+    令$R\rightarrow\infty$，再令$r\rightarrow0$，得到$u(z)\leq u(0)$.\qedhere
+
+    注：这个不等式称为Hadamard三圆定理，也可由二常数定理直接得到.
+\end{proofc}
+
+\textbf{习题. } 求$D(c,\rho)$和$\mathbb{H}$的Green函数.
+\begin{proofc}
+    $\varphi
+    \colon D(c,\rho)\xrightarrow{\frac{z-c}{\rho}} \mathbb{D}
+    \xrightarrow{\frac{z-\frac{z_0-c}{\rho}}{1-\frac{\overline{z_0-c}}{\rho}z}} \mathbb{D},
+    z_0\mapsto\frac{z_0-c}{\rho}\mapsto0$，于是
+    $$g_{D(c,\rho)}(z,z_0)=g_{\varphi(D(c,\rho))}(\varphi(z),0)=-\log|\varphi(z)|
+    =-\log\bigg|\frac{\rho(z-z_0)}{\rho^2-\overline{(z_0-c)}(z-c)}\bigg|.$$
+
+    $\varphi\colon\mathbb{H}\xrightarrow{\frac{i-z}{i+z}} \mathbb{D}
+    \xrightarrow{\frac{z-\frac{i-z_0}{i+z_0}}
+    {1-\frac{\overline{i-z_0}}{\overline{i+z_0}}z}} \mathbb{D},
+    z_0\mapsto\frac{i-z_0}{i+z_0}\mapsto0$，于是
+    $$g_\mathbb{H}(z,z_0)=g_{\varphi(\mathbb{H})}(\varphi(z),0)
+    =-\log|\varphi(z)|=-\log\bigg|\frac{z-z_0}{z-\overline{z_0}}\bigg|.\qedhere$$
+\end{proofc}
+
+\textbf{习题. } 证明$g(z,w)=g(w,z)$.
+\begin{proofc}
+    取调和函数$g_z(\zeta)=g(\zeta,z),g_w(\zeta)=g(\zeta,w)$. 由Green公式，
+    \begin{align*}0&=\int_{\Omega\backslash(D_r(z)\cup D_r(w))}g_z\Delta g_w-g_w\Delta g_z\\
+    &=\int_{\partial\Omega}g_zd^*g_w-g_wd^*g_z
+    -\int_{\partial D_r(z)}g_zd^*g_w-g_wd^*g_z
+    -\int_{\partial D_r(w)}g_zd^*g_w-g_wd^*g_z.\end{align*}
+
+    $g_z,g_w$在$\partial\Omega$上是$0$，故
+    $$\int_{\partial D_r(z)}g_zd^*g_w-g_wd^*g_z
+    =\int_{\partial D_r(w)}g_wd^*g_z-g_zd^*g_w.$$
+
+    由于$\displaystyle{-\frac{1}{2\pi}\int_{\partial D_r(z)}d^*g_z
+    =-\frac{1}{2\pi}\int_{\partial D_r(w)}d^*g_w=1}$，
+    以及$\displaystyle{\int_{\partial D_r(z)}g_zd\zeta}$
+    和$\displaystyle{\int_{\partial D_r(w)}g_wd\zeta
+    \sim 2\pi r\log\frac{1}{r}\rightarrow0}$当$r\rightarrow0$
+    并且$\big|\frac{d^*g_w}{d\zeta}\big|
+    =\big|\frac{\partial g_w}{\partial\boldsymbol{n}}\big|$在$z$附近有界，
+    在上式中让$r\rightarrow0$得到$g_w(z)=g_z(w)$.
+\end{proofc}
+
+\textbf{习题. } 有界区域是Dirichlet区域的充要条件是边界的每点都有闸函数.
+\begin{proofc}
+    讲义已说明充分性，下证必要性. 对$\zeta_0\in\partial\Omega$，
+    令$u(z)$是边值条件为$\frac{|z-\zeta_0|}{1+|z-\zeta_0|}\big|_{\partial\Omega}$的Dirichlet问题的解.
+    取$t_\delta(z)=u(z)/\inf\limits_{\{z\in U\mid|z-\zeta_0|=\delta\}}u$
+    以及$U_\delta=\{z\in U\cap D(\zeta_0,\delta)\mid 0<t_\delta(z)<1\}$即可.
+\end{proofc}
+
+\textbf{习题. } （1）设$\Omega=\mathbb{D}\cap\mathbb{H}$为上半单位圆，$E=[-1,1]$，
+求调和测度$\omega_\Omega(z,E)$.\\
+（2）设$\Omega=\{r_1<|z|<r_2\}$，$E=\{|z|=r_1\}$，
+求调和测度$\omega_\Omega(z,E)$.
+\begin{proofc}
+    构造共形映射$\varphi$把$\Omega$映成$\{0<\operatorname{Re}z<1\}$
+    且$\varphi(E)=\{\operatorname{Re}z=1\}$. 答案为
+
+    （1）$\operatorname{Re}\big(\frac{2i}{\pi}\log\frac{1+z}{1-z}+1\big)$.
+    （2）$\log\frac{|z|}{r_2}/\log\frac{r_2}{r_1}$.
+\end{proofc}
+
+\textbf{习题. } 不存在$\{r<|z|<R\}$上的全纯函数$f$使得
+$\operatorname{Re}f|_{\{|z|=r\}}=0,
+\operatorname{Re}f|_{\{|z|=R\}}=1$.
+
+\begin{proofc}
+    对于$\operatorname{Re}f$在$\{r<|z|<R\}$上的Dirichlet问题，
+    解得$\operatorname{Re}f=\frac{\log|z|-\log r}{\log R-\log r}$，
+    然而不存在$f$以之为实部（毕竟$\frac{\log z-\log r}{\log R-\log r}$
+    不是$\{r<|z|<R\}$上的单值函数）.
+
+    或者，对于任何一点$w\in\{0<\operatorname{Re}z<1\}$，
+    取$\gamma$为$\{|z|=r'\text{ 逆时针}\}\cup\{|z|=R'\text{ 顺时针}\}$，
+    其中$r'\in(r,|w|)$很接近$r$，$R'\in(|w|,R)$很接近$R$，
+    则$\operatorname{Re}f|_{\{|z|=r'\}}$靠近$\operatorname{Re}z=0$，
+    $\operatorname{Re}f|_{\{|z|=R'\}}$靠近$\operatorname{Re}z=1$，
+    故$f(\gamma)$没有绕$f(w)$转圈，即$f$在$\{r'<|z|<R'\}$内不取$w$，
+    由$r',R'$的任意性知$f$不取$w$，再由$w$的任意性得到
+    $\operatorname{Re}f\leq0$或$\geq1$，与调和函数的最大值原理矛盾.
+\end{proofc}
+
+\textbf{习题. } 二连通区域的共形模的定义不依赖于共形映射的选取.
+
+\begin{proofc}
+    就是要证明$\{1<|z|<R\}$互不共形等价. 
+    假设$f\colon\{1<|z|<R\}\rightarrow\{1<|z|<R'\}$是共形映射，
+    不妨设$|z|\rightarrow1$时$|f(z)|\rightarrow1$（而不是$R'$），
+    则$f^*\colon\{\frac{1}{R}<|z|<1\}\rightarrow\{\frac{1}{R'}<|z|<1\},
+    \frac{1}{\bar{z}}\mapsto\frac{1}{\overline{f(z)}}$是共形映射，
+    且在$|z|=1$处$f=f^*$，
+    由Morera定理$f\cup f^*\colon\{\frac{1}{R}<|z|<R\}
+    \rightarrow\{\frac{1}{R'}<|z|<R'\}$是共形映射.
+    如此反复翻进去翻出来得到了一个$\mathbb{C}\backslash\{0\}\rightarrow
+    \mathbb{C}\backslash\{0\}$的共形映射，且$0$是可去奇点，这说明$f(z)=cz$，
+    有$|c|=1$，故$R=R'$.
+\end{proofc}
+
+\section{Riemann曲面}
+
+\begin{proposition}(单值化定理) 单连通Riemann曲面共形等价于
+$\mathbb{C}_\infty,\mathbb{C},\mathbb{D}$.\end{proposition}
+
+\begin{definition}$\pi\colon\tilde{S}\rightarrow S$为解析万有覆盖，
+$\tilde{S}$共形等价于$\mathbb{C}_\infty,\mathbb{C},\mathbb{D}$时
+$S$分别称为椭圆、抛物、双曲Riemann曲面. $S$共形等价于$\tilde{S}/\Gamma$，
+$\Gamma=\{\text{使下图交换的共形映射 }\gamma\}$为覆盖变换群.
+\begin{tikzcd}
+\tilde{S} \arrow[rr, "\gamma"] \arrow[dr, "\pi"'] & & \tilde{S} \arrow[dl, "\pi"] \\
+& S &                 
+\end{tikzcd}
+\end{definition}
+\begin{proposition}椭圆Riemann曲面只有$\mathbb{C}_\infty$；
+抛物Riemann曲面有$\mathbb{C},\mathbb{C}\backslash\{0\},$各种环面；
+剩下的是双曲Riemann曲面.
+最大的双曲Riemann曲面是$\mathbb{C}_{0,1}$.\end{proposition}
+
+\begin{proposition}(Picard小定理) $\mathbb{C}$上的亚纯函数
+不取$\mathbb{C}_\infty$中的$3$个点就是常数.\end{proposition}
+
+\textbf{习题. } 黎曼曲面$S$上的全纯函数$f$若零点有聚点，则$f\equiv0$.
+\begin{proofc}
+    考虑$\{f=0\}$的内部$U$，由$f$解析得到这个聚点$\in U$且$U$是闭集，
+    而$U$是开集，于是$U=S$.
+\end{proofc}
+
+\textbf{习题. } $\varphi\colon\mathbb{D}\rightarrow\mathbb{C}_{0,1}$是模函数
+（即全纯万有覆盖），$f\colon\mathbb{D}\rightarrow\mathbb{C}_{0,1}$全纯，$f(0)=\varphi(0)$. 
+证明$\sup\limits_{|z|\leq r}|f|\leq\sup\limits_{|z|\leq r}|\varphi|$.
+\begin{proofc}
+    映射提升性质表明存在$\tilde{f}\colon\mathbb{D}\rightarrow\mathbb{D}$使得
+    $\varphi\circ\tilde{f}=f$且$\tilde{f}(0)=0\in\varphi^{-1}(f(0))$.
+    由Schwarz引理，$\tilde{f}(|z|\leq r)\subset\{|z|\leq r\}$，
+    于是$\sup\limits_{|z|\leq r}|f|=\sup\limits_{\tilde{f}(|z|\leq r)}|\varphi|
+    \leq\sup\limits_{|z|\leq r}|\varphi|$.
+\end{proofc}
+
+\section{双曲度量}
+
+\begin{definition}共形Riemann度量是指$ds^2=E(dx^2+dy^2),E>0$，可写为$ds=\rho(z)|dz|$，$\rho(z)$称为密度.
+$K(\rho)=-\frac{1}{\rho^2}\Delta\log\rho$是曲率\footnote{曲率表达式的推导如上.}.\end{definition}
+
+\begin{example}$\mathbb{C}_\infty$上球面度量$\displaystyle{ds=\frac{2|dz|}{1+|z|^2}}$，$K=1$.
+
+\quad\ \,\,$\mathbb{D}$上Poincaré度量$\displaystyle{ds=\frac{2|dz|}{1-|z|^2}}$，$K=-1$.\end{example}
+
+\begin{definition}$\Omega$是$\mathbb{C}$中的双曲区域，即存在$\pi\colon\mathbb{D}\rightarrow\Omega$，
+$\Omega$上的双曲度量$\rho_\Omega(z)|dz|$是指$$\rho_\Omega(z)|dz|
+=\rho_\Omega(\pi(w))|\pi'(w)||dw|=\frac{2|dw|}{1-|w|^2}.$$\end{definition}
+
+\begin{example}\begin{align*}&\rho_{\mathbb{H}}(z)
+=\frac{2\big|\frac{d}{dz}\big(\frac{i-z}{i+z}\big)\big|}{1-\big|\frac{i-z}{i+z}\big|^2}
+=\frac{1}{\operatorname{Im}z},\\
+&\rho_{D(c,R)}(z)=\frac{2R}{R^2-|z-c|^2},\\
+&\rho_{\{0<|z|<R\}}(z)
+=\frac{\big|\frac{d}{dz}\big(i\log\frac{R}{z}\big)\big|}{\operatorname{Im}\big(i\log\frac{R}{z}\big)}
+=\frac{1}{|z|\log\frac{R}{|z|}}.\end{align*}\end{example}
+
+\begin{proposition}(Schwarz--Pick定理) $f\colon\mathbb{D}\rightarrow\mathbb{D}$，
+则$$\frac{|f'(z)|}{1-|f(z)|^2}\leq\frac{1}{1-|z|^2},$$
+等号当且仅当$f$是$\mathbb{D}$的共形自同构.\end{proposition}
+
+\begin{proposition}(Schwarz引理) $f\colon\Omega_1\rightarrow\Omega_2$，则
+$\rho_{\Omega_2}(f(z))|f'(z)|\leq\rho_{\Omega_1}(z)$.\end{proposition}
+
+\begin{proposition}对单连通$\Omega$，$$\frac{1}{2\delta(z)}\leq\rho_\Omega(z)\leq\frac{2}{\delta(z)},$$
+且第二个不等号对双曲区域也成立，其中$\delta(z)=d(z,\partial\Omega)$.\end{proposition}
+
+\begin{definition}$\rho(z)|dz|$称为超双曲度量，若：
+$\rho$上半连续，$\rho\geq0$，且若$\rho(z_0)>0$，
+存在其邻域$U$及$\rho_0(z)\in C^2(U)$满足
+$0<\rho_0(z)\leq\rho(z),\rho_0(z_0)=\rho(z_0),K(\rho_0)\leq-1$.\end{definition}
+
+\begin{proposition}Schwarz引理中$\rho_{\Omega_2}(z)$改为超双曲度量也成立.\end{proposition}
+
+记$\rho_{0,1}(z)|dz|$为$\mathbb{C}_{0,1}$上的双曲度量，
+$\eta=\min\limits_{|z|=1}\rho_{0,1}(z)$.
+
+\begin{proposition}对$z\in\mathbb{D}\backslash\{0\}$，
+$$\frac{1}{|z|\big(\eta^{-1}+\log\frac{1}{|z|}\big)}\leq\rho_{0,1}(z)\leq\frac{1}{|z|\log\frac{1}{|z|}}.$$\end{proposition}
+
+\begin{proposition}(Schottky定理) $f\colon\mathbb{D}\rightarrow\mathbb{C}_{0,1}$，则
+$$\log|f(z)|\leq(\eta^{-1}+\max\{\log|f(0)|,0\})\frac{1+|z|}{1-|z|}-\eta^{-1}.$$\end{proposition}
+
+\begin{proposition}(Picard大定理) $\mathbb{D}\backslash\{0\}$上的亚纯函数
+若不取$\mathbb{C}_\infty$中的$3$个点，则$0$不是本性奇点.
+\end{proposition}
+\begin{remark}或等价地表述成$f\colon D(z_0,r)\backslash\{0\}\rightarrow\mathbb{C}_{\{a,b\}}$，
+则$0$是极点或可去奇点.
+
+可以加强成：$\mathbb{D}\backslash\{0\}$上的亚纯函数
+若有$\mathbb{C}_\infty$中的$3$个点不是无限次取到，则$0$不是本性奇点.\end{remark}
+
+\textbf{习题. } 对单连通双曲区域$\Omega$，
+$|\log\rho_\Omega(z)-\log\rho_\Omega(w)|\leq2d_\Omega(z,w)$.
+
+\begin{proofc}
+    取黎曼映射$\varphi\colon\mathbb{D}\rightarrow\Omega$使$\varphi(0)=w$，
+    记$\varphi(\tilde{z})=z$. 由Koebe偏差定理，
+    $$\frac{1-|\tilde{z}|}{(1+|\tilde{z}|)^3}
+    \leq\bigg|\frac{\varphi'(\tilde{z})}{\varphi'(0)}\bigg|
+    \leq\frac{1+|\tilde{z}|}{(1-|\tilde{z}|)^3},$$因此
+    $$|\log\rho_\Omega(z)-\log\rho_\Omega(w)|
+    =\bigg|\log\frac{2}{|\varphi'(\tilde{z})|(1-|\tilde{z}|^2)}
+    -\log\frac{2}{|\varphi'(0)|}\bigg|
+    \leq2\log\frac{1+|\tilde{z}|}{1-|\tilde{z}|}
+    =2d_\mathbb{D}(\tilde{z},0)=2d_\Omega(z,w).\qedhere$$
+\end{proofc}
+
+\textbf{习题. } 对单连通双曲区域$\Omega$，设Riemann映射
+$\varphi\colon\Omega\rightarrow\mathbb{D},\varphi(a)=0$，
+$|\log g(z_1,a)-\log g(z_2,a)|\leq d_{\Omega\backslash\{a\}}(z_1,z_2)$.
+
+\begin{proofc}
+    事实上$g(z,a)=-\log|\varphi(z)|$，对下式两边从$z_1$到$z_2$积分.
+    \begin{align*}&\rho_{\Omega\backslash\{a\}}(z)|dz|
+    =\frac{|d\varphi(z)|}{|\varphi(z)|(-\log|\varphi(z)|)}
+    =\frac{|d(-\log\varphi(z))|}{-\log|\varphi(z)|}\\
+    &\geq\frac{d(-\log|\varphi(z)|)}{-\log|\varphi(z)|}=d\log(-\log|\varphi(z)|)
+    =d\log g(z,a).\end{align*}
+\end{proofc}
+\textbf{习题. } 对双曲区域$\Omega$，当$z\rightarrow\zeta\in\partial\Omega$时
+$\displaystyle{\rho_\Omega(z)\geq\frac{1+o(1)}{\delta(z)\log\frac{1}{\delta(z)}}}$.
+
+\begin{proofc}
+    设$z_0\in\partial\Omega$使$|z-z_0|=d(z,\partial\Omega)$，
+    以及$w\notin\Omega\cup\{z_0\}$，那么
+    $$\rho_\Omega(z)\geq\rho_{z_0,w}(z)
+    \sim\frac{1}{|z-z_0|\log\frac{1}{|z-z_0|}}.\qedhere$$
+\end{proofc}
+
+\textbf{习题. } $\mathbb{C},\mathbb{C}\backslash\{0\}$上不存在超双曲度量.
+
+\begin{proofc}
+    设$\mathbb{C}$上存在双曲度量$\rho(z)|dz|$，在$D(0,R)$上，
+    $$\rho(z)\leq\rho_{D(0,R)}(z)=\frac{2R}{R^2-|z|^2}\rightarrow0$$
+    当$R\rightarrow\infty$对任何$z$，因此$\rho\equiv0$，不成立.
+
+    假设$\mathbb{C}\backslash\{0\}$有超双曲度量$\rho(z)|dz|$，
+    那么$\rho(e^z)|e^z||dz|$是$\mathbb{C}$上的超双曲度量.\qedhere
+
+    注：不难进一步看出，黎曼曲面$S$上存在超双曲度量当且仅当$S$是双曲的.
+\end{proofc}
+
+\textbf{习题. } 用Schottky定理证明Picard小定理.
+
+\begin{proofc}
+    设亚纯函数$f$不取$a,b,c$，则$F=\frac{f-a}{f-b}\big/\frac{c-a}{c-b}\colon
+    \mathbb{C}\rightarrow\mathbb{C}_{0,1}$.
+    对$F(Rz),z\in\mathbb{D}$使用Schottky定理，得到$F$有界，从而是常数.
+\end{proofc}
+
+\textbf{习题（附加）.} 用Picard大定理推出Picard小定理.
+
+\begin{proofc}
+    设亚纯函数$f$不取$\mathbb{C}_\infty$中的$3$个点，由Picard大定理，
+    $0$是$f\big(\frac{1}{z}\big)$的极点或可去奇点，
+    则在$0$附近$\big|f\big(\frac{1}{z}\big)\big|\leq\frac{C}{|z|^m}$，
+    系当$|z|$很大$|f(z)|\leq C|z|^m$，这说明$f$是多项式，
+    从而取遍整个$\mathbb{C}$，矛盾.
+\end{proofc}
+
+\textbf{习题（附加）.} （1）对区域$\Omega$上的亚纯函数族，
+若都不取$\mathbb{C}_\infty$中给定的三个点，则是正规族.\\
+\qquad\qquad\quad\ \ \ \,（2）由此证明Picard大定理.
+
+\begin{proofc}
+    （1）不妨设它们映到$\mathbb{C}_{0,1}$. $(1+|z|^2)\rho_{0,1}(z)$
+    在边界趋于无穷（$z\rightarrow0,1$时$\rho_{0,1}(z)\rightarrow\infty$，
+    $z\rightarrow\infty$时$(1+|z|^2)\rho_{0,1}(z)
+    =(1+|z|^2)\frac{1}{|z|^2}\rho_{0,1}\big(\frac{1}{z}\big)\rightarrow\infty$）
+    故有下界$c$，所以
+    $$\frac{2|f'(z)|}{1+|f(z)|^2}\leq \frac{2}{c}\rho_{0,1}(f(z))|f'(z)|
+    \leq \frac{2}{c}\rho_\Omega(z).$$
+    由于$\rho_\Omega(z)$内闭一致有界，使用Marty定理即可.
+
+    （2）设$\mathbb{D}\backslash\{0\}$上的亚纯函数$f$
+    不取$\mathbb{C}_\infty$中的$3$个点，由（1）得$\mathbb{D}\backslash\{0\}$上的函数族
+    $f\big(\frac{z}{n}\big)$是亚纯函数正规族，即存在子列$f\big(\frac{z}{n_k}\big)$内闭一致收敛于某$\varphi$，
+    那么$\varphi$要么是$\mathbb{D}\backslash\{0\}$上的全纯函数，要么$\equiv\infty$. 对前一情况，
+    由于对大的$n_k$有$|z|=\frac{1}{2n_k}$处$|f(z)|\leq\max\limits_{|z|=\frac{1}{2}}|\varphi|+1$，
+    对各圆环$\{\frac{1}{2n_{k+1}}\leq|z|\leq\frac{1}{2n_k}\}$使用最大模原理得到
+    $\bigcup\limits_{k\geq K}\{\frac{1}{2n_{k+1}}\leq|z|\leq\frac{1}{2n_k}\}=\{0<|z|\leq\frac{1}{2n_K}\}$上
+    $|f(z)|\leq\max\limits_{|z|=\frac{1}{2}}|\varphi|+1$，于是$0$是$f$的可去奇点；
+    对后一情况，$0$是$\frac{1}{f}$的可去奇点，故$0$是$f$的极点.
+\end{proofc}
+
+\section{素数定理}
+
+\begin{definition}$\Gamma(s)$是$\mathbb{C}$上的亚纯函数，在$\operatorname{Re}s>0$解析且
+$$\Gamma(s)=\int_0^\infty e^{-t}t^{s-1}dt.$$
+由于$\Gamma(s+1)=s\Gamma(s)$，按$$\Gamma(s)=\frac{\Gamma(s+m)}{s(s+1)\cdots(s+m-1)}$$
+延拓到$\operatorname{Re}s>-m$，于是$\Gamma(s)$的所有奇点是极点$-k\,(k\in\mathbb{N}\,)$，
+且$\operatorname{Res}(\Gamma,-k)=\frac{(-1)^k}{k!}$.\end{definition}
+
+\begin{proposition}(Weierstrass乘积公式) $$\frac{1}{\Gamma(s)}=se^{\gamma s}
+\overset{\infty}{\prod\limits_{k=1}}\Big(1+\frac{s}{k}\Big)e^{-\frac{s}{k}}.$$\end{proposition}
+
+\begin{corollary}$\Gamma(s)$没有零点，且$$\Gamma(s)\Gamma(1-s)=\frac{\pi}{\sin\pi s}.$$\end{corollary}
+
+\begin{proposition}(Euler乘积公式) $$\frac{1}{\zeta(s)}=\prod\limits_p\Big(1-\frac{1}{p^s}\Big).$$\end{proposition}
+
+\begin{definition}$$\zeta(s)=-\frac{\Gamma(1-s)}{2\pi i}
+\int_\gamma\frac{(-\zeta)^{s-1}}{e^\zeta-1}\,d\zeta,$$
+其中$\gamma=\gamma_\varepsilon=(+\infty,\varepsilon)$ $\cup$ 
+$\{|z|=\varepsilon$逆时针转一圈从$\varepsilon$到$\varepsilon\}$ $\cup$ $(\varepsilon,+\infty)$，
+在第一段路$(-\zeta)^{s-1}=|\zeta|^{s-1}e^{-i\pi s}$，
+在第三段路$(-\zeta)^{s-1}=|\zeta|^{s-1}e^{i\pi s}$，积分和$\varepsilon$无关.\end{definition}
+
+\begin{proposition}$$\zeta(s)=2^s\pi^{s-1}\sin\frac{\pi s}{2}\Gamma(1-s)\zeta(1-s).$$\end{proposition}
+
+\begin{corollary}由此得到，$\zeta(s)$在$\operatorname{Re}s<0$只有单零点$s=-2,-4,-6,\cdots$，
+非平凡零点都位于$\{0\leq\operatorname{Re}s\leq1\}$；
+进一步能证明非平凡零点都位于$\{0<\operatorname{Re}s<1\}$.\end{corollary}
+
+\begin{proposition}(素数定理) $$\pi(x)\sim\frac{x}{\log x}.$$\end{proposition}
+
+\textbf{习题. } 对$s\in\mathbb{C}$，
+$\displaystyle{\frac{1}{(1-z)^s}=\sum\limits_{n=0}^\infty a_n(s)z^n}$，$|z|<1$.
+证明$\displaystyle{a_n(s)\sim\frac{1}{\Gamma(s)}n^{s-1}}$.
+
+\begin{proofc}
+    $\displaystyle{a_n(s)=\binom{-s}{n}(-1)^n
+    =\frac{s}{1}\cdots\frac{s+n-1}{n}
+    =\frac{s}{n}\prod\limits_{k=1}^{n-1}\Big(1+\frac{s}{k}\Big)
+    \sim\frac{1}{\Gamma(s)}n^{s-1}}$.
+\end{proofc}
+
+\textbf{习题. } 证明$\displaystyle{\int_0^\infty t^{s-1}\cos t\,dt
+=\Gamma(s)\cos\frac{\pi s}{2}}$，$0<\operatorname{Re}s<1$，
+$\displaystyle{\int_0^\infty t^{s-1}\sin t\,dt
+=\Gamma(s)\sin\frac{\pi s}{2}}$，$-1<\operatorname{Re}s<1$.
+
+\begin{proofc}
+    记$\displaystyle{I_i=\int_{\gamma_i}z^{s-1}e^{iz}\,dz,i=1,2,3,4}$，
+    有$I_1+I_2+I_3+I_4=0$.
+
+    当$0<\operatorname{Re}s<1$时，令$r\rightarrow0,R\rightarrow\infty$有
+    \begin{align*}
+    I_3&=\int_{\gamma_3}(iy)^{s-1}e^{-y}d(iy)\rightarrow-\Gamma(s)i^s=-\Gamma(s)e^{i\frac{\pi s}{2}},\\
+
+    |I_2|&\leq\int_{\gamma_2}|(Re^{i\theta})^{s-1}e^{iRe^{i\theta}}d(Re^{i\theta})|
+    =R^{\operatorname{Re}s}\int_0^\frac{\pi}{2}e^{-\theta\operatorname{Im}s-R\sin\theta}d\theta\\
+    &\leq R^{\operatorname{Re}s}C\int_0^\frac{\pi}{2}e^{-R\frac{2\theta}{\pi}}d\theta
+    \leq R^{\operatorname{Re}s-1}C\int_0^\infty e^{-\frac{2\theta}{\pi}}d\theta\rightarrow0,\\
+
+    |I_4|&\leq r^{\operatorname{Re}s}\int_0^\frac{\pi}{2}e^{-\theta\operatorname{Im}s-r\sin\theta}d\theta
+    \leq r^{\operatorname{Re}s}C\frac{\pi}{2}\rightarrow0,
+    \end{align*}
+    其中$C=\max\{1,e^{-\frac{\pi}{2}\operatorname{Im}s}\}$是常数. 
+    于是$I_1\rightarrow\Gamma(s)e^{i\frac{\pi s}{2}}$.
+
+    对$s\in\R$，分离实复部即得上面两式；对一般的$s$，利用唯一性（同下）.
+    \begin{tikzpicture}
+        \draw[->](-2.5,-2)--(2.5,-2);
+        \draw[->](-2,-2.5)--(-2,2.5);
+        \draw (2,-2) arc (0:90:4);
+        \draw (-1.5,-2) arc (0:90:0.5);
+        \draw (-0.1,-2.06)--(0.1,-2)--(-0.1,-1.94);
+        \draw (-2.06,0.1)--(-2,-0.1)--(-1.94,0.1);
+        \draw (0.8,0.74)--(0.73,0.92)--(0.9,0.86);
+        \draw (-1.75,-1.66)--(-1.584,-1.72)--(-1.67,-1.54);
+        \draw (2,-2.2) node {$R$};
+        \draw (-2.3,2) node {$iR$};
+        \draw (-1.5,-2.2) node {$r$};
+        \draw (-2.2,-1.5) node {$ir$};
+        \draw (0,-2.3) node {$\gamma_1$};
+        \draw (1,1.1) node {$\gamma_2$};
+        \draw (-2.3,0) node {$\gamma_3$};
+        \draw (-1.425,-1.44) node {$\gamma_4$};
+    \end{tikzpicture}
+    要说明第二式在$-1<\operatorname{Re}s<1$成立，只需说明
+    $f(s)=\displaystyle{\int_0^\infty t^{s-1}\sin t\,dt}$全纯，
+    这是因为右边也全纯及全纯函数的唯一性. 
+    注意到$f_n(s)=\displaystyle{\int_0^n t^{s-1}\sin t\,dt}$全纯（使用Morera与Fubini），
+    且当$n\rightarrow\infty$时有内闭一致的收敛
+    \begin{align*}
+        |f(s)-f_n(s)|&=\bigg|\int_n^\infty t^{s-1}\sin t\,dt\bigg|
+        =\bigg|-t^{s-1}\cos t\big|_n^\infty
+        +(s-1)\int_n^\infty t^{s-2}\cos t\,dt\bigg|\\
+        &\leq|n^{s-1}|+|s-1|\int_n^\infty|t^{s-2}|\,dt
+        =\Big(1+\frac{|s-1|}{1-\operatorname{Re}s}\Big)
+        n^{\operatorname{Re}s-1}\rightarrow0.
+    \end{align*}
+\end{proofc}
+
+\textbf{习题. } 第$n$个素数$p_n\sim n\log n$.
+
+\begin{proofc}
+    由$n=\pi(p_n)\sim\frac{p_n}{\log p_n}$
+    得到$\log n\sim \log\frac{p_n}{\log p_n}\sim\log p_n$.
+\end{proofc}
+
+\textbf{习题. } 对Mangolt函数$\Lambda(n)
+=\begin{cases}\log p,&n=p^m\\0,&\text{其它}\end{cases}$，定义Chebyshev函数
+$\psi(x)=\sum\limits_{n\leq x}\Lambda(n)$. 证明$\displaystyle{\pi(x)\sim\frac{x}{\log x}}$等价于
+$\psi(x)\sim x$.
+
+\begin{proofc}
+    注意到$\psi(x)$与$\varTheta(x)=\sum\limits_{p\leq x}\log p$（称为Chebyshev theta函数）相差
+    $$\sum_{n\leq x,n\neq p}\Lambda(n)
+    =\sum_{2\leq m\leq\log_2\!x}\sum_{p\leq\!\sqrt[m]{x}}\log p
+    \leq(\log_2x-1)\sqrt{x}\log x=o(x),$$
+    故$\psi(x)\sim x$等价于$\varTheta(x)\sim x$. 
+    下面证明$\pi(x)\sim\frac{x}{\log x}$等价于$\varTheta(x)\sim x$. 
+    待定$q=q(x)\in(0,1)$，
+    $$\pi(x)\log x\geq\varTheta(x)\geq\sum_{x^q\leq p\leq x}\log p\geq (\pi(x)-\pi(x^q))\log x^q
+    \geq(\pi(x)-x^q)q\log x,$$
+    为了使$(\pi(x)-x^q)q\log x\sim\pi(x)\log x$，
+    取$q\sim 1$而且$\log x=o(x^{1-q})$就可以了.
+\end{proofc}
+
+\section*{附：曲率的计算}
+下面来验证双曲度量一章中度量$ds^2=\rho^2(dx^2+dy^2)$的曲率$K(p)$等于
+$-\frac{1}{\rho^2}\Delta\log\rho$.
+
+$2$维Riemann流形$M$的Gauss曲率的定义是
+\footnote{见$\,$John M. Lee $\textit{Riemannian Manifolds}$ GTM 176 \S 8, pp.143-4；\\
+又见Loring W. Tu $\textit{Differential Geometry}$ GTM 275 \S12.2, p.91.}
+$$K(p)=\frac{\langle R(u,v)v,u\rangle}{\langle u,u\rangle\langle v,v\rangle-\langle u,v\rangle^2},$$
+其中$u,v$是$T_pM$的任何一组基.
+
+对$n$维Riemann流形$M$，设$g=g_{ij}dx^i\otimes dx^j$，
+曲率张量的表达式为\footnote{见陈维桓《黎曼几何引论》（上册）\S4.1，pp.228-9.}
+\begin{align*}
+    R_{klij}&:=\Big\langle R\Big(\frac{\partial}{\partial x^i},\frac{\partial}{\partial x^j}\Big)\frac{\partial}{\partial x^k},\frac{\partial}{\partial x^l}\Big\rangle\\
+    =\,&\frac{1}{2}\Big(\frac{\partial^2g_{ik}}{\partial x^j\partial x^l}+\frac{\partial^2g_{jl}}{\partial x^i\partial x^k}-\frac{\partial^2g_{il}}{\partial x^j\partial x^k}-\frac{\partial^2g_{jk}}{\partial x^i\partial x^l}\Big)\\
+    &+\Gamma_{ik}^p\Gamma_{jl}^hg_{ph}-\Gamma_{il}^h\Gamma_{jk}^pg_{ph}.
+\end{align*}
+取$u=\frac{\partial}{\partial x},v=\frac{\partial}{\partial y}$，由$g_{ij}=\rho^2\delta_{ij}$得
+$$\Gamma_{ij}^k=\frac{1}{2\rho^2}\Big(\frac{\partial g_{ik}}{\partial x^j}+\frac{\partial g_{jk}}{\partial x^i}-\frac{\partial g_{ij}}{\partial x^k}\Big),$$
+于是
+$$\Gamma_{11}^1=\frac{\rho_x}{\rho},\ \Gamma_{11}^2=-\frac{\rho_y}{\rho},\ 
+\Gamma_{12}^1=\frac{\rho_y}{\rho},\ \Gamma_{12}^2=\frac{\rho_x}{\rho},\ 
+\Gamma_{22}^1=-\frac{\rho_x}{\rho},\ \Gamma_{22}^2=\frac{\rho_y}{\rho}.$$
+代入上面的公式得
+\begin{align*}
+R_{2112}&=\frac{1}{2}(-(\rho^2)_{xx}-(\rho^2)_{yy})+(\Gamma_{12}^1\Gamma_{12}^1+\Gamma_{12}^2\Gamma_{12}^2)\rho^2-(\Gamma_{11}^1\Gamma_{22}^1+\Gamma_{11}^2\Gamma_{22}^2)\rho^2\\
+&=-(\rho_x^2+\rho\rho_{xx}+\rho\rho_{yy}+\rho_y^2)+(\rho_y^2+\rho_x^2)-(-\rho_x^2-\rho_y^2)\\
+&=\rho_x^2-\rho\rho_{xx}-\rho\rho_{yy}+\rho_y^2.
+\end{align*}
+于是
+$$K(p)=\frac{R_{2112}}{\rho^2\rho^2-0}=\frac{\rho_x^2-\rho\rho_{xx}-\rho\rho_{yy}+\rho_y^2}{\rho^4}.$$
+又有
+$$-\frac{1}{\rho^2}\Delta\log\rho=-\frac{1}{\rho^2}\Big(\Big(\frac{\rho_x}{\rho}\Big)_x+\Big(\frac{\rho_y}{\rho}\Big)_y\Big)=\frac{\rho_x^2-\rho\rho_{xx}-\rho\rho_{yy}+\rho_y^2}{\rho^4}.$$
+
+\textbf{注.}
+\printfootnotes

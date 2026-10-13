@@ -1,0 +1,267 @@
+\theoremstyle{plain}\newtheorem*{1}{习题1}
+\theoremstyle{plain}\newtheorem*{2}{习题2}
+\theoremstyle{plain}\newtheorem*{3}{习题3}
+\theoremstyle{plain}\newtheorem*{4}{习题4}
+\theoremstyle{plain}\newtheorem*{5}{习题5}
+\theoremstyle{plain}\newtheorem*{6}{习题6}
+\theoremstyle{plain}\newtheorem*{7}{习题7}
+\theoremstyle{plain}\newtheorem*{8}{习题8}
+\theoremstyle{plain}\newtheorem*{9}{习题9}
+\theoremstyle{plain}\newtheorem*{10}{习题10}
+\def\E{\mathbb{E}}
+\def\R{\mathbb{R}}
+\def\N{\mathbb{N}}
+\def\B{\mathcal{B}}
+\def\M{\mathcal{M}}
+\def\prob{\mathbb{P}}
+\def\t{\underline{t}}
+\def\c{\underline{c}}
+\newtheorem{prop}{性质}
+
+\section{策略与组合结构}
+
+\begin{definition}
+设 $k$ 是正整数。
+\begin{enumerate}
+\item 一个着色（coloring）是一个序列 $\underline{c} = (c_1, \ldots, c_k)$，其中 $c_i \in \{1, \ldots, k\}$，且 $c_1 = 1$，$\forall a \in \{1, \ldots, k-1\}$，$c_{a+1} \leq 1 + \max\limits_{1 \leq j \leq a}\{ c_j\}$。着色中的元素称为颜色。
+\item 设 $\underline{t }\in [n]^k$ 是一个数组，$\underline{c}$ 是一个着色。称 $\underline{t}$ 匹配 $\underline{c}$，若
+\[
+\forall i, j \in [k], \quad t_i = t_j \iff c_i = c_j.
+\]
+有时也称 $\underline{c}$ 是 $\underline{t}$ 的着色，记作 $\underline{c} = \underline{c}(\underline{t})$。
+\end{enumerate}
+\end{definition}
+
+一个着色可用于表明一个数组中哪些元素相同、哪些不同。一个数组仅能匹配一个着色。
+
+\begin{example}
+    $\underline{t} = (5, 1, 4, 13, 4)$，对应着色 $\underline{c} = (1, 2, 3, 4, 3)$。
+
+一个着色对应 $n(n-1)\cdots(n-l+1)$ 个数组（其中 $l$ 是颜色数）。
+\end{example}
+
+\section{半圆律}
+
+
+\[
+\langle \sigma, x^k \rangle = 
+\begin{cases} 
+\frac{1}{\frac{k}{2}+1} \binom{k}{k/2}, & k \text{ even}, \\
+0, & k \text{ odd}.
+\end{cases}
+\]
+
+对 Wigner 矩阵，ESD 的 $k$ 阶矩：
+
+\begin{equation*}
+    \begin{aligned}
+        \langle \sigma_n, x^k \rangle& = \frac{1}{n} \sum_{i=1}^n \lambda_i^k = \frac{1}{n} Tr(W_n^k) = \frac{1}{n} Tr\left( \left( \frac{1}{\sqrt{n}} X_n \right)^k \right)\\
+        &=\frac{1}{n^{1 + k/2}} \sum_{i=1}^n (X_n^k)(i,i) \\
+        &=\frac{1}{n^{1 + k/2}} \sum_{(t_1, \ldots, t_k) \in [n]^k} X_n(t_1, t_2) \cdots X_n(t_k, t_1)\\
+        &= \frac{1}{n^{1 + k/2}} \sum_{\underline{t} \in [n]^k} X_n(\underline{t}) \quad (\text{其中 } X_n(\underline{t}) = X_n(t_1,t_2)\cdots X_n(t_k,t_1)).
+    \end{aligned}
+\end{equation*}
+
+\begin{lemma}
+令 $n,k \in \mathbb{N}$，$n \ge k$。
+\begin{enumerate}
+\item $[k]^k$ 中最多有 $k!$ 种着色。
+\item 设 $\underline{c} \in [k]^k$ 是具有 $l$ 种颜色的着色，则匹配 $\underline{c} $ 的数组数为：
+\[
+\#\{ \underline{t}  \in [n]^k : \underline{t}  \sim \underline{c}  \} = n(n-1)\cdots(n-l+1).
+\]
+\item 对 $\underline{t}  \in [n]^k$，记 $V(\underline{t} ) = \{t_1, \ldots, t_k\}$，则 $\underline{c} (\underline{t} )$ 有 $\#V(\underline{t} )$ 种颜色。故
+\[
+\#\{ \underline{t} ' \in [n]^k :\underline{t} '\sim \underline{c} (\underline{t} ) \} = n(n-1)\cdots(n - \#V(\underline{t} ) + 1).
+\]
+\end{enumerate}
+\end{lemma}
+
+每个数组 $\underline{t} \in [n]^k$ 可以张成一个 Euler 图：
+$\underline{t}=(t_1,\cdots,t_k)$.
+\[
+\mathcal{G}(\underline{t}) = (V(\underline{t}), E(\underline{t}), \phi_{\underline{t}} ),
+\]
+其中 $V(\underline{t}) = \{t_1, \ldots, t_k\}$（顶点集），
+
+$E(\underline{t}) = \{e_1, e_2, \ldots, e_k\}$（边集），
+
+\(\phi_{\underline{t}} (e_i) = (t_i, t_{i+1}), \quad t_{k+1} \equiv t_1.\)
+
+\begin{remark}
+图中顶点可以重复，可以含自环（loop）和多重边。
+\end{remark}
+
+
+\begin{definition}
+    $\forall \t \in [n],$定义$ \rho(\t) =\{ (\rho_1(\t), \ldots, \rho_k(\t)),\text{其中} \rho_i(\t) = \# \{\phi_{\t}{(e)} \mid e \text{ 是一个 } l \text{ 重边}\}\}$.
+    称$\rho(\t)$为$\t$的一个profile.
+
+    这里，$l$重边是指有 \( l-1 \) 个 \( E(\t) \) 中的元素 \( e_2', \ldots, e_l' \),
+使得 \(\phi_{\t}(e_i') = \phi_{\t}(e), i=2, \ldots, l\). (有 \(l\) 条边连接两个顶点)
+\end{definition}
+
+对任意 \( l \in [k] \), 欧拉回路正好穿越$\rho_l$个不同的
+$l$重边, 故有 \( k = \sum_{i=1}^{l} i \rho_i(\t) \).
+
+对任意$k\in\mathbb{N}$，我们记$\Pi(k)=\{\rho \in \{0, \ldots, k\}^k \mid \rho \text{ 是某个 } \t \in [n]^k \text{ 的 profile} \}$.
+
+\begin{equation*}
+    \begin{aligned}
+        \langle \sigma_n, x^k \rangle &= \frac{1}{n^{1+\frac{k}{2}}} \sum_{\t \in [n]^k} X_n(\t)\\
+        &=\sum_{\rho \in \Pi(k)} \frac{1}{n^{1+\frac{k}{2}}} \sum_{\t \in T^n(\rho)} X_n(\t)
+    \end{aligned}
+\end{equation*}
+其中\(
+T^n(\rho) = \{ \t \in [n]^k \mid \rho(\t) = \rho \}
+\)
+
+\begin{lemma}
+  \(\forall n, k \in \N, l \in \{1, \ldots, k\}\). 有
+
+\begin{equation*}
+\# \{ \t \in [n]^k \mid \# V(\t) \leq l \} \leq k^k \cdot n^l
+\end{equation*}  
+\end{lemma}
+
+\begin{proof}
+    \([k]^k\) 满足最多有 \(l\) 个颜色的着色个数 \(\leq k^k\).
+
+与 $\c$ 对应的数组$\t$的个数 \((n)_{l}=n (n-1) \cdots (n-l+1) \leq n^l\).
+\end{proof}
+
+为了使用之前随机概率测度收敛的定理，我们现在需要考察期望矩的收敛性，即
+\[\E(\langle\sigma_n, x^k\rangle) = \sum_{\rho \in \Pi(k)} \frac{1}{n^{1+\frac{k}{2}}} \sum_{\t \in T^n(\rho)} \E(X_n(\t))\]
+
+\begin{remark}
+    对于这个期望矩，我们有以下两点观察：
+    
+(1)\(\rho \in \Pi(k), \, \rho_1 > 0\).
+\(\forall \t \in T^{n}(\rho)\), 则 \(\E X_n(\t) = 0\).
+(有非零单边，则\(X_n(t_1,t_2) \cdots X_n(t_k,t_1)\)中，该边只出现一次，期望为0.)
+
+(2) \(\forall \t \in [n]^k, \, |\E X_n(t)| \leq L_k\).
+\end{remark}
+
+\begin{lemma}
+    设$k$是任意自然数，则：
+
+(1)$\#\Pi(k)\le 4^k$.
+
+(2)\( n \in \mathbb{N} \), \( \rho \in \Pi(k) \).
+
+(a) \( \forall \t \in T^n(\rho) \),  \( \# V(\t) \leq 1 + (\rho_1 + \cdots + \rho_l) - L(\t)， \)
+其中 \( L(\t) \) 是 \( \mathcal{G} \) 中圈的个数。
+\(\Rightarrow\)  \(\# T^n(\rho) \leq k^k n^{1 + \rho_1 + \cdots + \rho_k} \).
+
+(b)\(\rho\) 包含一个奇级重的边 。  \(\forall \t \in T^n(P)\),
+ \( \# V(\t) \leq \rho_1 + \cdots + \rho_k \), \(\Rightarrow\)  \( \#T^n(\rho) \leq k^k n^{\rho_1 + \cdots + \rho_k} \).
+\end{lemma}
+
+\begin{proof}
+    (1)若$\rho$是某个数组 \( \t \in [n]^k \) 的 profile , 则 \(\sum\limits_{l=1}^k l \rho_l = k\) ,
+\(\rho_l \in \{0, 1, \ldots, \lfloor \frac{k}{l} \rfloor\}\)
+
+故  \( \Pi(k) \leq \prod_{l=1}^k (\frac{k}{l}+1) = \prod_{l=1}^k \frac{k+l}{l} = \binom{2k}{k} \sim \frac{4^k}{\sqrt{\pi k}}. \)
+
+(2)
+(a)记 \( L(\t) = L_1(\t) + \cdots + L_k(\t) \).
+\( L_i(\t) \) 是 \( \t \) 中$i$ 重圈。 \( \rho_l - L_l(\t) \) 可能贡献出新颜色
+ \( \# V(t) \leq 1 + \sum\limits_{i=1}^l (\rho_i - L_i(\t)) = 1 + \sum\limits_{i=1}^l \rho_i - L(\t) \).
+
+(b)固定$\t$中的一个$l$重边($l$是奇数)，
+在循环中对应 \( e_{i_1}, \ldots, e_{i_l} \) .由于$l$是奇数，存在 \( k \in \{1, \ldots, l\} \)，使得 \( e_{i_k} \) 和 \( e_{i_{k+1}} \) 穿越的方向相同。
+
+从 \( t_{i_k} \) 出发，\( e_{i_1}, \ldots, e_{i_k} \) 都不会贡献新的顶点。顶点 \( t_{i_{k+1}} \) 之前已经计入，故最多 有\( \rho_{i_1} + \cdots + (\rho_{i_k}-1) + \cdots + \rho_{i_{k+1}} = \rho_{i_1} + \cdots + \rho_{i_k} \)个顶点。
+\end{proof}
+
+现在要估计$\frac{1}{n^{1+k/2}}\sum\limits_{\t \in T^n(\rho)} X_n(\t)$.一共分以下三种情况讨论：
+
+Case1:\( \rho_1 = 0 \) 且 \( \rho_l > 0 \)，\( l \geq 3 \).
+
+若 \( \rho \) 含奇数重边，\( \#T^n(\rho) \leq k^k \cdot n^{\rho_1 + \cdots + \rho_k} \)
+
+由于 \(\sum\limits_{i=1}^k i \rho_i = k \land (\rho_1 = 0)\)，
+\begin{equation*}
+\Rightarrow \sum_{i=1}^k \rho_i \leq \sum_{i \neq l} i \rho_i + 2 \rho_l = k - (l-2) \rho_l \leq k - 1
+\end{equation*}
+故 \(\sum\limits_{i=1}^k \rho_i \leq \frac{k-1}{2}\).
+
+若 \( \rho \) 不含奇数重边， \(\# T^n(\rho) \leq k^k \cdot n^{1 + \rho_1 + \cdots + \rho_k} \)
+且有\(1 + \sum\limits_{i=1}^{k} \rho_i \leq \frac{k}{2}\)，留做习题。
+
+\begin{9}
+    证明当$\rho$不含奇数重边时，有$1 + \sum\limits_{i=1}^{k} \rho_i \leq \frac{k}{2}$成立。
+\end{9}
+
+\begin{proof}
+    设$\rho$是一个不含奇数重边的profile，即对所有奇数$l$，有$\rho_l = 0$。由profile的定义，我们有：
+\[
+\sum_{l=1}^k l \rho_l = k
+\]
+由于所有$l$均为偶数，可设$l = 2m_l$，则：
+\[
+\sum_{l=1}^k (2m_l) \rho_l = k \quad \Rightarrow \quad 2\sum_{l=1}^k m_l \rho_l = k
+\]
+因此$k$必为偶数，记$k = 2s$。
+
+现在考虑$\sum\limits_{l=1}^k \rho_l$。由条件知存在某个$l_0 \geq 3$（且$l_0$为偶数）使得$\rho_{l_0} > 0$。由于所有$l$均为偶数且不为$0$，故$l \geq 2$，且对$l_0$有$l_0 \geq 4$（因为$l_0$是偶数且$\geq 3$）。
+
+于是：
+\[
+k = \sum_{l=1}^k l \rho_l = l_0 \rho_{l_0} + \sum_{l \neq l_0} l \rho_l \geq 4 \rho_{l_0} + 2(\sum_{l=1}^k \rho_l - \rho_{l_0}) \ge 2\sum_{l=1}^k \rho_l + 2
+\]
+即：
+\[
+2s = k \geq 2\sum_{l=1}^k \rho_l + 2 \quad \Rightarrow \quad \sum_{l=1}^k \rho_l \leq s - 1
+\]
+因此：
+\[
+1 + \sum_{l=1}^k \rho_l \leq 1 + (s - 1) = s = \frac{k}{2}
+\]
+
+\end{proof}
+
+
+
+这样，对于这些$\rho$,
+\begin{equation*}
+    \begin{aligned}
+       & \frac{1}{n^{1+\frac{k}{2}}} \sum_{\t \in T^n(\rho)} \E(X_n(\t))\\
+        &\leq \frac{L_k}{n^{1+\frac{k}{2}}} \#\{t \in T^n(\rho)\}\\
+        &\leq \frac{L_k}{n^{1+\frac{k}{2}}} \cdot k^k \cdot n^{\frac{k}{2}} = O\left( \frac{1}{n} \right) \to 0
+    \end{aligned}
+\end{equation*}
+
+Case2:\( \rho_1 > 0, \) \( \E(X_n(t)) = 0 \).
+
+Case3:\(\rho_2=\frac k2.\)(必须$k$是偶数才有这种情况).这是唯一对
+${\frac1{n^{1+\frac{k}{2}}}} \sum\limits_{\t \in T^n(\rho)} \E(X_n(\t))$的期望有渐近贡献的情况，即$\rho$只包含两重边。
+
+设 \( \rho^{(k)} := \{ \rho^{(k)} \in \Pi(k), \rho^{(k)} = \frac{k}{2} \text{且}\rho_l^{(k)} = 0, (l\neq 2) \} \)
+对这里的$\t$，由于只有平方项，因此$\E(X_n(\t))=1$.故
+
+\begin{equation*}
+\frac{1}{n^{1+\frac{k}{2}}} \sum_{t \in \rho^{(k)}} \E(X_n(\t))=\frac{1}{n^{1+\frac{k}{2}}} \#\{\t\in\rho^{(k)}\}.
+\end{equation*}
+\(\forall \t \in \rho^{(k)} \) 最多有 \( \frac{k}{2} + 1 \) 顶点。把 \( T^n(\rho^{(k)}) \) 做分解：
+
+\begin{equation*}
+T_{\leq \frac{k}{2}}^n (\rho^{(k)}) = \{ \t \in T^n(\rho^{(k)}) , \# V(\t) \leq \frac{k}{2} \}
+\end{equation*}
+
+\begin{equation*}
+T_{\frac{k}{2}+1}^n (\rho^{(k)}) = \{\t \in T^n(\rho^{(k)}) , \# V(\t) = \frac{k}{2} + 1 \}
+\end{equation*}
+由之前引理，\(\# T_{\leq \frac{k}{2}}^n (\rho^{(k)}) \leq k^k \cdot n^{\frac{k}{2}}\),从而
+\begin{equation*}
+    \begin{aligned}
+        \frac{1}{n^{1+k/2}}\sum_{\t\in T^n(\rho^{(k)})}\E(X_n(\t))&=\frac{1}{n^{1+k/2}}\sum_{\t\in T_{\frac k2+1}^n(\rho^{(k)})}\E(X_n(\t))+\frac{1}{n^{1+k/2}}\sum_{\t\in T_{\le \frac k2}^n(\rho^{(k)})}\E(X_n(\t))\\
+        &=\frac{1}{n^{1+k/2}}\sum_{\t\in T_{\frac k2+1}^n(\rho^{(k)})}\E(X_n(\t))+o(1)\\
+        &=\frac{1}{n^{1+k/2}}\#\{\t\in T_{\frac k2+1}^n(\rho^{(k)})\}
+    \end{aligned}
+\end{equation*}
+
+为了计算 \( T_{\frac{k}{2}+1}^n \) 中元素个数，计算所有着色的数量。
+由引理2.1，满足这样着色的数组个数为$n(n-1)\cdots(n-\frac k2)$.易见
+\[\frac{n(n-1)\cdots(n-\frac k2)}{n^{1+\frac k2}}\rightarrow 1(n\to \infty).\]

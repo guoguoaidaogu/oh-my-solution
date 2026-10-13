@@ -1,0 +1,1797 @@
+\section{Zorn引理}
+\begin{enumerate}
+    \item[1.0.]
+        设$V$是域$k$上的一个无限维向量空间，$B$是其一组基，$T$是$V$的一个线性无关子集. 
+        证明：存在$B$的子集$C$,使得$T \cup C$是$V$的一组基.\par
+    \item[\textbf{证明:}]    
+        考虑$\Omega=\{C\subset B\mid T\cup C\text{ 线性无关}\}$.
+        易证其在包含关系下为非空递归集，因此存在极大元$C_0$.\\
+    由$C_0$的极大性可知$B\subset \operatorname{Span}(C_0\cup T)$，可见$C_0$为一组基. 
+
+    \item[1.1.]
+        设$(X,\leq)$是一个非空递归偏序集. $x \in X$. 
+        记$S(x)=\{y \in X \mid x \leq y\}$. \par
+        
+        \item[(1)] 证明：$(S(x),\leq)$是一个非空递归偏序集.
+        \item[\textbf{证明:}]   $\leq$由$(X,\leq)$诱导, 故其为偏序. 
+            $x\in S(X)$, 故$S(x)$非空.\par
+            考虑$S(X)$中任意一个非零全序子集$A$, 则因为$A\subset S(x) \subset X$, 
+            故$A$是$X$中的全序子集, 因此$A$在$X$中有上界$M$.\par
+            我们说$M\in S(X)$, 事实上, 任取$y\in A\subset S(x)$, 有$x\leq y$, 
+            而$y\leq M$, 因此$x\leq M$, 即有$M\in S(x)$.
+    
+        \item[(2)] 证明：存在$X$中的极大元$t$使得$x \leq t$.
+        \item[\textbf{证明:}]
+            因为$(S(x),\leq)$是非空递归偏序集, 故由Zorn引理, 
+            知存在$S(x)$中的极大元$t$, 下证$t$也是$X$中的极大元.\par
+            对于$X$中的任意元素$y$, 若$t\leq y$, 则$x\leq y$, 故$y\in S(x)$. 
+            但$t$是$S(x)$中的极大元且$t\leq y$, 因此$t=y$, 故$t$也是$X$中的极大元.
+
+        {{comment|这说明我们可以在指定一个元素的情况下, 找到一个可以与之相比较的极大元.}}
+
+        \item[(3)] 设$R$是环. $I$是$R$的左理想且$I \neq R$. 
+        证明：存在$R$的极大左理想$M$满足$M \supseteq I$.
+        \item[\textbf{证明:}]   由(1), (2)易得.
+    
+    \item[1.2]
+    设$R$是交换环. (a) 证明：$R$有极小素理想. 
+    （一个素理想$P$称为极小的，若有素理想$J$满足$J\subseteq P$则有$J=P$）.
+
+    (b) 设$J$是一个素理想。证明：存在$R$的极小素理想$P$满足$P\subseteq J$.
+
+    \item[\textbf{证明:}]
+        (a) 设$R$的素理想集合$\operatorname{Spec}(R)$上有序关系
+        $\mathfrak{p}\le\mathfrak{q}
+        \Leftrightarrow\mathfrak{p}\supseteq\mathfrak{q}$。
+        对于全序链$\{\mathfrak{p}_\alpha\}$，
+        交集$\mathfrak{p}=\bigcap\limits_\alpha\mathfrak{p}_\alpha$是理想，
+        下面说明$\mathfrak{p}\in\operatorname{Spec}(A)$，
+        就有$\{\mathfrak{p}_\alpha\}$的一个上界$\mathfrak{p}$。
+
+        设$xy\in\mathfrak{p}$而$x\notin\mathfrak{p}$，
+        对任意$\alpha$，$xy\in\mathfrak{p}_\alpha$，
+        $\mathfrak{p}_\alpha$包含$x,y$之一，
+        且$x\notin\mathfrak{p}$就是说$x\notin\mathfrak{p}_\beta$对某个$\beta$。
+
+        那么对$\mathfrak{p}_\alpha\subseteq\mathfrak{p}_\beta$，
+        有$x\notin\mathfrak{p}_\alpha$，故$y\in\mathfrak{p}_\alpha$；
+        对$\mathfrak{p}_\alpha\supseteq\mathfrak{p}_\beta$，
+        $y\in\mathfrak{p}_\beta$，故$y\in\mathfrak{p}_\alpha$。
+
+        (b) $\operatorname{Spec}(R)$替换成
+        $\{\mathfrak{p}\in\operatorname{Spec}(R)\mid\mathfrak{p}\subseteq J\}$。
+
+    \item[1.3.]
+        设$R$是交换环. $S$是$R$的一个非空子集且对乘法封闭,
+        即对$ \forall s_{1},s_{2} \in S$,都有$s_{1}s_{2} \in S$.\par
+        
+        \item[(a)]设$0 \notin S$，$1 \in S$.
+        证明：存在素理想$P$，使得$P \cap S=\varnothing $.
+        \item[\textbf{证明:}]
+            考虑$\mathscr{T}=\{I\mid I$是$R$的理想, 
+            且$I\cap S=\varnothing\} \supset \{0\}$, 因此非空. 
+            取偏序关系$I_1\leq I_2$若$I_1\subset I_2$.\par
+            则对于任意全序子集$\{I_j\}_{j\in J}$, 
+            有$\bigcap\limits_{j\in J} I_j$是$R$的理想, 且不交$S$, 
+            故其属于$\mathscr{T}$. 因此$(\mathscr{T},\leq)$是非空递归偏序集, 
+            由Zorn引理, 存在极大元$P\in \mathscr{T}$, 下面说明$P$是素理想.\par
+            对于任意$a\notin P, b\notin P$，因为$P$在$\mathscr{T}$中极大, 
+            我们有$P+Ra$, $P+Rb$交$S$非空，\par
+            即存在$s_1, s_2\in S$, $r_1, r_2\in R$, $p_1, p_2\in P$, 
+            使得$\begin{cases}s_1=r_1a+p_1\\ s_2=r_2b+p_2\end{cases}$.\par
+            那么$s_1s_2=p_1p_2+r_2bp_1+r_1ap_2+r_1r_2ab\in S$, 
+            $S$与$P$不交, 但右式前三项均在$P$中, 故$ab\notin P$.
+
+        \item[(b)]$a \in R$称为幂零元，若存在正整数$n$使得$a^{n}=0$. 
+            记$r(0)$为$R$中幂零元的全体.证明：\par
+            \begin{itemize}
+                \item[(i)] $r(0)$ 是$R$的理想；\par
+                \item[(ii)] $r(0)$等于$R$的所有素理想的交集.\par
+            \end{itemize}
+            (Hint: 对$b \in R$非幂零元，考虑 $S=$ $\left\{b^{n} \mid n=0,1,2,\cdots \right\}$.)
+
+        \item[\textbf{证明:}]
+            (i) 对$a,b\in r(0)$，设$a^n=0$，$b^m=0$，
+            则$(a+b)^{n+m}=\sum\limits_{i=0}^{n+m}
+            \binom{n+m}{i}a^i b^{n+m-i}=0$.
+            对$a\in r(0)$，$r\in R$，设$a^n=0$，则$(ra)^n=0$.
+
+            (ii)
+                设$R$的所有素理想的集合为$\operatorname{Spec}(R)$. 
+                对于任意素理想$P$, 任意$a\in r(0)$, 存在正整数$n$使得$a^n=0\in P$, 
+                因此$a\in P$, 故$r(0)\subset P$, 
+                进而$r(0)\subset \bigcap\limits_{P\in \operatorname{Spec}(R)} P$.\par
+                另一方面, 对于任意$b\notin r(0)$, 考虑集合$S_b=\{1,b,b^2,\cdots\}$. 
+                则$1\in S_b$, $0\notin S_b$, 由(a)知, 存在素理想$P_b$
+                使得$P_b\cap S_b=\varnothing$, 即$P_b\subset R\setminus S_b$，
+                故$\bigcap\limits_{P\in \operatorname{Spec}(R)} P
+                \subset \bigcap\limits_{b\notin r(0)} P_b
+                \subset R\setminus \Big(\bigcup\limits_{b\notin r(0)} S_b\Big)=r(0)$.
+
+    \item[1.4.]
+    设$M$是有限生成$R$-模且$M \neq \left\{0\right\}$. 证明：$M$一定有极大子模.\par
+    \item[\textbf{证明:}]
+    令$\mathscr{X}:=\{N\mid N\text{ 是 }M\text{ 的真子模}\}$. 
+    由$M\neq \{0\}$可知$\{0\}\in \mathscr{X}$，因而$\mathscr{X}$非空. 
+    取包含关系为偏序关系使$\mathscr{X}$为偏序集.\par
+    考虑$\mathscr{X}$的全序子集$\{N_i\}_{i \in I}$，
+    取$N:=\bigcup\limits_{i \in I}N_i$，不难验证$N$为$M$的子模(这里要用全序集的性质).\par
+    同时，设$M=\langle t_1,\cdots,t_n\rangle$且假设$N=M$，
+    可不妨设$t_i \in N_i$，$\forall 1 \leq i \leq n$
+    且$N_1 \subset \cdots \subset N_n$，则有$M=N_n$与$N_n \in \mathscr{X}$相悖，
+    从而$N\in \mathscr{X}$，即$\{N_i\}$在$\mathscr{X}$中有上界.\par
+    综上可知$\mathscr{X}$符合Zorn引理条件，因而存在极大元$N_0$，易见$N_0$即为极大子模.
+    \end{enumerate}
+
+    
+
+\section{环与模的一些性质}
+
+     \begin{enumerate}
+        \item[2.0.]
+        设$K$是域, $K[x]$是$K$上的一元多项式环. 
+        设$A=\{M\mid M\text{ 是 }K[x]\text{-模}\}$, 
+        $B=\{(V,\alpha)\mid V$是$K$-向量空间, 
+        $\alpha\in \operatorname{End}_K(V)\}$，
+        这里$\operatorname{End}_K(V)$是$V$的$K$-自同态的全体.\par
+        \qquad 证明: $A$与$B$之间有自然的双射.\par
+        Hint: $\alpha(m)=x\cdot m$.\par
+        \item[\textbf{证明:}]
+        记$V_{\alpha}$为作为线性空间与$V$相同，而$k[x]$在其上作用为
+        $p(x)v:=p(\alpha)v$的$k[x]$-模，其中$\alpha \in \operatorname{End}(V)$. 
+        定义$f:B \rightarrow A; (V,\alpha) \rightarrow V_{\alpha}$，
+        那么$f$是单射，因为若$V_{\alpha} = V_{\beta}$，
+        则$V_{\alpha}$与$V_{\beta}$元素相同.
+        且$\beta \cdot v = x \cdot v = \alpha \cdot v$，
+        故$p(\alpha) \cdot v = p(\beta) \cdot v$，即$(V,\alpha)=(V,\beta)$. 
+        而 由于$k[x]$-模自动是一个$k$-模，故是$k$-线性空间. 
+        故$A$中元素皆形如$V_{\alpha}$，其中$\alpha(v) = x \cdot v$. 
+        故对于任意$M \in A$，$M = V_{\alpha} = f((V,\alpha))$. 
+        故$f$是$A$与$B$间的双射. \qed
+
+        （太长不看版:
+        $K[x]$-模由其$K$-模结构与左乘$x$的线性作用所确定，即$K$-向量空间与一个自同态.）
+
+        \item[2.1]
+        证明:有理数的加法群$(\mathbb Q,+)$作为$\mathbb Z$-模不是有限生成的. 
+        $(\mathbb Q,+)$是否有极大子模?
+
+        \item[\textbf{证明:}]
+        假设$(\mathbb Q,+)$是有限生成$\mathbb Z$-模, 
+        设$\frac{a_i}{b_i}$ $(1\leq i\leq n)$为其生成元, 
+        $a_i\in \mathbb Z$, $b_i\in \mathbb Z_+$. 
+        取素数$p>b_1+\cdots+b_n$, 则
+        $\frac{1}{p}\notin \langle \frac{a_1}{b_1},\cdots,\frac{a_n}{b_n}\rangle$, 矛盾. \par
+
+        $(\mathbb Q,+)$没有极大子模. 假设$M$是极大子模, 
+        取$\frac{a}{b}\in \mathbb Q\setminus M$, 则$\frac{1}{b}\notin M$. 
+        由$M$极大知$\langle \frac{1}{b},M\rangle=\mathbb Q$, 
+        故存在$c\in \mathbb Z$, $m\in M$使得$\frac{1}{b^2}=\frac{c}{b}+m$, 
+        从而$\frac{1}{b}=c+bm$. 由于$\frac{1}{b}\notin M$, $bm\in M$, 
+        故有$c\notin M$, 从而$c\neq 0$, 进而有$\frac{1}{n}\notin M$, $\forall n\in \mathbb Z_+$. \par
+        类似我们有$\langle \frac{1}{n},M\rangle=\mathbb Q$, 
+        从而存在$k_n\in \mathbb Z$, $m_n\in M$
+        使得$\frac{1}{n^2}=\frac{k_n}{n}+m_n$, 从而$1=nk_n+n^2m_n$. 
+        由于$1\notin M$, $n^2m_n\in M$, 故有$nk_n\notin M$, 从而$k_n\neq 0$, 
+        进而$\frac{n}{r}\notin M$, $\forall n\in \mathbb Z_+$, $r\in \mathbb Z$. 
+        故$M=\{0\}$, 但$\{0\}\subsetneq \mathbb Z\subsetneq \mathbb Q$, 
+        这意味着$M$不是极大子模, 矛盾. \qed
+        \item[\textbf{另证:}]
+        设$M$是极大子模，取$x\in \mathbb Q\backslash M,y\in M$，
+        设$\frac{x}{y}=\frac{b}{a},a,b\in\Z$，
+        由$M$的极大性可知存在$k\in \Z,m\in M$使得$\frac{x}{a}=kx+m$，
+        则$x=akx+am=kby+am\in M$，矛盾.
+
+  \item[2.2.]
+        设$R$ 是一个环, $M$ 是一个$R$ 模.\\
+(a) 设 $M_1, M_2$ 是 $M$ 的子模. 证明: 有$R$-模同构 
+$(M_1 + M_2)/M_1\cong M_2/(M_1 \cap M_2)$.\\
+(b) 设 $T$, $N$ 是 $M$ 的子模且 $T \subseteq N$. 
+证明: 有 $R$-模同构 $\frac{M/T}{N/T} \cong M/N$.\\
+(c) 设 $N$ 是 $M$ 的子模. 设 $S$ 是商模 $M/N$ 的所有子模的集合，
+$T$ 是 $M$ 的所有包含 $N$ 的子模的集合. 证明：$S$ 与 $T$ 之间有自然的双射.
+\item[\textbf{证明:}]    
+    (a)考虑映射$M_2\rightarrow (M_1 + M_2)/M_1,m\mapsto m+M_1$，利用同构基本定理即可.\\
+    (b)考虑映射$M/T\rightarrow M/N,m+T\mapsto m+N$，利用同构基本定理即可.\\
+    (c)考虑映射$f:S\rightarrow T,P\mapsto \{q\mid q+N\in P\}$
+    及$g:T\rightarrow S,Q\mapsto \{p+N\mid p\in Q\}$，不难看出$f,g$互为逆映射.
+
+        \item[2.3.]
+        设$R$是一个环，$A,B,C$是$R$-模.
+        \item[(a)]证明：$A\cap(B+C)\supseteq A \cap B + A \cap C$.
+        \item[\textbf{证明}] 对于任意$b+c \in A\cap B+A\cap C$
+            满足$b \in A\cap B$且$c \in A\cap C$，有$b+c\in B+C$且$b+c \in A$，
+            可知$b+c \in A \cap(B+C)$，从而$A\cap(B+C)\supseteq A\cap B+A\cap C$.
+        \item[(b)]如果$A \supseteq B$，则$A \cap(B+C)=B+A\cap C$.
+            \item[\textbf{证明}]对于任意$b+c \in A\cap(B+C)$
+            满足$b \in B$且$c \in C$，可见$b \in B \subseteq A$，
+            $c=(b+c)-b \in A$即$c \in A \cap C$，从而$b+c \in A+A\cap C$. 
+            结合(a)可见$A\cap(B+C)=A\cap B+A\cap C$.
+        \item[(c)]举例说明$A \cap(B+C)$可以真包含$A\cap B+A\cap C$.
+            \item[\textbf{证明}]例一. $\mathbb{Z}$-模$\mathbb{Z}^2$有子模
+            $A=\{(n,n)\mid n \in \mathbb{Z}\}$，
+            $B=\{(n,0)\mid n \in \mathbb{Z}\}$，
+            $C=\{(0,n)\mid n \in \mathbb{Z}\}$.\par
+            那么$A\cap(B+C)=A$，$A\cap B=A\cap C=\{(0,0)\}$.
+
+            例二. $\Z$-模$A=\Z$，$B=\sqrt{2}\Z$，$C=(1-\sqrt{2})\Z$，\par
+            有$A\cap(B+C)=A$，$A\cap B=A\cap C=\{0\}$.
+        
+        \item[2.4.]
+        设$R$是一个环, $M$是一个自由$R$-模, $A$, $B$是$M$的两组基. 
+        若$A$是有限集, 证明$B$也是有限集.
+
+        \item[\textbf{证明:}]
+        设$A=\{a_i\}_{i=1}^n$, $B=\{b_j\}_{j\in J}$, 其中$J$是指标集.\par
+        因为$B$是一组基, 则存在$r_i^j\in R$, 
+        使得$a_i=\sum\limits_{j\in J_i}r_i^j b_j$, 其中$J_i\subset J$是有限集.
+
+        考虑有限集$B':=\{b_j\mid j\in \bigcup\limits_{i=1}^n J_i\}\subset B$，
+        有$\langle B'\rangle \supset \langle A \rangle =M$, 
+        因此$B'=B$, 故$B$也是有限集.
+
+
+        \item[2.5.]
+
+        (i)
+        设$R$是一个交换环. 证明$R$是域当且仅当$R$只有$\{0\}$与$R$两个理想.
+
+        \item[\textbf{证明:}]
+        若$R$是域, 设$I\neq \{0\}$是$R$的理想.\par
+        对于任意$0\neq a\in I$, 存在$a$的逆元$a^{-1}\in R$, 
+        故$1=a^{-1}\cdot a\in I$, 进而$I=R$.\par
+
+        若$R$只有$\{0\}$与$R$两个理想, 则$R$的极大理想为$\{0\}$, 进而$R=R/\{0\}$是域.
+
+        \item[\ ](ii)
+        设$R$是一个环. 证明$R$是可除环当且仅当$R$只有$\{0\}$与$R$两个左理想.
+
+        \item[\textbf{证明:}]
+        若$R$是域, 设$I\neq \{0\}$是$R$的左理想.\par
+        对于任意$0\neq a\in I$, 存在$a$的逆元$a^{-1}\in R$, 
+        故$1=a^{-1}\cdot a\in I$, 进而$I=R$.\par
+
+        若$R$只有$\{0\}$与$R$两个左理想.\par
+        则对于任意非零元$a\in R$, 有$R{a}=R$, 
+        故存在$r\in R$, 使得$r\cdot a=1$, 重新记$r=a^{-1}$.\par
+        对$a^{-1}$进行相同操作, 存在$b\in R$, 使得$b\cdot a^{-1}=1$.\par
+        而$b=b\cdot 1=b\cdot a^{-1}\cdot a=1\cdot a=a$, 因此$a$与$a^{-1}$互为逆元.
+
+        \item[2.6.]
+        设$M_2(\mathbb{C})$是复数域$\mathbb{C}$上的$2$阶矩阵环. 
+        对每个复数$z$，$\bar{z}$表示其共轭.
+        设$\mathcal{H}=\{\left(\begin{matrix}z&w\\
+            -\bar{w}&\bar{z}\end{matrix}\right)\in M_2(\mathbb{C})
+            \mid z,w\in\mathbb{C}\}$.
+
+        \item[(a)]证明：$\mathcal{H}$是$M_2(\mathbb{C})$的子环且是一个可除环；
+        作为实向量空间，$\mathcal{H}$的维数等于$4$，并求出其一组基.
+        \item[\textbf{证明:}]
+        设$H\in\mathcal{H}$不可逆，有$\det H=|z|^2+|w|^2=0$，即$z=w=0$，$H=0$。
+        
+        $\dim_\R\mathcal{H}=2\dim_\mathbb{C}\mathcal{H}=4$，
+        $\begin{pmatrix}1&0\\0&1\end{pmatrix},
+        \begin{pmatrix}i&0\\0&-i\end{pmatrix},
+        \begin{pmatrix}0&1\\-1&0\end{pmatrix},
+        \begin{pmatrix}0&i\\i&0\end{pmatrix}$是一组基。
+
+        \item[(b)]证明：$\mathcal{H}$同构于四元数体.
+        \item[\textbf{证明:}]四元数体是$\operatorname{span}_\R\{1,i,j,k\}$，
+        $i^2=j^2=k^2=-1$，$ij=-ji=k,jk=-kj=i,ki=-ik=j$。对应关系为
+        $$1\leftrightarrow\begin{pmatrix}1&0\\0&1\end{pmatrix},\ \ 
+        i\leftrightarrow\begin{pmatrix}i&0\\0&-i\end{pmatrix},\ \ 
+        j\leftrightarrow\begin{pmatrix}0&1\\-1&0\end{pmatrix},\ \ 
+        k\leftrightarrow\begin{pmatrix}0&i\\i&0\end{pmatrix}.$$
+
+        \item[(c)]求方程$x^2+1=0$在$\mathcal{H}$中的解的集合，
+        这里$1$表示单位阵，$0$表示零矩阵.
+        \item[\textbf{证明:}]
+        $$\begin{pmatrix}z&w\\-\bar{w}&\bar{z}\end{pmatrix}^2
+        =\begin{pmatrix}z^2-|w|^2&(z+\bar{z})w\\
+        -(z+\bar{z})\bar{w}&-|w|^2+\bar{z}^2\end{pmatrix}
+        =\begin{pmatrix}-1&0\\0&-1\end{pmatrix}.$$
+        $(z+\bar{z})w=-(z+\bar{z})\bar{w}$等价于$z/i\in\R$或$w=0$.
+
+        当$z/i\in\R$，设$z=i\sin\theta$，$-\sin^2\theta-|w|^2=-1$，
+        则$w=e^{i\phi}\cos\theta$，
+        $H=\begin{pmatrix}i\sin\theta&e^{i\phi}\cos\theta\\
+        -e^{i\phi}\cos\theta&-i\sin\theta\end{pmatrix}$；
+
+        当$w=0$，$z=\pm i$，
+        $H=\pm\begin{pmatrix}i&0\\0&-i\end{pmatrix}$，蕴含于前者。
+
+        \item[(d)]求$\mathcal{H}$的中心$Z(\mathcal{H})$.
+        \item[\textbf{证明:}]
+        设$\begin{pmatrix}x&y\\-\bar{y}&\bar{x}\end{pmatrix}\in Z(\mathcal{H})$，
+        即$\forall\,z,w\in\mathbb{C}$，成立
+        $$\begin{pmatrix}z&w\\-\bar{w}&\bar{z}\end{pmatrix}
+        \begin{pmatrix}x&y\\-\bar{y}&\bar{x}\end{pmatrix}
+        =\begin{pmatrix}x&y\\-\bar{y}&\bar{x}\end{pmatrix}
+        \begin{pmatrix}z&w\\-\bar{w}&\bar{z}\end{pmatrix},$$
+        就是
+        $$\begin{pmatrix}zx-w\bar{y}&zy+w\bar{x}\\
+        -\bar{w}x-\overline{zy}&-\bar{w}y+\overline{zx}\end{pmatrix}
+        =\begin{pmatrix}zx-\bar{w}y&wx+\bar{z}y\\
+        -z\bar{y}-\overline{wx}&-w\bar{y}+\overline{zx}\end{pmatrix},$$
+        也就是
+        $$w\bar{y}\in\R,\quad (z-\bar{z})y=(x-\bar{x})w,$$
+        表明$y=0,x\in\R$。故$Z(\mathcal{H})=\R$。
+        
+        \item[2.0]
+        设$R$是环，$M$是左$R$-模.
+        \item[(i)]对$\lambda\in R$，$\forall f\in\operatorname{Hom}_R(M,R)$，
+            定义$\lambda f\colon M\rightarrow R$如下：
+            $(\lambda f)(x)=f(x)\lambda, \forall x\in M$. 
+            证明：$\lambda f\in\operatorname{Hom}_R(M,R)$，且在此作用下，
+            $\operatorname{Hom}_R(M,R)$是一个右$R$-模，称为$M$的对偶模，记为$M^*$；
+        \item[\textbf{证明:}]
+
+        \item[(ii)]对$\lambda\in R$，$\forall f\in\operatorname{Hom}_R(R,M)$，
+            定义$\lambda f\colon R\rightarrow M$如下：
+            $(\lambda f)(r)=f(r\lambda), \forall r\in R$. 
+            证明：$\lambda f\in\operatorname{Hom}_R(R,M)$，且在此作用下，
+            $\operatorname{Hom}_R(R,M)$是一个左$R$-模；
+            并证明作为左$R$-模，$\operatorname{Hom}_R(R,M)$同构于$M$.
+        \item[\textbf{证明:}]
+
+        \item[2.1] 求$\operatorname{Hom}_\mathbb{Z}(\mathbb{Z}/n\mathbb{Z},\mathbb{Z})$, 
+        $\operatorname{Hom}_\mathbb{Z}(\mathbb{Z}/n\mathbb{Z},\mathbb{Z}/m\mathbb{Z})$, 
+        这里$n,m>1$是正整数.
+        
+        \item[\textbf{证明:}]
+            对于任意$f\in \operatorname{Hom}_\mathbb{Z}(\mathbb{Z}/n\mathbb{Z},\mathbb{Z})$, 
+            设$f(\bar{1})=a\in \mathbb{Z}$.\par
+            则$0=f(\bar{0})=f(\bar{n})=nf(\bar{1})=na$, 进而$a=0$, 
+            因此$\operatorname{Hom}_\mathbb{Z}(\mathbb{Z}/n\mathbb{Z},\mathbb{Z})\cong \{0\}$.\par
+
+            对于任意$f\in \operatorname{Hom}_\mathbb{Z}(\mathbb{Z}/n\mathbb{Z},\mathbb{Z}/m\mathbb{Z})$, 
+            设$f(\bar{1})=\bar{\bar{a}}\in \mathbb{Z}/m\mathbb{Z}$.\par
+            设$d=\operatorname{gcd}(m,n)$, $m=m_0d$, $n=n_0d$, 
+            则$\operatorname{gcd}(m_0,n_0)=1$.\par
+            $\bar{\bar{0}}=f(\bar{0})=f(\bar{n})=nf(\bar{1})=\overline{\overline{dn_0a}}$. 
+            于是有$dm_0 | dn_0a$, 即$m_0|n_0 a$, 进而$m_0 | a$.\par
+            故$\bar{\bar{a}}=\overline{\overline{km_0}}$，其中$k$可以是$0,1,\cdots,d-1$，
+            相应地有$f(\bar{t})=\overline{\overline{km_0t}}$，
+            $\overline{\overline{km_0n}}=\bar{\bar{0}}$保证了$f$良定. 
+            因此我们有同构$\operatorname{Hom}_\mathbb{Z}(\mathbb{Z}/n\mathbb{Z},\mathbb{Z}/m\mathbb{Z})
+            \cong \mathbb{Z}/ \operatorname{gcd}(m,n)\mathbb{Z}$.
+        
+        \item[2.2]设$R$是一个主理想整区(PID).
+        \item[(a)] 设$p\in R$是不可约元，$x,y\in R$，若$p|xy$，证明：$p|x$或$p|y$.
+        \item[\textbf{证明:}] 即证明$(p)$是素理想，只需证明$(p)$是极大理想。
+        假设$R$的理想$I$使$(p)\subsetneq I$，
+        设$I=(a)$，则$p=ab$，$b$不是单位，就有$a$是单位，$I=R$。
+        \item[(b)] 设$I_1\subseteq I_2\subseteq\cdots\subseteq I_n\subseteq\cdots$
+        是$R$的一个理想升链。证明：存在一个正整数$N$，使得$I_m=I_N$，$\forall m\ge N$.
+        \item[\textbf{证明:}] 观察到$I=\bigcup_n I_n$是一个理想，
+        设$I=(a)$，$a\in I$是说$a\in$某个$I_N$，从而$I\subset I_N$，
+        于是$I=I_N$.
+        \item[(c)] 证明：$R$是唯一分解整区（UFD）.
+        \item[\textbf{证明:}] 假设存在不能写成有限个不可约元乘积的
+        不是$0$或单位的$a\in R$，由条件$a$不是不可约元，
+        设$a=bc$，$b,c$不是单位，由条件$b,c$之一不是不可约元，记为$b$，
+        再对$b$操作，不断分解下去得到无限长的理想升链
+        $(a)\subsetneq(b)\subsetneq\cdots$（用了选择公理），与(b)相违。
+
+        下面说明分解是唯一的，对$\max(m,n)$归纳证明$p_1\cdots p_m=q_1\cdots q_n$
+        推出$m=n$且重排下$p_i,q_i$相伴。$m=n=1$时显然；设$m>1$，
+        由(a)，$p_m$是素元，由于$p_m|q_1\cdots q_n$，不妨$p_m|q_n$，
+        $q_n$不可约表明$q_n=up_m$，$u$是单位，于是
+        $p_1\cdots p_{m-1}=uq_1\cdots q_{n-1}$，用归纳假设。
+
+        \item[2.3.] 
+        设$R$是一个交换环（不假定含幺元）且$|R| \geq 2$. 
+        称$R$是一个欧式环，如果它满足下面的条件：
+        \begin{itemize}
+            \item[(1)] 对$R$中的任意非零元$a,b$，都有$ab \neq 0$;
+            \item[(2)] 设$\N_{\geq 0}=\{0,1,2,\cdots\}$是非负整数集合. 
+            存在映射$\delta\colon R\backslash\{0\} \rightarrow \N_{\geq 0}$
+            满足下面$2$个条件：
+            \begin{itemize}
+                \item[(i)] 对$R$中任意非零元$a,b$，有$\delta(a) \leq \delta(ab)$;
+                \item[(ii)] 对$R$中任意非零元$a,b$，存在$q,r \in R$，
+                使得$a=bq+r$且$r=0$或$\delta(r) <\delta(b)$.
+            \end{itemize}
+        \end{itemize}
+        设$R$是一个欧式环.
+        \item[(a)] 证明：$R$的每个理想都是主理想，即由一个元素生成；
+        \item[\textbf{证明:}] 
+        若$I=0$则已. 对$I\neq0$，设$\delta(d)=\min\limits_{I\backslash \{0\}} \delta$，
+        则有$I = (d)$，
+        这是因为对于$I$中非零元$a$，设$a=dq+r$且$r=0$或$\delta(r) <\delta(d)$，
+        由于对$r\neq0$有$\delta(r)\geq \delta(d)$，
+        只能$r=0$，即$a=dq\in(d)$. \qed
+        \item[(b)] 证明：$R$是含幺环；
+        \item[\textbf{证明:}]   
+        取$d$使得$\delta(d)=\min\limits_{R\backslash\{0\}}\delta$，
+        则由上题论述知$I=(d)$. 故存在$e \in R$使得$de=d$，
+        下证$e$为单位元. 任取$r \in R$，存在$s \in R$使得$r=sd$. 
+        那么$re = er = esd = sde =sd =r$，即证. \qed
+        \item[(c)] 设$a \in R$是乘法可逆元，$b \in R$是非零元. 
+        证明：$\delta(1)=\delta(a) \leq \delta(b)$；
+        \item[\textbf{证明:}]   
+        等号是因为$\delta(a) \leq \delta(aa^{-1}) = \delta(1) \leq \delta(1a) =\delta(a)$. 
+        不等号因为$\delta(b) = \delta(ba^{-1}a) \geq \delta(a)$. \qed
+        \item[(d)] 设$a,b \in R$是非零元. 证明：$\delta(a) = \delta(ab)$当且仅当$b$是乘法可逆元. 
+        特别地，若$a,b \in R$是非零元且$b$不是乘法可逆元，则有$\delta(a) < \delta(ab)$.
+        \item[\textbf{证明:}]  
+        “$\Leftarrow$”是因为$\delta(a) = \delta(ab) \leq \delta(abb^{-1}) =\delta(a)$. 
+
+        “$\Rightarrow$”证明如下.
+        显然$(a) \subset (ab)$. 若$(ab) \subsetneq (a)$，
+        则取$r \in (a)$且$r \notin (ab)$.
+        那么存在$k,s \in R$使得$r=abk+s$且$s=0$或$\delta(s) < \delta(ab)=\delta(a)$，
+        但$r\notin(ab)$说明$s\neq0$，
+        以及$s \in (a)$说明$\delta(a)\leq\delta(s)$，皆不成立.
+        因此，$(a)=(ab)$. 那么存在$b' \in R$使得$abb'=a$，
+        由$R$整且含幺知$bb'=1$，即$b$可逆. \qed
+
+        \item[2.4] 证明：整数环$\mathbb{Z}$，域上的一元多项式环$F[x]$，
+        Gauss整数环$\mathbb{Z}[i]=\{a+bi\mid a,b\in\mathbb{Z}\}$是欧式环.
+        \item[\textbf{证明:}]
+        只需找到上一题所述的映射$\delta$即可. 对于$\mathbb{Z}$，取$\delta(a)=|a|$；
+        对于$F[x]$，取$\delta(f)=\deg f$；
+        对于$\mathbb{Z}[i]$，取$\delta(a+bi)=a^2+b^2$.
+
+        \item[2.5]
+        设$R$是环，$n$是正整数，$M_n(R)$是$R$上的$n$阶矩阵环。
+        证明：$Z(M_n(R))=\{\lambda I_n\mid\lambda\in Z(R)\}$，
+        这里$Z(A)$表示$A$的中心。（Hint: 考虑初等方阵）
+        \item[\textbf{证明:}]
+
+        \item[2.6]
+        $(\mathbb{Q},+)$是否是自由$\mathbb{Z}$-模？设$\mathbb{Q}_{>0}$表示正有理数的集合.
+        $\mathbb{Q}_{>0}$在数的乘法下是否是自由$\mathbb{Z}$-模？
+        \item[\textbf{证明:}]
+        不是，任意两个元素$\frac{p}{q},\frac{r}{s}\in\mathbb{Q}$都线性相关，
+        毕竟$rq\,\frac{p}{q}=ps\,\frac{r}{s}$，且$\mathbb{Q}$不能用一个元素生成。
+
+        是，$\mathbb{Q}_{>0}=\{p_1^{l_1}\cdots p_n^{l_n}\mid 
+        n\in\mathbb{N},p_1,\cdots,p_n\text{ 是素数},l_1,\cdots,l_n\in\Z\}$，
+        由全体素数及其倒数为基。
+
+    \item[2.7]
+    设$n,m$是正整数. $R$是交换环.
+    \item[(a)] 设$A$是$R$上的一个$m\times n$矩阵, 
+        $B$是$R$上的一个$n\times m$矩阵, 
+        若$AB=I_m$且$BA=I_n$, 证明: $m=n$.
+
+    \item[\textbf{证明:}]
+    设$A=(a_i^j)_{m\times n}$，$B=(b_j^i)_{n\times m}$.
+        \begin{align*}
+            m=\operatorname{tr} I_m=\operatorname{tr} AB&=\sum\limits_{i=1}^m \sum\limits_{j=1}^n a_j^ib_i^j\\
+            &=\sum\limits_{j=1}^n \sum\limits_{i=1}^m b_i^ja_j^i=\operatorname{tr} BA=\operatorname{tr} I_n=n.
+        \end{align*}
+
+    \item[(b)] $R^m$与$R^n$作为$R$-模是同构的当且仅当$m=n$.
+
+    \item[\textbf{证明:}]
+        方法I. 设$R^m, R^n$的一组基分别为$\{e_i\}_{i=1}^m, \{e'_j\}_{j=1}^n$，
+        以及模同构$f: R^m\rightarrow R^n$.\par
+        设$f(e_i)=\sum\limits_{j=1}^n a_i^j e'_j$, 令$A=(a_i^j)_{m\times n}$. 
+        设$f^{-1}(e'_j)=\sum\limits_{i=1}^n b_j^i e_i$, 
+        令$B=(b_j^i)_{n\times m}$.\par
+        因为$f$是模同构, 有$AB=I_m$且$BA=I_n$, 由(a)知$m=n$.
+
+        方法II. 设$\phi\colon R^m\to R^n$是同构，取域$k=R/\mathfrak{m}$，
+        $\mathfrak{m}$为极大理想，
+        那么$1\otimes\phi\colon k\otimes R^m\to k\otimes R^n$是同构，
+        相当于有限维线性空间$k^m\to k^n$的同构，得$m=n$.
+        {{comment|证明或否定：$\phi\colon R^m\to R^n$是满的，则$m\ge n$；
+        $\phi\colon R^m\to R^n$是单的，则$m\le n$.}}
+
+    \item[(c)] 设$M$是一个自由$R$-模. $B$是其一组基, 且$|B|=n$. 
+        设$C$是$M$的另一组基. 证明: $|C|=n$.
+        （注：由此结果，对交换环上的有限生成自由模$M$，我们定义
+        $M$的\textbf{秩}等于它的一组基元素的个数，记为$\operatorname{rk}(M)$.）
+
+    \item[\textbf{证明:}]
+        类似(b).
+    
+    \item[2.8] $R$是交换环，$M$是有限生成自由$R$-模，$n=\operatorname{rk}(M)$.
+    设$B=\{b_1,\cdots,b_n\}$是$M$的一个$n$元子集.
+    \begin{itemize}
+        \item[(a)] 若由$B$生成的子模$\langle B\rangle=M$，
+        证明：$B$是$M$的一组基。
+        \item[(b)] 若$B$是一个$R$-线性无关子集，问$B$是否一定是$M$的一组基？
+    \end{itemize}
+    \item[\textbf{证明:}]
+
+    \item[2.9]设$R$是环，$W,M_1,\cdots,M_n$是$R$-模，$n\ge2$。
+    设$a_i:W\to M_i,b_j:M_j\to W,1\le i,j\le n$是$R$-模同态
+    且满足下面的条件：
+
+    (i) $a_i\cdot b_i=\operatorname{id}_{M_i},\ \ 1\le i\le n$；\quad
+    (ii) $a_i\cdot b_j=0,\ \ 1\le i\ne j\le n$；\quad
+    (iii) $\displaystyle \sum_{i=1}^n b_i\cdot a_i=\operatorname{id}_W$.
+
+    证明：$W$与直和$\bigoplus_{i=1}^n M_i$同构。
+    \item[\textbf{证明:}]
+    记$\pi_i\colon \bigoplus_{i=1}^n M_i \to M_i$为提取第$i$个分量，同构是
+    \begin{align*}
+        W\xrightarrow{(a_i)_{1\le i\le n}}
+        \bigoplus_{i=1}^n M_i\xrightarrow{\sum_{i=1}^n b_i\pi_i} W,
+        &\quad \sum_{i=1}^n b_i\cdot a_i=\operatorname{id}_W;\\
+        \bigoplus_{i=1}^n M_i\xrightarrow{\sum_{i=1}^n b_i\pi_i} W
+        \xrightarrow{(a_i)_{1\le i\le n}} \bigoplus_{i=1}^n M_i,
+        &\quad \Big(\sum_{j=1}^n a_i\cdot b_j\Big)_{1\le i\le n}
+        =(\operatorname{id}_{M_i})_{1\le i\le n}.
+    \end{align*}
+
+    \item[2.10]设$V$是域$k$上的一个向量空间，$B$是一组基，而且$B$是一个无限可数集合。
+    令$R=\operatorname{End}_V=\{g:V\to V\text{是线性变换}\}$是$V$的自同态环。
+    \item[(a)]证明：$R$是非交换环，且存在$x,y\in R$
+    满足$x\cdot y=1_V$，$y\cdot x\ne1_V$.
+    \item[(b)]证明：作为$F$-向量空间，$V$同构于直和$V\oplus V$.
+    \item[(c)] 作为$R$-模，证明：$R$同构于$R^2=R\oplus R$.
+    \item[\textbf{证明:}]
+    (a) $V\cong k^\omega=\{(x_1,x_2,\cdots)\mid x_1,x_2,\cdots\in k\}$，令
+    $$x:(x_1,x_2,\cdots)\mapsto(x_2,x_3,\cdots),
+    \quad y:(x_1,x_2,\cdots)\mapsto(0,x_1,x_2,\cdots),$$
+    有$x\cdot y=1_V$，$y\cdot x:(x_1,x_2,\cdots)\mapsto(0,x_2,\cdots)$不是$1_V$.
+
+    (b) $V\cong k^\omega=k^{\omega+\omega}
+    \cong k^\omega\oplus k^\omega\cong V\oplus V$.
+
+    (c) $R=\operatorname{End}(V)\cong\operatorname{End}(V\oplus V)
+    \cong\operatorname{End}(V)\oplus\operatorname{End}(V)=R\oplus R$.
+    \end{enumerate}
+
+\section{自由模}
+
+\begin{enumerate}    
+    \item[3.0]设$R$是交换环，$M$是自由$R$-模，
+    $\operatorname{rk}(M)=n$，$\{e_1,\cdots,e_n\}$是其一组基.
+    设$\{u_1,\cdots,u_n\}$是$M$的另一组基，则存在唯一的$c_{ij}\in R$
+    使得$u_i=\sum\limits_{j=1}^nc_{ij}e_j,1\leq i\leq n$.
+    证明：$C=(c_{ij})\in\mathrm{GL}(R)$.
+
+    \item[\textbf{证明:}]
+
+    \item[3.1]设$R$是PID，$n,m$是正整数，$\alpha\colon R^m\rightarrow R^n$是非零模同态.
+    证明：存在$R^m$的一组基$\{u_1,\cdots,u_m\}$，$R^n$的一组基$\{v_1,\cdots,v_n\}$，
+    正整数$r$，$1\leq r\leq\min\{m,n\}$，使得
+    $$\alpha(u_i)=\begin{cases}d_iv_i&\text{若 }1\leq i\leq r\\
+    0&\text{若 }r<i\leq m,\end{cases}$$
+    这里$d_i\in R\backslash\{0\}$，$1\leq i\leq r$且$d_1|d_2|\cdots|d_r$.
+
+    \item[\textbf{证明:}]
+
+    \item[3.2]设$F$是一个域，$n\geq2$是一个正整数，
+    $SL_n(F)=\{A\in GL_n(F)\mid\det A=1\}$是$F$上的特殊线性群.
+    对$1\leq i\neq j\leq n$，记$E_{ij}\in M_n(F)$
+    其第$i$行第$j$列位置上的元素是$1$，其他位置上的元素是$0$.
+    记$T_{ij}(a)=I+aE_{ij}\in SL_n(F),1\leq i\neq j\leq n,a\in F$.
+    设$E_n(F)$是$GL_n(F)$中由子集
+    $\{T_{ij}(a)\mid 1\leq i\neq j\leq n,a\in F\}$生成的子群.
+    \item[(a)]证明：对$A\in GL_n(F)$，有分解$A=BD$，
+        其中$B\in E_n(F),D=\operatorname{diag}(1,\cdots,1,d)$是对角阵，$d\in F^*$.
+    \item[\textbf{证明:}]
+
+    \item[(b)]证明：$SL_n(F)=E_n(F)$.
+    \item[\textbf{证明:}]
+    $T_{ij}(a)\in SL_n(F)$表明$E_n(F)\subset SL_n(F)$。
+    对$A\in SL_n(F)$，由(a)有$A=BD$，$B\in E_n(F)$，推出$D\in SL_n(F)$，
+    则$D=I$，$A=B\in E_n(F)$。
+
+    \item[3.3]
+    \begin{itemize}
+        \item[(i)]设$\mathbb{Z}^n$是秩为$n$的自由$\mathbb{Z}$-模，
+        $\{u_1,\cdots,u_n\}$是其一组基.
+        设$K$是其一个子模，由$n$个元素$f_i=\sum_{j=1}^na_{ij}u_j,1\leq i\leq n$生成，
+        其中$a_{ij}\in\mathbb{Z}$. 记$A=(a_{ij})\in M_n(\Z)$.
+        如果$d=\det(A)\neq0$，证明$|\mathbb{Z}^n/K|=|d|$.
+        \item[\textbf{证明:}]
+        设$A$相抵于$D=\operatorname{diag}(d_1,\cdots,d_n)$，
+        写为$D=PAQ$，$(f_1,\cdots,f_n)^T=A(u_1,\cdots,u_n)^T$
+        即$P(f_1,\cdots,f_n)^T=DQ^{-1}(u_1,\cdots,u_n)^T$。
+        令$Q^{-1}(u_1,\cdots,u_n)^T=(v_1,\cdots,v_n)^T$，
+        得$P(f_1,\cdots,f_n)^T=(d_1v_1,\cdots,d_nv_n)^T$，由此
+        $\Z^n/K=(\Z v_1\oplus\cdots\oplus\Z v_n)
+        /(\Z d_1v_1\oplus\cdots\oplus\Z d_nv_n)
+        \cong\Z/(d_1)\oplus\cdots\oplus\Z/(d_n)$，
+        有$|\Z^n/K|=|d_1|\cdots|d_n|=|\det D|=|\det A|$.
+
+        \item[(ii)]设$R=\mathbb{Z}[i]=\{a+bi\mid a,b\in\mathbb{Z}\}$，
+        $i=\sqrt{-1}$，是Gauss整数环.设$x=a+bi\in R$且$x\neq0$. 
+        $I=(x)$是由$x$生成的主理想. 证明：$|R/I|=a^2+b^2$.（Hint: try to use (i)）
+        \item[\textbf{证明:}]
+        $I=\Z[i]x=\Z x\oplus\Z ix=(a+bi)\oplus(-b+ai)$，
+        由(i)，$|R/I|=\begin{vmatrix}a&b\\-b&a\end{vmatrix}=a^2+b^2$.
+    \end{itemize}
+
+    \item[3.4]
+    设$R=\mathbb{Z}[i]=\{a+bi\mid a,b\in\mathbb{Z}\}$，$i=\sqrt{-1}$，
+    是Gauss整数环.确定$M=R^3/K$的$R$-模结构（即分解为循环子模的不变因子），
+    其中$K$是由$f_1=(1,3,6),f_2=(2+3i,-3i,12-18i),f_3=(2-3i,6+9i,-18i)$生成的子模.
+    证明$M$是有限集，求出$M$的阶.
+
+    \item[\textbf{证明:}]
+    \begin{align*}
+        \begin{pmatrix}1&3&6\\2+3i&-3i&12-18i\\2-3i&6+9i&-18i\end{pmatrix}
+        &\sim\begin{pmatrix}1& & \\ &-6-12i&-36i\\ &18i&-12\end{pmatrix}
+        \xrightarrow[-36i(2+i)=36-72i]{(-6-12i)(2+i)=-30i}\\
+        \sim\begin{pmatrix}1& & \\ &-6-12i&-36i\\ &-12i&24-72i\end{pmatrix}
+        &\sim\begin{pmatrix}1& & \\ &-6&-24+36i\\ &-12i&24-72i\end{pmatrix}\\
+        \sim\begin{pmatrix}1& & \\ &-6&-24+36i\\ & &96-24i\end{pmatrix}
+        &\sim\begin{pmatrix}1& & \\ &-6& \\ & &96-24i\end{pmatrix},
+    \end{align*}
+    因此$M\cong\Z[i]/(6)\oplus\Z[i]/(96-24i)$，$|M|=6^2(96^2+24^2)=352512$.
+
+    \item[3.5.]
+        设$R=\mathbb{Z}[x]$是整系数一元多项式环. $M=(2,x)$是由$2$和$x$生成的理想.
+    \item[(a)] 证明：$R$不是PID.
+    \item[\textbf{证明:}]
+        $M=(2,x)$不是主理想, 否则, 设$M=(2,x)=(d)$.\par
+        因为$2\in (d)$, 存在$p(x)\in \mathbb{Z}[x]$, 使得$2=p(x)d$, 
+        所以$d=\pm 1, \pm 2$.\par
+        若$d=\pm 1$, 则$1\in M=(2,x)$, 
+        即存在$p(x), q(x)\in \mathbb{Z}[x]$使得$1=2p(x)+xq(x)$, 
+        比较常数项得$1=2a_0$，矛盾.\par
+        若$d=\pm 2$, 则$M=(2)=(-2)$. 又$x\in M$, 
+        故存在$p(x)\in \mathbb{Z}[x]$使得$x=2p(x)$, 
+        比较一次项系数得$1=2a_1$，矛盾. 
+            
+    \item[(b)] 作为$R$-模, $M$不能分解为循环子模的直和.
+    \item[\textbf{证明:}]
+        假设$M=\bigoplus\limits_{i\in I} \mathbb{Z}[x]m_i$.\par
+        若$|I|>1$, 则存在$m_{i_1}, m_{i_2}$, $i_1, i_2\in I$, 
+        但$m_{i_1}, m_{i_2}$是$\mathbb{Z}[x]$-线性相关的, 这与直和的定义矛盾.\par
+        若$|I|=1$, 与(a)矛盾.
+            
+    \item[(c)] 将$R$作为$R$-模, $M$作为子模是自由$R$-模吗？说明理由.
+    \item[\textbf{证明:}]
+        假设$M$是自由$R$-模, 设$\{e_i\}_{i\in I}$是其一组基.\par
+        因为$\mathbb{Z}[x]$是交换环, 所以$M$中任意两个元素
+        $\mathbb{Z}[x]$-线性相关.\par
+        因此$|I|=1$, 即$M$由一个元素生成, 
+        也就是$\mathbb{Z}[x]$的主理想, 与(a)矛盾.
+    \end{enumerate}
+    {{comment|这提供了一个当 $R$ 不是PID时, $R$-模不一定能做直和分解的例子.}}
+    
+    \begin{enumerate}
+    \item[3.6.] 设$R$是PID，$M$是有限生成$R$-模. 
+    定义$M$的秩为有限生成自由模$M/T(M)$的秩，记为$\operatorname{rk}(M)$，
+    这里$T(M)$是$M$的挠子模.
+    \item[(a)] 若$M$同构于商模$R^{n}/K$，
+        证明：$\operatorname{rk}(M)=n-\operatorname{rk}(K)$.
+    \item[\textbf{证明:}]
+        此时，存在$R^{n}$的一组基$\{e_{i}\}_{i=1}^{n}$使得
+        $\{d_{i}e_{i}\}_{i=1}^{m}$为$K$的一组基，其中$d_{i} \in R$且$m \leq n$. 
+        那么$M \cong R^{n-m} \oplus \big(\bigoplus_{i=1}^{m} R/(d_{i})\big)$.
+        那么$\operatorname{rk}(M)=n-m=n-\operatorname{rk}(K)$. \qed
+    \item[(b)] 设$N$是$M$的子模. 
+        证明：$\operatorname{rk}(M)=\operatorname{rk}(N)+\operatorname{rk}(M/N)$.
+    \item[\textbf{证明:}]
+        存在正整数$n$使得$N=R^{n}/K$，则$M=S/K$，
+        其中$K,S$是$R^{n}$的子模，由$R$是PID，$K$是自由模$S$的子模，
+        由(a)，$\operatorname{rk}(S/K)=\operatorname{rk}(S)-\operatorname{rk}(K)$. 
+        那么
+        \begin{align*}
+        \operatorname{rk}(M)-\operatorname{rk}(N) 
+        = \operatorname{rk}(R^{n}/K) - \operatorname{rk}(S/K) 
+        = (n-\operatorname{rk}(K)) - (\operatorname{rk}(S)-\operatorname{rk}(K)) 
+        = n - \operatorname{rk}(S),
+        \end{align*}
+        由第三同构定理有
+        $\operatorname{rk}(M/N) = \operatorname{rk}((R^{n}/K)/(S/K)) 
+        = \operatorname{rk}(R^n/S)= n - \operatorname{rk}(S)$. \qed
+    \item[\textbf{另证:}]
+        令$F=\operatorname{Frac(R)}$为$R$的分式域，
+        则$F$是平坦$R$-模（事实上，平坦模的分式化仍平坦，而$R$是自由模，从而平坦）. 
+        故短正合列$0 \rightarrow N \rightarrow M \rightarrow M/N \rightarrow 0$
+        诱导了短正合列
+        $0 \rightarrow N \otimes_{R} F \rightarrow M \otimes_{R} F 
+        \rightarrow (M/N) \otimes_{R} F \rightarrow 0$. 
+        注意到$R \otimes_{R} F \cong F$，而对于挠模$R/(d) \otimes_{R} F =0$. 
+        前者显然，后者是因为
+        $\bar{a} \otimes d = \overline{da} \otimes \frac{1}{d} =0$. 
+        故实则$0 \rightarrow F^{\operatorname{rk}(N)} 
+        \rightarrow F^{\operatorname{rk}(M)} 
+        \rightarrow F^{\operatorname{rk}(M/N)} \rightarrow 0$. 
+        由于三者皆为有限维线性空间，所以自然有
+        $\operatorname{rk}(M)=\operatorname{rk}(N)+\operatorname{rk}(M/N)$. \qed
+    \end{enumerate}
+
+\section{PID上的有限生成模}
+\begin{enumerate}
+    \item[4.1] 设$m>1,n>1$是两个正整数，$A=\Z/m\Z\oplus\Z/n\Z$，
+    作为有限生成$\Z$-模，求$A$的不变因子。
+    
+    \item[\textbf{解答:}]
+    设$m=\prod\limits_{i=1}^kp_i^{\alpha_i},n=\prod\limits_{i=1}^kp_i^{\beta_i}$，
+    不变因子是$\prod\limits_{i=1}^kp_i^{\min(\alpha_i,\beta_i)},
+    \prod\limits_{i=1}^kp_i^{\max(\alpha_i,\beta_i)}$.
+    
+    \item[4.2] 设
+    $$A=\left(\begin{matrix}
+        1&0&0&0\\0&1&0&0\\-2&-2&0&1\\-2&0&-1&-2
+    \end{matrix}\right)\in M_4(\mathbb{Q}).$$
+    求$A$在$M_4(\mathbb{Q})$中的有理标准型$B$；
+    求一矩阵$P\in GL_4(\mathbb{Q})$，使得$PAP^{-1}=B$.
+
+    \item[\textbf{解答:}]
+    \begin{align*}\begin{pmatrix}
+        \lambda-1& & & \\ &\lambda-1& & \\2&2&\lambda&-1\\2& &1&\lambda+2
+    \end{pmatrix}\sim
+    \begin{pmatrix}
+        1& &2&\lambda+2\\\lambda&2&2&-1\\ & &\lambda-1& \\ &\lambda-1& & 
+    \end{pmatrix}\sim
+    \begin{pmatrix}
+        1& & & \\&1&2-2\lambda&-(\lambda+1)^2\\ & &\lambda-1& \\ &\frac{\lambda-1}{2}& & 
+    \end{pmatrix}&\\ \sim
+    \begin{pmatrix}
+        1& & & \\&1& & \\ & &\lambda-1& \\ &\frac{\lambda-1}{2}&(\lambda-1)^2&-\frac{(\lambda-1)(\lambda+1)^2}{2} 
+    \end{pmatrix}\sim
+    \begin{pmatrix}
+        1& & & \\&1& & \\ & &\lambda-1& \\ & & &\lambda^3+\lambda^2-\lambda-1
+    \end{pmatrix}&,\end{align*}这样
+    $$B=\begin{pmatrix}
+        1& & & \\ &0&1&0\\ &0&0&1\\ &1&1&-1
+    \end{pmatrix}.$$
+
+    \item[4.3]
+    \begin{itemize}
+    \item[(i)]
+        设$p$是一个素数，$F_p=\mathbb{Z}/p\mathbb{Z}$是含$p$个元素的有限域.
+        考虑下面两个$p$阶矩阵$A,B\in M_p(F_p)$：
+        $$A=\left(\begin{matrix}0&1&\cdots&0&0\\
+        0&0&1&\cdots&0\\
+        \cdots&\cdots&\cdots&\cdots&\cdots\\
+        0&0&\cdots&0&1\\
+        1&0&\cdots&0&0
+    \end{matrix}\right),
+        B=\left(\begin{matrix}1&1&\cdots&0&0\\
+        0&1&1&\cdots&0\\
+        \cdots&\cdots&\cdots&\cdots&\cdots\\
+        0&0&\cdots&1&1\\
+        0&0&\cdots&0&1
+    \end{matrix}\right).$$
+    问：$A$与$B$在$M_p(F_p)$中是否相似？说明理由.
+    \item[\textbf{证明:}]
+    相似，$\lambda I-A,\lambda I-B$都相抵于
+    $\operatorname{diag}(1,\cdots,1,(\lambda-1)^p)$。
+    或者注意到$B$是$A$的Jordan标准型，因为$(I-A)^{p-1}\ne0$而$(I-A)^p=0$.
+
+    \item[(ii)]考虑下面的矩阵$A,B\in M_3(\mathbb{Q})$：
+    $$A=\left(\begin{matrix}-8&-10&-1\\7&9&1\\3&2&0\end{matrix}\right),
+    B=\left(\begin{matrix}-3&2&4\\4&-1&4\\4&-2&5\end{matrix}\right).$$
+    问：$A$与$B$在$M_3(\mathbb{Q})$中是否相似？说明理由.
+    \item[\textbf{证明:}] 不相似，$\det A=-1$，$\det B=-33$.
+    \end{itemize}
+
+    \item[4.4.]设$F$是域，称$A\in M_n(F)$是幂零矩阵，若存在正整数$r$使得$A^r=0$.
+    设$A\in M_n(F)$是幂零矩阵，证明：$A$在$M_n(F)$中相似于下面形式的分块对角矩阵：
+    $$\left(\begin{matrix}N_1&0&\cdots&0&0\\
+        0&N_2&0&\cdots&0\\
+        \cdots&\cdots&\cdots&\cdots&\cdots\\
+        0&0&\cdots&N_{s-1}&0\\
+        0&0&\cdots&0&N_s
+    \end{matrix}\right),$$
+    其中
+    $$N_i=\left(\begin{matrix}0&1&\cdots&0&0\\
+        0&0&1&\cdots&0\\
+        \cdots&\cdots&\cdots&\cdots&\cdots\\
+        0&0&\cdots&0&1\\
+        0&0&\cdots&0&0
+    \end{matrix}\right).$$
+    \item[\textbf{证明:}]
+    $A$的特征值都是$0$，所以$A$在$M_n(\overline{F})$
+    （$\overline{F}$是$F$的代数闭包）中的Jordan标准型形如这样.
+    既然$A$在$M_n(\overline{F})$中相似于它，
+    那么也在$M_n(F)$中相似于它.
+
+    \item[4.5]设$A\in M_3(\mathbb{Q})$，$A^3=I$，
+    求$A$在$M_3(\mathbb{Q})$中的所有可能的有理标准型。
+
+    \item[\textbf{解答:}]
+    $$I,\begin{pmatrix} &1& \\ & &1\\1& & \end{pmatrix}.$$
+
+    \item[4.6.]设$F$是域，$A\in M_n(F)$，
+    $m(\lambda)\in F[\lambda]$是$A$在$F$上的极小多项式.
+    $s=\deg(m(\lambda))$.
+    证明：$A$在$M_n(F)$中相似于对角阵当且仅当$m(\lambda)$在$F$中有$s$个互不相同的根.
+    \item[\textbf{证明:}]
+    $A$在$M_n(F)$中相似于对角阵，
+    当且仅当$A$在$M_n(\overline{F})$中相似于$M_n(F)$中的对角阵，
+    也就是说$A$在$M_n(\overline{F})$中的Jordan标准型是$M_n(F)$中的对角阵，
+    当且仅当$m(\lambda)$的根全都属于$F$且互不相同.
+
+    \item[4.7](i) 设$F$是一个域，$A\in M_n(F)$，$A'$表示矩阵$A$的转置.
+    证明：$A$与$A'$在$M_n(F)$中相似.
+
+    (ii)设$E/F$是域扩张，$A,B\in M_n(F)$，若$A,B$在$M_n(E)$中相似，
+    问$A,B$在$M_n(F)$中是否一定相似？说明理由。
+
+    \item[\textbf{证明:}]
+    (i) $A$在$\overline{F}$上的Jordan标准型可由$r((\lambda I-A)^l)$所确定，
+    其中$\lambda\in\overline{F},l\in\N$，
+    具体来说，以$\lambda$为特征值的$l$阶Jordan块的个数为
+    $$r((\lambda I-A)^{l+1})+r((\lambda I-A)^{l-1})-2r((\lambda I-A)^l).$$
+    由于$r((\lambda I-A)^l)=r((\lambda I-A')^l)$
+    对任意$\lambda\in\overline{F},l\in\N$成立，
+    $A$与$A'$具有同样的Jordan标准型，
+    故$A$与$A'$在$\overline{F}$中相似，那么也在$F$中相似.
+
+    (ii) （来自高等代数学（第三版），姚慕生等，推论7.3.4）
+    $A,B$在$E$上相似，则$\lambda I-A$与$\lambda I-B$在$E$上有相同的不变因子，
+    也就是说它们有相同的Smith标准型。但在求Smith标准型的过程中只涉及多项式的加、减、乘
+    及数的加、减、乘、除运算。而数域在加、减、乘、除运算下封闭，
+    数域上的多项式在加、减、乘及数乘下也封闭。
+    因此由$\lambda$-矩阵的Smith标准型与初等变换的选取无关，
+    Smith标准型中的不变因子多项式$d_i(\lambda)$仍是$F$上的多项式，
+    与初等变换相对应的初等矩阵也是$F$上的$\lambda$-矩阵，
+    这就是说存在$F$上的可逆$\lambda$-矩阵
+    $P(\lambda),Q(\lambda),M(\lambda),N(\lambda)$，使
+    $$P(\lambda)(\lambda I-A)Q(\lambda)=M(\lambda)(\lambda I-B)N(\lambda)
+    =\operatorname{diag}(d_1(\lambda),\cdots,d_n(\lambda)),$$
+    从而$$M(\lambda)^{-1}P(\lambda)(\lambda I-A)Q(\lambda)N(\lambda)^{-1}=\lambda I-B,$$
+    即$\lambda I-A$与$\lambda I-B$在$F$上相抵，得$A$与$B$在$F$上相似。
+    
+    \item[4.8.]
+    设$R$是环，$0\rightarrow A\xrightarrow{f}B\xrightarrow{g}C\rightarrow 0$
+    是一个$R$-模短正合列. 证明下列命题等价：
+    \begin{itemize}
+    \item[(1)] 上面这个短正合列是可裂的；
+    \item[(2)] 存在$R$-模同态$s:C\rightarrow B$使得$g\circ s=1_C$；
+    \item[(3)] 存在$R$-模同态$r:B\rightarrow A$使得$r\circ f=1_A$.
+    \end{itemize}
+        \item[\textbf{证明:}]
+    (1) $\Rightarrow$ (2)
+    \ 设$B=f(A)\oplus D$且$g|_D:D\rightarrow C$为同构，那么令$s=(g|_D)^{-1}$即可.
+
+    (2) $\Rightarrow$ (3)
+    \ 令$r(b)=f^{-1}(b-s\circ g(b))$.
+     
+     由于$g(b-s\circ g(b))=g(b)-g(b)=0$，
+     得到$b-s\circ g(b)\in\operatorname{Ker}g=\operatorname{Im}f$，
+     而且$f$是单射，所以$f^{-1}$是有意义的.
+
+     由$g\circ f=0$，得到$r\circ f= f^{-1}(f-s\circ g\circ f)=1_A$.
+
+    (3) $\Rightarrow$ (1)
+    \ 通过把$b\in B$写成$b=(f\circ r)(b)+b-(f\circ r)(b)$，
+    并且由于$r\circ f=1_A$说明$r$是满射，得到
+    $$B=\operatorname{Im}(f\circ r)+ \operatorname{Im}(1-f\circ r)
+    = \operatorname{Im}f+ \operatorname{Im}(1-f\circ r).$$
+    由$r\circ f=1_A$得
+    $\operatorname{Im}(1-f\circ r)\subset\operatorname{Ker}r$及
+    $\operatorname{Im}f\cap\operatorname{Ker}r=\{0\}$，
+    因此$B=\operatorname{Im}f\oplus\operatorname{Im}(1-f\circ r)$.
+
+    由$\operatorname{Im}f=\operatorname{Ker}g$，
+    又得到$B=\operatorname{Ker}g\oplus\operatorname{Im}(1-f\circ r)$，
+    由此不难说明$g|_{\operatorname{Im}(1-f\circ r)}$是同构. \qed
+\end{enumerate}
+
+\section{张量积}
+   \begin{enumerate}
+
+    \item[5.2.] (a)\ \ \,设$m,n$是正整数. $d=\gcd(m,n)$. 证明：
+        $(\Z/m\Z) \otimes_{\Z} (\Z/n\Z)$同构于$\Z/d\Z$.
+    \item[\textbf{证明:}]
+        令$\varphi: (\Z/m\Z) \times (\Z/n\Z) \rightarrow \Z/d\Z ; 
+        (\bar{a},\bar{b}) \mapsto \overline{ab}$. 这是一个$\Z$-平衡映射，且是良定义的. 
+        这是因为若$a_{1}\equiv a_{2}\mod m$，$b_{1}\equiv b_{2}\mod n$，则
+        $a_{1}b_{1} \equiv a_{1}b_{2} \equiv a_{2}b_{2} \mod d$. 
+        由泛性质，这诱导了$\Z$-模同态
+        \begin{equation*}\begin{aligned}
+         \tilde{\varphi}:(\Z/m\Z) \otimes_{\Z} (\Z/n\Z) 
+         \rightarrow \Z/d\Z ; \bar{a} \otimes \bar{b} \mapsto \overline{ab}.
+        \end{aligned}\end{equation*}
+        只需证明$\widetilde{\varphi}$既单又满. 
+        若$\overline{ab}=0$，则$\bar{a} \otimes \bar{b} 
+        = ab(\bar{1} \otimes \bar{1})$. 
+        由Bezout定理，存在整数$x,y$使得$xm+yn=d$. 
+        由于$\overline{ab}=0$，故存在整数$t$使得$dt=ab$.
+        那么$ab=txm+tyn$. 故而$\bar{a} \otimes \bar{b} 
+        = \overline{(txm+tyn)} \otimes \bar{1} 
+        = \overline{txm} \otimes \bar{1} + \bar{1} \otimes \overline{tyn} 
+        = 0+0 =0$.
+        而满射则是由于$\bar{k}=\widetilde{\varphi}(\bar{k} \otimes \bar{1})$.
+    \item[(b)] 证明：$\mathbb{Q} \otimes_{\Z} (\mathbb{Q}/\Z) = 0$. 
+        这里$\mathbb{Q}$是加法群，$\mathbb{Q}/\Z$是相应的商群. 
+    \item[\textbf{证明:}] 
+        对于$\mathbb{Q} \otimes_{\Z} (\mathbb{Q}/\Z)$中单项式
+        $\frac{p}{q} \otimes \bar{\frac{r}{s}}$，$p,q,r,s\in\Z$，有
+        \begin{equation*}\begin{aligned}
+        \frac{p}{q}\otimes\overline{\frac{r}{s}}=  s\cdot\frac{p}{qs} \otimes \overline{\frac{r}{s}} 
+        = \frac{p}{qs} \otimes \overline{s \cdot \frac{r}{s}} = \frac{p}{qs} \otimes \bar{r} = 0,
+        \end{aligned}\end{equation*}
+        故而$\mathbb{Q} \otimes_{\Z} (\mathbb{Q}/\Z)=0$. \qed
+    \item[(c)] 证明：$\mathbb{Q} \otimes_{\Z} \mathbb{Q}$同构于$\mathbb{Q}$.
+    \item[\textbf{证明:}]
+        定义$\Z$-平衡映射$\varphi: \mathbb{Q} \times \mathbb{Q} 
+        \rightarrow \mathbb{Q}; (a,b) \mapsto ab$. 
+        这诱导了$\Z$-模同态$\widetilde{\varphi}:
+        \mathbb{Q} \otimes_{\Z} \mathbb{Q}; a \otimes b \mapsto ab$.
+        定义$\Z$-模同态$\phi:\mathbb{Q} \rightarrow 
+        \mathbb{Q} \otimes_{\Z} \mathbb{Q};a \mapsto a \otimes 1$. 
+        那么$\widetilde{\varphi}\circ\phi(a)
+        = \widetilde{\varphi}(a \otimes 1) = a$，
+        即$\widetilde{\varphi}\circ\phi = \operatorname{id}_{\mathbb{Q}}$. 
+        而$\phi \circ \widetilde{\varphi}(a \otimes b) 
+        = \phi(ab) = ab \otimes 1 = a \otimes b$，
+        即$\phi \circ \widetilde{\varphi} 
+        = \operatorname{id}_{\mathbb{Q} \otimes_{\Z} \mathbb{Q}}$. 
+        故而$\widetilde{\varphi}$是$\Z$-模同构. \qed
+
+    \item[5.3.] 设$V$是有限维实向量空间，$\dim V = n \geq 1$. 
+    $V_{\mathbb{C}} = V \otimes_{\R} \mathbb{C}$是相应的复向量空间. 
+    设$B=\{e_{1},\cdots,e_{n}\}$是$V$的一组基，$f:V \rightarrow V$是一个实线性变换. 
+    设$f$在基$B$下的变换矩阵是$A=(a_{ij}) \in M_{n}(\R)$.
+    \item[(i)] 证明：$B_{\mathbb{C}} = \{e_{1} \otimes 1,\cdots,e_{n} \otimes 1\}$
+        是$V_{\mathbb{C}}$作为复向量空间的一组基，
+        $f \otimes 1:V_{\mathbb{C}} \rightarrow V_{\mathbb{C}}$是一个复线性变换，
+        而且它在基$B_{\mathbb{C}}$下的变换矩阵也是$A$.
+    \item[\textbf{证明:}] 
+        首先，对于任意$x \in V \otimes_{\R} \mathbb{C}$, 存在$v_{j} \in V$
+        与$c_{j}=a_{j}+ib_{j} \in \mathbb{C}$，
+        使得$x = \sum_{j=1}^{m}v_{j} \otimes (a_{j}+ib_{j}) 
+        = \sum_{j=1}^{m}v_{j} \otimes a_{j} + i \sum_{j=1}^{m}v_{j} \otimes b_{j} 
+        = \sum_{j=1}^{m}(a_{j}+ib_{j})(v_{j} \otimes 1)$. 
+        显然$v_{j} \otimes 1 \in \sum_{j=1}^{n}\mathbb{C}(e_{j}\otimes 1)$，
+        故$x$能用$B_{\mathbb{C}}$中元素的复线性组合表示. 
+
+        其次，若存在复数$c_{j} = a_{j}+ib_{j}$
+        使得$\sum_{j=1}^{n}c_{j}(e_{i} \otimes 1) = 0$，
+        则$\big(\sum_{j=1}^{n}a_{j}e_{j}\big) \otimes 1 
+        + \big(\sum_{j=1}^{n}b_{j}e_{j}\big) \otimes i=0$，
+        这即是说$\sum_{j=1}^{n}a_{j}e_{j} = \sum_{j=1}^{n}b_{j}e_{j} = 0$，
+        即$a_{j}=b_{j}=0$，即$c_{j}=0$. \par
+        后一断言是因为$(f \otimes 1)(e_{i} \otimes 1) = f(e_{i}) \otimes 1 
+        = \big(\sum_{j=1}^{n}a_{ij}e_{j}\big) \otimes 1 
+        = \sum_{j=1}^{n}(a_{ij}e_{j}) \otimes 1$. \qed
+    \item[(ii)] 证明：$f$有不变子空间$U$使得$\dim U \leq 2$.
+    \item[\textbf{证明:}]
+        由于$\mathbb{C}$代数闭，故方阵$A$在$V_{\mathbb{C}}$上
+        存在特征值$z=a+bi$（$b$可能为$0$）以及对应的特征向量
+        $x=v \otimes 1 + w \otimes i$，其中$v,w \in V$（可能线性相关）. 
+        那么$(f \otimes 1)(x) = f(v) \otimes 1 + f(w) \otimes i 
+        = (a+bi)(v \otimes 1 + w \otimes i) 
+        = (av-bw) \otimes 1 + (bv + aw) \otimes i$.
+        这即是说
+        \begin{equation*}\begin{cases}\begin{aligned}
+            f(v) = av - bw, \\
+            f(w) = bv + aw.
+        \end{aligned}\end{cases}\end{equation*}
+        那么$U := \operatorname{Span}\{v,w\}$是$V$的不变子空间，
+        且$\dim_{\R} U \leq 2$. \qed
+
+    \item[5.4.] 设$R,S$是环，$\alpha:R \rightarrow S$是环同态. 
+    通过$\alpha$，将$S$看成$(S,R)$-双模. 设$M$是一个自由左$R$-模，
+    $B=\{e_{i}\}_{i \in I}$是一组基. 证明：$S \otimes_{R} M$是自由左$S$-模，
+    且$\{1 \otimes e_{i}\}_{i \in I}$是其一组基.
+    \item[\textbf{证明:}] 
+        定义数乘为$s(s' \otimes m) := (ss')\otimes m$. 
+        对于$m \in M$，令$m=\sum_{i \in F}r_{i}e_{i}$，
+        其中$r_{i} \in R$，$F \subset I$且$|F| < \infty$. 
+        那么对于$S \otimes_{R} M$中的单项式$s \otimes m$有
+        \begin{equation*}\begin{aligned}
+         s \otimes m = s \otimes \Big(\sum_{i \in F}r_{i}e_{i}\Big) 
+         = \sum_{i \in F} s \otimes (r_{i}e_{i}) 
+         = \sum_{i \in F} s\alpha(r_{i}) \otimes e_{i} 
+         = s_{i}\alpha(r_{i})\sum_{i \in F} 1 \otimes e_{i} \in \sum_{i \in I} S(1\otimes e_{i}). 
+        \end{aligned}\end{equation*}
+        验证右端是直和即可，而这是因为
+        $S \otimes_{R} M = S \otimes_{R} \big(\bigoplus_{i \in I} Re_{i}\big) 
+        \cong \bigoplus_{i \in I}S \otimes_{R} Re_{i} 
+        = \bigoplus_{i \in I}S(1 \otimes e_{i})$，且该同构由
+        \begin{equation*}\begin{aligned}
+         f:S \otimes_{R} M \mapsto  \bigoplus_{i \in I}S(1 \otimes e_{i});
+         \quad s \otimes e_{i} \mapsto s(1 \otimes e_{i})
+        \end{aligned}\end{equation*}
+        给出. 若对于有限集$F \subset I$
+        有$x=\sum_{i \in F}s_{i}(1 \otimes e_{i}) = 0$，
+        则$f(x)=(t_{i})_{i \in I}=0$，
+        其中$t_{i}=s_{i}(1 \otimes e_{i})$若$i \in F$，而在其余情况为$0$. 
+        这意味着$s_{i}=0$对于任意$i \in F$. 
+        故得线性无关性，从而$\{1 \otimes e_{i}\}_{i \in I}$
+        为自由模$S \otimes_{R} M$的一组基. \qed
+
+    \item[5.5.] 设$R$是一个P.I.D.，$M$是一个有限生成$R$-模.
+    \item[(i)]
+        若$M \otimes_{R} M = 0$，证明$M=0$.
+    \item[\textbf{证明:}]
+        由P.I.D.上有限生成模的结构定理，不妨设
+        $M = \bigoplus_{i=1}^{n} R/(d_{i})$，
+        其中$d_{i} \in R$（$d_{i}$可能为$0$，此时对应的直和项自由），
+        且$d_{i} \mid d_{i+1}$. 那么我们有
+            \begin{equation*}\begin{aligned}
+              M \otimes M &\cong \bigoplus_{i,j=1}^{n}
+              \big(R/(d_{i}) \otimes R/(d_{j})\big)
+              \\&\cong \bigoplus_{i,j=1}^{n}R/((d_{i})+(d_{j})) \quad\text{由习题 5.6}
+              \\&= \bigoplus_{i,j=1}^{n}R/(d_{\min\{i,j\}}).
+            \end{aligned}\end{equation*}
+        故而$M \otimes M = 0$即$R/(d_{\min\{i,j\}}) = 0$，也即$R/(d_{i}) = 0$. 故而$M=0$. \qed
+    \item[(ii)] 
+        给出一个$\Z$-模$A$，满足$A \neq 0$，但$A \otimes_{\Z} A = 0$.
+    \item[\textbf{证明:}]
+        取$\Z$-模$A=\mathbb{Q}/\Z$，则$\mathbb{Q}/\Z \otimes_{\Z} \mathbb{Q}/\Z = 0$. 这是因为
+            \begin{equation*}\begin{aligned}
+            \overline{\frac{p}{q}} \otimes \overline{\frac{r}{s}} 
+             = s\cdot\overline{\frac{p}{qs}}\otimes \overline{\frac{r}{s}} 
+             = \overline{\frac{p}{qs}}\otimes \bar{r} 
+             = \overline{\frac{p}{qs}}\otimes \bar{0} = 0,
+            \end{aligned}\end{equation*}
+        其中$p,q,r,s\in\Z$. \qed
+    \item[(iii)] 若(iii)中的$R$是交换环，命题是否还成立？
+    \item[\textbf{证明:}]
+            仍成立. 只需对$R$为局部环的情形证明. 
+            这是因为$M \otimes_{R} M = 0$等价于
+            (见Atiyah \textit{Introduction to Commutative Algebra} Proposition 3.8)：
+            对于任意$\mathfrak{p} \in \operatorname{Spec}(R)$，
+            成立$M_{\mathfrak{p}} \otimes_{R_{\mathfrak{p}}} M_{\mathfrak{p}} 
+            = (M \otimes_{R} M)_{\mathfrak{p}} = 0$.
+            现设$R$为局部环，$\mathfrak{m}$为其极大理想，以及$k$为其剩余类域. 
+            令$V = k \otimes_{R} M$，则$V$是$k$上的有限维线性空间，有
+            \begin{equation*}\begin{aligned}
+             V \otimes_{k} V = k \otimes_{R} M \otimes_{k} k \otimes_{R} M 
+             \cong k \otimes_{R} k \otimes_{k} M \otimes_{R} M 
+             \cong k \otimes_{k} (M \otimes_{R} M) = 0,
+            \end{aligned}\end{equation*}
+            也即$(\dim_{k} V)^{2}=0$，即$\dim_{k} V = 0$，即$V=0$. 
+            但注意到$V = k \otimes_{R} M \cong M/\mathfrak{m}M$. 
+            故这即是说$M=\mathfrak{m}M$. 由中山引理知$M=0$. \qed
+
+    \item[5.6.] 设$R$是交换环，$I,J$是理想. 证明：
+    作为$R$-模，$R/I \otimes_{R} R/J \cong R/(I+J)$.
+    \item[\textbf{证明:}] 
+    定义$R$-平衡映射$f:R/I \times R/J \rightarrow R/(I+J);
+    (\bar{a},\bar{b}) \mapsto \overline{ab}$. 
+    这是良定义的（由于$I,J \subset I+J$），故诱导了$R$-模同态
+    $\tilde{f}:R/I \otimes_{R} R/J \rightarrow R/(I+J);
+    \bar{a} \otimes \bar{b} \mapsto \overline{ab}$. \par
+    再定义$g:R/(I+J) \rightarrow R/I \otimes_{R} R/J; 
+    \bar{a} \rightarrow \bar{a} \otimes \bar{1}$. 
+    这是良定义的，因为令$a'=a+i+j$，其中$i \in I, j \in J$，则
+    \begin{equation*}\begin{aligned}
+    g(\overline{a'}) &= (a+j+I)\otimes (1+J) = (a+I) \otimes (1+J) + (j+I) \otimes (1+J) \\
+    &= g(\bar{a}) + (1+I) \otimes (j + J) = g(\bar{a}) + 0 = g(\bar{a}).
+    \end{aligned}\end{equation*}
+    那么$\tilde{f} \circ g(\bar{a}) = \tilde{f}(\bar{a} \otimes \bar{1}) = \bar{a}$，
+    即$\tilde{f} \circ g = \operatorname{id}_{R/(I+J)}$. 
+    而$g \circ \tilde{f}(\bar{a} \otimes \bar{b}) = g(\overline{ab}) 
+    = \overline{ab} \otimes \bar{1} = \bar{a} \otimes \bar{b}$，
+    即$g \circ \tilde{f} = \operatorname{id}_{R/I \otimes_{R} R/J}$. 
+    故而$\tilde{f}$是同构. \qed
+\end{enumerate}
+
+\section{平坦模}
+\begin{enumerate}
+    \item[6.1.] 设$R$是环. $\{M_{i}\}$是一族左$R$-模. 
+    证明：$\bigoplus_{i \in I}M_{i}$是平坦的当且仅当每个$M_{i}$都是平坦的.
+    \item[\textbf{证明:}]
+    对于任意左$R$-模单射$i:A \rightarrow B$，有下图交换：
+    （$\operatorname{id}$为$\bigoplus_{i \in I}M_{i}$的恒等映射）
+    \begin{tikzcd}
+     \big(\bigoplus_{i\in I}M_{i}\big)\otimes_{R}A \arrow[d, "f"] \arrow[r, "\operatorname{id}\otimes \,i"] & \big(\bigoplus_{i\in I}M_{i}\big)\otimes_{R}B \arrow[d, "g"] \\
+     \bigoplus_{i\in I}(M_{i}\otimes_{R}A) \arrow[r, "h"]                                         & \bigoplus_{i\in I}(M_{i}\otimes_{R}B)               
+    \end{tikzcd}
+    其中$f:(m_{i})\otimes a \mapsto (m_{i}\otimes a)$, 
+    $g:(m_{i})\otimes b \mapsto (m_{i}\otimes b)$是已验证过的同构，
+    $h=\bigoplus_{i\in I}(\operatorname{id}_{M_{i}}\otimes \,i):
+    (m_{i} \otimes a) \mapsto (m_{i} \otimes ia)$.
+    而诸$\operatorname{id}_{M_{i}}\otimes \,i$为单射等价于$h$为单射. 
+    由交换图，这又等价于$\operatorname{id}\otimes \,i$为单射. 
+    这即是说诸$M_{i}$平坦当且仅当$\bigoplus_{i \in I}M_{i}$平坦. \qed
+
+    \item[6.2.] 设$R,S$是环，$\alpha:R \rightarrow S$是环同态. 
+    通过$\alpha$，将$S$看成$(S,R)$-双模.
+    \item[(i)] 设$N$是一个右$S$-模，通过$\alpha$，$N$也是一个右$R$-模，
+        即对$n \in N,r\in R$，定义$n \cdot r = n \cdot \alpha(r)$，
+        记为$N_{\alpha}$. 证明：作为右$R$-模，$N \otimes_{S} S$同构于$N_{\alpha}$.
+    \item[\textbf{证明:}]
+        定义$(n \otimes s) \cdot r := n \otimes (s\alpha(r))$，
+        则由$S$-双线性映射$f:N \times S \rightarrow N_{\alpha}$诱导的映射
+        $\tilde{f}:N \otimes_{S} S \rightarrow N_{\alpha}$是一个右$R$-模同态.
+        这是因为$f(n \otimes s) \cdot r = ns \cdot r 
+        = n(s \cdot \alpha(r)) = f(n \otimes s\alpha(r))$. 
+        $g:N_{\alpha} \rightarrow N \otimes_{S} S;n \otimes 1 \mapsto n$
+        也是一个右$R$-模同态，因为
+        $g(n) \cdot r = (n \otimes 1) \cdot r = n \otimes \alpha(r) 
+        = n\alpha(r) \otimes 1 = g(n\alpha(r)) = g(n \cdot r)$. 
+        且$\tilde{f} \circ g(n) = \tilde{f}(n \otimes 1) = n$，
+        故$\tilde{f} \circ g(n) = \operatorname{id}_{N_{\alpha}}$. \par
+        而$g \circ \tilde{f}(n \otimes s) = g(ns) = ns \otimes 1 = n \otimes s$，
+        即$g \circ \tilde{f} = \operatorname{id}_{N \otimes_{S} S}$. 
+        故$\tilde{f}$是右$R$-模同构. \qed
+    \item[(ii)] 设$M$是平坦左$R$-模，证明：$S \otimes_{R} M$是平坦$S$-模.
+    \item[\textbf{证明:}]
+        对于任意右$S$-模单同态$i:A \rightarrow B$，由(i)的定义，
+        $i_{\alpha}:A_{\alpha} \rightarrow B_{\alpha}$是右$R$-模单同态. 
+        由下图交换，
+        \begin{tikzcd}
+         A \otimes_{S} S \arrow[d, "f"'] \arrow[r, "i\,\otimes\,\operatorname{id}_{S}"] & B \otimes_{S} S \arrow[d, "g"'] \\
+         A_{\alpha} \arrow[r, "i"]                                                    & B_{\alpha}                     
+        \end{tikzcd}
+        知$i \otimes\operatorname{id}_{S}:
+        A \otimes_{S} S \rightarrow B \otimes_{S} S$是单同态，
+        其中$f:A \otimes_{S} S \rightarrow A; a \otimes s \mapsto as$
+        与$g:B \otimes_{S} S \rightarrow B;b \otimes s \mapsto bs$是(i)中证明的同构. 
+        那么由$M$的平坦性，有$(i \otimes \operatorname{id}_{S}) \otimes \operatorname{id}_{M}: 
+        (A \otimes_{S} S) \otimes_{R} M \rightarrow (B \otimes_{S} S) \otimes_{R} M$单. 再由如下交换图
+        \begin{tikzcd}
+         (A \otimes S) \otimes_{R} M \arrow[rr, "(i\,\otimes\,\operatorname{id}_{S}) \otimes \,\operatorname{id}_{M}"] \arrow[d, "p"'] & & (B \otimes S) \otimes_{R} M \arrow[d, "p'"'] \\
+         A \otimes (S \otimes_{R} M) \arrow[rr, "i\,\otimes (\operatorname{id}_{S} \otimes \operatorname{id}_{M})"]                 & & B \otimes (S \otimes_{R} M)                
+        \end{tikzcd}
+        知$i \otimes (\operatorname{id}_{S} \otimes \operatorname{id}_{M}):
+        A \otimes (S \otimes_{R} M) \rightarrow B \otimes (S \otimes_{R} M)$单，
+        其中$p,p'$是张量积结合律所述同构. 故$S \otimes_{R} M$平坦. \qed
+
+    \item[6.3.]
+    \begin{itemize}
+        \item[(i)] 设$R,S$是交换环，$\alpha:R \rightarrow S$是环同态，
+        通过$\alpha$，将$S$看成$(S,R)$-双模. 
+        设$S$作为$R$-模是平坦的，$M$是一个平坦$S$-模，
+        通过$\alpha$，$M$也是一个$R$-模，证明：作为$R$-模，$M$也是平坦的.
+        \item[\textbf{证明:}]
+        对于$R$-模单同态$i:A \rightarrow B$，由$S$的平坦性知
+        $i \otimes \operatorname{id}_{S}:A \otimes_{R} S 
+        \rightarrow B \otimes_{R} B$单，再由$M$的平坦性，
+        可知有$(i \otimes \operatorname{id}_{S}) \otimes_{S} \operatorname{id}_{M}:
+        (A \otimes_{R} S) \otimes_{S} M \rightarrow (B \otimes_{R} S) \otimes_{S} M$单.
+        由张量积的交换律与结合律有如下交换图：
+        \begin{tikzcd}
+         (A \otimes_{R} S) \otimes_{S} M \arrow[r, no head, equal] \arrow[d]    & A \otimes_{R} (S \otimes_{S} M) \arrow[r, no head, equal] \arrow[d] & A \otimes_{R} (M \otimes_{S} S) \arrow[r, no head, equal] \arrow[d] & A \otimes_{R} M_{\alpha} \arrow[d] \\
+         (B \otimes_{R} S) \otimes_{S} M \arrow[r, no head, equal] & B \otimes_{R} (S \otimes_{S} M) \arrow[r, no head, equal]           & B \otimes_{R} (M \otimes_{S} S) \arrow[r, no head, equal]           & B \otimes_{R} M_{\alpha}          
+        \end{tikzcd}
+        其中最后一个方框用到习题6.2 (i). 由此知$M$视作$R$-模仍然平坦. \qed
+        \item[(ii)] 设$R$是交换环，$M,N$是平坦$R$-模，
+        证明：$M \otimes_{R} N$是平坦$R$-模.
+        \item[\textbf{证明:}]
+        对于$R$-模单同态$i:A \rightarrow B$，由$M$的平坦性知
+        $i \otimes \operatorname{id}_{M}:A \otimes_{R} M \rightarrow B \otimes_{R} M$单. 
+        这仍然是一个$R$-模，故再由$N$的平坦性知
+        $(i \otimes \operatorname{id}_{M}) \otimes \operatorname{id}_{N}:
+        (A \otimes_{R} M) \otimes_{R} N \rightarrow (B \otimes_{R} M) \otimes_{R} N$单. 
+        再由张量积结合律知有交换图
+        \begin{tikzcd}
+         (A \otimes_{R} M) \otimes_{R} N \arrow[r] \arrow[d, no head, equal] & (B \otimes_{R} M) \otimes_{R} N \arrow[d, no head, equal] \\
+         A \otimes_{R} (M \otimes_{R} N) \arrow[r, rightarrow]                    & B \otimes_{R} (M \otimes_{R} N)                               
+        \end{tikzcd}
+        由上图可知$i \otimes (\operatorname{id}_{M} \otimes \operatorname{id}_{N})$，
+        从而$M \otimes_{R} N$平坦. \qed
+    \end{itemize}
+
+    \item[6.4.] 设$R$是交换环，$I$是$R$的理想. 若$R/I$是平坦$R$-模，证明：$I=I^{2}$.
+    \item[\textbf{证明:}]
+    只需证明$I \subset I^{2}$. 由平坦性，正合列
+    $0 \rightarrow I \stackrel{i}{\to} R$
+    诱导了正合列$0 \rightarrow (R/I)\otimes_{R}I 
+    \stackrel{\operatorname{id} \otimes \,i}\longrightarrow (R/I)\otimes_{R}R$. 
+    而可验证下图交换
+    \begin{tikzcd}
+     0 \arrow[r] & (R/I)\otimes_{R}I \arrow[r, "\operatorname{id}\otimes \,i"] \arrow[d, "f"'] & (R/I)\otimes_{R}R \arrow[d, "g"] \\
+     0 \arrow[r] & I/I^{2} \arrow[r, "h"]                                                    & R/I                             
+    \end{tikzcd}
+    其中$f:\bar{r} \otimes a \mapsto \overline{ra}$，
+    $g:\bar{r} \otimes a \mapsto \overline{ra}$, 
+    $h: a+I^{2} \mapsto a+I$，且$f$与$g$均为同构，
+    故而$h = g \circ (\operatorname{id} \otimes \,i) \circ f^{-1}$是单射. 
+    对于$a \in I$，$h(a+I^{2})=a+I=I$，
+    由$h$单知$a+I^{2}=I^{2}$，即$a \in I^{2}$. 故$I=I^{2}$. \qed   
+
+    \item[7.1.] 设$R$是一个含幺交换环，$A$，$B$是交换$R$-代数.
+    \item[(i)] 证明：$R$-代数$A \otimes_{R} B$是交换的.
+    \item[\textbf{证明：}]
+        只考虑单项式的情形. 对于$a,c \in A$，$b,d \in B$，
+        由于$(a \otimes b)(c \otimes d)=(ac)\otimes(bd)=(ca)\otimes(db)
+        =(c \otimes d)(a \otimes b)$，故单项式的乘法是交换的. 
+        而一般的张量乘法交换则是直接由乘法分配律得来. 
+
+    \item[(ii)] 定义映射$i_{A}:A \rightarrow A \otimes_{R} B;
+        a \mapsto a \otimes 1_{B}$
+        以及$i_{B}:B \rightarrow A \otimes_{R} B;b \mapsto 1_{A} \otimes b$. 
+        其中$1_{A},1_{B}$分别表示$A,B$的幺元. 
+        证明：$i_{A},i_{B}$是$R$-代数同态.
+    \item[\textbf{证明：}]
+    下面说明$i_A$是$R$-代数同态，$i_B$同理。对任意$a,a'\in A,r\in R$，
+    \begin{align*}
+        &i_A(a)+i_A(a')=a\otimes1_B+a'\otimes1_B=(a+a')\otimes1_B=i_A(a+a'),\\
+        &i_A(a)i_A(a')=(a\otimes1_B)(a'\otimes1_B)=(aa')\otimes1_B=i_A(aa'),\\
+        &ri_A(a)=r(a\otimes1_B)=(ra)\otimes1_B=i_A(ra).\\
+    \end{align*}
+
+    \item[(iii)] 对任意的交换$R$-代数$C$，给定$R$-代数同态
+        $f:A \rightarrow C$，$g:B \rightarrow C$，存在唯一的$R$-代数同态
+        $h:A \otimes_{R} B \rightarrow C$使得
+        $h \circ i_{A} = f$，$h \circ i_{B} = g$.
+    \begin{tikzcd}
+        A\rar["i_A"]\drar[swap,"f"] 
+        & A\otimes_RB\arrow[d,"h" description] 
+        & B\lar[swap,"i_B"]\dlar["g"]\\
+        & C &
+    \end{tikzcd}
+    \item[\textbf{证明：}]
+    $h(a\otimes b)=h((a\otimes1_B)(1_A\otimes b))=h(a\otimes1_B)h(1_A\otimes b)
+    =h\circ i_A(a)h\circ i_B(b)=f(a)g(b)$，于是$h$唯一。
+
+    $h$存在是因为，$R$-双线性映射$A\times B\to C,(a,b)\mapsto f(a)g(b)$
+    诱导了唯一的$R$-模同态$h\colon A\otimes_RB\to C$使得$a\otimes b\mapsto f(a)g(b)$，
+    这样$h\circ i_A(a)=h(a\otimes1_B)=f(a)g(1_B)=f(a)$，
+    与$h\circ i_B(b)=g(b)$，并且
+    \begin{align*}
+        h((a\otimes b)(a'\otimes b'))
+        &=h(aa'\otimes bb')=f(aa')g(bb')\\
+        &=f(a)f(a')g(b)g(b')=f(a)g(b)f(a')g(b')\\
+        &=h(a\otimes b)h(a'\otimes b'),
+    \end{align*}
+    由此$h$是$R$-代数同态。
+
+        \item[7.2] 设$R$是一个含幺交换环. 
+        $R[x_1,\cdots,x_m],R[y_1,\cdots,y_n]$分别是$R$上的$m$元与$n$元多项式环，
+        $x_1,\cdots,x_m,\ y_1,\cdots,y_n$分别是相应的未定元.
+        证明：作为$R$-代数，$R[x_1,\cdots,x_m]\otimes_R R[y_1,\cdots,y_n]$
+        同构于$R[x_1,\cdots,x_m,y_1,\cdots,y_n]$.
+        \item[\textbf{证明:}]
+        证明更一般的结果：设$S$是$R$-代数，$R[x]\otimes_RS$同构于$S[x]$。
+
+        $R[x]\otimes_RS$的元素形如
+        $\textstyle \sum_i\sum_nr_{i,n}x^n\otimes s_i$，等于
+        $\sum_nx^n\otimes\big(\sum_ir_{i,n}s_i\big)$，通过
+        $$\textstyle \sum_nx^n\otimes\big(\sum_ir_{i,n}s_i\big)
+        \mapsto \sum_n\big(\sum_ir_{i,n}s_i\big)x^n$$
+        同构，易得这个映射单且满。
+
+        \item[7.3] 将复数域$\mathbb{C}$作为$\mathbb{R}$-代数. 
+        考虑四元数体$\mathcal{H}$（见习题2.6）. 证明：作为$\mathbb{R}$-代数，
+        $\mathcal{H}\otimes_\mathbb{R}\mathbb{C}$同构于$M_2(\mathbb{C})$.
+        \item[\textbf{证明:}]
+        $\mathcal{H}\otimes_\mathbb{R}\mathbb{C}\cong
+        \mathcal{H}\oplus i\mathcal{H}=M_2(\mathbb{C})$，
+        前面的同构是$H\otimes1\mapsto H,H\otimes i\mapsto iH$，
+        后面的等号见习题2.6 (a).
+    
+    \end{enumerate}
+
+\section{投射模}
+    \begin{enumerate}
+        \item[7.2.1] $e^2=e\in R$, 证明$Re$是投射模.
+        \item[\textbf{证明:}] $R=Re\oplus R(1-e)$.
+        \item[7.2.2] $R$-模$M$是有限生成投射模当且仅当
+        存在$R$-模$T$使得$M\oplus T\simeq R^n$.
+        \item[\textbf{证明:}] 若$M\oplus T=R^n=\bigoplus\limits_{i=1}^n Re_i$, 
+            设$e_i=m_i+t_i$, 再证明$m_1,\cdots,m_n$生成$M$即可.\par
+            若$M$是有限生成投射模, 存在$n$使得
+            $R^n\xrightarrow{\alpha} M\rightarrow 0$正合. 
+            取$T=\operatorname{Ker} \alpha$, 则有正合列
+            $$0\rightarrow T\xrightarrow{i} R^n\xrightarrow{\alpha}M\rightarrow 0.$$
+            又因为$M$是投射模, 该正合列可裂, 所以$R^n\simeq T\oplus M$.
+        \item[7.2.3] $P$是投射$R$-模当且仅当下列条件满足:\par
+            存在元素$e_i\in P$, $f_i\in \operatorname{Hom}_R(P,R)$, $i\in I$
+            使得对于任意$x\in P$, 有$x=\sum\limits_{i\in I}f_i(x)e_i$成立, 
+            其中只有有限项$f_i(x)$非零.
+        \item[\textbf{证明:}]
+            若$P$是投射模, 则存在$R$-模$Q$使得
+            $P\oplus Q=\bigoplus\limits_{i\in I}Ru_i$. 
+            设$u_i=e_i+q_i, i\in I, e_i\in P, q_i\in Q$.\par
+            $P\ni x=\sum\limits_{i\in I} \lambda_i^xu_i=\sum\limits_{i\in I} \lambda_i^xe_i+\sum\limits_{i\in I} \lambda_i^xq_i$, 由直和性质, $x=\sum\limits_{i\in I} \lambda_i^xe_i=\sum\limits_{i\in I} f_i(x)e_i$, 其中
+            $f_i(x)=\lambda_i^x\in \operatorname{Hom}_R(P,R)$（需要验证）. 
+            显然只有有限项非零.\par
+            另一方面, 对于任意正合列$M\xrightarrow{\beta} N\rightarrow 0$, 
+            任意$g\in \operatorname{Hom}_R(P,N)$, 设$g(e_i)=n_i$. 
+            因为$\beta$是满射, 所以存在$m_i\in M$, 使得$\beta(m_i)=n_i$. \par
+            考虑$h:P\rightarrow M$, $h(x)=\sum\limits_{i\in I}f_i(x)n_i$, 
+            验证$h\in \operatorname{Hom}_R(P,M)$, 且$g=\beta\circ h$.
+
+        \item[7.2.4.] $F=\operatorname{Frac}(R)$是整区$R$的分式域. 
+        通过乘法, $F$是一个$R$-模. 设$I$是$R$的一个理想. 
+        如果存在$F$的$R$-子模$J$, 使得$R=IJ$. 证明: 作为$R$-模, $I$是投射模.
+        \item[\textbf{证明:}]
+            $1\in R=IJ$, 所以存在有限个$a_i\in I, b_i\in J$, 
+            使得$1=\sum\limits_i a_ib_i$. 
+            进而$x=1\cdot x=\sum\limits_i a_ib_ix=\sum\limits_i a_i(xb_i)$， 
+            其中$xb_i\in IJ\subset R$.\par
+            定义$f_i(x)=xb_i\in \operatorname{Hom}_R(I,R)$, 
+            由习题7.2.3知$I$是投射模.
+        
+        \item[7.2.5.] 设$0\rightarrow N_i\xrightarrow{\alpha_i} P_i 
+        \xrightarrow{\beta_i} M\rightarrow 0,\ i=1,2$是两个短正合列, 
+        且$P_1, P_2$是投射模. 证明$P_1\oplus N_2\cong P_2\oplus N_1$.
+        \item[\textbf{证明:}]
+            对于正合列$P_2\xrightarrow{\beta_2} M\rightarrow 0$, 
+            由于$P_1$是投射模, 存在$\gamma\in \operatorname{Hom}_R(P_1,P_2)$
+            使得$\beta_1=\beta_2\circ \gamma$.\par
+            而对于任意$n_1\in N_1$, 
+            $\beta_2 \circ \gamma \circ \alpha_1(n_1)
+            =\beta_1\circ \alpha_1(n_1)=0$, 
+            故$\gamma\circ \alpha_1(n_1)\in \operatorname{Im}\alpha_2$. 
+            进而存在$n_2\in N_2$, 使得$\alpha_2(n_2)=\gamma\circ \alpha_1(n_1)$. 
+            又因为$\alpha_2$是单射, 所以这样的$n_2$是唯一的, 
+            因此$\theta(n_1):=n_2$是良定的, 且容易验证
+            $\theta\in \operatorname{Hom}_R(N_1,N_2)$.
+            \begin{tikzcd}
+                0\rar &N_1\rar["\alpha_1"]\dar["\theta",dashed,swap] &P_1\dar["\gamma"]\drar["\beta_1"] & & \\
+                0\rar &N_2\rar["\alpha_2"] &P_2\rar["\beta_2"] &M\rar &0
+            \end{tikzcd}
+            对于模同态$0\rightarrow N_1\xrightarrow{f} P_1\oplus N_2 
+            \xrightarrow{g} P_2\rightarrow 0$, 
+            其中$f(n_1)=(\alpha_1(n_1),\theta(n_1))$, 
+            $g(p_1,n_2)=\gamma(p_1)-\alpha_2(n_2)$. 我们证明这是短正合列.\par
+            前两处易见, 下面说明第三处. 对于任意的$p\in P_2$, $m=\beta_2(p)\in M$. 
+            由于$\beta_1$是满射, 故存在$p_1\in P_1$使得$m=\beta_1(p_1)$. 
+            进而$\beta_2\circ \gamma(p_1)=m$.\par
+            故$\beta_2(p-\gamma(p_1))=0$, 即
+            $p-\gamma(p_1)\in \operatorname{Ker} \beta_2=\operatorname{Im}\alpha_2.$ 
+            故存在$n_2\in N_2$, 使得$p=\gamma(p_1)-\alpha_2(n_2)$.
+
+    \item[7.2.6]设$R$是含幺环，$R^*=\{a\in R\mid \exists b\in R,ab=ba=1\}$是其乘法群，
+    $\mathfrak{m}=R\backslash R^*$，如果$\mathfrak{m}$是$R$的理想，则称$R$是局部环. 
+    下设$(R,\mathfrak{m})$是局部环.
+    \begin{itemize}
+    \item[(i)]设$T$是有限生成$R$-模，$I\subseteq \mathfrak{m}$为一个理想，
+    且$IT=T$，$IT$表示由子集$\{rt\mid r\in I,t\in T\}$生成的子模，证明：$T=\{0\}$.
+    \item[(ii)]设$N$是$T$的子模，$T$是有限生成的，
+    $I\subseteq \mathfrak{m}$，且$T=IT+N$,证明：$T=N$.
+    \item[(iii)]证明：$R/\mathfrak{m}$是可除环.
+    考虑自然环同态$j:M_n(R)\rightarrow M_n(R/\mathfrak{m})$，
+    $A=(a_{ij})\in M_n(R)$是$R$上的$n$阶方阵，
+    $j(A)=(\overline{a_{ij}})$，其中$\overline{a_{ij}}=a_{ij}+\mathfrak{m}$.
+    证明：$A\in M_n(R)$是可逆阵当且仅当$j(A)\in M_n(R/\mathfrak{m})$是可逆阵.
+    \item[(iv)]设$P$是有限生成的投射$R$-模，证明：$P$是有限生成的自由模.
+    \end{itemize}
+
+    \item[\textbf{证明:}]
+    \begin{itemize}
+        \item[(i)] 设$\{t_1,\cdots t_n\}$为$T$的极小生成元集. 
+        注意到$\mathfrak{m}$为双边理想，则存在$\{r_i\}_{i=1}^n$，
+        使得$t_1=\sum\limits_{i=1}^nr_it_i$，
+        由于$\mathfrak{m}$为不可逆元全体构成的极大理想，
+        假如$1-r_1$不可逆，则$1=(1-r_1)+r_1\in \mathfrak{m}$，矛盾.
+        因此$1-r_1$可逆，从而$t_1=(1-r_1)^{-1}\sum\limits_{i=2}^nr_it_i$，
+        这与生成元集的极小性矛盾.
+    
+        \item[(ii)] 注意到$(IT+N)/N=I(T/N)$,则$T/N=I(T/N)$，
+        利用(i)即知$T/N=\{0\}$，即证.
+
+        \item[(iii)]“$\Rightarrow$”:
+        若$AB=BA=I$则$j(A)j(B)=j(I)=j(B)j(A)$.\par
+        “$\Leftarrow$”:
+        若$j(A)j(B)=j(I)=j(B)j(A)$,则存在$M_1,M_2\in M_n(\mathfrak{m})$，
+        使得$AB+M_1=I=BA+M_2$，可见$R^n\subset ABR^n+\mathfrak{m}R^n$，
+        由(ii)可知$ABR^n=R^n$，可见$A$为满射;
+        断言$A$为单射：若$Ax=0$，则$(I+M_2)x=0$. 
+        那么$x=-M_2x\in \mathfrak{m}R^n$，即$\ker A\subset \mathfrak{m}R^n$. 
+        由于$R^n$为自由模，可见$R^n=\ker A\oplus T,A\,|_T:T\rightarrow R^n$为同构，
+        由(ii)可知$T=R^n$,可见$\ker A=\{0\}$. 
+        从而$A$单且满，于是可逆.
+        
+        \item[(iv)] 设$P$的极小生成元集为$\{t_1,\cdots,t_n\}$,
+        定义$f:R^n\rightarrow P,(r_1,\cdots,r_n)\mapsto \sum\limits_{i=1}^nr_it_i$，
+        由$P$投射，可知$R^n=\ker f\oplus P$,其中$f\,|_P$为同构.\par
+        若$(a_1,\cdots,a_n)\in \ker f$,即$\sum\limits_{i=1}^na_it_i=0$，
+        断言$a_i\in \mathfrak{m}, i=1,\cdots,n$，
+        否则不妨$a_1\notin \mathfrak{m}$，即$a_1$可逆，
+        则$t_1=a_1^{-1}\sum\limits_{i=2}^n a_i t_i$，这与生成元集的极小性矛盾.\par
+        从而$\ker f\subset \mathfrak{m}R^n$，$R^n=P + \mathfrak{m}R^n$，
+        由(ii)可知$P=R^n,\ker f =\{0\}$.
+        \end{itemize}
+    \end{enumerate}
+
+\section{内射模}
+    \begin{enumerate}
+        \item[8.1.] $p$是素数, $\mathbb{Z}[\frac{1}{p}]=\{\frac{a}{p^n}:
+        a\in\mathbb{Z}, n\in \mathbb{N}\}$. 
+        证明: $N=\mathbb{Z}[\frac{1}{p}]/\mathbb{Z}$是可除$\mathbb{Z}$-模.
+        \item[\textbf{证明:}]  因为$\mathbb{Z}$是PID, 所以只需要证明$N$可除.
+        (此性质只要求PI.)\par
+        对于任意$[\frac{a}{p^k}]\in N$以及$s\in \mathbb{Z}$, 
+        设$s=s_0p^l$, 其中$\gcd(s_0,p)=1$. 
+        取$t\in\mathbb{Z}$使得$s_0t\equiv a(\!\!\!\mod p^k)$, 有
+        $$s\cdot \Big[\frac{t}{p^{k+l}}\Big]=\Big[\frac{st}{p^{k+l}}\Big]
+        =\Big[\frac{s_0t}{p^k}\Big]=\Big[\frac{a}{p^k}\Big].$$
+
+        \item[8.2.] $A$是非零Abel群, $0\neq a\in A$. 
+        证明: 存在一个群同态$f:A\rightarrow \mathbb{Q}/\mathbb{Z}$使得$f(a)\neq 0$.
+        \item[\textbf{证明:}] 考虑$g:\langle a\rangle
+        \rightarrow \mathbb{Q}/\mathbb{Z}$. 
+        若$o(a)=n$, 则定义$g(ka)=[\frac{k}{n}]$. 
+        若$o(a)=\infty$, 定义$g(ka)=[\frac{a}{2}]$. 
+        验证$g$是群同态且$g(a)\neq 0$.\par
+        对于正合列$0\rightarrow \langle a\rangle\xrightarrow{i} A$, 
+        因为$\mathbb{Q}/\mathbb{Z}$是内射模, 
+        存在群同态$f: A\rightarrow \mathbb{Q}/\mathbb{Z}$使得$f(a)=g(a)\neq 0$.
+
+        \item[8.3.] $R,S$是含幺环, $\alpha:R\rightarrow S$是环同态. 
+        通过$\alpha$将$S$视作$(R,S)$-双模. 设$M$是一个内射左$R$-模. 
+        证明: $\operatorname{Hom}_R(S,M)$作为左$S$-模是内射模. 
+        \item[\textbf{证明:}] 对于任意左$S$-模正合列: 
+            $0\rightarrow M_1\rightarrow M_2$, 
+            将证明$\operatorname{Hom}_S(M_2,\operatorname{Hom}_R(S,M))
+            \xrightarrow{\alpha^*} \operatorname{Hom}_S(M_1,\operatorname{Hom}_R(S,M))$是满射.\par
+            注意到$\operatorname{Hom}_S(M_2,\operatorname{Hom}_R(S,M))
+            \cong \operatorname{Hom}_R(S\otimes_S M_2,M) 
+            \cong \operatorname{Hom}_R(M_2,M)$, 最后是将$M$通过$\alpha$视作左$R$-模.\par
+            同理有$\operatorname{Hom}_S(M_1,\operatorname{Hom}_R(S,M))
+            \cong \operatorname{Hom}_R(M_1,M)$. 由$M$内射知满射.
+
+
+        \item[8.4.] $R$是PID, $M$有限生成$R$-模. 什么情况下$M$是内射模?
+        \item[\textbf{证明:}] 
+            $M$是内射模(等价于可除)等价于$M=\{0\}$或$R$是域.\par
+            设$M$是内射模. $M$有限生成, 故存在$d_i\neq 1$使得
+            $M\cong \Big(\bigoplus\limits_{i=1}^l R/(d_i)\Big)
+            \oplus \Big(\bigoplus\limits_{j=1}^s R\Big)$. \par
+            若$l\neq 0$, $M$可除, 故$R/(d_i)$可除(直和性质), 
+            但$d_i\cdot R/(d_i)=\{0\}$, 矛盾.\par
+            若$s\neq 0$, $M=\bigoplus\limits_{j=1}^s R$可除, 则对于任意$r\in R$, 
+            存在$(a_1,\cdots,a_s)\in \bigoplus\limits_{j=1}^s R$, 
+            使得$r(a_1,\cdots,a_s)=(1,0,\cdots,0)$, 进而$ra_1=1$. 
+            再说明$r$和$a_1$互为逆. 由$r$的任意性知$R$是域.\par
+            若$s=0$, 即$M=\{0\}$自然内射.\par
+            另外一个方向显然.
+
+
+        \item[8.5.] 设$R$是一个整区. 若$R$-模$M$是无扭可除模, 证明：$M$是内射模.\par
+        \item[\textbf{证明:}]  
+            对于$R$的任意理想$I$, 任意$R$-模同态$f:I\rightarrow M$.\par
+            若$I=\{0\}$, 取$\tilde{f}:R\rightarrow M$, 
+            $\tilde{f}(r)=0,\ \forall r\in R$. 则这是模同态, 
+            且$f=\tilde{f}\circ j$, 其中$j:I\rightarrow R$是自然嵌入.\par
+            若$I\neq \{0\}$, 任取$i\neq 0 \in I$, 则$f(i)\in M$.\par
+            由$M$可除, 有$iM=M$. 特别地, 存在$m\in M$, 使得$im=f(i)$.\par
+            这样的$m$是唯一的：设$m'\in M$同样满足$im'=f(i)$, 
+            则$0=f(i)-f(i)=im-im'=i(m-m')$, 又$M$无扭, 故$m-m'=0$, 即$m=m'$.\par
+            对于任意$j\in I$, 考虑$f(j)-jm$. 
+            $$i(f(j)-jm)=f(ij)-ijm=f(ji)-(ji)m=j(f(i)-im)=0.$$
+            由于$M$无扭, 故$f(j)=jm$.\par
+            取$\tilde{f}:R\rightarrow M$, $\tilde{f}(r)=rm,\ \forall r\in R$. 
+            则$\tilde{f}$是$R$-模同态, 且$\tilde{f}\circ j=f$.\par
+            由Baer判别法知$M$是内射模. \qed
+
+        \item[8.6.] 设$R$是PID, I是$R$的非平凡理想. 证明: $R/I$是内射$R/I$-模.
+        \item[\textbf{证明:}] 考虑$R/I$的任意理想, 我们知道其具有$J/I$的形式, 
+            其中$J\supset I$是$R$的理想.\par
+            因为$R$是PID, 存在$d, d'\in R$, 使得$J=Rd'$, $I=Rd$. 
+            因为$J\supset I$, 存在$\lambda\neq 0 \in R$使得$d=\lambda d'$.\par
+            对于任意模同态$f:J/I\rightarrow R/I$, 设$f(\overline{d'})=\overline{b}$. 
+            我们想要$\overline{a}\in R/I$, 使得
+            $\tilde{f}(\overline{d'})=\overline{ad'}=\overline{b}$.\par
+            注意到$\overline{\lambda b}=\overline{\lambda}f(\overline{d'})
+            =f(\overline{\lambda d'})=0.$ 
+            因此存在$t\in R$, 使得$\lambda b=td=t\lambda d'=\lambda td'$. 
+            进而$\lambda(b-td')=0$, 故$b=td'$. 取$a=t$再验证即可. \qed
+    \end{enumerate}
+
+\section{半单模}
+    \begin{enumerate}
+        \item[9.1.1.] 设$R$是环.
+        \item[(i)] 设$M,N$是同构的$R$-模，
+            证明：作为环，$\operatorname{End}_{R}(M)$同构于$\operatorname{End}_{R}(N)$.
+        \item[\textbf{证明:}]
+            设$\varphi:M \rightarrow N$与$\psi:N \rightarrow M$为互逆的同构，
+            那么定义$f:\operatorname{End}_{R}(M) \rightarrow \operatorname{End}_{R}(N);
+            \rho \mapsto \psi \circ \rho \circ \varphi$与
+            $g:\operatorname{End}_{R}(N) \rightarrow \operatorname{End}_{R}(M);
+            \tau \mapsto \varphi \circ \tau \circ \psi$. 
+            容易验证这是$\operatorname{End}_{R}(M)$与$\operatorname{End}_{R}(N)$
+            间的互逆环同态，从而是同构. \qed
+
+        \item[(ii)] 设$M_{n}(R)$是$R$上的$n$阶矩阵环.
+            证明：作为环，$M_{n}(R^{\mathrm{op}})$同构于$(M_{n}(R))^{\mathrm{op}}$.
+        \item[\textbf{证明:}]
+            定义$\varphi:M_{n}(R^{\mathrm{op}}) \rightarrow (M_{n}(R))^{\mathrm{op}};A \mapsto A^{T}$
+            以及$\psi:(M_{n}(R))^{\mathrm{op}} \rightarrow M_{n}(R^{\mathrm{op}});A^{T} \mapsto A$.
+            我们只验证$\varphi$是环同态. 记$\cdot$为$M_{n}(R^{\mathrm{op}})$的乘法，
+            而$\times$为$R^{\mathrm{op}}$的乘法，且$\widetilde{a_{ij}}:=a_{ji}$，
+            那么
+            \begin{equation*}\begin{aligned}
+                \varphi([a_{ij}]) \cdot \varphi([b_{ij}]) 
+                &= \varphi([b_{ij}])\varphi([a_{ij}])
+                = [\widetilde{b_{ij}}][\widetilde{a_{ij}}]
+                = [\sum_{k=1}^{n}\widetilde{b_{ik}}\widetilde{a_{kj}}]
+                = [\sum_{k=1}^{n}b_{ki}a_{jk}]
+                = [\sum_{k=1}^{n}a_{jk} \times b_{ki}] \\
+                &= [\widetilde{\sum_{k=1}^{n}a_{ik} \times b_{kj}}]
+                = [\sum_{k=1}^{n}a_{ik}b_{kj}]^{T}
+                = \varphi([\sum_{k=1}^{n}a_{ik}b_{kj}])
+                = \varphi([a_{ij}][b_{ij}]). 
+            \end{aligned}\end{equation*}
+            而其余验证都是平凡的. \qed
+
+        \item[9.1.2.]
+        设$R$是环，$M$是$R$-模，$n$是正整数.
+        用$nM$表示$n$个$M$的直和.
+        记$A = \operatorname{End}_{R}(M)$是$M$的自同态环.
+        证明：作为环，$\operatorname{End}_{R}(nM)$同构于$M_{n}(A)$，
+        其中$M_{n}(A)$表示$A$上的$n$阶矩阵环.
+        \item[\textbf{证明:}]
+        我们记$\pi_{i}:nM \rightarrow M$为$nM$到其第$i$个分量上的取值，
+        $\iota_{i}:M \rightarrow nM$为$M$到$nM$第$i$个分量的嵌入，
+        即$\iota_{i}(m) = (0,\cdots,0,m,0,\cdots,0)$.
+        定义
+        \[\varphi:\operatorname{End}(nM) \rightarrow M_{n}(A);
+        \quad f \mapsto [\pi_{i} \circ f \circ \iota_{j}].\]
+        那么
+        \begin{equation*}\begin{aligned}
+            \varphi(fg) &= \varphi(f \circ g)
+            = [\pi_{i} \circ f \circ g \circ \iota_{j}]
+            = [\pi_{i} \circ f \circ \operatorname{id}_{nM} \circ g \circ \iota_{j}]
+            = [\pi_{i} \circ f \circ \bigg(\sum_{k=1}^{n}\iota_{k} \circ \pi_{k}\bigg) \circ g \circ \iota_{j}] \\
+            &= [\sum_{k=1}^{n}\pi_{i} \circ f \circ \iota_{k} \circ \pi_{k} \circ g \circ \iota_{j}]
+            = [\pi_{i} \circ f \circ \iota_{j}][\pi_{i} \circ g \circ \iota_{j}]
+            = \varphi(f)\varphi(g).
+        \end{aligned}\end{equation*}
+        再定义
+        \[\psi:M_{n}(A) \rightarrow \operatorname{End}(nM);
+        \quad [f_{ij}] \mapsto \sum\limits_{i,j=1}^{n}\iota_{i} \circ f_{ij} \circ \pi_{j}.\]
+        这也给出了一个环同态：
+        \begin{equation*}\begin{aligned}
+            \psi([f_{ij}])\psi([g_{ij}]) 
+            = \bigg(\sum_{i,j=1}^{n}\iota_{i} \circ f_{ij} \circ \pi_{j}\bigg) \circ
+            \bigg(\sum_{i,j=1}^{n}\iota_{i} \circ g_{ij} \circ \pi_{j}\bigg)
+            = \sum_{i,j=1}^{n}\iota_{i} \circ \bigg(\sum_{k=1}^{n}f_{ik} \circ g_{kj}\bigg) \circ \pi_{j}
+            = \psi([f_{ij}][g_{ij}]),
+        \end{aligned}\end{equation*}
+        其中第二个等号是因为$\pi_{j} \circ \iota_{i} = \delta_{ij}\operatorname{id}_{M}$.
+        所以
+        \begin{equation*}\begin{aligned}
+        \psi \circ \varphi(f) = g((\pi_{i} \circ f \circ \iota_{j})) 
+        = \sum_{i,j=1}^{n}\iota_{i} \circ \pi_{i} \circ f \circ \iota_{j} \circ \pi_{j}
+        = \sum_{j=1}^{n}f \circ \iota_{j} \circ \pi_{j} 
+        = f,
+        \end{aligned}\end{equation*}
+        且
+        \begin{equation*}\begin{aligned}
+        \varphi \circ \psi([f_{ij}]) = f\bigg(\sum_{i,j=1}^{n}\iota_{i} \circ f_{ij} \circ \pi_{j}\bigg)
+        = [\pi_{i} \circ \bigg(\sum_{k,l=1}^{n}\iota_{k} \circ f_{kl} \circ \pi_{l}\bigg) \circ \iota_{j}]
+        = [f_{ij}].
+        \end{aligned}\end{equation*}        
+        这证明了$\psi \circ \varphi = \operatorname{id}_{\operatorname{End}(nM)}$以及
+        $\varphi \circ \psi = \operatorname{id}_{M_{n}(A)}$. \qed
+
+        \item[9.1.3.] 记号同上题.
+        设$M_{1},\cdots,M_{s}$是$s$个两两不同构的单$R$-模；
+        $n_{1},\cdots,n_{s}$是$s$个正整数；
+        $M = \bigoplus\limits_{i=1}^{s}n_{i}M_{i}$.
+        证明：作为环，$\operatorname{End}_{R}(M)$同构于直积
+        $\prod\limits_{i=1}^{s}\operatorname{End}_{R}(n_{i}M_{i})
+        = \operatorname{End}_{R}(n_{1}M_{1}) \times \cdots 
+        \times \operatorname{End}_{R}(n_{s}M_{s})$.
+        \item[\textbf{证明:}]
+        记$\iota_{i}$为$n_{i}M_{i}$至$M$第$i$直和项的嵌入，
+        而$\pi_{i}$为$M$在$M$第$i$直和项上的取值. .
+        定义\[f:\operatorname{End}_{R}(M) 
+        \rightarrow \prod\limits_{i=1}^{s}\operatorname{End}_{R}(n_{i}M_{i});\quad
+        \varphi \mapsto (\pi_{i} \circ \varphi \circ \iota_{i})_{1 \leq i \leq s}.\]
+        我们证明其良定性.
+        若存在$i \neq j$使得$\pi_{j} \circ \iota_{i} \neq 0$，
+        则存在$1 \leq k \leq n_{j}$使得
+        $\pi_{j,k} \circ \pi_{j} \circ \varphi \circ \iota_{i}(M) \neq 0$.
+        其中$\pi_{j,k}$是$n_{j}M_{j}$在其第$k$分量上的取值.
+        由单性，$\pi_{j,k} \circ \pi_{j} \circ \varphi \circ \iota_{i}(M) = M_{j,k}$.
+        记$\iota_{i,l}$为$M_{i}$至$n_{i}M_{i}$第$l$直和项的嵌入，那么同理，
+        存在$1 \leq l \leq n_{i}$使得
+        $\pi_{j,k} \circ \pi_{j} \circ \varphi \circ \iota_{i} \circ \iota_{i,l}(M_{i,l}) \neq 0$，
+        从而$h := \pi_{j,k} \circ \pi_{j} \circ \varphi \circ \iota_{i} \circ \iota_{i,l}$是单模间的满射.
+        且$\ker h < M_{i,l}$，故$\ker h = 0$.
+        故$h$是单模间的同构，矛盾！
+        故$\sum\limits_{j=1}^{s}\pi_{j} \circ \varphi \circ \iota_{i} 
+        = \pi_{i} \circ \varphi \circ \iota_{i}$.
+        而定义
+        \[g:\prod\limits_{i=1}^{s}\operatorname{End}_{R}(n_{i}M_{i}) \rightarrow \operatorname{End}_{R}(M);\quad
+        (\varphi_{i}) \mapsto \sum\limits_{i=1}^{s} \iota_{i} \circ \varphi_{i} \circ \pi_{i}.\]
+        容易验证$f,g$是互逆的，从而是同构. \qed
+
+        \item[9.2.1.] 
+        \begin{itemize}
+            \item[(i)] 对哪些正整数$n$，$\Z/n\Z$是半单$\Z$-模？
+        \end{itemize}
+        \item[\textbf{证明:}]
+            $\Z/n\Z$是半单$\Z$-模当且仅当$n$是无平方因子数.
+
+            首先，设$n = p^{l}$，其中$p$是素数，$l$是正整数.\\
+            当$l > 1$时，存在$\Z/p^{l}\Z$的子群$H$同构于$\Z/p\Z$.
+            假如$\Z/p^{l}\Z$是半单的，则$\Z/p^{l}\Z = H \oplus G$，
+            其中$G$是$\Z/p^{l}\Z$的子群.
+            那么$|G|=p^{l-1}$，从而$H \oplus G$中元的阶数不超过$p^{l-1}$.
+            但$\Z/p^{l}\Z$中含$p^{l}$阶元，矛盾！\\
+            当$l=1$时，$\Z/p^{l}\Z = \Z/p\Z$是单模，从而是半单的.
+
+            一般地，设$n = p_{1}^{l_{1}} \cdots p_{m}^{l_{m}}$，
+            其中$p_{i}$均是素数.
+            由中国剩余定理，$\Z/n\Z \cong 
+            \Z/p_{1}^{l_{1}}\Z \oplus \cdots \oplus \Z/p_{m}^{l_{m}}\Z$.\\
+            那么若$\max\{l_{1},\cdots,l_{m}\}>1$，
+            则$\Z/n\Z$的上述直和分解中有不半单的项，从而$\Z/n\Z$不半单. \\
+            若$l_{1} = \cdots = l_{m} = 1$，则$\Z/n\Z$是半单模的直和，故半单.\qed
+
+        \item[(ii)] 设$R$是含幺环，$M$是$R$-模，$N$是$M$的一个子模.
+            如果$N$与$M/N$都是半单模，问$M$是否也是半单模？说明理由.
+        \item[\textbf{证明:}]
+            不一定. 取$R = \Z$，$M = \Z/4\Z$，$N$为$M$中同构于$\Z/2\Z$的子群，是半单的.
+            那么$M/N \cong \Z/2\Z$，从而也半单.
+            但由(i)知$M$不是半单的.
+
+        \item[(iii)] 设$R$是整区，$F = \operatorname{Frac}(R)$是$R$的分式域，
+            通过乘法将$F$看成$R$-模，问$F$是否是半单$R$-模？说明理由.
+        \item[\textbf{证明:}]
+            若$R$本身是域，则$F = R$，而域中无非平凡理想，从而半单.
+
+            若$R$不是域，那么$F$不是半单$R$-模.
+            否则$R$是$F$的$R$-子模，故存在$F$的另一个非平凡$R$-子模$M$使得
+            $F = R \oplus M$. 那么$M$中的非零元素都能写成$m=\frac{r}{s}$，
+            其中$0 \neq r,s \in R$且$s \notin R^{*}$，
+            否则$m \in R$，从而$m \in R \cap M = \{0\}$. 矛盾！
+            但$sm=r \in R$，而$sm \in M$，故$sm \in R \cap M = \{0\}$，
+            从而$r=0$，矛盾！\qed
+
+        \item[9.2.2.] 
+        \begin{itemize}
+            \item[(i)] 设$D$是可除环, $V$是一个有限维左$D$-模, 
+            $n=\operatorname{dim}_D V$, $R=\operatorname{End}_D(V)$是$V$的自同态环, 
+            $M_n(D)$是$D$上的$n$阶矩阵环. 证明: 作为环, 
+            $R$同构于$M_n(D^{\operatorname{op}})$.\par
+            \item[\textbf{证明:}]
+            令$V\cong nD$. 由习题9.1.2，$\operatorname{End}_{D}(nD)\cong M_{n}(A)$, 
+            其中$A=\operatorname{End}_{D}(D) \cong D^{\operatorname{op}}$.\par
+            则$R=\operatorname{End}_D(V)=\operatorname{End}_{D}(nD)
+            \cong M_n(D^{\operatorname{op}})$. \qed
+            \item[(ii)] 设$R$是半单环，$I$是$R$的左理想.
+            证明：存在$a \in I$，使得$I = R \cdot a$，且$a^{2} = a$.
+            \item[\textbf{证明:}]
+            由$R$半单，存在$R$的左理想$M$使得$R = I \oplus M$.
+            考虑$1 \in R$的分解$1 = a + a'$，其中$a \in I,a' \in M$.
+            那么对$a \in R$有$a = a \cdot 1 = a^{2} + aa'$，又$a = a + 0$，
+            由分解的唯一性，$a^{2}=a$，且$aa'=0$.
+            显然$R \cdot a \subset I$；
+            反之，对于$i \in I$，有分解$i = ia + ia' = ia + 0$，
+            所以$i=ia \in R \cdot a$. 故$I = R \cdot a$，
+            $a$即为所求的幂等元. \qed
+        \end{itemize}
+
+        \item[9.2.3.] 设$D$是可除环，$V$是一个有限维左$D$-模，$n = \dim_{D}V$，
+        $R = \operatorname{End}_{D}(V)$是$V$的自同态环.
+        设$I$是$R$的左理想，定义
+        \[\alpha(I) = \{u \in V \mid f(u) = 0,\forall \, f \in I\}.\]
+        设$W$是$V$的$D$-子模，定义
+        \[\beta(W) = \{f \in R \mid f(w)=0,\forall \, w \in W\}.\]
+        设$A = \{R\text{ 的左理想}\}$，$B=\{V\text{ 的 }D\text{-子模}\}$.
+        \item[(i)]
+            设$I \in A$，$W \in B$，证明$\alpha(I) \in B$，$\beta(W) \in A$.
+        \item[\textbf{证明:}]
+            由定义，略去. \qed
+        \item[(ii)]
+            由(i)，我们有映射$\alpha:A \rightarrow B, I \mapsto \alpha(I)$；
+            $\beta:B \rightarrow A, W \mapsto \beta(W)$；
+            证明$\alpha \circ \beta = \operatorname{id}_{B}$，
+            $\beta \circ \alpha = \operatorname{id}_{A}$.
+        \item[\textbf{证明:}]
+            对于任意$u \in \alpha(I)$，显然对于任意$f \in I$，
+            有$f(u) = 0$，从而$I \subset \beta \circ \alpha(I)$.
+            而由于$R$半单，故存在幂等元$a \in R$，使得$I = Ra$.
+            若$\ker f \supset \alpha(I)$，则考虑$f$的分解
+            $f = f \circ a + f \circ (1 - a)$.
+            由于$\operatorname{im}(1-a) = \ker a$，
+            但$\ker f \supset \alpha(I) = \ker a$，故$f \circ (1-a) = 0$.
+            从而$f = f \circ a \in Ra = I$. 这证明了$I = \beta \circ \alpha(I)$. 
+            
+            而对于前者，显然有$W \subset \alpha \circ \beta(W)$.
+            而若$U \subsetneq W$，则考虑$U$在$V$中的直和补$T$，则对$T$的投影$\pi$
+            满足$\ker \pi = U$. 这意味着$\beta(W) \subsetneq \beta(U)$.
+            故若$W \subsetneq \alpha \circ \beta(W)$，
+            则$\beta(W) \supsetneq \beta \circ \alpha \circ \beta(W) = \beta(W)$. 矛盾！
+            这证明了$W = \alpha \circ \beta(W)$. \qed
+        \item[(iii)] 设$I$是$R$的（双边）理想，
+            证明$\alpha(I)$是$V$的$R$-子模，由此证明$I = \{0\}$或$R$.
+        \item[\textbf{证明:}]
+            若$v \in V$满足$f(v) = 0$对于任意$f \in I$成立，
+            则对于任意$g \in \operatorname{End}(V)$，
+            由于$I$是双边理想，故$f \circ g \in I$，从而$f(g(v)) = 0$.
+            这即$g(v) \in \alpha(I)$. 从而$\alpha(I)$是$V$的$R$-子模.
+            但$V$是单$R$-模，故$\alpha(I) = \{0\}$或$V$.
+            由(ii)给出的一一对应知$I = \{0\}$或$R$. \qed
+        \item[(iv)] 设$I$是$R$的左理想.
+            证明$I$是极大左理想当且仅当$\dim_{D}\alpha(I) = 1$，
+            由此证明$R$的所有极大左理想的交等于$\{0\}$.
+        \item[\textbf{证明:}]
+            由(ii)容易验证左理想$I \subsetneq J$当且仅当
+            $\alpha(I) \supsetneq \alpha(J)$.
+            若$I$是极大左理想，则$\alpha(I)$不能有平凡$D$-子模，
+            从而$\dim_{D}\alpha(I) = 1$.
+            另一个方向是类似的.
+
+            若$a$属于所有极大左理想，则$\alpha(Ra)$包含所有一维$D$-子模.
+            这意味着$\alpha(Ra) = V$，从而$Ra = 0$，即$a = 0$. \qed
+
+        \item[9.2.4.]
+        设$R$是环，$J(R)$是$R$的Jacobson根. 设$I$是一个左理想，证明下列命题等价：
+        \begin{itemize}
+            \item[(i)] $I \subseteq J(R)$.
+            \item[(ii)] $\forall \, a \in I$，$1+a$有左逆元，
+            即$\exists r \in R$使得$r(1+a) = 1$.
+            \item[(iii)] 设$M$是有限生成$R$-模，如果$IM = M$，则$M = 0$.
+        \end{itemize}
+        \item[\textbf{证明:}]
+        \begin{itemize}
+            \item[(i) $\Rightarrow$ (ii)]
+            否则，$R(1+a)$被包含在$R$的极大左理想中，设$R(1+a) \subset M$，
+            其中$M$是$R$的左极大理想.
+            那么由定义$a \in M$. 但$1+a \in M$，故$1 \in M$，矛盾！
+            故$R(1+a) = R$，从而存在$r \in R$使得$r(1+a)=1$.\par
+            另证: $(1-a)(1+a)=1-a^2=1$, $a^2=0$是因为$a\in J(R)$.
+            \item[(ii) $\Rightarrow$ (iii)]
+            若$M \neq 0$. 考虑$M$的一个有限生成元集$\{e_1,\cdots,e_s\}$, 
+            因为$IM=M$, 故存在$a_i\in I, m_i\in M$, 使得$e_i=a_im_i$.\par
+            故任意$m=\sum\limits_{i=1}^s r_ie_i=\sum\limits_{i=1}^s r_i a_im_i$, 
+            其中$r_ia_i\in I$. 故$M$可以被$\{m_i\}_{i=1}^s$给$I$-线性生成.
+
+            取$M$的最小$I$-生成元组$x_{1},\cdots,x_{n}$，其中$n\ge1$.
+            由$IM=M$知，$x_{1} = r_{1}x_{1} + \cdots + r_{n}x_{n}$，
+            其中$r_{1},\cdots,r_{n} \in I$.
+            那么$(1-r_{1})x_{1} + \cdots + r_{n}x_{n} = 0$.
+            由于$1-r_{1}$存在左逆，设为$a$，故
+            $x_{1} = -(ar_{2}x_{2} + \cdots + ar_{n}x_{n})$.
+            从而$x_{2},\cdots,x_{n}$可生成$M$，与$n$的最小性矛盾.
+            故$M = 0$.
+            \item[(iii) $\Rightarrow$ (i)]
+            对于任意$R$-单模$M$，$IM$是$M$的子模.
+            若$IM = M$，则$M=0$，矛盾！
+            由单性，$IM=0$，即$I \subset \operatorname{Ann}(M)$.
+            由于$M$的任意性，
+            故$I \subset \bigcap\limits_{M\text{是}R\text{-单模}}
+            \operatorname{Ann}(M) = J(R)$. \qed
+        \end{itemize}
+
+        \item[9.2.5.] 设$V$是域上的一个向量空间，$B$是其一组基，
+        而且$B$是一个无限可数集合. 考虑其$F$-自同态环$R = \operatorname{End}(V)$.
+        设
+        \[I = \{f \in R \mid \operatorname{im} f = f(V)\text{ 是有限维的}\}.\]
+        \item[(i)] 证明：$I$是$R$的非平凡（双边）理想.
+        \item[\textbf{证明:}]
+            若$f,g \in I$，则$\dim_{k}(f(V) + g(V)) 
+            \leq \operatorname{rk}(f) + \operatorname{rk}(g) < \infty$.
+            故$f+g \in I$.
+            对任一线性变换$h$，$f \circ h(V) \subset f(V)$，故也是有限维空间，
+            又$\dim_{k}(h \circ f(V)) \leq \dim_{k}(f(V)) < \infty$.
+            故我们证明了$I$是双边理想. \qed
+        \item[(ii)] 证明：商环$R/I$只有平凡的理想；Jacobson根$J(R/I) = \{0\}$.
+        \item[\textbf{证明:}]
+            否则，若$h$是一无限秩算子.
+            记$V = \ker h \oplus W$，那么$W$也是无限维的.
+            否则记$B = \{e_{i}\}_{i \in \N}$以及
+            $e_{i} = u_{i} + w_{i}$，其中$u_{i} \in \ker h$而$w_{i} \in W$.
+            那么$h(e_{i}) = h(u_{i}) + h(w_{i}) = h(w_{i}) \subset h(W)$.
+            但$W$是有限维的，故$h(W)$是有限维的，从而$h(V)$是有限维的，矛盾！            
+            取$W$的一组基底$\{d_{i}\}_{i \in \N}$满足$\{h(d_{i})\}_{i \in \N}$线性无关. 
+            这样一来，$h$就是$W$与$\operatorname{im}(h)$间的同构.
+            那么存在既单又满的线性映射$g:V \rightarrow W$及$f:V \rightarrow V$
+            使得$f$限制在$\operatorname{im}(f)$上是既单又满的.
+            那么$f \circ h \circ g:V \rightarrow V$也是既单又满的.
+            这说明$f \circ h \circ g$是$V$上的可逆线性变换.
+            故$R/I$中包含$h$的双边理想一定是$R/I$本身. 
+            由$h$的任意性，知$R/I$只有平凡双边理想.
+            
+            而注意到$J(R/I)$也是双边理想，故$J(R/I) = 0$.  \qed
+        \item[(iii)] 证明：商环$R/I$不是半单环.
+        \item[\textbf{证明:}]
+            我们证明$R/I$不是左Artin环，从而不是半单环.
+            
+            引用习题9.2.3的记号$\beta(-)$. 若有子空间包含$W \subset U$，
+            则$\beta(W) \supset \beta(U)$. 
+            进一步地，若$\dim_{F}U/W = \infty$，
+            断言$I + \beta(U) \subset I + \beta(W)$.
+            令$\{e_{i}\}_{i \in I}$是$W$的一组基，
+            并扩充至$U$上得$U$的一组基$\{e_{i}\}_{i \in I} \cup
+            \{d_{j}\}_{j \in J}$. 那么$|J| = \infty$. 
+            我们继续将$\{e_{i}\}_{i \in I} \cup
+            \{d_{j}\}_{j \in J}$扩充至$V$上得$V$的基
+            $\{e_{i}\}_{i \in I} \cup \{d_{j}\}_{j \in J} \cup \{u_{k}\}_{k \in K}$.
+            考虑线性函数$f:V \rightarrow V$使
+            $f(e_{i})=0$，$f(d_{j})=d_{j}$及$f(u_{k})=u_{k}$.
+            那么$f \in \beta(W)$，从而$f \in I + \beta(W)$.
+            但$f \notin I + \beta(U)$. 
+            否则，记$f = g + h$，其中$g \in I$，$h \in \beta(U)$.
+            那么由定义$\operatorname{rk}(f-h) < \infty$.
+            但$g(d_{j}) = f(d_{j}) - h(d_{j}) = f(d_{j}) = d_{j}$，
+            与$g$有限秩矛盾！故$I + \beta(U) \subset I + \beta(W)$.
+
+            下证$R/I$不是左Artin的. 令$\{e_{i}\}_{i \in \N}$为$V$的一组基.
+            我们取$\N$中的子集升链$I_{1} \subsetneq I_{2} \subsetneq \cdots$，
+            使得$|I_{k+1} \backslash I_{k}| = \infty$对于任意$k \in \N$成立.
+            令$W_{n} = \operatorname{span}\{e_{i}\}_{i \in I_{n}}$.
+            显然$W_{n} \subset W_{n+1}$，且$\dim_{F}W_{n+1}/W_{n} = \infty$.
+            由上述准备工作，我们有$\{I + \beta(W_{n})\}_{n  \in \N}$为
+            $R/I$中的左理想严格降链，从而$R/I$不是Artin环. \qed
+    \end{enumerate}

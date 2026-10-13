@@ -1,0 +1,167 @@
+\setdisplaytitle{试卷：谱理论基础}
+\sethtmltitle{试卷：谱理论基础}
+
+== 2026春 ==
+
+\begin{enumerate}
+
+\item[一、]（24分）设 $U$ 是 $\mathbb{R}$ 中的一个开集.
+我们称函数 $f:U\to \mathbb{R}$ 是泛可测（universally measurable）的,
+如果对于Borel集上的任意 $\sigma$-有限测度,任何一个Borel集的原像都是可测集.
+我们称一个泛可测函数 $f$ 是Loewner函数,如果对于任意复Hilbert空间上的满足 $\sigma(S)\subset U,\sigma(T)\subset U$,且 $S\leq T$ 的有界自伴算子 $S$ 和 $T$,都有 $f(S)\leq f(T)$.
+我们记 $U$ 上的Loewner算子全体为 $\mathrm{Loe}(U)$.
+
+\begin{enumerate}[label=(\alph*)]
+\item 证明, $\mathrm{Loe}(U)$ 中的函数在 $U$ 上都是单调递增的,且 $1$ 和 $f(t)=t$ 都是Loewner函数.
+
+\item 设 $f\in \mathrm{Loe}(\mathbb{R}_{>0})$.设 $H$ 是一个复Hilbert空间, $T$ 是 $H$ 上的一个正算子.对于 $H$ 上的任意投影算子 $P$,和任意 $\epsilon>0$,证明 $P f(T) P\leq f((1+\epsilon)PTP)$.（提示：对 $H$ 做一个直和分解,把 $T$ 写成分块的形式 $\begin{pmatrix} a & b \\ c & d \end{pmatrix}$,证明对于任意 $\epsilon>0$, $T\leq \begin{pmatrix} (1+\epsilon)a & 0 \\ 0 & (1+\epsilon^{-1})d \end{pmatrix}$.）
+
+\item 设 $f\in \mathrm{Loe}(\mathbb{R}_{>0})$.证明, $f$ 是一个凹函数.（考虑 $\mathbb{C}^2$,在上题中取 $P$ 为向第一个分量的投影,同时考虑 $Q=\begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$,对于任意的（半）正定阵 $T$,考虑 $Q^*TQ$.）
+
+\item 证明, $\mathrm{Loe}(\mathbb{R})$ 是 $\mathbb{R}$ 上的全体线性函数.（对于 $f$ 和 $x\mapsto -f(-x)$ 应用上题.）
+
+\item 设 $t>0$,证明 $f(x)=-(t+x)^{-1}$ 在 $\mathrm{Loe}(\mathbb{R}_{>0})$ 中.
+
+\item 对于 $\mathbb{R}_{>0}$ 上所有使得 $x\mapsto x^{-1}$ 可积的正测度 $\nu$,证明函数
+$$
+f(x)=\int_{0}^{\infty} \frac{x}{x+t}\,d\nu(t)
+$$
+在 $\mathrm{Loe}(\mathbb{R}_{>0})$ 中.这个函数是可微的,且满足
+\begin{itemize}
+\item[(i)] $\lim_{x\to 0} f(x)=0$；
+\item[(ii)] $\lim_{x\to 0} f'(x)$ 存在；
+\item[(iii)] $\lim_{x\to \infty} f(x)$ 存在且有限. (此性质不成立, 例如考虑反例$\mathrm{d}\nu(t)=t^{-1}\mathbb{1}_{[1,\infty)}\mathrm{d}t$)
+\end{itemize}
+\end{enumerate}
+
+\item[二、]（24分）假设 $P$ 和 $Q$ 是两个投影算子,且 $P-Q$ 是一个迹类算子.
+
+\begin{enumerate}[label=(\alph*)]
+\item 记 $S=(P-Q)^2$,证明, $[P,S]=[Q,S]=0$.
+
+\item 设 $S=\sum \alpha_j R_j$,其中 $R_j$ 是投影算子（且对应的子空间两两正交）,并记 $R_\infty$ 为 $H$ 上向 $\ker S$ 的正交投影.证明,
+$$
+\mathrm{Tr}(P-Q)=\mathrm{Tr}((P-Q)R_\infty)+\sum \mathrm{Tr}((P-Q)R_j),
+$$
+且这个和式是绝对收敛的.
+
+\item 证明, $\mathrm{Tr}((P-Q)R_\infty)\in \mathbb{Z}$,$\mathrm{Tr}((P-Q)R_j)\in \mathbb{Z}$.
+
+\item 由此证明, $\mathrm{Tr}(P-Q)\in \mathbb{Z}$.
+\end{enumerate}
+
+\item[三、]（28分）记 $\mathbb{D}=\{|z|<1\}$.设 $f=\sum_{n=0}^{\infty} a_n z^n$ 在 $\overline{\mathbb{D}}$ 的一个邻域上解析.
+
+\begin{enumerate}[label=(\alph*)]
+\item 证明, $\sum |a_n|<\infty$.
+
+\item 设 $\|T\|<1$,且 $T=U|T|$,其中 $U$ 是一个酉算子.证明,
+$$
+g(z)=U\left(\frac{z+|T|}{1+z|T|}\right)
+$$
+在 $\overline{\mathbb{D}}$ 的一个邻域上解析（取值在 $B(H)$ 中）,
+且对于单位圆周上的任意一点 $e^{i\theta}$, $g(e^{i\theta})$ 是酉算子.（提示：对 $|T|$ 用谱定理.）
+
+\item 证明,对于任意 $z\in \overline{\mathbb{D}}$, $\|g(z)\|\leq 1$,
+并由此证明 $f(g(z))$ 定义了一个在 $\overline{\mathbb{D}}$ 上连续,在 $\mathbb{D}$ 上解析的函数.
+
+\item 证明,对于单位圆周上的任意一点 $e^{i\theta}$,
+$$
+\|f(g(e^{i\theta}))\|\leq \sup_{z\in \mathbb{D}} |f(z)|.
+$$
+（提示：对 $g(e^{i\theta})$ 用谱定理.）
+
+\item 证明,上式对 $g(0)$ 也成立.从而在(b)的假设下, $\|f(T)\|\leq \sup_{z\in \mathbb{D}} |f(z)|$.
+
+\item 对于一般的 $T$（$\|T\|<1$）,我们考虑 $H\oplus H_1$ 上的一个算子 $\tilde{T}=T\oplus 0$,这里 $H_1$ 是一个无限维Hilbert空间.
+证明, $\tilde{T}=U|\tilde{T}|$,其中 $U$ 是一个酉算子,且 $f(\tilde{T})=f(T)\oplus a_0$.
+从而对于一般的 $\|T\|<1$, $\|f(T)\|\leq \sup_{z\in \mathbb{D}} |f(z)|$.
+
+\item 证明,对于 $\|T\|\leq 1$,上述命题也成立.
+\end{enumerate}
+
+\item[四、]（24分）满足上面(a)中结论的 $\mathbb{D}$ 上全纯函数全体记为 $W(\overline{\mathbb{D}})$,称为Wiener代数.
+
+\begin{enumerate}[label=(\alph*)]
+\item 对于 $f\in W(\overline{\mathbb{D}})$,记 $\|f\|_W=\sum |a_n|$.证明,这是一个（把 $W(\overline{\mathbb{D}})$ 视为线性空间的）范数,且 $\|fg\|_W\leq \|f\|_W \|g\|_W$.
+
+\item 对于任意 $z\in \overline{\mathbb{D}}$, $W(\overline{\mathbb{D}})$ 上的线性泛函 $\ell_z(f)=f(z)$ 满足 $\ell_z(fg)=\ell_z(f)\ell_z(g)$ 且 $\|\ell_z\|=1$.
+
+\item 对于任意 $z_0\notin \overline{\mathbb{D}}$, $z-z_0$ 在 $W(\overline{\mathbb{D}})$ 中可逆.
+
+\item 证明, $\sigma_{W(\overline{\mathbb{D}})}(z):=\{z_0\in \mathbb{C}\,:\, z-z_0 \text{ 在 } W(\overline{\mathbb{D}}) \text{ 中不可逆}\}=\overline{\mathbb{D}}$.
+
+\item 证明, $W(\overline{\mathbb{D}})$ 上满足(b)的线性泛函与 $z\in \overline{\mathbb{D}}$ 一一对应.记这些线性泛函全体为 $\widehat{W}$.
+
+\item 证明,若 $\ell\in \widehat{W}$,则 $\ker \ell$ 是一个极大理想,且 $\ell(f)\in \sigma_{W(\overline{\mathbb{D}})}(f)$.
+
+\item 证明,对于 $z\in \sigma_{W(\overline{\mathbb{D}})}(f)$,存在 $\ell\in \widehat{W}$,使得 $\ell(f)=z$.
+
+\item 假设 $f\in W(\overline{\mathbb{D}})$ 满足,对于任意 $z\in \overline{\mathbb{D}}$, $f(z)\neq 0$.证明, $1/f\in W(\overline{\mathbb{D}})$ 中可逆.
+
+\item 把(a)--(h)的结论“搬”到 $W(S^1)$ 上.
+\end{enumerate}
+
+\item[五、]（15分）我们考虑四元数体 $\mathbb{H}$ 的一个子集（$i^2=j^2=k^2=-1$, $ij=-ji=k$）
+$$
+G=\{a+bi+cj+dk\,:\, a,b,c,d\in\mathbb{R},\; a^2+b^2+c^2+d^2=1\}.
+$$
+
+\begin{enumerate}[label=(\alph*)]
+\item 证明, $G$ 是一个群,且是一个紧拓扑空间.（说明：此小题的证明与后续问题无关.）
+
+\item 从 $G$ 到 $n\times n$ 酉矩阵全体 $U(n)$ 的一个群同态 $\pi:G\to U(n)$ 称为是 $G$ 的一个（有限维）酉表示.这时,对于 $g\in G$, $u,v\in \mathbb{C}^n$,
+$$
+f_{\pi,u,v}(g)=\langle \pi(g)u,v\rangle_{\mathbb{C}^n}
+$$
+是 $G$ 上的一个连续函数.我们再定义 $G$ 在 $C(G)$ 上的左平移作用
+$$
+(\lambda_h f)(g)=f(h^{-1}g).
+$$
+证明,对于任意的 $u,v\in \mathbb{C}^n$, $\mathrm{span}\{\lambda_h f_{\pi,u,v}\,:\, h\in G\}$ 是一个有限维线性空间.
+
+\item 反之,证明,对于任意使得 $\mathrm{span}\{\lambda_h f\,:\, h\in G\}$ 是一个有限维线性空间的函数 $f\in C(G)$,都可以找到 $G$ 的一个表示 $\pi$ 和适当的 $u,v\in \mathbb{C}^n$,使得 $f=f_{\pi,u,v}$.
+
+\item 我们承认 $G$ 上存在一个左（右）不变概率测度 $\mu$（即 $\mu$ 非负, $\mu(G)=1$,且对于任意 $\mu$-可测集 $A$ 和任意 $h\in G$, $\lambda_h A=\{h^{-1}x\,:\, x\in A\}$ 也是 $\mu$-可测集, $\mu(\lambda_h A)=\mu(A)$）.这样,我们可以考虑可分复Hilbert空间 $H=L^2(G,\mu)$.
+记
+$$
+C(G)_{G-\mathrm{finite}}=\{f\in C(G)\,:\, \mathrm{span}\{\lambda_h f\,:\, h\in G\} \text{ 是一个有限维线性空间}\}.
+$$
+记它在 $L^2(G,\mu)$ 中的闭包为 $M$.证明,若 $f\in M$,则 $\overline{f(g^{-1})}\in M$,且对于任意 $h\in G$, $\lambda(h)f\in M$.
+
+\item 以下假设 $M\neq H$,取函数 $k\in M^\perp$.对于 $G$ 中单位元的任意开邻域 $U$,定义
+$$
+k_U(h)=\frac{1}{\mu(U)}\int_G \chi_U(g) k(g^{-1}h)\,d\mu.
+$$
+证明, $k_U\in C(G)$,且存在适当的 $U$ 使得 $k_U\neq 0$.由此证明, $M^\perp$ 中存在一个非零连续函数.（提示：取单位元的适当邻域,把它的特征函数与上述 $k_U$ 作卷积.）
+
+\item 接上题,证明,存在 $M^\perp$ 中的非零连续函数 $k_1$,使得 $k_1(e)\in \mathbb{R}\setminus\{0\}$.
+
+\item 证明,函数
+$$
+k_2(h)=\int_G k_1(g^{-1}hg)\,d\mu
+$$
+是 $M^\perp$ 中的一个连续函数,且 $k_2(g^{-1}hg)=k_2(h)$ 对于任意 $g\in G$ 都成立.
+
+\item 现在,定义 $K(g,h)=k_2(g^{-1}h)+\overline{k_2(h^{-1}g)}$,证明
+$$
+(Tf)(g)=\int_G K(g,h)f(h)\,d\mu
+$$
+是 $H$ 上的一个非零Hilbert--Schmidt算子.
+
+\item 对于 $T$ 的任意非零特征值（总是实数）$\lambda$,其特征子空间 $V_\lambda$ 是有限维的.
+证明,对于任意 $f\in V_\lambda,h\in G$, $L_h f=f(h^{-1}x)\in V_\lambda$.
+
+\item 空间 $V_\lambda$ 一定包含一个不可约子空间 $W_\lambda$,取其一组标准正交基 $f_1,\dots,f_n$,记
+$$
+h_{ij}(x)=\int_G f_j(x^{-1}y)\overline{f_i(y)}\,dy.
+$$
+证明,
+$$
+\int_G \bigl(k_2(x)+\overline{k_2(x^{-1})}\bigr) \overline{h_{ii}(x)}\,dx = \lambda \int_G |f_i(x)|^2\,dx.
+$$
+
+\item 我们能得到什么结论？
+\end{enumerate}
+{{comment|期末考核方式是将这份卷子带回去做, 扫描上传提交, 有差不多二十天的时间可以做这份试卷.}}
+\end{enumerate}

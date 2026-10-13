@@ -1,0 +1,195 @@
+\setdisplaytitle{试卷：数学模型}
+\sethtmltitle{试卷：数学模型}
+
+== 26春期末试卷(张云新)==
+\begin{enumerate}
+    \item $A$宿舍$240$人，$B$宿舍$160$人，$C$宿舍$100$人，分$8$个席位，(1)按比例和小数部分分(2)按$Q$值分(3)用d'Hondt方法分。
+    \item 设两点$A(-a,0),B(b,0)$之间有一个以$O$为圆心，半径为$r$ $(r<a,b)$的湖，求$A$到$B$的最短路径并求出长度，并说明为什么是最短的。
+    \item 单人理发店有$2$个座位供\textbf{等待}用，当两个椅子都坐满了则不再有顾客进店，平均到达人数为$2$人/小时，平均理发时间为$20\min $，
+    求(1) 顾客到店就可以理发的概率 (2) $L_s$ (3) $\lambda_{e}$ (4) $W_s$ (5) 顾客到达后不理发就离开的概率。
+    \item 求泛函$J[y]=\int_0^1(y^2+2yy'+y'^2)dx$在边界条件$y(0)=0,y(1)=1$下的极值曲线。
+    \item 某生物群体内各个个体的出生率为$\lambda$，死亡率为$\mu$，设$t=0$时种群数量为$n$，求$t$时刻种群灭绝的概率。
+\end{enumerate}
+
+== 26春期末试卷(王玥)==
+\begin{enumerate}
+\item 考虑如下的SIQR传染病模型:
+$$\begin{cases}
+    \frac{ds}{dt}=-\beta si\\
+    \frac{di}{dt}=\beta si-(\gamma+\delta)i\\
+    \frac{dq}{dt}=\delta i\\
+    \frac{dr}{dt}=\gamma i
+\end{cases}$$
+其中$s(0)=0.9,i(0)=0.1,q(0)=r(0)=0,\beta=0.5,\gamma=0.2.$
+\begin{enumerate}[label=(\arabic*)]
+    \item 证明$s+i+q+r=1$恒成立. 求最小的$\delta_{\min}$使得感染者人数$i$不上升.
+    \item 当$\delta=0.1$时，感染者人数是否上升? 若是，请求出感染者人数达到极值时$s$的值$s^*$, 并求出此时的$i_{\max}$.
+\end{enumerate}
+\item 考虑河水的污染物传播问题(数据,单位部分遗忘), 河道长$1km$, $D=0.01$，$k=0.2h^{-1}$, $v=?$.
+\begin{enumerate}[label=(\arabic*)]
+    \item 设污染物浓度$c(t,x)$, 给出污染物通量满足$J(t,x)=vc-Dc_x$, 求该连续模型的偏微分方程.
+    (提示:在$[x+\Delta x]$区间内考虑, 流入的污染物为$J(t,x)\Delta t$, 
+    流出的污染物为$J(t,x+\Delta x)\Delta t$, 污染物自然分解为$kc(t,x)\Delta t\Delta x$.)
+    \item 设$\mu=\frac{k\Delta t}{\Delta x}, \lambda=\frac{D\Delta t}{\Delta x^2}$.
+    给出按传播项迎风差分,扩散项中心差分,时间项向前差分的离散形式. 
+    并给出上游边界条件$c(t,0)=0$以及下游边界条件$c_x(t,1)=0$离散情形的表达方式.
+    \item 设$\Delta x=0.2km,\Delta t=0.01h$, 给出某个时间层上$c_1^n=4,c_2^n=10,c_3^n=6$，求$c_2^{n+1}$，写出计算步骤.
+\end{enumerate} 
+\item 如图,考虑学校中有$A,B,C,D,E,F$五个地点.
+\begin{tikzcd}
+    &A \arrow[dl,no head,"2"']\arrow[dr,no head,"4"]\\
+    B\arrow[rr,no head,"1"]\arrow[drr,no head,"\qquad\quad2"{sloped}]&&C\arrow[d,no head,"2"]\arrow[dll,no head,"\qquad 4"{sloped}]\\
+    D\arrow[rr,no head,"2"]\arrow[u,no head,"6"]&&E\arrow[dl,no head,"5"]\\
+    &F\arrow[ul,no head,"1"]
+\end{tikzcd}
+\begin{enumerate}[label=(\arabic*)]
+    \item 用Dijkstra算法求$A\to F$最短路.
+    \item 如果需要经过$C$, 请简述计算方法.
+\end{enumerate}
+\item 有$P,Q$两种商品, 每套利润分别为$40,50$, 生产条件有如下限制
+\begin{center}\begin{tabular}{c|cc|c}
+    &每套$P$消耗&每套$Q$消耗&总量\\
+    工作时长&$2$&$1$&$100$\\
+    原料&$1$&$2$&$80$
+\end{tabular}\end{center}
+此外, $P$不能生产超过$45$套. 设每天生产$x$套$P$, $y$套$Q$, 假设它们连续.
+\begin{enumerate}[label=(\arabic*)]
+    \item 使用顶点法求最佳生产策略. 并说明取最值时哪些约束是紧的.
+    \item 写出对偶问题. 求各个约束的影子价格.
+\end{enumerate}
+\item 有如下数据
+\begin{center}\begin{tabular}{c|ccccc}
+    $x$&$1$&$2$&$3$&$4$&$5$\\
+    $y$&$57$&$59$&$63$&$69$&$77$
+\end{tabular}\end{center}
+\begin{enumerate}[label=(\arabic*)]
+    \item 求线性回归$\hat{y}=kx+b$. (试卷计算公式均给出).
+    \item 求$R^2$, 并简要解释其含义.
+    \item 证明: 对任意带截距的线性回归模型, 均有$\text{SST}=\text{SSE}+\text{SSR}$.
+\end{enumerate}
+\end{enumerate}
+
+
+== 25春期末试卷(张云新) ==
+\begin{enumerate}
+\item (20分)分配甲,乙,丙,丁四个人去完成$\text{A},\text{B},\text{C},\text{D},\text{E}$五项任务,每个人完成各项任务的时间如下表.由于任务数多于人数,故考虑以下要求:\\
+(1)其中有一个人完成两项,其他每人完成一项;\\
+(2)任务$\text{A}$由甲或者丙完成,任务$\text{C}$由丙或者丁完成,任务$\text{E}$由甲,乙或丁来完成,
+且规定4人中丙或丁完成两项任务,其他每人完成一项.
+\begin{center}
+\begin{tabular}{cccccc}
+人员\backslash任务 &\ \ $\text{A}$\ \ &\ \ $\text{B}$\ \ &\ \ $\text{C}$\ \ &\ \ $\text{D}$\ \ &\ \ $\text{E}$\ \ \\ 
+甲                & $25$ & $29$ & $31$ & $42$ & $37$ \\
+乙                & $39$ & $38$ & $26$ & $20$ & $33$ \\
+丙                & $34$ & $27$ & $28$ & $40$ & $32$ \\
+丁                & $24$ & $42$ & $36$ & $23$ & $45$ 
+\end{tabular}
+\end{center}
+试\textbf{分别}确定最优分配方案,使完成任务的总时间最少.
+
+\item (20分)试分析以下有产品输出的两分子反应
+\[A_{1} \overset{k_{1}}{\longrightarrow} 2A_{1},
+\qquad  A_{1}+A_{2} \overset{k_{2}}{\longrightarrow} 2A_{2}, 
+\qquad A_{2} \overset{k_{3}}{\longrightarrow} p\ (\text{输出}).\]
+建立对应的化学反应动力学模型并分析其性质。(注：包括平衡点稳定性、相轨线的性质等.)
+
+\item (20分)最大流(边上标了容量权重，已回忆不出了)
+\begin{tikzpicture}
+    \draw[->,>=stealth](0,2)to(0,0.9);\draw(0,1)to(0,0);
+    \draw[->,>=stealth](-2,0)to(-0.9,1.1);\draw(-1,1)to(0,2);
+    \draw[->,>=stealth](0,2)to(0.55,1.45);\draw(0.5,1.5)to(1,1);
+    \draw[->,>=stealth](1,1)to(1.55,0.45);\draw(1.5,0.5)to(2,0);
+    \draw[->,>=stealth](-2,0)to(-0.9,0);\draw(-1,0)to(0,0);
+    \draw[->,>=stealth](0,0)to(0,-1.1);\draw(0,-1)to(0,-2);
+    \draw[->,>=stealth](-2,0)to(-0.9,-1.1);\draw(-1,-1)to(0,-2);
+    \draw[->,>=stealth](2,0)to(0.9,-1.1);\draw(1,-1)to(0,-2);
+    \draw[->,>=stealth](2,0)arc(60:92:2);\draw(0,0)arc(120:90:2);
+    \draw[->,>=stealth](0,0)arc(240:272:2);\draw(2,0)arc(300:270:2);
+    \draw[->,>=stealth](2,0)arc(0:46:2);\draw(0,2)arc(90:45:2);
+    \filldraw[fill=white](0,2)circle(0.05);\filldraw[fill=white](-2,0)circle(0.05);
+    \filldraw[fill=white](1,1)circle(0.05);\filldraw[fill=white](0,0)circle(0.05);
+    \filldraw[fill=white](2,0)circle(0.05);\filldraw[fill=white](0,-2)circle(0.05);
+    \draw(-0.1,0.2)node{$5$};\draw(2.2,0)node{$3$};
+    \draw(-2.2,0)node{$4$};\draw(0,2.2)node{$1$};
+    \draw(0,-2.2)node{$6$};\draw(1.2,1.1)node{$2$};
+\end{tikzpicture}
+
+\item (20分)试分析$\text{M}/\text{M}/1/\infty/m$模型：
+共有$m$台机器，$1$个修理工，修理时间服从参数为$\mu$的负指数分布，
+$\lambda$为每台机器单位运转时间内发生故障的平均次数.\\
+(注：要求列出相应的转移差分方程，从而给出系统中有$n$个顾客的概率$P_{n}$，
+队长$L_{s}$，排队长$L_{q}$，逗留时间$W_{s}$，等待时间$W_{q}$.)
+
+\item (20分)求泛函
+\[J[y(x)]=\int_{0}^{a}\frac{\sqrt{1+y^{\prime2}}}{x} \,\mathrm{d}x\]
+在条件$y(0)=0,y(a)=a$下的极值曲线.
+\end{enumerate}
+
+== 25春期末试卷(蔡志杰) ==
+
+\begin{itemize}
+	\item[1.] 考虑一个绕轴匀速转动的圆盘, 一根刚性杆(杆的长度大于圆盘的直径)
+	一端固定在圆盘边缘随圆盘做匀速圆周运动, 另一端固定在与轴连接的水平直线上, 
+	试问另一端是否在直线上做匀速往复运动? 
+	
+	\begin{tikzpicture}
+	\draw (0,0) circle (1);
+	\draw (0,0)--(4,0);
+	\coordinate (A) (0.5,0.866);
+	\draw [line width =0.5pt] (0.5,0.866)--(3,0);
+	\end{tikzpicture}
+	
+	\item[2.] 现需要从五个运动员甲、乙、丙、丁、戊中挑选出四名运动员参加某比赛, 
+	比赛包括$\text{A}, \text{B}, \text{C}, \text{D}$四个不同项目. 
+    每名运动员只能参加一个项目, 并且每个项目都要有一名运动员参加. 
+    下表是各运动员在各项目中的平均用时(以秒为单位), 
+    请问如何安排运动员参加比赛可使总的用时最短(只需建立模型, 不必计算). 
+	
+    \begin{table}\begin{tabular}{|c|c|c|c|c|c|}
+	\hline               
+	运动员 &\ \ 甲\ \ &\ \ 乙\ \ &\ \ 丙\ \ &\ \ 丁\ \ &\ \ 戊\ \ \\ 
+	\hline
+	$\text{A}$ & $a_{11}$ &$a_{12}$ &$a_{13}$ &$a_{14}$&$a_{15}$ \\
+	\hline
+	$\text{B}$ & $a_{21}$ &$a_{22}$ &$a_{23}$ &$a_{24}$ &$a_{25}$ \\
+	\hline
+	$\text{C}$ & $a_{31}$ &$a_{32}$&$a_{33}$ &$a_{34}$ &$a_{35}$ \\
+	\hline
+	$\text{D}$ & $a_{41}$ &$a_{42}$&$a_{43}$ &$a_{44}$ &$a_{45}$ 
+	\end{tabular}\end{table}
+	
+	\item[3.] 简述RSA系统的加密解密步骤并证明其有效性.
+	
+	\item[4.] 给出一个流网络计算其最大流、流值与最小割.
+	
+	\item[5.] 红蓝双方作战, 初始兵力之比为 $5:2$. 直接交火减员率与对方兵力成正比, 
+	间接交火减员率与双方兵力成正比, 比例系数为火力强度. 已知蓝方火力强度大, 
+	问蓝方火力强度要多大才能取胜.
+\end{itemize}
+
+== 22春期末试卷 ==
+
+\begin{itemize}
+    \item[1、] 有一根柔软均匀细长的线性弹性弦，在某一平面内其平衡位置附近作微小的横振动。
+    弦的一端固定，另一端可在垂直于平衡位置方向自由滑动，不受外力。
+    已知弦长为$L$，线密度为$\rho$，弦上各点的弹性张力$T$为常数。
+    试给出描述该弹性弦自由振动的数学模型（无需推导），
+    并求：初始形状为$\phi(x),x\in[0,L]$的弹性弦由静止开始自由振动，弦上各点的运动规律。
+    \item[2、] 请用大鱼---小鱼模型说明在生物治虫过程中使用农药是否有利。
+    \item[3、] 某工厂的机械加工车间，需要加工$1$号和$2$号两种零件。
+    这两种零件可以在三种不同类型的机床上进行加工。
+    机床台数及生产效率由下表给出，要求$1$号和$2$号零件在保持$1:1$的配套比例条件下，
+    合理安排机床在$5$日内的加工任务，使成套产品的数量达到最大（只需建立模型，不必计算）。
+    \begin{table}\begin{tabular}{|c|c|c|c|}
+        机床类型 & 机床数（台） & 日产$1$号零件（千件/台） & 日产$2$号零件（千件/台）\\
+        $\text{A}$ & $30$ & $15$ & $20$ \\
+        $\text{B}$ & $30$ & $20$ & $30$ \\
+        $\text{C}$ & $10$ & $30$ & $55$ 
+    \end{tabular}\end{table}
+    \item[4、] 某车间有$2$台机器，每台机器的连续运转时间服从负指数分布，
+    平均连续运转时间$30$分钟，有一个修理工，每次修理时间服从负指数分布，平均每次$10$分钟。
+    求：(1) 修理工空闲的概率；(2) $2$台机器都出故障的概率；(3) 出故障的平均台数；
+    (4) 等待修理的平均台数；(5) 平均停工时间；(6) 平均等待修理时间。[请给出具体的求解过程]
+    \item[5、] 求泛函$J[y(x)]=\int_0^\pi(y'^2(x)-2y(x)\cos x)dx$
+    在条件$y(0)=a,y(\pi)=b$下的极值曲线。求出相应的泛函极值，并尝试说明是极大值还是极小值。
+\end{itemize}

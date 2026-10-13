@@ -1,0 +1,47 @@
+\begin{center}
+    \textsize{24pt}{2025年秋数学分析 AI(H) 习题}
+\end{center}
+
+\begin{structure}
+    \subpage{Week 1 (基础知识，极限与圆周率)}
+    \subpage{Week 2 (序列极限与函数极限)}
+    \subpage{Week 3 (序列极限，实数基本定理，函数连续性与开集闭集)}
+    \subpage{Week 4&5 (无穷大量，完备度量空间与函数连续性)}
+    \subpage{Week 6 (导数)}
+    \subpage{Week 7 (不定积分与常微分方程)}
+    \subpage{Week 8 (微分中值定理，Taylor 公式与微分不等式)}
+    \subpage{Week 9 (单调性与凹凸性)}
+    \subpage{Week 10 (定积分)}
+    \subpage{Week 11 (反常积分与分数阶 Laplace 算子)}
+    \subpage{Week 12 (积分不等式与数项级数敛散性)}
+    \subpage{Week 13 (数项级数，函数项级数与 Fubini-Tonelli 定理)}
+    \subpage{Week 14 (函数项级数的分析性质与处处不可微的连续函数)}
+    \subpage{Week 15&16 (幂级数的拓展与应用，Lagrange 反演定理与 Wirtinger 不等式)}
+    \subpage{Quiz 1 (2025.10.09)}
+    \subpage{Quiz 2 (2025.12.03)}
+\end{structure}
+
+\begin{center}
+    \textsize{24pt}{2026年春数学分析 AII(H) 习题}
+\end{center}
+
+\begin{structure}
+    \subpage{Week 1 (Euclid 空间的基本概念和相关性质)}
+    \subpage{Week 2 (Euclid 空间上的连续函数、多元函数可微性与人工神经网络)}
+    \subpage{Week 3 (高阶偏导数与隐函数定理)}
+    \subpage{Week 4 (函数极值与凸性)}
+    \subpage{Week 5 (重积分、Lebesgue 定理与变分法)}
+    \subpage{Week 6 (重积分计算、Morrey 不等式与磨光算子)}
+    \subpage{Week 7 (重积分计算、σ-代数与单位分解定理)}
+    \subpage{Week 8 (测度与积分)}
+    \subpage{Week 9 (测度扩张与 Lebesgue 测度)}
+    \subpage{Week 10 (微分流形与参数化)}
+    \subpage{Week 11 (外微分形式、流形上的形式场积分与函数延拓)}
+    \subpage{Week 12 (流形的定向与外微分的积分定义)}
+    \subpage{Week 13 (Stokes 公式、向量场积分与 Fourier 级数)}
+    \subpage{Week 14 (Fourier 级数的一周收敛性、Fourier 变换与等周不等式)}
+    \subpage{Week 15 (含参变量反常积分、Gamma 函数与余元公式)}
+    \subpage{Quiz 3(2026.04.02)}
+    \subpage{期中考试(2026.04.25)解答}
+    \subpage{期末考试(2026.06.30)解答}
+\end{structure}

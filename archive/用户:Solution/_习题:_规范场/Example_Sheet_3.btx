@@ -1,0 +1,118 @@
+\theoremstyle{plain}\newtheorem{exercise}{Question}
+\nosectionnumbers
+
+\begin{exercise}
+    Let $G$ be a Lie group and $x:[0,1] \rightarrow \mathfrak{g}$ a smooth map. Denote by $X(t)$ the associated left-invariant or right-invariant time-dependent vector field on $G$. Prove that there exists a unique smooth integral curve $g:[0,1] \rightarrow G$ such that
+    \begin{align*}
+    \dot{g}(t) & =X(t) \qquad \forall t \in[0,1] \\
+    g(0) & =e.
+    \end{align*}
+\end{exercise}
+
+\begin{exercise}
+    Let $(E, \pi, M ; F)$ be a fibre bundle. Prove that the bundle is isomorphic to a trivial bundle if and only if there exists a smooth map $\tau: E \rightarrow F$ such that the restrictions
+    $$\tau|_{E_{x}}: E_{x} \longrightarrow F$$
+    are diffeomorphisms for all $x \in M$.
+\end{exercise}
+
+\begin{exercise}
+    Prove that the vertical tangent space and vertical tangent bundle satisfy
+    \begin{itemize}
+    \item $V_{p}=\operatorname{Ker} D_{p} \pi$;
+    \item The map
+    \begin{align*}
+    \phi_{*}: \mathfrak{g} & \longrightarrow V_{p} \\
+    X & \longmapsto \tilde{X}_{p}
+    \end{align*}
+    is a vector space isomorphism, where $\tilde{X}$ is the fundamental vector field given by the $G$-action on $P$;
+    \item $V$ has a rank equal to $\operatorname{dim} G$ and a global trivialization
+    \begin{align*}
+    & P \times \mathfrak{g} \longrightarrow V \\
+    & (p, X) \longmapsto \tilde{X}_{p} ;
+    \end{align*}
+    \item $V$ is right-invariant, i.e.
+    \end{itemize}
+    $$r_{g_{*}}\left(V_{p}\right)=V_{p \cdot g}, \quad \forall g \in G.$$
+\end{exercise}
+
+\begin{exercise}
+    Let $P \rightarrow M$ be a principal bundle 
+    and $A \in \Omega^{1}(P, \mathfrak{g})$ a connection $1$-form on $P$, 
+    $F \in \Omega^{2}(P, \mathfrak{g})$ its curvature $2$-form, 
+    $f \in \mathscr{G}(P)$ a global bundle automorphism, 
+    $X$ and $Y$ horizontal vector fields on $P$ with respect to the Ehresmann connection $H$ determined by $A$.
+    \begin{itemize}
+    \item Prove that $f^{*} A$ is a connection $1$-form on $P$ and
+    $$f^{*} A=\operatorname{Ad}_{\sigma_{f}^{-1}} \circ A+\sigma_{f}^{*} \mu_{G}.$$
+    \item Prove that
+    $$F(X, Y)=-A([X, Y]).$$
+    \end{itemize}
+\end{exercise}
+
+\begin{exercise}
+    Let $P \rightarrow M$ be a principal $G$-bundle with a matrix Lie group $G$, 
+    $E$ an associated vector bundle, $A$ a connection $1$-form on $P$. 
+    Choose an open set $U \subset M$ such that $P_{U}$ is trivial 
+    and set a local gauge $s: U \rightarrow P$ and a loop $\gamma \subset U$. Prove that
+    $$\operatorname{Hol}_{\gamma, x}^{E}(A)
+    =\rho\left(\mathscr{P} \exp \left(-\oint_{\gamma} A_{s}\right)\right)
+    =\mathscr{P} \exp \left(-\oint_{\gamma} \rho_{*} A_{s}\right),$$
+    with respect to the isomorphism
+    \begin{align*}
+    V & \longrightarrow E_{x} \\
+    v & \longmapsto[s(x), v] .
+    \end{align*}
+\end{exercise}
+
+\begin{exercise}
+    Let $P \rightarrow M$ be a principal $G$-bundle, 
+    $A$ a connection $1$-form, $F$ the curvature $2$-form of $A$, 
+    $H$ the horizontal subbundle determined by $A$.
+    \begin{itemize}
+    \item Prove that $d F$ vanishes on $H \times H \times H$.
+    \item Prove the identity
+    $$d F+[A, F]=0 .$$
+    \end{itemize}
+\end{exercise}
+
+\begin{exercise}
+    Let $(M, g)$ be an oriented pseudo-Riemannian manifold of signature $(s, t)$ 
+    and $*$ the Hodge star operator. Prove that
+    $$** =(-1)^{t+k(n-k)}.$$
+\end{exercise}
+
+\begin{exercise}
+    Let $(M, g)$ be a pseudo-Riemannian $4$-manifold and $P \rightarrow M$ a principal bundle. 
+    Prove that the Yang-Mills action is invariant under a conformal change of the metric $g$, that is
+    $$g^{\prime}=e^{2 \lambda} g$$
+    for any $\lambda \in C^{\infty}(M)$.
+\end{exercise}
+
+\begin{exercise}
+    The Higgs Lagrangian of scalar fields is gauge invariant. That is,
+    $$\mathscr{L}_{\mathrm{H}}\left[f^{-1} \Phi, f^{*} A\right]
+    =\mathscr{L}_{\mathrm{H}}[\Phi, A], \quad \forall f \in \mathscr{G}(P).$$
+\end{exercise}
+
+\begin{exercise}
+    Fix the following geometry.
+    \begin{itemize}
+    \item $(M, g)$ : the Minkowski spacetime with signature $(+,-,-,-)$,
+    \item $G$ : a compact Lie group with a Lie algebra $\mathfrak{g}$,
+    \item $P \rightarrow M$ : a principal $G$-bundle,
+    \item $\operatorname{Ad}(P)$ : the adjoint bundle with bundle metric $\langle\cdot, \cdot\rangle_{\operatorname{Ad}(P)}$,
+    \item $E=P \times{ }_{\rho} \mathbb{C}^{n} \rightarrow M$ : an associated vector bundle with representation $\rho$ and $G$-invariant Hermitian bundle metric $\langle\cdot, \cdot\rangle_{E}$,
+    \item $A$ : connection $1$-forms on $P$,
+    \item $F_{A}$ : curvature $2$-forms on $P$ with respect to $A$,
+    \item $\Phi$ : smooth sections of $E$,
+    \item $d_{A}$ : the exterior covariant derivative on the adjoint bundle $\operatorname{Ad}(P)$,
+    \item $d_{A, \rho}$ : the exterior covariant derivative on the associated vector bundle $E$ with representation $\rho$,
+    \end{itemize}
+    $$d_{A, \rho}: \Omega^{k}(M, E) \longrightarrow \Omega^{k+1}(M, E).$$
+    The Yang-Mills-Klein-Gordon Lagrangian is defined to be
+    $$\mathscr{L}_{\mathrm{KG}}[\Phi, A]+\mathscr{L}_{\mathrm{YM}}[A]
+    =\left\langle d_{A, \rho} \Phi, d_{A, \rho} \Phi\right\rangle_{E}-m^{2}\langle\Phi, 
+    \Phi\rangle_{E}-\frac{1}{2}\left\langle F_{M}^{A}, 
+    F_{M}^{A}\right\rangle_{\mathrm{Ad}(P)}.$$
+    Derive the coupled system of Yang-Mills-Klein-Gordon equations.
+\end{exercise}

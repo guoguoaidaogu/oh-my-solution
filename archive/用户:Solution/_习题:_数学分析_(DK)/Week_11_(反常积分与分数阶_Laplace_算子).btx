@@ -1,0 +1,379 @@
+\newenvironment{solution}{\begin{proofc}[解答]}{\end{proofc}}
+
+== 习题A ==
+
+\begin{enumerate}
+    \item[1.]讨论下列反常积分的敛散性 (只需区分收敛与发散，无需区分绝对收敛与条件收敛):
+    \begin{enumerate}
+        \item[(a)]$\displaystyle \int_{0}^{1}\frac{\ln{x}}{x^2-1}\mathrm{d}x$;
+        \item[(b)]$\displaystyle \int_{0}^{\frac{\pi}{2}}\frac{1-\cos{x}}{x^p}\mathrm{d}x$;
+        \item[(c)]$\displaystyle \int_{0}^{1}\left|\ln{x}\right|^p\mathrm{d}x$;
+        \item[(d)]$\displaystyle \int_{0}^{1}x^{p-1}(1-x)^{q-1}\mathrm{d}x$;
+        \item[(e)]$\displaystyle \int_{0}^{1}x^{p-1}(1-x)^{q-1}\left|\ln{x}\right|\mathrm{d}x$;
+        \item[(f)]$\displaystyle \int_{0}^{1}\frac{\ln(1+x)}{x^p}\mathrm{d}x$;
+        \item[(g)]$\displaystyle \int_{0}^{+\infty}\frac{\arctan{x}}{x^p}\mathrm{d}x$;
+        \item[(h)]$\displaystyle \int_{0}^{+\infty}x^{p-1}e^{-x}\mathrm{d}x$;
+        \item[(i)]$\displaystyle \int_{2}^{+\infty}\frac{1}{x^p\ln^q{x}}\mathrm{d}x$;
+        \item[(j)]$\displaystyle \int_{1}^{+\infty}\frac{x^q\sin{x}}{1+x^p}\mathrm{d}x\quad (p\geq 0)$;
+        \item[(k)]$\displaystyle \int_{0}^{+\infty}\frac{e^{\sin{x}}\cos{x}}{x^p}\mathrm{d}x$;
+        \item[(l)]$\displaystyle \int_{0}^{1}\frac{1}{x^p}\cos{\frac{1}{x^2}}\mathrm{d}x$;
+        \item[(m)]$\displaystyle \int_{1}^{+\infty}\frac{\sin\left(x+\frac{1}{x}\right)}{x^p}\mathrm{d}x\quad (p>0)$.
+    \end{enumerate}
+    \item[2.]求所有 \(p > 0\)，使得无穷求和 \(\displaystyle\sum_{n = 2}^{\infty}\frac{1}{n\cdot(\ln n)^p}\) 收敛.
+    \item[3.]设 \(\displaystyle\int_{a}^{+\infty}f(x)\mathrm{d}x\) 绝对收敛，且 \(\displaystyle\lim_{x\to +\infty}f(x) = 0\)，
+    证明 \(\displaystyle\int_{a}^{+\infty}f^{2}(x)\mathrm{d}x\) 收敛.
+    \begin{solution}\\
+        由 $\displaystyle \lim_{x \to +\infty}f(x)=0$ 可知 $\displaystyle\exists A>a,\,\forall x>A,\,\left|f(x)\right|<1\Rightarrow f^2(x)\leq\left|f(x)\right|$.
+        由于 $\displaystyle\int_{a}^{+\infty}\left|f(x)\right|\mathrm{d}x$ 收敛，从而由非负函数反常积分的比较判别法可知，积分 $\displaystyle\int_{a}^{+\infty}f^2(x)\mathrm{d}x$ 收敛.
+    \end{solution}
+
+    \item[4.]设 \(f(x)\) 单调且当 \(\displaystyle x\rightarrow 0+\) 时 \(\displaystyle f(x)\rightarrow +\infty\)，
+    证明： \(\displaystyle\int_{0}^{1}f(x)\mathrm{d}x\) 收敛的必要条件是 $\displaystyle \lim_{x\to 0+} xf(x)=0$.
+    \begin{solution}
+        由 $f(x)$ 单调递减，对于充分小的 $x\in(0,\,1)$，有
+        \[
+        0\leq \frac{x}{2}f(x)\leq \int_{\frac{x}{2}}^{x}f(t)\mathrm{d}t.
+        \]
+        由于
+        \[
+        \int_{0}^{1}f(x)\mathrm{d}x.
+        \]
+        收敛，从而由 Cauchy 收敛原理，有
+        \[
+        \lim_{x \to 0^+}\int_{\frac{x}{2}}^{x}f(t)\mathrm{d}t=0.
+        \]
+        从而得到
+        \[
+        \lim_{x \to 0^+}xf(x)=0. 
+        \]
+        (注: $\displaystyle \lim_{x\to 0+} xf(x)=0$ 并不是充分条件，有反例: $f(x)=
+        \begin{cases}
+            \displaystyle \frac{1}{x\left| \ln{x} \right|} &, 0< x\leq e^{-1}\\
+            \displaystyle e &, e^{-1}<x\leq 1.
+        \end{cases}$)
+    \end{solution}
+    \item[5.]设 \(\displaystyle\int_{a}^{+\infty} f(x) \mathrm{d}x\) 收敛, 且 \(\displaystyle x f(x)\) 在 \([a, +\infty)\) 上单调减少, 证明:
+    \[\displaystyle\lim_{x\to +\infty}x(\ln x)f(x) = 0.\]
+    \begin{solution}
+        若对充分大的$x$，$xf(x)<0$，那么不妨设当 $\displaystyle x\geq A > \max\{0,a\}$时，$xf(x)\leq b<0$，则 $\displaystyle f(x)\leq \frac{b}{x}$，从而积分
+        \[
+        \int_{A}^{+\infty}f(x)\mathrm{d}x=b\int_{A}^{+\infty}\frac{1}{x}\mathrm{d}x.
+        \]是发散的，与积分
+        \[
+        \int_{a}^{+\infty}f(x)\mathrm{d}x.
+        \]收敛相矛盾.\\
+        从而当 $x\to+\infty$ 时，$xf(x)$单调递减趋于0，于是有 $xf(x)\geq0$，而且有
+        \[
+        0\leq \frac{1}{2}x(\ln{x})f(x)\leq \int_{\sqrt{x}}^{x}tf(t)\cdot\frac{1}{t}\mathrm{d}t=\int_{\sqrt{x}}^{x}f(t)\mathrm{d}t.
+        \]
+        由于
+        \[
+        \int_{a}^{+\infty}f(x)\mathrm{d}x.
+        \]
+        收敛，由 Cauchy 收敛原理，有
+        \[
+        \lim_{x \to +\infty}\int_{\sqrt{x}}^{x}f(t)\mathrm{d}t=0.
+        \]
+        于是得到
+        \[
+        \lim_{x \to +\infty}x(\ln{x})f(x)=0.
+        \]
+    \end{solution}
+    \item[6.]设 \(f(x)\) 单调下降, 且 \(\displaystyle\lim_{x\to +\infty}f(x) = 0\), 证明: 
+    若 \(f'(x)\) 在 \([0, +\infty)\) 上连续, 则反常积分 \(\displaystyle\int_{0}^{+\infty} f'(x) \sin^{2} x \mathrm{d}x\) 收敛.
+    \begin{solution}
+        \[
+        \begin{aligned}
+        \int_{0}^{+\infty}f'(x)\sin^2{x}\mathrm{d}x
+        &=\int_{0}^{+\infty}\sin^2{x}\mathrm{d}(f(x))=\left.f(x)\sin^2{x}\right|_0^{+\infty}-\int_{0}^{+\infty}f(x)\sin{2x}\mathrm{d}x\\
+        &=-\int_{0}^{+\infty}f(x)\sin{2x}\mathrm{d}x.
+        \end{aligned}
+        \]
+        由于
+        \[
+        F(A)=\int_{0}^{A}\sin{2x}\mathrm{d}x.
+        \]
+        有界，$f(x)$ 单调递减，而且
+        \[
+        \lim_{x \to +\infty}f(x)=0.
+        \]
+        由 Dirichlet 判别法可知，积分
+        \[
+        \int_{0}^{+\infty}f'(x)\sin{2x}\mathrm{d}x.
+        \]
+        收敛，从而积分
+        \[
+        \int_{0}^{+\infty}f'(x)\sin^2{x}\mathrm{d}x.
+        \]
+    \end{solution}
+    \item[7.]设 \(p > 0\), 判断反常积分 \(\displaystyle\int_{1}^{+\infty} \frac{\sin x}{x^{p}} \mathrm{d}x\) 敛散性; 指明绝对收敛、条件收敛、发散, 并说明理由.
+\end{enumerate}
+
+== 习题B ==
+
+我们考虑一维空间的分数阶 Laplace 算子 \(\displaystyle(-\Delta)^{s}\), 其中 \(0< s< 1.\) 其定义为
+
+\[\displaystyle(-\Delta)^{s}u(x) = C_{1,s}\cdot \mathrm{PV} \int_{-\infty}^{+\infty}\frac{u(x) - u(y)}{|x - y|^{1 + 2s}} \mathrm{d}y.\]
+
+其中 \(C_{1,s}\) 为一常数, 而 $\mathrm{PV}$ 指的是在 \(y = x\) 附近的瑕积分的 Cauchy 主值 (在 \(y \to \pm \infty\) 时为普通的反常积分而非 Cauchy 主值积分). 
+我们常假设 \(\displaystyle u \in \mathcal{L}_{2s}(\mathbb{R})\), 即:
+
+\[\displaystyle\| u\|_{\mathcal{L}_{2s}(\mathbb{R})} \coloneqq \int_{-\infty}^{\infty} \frac{|u(x)|}{1 + |x|^{1 + 2s}} \mathrm{d}x < \infty.\]
+
+\begin{enumerate}
+    \item[1.]证明: 在 \(\displaystyle 0< s< \frac{1}{2}\) 时, 若 \(u\in \mathcal{L}_{2s}(\mathbb{R})\), 且 \(\displaystyle u\in C_{l o c}^{0,1}\), 即逐点Lipschitz连续, 则 \((-\Delta)^{s}u\) 在每一个 \(x\in \mathbb{R}\) 处良定义.
+    \item[2.]证明: 在 \(0< s< 1\) 时, 若 \(\displaystyle u\in \mathcal{L}_{2s}(\mathbb{R})\), 且 \(\displaystyle u\in C_{l o c}^{1,1}\), 即导数逐点Lipschitz连续 (假设 \(u\in C^{2}\) 亦可), 则 \((-\Delta)^{s}u\) 在每一个 \(x\in \mathbb{R}\) 处良定义.
+    \item[3.]$(\star)$ 已知 
+    \(\displaystyle u(x) = 
+    \begin{cases}
+            x^{s} &, x > 0 \\ 
+            0 &, x \leq 0.
+    \end{cases}\)
+    , 则证明: \(\displaystyle(-\Delta)^{s}u(1) = 0\). \\
+    (提示: 可以将积分分成不同部分考虑，并使用代换换掉分母.)
+\end{enumerate}
+\begin{solution}
+    \begin{enumerate}
+        \item[1.]考虑分数阶Laplace算子的定义：
+        \[
+        (-\Delta)^s u(x) = C_{1,s} \cdot \mathrm{PV} \int_{-\infty}^{+\infty} \frac{u(x) - u(y)}{|x-y|^{1+2s}} \mathrm{d}y.
+        \]
+        为了证明该主值积分良定义，我们需要证明：\\
+        1. 在 $y = x$ 附近是可积的；\\
+        2. 在 $|y| \to +\infty$ 时积分收敛.\\
+        由于 $u \in C_{loc}^{0,1}$(局部 Lipschitz 连续)，在 $y = x$ 附近存在常数 $L > 0$ 使得 $|u(x) - u(y)| \leq L |x-y|$. 因此，
+        \[
+        \left| \frac{u(x) - u(y)}{|x-y|^{1+2s}} \right| \leq L |x-y|^{-2s}.
+        \]
+        当 $\displaystyle s < \frac{1}{2}$ 时，$\displaystyle -2s > -1$，因此积分 $\displaystyle\int_{|x-y|<1} |x-y|^{-2s} \mathrm{d}y$ 收敛，这说明其在 $y = x$ 附近可积.\\
+        考虑 $|y| \to +\infty$ 时的积分：
+        \[
+        I_{\infty} \coloneqq \left| \int_{|x-y|\geq 1} \frac{u(x) - u(y)}{|x-y|^{1+2s}} \mathrm{d}y \right| \leq \int_{|x-y|\geq 1} \frac{|u(x)|}{|x-y|^{1+2s}} \mathrm{d}y + \int_{|x-y|\geq 1} \frac{|u(y)|}{|x-y|^{1+2s}} \mathrm{d}y.
+        \]
+        对于第一个积分：
+        \[
+        I_1 = \int_{|x-y|\geq 1} \frac{|u(x)|}{|x-y|^{1+2s}} \mathrm{d}y = |u(x)| \int_{|x-y|\geq 1} \frac{1}{|x-y|^{1+2s}} \mathrm{d}y.
+        \]
+        使用极坐标变换，令 $r = |x-y|$，则：
+        \[
+        I_1 = |u(x)| \int_{1}^{+\infty} \frac{1}{r^{1+2s}} \cdot (2r) \mathrm{d}r = 2|u(x)| \int_{1}^{+\infty} r^{-2s} \mathrm{d}r.
+        \]
+        当 $s > 0$ 时，$-2s < 0$，因此 $\displaystyle\int_{1}^{+\infty} r^{-2s} \mathrm{d}r$ 收敛，故 $I_1$ 收敛.\\
+        而对于第二个积分：
+        \[
+        I_2 = \int_{|x-y|\geq 1} \frac{|u(y)|}{|x-y|^{1+2s}} \mathrm{d}y.
+        \]
+        由于 $u \in \mathcal{L}_{2s}(\mathbb{R})$，即
+        \[
+        \|u\|_{\mathcal{L}_{2s}(\mathbb{R})} = \int_{-\infty}^{\infty} \frac{|u(y)|}{1 + |y|^{1+2s}} \mathrm{d}y <+\infty.
+        \]
+        我们需要证明 $I_2$ 收敛. 我们将积分区域分为两部分：$|y| \leq 2|x|$ 和 $|y| > 2|x|$.\\
+        \begin{enumerate}
+        \item[i.]当 $|y| \leq 2|x|$ 且 $|x-y| \geq 1$ 时，$1\leq|x-y| \leq |x| + |y| \leq 3|x|$，因此：
+        \[
+        \frac{1}{|x-y|^{1+2s}} \leq 1.
+        \]
+        于是
+        \[
+        \int_{|x-y|\geq 1, |y| \leq 2|x|} \frac{|u(y)|}{|x-y|^{1+2s}} \mathrm{d}y \leq \int_{|y| \leq 2|x|} |u(y)| \mathrm{d}y.
+        \]
+
+        由于 $u \in \mathcal{L}_{2s}(\mathbb{R})$，且 $|y| \leq 2|x|$ 是有界区域，因此
+        \[
+        \int_{|y| \leq 2|x|} |u(y)| \mathrm{d}y < +\infty.
+        \]
+
+        \item[ii.] 当 $|y| > 2|x|$ 时，$\displaystyle |x-y| \geq |y| - |x| \geq \frac{|y|}{2}$，因此
+        \[
+        \frac{1}{|x-y|^{1+2s}} \leq \frac{2^{1+2s}}{|y|^{1+2s}}.
+        \]
+        于是
+        \[
+        \int_{|x-y|\geq 1, |y| > 2|x|} \frac{|u(y)|}{|x-y|^{1+2s}} \mathrm{d}y \leq 2^{1+2s} \int_{|y| > 2|x|} \frac{|u(y)|}{|y|^{1+2s}} \mathrm{d}y.
+        \]
+
+        由于 $|y| > 2|x| \geq 0$，有 $1 + |y|^{1+2s} \leq C |y|^{1+2s}$(其中 $C$ 是某个常数)，因此：
+        \[
+        \int_{|y| > 2|x|} \frac{|u(y)|}{|y|^{1+2s}} \mathrm{d}y \leq C \int_{|y| > 2|x|} \frac{|u(y)|}{1 + |y|^{1+2s}} \mathrm{d}y \leq C \|u\|_{L_{2s}(\mathbb{R})} < +\infty.
+        \]    
+        \end{enumerate}
+        综合以上两个情形可知，$I_2$ 收敛.
+        因此，由于在 $y = x$ 附近和 $|y| \to +\infty$ 时积分都收敛，主值积分 
+        \[
+        \mathrm{PV} \int_{-\infty}^{+\infty} \frac{u(x) - u(y)}{|x-y|^{1+2s}} \mathrm{d}y.
+        \]
+        存在且有限，因此 $(-\Delta)^s u$ 在每一个 $x \in \mathbb{R}$ 处良定义. 
+        \item[2.]
+        由于 $u \in C_{loc}^{1,1}$，在 $y = x$ 附近可以进行 Taylor 展开：
+        \[
+        u(y) = u(x) + u'(x)(y-x) + R(y).
+        \]
+        其中余项满足 $|R(y)| \leq M |y-x|^2$，$M$ 为某个常数.\\
+        于是 $\displaystyle u(x) - u(y) = -u'(x)(y-x) - R(y)$.
+        代入积分表达式可得
+        \[
+        \frac{u(x) - u(y)}{|x-y|^{1+2s}} = -u'(x) \frac{y-x}{|x-y|^{1+2s}} - \frac{R(y)}{|x-y|^{1+2s}}.
+        \]
+        其中等式右边的第一项 $\displaystyle -u'(x) \frac{y-x}{|x-y|^{1+2s}}$ 是关于变量 $y$ 且以 $y = x$ 为中心的奇函数，其在主值积分意义下为零.\\
+        等式右边的第二项 $\displaystyle -\frac{R(y)}{|x-y|^{1+2s}}$ 满足：
+        \[
+        \left| \frac{R(y)}{|x-y|^{1+2s}} \right| \leq M |x-y|^{1-2s}.
+        \]
+        当 $s < 1$ 时，$1-2s > -1$，因此积分 $\displaystyle \int_{|x-y|<1} |x-y|^{1-2s} \mathrm{d}y$ 收敛.\\
+        考虑 $|y| \to +\infty$ 时的积分：
+        \[
+        I_{\infty} = \left| \int_{|x-y|\geq 1} \frac{u(x) - u(y)}{|x-y|^{1+2s}} \mathrm{d}y \right| \leq \int_{|x-y|\geq 1} \frac{|u(x)|}{|x-y|^{1+2s}} \mathrm{d}y + \int_{|x-y|\geq 1} \frac{|u(y)|}{|x-y|^{1+2s}} \mathrm{d}y.
+        \]
+        对于第一个积分：
+        \[
+        I_1 = \int_{|x-y|\geq 1} \frac{|u(x)|}{|x-y|^{1+2s}} \mathrm{d}y = |u(x)| \int_{|x-y|\geq 1} \frac{1}{|x-y|^{1+2s}} \mathrm{d}y.
+        \]
+        使用极坐标变换，令 $r = |x-y|$，则：
+        \[
+        I_1 = |u(x)| \int_{1}^{\infty} \frac{1}{r^{1+2s}} \cdot (2r) \mathrm{d}r = 2|u(x)| \int_{1}^{\infty} r^{-2s} \mathrm{d}r.
+        \]
+        当 $s > 0$ 时，$-2s < 0$，因此 $\displaystyle \int_{1}^{\infty} r^{-2s} \mathrm{d}r$ 收敛，故 $I_1$ 收敛.\\
+        对于第二个积分：
+        \[
+        I_2 = \int_{|x-y|\geq 1} \frac{|u(y)|}{|x-y|^{1+2s}} \mathrm{d}y.
+        \]
+        由于 $u \in \mathcal{L}_{2s}(\mathbb{R})$，即
+        \[
+        \|u\|_{\mathcal{L}_{2s}(\mathbb{R})} = \int_{-\infty}^{+\infty} \frac{|u(y)|}{1 + |y|^{1+2s}} \mathrm{d}y <+\infty.
+        \]
+        我们需要证明 $I_2$ 收敛. 类似第一问，将积分区域分为两部分：$|y| \leq 2|x|$ 和 $|y| > 2|x|$.\\
+        \begin{enumerate}
+        \item[i.]当 $|y| \leq 2|x|$ 且 $|x-y| \geq 1$ 时，$1\leq|x-y| \leq |x| + |y| \leq 3|x|$，因此：
+        \[
+        \frac{1}{|x-y|^{1+2s}} \leq 1.
+        \]
+        于是
+        \[
+        \int_{|x-y|\geq 1, |y| \leq 2|x|} \frac{|u(y)|}{|x-y|^{1+2s}} \mathrm{d}y \leq \int_{|y| \leq 2|x|} |u(y)| \mathrm{d}y.
+        \]
+
+        由于 $u \in \mathcal{L}_{2s}(\mathbb{R})$，且 $|y| \leq 2|x|$ 是有界区域，因此
+        \[
+        \int_{|y| \leq 2|x|} |u(y)| \mathrm{d}y < +\infty.
+        \]
+
+        \item[ii.]当 $|y| > 2|x|$ 时，$\displaystyle |x-y| \geq |y| - |x| \geq \frac{|y|}{2}$，因此
+        \[
+        \frac{1}{|x-y|^{1+2s}} \leq \frac{2^{1+2s}}{|y|^{1+2s}}.
+        \]
+        于是
+        \[
+        \int_{|x-y|\geq 1, |y| > 2|x|} \frac{|u(y)|}{|x-y|^{1+2s}} \mathrm{d}y \leq 2^{1+2s} \int_{|y| > 2|x|} \frac{|u(y)|}{|y|^{1+2s}} \mathrm{d}y.
+        \]
+
+        由于 $|y| > 2|x| \geq 0$，有 $1 + |y|^{1+2s} \leq C |y|^{1+2s}$(其中 $C$ 是某个正常数)，因此：
+        \[
+        \int_{|y| > 2|x|} \frac{|u(y)|}{|y|^{1+2s}} \mathrm{d}y \leq C \int_{|y| > 2|x|} \frac{|u(y)|}{1 + |y|^{1+2s}} \mathrm{d}y \leq C \|u\|_{L_{2s}(\mathbb{R})} < +\infty.
+        \]    
+        \end{enumerate}
+        综合以上两个情形可知，$I_2$ 收敛.\\
+        因此，由于在 $y = x$ 附近和 $|y| \to +\infty$ 时积分都收敛，主值积分 
+        \[
+        \mathrm{PV} \int_{-\infty}^{+\infty} \frac{u(x) - u(y)}{|x-y|^{1+2s}} \mathrm{d}y.
+        \]
+        存在且有限，因此 $(-\Delta)^s u$ 在每一个 $x \in \mathbb{R}$ 处良定义. 
+        
+        \item[3.]
+        考虑函数
+        \[
+        u(x) = 
+        \begin{cases}
+        x^{s}, & x > 0, \\
+        0, & x \leq 0,
+        \end{cases}
+        \]
+        其中 \(0 < s < 1\). 要证明 \((-\Delta)^{s}u(1) = 0\)，即证明
+        \[
+        I = \operatorname{PV} \int_{-\infty}^{+\infty} \frac{u(1)-u(y)}{\left|1-y\right|^{1+2s}} \,\mathrm{d}y = 0.
+        \]
+        由于 \(u(1)=1\)，上式化为
+        \[
+        I = \operatorname{PV} \int_{-\infty}^{+\infty} \frac{1-u(y)}{\left|1-y\right|^{1+2s}} \,\mathrm{d}y.
+        \]
+        将积分分成三部分(在 $y=1$ 附近的瑕积分仍考虑 Cauchy 主值，以下 $\mathrm{PV}$ 省略)：
+        \[
+        I = \int_{-\infty}^{0} \frac{1}{\left(1-y\right)^{1+2s}} \,\mathrm{d}y + \int_{0}^{1} \frac{1-y^{s}}{\left(1-y\right)^{1+2s}} \,\mathrm{d}y + \int_{1}^{+\infty} \frac{1-y^{s}}{\left(y-1\right)^{1+2s}} \,\mathrm{d}y.
+        \]
+
+        首先计算第一项。令 \(t = -y\)，则
+        \[
+        \int_{-\infty}^{0} \frac{1}{\left(1-y\right)^{1+2s}} \,\mathrm{d}y = \int_{0}^{+\infty} \frac{1}{\left(1+t\right)^{1+2s}} \,\mathrm{d}t = \int_{0}^{+\infty} \frac{1}{\left(1+t\right)^{1+2s}} \,\mathrm{d}(t+1) = \frac{1}{2s}.
+        \]
+
+        记第二、三项之和为 \(J\)，即
+        \[
+        J = \int_{0}^{1} \frac{1-y^{s}}{\left(1-y\right)^{1+2s}} \,\mathrm{d}y + \int_{1}^{+\infty} \frac{1-y^{s}}{\left(y-1\right)^{1+2s}} \,\mathrm{d}y.
+        \]
+
+        对第二项作代换 \(\displaystyle y = \frac{x}{1+x}\)，则 \(\displaystyle \mathrm{d}y = \frac{\mathrm{d}x}{\left(1+x\right)^{2}}\)，且当 \(y=0\) 时 \(x=0\)，\(y=1\) 时 \(x \to +\infty\). 于是
+        \[
+        \int_{0}^{1} \frac{1-y^{s}}{\left(1-y\right)^{1+2s}} \,\mathrm{d}y = \int_{0}^{+\infty} \frac{1-\left(\frac{x}{1+x}\right)^{s}}{\left(1-\frac{x}{1+x}\right)^{1+2s}} \cdot \frac{\mathrm{d}x}{\left(1+x\right)^{2}}.
+        \]
+        由于 \(\displaystyle 1-\frac{x}{1+x} = \frac{1}{1+x}\)，分母变为 \(\displaystyle \left(\frac{1}{1+x}\right)^{1+2s} = \left(1+x\right)^{-1-2s}\)，因此被积函数为
+        \[
+        \left(1-\frac{x^{s}}{\left(1+x\right)^{s}}\right) \left(1+x\right)^{1+2s} \cdot \frac{1}{\left(1+x\right)^{2}} = \left(1-\frac{x^{s}}{\left(1+x\right)^{s}}\right) \left(1+x\right)^{2s-1}.
+        \]
+
+        对第三项作代换 \(\displaystyle y = \frac{1}{x}\)，则 \(\displaystyle \mathrm{d}y = -\frac{\mathrm{d}x}{x^{2}}\)，且当 \(y=1\) 时 \(x=1\)，\(y \to +\infty\) 时 \(x \to 0^{+}\). 于是
+        \[
+        \int_{1}^{\infty} \frac{1-y^{s}}{\left(y-1\right)^{1+2s}} \,\mathrm{d}y = \int_{0}^{1} \frac{1-x^{-s}}{\left(1-x\right)^{1+2s}} \, x^{2s-1} \,\mathrm{d}x.
+        \]
+        再对右边作代换 \(\displaystyle x = \frac{t}{1+t}\)，则 \(\displaystyle \mathrm{d}x = \frac{\mathrm{d}t}{\left(1+t\right)^{2}}\)，且当 \(x=0\) 时 \(t=0\)，\(x=1\) 时 \(t \to +\infty\). 于是
+        \[
+        \int_{0}^{1} \frac{1-x^{-s}}{\left(1-x\right)^{1+2s}} \, x^{2s-1} \,\mathrm{d}x = \int_{0}^{+\infty} \frac{1-\left(\frac{1+t}{t}\right)^{s}}{\left(1-\frac{t}{1+t}\right)^{1+2s}} \left(\frac{t}{1+t}\right)^{2s-1} \frac{\mathrm{d}t}{\left(1+t\right)^{2}}.
+        \]
+        因为 \(\displaystyle 1-\frac{t}{1+t} = \frac{1}{1+t}\)，分母为 \(\displaystyle \left(\frac{1}{1+t}\right)^{1+2s} = \left(1+t\right)^{-1-2s}\)，被积函数化简为
+        \[
+        \left(1-\left(1+t^{-1}\right)^{s}\right) \left(1+t\right)^{1+2s} \cdot t^{2s-1}\left(1+t\right)^{-\left(2s-1\right)} \cdot \frac{1}{\left(1+t\right)^{2}} = \left(1-\left(1+t^{-1}\right)^{s}\right) t^{2s-1}.
+        \]
+        注意到 \(1-\left(1+t^{-1}\right)^{s} = -\left(\left(1+t\right)^{s} t^{-s} - 1\right) = t^{-s} \left(t^{s} - \left(1+t\right)^{s}\right)\)，因此
+        \[
+        \left(1-\left(1+t^{-1}\right)^{s}\right) t^{2s-1} = t^{s-1} \left(t^{s} - \left(1+t\right)^{s}\right) = -\left(\left(1+t\right)^{s} - t^{s}\right) t^{s-1}.
+        \]
+        故
+        \[
+        \int_{1}^{+\infty} \frac{1-y^{s}}{\left(y-1\right)^{1+2s}} \,\mathrm{d}y = -\int_{0}^{+\infty} \left(\left(1+t\right)^{s} - t^{s}\right) t^{s-1} \,\mathrm{d}t.
+        \]
+
+        因此
+        \[
+        J = \int_{0}^{+\infty} \left(1-\frac{t^{s}}{\left(1+t\right)^{s}}\right) \left(1+t\right)^{2s-1} \,\mathrm{d}t - \int_{0}^{+\infty} \left(\left(1+t\right)^{s} - t^{s}\right) t^{s-1} \,\mathrm{d}t.
+        \]
+        将第一项中的被积函数改写：
+        \[
+        \left(1-\frac{t^{s}}{\left(1+t\right)^{s}}\right) \left(1+t\right)^{2s-1} = \frac{\left(1+t\right)^{s} - t^{s}}{\left(1+t\right)^{s}} \left(1+t\right)^{2s-1} = \left(\left(1+t\right)^{s} - t^{s}\right) \left(1+t\right)^{s-1}.
+        \]
+        于是
+        \[
+        J = \int_{0}^{+\infty} \left(\left(1+t\right)^{s} - t^{s}\right) \left(\left(1+t\right)^{s-1} - t^{s-1}\right) \,\mathrm{d}t.
+        \]
+
+        注意到
+        \[
+        \frac{\mathrm{d}}{\mathrm{d}t}\left(\left(1+t\right)^{s} - t^{s}\right) = s\left(\left(1+t\right)^{s-1} - t^{s-1}\right),
+        \]
+        因此被积函数可写成
+        \[
+        \left(\left(1+t\right)^{s} - t^{s}\right)\left(\left(1+t\right)^{s-1} - t^{s-1}\right) = \frac{1}{2s} \cdot \frac{\mathrm{d}}{\mathrm{d}t}\left(\left(1+t\right)^{s} - t^{s}\right)^{2}.
+        \]
+        从而
+        \[
+        J = \frac{1}{2s} \int_{0}^{+\infty} \mathrm{d}\left(\left(1+t\right)^{s} - t^{s}\right)^{2} = \frac{1}{2s} \lim_{R\to+\infty} \left(\left(1+R\right)^{s} - R^{s}\right)^{2} - \frac{1}{2s} \left(\left(1+0\right)^{s} - 0^{s}\right)^{2}.
+        \]
+        当 \(R\to+\infty\) 时，\(\left(1+R\right)^{s} - R^{s} \sim s R^{s-1} \to 0\)，而在 \(t=0\) 处，\(\left(1+0\right)^{s} - 0^{s} = 1\)，因此
+        \[
+        J = 0 - \frac{1}{2s} = -\frac{1}{2s}.
+        \]
+
+        最后，将第一项与 \(J\) 相加得
+        \[
+        I = \frac{1}{2s} + J = \frac{1}{2s} - \frac{1}{2s} = 0.
+        \]
+        因此 \((-\Delta)^{s}u(1) = C_{1,s} \cdot I = 0\).
+    \end{enumerate}
+\end{solution}

@@ -1,0 +1,294 @@
+\newenvironment{solution}{\begin{proofc}[解答]}{\end{proofc}}
+
+== 习题A ==
+
+\begin{enumerate}
+    \item[1.]设 $\displaystyle x_{n + 1} = \frac{1}{2}\left(x_{n} + \frac{2}{x_{n}}\right), n = 1,2,3,\cdots$, 分别对 $x_{1} = 1$ 与 $x_{1} = -2$ 两种情况讨论 $\{x_{n}\}$ 的收敛性并计算极限(若存在).
+    
+    \item[2.]设 $\displaystyle x_{1} = a,x_{2} = b, x_{n + 2} = \frac{x_{n + 1} + x_{n}}{2}$, 讨论 $\{x_{n}\}$ 的收敛性并计算极限(若存在).
+    
+    \item[3.]设 $\displaystyle x_{1} = \sqrt{2}, x_{n + 1} = \frac{1}{2 + x_{n}}$, 讨论 $\{x_{n}\}$ 的收敛性并计算极限(若存在).
+
+    \item[4.]设 $\displaystyle x_{1} > 1, x_{n + 1} = x_{n} + \frac{1}{x_{n}}$, 讨论 $\displaystyle\frac{x_{n}}{\sqrt{n}}$ 的收敛性并计算极限(若存在).
+
+    \item[5.]已知数列 $\displaystyle a_{n} = \sum_{m = 1}^{n}\frac{\sin(m)}{m^{2}}$. 判断数列 $\{a_{n}\}$ 是否收敛 (若收敛, 无需计算极限).
+
+    \item[6.]证明:若级数 $\displaystyle\sum_{n = 1}^{+\infty}|x_{n}|$ 收敛(即有限和序列 $\displaystyle S_{n} = \sum_{k = 1}^{n}|x_{k}|$ 收敛),
+    则级数 $\displaystyle\sum_{n = 1}^{+\infty}x_{n}$ 收敛.(思考:逆命题是否成立?)
+
+    \item[7.]设 $\{x_{n}\}$ 是一单调数列,证明 $\displaystyle\lim_{n\to +\infty}x_{n} = a$ 的充分必要条件是:
+    存在 $\{x_{n}\}$ 的子列 $\{x_{n_{k}}\}$ 满足 $\displaystyle\lim_{k\to +\infty}x_{n_{k}} = a$.
+
+    \item[8.]证明:若有界数列 $\{x_{n}\}$ 不收敛,则必存在两个子列 $\displaystyle\{x_{n_{k}}^{(1)}\}$ 与 $\{x_{n_{k}}^{(2)}\}$ 收敛于不同的极限,
+    即 $\displaystyle\lim_{k\to +\infty}x_{n_{k}}^{(1)} = a, \lim_{k\to +\infty}x_{n_{k}}^{(2)} = b, a\neq b.$
+
+    \item[9.]证明:若数列 $\{x_{n}\}$ 无界,但非无穷大量,则必存在两个子列 $\displaystyle\{x_{n_{k}}^{(1)}\}$ 与 $\displaystyle\{x_{n_{k}}^{(2)}\}$,
+    其中 $\displaystyle\{x_{n_{k}}^{(1)}\}$ 是无穷大量, $\displaystyle\{x_{n_{k}}^{(2)}\}$ 是收敛子列.
+
+    \item[10.]设 $S$ 是非空有上界的数集, $\sup S = a\notin S$. 证明在数集 $S$ 中可取出严格单调增加的数列 $\{x_{n}\}$,
+    使得 $\displaystyle\lim_{n\to +\infty}x_{n} = a$.
+
+    \item[11.]证明:确界存在定理 $\Leftrightarrow$ 单调收敛原理 $\Leftrightarrow$ 闭区间套定理. (注:直接证明,不要以其他定理作为桥梁.)
+
+    \item[12.]证明:Bolzano-Weiestrass 定理 $\Leftrightarrow$ Cauchy 收敛准则. (注:直接证明,不要以其他定理作为桥梁.)
+    \begin{solution}\\
+        \textbf{(1)$\mathrm{Bolzano-Weierstrass}$定理$\Rightarrow$$\mathrm{Cauchy}$收敛准则}\\
+        设数列 $\{x_{n}\}$ 是 Cauchy 序列，则
+        \[
+        \forall \epsilon>0,\,\exists N>0,\,\forall n>N:\,\left|x_{n}-x_{N+1}\right|<\epsilon.
+        \]
+        从而
+        \[
+        \forall n\in\mathbb{N}_{+}, \left|x_{n}\right|\leq \max\{\left|x_{1}\right|,\,\left|x_{2}\right|,...,\left|x_{N}\right|,\left|x_{N+1}+\epsilon\right|\}.
+        \]
+        故数列 $\{x_{n}\}$ 有界，由 Bolzano-Weierstrass 定理可知其存在收敛子列 $\{x_{n_{k}}\}\to L$，即有
+        \[
+        \forall \epsilon>0,\,\exists K>0,\,\forall k>K:\,\left|x_{n_{k}}-L\right|<\frac{\epsilon}{2}.
+        \]
+        再由数列 $\{x_{n}\}$ 是 Cauchy 序列，则
+        \[
+        \forall \epsilon>0,\,\exists N>0,\,\forall m>n>N:\,\left|x_{m}-x_{n}\right|<\frac{\epsilon}{2}.
+        \]
+        取正整数 $k$ 使得 $n_{k}\geq N$，则当 $n>N$ 时，
+        \[
+        \left|x_{n}-L\right|\leq \left|x_{n}-x_{n_{k}}\right|+\left|x_{n_{k}}-L\right|<\epsilon.
+        \]
+        即 $x_{n}\to L(n\to +\infty)$.\\
+        \textbf{(2) Cauchy 收敛准则 $\Rightarrow$ $\mathrm{Bolzano-Weierstrass}$ 定理}\\
+        令 $I_{0}=[a,b]$.\\
+        对于 $k\in\mathbb{N}_{+}$，将区间 $I_{k-1}$ 等分为两个子区间，由于 $I_{k-1}$ 包含无限多个序列点，从而至少有一个子区间包含无穷多个序列点，选择这样的一个子区间作为 $I_{k}$.\\
+        从每个 $I_{k}$ 中选择一个序列点 $x_{n_{k}}$，其中 $n_{k}$ 满足 $n_{k}>n_{k-1}$ (即索引严格递增)，从而我们得到了一个子列$\{x_{n_{k}}\}$.\\
+        $\forall \epsilon>0$，选择$K\in\mathbb{N}$使得 $\displaystyle \left|I_{K}\right|=\frac{b-a}{2^K}<\epsilon$.\\
+        由于对于所有$k\geq K$，有$x_{n_{k}}\in I_{k}\subseteq I_{K}$，因此对任意$k,\,l\geq K$，有
+        \[
+        \left|x_{n_{k}}-x_{n_{l}}\right|\leq \left|I_{K}\right|<\epsilon.
+        \]
+        从而子列$\{x_{n_{k}}\}$为 Cauchy 序列，由 Cauchy 收敛准则知其收敛，故有界数列必有收敛子列.
+    \end{solution}
+
+    \item[13.]设二进有理数集定义为
+
+    \[\mathbb{D} = \left\{\frac{a}{2^{n}} |a\in \mathbb{Z},n\in \mathbb{N}\right\}.\]
+
+    证明下列命题:
+    \begin{enumerate}
+        \item[(a)]$\mathbb{D}$ 是有理数集 $\mathbb{Q}$ 的真子集,即 $\mathbb{D}\subseteq \mathbb{Q}$.
+        \item[(b)]$\mathbb{D}$ 的完备化是实数集 $\mathbb{R}$.
+    \end{enumerate}
+    \begin{solution}
+        \begin{enumerate}
+        \item[(a)] 由 $a\in\mathbb{Z},\,n\in\mathbb{N}$，则由有理数的定义可知 $\displaystyle\frac{a}{2^n}\in\mathbb{Q}$，从而 $\mathbb{D}\subseteq\mathbb{Q}$.
+        取 $\displaystyle\frac{1}{3}\in\mathbb{Q}$，若 $\displaystyle\frac{1}{3}=\frac{a}{2^n}$，则 $2^n=3a$，等式左侧不可能是3的倍数，而等式右侧为3的倍数，矛盾！
+        从而 $\displaystyle\frac{1}{3}\notin \mathbb{D}$，则 $\mathbb{D}\subset\mathbb{Q}$. 
+        
+        \item[(b)] 对于给定的 $\epsilon>0$，选择 $n\in\mathbb{N}$ 使得 $\displaystyle \left|\frac{1}{2^n}\right|<\epsilon$.\\
+        二进有理数 $\displaystyle\frac{a}{2^n}$ 将整个实数轴划分为长度均为 $\displaystyle \frac{1}{2^n}$ 的区间，从而
+        \[
+        \forall x\in\mathbb{R},\,\exists a\in\mathbb{Z}:\,\frac{a}{2^n}\leq x<\frac{a+1}{2^n}.
+        \]
+        令 $\displaystyle d=\frac{a}{2^n}$ ，则
+        \[
+        \left|x-d\right|\leq \frac{1}{2^n}<\epsilon.
+        \]
+        所以 $d\in \mathbb{D}$，且 $\displaystyle\left|x-d\right|<\epsilon$，这证明了 $\textbf{$\mathbb{D}$ 在 $\mathbb{R}$ 中稠密}$.\\
+        由于 $\mathbb{D}\subset\mathbb{Q}$，且 $\mathbb{D}$在$\mathbb{R}$ 中稠密，每个实数 $x$ 都是 $\mathbb{D}$ 中序列 $\displaystyle d_{n}=\frac{[2^nx]}{2^n}$ 的极限，因此这样的序列 $\{d_{n}\}$ 为 Cauchy 序列.\\
+        考虑所有 $\mathbb{D}$ 中的 Cauchy 序列的集合，记作 $\mathcal{C}(\mathbb{D})$，在 $\mathcal{C}(\mathbb{D})$ 上定义等价关系 $\sim$:\\
+        两个 Cauchy 序列$\{d_{n}\}$与$\{e_{n}\}$等价(记作$\{d_{n}\}\sim\{e_{n}\}$)，如果
+        \[
+        \lim_{n\to +\infty}\left|d_{n}-e_{n}\right|=0.
+        \]
+        按照这个等价关系将$\mathcal{C}(\mathbb{D})$划分为等价类，得到等价类的集合记作 $\overline{\mathbb{D}}=\mathcal{C}(\mathbb{D})/\sim$.\\
+        在 $\overline{\mathbb{D}}$ 上，定义度量和四则运算：\\
+        $\textbf{度量}$：对于两个等价类 $[\{d_{n}\}]$和$[\{e_{n}\}]$，定义距离为：
+        \[
+        d([\{d_{n}\}],[\{e_{n}\}])=\lim_{n\to +\infty}\left|d_{n}-e_{n}\right|.
+        \]
+        这个极限存在是因为 $\{d_{n}\}$ 和 $\{e_{n}\}$ 都是 Cauchy 序列，而且实数集 $\mathbb{R}$ 是完备的.\\
+        $\textbf{四则运算}$：对于两个等价类 $[\{d_{n}\}]$ 和 $[\{e_{n}\}]$，定义加法、减法、乘法、除法分别为：
+        \[
+        [\{d_{n}\}]+[\{e_{n}\}]=[\{d_{n}+e_{n}\}].
+        \]
+        \[
+        [\{d_{n}\}]-[\{e_{n}\}]=[\{d_{n}-e_{n}\}].
+        \]
+        \[
+        [\{d_{n}\}]\cdot[\{e_{n}\}]=[\{d_{n}\cdot e_{n}\}].
+        \]
+        \[
+        \frac{[\{d_{n}\}]}{[\{e_{n}\}]}=\left[\left\{\frac{d_{n}}{e_{n}}\right\}\right].([\{e_{n}\}]\neq 0.)
+        \]
+        (由于$[\{e_{n}\}]\neq 0$，故存在 $\epsilon>0$ 和正整数 $N$ 使得当$n\geq N$时，$\left|e_{n}\right|\geq \epsilon$. 
+        从而，对于 $n\geq N,\,e_{n}\neq 0$，故序列 $\displaystyle\left\{\frac{d_{n}}{e_{n}}\right\}$ 从某项起开始有定义. 我们考虑从$N$开始的子序列，或直接假设序列项在$n$足够大时非零.)\\
+        下验证四则运算的良定性，即上述定义与代表序列的选择无关，即若$\{d_{n}\}\sim\{f_{n}\}$和$\{e_{n}\}\sim\{g_{n}\}$，则运算结果不变.\\
+        $\textbf{加法}$：\\
+        由$\{d_{n}\}\sim\{f_{n}\}$和$\{e_{n}\}\sim\{g_{n}\}$可知：
+        \[
+        \lim_{n\to +\infty}\left|d_{n}-f_{n}\right|=\lim_{n\to +\infty}\left|e_{n}-g_{n}\right|=0.
+        \]
+        从而
+        \[
+        \left|(d_{n}+e_{n})-(f_{n}+g_{n})\right|\leq \left|d_{n}-f_{n}\right|+\left|e_{n}-g_{n}\right|\to 0.(n\to +\infty)
+        \]
+        因此
+        \[
+        \lim_{n\to +\infty}\left|(d_{n}+e_{n})-(f_{n}+g_{n})\right|=0.
+        \]
+        即
+        \[
+        \{d_{n}+e_{n}\}\sim\{f_{n}+g_{n}\}.
+        \]
+        $\textbf{减法}$：
+        由 $\{d_{n}\}\sim\{f_{n}\}$ 和 $\{e_{n}\}\sim\{g_{n}\}$ 可知：
+        \[
+        \lim_{n\to +\infty}\left|d_{n}-f_{n}\right|=\lim_{n\to +\infty}\left|e_{n}-g_{n}\right|=0.
+        \]
+        从而
+        \[
+        \left|(d_{n}-e_{n})-(f_{n}-g_{n})\right|\leq \left|d_{n}-f_{n}\right|+\left|e_{n}-g_{n}\right|\to 0.(n\to +\infty)
+        \]
+        因此
+        \[
+        \lim_{n\to +\infty}\left|(d_{n}-e_{n})-(f_{n}-g_{n})\right|=0.
+        \]
+        即
+        \[
+        \{d_{n}-e_{n}\}\sim\{f_{n}-g_{n}\}.
+        \]
+        $\textbf{乘法}$：
+        由$\{d_{n}\}\sim\{f_{n}\}$和$\{e_{n}\}\sim\{g_{n}\}$可知：
+        \[
+        \lim_{n\to +\infty}\left|d_{n}-f_{n}\right|=\lim_{n\to +\infty}\left|e_{n}-g_{n}\right|=0.
+        \]
+        则
+        \[
+        \forall\epsilon>0,\,\exists N>0,\,\forall n>N:\,\left|d_{n}-f_{n}\right|<\epsilon,\,\left|e_{n}-g_{n}\right|<\epsilon.
+        \]
+        由$\{d_{n}\},\,\{e_{n}\},\,\{f_{n}\},\,\{g_{n}\}$都是 Cauchy 序列，从而都有界，即$\exists M>0,\,\forall n\in\mathbb{N}_{+},\,\left|d_{n}\right|\leq M,\,\left|e_{n}\right|\leq M,\,\left|f_{n}\right|\leq M,\,\left|g_{n}\right|\leq M$.\\
+        则
+        \[
+        \left|d_{n}e_{n}-f_{n}g_{n}\right|=\left|d_{n}e_{n}-d_{n}g_{n}+d_{n}g_{n}-f_{n}g_{n}\right|\leq \left|d_{n}\right|\left|e_{n}-g_{n}\right|+\left|g_{n}\right|\left|d_{n}-f_{n}\right|<2M\epsilon.
+        \]
+        因此
+        \[
+        \lim_{n\to +\infty}\left|(d_{n}e_{n})-(f_{n}g_{n})\right|=0.
+        \]
+        即
+        \[
+        \{d_{n}e_{n}\}\sim\{f_{n}g_{n}\}.
+        \]
+        $\textbf{除法}$：
+        由$\{d_{n}\}\sim\{f_{n}\}$和$\{e_{n}\}\sim\{g_{n}\}$可知：
+        \[
+        \lim_{n\to +\infty}\left|d_{n}-f_{n}\right|=\lim_{n\to +\infty}\left|e_{n}-g_{n}\right|=0.
+        \]
+        则
+        \[
+        \forall\epsilon>0,\,\exists N>0,\,\forall n>N:\,\left|d_{n}-f_{n}\right|<\epsilon,\,\left|e_{n}-g_{n}\right|<\epsilon.
+        \]
+        由于$\{e_{n}\}\not\to 0$，故存在$\epsilon_{0}>0,\,N_{1}>0$，使得$\forall n\geq N_{1},\left|e_{n}\right|\geq \epsilon_{0}$.\\
+        由于$\{g_{n}\}\not\to 0$，故存在$\epsilon_{0}>0,\,N_{2}>0$，使得$\forall n\geq N_{2},\left|g_{n}\right|\geq \epsilon_{0}$.\\
+        由$\{d_{n}\},\,\{e_{n}\},\,\{f_{n}\},\,\{g_{n}\}$都是 Cauchy 序列，从而都有界，即$\exists M>0,\,\forall n\in\mathbb{N}_{+},\,\left|d_{n}\right|\leq M,\,\left|e_{n}\right|\leq M,\,\left|f_{n}\right|\leq M,\,\left|g_{n}\right|\leq M$.\\
+        现在考虑
+        \[
+        \left|\frac{d_{n}}{e_{n}}-\frac{f_{n}}{g_{n}}\right|=\left|\frac{d_{n}g_{n}-e_{n}f_{n}}{e_{n}g_{n}}\right|\leq 
+        \frac{2M\epsilon}{\epsilon_{0}^2}.
+        \]
+        因此
+        \[
+        \lim_{n\to +\infty}\left|\frac{d_{n}}{e_{n}}-\frac{f_{n}}{g_{n}}\right|=0.
+        \]
+        即
+        \[
+        \left\{\frac{d_{n}}{e_{n}}\right\}\sim\left\{\frac{f_{n}}{g_{n}}\right\}.
+        \]
+
+        然后定义映射$\varphi:\overline{\mathbb{D}}\rightarrow\mathbb{R},\,\phi([\{d_{n}\}])=\underset{n\to+\infty}{\lim}d_{n}$.\\
+        由于$\{d_{n}\}$为 Cauchy 序列，且 $\mathbb{R}$ 是完备的，该极限存在. 若 $\{d_{n}\}\sim\{e_{n}\}$，则 $\displaystyle\lim_{n\to+\infty} d_{n}=\lim_{n\to+\infty} e_{n}$，所以 $\varphi$ 是良定的.\\
+        由前面讨论知 $\varphi$ 为双射且保持四则运算和度量，故 $\phi$ 为域同构和等距同构，即 $\overline{\mathbb{D}}\cong\mathbb{R}$.\\
+        由于 $\mathbb{R}$ 是完备的，且 $\overline{\mathbb{D}}\cong\mathbb{R}$，从而 $\overline{\mathbb{D}}$ 也是完备的，可知 $\mathbb{D}$ 的完备化是实数集 $\mathbb{R}$.
+        \end{enumerate}
+    \end{solution}
+\end{enumerate}
+
+== 习题B ==
+
+$\cdot$ 设 $A\subset \mathbb{R}$ 是有界无限集(包含无穷多个元素). 我们称 $\ell$ 是 $A$ 的(一个)\textbf{极限点},
+如果它是 $A$ 中某个点列 $\{x_{n}\}$ 的极限.记 $A^{\prime}$ 为 $A$ 的一切极限点的集合.
+
+\begin{enumerate}
+    \item[1.]证明: $A^{\prime}$ 是非空的.
+
+    \item[2.]证明: $\ell$ 是 $A$ 的极限点当且仅当对任意 $\epsilon >0$,
+    集合 $A\cap (\ell -\epsilon,\ell +\epsilon)$ 是无限集.
+
+    \item[3.]证明: $\displaystyle\sup A^{\prime} = \max A^{\prime}$, 即 $A^{\prime}$ 中存在最大数.
+
+    \item[4.]证明:若 $A$ 本身是数列 $\{a_{n}\}$, 则 $\displaystyle\max A^{\prime} = \lim_{n\to +\infty}a_{n}$.
+
+    \item[5.]讨论: $A$ 不一定包含自身的所有极限点, 但 $A^{\prime}$ 一定包含自身的所有极限点.换句话说, $A^{\prime}$ 是闭的(closed).
+    (例如:取 $A$ 为[0,1]内的所有有理数)
+\end{enumerate}
+
+== 习题C ==
+
+\begin{enumerate}
+    \item[1.]试构造两个定义在 $\mathbb{R}$ 上的处处不连续的函数 $f,g$, 使得其复合函数 $f(g(x))$ 是一个处处连续的函数.
+    \begin{solution}
+        定义 $f(x),\,g(x)$ 均为 Dirichlet 函数即可，即
+        \[
+        f(x)=\begin{cases}
+            1 & \text{，若 } x\in\mathbb{Q} \\
+            0 & \text{，若 } x\notin\mathbb{Q}.
+            \end{cases},\,
+        g(x)=\begin{cases}
+            1 & \text{，若 } x\in\mathbb{Q} \\
+            0 & \text{，若 } x\notin\mathbb{Q}.
+        \end{cases}
+        \]
+        从而 $f(x),\,g(x)$ 在 $\mathbb{R}$ 上处处不连续.\\
+        而复合函数$f(g(x))\equiv 1$为常数函数，从而处处连续.
+    \end{solution}
+
+    \item[2.]判断下述命题真伪并说明理由:"已知定义在 $\mathbb{R}$ 上的奇函数 $f(x)$ 在原点处不连续,则原点不可能是 $f(x)$ 的一个可去间断点."
+
+    \item[3.]求所有参数对 $a,b\in \mathbb{R}$, 使得下述函数 $f(x)$ 在实数轴上处处连续:
+    \[
+        f(x)=
+        \begin{cases}
+            \displaystyle\frac{2x^4-2ax^2+x+3a-3}{x^3+1}&, x\neq -1\\
+            b                              &, x=-1.
+        \end{cases}
+    \]
+
+    \item[4.]一列函数 $f_{n}(x):[0, + \infty)\to [0, + \infty)$ 逐点收敛到函数 $F(x):[0, + \infty)\to [0, + \infty)$ ,
+    即对任意 $x\in [0, + \infty)$ 均有 $\displaystyle\lim_{n\to +\infty}f_{n}(x) = F(x)$. 另外假设 $f_{n}(x)$ 是递减函数列,
+    即对任意 $x\in [0, + \infty)$ 以及任意 $1\leq m< n$ 均有 $f_{m}(x)\geq f_{n}(x)$.
+    证明:若 $F(0) = 0$, 且 $f_{n}(x)$ 均在原点处连续, 则 $F(x)$ 也在原点处连续.
+\end{enumerate}
+
+== 习题D ==
+
+在实数轴上,如果一个集合 $A\subseteq \mathbb{R}$ 满足对任意 $x\in A$, 均存在半径 $r = r(x) > 0$ 使得开区间 $(x - r,x + r)\subseteq A$,
+则称该集合为实数轴上的一个\textbf{开集}. 特别地, 空集由于不存在元素 $x\in \emptyset$, 故也算作开集.
+如果一个集合 $B\subseteq \mathbb{R}$ 的补集 $B^{c} = \mathbb{R}\backslash B$ 是实数轴上的开集, 则称 $B$ 是实数轴上的一个\textbf{闭集}.
+
+\begin{enumerate}
+    \item[1.]判断下列集合是否为开集或闭集(含既开又闭与既非开又非闭): $\mathbb{R}$, $\displaystyle\varnothing$, $(0,1),[1,2],[2,3)$, $(- \infty ,4)$ ,$[5,+\infty),\{6,7,8\}$.
+
+    \item[2.]已知 $B\subseteq \mathbb{R}$ 是一个闭集, 且数列 $x_{1},x_{2},\cdots$ 中每一项均属于 $B$. 证明:假如数列 $\{x_{n}\}$ 收敛, 则其极限必然在集合 $B$ 中.
+
+    \item[3.]实数轴上任意有限个开集的交集仍是开集, 且任意若干 (可以是无限个) 开集的并集仍是开集.
+
+    \item[4.]实数轴上闭集是否有类似上述开集的性质? 试提出并证明.
+
+    \item[5.]已知 $f(x): \mathbb{R} \to \mathbb{R}$ 是定义在 $\mathbb{R}$ 上的实值函数, 证明以下三个命题等价(TFAE):
+        \begin{enumerate}  
+            \item[(a)] $f(x)$ 是定义在 $\mathbb{R}$ 上的连续函数 (以 $\epsilon - \delta$ 语言所定义).
+            \item[(b)]对任何 $\mathbb{R}$ 上的开集, 其在 $f(x)$ 下的原像是 $\mathbb{R}$ 上的开集.
+            \item[(c)]对任何 $\mathbb{R}$ 上的闭集, 其在 $f(x)$ 下的原像是 $\mathbb{R}$ 上的闭集.   
+        \end{enumerate}
+
+    \item[6.]试构造一个连续函数 $f(x): \mathbb{R} \to \mathbb{R}$, 使得存在 $\mathbb{R}$ 上的一个开集, 其在 $f$ 下的像不是 $\mathbb{R}$ 上的开集.
+
+    \item[7.]已知集合 $A \subseteq \mathbb{R}$ 既是开集又是闭集, 证明: 或者 $A = \mathbb{R}$, 或者 $A = \varnothing$. (提示: 实数系基本定理.)
+\end{enumerate}

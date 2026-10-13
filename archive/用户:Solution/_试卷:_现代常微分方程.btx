@@ -1,0 +1,215 @@
+\setdisplaytitle{现代常微分方程\ 试卷}
+\sethtmltitle{现代常微分方程\ 试卷}
+
+== 2025秋 ==
+\begin{enumerate}
+    \item[一、] 已知$f$是连续函数,证明微分方程
+          \[\begin{cases}
+              \frac{\partial y}{\partial x}=x^2+1+|f(y)| \\
+              y(x_0) = y_0,
+          \end{cases}\]
+          解的存在性和唯一性(凡是没有指明全局，都是局部的存在唯一性).
+
+    \item[二、]考虑$\mathbb{R}^n$中的系统
+    $$\frac{\partial x}{\partial t}=Ax+N(t,x)$$
+    其中$A$是所有特征值都是负数的常矩阵,$N(t,x)$是光滑矩阵函数,满足
+    $$\lim\limits_{|x|\rightarrow 0}\frac{\|N(t,x)\|}{|x|}=0$$
+    对所有$t$一致成立.证明该系统在平衡点$(0,0)$是Lyapunov渐近稳定的.
+
+    \item[三、] 判断常微分方程
+          \[\begin{cases}
+              \frac{\partial x}{\partial t}=y+x^3 \\
+              \frac{\partial y}{\partial t}=-x+y^3,
+          \end{cases}\]
+          平衡点$(0,0)$是中心还是焦点.
+    
+    \item[四、]考虑环面$T^2$上的旋转$f:T^2\rightarrow T^2$,
+        $$f([x],[y])=([x+\theta],[y+\varphi]).$$当$\theta$和$\varphi$有理无关时，
+        证明$f$是极小的.
+
+    \item[五、]用Moser扭转定理证明方程
+    $$\ddot{x}+x^3=\sin t$$的解有界.也就是证明
+    \begin{itemize}
+        \item[(1)] 方程的解$(x(t),\dot{x}(t))$的解存在;
+        \item[(2)] $|x(t)|+|\dot{x}(t)|<C$,其中$C=C(x(t),\dot{x}(t))$,是依赖于初值的常数.
+    \end{itemize}
+\end{enumerate}
+
+== 2024秋 ==
+
+\begin{enumerate}
+    \item[一、] 设函数 \( y = y(x, \eta) \) 是初值问题
+          \[\frac{dy}{dx} = \sin(xy), \quad y(0) = \eta\]
+          的解。\\
+          (1) 证明：就任何 \(\eta \in \mathbb{R}\)，该解的存在区间为 \((-\infty, +\infty)\)；\\
+          (2) 证明
+          \[\frac{\partial y}{\partial \eta} > 0, \quad \forall (x, \eta) \in \mathbb{R}^2.\]
+
+    \item[二、] 考虑方程
+          \[\frac{dx}{dt} = y - x^3, \quad \frac{dy}{dt} = -2(x^3 + y^3).\]
+          (1) 求该方程沿平衡点 \((x, y) = (0, 0)\) 的线性化方程；\\
+          (2) 证明所求的线性化方程的平衡点 \((x, y) = (0, 0)\) 不是 Lyapunov 稳定的；\\
+          (3) 证明原（非线性）方程平衡点 \((x, y) = (0, 0)\) 是 Lyapunov 渐近稳定的。
+
+    \item[三、] 令 \(\Sigma_1\) 表示一切单边无穷序列 \((x) = (x_0, x_1, \cdots)\) 其中 \(x_i \in \{0, 1\} \quad (i = 0, 1, \cdots)\)。定义右位移算子 \(\sigma_1: \sigma_1(x_0, x_1, x_2, \cdots) = (x_1, x_2, \cdots)\) 其中 \((x) = (x_0, x_1, \cdots) \in \Sigma_1\)。
+          \begin{enumerate}
+              \item 构造柱集使得 \(\Sigma_1\) 是紧拓扑空间。
+              \item 构造一个度量使得 \(\Sigma_1\) 是紧度量空间。
+              \item 证明：\(\sigma_1: \Sigma_1 \to \Sigma_1\) 是连续映射。
+              \item 称 \(\{\sigma_1^n(x): n = 0, 1, 2, \cdots\}\) 为 \(\sigma_1\) 的一条轨道，其中 \((x) \in \Sigma_1\)。证明：存在一条在 \(\Sigma_1\) 内稠密的轨道。
+          \end{enumerate}
+
+    \item[四、] 考虑偏微分方程
+          \[\begin{cases}
+              u_t - \sqrt{-1} u_x = 0 \\
+              u(0,x) = g(x),
+          \end{cases}\]
+          其中 \( u = u(t, x) \) 为未知函数，\( g(x) \) 为已知函数，且在 \( x_0 = 0 \) 的某个邻域内解析，证明：\( u = u(t, x) \) 也在 \((0, 0)\) 的某个邻域内解析。
+
+    \item[五、] (1) 证明哈密顿系统的流保持勒贝格测度不变；\\
+          (2) 证明平面哈密顿系统没有极限环。
+
+    \item[六、] 如果平面自治系统的非闭轨线 \(\gamma\) 分别以周期轨线（闭轨）\(\Gamma_1\) 和 \(\Gamma_2\) 为其 \(\omega\) 极限集和 \(\alpha\) 极限集，证明 \(\Gamma_1\) 和 \(\Gamma_2\) 不会重合。
+\begin{proofc}[6的解答]
+假设 $\Gamma_1 = \Gamma_2 = \Gamma$。
+
+由于 $\Gamma$ 是闭轨，取一点 $p \in \Gamma$。过 $p$ 作一条无切线段 $\Sigma$。由于 $\Gamma$ 是 $\omega$ 极限集，存在时间序列 $t_n \to +\infty$ 使得 $\gamma(t_n) \to p$。类似地，由于 $\Gamma$ 是 $\alpha$ 极限集，存在时间序列 $s_n \to -\infty$ 使得 $\gamma(s_n) \to p$。
+
+考虑无切线段 $\Sigma$。根据无切线段上轨线穿越时间的连续性（参见讲义引理2.8），对于任意 $\varepsilon > 0$，存在 $\delta > 0$，使得当点 $\xi$ 足够接近 $p$（即 $\xi \in B(p, \delta)$）时，过 $\xi$ 的轨线在时间 $|t| < \varepsilon$ 内与 $\Sigma$ 相交。取 $\varepsilon$ 小于 $\Gamma$ 的周期的一半，则对于充分大的 $n$，$\gamma(t_n) \in B(p, \delta)$，从而存在 $t_n'$ 满足 $|t_n' - t_n| < \varepsilon$ 使得 $\gamma(t_n') \in \Sigma$。记这些交点为 $q_n^+$（$n \geq 0$），则 $q_n^+ \to p$（当 $n \to +\infty$）。同理，对于负向时间，存在交点序列 $q_n^-$（$n \leq 0$）满足 $q_n^- \to p$（当 $n \to -\infty$）。将所有交点按时间顺序排列为 $\{ \dots, q_{-2}, q_{-1}, q_0, q_1, q_2, \dots \}$，其中 $q_n = \gamma(\tau_n)$，$\tau_n$ 严格递增，且 $\tau_n \to +\infty$（当 $n \to +\infty$），$\tau_n \to -\infty$（当 $n \to -\infty$）。
+
+由于轨线不自交，这些交点互异。又因为向量场与 $\Sigma$ 横截，轨线每次以相同方向穿过 $\Sigma$，所以点列 $\{q_n\}$ 在 $\Sigma$ 上严格单调（即均位于 $p$ 的同一侧，且沿 $\Sigma$ 单调变化）（严格说明见讲义引理2.9）。但由极限行为，当 $n \to +\infty$ 时 $q_n \to p$，当 $n \to -\infty$ 时 $q_n \to p$。这意味着单调序列 $\{q_n\}$ 从两侧同时趋于 $p$，矛盾（单调序列在直线上只能从一侧趋于极限）。除非所有 $q_n = p$，但这表明 $\gamma$ 与 $\Gamma$ 重合，与 $\gamma$ 是非闭轨矛盾。
+
+故假设不成立，必有 $\Gamma_1 \neq \Gamma_2$。
+\end{proofc}
+
+\end{enumerate}
+
+== 2023 秋 ==
+\begin{enumerate}
+    \item[一、] 设 \( f(t, x) \) 和 \(\frac{\partial f(t, x)}{\partial x}\) 在 \(\alpha < t < \beta\)，\(-\infty < x < +\infty\) 内是连续的，且对于任何 \([a, b] \subset (\alpha, \beta)\)，存在 \(N > 0\) 使得
+    \[
+    \left| \frac{\partial f(t, x)}{\partial x} \right| \leq N, \quad (a \leq t \leq b, \; -\infty < x < +\infty),
+    \]
+    试证微分方程
+    \[
+    \frac{dx}{dt} = f(t, x)
+    \]
+    的每一解的最大存在区间是 \(\alpha < t < \beta\)。
+
+    \item[二、] 证明摆方程
+    \[
+    \frac{dx}{dt} = y, \quad \frac{dy}{dt} + y + \sin x = 0
+    \]
+    的平衡点 \((x, y) = (0, 0)\) 是 Lyapunov 渐近稳定的。
+
+    \item[三、] 令 \(\Sigma_1\) 表示一切单边无穷序列 \((x) = (x_0, x_1, \cdots)\) 其中 \(x_i \in \{0, 1\} \quad (i = 0, 1, \cdots)\)。定义右位移算子 \(\sigma_1: \sigma_1(x_0, x_1, x_2, \cdots) = (x_1, x_2, \cdots)\) 其中 \((x) = (x_0, x_1, \cdots) \in \Sigma_1\)。
+    \begin{enumerate}
+        \item 构造柱集使得 \(\Sigma_1\) 是紧拓扑空间。
+        \item 构造一个度量使得 \(\Sigma_1\) 是紧度量空间。
+        \item 证明：\(\sigma_1: \Sigma_1 \to \Sigma_1\) 是连续映射。
+        \item 称 \(\{\sigma_1^n(x): n = 0, 1, 2, \cdots\}\) 为 \(\sigma_1\) 的一条轨道，其中 \((x) \in \Sigma_1\)。证明：存在一条在 \(\Sigma_1\) 内稠密的轨道。
+    \end{enumerate}
+
+    \item[四、] 证明：考虑平面系统
+    \[
+    \frac{dx}{dt} = y - x^3, \quad \frac{dy}{dt} = -x - y^3.
+    \]
+
+      (1)令 \( x = r \cos \theta, \, y = r \sin \theta \)。求上述平面系统在坐标系 \((r, \theta)\) 下的方程。
+
+       (2) 证明：(0,0)是原来系统在(0,0)处线性化系统的中心。
+
+      (3)证明：(0,0)是原系统的稳定焦点。
+
+
+    \item[五、] 考虑 van der Pol 方程
+    \[
+    \frac{dx}{dt} = y, \quad \frac{dy}{dt} = -x - \epsilon (1 - x^2)y, \quad 0 < \epsilon \ll 1.
+    \]
+    
+       (1) 证明坐标变换 \( x = \sqrt{2I} \cos \theta, \; y = \sqrt{2I} \sin \theta \) 是辛(symplectic)变换。
+        
+        (2) 求平均化方程并证明
+        \[
+        |I(t) - J(t)| \leq C\epsilon, \quad \forall |t| < \frac{1}{\epsilon},
+        \]
+        其中 \( C > 0 \) 是某个常数，\( I(0) = J(0) \)，且 \( J(t) \) 是平均化方程的解。
+        
+        (3) 利用平均化原理和Poincare环域定理证明van der Pol 方程有一个稳定的极限环。
+
+
+    \item[六、] 如果平面自治系统的非闭轨线 \(\gamma\) 分别以周期轨线（闭轨）\(\Gamma_1\) 和 \(\Gamma_2\) 为其 \(\omega\) 极限集和 \(\alpha\) 极限集，证明 \(\Gamma_1\) 和 \(\Gamma_2\) 不会重合。
+\end{enumerate}
+
+
+== 2020秋 ==
+\begin{enumerate}
+\item
+已知方程
+\[
+\frac{dx}{dt} = f(t, x),
+\]
+ \(f(t, x)\) 关于 \(x \in \mathbb{R}^1\) 和 \(t \in (\alpha, \beta)\) 是连续的，且对任何 \([a, b] \subset (\alpha, \beta)\)，存在 \(N\) 使得  
+\[
+\left| \frac{\partial f}{\partial x}(t, x) \right| \leq N,
+\]
+证明:方程的解可以延拓到 \((\alpha, \beta)\) 上。
+
+\item
+证明下列方程组线性化方程零解不是稳定的，但原方程的解是渐近稳定的。
+
+\[
+\begin{cases}
+\dfrac{dx}{dt} = y - x^3, \\[6pt]
+\dfrac{dy}{dt} = -2(x^3 + y^5).
+\end{cases}
+\]
+
+\item
+设 \(X\) 为紧的度量空间，\(f\) 为 \(X \to X\) 的同胚映射，证明下列三个命题等价：
+
+\begin{enumerate}
+    \item \(f\) 为拓扑传递的。
+    \item 若 \(U\) 为 \(X\) 中的开集且 \(f(U) = U\)，则要么 \(U = \emptyset\)，要么 \(\bar{U} = X\)。
+    \item 若 \(U\) 和 \(V\) 都是非空开集，则存在 \(n \in \mathbb{Z}\)，使得 \(f^n(U) \cap V \neq \emptyset\)。
+\end{enumerate}
+
+
+
+\item
+题目大致版本如下：有关哈密顿方程。
+
+(1)第一问是计算。  
+
+(2)第二问根据两个角动量守恒判断第三个角动量守恒。（据称为阿诺尔德书上定理）
+
+
+\item
+设 \(p\) 和 \(q\) 是 \(x\) 轴上方的两个点，求它们之间连接的曲线，绕 \(x\) 轴旋转所得曲面面积的最小值。
+
+\item
+设 \(A\) 为常数方阵，且所有特征值均有负实部。\(B(t)\) 为连续矩阵，且满足
+\[
+\int_{0}^{+\infty} \|A - B(t)\| \, dt < +\infty.
+\]
+证明方程
+\[
+\frac{dx}{dt} = B(t)x
+\]
+的零解是渐近稳定的。
+\end{enumerate}
+
+\begin{proofc}[6的解答]
+    为了方便书写，不妨设初值为$x(0)=x_0$。
+
+\[\frac{dx}{dt}=B(t)x=Ax+[B(t)-A]x\] 
+故可写出解满足的积分方程：
+\[x(t)=e^{At}x_0+\int_o^t e^{A(t-s)}\cdot [B(s)-A]x(s)ds\]
+由于$A$稳定，故对任意$t>0$，存在$M>0,\alpha>0$,使得$\|e^{At}\|\le M e^{-\alpha t}$,从而
+\[\|x(t)\|\le M e^{-\alpha t}\|x_0\|+\int_0^t Me^{-\alpha(t-s)}\cdot \|B(s)-A\|\|x(s)\|ds,\]
+\[\Rightarrow e^{\alpha t}\|x(t)\|\le M\|x_0\|+\int_0^t\|B(s)-A\|\cdot e^{\alpha s}\|x(s)\|ds.\]
+令$u(t)=e^{\alpha t}\|x(t)\|$,则上式化简为
+\[u(t)\le M\|x_0\|+\int_0^t\|B(s)-A\|u(s)ds\]
+由Gronwall 不等式，得\(u(t)\le M\|x_0\|\exp{\int_0^t\|B(s)-A\|ds}\le M'.\)
+故$\|x(t)\|\le M'e^{-\alpha t}$，零解渐近稳定。
+\end{proofc}

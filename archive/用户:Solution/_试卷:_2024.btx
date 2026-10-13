@@ -1,0 +1,228 @@
+\setdisplaytitle{试卷：2024年博资考}
+\sethtmltitle{试卷：2024年博资考}
+\newtheorem{problem}{问题}
+
+
+\section{抽象代数}
+
+\begin{problem}
+对模同态序列 \( P_R \xrightarrow{f} M_R \xrightarrow{g} N_R \)，如果对任意右 \( R \)-模 \( X_R \)：
+
+(a) 证明：若 \(\text{Hom}(N, X) \xrightarrow{g^*} \text{Hom}(M, X) \xrightarrow{f^*} \text{Hom}(P, X)\) 总正合，则 \( P \xrightarrow{f} M \xrightarrow{g} N \) 正合。
+
+(b) 证明：若 \(\text{Hom}(X, P) \xrightarrow{f_*} \text{Hom}(X, M) \xrightarrow{g_*} \text{Hom}(X, N)\) 总正合，则 \( P \xrightarrow{f} M \xrightarrow{g} N \) 正合。
+\end{problem}
+
+\begin{problem}
+设 \( K \) 是一个域，\( A, B \) 是 \( K \)-代数。\( E \) 是左 \( A \otimes_K B \)-模，\( M \) 是左 \( A \)-模，\( Q \) 是左 \( B \)-模。
+
+(a) 证明 \(\text{Hom}_A(M, E)\) 上有自然的左 \( B \)-模结构，对任一左 \( B \)-模 \( X \)，\( M \otimes_K X \) 上有自然的左 \( A \otimes_K B \)-模结构。
+
+(b) 证明函子 \(\text{Hom}_B(-, \text{Hom}_A(M, E)) \cong \text{Hom}_{A \otimes_K B}(M \otimes_K -, E)\)。
+
+(c) 证明：如果 \( E \) 是平坦 \( A \)-模，\( Q \) 是内射 \( B \)-模，则 \(\text{Hom}_B(E, Q)\) 是内射 \( A \)-模。
+\end{problem}
+
+\section{代数拓扑}
+
+\begin{problem}
+设 \( K \) 是 \( n \) 维有限单纯复形，
+\( \phi : K \to K \) 是一个单纯映射。证明：
+
+\[
+\sum_{p=0}^{n} (-1)^{p} \operatorname{tr}(\phi_{\#}, C_{p}(K)) = \sum_{p=0}^{n} (-1)^{p} \operatorname{tr}(\phi_{*}, H_{p}(K)/T_{p}(K)),
+\]
+其中 \(\operatorname{tr}(\phi_{\#}, C_{p}(K))\) 是链映射 \(\phi_{\#} : C_{\bullet}(K) \to C_{\bullet}(K)\) 在 \(C_{p}(K)\) 上的迹，\(T_{p}(K)\) 是 \(H_{p}(K)\) 的挠子群，
+\(\operatorname{tr}(\phi_{*}, H_{p}(K)/T_{p}(K))\) 是群同态 \(\phi_{*} : H_{p}(K)/T_{p}(K) \to H_{p}(K)/T_{p}(K)\) 的迹。
+\end{problem}
+
+\begin{problem}
+(a) 对正整数 \(m > 1\)，构造一个 $2$ 维有限连通单纯复形 \(K\)，使 \(H_{1}(K) \cong \mathbb{Z}_{m}\)。
+
+(b) 设 \(|K|\) 是 \(K\) 的几何实现，\(h: |K| \to |K|\) 是一个连续映射。证明：\(h\) 必有不动点。
+\end{problem}
+
+\section{微分几何}
+
+\begin{problem}
+\(X, Y\) 是流形 \(M\) 上的光滑向量场，给出 Lie 括号 \([X,Y]\) 的定义，并证明它也是一个光滑向量场。
+\end{problem}
+
+\begin{problem}
+设 \(F : M \to N\) 是微分流形间的光滑映照，\(p \in M, q = F(p)\)，\((U, \varphi; x^{i})\) 和 \((V, \psi; y^{\alpha})\) 是分别包含 \(p\) 和 \(q\) 的坐标系。请给出切映照 \(F_{*p}\) 在自然基下的表示矩阵。
+\end{problem}
+
+\section{PDE}
+
+\begin{problem}
+(1) 若 \( T \in S'(\mathbb{R}^n) \) (缓增分布)，则存在常数 \( C \) 和正整数 \( m, n \)，使得
+\[
+|T(\varphi)| \leq C \sup_{|\alpha| \leq m, |\beta| \leq n} \sup_{x \in \mathbb{R}^n} |x^\alpha \partial_x^\beta \varphi(x)|, \quad \forall \varphi \in \mathcal{S}(\mathbb{R}^n).
+\]
+
+(2) 设 \(\delta\) 为广义 Dirac 函数。确定 \( s \) 的范围，使得 \(\delta \in H^s(\mathbb{R}^n)\)。
+\end{problem}
+
+\begin{problem}
+(1) 叙述 \( H^1(\mathbb{R}^n_+) \) 的定义，证明它关于范数 \( \| \cdot \|_{H^1} \) 是 Hilbert 空间。
+
+(2) 证明 \( C^\infty(\overline{\mathbb{R}^n_+}) \cap H^1(\mathbb{R}^n_+) \) 在 \( H^1(\mathbb{R}^n_+) \) 中稠密。
+\end{problem}
+
+\section{泛函分析}
+
+\begin{problem}
+\( H \) 是复的 Hilbert 空间，\( f \) 是 \( B(H) \) 上面的一个连续线性泛函，完成 \( B(H) \) 中算子收敛性三个等价条件的证明：
+
+(1) \( f \) 关于强拓扑连续；
+
+(2) \( f \) 关于弱拓扑连续；
+
+(3) 存在 \( x_i \) 和 \( y_i \) (\( 1 \leq i \leq n \)) 使得
+\[
+f(T) = \sum_{i=1}^n (Tx_i, y_i).
+\]
+\end{problem}
+
+\begin{problem}
+设 \( X \) 是赋范空间，\( L \) 是 \( X \) 的子空间，\( L \) 的零化子 \( L^\perp \) 定义为
+\[
+L^\perp = \{ f \in X^* : f(x) = 0, \forall x \in L \}.
+\]
+设 \( L \) 是赋范空间 \( X \) 的闭线性子空间，使用 Hahn--Banach 定理证明：
+
+(i) 映射 \([f] \mapsto f|_L\) 实现了商空间 \( X^* / L^\perp \) 与 \( L^* \) 的等距同构；
+
+(ii) 设 \(\pi : X \to X/L\) 是商映射，则 \(\pi^* : (X/L)^* \to X^*\) 是等距且 \(\operatorname{Ran}\pi^* = L^\perp\).
+\end{problem}
+
+\section{Sobolev空间}
+
+\begin{problem}
+(1) 定义默写：弱 \( L^p, L^p, W^{m,p}, H^m, W^{-m,p'} \)，其中 \( 0 < p \leq \infty \)。  
+
+(2) 举出反例：
+\begin{itemize}
+\item 属于弱 \( L^p \) 但不属于 \( L^p \);
+\item \( W^{2,2}(\Omega) \) 不嵌入到 \( W^{1,\infty}(\Omega), \Omega = (0,1)^2 \);
+\item \( W^{1,2}(\Omega) \) 不紧嵌入到 \( L^6(\Omega), \Omega = (0,1)^3 \)。
+\end{itemize}
+\end{problem}
+
+\begin{problem}
+设 \(\Omega\) 是满足 \( \mathbb{R}^n \) 中满足锥条件的区域。
+
+(1) 叙述锥条件的定义。
+
+(2) 对任意的 \( u \in C^\infty(\Omega) \)，证明
+\[
+|u(x)| \leq K \left( \sum_{|\alpha| \leq m-1} r^{|\alpha|-n} \int_{C_{x,r}} |D^\alpha u(y)| dy + \sum_{|\alpha|=m} \int_{C_{x,r}} |D^\alpha u(y)| |x-y|^{m-n} dy \right).
+\]
+
+(3) 当 \( mp > n \) 时，证明 \( W^{m,p}(\Omega) \to C_B(\Omega) \) 是嵌入。
+\end{problem}
+
+\section{概率论}
+
+\begin{problem}
+设 \( X, Y \) 相互独立，\( g \) 为有界可测函数，
+记 \(\tilde{g}(y) := \mathbb{E}[g(X, y)]\)。试证明：
+\[
+\mathbb{E}[g(X, Y) \mid Y] = \tilde{g}(Y).
+\]
+\end{problem}
+
+\begin{problem}
+已知 \( X, Y \) 独立同分布，二阶矩存在且有限，那么：
+
+(1) \( \mathbb{E}|X - Y|^2 = 2\mathbb{V}\text{ar}(X) \)。
+
+(2) \( \mathbb{V}\text{ar}(|X|) \leq \mathbb{V}\text{ar}(X) \)。
+\end{problem}
+
+\section{控制论}
+
+\begin{problem}
+(1) 五阶方程稳定性条件。  
+
+(2) 离散系统稳定性条件。  
+\end{problem}
+
+\begin{problem}
+对于 \( T > 0 \)，以及线性系统  
+\[
+\dot{x}(t) = Ax(t) + Bu(t),
+\]  
+其中 \( A \in \R^{n \times n}, B \in \R^{n \times m} \)。
+若对于任意初值 \( x(0) = x_0 \in \R^n \)，存在 \( u \in L^2(0,T;\R^m) \)，
+使得 \( x(T;0,x_0) = x_0 \)，则称系统周期可控。
+
+(1) 说明周期可控性条件。  
+
+(2) 说明周期可控性是否与 \( T \) 的选取有关。
+\end{problem}
+
+\section{复分析}
+
+\begin{problem}
+设 \( f: -i\mathbb{H} \to \mathbb{C} \) 为单叶函数，且 \( f(1) = 0, f'(1) = 1 \)，证明  
+\[
+\frac{2|z^2 - 1|}{(|z+1| + |z-1|)^2} \leq |f(z)| \leq \frac{2|z^2 - 1|}{(|z+1| - |z-1|)^2}
+\]
+\end{problem}
+
+\begin{problem}
+叙述并证明调和函数的 Harnack 不等式。
+\end{problem}
+
+\section{ODE}
+
+\begin{problem}
+设 \( p(t) \) 是一个周期为 \( 2\pi \) 的函数，假设如下常微分方程的解是大范围存在的，
+\[
+\ddot{x} + c\dot{x} + g(x) = p(t).
+\]
+若 \(\Phi : (x(0), \dot{x}(0)) \mapsto (x(2\pi), \dot{x}(2\pi))\)，
+证明 \( \operatorname{measure}(\Phi(D)) = e^{-2\pi c}\operatorname{measure}(D) \)。
+\end{problem}
+
+\begin{problem}
+求 Sturm-Liouville 初边值问题
+\[
+\begin{cases}
+y'' + \lambda y = 0, \\
+y(0) - y'(0) = 0, y'(1) = 0
+\end{cases}
+\]
+的特征值和特征向量，并对于 \([0, 1]\) 上定义的函数 \( f \)，给出对应的广义 Fourier 系数展开。
+\end{problem}
+
+\section{优化}
+
+\begin{problem}
+已知 \( X, Y \in \mathbb{R}^{n \times p} \)，\( X^T X = I_p \)，其中 \( 0 < p < n \) 为整数。考虑下面问题
+\[
+\begin{aligned}
+&\min_{Z} \|Y - Z\|_F^2 \\
+&\text{s.t. } X^T Z + Z^T X = 0
+\end{aligned}
+\]
+写出拉格朗日函数并求解最优解 \( Z^* \)。
+\end{problem}
+
+\begin{problem}
+已知 \( X \in \mathbb{R}^{n \times p} \)，其中 \( 0 < p < n \) 为整数。假设 \( f(X) \) 是连续可微函数。考虑下面问题
+\[
+\begin{aligned}
+&\min_{f(X)} f(X) \\
+&\text{s.t. } X^T X = I_p
+\end{aligned}
+\]
+其中 \( I_p \) 为 \( p \) 阶单位矩阵。
+
+(1)对于约束 \( X^T X = I_p \)，其对应的拉格朗日乘子 \( \Lambda \) 属于哪个线性空间？
+
+(2)写出拉格朗日函数，和最优解 \( X^* \) 满足的最优性条件。
+
+(3)令 \( G = \nabla f(X^*) \) 为 \( f \) 在 \( X^* \) 处的梯度。证明 \( X^{*T} G = G^T X^* \)。
+\end{problem}

@@ -1,0 +1,1212 @@
+\setdisplaytitle{第三章\ 域论}
+\sethtmltitle{第三章\ 域论}
+\newenvironment{solution}{\begin{proof}[解]}{\end{proof}}
+
+\textbf{注} \quad 习题来自《抽象代数》(陈猛,王庆雪,李志远) (高等教育出版社2025年9月第1版)
+
+\section{域扩张的定义}
+
+\begin{enumerate}
+    \item 对于整数 $ n $,当 $ n \neq -1, 3, 5 $ 时,证明 $ F = \mathbb{Q}[x]/(x^3 - n x + 2) $ 是域.
+    \begin{proof}
+        由第二章推论5.12，$F$不是域就是说$x^3-nx+2$是$\mathbb{Q}$上的可约多项式，则有有理根$q$。
+        容易说明$q$只可能是$\pm1,\pm2$，当$q=-1$时$n=-1$，当$q=1$或$-2$时$n=3$，当$q=2$时$n=5$。
+    \end{proof}
+
+    \item 证明 $ \mathbb{Q}(\sqrt{5}, \sqrt{7}) = \mathbb{Q}(\sqrt{5} + \sqrt{7}) $.
+    \begin{proof}
+        简写$a=\sqrt{5}+\sqrt{7}$，显然$\mathbb{Q}(\sqrt{5},\sqrt{7})$包含了$\mathbb{Q}(a)$，
+        只要说明$\mathbb{Q}(\sqrt{5},\sqrt{7})$包含于$\mathbb{Q}(a)$即可。
+        注意到$(a-\sqrt{5})^2=7$，即$a^2-2\sqrt{5}a=2$，因此$\sqrt{5}=\dfrac{a^2-2}{2a}\in\mathbb{Q}(a)$。
+    \end{proof}
+
+    \item 证明 $ \mathbb{Q}(\sqrt{2}) $ 和 $ \mathbb{Q}(\sqrt{5}) $ 作为 $ \mathbb{Q} $-线性空间是同构的,但作为域不同构.
+    \begin{proof}
+        若不然，假定$\varphi:\mathbb{Q}(\sqrt{2})\to\mathbb{Q}(\sqrt{5})$是域同构，
+        设$\varphi(\sqrt{2})=a+b\sqrt{5}$，其中$a,b\in\mathbb{Q}$，
+        平方得出$2=\varphi(2)=\varphi(\sqrt{2})^2=(a+b\sqrt{5})^2=a^2+5b^2+2ab\sqrt{5}$，
+        则有$a^2+5b^2=2$且$2ab=0$，这组方程无有理解。
+    \end{proof}
+
+    \item 设 $ L $ 为 $ K $ 的有限扩张,证明其有理函数域 $ L(x) $ 也是 $ K(x) $ 的有限扩张,且 $[L(x) : K(x)] = [L : K]$.
+
+    \item 设 $ L/K $ 为域扩张,特征不为 $ 2 $. $ a, b $ 为 $ L $ 中的两个非零元,
+    且满足 $ a^2, b^2 \in K $.证明: $K(a) = K(b)$ 当且仅当 $ab \in K$.
+    \begin{proof}
+        后推前是显然的，下面来看前推后。
+        $K(a)=K(b)$表明$a \in K(b)$，即有$k \in K$使得$a-kb \in K$。
+        如果$k=0$那么$a \in K$，从而$b \in K$，故$ab \in K$；
+        如果$k\ne0$那么$2kab=a^2+k^2b^2-(a-kb)^2 \in K$，因此$ab \in K$。
+    \end{proof}
+
+    \item 设 $ F $ 为域, $ n $ 为正整数,证明对任意矩阵 $ A \in M_{n \times (n+1)}(F) $,秩 $ \text{rank}(A) \leqslant n $.这个命题的等价命题为:域 $ F $ 上具有 $ n $ 个方程和 $ n+1 $ 个未知量的齐次线性方程组必有非零解.
+
+    \item 对于域 $ F $ 的有限扩张 $ E/F $.若 $ [E : F] = n $,证明在 $ F $ 的 $ n \times n $ 矩阵环 $ M_n(F) $ 上存在一个子环 $ R $ 使得 $ E \cong R $.
+    \begin{proof}
+        视$E$为$F$-线性空间,固定$E$的一组$F$-基$\{e_i\}_{i=1}^n$.对于任意$a\in E$,乘以$a$是$E$上的一个线性变换(作为$F$-线性空间),
+        从而我们可以取乘$a$这个线性变换对应的变换矩阵$M_a=(a_{ij})$,其中$ae_j=\sum\limits_{i=1}^na_{ij}e_i$.
+        于是映射$\iota:E \to M_n(F),a \mapsto M_a$是一个环的单同态,特别地,有$E \cong \operatorname{Im}\iota:=R$.
+    \end{proof}
+    
+
+    \item 设 $ F $ 是一个域.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明所有的矩阵 
+        $\begin{pmatrix}
+        a & b \\ \\
+        -b & a
+        \end{pmatrix}$, 其中 $ a, b \in F $,在矩阵加法和矩阵乘法下组成一个域 $ E $,当且仅当方程 $ X^2 + 1 = 0 $ 在 $ F $ 中没有解;
+        \item 证明 $ E $ 包含一个同构于 $ F $ 的域;
+        \item 使用 (1) 来构造一个具有九个元素的域并找出其特征.
+    \end{enumerate}
+\begin{proof}[解答]
+    \begin{enumerate}[label=(\arabic*)]
+    \item 考察映射
+    \begin{align*}
+        \varphi:F[x]/(x^2+1)&\to\left\{\begin{pmatrix}a&b\\ \\-b&a\end{pmatrix}\,\middle|\,a,b \in F\right\},\\
+        a+bx&\mapsto\begin{pmatrix}a&b\\ \\-b&a\end{pmatrix},
+    \end{align*}
+    这显然是单射、\,满射和加法同态，并注意到$F[x]/(x^2+1)$上的线性变换『乘上$a+bx$』
+    在基$\begin{pmatrix}1\\ \\x\end{pmatrix}$下的表示矩阵
+    就是$\begin{pmatrix}a&b\\ \\-b&a\end{pmatrix}$，即
+    \[(a+bx)\begin{pmatrix}1\\ \\x\end{pmatrix}
+    =\begin{pmatrix}a&b\\ \\-b&a\end{pmatrix}\begin{pmatrix}1\\ \\x\end{pmatrix},\]
+    可知$\varphi$也是乘法同态。因此$\varphi$是环同构，
+    从而$\left\{\begin{pmatrix}a&b\\ \\-b&a\end{pmatrix}\,\middle|\,a,b \in F\right\}$
+    是域当且仅当$F[x]/(x^2+1)$是域，由第二章推论5.12，这等价于$x^2+1$是$F[x]$中的不可约多项式。
+    \item $\left\{\begin{pmatrix}a&0\\ \\0&a\end{pmatrix}\,\middle|\,a \in F\right\}$是同构于$F$的子域。
+    \item 方程$x^2+1=0$在$\mathbb{F}_3$中无解，从而
+    $\left\{\begin{pmatrix}a&b\\ \\-b&a\end{pmatrix}\,\middle|\,a,b\in\mathbb{F}_3\right\}$
+    是有$9$个元素的域，其特征为$3$。\qedhere
+    \end{enumerate}
+\end{proof}
+
+    \item 证明实数域 $ \mathbb{R} $ 上不存在真子域跟它自身同构.试问复数域 $ \mathbb{C} $ 上是否存在真子域跟它自身同构?
+\begin{proof}[解答]
+    设$\varphi$是$\R$到其某个子域的同构，容易说明$\varphi(\mathbb{Q})=\mathbb{Q}$。
+    记$2^\mathbb{Q}$为$\mathbb{Q}$的幂集，那么$\varphi(2^\mathbb{Q})=2^\mathbb{Q}$。
+    回忆一下，实数是通过Dedekind分割来定义的，每一个实数都是$\mathbb{Q}$的满足某些条件的一个子集，
+    这就是说$\R$包含于$2^\mathbb{Q}$，因此特别地有$\varphi(\R)=\R$。
+
+    取$\mathbb{C}$在$\mathbb{Q}$上的一组超越基$\{\alpha_i\}_{i \in I}$ (见下一节习题10)，扔掉其中某个元素$\alpha_j$，
+    记$\mathbb{B}$为域$\mathbb{Q}(\{\alpha_i\}_{i \in I\setminus\{j\}})$的代数闭包。
+    由代数闭包在同构意义下的唯一性 (见命题3.9) 可知$\mathbb{B}$同构于$\mathbb{C}$，
+    并且由于$\alpha_j\notin\mathbb{B}$得到$\mathbb{B}$是$\mathbb{C}$的真子域。
+\end{proof}
+
+    \item 令 $ \mathbb{C}(x) $ 为复系数有理函数域,证明下述集合构成 $ \mathbb{C}(x) $ 的一组 $ \mathbb{C} $-基:
+    \[
+    \{ x^i \}_{i=0}^\infty \cup \left\{ \frac{1}{(x-a)^k} \,\middle|\, a \in \mathbb{C},\ k \in \mathbb{N} \right\}.
+    \]
+    如将 $ \mathbb{C} $ 换成实数域 $ \mathbb{R} $,情况又如何?
+\end{enumerate}
+
+\section{代数扩张}
+
+\begin{enumerate}
+    \item 设 $K$ 是一个域, $F/K$ 是域扩张,如果 $\alpha \in F$ 是 $K$ 上的代数元,证明 $\alpha$ 的极小多项式在 $F[x]$ 上是不可约的.
+    \begin{proof}
+        假如$\alpha$的极小多项式$f(x)$能写成非常数多项式$g(x),h(x)$的乘积，
+        这样$g(\alpha),h(\alpha)$至少有一个是$0$，那就获得次数更小的对$\alpha$取值为$0$的多项式了。
+    \end{proof}
+
+    \item 计算域扩张次数 $[\mathbb{Q}(\sqrt[4]{2}, \sqrt[4]{18}): \mathbb{Q}]$.
+    \begin{proof}[解答]
+        下面说明$\sqrt{3}\notin\mathbb{Q}(\sqrt[4]{2})$。
+        这即是说$[\mathbb{Q}(\sqrt[4]{2},\sqrt{3}):\mathbb{Q}(\sqrt[4]{2})]=2$，
+        结合$[\mathbb{Q}(\sqrt[4]{2}):\mathbb{Q}]=4$就得到$[\mathbb{Q}(\sqrt[4]{2},\sqrt{3}):\mathbb{Q}]=8$。
+
+        假设$\sqrt{3}\in\mathbb{Q}(\sqrt[4]{2})$，则存在$a,b\in\mathbb{Q}(\sqrt{2})$
+        使得$\sqrt{3}=a+\sqrt[4]{2}b$，那么$\sqrt{3}=\dfrac{3+a^2-\sqrt{2}b^2}{2a}\in\mathbb{Q}(\sqrt{2})$，
+        记$c,d\in\mathbb{Q}$使得$\sqrt{3}=c+\sqrt{2}d$，推出$\sqrt{3}=\dfrac{3+c^2-2d^2}{2c}\in\mathbb{Q}$。
+    \end{proof}
+
+    \item 证明 $F = \mathbb{Q}[x]/(x^3 - 7x + 3)$ 是域.令 $\theta$ 为 $x^3 - 7x + 3$ 的一个根,用 $1, \theta, \theta^2$ 的 $F$-线性组合表示 $(1 + \theta)^{-1}$.
+    \begin{proof}[解答]
+        注意到$(\theta^2-\theta-6)(\theta+1)=\theta^3-7\theta-6=-9$，
+        故$(1+\theta)^{-1}=-\dfrac{1}{9}(\theta^2-\theta-6)$。
+    \end{proof}
+
+    \item 是否所有 $\mathbb{Q}$ 上的三次扩张都形如 $\mathbb{Q}(\alpha)$,其中 $\alpha^3 \in \mathbb{Q}$?
+    \begin{proof}[解答]
+        不一定。取有$3$个不同实无理根$r_1,r_2,r_3$的三次多项式$f(x)\in\mathbb{Q}[x]$，
+        下面说明三次扩张$\mathbb{Q}(r_1)$不能写成$\mathbb{Q}(\sqrt[3]{q})$的形式。
+        不然的话，既然$r_1\in\mathbb{Q}(\sqrt[3]{q})$，有$\sqrt[3]{q}\notin\mathbb{Q}$，
+        更重要的是存在（不超过二次的）多项式$h(t)\in\mathbb{Q}[t]$使得$r_1=h(\sqrt[3]{q})$。
+        由于$\sqrt[3]{q}$在$\mathbb{Q}$上的极小多项式为$t^3-q$，
+        通过$f(h(\sqrt[3]{q}))=f(r_1)=0$可得$t^3-q$整除$f(h(t))$，
+        从而$t^3-q$的另两个根$\sqrt[3]{q}\,\omega,\sqrt[3]{q}\,\bar{\omega}$亦为$f(h(t))$的根。
+        这就表明$h(\sqrt[3]{q}\,\omega),h(\sqrt[3]{q}\,\bar{\omega})$也是$f(x)$的根，
+        因此$\{r_2,r_3\}=\{h(\sqrt[3]{q}\,\omega),h(\sqrt[3]{q}\,\bar{\omega})\}$；
+        可是$h(\sqrt[3]{q}\,\omega),h(\sqrt[3]{q}\,\bar{\omega})$是一对共轭复数，
+        $r_2,r_3$却不是，矛盾。
+
+        下面举个这样的$f(x)$的具体例子。简写$\zeta=e^{\frac{2\pi{\rm i}}{7}}$，
+        则$\zeta,\zeta^2,\zeta^3$都是不可约多项式
+        \[\frac{y^7-1}{y-1}=y^6+y^5+y^4+y^3+y^2+y+1\]
+        的根，即\[(y^3+y^{-3})+(y^2+y^{-2})+(y+y^{-1})+1=0.\]
+        令$x=y+y^{-1}$，代入得到
+        \[(x^3-3x)+(x^2-2)+x+1=0,\]
+        也就是说
+        \[\zeta+\zeta^{-1}=2\cos\Big(\frac{2\pi}{7}\Big),\quad
+        \zeta^2+\zeta^{-2}=2\cos\Big(\frac{4\pi}{7}\Big),\quad
+        \zeta^3+\zeta^{-3}=2\cos\Big(\frac{6\pi}{7}\Big)\]
+        皆是$f(x)=x^3+x^2-2x-1$的根。
+    \end{proof}
+
+    \item 给定域扩张 $E/F$,若 $t \in E$ 是 $F$ 上奇数次代数元,证明 $F(t) = F(t^2)$.
+    \begin{proof}
+        记$d=[F(t):F(t^2)]$，则$d=1$或$2$。由于$[F(t):F]$是奇数且$d$整除$[F(t):F]$，得到$d=1$。
+    \end{proof}
+
+    \item 设 $u \in \mathbb{C}$ 是多项式 $f(x) = x^3 - 7$ 的一个零点, $E = \mathbb{Q}(u)$.
+    记 $g(x) = x^2 - ux + u^2 \in E[x]$,问 $g(x)$ 是否是 $E[x]$ 的不可约多项式?说明理由.
+    \begin{proof}[解答]
+        是的，$g(x)=0$就是$\big(\frac{2x}{u}-1\big)^2=-3$，只要说明$-3$不是$E$中任何元素$v$的平方。
+        若不然，$\mathbb{Q}(v)$是$E$的子域，$[E:\mathbb{Q}]=3$，
+        从而$[\mathbb{Q}(v):\mathbb{Q}]$不能是$2$，只能是$1$，即$v\in\mathbb{Q}$，这是不可能的。
+    \end{proof}
+
+    \item 求解下列问题:
+    \begin{enumerate}[label=(\arabic*)]
+        \item 假设 $K/F$ 是域的代数扩张,令 $R$ 是 $K$ 的一个包含 $F$ 的子环.证明: $R$ 是 $K$ 的子域;
+        \item 假设 $K/F$ 是域扩张,且任何 $K$ 的包含 $F$ 的子环 $R$ 均是域,证明: $K/F$ 是代数扩张.
+    \end{enumerate}
+
+    \item 设 $E/F$ 是 $m$ 次域扩张, $f(x)$ 是 $F$ 上的 $n$ 次不可约多项式,且 $m$ 和 $n$ 互素,证明: $f(x)$ 是 $E$ 上的不可约多项式.
+    \begin{proof}
+        设$\alpha$是$f(x)$的一个根，则$n=[F(\alpha):F]$整除$[E(\alpha):F]=m[E(\alpha):E]$，从而$[E(\alpha):E]$也是$n$。
+    \end{proof}
+    \item 设 $F$ 是包含于 $\mathbb{Q}$ 系数 $n \times n$ 矩阵环 $M_n(\mathbb{Q})$ 的域,证明: $[F: \mathbb{Q}] \leqslant n$.
+    \begin{proof}
+        不妨限定$F\ne\{0\}$，任取其中一个方阵$T\ne0$和一个使得$Tv\ne0$的向量$v\in\mathbb{Q}^n$，
+        考察$\mathbb{Q}$-线性映射$F\to\mathbb{Q}^n,A \mapsto Av$，下面说明这是单射。
+        对于$F$中的方阵$A\ne0$，有$(TA^{-1})(Av)=Tv\ne0$，得到$Av\ne0$。
+        这表明$\dim_{\mathbb{Q}}F\leqslant\dim_{\mathbb{Q}}\mathbb{Q}^n$，即$[F:\mathbb{Q}] \leqslant n$。
+        另一种方法是用本原元素定理 (命题7.9) 得出$F$是单扩张，对生成元用Cayley--Hamilton定理即可。
+    \end{proof}
+    \item (超越次数) 设 $k \subseteq F$ 是一个域扩张, $I$ 是一个指标集,选取 $\{\alpha_i\}_{i \in I}$ 是 $F$ 中元素.
+    这个选取确定了从多项式环 $k[I]$ 到 $F$ 的 $k$-代数同态 $\varphi$.
+    若 $\varphi$ 是单射时,我们说 $\{\alpha_i\}_{i \in I}$ 在 $k$ 上是代数独立的.
+    例如,如果 $\alpha_1, \alpha_2, \cdots, \alpha_n$ 是 $F$ 的不同元素并且在 $k$ 上代数独立,
+    则不存在非零多项式 $f(x_1, x_2, \cdots, x_n) \in k[x_1, x_2, \cdots, x_n]$ 使得 $f(\alpha_1, \alpha_2, \cdots, \alpha_n) = 0$.
+
+    如果 $\{\alpha_i\}_{i \in I}$ 是 $F$ 中的极大代数独立集,那么称其是 $F$ 在 $k$ 上的一组超越基 (transcendence basis).
+
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明 $\alpha_1, \alpha_2, \cdots, \alpha_n$ 在 $k$ 上代数独立当且仅当赋值 $t_1 \mapsto \alpha_1, t_2 \mapsto \alpha_2, \cdots, t_n \mapsto \alpha_n$ 定义了从有理函数域 $k(t_1, t_2, \cdots, t_n)$ 到 $k(\alpha_1, \alpha_2, \cdots, \alpha_n)$ 的 $k$-代数同态 (从而是同构);
+        \item 证明 $\{\alpha_i\}_{i \in I}$ 是 $F$ 在 $k$ 上的一组超越基当且仅当它是代数独立的并且 $F$ 在 $k(\{\alpha_i\}_{i \in I})$ 上是代数的;
+        \item 证明超越基的存在性 (Zorn 引理);
+        \item 证明 $F$ 在 $k$ 上的任意两组超越基具有相同的基数. (简单起见考虑有限情形)
+    \end{enumerate}
+
+    超越基的基数称为 $F$ 在 $k$ 上的超越次数 (transcendence degree),记作 $\text{tr.\,deg}_k(F)$.
+
+    \item 求解下列问题:
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明:代数扩张不会改变无限域的基数.也就是说,如果 $K$ 是无限域,那么 $K$ 的任意代数扩张 $L$ 的基数与 $K$ 相同;
+        \item 证明 $\mathbb{C}$ 在 $\mathbb{Q}$ 上的超越次数为连续统的势 $|\mathbb{R}|$;
+        \item 若 $p$ 为任意素数,则任意有理数 $r$ 可写为 $r = p^j \dfrac{a}{b}$,
+        其中 $\gcd(p, ab) = 1$,那么定义 $r$ 的 $p$-范数为 $|r|_p = p^{-j}$.
+        记 $\mathbb{Q}_p$ 为 $\mathbb{Q}$ 在 $p$-范数下的完备化,则 $\mathbb{Q}_p$ 在 $\mathbb{Q}$ 上的超越次数为多少?
+    \end{enumerate}
+    \begin{proof}[解答]
+        \begin{enumerate}[label=(\arabic*)]
+        \item $K$上的$n$次首一多项式有$|K|^n$个，
+        相应地$K$上的$n$次代数元不超过$n|K|^n$个，
+        从而有$|L|\leqslant\sum\limits_{n=1}^{\infty}n|K|^n$。
+        这表明当$K$是无限域时$|L|\leqslant|K|$；显然也有$|K|\leqslant|L|$。
+        \item 不难证明对无限域$k$有$|k[I]|=|k|+|I|$，
+        也就是说$|F|=|k|+\text{tr. deg}_k(F)$。
+        特别地$|\mathbb{C}|=|\mathbb{Q}|+\text{tr. deg}_\mathbb{Q}(\mathbb{C})$，
+        从而有$\text{tr. deg}_\mathbb{Q}(\mathbb{C})=|\R|$。
+        \item 可以证明$\mathbb{Q}_p$中的元素都能表示为$\sum\limits_{k=j}^{\infty}a_kp^k$的形式，
+        其中$j\in\Z,a_k=0,1,\cdots,p-1$ (参考\cite{Go} Corollary 4.3.4)。这说明$|\mathbb{Q}_p|=|\R|$，
+        代入$|\mathbb{Q}_p|=|\mathbb{Q}|+\text{tr. deg}_\mathbb{Q}(\mathbb{Q}_p)$
+        得到$\text{tr. deg}_\mathbb{Q}(\mathbb{Q}_p)=|\R|$。\qedhere
+        \end{enumerate}
+    \end{proof}
+\end{enumerate}
+
+\section{分裂域与代数闭域}
+
+\begin{enumerate}
+\item 证明引理 3.2.
+
+\item 证明引理 3.4.
+
+\item 对以下域 $ F $ 和多项式 $ f(x) \in F[x] $,计算 $ f $ 在 $ F $ 上的分裂域:
+\begin{enumerate}[label=(\arabic*)]
+    \item $ F = \mathbb{Q}, f(x) = x^4 - 2; $
+    \item $ F = \mathbb{Q}, f(x) = x^4 + x^2 + 1. $
+\end{enumerate}
+
+\item 令 $ p $ 是一个奇素数,考虑 $ f(x) = x^p - 2 $.
+取 $ L $ 为 $ f(x) $ 在 $ \mathbb{Q} $ 上的分裂域,证明: $ [L : \mathbb{Q}] = p(p - 1)$.
+\begin{proof}
+    记$\alpha$是$x^p-2$的任何一个根，$\zeta$是$p$次单位根，则$L=\mathbb{Q}(\alpha,\zeta)$。
+    一方面，由于$[\mathbb{Q}(\alpha):\mathbb{Q}]=p$和$[\mathbb{Q}(\zeta):\mathbb{Q}]=p-1$
+    都整除$[L:\mathbb{Q}]$，得到$p(p-1)$整除$[L:\mathbb{Q}]$。
+    另一方面，由于$\alpha$在$\mathbb{Q}(\zeta)$上的次数不超过$\alpha$在$\mathbb{Q}$上的次数$p$，
+    得到$[L:\mathbb{Q}]=[L:\mathbb{Q}(\zeta)][\mathbb{Q}(\zeta):\mathbb{Q}] \leqslant p(p-1)$。
+    结合两方面可知$[L:\mathbb{Q}]=p(p-1)$。
+\end{proof}
+\item 按下列步骤可证明分圆多项式 $ \varPhi_n(x) $ 在 $ \mathbb{Q}[x] $ 中不可约.
+\begin{enumerate}[label=(\arabic*)]
+    \item 设 $ g(x) \in \mathbb{F}_p[x], h(x) = g(x^p) $.证明: $ h(x) = g(x)^p. $
+    \item 设 $ f(x) \in \mathbb{Z}[x] $ 是首一不可约元,且 $ f(x) \mid \varPhi_n(x) $.设 $ \zeta \in \mathbb{C} $ 是一个 $ n $ 次本原单位根, $ f(\zeta) = 0 $.
+    设 $ p $ 是与 $ n $ 互素的素数,证明 $ f(\zeta^p) = 0 $. (提示:利用商映射 $ \mathbb{Z}[x] \to \mathbb{F}_p[x] $ 和 $ x^n - 1 \in \mathbb{F}_p[x] $ 在 $ \mathbb{F}_p $ 中无重根的性质.)
+    \item 证明 $ \varPhi_n(x) $ 是 $ \mathbb{Z}[x] $ 的不可约元,并推出 $ \varPhi_n(x) $ 在 $ \mathbb{Q}[x] $ 中不可约.
+\end{enumerate}
+\begin{proof}
+    下面用$\bar{\cdot}$表示$\Z[x]$中的多项式模$p$后在$\mathbb{F}_p[x]$中的像。
+    \begin{enumerate}[label=(\arabic*)]
+        \item 容易说明$\sigma(g(x))=g(x)^p$是$\mathbb{F}_p[x]$上保持$\mathbb{F}_p$的加法群同态，
+        因此$\mathbb{F}_p[x]$上的$p$次方就是逐单项进行$p$次方，且系数不变。
+        \item 设$\varPhi_n(x)=f(x)g(x)$，由于$\varPhi_n(\zeta^p)=0$，如果$f(\zeta^p)\ne0$的话就有$g(\zeta^p)=0$。
+        由于$f$不可约可知$f(x) \mid g(x^p)$，从而$\bar{f}(x)\mid\bar{g}(x^p)$，由(1)得出$\bar{f}(x)\mid\bar{g}(x)^p$。
+        设$\bar{q}(x)$是$\bar{f}(x)$的一个不可约因子，则其亦是$\bar{g}(x)$的因子，
+        从而$\bar{q}(x)^2\mid\bar{\varPhi_n}(x)$，更加整除$\overline{x^n-1}$。
+        这表明$\overline{x^n-1}$在$\bar{q}(x)$的分裂域中有重根，而本节例4说$p \mid n$时这才会发生，同题设矛盾。
+        \item 设$f(x)$是$\varPhi_n(x)$的首一不可约因子，$n$次本原单位根$\zeta$是其根。
+        注意到$\varPhi_n(x)$的每个根都是$\zeta^d$的形式，其中$(d,n)=1$。
+        记$d$的素因数分解为$p_1p_2 \cdots p_r$，由(2)可知$\zeta^{p_1}$也是$f(x)$的根，
+        进而$(\zeta^{p_1})^{p_2}$亦然，重复这个过程最终得到$\zeta^d$是$f(x)$的根，这说明$f(x)=\varPhi_n(x)$。\qedhere
+    \end{enumerate}
+\end{proof}
+
+\item 我们知道 $ \overline{\mathbb{R}}/\mathbb{R} $ 是一个有限扩张.是否存在其他不同构于 $ \mathbb{R} $ 的域 $ K $,使得 $ \overline{K}/K $ 是有限扩张?证明或举例.
+\begin{proof}[解答]
+    存在,记$\mathbb{R}_{\rm alg}=\overline{\mathbb{Q}}\cap\mathbb{R}$为全体实代数数构成的域,则$[\overline{\mathbb{Q}}:\mathbb{R}_{\rm alg}]=2$.
+    这是因为任何复代数数$r$的实部$(r+\bar{r})/2$和虚部$(r-\bar{r})/2{\rm i}$都是实代数数，这表明$\{1,{\rm i}\}$是这个域扩张的一组基。
+\end{proof}
+
+\item 判断 $ \mathbb{C}(x) $ 与 $ \mathbb{C}((x)) $ 是否是代数闭域并给出证明.其中 $ \mathbb{C}(x) $ 为复数域上的有理函数域, $ \mathbb{C}((x)) $ 为复数域上的形式幂级数环 $ \mathbb{C}[[x]] $ 的分式域.
+\begin{proof}[解答]
+    都不是,考虑关于$t$的方程$t^2-x=0$,记一个解为$\sqrt{x}$.
+    
+    若存在$f,g\in \mathbb{C}[x]$,使得$\frac{f}{g}=\sqrt{x}$,则$f^2=xg^2$,
+    但是$f^2,g^2$的次数都是偶数,矛盾,于是$\sqrt{x}\notin\mathbb{C}[x]$;
+
+    若存在$h\in\mathbb{C}((x))$,使得$h^2=x$,设$h=\sum\limits_{k=n}^{\infty}a_kx^k$,
+    其中$n\in\mathbb{Z},a_n\ne0$,则$h^2$次数最低的一项为$a_n^2x^{2n}$,同样矛盾.
+\end{proof}
+
+\item 设 $ A_0 $ 为通过\footnote{疑逸``从$\mathbb{Q}$''。}添加所有奇数次不可约多项式 $ f(X) \in \mathbb{Q}[X] $ 的所有复根得到的域.
+对于 $ i > 0 $,设 $ A_i $ 为从 $ A_{i-1} $ 通过添加 $ A_{i-1} $ 所有元素的所有平方根得到的域.证明:\printfootnotes
+\begin{enumerate}[label=(\arabic*)]
+    \item $ A_0 \subseteq A_1 \subseteq A_2 \subseteq \cdots $ 且
+    \[
+    \overline{\mathbb{Q}} = \bigcup_{i=0}^{\infty} A_i;
+    \]
+    \item 如果 $ A_0 $ 是通过添加所有奇数次不可约多项式 $ f(X) \in \mathbb{Q}[X] $ 的某一实根得到的域,那么以上结论仍然成立.
+\end{enumerate}
+\end{enumerate}
+
+\section{域扩张嵌入}
+
+\begin{enumerate}
+\item 计算 $\text{Emb}(\mathbb{Q}(\sqrt[4]{2}, \sqrt{-1})/\mathbb{Q})$ 和 $\text{Emb}(\mathbb{Q}(\sqrt[3]{2})/\mathbb{Q})$.
+
+\item 计算下列域扩张的自同构群:
+\begin{enumerate}[label=(\arabic*)]
+    \item $\operatorname{Aut}(\mathbb{Q}(\sqrt[4]{2})/\mathbb{Q})$;
+    \item $\operatorname{Aut}(\mathbb{Q}(\omega)/\mathbb{Q})$, 其中 $\omega = \frac{-1 + \sqrt{3}{\rm i}}{2}$;
+    \item $\operatorname{Aut}(\mathbb{Q}(\sqrt[3]{2}, \omega)/\mathbb{Q})$;
+    \item $\operatorname{Aut}(\mathbb{Q}(\sqrt{3}, \sqrt{5})/\mathbb{Q})$.
+\end{enumerate}
+
+\item 给出 $\mathbb{Q}(\sqrt{2}, \sqrt{3})$ 到 $\mathbb{C}$ 的所有域嵌入.
+
+\item 证明 $\overline{\mathbb{Q}}(x)$ 不可能嵌入到 $\overline{\mathbb{Q}}$ 中.若将 $\overline{\mathbb{Q}}$ 换成复数域 $\mathbb{C}$ 呢？
+\begin{proof}[解答]
+    前者是因为嵌入映射保持$\mathbb{Q}$不变并且$x$是$\mathbb{Q}$上的超越元而$\overline{\mathbb{Q}}$中均是$\mathbb{Q}$上的代数元。
+    后者是可行的，同第1节习题9，取$\mathbb{C}$在$\mathbb{Q}$上的一组超越基$\{\alpha_i\}_{i \in I}$并扔掉其中某个元素$\alpha_j$，
+    记$\mathbb{B}$为域$\mathbb{Q}(\{\alpha_i\}_{i \in I\setminus\{j\}})$的代数闭包，
+    由代数闭包在同构意义下的唯一性可知$\mathbb{B}$同构于$\mathbb{C}$，进而$\mathbb{C}$的子域$\mathbb{B}(\alpha_j)$同构于$\mathbb{C}(x)$。
+\end{proof}
+\item 考虑有限域扩张 $K/F$, 如果存在 $r: F \rightarrow \mathbb{C}$ 为域嵌入, 那么 $r$ 可以延拓为 $K \rightarrow \mathbb{C}$ 的域嵌入, 且不同延拓的个数为 $[K:F]$.
+
+\item 设 $E_1, E_2$ 均是 $F$ 的扩域且 $E_1 = F(\alpha)$, 其中 $\alpha$ 是 $F$ 上的代数元, 其极小多项式为 $g(x)$.若 $E_2$ 中有元素 $\beta$ 的极小多项式也为 $g(x)$, 证明 $E_1$ 必可嵌入 $E_2$.
+
+\item 
+\begin{enumerate}[label=(\arabic*)]
+    \item 证明 $\mathbb{Q}$ 的有限扩张均可嵌入域扩张 $\mathbb{C}/\mathbb{Q}$;
+    \item 证明 $\mathbb{Q}$ 的有限生成扩张均可嵌入域扩张 $\mathbb{C}/\mathbb{Q}$.
+\end{enumerate}
+
+\item 令 $F$ 是一个域且 $f(x) \in F[x]$ 是不可约多项式.设 $K$ 是 $f(x)$ 在 $F$ 上的分裂域并假设存在某个元素 $\alpha \in K$ 使得 $\alpha$ 和 $\alpha + 1$ 都是 $f(x)$ 的根.
+\begin{enumerate}[label=(\arabic*)]
+\item 证明: $\text{char}(F) > 0$;
+\item 证明: $\text{char}(F)$ 整除 $|\operatorname{Aut}(K/F)|$.
+\end{enumerate}
+
+\item 证明 $\mathbb{C}$ 有不可数多个域自同构, 并且 $\operatorname{Aut}(\mathbb{C})$ 的基数大于 $\mathbb{C}$ 的基数.
+\begin{proof}
+    设$\{1\}\cup\{x_i\}_{i \in I}$是$\mathbb{C}$作为$\mathbb{Q}$-线性空间的一组基，那么$|I|=|\mathbb{C}|$。
+    由于$\sigma\Big(q+\sum\limits_{i \in I}q_ix_i\Big)=q+\sum\limits_{i \in I}\varepsilon_iq_ix_i$
+    都是$\mathbb{C}$的域自同构，其中$q,q_i\in\mathbb{Q}$，各系数$\varepsilon_i$取自$\mathbb{Q}^*$，
+    可知$|\operatorname{Aut}(\mathbb{C})|\geqslant|\mathbb{Q}^*|^{|I|}>|I|=|\mathbb{C}|$。
+\end{proof}
+\end{enumerate}
+
+\section{正规扩张与可分扩张}
+
+\begin{enumerate}
+\item 对下列域扩张 $E/F$, 判断其是否为正规扩张或者可分扩张:
+\begin{enumerate}[label=(\arabic*)]
+    \item $ F = \mathbb{Q}, E = \mathbb{Q}(2^{\frac{1}{4}}); $
+    \item $ F = \mathbb{Q}, E = \mathbb{Q}(\sqrt{2}, \sqrt{3}, \cdots, \sqrt{n}, \cdots); $
+    \item $ p $ 是素数, $ F = \mathbb{F}_p(t^p), E = \mathbb{F}_p(t); $
+    \item $ F = \mathbb{Q}(x), E = \mathbb{Q}(x)[t]/(t^2 - x). $
+\end{enumerate}
+
+\item 对于给定的素数 $ p $,寻找域扩张 $\mathbb{Q}(2^{\frac{1}{p}})/\mathbb{Q}$ 的正规闭包.
+
+\item 给出一个域扩张 $ F \subseteq K \subseteq L $ 的例子,使得 $ K/F $ 和 $ L/K $ 均为正规扩张,但 $ L/F $ 不是.
+\begin{proof}[解答]
+    比如说$\mathbb{Q}\subseteq\mathbb{Q}(\sqrt{2})\subseteq\mathbb{Q}(\sqrt[4]{2})$。
+\end{proof}
+\item 设 $ E = \mathbb{C}(t) $ 为有理函数域, $ F = \mathbb{C}(t^n + t^{-n}) $.证明 $ E/F $ 为正规扩张.
+\begin{proof}
+    记$\zeta=e^{\frac{2\pi{\rm i}}{n}}$，
+    由于$F=\mathbb{C}(t^n+t^{-n})$上的多项式$x^{2n}-(t^n+t^{-n})x^n+1$的根为
+    $t,\zeta t,\cdots,\zeta^{n-1}t,t^{-1},\zeta t^{-1},\cdots,\zeta^{n-1}t^{-1}$，
+    可知$E=\mathbb{C}(t)$是其在$F$上的分裂域，从而$E/F$为正规扩张。
+\end{proof}
+\item 对于任意素数 $ p $,证明 $ E = \mathbb{F}_p[x]/(x^p - x + 1) $ 是 $ \mathbb{F}_p $ 的一个正规扩张.
+
+\item 设 $ E/\mathbb{Q} $ 是一个有限正规奇数次扩张.证明 $ E \subseteq \mathbb{R} $.
+\begin{proof}
+    由于有限可分扩张都是单扩张，且特征为$0$的域$\mathbb{Q}$的扩张都是可分的，
+    可知$E/\mathbb{Q}$是单扩张，即对某个$\alpha \in E$有$E=\mathbb{Q}(\alpha)$。
+    设$f(x)$是$\alpha$在$\mathbb{Q}$上的极小多项式，
+    则$\deg f(x)=[E:\mathbb{Q}]$为奇数，那么$f(x)$必有一个实根$\beta$，
+    并且$E/\mathbb{Q}$是正规的表明$\beta \in E$，进而$\mathbb{Q}(\beta) \subseteq E$。
+    由于$[\mathbb{Q}(\beta):\mathbb{Q}]=\deg f(x)=[E:\mathbb{Q}]$，
+    可知$E=\mathbb{Q}(\beta)\subseteq\R$。
+\end{proof}
+\item 设 $ E/F $ 是一个域扩张, $ \alpha, \beta \in E $.如果 $ F(\alpha)/F $ 是正规扩张并且 $ F(\alpha) \cap F(\beta) = F $,证明 $ [F(\alpha, \beta) : F] = [F(\alpha) : F][F(\beta) : F] $.
+\begin{proof}
+    由于$[F(\alpha,\beta):F]=[F(\alpha,\beta):F(\beta)][F(\beta):F]$，
+    本题就是要说明$[F(\alpha):F]=[F(\alpha,\beta):F(\beta)]$，
+    即$\alpha$在$F$和$F(\beta)$上的次数相同。设$f(x)$是$\alpha$在$F$上的极小多项式，
+    则$\alpha$在$F(\beta)$上的极小多项式$g(x)$是其因式。
+    由于$F(\alpha)/F$是正规扩张，$f(x)$的根均在$F(\alpha)$中，
+    那么$g(x)$的根亦在$F(\alpha)$中，从而$g(x)$的各个系数属于$F(\alpha)$；
+    并且，$g(x)$的各个系数当然也属于$F(\beta)$，
+    从而属于两者的交$F$，这表明$f(x)=g(x)$。
+\end{proof}
+\item 验证例 2 中的多项式 $ f(x) = x^p - t $ 在 $ F[x] $ 中不可约.
+\begin{proof}
+    注意到$t$是$F=\mathbb{F}_p(t)$中的素元，由Eisenstein判别法即得结论。
+\end{proof}
+\item 令 $ F $ 为域, $ t $ 是正整数且 $ t > 1$, $ a $ 为 $ F $ 中元素.
+\begin{enumerate}[label=(\arabic*)]
+    \item 设 $ p $ 为奇素数.证明下列命题等价:
+    \begin{enumerate}[label=(\alph*)]
+        \item $ x^{p^t} - a $ 在 $ F[x] $ 上不可约;
+        \item $ x^p - a $ 在 $ F[x] $ 上不可约;
+        \item 不存在 $ b \in F $ 使得 $ a = b^p $.
+    \end{enumerate}
+    
+    \item 证明下列命题等价:
+    \begin{enumerate}[label=(\alph*)]
+        \item $ x^{2^t} - a $ 在 $ F[x] $ 上不可约;
+        \item $ x^4 - a $ 在 $ F[x] $ 上不可约;
+        \item 不存在 $ b \in F $ 使得 $ a = b^2 $ 或 $ a = -4b^4 $.
+    \end{enumerate}
+    
+    \item 设 $ n $ 为正整数.证明: $ x^n - a $ 在 $ F[x] $ 上可约当且仅当存在 $ b \in F $ 使得下列条件之一成立:
+    \begin{enumerate}[label=(\alph*)]
+        \item 存在 $ n $ 的素因子 $ p $ 使得 $ a = b^p $；
+        \item $ 4 \mid n $,并且 $ a = -4b^4 $.
+    \end{enumerate}
+\end{enumerate}
+\begin{proof}
+本题的常规方法是考察$\sqrt[p]{\alpha}$在域扩张下的范数，
+如\cite{Ro} 14.1节和\cite{La} VI Theorem 9.1；
+下面的做法尽可能避免了涉及范数的概念。
+\begin{enumerate}[label=(\arabic*)]
+    \item (a)推(b)推(c)是显然的，下面处理(c)推(b)和(b)推(a)。
+
+    先来看(c)推(b)。当$\operatorname{char}F=p$时是容易的，
+    设$\alpha$是$x^p-a$在$F$的代数闭包中的一个根，
+    其在$F$上的次数为$d$且极小多项式为$f(x)$，如果(b)不成立，那么$d<p$，
+    注意到$x^p-a=(x-\alpha)^p$表明$f(x)=(x-\alpha)^d$，
+    从而$x^{d-1}$的系数$d\alpha \in F$，
+    因此$a=\alpha^p$是$F$中元素的$p$次方，(c)不成立。
+    
+    下面设定$\operatorname{char}F \ne p$，设$\alpha$是$x^p-a$在$F$的代数闭包中的一个根，
+    另一个根同$\alpha$的比值为$\zeta$，则$\zeta^p=1$且$\zeta\ne1$，
+    这时$x^p-a$的全体根为$\alpha,\zeta\alpha,\cdots,\zeta^{p-1}\alpha$。
+    记$\alpha$在$F$上的次数为$d$，则其极小多项式的根为$\zeta^{i_1}\alpha,\cdots,\zeta^{i_d}\alpha$，
+    这些根的乘积$\zeta^j\alpha^d \in F$，其中$j=i_1+\cdots+i_d$。
+    如果(b)不成立，即$d<p$，那么存在整数$s,r$使得$dr+ps=1$，令
+    \[b=\zeta^{jr}\alpha=\zeta^{jr}\alpha^{dr+ps}=(\zeta^j\alpha^d)^ra^s \in F,\]
+    且$a=b^p$，因此(c)不成立。
+
+    再来对$t$归纳证明对\textbf{任何域}（不止是这个特定的$F$；
+    看上去毫无区别，后面会明白是什么意思的）都能从(b)推出(a)。
+    首先是从$t=1$推$t=2$，记$\sqrt[p]{\alpha}$是$\alpha$的一个$p$次方根，
+    要证明$x^{p^2}-a$不可约，就是要说明$[F(\sqrt[p]{\alpha}):F]=p^2$。
+    现已知道$x^p-a$不可约，即$[F(\alpha):F]=p$，
+    那要说明的就是$[F(\sqrt[p]{\alpha}):F(\alpha)]=p$，
+    即$x^p-\alpha$在$F(\alpha)$上不可约。
+    根据(c)推(b)，这也就是要说明$\sqrt[p]{\alpha} \notin F(\alpha)$。
+    
+    若不然，$\sqrt[p]{\alpha} \in F(\alpha)$，
+    当$\operatorname{char}F=p$时$\sqrt[p]{\alpha}=g(\alpha)$，
+    其中$g(x) \in F[x]$，那么$\alpha=g(\alpha^p)=g(a) \in F$，不可能；
+    下面设定$\operatorname{char}F \ne p$，
+    由于$[F(\sqrt[p]{\alpha}):F]$整除$[F(\alpha):F]=p$，
+    得到$\sqrt[p]{\alpha}$在$F$上的极小多项式$g(x)$的次数为$p$，令
+    \[b=\prod\{\sigma(\sqrt[p]{\alpha})\mid\sigma\in\operatorname{Emb}(F(\alpha)/F)\},\]
+    这是$g(x)$的全体根的乘积，从而$b \in F$，且有
+    \[b^p=\prod\{\sigma(\alpha)\mid\sigma\in\operatorname{Emb}(F(\alpha)/F)\}=a,\]
+    因此(c)不成立，从而(b)不成立，至此$t=2$的情形结束。
+    
+    接着是从$t$推$t+1$，也就是说，设$x^{p^t}-a$不可约，
+    要说明$x^{p^{t+1}}-a$不可约。记$\beta$是$\alpha$的一个$p^{t-1}$次方根，
+    $\sqrt[p]{\beta}$是$\beta$的一个$p$次方根，
+    要证明$x^{p^{t+1}}-a$不可约，就是要说明$[F(\sqrt[p]{\beta}):F]=p^{t+1}$。
+    
+    对于\textbf{域$F(\alpha)$}用$t$时的归纳假设，
+    $\sqrt[p]{\alpha} \notin F(\alpha)$表明
+    $x^{p^t}-\alpha$是$F(\alpha)$上的不可约多项式。
+    注意到$\big(\sqrt[p]{\beta}\big)^{p^t}=\beta^{p^{t-1}}=\alpha$，
+    即$\sqrt[p]{\beta}$为$x^{p^t}-\alpha$的根，
+    从而$[F(\sqrt[p]{\beta}):F(\alpha)]=p^t$。
+    乘以$[F(\alpha):F]=p$，就得出$[F(\sqrt[p]{\beta}):F]=p^{t+1}$。
+    \item (a)推(b)推(c)是显然的，下面通过对$t$归纳来从(c)推出(a)。
+    
+    $t=1$时$x^2-a$不可约是因为不存在$b \in F$使得$a=b^2$，接下来从$t$推$t+1$。
+    记$\alpha$是$x^{2^t}-a$在$F$的代数闭包中的一个根，
+    $\sqrt{\alpha}$是$\alpha$的一个平方根，
+    要证明$x^{2^{t+1}}-a$不可约，就是要说明$[F(\sqrt{\alpha}):F]=2^{t+1}$。
+    现已知道$x^{2^t}-a$不可约，即$[F(\alpha):F]=2^t$，
+    那要说明的就是$[F(\sqrt{\alpha}):F(\alpha)]=2$，
+    即$\sqrt{\alpha} \notin F(\alpha)$。
+    
+    若不然，$\alpha$是$F(\alpha)$中的平方元，
+    即有$b,c \in F(\alpha^2)$使得$\alpha=(b+c\alpha)^2$，对比系数得到
+    \[b^2+c^2\alpha^2=0,\quad2bc=1.\]
+    当$\operatorname{char}F=2$时后者无解，下面设$\operatorname{char}F\ne2$，
+    后者代入前者得出$b^2+\alpha^2/(2b)^2=0$，即$\alpha^2=-4b^4$，
+    然而这也是不可能的：$t=1$时$a=\alpha^2$且$b \in F$，
+    然而$a$不能写成$-4b^4$的形式，矛盾；$t>1$时注意到
+    \[(2b^2)^{2^t}=(4b^4)^{2^{t-1}}=(-\alpha^2)^{2^{t-1}}=\alpha^{2^t}=a,\]
+    即$2b^2$是$x^{2^t}-a$的根，由$2b^2 \in F(\alpha^2)$可知
+    $2b^2$在$F$上的次数不超过$\alpha^2$在$F$上的次数$=2^{t-1}<2^t$，
+    这意味着$x^{2^t}-a$是$F$上的可约多项式，亦矛盾。
+    \item 关键在于这个命题：如果$k,\ell$是互素的正整数，
+    那么$x^{k\ell}-a$不可约当且仅当$x^k-a,x^\ell-a$皆不可约。
+    这说明$x^n-a$可约当且仅当存在$n$的因数$p^t$使得$x^{p^t}-a$可约，
+    由前两问即得结论；最后的工作就是证明这个命题。
+    
+    前推后是显然的，下面考察前推后：设$\alpha$是$x^{k\ell}-a$在$F$的代数闭包中的一个根，
+    那么不可约多项式$x^k-a$有根$\alpha^\ell$，
+    从而$[F(\alpha^\ell):F]=k$整除$[F(\alpha):F]$，
+    同理$[F(\alpha^k):F]=\ell$整除$[F(\alpha):F]$，
+    得出$[F(\alpha):F]=k\ell$，即$x^{k\ell}-a$不可约。\qedhere
+\end{enumerate}
+\end{proof}
+\end{enumerate}
+
+\section{Galois 扩张}
+
+\begin{enumerate}
+\item 证明扩张 $ E \supseteq F $ 是 Galois 扩张,确定 Galois 群 $\operatorname{Gal}(E/F)$,它的所有子群以及 $ F $ 和 $ E $ 之间的对应子域:
+\begin{enumerate}[label=(\arabic*)]
+    \item $ F = \mathbb{Q}, E = \mathbb{Q}(\sqrt[5]{4}, \zeta_5) $,其中 $\zeta_n = e^{\frac{2\pi \mathrm{i}}{n}}$ 是 $ n $ 次本原单位根;
+    \item $ F = \mathbb{Q}, E = \mathbb{Q}(\sqrt[4]{2}, \mathrm{i}) $;
+    \item $ F = \mathbb{R}\big(x + \frac{1}{x}\big), E = \mathbb{R}(x) $;
+    \item $ F = \mathbb{R}(x^2, y^2), E = \mathbb{R}(x, y) $;
+    \item $ F = \mathbb{R}(x^2 + y^2, xy), E = \mathbb{R}(x, y) $.
+\end{enumerate}
+\begin{proof}[解答]
+\begin{enumerate}[label=(\arabic*)]
+    \item $E$是$F$上的可分多项式$f(t)=t^5-4$的分裂域，
+    由下面的第3题可知其Galois群为$F_{20}$。
+    第一章第9节第12题中得到过这个群的子群关系图，$F_{20}$的生成元$x,y$对应到$E/F$上的自同构就是
+    \[x\begin{pmatrix}\sqrt[5]{4}\\\zeta\end{pmatrix}
+    =\begin{pmatrix}\sqrt[5]{4}\zeta\\\zeta\end{pmatrix},
+    \quad y\begin{pmatrix}\sqrt[5]{4}\\\zeta\end{pmatrix}
+    =\begin{pmatrix}\sqrt[5]{4}\\\zeta^2\end{pmatrix},\]
+    其中$\zeta_5$简写为$\zeta$。
+    这里求一下子群$H=\langle x^by \rangle$的不变子域$E^H$作为示例，
+    其中$b\in\mathbb{F}_5$。根据Galois扩张的对应定理，$E^H$在$F$上的次数为
+    \[[E^H:F]=[F_{20}:H]=20/4=5,\]
+    并且因为
+    \[(x^by)\big(\sqrt[5]{4}\zeta^{-b}\big)=x^b\big(\sqrt[5]{4}\zeta^{-2b}\big)
+    =\sqrt[5]{4}\zeta^{b}\zeta^{-2b}=\sqrt[5]{4}\zeta^{-b},\]
+    得出$\mathbb{Q}(\sqrt[5]{4}\zeta^{-b}) \subseteq E^H$，结合
+    \[[\mathbb{Q}(\sqrt[5]{4}\zeta^{-b}):\mathbb{Q}]=5=[E^H:F]\]
+    有$\mathbb{Q}(\sqrt[5]{4}\zeta^{-b})=E^H$。逐个求出其余子群的不变子域，最终答案是
+    \begin{cd}
+    & F_{20} \ar[dl,dash]\ar[dr,dash] & & & \mathbb{Q} \ar[dl,dash]\ar[dr,dash]\\
+    \langle x^by \rangle\cong\Z_4 \ar[dd,dash] & & \langle x,y^2 \rangle \cong D_5 \ar[dd,dash]
+    & \mathbb{Q}(\sqrt[5]{4}\zeta^{-b}) \ar[dd,dash] & & \mathbb{Q}(\zeta^2+\zeta^3) \ar[dd,dash]\\ \\
+    \langle x^{3b}y^2 \rangle\cong\Z_2 \ar[uurr,dash] & & \langle x \rangle\cong\Z_5
+    & {\scriptstyle\mathbb{Q}(\sqrt[5]{4}\zeta^{-b},\zeta^2+\zeta^3)} \ar[uurr,dash] & & \mathbb{Q}(\zeta)\\
+    & \{e\} \ar[ul,dash]\ar[ur,dash] & & & \mathbb{Q}(\sqrt[5]{4},\zeta) \ar[ul,dash]\ar[ur,dash] &
+    \end{cd}
+    \item $E$是$F$上的可分多项式$f(t)=t^4-2$的分裂域，
+    同第8节第1题可知其Galois群为$D_4$，其生成元为旋转
+    \[r:\sqrt[4]{2}\mapsto\sqrt[4]{2}{\rm i}
+    \mapsto-\sqrt[4]{2}\mapsto-\sqrt[4]{2}{\rm i}\]
+    和翻转
+    \[s:\sqrt[4]{2}\leftrightarrow\sqrt[4]{2}{\rm i},
+    \quad-\sqrt[4]{2}\leftrightarrow-\sqrt[4]{2}{\rm i}.\]
+    这里再求一下子群$H=\langle r \rangle$的不变子域$E^H$作为示例。
+    根据Galois扩张的对应定理，$E^H$在$F$上的次数为
+    \[[E^H:F]=[D_4:H]=8/4=2,\]
+    并且因为
+    \[r({\rm i})=\frac{r(\sqrt[4]{2}{\rm i})}{r(\sqrt[4]{2})}
+    =\frac{-\sqrt[4]{2}}{\sqrt[4]{2}{\rm i}}={\rm i},\]
+    得出$\mathbb{Q}({\rm i}) \subseteq E^H$，结合
+    \[[\mathbb{Q}({\rm i}):\mathbb{Q}]=2=[E^H:F]\]
+    有$\mathbb{Q}({\rm i})=E^H$。逐个求出其余子群的不变子域，最终答案是
+    \begin{cd}
+    & & D_4 \ar[dl,dash]\ar[d,dash]\ar[dr,dash] & &\\
+    & \langle r^2,s \rangle \ar[dl,dash]\ar[d,dash]\ar[dr,dash] 
+    & \langle r \rangle \ar[d,dash] 
+    & \langle r^2,rs \rangle \ar[dl,dash]\ar[d,dash]\ar[dr,dash] &\\
+    \langle r^2s \rangle & \langle s \rangle & \langle r^2 \rangle 
+    & \langle rs \rangle & \langle r^3s \rangle\\
+    & & \{e\} \ar[ull,dash]\ar[ul,dash]\ar[u,dash]\ar[ur,dash]\ar[urr,dash] & & 
+    \end{cd}
+    \begin{cd}
+    & & \mathbb{Q} \ar[dl,dash]\ar[d,dash]\ar[dr,dash] & &\\
+    & \mathbb{Q}(\sqrt{2}{\rm i}) \ar[dl,dash]\ar[d,dash]\ar[dr,dash] 
+    & \mathbb{Q}({\rm i}) \ar[d,dash] 
+    & \mathbb{Q}(\sqrt{2}) \ar[dl,dash]\ar[d,dash]\ar[dr,dash] &\\
+    {\scriptstyle\mathbb{Q}(\sqrt[4]{2}(1-{\rm i}))} & {\scriptscriptstyle\mathbb{Q}(\sqrt[4]{2}(1+{\rm i}))} 
+    & \mathbb{Q}(\sqrt{2},{\rm i}) & \mathbb{Q}(\sqrt[4]{2}{\rm i}) & \mathbb{Q}(\sqrt[4]{2})\\
+    & & \mathbb{Q}(\sqrt[4]{2},{\rm i}) \ar[ull,dash]\ar[ul,dash]\ar[u,dash]\ar[ur,dash]\ar[urr,dash] & & 
+    \end{cd}
+    \item $E$是$F$上的可分多项式$f(t)=t^2-\big(x+\frac{1}{x}\big)t+1$的分裂域，
+    从而$\operatorname{Gal}(E/F)$是$\big\{x,\frac{1}{x}\big\}$的置换群$S_2$，
+    其同构于$\Z_2$，从而子群和子域的关系图是
+    \begin{cd}
+    \Z_2 & \R\big(x+\frac{1}{x}\big)\\
+    \{e\} \ar[u,dash] & \R(x) \ar[u,dash]
+    \end{cd}
+    \item $E$是$F$上的可分多项式$f(t)=(t^2-x^2)(t^2-y^2)$的分裂域，
+    设$E/F$的自同构$a$把$x$变号并保持$y$，自同构$b$保持$x$并把$y$变号，
+    可知$\operatorname{Gal}(E/F)=\{e,a,b,ab\}\cong\Z_2\times\Z_2$，从而子群和子域的关系图是
+    \begin{cd}
+    & \langle a,b \rangle \ar[dl,dash]\ar[d,dash]\ar[dr,dash] & & & \R(x^2,y^2) \ar[dl,dash]\ar[d,dash]\ar[dr,dash] &\\
+    \langle a \rangle & \langle ab \rangle & \langle b \rangle & \R(x^2,y) & \R(x^2,y^2,xy) & \R(x,y^2)\\
+    & \{e\} \ar[ul,dash]\ar[u,dash]\ar[ur,dash] & & & \R(x,y) \ar[ul,dash]\ar[u,dash]\ar[ur,dash]&
+    \end{cd}
+    \item $E$是$F$上的可分多项式$f(t)=t^4-(x^2+y^2)t^2+(xy)^2$的分裂域，
+    $E/F$的自同构把$x$映成另外三个根$-x,y,-y$之一，相应地$y$就要映成$-y,x,-x$了，
+    注意到前两者的复合就是第三者，那么记这三个自同构为$a,b,ab$，
+    可知$\operatorname{Gal}(E/F)=\{e,a,b,ab\}\cong\Z_2\times\Z_2$，从而子群和子域的关系图是
+    \begin{cd}
+    & \langle a,b \rangle \ar[dl,dash]\ar[d,dash]\ar[dr,dash] & & & \R(x^2+y^2,xy) \ar[dl,dash]\ar[d,dash]\ar[dr,dash] &\\
+    \langle a \rangle & \langle b \rangle & \langle ab \rangle & \R(x+y,xy) & \R(x^2,y^2,xy) & \R(x-y,xy)\\
+    & \{e\} \ar[ul,dash]\ar[u,dash]\ar[ur,dash] & & & \R(x,y) \ar[ul,dash]\ar[u,dash]\ar[ur,dash]&
+    \end{cd}
+    \end{enumerate}
+\end{proof}
+
+\item 计算自同构群 $\operatorname{Aut}(\mathbb{R}/\mathbb{Q})$.
+\begin{proof}
+    先证明对于$\sigma\in \operatorname{Aut}(\mathbb{R}/\mathbb{Q})$，$\sigma$是保序的, 
+    即对于$a,b\in\mathbb{R}$，如果$a\geqslant b$，则$\sigma(a)\geqslant\sigma(b)$.
+    这是因为$\sigma(a)-\sigma(b)=\sigma(a-b)=\sigma(\sqrt{a-b})^2\geqslant0$.
+
+    现在对于$\sigma\in \operatorname{Aut}(\mathbb{R}/\mathbb{Q})$，设$a\in\mathbb{R},q\in\mathbb{Q}$，
+    如果$a\geqslant q$，那么$\sigma(a)\geqslant\sigma(q)=q$，反之亦然.
+    由于一个实数完全被它与所有有理数的大小关系确定(根据Dedekind分割理论),只能有$\sigma(a)=a$,
+    从而$\sigma = \operatorname{id}$,故$\operatorname{Aut}(\mathbb{R}/\mathbb{Q})=\{\operatorname{id}\}$.
+\end{proof}
+
+\item 分别计算 $ x^5 - 2 $ 在 $ \mathbb{Q} $ 和 $ \mathbb{F}_3 $ 下的 Galois 群.
+\begin{proof}[解答]
+    (1) 证明一个更为一般的结论如下；本题中$p=5$，
+    这时$x^5-2$在$\mathbb{Q}$上的Galois群为${\rm AGL}(1,\mathbb{F}_5)$，
+    这个群曾在1.9节习题12中出现过。
+    
+    设$p$是素数，$a\in\mathbb{Q}$不是$\mathbb{Q}$中元素的$p$次方，
+    则$x^p-a$在$\mathbb{Q}$上的Galois群为$\mathbb{F}_p$上的$1$维仿射一般线性变换群，即
+    \[{\rm AGL}(1,\mathbb{F}_p)=\big\{\sigma(x)=bx+d \bigm| b\in\mathbb{F}_p^*,d\in\mathbb{F}_p\big\}.\]
+    记$L=\mathbb{Q}(\alpha,\zeta)$是$x^p-a$在$\mathbb{Q}$上的分裂域，
+    其中$\alpha$是$x^p-a$的任何一个根，$\zeta$为$p$次单位根。
+    对于$\sigma\in\operatorname{Gal}(L/\mathbb{Q})$，
+    有$b\in\mathbb{F}_p^*,d\in\mathbb{F}_p$
+    使得$\sigma(\zeta)=\zeta^b,\sigma(\alpha)=\zeta^d\alpha$，
+    并且$\sigma$通过$b,d$完全确定。
+    要考察的是$\operatorname{Gal}(L/\mathbb{Q})$的群结构，
+    设其中元素$\sigma,\underline{\sigma}$的表达式为
+    \[\sigma\begin{pmatrix}\zeta\\\alpha\end{pmatrix}
+    =\begin{pmatrix}\zeta^b\\\zeta^d\alpha\end{pmatrix},\quad
+    \underline{\sigma}\begin{pmatrix}\zeta\\\alpha\end{pmatrix}
+    =\begin{pmatrix}\zeta^{\underline{b}}\\\zeta^{\underline{d}}\alpha\end{pmatrix},\]
+    其复合为
+    \[(\sigma\circ\underline{\sigma})\begin{pmatrix}\zeta\\\alpha\end{pmatrix}
+    =\sigma\begin{pmatrix}\zeta^{\underline{b}}\\\zeta^{\underline{d}}\alpha\end{pmatrix}
+    =\begin{pmatrix}\zeta^{b\underline{b}}\\\zeta^{b\underline{d}+d}\alpha\end{pmatrix}.\]
+    注意到对于${\rm AGL}(1,\mathbb{F}_p)$中的元素
+    \[\sigma(x)=bx+d,\quad\underline{\sigma}(x)=\underline{b}x+\underline{d},\]
+    其复合为
+    \[(\sigma\circ\underline{\sigma})(x)=\sigma(\underline{b}x+\underline{d})
+    =b(\underline{b}x+\underline{d})+d=b\underline{b}x+(b\underline{d}+d).\]
+    因此两者的群结构恰好相同，即$\operatorname{Gal}(L/\mathbb{Q})\cong{\rm AGL}(1,\mathbb{F}_p)$。
+    本书最后一题的证明过程中，这个群会发挥至关重要的作用。此外，
+    \begin{itemize}
+        \item 思考一下，域$\mathbb{Q}$替换成哪些域后结论不变？素数$p$换成正整数$n$后，Galois群是${\rm AGL}(1,\Z_n)$吗？
+        \item 关于如何求出特征不为$2$的域上的$5$次不可约的可分多项式的Galois群，推荐参考\cite{Co} 13.2节。
+    \end{itemize}
+    (2) 设$x^5-2$在$\mathbb{F}_{3^n}$上分裂，这就是说$x^5-2$整除$x^{3^n}-x$。
+    注意到$x^5-2$在$\mathbb{F}_3[x]$中即是$x^5+1$，从而整除$x^{10}-1$，
+    因此要找的就是最小的$n$使得$10$整除$3^n-1$，可知$n=4$。
+    由定理7.3，$x^5-2$在$\mathbb{F}_3$上的Galois群是
+    $\operatorname{Gal}(\mathbb{F}_{81}/\mathbb{F}_3)\cong\Z_4$。
+\end{proof}
+\item 找到一个单位根 $\zeta_n \in \mathbb{C}$ 使得存在中间域 $ \mathbb{Q}(\zeta_n) \supseteq E \supseteq \mathbb{Q}$, 
+$ E/\mathbb{Q} $ 是 Galois 扩张且 $\operatorname{Gal}(E/\mathbb{Q}) \cong \mathbb{Z}/3\mathbb{Z}$.
+\begin{proof}[解答]
+    即找$n$使得$G=\operatorname{Gal}(\mathbb{Q}(\zeta_n)/\mathbb{Q})$有正规子群$H$使得$G/H\cong\Z/3\Z$。
+    令$n=7$，这时$G=\Z_7^*\cong\Z_6$，取子群$H\cong\Z_2$即可。
+\end{proof}
+\item 设 $ E/F $ 为域扩张, $ G = \operatorname{Aut}(E/F), H < G, K = E^H $.
+证明:对任意 $ \eta \in G $, $ E^{\eta H \eta^{-1}} = \eta(K) $.
+\begin{proof}
+    由于$\eta(E)=E$，有
+    \begin{align*}
+        E^{\eta H \eta^{-1}}&=\eta(E)^{\eta H \eta^{-1}}
+        =\{\eta(x)\in\eta(E)\mid\eta H(x)=\eta(x)\}\\
+        &=\{\eta(x)\in\eta(E)\mid H(x)=x\}=\eta(E^H)=\eta(K).
+    \end{align*}
+\end{proof}
+\item 证明不存在 $ \mathbb{Q} $ 的 Galois 扩张 $ E $ 使得 $\operatorname{Gal}(E/\mathbb{Q}) \cong S_n $ 且 $ E $ 包含 $\sqrt[4]{2}$.
+\begin{proof}
+    不然的话$\mathbb{Q}(\sqrt[4]{2})$就是$E$的子域，从而有如下的对应图。
+        \[\begin{cd}
+        E \ar[r, dash, dotted] & \{e\} \ar[d, hook] \\
+        \mathbb{Q}(\sqrt[4]{2}) \ar[u, hook] \ar[r, dash, dotted] & ? \ar[d, hook] \\
+        \mathbb{Q}(\sqrt{2}) \ar[u, hook]  \ar[r, dash, dotted] &  A_n \ar[d, hook] \\
+        \mathbb{Q} \ar[u, hook] \ar[r, dash, dotted] & S_n
+    \end{cd}\]
+    $\mathbb{Q}(\sqrt{2})$对应着$S_n$的指数为$2$的子群，从而是$A_n$ (习题1.4.7)，
+    进而$\mathbb{Q}(\sqrt[4]{2})$对应的是$A_n$的指数为$2$的子群；
+    可是$n\ne4$时$A_n$是单群 (定理1.4.3 (2))，
+    $n=4$时$A_4$无$6$阶子群 (习题1.4.5 (2))，都不可能。
+\end{proof}
+\item 若 $ E/\mathbb{Q} $ 是一个 Galois 扩张且 $\operatorname{Gal}(E/\mathbb{Q}) \cong S_5 $,证明 $ E $ 是一个 $5$ 次多项式的分裂域.
+\begin{proof}
+    令$F$是$\operatorname{Gal}(E/\mathbb{Q}) \cong S_5$的子群$S_4$所对应的$E$的子域，
+    即$\operatorname{Gal}(E/F) \cong S_4$。由于有限可分扩张是单扩张，
+    设$F=\mathbb{Q}(\alpha)$，记$f(x)$为$\alpha$在$\mathbb{Q}$上的极小多项式，次数为
+    \[\deg f(x)=[F:\mathbb{Q}]=[S_5:S_4]=5.\]
+    令$L$是$f(x)$在$\mathbb{Q}$上的分裂域，
+    则$F=\mathbb{Q}(\alpha) \subseteq L \subseteq E$。
+    \[\begin{cd}
+        E \ar[r, dash, dotted] & \{e\} \ar[d, hook] \\
+        L \ar[u, hook] \ar[r, dash, dotted] \ar[dd,"\text{Galois}"',dash,dashed,bend right=60,swap] 
+        & ? \ar[d, hook] \ar[dd,"\text{正规}",dash,dashed,bend left=60,swap] \\
+        F \ar[u, hook]  \ar[r, dash, dotted] &  S_4 \ar[d, hook] \\
+        \mathbb{Q} \ar[u, hook] \ar[r, dash, dotted] & S_5
+    \end{cd}\]
+    由于$L/\mathbb{Q}$是Galois扩张，Galois对应定理表明
+    $\operatorname{Gal}(E/L)$是$\operatorname{Gal}(E/\mathbb{Q}) \cong S_5$的正规子群，
+    且包含于$\operatorname{Gal}(E/F) \cong S_4$，从而只能是$\{e\}$。
+    这说明$E=L$，即$E$是$f(x)$在$\mathbb{Q}$上的分裂域。
+\end{proof}
+\item 设 $ E/F $ 为 $ d $ 次可分扩张, $ N $ 为中间域的个数.
+\begin{enumerate}[label=(\arabic*)]
+    \item 证明: $ N \leqslant 2^{d!} $;
+    \item 证明: $ N \leqslant 2^d $.
+\end{enumerate}
+\begin{proof}
+\begin{enumerate}[label=(\arabic*)]
+    \item 由于有限可分扩张必是单扩张，记$E=F(\alpha)$，
+    那么$\alpha$在$F$上的极小多项式$f(x)$的次数为$d$。
+    设$K$是$f(x)$在$F$上的分裂域，$G=\operatorname{Gal}(K/F)$，
+    有$|G|=[K:F] \leqslant d!$，则$G$的子集至多有$2^{d!}$个。
+    $E/F$的中间域的数量小于等于$K/F$的中间域的数量，
+    由Galois扩张对应定理，这就是$G$的子群的数量，
+    $G$的子群当然是其子集，从而$N\leqslant2^{d!}$。
+    \item 记号同上，$E=F(\alpha)$，$f(x)$是$\alpha$在$F$上的极小多项式。
+    对于$E/F$的中间域$L$，设$\alpha$在$L$上的极小多项式为$g(x)=x^k+\ell_{k-1}x^{k-1}+\cdots+\ell_0$，
+    则$g(x)$整除$f(x)$，且其系数生成的域$L'=F(\ell_{k-1},\cdots,\ell_0)$包含于$L$；
+    与此同时，$g(x)$也是$\alpha$在$L'$上的极小多项式，
+    由于$E=L(\alpha)=L'(\alpha)$，有$[E:L]=\deg g(x)=[E:L']$，从而$L'$就是$L$。
+    
+    这表明$E/F$的中间域$L$都是由$f(x)$的某个因式的系数生成的。
+    由于$f(x)$的根的个数为$d$，且其因式的根集均是其子集，
+    得到$f(x)$的因式的数量不超过$2^d$，则$N\leqslant2^d$。
+    
+    不过可以发现，当$f(x)$是其因式$x^k+\cdots+a_1x+a_0$和$x^{d-k}+\cdots+b_1x+b_0$的乘积时，
+    容易说明两式的系数生成的域互相包含从而是同一个，因此更好的上界可以是$N\leqslant2^{d-1}$。\qedhere
+\end{enumerate}
+\end{proof}
+\item 证明任一有限群均可实现为一个 Galois 扩张的 Galois 群.
+\begin{proof}
+    设$G$是$n$阶有限群，由第一章定理9.5，$G$可实现为$S_n$的一个子群。
+    \[\begin{cd}
+        E \ar[r, dash, dotted] & \{e\} \ar[d, hook] \\
+        K \ar[u, hook]  \ar[r, dash, dotted] &  G \ar[d, hook] \\
+        F \ar[u, hook] \ar[r, dash, dotted] & S_n
+    \end{cd}\]
+    通过定理8.3或者命题8.6可知存在Galois扩张$E/F$以$S_n$为Galois群，
+    那么只要令$K$为$G$对应的中间域，$G$就是Galois扩张$E/K$的Galois群。
+\end{proof}
+\item 假设 $ E/F $ 是一个次数为 $ p^n $ 的 Galois 扩张,其中 $ p $ 为素数, $ n $ 为正整数.
+证明: $ E $ 中有 $ F $ 的次数为 $ p $ 和 $ p^{n-1} $ 的 Galois 扩张.
+\begin{proof}
+    即要说明$p^n$阶群$G=\operatorname{Gal}(E/F)$有阶数为$p$和$p^{n-1}$的正规子群。
+    首先，由Cauchy定理可知$G$的中心中有$p$阶元，那么其生成的子群就是$G$的$p$阶正规子群。
+    接着，对$n$归纳来说明$G$有指数为$p$的正规子群如下。
+    设对$p^{n-1}$阶群结论成立，那么$p^n$阶群$G$可以商掉某个$p$阶正规子群
+    变成$p^{n-1}$阶群$\bar{G}$，则$\bar{G}$有指数为$p$的正规子群$\bar{H}$，
+    其原象$H$就是$G$的指数为$p$的子群。
+    令$\varphi$是商映射的复合$G\to\bar{G}\to\bar{G}/\bar{H}$，
+    可知$H=\ker\varphi$是$G$的正规子群 (或者用第一章第7节习题4也能得出这个结论)。
+\end{proof}
+\item 设 $ f(x) \in F[x] $ 为不可约的可分多项式, $ E $ 为 $ f(x) $ 的分裂域.
+若 $\operatorname{Gal}(E/F) $ 是 Abel 群,证明 $ [E:F] = \deg f(x) $.
+\begin{proof}
+    参考本章第8节习题5。
+\end{proof}
+\item 令 $ p $ 为一素数,假设域 $ F $ 的每一个有限扩张的次数都被 $ p $ 整除,
+\begin{enumerate}[label=(\arabic*)]
+    \item 证明 $ F $ 的每个有限可分扩张的次数都是 $ p $ 的幂次;
+    \item 证明 $ F $ 的每个有限扩张的次数都是 $ p $ 的幂次.
+\end{enumerate}
+\end{enumerate}
+
+\section{有限域}
+
+\begin{enumerate}
+\item 定义 Möbius 函数 $\mu : \mathbb{N} \to \mathbb{Z}$ 如下:
+
+\[
+\mu(d) =
+\begin{cases}
+1, & d = 1, \\
+(-1)^k, & d = p_1p_2 \cdots p_k\text{ 为 }k\text{ 个不同素数的乘积}, \\
+0, & \text{其他情况}.
+\end{cases}
+\]
+
+对任意两个非零函数 $f, g : \mathbb{N} \to \mathbb{N}$, 若函数 $f(n)$ 满足 $f(n) = \sum\limits_{d|n} g(d)$, 证明:
+
+\[
+g(n) = \sum_{d|n} \mu(d) f\left(\frac{n}{d}\right),
+\]
+
+并以此完成例 4 中的计算.
+\begin{proof}
+    对于$n=p_1^{e_1} \cdots p_k^{e_k}$，其中$p_1,\cdots,p_k$为不同的素数，当$k\geqslant1$时成立
+    \begin{align*}
+        \delta(n):=\sum_{d \mid n}\mu(d)&=\sum_{\varepsilon_1=0}^{1}\cdots\sum_{\varepsilon_k=0}^{1}\mu\big(p_1^{\varepsilon_1} \cdots p_k^{\varepsilon_k}\big)\\
+        &=\sum_{\varepsilon_1=0}^{1}\cdots\sum_{\varepsilon_k=0}^{1}(-1)^{\varepsilon_1+\cdots+\varepsilon_k}\\
+        &=\sum_{\varepsilon_1=0}^{1}(-1)^{\varepsilon_1}\cdots\sum_{\varepsilon_k=0}^{1}(-1)^{\varepsilon_k}=0^k=0,
+    \end{align*}
+    且$k=0$时$\delta(1)=1$。通过交换求和次序，算出
+    \[\sum_{d \mid n}\mu(d)f\left(\frac{n}{d}\right)=\sum_{ds \mid n}\mu(d)g(s)
+    =\sum_{s \mid n}\delta\left(\frac{n}{s}\right)g(s)=g(n).\qedhere\]
+\end{proof}
+\item 设 $\alpha$ 是 $\mathbb{F}_3$ 上的多项式 $x^2 + 2x + 2$ 
+在 $\overline{\mathbb{F}}_3$ (代数闭包) 中的一个根, $E = \mathbb{F}_3[\alpha]$. 求:
+\begin{enumerate}[label=(\arabic*)]
+    \item 域扩张次数 $n = [E : \mathbb{F}_3]$;
+    \item 用 $1, \alpha, \cdots, \alpha^{n-1}$ 的 $\mathbb{F}_3$-线性组合表示元素 $\beta = \alpha^2 + 1$ 在 $E$ 中的逆.
+\end{enumerate}
+\begin{proof}[解答]
+    (1) $-1$不是$\mathbb{F}_3$中的$2$次剩余，则$(x+1)^2+1$在$\mathbb{F}_3[x]$中无法分解，从而$n=2$。
+
+    (2) 由于$(\alpha^2+1)\alpha=(\alpha+2)\alpha=1$，可知$\beta$的逆是$\alpha$。
+\end{proof}
+\item 求 $x^8 - 1 \in \mathbb{F}_3[x]$ 的分裂域.
+\begin{proof}[解答]
+    $x^8-1$在$\mathbb{F}_3[x]$中分解为
+    \begin{align*}
+        x^8-1&=(x^4-1)(x^4+1)=(x^2-1)(x^2+1)(x^4+4)\\
+        &=(x-1)(x+1)(x^2+1)(x^2-2x+2)(x^2+2x+2),
+    \end{align*}
+    从而其分裂域为$\mathbb{F}_9$。
+\end{proof}
+
+\item 构造一个具体的从 $E_1 = \mathbb{F}_5[x]/(x^2 + 2)$ 到 $E_2 = \mathbb{F}_5[x]/(x^2 + 3)$ 的环同构.
+\begin{proof}[解答]
+    把$\mathbb{F}_5[x]/(x^2+2)$中的元素$x$映成$\mathbb{F}_5[x]/(x^2+3)$中的元素$2x$即可，
+    这是因为在$\mathbb{F}_5[x]/(x^2+3)$中$(2x)^2+2=4(x^2+3)=0$。
+\end{proof}
+\item 令 $K, L$ 分别为有限域 $F$ 的 $n$ 次、\,$m$ 次扩张,证明
+
+\[
+[KL : F] = \text{lcm}(n, m), \quad [K \cap L : F] = \gcd(n, m).
+\]
+\begin{proof}
+    由于$n=[K:F]$和$m=[L:F]$都整除$[KL:F]$，得到$\operatorname{lcm}(n,m)$整除$[KL:F]$；
+    并且，$K,L$都是$F$的$\operatorname{lcm}(n,m)$次扩张的子域，那么$KL$作为包含$K$和$L$的最小的域也是其子域，
+    从而$[KL:F]$整除$\operatorname{lcm}(n,m)$，因此$[KL:F]=\operatorname{lcm}(n,m)$。
+    
+    由于$[K \cap L:F]$整除$n=[K:F]$和$m=[L:F]$，得到$[K \cap L:F]$整除$\operatorname{gcd}(n,m)$；
+    并且，$F$的$\operatorname{gcd}(n,m)$次扩张是$K$和$L$的子域，那么也是$K \cap L$的子域，
+    从而$\operatorname{gcd}(n,m)$整除$[K \cap L:F]$，因此$[K \cap L:F]=\operatorname{gcd}(n,m)$。
+\end{proof}
+\item 设 $q = p^m$,其中 $p$ 是奇素数, $m$ 是正整数.求以下关于 $x, y, z$ 的方程在 $\mathbb{F}_{q^2}$ 中共有多少组解:
+\begin{enumerate}[label=(\arabic*)]
+    \item $x^{q+1} = y^qz + z^qy$;
+    \item $x^2 = y^qz + z^qy$.
+\end{enumerate}
+\begin{proof}[解答]
+记$t=y^qz$和$w=y^qz+z^qy$，本题的关键是要观察到
+\[t^q=(y^qz)^q=y^{q^2}z^q=yz^q,\quad w=t+t^q, \quad w^q=t^q+t^{q^2}=t^q+t=w,\]
+这说明$w\in\mathbb{F}_q$。对于$w\in\mathbb{F}_q$，记$*$为未定元，
+设$u$是方程$w=*+*^q$在$\mathbb{F}_q$的代数闭包中的任何一个根，因为
+\[u^{q^2}=(w-u)^q=w^q-u^q=w-u^q=u,\]
+可知$u\in\mathbb{F}_{q^2}$，从而$w=*+*^q$的$q$个解都在$\mathbb{F}_{q^2}$中。
+\begin{enumerate}[label=(\arabic*)]
+\item \begin{itemize}
+    \item 当$w=0$时$x=0$，并且$0=t+t^q$有$1$个解$0$和$q-1$个非零解，
+    前者对应的$\big\{(y,z)\in\mathbb{F}_{q^2}^2 \bigm| y^qz=t\big\}$的元素数量为$2q^2-1$，
+    后者的每个$t$对应的数量为$q^2-1$，合起来有$(2q^2-1)+(q-1)(q^2-1)=q^3+q^2-q$组解。
+    \item 取定$w\in\mathbb{F}_q\setminus\{0\}$，
+    因为$w^{q-1}=1$，可知$x^{q+1}-w$整除$x^{q^2}-x$，
+    从而$x^{q+1}=w$有$q+1$个解，并且$w=t+t^q$有$q$个解，
+    每个$t$对应的$\big\{(y,z)\in\mathbb{F}_{q^2}^2 \bigm| y^qz=t\big\}$的元素数量为$q^2-1$，
+    共计$(q-1)(q+1)q(q^2-1)=q^5-2q^3+q$组解。
+\end{itemize}
+两者相加，得出解的数量是$q^5-q^3+q^2$。
+\item \begin{itemize}
+    \item 当$w=0$时同上，数量仍是$q^3+q^2-q$。
+    \item 当$w\in\mathbb{F}_q\setminus\{0\}$时唯一的区别是这时$x$有$2$个解，
+    从而共有$(q-1)2q(q^2-1)=2q^4-2q^3-2q^2+2q$组解。
+\end{itemize}
+两者相加，得出解的数量是$2q^4-q^3-q^2+q$。\qedhere
+\end{enumerate}
+\end{proof}
+\item 求多项式 $f(x) = x^6 + x^4 + x + 1 \in \mathbb{F}_2[x]$ 
+与 $g(x) = x^8 - x \in \mathbb{F}_2[x]$ 在 $\mathbb{F}_2$ 上的最大公因式.
+据此解释为何 $f(x)$ 在 $\mathbb{F}_8$ 上恰有 $4$ 个根.
+
+\item 求有限域 $\mathbb{F}_q$ 上的 $m$ 次特殊线性群 $\mathrm{SL}_m(\mathbb{F}_q)$ 的阶数.
+\begin{proof}[解答]
+    先来算$\mathrm{GL}_m(\mathbb{F}_q)$的阶，这就是问$\mathbb{F}_q^m$上有多少组有序的线性无关向量组$(v_1,\cdots,v_m)$。
+    首先$v_1$只要不是$0$即可，有$q^m-1$个选择，接着$v_2$避开$\mathbb{F}_qv_1$即可，有$q^m-q$个选择，
+    以此类推，$v_m$要避开$\mathbb{F}_qv_1+\cdots+\mathbb{F}_qv_{m-1}$，有$q^m-q^{m-1}$个选择，因此
+    \[|\mathrm{GL}_m(\mathbb{F}_q)|=(q^m-1)(q^m-q)\cdots(q^m-q^{m-1}).\]
+    现在来算$\mathrm{SL}_m(\mathbb{F}_q)$的阶。考察行列式给出的群同态$\det:\mathrm{GL}_m(\mathbb{F}_q)\to\mathbb{F}_q^*$，
+    有$\ker\det=\mathrm{SL}_m(\mathbb{F}_q)$，这说明$\mathrm{GL}_m(\mathbb{F}_q)/\mathrm{SL}_m(\mathbb{F}_q)$同构于$\mathbb{F}_q^*$，故
+    \[|\mathrm{SL}_m(\mathbb{F}_q)|=|\mathrm{GL}_m(\mathbb{F}_q)|/|\mathbb{F}_q^*|=q^{m-1}(q^m-1)\cdots(q^m-q^{m-2}).\qedhere\]
+\end{proof}
+
+\item 证明有限域的任意元均可写成两个元素的平方和.
+\begin{proof}
+    设有限域为$\mathbb{F}_q$，其原根为$g$，则$\mathbb{F}_q=\{0,g,g^2,\cdots,g^{q-1}\}$。
+    令$S=\{a^2 \mid a\in\mathbb{F}_q\}$，当$\operatorname{char}\mathbb{F}_q\ne2$时$q$是奇数，
+    因而$S=\{0,g^2,\cdots,g^{q-1}\}$，得出$|S|=1+\frac{q-1}{2}=\frac{q+1}{2}$。
+    对$\mathbb{F}_q$中的任意元素$b$，由于$|S|+|b-S|=q+1>|\mathbb{F}_q|$，
+    可知$S\cap(b-S)\ne\varnothing$，即$b$可以写成两个元素的平方和。
+
+    还有$\operatorname{char}\mathbb{F}_q=2$的情形，这是容易的，
+    只要注意到$b=b^q$是$b^{\frac{q}{2}}$和$0$的平方和即可。
+\end{proof}
+
+\item 对于素数 $p$ 和正整数 $n$,证明: $x^{p^n} - x + 1$ 是 $\mathbb{F}_p$ 上的不可约多项式当且仅当 $n = 1$ 或 $n = p = 2$.
+\begin{proof}
+    设$\alpha$是不可约多项式$f(x)=x^{p^n}-x+1$的一个根。
+    首先，观察到对任何的$\beta\in\mathbb{F}_{p^n}$都成立
+    \begin{align*}
+        f(\alpha+\beta)&=(\alpha+\beta)^{p^n}-(\alpha+\beta)+1\\
+        &=\alpha^{p^n}-\alpha+1+\beta^{p^n}-\beta=0,
+    \end{align*}
+    这表明$f(x)$的根的全体就是$\{\alpha+\beta\mid\beta\in\mathbb{F}_{p^n}\}$。
+    接下来，可以发现$\alpha^p$也是$f(x)$的根，这是因为
+    \begin{align*}
+        f(\alpha^p)&=(\alpha^p)^{p^n}-\alpha^p+1=\big(\alpha^{p^n}\big)^p-\alpha^p+1\\
+        &=(\alpha-1)^p-\alpha^p+1=\alpha^p-1-\alpha^p+1=0,
+    \end{align*}
+    因此，对某个$\beta\in\mathbb{F}_{p^n}$有$\alpha^p=\alpha+\beta$。
+    那么$\beta\in\mathbb{F}_p(\alpha)$，
+    且$[\mathbb{F}_p(\alpha):\mathbb{F}_p(\beta)]=p$。
+    由于$\mathbb{F}_p(\beta)$是$\mathbb{F}_{p^n}$的子域，
+    得到$[\mathbb{F}_p(\beta):\mathbb{F}_p] \leqslant n$，从而
+    \[p^n=\deg f(x)=[\mathbb{F}_p(\alpha):\mathbb{F}_p]
+    =[\mathbb{F}_p(\alpha):\mathbb{F}_p(\beta)]
+    [\mathbb{F}_p(\beta):\mathbb{F}_p]\leqslant pn,\]
+    只能是$n=1$或$n=p=2$。反过来的检验略去。
+\end{proof}
+\end{enumerate}
+
+\section{多项式与 Galois 群的计算}
+
+\begin{enumerate}
+\item 求以下元素在 $\mathbb{Q}$ 上的极小多项式 $f(x)$ 以及 $f(x)$ 在 $\mathbb{Q}$ 上的 Galois 群:
+\begin{enumerate}[label=(\arabic*)]
+    \item $\alpha = \sqrt{3 + \sqrt{5}}$;
+    \item $\alpha = \sqrt{4 + \sqrt{5}}$;
+    \item $\alpha = \sqrt{5 + \sqrt{5}}$.
+\end{enumerate}
+\begin{proof}[解答]
+    设$F$是特征不为$2$的域，$a,b \in F$，令
+    \[\alpha=\sqrt{a+\sqrt{b}},\quad\beta=\sqrt{a-\sqrt{b}},\]
+    简写
+    \[\delta=\alpha\beta\big(\alpha^2-\beta^2\big)=2\sqrt{(a^2-b)b},\]
+    取多项式
+    \[f(x)=(x-\alpha)(x+\alpha)(x-\beta)(x+\beta)=(x^2-a)^2-b.\]
+    容易算出
+    \[\alpha\pm\beta=\sqrt{(\alpha^2+\beta^2)\pm2\alpha\beta}
+    =\sqrt{2a\pm2\sqrt{a^2-b}},\]
+    限定$\sqrt{b}$和$\alpha\pm\beta$不属于$F$。这样一来，因为$\alpha,\beta \notin F$，
+    $f(x)$在$F[x]$中不能分解为$1$次和$3$次因式的乘积；
+    并且因为$f(x)$如果分解为$2$个$2$次多项式的乘积，只能是
+    \begin{align*}
+        f(x)&=\big(x^2-\alpha^2\big)\big(x^2-\beta^2\big),\\
+        f(x)&=\big(x^2-(\alpha+\beta)x+\alpha\beta\big)\big(x^2+(\alpha+\beta)x+\alpha\beta\big),\\
+        f(x)&=\big(x^2-(\alpha-\beta)x-\alpha\beta\big)\big(x^2+(\alpha-\beta)x-\alpha\beta\big),
+    \end{align*}
+    然而这三者也不是$F[x]$中的因式分解，从而$f(x)$是不可约的；
+    进而$f(x)$是$\alpha$在$F$上的极小多项式，
+    并且其在$F$上的Galois群$G=\operatorname{Gal}(F(\alpha,\beta)/F)$的阶数有因数$4$。
+    由于$G$中的元素$\sigma$通过$\sigma(\alpha),\sigma(\beta)$两者确定，
+    可以说明$\sigma$的可能性有如下$8$个，这里$r$是顺时针旋转$90^\circ$，$s$是上下翻转。
+    这表明$r$和$s$生成的群恰好同构于$D_4$。
+    $$\begin{array}{|c|cccc|cccc|}
+    \hline \sigma=\, & e &r^2 & s & r^2s & r^3s & rs & r & r^3\\
+    \hline \alpha\mapsto  & \alpha & -\alpha & \beta & -\beta & \alpha & -\alpha & \beta & -\beta\\
+    \beta\mapsto & \beta & -\beta & \alpha & -\alpha & -\beta & \beta & -\alpha & \alpha\\
+    \hline\end{array}$$
+    \begin{tikzpicture}
+        \draw (-1,1)to(1,1)to(1,-1)to(-1,-1)to(-1,1);
+        \draw (-1.3,1.1) node {$-\beta$};\draw (1.2,1.1) node {$\alpha$};
+        \draw (-1.3,-1.1) node {$-\alpha$};\draw (1.2,-1.1) node {$\beta$};
+        \draw (0,0) node {$r$};\draw[->,>=stealth] (-0.5,0) arc (180:-90:0.5);
+        \draw (2,0) node {$s$};\draw (1.8,0.898) arc (90:-90:0.5 and 0.898);
+        \draw[->,>=stealth] (1.8,0.905)to(1.78,0.91);
+        \draw[->,>=stealth] (1.8,-0.905)to(1.78,-0.91);
+    \end{tikzpicture}
+    因此$|G|=4$或$8$，对应的结构是$\Z_2\times\Z_2,\Z_4$或$D_4$，其元素为
+    $$\begin{array}{|c|c|}
+    \hline \Z_2\times\Z_2 & \langle r^2,s \rangle=\{e,r^2,s,r^2s\}\\
+    \hline \Z_4 & \ \ \ \ \langle r \rangle=\{e,r,r^2,r^3\}\\
+    \hline D_4 & \langle r,s \rangle=\cdots\\
+    \hline\end{array}$$
+    由于
+    \[r(\alpha\beta)=-\alpha\beta,\ \ r(\delta)=\delta,
+    \ \ s(\alpha\beta)=\alpha\beta,\ \ s(\delta)=-\delta,\]
+    可得下列字典序的``判定两原则''：
+    \begin{enumerate}[label=(\alph*)]
+    \item 当$\alpha\beta \in F$时，
+    $\operatorname{char}F\ne2$确保了$r(\alpha\beta)\ne\alpha\beta$，
+    从而$r \notin G$，得出$G=\langle r^2,s \rangle$；
+    \item 当$\alpha\beta \notin F$时，
+    $G$中必有元素改变$\alpha\beta$，从而$G$不是$\langle r^2,s \rangle$，
+    这时判别$G$究竟是$\langle r \rangle$或$\langle r,s \rangle$取决于$s$是否属于$G$。
+    取$\delta$为探测器，$\operatorname{char}F\ne2$确保了$s(\delta)\ne\delta$，从而有
+    \begin{itemize}
+        \item 如果$\delta \in F$的话$s \notin G$，从而$G=\langle r \rangle$；
+        \item 如果$\delta \notin F$的话$G$中必有元素改变$\delta$，从而$G=\langle r,s \rangle$。
+    \end{itemize}
+    \end{enumerate}
+    总结一下，$F(\alpha,\beta)$在$F$上的Galois群$G$是
+    $$\begin{array}{|l|l|}
+    \hline \alpha\beta \in F & G\cong\Z_2\times\Z_2\\
+    \hline \alpha\beta \notin F,\,\delta \in F & G\cong\Z_4\\
+    \hline \alpha\beta \notin F,\,\delta \notin F & G \cong D_4\\
+    \hline\end{array}$$
+    把本题中的数字和域代入，即$a=3,4,5$，$b=5$，$F=\mathbb{Q}$，结论是
+    $$\begin{array}{|l|l|l|l|}
+    \hline \alpha=\sqrt{3+\sqrt{5}} & f(x)=x^4-6x^2+4 & \alpha\beta=2\in\mathbb{Q} & G\cong\Z_2\times\Z_2\\
+    \hline \alpha=\sqrt{4+\sqrt{5}} & f(x)=x^4-8x^2+11 & \alpha\beta=\sqrt{11}\notin\mathbb{Q},\,\delta=2\sqrt{55}\notin\mathbb{Q} & G \cong D_4\\
+    \hline \alpha=\sqrt{5+\sqrt{5}} & f(x)=x^4-10x^2+20 & \alpha\beta=2\sqrt{5}\notin\mathbb{Q},\,\delta=20\in\mathbb{Q} & G\cong\Z_4\\
+    \hline\end{array}\qedhere$$
+\end{proof}
+\item 讨论 $ x^4 + px + p $ 在 $\mathbb{Q}$ 上的 Galois 群,其中 $ p $ 是一个素数.
+\begin{proof}[解答]
+    参考\cite{Mo} Example 13.7，或原始文章第4节的\href{https://www.jstor.org/stable/2323198?seq=4}{Example 2}，答案为
+    $$\begin{array}{|c|c|c|c|}
+    \hline p&=3&=5&\ne3,5\\ \hline
+    \operatorname{Gal}_{\mathbb{Q}}(x^4+px+p)&D_4&\Z_4&S_4\\ \hline
+    \end{array}\qedhere$$
+\end{proof}
+\item 令 $ L $ 为 $ f(x) = x^5 - 4x + 2 $ 在 $\mathbb{Q}$ 上的分裂域,计算 $ L/\mathbb{Q} $ 的 Galois 群.
+\begin{proof}[解答]
+    $2$整除$4$且$4$不整除$2$，由Eisenstein判别法，$f(x)$是不可约多项式；
+    并且，$f'(x)=5x^4-4$的实根有$2$个表明$f(x)$的实根至多有$3$个，
+    下表又显示$f(x)$的实根至少有$3$个，
+    $$\begin{array}{|c|c|c|c|c|}
+    \hline x&-2&-1&1&2\\ \hline
+    f(x)&-22&5&-1&26\\ \hline
+    \end{array}$$
+    故$f(x)$的实根数量是$3$个，则虚根为$2$个。
+    根据命题8.6，$\operatorname{Gal}(L/\mathbb{Q})=S_5$。
+\end{proof}
+
+\item 设 $ f(x) \in \mathbb{Q}[x] $ 为不可约多项式.若 $ f(x) $ 有实根和非实根,
+证明 $ \operatorname{Gal}_{\mathbb{Q}}(f) $ 必定是非交换群.
+\begin{proof}
+    设$f(x)$有实根$y$和非实根$z$，取$\sigma\in\operatorname{Gal}_{\mathbb{Q}}(f)$
+    使得$\sigma(y)=z$，接着取$\tau\in\operatorname{Gal}_{\mathbb{Q}}(f)$为复共轭，
+    则$(\sigma\circ\tau)(y)=\sigma(y)=z$且$(\tau\circ\sigma)(y)=\tau(z)=\bar{z}$，
+    从而$\sigma\circ\tau\ne\tau\circ\sigma$。
+\end{proof}
+\item 设 $ E $ 为不可约多项式 $ f(x) \in \mathbb{Q}[x] $ 的分裂域,
+证明若 $ [E : \mathbb{Q}] > \deg f(x) $,
+则 $ \operatorname{Gal}(E/\mathbb{Q}) $ 必有非正规子群.
+\begin{proof}
+    设$\alpha$是$f(x)$在$E$中的一个根，则$[E:\mathbb{Q}]>\deg f(x)=[\mathbb{Q}(\alpha):\mathbb{Q}]$，
+    即$\mathbb{Q}(\alpha) \subsetneq E$，从而$\mathbb{Q}(\alpha)/\mathbb{Q}$不是Galois扩张，
+    那么$\operatorname{Gal}(E/\mathbb{Q}(\alpha))$是$\operatorname{Gal}(E/\mathbb{Q})$的非正规子群。
+\end{proof}
+\item 完成命题 8.7 的证明.
+\begin{proof}
+    参考\cite{La} VII Theorem 2.9，或[[讲义:抽象代数(于品)/域的扩张/mod p 的理论|定理5.9.20]]。
+\end{proof}
+\item 完成命题 8.8 的证明.
+\end{enumerate}
+
+\section{可解扩张与方程的可解性}
+
+\begin{enumerate}
+\item 证明 $ \mathbb{Q} $ 的任意有限扩张 $ E/\mathbb{Q} $ 至多含有有限个单位根.
+
+\item 证明 $ \mathbb{Q}(\sqrt{-1}) $ 不可能作为一个 $4$ 次循环 Galois 扩张的子域.
+\begin{proof}
+    反证法.假设存在$K/\mathbb{Q}$是$4$次循环Galois扩张,使得$\mathbb{Q}(\sqrt{-1})\subset K$.
+    记$G=\operatorname{Gal}(K/\mathbb{Q})=\mathbb{Z}/4\mathbb{Z}$,因为$G$只有一个非平凡子群,
+    所以$K/\mathbb{Q}$只有一个中间域$\mathbb{Q}(\sqrt{-1})$.
+    另一方面，将$K$视为$\mathbb{C}$的子域，$\mathbb{C}$上的复共轭作用$\tau$可以自然地限制在$K$上，
+    $\tau$是$G$的一个$2$阶元，记其生成的子群为$H$，则$H$对应到中间域$F=K^H$.
+    但是$F$不可能是$\mathbb{Q}(\sqrt{-1})$ (因为$\tau(\sqrt{-1})=-\sqrt{-1}$)，
+    所以$K/\mathbb{Q}$至少有两个中间域，矛盾.
+\end{proof}
+
+\item 完成例 1 中 Galois 群的计算.
+
+\item 设 $ p, q \in \mathbb{Q} $ 满足条件: $ 4^4p^5 + 5^5q^4 $ 是完全平方数.
+证明 $5$ 次不可约方程 $f(x) = x^5 + px + q = 0$ 根式可解
+当且仅当 $ \operatorname{Gal}_\mathbb{Q}(f) $ 是二面体群 $ D_5 $.
+\begin{proof}
+    如果$f(x)$根式可解，那么$\operatorname{Gal}_\mathbb{Q}(f)$是可解群。
+    $f(x)=x^5+px+q$的判别式$4^4p^5+5^5q^4$（参考[[讲义:抽象代数(于品)/环与模/多项式环|例子4.4.21]]）
+    是完全平方数等价于$\operatorname{Gal}_\mathbb{Q}(f)$是$A_5$的子群，
+    $A_5$本身不可解，因此$\operatorname{Gal}_\mathbb{Q}(f)$是$A_5$的真子群。
+    记$m$是$\operatorname{Gal}_\mathbb{Q}(f)$的阶。
+
+    现在回忆一下第一章第8节习题11曾在第一步证明了$60/m\geqslant5$，
+    即$m\leqslant12$。由于$f(x)$不可约，得出$5$整除$m$，故$m=5$或$10$。
+    这说明$\operatorname{Gal}_\mathbb{Q}(f)$是$\Z_5,\Z_{10},D_5$之一，
+    其中$\Z_{10}$不是$S_5$的子群能直接排除掉，那么接下来只要再排除$\Z_5$即可。
+    
+    注意到$f'(x)=5x^4+p$的实根至多有$2$个，
+    由Rolle中值定理可知$f(x)$的实根至多有$3$个，
+    从而必有一对虚根。故复共轭在$f(x)$的根集上的作用非平凡，
+    是$\operatorname{Gal}_\mathbb{Q}(f)$中的$2$阶元。
+    这说明$\operatorname{Gal}_\mathbb{Q}(f)$也不是$\Z_5$，就只能是$D_5$了。
+    反过来，如果$\operatorname{Gal}_\mathbb{Q}(f)$是可解群$D_5$，
+    那么$f(x)$当然根式可解。
+\end{proof}
+
+\item 设 $ F $ 是一个特征为 $ p > 0 $ 的域, 
+对于可分多项式  $ f(X) \in F[X] $, 设其分裂域为 $ E_f $.
+证明 $ \operatorname{Gal}(E_f/F) $ 是可解群
+当且仅当存在一列域扩张 $ F = F_0 \subset F_1 \subset \cdots \subset F_n = E_f$,
+使得 $ F_{i+1} = F_i[u_i]$,
+且要么存在一个与 $ p $ 互素的 $ n_i \in \mathbb{Z}^+ $ 
+使得 $ u_i^{n_i} \in F_i$, 要么 $ u_i^p - u_i \in F_i$.
+\begin{proof}
+    本题有些超纲，可参考\cite{Ro} 12.1--13.5节的讲解。
+\end{proof}
+\item 设 $ p $ 是一个素数,证明存在 $ \mathbb{Q} $ 的一个 Galois 扩张 $ E/\mathbb{Q} $ 使得  
+$ \text{Gal}(E/\mathbb{Q}) \cong \mathbb{Z}/p\mathbb{Z}. $
+\begin{proof}
+    取一个$p^2$次本原单位根$\zeta_{p^2}$，考虑分圆扩张$\mathbb{Q}(\zeta_{p^2})/\mathbb{Q}$，
+    $\operatorname{Gal}(\mathbb{Q}(\zeta_{p^2})/\mathbb{Q})=(\mathbb{Z}/p^2\mathbb{Z})^*$，
+    这是一个$p(p-1)$阶的Abel群，根据有限Abel群的结构定理，存在一个$p-1$阶的正规子群$H$，
+    考虑商群$\operatorname{Gal}(\mathbb{Q}(\zeta_{p^2})/\mathbb{Q})/H$，它是一个$p$阶群，
+    一定为$\mathbb{Z}/p\mathbb{Z}$，而这个商群就是域扩张$\mathbb{Q}(\zeta_{p^2})^H/\mathbb{Q}$的Galois群.
+\end{proof}
+
+\item 设 $ p $ 为素数, $ G $ 为置换群 $ S_p $ 的子群,且 $ |G| $ 是 $ p $ 的倍数.
+证明 $ G $ 可解当且仅当 $ G $ 的每个非平凡元至多固定一个 $ X $ 中元素.
+\begin{proof}
+    本题同特征为$0$的域上的$p$次不可约多项式的Galois群是否可解的联系可参考\cite{Co} Theorem 14.1.1。
+
+    记$\theta$为$S_p$中的$p$-轮换$(12 \cdots p)$，
+    在${\rm AGL}(1,\mathbb{F}_p)$中写为$\theta(x)=x+1$。先来建立两个小结论。
+    
+    (i) 设$G$是有限群，$H$是其正规子群，$g \in G$。
+    如果$g$的阶$o(g)$同$[G:H]$互素，那么$g \in H$。
+    
+    (i)的证明. 在商群$G/H$中，$(gH)^{o(g)}=(gH)^{[G:H]}=H$，推出$gH=H$。
+    
+    (ii) 对$\tau \in S_p$，如果$\tau\theta\tau^{-1}\in{\rm AGL}(1,\mathbb{F}_p)$，
+    那么$\tau\in{\rm AGL}(1,\mathbb{F}_p)$。
+    
+    (ii)的证明. 由于对${\rm AGL}(1,\mathbb{F}_p)$中的元素$\sigma(x)=bx+d$成立$\sigma\theta=\theta^b\sigma$，
+    得出$\langle\theta\rangle$是${\rm AGL}(1,\mathbb{F}_p)$的正规子群。
+    注意到$\langle\theta\rangle$和$\langle\tau\theta\tau^{-1}\rangle$
+    都是$p(p-1)$阶群${\rm AGL}(1,\mathbb{F}_p)$的Sylow $p$-子群，
+    从而有$\langle\theta\rangle=\langle\tau\theta\tau^{-1}\rangle$，
+    即$\tau\theta=\theta^c\tau$对某个$c\in\mathbb{F}_p^*$成立，
+    也就是$\tau(x+1)=\tau(x)+c$。
+    迭代得出$\tau(x)=cx+\tau(0)$，故$\tau\in{\rm AGL}(1,\mathbb{F}_p)$。
+    
+    有了这两个小结论，可以开始从前推后了。
+    由Cauchy定理，$G$中有$p$阶元，也就是$p$-轮换，
+    通过对$X$中元素进行编号，不妨设这个元素是$\theta$。
+    当$G$可解时，由第一章命题9.2，存在合成群列
+    \[\{e\}=G_0 \triangleleft G_1 \triangleleft\cdots\triangleleft G_n=G\]
+    使得$[G_i:G_{i-1}]$对于$i=1,\cdots,n$均是素数。
+    设$j$是使得$\theta \in G_j$的最小的下标，假定$j>1$，则$G_{j-1}$不是$\{e\}$，
+    即存在$\tau \in G_{j-1}$使得$\tau(j) \ne j$，
+    那么$\tau\theta^{j-\tau(j)} \in G_j$保持$\tau(j)$不变，
+    从而其轮换分解是若干个长度小于$p$的轮换，则其阶同$p$互素。
+    由于$[G_j:G_{j-1}]=p$ (否则$p$同$[G_j:G_{j-1}]$互素，由(i)得$\theta \in G_{j-1}$，矛盾)，
+    可知$\tau\theta^{j-\tau(j)} \in G_{j-1}$ (因为其阶同$[G_j:G_{j-1}]$互素，再次用(i))，
+    从而$\theta^{j-\tau(j)} \in G_{j-1}$。
+    结合$\theta^p=e$可知$\theta \in G_{j-1}$ (这是因为$j-\tau(j)$的某个倍数模$p$余$1$)，矛盾。
+    故$j=1$，则有$\theta \in G_1$且$|G_1|=p$，从而$G_1=\langle\theta\rangle$。
+    
+    下面归纳证明$G_i$都是${\rm AGL}(1,\mathbb{F}_p)$的子群。
+    刚才已说明$G_1=\langle\theta\rangle$，从而是${\rm AGL}(1,\mathbb{F}_p)$的子群。
+    设已知$G_i$是${\rm AGL}(1,\mathbb{F}_p)$的子群，其中$i\geqslant1$。
+    由于$\theta \in G_i$且$G_i \triangleleft G_{i+1}$，
+    对任何的$\tau \in G_{i+1}$都有$\tau\theta\tau^{-1} \in G_i$，
+    由(ii)得$\tau\in{\rm AGL}(1,\mathbb{F}_p)$，
+    即$G_{i+1}$同样是${\rm AGL}(1,\mathbb{F}_p)$的子群。
+    取$i=n$得到$G$是${\rm AGL}(1,\mathbb{F}_p)$的子群，
+    显然${\rm AGL}(1,\mathbb{F}_p)$中的非平凡元素
+    至多固定$X=\mathbb{F}_p$中的一个元素，那么$G$亦然。
+    
+    再来从后推前。由于$G$含有$\theta$从而在$X$上的作用是可迁的，
+    即所有的$x \in X$的轨道$Gx$都是$X$，得出
+    \begin{align*}
+        &\sum_{g \in G}|\{x \in X \mid gx=x\}|=|\{(g,x) \in G \times X \mid gx=x\}|\\
+        &=\sum_{x \in X}|\operatorname{Stab}(x)|=\sum_{x \in X}|G|/|Gx|=\sum_{x \in X}|G|/|X|=|G|.
+    \end{align*}
+    设固定$X$中$0,1,p$个元素的$G$中元素分别有$a_0,a_1,a_p$个，其中$a_p=1$，代入上式两端，得出
+    \[a_1+pa_p=a_0+a_1+a_p,\]
+    即$a_0=p-1$。注意到$\langle\theta\rangle$中已用完了$p-1$个不固定$X$中任何元素的$G$中元素，
+    从而对任何的$\tau \in G$都有$\tau\theta\tau^{-1}\in\langle\theta\rangle$，
+    由(ii)得$\tau\in{\rm AGL}(1,\mathbb{F}_p)$，即$G$是${\rm AGL}(1,\mathbb{F}_p)$的子群。
+    由于${\rm AGL}(1,\mathbb{F}_p)$可解 (因为${\rm AGL}(1,\mathbb{F}_p)/\langle\theta\rangle\cong\mathbb{F}_p^*$)，得到$G$亦可解。
+\end{proof}
+\end{enumerate}
+
+\subsection**{参考文献}
+\begin{references}
+    \bibitem[Co]{Co}
+        David Cox. \textit{Galois Theory}.
+        Pure and Applied Mathematics. Wiley, 2012.
+    \bibitem[Go]{Go}
+        Fernando Q. Gouvêa. \textit{p-adic Numbers: An Introduction}. 
+        Universitext. Springer, 2020.
+    \bibitem[Ro]{Ro}
+        Steven Roman. \textit{Field Theory}.
+        Graduate Texts in Mathematics 158. Springer, 2013.
+    \bibitem[Mo]{Mo}
+        Patrick Morandi. \textit{Field and Galois Theory}.
+        Graduate Texts in Mathematics 167. Springer, 1996.
+    \bibitem[La]{La}
+        Serge Lang. \textit{Algebra}. 
+        Graduate Texts in Mathematics 211. Springer, 2002.
+\end{references}

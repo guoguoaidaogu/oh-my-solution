@@ -1,0 +1,636 @@
+\setdisplaytitle{习题：量子场论}
+\sethtmltitle{习题：量子场论}
+
+{{comment|这个习题解答是2025秋SIMIS Jean-Emile Bourgine老师量子场论（一）课程的习题，每次占比$10\%$.}}
+
+
+\section{Assignment 1}
+
+\textbf{Exercise 1.} \textit{(10 points) In this exercise, we want to study the action for gravitational waves. Our starting point is the Einstein equations for the gravitational field $g_{\mu\nu}(x)$ identified with the spacetime metric,\footnote{We use here the standard notation for general relativity, the flat metric will be denoted
+\begin{equation}
+    \eta^{\mu\nu} = \eta_{\mu\nu} = \begin{pmatrix}
+    1 & 0 & 0 & 0 \\
+    0 & -1 & 0 & 0 \\
+    0 & 0 & -1 & 0 \\
+    0 & 0 & 0 & -1
+    \end{pmatrix},
+\end{equation}
+while the notation $g_{\mu\nu}(x)$ is reserved for the dynamical field describing the metric.}}
+\begin{equation}
+    R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R = 0,
+\end{equation}
+where we used the following notations:
+\begin{itemize}
+    \item \textbf{Ricci scalar:} $R = g^{\mu\nu}R_{\mu\nu}$,
+    \item \textbf{Ricci tensor:} $R_{\mu\nu} = R^\rho_{\mu\rho\nu}$,
+    \item \textbf{Riemann tensor:} $R^\rho_{\sigma\mu\nu} = \partial_\mu \Gamma^\rho_{\sigma\nu} - \partial_\nu \Gamma^\rho_{\sigma\mu} + \Gamma^\rho_{\mu\alpha}\Gamma^\alpha_{\nu\sigma} - \Gamma^\rho_{\nu\alpha}\Gamma^\alpha_{\mu\sigma}$,
+    \item \textbf{Christoffel symbols:} $\Gamma^\mu_{\nu\rho} = \frac{1}{2}g^{\mu\sigma}(\partial_\rho g_{\sigma\nu} + \partial_\nu g_{\sigma\rho} - \partial_\sigma g_{\nu\rho})$.
+\end{itemize}
+The metric $g_{\mu\nu}(x)$ is assumed symmetric and non-degenerate, and we denote $g^{\mu\nu}(x)$ the inverse metric, i.e.
+\begin{equation}
+    g^{\mu\nu}(x)g_{\nu\rho}(x) = \delta^\mu_\rho = g_{\rho\nu}(x)g^{\nu\mu}(x).
+\end{equation}
+
+\begin{enumerate}
+    \item We consider a small perturbation around the flat metric $g_{\mu\nu}(x) = \eta_{\mu\nu} + h_{\mu\nu}(x)$, derive the linearized equations of motion (at order in $O(h)$). \textit{(2 points)}
+    
+    \item Let $h = h^\mu_\mu = \eta^{\mu\nu}h_{\mu\nu}$, we consider the Fierz-Pauli action for the symmetric tensor $h_{\mu\nu}(x)$,
+    \begin{equation}
+        S[h] = \int d^4x \left[ -\frac{1}{4}\partial_\rho h_{\mu\nu}\partial^\rho h^{\mu\nu} + \frac{1}{2}\partial_\rho h_{\mu\nu}\partial^\nu h^{\rho\mu} + \frac{1}{4}\partial^\rho h \partial_\rho h - \frac{1}{2}\partial_\rho h \partial_\mu h^{\mu\rho} \right]
+    \end{equation}
+    Show that the Euler-Lagrange equations reproduce the previous linearized equations of motion for $h_{\mu\nu}$ \textit{(2 points)}.
+    
+    \item Compute the fields $\Pi_{\mu\nu}$ canonically conjugate to $h_{\mu\nu}$. \textit{(1 point)}
+    
+    \item Compute the energy-momentum tensor associated to the Fierz-Pauli action. Deduce the Hamiltonian. \textit{(2 points)}
+    
+    \item Show that the theory is invariant under the transformation $h_{\mu\nu}(x) \to h_{\mu\nu}(x) + \partial_\mu V_\nu(x) + \partial_\nu V_\mu(x)$. \textit{(3 points)}
+\end{enumerate}
+
+\textbf{Solution:}
+
+\textbf{1.} We compute the expansion at order $O(h)$ of the Ricci scalar and Ricci tensor,
+\begin{equation}
+\begin{aligned}
+    \Gamma^\mu_{\nu\rho} &= \frac{1}{2}\eta^{\mu\sigma}(\partial_\rho h_{\sigma\nu} + \partial_\nu h_{\sigma\rho} - \partial_\sigma h_{\nu\rho}) + O(h^2), \\
+    R_{\mu\nu\rho\sigma} &= \frac{1}{2}\left(\partial_\rho\partial_\nu h_{\mu\sigma} + \partial_\mu\partial_\sigma h_{\rho\nu} - \partial_\rho\partial_\mu h_{\nu\sigma} - \partial_\nu\partial_\sigma h_{\rho\mu}\right) + O(h^2), \\
+    R_{\mu\nu} &= \frac{1}{2}\left(\partial_\sigma\partial_\nu h^\sigma_\mu + \partial_\sigma\partial_\mu h^\sigma_\nu - \partial_\mu\partial_\nu h - \Box h_{\mu\nu}\right) + O(h^2), \\
+    R &= \partial_\mu\partial_\nu h^{\mu\nu} - \Box h,
+\end{aligned}
+\end{equation}
+with $h = h^\mu_\mu$. Thus, at first order, Einstein's equation becomes
+\begin{equation}
+    \partial_\sigma\partial_\nu h^\sigma_\mu + \partial_\sigma\partial_\mu h^\sigma_\nu - \partial_\mu\partial_\nu h - \Box h_{\mu\nu} - \eta_{\mu\nu}\partial_\rho\partial_\sigma h^{\rho\sigma} + \eta_{\mu\nu}\Box h = 0.
+\end{equation}
+
+\textbf{2.} Let's rewrite the Lagrangian density as follows,
+\begin{equation}
+    \mathcal{L} = \eta^{\mu\mu'}\eta^{\nu\nu'}\eta^{\rho\rho'} \left( -\frac{1}{4}\partial_\rho h_{\mu\nu}\partial_{\rho'} h_{\mu'\nu'} + \frac{1}{2}\partial_\rho h_{\mu\nu}\partial_{\nu'} h_{\rho'\mu'} + \frac{1}{4}\partial_{\rho'} h_{\mu\mu'}\partial_\rho h_{\nu\nu'} - \frac{1}{2}\partial_\rho h_{\nu\nu'}\partial_\mu h_{\mu'\rho'} \right)
+\end{equation}
+Obviously, we have $\partial\mathcal{L}/\partial h_{\alpha\beta} = 0$, so let's compute
+\begin{equation}
+\begin{aligned}
+    \frac{\partial\mathcal{L}}{\partial(\partial_\gamma h_{\alpha\beta})} &= -\frac{1}{4}(\partial^\gamma h^{\alpha\beta} + \partial^\gamma h^{\alpha\beta}) + \frac{1}{2}(\partial^\beta h^{\gamma\alpha} + \partial^\alpha h^{\beta\gamma}) + \frac{1}{4}(\eta^{\alpha\beta}\partial^\gamma h + \eta^{\alpha\beta}\partial^\gamma h) - \frac{1}{2}(\eta^{\alpha\beta}\partial_\mu h^{\mu\gamma} + \eta^{\gamma\alpha}\partial^\beta h) \\
+    &= -\frac{1}{2}\partial^\gamma h^{\alpha\beta} + \frac{1}{2}\partial^\beta h^{\gamma\alpha} + \frac{1}{2}\partial^\alpha h^{\beta\gamma} + \frac{1}{2}\eta^{\alpha\beta}\partial^\gamma h - \frac{1}{2}\eta^{\alpha\beta}\partial_\mu h^{\mu\gamma} - \frac{1}{2}\eta^{\alpha\gamma}\partial^\beta h.
+\end{aligned}
+\end{equation}
+The Euler-Lagrange equation
+\begin{equation}
+    \partial_\gamma \frac{\partial\mathcal{L}}{\partial(\partial_\gamma h_{\alpha\beta})} = 0
+\end{equation}
+gives
+\begin{equation}
+    -\frac{1}{2}\Box h^{\alpha\beta} + \frac{1}{2}\partial_\gamma\partial^\beta h^{\gamma\alpha} + \frac{1}{2}\partial_\gamma\partial^\alpha h^{\beta\gamma} + \frac{1}{2}\eta^{\alpha\beta}\Box h - \frac{1}{2}\eta^{\alpha\beta}\partial_\gamma\partial_\sigma h^{\sigma\gamma} - \frac{1}{2}\partial^\alpha\partial^\beta h = 0
+\end{equation}
+Let's apply $2\eta_{\alpha\mu}\eta_{\beta\nu}$ to this equation, using the fact that $h_{\mu\nu}$ is symmetric we recover
+\begin{equation}
+    -\Box h_{\mu\nu} + \partial_\sigma\partial_\nu h^\sigma_\mu + \partial_\sigma\partial_\mu h^\sigma_\nu + \eta_{\mu\nu}\Box h - \eta_{\mu\nu}\partial_\rho\partial_\sigma h^{\rho\sigma} - \partial_\mu\partial_\nu h = 0.
+\end{equation}
+
+\textbf{3.} It is just a matter of applying the formula,
+\begin{equation}
+    \Pi^{\alpha\beta} = \frac{\partial\mathcal{L}}{\partial \dot{h}_{\alpha\beta}} = -\frac{1}{2}\dot{h}^{\alpha\beta} + \frac{1}{2}(\partial^\alpha h^{0\beta} + \partial^\beta h^{0\alpha}) + \frac{1}{2}\eta^{\alpha\beta}(\dot{h} - \partial_\mu h^{0\mu}) - \frac{1}{2}\eta^{\alpha 0}\partial^\beta h.
+\end{equation}
+
+\textbf{4.} Again, we just apply the formula,
+\begin{equation}
+\begin{aligned}
+    T^{\mu\nu} &= \frac{\partial\mathcal{L}}{\partial(\partial_\mu h_{\alpha\beta})} \partial^\nu h_{\alpha\beta} - \mathcal{L}\eta^{\mu\nu} \\
+    &= \frac{1}{2}(-\partial^\mu h^{\alpha\beta}\partial^\nu h_{\alpha\beta} + 2\partial^\alpha h^{\mu\beta}\partial^\nu h_{\alpha\beta} + \partial^\mu h \partial^\nu h - \partial_\rho h^{\mu\rho}\partial^\nu h - \partial^\alpha h \partial^\nu h^\mu_\alpha) - \mathcal{L}\eta^{\mu\nu}.
+\end{aligned}
+\end{equation}
+and
+\begin{equation}
+    \mathcal{H} = T^{00} - \mathcal{L} = -\frac{1}{2}\dot{h}^{\alpha\beta}\dot{h}_{\alpha\beta} + \dot{h}_{\alpha\beta}\partial^\alpha h^{0\beta} + \frac{1}{2}\dot{h}^2 - \frac{1}{2}\dot{h}\partial_\alpha h^{0\alpha} - \dot{h}^{\mu\alpha}\partial_\alpha h - \mathcal{L}.
+\end{equation}
+
+\textbf{5.} There are two options, either show that the equations of motions are invariant (easier), or show that the Lagrangian is invariant up to a total divergence. We will take the second option here, which is a rather tedious calculation. For simplicity, we split the Lagrangian density into two parts,
+\begin{equation}
+    \mathcal{L} = \mathcal{L}_1 + \mathcal{L}_2, \quad \mathcal{L}_1 = \frac{1}{2}\partial_\rho h_{\mu\nu} \left( \partial^\nu h^{\rho\mu} - \frac{1}{2}\partial^\rho h^{\mu\nu} \right), \quad \mathcal{L}_2 = \frac{1}{2}\partial_\rho h \left( \frac{1}{2}\partial^\rho h - \partial_\mu h^{\mu\rho} \right).
+\end{equation}
+Let's start with the terms linear in $V$, after some cancelations, we find the following variations,
+\begin{equation}
+\begin{aligned}
+    \delta\mathcal{L}_1^{(1)} &= \partial_\rho h^{\mu\nu}\partial_\mu\partial_\nu V^\rho = \partial_\rho(h^{\mu\nu}\partial_\mu\partial_\nu V^\rho) - h^{\mu\nu}\partial_\mu\partial_\nu\partial_\rho V^\rho, \\
+    \delta\mathcal{L}_2^{(1)} &= \frac{1}{2}\partial^\rho h \partial_\rho\partial_\mu V^\mu - \frac{1}{2}\partial^\rho h \Box V_\rho - \partial_\mu(h^{\mu\rho})\partial_\rho\partial_\nu V^\nu, \\
+    &= \frac{1}{2}\left( \partial^\rho(h\partial_\rho\partial_\mu V^\mu) - h\partial_\mu\Box V^\mu \right) - \frac{1}{2}\left( \partial^\rho(h\Box V_\rho) - h\Box\partial^\rho V_\rho \right) - \partial_\mu(h^{\mu\rho}\partial_\rho\partial_\nu V^\nu) + h^{\mu\rho}\partial_\mu\partial_\rho\partial_\nu V^\nu \\
+    &= \frac{1}{2}\partial_\rho \left[ h\partial^\rho\partial_\mu V^\mu - h\Box V^\rho - 2h^{\mu\rho}\partial_\mu\partial_\nu V^\nu \right] + h^{\mu\nu}\partial_\mu\partial_\nu\partial_\rho V^\rho.
+\end{aligned}
+\end{equation}
+Thus, $\delta\mathcal{L}_1^{(1)} + \delta\mathcal{L}_2^{(1)}$ is a divergence. Next, we examine the quadratic terms in $V$,
+\begin{equation}
+\begin{aligned}
+    \delta\mathcal{L}_1^{(2)} &= \frac{1}{2}\partial_\rho(\partial_\mu V_\nu + \partial_\nu V_\mu) \left( \partial^\nu\partial^\mu V^\rho + \partial^\nu\partial^\rho V^\mu - \partial^\rho\partial^\mu V^\nu \right) = \partial_\mu\partial_\nu V_\rho \partial^\rho\partial^\mu V^\nu, \\
+    \delta\mathcal{L}_2^{(2)} &= \partial_\rho\partial_\mu V^\mu (\partial^\rho\partial^\nu V_\nu - \partial_\nu\partial^\nu V^\rho - \partial_\nu\partial^\rho V^\nu) = -\partial_\rho\partial_\mu V^\mu \partial_\nu\partial^\nu V^\rho \\
+    &= -\partial_\nu \left[ \partial^\nu V^\rho \partial_\rho\partial_\mu V^\mu \right] + \partial^\nu V^\rho \partial_\nu\partial_\rho\partial_\mu V^\mu, \\
+    &= -\partial_\nu \left[ \partial^\nu V^\rho \partial_\rho\partial_\mu V^\mu \right] + \partial_\mu \left[ \partial_\nu\partial_\rho V^\mu \partial^\nu V^\rho \right] - \partial_\nu\partial_\rho V^\mu \partial_\mu\partial^\nu V^\rho, \\
+    &= \partial_\rho \left[ -\partial^\rho V^\mu \partial_\mu\partial_\nu V^\nu + \partial_\mu\partial_\nu V^\rho \partial^\mu V^\nu \right] - \partial_\mu\partial_\nu V_\rho \partial^\rho\partial^\mu V^\nu.
+\end{aligned}
+\end{equation}
+We observe that $\delta\mathcal{L}_1^{(2)} + \delta\mathcal{L}_2^{(2)}$ is again a total divergence, which concludes the proof.
+
+
+\textbf{Exercise 2.} \textit{(10 points) We consider a massive spin 1/2 particle described at $t=0$ by a wave packet with a Gaussian distribution centered at $\mathbf{x}=0$ and of half-width $d$,}
+\begin{equation}
+    \Psi(0, \mathbf{x}) = \frac{1}{(\pi d^2)^{3/4}} e^{-\mathbf{x}^2/(2d^2)} \begin{pmatrix} \frac{\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} \\ 0 \\ 0 \end{pmatrix}.
+\end{equation}
+
+\begin{enumerate}
+    \item Find the corresponding solution of the Dirac equation $\Psi(t, \mathbf{x})$. \textit{(2 points)}
+    \item Compute the norm of the solution $\int d^3\mathbf{x} \Psi^\dagger(t, \mathbf{x})\Psi(t, \mathbf{x})$, and verify that it is time independent. \textit{(3 points)}
+    \item Is there a limit in which we can neglect the negative energy solutions? \textit{(1 points)}
+    \item Compute the following integrated current for the Gaussian wave packet,
+    \begin{equation}
+        j^\mu(t) = \int d^3\mathbf{x} \bar{\Psi}(t, \mathbf{x})\gamma^\mu \Psi(t, \mathbf{x})
+    \end{equation}
+    and show that its space components vanish, $j^i(t) = 0$. \textit{(4 points)}
+\end{enumerate}
+
+\textbf{Solution: 1.} A general solution of the Dirac equation has the form
+\begin{equation}
+    \Psi(t, \mathbf{x}) = \int \frac{d^3\mathbf{p}}{(2\pi)^3} \sum_{r=1,2} \left[ b_r(\mathbf{p})u_r(\mathbf{p})e^{-ipx} + d_r(\mathbf{p})v_r(\mathbf{p})e^{ipx} \right],
+\end{equation}
+with the coefficients $b_r(\mathbf{p}), d_r(\mathbf{p})$ to be determined, and $u_r(\mathbf{p}), v_r(\mathbf{p})$ given by the formulas (2.44) of the lecture notes, namely
+\begin{equation}
+    u_r(\mathbf{p}) = \frac{1}{\sqrt{p^0+m}} \begin{pmatrix} (p^0+m)\psi_r \\ \mathbf{p}\cdot\boldsymbol{\sigma}\psi_r \end{pmatrix}, \quad v_r(\mathbf{p}) = \frac{1}{\sqrt{p^0+m}} \begin{pmatrix} \mathbf{p}\cdot\boldsymbol{\sigma}\psi_r \\ (p^0+m)\psi_r \end{pmatrix}, \quad \text{with} \quad \psi_1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \quad \psi_2 = \begin{pmatrix} 0 \\ 1 \end{pmatrix}.
+\end{equation}
+The solution is on mass shell, and so $p^0 = p^0(\mathbf{p}) = \sqrt{\mathbf{p}^2+m^2}$ in this formula. Taking the Fourier transform of the wave function at initial time, we find
+\begin{equation}
+    \int d^3\mathbf{x} e^{-i\mathbf{p}\cdot\mathbf{x}} \Psi(0, \mathbf{x}) = (4\pi d^2)^{3/4} e^{-\mathbf{p}^2d^2/2} \Xi, \quad \Xi = \frac{\sqrt{2}}{2} \begin{pmatrix} 1 \\ 1 \\ 0 \\ 0 \end{pmatrix}.
+\end{equation}
+Comparing with the Fourier transform of the general solution at $t=0$, we find the condition
+\begin{equation}
+    (4\pi d^2)^{3/4} e^{-\mathbf{p}^2d^2/2} \Xi = \sum_{r=1,2} [b_r(\mathbf{p})u_r(\mathbf{p}) + d_r(-\mathbf{p})v_r(-\mathbf{p})].
+\end{equation}
+To solve this equation, we use the projection relations (2.45) of the lecture notes, it gives
+\begin{equation}
+    b_r(\mathbf{p}) = \frac{(4\pi d^2)^{3/4}}{2p^0} e^{-\mathbf{p}^2d^2/2} u_r(\mathbf{p})^\dagger \Xi, \quad d_r(-\mathbf{p}) = \frac{(4\pi d^2)^{3/4}}{2p^0} e^{-\mathbf{p}^2d^2/2} v_r(-\mathbf{p})^\dagger \Xi.
+\end{equation}
+Introducing
+\begin{equation}
+    \xi = \frac{\sqrt{2}}{2} \begin{pmatrix} 1 \\ 1 \end{pmatrix} \quad \Rightarrow \quad \Xi = \begin{pmatrix} \xi \\ 0 \end{pmatrix},
+\end{equation}
+we deduce (recall that $\boldsymbol{\sigma}^\dagger = \boldsymbol{\sigma}$),\footnote{We used
+\begin{equation}
+    \mathbf{p}\cdot\boldsymbol{\sigma} = \begin{pmatrix} p^3 & p^1-ip^2 \\ p^1+ip^2 & -p^3 \end{pmatrix} \quad \Rightarrow \quad \mathbf{p}\cdot\boldsymbol{\sigma} \begin{pmatrix} 1 \\ 1 \end{pmatrix} = \begin{pmatrix} p^1-ip^2+p^3 \\ p^1+ip^2-p^3 \end{pmatrix}
+\end{equation}}
+\begin{equation}
+\begin{aligned}
+    b_r(\mathbf{p}) &= \frac{(4\pi d^2)^{3/4}}{2p^0} e^{-\mathbf{p}^2d^2/2} \frac{1}{\sqrt{p^0+m}} (p^0+m)\psi_r^\dagger \xi = \frac{(4\pi d^2)^{3/4}}{2p^0} e^{-\mathbf{p}^2d^2/2} \sqrt{p^0+m} \frac{\sqrt{2}}{2}, \\
+    d_r(\mathbf{p}) &= \frac{(4\pi d^2)^{3/4}}{2p^0} e^{-\mathbf{p}^2d^2/2} \frac{1}{\sqrt{p^0+m}} \psi_r^\dagger (\mathbf{p}\cdot\boldsymbol{\sigma}) \xi, \\
+    \Rightarrow \quad d_1(\mathbf{p}) &= \frac{(4\pi d^2)^{3/4}}{2p^0} e^{-\mathbf{p}^2d^2/2} \frac{\sqrt{2}}{2} \frac{p^1-ip^2+p^3}{\sqrt{p^0+m}}, \quad d_2(\mathbf{p}) = \frac{(4\pi d^2)^{3/4}}{2p^0} e^{-\mathbf{p}^2d^2/2} \frac{\sqrt{2}}{2} \frac{p^1+ip^2-p^3}{\sqrt{p^0+m}}.
+\end{aligned}
+\end{equation}
+
+\textbf{2.} Let's denote
+\begin{equation}
+    \mathcal{N} = \int d^3\mathbf{x} \Psi^\dagger(t, \mathbf{x})\Psi(t, \mathbf{x})
+\end{equation}
+We have
+\begin{equation}
+\begin{aligned}
+    \mathcal{N} = \int d^3\mathbf{x} \int \frac{d^3\mathbf{p}_1}{(2\pi)^3} \int \frac{d^3\mathbf{p}_2}{(2\pi)^3} \sum_{r,s=1}^2 \bigg[ & e^{ix(p_1-p_2)} b_r^*(\mathbf{p}_1)b_s(\mathbf{p}_2)u_r(\mathbf{p}_1)^\dagger u_s(\mathbf{p}_2) \\
+    &+ e^{-ix(p_1-p_2)} d_r^*(\mathbf{p}_1)d_s(\mathbf{p}_2)v_r(\mathbf{p}_1)^\dagger v_s(\mathbf{p}_2) \\
+    &+ e^{ix(p_1+p_2)} b_r^*(\mathbf{p}_1)d_s(\mathbf{p}_2)u_r(\mathbf{p}_1)^\dagger v_s(\mathbf{p}_2) \\
+    &+ e^{-ix(p_1+p_2)} d_r^*(\mathbf{p}_1)b_s(\mathbf{p}_2)v_r(\mathbf{p}_1)^\dagger u_s(\mathbf{p}_2) \bigg]
+\end{aligned}
+\end{equation}
+The integral over $d^3\mathbf{x}$ produces delta functions, e.g.
+\begin{equation}
+\begin{aligned}
+    \int d^3\mathbf{x} e^{-ix(p_1+p_2)} &= e^{-it(p^0(\mathbf{p}_1)+p^0(\mathbf{p}_2))} \int d^3\mathbf{x} e^{i\mathbf{x}\cdot(\mathbf{p}_1+\mathbf{p}_2)} = (2\pi)^3 \delta(\mathbf{p}_1+\mathbf{p}_2) e^{-2itp^0(\mathbf{p}_1)} \\
+    \int d^3\mathbf{x} e^{-ix(p_1-p_2)} &= e^{-it(p^0(\mathbf{p}_1)-p^0(\mathbf{p}_2))} \int d^3\mathbf{x} e^{i\mathbf{x}\cdot(\mathbf{p}_1-\mathbf{p}_2)} = (2\pi)^3 \delta(\mathbf{p}_1-\mathbf{p}_2).
+\end{aligned}
+\end{equation}
+since $p^0(\mathbf{p}) = p^0(-\mathbf{p})$. This gives
+\begin{equation}
+\begin{aligned}
+    \mathcal{N} = \int \frac{d^3\mathbf{p}}{(2\pi)^3} \sum_{r,s=1}^2 \bigg[ & b_r^*(\mathbf{p})b_s(\mathbf{p})u_r(\mathbf{p})^\dagger u_s(\mathbf{p}) + d_r^*(\mathbf{p})d_s(\mathbf{p})v_r(\mathbf{p})^\dagger v_s(\mathbf{p}) \\
+    &+ e^{2itp^0} b_r^*(\mathbf{p})d_s(-\mathbf{p})u_r(\mathbf{p})^\dagger v_s(-\mathbf{p}) + e^{-2itp^0} d_r^*(\mathbf{p})b_s(-\mathbf{p})v_r(\mathbf{p})^\dagger u_s(-\mathbf{p}) \bigg]
+\end{aligned}
+\end{equation}
+Next, we use the projection relations (2.45), namely\footnote{This can also be checked directly using $\psi_r^\dagger \psi_s = \delta_{r,s}$ and $(\mathbf{p}\cdot\boldsymbol{\sigma})^2 = \frac{1}{2}p^i p^j \{\sigma^i, \sigma^j\} = \mathbf{p}^2$, e.g.
+\begin{equation}
+\begin{aligned}
+    u_r^\dagger(\mathbf{p})u_s(\mathbf{p}) &= \frac{1}{p^0+m} \left[ (p^0+m)^2\psi_r^\dagger\psi_s + \psi_r^\dagger(\mathbf{p}\cdot\boldsymbol{\sigma})^2\psi_s \right] = \frac{\delta_{r,s}}{p^0+m} \left[ (p^0+m)^2 + \mathbf{p}^2 \right] = 2p^0\delta_{r,s}, \\
+    u_r^\dagger(\mathbf{p})v_s(-\mathbf{p}) &= \frac{1}{p^0+m} \left[ -(p^0+m)\psi_r^\dagger(\mathbf{p}\cdot\boldsymbol{\sigma})\psi_s + (p^0+m)\psi_r^\dagger(\mathbf{p}\cdot\boldsymbol{\sigma})\psi_s \right] = 0.
+\end{aligned}
+\end{equation}}
+\begin{equation}
+    u_r^\dagger(\mathbf{p})u_s(\mathbf{p}) = v_r^\dagger(\mathbf{p})v_s(\mathbf{p}) = 2p^0\delta_{r,s}, \quad u_r^\dagger(\mathbf{p})v_s(-\mathbf{p}) = v_r^\dagger(\mathbf{p})u_s(-\mathbf{p}) = 0,
+\end{equation}
+Most terms disappear, there only remains
+\begin{equation}
+    \mathcal{N} = \int \frac{d^3\mathbf{p}}{(2\pi)^3} 2p^0 \sum_{r=1}^2 \left[ b_r^*(\mathbf{p})b_r(\mathbf{p}) + d_r^*(\mathbf{p})d_r(\mathbf{p}) \right].
+\end{equation}
+This is indeed time independent. To compute the remaining sum, we recall the previous formulas for the coefficients
+\begin{equation}
+    b_r(\mathbf{p}) = F(\mathbf{p})(p^0+m)\xi_r, \quad d_r(\mathbf{p}) = F(\mathbf{p})(\mathbf{p}\cdot\boldsymbol{\sigma}\xi)_r, \quad \text{with} \quad F(\mathbf{p}) = \frac{(4\pi d^2)^{3/4}}{2p^0} \frac{e^{-\mathbf{p}^2d^2/2}}{\sqrt{p^0+m}}.
+\end{equation}
+Note that $F(\mathbf{p}) = F(-\mathbf{p}) = F^*(\mathbf{p})$. Thus, we have
+\begin{equation}
+\begin{aligned}
+    \sum_{r=1}^2 \left[ |b_r(\mathbf{p})|^2 + |d_r(\mathbf{p})|^2 \right] &= F(\mathbf{p})^2 \left[ (p^0+m)^2\xi^\dagger\xi + \xi^\dagger(\mathbf{p}\cdot\boldsymbol{\sigma})^2\xi \right] = F(\mathbf{p})^2 \left[ (p^0+m)^2 + \mathbf{p}^2 \right] \\
+    &= 2p^0(p^0+m)F(\mathbf{p})^2 = \frac{(4\pi d^2)^{3/2}}{2p^0} e^{-\mathbf{p}^2d^2},
+\end{aligned}
+\end{equation}
+using $(\mathbf{p}\cdot\boldsymbol{\sigma})^2 = \mathbf{p}^2$ and $\xi^\dagger\xi = 1$. Inserting the coefficients obtained before, we find
+\begin{equation}
+    \mathcal{N} = (4\pi d^2)^{3/2} \int \frac{d^3\mathbf{p}}{(2\pi)^3} e^{-\mathbf{p}^2d^2} = (4\pi d^2)^{3/2} \left( \int_{-\infty}^\infty \frac{dp}{2\pi} e^{-p^2d^2} \right)^3 = 1.
+\end{equation}
+
+\textbf{3.} In the non-relativistic limit $|\mathbf{p}| \ll m$, the coefficient in front of the negative energy solution becomes negligible since
+\begin{equation}
+    \frac{d_r(\mathbf{p})}{b_s(\mathbf{p})} = \frac{(\mathbf{p}\cdot\boldsymbol{\sigma}\xi)_r}{p^0+m} \simeq \frac{p^i}{m} \ll 1.
+\end{equation}
+
+\textbf{4.} First, we notice that
+\begin{equation}
+    j^\mu = \int d^3\mathbf{x} \bar{\Psi}(t, \mathbf{x})\gamma^\mu \Psi(t, \mathbf{x}) = \int d^3\mathbf{x} \Psi^\dagger(t, \mathbf{x})\gamma^0\gamma^\mu \Psi(t, \mathbf{x})
+\end{equation}
+and so $j^0 = \mathcal{N}$, which indeed reproduces the formula. Thus, we only need to check the case $\mu = i$. The calculation starts in the same way as before, and using the delta functions, we end up with
+\begin{equation}
+\begin{aligned}
+    j^\mu = \int \frac{d^3\mathbf{p}}{(2\pi)^3} \sum_{r,s=1}^2 \bigg[ & b_r^*(\mathbf{p})b_s(\mathbf{p})\bar{u}_r(\mathbf{p})\gamma^\mu u_s(\mathbf{p}) + d_r^*(\mathbf{p})d_s(\mathbf{p})\bar{v}_r(\mathbf{p})\gamma^\mu v_s(\mathbf{p}) \\
+    &+ e^{2itp^0} b_r^*(\mathbf{p})d_s(-\mathbf{p})\bar{u}_r(\mathbf{p})\gamma^\mu v_s(-\mathbf{p}) + e^{-2itp^0} d_r^*(\mathbf{p})b_s(-\mathbf{p})\bar{v}_r(\mathbf{p})\gamma^\mu u_s(-\mathbf{p}) \bigg]
+\end{aligned}
+\end{equation}
+Let's decompose $j^\mu = j^\mu_{\text{reg}} + j^\mu_{\text{osc}}$ with
+\begin{equation}
+\begin{aligned}
+    j^\mu_{\text{reg}} &= \int \frac{d^3\mathbf{p}}{(2\pi)^3} \sum_{r,s=1}^2 [b_r^*(\mathbf{p})b_s(\mathbf{p})\bar{u}_r(\mathbf{p})\gamma^\mu u_s(\mathbf{p}) + d_r^*(\mathbf{p})d_s(\mathbf{p})\bar{v}_r(\mathbf{p})\gamma^\mu v_s(\mathbf{p})] \\
+    j^\mu_{\text{osc}} &= \int \frac{d^3\mathbf{p}}{(2\pi)^3} \sum_{r,s=1}^2 \left[ e^{2itp^0} b_r^*(\mathbf{p})d_s(-\mathbf{p})\bar{u}_r(\mathbf{p})\gamma^\mu v_s(-\mathbf{p}) + e^{-2itp^0} d_r^*(\mathbf{p})b_s(-\mathbf{p})\bar{v}_r(\mathbf{p})\gamma^\mu u_s(-\mathbf{p}) \right],
+\end{aligned}
+\end{equation}
+since we have seen that $j^0_{\text{osc}} = 0$. We need to compute these expressions.
+In Dirac's representation, we have the following expression
+\begin{equation}
+    \gamma^0\gamma^i = \begin{pmatrix} 0 & \sigma^i \\ \sigma^i & 0 \end{pmatrix}.
+\end{equation}
+Using this expression, we derive\footnote{For instance, we have
+\begin{equation}
+\begin{aligned}
+    \bar{u}_r(\mathbf{p})\gamma^i u_s(\mathbf{p}) &= \frac{1}{p^0+m} \left( (p^0+m)\psi_r^\dagger \quad \psi_r^\dagger(\mathbf{p}\cdot\boldsymbol{\sigma}) \right) \cdot \begin{pmatrix} \sigma^i(\mathbf{p}\cdot\boldsymbol{\sigma})\psi_s \\ (p^0+m)\sigma^i\psi_s \end{pmatrix} = p^j\psi_r^\dagger \left( \sigma^i\sigma^j + \sigma^j\sigma^i \right) \psi_s = 2p^i\delta_{r,s}, \\
+    \bar{u}_r(\mathbf{p})\gamma^i v_s(-\mathbf{p}) &= \frac{1}{p^0+m} \left( (p^0+m)\psi_r^\dagger \quad \psi_r^\dagger(\mathbf{p}\cdot\boldsymbol{\sigma}) \right) \cdot \begin{pmatrix} (p^0+m)\sigma^i\psi_s \\ -\sigma^i(\mathbf{p}\cdot\boldsymbol{\sigma})\psi_s \end{pmatrix} \\
+    &= \frac{1}{p^0+m} \left[ (p^0+m)^2\psi_r^\dagger\sigma^i\psi_s - \psi_r^\dagger(\mathbf{p}\cdot\boldsymbol{\sigma})\sigma^i(\mathbf{p}\cdot\boldsymbol{\sigma})\psi_s \right] = \frac{1}{p^0+m} \left[ ((p^0+m)^2+\mathbf{p}^2)\psi_r^\dagger\sigma^i\psi_s - 2p^i\psi_r^\dagger(\mathbf{p}\cdot\boldsymbol{\sigma})\psi_s \right] \\
+    &= 2p^0\sigma^i_{r,s} - \frac{2p^i}{p^0+m}\mathbf{p}\cdot\boldsymbol{\sigma}_{r,s}.
+\end{aligned}
+\end{equation}
+using $(\mathbf{p}\cdot\boldsymbol{\sigma})\sigma^i(\mathbf{p}\cdot\boldsymbol{\sigma}) = -\sigma^i(\mathbf{p}\cdot\boldsymbol{\sigma})^2 + 2p^i(\mathbf{p}\cdot\boldsymbol{\sigma})$ and $\psi_r^\dagger\sigma^k\psi_s = \sigma^k_{r,s}$.}
+\begin{equation}
+\begin{aligned}
+    \bar{u}_r(\mathbf{p})\gamma^i u_s(\mathbf{p}) &= \bar{v}_r(\mathbf{p})\gamma^i v_s(\mathbf{p}) = 2p^i\delta_{r,s}, \\
+    \bar{u}_r(\mathbf{p})\gamma^i v_s(-\mathbf{p}) &= \bar{v}_r(\mathbf{p})\gamma^i u_s(-\mathbf{p}) = 2p^0\sigma^i_{r,s} - \frac{2p^i}{p^0+m}\mathbf{p}\cdot\boldsymbol{\sigma}_{r,s}.
+\end{aligned}
+\end{equation}
+The first identity can be used to simplify $j^\mu_{\text{reg}}$, and we find indeed using our previous calculation (34) of the norm $\mathcal{N}$,
+\begin{equation}
+    j^i_{\text{reg}} = \int \frac{d^3\mathbf{p}}{(2\pi)^3} 2p^i \sum_{r=1}^2 \left[ |b_r(\mathbf{p})|^2 + |d_r(\mathbf{p})|^2 \right] = (4\pi d^2)^{3/2} \int \frac{d^3\mathbf{p}}{(2\pi)^3} \frac{p^i}{p^0} e^{-\mathbf{p}^2d^2}
+\end{equation}
+By a parity argument, $\mathbf{p} \to -\mathbf{p}$, we have
+\begin{equation}
+    j^i_{\text{reg}} = (4\pi d^2)^{3/2} \frac{1}{2} \left( \int \frac{d^3\mathbf{p}}{(2\pi)^3} \frac{p^i}{p^0} e^{-\mathbf{p}^2d^2} - \int \frac{d^3\mathbf{p}}{(2\pi)^3} \frac{p^i}{p^0} e^{-\mathbf{p}^2d^2} \right) = 0.
+\end{equation}
+Next, we turn to $\mathbf{j}_{\text{osc}}$, and we need to show that it is actually vanishing. We compute
+\begin{equation}
+\begin{aligned}
+    \sum_{r,s} b_r^*(\mathbf{p})\sigma^k_{r,s}d_s(-\mathbf{p}) &= -F(\mathbf{p})^2(p^0+m)\xi^\dagger\sigma^k(\mathbf{p}\cdot\boldsymbol{\sigma})\xi = -F(\mathbf{p})^2(p^0+m)p^l\xi^\dagger\sigma^k\sigma^l\xi, \\
+    \sum_{r,s} d_r^*(\mathbf{p})\sigma^k_{r,s}b_s(-\mathbf{p}) &= F(\mathbf{p})^2(p^0+m)\xi^\dagger(\mathbf{p}\cdot\boldsymbol{\sigma})\sigma^k\xi = F(\mathbf{p})^2(p^0+m)p^l\xi^\dagger\sigma^l\sigma^k\xi.
+\end{aligned}
+\end{equation}
+Putting everything together, we find
+\begin{equation}
+    j^i_{\text{osc}} = \int \frac{d^3\mathbf{p}}{(2\pi)^3} F(\mathbf{p})^2 \left( 2p^0(p^0+m)\delta^{ik}p^l - 2p^ip^kp^l \right) \xi^\dagger \left( -e^{2itp^0}\sigma^k\sigma^l + e^{-2itp^0}\sigma^l\sigma^k \right) \xi
+\end{equation}
+Then, we use
+\begin{equation}
+    -e^{2itp^0}\sigma^k\sigma^l + e^{-2itp^0}\sigma^l\sigma^k = -[\sigma^k, \sigma^l]\cos(2tp^0) - i\sin(2tp^0)\{\sigma^k, \sigma^l\} = -2i\varepsilon^{klm}\sigma^m\cos(2tp^0) - 2i\delta^{kl}\sin(2tp^0).
+\end{equation}
+to rewrite (exploiting the symmetry)
+\begin{equation}
+\begin{aligned}
+    j^i_{\text{osc}} &= -4i \int \frac{d^3\mathbf{p}}{(2\pi)^3} F(\mathbf{p})^2 \left( p^0(p^0+m)(\cos(2tp^0)\varepsilon^{ijk}p^j\xi^\dagger\sigma^k\xi - p^i\sin(2tp^0)) - p^i\mathbf{p}^2\sin(2tp^0) \right) \\
+    &= 4i \int \frac{d^3\mathbf{p}}{(2\pi)^3} F(\mathbf{p})^2 \left( m(p^0+m)p^i\sin(2tp^0) - p^0(p^0+m)\cos(2tp^0)\varepsilon^{ijk}p^j\xi^\dagger\sigma^k\xi \right).
+\end{aligned}
+\end{equation}
+Finally, we compute
+\begin{equation}
+    \xi^\dagger\sigma^1\xi = 1, \quad \xi^\dagger\sigma^2\xi = 0, \quad \xi^\dagger\sigma^3\xi = 0 \quad \Rightarrow \quad \varepsilon^{ijk}p^j\xi^\dagger\sigma^k\xi = \mathbf{p} \wedge \mathbf{e}_1.
+\end{equation}
+It gives
+\begin{equation}
+    \mathbf{j}_{\text{osc}} = i(4\pi d^2)^{3/2} \int \frac{d^3\mathbf{p}}{(2\pi)^3} e^{-\mathbf{p}^2d^2} \left[ \frac{m\mathbf{p}}{(p^0)^2}\sin(2tp^0) - \frac{\mathbf{p}}{p^0} \wedge \mathbf{e}_1 \cos(2tp^0) \right], \quad \mathbf{e}_1 = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}.
+\end{equation}
+At this stage, it seems puzzling because the current appears to be purely imaginary. But observe that the integrand $G(\mathbf{p})$ satisfies the symmetry $G(-\mathbf{p}) = -G(\mathbf{p})$, and so
+\begin{equation}
+    \mathbf{j}_{\text{osc}} = \int_{-\infty}^\infty G(\mathbf{p})d^3\mathbf{p} = -\int_{-\infty}^\infty G(\mathbf{p})d^3\mathbf{p} = 0.
+\end{equation}
+Of course, we could have used this argument much earlier, but I believe the full calculation is instructive :
+
+For a general wave packet, these two terms of the current $\mathbf{j}_{\text{reg}}$ and $\mathbf{j}_{\text{osc}}$ are non-vanishing. The term $\mathbf{j}_{\text{osc}}$, arising due to the presence of negative energy solutions, is at the origin of a phenomenon of oscillations called Zitterbewegung and first observed by Schrödinger.
+
+\printfootnotes
+
+
+\section{Assignment 2}
+\textbf{Exercise 1.} \textit{(10 points) In this exercise, we consider a massive real scalar field, with the mode decomposition}
+\begin{equation}
+    \Phi(x) = \frac{1}{(2\pi)^{3/2}} \int \frac{d^3\mathbf{k}}{2k^0} (a_{\mathbf{k}}e^{-ikx} + a^\dagger_{\mathbf{k}}e^{ikx}), \quad [a_{\mathbf{k}}, a^\dagger_{\mathbf{k}'}] = 2k^0\delta^{(3)}(\mathbf{k} - \mathbf{k}').
+\end{equation}
+\textit{and $[a_{\mathbf{k}}, a_{\mathbf{k}'}] = [a^\dagger_{\mathbf{k}}, a^\dagger_{\mathbf{k}'}] = 0$. We also recall the expression of the quantum Hamiltonian, and the corresponding evolution operators}
+\begin{equation}
+    H = \frac{1}{2} \int d^3\mathbf{k} \, a^\dagger_{\mathbf{k}} a_{\mathbf{k}}, \quad U(t) = e^{-iHt}
+\end{equation}
+
+\begin{enumerate}
+    \item Compute the adjoint action of the evolution operator on the modes $a_{\mathbf{k}}$ and $a^\dagger_{\mathbf{k}}$, and deduce that the evolution of the quantum field is indeed given by \textit{(2 points)}
+    \begin{equation}
+        \Phi(t, \mathbf{x}) = U(t)^\dagger \Phi(0, \mathbf{x}) U(t).
+    \end{equation}
+
+    \item We are interested in the family of coherent states associated to $L^2$ functions $f(\mathbf{k}) : \mathbb{R}^3 \to \mathbb{C}$, and defined as
+    \begin{equation}
+        |f\rangle = \exp \left( \int \frac{d^3\mathbf{k}}{2k^0} f(\mathbf{k})a^\dagger_{\mathbf{k}} \right) |0\rangle.
+    \end{equation}
+    Compute the inner product $\langle f_1 | f_2 \rangle$ of two coherent states associated to different functions $f_1$ and $f_2$. Are these states orthogonal? \textit{(3 points)}
+
+    \item Show that $a_{\mathbf{k}}$ is diagonal on the state $|f\rangle$. What is the corresponding eigenvalue? \textit{(3 points)}
+
+    \item Show that coherent states remain coherent under time evolution, and more specifically \textit{(2 points)}
+    \begin{equation}
+        U(t)|f\rangle = |f_t\rangle, \quad \text{with} \quad f_t(\mathbf{k}) = e^{-it\sqrt{\mathbf{k}^2+m^2}} f(\mathbf{k}).
+    \end{equation}
+\end{enumerate}
+
+\textbf{Solutions:}
+
+\textbf{1.} We use the formula for two operators $A$ and $B$,
+\begin{equation}
+    e^A B e^{-A} = e^{\text{ad}_A} B = \sum_{n=0}^\infty \frac{(\text{ad}_A)^n}{n!} B, \quad \text{ad}_A B = [A, B].
+\end{equation}
+We have
+\begin{equation}
+\begin{aligned}
+    [H, a_{\mathbf{k}}] &= \frac{1}{2} \int \frac{d^3\mathbf{k}'}{2k'^0} [a^\dagger_{\mathbf{k}'}a_{\mathbf{k}'}, a_{\mathbf{k}}] = -\frac{1}{2} \int \frac{d^3\mathbf{k}'}{2k'^0} 2k^0\delta^{(3)}(\mathbf{k}-\mathbf{k}') a_{\mathbf{k}'} = -k^0 a_{\mathbf{k}}, \\
+    [H, a^\dagger_{\mathbf{k}}] &= \frac{1}{2} \int \frac{d^3\mathbf{k}'}{2k'^0} [a^\dagger_{\mathbf{k}'}a_{\mathbf{k}'}, a^\dagger_{\mathbf{k}}] = \frac{1}{2} \int \frac{d^3\mathbf{k}'}{2k'^0} 2k^0\delta^{(3)}(\mathbf{k}-\mathbf{k}') a^\dagger_{\mathbf{k}'} = k^0 a^\dagger_{\mathbf{k}}
+\end{aligned}
+\end{equation}
+and so
+\begin{equation}
+\begin{aligned}
+    [itH, a_{\mathbf{k}}] &= -itk^0 a_{\mathbf{k}} \quad \Rightarrow \quad (\text{ad}_{itH})^n a_{\mathbf{k}} = (-itk^0)^n a_{\mathbf{k}} \quad \Rightarrow \quad U(t)^\dagger a_{\mathbf{k}} U(t) = e^{itH} a_{\mathbf{k}} e^{-itH} = e^{-itk^0} a_{\mathbf{k}}, \\
+    [itH, a^\dagger_{\mathbf{k}}] &= itk^0 a_{\mathbf{k}} \quad \Rightarrow \quad (\text{ad}_{itH})^n a^\dagger_{\mathbf{k}} = (itk^0)^n a^\dagger_{\mathbf{k}} \quad \Rightarrow \quad U(t)^\dagger a^\dagger_{\mathbf{k}} U(t) = e^{itH} a^\dagger_{\mathbf{k}} e^{-itH} = e^{itk^0} a^\dagger_{\mathbf{k}},
+\end{aligned}
+\end{equation}
+since $H^\dagger = H$ and so $U(t)^\dagger = U(t)^{-1} = U(-t)$. Thus, we find
+\begin{equation}
+\begin{aligned}
+    U(t)^\dagger \Phi(0, \mathbf{x}) U(t) &= \frac{1}{(2\pi)^{3/2}} \int \frac{d^3\mathbf{k}}{2k^0} U(t)^\dagger (a_{\mathbf{k}}e^{-i\mathbf{k}\cdot\mathbf{x}} + a^\dagger_{\mathbf{k}}e^{i\mathbf{k}\cdot\mathbf{x}}) U(t) \\
+    &= \frac{1}{(2\pi)^{3/2}} \int \frac{d^3\mathbf{k}}{2k^0} (U(t)^\dagger a_{\mathbf{k}} U(t) e^{i\mathbf{k}\cdot\mathbf{x}} + U(t)^\dagger a^\dagger_{\mathbf{k}} U(t) e^{-i\mathbf{k}\cdot\mathbf{x}}) \\
+    &= \frac{1}{(2\pi)^{3/2}} \int \frac{d^3\mathbf{k}}{2k^0} (e^{-ik^0 t} a_{\mathbf{k}} e^{i\mathbf{k}\cdot\mathbf{x}} + e^{ik^0 t} a^\dagger_{\mathbf{k}} e^{-i\mathbf{k}\cdot\mathbf{x}}) \\
+    &= \frac{1}{(2\pi)^{3/2}} \int \frac{d^3\mathbf{k}}{2k^0} (e^{-ikx} a_{\mathbf{k}} + a^\dagger_{\mathbf{k}} e^{ikx}) \\
+    &= \Phi(t, \mathbf{x}).
+\end{aligned}
+\end{equation}
+
+\textbf{2.} Expanding the exponentials, we have
+\begin{equation}
+    \langle f_1 | f_2 \rangle = \sum_{n,m=0}^\infty \frac{1}{n!m!} \int \prod_{\alpha=1}^n \left[ f_1^*(\mathbf{k}_\alpha) \frac{d^3\mathbf{k}_\alpha}{2k^0_\alpha} \right] \prod_{\beta=1}^m \left[ f_2(\mathbf{k}'_\beta) \frac{d^3\mathbf{k}'_\beta}{2k'^0_\beta} \right] \langle 0 | a_{\mathbf{k}_1} \cdots a_{\mathbf{k}_n} a^\dagger_{\mathbf{k}'_1} \cdots a^\dagger_{\mathbf{k}'_m} | 0 \rangle.
+\end{equation}
+Let
+\begin{equation}
+    C_{n,m} = \langle 0 | a_{\mathbf{k}_1} \cdots a_{\mathbf{k}_n} a^\dagger_{\mathbf{k}'_1} \cdots a^\dagger_{\mathbf{k}'_m} | 0 \rangle.
+\end{equation}
+By induction, one can show that
+\begin{equation}
+    C_{n,m}(\mathbf{k}_1, \cdots, \mathbf{k}_n | \mathbf{k}'_1, \cdots, \mathbf{k}'_m) = \delta_{n,m} \sum_{\sigma \in S_n} \prod_{\alpha=1}^n 2k^0_\alpha \delta^{(3)}(\mathbf{k}_\alpha - \mathbf{k}'_{\sigma(\alpha)}).
+\end{equation}
+Let's first consider the case $n=m$. We obviously have $C_{00} = 1$, and using the commutation relations, we find $C_{11} = 2k^0_1 \delta^{(3)}(\mathbf{k}_1 - \mathbf{k}'_1)$. The first non-trivial case is
+\begin{equation}
+\begin{aligned}
+    C_{22}(\mathbf{k}_1, \mathbf{k}_2 | \mathbf{k}'_1, \mathbf{k}'_2) &= \langle 0 | a_{\mathbf{k}_1} a_{\mathbf{k}_2} a^\dagger_{\mathbf{k}'_1} a^\dagger_{\mathbf{k}'_2} | 0 \rangle \\
+    &= 2k^0_2 \delta^{(3)}(\mathbf{k}_2 - \mathbf{k}'_1) \langle 0 | a_{\mathbf{k}_1} a^\dagger_{\mathbf{k}'_2} | 0 \rangle + 2k^0_2 \delta^{(3)}(\mathbf{k}_2 - \mathbf{k}'_2) \langle 0 | a_{\mathbf{k}_1} a^\dagger_{\mathbf{k}'_1} | 0 \rangle \\
+    &= 2k^0_2 \delta^{(3)}(\mathbf{k}_2 - \mathbf{k}'_1) C_{11}(\mathbf{k}_1 | \mathbf{k}'_2) + 2k^0_2 \delta^{(3)}(\mathbf{k}_2 - \mathbf{k}'_2) C_{11}(\mathbf{k}_1 | \mathbf{k}'_1)
+\end{aligned}
+\end{equation}
+where the second line is obtained by moving $a_{\mathbf{k}_2}$ to the right using the commutator until it reaches the state $|0\rangle$ where the corresponding term vanishes since $a_{\mathbf{k}_2}|0\rangle = 0$. Repeating this argument, we have
+\begin{equation}
+    C_{nn}(\mathbf{k}_1, \cdots, \mathbf{k}_n | \mathbf{k}'_1, \cdots, \mathbf{k}'_n) = \sum_{\beta=1}^n 2k^{(0)}_n \delta^{(3)}(\mathbf{k}_n - \mathbf{k}_\beta) C_{n-1 \ n-1}(\mathbf{k}_1, \cdots, \mathbf{k}_{n-1} | \mathbf{k}'_1, \cdots, \sout{\mathbf{k}'_\alpha}, \cdots, \mathbf{k}'_n).
+\end{equation}
+Thus, by induction we have
+\begin{equation}
+\begin{aligned}
+    C_{nn}(\mathbf{k}_1, \cdots, \mathbf{k}_n | \mathbf{k}'_1, \cdots, \mathbf{k}'_n) &= \sum_{\beta=1}^n 2k^{(0)}_n \delta^{(3)}(\mathbf{k}_n - \mathbf{k}_\beta) \sum_{\sigma \in S_{n-1}} \prod_{\alpha=1}^{n-1} 2k^0_\alpha \delta^{(3)}(\mathbf{k}_\alpha - \mathbf{k}'_{\sigma(\alpha)}) \\
+    &= \sum_{\sigma \in S_n} \prod_{\alpha=1}^n 2k^0_\alpha \delta^{(3)}(\mathbf{k}_\alpha - \mathbf{k}'_{\sigma(\alpha)})
+\end{aligned}
+\end{equation}
+denoting $\beta = \sigma(n)$.
+It remains to show the orthogonality $C_{n,m} \propto \delta_{n,m}$, this is done by noticing that if $n > m$ or $n < m$ the commutation procedure used above will terminate with extra insertions of $a$ or $a^\dagger$, and so the corresponding correlator should vanish. For instance,
+\begin{equation}
+\begin{aligned}
+    C_{21}(\mathbf{k}_1, \mathbf{k}_2 | \mathbf{k}'_1) &= \langle 0 | a_{\mathbf{k}_1} a_{\mathbf{k}_2} a^\dagger_{\mathbf{k}'_1} | 0 \rangle = 2k^0_2 \delta^{(3)}(\mathbf{k}_2 - \mathbf{k}'_1) \langle 0 | a_{\mathbf{k}_1} | 0 \rangle = 0, \\
+    C_{12}(\mathbf{k}_1 | \mathbf{k}'_1, \mathbf{k}'_2) &= \langle 0 | a_{\mathbf{k}_1} a^\dagger_{\mathbf{k}'_1} a^\dagger_{\mathbf{k}'_2} | 0 \rangle = 2k^0_1 \delta^{(3)}(\mathbf{k}_1 - \mathbf{k}'_1) \langle 0 | a^\dagger_{\mathbf{k}'_2} | 0 \rangle + 2k^0_1 \delta^{(3)}(\mathbf{k}_1 - \mathbf{k}'_2) \langle 0 | a^\dagger_{\mathbf{k}'_1} | 0 \rangle = 0.
+\end{aligned}
+\end{equation}
+Coming back to the expression of the inner product, and inserting our result for $C_{nn}$, we find
+\begin{equation}
+\begin{aligned}
+    \langle f_1 | f_2 \rangle &= \sum_{n,m=0}^\infty \frac{1}{n!m!} \int \prod_{\alpha=1}^n \left[ f_1^*(\mathbf{k}_\alpha) \frac{d^3\mathbf{k}_\alpha}{2k^0_\alpha} \right] \prod_{\beta=1}^m \left[ f_2(\mathbf{k}'_\beta) \frac{d^3\mathbf{k}'_\beta}{2k'^0_\beta} \right] \delta_{n,m} \sum_{\sigma \in S_n} \prod_{\alpha=1}^n 2k^0_\alpha \delta^{(3)}(\mathbf{k}_\alpha - \mathbf{k}'_{\sigma(\alpha)}) \\
+    &= \sum_{n=0}^\infty \frac{1}{(n!)^2} \sum_{\sigma \in S_n} \int \prod_{\alpha=1}^n \left[ f_1^*(\mathbf{k}_\alpha) \frac{d^3\mathbf{k}_\alpha}{2k^0_\alpha} \right] \prod_{\beta=1}^n \left[ f_2(\mathbf{k}'_\beta) \frac{d^3\mathbf{k}'_\beta}{2k'^0_\beta} \right] \prod_{\alpha=1}^n \left[ 2k^0_\alpha \delta^{(3)}(\mathbf{k}_\alpha - \mathbf{k}'_{\sigma(\alpha)}) \right] \\
+    &= \sum_{n=0}^\infty \frac{1}{n!} \int \prod_{\alpha=1}^n \left[ f_1^*(\mathbf{k}_\alpha) \frac{d^3\mathbf{k}_\alpha}{2k^0_\alpha} \right] \prod_{\beta=1}^n \left[ f_2(\mathbf{k}'_\beta) \frac{d^3\mathbf{k}'_\beta}{2k'^0_\beta} \right] \delta_{n,m} \prod_{\alpha=1}^n \left[ 2k^0_\alpha \delta^{(3)}(\mathbf{k}_\alpha - \mathbf{k}'_\alpha) \right] \\
+    &= \sum_{n=0}^\infty \frac{1}{n!} \int \prod_{\alpha=1}^n \left[ \frac{d^3\mathbf{k}_\alpha}{2k^0_\alpha} f_1^*(\mathbf{k}_\alpha) f_2(\mathbf{k}_\alpha) \right] = \exp \left( \int \frac{d^3\mathbf{k}}{2k^0} f_1^*(\mathbf{k}) f_2(\mathbf{k}) \right)
+\end{aligned}
+\end{equation}
+by exploiting the invariance under permutation of the integral. In general, the integral inside the exponential is non-vanishing and the states are not orthogonal.
+
+\textbf{3.} Let's first compute by induction
+\begin{equation}
+    [a_{\mathbf{k}}, a^\dagger_{\mathbf{k}_1} \cdots a^\dagger_{\mathbf{k}_n}] = \sum_{\alpha=1}^n 2k^{(0)}_\alpha \delta^{(3)}(\mathbf{k} - \mathbf{k}_\alpha) a^\dagger_{\mathbf{k}_1} \cdots \sout{a^\dagger_{\mathbf{k}_\alpha}} \cdots a^\dagger_{\mathbf{k}_n},
+\end{equation}
+and since $a_{\mathbf{k}}|0\rangle = 0$, we deduce
+\begin{equation}
+\begin{aligned}
+    a_{\mathbf{k}} \int \prod_{\alpha=1}^n \left[ \frac{d^3\mathbf{k}_\alpha}{2k^0_\alpha} f(\mathbf{k}_\alpha) \right] a^\dagger_{\mathbf{k}_1} \cdots a^\dagger_{\mathbf{k}_n} |0\rangle &= \sum_{\beta=1}^n \int \prod_{\alpha=1}^n \left[ \frac{d^3\mathbf{k}_\alpha}{2k^0_\alpha} f(\mathbf{k}_\alpha) \right] 2k^{(0)}_\beta \delta^{(3)}(\mathbf{k} - \mathbf{k}_\beta) a^\dagger_{\mathbf{k}_1} \cdots \sout{a^\dagger_{\mathbf{k}_\beta}} \cdots a^\dagger_{\mathbf{k}_n} |0\rangle \\
+    &= n \int \prod_{\alpha=1}^n \left[ \frac{d^3\mathbf{k}_\alpha}{2k^0_\alpha} f(\mathbf{k}_\alpha) \right] 2k^{(0)}_n \delta^{(3)}(\mathbf{k} - \mathbf{k}_n) a^\dagger_{\mathbf{k}_1} \cdots a^\dagger_{\mathbf{k}_{n-1}} |0\rangle \\
+    &= n f(\mathbf{k}) \int \prod_{\alpha=1}^{n-1} \left[ \frac{d^3\mathbf{k}_\alpha}{2k^0_\alpha} f(\mathbf{k}_\alpha) \right] a^\dagger_{\mathbf{k}_1} \cdots a^\dagger_{\mathbf{k}_{n-1}} |0\rangle,
+\end{aligned}
+\end{equation}
+since we can always commute the operators and relabel the variables to take $\beta = n$. We deduce that
+\begin{equation}
+\begin{aligned}
+    a_{\mathbf{k}} |f\rangle &= \sum_{n=0}^\infty \frac{1}{n!} a_{\mathbf{k}} \int \prod_{\alpha=1}^n \left[ \frac{d^3\mathbf{k}_\alpha}{2k^0_\alpha} f(\mathbf{k}_\alpha) \right] a^\dagger_{\mathbf{k}_1} \cdots a^\dagger_{\mathbf{k}_n} |0\rangle \\
+    &= \sum_{n=1}^\infty \frac{1}{(n-1)!} f(\mathbf{k}) \int \prod_{\alpha=1}^{n-1} \left[ \frac{d^3\mathbf{k}_\alpha}{2k^0_\alpha} f(\mathbf{k}_\alpha) \right] a^\dagger_{\mathbf{k}_1} \cdots a^\dagger_{\mathbf{k}_{n-1}} |0\rangle \\
+    &= f(\mathbf{k}) |f\rangle.
+\end{aligned}
+\end{equation}
+Thus $a_{\mathbf{k}}$ is diagonal on the states $|f\rangle$ with eigenvalue $f(\mathbf{k})$.
+
+\textbf{4.} This calculation is very similar to the case of the field solved in question one. Using the result on the time evolution of the modes, we can write down
+\begin{equation}
+\begin{aligned}
+    U(t) |f\rangle &= \sum_{n=0}^\infty \frac{1}{n!} \int \prod_{\alpha=1}^n \left[ \frac{d^3\mathbf{k}_\alpha}{2k^0_\alpha} f(\mathbf{k}_\alpha) \right] U(t) a^\dagger_{\mathbf{k}_1} \cdots a^\dagger_{\mathbf{k}_n} |0\rangle \\
+    &= \sum_{n=0}^\infty \frac{1}{n!} \int \prod_{\alpha=1}^n \left[ \frac{d^3\mathbf{k}_\alpha}{2k^0_\alpha} f(\mathbf{k}_\alpha) \right] U(t) a^\dagger_{\mathbf{k}_1} U(t)^{-1} U(t) a^\dagger_{\mathbf{k}_2} U(t)^{-1} \cdots U(t) a^\dagger_{\mathbf{k}_n} U(t)^{-1} U(t) |0\rangle \\
+    &= \sum_{n=0}^\infty \frac{1}{n!} \int \prod_{\alpha=1}^n \left[ \frac{d^3\mathbf{k}_\alpha}{2k^0_\alpha} f(\mathbf{k}_\alpha) \right] e^{-ik^0_1 t} a^\dagger_{\mathbf{k}_1} e^{-ik^0_2 t} a^\dagger_{\mathbf{k}_2} \cdots e^{-ik^0_n t} a^\dagger_{\mathbf{k}_n} |0\rangle \\
+    &= \sum_{n=0}^\infty \frac{1}{n!} \int \prod_{\alpha=1}^n \left[ \frac{d^3\mathbf{k}_\alpha}{2k^0_\alpha} e^{-ik^0_\alpha t} f(\mathbf{k}_\alpha) \right] a^\dagger_{\mathbf{k}_1} a^\dagger_{\mathbf{k}_2} \cdots a^\dagger_{\mathbf{k}_n} |0\rangle = |f_t\rangle,
+\end{aligned}
+\end{equation}
+where we used $U(t)|0\rangle = |0\rangle$ since $H|0\rangle = 0$.
+
+\textbf{Exercise 2.} \textit{(10 points) In this exercise, we study both the classical and quantum Dirac spinor fields of mass $m$.}
+
+\begin{enumerate}
+    \item Let $\boldsymbol{\sigma} = (\sigma^1, \sigma^2, \sigma^3)$ be the vector of Pauli matrices and $\mathbf{k} = (k^1, k^2, k^3)$ the momentum vector. Find two orthonormal eigenvectors of the matrix $\mathbf{k}\cdot\boldsymbol{\sigma}$ with eigenvalues $|\mathbf{k}|$ and $-|\mathbf{k}|$. In the following, we will denote them $\varphi_1(\mathbf{k})$ and $\varphi_2(\mathbf{k})$ respectively. \textit{(1 point)}
+
+    \item We introduce the following 4-vector of polarization,
+    \begin{equation}
+        U_r(\mathbf{k}) = \frac{1}{\sqrt{k^0+m}} \begin{pmatrix} (k^0+m)\varphi_r(\mathbf{k}) \\ \mathbf{k}\cdot\boldsymbol{\sigma}\varphi_r(\mathbf{k}) \end{pmatrix}, \quad V_r(\mathbf{k}) = \frac{1}{\sqrt{k^0+m}} \begin{pmatrix} \mathbf{k}\cdot\boldsymbol{\sigma}\varphi_r(\mathbf{k}) \\ (k^0+m)\varphi_r(\mathbf{k}) \end{pmatrix},
+    \end{equation}
+    and the classical field
+    \begin{equation}
+        \Psi(x) = \frac{1}{(2\pi)^{3/2}} \int \frac{d^3\mathbf{k}}{2k^0} \sum_{r=1,2} (U_r(\mathbf{k})b_{r\mathbf{k}}e^{-ikx} + V_r(\mathbf{k})d^*_{r\mathbf{k}}e^{ikx}),
+    \end{equation}
+    with arbitrary modes $b_{r\mathbf{k}}$ and $d^*_{r\mathbf{k}}$ determined from initial conditions. Explain why $\Psi(x)$ satisfies the Dirac equation. \textit{(1 point)}
+
+    \item Show that the following projection relations hold \textit{(1 point)}
+    \begin{equation}
+        U^\dagger_r(\mathbf{k})U_s(\mathbf{k}) = V^\dagger_r(\mathbf{k})V_s(\mathbf{k}) = 2k^0\delta_{r,s}, \quad U^\dagger_r(\mathbf{k})V_s(-\mathbf{k}) = V^\dagger_r(\mathbf{k})U_s(-\mathbf{k}) = 0.
+    \end{equation}
+
+    \item We define the helicity operator $S_{\mathbf{k}} = \frac{\mathbf{k}\cdot\boldsymbol{\Sigma}}{|\mathbf{k}|}$ where $\boldsymbol{\Sigma}$ is the vector of $4\times4$ matrices $\boldsymbol{\Sigma} = \begin{pmatrix} \boldsymbol{\sigma} & 0 \\ 0 & \boldsymbol{\sigma} \end{pmatrix}$. Show that $U_r(\mathbf{k})$ and $V_r(\mathbf{k})$ are eigenvectors of $S_{\mathbf{k}}$ with eigenvalues $(-1)^{r+1}$. \textit{(1 point)}
+
+    \item We now introduce a quantum Dirac field with the same polarization vectors,
+    \begin{equation}
+        \Psi(x) = \frac{1}{(2\pi)^{3/2}} \int \frac{d^3\mathbf{k}}{2k^0} \sum_{r=1,2} (U_r(\mathbf{k})b_{r\mathbf{k}}e^{-ikx} + V_r(\mathbf{k})d^\dagger_{r\mathbf{k}}e^{ikx}),
+    \end{equation}
+    with the modes satisfying the anticommutation relations $\{b_{r\mathbf{k}}, b^\dagger_{s\mathbf{k}'}\} = \{d_{r\mathbf{k}}, d^\dagger_{s\mathbf{k}'}\} = 2k^0\delta^{(3)}(\mathbf{k}-\mathbf{k}')\delta_{r,s}$ (other anticommutators being trivial). The quantum helicity operator can be obtained as a projection of the Pauli-Lubanski operator on the direction of momentum. It leads to the following expression
+    \begin{equation}
+        \hat{S} = \frac{-i}{2} \int d^3\mathbf{x} : \Psi^\dagger(x) \boldsymbol{\Sigma} \cdot \hat{\nabla} \Psi(x) :,
+    \end{equation}
+    where the differential operator $\hat{\nabla}$ acts as follows on the Dirac field,
+    \begin{equation}
+        \hat{\nabla} \Psi(x) = \frac{i}{(2\pi)^{3/2}} \int \frac{d^3\mathbf{k}}{2k^0} \frac{\mathbf{k}}{|\mathbf{k}|} \sum_{r=1,2} (U_r(\mathbf{k})b_{r\mathbf{k}}e^{-ikx} - V_r(\mathbf{k})d^\dagger_{r\mathbf{k}}e^{ikx})
+    \end{equation}
+    Show that in our polarization basis, the helicity operator simplifies into \textit{(3 points)}
+    \begin{equation}
+        \hat{S} = \frac{1}{2} \int \frac{d^3\mathbf{k}}{2k^0} \sum_{r=1,2} (-)^{r+1} (b^\dagger_{r\mathbf{k}}b_{r\mathbf{k}} + d^\dagger_{r\mathbf{k}}d_{r\mathbf{k}}).
+    \end{equation}
+
+    \item We consider a state with one particle and one antiparticle with the same momentum and independent polarizations,
+    \begin{equation}
+        |1\bar{1}rs\rangle = b^\dagger_{r\mathbf{k}} d^\dagger_{s\mathbf{k}} |0\rangle.
+    \end{equation}
+    Compute the energy, momentum, helicity and U(1) charge of this state. \textit{(3 points)}
+\end{enumerate}
+
+\textbf{Solutions:}
+
+\textbf{1.} Solutions might differ by a phase, but using your favorite method you should find
+\begin{equation}
+    \varphi_1(\mathbf{k}) = \frac{1}{\sqrt{2|\mathbf{k}|(|\mathbf{k}|-k^3)}} \begin{pmatrix} k^1-ik^2 \\ -k^3+|\mathbf{k}| \end{pmatrix}, \quad \varphi_2(\mathbf{k}) = \frac{1}{\sqrt{2|\mathbf{k}|(|\mathbf{k}|+k^3)}} \begin{pmatrix} k^1-ik^2 \\ -k^3-|\mathbf{k}| \end{pmatrix}.
+\end{equation}
+Note that we have indeed $\varphi^\dagger_r \varphi_s = \delta_{r,s}$.
+
+\textbf{2.} Using the Fourier transform, we have shown in class that solutions of the Dirac equations are of the form (23) where polarization vectors $U_r(\mathbf{k})$ and $V_r(\mathbf{k})$ must satisfy the equations
+\begin{equation}
+    (\not{k}-m)U_r(\mathbf{k}) = 0, \quad (\not{k}+m)V_r(\mathbf{k}) = 0.
+\end{equation}
+Then, we have shown that the solutions of these equations are given by vectors of the form
+\begin{equation}
+    U_r(\mathbf{k}) = \frac{1}{\sqrt{k^0+m}} \begin{pmatrix} (k^0+m)\psi_r \\ \mathbf{k}\cdot\boldsymbol{\sigma}\psi_r \end{pmatrix}, \quad V_r(\mathbf{k}) = \frac{1}{\sqrt{k^0+m}} \begin{pmatrix} \mathbf{k}\cdot\boldsymbol{\sigma}\chi_r \\ (k^0+m)\chi_r \end{pmatrix}.
+\end{equation}
+where $\psi_r$ (and $\chi_r$) are two arbitrary linearly independent two dimensional vectors. The choice $\psi_r = \chi_r = \varphi_r(\mathbf{k})$ is just a particular case.
+
+\textbf{3.} We use the same method as seen in class, exploiting the fact that $\varphi^\dagger_r \varphi_s = \delta_{r,s}$, $\boldsymbol{\sigma}^\dagger = \boldsymbol{\sigma}$ and the mass shell condition $m^2 = (k^0)^2 - \mathbf{k}^2$. For instance,
+\begin{equation}
+\begin{aligned}
+    U_r(\mathbf{k})^\dagger U_s(\mathbf{k}) &= \frac{1}{k^0+m} \left[ \varphi_r(\mathbf{k})^\dagger (k^0+m)^2 \varphi_s(\mathbf{k}) + \varphi_r(\mathbf{k})^\dagger (\mathbf{k}\cdot\boldsymbol{\sigma})^2 \varphi_s(\mathbf{k}) \right] \\
+    &= \frac{1}{k^0+m} \left[ (k^0+m)^2 + \mathbf{k}^2 \right] \varphi_r(\mathbf{k})^\dagger \varphi_s(\mathbf{k}) = 2k^0 \delta_{r,s},
+\end{aligned}
+\end{equation}
+since $(\mathbf{k}\cdot\boldsymbol{\sigma})^2 = k^i k^j \sigma^i \sigma^j = k^i k^j \delta_{i,j} = \mathbf{k}^2$, and
+\begin{equation}
+    U_r(\mathbf{k})^\dagger V_s(-\mathbf{k}) = \frac{1}{k^0+m} \left[ -\varphi_r(\mathbf{k})^\dagger (k^0+m)(\mathbf{k}\cdot\boldsymbol{\sigma}) \varphi_s(\mathbf{k}) + \varphi_r(\mathbf{k})^\dagger (\mathbf{k}\cdot\boldsymbol{\sigma})(k^0+m) \varphi_s(\mathbf{k}) \right] = 0.
+\end{equation}
+The other two relations are obtained in the same way.
+
+\textbf{4.} Using the property $(\mathbf{k}\cdot\boldsymbol{\sigma})\varphi_r(\mathbf{k}) = (-)^{r+1}|\mathbf{k}|$ and $(\mathbf{k}\cdot\boldsymbol{\sigma})^2 = \mathbf{k}^2$, we compute
+\begin{equation}
+\begin{aligned}
+    (\mathbf{k}\cdot\boldsymbol{\Sigma}) U_r(\mathbf{k}) &= \frac{1}{\sqrt{k^0+m}} \begin{pmatrix} \mathbf{k}\cdot\boldsymbol{\sigma} & 0 \\ 0 & \mathbf{k}\cdot\boldsymbol{\sigma} \end{pmatrix} \begin{pmatrix} (k^0+m)\varphi_r(\mathbf{k}) \\ \mathbf{k}\cdot\boldsymbol{\sigma}\varphi_r(\mathbf{k}) \end{pmatrix} = \frac{1}{\sqrt{k^0+m}} \begin{pmatrix} (k^0+m)\mathbf{k}\cdot\boldsymbol{\sigma}\varphi_r(\mathbf{k}) \\ \mathbf{k}^2\varphi_r(\mathbf{k}) \end{pmatrix} \\
+    &= \frac{(-)^{r+1}|\mathbf{k}|}{\sqrt{k^0+m}} \begin{pmatrix} (k^0+m)\varphi_r(\mathbf{k}) \\ (\mathbf{k}\cdot\boldsymbol{\sigma})\varphi_r(\mathbf{k}) \end{pmatrix} = (-)^{r+1}|\mathbf{k}| U_r(\mathbf{k}) \quad \Rightarrow \quad S_{\mathbf{k}} U_r(\mathbf{k}) = (-)^{r+1} U_r(\mathbf{k}).
+\end{aligned}
+\end{equation}
+The calculation is exactly the same for $V_r(\mathbf{k})$.
+
+\textbf{5.} This calculation is very similar to what we have been doing in class, so we will be brief. From the expression of the operators $\hat{S}$ and $\hat{\nabla}$, we find
+\begin{equation}
+    \hat{S} = \frac{1}{2(2\pi)^3} \int d^3\mathbf{x} \int \frac{d^3\mathbf{k}}{2k^0} \int \frac{d^3\mathbf{k}'}{2k'^0} \sum_{r,s=1,2} : \left( U_r(\mathbf{k})^\dagger b^\dagger_{r\mathbf{k}} e^{ikx} + V_r(\mathbf{k})^\dagger d_{r\mathbf{k}} e^{-ikx} \right) \frac{\mathbf{k}'\cdot\boldsymbol{\Sigma}}{|\mathbf{k}'|} \left( U_s(\mathbf{k}') b_{s\mathbf{k}'} e^{-ik'x} - V_s(\mathbf{k}') d^\dagger_{s\mathbf{k}'} e^{ik'x} \right) :.
+\end{equation}
+We start by performing the $d^3\mathbf{x}$ integration, it produces delta functions (see Assignment 1),
+\begin{equation}
+\begin{aligned}
+    \hat{S} = \frac{1}{2} \int \frac{d^3\mathbf{k}}{2k^0} \int \frac{d^3\mathbf{k}'}{2k'^0} \sum_{r,s=1,2} \bigg[ &\delta^{(3)}(\mathbf{k}-\mathbf{k}') \left( U_r(\mathbf{k})^\dagger \frac{\mathbf{k}'\cdot\boldsymbol{\Sigma}}{|\mathbf{k}'|} U_s(\mathbf{k}') : b^\dagger_{r\mathbf{k}} b_{s\mathbf{k}'} : - V_r(\mathbf{k})^\dagger \frac{\mathbf{k}'\cdot\boldsymbol{\Sigma}}{|\mathbf{k}'|} V_s(\mathbf{k}') : d_{r\mathbf{k}} d^\dagger_{s\mathbf{k}'} : \right) \\
+    &+ \delta^{(3)}(\mathbf{k}+\mathbf{k}') \left( -e^{2ik^0t} U_r(\mathbf{k})^\dagger \frac{\mathbf{k}'\cdot\boldsymbol{\Sigma}}{|\mathbf{k}'|} V_s(\mathbf{k}') : b^\dagger_{r\mathbf{k}} d^\dagger_{s\mathbf{k}'} : + e^{-2ik^0t} V_r(\mathbf{k})^\dagger \frac{\mathbf{k}'\cdot\boldsymbol{\Sigma}}{|\mathbf{k}'|} U_s(\mathbf{k}') : d_{r\mathbf{k}} b_{s\mathbf{k}'} : \right) \bigg].
+\end{aligned}
+\end{equation}
+Then, we use the fact that polarization vectors are eigenvectors of the operator $S_{\mathbf{k}'}$ with eigenvalue $(-1)^{s+1}$, and so
+\begin{equation}
+\begin{aligned}
+    \hat{S} = \frac{1}{2} \int \frac{d^3\mathbf{k}}{2k^0} \int \frac{d^3\mathbf{k}'}{2k'^0} \sum_{r,s=1,2} (-1)^{s+1} \bigg[ &\delta^{(3)}(\mathbf{k}-\mathbf{k}') \left( U_r(\mathbf{k})^\dagger U_s(\mathbf{k}') : b^\dagger_{r\mathbf{k}} b_{s\mathbf{k}'} : - V_r(\mathbf{k})^\dagger V_s(\mathbf{k}') : d_{r\mathbf{k}} d^\dagger_{s\mathbf{k}'} : \right) \\
+    &+ \delta^{(3)}(\mathbf{k}+\mathbf{k}') \left( -e^{2ik^0t} U_r(\mathbf{k})^\dagger V_s(\mathbf{k}') : b^\dagger_{r\mathbf{k}} d^\dagger_{s\mathbf{k}'} : + e^{-2ik^0t} V_r(\mathbf{k})^\dagger U_s(\mathbf{k}') : d_{r\mathbf{k}} b_{s\mathbf{k}'} : \right) \bigg]
+\end{aligned}
+\end{equation}
+The delta functions can be used to eliminate one of the two integrations,
+\begin{equation}
+\begin{aligned}
+    \hat{S} = \frac{1}{2} \int \frac{d^3\mathbf{k}}{(2k^0)^2} \sum_{r,s=1,2} (-1)^{s+1} \bigg[ &U_r(\mathbf{k})^\dagger U_s(\mathbf{k}) : b^\dagger_{r\mathbf{k}} b_{s\mathbf{k}} : - V_r(\mathbf{k})^\dagger V_s(\mathbf{k}) : d_{r\mathbf{k}} d^\dagger_{s\mathbf{k}} : \\
+    &- e^{2ik^0t} U_r(\mathbf{k})^\dagger V_s(-\mathbf{k}) : b^\dagger_{r\mathbf{k}} d^\dagger_{s-\mathbf{k}} : + e^{-2ik^0t} V_r(\mathbf{k})^\dagger U_s(-\mathbf{k}) : d_{r\mathbf{k}} b_{s-\mathbf{k}} : \bigg]
+\end{aligned}
+\end{equation}
+Finally, using the projection relations of the polarization vectors, and then normal-order relations, we find the expected result
+\begin{equation}
+\begin{aligned}
+    \hat{S} &= \frac{1}{2} \int \frac{d^3\mathbf{k}}{(2k^0)^2} \sum_{r,s=1,2} (-1)^{s+1} 2k^0 \delta_{r,s} \left( : b^\dagger_{r\mathbf{k}} b_{s\mathbf{k}} : - : d_{r\mathbf{k}} d^\dagger_{s\mathbf{k}} : \right) \\
+    &= \frac{1}{2} \int \frac{d^3\mathbf{k}}{2k^0} \sum_{r=1,2} (-1)^{r+1} \left( : b^\dagger_{r\mathbf{k}} b_{r\mathbf{k}} : - : d_{r\mathbf{k}} d^\dagger_{r\mathbf{k}} : \right) \\
+    &= \frac{1}{2} \int \frac{d^3\mathbf{k}}{2k^0} \sum_{r=1,2} (-1)^{r+1} \left( b^\dagger_{r\mathbf{k}} b_{r\mathbf{k}} + d^\dagger_{r\mathbf{k}} d_{r\mathbf{k}} \right).
+\end{aligned}
+\end{equation}
+
+\textbf{6.} Let's introduce the number of particles operators $N_{r\mathbf{k}} = b^\dagger_{r\mathbf{k}} b_{r\mathbf{k}}$, $\bar{N}_{r\mathbf{k}} = d^\dagger_{r\mathbf{k}} d_{r\mathbf{k}}$, then we can show that
+\begin{equation}
+\begin{aligned}
+    [N_{r\mathbf{k}}, b^\dagger_{s\mathbf{k}'}] &= b^\dagger_{r\mathbf{k}} b_{r\mathbf{k}} b^\dagger_{s\mathbf{k}'} - b^\dagger_{s\mathbf{k}'} b^\dagger_{r\mathbf{k}} b_{r\mathbf{k}} = 2k^0 \delta_{r,s} \delta^{(3)}(\mathbf{k}-\mathbf{k}') b^\dagger_{r\mathbf{k}} - b^\dagger_{r\mathbf{k}} b^\dagger_{s\mathbf{k}'} b_{r\mathbf{k}} - b^\dagger_{s\mathbf{k}'} b^\dagger_{r\mathbf{k}} b_{r\mathbf{k}} = 2k^0 \delta_{r,s} \delta^{(3)}(\mathbf{k}-\mathbf{k}') b^\dagger_{r\mathbf{k}}, \\
+    [N_{r\mathbf{k}}, d^\dagger_{s\mathbf{k}'}] &= b^\dagger_{r\mathbf{k}} b_{r\mathbf{k}} d^\dagger_{s\mathbf{k}'} - d^\dagger_{s\mathbf{k}'} b^\dagger_{r\mathbf{k}} b_{r\mathbf{k}} = -b^\dagger_{r\mathbf{k}} d^\dagger_{s\mathbf{k}'} b_{r\mathbf{k}} - d^\dagger_{s\mathbf{k}'} b^\dagger_{r\mathbf{k}} b_{r\mathbf{k}} = 0,
+\end{aligned}
+\end{equation}
+and, in the same way, exchanging $b$ and $d$,
+\begin{equation}
+    [\bar{N}_{r\mathbf{k}}, b^\dagger_{s\mathbf{k}'}] = 0, \quad [\bar{N}_{r\mathbf{k}}, d^\dagger_{s\mathbf{k}'}] = 2k^0 \delta_{r,s} \delta^{(3)}(\mathbf{k}-\mathbf{k}') d^\dagger_{r\mathbf{k}}.
+\end{equation}
+Note also that $N_{r\mathbf{k}}|0\rangle = \bar{N}_{r\mathbf{k}}|0\rangle = 0$.
+Then, notice that all our operators can actually be expressed in terms of these number operators,
+\begin{equation}
+    P^\mu = \int \frac{d^3\mathbf{k}}{2k^0} k^\mu \sum_{r=1,2} (N_{r\mathbf{k}} + \bar{N}_{r\mathbf{k}}), \quad \hat{S} = \frac{1}{2} \int \frac{d^3\mathbf{k}}{2k^0} \sum_{r=1,2} (-)^{r+1} (N_{r\mathbf{k}} + \bar{N}_{r\mathbf{k}}), \quad Q = \int \frac{d^3\mathbf{k}}{2k^0} \sum_{r=1,2} (N_{r\mathbf{k}} - \bar{N}_{r\mathbf{k}}).
+\end{equation}
+We deduce that the vacuum satisfies $P^\mu|0\rangle = \hat{S}|0\rangle = Q|0\rangle$, and creation operators
+\begin{equation}
+\begin{aligned}
+    [P^\mu, b^\dagger_{r\mathbf{k}}] &= k^\mu b^\dagger_{r\mathbf{k}}, & [\hat{S}, b^\dagger_{r\mathbf{k}}] &= \frac{(-)^{r+1}}{2} b^\dagger_{r\mathbf{k}}, & [Q, b^\dagger_{r\mathbf{k}}] &= b^\dagger_{r\mathbf{k}}, \\
+    [P^\mu, d^\dagger_{r\mathbf{k}}] &= k^\mu d^\dagger_{r\mathbf{k}}, & [\hat{S}, d^\dagger_{r\mathbf{k}}] &= \frac{(-)^{r+1}}{2} d^\dagger_{r\mathbf{k}}, & [Q, d^\dagger_{r\mathbf{k}}] &= -d^\dagger_{r\mathbf{k}},
+\end{aligned}
+\end{equation}
+As a result, we have
+\begin{equation}
+\begin{aligned}
+    P^\mu |1\bar{1}rs\rangle &= P^\mu b^\dagger_{r\mathbf{k}} d^\dagger_{s\mathbf{k}} |0\rangle = [P^\mu, b^\dagger_{r\mathbf{k}}] d^\dagger_{s\mathbf{k}} |0\rangle + b^\dagger_{r\mathbf{k}} [P^\mu, d^\dagger_{s\mathbf{k}}] |0\rangle + b^\dagger_{r\mathbf{k}} d^\dagger_{s\mathbf{k}} P^\mu |0\rangle \\
+    &= k^\mu b^\dagger_{r\mathbf{k}} d^\dagger_{s\mathbf{k}} |0\rangle + k^\mu b^\dagger_{r\mathbf{k}} d^\dagger_{s\mathbf{k}} |0\rangle = 2k^\mu |1\bar{1}rs\rangle.
+\end{aligned}
+\end{equation}
+In the same way, we find
+\begin{equation}
+    \hat{S} |1\bar{1}rs\rangle = \frac{1}{2} \left( (-1)^{r+1} + (-1)^{s+1} \right) |1\bar{1}rs\rangle, \quad Q |1\bar{1}rs\rangle = 0.
+\end{equation}
+Thus, we find that this state has momentum $2\mathbf{k}$, energy $2k^0 = 2\sqrt{m^2+\mathbf{k}^2}$, U(1) charge zero, and helicity that depends on $r,s$, more precisely
+\begin{equation}
+    \hat{S} |1\bar{1}11\rangle = |1\bar{1}11\rangle, \quad \hat{S} |1\bar{1}12\rangle = 0, \quad \hat{S} |1\bar{1}21\rangle = 0, \quad \hat{S} |1\bar{1}22\rangle = -|1\bar{1}22\rangle.
+\end{equation}

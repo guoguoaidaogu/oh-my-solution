@@ -1,0 +1,392 @@
+\english
+
+\def\calL{\mathcal{L}}
+\def\bbR{\mathbb{R}}
+\def\bbC{\mathbb{C}}
+
+\section{Classical Field Theory.}
+
+\subsection{Lagrange formalism for particles.}
+
+\subsubsection{Classical mechanics.}
+
+\qquad $L(q_n, \dot{q}_n)$ Lagrange function [assume no explicit time dependence], $q_n, n=1,\cdots, N$ generalized coordinates.
+
+    $$S[q_n]= \int_{t_1}^{t_2}L(q_n(t), \dot{q}_n(t)) dt$$
+ Action Functional of orbits $q_n(t)$ with fixed starting and end points $q_n(t_1, q_n(t_2)$.
+
+ \qquad Equation of motion follows from the ``action principle''. The orbit taken by the physical system is the one where the action 
+is stationary:
+            $$\delta S[q_n]=0.$$
+This implie the Euler-Lagrange equations
+            $$\frac{d}{dt} \frac{\partial L}{\partial \dot{q}_n} - \frac{\partial L}{\partial q_n} = 0.$$
+
+    \qquad Transition to the Hamiltonian:
+
+    \qquad Canonically conjugate momenta 
+        \begin{equation}
+            p_n \equiv  \frac{\partial L}{\partial \dot{q}_n}.
+        \end{equation}
+Then
+        $$H(q_n, p_n) \equiv \sum\limits_n p_n \dot{q}_n - L(q_n, \dot{q}_n)$$
+where $\dot{q}_n =\dot{q}_n(q_n, p_n)$ by solving (1) for $\dot{q}_n$.
+
+    \qquad The canonical coordinates fulfill the equations
+        $$\{q_n p_m \}_p = \delta_{nm} \qquad \{q_n, q_m\}_p = \{p_n, p_m \}=0.$$
+        $$\begin{cases}
+            \dot{q}_n = \{q_n, H\}_p = \frac{\partial H}{\partial p_n}\\
+            \dot{p}_n = \{p_n, H\}_p = -\frac{\partial H}{\partial q_n}
+        \end{cases},$$
+where $\{A, B\}_p = \frac{\partial A}{\partial q_n}\frac{\partial B}{\partial p_n}-\frac{\partial A}{\partial p_n}\frac{\partial B}{\partial q_n}$.
+
+\subsubsection{Canonical quantization.}
+
+    \qquad $L(q_n, \dot{q}_n)$ given. Interpret $q_n, \dot{q}_n, p_n$ as operators on a Hilbert space.
+
+    \qquad Impose the commutation relations $[\hbar \equiv 1]$,
+            $$[q_n, p_m] = i \delta_{nm} \qquad [q_n, q_m] = [p_n, p_m] =0$$
+at a fixed time.
+
+    \qquad The time evolution of the operators is 
+            $$\dot{q}_n = \frac{1}{i} [ q_n, H].$$
+Note: simply $\{\ ,\ \} \rightarrow \frac{1}{i}[\ ,\ ]$.
+
+\subsection{Lagrange-formalism for fields.}
+
+\qquad A field is a quantity defined at every point of space and time $(\vec{x},t)$
+            $$\phi(\vec{x},t).$$
+Note: the concept of position has been relegated from a dynamical variable in classical mechanism to a mere label in field theory.
+
+\begin{example} E-M field.
+
+    $$\begin{cases}
+        \text{Electric field}: &\vec{E}(\vec{x},t)\\
+        \text{Magnetic field}: &\vec{B}(\vec{x},t)
+    \end{cases}:\qquad \text{spatial}\ 3\text{-vectors},$$
+derive these two $3$-vectors from a single $4$-component filed
+            $$A^\mu(\vec{x},t) = (\phi, \vec{A}) \qquad [\mu=0,1,2,3],$$
+where $A^\mu$ is a vector in spacetime.
+
+    The electric and magnetic fields are
+        $$\vec{E}=-\nabla \phi - \frac{\partial \vec{A}}{\partial t} \qquad \text{and} \qquad \vec{B}= \nabla \times \vec{A}.$$
+\end{example}
+
+\qquad \textbf{The dynamics of the field is governed by a Lagrangian.}
+
+\qquad In relativistic QFT one assumes that $L$ is an integral over Lagrangian density
+            \begin{align*}
+                L &= \int d^3\vec{x} \mathcal{L}(\phi_n(x), \nabla \phi_n(x), \dot{\phi}_n(x))\\
+                    &= \int d^3\vec{x} \mathcal{L}(\partial_\mu \phi_n(x), \phi_n(x)).
+            \end{align*}
+It is difficult to construct non-local Lagrangians, which are compatible with relativistic causality.
+
+\qquad E-L equation:
+    \begin{align*}
+        \delta S &= \delta \int d^4x \mathcal{L}(\phi_n, \partial_\mu \phi_n)\\
+            &= \int d^4x[ \frac{\partial \mathcal{L}}{\partial \phi_n}\delta \phi_n + \frac{\partial \mathscr{L}}{\partial (\partial_\mu \phi_n)} \delta(\partial_\mu \phi_n)]
+    \end{align*}
+Integration by parts and assume $\phi(x) \to 0$ for $\vert \vec{x} \vert \to 0$, we get
+        $$\partial_\mu \left( \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi_n)} \right) - \frac{\partial \mathcal{L}}{\partial \phi_n} =0.$$
+Then we define canonically conjugated fields: 
+        $$\pi_n(x) \equiv \frac{\partial \mathcal{L}}{\partial (\partial_0 \phi_n(x))}.$$
+Hamilton density:   
+        $$H= \sum\limits_n \int d^3 x \pi_n(x) \partial_0 \phi_n(x) - \int d^3 x \mathcal{L} \equiv \int d^3x \mathcal{H}(x)$$
+            $$\Rightarrow \mathcal{H}(x) = \sum\limits_n \pi_n \partial_0 \phi_n - \mathcal{L}.$$
+
+Suppose space were discrete with points $\vec{x}$ on a lattice, then there is a set $\phi_{n, \vec{x}(t)}$ of canonical coordinates, and
+the previous discussion applie with substitutions
+        \begin{tikzcd}
+            &q_n(t) \rar &\phi_{n, \vec{x}}(t) \rar &\phi_n(t, \vec{x}) \equiv \phi(x)\\
+            &\sum\limits_n \rar &\sum\limits_{n, \vec{x}} \rar &\sum\limits_n \int d^3 \vec{x}\\
+            &\delta_{nm} \rar &\delta_{nm} \delta_{\vec{x} \vec{y}} \rar &\delta_{nm} \delta^{(3)}(\vec{x}-\vec{y})\\
+            &L(q_n(t). \dot{q}_n(t)) \rar &L[\phi_n(t), \dot{\phi}_n(t)] \rar &\mathcal{L}(\phi_n(x), \partial_\mu \phi_n(x))
+        \end{tikzcd}
+
+\qquad \textbf{Canonical quantization.}
+    
+    \qquad Impose the equal-time commutation relations
+        $$[\phi_n(t, \vec{x}), \pi_m(t, \vec{y}] = i \delta_{nm} \delta^{(3)}(\vec{x}-\vec{y}),$$
+        $$[\phi_n(t, \vec{x}), \phi_m(t,\vec{y})] = [\pi_n(t, \vec{x}), \pi_m(t, \vec{y})]=0.$$
+The E-L equation is equivalent to the Heisenberg equation
+            $$\dot{\phi}_n(t, \vec{x}) = \frac{1}{i} [ \phi_n(t, \vec{x}), H]$$
+for the field operator. The formal solution is 
+        $$\phi_n(t, \vec{x}) = e^{iHt} \phi_n(0, \vec{x}) e^{-iHt},$$
+since $H$ does not explicitly depend on $t$.
+
+\begin{remark}
+    If the commutation relations are imposed at one time, they are preserved at all times.
+        \begin{align*}
+            [\phi_n(t, \vec{x}), \pi_m(t, \vec{x})] &= [e^{iH(t-t_0)}\phi_n(t_0, \vec{x})e^{-iH(t-t_0)}, e^{iH(t-t_0)} \pi_m(t_0, \vec{x})e^{-iH(t-t_0)}]\\
+                &=e^{iH(t-t_0)}[ \phi_n(t_0, \vec{x}), \pi_m(t_0, \vec{x})] e^{-iH(t-t_0)}\\
+                &= i \delta_{nm} \delta^{(3)} (\vec{x}-\vec{y}).
+        \end{align*}
+
+    \qquad Unless otherwise mentioned one uses the Heisenberg picture in QFT, where the time-dependence is in the operators, not the states.
+\end{remark}
+
+\begin{example} The Klein-Gorden Equation.
+
+    \qquad Consider $L$ for a real scalar field $\phi(\vec{x},t)$.
+        $$\mathcal{L}= \frac{1}{2}g^{\mu \nu} \partial_\mu \phi \partial_\nu \phi - \frac{1}{2}m^2\phi^2 = \frac{1}{2} \dot{\phi}^2 - \frac{1}{2}(\vec{\nabla} \phi)^2 - \frac{1}{2}m^2 \phi^2,$$
+where we use the Minkowski space metric $g^{\mu \nu}= g_{\mu \nu}= \operatorname{diag}(+1, -1, -1, -1)$.
+
+    \qquad We identify the kinetic energy of the field as 
+            $$T= \int d^3 x \frac{1}{2} \dot{\phi}^2,$$
+    the potential energy as
+            $$V= \int d^3 x [\frac{1}{2}(\vec{\nabla} \phi)^2 + \frac{1}{2}m^2 \phi^2],$$
+    where we call the first term by gradient energy and the second term by ``true'' potential energy.
+
+    \qquad To determine the equation of motion (EOM) for $\phi$, we compute
+        $$\frac{\partial \mathcal{L}}{\partial \phi} =-m^2 \phi \qquad \text{and} \qquad \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi)}=\partial^\mu \phi \equiv (\dot{\phi}, - \nabla \phi).$$
+The E-L euqation is then
+        $$\ddot{\phi}- \nabla^2 \phi + m^2 \phi=0 \qquad \text{or} \qquad \partial_\mu \partial^\mu \phi + m^2 \phi,$$
+Klein-Gorden Equation.
+
+    \qquad If we consider the Lagrangian with general potential $V(\phi)$,
+        $$\mathcal{L}= \frac{1}{2}\partial_\mu \phi \partial^\mu \phi - V(\phi) \ \Rightarrow \ \partial_\mu \partial^\mu \phi + \frac{\partial V}{\partial \phi}=0.$$
+\end{example}
+
+{{warning| One page is missing here.}}
+
+\begin{example} Maxwell's Equation.
+
+    \qquad From the Lagrangian $\mathcal{L}= - \frac{1}{2}(\partial_\mu A_\nu)(\partial^\mu A^\nu) + \frac{1}{2} (\partial_\mu A^\mu)^2$.
+
+    \qquad Note: $\mathcal{L}$ has no kinetic term $\dot{A}_0^2 $ for $A_0$.
+
+    \qquad Notice that $\frac{\partial(\partial_\alpha A_\beta)}{\partial( \partial_\mu A_\nu)} = \delta^\mu_\alpha \delta^\nu_\beta$, we compute
+        \begin{align*}
+            \frac{\partial \mathcal{L}}{\partial (\partial_\mu A_\nu)} &= \frac{\partial }{\partial (\partial_\mu A_\nu)}[-\frac{1}{2}\partial_\alpha A_\beta \partial_\rho A_\sigma g^{\rho \alpha} g^{\sigma \beta}+ \frac{1}{2}\partial_\alpha A_\beta \partial_\rho A_\sigma g^{\beta \alpha }g^{\sigma \rho}]\\
+                &= -\frac{1}{2} \delta^\mu_\alpha \delta^\nu_\beta \partial_\rho A_\sigma g^{\rho \alpha}g^{\sigma \beta} - \frac{1}{2}\partial_\alpha A_\beta \delta^\mu_\rho \delta^\nu_\sigma g^{\rho\alpha} g^{\sigma \beta} +\frac{1}{2} \delta^\mu_\alpha \delta^\nu_\beta \partial_\rho A_\sigma g^{\beta\alpha} g^{\sigma \rho} + \frac{1}{2} \partial_\alpha A_\beta \delta^\mu_\rho \delta^\nu_\sigma g^{\beta \alpha} g^{\sigma \rho}\\
+                &= -\frac{1}{2} \partial^\mu A^\nu - \frac{1}{2} \partial^\mu A^\nu + \frac{1}{2} \partial_\rho A^\rho g^{\mu \nu} + \frac{1}{2} \partial_\alpha A^\alpha g^{\mu \nu}\\
+                &= - \partial^\mu A^\nu + \partial_\rho A^\rho g^{\mu \nu}.
+        \end{align*}
+    Then we have
+            \begin{align*}
+                \partial_\mu [\frac{\partial \mathcal{L}}{\partial (\partial_\mu A_\nu)}] 
+                    &= -\partial_\mu(\partial^\mu A^\nu) + \partial^\nu(\partial_\rho A^\rho)\\
+                    &= -\partial_\mu[\partial^\mu A^\nu - \partial^\nu A^\mu] \equiv -\partial_\mu F^{\mu \nu}
+            \end{align*}
+    where the field strength is defined by
+                $$F_{\mu \nu} = \partial_\mu A_\nu - \partial_\nu A_\mu.$$
+    Using $F^{\mu \nu}$, the Maxwell Lagrange is 
+                $$\mathcal{L}= -\frac{1}{4}F_{\mu\nu} F^{\mu\nu}.$$
+\end{example}
+
+
+\subsection{Noether's theorem for fields}
+
+\qquad The Noether theorem establishes a relation between symmetries and conserved quantities.
+
+\qquad There is no difference between classical and quantum field theory; $\varphi(x)$ can be a classical field or quantum field operator.
+        $$S[\varphi] = \int d^4 \mathcal{L}(\varphi, \partial_\mu \varphi).$$
+A symmetry is a transformation of the fields, which leaves action invariant
+        $$\varphi'(x) = \varphi(x) + \varepsilon F(x),$$
+where $\varepsilon$ is a constant and a global symmetry, $F$ depends on $\varphi(x)$ and $\partial_\mu \varphi(x)$.
+        $$0= \delta S = \varepsilon \int d^4 x \frac{\delta S[\varphi]}{\delta \varphi(x)} F(x)$$
+before the EOM are satisfied.
+
+\begin{example} Translation.
+
+   $$\varphi'(x) = \varphi(x+a) = \varphi(x) + a^\mu \partial_\mu \varphi(x) + \cdots,$$
+then $a^\mu \sim \varepsilon$ and $\partial_\mu \varphi \sim F$.
+\end{example}
+
+\begin{theorem} Noether theorem.
+
+    \qquad For every continuous symmetry there is a conserved current
+            $$j^\mu(x) = \frac{\partial \mathcal{L}}{\partial ( \partial_\mu \varphi(x))} F(x)- \kappa^\mu(x) \qquad [\partial_\mu j^\mu(x) = 0]$$
+    and charge
+            $$Q \equiv \int d^3 x j^0(x) \qquad [\frac{d Q}{d t}=0].$$
+\end{theorem}
+
+\begin{proof}[Derivation]
+    
+    \qquad Since the action $S[\varphi(x)]$ is invariant by assumption, $\mathcal{L}$ can only change by a total derivative, i.e.
+            \begin{equation} \delta S= \varepsilon \int d^4 x \partial_\mu \kappa^\mu(x)\end{equation}
+    for some $\kappa^\mu(x)$ (In particular $\kappa^\mu \equiv 0$ if $\mathcal{L}$ is invariant, not only $S[\varphi]$).
+
+    \qquad One the other hand,
+            \begin{equation}
+            \begin{aligned}
+            \delta S &= \int d^4 x \frac{\partial \mathcal{L}}{\partial \varphi} \delta \varphi + \frac{\partial \calL}{\partial(\partial_\mu \varphi)} \delta (\partial_\mu \varphi) \\
+                &=\int d^4 x \frac{\partial \mathcal{L}}{\partial \varphi} \varepsilon F(x)+ \frac{\partial \calL}{\partial(\partial_\mu \varphi)} \varepsilon \partial_\mu F(x)\\
+                &=\int d^4 x  \varepsilon F(x) \partial_\mu[\frac{\partial \calL}{\partial(\partial_\mu \varphi)}]+ \frac{\partial \calL}{\partial(\partial_\mu \varphi)} \varepsilon \partial_\mu F(x) \\
+                &=\int d^4 x \varepsilon \partial_\mu [ \frac{\partial \calL}{\partial(\partial_\mu \varphi)} F].
+            \end{aligned}
+            \end{equation}
+    
+    \qquad Taking (3) minus (1) gives 
+            $$\partial_\mu j^\mu(x)=0$$
+     for $j^\mu(x)$ as defined above. Also,
+        $$\frac{dQ}{dt} = \int d^3 x \partial^0 j^0(x) = -\int d^3 x \vec{\nabla} \cdot \vec{j}(x) = 0,$$
+    Assuming as usual that the fields vanish as $\vert \vec{x} \vert \to \infty$.
+\end{proof}
+
+\begin{remark}
+    The conservation of the current is only true for the fields satisfying the filed equations, because the E-L equation was used to 
+obtain (3). In particular, in the quantum theory, this will not be true of every field configuration we sum over in the path integral, only the 
+saddle-point configurations.
+\end{remark}
+
+\subsubsection{Translation and the Energy-Momentum Tensor.}
+
+    \qquad Consider the infinitesimal translation $x^\nu \rightarrow x^\nu - \varepsilon^\nu$, then
+            \begin{equation*}
+                \phi_n(x) \rightarrow \phi_n(x) + \varepsilon^\nu \partial_\nu \phi_n(x)\\
+                \calL(x) \rightarrow \calL(x) + \varepsilon^\nu \partial_\nu \calL(x)
+            \end{equation*}
+    rewrite $\varepsilon^\nu \partial_\nu \calL(x)$ into $\varepsilon^\nu \partial_\mu [ \delta^\mu_\nu \calL(x)]$.
+
+    \qquad Then four conserved currents $(j^\mu)_\nu$, one for each of $\varepsilon^\nu$, $\nu=0,1,2,3$,
+        $$(j^\mu)_\nu = \frac{\partial \calL}{\partial(\partial_\mu \phi_n)} \partial_\nu \phi_n - \delta^\mu_\nu \calL(x) \equiv {T^\mu}_{\nu},$$
+where ${T^\mu}_{\nu}$ denote the Energy-Momentum tensor satisfying $\partial_\mu {T^\mu}_{\nu}=0$.
+
+    \qquad Four conserved quantities are given by
+        $$\text{the total energy of the field configuration}:\ E= \int d^3x T^{0,0},$$
+        $$\text{the total momentum}:\ p^i = \int d^3 x T^{0,i}.$$
+
+\begin{example} The scalar field theory: $\calL = \frac{1}{2} \partial_\mu \phi \partial^\mu \phi - \frac{1}{2} m^2 \phi^2$. $T^{\mu\nu} = \partial^\mu \phi \partial^\nu \phi - g^{\mu \nu} \calL$. Using
+    EOM for $\phi$, $(\partial^2 + m^2) \phi=0$, then $\partial_\mu T^{\mu \nu}=0$.
+
+    \qquad The conserved energy $E= \int d^3x \frac{1}{2} \dot{\phi}^2 + \frac{1}{2}(\vec{\nabla} \phi)^2 + \frac{1}{2}m^2 \phi^2$ and the total momentum $p^i = \int d^3 x \dot{\phi}\partial^i \phi$.
+
+\end{example}
+
+\subsection{Lorentz transformation}
+    \qquad Lorentz invariant is symmetry under rotations and boosts.
+
+{{warning|I ignore some introductions to math concepts.}}
+
+    \qquad Among the most important symmetries of relativistic QFT are those which arise from the Lorentz transformations themselves.
+
+    \qquad The spacetime inteval $ds^2= g_{\mu \nu} dx^\mu dx^\nu$, where $g_{\mu\nu} = g^{\mu \nu} = \operatorname{diag} (1,-1,-1,-1)$.
+
+    \qquad Any coordinate transformation $x^\mu \mapsto x'^\mu$ that satisfies
+            $$g_{\mu \nu}dx'^\mu dx'\nu = g_{\mu \nu} dx^\mu dx^\nu \qquad \text{or} \qquad g_{\mu \nu}\frac{\partial x'^\mu}{\partial x^\rho}\frac{\partial x'^\nu}{\partial x^\sigma} = g_{\rho \sigma}$$
+is linear
+            $$x'^\mu= {\Lambda^\mu}_\nu x^\nu +a^\nu$$
+where $a^\mu$ are arbitrary constants and $\Lambda$ is a constant matrix satifying
+            \begin{equation} g_{\mu\nu} {\Lambda^\mu}_\rho {\Lambda^\nu}_\sigma = g_{\rho \sigma} \qquad \text{or}\qquad  \Lambda^T G \Lambda =G\end{equation}
+These transformations form a group. 
+
+    \qquad It's easy to check the ransformation satisfies
+        $$T(\overline{\Lambda}, \overline{a})T(\Lambda, a)= T(\overline{\Lambda} \Lambda, \overline{\Lambda}a +\overline{a}).$$
+
+    \qquad Taking the determinant of (4) gives $(\det \Lambda)^2=1$, so ${\Lambda^\mu}_\nu$ has an inverse
+        $${(\Lambda^{-1})^\rho}_\nu = {\Lambda_\nu}^\rho \equiv g_{\nu\mu} g^{\rho \sigma} {\Lambda^\mu}_\sigma$$
+ 
+    \qquad The whole group of $T(\Lambda, a)$ is \textbf{Poincaré group}.
+
+    \qquad If $a^\mu=0$, $T(\Lambda, 0)$ is known as \textbf{homogeneous Lorentz group}.
+
+\begin{example} Some examples.
+
+    \qquad A rotation by $\theta$ about the $x^3$-axis,
+        $$ {\Lambda^\mu}_\nu=\begin{pmatrix}
+            1 &0 &0 &0\\ 0 &\cos \theta &-\sin \theta &0\\ 0 &\sin\theta &\cos \theta &0\\ 0 &0 &0 &1
+        \end{pmatrix}.$$
+    
+    \qquad A boost by $v$ along the $x^1$-axis,
+        $${\Lambda^\mu}_\nu = \begin{pmatrix}\gamma &-\gamma v &0 &0\\ -\gamma v &\gamma &0 &0\\ 0 &0 &1 &0 \\
+            0 &0 &0 &1
+        \end{pmatrix},$$
+    with $\gamma= \frac{1}{\sqrt{1-v^2}}$.
+
+\end{example}
+
+\begin{remark}
+    Poincaré group not only acts on spacetime coordinates, but also acts on the Hilbert space of a physical system,
+so it is not merely represented as  $4\times 4$ matrices.
+\end{remark}
+
+    \qquad $L$ has four connected components.
+
+    \qquad Note that $\det \Lambda$ and $\operatorname{sgn} {\Lambda^0}_0$ are both continuous functions of ${\Lambda^\mu}_\nu$.
+Furthermore, $\det \Lambda=\pm 1$ and ${\Lambda^0}_0 \geq 1$ or $\leq -1$. Thus $\det \Lambda$ and $\operatorname{sgn} {\Lambda^0}_0$ must be constant on any one component. 
+The four possibilities are
+        $$\begin{tikzcd}
+            &L_+^{\uparrow}: &\det \Lambda =1, &\operatorname{sgn} {\Lambda^0}_0=1, &\text{which contains}\ 1,\\
+            &L_-^{\uparrow}: &\det \Lambda =-1, &\operatorname{sgn} {\Lambda^0}_0=1, &\text{which contains}\ I_s,\\
+            &L_+^{\downarrow}: &\det \Lambda =1, &\operatorname{sgn} {\Lambda^0}_0=-1, &\text{which contains}\ I_{st},\\
+            &L_-^{\downarrow}: &\det \Lambda =-1, &\operatorname{sgn} {\Lambda^0}_0=-1, &\text{which contains}\ I_t,\\
+        \end{tikzcd}$$
+
+    \qquad The Lorentz transformation:
+
+    \qquad Space inversion $I_s$: 
+            $$I_s=\operatorname{diag}(1,-1,-1,-1).$$
+
+    \qquad Time inversion $I_t$: 
+            $$I_t=\operatorname{diag}(-1,1,1,1).$$
+    
+    \qquad Space-time inversion $I_{st}$: 
+            $$I_{st}=\operatorname{diag}(-1,-1,-1,-1)=-I.$$
+
+    \qquad Clearly, $L^{\uparrow}_- \xrightarrow{I_s} L^{\uparrow}_+$, $L^{\downarrow}_- \xrightarrow{I_t} L^{\uparrow}_+$ and $L^{\downarrow}_+ \xrightarrow{I_{st}}L^{\uparrow}_+$.
+
+    \qquad The important subgroups of $L$:
+
+        \qquad \qquad The orthochronous group $L^{\uparrow} =L^{\uparrow}_+ \cup L^{\uparrow}_-$, ${\Lambda^0}_0\geq 1$.
+
+        \qquad \qquad The proper Lorentz group $L_+ = L_+^{\uparrow} \cup L_+^{\downarrow}$, $\det \Lambda =+1$.
+
+        \qquad \qquad The orthochorous Lorentz group $L_0 = L^{\uparrow}_+ \cup L^{\downarrow}_-$, $\operatorname{sgn}{\lambda^0}_0\det \Lambda =1$.
+
+        \qquad \qquad The proper orthochronous Lorentz group or the restricted Lorentz group $L^{\uparrow}_+$.
+       
+
+
+\subsection{Classical field theory}
+
+    \qquad Scalar field: $\phi(x) \xrightarrow{\Lambda} \phi'(x) = \phi(\Lambda^{-1}x)$.
+
+    \qquad Vector field: $A^\mu(x) \xrightarrow{\Lambda} {\Lambda^\mu}_\nu A^\nu(\Lambda^{-1}x)$
+
+    \begin{example}
+        The Klein-Gorden field.
+
+        $$\partial_\mu \phi(x) \rightarrow \partial_\mu \phi(\Lambda^{-1}x)= {(\Lambda^{-1})^\nu}_\mu [\partial_\nu \phi](\Lambda^{-1}x) = {\Lambda_\mu}^\nu (\partial_\nu \phi)(\Lambda^{-1}x).$$
+        $$\frac{\partial}{\partial x^\mu} = \frac{\partial}{\partial y^\nu} \frac{\partial y^\nu}{\partial x^\mu} = \frac{\partial }{\partial y^\nu}{(\Lambda^{-1})^\nu}_\mu, \ y^\nu= {(\Lambda^{-1})^\nu}_\mu x^\mu.$$
+    \end{example}
+
+    \qquad The derivate term in the Lagrangian transform as
+        \begin{align*}
+            \calL_{deriv}(x) = \partial_\mu \phi(x) \partial_\nu \phi(x) g^{\mu \nu} 
+                    &\rightarrow {\Lambda_\mu}^\rho {\Lambda_\nu}^\sigma [\partial_\rho \phi](y) [\partial_\sigma \phi](y) g^{\mu \nu}\\
+                    &= g^{\rho \sigma} [\partial_\rho \phi](y) [\partial_\sigma \phi](y)\\
+                    &= \calL_{deriv}(y).
+        \end{align*}
+
+    \qquad The potential terms transform in the same way $\phi^2(x) \rightarrow \phi^2(y)$, then
+        \begin{align*}
+            S = \int d^4 x \calL(x) \rightarrow \int d^4 x \calL(y)
+                &= \int d^4 y \big\vert \frac{\partial x}{\partial y} \big\vert \calL(y)\\
+                &= \int d^4y \calL(y), \qquad \text{since}\ \vert \det \Lambda \vert =1.
+        \end{align*}
+\subsubsection{Quantum Lorentz Transformation and the Poincaré Algebra}
+
+    For an infinitesimal inhomogeneous Lorentz transformation
+            $${\Lambda^\mu}_\nu = {\delta^\mu}_\nu + {\omega^\mu}_\nu,\ a^\mu = \varepsilon^\mu.$$
+Then we have
+        \begin{align*}
+            g_{\mu \nu} = 
+                &g_{\rho \sigma} ({\delta^\rho}_\mu + {\omega^\rho}_\mu)({\delta^\sigma}_\nu + {\omega^\sigma}_\nu)\\
+                &= g_{\mu \nu} +\omega_{\mu \nu} + \omega_{\nu \mu} + o(\omega^2).
+        \end{align*}
+Hence $\omega_{\mu \nu} = - \omega_{\nu \mu}$ is antisymmetry, hence has $6$ independent components and $4$ components of $\varepsilon^\mu$.
+
+    \qquad An Poincaré transformation is described by $6+4=10$ parameters.
+
+    \qquad The transformation $T(\Lambda, a)$ induce a unitary linear transformation in the Hilbert space
+            $$|\psi \rangle \rightarrow U(\Lambda, a) |\psi \rangle.$$
+    The operators $U$ satisfy
+            $$U(\overline{\Lambda}, \overline{a}) U(\Lambda, a) = U(\overline{\Lambda} \Lambda, \overline{\Lambda}a + \overline{a}.$$
+
+    \qquad Choose $U(1, 0) = 1$ the unit operator, then
+        $$ U(1+\omega, \varepsilon) = 1+ \frac{1}{2} i \omega_{\rho \sigma} J^{\rho \sigma} - i \varepsilon_\rho P^\rho + \cdots$$
+
+
+
+
+       % $$ \frac{\partial }{\partial }$$

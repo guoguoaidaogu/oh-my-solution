@@ -1,0 +1,346 @@
+\setdisplaytitle{3 Differentiation of Measures}
+\sethtmltitle{3 Differentiation of Measures}
+\theoremstyle{definition}
+\newtheorem*{claim}{Claim}
+
+The main references of this chapter are [Evans, Gariepy; Measure theory and fine properties of functions, Chapter 1], [Mattila; Geometry of Sets and Measures in Euclidean Spaces-Fractals and Rectifiability, Chapter 2].
+
+\begin{equation*}
+f \in L_{\mathrm{loc}}^{1}(\mathbb{R}^{n})\Rightarrow \lim_{ r \to 0 } \frac{\int _{B(x,r)}f}{\lvert B(x,r) \rvert }=f\quad\text{a.e.}
+\end{equation*}
+
+\section{Vitali's covering Lemma}
+\begin{definition}
+$B(x,r):=\{ y\in \mathbb{R}^{n}:\lvert x-y \rvert\leq r \}$ and $5B(x,r):=B(x,5r)$. A family
+$$\mathscr{F}=\{ B(x_{\alpha},r_{\alpha}):\alpha \in \mathcal{A} \}$$
+is a covering of $A\subset\mathbb{R}^{n}$ if $A\subset \bigcup_{\alpha\in\mathcal{A}}B(x_{\alpha},r_{\alpha})$. The covering is fine if for every $x\in A$ we have
+$$\inf\{ r>0:\ x\in B(y,r)\in\mathscr{F} \}=0.
+$$
+\end{definition}
+
+\begin{theorem}\label{thm:Vitali}
+Let $\mathscr{F}$ be a collection of closed balls in $\mathbb{R}^{n}$ satisfying $\sup_{\alpha}r_{\alpha}<\infty$. Then there exists a countable subcollection $\mathscr{G}$ of disjoint balls in $\mathscr{F}$ with
+$$\bigcup _{B \in \mathscr{F}}B\subset \bigcup _{B\in \mathscr{G}}5B.
+$$
+\end{theorem}
+
+\begin{proof}
+    Let $R_{i}:=2^{-i}\sup_{\alpha}r_{\alpha},i\geq 0$, $F_{i}:=\{ B \in \mathscr{F}:R_{i}<r(B)\leq R_{i-1} \}$. 
+
+    A sequence $\mathscr{G}_{n}$ with $\mathscr{G}_{n} \subset \mathscr{F}_{n}$ is defined inductively as follows:
+
+    First let $\mathscr{G}_{1}$ be the maximal subcollection of disjoint balls in $\mathscr{F}_{1}$. Assuming that $\mathscr{G}_{1}, \ldots ,\mathscr{G}_{k-1}$ have been selected, let
+    $$
+    \mathscr{H}_{k}=\{ B \in \mathscr{F}_{k}: B\cap C=\varnothing ,\forall C \in \mathscr{G}_{1}\cup \mathscr{G}_{1}\cup \cdots\cup \mathscr{G}_{k-1} \},
+    $$
+    and let $\mathscr{G}_{k}$ be a maximal subcollection of disjoint balls in $\mathscr{H}_{k}$. We obtain a subcollection
+    $$
+    \mathscr{G}:=\bigcup_{n=0} ^{\infty} \mathscr{G}_{n}
+    $$
+    of $\mathscr{F}$.
+
+    \begin{claim}
+        $\forall B\in \mathscr{F}$, $\exists B' \in \mathscr{G}$ with $r(B')\geq \frac{r(B)}{2}$ such that $B\cap B'\neq \varnothing.$
+    \end{claim}
+	
+	This is clear by definition.
+
+    By our claim, $B \subset 5B'$, hence
+    $$
+    \bigcup _{B \in \mathscr{F}}B \subset \bigcup _{B' \in \mathscr{G}}5B'.
+    $$
+\end{proof}
+
+\begin{corollary}\label{cor:Vitali-fine}
+If $\mathscr{F}$ is a fine covering of $A$ with $\sup r_{\alpha}<\infty$, then there exists a countable disjoint subcollection $\mathscr{G}\subset\mathscr{F}$ such that for each finite subcollection $\{B_{1},\dots,B_{m}\}\subset\mathscr{F}$
+\begin{equation}\label{eq:corV}
+A\setminus \bigcup_{k=1}^{m}B_{k}\subset \bigcup_{B\in\mathscr{G}\setminus\{B_{1},\dots,B_{m}\}}5B.
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+    Take $\mathscr{G}$ as in Theorem \ref{thm:Vitali}. Then $\forall x \in A\setminus \bigcup _{k=1}^{m}B_{k}, \exists B\in \mathscr{F}$ such that $x \in B$ and $B\cap B_{k}=\varnothing$ as $\mathscr{F}$ is fine. Applying claim, $\exists B' \in \mathscr{G}$ such that $B\cap B'\neq \varnothing$. In particular, $B'\in \{ B_1, \ldots ,B_{m} \}$, which implies~(\ref{eq:corV}).
+\end{proof}
+
+\begin{theorem}\label{thm:Vitali-meas}
+Let $\mathscr{F}$ be a fine covering of a measurable set $A\subset\mathbb{R}^{n}$. Then there exists a countable disjoint subcollection $\mathscr{G}$ of balls in $\mathscr{F}$ such that
+$$\left\lvert A\setminus \bigcup_{B\in\mathscr{G}}B \right\rvert =0.$$
+Moreover, for every $\epsilon>0$, we can find $\mathscr{G}$ such that
+$$
+\sum_{B \in \mathscr{G}}\left\vert B \right\vert \leq \left\vert A \right\vert (1+\varepsilon).
+$$
+\end{theorem}
+
+\begin{proof}
+    We may assume that $A$ is bounded by decomposing $\mathbb{R}^{n}=\bigcup_{i} \overline{Q_{i}}$. Take an open set $U \supset A$ such that $\left\vert U \right\vert \le \left\vert A \right\vert (1+\varepsilon)$. Applying Theorem~\ref{thm:Vitali}, we can find disjoint balls $B_1, \ldots ,B_{k}\in \mathscr{F}$ contained in $U$ such that
+    $$
+    6^{-n}\left\vert A \right\vert \le \sum_{i=1}^{k_1}\left\vert B_{i} \right\vert .
+    $$
+    Then $A_1:=A\setminus \bigcup_{i=1} ^{k}B_{i}$ satisfies $\left\vert A_1 \right\vert \le (1-7^{-n})\left\vert A \right\vert $ by taking $\varepsilon$ small enough. Find $U_1 \supset A_1$ with $\left\vert U_1 \right\vert \left\vert A_1 \right\vert (1+\varepsilon)$ then we can find disjoint balls $B_{k_1+1}, \ldots ,B_{k_2}\in \mathscr{F}$ contained in $U_1$ such that
+    \begin{itemize}
+        \item[(1)] $6^{-n}\left\vert A_1 \right\vert \le \sum_{i=k_1+1}^{k_2}\left\vert B_{i} \right\vert $;
+        \item[(2)] $B_{k_1+1}, \ldots ,B_{k}$ are disjoint. 
+    \end{itemize}
+    Now $A_2:=A\setminus \bigcup_{i=1} ^{k_2}B_{i}$ satisfies $\left\vert A_2 \right\vert \le (1-7^{-n})^{2}\left\vert A \right\vert $.
+
+    Repeating above process we obtain a countable subcollection $\mathscr{G}=\{ B_{i} \}$ of disjoint balls in $\mathscr{F}$ satisfying
+    $$
+    \left\lvert  A\setminus \bigcup _{i=1}^{\infty}B_{i}  \right\rvert \leq \left\lvert  A\setminus \bigcup _{i=1}^{k_{j}}B_{i}  \right\rvert \leq(1-7^{-n})^{j}\lvert A \rvert \to 0,
+    $$
+    and
+    $$\sum _{i}\lvert B_{i} \rvert =\left\lvert  \bigcup _{i}B_{i}  \right\rvert \leq \lvert U \rvert \leq \lvert A \rvert (1+\varepsilon).
+    $$
+\end{proof}
+
+\begin{corollary}\label{cor:Vitali-open}
+Let $U\subset\mathbb{R}^{n}$ be open and $\delta>0$. Then there exists a countable collection $\mathscr{G}$ of disjoint closed balls in $U$ with $r(B)<\delta$ for all $B\in\mathscr{G}$ and
+$$|U\setminus \bigcup_{B\in\mathscr{G}}B|=0.
+$$
+\end{corollary}
+
+\begin{remark}
+上面的命题性质很好, 但是都用到了一个事实: $\lvert 5B \rvert=5^{n}\lvert B \rvert$. 这对Lebesgue测度当然成立, 但是对一般的Radon测度并没有这件事. 很简单地, 考虑仅支撑在一个较低维数集合上的Radon测度. 对于一般的测度, 需要研究更精细的覆盖引理.
+\end{remark}
+
+\section{Besicovitch's covering lemma}
+\begin{theorem}\label{thm:Besicovitch}
+There exist integers $P(n)$ and $Q(n)$ such that: if $\mathscr{F}=\{B_{\alpha}:\alpha\in\mathcal{A}\}$ is a family of balls in $\mathbb{R}^{n}$ with $M_{1}=\sup r_{\alpha}<\infty$, and $A$ is the set of centers, then
+\begin{itemize}
+\item[(i)] there exists a countable subcollection $\mathscr{G}\subset\mathscr{F}$ covering $A$ with
+$$\chi_{A}\le \sum_{B\in\mathscr{G}}\chi_{B}\le P(n);$$
+\item[(ii)] there exist $Q(n)$ countable collections $\mathscr{G}_{1},\dots,\mathscr{G}_{Q(n)}$ of disjoint balls in $\mathscr{F}$ such that
+$$A\subset \bigcup_{i=1}^{Q(n)}\bigcup_{B\in\mathscr{G}_{i}}B.$$
+\end{itemize}
+\end{theorem}
+
+\begin{lemma}\label{lem:angle}
+Let $a,b\in\mathbb{R}^{2}$ satisfy $0<|a|<|a-b|$ and $0<|b|<|a-b|$. Then the angle between $a$ and $b$ is at least $\pi/3$, i.e.
+$$\left\lvert \frac{a}{|a|}-\frac{b}{|b|} \right\rvert\ge 1.
+$$
+\end{lemma}
+
+\begin{proof}
+    We may assume $a=(\lvert a \rvert,0).$ Then $0<\lvert a \rvert<\lvert a-b \rvert$ implies $b \notin B(a,\lvert a \rvert)$, and $0<\lvert b-0 \rvert<\lvert b-a \rvert$ implies $b_{1}< \frac{\lvert a \rvert}{2}$($b=(b_{1},b_{2})$). The conclusion follows.
+\end{proof}
+
+\begin{lemma}\label{lem:finite-overlap}
+There exists $N(n)$ with the following property. If points $a_{1},\dots,a_{k}\in\mathbb{R}^{n}$ and radii $r_{1},\dots,r_{k}>0$ satisfy
+$$a_{i}\notin B(a_{j},r_{j})\ \forall j\neq i,\qquad \bigcap_{i=1}^{k}B(a_{i},r_{i})\neq\emptyset,$$
+then $k\le N(n)$.
+\end{lemma}
+
+\begin{proof}
+    Assume $0 \in \bigcap _{i=1}^{k}B(a_{i},r_{i})$. Applying Lemma~\ref{lem:angle}, we see that $\left\{  e_{i}= \frac{a_{i}}{\lvert a_{i} \rvert}:i=1,\dots,k  \right\}$ are 1-separated. And the lemma follows.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:Besicovitch}]
+First we assume that $A$ is bounded. Choose $x_{1} \in A$ such that $r_{x_{1}}\geq \frac{M_{1}}{2}$. (By taking the largest ball with the same center $x$, for each $x \in A$ we determine a unique ball with radii $r_{x}$ in $\mathscr{F}$ and thereby get a subfamily of $\mathscr{F}$) Inductively we choose
+$$
+x_{l+1} \in A\setminus \bigcup _{i=1}^{l}B(x_{i},r_{x_{i}})
+$$
+satisfying $r_{l+1}\geq \frac{M_{1}}{2}$. Since $A$ is bounded, and $\{ x_{i} \}$ are $\frac{M_{1}}{2}$-separated, we stop in finitely many steps, say $k_{1}$.
+Let $M_{2}:= \sup_{x \in A\setminus \bigcup _{i=1}^{k}B(x_{i},r_{x_{i}})}r_{x}$. Then $M_{2}\leq \frac{M_{1}}{2}$. Similarly, we choose $x_{k_{1}+1},\dots,x_{k_{2}}$. Repeating this process, we obtain $x_{1},x_{2},\dots,x_{k_{1}},\dots,x_{k_{2}},\dots$. Denoting $I_{j}:=\{ k_{j-1}+1,\dots,k_{j} \}$, $B_{i}:=B(x_{i},r_{x_{i}})$, we have
+\begin{equation}
+    \label{eq:stepwisesize}
+    \frac{M_{j}}{2}  < r_{x_{i}}\leq M_{j},  \forall i\in I_{j},
+\end{equation}
+\begin{equation}
+    \label{eq:stepwisecut}
+    x_{l+1}  \in A\setminus \bigcup _{i=1}^{l}B_{i}  \forall l,
+\end{equation}
+and(by~(\ref{eq:stepwisesize}) and~(\ref{eq:stepwisecut}))
+\begin{equation}
+    \label{eq:aux_1}
+    x_{i} \in A\setminus \bigcup _{m\neq j}\bigcup _{i'\in I_{m}}B_{i'}\quad\forall i \in I_{j}.
+\end{equation}
+\begin{itemize}
+    \item[(i)] $A \subset \bigcup _{i}B_{i}$ as $M_{j}\to 0$. Actually, for $x \in A$ with $r_{x}\in(M_{j+1},M_{j}]$, we have $x \in \bigcup _{m \leq j}\bigcup _{i \in I_{m}}B_{i}$ by the choice of $I_{m}$. Let $\mathscr{G}:=\{ B_{i}:i\geq 1 \}$. If $x \in B_{i_{m}}\in \mathscr{G}$ for $m=1,\dots,p$, then $p\leq 16^{n}N(n)=:P(n)$. Actually $i_{m}$ belongs to at most $N(n)$ many $I_{j}$ by Lemma~\ref{lem:finite-overlap} and~(\ref{eq:aux_1}). In each $I_{j}$, the number of balls involved is $\leq 16^{n}$ since $x_{i_{m}}\in(B,M_{j})$ and $\{ x_{i_{m}} \}_{i_{m}\in I_{j}}$ are $\frac{M_{j}}{2}$-separated.
+    \item[(ii)] We may assume $r(B_{i})\geq r(B_{i+1})$. Let $B_{1,1}=B_{1}$ and choose inductively $B_{1,k+1}$ as the ball $B_{i}$ with the smallest $i$ such that $$B_{i}\cap \bigcup _{l=1}^{k}B_{1,l}=\varnothing.$$Then we denote the collection of selected balls by $\mathscr{G}_{1}$.
+   Let $B_{2,1}$ be the ball $B_{i}$ with the smallest $i$ such that $B_{i}\not\in \mathscr{G}_{1}$. Then we can define $\mathscr{G}_{2},\mathscr{G}_{3},\dots,\mathscr{G}_{m}$. If we can show that $$A\setminus \bigcup _{k=1}^{m}\bigcup _{B \in \mathscr{G}_{k}}B\neq \varnothing\Longrightarrow m\leq 4^{n}P(n)+1,$$we complete the proof.
+   Suppose $x \in A\setminus \bigcup _{k=1}^{m}\bigcup _{B \in \mathscr{G}_{k}}B$, then $\exists B_{i}\in \mathscr{G}\setminus \bigcup _{k=1}^{m}\mathscr{G}_{k}$ such that $x \in B_{i}$. By the choice of $\mathscr{G}_{k}$, for all $k$, $\exists B_{k,i_{k}} \in \mathscr{G}_{k}$ with $B_{i}\cap B_{k,i_{k}}\neq \varnothing$ and $r_{i}\leq r_{k,i_{k}}$. As $\{ B_{k,i_{k}} \}$ are finitely overlapping by (i), we can find balls $B_{k}'\subset 2B_{i}\cap B_{k,i_{k}}$ with $\frac{r_{i}}{2}$ such that $\{ B_{k}' \}$ are also finitely overlapping. Observing that $$m\left( \frac{r_{i}}{2} \right)^{n}\leq \int \sum _{k=1}^{m}\chi _{B_{k}'}\leq P(n)(2r_{i})^{n},$$we obtain $m\leq 16^{n}P(n)$.
+\end{itemize}
+To remove the restraint that $A$ is bounded, we define
+$$
+A_{l}:=\{ x \in A: 10M_{1}(l-1)\leq \lvert x \rvert \leq 10M_{1}l \}$$ and apply the conclusion to $A_{l}$.
+\end{proof}
+
+\begin{theorem}
+    \label{thm:disjoint}
+    Let $\mathscr{F}$ be a covering of $A \subset \mathbb{R}^{n}$ satisfying
+    $$
+    \inf\{ r: B(x,r)\in \mathscr{F} \}=0\quad\forall x \in A,
+    $$
+    (记录者注:注意条件和fine covering的区别) and $\mu$ a Radon measure. Then $\exists$ a countable subcollection $\mathscr{G}$ of disjoint balls in $\mathscr{F}$ such that
+    $$
+    \mu\left( A\setminus \bigcup _{B \in \mathscr{G}}B \right)=0.
+    $$
+\end{theorem}
+\begin{proof}
+    We may assume that $A$ is bounded. Take an open set $U \supset A$ such that $\mu(U)\leq \mu(A)(1+\epsilon).$ Applying Theorem~\ref{thm:Besicovitch}, we can find disjoint balls $B_{1},\dots,B_{m}\subset U$ such that $\mu(A)\leq 2Q(n)\sum _{i=1}^{m}\mu(B_{i})$, which implies that
+    $$
+    \mu\left( A\setminus \bigcup _{i=1}^{m}B_{i} \right)\leq u\mu(A)
+    $$
+    for $u=1- \frac{1}{10Q(n)}<1$.
+
+    然后重复Vitali覆盖引理的证明过程, 注意到 $u$ 与 $B_{i}$ 的选取无关. 在每一步选取与上一步 $B_{i}$ 不相交的开集挖去(具体过程待补充).
+\end{proof}
+
+
+\section{Differentiation of measures}
+\begin{definition}
+Let $\mu$ and $\lambda$ be locally finite Borel measures on $\mathbb{R}^{n}$. Define the upper and lower differentiations of $\mu$ with respect to $\lambda$ at $x$:
+\begin{align*}
+\overline{D}(\mu,\lambda,x)&:=\limsup_{r\to 0}\frac{\mu(B(x,r))}{\lambda(B(x,r))},\\
+\underline{D}(\mu,\lambda,x)&:=\liminf_{r\to 0}\frac{\mu(B(x,r))}{\lambda(B(x,r))}.
+\end{align*}
+At the point $x$ where the limit exists we define 
+$$
+D(\mu,\lambda,x)=\lim_{r\to 0}\frac{\mu(B(x,r))}{\lambda(B(x,r))}.
+$$
+\end{definition}
+
+\begin{definition}
+    $\mu$ is absolutely continuous with respect to $\lambda$ if$$
+    \lambda(A)=0\Rightarrow \mu(A)=0\quad\forall A \subset \mathbb{R}^{n}.
+    $$for which we write $\mu\ll \lambda$.
+\end{definition}
+
+\begin{theorem}\label{thm:diff-meas}
+Let $\mu$ and $\lambda$ be Radon measures on $\mathbb{R}^{n}$. Then
+\begin{itemize}
+\item[(i)] $D(\mu,\lambda,x)$ exists and is finite for $\lambda$-a.e. $x\in \mathbb{R}^{n}$;
+\item[(ii)] For every Borel set $B \subset \mathbb{R}^{n}$, $\displaystyle\int_{B}D(\mu,\lambda,x)\,\mathrm{d}\lambda(x)\le \mu(B)$, with equality when $\mu\ll\lambda$;
+\item[(iii)] $\mu\ll\lambda$ if and only if $\underline{D}(\mu,\lambda,x)<\infty$ for $\mu$-a.e. $x$.
+\end{itemize}
+\end{theorem}
+
+\begin{lemma}\label{lem:deriv-ineq}
+Let $\mu,\lambda$ be Radon measures, $0<t<\infty$, and $A\subset\mathbb{R}^{n}$. Then
+\begin{itemize}
+\item[(i)] If $\underline{D}(\mu,\lambda,x)\le t$ for all $x\in A$ then $\mu(A)\le t\lambda(A)$;
+\item[(ii)] If $\overline{D}(\mu,\lambda,x)\ge t$ for all $x\in A$ then $\mu(A)\ge t\lambda(A)$.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+For (i) pick open $U\supset A$ with $\lambda(U)\le\lambda(A)+\varepsilon$. Applying Theorem~\ref{thm:disjoint}, we obtain a countable collection of disjoint balls $B_{i}\subset U$ such that
+$\mu(B_{i})\le (t+\varepsilon)\lambda(B_{i})$, and $ \mu\bigl(A\setminus\bigcup B_{i}\bigr)=0.$ Then
+$$\mu(A)\le (t+\varepsilon)\sum\lambda(B_{i})\le (t+\varepsilon)(\lambda(A)+\varepsilon).$$
+Let $\varepsilon\to 0$ to conclude. The proof of (ii) is similar.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:diff-meas}]
+\begin{itemize}
+    \item[(i)] For any ball $B$, we define 
+    $$
+    B_{s,t}:=\{ x \in B:\underline{D}(\mu,\lambda,x)\leq s<t\leq\overline{D}(\mu,\lambda,x) \},$$and $$B_{\mu}:=\{ x \in B: \overline{D}(\mu,\lambda,x)\geq \mu \}.
+    $$
+    Applying Lemma~\ref{lem:deriv-ineq}, for $s<t$, 
+    $$
+    t\lambda(B_{s,t})\leq \mu(B_{s,t})\leq s\lambda(B_{s,t}),
+    $$
+    therefore $\lambda(B_{s,t})=0$, and $D(\mu,\lambda,x)$ exists for $\lambda$-a.e. $x$. Moreover, 
+    $$
+    \lim_{ u \to \infty } \lambda(B_{u})\leq \lim_{ u \to \infty } \frac{1}{u}\mu(B)=0. $$
+    Therefore $\overline{D}(\mu,\lambda,x)<\infty$ for $\lambda$-a.e. $x$.
+
+    \item[(ii)] Fix $t>1$, and define 
+    $$
+    B^{p}:=\{ x \in B: D(\mu,\lambda,x)\in(t^{p},t^{p+1}] \}.
+    $$
+    As 
+    $$
+    \begin{aligned} 
+        & \int _{B}D (\mu,\lambda,x)\ \mathrm{d}\lambda x \\
+        \leq & \sum _{p}\int _{B^{p}}D(\mu,\lambda,x) \ \mathrm{d}\lambda x \\
+        \leq  & t \sum _{p}t^{p}\lambda(B^{p})\\
+        \leq & t\sum _{p}\mu(B^{p}) \\ 
+        \leq & t\mu(B)
+    \end{aligned}
+    $$
+    and let $t\to 1$.
+    When $\mu\ll \lambda$, we apply (i) to show that 
+    $$
+    D(\mu,\lambda,x)\in(0,\infty)\quad\text{for}\quad\mu \text{-a.e. }x,
+    $$
+    since $\mu(B_{0})\leq t\lambda(B_{0}), \forall t>0$, where $B_{0}:=\{ x \in B:D(\mu,\lambda,x)=0 \}.$ Then the reverse inequality holds.
+    
+    \item[(iii)] 
+    "$\Rightarrow$": Apply (i).
+    
+    "$\Leftarrow$": If $\underline{D}(\mu,\lambda,x)<\infty$ for $\mu$-a.e. $x$, then, $\forall A$ with $\lambda (A)=0$, we have 
+    $$
+    \begin{aligned}
+        \mu(A) & =\lim_{ t \to \infty } \mu(\{ x \in A:\underline{D}(\mu,\lambda,x)\leq t \})\\ & \leq \lim_{ t \to \infty } t\lambda (A)\\ & =0.
+    \end{aligned}
+    $$
+\end{itemize}
+\end{proof}
+
+\begin{corollary}\label{cor:Lebesgue-diff}
+Let $\lambda$ be a Radon measure on $\mathbb{R}^{n}$. Then
+\begin{itemize}
+\item[(i)] For any $\lambda$-measurable set $A$, the limit
+$$
+\lim_{r\to 0}\frac{\lambda(A\cap B(x,r))}{\lambda(B(x,r))}
+$$
+equals $1$ for $\lambda$-a.e. $x\in A$ and $0$ for $\lambda$-a.e. $x\in A^{c}$.
+\item[(ii)] If $f$ is locally $\lambda$-integrable then
+$$
+\lim_{r\to 0}\frac{1}{\lambda(B(x,r))}\int_{B(x,r)}f(y)\,\mathrm{d}\lambda(y)=f(x)
+$$
+for $\lambda$-a.e. $x$.
+\end{itemize}
+\end{corollary}
+
+\begin{proof}
+    (i) follows from (ii) by setting $f=\chi_{A}$. For (ii), take $\mu(A):=\displaystyle \int_{A}f\ \mathrm{d}\lambda$, then $\mu\ll \lambda$. By Theorem~\ref{thm:diff-meas}(ii),
+    $$
+    \int _{A}D(\mu,\lambda,x)\ \mathrm{d}\lambda x=\mu(A)=\int _{A}f(x)\ \mathrm{d}\lambda x, \quad\forall \lambda \text{-measurable }A.
+    $$
+    Therefore $f=D(\mu,\lambda,x)$ for $\lambda$-a.e. $x$.
+\end{proof}
+
+\begin{definition}
+Radon measures $\mu$ and $\lambda$ are mutually singular, written $\mu\perp\lambda$, if there exists a Borel set $A$ with $\mu(A)=0$ and $\lambda(A^{c})=0$.
+\end{definition}
+
+\begin{example}
+\begin{itemize}
+\item[(i)] If $\operatorname{supp}\mu\cap\operatorname{supp}\lambda=\varnothing$ then $\mu\perp\lambda$.
+\item[(ii)] Dirac mass $\delta_{0}$ and Lebesgue measure $\mathcal{L}^{n}$ are mutually singular. We can take $A= \mathbb{R}\setminus \{ 0 \}$.
+\end{itemize}
+\end{example}
+
+\begin{theorem}[Lebesgue decomposition]\label{thm:Lebesgue-decomp}
+Let $\mu$ and $\lambda$ be finite Radon measures on $\mathbb{R}^{n}$. There exist unique Borel measures $\mu_{ac}$ and $\mu_{s}$ such that
+$$\mu=\mu_{ac}+\mu_{s},$$
+with $\mu_{ac}\ll\lambda$ and $\mu_{s}\perp\lambda$. In particular, there exists a Borel function $f$ with
+$$\mu(B)=\int_{B}f\,\mathrm{d}\lambda+\mu_{s}(B)\qquad\forall\text{ Borel }B.
+$$
+Moreover, $\mu\ll \lambda$ if and only if $\mu_{s}=0$.
+\end{theorem}
+
+\begin{theorem}\label{thm:proj-H1}
+Let $E$ be a Borel set with Hausdorff dimension $s\in(1,2]$. Then for a.e. $e\in S^{1}$,
+$$\mathcal{H}^{1}(\pi_{e}(E))>0.
+$$
+\end{theorem}
+
+\begin{proof}
+Take $\mu\in\mathcal{M}(E)$ with finite $1$-energy $I_{1}(\mu)<\infty$ (see Chapter~2). 
+$$
+\begin{aligned}
+    & \int _{S^{1}}\underline{D}((\pi _{e})_{\sharp}\mu,\mathcal{L}^{1},x)\ \mathrm{d}(\pi _{e})_{\sharp}\mu(x)\ \mathrm{d}e \\
+    = & \int _{S^{1}}\int \liminf_{ r \to 0 } \frac{(\pi _{e})_{\sharp}\mu(B(x,r))}{2r}\ \mathrm{d}(\pi _{e})_{\sharp}\mu(x)\ \mathrm{d}e \\
+    \leq & \liminf_{ r \to 0 } \frac{1}{2r}\iint \lvert u-v \rvert ^{-1}\ \mathrm{d}\mu(u)\mathrm{d}\mu(v) \\
+    = & c I_{1}(\mu) \\
+    < & \infty.
+\end{aligned}
+$$
+By Theorem~\ref{thm:diff-meas} this implies 
+$$
+(\pi_{e})_{\sharp}\mu\ll\mathcal{L}^{1}\quad \text{for a.e. }e \in S^{1}
+$$
+Therefore $0\neq (\pi_{e})_{\sharp}\mu=f(x)\mathrm{d}x$, and $\mathcal{H}^{1}(\operatorname{supp}(\pi_{e})_{\sharp}\mu)>0$.
+\end{proof}

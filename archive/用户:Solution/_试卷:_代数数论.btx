@@ -1,0 +1,60 @@
+\setdisplaytitle{试卷：代数数论}
+\sethtmltitle{试卷：代数数论}
+
+\section{2024-25春}
+\begin{enumerate}
+\item Judgement (Just write true or false)
+
+(1) For any Dirichlet character $\chi$, the L-function $L_{\chi}(s)$ is holomorphic in the half plane $\operatorname{Re} s > 0$;
+
+(2) $\frac{\sqrt3 + \sqrt 5}{2}$ is an algebraic integer;
+
+(3) For any number field $L$, $x\in \mathcal{O}_L \Leftrightarrow N_{L/\mathbb{Q}}(x) \in \mathbb{Z}$;
+
+(4) The rational prime $p$ such that $x^2+1 \equiv 0 \ (\mathrm{mod} \ p)$ has solution has Dirichlet density $\frac12$ in all the rational primes;
+
+(5) For any valuation field $(K,v)$ and a finite algebraic extension $L/K$, $v$ has a unique extension in $L$.
+
+\item Denote $f(x) = x^3 - x^2 - 2x - 8 $, $K = \mathbb{Q} [x]/ f(x)$, $\alpha$ the image of $x$ in $K$.
+
+(1) Prove: $f$ is irreducible over $\mathbb{Q}$;
+
+(2) How many primes of $\mathcal{O}_K$ are over prime $2$?
+
+(3) Compute $\mathrm{Disc}(1, \alpha, \alpha^2)$;
+
+(4) Prove that $\beta \triangleq \frac{\alpha^2 - \alpha}{2} $ is integral over $\Z$;
+
+(5) Prove: $\{1, \alpha, \beta\}$ form an integral basis of $K/\mathbb{Q}$.
+
+\item Let $\zeta_7$ be the $7$-th root of unity, $K$ be the unique intermediate of $\mathbb{Q}(\zeta_7)/\mathbb{Q}$ such that $[K: \mathbb{Q}] = 3$.
+
+(1) Does there exist an embedding $\sigma:K \hookrightarrow \mathbb{C}$ such that the image of $\sigma$ is not in $\mathbb{R}$? 
+
+(2) Classify by module $7$ which rational primes are ramified, inert and split in $\mathcal{O}_K$.
+
+\item
+
+(1) Prove: The series $$1 - \frac12 + \frac14 -\frac15 + \frac17 -\frac18 + \cdots $$ 
+converges conditionally in $\R$, and find its value;
+
+(2) In the $p$-adic number field $\mathbb{Q}_p$, prove that the series
+$$\sum_{n=1}^{\infty} n \cdot n!, \ \ \ \sum_{n=1}^{\infty} n^2 \cdot (n+1)!$$
+converge and find their values.
+
+\item
+
+(1) Prove: Let $p$ be an odd prime, then $\mathbb{Q}_p$ has no $p$-th root of unity other than $1$.
+
+(2) Prove: $\mathbb{Q}_2$ has no $4$-th root of unity other than $\pm 1$.
+
+(3) Find all $m\in \mathbb{N}$ such that $\mathbb{Q}_p$ has all $m$-th roots of unity.
+
+(4) Prove: $\mathbb{Q}_p$ is not isomorphic to $\mathbb{Q}_q$ for $p\neq q$. 
+
+\item Let $\mathbb{F}_p((X))$ be the field of Laurent series over $\mathbb{F}_p$.
+
+(1) Does $\mathbb{F}_p((X))$ have an archimedean valuation?
+
+(2) Classify all valuations on $\mathbb{F}_p((X))$ under equivalence.
+\end{enumerate}

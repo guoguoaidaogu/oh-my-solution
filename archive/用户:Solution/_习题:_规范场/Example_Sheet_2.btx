@@ -1,0 +1,223 @@
+\theoremstyle{plain}\newtheorem{exercise}{Question}
+\nosectionnumbers
+
+\begin{exercise}
+    Consider a group $G$ and a set $M$.
+    \begin{itemize}
+        \item Let
+        \begin{align}
+            G\times M &\to M \\
+            (g,p) &\mapsto g\cdot p
+        \end{align}
+        be a left action. Then
+        \begin{align}
+            M\times G &\to M \\
+            (p,g) &\mapsto p*g=g^{-1}\cdot p
+        \end{align}
+        defines a right action of $G$ on $M$.
+
+        \item Find an example of a left action
+        \begin{align}
+            G\times M &\to M \\
+            (p,g) &\mapsto p*g=g\cdot p
+        \end{align}
+        does \emph{not} define a right action of $G$ on $M$.
+    \end{itemize}
+\end{exercise}
+
+\begin{exercise}
+    Consider the left action of $SU(2)$ on $\mathbb{C}^2$,
+    defined by matrix multiplication,
+    \begin{align}
+        SU(2)\times \mathbb{C}^2 &\to \mathbb{C}^2 \\
+        (g,v) &\mapsto gv
+    \end{align}
+    and vectors
+    \begin{equation*}
+        \tau_a=-\frac{\iota \sigma_a}{2} \in \mathfrak{su}(2),
+        \quad a=1,2,3.
+    \end{equation*}
+    \begin{itemize}
+        \item Determine the fundamental vector fields $\tilde{\tau}_a$
+        on $\mathbb{C}^2$.
+        
+        \item Show, \emph{by direct calculation}, that
+        \begin{equation*}
+            [\tilde{\tau}_a, \tilde{\tau}_b]
+            =\widetilde{\left[ \tau _a,\tau _b \right] },
+            \quad \forall a,b\in \{1,2,3\}.
+        \end{equation*}
+
+        \item \emph{Calculate directly} $l_{A*}(\tilde{\tau}_1)$ with
+        \begin{equation*}
+            A=\left( \begin{matrix}
+	        r&		-\bar{r}\\
+	        r&		\bar{r}\\
+            \end{matrix} \right) 
+            \in \,\,SU(2) ,
+            \quad r=\frac{1}{2}-\frac{1}{2}\iota .
+        \end{equation*}
+
+        \item Compare $l_{A*}(\tilde{\tau}_1)$ with
+        $\widetilde{\operatorname{Ad}_A \tau_1}$.
+    \end{itemize}
+\end{exercise}
+
+
+\begin{exercise}
+    Let $G,H$ be Lie groups with a Lie group homomorphism
+    $\phi :G\to H$. Suppose that $G$ acts continuously on
+    the right on smooth manifold $M$ and $H$ acts continuously
+    on the right on smooth manifold $N$. Consider a $\phi$-equivariant
+    map $f$, i.e.
+    \begin{equation*}
+        f(p\cdot g)=f(p)\cdot \phi(g),\quad \forall p\in M, g\in G.
+    \end{equation*}
+    Prove
+    \begin{itemize}
+        \item If $f$ is continuous, then $f$ induces a continuous map
+        \begin{equation*}
+            f_\phi :M/G\to N/H.
+        \end{equation*}
+
+        \item If $\phi$ is an isomorphism and $f$ is a homeomorphism, 
+        then $f_\phi$ is a homeomorphism.
+    \end{itemize}
+\end{exercise}
+
+\begin{exercise}
+    Consider the half-plane
+    \begin{equation*}
+        H=\{z\in \mathbb{C}:\operatorname{Im}z>0\}
+    \end{equation*}
+    and the special linear group
+    \begin{equation*}
+        SL( 2,\mathbb{R} ) 
+        =\left\{ \left( 
+        \begin{matrix}
+	    a&		b\\
+	    c&		d\\
+        \end{matrix} \right) 
+        :ad-bc=1 \text{ with } a,b,c,d\in \mathbb{R} \right\} 
+    \end{equation*}
+    \begin{itemize}
+        \item Show that the map
+        \begin{align}
+            SL(2,\mathbb{R})\times H &\to H \\
+            (A,z) &\mapsto \frac{az+b}{cz+d}
+        \end{align}
+        is a well-defined left-action of $SL(2,\mathbb{R})$ on $H$.
+
+        \item Prove that this action is transitive and that it defines
+        a diffeomorphism between $H$ and $SL(2,\mathbb{R})/SO(2)$.
+    \end{itemize}
+\end{exercise}
+
+
+\begin{exercise}
+    Consider the Möbius strip
+    \begin{equation*}
+        M=\left\{ \left( e^{\iota \phi},re^{\iota \phi /2} \right) 
+        :\phi \in \left[ 0,2\pi \right] ,r\in \left[ -1,1 \right] \right\} 
+        \subset \,\,\mathbb{S} ^1\times \mathbb{C} 
+    \end{equation*}
+    Define the projection $\pi:M\to \mathbb{S}^1$ 
+    by $\pi=\operatorname{pr}_1|_M:
+    \mathbb{S}^1\times\mathbb{C}\to\mathbb{S}^1$.
+    Denote the map $f_n:\mathbb{S}^1\to\mathbb{S}^1$,
+    $f_n(z)=z^n$ for $n\in \mathbb{Z}$.
+
+    \begin{itemize}
+        \item Show that $\pi:M\to \mathbb{S}^1$ is
+        a fibre bundle with general fibre $[-1,1]$.
+
+        \item Prove that the boundary $\partial M$ is connected
+        and that the bundle $\pi:M\to \mathbb{S}^1$ is not trivial.
+
+        \item Prove that the image of any smooth section
+        $s:\mathbb{S}^1\to M$ intersects the zero section
+        $z:\mathbb{S}^1\to M$, $z(\alpha)=(\alpha,0)$.
+
+        \item Show that the pull-back bundle $f^{*}_{n} M$
+        is isomorphic to the bundle $M_n\to \mathbb{S}^1$ given by
+        \begin{equation*}
+            M_n:=\left\{ 
+            \left( e^{\iota \psi},re^{\iota n\psi /2} \right) 
+            :\psi \in \left[ 0,2\pi \right] ,r\in \left[ -1,1 \right] \right\} 
+            \subset \,\,\mathbb{S} ^1\times \mathbb{C}.
+        \end{equation*}
+
+        \item Determine those $n\in \mathbb{Z}$ for which $f^*_n M$
+        is trivial and those for which it is non-trivial.
+    \end{itemize}
+\end{exercise}
+
+
+\begin{exercise}
+    Let $G\to P\stackrel{\pi}{\rightarrow} M$ be a principal bundle
+    and $f:N\to M$ a smooth map between smooth manifolds.
+    Prove that the pullback $f^* P$ has the canonical structure
+    of a principal $G$-bundle over $N$.
+\end{exercise}
+
+
+\begin{exercise}
+    Let $F\to E \stackrel{\pi}{\rightarrow} M$ and
+    $F'\to E' \stackrel{\pi}{\rightarrow} M$ be fibre bundles
+    and $H:E\to E'$ a bundle morphism. Suppose that $H$
+    maps every fibre of $E$ diffeomorphically onto a fibre
+    of $E'$. Show that $H$ is a bundle isomorphism.
+\end{exercise}
+
+
+\begin{exercise}
+    Let $G\to P\stackrel{\pi}{\rightarrow} M$ and 
+    $G'\to P' \stackrel{\pi}{\rightarrow} M$ be principle
+    bundles. Suppose $f: G\to G'$ is a Lie group isomorphism.
+    Show that every $f$-equivariant bundle morphism
+    $H:P\to P'$ is a diffeomorphism.
+\end{exercise}
+
+
+\begin{exercise}
+    Let $E\to M$ be a $\mathbb{K}$-vector bundle of rank $m$
+    with a positive definite bundle metric. Suppose $F\subset E$
+    is a vector subbundle. Prove that the orthogonal complement 
+    $F^\perp$ is a vector subbundle of $E$ and that $F\oplus F^\perp$
+    is isomorphic to $E$.
+\end{exercise}
+
+
+\begin{exercise}
+    Let $G\to P\stackrel{\pi}{\rightarrow} M$ be a principle bundle
+    and $\rho: G\to \operatorname{GL}(V)$,
+    $\rho_i: G\to \operatorname{GL}(V_i)$ for $i=1,2$
+    representations on $V,V_i$.
+    Consider the associated vector bundles
+    \begin{equation*}
+        E=P\times_\rho V,\quad E_i\times_{\rho_i} V_i.
+    \end{equation*}
+
+    \begin{itemize}
+        \item Show that the dual bundle $E^*$, the direct
+        sum $E_1\oplus E_2$ and the tensor product $E_1\otimes E_2$
+        are isomorphic to vector bundles associated to $P$.
+
+        \item Determine the corresponding representations of $G$
+        and the vector bundle isomorphisms.
+    \end{itemize}
+\end{exercise}
+
+\begin{exercise}
+    Let $E\to M$ be a complex vector bundle of rank $n\ge 2$.
+    Show that $E$ is associated to a principal $SU(n)$-bundle
+    over $M$ if and only if $\Lambda^n E$ is a trivial complex
+    line bundle.
+\end{exercise}
+
+
+\begin{exercise}
+    Let $E=P\times_\rho V$ be an associated vector bundle
+    and $\alpha$ a section of the adjoint bundle $\operatorname{Ad}(P)$.
+    Prove that $\alpha$ defines a canonical endomorphism of the vector bundle $E$.
+\end{exercise}

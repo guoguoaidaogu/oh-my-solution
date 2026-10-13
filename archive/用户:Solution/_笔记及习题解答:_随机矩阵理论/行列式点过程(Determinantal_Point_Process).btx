@@ -1,0 +1,551 @@
+\theoremstyle{plain}\newtheorem*{1}{习题1}
+\theoremstyle{plain}\newtheorem*{2}{习题2}
+\theoremstyle{plain}\newtheorem*{3}{习题3}
+\theoremstyle{plain}\newtheorem*{4}{习题4}
+\theoremstyle{plain}\newtheorem*{5}{习题5}
+\theoremstyle{plain}\newtheorem*{6}{习题6}
+\theoremstyle{plain}\newtheorem*{7}{习题7}
+\theoremstyle{plain}\newtheorem*{8}{习题8}
+\theoremstyle{plain}\newtheorem*{9}{习题9}
+\theoremstyle{plain}\newtheorem*{10}{习题10}
+\def\E{\mathbb{E}}
+\def\R{\mathbb{R}}
+\def\N{\mathbb{N}}
+\def\B{\mathcal{B}}
+\def\M{\mathcal{M}}
+\def\prob{\mathbb{P}}
+\def\t{\underline{t}}
+\def\c{\underline{c}}
+\newtheorem{prop}{性质}
+
+
+
+
+\section{点过程}
+
+\begin{definition}
+    $\mathcal{X}$称为 配置 (configuration),若它是实轴上一个子集,
+且 $\#(\mathcal{X} \cap [a,b]) < +\infty$, $[a,b]$ 是 $\mathbb{R}$ 上的有界区间,
+一个配置可以有限,也可以是可数无限且没有可数聚点.
+
+$\mathbb{R}$ 上的 (局部有限) 的点过程是所有配置构成空间上的概率测度.
+
+一个点过程被称为 $n$-点过程,若 $P(\#\mathcal{X}=n)=1$
+\end{definition}
+
+\begin{example}
+    例: P($x_1, \ldots, x_n$)是$\mathbb{R}^n$上关于Lebesgue测度 的pdf,且关于坐标置换(permutation)不变,即
+P($x_{\sigma(1)}, \ldots, x_{\sigma(n)}$) = P($x_1, \ldots, x_n$),
+其中$\sigma \in S_n$,则这就定义了一个点过程.
+\end{example}
+
+\section{关联函数}
+给定了一个 $\mathbb{R}$ 上的点过程 $P$,  $\forall \mathbb{R}$ 上的 Borel 集 $A \subset \mathbb{R}$,
+映射 $A \longmapsto E(\#(\mathcal{X} \cap A))$ 是 $\mathbb{R}$ 上的测度,
+这里的期望是关于点过程取的.
+若进一步假设该测度关于 Lebesgue 测度具有密度函数 $\rho_1$,
+则称 $\rho_1$ 是强度 (intensity) 或$1$-点关联函数.
+$\rho_1(x) dx$ 表示 在 $[x,x+dx]$ 具有一个点的概率.
+
+$k$-点关联函数记为 $\rho_k$，
+$\rho_k(x_1, \ldots, x_k) dx_1 \ldots dx_k$, \quad$x_i \ne x_j$, $i \ne j$.
+表示在每个无穷小区间 $[x_j, x_j+dx_j]$, $j=1,\ldots,k$ 有一个点的概率.
+\begin{equation*}
+    \begin{aligned}
+        \Rightarrow \int_A \ldots \int_A \rho_k(x_1, \ldots, x_k) dx_1 \ldots dx_k\\
+        = E(\prod_{j=1}^k\#(\mathcal{X} \cap A_k)), \quad A_j \text{ 互不相交}
+    \end{aligned}
+\end{equation*}
+
+表示满足 ($x_1, \ldots, x_k$) $\in \mathcal{X}^k$, $x_j \in A_j$ 的期望数目.
+
+\begin{remark}
+    (1) 若 $A_j=A$, 则
+    \[\frac{1}{k!} \int_A \ldots \int_A P_k(x_1, \ldots, x_k) dx_1 \ldots dx_k\]
+    表示有序数组 ($x_1, \ldots, x_k$), $x_1 < \ldots < x_k$, $x_i \in A$ 的期望.
+
+$\frac{1}{k!} \int_{\mathbb{R}^k} P(x_1, \ldots, x_k) dx_1 \ldots dx_k = E\begin{pmatrix}
+    \#(\mathcal{X} \cap A)\\
+    k
+\end{pmatrix}$
+
+(2) 若 $p(x_1, \ldots, x_n)$ 是 $\mathbb{R}^n$ 上的概率密度函数,
+且在坐标置换下保持不变,则 $p$ 对应点过程的
+$k$-点关联函数
+\end{remark}
+
+$\rho_k(x_1, \ldots, x_k) = \frac{n!}{(n-k)!} \int_{\mathbb{R}} \ldots \int_{\mathbb{R}}p(x_1, \ldots, x_n) dx_{k+1} \ldots dx_n$.
+
+\section{行列式点过程}
+\begin{definition}
+    $\mathbb{P}$是$\mathbb{R}$上的关联函数为$\rho_k$的点过程,该点过程被称为行列式点过程(determinantal),
+    若存在核函数$K(x,y)$, s.t. $\forall k$,有$\rho_k(x_1, \ldots, x_k) = \det[K(x_i, x_j)]_{i,j=1}^k$.
+    核$K$被称为是行列式点过程的关联核(Correlation Kernel).
+\end{definition}
+
+\begin{remark}
+    (1) 关联核不唯一,事实上对关联核做变换
+\[ K(x,y)\rightarrow\frac{R(x)}{R(y)} k(x,y) \quad (R(x) \neq 0). \]
+则得到同一个DPP.
+
+(2) 在DPP中, 相邻点互相强排斥. 在物理文献中也被称为费米点过程.
+\end{remark}
+ 
+\begin{theorem}
+    设有核函数$K$满足条件(a)-(c):
+    
+(a) $\int_{-\infty}^{\infty}K(x,x)dx=n$
+
+(b) $\forall x_{1},\dots,x_{n}\in\mathcal{R},$ 有 $\det(K(x_i, x_j))_{i,j=1}^n$ 非负定,
+
+(c) 再生核 (reproducing)
+\[ \int_{-\infty}^{\infty} K(x,s)K(s,y)ds = K(x,y). \]
+
+则 $P_{n}(x_{1},\dots,x_{n})=\frac{1}{n!}\det(K(x_{i},x_{j}))_{i,j=1}^{n}$
+定义了$\mathbb{R}^n$上的关于坐标置换不变的概率密度函数，
+则其对应的$n$点过程是DPP且以$K$为关联核.
+    
+\end{theorem}
+
+\begin{proof}
+    $P_n$对应的DPP的$k$点关联函数
+\[ \frac{n!}{(n-k)!}\int\dots\int P(x_{1},\dots,x_{n})dx_{k+1} \dots dx_{n} \]
+故现在只要验证
+\[ \int\dots\int \det(K(x_{i},x_{j}))_{i,j=1}^{n}dx_{k+1} \cdots dx_{n} 
+=(n-k)!\det(K(x_{i},x_{j}))_{i,j=1}^{k} \quad  \]
+留做习题。
+\end{proof}
+\begin{3}
+验证\[ \int\dots\int \det(K(x_{i},x_{j}))_{i,j=1}^{n}dx_{k+1} \cdots dx_{n} 
+=(n-k)!\det(K(x_{i},x_{j}))_{i,j=1}^{k}   .\]
+\end{3}
+\begin{proof}
+由习题2及$\int_{-\infty}^{\infty}K(x,x)dx=n$，可得
+\begin{equation*}
+    \begin{aligned}
+        \int\dots\int \det(K(x_{i},x_{j}))_{i,j=1}^{n}dx_{k+1} \cdots dx_{n}
+        &=(n-n+1)\int\dots\int \det(K(x_{i},x_{j}))_{i,j=1}^{n-1}dx_{k+1} \cdots dx_{n-1}\\
+        &=\cdots\\
+        &=(n-k)!\det(K(x_{i},x_{j}))_{i,j=1}^{k} 
+    \end{aligned}
+\end{equation*}
+\end{proof}
+\section{ Gap probability (间隙概率) \& Fredholm determinant}
+
+给定Borel集 $A$中没有点的概率.
+
+$P_{A}(n)$: $A$中仅有$n$个点的概率,
+
+$P_{A}(0)$: gap probability.
+
+\begin{equation*}
+    \begin{aligned}
+        \frac{1}{k!}\int_{A^{k}}\rho(x_{1},\dots,x_{k})dx_{1} \dots dx_{k}
+        &=\text{$A$ 中有序 $k$ 元组个数的期望}\\
+        &=\sum_{n=k}^{\infty}P_{A}(n)\binom{n}{k}
+    \end{aligned}
+\end{equation*}
+
+从而结合$\sum\limits_{k=0}^{n}(-1)^{k}\binom{n}{k}=\begin{cases} 1 & n=0 \\ 0 & n \neq 0 \end{cases}$,得到：
+\begin{equation*}
+    \begin{aligned}
+        &\sum_{k=0}^{\infty}\frac{(-1)^{k}}{k!}\cdot\int_{A^{k}}P_{k}(x_{1},\dots,x_{k})dx_{1} \dots dx_{k}\\
+        =&\sum_{k=0}^{\infty}\sum_{n=k}^{\infty}(-1)^{k}\binom{n}{k}P_{A}(n)\\
+        =&\sum_{n=0}^{\infty}\left(\sum_{k=0}^{n}(-1)^{k}\binom{n}{k}\right)P_{A}(n)=P_A(0)
+    \end{aligned}
+\end{equation*}
+
+当$\rho_k$是DPP时，则有：
+\begin{equation*}
+    \begin{aligned}
+         P_{A}(0)=\sum_{k=0}^{\infty}\frac{(-1)^{k}}{k!}\int_{A^{k}} \det(K(x_{i},x_{j}))_{i,j=1}^{k}dx_{1} \dots dx_{k}=\det(I-K_{A})
+    \end{aligned}
+\end{equation*}
+上式称为Fredholm determinant.
+
+其中算子$K_A$定义为：
+\begin{equation*}
+    \begin{aligned}
+        K_{A}:L^{2}(A)&\rightarrow L^{2}(A)\\
+        f&\mapsto\int_{A}k(x,y)f(y)dy
+    \end{aligned}
+\end{equation*}
+
+若$K_A$是迹算子 (trace class operator)，可以验证行列式是良定的。
+事实上，若 $k$关于两个变量连续, $A$有限,可以验证 $\det(I-K_A)$中的级数绝对收敛.
+
+\section{ DPP \& non-intersecting path}
+
+考虑整数格点上的随机游走.
+$Y_k$: $k$时刻的位置,
+$i\rightarrow i-1$的转移概率为$p_i$, $i\rightarrow i+1$的为$q_i$.
+满足$p_i + q_i = 1$.
+
+Q: $n$条在$t=0$时从不同$x_i$出发的路径不相交的概率?
+
+
+\begin{theorem}{(Karlin-McGregor)}
+    考虑$n$个$Y_k$,即 $Y_{k}^{(1)}, \cdots, Y_{k}^{(n)}$(表示$n$个路径), 满足 $Y_{0}^{(i)}=x_i$
+$(x_{1}>x_{2}>\cdot\cdot\cdot>x_{n})$.
+
+设 $t \in \mathbb{N}$ 及 $y_1 > \cdots > y_n$.
+
+记 $P_{t}(x_{i},y_{j})=P(Y_{t}=y_{j}|Y_{0}=x_{i})$ (t步从$X_i$到$y_j$的概率)
+
+则路径不交的概率为
+\begin{equation*}
+    \begin{aligned}
+        &P(Y_{t}^{(i)}=y_i, \quad 1\leq i\leq n, \quad Y_{s}^{(1)}>Y_{s}^{(2)}>...>Y_{s}^{(n)}, \forall 0\le s\le t)\\
+        =&\det(P_{t}(x_{i},y_{j}))_{i,j=1}^{n}
+    \end{aligned}
+\end{equation*}
+
+\end{theorem}
+
+\begin{example}
+    $Y_t$: 对称随机游走
+
+    $P_{2}(0,2)=\frac{1}{4}$, $P_{2}(0,-2)=\frac{1}{4}$, $P_{2}(0,0)=\frac{1}{2}$
+    
+考虑两个这样的随机游走: $x_{1}=2=y_1$, $x_2=0=y_2$
+\begin{equation*}
+    \begin{aligned}
+        &P(Y_{2}^{(1)}=2=Y_0^{(1)}, Y_{2}^{(2)}=0=Y_0^{(2)}, Y_1^{(1)} > Y_1^{(2)} )\\
+        =& \det \begin{pmatrix} P_2(2,2) & P_2(2,0) \\ P_2(0,2) & P_2(0,0) \end{pmatrix}\\
+        =&\begin{vmatrix} \frac{1}{2} & \frac{1}{4} \\ \\ \frac{1}{4} & \frac{1}{2} \end{vmatrix} = \frac{3}{16}.
+    \end{aligned}
+\end{equation*}
+
+\end{example}
+
+回到定理证明:
+\begin{proof}
+$\Omega_{ij}$: $t$步由$x_i$到$y_j$的路径全体.
+
+$P(\pi)$: $\pi\in\Omega_{ij}$, 取到这样一条路径的概率.
+
+$P_{t}(x_{i},y_{j})=\sum\limits_{\pi\in\Omega_{ij}} P(\pi)$
+
+先考察$n=2$情形:
+\begin{equation*}
+    \begin{aligned}
+        \det \begin{pmatrix} P_t(x_1, y_1) & P_t(x_1, y_2) \\ P_t(x_2, y_1) & P_t(x_2, y_2) \end{pmatrix}&=P_{t}(x_1,y_1)P_{t}(x_2,y_2) - P_{t}(x_1,y_2)P_{t}(x_2,y_1)\\
+        &=\textcolor{red}{\sum_{\pi\in\Omega_{11}} P(\pi) \cdot \sum_{\sigma\in\Omega_{22}} P(\sigma)} - \textcolor{green}{\sum_{\pi\in\Omega_{12}} P(\pi) \sum_{\sigma\in\Omega_{21}} P(\sigma)}
+    \end{aligned}
+\end{equation*}
+
+标红部分表示 $x_1 \rightarrow y_1,
+x_2 \rightarrow y_2$的所有路径对求和，可以相交。
+
+我们想求的是不相交的路径对的概率和。故希望标绿部分是所有相交路径的概率和。
+
+事实上，由反射原理可得，$x_1 \rightarrow y_1,
+x_2 \rightarrow y_2$中的所有相交路径与$x_1 \rightarrow y_2,
+x_2 \rightarrow y_1$的路径对有一个一一对应。从而标绿部分即为相交的概率和。从而$n=2$情形证毕。
+
+对一般的$n$，留做习题。
+ 
+\end{proof}
+
+\begin{4}
+    对一般的$n$证明定理5.1结论.
+\end{4}
+\begin{proof}
+    \[
+\det(P_t(x_i, y_j))_{i,j=1}^n = \sum_{\sigma \in S_n} \text{sgn}(\sigma) \prod_{i=1}^n P_t(x_i, y_{\sigma(i)})
+\]
+
+恒等映射对应全体 $(x_1 \to y_1, \ldots, x_n \to y_n)$ 的路径的概率和，其他映射均是相交情形。
+
+记 $\Omega_{ij}$ 为从 $x_i$ 到 $y_j$ 的所有路径集合，则 $P_t(x_i, y_j) = \sum_{\pi \in \Omega_{ij}} P(\pi)$。
+
+路径组 $(\pi_1, \ldots, \pi_n)$ 对应 $\sigma \in S_n$，即每个 $\pi_i$ 表示 $x_i \to y_{\sigma(i)}$。
+
+对任何相交路径组 $(\pi_1, \ldots, \pi_n)$，令 $s$ 为最小非负时间，使得存在某个 $i$ 满足 $Y_s^{(i)} \leq Y_s^{(i+1)}$，且令该 $i$ 为满足此式的最小一个。显然$s\ge 1$.
+
+定义新路径 $(\pi_1', \ldots, \pi_n')$：
+\begin{itemize}
+\item 对 $k \neq i, i+1$，有 $\pi_k' = \pi_k$
+\item 对 $r < s$，$\pi_i'(r) = \pi_i(r)$，$\pi_{i+1}'(r) = \pi_{i+1}(r)$
+\item 对 $r \geq s$，$\pi_i'(r) = \pi_{i+1}(r)$，$\pi_{i+1}'(r) = \pi_i(r)$
+\end{itemize}
+
+交换后，路径 $\pi_i'$ 从 $x_i$ 出发，到达 $y_{\sigma(i+1)}$；路径 $\pi_{i+1}'$ 从 $x_{i+1}$ 出发，到达 $y_{\sigma(i)}$。
+
+从而新路径组对应排列 $\sigma \circ (i,i+1)$，故 $\text{sgn}(\sigma') = -\text{sgn}(\sigma)$。
+
+易见新路径组仍相交（系路径一样，只是后半程交换）。记这个把相交路径映射到相交路径的映射为 $\varphi$。
+
+则 $\varphi(\varphi(\pi)) = \pi$，故我们构造了相交路径的一一配对。又由于 $\varphi$ 改变 $\sigma$ 的奇偶性，故相交路径组以正负贡献成对抵消。
+
+因此 $\det(P_t(x_i,y_j))_{i,j=1}^n$ 只剩 $\sigma = \text{id}$ 中不相交路径的贡献，而 $\text{sgn}(\text{id}) = +1$，故：$\det(P_t(x_i,y_j))_{i,j=1}^n$等于不相交路径的概率和，即：2
+\[
+\det(P_t(x_i,y_j))_{i,j=1}^n = P(Y_t^{(i)} = y_i, 1 \leq i \leq n, Y_s^{(1)} > \cdots > Y_s^{(n)}, \forall 0 \leq s \leq t)
+\]
+\end{proof}
+\section{ Tracy-Widom 分布}
+
+
+GUE: 无序特征值的分布。
+
+\[
+P(y_{1},\cdots,y_{N}) = \frac{1}{N!} \det(k_{N}(y_{i}, y_{j}))_{i,j=1}^{N}.
+\]
+其中，\( K_{N}(x, y) \) 为Hermite核，定义为：
+\[
+K_{N}(x,y) = \sum_{k=0}^{N-1} \psi_{k}(x) \psi_{k}(y).
+\]
+
+接下来，我们考虑最大特征值的分布问题。首先有：
+\[
+P(\lambda_{\max}^{(N)} \leq t) = P(\text{在 }(t, +\infty)\text{ 中没有特征值})= \det(I - K_{N}|_{(t,+\infty)}).
+\]
+
+进一步展开得到：
+\[
+P(\lambda_{\max}^{(N)} \leq t) = 1 + \sum_{r=1}^{N} \frac{(-1)^r}{r!} \int_{t}^{\infty} \cdots \int_{t}^{+\infty} \det(K_{N}(\mu_{i}, \mu_{j}))_{i,j=1}^{r} d\mu_{1} \cdots d\mu_{r}.
+\]
+
+假设最大特征值的近似形式为：
+\[
+\lambda_{\max}^{(N)} \approx 2\sqrt{N} + ?.
+\]
+在区间 \( (2-t, 2) \) 内，特征值的个数可以表示为：
+\[
+N \int_{2-t}^{2} P(x) dx = \frac{N}{2\pi} \int_{2-t}^{2} \sqrt{4 - x^2} dx.
+\]
+令上式量级为$O(1)$,由此可以得到：
+\[
+t = O(N^{-\frac{2}{3}}),
+\]
+
+因此，最大特征值的表达式写为：
+\[
+\lambda_{\max}^{(N)} = \sqrt{N} \left( 2 + t N^{-\frac{2}{3}} \right) = 2\sqrt{N} + t N^{-\frac{1}{6}}.
+(t\text{ 是 }r.v)\]
+做一个尺度化：
+\[
+\text{令}\tilde{K}_{N}(x, y) = N^{-\frac{1}{6}} K_N(2\sqrt{N} + x N^{-\frac{1}{6}}, 2\sqrt{N} + y N^{-\frac{1}{6}}).
+\]
+则
+\[
+P\left( \left(\lambda_{\max}^{(N)} - 2\sqrt{N}\right) N^{\frac{1}{6}} \leq t \right) = \sum_{r=0}^{N} \frac{(-1)^r}{r!} \int_{t}^{\infty} \cdots \int_{t}^{\infty} \det(\tilde{k}_{N}(x_{i}, y_{j}))_{i,j=1}^{r} dx_{1} \cdots dx_{r}.
+\]
+当 \( N \to +\infty \) 时，这个概率分布会收敛到一个极限分布 \( F_{2}(t) \).这就是TW分布。
+
+接下来，我们考虑Hermite核 \( K_{N}(x, y) \) 的表达式：
+\[
+K_{N}(x, y) = \frac{1}{\sqrt{2\pi}} \sum_{k=0}^{N-1} \frac{1}{k!} e^{-\frac{1}{4}(x^2 + y^2)} H_k(x) H_k(y),
+\]
+其中 \( H_k(x) \) 是Hermite多项式。通过应用Christoffel-Darboux公式,即：
+\[
+\sum_{k=0}^{N-1} \frac{H_k(x) H_k(y)}{k!} = \frac{H_N(x) H_{N-1}(y) - H_{N-1}(x) H_N(y)}{(x - y)(N - 1)!}.
+\]
+将核函数表示为：
+\begin{equation*}
+    \begin{aligned}
+        K_{N}(x, y) &= \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2 + y^2}{4}} \frac{H_N(x) H_{N-1}(y) - H_{N-1}(x) H_N(y)}{(x - y)(N - 1)!}\\
+        &=\sqrt{N}\frac{\Psi_{N}(x)\Psi_{N-1}(y)-\Psi_{N-1}(y)\Psi_{N}(x)}{x-y}\\
+        &=\frac{\Psi_N(x)\Psi_N'(y) - \Psi_N'(x)\Psi_N(y)}{x-y} - \frac{1}{2}\Psi_{N}(x)\Psi_{N}(y) 
+    \end{aligned}
+\end{equation*}
+其中用到$\Psi_{N}'(x)=-\frac{x}{2}\Psi_{N}(x) + \sqrt{N}\Psi_{N-1}(x)$.
+
+\begin{5}
+    $H_n$的定义见习题1处。
+\[
+\psi_n(x)
+= \frac{1}{(2\pi)^{1/4}\sqrt{n!}}\,H_n(x)e^{-x^{2}/4},
+\qquad
+K_N(x,y) = \sum_{k=0}^{N-1} \psi_k(x)\psi_k(y).
+\]
+
+\begin{enumerate}
+  \item[(a)] 证明：
+  \[
+  \sum_{k=0}^{N-1} \frac{H_k(x)H_k(y)}{k!}
+  = \frac{H_N(x)H_{N-1}(y)-H_N(y)H_{N-1}(x)}{(N-1)!\,(x-y)}.
+  \]
+  \item[(b)] 利用 (a) 和 $\psi_k$ 的定义，证明：
+  \[
+  \begin{aligned}
+  K_N(x,y)
+  & = \frac{1}{\sqrt{2\pi}}e^{-(x^{2}+y^{2})/4}\,
+    \frac{H_N(x)H_{N-1}(y)-H_N(y)H_{N-1}(x)}{(N-1)!\,(x-y)} \\
+  & = \sqrt{N} \frac{\psi_N(x)\psi_{N-1}(y)-\psi_{N-1}(x)\psi_N(y)}{x-y}.
+  \end{aligned}
+  \]
+  \item[(c)] 证明 ：
+  \[
+  \psi_N'(x) = -\frac{x}{2}\psi_N(x) + \sqrt{N}\,\psi_{N-1}(x),
+  \qquad N\ge 1.
+  \]
+\end{enumerate}
+\end{5}
+\begin{proof}
+(a)
+令 $S_N(x,y) = \sum_{k=0}^{N-1} \frac{H_k(x)H_k(y)}{k!}$，其中 $H_n(x)$ 是 Hermite 多项式，满足递推关系：
+\begin{equation}
+H_{n+1}(x) = x H_n(x) - n H_{n-1}(x), \quad n \geq 1,
+\end{equation}
+且 $H_0(x)=1$, $H_1(x)=x$。考虑 $(x-y)S_N(x,y)$，对每一项使用递推关系：
+\[
+(x-y) \frac{H_k(x)H_k(y)}{k!} = \frac{x H_k(x)H_k(y) - y H_k(x)H_k(y)}{k!}.
+\]
+由递推关系，$x H_k(x) = H_{k+1}(x) + k H_{k-1}(x)$，$y H_k(y) = H_{k+1}(y) + k H_{k-1}(y)$，代入得：
+\begin{align*}
+(x-y) \frac{H_k(x)H_k(y)}{k!} &= \frac{1}{k!}\bigl[(H_{k+1}(x) + k H_{k-1}(x)) H_k(y) - H_k(x)(H_{k+1}(y) + k H_{k-1}(y))\bigr] \\
+&= \frac{H_{k+1}(x)H_k(y) - H_k(x)H_{k+1}(y)}{k!} + \frac{H_{k-1}(x)H_k(y) - H_k(x)H_{k-1}(y)}{(k-1)!}.
+\end{align*}
+对 $k=0$ 到 $N-1$ 求和。注意当 $k=0$ 时第二项视为零。记
+\begin{align*}
+A &= \sum_{k=0}^{N-1} \frac{H_{k+1}(x)H_k(y) - H_k(x)H_{k+1}(y)}{k!}, \\
+B &= \sum_{k=1}^{N-1} \frac{H_{k-1}(x)H_k(y) - H_k(x)H_{k-1}(y)}{(k-1)!}.
+\end{align*}
+在 $B$ 中令 $j=k-1$，则 $j=0,\dots,N-2$，且
+\[
+B = \sum_{j=0}^{N-2} \frac{H_j(x)H_{j+1}(y) - H_{j+1}(x)H_j(y)}{j!}.
+\]
+于是
+\begin{equation*}
+\begin{aligned}
+    (x-y)S_N(x,y) &= A + B \\
+    &= \sum_{j=0}^{N-1} \frac{H_{j+1}(x)H_j(y) - H_j(x)H_{j+1}(y)}{j!} + \sum_{j=0}^{N-2} \frac{H_j(x)H_{j+1}(y) - H_{j+1}(x)H_j(y)}{j!}.
+\end{aligned}
+\end{equation*}
+
+
+当 $j=0,\dots,N-2$ 时，两项相互抵消。仅剩 $j=N-1$ 时第一项的贡献：
+\[
+(x-y)S_N(x,y) = \frac{H_N(x)H_{N-1}(y) - H_{N-1}(x)H_N(y)}{(N-1)!}.
+\]
+因此，
+\[
+S_N(x,y) = \frac{H_N(x)H_{N-1}(y) - H_N(y)H_{N-1}(x)}{(N-1)!\,(x-y)}.
+\]
+这正是所求。
+
+
+(b)
+由 $\psi_k$ 的定义：
+\[
+\psi_k(x) = \frac{1}{(2\pi)^{1/4}\sqrt{k!}} H_k(x) e^{-x^2/4},
+\]
+得
+\[
+K_N(x,y) = \sum_{k=0}^{N-1} \psi_k(x)\psi_k(y) = \frac{e^{-(x^2+y^2)/4}}{\sqrt{2\pi}} \sum_{k=0}^{N-1} \frac{H_k(x)H_k(y)}{k!}.
+\]
+利用 (a) 的结果：
+\[
+K_N(x,y) = \frac{1}{\sqrt{2\pi}} e^{-(x^2+y^2)/4} \frac{H_N(x)H_{N-1}(y) - H_N(y)H_{N-1}(x)}{(N-1)!\,(x-y)}.
+\]
+另一方面，计算
+\begin{equation*}
+    \begin{aligned}
+        &\psi_N(x)\psi_{N-1}(y) - \psi_{N-1}(x)\psi_N(y) \\&= \frac{1}{\sqrt{2\pi}\sqrt{N!\,(N-1)!}} \bigl(H_N(x)H_{N-1}(y) - H_{N-1}(x)H_N(y)\bigr) e^{-(x^2+y^2)/4}.
+    \end{aligned}
+\end{equation*}
+因此，
+\begin{align*}
+&\sqrt{N}\,\frac{\psi_N(x)\psi_{N-1}(y) - \psi_{N-1}(x)\psi_N(y)}{x-y} \\&= \frac{\sqrt{N}}{\sqrt{2\pi}\sqrt{N!\,(N-1)!}} \frac{H_N(x)H_{N-1}(y) - H_{N-1}(x)H_N(y)}{x-y} e^{-(x^2+y^2)/4} \\
+&= \frac{1}{\sqrt{2\pi}\,(N-1)!} \frac{H_N(x)H_{N-1}(y) - H_N(y)H_{N-1}(x)}{x-y} e^{-(x^2+y^2)/4},
+\end{align*}
+其中用到了 $\sqrt{N!\,(N-1)!} = \sqrt{N}\,(N-1)!$。这与 $K_N(x,y)$ 的表达式一致，故
+\[
+K_N(x,y) = \sqrt{N}\,\frac{\psi_N(x)\psi_{N-1}(y) - \psi_{N-1}(x)\psi_N(y)}{x-y}.
+\]
+
+
+(c)
+令 $C_N = \dfrac{1}{(2\pi)^{1/4}\sqrt{N!}}$，则 $\psi_N(x) = C_N H_N(x) e^{-x^2/4}$。求导得
+\[
+\psi_N'(x) = C_N \bigl( H_N'(x) e^{-x^2/4} + H_N(x) e^{-x^2/4} \cdot \Bigl(-\frac{x}{2}\Bigr) \bigr) = C_N e^{-x^2/4} \bigl( H_N'(x) - \frac{x}{2} H_N(x) \bigr).
+\]
+又
+\begin{align*}
+-\frac{x}{2} \psi_N(x) + \sqrt{N} \psi_{N-1}(x) &= -\frac{x}{2} C_N H_N(x) e^{-x^2/4} + \sqrt{N} C_{N-1} H_{N-1}(x) e^{-x^2/4} \\
+&= e^{-x^2/4} \bigl( -\frac{x}{2} C_N H_N(x) + \sqrt{N} C_{N-1} H_{N-1}(x) \bigr).
+\end{align*}
+比较两式，只需证明
+\[
+C_N H_N'(x) = \sqrt{N} C_{N-1} H_{N-1}(x).
+\]
+计算系数比：$\dfrac{C_{N-1}}{C_N} = \dfrac{\sqrt{N!}}{\sqrt{(N-1)!}} = \sqrt{N}$，故等价于
+\[
+H_N'(x) = N H_{N-1}(x).
+\]
+这正是 Hermite 多项式的导数性质，可由递推关系或直接验证得到。因此，对 $N \geq 1$ 有
+\[
+\psi_N'(x) = -\frac{x}{2} \psi_N(x) + \sqrt{N} \psi_{N-1}(x).
+\]
+\end{proof}
+
+然后，我们引入标准化后的函数 \(\tilde{\Psi}_N(x)\)，其定义为：
+\[
+\tilde{\Psi}_{N}(x) = N^{\frac{1}{2}} \Psi_{N}(2\sqrt{N} + x N^{-\frac{1}{6}}).
+\]
+则
+\[
+\tilde{\Psi}_{N}'(x) = N^{\frac{1}{3}}  \Psi_{N}'(2\sqrt{N} + x N^{-\frac{1}{6}}).
+\]
+
+\[
+\tilde{k}_{N}(x, y) = \frac{\tilde{\psi}_{N}(x) \tilde{\psi}_{N}'(y) - \tilde{\psi}_{N}'(x) \tilde{\psi}_{N}(y)}{x - y} - \frac{1}{2 N^{-\frac{1}{3}}} \tilde{\psi}_{N}(x) \tilde{\psi}_{N}(y).
+\]
+
+接着，我们讨论当 \( N \to \infty \) 时的极限行为。我们有以下事实：
+\[
+\lim_{N \to \infty} \tilde{\Psi}_N(x) = A_i(x),
+\]
+\[\lim_{N \to \infty} \tilde{\Psi}_N'(x) = A_i'(x)\]
+其中 \( A_i(x) \) 满足 Airy 方程：
+\[
+A_i''(x) = x A_i(x).
+\]
+在 \( x \to +\infty \) 时，\( A_i(x) \) 的渐近形式为：
+\[
+A_i(x) \sim \frac{1}{2\sqrt{\pi}} x^{-\frac{1}{4}} \exp \left( -\frac{2}{3} x^{\frac{3}{2}} \right).
+\]
+
+因此，极限核函数为：
+\[
+\lim_{N \to \infty} \tilde{k}_N(x, y) = \frac{A_i(x) A_i'(y) - A_i'(x) A_i(y)}{x - y},
+\]
+ 称之为Airy kernel .
+
+ 我们体会一下$\lim\limits_{N \to \infty} \tilde{\Psi}_N(x) = A_i(x)$:
+计算可得 \[\Psi_{N}''(x)+(N+\frac{1}{2}-\frac{x^{2}}{4})\Psi_{N}(x)=0.\]
+由于\[\tilde{\Psi}_{N}(x)=N^{\frac{1}{12}}\Psi_{N}(2\sqrt{N}+xN^{-\frac{1}{6}}),\]
+\begin{equation*}
+    \begin{aligned}
+        \Rightarrow\tilde{\psi}_{N}''(x)&=-N^{-\frac{1}{4}}\left(N+\frac{1}{2}-\frac{(2\sqrt{N}+xN^{-\frac{1}{6}})^{2}}{4}\right)\Psi_{N}(2\sqrt{N}+xN^{-\frac{1}{6}}) \\
+        &=-N^{-\frac{1}{3}}\left(\frac{1}{2}-\frac{4xN^{\frac{1}{3}}+x^{2}N^{-\frac{1}{3}}}{4}\right)\tilde{\Psi}_{N}(x) \\
+        &\approx x\tilde{\Psi}_{N}(x)\quad(N\rightarrow+\infty)
+    \end{aligned}
+\end{equation*}
+
+这和Airy函数满足的微分方程相同。
+
+我们还有以下结论：
+\begin{theorem}
+    随机变量 $N^{\frac{2}{3}}(\lambda_{\max}(A_{N})-2)$ 在 $N\rightarrow \infty$ 时, 有极限分布
+\begin{equation*}
+    \begin{aligned}
+        F_{2}(t)&=\lim_{N\rightarrow+\infty} P(N^{\frac{2}{3}}(\lambda_{\max}(A_N)-2)\le t)\\
+        &=\sum_{r=0}^{\infty}\frac{(-1)^{r}}{r!}\int_{t}^{\infty}\dots\int_{t}^{\infty}\det(K_{A_{i}}(x_{i},y_{j}))_{i,j=1}^{r}dx_{1} \cdots dx_{r} \\
+        &=\det(I-K_{Ai}|_{(t,+\infty)})
+    \end{aligned}
+\end{equation*}
+\end{theorem}
+
+\begin{theorem}
+    \[
+F_2(t) = \exp \left( -\int_{t}^{\infty} (x - t) q^2(x) \, dx \right),
+\]
+其中 \( q(x) \) 满足 Painlevé II 方程：
+\[
+q''(x) = 2q^3(x) - x q(x).
+\]
+当 \( x \to \infty \) 时，\( q(x) \sim A_i(x) \)。
+
+\end{theorem}

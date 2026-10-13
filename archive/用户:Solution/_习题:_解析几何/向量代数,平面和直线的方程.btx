@@ -1,0 +1,260 @@
+\setdisplaytitle{$\S 2$向量代数,平面和直线的方程}
+\newtheorem{exercise}{}
+\newtheorem{practice}{补充练习}
+
+\theoremstyle{plain}\newtheorem*{216}{定理2.16}
+\theoremstyle{plain}\newtheorem*{222}{定理2.22}
+\theoremstyle{plain}\newtheorem*{227}{命题2.27}
+
+
+\newcommand{\mr}{\mathbb{R}}
+\newcommand{\mn}{\mathbb{N}}
+\newcommand{\mq}{\mathbb{Q}}
+\newcommand{\mz}{\mathbb{Z}}
+\newcommand{\mc}{\mathbb{C}}
+
+
+
+== 长度和角度 ==
+\begin{exercise}
+    设$(F_1\mid F_2),(H_1\mid H_2)\in\mathcal{F}(\mq)$,
+    举例说明$(F_1+H_1\mid F_2+H_2)$不一定是Dedekind分割.
+\end{exercise}
+\begin{proof}
+    例1.只需要取$a:=(F_1\mid F_2)$为无理数并令$-a:=(H_1\mid H_2)$.
+    验证$0\not\in(F_1+H_1)\cup(F_2+H_2)$即可.\\
+    例2.令\[F_1=\{x\in\mq:x<1\}, F_2=\{x\in\mq:x\geq1\}, H_1=
+    \{x\in\mq:x\leq1\}, H_2=\{x\in\mq\mid x>1\}.\]考虑2即可.
+\end{proof}
+\begin{practice}
+    证明:不在$(F_1+H_1)\cup(F_2+H_2)$中的有理数至多只能有一个.
+\end{practice}
+\begin{exercise}
+    证明: Dedekind加法和乘法满足分配律,即$\forall a=(F_1\mid F_2),
+    b=(G_1\mid G_2),c=(H_1\mid H_2)$有$(a+b)c=ac+bc$.
+\end{exercise}
+\begin{proof}
+    不妨设$a,b,c>0$.按定义\[\begin{gathered}
+    (a+b)c=(\mq-((F_2+G_2)*H_2)\mid(F_2+G_2)*H_2),\\
+    ac+bc=(\mq-(F_2*H_2+G_2*H_2)\mid(F_2*H_2+G_2*H_2)).
+    \end{gathered}\]下证$(F_2+G_2)*H_2=F_2*H_2+G_2*H_2$.
+    $(F_2+G_2)*H_2\subset F_2*H_2+G_2*H_2$是显然的;对于另一包含,
+    设$q\in F_2*H_2+G_2*H_2$,则存在$f\in F_2,g\in G_2,
+    h_1,h_2\in H_2$, s.t. $q=fh_1+gh_2$.记$h=\min\{h_1,h_2\}$,
+    则$q\geq fh+gh=(f+g)h$此即$q\in(F_2+G_2)*H_2$.
+
+    其他情况利用定义化为上述情形即可,注意$a,b$的对称性.例如,对于
+    $a>0,b<0,c>0$,当$a+b>0$时有$-b>0,a-(-b)>0$,故有
+    \[(a-(-b))c+(-b)c=ac\implies(a+b)c=ac+bc.\]剩余情形同理.
+\end{proof}
+\begin{exercise}
+    证明:\\
+    (1)过平面$\alpha$外一点$P$有且只有一张平面与$\alpha$平行;\\
+    (2) “平行或重合”是空间全体平面构成的集合上的等价关系.
+\end{exercise}
+\begin{remark}
+    这是大家第一次遇到这类证明题,因此我们给出详尽的解答,希望大家能仔细
+    揣摩,感受数学的严谨性.
+\end{remark}
+\begin{proof}
+    (1)由公理2.9我们可以在平面$\alpha$上选择不共线三点$A,B,C$,设
+    $A,B$所在直线为$b$, $A,C$所在直线为$c$,则$b,c$交于点$A$.再由
+    平行公理2.13,存在唯一一条直线$d$过$P$点且平行于$b$,存在唯一一条
+    直线$e$过$P$点且平行于$c$.由于直线$d,e$都通过$P$且不重合,故由
+    公理2.9知它们确定一个平面$\beta$.再由公理2.9后注记可知$d,e$平行
+    于平面$\alpha$.下面先证存在性.\\
+	\textbf{证法1.}反证,若$\beta$与$\alpha$不平行,则设二者交
+    于直线$l$.若$d,e$中有一个与$l$相交,不妨设$d\cap l=Q$,则
+    $Q\in\alpha\cap\beta\implies d\cap\alpha=Q$,这与$d$平行于
+    $\alpha$矛盾.若 $d,e$均与$\alpha$平行,则过$P$点可以作$l$的两条
+    平行线,这与平行公理矛盾.\\
+	\textbf{证法2.}反证,若$\beta$与$\alpha$不平行,则设二者交于直线
+    $l$.因为$d$平行于$\alpha,d\subset\beta$,故$d$与$l$平行.
+    (事实上, $d$与$l$共面,若二者不平行,则$d\cap l\neq\varnothing$,
+    进而$d\cap\alpha\neq\varnothing$,这与$d$平行于$\alpha$矛盾.)
+    同理$e$平行于$l$.于是过$P$点有两条直线与$l$平行,矛盾.
+	
+	再证唯一性.若存在两个过$P$点的不重合平面$\beta,\gamma$均与
+    $\alpha$平行,令$\beta\cap\gamma=l$.\\
+	\textbf{证法1.}再作平面$\zeta$与前述三平面均相交,且
+    $l\not\subset\zeta,P\in\zeta\cap l$.记$\zeta\cap\alpha=a,
+    \zeta\cap\beta=b,\zeta\cap\gamma=c$,我们可以证明$b,c$均平行
+    于$a$ (证明略),于是$b$平行于$c$ (证明略).又因为$P\in b\cap c$,
+    这说明$b=c$,记为$d$. 注意$d\in\beta\cap\gamma$,这只能是$d=l$.
+    所以$l\in\zeta$,矛盾.\\
+	\textbf{证法2.}在$\alpha$上取一条不平行于$l$的直线$l^\prime$,
+    设$l^\prime$与$P$决定的平面交$\beta$于$b$,交$\gamma$于$c$,则
+    $b\neq c,P\in b,P\in c$,且有$l^\prime$与$b,c$均平行.于是
+    过$P$有两条直线$b,c$与$l^\prime$平行(证明略),与平行公理矛盾.
+
+    (2)只证传递性.若$\alpha,\beta$或$\beta,\gamma$存在一组平面重合,
+    则结论显然成立.下设两组平面平行.若$\alpha$与$\gamma$重合,
+    则结论成立.若不重合,反设二者相交,交线为$l$.任取点$A\in l$,
+    则过$A$点有两个平面都与$\beta$平行,这与(1)矛盾.故此时$\alpha$
+    与$\gamma$只能平行.
+\end{proof}
+\begin{practice}
+    完成(1)中唯一性部分省略的三处证明.
+\end{practice}
+\begin{exercise}
+    证明定理2.16(3)-(10).
+\end{exercise}
+\begin{216}
+    设$a,b,c$为活动线段, $n,m$为正整数,则\\
+    (3) $n(ma)=(nm)a$.\\
+    (4) $(n+m)a=na+ma$.\\
+    (5) $n(a+b)=na+nb$.\\
+    (6)若$a\preccurlyeq b,a\succcurlyeq b$,则$a=b$.\\
+    (7)若$a\preccurlyeq b,b\preccurlyeq c$,则$a\preccurlyeq c$.\\
+    (8)若$a\prec b$,则$a+c\prec b+c$.\\
+    (9)若$n<m$,则$na\prec ma$.\\
+    (10)若$a\prec b$,则$na\prec nb$.
+\end{216}
+\begin{proof}
+    (3)定理2.16的(1)(2)已经证明了活动线段的加法满足交换律和结合律.
+    于是\[n(ma)=n(\underbrace{a+\cdots+a}_{m\text{个}}) 
+	=\underbrace{(a+\cdots+a)+\cdots+(a+\cdots+a)}_{n\text{个}}
+    =(nm)a.\]
+    (4)类似地,\[(n+m)a=\underbrace{a+\cdots+a}_{n+m\text{个}}=
+    (\underbrace{a+\cdots+a}_{n\text{个}})+
+    (\underbrace{a+\cdots+a}_{m\text{个}})=na+ma.\]
+    (5)同样利用(1)(2).\\
+    (6)设射线$h$以$O$点为端点,则存在$A,B\in h,a=[OA],b=[OB]$.
+    利用反证法找出与公理2.11(3)的矛盾.\\
+    (7) $a=b$或$b=c$时结论显然成立,下设$a\prec b,b\prec c$.
+    由定义2.15(3)(v),存在活动线段$e,f$, s.t. $b=a+e,c=b+f$.
+    于是$c=a+(e+f)$,此即$a\prec c$.\\
+    (8)与(7)类似.\\
+    (9)由(4)知$ma=na+(m-n)a$.\\
+    (10)记$c:=b-a$,则由(5)有$nb=na+nc$.
+\end{proof}
+
+\begin{exercise}
+    证明定理2.22.
+\end{exercise}
+\begin{222}
+    设$\alpha,\beta,\gamma$为活动角, $n,m$为正整数.
+    在加法和数乘良定的前提下,下列关系式成立:\\
+	(1) $\alpha+\beta=\beta+\alpha$;\\
+	(2) $(\alpha+\beta)+\gamma=\alpha+(\beta+\gamma)$;\\
+	(3) $n(ma)=(nm)a$;\\
+	(4) $(n+m)a=na+ma$;\\
+	(5) $n(a+b)=na+nb$;\\
+	(6)若$a\preccurlyeq b,a\succcurlyeq b$,则$a=b$;\\
+	(7)若$a\preccurlyeq b,b\preccurlyeq c$,
+    则$a\preccurlyeq c$;\\
+	(8)若$a\prec b$,则$a+c\prec b+c$;\\
+	(9)若$n<m$,则$na\prec ma$;\\
+	(10)若$a\prec b$,则$na\prec nb$.
+\end{222}
+\begin{proof}
+    (1)考虑教材图2.20,显然有$\alpha\prec\beta^c$.我们取射线
+    $k^\prime$和以$k^\prime$所在直线为边界的半平面$\zeta^+\ni k$,
+    则在$\zeta^+$上有$\beta=[\angle(k^\prime,k)],
+    \alpha= [\angle(k,h)]$.故
+    \[\alpha+\beta=[\angle(h,k^\prime)]=[\angle(k^\prime,h)]=
+    \beta+\alpha.\]
+	(2)已知$\gamma<(\alpha+\beta)^c$,所以我们可以在图2.20的下图中,
+    在$\angle(k^\prime,h^\prime)$内部作射线$k^{\prime\prime}$, 
+    s.t. $\gamma=[\angle(k^\prime,k^{\prime\prime})]$.类似地,
+    我们可以得到$\beta+\gamma=[\angle(k,k^{\prime\prime})]$,
+    于是\[(\alpha+\beta)+\gamma=[\angle(h,k^\prime)]+
+    [\angle(k^\prime,k^{\prime\prime})]=
+    [\angle(h,k^{\prime\prime})]=
+    [\angle(h,k)]+[\angle(k,k^{\prime\prime})]=
+    \alpha+(\beta+\gamma).\]
+	对于(3)-(10),请读者仿照定理2.16中的对应部分完成证明.
+\end{proof}
+\begin{exercise}
+    证明:任意给定角的角平分线存在且唯一.
+\end{exercise}
+\begin{figure}
+    \caption{1.9题图}
+	\begin{tikzpicture}[scale=.8]
+		\draw (0,0)node[left]{$A$}--(4.4,0)node[below]{$h$};
+		\draw (0,0)--(3,2.4)node[left]{$C$}--(3.5,2.8)node[right]{$k$};
+		\draw (2.4,0)node[below]{$B$}--(1.874,1.499)node[left]{$B^\prime$};
+		\draw (0,0)--(2.137,0.7495)node[right]{$P$};
+	\end{tikzpicture}
+\end{figure}
+\begin{proof}
+    考虑角$\angle(h,k)=\angle BAC$如图1所示.对于存在性,利用全等公理
+    与命题A.17可证射线$AP$平分$\angle BAC$.对于唯一性,设有另一角平分
+    线交$BB^\prime$于$Q$,则$P\neq Q$.由命题A.10导出矛盾即可.
+\end{proof}
+\begin{exercise}
+    对于平面上的任意三角形,证明:\\
+    (1)大边对大角;\\
+    (2)大角对大边;\\
+    (3)任意两边之和大于第三边.
+\end{exercise}
+\begin{proof}
+    我们有如下引理.
+    \begin{lemma}[外角定理]
+        三角形的外角大于任意不相邻的内角.
+    \end{lemma}
+    (1)如图3,设$BC>AB$,下证$\angle BAC>\angle ACB$.
+    根据连续公理,在线段$BC$内存在点$D$, s.t. $AB=BD$.由命题A.15,
+    我们有$\angle BAD=\angle BDA$.于是由引理2.1,有
+    \[\angle BAC=\angle BAD+\angle DAC=\angle BDA+\angle DAC>
+    \angle BDA>\angle ACB.\]
+	(2)设$\angle BAC>\angle ACB$,下证$BC>AB$.反证,设$BC\leq AB$.
+    若$BC=AB$,则有$\angle BAC=\angle ACB$,矛盾.下设$BC<AB$,由(1)
+    得$\angle BAC<\angle ACB$,矛盾.\\
+	(3)不妨设$BC\geq AC\geq AB$,只需证$AC+AB>BC$.在射线$CB$上
+    (线段$CB$外)取点 $E$, s.t. $BE=BA$.于是$\angle E=\angle BAE$,
+    进而\[\angle CAE=\angle CAB+\angle BAE=
+    \angle CAB+\angle E>\angle E.\]由(2)有$CE>AC$.
+    而$CE=BC+BE=BC+AB$,故命题得证.
+\end{proof}
+\begin{figure}
+    \caption{引理1.11图}
+	\begin{tikzpicture}
+		\coordinate (A) at (0,2);
+		\coordinate (B) at (-1,0);
+	    \coordinate (C) at (2,0);
+		\coordinate (D) at (3,0);
+		\coordinate (G) at (3,-1);
+		\coordinate (M) at (1,1); % AC 中点
+		\coordinate (E) at (3,2); % BM 延长取 E
+		
+		% 三角形 ABC
+		\draw (A)--(B)--(C)--cycle;
+		% 中点连线
+		\draw (B)--(E)--(C);
+		\draw (A)--(G);
+		\draw (B)--(D);
+		% 点标
+		\fill (A) circle (1pt) node[above] {$A$};
+		\fill (B) circle (1pt) node[left] {$B$};
+		\fill (C) circle (1pt) node[below left] {$C$};
+		\fill (M) circle (1pt) node[below] {$M$};
+		\fill (E) circle (1pt) node[right] {$E$};
+		\fill (D) circle (1pt) node[right] {$D$};
+		\fill (G) circle (1pt) node[below left] {$G$};
+	\end{tikzpicture}
+\end{figure}
+\begin{figure}
+    \caption{1.10题图}
+    \begin{tikzpicture}
+		\coordinate (A) at (0,2);
+		\coordinate (B) at (-1,0);
+		\coordinate (C) at (2,0);
+		\coordinate (D) at (1.2, 0); % BC 中点
+		\draw (A)--(B)--(C)--cycle;
+		\draw (A)--(D);
+		\fill (A) circle (1pt) node[above] {$A$};
+		\fill (B) circle (1pt) node[left] {$B$};
+		\fill (C) circle (1pt) node[right] {$C$};
+		\fill (D) circle (1pt) node[below] {$D$};
+	\end{tikzpicture}
+\end{figure}
+\begin{practice}
+    利用图2证明引理1.11.
+\end{practice}
+
+
+== 向量,仿射坐标系 ==
+\begin{exercise}
+    证明命题2.27.
+\end{exercise}

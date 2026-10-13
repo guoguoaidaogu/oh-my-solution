@@ -1,0 +1,331 @@
+\setdisplaytitle{实例：Grassmann簇}
+\sethtmltitle{实例：Grassmann簇}
+\section{Grassmann簇}
+    记$\operatorname{G}(r,n)$为仿射空间$\mathbb{A}^{n}$的全体$r$维线性子空间. 
+    我们将在$\operatorname{G}(r,n)$上赋予簇结构. 
+    记$V = \mathbb{A}^{n}$，定义如下映射：
+    \begin{equation*}\begin{aligned}
+      \mathcal{P}\colon\operatorname{G}(r,n) 
+      &\longrightarrow \mathbb{P}(\bigwedge\nolimits^{r}V)=\mathbb{P}^{{n \choose r}-1} \\
+      W &\longmapsto [\bigwedge\nolimits^{r}W]
+    \end{aligned}\end{equation*}
+    该映射是良定的：我们要证明这与$\mathcal{P}(W)$与$W$的基的选取无关. 
+    显然$\bigwedge\nolimits^{r}W$是一个$1$维线性空间.
+    若$\mathcal{U}=\{e_{1},\cdots,e_{r}\}$与$\mathcal{V}=\{f_{1},\cdots,f_{r}\}$都是$W$的一组基，
+    那么存在可逆方阵$A \in {\rm GL}_{r}(k)$使得$(e_{1},\cdots,e_{r})A=(f_{1},\cdots,f_{r})$.
+    那么我们立即有
+    $\det(A)e_{1}\wedge\cdots\wedge e_{r}=f_{1}\wedge\cdots\wedge f_{r}$. 
+    这说明$[W_{\mathcal{U}}]=[W_{\mathcal{V}}]$.
+    \begin{example}
+        当$r=1$时的Grassmann簇即射影空间$\mathbb{P}^{n}$.
+    \end{example}
+
+    进一步地，上述映射是单射.
+
+    \begin{proposition}[Plucker嵌入]
+        $\mathcal{P}$是单射.
+    \end{proposition}
+    \begin{proof}
+        注意到
+        $W=\{v \in V \mid v \wedge w=0 \in \bigwedge\nolimits^{r+1}V,\, \forall w \in \bigwedge\nolimits^{r} W\}$. 
+        若$W \neq V$，则存在$u \in V \backslash W$，那么存在$w \in \bigwedge\nolimits^{r} W$
+        使得$u \wedge w \neq 0$. 
+    \end{proof}
+    我们称$\mathcal{P}$为\textbf{Plucker嵌入}，
+    并称$W$在Plucker嵌入下的像在$\mathbb{P}(\bigwedge\nolimits^{r}V)$的齐次坐标为
+    $W$的\textbf{Plucker坐标}.
+    
+    \begin{remark}
+        事实上，这组坐标是可以显式地写出来的. 
+        首先，$W$由一个$r \times n$阶矩阵表出
+        （记$V$的一组基为$\{e_{1},\cdots,e_{n}\}$，
+        则$W$中的一组基向量的每一个都由$V$中的基向量线性表出. 
+        而这对应了一个$r \times n$阶矩阵）.
+        该矩阵在相差一个$r$阶可逆方阵的左乘下是唯一的，记作$M_{W}$. 
+        那么Plucker坐标显然是$M_{W}$的所有$r \times r$阶子式的行列式构成的.
+        这个表示方法是良定的，因为相差一个$r$阶方阵，
+        即意味着两者的所有$r \times r$阶子式的行列式相应地相差一个非零常数. 
+        而在$\mathbb{P}^{{n \choose r}-1}$中，两者是一样的.
+    \end{remark}
+
+    更进一步地，Plucker嵌入是闭嵌入. 
+    这即是说$\mathcal{P}(\operatorname{G}(r,n))$
+    是$\mathbb{P}^{{n \choose r}-1}$中的一个簇.
+
+    \begin{definition}[可分解性（Decomposability）]
+        称$w \in \bigwedge\nolimits^{r} V$是一个\textbf{可分解}的，
+        若存在$v_{1},\cdots,v_{r} \in V$，使得$w=v_{1} \wedge \cdots \wedge v_{r}$.
+        若存在$\varphi \in \bigwedge\nolimits^{r-1} V$，使得$w=v \wedge \varphi$.
+        其中$v \in V$，则称\textbf{$v$整除$w$}，并记作$v | w$.
+
+        若$w = v_{1} \wedge \cdots \wedge v_{r}$，则称$w$是\textbf{完全可分解}（totally decomposable）的.
+    \end{definition}
+
+    \begin{lemma}
+        若$v \in V$，且$w \in \bigwedge\nolimits^{r} V$，
+        则$v$整除$w$\textbf{当且仅当}$v \wedge w = 0$.
+    \end{lemma}
+    \begin{proof}
+        “$\Rightarrow$”：显然. \par
+        “$\Leftarrow$”：不妨设$v \neq 0$，则取$V$包含$v=v_{1}$的一组基，
+        记为$\{v_{1},v_{2},\cdots,v_{n}\}$. \par
+        令$w=\sum_{i_{1}<\cdots<i_{r}}a_{i_{1}\cdots i_{r}}v_{i_{1}}\wedge\cdots\wedge v_{i_{r}}$.
+        则$v \wedge w=0$即$a_{i_{1}\cdots i_{r}}=0$对于任意$i_{1}\neq 1$成立.
+    \end{proof}
+
+    \begin{lemma}
+        记$D_{w}=\{v \in V \mid v | w, \; w \in \bigwedge\nolimits^{r}V\}$，
+        则这是$V$的一个线性子空间. 那么$w$完全可分解\textbf{当且仅当}$\dim D_{w} = r$.
+    \end{lemma}
+    \begin{proof}
+        若$w$完全可分解，令$w=v_{1} \wedge \cdots \wedge v_{r}$，
+        其中$v_{1},\cdots,v_{r}$线性无关，
+        则$D_{w}=\{v \in V \mid v \wedge v_{1} \wedge \cdots \wedge v_{r} =0\}$.
+        将$\{v_{1},\cdots,v_{r}\}$延拓为$V$的一组基
+        $\{v_{1},\cdots,v_{r},v_{r+1},\cdots,v_{n}\}$，
+        则令$v=a_{1}v_{1}+\cdots+a_{n}v_{n}$，故若$v \in D_{w}$，则
+        $(a_{1}v_{1}+\cdots+a_{n}v_{n})\wedge v_{1} \wedge \cdots \wedge v_{r}=0$，
+        这意味着$a_{i}=0, \; \forall i=r+1,\cdots,n$. 
+        故$v \in \operatorname{span}(v_{1},\cdots,v_{r})$，
+        从而$D_{w}=\operatorname{span}(v_{1},\cdots,v_{r})$，从而$\dim D_{w}=r$.
+
+        反之，令$D_{w}=\operatorname{span}(v_{1},\cdots,v_{r})$，
+        则将其延拓至$\{v_{1},\cdots,v_{r},v_{r+1},\cdots,v_{n}\}$. 
+        令
+        $w=\sum_{|I|=r}a_{I}v_{I}$，其中$I=(i_{1},\cdots,i_{r})$且$i_{j} < i_{j+1}$，
+        而$v_{I}=v_{i_{1}} \wedge \cdots \wedge v_{i_{r}}$.
+        由于$v_{j} \wedge w=0$对$j=1,\cdots,r$成立，故$a_{I}v_{I} \neq 0$
+        当且仅当$I$中出现所有的$1,\cdots,r$. 这意味着$I=\{1,\cdots,r\}$，
+        从而$w=a_{1,\cdots,r}v_{1} \wedge \cdots \wedge v_{r}$. 
+        故$w$完全可分解.
+    \end{proof}
+
+    \begin{corollary}
+        考虑映射
+        \begin{equation*}\begin{aligned}
+          \varphi(w)\colon V &\longrightarrow \bigwedge\nolimits^{r+1}V;\\
+          v &\mapsto v \wedge w.
+        \end{aligned}\end{equation*}
+        以及$\varphi\colon w \longmapsto \varphi(w)$，
+        那么$w$完全可分解\textbf{当且仅当}$\operatorname{rank}(\varphi(w))=n-r$.
+    \end{corollary}
+    \begin{proof}
+        这是因为由引理，$w$完全可分解当且仅当$\dim_{k}D_{w}=r$，
+        而$D_{w}=\ker \varphi(w)$，故该推论得证.
+    \end{proof}
+
+    有了以上准备后，我们便可以给$\operatorname{G}(r,n)$赋予簇结构.
+
+    \begin{proposition}[Grassmann簇]
+        像集$\mathcal{P}(\operatorname{G}(r,n))$是一个射影簇.
+    \end{proposition}
+    \begin{proof}
+        由于$w \in \bigwedge\nolimits^{r}V$为完全可分解元
+        当且仅当存在某个$r$维子空间$W$使得
+        $\operatorname{span}(w) = \bigwedge\nolimits^{r}W$.
+        而$w$完全可分解又当且仅当$\operatorname{rank}(\varphi(w))=n-r$，
+        这再次当且仅当$\varphi(w)$的$(n-r+1)\times(n-r+1)$阶子式的行列式（都是多项式）全为零.
+        而$\varphi(w)$一定是${n \choose r+1} \times n$阶矩阵，
+        故$\mathcal{P}(\operatorname{G}(r,n))$事实上是有限个多项式的公共零点集.
+    \end{proof}
+    
+    \begin{remark}
+        事实上，Grassmann簇是一族二次多项式的零点. 
+    \end{remark}
+
+    \begin{example}
+        不妨设$\operatorname{Char} k \neq 2$. 考虑一种最简单的非平凡Grassmann簇：${\rm G}(2,4)$.
+        其Plucker映射为$\mathcal{P}\colon\operatorname{G}(2,4) \rightarrow 
+        \mathbb{P}(\bigwedge\nolimits^{2}\mathbb{A}^{4})=\mathbb{P}^{5}$.
+        由于$w \in \bigwedge\nolimits^{2}V$可分解当且仅当$\operatorname{rank}(\varphi(w)) \geq 2$.
+        这当且仅当$w \wedge w = 0$. 写成坐标分量，这即
+        \[X_{12}X_{34}-X_{13}X_{24}+X_{14}X_{23}=0.\]
+        其中$w=(X_{12}e_{1}+X_{34}e_{2})\wedge(X_{14}e_{3}+X_{23}e_{4})$.
+        这是事实上给出了${4 \choose 2}=6$个二次曲面. 由上述事实，这$6$个二次曲面生成了$\mathcal{I}({\rm G}(2,4))$.
+    \end{example}
+
+    \begin{definition}[有理簇（Rational Variety）]
+        称拟射影簇$X$是有理的，若其双有理等价于某个$\mathbb{P}^{n}$.
+    \end{definition}
+
+    我们将要证明以下三个事实：
+    \begin{enumerate}
+        \item[(1)] Grassmann簇是有理簇.
+        \item[(2)] 簇$\operatorname{G}(k,n)$维数为$k(n-k)$.
+        \item[(3)] Grassmann簇不可约.
+    \end{enumerate}
+
+    \begin{proposition}
+        簇$\operatorname{G}(k,n)$不可约.
+    \end{proposition}
+    \begin{proof}
+        考虑代数群${\rm GL}(V)$在$\operatorname{G}(k,n)$上的自然传递作用，
+        那么固定$W \in \operatorname{G}(k,n)$，作用$\varphi\colon {\rm GL}(V) \rightarrow \operatorname{G}(k,n);
+        M \mapsto M \cdot W$是满射，且是簇的态射，故连续. 
+        由于代数群${\rm GL}(V)$不可约（因为是$\mathbb{A}^{n^{2}}$的开子集），
+        故其连续像$\varphi({\rm GL}(V))=\operatorname{G}(k,n)$不可约.
+    \end{proof}
+
+    \begin{proposition}
+        簇$\operatorname{G}(k,n)$是$k(n-k)$维有理簇.
+    \end{proposition}
+    \begin{proof}
+        由于我们已经证得$\operatorname{G}(k,n)$的不可约性，
+        故$\mathcal{P}(\operatorname{G}(k,n))$也不可约，且我们只需要研究
+        $\mathcal{P}(\operatorname{G}(k,n)) \subset \mathbb{P}(\bigwedge\nolimits^{k}V)$即可.
+
+        令$\Gamma \subset V$是一个$n-k$维子空间，而$V$是一个$n$维线性空间. 其对应的$k$次楔积
+        $w_{\Gamma} \in \bigwedge\nolimits^{n-k}V = (\bigwedge\nolimits^{n-k}V)^{*}$
+        可被认为是$\mathbb{P}(\bigwedge\nolimits^{k}V)$中的一个齐次线性映射. 
+        取一个标准开集$U = \{w_{\Gamma} \neq 0\}$，则
+        $[w] \in \mathcal{P}(\operatorname{G}(k,n)) \cap U$当且仅当
+        $w \wedge w_{\Gamma} \neq 0 \in \bigwedge\nolimits^{n}V$. 
+        这也等价于$W \cap \Gamma = 0$，其中$\mathcal{P}(W)=[w]$. 
+        故$\operatorname{G}(k,n) \cap U$正好是$\Gamma$在$V$中的全体直和补空间.
+        而这些子空间都可被等同于$V/\Gamma \rightarrow \Gamma$的线性映射的图像，
+        从而$\operatorname{G}(k,n) \cap U \cong \operatorname{Hom}(V/\Gamma,\Gamma)\cong \mathbb{A}^{k(n-k)}$.
+        这即证明了$\dim \operatorname{G}(k,n) = k(n-k)$.
+
+        加之$\mathbb{P}^{k(n-k)}$的任一标准开集也同构于$\mathbb{A}^{k(n-k)}$，
+        故$\operatorname{G}(k,n)$与$\mathbb{P}^{k(n-k)}$是双有理等价的.
+    \end{proof}
+
+    \begin{remark}
+        一些题外话：
+        
+        当$k=\R$或$\mathbb{C}$时，Grassmann簇$\operatorname{G}(k,n)$也是微分几何的研究对象，即一个微分流形. 它的一组坐标卡是
+        \[U_{v_{1},\cdots,v_{n}}:=
+        \{\operatorname{span}(v_{1}+\sum_{i=k+1}^{n}a_{1,i}v_{i},\cdots,v_{k}+\sum_{i=k+1}^{n}a_{k,i}v_{i}) \mid a_{ij} \in k\}.\]
+        这其中$\{v_{1},\cdots,v_{n}\}$取遍$\mathbb{A}^{n}$的基. 
+        另外，作为微分流形，$\operatorname{G}(k,n)$也是$k(n-k)$维的.
+
+    \end{remark}
+
+    当然，对于Grassmann簇，我们也有如下另一种看法. 这种看法与Venerose映射有着异曲同工之妙.
+    令$S = k[Z_{0},\cdots,Z_{n}]$为$\mathbb{P}^{n}$的齐次坐标环. 这是一个分次环，
+    而我们取其$d$次齐次项$S_{d}$. 注意到$S_{d}$事实上是全体$d$次齐次多项式构成的线性空间.
+
+    对于$k$维线性子空间$\Gamma \subset \mathbb{A}^{n} \subset \mathbb{P}^{n}$，
+    其是$\mathbb{P}^{n}$中的闭子簇，故对应了一个齐次理想$\mathcal{I}(\Gamma)$.
+    取该齐次理想的$d$次分量$\mathcal{I}(\Gamma)_{d} \subset S_{d}$，那么
+    $\mathcal{I}(\Gamma)_{d}$事实上是$S_{d}$的余维${k+d \choose d}$的线性子空间.
+    故我们得到了一个正则映射：
+    \[v_{d}^{*}\colon\operatorname{G}(k,n) \rightarrow 
+    \operatorname{G}({n+d \choose d}-{k+d \choose d},{n+d \choose d}).\]
+    对偶地，也即
+    \[v_{d}\colon\operatorname{G}(k,n) \rightarrow 
+    \operatorname{G}({k+d \choose d},{n+d \choose d}).\]
+
+
+\section{旗簇}
+
+    所谓线性空间中的旗（Flag）即一个子空间降链. 令$V$为$n$维线性空间，而
+    正整数$0 < a_{1} < \cdots < a_{k}$，则定义相应的旗簇为
+    \[\operatorname{Fl}(a_{1},\cdots,a_{k};V) = 
+    \{V_{1} \subset \cdots \subset V_{k} \mid \dim V_{i} = a_{i}\}.\]
+    这是$\operatorname{G}(a_{1},V) \times \cdots \times 
+    \operatorname{G}(a_{k},V)$的一个子簇.
+
+\section{入射面簇}
+    对于正整数$k<n$，定义入射面$I_{k,n} \subset \operatorname{G}(k,n) \times \mathbb{P}^{n}$为
+    $I_{k,n}=\{(W,[p]) \mid p \in W\}$.
+
+    若$X \subset \mathbb{P}^{n}$是射影簇，则定义
+    $\mathscr{C}_{k}(X) \subset \operatorname{G}(k,n)$为与$X$相交的所有$k$维子空间.
+
+    容易注意到，$\mathscr{C}_{k}(X)$即$X$通过$I_{k,n}$的``反射像''. 这是说
+    \begin{cd}
+                                       & {I_{k,n}} \ar[rd, "p"] \ar[ld, "q"'] &                \\
+        {\operatorname{G}(k,n)}        &                                      & \mathbb{P}^{n} \\
+        \mathscr{C}_{k}(X) \ar[u, "i"] &                                      &                 
+    \end{cd}
+    $\mathscr{C}_{k}(X)$即$q(p^{-1}(X))$. 其中$p$与$q$分别为投影，而$i$是包含.
+
+\section{连接簇}
+    若$X,Y \subset \mathbb{P}^{n}$是射影簇，且$X \cap Y = \varnothing$，则定义
+    $\mathcal{J}(X,Y):=\{\text{直线 }l\subset\mathbb{P}^{n} \mid l \cap X,l \cap Y \neq \varnothing\}=
+    \bigcup_{x \in X,y \in Y}L_{xy}$. 其中，$L_{xy}$指连接$x$与$y$两点的直线.
+
+    我们可以用入射面簇描述$\mathcal{J}(X,Y)$. 
+    事实上，这即$p^{-1}(q(\mathscr{C}(X)\cap\mathscr{C}(Y)))$. 这里取$k=1$.
+
+\section{正割簇}
+    若$X \subset \mathbb{P}(V)$是一个闭子簇，则称
+    \[\varphi\colon X \times X - \Delta(X) \rightarrow {\rm G}(1,\mathbb{P}(V));(x,y) \mapsto L_{xy}\]
+    为\textbf{割线映射}，其中$L_{xy}$指连接$x$与$y$的直线. \par
+    记$\operatorname{Sec}(X) = \overline{\operatorname{im}(\varphi)}$，以及
+    $\mathcal{S}(X)=p \circ q^{-1}(\operatorname{Sec}(X))$. 则称$\mathcal{S}(X)$
+    为$X$的正割簇.
+
+
+\section{Fano簇}
+    我们初步研究Grassmann簇的一种重要子簇——Fano簇.
+    \begin{definition}[Fano簇]
+        设$X \subset \mathbb{P}^{n}$，则定义Fano簇
+        $\mathcal{F}_{k}(X):=\{Y \in \operatorname{G}(k,n)\mid Y \subset X\}$.
+    \end{definition}
+    首先，我们证明这确实是一个簇.
+
+    \begin{proposition}
+        Fano簇$\mathcal{F}_{k}(X)$确实是一个簇.
+    \end{proposition}
+    \begin{proof}
+        不妨设$X$是超曲面，否则作交即可. 令$X$是$d$次超曲面，且$X = \mathcal{V}(G)$.
+        如Grassmann簇情形，仍考虑
+        \[v_{d}^{*}\colon\operatorname{G}(k,n) \rightarrow 
+        \operatorname{G}({n+d \choose d}-{k+d \choose d},{n+d \choose d}).\]
+        注意到$G \in S_{d}$，且记$\Phi$为包含$G$的全体
+        ${n+d \choose d}-{k+d \choose d}$维线性子空间，则$\Phi$是$S_{d}$中的
+        闭子簇. 那么$F_{k}(X) = (v_{d}^{*})^{-1}(\Phi)$.
+    \end{proof}
+
+    若$X$是$d$次超曲面，那么由定义，以上证明中的$\Phi$局部上
+    是${k+d \choose d}$个方程定义的，
+    故$\dim F_{k}(X) \geq \dim \Phi \geq \dim \operatorname{G}(k,\mathbb{P}(V))
+    -{k+d \choose d} = (k+1)(n-k) - {k+d \choose d}$. 
+    我们称这个估计为$F_{k}(X)$的预期维数.
+
+    一般来说，我们没法精确地知道Fano簇的维数. Fano簇是相当奇异的. 我们来看一些有趣的例子.
+    \begin{example}
+        若$X \subset \mathbb{P}^{3}$是光滑三次超曲面，
+        则$|F_{1}(X)| < \infty$. 更精确一点，$|F_{1}(X)|=27$.
+
+        而若$n \geq 4$，且$X \subset \mathbb{P}^{n}$是光滑三次超曲面，
+        则$F_{1}(X)$是不可约光滑簇，且维数为预期维数$(1+1)(n-1)-{n+3 \choose 3}=
+        2(n-1)-\frac{1}{6}(n+3)(n+2)(n+1)$.
+    \end{example}
+
+    
+\section{行列式簇}
+    令$\operatorname{Char} k = 0$，$V = M_{m \times n}(k)$. 
+    这是一个$mn$维线性空间，则$\mathbb{P}(V)=\mathbb{P}^{mn-1}$.
+    定义$k$阶行列式簇$\mathcal{M}_{k}^{m,n}:=\{[M] \in \mathbb{P}^{mn-1}
+    \mid \operatorname{rank}(M) \leq k\}$.
+    这显然是个簇，其定义多项式为全体$(k+1)\times(k+1)$阶子式的行列式
+    （显然都是齐次多项式）.
+
+    我们来计算行列式簇$\mathcal{M}_{k}^{m,n}$的维数：
+
+    对于矩阵$M \in M_{m \times n}(k)$，
+    记$\varphi(M)$为其对应的线性映射$\mathbb{A}^{m} \rightarrow \mathbb{A}^{n}$.
+    那么$[M] \in \mathcal{M}_{k}^{m,n}$当且仅当$\dim_{k}(\ker(\varphi(M))) \geq n-k$.
+    考虑入射面$I=\{(M,W)\mid W \subset \ker(\varphi(M))\} \subset \mathscr{M}_{k}^{m \times n} \times {\rm G}(n-k,n)$.
+    \begin{cd}
+                                  & {I} \ar[rd, "p"] \ar[ld, "q"'] &                           \\
+        \mathscr{M}_{k}^{m \times n}      &                                            & {\operatorname{G}(n-k,n)} \\                                         &                          
+    \end{cd}
+    我们有$p^{-1}(W) = \{[M] \in \mathscr{M}_{k}^{m \times n}\mid W \subset \ker \varphi(M) \}$.
+    若$W=\operatorname{span}(e_{1},\cdots,e_{n-k})$，则将$W$零化的矩阵$M \in \mathscr{M}_{k}^{m \times n}$
+    可刻画为$M=(O,M')$，其中$O$是$m \times (n-k)$阶零矩阵，而$M'$是一个$m \times k$阶矩阵.
+    如上刻画意味着$p^{-1}(W) \cong \mathbb{P}^{mk-1}$. 
+    由于$p$显然满，且其每根纤维的维数都是$mk-1$，故由${\rm G}(n-k,n)$的不可约性，
+    我们得到了$I$的不可约性以及维数$\dim I = mk + k(n-k) - 1$.
+
+    令$\widetilde{\mathscr{M}_{k}^{m \times n}} 
+    = \mathscr{M}_{k}^{m \times n} - \mathscr{M}_{k-1}^{m \times n}$.
+    这是$M_{k}^{m \times n}$的一个开子集，
+    且对于$[M] \in \widetilde{\mathscr{M}_{k}^{m \times n}}$，
+    有$q^{-1}(M)=\{(M,\ker\varphi(M))\}$，故$q$是一般有限映射，且纤维都是一元的
+    从而$k(I) \cong k(M_{\mathscr{M}_{k}^{m \times n}})$，
+    故$q$是双有理映射，从而
+    $\dim \mathscr{M}_{k}^{m \times n} = k(m+n)-k^{2}-1$.

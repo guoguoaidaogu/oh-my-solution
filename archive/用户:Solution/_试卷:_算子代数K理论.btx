@@ -1,0 +1,39 @@
+\setdisplaytitle{试卷：算子代数K理论}
+\sethtmltitle{试卷：算子代数K理论}
+
+==26春(林华新)==
+注：考试为线上发放试卷，线上提交，需要抄写题目。开卷，可以使用ai，但不允许和人交流。考试时间3小时。
+\begin{itemize}
+    \item[Problem 1.] Let $A$ be an amenable $C^*$-algebra. Prove that the unitization $\widetilde{A}$ is also an amenable $C^*$-algebra.
+
+    \item[Problem 2.] Let $\phi:A\to B$ be a completely positive linear map, where $A$ and $B$ are $C^*$-algebras. Show that
+    $$\phi(a)^*\phi(a)\leq \|\phi\|\phi(a^*a)$$
+    for every $a\in A$.
+
+    \item[Problem 3.] Let $A$ be a $C^*$-algebra. Suppose that, for every $\varepsilon>0$ and every finite subset $F\subset A$, there exist an amenable $C^*$-subalgebra $B\subset A$ and contractive completely positive linear maps
+    $$\phi:A\to B,\qquad L:B\to A$$
+    such that
+    $$\|a-L(\phi(a))\|<\varepsilon$$
+    for all $a\in F$. Prove that $A$ is amenable.
+
+    \item[Problem 4.] Let $\{A_n\}_{n=1}^{\infty}$ be a sequence of unital $C^*$-algebras. Put
+    $$A=\prod_{n=1}^{\infty}A_n,\qquad B=\bigoplus_{n=1}^{\infty}A_n,$$
+    and let $\pi:A\to A/B$ be the quotient map. Prove the following statements:
+    \begin{itemize}
+        \item[(a)] If $p\in A/B$ is a projection, then there is a projection $q\in A$ such that $\pi(q)=p$.
+        \item[(b)] If $u\in U(A/B)$, then there is a unitary $v\in A$ such that $\pi(v)=u$.
+    \end{itemize}
+
+    \item[Problem 5.] Let $n_0=n_1=1$ and $n_{k+1}=n_k+n_{k-1}$ for $k\geq 1$. For $k\geq 1$, set
+    $$A_k=M_{n_k}\oplus M_{n_{k-1}},$$
+    where $M_1=\mathbb{C}$. Thus
+    $$A_1=\mathbb{C}\oplus\mathbb{C},\qquad A_2=M_2\oplus\mathbb{C},\qquad A_3=M_3\oplus M_2,\qquad A_4=M_5\oplus M_3,\qquad \cdots$$
+    Define $\phi_k:A_k\to A_{k+1}$ by
+    $$\phi_k(x,y)=(\operatorname{diag}(x,y),x).$$
+    Put $A=\lim\limits_{\longrightarrow}(A_k,\phi_k)$. Show that, as an additive subgroup of $\mathbb{R}$,
+    $$K_0(A)=\mathbb{Z}+\mathbb{Z}\left(\frac{1+\sqrt{5}}{2}\right).$$
+
+    \item[Problem 6.] Let
+    $$A=\lim\limits_{\substack{\longrightarrow\\ n\to\infty}}(A_n,\phi_n),$$
+    where each $A_n$ is a simple $C^*$-algebra. Show that $A$ is simple.
+\end{itemize}

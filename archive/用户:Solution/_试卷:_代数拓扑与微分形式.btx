@@ -1,0 +1,82 @@
+\setdisplaytitle{试卷：代数拓扑中的微分形式}
+\sethtmltitle{试卷：代数拓扑中的微分形式}
+
+\section{26年春}
+\begin{enumerate}
+    \item[1.] (25分)设$f: \mathbb{R}^n\to\mathbb{R}^n$是光滑逆紧映射.
+    则$f^*:\Omega_c^*(\mathbb{R}^n)\to\Omega_c^*(\mathbb{R}^n)$.它诱导映射
+    \[f^*:H_c^*(\mathbb{R}^n)\to H_c^*(\mathbb{R}^n).\]
+    设$[\alpha]\in H_c^n(\mathbb{R}^n)$是生成元,则$f^*[\alpha]=c[\alpha]$,
+    常数$c$称为映射$f$的\textbf{度}(degree),记作$\operatorname{deg} f$.显然
+    \[\operatorname{deg} f=\int_{\mathbb{R}^n}f^*\alpha.\]
+    先验地$\operatorname{deg} f\in\mathbb{R}$.证明$\operatorname{deg} f\in\mathbb{Z}$.
+    \item[2.] (25分)设$N=N_{\mathbb{C}P^1/\mathbb{C}P^2}$是$\mathbb{C}P^1$在$\mathbb{C}P^2$中的法丛.
+    因为$\mathbb{C}P^1$是实 2 维紧定向流形,它的最高维上同调是$H^2(\mathbb{C}P^1)=\mathbb{R}$,
+    所以$N$的欧拉类$e(N)$是$H^2(\mathbb{C}P^1)$生成元的倍数.计算积分$\int_{\mathbb{C}P^1}e(N)$.
+    \item[3.] (25分)设$\pi:E\to M$是$n$维紧流形$M$上$S^{n-1}$-丛, $s$是$E|_{M-\{x_1,\cdots,x_q\}}$的一个截面.
+    取$M$的一个开覆盖$\mathscr{U}=\{U_\alpha\}_{\alpha\in I}$满足\\
+    (a) $\psi_\alpha:U_\alpha\xrightarrow{\sim}\mathbb{R}^n$是坐标图;\\
+    (b) $\phi_\alpha:E|_{U_\alpha}\xrightarrow{\sim}U_\alpha\times S^{n-1}$是平凡化;\\
+    (c)每点$x_i$有邻域$W_i$,它只包含于某个$U_\alpha\in\mathscr{U}$.
+
+    设$x_i\in W_i\subset U_{\alpha_i}$是$s$的奇点.取点$x_i$的充分小开邻域$D_i$使得$D_i \subset W_i$且$\psi_{\alpha_i}(D_i)\subset\mathbb{R}^n$是半径为$r_i$的开圆盘.
+    所以$\partial\bar{D}_i$微分同胚于$S^{n-1}$.于是有以下映射的序列:
+    \[\partial\bar{D}_i\xrightarrow{s|_{\partial\bar{D}_i}}E|_{\partial\bar{D}_i}\xrightarrow{i}E|_{\bar{D}_i}\xrightarrow[\sim]{\phi_{\alpha_i}}\bar{D}_i\times S^{n-1}\xrightarrow{\text{pr}_2}S^{n-1}.\]
+    记$s_i$为前两个映射的复合, $\rho_i$为后两个映射的复合.
+
+    $M$的定向诱导了$D_i$的定向.在$S^{n-1}$上选取一个定向使得微分同胚\[E|_{D_i}\cong D_i \times S^{n-1}\]是保定向的,或者说,
+    使得$E|_{D_i}$的定向是直和定向.这样,取$\sigma\in H^{n-1}(S^{n-1})$是正的生成元,定义截面$s$在点$x_i$的\textbf{局部度数}(local degree)为
+    \[\operatorname{l.d. }(x_i):=\int_{\partial\bar{D}_i}s_i^*\rho_i^*\sigma.\]
+
+    证明: $E$的Euler数满足\[\int_Me(E)=\sum_{i=1}^q\operatorname{l.d. }(x_i).\]
+    \item[4.] (25分)已知$\mathbb{C}P^2$是单连通的,利用纤维丛$S^1\to S^{2n+1}\to\mathbb{C}P^2$的谱序列计算$\mathbb{C}P^2$的de Rham上同调群$H^*(\mathbb{C}P^2)$和它的上同调环结构.
+\end{enumerate}
+
+\section{25年春}
+\begin{enumerate}
+    \item[1.]
+    \begin{enumerate}
+        \item[(1)]$d:\Omega^k(M) \to \Omega^{k+1}(M)$是什么？
+        \item[(2)]de Rham复形是什么？
+        \item[(3)]$H^k(M)$是什么？
+    \end{enumerate}
+    \item[2.]$M = \mathbb{R}^2 - \{0\}$.
+    \begin{enumerate}
+        \item[(1)]计算$H^0(M),H^1(M)$,说明几何意义.
+        \item[(2)]$\omega = \displaystyle\frac{-ydx+xdy}{x^2+y^2}$不是恰当的.
+    \end{enumerate}
+    \item[3.]计算$H^*(S^n)$.
+    \item[4.]
+    \begin{enumerate}
+        \item[(1)]证明$0 \to \mathbb{R} \to \Omega^0 \stackrel{d}{\to} \Omega^1 \to\cdots$是正合列且$H^i(M,\Omega^k)=0, \ \forall i\geqslant1,k\geqslant0$.
+        \item[(2)]说明为什么$H^*(M) = H^*(M,\mathbb{R})$.
+    \end{enumerate}
+    \item[5.]考虑Hopf纤维化
+        \begin{cd}
+            S^1\ar[r]&S^3\ar[d]\\&S^2
+        \end{cd}
+        \begin{enumerate}
+            \item[(1)]写出谱序列$E_2$.
+            \item[(2)]计算$H^*(S^3)$.
+        \end{enumerate}
+\end{enumerate}
+
+\section{23年春}
+\begin{enumerate}
+    \item[1.] 写出$\mathbb{C}P^1$在$\mathbb{C}P^2$中的法丛的Euler类. (20 pts)
+    \item[2.] $M$是光滑流形，$\mathscr{U}$是好覆盖. (20 pts)
+    \begin{itemize}
+        \item[(a)] 利用collating公式写出$[\eta]\in H^2(\mathscr{U},\mathbb{R})$ 
+        对应的de Rham整体上同调类$[\omega]\in H^2_{dR}(M)$.
+        \item[(b)] 证明任意de Rham上同调类可以取一个代表元$\psi$使得$\operatorname{Supp} \psi\subset \bigcup\limits_{\alpha_0<\alpha_1} U_{\alpha_0 \alpha_1}$.
+    \end{itemize}
+    \item[3.]  利用谱序列计算$\mathbb{C}P^n$的de Rham上同调及其环结构. (20 pts)
+    \item[4.] $\mathscr{U}$是拓扑空间$X$的一个开覆盖，对于整系数奇异同调，有广义MV序列 (20 pts)
+            $$0\leftarrow S^{\mathscr{U}}_q(X) \xleftarrow{\varepsilon} \bigoplus\limits_{\alpha_0} S_q(U_{\alpha_0}) \xleftarrow{\delta} \bigoplus\limits_{\alpha_0<\alpha_1} S_q(U_{\alpha_0\alpha_1})\xleftarrow{\delta} \cdots.$$
+    \begin{itemize}
+        \item[(a)] 给出$S^{\mathscr{U}}_q(X), \varepsilon, \delta$的定义.
+        \item[(b)] 简单解释为什么要和为什么可以取$S^{\mathscr{U}}_q(X)$.
+    \end{itemize}
+\item[5.] 利用整系数同调的MV序列计算$S^3 \vee S^6$的整系数同调群. (10 pts)
+\item[6.] 尽可能多地计算$S^3 \vee S^6$的同伦群. (10 pts)
+\end{enumerate}

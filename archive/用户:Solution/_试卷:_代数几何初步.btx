@@ -1,0 +1,77 @@
+\setdisplaytitle{试卷：代数几何初步}
+\sethtmltitle{试卷：代数几何初步}
+
+\section{2025秋季(江智)}
+
+$k$是代数闭域。
+
+\begin{enumerate}
+\item $\operatorname{char}k=0$，$V=M_{m\times n}(k)$是$mn$维线性空间，$\mathbb{P}(V)=\mathbb{P}^{mn-1}_k$。
+定义$\mathcal{M}_r:=\{[M]\in\mathbb{P}^{mn-1}_k | \operatorname{rank}(M)\leqslant r\}$。
+\begin{enumerate}
+    \item[(1)] 证明$\mathcal{M}_r$是射影子簇。
+    \item[(2)] 对$r=1$，证明$\mathcal{M}_1$不可约，并求出$\dim\mathcal{M}_1$和它的全部光滑点。
+    \item[(3)] 证明$\mathcal{M_r}$不可约，并且$\dim\mathcal{M}_r=r(m+n)-r^2-1$.
+    \item[(4)] 求出$\mathcal{M}_r$的全部奇异点和光滑点。
+\end{enumerate}
+
+\item 
+\begin{enumerate}
+\item [(1)] 证明：作为簇$\mathbb{P}^1_k\times \mathbb{P}^1_k$不同构于$\mathbb{P}^2_k$，但是它们双有理等价。
+\item[(2)] 计算$\operatorname{Pic}(\mathbb{P}^1_k\times\mathbb{P}^1_k\times\mathbb{P}^2_k)$.
+\end{enumerate}
+
+\item $\operatorname{char}k=0$，
+\begin{enumerate}
+\item[(1)] 证明：$V(Y^2=X^2+X^3)\subseteq\mathbb{A}^2_k$和$\mathbb{P}^1_k$双有理等价。
+\item[(2)] 证明：$V(X_0^3+X_1^3+X_2^3+X_3^3)\subseteq\mathbb{P}^3_k$和$\mathbb{P}^2_k$双有理等价。
+\end{enumerate}
+\end{enumerate}
+
+
+
+\section{2024秋季(李志远)}
+\begin{enumerate}
+		\item Let $k$ be an algebraically closed field. Let $H=\{ f(x_0, \ldots ,x_{n})=0 \}\subseteq \mathbb{P}_{k}^{n}$ be a hypersurface of degree $d$.
+			\begin{itemize}
+				\item Is $H$ a connected scheme?
+				\item How many irreducible components can $H$ maximally have?
+				\item Compute the dimension of $\Gamma(H,\mathcal{O}_{H}(1))$.
+			\end{itemize}
+		
+		\item Consider the action of $\mathbb{C}^{*}$ on $\mathbb{A}_{\mathbb{C}}^{3}\setminus \{ 0 \}$ by
+			$$
+			\lambda\cdot (x_0,x_1,x_2) = (\lambda x_0, \lambda x_1, \lambda^{2}x_2).
+			$$
+			Set $X=(\mathbb{A}^{3}_{\mathbb{C}}\setminus \{ 0 \})/\mathbb{C}^{*}$ to be the orbit space.
+			\begin{itemize}
+				\item Show that there is a natural scheme structure on $X$.
+				\item Is $X$ nonsingular? If not, find the singular point.
+				\item Compute the class group of $X$.
+			\end{itemize}
+
+        \item Let $\mathcal{F}$ be a quasi--coherent sheaf on a Noetherian scheme $X$.
+			\begin{itemize}
+				\item Show that the locus $U=\{ p \in X \mid \mathcal{F}_{p} \text{ is torsion free} \}$ is an open subset of $X$.
+				\item Show that $\mathcal{F}$ is locally free if and only if $\mathcal{F}_{p}$ is a free $\mathcal{O}_{p}$-module for all $p \in X$.
+			\end{itemize}
+		
+		\item Let $C$ be the intersection of two quadric surfaces given by
+			$$
+			C:\{ x_0^{2}+x_1^{2}+x_2^{2}+x_3^{2} = x_0^{2} + x_1 x_2 + x_3 x_1 + x_2 x_3 = 0 \} \subseteq \mathbb{P}_{\mathbb{C}}^{3}.
+			$$
+			\begin{itemize}
+				\item Compute the Picard group of $C$.
+				\item Show there is only trivial morphism from $C$ to the Fermat curve $C_0: \{ x_0^{3}+x_1^{3}+x_2^{3} = 0 \}\subseteq \mathbb{P}^{2}_{\mathbb{C}  }$.
+			\end{itemize}
+
+		\item Let $k$ be a field. Let $C$ be the image of $\mathbb{P}_{k}^{1}\to \mathbb{P}_{k}^{n}$ under the map
+		$$
+		[x_0:x_1]\mapsto [x^{n}_{0}:x^{n-1}_{0}x_1:x_0^{n-2}x_1^{2}:\cdots: x^{n}_{1}].
+		$$
+		\begin{itemize}
+			\item Show that $C$ is smooth and is not a complete intersection if $n>2$, i.e. it is not an intersection of $n-1$ hypersurfaces.
+			\item Show that $C$ is not contained in any linear subspace of $\mathbb{P}_{k}^{n}$.
+			\item Show that if there exists another smooth curve $C' \subseteq \mathbb{P}_{k}^{n}$ and $C'\simeq \mathbb{P}_{k}^{1}$ is not contained in any linear subspace of $\mathbb{P}_{k}^{n}$, then there exists a change of coordinates $g \in \operatorname{GL}_{n+1}(k)$ such that $g(C)=C'$.
+		\end{itemize}
+	\end{enumerate}

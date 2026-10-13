@@ -1,0 +1,734 @@
+\setdisplaytitle{Solution\ to\ GTM249\ Chapter\ 1\ Part\ I}
+\sethtmltitle{Solution\ to\ GTM249\ Chapter\ 1\ Part\ I}
+
+\newcommand{\norm}[1]{\Vert #1 \Vert}
+\newcommand{\norml}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+
+\href{https://grafakos.missouri.edu/FourierAnalysis.html}{Errata for GTM 249, 250.}
+
+\section*{1.1 $L^p$ and Weak $L^p$}
+
+\begin{enumerate}
+\item[1.1.1]
+    \begin{enumerate}
+    \item[(a)] For an arbitrary sequence $\{\alpha_{n}\} \downarrow \alpha$, 
+    we have the pointwise convergence 
+    $\chi_{|f|>\alpha_{n}} \downarrow \chi_{|f|>\alpha}$. 
+    If $d_{f}(\alpha)$ is unbounded, then the proposition holds automatically. 
+    Otherwise, $\chi_{|f|>\alpha_{n}}$ are all bounded by $\chi_{|f|>\alpha}$, thus
+    \[d_{f}(\alpha) = \int \chi_{|f|>\alpha}\,d\mu \overset{\text{DCT}} 
+    = \lim_{n \rightarrow \infty}\int \chi_{|f|>\alpha_{n}}d\mu 
+    = \lim_{n \rightarrow \infty}d_{f}(\alpha_{n}).\]
+
+    \item[(b)] Let $E=\{|f|>\alpha\}$ and $E_{n}=\{|f_{n}|>\alpha\}$. 
+    Thus by noting that $\mu(\bigcap_{n=m}^{\infty}E_{n}) 
+    \leq \liminf\limits_{n \rightarrow \infty} \mu(E_{n})$ and 
+    $E \subset \bigcup_{m=1}^{\infty}\bigcap_{n=m}^{\infty}E_{n}$, $\mu$-a.e., 
+    we have $d_{f} \leq \liminf\limits_{n \rightarrow \infty} d_{f_{n}}$ by definition.
+
+    \item[(c)] We have $\limsup\limits_{n \rightarrow \infty} d_{f_{n}} \leq d_{f}$ 
+    by $|f_{n}| \uparrow |f|$. Now the result comes with (b) that
+    \[\limsup_{n \rightarrow \infty} d_{f_{n}} \leq d_{f} 
+    \leq \liminf_{n \rightarrow \infty}d_{f_{n}}.\]
+    \end{enumerate}
+
+\item[1.1.2.]
+    \begin{enumerate}
+    \item[(a)] Use induction. Suppose this holds for the $k-1$ case, 
+    and consider the $k$ case. If $p_{k}=\infty$, 
+    then since $\sum\limits_{j=1}^{k-1}\dfrac{1}{p_{j}}=\dfrac{1}{p}$, 
+    we have by pulling out the essential supremum of $|f_{k}|$ that 
+    \begin{align*}\norm{f_{1}\cdots f_{k}}_{L^p} &\leq \norm{f_{1}\cdots f_{k-1}}_{L^p}\norm{f_{k}}_{L^\infty}\\
+    &\leq \norm{f_{1}}_{L^{p_{1}}}\cdots\norm{f_{k-1}}_{L^{p_{k-1}}}\norm{f_{k}}_{L^\infty}.\end{align*}
+    Otherwise, if $p_{k}<\infty$, then automatically $p < \infty$. 
+    Set $r=\dfrac{p_{k}}{p_{k}-p}$ and $q=\dfrac{p_{k}}{p}$. Then
+    \begin{equation*}\begin{aligned}
+    \norm{f_{1}\cdots f_{k}}_{L^p} &= \norm{|f_{1}\cdots f_{k}|^p}_{L^1}^{\frac{1}{p}}\\
+    &\overset{\text{Hölder}}{\leq} 
+    \norm{|f_{1}\cdots f_{k-1}|^{p}}_{L^r}^{\frac{1}{p}}\norm{|f_{k}|^{p}}_{L^q}^{\frac{1}{p}} \\
+    &=\norm{f_{1}\cdots f_{k-1}}_{L^{pr}}\norm{f_{k}}_{L^{pq}} \\
+    &\leq \norm{f_{1}}_{L^{p_{1}}}\cdots\norm{f_{k-1}}_{L^{p_{k-1}}}\norm{f_{k}}_{L^{p_{k}}}.
+    \end{aligned}\end{equation*}
+    Also, note that the $k=2$ case is contained in the proof.
+
+    \item[(b)] The equality condition is the same as 
+    the one of Hölder's inequality in the $k=2$ case.
+
+    \item[(c)] It suffices to show that $\norm{fg}_{L^1}\norm{g^{-1}}_{L^\frac{q}{1-q}} \geq \norm{f}_{L^q}$, 
+    which is straightforward by (a).
+    \end{enumerate}
+
+\item[1.1.3.]
+    \begin{enumerate}
+    \item[(a)] If $\norm{f}_{L^\infty} = \infty$, then define $E_{n}=\{|f|>n\}$. 
+    Since $\mu(E_{n})>0$ for each $n$, we have 
+    $\norm{f}_{L^p} \geq \norm{f}_{L^p(E_n)}\geq n\mu(E_n)^{\frac{1}{p}}$. 
+    Let $p \rightarrow \infty$ to get 
+    $\liminf\limits_{p \rightarrow \infty}\norm{f}_{L^p} \geq n$, 
+    then let $n$ vary. \par
+    If $\norm{f}_{L^\infty} < \infty$, now $\norm{f}_{L^p} 
+    \leq \norm{f}_{L^\infty}^{\frac{p-p_0}{p}}\norm{f}_{L^{p_0}}^{\frac{p_0}{p}}$. 
+    Let $p \rightarrow \infty$, we obtain 
+    $\limsup\limits_{p \rightarrow \infty}\norm{f}_{L^p} \leq \norm{f}_{L^\infty}$. 
+    For another, set $E_{\gamma}=\{|f|>\gamma\norm{f}_{L^\infty}\}$ 
+    for arbitrary $\gamma \in (0,1)$. 
+    Then $\mu(E_{\gamma})>0$ and thus $\norm{f}_{L^{p_0}(E_{\gamma})}>0$, and 
+    \[\norm{f}_{L^p} \geq (\gamma\norm{f}_{L^\infty})^{\frac{p-p_0}{p}}
+    \norm{f}_{L^{p_0}(E_{\gamma})}^{\frac{p_0}{p}}.\]
+    Again let $p \rightarrow \infty$, we get 
+    $\liminf\limits_{p \rightarrow \infty}\norm{f}_{L^p} 
+    \geq \gamma\norm{f}_{L^\infty}$. Now let $\gamma \rightarrow 1$.
+    
+    \item[(b)] By Jensen's inequality, we have
+    \[\int_{X}\log |f| \,d\mu \leq \log\bigg(\int_{X}|f|\,d\mu\bigg).\]
+    This yields
+    \begin{align*}\norm{f}_{L^p}&=\bigg(\int_{X}|f|^{p}\,d\mu\bigg)^{\frac{1}{p}}\\
+    &\ge\bigg(\exp\bigg(\int_{X}p\log|f| \,d\mu\bigg)\bigg)^{\frac{1}{p}}\\
+    &=\exp\bigg(\int_{X}\log|f| \,d\mu\bigg).\end{align*}
+    
+    \item[(c)] Fix a sequence $\{p_n\} \downarrow 0$ bounded by $p_0$ and define
+    \[h_n(x)=\frac{1}{p_0}(|f(x)|^{p_0}-1)-\frac{1}{p_n}(|f(x)|^{p_n}-1).\]
+    Using that $\int_1^t s^{p-1}ds = \frac{1}{p}(t^{p}-1) \downarrow \log t$ as $p\downarrow0$, 
+    the Lebesgue monotone convergence theorem yields 
+    $\int_Xh_n\,d\mu\uparrow\int_Xh\,d\mu$, hence
+    \[\int_{X}\frac{1}{p_n}(|f(x)|^{p_n}-1)\,d\mu \downarrow \int_{X}\log|f|\,d\mu.\]
+    Using part (b) and taking $t=\int_X |f|^{p_n}\,d\mu$ 
+    in the inequality $t\leq e^{t-1}$, we get
+    \begin{align*}\exp\bigg(\int_{X}\log|f|\,d\mu\bigg) 
+    \leq \bigg(\int_{X}|f|^{p_{n}}\,d\mu\bigg)^{\frac{1}{p_{n}}}& \\
+    \leq \exp\bigg(\int_{X}\frac{1}{p_{n}}(|f|^{p_{n}}-1)\,d\mu\bigg)&. 
+    \end{align*}
+    Thus take $n \rightarrow \infty$ and we have 
+    $\displaystyle{\lim_{p \rightarrow 0} \norm{f}_{L^p} 
+    = \exp\bigg(\int_{X}\log|f|\,d\mu\bigg)}$. 
+    \end{enumerate}
+
+\item[1.1.4.]
+    \begin{enumerate}
+    \item[(a)] Use Jensen's inequality of integration to 
+    \[f(x)=\sum_{k=1}^{\infty}a_{k}\chi_{[k-1,k)}\] and $X=\R-(-\infty,0]$, 
+    since $x^{\theta}$ is convex for $\theta \in (0,1]$.\\
+    Another way is to assume that $1=\big(\sum_{j=1}^\infty a_j\big)^\theta$ by homogeneity, 
+    which implies $a_j\leq1$, and subsequently 
+    \[1=\sum_{j=1}^\infty a_j\leq\sum_{j=1}^\infty a_j^\theta.\]
+    
+    \item[(b)] This is the same as the preceding question 
+    with a change in convexity. Or observe that
+    \[\bigg(\sum_{j=1}^\infty a_j^\theta\bigg)^{1/\theta}
+    \leq\sum_{j=1}^\infty (a_j^\theta)^{1/\theta}=\sum_{j=1}^\infty a_j.\]
+    
+    \item[(c)] Use the discrete Jensen's inequality. The problem is the same as 
+    \[\bigg(\frac{\sum_{j=1}^{N}a_{j}}{N}\bigg)^{\theta} 
+    \leq \frac{1}{N}\sum_{j=1}^{N}a_{j}^{\theta}.\]
+    
+    \item[(d)] The same as (c).
+    \end{enumerate}
+
+\item[1.1.5.]
+    \begin{enumerate}
+    \item[(a)] Since $p \geq 1$, we have
+    \begin{equation*}\begin{aligned}
+    \norm{\sum_{j=1}^{N}f_{j}}_{L^p}^{p} &= \int_{X}\big|\sum_{j=1}^{N}f_{j}\big|^{p}d\mu \\
+    &= \int_{X}\big|\sum_{j=1}^{N}f_{j}\big|\big|\sum_{j=1}^{N}f_{j}\big|^{p-1}d\mu \\
+    &\leq \sum_{i=1}^{N}\int_{X}|f_{i}|\big|\sum_{j=1}^{N}f_{j}\big|^{p-1}d\mu\\
+    &\overset{\text{Hölder}}{\leq} \bigg(\sum_{i=1}^{N}\norm{f_{i}}_{L^p}\bigg)
+    \bigg(\int_{X}\big|\sum_{j=1}^{N}f_{i}\big|^{p}d\mu\bigg)^{\frac{p-1}{p}}\\
+    &= \sum_{i=1}^{N}\norm{f_{i}}_{L^p}\frac{\norm{\sum_{j=1}^{N}f_{j}}_{L^p}^{p}}{\norm{\sum_{j=1}^{N}f_{j}}_{L^p}}. 
+    \end{aligned}\end{equation*}
+    The rest is by multiplying both sides by $\norm{\sum_{j=1}^{N}f_{j}}_{L^p}^{1-p}$.
+    
+    \item[(b)] This is just the same with (a). Here the first ``$\leq$'' 
+    turns to ``$=$'' and the Hölder's inequality turns its direction.
+    
+    \item[(c)] This is direct from 1.1.4 (a) pointwise on $X$, and 
+    subsequently 1.1.4 (c) where $a_{j}=\displaystyle{\int_{X}|f_{j}|^{p}\,d\mu}$.
+    
+    \item[(d)] Take $n$ disjoint sets $M_{j}$ 
+    with the same measure $\alpha>0$ and take $f_{j}=\chi_{M_{j}}$. 
+    Then $\norm{\sum_{j=1}^{N}f_{j}}_{L^p}=N^\frac{1}{p}\alpha^\frac{1}{p}$ 
+    and $\sum_{j=1}^{N}\norm{f_{j}}_{L^p}=N\alpha^\frac{1}{p}$.
+    \end{enumerate}
+
+\item[1.1.6.]
+    \begin{enumerate}
+    \item[(a)] The $p=1$ case is trivial. When $p > 1$, 
+    let $q$ be the conjugate number of $p$, 
+    then set $G(t)=\int_{X}F(x,t)\,d\mu(x)$, we have
+    \begin{equation*}\begin{aligned}
+    \norm{G}_{L^{p}(\nu)}^{p}
+    &=\int_{T}\bigg(\int_{X}F(x,t)\,d\mu(x)\bigg)G(t)^{p-1}d\nu(t)\\
+    &=\int_{X}\int_{T}F(x,t)G(t)^{p-1}d\nu(t)d\mu(x)\\
+    &\overset{\text{Hölder}}{\leq} 
+    \int_{X}\bigg(\int_{T}F(x,t)^{p}\,d\nu(t)\bigg)^{\frac{1}{p}}\norm{G}_{L^{p}(\nu)}^{p-1}d\mu(x).
+    \end{aligned}\end{equation*}
+    Now eliminating $\norm{G}_{L^{p}(\nu)}^{p-1}$ on both sides 
+    finishes the proof when $\norm{G}_{L^{p}(\nu)}<\infty$. 
+    Otherwise, choose ascending sequences of subsets $X_{n} \subset X$ and $T_{n} \subset T$, 
+    such that $\bigcup_{n}X_{n}=X$ and $\bigcup_{n}T_{n}=T$, 
+    and $\mu(X_{n}),\nu(T_{n})<\infty$ for all $n$. 
+    Now take $F_{k}=\max(F,k)$. Thence
+    \[\bigg[\int_{T_{m}}\bigg(\int_{X_{n}}F_{k}(x,t)\,d\mu(x)\bigg)^{p}d\nu(t)\bigg]^{\frac{1}{p}} 
+    \leq 
+    \int_{X_{n}}\bigg[\int_{T_{m}}F(x,t)^{p}\,d\nu(t)\bigg]^{\frac{1}{p}}d\mu(x).\]
+    for all $m,n$ and $k \in \N$. By monotonicity, 
+    we obtain the desired result by taking $m,n \to \infty$ and then $k$.
+    
+    \item[(b)] Let $(X,\mu)$ be a $\sigma$-finite measure space, 
+    and $(T,\nu)$ be a finite measure space. 
+    For every nonnegative measurable function $F$ 
+    on the product space $(X,\mu)\times(T,\nu)$ we have
+    \[\bigg\|\int_XF(x,t)\,d\mu(x)\bigg\|_{L^\infty(T,\nu)}
+    \le\int_X\|F(x,t)\|_{L^\infty(T,\nu)}\,d\mu(x).\]
+    For the proof, take $p\to\infty$ in (a), and $\nu(T)<\infty$ guarantees 
+    that $\lim\limits_{p\to\infty}\|\cdot\|_{L^p(T,\nu)}=\|\cdot\|_{L^\infty(T,\nu)}$.
+    
+    \item[(c)] Since Hölder's inequality reverses when $0<p<1$.
+    
+    \item[(d)] $(X,\mu)$ is not $\sigma$-finite now, 
+    and (a) as well as (b) no longer holds for the $F$. 
+    Indeed, $\int_XF(x,t)\,d\mu(x)=\mu(\{t\})=1$ for any $t\in T$, 
+    and therefore the left--hand side equals 
+    $\Big(\int_Td\nu(t)\Big)^{\frac1p}=1$; 
+    $\int_TF(x,t)^p\,d\nu(t)=1$ for any $x\in X$, 
+    and therefore the right--hand side equals $\int_X0\,d\mu(x)=0$.
+\end{enumerate}
+
+\item[1.1.7.]
+    \begin{enumerate}
+    \item[(a)] Since
+    \begin{equation*}\begin{aligned}
+    \norm{\sum_{j=1}^{N}f_{j}}_{L^{p,\infty}}&=\sup\{\gamma d_{f_{1}+\cdots+f_{N}}(\gamma)^{\frac{1}{p}}:\gamma>0\} \\
+    &\leq \sum_{j=1}^{N}\sup\{\gamma d_{f_{j}}\Big(\frac{\gamma}{N}\Big)^{\frac{1}{p}}:\gamma>0\} \\
+    &= N\sum_{j=1}^{N}\sup\{\gamma\ d_{f_{j}}(\gamma)^{\frac{1}{p}}:\gamma>0\}
+    = N\sum_{j=1}^{N}\norm{f_{j}}_{L^{p,\infty}}.
+    \end{aligned}\end{equation*}
+
+    \item[(b)] Since
+    \begin{equation*}\begin{aligned}
+    \norm{\sum_{j=1}^{N}f_{j}}_{L^{p,\infty}}&=\sup\{\gamma d_{f_{1}+\cdots+f_{N}}(\alpha)^{\frac{1}{p}}:\gamma>0\} \\
+    &\leq N^{\frac{1}{p}-1}\sum_{j=1}^{N}\sup\{\gamma d_{f_{j}}\Big(\frac{\gamma}{N}\Big)^{\frac{1}{p}}:\gamma>0\} \\
+    &= N^{\frac{1}{p}}\sum_{j=1}^{N}\sup\{\gamma d_{f_{j}}(\gamma)^{\frac{1}{p}}:\gamma>0\}
+    = N^{\frac{1}{p}}\sum_{j=1}^{N}\norm{f_{j}}_{L^{p,\infty}}.
+    \end{aligned}\end{equation*}
+    \end{enumerate}
+
+\item[1.1.8.]
+    Suppose $\{f_{n}\}$ is an $L^{p}$ Cauchy sequence. 
+    Let $\{n_{i}\}$ be a sequence such that 
+    $\norm{f_{n_{i+1}}-f_{n_{i}}}_{L^p} \leq \dfrac{1}{2^{i}}$. 
+    Thus the series $f = f_{n_{1}}+\sum_{i=1}^{\infty}(f_{n_{i+1}}-f_{n_{i}})$ 
+    converges in $L^{p}$. 
+    The next thing is to verify that $f_{n} \overset{L^{p}}{\longrightarrow} f$. 
+    This is because for all $\varepsilon>0$, 
+    take $n,n_k$ sufficiently large such that $\norm{f_{n}-f_{n_{k}}}_{L^p}<\varepsilon$, and then
+    \begin{equation*}\begin{aligned}
+    \int_{X}|f_{n}-f|^{p}\,d\mu &= \int_{X}\liminf_{k \rightarrow \infty}|f_{n}-f_{n_{k}}|^{p}\,d\mu \\
+    &\overset{\text{Fatou}}{\leq} \liminf_{k \rightarrow \infty}\int_{X}|f_{n}-f_{n_{k}}|^{p}\,d\mu \\
+    &= \liminf_{k \rightarrow \infty} \norm{f_{n}-f_{n_{k}}}_{L^p}^{p} < \varepsilon^{p},
+    \end{aligned}\end{equation*}
+    which implies $\norm{f_{n}-f}_{L^p}<\varepsilon$. 
+    Thus we have shown the completeness.
+
+\item[1.1.9.]
+    Note that for $\varepsilon>0$,
+    \[\{x \in X \mid f_{n}(x) \rightarrow f(x)\} \subseteqq 
+    \bigcup_{m=1}^{\infty}\bigcap_{n=m}^{\infty}\{x \in X \mid |f_{n}(x)-f(x)|<\varepsilon\} 
+    \subseteqq X,\]
+    in which both sides have measure $\mu(X)$. Since 
+    \[\bigcap_{n=m}^{\infty}\{x \in X \mid |f_{n}(x)-f(x)|<\varepsilon\} 
+    \subseteqq \bigcap_{n=m+1}^{\infty}\{x \in X \mid |f_{n}(x)-f(x)|<\varepsilon\},\]
+    we have \[\bigcap_{n=N}^{\infty}\{x \in X \mid |f_{n}(x)-f(x)|<\varepsilon\}>\mu(X)-\varepsilon\]
+    for some large $N$, thus
+    \[\mu(\{x \in X \mid |f_{n}(x)-f(x)|<\varepsilon\})<\varepsilon\] for $n>N$. 
+
+\item[1.1.10.]
+    \begin{enumerate}
+    \item[(a)] This is due to\begin{align*}
+        d_{f_\gamma}(\alpha)&=\mu(\{|f|>\gamma\}\cap\{|f|>\alpha\})=d_f(\max(\alpha,\gamma)).\\
+        d_{f^\gamma}(\alpha)&=d_{f}(\alpha)-d_{f_\gamma}(\alpha)
+        =\begin{cases}0,&\alpha\geq\gamma\\d_f(\alpha)-d_f(\gamma),&\alpha<\gamma\end{cases}.
+    \end{align*}
+
+    \item[(b)] Using (a) we obtain
+    \begin{align*}
+        \|f_\gamma\|_{L^p}^p&=p\int_0^\infty\alpha^{p-1}d_f(\max(\alpha,\gamma))\,d\alpha\\
+        &=p\Big(\int_\gamma^\infty\alpha^{p-1}d_f(\alpha)\,d\alpha+\int_0^\gamma\alpha^{p-1}d_f(\gamma)\,d\alpha\Big)\\
+        &=p\int_\gamma^\infty\alpha^{p-1}d_f(\alpha)\,d\alpha+\gamma^pd_f(\gamma).\\
+        \|f^\gamma\|_{L^p}^p&=p\int_0^\gamma\alpha^{p-1}(d_f(\alpha)-d_f(\gamma))\,d\alpha\\
+        &=p\int_0^\gamma\alpha^{p-1}d_f(\alpha)\,d\alpha-\gamma^pd_f(\gamma).
+    \end{align*}
+    \begin{align*}
+        &\int_{\gamma<|f|\leq\delta}|f|^pd\mu=\|f^\delta\|_{L^p}^p-\|f^\gamma\|_{L^p}^p\\
+        &=p\int_\gamma^\delta\alpha^{p-1}d_f(\alpha)\,d\alpha-\delta^pd_f(\delta)+\gamma^pd_f(\gamma).
+    \end{align*}
+
+    \item[(c)] For $q>p$, from (b) and $q-p-1>-1$ we get
+    \begin{align*}
+        \norm{f^{\gamma}}_{L^q}^q&=q\int_0^\gamma\alpha^{q-1}d_{f}(\alpha)\,d\alpha - \gamma^{q}d_{f}(\gamma)\\
+        &=q^p\int_0^\gamma\alpha^{q-p-1}\|f\|_{L^{p,\infty}}^pd\alpha - \gamma^{q}d_{f}(\gamma)<\infty.
+    \end{align*}
+    Plus, for $q<p$, from (b) and $q-p-1<-1$ we get
+    \begin{align*}
+    \norm{f_{\gamma}}_{L^q}^{q} &= q\int_{\gamma}^\infty\alpha^{q-1}d_{f}(\alpha)\,d\alpha + \gamma^{q}d_{f}(\gamma)\\
+    &\leq q\int_{\gamma}^\infty\alpha^{q-p-1}\norm{f}_{L^{p,\infty}}^pd\alpha + \gamma^{q}d_{f}(\gamma) < \infty.
+    \end{align*}
+    Finally, $L^{p,\infty} \subseteqq L^{p_0}+L^{p_1}$ is a direct consequence of 
+    $f=f_{\gamma}+f^{\gamma}$.
+    \end{enumerate}
+
+\item[1.1.11.]
+    \begin{enumerate}
+    \item[(a)] Take $A=\mu(E)^{-\frac{1}{p}}\norm{f}_{L^{p,\infty}}$, then we have
+    \begin{equation*}\begin{aligned}
+    \int_{E}|f(x)|^{q}\,d\mu(x) &= q\int_{0}^{A}\alpha^{q-1}d_{f}(\alpha)\,d\alpha 
+    + q\int_{A}^{\infty}\alpha^{q-1}d_{f}(\alpha)\,d\alpha \\
+    &\leq A^{q}\mu(E) + q\int_A^\infty \alpha^{q-p-1}\norm{f}_{L^{p,\infty}}^pd\alpha \\
+    & =A^{q}\mu(E) + \frac{q}{p-q}A^{q-p}\norm{f}_{L^{p,\infty}}^p \\
+    &= \frac{p}{p-q}\mu(E)^{1-\frac{q}{p}}\norm{f}_{L^{p,\infty}}^{q}.
+    \end{aligned}\end{equation*}
+
+    \item[(b)] Take $E=X$ in the preceding problem, 
+    then this means $L^{p,\infty}(X,\mu) \subset L^{q}(X,\mu)$.
+    \end{enumerate}
+
+\item[1.1.12.]
+    \begin{enumerate}
+    \item[(a)] By Exercise 1.1.11 (a), we have 
+    \begin{equation*}\begin{aligned}
+    \norml{f}_{L^{p,\infty}} &= \sup_{0<\mu(E)<\infty}
+    \mu(E)^{-\frac{1}{r}+\frac{1}{p}}\bigg(\int_{E}|f|^{r}d\mu\bigg)^{\frac{1}{r}} \\
+    &\leq \sup_{0<\mu(E)<\infty}\mu(E)^{-\frac{1}{r}+\frac{1}{p}}
+    \bigg(\frac{p}{p-r}\bigg)^{\frac{1}{r}}\mu(E)^{\frac{1}{r}-\frac{1}{p}}\norm{f}_{L^{p,\infty}} 
+    \leq \bigg(\frac{p}{p-r}\bigg)^{\frac{1}{r}}\norm{f}_{L^{p,\infty}}.
+    \end{aligned}\end{equation*}
+
+    \item[(b)] Choose an ascending chain of subsets $X_{n} \subset X$ 
+    such that $\mu(X_{n})<\infty$ and $\bigcup_{n} X_{n} = X$. 
+    Now set $E=\{|f|>\alpha\}\cap X_{n}$, we have 
+    \begin{equation*}\begin{aligned}
+    \norml{f}_{L^{p,\infty}} &\geq \mu(E)^{-\frac{1}{r}+\frac{1}{p}}
+    \bigg(\int_{E}|f|^r\,d\mu\bigg)^{\frac{1}{r}} \\
+    &\geq \mu(E)^{-\frac{1}{r}+\frac{1}{p}}(\alpha^{r}\mu(E))^{\frac{1}{r}}
+    =\alpha d_{f}(\alpha)^{\frac{1}{p}}.
+    \end{aligned}\end{equation*}
+    Since $\alpha$  is arbitrary, we have 
+    $\norm{f}_{L^{p,\infty}} \leq \norml{f}_{L^{p,\infty}}$ 
+    for finite measure spaces $X_{n}$, and so for $X$ by definition.
+    
+    \item[(c)] It's easy to verify that $\norml{f}$ is a norm for $p>1$ 
+    by Minkowski's inequality and taking proper $r \in (1,p)$. 
+    When it comes to $0<p\leq 1$, we have 
+    $\norml{\,\cdot\,}_{L^{p,\infty}}^{r}$ to be the desired metric 
+    (but not a norm) which induces the same topology 
+    by observing the inequality after taking the power of $r$ on all terms.
+    
+    \item[(d)] Since
+    \begin{equation*}\begin{aligned}
+    \big\|\liminf_{n \rightarrow \infty} |g_{n}|\big\|_{L^{p,\infty}}
+    &\le\sup_{0<m(E)<\infty}\mu(E)^{-\frac{1}{r}+\frac{1}{p}}\bigg(\int_{E}\liminf_{n \rightarrow \infty} |g_{n}|^{r}d\mu\bigg)^{\frac{1}{r}} \\
+    &\!\!\!\overset{\text{Fatou}}{\leq}
+    \sup_{0<m(E)<\infty}\liminf_{n \rightarrow \infty}\mu(E)^{-\frac{1}{r}+\frac{1}{p}}\bigg(\int_{E} |g_{n}|^{r}d\mu\bigg)^{\frac{1}{r}} \\
+    &\leq \liminf_{n \rightarrow \infty}\sup_{0<m(E)<\infty}\mu(E)^{-\frac{1}{r}+\frac{1}{p}}\bigg(\int_{E} |g_{n}|^{r}d\mu\bigg)^{\frac{1}{r}} \\
+    &\leq \bigg(\frac{p}{p-r}\bigg)^{\frac{1}{r}}\liminf_{n \rightarrow \infty}\norm{g_{n}}_{L^{p,\infty}}.
+    \end{aligned}\end{equation*}
+    \end{enumerate}
+
+\item[1.1.13.]
+    \begin{enumerate}
+    \item[(a)] By definition, $\norm{f_{\sigma}}_{L^{1,\infty}}
+    =\sup\limits_{\varepsilon>0}\mu\big(\big[\frac{\sigma^{-1}(1)-1}{N},
+    \frac{\sigma^{-1}(1)}{N}\big)\big)\Big(\dfrac{N}{1}-\varepsilon\Big)^{1}=1$.
+
+    \item[(b)] Since $\sum\limits_{\sigma \in S_{N}}f_{\sigma}
+    =N!\big(1+\frac{1}{2}+\ldots+\frac{1}{N}\big)\chi_{[0,1)}$.
+
+    \item[(c)] If not, suppose $\norm{\cdot}$ is an equivalent norm, 
+    that is, $C_{1}\norm{f} \leq \norm{f}_{L^{1,\infty}} \leq C_{2}\norm{f}$ 
+    for all $f$ and some $C_{1},C_{2}>0$. Then we have
+    \begin{equation*}\begin{aligned}
+    &C_{1}N!\Big(1+\dfrac{1}{2}+\ldots+\dfrac{1}{N}\Big)\\
+    &=C_{1}\norm{\sum_{\sigma \in S_{N}}f_{\sigma}}_{L^{1,\infty}} 
+    \leq \norm{\sum_{\sigma \in S_{N}}f_{\sigma}} \\ 
+    &\leq \sum_{\sigma \in S_{N}}\norm{f_{\sigma}}
+    \leq C_{2}\sum_{\sigma \in S_{N}}\norm{f_{\sigma}}_{L^{1,\infty}}=C_{2}N!.
+    \end{aligned}\end{equation*}
+    This contradicts with the fact that $1+\frac{1}{2}+\dots+\frac{1}{N}\rightarrow\infty$ when $N\rightarrow\infty$.
+    \end{enumerate}
+
+\item[1.1.14.]
+    \begin{enumerate}
+    \item[(a)] Since
+    \begin{equation*}\begin{aligned}
+    \int_{|f| \leq s}|f|^{q}\,d\mu 
+    &= q \int_{0}^{s}\alpha^{q-1}d_{f}(\alpha)\,d\alpha \\
+    &\leq q \int_{0}^{s}\norm{f}_{L^{p,\infty}}^{p}\alpha^{q-p-1}d\alpha
+    \leq \frac{q}{q-p}s^{q-p}\norm{f}_{L^{p,\infty}}^{p}.
+    \end{aligned}\end{equation*}
+
+    \item[(b)] Since
+    \begin{equation*}\begin{aligned}
+    \Big\|\max\limits_{1 \leq j \leq m}|f_{j}|\Big\|_{L^{p,\infty}}^{p} 
+    &= \sup\{\gamma^{p}d_{\max\limits_{1 \leq j \leq m}|f_{j}|}(\gamma)\} \\
+    &\leq \sum_{j=1}^{m}\sup\{\gamma^{p}d_{f_{j}}(\gamma)\}
+    \leq \sum_{j=1}^{m}\norm{f_{j}}_{L^{p,\infty}}^{p}.
+    \end{aligned}\end{equation*}
+    \end{enumerate}
+
+\item[1.1.15.]
+   Assume WLOG that $\norm{f_{j}}_{L^{p_{j},\infty}}=1$ for all $j$. Now the estimate follows
+   \begin{equation*}\begin{aligned}
+   d_{f_{1}\cdots f_{k}}(\alpha) &\leq d_{f_{1}}\Big(\frac{\alpha}{s_{1}}\Big)
+   +d_{f_{2}}\Big(\frac{s_{1}}{s_{2}}\Big)+\cdots+d_{f_{k}}\Big(\frac{s_{k-1}}{1}\Big)
+   \\&\leq \Big(\frac{s_{1}}{\alpha}\Big)^{p_{1}}+\cdots+\Big(\frac{1}{s_{k-1}}\Big)^{p_{k}}.
+   \end{aligned}\end{equation*}
+   Take $x_{1}=\dfrac{s_{1}}{\alpha},x_{2}=\dfrac{s_{2}}{s_{1}},\cdots,x_{k}=\dfrac{1}{s_{k}}$, 
+   then we can rewrite it as
+   \begin{equation*}\begin{aligned}
+   d_{f_{1}\cdots f_{k}}(\alpha) \leq x_{1}^{p_{1}}+\cdots+x_{k}^{p_{k}},
+   \end{aligned}\end{equation*}
+   where $x_{1}\cdots x_{k}=\frac{1}{\alpha}$. 
+   Set $x_1^{p_1}=\frac{\lambda}{p_1},\cdots,x_k^{p_k}=\frac{\lambda}{p_k}$ 
+   for some constant $\lambda$ satisfying 
+   $\prod_j\big(\frac{\lambda}{p_j}\big)^\frac{1}{p_j}=\frac{1}{\alpha}$, 
+   and the right side becomes $\sum_j\frac{\lambda}{p_j}
+   =p^{-1}\Big(\alpha^{-1}\prod_jp_j^\frac{1}{p_j}\Big)^p$. 
+   Hence $\norm{f_1\cdots f_k}_{L^{p,\infty}}
+   \leq p^{-\frac{1}{p}}\prod_{j}p_{j}^{\frac{1}{p_{j}}}$.
+
+\item[1.1.16. ]
+   We skip the cases of $\theta=0,1$ since there is nothing to prove.
+   \begin{enumerate}
+   \item[(a)] If $p_{1} \neq \infty$, then
+   \begin{equation*}\begin{aligned}
+   \bigg(\int_{X}|f|^{p}\,d\mu\bigg)^{\frac{1}{p}} 
+   &= \bigg(\int_{X}|f|^{p(1-\theta)}|f|^{p\theta}\,d\mu\bigg)^{\frac{1}{p}}\\
+   &\leq \bigg(\int_{X}|f|^{p(1-\theta)\frac{p_{0}}{p(1-\theta)}}d\mu\bigg)^{\frac{1-\theta}{p_{0}}}
+   \bigg(\int_{X}|f|^{p\theta\frac{p_{1}}{p\theta}}d\mu\bigg)^{\frac{\theta}{p_{1}}}\\
+   &= \norm{f}_{L^{p_{0}}}^{1-\theta}\norm{f}_{L^{p_{1}}}^{\theta}.
+   \end{aligned}\end{equation*}
+   And if $p_{1} = \infty$, then $\frac{p_{0}}{p}=1-\theta$. Thus
+   \begin{equation*}\begin{aligned}
+   \bigg(\int_{X}|f|^{p}\,d\mu\bigg)^{\frac{1}{p}} 
+   &\leq \norm{f^{p-p_{0}}}_{L^{\infty}}^{\frac{1}{p}}\bigg(\int_{X}|f|^{p_{0}}d\mu\bigg)^{\frac{1}{p}} 
+   = \norm{f}_{L^{p_{0}}}^{1-\theta}\norm{f}_{L^{\infty}}^{L^{\theta}}.
+   \end{aligned}\end{equation*}
+
+   \item[(b)] Since
+   \begin{equation*}\begin{aligned}
+   t^{p}d_{f}(t) = \big(t^{\frac{(1-\eta)p}{\theta}}d_{f}(t)\big)^{\theta}
+   \big(t^{\frac{\eta p}{1-\theta}}d_{f}(t)\big)^{1-\theta},
+   \end{aligned}\end{equation*}
+   we have by definition that
+   \begin{equation*}\begin{aligned}
+   \norm{f}_{L^{p,\infty}}^{p} 
+   \leq \norm{f}_{L^{\frac{\eta p}{1-\theta},\infty}}^{\eta}
+   \norm{f}_{L^{\frac{(1-\eta)p}{\theta},\infty}}^{1-\theta},
+   \end{aligned}\end{equation*}
+   where $p_{0}(1-\theta)=\eta p$ and $p_{1}\theta=(1-\eta) p$.
+   \end{enumerate}
+
+\item[1.1.17.]
+   \begin{enumerate}
+   \item[(a)] The $n=2$ case is nothing other than the $n=2$ Hölder's inequality. 
+   For $n \geq 3$, suppose the proposition holds for $k \leq n-1$, 
+   then for $k=n$, set \[P(x_{1},\ldots,x_{n-1})
+   =\int_{\R}|f_{1}(\pi_{1})(x)\cdots f_{n-1}(\pi_{n-1})(x)|\,dx_{n},\]
+   then
+   \begin{equation*}\begin{aligned}
+   \Lambda(f_{1},\ldots,f_{n}) 
+   &\leq \int_{\R^{n-1}}P(x_{1},\ldots,x_{n-1})|f_{n}(\pi_{n})(x)|\,dx_{1}\cdots dx_{n-1} \\
+   &\leq \norm{P}_{L^{\frac{n-1}{n-2}}(\R^{n-1})}\norm{f_{n} \circ \pi_{n}}_{L^{1}(\R^{n-1})}.
+   \end{aligned}\end{equation*}
+   Note that by the induction hypothesis, we should have
+   \begin{equation*}\begin{aligned}
+   \norm{P}_{L^{\frac{n-1}{n-2}}(\R^{n-1})} 
+   &= \bigg(\int_{\R^{n-1}}\bigg(\int_{\R}|f_{1}(\pi_{1})(x)|\cdots|f_{n-1}(\pi_{n-1})(x)|\,dx_{n}\bigg)^{\frac{n-1}{n-2}}dx_{1}\cdots dx_{n-1}\bigg)^{\frac{n-2}{n-1}}
+   \\&\overset{\text{Hölder}}{\leq} \bigg(\int_{\R^{n-1}}\prod_{i=1}^{n-1}
+   \bigg(\int_{\R}|f_{i}(\pi_{i})(x)|^{n-1}dx_{n}\bigg)^{\frac{1}{n-2}}dx_{1}\cdots dx_{n-1}\bigg)^{\frac{n-2}{n-1}}
+   \\&\overset{\text{induction}}{\leq} \prod_{i=1}^{n-1}
+   \bigg(\int_{\R^{n}}|f_{i}(x)|^{n-1}dx_{1}\cdots dx_{n}\bigg)^{\frac{1}{n-1}} 
+   = \prod_{i=1}^{n-1}\norm{f_{i}}_{L^{n-1}(\R^{n-1})}.
+   \end{aligned}\end{equation*}
+   Thus, 
+   \begin{equation*}\begin{aligned}
+   \Lambda(f_{1},\ldots,f_{n}) 
+   \leq \norm{P}_{L^{\frac{n-1}{n-2}}(\R^{n-1})}\norm{f_{n} \circ \pi_{n}}_{L^{1}(\R^{n-1})} 
+   \leq \prod_{i=1}^{n}\norm{f_{i}}_{L^{n-1}(\R^{n-1})}.
+   \end{aligned}\end{equation*}
+
+   \item[(b)] Take $f_{j}=\chi_{\pi_{j}[\Omega]}$, 
+   then the left--hand side is no less than
+   \begin{equation*}\begin{aligned}
+   \int_{\R^{n}}\prod_{i=1}^{n}|f_{i}\circ \pi_{i}|\,dx 
+   &=\int_{\R^{n}}\chi_{\pi_{1}[\Omega]}\cdots\chi_{\pi_{n}[\Omega]} \,dx\\
+   &\geq\int_{\R^{n}}\chi_{\Omega}\,dx = |\Omega|.
+   \end{aligned}\end{equation*}
+   And the right--hand side is no more than
+   \begin{equation*}\begin{aligned}
+   \prod_{i=1}^{n}\norm{f_{j}}_{L^{n-1}(\R^{n-1})} 
+   &= \prod_{i=1}^{n} \bigg(\int_{\R^{n-1}}\chi_{\pi_{i}[\Omega]}
+   \,dx_{1}\cdots  \widehat{dx_{i}} \cdots dx_{n}\bigg)^{\frac{1}{n-1}} 
+   = \prod_{i=1}^{n}|\pi_{i}[\Omega]|^{\frac{1}{n-1}} \\
+   &\leq \prod_{i=1}^{n}\Big(\frac{1}{2}|\partial\Omega|\Big)^{\frac{1}{n-1}} 
+   = 2^{\frac{n}{1-n}}|\partial\Omega|^{\frac{n}{n-1}}.
+   \end{aligned}\end{equation*}
+   \end{enumerate}
+\end{enumerate}
+
+\section*{1.2 Convolution and Approximate Identities}
+
+\begin{enumerate}
+\item[1.2.1.]
+    For $g \notin AB$, forbidding $h\in A$ along with $h^{-1}g\in B$, we have
+   \[\int_{G}f(h)g(h^{-1}g)\,dh =0\]
+   since at least one of $f(h)$ and $g(h^{-1}g)$ vanishes.
+
+\item[1.2.2.] 
+   Since 
+   \begin{equation*}\begin{aligned}
+   ^{t}f * g(x) &= \int_{G}f(ty)g(y^{-1}x)\,dy = \int_{G}f(y)g(y^{-1}tx)\,d(ty)\\ 
+   &= \int_{G}f(y)g(y^{-1}tx)\,d(y) = ^{t}(f * g)(x).
+   \end{aligned}\end{equation*}
+   and
+   \begin{equation*}\begin{aligned}
+   f * g^{t}(x) = \int_{G}f(y)g(y^{-1}xt)\,dy = (f * g)^{t}(x).
+   \end{aligned}\end{equation*}
+
+\item[1.2.3.]
+
+\item[1.2.4.]
+   \begin{enumerate}
+   \item[(a)] Since $f\chi_{B(0,n)} \overset{L^{p}}{\longrightarrow} f$.
+   
+   \item[(b)] Let $\varphi \in C_{c}(\R^{n})$ be a positive function supported 
+   in $B(0,1)$ with integral $1$, then define $\varphi_{k}(x)=k^n\varphi(kx)$, 
+   which are compactly supported smooth functions with integral $1$ as well. 
+   Now we show $\varphi_{k}*f \overset{L^{p}}{\longrightarrow} f$, which is because
+   \begin{equation*}\begin{aligned}
+   \norm{\varphi_{k}*f-f}_{L^p}^{p} &= \int_{\R}\bigg|\int_{\R}\varphi_{k}(x-y)(f(x)-f(y))\,dy\bigg|^{p}dx
+   \\&\!\!\!\overset{\text{Jensen}}{\leq} \int_{\R}\int_{|y-x|<\frac{1}{k}}\varphi_{k}(x-y)|f(x)-f(y)|^{p}\,dydx
+   \\&\leq \int_{|t|<\frac{1}{k}}\bigg(\int_{\R}|f(x)-f(x-t)|^{p}\,dx\bigg)\varphi_{k}(-t)\,dt
+   \\&\leq \sup_{|t|<\frac{1}{k}}\int_{\R}|f(x)-f(x-t)|^{p}\,dx.
+   \end{aligned}\end{equation*}
+   Then apply the average continuity.
+   \end{enumerate}
+
+\item[1.2.5.]
+   $\lambda$ is a Haar measure because for any $a>0$,
+   \begin{equation*}\begin{aligned}
+   \lambda(aA)=\int_{aA}\frac{dt}{t}=\int_{A}\frac{d(at)}{at}
+   =\int_{A}\frac{dt}{t}=\lambda(A).
+   \end{aligned}\end{equation*}
+
+\item[1.2.6.]
+   $\lambda$ is a left Haar measure because for any $(a,b)\in G$,
+   \begin{equation*}\begin{aligned}
+   \lambda((a,b)A)
+   &=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\chi_{(a,b)A}(x,y)\frac{dxdy}{x^{2}}\\
+   &=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\chi_{(a,b)A}((a,b)(x,y))
+   \det\begin{pmatrix}a & 0 \\ 0 & a\end{pmatrix}\frac{dxdy}{(ax)^{2}}\\
+   &=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\chi_{A}(x,y)\frac{dxdy}{x^{2}}=\lambda(A).
+   \end{aligned}\end{equation*}
+   $\rho$ is a right Haar measure because for any $(a,b)\in G$,
+   \begin{equation*}\begin{aligned}
+   \rho(A(a,b))
+   &=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\chi_{A(a,b)}(x,y)\frac{dxdy}{|x|}\\
+   &=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\chi_{A(a,b)}((x,y)(a,b))\bigg|
+   \det\begin{pmatrix}a & b \\ 0 & 1\end{pmatrix}\bigg|\frac{dxdy}{|ax|}\\
+   &=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\chi_{A}(x,y)\frac{dxdy}{|x|}=\rho(A).
+   \end{aligned}\end{equation*}
+
+\item[1.2.7.]
+   For the former, note that (here $G$ denotes the group $(\R^{+},\frac{dt}{t})$)
+   \begin{equation*}\begin{aligned}
+   &\norm{|f(x)|x^{\frac{1}{p}}*x^{-\frac{1}{p'}}\chi_{[1,\infty)}}_{L^{p}(G)}\\
+   &= \bigg(\int_{0}^{\infty}\bigg(\int_{0}^{\infty}
+   |f(t)|t^{\frac{1}{p}}(t^{-1}x)^{-\frac{1}{p'}}\chi_{[1,\infty)}(t^{-1}x)
+   \frac{dt}{t}\bigg)^{p}\frac{dx}{x}\bigg)^{\frac{1}{p}}\\
+   &=\bigg(\int_{0}^{\infty}\bigg(\frac{1}{x}\int_{0}^{x}
+   |f(t)|dt\bigg)^{p}dx\bigg)^{\frac{1}{p}}.
+   \end{aligned}\end{equation*}
+   And
+   \begin{equation*}\begin{aligned}
+   \norm{|f(x)|x^{\frac{1}{p}}}_{L^{p}(G)}=\bigg(\int_{0}^{\infty}(|f(x)|x^{\frac{1}{p}})^{p}\frac{dx}{x}\bigg)^{\frac{1}{p}}=\norm{f}_{L^p},
+   \end{aligned}\end{equation*}
+   \begin{equation*}\begin{aligned}
+   \norm{x^{-\frac{1}{p'}}\chi_{[1,\infty)}}_{L^{1}(G)}
+   =\int_{1}^{\infty}x^{-\frac{1}{p'}}\frac{dx}{x}=\frac{p}{p-1}.
+   \end{aligned}\end{equation*}
+   Now combine with Minkowski's inequality,
+   \begin{equation*}\begin{aligned}
+   \norm{|f(x)|x^{\frac{1}{p}}*x^{-\frac{1}{p'}}\chi_{[1,\infty)}}_{L^{p}(G)} \leq
+   \norm{|f(x)|x^{\frac{1}{p}}}_{L^{1}(G)}
+   \norm{x^{-\frac{1}{p'}}\chi_{[1,\infty)}}_{L^{p}(G)}.
+   \end{aligned}\end{equation*}
+   The latter and Exercise 1.2.8 follow in a rather similar manner, so we omit the procedure.
+
+\item[1.2.9.]
+   By Young's inequality, it's quite straightforward to obtain 
+   $\norm{T}_{L^{p} \to L^{p}} \leq \norm{K}_{L^{1}}$. 
+   To show the inverse, we use $K_{R}:=K\chi_{B(0,R)}$ to approximate the result. 
+   Note that for $|x| \leq R(1-\varepsilon)$, 
+   we have $B(0,R\varepsilon) \subset B(x,R)$. Thus
+   \[\int_{\R^{n}}\chi_{R}(x-y)K_{R\varepsilon}(y)\,dy
+   =\int_{\R^{n}}K_{R\varepsilon}(y)\,dy=\norm{K_{R\varepsilon}}_{L^{1}}.\]
+   We have $\norm{\chi_{R}}_{L^{p}}^{p}=|B(0,R)|^{p}$, and
+   \begin{equation*}\begin{aligned}
+   \norm{K*\chi_{R}}_{L^{p}}^{p} 
+   &\geq \norm{K_{R\varepsilon}*\chi_{R}}_{L^{p}(B(0,R(1-\varepsilon)))}^{p} \\
+   &= \int_{B(0,R(1-\varepsilon))}
+   \bigg(\int_{\R^{n}}K_{R\varepsilon}(y)\chi_{R}(x-y)\,dy\bigg)^{p}dx
+   \\&= \int_{B(0,R(1-\varepsilon))}\norm{K_{R\varepsilon}}_{L^{1}}^{p}dx 
+   = (1-\varepsilon)^{n}\norm{K_{R\varepsilon}}_{L^{1}}^{p}.
+   \end{aligned}\end{equation*}
+   This means \[\norm{T}_{L^{p} \to L^{p}} 
+   \geq (1-\varepsilon)^{\frac{n}{p}}\norm{K_{R\varepsilon}}_{L^{1}}\]
+   for each $\varepsilon \in (0,1)$ and $R>0$. 
+   Let $R \to \infty$ and then $\varepsilon \to 0^{+}$, 
+   we get $\norm{T}_{L^{p} \to L^{p}} \geq \norm{K}_{L^{1}}$.
+
+\item[1.2.10.]
+   By Young's inequality, we obtain 
+   $\norm{T}_{L^{p} \to L^{p}} \leq \norm{K}_{L^{1}}$.
+   For the inverse, take $f_{n}=\chi_{[\frac{1}{n},n]}$ and $K_{n}=Kf_{n}$. 
+   Then for $ n^{\varepsilon -1}\le x\le n^{1-\varepsilon}$, we have
+   \[
+    f_n*K_{n^{\varepsilon}}( x ) 
+    =\int_0^{\infty}{K_{n^{\varepsilon}}( y ) f_n( x-y ) \frac{dy}{y}}
+    =\|K_{n^{\varepsilon}}\|_{L^1}.
+   \]
+   Thus
+   \[
+   \frac{\norm{K*f_{n}}_{L^{p}}^{p}}{\norm{f_{n}}_{L^{p}}^{p}} 
+   \geq
+   \frac{\norm{K_{n^{\varepsilon}}*f_n}_{L^p\left[ n^{\varepsilon -1},n^{1-\varepsilon} \right]}^{p}}{2\log n}
+   =\norm{K_{n^{\varepsilon}}}_{L^1}^{p}\left( 1-\varepsilon \right). 
+   \]
+   Letting $ n\to \infty $, we have $ \norm{T}_{L^{p} \to L^{p}}^{p}
+   \ge \norm{K}_{L^1}^{p}\left( 1-\varepsilon \right) $; 
+   then $ \varepsilon \to 0^{+} $, we get 
+   $ \norm{T}_{L^{p} \to L^{p}} \ge \norm{K}_{L^{1}} $.
+
+\item[1.2.11.]
+   (a) Since
+   \begin{equation*}\begin{aligned}
+   c_{k} &= \bigg(\int_{1}^{1} (1-t^{2})^{k}dt\bigg)^{-1} \\
+   &< \bigg(\int_{-\frac{1}{\sqrt{k}}}^{\frac{1}{\sqrt{k}}} (1-t^{2})^{k}dt\bigg)^{-1} \\
+   &< \bigg(\int_{-\frac{1}{\sqrt{k}}}^{\frac{1}{\sqrt{k}}} (1-kt^{2})\,dt\bigg)^{-1} 
+   = \frac{3}{4}\sqrt{k} < \sqrt{k}.
+   \end{aligned}\end{equation*}
+   Thanks to the adjustment given by $c_{k}$, we have
+   \begin{equation*}\begin{aligned}
+   (Q_{k}*f-f)(x) = \int_{-1}^{1}(f(x-t)-f(x))Q_{k}(t)\,dt.
+   \end{aligned}\end{equation*}
+   Thus
+   \begin{equation*}\begin{aligned}
+   \norm{Q_{k}*f-f}_{L^1} &= \int_{\R}\bigg|\int_{-1}^{1}(f(x-t)-f(x))Q_{k}(t)\,dt\bigg|\,dx \\
+   &\leq \int_{\R^{2}}|f(x)-f(x-t)|Q_{k}(t)\,dtdx \\
+   &\leq \int_{\R}Q_{k}(t)\norm{f(x)-f(x-t)}_{L^1}dt.
+   \end{aligned}\end{equation*}
+   Due to the average continuity, we have $\delta > 0$ for each $\varepsilon>0$ 
+   such that $\norm{f(x)-f(x-t)}_{L^1}<\varepsilon$ for $|t|<\delta$. 
+   Plus, we have $\lim\limits_{k \to \infty}\sqrt{k}(1-t^{2})^{k}=0$ uniformly for $\delta<|t|<1$, 
+   thus take $k$ large so that $Q_{k}(x)<\varepsilon$ for $n>k$, we have
+   \begin{equation*}\begin{aligned}
+   &\int_{\R}Q_{k}(t)\norm{f(x)-f(x-t)}_{L^1}dt \\
+   &\leq \int_{|t| \leq \delta}Q_{k}(t)\norm{f(x)-f(x-t)}_{L^1}dt\\
+   &\quad+ \int_{|t| > \delta}Q_{k}(t)\norm{f(x)-f(x-t)}_{L^1}dt\\
+   &\leq \varepsilon \norm{Q_{k}}_{L^1} + \int_{|t| > \delta}
+   Q_{k}(t)(\norm{f(x)}_{L^1}+\norm{f(x-t)}_{L^1})\,dt
+   \\&\leq (1 + 2\norm{f}_{L^1})\varepsilon.
+   \end{aligned}\end{equation*}
+   This ends the proof.
+
+   (b) Due to the uniform continuity, we choose $\delta>0$ 
+   so that $|f(x)-f(x-t)|<\varepsilon$ for $|t|\leq\delta$. 
+   Now for large $k$, we have
+   \begin{equation*}\begin{aligned}
+   |(Q_{k}*f-f)(x)| &= \bigg|\int_{-1}^{1}(f(x-t)-f(x))Q_{k}(t)\,dt\bigg|\\
+   &\leq \int_{|t|\leq\delta}|f(x)-f(x-t)|Q_{k}(t)\,dt\\
+   &\quad+ \int_{|t|>\delta}Q_{k}(t)|f(x)-f(x-t)|\,dt\\
+   &\leq \varepsilon \norm{Q_{k}}_{L^1} + \varepsilon \sup_{x \in \R}{f(x)}\\
+   &= \varepsilon\big(1+\sup\limits_{x \in \R}{f(x)}\big),
+   \end{aligned}\end{equation*}
+   and note that the tending to $0$ does not depend on the choice of $\delta$.
+   
+   (c)\&(d) Set $g(t)=f(t)-f(-1)-\dfrac{t+1}{2}(f(1)-f(-1))$, 
+   then $g(-1)=g(1)=0$. 
+   $g$ can be viewed as satisfying the condition in (c) 
+   by zero extension outside $[-1,1]$. Thus $g*Q_k \to g$ uniformly. 
+   However, also note that this means
+   \[g*Q_k + f(-1) + \frac{x+1}{2}(f(1)-f(-1)) \to f\]
+   uniformly on $[-1,1]$, and $g*Q_k(x)$ is a polynomial in $x$, since
+   \begin{equation*}\begin{aligned}
+   g*Q_k(x) &= \int_{-1}^{1} g(t)c_k(1-(x-t)^2)^k\,dt\\
+   &=\sum_{j=0}^{2k}\bigg(\int_{-1}^1 g(t)d_{j,k}t^j\,dt\bigg)x^j.
+   \end{aligned}\end{equation*}
+
+\item[1.2.12]
+Note that
+\begin{align*}|L(f)(x)|^2&=\bigg|\int_0^\infty f(t)e^{-xt}\,dt\bigg|^2\\
+&\leq\int_0^\infty|f(t)|^2e^{-xt}\sqrt{t}\,dt\int_0^\infty\frac{e^{-xt}}{\sqrt{t}}dt\\
+&=\int_0^\infty|f(t)|^2e^{-xt}\sqrt{t}\,dt\int_0^\infty\frac{e^{-u}}{\sqrt{u/x}}\frac{du}{x}\\
+&=\sqrt{\frac{\pi}{x}}\int_0^\infty|f(t)|^2e^{-xt}\sqrt{t}\,dt.\end{align*}
+Therefore
+    \begin{align*}\|L(f)\|_{L^2}^2
+    &\leq\sqrt{\pi}\int_0^\infty\int_0^\infty|f(t)|^2e^{-xt}\sqrt{\frac{t}{x}}\,dtdx\\
+    &=\sqrt{\pi}\int_0^\infty\int_0^\infty|f(t)|^2e^{-u}\frac{t}{\sqrt{u}}\frac{du}{t}\,dt
+    =\pi\|f\|_{L^2}^2.\end{align*}
+    
+Another solution using the hint of convolution:
+\begin{align*}
+L(f)(x) 
+&=\int_0^{\infty}{f(t) e^{-xt}dt}
+=\int_0^{\infty}{f\Big(\frac{1}{t}\Big) e^{-\frac{x}{t}}\frac{dt}{t^2}}\\
+&=\int_0^{\infty}{\sqrt{\frac{x}{t}}e^{-\frac{x}{t}}
+\cdot \frac{1}{\sqrt{t}}f\Big(\frac{1}{t}\Big) \frac{dt}{t}}
+\cdot \frac{1}{\sqrt{x}}\\
+&=\bigg(\sqrt{t}e^{-t}*\frac{1}{\sqrt{t}}f\Big(\frac{1}{t}\Big)\bigg) (x) 
+\cdot \frac{1}{\sqrt{x}}.
+\end{align*}
+Thus taking norm and using Minkowski's inequality we obtain
+\begin{align*}
+\norm{L(f)}_{L^2(\mathbb{R}^+,dt)}
+&=\norm{\sqrt{t}e^{-t}*\frac{1}{\sqrt{t}}f\Big(\frac{1}{t}\Big)}_{L^2(\mathbb{R}^+,\frac{dt}{t})}\\
+&\le \norm{\sqrt{t}e^{-t}}_{L^1(\mathbb{R}^+,\frac{dt}{t})}
+\norm{\frac{1}{\sqrt{t}}f\Big(\frac{1}{t}\Big)}_{L^2(\mathbb{R}^+,\frac{dt}{t})}\\
+&=\sqrt{\pi}\norm{f}_{L^2(\mathbb{R}^+,dt)}.
+\end{align*}
+
+\begin{proofc}[Remark]
+The norm is exactly $\sqrt{\pi}$ indeed. 
+In fact, consider a sequence of functions 
+$f_{n}(t)=\dfrac{1}{\sqrt{t}}\chi_{[\frac{1}{n},n]}(t)$, 
+we find $\norm{f_{n}}_{L^2}=\sqrt{2 \log(n)}$. 
+Compute the norms of transformed functions:
+\begin{equation*}\begin{aligned}
+\norm{L(f_{n})}_{2}^{2}
+&=\int_{\R^{+}}\bigg(\int_{\frac{1}{n}}^{n}\frac{1}{\sqrt{t}}e^{-st}dt\bigg)^{2}ds\\
+&=\int_{\R^{+}}\frac{1}{s}\bigg(\int_{\frac{s}{n}}^{ns}\frac{1}{\sqrt{t}}e^{-t}dt\bigg)^{2}ds.
+\nonumber\end{aligned}\end{equation*}
+For arbitrary $\delta \in (0,1)$ fixed, we have
+\begin{equation*}\begin{aligned}
+\int_{\R^{+}}&\frac{1}{s}\bigg(\int_{\frac{s}{n}}^{ns}
+\frac{1}{\sqrt{t}}e^{-t}dt\bigg)^{2}ds\\
+&\geq \int_{(\frac{1}{n})^{1-\delta}}^{n^{1-\delta}}\frac{1}{s}
+\bigg(\int_{\frac{s}{n}}^{ns}\frac{1}{\sqrt{t}}e^{-t}dt\bigg)^{2}ds\\
+&\geq \int_{(\frac{1}{n})^{1-\delta}}^{n^{1-\delta}}\frac{1}{s}
+\bigg(\int_{(\frac{1}{n})^{\delta}}^{n^{\delta}}\frac{1}{\sqrt{t}}e^{-t}dt\bigg)^{2}ds.
+\nonumber\end{aligned}\end{equation*}
+For $n$ sufficiently large, we have by the famous integral that
+\begin{equation*}\begin{aligned}
+\int_{(\frac{1}{n})^{\delta}}^{n^{\delta}}\frac{1}{\sqrt{t}}e^{-t}dt 
+\geq \sqrt{\pi} - \varepsilon,
+\nonumber\end{aligned}\end{equation*}
+thus,
+\begin{equation*}\begin{aligned}
+\norm{L(f_n)}_{L^2}^{2} &\geq \int_{(\frac{1}{n})^{1-\delta}}^{n^{1-\delta}}
+\frac{\sqrt{\pi} - \varepsilon}{s}ds \\
+&= 2 \log(n) (1-\delta)(\sqrt{\pi} - \varepsilon)^{2} \\
+&=\norm{f_n}_{L^2}^{2}(1-\delta)(\sqrt{\pi} - \varepsilon)^{2}. 
+\end{aligned}\end{equation*}
+Finally, take $\delta \to 0^{+}$ and $\varepsilon \to 0^{+}$.
+\end{proofc}
+\end{enumerate}

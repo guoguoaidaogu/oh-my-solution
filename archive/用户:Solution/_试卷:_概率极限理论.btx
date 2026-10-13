@@ -1,0 +1,62 @@
+\setdisplaytitle{试卷：概率极限理论及其应用}
+\sethtmltitle{试卷：概率极限理论及其应用}
+
+==25-26春期末(何煜坤)==
+{{comment|原卷是英文,这里用中文复述.}}
+\begin{itemize}
+    \item[一、](20分)已知特征函数$\phi$是IDCF.
+    \begin{itemize}
+        \item[(1)]证明:$|\phi|$也是IDCF.(8分)
+        \item[(2)]叙述Levy连续性定理.(4分)
+        \item[(3)]证明:对任何$t\in\mathbb{R}$,$\phi(t)\ne 0$.(8分)
+    \end{itemize}
+    \item[二、](20分)
+    \begin{itemize}
+        \item[(1)]若一个特征函数$\phi$在$t\in(-\delta,\delta)$
+        均满足$|\phi_X(t)|=1$,其中$\delta>0$,证明:$X$是退化随机变量.(10分)
+        \item[(2)]随机变量$\{X_n\}$
+        独立同分布,且服从$[-1,1]$上的均匀分布.
+        用Lindberg替换方法证明:$\frac{X_1+\cdots+X_n}{n}$依分布收敛
+        到$\mathcal{N}(0,\frac13)$.(10分)
+    \end{itemize}
+    \item[三、](20分)
+    \begin{itemize}
+        \item[(1)]$\{X_n\}_{n\ge 1}$为一列独立同分布的随机变量,定义
+        $S_n=X_1+\cdots+X_n$.证明:
+        \[\lim_{n\rightarrow \infty}\frac1n\log\mathbb{P}(S_n\ge nx)=\sup_{n\ge 1}\frac1n\log\mathbb{P}(S_n\ge nx)\]
+        对任何$x\in \mathbb{R}$成立.(10分)
+        \item[(2)]设 $\{X_n\}_{n \geq 1}$ 为一列独立同分布的随机变量，满足 $\mathbb{E}X_1 = 0$ 且对任意 $t > 0$，$\mathbb{E}\exp(tX_1) = \infty$。证明：
+        \[
+        \lim_{n \to \infty} \frac{1}{n} \log \mathbb{P}(S_n \geq nx) = 0
+        \]
+        对任意固定的 $x > 0$成立.(10分)
+    \end{itemize}
+
+    \item[四、](20分)
+    \begin{itemize}
+        \item[(1)]$\{X_n\}_{n \geq 1}$ 为一列独立同分布的随机变量,定义
+        $S_n=X_1+\cdots+X_n$.若$\frac{S_n}{n}\rightarrow L\in\mathbb{R},a.s$,
+        证明:$\mathbb{E}|X_1|<+\infty$,且$\mathbb{E}X_1=L$.(10分)
+        \item[(2)]相反,若$\mathbb{E}|X_1|=+\infty$,证明:
+        $\limsup_{n}\frac{|S_n|}{n}=+\infty$.(10分)
+    \end{itemize}
+
+    \item[五、](20分)
+    $H$是$N\times N$ Wigner矩阵，$z=E+i\eta,\eta>0$。
+    Green函数$G(z)=(H-z)^{-1}$。
+    $\lambda_1\ge \cdots\ge\lambda_N$是$H$的$N$个特征值，
+    $\bm{u}_1,\cdots,\bm{u}_N$是对应的归一化特征向量。
+    \begin{itemize}
+        \item[(1)] 叙述并证明Ward恒等式。(8分)
+        \item[(2)] 叙述随机控制$\prec$的定义。(2分)
+        \item[(3)] 若
+        $|\lambda_1-2|\prec N^{-2/3}$，
+        $|\lambda_n+2|\prec N^{-2/3}$，
+        且$\eta\prec \frac{1}{N}$，证明：
+        \[
+            \max_{1\le i,j\le N} |\bm{u}_i(j)| \prec N^{-1/2}.\quad \text{(10分)}
+        \]        
+    \end{itemize}
+
+
+    \end{itemize}

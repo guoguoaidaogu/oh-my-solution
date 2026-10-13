@@ -1,0 +1,148 @@
+\setdisplaytitle{试卷：英才班选拔}
+\sethtmltitle{试卷：英才班选拔}
+
+== 2026年英才班二次选拔==
+\begin{enumerate}
+    \item 
+    (1) 若 \(f,g\) 在 \(\mathbf{R}\) 上可导，证明：$(fg)' = f'g + g'f.$\\
+    (2) 求$\left(\mathrm{e}^{x}\cos(\sqrt{3}\,x)\right)^{(98)},$这里 \(f^{(98)}\) 表示 \(f\) 的 \(98\) 阶导数。
+
+    \item
+    设
+    \[
+        S = \{(x,y,z)\mid x,y,z\in\{0,1\},\ (x,y,z)\ne(0,0,0)\}.
+    \]
+    若 \(S\) 中三个不同元素
+    \[
+        A=(x_1,y_1,z_1),\quad B=(x_2,y_2,z_2),\quad C=(x_3,y_3,z_3)
+    \]
+    满足 \(x_1+x_2+x_3,\ y_1+y_2+y_3,\ z_1+z_2+z_3\) 均为偶数，则称无序三元组 \(\{A,B,C\}\) 为好的。若一个一一对应 \(f:S\to S\) 满足：对任意好的三元组 \(\{A,B,C\}\)，\(\{f(A),f(B),f(C)\}\) 也是好的，则称 \(f\) 为好的映射。
+
+    (1) 求好的三元组的个数；
+
+    (2) 求好的映射的个数。
+
+    \item
+    设 \(O_n\) 表示 \(n\) 个元素的所有错排中奇排列的个数，\(E_n\) 表示偶排列的个数。证明：
+    \[
+        E_n - O_n = (-1)^{n-1}(n-1).
+    \]
+
+    \item
+    设变换 \(f\) 作用于第一象限内的点 \((x,y)\)，得到 \((x',y')\)，且满足
+    \[
+        \begin{cases}
+            xy \le x', \\[0.2em]
+            \min\left\{\dfrac{x}{y},\dfrac{y}{x}\right\} \le y' \le \max\left\{\dfrac{x}{y},\dfrac{y}{x}\right\}.
+        \end{cases}
+    \]
+    每次操作可任选满足上述条件的 \((x',y')\)。
+
+    问：对第一象限内的点 \(P(x,y)\)，最少经过多少次操作 \(f\) 才能到达 \(Q(4,4)\)？请分类说明。
+
+    \item
+    发送方需要发送 \(16\) 种不同指令中的一种，他只能发送由 \(0\) 和 \(1\) 组成的、长度为 \(n\) 的序列。
+    \\传输过程中，这个序列最多可能有 \(1\) 位出错：某个 \(0\) 变成 \(1\)；某个 \(1\) 变成 \(0\)；完全不变。
+    \\要求接收方收到这个可能出错的序列后，仍然能够唯一确定发送方原本发送的是哪一种指令，不会混淆。
+
+    问：\(n\) 最小是多少？并给出一种具体的编码策略。
+\end{enumerate}
+
+== 2025年英才班二次选拔==
+\begin{enumerate}
+\item 有人和座位分别编号为$1,2,3\cdots,n$,初始时人坐的座位随机，每次可以进行这样的操作：
+	\begin{center}
+	\textbf{将$1$座位上的人和任意其他座位上的人互换.}
+	\end{center}
+	(1)证明至多进行$2n$次操作可以使每个人都坐在自己的位置上.
+	
+	(2)在$n=4$时，求最小的$m$，使得任意的初始情况都能通过至多$m$次操作使得每个人都坐在自己的位置上.
+
+\item 已知$f(x)=a_nx^n+ a_{n-1} x^{n-1}+\cdots+a_0$
+为有理系数多项式$(a_n\neq 0$)，
+满足：对于任意的$m\in \mathbb{Z}$,有$f(m)\in \mathbb{Z}$.
+	
+    求$|a_n|$的最小值，并给出完整证明.
+
+\item 现在有一个半凸平面四边形$ABCD$, $a,d$都是给定的常数
+	
+	\[\angle C=\beta,\quad\angle A=\alpha.\]
+    \[\quad AD=DC=CB=a,\quad AB=d\quad(3a>d\geq a).\]
+	
+	注：半凸四边形指的是$\alpha ,\beta \in [0,\pi]	$,允许共线.
+	
+	(1)用$\alpha$ 来表示$\beta$ 和四边形$ABCD$的面积,并求出$\alpha$ 的取值范围;
+	
+	(2)证明四边形面积的最大值是在四边形为梯形的时候取得.
+
+\begin{tikzpicture}
+\coordinate (A) at (0,0);
+\coordinate (D) at (1,2);
+\coordinate (C) at (3,3);
+\coordinate (B) at (4,1);
+\draw[thick] (A) -- (D) -- (C) -- (B) -- cycle;
+\node[below left] at (A) {$A$};
+\node[above left] at (D) {$D$};
+\node[above right] at (C) {$C$};
+\node[below right] at (B) {$B$};
+\draw (A) -- node[below] {} (D);
+\draw (D) -- node[above right] {} (C);
+\draw (C) -- node[above] {} (B);
+\draw (A) ++(0.292,0.073) arc (14:63.4:0.3);
+\node at (0.4,0.3) {$\alpha$};
+\draw (C) ++(-0.268,-0.134) arc (-153.4:-63.4:0.3);
+\node at (2.83,2.5) {$\beta$};
+\end{tikzpicture}
+
+
+\item 定义$\mathbb{F}_p^* =\{0,1,\cdots,p-1\} $, $a=(a_1.a_2 \cdots a_n)$,
+其中$a_i \in \mathbb{F}_p^*$,定义
+	
+	\[S(a)=\{(x_1.x_2, \cdots, x_n)|x_i \in \mathbb{F}_p^*,\quad \sum_{i=1}^n a_ix_i=0({\rm mod}p) \}.\]
+	
+	(1)对于确定的$a$,求$S(a)$的元素个数;
+	
+	(2)现有向量$a^1,a^2,\cdots,a^m$（$m$和$n$已知）.
+	
+	求最大的$k$，使得$S(a^1)\bigcap S(a^2)\bigcap \cdots \bigcap S(a^m)$ 至少有$k$个元素.
+
+\item 现有实系数多项式
+	\begin{center}
+	$f(x)=a_n x^n+a_{n-1} x^{n-1}+\cdots +a_0 $ 且 $a_0,a_n\ne 0$
+	\end{center}
+	
+	已知$f(x)$有唯一的正零点（计重根）.
+	
+	(1)证明存在$\delta>0$,使得若对任意$i$有$|a_i-b_i|<\delta $，此时的$g(x)=b_n x^n+b_{n-1} x^{n-1}+\cdots +b_0$有正零点;
+	
+	(2)前提条件与(1)相同，证明可以让$g(x)$有唯一正零点.
+
+
+\end{enumerate}
+
+== 2021年英才班二次选拔==
+\begin{enumerate}
+\item 设 $A,B$ 为两个集合，定义对称差运算：$A \bigtriangleup B=(A\setminus B)\cup(B\setminus A)$.
+
+证明：(1) $\displaystyle B_0\bigtriangleup\left(\bigcup_{i=n}^{+\infty}B_i\right)\subseteq\bigcup_{i=n}^{+\infty}(B_0 \bigtriangleup B_i)$;\quad
+(2) $\displaystyle B_0\bigtriangleup B_n\subseteq \bigcup_{i=0}^{n-1}(B_{i} \bigtriangleup B_{i+1})$.
+
+\item 求证：
+\[
+\sum_{k=0}^n\sum_{i=0}^{k}\binom{k-1-i}{i}=\sum_{i=0}^n\binom{n+1-i}{i}-1.
+\]
+
+\item 给定正整数 $k$，$S$ 是由 $k$ 个非零复数组成的集合，满足 $\forall a,b\in S,\,ab\in S$.
+
+(1) 求证：$\displaystyle\forall a\in S,\,a^k=1$;\quad (2) 求 $S$ 中所有元素之和.
+
+\item 已知数列 $\left\{ a_n \right\}_{n=0}^{+\infty}$ 满足 $a_0=0,\,a_1=1,\,a_{n+2}=a_{n+1}+3a_n$，求证：对奇素数 $p$，有 
+\[
+p \mid a_{p+1} \Leftrightarrow p \mid 13^{\frac{p-1}{2}}+1.
+\]
+
+\item 已知 $\displaystyle a_n=\left( 1+\frac{1}{n} \right)^n\leq \mathrm{e}$ 且 $\displaystyle \lim_{n\to+\infty}a_n=\mathrm{e}$，求证：
+\[
+\lim_{n\to+\infty}n(\mathrm{e}-a_n)\leq\frac{\mathrm{e}}{2}.
+\]
+\end{enumerate}

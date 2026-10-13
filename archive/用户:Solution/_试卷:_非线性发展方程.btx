@@ -1,0 +1,46 @@
+\setdisplaytitle{试题：非线性发展方程}
+\sethtmltitle{试题：非线性发展方程}
+
+== 2024年非线性发展方程期末试题 ==
+
+\begin{itemize}
+\item[一.] (50 分) 设 $T>0$, $\Omega \subset \mathbb{R}^{3}$ 是有界光滑区域, 
+边界为 $\partial \Omega$. 考虑如下 Cahn--Hilliard 型方程的初边值问题:
+$$\begin{cases}\partial_{t} u=\Delta[-\Delta v+f(u)], & (x, t) \in \Omega \times(0, T), \\ 
+    u=v-\varepsilon \Delta v, & (x, t) \in \Omega \times(0, T), \\ 
+    \partial_{\boldsymbol{n}} u=\partial_{\boldsymbol{n}} v=0, & (x, t) \in \partial \Omega \times(0, T), \\ 
+    u(x, 0)=u_{0}(x), & x \in \Omega .\end{cases}$$
+其中, $f(u)=u^{5}-u$, 常数 $\varepsilon \in(0,1/2]$, $\boldsymbol{n}$ 是边界上的单位外法向量.
+
+(a) (35 分) 假设 $u_{0} \in H^{1}(\Omega), v_{0} \in H^{2}(\Omega)$ 
+满足 $v_{0}-\varepsilon \Delta v_{0}=u_{0}$ 以及边界条件 $\partial_{\boldsymbol{n}} v_{0}= 0$. 
+证明：上述问题在 $[0, \infty)$ 上存在唯一的整体解 $(u_{\varepsilon}, v_{\varepsilon})$. (请自行给出解的定义).
+
+(b) (15 分) 讨论当 $\varepsilon \rightarrow 0$ 时解 $(u_{\varepsilon}, v_{\varepsilon})$ 的收敛性. 若收敛, 请给出收敛速率估计.
+
+\item[二.] (40 分) 设 $T>0$, $\Omega \subset \mathbb{R}^{3}$ 是有界光滑区域, 
+边界为 $\partial \Omega$. 考虑如下反应扩散方程组的初边值问题:
+$$\begin{cases}\partial_{t} u-\Delta u=a u-r_{11} u^{2}-r_{12} u v, & (x, t) \in \Omega \times(0, T), \\ 
+    \partial_{t} v-\Delta v=b v-r_{21} u v-r_{22} v^{2}, & (x, t) \in \Omega \times(0, T), \\ 
+    \partial_{\boldsymbol{n}} u=\partial_{\boldsymbol{n}} v=0, & (x, t) \in \partial \Omega \times(0, T), \\
+    u(x, 0)=u_{0}(x), \quad v(x, 0)=v_{0}(x), & x \in \Omega .\end{cases}$$
+其中, $a, b, r_{11}, r_{12}, r_{21}, r_{22}>0$ 为给定的正常数, 
+$\boldsymbol{n}$ 是边界上的单位外法向量.
+
+(a) (30 分) 运用算子半群方法讨论上述问题在适当函数空间中的适定性.
+
+(b) (10 分) 假设初值满足 $u_{0}, v_{0} \geq 0$, 解是否也非负?
+
+\item[三.] (10 分) 设 $T>0$, $\Omega \subset \mathbb{R}^{3}$ 是有界光滑区域, 
+边界为 $\partial \Omega$. 考虑如下具有非线性边界条件的热传导方程的初边值问题:
+
+$$\begin{cases}\partial_{t} u=\Delta u, & (x, t) \in \Omega \times(0, T), \\ 
+    \partial_{\boldsymbol{n}} u=g(u), & (x, t) \in \partial \Omega \times(0, T), \\ 
+    u(x, 0)=u_{0}(x), & x \in \Omega .\end{cases}$$
+其中, $g(u)=u^{3}$, $\boldsymbol{n}$ 是边界上的单位外法向量.
+
+\qquad 假设经典解的存在性已知. 证明：若初始能量满足
+$$E(u_{0})=\frac{1}{2} \int_{\Omega}|\nabla u_{0}|^{2} {\rm d} x
+-\frac{1}{4} \int_{\partial \Omega} u_{0}^{4} {\rm d} S<0,$$
+则上述问题的解在有限时刻爆破。
+\end{itemize}

@@ -1,0 +1,427 @@
+
+\begin{definition}[20.1.1]
+Let $X$ be a $k$-variety, and let $\mathcal{F} \in \text{Coh}(X)$ be a coherent sheaf such that the support of $\mathcal{F}$ has dimension at most $n$. Let $\mathcal{L}_1, \dots, \mathcal{L}_n$ be line bundles on $X$. Then the intersection number is defined as:
+\[
+(\mathcal{L}_1 \dots \mathcal{L}_n \cdot \mathcal{F}) := \sum_{\{i_1, \dots, i_m\} \subseteq \{1, \dots, n\}} (-1)^m \chi(X, \mathcal{L}_{i_1}^\vee \otimes \dots \otimes \mathcal{L}_{i_m}^\vee \otimes \mathcal{F})
+\]
+\end{definition}
+
+\begin{definition}[Notations]
+Let $Y$ be a closed subscheme of $X$. We define the intersection number with $Y$ as:
+\[
+(\mathcal{L}_1 \mathcal{L}_2 \dots \mathcal{L}_n \cdot Y) := (\mathcal{L}_1 \dots \mathcal{L}_n \cdot \mathcal{O}_Y).
+\]
+If $Y = X$, we simply write $(\mathcal{L}_1 \dots \mathcal{L}_n) := (\mathcal{L}_1 \dots \mathcal{L}_n \cdot X)$. Furthermore, we use the shorthand notations $(\mathcal{L}^n \cdot \mathcal{F})$, $(\mathcal{L}^n \cdot Y)$, and $(\mathcal{L}^n)$ when all line bundles are identical.
+\end{definition}
+
+\begin{proposition}[20.1.A]
+If $\mathcal{L}_1 \cong \mathcal{O}_X$, then $(\mathcal{L}_1 \mathcal{L}_2 \dots \mathcal{L}_n \cdot \mathcal{F}) = 0$.
+\end{proposition}
+
+\begin{proof}[\textbf{Proof}]
+For the base case $n=1$, we have:
+\[
+(\mathcal{L}_1 \cdot \mathcal{F}) = \chi(\mathcal{F}) + (-1)^1 \chi(\mathcal{O}_X \otimes \mathcal{F}) = 0.
+\]
+In general, we can split the sum over subsets depending on whether they contain the index $1$. This yields:
+\begin{align*}
+(\mathcal{L}_1 \dots \mathcal{L}_n \cdot \mathcal{F}) &= \sum_{1 \notin \{i_1, \dots, i_m\}} (-1)^m \chi(X, \dots) + \sum_{1 \in \{i_1, \dots, i_m\}} (-1)^m \chi(X, \dots) \\
+&= \sum_{1 \notin \{i_1, \dots, i_m\}} \left( (-1)^m + (-1)^{m+1} \right) \chi(X, \dots) \\
+&= 0.
+\end{align*}
+\end{proof}
+
+\begin{proposition}[20.1.B]\label{20.1.B}
+The intersection number is preserved by field extension of $k$.
+\end{proposition}
+
+\begin{proof}[\textbf{Proof}]
+Let $p: X_K \to X$ be the morphism induced by the field extension $K/k$. That is, we want to show that:
+\[
+(p^*\mathcal{L}_1 \dots p^*\mathcal{L}_n \cdot p^*\mathcal{F}) = (\mathcal{L}_1 \mathcal{L}_2 \dots \mathcal{L}_n \cdot \mathcal{F}).
+\]
+We only need to show that for any coherent sheaf $\mathcal{G} \in \text{Coh}(X)$, we have:
+\[
+\dim_K H^i(X_K, p^*\mathcal{G}) = \dim_k H^i(X, \mathcal{G}).
+\]
+Since $X$ is proper, we can use \v{C}ech cohomology to compute both $H^i(X, \mathcal{G})$ and $H^i(X_K, p^*\mathcal{G})$. Consider an affine open cover $\mathcal{U} = \{U_i\}_{i \in I}$ where each $U_i$ is affine. It is then easy to see that:
+\[
+H^i(X_K, p^*\mathcal{G}) \cong H^i(X, \mathcal{G}) \otimes_k K.
+\]
+This implies the dimensions over the respective fields are equal, which concludes the proof.
+\end{proof}
+
+\begin{remark}
+    By this proposition, we can always assume the base field $k$ is infinite when proving properties of the intersection number.
+\end{remark}
+
+\begin{proposition}[20.1.C]
+\quad
+\begin{enumerate}
+    \item[(a)] Let $X$ be a projective curve and $\mathcal{L}$ be a line bundle on $X$. Then $(\mathcal{L} \cdot X) = \deg \mathcal{L}$.
+    
+    (This holds because $(\mathcal{L} \cdot X) = -\chi(\mathcal{L}^{\vee}) + \chi(\mathcal{O}_X) = - \deg \mathcal{L}^{\vee} = \deg \mathcal{L}$ by 18.4.M.)
+    
+    \item[(b)] Let $k$ be an infinite field, $X = \mathbb{P}^N_k$, and $Y$ be a subvariety of $X$ with $\dim Y = n$. We can choose hypersurfaces $H_1, \dots, H_n$ of degrees $d_1, \dots, d_n$ such that $\dim(H_1 \cap H_2 \dots \cap H_n \cap Y) = 0$ (cf. 12.3.D(b)). By B\'ezout's theorem:
+    \[
+    (\mathcal{O}_X(H_1)\ldots \mathcal{O}_X(H_n) \cdot Y) = \deg(H_1 \cap \dots \cap H_n \cap Y) = d_1 \dots d_n \deg Y.
+    \]
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[\textbf{Proof}]
+Let $\iota: Y \hookrightarrow X$ be the inclusion map. Note that because $\iota$ is an finite morphism, we have:
+\[
+H^i(Y, \mathcal{L}_{i_1}^\vee|_Y \otimes \dots \otimes \mathcal{L}_{i_m}^\vee|_Y \otimes \mathcal{O}_Y) = H^i(X, \iota_*(\mathcal{L}_{i_1}^\vee|_Y \otimes \dots \otimes \mathcal{L}_{i_m}^\vee|_Y \otimes \mathcal{O}_Y)).
+\]
+By the projection formula, this is isomorphic to:
+\[
+H^i(X, \mathcal{L}_{i_1}^\vee \otimes \dots \otimes \mathcal{L}_{i_m}^\vee \otimes \iota_*\mathcal{O}_Y).
+\]
+Therefore, we can rewrite the intersection number as:
+\[
+(\mathcal{L}_1 \dots \mathcal{L}_n \cdot Y) = \sum_{\{i_1, \dots, i_m\}} (-1)^m \chi(Y, \mathcal{L}_{i_1}^\vee|_Y \otimes \dots \otimes \mathcal{L}_{i_m}^\vee|_Y).
+\]
+Consider the short exact sequence:
+\[
+0 \to \mathcal{L}_n^\vee|_Y \to \mathcal{O}_Y \to \mathcal{O}_{Y \cap H_n} \to 0.
+\]
+Tensoring this sequence with $\big( \bigotimes_{j \neq n} \mathcal{L}_j^\vee \big) \big|_Y$ and utilizing the additive property of the Euler characteristic, we obtain:
+\begin{align*}
+(\mathcal{L}_1 \dots \mathcal{L}_n \cdot Y) &= \sum_{n \notin \{i_1, \dots, i_m\}} (-1)^m \left( \chi(\mathcal{L}_{i_1}^\vee|_Y \otimes \dots \otimes \mathcal{L}_{i_m}^\vee|_Y) - \chi(\mathcal{L}_{i_1}^\vee|_Y \otimes \dots \otimes \mathcal{L}_{i_m}^\vee|_Y \otimes \mathcal{L}_n^\vee|_Y) \right) \\
+&= \sum_{ n \notin \{i_1, \dots, i_m\}} (-1)^m \chi(\mathcal{L}_{i_1}^\vee|_Y \otimes \dots \otimes \mathcal{L}_{i_m}^\vee|_Y \otimes \mathcal{O}_{Y \cap H_n}) \\
+&= (\mathcal{L}_1 \dots \mathcal{L}_{n-1} \cdot Y \cap H_n).
+\end{align*}
+Applying this reduction repeatedly, we eventually conclude that:
+\[
+(\mathcal{L}_1 \dots \mathcal{L}_n \cdot Y) = (\mathcal{O} \cdot Y \cap H_1 \dots \cap H_n) = \deg(Y \cap H_1 \dots \cap H_n) = d_1 \dots d_n \deg Y.
+\]
+\end{proof}
+
+We can get one technical consequence from the above proof:
+
+\begin{proposition}[20.1.D]\label{20.1.D}
+Let $D$ be an effective Cartier divisor on $X$, and let $Y \hookrightarrow X$ be a closed subscheme such that $D|_Y = D \cap Y$. Then:
+\[
+(\mathcal{L}_1 \dots \mathcal{L}_{n-1} \cdot \mathcal{O}(D) \cdot Y) = (\mathcal{L}_1 \dots \mathcal{L}_{n-1} \cdot D|_Y).
+\]
+\end{proposition}
+
+\begin{definition}[Notation]
+If $\mathcal{L}_i = \mathcal{O}(D_i)$, we often denote the intersection number simply by using the divisors:
+\[
+(\mathcal{L}_1 \dots \mathcal{L}_n \cdot \mathcal{F}) = (D_1 \dots D_n \cdot \mathcal{F}).
+\]
+\end{definition}
+
+\begin{proposition}[20.1.3]
+Let $X$ be a projective $k$-variety and fix a coherent sheaf $\mathcal{F}$. Then the intersection number $(\mathcal{L}_1 \dots \mathcal{L}_n \cdot \mathcal{F})$ is a symmetric multilinear function of the line bundles $\mathcal{L}_1, \dots, \mathcal{L}_n$.
+\end{proposition}
+
+\begin{remark}
+The previous properties held without needing the assumption that $\dim(\text{Supp } \mathcal{F}) \leq n$. However, starting with this multilinearity property, that dimension condition becomes essential.
+\end{remark}
+
+\begin{remark}
+Recall that $\mathcal{L}_1 \otimes \mathcal{L}_2 = \mathcal{O}(D_1) \otimes \mathcal{O}(D_2) = \mathcal{O}(D_1 + D_2)$. Because of this, we can write the tensor product additively as $\mathcal{L}_1 + \mathcal{L}_2$. The ``addition'' referred to in the multilinearity of the intersection number corresponds to this tensor product of line bundles.
+\end{remark}
+
+\begin{proof}[\textbf{Proof of 20.1.3}]
+The symmetry of the intersection number is clear directly from the definition. Furthermore, by the base change property (20.1.B) \ref{20.1.B}, we may assume without loss of generality that the base field $k$ is infinite. 
+
+We will prove the multilinearity by induction on $n$. 
+Now we handle the base case for $n=1$ (\textbf{20.1.E}).
+
+
+We have following \textbf{observation}:
+Let $\mathcal{A}$ be a very ample line bundle on $X$. This gives a closed immersion $X \hookrightarrow \mathbb{P}$ into a projective space $\mathbb{P}$ such that the pullback of $\mathcal{O}(1)$ is exactly $\mathcal{A}$. 
+
+We can choose a hyperplane $H$ of $\mathbb{P}$ such that the dimension of $\text{Supp}(\mathcal{F}) \cap H$ drops by one, or $\dim(\text{Supp}(\mathcal{F}) \cap H) = 0$ (meaning it consists of a finite number of points).
+
+Consider the standard short exact sequence:
+\[
+0 \to \mathcal{A}^\vee \to \mathcal{O}_X \to \mathcal{O}_{X \cap H} \to 0.
+\]
+I \textbf{claim} that we can choose a hyperplane $H$ as above such that tensoring this sequence with $\mathcal{F}$ (i.e., applying the functor $- \otimes \mathcal{F}$) remains, in fact, exact.
+
+
+
+\textbf{Supplement to the previous claim:} We only need the hyperplane $H$ to avoid the associated primes $\text{Ass}(\mathcal{F})$ of $\mathcal{F}$. This is achievable because the set of associated primes is finite ($|\text{Ass}(\mathcal{F})| < \infty$).
+
+To verify the exactness, we only need to prove that the map $\Gamma(U, \mathcal{F} \otimes \mathcal{A}^\vee) \to \Gamma(U, \mathcal{F})$ is injective for every affine open subset $U \subset X$.
+
+Locally on an affine open $U = \text{Spec}(R)$, let $\mathcal{F}$ be associated to an $R$-module $M$ (so $\mathcal{F}|_U = \widetilde{M}$), and let $\mathcal{A}^\vee$ be represented by the ideal generated by a regular element $r \in R$ (so $\mathcal{A}^\vee|_U = \widetilde{rR}$). We need to show that the natural map
+\[
+M \otimes_R (rR) \longrightarrow M, \quad m \otimes rt \longmapsto rtm
+\]
+is injective.
+
+Suppose $\sum (m_i \otimes rt_i) \mapsto 0$. This means $r \cdot (\sum m_i t_i) = 0$. Note that we can rewrite the element in the tensor product as $\sum (m_i \otimes rt_i) = (\sum m_i t_i) \otimes r$. To prove that $\sum m_i t_i = 0$, it suffices to show that the multiplication map $M \xrightarrow{\cdot r} M$ is injective.
+
+Recall from commutative algebra that the set of zero divisors of a module $M$ is the union of its associated primes, $\bigcup_{\mathfrak{p} \in \text{Ass}(M)} \mathfrak{p}$. If multiplication by $r$ is not injective, then $r$ must be a zero divisor. Consequently, there exists an associated prime $\mathfrak{p} \in \text{Ass}(M)$ such that $r \in \mathfrak{p}$.
+
+Geometrically, this implies that the point $[\mathfrak{p}]$ lies in $V(r) \cap \text{Supp}(\widetilde{M})$, which corresponds to the intersection $H \cap \text{Supp}(\mathcal{F})$. However, this is a contradiction, since we explicitly chose the hyperplane $H$ to avoid the associated primes $\text{Ass}(\mathcal{F})$.
+
+
+
+Therefore, the multiplication is injective, which implies that the sequence
+\[
+0 \longrightarrow \mathcal{F} \otimes \mathcal{A}^\vee \longrightarrow \mathcal{F} \longrightarrow \mathcal{F} \otimes \mathcal{O}_{X \cap H} \longrightarrow 0
+\]
+is indeed exact. Taking the Euler characteristic yields:
+\[
+\chi(\mathcal{F}) - \chi(\mathcal{A}^\vee \otimes \mathcal{F}) = \chi(\mathcal{F}|_{X \cap H}).
+\]
+
+Because the support of $\mathcal{F}|_{X \cap H}$ has dimension 0, tensoring it with any line bundle does not change its Euler characteristic, nor does it alter its support. Hence, for any arbitrary line bundle $\mathcal{L}$, we have:
+\begin{align*}
+\chi(\mathcal{L}^\vee \otimes \mathcal{F}) - \chi(\mathcal{A}^\vee \otimes \mathcal{L}^\vee \otimes \mathcal{F}) &= \chi((\mathcal{L}^\vee \otimes \mathcal{F})|_{X \cap H}) \\
+&= \chi(\mathcal{F}|_{X \cap H}) \\
+&= \chi(\mathcal{F}) - \chi(\mathcal{A}^\vee \otimes \mathcal{F}).
+\end{align*}
+This implies that the proposition holds when one of the line bundles is very ample, i.e.:
+\[
+(\mathcal{L}_1\cdot\mathcal{F}) + (\mathcal{L}_2\cdot\mathcal{F}) = ((\mathcal{L}_1 \otimes \mathcal{L}_2) \cdot \mathcal{F}) \quad \text{holds when one of $\mathcal{L}_i$ is very ample.}
+\]
+
+For arbitrary line bundles $\mathcal{L}_1$ and $\mathcal{L}_2$, there exist very ample line bundles $\mathcal{A}_i$ and $\mathcal{B}_i$ such that $\mathcal{L}_i \cong \mathcal{A}_i \otimes \mathcal{B}_i^\vee$.
+
+Since $(\mathcal{O}_X \cdot \mathcal{F}) = 0$, we have $(\mathcal{B}_i \cdot \mathcal{F}) + (\mathcal{B}_i^\vee \cdot \mathcal{F}) = 0$, which implies $(\mathcal{B}_i^\vee \cdot \mathcal{F}) = -(\mathcal{B}_i \cdot \mathcal{F})$. 
+Therefore, we can write:
+\[
+(\mathcal{L}_i \cdot \mathcal{F}) = (\mathcal{A}_i \cdot \mathcal{F}) + (\mathcal{B}_i^\vee \cdot \mathcal{F}) = (\mathcal{A}_i \cdot \mathcal{F}) - (\mathcal{B}_i \cdot \mathcal{F}).
+\]
+By substituting these expressions and expanding, the multilinearity holds for the base case $n=1$.
+
+
+
+Now, assume the proposition is correct for integers strictly less than $n$. We wish to show it holds for a coherent sheaf $\mathcal{F} \in \text{Coh}(X)$ with $\dim(\text{Supp } \mathcal{F}) \leq n$. Specifically, we want to prove:
+\begin{equation}\label{multilinearity}
+    (\mathcal{L}_1 \mathcal{L}_2 \dots \mathcal{L}_n \cdot \mathcal{F}) + (\mathcal{L}_1' \mathcal{L}_2 \dots \mathcal{L}_n \cdot \mathcal{F}) = ((\mathcal{L}_1 \otimes \mathcal{L}_1') \mathcal{L}_2 \dots \mathcal{L}_n \cdot \mathcal{F})
+\end{equation}
+
+
+Note that we can expand the intersection number of $n+1$ line bundles by partitioning the sum based on the inclusion of the first two indices:
+\begin{align*}
+(\mathcal{L}_1 \mathcal{L}_1' \mathcal{L}_2 \dots \mathcal{L}_n \cdot \mathcal{F})
+ &= \sum_{\text{excluding } 1'} + \sum_{\text{excluding } 1} + \sum_{\text{including both } 1 \text{ and } 1'} - \sum_{\text{excluding both } 1 \text{ and }  1'} \\
+&= (\mathcal{L}_1 \mathcal{L}_2 \dots \mathcal{L}_n \cdot \mathcal{F}) + (\mathcal{L}_1' \mathcal{L}_2 \dots \mathcal{L}_n \cdot \mathcal{F}) - ((\mathcal{L}_1 \otimes \mathcal{L}_1') \mathcal{L}_2 \dots \mathcal{L}_n \cdot \mathcal{F}).
+\end{align*}
+This establishes the relation (\textbf{20.1.F}).
+
+\begin{remark}
+Because $\dim(\text{Supp } \mathcal{F}) \leq n < n+1$, the term on the left-hand side is well-defined.
+\end{remark}
+
+Next, suppose $\mathcal{L}_n = \mathcal{O}(D)$, where $D$ is an effective Cartier divisor such that $D \cap \text{Ass}(\mathcal{F}) = \emptyset$.
+
+From the analysis above, tensoring the short exact sequence
+\[
+0 \longrightarrow \mathcal{O}(-D) = \mathcal{L}_n^\vee \longrightarrow \mathcal{O}_X \longrightarrow \mathcal{O}_D \longrightarrow 0
+\]
+with $\mathcal{L}_{i_1}^\vee \otimes \dots \otimes \mathcal{L}_{i_m}^\vee \otimes \mathcal{F}$ preserves exactness. 
+By a similar conclusion as in Proposition \ref{20.1.D} (20.1.D), we obtain:
+\[
+(\mathcal{L}_1 \mathcal{L}_2 \dots \mathcal{L}_n \cdot \mathcal{F}) = (\mathcal{L}_1|_D \dots \mathcal{L}_{n-1}|_D \cdot \mathcal{F}|_D).
+\]
+Similar reductions apply for $(\mathcal{L}_1' \mathcal{L}_2 \dots \mathcal{L}_n \cdot \mathcal{F})$ and $((\mathcal{L}_1 \otimes \mathcal{L}_1') \mathcal{L}_2 \dots \mathcal{L}_n \cdot \mathcal{F})$. 
+Since the dimension of the support strictly decreases when restricting to $D$, we can then apply the induction hypothesis to these reduced terms:
+\begin{align*}
+    &(\mathcal{L}_1 \mathcal{L}_2 \dots \mathcal{L}_n \cdot \mathcal{F}) + (\mathcal{L}_1' \mathcal{L}_2 \dots \mathcal{L}_n \cdot \mathcal{F}) - ((\mathcal{L}_1 \otimes \mathcal{L}_1') \mathcal{L}_2 \dots \mathcal{L}_n \cdot \mathcal{F})\\
+    &= (\mathcal{L}_1 \mathcal{L}_1' \mathcal{L}_2 \dots \mathcal{L}_n \cdot \mathcal{F})\\
+    &= (\mathcal{L}_1 \mathcal{L}_1' \mathcal{L}_2 \dots \mathcal{L}_{n-1} \cdot \mathcal{F}|_D)\\
+    &= (\mathcal{L}_1 \mathcal{L}_2 \dots \mathcal{L}_{n-1} \cdot \mathcal{F}|_D) + (\mathcal{L}_1' \mathcal{L}_2 \dots \mathcal{L}_{n-1} \cdot \mathcal{F}|_D) - ((\mathcal{L}_1 \otimes \mathcal{L}_1') \mathcal{L}_2 \dots \mathcal{L}_{n-1} \cdot \mathcal{F}|_D)\\
+    &= 0 \quad \text{by the induction hypothesis.}
+\end{align*}
+We can successfully perform the induction step whenever some $\mathcal{L}_i$ with $i\neq 1$ is of the form $\mathcal{O}(D)$ with the property that $D \cap \text{Ass}(\mathcal{F}) = \emptyset$ (we've done \textbf{20.1.G}).
+
+We hope that if $\mathcal{L}_1=\mathcal{O}(D)$ with $D \cap \text{Ass}(\mathcal{F}) = \emptyset$, we can still apply the induction hypothesis and get the multilinearity.
+Using the identity established in our previous note, when $\mathcal{L}_1$ takes this form, we can evaluate the multilinearity expansion:
+\begin{align*}
+&(\mathcal{L}_1 \mathcal{L}_2 \dots \mathcal{L}_n \cdot \mathcal{F}) + (\mathcal{L}_1' \mathcal{L}_2 \dots \mathcal{L}_n \cdot \mathcal{F}) - ((\mathcal{L}_1 \otimes \mathcal{L}_1') \mathcal{L}_2 \dots \mathcal{L}_n \cdot \mathcal{F}) \\
+&= (\mathcal{L}_1 \mathcal{L}_1' \mathcal{L}_2 \dots \mathcal{L}_n \cdot \mathcal{F}) \\
+&= (\mathcal{L}_1' \mathcal{L}_2 \mathcal{L}_3 \dots \mathcal{L}_n \mathcal{L}_1 \cdot \mathcal{F}) \quad \text{(by symmetry)} \\
+&= (\mathcal{L}_1' \mathcal{L}_3 \dots \mathcal{L}_n \mathcal{L}_1 \cdot \mathcal{F}) + (\mathcal{L}_2 \mathcal{L}_3 \dots \mathcal{L}_n \mathcal{L}_1 \cdot \mathcal{F}) - ((\mathcal{L}_1' \otimes \mathcal{L}_2) \mathcal{L}_3 \dots \mathcal{L}_n \mathcal{L}_1 \cdot \mathcal{F}) \\
+&= 0.
+\end{align*}
+Hence by induction we can conclude that (\ref{multilinearity}) holds for the case where $\mathcal{L}_1$ is of the form $\mathcal{O}(D)$ with $D \cap \text{Ass}(\mathcal{F}) = \emptyset$.
+For general case,
+write $\mathcal{L}_1=\mathcal{A}_1 \otimes \mathcal{B}_1^\vee$ and $\mathcal{L}_1'=\mathcal{A}_1' \otimes \mathcal{B}_1'^\vee$ “as the difference
+of two very amples”. 
+Then the proof can be done by the method similar to the case $n=1$.
+\end{proof}
+
+\begin{corollary}[20.1.H]
+Let $X$ be a projective variety and let $\mathcal{F}$ be a coherent sheaf such that $\dim(\text{Supp } \mathcal{F}) \leq n < n+1$. For any line bundles $\mathcal{L}_1, \mathcal{L}_1', \mathcal{L}_2, \dots, \mathcal{L}_n$, we have:
+\[
+(\mathcal{L}_1 \mathcal{L}_1' \mathcal{L}_2 \dots \mathcal{L}_n \cdot \mathcal{F}) = 0.
+\]
+\end{corollary}
+
+\begin{proof}[\textbf{Proof}]
+This follows immediately from the relation established in (20.1.F) and the multilinearity from Proposition 20.1.3.
+\end{proof}
+
+\begin{proposition}[20.1.6]
+\textbf{Recall:} Two line bundles are numerically equivalent, denoted as $\mathcal{L}_1 \equiv_{\text{num}} \mathcal{L}_2$, if for every curve $C$, we have:
+\[
+\deg_C(\mathcal{L}_1|_C) = \deg_C(\mathcal{L}_2|_C).
+\]
+As derived earlier in Proposition 20.1.C, this is equivalent to saying $(\mathcal{L}_1 \cdot C) = (\mathcal{L}_2 \cdot C)$.
+
+The proposition states that the intersection number $(\mathcal{L}_1 \mathcal{L}_2 \dots \mathcal{L}_n \cdot \mathcal{F})$ only depends on the numerical classes of the line bundles $\mathcal{L}_i$.
+\end{proposition}
+
+\begin{remark}
+    We omit the proof here and you can check [FOAG] for details. The conclusion is so important and natural that it is not worth spending too much time on the technical details of the proof.
+\end{remark}
+
+\begin{theorem}[\textbf{Asymptotic Riemann-Roch}, 20.1.I]
+Let $X$ be a projective variety, and let $\mathcal{F} \in \text{Coh}(X)$ be a coherent sheaf such that $\dim(\text{Supp } \mathcal{F}) \leq n$. Let $\mathcal{L}$ be a line bundle on $X$. Then the function defined by
+\[
+q(m) := \chi(X, \mathcal{L}^{\otimes m} \otimes \mathcal{F})
+\]
+is a polynomial in $m$ of degree at most $n$, and the coefficient of the $m^n$ term is given by $\frac{1}{n!} (\mathcal{L}^n \cdot \mathcal{F})$.
+\end{theorem}
+
+\begin{proof}[\textbf{Proof}]
+By Corollary 20.1.H, since we are intersecting $n+1$ line bundles and the dimension of the support of $\mathcal{L}^{\otimes m} \otimes \mathcal{F}$ is at most $n$, the intersection number vanishes:
+\[
+(\underbrace{\mathcal{L} \mathcal{L} \dots \mathcal{L}}_{n+1} \cdot (\mathcal{L}^{\otimes m} \otimes \mathcal{F})) = 0.
+\]
+By the definition of the intersection number and the multilinearity, we obtain:
+\[
+\sum_{j=0}^{n+1} (-1)^{n+1-j} \binom{n+1}{j} \chi(X, \mathcal{L}^{\otimes (m+j)} \otimes \mathcal{F}) = \sum_{j=0}^{n+1} (-1)^{n+1-j} \binom{n+1}{j} q(m+j) = 0
+\]
+for all integers $m \in \mathbb{Z}$. In fact, this alternating sum represents the $(n+1)$-th finite difference of the function $q(m)$, commonly denoted as $\Delta^{n+1} q(m)$. 
+
+Since $\Delta^{n+1} q(m) = 0$ for all $m$, we conclude that $q(m)$ must be a polynomial in $m$ of degree at most $n$.
+
+Let us write this polynomial explicitly as $q(m) = \sum_{i=0}^n c_i m^i$. A standard property of the finite difference operator states that the $n$-th finite difference of a polynomial of degree $n$ is constant and is given by $\Delta^n q(m) = n! \cdot c_n$.
+
+Now, applying the definition of the intersection number again for $n$ copies of the line bundle $\mathcal{L}$, we find that:
+\[
+(\underbrace{\mathcal{L} \mathcal{L} \dots \mathcal{L}}_n \cdot (\mathcal{L}^{\otimes m} \otimes \mathcal{F})) = \Delta^n q(m).
+\]
+Evaluating it at $m=0$ gives $(\mathcal{L}^n \cdot \mathcal{F})$. Equating this with the $n$-th finite difference yields:
+\[
+(\mathcal{L}^n \cdot \mathcal{F}) = n! \cdot c_n.
+\]
+Therefore, the leading coefficient of the polynomial is precisely $c_n = \frac{1}{n!} (\mathcal{L}^n \cdot \mathcal{F})$, which completes the proof.
+\end{proof}
+
+\begin{corollary}
+    When $X$ is a projective curve, we have:
+    \[
+    \chi(X,\mathcal{F}\otimes\mathcal{L}^{\otimes m}) = (\mathcal{L}\cdot\mathcal{F}) \cdot m + \chi(X, \mathcal{F}) = \deg(\mathcal{L})\cdot\operatorname{rank}\mathcal{F} \cdot m + \chi(X, \mathcal{F}).
+    \]
+\end{corollary}
+
+\begin{theorem}[Projection Formula]
+Let $\pi: X_1 \longrightarrow X_2$ be a morphism between integral projective varieties of dimension $n$ (note that such a morphism is automatically projective). 
+Let $\mathcal{L}_1, \dots, \mathcal{L}_n$ be line bundles on $X_2$. 
+For any coherent sheaf $\mathcal{F}$ on $X_1$, the following intersection formula holds:
+\[
+(\pi^*\mathcal{L}_1 \dots \pi^*\mathcal{L}_n \cdot \mathcal{F}) = (\mathcal{L}_1 \dots \mathcal{L}_n \cdot \pi_*\mathcal{F}).
+\]
+\end{theorem}
+
+\begin{proof}[\textbf{Proof Sketch}]
+    \begin{align*}
+        (\pi^*\mathcal{L}_1 \dots \pi^*\mathcal{L}_n \cdot \mathcal{F}) &= \sum_{\{i_1,\ldots,i_m\}} (-1)^m \chi(X_1, \pi^*\mathcal{L}_{i_1}^\vee \otimes \dots \otimes \pi^*\mathcal{L}_{i_m}^\vee \otimes \mathcal{F})\\
+        &= \sum_{\{i_1,\ldots,i_m\}} (-1)^m \left(\sum_{j=0}^{\infty} \chi\left(X_2,R^j\pi_*(\pi^*\mathcal{L}_{i_1}^\vee \otimes \dots \otimes \pi^*\mathcal{L}_{i_m}^\vee \otimes \mathcal{F})\right)  \right)\\
+        &= \sum_{\{i_1,\ldots,i_m\}} (-1)^m \left(\sum_{j=0}^{\infty} \chi\left(X_2,\mathcal{L}_{i_1}^\vee \otimes \dots \otimes \mathcal{L}_{i_m}^\vee \otimes R^j\pi_*\mathcal{F}\right)  \right)\\
+        &= \sum_{j=0}^{\infty} (\mathcal{L}_1 \dots \mathcal{L}_n \cdot R^j\pi_*\mathcal{F})\\
+        &= (\mathcal{L}_1 \dots \mathcal{L}_n \cdot \pi_*\mathcal{F}).
+    \end{align*}
+    In the second equality we use one equation:
+    \[
+    \chi(X_1,\mathcal{F}) = \sum_{j=0}^{\infty} \chi(X_2, R^j\pi_*\mathcal{F})\quad \forall \mathcal{F} \in \text{Coh}(X_1),
+    \]
+    and the last equality follows from $\dim\mathrm{supp}(R^j\pi_*\mathcal{F})<\dim\mathrm{supp}(\mathcal{F})$ for all $j>0$.
+\end{proof}
+
+\begin{corollary}[20.1.J]
+    $\pi: X_1 \longrightarrow X_2$, $\mathcal{L}_1, \dots, \mathcal{L}_n$ as above.
+    Then we have:
+    \[
+(\pi^*\mathcal{L}_1 \dots \pi^*\mathcal{L}_n) = \deg(X_1/X_2) \cdot (\mathcal{L}_1 \dots \mathcal{L}_n).
+\]
+\end{corollary}
+
+\begin{proof}[\textbf{Proof Sketch}]
+From the general projection formula, we have:
+\[
+(\mathcal{L}_1 \mathcal{L}_2 \dots \mathcal{L}_n \cdot \pi_*\mathcal{O}_{X_1}) = (\pi^*\mathcal{L}_1 \dots \pi^*\mathcal{L}_n \cdot \mathcal{O}_{X_1}).
+\]
+Thus, we need to show that:
+\[
+(\mathcal{L}_1 \mathcal{L}_2 \dots \mathcal{L}_n \cdot \pi_*\mathcal{O}_{X_1}) = \deg(X_1/X_2) \cdot (\mathcal{L}_1 \dots \mathcal{L}_n \cdot \mathcal{O}_{X_2}).
+\]
+
+
+\textbf{Case 1: Suppose $\pi$ is not dominant.} \\
+The right-hand side is trivially $0$ because $\deg(X_1/X_2) = 0$. For the left-hand side, since $\pi$ is a projective morphism, its image is a closed subset, which means $\text{Supp}(\pi_*\mathcal{O}_{X_1}) = \overline{\pi(X_1)} = \pi(X_1)$. Because $\pi$ is not dominant, we have $\pi(X_1) \subsetneq X_2$, which implies that $\dim(\text{Supp}(\pi_*\mathcal{O}_{X_1})) < n$. Therefore, intersecting $n$ line bundles with it yields $0$, so the left-hand side is also $0$.
+
+
+\textbf{Case 2: Suppose $\pi$ is dominant.} \\
+Since both the left-hand side and the right-hand side are multilinear, it suffices to prove the case when the line bundles $\mathcal{L}_1, \dots, \mathcal{L}_n$ are all very ample.
+
+(i) We can choose an open subset $U' \subseteq X_2$ such that the restriction $\pi|_{\pi^{-1}(U')}$ is finite (cf. 10.3.G). Then, we can choose a smaller open subset $U \subseteq U'$ such that $\pi_*\mathcal{O}_{X_1}|_U$ is locally free of rank $\deg(X_1/X_2)$ (cf. 14.3.E). 
+(Alternatively, by Chapter 24, there exists a dense open subset $U \subseteq X_2$ such that $\pi|_{\pi^{-1}(U)}$ is finite and flat).
+
+(ii) From the choice of $U$, we clearly have $U \subseteq \text{Supp}(\pi_*\mathcal{O}_{X_1})$. Let $Z = X_2 \setminus U$. By 12.3.D, we can choose divisors $D_1 \sim \mathcal{L}_1, \dots, D_n \sim \mathcal{L}_n$ such that:
+\begin{itemize}
+    \item $\dim(D_1 \cap \dots \cap D_n) = 0$,
+    \item $(D_1 \cap \dots \cap D_n) \cap Z = \emptyset$,
+    \item The intersections avoid the associated primes $\text{Ass}(\pi_*\mathcal{O}_{X_1})$.
+\end{itemize}
+
+By the previous theorems, we can compute the intersection number by restricting to these divisors:
+\[
+(\mathcal{L}_1 \dots \mathcal{L}_n \cdot \pi_*\mathcal{O}_{X_1}) = \chi(\pi_*\mathcal{O}_{X_1}|_{D_1 \cap \dots \cap D_n}).
+\]
+
+Note that the intersection $D_1 \cap \dots \cap D_n$ consists of finitely many discrete points. Because $(D_1 \cap \dots \cap D_n) \cap Z = \emptyset$, all these points lie entirely in $U$. Over the open set $U$, $\pi_*\mathcal{O}_{X_1}$ is locally free of rank $\deg(X_1/X_2)$. Therefore, taking the Euler characteristic simply multiplies it by this rank:
+\begin{align*}
+\chi(\pi_*\mathcal{O}_{X_1}|_{D_1 \cap \dots \cap D_n}) &= \chi(\mathcal{O}_{X_2}|_{D_1 \cap \dots \cap D_n}) \cdot \text{rank}(\pi_*\mathcal{O}_{X_1}|_U) \\
+&= \chi(\mathcal{O}_{X_2}|_{D_1 \cap \dots \cap D_n}) \cdot \deg(X_1/X_2) \\
+&= (\mathcal{L}_1 \dots \mathcal{L}_n \cdot \mathcal{O}_{X_2}) \cdot \deg(X_1/X_2).
+\end{align*}
+This completes the proof.
+\end{proof}
+
+\begin{proposition}[20.1.K]
+Let $X$ be a projective variety, and let $Y$ be a subvariety of $X$ of dimension $n$. If $\mathcal{L}_1, \dots, \mathcal{L}_n$ are ample line bundles on $X$, then we have:
+\[
+(\mathcal{L}_1 \dots \mathcal{L}_n \cdot Y) > 0.
+\]
+\end{proposition}
+
+\begin{proof}[\textbf{Proof}]
+We proceed by induction on $n$. 
+
+For the base case $n=1$, $Y$ is a projective curve. We know that a line bundle on a curve is ample if and only if its degree is strictly positive. Therefore, the intersection number is simply the degree, which gives:
+\[
+(\mathcal{L}_1 \cdot Y) = \deg_Y(\mathcal{L}_1|_Y) > 0.
+\]
+
+Now, assume the proposition holds for dimension $n-1$. Since $\mathcal{L}_n$ is ample, there exists a sufficiently large integer $m > 0$ such that the tensor power $\mathcal{L}_n^{\otimes m}$ becomes very ample. 
+
+By the multilinearity of the intersection number, we can write:
+\[
+m(\mathcal{L}_1 \mathcal{L}_2 \dots \mathcal{L}_n \cdot Y) = (\mathcal{L}_1 \mathcal{L}_2 \dots \mathcal{L}_{n-1} \mathcal{L}_n^{\otimes m} \cdot Y).
+\]
+Because $\mathcal{L}_n^{\otimes m}$ is very ample, we can choose an effective Cartier divisor $D$ such that $\mathcal{L}_n^{\otimes m} \cong \mathcal{O}(D)$ and $D$ intersects $Y$ properly. Then the intersection number becomes:
+\[
+(\mathcal{L}_1 \mathcal{L}_2 \dots \mathcal{L}_{n-1} \mathcal{O}(D) \cdot Y) = (\mathcal{L}_1 \mathcal{L}_2 \dots \mathcal{L}_{n-1} \cdot D \cap Y).
+\]
+
+Notice that $D \cap Y$ is a closed subscheme of $Y$ of dimension $n-1$. The inclusion map $D \cap Y \hookrightarrow Y$ is a finite morphism (specifically, a closed immersion). Since the pullback via a finite morphism preserves the ampleness of line bundles, the restrictions of $\mathcal{L}_1, \dots, \mathcal{L}_{n-1}$ to $D \cap Y$ are still ample line bundles.
+
+By our induction hypothesis on the $(n-1)$-dimensional variety $D \cap Y$, we have:
+\[
+(\mathcal{L}_1 \mathcal{L}_2 \dots \mathcal{L}_{n-1} \cdot D \cap Y) > 0.
+\]
+Since $m > 0$, this immediately implies that $(\mathcal{L}_1 \dots \mathcal{L}_n \cdot Y) > 0$, which completes the proof.
+\end{proof}

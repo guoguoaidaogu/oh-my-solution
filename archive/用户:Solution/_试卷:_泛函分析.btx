@@ -1,0 +1,518 @@
+\setdisplaytitle{试卷：泛函分析}
+\sethtmltitle{试卷：泛函分析}
+\setcounter{section}{-1}
+\section{精选书单}
+\begin{references}
+    \bibitem[i]{i}
+        John B. Conway, $\textit{A Course in Functional Analysis}$, 
+        GTM 96, Springer, 1990.
+    \bibitem[ii]{ii}
+        Jan van Neerven, $\textit{Functional Analysis}$,  
+        Cambridge Studies in Advanced Mathematics 201, 
+        Cambridge University Press, 2022.
+    \bibitem[iii]{iii}
+        Barry Simon, $\textit{Operator Theory:
+        A Comprehensive Course in Analysis, Part 4}$, AMS, 2015.
+    \bibitem[iv]{iv}
+        林源渠，泛函分析学习指南，北京大学出版社，2019。
+    \bibitem[v]{v}
+        Volodymyr Brayman, et al., $\textit{Functional Analysis and Operator Theory}$, 
+        Problem Books in Mathematics, Springer, 2024.
+\end{references}
+
+\qquad 同本课程内容最匹配的稍有进阶的参考书是\cite{i}，重点推荐。
+经典教材推荐看
+\href{https://zhuanlan.zhihu.com/p/23978734?utm_medium=social&utm_oi=865280392050147328&from=timeline}
+{这里}。
+
+\qquad 此外，\cite{ii}涉及了很多的主题，\cite{iii}是算子理论的加深。
+
+\qquad 习题集推荐\cite{iv}和乌克兰的\cite{v}，以及链接里的Brezis的书。
+
+\section{2025秋\ 泛函分析(H)期末试卷(王凯)}
+\begin{itemize}
+    \item[1.] (10分) 设\(C_b(\mathbb{R})= \{ \mathbb{R} \text{ 上有界连续函数} \} \)，
+    在\(C_b(\mathbb{R})\)上定义范数\(\| x \| = \sup\limits_{t \in \mathbb{R}} | x(t) | \) 使\(C_b(\mathbb{R})\)成为Banach空间。
+    设\(A \subseteq C_b(\mathbb{R}) \)有界，等度连续，且满足
+    \[
+        \forall \varepsilon > 0,\ \exist N > 0,\ \text{s.t.}\ \forall x \in A,\ \forall |t| > N,\ |x(t)| < \varepsilon.
+    \]
+    求证\(A\)在\(C_b(\mathbb{R})\)中相对列紧。
+
+    \item[2.] (20分) (1)对序列\(\{x_n\} \subseteq C[0,1]\),求证\(\{x_n\}\)在\(C[0,1]\)中弱收敛到\(x_0\)等价于\(\{x_n\}\)有界且
+    \[
+        \forall t \in [0,1], \quad \lim_{n \to \infin} x_n(t) = x_0(t).
+    \]
+    (2)求证\(C[0,1]\)不是自反空间。(提示：考虑\(x_n(t) = t^n.\))
+
+    \item[3.] (20分) 在\(l^2\)上定义\(T(x_1,x_2,\dots)=(0,x_1,x_2,\dots)\).记
+    \[
+        \rho_e(T) = \{\lambda \in \mathbb{C} : \lambda I - T \text{ 是 Fredholm 算子}\}.
+    \]
+    直接写出开集\(\rho_e(T)\),并对每个\(\lambda \in \rho_e(T)\)计算\(\operatorname{ind}(\lambda I - T) \),说明理由。
+
+    \item[4.] (20分) 证明存在\(C_b(\mathbb{R})\)上的有界线性泛函\(F\),满足：\\
+    \quad (i) 对\(f \in C_b(\mathbb{R})\),若\(\lim\limits_{|x| \to \infin} f(x) \)存在，则\(F(f)=\lim\limits_{|x| \to \infin} f(x).\)\\
+    \quad (ii) 记\(f_y(x) = f(x+y)\), 则\(F(f)=F(f_y), \forall f \in C_b(\mathbb{R}), \forall y \in \mathbb{R}.\)
+
+    \item[5.] (20分) 在\(L^2[0,1]\)上定义正规有界线性算子\(M_x:f(x) \mapsto xf(x)\).\\
+    (1) 设投影算子\(P\)满足\(PM_x=M_xP\),求证\(P = M_{\chi_E}\)对某个可测集\(E \subseteq [0,1]\)成立。\\
+    (2) 计算\(M_x\)对应的谱测度，并说明理由。
+
+
+    \item[6.] (10分) 设\(H\)是实希尔伯特空间，已知\(H\)上的线性算子\(T\)满足:
+    \[
+        \langle Tx, x \rangle \geq 0 ,\quad \forall x \in H.
+    \]
+    求证\(T\)有界。
+
+\end{itemize}
+
+\section{2025秋\ 泛函分析期末试卷(吴健超,章嘉雯)}
+\begin{enumerate}
+\item (15分)
+(1) 叙述可分性的定义. (5分) \\
+(2) 判断下面空间是不是可分的,说明理由. (10分)\\
+① $\left(C[0,1],\Vert \cdot \Vert_{\infty}\right)$\\ 
+② $\left(L^{1}[0,1],\Vert \cdot \Vert_{1}\right)$\\
+③ $\left(L^{\infty}[0,1],\Vert \cdot \Vert_{\infty}\right)$
+
+\item (25分)
+(1) 叙述有界线性泛函的Hahn--Banach延拓定理. (5分)\\
+(2) ①  设$f,f_1,f_2,\cdots,f_n$是线性空间$L$上线性泛函.\\
+证明存在常数$a_1,a_2,\cdots,a_n$使得$f=\displaystyle \sum_{k=1}^{n}a_k f_k$当且仅当
+$\displaystyle\bigcap_{k=1}^{n}\ker f_k \subset \ker f$. (10分) \\
+② 设$f,\{f_n\}_{n=1}^{\infty}$是线性空间$L$上线性泛函.若
+\begin{equation*}
+    |f(x)|^{2025} \leq \sum_{n=1}^{\infty}|f_n(x)|^{2025} < \infty
+\end{equation*}
+证明存在常数$\{b_n\}_{n=1}^{\infty}$使得$f=\displaystyle \sum_{n=1}^{\infty} b_n f_n$. (10分)
+
+\item (20分) 设$p(x)$是Banach空间$X$上次线性泛函, 若$p$是下半连续的, 此时$X_k:=\{x \in X:p(x) \leq k \},k \in \mathbb{N}$是闭集.\\
+(1) 叙述Baire纲定理. \\
+(2) 证明存在$N>0$使得$X_N$包含内点. \\
+(3) 证明存在$r>0,M>0$使得当$ x \in B(0,r)$时, $p(x) \leq M$.\\ 
+(4) 证明存在常数$C>0$使得$p(x) \leq C \|x\|$, 从而$p(x)$是连续的.
+
+\item (20分) 设$X=C[0,1]$, 它按通常的上确界范数$\|\cdot\|_{\infty}$成为Banach空间, 又按范数$\|\cdot\|^{\prime}$成为Banach空间.
+若当$x_n$按范数$\|\cdot\|^{\prime}$收敛到$x$时, 有$|x_n(t)-x(t)| \to 0, \forall t \in [0,1]$.\\
+(1) 叙述闭图像定理.\\
+(2) 证明范数$\|\cdot\|_{\infty}$和$\|\cdot\|^{\prime}$等价.
+
+\item (20分) 令$L^{2}[0,1]$上有界线性算子$T$为
+\begin{equation*}
+    T:x(t) \mapsto tx(t).
+\end{equation*}
+(1) 求$T$的谱集$\sigma(T)$. (注:考试时不要求具体求出$\sigma_{p}(T),\sigma_{r}(T), \sigma_{c}(T)$) \\
+(2) 叙述紧算子的定义. 紧算子的谱有哪些性质？$T$是否是紧算子？说明理由.
+\end{enumerate}
+
+\section{2024秋\ 泛函分析(H)期末试卷(姚一隽，章嘉雯)}
+\textbf{每一题中的各小题}可能存在\textbf{逻辑关系，做后面的小题时可以直接应用前面小题的结论}。\\
+\begin{enumerate}
+    \item (16分)(1)(6分) 陈述闭图像定理或者共鸣定理。\\
+    (2)(10分) 用上一小题中陈述的定理证明：设$H$是一个Hilbert空间。对于线性算子$A:H\to H$，如果对于任意
+    $\varphi,\psi \in H$，都有
+    \[\langle\varphi, A\psi\rangle=\langle A\varphi,\psi\rangle,\]
+    那么$A$是一个有界线性算子。
+    
+    \item (24分)设$K$是$\mathbb{C}$中的紧子集。我们知道，$K$上复值连续函数空间$C(K)$(取最大模范数)的对偶空间是$K$上的正则Borel测度全体。
+
+    (1)(4分) 设$\mu$是$K$上的一个正则Borel测度，$w\notin K$。定义
+    \[\widehat{\mu}(w)=\int_K\frac{d\mu(z)}{z-w}.\]
+    证明：$\widehat{\mu}$是$\mathbb{C} \setminus K$上的解析函数，且在无穷远点有极限$0$(从而$\infty$是一个可去奇点)。\\
+    (2)(6分) 证明：$\widehat{\mu}$对于任意的$w$均有定义，且在以原点为中心，任意有限半径的圆盘上，都是Lebesgue可积的。\\
+    (3)(6分) 现在假设$\widehat{\mu}(w)\equiv0(w\notin K)$。证明：对于任意在$K$的一个开邻域上全纯的函数$f$，
+    都成立$\displaystyle \int_Kf(z)d\mu(z)=0$. (提示：利用Cauchy积分公式)\\
+    (4)(8分) 取定一个和$\mathbb{C} \setminus K$的每一个连通分支都有非空交集的集合$E$。
+    证明：对于任意在$K$的一个开邻域上全纯的函数$f$，都能找到一列有理函数$\{f_n\}$，
+    其极点都在$E$中，且在$K$上一致收敛到$f$。(提示：考察$\widehat{\mu}$的幂级数展开)\\
+    [上传者注：本结论称为Runge定理，具体见\cite{i} III.8节.]
+
+    \item (30分)考虑Hilbert空间$\mathcal{H}=l^2(\N)$。\\
+    (1)(6分) 叙述$\mathcal{H}$上有限秩算子和紧算子的定义。
+
+    对于$\xi \in \mathcal{H}$，定义其\textbf{支撑}为$\{n\in\N\bigm|\xi(n)\ne0\}$，记为$\operatorname{supp}(\xi)$。
+    设$T$是$\mathcal{H}$上的有界线性算子，满足条件($\star$)：对于任何的$\xi \in \mathcal{H}$，$\operatorname{supp}(T\xi)$是有限集。
+    
+    (2)(4分) 假设有$\mathcal{H}$中单位向量$\eta_1,\eta_2$，满足$\operatorname{supp}(T\eta_2)\setminus\operatorname{supp}(T\eta_1)\neq\varnothing$。
+    我们取$x_1\in\operatorname{supp}(T\eta_1)$，$x_2\in\operatorname{supp}(T\eta_2)\setminus\operatorname{supp}(T\eta_1)$，
+    并记$\alpha_1=1$。证明：存在$\alpha_2\in(0,\frac{1}{2})$使得：
+    \[\|T(\alpha_1\eta_1+\alpha_2\eta_2)(x_1)\|
+    >\frac{3}{4}\|T(\alpha_1\eta_1)(x_1)\|\]
+    且\[T(\alpha_1\eta_1+\alpha_2\eta_2)(x_2)\neq0.\]
+    (3)(4分) 进而取$x_3\in\operatorname{supp}(T\eta_3)\setminus(\operatorname{supp}(T\eta_1)\cup\operatorname{supp}(T\eta_2))$
+    (其中$\eta_3$是一个单位向量)。证明：存在$\alpha_3\in(0,\frac{1}{4})$使得：
+    \[\|T(\alpha_1\eta_1+\alpha_2\eta_2+\alpha_3\eta_3)(x_1)\|
+    >\Big(1-\frac{1}{4}-\frac{1}{8}\Big)\|T(\alpha_1\eta_1)(x_1)\|,\]
+    \[\|T(\alpha_1\eta_1+\alpha_2\eta_2+\alpha_3\eta_3)(x_2)\|
+    >\Big(1-\frac{1}{4}\Big)\|T(\alpha_2\eta_2)(x_2)\|,\]
+    且\[T(\alpha_1\eta_1+\alpha_2\eta_2+\alpha_3\eta_3)(x_3)\neq0.\]
+    (4)(8分) 进而假设存在一列$\mathcal{H}$中单位向量$\{\eta_n\}$满足对于任何自然数$n$，
+    $\operatorname{supp}(T\eta_n)\setminus\Big(\bigcup\limits_{k=1}^{n-1} \operatorname{supp}(T\eta_k)\Big)$非空，
+    我们取$x_n\in\operatorname{supp}(T\eta_n)\setminus\Big(\bigcup\limits_{k=1}^{n-1} \operatorname{supp}(T\eta_k)\Big)$。
+    请由此推出矛盾，从而证明：存在有限集$F\subseteq\N$使得对于任何的$\xi \in \mathcal{H}$，有$\operatorname{supp}(T\xi)\subseteq F$。\\
+    (5)(8分) 证明：$\mathcal{H}$上任一紧算子都可以写成一列满足(2)中条件($\star$)的有界线性算子在算子范数下的极限。
+
+    \item (50分) 对于$\alpha\in(0,1)$，记$\R$上满足
+    \[|f|_\alpha\triangleq\sup_{x \ne y\in\R}\frac{|f(x)-f(y)|}{|x-y|^\alpha}<+\infty\]
+    的$1$-周期复值连续函数全体为$C^\alpha$，定义范数$\|f\|_\alpha=\|f\|_\infty+|f|_\alpha$。我们承认上述赋范线性空间是完备的。\\
+    对于$f\in C^{\alpha}$，定义
+    \[(T_\alpha f)(x)=\frac{1}{2}\bigg(f\Big(\frac{x}{2}\Big)+f\Big(\frac{x+1}{2}\Big)\bigg).\]
+    (1)(8分) 证明，对于任意$\alpha\in[0,1)$，$T_\alpha$都是$C^\alpha$到自身的连续线性算子。并由此求出$T_\alpha$的范数。
+
+    对于$f\in C^\alpha$，$n\in\Z$，我们定义$f$的Fourier系数为
+    \[\widehat{f}(n)=\int_0^1 f(x)e^{-2\pi nxi} dx.\]
+    (2)(4分) 对于任意$\alpha\in[0,1)$，把$T_\alpha f$的Fourier系数用$f$的Fourier系数表达出来。并由此求$\ker T_\alpha$。
+
+    对于$x\in[0,1]$，我们考虑其二进制小数表示$\displaystyle x=\sum_{k=1}^\infty \frac{x_k}{2^k}$，规定对于有限小数，取有限小数表示。\\
+    (3)(8分) 对于$f\in C^\alpha$，证明$\{T_\alpha^n f\}$一致收敛到某个函数，求这个函数。并证明，$T_\alpha$的对应于特征值$1$的特征向量都是常数函数。\\
+    (4)(4分) 证明，$1$是$T_\alpha$唯一一个模长为$1$的特征值。\\
+    (5)(8分) 对于任意$\alpha\in(0,1)$，证明，$T_\alpha$保持
+    \[H_\alpha\triangleq\Big\{f\in C^\alpha\Big|\int_0^1 f(x) dx=0\Big\}\]
+    不变，且
+    \[\|(T_\alpha|_{H_\alpha})^n\|\leqslant2^{1-n\alpha}.\]
+    (提示：设$g\in H_\alpha$，则存在$x_0\in(0,1)$，使得$g(x_0)=0$.)\\
+    (6)(10分) 证明：对于$0<|\lambda|\leqslant2^{-\alpha}$，
+    $\displaystyle f_\lambda(x)=\sum_{k=0}^\infty \lambda^ke^{2\pi2^kxi}\in C^\alpha$，
+    且$T_\alpha f_\lambda=\lambda f_\lambda$。\\
+    (7)(8分) 求$\sigma(T_\alpha)$及其所有特征向量。
+\end{enumerate}
+
+\section{2024秋\ 泛函分析期末试卷(王凯)}
+
+\begin{enumerate}
+    \item[1.]给出赋范线性空间、Banach空间的定义，并给出一个Banach空间的例子(不需要证明).
+
+    \item[2.](1)给出可分的定义;\\
+    (2)证明$L^\infty[a,b]$不是可分空间.
+
+    \item[3.](1)给出疏朗集的定义，叙述Baire纲定理;\\
+    (2)证明$\mathbb{R}$的子集$\mathbb{Q}$不是可数开子集的交.
+
+    \item[4.](1)叙述Banach不动点定理;\\
+    (2)证明$2$维隐函数存在定理.
+
+    \item[5.]叙述闭图像定理、逆算子定理，证明这两个定理是相互等价的.
+
+    \item[6.](1) 叙述凸集分离定理;\\
+    (2) $M$是实赋范线性空间$X$的闭凸子集，对任意$x\notin M$，证明
+    \[d(x,M)=\sup_{f\in X^*,\|f\|=1}\left( f(x)-\sup_{z\in M}f(z) \right).\]
+
+    \item[7.](1)叙述Hahn--Banach定理;\\
+    (2)证明：在有界数列空间$l^\infty$上存在如下线性泛函$F$：对任意的$\{a_n\},\{b_n\}\in l^\infty$,\\
+    \quad (i) $F(\{a_n\})=F(\{a_{n+1}\})$;\\
+    \quad (ii) 若$a_n\geqslant 0$，则$F(\{a_n\})\geqslant 0$;\\
+    \quad (iii) 若$\{a_n\}$是实数列，则$\varliminf\limits_{n\to \infty}a_n\leqslant F(\{a_n\})\leqslant \varlimsup\limits_{n\to \infty} a_n$；\\
+    \quad (iv) 若$\lim\limits_{n\to \infty} a_n$存在，则$F(\{a_n\})=\lim\limits_{n\to \infty} a_n$.
+
+    \item[8.] $C[0,1]$上的算子$T$定义为
+    \[ (Tf)(x)=\int_{0}^x f(y)\mathrm{d}y.\]
+    \quad (1) 证明$T$是紧算子;\\
+    \quad (2) 求$\sigma(T)$，并给出$T$的一个非平凡不变子空间.
+
+    \item[9.] $f(z)$是复平面上的解析函数，集合
+    \[H=\left\{\|f\|= \left(\frac{1}{\pi}\int_{\mathbb{C}} |f(z)|^2 e^{-|z|^2} \mathrm{d}A(z)\right)^{\frac{1}{2}}<+\infty\right\},\]
+    这里$A(z)$是复平面上的Lebesgue测度.\\
+    \quad (1) 给出$H$上的内积，并证明这是Hilbert空间.\\
+    \quad (2) 证明：对任何$\lambda\in \mathbb{C}$，存在$K_\lambda\in H$，使得$f(\lambda)=\left< f,K_\lambda\right>$，并求出$K_\lambda$.\\
+    [上传者注：$H$称为Fock空间，答案是$K_\lambda(z)=e^{z\bar{\lambda}}$，
+    其研究见朱克和的专著\textit{Analysis on Fock Spaces}, GTM 263, 2012.]
+
+    \item[10.] $M$是$L^2[0,1]$的闭子空间，且$M\subseteq C[0,1]$，求证$M$是有限维的.
+\end{enumerate}
+
+\section{2024秋\ 泛函分析期末试卷(徐胜芝)}
+\begin{enumerate}[label=T\arabic*]
+\item (20) 
+(1)证明：$X$为拓扑空间，若$X$单点集的导集皆闭，则$X$每个子集的导集均闭。（杨忠道定理）\\
+(2)作$\bar{\mathbb{R}}$上拓扑使$\bar{\mathbb{R}}$和全体$[-\infty,b)(b\in\bar{\mathbb{R}})$为开集，求单点集的导集与闭包。
+
+\item (10) 证明有可数Hamel基$\{e_n\mid n\geqslant 1\}$的赋范空间$X$是第一纲的。
+
+\item (40) 叙述Hahn--Banach定理。证明$l^{\infty}$上有线性泛函$f$使得$\displaystyle \varliminf_{n \to \infty} \operatorname{re} x_n \leqslant \operatorname{re} f(x) \leqslant \varlimsup_{n \to \infty} \operatorname{re} x_n$。\\
+(1)证明所有上述$f$全体$T$为凸集$T$，且这是个弱$^*$-闭集。\\
+(2)考虑仅在$n$处有非零值$1$的$e_n\in l^\infty$和处处值$1$的$e\in l^\infty$，求$f(e_n),f(e)$和$\|f\|$。\\
+(3)证明有界实数列$a$总让$f(a)=a$，$x\in\mathsf{c}$总让$f(x)=\lim_{n\to\infty}x_n$。\\
+(4)证明$T: l^1\to (l^\infty)^*,y\mapsto y^*,  y^*(x)=\sum_{n\geqslant 1}y_nx_n$是等距映射，但它不满。
+
+\item (30) 叙述规范直交系成为直交基的三个条件。记$V_s=\{z\in\mathbb{C}\mid|z|<s\}$，
+证明$\{e_n(z)=z^n\sqrt{(n+1)/(\pi s^{2n+2})} \mid n \in \mathbb{N}\}$是$\mathsf{A}^2(V_s)$的规范直交基。
+\end{enumerate}
+
+\section{2023秋\ 泛函分析(H)期末试卷(王凯)}
+\begin{itemize}
+\item[1.] (10分) (1)叙述Baire纲定理。\\
+(2)用Baire纲定理证明：$[0,1]$是不可数集。
+
+
+\item[2.] (15分) (1)叙述Hahn--Banach定理。\\
+(2)在有界实数列构成的线性空间$l^\infty$中，证明存在线性泛函$F$，使得
+对于$\{a_n\} \in l^\infty$，\\
+① $F(\{a_n\}) = F(\{a_{n+1}\})$；\\
+② $\displaystyle \varliminf_{n \to \infty} a_n \leqslant F(\{a_n\}) \leqslant \varlimsup_{n \to \infty} a_n$。
+
+\item[3.] (15分) (1)叙述弱收敛的定义。\\
+(2)证明：$L^1[0,1]$中的函数列$f_n$弱收敛至$f$当且仅当
+$\displaystyle \sup_n \| f_n \| < \infty$
+并且对$[0,1]$中的任何Lebesgue可测集$E$，
+成立$\displaystyle \lim_{n \to \infty}\int_E f_n \,{\rm d}m = \int_E f \,{\rm d}m$。
+
+\item[4.] (15分) (1)叙述紧算子的定义。\\
+(2)设$T$是$l^2$上的线性算子。$e_n = (\cdots,0,1,0,\cdots)$是$l^2$的一组标准正交基，$T$满足
+\[Te_k = \sum_{j = 1}^\infty a_{jk}e_j.\]
+若$\displaystyle \sum_{j,k=1}^\infty |a_{jk}|^2 < \infty$，证明$T$是$l^2$上的紧算子。
+
+\item[5.] (15分) 设$T$是$L^2[0,1]$到$L^2[0,1]$的有界线性算子，并且将连续函数映成连续函数。
+证明：$T$是$C[0,1]$到$C[0,1]$的有界线性算子。
+
+\item[6.] (15分) 设Hilbert空间$H$上的算子$P,P_1,P_2,\cdots$
+分别是$H$到闭子空间$M,M_1,M_2,\cdots$的正交投影。
+请问何时有$\displaystyle \sum_{n = 1}^\infty P_n$强算子收敛至$P$？
+
+\item[7.] (15分) 设$K(x,y)$是$[0,1] \times [0,1]$上的连续函数。
+$\displaystyle (Tf)(x) = \int_0^1 K(x,y)f(y) \,\mathrm{d}y$
+是$L^2[0,1]$上的自伴迹类正算子。正实数$\lambda_1 \geqslant \lambda_2 \geqslant \cdots$
+以及$L^2[0,1]$的一组完备标准正交基$\{e_n\}$满足$Te_n = \lambda_ne_n$。\\
+(1)证明：对任意的$x\in [0,1]$，$K(x,x) \geqslant 0$。\\
+(2)证明：$e_n$是连续函数。\\
+(3)证明：对固定的$x \in [0,1]$，$\displaystyle \sum_{n=1}^\infty \lambda_ne_n(x)\overline{e_n(y)}$
+按$L^2$范数收敛到$K(x,y)$。\\
+(4)证明：$\displaystyle \operatorname{tr} T = \int_0^1 K(x,x) \,\mathrm{d}x$。
+\end{itemize}
+
+\section{2023秋\ 泛函分析期末试卷(姚一隽，章嘉雯)}
+\begin{itemize}
+\item[1.] (1) 设$1\leqslant p<\infty$，$f,g\in L^p[0,1]$，
+且存在$R>0$使得$\|f\|_p\leqslant R,\|g\|_p\leqslant R$。记$m$为其上的Lebesgue测度，证明
+\[\int_0^1\big||f|^p-|g|^p\big|\,{\rm d}m\leqslant2pR^{p-1}\|f-g\|_p.\]
+(2) 证明：算子$T\colon L^p[0,1]\to L^1[0,1],f\mapsto|f|$是连续的。
+
+\item[2.] (1) 设$B(\R)$是$\R$上的有界函数全体，
+证明$(B(\R),\|\cdot\|_\infty)$是Banach空间。\\
+(2) 证明：\[p(f)=\inf_{\begin{subarray}{c}n\in\mathbb{N}\\\alpha_1,\cdots,\alpha_n\in\R\end{subarray}}
+\bigg\{\sup_{s\in\R}\Big(\sum_{k=1}^n f(s-\alpha_k)\Big)\bigg\}\]
+为次线性函数。\\
+(3) 叙述实线性Hahn--Banach定理。\\
+(4) 构造$B(\R)$上的有界线性泛函$M$，使得\\
+\quad (a) $M(\operatorname{id})=1$，\\
+\quad (b) 对于$f\geqslant0$，$M(f)\geqslant0$，\\
+\quad (c) 对任意的$\alpha\in\R$，$M(f(x))=M(f(x+\alpha))$。
+
+\item[3.] (1) 叙述闭图像定理。\\
+(2) 设无穷维矩阵$A=(a_{ij})$满足
+\[\sum_{j=1}^\infty|a_{ij}|^2<\infty,\quad\forall\,i=1,2,\cdots,\]
+且对任意$(x_j)\in l^2$，$\displaystyle y_i=\sum_{j=1}^\infty a_{ij}x_j$存在且有限。考虑算子
+\[T\colon(x_j)\in l^2\mapsto(y_j)\in l^2,\]
+证明$T$是有界的。
+
+\item[4.] 考虑算子$T\colon l^1\to l^1$，
+\[T(x_1,x_2,x_3\cdots)=(0,x_1,\frac12 x_2,\frac13 x_3,\cdots).\]
+(1) $T$是否为紧算子？\\
+(2) 求$\sigma(T),\sigma_r(T),\sigma_c(T),\sigma_p(T)$。
+\end{itemize}
+
+\section{2022秋\ 泛函分析(H)期末试卷(姚一隽)}
+注: 2022年因疫情原因,期末考试形式为take home.
+\subsection*{$\mathfrak{B}(E,F)$的子集}
+\qquad 设$E$和$F$是两个Banach空间，$\mathfrak{B}(E,F)$是全体从$E$到$F$的连续线性算子。
+\begin{enumerate}
+    \item 设$E_1$是$E$的一个有限维子空间。证明，存在一个$E$的闭子空间$E_2$
+    使得$E=E_1 \oplus E_2$。（我们可以关于$E_1$的维数作归纳）
+    \item 设$T\in\mathfrak{B}(E,F)$是一个满射。\\
+    (a) 证明，存在$k\geqslant0$，使得$\{y\in F,\|y\|\leqslant1\}
+    \subset\{Tx,x\in E,\|x\|\leqslant k\}$。\\
+    以下固定满足(a)的$k$。\\
+    (b) 证明，对于任意$\ell\in F^*$，我们有$k\|\ell \circ T\|\geqslant\|\ell\|$。\\
+    设$S\in\mathfrak{B}(E,F)$，满足$k\|S-T\|<1$。
+    我们记$r=k\|S-T\|$。设$y\in F$。\\
+    (c) 证明，存在$x\in E$，使得$\|x\|\leqslant k\|y\|$
+    且$\|Sx-y\|\leqslant r\|y\|$。\\
+    (d) 证明，存在$E$中的一列元素$(x_n)$和$F$中的一列元素$(y_n)$，
+    满足$y_0=y$，且对于任意自然数$n$，都有$\|x_n\|\leqslant k\|y_n\|,
+    \|y_{n+1}\|\leqslant r\|y_n\|$，且$y_{n+1}=y_n-Sx_n$。\\
+    (e) 由此证明，$S$是满射。（我们记
+    $\displaystyle z_n=\sum_{k=0}^nx_k$，证明序列$z_n$收敛，并计算）
+    \item 证明，$\mathfrak{B}(E,F)$中的满射全体构成一个开集。
+    \item 对于$n\in\mathbb{N}$，记
+    \[\Omega_n=\{T\in\mathfrak{B}(E,F)\text{ 是满射},\dim\ker T\geqslant n\}.\]
+    (a) 设$T\in\Omega_n$，$E_1$是$\ker T$的一个$n$维子空间。
+    设$E_2$是$E$的闭子空间，且$E=E_1 \oplus E_2$。证明，
+    \[\{S\in\mathfrak{B}(E,F),S\text{ 在 }E_2\text{ 上的限制是一个满射}\}\]
+    是$\mathfrak{B}(E,F)$中的开集。\\
+    (b) 证明，$\Omega_n$是$\mathfrak{B}(E,F)$中的开集。
+\end{enumerate}
+\subsection*{Hilbert空间上的弱拓扑}
+\qquad 我们考虑一个（复）Hilbert空间$H$上的弱拓扑。
+\begin{itemize}
+    \item[(1)] 证明，数乘$\mathbb{C} \times H \to H,
+    (\lambda,x)\mapsto\lambda x$是连续的。
+    \item[(2)] 对于$T\in\mathfrak{B}(H,H)$，证明，
+    \[\{(\lambda,x)\in\mathbb{C} \times H,Tx=\lambda x\}\]
+    是闭集。
+    \item[(3)] 设$\Delta=\{|z|\leqslant\|T\|\}$，$B$为$H$中的闭单位球。
+    证明，$G=\{(\lambda,x)\in\Delta \times B,Tx=\lambda x\}$是紧的。
+    \item[(4)] 证明，$T$在$B$中的所有特征向量全体构成的集合$P$是闭的。
+    \item[(5)] 对于$x\in P\setminus\{0\}$，以$v(x)$记相应的特征值。
+    证明，$v$是从$P\setminus\{0\}$到$\mathbb{C}$的一个连续映射。
+    \item[(6)] 我们假设$H$可分。证明，$P\setminus\{0\}$是一列闭集的并集。
+    \item[(7)] 证明，当$H$可分时，$T$的特征值全体$\sigma_p(T)$
+    是$\mathbb{C}$的一列闭子集的并集。证明，$\sigma_p(T)$可以是
+    $\mathbb{C}$的任意有界可数子集。它可能有非空的内点集么？
+    \item[(8)] 设$I$是$[0,1]$中的无理数全体。构造一个Hilbert空间$H$
+    及$H$上的一个有界共轭算子$T$，使得$\sigma_p(T)=I$。
+    证明，$I$不能表达为$\mathbb{C}$的一列闭子集的并集。
+\end{itemize}
+\subsection*{正算子与可逆性}
+\qquad 设$H$是一个复Hilbert空间。
+\begin{enumerate}
+    \item (a) 设$0\leqslant A\leqslant1-\varepsilon$，证明，
+    $\big\|\sqrt{A+\varepsilon}-\sqrt{A}\big\|\leqslant\sqrt{\varepsilon}$。\\
+    (b) 设$\varepsilon\leqslant A\leqslant1,
+    \varepsilon\leqslant B\leqslant1$，证明，
+    $\big\|\sqrt{A}-\sqrt{B}\big\|\leqslant(2\sqrt{\varepsilon})^{-1}\|A-B\|$。\\
+    (c) 设$0\leqslant B\leqslant1-\varepsilon,
+    0\leqslant A\leqslant1-\varepsilon$，证明，
+    $\big\|\sqrt{A}-\sqrt{B}\big\|\leqslant
+    2\varepsilon^{1/2}+(2\varepsilon^{1/2})^{-1}\|A-B\|$。\\
+    (d) 设$\|A\|\leqslant1/2,\|B\|\leqslant1/2$，证明，
+    $\big\|\sqrt{A}-\sqrt{B}\big\|\leqslant2\sqrt{\|A-B\|}$。\\
+    (e) 总结得到的结论。\\
+    [上传者注：本题为\cite{iii} Chapter 2 Problem 14.]
+    \item 设$B$是一个范数为$1$的正算子。\\
+    (a) 证明，$\sigma(B)\subset[0,1]$，并举例说明，$\sigma(B)$可以取到整个$[0,1]$。\\
+    (b) 证明，$B$可逆当且仅当存在$\varepsilon>0$，
+    使得$\sigma(B)\subset[\varepsilon,1]$。此时我们有$\|1-B\|<1$。\\
+    (c) 设$B$可逆，证明，对于任意的$T\in\mathfrak{B}(H,H)$，
+    存在$S\in\mathfrak{B}(H,H)$，使得$T=\dfrac{1}{2}(BS+SB)$。
+    \item (a) 设$T$是一个自共轭算子，证明，对于任意$S\in\mathfrak{B}(H,H)$，
+    $S^*TS$是一个自共轭算子，且$S^*TS\leqslant\|T\|S^*S$。\\
+    (b) 设三个正算子$W,S,T$满足$SWS=TWT$。
+    证明，$\sqrt{W}S\sqrt{W}=\sqrt{W}T\sqrt{W}$。若还假设$W$是单射，则$S=T$。\\
+    (c) 设$W,T$是正算子，$K=TWT$。
+    证明，$\sqrt{\sqrt{W}K\sqrt{W}}\leqslant\|T\|W$。\\
+    (d) 设$R,S\in\mathfrak{B}(H,H)$满足$R^*R \leqslant S^*S$，
+    证明存在$V\in\mathfrak{B}(H,H)$，$R=VS$。\\
+    (e) 设正算子$W,K$与实数$a\geqslant0$满足$\sqrt{\sqrt{W}K\sqrt{W}}\leqslant aW$。
+    证明，存在$S\in\mathfrak{B}(H,H)$使得$\sqrt[4]{\sqrt{W}K\sqrt{W}}=S\sqrt{W}$。\\
+    记$T=S^*S$。证明，若$W$是单射，则$TWT=K$。\\
+    (f) 设$W,K$是正算子，且$W$可逆。证明，存在唯一的正算子$T$，使得$TWT=K$。
+\end{enumerate}
+\subsection*{保测映射与算子}
+\qquad 我们考虑$[0,1]$上的Lebesgue测度。设$f:[0,1]\to[0,1]$是一个双射，
+$f$与$f^{-1}$都保持Lebesgue可测集的测度不变。
+所有这样的映射按照复合运算构成一个群$G$。既然我们讨论的是可测映射，
+那么两个只在零测集上不同的映射自然认为是同一个。
+\begin{enumerate}
+    \item 对于$f,g\in G$，定义
+    \[d(f,g)=m(\{x,f(x) \ne g(x)\}).\]
+    证明，$G$上的乘法和取逆元关于$d$定义的拓扑都是连续的，
+    且相应的度量空间是完备的，但不是可分的。
+    \item 证明，$f$可以对应到$H=L^2([0,1])$上的一个酉算子$T_f$。
+    \item (1) 证明，$\delta(f,g)=\sup\limits_{X\subset[0,1]\text{ Lebesgue }可测}
+    m(f(X) \setminus g(X))+m(g(X) \setminus f(X))$也定义了$G$上的一个度量。\\
+    (2) 证明，$\delta(f,g) \leqslant d(f,g)$。
+    \item 我们在$G$上还可以考虑由集族
+    \[N(f;X,\varepsilon)=\{g,m(f(X) \setminus g(X))+m(g(X) \setminus f(X))<\varepsilon\}\]
+    生成的拓扑。证明，这和$\{T_f,f\in G\}$上的强算子拓扑是一致的。
+    \item 给定正整数$m$，我们考虑集合$\{1,2,\dots,2^m\}$的一个置换$\pi$，然后定义
+    \begin{align*}
+        f_\pi:[0,1]&\to[0,1],\\
+        \frac{i-1}{2^m}+x&\mapsto\frac{\pi(i)-1}{2^m}+x,
+    \end{align*}
+    这里$x\in\bigg(0,\dfrac{1}{2^m}\bigg]$。
+    证明，所有这样的映射全体（$m$取遍所有的正整数，$\pi$取遍所有的置换）
+    按第4题描述的拓扑是稠密的，从而$G$按照这个拓扑是可分的。
+\end{enumerate}
+
+\section{2021秋\ 泛函分析(H)期末试卷(王凯)}
+
+\begin{itemize}
+\item[1.] 对于$[0,1]$上的Lebesgue可测函数$\varphi$，
+定义算子$M_\varphi\colon L^2[0,1]\rightarrow L^2[0,1]$为
+$$M_\varphi f=\varphi f.$$
+
+\quad (1) 对什么样的$\varphi$，$M_\varphi$是有界算子？\\
+\quad (2) 对什么样的$\varphi$，$M_\varphi$是Fredholm算子？
+
+\item[2.] 称Hilbert空间$H$上的有界线性算子$T$为迹类算子，
+若存在$M>0$使得对于$H$的任何两组规范正交基$\{e_i\}, \{f_i\}$有
+$$\sum_i |\langle Te_i,f_i\rangle|\leqslant M.$$
+求证：(1) 迹类算子按算子范数构成Banach空间.\\
+\qquad\ \ (2) 迹类算子是紧算子.
+
+\item[3.] 证明或否定：$L^2[0,2\pi]$的序列
+$\dfrac{1}{n}\sum\limits_{k=1}^{n^2}e^{{\rm i}kx}$
+当$n\rightarrow\infty$时弱收敛于$0$.
+
+\item[4.] 证明或否定：...（忘了）.
+
+\item[5.] 设$C[0,1]$的闭线性子空间$M$包含于$[0,1]$上连续可微的函数的空间$C^1[0,1]$. 
+证明$M$是有限维的.\\
+[上传者注：本题解答见\cite{iv}第二章\S3例21.]
+
+\item[6.] 设$X, Y$是赋范线性空间，$T$是$X$到$Y$的线性算子，满足：
+若$X$的序列$x_n$弱收敛于$x$，则$Tx_n$弱收敛于$Tx$. 求证$T$是有界算子.
+\end{itemize}
+
+\section{2021秋\ 泛函分析期末试卷(黄昭波)}
+\begin{itemize}
+\item[一](30 分) $X$ 是由 $\left\{(x_1, x_2, \ldots) \biggm| \sum\limits_{n=1}^{\infty} x_n^2<\infty ; x_1, x_2, \ldots \in \mathbb{R}\right\}$ 组成的实 Hilbert 空间. 
+$e_n=(0,0, \ldots, 1,0, \ldots)$ 是第 $n$ 个位置取值为 $1$, 其余位置取值为 $0$ 的向量.\\
+(1) 证明 $\left\{e_n: n \in \mathbb{Z}_{+}\right\}$是 $X$ 的规范正交基;\\
+(2) $T$ 是 $X$ 上的单侧移位算子, 即 $T e_n=e_{n+1}, n=1,2, \ldots$, 求 $T^*$;\\
+(3) 求 $T^*$ 的正则集和谱.
+
+\item[二](20 分) $T$ 是 $C[a, b]$ 到 $C[a, b]$ 的积分算子:
+$$
+(T \varphi)(s)=\int_a^b K(s, t) \varphi(t) \,\mathrm{d} t, \quad \varphi \in C[a, b]
+$$
+其中 $K(s, t)$ 是 $[a, b] \times[a, b]$ 上二元连续函数. 求 $\|T\|$.
+
+\item[三](30 分) $C_{2 \pi}$ 是直线上周期为 $2 \pi$ 的连续函数全体组成的 Banach 空间, 
+对于任意的 $x \in C_{2 \pi}$, 有 Fourier 展开:
+$$
+\begin{gathered}
+x(t) \sim \frac{a_0}{2}+\sum_{n=1}^{\infty}\left(a_n \cos n t+b_n \sin n t\right) \\
+a_n=\frac{1}{\pi} \int_0^{2 \pi} x(t) \cos n t \mathrm{~d} t, \quad b_n=\frac{1}{\pi} \int_0^{2 \pi} x(t) \sin n t \mathrm{~d} t \quad(n=0,1,2, \ldots)
+\end{gathered}
+$$
+令 $\displaystyle S_n(x)(t)=\frac{a_0}{2}+\sum_{k=1}^n\left(a_k \cos k t+b_k \sin k t\right)$, 证明:\\
+(1) $\displaystyle S_n(x)(s)=\frac{1}{2 \pi} \int_0^{2 \pi} x(t) \frac{\sin (2 n+1) \frac{t-s}{2}}{\sin \frac{t-s}{2}} \,\mathrm{d} t$;\\
+(2) $S_n$ 是从 $C_{2 \pi}$ 到 $C_{2 \pi}$ 的有界线性算子, 
+且 $\displaystyle \left\|S_n\right\|=\frac{1}{\pi} \int_0^\pi\left|\frac{\sin (2 n+1) t}{\sin t}\right| \mathrm{d} t$;\\
+(3) $\lim\limits_{n \rightarrow \infty}\left\|S_n\right\|=+\infty$;\\
+(4) 存在连续周期函数, 其 Fourier 级数不是一致收敛的.
+
+\item[四](20 分) 设 $T$ 是 Banach 空间 $X$ 上的紧算子, $\lambda$ 是非零复数. 证明:\\
+(1) $\mathfrak{R}(\lambda I-T)$ 是 $X$ 的闭子空间;\\
+(2) $\dim X^* / \mathfrak{R}(\lambda I-T^*)=\dim \ker(\lambda I-T)$;\\
+(3) $\dim X / \mathfrak{R}(\lambda I-T)=\dim \ker(\lambda I-T^*)$.
+\end{itemize}
+
+\section{202?秋\ 泛函分析期末试卷(徐胜芝)}
+\begin{enumerate}[label=T\arabic*]
+\item (30) 命 $\mathrm{S}_0=\{-1,1\}$, $X$ 为无限集, 
+$A$ 为 $X$ 的可列子集. 证 $A$ 与 $\mathbb{S}_0 \times A$ 对等.\\
+(1) 命 $E$ 为双射 $f\colon V(\subseteq X) \rightarrow \mathbb{S}_0 \times V$ 的集合, 证 $E$ 依扩张关系是个非空偏序集.\\
+(2) $F$ 为 $E$ 的一个全序子集, 叙述 Zorn 引理, 并证明 $E$ 有个极大元 $f_0\colon V_0 \rightarrow \mathbb{S}_0 \times V_0$.\\
+(3) 证明 $X \backslash V_0$ 是个有限集, 并证明 $X$ 与 $\mathbb{S}_0 \times X$ 对等.
+
+\item (30) 设 $(M, \mu)$ 是个有限测度空间, 命 $\displaystyle \delta(f)=\int_M \frac{|f|}{1+|f|} \mathrm{d} \mu, f \in(M, \mu)$.\\
+(1)若 $g \leq f$, 证明 $0 \leq \delta(g) \leq \delta(f)$.\\
+(2)证明 $\delta(f_1+f_2) \leq \delta(f_1)+\delta(f_2)$, 且 $\delta(f)=0$ 当且仅当 $f$ 殆为 $0$.\\
+(3) $\delta$ 刻画了依测度收敛性: $\lim_{i \uparrow \beta} \delta(f_i-f)=0$ 当且仅当 $(f_i)_{i \uparrow \beta}$ 依测度逼近 $f$.
+
+\item (10) 设 $(X, \mu)$ 是个测度空间, $f_n$ 和 $f$ 是其上平方可积函数, 
+证明 $\lim _{n \rightarrow+\infty}\|f_n-f\|_2=0$ 
+当且仅当 $\lim _{n \rightarrow+\infty}\|f_n\|_2=\|f\|_2$ 
+且 $(f_n)_{n \geq 1}$ 依测度逼近 $f$.
+
+\item (30) 将 $\mathbb{I}=[0,1]$ 五等分, 移去其中第二与第四个开区间, 剩下三个闭区间, 
+每个五等分后移去第二与第四个开区间，递归做下去剩个集合 $E$。则 $E$ 是紧集并求其 Lebesgue 测度.\\
+(1) $E$ 中元素有唯一五进制表示 $(0 . a_1 a_2 \ldots a_n \ldots)_5$, 诸 $a_i$ 取值于 $\{0,2,4\}$.\\
+(2) $E$ 上函数 $g\colon(0 . a_1 a_2 \ldots a_n \ldots)_5 \mapsto\left(0 . \dfrac{a_1}{2} \dfrac{a_2}{2} \ldots \dfrac{a_n}{2} \ldots\right)_3$ 连续递增.\\
+(3) 将 $g$ 递增扩张至 $\mathbb{I}$ 上得 $h$. 
+求 $\displaystyle \int_{\mathbb{I}} h(x) \,\mathrm{d} x$ 
+和 $\displaystyle \int_{\mathbb{I}} x \,\mathrm{d} h(x)$.
+\end{enumerate}

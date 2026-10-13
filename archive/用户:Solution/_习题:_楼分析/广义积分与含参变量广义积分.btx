@@ -1,0 +1,994 @@
+\setdisplaytitle{第10章\ 广义积分与含参变量积分}
+\sethtmltitle{第10章\ 广义积分与含参变量积分}
+\theoremstyle{remark}\newtheorem{a}{A}
+\theoremstyle{remark}\newtheorem{b}{B}
+\pdef\(#+1\){\@setfalse{math-display}\@@enter{math}\displaystyle{#1}\@@exit{math}}
+\newcommand{\ee}{{\rm e}}
+\newcommand{\ii}{{\rm i}}
+\newcommand{\dd}{{\rm d}}
+
+\section{基于Riemann积分的反常积分}
+\subsection{瑕积分,无穷积分,反常重积分,非负函数反常积分的收敛性, Cauchy准则,绝对收敛与条件收敛, Abel判别法, Dirichlet判别法,概率积分, Cauchy主值积分,数项级数收敛的Cauchy积分判别法}
+\begin{a}
+\begin{enumerate}
+\item 设\(f\)在\((0,1]\)上非负单调, 证明: \(\lim_{n\rightarrow+\infty}\frac{1}{n}\sum_{k=1}^{n}f\left(\frac{k}{n}\right)=\int_{0}^{1}f(x)\,\dd x\), 这里右端的积分可能是\(+\infty\).
+\begin{proof}
+不妨设\(f\)单调递减, 则有\[\int_{k/n}^{(k+1)/n}f(x)\,\dd x
+\leqslant \frac{1}{n}f\left(\frac{k}{n}\right)
+\leqslant\int_{(k-1)/n}^{k/n}f(x)\,\dd x,\quad k=1,2,\cdots,n-1,\]
+于是有\[\int_{1/n}^{1}f(x)\,\dd x
+\leqslant\frac{1}{n}\sum_{k=1}^{n-1}f\left(\frac{k}{n}\right)
+\leqslant\int_{0}^{1-1/n}f(x)\,\dd x,\]
+令\(n\rightarrow+\infty\)即得结论.
+\end{proof}
+\item 讨论以下积分的敛散性\footnote{注: 在讨论含参数的问题时, 一开始不妨对参数的分类分得细一点, 最后再作适当的合并.}:\\
+\begin{center}\begin{tabular}{ll}
+\((1)\,\int_{0}^{+\infty}\frac{\ln x}{x^a(x-1)^{2b}}\,\dd x\);&\((2)\,\int_{0}^{+\infty}\sin(x^p+\frac{1}{x^q})\,\dd x,\quad p,q>0\);\\
+\((3)\,\int_{0}^{+\infty}\frac{\sin \pi x}{x^\alpha|x-1|^\beta}\,\dd x\);&\((4)\,\int_{0}^{+\infty}\frac{\dd x}{x^p\sqrt[3]{\sin^2x}}\);\\
+\((5)\,\int_{0}^{+\infty}\left(\ln x\right)\sin (x^p)\,\dd x\).&
+\end{tabular}\end{center}
+\begin{proof}[解答]
+(1)当\(a>0\)时, \(x=0\)是瑕点, \(b>0\)时, \(x=1\)可能是瑕点. 
+为此不妨设\(0<\delta<1\), 有\[\int_{0}^{+\infty}\frac{\ln x}{x^a(x-1)^{2b}}\dd x
+=\int_{0}^{\delta}\frac{\ln x}{x^a(x-1)^{2b}}\dd x+\int_{\delta}^{1}\frac{\ln x}{x^a(x-1)^{2b}}+\int_{1}^{+\infty}\frac{\ln x}{x^a(x-1)^{2b}}=:I_1+I_2+I_3,\]
+先考察\(I_1\)的敛散性, 易见\(I_1\)的敛散性与\(\int_{0}^{\delta}\frac{\ln x}{x^a}\dd x\)相同, 由于
+\[\int_{0}^{\delta}\frac{\ln x}{x^a}\dd x=-\int_{1/\delta}^{+\infty}\frac{\ln t}{t^{2-a}}\dd t,\]
+易见后者在\(a<1\)时收敛. 从而\(a<1\)时\(I_1\)收敛.
+
+对于\(I_2\), 其敛散性与\(\int_{\delta}^{1}\frac{\ln x}{(x-1)^{2b}}\)同, 
+注意到当\(b\leqslant\frac{1}{2}\)时有
+\[\frac{\ln x}{(x-1)^{2b}}\rightarrow 0\left(b<\frac{1}{2}\right),1\left(b=\frac{1}{2}\right),\quad x\rightarrow 1,\]
+此时\(x=1\)不是瑕点, 故\(I_2\)收敛. 否则\(b>\frac{1}{2}\)时, \(\frac{\ln x}{(x-1)^{2b}}\sim\frac{1}{(x-1)^{2b-1}}(x\rightarrow 1)\), 于是\(b<1\)时\(I_2\)收敛.
+
+对于\(I_3\), 有\(\frac{\ln x}{x^a(x-1)^{2b}}\sim\frac{\ln x}{x^{a+2b}}(x\rightarrow+\infty)\), 从而\(a+2b>1\)时\(I_3\)收敛.
+
+综上, 当\(a<1,b<1\)且\(a+2b>1\)时原积分收敛.
+
+(2)易见在 $0$ 点附近被积函数有界，因此该积分没有瑕点，它仅仅是一个无穷积分。
+我们只要考虑积分 \(\int_{1}^{+\infty} \sin \left(x^{p}+\frac{1}{x^{q}}\right) d x\) 的收敛性。注意
+\[\left(x^{p}+\frac{1}{x^{q}}\right) \sin \left(x^{p}+\frac{1}{x^{q}}\right)
+=\frac{1}{p x^{p-1}-q x^{-q-1}}\left(x^{p}+\frac{1}{x^{q}}\right)^{\prime} \sin \left(x^{p}+\frac{1}{x^{q}}\right).\]
+当 $p>1$ 时，积分 \(\int_{1}^{+\infty}\left(x^{p}+\frac{1}{x^{q}}\right)^{\prime} \sin \left(x^{p}+\frac{1}{x^{q}}\right) d x\) 的部分积分有界，
+而当 $x$ 足够大时，不难验证 \(\frac{1}{p x^{p-1}-q x^{-q-1}}\) 单调下降趋于零，因此，积分收敛。
+
+当 $p \leqslant 1$ 时，易见\(\frac{1}{p x^{p-1}-q x^{-q-1}}\)在$(a,+\infty)$上有正下界$c$，其中$a>1$足够大，
+令 $x_{k}, y_{k}$ 满足 \[x_{k}^{p}+\frac{1}{x_{k}^{q}}=2k\pi+\frac{\pi}{4}, \qquad y_{k}^{p}+\frac{1}{y_{k}^{q}}=2k\pi+\frac{3 \pi}{4},\]
+则 $k$ 足够大时有
+\[\int_{x_{k}}^{y_{k}} \sin \left(x^{p}+\frac{1}{x^{q}}\right) d x 
+\geqslant c \int_{x_{k}}^{y_{k}}\left(x^{p}+\frac{1}{x^{q}}\right)^{\prime} \sin \left(x^{p}+\frac{1}{x^{q}}\right) d x 
+=c\int_{x_{k}^{p}+\frac{1}{x_{k}^{q}}}^{y_{k}^{p}+\frac{1}{y_{k}^{q}}}\sin t\,dt
+=\sqrt{2}c>0,\]
+由 Cauchy 准则得到级数发散。
+
+总之，原积分当且仅当 $p>1$ 收敛。
+
+(3)积分 \(\int_0^{\frac{1}{2}} \frac{\sin \pi x}{x^\alpha|x-1|^\beta} \, d x\) 的被积函数非负，只有一个奇点 $0$，且
+$$\frac{\sin \pi x}{x^\alpha|x-1|^\beta} \sim \pi x^{1-\alpha}, \quad x \rightarrow 0^{+}.$$
+因此，该积分收敛当且仅当 $\alpha<2$。
+
+积分 \(\int_{\frac{1}{2}}^1 \frac{\sin \pi x}{x^\alpha|x-1|^\beta} \, d x\) 的被积函数非负，只有一个奇点 $1$，且
+$$\frac{\sin \pi x}{x^\alpha|x-1|^\beta} \sim \pi(1-x)^{1-\beta}, \quad x \rightarrow 1^{-}.$$
+因此，该积分收敛当且仅当 $\beta<2$。
+
+同理，积分 \(\int_1^{\frac{3}{2}} \frac{\sin \pi x}{x^\alpha|x-1|^\beta} \, d x\) 收敛当且仅当 $\beta<2$。
+
+若 $\alpha+\beta \leqslant 0$，则 \(\lim_{x \rightarrow+\infty} \frac{1}{x^\alpha|x-1|^\beta} \geqslant 1\)。
+因此，对充分大的 $n \geqslant 1$，当 $x \geqslant n$ 时，
+\(\frac{1}{x^\alpha|x-1|^\beta} \geqslant \frac{1}{2}\)。此时，
+$$\left|\int_n^{n+1} \frac{\sin \pi x}{x^\alpha|x-1|^\beta} \, d x\right| 
+\geqslant \frac{1}{2} \int_n^{n+1}|\sin \pi x| \, d x=\frac{1}{\pi}.$$
+所以积分 \(\int_{\frac{3}{2}}^{+\infty} \frac{\sin \pi x}{x^\alpha|x-1|^\beta} \, d x\) 发散。
+
+若 $\alpha+\beta>0$，因函数 \(\left(\frac{1}{x^\alpha|x-1|^\beta}\right)^{\prime}\) 在 $(1,+\infty)$ 上的零点只有有限个。
+由此可见当 $x$ 充分大时，它单调下降趋于零（具体地，可以得到当 $x>\max\big(1, \frac{\alpha}{\alpha+\beta}\big)$ 时，
+函数 \(\frac{1}{x^\alpha|x-1|^\beta}\) 单调下降趋于零）。
+而部分积分 \(\int_{\frac{3}{2}}^A \sin \pi x \, d x\) 有界，
+因此，此时积分 \(\int_{\frac{3}{2}}^{+\infty} \frac{\sin \pi x}{x^\alpha|x-1|^\beta} \, d x\) 收敛。
+
+(4)易见\(x=k\pi\) \((k\in\Z_+)\)都是瑕点, 积分在$\{x>0 \mid d(x,\pi\Z)\geqslant0.01\}$上的敛散性
+同\(\int_{0.01}^{+\infty}x^{-p}\,{\rm d}x\)，从而积分收敛的话$p>1$；
+由于$x\to0$时\(\sin x\sim x\)，有\(x^p\sqrt[3]{\sin^2x} \sim x^{p+2/3}\)，
+从而积分收敛的话$p+2/3<1$，即$p<1/3$。这说明积分对任意的$p\in\R$均不收敛。
+
+(5) $0$为唯一可能的瑕点，积分同时为无穷积分。由于 $\left|(\ln x) \sin (x^{p})\right| \leqslant |\ln x|$，
+而 \(\lim_{x \rightarrow 0} \frac{|\ln x|}{x^{-\frac{1}{2}}}=0\)，
+因此 \(\int_{0}^{1}(\ln x) \sin (x^{p}) \, d x\) 绝对收敛。
+我们只需要讨论 \(\int_{1}^{+\infty}(\ln x) \sin (x^{p}) \, d x\) 收敛时 $p$ 满足的条件。
+
+若 $p \leqslant 0$，则
+$$(\ln x) \sin (x^{p}) \sim \frac{\ln x}{x^{-p}}, \quad x \rightarrow+\infty.$$
+
+不难得到 \(\int_{1}^{+\infty} \frac{\ln x}{x^{-p}} \, d x\) 当 $p<-1$ 时收敛，当 $p \in[-1,0]$ 时发散。
+
+当 $p>0$ 时，我们有（变量代换不影响收敛性，等式两边可以都为发散）
+$$\int_{1}^{+\infty}(\ln x) \sin (x^{p}) \, d x
+=\frac{1}{p^{2}} \int_{1}^{+\infty} x^{\frac{1}{p}-1}(\ln x) \sin x \, d x.$$
+当 $p \in(0,1]$ 时，
+$$\int_{2 n \pi}^{2 n \pi+\pi} x^{\frac{1}{p}-1}(\ln x) \sin x \, d x 
+\geqslant \int_{2 n \pi}^{2 n \pi+\pi} \sin x \, d x=2, \quad \forall \, n \geqslant 1,$$
+因此，积分 \(\int_{1}^{+\infty} \frac{\ln x}{x^{-p}} \, d x\) 发散。
+
+当 $p>1$ 时，易见 \(\int_{1}^{+\infty} x^{\frac{1}{p}-1}(\ln x) \sin x \, d x\) 
+与级数 \(\sum_{n=1}^{\infty} \int_{n \pi}^{(n+1) \pi} x^{\frac{1}{p}-1}(\ln x) \sin x \, d x\) 有相同的敛散性。
+当 $x>e^{\frac{p}{p-1}}$ 时 $x^{\frac{1}{p}-1}(\ln x)$ 单调减少趋于$0$。因此，对足够大的$n$，
+\[(-1)^n\int_{n\pi}^{(n+1)\pi}x^{\frac{1}{p}-1}(\ln x)\sin x \, dx
+=\int_0^\pi(n\pi+x)^{\frac{1}{p}-1}(\ln(n\pi+x))\sin x \, dx\]
+单调减少趋于$0$。因此，积分 \(\int_{1}^{+\infty} \frac{\ln x}{x^{-p}} \, d x\) 收敛。
+
+总之，原积分收敛的充分必要条件是 $|p|>1$。
+\end{proof}
+\item 说明以下积分收敛并求其值:\\
+\begin{center}\begin{tabular}{ll}
+\((1)\,\int_{0}^{+\infty}\frac{1}{(1+x^2)(1+x^\alpha)}\,\dd x\);&
+\((2)\,\int_{0}^{\pi}x\ln\sin x\,\dd x\);\\
+\((3)\,\int_{0}^{\pi}\ln\left(1-2r\cos x+r^2\right)\dd x\);&
+\((4)\,\int_{0}^{+\infty}\ee^{-(x^2+1/x^2)}\,\dd x\).
+\end{tabular}\end{center}
+
+\begin{proof}[解答]
+(1)易见无论\(\alpha\)为何值, 都有\(\frac{1}{(1+x^2)(1+x^\alpha)}\leqslant\frac{1}{1+x^2}\), 
+而\(\int_{0}^{+\infty}\frac{1}{1+x^2}\,\dd x\)收敛, 从而原积分收敛. 
+置\(x=\frac{1}{t}\),得到
+\[\int_{0}^{+\infty}\frac{1}{(1+x^2)(1+x^\alpha)}\,\dd x
+=\int_{0}^{+\infty}\frac{t^\alpha}{(1+t^2)(1+t^\alpha)}\,\dd t,\]
+于是\[\int_{0}^{+\infty}\frac{1}{(1+x^2)(1+x^\alpha)}\,\dd x
+=\frac{1}{2}\int_{0}^{+\infty}\frac{1+x^\alpha}{(1+x^2)(1+x^\alpha)}\,\dd x=\frac{\pi}{4}.\]
+
+(2)注意到\(\lim_{x\rightarrow 0^+}x\ln\sin x=0\), 故\(0\)不是瑕点, 而
+\[\lim_{x\rightarrow \pi^-}\sqrt{\pi-x}\cdot x\ln\sin x=0,\]
+可知\(\int_{0}^{\pi}x\ln\sin x\,\dd x\)收敛. 置\(x=\pi-t\), 有
+\[I:=\int_{0}^{\pi}x\ln\sin x\,\dd x=\int_{0}^{\pi}(\pi-t)\ln\sin t\,\dd t
+=\pi\int_{0}^{\pi}\ln\sin x\,\dd x-I,\]
+从而\[\int_{0}^{\pi}x\ln\sin x\,\dd x
+=\frac{\pi}{2}\int_{0}^{\pi}\ln\sin x\,\dd x=-\frac{\pi^2}{2}\ln 2.\]
+
+(3)先考虑\(|r|<1\)的情形. 把\(r\)看成参变量, 记
+\[I(r)=\int_{0}^{\pi}\ln\left(1-2r\cos x+r^2\right)\dd x\]
+并对\(r\)求导, 得到
+\[I'(r)=\int_{0}^{\pi}\frac{-2\cos x+2r}{1-2r\cos x+r^2}\,\dd x,\]
+由此可得\(I'(0)=-2\int_{0}^{\pi}\cos x\,\dd x=0\). 现设\(r\ne 0\), 则
+\begin{align*}
+    I'(r)&=\frac{1}{r}\int_{0}^{\pi}\left(1-\frac{1-r^2}{1-2r\cos x+r^2}\right)\dd x\\
+    &=\frac{1}{r}\left(\pi-(1-r^2)\int_{0}^{\pi}\frac{\dd x}{1-2r\cos x+r^2}\right),
+\end{align*}
+做变换\(t=\tan(x/2)\), 可得
+\begin{align*}
+    &(1-r^2)\int_{0}^{\pi}\frac{\dd x}{1-2r\cos x+r^2}\\
+    &=\frac{1+r}{1-r}\int_{0}^{+\infty}\frac{2\dd t}{1+\displaystyle\left(\frac{1+r}{1-r}t\right)^2}\\
+    &=\left.2\arctan\frac{1+r}{1-r}t\right|^{+\infty}_0=\pi.\end{align*}
+这里用到了\(|r|<1\)的条件, 从而\(I'(r)\equiv 0\), 
+易见\(I(0)=0\), 从而\(I(r)\equiv 0\).
+
+在考虑\(|r|>1\)的情形. 令\(\rho=1/r\), 则\(\left|\rho\right|<1\). 于是
+\[I(r)=I\left(\frac{1}{\rho}\right)
+=\int_{0}^{\pi}\ln\left(1-2\rho\cos x+\rho^2\right)\dd x
+-\int_{0}^{\pi}\ln \rho^2\,\dd x=-2\pi\ln|\rho|=2\pi\ln|r|.\]
+
+当\(r=\pm 1\)时, 利用上题结果可知
+\[\int_{0}^{\pi/2}\ln\sin x\,\dd x=\int_{0}^{\pi/2}\ln\cos x\,\dd x=-\frac{\pi}{2}\ln 2.\]
+可以得到\(I(\pm 1)=0\). 即得\(I(r)=\begin{cases}
+0,&|r|\leqslant 1,\\
+2\pi\ln|r|,\quad&|r|>1.
+\end{cases}\)
+
+(4)易见\(\int_{0}^{+\infty}\ee^{-(x^2+1/x^2)}\,\dd x\)收敛, 置\(x=\frac{1}{t}\)得到
+\[\int_{0}^{+\infty}\ee^{-(x^2+1/x^2)}\,\dd x
+=\int_{0}^{+\infty}\frac{1}{t^2}\ee^{-(t^2+1/t^2)}\,\dd t,\]
+于是有\[\begin{split}
+\frac{1}{2}\int_{0}^{+\infty}\ee^{-(x^2+1/x^2)}
+&=\frac{1}{2}\int_{0}^{+\infty}\ee^{-\left((x-\frac{1}{x})^2+2\right)}\left(1+\frac{1}{x^2}\right)\dd x\\
+&=\frac{1}{2}\int_{0}^{+\infty}\ee^{-\left((x-\frac{1}{x})^2+2\right)}\dd\left(x-\frac{1}{x}\right)\\
+&=\frac{1}{2}\int_{-\infty}^{+\infty}\ee^{-t^2-2}\,\dd t=\frac{\sqrt{\pi}}{2\ee^2}.
+\end{split}\]
+\end{proof}
+\item 利用\(\sum_{n=1}^{\infty}\frac{\cos nx}{n}=-\ln\left(2\sin\frac{x}{2}\right),x\in\left(0,2\pi\right)\)说明\(\int_{0}^{\pi}\ln\sin x\,\dd x=-\pi\ln 2.\)
+\item 设\(f\)在\(\left[0,+\infty\right)\)非负, 严格单调下降, 
+证明: \(\int_{0}^{x}f(t)\sin t\,\dd t>0\). 
+特别地, 对于任何\(x>0\)成立\(\int_{0}^{x}\ee^{-t}\sin t\,\dd t>0\).
+\begin{proof}
+	
+\end{proof}
+\item 若\(f(0^+)\)存在, \(\forall\,A>0,\int_{A}^{+\infty}\frac{f(x)}{x}\,\dd x\)收敛, 
+试计算Frullani积分\(\int_{0}^{+\infty}\frac{f(ax)-f(bx)}{x}\,\dd x\), 其中\(a,b>0\).
+\begin{proof}[解答]
+我们先回顾该积分的计算方法.
+
+设\(f(0^+)\)与\(f(+\infty)\)都存在, 且对任何\(0<\delta<\varDelta<+\infty\), 
+\(\int_{\delta}^{\varDelta}\frac{f(x)}{x}\,\dd x\)存在. 则
+\[\begin{split}
+&\int_{\delta}^{\varDelta}\frac{f(ax)-f(bx)}{x}\,\dd x
+=\int_{\delta}^{\varDelta}\frac{f(ax)}{x}\,\dd x-\int_{\delta}^{\varDelta}\frac{f(bx)}{x}\,\dd x\\
+&=\int_{a\delta}^{a\varDelta}\frac{f(t)}{t}\,\dd t-\int_{b\delta}^{b\varDelta}\frac{f(t)}{t}\,\dd t
+=\int_{a\delta}^{b\delta}\frac{f(t)}{t}\,\dd t-\int_{a\varDelta}^{b\varDelta}\frac{f(t)}{t}\,\dd t.
+\end{split}\]
+我们记\(J_1=\int_{a\delta}^{b\delta}\frac{f(t)}{t}\,\dd t,\,J_2=\int_{a\varDelta}^{b\varDelta}\frac{f(t)}{t}\,\dd t\). 
+于是由积分第一中值定理,
+\[\begin{split}
+J_1&=\int_{a\delta}^{b\delta}\frac{f(t)}{t}\,\mathrm{d}t
+=f(\xi_1)\int_{a\delta}^{b\delta}\frac{1}{t}\,\mathrm{d}t
+=f(\xi_1)\ln\frac{b}{a},\qquad a\delta\leqslant\xi_1\leqslant b\delta,\\
+J_2&=\int_{a\varDelta}^{b\varDelta}\frac{f(t)}{t}\,\mathrm{d}t
+=f(\xi_2)\int_{a\varDelta}^{b\varDelta}\frac{1}{t}\,\mathrm{d}t
+=f(\xi_2)\ln\frac{b}{a},\qquad a\varDelta\leqslant\xi_2\leqslant b\varDelta.
+\end{split}\]这时当\(\delta\rightarrow 0^+,\varDelta\rightarrow+\infty\)时, 
+得到\(\xi_1\rightarrow 0^+,\xi_2\rightarrow+\infty\), 即得到
+\[\int_0^{+\infty}\frac{f(ax)-f(bx)}{x}\,\mathrm{d}x
+=\left(f(0^+)-f(+\infty)\right)\ln\frac{b}{a}.\]
+
+由题设\(f(0^+)\)存在, \(\forall\,A>0,\int_{A}^{+\infty}\frac{f(x)}{x}\,\dd x\)收敛, 则
+\[J_2=\int_{a\varDelta}^{b\varDelta}\frac{f(t)}{t}\,\mathrm{d}t
+=\int_{A}^{b\varDelta}\frac{f(t)}{t}\,\mathrm{d}t-\int_{A}^{a\varDelta}\frac{f(t)}{t}\,\mathrm{d}t\rightarrow 0,\quad\varDelta\rightarrow+\infty,\]
+从而\(\int_0^{+\infty}\frac{f(ax)-f(bx)}{x}\,\mathrm{d}x=f(0^+)\ln\frac{b}{a}.\)
+
+同理若\(f(+\infty)\)存在, \(\forall\,\varepsilon>0,\int_{0}^{\varepsilon}\frac{f(x)}{x}\,\dd x\)收敛, 则
+\[J_1=\int_{a\delta}^{b\delta}\frac{f(t)}{t}\,\mathrm{d}t
+=\int_{a\delta}^{\varepsilon}\frac{f(t)}{t}\,\mathrm{d}t
+-\int_{b\delta}^{\varepsilon}\frac{f(t)}{t}\,\mathrm{d}t\rightarrow0,\quad\delta\rightarrow 0^+.\]
+从而\(\int_0^{+\infty}\frac{f(ax)-f(bx)}{x}\,\mathrm{d}x=f(+\infty)\ln\frac{a}{b}.\)
+\end{proof}
+\item 若\(f(+\infty)\)存在, \(\forall\,\varepsilon>0\), 
+\(\int_{0}^{\varepsilon}\frac{f(x)}{x}\,\dd x\)收敛, 
+试计算Frullani积分\(\int_{0}^{+\infty}\frac{f(ax)-f(bx)}{x}\,\dd x\), 其中\(a,b>0\).
+\begin{proof}[解答]
+参见上一题的解答.
+\end{proof}
+\item 设\(f\in C[0,+\infty),f>0\). 若\(\int_{0}^{+\infty}\frac{1}{f(x)}\,\dd x\)收敛, 
+证明: \(\lim_{A\rightarrow+\infty}\frac{1}{A^2}\int_{0}^{A}f(x)\,\dd x=+\infty\).
+\begin{proof}
+对任意$\varepsilon>0$，存在$a>0$使得\(\int_a^{+\infty}\frac{1}{f(x)}\,\dd x<\varepsilon\)。当$A>2a$时，
+\[\int_a^Af(x)\,\dd x\int_a^A\frac{1}{f(x)}\,\dd x\geqslant(A-a)^2.\]
+由此，
+\[\frac{1}{A^2}\int_0^A f(x)\,\dd x>\frac{1}{A^2}\int_a^A f(x)\,\dd x
+\geqslant\left(1-\frac{a}{A}\right)^2\bigg/\int_a^A\frac{1}{f(x)}\,\dd x
+>\frac{1}{4\varepsilon}.\qedhere\]
+\end{proof}
+\item 证明: \(\lim_{n\rightarrow+\infty}\int_{0}^{+\infty}\frac{\cos\left(nx+1/x\right)}{1+x^2}\,\dd x=0\).
+\begin{proof}
+由于\(\cos\left(nx+1/x\right)=\cos(nx)\cos\left(1/x\right)-\sin(nx)\sin(1/x)\), 记
+\[I_n=\int_{0}^{+\infty}\frac{\cos(1/x)}{1+x^2}\cdot\cos(nx)\dd x,\quad J_n=\int_{0}^{+\infty}\frac{\sin(1/x)}{1+x^2}\cdot\sin(nx)\dd x,\]
+易见对于任何\(n\in\N^+\), \(I_n,J_n\)都收敛. 我们只需要证明\(\lim_{n\rightarrow+\infty}\left(I_n-J_n\right)=0\), 由分部积分公式
+\[\begin{split}
+\int_{0}^{+\infty}\frac{\cos(1/x)}{1+x^2}\cdot\cos(nx)\dd x
+&=\left.\frac{\sin nx}{n}\frac{\cos(1/x)}{1+x}\right|_0^{+\infty}-\frac{1}{n}\int_{0}^{+\infty}\left(\frac{\cos(1/x)}{1+x^2}\right)'\sin nx\dd x\\
+&=-\frac{1}{n}\int_{0}^{+\infty}\frac{\sin(1/x)\cdot\frac{1+x^2}{x^2}-2x\cdot\cos(1/x)}{(1+x^2)^2}\cdot\sin nx\dd x.
+\end{split}\]
+\end{proof}
+\item 推广习题8.3.\(\boldsymbol{\mathcal{A}}\)第6题如下: 
+设\(f\in C[a,b]\)非负, 且在\(c\in[a,b]\)取得唯一的最大值\(f(c)>0\), 
+\(\varphi\)在\([a,b]\)上绝对可积, 并在点\(c\)连续. 
+证明: \(\lim_{n\rightarrow+\infty}\frac{\displaystyle\int_{a}^{b}f^n(x)\varphi(x)\,\dd x}{\displaystyle\int_{a}^{b}f^n(x)\,\dd x}=\varphi(c)\).
+\end{enumerate}
+\end{a}
+
+\begin{b}
+\begin{enumerate}
+\item 尝试给出比习题\(\mathcal{A}\)第1题的题设更弱的条件, 使得结论仍然成立.
+\item 试讨论更一般的反常重积分的定义. 特别地, 考虑在定义反常重积分时, 瑕点集可以一般到什么程度.
+\item 求\(\sum_{n=1}^{\infty}x^{n^2}\)当\(x\rightarrow 1^-\)的阶.
+\begin{proof}[解答]
+易见\(\sum_{n=1}^{\infty}x^{n^2}\sim\sum_{n=0}^{\infty}x^{n^2}\), 
+由单调性, 当\(0<x<1\)时, 对$n\geqslant1$我们有
+\[x^{n^2}<\int_{(n-1)}^{n}x^{t^2}\dd t<x^{(n-1)^2},\]
+因此\[\int_{0}^{+\infty}x^{t^2}\dd t\leqslant\sum_{n=0}^{\infty}x^{n^2}\leqslant 1+\int_{0}^{+\infty}x^{t^2}\dd t,\]
+而\[\int_{0}^{+\infty}x^{t^2}\dd t
+=\int_{0}^{+\infty}\exp\left(-t^2\ln\frac{1}{x}\right)\dd t
+=\frac{1}{\sqrt{\ln\frac{1}{x}}}\int_{0}^{+\infty}\ee^{-t^2}\dd t
+=\frac{1}{2}\sqrt{\frac{\pi}{\ln\frac{1}{x}}}.\]
+当\(x\rightarrow 1^-\)时, \(\ln x\sim x-1\), 
+因此\(\sum_{n=0}^{\infty}x^{n^2}\sim\frac{1}{2}\sqrt{\frac{\pi}{1-x}}\).
+\end{proof}
+\item \begin{enumerate}[label=(\arabic*)]
+\item 举例说明, 存在恒正的\(f\)使得\(\int_{0}^{+\infty}f(x)\,\dd x\)收敛, 
+但\(\lim_{x\rightarrow+\infty}f(x)\)不存在.
+\item 举例说明, 存在恒正的无穷次可导函数\(f\)使得\(\int_{0}^{+\infty}f(x)\,\dd x\)收敛, 
+但\(\varlimsup_{x\rightarrow+\infty}f(x)\)不存在.
+\item 若\(f\)一致连续, 且\(\int_{0}^{+\infty}f(x)\,\dd x\)收敛, 
+证明:\(\lim_{x\rightarrow+\infty}f(x)=0.\)
+\end{enumerate}
+\item 证明: \(\lim_{n\rightarrow+\infty}\int_{0}^{\pi/2}\sin x^n\,\dd x=0\).
+\begin{proof}
+由于\[\int_{0}^{\pi/2}\sin x^n\,\dd x=\int_{0}^{1}\sin x^n\,\dd x+\int_{1}^{\pi/2}\sin x^n\,\dd x,\]
+而\begin{gather*}
+0\leqslant\int_{0}^{1}\sin x^n\,\dd x\leqslant\int_{0}^{1}x^n\,\dd x=\frac{1}{n+1},\\
+-\frac{2}{n}\leqslant\int_{1}^{\pi/2}\frac{1}{nx^{n-1}}\cdot nx^{n-1}\sin x^n\,\dd x
+\xlongequal{\text{积分第二中值定理}}\frac{1}{n}\int_{0}^{\xi}\dd(-\cos x^n)\leqslant\frac{2}{n},
+\end{gather*}
+依夹逼准则有\(\lim_{n\rightarrow+\infty}\int_{0}^{\pi/2}\sin x^n\,\dd x=0\).
+\end{proof}
+\item 证明: \(\lim_{n\rightarrow+\infty}\int_{0}^{\pi/2}\cos x^n\,\dd x=1\). 
+\begin{proof}
+仿上法, 我们有\begin{gather*}
+1\geqslant\int_{0}^{1}\cos x^n\,\dd x\geqslant\int_{0}^{1}\left(1-\frac{1}{2}x^{2n}\right)=1-\frac{1}{2(2n+1)},\\
+-\frac{2}{n}\leqslant\int_{1}^{\pi/2}\frac{1}{nx^{n-1}}\cdot nx^{n-1}\cos x^n\,\dd x
+=\frac{1}{n}\int_{0}^{\xi}\dd(\sin x^n)\leqslant\frac{2}{n}.
+\end{gather*}
+依夹逼准则便得结论.
+\end{proof}
+\item 设函数\(f:(0,+\infty)\rightarrow(0,+\infty)\)连续且严格单调, 
+证明: “\(g\)在\([0,1]\)上非负可积蕴含\(f\circ g\)在\([0,1]\)上非负可积”\(\,\)
+等价于\(\varlimsup_{x\rightarrow+\infty}\frac{f(x)}{x}<+\infty.\)
+\item 证明: \(f(x)=\int_{0}^{+\infty}\ee^{-xt^2}\sin t\,\dd t\)在\((0,+\infty)\)上有界.
+\begin{proof}
+记\(F(x,\alpha)=\int_{0}^{+\infty}\ee^{-xt^2}\sin\alpha t\,\dd t\), 
+原问题即证\(F(x,1)\)在\(x\in (0,+\infty)\)上有界. 由于
+\[\frac{\partial F}{\partial \alpha}
+=\int_{0}^{+\infty}t\ee^{-xt^2}\cos\alpha t\,\dd t,\]
+对任意的\(\alpha\in\R\)成立, 事实上, 由于
+\[\left|t\ee^{-xt^2}\cos\alpha t\right|\leqslant t\ee^{-xt^2},\]
+而\(\int_{0}^{+\infty}t\ee^{-xt^2}\dd t\)收敛, 
+故由Weierstrass判别法可知\(\int_{0}^{+\infty}t\ee^{-xt^2}\cos\alpha t\,\dd t\)对\(b\in\R\)一致收敛, 因而等式成立, 又有
+\begin{align*}\frac{\partial F}{\partial \alpha}
+&=\int_{0}^{+\infty}t\ee^{-xt^2}\cos\alpha t\,\dd t\\
+&=\frac{1}{2x}-\frac{\alpha}{2x}\int_{0}^{+\infty}\ee^{xt^2}\sin\alpha t\,\dd t\\
+&=\frac{1}{2x}-\frac{\alpha}{2x}F(x,\alpha),\end{align*}
+并且有\(F(x,0)=0\), 得到
+\[F(x,\alpha)=\exp\left(-\frac{\alpha^2}{4x}\right)\int_{0}^{\alpha}\frac{1}{2x}\exp\left(\frac{\alpha^2}{4x}\right)\dd\alpha,\]
+于是\(F(x,1)=\exp\left(-\frac{1}{4x}\right)\int_{0}^{1}\frac{1}{2x}\exp\left(\frac{\alpha^2}{4x}\right)\dd x\), 而
+\[\begin{split}
+&\quad\frac{1}{2x}\int_{0}^{1}\exp\left(\frac{\alpha^2}{4x}\right)\dd x
+=\frac{1}{\sqrt{x}}\int_{0}^{1/(2\sqrt{x})}\exp\left(u^2\right)\dd x\\
+&\leqslant\frac{1}{\sqrt{x}}\left(\int_{0}^{2}\exp\left(u^2\right)\dd u
++\int_{1}^{1/(2\sqrt{x})}\left(2-\frac{1}{u^2}\right)\exp\left(u^2\right)\dd u\right)\\
+&=\frac{1}{\sqrt{x}}\left(\int_{0}^{1}\exp\left(u^2\right)\dd u
++\int_{1}^{1/(2\sqrt{x})}\frac{\dd}{\dd u}\frac{\exp(u^2)}{u}\dd u\right)\\
+&\leqslant\frac{1}{\sqrt{x}}\left(C+2\sqrt{x}\exp\left(\frac{1}{4x}\right)\right),
+\end{split}\]
+其中\(C=\int_{0}^{1}\ee^{u^2}\dd u\). 于是\(F(x,1)\leqslant\frac{C}{\sqrt{x}}\exp\left(-\frac{1}{4x}\right)+2\), 
+右侧当\(x\rightarrow 0^+\)时有有限极限, 并且结合\(8.4.\mathcal{A}\)第\(4\)题可知\(f(x)>0\). 结论即证.
+\end{proof}
+\item 设\(\int_{0}^{+\infty}f(x)\,\dd x\)收敛. 求\(\lim_{x\rightarrow+\infty}\frac{\displaystyle\int_{0}^{x}tf(t)\,\dd t}{x}\).
+\begin{proof}
+记\(I=\int_{0}^{+\infty}f(x)\,\dd x,F(x)=\int_{0}^{x}f(t)\,\dd t\), 下证
+\[\lim_{x\rightarrow+\infty}\frac{1}{x}\int_{0}^{x}F(t)\,\dd t=I.\]
+对任意的\(\varepsilon>0\), 由于\(\int_{0}^{+\infty}f(x)\,\dd x\)收敛, 
+可以找到\(x_0>0\), 使得\(x\geqslant x_0\)时有
+\(\left|F(x)-I\right|<\frac{\varepsilon}{2}\). 于是当\(x>x_0\), 有
+\[\begin{split}
+\frac{1}{x}\int_{0}^{x}F(t)\,\dd t-I&=\frac{1}{x}\int_{0}^{x}\left(F(t)-I\right)\dd t\\
+&=\frac{1}{x}\int_{0}^{x_0}\left(F(t)-I\right)\dd t+\left(1-\frac{x_0}{x}\right)\cdot\frac{1}{x-x_0}\int_{x_0}^{x}\left(F(t)-I\right)\dd t,
+\end{split}\]因此
+\[\left|\frac{1}{x}\int_{0}^{x}F(t)\,\dd t-I\right|
+<\frac{1}{x}\left|\int_{0}^{x_0}\left(F(t)-I\right)\dd t\right|
++\frac{1}{x-x_0}\int_{x_0}^{x}\left|F(t)-I\right|\dd t.\]
+右端第二项\(<\frac{\varepsilon}{2}\); 当\(x\)充分大时, 第一项同样也小于\(\frac{\varepsilon}{2}\), 于是有
+\[\left|\frac{1}{x}\int_{0}^{x}F(t)\,\dd t-I\right|<\varepsilon.\]
+至此断言成立，注意\[\int_{0}^{x}tf(t)\,\dd t=\int_{0}^{x}tF'(t)\,\dd t=xF(x)-\int_{0}^{x}F(t)\,\dd t,\]
+于是\[\lim_{x\rightarrow+\infty}\frac{\displaystyle\int_{0}^{x}tf(t)\,\dd t}{x}
+=\lim_{x\rightarrow+\infty}\frac{\displaystyle xF(x)-\int_{0}^{x}F(t)\,\dd t}{x}=I-I=0.\qedhere\]
+\end{proof}
+\item 设\(f\)是\(\left[0,+\infty\right)\)上非负可导函数. 
+\(f(0)=0,f'(x)\leqslant\frac{1}{2},\int_{0}^{+\infty}f(x)\,\dd x\)收敛. 
+求证: 对任何\(p>1\), \(\int_{0}^{+\infty}f^p(x)\,\dd x\)也收敛, 
+且\(\int_{0}^{+\infty}f^p(x)\,\dd x\leqslant\left(\int_{0}^{+\infty}f(x)\,\dd x\right)^{(p+1)/2}\).
+\begin{proof}
+令\[g(t)=\left(\int_{0}^{t}f(x)\,\dd x\right)^{(p+1)/2}-\int_{0}^{t}f^p(x)\,\dd x,\]
+则\(g(t)\)可导,
+\[g'(t)=f(t)\left(\frac{p+1}{2}\left(\int_{0}^{t}f(x)\,\dd x\right)^{(p-1)/2}-f^{p-1}(t)\right).\]
+令\[h(t)=\left(\frac{p+1}{2}\right)^{2/(p-1)}\int_{0}^{t}f(x)\,\dd x-f^2(t),\]
+则有\[h'(t)=f(t)\left(\left(\frac{p+1}{2}\right)^{2/(p-1)}-2f'(t)\right).\]
+
+由于\(\frac{p+1}{2}>1,f'(x)\leqslant\frac{1}{2}\), 我们有\(h'(t)\geqslant 0\). 
+这说明\(h(t)\)单调递增, 从\(h(0)=0\)得\(h(t)\geqslant 0\), 
+因此\(g'(t)\geqslant 0\), 从\(g(0)=0\)得\(g(t)\geqslant 0,\) 即
+\[\int_{0}^{t}f^p(x)\,\dd x\leqslant\left(\int_{0}^{t}f(x)\,\dd x\right)^{(p+1)/2},\]
+令\(t\rightarrow+\infty\)即得结论.
+\end{proof}
+\item 设\(\alpha\in(0,1),\beta\in(0,1]\), \(\sum_{n=1}^{\infty}\frac{\sin n^\alpha}{n^\beta}\)的收敛性如何?
+\begin{proof}[解答]
+
+\end{proof}
+\item 设\(\alpha>1,\beta\in\left(0,1\right]\), 对于\(\sum_{n=1}^{\infty}\frac{\sin n^\alpha}{n^\beta}\)的收敛性, 你能够说些什么?
+\item 设\(\alpha>0,\beta>0\), 对于\(\sum_{n=1}^{\infty}\frac{1}{n^\beta\sin n^\alpha}\)的的收敛性, 你能够说些什么?
+\item 设\(f\in C^1[0,1],f(0)=f(1)=0\). 证明: \(\left(\int_{0}^{1}f(x)\,\dd x\right)^2\leqslant\frac{1}{12}\int_{0}^{1}|f'(x)|^2\,\dd x\). 
+进一步, 如何把条件放宽到\(f\in C_0^1(0,1)\)? 其中\(C_0^1(0,1)=\left\lbrace f\in C[0,1]\cap C^1(0,1)\big|f(0)=f(1)=0\right\rbrace \).
+\begin{proof}
+由分部积分可知\[\int_{0}^{1}f(x)\,\dd x=xf(x)\big|_0^1-\int_{0}^{1}xf'(x)\,\dd x=-\int_{0}^{1}xf'(x)\,\dd x,\]
+同理\(\int_{0}^{1}f(x)\,\dd x=-\int_{0}^{1}(x-1)f'(x)\,\dd x.\)从而
+\[\begin{split}
+\left(\int_{0}^{1}f(x)\,\dd x\right)^2&=\left(\frac{1}{2}\int_{0}^{1}(2x-1)f'(x)\,\dd x\right)^2\\
+&\leqslant\frac{1}{4}\int_{0}^{1}(2x-1)^2\,\dd x\int_{0}^{1}|f'(x)|^2\,\dd x
+=\frac{1}{12}\int_{0}^{1}|f'(x)|^2\,\dd x.
+\end{split}\]
+\end{proof}
+\end{enumerate}
+\end{b}
+
+\section{含参变量反常积分的一致收敛性及判别法}
+\subsection{含参变量反常积分的一致收敛性, Cauchy准则, Weierstrass判别法, Abel判别法, Dirichlet判别法}
+\begin{a}
+\begin{enumerate}
+\item 证明以下含参变量积分关于所考虑的参数内闭一致收敛, 但非一致收敛:
+\begin{center}\begin{tabular}{ll}
+\((1)\int_{0}^{+\infty}x^{\alpha-1}\ee^{-x}\,\dd x,\quad\alpha>0\);&
+\((2)\int_{0}^{+\infty}x^{\alpha-1}\ee^{-x}\ln^3x\,\dd x,\quad\alpha>0\);\\
+\((3)\int_{0}^{1}x^{p-1}(1-x)^{q-1}\dd x,\quad p,q>0\);&
+\((4)\int_{0}^{1}x^{p-1}(1-x)^{q-1}\left(\ln x\right)\ln^2(1-x)\,\dd x,\quad p,q>0\);\\
+\((5)\int_{0}^{+\infty}\alpha\ee^{-\alpha x}\,\dd x,\quad\alpha>0\);&
+\((6)\int_{0}^{+\infty}\alpha\ee^{-\alpha^2x^2}\,\dd x,\quad\alpha>0\).
+\end{tabular}\end{center}
+\begin{proof}
+(1)
+
+(2)
+
+(3)
+
+(4)
+
+(5)
+
+(6)
+\end{proof}
+\item 考察以下含参变量积分关于所考虑的参数的一致收敛性\footnote{习题中讨论一致收敛性需包括内闭一致收敛性, 或者说需要讨论关于一致收敛性能够得到的最好结果.}:
+\begin{center}\begin{tabular}{ll}
+\((1)\int_{0}^{\pi}\ln\left(1-2\alpha\cos x+\alpha^2\right)\dd x,\quad\alpha\in\mathbb{R}\);&
+\((2)\int_{0}^{1}x^{\alpha}\sin\frac{1}{x^\beta}\,\dd x,\quad\alpha>-2,\beta>0\);\\
+\((3)\int_{1}^{+\infty}\frac{y^2-x^2}{(x^2+y^2)^2}\,\dd x,\quad y\in\mathbb{R}\);&
+\((4)\int_{0}^{1}\frac{y^2-x^2}{(x^2+y^2)^2}\,\dd x,\quad y>0\).
+\end{tabular}\end{center}
+\begin{proof}[解答]
+(1)
+
+(2)
+
+(3)
+
+(4)
+\end{proof}
+\item 设\(f\in C(0,+\infty)\), \(\int_{0}^{+\infty}t^\lambda f(t)\,\dd t\)当\(\lambda=a,\lambda=b\)时都收敛. 
+证明: \(\int_{0}^{+\infty}t^\lambda f(t)\,\dd t\)关于\(\lambda\in[a,b]\)一致收敛.
+\begin{proof}
+
+\end{proof}
+\end{enumerate}
+\end{a}
+
+\begin{b}
+\begin{enumerate}
+\item 考察使得以下积分收敛的参数\(\alpha,p,q\)以及积分一致收敛的范围:
+\begin{center}
+\begin{tabular}{lcl}
+\((1)\int_{0}^{1}x^\alpha\sin\left(x^p+\frac{1}{x^q}\right)\dd x\);&
+\((2)\int_{1}^{+\infty}x^\alpha\sin\left(x^p+\frac{1}{x^q}\right)\dd x\).
+\end{tabular}
+\end{center}
+\begin{proof}[解答]
+内容...
+\end{proof}
+\item 试讨论变量代换对于反常积分收敛性与一致收敛性的影响.
+\end{enumerate}
+\end{b}
+
+\section{含参变量积分的性质}
+\subsection{含参变量积分的极限与连续性,含参变量积分的可微性,含参变量积分的积分,积分的计算}
+\begin{theorem}\label{chang}
+设\(f:[a,+\infty)\times\varOmega\rightarrow\mathbb{R}\), 
+其中\(\varOmega\subseteq\mathbb{R}^n\)为区域, 
+且存在\(\boldsymbol{y}_0\in\varOmega\), 
+使得\(\int_{a}^{+\infty}f(x,\boldsymbol{y}_0)\,\dd x\)收敛. 
+对几乎所有的\(x\in[a,+\infty)\), \(f(x,\cdot)\)在\(\varOmega\)内(连续)可微. 
+对任何\(A>a\), 存在\(g_A\in L^1[a,A]\)使得
+\[\left|f_{\boldsymbol{y}}(x,\boldsymbol{y})\right|\leqslant g_A(x),\qquad\forall\,\boldsymbol{y}\in\varOmega,\ \mathrm{a.e.}\ x\in[a,A].\]
+进一步,\(\int_{a}^{+\infty}f_{\boldsymbol{y}}(x,\boldsymbol{y})\,\dd x\)
+关于\(\boldsymbol{y}\in\varOmega\)一致收敛, 则对任何\(\boldsymbol{y}\in\varOmega\),
+\(\int_{a}^{+\infty}f(x,\boldsymbol{y})\,\dd x\)收敛, 
+而\(\varphi(\boldsymbol{y})=\int_{a}^{+\infty}f(x,\boldsymbol{y})\,\dd x\)
+在\(\varOmega\)内(连续)可微且
+\[\varphi_{\boldsymbol{y}}(\boldsymbol{y})
+=\int_{a}^{+\infty}f_{\boldsymbol{y}}(x,\boldsymbol{y})\,\dd x,
+\qquad\forall\,\boldsymbol{y}\in\varOmega.\]
+另外, 当\(\varOmega\)为有界凸区域时, \(\int_{a}^{+\infty}f(x,\boldsymbol{y})\,\dd x\)
+关于\(\boldsymbol{y}\in\varOmega\)一致收敛.
+\end{theorem}
+\begin{a}
+\begin{enumerate}
+\item 求极限:\(\lim_{n\rightarrow+\infty}\int_{0}^{\pi/2}\frac{\sin^n x+\cos^nx}{\sin^{n+1}x+\cos^{n+1}x}\,\dd x.\)
+\begin{proof}[解答]
+由于\[\int_{0}^{\pi/2}\frac{\sin^n x+\cos^nx}{\sin^{n+1}x+\cos^{n+1}x}\,\dd x
+\xlongequal{\tan x=t}\int_{0}^{+\infty}\frac{t^n+1}{\left(t^{n+1}+1\right)\sqrt{t^2+1}}\,\dd t,\]
+其中\(\frac{t^n+1}{\left(t^{n+1}+1\right)\sqrt{t^2+1}}\lesssim\min(1,1/t^2)\), 依Lebesgue控制收敛定理有
+\[\lim_{n\rightarrow+\infty}\int_{0}^{+\infty}\frac{t^n+1}{\left(t^{n+1}+1\right)\sqrt{t^2+1}}\,\dd t
+=\int_{0}^{1}\frac{1}{\sqrt{t^2+1}}\,\dd t+\int_{1}^{+\infty}\frac{1}{t\sqrt{t^2+1}}\,\dd t=2\ln(\sqrt{2}+1).\]
+或者, 注意到\(0\leqslant x\leqslant\frac{\pi}{4}\), 有\(0\leqslant \sin x\leqslant\cos x\leqslant 1,\sec x\geqslant 1\), 于是
+\[\int_{0}^{\pi/4}\frac{\sin^nx+\cos^nx}{\sin^{n+1}x+\cos^{n+1}x}\,\dd x
+\geqslant\int_{0}^{\pi/4}\frac{\sin^nx+\cos^nx}{\sin^nx\cos x+\cos^{n+1}x}\,\dd x
+=\int_{0}^{\pi/4}\frac{1}{\cos x\,}\dd x,\]
+另一方面,
+\[\int_{0}^{\pi/4}\frac{\sin^nx+\cos^nx}{\sin^{n+1}x+\cos^{n+1}x}\,\dd x
+\leqslant\int_{0}^{\pi/4}\frac{\sin^nx+\cos^nx}{\cos^{n+1}x}\,\dd x
+=\int_{0}^{\pi/4}\frac{1}{\cos x}\,\dd x+\int_{0}^{\pi/4}\tan^nx\sec x\,\dd x,\]
+而\[\int_{0}^{\pi/4}\tan^nx\sec x\,\dd x\leqslant\int_{0}^{\pi/4}\tan^nx\sec^2 x\,\dd x=\frac{1}{n+1}.\]
+依夹逼准则可知\[\lim_{n\rightarrow+\infty}\int_{0}^{\pi/4}\frac{\sin^nx+\cos^nx}{\sin^{n+1}x+\cos^{n+1}x}\,\dd x
+=\int_{0}^{\pi/4}\sec x\,\dd x=\ln(\sqrt{2}+1).\]
+注意到被积函数关于\(x=\frac{\pi}{2}\)对称, 这就证明了结论. 
+\end{proof}
+\item 通过引入参数并利用积分号下求导计算\(\int_{0}^{1}\frac{\ln (1+x)}{1+x^2}\,\dd x\).
+\begin{proof}[解答]
+记\[I(\alpha)=\int_{0}^{1}\frac{\ln(1+\alpha x)}{1+x^2}\,\dd x,\]
+则有\[I(0)=0,\quad I(1)=\int_{0}^{1}\frac{\ln(1+x)}{1+x^2}\,\dd x.\]
+显然含参积分关于\(\alpha\)一致收敛, 于是有
+\begin{align*}I'(\alpha)&=\int_{0}^{1}\frac{1}{1+x^2}\frac{x}{1+\alpha x}\,\dd x\\
+&=\frac{1}{1+\alpha^2}\int_0^1\frac{x+\alpha}{1+x^2}-\frac{\alpha}{1+\alpha x}\,\dd x\\
+&=\frac{1}{1+\alpha^2}\left[\frac{\ln(1+x^2)}{2}+\alpha\arctan x-\ln(1+\alpha x)\right]\bigg|_0^1\\
+&=\frac{1}{1+\alpha^2}\left(\frac{\ln 2}{2}+\frac{\pi}{4}\alpha-\ln(1+\alpha)\right),\end{align*}
+于是\[I(1)=\int_{0}^{1}I'(\alpha)\,\dd \alpha
+=\int_{0}^{1}\frac{1}{1+\alpha^2}\left(\frac{\ln 2}{2}+\frac{\pi}{4}\alpha\right)\dd \alpha-I(1),\]
+于是\begin{align*}I(1)&=\frac{1}{2}\int_{0}^{1}\frac{1}{1+\alpha^2}\left(\frac{\ln 2}{2}+\frac{\pi}{4}\alpha\right)\dd\alpha\\
+&=\frac{1}{2}\left[\frac{\ln 2}{2}\arctan\alpha+\frac{\pi}{4}\frac{\ln(1+\alpha^2)}{2}\right]\bigg|_0^1=\frac{\pi}{8}\ln 2.\end{align*}
+\end{proof}
+\item 对应于定理\ref{chang}, 给出并证明含参变量无穷积分被积函数关于参数仅在单点可微时的结果.
+\item 对应于定理\ref{chang}, 给出可能含有瑕点的含参变量积分可微性的结果并证明.
+\item 证明\(\int_{0}^{\pi}\frac{\sin x}{x^\alpha(\pi-x)^{2-\alpha}}\,\dd x\)
+是区间\((0,2)\)内关于\(\alpha\)的无界、\,连续函数.
+\begin{proof}
+无界是由于$\alpha\to2^-$时，
+\begin{align*}
+\int_{0}^{\pi}\frac{\sin x}{x^\alpha(\pi-x)^{2-\alpha}}\,\dd x
+>\int_{0}^{1}\frac{\sin x}{x^\alpha(\pi-x)^{2-\alpha}}\,\dd x
+>\frac{2}{\pi^3}\int_0^1x^{1-\alpha}\,\dd x=\frac{2}{\pi^3(2-\alpha)}\to+\infty.
+\end{align*}
+为了说明其在$(0,2)$内连续，只需说明其在任何闭子集$[\delta,2-\delta]$上都连续，
+由Lebesgue控制收敛定理，只要为这个参数范围内的被积函数找一个$L^1$函数控制即可------
+在$\big(0,\frac{\pi}{2}\big)$上，被积函数$\leqslant x^{1-\alpha}\lesssim x^{1-\delta}$；
+在$\big(\frac{\pi}{2},\pi\big)$上，被积函数$\leqslant (\pi-x)^{\alpha-1}\lesssim (\pi-x)^{\delta-1}$。
+\end{proof}
+\item 计算\(\lim_{n\rightarrow+\infty}\int_{0}^{2}\frac{x^n\ln x}{1+x^n}\,\dd x\)并说明计算过程合理.
+\begin{proof}[解答]
+由Weierstrass判别法可知原积分关于参数\(n\)一致收敛, 从而
+\[\begin{split}
+&\lim_{n\rightarrow+\infty}\int_{0}^{2}\frac{x^n\ln x}{1+x^n}\,\dd x
+=\lim_{n\rightarrow+\infty}\left(\int_{0}^{1}\frac{x^n\ln x}{1+x^2}\,\dd x
++\int_{1}^{2}\frac{x^n\ln x}{1+x^n}\,\dd x\right)\\
+&=\int_{0}^{1}\lim_{n\rightarrow+\infty}\frac{x^n\ln x}{1+x^n}\,\dd x
++\int_{1}^{2}\lim_{n\rightarrow+\infty}\frac{x^n\ln x}{1+x^n}\,\dd x\\
+&=\int_{1}^{2}\ln x\,\dd x=2\ln 2-1.
+\end{split}\]
+\end{proof}
+\item 设\(a,b>0\), 利用Frullani积分计算\(\int_{0}^{1}\frac{x^b-x^a}{\ln x}\,\dd x\).
+\begin{proof}[解答]
+置\(\ln x=-t\), 则\(\dd x/x=-\dd t\), 系\(\dd x=-\ee^{-t}\dd t\). 于是
+\[\int_{0}^{1}\frac{x^b-x^a}{\ln x}\,\dd x
+=\int_{0}^{+\infty}\frac{\ee^{-t(a+1)}-\ee^{-t(b+1)}}{t}\,\dd t
+=\ln\frac{b+1}{a+1}.\qedhere\]
+\end{proof}
+\item 考察下列积分与例10.3.5的联系, 并尝试以各种方法计算这些积分:
+\begin{enumerate}[label=(\arabic*)]
+\item \(\int_{0}^{\pi/2}\ln(a^2-\sin^2x)\,\dd x,\quad a\geqslant 1.\)
+\item \(\int_{0}^{\pi}\ln(1+a\cos x)\,\dd x,\quad |a|\leqslant 1\).
+\item \(\int_{0}^{\pi}\ln(a^2\cos^2 x+b^2\sin^2x)\,\dd x,\quad a^2+b^2>0.\)
+\end{enumerate}
+\begin{proof}[解答]
+依靠例10.3.5可以知道\(\int_{0}^{\pi}\ln(2-2\cos x)\,\dd x=0\). 
+于是也有\(\int_{0}^{\pi}\ln(2+2\cos x)\,\dd x=0\), 从而
+\[\int_{0}^{\pi}\ln\left(1-\cos x\right)\dd x
+=\int_{0}^{\pi}\ln\left(1+\cos x\right)\dd x=-\pi\ln 2,\]
+于是有\[\begin{split}
+&\int_{0}^{\pi}\ln\left(1-\cos x\right)\dd x+\int_{0}^{\pi}\ln\left(1+\cos x\right)\dd x\\
+&=\int_{0}^{\pi}\ln\left(1-\cos^2x\right)\dd x\\
+&=2\int_{0}^{\pi/2}\ln\left(1-\sin^2x\right)\dd x=-2\pi\ln 2.
+\end{split}\]
+
+(1)记\(F(a)=\int_{0}^{\pi/2}\ln\left(a^2-\sin^2x\right)\dd x\), 则有
+\[\begin{split}
+F'(a)&=\int_{0}^{\pi/2}\frac{2a}{a^2-\sin^2x}\dd x\\
+&=\int_{0}^{\pi/2}\frac{2a}{(a^2-1)\sin^2x+a^2\cos^2x}\dd x\\
+&=\int_{0}^{\pi/2}\frac{2a\sec^2x}{(a^2-1)\tan^2x+a^2}\dd x\\
+&=\int_{0}^{\pi/2}\frac{2a}{(a^2-1)\tan^2x+a^2}\dd\left(\tan x\right)
+=\frac{\pi}{\sqrt{a^2-1}},
+\end{split}\]于是
+\[F(a)=\int\frac{\pi}{\sqrt{a^2-1}}\dd a=\pi\ln(a+\sqrt{a^2-1})+C,\]
+由前述分析知\(F(1)=-\pi\ln 2\), 从而\(C=-\pi\ln 2\), 
+即\(F(a)=\pi\ln\left(a+\sqrt{a^2-1}\right)-\pi\ln 2\).
+
+(2)记\(G(x)=\int_{0}^{\pi}\ln\left(1+a\cos x\right)\dd x\), 
+有\(G(x)=\int_{0}^{\pi}\ln\left(1-a\cos x\right)\dd x\), 
+这意味着我们可以只讨论\(a>0\)的情况, 同时它也带给我们了另一个便利. 这在之后的不久便能体会到. 
+易见\(F(a)=\int_{0}^{\pi/2}\ln\left(a^2-\cos^2x\right)\dd x\), 
+当\(0<a\leqslant 1\)时, \(\frac{1}{a}\geqslant 1\), 于是
+\[\begin{split}
+F\left(\frac{1}{a}\right)&=\int_{0}^{\pi/2}\ln\left(\frac{1-a^2\cos^2x}{a^2}\right)\dd x\\
+&=\frac{1}{2}\int_{0}^{\pi}\left(\ln(1+a\cos x)+\ln(1-a\cos x)-\ln a^2\right)\dd x=G(x)-\pi \ln a,
+\end{split}\]
+由(1)的结果可得\[G(x)=\pi\ln\left(1+\sqrt{1-a^2}\right).\]
+
+(3)由于\[\begin{split}
+\int_{0}^{\pi}\ln(a^2\cos^2x+b^2\sin^2x)\,\dd x
+&=\int_{0}^{\pi/2}\ln(a^2\cos^2x+b^2\sin^2x)\,\dd x
++\int_{\pi/2}^{\pi}\ln(a^2\cos^2x+b^2\sin^2x)\,\dd x\\
+&=\int_{0}^{\pi/2}\ln(a^2\cos^2x+b^2\sin^2x)\,\dd x
++\int_{0}^{\pi/2}\ln(a^2\sin^2x+b^2\cos^2x)\,\dd x,
+\end{split}\]
+不妨记\(I(a,b)=\int_{0}^{\pi/2}\ln(a^2\sin^2x+b^2\cos^2x)\,\dd x\). 
+若\(a=b>0\), 则有\[I(a,a)=\int_{0}^{\pi/2}\ln a^2\,\dd x=\pi\ln a,\]
+当\(a,b>0\)时有\[\begin{split}
+\frac{\partial I(a,b)}{\partial a}
+&=\int_{0}^{\pi/2}\frac{2a\sin^2x}{a^2\sin^2x+b^2\cos^2x}\,\dd x\\
+&=2a\int_{0}^{\pi/2}\frac{\tan^2x}{a^2\tan^2x+b^2}\,\dd x\\
+&=2a\int_{0}^{+\infty}\frac{t^2}{(a^2t^2+b^2)(1+t^2)}\,\dd t\\
+&=\frac{2a}{a^2-b^2}\int_{0}^{+\infty}\left(\frac{1}{1+t^2}
+-\frac{b^2}{a^2t^2+b^2}\right)\dd t\\
+&=\frac{2a}{a^2-b^2}\left.\left(\arctan t-\frac{b}{a}\arctan\frac{a}{b}t\right)\right|^{+\infty}_0=\frac{\pi}{a+b},
+\end{split}\]于是\(I(a,b)=\pi\ln(a+b)+C(b)\), 令\(a=b\)代入可得
+\[C(a)=I(a,a)-\pi\ln\left(2a\right)
+=\pi\ln a-\pi\left(\ln 2+\ln a\right)=-\pi\ln 2,\]
+即\(C(b)=-\pi\ln 2\), 得到\(I(a,b)=\pi\ln\frac{a+b}{2}\).
+
+当\(a>0,b=0\)时, 有
+\[I(a,0)=\int_{0}^{\pi/2}\ln\left(a^2\sin^2x\right)\dd x
+=2\int_{0}^{\pi/2}\left(\ln a+\ln\sin x\right)\dd x
+=2\left(\frac{\pi}{2}\ln a+\left(-\frac{\pi}{2}\ln 2\right)\right)
+=\pi\ln\frac{a}{2},\]
+同理\(a=0,b>0\)时\(I(0,b)=\pi\ln\frac{b}{2}\). 
+综上所述当\(a^2+b^2>0\)时有\(I(a,b)=\pi\ln\frac{|a|+|b|}{2}\), 
+显然对于\(\int_{0}^{\pi/2}\ln\left(a^2\cos^2x+b^2\sin^2x\right)\dd x\)有同样的结果, 故
+\[\int_{0}^{\pi}\ln\left(a^2\cos^2x+b^2\sin^2x\right)\dd x=2\pi\ln\frac{|a|+|b|}{2}.\qedhere\]
+\end{proof}
+\textbf{例 10.3.5} 设\(\alpha\in(-\infty,+\infty)\). 
+计算\(\int_{0}^{\pi}\ln\left(1-2\alpha\cos x+\alpha^2\right)\dd x\).
+\begin{proof}[解答]
+首先, 从含参积分的瑕点定义来看, 当\(\alpha\)取值于整个\(\R\)时, 
+\([0,\pi]\)上所有点都是积分的瑕点. 
+但当我们把\(\alpha\)限制在\(\R\)上的有界集上时, 
+积分可能的瑕点只有\(0\)和\(\pi\). 我们有
+\[\sin^2x\leqslant 1-2\alpha\cos x+\alpha^2\leqslant 2+2\alpha^2.\]
+因此,\[\left|\ln\left(1-2\alpha\cos x+\alpha^2\right)\right|\leqslant \left|\ln\sin^2x\right|+\ln\left(2+2\alpha^2\right),\quad \forall x\in(0,\pi).\]
+于是由Weierstrass判别法, \(\int_{0}^{\pi}\ln\left(1-2\alpha\cos x+\alpha^2\right)\dd x\)关于\(\alpha\in(-\infty,+\infty)\)内闭一致收敛. 
+于是利用一致收敛性或Lebesgue控制收敛定理,
+\[F(\alpha)=\int_{0}^{\pi}\ln\left(1-2\alpha\cos x+\alpha^2\right)\dd x\]
+在\((-\infty,+\infty)\)上连续. 我们有\[\begin{split}
+&F(\alpha)=F(-\alpha)=\frac{1}{2}\left(F(\alpha)+F(-\alpha)\right)\\
+&=\frac{1}{2}\int_{0}^{\pi}\ln\left((1+\alpha^2)-4\alpha^2\cos^2x\right)\dd x\\
+&=\frac{1}{2}\int_{0}^{\pi}\ln\left((1+\alpha^2)^2-2\alpha^2\cos2x-2\alpha^2\right)\dd x\\
+&=\frac{1}{4}\int_{0}^{2\pi}\ln\left(1+\alpha^4-2\alpha^2\cos x\right)\dd x\\
+&=\frac{1}{2}\int_{0}^{\pi}\ln\left(1+\alpha^4-2\alpha^2\cos x\right)\dd x
+=\frac{1}{2}F(\alpha^2).
+\end{split}\]因此, \(F(\pm 1)=0\). 更一般地, 反复利用上式可得
+\[F(\alpha)=\frac{1}{2^n}F\big(\alpha^{2^n}\big),\quad \forall\left|\alpha\right|<1,n\geqslant 1.\]
+所以\[F(\alpha)=\lim_{n\rightarrow+\infty}\frac{1}{2^n}F\big(\alpha^{2^n}\big)
+=0,\quad F(0)=0,\quad \forall\left|\alpha\right|<1.\]
+最后, 结合\(F\left(\frac{1}{\alpha}\right)=-2\pi\ln\left|\alpha\right|+F(\alpha)\)可得
+\(F(\alpha)=\begin{cases}
+2\pi\ln\left|\alpha\right|,\quad &\left|\alpha\right|>1,\\
+0,&\left|\alpha\right|\leqslant1.
+\end{cases}\)
+\end{proof}
+\item 证明\(\lim_{\alpha\rightarrow+\infty}\int_{0}^{+\infty}\frac{\sin x}{x\sqrt{x}}\ee^{-\alpha x}\,\dd x=0.\)
+\begin{proof}
+被积函数由\(\min\left(\frac{1}{x\sqrt{x}},\frac{1}{\sqrt{x}}\right) \in L^1(0,+\infty)\)一致地控制，由控制收敛定理即得。
+\end{proof}
+\item 计算\(\lim_{n\rightarrow+\infty}\int_{0}^{1}\frac{\cos(\pi x)-\ee^{-n^2x^2}}{n\arcsin x}\frac{\dd x}{\ln (1+x)}\)并说明计算过程成立的理由.
+\begin{proof}[解答]
+置$nx=t$，积分成为
+\[\lim_{n\rightarrow+\infty}\int_{0}^{n}\frac{\cos\dfrac{\pi t}{n}-\ee^{-t^2}}{n\arcsin\dfrac{t}{n}}\frac{\dd t}{n\ln \Big(1+\dfrac{t}{n}\Big)}.\]
+由控制收敛定理，其值为
+\[\int_0^{+\infty}(1-\ee^{-t^2})\frac{\dd t}{t^2}
+=\int_0^{+\infty}\frac{\dd(1-\ee^{-t^2})}{t}
+=\int_0^{+\infty}2\ee^{-t^2}\,\dd t=\sqrt{\pi}.\qedhere\]
+\end{proof}
+\item 计算\(\lim_{n\rightarrow+\infty}\sqrt{n}\int_{0}^{+\infty}\frac{\cos x}{(1+x^2)^n}\,\dd x\)并说明计算过程的正确性.
+\begin{proof}[解答]
+置$\sqrt{n}x=t$，积分成为
+\[\lim_{n\rightarrow+\infty}\int_{0}^{+\infty}\frac{\cos \dfrac{t}{\sqrt{n}}}{\Big(1+\dfrac{t^2}{n}\Big)^n}\,\dd t
+=\int_0^{+\infty}\ee^{-t^2}\,\dd t=\sqrt{\pi}/2.\qedhere\]
+\end{proof}
+\item 证明或证伪: 当\(n\rightarrow+\infty\)时, \(\int_{0}^{\pi}\ee^{xt}\left(\frac{\cos\left(n+1/2\right)t}{\ln(1+t)}-\frac{\cos nt}{t}\right)\dd t\)关于\(x\in[0,1]\)一致收敛于零.
+\item 设\(f\)是\(\left[0,1\right)\)上的连续可微函数, \(f(0)=0,f'\in L^2(0,1)\). 
+证明: \[\int_{0}^{1}\frac{|f(x)|^2}{x^2}\,\dd x\leqslant 4\int_{0}^{1}|f'(x)|^2\,\dd x.\]
+\begin{proof}
+记\(g(x)=\begin{cases}
+f(x)/x,\quad &x\in(0,1),\\
+f'(0),&x=0
+\end{cases}\), 则有
+\[g'(x)=\frac{f'(x)x-f(x)}{x^2}=\frac{f'(x)-g(x)}{x},\]
+那么原不等式等价于
+\[\int_{0}^{1}(g(x))^2\,\dd x\leqslant 4\int_{0}^{1}(g(x)+xg'(x))^2\,\dd x,\]
+即\begin{align*}0&\leqslant\int_{0}^{1}\left(3g^2+8xgg'+4x^2(g')^2\right)\dd x\\
+&=2\int_{0}^{1}\left(g^2+2xgg'\right)\dd x+\int_{0}^{1}(g+2xg')^2\,\dd x,\end{align*}
+而\(\int_{0}^{1}\left(g^2+2xgg'\right)\dd x
+=\left(xg^2\right)\Big|_0^1=g^2(1)\geqslant 0\), 原不等式得证.
+\end{proof}
+\item 设\(f\)为以\(\pi\)为周期且在\([0,\pi]\)上可积的偶函数. 证明:
+\begin{enumerate}[label=(\arabic*)]
+\item \(\int_{0}^{+\infty}f(x)\frac{\sin x}{x}\,\dd x=\int_{0}^{\pi/2}f(x)\,\dd x\).
+\item \(\int_{0}^{+\infty}f(x)\left(\frac{\sin x}{x}\right)^2\dd x=\int_{0}^{\pi/2}f(x)\,\dd x\).
+\end{enumerate}
+\begin{proof}
+(1)我们分三步证明.
+\begin{enumerate}[label=(\roman*)]
+\item\textbf{收敛性.} 首先, \(\int_{0}^{2\pi}\frac{f(x)\sin x}{x}\,\dd x\)是一个定积分. 其次, 由题设, 可见
+\[\int_{2\pi}^{2k\pi}f(x)\sin x\,\dd x=0,\quad\forall\, k\geqslant 1.\]
+由此不难得到对任何\(A>2\pi\), 成立
+\[\left|\int_{2\pi}^{A}f(x)\sin x\,\dd x\right|
+\leqslant\int_{0}^{\pi}\left|f(x)\right|\dd x.\]
+于是由Dirichlet判别法, \(\int_{2\pi}^{+\infty}\frac{f(x)\sin x}{x}\,\dd x\)收敛, 即原积分收敛.
+\item\textbf{\(f\)为三角多项式情形.} 若\(f=\sum_{k=0}^{m}a_k\cos (2kx)\), 则
+\[\begin{split}
+&\int_{0}^{+\infty}\frac{f(x)\sin x}{x}\,\dd x
+=\int_{0}^{+\infty}\sum_{k=0}^{m}\frac{a_k\cos(2kx)\sin x}{x}\,\dd x\\
+&=\frac{1}{2}\int_{0}^{+\infty}\sum_{k=0}^{m}a_k\frac{\sin\left((2k+1)x\right)-\sin\left((2k-1)x\right)}{x}\,\dd x\\
+&=\frac{\pi}{4}\sum_{k=0}^{m}a_k\left(\mathrm{sgn}(2k+1)-\mathrm{sgn}(2k-1)\right)\\
+&=\frac{\pi a_0}{2}=\int_{0}^{\pi/2}f(x)\,\dd x.
+\end{split}\]
+\item\textbf{一般情形.} 一般地, 由于\(f\)是以\(2\pi\)为周期的连续函数, 
+根据Weierstrass第二逼近定理, 存在一列三角多项式\(T_n\)使得
+\[\int_{0}^{2\pi}\left|f(x)-T_n(x)\right|\dd x\rightarrow 0,\quad n\rightarrow+\infty.\]
+令\[g_n(x)=\frac{T(x)+T(-x)}{2}+\frac{1}{2\pi}\int_{0}^{2\pi}\left(f(t)-T_n(t)\right)\dd t.\]
+则\(g_n\)具有形式\(g_n(x)=\sum_{k=0}^{m_n}a_{n,k}\cos(2kx)\), 满足
+\[\int_{0}^{2\pi}\left(g_n(x)-f(x)\right)\dd x=0,\]
+且\[\varepsilon_n\equiv\int_{0}^{\pi}\left|f(x)-g_n(x)\right|\dd x\rightarrow 0,\quad n\rightarrow+\infty.\]
+记\[G_n(x)=\int_{0}^{x}\left(f(t)-g_n(t)\right)\sin t\,\dd t,\quad x\geqslant 0.\]则
+\[G_n(2k\pi)=0,\quad\left|G_n(x)\right|\leqslant\int_{0}^{\pi}\left|f(t)-g_n(t)\right|\dd t=\varepsilon_n.\]
+我们有\[\left|\int_{0}^{2\pi}\frac{\left(f(x)-g_n(x)\right)\sin x}{x}\dd x\right|
+\leqslant\int_{0}^{2\pi}\left|f(x)-g_n(x)\right|\dd x=2\varepsilon_n,\]
+\[\begin{split}
+&\quad\left|\int_{2\pi}^{+\infty}\frac{\left(f(x)-g_n(x)\right)\sin x}{x}\dd x\right|
+=\left|\frac{G_n(x)}{x}\Big|_{2\pi}^{+\infty}+\int_{2\pi}^{+\infty}\frac{G_n(x)}{x^2}\dd x\right|\\
+&=\left|\int_{2\pi}^{+\infty}\frac{G_n(x)}{x^2}\dd x\right|
+\leqslant\varepsilon_n\int_{2\pi}^{+\infty}\frac{1}{x^2}\dd x\leqslant \varepsilon_n.
+\end{split}\]
+于是\[\begin{split}
+&\quad\left|\int_{0}^{+\infty}\frac{f(x)\sin x}{x}\,\dd x-\int_{0}^{\pi/2}f(x)\,\dd x\right|\\
+&=\bigg|\int_{0}^{+\infty}\frac{(f(x)-g_n(x))\sin x}{x}\,\dd x-\int_{0}^{\pi/2}(f(x)-g_n(x))\,\dd x\bigg|\\
+&\leqslant\left|\int_{0}^{2\pi}\frac{\left(f(x)-g_n(x)\right)\sin x}{x}\,\dd x\right|
++\left|\int_{2\pi}^{+\infty}\frac{\left(f(x)-g_n(x)\right)\sin x}{x}\,\dd x\right|
++\left|\int_{0}^{\pi/2}\left(f(x)-g_n(x)\right)\,\dd x\right|\\
+&\leqslant2\varepsilon_n+\varepsilon_n+\varepsilon_n.
+\end{split}\]令\(n\rightarrow+\infty\)即得结论.
+\end{enumerate}
+
+(2)情况类似.
+\begin{enumerate}[label=(\roman*)]
+\def\sgn{\operatorname{sgn}}
+\item \textbf{收敛性. }易见\(\int_{0}^{2\pi}f(x)\left(\frac{\sin x}{x}\right)^2\dd x\)是一个定积分, 
+而\(\int_{2\pi}^{+\infty}f(x)\left(\frac{\sin x}{x}\right)^2\dd x\)绝对收敛, 
+因此, 原积分收敛.
+\item \textbf{\(f\)为三角多项式情形. }设\(f=\sum_{k=0}^{m}a_k\cos(2k\pi x)\). 注意到
+\[\begin{split}
+&\int_{0}^{+\infty}\cos(2kx)\left(\frac{\sin x}{x}\right)^2\dd x
+=\int_{0}^{+\infty}\frac{\cos(2kx)\sin 2x-2k\sin(2kx)\sin^2x}{x}\dd x\\
+&=\int_{0}^{+\infty}\frac{\sin\left(2(k+1)x\right)-\sin(2(k-1)x)-2k\sin(2kx)+k\sin\left(2(k+1)x\right)+k\sin\left(2(k-1)x\right)}{2x}\dd x\\
+&=\frac{\pi}{2}\left(\sgn(k+1)-\sgn(k-1)-2k\sgn(k)+k\sgn(k+1)+k\sgn(k-1)\right)
+=\begin{cases}
+\pi/2,\quad &k=0,\\
+0,\quad &k\geqslant 1.
+\end{cases}
+\end{split}\]此时\(\int_{0}^{+\infty}f(x)\left(\frac{\sin x}{x}\right)^2\dd x=\int_{0}^{\pi/2}f(x)\,\dd x\)成立.
+\item \textbf{一般情形. }一般地, 对于满足题意的函数\(f\), 存在一列三角多项式\(g_n(x)=\sum_{k=0}^{m_n}a_{n,k}\cos(2kx)\), 使得
+\[\max_{x\in[0,\pi]}\left|g_n(x)\right|\leqslant M_f:=\sup_{x\in[0,\pi]}\left|f(x)\right|,\]
+且\[\varepsilon_n\equiv\int_{0}^{\pi}\left|f(x)-g_n(x)\right|\dd x\rightarrow 0,\quad n\rightarrow+\infty.\]
+取自然数列\(\{k_n\}\)使得\(k_n\rightarrow+\infty\), 且\(k_n^2\varepsilon_n\leqslant 1\). 我们有
+\begin{align*}
+    &\left|\int_{0}^{+\infty}\left(f(x)-g_n(x)\right)\left(\frac{\sin x}{x}\right)^2\dd x\right|\\
+    &\leqslant\int_{0}^{k_n\pi}\left|f(x)-g_n(x)\right|\dd x+2M_f\int_{k_n\pi}^{+\infty}\frac{1}{x^2}\dd x
+    =k_n\varepsilon_n+\frac{2M_f}{k_n\pi}.
+\end{align*}
+于是\begin{align*}
+    &\int_{0}^{+\infty}f(x)\left(\frac{\sin x}{x}\right)^2\dd x\\
+    &=\lim_{n\rightarrow+\infty}\int_{0}^{+\infty}g_n(x)\left(\frac{\sin x}{x}\right)^2\dd x\\
+    &=\lim_{n\rightarrow+\infty}\int_{0}^{\pi/2}g_n(x)\,\dd x
+    =\int_{0}^{\pi/2}f(x)\,\dd x.
+\end{align*}
+由此即得结论.\qedhere
+\end{enumerate}
+\end{proof}
+
+本题还有其他方法. 直接利用换元法与\(\csc x\)的展开式, 简述步骤如下.
+
+
+\item 设\(f\)为以\(2\pi\)为周期在\([0,2\pi]\)上可积的偶函数. 证明:
+\[\int_{0}^{+\infty}f(x)\frac{\sin x}{x}\,\dd x
+=\frac{1}{2}\int_{0}^{\pi}f(x)(1+\cos x)\,\dd x.\]
+\begin{proof}
+
+\end{proof}
+\item 证明\(\int_{0}^{1}\frac{1}{x^x}\,\dd x=\sum_{n=1}^{\infty}\frac{1}{n^n}\).
+\begin{proof}
+由\(\int_{0}^{1}\frac{1}{x^x}\,\dd x=\int_{0}^{1}\frac{1}{\ee^{x\ln x}}\dd x\), 
+并且\[\int_{0}^{1}\frac{1}{\ee^{x\ln x}}\,\dd x
+=\int_{0}^{1}\left(\sum_{n=0}^{\infty}\frac{(-1)^n(x\ln x)^n}{n!}\right)\dd x,\]
+设
+\[f(x)=\left|x\ln x\right|,\quad x\in[0,1],\]
+有\[f(x)=x\ln\frac{1}{x}=x\left[\ln\Big(\frac{1}{\ee x}\Big)+1\right]\leqslant\frac{1}{\ee},\]
+从而上述的被积函数中的级数有优级数\(\sum_{n=0}^{\infty}\frac{\ee^{-n}}{n!}\), 
+由Weierstrass判别法可知该级数一致收敛, 从而可逐项积分, 即
+\[\int_{0}^{1}\frac{1}{x^x}\,\dd x=\sum_{n=0}^{\infty}\frac{(-1)^n}{n!}\int_{0}^{1}x^n\ln^n x\,\dd x,\]
+现在来计算\(\int_{0}^{1}x^n\ln^n x\,\dd x\), 置\(x^{n+1}=\ee^{-y}\)得到
+\[\int_{0}^{1}x^n\ln^nx\,\dd x=\frac{(-1)^n}{(n+1)^{n+1}}\int_{0}^{+\infty}y^n\ee^{-y}\dd y,\]
+将右侧的积分记为\(\Gamma(n)\), 有
+\[\Gamma(n)=\int_{0}^{+\infty}y^n\ee^{-y}\dd y
+=\left.-y^n\ee^{-y}\right|_0^{+\infty}+n\int_{0}^{+\infty}y^{n-1}\ee^{-y}\dd y
+=n\Gamma(n-1),\]
+于是\(\sum_{n=0}^{\infty}\frac{(-1)^n}{n!}\cdot(-1)^n\frac{n!}{(n+1)^{n+1}}
+=\sum_{n=1}^{\infty}\frac{1}{n^n}.\)
+\end{proof}
+\item 对于\(E\subseteq\mathbb{R}^n\), 用\(L\ln L(E)\)表示满足\(\int_E|f(\boldsymbol{x})|\ln\left(1+|f(\boldsymbol{x})|\right)\dd\boldsymbol{x}<+\infty\)的函数\(f\)的全体. 
+现设\(a>0,f:[0,1]\rightarrow\left[a,+\infty\right), f\in L\ln L[0,1]\). 证明:
+\[\int_{0}^{1}f(x)\ln f(x)\,\dd x\geqslant\int_{0}^{1}f(x)\,\dd x\int_{0}^{1}\ln f(x)\,\dd x.\]
+\begin{proof}
+展开
+\[\int_0^1\int_0^1\big(f(x)-f(y)\big)\big(\ln f(x)-\ln f(y)\big)\dd x\dd y\geqslant0\]
+即可。
+\end{proof}
+\item 试利用\(\frac{1}{2}+\sum_{k=1}^{n}\cos kx=\frac{\sin\left(n+1/2\right)x}{2\sin(x/2)}\)证明:
+\[\frac{\pi}{2}=\lim_{n\rightarrow+\infty}\int_{0}^{\pi}\frac{\sin\left(n+1/2\right)x}{2\sin(x/2)}\,\dd x
+=\lim_{n\rightarrow+\infty}\int_{0}^{\pi}\frac{\sin\left(n+1/2\right)x}{x}\,\dd x
+=\int_{0}^{+\infty}\frac{\sin x}{x}\,\dd x.\]
+\begin{proof}
+题中等式表明第一个等号成立，第三个等号是显然的，
+第二个等号则是对有界函数\(\frac{1}{2\sin(x/2)}-\frac{1}{x}\)用Riemann--Lebesgue引理。
+\end{proof}
+\end{enumerate}
+\end{a}
+
+\begin{b}
+\begin{enumerate}
+\item 设\(\alpha>0\), 求\(n\rightarrow+\infty\)时\(\int_{n\pi}^{(n+1)\pi}\frac{x}{1+x^\alpha\sin^2x}\,\dd x\)的阶.
+\begin{proof}[解答(楼红卫)]作放缩
+\begin{align*}
+& \quad 2n\pi \int_0^{\frac{\pi}{2}} \frac{1}{1+(n+1)^\alpha \pi^\alpha \sin^2 x} \, d x
+=n\pi \int_{n\pi}^{(n+1)\pi} \frac{1}{1+(n+1)^\alpha \pi^\alpha \sin ^2 x} \, d x \\
+& \leqslant \int_{n\pi}^{(n+1)\pi} \frac{x}{1+x^\alpha \sin^2 x} \, d x \\
+& \leqslant (n+1)\pi \int_0^\pi \frac{1}{1+n^\alpha \pi^\alpha \sin^2 x} \, d x
+=2(n+1)\pi \int_0^{\frac{\pi}{2}} \frac{1}{1+n^\alpha \pi^\alpha \sin ^2 x} \, d x.
+\end{align*}
+对于 $\kappa>0$，
+\begin{align*}
+& \int_0^{\frac{\pi}{2}} \frac{1}{1+\kappa^2 \sin^2 x} \, d x 
+\xlongequal{t=\tan x} \int_0^{+\infty} \frac{d t}{1+(1+\kappa^2) t^2} \\
+& = \left.\frac{1}{\sqrt{1+\kappa^2}} \arctan \left(\sqrt{1+\kappa^2}\,t\right)\right|_0 ^{+\infty}
+=\frac{\pi}{2\sqrt{1+\kappa^2}},
+\end{align*}
+所以，
+\[\int_{n\pi}^{(n+1)\pi} \frac{x}{1+x^\alpha \sin^2 x} \, d x 
+\sim \pi^{2-\frac{\alpha}{2}} n^{1-\frac{\alpha}{2}}, \quad n \rightarrow+\infty.\qedhere\]
+\end{proof}
+\begin{proof}[解答(原作者)]
+我们记\[I_n=\int_{n\pi}^{(n+1)\pi}\frac{x}{1+x^\alpha\sin^2x}\,\dd x
+=\int_{0}^{\pi}\frac{x+n\pi}{1+(x+n\pi)^\alpha\sin^2x}\dd x,\]
+一方面\[\begin{split}
+I_n&\geqslant 2\int_{0}^{\pi/2}\frac{n\pi}{1+(n+1)^\alpha\pi^\alpha\sin^2x}\,\dd x
+\geqslant 2\int_{0}^{\pi/2}\frac{n\pi}{1+(n+1)^\alpha\pi^\alpha x^2}\,\dd x\\
+&=\frac{2n\pi}{(n+1)^{\alpha/2}\pi^{\alpha/2}}\arctan\left(\frac{(n+1)^{\alpha/2}\pi^{\alpha/2+1}}{2}\right)=O(n^{1-\alpha/2}).
+\end{split}\]另一方面\[\begin{split}
+I_n&\leqslant 2\int_{0}^{\pi/2}\frac{(n+1)\pi}{1+n^\alpha\pi^{\alpha}\sin^2x}\,\dd x
+\leqslant 2\int_{0}^{\pi/2}\frac{(n+1)\pi}{1+n^{\alpha}\pi^{\alpha}(2x/\pi)^2}\,\dd x\\
+&=\frac{(n+1)\pi}{n^{\alpha/2}\pi^{\alpha/2-1}}\arctan(n^{\alpha/2}\pi^{\alpha/2})=O(n^{1-\alpha/2}).\end{split}\]
+故\(\int_{n\pi}^{(n+1)\pi}\frac{x}{1+x^\alpha\sin^2x}\,\dd x=O(n^{1-\alpha/2})\).
+\end{proof}
+\item 计算\(\int_{0}^{+\infty}\frac{(1-x^2)\arctan x^2}{x^4+4x^2+1}\,\dd x.\)
+\begin{proof}[解答]
+注意到\(\arctan x^2=\int_{0}^{x^2}\frac{1}{1+y^2}\,\dd y\), 于是有
+\[\begin{split}
+&\int_{0}^{+\infty}\frac{(1-x^2)\arctan x^2}{x^4+4x^2+1}\,\dd x
+=\int_{0}^{+\infty}\frac{1-x^2}{x^4+4x^2+1}\left(\int_{0}^{x^2}\frac{1}{1+y^2}\dd y\right)\dd x\\
+&=\int_{0}^{+\infty}\int_{\sqrt{y}}^{+\infty}\frac{1-x^2}{x^4+4x^2+1}\cdot\frac{1}{1+y^2}\,\dd x\dd y.
+\end{split}\]
+先处理\(\int_{\sqrt{y}}^{+\infty}\frac{1-x^2}{x^4+4x^2+1}\,\dd x\), 有
+\[\frac{1-x^2}{x^4+4x^2+1}=\frac{A}{x^2+2-\sqrt{3}}-\frac{B}{x^2+2+\sqrt{3}},\]
+其中\(A=\frac{\sqrt{3}-1}{2},B=\frac{\sqrt{3}+1}{2}\), 于是有
+\[\begin{aligned}
+	\int_{\sqrt{y}}^{+\infty}{\frac{1-x^2}{x^4+4x^2+1}}\,\mathrm{d}x
+    &=\int_{\sqrt{y}}^{+\infty}{\frac{A}{x^2+2-\sqrt{3}}}-\frac{B}{x^2+2+\sqrt{3}}\,\mathrm{d}x\\
+	&=\frac{A}{\sqrt{2-\sqrt{3}}}\arctan \frac{x}{\sqrt{2-\sqrt{3}}}-\frac{B}{\sqrt{2+\sqrt{3}}}\arctan \frac{x}{\sqrt{2+\sqrt{3}}}\bigg|_{\sqrt{y}}^{+\infty}\\
+	&=\frac{\sqrt{2}}{2}\left( \arctan \left( \sqrt{2-\sqrt{3}}\cdot \sqrt{y} \right) -\arctan \left( \sqrt{2+\sqrt{3}}\cdot \sqrt{y} \right) \right) .\\
+\end{aligned}\]
+我们记\(I(\alpha)=\int_{0}^{+\infty}\frac{\arctan\left(\alpha\sqrt{y}\right)}{1+y^2}\,\dd y\) \((\alpha\geqslant 0)\), 易见其关于参数\(\alpha\)一致收敛,  于是
+\[\int_{0}^{+\infty}\int_{\sqrt{y}}^{+\infty}\frac{1-x^2}{x^4+4x^2+1}\cdot\frac{1}{1+y^2}\,\dd x\dd y
+=\frac{\sqrt{2}}{2}\left(I\left(\sqrt{2-\sqrt{3}}\right)-I\left(\sqrt{2+\sqrt{3}}\right)\right).\]
+另一方面,易见\(I(0)=0\),
+\[I'(\alpha)=\int_{0}^{+\infty}\frac{\sqrt{y}}{(1+y^2)(1+\alpha^2y)}\,\dd y
+=\int_{0}^{+\infty}\frac{2y^2}{(1+y^4)(1+\alpha^2y^2)}\,\dd y,\]
+记\(f(z)=\frac{2z^2}{(1+z^4)(1+\alpha^2z^2)}\), 其在上半平面内有三个极点,
+\[a_1=\ee^{\pi\ii/4},\quad a_2=\ee^{3\pi\ii/4},\quad a_3=\frac{\ii}{\alpha},\]
+容易计算\(\operatorname{Res}(f,a_k)=\frac{2z^2}{4z^3(1+\alpha^2z^2)+2\alpha^2z(1+z^4)}\Big|_{z=a_k}\)分别为
+\[r_1:=-\frac{\ee^{3\pi\ii/4}}{2\left(1+\alpha^2\ee^{\pi\ii/2}\right)},\quad 
+r_2:=-\frac{\ee^{\pi\ii/4}}{2\left(1+\alpha^2\ee^{3\pi\ii/2}\right)},\quad 
+r_3:=\frac{\ii\alpha}{1+\alpha^4},\]
+于是\(I'(\alpha)=\pi\ii\sum_{k=1}^{3}r_k=\frac{\left(\sqrt{2}\alpha^2-2\alpha+\sqrt{2}\right)\pi}{2(1+\alpha^4)}\), 注意到
+\[\int\frac{\alpha}{1+\alpha^4}\,\dd\alpha=\frac{1}{2}\arctan\alpha^2+C,\]
+以及\[\int\frac{\alpha^2+1}{1+\alpha^4}\,\dd\alpha
+=\int\frac{1+1/\alpha^2}{\left(\alpha-1/\alpha\right)^2+2}\,\dd\alpha
+=\frac{1}{\sqrt{2}}\arctan\left(\frac{\alpha-1/\alpha}{\sqrt{2}}\right)+C.\]
+于是\[\begin{split}
+&I\left(\sqrt{2-\sqrt{3}}\right)-I\left(\sqrt{2+\sqrt{3}}\right)
+=\int_{\sqrt{2+\sqrt{3}}}^{\sqrt{2-\sqrt{3}}}I'(\alpha)\,\dd\alpha\\
+&=\frac{\pi}{2}\left(\arctan\left(\frac{\alpha-1/\alpha}{\sqrt{2}}\right)-\arctan\alpha^2\right)\Big|_{\sqrt{2+\sqrt{3}}}^{\sqrt{2-\sqrt{3}}}\\
+&=\frac{\pi}{2}\left(2\arctan\frac{\sqrt{2-\sqrt{3}}-\sqrt{2+\sqrt{3}}}{\sqrt{2}}-\left(\arctan\sqrt{2-\sqrt{3}}-\arctan\sqrt{2+\sqrt{3}}\right)\right)\\
+&=\frac{\pi}{2}\left(-\frac{\pi}{2}+\frac{\pi}{3}\right)=-\frac{\pi}{12}.
+\end{split}\]
+所以\(\int_{0}^{+\infty}\frac{(1-x^2)\arctan x^2}{x^4+4x^2+1}\,\dd x
+=-\frac{\sqrt{2}}{2}\cdot\frac{\pi^2}{12}=-\frac{\sqrt{2}\pi^2}{24}.\)
+\end{proof}
+\item 设\(\alpha\in[0,1]\), 计算\(\int_{0}^{\pi}\ln|a^2-\sin^2x|\,\dd x\).
+\begin{proof}[解答]
+设$a=\sin\theta$，其中$\theta$为定值，有
+\begin{align*}
+\int_{0}^{\pi}\ln|a^2-\sin^2x|\,\dd x&=\int_{0}^{\pi}\ln|\sin\theta-\sin x|\,\dd x+\int_{0}^{\pi}\ln|\sin\theta+\sin x|\,\dd x\\
+&=\int_{0}^{2\pi}\ln|\sin\theta-\sin x|\,\dd x\\
+&=2\ln 2+\int_{0}^{2\pi}\ln\left|\cos\frac{\theta+x}{2}\right|\dd x
++\int_{0}^{2\pi}\ln\left|\sin\frac{\theta-x}{2}\right|\dd x\\
+&=2\pi\ln 2+2\int_{0}^{2\pi}\ln\sin\frac{x}{2}\,\dd x\\
+&=2\pi\ln 2+4\int_{0}^{2\pi}\ln\sin\frac{x}{2}\,\dd \frac{x}{2}\\
+&=2\pi\ln 2-4\pi\ln 2=-2\pi\ln 2,
+\end{align*}
+最后一行用的是例10.1.3.
+\end{proof}
+\item 试寻求一些线性算子的积分不等式, 给出与之对偶的不等式.
+\item 构造\([0,1]\)上的函数\(f\), 使得\(\overline{\{\left(x,f(x)\right)|x\in[0,1]\}}=[0,1]\times [0,1]\).
+\begin{proof}[解答]
+记$\{a_n\}_{n\geqslant1}$为$[0,1]$中全体有理数的罗列，
+当$a_n+\pi/m\in[0,1]$时，取$f(a_n+\pi/m)=a_m$，其余点处$f$的值随便取。
+\end{proof}
+\item 设\(p>1,f\in L^p(0,+\infty)\)且\(f\)非负,证明\textbf{Hardy不等式}:
+\[\int_{0}^{+\infty}\left(\frac{1}{x}\int_{0}^{x}f(t)\,\dd t\right)^p\dd x
+\leqslant\left(\frac{p}{p-1}\right)^p\int_{0}^{+\infty}f^p(x)\,\dd x,\]
+其中\(\left(\frac{p}{p-1}\right)^p\)为最佳常数, 
+等号成立当且仅当\(\int_{0}^{+\infty}f(x)\,\dd x=0\).
+\begin{proof}
+下一题\(r=p\)的情况。
+\end{proof}
+\item 设\(p>1\), \(f\in L^p(0,+\infty)\)且\(f\)非负. 又设\(r>0,r\ne 1\). 
+证明Hardy不等式的推广: 若\(r>1\), 则
+\[\int_{0}^{+\infty}x^{-r}\left(\int_{0}^{x}f(t)\,\dd t\right)^p\dd x
+\leqslant\left(\frac{p}{r-1}\right)^p\int_{0}^{+\infty}x^{p-r}f^p(x)\,\dd x.\]
+若\(0<r<1\), 则\[\int_{0}^{+\infty}x^{-r}\left(\int_{x}^{+\infty}f(t)\,\dd t\right)^p\dd x
+\leqslant\left(\frac{p}{r-1}\right)^p\int_{0}^{+\infty}x^{p-r}f^p(x)\,\dd x.\]
+\begin{proof}
+Put $b=r-1$. On the multiplicative group $\left(\R^{+}, \frac{d t}{t}\right)$, 
+consider the convolution of the functions $|f(x)| x^{1-\frac{b}{p}}$ 
+with $x^{-\frac{b}{p}} \chi_{[1, \infty)}$, 
+and of the functions $|f(x)| x^{1+\frac{b}{p}}$ 
+with $x^{\frac{b}{p}} \chi_{(0,1]}$.
+
+For the first inequality, let $g(x)=|f(x)| x^{1-\frac{b}{p}} \in L^p\big(\R^{+}, \frac{d x}{x}\big)$ 
+and $h(x)=x^{-\frac{b}{p}} \chi_{[1, \infty)} \in L^1\big(\R^{+}, \frac{d x}{x}\big)$. 
+Now compute
+$$(g * h)(x)=\int_0^{\infty}|f(t)| t^{1-\frac{b}{p}}\left(\frac{x}{t}\right)^{-\frac{b}{p}} \chi_{[1, \infty)}\left(\frac{x}{t}\right) \frac{d t}{t}
+=x^{-\frac{b}{p}} \int_0^x|f(t)| \, d t$$
+since $\frac{x}{t} \in[1, \infty)$ if and only if $t \in(0, x]$. We have
+$$\|g * h\|_{L^p}=\left(\int_0^{\infty}\left(\int_0^x|f(t)| \, d t\right)^p x^{-b} \frac{d x}{x}\right)^{\frac{1}{p}}
+=\left(\int_0^{\infty}\left(\int_0^x|f(t)| \, d t\right)^p x^{-b-1} d x\right)^{\frac{1}{p}},$$
+and also
+$$\|g\|_{L^p}=\left(\int_0^{\infty}|f(t)|^p t^{p-b-1} d t\right),$$
+and
+$$\|h\|_{L^1}=\int_0^{\infty} t^{-\frac{b}{p}} \chi_{[1, \infty)} \frac{d t}{t}
+=\int_1^{\infty} t^{-\frac{b}{p}-1} d t=\frac{p}{b}.$$
+The desired inequality now follows from $\|g*h\|_{L^p}\leqslant\|g\|_{L^p}\|h\|_{L^1}$.
+
+For the second inequality we proceed analogously with $g(x)=|f(x)| x^{1+\frac{b}{p}}$ and $h(x)=x^{\frac{b}{p}} \chi_{(0,1]}$. We have
+$$(g * h)(x)=\int_0^{\infty}|f(t)| t^{1+\frac{b}{p}}\left(\frac{x}{t}\right)^{\frac{b}{p}} \chi_{(0,1]}\left(\frac{x}{t}\right) \frac{d t}{t}
+=x^{\frac{b}{p}} \int_x^{\infty}|f(t)| \, d t.$$
+We also have
+\begin{align*}
+\|g * h\|_{L^p}&=\left(\int_0^{\infty}\left(\int_x^{\infty}|f(t)| d t\right)^p x^b \frac{d x}{x}\right)\\
+&=\left(\int_0^{\infty}\left(\int_x^{\infty}|f(t)| d t\right)^p x^{b-1} d x\right), \\
+\end{align*}
+$$\|g\|_{L^p}=\left(\int_0^{\infty}|f(t)|^p t^{p+b-1} d t\right)^{\frac{1}{p}},$$
+and
+$$\|h\|_{L^1}=\int_0^{\infty} t^{\frac{b}{p}} \chi_{(0,1]}(t) \frac{d t}{t}
+=\int_0^1 t^{\frac{b}{p}-1} d t=\frac{p}{b}.$$
+so the desired inequality again follows from $\|g*h\|_{L^p}\leqslant\|g\|_{L^p}\|h\|_{L^1}$.
+\end{proof}
+\item 设\(p,q>1\)为对偶数, \(f\in L^q(0,+\infty)\)且\(f\)非负. 
+令\(F(f)(x)=\int_{x}^{+\infty}\frac{f(t)}{t}\,\dd t.\)
+利用Hardy不等式以及对偶关系证明: \(\left\|F(f)\right\|_{L^q(0,+\infty)}
+\leqslant\frac{p}{p-1}\left\|f\right\|_{L^q(0,+\infty)}\).
+\begin{proof}
+记\(G(f)(x)=\frac{1}{x}\int_{0}^{x}f(t)\,\dd t\)，则Hardy不等式说的就是
+\[\|G(f)\|_{L^p}\leqslant\frac{p}{p-1}\|f\|_{L^p}.\]
+$F,G$实际上互为共轭算子，这就是说
+\begin{align*}
+\langle F(f),g \rangle&=\int_0^{+\infty}\left(\int_{x}^{+\infty}\frac{f(t)}{t}\,\dd t\right)g(x)\,\dd x\\
+&=\iint\limits_{\{x \leqslant t\}}\frac{f(t)}{t}g(x)\,\dd t\dd x\\
+&=\int_0^{+\infty}f(t)\left(\frac{1}{t}\int_0^t g(x)\,\dd x\right)\dd t=\langle f,G(g) \rangle,
+\end{align*}
+其中$f\in L^q(0,+\infty),g\in L^p(0,+\infty)$。由此，
+\[\|F(f)\|_{L^q}=\sup_{\|g\|_{L^p}\leqslant1, \atop g\geqslant0}\langle F(f),g \rangle
+\leqslant\sup_{\|G(g)\|_{L^p}\leqslant\frac{p}{p-1}, \atop g\geqslant 0}\langle f,G(g) \rangle
+=\frac{p}{p-1}\|f\|_{L^q}.\qedhere\]
+\end{proof}
+\end{enumerate}
+\end{b}
+\printfootnotes
+
+请移步[[User:Solution/临时库房|这里]]，全部放上去会编译失败。

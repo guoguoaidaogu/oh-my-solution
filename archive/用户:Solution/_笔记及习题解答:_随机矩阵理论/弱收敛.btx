@@ -1,0 +1,691 @@
+\theoremstyle{plain}\newtheorem*{1}{习题1}
+\theoremstyle{plain}\newtheorem*{2}{习题2}
+\theoremstyle{plain}\newtheorem*{3}{习题3}
+\theoremstyle{plain}\newtheorem*{4}{习题4}
+\theoremstyle{plain}\newtheorem*{5}{习题5}
+\theoremstyle{plain}\newtheorem*{6}{习题6}
+\theoremstyle{plain}\newtheorem*{7}{习题7}
+\theoremstyle{plain}\newtheorem*{8}{习题8}
+\theoremstyle{plain}\newtheorem*{9}{习题9}
+\theoremstyle{plain}\newtheorem*{10}{习题10}
+\def\E{\mathbb{E}}
+\def\R{\mathbb{R}}
+\def\N{\mathbb{N}}
+\def\B{\mathcal{B}}
+\def\M{\mathcal{M}}
+\def\prob{\mathbb{P}}
+\def\t{\underline{t}}
+\def\c{\underline{c}}
+\newtheorem{prop}{性质}
+
+\section{连读函数空间}
+
+$\mathbb{R}$: 实轴, $\mathcal{B}$: Borel $\sigma$-代数, $f: \mathbb{R} \rightarrow \mathbb{R}$
+
+$Supp(f) = \overline{\{x \in \mathbb{R} | f(x) \neq 0\}}$ 中闭集.
+
+f在无穷远处消失:$ \lim_{x\rightarrow\pm\infty}f(x)=0.$
+
+几类常用连续函数空间:
+\begin{itemize}
+    \item $C(\mathbb{R}) := \{f: \mathbb{R} \rightarrow \mathbb{R} \text{ 连续}\}$
+    \item $C_{b}(\mathbb{R}) := \{f \in C(\mathbb{R}), f \text{ 有界}\}$
+    \item $C_{0}(\mathbb{R}) := \{f \in C(\mathbb{R}), f \text{ 在无穷远处消失}\}$
+    \item $C_{c}(\mathbb{R}) := \{f \in C(\mathbb{R}), \text{ 有紧支集}\}$
+\end{itemize}
+\begin{theorem}
+   以上函数空间有如下性质:
+   \begin{enumerate}
+    \item[(1)] $C_{b}(\mathbb{R})$ 是完备的但不可分
+    \item[(2)] $C_{0}(\mathbb{R})$ 完备且可分
+    \item[(3)] $C_{c}(\mathbb{R})$ 不完备但可分 
+    \item[(4)] $C_{c}(\mathbb{R})$ 在 $C_{0}(\mathbb{R})$ 中稠密.
+   \end{enumerate}
+    
+\end{theorem}
+
+
+\section{ 概率测度的收敛}
+$\mathcal{M}(\mathbb{R})$: $(\mathbb{R}, \mathcal{B})$ 上的测度全体
+
+$\mathcal{M}_f(\mathbb{R})$: 有限测度全体
+
+$\mathcal{M}_1(\mathbb{R})$: 概率测度全体
+
+
+$\mathcal{M}_{\le1}(\mathbb{R})$: 次概率测度全体.
+\[ \mathcal{M}_1(\mathbb{R}) \subseteq \mathcal{M}_{\le1}(\mathbb{R}) \subseteq \mathcal{M}_f(\mathbb{R}) \subseteq \mathcal{M}(\mathbb{R})(\text{均是真包含}). \]
+
+若 $\mu \in \mathcal{M}(\mathbb{R})$, f可测, 记 $\langle \mu, f \rangle = \int f d\mu$.
+$\langle \mu, x^k \rangle = \int x^k d\mu$.
+
+\begin{lemma}
+     $\mathcal{F} \subseteq C_{b}(\mathbb{R})$ 是一个线性空间且 $C_c(\mathbb{R}) \subseteq \mathcal{F}$,
+则 $\forall \mu \in \mathcal{M}_f(\mathbb{R})$, 映射 $I_\mu: \mathcal{F} \rightarrow \mathbb{R}$,
+\[ f \rightarrow \langle \mu, f \rangle, \]
+定义了 $\mathcal{F}$ 上的正有界连续泛函且算子范数 $||I_\mu||_{op} = \mu(\mathbb{R})$.
+
+\end{lemma}
+\begin{remark}
+     正: $f \ge 0$, $I_{\mu}(f) \ge 0$
+\[ ||I_\mu||_{op} =\sup_{||f||=1} |I_\mu(f)|= \mu(\mathbb{R}). \]
+
+\end{remark}
+
+\begin{proof}
+    先定义Cutoff function:$\forall u > L \ge 0$, 定义
+$\phi_{L}^{u}: \mathbb{R} \rightarrow [0,1]$,
+\[
+\phi_{L}^{u}(x) = 
+\begin{cases} 
+1, & x \in [-l,l] \\
+\frac{u-|x|}{u-L}, & l < |x| < u \\
+0, & |x| > u
+\end{cases}
+\]
+只需证算子范数 $||I_\mu||_{op} = \mu(\mathbb{R})$.
+
+$\forall k$, $\phi_{k}^{k+1} \in \mathcal{F}$.\quad $\phi_{k}^{k+1} \ge 0$,$||\phi_{k}^{k+1}|| = 1$.
+
+$I_\mu(\phi_{k}^{k+1}) = \langle \mu, \phi_{k}^{k+1} \rangle \ge \mu([-k,k])$
+$\Rightarrow ||I_{\mu}|| \ge \mu(\mathbb{R})$.
+
+又$\langle \mu,f \rangle = |\int f d\mu| \le ||f|| \mu(\mathbb{R})$,
+
+$\Rightarrow ||I_\mu||_{op} \le \mu(\mathbb{R})\Rightarrow ||I_\mu||_{op} = \mu(\mathbb{R})$.
+\end{proof}
+
+
+\begin{theorem}{\textbf{(Riesz表示定理)}}
+设 $\mathcal{F}$ 满足 $C_c(\mathbb{R}) \subseteq \mathcal{F} \subseteq C_0(\mathbb{R})$
+的线性空间且装备无穷范数.
+
+则对 $\mathcal{F}$ 上任何正有界连续泛函 $I$, $\exists! \mu \in \mathcal{M}_{f}(\mathbb{R})$,
+s.t. $I=I\mu$ and $||I||_{op}=\mu(\mathbb{R})$. 
+\end{theorem}
+
+
+如何判定两个测度相同?
+\begin{lemma}
+    设 $\mu, \nu \in \mathcal{M}_f(\mathbb{R})$, 且 $\mathcal{F}$ 在 $C_c(\mathbb{R})$ 中的稠密子集.
+    
+(i) $\mu = \nu \iff \mu(I) = \nu(I)$, 其中I是边界测度为0的区间 $(\mu(\partial I) = \nu(\partial I) = 0)$
+
+(ii)$\mu = \nu \iff \forall f \in C_c(\mathbb{R}), \langle \mu, f \rangle = \langle \nu, f \rangle \iff \forall f \in \mathcal{F}, \langle \mu, f \rangle = \langle \nu, f \rangle$ (由Riesz定理可得)
+\end{lemma}
+
+\begin{proof}
+  (i): "$\Rightarrow$" $\checkmark$
+
+"$\Leftarrow$" 只需说明在有限开集上测度相同.
+注意到 $\forall \rho \in \mathcal{M}_{f}(\mathbb{R})$,  $A_{\rho} := \{x \in \mathbb{R} | \rho(\{x\}) > 0\}$ 至多可数,故
+$\mathbb{R} \setminus (A_\mu \cup A_\nu)$ 在 $\mathbb{R}$ 中稠密.
+
+
+$\forall a<b$, $\exists \{a_n\}, \{b_n\} \in \mathbb{R} \setminus (A_\mu \cup A_\nu)$
+s.t. $a_n \uparrow a, b_n \downarrow b$, $a_n < b_n$.
+
+故$\mu((a,b)) = \lim_{n\rightarrow\infty} \mu((a_n, b_n)) = \lim_{n\rightarrow\infty} \nu((a_n, b_n)) = \nu((a,b))$.  
+\end{proof}
+
+\begin{definition}
+     设 $\{\mu_n\}$ 是 $\mathcal{M}_{\le1}(\mathbb{R})$ 中的一个序列.
+
+(1) $\{\mu_n\}_{n \in \mathbb{N}}$ 弱收敛 (converge weakly) 于 $\mu \in \mathcal{M}_1(\mathbb{R})$, 若
+$\forall f \in C_b(\mathbb{R})$, 有 $\langle \mu_n, f \rangle \rightarrow \langle \mu, f \rangle$.
+
+(2) $\{\mu_n\}_{n \in \mathbb{N}}$ 淡收敛 (converge vaguely) 到 $\mu \in \mathcal{M}_{\le1}(\mathbb{R})$,
+$\forall f \in C_c(\mathbb{R})$, $\langle \mu_n, f \rangle \rightarrow \langle \mu, f \rangle$.
+
+\end{definition}
+
+\begin{remark}
+    1) weak convergence $\Rightarrow$ vague convergence
+    
+2) $\forall f \in C_b(\mathbb{R})$, 都有 $\lim_{n\rightarrow\infty} \langle \mu_n, f \rangle = \langle \mu, f \rangle$.
+$\Rightarrow \mu \in \mathcal{M}_1(\mathbb{R})$(取 $f=1$ 即可).
+
+3) $\forall f \in C_c(\mathbb{R})$, $\mu_n \in \mathcal{M}_{\le1}(\mathbb{R})$,
+$\lim_{n\rightarrow\infty} \langle \mu_n, f \rangle = \langle \mu, f \rangle, \Rightarrow \mu \in \mathcal{M}_{\le1}(\mathbb{R})$
+\begin{proof}
+     $\phi_m^{m+1} \in C_c(\mathbb{R})$
+
+$\langle \mu_n, \phi_m^{m+1} \rangle \rightarrow \langle \mu, \phi_m^{m+1} \rangle\quad \Rightarrow\langle \mu, \phi_m^{m+1} \rangle \le 1$.
+
+$\mu([-m,m]) \le \langle \mu, \phi_m^{m+1} \rangle \le 1 \Rightarrow \mu(\mathbb{R}) \le 1$.
+
+另一方面, $\mu \in \mathcal{M}_{\le1}(\mathbb{R})$, $\alpha = 1 - \mu(\mathbb{R}) \in [0,1]$.
+
+令$\mu_n = \mu + \alpha \delta_n$($\delta_n$是 $n$处的Dirac函数),则
+$\mu_n(\mathbb{R}) = \mu(\mathbb{R}) + \alpha = 1$,故 $\mu_n \in \mathcal{M}_1(\mathbb{R})$.
+事实上, $\mu_n \rightarrow \mu$ vaguely，则
+$\forall f \in C_c(\mathbb{R})$, $\langle \mu_n, f \rangle = \int f d\mu + \alpha f(n)$
+
+由 $f \in C_c(\mathbb{R})$, $\langle \mu_n, f \rangle \rightarrow \langle \mu, f \rangle$.
+
+\end{proof}
+4) $\mathcal{M}_1(\mathbb{R}) \subset \mathcal{M}_{\le1}(\mathbb{R})$
+概率测度在次概率测度中稠密 (在淡收敛意义下).
+
+5) $\mu_n \in \mathcal{M}_1(\mathbb{R})$, $\mu \in \mathcal{M}_{\le1}(\mathbb{R})$
+$\mu_n$ 弱/淡收敛至 $\mu$
+$\iff$ $\mu_n$ 的任何子列存在相应的收敛子列.
+
+6) $\mu_n \rightarrow \mu$ vaguely
+
+$\iff \forall f \in C_0(\mathbb{R})$, s.t. $\lim\limits_{n\rightarrow\infty} \langle \mu_n, f \rangle = \langle \mu, f \rangle$
+
+这是因为 $C_c(\mathbb{R})$ 在 $C_0(\mathbb{R})$ 中稠密.
+\end{remark}
+
+\begin{lemma}
+     设 $\mu_n \rightarrow \mu$ weakly, $\mu_n, \mu \in \mathcal{M}_1(\mathbb{R})$. $h \in C(\mathbb{R})$.
+$\langle \mu_n, h \rangle \rightarrow \langle \mu, h \rangle$ 的一个充分条件为:
+$\exists$ 一个严格正的连续函数 $g: \mathbb{R} \rightarrow (0, +\infty)$
+，s.t. $\sup_n \langle \mu_n, g \rangle < \infty$ 且 $\frac{h}{g}$ 在无穷远处消失.
+
+\end{lemma}
+\begin{6}
+证明引理2.7.(提示：用控制收敛定理)
+\end{6}
+\begin{proof}
+    
+由Skorokhod嵌入定理，$\mu_n \xrightarrow{w} \mu$，则存在一个概率空间 $(\Omega, \mathcal{F}, P)$ 和随机变量 $\{X_n\}, X$，使得 $X_n$ 的分布为 $\mu_n$，$X$ 的分布为 $\mu$，且 $X_n \xrightarrow{\text{a.e.}} X$。
+
+由于 $h$ 连续，故 $h(X_n) \xrightarrow{\text{a.e.}} h(X)$。
+
+下证 $\{h(X_n)\}$ 一致可积。由于 $\frac{h}{g}$ 在无穷远处消失，故 $\exists C \geq 0$，使得 $|h| \leq Cg$。
+
+故 $\sup_n \E[|h(X_n)|] \leq C \sup_n \langle \mu_n, g \rangle < +\infty$。
+
+$\forall \epsilon > 0$，$\exists M > 0$，使得 $|x| > M$ 时，$|h(x)| < \frac{\epsilon g(x)}{2\E[g(X_n)]}$。
+
+设 $|h(x)| \leq k_\epsilon$，$\forall x \in [-M, M]$。取 $k > k_\epsilon$，则对任何$n$， $\{|h(X_n)| > k\} \subset \{|X_n| > M\}$。
+
+因此：
+\[
+\E[|h(X_n)| \cdot I_{\{|h(X_n)| > k\}}] \leq \E[|h(X_n)| \cdot I_{\{|X_n| > M\}}] \leq \frac{\epsilon}{2\E[g(X_n)]} \E[g(X_n)] =\frac\epsilon2< \epsilon
+\]
+
+因此 $\{h(X_n)\}$ 一致可积。
+
+由Vitali收敛定理，$\E[h(X_n)] \to \E[h(X)]$，即 $\langle \mu_n, h \rangle \to \langle \mu, h \rangle$。
+\end{proof}
+
+
+淡收敛的极限未必是概率测度；
+淡收敛 + 紧性(tightness) $\Rightarrow$ 淡收敛的极限是概率测度。
+\begin{definition}
+    $(\mathbb{R}, \mathcal{B})$ 上的一列概率测度 $\{\mu_n\}$ 被称为是
+紧的, 若 $\forall \epsilon > 0, \exists$ $\mathbb{R}$中的紧集 K, s.t. $\forall n$, $\mu_n(K^c) < \epsilon$.
+$K^c = \mathbb{R} \setminus K$.
+\end{definition}
+
+\begin{lemma}{(判断紧性)}
+设 $\{\mu_n\}$ 是 $(\mathcal{R}, \mathcal{B})$ 中的一列概率测度, 若
+存在一个非负可测函数 $\phi : \mathbb{R} \rightarrow \mathbb{R}_+$. 满足 $\phi(x) \rightarrow \infty, x \rightarrow \pm \infty$及
+$\sup\limits_n \langle \mu_n, \phi \rangle < \infty$, 则 $\{\mu_n\}$ 是紧的.
+\end{lemma}
+\begin{remark}
+    $\phi(x) = x^2$ 时,要验证紧性只需验证$\sup\limits_n \langle \mu_n, x^2 \rangle < \infty$，比较常用。
+\end{remark} 
+
+\begin{proof}
+   记 $C := \sup\limits_{n} \langle \mu_n, \phi \rangle$,  
+
+则 
+\begin{equation*}
+    \begin{aligned}
+        C &\geq \langle \mu_n, \phi \rangle \geq \langle \mu_n, \chi_{[-k,k]^c} \inf_{|x| > k} \phi(x) \rangle\\
+        &= \inf_{|x| > k} \phi(x)\cdot \mu_n([-k,k]^c)
+    \end{aligned}
+\end{equation*}
+
+由于 $\inf\limits_{|x| > k} \phi(x) \rightarrow \infty, k \rightarrow \infty$, 故 $\mu_n([-k,k]^c)$ 是小量,从而得到$\{\mu_n\}$的紧性。
+\end{proof}
+
+\begin{lemma}
+若 $\mu_n \rightarrow \mu$ vaguely, 其中 $\mu_n \in \mathcal{M}_1(\mathbb{R}), \mu\in\mathcal{M}_{\leq 1}(\mathbb{R})$.
+
+则下列结论等价:
+
+(1) $\{\mu_n\}$ 是紧的.
+
+
+(2) $\mu\in\mathcal{M}_1(\mathbb{R})$.
+
+(3) $\mu_n \rightarrow \mu$ weakly.
+\end{lemma}
+
+\begin{proof}
+   $(1) \Rightarrow (3)$:欲证 $\forall f \in C_b(R), \langle\mu_ n, f\rangle \rightarrow \langle \mu, f\rangle. $
+
+已知 $\langle\mu_ n, f\rangle \rightarrow \langle \mu, f\rangle, f \in C_c(R).$
+
+记 $S := \max\{\|f\|_{\infty}, 1\}$
+
+由于 $\{\mu_ n\}$ 是紧的，有$\forall s > 0, \exists k > 0, s.t.\quad \mu_n([-k, k]^c) \leq \frac{S}{2S},\mu([-k, k]^c) \leq \frac{S}{2S}$.
+
+记$\phi_k^{k+1}$为之前定义的cutoff function,则结合上式即引理的淡收敛条件，得到：
+\begin{equation*}
+    \begin{aligned}
+        |\langle\mu_ n, f\rangle - \langle\mu, f\rangle| &\leq |\langle\mu_ n, f\rangle - \langle\mu_ n, f\phi_k^{k+1}\rangle|\\&+|\langle\mu_ n, f\phi_k^{k+1}\rangle - \langle\mu_, f\phi_k^{k+1}\rangle| + |\langle\mu, f\rangle - \langle\mu, f\phi_k^{k+1}\rangle|\\
+        &\leq \langle\mu_ n, |f||1-\phi_k^{k+1}| \rangle + \epsilon\text{(由淡收敛}) + \langle\mu , |f||\phi_k^{k+1}-1|\rangle\\
+        &\leq S\cdot \frac{\epsilon}{2S} + \epsilon + S\cdot\frac{\epsilon}{2S} = 2\epsilon.
+    \end{aligned}
+\end{equation*}
+
+
+
+$(2) \Rightarrow (1)$: 欲证$ \mu\in \mathcal{M}_1(\mathbb{R}) \Rightarrow \{\mu_ n\}$ 是紧的。`
+\begin{equation*}
+    \begin{aligned}
+        \mu_ n ([-k-1, k+1])&\ge \langle\mu_ n, \phi_k^{k+1}\rangle\\
+        &\geq \langle\mu_ n, \phi_k^{k+1}\rangle - |\langle\mu, \phi_k^{k+1}\rangle - \langle\mu_ n, \phi_k^{k+1}\rangle|
+    \end{aligned}
+\end{equation*}
+
+由于 $\mu\in \mathcal{M}_1(\mathbb{R}), \text{选择} k \text{足够大}, s.t. \langle\mu, \phi_k^{k+1}\rangle\ge 1 - \frac{\epsilon}{2}$ .   
+又由于 $\mu_n \rightarrow \mu$ vaguely，故
+$\exists N, s.t. \forall n > N,\quad  | \langle\mu_n, \phi_k^{k+1}\rangle-\langle\mu, \phi_k^{k+1}\rangle | \leq \frac{\epsilon}{2}$ .
+
+这推出$n>N$时，$\mu_n([-k-1,k+1])\ge 1-\epsilon$.
+
+$\forall i \in \{1, \ldots, N\},\exists k_i, s.t. \mu_i([-k_i,k_i])\ge 1-\epsilon$ .
+
+从而取 $k^* = \max \{k_1, \ldots, k_N, k+1\}$, 则 $\forall n \in \mathbb{N}^*$,
+$\mu_n [-k^*, k^*] > 1 - \epsilon$.从而$\{\mu_n\}$是紧的。
+
+$(3) \Rightarrow (2)$: 之前证过。
+\end{proof}
+
+\begin{lemma} $\{\mu_n\}$ 是从 $\mathcal{M}_1({\mathbb{R}})$ 中的序列，则
+
+(1) $\{\mu_n\}$ 有一个子列淡收敛至某个 $\mu \in \mathcal{M}_{\leq 1}(\mathbb{R})$.
+
+(2) $\{\mu_n\}$ 是紧的，则 $\{\mu_n\}$ 有一个子列弱收敛至某个 $\mu \in \mathcal{M}_1(\mathbb{R})$ .
+
+\end{lemma}
+
+\begin{proof}
+    Helly 选择定理 + Riesz 表示.
+\end{proof}
+
+\begin{theorem}
+    设 $\{g_k\}_{k \in \mathbb{N}}$ 是 $C_C(R)$ 中的一个稠密序列，则:
+
+(1) 若 $\mu, \mu_n \in \mathcal{M}_1(\mathbb{R})$ . 则 
+\begin{equation*}
+    \begin{aligned}
+        \mu_n \rightarrow \mu \quad weakly \Leftrightarrow
+        \forall k\in\mathbb{N}, \langle \mu_n,g_k\rangle \to \langle\mu,g_k\rangle.
+    \end{aligned}
+\end{equation*}
+
+(2)$\forall \mu,\nu \in \mathcal{M}_1(\mathbb{R})$,定义
+
+\[ d_M(\mu,\nu) = \sum_{k\in\mathbb{N}} \frac{|\langle \mu,g_k\rangle-\langle\nu,g_k\rangle|}{(1+|\langle \mu,g_k\rangle-\langle\nu,g_k\rangle|) \cdot 2^k} \]
+
+则 $ d_M $ 是 $ \mathcal{M}_1(\mathbb{R}) $ 中的度量且有： $\{\mu_n\} \in \mathcal{M}_1(\mathbb{R})$ 弱收敛到
+
+$\mu \iff d_M(\mu_n,\nu) \to 0, n \to +\infty$.
+
+(3)$(\mathcal{M}_1(\mathbb{R}), d_M)$ 是可分但不完备的度量空间。
+
+
+\end{theorem}
+
+\begin{proof}
+   (1)只需证充分性。事实上，条件结合稠密性可以得到$\mu_n$淡收敛到$\mu$,又结合$\mu\in\mathcal{M}_1(\mathbb{R})$即得到弱收敛。
+
+
+   (2)在$\mathbb{R}^\mathbb{N}$中引入度量$\rho$,使得对任何$x,y\in\mathbb{R}^\mathbb{N}$,
+   \[ \rho(x,y) = \sum_{k\in\mathbb{N}} \frac{|x(k)-y(k)|}{2^k (1+|x(k)-y(k)|)}.\]
+    在此度量下，$(Z_n)\in \mathbb{R}^\mathbb{N}\rightarrow Z\in \mathbb{R}^\mathbb{N},\quad  n\to +\infty$
+等价于每个分量$Z_n(i)\to Z(i)$,也等价于$\rho(Z_n,Z)\to 0,n\to\infty$.从而由于有理数在实数中稠密，$(\mathbb{R}^\mathbb{N},\rho)$是一个可分度量空间。
+
+定义如下映射：
+\begin{equation*}
+    \begin{aligned}
+        T:\mathcal{M}_1(\mathbb{R})&\rightarrow \mathbb{R}^N\\
+        \mu \quad &\rightarrow (\langle \mu,g_1\rangle,\langle \mu,g_2\rangle,\ldots)
+    \end{aligned}
+\end{equation*}
+
+
+则$T$是单射：
+\[  T(\mu) = T(\nu) \quad \iff \langle \mu,g_k\rangle = \langle \nu,g_k\rangle\iff \mu=\nu \]
+又因为$d_M(\mu,\nu)=\rho(T(\mu),T(\nu))$,故可见$(\mathcal{M}_1(\mathbb{R}),d_M)$是一个度量空间。$T$不仅是单射，而且保度量、连续。因此$T$的像集作为$(\mathbb{R}^\mathbb{N},\rho)$的子集也是一个可分空间。$(\mathcal{M}_1(\mathbb{R}),d_M)$同胚于$T$的像集，故也是可分的。
+
+   (3)可分性已在(2)重证明，不完备性则可如下给出。若 $\mu_n \to \mu$ vaguely，也有 $d_M(\mu_n, \mu) \to 0$，而此时$\mu$ 未必是概率测度。
+\end{proof}
+
+
+\section{$(\mathcal{R}, \mathcal{B})$ 中的随机概率测度(random probability measure)}
+
+有了度量$((\mathcal{M}_1(\mathbb{R}), d_M) $， 拓扑可通过收敛序列来重构。
+在 $\mathcal{M}_1(\mathbb{R})$ 中装备弱收敛拓扑及相应的 $Borel-\sigma$代数。
+
+$\forall f \in C_b(R),$
+
+\begin{equation*}
+    \begin{aligned}
+        I_f: \mathcal{M}_1(\mathbb{R}) &\to \mathbb{R}\\
+        \mu&\to I_f(\mu)=\langle\mu,f\rangle.
+    \end{aligned}
+\end{equation*}
+
+
+则 $ I_f $ 是 $ \mathcal{M}_1(\mathbb{R}) $ 上的连续函数。
+
+
+
+随机概率测度（取值于 $ M_1(R) $ 的随机变量）
+
+\begin{definition}
+    令 $ (\Omega, \mathcal{A}, \mathbb{P}) $ 是一个概率空间。
+
+(i) $ (\mathbb{R},\mathcal{B} ) $ 上的随机概率测度是一个可测映射:
+
+\[ \mu : \Omega \to M_1(R), \quad \omega \to \mu(\omega,.) \in \mathcal{M}_1(\mathbb{R}) \]
+
+(ii) 从$ (\Omega, \mathcal{A}) $ 到 $ (\mathbb{R},\mathcal{B}) $ 的随机核，是指映射
+
+\[ \mu : \Omega \times \mathcal{B} \to \mathbb{R} \quad \text{满足 }\]
+
+(a) $ \forall \omega \in \Omega, \quad \mu(\omega,.) $ 是 $  (\mathbb{R},\mathcal{B} )$ 上的概率测度；
+
+(b) $ \forall B \in\mathcal{B}, \quad \mu(.,B) $ 是 $ \mathcal{A}-\mathcal{B} $ 可测的。
+\end{definition}
+
+\begin{lemma}设 $ (\Omega, \mathcal{A}, P) $ 是一个概率空间。
+
+(a) 映射 $ M: \Omega \times \mathcal{B} \to \mathbb{R} $ 是一个随机概率测度$\iff$它是一个随机核；
+
+(b) 若 $ \mu $ 是 $ (\Omega, \mathcal{A}) $ 到 $ (\mathbb{R}, \mathcal{B}) $ 的随机核且 $ f:\mathbb{R} \to \mathbb{R} $ 是
+有界 可测函数，则 $ w \rightarrow \langle\mu(\omega),f\rangle $ 个是可测的且有上界$\|f\|_{\infty}$.
+\end{lemma}
+
+\begin{proof}
+    先证明(b):对任何$\omega\in\Omega$,
+    \[|\langle\mu(\omega),f\rangle\le\langle\mu(\omega),|f|\rangle\le\langle\mu(\omega),\|f\|_\infty\rangle\le\|f\|_\infty \]
+    从而映射有上界$\|f\|_\infty$.
+    下证可测性：由随机核定义，$\forall B\in\mathcal{B},\omega\rightarrow\mu(\omega,B)$可测。从而对非负简单函数
+    \[f=\sum_{i=1}^n\alpha_i\chi_{B_i},n\in\mathbb{N},\alpha_i\ge 0,B_i\in \mathcal{B}\]
+    有$\omega\rightarrow\langle\mu(\omega),f\rangle$可测。
+    若$f$是非负有界可测函数，可以用单增简单函数列$\{f_n\}$点态逼近,则由单调收敛定理，
+    \[\langle\mu(\omega),f_n\rangle\to\langle\mu(\omega),f\rangle.\]
+    这推出对非负有界可测函数$f$，$\omega\rightarrow\langle\mu(\omega),f\rangle$可测。
+    若$f$有界可测，可以分成正负部分$f_+,f_-$，类似实分析的操作也可得结论。
+
+    (a)
+    先证充分性：即随机核$\Rightarrow$随机概率测度。
+
+    \[\mu : \Omega \to \mathcal{M}_1 (\mathbb{R}), \quad \omega\to \mu(\omega) \in \mathcal{M}_1 (\mathbb{R})\]
+
+需说明 $ w \to \mu(w, \cdot) $ 可测 .只需证明$(\mathcal{M}_1 (\mathbb{R}), d_{m})$中的开球原像原像是可测的.
+$\nu \in \mathcal{M}_1 (\mathbb{R}), \quad \epsilon > 0 $任意小,对应的开球为
+\[B_{\epsilon}^{\mathcal{M}_1 (\mathbb{R})} = \{ \nu' \in M_{1}(R), \quad d_{M}(\nu', \nu) < \epsilon \}\]
+
+\[\mu^{-1} (B_{\epsilon}^{\mathcal{M}_1 (\mathbb{R})}(\nu)) = \{ \omega\in \Omega, \quad d_{M}(\mu(\omega), \nu) < \epsilon \}= d_{M}(\mu(\cdot), \nu)^{-1}(0, \epsilon).\]
+
+
+由于
+
+\[d_M(\mu(\omega), \nu) = \sum_{k=1}^{\infty} \frac{\langle \mu(w), g_{k} \rangle - \langle \nu, g_{k} \rangle}{2^{k}(1+|\langle \mu(w), g_{k} \rangle - \langle \nu, g_{k} \rangle|)}\]
+
+\[ \text{又}\omega \to \langle \mu(\omega), f \rangle, \quad \forall f \in C_{b}(R) \text{可测(由(b)的结论)}.\]
+
+\[\therefore \omega \to d_M(\mu(\omega), \nu) \text{可测}\]
+
+
+再证必要性：即随机概率测度$\Rightarrow$随机核。要说明以下两点：
+
+(a) $ \mu(w, \cdot) \in M_{1}(R).$(已经是条件)
+
+(b)要证明$\forall B \in \mathcal{B}, \quad \omega \to \mu(\omega, B)$可测
+
+当$ B $为 $\mathbb{R}$中有界开区间  $(a, b)$时，记$ \epsilon = \frac{b-a}{4}.$构造以下函数：
+
+
+\[\phi_{n}(x) =
+\begin{cases}
+1, & (a + \frac{\epsilon}{n}, b - \frac{\epsilon}{n}) \\
+0, & \mathbb{R}\backslash (a, b)\\
+\text{线性函数},&(a,a+\frac{\epsilon}n)\cup(b-\frac{\epsilon}n,b)
+\end{cases}\]
+
+
+
+则$\phi_n$连续 有界，且单调上升趋于$\chi_{(a,b)}(x)$.
+
+结合$I_{\phi_n}(\mu) = \langle\mu, \phi_n \rangle$连续及(a),由于可测映射复合连续映射仍然可测，故
+$\forall n \in \mathbb{N}, \quad \omega \to \langle\mu(\omega),  \phi_n \rangle$可测。
+
+由单调收敛定理，
+\[\lim_{n \to \infty} \langle\mu(\omega), \phi_n \rangle = \langle\mu(w), \chi_{\{a,b\}}\rangle = \mu(\omega, (a,b))\]
+从而$\mu(\cdot,(a,b))$是$\mathcal{A}-\mathcal{B}$可测的。
+
+令 $ \mathcal{G} := \{B \in \mathcal{B} : \omega\rightarrow\mu(\cdot, B) \text{可测}\} $，可以验证$\mathcal{G}$是Dynkin系统，从而$\mathcal{G}=\mathcal{B}$.
+
+    
+\end{proof}
+
+
+\begin{example}
+    设 \( Y_1, \ldots, Y_n \) 是 \( (\Omega, \mathcal{A}, \mathbb{P}) \) 上的实值随机变量。
+
+\begin{equation*}
+\rho := \frac{1}{n} \sum_{i=1}^n \delta_{Y_i}
+\end{equation*}
+是 \( (\mathbb{R}, \mathcal{B}) \) 上的随机概率测度，称为 \( (Y_i) \) 的经验分布（empirical distribution）.
+
+\begin{equation*}
+\forall w \in \Omega, \quad \rho(w) = \frac{1}{n} \sum_{i=1}^n \delta_{Y_i(w)} \in \mathcal{M}_1(\mathbb{R})
+\end{equation*}
+\begin{equation*}
+\forall B \in \mathcal{B}, \quad w \to \rho(w, B) = \frac{1}{n} \sum \delta_{Y_i(w)} (B)
+= \frac{1}{n} \sum \chi_B(Y_i(w))\quad \text{可测}
+\end{equation*}
+$\rho(B)$表示\( Y_i \) 落在 \( B \) 中的比例。定义$F_\rho(x) := \rho((-\infty, x]), \quad \forall x \in \mathbb{R}$,称为随机分布函数。
+\end{example}
+
+设\(\mu\) 是一个随机概率测度，\( B \in \mathcal{B} \)，则 \(\mu(B)\) 是一个有界随机变量。\(\mathbb{E}\mu(B)\)是\(\mu\) 限制在 \( B \) 中的期望质量，是一个确定的概率测度。
+
+\begin{theorem}
+    设 \((\Omega, \mathcal{A},\mathbb{P})\) 是概率空间，\(\mu\) 是 \((\mathbb{R}, \mathcal{B})\) 上的一个随机概率测度。
+
+(a)
+
+\begin{equation*}
+\begin{aligned}
+    \overline{\mu}: \mathcal{B} &\to [0,1]\\
+    B &\to \overline{\mu}(B) = \int_{\Omega} \mu(\omega, B) \mathbb{P}(dw) = \mathbb{E}\mu(B)
+\end{aligned}
+\end{equation*}
+
+是从 \(\mathcal{M}_1(\mathbb{R})\) 中的一个元素，被称为期望测度。
+
+(b) \(\forall\) 非负可测函数 \(f: \mathbb{R} \to \mathbb{R}_+\)是可积的$\iff$
+$\langle \mu, f \rangle$ 是 $\mathbb{P}-$可积的，且有
+
+
+\begin{equation*}
+\langle \overline{\mu}, f \rangle = \int_{\mathbb{R}} f(x) \overline{\mu}(dx)
+= \int_{\Omega} \int_{\mathbb{R}} f(x) \mu(\omega, dx) P(dx) = \mathbb{E} \langle \mu, f \rangle.
+\end{equation*}
+
+上式对任何有界可测函数 \(f: \mathbb{R} \to \mathbb{R}\) 也成立。
+
+(c) \(f:  \mathbb{R} \to  \mathbb{R}\) 是 \(\overline{\mu}\)-可积的，则\(\langle \mu, f \rangle\) 是 \(P-\)可积的且有
+
+\begin{equation*}
+\langle \overline{\mu}, f \rangle = \mathbb{E} \langle \mu, f \rangle.
+\end{equation*}
+
+\textbf{注：} 用 \(\mathbb{E}\mu\) 代替 \(\overline{\mu}\)，若 \(\mathbb{E} \langle \mu, \|f\| \rangle < \infty\)，则 \(f\) 是 \(\mathbb{E}\mu\)-可积的，且
+
+\begin{equation*}
+\langle \overline{\mu}, f \rangle = \langle \mathbb{E}\mu, f \rangle = \mathbb{E} \langle \mu, f \rangle.
+\end{equation*}
+\end{theorem}
+
+\begin{proof}
+    (a)留作练习。
+
+    (b)设$f(x)=\sum\limits_{i=1}^n\alpha_i\chi_{B_i},\quad n\in \mathbb{N},\alpha_i\ge 0,B_i\in \mathcal{B}$.则
+
+\begin{equation*}
+\begin{aligned}
+\langle \overline{\mu}, f \rangle = \sum_{i=1}^{n} \alpha_i \overline{\mu}(B_i) = \sum_{i=1}^{n} \alpha_i \mathbb{E} \mu(B_i)
+    = \mathbb{E} \langle \mu, f \rangle
+\end{aligned}
+\end{equation*}
+
+
+若\(f\) 非负可测，则存在简单函数列 \(f_n\)，\(f_n \uparrow f\)，由单调收敛定理，
+
+\begin{equation*}
+\langle \overline{\mu}, f \rangle = \lim_{n \to \infty} \langle \overline{\mu}, f_n \rangle = \lim_{n \to \infty} \mathbb{E} \langle \mu, f_n \rangle = \mathbb{E} \langle\mu, f \rangle
+\end{equation*}
+
+
+
+从而，若 \(f\) 是 \(\mu\)-可积的$\iff$ \(\langle \mu, f \rangle\) 是 \(\mathbb{P}\)-可积的，且
+$\langle \overline{\mu}, f \rangle = \mathbb{E} \langle {\mu}, f \rangle$.
+
+
+若 \(f: \mathbb{R} \to \mathbb{R}\) 可测且有界，则存在 \(c \in \mathbb{R}\)，使得 \(f(x) + C\) 非负。
+
+\begin{equation*}
+\langle \overline{\mu}, f \rangle = \langle \overline{\mu}, f+C \rangle - C = \mathbb{E} \langle \mu, f+C \rangle - C =\mathbb{E}\langle \mu, f \rangle.
+\end{equation*}
+
+(c)若 \(f : \mathbb{R} \to \mathbb{R}\) 是 $\overline{\mu}$ -可积的，则 \(f = f_+ - f_-\)，\(f_\pm\) 非负可测且 \(\mathbb{P}\)-可积。
+
+由 (b) 知，\(\langle \mu, f_\pm \rangle\) 是 \(\mathbb{P}\)-可积。故\(\langle \mu, f_+ \rangle - \langle \mu, f_- \rangle = \langle \mu, f \rangle\) \(\mathbb{P}\)-可积。
+\begin{equation*}
+\begin{aligned}
+    \langle \overline{\mu}, f \rangle &= \langle \overline{\mu}, f_+ \rangle - \langle \overline{\mu}, f_- \rangle
+= \mathbb{E} \langle {\mu}, f_+ \rangle - \mathbb{E} \langle\mu, f_- \rangle
+=  \mathbb{E} \langle {\mu}, f \rangle.
+\end{aligned}
+\end{equation*}
+\end{proof}
+
+\begin{7}
+    证明定理3.4(a).
+\end{7}
+
+\begin{proof}
+    由随机概率测度定义，$\mu(\omega, \cdot) \in \M_1(\R)$，$\forall \omega \in \Omega$。
+
+从而积分 $\int_{\Omega} \mu(\omega, B) \prob(d\omega)$ 自动满足非负性和可列可加性，只需验证规范性。
+
+而由于 $\mu(\omega, \cdot) \in \M_1(\R)$：
+\[
+\int_{\Omega} \mu(\omega, \R) \prob(d\omega) = \int_{\Omega} 1  \prob(d\omega) = 1
+\]
+
+期望测度 $\overline{\mu}(B) = \E[\mu(B)]$ 是概率测度。
+\end{proof}
+
+\section{随机概率测度的各种收敛}
+
+\begin{definition}{(依期望弱收敛，converges weakly in expectation)}
+    设 \(\{\mu_n\}\) 和 \(\mu\) 是 \((\mathbb{R}, \mathcal{B})\) 上的随机概率测度，称 \(\{\mu_n\}\) 是依期望弱收敛到 \(\mu\)，若期望概率序列 \(\{\mathbb{E}\mu_n\}\) 弱收敛到 \(\mathbb{E}\mu\)。即 \(\forall f \in C_b(\mathbb{R})\)，
+\begin{equation*}
+\langle \mathbb{E} \mu_n, f \rangle \xrightarrow{n \to \infty} \langle \mathbb{E} \mu, f \rangle \quad\text{亦即}\quad \mathbb{E} \langle \mu_n, f \rangle \xrightarrow{n \to \infty} \mathbb{E} \langle \mu, f \rangle
+\end{equation*}
+\end{definition}
+
+\begin{definition}
+     设 \(\{Y_n\}_{n \in \mathbb{N}}\) 和 \(Y\) 是定义在概率空间 \((\Omega, \mathcal{A}, \mathbb{P})\) 且取值于某度量空间 \((X, d)\) 的随机变量。
+
+(i) 称 \(Y_n\) 依概率收敛到 \(Y\)，若 \(d(Y_n, Y)\) 依概率收敛到 \(0\)，即
+
+\begin{equation*}
+P \{\omega; d(Y_n, Y) \geq \epsilon \} \to 0
+\end{equation*}
+
+(ii) 称 \(Y_n\) 几乎处处收敛到 \(Y\)，若 \(d(Y_n, Y)\) 几乎处处收敛到 \(0\)。
+
+\end{definition}
+\begin{remark}
+    几乎处处收敛 \(\Rightarrow\) 依概率收敛。
+\end{remark}
+
+\begin{definition}
+    设 \((\Omega, \mathcal{A}, \mathbb{P})\) 是概率空间，\(\mu\) 和 \(\{\mu_n\}_{n\in\ \mathbb{N}}\) 是 \((\mathbb{R}, \mathcal{B})\) 上的随机概率测度。下面$d$是之前引进的两个概率测度之间的度量。
+
+(i)称 \(\{\mu_n\}\) 依概率弱收敛到 \(\mu\)，若 \(d(\mu_n, \mu) \to 0\) in prob.
+
+(ii)称 \(\{\mu_n\}\) 几乎处处弱收敛到 \(\mu\)，若 \(d(\mu_n,\mu) \to 0\) a.e.
+\end{definition}
+
+\begin{theorem}{几种收敛的等价定义}
+   
+    (i) 依概率弱收敛
+
+(a) \(\{\mu_n\}\) 依概率弱收敛到 \(\mu\)，\(d(\mu_n, \mu) \to 0\) in prob.
+
+(b) 若 \(d\) 是 \(\mathcal{M}_1(\mathbb{R})\) 中的一个刻画弱收敛的度量， \(d( \mu_n,  \mu) \to 0\) in prob.
+
+(c) \(\forall f \in C_b(\mathbb{R})\)，有界实值随机变量序列 \(\langle  \mu_n, f \rangle\) 依概率收敛到 \(\langle  \mu, f \rangle\)，即
+
+\begin{equation*}
+P(|\langle  \mu_n, f \rangle - \langle  \mu, f \rangle| > \epsilon) \xrightarrow{n \to +\infty} 0.
+\end{equation*}
+
+(ii) 几乎处处弱收敛
+
+(a) \(\{ \mu_n\}\) 几乎处处弱收敛到 \( \mu\)，\(d( \mu_n,  \mu)\) 几乎处处收敛到 \(0\).
+
+(b) 对几乎所有 \(\omega \in \Omega\)（关于 \(\mathbb{P}\)），\( \mu_n(\omega)\) 弱收敛到 \( \mu(\omega)\).
+
+(c) 若 \(d\) 是 \(\mathcal{M}_1(\mathbb{R})\) 中刻画弱收敛的度量,\(d( \mu_n,  \mu) \to 0 , \quad \text{a.e}\).
+
+(d) \(\forall f \in C_b(\mathbb{R}), \langle \mu_n, f \rangle \to \langle\mu, f \rangle, \quad \text{a.e.}\)
+
+即 \(\forall f \in C_b(\mathbb{R}), [\langle \mu_n, f \rangle \to \langle \mu, f \rangle]\)，方框表示这个集合测度为1.
+
+(e) 几乎处处对所有 \(f \in C_b(\mathbb{R}), \langle \mu_n, f \rangle\) 收敛到 \(\langle \mu, f \rangle\)，即
+\([\forall f \in C_b(\mathbb{R}), \langle \mu_n, f \rangle \to \langle \mu, f \rangle]\).
+
+\end{theorem}
+\begin{theorem}{(三种收敛之间的关系)}
+    \(\{\mu_n\}, \mu\) 为随机概率测度。
+
+(i) \(\mu_n \to\mu \quad \text{weakly a.s.} \Rightarrow \mu_n \to \mu \quad \text{weakly in prob.}\)
+
+(ii) \(\mu_n \to \mu \quad \text{weakly in prob.} \Rightarrow \mu_n \to \mu\quad \text{weakly in expectation}\)
+\end{theorem}
+\begin{proof}
+    
+    (i) 显然。
+
+(ii) 先证明一个引理。
+\begin{lemma}
+    设 \(\{X_n\}, X\) 是概率空间 \((\Omega, \mathcal{A}, \mathbb{P})\) 中复值随机变量，且存在常数 \(c > 0\)，使得 \(|X_n|, |X| \leq c, \forall n \in \mathbb{N}\).
+若 \(X_n \to X\) in prob.则 \( \mathbb{E}|X_n - X|\to 0, n \to \infty\).
+\end{lemma}
+ \begin{proof}
+      \(\forall \epsilon > 0\),
+
+\begin{equation*}
+\begin{aligned}
+    \mathbb{E}|X_n - X|& = \mathbb{E}[|X_n - X| \chi_{\{|X_n - X| \leq \epsilon\}}] + \mathbb{E}[|X_n - X| \mathbf{1}_{\{|X_n - X| > \epsilon\}}]\\
+&\leq \epsilon + 2c \cdot P(|X_n - X| > \epsilon)
+\end{aligned}
+\end{equation*}
+
+\(\Rightarrow \mathbb{E}(X_n - X) \to 0\).
+ \end{proof}
+
+
+回到原定理，由于 \(\mu_n \to\mu\) weakly in prob,
+故\(\forall f \in C_b(\mathbb{R}), \langle \mu_n, f \rangle \to \langle \mu, f \rangle\) in prob.
+从而由引理，\(\mathbb{E} \langle\mu_n, f \rangle \to \mathbb{E} \langle \mu, f \rangle\).
+
+（能用引理是因为\(|\langle \mu_n, f \rangle| \leq \|f\|_{\infty}, |\langle \mu, f \rangle| \leq \|f\|_{\infty}\)）
+\end{proof}

@@ -1,0 +1,866 @@
+
+\newtheorem{prop}{Prop}
+\newtheorem{def}{Definition}
+\newtheorem{example}{Example}
+
+{{comment|这是2025春季学期谢纳庆老师数学广义相对论笔记，
+英文部分尽量忠实谢老师的原稿，由于谢老师讲课比较简洁，
+我会用中文做一些注释，以便区分课堂笔记和补充。}}
+
+
+\section{\textit{Preliminaries} }
+
+The main topics of this course.
+
+(1) Penrose’s singularity theorem. 
+
+(2) Cauchy problem of Eistein Equation.
+
+(3) Positive Theorem  .
+
+\subsection{Introduction}
+最重要的 Equation 被希望是在惯性坐标系下保持不变的。
+\begin{example}
+     Newtonian \(2^{nd}\) law.
+\[ F = m \cdot a = m \cdot \frac{d^2 x}{dt^2} \]
+
+Galileo transformation.
+\[\begin{cases}
+x' = x - vt \\
+t' = t
+\end{cases}\]
+where \(v\) is a constant velocity vector.
+\[F = m \cdot \frac{d^2 x'}{dt'^2}\]
+\end{example}
+
+
+Source - free Maxwell equation in vacuum.
+\[\begin{cases}
+\vec{\nabla} \cdot \vec{E} = 0 \\
+\vec{\nabla} \times \vec{E} = -\frac{\partial \vec{B}}{\partial t} \\
+\vec{\nabla} \cdot \vec{B} = 0 \\
+\vec{\nabla} \times \vec{B} = \frac{\partial \vec{E}}{\partial t}
+\end{cases}\]
+
+\begin{equation*}
+    \begin{aligned}
+        \frac{\partial^2 \vec{E}}{\partial t^2}=\frac{\partial}{\partial t}(\vec{\nabla} \times \vec{B})=\cdots
+    \end{aligned}
+\end{equation*}
+So we can get
+
+\begin{equation*}
+    \begin{cases}
+        \frac{\partial^2 \vec{E}}{\partial t^2}-\Delta \vec{E}=0,\\
+         \frac{\partial^2 \vec{B}}{\partial t^2}-\Delta \vec{B}=0.
+    \end{cases}
+\end{equation*}
+\begin{remark}
+    这门课都采用Gauss单位制，光速$c=1$.
+\end{remark}
+
+
+The Galieo transformation does not preserve the form of the Maxwell equation.
+
+\(\rightarrow\) It turns out that the Lorentz group preserves the form of Maxwell equation.
+
+\(x, y \in R^3,\)assume that \(A \in SO(3)\), then
+
+\[<Ax, Ay>= (Ax)^T(Ay) = x^TA^TAy = x^Ty.\]
+
+Let \(R^{3,1}\) be the so called Minkowski spacetime, i.e.,
+$R^{3,1}$ is diffeomorphic to  $ R^4$  and is endowed with
+a symmetric, nondegenerated, bilinear 2-form
+
+\[g = -dt^2 + \sum_{i=1}^3 (dx^i)^2 = (dt, dx^1, dx^2, dx^3)\begin{pmatrix}
+    -1&&&\\
+    &1&&\\
+    &&1&\\
+    &&&1
+\end{pmatrix}\begin{pmatrix}
+    dt\\dx^1\\dx^2\\dx^3
+\end{pmatrix}\]
+
+Denoted by \(\eta = diag(-1,1,1,1).\)
+
+If we take a Lorentz transformation
+
+\begin{equation*}
+    \begin{cases}
+        x'=\gamma(x-vt)\\
+        t'=\gamma(t-vx)\\
+        y'=y\\
+        z'=z
+    \end{cases}
+\end{equation*}
+
+
+
+where \(v\) is constant and \(\gamma = \frac{1}{\sqrt{1-v^2}}\) 
+
+
+
+\textbf{Fact}: The Maxwell equation is invariant under the change of coordinate  above.
+
+\[\left( \begin{array}{c}
+t' \\
+x'
+\end{array} \right) =
+\left( \begin{array}{cc}
+\frac{1}{\sqrt{1-v^2}} & \frac{-v}{\sqrt{1-v^2}} \\
+\frac{-v}{\sqrt{1-v^2}} & \frac{1}{\sqrt{1-v^2}}
+\end{array} \right)
+\left( \begin{array}{c}
+t \\
+x
+\end{array} \right)\]
+
+The Lorentz group is the symmetry group of the Maxwell equation.
+
+If \(v << 1\), then \(y \approx 1\).
+
+\[\frac{dx'}{dt'} = \frac{y(dx - vdt)}{y(dt - vdx)} = \frac{\frac{dx}{dt} - v}{1 - v \frac{dx}{dt}}\]
+
+In particular, \(\frac{dx}{dt} = 1 \implies \frac{dx'}{dt'} = 1\). (光速不变)
+
+Denote by $\eta=(dt, dx^1, dx^2, dx^3)\begin{pmatrix}
+    -1&&&\\
+    &1&&\\
+    &&1&\\
+    &&&1
+\end{pmatrix}\begin{pmatrix}
+    dt\\dx^1\\dx^2\\dx^3
+\end{pmatrix}$
+
+the Lorentz transformation preserves \(\eta\).
+
+
+\begin{remark}
+    If we denote by \( \eta \) the most positive sign form, then it is called the Landau-Lifshitz convention, Geometers prefer this convention.
+If we make use of the most minus sign convention (1, -1, -1, -1), partial physicists prefer this convention.
+\end{remark}
+ 
+
+We call \( \eta \) the Minkowski metric
+
+We introduce a skew-symmetric matrix,
+
+\[F_{\mu\nu} = 
+\begin{pmatrix}
+0 & -E_1 & -E_2 & -E_3 \\
+E_1 & 0 & B_3 & -B_2 \\
+E_2 & -B_3 & 0 & B_1 \\
+E_3 & B_2 & -B_1 & 0
+\end{pmatrix}\]
+
+Then the Maxwell equation can be written as
+
+\[\begin{cases}
+dF = 0 \\
+d*F = 0
+\end{cases}\]
+where \( d \) is the extension differential and \( * \) is the Hodge star.
+
+Ex. The Lorentz force \(\vec{F}\).
+
+\[\vec{F} = q(\vec{E} + \vec{v} \times \vec{B})\]
+
+How to rewrite the Lorentz force in 4-D?
+
+Ex. How about the transformation of \( \vec{E} \) and \( \vec{B} \) under Lorentz change?
+
+
+
+
+\subsection{Some Topics about Special Relativity }
+
+
+\begin{definition}
+    A vector \( v \) is said to be  
+    
+(1) Timelike if \(\langle v,v\rangle<0 \)  .
+
+(2) Spacelike if \( \langle v,v\rangle>0 \).  
+
+(3) Lightlike or null if \( \langle v,v\rangle=0 \)  .
+
+(4) Causal if it is timelike or null.  
+
+(5) Future-pointing if it is causal and \( \langle v,\frac{\partial}{\partial t}\rangle<0 \)  
+
+(6) Past-pointing if \(- v \) is future-pointing.
+
+\end{definition}
+
+\begin{remark}
+    The same classification applies to  
+curves: \( c:\left[ a,b \right] \rightarrow \mathbb{R}^{3,1} \). According to its tangential vector.
+\end{remark}
+
+
+
+
+
+
+Let \( c:[a,b] \rightarrow \mathbb{R}^{3,1} \) be a timelike curve  
+then \( \tau(c) = \int_{a}^{b} \sqrt{-\langle\dot{c}(s),\dot{c}(s)\rangle} \, ds \)  
+represents the proper time (固有时)
+measured by the particle between events \( c(a) \) and \( c(b) \).  
+
+\begin{prop}
+    (Twin paradox) Of all timelike curves,  
+connecting two events \( p,q \in \mathbb{R}^{3,1} \), the curve with maximal length is the line segment (representing initial motion).  
+\end{prop}
+
+\begin{prop}
+    (Popper Effect)  
+An observer moving with velocity \( v \) away from a source of light of Period $T$, 
+measure the period to be  
+
+\[T'=T\sqrt{\frac{1+v}{1-v}}\]
+
+
+\end{prop}
+ \begin{proof}
+These signals are detected by an observer moving with velocity \( v \) who measures a time difference \( T' \). Now if the first signal is emitted at \( t_0 \), its history is the time \( t=t_0+x \).
+
+Consequently the moving observer defects the signal at the event with coordinates.
+
+\[\begin{cases} 
+t=t_0+x \\ 
+x=vt 
+\end{cases}
+\iff
+\begin{cases} 
+t=\frac{t_0}{1-v} \\ 
+x=\frac{vt_0}{1-v} 
+\end{cases}\]
+
+Similarly, the second light signal is emitted at \( t=t_0+T \), its history is the time \( t=t_0+T+x \).
+
+\[\begin{cases} 
+t=t_0+T+x \\ 
+x=vt 
+\end{cases}
+\iff
+\begin{cases} 
+t=\frac{t_0+T}{1-v} \\ 
+x=\frac{v(t_0+T)}{1-v} 
+\end{cases}\]
+
+\[\Rightarrow T' = \sqrt{(\frac{t_0+T}{1-v}-\frac{t_0}{1-v})^2 - (\frac{v(t_0+T)}{1-v}-\frac{vt_0}{1-v})^2}=T\sqrt{\frac{1+v}{1-v}}.\]
+
+\begin{remark}
+    $T'>T\Leftrightarrow$ frequency $\omega'<\omega$.
+
+    这是红移(redshift)现象，是多普勒效应的体现。
+\end{remark}
+ \end{proof}
+
+
+
+\section{Review of Differential Geometry }
+Assume that \( M \) is a \( C^\infty \) manifold
+
+\[M \cong \mathbb{R}^4.\]
+
+Let \( g \) be a Lorentz metric on \( M \).
+
+\[\forall x \in M, \left( g^{(x)} \right)_{\mu\nu} = 
+\begin{pmatrix}
+g_{00} & g_{01} & g_{02} & g_{03} \\
+g_{10} &g_{11}  &g_{12}  & g_{13} \\
+g_{20} & g_{21} & g_{22}& g_{23} \\
+g_{30} &g_{31}  & g_{32} & g_{33}
+\end{pmatrix}^{(x)}\]
+
+\( g \) is a symmetric, non-degenerate bilinear norm with signature \((-,+,+,+)\)).That is,$g$\quad has one negative eigenvalue and 3 positive eigenvalues.
+
+
+$g_{\mu\nu}$ is called metric matrix ,its inverse  
+\[ (g^{\mu\nu}) = (g_{\mu\nu})^{-1} \]
+
+\begin{example}
+    (Polar coordinate)
+    \[\begin{cases} 
+\eta^0 = x^0 \\ 
+\eta^1 = r \\ 
+\eta^2 = \theta \\ 
+\eta^3 = \varphi 
+\end{cases} 
+= (d\eta^0, d\eta^1,d\eta^2,d\eta^3) 
+\begin{pmatrix} 
+-1&&& \\ 
+&1&& \\ 
+&&r^2& \\ 
+&&&r^2 \sin^2\theta 
+\end{pmatrix} 
+\begin{pmatrix} 
+d\eta^0 \\ 
+d\eta^1 \\ 
+d\eta^2\\
+d\eta^3
+\end{pmatrix}\]
+
+\[i.e.(dx^2 + dy^2 + dz^2 = dr^2 + r^2 d\theta^2 + r^2 \sin^2\theta \, dy^2)\]
+
+\end{example}
+
+Assume that $M$ is a 4-D smooth manifold and $g$ is a 
+Lorentz metric on $M$.Let $(U,x^{\mu})$ be a local coordinate 
+chart on $M$($U$ is an open subset of $\mathbb{R}^4$).Locally 
+$g$ can be written as 
+\[g=g_{\mu\nu}(x)dx^{\mu}\otimes dx^{\nu}\]
+
+Let X be a vector field on $U$.
+$X = X^\mu \frac{\partial}{\partial x^\mu}$, where $X^\mu (μ=0,1,2,3)$ are smooth functions on U.
+
+Let \(\mathfrak{X}(U) = \{X \mid \text{smooth vector fields on } U\}\).
+
+\begin{equation*}
+    \begin{aligned}
+         g : \mathfrak{X}(U) \times \mathfrak{X}(U) &\rightarrow C^\infty(U) \\
+(X, Y) \quad &\mapsto \quad g(X, Y)
+    \end{aligned}
+\end{equation*}
+
+
+
+\[
+X = X^\mu \frac{\partial}{\partial x^\mu}, \quad Y = Y^\nu \frac{\partial}{\partial x^\nu}
+\]
+Since $g$ is a bilinear function,we can compute it as follow:
+\begin{equation*}
+\begin{aligned}
+       g(X, Y) &= g\left(X^\mu \frac{\partial}{\partial x^\mu}, Y^\nu \frac{\partial}{\partial x^\nu}\right)\\
+&=  X^\mu Y^\nu  g\left(\frac{\partial}{\partial x^\mu}, \frac{\partial}{\partial x^\nu}\right)\\
+&= X^\mu Y^\nu g_{\mu\nu} 
+\end{aligned}
+\end{equation*}
+
+
+
+{Q.} How to take derivatives on \( U \)?
+
+Key properties:
+\begin{enumerate}
+    \item When \( g_{\mu\nu} = \eta_{\mu\nu} = \mathrm{diag}(-1, 1, 1, 1) \),it reduces to the flat case.
+    \item Leibniz rule applies.
+\end{enumerate}
+
+Denote by $\nabla$(仿射联络):
+
+\begin{equation*}
+    \begin{aligned}
+        \nabla: \mathfrak{X}(U) \times \mathfrak{X}(U) &\rightarrow \mathfrak{X}(U)\\
+(X, Y) &\mapsto \nabla_X Y
+    \end{aligned}
+\end{equation*}
+\begin{remark}
+其满足如下性质：
+
+\begin{enumerate}
+\item[(i)] $\nabla_{fX + hY} Z = f \nabla_X Z + h \nabla_Y Z$; 
+\item[(ii)] $\nabla\_X (fY + hZ) = (Xf)Y + f \nabla_X Y + (Xh)Z + h \nabla_X Z$ ,
+\end{enumerate} 
+
+
+$\nabla_X Y$称为$Y$关于$X$的共变导数，或协变导数。
+\end{remark}
+
+
+If we take $X = \frac{\partial}{\partial x^i}$, $Y = \frac{\partial}{\partial x^j}$,
+
+\[
+\nabla_{\frac{\partial}{\partial x^i}} \frac{\partial}{\partial x^j} 
+:= \Gamma_{ij}^k \frac{\partial}{\partial x^k}
+\]
+
+Torsion free condition:
+We want $\nabla_X Y - \nabla_Y X = [X, Y]$.
+\begin{remark}
+    这里 torsion free指无挠，挠率定义为
+\[T(X,Y)=\nabla_X Y - \nabla_Y X-[X,Y].\]
+若$T=0$，则联络$\nabla$称为无挠联络或对称联络。
+\end{remark}
+
+
+Take $X = \frac{\partial}{\partial x^i}$, $Y = \frac{\partial}{\partial x^j}$:
+
+\begin{equation*}
+\begin{aligned}
+\Gamma_{ij}^k \frac{\partial}{\partial x^k} - \Gamma_{ji}^k \frac{\partial}{\partial x^k} 
+&= \left[\frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^j}\right] = 0 \\
+\end{aligned}
+\end{equation*}
+
+This leads to\quad $(\Gamma_{ij}^k - \Gamma_{ji}^k) \frac{\partial}{\partial x^k} = 0 $
+
+Thus $ \Gamma_{ij}^k = \Gamma_{ji}^k$.
+
+\begin{remark}
+    因此可以看出联络$\nabla$为对称的充要条件是在$M$的局部坐标系下$ \Gamma_{ij}^k = \Gamma_{ji}^k$.
+\end{remark}
+
+
+Compatible with the metric($\nabla$与度量$g$相容)：
+
+Let \( X, Y, Z \) be three vector fields on \( U \).
+
+\[
+Z(g(X,Y)) = g(\nabla_Z X, Y) + g(X, \nabla_Z Y)
+\]
+
+We simply denote \( g(\cdot,\cdot) \) by \( \langle\cdot,\cdot\rangle \)
+
+
+
+\[
+\frac{\partial}{\partial x^k} \left( \left\langle \frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^j} \right\rangle \right) 
+= \left\langle \nabla_{\frac{\partial}{\partial x^k}} \frac{\partial}{\partial x^i}, \frac{\partial}{\partial x^j} \right\rangle 
++ \left\langle \frac{\partial}{\partial x^i}, \nabla_{\frac{\partial}{\partial x^k}} \frac{\partial}{\partial x^j} \right\rangle
+\]
+
+i.e.
+
+\[
+\frac{\partial}{\partial x^k} g_{ij} = \Gamma_{ki}^l g_{lj} + g_{il} \Gamma_{kj}^l . \quad \text{(3)}
+\]
+
+Interchange \( i \) and \( k \):
+
+\[
+\frac{\partial}{\partial x^i} g_{kj} = \Gamma_{ik}^l g_{lj} + \Gamma_{ij}^l g_{kl} . \quad \text{(1)}
+\]
+
+Interchange \( j \) and \( k \):
+
+\[
+\frac{\partial}{\partial x^j} g_{ik} = \Gamma_{ji}^l g_{lk} + g_{il} \Gamma_{jk}^l . \quad \text{(2)}
+\]
+
+\begin{equation*}
+\begin{aligned}
+&\text{(1)} + \text{(2)} - \text{(3)} \Rightarrow \\
+&\text{LHS} = \frac{\partial g_{kj}}{\partial x^i} + \frac{\partial g_{ik}}{\partial x^j} - \frac{\partial g_{ij}}{\partial x^k}
+\end{aligned}
+\end{equation*}
+
+\[\text{RHS} = 2 \Gamma_{ij}^l g_{lk} = \text{LHS} \]
+{Let } $(g^{ij})$  be the inverse matrix of  $(g_{ij})$. 
+(Since we have assumed that  $g$  is nondegenerate.)
+This implies 
+\begin{equation*}
+\begin{aligned}
+\Gamma_{ij}^k = \frac{1}{2} g^{km} \left( \frac{\partial g_{im}}{\partial x^j} + \frac{\partial g_{mj}}{\partial x^i} - \frac{\partial g_{ij}}{\partial x^m} \right)
+\end{aligned}
+\end{equation*}
+
+
+
+Remark:$\Gamma_{ij}^k$ is fully determined by the metric $g$. Now we can define the so-called covariant derivative (协变导数).
+
+
+Let $X$ and $Y$ be two vector fields on $U$.
+
+\[
+X = X^\mu \frac{\partial}{\partial x^\mu}, \quad Y = Y^\nu \frac{\partial}{\partial x^\nu}
+\]
+
+\[
+\nabla_X Y = \nabla_{X^\mu \frac{\partial}{\partial x^\mu}} \left( Y^\nu \frac{\partial}{\partial x^\nu} \right) = X^\mu \nabla_{\frac{\partial}{\partial x^\mu}} \left( Y^\nu \frac{\partial}{\partial x^\nu} \right) =X^\mu \left( \frac{\partial Y^\nu}{\partial x^\mu} \frac{\partial}{\partial x^\nu} + Y^\nu \nabla_{\frac{\partial}{\partial x^\mu}} \frac{\partial}{\partial x^\nu} \right)
+\]
+
+
+
+In particular, one considers:
+
+
+
+
+
+\begin{equation*}
+    \begin{aligned}
+    \nabla_{\frac{\partial}{\partial x^\mu}} \left( Y^\nu \frac{\partial}{\partial x^\nu} \right) &= \frac{\partial Y^\nu}{\partial x^\mu} \frac{\partial}{\partial x^\nu} + Y^\nu \Gamma_{\mu\nu}^\alpha \frac{\partial}{\partial x^\alpha}\\
+        &= \left( \frac{\partial Y^\alpha}{\partial x^\mu} + Y^\nu \Gamma_{\mu\nu}^\alpha \right) \frac{\partial}{\partial x^\alpha}\\
+    \end{aligned}
+\end{equation*}
+
+We also denote LHS as:
+\[\nabla_{\frac{\partial}{\partial x^\mu}} \left( Y^\nu \frac{\partial}{\partial x^\nu} \right)=\nabla_{\frac{\partial}{\partial x^\mu}} \left( Y^\alpha \frac{\partial}{\partial x^\alpha} \right):=(Y^\alpha_{;\mu})\frac{\partial}{\partial x^\alpha}\]
+
+
+So we can see 
+\[
+Y^\alpha_{;\mu} = \frac{\partial Y^\alpha}{\partial x^\mu} + \Gamma_{\mu\nu}^\alpha Y^\nu
+\]
+
+Compare LHS and RHS.
+
+\begin{remark}
+Mathematician vs physicist notation:
+\begin{itemize}
+    \item Mathematician: $Y = Y^\alpha \frac{\partial}{\partial x^\alpha}$;\quad $\nabla_{\frac{\partial}{\partial x^\mu}} Y = Y^\alpha_{;\mu} \frac{\partial}{\partial x^\alpha}$.
+    \item Physicist:  $Y^\alpha$;\quad $Y^\alpha_{;\mu} \frac{\partial}{\partial x^\alpha}=Y^\alpha_{,\mu}+\Gamma_{\mu\nu}^\alpha Y^\nu.$
+
+这个式子方便记忆，可以写成：协变导数=普通导数+联络修正。
+\end{itemize}
+\end{remark}
+
+Summary: Let $(M, g)$ be a 4-D Lorentz manifold.
+
+There is a unique connection
+
+\[
+\nabla : \mathfrak{X}(M) \times \mathfrak{X}(M) \rightarrow \mathfrak{X}(M)
+\]
+
+such that
+
+\begin{enumerate}
+    \item $\nabla_X Y - \nabla_Y X = [X, Y]$ \quad (torsion-free)
+    \item $Z(g(X,Y)) = g(\nabla_Z X, Y) + g(X, \nabla_Z Y)$ \quad (compatible with metric)
+\end{enumerate}
+
+This connection is called the Levi-Civita connection.
+
+\begin{remark}
+    事实上，由上面定义，$(M,g)$上的一共 Levi-Civita联络是指一个与$g$相容的对称联络。黎曼几何基本定理指出，任一黎曼流形$(M,g)$上存在唯一的Levi-Civita 联络。
+\end{remark}
+
+
+Now we work on $(U, x^\mu)$, $X = X^\mu \frac{\partial}{\partial x^\mu}$.
+We denote by $\nabla_\mu X$ the covariant derivative of $X$ along the direction $\frac{\partial}{\partial x^\mu}$, i.e. $\nabla_{\frac{\partial}{\partial x^\mu}} X$
+
+\[
+(\nabla_\mu X)^\alpha = X^\alpha_{,\mu} + \Gamma_{\mu\nu}^\alpha X^\nu
+\]
+
+\begin{remark}
+这里使用了物理学家常用的记号：
+\begin{itemize}
+    \item $X^\alpha_{,\mu}$ 表示普通偏导数 $\frac{\partial X^\alpha}{\partial x^\mu}$
+    \item $\Gamma_{\mu\nu}^\alpha$ 是克里斯托费尔符号
+    \item $(\nabla_\mu X)^\alpha$ 表示向量场 $X$ 的协变导数的 $\alpha$ 分量
+\end{itemize}
+\end{remark}
+
+
+We are going to introduce the curvature operator \( R \).
+\begin{equation*}
+    \begin{aligned}
+        R : \mathfrak{X}(U) \times \mathfrak{X}(U) \times \mathfrak{X}(U) &\rightarrow \mathfrak{X}(U) \\
+(X, Y, Z) &\mapsto R(X,Y)Z \\
+&= \nabla_X \nabla_Y Z - \nabla_Y \nabla_X Z - \nabla_{[X,Y]} Z
+    \end{aligned}
+\end{equation*}
+ 
+
+
+In particular, one considers
+
+\[
+X = \frac{\partial}{\partial x^\alpha} = \partial_\alpha, \quad 
+Y = \frac{\partial}{\partial x^\beta} = \partial_\beta, \quad 
+Z = \frac{\partial}{\partial x^\gamma} = \partial_\gamma
+\]
+
+Now compute \( R(\partial_\alpha, \partial_\beta) \partial_\gamma \).
+
+Define 
+
+\[
+ dx^\mu [R(\partial_\alpha, \partial_\beta) \partial_\gamma]\triangleq R_{\alpha\beta\gamma}^\mu
+\]
+\begin{remark}
+  $ R_{\alpha\beta\gamma}^\mu $也有别的记号，上下标的写法与这里略有不同。这里为了方便直接这样写，暂时没有产生歧义。
+\end{remark}
+\begin{equation*}
+\begin{aligned}
+R(\partial_\alpha, \partial_\beta) \partial_\gamma 
+&= \nabla_\alpha (\nabla_\beta \partial_\gamma) - \nabla_\beta (\nabla_\alpha \partial_\gamma) - \nabla_{[\partial_\alpha, \partial_\beta]} \partial_\gamma \\
+&= \nabla_\alpha (\nabla_\beta \partial_\gamma) - \nabla_\beta (\nabla_\alpha \partial_\gamma) \quad (\text{since } [\partial_\alpha, \partial_\beta] = 0) \\
+&= \nabla_\alpha (\Gamma_{\beta\gamma}^\lambda \partial_\lambda) - \nabla_\beta (\Gamma_{\alpha\gamma}^\lambda \partial_\lambda) \\
+&= \left( \frac{\partial \Gamma_{\beta\gamma}^\lambda}{\partial x^\alpha} \partial_\lambda + \Gamma_{\beta\gamma}^\lambda \Gamma_{\alpha\lambda}^\rho \partial_\rho \right) 
+- \left( \frac{\partial \Gamma_{\alpha\gamma}^\lambda}{\partial x^\beta} \partial_\lambda + \Gamma_{\alpha\gamma}^\lambda \Gamma_{\beta\lambda}^\rho \partial_\rho \right) \text{(Using Leibniz rule)}\\
+&= \left( \frac{\partial \Gamma_{\beta\gamma}^\rho}{\partial x^\alpha} - \frac{\partial \Gamma_{\alpha\gamma}^\rho}{\partial x^\beta} 
++ \Gamma_{\beta\gamma}^\lambda \Gamma_{\alpha\lambda}^\rho - \Gamma_{\alpha\gamma}^\lambda \Gamma_{\beta\lambda}^\rho \right) \partial_\rho
+\end{aligned}
+\end{equation*}
+
+Acting on $dx^\mu$,we get
+\[
+R_{\alpha\beta\gamma}^\mu = \frac{\partial \Gamma_{\beta\gamma}^\mu}{\partial x^\alpha} + \Gamma_{\beta\gamma}^\lambda \Gamma_{\alpha\lambda}^\mu - \left( \frac{\partial \Gamma_{\alpha\gamma}^\mu}{\partial x^\beta} + \Gamma_{\alpha\gamma}^\lambda \Gamma_{\beta\lambda}^\mu \right)
+\]
+
+\( R_{\alpha\beta\gamma}^\mu \) is called the Riemann curvature tensor.
+
+\[
+R = \partial \Gamma - \partial \Gamma + \Gamma \ast \Gamma - \Gamma \ast \Gamma \quad (\text{形式上长的像这个式子，便于记忆})
+\]
+
+
+
+Fact:\( R(X, Y)Z \) are \( C^\infty \)-functions and linear for any \( C^\infty \) function \( f \):
+\begin{align*}
+R(fX, Y)Z &= f R(X, Y)Z \\
+R(X, fY)Z &= f R(X, Y)Z \\
+R(X, Y)(fZ) &= f R(X, Y)Z
+\end{align*}
+
+
+Assume  \quad       \(
+X, Y \in \mathfrak{X}(M), \quad w \in A^1(M) \quad (\text{1-form})
+\)
+\[
+(\nabla_X \omega)(Y) \overset{\text{def}}{=} X(\omega(Y)) - \omega(\nabla_X Y)
+\]
+
+
+Here $\omega$ is an 1-form，$X$ and $Y$ are vector fields，$\omega(Y)$ is a $C^\infty$-function.
+
+
+In local coordinate chart $(U, x^\mu)$ ,\(\omega = \omega_\mu dx^\mu\).
+\begin{equation*}
+\begin{aligned}
+(X^\mu \nabla_\mu \omega_\nu) Y^\nu 
+&= X^\mu \partial_\mu (\omega_\nu Y^\nu) - \omega_\nu (X^\mu \nabla_\mu Y^\nu) \\
+&= X^\mu (\partial_\mu \omega_\nu) Y^\nu + X^\mu \omega_\nu \partial_\mu Y^\nu - \omega_\nu X^\mu \partial_\mu Y^\nu - \omega_\nu X^\mu \Gamma_{\mu\alpha}^\nu Y^\alpha \\
+&= (\partial_\mu \omega_\nu - \Gamma_{\mu\nu}^\alpha \omega_\alpha) X^\mu Y^\nu
+\end{aligned}
+\end{equation*}
+
+因此，$\nabla_\mu \omega_\nu = \partial_\mu \omega_\nu - \Gamma_{\mu\nu}^\alpha \omega_\alpha$
+
+\begin{remark}
+这个结果可以推广到高阶张量。例如，对于 (2,1) 型张量 ，其协变导数为：
+\[
+\nabla_\alpha T^{\beta}_{\mu\nu} = \partial_\alpha T^{\beta}_{\mu\nu}
++ \Gamma^{\beta}_{\alpha\lambda} T^{\lambda}_{\mu\nu}
+- \Gamma_{\alpha\mu}^\lambda T^{\beta}_{\lambda\nu}
+- \Gamma_{\alpha\nu}^\lambda T^{\beta}_{\mu\lambda}
+\]
+\end{remark}
+
+Important property ：$\nabla g \equiv 0$
+
+$\Rightarrow$ The operations of raising and lowering indices commute with covariant differentiation
+
+\[
+R_{\alpha\beta\nu}^\mu = dx^\mu(R(\partial_\alpha, \partial_\beta) \partial_\nu)
+\]
+\[
+R_{\alpha\beta \mu\nu} = g_{\mu\rho} R_{\alpha\beta\nu}^\rho
+\]
+\begin{equation*}
+    \begin{aligned}
+       (g_{ij})_{;k} &= \frac{\partial g_{ij}}{\partial x^k} - \Gamma^\lambda_{kj} g_{i\lambda} - \Gamma^\lambda_{ki} g_{\lambda j}\\
+&= 0 \quad (\text{compatible with the metric})
+    \end{aligned}
+\end{equation*}
+\begin{remark}
+    由前面对张量做协变导数的说明，对任何向量场$Z$,协变导数$\nabla_Z g$是有意义的。若$\nabla g=0$，即对任意向量场$Z$,都有$\nabla_Z g=0$，则称联络$\nabla$与黎曼度量$g$是相容的。$\nabla g=0$等价于${(g_{ij})}_{;k}=0$,具体计算在上面，对$g$的协变导数计算可以仿照$1-form$和$(2,1)$张量的方式给出。
+\end{remark}
+
+
+
+Now we do some calculation in a coordinate basis.
+
+\[
+X = X^\alpha \partial_\alpha \quad Y = Y^\beta \partial_\beta \quad Z = Z^\nu \partial_\nu
+\]
+
+
+\begin{equation*}
+    \begin{aligned}
+        R(X,Y)Z\quad(\text{ a vector field)}&=R(X^\alpha\partial_\alpha,Y^\beta\partial_\beta)(Z^\nu\partial_\nu)\\
+        &=X^\alpha Y^\beta Z^\nu R(\partial_\alpha,\partial_\beta)\partial_\nu\quad(\text{Since}\quad C^\infty-linear)\\
+        &=[R^{\mu}_{\alpha\beta\nu}X^\alpha Y^\beta Z^\nu]\frac{\partial}{\partial x^\mu}
+    \end{aligned}
+\end{equation*}
+
+\begin{equation*}
+    \begin{aligned}
+        &R^{\mu}_{\alpha\beta\nu}X^\alpha Y^\beta Z^\nu\text{(表示$R(X,Y)Z$的第$\mu$个分量)}\\
+        &=X^\alpha\nabla_\alpha(Y^\beta \nabla_\beta Z^\mu)-Y^\alpha \nabla_\alpha(X^\beta\nabla_\beta Z^\mu)-(X^\alpha\partial_\alpha Y^\beta-Y^\alpha\partial_\alpha X^\beta)\nabla_\beta Z^\mu\\
+        &=(Leibniz)X^\alpha(\nabla_\alpha Y^\beta)\nabla_\beta Z^\mu+X^\alpha Y^\beta\nabla_\alpha\nabla_\beta Z^\mu\\
+        &-
+        Y^\alpha(\nabla_\alpha X^\beta)\nabla_\beta Z^\mu-Y^\alpha X^\beta\nabla_\alpha\nabla_\beta Z^\mu\\
+        &-(X^\alpha\partial_\alpha Y^\beta)\nabla_\beta Z^\mu+(Y^\alpha\partial_\alpha X^\beta)\nabla_\beta Z^\mu\\
+        &=X^\alpha Y^\beta (\nabla_\alpha\nabla_\beta-\nabla_\beta\nabla_\alpha)Z^\mu.
+        \end{aligned}
+\end{equation*}
+
+\begin{remark}
+    刚刚是使用$R$的定义，即$R(X,Y)Z=\nabla_X\nabla_YZ-\nabla_ Y\nabla_XZ-\nabla_{[X,Y]}Z$.
+    从而按分量展开计算：
+    \[\nabla_X\nabla_YZ=X^\alpha\nabla_\alpha(\nabla_YZ)=X^\alpha\nabla_\alpha(Y^\beta \nabla_\beta Z),\]
+    \[[X,Y]f=X(Yf)-Y(Xf)=(X^\alpha\partial_\alpha Y^\beta-Y^\alpha\partial_\alpha X^\beta)\partial _\beta,\]
+    \[\nabla_{[X,Y]}Z=\nabla_{(X^\alpha\partial_\alpha Y^\beta-Y^\alpha\partial_\alpha X^\beta)\partial _\beta}Z=(X^\alpha\partial_\alpha Y^\beta-Y^\alpha\partial_\alpha X^\beta)\nabla_\beta Z\]
+\end{remark}
+
+In other hands,
+
+\[
+R_{\alpha\beta\nu}^{\mu}Z^\nu = (\nabla_\alpha \nabla_\beta - \nabla_\beta \nabla_\alpha) z^\mu
+\]
+
+\[
+2\nabla_{[\alpha} \nabla_{\beta]} z_\mu = R_{\alpha\beta\mu\nu} z^\nu
+\]
+
+where the square brackets indicate anti-symmetricization
+
+\[
+T_{[\alpha\beta]} = \frac{1}{2} (T_{\alpha\beta} - T_{\beta\alpha})
+\]
+
+This is readily generalized for arbitrary tensors
+
+\begin{equation*}
+    \begin{aligned}
+        2\nabla_{[\alpha} \nabla_{\beta]} (z_\mu \omega_\nu)& = 2 (\nabla_{[\alpha} \nabla_{\beta]} z_\mu) \omega_\nu + 2 (\nabla_{[\alpha} \nabla_{\beta]} \omega_\nu) z_\mu\\
+&= R_{\alpha\beta\mu\sigma} z^\sigma \omega_\nu + R_{\alpha\beta\nu\sigma} \omega^\sigma z_\mu
+    \end{aligned}
+\end{equation*}
+    
+
+One concludes
+
+\[
+2\nabla_{[\alpha} \nabla_{\beta]} T_{\mu\nu} = R_{\alpha\beta\mu\sigma} T^\sigma_\nu + R_{\alpha\beta\nu\sigma} T_\mu^\sigma
+\]
+
+Let \( Z_\mu = \nabla_\mu f = \partial_\mu f \) where \( f \) is a smooth function.
+
+\[
+R_{[\alpha\beta\mu]\nu}Z^\nu = 2 \nabla_{[[\alpha}\nabla_{\beta]} Z_{\mu]} = 2 \nabla_{[\alpha}\nabla_{[\beta,} Z_{\mu]]} = 0
+\]
+
+because \(\nabla_{[\mu},Z_{\nu]} =\partial_{[\mu},Z_{\nu]} -\Gamma_{[\mu\nu]}^{\alpha}Z_\alpha=\partial_{[\mu},\partial_{\nu]}f=0\)
+
+Since \(z\) can be chosen freely,
+
+\[
+R_{[\alpha\beta\mu]\nu} = 0 \iff R_{\alpha\beta\mu\nu} + R_{\beta\mu\alpha\nu} + R_{\mu\alpha\beta\nu} = 0
+\]
+
+That is
+
+\[
+R(X, Y) Z + R(Y, Z) X + R(Z, X) Y = 0
+\]
+It is called the first Bianchi identity.
+\[
+T_{[\alpha\beta\gamma]} = \frac{1}{6} [T_{\alpha\beta\gamma} + T_{\beta\gamma\alpha} + T_{\gamma\alpha\beta} - T_{\beta\alpha\gamma} - T_{\alpha\gamma\beta} - T_{\gamma\beta\alpha}]
+\]
+\begin{remark}
+    事实上，可以如下直接证明Bianchi第一恒等式.
+
+    由挠率为$0$，我们有$\nabla_X Y-\nabla_Y X=[X,Y].$从而有：
+    
+\begin{equation*}
+    \begin{aligned}
+        &R(X,Y)Z+R(Y,Z)X+R(Z,X)Y\\
+        &=\nabla_X\nabla_Y Z-\nabla_Y \nabla_X-\nabla_{[X,Y]}Z+\cdots\\
+        &=\nabla_X(\nabla_Y Z-\nabla_Z Y)-\nabla_{[Y,Z]}X+\cdots\\
+        &=\nabla_X[Y,Z]-\nabla_{[Y,Z]}X+\cdots\\
+        &=[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0
+    \end{aligned}
+\end{equation*}
+其中$\cdots$后面都是和前面轮换对称的形式。最后一步是由于Jacobi恒等式。
+
+    
+\end{remark}
+
+
+
+The \(2^{\text{nd}}\) Bianchi identity：
+
+\[
+R_{\alpha\beta\mu\nu} = R_{\alpha\beta\nu}^\lambda g_{\mu\lambda}
+\]
+\[
+R_{\alpha\beta\mu\nu} = - R_{\beta\alpha\mu\nu} = - R_{\alpha\beta\nu\mu} = R_{\mu\nu\alpha\beta}
+\]
+
+\[
+\nabla_\alpha R_{\beta\gamma\mu\nu} + \nabla_\beta R_{\gamma\alpha\mu\nu} + \nabla_\gamma R_{\alpha\beta\mu\nu} = 0
+\]
+
+\[
+\Leftrightarrow \nabla_{[\alpha} R_{\beta\gamma]\mu\nu} = 0
+\]
+
+Define Ricci tensor:\[R_{\mu\nu} = \sum_\alpha R_{\alpha\mu\nu}^{\alpha}  ,\]
+and Scalar curvature:
+\[
+R = g^{\mu\nu} R_{\mu\nu} ,
+\]
+
+where \( g^{\mu\nu} \) is the inverse of \( g_{\mu\nu} \).
+
+By contracting the pairs of indices \( (\beta, \mu) \) and \( (\gamma, \nu) \) in the second Bianchi identity,
+
+\[
+\nabla_\alpha R - \nabla^\beta R_{\alpha\beta} - \nabla^\gamma R_{\alpha\gamma} = 0
+\]
+That is
+\begin{equation*}
+    \begin{aligned}
+    \nabla^\beta R_{\alpha\beta} - \frac{1}{2} \nabla_\alpha R = 0 \iff
+        \nabla^\beta (R_{\alpha\beta} - \frac{1}{2} R g_{\alpha\beta}) = 0
+    \end{aligned}
+\end{equation*}
+
+
+
+
+
+
+\begin{remark}
+这里的记号含义如下：
+   \[ \nabla_\mu = \frac{\partial}{\partial x^\mu},\]
+\[\nabla^\mu = g^{\mu\nu} \nabla_\nu\]
+\end{remark}
+
+Now we introduce the so-called Einstein-tensor
+
+\begin{equation*}
+\begin{aligned}
+    G_{\mu\nu}:=R_{\mu\nu}-\frac12 Rg_{\mu\nu}&\text{\quad which is divergence-free,that is,}\\
+    &\nabla^\nu G_{\mu\nu}=0.
+\end{aligned}
+\end{equation*}
+
+The equation $G_{\mu\nu}=0$ is called the vacuum Einstein equation.
+
+
+Remark:(VEE) is equivalent to $R_{\mu\nu}=0$.
+
+\begin{proof}
+$\Leftarrow$ :\quad is trivial.
+
+$\Rightarrow$: 
+
+\begin{equation*}
+    \begin{aligned}
+        \quad R_{\mu\nu} - \frac{1}{2} R g_{\mu\nu} &= 0\\
+\Rightarrow g^{\mu\nu}R_{\mu\nu} - \frac{1}{2} R g_{\mu\nu}g^{\mu\nu} &= 0\\
+\Rightarrow \quad R - \frac{1}{2} R \cdot 4 = 0 \quad \Rightarrow \quad R &= 0\quad\Rightarrow R_{\mu\nu}=0
+    \end{aligned}
+\end{equation*}
+  
+\end{proof}
+
+The Minkowski metric $\eta=-(dx_0)^2+\sum\limits_{i=1}^3(dx_i)^2$\quad obviously satisfied the VEE.(平直时空曲率张量为$0$)
+
+
+
+\section{General Relativity}
+
+Einstein had to specify:
+
+(1)How free-falling particles would move on the curved spacetime?
+
+(2)How to determine the metric $g$?

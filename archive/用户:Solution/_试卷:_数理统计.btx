@@ -1,0 +1,378 @@
+\setdisplaytitle{试卷：数理统计}
+\sethtmltitle{试卷：数理统计}
+\section{2026 年春季数理统计期末考试（尤翀）}
+
+注1：可能需要的分位数表都会给出，此处不再罗列。
+
+注2：本卷班级平均分70，最高分100。
+\begin{enumerate}
+% ==================== 第1题 ====================
+\item 设 $X_1, X_2, \dots, X_n$ 是来自密度函数 $f(x|\theta)$ 的独立同分布样本，其中 $\theta > 0$，且
+\[
+f(x|\theta)=\frac{1}{\theta^2} x e^{-x/\theta}, \quad x>0
+\]
+该分布的均值为 $2\theta$，方差为 $2\theta^2$。
+
+\begin{enumerate}
+\item 求 $\theta$ 的一个充分统计量（3 分）；
+\item 求 $\theta$ 的极大似然估计 (MLE)（4 分）；
+\item 求 $\theta$ 的矩估计 (MME)（2 分）；
+\item 求该分布单个观测的 Fisher 信息量（3 分）；
+\item MLE 的方差是否达到了 Cram\'er-Rao 下界？请说明理由（3 分）。
+\end{enumerate}
+
+% ==================== 第2题 ====================
+\item 设 $X_1, X_2, \dots, X_n$ 是来自均匀分布 $U(0, \theta)$ 的独立同分布样本，其中 $\theta > 0$ 未知。令 $X_{(1)} = \min\{X_1, \dots, X_n\}$，$X_{(n)} = \max\{X_1, \dots, X_n\}$，并记 $Y = \frac{X_{(1)}}{X_{(n)}}$。
+
+\begin{enumerate}
+\item 叙述完备统计量的定义，证明 $X_{(n)}$ 是 $\theta$ 的充分完备统计量（7 分）；
+\item 证明 $Y$ 是辅助统计量（3 分）；
+\item 证明 $X_{(n)}$ 与 $Y$ 相互独立（2 分）；
+\item 计算 $E\left[\left(X_{(n)} - \frac{n}{n+1}\theta\right)Y\right]$（4 分）。
+\end{enumerate}
+
+% ==================== 第3题 ====================
+\item 设 $X_1, X_2, \dots, X_n$ 是来自泊松分布的独立同分布样本，其概率质量函数为
+\[
+p(x|\lambda)=\frac{\lambda^x e^{-\lambda}}{x!}, \quad x=0,1,2,\dots,
+\]
+其中 $\lambda > 0$ 未知。令 $Y = \sum_{i=1}^n X_i$。
+
+\begin{enumerate}
+\item 证明 $Y$ 是 $\lambda$ 的充分完备统计量（7 分）；
+\item 给出 $f(\lambda)=e^{-\lambda}$ 的一个无偏估计量，并证明（4 分）；
+\item 利用 Lehmann-Scheffé 定理以及泊松分布的可加性求 $f(\lambda)$ 的 UMVUE（4 分）。
+\end{enumerate}
+
+% ==================== 第4题 ====================
+\item 设 $X_1, X_2, \dots, X_n$ 为来自几何分布 Geometric($p$) 的独立同分布样本，其概率质量函数为
+\[
+P(X_i=k)=(1-p)^{k-1}p, \quad k=1,2,3,\dots, \quad 0<p<1.
+\]
+参数 $p$ 的先验分布为 Beta($a, b$)，其密度函数为
+\[
+\pi(p)=\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)} p^{a-1}(1-p)^{b-1}, \quad 0<p<1,
+\]
+其中 $a>0, b>0$ 为已知参数。
+
+\begin{enumerate}
+\item 求先验分布的期望（3 分）；
+\item 求 $p$ 的后验分布（6 分）；
+\item 考虑后验分布的均值，求 $p$ 的贝叶斯估计量（4 分）。
+\end{enumerate}
+
+提示：Beta 函数定义为 $B(\alpha, \beta)=\int_0^1 t^{\alpha-1}(1-t)^{\beta-1}\,dt$，且 $B(\alpha, \beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}$；
+$\Gamma(\alpha+1)=\alpha\Gamma(\alpha)$。
+
+% ==================== 第5题 ====================
+\item 设 $X_1, X_2, \dots, X_n$ 是来自均匀分布 $U(0, \theta)$ 的独立同分布样本，其中 $\theta > 0$ 未知，$X_{(n)} = \max\{X_1, \dots, X_n\}$。
+
+\begin{enumerate}
+\item 计算 $Y = \frac{X_{(n)}}{\theta}$ 的分布（4 分）；
+\item 利用 (1) 中的枢轴量，求 $\theta$ 的置信水平为 $1-\alpha$ 的等尾置信区间（7 分）。
+\end{enumerate}
+
+% ==================== 第6题 ====================
+\item 设随机变量 $X$ 的分布密度可取自下面的 $f_0(x)$ 或 $f_1(x)$：
+\[
+f_0(x)=\begin{cases}
+1, & 0\le x\le 1, \\
+0, & \text{其他},
+\end{cases}
+\]
+\[
+f_1(x)=\begin{cases}
+\frac{C}{1+x}, & 0\le x\le 1, \\
+0, & \text{其他},
+\end{cases}
+\]
+其中 $C$ 为未知常数。基于 $X$ 的一个观测值，考虑检验问题
+\[
+H_0: f(x)=f_0(x) \quad \text{vs} \quad H_1: f(x)=f_1(x).
+\]
+
+\begin{enumerate}
+\item 计算 $C$ 的值（3 分）；
+\item 利用 Neyman-Pearson 引理，求上述检验问题的检验水平 $\alpha=0.05$ 的最大功效检验 $\phi$ 的拒绝域（5 分）；
+\item 求 $\phi$ 的第二类错误的概率（5 分）。
+\end{enumerate}
+
+% ==================== 第7题 ====================
+\item 某饮料商用两种不同配方推出了两种新的饮料，现抽取了 10 位消费者，
+让他们分别品尝两种饮料并加以评分，从不喜欢到喜欢，评分为 $1$ 到 $10$ 的整数，评分结果如下：
+
+\begin{center}
+\[\begin{array}{|c|c|c|c|c|c|c|c|c|c|c|}
+\hline \\
+品尝者 & 1 &\ 2\ &\ 3\ &\ 4\ &\ 5\ & 6 & 7 & 8 & 9 & 10 \\ \\
+\hline \\
+\text{A }饮料 & 10 & 8 & 6 & 8 & 7 & 5 & 1 & 3 & 10 & 7 \\ \\
+\text{B }饮料 & 6 & 5 & 2 & 2 & 4 & 6 & 4 & 5 & 9 & 8 \\ \\ \hline \\
+差值 & 4 & 3 & 4 & 6 & 3 & -1 & -3 & -2 & 1 & -1 \\ \\ \hline
+\end{array}\]
+\end{center}
+
+显著性水平 $\alpha=0.05$，问两种饮料评分是否有显著差异？
+
+\begin{enumerate}
+\item 假设评分服从正态分布，对差值的均值进行检验（5 分）；
+\item 采用符号检验方法作检验（6 分）；
+\item 采用符号秩和检验方法作检验（6 分）。
+\end{enumerate}
+\end{enumerate}
+
+\section{2026年春季数理统计期末考试（杨莹）}
+\begin{enumerate}
+% ==================== 第1题 ====================
+\item 设 $X_1, X_2$ 是来自几何分布（参数为 $p$）的独立样本，即
+\[
+P(X_i=x)=(1-p)^{x-1}p,\quad x=1,2,\dots
+\]
+考虑假设检验：
+\[
+H_0:p=0.5,\qquad H_1:p=0.25
+\]
+拒绝域取为
+\[
+W=\{(x_1,x_2):x_1+x_2\ge c\}
+\]
+
+\begin{enumerate}
+\item 求势函数 $\beta(p)$；
+\item 若显著性水平 $\alpha=0.1$，求临界值 $c$；
+\item 取第(2)问中的 $c$，计算犯第二类错误的概率。
+\end{enumerate}
+
+% ==================== 第2题 ====================
+\item 设 $X_1,\dots,X_n$ 是来自双指数分布（拉普拉斯分布）的独立样本，密度为
+\[
+f(x;\theta)=\frac{1}{2\theta}\exp\left(-\frac{|x|}{\theta}\right),\quad \theta>0
+\]
+
+\begin{enumerate}
+\item 求 $\theta$ 的 MLE；
+\item 求 UMVUE 并论证是否达到 Cram\'er-Rao 下界；
+\item 假设检验 $H_0:\theta=\theta_0$，求关于大样本似然比统计量的置信区间。
+\end{enumerate}
+
+
+% ==================== 第3题 ====================
+\item 考虑指数族分布
+\[
+f(x;\theta)=\exp\{\theta x-b(\theta)\}h(x)
+\]
+其中 $b(x)>0$ 是凸函数且二阶可导。
+
+\begin{enumerate}
+\item 论证这是单调似然比（MLR）分布族；
+\item 判断 UMP 检验是否存在；
+\item 给出 UMP 检验的具体形式；
+\item 用 Poisson 分布验证第(3)问的结果。
+\end{enumerate}
+
+
+% ==================== 第4题 ====================
+\item 给定 $X_1,\dots,X_{10}$，$Y_1,\dots,Y_{12}$，分别来自两个正态分布，
+样本均值为 $\bar{X}=73.4$，$\bar{Y}=67.8$，样本方差为 $S_1^2=36$，$S_2^2=25$。
+
+\begin{enumerate}
+\item 进行方差相等假设检验；
+\item 判断能否说明两总体均值不同。
+\end{enumerate}
+
+（需给出假设、统计量、拒绝域和计算结果）
+
+
+% ==================== 第5题 ====================
+\item 设 $X_1,\dots,X_n$ 独立同分布，密度为
+\[
+f(x;\theta)=\frac{1}{\theta}\exp\left(-\frac{x-\theta}{\theta}\right),\quad x>\theta,\ \theta>0
+\]
+
+\begin{enumerate}
+\item 证明 $\bar{X}/\theta$ 和 $X_{(1)}/\theta$ 都是枢轴量；
+\item 分别给出 $\theta$ 的 $\alpha$ 置信区间；
+\item 利用区间长度说明哪一个较好。
+\end{enumerate}
+
+
+
+% ==================== 第6题 ====================
+\item 给定一个 $3\times 2$ 列联表，利用卡方检验判断行变量与列变量是否有关（$\alpha=0.05$）。（具体数据已经忘了)
+(需给出假设、统计量、拒绝域和计算结果)
+\end{enumerate}
+
+
+\section{2026年春季数理统计期中考试（尤翀）}
+\begin{enumerate}
+\item 某电影院拥有 $N$ 个座位, 与另一家影院竞争 $2400$ 名潜在观众. 假设每名观众选择该影院的概率为 $0.4$, 且各人的选择相互独立.
+
+\begin{enumerate}[label=(\arabic*)]
+    \item 利用二项分布建模, 写出 ``因影院客满导致观众无法入场'' 的概率表达式 (无需计算具体数值).
+
+    \item 利用正态近似求出满足该概率小于 $2\%$ 的最小 $N$ 值. (可能用到的结论: $z_{0.02}=2.05$, 满足 $P(Z>z_{0.02})=0.02$, 其中 $Z\sim N(0,1)$)
+\end{enumerate}
+
+\item  设离散随机变量 $X$ 取值为非负整数, 定义其生成函数 $G_X(s)=\mathbb{E}[s^X]$, 令 $K(s)=\log(G_X(s))$.
+
+\begin{enumerate}[label=(\arabic*)]
+    \item 证明: $\left.\dfrac{d}{ds}K(s)\right|_{s=1}=\mathbb{E}[X]$;
+
+    \item 求 $\left.\dfrac{d^2}{ds^2}K(s)\right|_{s=1}$ 的表达式 (用 $\mathbb{E}[X]$ 和 $\operatorname{Var}(X)$ 表示).
+\end{enumerate}
+
+\item 设随机变量 $Y$ 表示 $n$ 次独立伯努利试验中成功的次数, 每次试验的成功概率为 $X$, 其中 $n\geq 1$ 为已知常数. 假设 $X$ 是一个连续随机变量, 其概率密度函数为
+\[
+f_X(x)=2x,\quad 0<x<1.
+\]
+
+\begin{enumerate}[label=(\arabic*)]
+    \item 推导 $\operatorname{Var}(Y)=\operatorname{Var}(\mathbb{E}[Y|X])+\mathbb{E}(\operatorname{Var}[Y|X])$.
+
+    \item 求 $\mathbb{E}[Y]$ 和 $\operatorname{Var}(Y)$.
+
+    \item 写出 $X$ 与 $Y$ 的联合概率密度 / 分布列 $f_{X,Y}(x,y)$.
+
+    \item 求 $Y$ 的边缘分布列 $P(Y=y)$, $y=0,1,\ldots,n$. 提示: Beta 函数 $B(\alpha,\beta)=\int_0^1 x^{\alpha-1}(1-x)^{\beta-1}\,dx$, 且当 $\alpha,\beta$ 为正整数时, $B(\alpha,\beta)=\dfrac{(\alpha-1)!(\beta-1)!}{(\alpha+\beta-1)!}$.
+\end{enumerate}
+
+\item 设随机样本 $X_1,X_2,\ldots,X_n$ 独立同分布, 服从参数为 $\theta>0$ 的指数分布, 其概率密度函数为
+\[
+f_X(x)=\frac{1}{\theta}e^{-x/\theta},\quad x>0.
+\]
+记 $X_{(1)}=\min\{X_1,\ldots,X_n\}$ 为最小次序统计量, 并令 $\bar{X}=\dfrac{1}{n}\sum_{i=1}^n X_i$ 为样本均值. 证明: $X_{(1)}/\bar{X}$ 与 $\bar{X}$ 相互独立.
+
+提示 1: $Z_i/\theta\sim \exp(1)$
+
+提示 2: $S=\sum_{i=1}^n X_i\sim \operatorname{Gamma}(n,\theta)$, 对应的 pdf 为 $f(s;n,\theta)=\dfrac{1}{\Gamma(n)\theta^n}s^{n-1}e^{-s/\theta}$
+
+提示 3: 若一个函数 $h$ 的拉普拉斯变换在某个区间上存在且恒为零, 则 $h(s)=0$ 几乎处处 (关于 Lebesgue 测度).
+\end{enumerate}
+
+
+\section{2026年春季数理统计期中考试（杨莹）}
+
+
+\begin{center}\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+评分表： & 1 & 2 & 3 & 4 & 5 \\
+ & 8+7 & 10+10 & 10+10+10 & 15 & 10+10 
+\end{tabular}\end{center}
+
+\begin{enumerate}
+\item 设 \(X_1, \ldots, X_n\) i.i.d 服从两点分布 \(b(1, p)\)，\(0 < p < 1\) 是未知参数，求：\\
+   (a) \(p^s\) 的 UMVUE；\\
+   (b) \(p^s + (1-p)^{n-s}\) 的 UMVUE（\(0 < s < n\) 是整数）。\\
+
+\item 假设 \(X_1, \ldots, X_n\) 是独立同分布的，服从参数为 \(\lambda\) 的泊松分布，即 \(P(X = n) = \frac{e^{-\lambda} \lambda^n}{n!}\)。\\
+   (a) 证明：存在 \(g(\lambda)\) 的无偏估计量的充分必要条件是 \(g(\lambda)\) 是一个收敛级数 \(\sum_{k \geq 0} a_k \lambda^k\)，\(0 < \lambda < \infty\)。\\
+   (b) 令 \(T = \sum_{k=1}^n X_k\)，找到一个关于 \(T\) 的函数，作为 \(e^{-2\lambda}\) 的无偏估计量，并证明它也是 \(e^{-2\lambda}\) 的 UMVUE。当 \(n = 1\) 时，这是一个好的估计量吗？
+
+\item 设 \(X_1, \ldots, X_n\) 是独立同分布的样本，对于某个 \(0 < \theta < 1\)，有 \(P(X_1 = -1) = \frac{1-\theta}{2},P(X_1 = 0) = \frac{1}{2}, P(X_1 = 1) = \frac{\theta}{2}\)。\\
+   (a) 推导 \(\theta\) 的最大似然估计量 \(\hat{\theta}_{MLE}\) 和矩估计量 \(\hat{\theta}_{MoM}\)。\\
+   (b) 最大似然估计量 \(\hat{\theta}_{MLE}\) 是无偏的吗？\\
+   (c) 计算 \(\theta\) 的 $C-R$ 下界。$C-R$ 下界能达到吗？
+
+\item 设 \(X_1, \ldots, X_n\) 是从参数为 \(\theta\) 的指数分布中独立同分布抽取的样本（\(f_\theta(x) = \theta \exp(-\theta x), x \geq 0\)）。记 \(F_\theta(t)\) 为该指数分布的累积分布函数，\(t > 0\)。求尾概率 \(p = 1 - F_\theta(t)\) 这一参数的 UMVUE。
+
+\item 假设 \(X_1, \ldots, X_n\) 是来自总体族 \(P_\theta\) 的独立同分布样本，
+\(T_n = T_n(X_1, \ldots, X_n)\) 是 \(g(\theta)\) 的一个估计量。如果对于某些 \(a_k(\theta)\)，有
+   \[
+   E_\theta [T_n] - g(\theta) = \sum_{k=1}^\infty \frac{a_k(\theta)}{n^k}
+   \]
+   即 \(E_\theta [T_n] - g(\theta) = O\big(\frac{1}{n}\big)\)。
+   令 \(T_{n-1}^{(-i)}\) 表示 \(T_{n-1}^{-1}(X_1, \ldots, X_{i-1}, X_{i+1}, \ldots, X_n)\)，并定义
+   \[
+   \bar T_{n-1} = \frac{1}{n} \sum_{i=1}^n T_{n-1}^{(-i)},
+   \]
+   \[
+   T_n' = nT_n - (n-1)\bar T_{n-1},
+   \]
+   其中 \(T_n'\) 称为 \(T_n\) 的 Jackknife 估计量。\\
+   (a) 证明： Jackknife 估计量可以减小原始估计量 \(T_n\) 的偏差。
+   \[
+   \mathbb{E}_{\theta}[T_n']-g(\theta) = O\bigg(\frac{1}{n^2}\bigg)
+   \]
+
+   (b)现在假设 \(X_1, X_2, \ldots, X_n\) 服从 \(N(\theta, 1)\)，我们想估计 \(\mu^2\)。
+   一个自然的估计量是 \(T_n = \bar{X}^2 = \big( \frac{1}{n} \sum_{k=1}^2 X_k\big)^2 \)。
+   使用上述符号推导出 Jackknife 估计量\(T_n'\)。并计算偏差$\mathbb{E}[T_n]-\mu^2$、$\mathbb{E}[T_n']-\mu^2$和方差
+   $\operatorname{Var}(T_n),\operatorname{Var}(T_n')$.比较结果以说明，虽然 Jackknife 估计量的偏差更小，但它可能会增大方差。
+\end{enumerate}
+
+
+\section{2025年春季数理统计期末考试模拟试卷}
+\begin{enumerate}
+\item 设 $X_{1}, X_{2}$ 独立同分布，其共同密度函数为
+$$p(x;\theta)=k \theta^{k} x^{-(k+1)}, 
+\quad x>\theta, \quad \theta>0, \quad k>2 \text { 已知.}$$
+\begin{enumerate}[label=(\arabic*)]
+\item 证明 $T_{1}=\frac{k-1}{2k}(X_{1}+X_{2})$ 和 $T_{2}=\frac{2k-1}{2k} \min (X_{1}, X_{2})$ 都是 $\theta$ 的无偏估计；
+\item 计算 $T_{1}$ 和 $T_{2}$ 的均方误差并进行比较；
+\item 证明：在均方误差意义下，在形如 $T_{c}=c \min (X_{1}, X_{2})$ 的估计中，$c=\frac{2k-2}{2k-1}$ 时最优。
+\end{enumerate}
+\item 设 $X_{1}, \ldots, X_{n}$ 为独立同分布随机变量，$0<\theta<1$，
+$$P(X_{1}=-1)=\frac{1-\theta}{2}, \quad P(X_{1}=0)=1/2, 
+\quad P(X_{1}=1)=\frac{\theta}{2}$$
+\begin{enumerate}[label=(\arabic*)]
+\item 求 $\theta$ 的 MLE $\hat{\theta}_{1}$ 并问 $\hat{\theta}_{1}$ 是否是无偏的；
+\item 求 $\theta$ 的矩估计 $\hat{\theta}_{2}$；
+\item 计算 $\theta$ 的无偏估计的方差的 C--R 下界。
+\end{enumerate}
+\item 设 $X_{1}, \ldots, X_{n}$ 是来自 $U(\theta_{1}, \theta_{2})$ 的样本。
+\begin{enumerate}[label=(\arabic*)]
+\item 证明 $(X_{(1)}, X_{(n)})$ 是该分布族的完备充分统计量；
+\item 求 $\theta_{1}, \theta_{2}$ 的一致最小方差无偏估计；
+\item 证明：若 $\theta_{2}=2 \theta_{1}$，则 $(X_{(1)}, X_{(n)})$ 不再是完备的；
+\item 对 $\theta_{2}=2 \theta_{1}$，求 $\theta_{1}$ 的 MLE，记为 $\hat{\theta}_{2}$；
+\item 对 $\theta_{2}=2 \theta_{1}$，令 $T=\frac{(n+1)(2X_{(n)}+X_{(1)})}{5n+4}$，
+则 $T$ 是 $\theta_{1}$ 的无偏估计，且 $\operatorname{Var}(T) \leq \operatorname{Var}(\hat{\theta}_{1})$。
+\end{enumerate}
+\item 设 $X_{1}, \ldots, X_{n}$ 和 $Y_{1}, \ldots, Y_{m}$ 
+分别为来自参数为 $\lambda_{1}$ 和 $\lambda_{2}$ 的指数分布的样本，且全样本独立，
+试求 $\lambda_{2} / \lambda_{1}$ 的置信水平为 $1-\alpha$ 的置信区间。
+\item 设 $X_{1}, \ldots, X_{n}$ 是来自概率密度函数为
+$$f(x;\theta)=2 \frac{x}{\theta^{2}} \exp \left(-\frac{x^{2}}{\theta^{2}}\right), \quad x>0$$
+的 Rayleigh 分布的样本，其中 $\theta>0$ 为未知参数。
+\begin{enumerate}[label=(\arabic*)]
+\item 利用此总体的充分完备统计量，建立一个关于假设
+$$H_{0}: \theta=1 \quad \text{ vs } \quad H_{1}: \theta>1$$
+的显著性水平为 $\alpha$ 的检验；
+\item 验证此检验统计量在 $H_{1}$ 下比在 $H_{0}$ 下具有更大的均值。
+\end{enumerate}
+\item 假设 $X_{i 1}, \ldots, X_{i n_{i}}, i=1,2$ 为两个 IID 样本，
+分别服从均匀分布 $U(0, \theta_{i}), i=1,2$，这里 $\theta_{1}> 0, \theta_{2}>0$ 均为未知。
+\begin{enumerate}[label=(\arabic*)]
+\item 求假设 $H_{0}: \theta_{1}=\theta_{2} \text{ vs } H_{1}: \theta_{1} \neq \theta_{2}$ 的显著性水平为 $\alpha$ 的似然比检验；
+\item 求 $-2 \ln \lambda$ 的极限分布，这里 $\lambda$ 为 (1) 中的似然比。
+\end{enumerate}
+\item 设 $X_{1}, \ldots, X_{n}$ 为来自 $b(1,p)$ 的样本，试利用 N--P 引理求假设
+$$H_{0}: p=p_{0} \quad \text { vs } \quad H_{1}: p=p_{1}(>p_{0})$$
+的显著性水平为 $\alpha$ 的最大功效检验。
+\item 设为一位顾客的服务时间服从指数分布 $\operatorname{Exp}(\lambda)$，其中 $\lambda$ 未知，
+又设 $\lambda$ 的先验分布是均值为 $0.2$，标准差为 $1$ 的 Gamma 分布。
+如今对 $20$ 位顾客服务，平均服务时间是 $3.8$ 分钟。
+在平方损失下，分别求 $\lambda$ 和 $\theta=1/\lambda$ 的 Bayes 估计。\\
+(参数 $\lambda$ 在平方损失下的 Bayes 估计满足 $\bar{\lambda}=\underset{\hat{\lambda}}{\operatorname{argmin}} E[(\hat{\lambda}-\lambda)^{2}|X]$.)
+
+\item 某建筑工地每天发生事故数现场记录如下：
+\begin{center}\begin{tabular}{ccccccccc}
+一天发生的事故数 &\ \ \ $0$\ \ \ &\ \ \ $1$\ \ \ &\ \ \ $2$\ \ \ &\ \ \ $3$\ \ \ &\ \ \ $4$\ \ \ &\ \ \ $5$\ \ \ &\ $\geq 6$\ &\ 合计\ \\
+天数 & $102$ & $59$ & $30$ & $8$ & $0$ & $1$ & $0$ & $200$
+\end{tabular}\end{center}
+试在显著性水平 $\alpha=0.05$ 下检验这批数据是否服从泊松分布。
+\item 为了比较用来做鞋后跟的两种材料的质量，
+选取了 $15$ 个男子 (他们生活条件各不相同)，每人穿着一双新鞋，
+其中一只是材料 $\text{A}$ 做后跟，另一只以材料 $\text{B}$ 做后跟，
+其厚度均为 $10\text{mm}$，过了一个月再测量厚度，得到数据如下：
+\begin{center}\begin{tabular}{cccccccccccccccc}
+序号 & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ & $9$ & $10$ & $11$ & $12$ & $13$ & $14$ & $15$ \\
+材料 $\text{A}$ & $6.6$ & $7.0$ & $8.3$ & $8.2$ & $5.2$ & $9.3$ & $7.9$ & $8.5$ & $7.8$ & $7.5$ & $6.1$ & $8.9$ & $6.1$ & $9.4$ & $9.1$ \\
+材料 $\text{B}$ & $7.4$ & $5.4$ & $8.8$ & $8.0$ & $6.8$ & $9.1$ & $6.3$ & $7.5$ & $7.0$ & $6.5$ & $4.4$ & $7.7$ & $4.2$ & $9.4$ & $9.1$
+\end{tabular}\end{center}
+问是否可以认定材料 $\text{A}$ 制成的后跟比材料 $\text{B}$ 耐穿？
+\begin{enumerate}[label=(\arabic*)]
+\item 设 $d_{i}=x_{i}-y_{i}, i=1,2, \ldots, 15$ 来自正态总体，结论是什么？
+\item 采用符号秩和检验方法检验，结论是什么？
+\end{enumerate}
+\end{enumerate}

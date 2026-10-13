@@ -1,0 +1,107 @@
+\setdisplaytitle{试卷：计算方法}
+\sethtmltitle{试卷：计算方法}
+
+\section{24年秋}
+
+\begin{itemize}
+    
+    \item[1.] 计算$\lVert A\rVert_2$.其中
+    \[  A=\begin{pmatrix}
+        1 & 1 & 0 &0\\
+        0 & 1 & 1 &0 \\
+        0 & 0 & 1 &1\\
+        1 & 0 & 0 &1\\
+    \end{pmatrix}\]
+
+    \item[2.] 1) $\{x_k\}_{k=0}^{n}$是$n+1$个不同的节点，$\{g_{n,k}(x)\}_{k=0}^{n}$是Newton基函数，$\{l_{n,k}(x)\}_{k=0}^{n}$是Lagrange基函数.构造矩阵$T$使得
+    \[ \begin{pmatrix}
+        g_{n,0}(x)\\
+        g_{n,1}(x)\\
+        \vdots\\
+        g_{n,n}(x)\\
+    \end{pmatrix}=T\begin{pmatrix}
+        l_{n,0}(x)\\
+        l_{n,1}(x)\\
+        \vdots\\
+        l_{n,n}(x)
+    \end{pmatrix}\]
+
+    2) 当$n$是偶数，求证Newton--Cotes求积公式至少具有$n+1$次代数精度.
+
+    \item[3.] 首一多项式族$\{p_n(x)\}_{n=1}^\infty$满足当$i\neq j$，$\int_a^b p_j(x)p_i(x)\rho(x)\mathrm{d}x=0$，即多项式族构成正交系.
+    
+    1) 求证：存在序列$\{b_n\},\{c_n\}$，使得$p_{n+1}(x)=(x+b_n)p_n(x)-c_np_{n-1}(x)$对$n\geq 1$成立.
+
+    2) 求证：$c_n>0$.
+
+    \item[4.] $A$是实对称阵，不选主元作$LU$分解，证明：$U$的对角元均是正数当且仅当$A$是对称正定阵.
+
+    \item[5.] 1) 构造线性方程组$Ax=b$，Jacobi迭代法收敛而Gauss--Seidel迭代法不收敛.
+
+    2) $A$对称正定，则CG方法解线性方程组$Ax=b$有：$r_n^\mathrm{T}r_n=p_n^\mathrm{T} r_0$.
+
+    \item[6.] 确定函数$p(x),q(x)$，使得迭代法$\varphi(x)=x-p(x)f(x)-q(x)f(x)^2$解$f(x)=0$具有局部至少$3$阶收敛。
+
+\end{itemize}
+
+\section{25年秋}
+
+\begin{itemize}
+		
+	\item[1.] 考虑$n$阶矩阵 $A$
+		\[  A=\begin{pmatrix}
+			2 & 1 & 0 &0\\
+			1 & 2 & 1 &0 \\
+			0 & 1 & \ddots &1\\
+			0 & 0 & 1 &2\\
+		\end{pmatrix}\]
+		
+	(1) 计算 $\|A\|_2 \|A^{-1}\|_2$.
+		
+	(2) 证明对 $A$ 进行LU分解无需选择主元. 
+		
+	\item[2.] 用Jacobi迭代法与Gauss--Seidel迭代法求解线性方程组 $Ax=b$, 其中
+		
+	\[  A=\begin{pmatrix}
+			1 & \alpha & 0\\
+			\delta & 1 & \beta\\
+			0 & \gamma &1 \\
+	\end{pmatrix}\]
+		
+	(1) 写出两种迭代方法的迭代格式. 
+		
+	(2) 是否存在 $\alpha, \beta, \delta, \gamma$ 使得其中一种迭代法收敛而另一种不收敛? 如果存在, 举出例子; 不存在说明理由. 
+		
+	\item[3.] 写出下面优化问题的一阶最优性条件
+		
+	\[\min_{0 \leq x \leq u} \frac{1}{2}x^T C x + p^T x\]
+		
+	其中 $u$ 为正向量.
+		
+	\item[4.] $\{x_k\}_{k=0}^{n}=\{{\frac{k}{n}}\}$是$n+1$个不同的节点，$\{l_{n,k}(x)\}_{k=0}^{n}$是Lagrange基函数. $b_{n,k} = \binom{n}{k} x^k (1-x)^{n-k}$ 为Bernstein函数. 
+		
+	(1) 构造矩阵$T$使得
+	\[ \begin{pmatrix}
+			b_{n,0}(x)\\
+			b_{n,1}(x)\\
+			\vdots\\
+			b_{n,n}(x)\\
+	\end{pmatrix}=T\begin{pmatrix}
+			l_{n,0}(x)\\
+			l_{n,1}(x)\\
+			\vdots\\
+			l_{n,n}(x)
+	\end{pmatrix}\]
+		
+	(2) $T$ 是否是非异的? 说明理由. 
+		
+	\item[5.] 
+	设内积 $\langle f(x), g(x)\rangle = \int_a^b \rho(x)f(x)g(x)dx$, 证明 由该内积生成的 $n$ 次正交多项式具有 $n$ 个相异零点. 
+		
+	\item[6.]
+		
+	求解 $x_0$, $x_1$, $A_0$, $A_1$ 使得下面的求积格式达到最大代数精度. 
+		
+	\[\int_{0}^{1}xf(x)dx = A_0f(x_0) +A_1f(x_1)\]
+		
+\end{itemize}

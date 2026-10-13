@@ -1,0 +1,329 @@
+\begin{itemize}
+    \item[9.]
+    (1)代入$\textup{D}_vf=\langle\nabla f(P),v\rangle$即可。
+
+    (2) $\textup{D}_u(g\cdot h)=\langle\nabla(g\cdot h)(P),u\rangle
+    =\langle g(P)\cdot\nabla h(P),u\rangle+\langle h(P)\cdot\nabla g(P),u\rangle
+    =g(P)\cdot\textup{D}_uh+h(P)\cdot\textup{D}_ug$。
+
+    \item[11.]
+    (1) $J_{\tilde{f}}
+    = \big(\frac{\partial\tilde{f}_i}{\partial \tilde{x}_j}\big)_{n \times m}
+    = \big(\frac{\partial\tilde{f}_i}{\partial x_k} \frac{\partial x_k}{\partial\tilde{x}_j}\big)_{n \times m}
+    = \big(\frac{\partial (a^i_l f_l)}{\partial x_k} \frac{\partial x_k}{\partial (b^j_s x_s)}\big)_{n \times m}
+    = \big(a^i_j \frac{\partial f_i}{\partial x_j} (b^j_k)^{-1}\big)_{n \times m}
+    = A J_f B^{-1}$。
+
+    (2) 由$A,B$均可逆得$\operatorname{rk}J'_f=\operatorname{rk}J_f$。
+
+    (3) 完全同理。将曲纹坐标系看成坐标变换即可，此时的坐标变换函数为曲纹坐标变换所对应的Jacobi矩阵。
+
+    \item[12.]
+    只需证明在所给区域$\frac{\partial(x^1,\cdots,x^n)}{\partial(u^1,\cdots,u^n)}\neq0$即可。
+
+    写出行列式并消去第一行并使用数学归纳法能够证明
+    （具体过程可参考大多数数学分析教材）
+    $$
+    \frac{\partial(x^1,\cdots,x^n)}{\partial(u^1,\cdots,u^n)}
+    = r_1 r_2 \cdots r_n (u^n)^{n-1} (\cos u^1)^{n-2} (\cos u^2)^{n-3}\cdots \cos u^{n-2},
+    $$
+    由$x_1\neq0$得$u^n,\cos u^1,\cdots,\cos u^{n-2}\neq0$，所以$\frac{\partial(x^1,\cdots,x^n)}{\partial(u^1,\cdots,u^n)}\neq0$。
+
+    \item[17.]
+    $f$是线性变换是显然的。\\
+    要证明与基底选取无关，只需取另一组基底$\tilde{\delta_i}$，
+    验证这两组基底下的计算结果一致即可。
+    设另一组基底为$\tilde{\delta_i} = a^{ij} \delta_j$，
+    则$\tilde{\delta^i} = \tilde{a}_{ji} \delta^j$，
+    其中$\tilde{a}_{ij}a^{jk}=\delta_{ik}$，那么（已省略对$i$求和）
+    \begin{align*}
+        \tilde{f}(u,\tilde{\delta}^i)\tilde{\delta}_i
+        &=\tilde{f}(u,\tilde{a}_{ji} \delta^j)a^{ik} \delta_k\\
+        &=\tilde{a}_{ji}a^{ik}\tilde{f}(u,\delta^j)\delta_k\\
+        &=\delta_{jk}\tilde{f}(u,\delta^j)\delta_k\\
+        &=\tilde{f}(u,\delta^i)\delta_i.
+    \end{align*}
+
+    \item[18.]
+    一方面，对于每一个$r$重线性映射$t$，可以定义$ F(\alpha, v_1, \cdots, v_n) := \alpha t(v_1, \cdots, v_n)$;
+
+    另一方面，对于每一个$(1,r)$型张量$ F(\alpha, v_1, \cdots, v_n)$，
+    可以定义$t(v_1, \cdots, v_n) = \sum\limits_{i=1}^{m} F(\delta^i, v_1, \cdots, v_n)\delta_i$。
+    类似于上一题，由$F$的线性型可知$t$的定义与基底选取无关。
+
+    \item[20.]
+    取$V$的两个线性无关的向量$v_1,v_2$，$W$的两个线性无关的向量$w_1,w_2$，
+    $v_1\otimes w_1, v_2\otimes w_2$均在此集合中，
+    但$v_1\otimes w_1+v_2\otimes w_2$并不在其中。
+    这是因为对于$v=\sum\limits_{i=1}^m a_iv_i$和$w=\sum\limits_{j=1}^n b_jw_j$，
+    $v\otimes w=\sum\limits_{i=1}^m\sum\limits_{j=1}^n a_ib_jv_i\otimes w_j$的系数构成的矩阵
+    $(a_ib_j)_{\begin{subarray}{l}1\leq i\leq m,\\1\leq j\leq n\end{subarray}}$的秩为$1$，
+    而$v_1\otimes w_1+v_2\otimes w_2$的系数的矩阵
+    $\left(\begin{matrix}1&0& \\0&1& \\ & & \end{matrix}\right)$的秩为$2$.
+
+    \item[21.]
+    若$e_i = a^k_i \delta_k$为另一组基底，且在${e_i}$基底下，$f$的表示矩阵为$c^j_m a^l_ib^m_l$，其中$(c^i_j)$是$(a^i_j)$的逆矩阵，则
+    $$
+    \tilde{b^j_i} \tilde{b^i_k} \tilde{b^k_j} = c^j_m a^l_i c^i_j a^h_k c^k_n a^m_j b^m_l b^l_h b^n_m.
+    = b^m_l b^l_h b^h_m = B_3
+    $$
+
+    只需对$(3,3)$型张量$F(\alpha^1,\alpha^2,\alpha^3,v_1,v_2,v_3) := 
+    \alpha^1(f(v_2))\alpha^2(f(v_3))\alpha^3(f(v_1)) $缩并三次即可表示出$B_3$。
+
+    \item[22.]
+    是$F(\alpha,v) = \alpha(v)$，因为$F(\delta^j,\delta_i) = \delta^j(\delta_i)=\delta_i^j$。
+
+    \item[23.]
+    不存在。因为该张量无法缩并。
+
+    事实上，任取一个基变换，容易发现该张量一定与基选取有关。
+
+    \item[24.]
+    \begin{equation*}
+        \begin{aligned}
+            \sigma(f)(v_1,\cdots,v_q) &= \alpha^1 \otimes \cdots \otimes \alpha^q (v_{\sigma(1)},\cdots,v_{\sigma(q)})\\
+            &= \alpha^1(v_{\sigma(1)})\cdots \alpha^q(v_{\sigma(q)})\\
+            &= \alpha^{\tau(1)}(v_{1})\cdots \alpha^{\tau(q)}(v_{q})\\
+            &= \alpha^{\tau(1)}\otimes\cdots\otimes\alpha^{\tau(q)}(v_1,\cdots,v_q).
+        \end{aligned}
+    \end{equation*}
+	
+    \item [25.]
+	(1)由$\xi=S_q(\xi)$容易得到$\xi$对称；
+    另一方面，当$\xi$对称时，有$S_q(\xi)=\frac{\sum_{\sigma \in \mathscr{S}} \sigma(\xi)}{q!}=\frac{\sum_{\sigma \in \mathscr{S}} \xi}{q!}=\frac{|\mathscr{S}(q)|\xi}{q!}=\xi$.\\
+
+	(2)由$\xi=A_q(\xi)$容易得到$\xi$反对称；
+    另一方面，当$\xi$对称时，有$A_q(\xi)=\frac{\sum_{\sigma \in \mathscr{S}} \operatorname{sign}(\sigma)\sigma(\xi)}{q!}=\frac{\sum_{\sigma \in \mathscr{S}} {\operatorname{sign}(\sigma)}^2\xi}{q!}=\frac{|\mathscr{S}(q)|\xi}{q!}=\xi$.
+	
+	\item[26.]
+	设$\sigma$为二阶张量上的对换，
+    取$\xi_1=\frac{\xi+\sigma(\xi)}{2}$与$\xi_2=\frac{\xi-\sigma(\xi)}{2}$.
+    则$\xi=\xi_1+\xi_2$且$\xi_1$与$\xi_2$分别为对称与反对称张量.
+	
+	\item[27.]
+	通过列举$\mathscr{S}$中元素并利用$\varphi$给定性质，
+    可计算得$A_3(\varphi)=\frac{1}{6}\sum\limits_{\sigma \in \mathscr{S}}\operatorname{sign}(\sigma)\sigma(\varphi)=\frac{1}{6}(2-4)\varphi=-\frac{1}{3}\varphi$.
+    由$A_3(\varphi)$的反对称性可推知$\varphi$反对称.\par
+	同时，取任意$v_1,v_2,v_3 \in V$，
+    由$\varphi(v_2,v_1,v_3)=\varphi(v_1,v_2,v_3)=-\varphi(v_2,v_1,v_3)$
+    得到$\varphi=0$.
+	
+	\item[28.]
+	任取$u,v \in V$，由条件知$a(u+v,u+v)-a(u,u)-a(v,v)=0$，化简即得$a(u,v)+a(v,u)=0$，即$S_2(a)=0$.
+	
+	\item[29.]
+	取定一组基$\{\delta^i\}$.根据题目条件，取$a=E^{ij}+E^{ji}$可得
+    $b_{ij}+b_{ji}=0$，从而可得$b$反对称.
+	
+	\item[30.]
+	令$g:=f-\tilde{f}$，则对任意$x\in V$有$g(x,x)=0$，从第28题可得$g$反对称，
+    但$g$又对称，因而$g=0$，从而$f=\tilde{f}$.
+	
+	\item[31.]
+	仅需依据行列式的逆序数定义对于$i_1\dots i_r$是不是$j_1\dots j_r$的置换分别进行讨论即可，此不赘述.
+	
+	\item[32.]
+	(1)
+	\begin{align*}
+		\frac{1}{r!}\delta^{k_1\dots k_r}_{j_1\dots j_r}\delta^{i_1\dots i_{r+s}}_{k_1\dots k_r j_{r+1}\dots j_{r+s}} &
+        =\frac{1}{r!}\delta^{k_1\dots k_r}_{j_1\dots j_r}\delta^{i_1\dots i_r}_{k_1\dots k_r}\delta^{i_{r+1}\dots i_{r+s}}_{j_{r+1}\dots j_{r+s}}\\
+		&=\frac{|\mathscr{S}(r)|}{r!}\delta^{i_1\dots i_r}_{j_1\dots j_r}\delta^{i_{r+1}\dots i_{r+s}}_{j_{r+1}\dots j_{r+s}}\\
+		&=\delta^{i_1\dots i_{r+s}}_{j_1\dots j_{r+s}}.
+	\end{align*}\par
+	(2)
+	所求即为$n$个数中任取$r$个的排列，从而$\delta^{i_1\dots i_r}_{i_1\dots i_r}=P^n_r=\frac{n!}{(n-r)!}$.
+    
+	\item[33.]
+    对于任意的$\sigma\in\mathscr{S}$有
+    \[
+        \det a=\operatorname{sign}(\sigma)a_{i_1}^{\sigma(i_1)}\cdots a_{i_n}^{\sigma(i_n)},
+    \]
+    因此
+    \[
+        \det a=\frac{1}{n!}\sum_{\sigma\in\mathscr{S}}\operatorname{sign}(\sigma)a_{i_1}^{\sigma(i_1)}\cdots a_{i_n}^{\sigma(i_n)}
+    =\frac{1}{n!}\delta_{j_1\cdots j_n}^{i_1\cdots i_n}a_{i_1}^{j_1}\cdots a_{i_n}^{j_n}.
+    \]
+
+    \item[34.] 构造$(r,r)$型张量$f(\alpha^1,\cdots,\alpha^r,v_1,\cdots,v_r):= \sum_{\sigma\in \mathscr{S}(r)} \operatorname{sign}(\sigma) \alpha^1(v_{\sigma(1))}) \cdots \alpha^r(v_{\sigma(r)})$
+    取定$V$的一组基$\{e_i\}$和对偶基$\{e^i\}$，则$f$在这组基下的分量
+    \begin{align*}
+        f_{j_1\cdots j_r}^{i_1\cdots i_r} & = f(e^{i_1},\cdots, e^{i_r},e_{j_1},\cdots,e_{j_r})\\
+        & = \sum_{\sigma \in \mathscr{S}(r)} \operatorname{sign}(\sigma) e^{i_1}(e_{j_{\sigma(1))}}) \cdots e^{i_r}(e_{j_{\sigma(r)}})\\
+        & = \sum_{\sigma \in \mathscr{S}(r)} \operatorname{sign}(\sigma) \delta^{i_1}_{j_{\sigma(1)}}\cdots \delta^{i_r}_{j_{\sigma(r)}}=\delta^{i_1 \cdots i_r}_{j_1 \cdots j_r}.
+    \end{align*}
+
+    \item[35.]
+    不能，因为该分量不是协变的. 事实上，任取一个基变换, 容易发现该张量一定与基选取有关.
+
+    \item[36.] 设$\{ e_i \}$是另一组基，满足$e_i=a_i^j \delta_j$. 设$(\bar{b}_i^j)$是$f$在基$\left\{ e_i \right\}$下的表示矩阵，则$\bar{b}_i^j =a_i^m c_n^j b_m^n$.
+    其中$(c_i^j)$是$(a_i^j)$的逆矩阵. 在基底$\{ e_i \}$下计算得
+    \begin{align*}
+        \tilde{B}_r' & = \delta_{j_1 \cdots j_r}^{i_1 \cdots i_r}\bar{b}_{i_1}^{j_1} \cdots \bar{b}_{i_r}^{j_r} = \delta_{j_1 \cdots j_r}^{i_1 \cdots i_r}(a_{i_1}^{m_1}c_{n_1}^{j_1}b_{m_1}^{n_1})\cdots(a_{i_r}^{m_r}c_{n_r}^{j_r}b_{m_r}^{n_r})\\
+        & = \sum_{\sigma \in \mathscr{S}(r)} \delta_{i_{\sigma(1)}\cdots i_{\sigma(r)}}^{i_1\cdots i_r} (a_{i_1}^{m_1}c_{n_1}^{i_{\sigma(1)}}b_{m_1}^{n_1})\cdots(a_{i_r}^{m_r}c_{n_r}^{i_{\sigma(r)}}b_{m_r}^{n_r}) \\
+        & = \sum_{\sigma \in \mathscr{S}(r)} \operatorname{sign}(\sigma)(a_{i_1}^{m_1}c_{n_{\sigma^{-1}(1)}}^{i_1})\cdots(a_{i_r}^{m_r}c_{n_{\sigma^{-1}(r)}}^{i_r}) b_{m_1}^{n_1}\cdots b_{m_r}^{n_r}\\
+        & = \sum_{\sigma \in \mathscr{S}(r)} \operatorname{sign}(\sigma) \delta_{n_{\sigma^{-1}(1)}}^{m_1} \cdots \delta_{n_{\sigma^{-1}(r)}}^{m_r} b_{m_1}^{n_1} \cdots b_{m_r}^{n_r}\\
+        & = \det(\delta_{n_j}^{m_i}) b_{m_1}^{n_1} \cdots b_{m_r}^{n_r} = \delta_{n_1\cdots n_r}^{m_1\cdots m_r}b_{m_1}^{n_1}\cdots b_{m_r}^{n_r} =\tilde{B}_r.
+    \end{align*}
+
+
+
+    \item[37.]
+    见P40,41.
+
+    \item[38.] 设$\left\{ e_i \right\},\{ e^i \}$是另一组基和对偶基.
+    设$e_i=a_i^j \delta_j$，则$e^i=c_i^j \delta^j$，其中$(c_i^j)$是$(a_i^j)$的逆矩阵.
+    那么
+        \begin{align*}
+            & \, \sum_{1\leq i_1< \cdots <i_r \leq n} \left( e_{i_1}\wedge \cdots \wedge e_{i_r} \right) \otimes \left( e^{i_1} \wedge \cdots \wedge e^{i_r} \right)\\
+            & = \frac{1}{r!} \left( e_{i_1}\wedge \cdots \wedge e_{i_r} \right) \otimes \left( e^{i_1} \wedge \cdots \wedge e^{i_r} \right)\\
+            & = \frac{1}{r!} a_{i_1}^{j_1} \cdots a_{i_r}^{j_r} c_{k_1}^{i_1} \cdots c_{k_r}^{i_r}\left( \delta_{j_1}\wedge \cdots \wedge \delta_{j_r} \right)\otimes\left( \delta^{k_1}\wedge \cdots \wedge \delta^{k_r} \right)\\
+            & = \frac{1}{r!} \delta_{k_1}^{j_1} \cdots \delta_{k_r}^{j_r} \left( \delta_{j_1}\wedge \cdots \wedge \delta_{j_r} \right)\otimes\left( \delta^{k_1}\wedge \cdots \wedge \delta^{k_r} \right)\\
+            & = \frac{1}{r!} \left( \delta_{j_1}\wedge \cdots \wedge \delta_{j_r} \right)\otimes\left( \delta^{j_1}\wedge \cdots \wedge \delta^{j_r} \right)\\
+            & = \sum_{1\leq j_1< \cdots <j_r \leq n} \left( \delta_{j_1}\wedge \cdots \wedge \delta_{j_r} \right) \otimes \left( \delta^{j_1} \wedge \cdots \wedge \delta^{j_r} \right).
+        \end{align*}
+
+    \item[39.] 这是第43题的特殊情况.
+
+
+	\item[41.] 由第37题, $\delta^{i_1} \wedge \cdots \delta^{i_r}(u_1,\cdots,u_r)=\det(u_l^{i_k})$.\par
+	
+	设$\alpha^k=\alpha^k_i\delta^i$, 则
+		\begin{align*}
+		\alpha^1\wedge\cdots\alpha^r(u_1,\cdots,u_r)
+		&=\sum\limits_{i_1,\cdots,i_r}\alpha^1_{i_1}\cdots\alpha^r_{i_r}\delta^{i_1}\wedge \delta^{i_r}(u_1,\cdots,u_r)\\
+		&=\sum\limits_{i_1,\cdots,i_r}\alpha^1_{i_1}\cdots\alpha^r_{i_r}\det(u_l^{i_k})\\
+		&=\sum\limits_{i_1,\cdots,i_r}\det(\alpha^k_{i_k}u_l^{i_k})\\
+		&=\det((\sum\limits_{i=1}^n \alpha^k_i\delta^i)u_l)\\
+		&=\det(\alpha^k(u_l)).
+		\end{align*}
+	
+	
+	\item[42.] \begin{align*}
+		x_1\wedge \cdots \wedge x_r
+		&=\sum\limits_{i_1,\cdots,i_r}a^{i_1}_1\cdots a^{i_r}_re_{i_1}\wedge\cdots\wedge e_{i_r}\\
+		&=\sum\limits_{i_1<\cdots<i_r}\sum\limits_{\sigma}a^{i_{\sigma(1)}}_1\cdots a^{i_{\sigma(r)}}_re_{i_{\sigma(1)}}\wedge\cdots\wedge e_{i_{\sigma(r)}}\\
+		&=\sum\limits_{i_1<\cdots<i_r}\sum\limits_{\sigma}\operatorname{sign}(\sigma)a^{i_{\sigma(1)}}_1\cdots a^{i_{\sigma(r)}}_re_{i_1}\wedge\cdots\wedge e_{i_r}\\
+		&=\sum\limits_{i_1<\cdots<i_r}\det(a_l^{i_k})e_{i_1}\wedge \cdots \wedge e_{i_r}.
+		\end{align*}
+	
+	\item[43.] \begin{align*}
+			\varphi \wedge \psi(v_1,\cdots,v_{r+s})
+			&=\frac{1}{r!s!} \sum\limits_{\sigma}\operatorname{sign}(\sigma)\varphi \otimes \psi(v_{\sigma(1)},\cdots,v_{\sigma(r+s)})\\
+			&=\frac{1}{r!s!} \sum\limits_{i_1,\cdots,i_r}\varphi(v_{i_1},\cdots,v_{i_r})\sum\limits_{\sigma(k)=i_k}\operatorname{sign}(\sigma)\psi(v_{\sigma(r+1)},\cdots,v_{\sigma(r+s)})\\
+			&=\sum_{\substack{i_1<\cdots<i_r\\ i_{r+1}<\cdots<i_{r+s}}}\operatorname{sign}(\sigma_{i_1,\cdots,i_r})\varphi(v_{i_1},\cdots,v_{i_r})\psi(v_{i_{r+1}},\cdots,v_{i_{r+s}}),
+		\end{align*}
+	其中$\sigma_{i_1,\cdots,i_r}(1,2,\cdots,r+s)=(i_1,\cdots,i_r,i_{r+1},\cdots,i_{r+s})$, 
+    故$\operatorname{sign}(\sigma_{i_1,\cdots,i_r})=\delta_{1,\cdots,r+s}^{i_1,\cdots,i_{r+s}}$, 代入即证.
+	
+	\item[44.] 
+	\begin{enumerate}
+        \item[(1)]
+	易证.
+	
+	\item[(2)]
+		\begin{align*}
+			i(u_1)(\varphi\wedge\psi)&(u_2,\cdots,u_{r+s})
+			=\sum_{\substack{i_1<\cdots<i_r\\ i_{r+1}<\cdots<i_{r+s}}}\delta_{1,\cdots,r+s}^{i_1,\cdots,i_{r+s}} 				\varphi(u_{i_1},\cdots,u_{i_r})\psi(u_{i_{r+1}},\cdots,u_{i_{r+s}})\\
+			&=\sum_{\substack{i_1<\cdots<i_r\\ i_{r+1}<\cdots<i_{r+s}}} \Big[\sum\limits_{1\in \{i_1,\cdots,i_r\}}					\delta_{1,2,\cdots,r+s}^{1,i_2,\cdots,i_{r+s}}\varphi(u_1,u_{i_2},\cdots,u_{i_r})\psi(u_{i_{r+1}},\cdots,u_{i_{r+s}})\\
+			&\ \ \ \ +\sum\limits_{1\notin \{i_1,\cdots,i_r\}} \delta_{1,\cdots,r,r+1,r+2,\cdots,r+s}^{i_1,\cdots,i_r,1,i_{r+2},\cdots,i_{r+s}}\varphi(u_{i_1},\cdots,u_{i_r})\psi(u_1,u_{i_{r+2}},\cdots,u_{i_{r+s}})\Big]\\
+			&=\sum_{\substack{i_2<\cdots<i_r\\ i_{r+1}<\cdots<i_{r+s}}} \delta_{2,\cdots,r+s}^{i_2,\cdots,i_{r+s}}(i(u_1)\varphi)(u_{i_2},\cdots,u_{i_r})\psi(u_{i_{r+1}},\cdots,u_{i_{r+s}})\\
+			&\ \ \ \ +(-1)^r\sum_{\substack{i_1<\cdots<i_r\\ i_{r+2}<\cdots<i_{r+s}}} \delta_{2,\cdots,r+1,r+2,\cdots,r+s}^{i_1,\cdots,i_r,i_{r+2},\cdots,i_{r+s}}\varphi(u_{i_1},\cdots,u_{i_r})(i(u_1)\psi)(u_{i_{r+2}},\cdots,u_{i_{r+s}})\\
+			&=((i(u_1)\varphi)\wedge \psi+(-1)^r\varphi \wedge (i(u_1)\psi))(u_2,\cdots,u_{r+s}).
+		\end{align*}
+	
+	\end{enumerate}
+	
+	
+	\item[45.]
+	\begin{enumerate}
+	\item[(1)]
+		易证.
+		
+	\item[(2)]
+		\begin{align*}
+			e(\alpha)(\varphi\wedge \psi)&=\alpha\wedge(\varphi\wedge \psi)\\
+			&=(\alpha\wedge\varphi)\wedge\psi\\
+			&=(e(\alpha)\varphi)\wedge\psi,
+		\end{align*}
+
+        \begin{align*}
+            (\alpha\wedge\varphi\wedge\psi)(u_1,\cdots,u_{r+s+1})s
+								&=(\varphi\wedge\alpha\wedge\psi)(u_2,\cdots,u_{r+1},u_1,u_{r+2},\cdots,u_{r+s+1})\\
+								&=(-1)^r(\varphi\wedge\alpha\wedge\psi)(u_1,\cdots,u_{r+s+1}),
+		\end{align*}
+	故$e(\alpha)(\varphi\wedge\psi)=(-1)^r\varphi\wedge(\alpha\wedge\psi)=(-1)^r\varphi\wedge (e(\alpha)(\psi)).$
+	
+	
+	
+	
+	\end{enumerate}
+	
+	
+    \item[46.]
+   由第44、45题，
+   \begin{align*}
+    i(u)\circ e(\alpha)\varphi+e(\alpha)\circ i(u)\varphi&=(i(u)\alpha)\wedge\varphi-\alpha\wedge(i(u)\varphi)+\alpha\wedge(i(u)\varphi)\\
+    &=\alpha(u)\varphi.
+    \end{align*}
+    即证.
+
+    \item[47.]
+    (1)(2)我们直接证明(2)的$n\geq 1$的情形.\\
+    $n=1$显然成立.对$n$归纳：
+    假设$n$已成立，对于$\dim V=n+1$中的$n$次外形式
+    $$\Omega=\sum\limits_{i=1}^{n+1}a_i\delta^1\wedge\cdots\wedge\hat{\delta^i}\wedge\cdots\wedge\delta^{n+1},$$
+    $a_i$不全为$0$，$\{\delta_i\}$为$V$的一组基.\\
+    考虑$\psi=\sum b_i\delta^i$,则$\psi\wedge\Omega=(\sum a_ib_i(-1)^{i+1})\delta^1\wedge\cdots\wedge\delta^{n+1},$\\
+    易见存在$\{b_i\}$使得$\sum a_ib_i(-1)^{i+1}=0$.\\
+    即存在$\psi$使得$\psi\wedge\Omega=0$.\\
+    由定理5.8（P43），存在$\varphi$使得$\Omega=\psi\wedge\varphi$.\\
+    注意到存在$W,\dim W=n$使得$V^*=\mathbf{R}\psi\oplus W^*$,\\
+    考虑$\varphi$在$W^*$的投影$\tilde{\varphi}$,可见$\Omega=\psi\wedge\tilde{\varphi}$.\\
+    由归纳假设，$\tilde{\varphi}$可分解，于是$\Omega$可分解.\\
+    
+    (3)
+    当$\dim V=4$时$\delta^1\wedge\delta^2+\delta^3\wedge\delta^4$不可分解,\\
+    否则存在$\sum\limits_{i=1}^4 a_i\delta^i\neq0$
+    使得$\Big(\sum\limits_{i=1}^4 a_i\delta^i\Big)\wedge(\delta^1\wedge\delta^2+\delta^3\wedge\delta^4)=0$,\\
+    展开得$a_1=a_2=a_3=a_4=0$，矛盾.
+
+    \item[48.]
+    设$V^* $ 的基底为$\{  \delta^i  \}$，$2$次外形式 $ \alpha $ 可表为\\
+    $$ \alpha =  \sum _ {i<j} \alpha_{ij}\delta^i \wedge  \delta^j .$$
+    
+    假定 $ \alpha_{ij} $不全为$0$ ,不妨设 $ \alpha_ {12} \neq 0$ ,于是\\
+     \begin{align*}\alpha&=( \alpha_ {12} \delta ^ {1}  +  \alpha _ {32}  \delta ^ {3}  +  \cdots +  \alpha _ {n2}  \delta^ {n}  )  \wedge  (\delta ^ {2}+\frac{\alpha _ {13}}{\alpha _ {12}}\delta^3 + \cdots  + \frac{\alpha _{1n}}{\alpha _{12}}\delta^ {n}) + \sum \limits_{3\leq i<j\leq n}\alpha '_ {ij} \delta^i \wedge  \delta^j\\
+     &=  \sigma ^ {1} \wedge \sigma ^ {2}  +  \sum _{3\leq i<j\leq n} \alpha'_{ij} \delta^i \wedge  \delta ^j,\end{align*}
+     其中
+    $\displaystyle{\sigma ^ {1} = \alpha_ {12} \delta ^ {1}  +  \alpha _ {32}  \delta ^ {3}  +  \cdots +  \alpha _ {n2}  \delta^ {n}, 
+    \sigma^2=\delta ^ {2}+\frac{\alpha _ {13}}{\alpha _ {12}}\delta^3 + \cdots  + \frac{\alpha _ {1n}}{\alpha _ {12}}\delta^ {n}}$.
+
+     若 $ \alpha'_{ij} $不全为零，不妨设 $ \alpha '_{34} \neq  0$，继续上面的过程。
+     因$n$是有限数,故上述步骤必在有限步之后终止, 即$\alpha$可表成
+     $$ \alpha= \sigma ^ {1}  \wedge \sigma ^ {2}  +  \cdots + \sigma ^ {2r-1} \wedge  \sigma ^ {2r} ,$$ 
+     易见 $ \sigma ^ {1} ,\cdots , \sigma ^ {2r} $ 是线性无关的$1$次形式.\\
+     由$\sigma^{2i-1}\wedge\sigma^{2i}\wedge\sigma^{2j-1}\wedge\sigma^{2j}
+     =\sigma^{2j-1}\wedge\sigma^{2j}\wedge\sigma^{2i-1}\wedge\sigma^{2i}$
+     可得$\alpha^r=r!\sigma^1\wedge\sigma^2\wedge\cdots\wedge\sigma^{2r-1}\wedge\sigma^{2r}\neq0$，
+     由$\alpha^{r+1}$为高于$2r$次的外形式得$\alpha^{r+1}=0$，
+     所以$2r$只与$\alpha$有关.
+     
+     Remark:可以直接通过反对称二次型的合同标准型说明.
+
+    \item[49.]
+    (1)对称性和双线性是显然的.\\
+    由于$(\langle v_\alpha,v_\beta\rangle)_{\alpha,\beta}$为内积的Gram矩阵，于是正定性成立.\\
+    (2)$\langle\delta _ {i_1}\wedge\cdots\wedge \delta_{i_p},\delta_{j_1}\wedge\cdots\wedge \delta_{j_p}\rangle
+    =\det(\delta_{i_\alpha}^{j_\beta})
+    =\delta_{j_1\cdots j_p}^{i_1\cdots i_p}.$\\
+
+    \item[50.]
+    (1)注意到映射$ \wedge^pA:\prod\limits_{i=1}^pV \rightarrow W$为交错多线性映射，\\
+    由$ \wedge ^pV$  的泛性质，$ \wedge^pA:\prod\limits_{i=1}^pV \rightarrow W$诱导了$ \wedge  ^pA:\wedge^pV \rightarrow W$.\\
+    
+    (2)$\wedge^pA(\delta_{i_1}\wedge\cdots\wedge\delta_{i_p})=
+    \delta_{\alpha_1\cdots\alpha_p}^{i_1\cdots i_p}a_{i_1}^{\alpha_1}\cdots a_{i_p}^{\alpha_p}.$\\
+    
+    (3)$\wedge^p(AB)(z_1,\cdots,z_p)=(ABz_1)\wedge\cdots\wedge(ABz_p)=\wedge^pA(Bz_1,\cdots,Bz_p)=\wedge^pA\circ\wedge ^pB(z_1,\cdots ,z_p).$
+\end{itemize}

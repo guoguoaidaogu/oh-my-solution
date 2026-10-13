@@ -1,0 +1,387 @@
+\newcommand{\A}{\boldsymbol{A}}
+\newcommand{\B}{\boldsymbol{B}}
+\newcommand{\C}{\boldsymbol{C}}
+\newcommand{\I}{\boldsymbol{I}}
+\newcommand{\x}{\boldsymbol{x}}
+\newcommand{\K}{\boldsymbol{K}}
+\newcommand{\0}{\boldsymbol{0}}
+\newcommand{\t}{\text{T}}
+\setdisplaytitle{数学控制论\ 习题}
+\sethtmltitle{数学控制论\ 习题}
+
+{{comment|每年的内容和习题是有所不同的，习题来自\cite{LY}和\cite{YL}。|
+讲得更快的话，还会有\cite{YL}第7章（LQ最优控制问题）的习题。|
+以下是24年的习题全解，未来的读者可以补充新的解答。}}
+
+== 控制理论基础 ==
+
+=== 第三章\ 控制系统的分析 ===
+
+\begin{itemize}
+    \item[14.] 静态解为$\begin{cases}x_1\equiv1\\x_2\equiv0\end{cases}$，
+    $\begin{cases}x_1\equiv0\\x_2\equiv0\end{cases}$，相应的线性化是
+    \[\begin{cases}\.x_1=x_2\\\.x_2=(x_1-1-x_2)t\end{cases},
+    \quad\begin{cases}\.x_1=x_2\\\.x_2=(-x_1-x_2)t\end{cases}.\]
+
+    \item[16.] (4) 不稳定，因为$1-\frac{3}{5}\cdot2=-\frac{1}{5}<0$。
+    \[\begin{array}{cccccc}
+        x^5 & x^4 & x^3 & x^2 & x & 1\\
+        \hline
+        3 & 5 & 1 & 2 & 2 & 1\\
+          & 5 & \color{blue}1-\frac{3}{5}\cdot2 & 2 & 2-\frac{3}{5}\cdot1 & 1
+    \end{array}\]
+
+    \item[19.] 两者都等价于$a_1>0,a_1a_2>a_3,a_1a_2a_3>a_3^2+a_1^2a_4,a_4>0$。
+    \[\begin{array}{ccccc}
+        x^4 & x^3 & x^2 & x & 1\\
+        \hline
+        1 & \color{blue}a_1 & a_2 & a_3 & a_4\\
+          & a_1 & \color{blue}a_2-a_1^{-1}a_3 & a_3 & a_4\\
+          & & a_2-a_1^{-1}a_3 & \color{blue}a_3-\frac{a_1}{a_2-a_1^{-1}a_3}a_4 
+          & \color{blue}a_4\\
+    \end{array}\]
+
+    \item[20.] $a_1>0,a_1a_2>a_3,a_3>0$。
+    \[\begin{array}{cccc}
+        x^3 & x^2 & x & 1\\
+        \hline
+        1 & \color{blue}a_1 & a_2 & a_3\\
+          & a_1 & \color{blue}a_2-a_1^{-1}a_3 & \color{blue}a_3
+    \end{array}\]
+    P80的方程(3.17)为
+    \[\lambda^3+\frac{b}{m}\lambda^2
+    +\frac{g\sin^2\varphi_0}{\cos\varphi_0}\lambda
+    +\frac{2kg\sin^2\varphi_0}{\omega_0J}=0,\]
+    由于摩擦系数$b>0$，质量$m>0$，重力加速度$g>0$，比例常数$k>0$，
+    开度$\varphi_0\ne0$，角速度$\omega_0>0$，转动惯量$J>0$，只需
+    \[\frac{b}{m}\frac{g\sin^2\varphi_0}{\cos\varphi_0}>
+    \frac{2kg\sin^2\varphi_0}{\omega_0J},\]
+    等价于
+    \[\frac{bJ}{m}>\frac{2k\cos\varphi_0}{\omega_0},\]
+    此即(3.19),(3.20)。
+
+    \item[27.] 不稳定，其中$f(s)=s^5+2s^4+5s^3+2.5s^2+2s+1$不稳定，
+    因为下表最后一行
+    \[a_1a_2a_3=3.75\cdot2.5\cdot1.5
+    <1.5^2+3.75^2\cdot1=a_3^2+a_1^2a_4\]
+    不符合Hurwitz判据。
+    \[\begin{array}{cccccc}
+        s^5 & s^4 & s^3 & s^2 & s & 1\\
+        \hline
+        1 & 2 & 5 & 2.5 & 2 & 1\\
+          & 2 & 5-0.5\cdot2.5 & 2.5 & 2-0.5\cdot1 & 1\\
+          & 2 & \color{purple}{3.75} & \color{purple}{2.5} & \color{purple}{1.5} & \color{purple}{1}
+    \end{array}\]
+
+    \item[29.] 令$t=s+1$，对$f(t-1)$ ($=f(s)$)用Routh判据，
+    以知其根是否满足$\operatorname{Re}t=\operatorname{Re}(s+1)<0$。
+\end{itemize}
+
+=== 第四章\ 线性系统的能控性和能观性 ===
+\begin{itemize}
+    \item[2.] (1) $(\B,\A\B,\A^2\B)=\left(\begin{array}{c:c:c}
+    2&-4&-4\\0&1&2\\1&3&-1\end{array}\right)$，秩为$3$，能控。
+
+    (2) $(\B,\A\B)=\left(\begin{array}{cc:cc}
+    1&1&-2&-2\\1&1&-2&-2\end{array}\right)$，秩为$1$，不能控。
+
+    \item[6.] 用定理1.6 (ii)，存在状态变换使得$\A$的左下角出现$\0$，
+    若$[\A_1,\B_1]$还是不能控的话继续变换，直到$[\A_i,\B_i]$能控为止。
+
+    \item[7.] (1) 是。用定理1.6 (vi)，对于所有的$\lambda\in\mathbb{C}$，
+    $\begin{pmatrix}\lambda\I-\A_1&\0&\B_1\\
+    \0&\lambda\I-\A_2&\B_2\end{pmatrix}$满秩，
+    用行秩说明$(\lambda\I-\A_1,\B_1),(\lambda\I-\A_2,\B_2)$满秩。
+
+    (2) 不一定。令$(\A_1,\B_1)=(\I,\I),(\A_2,\B_2)=(\I,\I)$，
+    对于所有的$\lambda\in\mathbb{C}$，$(\lambda\I-\I,\I)$满秩，故均能控；
+    而$\begin{pmatrix}\I&\0&\I\\\0&\I&\I\end{pmatrix}$不能控，毕竟$\lambda=1$时
+    $\begin{pmatrix}\lambda\I-\I&\0&\I\\\0&\lambda\I-\I&\I\end{pmatrix}
+    =\begin{pmatrix}\0&\0&\I\\\0&\0&\I\end{pmatrix}$不满秩。
+
+    \item[11.] (1) 在$[t_0,s]$上取控制$\widehat{\boldsymbol{u}}
+    =\begin{cases}\boldsymbol{u},&[t_0,\tau]\\\0,&(\tau,s]\end{cases}$。
+    那么$[t_0,\tau]$上$\x$与原来一样，$(\tau,s]$上$\.{\x}=\A\x$且初值$\x(\tau)=\0$，
+    则$\x$如如不动\footnote{曾有同学问，马克思主义哲学告诉我们，
+    世界是物质的，物质是运动的，运动是有规律的，规律是可以认识的；
+    那么，静止着不运动是怎么可能的呢？
+    这不由让人想起主编张一兵在《回到列宁》里的一段注（见\cite{Zh}，作者的话，p.11）：\\
+    最令人心痛的事情，莫过于一些马列主义公共课上的现象，
+    那些从来不认真研读马克思、恩格斯、列宁、毛泽东经典文献的老师们，
+    把他们仅仅从一些二流教科书上复制来的教条主义概念掺上自己狭隘的肤浅认识，
+    直接等同于僵硬的绝对真理（同学们哪怕是背错一句，都会被无情地扣分）。
+    这里的霸权逻辑是：``我就等于马克思''，``我所说的话就等于真理''。
+    这哪里是宣传和传播科学，简直就是糟蹋马克思主义，
+    这种教学是把真理降低为谬误、本质降低为现象的过程。
+    我觉得，在场于现实生活中的青年学生不信这种所谓的``马克思主义''，
+    显然是不应该被责备的。\\
+    [请允许我夹带一点私货。
+    The extent of the right to demonstrate should be commensurate with 
+    the enormity of the wrongs that are being protested.]}，$\x(s)=\0$。
+    \printfootnotes
+
+    (2) 对于所有的$\x_0\in\R^n$，
+    存在时刻$\tau_{\x_0}\in[t_0,t_1]$使得$\x_0$在$[t_0,\tau_{\x_0}]$上能控。
+    令$\tau=\sup\limits_{\x_0\in\R^n}\tau_{\x_0}$，
+    由(1)，$\x_0$亦在更大的区间$[t_0,\tau]$上能控。
+
+    \item[19.] 看上去很哈人，实际上先用定理1.6变换成
+    $\begin{pmatrix}\A_1&\A_2\\\0&\A_3\end{pmatrix}$，
+    再对$\A_1,\A_2,\A_3$分别用定理1.6即可，也就是说比如$\A_1$变换成
+    $\begin{pmatrix}\bar{\A}_1&\bar{\A}_2\\\0&\bar{\A}_5\end{pmatrix}$。
+
+    \item[21.] 根据定理2.2，设$\K=(k_1\ k_2\ k_3)$，
+    令$u_k=-\K\x_k+v_k$，$\A-\B\K$的特征多项式是
+    \[\det(s\I-\A+\B\K)=\begin{vmatrix}
+        s-1+k_1&-1+k_2&-1+k_3\\
+        -1-k_1&s+1-k_2&-k_3\\
+        0&-1&s-1
+    \end{vmatrix}.\]
+    不经一番彻寒骨，哪得梅花扑鼻香，上式展开为
+    $$s^3+(k_1-k_2-1)s^2+(-k_1+3k_2-k_3-2)s+(-k_1-2k_2+2k_3+1).$$
+    比较系数有
+    \[\begin{cases}
+        k_1-k_2-1=-\dfrac12\\
+        -k_1+3k_2-k_3-2=\dfrac14\\
+        -k_1-2k_2+2k_3+1=-\dfrac18
+    \end{cases},\]
+    解得$\K=\left(\dfrac{43}{8}\ \dfrac{39}{8}\ 7\right)$。
+
+    \item[29.] 用定理3.2 (v)，对于所有的$\lambda\in\mathbb{C}$，
+    $\begin{pmatrix}\lambda\I-\A_1^\t&-\A_3^\t&\C^\t\\
+    -\A_2^\t&\lambda\I-\A_4^\t&\0\end{pmatrix}$满秩，
+    用行秩说明$(-\A_2^\t,\lambda\I-\A_4^\t)$满秩。
+
+    \item[30.] (1) 令$\bar{\x}_k=\begin{pmatrix}1&1\\0&1\end{pmatrix}\x_k$，
+    这是为了$\begin{pmatrix}1&1\\0&1\end{pmatrix}^{-1}
+    \begin{pmatrix}1&1\end{pmatrix}=\begin{pmatrix}1&0\end{pmatrix}$。
+    又计算\[\begin{pmatrix}1&1\\0&1\end{pmatrix}
+    \begin{pmatrix}-2&1\\2&-2\end{pmatrix}
+    \begin{pmatrix}1&1\\0&1\end{pmatrix}^{-1}
+    =\begin{pmatrix}0&-1\\2&-4\end{pmatrix},\]
+    故系统成为\[\begin{cases}\bar{\x}_{k+1}=
+    \begin{pmatrix}0&-1\\2&-4\end{pmatrix}\bar{\x}_k
+    +\begin{pmatrix}-1\\0\end{pmatrix}u_k,\\
+    \quad y_k=\begin{pmatrix}1&0\end{pmatrix}\bar{\x}_k.\end{cases}\]
+    设$\boldsymbol{L}=\begin{pmatrix}l_1\\l_2\end{pmatrix}$，
+    则$\A-\boldsymbol{L}\C$的特征多项式是
+    \[\det(s\I-\A+\boldsymbol{L}\C)=\begin{pmatrix}s+2+l_1&-1+l_1\\
+    -2+l_2&s+2+l_2\end{pmatrix},\]
+    要令上式以$\dfrac12,\dfrac13$为根，即
+    \[s^2+(4+l_1+l_2)s+(2+4l_1+3l_2)=(s-\frac12)(s-\frac13),\]
+    解得$\boldsymbol{L}=\begin{pmatrix}38/3\\-35/2\end{pmatrix}$。
+
+    (2) 设$L=(l)$，记$\bar{\x}_k=(\bar{x}_k^{(1)},\bar{x}_k^{(2)})$。
+    置$z_k=\bar{x}_k^{(2)}-l\bar{x}_k^{(1)}$，
+    降维估计器为（见\cite{LY} (4.12)式，p.132）
+    \[\begin{cases}\widehat{z}_{k+1}
+    =\big((2-l\cdot0)+(-4-l\cdot(-1))l\big)y_k+(-4+l)\widehat{z}_k+lu_k,\\
+    \widehat{z}_k(0)=0.\end{cases}\]
+    其中$-4+l=\dfrac12$，得$l=\dfrac92$，
+    $y_k$的系数$2+\dfrac12\cdot\dfrac92=\dfrac{17}{4}$，代入有
+    \[\begin{cases}\widehat{z}_{k+1}
+    =\dfrac{17}{4}y_k+\dfrac12 \widehat{z}_k+\dfrac92 u_k,\\
+    \widehat{z}_k(0)=0.\end{cases}\]
+\end{itemize}
+
+== 最优控制理论 ==
+
+=== 第2章\ 准备知识 ===
+
+\begin{itemize}
+    \item[15.] 取简单函数$f^*$，使得
+    \[\int_a^bf=\int_a^bf^*,\quad\|f-f^*\|_{L^1}<\varepsilon.\]
+    记$f^*=\sum\limits_{i=1}^k\alpha_i\chi_{E_i}$，
+    其中$\biguplus\limits_{i=1}^kE_i=[a,b]$。
+    取$E_i$的子集$E_{\lambda,i}$使
+    \[m(E_{\lambda,i})=\lambda m(E_i).\]
+    令$E_{\lambda}(\varepsilon)=\biguplus\limits_{i=1}^kE_{\lambda,i}$，则
+    \[m(E_{\lambda}(\varepsilon))=\lambda\sum_{i=1}^km(E_i)=\lambda(b-a),\]
+    \[\bigg|\lambda\int_a^bf-\int_{E_\lambda(\varepsilon)}f\bigg|
+    =\bigg|\int_{E_\lambda(\varepsilon)}(f^*-f)\bigg|<\varepsilon.\]
+
+    \item[19.] $l=2$时，要找$E_1\subseteq E$使得
+    \[\int_E\lambda_1y_1+(1-\lambda_1)y_2=\int_{E_1}y_1+\int_{E-E_1}y_2,\]
+    移项就变成Liapounoff定理：
+    \[\int_a^b\lambda_1(y_1-y_2)1_E=\int_{E_1}(y_1-y_2)1_E.\]
+    设$\le l$时成立，现证$l+1$时，方法是先用$2$时的结论把末两项并成一项，再用$l$时的结论。
+    记\[F=E\cap\{t\mid\lambda_l+\lambda_{l+1}>0\}
+    =E-\{t\mid\lambda_l=\lambda_{l+1}=0\},\]
+    则$F$能划为$F'\uplus F''$使得
+    \begin{align*}
+        &\int_{F}\frac{\lambda_l}{\lambda_l+\lambda_{l+1}}(\lambda_l+\lambda_{l+1})y_l
+        +\frac{\lambda_{l+1}}{\lambda_l+\lambda_{l+1}}(\lambda_l+\lambda_{l+1})y_{l+1}\\
+        &=\int_{F'}(\lambda_l+\lambda_{l+1})y_l
+        +\int_{F''}(\lambda_l+\lambda_{l+1})y_{l+1},
+    \end{align*}
+    等价于
+    \[\int_{E}\lambda_ly_l+\lambda_{l+1}y_{l+1}
+    =\int_{E}(\lambda_l+\lambda_{l+1})(y_l1_{F'}+y_{l+1}1_{F''}).\]
+    接着对$\lambda_1,\cdots,\lambda_{l-1},\lambda_l+\lambda_{l+1}$
+    和$y_1,\cdots,y_{l-1},y_l1_{F'}+y_{l+1}1_{F''}$用$l$时的归纳假设，
+    $E$能划为$E_1\uplus\cdots\uplus E_l$使得
+    \begin{align*}
+        &\int_E\lambda_1y_1+\cdots+\lambda_{l-1}y_{l-1}
+        +(\lambda_l+\lambda_{l+1})(y_l1_{F'}+y_{l+1}1_{F''})\\
+        &=\int_{E_1}y_1+\cdots+\int_{E_{l-1}}y_{l-1}
+        +\int_{E_l}y_l1_{F'}+y_{l+1}1_{F''},
+    \end{align*}
+    就是
+    \begin{align*}
+        &\int_E\lambda_1y_1+\cdots+\lambda_{l+1}y_{l+1}\\
+        &=\int_{E_1}y_1+\cdots+\int_{E_{l-1}}y_{l-1}
+        +\int_{E_l\cap F'}y_l+\int_{E_l\cap F''}y_{l+1}.
+    \end{align*}
+
+    \item[29.] 说的就是Mazur定理（定理4.13）。
+    假如$x\notin K$，则存在$f\in E^*$严格分离$K$和$x$，即
+    \[f(y)<c<f(x),\quad\forall y\in K,\]
+    则$f(x_k)\to f(x)$不成立。
+\end{itemize}
+
+=== 第3章\ 线性系统的时间最优控制 ===
+
+\begin{itemize}
+    \item[3.] $\mathscr{R}(t)=\left\{\begin{pmatrix}
+        \int_0^tu\\\int_0^tu
+    \end{pmatrix}\bigm|u\in\{-1,0,1\}\right\}=\left\{\begin{pmatrix}
+        s\\s
+    \end{pmatrix}\bigm||s|\le t\right\}$。
+
+    \item[4.] [勘误：而且对任何有界集$K\subset\R^{\color{red}m}$，
+    存在可积的$\mu(\cdot)\colon[t_0,T]\to\R$使得
+    \[|b(t,u)|\le\mu(t),\quad{\color{red}\forall u\in K}.]\]
+    考虑问题
+    \[\begin{cases}\.y=Ay+f,\\y(t_0)=y_0\end{cases}\]
+    的能达集
+    \[\mathscr{Q}(t)=\{y(t;t_0,y_0,f(\cdot))\mid
+    \forall s\in[t_0,t],f(s)\in b(s,U)\},\]
+    其中$t\in[t_0,T]$。由定义$\mathscr{R}(t)\subseteq\mathscr{Q}(t)$，
+    Filippov引理进一步说明$\mathscr{R}(t)=\mathscr{Q}(t)$。
+    故要证$\mathscr{R}(t)$是凸紧集就是要证$\mathscr{Q}(t)$是凸紧集。我们知道
+    \[\mathscr{Q}(t)=\{\Phi(t,t_0)y_0+\int_{t_0}^t\Phi(t,s)f(s)\,ds
+    \mid\forall s\in[t_0,t],f(s)\in b(s,U)\},\]
+    并模仿定理2.2, 2.3的证明过程即可，其中的各种$B(s)u_i(s)$换为$f_i(s)$。
+
+    \item[8.] 记$x=\.y$，则有
+    \[\begin{pmatrix}\.y\\\.x\end{pmatrix}
+    =\begin{pmatrix}x\\-y+u\end{pmatrix}
+    =\begin{pmatrix}0&1\\-1&0\end{pmatrix}\begin{pmatrix}y\\x\end{pmatrix}
+    +\begin{pmatrix}0\\u\end{pmatrix}.\]
+    其共轭方程是
+    \[\begin{pmatrix}\.\varphi\\\.\psi\end{pmatrix}
+    =\begin{pmatrix}0&1\\-1&0\end{pmatrix}\begin{pmatrix}\varphi\\\psi\end{pmatrix},\]
+    即$\.\varphi=\psi,\.\psi=-\varphi$，解得
+    \[\psi(t)=C\sin(t+\alpha).\]
+    设$\bar{u}$为所求的时间最优控制。由最大值原理，$\bar{u}$取到
+    \[C\sin(t+\alpha)u\]
+    在$|u|\le1$里的最大值，从而$\bar{u}=\pm1$，
+    且除首尾两段外，每一段相轨线经历的参数$t$区间长均为$\pi$，
+    首尾两段不超过$\pi$。代入原方程得
+    \[x(t)=D\cos(t+\beta),\quad y(t)=D\sin(t+\beta)+\bar{u},\]
+    即是说除首尾两段外，每一段相轨线都是以$(0,\bar{u})$为中心的半圆，
+    首尾两段不超过半圆。感觉就是愤怒的小鸟·太空版，两个星球是$(0,1)$和$(0,-1)$，
+    鸟一飞半圈就要换个星球旋转，最终撞向在原点的猪，如图紫线所示。
+    为了撞到猪，最后的轨道必定在半圆$L_1$或$L_2$上。
+    鸟进入$L_1$前绕着另一个星球$(0,-1)$飞了半圈，
+    或进入$L_2$前绕着$(0,1)$飞了半圈，若把这段路线所涉区域画出来，
+    就是$L_1$扫半圈得到红色区域，$L_2$扫半圈得到蓝色区域。
+    以此类推，继续画出更大的阴阳鱼，铺满了整个平面。
+    \begin{tikzpicture}
+    \fill[red!50] (0,0)arc(270:90:0.5)arc(90:-90:1.5)arc(-90:90:0.5)arc(-90:90:0.5);
+    \fill[cyan!50] (0,0)arc(90:-90:0.5)arc(270:90:1.5)arc(90:270:0.5)arc(90:270:0.5);
+    \draw[step=0.5,gray,very thin] (-2,-2) grid (2,2);
+    \draw[->,>=stealth] (-2.2,0) to (2.2,0);
+    \draw[->,>=stealth] (0,-2.2,0) to (0,2.2);
+    \draw (0,0)arc(90:0:0.5);
+    \draw[->,>=stealth] (0,-1)arc(-90:5:0.5);
+    \draw[->,>=stealth] (0,1)arc(90:185:0.5);
+    \draw[violet] (0,0)arc(-90:-180:0.5);
+    \draw (2.4,0) node {$x$};
+    \draw (0,2.4) node {$y$};
+    \draw (-0.1,0.5) node {$1$};
+    \draw (-0.2,-0.5) node {$-1$};
+    \draw[red] (-0.7,0.5) node {$L_1$};
+    \draw[cyan] (0.75,-0.5) node {$L_2$};
+    \draw[violet,dashed] (-0.5,0.5)arc(116.6:-63.4:1.12);
+    \draw[violet,dotted] (0.5,-1.5)arc(-76:-166:2.06);
+    \end{tikzpicture}
+
+    \item[11.]
+    系统是
+    \[\begin{pmatrix}\.x\\\.y\end{pmatrix}
+    =\begin{pmatrix}0&1\\-1&0\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}
+    +\begin{pmatrix}u\\v\end{pmatrix}.\]
+    其共轭方程是
+    \[\begin{pmatrix}\.\varphi\\\.\psi\end{pmatrix}
+    =\begin{pmatrix}0&1\\-1&0\end{pmatrix}\begin{pmatrix}\varphi\\\psi\end{pmatrix},\]
+    即$\.\varphi=\psi,\.\psi=-\varphi$，解得
+    \[\varphi(t)=C\cos(t+\alpha),\quad\psi(t)=-C\sin(t+\alpha).\]
+    设$\bar{u},\bar{v}$为所求的时间最优控制。由最大值原理，$\bar{u},\bar{v}$取到
+    \[C\cos(t+\alpha)u-C\sin(t+\alpha)v\]
+    在$|u|\le1,|v|\le1$里的最大值，从而$\bar{u}=\pm1,\bar{v}=\pm1$，
+    且除首尾两段外，每一段相轨线经历的参数$t$区间长均为$\pi/2$，
+    首尾两段不超过$\pi/2$。代入原方程得
+    \[x(t)=D\cos(t+\beta)+\bar{v},\quad y(t)=D\sin(t+\beta)-\bar{u},\]
+    即是说除首尾两段外，每一段相轨线都是以$(\bar{v},-\bar{u})$为中心的$1/4$圆，
+    首尾两段不超过$1/4$圆。
+    这就是说以$(1,-1),(1,1),(-1,-1),(-1,1)$四个点之一为中心旋转，
+    一次不超过直角。以此类推，各段轨迹的所属区域逐渐填满四个象限。
+    \begin{tikzpicture}
+    \fill[red!50] (0,0)arc(45:-45:0.707)arc(-71.6:-161.6:1.58)arc(-135:-45:0.707)arc(-135:-45:0.707);
+    \fill[cyan!50] (0,0)arc(-45:-135:0.707)arc(-161.6:-251.6:1.58)arc(135:225:0.707)arc(135:225:0.707);
+    \fill[violet!50] (0,0)arc(-135:-225:0.707)arc(108.4:18.4:1.58)arc(45:135:0.707)arc(45:135:0.707);
+    \fill[gray!50] (0,0)arc(45:-45:0.707)arc(45:-45:0.707)arc(-71.6:18.4:1.58)arc(45:135:0.707);
+    \draw[step=0.5,gray,very thin] (-2,-2) grid (2,2);
+    \fill (0.5,0.5) circle (0.02);
+    \fill (0.5,-0.5) circle (0.02);
+    \fill (-0.5,0.5) circle (0.02);
+    \fill (-0.5,-0.5) circle (0.02);
+    \draw[->,>=stealth] (-2.2,0) to (2.2,0);
+    \draw[->,>=stealth] (0,-2.2,0) to (0,2.2);
+    \draw[->,>=stealth] (-1,0)arc(-135:-85:0.707);
+    \draw (0,0)arc(-45:-90:0.707);
+    \draw[->,>=stealth] (0,1)arc(135:185:0.707);
+    \draw (0,0)arc(-135:-180:0.707);
+    \draw[->,>=stealth] (1,0)arc(45:95:0.707);
+    \draw (0,0)arc(135:90:0.707);
+    \draw[->,>=stealth] (0,-1)arc(-45:5:0.707);
+    \draw (0,0)arc(45:0:0.707);
+    \draw (2.4,0) node {$x$};
+    \draw (0,2.4) node {$y$};
+    \draw (-0.2,1) node {$2$};
+    \draw (-0.3,-1) node {$-2$};
+    \draw (1,-0.2) node {$2$};
+    \draw (-1,-0.2) node {$-2$};
+    \end{tikzpicture}
+\end{itemize}
+
+=== 第4章\ 非线性系统最优控制的存在性 ===
+
+\begin{itemize}
+    \item[2.] 正面的结果：若进一步要求$J_\alpha\ge0$，由Fatou引理，
+    \[\sum_{\alpha\in A}J_\alpha(\bar{u})
+    \le\sum_{\alpha\in A}\varliminf_{k\to\infty}J_\alpha(u_k)
+    \le\varliminf_{k\to\infty}\sum_{\alpha\in A}J_\alpha(u_k).\]
+    负面的结果：对$\alpha\in\Z^+$，取$J_\alpha(u)=u^\alpha-u^{\alpha-1}$，
+    $u\in(0,1]$是反例，见下一题。
+
+    \item[3.] 对$\alpha\in\Z^+$，$J_\alpha(u)=u^\alpha$
+    都是$u\in(0,1]$上的连续函数，而
+    \[\inf\limits_{\alpha\in\Z^+}u^\alpha
+    =\begin{cases}0,&u\in(0,1)\\1,&u=1\end{cases}\]
+    在$1$处不下半连续。
+\end{itemize}
+
+\subsection**{参考文献}
+\begin{references}
+    \bibitem[LY]{LY}
+        李训经, 雍炯敏, 周渊. 控制理论基础. 
+        普通高等学校信息与计算科学专业系列丛书. 高等教育出版社, 2010.
+    \bibitem[YL]{YL}
+        雍炯敏, 楼红卫. 最优控制理论简明教程. 
+        普通高等学校信息与计算科学专业系列丛书. 高等教育出版社, 2006.
+    \bibitem[Zh]{Zh}
+        张一兵. 回到列宁：关于``哲学笔记''的一种后文本解读.
+        凤凰文库$\cdot$马克思主义研究系列. 江苏人民出版社, 2008.
+\end{references}

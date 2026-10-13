@@ -1,0 +1,545 @@
+\setcounter{section}{4}
+\section{平坦模}
+   \begin{enumerate}
+
+    \item[5.1] (a)\ \ \,设$m,n$是正整数. $d=\gcd(m,n)$. 证明：
+        $(\Z/m\Z) \otimes_{\Z} (\Z/n\Z)$同构于$\Z/d\Z$.
+    \item[\textbf{证明:}]
+        令$\varphi: (\Z/m\Z) \times (\Z/n\Z) \rightarrow \Z/d\Z ; 
+        (\bar{a},\bar{b}) \mapsto \overline{ab}$. 这是一个$\Z$-平衡映射，且是良定义的. 
+        这是因为若$a_{1}\equiv a_{2}\!\!\mod m$，$b_{1}\equiv b_{2}\!\!\mod n$，则
+        $a_{1}b_{1} \equiv a_{1}b_{2} \equiv a_{2}b_{2}\!\!\mod d$. 
+        由泛性质，这诱导了$\Z$-模同态
+        \[
+         \tilde{\varphi}:(\Z/m\Z) \otimes_{\Z} (\Z/n\Z) 
+         \rightarrow \Z/d\Z ; \bar{a} \otimes \bar{b} \mapsto \overline{ab}.
+        \]
+        只需证明$\widetilde{\varphi}$既单又满. 
+        若$\overline{ab}=0$，则$\bar{a} \otimes \bar{b} 
+        = ab(\bar{1} \otimes \bar{1})$. 
+        由Bezout定理，存在整数$x,y$使得$xm+yn=d$. 
+        由于$\overline{ab}=0$，故存在整数$t$使得$dt=ab$.
+        那么$ab=txm+tyn$. 故$\bar{a} \otimes \bar{b} 
+        = \overline{(txm+tyn)} \otimes \bar{1} 
+        = \overline{txm} \otimes \bar{1} + \bar{1} \otimes \overline{tyn} 
+        = 0+0 =0$.
+        满射则是由于$\bar{k}=\widetilde{\varphi}(\bar{k} \otimes \bar{1})$. \qed
+    \item[(b)] 证明：$\mathbb{Q} \otimes_{\Z} \mathbb{Q}$同构于$\mathbb{Q}$.
+    \item[\textbf{证明:}]
+        定义$\Z$-平衡映射$\varphi: \mathbb{Q} \times \mathbb{Q} 
+        \rightarrow \mathbb{Q}; (a,b) \mapsto ab$. 
+        这诱导了$\Z$-模同态$\widetilde{\varphi}:
+        \mathbb{Q} \otimes_{\Z} \mathbb{Q}; a \otimes b \mapsto ab$.
+        定义$\Z$-模同态$\phi:\mathbb{Q} \rightarrow 
+        \mathbb{Q} \otimes_{\Z} \mathbb{Q};a \mapsto a \otimes 1$. 
+        那么$\widetilde{\varphi}\circ\phi(a)
+        = \widetilde{\varphi}(a \otimes 1) = a$，
+        即$\widetilde{\varphi}\circ\phi = \operatorname{id}_{\mathbb{Q}}$. 
+        而$\phi \circ \widetilde{\varphi}(a \otimes b) 
+        = \phi(ab) = ab \otimes 1 = a \otimes b$，
+        即$\phi \circ \widetilde{\varphi} 
+        = \operatorname{id}_{\mathbb{Q} \otimes_{\Z} \mathbb{Q}}$. 
+        故$\widetilde{\varphi}$是$\Z$-模同构. \qed
+        \item[(c)] 证明：$\mathbb{Q} \otimes_{\Z} (\mathbb{Q}/\Z) = 0$. 
+        这里$\mathbb{Q}$是加法群，$\mathbb{Q}/\Z$是相应的商群. 
+        \item[\textbf{证明:}] 
+        对于$\mathbb{Q} \otimes_{\Z} (\mathbb{Q}/\Z)$中单项式
+        $\frac{p}{q} \otimes \bar{\frac{r}{s}}$，$p,q,r,s\in\Z$，有
+        \[
+        \frac{p}{q}\otimes\overline{\frac{r}{s}}=  s\cdot\frac{p}{qs} \otimes \overline{\frac{r}{s}} 
+        = \frac{p}{qs} \otimes \overline{s \cdot \frac{r}{s}} = \frac{p}{qs} \otimes \bar{r} = 0,
+        \]
+        故$\mathbb{Q} \otimes_{\Z} (\mathbb{Q}/\Z)=0$. \qed
+
+    \item[5.2] 设$V$是有限维实向量空间，$\dim V = n \geq 1$. 
+    $V_{\mathbb{C}} = V \otimes_{\R} \mathbb{C}$是相应的复向量空间. 
+    设$B=\{e_{1},\cdots,e_{n}\}$是$V$的一组基，$f:V \rightarrow V$是一个实线性变换. 
+    设$f$在基$B$下的变换矩阵是$A=(a_{ij}) \in M_{n}(\R)$.
+    \item[(i)] 证明：$B_{\mathbb{C}} = \{e_{1} \otimes 1,\cdots,e_{n} \otimes 1\}$
+        是$V_{\mathbb{C}}$作为复向量空间的一组基，
+        $f \otimes 1:V_{\mathbb{C}} \rightarrow V_{\mathbb{C}}$是一个复线性变换，
+        而且它在基$B_{\mathbb{C}}$下的变换矩阵也是$A$.
+    \item[\textbf{证明:}] 
+        首先，对于任意$x \in V \otimes_{\R} \mathbb{C}$, 存在$v_{j} \in V$
+        与$c_{j}=a_{j}+ib_{j} \in \mathbb{C}$，
+        使得$x = \sum_{j=1}^{m}v_{j} \otimes (a_{j}+ib_{j}) 
+        = \sum_{j=1}^{m}v_{j} \otimes a_{j} + i \sum_{j=1}^{m}v_{j} \otimes b_{j} 
+        = \sum_{j=1}^{m}(a_{j}+ib_{j})(v_{j} \otimes 1)$. 
+        显然$v_{j} \otimes 1 \in \sum_{j=1}^{n}\mathbb{C}(e_{j}\otimes 1)$，
+        故$x$能用$B_{\mathbb{C}}$中元素的复线性组合表示. 
+
+        其次，若存在复数$c_{j} = a_{j}+ib_{j}$
+        使得$\sum_{j=1}^{n}c_{j}(e_{i} \otimes 1) = 0$，
+        则$\big(\sum_{j=1}^{n}a_{j}e_{j}\big) \otimes 1 
+        + \big(\sum_{j=1}^{n}b_{j}e_{j}\big) \otimes i=0$，
+        这即是说$\sum_{j=1}^{n}a_{j}e_{j} = \sum_{j=1}^{n}b_{j}e_{j} = 0$，
+        即$a_{j}=b_{j}=0$，即$c_{j}=0$. \par
+        后一断言是因为$(f \otimes 1)(e_{i} \otimes 1) = f(e_{i}) \otimes 1 
+        = \big(\sum_{j=1}^{n}a_{ij}e_{j}\big) \otimes 1 
+        = \sum_{j=1}^{n}(a_{ij}e_{j}) \otimes 1$. \qed
+    \item[(ii)] 证明：$f$有不变子空间$U$使得$\dim U \leq 2$.
+    \item[\textbf{证明:}]
+        由于$\mathbb{C}$代数闭，方阵$A$在$V_{\mathbb{C}}$上
+        存在特征值$z=a+bi$（$b$可能为$0$）以及对应的特征向量
+        $x=v \otimes 1 + w \otimes i$，其中$v,w \in V$（可能线性相关）. 
+        那么$(f \otimes 1)(x) = f(v) \otimes 1 + f(w) \otimes i 
+        = (a+bi)(v \otimes 1 + w \otimes i) 
+        = (av-bw) \otimes 1 + (bv + aw) \otimes i$.
+        这即是说
+        \[\begin{cases}\begin{aligned}
+            f(v) = av - bw, \\
+            f(w) = bv + aw.
+        \end{aligned}\end{cases}\]
+        那么$U := \operatorname{Span}\{v,w\}$是$V$的不变子空间，
+        且$\dim_{\R} U \leq 2$. \qed
+
+    \item[5.3] 设$R$是一个P.I.D.，$M$是一个有限生成$R$-模.
+    \item[(i)]
+        若$M \otimes_{R} M = 0$，证明$M=0$.
+    \item[\textbf{证明:}]
+        由P.I.D.上有限生成模的结构定理，不妨设
+        $M = \bigoplus\limits_{i=1}^{n} R/(d_{i})$，
+        其中$d_{i} \in R$（$d_{i}$可能为$0$，此时对应的直和项自由），
+        且$d_{i} \mid d_{i+1}$. 那么我们有
+        \[\begin{aligned}
+            M \otimes M &\simeq \bigoplus_{i,j=1}^{n}
+            \big(R/(d_{i}) \otimes R/(d_{j})\big)\\
+            &\simeq \bigoplus_{i,j=1}^{n}R/((d_{i})+(d_{j})) \quad\text{由习题 5.6}\\
+            &= \bigoplus_{i,j=1}^{n}R/(d_{\min\{i,j\}}).
+        \end{aligned}\]
+        故而$M \otimes M = 0$即$R/(d_{\min\{i,j\}}) = 0$，也即$R/(d_{i}) = 0$. 故而$M=0$. \qed
+    \item[(ii)] 
+        给出一个$\Z$-模$A$，满足$A \neq 0$，但$A \otimes_{\Z} A = 0$.
+    \item[\textbf{证明:}]
+        取$\Z$-模$A=\mathbb{Q}/\Z$，则$\mathbb{Q}/\Z \otimes_{\Z} \mathbb{Q}/\Z = 0$. 这是因为
+            \begin{equation*}\begin{aligned}
+            \overline{\frac{p}{q}} \otimes \overline{\frac{r}{s}} 
+             = s\cdot\overline{\frac{p}{qs}}\otimes \overline{\frac{r}{s}} 
+             = \overline{\frac{p}{qs}}\otimes \bar{r} 
+             = \overline{\frac{p}{qs}}\otimes \bar{0} = 0,
+            \end{aligned}\end{equation*}
+        其中$p,q,r,s\in\Z$. \qed
+    \item[(iii)] 若(iii)中的$R$是交换环，命题是否还成立？
+    \item[\textbf{证明:}]
+        仍成立. 只需对$R$为局部环的情形证明. 
+        这是因为$M \otimes_{R} M = 0$等价于：
+        对于任意$\mathfrak{p} \in \operatorname{Spec}(R)$，
+        成立$M_{\mathfrak{p}} \otimes_{R_{\mathfrak{p}}} M_{\mathfrak{p}} 
+        = (M \otimes_{R} M)_{\mathfrak{p}} = 0$（见\cite{AM} Proposition 3.8）.
+        现设$R$为局部环，$\mathfrak{m}$为其极大理想，以及$k$为其剩余类域. 
+        令$V = k \otimes_{R} M$，则$V$是$k$上的有限维线性空间，有
+        \begin{align*}
+            V \otimes_{k} V = k \otimes_{R} M \otimes_{k} k \otimes_{R} M 
+            \simeq k \otimes_{R} k \otimes_{k} M \otimes_{R} M 
+            \simeq k \otimes_{k} (M \otimes_{R} M) = 0,
+        \end{align*}
+        也即$(\dim_{k} V)^{2}=0$，即$\dim_{k} V = 0$，即$V=0$. 
+        但注意到$V = k \otimes_{R} M \simeq M/\mathfrak{m}M$. 
+        故这即是说$M=\mathfrak{m}M$. 由中山引理知$M=0$. \qed
+
+    \item[5.4] 设$R$是环. $\{M_{i}\}$是一族左$R$-模. 
+    证明：直和$\bigoplus\limits_{i \in I}M_{i}$是平坦的当且仅当每个$M_{i}$是平坦的.
+    \item[\textbf{证明:}]
+    对于任意左$R$-模单射$i:A \rightarrow B$，有下图交换：
+    （$\operatorname{id}$为$\bigoplus\limits_{i \in I}M_{i}$的恒等映射）
+    \begin{cd}
+     \big(\bigoplus\limits_{i\in I}M_{i}\big)\otimes_{R}A \ar[d, "f"] \ar[r, "\operatorname{id}\otimes \,i"] & \big(\bigoplus\limits_{i\in I}M_{i}\big)\otimes_{R}B \ar[d, "g"] \\
+     \bigoplus\limits_{i\in I}(M_{i}\otimes_{R}A) \ar[r, "h"]                                         & \bigoplus\limits_{i\in I}(M_{i}\otimes_{R}B)               
+    \end{cd}
+    其中$f:(m_{i})\otimes a \mapsto (m_{i}\otimes a)$, 
+    $g:(m_{i})\otimes b \mapsto (m_{i}\otimes b)$是已验证过的同构，
+    $h=\bigoplus\limits_{i\in I}(\operatorname{id}_{M_{i}}\otimes \,i):
+    (m_{i} \otimes a) \mapsto (m_{i} \otimes ia)$.
+    而诸$\operatorname{id}_{M_{i}}\otimes \,i$为单射等价于$h$为单射. 
+    由交换图，这又等价于$\operatorname{id}\otimes \,i$为单射. 
+    这即是说诸$M_{i}$平坦当且仅当$\bigoplus\limits_{i \in I}M_{i}$平坦. \qed
+
+    \item[5.5] 设$R,S$是环，$\alpha:R \rightarrow S$是环同态. 
+    通过$\alpha$，将$S$看成$(S,R)$-双模. 设$M$是一个自由左$R$-模，
+    $B=\{e_{i}\}_{i \in I}$是一组基. 证明：$S \otimes_{R} M$是自由左$S$-模，
+    且$\{1 \otimes e_{i}\}_{i \in I}$是其一组基.
+    \item[\textbf{证明:}] 
+        定义数乘为$s(s' \otimes m) := (ss')\otimes m$. 
+        对于$m \in M$，令$m=\sum_{i \in F}r_{i}e_{i}$，
+        其中$r_{i} \in R$，$F$是$I$的有限子集. 
+        那么对于$S \otimes_{R} M$中的单项式$s \otimes m$有
+        \begin{align*}
+         s \otimes m &= s \otimes \Big(\sum_{i \in F}r_{i}e_{i}\Big) 
+         = \sum_{i \in F} s \otimes (r_{i}e_{i}) 
+         = \sum_{i \in F} s\alpha(r_{i}) \otimes e_{i} \\
+         &= s_{i}\alpha(r_{i})\sum_{i \in F} 1 \otimes e_{i} 
+         \in \sum_{i \in I} S(1\otimes e_{i}). 
+        \end{align*}
+        验证右端是直和即可，而这是因为
+        $S \otimes_{R} M = S \otimes_{R} \Big(\bigoplus\limits_{i \in I} Re_{i}\Big) 
+        \simeq \bigoplus\limits_{i \in I}S \otimes_{R} Re_{i} 
+        = \bigoplus\limits_{i \in I}S(1 \otimes e_{i})$，且该同构由
+        \[
+         f:S \otimes_{R} M \mapsto  \bigoplus_{i \in I}S(1 \otimes e_{i});
+         \quad s \otimes e_{i} \mapsto s(1 \otimes e_{i})
+        \]
+        给出. 若对于有限集$F \subset I$
+        有$x=\sum_{i \in F}s_{i}(1 \otimes e_{i}) = 0$，
+        则$f(x)=(t_{i})_{i \in I}=0$，
+        其中$t_{i}=s_{i}(1 \otimes e_{i})$若$i \in F$，而在其余情况为$0$. 
+        这意味着$s_{i}=0$对于任意$i \in F$. 
+        故得线性无关性，从而$\{1 \otimes e_{i}\}_{i \in I}$
+        为自由模$S \otimes_{R} M$的一组基. \qed
+
+    \item[5.6] 设$R$是交换环，$I,J$是理想. 证明：
+    作为$R$-模，$R/I \otimes_{R} R/J \cong R/(I+J)$.
+    \item[\textbf{证明:}] 
+    定义$R$-平衡映射$f:R/I \times R/J \rightarrow R/(I+J);
+    (\bar{a},\bar{b}) \mapsto \overline{ab}$. 
+    这是良定义的（由于$I,J \subset I+J$），故诱导了$R$-模同态
+    $\tilde{f}:R/I \otimes_{R} R/J \rightarrow R/(I+J);
+    \bar{a} \otimes \bar{b} \mapsto \overline{ab}$. \par
+    再定义$g:R/(I+J) \rightarrow R/I \otimes_{R} R/J; 
+    \bar{a} \rightarrow \bar{a} \otimes \bar{1}$. 
+    这是良定义的，因为令$a'=a+i+j$，其中$i \in I, j \in J$，则
+    \begin{equation*}\begin{aligned}
+    g(\overline{a'}) &= (a+j+I)\otimes (1+J) = (a+I) \otimes (1+J) + (j+I) \otimes (1+J) \\
+    &= g(\bar{a}) + (1+I) \otimes (j + J) = g(\bar{a}) + 0 = g(\bar{a}).
+    \end{aligned}\end{equation*}
+    那么$\tilde{f} \circ g(\bar{a}) = \tilde{f}(\bar{a} \otimes \bar{1}) = \bar{a}$，
+    即$\tilde{f} \circ g = \operatorname{id}_{R/(I+J)}$. 
+    而$g \circ \tilde{f}(\bar{a} \otimes \bar{b}) = g(\overline{ab}) 
+    = \overline{ab} \otimes \bar{1} = \bar{a} \otimes \bar{b}$，
+    即$g \circ \tilde{f} = \operatorname{id}_{R/I \otimes_{R} R/J}$. 
+    故而$\tilde{f}$是同构. \qed
+
+\item[5.7] 设$R$是交换环，$I$是$R$的理想. 若$R/I$是平坦$R$-模，证明：$I=I^{2}$.
+    \item[\textbf{证明:}]
+    只需证明$I \subset I^{2}$. 由平坦性，正合列
+    $0 \rightarrow I \stackrel{i}{\to} R$
+    诱导了正合列$0 \rightarrow (R/I)\otimes_{R}I 
+    \stackrel{\operatorname{id} \otimes \,i}\longrightarrow (R/I)\otimes_{R}R$. 
+    而可验证下图交换
+    \begin{cd}
+     0 \ar[r] & (R/I)\otimes_{R}I \ar[r, "\operatorname{id}\otimes \,i"] \ar[d, "f"'] & (R/I)\otimes_{R}R \ar[d, "g"] \\
+     0 \ar[r] & I/I^{2} \ar[r, "h"]                                                    & R/I                             
+    \end{cd}
+    其中$f:\bar{r} \otimes a \mapsto \overline{ra}$，
+    $g:\bar{r} \otimes a \mapsto \overline{ra}$, 
+    $h: a+I^{2} \mapsto a+I$，且$f$与$g$均为同构，
+    故而$h = g \circ (\operatorname{id} \otimes \,i) \circ f^{-1}$是单射. 
+    对于$a \in I$，$h(a+I^{2})=a+I=I$，
+    由$h$单知$a+I^{2}=I^{2}$，即$a \in I^{2}$. 故$I=I^{2}$. \qed 
+
+\item[5.8] 设$R$是交换环，$m,n\in\N$，$f:R^m\to R^n$是$R$-模同态。
+
+(i) 若$f$是满射，证明：$m\ge n$.
+
+(ii) 若$f$是单射，证明：$m\le n$.
+\item[\textbf{证明:}]
+(i) 设$\phi\colon R^m\to R^n$是满射，取域$k=R/\mathfrak{m}$，
+    $\mathfrak{m}$为极大理想，
+    那么$1_k\otimes\phi\colon k\otimes R^m\to k\otimes R^n$是满射，
+    相当于有限维线性空间$k^m\to k^n$的满射，得$m\ge n$.
+
+(ii) 设$\phi\colon R^m\to R^n$，假设$m>n$，考虑
+$\psi\colon R^m\stackrel{\phi}{\rightarrow}R^n\stackrel{i}{\hookrightarrow}R^m$，
+这里$i(r_1,\cdots,r_n)=(r_1,\cdots,r_n,0,\cdots,0)$。设$\psi$的极小多项式是
+$$\psi^n+a_{n-1}\psi^{n-1}+\cdots+a_01_{R^m}=0.$$
+观察到$\psi$从而$\psi^n+a_{n-1}\psi^{n-1}+\cdots+a_1\psi$的最后一个分量一定是$0$，
+则$a_01_{R^m}$的最后一个分量也是$0$，故$a_0=0$，这说明
+$$\psi\circ(\psi^{n-1}+a_{n-1}\psi^{n-2}+\cdots+a_11_{R^m})=0.$$
+由于$n$是极小的，$\psi^{n-1}+a_{n-1}\psi^{n-2}+\cdots+a_11_{R^m}\ne0$，
+$\psi$把$\psi^{n-1}+a_{n-1}\psi^{n-2}+\cdots+a_11_{R^m}$的像映成$0$，
+不是单射，那么$\phi$也不是单射。\qed
+
+注：(ii)的其它证明见\cite{jdkc} Ex.2.11 (p.31)。
+\end{enumerate}
+
+\section{投射模}
+\begin{enumerate}
+    \item[6.1.] 设$R$是一个含幺交换环，$A$，$B$是交换$R$-代数.
+    \item[(i)] 证明：$R$-代数$A \otimes_{R} B$是交换的.
+    \item[\textbf{证明：}]
+        只考虑单项式的情形. 对于$a,c \in A$，$b,d \in B$，
+        由于$(a \otimes b)(c \otimes d)=(ac)\otimes(bd)=(ca)\otimes(db)
+        =(c \otimes d)(a \otimes b)$，故单项式的乘法是交换的. 
+        而一般的张量乘法交换则是直接由乘法分配律得来. 
+
+    \item[(ii)] 定义映射$i_{A}:A \rightarrow A \otimes_{R} B,
+        a \mapsto a \otimes 1_{B}$
+        以及$i_{B}:B \rightarrow A \otimes_{R} B,b \mapsto 1_{A} \otimes b$，
+        其中$1_{A},1_{B}$分别表示$A,B$的幺元. 
+        证明：$i_{A},i_{B}$是$R$-代数同态.
+    \item[\textbf{证明：}]
+    下面说明$i_A$是$R$-代数同态，$i_B$同理。对任意$a,a'\in A,r\in R$，
+    \begin{align*}
+        &i_A(a)+i_A(a')=a\otimes1_B+a'\otimes1_B=(a+a')\otimes1_B=i_A(a+a'),\\
+        &i_A(a)i_A(a')=(a\otimes1_B)(a'\otimes1_B)=(aa')\otimes1_B=i_A(aa'),\\
+        &ri_A(a)=r(a\otimes1_B)=(ra)\otimes1_B=i_A(ra).\\
+    \end{align*}
+
+    \item[(iii)] 对任意的交换$R$-代数$C$，给定$R$-代数同态
+        $f:A \rightarrow C$，$g:B \rightarrow C$，存在唯一的$R$-代数同态
+        $h:A \otimes_{R} B \rightarrow C$使得
+        $h \circ i_{A} = f$，$h \circ i_{B} = g$.
+    \begin{cd}
+        A\ar[r,"i_A"]\ar[dr,"f"'] 
+        & A\otimes_RB\ar[d,"h" description] 
+        & B\ar[l,"i_B"']\ar[dl,"g"]\\
+        & C &
+    \end{cd}
+    \item[\textbf{证明：}]
+    $h(a\otimes b)=h((a\otimes1_B)(1_A\otimes b))=h(a\otimes1_B)h(1_A\otimes b)
+    =h\circ i_A(a)h\circ i_B(b)=f(a)g(b)$，于是$h$唯一。
+
+    $h$存在是因为，$R$-双线性映射$A\times B\to C,(a,b)\mapsto f(a)g(b)$
+    诱导了唯一的$R$-模同态$h\colon A\otimes_RB\to C$使得$a\otimes b\mapsto f(a)g(b)$，
+    这样$h\circ i_A(a)=h(a\otimes1_B)=f(a)g(1_B)=f(a)$，
+    与$h\circ i_B(b)=g(b)$，并且
+    \begin{align*}
+        h((a\otimes b)(a'\otimes b'))
+        &=h(aa'\otimes bb')=f(aa')g(bb')\\
+        &=f(a)f(a')g(b)g(b')=f(a)g(b)f(a')g(b')\\
+        &=h(a\otimes b)h(a'\otimes b'),
+    \end{align*}
+    由此$h$是$R$-代数同态。
+
+    \item[6.2] 设$R$是交换环，$R[x_1,\cdots,x_m]$是$R$上的$m$元多项式环，
+        $B$是一个$R$-代数.证明：作为$R$-代数，
+        $B\otimes_R R[x_1,\cdots,x_m]$同构于$B[x_1,\cdots,x_m]$；
+        特别地，$R[x_1,\cdots,x_m]\otimes_R R[y_1,\cdots,y_n]$
+        同构于$R[x_1,\cdots,x_m,y_1,\cdots,y_n]$.
+    \item[\textbf{证明:}]
+        $B\otimes_RR[x]$的元素形如
+        $\sum\limits_i\Big(b_i\otimes\sum\limits_nr_{i,n}x^n\Big)$，等于
+        $\sum\limits_n\big(\sum\limits_ir_{i,n}b_i\big)\otimes x^n$，
+        $B\otimes_RR[x]$通过
+        $$\textstyle \sum\limits_n\big(\sum\limits_ir_{i,n}b_i\big)\otimes x^n
+        \mapsto \sum\limits_n\big(\sum\limits_ir_{i,n}b_i\big)x^n$$
+        同构于$B[x]$，易得这个映射单且满。这是$m=1$的情况，用$m$次即可。
+
+    \item[6.3] 将复数域$\mathbb{C}$作为$\mathbb{R}$-代数. 
+        考虑四元数体$\mathcal{H}$（见习题2.6）. 证明：作为$\mathbb{R}$-代数，
+        $\mathcal{H}\otimes_\mathbb{R}\mathbb{C}$同构于$M_2(\mathbb{C})$.
+        \item[\textbf{证明:}]
+        $\mathcal{H}\otimes_\mathbb{R}\mathbb{C}\simeq
+        \mathcal{H}\oplus i\mathcal{H}=M_2(\mathbb{C})$，
+        前面的同构是$H\otimes1\mapsto H,H\otimes i\mapsto iH$，
+        后面的等号见习题2.6 (a).
+
+    \item[6.4] 设$R$是环，$e^2=e\in R$. 证明：由$e$生成的左理想$Re$是投射模.
+    \item[\textbf{证明:}] $R=Re\oplus R(1-e)$.
+
+    \item[6.5] 证明：$R$-模$M$是有限生成投射模当且仅当
+    存在正整数$n$与$R$-模$T$使得$M\oplus T\simeq R^n$.
+    \item[\textbf{证明:}] 若$M\oplus T=R^n=\bigoplus\limits_{i=1}^n Re_i$, 
+        设$e_i=m_i+t_i$, 再证明$m_1,\cdots,m_n$生成$M$即可.\par
+        若$M$是有限生成投射模, 存在$n$使得
+        $R^n\stackrel{\alpha}{\rightarrow} M\rightarrow 0$正合. 
+        取$T=\operatorname{Ker} \alpha$, 则有正合列
+        $$0\rightarrow T\stackrel{i}{\rightarrow} R^n
+        \stackrel{\alpha}{\rightarrow} M\rightarrow 0.$$
+        又因为$M$是投射模, 该正合列可裂, 所以$R^n\simeq T\oplus M$.
+
+    \item[6.6] 证明：$P$是投射$R$-模当且仅当下面的条件满足:\par
+        存在元素$e_i\in P$, $f_i\in \operatorname{Hom}_R(P,R)$, $i\in I$
+        使得对于任意$x\in P$, 有$x=\sum\limits_{i\in I}f_i(x)e_i$成立, 
+        其中只有有限项$f_i(x)$非零.
+    \item[\textbf{证明:}]
+        若$P$是投射模, 则存在$R$-模$Q$使得
+        $P\oplus Q=\bigoplus\limits_{i\in I}Ru_i$. 
+        设$u_i=e_i+q_i, i\in I, e_i\in P, q_i\in Q$.\par
+        $P\ni x=\sum\limits_{i\in I} \lambda_i^xu_i=\sum\limits_{i\in I} \lambda_i^xe_i+\sum\limits_{i\in I} \lambda_i^xq_i$, 由直和性质, $x=\sum\limits_{i\in I} \lambda_i^xe_i=\sum\limits_{i\in I} f_i(x)e_i$, 其中
+        $f_i(x)=\lambda_i^x\in \operatorname{Hom}_R(P,R)$（需要验证）. 
+        显然只有有限项非零.\par
+        另一方面, 对于任意正合列$M\stackrel{\beta}{\rightarrow} N\rightarrow 0$, 
+        任意$g\in \operatorname{Hom}_R(P,N)$, 设$g(e_i)=n_i$. 
+        因为$\beta$是满射, 所以存在$m_i\in M$, 使得$\beta(m_i)=n_i$. \par
+        考虑$h:P\rightarrow M$, $h(x)=\sum\limits_{i\in I}f_i(x)n_i$, 
+        验证$h\in \operatorname{Hom}_R(P,M)$, 且$g=\beta\circ h$.
+
+    \item[6.7] 设$R$是一个整区，$F=\operatorname{Frac}(R)$是$R$的分式域. 
+        通过乘法, $F$是一个$R$-模. 设$I$是$R$的一个理想. 
+        如果存在$F$的一个$R$-子模$J$, 使得$R=IJ$, 证明: 作为$R$-模, $I$是投射模.
+    \item[\textbf{证明:}]
+        $1\in R=IJ$, 所以存在有限个$a_i\in I, b_i\in J$, 
+        使得$1=\sum\limits_i a_ib_i$. 
+        进而$x=1\cdot x=\sum\limits_i a_ib_ix=\sum\limits_i a_i(xb_i)$， 
+        其中$xb_i\in IJ\subset R$.\par
+        定义$f_i(x)=xb_i\in \operatorname{Hom}_R(I,R)$, 
+        由习题6.6知$I$是投射模.
+        
+    \item[6.8] 设$0\rightarrow N_i\stackrel{\alpha_i}{\rightarrow} P_i 
+        \stackrel{\beta_i}{\rightarrow} M\rightarrow 0,\ i=1,2$是两个短正合列, 
+        且$P_1, P_2$是投射模. 证明：$P_1\oplus N_2\cong P_2\oplus N_1$.
+    \item[\textbf{证明:}]
+        对于正合列$P_2\stackrel{\beta_2}{\rightarrow} M\rightarrow 0$, 
+        由于$P_1$是投射模, 存在$\gamma\in \operatorname{Hom}_R(P_1,P_2)$
+        使得$\beta_1=\beta_2\circ \gamma$.\par
+        而对于任意$n_1\in N_1$, 
+        $\beta_2 \circ \gamma \circ \alpha_1(n_1)
+        =\beta_1\circ \alpha_1(n_1)=0$, 
+        故$\gamma\circ \alpha_1(n_1)\in \operatorname{Im}\alpha_2$. 
+       进而存在$n_2\in N_2$, 使得$\alpha_2(n_2)=\gamma\circ \alpha_1(n_1)$. 
+        又因为$\alpha_2$是单射, 所以这样的$n_2$是唯一的, 
+        因此$\theta(n_1):=n_2$是良定的, 且容易验证
+        $\theta\in \operatorname{Hom}_R(N_1,N_2)$.
+        \begin{cd}
+            0\ar[r] &N_1\ar[r,"\alpha_1"]\ar[d,"\theta"',dashed] &P_1\ar[d,"\gamma"]\ar[dr,"\beta_1"] & & \\
+            0\ar[r] &N_2\ar[r,"\alpha_2"] &P_2\ar[r,"\beta_2"] &M\ar[r] &0
+        \end{cd}
+        对于模同态$0\rightarrow N_1\stackrel{f}{\rightarrow} P_1\oplus N_2 
+        \stackrel{g}{\rightarrow} P_2\rightarrow 0$, 
+        其中$f(n_1)=(\alpha_1(n_1),\theta(n_1))$, 
+        $g(p_1,n_2)=\gamma(p_1)-\alpha_2(n_2)$. 我们证明这是短正合列.\par
+        前两处易见, 下面说明第三处. 对于任意的$p\in P_2$, $m=\beta_2(p)\in M$. 
+        由于$\beta_1$是满射, 故存在$p_1\in P_1$使得$m=\beta_1(p_1)$. 
+        进而$\beta_2\circ \gamma(p_1)=m$.\par
+        故$\beta_2(p-\gamma(p_1))=0$, 即
+        $p-\gamma(p_1)\in \operatorname{Ker} \beta_2=\operatorname{Im}\alpha_2.$ 
+        故存在$n_2\in N_2$, 使得$p=\gamma(p_1)-\alpha_2(n_2)$.
+
+        注：本命题是Schanuel引理，来源与推广
+        见\cite{Lam} Chapter 2 (5.1)--(5.6)（pp.165-7）。
+    
+    \item[6.9] 设$R,S$是环，$\alpha:R \rightarrow S$是环同态. 
+    通过$\alpha$，将$S$看成$(S,R)$-双模.
+    \item[(i)] 设$N$是一个右$S$-模，通过$\alpha$，$N$也是一个右$R$-模，
+        即对$n \in N,r\in R$，定义$n \cdot r = n \cdot \alpha(r)$，
+        记为$N_{\alpha}$. 证明：作为右$R$-模，$N \otimes_{S} S$同构于$N_{\alpha}$.
+    \item[\textbf{证明:}]
+        定义$(n \otimes s) \cdot r := n \otimes (s\alpha(r))$，
+        则由$S$-双线性映射$f:N \times S \rightarrow N_{\alpha}$诱导的映射
+        $\tilde{f}:N \otimes_{S} S \rightarrow N_{\alpha}$是一个右$R$-模同态.
+        这是因为$f(n \otimes s) \cdot r = ns \cdot r 
+        = n(s \cdot \alpha(r)) = f(n \otimes s\alpha(r))$. 
+        $g:N_{\alpha} \rightarrow N \otimes_{S} S;n \otimes 1 \mapsto n$
+        也是一个右$R$-模同态，因为
+        $g(n) \cdot r = (n \otimes 1) \cdot r = n \otimes \alpha(r) 
+        = n\alpha(r) \otimes 1 = g(n\alpha(r)) = g(n \cdot r)$. 
+        且$\tilde{f} \circ g(n) = \tilde{f}(n \otimes 1) = n$，
+        故$\tilde{f} \circ g(n) = \operatorname{id}_{N_{\alpha}}$. \par
+        而$g \circ \tilde{f}(n \otimes s) = g(ns) = ns \otimes 1 = n \otimes s$，
+        即$g \circ \tilde{f} = \operatorname{id}_{N \otimes_{S} S}$. 
+        故$\tilde{f}$是右$R$-模同构. \qed
+    \item[(ii)] 设$M$是平坦左$R$-模，证明：$S \otimes_{R} M$是平坦$S$-模.
+    \item[\textbf{证明:}]
+        对于任意右$S$-模单同态$i:A \rightarrow B$，由(i)的定义，
+        $i_{\alpha}:A_{\alpha} \rightarrow B_{\alpha}$是右$R$-模单同态. 
+        由下图交换，
+        \begin{cd}
+         A \otimes_{S} S \ar[d, "f"'] \ar[r, "i\,\otimes\,\operatorname{id}_{S}"] & B \otimes_{S} S \ar[d, "g"'] \\
+         A_{\alpha} \ar[r, "i_\alpha"]                                            & B_{\alpha}                     
+        \end{cd}
+        知$i \otimes\operatorname{id}_{S}:
+        A \otimes_{S} S \rightarrow B \otimes_{S} S$是单同态，
+        其中$f:A \otimes_{S} S \rightarrow A; a \otimes s \mapsto as$
+        与$g:B \otimes_{S} S \rightarrow B;b \otimes s \mapsto bs$是(i)中证明的同构. 
+        那么由$M$的平坦性，有$(i \otimes \operatorname{id}_{S}) \otimes \operatorname{id}_{M}: 
+        (A \otimes_{S} S) \otimes_{R} M \rightarrow (B \otimes_{S} S) \otimes_{R} M$单. 再由如下交换图
+        \begin{cd}
+         (A \otimes S) \otimes_{R} M \ar[rr, "(i\,\otimes\,\operatorname{id}_{S}) \otimes \,\operatorname{id}_{M}"] \ar[d, "p"'] & & (B \otimes S) \otimes_{R} M \ar[d, "p'"'] \\
+         A \otimes (S \otimes_{R} M) \ar[rr, "i\,\otimes (\operatorname{id}_{S} \otimes \operatorname{id}_{M})"]                 & & B \otimes (S \otimes_{R} M)                
+        \end{cd}
+        知$i \otimes (\operatorname{id}_{S} \otimes \operatorname{id}_{M}):
+        A \otimes (S \otimes_{R} M) \rightarrow B \otimes (S \otimes_{R} M)$单，
+        其中$p,p'$是张量积结合律所述同构. 故$S \otimes_{R} M$平坦. \qed
+
+    \item[6.10]
+    \begin{itemize}
+        \item[(i)] 设$R,S$是交换环，$\alpha:R \rightarrow S$是环同态，
+        通过$\alpha$，将$S$看成$(S,R)$-双模. 
+        设$S$作为$R$-模是平坦的，$M$是一个平坦$S$-模，
+        通过$\alpha$，$M$也是一个$R$-模，证明：作为$R$-模，$M$也是平坦的.
+        \item[\textbf{证明:}]
+        对于$R$-模单同态$i:A \rightarrow B$，由$S$的平坦性知
+        $i \otimes \operatorname{id}_{S}:A \otimes_{R} S 
+        \rightarrow B \otimes_{R} B$单，再由$M$的平坦性，
+        可知有$(i \otimes \operatorname{id}_{S}) \otimes_{S} \operatorname{id}_{M}:
+        (A \otimes_{R} S) \otimes_{S} M \rightarrow (B \otimes_{R} S) \otimes_{S} M$单.
+        由张量积的交换律与结合律有如下交换图：
+        \begin{cd}
+         (A \otimes_{R} S) \otimes_{S} M \ar[r, no head, equal] \ar[d]    & A \otimes_{R} (S \otimes_{S} M) \ar[r, no head, equal] \ar[d] & A \otimes_{R} (M \otimes_{S} S) \ar[r, no head, equal] \ar[d] & A \otimes_{R} M_{\alpha} \ar[d] \\
+         (B \otimes_{R} S) \otimes_{S} M \ar[r, no head, equal] & B \otimes_{R} (S \otimes_{S} M) \ar[r, no head, equal]           & B \otimes_{R} (M \otimes_{S} S) \ar[r, no head, equal]           & B \otimes_{R} M_{\alpha}          
+        \end{cd}
+        其中最后一个方框用到习题6.9 (i). 由此知$M$视作$R$-模仍然平坦. \qed
+        \item[(ii)] 设$R$是交换环，$M,N$是平坦$R$-模，
+        证明：$M \otimes_{R} N$是平坦$R$-模.
+        \item[\textbf{证明:}]
+        对于$R$-模单同态$i:A \rightarrow B$，由$M$的平坦性知
+        $i \otimes \operatorname{id}_{M}:A \otimes_{R} M \rightarrow B \otimes_{R} M$单. 
+        这仍然是一个$R$-模，故再由$N$的平坦性知
+        $(i \otimes \operatorname{id}_{M}) \otimes \operatorname{id}_{N}:
+        (A \otimes_{R} M) \otimes_{R} N \rightarrow (B \otimes_{R} M) \otimes_{R} N$单. 
+        再由张量积结合律知有交换图
+        \begin{cd}
+         (A \otimes_{R} M) \otimes_{R} N \ar[r] \ar[d, no head, equal] & (B \otimes_{R} M) \otimes_{R} N \ar[d, no head, equal] \\
+         A \otimes_{R} (M \otimes_{R} N) \ar[r, rightarrow]                    & B \otimes_{R} (M \otimes_{R} N)                               
+        \end{cd}
+        由上图可知$i \otimes (\operatorname{id}_{M} \otimes \operatorname{id}_{N})$，
+        从而$M \otimes_{R} N$平坦. \qed
+    \end{itemize}
+
+    \item[6.11]设$R$是含幺环，$R^*=\{a\in R\mid \exists b\in R,ab=ba=1\}$是其乘法群，
+    $\mathfrak{m}=R\setminus R^*$. 如果$\mathfrak{m}$是$R$的理想，则称$R$是局部环. 
+    下设$(R,\mathfrak{m})$是局部环.
+    \begin{itemize}
+    \item[(i)]设$T$是有限生成左$R$-模，$I\subseteq \mathfrak{m}$是一个理想，
+    且$IT=T$，$IT$表示由子集$\{rt\mid r\in I,t\in T\}$生成的子模，证明：$T=\{0\}$.
+    \item[(ii)]设$N$是$T$的子模，$T$是有限生成的，
+    $I\subseteq \mathfrak{m}$，且$T=IT+N$,证明：$T=N$.
+    \item[(iii)]证明：$R/\mathfrak{m}$是可除环.
+    考虑自然环同态$j:M_n(R)\rightarrow M_n(R/\mathfrak{m})$，
+    $A=(a_{ij})\in M_n(R)$是$R$上的$n$阶方阵，
+    $j(A)=(\overline{a_{ij}})$，其中$\overline{a_{ij}}=a_{ij}+\mathfrak{m}$.
+    证明：$A\in M_n(R)$是可逆阵当且仅当$j(A)\in M_n(R/\mathfrak{m})$是可逆阵.
+    \item[(iv)]设$P$是有限生成的投射左$R$-模，证明：$P$是有限生成的自由模.
+    \end{itemize}
+
+    \item[\textbf{证明:}]
+    \begin{itemize}
+        \item[(i)] 设$\{t_1,\cdots,t_n\}$为$T$的极小生成元集. 
+        注意到$\mathfrak{m}$为双边理想，则存在$\{r_i\}_{i=1}^n$，
+        使得$t_1=\sum\limits_{i=1}^nr_it_i$，
+        由于$\mathfrak{m}$为不可逆元全体构成的极大理想，
+        假如$1-r_1$不可逆，则$1=(1-r_1)+r_1\in \mathfrak{m}$，矛盾.
+        因此$1-r_1$可逆，从而$t_1=(1-r_1)^{-1}\sum\limits_{i=2}^nr_it_i$，
+        这与生成元集的极小性矛盾.
+    
+        \item[(ii)] 注意到$(IT+N)/N=I(T/N)$,则$T/N=I(T/N)$，
+        利用(i)即知$T/N=\{0\}$，即证.
+
+        \item[(iii)]“$\Rightarrow$”:
+        若$AB=BA=I$则$j(A)j(B)=j(I)=j(B)j(A)$.\par
+        “$\Leftarrow$”:
+        若$j(A)j(B)=j(I)=j(B)j(A)$,则存在$M_1,M_2\in M_n(\mathfrak{m})$，
+        使得$AB+M_1=I=BA+M_2$，可见$R^n\subset ABR^n+\mathfrak{m}R^n$，
+        由(ii)可知$ABR^n=R^n$，可见$A$为满射;
+        断言$A$为单射：若$Ax=0$，则$(I+M_2)x=0$. 
+        那么$x=-M_2x\in \mathfrak{m}R^n$，即$\ker A\subset \mathfrak{m}R^n$. 
+        由于$R^n$为自由模，可见$R^n=\ker A\oplus T,A\,|_T:T\rightarrow R^n$为同构，
+        由(ii)可知$T=R^n$,可见$\ker A=\{0\}$. 
+        从而$A$单且满，于是可逆.
+        
+        \item[(iv)] 设$P$的极小生成元集为$\{t_1,\cdots,t_n\}$,
+        定义$f:R^n\rightarrow P,(r_1,\cdots,r_n)\mapsto \sum\limits_{i=1}^nr_it_i$，
+        由$P$投射，可知$R^n=\ker f\oplus P$,其中$f\,|_P$为同构.\par
+        若$(a_1,\cdots,a_n)\in \ker f$,即$\sum\limits_{i=1}^na_it_i=0$，
+        断言$a_i\in \mathfrak{m}, i=1,\cdots,n$，
+        否则不妨$a_1\notin \mathfrak{m}$，即$a_1$可逆，
+        则$t_1=a_1^{-1}\sum\limits_{i=2}^n a_i t_i$，这与生成元集的极小性矛盾.\par
+        从而$\ker f\subset \mathfrak{m}R^n$，$R^n=P + \mathfrak{m}R^n$，
+        由(ii)可知$P=R^n,\ker f =\{0\}$.
+        \end{itemize}
+\end{enumerate}
+\subsection**{参考文献}
+\begin{references}
+    \bibitem[AM]{AM}
+        M. F. Atiyah, I. G. Macdonald.
+        \textit{Introduction to Commutative Algebra}.
+        Addison--Wesley Publishing Company, 1994.
+    \bibitem[jdkc]{jdkc}
+        jeffrey daniel kasik carlson.
+        \textit{Exercises to Atiyah and Macdonald's 
+        Introduction to Commutative Algebra}.
+    \bibitem[Lam]{Lam}
+        T. Y. Lam.
+        \textit{Lectures on Modules and Rings}.
+        Graduate Texts in Mathematics \textbf{189}. Springer, 1999.
+\end{references}

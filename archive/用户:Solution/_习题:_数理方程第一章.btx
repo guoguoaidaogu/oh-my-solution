@@ -1,0 +1,1045 @@
+\theoremstyle{plain}\newtheorem*{lemma*}{引理}
+\theoremstyle{plain}\newtheorem*{formula*}{公式}
+\theoremstyle{plain}\newtheorem*{proposition1}{弱极值原理}
+\theoremstyle{plain}\newtheorem*{proposition2}{强极值原理}
+\theoremstyle{plain}\newtheorem*{theo}{定理}
+\newcommand\tbbint{{-\mkern -16mu\int}}
+\newcommand\dbbint{{-\mkern -19mu\int}}
+\newcommand\intbar{{\mathchoice{\dbbint}{\tbbint}{\tbbint}{\tbbint}}}
+\renewcommand\thesection{2.\arabic{section}}
+\setdisplaytitle{第二章\ 调和方程}
+\sethtmltitle{第二章\ 调和方程}
+\theoremstyle{remark}\newtheorem*{ack*}{Acknowledgements}
+
+\begin{ack*}\\
+    \qquad本文件为101计划系列的数学物理方程教材配套的习题解答，由李晓宇编写。
+    ZhangYH在写作过程中提供了很大的帮助，不为补充了2.1节习题1的方法II，
+    猎人和Danny分别为2.1节习题9补充了方法II和III，空子穿梭者指出了一处计算错误，
+    勾陈一添加了3.2节习题6，懿の补充了3.2节习题8的方法II，在此一并致谢。
+\end{ack*}
+
+\section{方程的物理背景和定解问题}
+	
+\begin{itemize}
+    \item[1.] 验证Laplace算子$\Delta$在$2$维极坐标$(r, \theta)$
+    以及$3$维球坐标$(r, \theta, \varphi)$下的形式分别为
+    \begin{align*}
+        \Delta u &= \frac{1}{r} \frac{\partial}{\partial r}
+        \bigg(r \frac{\partial u}{\partial r}\bigg) 
+        + \frac{1}{r^2} \frac{\partial^2 u}{\partial \theta^2},\\
+        \Delta u &= \frac{1}{r^2}\frac{\partial}{\partial r}
+        \bigg(r^2 \frac{\partial u}{\partial r}\bigg) 
+        + \frac{1}{r^2 \sin \theta} \frac{\partial}{\partial \theta}
+        \bigg(\!\sin \theta \frac{\partial u}{\partial \theta}\bigg) 
+        + \frac{1}{r^2\sin^2 \theta} \frac{\partial^2 u}{\partial \varphi^2}.
+    \end{align*}
+   
+    \textbf{方法I}.
+    $2$维坐标$(x,y)$的参数化是
+    $$x=r\cos\theta,\quad y=r\sin\theta,$$
+    即$$r=\sqrt{x^2+y^2},\quad\theta=\arctan\frac{y}{x},$$
+    从而\begin{align*}\frac{\partial r}{\partial x}=\cos\theta,&\quad
+    \frac{\partial\theta}{\partial x}=-\frac{y}{x^2+y^2}=-\frac{\sin\theta}{r},\\
+    \frac{\partial r}{\partial y}=\sin\theta,&\quad
+    \frac{\partial\theta}{\partial y}=\frac{x}{x^2+y^2}=\frac{\cos\theta}{r},
+    \end{align*}
+    于是
+    \begin{align*}\frac{\partial}{\partial x}
+    &=\frac{\partial r}{\partial x}\frac{\partial}{\partial r}
+    +\frac{\partial\theta}{\partial x}\frac{\partial}{\partial\theta}
+    =\cos\theta\frac{\partial}{\partial r}
+    -\frac{\sin\theta}{r}\frac{\partial}{\partial\theta},\\
+    \frac{\partial}{\partial y}
+    &=\frac{\partial r}{\partial y}\frac{\partial}{\partial r}
+    +\frac{\partial\theta}{\partial y}\frac{\partial}{\partial\theta}
+    =\sin\theta\frac{\partial}{\partial r}
+    +\frac{\cos\theta}{r}\frac{\partial}{\partial\theta}.
+    \end{align*}
+    由此
+    \begin{align*}\frac{\partial^2}{\partial x^2}
+    &=\cos\theta\frac{\partial}{\partial r}\bigg(\!\cos\theta\frac{\partial}{\partial r}
+    -\frac{\sin\theta}{r}\frac{\partial}{\partial\theta}\bigg)
+    -\frac{\sin\theta}{r}\frac{\partial}{\partial\theta}\bigg(\!\cos\theta\frac{\partial}{\partial r}
+    -\frac{\sin\theta}{r}\frac{\partial}{\partial\theta}\bigg)\\
+    &=\cos\theta\bigg(\!\cos\theta\frac{\partial^2}{\partial r^2}
+    -\frac{\sin\theta}{r}\frac{\partial^2}{\partial r\partial\theta}
+    +\frac{\sin\theta}{r^2}\frac{\partial}{\partial\theta}\bigg)\\
+    &\quad-\frac{\sin\theta}{r}\bigg(\!\cos\theta\frac{\partial^2}{\partial\theta\partial r}-\sin\theta\frac{\partial}{\partial r}
+    -\frac{\sin\theta}{r}\frac{\partial^2}{\partial\theta^2}-\frac{\cos\theta}{r}\frac{\partial}{\partial\theta}\bigg)\\
+    &=\cos^2\theta\frac{\partial^2}{\partial r^2}-2\frac{\cos\theta\sin\theta}{r^2}\frac{\partial^2}{\partial r\partial\theta}
+    +2\frac{\cos\theta\sin\theta}{r}\frac{\partial}{\partial\theta}
+    +\frac{\sin^2\theta}{r}\frac{\partial}{\partial r}
+    +\frac{\sin^2\theta}{r^2}\frac{\partial^2}{\partial\theta^2},\\
+    \frac{\partial^2}{\partial y^2}
+    &=\sin\theta\frac{\partial}{\partial r}\bigg(\!\sin\theta\frac{\partial}{\partial r}
+    +\frac{\cos\theta}{r}\frac{\partial}{\partial\theta}\bigg)
+    +\frac{\cos\theta}{r}\frac{\partial}{\partial\theta}\bigg(\!\sin\theta\frac{\partial}{\partial r}
+    +\frac{\cos\theta}{r}\frac{\partial}{\partial\theta}\bigg)\\
+    &=\sin\theta\bigg(\!\sin\theta\frac{\partial^2}{\partial r^2}
+    +\frac{\cos\theta}{r}\frac{\partial^2}{\partial r\partial\theta}
+    -\frac{\cos\theta}{r^2}\frac{\partial}{\partial\theta}\bigg)\\
+    &\quad+\frac{\cos\theta}{r}\bigg(\!\sin\theta\frac{\partial^2}{\partial\theta\partial r}
+    +\cos\theta\frac{\partial}{\partial r}
+    +\frac{\cos\theta}{r}\frac{\partial^2}{\partial\theta^2}
+    -\frac{\sin\theta}{r}\frac{\partial}{\partial\theta}\bigg)\\
+    &=\sin^2\theta\frac{\partial^2}{\partial r^2}
+    +2\frac{\sin\theta\cos\theta}{r}\frac{\partial^2}{\partial r\partial\theta}
+    -2\frac{\sin\theta\cos\theta}{r^2}\frac{\partial}{\partial\theta}
+    +\frac{\cos^2\theta}{r}\frac{\partial}{\partial r}
+    +\frac{\cos^2\theta}{r^2}\frac{\partial^2}{\partial\theta^2}.
+    \end{align*}
+    相加得
+    $$\Delta=\frac{\partial^2}{\partial r^2}
+    +\frac{1}{r}\frac{\partial}{\partial r}
+    +\frac{1}{r^2}\frac{\partial^2}{\partial\theta^2}
+    =\frac{1}{r}\frac{\partial}{\partial r}\bigg(r\frac{\partial}{\partial r}\bigg)
+    +\frac{1}{r^2}\frac{\partial^2}{\partial\theta^2}.$$
+
+    $3$维坐标$(x,y,z)$的参数化是
+    \begin{align*}
+    &z=r\cos\theta,\quad s=r\sin\theta,\\
+    &x=s\cos\varphi,\ \ \ y=s\sin\varphi.
+    \end{align*}
+    对$s=\sqrt{x^2+y^2}$以及$r=\sqrt{s^2+z^2}$用$2$维情形的计算结果，有
+    \begin{align*}
+    \frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}
+    &=\frac{\partial^2}{\partial s^2}
+    +\frac{1}{s}\frac{\partial}{\partial s}
+    +\frac{1}{s^2}\frac{\partial^2}{\partial\varphi^2},\\
+    \frac{\partial^2}{\partial s^2}+\frac{\partial^2}{\partial z^2}
+    &=\frac{\partial^2}{\partial r^2}
+    +\frac{1}{r}\frac{\partial}{\partial r}
+    +\frac{1}{r^2}\frac{\partial^2}{\partial\theta^2},
+    \end{align*}
+    相加得
+    $$\Delta=\frac{\partial^2}{\partial r^2}+\frac{1}{r}\frac{\partial}{\partial r}
+    +\frac{1}{r^2}\frac{\partial^2}{\partial\theta^2}
+    +\frac{1}{s}\frac{\partial}{\partial s}
+    +\frac{1}{s^2}\frac{\partial^2}{\partial\varphi^2},$$
+    其中$s^2=r^2\sin^2\theta$，且
+    $$\frac{1}{s}\frac{\partial}{\partial s}
+    =\frac{1}{s}\bigg(\frac{\partial r}{\partial s}\frac{\partial}{\partial r}
+    +\frac{\partial\theta}{\partial s}\frac{\partial}{\partial\theta}\bigg)
+    =\frac{1}{s}\bigg(\frac{s}{r}\frac{\partial}{\partial r}
+    +\frac{z}{r^2}\frac{\partial}{\partial\theta}\bigg)
+    =\frac{1}{r}\frac{\partial}{\partial r}
+    +\frac{1}{r^2\sin\theta}\cos\theta\frac{\partial}{\partial\theta}.$$
+    故
+    \begin{align*}
+    \Delta&=\frac{\partial^2}{\partial r^2}+\frac{2}{r}\frac{\partial}{\partial r}
+    +\frac{1}{r^2\sin\theta}\bigg(\!\sin\theta\frac{\partial^2}{\partial\theta^2}+\cos\theta\frac{\partial}{\partial\theta}\bigg)
+    +\frac{1}{r^2\sin^2\theta}\frac{\partial^2}{\partial\varphi^2}\\
+    &=\frac{1}{r^2}\frac{\partial}{\partial r}\bigg(r^2\frac{\partial}{\partial r}\bigg)
+    +\frac{1}{r^2\sin\theta}\frac{\partial}{\partial\theta}\bigg(\!\sin\theta\frac{\partial}{\partial\theta}\bigg)
+    +\frac{1}{r^2\sin^2\theta}\frac{\partial^2}{\partial\varphi^2}.
+    \end{align*}
+
+    \textbf{方法II}.
+        我们用流形上的Laplace算子来解题，其中$*$是Hodge星算子。
+
+        (预备知识见\cite{Jo} 3.3节，尤其是pp.106,\,110。)
+        
+        $2$维极坐标有转换$\begin{cases} x= r \cos \theta\\
+         y= r \sin \theta \end{cases}$，则
+        $$\begin{pmatrix} dx\\ \\dy \end{pmatrix}= \begin{pmatrix} \cos \theta &-r \sin \theta\\ \\
+        \sin \theta &r\cos \theta \end{pmatrix} \begin{pmatrix} dr\\ \\d\theta\end{pmatrix},$$
+        推出
+        $$\begin{pmatrix} dr\\ \\d\theta \end{pmatrix}= \begin{pmatrix}\cos \theta &\sin \theta\\ \\
+        -\sin \theta /r &\cos \theta / r \end{pmatrix} \begin{pmatrix} dx\\ \\dy\end{pmatrix},$$
+        从而$\{dr, rd\theta\}$构成一组标准正交基，于是有
+        $*dr = rd\theta, *(rd\theta) = - dr$。由此，
+        \begin{align*}
+            \Delta u = *\,d*du &= *\,d*(u_r dr+ u_\theta d\theta)\\
+            &= *\,d (u_r r d\theta - \frac{u_\theta}{r} dr)\\
+            &= * \left((u_r r)_rdr\wedge d\theta + \frac{u_{\theta \theta}}{r}dr\wedge d\theta  \right)\\
+            &=\frac{1}{r}(u_r r)_r + \frac{1}{r^2}u_{\theta \theta}.
+        \end{align*}
+        
+        $3$维有球坐标转换$\begin{cases} x=r\sin \theta \cos \varphi\\ 
+        y= r \sin \theta \sin \varphi\\ z=r\cos \theta \end{cases}$，则
+        $$\begin{pmatrix} dx\\ \\dy\\ \\dz \end{pmatrix}
+        = \begin{pmatrix}\sin \theta  \cos \varphi &r \cos \theta  \cos \varphi &-r  \sin \theta  \sin \varphi\\ \\
+            \sin \theta  \sin \varphi &r  \cos \theta  \sin \varphi &r \sin \theta  \cos \varphi\\ \\
+            \cos \theta &-r\sin \theta &0
+        \end{pmatrix} \begin{pmatrix}dr\\ \\d\theta\\ \\d\varphi \end{pmatrix},$$
+        推出
+            $$\begin{pmatrix}dr\\ \\d\theta\\ \\d\varphi \end{pmatrix}
+            = \begin{pmatrix}\sin \theta  \cos \varphi &\sin \theta  \sin \varphi &\cos \theta\\ \\
+            \dfrac{1}{r}\cos \theta  \cos \varphi &\dfrac{1}{r} \cos \theta  \sin \varphi &-\dfrac{1}{r}\sin \theta\\ \\
+            -\dfrac{\sin \varphi}{r \sin \theta} & \dfrac{\cos \varphi}{r\sin \theta} &0\end{pmatrix}
+            \begin{pmatrix}dx\\ \\dy\\ \\dz \end{pmatrix},$$
+        从而$\{dr, rd\theta, r\sin \theta d\varphi\}$构成一组标准正交基。由此，
+
+        \begin{align*}
+            \Delta u= *\,d*d u &= *\,d*
+            \big(u_r dr+ u_\theta d\theta + u_\varphi d\varphi\big)\\
+            &= *\,d(u_r r^2 \sin \theta d\theta \wedge d\varphi 
+            - u_\theta \sin \theta dr\wedge d\varphi
+            + \frac{u_\varphi}{\sin \theta}dr\wedge d\theta)\\
+            &= *\left( \bigg(\frac{\partial}{\partial r}(u_r r^2)\sin \theta 
+            +\frac{\partial}{\partial \theta} (u_\theta \sin \theta) 
+            + \frac{u_{\varphi \varphi}}{\sin \theta}\bigg)
+            dr\wedge d\theta \wedge d\varphi \right)\\
+            &=\frac{1}{r^2 \sin \theta}
+            \left( \frac{\partial}{\partial r}(u_r r^2)\sin \theta 
+            +\frac{\partial}{\partial \theta} (u_\theta \sin \theta) 
+            + \frac{u_{\varphi \varphi}}{\sin \theta}\right).
+        \end{align*}
+
+
+\item[注：] $n$维时，Laplace算子有如下的形式。
+\begin{formula*}
+    $\R^n\backslash\{0\}$上，Laplace算子在极坐标下的表达式为
+    $$\Delta=\frac{\partial^2}{\partial r^2}
+    +\frac{n-1}{r}\frac{\partial}{\partial r}+\frac{1}{r^2}\Delta_{S^{n-1}},$$
+    其中$x\in\R^n\backslash\{0\}$唯一地写成
+    $x=r\varphi,(r,\varphi)\in(0,+\infty)\times S^{n-1}$，
+    单位球面$S^{n-1}=\{x\in\R^n\mid|x|=1\}\subset\R^n$上的度量诱导自这个嵌入，
+    相应地有球面上的Laplace算子$\Delta_{S^{n-1}}$.
+\end{formula*}
+\begin{proofc}
+    设$\varphi\in S^{n-1}$在$\R^n$的坐标是$(y^1,\cdots,y^n)$，
+    $\R^n$上的标准度量就是
+    \begin{align*}
+        \sum(d(ry^i))^2&=\sum(y^idr+rdy^i)^2\\
+        &=\sum(y^i)^2dr^2+r^2(dy^i)^2+(y^idr)(rdy^i)+(rdy^i)(y^idr)\\
+        &=dr^2+r^2d\varphi^2,
+    \end{align*}
+    这里$d\varphi^2=\sum(dy^i)^2$是$S^{n-1}$上的标准度量，
+    最后一个等号是因为$\sum(y^i)^2=1$推出$\sum y^idy^i=0$.
+
+    再设$\varphi\in S^{n-1}$的局部坐标是$(\varphi^1,\cdots,\varphi^{n-1})$，
+    以及$d\varphi^2=\sum \bar{g}_{\varphi^I\varphi^J}d\varphi^Id\varphi^J$，
+    就有$\R^n$上的标准度量在坐标$(r,\varphi^1,\cdots,\varphi^{n-1})$下等于
+    \begin{align*}
+        dr^2+r^2\sum \bar{g}_{\varphi^I\varphi^J}d\varphi^Id\varphi^J,
+    \end{align*}
+    换言之，系数矩阵
+    $(g_{ij})_{i,j=r,\varphi^1,\cdots,\varphi^{n-1}}
+    =\left(\begin{matrix}1& \\ &r^2\bar{g}_{\varphi^I\varphi^J}\end{matrix}\right)$.
+
+    Riemann流形上的Laplace算子的坐标表示为
+    （见大多数Riemann几何教材，如\cite{Jo} (3.1.20), p.92）
+    $$\Delta f=\frac{1}{\sqrt{g}}\sum\frac{\partial}{\partial x^j}
+    \Big(\sqrt{g}g^{ij}\frac{\partial f}{\partial x^i}\Big),$$
+    其中$g=\det(g_{ij})$，矩阵$(g^{ij})=(g_{ij})^{-1}$.
+
+    现在$(x^1,\cdots,x^n)=(r,\varphi^1,\cdots,\varphi^{n-1})$，有$\sqrt{g}=r^{n-1}\sqrt{\bar{g}}$，
+    $(g^{ij})=\left(\begin{matrix}1& \\ &\frac{1}{r^2}\bar{g}^{\varphi^I\varphi^J}\end{matrix}\right)$，
+    其中$\bar{g}=\det(\bar{g}_{\varphi^I\varphi^J})$，
+    $(\bar{g}^{\varphi^I\varphi^J})=(\bar{g}_{\varphi^I\varphi^J})^{-1}$.
+    因此\begin{align*}
+    \Delta f&=\frac{1}{r^{n-1}\sqrt{\bar{g}}}\bigg[
+    \frac{\partial}{\partial r}\Big(r^{n-1}\sqrt{\bar{g}}\frac{\partial f}{\partial r}\Big)
+    +\sum\frac{\partial}{\partial \varphi^J}
+    \Big(r^{n-1}\sqrt{\bar{g}}\frac{1}{r^2}\bar{g}^{\varphi^I\varphi^J}\frac{\partial f}{\partial \varphi^I}\Big)
+    \bigg]\\
+    &=\frac{1}{r^{n-1}}
+    \frac{\partial}{\partial r}\Big(r^{n-1}\frac{\partial f}{\partial r}\Big)
+    +\frac{1}{r^2}\frac{1}{\sqrt{\bar{g}}}\sum\frac{\partial}{\partial \varphi^J}
+    \Big(\sqrt{\bar{g}}\bar{g}^{\varphi^I\varphi^J}\frac{\partial f}{\partial \varphi^I}\Big)\\
+    &=\frac{\partial^2 f}{\partial r^2}+\frac{n-1}{r}\frac{\partial f}{\partial r}
+    +\frac{1}{r^2}\Delta_{S^{n-1}}f.
+    \end{align*}
+\end{proofc}
+
+    \item[4.]
+    $\Delta=4\dfrac{\partial}{\partial z}\dfrac{\partial}{\partial\bar{z}}$，
+    由于$\dfrac{\partial f}{\partial\bar{z}}=0$，有$\Delta f=0$.
+
+    回忆：$\dfrac{\partial}{\partial z}
+    =\dfrac{1}{2}\left(\dfrac{\partial}{\partial x}
+    -{\rm i}\dfrac{\partial}{\partial y}\right)$, 
+    $\dfrac{\partial}{\partial\bar{z}}
+    =\dfrac{1}{2}\left(\dfrac{\partial}{\partial x}
+    +{\rm i}\dfrac{\partial}{\partial y}\right)$.
+
+	\item[6.]
+    取$\varOmega$为单位球$B_1(0)$，构造下述方程非常数的解：
+	$$\begin{cases}
+        -\Delta u=0,&|x|>1,\\
+        \hspace{0.55em}\dfrac{\partial u}{\partial\boldsymbol{n}}=0,&|x|=1.
+    \end{cases}$$
+    由于边界条件，考虑形如$u(x)=v(r)w(\theta)$的特解，
+    这里$x=r\theta,(r,\theta)\in[1,\infty)\times S^{n-1}$，
+    $w$是$\Delta_{S^{n-1}}$的一个特征函数且不是常数，
+    也就是$-\Delta w=\lambda w$，且$\nabla w$不恒为$0$。故
+    $$\lambda\int_{S^{n-1}}w^2=\int_{S^{n-1}}-\Delta w\cdot w
+    =\int_{S^{n-1}}|\nabla w|^2>0,$$
+    说明特征值$\lambda>0$。根据Laplace算子的极坐标表达式，
+    $$\Big(v''(r)+\frac{n-1}{r}v'(r)-\frac{\lambda}{r^2}v(r)\Big)w(\theta)=0.$$
+    试着取$v(r)=r^\mu$，则$\mu(\mu-1)+(n-1)\mu-\lambda=0$。边界条件进一步要求
+    $$v'(1)=0.$$
+    于是令$v(r)=\mu_2r^{\mu_1}-\mu_1r^{\mu_2}$，
+    其中$\mu_1,\mu_2$是$\mu^2+(n-2)\mu-\lambda=0$的两个根。
+
+    \item[注：] 特征函数$w$的存在性可用变分法说明：设
+    $$\lambda_1=\inf_{\begin{subarray}{c}w\in H^1(S^{n-1}),\\
+        w\perp1,\ w\ne0
+    \end{subarray}}\frac{\|\nabla w\|^2_{L^2}}{\|w\|^2_{L^2}},$$
+    这里的$H^1(S^{n-1})$是Sobolev空间（不是de Rham 上同调群），
+    $w\perp1$是说$\int_{S^{n-1}} w=0$。
+    
+    取一个极小化序列$\{w_{(n)}\}$
+    （是指$\|\nabla w_{(n)}\|_{L^2}^2\big/\|w_{(n)}\|_{L^2}^2\to\lambda_1$）
+    满足$\|w_{(n)}\|_{L^2}=1$。由于$\|w_{(n)}\|_{H^1}$有界，
+    抽取子列后$w_{(n)}$在$H^1(S^{n-1})$下弱收敛于某个$w_1\in H^1(S^{n-1})$。
+    由Rellich定理，再次抽取子列后$w_{(n)}$在$L^2(S^{n-1})$下强收敛于$w_1$。
+    因为
+    \begin{align*}\lambda_1\leqslant\|\nabla w_1\|_{L^2}^2
+    &=\lim_{n\to\infty}\langle\nabla w_1,\nabla w_{(n)}\rangle\\
+    &\leqslant\varliminf_{n\to\infty}\|\nabla w_1\|_{L^2}\|\nabla w_{(n)}\|_{L^2}\\
+    &\leqslant\lim_{n\to\infty}\|\nabla w_{(n)}\|_{L^2}^2=\lambda_1,\end{align*}
+    有$\|\nabla w_1\|_{L^2}^2=\lambda_1$，
+    并且$w_1\perp1$说明$\lambda_1>0$；
+    对一切$h\in H^1(S^{n-1}),h\perp1$有
+    \begin{align*}0&=\frac{d}{d\varepsilon}\bigg|_{\varepsilon=0}
+    \frac{\|\nabla(w_1+\varepsilon h)\|^2_{L^2}}{\|w_1+\varepsilon h\|^2_{L^2}}\\
+    &=2\bigg(\frac{\langle\nabla w_1,\nabla h\rangle}{\|w_1\|_{L^2}^2}
+    -\frac{\langle w_1,h\rangle\|\nabla w_1\|_{L^2}^2}{\|w_1\|_{L^2}^4}\bigg)\\
+    &=2\langle-\Delta w_1-\lambda_1w_1,h\rangle,\end{align*}
+    可得
+    $$-\Delta w_1-\lambda_1 w_1=\text{常数},$$
+    积分得常数$=0$，系$-\Delta w_1=\lambda_1w_1$。
+
+    类似地，设已有特征函数$w_1,\cdots,w_{k-1}$，通过研究
+    $$\lambda_k=\inf_{\begin{subarray}{c}w\in H^1(S^{n-1}),\\
+        w\perp\operatorname{span}\{1,w_1,\cdots,w_{k-1}\},\ w\ne0
+    \end{subarray}}\frac{\|\nabla w\|^2_{L^2}}{\|w\|^2_{L^2}}$$
+    可得特征值$\lambda_k$以及对应的$w_k$。
+    对$-\Delta w_k=\lambda_kw_k$反复用椭圆正则性，
+    得到$w_k\in C^\infty(S^{n-1})=H^0(S^{n-1})$，
+    这里的$H^0(S^{n-1})$是de Rham上同调群（不是Sobolev空间）。具体的过程见\cite{Jo} 3.2节。
+
+    事实上可以算出$-\Delta_{S^n}$从小到大第$k$个不同的正特征值为$k^2+(n-1)k$，
+    见\cite{Ta II} Chapter 8 Corollary 4.3.
+
+    \item[7.] 是上一题的特例，$S^1$参数化为$\{\theta=e^{{\rm i}t}:t\in[0,2\pi)\}$，
+    $-\Delta_{S^1}=-\big(\frac{d}{dt}\big)^2$的特征值是$\lambda=k^2\ (k\in\Z)$，
+    $\mu^2-k^2=0$的根是$\pm k$，从而
+    $$w(\theta)=c_1e^{{\rm i}kt}+c_2e^{-{\rm i}kt}=c_1\theta^k+c_2\theta^{-k},$$
+    于是
+    $$u(r\theta)=(r^k+r^{-k})(c_1\theta^k+c_2\theta^{-k})$$
+    是这个方程的解。
+
+    \item[8.] 如果$u$是变分问题的解，那么对任何$w \in U$和$\varepsilon \in \R$都有
+    \begin{align*}
+        J(u+\varepsilon w)-J(u)
+        &=\varepsilon\left(\int_\varOmega\nabla u\cdot\nabla w-fw
+        +\int_{\partial\varOmega}\sigma uw-gw\right)\\
+        &\quad+\frac{\varepsilon^2}{2}\left(\int_\varOmega|\nabla w|^2
+        +\int_{\partial\varOmega}\sigma w^2\right).
+    \end{align*}
+    由\[\frac{d}{d\varepsilon}J(u+\varepsilon w)|_{\varepsilon=0}=0\]
+    得到\[\int_\varOmega\nabla u\cdot\nabla w-fw+\int_{\partial\varOmega}\sigma uw-gw=0,\]
+    分部积分转化为\[\int_\varOmega(-\Delta u-f)w
+    +\int_{\partial\varOmega}\bigg(\frac{\partial u}{\partial\boldsymbol{n}}+\sigma u-g\bigg)w=0.\]
+    由$w$的任意性可知，$u$是边值问题
+    \[\begin{cases}
+        \hspace{1.75em}-\Delta u=f,&x\in\varOmega,\\
+        \dfrac{\partial u}{\partial\boldsymbol{n}}+\sigma u=g,&x\in\partial\varOmega
+    \end{cases}\]
+    的解。反过来，如果$u$为上述边值问题的解，那么对任何$w \in U$都有
+    \[\int_\varOmega(-\Delta u-f)w
+    +\int_{\partial\varOmega}\bigg(\frac{\partial u}{\partial\boldsymbol{n}}+\sigma u-g\bigg)w=0,\]
+    也就是\[\int_\varOmega\nabla u\cdot\nabla w-fw+\int_{\partial\varOmega}\sigma uw-gw=0.\]
+    由此有
+    \begin{align*}
+        J(u+w)-J(u)&=\left(\int_\varOmega\nabla u\cdot\nabla w-fw
+        +\int_{\partial\varOmega}\sigma uw-gw\right)\\
+        &\quad+\frac{1}{2}\left(\int_\varOmega|\nabla w|^2
+        +\int_{\partial\varOmega}\sigma w^2\right)\geqslant0,
+    \end{align*}
+    等号成立当且仅当$w=0$，即$u$是变分问题的唯一的解。
+
+	\item[9.]
+\textbf{方法I.} （来自\cite{Ax} Proposition 4.6）
+对多项式$u$计算$\Delta v$，再用稠密性得出结果。
+\begin{lemma*}
+    设$p$是$\R^n$上的齐次多项式，次数为$m$，简记$t=2-n-2m$，有
+    $$\Delta(|x|^tp)=|x|^t\Delta p.$$
+\end{lemma*}
+\textbf{证明.}
+    设$p=\sum\limits_\alpha c_\alpha x_1^{\alpha_1}\cdots x_n^{\alpha_n}$，
+    诸$\alpha_1+\cdots+\alpha_n=m$，那么
+    \begin{align*}
+    x\cdot\nabla p&=\sum_\alpha c_\alpha \sum_{i=1}^n x_i\cdot 
+    \alpha_i x_1^{\alpha_1}\cdots x_i^{\alpha_i-1}\cdots x_n^{\alpha_n}\\
+    &=\sum_\alpha c_\alpha \,m x_1^{\alpha_1}\cdots x_n^{\alpha_n}=mp.
+    \end{align*}
+    另外，
+    \begin{align*}
+        \nabla(|x|^t)&=tx|x|^{t-2},\\
+        \Delta(|x|^t)&=\nabla\cdot(tx|x|^{t-2})\\
+        &=t[(\nabla\cdot x)|x|^{t-2}+(\nabla|x|^{t-2})\cdot x]\\
+        &=t[n|x|^{t-2}+(t-2)x|x|^{t-4}\cdot x]\\
+        &=t(n+t-2)|x|^{t-2}.
+    \end{align*}
+    于是，
+    \begin{align*}
+        \Delta(|x|^tp)-|x|^t\Delta p
+        &=2\nabla(|x|^t)\cdot\nabla p+\Delta(|x|^t)p\\
+        &=2t|x|^{t-2}x\cdot\nabla p+t(n+t-2)|x|^{t-2}p\\
+        &=t(2m+n+t-2)|x|^{t-2}p=0.
+    \end{align*}
+以上是引理的证明。下面说明$\Delta v=|x|^4\Delta u\text{ 的 Kelvin 变换}$。
+
+（其推论是，特别地，如果$\Delta u=0$，那么$\Delta v=0$。）
+
+当$u$是齐次多项式，次数为$m$，由引理（$t$的含义同上），
+$$\Delta v=\Delta(|x|^tu)=|x|^t\Delta u=|x|^4\Delta u\text{ 的 Kelvin 变换},$$
+最后的等号是因为$|x|^4\Delta u$的$\text{Kelvin}$变换为
+（注意$\Delta u$的次数为$\color{olive}{m-2}$）
+\[\frac{1}{|x|^{n-2}}\left|\frac{x}{|x|^2}\right|^4
+\Delta u\left(\frac{x}{|x|^{\color{olive}{2}}}\right)
+=|x|^{2-n-4-\color{olive}{2}(m-2)}\Delta u=|x|^t\Delta u.\]
+由线性，命题对（未必齐次的）多项式$u$同样成立，
+又由于$\big(C^2(\R^n\backslash\{0\}),\|\ \ \|_{C^2}\big)$中的多项式是局部上稠密的
+（用Stone--Weierstrass定理），命题进一步对$u\in C^2$成立。
+
+\textbf{方法II.} 用前面给出的Laplace算子的表达式来计算.
+
+设极坐标下$y=r\varphi$，$y'=\frac{y}{|y|^2}=r'\varphi'$，
+则$r'=\frac1r,\varphi'=\varphi$. 这样
+$$\begin{cases}
+    \displaystyle{\frac{\partial}{\partial r}
+    =\frac{\partial r'}{\partial r}\frac{\partial}{\partial r'}
+    =-\frac1{r^2}\frac{\partial}{\partial r'}
+    =-r'^2\frac{\partial}{\partial r'},}\\ \\
+    \displaystyle{\frac{\partial^2}{\partial r^2}
+    =-r'^2\frac{\partial}{\partial r'}\left(\!-r'^2\frac{\partial}{\partial r'}\right)
+    =r'^4\frac{\partial^2}{\partial r'^2}+2r'^3\frac{\partial}{\partial r'},}\\ \\
+    \Delta_{S^{n-1}}=\Delta_{S'^{n-1}}.
+\end{cases}$$
+故有
+\begin{align*}
+\Delta v(y)
+&=\left(\frac{\partial^2}{\partial r^2}+\frac{n-1}{r}\frac{\partial}{\partial r}+\frac{1}{r^2}\Delta_{S^{n-1}}\right)\left(\frac{1}{|y|^{n-2}}u\Big(\frac{y}{|y|^2}\Big)\right)\\
+&=\left(r'^4\frac{\partial^2}{\partial r'^2}+2r'^3\frac{\partial}{\partial r'}
+-(n-1)r'^3\frac{\partial}{\partial r'}+r'^2\Delta_{S'^{n-1}}\right)\big(r'^{n-2}u(y')\big)\\
+&=r'^4\left(r'^{n-2}\frac{\partial^2u}{\partial r'^2}(y')+2(n-2)r'^{n-3}\frac{\partial u}{\partial r'}(y')+(n-2)(n-3)r'^{n-4}u(y')\right)\\
+&\quad+2r'^3\left((n-2)r'^{n-3}u(y')+r'^{n-2}\frac{\partial u}{\partial r'}(y')\right)\\
+&\quad-(n-1)r'^3\left((n-2)r'^{n-3}u(y')+r'^{n-2}\frac{\partial u}{\partial r'}(y')\right)\\
+&\quad+r'^2\Delta_{S'^{n-1}}\big(r'^{n-2}u(y')\big)\\
+&=r'^{n+2}\left(\frac{\partial^2}{\partial r'^2}+\frac{n-1}{r'}\frac{\partial}{\partial r'}+\frac{\Delta_{S'^{n-1}}}{r'^2}\right)u(y')\\
+&=r'^{n+2}\Delta u(y').
+\end{align*}
+于是当$\Delta u=0$时$\Delta v=0$.
+
+
+\begin{proofc}[1个回答被折叠\textcolor{A9A9A9}{（为什么？）}]
+
+\textbf{方法III.} 直接计算. 过程较为复杂，隐藏了。
+
+记
+$$k(y):=\frac{1}{|y|^{n-2}},\quad x(y):=\frac{y}{|y|^2}.$$
+对于$v(y)=k(y)u(x)$，计算得到
+\begin{align*}
+	\Delta v 
+	&= u\Delta_y k +2 \nabla_y k \cdot\!\nabla_y u+k \Delta_y u \\
+    &= u\Delta_y k +2 \nabla_y k \cdot\!\nabla_y u+k \sum_i\partial_{y_i}\Big(\sum_j\partial_{x_j}u\partial_{y_i}x_j\Big) \\
+	&=u\Delta_y k +2 \nabla_y k \cdot\!\nabla_y u+k \Big(\sum_{i,j}\partial_{x_j}u\partial_{y_i}^2x_j+\sum_{i,j}\partial_{y_i x_j}  u\partial_{y_i}x_j\Big) \\
+	&=2 \nabla_y k \cdot\!\nabla_y u+k \sum_{i,j}\partial_{x_j}u\partial_{y_i}^2x_j \\
+	&=\Big(\nabla_y k \cdot\!\nabla_y u+k \sum_{i,j}\partial_{x_j}u\partial_{y_i}^2x_j\Big)+\nabla_y k \cdot\!\nabla_y u\\
+	&=\sum_j \partial_{x_j} u\Big(\sum_i \partial _{y_i}(k\partial_{y_i} x_j)+\sum_i \partial _{y_i}k \partial_{y_i} x_j\Big)\\
+	&=\sum_j \partial_{x_j} u\Big((2-n)\frac{y_j}{|y|^{n+2}}-(2-n)\frac{y_j}{|y|^{n+2}}\Big)\\
+	&=0.\\
+	\end{align*}
+其中第4个等号是因为$\Delta_y k=0$以及
+\begin{align*}
+    \sum_{i,j}\partial_{y_i x_j}  u\partial_{y_i}x_j
+    &=\sum_{i,j}\Big(\sum_k \partial_{y_i}x_k\partial_{x_kx_j}u\Big) \partial_{y_i}x_j\\
+    &=\sum_{k,j}\partial_{x_kx_j}u\sum_i\partial_{y_i}x_k\partial_{y_i}x_j\\
+    &=\sum_{k,j}\partial_{x_kx_j}u\sum_i\frac{\delta_{ik}|y|^2-2y_iy_k}{|y|^4}\frac{\delta_{ij}|y|^2-2y_iy_j}{|y|^4}\\
+    &=\sum_{k,j}\partial_{x_kx_j}u\sum_i\frac{\delta_{ikj}|y|^4-2y_iy_k\delta_{ij}|y|^2-2y_iy_j\delta_{ik}|y|^2+4y_i^2y_ky_j}{|y|^8}\\
+    &=\sum_{k,j}\partial_{x_kx_j}u\frac{\delta_{kj}|y|^4}{|y|^8}\\
+    &=\frac{\Delta_x u}{|y|^4}\\
+    &=0.
+\end{align*}
+倒数第2个等号则是因为，对取定的$j$，有
+\begin{align*}
+    \sum_{i}\partial_{y_i}(k\partial_{y_i}x_j)
+    &=\sum_i\partial_{y_i}\bigg(\frac{1}{|y|^{n-2}}
+    \partial_{y_i}\Big(\frac{y_j}{|y|^2}\Big)\bigg)\\
+    &=\sum_{i}\partial_{y_i}\bigg(\frac{\delta_{ij}}{|y|^n}
+    -\frac{2y_iy_j}{|y|^{n+2}}\bigg)\\
+    &=\sum_i-\delta_{ij}n\frac{y_i}{|y|^{n+2}}-\frac{2[(y_j+y_i\delta_{ij})|y|^{n+2}-y_iy_j(n+2)y_i|y|^n]}{|y|^{2(n+2)}}\\
+    &=\sum_{i}-\frac{\delta_{ij}(n+2)y_i+2y_j}{|y|^{n+2}}+\frac{2y_i^2y_j(n+2)}{|y|^{n+4}}\\
+    &=\frac{-(n+2)y_j-2ny_j+2(n+2)y_j}{|y|^{n+2}}\\
+    &=(2-n)\frac{y_j}{|y|^{n+2}},\\
+
+    \sum_i \partial_{y_i}k\,\partial_{y_i}x_j
+    &=\sum_i (2-n)\frac{y_i}{|y|^n}\frac{\delta_{ij}|y|^2-2y_iy_j}{|y|^4}\\
+    &=(2-n)\frac{y_j|y|^2-2y_j|y|^2}{|y|^{n+4}}\\
+    &=-(2-n)\frac{y_j}{|y|^{n+2}}.
+\end{align*}
+\end{proofc}
+\end{itemize}
+
+\section{调和函数的基本性质与应用}
+
+\begin{itemize}
+    \item[2.] 球$B_r(x^0)$就是一族球面$\partial B_s(x^0),s\in(0,r)$拼成的；
+    对所有的球面成立平均值原理，则球亦然。写出来是
+    \begin{align*}
+        \frac{1}{|B_r(x^0)|}\int_{B_r(x^0)}u(x)\,dx
+        &=\frac{1}{|B_r(x^0)|}\int_0^r\int_{\partial B_s(x^0)}u(x)\,dS_xds\\
+        &=\frac{1}{|B_r(x^0)|}\int_0^r\int_{\partial B_s(x^0)}dS_x\,u(x^0)\,ds
+        =u(x^0).
+    \end{align*}
+
+    \item[6.]
+    对任意$x\in\R^n$，由平均值性质，对任何$r>0$，
+    $$|u(x)|\leqslant\frac{1}{|B_r(x)|}\|u\|_{L^1(B_r(x))}
+    \leqslant\frac{1}{|B_r(x)|^\frac{1}{p}}\|u\|_{L^p(B_r(x))}.$$
+    令$r\to+\infty$得$u(x)=0$.
+
+    \item[8.]
+    当$n\geqslant3$，对$x^0\in\R^n\backslash\varOmega$，$|x-x^0|^{2-n}$是$\varOmega$上的非负调和函数.
+
+    \item[注：]
+    当$n=2$，结论不再成立，比如$\R^2\backslash\{0\}$上的下有界的调和函数$u$一定是常数：
+    注意到下图的$U$是$\R^2$上的下有界的调和函数，故是常数.
+    \begin{cd}
+        \mathbb{C} \ar[d,"e^z"] \ar[r,equal] & \mathbb{R}^2 \ar[dr,"U",dashed] \ar[d] & \\
+        \mathbb{C}\backslash\{0\} \ar[r,equal] & \mathbb{R}^2\backslash\{0\}  \ar[r,"u"]  & \mathbb{R}
+    \end{cd}
+
+    \item[9.]
+    通过平移，对非负调和函数$u$证明即可.
+
+    \textbf{方法I.} 对任意$x\in\R^n$，由梯度估计，
+    $$|\nabla u(x)|\leqslant\frac{n}{r}u(x)$$
+    对任何$r>0$成立，令$r\to+\infty$得$\nabla u(x)=0$. 于是$u$为常数。
+    
+    \textbf{方法II.} 对任何两点$y,z$，记$d=|y-z|$，
+    \begin{align*}
+        |u(y)-u(z)|
+        &=\frac{1}{|B_r|}\bigg|\int_{B_r(y)}u(x)\,dx-\int_{B_r(z)}u(x)\,dx\bigg|\\
+        &\leqslant\frac{1}{|B_r|}\int_{B_{r+\frac{d}{2}}(\frac{y+z}{2})}u(x)\,dx
+        -\int_{B_{r-\frac{d}{2}}(\frac{y+z}{2})}u(x)\,dx\\
+        &=\frac{\big|B_{r+\frac{d}{2}}\big|-\big|B_{r-\frac{d}{2}}\big|}{|B_r|}u\Big(\frac{y+z}{2}\Big)\\
+        &\leqslant C\frac{d}{r}u\Big(\frac{y+z}{2}\Big)\rightarrow0\quad\text{当 }r\rightarrow+\infty.
+    \end{align*}
+    \begin{tikzpicture}
+    \fill[gray!25] (0.25,0) circle (2);
+    \fill[gray!25] (-0.25,0) circle (2);
+    \begin{scope}
+        \clip (0.25,0) circle (2);
+        \fill[white] (-0.25,0) circle (2);
+    \end{scope}
+    \fill (0,0) circle (0.025);
+    \draw[dotted,thick] (0,0) circle (1.75cm);\draw[dotted,thick] (0,0) circle (2.25cm);
+    \draw (0.25,0) circle (2cm);\draw (-0.25,0) circle (2cm);
+    \draw[thin] (-2.25,0)to(2.25,0);
+    \coordinate [label=center:$y$] (y) at (-0.25,0);
+    \coordinate [label=center:$z$] (z) at (0.25,0);
+    \end{tikzpicture}
+
+    \item[10.]
+    \textbf{方法I.} 对距离小于$\frac{3}{8}$的$x',x''\in\big\{|x_1|\leqslant\frac{1}{4}\big\}$，
+    由$B_{\frac{3}{8}}(x')\subset B_{\frac{3}{4}}(x'')\subset\{|x_1|\leqslant1\}$
+    得到$u(x')\leqslant4u(x'')$.
+    
+    取大约$\frac{8}{3}|x_2|$个点
+    $x^0=0,x^1,\cdots,x^{n-1},x^n=x$使$|x^i-x^{i+1}|<\frac{3}{8}$，
+    那么$u(x)\leqslant Cu(0)4^{\frac{8}{3}|x_2|}$.
+
+    \textbf{方法II.} 由梯度估计，对$y\in\varSigma$，有
+    $$|\nabla u(y)|\leqslant\frac{2}{1-1/4}u(y),\quad\text{即 }
+    |\nabla\log u(y)|\leqslant\frac{8}{3}.$$
+    故
+    $$\log\frac{u(x)}{u(0)}=\int_0^1\frac{d}{dt}\log u(tx)\,dt
+    =x\cdot\int_0^1\nabla\log u(tx)\,dt\leqslant\frac{8}{3}|x|
+    \leqslant\frac{2}{3}+\frac{8}{3}|x_2|.$$
+
+    \item[12.] 不妨令$x^0=0,b=1$，要证明
+    \[\int_{S^{n-1}}u(t\omega)\,u\Big(\frac{\omega}{t}\Big)
+    =\int_{S^{n-1}}u^2(\omega).\]
+    这是因为（梯度$\nabla$是对$u(t\,\cdot\,)$和$u\Big(\dfrac{\,\cdot\,}{t}\Big)$求的，而不是对$u$）
+    \begin{align*}
+        \frac{d}{dt}\int_{S^{n-1}}u(t\omega)\,u\Big(\frac{\omega}{t}\Big)
+        &=\int_{S^{n-1}}\omega\cdot\nabla u(t\omega)\,u\Big(\frac{\omega}{t}\Big)
+        -u(t\omega)\,\omega\cdot\nabla u\Big(\frac{\omega}{t}\Big)\\
+        &=\int_{S^{n-1}}\frac{\partial u}{\partial\boldsymbol{n}}(t\omega)\,u\Big(\frac{\omega}{t}\Big)
+        -u(t\omega)\,\frac{\partial u}{\partial\boldsymbol{n}}\Big(\frac{\omega}{t}\Big)\\
+        &=\int_{S^{n-1}}\Delta u(t\omega)\,u\Big(\frac{\omega}{t}\Big)
+        -u(t\omega)\,\Delta u\Big(\frac{\omega}{t}\Big)=0.
+    \end{align*}
+\end{itemize}
+
+\section{极值原理及其应用}
+
+\begin{itemize}
+    \item[1.]
+    设$\varOmega$是有界开集，且不妨设$\varOmega$连通.
+
+    先考虑
+    \[Lu=\sum_{i,j=1}^na_{ij}\frac{\partial^2u}{\partial x_i\partial x_j}
+    +\sum_{i=1}^nb_i\frac{\partial u}{\partial x_i}>0\]
+    的情况.假设$u$在$\varOmega$内部某点取到最大值，那么在该点$\frac{\partial u}{\partial x_i}=0$，
+    且$H=\big(\frac{\partial^2u}{\partial x_i\partial x_j}\big)$是半负定对称阵，则$H=-B^{\rm T}B$
+    (对$H=-P^{-1}\operatorname{diag}(\lambda_i)P$，$P$是正交阵，
+    令$B=P^{-1}\operatorname{diag}(\sqrt{\lambda_i})P$).
+    记$A=(a_{ij})$，有
+    \[Lu=\operatorname{tr}(AH)=-\operatorname{tr}(BAB^{\rm T})\leqslant0,\]
+    矛盾.
+
+    当$Lu\geqslant0$，取$u_\varepsilon(x)=u(x)+\varepsilon e^{\alpha x_1}$，
+    $\varepsilon>0$，则
+    \[Lu_\varepsilon\geqslant\varepsilon Le^{\alpha x_1}
+    =\varepsilon e^{\alpha x_1}(a_{11}\alpha^2+b_1\alpha).\]
+    由于$a_{11}\geqslant\theta$，取$\alpha$很大就有$Lu_\varepsilon>0$，
+    于是$\max\limits_{\overline{\varOmega}}u_\varepsilon
+    =\max\limits_{\partial\varOmega}u_\varepsilon$.
+    令$\varepsilon\rightarrow0$就有$\max\limits_{\overline{\varOmega}}u
+    =\max\limits_{\partial\varOmega}u$.
+
+    注：更一般的结果如下，证明完全相同. 更多结论见\cite{GT} 3.1节.
+    \begin{proposition1}
+        设$u\in C^2(\varOmega)\cap C(\overline{\varOmega})$满足
+        $$Lu=\sum_{i,j=1}^na_{ij}(x)\frac{\partial^2u}{\partial x_i\partial x_j}
+        +\sum_{i=1}^nb_i(x)\frac{\partial u}{\partial x_i}\geqslant0,$$
+        其中$a_{ij}(x),b_i(x)$是有界函数，且$L$是严格椭圆的，
+        即$\sum\limits_{i,j=1}^na_{ij}(x)\xi_i\xi_j\geqslant\theta|\xi|^2$
+        对所有$x\in\varOmega,\xi\in\R^n$以及某常数$\theta>0$成立，则
+        $$\max_{\overline{\varOmega}}u=\max_{\partial\varOmega}u.$$
+        用$-u$代替$u$，
+        得到$\min\limits_{\overline{\varOmega}}u=\min\limits_{\partial\varOmega}u$。
+    \end{proposition1}
+
+    \item[2.]
+    设$K=\{x\in\varOmega\mid u(x)=\max\limits_{\varOmega}u\}$非空，
+    假设$K\neq\varOmega$，作与$K$相切的球$B\subset\varOmega\backslash K$，
+    对$B$使用强极值原理得到球内在切点附近$u$的值更大，矛盾.
+
+    \item[3.]
+    直接证明更一般的结果，是Hopf极值原理的一种情形. 更多结论见\cite{GT} 3.2节.
+    \begin{proposition2}
+        设$u\in C^2(\varOmega)\cap C(\varOmega\cup\{x^0\})$满足
+        $$Lu=\sum_{i,j=1}^na_{ij}(x)\frac{\partial^2u}{\partial x_i\partial x_j}
+        +\sum_{i=1}^nb_i(x)\frac{\partial u}{\partial x_i}\geqslant0,$$
+        其中$a_{ij}(x),b_i(x)$是有界函数，且$L$是严格椭圆的. 若
+        $$u(x^0)>u(x)\quad\text{对所有 }x\in\varOmega,$$
+        并且存在与$\partial\varOmega$相切于$x^0$的球$B\subset\varOmega$，
+        则对任何向外的方向$v$（即$v\cdot\boldsymbol{n}(x^0)>0$）有
+        $$\liminf_{t\rightarrow0^+}\frac{u(x^0)-u(x^0-tv)}{t}>0.$$
+        \begin{tikzpicture}
+        \draw (0,0) circle (0.8);
+        \draw[->,>=stealth] (0.64,-0.48)to(1.34,-0.48);
+        \draw[->,>=stealth] (0.64,-0.48)to(1.2,-0.9);
+        \draw (1.5,-0.48) node {$v$};
+        \draw (1.36,-1.04) node {$\boldsymbol{n}$};
+        \draw (0,0) node {$B$};
+        \draw (-1,1) node {$\varOmega$};
+        \draw (0.54,-0.3) node {$x^0$};
+        \draw plot [smooth cycle] coordinates {(0,-1.2) (0.64,-0.48) (1.5,0.2) (1.5,1) (1,1.6) (0.2,1.8) (-1,1.8) (-1.8,1.4) (-1.8,-0.2) (-1,-1.1)}
+        \end{tikzpicture}
+    \end{proposition2}
+
+    不妨设$B=B_r(0)$，取$x^0$的邻域$\varSigma=\overline{B_\frac{r}{2}(x^0)\cap B}$.
+    考虑$\varSigma$上的函数
+    \[u_\varepsilon(x)=u(x)+\varepsilon\big(e^{-\alpha|x|^2}-e^{-\alpha r^2}\big),\]
+    参数$\varepsilon,\alpha>0$均待定.
+    现在说明$Lu_\varepsilon>0$，只需验证$L(e^{-\alpha|x|^2})>0$. 事实上，
+    \begin{align*}
+        L\big(e^{-\alpha|x|^2}\big)
+        &=e^{-\alpha|x|^2}\left(4\alpha^2\sum_{i,j=1}^na_{ij}(x)x_ix_j
+        -2\alpha\sum_{i=1}^na_{ii}(x)
+        -2\alpha\sum_{i=1}^nb_{i}(x)x_i\right),
+    \end{align*}
+    由于
+    $\sum\limits_{i,j=1}^na_{ij}(x)x_ix_j
+    \geqslant\theta|x|^2\geqslant\theta(\frac{r}{2})^2$，取$\alpha$很大就有上式$>0$.
+
+    由弱极值原理，$u_\varepsilon$在$\varSigma$的最大值在$\partial\varSigma
+    =\big(\partial B\cap B_\frac{r}{2}(x^0)\big)\cup
+    \big(\partial B_\frac{r}{2}(x^0)\cap\bar{B}\big)$
+    上取到；而$u_\varepsilon$在$\partial\varSigma$的最大值又在$x^0$取到，这是因为：
+    * 在$\partial B\cap B_\frac{r}{2}(x^0)$有$u_\varepsilon=u$，
+    于是$u_\varepsilon(x^0)\geqslant u_\varepsilon(x)$；
+
+    * 在$\partial B_\frac{r}{2}(x^0)\cap\bar{B}$，
+    \[u_\varepsilon(x^0)=u(x^0)\geqslant
+    u(x)+\varepsilon\big(e^{-\alpha(\frac{r}{2})^2}-e^{-\alpha r^2}\big)
+    \geqslant u_\varepsilon(x),\]
+    这只需要$\varepsilon$相对于
+    $u(x^0)-\max\limits_{\partial B_\frac{r}{2}(x^0)\cap\bar{B}}u(x)>0$很小即可.
+    \begin{tikzpicture}
+        \begin{scope}
+            \clip (0,0) circle (1.5);
+            \fill[gray!6] (1.3125,-0.7275) circle (0.75);
+        \end{scope}
+        \draw (0,0) circle (1.5);
+        \draw (1.5,0) arc (75.52:226.57:0.75);
+        \draw (1.5,-0.86) node {$x^0$};
+        \draw (0,0) node {$0$};
+        \draw (1.0,-0.6) node {$\varSigma$};
+        \fill[black] (1.3125,-0.7275) circle (0.5pt)
+    \end{tikzpicture}
+
+因此$u_\varepsilon$在$\varSigma$的最大值在$x^0$取到. 那么
+$$\liminf_{t\rightarrow0^+}\frac{u_\varepsilon(x^0)-u_\varepsilon(x^0-tv)}{t}\geqslant0,$$
+于是有
+$$\liminf_{t\rightarrow0^+}\frac{u(x^0)-u(x^0-tv)}{t}
+\geqslant-\varepsilon\frac{\partial}{\partial v}\big(e^{-\alpha|x|^2}\big)>0.$$
+
+\item[6.]
+$$\varphi(x)=\frac{e^\frac{1}{|x|-\frac{1}{2}}}
+{e^\frac{1}{|x|-\frac{1}{2}}+e^\frac{1}{\frac{3}{4}-|x|}},
+\quad x\in B_\frac{3}{4}\backslash B_\frac{1}{2}.$$
+
+\item[7.] 由\cite{Ax} Theorem 4.8 \& 4.9，Neumann外问题中的
+\[\lim_{|x|\to+\infty}u(x)=0, \quad n\geqslant3\]
+或
+\[\sup_{\varOmega^{\,c}}|u|<+\infty, \quad n=2\]
+说明$0$是$u$的Kelvin变换$K[u]$的可去奇点。对$K[u]$用定理2.3.4即可。
+
+\item[9.] 注：调和多项式的基本知识见\cite{Ax} Chapter 5，尤其是从中可以看出，
+为何似乎没什么关联的调和分析与调和函数两者却共用了``调和''之名（pp.81--2）。
+\end{itemize}
+
+\section{Green函数法}
+
+\begin{itemize}
+    \item[1.] $n=2$时$\varGamma(x-y)=\dfrac{1}{2\pi}\ln\dfrac{1}{|x-y|}$，则$r\to0$时
+    \[\left|\int_{\partial B_r(x)}\varGamma\frac{\partial u}{\partial\boldsymbol{n}_y}\right|
+    =\left|\frac{1}{2\pi}\ln\frac{1}{r}\int_{\partial B_r(x)}\frac{\partial u}{\partial\boldsymbol{n}_y}\right|
+    \leqslant r\ln\frac{1}{r}\sup_{\partial B_r(x)}|\nabla u|\to0.\]
+    另外，
+    \[\frac{\partial\varGamma(x-y)}{\partial\boldsymbol{n}_y}
+    =\nabla_y\varGamma(x-y)\cdot\boldsymbol{n}_y
+    =\frac{1}{2\pi}\frac{x-y}{|x-y|^2}\cdot\frac{-(x-y)}{|x-y|}
+    =\frac{-1}{2\pi|x-y|},\]
+    从而
+    \[\int_{\partial B_r(x)}u\frac{\partial\varGamma}{\partial\boldsymbol{n}_y}
+    =\frac{-1}{2\pi r}\int_{\partial B_r(x)}u\to-u(x).\]
+    
+    \item[2.] 
+    [2] 对任意给定的$x$，由于$G(x,\,\cdot\,)$是$\varOmega\backslash\{x\}$上的调和函数，
+    对任意的$y\in\varOmega\backslash\{x\}$，
+    $$G(x,y)\geqslant\liminf_{\cdot\,\to\partial(\varOmega\backslash\{x\})}
+    G(x,\,\cdot\,)=0,$$
+    上面的大于等于不能取等号，不然$G(x,\,\cdot\,)$是常数，
+    然而$\lim\limits_{\cdot\,\to x}G(x,\,\cdot\,)=+\infty$。
+
+    由于$\gamma(x,\,\cdot\,)$是$\varOmega\backslash\{x\}$上的调和函数，
+    $$\gamma(x,y)\geqslant\inf_{\cdot\,\in\partial\varOmega}\gamma(x,\,\cdot\,)>
+    \begin{cases}0,&n\geqslant3,\\
+        -\frac{1}{2\pi}\ln\operatorname{diam}(\varOmega),&n=2.\end{cases}$$
+
+    [4] Green恒等式中取$u$为常数$-1$。
+    
+    [3] 令$G_x(z)=G(x,z),G_y(z)=G(y,z)$，是调和函数.
+    取$r<\frac{|x-y|}{2}$，由Green公式，
+    \begin{align*}0&=\int_{\varOmega\backslash(B_r(x)\cup B_r(y))}G_x\Delta G_y-G_y\Delta G_x\\
+    &=\int_{\partial\varOmega}G_x\frac{\partial G_y}{\partial\boldsymbol{n}}-G_y\frac{\partial G_x}{\partial\boldsymbol{n}}
+    -\int_{\partial B_r(x)}G_x\frac{\partial G_y}{\partial\boldsymbol{n}}-G_y\frac{\partial G_x}{\partial\boldsymbol{n}}
+    -\int_{\partial B_r(y)}G_x\frac{\partial G_y}{\partial\boldsymbol{n}}-G_y\frac{\partial G_x}{\partial\boldsymbol{n}}.\end{align*}
+
+    而$G_x,G_y$在$\partial\varOmega$上是$0$，于是
+    $$\int_{\partial B_r(x)}G_x\frac{\partial G_y}{\partial\boldsymbol{n}}-G_y\frac{\partial G_x}{\partial\boldsymbol{n}}
+    =\int_{\partial B_r(y)}G_y\frac{\partial G_x}{\partial\boldsymbol{n}}-G_x\frac{\partial G_y}{\partial\boldsymbol{n}}.\tag{$*$}$$
+
+    由于\[\int_{\partial B_r(x)}\frac{\partial G_x}{\partial\boldsymbol{n}}
+    =\int_{\partial B_r(y)}\frac{\partial G_y}{\partial\boldsymbol{n}}=-1,\]
+    以及\[\int_{\partial B_r(x)}G_x\text{ 和 }\int_{\partial B_r(y)}G_y
+    \sim|\partial B_r|\varGamma(r)
+    \sim\begin{cases}Cr\ln\frac{1}{r}\rightarrow0,&\!\!n=2\\ \\
+    Cr\rightarrow0,&\!\!n\geqslant3\end{cases}\quad\text{ 当 }r\rightarrow0,\]
+    在$(*)$中让$r\rightarrow0$得到$G_y(x)=G_x(y)$，即$G(y,x)=G(x,y)$.
+
+    \item[6.] 求Neumann问题
+    $$\begin{cases}
+        -\Delta u=0,&x\in\varOmega,\\
+        \hspace{0.55em}\dfrac{\partial u}{\partial\boldsymbol{n}}=g,&x\in\partial\varOmega.
+    \end{cases}$$
+    解的表达式。首先，写出Green恒等式
+    \[\tag{I}
+        u(x)=\int_{\partial\varOmega}\varGamma(x-y)\frac{\partial u}{\partial\boldsymbol{n}_y}(y)
+        -u(y)\frac{\partial\varGamma}{\partial\boldsymbol{n}_y}(x-y)\,dS_y.
+    \]
+    设$\gamma(x,y)$是$y$的调和函数（且无奇点），有
+    \[\tag{II-$\gamma$}
+        0=\int_{\partial\varOmega}\gamma(x,y)\frac{\partial u}{\partial\boldsymbol{n}_y}(y)
+        -u(y)\frac{\partial\gamma}{\partial\boldsymbol{n}_y}(x,y)\,dS_y.
+    \]
+    由此，$u(x)$的表达式是$(\text{I})-(\text{II-}\gamma)$；其背后的想法是这样的：
+    * 本来Dirichlet问题中，对于$y\in\partial\varOmega$，$u(y)$是已知的，
+    而$\dfrac{\partial u}{\partial\boldsymbol{n}_y}(y)$未知；
+    故而引入$\gamma(x,y)$，使得$G(x,y):=\varGamma(x-y)-\gamma(x,y)=0$，
+    从而干掉$\dfrac{\partial u}{\partial\boldsymbol{n}_y}(y)$。
+    * 现在对于Neumann问题，对于$y\in\partial\varOmega$，
+    知道的是$\dfrac{\partial u}{\partial\boldsymbol{n}_y}(y)$，
+    而$u(y)$却未知；所以要引进$h(x,y)$，使得Neumann函数$H(x,y):=\varGamma(x-y)-h(x,y)$
+    满足$\dfrac{\partial H}{\partial\boldsymbol{n}_y}(x,y)=0$，用来干掉$u(y)$。
+
+    这就是说，要取满足以下条件的$h(x,y)$：
+    \begin{equation*}\tag{III}
+    \begin{cases}
+        \,\Delta_y h(x,y)=0,&y\in\varOmega,\\
+        \dfrac{\partial h}{\partial\boldsymbol{n}_y}(x,y)
+        =\dfrac{\partial\varGamma}{\partial\boldsymbol{n}_y}(x-y),&y\in\partial\varOmega.
+    \end{cases}
+    \end{equation*}
+    对于$y$的调和函数$h$（和$u$），同样有
+    \begin{equation*}\tag{II-$h$}
+        0=\int_{\partial\varOmega}h(x,y)\frac{\partial u}{\partial\boldsymbol{n}_y}(y)
+        -u(y)\frac{\partial h}{\partial\boldsymbol{n}_y}(x,y)\,dS_y.
+    \end{equation*}
+    $(\text{I})-(\text{II-}h)$得到$u(x)$的表达式
+    \begin{equation*}\tag{IV}
+        u(x)=\int_{\partial\varOmega}H(x,y)\frac{\partial u}{\partial\boldsymbol{n}_y}(y)\,dS_y.
+    \end{equation*}
+    不过，以上是毛利大叔给出的解答。``あれれ，''细心的柯南立刻指出了两个问题：
+    
+    ``好奇怪哦！相差一个常数$c$的$u$明明都是Neumann问题的解，
+    而$\text{(IV)}$却是完全确定的表达式；
+    就算$h$能相差一个常数$d$，$H$也就相差了$d$，可是相容条件
+    \[\int_{\partial\varOmega}\frac{\partial u}{\partial\boldsymbol{n}_y}(y)\,dS_y
+    =\int_\varOmega\Delta u(y)\,dy=0\]
+    却表明，即使$H$平移$d$，也不影响由$\text{(IV)}$求出的$u(x)$的值。还有，留意到$\text{(III)}$的两个条件分别能推出
+    \[\int_{\partial\varOmega}\frac{\partial h}{\partial\boldsymbol{n}_y}(x,y)\,dS_y
+    =\int_\varOmega\Delta_yh(x,y)\,dy=0\]
+    和
+    \[\int_{\partial\varOmega}\frac{\partial h}{\partial\boldsymbol{n}_y}(x,y)\,dS_y
+    =\int_{\partial\varOmega}\frac{\partial\varGamma}{\partial\boldsymbol{n}_y}(x-y)\,dS_y=-1,\]
+    这两者说明，$\text{(III)}$其实是自相矛盾的。''来自柯南的质疑令案件突然陷入了僵局。
+    
+    （$\cdots$省略不少剧情$\cdots$）以下是柯南作出的推理：
+
+    由于不同的$u$可以相差一个常数，一开始就应该有所假设：比如说限定
+    \[\frac{1}{|\partial\varOmega|}\int_{\partial\varOmega}u=c,\]
+    这样固定住了$u$，无法平移。并且，为了解决$h$带来的矛盾，其定义需调整为
+    \begin{equation*}\tag{III'}\begin{cases}
+        \,\Delta_y h(x,y)=0,&y\in\varOmega,\\
+        \dfrac{\partial h}{\partial\boldsymbol{n}_y}(x,y)
+        =\dfrac{\partial\varGamma}{\partial\boldsymbol{n}_y}(x-y)
+        +\dfrac{1}{|\partial\varOmega|},&y\in\partial\varOmega.
+    \end{cases}\end{equation*}
+    这样，$(\text{I})-(\text{II-}h)$实际上给出的是
+    \begin{equation*}\tag{IV'}
+        u(x)=\int_{\partial\varOmega}H(x,y)\frac{\partial u}{\partial\boldsymbol{n}_y}(y)\,dS_y+c.
+    \end{equation*}
+    这时，有人问道，这一切都不过是你的猜测而已，有什么证据说明确实有这样的函数$h$存在吗？
+    一般来说，这类问题都是求锤得锤的，而且预示着案件的结束，此次也不例外。
+    大概不太有人知道，柯南除了变声器和麻醉手表等装备，居然还有\cite{Ta I}这本书；
+    柯南把书翻到了Chapter 5 Proposition 7.7，给出了$h$的存在性的确凿证据，全集终。
+
+    \item[8.] 通过计算$n\geqslant3$时$\dfrac{\partial G(x,y)}{\partial\boldsymbol{n}_y}$的表达式（细节可参考\cite{Ev} 2.2.4 c），可得
+    \[u(x)=\frac{1-|x|^2}{\omega_{n-1}}\int_{\partial B_1}\frac{g(y)}{|x-y|^n}\,dS_y.\]
+    然后（题目是想让我们）把$n=2$时的$|x-x^0|^\frac{1}{3}$改成$|x-x^0|^\frac{1}{n+1}$，此时
+    \begin{align*}
+        |I_2(x)|&\lesssim\frac{1-|x|^2}{|x-x^0|^\frac{n}{n+1}}
+        =\frac{|x^0|^2-|x|^2}{|x-x^0|^\frac{n}{n+1}}\\
+        &\leqslant(|x^0|+|x|)|x-x^0|^\frac{1}{n+1}
+        \leqslant2|x-x^0|^\frac{1}{n+1}\to0.
+    \end{align*}
+    但实际上不用这么麻烦，把$|x-x^0|^\frac{1}{3}$替换为$\delta$，
+    首先$\delta$很小从而$|I_1(x)|$很小，接着对这个固定的$\delta$，令$x \to x^0$就有
+    \[|I_2(x)|\lesssim\frac{1-|x|^2}{\delta^n}\to0.\]
+    
+    \item[9.] 用静电源像法.
+    
+    （1）设$x$关于圆周的反演点是$\tilde{x}$，
+    $x,\tilde{x}$关于直径的对称点是$x^*,\tilde{x}^*$，Green函数为
+    $$G(x,y)=\varGamma(x-y)-\varGamma(\tilde{x}-y)-\varGamma(x^*-y)+\varGamma(\tilde{x}^*-y).$$
+
+    （2）设$x$关于$\{x_{n-1}=0\}$的对称点是$\tilde{x}$，
+    $x,\tilde{x}$关于$\{x_n=0\}$的对称点是$x^*,\tilde{x}^*$，Green函数为
+    $$G(x,y)=\varGamma(x-y)-\varGamma(\tilde{x}-y)-\varGamma(x^*-y)+\varGamma(\tilde{x}^*-y).$$
+
+    \item[11.] 设$u$是满足平均值性质的连续函数，取定一个球$B_R(a)$，下面说明$u$在这个球里面是调和的。
+
+    若不然，设$\bar{u}$是以$u|_{\partial B_R(a)}$为边值的Dirichlet问题用Poisson公式求出的解，
+    $u$不调和而$\bar{u}$调和，故两者是不同的。不妨设$v=u-\bar{u}$在$B_R(a)$内的某点$>0$，则$M=\max\limits_{B_R(a)}v>0$。
+
+    考察闭集$\{x \in B_R(a) \mid v(x)=M\}$中离球的中心$a$最远的点$y$。
+    一方面，$v(y)=M$，而对包含在$B_R(a)$内的以$y$为中心的球面$\partial B_r(y)$来说，
+    $v|_{\partial B_r(y)} \leqslant M$，且在$\partial B_r(y)$上比$y$更远离$a$的地方$v<M$，
+    从而$v(y)>\intbar_{\!\partial B_r(y)}v$。
+    另一方面，$u,\bar{u}$都满足平均值性质，则$v$亦满足，矛盾。
+
+    \item[14.] 由第11题，只需证明$u$满足平均值性质. 回忆平均值性质的证明过程，
+    只需证明对任何球$B\subset\varOmega$成立
+    $\displaystyle{\int_{\partial B}\frac{\partial u}{\partial\boldsymbol{n}}=0}$.
+
+    当$B\subset\varOmega_1$或$B\subset\varOmega_2$，
+    $\displaystyle{\int_{\partial B}\frac{\partial u}{\partial\boldsymbol{n}}=\int_B\Delta u=0}$；
+
+    当$B$与$\varOmega_1,\varOmega_2$均相交，记$\boldsymbol{n_1},\boldsymbol{n_2}$为
+    $\varOmega_1,\varOmega_2$在$B\cap S$上的单位外法向量，方向相反，则
+    \begin{align*}\int_{\partial B}\frac{\partial u}{\partial\boldsymbol{n}}
+    &=\int_{\partial B\cap\varOmega_1}\frac{\partial u}{\partial\boldsymbol{n}}
+    +\int_{B\cap S}\frac{\partial u}{\partial\boldsymbol{n_1}}
+    +\int_{\partial B\cap\varOmega_2}\frac{\partial u}{\partial\boldsymbol{n}}
+    +\int_{B\cap S}\frac{\partial u}{\partial\boldsymbol{n_2}}\\
+    &=\int_{\partial(B\cap\varOmega_1)}\frac{\partial u}{\partial\boldsymbol{n}}
+    +\int_{\partial(B\cap\varOmega_2)}\frac{\partial u}{\partial\boldsymbol{n}}
+    =\int_{B\cap\varOmega_1}\Delta u+\int_{B\cap\varOmega_2}\Delta u=0.\end{align*}
+    \begin{tikzpicture}
+        \draw (0.6,1.5) .. controls (-0.3,-0.3) and (0.2,-0.2) .. (0.6,-1.5);
+        \draw (0,0) circle (1.2);
+        \draw[->] (0.125,0.3) -- (-0.225,0.36);
+        \draw[->] (0.125,0.3) -- (0.475,0.24);
+        \draw (-0.46,0.39) node {$\boldsymbol{n_2}$};
+        \draw (0.72,0.2) node {$\boldsymbol{n_1}$};
+        \draw (0.62,-1.7) node {$S$};
+        \draw (-1.44,0) node {$\varOmega_1$};
+        \draw (1.5,0) node {$\varOmega_2$};
+    \end{tikzpicture}
+\end{itemize}
+
+\section{特征值问题}
+\begin{itemize}
+    \item[1.]
+    对于\[u(x)=A\cos\sqrt{\lambda}x+B\sin\sqrt{\lambda}x,\quad\lambda>0,\]
+    $u(0)=0$即是$A=0$，$u'(\pi)=0$说明$B\sqrt{\lambda}\cos\sqrt{\lambda}\pi=0$，
+    有非零解当且仅当$\lambda_k=\big(k+\frac12\big)^2\,(k\in\Z)$，
+    此时的解为$u_k(x)=B\sin\big(k+\frac12\big)x$。
+    若还要$\|u_k\|_{L^2}=1$，那么$B=\sqrt{\frac2\pi}$。
+
+    而对于$u(x)=Ax+B$与$u(x)=Ae^{\sqrt{-\lambda}x}+Be^{-\sqrt{-\lambda}x}$，
+    都只有零解。
+
+    \item[2.]
+    对于$x\in\varOmega$，记$x=(x',x_n)\in\R^{n-1}\times\R$，有
+    \begin{align*}
+        |u(x',x_n)|&=|u(x',x_n)-u(x',0)|\\
+        &=\bigg|\int_0^{x_n}\partial_nu(x',s)\,ds\bigg|\\
+        &\leqslant x_n^{1-\frac{1}{p}}\bigg(\int_0^1|\partial_nu(x',s)|^p\,ds\bigg)^\frac{1}{p}.
+    \end{align*}
+    两边的$p$次幂关于$x$积分，得到
+    \begin{align*}
+        \int_\varOmega|u(x)|^p\,dx&=\int_{\R^{n-1}}\int_0^1|u(x',x_n)|^p\,dx_ndx'\\
+        &\leqslant\int_{\R^{n-1}}\int_0^1x_n^{p-1}\int_0^1|\partial_nu(x',s)|^p\,dsdx_ndx'\\
+        &=\int_0^1x_n^{p-1}\,dx_n\int_{\R^{n-1}}\int_0^1|\partial_nu(x',s)|^p\,dsdx'\\
+        &\leqslant\frac{1}{p}\int_\varOmega|\nabla u(x)|^p\,dx,
+    \end{align*}
+    即
+    \[\|u\|_{L^p}\leqslant p^{-\frac{1}{p}}\|\nabla u\|_{L^p}.\]
+    注：更多形式的Poincaré不等式，见\cite{Le} 13.2节。
+
+    \item[3.]
+    $\{u_j\}$正交是因为，对$i\neq j$有
+    \begin{align*}
+        \langle u_i,u_j\rangle_{H^1}
+        &=\langle u_i,u_j\rangle+\langle\nabla u_i,\nabla u_j\rangle
+        =\langle u_i-\Delta u_i,u_j\rangle\\
+        &=(1+\lambda_i)\langle u_i,u_j\rangle=0.
+    \end{align*}
+    由于$H_0^1(\varOmega)=\overline{C_c^\infty(\varOmega)}$，
+    要说明$\{u_j\}$是完备系，只需说明任何$u\in C_c^\infty(\varOmega)$
+    可以用$\{u_j\}$的线性组合在$\|\ \ \|_{H^1}$范数下逼近： 
+    事实上，
+    \begin{align*}
+        &\quad\ \|u-\sum_{j=1}^n\langle u,u_j\rangle u_j\|^2_{H^1}\\
+        &=\|u-\sum_{j=1}^n\langle u,u_j\rangle u_j\|^2_{L^2}
+        +\|\nabla\big(u-\sum_{j=1}^n\langle u,u_j\rangle u_j\big)\|^2_{L^2}\\
+        &=\|u-\sum_{j=1}^n\langle u,u_j\rangle u_j\|^2_{L^2}
+        -\int_\varOmega\big(u-\sum_{j=1}^n\langle u,u_j\rangle u_j\big)\Delta\big(u-\sum_{j=1}^n\langle u,u_j\rangle u_j\big)\quad\ \ \ \text{因 }u\in C^\infty_0(\varOmega)\\
+        &\leqslant2\|u-\sum_{j=1}^n\langle u,u_j\rangle u_j\|^2_{L^2}
+        +\|\Delta u-\sum_{j=1}^n\langle u,u_j\rangle \Delta u_j\|^2_{L^2}\qquad\qquad\qquad\qquad\text{用 Cauchy 不等式}\\
+        &=2\|u-\sum_{j=1}^n\langle u,u_j\rangle u_j\|^2_{L^2}
+        +\|\Delta u-\sum_{j=1}^n\langle \Delta u,u_j\rangle u_j\|^2_{L^2}\quad\text{因为 }\Delta u_j=\lambda_ju_j\text{ 及 }\langle u,\Delta u_j\rangle=\langle \Delta u,u_j\rangle\\
+        &\rightarrow0\quad\text{ 当 }n\rightarrow\infty.\qquad\quad\qquad\qquad\qquad\qquad\qquad\  u,\Delta u\in L^2(\varOmega),\text{ 且 }\{u_j\}\text{ 是 }L^2(\varOmega)\text{ 的完备正交系}
+    \end{align*}
+
+\item[0.]
+本题来自以前的讲义，是要证明Sturm-Liouville定理，即定理2.5.1。
+
+另一解法见\cite{Sa} Theorem 8.3 (p.117)。
+\begin{itemize}
+    \item[1.] 特征值$\lambda$非负是因为
+    $$\lambda\langle u,u\rangle=\langle-u'',u\rangle
+    =\langle u',u'\rangle-u'u|_0^L\geqslant0,$$
+    $\lambda_1=0$当且仅当存在特征函数$u\ne0$使$u'\equiv0$，
+    当且仅当$\beta_1=\beta_2=0$。
+
+    设特征值$\lambda$对应的解为
+    $$u(x)=C_1\sin\mu x+C_2\cos\mu x,\quad\mu=\sqrt{\lambda},$$
+    则$u'(x)=C_1\mu\cos\mu x-C_2\mu\sin\mu x$，代入边界条件得
+    $$\left\{\begin{aligned}
+        -\alpha_1C_1\mu&+\beta_1C_2=0,\\
+        \alpha_2(C_1\mu\cos\mu L-C_2\mu\sin\mu L)
+        &+\beta_2(C_1\sin\mu L+C_2\cos\mu L)=0,
+    \end{aligned}\right.$$
+    方程组有解$(C_1,C_2)\ne0$，等价于
+    $$\begin{vmatrix}
+        -\alpha_1\mu&\beta_1\\
+        \alpha_2\mu\cos\mu L+\beta_2\sin\mu L
+        &-\alpha_2\mu\sin\mu L+\beta_2\cos\mu L
+    \end{vmatrix}=0,$$
+    即
+    $$(\alpha_1\alpha_2\mu^2-\beta_1\beta_2)\sin\mu L
+    =(\alpha_1\beta_2+\alpha_2\beta_1)\mu\cos\mu L.$$
+    分类讨论可以说明（详见\cite{Zh}定理3.6）所有特征值是
+    $$0\leqslant\lambda_1<\lambda_2<\cdots<\lambda_k<\cdots\to+\infty,$$
+    并且有渐近公式$\lambda_k=\mu_k^2\sim\big(\frac{k\pi}{L}\big)^2$.
+    \item[2.]首先，根据表达式有$u_k\in C^\infty([0,L])$.
+    
+    不同特征值的特征函数$u_k,u_l$是正交的，这是因为
+    $$(-\lambda_k+\lambda_l)\langle u_k,u_l\rangle
+    =\langle u_k'',u_l\rangle-\langle u_k,u_l''\rangle
+    =u'_ku_l-u_ku'_l\big|_0^L=0,$$
+    最后一步中，在$x=0,L$处
+    $$\begin{pmatrix}-\alpha_1&\beta_1\\
+    \alpha_2&\beta_2\end{pmatrix}\begin{pmatrix}
+    u'_k&u'_l\\u_k&u_l
+    \end{pmatrix}=0$$
+    表明
+    $$\begin{vmatrix}u'_k&u'_l\\u_k&u_l\end{vmatrix}=0;$$
+    由边界条件，同一特征值的特征函数空间只有$1$维。
+
+    第1、第2类边界条件下，特征函数全体的完备性是标准的Fourier级数结论；
+    涉及第3类边界条件需要用自伴紧算子的性质。
+    \item[3.]当$k$非常大时，$u_k$快速振荡，$L^2$范数与$C^0$范数差不多大：
+    具体来讲，设$u_k(x)=c_k\sin(\mu_kx+\theta_k)$，有
+    \begin{align*}
+    \|u_k\|_{L^2}^2&=|c_k|^2\int_0^L\sin^2(\mu_kx+\theta_k)\,dx\\
+    &=|c_k|^2\bigg(\frac{L}{2}-\frac{\sin2(\mu_kx+\theta_k)\big|_0^L}{4\mu_k}\bigg)
+    \sim\frac{L}{2}|c_k|^2=\frac{L}{2}\|u_k\|^2_{C^0}.
+    \end{align*}
+    因此对于$L^2$收敛的级数
+    $$f=\sum_{k=1}^\infty a_ku_k,\quad -f''=\sum_{k=1}^\infty \lambda_ka_ku_k,$$
+    有
+    \begin{align*}
+    \sum_{k=1}^\infty|a_k|\|u_k\|_{C^0}
+    &\leqslant C\sum_{k=1}^\infty|a_k|\|u_k\|_{L^2}\\
+    &\leqslant C\bigg(\sum_{k=1}^\infty\lambda_k^2|a_k|^2\|u_k\|^2_{L^2}\bigg)^\frac{1}{2}
+    \bigg(\sum_{k=1}^\infty\lambda_k^{-2}\bigg)^\frac{1}{2}\\
+    &\leqslant C\|f''\|_{L^2}\bigg(\sum_{k=1}^\infty k^{-4}\bigg)^\frac{1}{2}<\infty.
+    \end{align*}
+\end{itemize}
+\end{itemize}
+
+\subsection**{参考文献}
+\begin{references}
+    \bibitem[Ax]{Ax}
+    S. Axler, et al. \textit{Harmonic Function Theory}.
+    Graduate Texts in Mathematics 137. Springer, 2001.
+    \bibitem[Ev]{Ev}
+    L. C. Evans. \textit{Partial Differential Equations}.
+    Graduate Studies in Mathematics 19. Amer. Math. Soc, 2010.
+    \bibitem[GT]{GT}
+    D. Gilbarg and N. S. Trudinger.
+    \textit{Elliptic Partial Differential Equations of Second Order}.
+    Classics in Mathematics. Springer, 1998.
+    \bibitem[Jo]{Jo}
+    J. Jost. \textit{Riemannian Geometry and Geometric Analysis}.
+    Universitext. Springer, 2011.
+    \bibitem[Le]{Le}
+    G. Leoni. \textit{A First Course in Sobolev Spaces}.
+    Graduate Studies in Mathematics 181. Amer. Math. Soc, 2017.
+    \bibitem[Sa]{Sa}
+    F. Sauvigny. \textit{Partial Differential Equations 2}.
+    Universitext. Springer, 2012.
+    \bibitem[Ta I]{Ta I}
+    M. E. Taylor. \textit{Partial Differential Equations I}.
+    Applied Mathematical Sciences 115. Springer, 2011.
+    \bibitem[Ta II]{Ta II}
+    M. E. Taylor. \textit{Partial Differential Equations II}.
+    Applied Mathematical Sciences 116. Springer, 2011.
+    \bibitem[Zh]{Zh}
+    周蜀林. 偏微分方程. 北京大学数学教学系列丛书. 北京大学出版社, 2005.
+\end{references}

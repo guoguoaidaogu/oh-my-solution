@@ -1,0 +1,1046 @@
+\newcommand{\De}{\mathbf{\Delta}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Partial}{\mathbf{\partial}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\theoremstyle{plain}\newtheorem*{1}{习题1}
+\theoremstyle{plain}\newtheorem*{2}{习题2}
+\theoremstyle{plain}\newtheorem*{3}{习题3}
+\theoremstyle{plain}\newtheorem*{4}{习题4}
+\theoremstyle{plain}\newtheorem*{5}{习题5}
+\theoremstyle{plain}\newtheorem*{6}{习题6}
+\theoremstyle{plain}\newtheorem*{7}{习题7}
+\theoremstyle{plain}\newtheorem*{8}{习题8}
+\theoremstyle{plain}\newtheorem*{9}{习题9}
+\theoremstyle{plain}\newtheorem*{10}{习题10}
+\theoremstyle{plain}\newtheorem*{11}{习题11}
+\theoremstyle{plain}\newtheorem*{12}{习题12}
+\theoremstyle{plain}\newtheorem*{13}{习题13}
+\theoremstyle{plain}\newtheorem*{14}{习题14}
+\theoremstyle{plain}\newtheorem*{15}{习题15}
+\theoremstyle{plain}\newtheorem*{16}{习题16}
+\theoremstyle{plain}\newtheorem*{17}{习题17}
+\theoremstyle{plain}\newtheorem*{18}{习题18}
+\theoremstyle{plain}\newtheorem*{19}{习题19}
+\theoremstyle{plain}\newtheorem*{20}{习题20}
+\theoremstyle{plain}\newtheorem*{21}{习题21}
+\theoremstyle{plain}\newtheorem*{22}{习题22}
+\theoremstyle{remark}\newtheorem*{remark*}{注}
+\theoremstyle{remark}\newtheorem*{enhanced}{进阶}
+\setdisplaytitle{泛函分析\ 第二章解答}
+\sethtmltitle{泛函分析\ 第二章解答}
+
+\setcounter{section}{1}
+
+== 线性泛函 ==
+
+\subsection{2.1 赋范线性空间上的线性算子} 
+\begin{1}
+    设$T$是赋范线性空间$X$到赋范线性空间$Y$的线性算子。如果零空间
+    $\ker(T)=\{x:Tx=0\}$是闭集，问$T$是否有界？
+\end{1}
+\begin{proof}[反例]
+    $l^1$上取范数$\|x\|=\sup\limits_n |x_n|$，
+    以及不连续的线性泛函$f(x)=\sum\limits_{n=1}^\infty x_n$。
+    取$a=(1,-1,0,0,\cdots)\in l^1$，则$\|a\|=1,f(a)=0$。
+    令算子$T\colon l^1\to l^1$为
+    $$Tx=x-f(x)a.$$
+    设$Tx=0$，有$x=f(x)a$，那么$f(x)=f(x)f(a)=0$，从而$x=0$；
+    换言之$\ker(T)=\{0\}$，是闭集。
+
+    $f$是无界泛函，因而$f(-)a$是无界算子，$T$同样无界。
+\end{proof}
+
+\begin{3}
+    在例2.1.1中，如果规定向量$\displaystyle x=\sum_{i=1}^n x_ie_i$的范数为
+    $\|x\|=\max\limits_{1 \leqslant i \leqslant n}|x_i|$，
+    求出算子$T$的范数；如果规定向量$x$的范数为
+    $\displaystyle \|x\|=\left(\sum_{i=1}^n |x_i|^2\right)^\frac{1}{2}$，证明算子$T$的范数满足
+    \[\max_{1 \leqslant i \leqslant n}\left(\sum_{j=1}^n |t_{ji}|^2\right)^\frac{1}{2}
+    \leqslant\|T\|\leqslant\left(\sum_{i,j=1}^n |t_{ji}|^2\right)^\frac{1}{2}.\]
+\end{3}
+\begin{proof}[解答]
+    见\cite{Xia} \S 5.1习题1 (解答于书末pp.463--4)。前者的范数是
+    \[\|T\|=\max_{1 \leqslant i \leqslant n}\sum_{j=1}^n|t_{ij}|;\]
+    后者是能求出来的，是
+    \[\|T\|=\max_{\|x\|=1}\|Tx\|=\max_{\|x\|=1}\sqrt{x^*T^*Tx}=\sqrt{r(T^*T)},\]
+    其中$r(T^*T)$是$T^*T$的特征值的最大模长。
+\end{proof}
+
+\begin{6}
+    证明$\dfrac{\mathrm{d}}{\mathrm{d}t}$是$C^{(k)}[a,b](k\geqslant1)$
+    到$C[a,b]$的连续线性算子，并求出它的范数。
+    其中$C^{(k)}[a,b]$是区间$[a,b]$中具有连续的$k$阶导函数的函数全体，以
+    \[\|x\|=\max_{0 \leqslant j \leqslant k}\max_{t\in[a,b]}|x^{(j)}(t)|\]
+    为范数。
+\end{6}
+\begin{proof}
+    显然$\|\mathrm{d}x/\mathrm{d}t\|_{C[a,b]}\leqslant\|x\|_{C^{(k)}[a,b]}$，
+    且$x(t)=\sin(t-c)$取到等号（$c\in(a,b)$）。
+    故$\|\mathrm{d}/\mathrm{d}t\|_{C^{(k)}[a,b] \to C[a,b]}=1$。
+\end{proof}
+
+\begin{8}
+    令$A$为$L^2(\R)$中阶梯函数全体，那么$A$中的函数也是$L^1(\R)$的，
+    它们的Fourier变换可以使用例2.1.6中给出的定义。
+    \begin{itemize}
+        \item[(i)] 证明：存在有界线性算子$T\colon L^2(\R) \to L^2(\R)$，
+        使得$T$是等距的：即$\|Tf\|=\|f\|$，且对于$f \in A$有$Tf=\hat{f}$。
+        \item[(ii)] 对$L^2(\R)$中函数，如何合理定义$\hat{f}$？
+    \end{itemize}
+\end{8}
+\begin{proof}[解答]
+    令$\tilde{f}(x)=\overline{f(-x)}$，有
+    \[\|f\|^2=\int_{\R}f\bar{f}=(f*\tilde{f})(0)
+    =\int_{\R}(f*\tilde{f})^\wedge=\int_{\R}\hat{f}\,\hat{\!\tilde{f}}
+    =\int_{\R}\hat{f}\,\bar{\!\hat{f}}=\|\hat{f}\|^2.\]
+    其中第三个等号是对$g=f*\tilde{f}$用Fourier反演公式
+    \[g(0)=(\hat{g})^\vee(0)=\int_{\R}\hat{g},\]
+    第五个等号则是由于
+    \[\hat{\!\tilde{f}}(t)=\int_{\R}\overline{f(-x)}e^{-\mathrm{i}2\pi tx}\mathrm{d}x
+    =\overline{\int_{\R}f(-x)e^{-\mathrm{i}2\pi t(-x)}\mathrm{d}x}=\bar{\!\hat{f}}(t).\]
+    $L^1(\R) \cap L^2(\R)$是$L^2(\R)$的稠密子空间，
+    $\hat{\ }\colon f\mapsto\hat{f}$是$L^1(\R) \cap L^2(\R)$上的等距线性算子，
+    故在$L^2(\R)$上有唯一的延拓$T$。详见\cite{Gr} 2.2.4节。
+\end{proof}
+
+\begin{9}
+    对于图$\varGamma=(V,E)$ (定义见1.1节题6)，令$m_x=|\{y \in V:y \sim x\}|$为与顶点$x$相邻的顶点个数。
+    假设对任一顶点$x \in V$，$m_x<\infty$ (称图是局部有限的)。令$l^2(\varGamma)$为Hilbert空间：
+    \[l^2(\varGamma)=\left\{f\text{ 是 }V\text{ 上复值函数}:\|f\|^2=\sum_{x \in V}m_x|f(x)|^2<\infty\right\},\]
+    对于$V$上函数$f$，定义离散Laplace算子$\Delta$为
+    \[(\Delta f)(x)=\frac{1}{m_x}\sum_{y \in V,y \sim x}(f(y)-f(x)).\]
+    \begin{enumerate}
+    \item[(i)] 设$c_c(V)$是只在有限个顶点取值非零的复值函数全体。证明：$c_c(V)$在$l^2(\varGamma)$中稠密。
+    \item[(ii)] 证明：$\Delta$是$l^2(\varGamma)$上的有界算子。
+    \end{enumerate}
+\end{9}
+\begin{proof}
+    (i)略，下证(ii)。由于
+    \begin{align*}
+        |(\Delta f)(x)|^2=\bigg|\frac{1}{m_x}\sum_{y \in V,y \sim x}\big(f(y)-f(x)\big)\bigg|^2
+        &\leqslant\frac{1}{m_x}\sum_{y \in V,y \sim x}|f(y)-f(x)|^2\\
+        &\leqslant\frac{2}{m_x}\sum_{y \in V,y \sim x}|f(y)|^2+|f(x)|^2,
+    \end{align*}
+    得出
+    \begin{align*}
+        \|\Delta f\|^2=\sum_{x \in V}m_x|(\Delta f)(x)|^2
+        &\leqslant2\,\sum_{x \in V}\sum_{y \in V,y \sim x}|f(y)|^2+|f(x)|^2\\
+        &=4\,\sum_{x \in V}m_x|f(x)|^2=4\|f\|^2,
+    \end{align*}
+    这就是说$\|\Delta\|\leqslant2$。
+\end{proof}
+
+\subsection{2.2 有界线性泛函}
+\begin{2}
+    设$X$是赋范线性空间，$f$是$X$上的无界线性泛函。
+    证明：$\ker f=\{x:f(x)=0\}$在$X$中稠密。这样的无界线性泛函存在吗？
+\end{2}
+\begin{proof}
+    注意到$\ker f$是余一维的子空间，
+    且$\ker f \subseteq \overline{\ker f} \subseteq X$，
+    其中$\overline{\ker f}$是其闭包；
+    那么$\overline{\ker f}$就是$\ker f$或$X$。
+    前者等价于$f$有界，后者即为所求。
+
+    更为具象的方法是，$f$无界就是有范数任意小的$y \in X$使得$f(y)=1$，
+    那么对任何$x \in X$，$x-f(x)y$就可以离$x$任意地近，
+    且$f(x-f(x)y)=f(x)-f(x)f(y)=0$说明$x-f(x)y \in \ker f$。
+
+    这样的无界泛函当然存在啦，前提是$X$是无限维的。
+    此时，设$X$的一组Hamel基为$\{x_\lambda\}$，
+    $f$由其在这些基元素上的取值$\{f(x_\lambda)\}$决定。
+    令$\{f(x_\lambda)/\|x_\lambda\|\}$无界，则线性泛函$f$无界。
+    对$x=\sum a_\lambda x_\lambda$，$f(x)=\sum a_\lambda f(x_\lambda)$；
+    不用担心$f(x)$收敛性的问题，毕竟只涉及有限项的求和。
+\end{proof}
+
+\begin{3}
+    对线性空间$L$上的线性泛函$f,f_1,f_2,\cdots,f_n$，
+    假设由$f_1(x)=0,\cdots,f_n(x)=0$可推得$f(x)=0$。证明：存在常数
+    $a_1,\cdots,a_n$，使得$f=\sum\limits_{k=1}^n a_kf_k$。
+\end{3}
+\begin{proof}
+    设$L$是$\mathbb{K}$上的线性空间，
+    $V=\{(f_1(x),\cdots,f_n(x))\in\mathbb{K}^n:x \in L\}$是$\mathbb{K}^n$的子空间。
+    题目条件说明$f\colon L\to\mathbb{K}$可以通过
+    \[a(f_1(x),\cdots,f_n(x))=f(x)\]
+    分解为$(f_1,\cdots,f_n)\colon L \to V$与$a\colon V\to\mathbb{K}$。
+    $a$可延拓为$\mathbb{K}^n$上的线性泛函，
+    而有限维线性空间$\mathbb{K}^n$上的线性泛函都能写出表达式
+    $a(v)=\sum\limits_{k=1}^n a_kv_k$，
+    代入$f=a\circ(f_1,\cdots,f_n)$即得结论。
+    \begin{cd}
+        L \ar[rr,"f"] \ar[dd,"(f_1,\cdots,f_n)" description] & & \mathbb{K} & 
+        x \ar[r,mapsto] \ar[dd,mapsto]& f(x)\\ \\
+        V \ar[rr,hook] \ar[uurr,dashed,"a"]& &\mathbb{K}^n \ar[uu,dashed] & 
+        {\scriptstyle (f_1(x),\cdots,f_n(x))} \ar[r,equal]& 
+        {\scriptstyle (f_1(x),\cdots,f_n(x))} \ar[uu,mapsto]
+    \end{cd}
+\end{proof}
+
+\begin{4}
+    证明：$(l^1)^*=l^\infty$。
+\end{4}
+\begin{proof}
+    见\cite{Xia} \S5.2.1 (pp.124--5).
+\end{proof}
+
+\begin{5}
+    \begin{itemize}
+        \item[(i)] $c$是收敛数列$x=\{x_n\}$的全体
+        在范数$\|x\|=\sup\limits_{n\geqslant1}|x_n|$下的Banach空间。证明：
+        \[c^*=\{\eta+\alpha f_0:\eta \in l^1,\alpha\text{ 是数}\},\]
+        其中$f_0(x)=\lim\limits_{n\to\infty}x_n,\forall x \in c$。
+        即：对于任意的$f \in c^*$，都存在$\eta \in l^1$以及数$\alpha$，使得
+        \[f(x)=\sum_{n=1}^\infty x_n\eta_n+\alpha f_0(x),\quad\forall x \in c,\]
+        且$\|f\|=\|\eta\|_1+|\alpha|$。
+        \item[(ii)] $c_0$是极限为$0$的数列$x=\{x_n\}$的全体
+        在范数$\|x\|=\sup\limits_{n\geqslant1}|x_n|$下的Banach空间。证明：$c_0^*=l^1$。
+    \end{itemize}
+    这说明$c^*$与$c_0^*$是Banach空间同构的。
+\end{5}
+\begin{proof}
+    见\cite{Xia} \S5.2习题11 (pp.469--70)和\cite{To} \S8 \& 18习题113 (pp.118 \& 389--90)。
+\end{proof}
+
+\begin{6}[Bergman再生核]
+    由1.3节习题6，开单位圆盘$\D$上的Bergman空间$L_a^2(\D)$定义为
+    $$L_a^2(\D)=\bigg\{f:f\text{ 在 }\D\text{ 中解析},\,\text{并且 }
+    \frac{1}{\pi}\int_\D|f(z)|^2\,\mathrm{d}A(z)<\infty\bigg\}.$$
+    \begin{enumerate}[label=(\roman*)]
+        \item 对任意$z\in\D$，证明：$f\mapsto f(z)$是一个有界线性泛函。
+        \item 任取$L_a^2(\D)$中的完备规范正交系$e_n(z)(n=1,2,\cdots)$，证明
+        当$|z|<1,|w|<1$时，
+        $$\sum_{n=1}^\infty e_n(z)\overline{e_n(w)}=\frac{1}{(1-z\bar{w})^2}.$$
+        函数$K(z,w)=\dfrac{1}{(1-z\bar{w})^2}$称为Bergman空间的再生核函数。
+        \item 证明：对任意两两不同的$z_1,\cdots,z_n\in\D$
+        和不全为$0$的复数$\alpha_1,\cdots,\alpha_n$，成立
+        $$\sum_{i,j=1}^n\alpha_i\overline{\alpha_j}K(z_i,z_j)>0.$$
+    \end{enumerate}
+\end{6}
+\begin{proof}
+    \begin{enumerate}[label=(\roman*)]
+    \item 记$d=d(z,\partial\D)=1-|z|$。$f$解析因而调和，根据平均值性质，
+    \begin{align*}|f(z)|&=\bigg|\frac{1}{\pi d^2}\int_{D(z,d)} f(\zeta)\,\mathrm{d}A(\zeta)\bigg|\\
+    &\leqslant\bigg(\frac{1}{\pi d^2}\int_{D(z,d)} |f(\zeta)|^2\,\mathrm{d}A(\zeta)\bigg)^\frac{1}{2}
+    \leqslant\frac{1}{d}\|f\|_{L^2_a}.\end{align*}
+    \item 注意到
+    \begin{align*}
+        \bigg\la f,\sum_{n=1}^\infty \overline{e_n(z)}e_n \bigg\ra
+        &=\bigg\la \sum_{n=1}^\infty\la f,e_n\ra e_n,\sum_{n=1}^\infty \overline{e_n(z)}e_n \bigg\ra\\
+        &=\sum_{n=1}^\infty\la f,e_n\ra e_n(z)=f(z),
+    \end{align*}
+    这就是说
+    $$f(z)=\bigg\la f(w),\sum_{n=1}^\infty \overline{e_n(z)}e_n(w) \bigg\ra_{L_a^2(\D_w)}.$$
+    对有界线性泛函$f \mapsto f(z)$用Riesz表示定理，
+    得到$\sum\limits_{n=1}^\infty e_n(z)\overline{e_n(w)}$的值与$\{e_n\}$的选取无关。
+    于是取$e_n(z)=\sqrt{n+1}z^n$，有
+    \begin{align*}K(z,w)&=\sum_{n=1}^\infty (n+1)(z\bar{w})^n
+    =\sum_{n=1}^\infty \big((z\bar{w})^{n+1}\big)'\\
+    &=\bigg(\frac{z\bar{w}}{1-z\bar{w}}\bigg)'=\frac{1}{(1-z\bar{w})^2}.\end{align*}
+    \item \\
+    \begin{align*}
+        \sum_{i,j=1}^n\alpha_i\overline{\alpha_j}K(z_i,z_j)
+        &=\sum_{i,j=1}^n\sum_{m=1}^\infty\alpha_i\overline{\alpha_j}e_m(z_i)\overline{e_m(z_j)}\\
+        &=\sum_{m=1}^\infty\bigg|\sum_{i=1}^n \alpha_ie_m(z_i)\bigg|^2\geqslant0,
+    \end{align*}
+    假如等号成立，$H$上的线性泛函$f\mapsto\sum\limits_{i=1}^n \alpha_if(z_i)$
+    对于$\{e_m\}$为$0$故在整个$H$为$0$，
+    令$f$是适合的Lagrange插值多项式即得矛盾。\qedhere
+    \end{enumerate}
+\end{proof}
+
+\begin{7}
+    令$L^2(\R,\mathrm{e}^{-t^2}\mathrm{d}t)$为Hilbert空间：
+    \[L^2(\R,\mathrm{e}^{-t^2}\mathrm{d}t)\xlongequal{\text{def}}
+    \left\{f\text{ 在 }\R\text{ 上 Lebesgue 可测}:
+    \|f\|_2=\left(\int_\R|f(t)|^2\mathrm{e}^{-t^2}\mathrm{d}t\right)^{1/2}<+\infty\right\}.\]
+    证明：多项式全体在$L^2(\R,\mathrm{e}^{-t^2}\mathrm{d}t)$中稠密。
+
+    （提示：对$f \in L^2(\R,\mathrm{e}^{-t^2}\mathrm{d}t)$，$f$垂直于多项式全体，
+    研究$f(t)\mathrm{e}^{-t^2}$的Fourier变换，再使用Fourier变换的单射性证明$f=0$。）
+\end{7}
+\begin{proof}
+    一般的结果参考\cite{Wi} Corollary 10.8 (p.423). 
+    
+    只需证明：设$f$垂直于多项式全体，则$f=0$；Fourier变换是单射表明，
+    $f=0$等价于$f(t)\mathrm{e}^{-t^2}$的Fourier变换为$0$。
+    故要证的是：对任意的$x\in\R$，
+    \[\int_\R f(t)\mathrm{e}^{2\pi\mathrm{i}xt}\mathrm{e}^{-t^2}\mathrm{d}t=0.\]
+    目前已有的信息是，$f$垂直于$\mathrm{e}^{2\pi\mathrm{i}xt}$的级数展开中的任意前$n$项的和，也就是
+    \[\int_\R f(t)\sum_{k=0}^n\frac{(2\pi\mathrm{i}xt)^k}{k!}\mathrm{e}^{-t^2}\mathrm{d}t=0.\]
+    自然的想法是令$n\to\infty$用控制收敛定理，
+    那么找个$L^1(\R,\mathrm{e}^{-t^2}\mathrm{d}t)$函数控制住$f$同级数的乘积就行了。注意
+    \[\left|\sum_{k=0}^n\frac{(2\pi\mathrm{i}xt)^k}{k!}\right|
+    \leqslant\sum_{k=0}^n\frac{|2\pi\mathrm{i}xt|^k}{k!}
+    \leqslant\sum_{k=0}^\infty\frac{|2\pi\mathrm{i}xt|^k}{k!}
+    =\mathrm{e}^{|2\pi\mathrm{i}xt|},\]
+    故只需说明$f(t)\mathrm{e}^{|2\pi\mathrm{i}xt|} \in L^1(\R,\mathrm{e}^{-t^2}\mathrm{d}t)$。
+    这是由于$f(t) \in L^2(\R,\mathrm{e}^{-t^2}\mathrm{d}t)$，且
+    \[\|\mathrm{e}^{|2\pi\mathrm{i}xt|}\|_{L^2(\R,\mathrm{e}^{-t^2}\mathrm{d}t)}
+    =\left(\int_\R\mathrm{e}^{4\pi|xt|-t^2}\mathrm{d}t\right)^{1/2}<\infty,\]
+    以及\[\|f(t)\mathrm{e}^{|2\pi\mathrm{i}xt|}\|_{L^1(\R,\mathrm{e}^{-t^2}\mathrm{d}t)}^2
+    \leqslant\|f(t)\|_{L^2(\R,\mathrm{e}^{-t^2}\mathrm{d}t)}
+    \|\mathrm{e}^{|2\pi\mathrm{i}xt|}\|_{L^2(\R,\mathrm{e}^{-t^2}\mathrm{d}t)}.\qedhere\]
+\end{proof}
+
+\begin{10}
+    设$\varphi(\cdot,\cdot)$是实Hilbert 空间$H$上的共轭双线性泛函。如果
+    \[\sup_{\|x\|=1}|\varphi(x,x)|<\infty,\]
+    问$\varphi$是否为有界的？并说明理由。
+\end{10}
+\begin{proof}[反例]
+    见\cite{Wa} 第十二章23 (p.247)。
+\end{proof}
+
+\begin{12}[{[[Lax--Milgram定理]]}]
+    设$\phi(x,y)$是Hilbert空间$H$上的一个共轭双线性泛函，且满足下面两个条件：
+
+    （1）连续性：存在$M>0$使得$|\phi(x,y)|\leqslant M\|x\|\|y\|$，$\forall x,y\in H$；\\
+    （2）强制性：存在$c>0$使得$|\phi(x,x)|\geqslant c\|x\|^2$.
+
+    则对任意$f \in H^*$，存在唯一的$y_f \in H$，使得$\phi(x,y_f)=f(x)$.
+\end{12}
+\begin{proof}
+    点击题目左上角括号内的蓝色定理名字跳转链接。
+\end{proof}
+
+\subsection{2.3 Hahn--Banach延拓定理}
+\begin{1}
+    设$E$是赋范线性空间，$x_1,x_2,\cdots,x_k \in E$，
+    $a_1,a_2,\cdots,a_k$是一组数，
+    证明：在$E$上存在线性泛函$f$，使得$f(x_\nu)=a_\nu,\nu=1,2,\cdots,k$，
+    且$\|f\| \leqslant M$的充要条件是：
+    对于任意的一组数$t_1,t_2,\cdots,t_k$，成立
+    \[\left|\sum_{\nu=1}^k t_\nu a_\nu\right|
+    \leqslant M\left\|\sum_{\nu=1}^k t_\nu x_\nu\right\|.\]
+\end{1}
+\begin{proof}
+    前推后很简单：
+    \[\left|\sum_{\nu=1}^k t_\nu a_\nu\right|
+    =\left|\sum_{\nu=1}^k t_\nu f(x_\nu)\right|
+    =\left|f\left(\sum_{\nu=1}^k t_\nu x_\nu\right)\right|
+    \leqslant M\left\|\sum_{\nu=1}^k t_\nu x_\nu\right\|.\]
+    后推前也是简单的：
+    在$\operatorname{span}\{x_1,x_2,\cdots,x_k\}$上
+    定义线性泛函$\bar{f}$，为$\bar{f}(x_\nu)=a_\nu,\nu=1,2,\cdots,k$，
+    条件的不等式说的是$\|\bar{f}\| \leqslant M$；保持范数不变地延拓到整个$E$上即可。
+\end{proof}
+
+\begin{3}
+    \begin{itemize}
+        \item[(i)] 设$X,Y$是两个赋范线性空间，
+        在$X \times Y$上定义$\|(x,y)\|=\max(\|x\|,\|y\|)$。
+        证明：对于任意的$F\in(X \times Y)^*$，必定存在唯一的一对$f \in X^*,g \in Y^*$，
+        使得$F(x,y)=f(x)+g(y)$。如果在$X^* \times Y^*$上定义$\|(f,g)\|=\|f\|+\|g\|$，
+        那么$F\mapsto(f,g)$的映射是$(X \times Y)^*$到$X^* \times Y^*$的保范线性同构。
+        \item[(ii)] 设$\|\cdot\|_1,\|\cdot\|_2$是线性空间$X$上的两个范数，
+        记$(X,\|\cdot\|_i)(i=1,2)$的对偶空间为$X_i^*$，
+        并在$X$上赋范数$\|\cdot\|=(\|\cdot\|_1^2+\|\cdot\|_2^2)^\frac{1}{2}$。
+        证明：$F\in(X,\|\cdot\|)^*$的充要条件是存在$f_i \in X_i^*$，使得$F=f_1+f_2$。
+    \end{itemize}
+\end{3}
+\begin{proof}
+    见\cite{Xia} \S5.2习题3 (pp.467--8)。
+\end{proof}
+
+\begin{6}
+    设$L$是赋范线性空间$X$的子空间，$T\in\mathcal{B}(L,l^\infty)$，
+    证明：存在线性延拓$\tilde{T}\in\mathcal{B}(X,l^\infty)$，
+    使得$\tilde{T}|_L=T$且$\|T\|=\|\tilde{T}\|$。
+\end{6}
+\begin{proof}
+    设$Tx=(T_nx)_{n\geqslant1}$，其中$T_n$均是$L$上的有界线性泛函。
+    把$T_n$尽皆保范延拓为$X$上的有界线性泛函$\tilde{T}_n$，
+    令$\tilde{T}x=(\tilde{T}_nx)_{n\geqslant1}$，那么有
+    \[\|\tilde{T}\|=\sup_{n\geqslant1}\|\tilde{T}_n\|
+    =\sup_{n\geqslant1}\|T_n\|=\|T\|.\qedhere\]
+\end{proof}
+
+\begin{7}
+    若$E$是赋范线性空间$X$中的有限维子空间，
+    证明：存在闭线性子空间$L$，使得$L \cap E=\{0\}$且$X=L+E$。
+\end{7}
+\begin{proof}
+    要找个有限余维数的闭子空间$L$，用余一维的闭空间$\ker f$的交试试看，这里$f \in X^*$。
+    设$\{e_1,\cdots,e_n\}$是$E$的一组基，$E$的元素$x$都能唯一地写成
+    \[x=f_1(x)e_1+\cdots+f_n(x)e_n,\]
+    其中$f_i$是$E$上的有界线性泛函，$i=1,\cdots,n$ ($f_i$有界是由于有限维线性空间上的线性泛函都是有界的)。
+    保范延拓$f_i$到全空间上，得$\bar{f}_i \in X^*$。
+    令$L=\bigcap\limits_{i=1,\cdots,n}\ker\bar{f}_i$即可，这样
+    \[x-\bar{f}_1(x)e_1-\cdots-\bar{f}_n(x)e_n \in L.\qedhere\]
+\end{proof}
+
+\begin{8}
+    证明定理2.3.4中(ii)。
+\end{8}
+\begin{proof}
+    即要证明\[\tau\colon(X/M)^* \to M^\perp,\quad f \mapsto f\circ\pi\]是保范同构。
+    首先，对$f\in(X/M)^*$，$(f\circ\pi)(M)=f([0])=0$，得$f\circ\pi \in M^\perp$。
+
+    单射是简单的：对非零的$f\in(X/M)^*$，存在$[x] \in X/M$使$f([x])\ne0$，
+    即$(f\circ\pi)(x)\ne0$，也就是$f\circ\pi$非零。
+
+    再看满射，要用映射的分解：对任意的$\phi \in M^\perp$，
+    要找个$f\in(X/M)^*$使$\phi=f\circ\pi$，
+    为此直接定义$f\colon X/M\to\mathbb{K},[x]\mapsto\phi(x)$即可。
+    这里$\phi \in M^\perp$确保了$f([x])$无关乎代表元$x$的选取，从而$f$良定。
+    \begin{cd}
+        X \ar[rr,"\pi"] \ar[dr,"\phi"'] & & X/M \ar[dl,dashed,"f"]\\
+        & \mathbb{K} &
+    \end{cd}
+    还要检验$\|f\|=\|f\circ\pi\|$。一方面，对一切$m \in M$，
+    \[|f([x])|=|(f\circ\pi)(x+m)|\leqslant\|f\circ\pi\|\|x+m\|,\]
+    对$m \in M$取下确界得$|f([x])|\leqslant\|f\circ\pi\|\|[x]\|$，
+    即$\|f\|\leqslant\|f\circ\pi\|$；
+    另一方面，$\|f\circ\pi\|\leqslant\|f\|\|\pi\|=\|f\|$。
+\end{proof}
+
+\begin{9}[Banach极限]
+    证明：在有界数列空间$l^\infty$上存在如下线性泛函$F$：
+    对于任意的$\{a_n\},\{b_n\} \in l^\infty$，
+    \begin{enumerate}[label=(\roman*)]
+    \item $F(\{a_n\})=F(\{a_{n+1}\})$；\\
+    \item 若$a_n\geqslant0,n=1,2,\cdots$，则$F(\{a_n\})\geqslant0$；\\
+    \item $F(\alpha\{a_n\}+\beta\{b_n\})=\alpha F(\{a_n\})+\beta F(\{b_n\})$，$\alpha,\beta$是数；\\
+    \item 若$\{a_n\}$是实数列，则$\varliminf\limits_{n\to\infty}a_n \leqslant F(\{a_n\}) \leqslant \varlimsup\limits_{n\to\infty}a_n$；\\
+    \item 若$\lim\limits_{n\to\infty}a_n$存在，则$F(\{a_n\})=\lim\limits_{n\to\infty}a_n$。
+    \end{enumerate}
+    一般称$F(\{a_n\})$为$\{a_n\}$的Banach极限，记作$\operatorname{Lim}\{a_n\}$。
+\end{9}
+\begin{proof}
+    对$\{a_n\} \in l^\infty$，作数列$\{a_n-a_{n+1}\}=(a_1-a_2,a_2-a_3,\cdots)$，
+    令全体这样的数列构成的空间为$M$，这是$l^\infty$的子空间。
+    记$1=(1,1,\cdots) \in l^\infty$，下面说明$d(1,M)=1$。
+
+    对$\{a_n\} \in l^\infty$，若对某个$p$有$a_p \leqslant a_{p+1}$，
+    则有$\|1-\{a_n-a_{n+1}\}\|\geqslant1-(a_p-a_{p+1})\geqslant1$；
+    若不然，$\{a_n\}$单调递减，且有界从而收敛，则$\{a_n-a_{n+1}\}$趋于$0$，
+    同样有$\|1-\{a_n-a_{n+1}\}\|\geqslant1$。结合$0 \in M,\|1-0\|=1$，得到$d(1,M)=1$。
+
+    由推论2.3.4，存在线性泛函$F\in(l^\infty)^*$，使得$F(1)=d(1,M),\|F\|=1,F(M)=0$，
+    换言之$F(1)=1,|F(\{a_n\})|\leqslant\|\{a_n\}\|,F(\{a_n\})=F(\{a_{n+1}\})$。
+    至此已得出了(i)，此外(iii)也显然成立。
+    注意(v)是(iv)的直接推论，故只需再证明(ii),\,(iv)就行了。
+
+    先看(ii)。对非负数列$\{a_n\}$，记$a=\{a_n\}$，成立
+
+    \[\|a\|-F(a)=F(\|a\|-a)\leqslant\big\|\|a\|-a\big\|\leqslant\|a\|,\]
+    其中非负用在了后一个不等号，前一个不等号是$\|F\|=1$的推论；
+    即$F(a)\geqslant0$，这就证明了(ii)。
+
+    还剩下(iv)。只需证明$\varliminf\limits_{n\to\infty}a_n \leqslant F(\{a_n\})$即可，
+    并且为了简便可设$\varliminf\limits_{n\to\infty}a_n=0$。
+    这样对任意$\varepsilon>0$，只要$n>$充分大的$p$，就有$a_n>-\varepsilon$，故有
+    \begin{align*}
+        F(\{a_n\})&=F(\{a_{n+1}\})=\cdots=F(\{a_{n+p}\})\\
+        &=F(\{a_{n+p}+\varepsilon\}-\varepsilon)\\
+        &=F(\{a_{n+p}+\varepsilon\})-\varepsilon\geqslant-\varepsilon.
+    \end{align*}
+    由$\varepsilon$的任意性，$F(\{a_n\})\geqslant0$，(iv)得证。
+\end{proof}
+
+\begin{10}
+    证明：$l^\infty$中的序列
+    \[y=(1,0,0,1,1,0,0,0,0,1,1,1,0,0,0,0,0,0,\cdots)\]
+    的Banach极限$\operatorname{Lim}y$ (见第9题) 可以取到不同的值。
+\end{10}
+\begin{proof}
+    假设有$\alpha,\beta\in\R$使得$\alpha 1+\beta y \in M$，
+    则序列$\alpha 1+\beta y$的前$n$项和$\{S_n\}$有界。
+    简记$m=3+6+9+\cdots+3(n-1)$，有
+    \[S_{m+n}-S_m=n(\alpha+\beta),\quad S_{m+3n}-S_{m+n}=2n\alpha,\]
+    令$n$充分大，可知$\alpha+\beta=\alpha=0$，从而$\alpha=\beta=0$。
+    
+    这样，就可以在$\operatorname{span}(1,y,M)$上作出线性泛函
+    \[f(\alpha 1+\beta y+m)=\alpha+\beta c,\]
+    其中$\alpha,\beta\in\R,m \in M$，
+    而$c=f(y)$是$[0,1]$中的任何数。很明显有$f(M)=0$和$f(1)=1$，且$\|f\|=1$是由于
+    \begin{align*}
+        |f(\alpha 1+\beta y+m)|=|\alpha+\beta c|
+        &\leqslant\max(|\alpha+\beta|,|\alpha|\big)\\
+        &\leqslant\|\alpha 1+\beta y+m\|_\infty,
+    \end{align*}
+    这里前面的不等号是因为$|\,\cdot\,|$是凸函数，后面的不等号是因为
+    \begin{align*}
+        |\alpha+\beta|&=\lim_{n\to\infty}\hspace{0.5em}\big|\tfrac{S_{m+n}-S_m}{n}\big|\hspace{0.45em}
+        \leqslant\|\alpha 1+\beta y+m\|_\infty,\\
+        |\alpha|&=\lim_{n\to\infty}\big|\tfrac{S_{m+3n}-S_{m+n}}{2n}\big|
+        \leqslant\|\alpha 1+\beta y+m\|_\infty.
+    \end{align*}
+    把$f$保范延拓成$l^\infty$上的线性泛函$\operatorname{Lim}$，
+    则$\operatorname{Lim}y=f(y)=c$可取$[0,1]$中的任何值。
+\end{proof}
+
+\begin{11}
+    对于任意的$\alpha=(\alpha_1,\alpha_2,\cdots) \in l^1$，证明：
+    $$f(x)=\sum_{n=1}^\infty x_n\alpha_n,\quad
+    \forall x=(x_1,x_2,\cdots) \in l^\infty$$
+    给出了$l^\infty$上的一个连续线性泛函。
+    举例说明$l^\infty$上存在连续线性泛函不能表示成上述形式。
+\end{11}
+\begin{proof}
+    $|f(x)|\leqslant\sum\limits_{n=1}^\infty\|x\|_\infty|\alpha_n|
+    =\|\alpha\|_1\|x\|_\infty$，故$f\in(l^\infty)^*$。
+
+    极限存在的数列全体的空间$c$是$l^\infty$的闭子空间，
+    取极限$\lim\colon\alpha\mapsto\lim\limits_{k\to\infty}\alpha_k$是$c$上的非零线性泛函。
+    由Hahn--Banach定理，$\lim$可延拓为整个$l^\infty$上的非零线性泛函$f$。
+    而假设其为上述形式，取$e_n=(0,\cdots,0,1,0,\cdots)\in c$，
+    则对所有的$n$都有$\alpha_n=f(e_n)=\lim e_n=0$，那么$f=0$，矛盾。
+\end{proof}
+
+\begin{13}
+    是否存在$L^\infty(\R)$上的一个泛函$f \mapsto M(f)$，满足
+    \begin{enumerate}
+    \item[(i)] 如果$f$是非负的，那么$M(f)\geqslant0$；
+    \item[(ii)] 如果$f\equiv1$，那么$M(f)=1$；
+    \item[(iii)] 如果$g(x)=f(x+1)$，那么$M(g)=M(f)$。
+    \end{enumerate}
+\end{13}
+\begin{proof}[解答]
+    令
+    \[M(f)=\operatorname{Lim}\left(\int_0^1f(x)\,{\rm d}x,
+    \int_1^2f(x)\,{\rm d}x,\int_2^3f(x)\,{\rm d}x,\cdots\right)\]
+    即可，这里的$\operatorname{Lim}$是第9题中的Banach极限。
+\end{proof}
+
+\subsection{2.4 几何形式------凸集分离定理}
+\begin{1}
+    在Euclid空间$\R^n$中，闭集的凸包是否一定是闭集？凸集的闭包是否一定是凸集？
+\end{1}
+\begin{proof}[解答]
+    后者是。设凸集$M$的闭包是$\overline{M}$，对$x,y\in\overline{M}$，
+    存在两列$\{x_n\}\to x,\{y_n\}\to y$，则对任意的$\alpha\in[0,1]$，
+    由于$M$中的序列$\{\alpha x_n+(1-\alpha) y_n\}$趋于$\alpha x+(1-\alpha) y$，
+    得到$\alpha x+(1-\alpha) y\in\overline{M}$。
+
+    前者不一定。以$n=2$为例，离散点集$\{(m,0):m\in\Z\}\cup\{(0,1)\}$是闭集，
+    其凸包$\{(x,y):x\in\R,0 \leqslant y < 1\}\cup\{(0,1)\}$却不是闭集。
+    \begin{tikzpicture}
+        \draw[->,>=stealth,lightgray] (-3.5,0)to(3.5,0);
+        \draw[->,>=stealth,lightgray] (0,-0.4)to(0,1.1);
+        \foreach \i in{-2.8,-2.1,-1.4,-0.7,0,0.7,1.4,2.1,2.8} \fill (\i,0)circle(0.02);
+        \fill (0,0.7)circle(0.02)
+    \end{tikzpicture}
+\end{proof}
+
+\begin{6}
+    设$\varphi$是直线$\R$上的凸函数。使用凸集分离定理证明：
+    对任意点$x\in\R$，存在常数$m$使得
+    \[\varphi(y)-\varphi(x) \geqslant m(y-x),\quad\forall y\in\R.\]
+\end{6}
+\begin{proof}
+    在$\R^2$上，有非零线性泛函$f(y,z)$分离凸集$\{(y,z):z\geqslant\varphi(y)\}$和点$(x,\varphi(x))$。
+    相差一个倍数的意义下，$f(y,z)=y$或者$z-my$；明显$f(y,z)=y$是不能分离两者的，所以是
+    \[\inf_{z\geqslant\varphi(y)}(z-my)\geqslant\varphi(x)-mx,\]
+    即\[\varphi(y)-my\geqslant\varphi(x)-mx,\quad\forall y\in\R.\qedhere\]
+\end{proof}
+
+\begin{8}
+    设$V$是实赋范线性空间，$M$是$V$的凸子集。证明：
+    \begin{itemize}
+        \item[(i)] 若$M$是闭的，则$M$是一些闭半空间的交。
+        \item[(ii)] 若$M$是开的，则$M$是一些开半空间的交。
+    \end{itemize}
+\end{8}
+\begin{proof}
+    \begin{itemize}
+        \item[(i)] $M$实际上等于一切含有$M$的闭半空间之交$\bigcap H$。
+        $M\subseteq\bigcap H$是明显的；对$x \notin M$，
+        由推论2.4.1，有超平面$\{f(x)=\alpha\}$分离$x$与$M$，
+        所以$x \notin H=\{f(x)\leqslant\alpha\}$ (或$\{f(x)\geqslant\alpha\}$)。
+        \item[(ii)] 同上，唯一的区别是推论2.4.1换为注2.4.2。\qedhere
+    \end{itemize}
+\end{proof}
+
+\begin{9}
+    设集合$A$是复赋范线性空间$V$中的一个均衡凸开集，$B$是一个和$A$不相交的非空凸子集。
+    证明：存在一个复线性泛函$f$和$c>0$，使得在$A$上$|f(x)|<c$，在$B$上$|f(x)|\geqslant c$。
+\end{9}
+\begin{proof}
+    视$V$为\textbf{实}赋范空间$V_R$，则存在实线性泛函$f_R \in V_R^*$和$c>0$，
+    使得在$A$上$f_R(x)<c$，在$B$上$f_R(x)\geqslant c$。作$V$上的复线性泛函
+    \[f(x)=f_R(x)-\mathrm{i}f_R(\mathrm{i}x).\]
+    对$x \in A$，令复数$\alpha$满足$|\alpha|=1$且$f(\alpha x)$为实数，则有
+    \[|f(x)|=f(\alpha x)=\operatorname{Re}f(\alpha x)=f_R(\alpha x)<c.\]
+    类似地，对$x \in B$有$|f(x)| \geqslant c$。
+\end{proof}
+
+\begin{10}
+    令实Banach空间$l^2$中的一个子集
+    \[E=\{x=(x_1,x_2,\cdots,x_n,\cdots)\in l^2:
+    \text{只有有限个 }x_n\text{ 非零},\text{ 且最后一个非零的 }x_n\text{ 是正数}\}.\]
+    证明：$E$是凸子集且$0 \notin E$，且不存在$l^2$上的非零线性泛函$f$分离$E$与$\{0\}$。
+\end{10}
+\begin{proof}
+    $E$甚至是稠密的，故$f$在$E$上非负表明$f$在整个$l^2$上非负，这是不可能的。
+\end{proof}
+
+\begin{11}
+    设$M$是实赋范线性空间$X$的凸子集。
+    \begin{itemize}
+        \item[(i)] 证明：若$M$是闭的，则对任意$x \notin M$，我们有
+        \[d(x,M)=\sup_{f \in X^*,\|f\|=1}(f(x)-\sup_{z \in M}f(z)).\]
+        \item[(ii)] 当$M$不是闭的时候，(i)的结论是否成立？（参考第10题）
+    \end{itemize}
+\end{11}
+\begin{proof}
+    记$d=d(x,M)$，当$M$闭时$d>0$。
+    \begin{itemize}
+        \item[(i)] 一个方向是简单的：对任意$\varepsilon>0$，
+        有$y \in M$使得$\|x-y\|<d+\varepsilon$，则
+        \[f(x)-\sup_{z \in M}f(z) \leqslant f(x)-f(y) 
+        \leqslant \|f\|(d+\varepsilon),\]
+        故\[\sup_{f \in X^*,\|f\|=1}(f(x)-\sup_{z \in M}f(z)) \leqslant d+\varepsilon.\]
+        另一方向如下：由定理2.4.1，存在非零的$f \in X^*$分离内部非空的凸集$B(x,d)$和凸集$M$，即
+        \[\sup_{z \in M}f(z)\leqslant\inf_{y \in B(x,d)}f(y).\]
+        由于\[\inf_{y \in B(x,d)}f(y)=\inf_{w \in B(0,1)}f(x)+df(w)=f(x)-d\|f\|,\]
+        得到\[d\|f\| \leqslant f(x)-\sup_{z \in M}f(z),\]
+        从而\[d \leqslant \sup_{f \in X^*,\|f\|=1}(f(x)-\sup_{z \in M}f(z)).\]
+        \item[(ii)] 取$X=l^2$，$M$是$X$的稠密集$E$。这时左边$=d=0$，
+        而对任意非零的$f \in X^*$有$\sup\limits_{z \in M}f(z)=+\infty$，
+        右边$=-\infty$。\qedhere
+    \end{itemize}
+\end{proof}
+
+\begin{13}[复线性空间中的凸锥]
+    在一个线性空间中，一个\textbf{锥}$C$是指一族过原点的射线的并集，
+    即$v \in C \Leftrightarrow \lambda v \in C,\forall\lambda>0$。
+    令$X$为在$\mathbb{C}^n$中包含$\{(z,z^2,\cdots,z^n)\in\mathbb{C}^n:|z|\leqslant1\}$的最小\textbf{凸}锥。
+    \begin{enumerate}[label=(\roman*)]
+    \item 证明：复线性空间中的凸集在复线性泛函$f$映射下的像集是$\mathbb{C}$的凸集。
+    \item 证明：如果$\overline{X}\ne\mathbb{C}^n$，那么存在一个非零复线性泛函$f$，
+    使得$f$在$X$上的取值都是实部非负的复数。
+    \item 利用复数的指数形式，证明(ii)中的$f$在$\{(z,z^2,\cdots,z^n)\in\mathbb{C}^n:|z|=1\}$上的取值的实部都是$0$。
+    \item 利用复变函数的知识推出(iii)的结果是不成立的，从而$\overline{X}=\mathbb{C}^n$。
+    \item 证明：$\R^n$中的稠密凸集一定是全空间。
+    \item 证明：$X=\mathbb{C}^n$。
+\end{enumerate}
+\end{13}
+\begin{proof}
+    (i),\,(v),\,(vi)是简单的。
+    \begin{enumerate}
+    \item[(ii)] $\overline{X}\ne\mathbb{C}^n$
+    即是说存在$y\in\mathbb{C}^n\setminus\overline{X}$，则$d(y,\overline{X})>0$。
+    由推论2.4.1 (结合注2.4.1)，存在非零的复线性泛函$f$，
+    使得$\operatorname{Re}f(v)>\operatorname{Re}f(y)$对一切$v \in X$成立。
+    由于对任何$\lambda>0$有$\operatorname{Re}f(\lambda v)=\lambda \operatorname{Re}f(v)$，
+    可知$\operatorname{Re}f(v)\geqslant0$。
+
+    \item[(iii)] 记$e_k$是第$k$个分量为$1$、\,其余分量均为$0$的点，有
+    \[0\leqslant\int_{0}^{2\pi}\operatorname{Re}f(e^{{\rm i}\theta},e^{{\rm i}2\theta},\cdots,e^{{\rm i}n\theta})\,{\rm d}\theta
+    =\sum_{k=1}^n\operatorname{Re}f(e_k)\int_{0}^{2\pi}e^{{\rm i}k\theta}\,{\rm d}\theta=0,\]
+    迫使$\operatorname{Re}f$在$|z|=1$上恒为$0$。
+
+    \item[(iv)] 不难意识到
+    \[p(z):=f(z,z^2,\cdots,z^n)=\sum_{k=1}^nf(e_k)z^k\]
+    实际上是个多项式。由此，当$|z|=1$时，$\operatorname{Re}p(z)=0$
+    是说$p(z)+p(\bar{z})=0$，也就是$p(z)+p(1/z)=0$，从而$p=0$，进而$f=0$。\qedhere
+    \end{enumerate}
+\end{proof}
+
+\begin{14}
+    设$A$是Euclid空间$\R^2$中的一个闭集，具有如下性质：对于任意$x\in\R^2$，
+    有且只有一点$y \in A$，使得$d(x,y)=d(x,A)$。证明：$A$是一个凸集。
+\end{14}
+\begin{proof}
+    见\href{http://math.stackexchange.com/questions/1130393/chebyshev-sets-in-finite-dimension-are-closed-and-convex?r=SearchResults}{这里}，过程太长了我也不清楚对不对。
+\end{proof}
+
+\subsection{2.5 对偶空间}
+\begin{1}
+    设$F \in L^p(\R)^*(1 \leqslant p < \infty)$。
+    证明：存在唯一的$\beta \in L^q(\R)\left(\dfrac{1}{p}+\dfrac{1}{q}=1\right)$，使得
+    \[F(f)=\int_\R f(t)\beta(t)\,\mathrm{d}t,\quad\forall f \in L^p(\R),\]
+    并且$\|F\|=\|\beta\|_q$。从而映射$F\mapsto\beta$是$L^p(\R)^*$到$L^q(\R)$的保范线性同构，
+    即在这个意义下$L^p(\R)^*=L^q(\R)$。
+\end{1}
+\begin{proof}
+    见\cite{Xia} \S5.2第1题 (pp.467)。
+\end{proof}
+
+\begin{4}
+    对Banach空间$C_0(\R)=\{f \in C(\R):\lim\limits_{|x|\to\infty}f(x)=0\}$，
+    设$F \in C_0(\R)^*$，证明：存在直线上的有界变差函数$\alpha(x)$，使得
+    \[F(f)=\int_{\R}f(x)\,{\rm d}\alpha(x),\quad\forall f \in C_0(\R).\]
+\end{4}
+\begin{proof}
+    见\cite{Xia} \S5.2第9题 (pp.468--9)。
+\end{proof}
+
+\begin{9}
+    设$X$是Banach空间，证明：$X$是自反的的充要条件是$X^*$是自反的。
+\end{9}
+\begin{proof}
+    前推后显然；后推前是因为$X^*$自反蕴含着$X^{**}$自反，
+    通过典范映射视$X$为$X^{**}$的闭子空间，可知$X$亦自反 (定理2.5.4)。
+\end{proof}
+\begin{enhanced}[搬运自\cite{Co} Theorem 4.2 (p.132)，有改动]
+    
+    \textbf{引理.} 设$X$是赋范空间，$B_X$在$B_{X^{**}}$中在弱$^*$拓扑下稠密。(即附录D定理3)
+    
+    假设有$x_0^{**}\in B_{X^{**}}$不在$B_X$在弱$^*$拓扑下的闭包$\overline{B_X}$里面，
+    由凸集分离定理，存在$f\in X^*$分离$\overline{B_X}$和$x_0^{**}$，
+    即$\sup\limits_{x\in B_X}f(x)<x_0^{**}(f)$；
+    不过$\sup\limits_{x\in B_X}f(x)=\|f\|\geqslant x_0^{**}(f)$，
+    矛盾，引理成立。下面来证更强的命题：
+
+    \textbf{定理.} 设$X$是Banach空间，下列命题是等价的：
+    \begin{center}\begin{tabular}{ll}
+        (a) $X$是自反的。&(b) $X^*$是自反的。\qquad\\
+        (c) $X^*$上弱拓扑与弱$^*$拓扑相同。&(d) $B_X$是弱紧的。\qquad
+    \end{tabular}\end{center}
+
+    (a)$\Rightarrow$(c) 显然。
+
+    (d)$\Rightarrow$(a) 注意$X^{**}$上的弱$^*$拓扑限制在$X$上就是$X$的弱拓扑。
+    那么由(d)，$B_X$在$B_{X^{**}}$中是弱$^*$闭的。结合引理，得$B_X=B_{X^{**}}$。
+
+    (c)$\Rightarrow$(b) 由Alaoglu定理，$B_{X^*}$是弱$^*$紧的。
+    那么由(c)，$B_{X^*}$是弱紧的。(d)$\Rightarrow$(a)表明$X^*$是自反的。
+
+    (b)$\Rightarrow$(a) 凸集$B_X$在$X^{**}$中是范数闭的，则是弱闭的 (推论2.5.1)。
+    那么由(b)，这就是说$B_X$在$X^{**}$中是弱$^{*}$闭的。结合引理，得$B_X=B_{X^{**}}$。
+    
+    (a)$\Rightarrow$(d) 由Alaoglu定理，$B_{X^{**}}$是弱$^*$紧的。
+    那么由(a)，$B_X$是弱紧的。
+\end{enhanced}
+
+\begin{10}
+    证明定理2.5.6 (i)。
+\end{10}
+\begin{proof}
+    即证明$^\perp(M^\perp)=\overline{M}$。
+    首先，根据定义有$M\subset^\perp\!\!(M^\perp)$，
+    从$^\perp(M^\perp)$是闭集得$\overline{M}\subset^\perp\!\!(M^\perp)$。
+
+    反过来，设$x\notin\overline{M}$，
+    由推论2.4.1，存在非零线性泛函$f$严格分离$x$和$M$，也就是$\sup f(\overline{M})<f(x)$；
+    然而$\overline{M}$是线性空间意味着$f(\overline{M})=\R$或$0$，
+    $\R$是不可能的，从而$f(\overline{M})=0$，即$f\in M^\perp$；
+    可是$f(x)>0$，推出$x\notin\!{ }^\perp(M^\perp)$。
+\end{proof}
+
+\begin{11}
+    设$X$是自反空间，$M$是$X$的闭子空间。证明：商空间$X/M$也是自反的。
+\end{11}
+\begin{proof}
+    由习题9，结论等价于$(X/M)^*$自反，相当于同构的$M^\perp$自反。
+    $M^\perp$是$X$的闭子空间，从而自反。
+\end{proof}
+
+\begin{12}
+    对$C[a,b]$中一致有界点列$\{x_n\}$，证明：$x_n$弱收敛于$x_0$的充要条件是对任意的$t\in[a,b]$，
+    \[\lim_{n\to\infty}x_n(t)=x_0(t).\]
+\end{12}
+\begin{proof}
+    前推后取Dirac测度$\delta_t\in(C[a,b])^*\colon x \mapsto x(t)$即可。
+    后推前是Lebesgue控制收敛定理。
+\end{proof}
+
+\begin{13}
+    设$\{f_n\}$是$L^1[0,1]$中的一致有界点列，证明：$f_n$弱收敛于一个可积函数$f$，
+    当且仅当对任意$[0,1]$中Lebesgue可测集$E$成立
+    $$\lim_{n\to\infty}\int_Ef_n\,\mathrm{d}m=\int_Ef\,\mathrm{d}m.$$
+\end{13}
+\begin{proof}
+    即证明$$\lim_{n\to\infty}\int_Ef_ng\,\mathrm{d}m=\int_Efg\,\mathrm{d}m,
+    \quad\forall g\in L^\infty[0,1]$$
+    当且仅当此式对简单函数$g$成立。注意
+    $$\sum_{\begin{subarray}{c}k\in\Z,\\|k/n|\leqslant\|g\|_\infty\end{subarray}}
+    \frac{k}{n}\chi_{g^{-1}\left[\frac{k-1}{n},\frac{k}{n}\right)}$$
+    一致有界且点态收敛于$g$，用控制收敛定理。
+\end{proof}
+
+\begin{17}
+    若赋范线性空间$X$上的有界线性泛函序列$f_n$弱$^*$收敛于$f$，证明：
+    $\varliminf\limits_{n\to\infty}\|f_n\|\geqslant\|f\|$。
+\end{17}
+\begin{proof}
+    对任意$\varepsilon>0$，存在$x\in X,\|x\|=1$使$f(x)>\|f\|-\varepsilon$，那么
+    \[\varliminf_{n\to\infty}\|f_n\|\geqslant\lim_{n\to\infty}f_n(x)
+    =f(x)>\|f\|-\varepsilon.\qedhere\]
+\end{proof}
+
+\begin{18}
+    对Hilbert空间$X$中点列$\{x_n\}$，证明：$\{x_n\}$按范数收敛于$x$，
+    当且仅当$\{x_n\}$弱收敛于$x$且$\lim\limits_{n\to\infty}\|x_n\|=\|x\|$.
+\end{18}
+\begin{proof}
+    一个方向显然，另一方向是因为
+    \[\lim_{n\to\infty}\|x_n-x\|^2
+    =\lim_{n\to\infty}\|x_n\|^2+\|x\|^2-\lim_{n\to\infty}\la x_n,x\ra
+    -\lim_{n\to\infty}\la x,x_n\ra=0.\qedhere\]
+\end{proof}
+
+\begin{19}
+    设$X$是自反Banach空间，$M$是$X$的闭凸子集。证明：存在$x_0\in M$，使得
+    $$\|x_0\|=\inf\{\|x\|:x\in M\}.$$
+\end{19}
+\begin{proof}[证明1]
+    [引理] $x\mapsto\|x\|$是弱下半连续的，
+    即对$\alpha>0$，$\{\|x\|>\alpha\}$是$X$的弱拓扑的开集。
+
+    [证明] 这是因为对于$x_0\in\{\|x\|>\alpha\}$，记$\varepsilon=\|x_0\|-\alpha>0$，
+    令$f\in X^*$使$f(x_0)=\|x_0\|$且$\|f\|=1$，
+    $x_0$有邻域$U_{f}^{\varepsilon}(x_0)=\{|f(x-x_0)|<\varepsilon\}
+    \subset\{f(x)-f(x_0)>-\varepsilon\}=\{f(x)>\alpha\}\subset\{\|x\|>\alpha\}$。
+
+    回到原题。记$d=\inf\{\|x\|:x\in M\}$。由于$X$自反，得$\{\|x\|\leqslant2d\}$是弱紧的，
+    由于$M$是弱闭的 (即推论2.5.1，p.105)，得$M\cap\{\|x\|\leqslant2d\}$也是弱紧的。
+    由引理，$x\mapsto\|x\|$在弱紧集上取得到最小值$\|x_0\|$。
+\end{proof}
+\begin{proof}[证明2]
+    记$d=\inf\{\|x\|:x\in M\}$，取$M$中一列$\{x_n\}$使得$\|x_n\|\to d$。
+    由于$X$自反，存在子列$\{x_{n_k}\}$弱收敛于某点$x_0$，$M$弱闭说明$x_0\in M$。
+    取$f\in X^*$使$f(x_0)=\|x_0\|$且$\|f\|=1$，
+    则当$k\to\infty$时$\|x_0\|=f(x_0)\leftarrow f(x_{n_k})\leqslant\|x_{n_k}\|\to d$，
+    结合$x_0\in M$得$\|x_0\|=d$。
+\end{proof}
+注：两个方法实际上是相同的。2避免了弱拓扑的语言，较简洁易懂；1则是用二级结论直接得出。
+
+\begin{20}
+    对于一个双向序列$\{a_n\}_{n\in\Z}$，记$\mathbb{T}$上函数
+    $S_N(\theta)=\sum\limits_{n=-N}^N a_ne^{2\pi\mathrm{i}n\theta}$。
+    对于$1<p\leqslant\infty$，若$\sup\limits_N\|S_N\|_p<\infty$，
+    证明：存在$f\in L^p(\mathbb{T})$，使得其Fourier系数为$a_n$。
+\end{20}
+\begin{proof}
+    把$\{S_N\}_N$看成$L^q(\mathbb{T})^*=L^p(\mathbb{T})$的有界序列，
+    由Banach--Alaoglu定理，存在子列$\{S_{N_k}\}_k$弱$^*$收敛到某$f\in L^p(\mathbb{T})$，
+    那么对较大的$k$，$a_n=\la S_{N_k},e^{2\pi\mathrm{i}n\theta}\ra
+    \to\la f,e^{2\pi\mathrm{i}n\theta}\ra$为$f$的Fourier系数。
+\end{proof}
+
+\begin{21}
+    对于一个度量空间$X$，令$\operatorname{Iso}(X)=\{f:X \to X\text{ 是等距的双射}\}$。
+    称$X$是有限$\operatorname{Iso}(X)$可分解的，是指存在$\displaystyle X=\bigcup_{i=1}^{n+m}A_i$，
+    $n,m$为有限数，$A_i$两两不交，以及$g_1,g_2,\cdots,g_{n+m}\in\operatorname{Iso}(X)$使得
+    \[X=\bigcup_{i=1}^{n}g_iA_i=\bigcup_{i=n+1}^{n+m}g_iA_i.\]
+    \begin{enumerate}[label=(\roman*)]
+    \item 对于整数集$\Z$，问：若$\phi:\Z\to\Z$是等距双射，
+    那么$\phi$可能是什么形式，什么样的$\phi$满足$\phi(0)=0$？
+    \item 令$F_n=[-n,n]\cap\Z$。对任意$k\in\Z$，
+    证明：$\lim\limits_{n\to\infty}\dfrac{|(F_n+k) \cap F_n|}{|F_n|}=1$。
+    这里$|A|$表示子集$A$中的元素个数。
+    \item 证明：存在$\tau \in l^\infty(\Z)^*$，使得$\tau(1)=1$，
+    且对任意$f(x) \in l^\infty(\Z),k\in\Z$
+    成立$\tau(f(x))=\tau(f(x+k)),\tau(f(x))=\tau(f(-x))$。
+    \item 证明：存在$\Z$上非负实值集函数$\mu:2^\Z\to\R_{\geqslant0}$使得$\mu(\Z)=1$，
+    对$E\subset\Z$与$k\in\Z$，有$\mu(E)=\mu(E+k),\mu(E)=\mu(-E)$，且
+    \[\mu(A)=\sum_{i=1}^m\mu(A_i),\forall m\in\N_+,
+    A=\bigcup_{i=1}^{m}A_i,A_i\text{ 两两不交}.\]
+    \item 证明：$\Z$不是$\operatorname{Iso}(\Z)$可分解的。
+    \end{enumerate}
+\end{21}
+\begin{proof}[解答]
+    \begin{enumerate}[label=(\roman*)]
+    \item 答案分别是$\phi(x)=\pm x+k$，$\phi(x)=\pm x$。
+    \item 即$\lim\limits_{n\to\infty}\dfrac{2n+1-k}{2n+1}=1$。
+    \item 取\[\tau(f(x))=\frac{\operatorname{Lim}\{f(x)\}_{x=0}^{+\infty}
+    +\operatorname{Lim}\{f(x)\}_{x=0}^{-\infty}}{2}.\]
+    \item 令$\iota\colon2^\Z \to l^\infty(\Z)$为
+    \[E \longmapsto \iota_E(x)=\begin{cases}1,&x \in E\\
+    0,&x \notin E\end{cases},\]
+    接着$\mu=\tau\circ\iota$即可。
+    \item 若不然，一方面有
+    \[\mu(\Z)=\sum_{i=1}^{n+m}\mu(A_i),\]
+    另一方面有
+    \begin{align*}
+        \mu(\Z)&\leqslant\sum_{i=1}^{n}\mu(g_iA_i)=\sum_{i=1}^{n}\mu(A_i),\\
+        \mu(\Z)&\leqslant\sum_{i=n+1}^{n+m}\mu(g_iA_i)=\sum_{i=n+1}^{n+m}\mu(A_i),
+    \end{align*}
+    三个式子推出$\mu(\Z)\leqslant0$，同$\mu(\Z)=1$矛盾。\qedhere
+    \end{enumerate}
+\end{proof}
+注：我怀疑这个诡异的(ii)是为了提示我们，(iii)要先在
+\[\lim_{n\to\infty}\frac{\sum\limits_{x \in F_n}f(x)}{|F_n|}\]
+存在的数列全体上将$\tau$取为这个极限，
+可得$\tau(f(x))=\tau(f(x+k))$，再延拓至整个$l^\infty(\Z)$上。
+
+\begin{22}
+    对于$\R^n$中的一个闭凸集$A$，若$A$中一点$x$是一列端点的极限，
+    $x$是否一定是$A$的端点？
+\end{22}
+\begin{proof}[解答]
+    $n=1,2$时是，$n\geqslant3$时反例如图。
+\begin{tikzpicture}
+    \draw[cyan,line width=0.6] (0,0)arc(270:90:0.4 and 1);
+    \draw[cyan,dashed,line width=0.4] (0,0)arc(-90:90:0.4 and 1);
+    \filldraw[cyan,fill opacity=0.04,line width=0.6] (-4,0)to(4,0)to(0,2.02)to(-4,0);
+    \draw[blue,line width=0.6] (-0.16,0.084)arc(246.2:224:0.4 and 1);
+    \fill[blue] (0,0) circle (0.03cm);
+    \draw[->,>=stealth,blue] (-0.1644,0.09)to(-0.16,0.084);
+    \draw[cyan,line width=0.1] (-4,0)to(-0.12,1.96)to(4,0);
+    \draw[cyan,line width=0.1] (-4,0)to(-0.2,1.87)to(4,0);
+    \draw[cyan,line width=0.1] (-4,0)to(-0.28,1.71)to(4,0);
+    \draw[cyan,line width=0.1] (-4,0)to(-0.36,1.44)to(4,0);
+    \draw[cyan,line width=0.1] (-4,0)to(-0.1,0.03)to(4,0);
+    \draw[cyan,line width=0.1] (-4,0)to(-0.16,0.08)to(4,0);
+    \draw[cyan,line width=0.1] (-4,0)to(-0.24,0.2)to(4,0);
+    \draw[cyan,line width=0.1] (-4,0)to(-0.32,0.4)to(4,0);
+\end{tikzpicture}
+$n=1$时显然，下面考察$n=2$时的情形，也就是要说明$\R^2\setminus\operatorname{Ext}A$是开集。
+\begin{tikzpicture}
+    \fill[cyan!10] (-1.5,0)to(1.5,0)to(1,1)to(-1.5,0);
+    \draw[cyan] (-1.5,0)to(1.5,0);
+    \fill[cyan] (0,0) circle (0.04cm);
+    \fill[cyan] (1,1) circle (0.04cm);
+    \draw (1.35,1.25) node {$a \in A$};
+    \draw (2.1,0) node {$\ell \subset A$};
+    \draw (0,-0.2) node {$x$};
+    \draw (0,0.6) node {$H$};
+\end{tikzpicture}
+设$x$不是$A$的端点，这相当于有开线段$\ell$使得$x \in \ell \subset A$。
+对$\ell$的一侧即开半平面$H$来说，
+* 若$H$中有$A$的点，
+则由$A$是凸集知$x$附近在$H$一侧的点都是$A$的内点，从而不是端点；
+* 若$H$中无$A$的点，则更无$A$的端点了。
+
+$\ell$的另一侧同理，且$\ell$上的点亦不是$A$的端点。
+至此得出，$x$附近的点皆非$A$的端点。
+\end{proof}
+
+\subsection**{附：旧版习题}
+以下两题在正式出版的教材中删去了。
+\begin{1}
+    令$U=(0,2\pi)\times(0,2\pi)$。对正整数$k$，$\tilde{W}^k(U)$为$U$上的Sobolev空间，
+    $C^k(\bar{U})$为$\bar{U}$上$k$次连续可导函数全体构成的Banach空间。
+    \begin{enumerate}[label=(\roman*)]
+        \item 证明：存在常数$C$，对于二元的三角多项式$p$，
+        $$\|p\|_{C(\bar{U})}\leqslant C\|p\|_{\tilde{W}^2(U)}.$$
+        \item 证明：当$k\geqslant l+2$时，$\tilde{W}^k(U)$可自然嵌入$C^l(\bar{U})$。
+        特别地，若$u\in\bigcap_{k\in\N}\tilde{W}^k(U)$，
+        则可修改一个零测集上的取值使得$u$是一个无穷次连续可导函数。
+        \item 记$\Delta=\frac{\partial^2}{\partial x_1^2}
+        +\frac{\partial^2}{\partial x_2^2}$。
+        对于$u\in L^2(U)$，若$L^2(U)$中函数$v$满足
+        $$\int_U u\Delta\phi\,dm=\int_U v\phi\,dm,
+        \quad\forall \phi\in C_c^\infty(U).$$
+        则记$\De u\triangleq v$。证明：$\De$是
+        $\tilde{W}^{k+2}(U)$到$\tilde{W}^k(U)$的有界算子。
+        \item 若$u\in L^2(U)$且$\De u\in\tilde{W}^k(U)$，
+        证明$u\in\tilde{W}^{k+2}(U)$。
+        \item 若$L^2(U)$中函数$u$是$\De$的特征向量，即存在数$\lambda$
+        使得$\De u=\lambda u$，证明：$u$是无穷次连续可导函数。
+    \end{enumerate}
+\end{1}
+
+\begin{2}
+设$\varOmega$为$\R^2$中有界开集，$f$在$\overline{\varOmega}$上无穷次连续可导。
+令$\Delta=\frac{\partial^2}{\partial x_1^2}+\frac{\partial^2}{\partial x_2^2}$，考虑Laplace方程
+\[\left\{\begin{aligned}
+    -\Delta u(x)&=f(x),\ x\in\varOmega,\\
+    u|_{\partial\varOmega}&=0.
+\end{aligned}\right.\]
+在现代偏微分方程理论中，经常求解弱导数意义下方程的解，再通过各类范数估计提高解的正则性。
+我们首先在空间$W_0^1(\varOmega)$中求解Laplace方程。
+对$u\in L^2(\varOmega)$，它的弱$\De u$满足
+$$\int_\varOmega\De u\,v\,dm=\int_\varOmega u\,\Delta v\,dm,
+\quad\forall v\in C_c^\infty(\varOmega).$$
+\begin{enumerate}[label=(\roman*)]
+\item 令
+$$\la u,v\ra_1=\int_\varOmega\big[\Partial_1u\,\overline{\Partial_1v}
++\Partial_2u\,\overline{\Partial_2v}\big]\,dm.$$
+证明：存在常数$C$，使得对任意$u\in C_c^\infty(\varOmega)$成立Poincaré不等式
+$\int_\varOmega|u|^2dm\leqslant C\la u,u\ra_1$。
+\item 证明：$W_0^1(\varOmega)$在内积$\la\cdot,\cdot\ra$下也是一个Hilbert空间。
+\item 证明：$\tau_f(v)\triangleq\int_\varOmega fv\,dm$
+是Hilbert空间$W_0^1(\varOmega)$上的有界线性泛函。
+\item 对$u\in W_0^1(\varOmega)$，设它的弱导数$\De u$存在。证明：
+$\int_\varOmega-\De u\,v\,dm=\la u,v\ra_1,\forall v\in C_c^\infty(\varOmega).$
+\item 证明：存在$u\in W_0^1(\varOmega)$为Laplace方程的弱解，即
+$\int_\varOmega-\De u\,v\,dm=\int_\varOmega fv\,dm,\forall v\in C_c^\infty(\varOmega).$
+\end{enumerate}
+接下来，我们说明$u$的光滑性。对任意一点$(x_0,y_0)\in\varOmega$，取一个$\varOmega$中的邻域
+$V=O((x_0,y_0),\varepsilon)$（$\varepsilon<\pi$），
+以及$\chi\in C_c^\infty(V),\chi(x_0,y_0)=1$。记$U=(0,2\pi)\times(0,2\pi)$。
+\begin{itemize}
+\item[(vi)] 由著名的Meyers--Serrin定理可知，
+$C^\infty(\varOmega)\cap W^k(\varOmega)$在$W^k(\varOmega)$中稠密。由此证明：
+$$f(x,y)\mapsto(\chi f)(x+x_0-\pi,y+y_0-\pi)$$
+是$W_0^k(\varOmega)$到$W_0^k(U)$的有界映射。
+
+\item[(vii)] 证明：弱解$u$修正一个零测集上的值之后，
+是在$\varOmega$上无穷次可微的，且$-\Delta u=f$。
+\end{itemize}
+\end{2}
+
+\begin{proof}
+\begin{enumerate}[label=(\roman*)]
+\item 设$\varOmega$在区域$\{0<x_2<d\}$中。由于
+\[|u(x_1,x_2)|^2=\bigg|\int_0^{x_2}\partial_2u(x_1,t)\,dt\bigg|^2
+\leqslant x_2\int_0^d|\partial_2u(x_1,t)|^2dt,\]得到
+\begin{align*}
+    \int_\varOmega|u|^2dm
+    &\leqslant \int_{\R\times(0,d)}\!x_2\int_0^d|\partial_2u(x_1,t)|^2dtdx_1dx_2\\
+    &=\int_0^d\!x_2\,dx_2\int_{\R\times(0,d)}\!|\partial_2u(x_1,t)|^2dx_1dt
+    =\frac{d^2}{2}\int_\varOmega|\partial_2u|^2dm
+    \leqslant\frac{d^2}{2}\la u,u\ra_1.
+\end{align*}
+\item 设$u\in W_0^1(\varOmega)$有$\la u,u\ra_1=0$，
+则$\Partial_iu\equiv0,i=1,2$。作磨光函数
+$u*\eta_\varepsilon\in C^\infty(\varOmega_\varepsilon)$
+(其中$\eta\in C^\infty_c(B_1),
+\eta_\varepsilon(x)=\frac{1}{\varepsilon^n}\eta\big(\frac{x}{\varepsilon}\big),
+\varOmega_\varepsilon=\{x\in\varOmega:d(x,\partial\varOmega)>\varepsilon\}$)，
+有$\partial_i(u*\eta_\varepsilon)=\Partial_iu*\eta_\varepsilon\equiv0$，
+故$u*\eta_\varepsilon$（在每个连通分支上）是常数，由$\varepsilon\to0^+$时
+$u*\eta_\varepsilon\stackrel{W^1}{\longrightarrow}u$得到$u$同样是常数，
+根据$u|_{\partial\varOmega}=0$得$u\equiv0$。
+
+(i)说明这一内积给出的范数$\|\ \ \|_{\dot{W}^1}$与$W^1$的范数等价，
+因此$W_0^1(\varOmega)$在这一范数下也是完备的。
+\item 由(i)，$|\tau_f(v)|\leqslant\|f\|_2\|v\|_2\leqslant\sqrt{C}\|f\|_2\|v\|_{\dot{W}^1}$。
+\item 弱导数的定义。
+\item (iii),\,(iv)以及Riesz表示定理。
+\item $\|\chi f\|_{W^k}\leqslant C_k\sum\limits_{m+n\leqslant k}
+\sum\limits_{m'\leqslant m,n'\leqslant n}\binom{m}{m'}\binom{n}{n'}
+\|\partial_1^{m-m'}\partial_2^{n-n'}\chi\|_\infty
+\|\Partial_1^{m'}\Partial_2^{n'}f\|_2\leqslant C_{k,\chi}\|f\|_{W^k}$。
+\item 设已知$u\in W^k_0(\varOmega)$。对任意的$(x_0,y_0)\in\varOmega$，
+简记$(x',y')=(x+x_0-\pi,y+y_0-\pi)$，由于$\mathbf{\nabla}u\in W^{k-1}_0(\varOmega)$，
+$$-\De(\chi u)(x',y')=(-\Delta\chi\,u-2\nabla\chi\cdot\mathbf{\nabla}u+\chi f)(x',y')
+\in W^{k-1}_0(U).$$
+用上一题的(iv)，得到$\chi u(x',y')\in W^{k+1}_0(U)$，
+取$(\pi,\pi)$的一个邻域$X\subset\big\{\chi(x',y')>\frac{1}{2}\big\}$，
+得$u(x',y')\in W^{k+1}(X)$。由$(x_0,y_0)$的任意性以及$u\in W^k_0(\varOmega)$，
+有$u\in W^{k+1}_0(\varOmega)$。现有$u\in W^1_0(\varOmega)$，反复提升正则性，从而$u$无穷次可微。
+
+(v)中取一列$v\stackrel{L^2}{\longrightarrow}-\Delta u-f$
+得到$-\Delta u=f$。\qedhere
+\end{enumerate}
+\end{proof}
+\begin{itemize}
+\item[注：] (ii)中$u|_{\partial\varOmega}$是$u\in W^1(\varOmega)$的迹，
+参考\cite{Ev} 5.5 Theorem 2；
+\item[] Meyers--Serrin 定理的证明见\cite{Ev} 5.3 Theorem 2。
+\end{itemize}
+
+
+\subsection**{参考文献}
+\begin{references}
+    \bibitem[Co]{Co}
+        J. B. Conway. \textit{A Course in Functional Analysis}.
+        Graduate Texts in Mathematics 96. Springer, 1990.
+    \bibitem[Ev]{Ev}
+        L. C. Evans. \textit{Partial Differential Equations}.
+        Graduate Studies in Mathematics 19. Amer. Math. Soc, 2010.
+    \bibitem[Gr]{Gr}
+        L. Grafakos. \textit{Classical Fourier Analysis}. 
+        Graduate Texts in Mathematics 249. Springer, 2014.
+    \bibitem[To]{To}
+        A. Torchinsky. \textit{Problems in Real and Functional Analysis}.
+        Graduate Studies in Mathematics 166. Amer. Math. Soc, 2015.
+    \bibitem[Wa]{Wa}
+        汪林. 泛函分析中的反例. 现代数学基础 40. 高等教育出版社, 2014.
+    \bibitem[Wi]{Wi}
+        Wilfredo Urbina-Romero.
+        \textit{Gaussian Harmonic Analysis}.
+        Springer Monographs in Mathematics. Springer, 2019.
+    \bibitem[Xia]{Xia}
+        夏道行\ 等. 实变函数论与泛函分析（下册）.
+        现代数学基础 17. 高等教育出版社, 2010.
+\end{references}

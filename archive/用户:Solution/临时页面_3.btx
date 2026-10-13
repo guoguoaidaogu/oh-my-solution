@@ -1,0 +1,614 @@
+
+
+== 23春高等代数（英才班）期末试题 ==
+
+\textbf{第一题 (共 20 分)} 考虑带标准内积的欧氏空间 $\mathbb{R}^{4}$ 中的三个向量
+\begin{align*}
+& \alpha_{1}=(1,-1,0,0) ; \\
+& \alpha_{2}=(0,1,-1,0) ; \\
+& \alpha_{3}=(0,0,1,-1) .
+\end{align*}
+记 $V$ 为 $\alpha_{1}, \alpha_{2}, \alpha_{3}$ 张成的子空间。
+利用 Gram--Schmidt 正交化过程，将 $\{\alpha_{1}, \alpha_{2}, \alpha_{3}\}$化为 $V$ 的一组\textbf{规范正交}基（orthonormal basis），并求 $\beta=(1,2,1,2)$ 在 $V$ 中的正交投影。
+
+\textbf{第二题 (共 20 分)} 记 $\mathfrak{sl}(2, \mathbb{C})=\{e^{A} \mid A \in \mathbb{C}^{2 \times 2}, \operatorname{trace}(A)=0\}, SL(2, \mathbb{C})=\{A \in \mathbb{C}^{2 \times 2} \mid \det(A)=1\}$。
+\begin{enumerate}
+\item (5 分) 列出 $\mathfrak{sl}(2, \mathbb{C})$ 中元素的 Jordan 标准型的所有可能。
+\item (10 分) 当 $A$ 取遍 $\mathfrak{sl}(2, \mathbb{C})$ 中元素时，列出 $e^{A}$ 的 Jordan 标准型的所有可能。
+\item (5 分) 证明：指数映射 $\mathfrak{sl}(2, \mathbb{C}) \rightarrow SL(2, \mathbb{C}), A \mapsto e^{A}$ 不是满射。
+\end{enumerate}
+\textbf{第三题 (共 20 分)} 令 $V$ 为 $2n$ 维实内积空间，$T$ 和 $S$ 均为 $V$ 上的线性算子。
+设 $TS=ST^{*}$，且 $T$ 的极小多项式为 $(x^{2}+1)^{n}$。
+\begin{enumerate}
+\item (5 分) 证明存在 $\alpha \in V$，使得 $V=\operatorname{span}\{\alpha, T \alpha, T^{2} \alpha, \ldots, T^{2n-1} \alpha\}$。（注：不可直接使用存在性定理，需要解释如何找到这样的 $\alpha$。）
+\item (15 分) 证明 $S=S^{*}$。
+\end{enumerate}
+
+\textbf{第四题 (共 25 分)}
+\begin{enumerate}
+\item (共 15 分) 设 $V$ 是有限维复线性空间，$T$ 是 $V$ 上的线性算子，$\operatorname{Sym}^{2}(T)$ 是其在 $\operatorname{Sym}^{2}(V)$ 上诱导的线性算子，
+即 $\operatorname{Sym}^{2}(T)(\alpha \cdot \beta)=T(\alpha) \cdot T(\beta), \forall \alpha, \beta \in V$。
+设 $T$ 的秩为 $r$，证明 $\operatorname{rank}(\operatorname{Sym}^{2}(T))=\frac{r(r+1)}{2}$。
+
+[提示：针对此问题，你有多大的自由度来选合适的基，使得 $T$ 的矩阵尽可能简单？]
+\item (共 10 分) 设 $V=\mathbb{C}^{5 \times 1}$ 且 $T$ 是由矩阵
+$$\begin{bmatrix}
+0 & 0 & 0 & 0 & 0 \\ \\
+1 & 0 & 0 & 0 & 0 \\ \\
+0 & 1 & 0 & 0 & 0 \\ \\
+0 & 0 & 0 & 0 & 0 \\ \\
+0 & 0 & 0 & 1 & 0
+\end{bmatrix}$$
+左乘给出的线性算子。求 $\operatorname{Sym}^{2}(T)$ 的 Jordan 标准型中 $2 \times 2\,$ Jordan 块的个数。
+\end{enumerate}
+
+\textbf{第五题 (共 15 分)} 设 $A \in \mathbb{C}^{n \times n}$ 是一个复矩阵。
+\begin{enumerate}
+\item (8 分) 若 $A+A^{*}$ 是一个 Hermite 正定矩阵，证明：$A$ 的所有特征值的实部都是正数。
+\item (7 分) 给出上个命题的逆命题的一个反例，即给出一个 $A$，使得 $A$ 的所有特征值的实部都是正数，但 $A+A^{*}$ 不是一个 Hermite 正定矩阵。
+\end{enumerate}
+(附加题 10 分) 证明：若 $A$ 的所有特征值的实部都是正数，则存在一个 Hermite 正定矩阵 $H$ 使得 $HA+A^{*}H$ 是一个 Hermite 正定矩阵。
+
+== 23春高等代数（英才班）期中试题 ==
+
+\textbf{第一题，填空题，共 15 分，将答案按次序写在答题纸空白处。}
+
+令 $A=\begin{bmatrix}1 & -1 \\ \\ -3 & 3 \\ \\ 1 & -1\end{bmatrix} \in \mathbb{R}^{3 \times 2}$。
+求它的奇异值分解 $V^{*}AU=\begin{bmatrix}\sigma_{1} & 0 \\ \\ 0 & \sigma_{2} \\ \\ 0 & 0\end{bmatrix}$，
+使得奇异值 $\sigma_{1} \geq \sigma_{2}$，且 $V$ 的 $(2,2)$ 元为 $0$。
+\begin{enumerate}
+\item $(\sigma_{1}, \sigma_{2})=\underline{\ (1)\ }$。
+\item $U=\underline{\ (2)\ }$。写出一个满足题意的即可。
+\item $V=\underline{\ (3)\ }$。写出一个满足题意的即可。
+\end{enumerate}
+
+\textbf{第二题，判断题，共 15 分，每题 5 分。判断以下命题是否正确，若正确，简要说明理由；若错误，举出反例并给出必要解释。}
+\begin{enumerate}
+\item 若矩阵 $A, B \in \mathbb{C}^{n \times n}$ 相似，则 $A, B$ 酉相似。
+\item 若矩阵 $A, B \in \mathbb{C}^{n \times n}$ 都是正规矩阵且 $AB$ 也是正规矩阵，则 $AB=BA$。
+\item 若矩阵 $A \in \mathbb{C}^{n \times n}$ 使得 $A^{2}$ 正规且 $A$ 可逆，则 $A$ 也是正规的。
+\end{enumerate}
+
+\textbf{第三题 (共 20 分)} 设 $A, B \in \mathbb{C}^{n \times n}$ 是两个正定 Hermite 矩阵。
+证明：$(A+B)(A^{-1}+B^{-1})$ 的特征值都是实数且都大于等于 $4$。
+
+\textbf{(附加题，5 分)} 设 $A_{1}, \ldots, A_{k} \in \mathbb{C}^{n \times n}$ 都是正定 Hermite 矩阵。
+证明：$\left(\sum_{i=1}^{k} A_{i}\right)\left(\sum_{i=1}^{k} A_{i}^{-1}\right)$ 的特征值都是实数且都大于等于 $k^{2}$。
+
+\textbf{第四题 (共 20 分)} 对Hermite矩阵 $A \in \mathbb{C}^{n \times n}$，记 $\lambda_{1}(A) \geq \lambda_{2}(A) \geq \cdots \geq \lambda_{n}(A)$是 $A$ 的所有特征值（降序排列）。证明：对任意 $1 \leq k \leq n$，
+$$\lambda_{k}(A)=\max_{\substack{V \subset \mathbb{C}^{n \times 1} \\ \dim V=k}}\left(\min_{\alpha \in V \backslash\{0\}} \frac{\alpha^{*} A \alpha}{\alpha^{*} \alpha}\right).$$
+\textbf{(附加题，5 分)} 考虑分块 Hermite 矩阵 $B=\begin{bmatrix}A & \beta^{*} \\ \\ \beta & a\end{bmatrix}$，其中 $\beta \in \mathbb{C}^{n \times 1}$ 且 $a \in \mathbb{R}$。证明：对任意 $1 \leq k \leq n$，
+$$\lambda_{k}(B) \geq \lambda_{k}(A) \geq \lambda_{k+1}(B).$$
+
+\textbf{第五题 (共 15 分)} 设 $V=\mathbb{R}^{n \times 1}$ 是有限维实线性空间，
+$f: V \times V \rightarrow \mathbb{R}$ 是 $V$ 上的对称双线性型，
+由矩阵乘法 $f(\alpha, \beta)=\alpha^{T} A \beta$ 定义，其中 $A \in \mathbb{R}^{n \times n}$。
+设 $A$ 有且只有 $1$ 个正的特征值，且其对应的特征空间是 $1$ 维的。
+设 $\alpha_{0} \in V$ 满足 $f(\alpha_{0}, \alpha_{0})>0$。
+证明：对所有 $\beta \in V$，$(f(\alpha_{0}, \beta))^{2} \geq f(\alpha_{0}, \alpha_{0}) \cdot f(\beta, \beta)$。
+
+\textbf{第六题 (共 15 分)} 设 $V$ 是 $4$ 维实线性空间，$f: V \times V \rightarrow \mathbb{R}$ 是 $V$ 上的反对称非退化双线性型。
+\begin{enumerate}
+\item 定义 $\phi: V \times V \times V \times V \rightarrow \mathbb{R}$ 如下：
+$$\phi(\alpha_{1}, \alpha_{2}, \alpha_{3}, \alpha_{4})
+=\sum_{\sigma \in S_{4}} \operatorname{sgn}(\sigma) \cdot f(\alpha_{\sigma(1)}, \alpha_{\sigma(2)}) \cdot f(\alpha_{\sigma(3)}, \alpha_{\sigma(4)}).$$
+验证：$\phi$ 是$\!\underline{非\ 0\ 的交错的}\!$多重线性型。（不需要验证``多重线性''.）
+\item 设 $T$ 是 $V$ 上保持 $f$ 不变的线性算子，即 $f(T \alpha, T \beta)=f(\alpha, \beta)$ 对任意 $\alpha, \beta \in V$成立。证明：$\det(T)=1$。
+\end{enumerate}
+
+== 22秋高等代数（英才班）期末试题 ==
+\textbf{第一题，填空题，共 15 分，每题 5 分。}
+
+将答案按序号写在答题纸上，不要写在原题目上
+
+考虑 $A=\begin{bmatrix}5 & 1 & -1 \\ \\ 0 & 1 & 0 \\ \\ 0 & -1 & 0\end{bmatrix} \in \mathbb{C}^{3 \times 3}$。
+令 $\lambda_{1}>\lambda_{2}>\lambda_{3}$ 是 $A$ 的三个特征值且 $V_{1}, V_{2}, V_{3}$ 是对应的特征空间。
+\begin{enumerate}
+  \item $\left(\lambda_{1}, \lambda_{2}, \lambda_{3}\right)=\underline{\quad(1)\quad} 。$
+  \item 考虑 $\alpha=[1,2,3]^{T}$。设 $\alpha=\alpha_{1}+\alpha_{2}+\alpha_{3}$, 
+  其中 $\alpha_{i} \in V_{i}\ (i=1,2,3)$。则 $\alpha_{1}=\underline{\quad(2)\quad} 。$
+  \item 分块矩阵 $\begin{bmatrix}A & 2I_{3} \\ \\ I_{3} & A\end{bmatrix}$ 的行列式为 $\underline{\quad(3)\quad} 。$
+\end{enumerate}
+
+\textbf{第二题，判断题，共 15 分，每题 3 分。}
+
+判断以下命题是否正确，若正确，简要说明理由；若错误，举出反例并给出简要解释。
+
+\begin{enumerate}
+  \item 若 $A, B \in \mathbb{C}^{n \times n}$ 是两个幂零矩阵, 则 $A B$ 也是幂零矩阵。
+  \item 若一个上三角矩阵 $A \in \mathbb{C}^{n \times n}$ 可对角化，则它一定是对角阵。
+  \item 对于 $\mathbb{C}^{2 \times 2}$ 中的矩阵 $\begin{bmatrix}a & b \\ \\ c & d\end{bmatrix}$，数值 $2a+2d-ad+bc$ 是矩阵相似不变量。
+  \item 给定矩阵 $A \in \mathbb{C}^{m \times n}$，若齐次线性方程组 $Ax=0$ $(x \in \mathbb{C}^{n \times 1})$ 没有非零解，
+  则存在矩阵 $B \in \mathbb{C}^{n \times m}$ 使得 $A B=I_{m}$。
+  \item 若矩阵 $A, B \in \mathbb{C}^{n \times n}$ 有相同的极小多项式以及相同的特征多项式，则 $A$ 与 $B$相似。
+\end{enumerate}
+
+\textbf{第三题（共 15 分）}
+
+令 $T$ 是有限维 $\mathbb{C}$ 线性空间 $V$ 上的线性映射。
+设存在 $V$ 的一组有序基 $\alpha_{1}, \ldots, \alpha_{n}$ 
+使得 $T \alpha_{i}=\alpha_{i+1}$ 对 $1 \leq i \leq n-1$ 
+且 $T \alpha_{n}=\alpha_{1}$。
+
+\begin{enumerate}
+  \item （5 分）计算 $T$ 的特征多项式。
+  \item （5 分）计算 $T$ 的极小多项式。
+  \item （5 分）证明：$T$ 可对角化。
+\end{enumerate}
+
+\textbf{第四题（共 20 分）}
+
+给定矩阵 $A, B \in \mathbb{C}^{n \times n}$。假设 $A^{2}=A$ 且 $B^{2}=B$。
+证明： $A$ 与 $B$ 相似当且仅当 $\operatorname{trace}(A)=\operatorname{trace}(B)$。
+
+\textbf{第五题（共 20 分）}
+
+令 $S$ 和 $T$ 是 $n$ 维 $\mathbb{C}$ 线性空间 $V$ 上的线性映射。
+假设 $T$ 有 $n$个不同的特征值且 $S T=T S$。
+证明：存在一个多项式 $f \in \mathbb{C}[x]$ 使得 $S=f(T)$。
+
+\textbf{第六题（共 15 分）}
+\begin{enumerate}
+  \item (3 分) 设矩阵 $A, B \in \mathbb{C}^{n \times n}$ 
+  有一个公共的特征向量 $\alpha \in \mathbb{C}^{n \times 1}$ 
+  使得 $A \alpha=$ $\lambda \alpha$ 且 $B \alpha=\mu \alpha$，
+  其中 $\lambda, \mu \in \mathbb{C}$。
+  证明：存在一个可逆矩阵 $P \in \mathbb{C}^{n \times n}$ 
+  使得 $P^{-1} A P=\begin{bmatrix}\lambda & \alpha_{1}^{T} \\ \\ 0 & A_{1}\end{bmatrix}$ 
+  且 $P^{-1} B P=\begin{bmatrix}\mu & \beta_{1}^{T} \\ \\ 0 & B_{1}\end{bmatrix}$, 
+  其中 $\alpha_{1}, \beta_{1} \in \mathbb{C}^{(n-1) \times 1}$, 
+  $A_{1}, B_{1} \in \mathbb{C}^{(n-1) \times(n-1)}$。
+  \item（12 分）令 $S$ 和 $T$ 是有限维 $\mathbb{C}$ 线性空间 $V$ 上的线性映射。
+  假设 $T(T-S)=$ $(T-S) S$。证明 $T$ 和 $S$ 有相同的特征多项式。
+\end{enumerate}
+
+
+== 22秋高等代数（英才班）期中试题 ==
+
+\textbf{第一题，填空题，共 15 分，每题 5 分。}
+
+将答案按序号写在答题纸上，不要写在原题目上。
+
+考虑实矩阵 $A=\begin{pmatrix}1 & 1 & 1 & 1 \\ 2 & -1 & 3 & 1 \\ 1 & -2 & 2 & 0\end{pmatrix}$。
+
+\begin{enumerate}
+  \item 使得 $C A$ 是行简化阶梯矩阵（RREF）的一个可逆实矩阵 $C=\underline{\quad(1)\quad} 。$
+  \item 以下选项中，使线性方程组 $A x=y$ 有解的列向量 $y$ 的全部选项是 $\underline{\quad(2)\quad} 。$
+
+a. $\begin{pmatrix}0 \\ 0 \\ 0\end{pmatrix}$\quad
+b. $\begin{pmatrix}1 \\ 0 \\ 0\end{pmatrix}$\quad
+c. $\begin{pmatrix}0 \\ 1 \\ 0\end{pmatrix}$\quad
+d. $\begin{pmatrix}0 \\ 1 \\ 1\end{pmatrix}$\quad
+e. $\begin{pmatrix}1 \\ 1 \\ 0\end{pmatrix}$
+  \item 实系数线性方程组
+  $$A\begin{pmatrix}x_{1} \\x_{2} \\x_{3} \\x_{4}\end{pmatrix}
+  =\begin{pmatrix}1 \\2 \\1\end{pmatrix}$$
+  的解集是 $\underline{\quad(3)\quad} $
+  （答案应当表示为列向量空间 $\R^{4 \times 1}$ 中的带自由参数的集合）$。$
+\end{enumerate}
+
+\textbf{第二题，判断题，共 9 分，每题 3 分。}
+
+依次判断下列叙述是否正确。若正确，简要说明理由。若错误，举出反例并简要说明。
+
+\begin{enumerate}
+  \item 若矩阵 $A, B \in \mathbb{R}^{n \times n}$ 满足 $AB=0$，则 $BA=0$。
+  \item 若矩阵 $A, B \in \mathbb{R}^{n \times n}$ 满足 $AB=I_{n}$，则 $BA=I_{n}$。
+  \item 设 $W_{1}, W_{2}, W$ 是实线性空间 $V$ 中的三个子空间，则
+$$(W_{1} \cap W)+(W_{2} \cap W)=(W_{1}+W_{2}) \cap W.$$
+\end{enumerate}
+
+\textbf{第三题（共 18 分）}
+
+令 $m \leq n$ 是两个非负整数。记 $V$ 是一个 $n$ 维 $\mathbb{R}$-线性空间，且 $W$ 是 $V$的 $m$ 维线性子空间。
+
+\begin{enumerate}
+  \item (2 分) 计算 $V$ 中的 $\operatorname{Span}(V \setminus W)$ 的维数（不需要过程）。
+  \item (9 分) 证明：存在一个 $V$ 的线性子空间 $W^{\prime}$ 使得 $\dim W^{\prime}=n-m$ 且 $W^{\prime} \cap W=\{0\}$。
+  \item (7 分) 假设 $0<m<n$。证明：满足 $\dim W^{\prime}=n-m$ 且 $W^{\prime} \cap W=\{0\}$ 的 $V$ 的线性子空间 $W^{\prime}$ 有无穷多个。（如果能够证明有至少 $2$ 个这样的 $W^{\prime}$，可以得 5 分）
+\end{enumerate}
+
+\textbf{第四题（共 18 分）}
+
+给定正整数 $n$。设 $V$ 和 $W$ 是维数大于 $0$ 的有限维 $\mathbb{R}$-线性空间。
+给定 $V$中元素 $\alpha_{1}, \ldots, \alpha_{n}$。
+\begin{enumerate}
+  \item (9 分) 证明: $\alpha_{1}, \ldots, \alpha_{n}$ 线性无关\textbf{当且仅当}对任意 $W$ 中元素 $\beta_{1}, \ldots, \beta_{n}$ 
+  都存在一个线性映射 $T: V \rightarrow W$ 使得 $T \alpha_{i}=\beta_{i}\ (1 \leq i \leq n)$。
+  \item（9分）证明： $\alpha_{1}, \ldots, \alpha_{n}$ 张成 $V$ \textbf{当且仅当}对任意 $W$ 中元素 $\beta_{1}, \ldots, \beta_{n}$ 
+  都\textbf{最多}存在一个线性映射 $T: V \rightarrow W$ 使得 $T \alpha_{i}=\beta_{i}\ (1 \leq i \leq n)$。
+\end{enumerate}
+
+\textbf{第五题（共 20 分）}
+
+设 $V$ 和 $W$ 为 $\mathbb{R}$-线性空间， $T: V \rightarrow W$ 为线性映射，且 $\dim V=5$。
+\begin{enumerate}
+  \item (10 分) 证明： $\operatorname{rank}(T) \leq 3$ 当且仅当对于任意 $4$ 维子空间 $U \subset V$，都有 $\dim T(U) \leq 3$。
+  \item (10 分) 证明： $\operatorname{rank}(T) \geq 3$ 当且仅当对于任意 $4$ 维子空间 $U \subset V$，都有 $\dim T(U) \geq 2$。
+\end{enumerate}
+
+\textbf{第六题（共 20 分）}
+
+\qquad 令 $n$ 是正整数。记 $V$ 是所有 $\mathbb{R}^{n \times n}$ 到 $\mathbb{R}^{n \times n}$ 的 $\mathbb{R}$-线性映射全体，视为一个自然的 $\mathbb{R}$-线性空间。\\
+\qquad 对一个矩阵 $A \in \mathbb{R}^{n \times n}$，记 $L_{A}: \mathbb{R}^{n \times n} \rightarrow \mathbb{R}^{n \times n}$ 为由 $X \mapsto A X$ 定义的线性映射，
+记 $R_{A}: \mathbb{R}^{n \times n} \rightarrow \mathbb{R}^{n \times n}$ 为由 $X \mapsto X A$ 定义的线性映射。\\
+\qquad 令 $W_{1}=\left\{L_{A} \mid A \in \mathbb{R}^{n \times n}\right\}, W_{2}=\left\{R_{A} \mid A \in \mathbb{R}^{n \times n}\right\}$。易知它们都是 $V$ 的线性子空间。
+\begin{enumerate}
+  \item (3 分) 计算 $\dim V$ 并证明你的结论。
+  \item (6 分) 计算 $\dim W_{L}$ 和 $\dim W_{R}$ 并证明你的结论。
+  \item (11 分) 计算 $\dim (W_{L}+W_{R})$ 并证明你的结论。
+\end{enumerate}
+
+\textbf{第七题（共 20 分）}
+
+设 $n$ 是正整数，已知矩阵 $A, B \in \mathbb{R}^{n \times n}$ 满足 $A B-B A=A$。
+\begin{enumerate}
+  \item (4 分) 证明 $\operatorname{tr}(A)=0$。
+  \item (4 分) 对任意给定的正整数 $k$，$\operatorname{tr}(A^{k})$ 是否是一个常数? 
+  若是则求出 $\operatorname{tr}(A^{k})$，若不是则说明理由。
+  \item (6 分) $A$ 是否是可逆矩阵？证明你的结论。
+  \item (6 分) 若 $n=2$, 那么 $A^{2}$ 是否是一个与 $A$ 无关的常值矩阵? 
+  若是则求出 $A^{2}$, 若不是则说明理由。
+\end{enumerate}
+
+== 22春高等代数（英才班）期末试题 ==
+\begin{enumerate}
+\item (15 pt) Consider the complex matrix
+$$A=\begin{bmatrix}1 & 0 & 0 \\1 & 2 & 1 \\-1 & -2 & -1\end{bmatrix}$$
+\begin{enumerate}[label=(\arabic*)]
+\item (5 pt) Find the characteristic polynomial of $A$.
+\item (10 pt) Find its Jordan normal form $J$ and an invertible matrix $C$ such that
+$$C^{-1}AC=J.$$
+\end{enumerate}
+
+\item (10 pt) Let $V \subset \mathbb{C}[x]$ be the space of polynomials in $x$ with complex coefficients of degree at most $2$，equipped the inner product
+$$(f \mid g)=\int_{0}^{1} f(x) \overline{g(x)} \mathrm{d}x.$$
+Let $W \subset V$ be the subspace defined by
+$$W=\{f \in V \mid f(0)+f(1)=0\}.$$
+\begin{enumerate}[label=(\arabic*)]
+\item (5 pt) Find an \textbf{orthonormal} basis of $W$;
+\item (5 pt) Find the vector $v \in W$ that is closest to $1 \in V$.
+\end{enumerate}
+
+\item (15 pt) Consider the complex matrix
+$$A=\begin{bmatrix}0 & -2 \\0 & 2\end{bmatrix}$$
+\begin{enumerate}[label=(\arabic*)]
+\item (5 pt) Find a semi-positive definite Hermitian matrix $H_{1}$ such that
+$$A=U_{1}H_{1}.$$
+for some unitary matrix $U_{1}$. (In this question you are only asked to compute $H_{1}$.)
+\item (5 pt) Find a semi-positive definite Hermitian matrix $H_{2}$ such that
+$$A=H_{2}U_{2}.$$
+for some unitary matrix $U_{2}$. (In this question you are only asked to compute $H_{2}$.)
+\item (5 pt) Find all solutions for the unitary matrix $U_{1}$ in (1).
+\end{enumerate}
+
+\item (20 pt) Let $V$ be a finite-dimensional $\mathbb{C}$-linear space with an inner product. 
+Let $T: V \rightarrow V$ be a linear map. Let $W$ be a subspace of $V$. 
+(Note：in this question, you are not allowed to use any theorems. Try to only use basic definitions.)
+\begin{enumerate}[label=(\arabic*)]
+\item (1 pt) Give the definition of $W^{\perp}$.
+\item (6 pt) Show that $V=W \oplus W^{\perp}$.
+\item (1 pt) Give the definition of $T^{*}$.
+\item (6 pt) Suppose that $W$ is $T$-invariant, show that $W^{\perp}$ is $T^{*}$-invariant.
+\item (6 pt) Suppose that $T$ is normal and $T \alpha=c \alpha$ for some $c \in \mathbb{C}$ and $\alpha \in V$, show that $T^{*} \alpha=\bar{c} \alpha$.
+\end{enumerate}
+
+\item (20 pt) Let $V, W$ be $F$-linear spaces and $T: V \rightarrow W$ be a linear map. Suppose that $T$ is surjective. 
+Show that if $f: V \rightarrow U$ is a linear map such that $f(x)=\{0\}$ for any $x \in \operatorname{Null}(T)$, 
+then there exists a unique map $g: W \rightarrow U$ such that $f=g \circ T$.
+
+\item (20 pt) Let $A, B \in \mathbb{C}^{n \times n}$ be Hermitian matrices. 
+Denote $\lambda(X)$ to be the smallest eigenvalue of the Hermitian matrix $X$. 
+Denote $\mu(X)$ to be the largest eigenvalue of the Hermitian matrix $X$.
+\begin{enumerate}[label=(\arabic*)]
+\item (10 pt) Show that
+$$\lambda(A)=\min_{\substack{x \in \mathbb{C}^{n \times 1} \\ x^{T}x=1}} x^{T}Ax.$$
+\item (10 pt) Show that
+$$\lambda(A)+\lambda(B) \leq \lambda(A+B) \leq \lambda(A)+\mu(B).$$
+\end{enumerate}
+In the second question, you can use the following fact without proof:
+$$\mu(A)=\max_{\substack{x \in \mathbb{C}^{n \times 1} \\ x^{T} x=1}} x^{T}Ax.$$
+\end{enumerate}
+
+== 21秋高等代数（英才班）期末试题 ==
+\begin{enumerate}
+  \item (15 pt) Consider the linear system over $\mathbb{R}$:
+  $$\begin{bmatrix}-1 & a & 1 \\2 & 0 & 1 \\1 & -1 & 2\end{bmatrix}
+  \begin{bmatrix}x_{1} \\x_{2} \\x_{3}\end{bmatrix}
+  =\begin{bmatrix}0 \\0 \\1\end{bmatrix}$$where $a$ is a constant.\\
+\ \ (1) Find all values of $a$ so that the system has a unique solution.\\
+\ \ (2) Find all values of $a$ so that the system has infinitely many solutions.\\
+\ \ (3) Find all values of $a$ so that the system has no solution.\\
+
+\item (6 pt) Let $W$ be the subspace of $V=\mathbb{R}^{4}$ 
+spanned by $(1,0,-1,2),(2,3,1,1)$, and $(1,3,2,-1)$. 
+Find a basis of the annihilator of $W$ in $V^{*}$.
+
+\item (10 pt) Let $a, \lambda_{i} \in \mathbb{C}$.\\
+\ (1) Find the characteristic polynomial of
+$$\begin{bmatrix}\lambda_{1} & a \\a & \lambda_{2}\end{bmatrix}.$$
+\ (2) Find the characteristic polynomial of
+$$\begin{bmatrix}
+3 & 1 & 1 & 1 \\
+1 & 2 & 1 & 1 \\
+1 & 1 & -2 & 1 \\
+1 & 1 & 1 & -3
+\end{bmatrix}.$$
+
+  \item (20 pt) Let $V, W, U$ be finite--dimensional $\mathbb{R}$-linear spaces and let $T: V \rightarrow W$, $S: W \rightarrow U$ be linear maps. 
+  Show that $\operatorname{rank}(S T)=\operatorname{rank}(T)$ if and only if $S T$ and $T$ have the same null space.
+
+  \item (20 pt) Let $V, W$ be finite--dimensional $\mathbb{R}$-linear spaces and let $T: V \rightarrow W$ be a linear map and $T^{t}: W^{*} \rightarrow V^{*}$ be the transpose of $T$. Given $\beta \in W$. 
+  Show that the following two statements are equivalent:\\
+(1) $\beta \in \operatorname{Range}(T)$;\\
+(2) for any $f \in \operatorname{Null}(T^{t})$, $f(\beta)=0$.
+
+  \item (13 pt) Let $V$ be a finite--dimensional $\mathbb{R}$-linear space and $\alpha \neq \beta \in V$. 
+  Show that there exists a linear functional $f \in V^{*}$ such that $f(\alpha) \neq f(\beta)$.
+
+  \item (16 pt) Consider 3 polynomials in $\mathbb{C}[x]$:
+
+$$
+p_{0}=-(x-1)(x+1), \quad p_{1}=\frac{1}{2} x(x+1), \quad p_{2}=\frac{1}{2} x(x-1).
+$$
+Then a direct check shows that $1=p_{0}(x)+p_{1}(x)+p_{2}(x)$ and $x=p_{1}(x)-p_{2}(x)$. (No need to verify.) 
+Let $T: V \rightarrow V$ be a linear map on a finite--dimensional $\mathbb{C}$-linear space $V$, 
+having minimal polynomial $m_{T}(x)=x(x-1)(x+1)$. Let $P_{i}=p_{i}(T)$. 
+Show that $P_{0}, P_{1}$ and $P_{2}$ satisfy the properties\\
+\quad (1) $I=P_{0}+P_{1}+P_{2}$;\\
+\quad (2) $T=P_{1}-P_{2}$;\\
+\quad (3) $P_{i}^{2}=P_{i}$ for all $i$;\\
+\quad (4) $P_{i} \cdot P_{j}=0$ for $i \neq j$.
+\end{enumerate}
+
+
+== 21秋高等代数（英才班）期中试题 ==
+\begin{itemize}
+    \item[1.] (20pt) Computations. All matrices and linear equations 
+    are over the real number field $\R$. Write down the correct results of each question.\\
+    (1) (7pt) Compute the inverse of $\begin{bmatrix}
+        3&-4&5\\2&-3&1\\3&-5&-1\end{bmatrix}$;\\
+    (2) (6pt) Compute the rank of $A=\begin{bmatrix}
+        2&-1&3&-2&4\\4&-2&5&1&7\\2&-1&1&8&2\end{bmatrix}$;\\
+    (3) (7pt) Describe the solutions of
+    \[A\begin{bmatrix}x_1\\x_2\\x_3\\x_4\\x_5\end{bmatrix}
+    =\begin{bmatrix}3\\5\\1\end{bmatrix}.\]
+
+    \item[2.] (20pt) Let $V,W$ be finite--dimensional $\R$-linear spaces. 
+    Fix a positive integer $n$. Let $\alpha_1,\dots,\alpha_n \in V$, 
+    and $\beta_1,\dots,\beta_n \in W$. Prove that the following two statements are equivalent:\\
+    (1) There is an $\R$-linear map $T:V \to W$ 
+    such that $T\alpha_i=\beta_i$ for all $1 \le i \le n$.\\
+    (2) For any $c_1,\dots,c_n\in\R$, if $\sum_{i=1}^n c_i\alpha_i=0$, 
+    then $\sum_{i=1}^n c_i\beta_i=0$.
+
+    \item[3.] (20pt) Let $V,W$ be finite--dimensional $\R$-linear spaces 
+    and let $T:V \to W$ be a linear map. For a subset $U \subset W$, 
+    denote $T^{-1}(U)$ to be the pre--image of $U$ under $T$, 
+    that is, $T^{-1}(U)=\{\alpha \in V \mid T(\alpha) \in U\}$.\\
+    (1) (2pt) If $W'$ is a subspace of $W$, 
+    show that $T^{-1}(W')$ is a subspace of $V$.\\
+    (2) (4pt) Given $2$ subspaces $W_1,W_2 \subset W$. 
+    Show that $T^{-1}(W_1+W_2)=T^{-1}(W_1)+T^{-1}(W_2)$.\\
+    (3) (14pt) Given $2$ subspaces $W_1,W_2 \subset W$. 
+    Show that the following two statements are equivalent:\\
+    (a) $W_1 \cap W_2 \cap R(T)=\{0\}$ and $T$ is injective.\\
+    (b) $\dim(T^{-1}(W_1))+\dim(T^{-1}(W_2))=\dim(T^{-1}(W_1+W_2))$.
+    \item[4.] (20pt) Given a positive integer $n$. 
+    A matrix $A=[a_{ij}]\in\R^{n \times n}$ is called 
+    a \textit{magic matrix} if the sum of entries 
+    in each column and each row is a fixed number, namely, 
+    $\sum_{k=1}^na_{kj}=\sum_{k=1}^na_{ik}$ for all $1 \le i,j \le n$. 
+    A matrix $A\in\R^{n \times n}$ is called 
+    a \textit{permutation matrix} if in each column and each row, 
+    there is exactly one entry to be $1$ and others are $0$ 
+    (for example, the identity matrix $I_n$). 
+    Denote $\mathcal{M}$ to be the set of all magic matrices 
+    in $\R^{n \times n}$, and $\mathcal{P}$ to be 
+    the set of all permutation matrices in $\R^{n \times n}$.\\
+    (1) (4pt) Compute $|\mathcal{P}|$.\\
+    (2) (8pt) Compute the dimension of $\operatorname{Span}(\mathcal{M})$.\\
+    (3) (8pt) Show that $\operatorname{Span}(\mathcal{M})=\operatorname{Span}(\mathcal{P})$.
+
+    \item[5.] (20pt) Let $V$ be an $\R$-linear space. 
+    Let $T:V \to V$ and $S:V \to V$ be invertible linear maps 
+    such that $T^{-1}=T$ and $S^{-1}=S$.\\
+    (1) (3pt) Show that $(T-S)(T+S)=-(T+S)(T-S)$.\\
+    (2) (3pt) Show that $(T+S)^2+(T-S)^2=4I$, where $I$ is the identity map.\\
+    (3) (14pt) Show that \[R(ST-TS)=R(T-S) \cap R(T+S).\]
+    Here $R(*)$ is the range of the linear map.
+\end{itemize}
+
+== 21春高等代数（英才班）期末试题 ==
+\begin{enumerate}
+\item 1-a. (5pt) For the $A$ provided，calculate $e^{A}$.
+
+1-b. (5pt) For the $B$ provided，calculate $e^{B}$.
+
+Here
+$$A=\begin{bmatrix}-2 & 0 & 0 \\0 & 1 & 1 \\0 & 0 & 1\end{bmatrix}, 
+\quad \text { and } \quad B=\begin{bmatrix}-6 & -3 & -4 \\1 & 1 & 1 \\7 & 3 & 5\end{bmatrix}.$$
+
+\item (15pt) Let $W \subset \mathbb{R}^{4}$ be the subspace spanned by
+$$\alpha_{1}=(1,1,1,1), \alpha_{2}=(1,-1,1,-1), \alpha_{3}=(1,2,3,4).$$
+\begin{enumerate}[label=(\arabic*)]
+\item (5pt) Find an \textbf{orthonormal} basis of $W$ by applying the Gram--Schmidt process to $\alpha_{1}, \alpha_{2}, \alpha_{3}$.
+\item (5pt) Let $P$ be the orthogonal projection $P: \mathbb{R}^{4} \rightarrow W$. Find $P(\beta)$ where $\beta=(0,0,0,1)$.
+\item (5pt) Find the matrix of $P$ with respect to the standard basis of $\mathbb{R}^{4}$ and the orthonomal basis of $W$ found in (1).
+\end{enumerate}
+
+\item (20pt) Let $V$ be an $\mathbb{R}$-vector space of $\dim V=n$. 
+Let $f: V \times V \rightarrow \mathbb{R}$ be a non-degenerate symmetric bilinear form.
+\begin{enumerate}[label=(\arabic*)]
+\item（5pt）Show that there exists an integer $0 \leq k \leq n$ and a basis $\mathcal{B}=\{\beta_{1}, \cdots, \beta_{n}\}$ of $V$ such that
+$$f(\beta_{i}, \beta_{j})
+= \begin{cases}0 & \text { if } i \neq j; \\ 1 & \text { if } i=j \leq k; \\ -1 & \text { if } i=j>k.\end{cases}$$
+\item (5pt) Suppose $V=\mathbb{R}^{1 \times 4}$ and $f(\alpha, \beta)=\alpha^{T} A \beta$ 
+where $A=\begin{bmatrix}1 & 0 & 0 & 1 \\ 0 & 1 & 1 & 0 \\ 0 & 1 & 1 & 1 \\ 1 & 0 & 1 & 0\end{bmatrix}$. Find $k$ of $f$ in (1).
+\item (10pt) Show that $k$ is independent of the choice of $\mathcal{B}$ in (1).
+\end{enumerate}
+
+\item (10pt) For the Lie algebra $\mathfrak{sl}_{2} \mathbb{C}$, we fix its generators
+$$H=\begin{bmatrix}1 & 0 \\0 & -1\end{bmatrix}, 
+X=\begin{bmatrix}0 & 1 \\0 & 0\end{bmatrix}, 
+\quad \text { and } \quad Y=\begin{bmatrix}0 & 0 \\1 & 0\end{bmatrix}.$$
+Let $V$ be a finite-dimensional representation of $\mathfrak{sl}_{2} \mathbb{C}$. 
+Suppose $v \in V$ is an eigenvector of $H$, show that there is an integer $k$ such that $X^{k}(v) \neq 0$ and $X^{k+1}(v)=0$.
+
+\item (15pt) Let $V$ be a finite-dimensional $\mathbb{C}$-vector space with an inner product $\langle\cdot \mid \cdot\rangle$. Let $T: V \rightarrow V$ be a linear map.
+\begin{enumerate}[label=(\arabic*)]
+\item (5pt) Suppose there exists a polynomial $p \in \mathbb{C}[t]$ such that $T^{*}=p(T)$. Show that $T$ is normal. 
+\item (10pt) Suppose $T$ has the property that a subspace $W \subset V$ is $T^{*}$-invariant if and only if $W$ is $T$-invariant. Show that $T$ is normal.
+\end{enumerate}
+\end{enumerate}
+
+== 21春高等代数（英才班）期中试题 ==
+\begin{enumerate}
+\item (15 pt) Let $A=\begin{bmatrix}1 & 1 & -1 \\ -3 & -3 & 3 \\ -2 & -2 & 2\end{bmatrix} \in \mathbb{C}^{3 \times 3}$.
+\begin{enumerate}[label=(\arabic*)]
+\item (2 pt) Compute the characteristic polynomial of $A$.
+\item (2 pt) Compute the minimal polynomial of $A$.
+\item (2 pt) Compute all eigenvalues of $A$.
+\item (4 pt) Compute the Jordan canonical form of $A$.
+\item (5 pt) Compute $e^{A}$.
+\end{enumerate}
+\item (10 pt) Consider the linear equations
+$$\begin{array}{r}
+2 x_{1}+x_{2}-x_{3}+x_{4}-3 x_{5}=0 ; \\
+x_{1}+x_{2}-x_{3}+x_{5}=0 .
+\end{array}$$
+\begin{enumerate}[label=(\arabic*)]
+\item (5 pt) Give a basis of the solution space (as a subspace of $\mathbb{R}^{5}$).
+\item (5 pt) Use the Gram--Schmidt process to make the basis given in (1) \textbf{orthonormal}.
+\end{enumerate}
+\item (10 pt) Let $A=\begin{bmatrix}1 & 0 & 1 \\ 1 & 1 & 0\end{bmatrix} \in \mathbb{C}^{2 \times 3}$. 
+Compute the singular value decomposition (SVD) of $A$.
+\item (18 pt) Let $V$ be a complex inner product space. Let $T: V \rightarrow V$ be a linear map. Suppose that the adjoint $T^{*}$ exists.
+\begin{enumerate}[label=(\arabic*)]
+\item (4 pt) Show that for $\alpha \in V$, $T^{*} T \alpha=0$ if and only if $T \alpha=0$;
+\item (8 pt) Show that $V=R(T) \oplus N(T^{*})$ if and only if $R(T^{*})=R(T^{*}T)$.
+\item (6 pt) Suppose that $V$ is finite dimensional and $T=I-U$ where $U$ is unitary. Show that $R(T^{*})=R(T^{*}T)$.
+\end{enumerate}
+\item (15 pt) Let $A \in \mathbb{C}^{n \times n}$ be a positive-definite Hermitian matrix, 
+and let $X \in \mathbb{C}^{n \times n}$ be a Hermitian matrix. Let $k, l, m$ be positive integers.
+\begin{enumerate}[label=(\arabic*)]
+\item (5 pt) Show that if $X^{k}=0$, then $X=0$.
+\item (10 pt) Show that if $X^{k}AX^{l}AX^{m}=0$, then $X=0$.
+\end{enumerate}
+\item (16 pt) Let $A \in \mathbb{C}^{n \times n}$. Show that $A$ is similar to $A^{k}$ for all integers $k \neq 0$ if and only if $1$ is the only eigenvalue of $A$.
+\item (16 pt) Let $A \in \mathbb{C}^{n \times n}$. Show that
+\begin{enumerate}[label=(\arabic*)]
+\item (8 pt) $A$ is normal if and only if all eigenvalues of $AA^{*}-A^{*}A$ are zero.
+\item (8 pt) $A$ is normal if and only if $A^{2}A^{*}=AA^{*}A$.
+\end{enumerate}
+\end{enumerate}
+
+== 20秋高等代数（英才班）期末试题 ==
+
+\begin{enumerate}
+  \item (10 points) Let $A=\begin{bmatrix}-1 & -2 & 0 \\ -1 & 0 & 2 \\ -1 & -1 & 1\end{bmatrix}$; 
+  let $\mathbf{x}=\begin{bmatrix}x_{1} \\ x_{2} \\ x_{3}\end{bmatrix}$; 
+  let $\vec{b}_{1}=\begin{bmatrix}-1 \\ -1 \\ -1\end{bmatrix}$ 
+  and $\vec{b}_{2}=\begin{bmatrix}0 \\ 0 \\ -1\end{bmatrix}$;\\
+(1) find all solutions of the system $A \mathbf{x}=\vec{b}_{1}$;\\
+(2) find all solutions of the system $A \mathbf{x}=\vec{b}_{2}$.
+
+  \item (10 points) Let $T: \mathbb{R}^{3} \rightarrow \mathbb{R}^{3}$ be a linear transformation, given by the $3 \times 3$ matrix $A$:
+$$A=\begin{bmatrix}
+1 & -1 & 0 \\
+0 & 1 & -1 \\
+-1 & 0 & 1
+\end{bmatrix}.$$
+Let $\mathfrak{B}=\left\{\begin{bmatrix}1 \\ 1 \\ 0\end{bmatrix},
+\begin{bmatrix}0 \\ 1 \\ 0\end{bmatrix},
+\begin{bmatrix}0 \\ 0 \\ 1\end{bmatrix}\right\}$,\\
+(1) show that $\mathfrak{B}$ is a basis of $\mathbb{R}^{3}$;\\
+(2) find $[T]_{\mathfrak{B}}$, which is a $3 \times 3$ matrix.
+
+\item (15 points)\\
+(1) Let $A=\begin{bmatrix}0 & 1 & 1 & 1 \\ 1 & 0 & 1 & 1 \\ 1 & 1 & 0 & 1 \\ 1 & 1 & 1 & 0\end{bmatrix}$, find $\det A$;\\
+(2) let $B=\begin{bmatrix}0 & 0 & c_{0} \\ 1 & 0 & c_{1} \\ 1 & 1 & c_{2}\end{bmatrix}$, find its characteristic polynomial $\det(x I-B)$;\\
+(3) Find an $n \times n$ matrix $C$ so that its characteristic polynomial is
+$$\det(x I-C)=x^{n}+c_{n-1} x^{n-1}+\cdots+c_{1} x+c_{0}.$$
+Prove it.
+
+\item (15 points) Let $T: V \rightarrow W$ be a linear transformation 
+between two finite dimensional $\mathbb{R}$ vector spaces. Show that
+\[\dim \operatorname{Null}(T)+\dim \operatorname{Range}(T)=\dim V.\]
+
+\item (15 points) Let $T: \mathbb{R}^{2} \rightarrow \mathbb{R}^{2}$ be a linear transformation given by $A=\begin{bmatrix}1 & 1 \\ 0 & -1\end{bmatrix}$,\\
+(1) we know $c_{1}=1$ is an eigenvalue of $A$; find the other eigenvalue $c_{2}$; 
+further for each eigenvalue $c_{1}$ and $c_{2}$, find one of its associated eigenvector;\\
+(2) write the minimal polynomial of $A$ as $p(x)=(x-c_{1})(x-c_{2})$; let $p_{i}(x)=(x-c_{i})$. 
+Show that each $\operatorname{Null}(\left.p_{i}(x)\right|_{x=A})$ is the span of one of the eigenvectors found;\\
+(3) Following Theorem 12 of Section 6, we know that there are projections $E_{1}$ and $E_{2}: \mathbb{R}^{2} \rightarrow \mathbb{R}^{2}$ so that
+$$T=c_{1} E_{1}+c_{2} E_{2}.$$
+Find the matrix forms $A_{1}$ and $A_{2}$, of $E_{1}$ and $E_{2}$, respectively; verify the above identity.
+
+\textit{Let $A$ be an $n \times n$ matrix. We know that the row space (resp. column space) of $A$ is the span of the row vectors (resp. column vectors) of $A$; 
+the row rank of $A$ is the dimension of its row space, identical to the column rank. 
+Answer the following question; when asked why, give a brief reason.}
+
+\item (17 points) Let $A^{\prime}$ be derived from $A$ via a sequence of row operations. Answer the following questions:\\
+(1) Are the row spaces of $A$ and $A^{\prime}$ the same? 
+Do they have identical dimensions? Why?\\
+(2) Are the column spaces of $A$ and $A^{\prime}$ the same? 
+Do they have identical dimensions? Why?\\
+(3) In case $A^{\prime}$ is in Echelon form, how to read the row rank of $A^{\prime}$? 
+And how to read off the column rank of $A^{\prime}$?
+
+\item (18 points) Let $T: \mathbb{R}^{6} \rightarrow \mathbb{R}^{6}$ be a linear transformation, having characteristic polynomial
+
+$$f(x)=(x-1)^{3}(x+1)^{3} .$$
+
+Let $W_{ \pm}=\operatorname{Null}\left((T \pm I)^{3}\right)$. Show that\\
+(1) $W_{-}$ and $W_{+}$ are $T$ invariant, namely $T(W_{\pm}) \subset W_{\pm}$;\\
+(2) $\mathbb{R}^{6}=W_{-} \oplus W_{+}$.
+\end{enumerate}
+
+
+== 20秋高等代数（英才班）期中试题 ==
+
+\begin{enumerate}
+  \item (20 pt) Computations. Write down the correct results of each question.\\
+(1) (5 pt) Compute the inverse of $\begin{bmatrix}3 & -1 & 2 \\ 1 & 4 & -3 \\ 2 & 2 & 1\end{bmatrix}$;\\
+(2) (5 pt) Compute the rank of $\begin{bmatrix}1 & 7 & 7 & 9 \\ 7 & 5 & 1 & -1 \\ 4 & 2 & -1 & -3 \\ -1 & 1 & 3 & 5\end{bmatrix}$;\\
+(3) (5 pt) Describe the solutions of
+\begin{align*}
+5 x_{1}+3 x_{2}+5 x_{3}+12 x_{4}&=10; \\
+2 x_{1}+2 x_{2}+3 x_{3}+5 x_{4}&=4; \\
+x_{1}+7 x_{2}+9 x_{3}+4 x_{4}&=2.
+\end{align*}
+(4) (5 pt) Let $A=\begin{bmatrix}1 & 1 & 1 & 1 \\ 4 & 3 & 2 & 1 \\ 1 & 4 & 1 & 1 \\ 5 & 1 & 1 & 1 \\ 1 & 1 & 3 & 1\end{bmatrix}$. 
+Find an invertible matrix $P$ such that $P A$ is a row--reduced echelon matrix.
+
+\item (20 pt) Let $V$ be an $\mathbb{R}$-linear space. 
+Consider two finite subsets $S, T$ of $V$. 
+Suppose that $S$ is linearly independent, and $T$ spans $V$. 
+Show that for any integer $0 \leq k \leq \min \{|S|,|T|\}$, 
+we can find subsets $S_{k} \subseteq S, T_{k} \subseteq T$, 
+such that $\left|S_{k}\right|=\left|T_{k}\right|=k$ 
+and $\left(T \setminus T_{k}\right) \cup S_{k}$ spans $V$.
+
+\item (20 pt) Let $V$ be an $n$-dimensional $\mathbb{R}$-linear space. 
+Consider an $\mathbb{R}$-linear map $T: V \rightarrow V$ satisfying $T^{2}=-I$.\\
+(1) (5 pt) Show that for any non--zero $\alpha \in V$, $\{\alpha, T \alpha\}$ is linearly independent.\\
+(2) (10 pt) Show that we can find an ordered basis of $V$ of the form
+$$\left\{\alpha_{1}, T \alpha_{1}, \alpha_{2}, T \alpha_{2}, \ldots, \alpha_{k}, T \alpha_{k}\right\}.$$
+(3) (3 pt) Write down the matrix of $T$ relative to the ordered basis in (2).\\
+(4) (2 pt) Show that any two matrices $A, B \in \mathbb{R}^{n \times n}$ 
+satisfying $A^{2}=B^{2}=-I_{n}$ are similar to each other.
+
+\item (20 pt) Let $m, n, k, l$ be positive integers. 
+Consider two matrices $A \in \mathbb{R}^{m \times n}$ and $B \in \mathbb{R}^{k \times l}$. 
+Consider the $\mathbb{R}$-linear map $T: \mathbb{R}^{n \times k} \rightarrow \mathbb{R}^{m \times l}$ defined by $T(X)=A X B$.
+
+(1) (8 pt) Show that $T$ is invertible if and only if $m=n, k=l$, and $A, B$ are invertible.\\
+(2) (12 pt) Compute $r(T)$ in terms of $r(A)$ and $r(B)$.
+
+\item (20 pt) Let $V, W, Z$ be finite--dimensional $\mathbb{R}$-linear spaces. 
+Consider two linear maps $T: V \rightarrow W$ and $U: W \rightarrow Z$. Prove that
+
+(1) (10 pt) $r(U T)=r(U)$ if and only if there exists a linear map $S: W \rightarrow V$ such that $U T S=U$.\\
+(2) (10 pt) $r(U T)=r(T)$ if and only if there exists a linear map $S^{\prime}: Z \rightarrow W$ such that $S^{\prime} U T=T$.
+\end{enumerate}

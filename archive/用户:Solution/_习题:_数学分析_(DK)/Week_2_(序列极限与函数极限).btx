@@ -1,0 +1,649 @@
+\newenvironment{solution}{\begin{proofc}[解答]}{\end{proofc}}
+
+== 习题A ==
+\begin{enumerate}
+    \item[1.]计算下列数列极限（含不收敛），并说明理由（方法不限，使用极限定义、性质、运
+    算法则均可）：
+    \begin{enumerate}
+        \item[(a)]$\displaystyle \lim_{n\to+\infty}\frac{\sqrt{n^2+n}}{n}.$
+        \item[(b)]$\displaystyle \lim_{n\to+\infty}\frac{(3^0+3^1+\cdots+3^n)+(2^0+2^1+\cdots+2^n)}{3^n+2^n}.$
+        \item[(c)]$\displaystyle \lim_{n\to+\infty}\frac{\sin{(n)}+\arctan{(n\pi)}}{n+2^{-n}}.$
+        \item[(d)]$\displaystyle \lim_{n\to+\infty}\frac{1}{n}\sum_{i=1}^{n}(-1)^i i.$
+        \item[(e)]$\displaystyle \lim_{n\to+\infty}\sqrt[n]{\frac{1}{n!}}.$
+        \item[(f)]$\displaystyle \lim_{n\to+\infty}\left(\sqrt{n^2+2n}-\sqrt{n^2-3n}\right).$
+        \item[(g)]$\displaystyle \lim_{n\to+\infty}\frac{1\cdot3\cdot5\cdot\cdots\cdot(2n-1)}{2\cdot4\cdot6\cdot\cdots\cdot(2n)}.$
+    \end{enumerate}
+    \begin{solution}
+        仅解答(e)和(g).
+        \begin{enumerate}
+            \item[(e)]
+            由平均值不等式，我们知道
+            \[
+            0\leq \sqrt[n]{\frac{1}{n!}} \leq \frac{1}{n}\sum_{i=1}^{n}\frac{1}{n}.	
+            \]
+            又有
+            \[
+            \lim_{n \to +\infty}\frac{1}{n}=0.
+            \]
+            由 Stolz 定理可知
+            \[
+            \lim_{n \to +\infty}\frac{1}{n}\sum_{i=1}^{n}\frac{1}{n}=0.
+            \]
+            由极限的夹逼性可知
+            \[
+            \lim_{n \to +\infty}\sqrt[n]{\frac{1}{n!}}=0.
+            \]
+            (本题亦可用 Stirling 公式.)
+            \item[(g)]注意到
+            \[
+            \forall k\in\mathbb{N}_{+}, \sqrt{(2k-1)(2k+1)}<2k.
+            \]
+            则
+            \[
+            0\leq\frac{1\cdot3\cdot5\cdot...\cdot(2n-1)}{2\cdot4\cdot6\cdot...\cdot(2n)}
+            \leq\frac{1\cdot3\cdot5\cdot...\cdot(2n-1)}{\sqrt{1\cdot3}\cdot\sqrt{3\cdot5}\cdot\sqrt{5\cdot7}\cdot...\cdot\sqrt{(2n-1)\cdot(2n+1)}}
+            =\frac{1}{\sqrt{2n+1}}.
+            \]
+            由
+            \[
+            \lim_{n \to +\infty}\frac{1}{\sqrt{2n+1}}=0.
+            \]
+            与极限的夹逼性知
+            \[
+            \lim_{n \to +\infty}\frac{1\cdot3\cdot5\cdot...\cdot(2n-1)}{2\cdot4\cdot6\cdot...\cdot(2n)}=0.
+            \]
+        \end{enumerate}
+        \end{solution}
+
+    \item[2.]证明下列数列为无穷大量：
+    \begin{enumerate}
+        \item[(a)]$\displaystyle a_n=\frac{n^2+1}{2n+1}$.
+        \item[(b)]$\displaystyle a_n=100^n+(-99)^n$.
+        \item[(c)]$\displaystyle a_n=\frac{1}{\sqrt{n+1}}+\frac{1}{\sqrt{n+2}}+\cdots+\frac{1}{\sqrt{2n}}$.
+        \item[(d)]$\displaystyle a_n=\frac{1}{1^s}+\frac{1}{2^s}+\cdots+\frac{1}{n^s}$，其中 $s\leq 1$ 为一个给定实数.
+    \end{enumerate}
+
+    \item[3.]使用 Stolz 定理计算以下极限：
+    \begin{enumerate}
+        \item[(a)]$\displaystyle \lim_{n \to +\infty}\frac{\log_{a}{n}}{n}$，其中 $a>1$.
+        \item[(b)]$\displaystyle \lim_{n \to +\infty}\frac{1^2+3^2+5^2+...+(2n+1)^2}{n^3}$.
+        \item[(c)]$\displaystyle \lim_{n \to +\infty}n[\frac{1^2+3^2+5^2+...+(2n+1)^2}{n^3}-A]$，其中 $A$ 为 (b) 的极限值.
+    \end{enumerate}
+
+    \item[4.]计算下列函数极限（含不收敛/无穷大量），并说明理由（除洛必达法则外方法不限，使用
+    极限定义、极限性质、运算法则均可）：
+    \begin{enumerate}
+        \item[(a)]$\displaystyle \lim_{x\to 0}x\sin{\frac{1}{x}}$.
+        \item[(b)]$\displaystyle \lim_{x\to 0}{\frac{\tan x - \sin x}{x^{3}}}.$
+        \item[(c)]$\displaystyle \lim_{x\to +\infty}e^{x}\sin x.$
+        \item[(d)]$\displaystyle \lim_{x\to +\infty}(\sqrt{x^{2} + x} - x).$
+        \item[(e)]$\displaystyle \lim_{x\to -\infty}(\sqrt{x^{2} + x} - x).$
+        \item[(f)]$\displaystyle \lim_{x\to +\infty}\arctan (\ln x).$
+        \item[(g)]$\displaystyle \lim_{x\to +\infty}\frac{\sin x}{1 + e^{-x}}.$
+        \item[(h)]$\displaystyle \lim_{x\to +\infty}x^{\frac{1}{x}}.$
+    \end{enumerate}
+    
+    \item[5.]证明:
+
+    \[\lim_{n\to +\infty}\left(a_{1}^{n} + a_{2}^{n} + \dots +a_{p}^{n}\right)^{\frac{1}{n}} = \max_{1\leq i\leq p}\{a_{i}\}.\]
+
+    其中 $a_{i}\geq 0\,(i = 1,2,\cdots ,p)$.
+
+    \item[6.]设 $a,b > 0,\,\theta \in (0,1)$ ,证明:
+
+    \[\lim_{p\to 0}\left[\theta a^{p} + (1 - \theta)b^{p}\right]^{1 / p} = a^{\theta}b^{1 - \theta}.\]
+    \[\lim_{p\to +\infty}\left[\theta a^{p} + (1 - \theta)b^{p}\right]^{1 / p} = \max\{a,b\}.\]
+\end{enumerate}
+
+== 习题B ==
+
+\begin{enumerate}
+    \item[1.]设 $a_{n} > 0$, 证明:若 $\displaystyle \lim_{n\to +\infty}{
+    \frac{a_{n + 1}}{a_{n}}} = L$, 则 $\displaystyle \lim_{n\to +\infty}{\sqrt[n]{a_{n}}} = L$.
+    反之是否成立? 给出反例或证明.
+    \begin{solution}
+        $\cdot$ 当$L=0$时，由极限定义知
+        \[
+        \forall \epsilon>0, \exists N>0, \forall n>N: \left|\frac{a_{n+1}}{a_{n}}\right|<\epsilon.
+        \]
+        定义$a_{0}>0$，由上述的极限定义知不影响极限的值，从而有
+        \[
+        \left|a_{n}\right|<\epsilon \left|a_{n-1}\right|<...<\epsilon^n\left|a_{0}\right|.
+        \]
+        因此
+        \[
+        \left|\sqrt[n]{a_{n}}\right|<\sqrt[n]{\epsilon^n\left|a_{0}\right|}=\epsilon\sqrt[n]{a_{0}}.
+        \]
+        故$\underset{n \to +\infty}{\lim}\sqrt[n]{a_{0}}=0=L.$\\ \\
+        $\cdot$当$L\neq 0$时，由$a_{n}>0$知$L>0$.
+        由$y=\ln{x}$是连续函数可知
+        \[
+        \lim_{n\rightarrow + \infty}(\ln{a_{n+1}}-\ln{a_{n}})=\lim_{n\rightarrow + \infty}\ln\frac{a_{n+1}}{a_{n}}=\ln{L}.
+        \]
+        由Stolz定理知
+        \[
+        \lim_{n \to +\infty}\frac{\ln{a_{n}}}{n}
+        =\lim_{n \to +\infty}\frac{\ln{a_{n}-\ln{a_{n-1}}}}{n-(n-1)}
+        =\lim_{n\rightarrow + \infty}(\ln{a_{n+1}}-\ln{a_{n}})=\ln{L}.
+        \]
+        从而由$y=e^x$为连续函数可知
+        \[
+        \lim_{n \to +\infty}{\sqrt[n]{a_{n}}}=\lim_{n \to +\infty}e^{\frac{\ln{a_{n}}}{n}}=e^{\underset{n\to+\infty}{\lim}\frac{\ln{a_{n}}}{n}}=e^{\ln L}=L.
+        \]
+        但反之不一定成立.\\
+        例如$a_{n}=2^{(-1)^n}$，我们有
+        \[
+        \lim_{n \to +\infty}{\sqrt[n]{a_{n}}}=\lim_{n \to +\infty}2^{\frac{(-1)^n}{n}}=2^{\underset{n\to+\infty}{\lim}{\frac{(-1)^n}{n}}}=2^0=1.
+        \]
+        但是
+        \[
+        \frac{a_{n+1}}{a_{n}}=2^{(-1)^{n+1}-(-1)^n}=4^{(-1)^{n+1}}.
+        \]
+        上式在 $n$ 为偶数时，取值 $\displaystyle\frac{1}{4}$；在 $n$ 为奇数时，取值 $4$.\\
+        因此序列有两条子列分别收敛于 $\displaystyle \frac{1}{4}$ 和收敛于 $4$，从而 $\displaystyle \underset{n\to+\infty}{\lim}\frac{a_{n+1}}{a_{n}}$ 不存在.\\
+        (也可以考虑 
+        \[
+        a_n=
+            \begin{cases}
+                n &, n \text{ 为奇数}\\
+                1 &, n \text{ 为偶数}.
+            \end{cases}
+        \]
+        作为反例)
+    \end{solution}
+
+    \item[2.]数列 $\{a_{n}\}$ 满足 $a_{1} = 1$, 且对所有 $n\geq 1$ 有 $\displaystyle a_{n + 1} = 
+    a_{n} + \frac{1}{a_{n}}$. 问数列 $\{a_{n}\}$ 是否收敛? 若收敛,请计算其极限,若发散,
+    请说明理由.
+
+    \item[3.]数列 $\displaystyle a_{n} = 1 + 2^{-n}\,(n\geq 1)$, $\displaystyle b_{n} = \prod_{i = 1}^{n}
+    a_{n}$. 判断下述命题真伪并说明理由：数列 $\{b_{n}\}$ 是无穷大量.
+    \begin{solution}
+    命题为假. 事实上，我们有
+    \[
+    b_{n}\leq \left(\frac{1}{n} \sum_{i=1}^{n}(1+2^{-i})\right)^n 
+    \displaystyle=\left(1+\frac{1}{n}\cdot\frac{1}{2}\cdot\frac{1-(\frac{1}{2})^n}{1-\frac{1}{2}}\right)^n
+    \displaystyle=\left(1+\frac{1-(\frac{1}{2})^n}{n}\right)^n
+    <\left(1+\frac{1}{n}\right)^n\rightarrow \mathrm{e}. (n\to+\infty)
+    \]
+    因此数列$\{b_{n}\}$并非无穷大量.
+    \end{solution}
+
+    \item[4.]对于 $n\geq 2$,定义 $a_{n}$ 为 $n$ 的最小素因子, 定义 $b_{n}$ 为 $n$ 的
+    最大素因子. 问数列 $\displaystyle\biggl\{\frac{a_{n}}{b_{n}}\biggr\}$ 是否收敛? 若收敛,请计算其极限,若发散,请说明
+    理由.
+
+    \item[5.]设数列 $a_{n} = \{n\sqrt{2}\}\,(n\geq 1)$, 其中 $\{x\} = x - \lfloor x\rfloor \in [0,1)$ 
+    代表 $x$ 的小数部分.证明:
+    \begin{enumerate}
+        \item[(a)]$\{a_{n}\}$ 不收敛;
+        \item[(b)]$\{a_{n}\}$ 有收敛到1的子列;
+        \item[(c)]$\displaystyle \sum_{i = 1}^{n}a_{n}$ 是无穷大量.
+    \end{enumerate}
+    \begin{solution}
+        \begin{enumerate}
+            \item[(b)]
+            考虑 Pell 方程 $x^2-2y^2=1$，该方程有无穷多组正整数解 $(x_{k},y_{k})$，例如有基本解 $(3,2)$，并由递推关系得到其他解.\\
+            对于每组解 $(x_{k},y_{k})$，有
+            $\displaystyle x_{k}-y_{k}\sqrt{2}=\frac{1}{x_{k}+y_{k}\sqrt{2}}.$
+            由于当 $k\to+\infty$ 时，$x_{k}+y_{k}\sqrt{2} \to +\infty$，故 $x_{k}-y_{k}\sqrt{2}\to 0$.
+            
+            现在考虑子列 $\{y_{k}\}$，则 $\displaystyle a_{y_{k}}=\{y_{k}\sqrt{2}\}=\{x_{k}-(x_{k}-y_{k}\sqrt{2})\}.$
+            
+            因为 $x_{k}\in\mathbb{N}_{+}$，且对于足够大的 $k$，有 $x_{k}-y_{k}\sqrt{2}\in (0,1)$，所以
+            $\displaystyle \{x_{k}-(x_{k}-y_{k}\sqrt{2})\}=1-(x_{k}-y_{k}\sqrt{2}).$
+            因此
+            $\displaystyle a_{y_{k}}=1-(x_{k}-y_{k}\sqrt{2})\to 1 \,(k\to +\infty)$.
+
+            从而存在子列$\{a_{y_{k}}\}$收敛到1. 
+    
+        \item[(c)]
+            由 $(\mathrm{b})$ 知，$\displaystyle\exists K>0 \,\,\mathrm{s.t.}\,\, \forall k>K: a_{y_{k}}>\frac{1}{2}.$
+            此外我们有 $\displaystyle\forall n\in\mathbb{N}_{+},\, a_{n}>0$，从而有
+            \[
+            \sum_{i=1}^{+\infty}a_{i}>\sum_{i=1}^{+\infty}a_{y_{i}}>\sum_{i=1}^{+\infty}\frac{1}{2}.
+            \]
+            即 $\displaystyle\sum_{i=1}^{n}a_{i}$ 是无穷大量.
+        \end{enumerate}
+    \end{solution}
+    
+    \item[6.]设 $P(x)$ 为一多项式, 数列 $\{a_{n}\}\, (n \geq 1)$ 满足 $a_{n+1} = P(a_{n})\, (n \geq 1)$. 
+    假设数列 $\{a_{n}\}$ 收敛且 $\displaystyle \lim_{n \to +\infty} a_{n} = L$, 证明: $P(L) = L$.
+
+    \item[7.]设数列 $\{a_{n}\}\, (n \geq 1)$ 满足递推式 $\displaystyle a_{n+1} = a_{n}(1 - a_{n})\, (n \geq 1)$. 
+    根据初值 $a_{1}$ 的不同取值, 讨论数列 $\{a_{n}\}$ 的收敛性.
+
+    \item[8.]设 $\displaystyle \lim_{n \to +\infty} a_{n} = a$, $\displaystyle \lim_{n \to +\infty} \frac{b_{1} + b_{2} + \cdots + b_{n}}{n} = b$, 且 $\{b_{n}\}$ 是有界序列, 证明:
+    \begin{enumerate}
+        \item[(a)]$\displaystyle \lim_{n \to +\infty} \frac{a_{1} + a_{2} + \cdots + a_{n}}{n} = a.$
+        \item[(b)]$\displaystyle \lim_{n \to +\infty} \frac{a_{1}b_{n} + a_{2}b_{n - 1} + \cdots + a_{n}b_{1}}{n} = ab.$
+        \item[(c)]$\displaystyle \lim_{n \to \infty} \frac{a_{1}b_{\sigma(1)} + a_{2}b_{\sigma(2)} + \cdots + a_{n}b_{\sigma(n)}}{n} = ab$, 其中 $\sigma$ 表示一个置换，即 $\sigma(1), \sigma(2), \cdots, \sigma(n)$ 是 $1, 2, \cdots , n$ 的一个重排列.
+    \end{enumerate}
+    \begin{solution}
+        \begin{enumerate}
+        \item[(a)] 不妨设 $a=0$，否则我们可以用 $a_{n}'=a_{n}-a$ 替换 $a_{n}$.\\
+        接下来我们只需证明：
+        \[
+        \lim_{n \to +\infty} a_{n}=0 \Rightarrow \lim_{n \to +\infty}\frac{1}{n}\sum_{i=1}^{n}a_{n}=0.
+        \]
+        由 $\{a_{n}\}$ 是无穷小量可知：$
+        \forall \epsilon>0, \exists N_{1}\in\mathbb{N}_{+}$ 使得当 $\displaystyle n>N_{1}$时，有 $\left|a_{n}\right|<\frac{\epsilon}{2}$.\\
+        由 $a_{1}+a_{2}+\cdots+a_{N_{1}}$ 是一个固定的数，因此可以取 $N>N_{1}$，使得当 $n>N$ 时成立
+        \[
+        \left|\frac{a_{1}+a_{2}+\cdots+a_{N_{1}}}{n}\right|<\frac{\epsilon}{2}.
+        \]
+        于是，由三角不等式，我们有
+        \[
+        \left|\frac{1}{n}\sum_{i=1}^{n}a_{n}\right|
+        =\left|\frac{1}{n}\sum_{i=1}^{N_{1}}a_{i}+\frac{1}{n}\sum_{i=N_{1}+1}^{n}a_{i}\right|
+        \leq \left|\frac{1}{n}\sum_{i=1}^{N_{1}}a_{i}\right|+\left|\frac{1}{n}\sum_{i=N_{1}+1}^{n}a_{i}\right|
+        <\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon.
+        \]
+        即
+        \[
+        \lim_{n \to +\infty}\frac{1}{n}\sum_{i=1}^{n}a_{n}=0.
+        \]
+
+        \item[(b)]
+        令 $a_{n}=a+x_{n},b_{n}=b+y_{n}$，那么由 $\underset{n\to+\infty}{\lim}a_{n}=a,\underset{n\to+\infty}{\lim}b_{n}=b$ 可知
+        \[
+        \lim_{n \to +\infty}x_{n}=0,\lim_{n \to +\infty}y_{n}=0.
+        \]
+        从而
+        \[
+        \exists M>0,\forall n\in\mathbb{N}_{+}: \left|y_{n}\right|\leq M.
+        \]
+        因为
+        \[
+        \frac{a_{1}b_{n}+a_{2}b_{n-1}+\cdots+a_{n}b_{1}}{n}=ab+\frac{b}{n} \sum_{k=1}^{n}x_{k}+\frac{a}{n} \sum_{k=1}^{n} y_{k}+\frac{1}{n} \sum_{k=1}^{n}x_{k}y_{n+1-k}.
+        \]
+        \[
+        \frac{1}{n}\sum_{k=1}^{n}\left|x_{k}y_{n+1-k}\right|\leq \frac{M}{n}\sum_{k=1}^{n}\left|x_{k}\right|.
+        \]
+        且由 (a) 有
+        \[
+        \lim_{n \to +\infty}\frac{1}{n}\sum_{k=1}^{n}x_{k}=0,
+        \lim_{n \to +\infty}\frac{1}{n}\sum_{k=1}^{n}y_{k}=0,
+        \lim_{n \to +\infty}\frac{1}{n}\sum_{k=1}^{n}\left|x_{k}\right|=
+        \lim_{n \to +\infty}\frac{1}{n}\sum_{k=1}^{n}\left|a_{k}-a\right|=0.
+        \]
+        从而
+        \[
+        \lim_{n \to +\infty}\frac{a_{1}b_{n}+a_{2}b_{n-1}+\cdots+a_{n}b_{1}}{n}=ab. 
+        \]
+
+        \item[(c)]
+        令 $a_{n}=a+x_{n},b_{\sigma(n)}=b+y_{\sigma(n)}$，那么由 $\underset{n\to+\infty}{\lim}a_{n}=a,\underset{n\to+\infty}{\lim}b_{n}=b$ 可知
+        \[
+        \lim_{n \to +\infty}x_{n}=0,\lim_{n \to +\infty}y_{n}=0.
+        \]
+        从而
+        \[
+        \exists M>0,\forall n\in\mathbb{N}_{+}: \left|y_{n}\right|\leq M.
+        \]
+        因为
+        \[
+        \frac{a_{1}b_{\sigma(1)}+a_{2}b_{\sigma(2)}+\cdots+a_{n}b_{\sigma(n)}}{n}=ab+\frac{b}{n} \sum_{k=1}^{n}x_{k}+\frac{a}{n} \sum_{k=1}^{n} y_{k}+\frac{1}{n} \sum_{k=1}^{n}x_{k}y_{\sigma(k)}.
+        \]
+        \[
+        \frac{1}{n}\sum_{k=1}^{n}\left|x_{k}y_{\sigma(k)}\right|\leq \frac{M}{n}\sum_{k=1}^{n}\left|x_{k}\right|.
+        \]
+        且由 (a) 有
+        \[
+        \lim_{n \to +\infty}\frac{1}{n}\sum_{k=1}^{n}x_{k}=0,
+        \lim_{n \to +\infty}\frac{1}{n}\sum_{k=1}^{n}y_{k}=0,
+        \lim_{n \to +\infty}\frac{1}{n}\sum_{k=1}^{n}\left|x_{k}\right|=
+        \lim_{n \to +\infty}\frac{1}{n}\sum_{k=1}^{n}\left|a_{k}-a\right|=0.
+        \]
+        从而
+        \[
+        \lim_{n \to +\infty}\frac{a_{1}b_{\sigma(1)}+a_{2}b_{\sigma(2)}+\cdots+a_{n}b_{\sigma(n)}}{n}=ab. 
+        \]
+        \end{enumerate}
+    \end{solution}
+
+    \item[9.]设 $0 < \lambda < 1$, $\displaystyle \lim_{n \to +\infty} a_{n} = a$, 证明:
+
+    \[\lim_{n \to +\infty} \sum_{k=0}^{n} \lambda^{k} a_{n-k} = \frac{a}{1 - \lambda}.\]
+    
+    \begin{solution}
+        令 $\mu=\lambda^{-1}$，则
+        \begin{equation*} 
+        \begin{aligned}
+        \lim_{n \to +\infty}\sum_{k=0}^{n}\lambda^k a_{n-k}
+        =\lim_{n \to +\infty}\sum_{k=0}^{n}\frac{\mu^na_{n}+\mu^{n-1}a_{n-1}+\cdots+a_{0}}{\mu^n}\overset{\mathrm{Stolz}}{=}
+        \lim_{n \to +\infty}\frac{\mu^n a_{n}}{\mu^{n-1}(\mu-1)}
+        =\frac{a}{1-\lambda}.
+        \end{aligned}
+        \end{equation*}
+    \end{solution}
+
+    \item[10.]给定实数 $a \in \mathbb{R}$, 已知数列 $\{a_{n}\}$ 满足 $\displaystyle \lim_{n \to +\infty} \frac{a_{1} + \cdots + a_{n}}{n} = a$, 
+    证明 $\displaystyle\lim_{n \to +\infty} \frac{a_{n}}{n} = 0$.
+    \begin{solution}
+    令$s_{n}=a_{1}+a_{2}+\cdots +a_{n}$，则 $\displaystyle \lim_{n\to+\infty}\frac{s_{n}}{n}=a$.
+    对于$n\geq 2$，有$a_{n}=s_{n}-s_{n-1}$，故
+    \[
+    \lim_{n \to +\infty}\frac{a_{n}}{n}
+    =\lim_{n \to +\infty}\left(\frac{s_{n}}{n}-\frac{s_{n-1}}{n}\right)
+    =\lim_{n \to +\infty}\left(\frac{s_{n}}{n}\right)-\lim_{n \to +\infty}\left(\frac{n-1}{n}\cdot\frac{s_{n-1}}{n-1}\right)
+    =a-1\cdot a=0.
+    \]
+    对于$n=1$，$\displaystyle\frac{a_{1}}{1}=s_{1}$为常数，不影响极限.
+    \end{solution}
+
+    \item[11.]对于数列 $\{a_{n}\}\, (n \geq 1)$, 定义 $s_{n} = a_{1} + a_{2} + \cdots + a_{n}$ 
+    为其部分和. 若数列 $\{s_{n}\}$ 收敛, 则称数列 $\{a_{n}\}$ 可求和, 且称数列 $\{s_{n}\}$ 的极限为数列 
+    $\{a_{n}\}$ 的和. 若数列 $\displaystyle\biggl\{ \frac{s_{1} + s_{2} + \cdots + s_{n}}{n} \biggr\}$ 收敛, 则称数列 $\{a_{n}\}$ 
+    在 Cesàro (切萨罗) 意义下可求和, 且称数列 $\displaystyle\biggl\{\frac{s_{1} + s_{2} + \cdots + s_{n}}{n}\biggr\}$ 的极限
+    为数列 $\{a_{n}\}$ 的 Cesàro 和.
+    \begin{enumerate}
+        \item[(a)]证明: 若数列 $\{a_{n}\}$ 可求和, 则其必然在 Cesàro 意义下可求和, 且数列 $\{a_{n}\}$ 的 Cesàro 和等于数列 $\{a_{n}\}$ 的和.
+        \item[(b)]设数列 $\displaystyle a_{n} = (-1)^{n}$, 计算数列 $\{a_{n}\}$ 的 Cesàro 和.
+        \item[(c)]是否存在一个每项均为正数的数列 $\{a_{n}\}$, 其不可求和, 但在 Cesàro 意义下可求和? 若存在, 请举例；若不存在, 请说明理由.
+    \end{enumerate}
+    \begin{solution}
+        \begin{enumerate}
+        \item[(a)] 
+        \begin{equation*} 
+            \begin{aligned}
+        \lim_{n \to +\infty}\frac{s_{1}+s_{2}+\cdots+s_{n}}{n}
+        \overset{\mathrm{Stolz}}{=}\lim_{n \to +\infty}s_{n}.
+            \end{aligned}
+        \end{equation*}
+        由此可知数列 $\{a_{n}\}$ 可求和，则其必然在 Cesàro 意义下求和，且数列 $\{a_{n}\}$ 的Cesàro和等于数列 $\{a_{n}\}$ 的和.
+        
+        \item[(b)] 
+        当$n$为奇数时，$s_{n}=-1$；当 $n$ 为偶数时，$s_{n}=0$.
+        因此数列 $\{a_{n}\}$ 的Cesàro和为
+        \begin{equation*} 
+            \begin{aligned}
+        \lim_{n \to +\infty}\frac{s_{1}+s_{2}+\cdots+s_{n}}{n}
+        =\lim_{n \to +\infty}\frac{1}{n}(-\lceil\frac{n}{2}\rceil)=-\frac{1}{2}.
+            \end{aligned}
+        \end{equation*}
+        
+        \item[(c)] 
+        不存在. 因为若 $a_{n}>0$ 且不可求和，则 $s_{n}\to +\infty(n\to+\infty)$，从而由 Stolz 定理可知 $\displaystyle\frac{s_{1}+s_{2}+...+s_{n}}{n}\to +\infty(n\to+\infty)$，不在Cesàro意义下可求和.
+        \end{enumerate}
+    \end{solution}
+
+    \item[12.]($\star$) 设 $\{a_{n}\}$ 是一给定的严格增的正数列, 且已知 $\displaystyle \lim_{n \to +\infty} a_{n} = +\infty$. 
+    证明: 存在严格增的正数数列 $\{b_{n}\}$, 使 $\displaystyle\lim_{n \to +\infty} b_{n} = +\infty$ , 但 $\displaystyle\lim_{n \to +\infty} 
+    \frac{b_{n+1} - b_{n}}{a_{n+1} - a_{n}} = 0$.
+    
+    \begin{solution}
+        考虑数列 $\{b_{n}\}$，其中 $b_{n}=\ln{a_{n}}+\left|\ln{a_{1}}\right|+1$，则由数列 $\{a_{n}\}$ 为严格递增的正数列可知，数列$\{b_{n}\}$也是严格递增的正数列.\\
+        由 $\underset{n\to+\infty}{\lim}a_{n}=+\infty$ 可知
+        \[
+        \lim_{n \to +\infty}b_{n}=\left|\ln{a_{1}}\right|+1+\lim_{n \to +\infty}\ln{a_{n}}
+        =\left|\ln{a_{1}}\right|+1+\ln(\lim_{n \to +\infty}a_{n})=+\infty.
+        \]
+        此外，
+        \[
+        \lim_{n \to +\infty}\frac{b_{n+1}-b_{n}}{a_{n+1}-a_{n}}
+        =\lim_{n \to +\infty} \frac{\ln{a_{n+1}}-\ln{a_{n}}}{a_{n+1}-a_{n}}
+        \overset{\mathrm{Lagrange}}{=}\lim_{n \to +\infty}\frac{\frac{1}{\xi_{n}}(a_{n+1}-a_{n})}{a_{n+1}-a_{n}}=0.
+        \]
+        其中 $\xi_{n}\in(a_{n},a_{n+1})$，则 $\xi_{n}\to +\infty.(n\to+\infty)$.\\
+        所以数列 $\{b_{n}\}$ 即为所求.
+    \end{solution}
+
+    \item[13.](\textbf{重要})在 $\displaystyle \frac{\infty}{\infty}$ 型 Stolz 定理中,
+    \begin{itemize}
+        \item[(a)]若 $\displaystyle\lim_{n \to +\infty} \frac{x_{n} - x_{n-1}}{y_{n} - y_{n-1}} = \infty$,
+        可否得出 $\displaystyle\lim_{n \to +\infty} \frac{x_{n}}{y_{n}} = \infty$ ? 
+        证明或举反例.
+        \item[(b)]若 $\displaystyle\lim_{n \to +\infty} \frac{x_{n} - x_{n-1}}{y_{n} - y_{n-1}}$ 不存在, 
+        可否断定 $\displaystyle\lim_{n \to +\infty} \frac{x_{n}}{y_{n}}$ 也不存在? 
+        证明或举反例.
+    \end{itemize}
+    \begin{solution}
+        \begin{enumerate}
+            \item[(a)]不可以. 反例如下：
+            \[
+            x_{n}=(-1)^n n, \quad y_{n}=n.
+            \]
+            则
+            \[
+            \lim_{n \to +\infty}\frac{x_{n}-x_{n-1}}{y_{n}-y_{n-1}}
+            =\lim_{n \to +\infty}((-1)^n n-(-1)^{n-1} (n-1))
+            =\lim_{n \to +\infty}(-1)^n (2n-1)=\infty.
+            \]
+            但
+            \[
+            \frac{x_{n}}{y_{n}}=(-1)^n.
+            \]
+            当$n$为偶数时，上式取值为$1$；当$n$为奇数时，上式取值为$-1$.\\
+            因为序列的两个不同子序列收敛于不同的值，所以序列 $\displaystyle\frac{x_{n}}{y_{n}}$ 的极限不存在.
+
+            \item[(b)]
+            不可以. 反例如下：
+            \[
+            x_{n}=n+(-1)^n,\quad y_{n}=n.
+            \]
+            则
+            \[
+            \frac{x_{n}-x_{n-1}}{y_{n}-y_{n-1}}=1+(-1)^n-(-1)^{n-1}=1+2(-1)^n.
+            \]
+            当$n$为偶数时，上式取值为$3$；当$n$为奇数时，上式取值为$-1$.\\
+            因为序列的两个不同子序列收敛于不同的值，所以序列 $\displaystyle\frac{x_{n}-x_{n-1}}{y_{n}-y_{n-1}}$ 的极限不存在.\\
+            但 \[
+            \frac{x_{n}}{y_{n}}=\frac{n+(-1)^n}{n}\to 1.(n\to +\infty)
+            \]
+            所以序列 $\displaystyle\frac{x_{n}}{y_{n}}$ 的极限存在.
+        \end{enumerate}
+    \end{solution}
+
+    \item[14.](困难)设 $a > 0, d > 0$, 定义等差数列 $a_n = a + (n - 1)d$, 以及算术平均与几何平均
+    \[A_{n} = \frac{a_{1} + a_{2} + \cdots + a_{n}}{n}, \quad G_{n} = \sqrt[n]{a_{1}a_{2}\cdots a_{n}}.\]
+    计算: $\displaystyle\lim_{n \to +\infty} \frac{G_n}{A_n}$.
+    \begin{solution}
+        (以下解答摘自楼分析习题解答, 不过要求掌握 Gamma 函数.) 由题设
+        \[G_n=\sqrt[n]{\prod_{k=0}^{n-1}\left(a+kd\right)},
+        \quad A_n=\frac{1}{n}\displaystyle\sum_{k=0}^{n-1}\left(a+kd\right)=a+\frac{n-1}{2},\] 
+        记\(\displaystyle t=\frac{a}{d}\). 于是
+        \[\begin{aligned}
+        \lim_{n\rightarrow+\infty}\frac{G_n}{A_n}
+        &=\lim_{n\rightarrow+\infty}\frac{\sqrt[n]{\displaystyle\prod_{k=0}^{n-1}\left(a+kd\right)}}{(n-1)d/2}\cdot\frac{(n-1)d/2}{a+(n-1)d/2}\\
+        &=\lim_{n\rightarrow+\infty}\sqrt[n]{\prod_{k=0}^{n-1}(t+k)}\cdot\frac{2}{n-1}
+        =\lim_{n\rightarrow+\infty}\sqrt[n]{\frac{\Gamma(t+n)}{\Gamma(t)}}\cdot\frac{2}{n-1}\\
+        &\overset{\mathrm{Stirling}}{=}\lim_{n\rightarrow+\infty}\sqrt[n]{\frac{1}{\Gamma(t)}}\sqrt[n]{\left(\frac{t+n}{e}\right)^n\sqrt{2\pi(t+n)}}\cdot\frac{2}{n-1}\\
+        &=\lim_{n\rightarrow+\infty}\frac{t+n}{e}\frac{2}{n+1}=\frac{2}{e}.
+        \end{aligned}\]
+        接下来给出另一种更基本的做法. \\
+        \[
+        A_n = a + \frac{(n-1)d}{2},\quad G_n = \sqrt[n]{\prod_{k=1}^{n} a_k} = \sqrt[n]{\prod_{k=0}^{n-1} (a+kd)}.
+        \]
+        令 \(t = \dfrac{a}{d} > 0\)，则
+        \[
+        a+kd = d(k+t),\quad 
+        G_n = d\sqrt[n]{\prod_{k=0}^{n-1}(k+t)},\quad 
+        A_n = d\Bigl(t+\frac{n-1}{2}\Bigr).
+        \]
+        于是
+        \[
+        \frac{G_n}{A_n} = \frac{\displaystyle\sqrt[n]{\prod_{k=0}^{n-1}(k+t)}}{\displaystyle t+\frac{n-1}{2}}.
+        \]
+        分母中 \(\displaystyle t+\frac{n-1}{2} \sim \frac{n}{2}(n\to+\infty)\)，故
+        \[
+        \lim_{n\to\infty}\frac{G_n}{A_n}=2\lim_{n\to\infty}\frac{\displaystyle\sqrt[n]{\prod_{k=0}^{n-1}(k+t)}}{n}\eqqcolon 2L.
+        \]
+        取对数
+        \[
+        \ln L = \lim_{n\to\infty}\frac{1}{n}\sum_{k=0}^{n-1}\ln\frac{k+t}{n}.
+        \]
+        将和式拆分为三个部分：
+        \[
+        \frac{1}{n}\sum_{k=0}^{n-1}\ln\frac{k+t}{n}
+        = \frac{1}{n}\ln\frac{t}{n} + \frac{1}{n}\sum_{k=1}^{n-1}\ln\frac{k}{n} + \frac{1}{n}\sum_{k=1}^{n-1}\ln\!\left(1+\frac{t}{k}\right).
+        \]
+        \begin{enumerate}
+        \item[i.] 第一项：\(\displaystyle\frac{1}{n}\ln\frac{t}{n} = \frac{\ln t - \ln n}{n} \to 0\,(n\to+\infty)\).
+        \item[ii.] 第二项：
+        \[
+        \frac{1}{n}\sum_{k=1}^{n-1}\ln\frac{k}{n} = \ln\!\left(\frac{\sqrt[n]{n!}}{n}\right).
+        \]
+        下证 \(\displaystyle\lim_{n\to\infty}\frac{\sqrt[n]{n!}}{n} = \frac{1}{e}\).\\
+        利用不等式 \(\displaystyle \left(1+\frac{1}{k}\right)^k < e < \left(1+\frac{1}{k}\right)^{k+1}\ (k\in\mathbb{N}^+)\)，对 \(k=1,2,\cdots,n-1\) 相乘得
+        \[
+        \prod_{k=1}^{n-1}\Bigl(1+\frac{1}{k}\Bigr)^k < e^{n-1} < \prod_{k=1}^{n-1}\Bigl(1+\frac{1}{k}\Bigr)^{k+1}.
+        \]
+        而
+        \[
+        \prod_{k=1}^{n-1}\Bigl(1+\frac{1}{k}\Bigr)^k = \prod_{k=1}^{n-1}\frac{(k+1)^k}{k^k} = \frac{2^1}{1^1}\cdot\frac{3^2}{2^2}\cdots\frac{n^{n-1}}{(n-1)^{n-1}} = \frac{n^{n-1}}{(n-1)!}.
+        \]
+        类似地，
+        \[
+        \prod_{k=1}^{n-1}\Bigl(1+\frac{1}{k}\Bigr)^{k+1} = \prod_{k=1}^{n-1}\frac{(k+1)^{k+1}}{k^{k+1}} = \frac{2^2}{1^2}\cdot\frac{3^3}{2^3}\cdots\frac{n^{n}}{(n-1)^{n}} = \frac{n^{n}}{(n-1)!}.
+        \]
+        代入得
+        \[
+        \frac{n^{n-1}}{(n-1)!} < e^{n-1} < \frac{n^{n}}{(n-1)!}.
+        \]
+        两边乘以 \((n-1)!\) 得
+        \[
+        n^{n-1} < e^{n-1}(n-1)! < n^{n}.
+        \]
+        由此推出
+        \[
+        \frac{n^{n}}{e^{n-1}} < n! < \frac{n^{n+1}}{e^{n-1}}.
+        \]
+        开 \(n\) 次方并除以 \(n\)：
+        \[
+        \frac{1}{e^{1-1/n}} < \frac{\sqrt[n]{n!}}{n} < \frac{n^{1/n}}{e^{1-1/n}}.
+        \]
+        已知 \(\displaystyle \lim_{n\to\infty} \sqrt[n]{n} = 1\)，且 \(\displaystyle e^{1-1/n} \to e\,(n\to+\infty)\)，由夹逼定理得
+        \[
+        \lim_{n\to\infty}\frac{\sqrt[n]{n!}}{n} = \frac{1}{e}.
+        \]
+        利用 \(\displaystyle\lim_{n\to\infty}\frac{\sqrt[n]{n!}}{n} = \frac{1}{e}\), 故第二项极限为 \(\displaystyle\ln\left(\frac{1}{e}\right) = -1\).
+        \item[iii.] 第三项：由不等式 \(0 < \ln(1+x) < x\ (x>0)\) 得
+        \[
+        0 < \frac{1}{n}\sum_{k=1}^{n-1}\ln\!\left(1+\frac{t}{k}\right) < \frac{t}{n}\sum_{k=1}^{n-1}\frac{1}{k}.
+        \]
+        而调和数 \(\displaystyle H_{n-1} = \sum_{k=1}^{n-1}\frac{1}{k} \sim \ln n\)，故 \(\displaystyle \frac{t\ln n}{n} \to 0(n\to+\infty)\)，由夹逼定理知第三项极限为 \(0\).
+        \end{enumerate}
+        因此 \(\ln L = -1\)，即 \(L = e^{-1}\). 从而
+        \[
+        \lim_{n\to\infty}\frac{G_n}{A_n} = 2L = \frac{2}{e}.
+        \]
+    \end{solution}
+
+    \item[15.]($\star$ \textbf{Toeplitz 定理}) 设 $p_{n0} + p_{n1} + \cdots + p_{nm} = 1$ 对所有 $n \in \mathbb{N}$ 成立, 
+    且每个 $p_{ij} \geq 0$. 序列 $\{x_n\}$ 与 $\{y_n\}$ 满足如下关系:
+
+    \[y_n = \sum_{0 \leq i \leq n} p_{ni} x_i, \quad n \in \mathbb{N}.\]
+
+    证明下列论断等价(TFAE):
+    \begin{enumerate}
+        \item[(a)]对任意 $a \in \mathbb{R}$ 以及任意满足 $x_n \to a$ 的数列 $\{x_n\}$ , 均有 $y_n \to a$;
+        \item[(b)]对每个 $m \in \mathbb{N}$ 都有 $p_{nm} \to 0$.
+    \end{enumerate}
+    \begin{solution}
+        \begin{enumerate}
+            \item[(a) $\Rightarrow$ (b)]
+        令 $a=0$，且取 $\displaystyle x_{n}=\delta_{n,m}$，其中 $\delta_{n,m}$ 为 Kronecker 符号，
+        则 $\displaystyle\lim_{n\to+\infty} x_{n}=0$.
+
+        于是$\displaystyle\lim_{n\to+\infty}y_{n}=0$.
+        而此时 $\displaystyle y_{n}=\underset{0\leq i\leq n}{\sum}p_{ni}x_{i}=p_{nm}$.\\
+        从而对每个 $m\in\mathbb{N}$ 有 $p_{nm}\rightarrow0$.
+            \item[(b) $\Rightarrow$ (a)]
+            设$x_{n}\rightarrow a$，则
+    \[
+    y_{n}=\sum_{0\leq i\leq n}p_{ni}x_{i}=a\sum_{0\leq i\leq n}p_{ni}+\sum_{0\leq i\leq n}p_{ni}(x_{i}-a)=a+\sum_{0\leq i\leq n}p_{ni}(x_{i}-a).
+    \]
+    由$\underset{n\to+\infty}{\lim}x_{n}=a$知
+    \[
+    \forall \epsilon>0, \exists N_{1}>0 \quad \mathrm{s.t.} \quad \forall n>N_{1}: \left|x_{n}-a\right|<\frac{\epsilon}{2}.
+    \]
+    且
+    \[
+    \exists M>0, \forall n\in\mathbb{N}_{+}:\left|x_{n}-a\right|<M.
+    \]
+    由对每个$m\in\mathbb{N}$，$\underset{n\to+\infty}{\lim}p_{nm}=0$知
+    \[
+    \forall \epsilon>0, \exists N_{i}>0 \quad \mathrm{s.t.} \quad \forall n>N_{i}: \left|p_{ni}\right|<\frac{\epsilon}{2M(N_{1}+1)}.
+    \]
+    令$N_{2}=\max\{N_{0},N_{1},...,N_{N_{1}}\}$，
+    则当 $n>N=\max\{N_{1},N_{2}\}$ 时，
+    \[
+    \begin{aligned}
+        \left|y_{n}-a\right|
+    &=\left|\sum_{0\leq i\leq n}p_{ni}(x_{i}-a)\right|
+    \leq \sum_{0\leq i\leq n}p_{ni}\left|x_{i}-a\right|
+    =\sum_{i=0}^{N_{1}}p_{ni}\left|x_{i}-a\right|+\sum_{i=N_{1}+1}^{n}p_{ni}\left|x_{i}-a\right|\\
+    &<(N_{1}+1)M\cdot\frac{\epsilon}{2M(N_{1}+1)}+\frac{\epsilon}{2}=\epsilon.
+    \end{aligned}
+    \]
+    从而 $\underset{n\to+\infty}{\lim}y_{n}=a$.
+    \end{enumerate}
+    \end{solution}
+\end{enumerate}  
+
+== 习题C ==
+
+\begin{enumerate}
+    \item[1.]已知函数 $f(x)$ 与 $g(x)$ 在除原点之外均有定义, 且 $\displaystyle\lim_{x \to 0} [f(x) + g(x)] = +\infty$. 
+    判断下述命题真伪并说明理由: $\displaystyle\lim_{x \to 0} f(x) = +\infty$ 与 $\displaystyle\lim_{x \to 0} g(x) = +\infty$ 中至少成立其一.
+
+    \item[2.]试构造两个定义在 $\mathbb{R}$ 上的函数 $f(x)$ 与 $g(x)$ , 使得 $\displaystyle\lim_{x \to 1} f(x) = 2$ 
+    与 $\displaystyle\lim_{x \to +\infty} g(x) = 1$ 成立, 
+    但 $\displaystyle\lim_{x \to +\infty} f(g(x)) \neq 2$.
+    \begin{solution}
+        令
+        \[
+        f(x)=\begin{cases}
+            2 & \text{，若 } x\neq 1 \\
+            3 & \text{，若 } x=1
+        \end{cases},\quad 
+        g(x)\equiv 1.
+        \]
+        即可，此时 $\underset{x\to 1}{\lim}f(x)=2$，$\underset{x\to +\infty}{\lim}g(x)=1$，但 $\underset{x\to +\infty}{\lim}f(g(x))=f(1)=3\neq 2$.
+    \end{solution}
+
+    \item[3.]已知定义在 $(0, +\infty)$ 上的函数 $f(x)$ 满足函数方程 $f(2x) = f(x)$, 且 $\displaystyle\lim_{x \to +\infty} f(x) = A$. 
+    证明: 在 $(0, +\infty)$ 上 $f(x) \equiv A$.
+
+    \item[4.]设 $f(x)$ 是 $(-a, a)$ 上的正值函数, $\displaystyle\lim_{x \to 0} \left[f(x) + \frac{1}{f(x)}\right] = 2$, 
+    证明 $\displaystyle\lim_{x \to 0} f(x) = 1$.
+\end{enumerate}
+
+== 习题D ==
+本节习题主要介绍空间的概念.
+
+在数学中, 所谓的\textbf{空间} (space), 就是一个集合加上一些附加的结构:
+
+$\cdot$ 给定集合 $X$. 若存在 $d:X\times X\to \mathbb{R}_{\geq 0}$ 是 $X$ 上双变量的函数,满足如下三条性质:
+
+\begin{enumerate}
+    \item[(a)]\textbf{正定性}: 对任意的 $x$ 和 $y$, $d(x, y) \geq 0$ 并且取等号当且仅当 $x = y$;
+    \item[(b)]\textbf{对称性}: 对任意的 $x$ 和 $y$, $d(x, y) = d(y, x)$;
+    \item[(c)]\textbf{三角不等式}: 对任意的 $x, y, z \in X$, 我们有 $d(x, z) \geq d(x, y) + d(y, z)$.
+\end{enumerate}
+
+我们就称二元组 $(X, d)$ 是一个\textbf{距离空间}或者\textbf{度量空间} (metric space). 函数 $d$ 被称作该度量空间上的\textbf{距离函数}.
+
+\begin{enumerate}
+    \item[1.]令 $\mathbb{R}^{n} = \underbrace{\mathbb{R} \times \mathbb{R} \times \cdots \times \mathbb{R}}_{n个}$，即 $\mathbb{R}^{n} = \{(x_{1}, \cdots , x_{n}) \mid x_{1}, \cdots , x_{n} \in \mathbb{R}\}$. 
+
+    对于 $\mathbf{x}, \mathbf{y} \in \mathbb{R}^{n}$，我们定义
+
+    \[d(\mathbf{x}, \mathbf{y}) = \sqrt{(x_{1} - y_{1})^{2} + \cdots + (x_{n} - y_{n})^{2}}, \quad \mathbf{x} = (x_{1}, \cdots , x_{n}), \quad \mathbf{y} = (y_{1}, \cdots , y_{n}).\]
+
+    验证： $(\mathbb{R}^{n}, d)$ 是度量空间（提示：Cauchy- Schwarz 不等式）.
+
+    \item[2.]($\star$) 沿用上题记号，对 $p \geq 1$，定义
+
+    \[d_{p}(\mathbf{x}, \mathbf{y}) = \left[\left|x_{1} - y_{1}\right|^{p} + \cdots + \left|x_{n} - y_{n}\right|^{p}\right]^{\frac{1}{p}}.\]
+
+    验证： $(\mathbb{R}^{n}, d_{p})$ 是度量空间.
+
+    \item[3.]设 $(X, d)$ 是度量空间， $x \in X$，试写出的 $x$ 的 $\delta$ -邻域 $U(x, \delta)$ 的定义.
+
+    \item[4.]设 $(X, d)$ 是度量空间， $\{x_{n}\}$ 是其上的点列，试写出 “$\{x_{n}\}$ 收敛” 的算术化定义.
+
+    \item[5.]($\star$)设 $\{\mathbf{x}_{n}\}$ 是 $\mathbb{R}^{n}$ 中的点列， $p, q \geq 1$，
+    证明： $\{\mathbf{x}_{n}\}$ 在 $(\mathbb{R}^{n}, d_{p})$ 中收敛当且仅当 $\{\mathbf{x}_{n}\}$ 在 $(\mathbb{R}^{n}, d_{q})$ 中收敛.
+\end{enumerate}

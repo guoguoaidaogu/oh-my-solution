@@ -1,0 +1,770 @@
+\setdisplaytitle{试卷：数理方程}
+\sethtmltitle{试卷：数理方程}
+
+== 2026年春数理方程（雷震、蔡圆）期末试卷 ==
+
+\begin{enumerate}
+
+\item 设 $\Omega \subset \mathbb{R}^n$ 为有界区域，边界 $\partial \Omega$ 足够光滑。考虑 Robin 边值问题
+\[
+\begin{cases}
+\Delta u = f, & x \in \Omega,\\[4pt]
+\dfrac{\partial u}{\partial n}+\alpha(x)u=g, & x\in \partial\Omega,
+\end{cases}
+\]
+其中 $f\in C(\overline{\Omega})$，$g\in C(\partial\Omega)$，
+$\alpha\in C(\partial\Omega)$，$\dfrac{\partial u}{\partial n}$ 表示外法向导数。
+
+(1) 当 $\alpha\equiv 0$ 时，证明若经典解存在，则解在相差一个常数的意义下唯一。
+    
+(2) 当 $\alpha(x)>0$，$x\in \partial\Omega$ 时，证明该 Robin 边值问题至多存在唯一的经典解。
+
+\item 设 $\Omega\subset\mathbb{R}^n$ 为有界区域，$u\in C^2(\Omega)\cap C(\overline{\Omega})$。考虑方程
+\[
+\Delta u=f(x), \qquad x\in \Omega,
+\]
+其中 $f\in C(\Omega)$。
+
+(1) 若 $f(x)>0$，$x\in\Omega$，证明 $u$ 不可能在 $\Omega$ 内部取得最大值。
+
+(2) 若去掉条件 $f(x)>0$，上述结论是否仍然成立？请说明理由。
+
+\item 设 $\Omega\subset\mathbb{R}^n$ 为有界区域，
+边界 $\partial\Omega$ 足够光滑。考虑初边值问题
+\[
+\begin{cases}
+u_t-\Delta u=-cu^3, & (t,x)\in (0,\infty)\times\Omega,\\[4pt]
+u(t,x)=0, & (t,x)\in (0,\infty)\times\partial\Omega,\\[4pt]
+u(0,x)=\varphi(x), & x\in \Omega,
+\end{cases}
+\]
+其中 $c\geq 0$，$\varphi\in C(\overline{\Omega})$，且
+\[
+\sup_{x\in\Omega}|\varphi(x)|\leq M.
+\]
+
+当 $c=0$ 和 $c>0$ 时，分别证明
+    \[
+    \sup_{(t,x)\in [0,\infty)\times\Omega}|u(t,x)|\leq M.
+    \]
+
+\item 考虑一维热方程初边值问题
+\[
+\begin{cases}
+u_t=u_{xx}, & t>0,\ 0<x<1,\\[4pt]
+u(t,0)=0, & t>0,\\[4pt]
+u(t,1)=A, & t>0,\\[4pt]
+u(0,x)=f(x), & 0<x<1.
+\end{cases}
+\]
+(1) 若 $A=0$，$f(x)=\sin \pi x$，求该初边值问题的解。
+
+(2) 若 $A\neq 0$，$f(x)=Ax+\sin \pi x$，求该初边值问题的解，并计算
+    $
+    \lim_{t\to\infty}u(t,x).
+    $
+
+\item 考虑一维波方程的 Cauchy 问题
+\[
+\begin{cases}
+u_{tt}=u_{xx}, & t>0,\ x\in\mathbb{R},\\[4pt]
+u_x(t, 0) = 0, & t > 0,\\[4pt]
+u(0,x)=x^3, & x\in\mathbb{R},\\[4pt]
+u_t(0,x)=\cos x, & x\in\mathbb{R}.
+\end{cases}
+\]
+求该 Cauchy 问题的解。
+
+\item 考虑三维波方程的 Cauchy 问题
+\[
+\begin{cases}
+u_{tt}-\Delta u=0, & t>0,\ x\in\mathbb{R}^3,\\[4pt]
+u(0,x)=0, & x\in\mathbb{R}^3,\\[4pt]
+u_t(0,x)=\psi(x), & x\in\mathbb{R}^3,
+\end{cases}
+\]
+其中 $\psi\in C_c^\infty(\mathbb{R}^3)$，且
+$
+\operatorname{supp}\psi\subset B_R(0).
+$
+
+(1) 证明若 $|x|>R+t$，则
+    $u(t,x)=0.$
+
+(2) 若$\operatorname{supp}\psi=\{x\in\mathbb{R}^3:1\leq |x|\leq 2\},$
+    求使得
+    $u(t,0)\neq 0$
+    可能成立的时间区间 $[t_1,t_2]$。
+
+\item 设 $u\in C^2(\mathbb{R}^n)$，且
+\[
+u(x)\geq 0,\qquad x\in\mathbb{R}^n.
+\]
+
+(1) 若 $u$ 为调和函数，即
+    \[
+    \Delta u=0,\qquad x\in\mathbb{R}^n,
+    \]
+    判断 $u$ 是否一定为常数，并证明你的结论。
+
+(2) 若 $u$ 为次调和函数，即
+    \[
+    \Delta u\geq 0,\qquad x\in\mathbb{R}^n,
+    \]
+    当 $n=2$ 时，判断 $u$ 是否一定为常数，并证明你的结论。
+    当 $n\geq 3$ 时，上述结论是否仍然成立？请证明你的结论或给出反例。
+
+\end{enumerate}
+\begin{proofc}[7 (2) 的解答]
+    $n=2$时的结论是熟知的，记$m(r)=\max\{u(x)\mid|x|=r\}$，对任何的$0<a<b$，
+    令$\ell(\log r)$是在$\log a$处取值为$m(a)$和$\log b$处取值为$m(b)$的
+    关于$\log r$的一次函数，那么$v(x):=\ell(\log|x|)$是$\R^2$上的调和函数。
+    由于在区域$\{a<|x|<b\}$的边界上$u \leqslant v$，
+    可知在其内部亦有$u \leqslant v$，特别地
+    \[m(r)=\max\{u(x)\mid|x|=r\}\leqslant\max\{v(x)\mid|x|=r\}=\ell(\log r),\]
+    即$m(r)$如果看成关于$\log r$的函数的话是凸函数。结合$m(r)$单调不减，
+    可知$m(r)$是无界的或是常数 (因为只要任何一处的割线斜率大于$0$，其增长就要超过对应的一次函数)。
+    \begin{tikzpicture}
+        \draw[->,>=stealth](-1,0)to(2,0);
+        \draw[->,>=stealth](0,0)to(0,3);
+        \draw[domain=0:3,thick]plot(\x-1,0.25*\x*\x+0.25);
+        \draw[dashed,thick](0.4,0.74)to(1.6,1.94);
+        \draw[dotted](0.4,0)to(0.4,0.74);
+        \draw[dotted](1.6,0)to(1.6,1.94);
+        \draw(0.4,-0.3)node{$\log a$};
+        \draw(1.6,-0.3)node{$\log b$};
+        \draw(2.5,0)node{$\log r$};
+        \draw(0,3.3)node{$m(r)$};
+    \end{tikzpicture}
+    $n\geqslant3$时结论不再成立。凭空构造出一个$\R^n$上具有某些性质的函数诚然是无从下手的，
+    这里的要点在于敢于去考察特殊情形来简化问题。试着取$u(x)$为径向函数$f(|x|)$，
+    回忆一下全书第一道习题的解答下面曾给出来Laplace算子在极坐标下的表达式，对于径向函数来说就是
+    \[\Delta u=f''+(n-1)f'/r,\]
+    简写$g=r^{n-1}f'$，那么
+    \[g'=r^{n-1}f''+(n-1)r^{n-2}f'=r^{n-1}\Delta u,\]
+    从而$\Delta u\geqslant0$等价于$g'\geqslant0$，即$g$单调不减。
+    余下的问题就是如何使得$f$有界，先随便取个$g$看一下，
+    比如说$g(r)=r^\alpha$，其中$\alpha>0$是待定的常数，
+    那么$f'(r)=r^{\alpha-n+1}$，
+    相差一个常数的意义下$f(r)=r^{\alpha-n+2}/(\alpha-n+2)$，
+    或者$\alpha=n-2$时$f(r)=\log r$。
+    当$\alpha \geqslant n-2$时$f$无界，
+    当$\alpha \leqslant n-2$时$f$在$0$处又无定义，
+    皆不可行，看来$g$的选取是要求比较高的。
+    
+    静下心来好好想一想$g$除了单调不减还需要符合哪些条件：
+    一个是$f$有界，也就是$f'$在$r$趋向远方的时候是可积的；
+    另一个是$f$在$0$处有定义，也就是$f'$在$r$下降到$0$的时候也是可积的。
+    两者合起来就是说$f'=g/r^{n-1} \in L^1(\R^+)$，那么其实也不太难。
+    一个要求是$g$在$r\nearrow\infty$时不要太大，比如只要有界就行了，毕竟$n-1\geqslant2$；
+    另一个要求是$g$在$r\searrow0$时要尽量小，比如可以是$O(r^{n-1})$的量级。
+    形象地看$g$的图像就是一个$\int$的样子，显式表达可以是$g(r)=1-e^{-r^{n-1}}$，
+    这个$g$是递增和有界的，并且在$0$的右邻域是$r^{n-1}$的等价无穷小，完全符合要求。
+    最后反解出$f$和$u$，构造出来的非负次调和函数函数就是
+    \[u(x)=\int_0^{|x|}\frac{1-e^{-r^{n-1}}}{r^{n-1}}\,dr.\qedhere\]
+\end{proofc}
+
+== 2025年秋数理方程(H) (王志强, 王玥)期末试卷 ==
+\qquad 注：本次考试延长了30分钟；第2题为本学期补充内容.
+\begin{itemize}
+    \item[1.](20分)
+    (1)在$(x,t)\in (0,L)\times (0,+\infty)$上求方程
+        $$\begin{cases}
+        u_{tt}=u_{xx},\\
+        u(x,0)=f(x),u_t(x,0)=g(x),\\
+        u(0,t)=0,u_x(L,t)+hu(L,t)=0
+    \end{cases}$$
+    解的级数形式. 其中$h,L>0$是常数.\\
+    (2)定义
+    $$E(t)=\frac{1}{2}\int_0^L (u_x^2+u_t^2)\mathrm{d} x+\frac{h}{2}u(L,t)^2.$$
+    证明: $E(t)=E(0),\forall t\ge0$.
+
+    \item[2.](20分)
+    考虑二维输运方程的经典解$u(x,y,t)$, 其中$(x,y)\in \mathbb{R}^2,t\in\mathbb{R}$, 满足
+        $$\begin{cases}
+            u_t(x,y,t)+ \mathbf{c}\cdot \nabla u(x,y,t)=0,\\
+            u(x,y,0)=g(x,y).
+        \end{cases}$$
+    其中$\mathbf{c}=(2,-1),g(x,y)=\mathrm{e}^{-(x^2+y^2)}$.\\
+    (1)求证$u$的$L^2$范数是守恒的, 即$\|u(\cdot,\cdot,t)\|_{L^2(\mathbb{R}^2)}=\|g\|_{L^2(\mathbb{R}^2)},\forall t$.
+    (2)用特征线方法求解$u$.
+
+    \item[3.](20分)
+    设$\Omega$是$\mathbb{R}^n$中有界区域, $u\in C^2(\Omega)\cap C(\overline{\Omega})$满足方程
+    $$\Delta u(x)+q(x)u(x)=0.$$
+    记$M=\max\limits_{\overline{\Omega}}u,m=\max\limits_{\overline{\partial\Omega}}u$. 在下面几种情况中, 是否可能发生$M>m$?判断并说明理由.\\
+    (1) $q(x)\equiv 0$.\\
+    (2) $q(x)>0$.\\
+    (3) $q(x)<0$且$M>0$.\\
+    (4) $q(x)<0$且$M<0$.
+
+    \item[4.](20分)
+    设$\Omega$是$\mathbb{R}^n$中有界区域, $T>0$, $u\in C^2(\Omega_T)\cap C(\overline{\Omega_T})$满足方程
+    $$\begin{cases}
+        u_t-\Delta u-\sin(|x|)u=u^{2026}, &(x,t)\in \Omega\times [0,T]=:\Omega_T, \\
+        u(x,0)=u_0 ,& x\in\Omega\\
+        u(x,t)=0 ,&(x,t)\in \partial\Omega\times [0,T].\\
+    \end{cases}$$
+    (1)证明: 存在只和$T$有关的常数$C>0$, 满足$u(x,t)\le C\sup\limits_{\Omega}|u_0|$.\\
+    (2)若$u_0\ge 0$, 证明$u(x,t)\ge 0$.
+
+    \item[5.](20分)
+    设$\Omega$是$\mathbb{R}^n$中有界且边界光滑的区域, $u_0\in C^2(\Omega),u_0|_{\partial\Omega}=0$. $u\in C^2(\Omega\times(0,+\infty))\cap C(\overline{\Omega\times (0,+\infty)})$满足方程
+    $$\begin{cases}
+        u_t-\Delta u+u^3=u,&\\
+        u(x,t)=0,&(x,t)\in \partial\Omega\times [0,+\infty),\\
+        u(x,0)=u_0,&x\in\Omega.\\
+    \end{cases}$$
+    证明: 存在只和$\Omega, \|u_0\|_{L^\infty(\Omega)}, \|\nabla u_0\|_{L^2(\Omega)}$有关的常数$C$, 满足
+    $$\|u(\cdot,t)\|_{L^2(\Omega)}+\|\nabla u(\cdot,t)\|_{L^2(\Omega)}\le C.$$
+
+    \item[6.](20分)
+    设$\Omega$是$\mathbb{R}^n$中有界区域, $n\ge 2$. $u_\lambda\in C^2(\Omega)$满足方程
+    $$\Delta u_\lambda+\lambda u_\lambda=0,$$
+    其中$\lambda>0$是常数.\\
+    (1)记$v_\lambda(x,t)=u_\lambda(x)\mathrm{e}^{\sqrt{\lambda}t}$, 其中$t\in\mathbb{R}$. 证明: $\Delta_{x,t}v_\lambda=0$, 其中
+    $$\Delta_{x,t}=\frac{\partial^2}{\partial x_1^2}+\frac{\partial^2}{\partial x_2^2}+\cdots+\frac{\partial^2}{\partial x_n^2}+\frac{\partial^2}{\partial t^2}.$$
+    (2)若存在$x_0\in\Omega, r>0$, 满足$B_r(x_0)\subset \Omega$且$\forall x\in B_r(x_0),u_\lambda(x)\neq0$. 证明: 存在和维数$n$有关的常数$C>0$, 满足$r\le C\lambda^{-\frac{1}{2}}$.
+\end{itemize}
+
+== 2025秋数理方程(林治武,王玥)期末试卷 ==
+\begin{enumerate}
+\item (20分) 设$\Omega$是$\mathbb{R}^n$中有界区域, $u\in C^2(\Omega)\cap C(\overline{\Omega})$满足方程
+\begin{equation*}
+    \Delta u(x)+q(x)u(x)=0
+\end{equation*}
+记$M=\max\limits_{\overline{\Omega}}u,m=\max\limits_{\overline{\partial\Omega}}u$. 在下面几种情况中, 是否可能发生$M>m$? 判断并说明理由.\\
+(1) $q(x)\equiv 0$.\\
+(2) $q(x)>0$.\\
+(3) $q(x)<0$且$M>0$.\\
+(4) $q(x)<0$且$M<0$.
+
+\item (20分) 设$u$是如下方程的经典解
+\begin{equation*}
+    \begin{cases}
+     \partial_t u-\Delta u=f(t,x),& (t,x)\in \Omega_{T}\\
+     u(0,x)=u_0(x),& x\in \Omega \\
+     u(t,x)=g(t,x),&(t,x)\in [0,T] \times \partial \Omega
+    \end{cases}
+\end{equation*}
+(1)若$f(t,x)<0$,证明:
+\begin{equation*}
+    \max_{\overline{\Omega_T}} u=\max_{\Gamma_T} u
+\end{equation*}
+(2)设$F=\displaystyle \sup_{\Omega_T}|f|,B=\displaystyle \max{\left(\sup_{\Omega}|u_0|,\sup_{(0,T)\times \partial \Omega }|g|\right)}$,证明
+\begin{equation*}
+    \sup_{\Omega_T}|u| \leq FT+B
+\end{equation*}
+
+\item (20分) 在$(0,+\infty)\times(0,L)$考虑如下波方程
+\begin{equation*}
+    \begin{cases}
+     u_{tt}-c^{2}u_{xx}=0\\
+     u(x,0)=f(x),u_t(x,0)=g(x) \\
+     u(0,t)=0,u_x(L,t)+hu(L,t)=0
+    \end{cases}
+\end{equation*}
+(1)考虑特征值问题$X^{\prime \prime}+\lambda X=0,X(0)=0,X^{\prime}(L)+hX(L)=0$.\\
+证明它有非平凡解当且仅当$\lambda>0$, 设$\lambda=k^{2}$, 则特征函数为$\sin kx$, 此时成立
+\begin{equation*}
+    k\cos kL+h \sin kL=0
+\end{equation*}
+(2)证明:属于不同特征值的特征函数是正交的, 即
+\begin{equation*}
+    \int_{0}^{L} \sin k_m x \sin k_n x \ \mathrm{d}x=0,k_m \neq k_n
+\end{equation*}
+(3)用级数形式表达方程的解$u(t,x)$.\\
+(4)证明: $ (n-1)\pi < k_n L <n \pi$, 从而$k_n \sim \dfrac{n \pi}{L}$.\\
+(5)定义
+\begin{equation*}
+    E(t)=\frac{1}{2}\int_{0}^{L} \left(u_t^{2}+c^2u_x^{2}\right)\mathrm{d}x+\frac{c^{2}h}{2}u(L,t)^{2}
+\end{equation*}
+证明: $\dfrac{\mathrm{d}E(t)}{\mathrm{d}t}=0$.
+
+\item (20分) 考虑一维随机游走模型:时间步长为$\tau$,空间步长为$h$.设在时间$t=N\tau$, 质点位于$X=mh$时, 向右/左移动一步的概率是
+\begin{equation*}
+    p=\frac{1}{2}\left(1-\dfrac{m}{N}\right), \quad q=\frac{1}{2}\left(1+\dfrac{m}{N}\right)
+\end{equation*}
+(1)用$p(t,x)$表示质点在时刻$t$位于位置$x$的概率, 设$\dfrac{h^{2}}{\tau}=2D,N\tau=\kappa$.证明$p(t,x)$满足方程
+\begin{equation*}
+    p_t=Dp_{xx}+\frac{1}{\kappa}(xp)_x
+\end{equation*}
+(2)设$D=\kappa=1,p(0,x)=\delta(x)$, 求出$p(t,x)$. (提示:使用Fourier变换求解)
+
+\item (20分) \\
+(1) (12分)在$(0,+\infty) \times (0,+\infty)$考虑以下方程
+\begin{equation*}
+    u_t+vu_x=ku^{\alpha},\ \ \ u(x,0)=f(x),\ \ \ u(0,t)=h(t)
+\end{equation*}
+其中$k,v>0,\alpha \neq 1$. 给出解的表达式, 并说明这表达式的适用范围(尤其是$\alpha>1$时).\\
+(2) (8分)考虑以下方程, 其中$f$是凹函数.
+\begin{equation*}
+    u_t+(f(u))_x=0,\ \ \ u(x,0)=u_0
+\end{equation*}
+若$u_0=u_L\textbf{1}_{x<0}+u_R\textbf{1}_{x>0}$, 分别说明满足什么条件时, 熵解是稀疏波解或激波解, 并求出解的表达式.
+\end{enumerate}
+
+== 2025年春数理方程（华波波/雷震、蔡圆）期末试卷 ==
+\begin{enumerate}
+	\item
+    设$\Omega$为有界光滑区域，$u \in C^2(\Omega) \cap C^1(\overline \Omega)$，且满足
+	$$\begin{cases}
+		\Delta u \geq 0, &x \in \Omega, \\
+		\dfrac{\partial u}{\partial\boldsymbol{n}}=0, &x \in \partial \Omega .
+	\end{cases}$$
+	问$u$是否只能为常数？
+
+	\item
+    考虑方程
+    $$\begin{cases}
+		\partial_tu=\Delta u, &(t,x)\in (0, +\infty)\times \Omega, \\
+		u(0,x)=\varphi(x), & x\in \Omega, \\
+        u(t,x)=0, & (t,x)\in (0,+\infty)\times \partial \Omega .
+    \end{cases}$$
+    \begin{enumerate}[label=(\arabic*)]
+        \item 讨论解的$C^0$相容性条件;
+        \item 若$u$为经典解，求证：存在常数$C \ge 0, a \gt 0$，使得
+        $$\int_\Omega u^2(t,x)dx \leq Ce^{-at}, \quad \forall t>0.$$
+    \end{enumerate}
+
+    \item
+    设$\Omega=\{(x_1, x_2)|x_1 >0, x_2>0\}$，$\Omega$上调和方程Dirichlet问题的
+    Green函数记为$G_{\Omega}$。问$\sup\limits_{x,y \in \Omega}G_{\Omega}(x,y)$是有限还是无穷？
+    并求出$G_{\Omega}$的表达式。
+
+    \item
+    求解以下方程：
+    $$\begin{cases}
+		\partial^2_tu=\partial^2_xu, &(t,x)\in (0, +\infty)\times (0,1),\\
+        u(0,x)=x(1-x), \partial_tu(0,x)=0, &x \in (0,1),\\
+        u(t,0)=0,  \partial_xu(t,1)=0, &t\in(0,+\infty). 
+    \end{cases}$$
+    注：方程不满足相容性条件。本题只需求出解的表达式即可。
+
+    \item
+    求解以下方程：
+    $$\begin{cases}
+		\partial_tu=\partial^2_xu, &(t,x)\in (0, +\infty)\times (0,\pi),\\
+        u(0,x)=\sin 3x+\sin5x, &x \in (0,\pi),\\
+        u(t,0)=u(t,\pi)=0, &t\in(0,+\infty). 
+    \end{cases}$$
+
+    \item
+    设$u$是以下方程的有界解
+    $$\begin{cases}
+		\partial_tu=\Delta u, &(t,x)\in (0, +\infty)\times \mathbb R^n,\\
+        u(0,x)=\varphi(x), &x \in \mathbb R^n.
+    \end{cases}$$
+    在以下条件下，是否有$\lim\limits_{t\to\infty}u(t,x)=0$点点成立？如果成立，
+    请说明理由；如果不成立，请举反例。
+    \begin{enumerate}[label=(\roman*)]
+        \item $\varphi \in C_c^{\infty}(\mathbb R^n)$;
+        \item $\varphi \in L^2(\mathbb R^n)$;
+        \item $\varphi \in L^{\infty}(\mathbb R^n)$.
+    \end{enumerate}
+
+    \item
+    考虑一维波方程的Cauchy问题
+    $$\begin{cases}
+		\partial^2_tu=\partial^2_xu, &(t,x)\in (0, +\infty)\times \mathbb R,\\
+        u(0,x)=0, \partial_tu(0,x)=\psi(x), &x \in \mathbb R.
+    \end{cases}$$
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求解$u(t,x)$的表达式.
+        \item 利用Fourier变换给出另一种解法.
+    \end{enumerate}
+\end{enumerate}
+
+== 2024年秋数理方程(H)（曲鹏）期末试卷 ==
+\qquad 注：本次考试延长了30分钟；第6、第7题为本学期补充内容，超出讲义范围。
+\begin{itemize}
+    \item[1.] （15分）设$u$满足
+    $$\begin{cases}
+        \partial_tu=\partial_x^2u+4\partial_xu+4u,&(t,x)\in(0,+\infty)\times(0,L)\\
+        u(0,x)=\varphi(x),&\quad\;\; x\in(0,L)\\
+        u(t,0)=u(t,L)=0,&\quad\ \ \ t\in(0,+\infty).
+    \end{cases}$$
+    试讨论解的$C^2$相容性条件并求解$u$。
+
+    \item[2.] （15分）设$u(x,y)$满足
+    $$\begin{cases}
+        \partial_x^2u+2\partial_{xy}u-3\partial_y^2u=e^{2(x-y)},&-\infty<x<+\infty,y>0\\
+        u(x,0)=0,\ \partial_yu(x,0)=0,&-\infty<x<+\infty.
+    \end{cases}$$
+    求解$u$。
+
+    \item[3.] （15分）试证明如下梁方程经典解的唯一性：
+    $$\begin{cases}
+        \partial_t^2u+c^2\partial_x^4u=f(t,x),&(t,x)\in(0,+\infty)\times(0,L)\\
+        u(0,x)=\varphi(x),\ \partial_tu(0,x)=\psi(x),&\quad\;\; x\in(0,L)\\
+        u(t,0)=u(t,L)=\partial_x^2u(t,0)=\partial_x^2u(t,L)=0,&\quad\;\;\: t\in(0,+\infty).
+    \end{cases}$$
+    其中$\varphi$，$\psi$，$f$满足一定的相容性条件。
+
+    \item[4.] （15分）设函数$c(x)\geq0$，$b(x)\geq b_0>0$，$\Omega\subseteq\mathbb{R}^n$
+    是光滑有界区域，$b_0$是常数，$u(x)$满足
+    $$\begin{cases}
+        \Delta u+b(x)u=f(x),&x\in\Omega\\
+        \dfrac{\partial u}{\partial \nu}+c(x)u=g(x),&x\in\partial\Omega.
+    \end{cases}$$
+    其中$\nu$是单位外法向量，各函数均光滑。证明存在一个与$u$无关的常数$C>0$使得
+    $$\max\limits_{x\in\overline\Omega}|u(x)|
+    \le C\big(\max_{x\in\Omega}|f(x)|+\max_{x\in\partial\Omega}|g(x)|\big).$$
+
+    \item[5.]（20分）设函数$u(t,x)$满足
+    $$\begin{cases}
+        \partial_t^2u+\Delta_xu=0,&(t,x)\in\mathbb{R}_+\times\mathbb{R}^n\\
+        u(0,x)=0,&\quad\;\,\,x\in\mathbb{R}^n,
+    \end{cases}$$
+    且
+    $$\lim_{|(t,x)|\to\infty} \frac{u(t,x)}{\sqrt{t^2+|x|^2}}=0,$$
+    证明$u\equiv0$.
+
+    \item[6.]（10分）设$\boldsymbol{u}\in C^2(\mathbb{R}_+\times\Omega;\mathbb{R}^3)$，
+    $p\in C^1(\mathbb{R}_+\times\Omega;\mathbb{R})$是如下不可压缩Navier--Stokes方程的解
+     $$\begin{cases}
+        \partial_t\boldsymbol{u}+(\boldsymbol{u}\cdot\nabla)\boldsymbol{u}+\nabla p=\Delta\boldsymbol{u},&(t,x)\in\mathbb{R}_+\times\Omega\\
+        \operatorname{div}\boldsymbol{u}=0,&(t,x)\in\mathbb{R}_+\times\Omega\\
+        \boldsymbol{u}(0,x)=\boldsymbol{\varphi}(x),&\quad\;\,\,x\in\Omega\\
+        \boldsymbol{u}(t,x)=0,&(t,x)\in\mathbb{R}_+\times\partial\Omega.
+    \end{cases}$$
+    其中$\boldsymbol{\varphi}(x)$满足相容性条件
+    $\boldsymbol{\varphi}|_{\partial\Omega}=0$，
+    $\operatorname{div}\boldsymbol{\varphi}=0$。
+    证明：
+
+    (1) $\boldsymbol{u}$满足如下能量估计
+    $$\frac{1}{2}\int_\Omega |\boldsymbol{u}(t,x)|^2 dx+\int_0^t {\int_\Omega |\nabla\boldsymbol{u}(s,x)|^2 dx} ds
+    =\frac{1}{2}\int_\Omega |\boldsymbol{\varphi}(x)|^2 dx;$$
+    (2) $\boldsymbol{u}$如果存在，必唯一。
+
+    \item[7.]（10分）求满足如下方程的熵弱解
+    $$\begin{cases}
+        \partial_tu+\frac{1}{2}\partial_x(u^2)=0,&(t,x)\in\mathbb{R}_+\times\mathbb{R}\\
+        u(0,x)=\varphi (x),&\quad\;\,\,x\in\mathbb{R}.
+    \end{cases}$$
+    其中
+    $$\varphi(x)=\begin{cases}
+        0,&\qquad\:\:\: x<-2\\
+        1,& -2<x<-1\\
+        2,& -1<x<1\\
+        1,&\;\;\: 1<x<2\\
+        0,&\qquad\:\:\, x>2.
+    \end{cases}$$
+\end{itemize}
+
+== 2024年秋数理方程（黄耿耿）期末试卷 ==
+\begin{enumerate}
+    \item 设$u$满足方程
+    \[\begin{cases}\Delta u=1,&x\in B_1\subset\R^2,\\
+        u=x_1x_2,&x\in\partial B_1.
+    \end{cases}\]
+    求$u$的最大值和$u(0)$。
+    \item 求解方程
+    \[\begin{cases}
+        \partial_tu-\partial_x^2u=0,&(t,x)\in(0,+\infty)\times(0,+\infty)\\
+        u(0,x)=\varphi(x),&\quad\,\,\ x\in(0,+\infty)\\
+        u(t,0)=0,&\quad\ \ \ t\in(0,+\infty).
+    \end{cases}\]
+    \item 分离变量法求解方程
+    \[\begin{cases}
+        \partial_tu-\partial_x^2u=0,&(t,x)\in(0,+\infty)\times(0,\pi)\\
+        u(0,x)=\sin x,&\quad\,\,\ x\in(0,\pi)\\
+        u(t,0)=u(t,\pi)=0,&\quad\ \ \ t\in(0,+\infty).
+    \end{cases}\]
+    \item 求解方程
+    \[\begin{cases}
+        \partial_t^2u-\partial_x^2u+2\partial_tu=0,&(t,x)\in(0,+\infty)\times(0,\pi)\\
+        u(0,x)=\varphi(x),\ u_t(0,x)=0,&\quad\,\,\ x\in(0,\pi)\\
+        u(t,0)=u(t,\pi)=0,&\quad\ \ \ t\in(0,+\infty).
+    \end{cases}\]
+    \item 设$u$是$\R^n$上的非线性波动方程
+    \[\begin{cases}
+        \partial_t^2u-\Delta u+u^{1905}=0,&(t,x)\in(0,+\infty)\times\Omega\\
+        u(0,x)=\varphi(x),\ \partial_tu(0,x)=\psi(x),&\quad\,\,\ x\in\Omega\\
+        u(t,x)=0,&(t,x)\in(0,+\infty)\times\partial\Omega.
+    \end{cases}\]
+    的一个光滑解。\\
+    (1) 导出$u$的能量满足的不等式。\\
+    (2) 若$\varphi=\psi=0$，证明$u\equiv0$。
+
+    \item 设函数$u(t,x)$满足
+    $$\begin{cases}
+        \partial_t^2u+\Delta_xu=0,&(t,x)\in\mathbb{R}_+\times\mathbb{R}^n\\
+        u(0,x)=0,&\quad\;\,\,x\in\mathbb{R}^n,
+    \end{cases}$$
+    且
+    $$\lim_{|(t,x)|\to\infty} \frac{u(t,x)}{\sqrt{t^2+|x|^2}}=0,$$
+    证明$u\equiv0$.
+    \item 设$f,g$是不恒为$0$的非负函数，
+    \[\begin{cases}-\Delta u=f,-\Delta v=g,&x\in\Omega,\\
+        u=v=0,&x\in\partial\Omega.
+    \end{cases}\]
+    证明：存在只依赖于$f,g,\Omega$的$\varepsilon_0>0$，
+    使得$\varepsilon u(x)<v(x)$对任意的$x\in\Omega,\varepsilon\in(0,\varepsilon_0)$成立。
+\end{enumerate}
+
+== 2024年春数理方程（华波波）期末试卷 ==
+
+\begin{itemize}
+    \item[1.] 设$u$满足波动方程
+    \[\begin{cases}\partial_t^2u=a^2\partial_x^2u,&(t,x)\in\R\times\R\\
+      u|_{x+at=0}=\varphi(x),\ u|_{x-at=0}=\psi(x),&\quad\,\,\ x\in\R
+    \end{cases}\]
+    其中$a>0,\varphi(0)=\psi(0)$。求解$u$。
+
+    \item[2.] 设$u$满足热方程
+    \[\begin{cases}
+    \partial_tu-\Delta u+cu=f(t,x),&(t,x)\in(0,+\infty)\times\R^n\\
+    u|_{t=0}(x)=\varphi(x),&\quad\ \ x\in\R^n
+    \end{cases}\]
+    其中$\varphi\in C_c^\infty(\R^n)$。\\
+    (1) 当$c=0$，求解$u$；\\
+    (2) 当$c$为非零常数，求解$u$。
+
+    \item[3.] 在以下条件下判断是否存在满足$\Delta u=4u$的$u$：\\
+    (1) $u\in C^\infty(\R^n)$；\\
+    (2) $u\in \mathcal{S}(\R^n)$（速降函数空间）。
+    
+    \item[4.] 设$u$满足波动方程
+    \[\begin{cases}
+        \partial_t^2u-\partial_x^2u=\sin x,\quad (t,x)\in(0,+\infty)\times(0,\pi)\\
+        u|_{t=0}=\sin2x,\ u_t|_{t=0}=\sin3x,\\
+        u(t,0)=u(t,\pi)=0.
+    \end{cases}\]
+    求解$u$。
+
+    \item[5.] 设$\Omega=(0,\pi)\times(0,\pi)$，$u$满足热方程
+    $$\begin{cases}
+        \partial_tu-\Delta u=0,&(t,x,y)\in(0,+\infty)\times\Omega\\
+        u|_{t=0}=\sin x\sin2y+\sin2x\sin3y,&\ \ \ (x,y)\in\Omega\\
+        u(t,x,y)=0,&\ \ \ (x,y)\in\partial\Omega.
+    \end{cases}$$
+    求解$u$。
+
+    \item[6.] 设$u$满足波动方程
+    \[\begin{cases}
+        \partial_t^2u-\Delta u=0,&(t,x)\in(0,+\infty)\times\R^3\\
+        u|_{t=0}=0,\ u_t|_{t=0}=\psi(x),&\quad\ \ \,x\in\R^3,
+    \end{cases}\]
+    其中$\operatorname{supp}\psi\subset B_1$。证明：\\
+    （1）对于某常数$C$，成立$\sup\limits_{x\in\R^3}|u(t,x)|
+    \le\frac{C}{t}\|\psi\|_{L^\infty(\R^3)}$。\\
+    （2）对$t>1$，$\operatorname{supp}u(t,\cdot)\subset B_{t+1}\backslash B_{t-1}$。
+
+    \item[7.] 设$u$是Dirichlet问题
+    \[\begin{cases}
+        \Delta u=0,&x\in B_1,\\
+        u(x)=\varphi(x),&x\in\partial B_1.
+    \end{cases}\]
+    的解。若$\varphi\in C(\partial B_1)$满足$\varphi(x',x_n)=-\varphi(x',-x_n)$，
+    这里$x'=(x_1,\cdots,x_{n-1})$，且$x_n>0$时$\varphi(x',x_n)>0$，
+    求证：$u(x)>0$对$x\in B_1^+$，这里$B_1^+=\{(x',x_n)\in B_1\mid x_n>0\}$。
+\end{itemize}
+
+== 2023年秋数理方程(H)（曲鹏）期末试卷 ==
+
+\begin{itemize}
+    \item[1.] 记$ \Omega =\R^3\backslash\overline{B_1(0)}$，
+    证明以下外Robin问题的经典解唯一：
+    \[
+    \begin{cases}
+        \Delta u=0,&x\in\Omega\\
+        \dfrac{\partial u}{\partial\boldsymbol{n}}+\sigma u=g(x),&x\in\partial \Omega\\
+        \lim\limits_{|x|\rightarrow \infty}u(x)=0.&
+    \end{cases}
+    \]
+    其中$\sigma>0$为常数，$\boldsymbol{n}$为指向球内的单位法向量。
+
+    \item[2.] 求解以下一维热方程，并证明解的唯一性。
+    \[\begin{cases}
+        \partial_tu-\partial_x^2u=0,&(t,x)\in(0,+\infty)\times(0,1)\\
+        u(0,x)=x,&\quad\ \,\,x\in\big(0,\frac12\big]\\
+        u(0,x)=1-x,&\quad\ \,\,x\in\big(\frac12,1\big)\\
+        u(t,0)=u(t,1)=0,&\ \ \ \quad t\in(0,+\infty).
+    \end{cases}\]
+
+    \item[3.] 讨论解的相容性条件，并求解以下偏微分方程：
+    \[
+    \begin{cases}
+        \left( 1-\frac{x}{h} \right)^2 \partial _{t}^{2}u
+        =a^2\partial _x\left( \left( 1-\frac{x}{h} \right) ^2\partial _xu \right),
+        & (t,x)\in\R^+\times\R\\
+    	u( 0,x ) =\varphi(x),\ \partial _tu( 0,x ) =\psi(x),
+        & \hspace{1.55em} x\in\R.\\
+    \end{cases}
+    \]
+
+    \item[4.] 设$u$是$ B_{R}(x_0) $上的非负调和函数，在$\bar{B}_R(x_0)$上是连续的。
+    对于$ x\in B_R(x_0) $，记$r=|x-x_0|$。证明：
+    $$
+    \left( \frac{R}{R+r} \right)^{n-2}\frac{R-r}{R+r}u(x_0) 
+    \le u(x) \le \left( \frac{R}{R-r} \right)^{n-2}\frac{R+r}{R-r}u(x_0). 
+    $$
+
+    \item[5.] 对于二维波动方程，假设初值$( \varphi ,\psi ) $足够光滑且具有紧支集，
+    求证：二维波动方程的Cauchy问题的解在$t \to +\infty$时，
+    将以$ t^{-1/2} $的速度一致趋于$0$。
+
+    \item[6.] 
+    设$u$是$B_1(0)$上的调和函数，证明存在$C>0$，使得对任意的$0<r_1<r_2<1$，有
+    $$\int_{B_{r_1}}|Du|^2\,dx
+    \le\frac{C}{(r_2-r_1)^2}\int_{B_{r_2}}|u|^2\,dx.$$
+
+    \item[7.]
+    设$\varphi\in C^\alpha(\R^n)$，$0<\alpha<1$，即存在$C>0$使得
+    $$|\varphi(x)-\varphi(y)|\le C|x-y|^\alpha.$$
+    设$u=P_t\varphi=H(t,\cdot)*\varphi$。\\
+    (1) 证明：存在常数$D>0$使得
+    $$|u(t,x)|\le D(1+|x|+t).$$
+    (2) 证明：存在常数$A>0$使得
+    $$|u(t,x)-u(s,y)|\le A(|x-y|^\alpha+|t-s|^\frac{\alpha}{2}).$$
+\end{itemize}
+\begin{proofc}[6的提示]
+    取$B_1$上的非负光滑函数$\eta$使得在$B_{r_1}$上$\eta=1$，在$B_{r_2}$外$\eta=0$，
+    考虑$\displaystyle \int_{B_1}Du\cdot D(\eta^2u)$。
+\end{proofc}
+\begin{proofc}[6的解答]
+    由于
+    $$\int_{B_1}2\eta uDu\cdot D\eta+\eta^2|Du|^2
+    =\int_{B_1}Du\cdot D(\eta^2u)
+    =-\int_{B_1}\eta^2u\Delta u
+    +\int_{\partial B_1}\frac{\partial u}{\partial\boldsymbol{n}}\eta^2u
+    =0,$$
+    有
+    $$\int_{B_1}\eta^2|Du|^2=-2\int_{B_1}\eta uDu\cdot D\eta
+    \le2\bigg(\int_{B_1}|D\eta|^2u^2\bigg)^\frac12
+    \bigg(\int_{B_1}\eta^2|Du|^2\bigg)^\frac12.$$
+    进一步要求$|D\eta|\le C/|r_2-r_1|$，$C$是任意大于$1$的数，得到
+    $$\int_{B_{r_1}}|Du|^2\le\int_{B_1}\eta^2|Du|^2
+    \le4\int_{B_1}|D\eta|^2u^2
+    \le\frac{4C^2}{(r_2-r_1)^2}\int_{B_{r_2}}u^2.\qedhere$$
+\end{proofc}
+\begin{proofc}[7的解答]
+    (1) 由于\begin{align*}
+        u(t,x)-\varphi(0)&=\int_{\R^n}\frac{1}{(4\pi t)^\frac{n}{2}}
+        e^{-\frac{|y|^2}{4t}}\varphi(x-y)\,dy-\varphi(0)\\
+        &=\int_{\R^n}\frac{1}{(4\pi t)^\frac{n}{2}}
+        e^{-\frac{|y|^2}{4t}}\big(\varphi(x-y)-\varphi(0)\big)\,dy\\
+        &=\pi^{-\frac{n}{2}}\int_{\R^n}e^{-z^2}
+        \big(\varphi(x-\sqrt{4t}z)-\varphi(0)\big)\,dz,
+        \end{align*}
+    有\begin{align*}
+        |u(t,x)-\varphi(0)|&\le \pi^{-\frac{n}{2}}C\int_{\R^n}e^{-z^2}|x-\sqrt{4t}z|^\alpha\,dz\\
+        &\le \pi^{-\frac{n}{2}}C\int_{\R^n}e^{-z^2}\big(|x|^\alpha+|\sqrt{4t}z|^\alpha\big)\,dz\\
+        &\textcolor{red}{\le A(|x|^\alpha+t^\frac{\alpha}{2})}\\
+        &\le B(1+|x|+t).
+    \end{align*}
+    那么，令$D=|\varphi(0)|+B$。
+
+    (2) 不妨设$t>s$，这就是以$s$为初始时间$y$为原点的(1)。
+    将$s,y$当作参数，令
+    $$v(\tau,z)=u(\tau+s,z+y)-u(s,y).$$
+    $v$是$H$与其初值$\psi(z)=u(s,z+y)-u(s,y)$的卷积，这里$\psi$同样符合
+    \begin{align*}
+        |\psi(z)-\psi(w)|&=|u(s,z+y)-u(s,w+y)|\\
+        &=\bigg|\int_{\R^n}H(s,x)\big(\varphi(z+y-x)-\varphi(w+y-x)\big)\,dx\bigg|\\
+        &\le\sup_{x\in\R^n}|\varphi(z+y-x)-\varphi(w+y-x)|\\
+        &\le|z-w|^\alpha.
+    \end{align*}
+    此外$\psi(0)=0$。对$v$使用(1)中\textcolor{FF0000}{红色的}不等式，有
+    $$|u(t,x)-u(s,y)|=|v(t-s,x-y)|\le A(|x-y|^\alpha+(t-s)^\frac{\alpha}{2}).\qedhere$$
+\end{proofc}
+
+== 2023年秋数理方程（王志强）期末试卷 ==
+
+以下每道题都是20分。
+\begin{itemize}
+    \item[1.] 记$ \Omega =\R^3\backslash\overline{B_1(0)}$，
+    证明以下外Robin问题的经典解唯一：
+    \[
+    \begin{cases}
+        \Delta u=0,&x\in\Omega\\
+        \dfrac{\partial u}{\partial\boldsymbol{n}}+\sigma u=g(x),&x\in\partial \Omega\\
+        \lim\limits_{|x|\rightarrow \infty}u(x)=0.&
+    \end{cases}
+    \]
+    其中$\sigma>0$为常数，$\boldsymbol{n}$为指向球内的单位法向量。
+
+    \item[2.] 求解以下一维热方程，并证明解的唯一性。
+    \[\begin{cases}
+        \partial_tu-\partial_x^2u=0,&(t,x)\in(0,+\infty)\times(0,1)\\
+        u(0,x)=x,&\quad\ \,\,x\in\big(0,\frac12\big]\\
+        u(0,x)=1-x,&\quad\ \,\,x\in\big(\frac12,1\big)\\
+        u(t,0)=u(t,1)=0,&\ \ \ \quad t\in(0,+\infty).
+    \end{cases}\]
+
+    \item[3.] 求解以下偏微分方程：
+    \[
+    \begin{cases}
+    
+        	\left( 1-\frac{x}{h} \right)^2 \partial _{t}^{2}u
+            =a^2\partial _x\left( \left( 1-\frac{x}{h} \right) ^2\partial _xu \right),
+            & (t,x)\in\R^+\times\R\\
+        	u( 0,x ) =\varphi(x),\ \partial _tu( 0,x ) =\psi(x),
+            & \hspace{1.55em} x\in\R.\\
+    \end{cases}
+    \]
+    
+    提示: 用$ v=\left( 1-\frac{x}{h} \right) u $换元。
+
+    \item[4.] 设$u$是$ B_{R}(x_0) $上的非负调和函数，在$\bar{B}_R(x_0)$上是连续的。
+    对于$ x\in B_R(x_0) $，记$r=|x-x_0|$。分别对二维和三维的情形证明：
+    $$
+    \left( \frac{R}{R+r} \right)^{n-2}\frac{R-r}{R+r}u(x_0) 
+    \le u(x) \le \left( \frac{R}{R-r} \right)^{n-2}\frac{R+r}{R-r}u(x_0). 
+    $$
+
+    \item[5.] 写出二维波动方程的Cauchy问题解的特点。\\
+    假设初值$( \varphi ,\psi ) $足够光滑且具有紧支集，
+    求证：二维波动方程的Cauchy问题的解在$t \to +\infty$时，
+    将以$ t^{-1/2} $的速度一致趋于$0$。
+
+    \item[6.] 
+    （1）请写出本学期的数理方程课程中你印象最深刻的一个定理或性质，并简要说明原因。\\
+    （2）请谈谈你对数理方程课程的建议（可以从课程内容，教材，教师等方面）。
+\end{itemize}
+
+== 2022年秋数理方程（H）（雷震）期末试卷 ==
+
+\begin{itemize}
+    \item[1.] （10分）叙述Poisson方程的Dirichlet问题、Neumann问题。
+
+    \item[2.] （15分）设$u$是$\R^n$上的调和函数，$1\leq p,q\leq\infty$。
+    记$B_r$是中心为$0$半径为$r$的球，证明
+    $$\|u\|_{L^p(B_r)}\leq Cr^{\frac{n}{p}-\frac{n}{q}}\|u\|_{L^q(B_{2r})}.$$
+
+    \item[3.] （15分）求解
+    $$\begin{cases}
+        \partial_tu-\partial_x^2u=4\sin 2x,&(t,x)\in(0,+\infty)\times(0,2\pi)\\
+        u(t,0)=0,&\quad\ \ \ t\in(0,+\infty)\\
+        u(t,2\pi)=1,&\quad\ \ \ t\in(0,+\infty)\\
+        u(0,x)=\sin 3x+\frac{x}{2\pi},&\quad\,\,\,x\in(0,2\pi).
+    \end{cases}$$
+
+    \item[4.] （20分）区域$\Omega\subset\R^n$上的热方程
+    $$\begin{cases}
+        \partial_tu-\Delta u=0,&(t,x)\in(0,+\infty)\times\Omega\\
+        u(0,x)=\varphi(x),&\quad\,\,\ x\in\Omega\\
+        \dfrac{\partial u}{\partial\boldsymbol{n}}=0,&(t,x)\in(0,+\infty)\times\partial\Omega.
+    \end{cases}$$
+    （1）证明解的能量关于时间的指数衰减性；\\
+    （2）证明解的唯一性、关于初值的$L^2$稳定性。
+
+    \item[5.] （20分）$\R^n$上的非线性波动方程
+    $$\begin{cases}
+        \partial_t^2u-\Delta u-u^5=0,\\
+        u(0,x)=\varphi(x),\ \partial_tu(0,x)=\psi(x).
+    \end{cases}$$
+    证明解的唯一性。
+
+    \item[6.] （20分）$\R^2$上的波动方程
+    $$\begin{cases}
+        \partial_t^2u-\Delta u=0,\\
+        u(0,x)=0,\ \partial_tu(0,x)=\psi(x).
+    \end{cases}$$
+    其中$\psi$是$\R^2$上的光滑紧支函数，支集$\operatorname{supp}\psi\subset B_R(0)$。\\
+    （1）（5分）写出$u$的表达式；\\
+    （2）（15分）证明存在常数$C$使$\|u(t,\,\cdot\,)\|_{L^\infty(\R^2)}
+    \leq CR^{\frac{3}{2}}\|\psi\|_{L^\infty(\R^2)}(t+R)^{-\frac{1}{2}}$。
+\end{itemize}

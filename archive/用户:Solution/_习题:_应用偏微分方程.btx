@@ -1,0 +1,1302 @@
+\setdisplaytitle{习题：应用偏微分方程}
+\sethtmltitle{习题：应用偏微分方程}
+{{comment|教材为李大潜、秦铁虎的《物理学与偏微分方程》上、
+下册。应用偏微分方程课程内容对应这套书的第二、五、八章，即流体力学、
+弹性力学与气体分子运动论。下面是这三章的习题解答，部分习题周子翔老师未
+做要求，这里不收录。为了方便，习题中出现的有标号的式子均遵从教材
+的标号，不再重复列出。}}
+\section{流体力学}
+
+\begin{itemize}
+    \item[1.]试证明：当流场为无旋，即 $\operatorname{rot}\boldsymbol{u}=0$ 时，理想流体的欧拉方程可写为如下形式：
+    $$
+    \frac{\partial\boldsymbol{u}}{\partial t}
+    +\operatorname{grad}\frac{\boldsymbol{u}^2}{2}
+    +\frac{1}{\rho}\operatorname{grad}p=\boldsymbol{F}.
+    $$
+
+    \begin{proof}
+    只需验证
+    $
+    (\boldsymbol{u}\cdot\nabla)\boldsymbol{u}
+    =\nabla\left(\frac{\boldsymbol{u}^2}{2}\right).
+    $，事实上，无旋性可以写成
+    $
+    \frac{\partial v_i}{\partial x_j}
+    =\frac{\partial v_j}{\partial x_i}
+    $,因此
+    $$
+    \frac{\partial}{\partial x_i}\left(\frac{\boldsymbol{u}^2}{2}\right)
+    =\frac{\partial}{\partial x_i}\left(\frac{1}{2}u_ju_j\right)
+    =u_j\frac{\partial u_j}{\partial x_i}
+    =u_j\frac{\partial u_i}{\partial x_j}
+    =\boldsymbol{u}\cdot\nabla u_i.
+    $$
+    \end{proof}
+
+    \item[2.]试证明：如果质量力 $\boldsymbol{F}$ 有势，即存在 $\phi$ 使 $\boldsymbol{F}=-\operatorname{grad}\phi$，那么理想流体的能量守恒方程的微分形式可写为
+    $$
+    \frac{\mathrm d}{\mathrm dt}\left(e+\frac{\boldsymbol{u}^2}{2}
+    +\frac{p}{\rho}+\phi\right)
+    =\frac{1}{\rho}\frac{\partial p}{\partial t}
+    +\frac{\partial\phi}{\partial t}.
+    $$
+    \begin{proof}
+        这正是某种形式的伯努利定理，直接按课上办法验证即可。
+    \end{proof}
+    \item[3.]设 $\Omega$ 为单连通区域，在其边界 $\Gamma$ 上给定向量场 $\boldsymbol{u}_B$，则在 $\overline{\Omega}$ 中存在速度场 $\boldsymbol{u}$，使在 $\Omega$ 中成立 $\operatorname{div}\boldsymbol{u}=0$，且该速度场有势，即存在数量场 $\phi$ 使 $\boldsymbol{u}=-\operatorname{grad}\phi$；并在 $\Gamma$ 上的法向分量 $\boldsymbol{u}\cdot\boldsymbol{n}=\boldsymbol{u}_B\cdot\boldsymbol{n}$，其充分必要条件为
+    $$
+    \int_\Gamma\boldsymbol{u}_B\cdot\boldsymbol{n}\,\mathrm dS=0,
+    $$
+    其中 $\boldsymbol{n}$ 为单位外法线向量。
+
+    \begin{proof}
+    
+    $\nabla\times\boldsymbol{u}=0\Longrightarrow\boldsymbol{u}=-\nabla\phi$，则条件化为诺伊曼边界条件的
+    泊松方程：
+    $$
+    \begin{cases}
+    \Delta\phi=0,\\[2mm]
+    \displaystyle
+    \left.\frac{\partial\phi}{\partial n}\right|_{\partial\Omega}
+    =-\boldsymbol{u}_B\cdot\boldsymbol{n}.
+    \end{cases}
+    $$
+    见教材上册p124,上述方程的存在唯一性
+    $$
+    \Longleftrightarrow\quad
+    \int_{\partial\Omega}\boldsymbol{u}_B\cdot\boldsymbol{n}\,\mathrm dS=0.
+    $$
+    \end{proof}
+
+    \item[4.]设 $\boldsymbol{u}$ 为满足第 3 题中条件的解。证明 $\boldsymbol{u}$ 为如下变分问题
+    $$
+    \min_{\boldsymbol{w}\in A}
+    \frac{1}{2}\int_\Omega|\boldsymbol{w}|^2\,\mathrm dx
+    $$
+    的解，其中
+    $$
+    A=\{\boldsymbol{w}\in C^1(\Omega)\cap C^0(\overline{\Omega});
+    \ \operatorname{div}\boldsymbol{w}=0,\ \text{在 }\Omega\text{ 中};
+    \ \boldsymbol{w}\cdot\boldsymbol{n}
+    =\boldsymbol{u}_B\cdot\boldsymbol{n},\ \text{在 }\Gamma\text{ 上}\}.
+    $$
+
+    \begin{proof}
+    $\boldsymbol{u}=-\nabla\phi$，
+    $\boldsymbol{w}=-\nabla\phi+\boldsymbol{v}$，即
+    $$
+    \nabla\cdot\boldsymbol{v}=0,\qquad
+    \left.\boldsymbol{v}\cdot\boldsymbol{n}\right|_{\partial\Omega}=0.
+    $$
+    $$
+    \begin{aligned}
+    \frac{1}{2}\int_\Omega|\boldsymbol{w}|^2\,\mathrm d^3x
+    -\frac{1}{2}\int_\Omega|\nabla\phi|^2\,\mathrm d^3x
+    &=-\int_\Omega\boldsymbol{v}\cdot(\nabla\phi)\,\mathrm d^3x
+    +\frac{1}{2}\int_\Omega|\boldsymbol{v}|^2\,\mathrm d^3x\\
+    &=-\int_{\partial\Omega}\phi\,\boldsymbol{v}
+    \cdot\mathrm d\boldsymbol{S}
+    +\int_\Omega\phi\,\nabla\cdot\boldsymbol{v}\,\mathrm d^3x
+    +\frac{1}{2}\int_\Omega|\boldsymbol{v}|^2\,\mathrm d^3x\\
+    &\geq 0.
+    \end{aligned}
+    $$
+    \end{proof}
+
+    \item[5.]设流场中流体的应力张量为 $P=\{p_{ij}\}$，试证明：在以某点为中心、$r$ 为半径的球面 $S_r$ 上的法向应力分量的平均值，在 $r\to0$ 时的极限为该点正应力的平均值，即成立
+    $$
+    \lim_{r\to0}\frac{1}{4\pi r^2}
+    \int_{S_r}\boldsymbol{p}_n\cdot\boldsymbol{n}\,\mathrm dS
+    =\frac{1}{3}(p_{11}+p_{22}+p_{33}),
+    $$
+    其中 $\boldsymbol{p}_n$ 由 (2.5) 或 (2.6) 式定义。
+
+    \begin{proof}
+    $T=(T_{ij})，
+    T=T_{ij}n_j\boldsymbol{e}_i.
+    $从而
+    $$
+    \int_{S_r}T\cdot\boldsymbol{n}\,\mathrm dS
+    =\int_{S_r}T_{ij}n_in_j\,\mathrm dS.
+    $$
+    $$
+    \lim_{r\to0}\frac{1}{4\pi r^2}
+    \int_{S_r}T\cdot\boldsymbol{n}\,\mathrm dS
+    =T_{ij}(0)\lim_{r\to0}\frac{1}{4\pi r^2}
+    \int_{S_r}n_in_j\,\mathrm dS.\qquad(*)
+    $$
+    而
+    $$
+    \int_{S_r}n_1n_2\,\mathrm dS=0,
+    $$
+    $$
+    \begin{aligned}
+    \int_{S_r}n_1^2\,\mathrm dS
+    =\int_{S_r}n_2^2\,\mathrm dS
+    =\int_{S_r}n_3^2\,\mathrm dS
+    =\frac{1}{3}\int_{S_r}(n_1^2+n_2^2+n_3^2)\,\mathrm dS
+    =\frac{4\pi r^2}{3}.
+    \end{aligned}
+    $$
+    $$
+    \Longrightarrow\quad
+    (*)=\frac{1}{3}(T_{11}+T_{12}+T_{13}).
+    $$
+    \end{proof}
+
+    \item[6.]试证明：由纳维--斯托克斯方程组描述的流体运动一般总是有旋的，即若 $\operatorname{rot}\boldsymbol{u}\equiv0$，则纳维--斯托克斯方程组 (3.4)--(3.5) 即化为欧拉方程组 (1.15)。
+
+    \begin{proof}
+    $\nabla\times\boldsymbol{v}=0$，且方程不可压缩，即
+    $\nabla\cdot\boldsymbol{v}=0$。
+
+    只需验证项：$\mu\Delta\boldsymbol{v}=0$。
+    $$
+    \Delta v_i
+    =\frac{\partial^2v_i}{\partial x_j\partial x_j}
+    =\frac{\partial^2v_j}{\partial x_j\partial x_i}
+    =\frac{\partial}{\partial x_i}(\nabla\cdot\boldsymbol{v})
+    =0,
+    $$
+    
+    \end{proof}
+
+    \item[7.]设有以 $x$ 轴为轴向的等横截面管道，其中充满着沿 $x$ 方向流动的不可压缩的理想流体，在每一横截面上流体的状态相同，且 $p=p(x)$。若已知 $p(0)=p_1$，$p(L)=p_2$，且 $p_1>p_2$，试确定管内流体的速度（忽略体积力）。
+
+    \begin{proof}
+    条件可以总结为：理想不可压缩，
+    $\boldsymbol{v}=V\boldsymbol{e}_x$，且$p=p(x)$.而方程可以
+    写为：
+    $$
+    \begin{cases}
+    \nabla\cdot\boldsymbol{v}=0,\\[1mm]
+    \displaystyle
+    \frac{\partial\boldsymbol{v}}{\partial t}
+    +(\boldsymbol{v}\cdot\nabla)\boldsymbol{v}
+    +\frac{1}{\rho}\nabla p=0.
+    \end{cases}
+    $$
+    结合条件，可得：
+    $$
+    \frac{\partial V}{\partial x}
+    =\nabla\cdot\boldsymbol{v}=0
+    \quad\Longrightarrow\quad
+    V=V(y,z,t),
+    $$
+    $$
+    (\boldsymbol{v}\cdot\nabla)\boldsymbol{v}
+    =V\frac{\partial}{\partial x}\boldsymbol{v}=0.
+    $$
+    故
+    $$
+    \frac{\partial V(y,z,t)}{\partial t}
+    +\frac{1}{\rho}\frac{\partial p(x)}{\partial x}=0,
+    $$
+    $$
+    \frac{\partial V}{\partial t}=-c,\qquad
+    \frac{1}{\rho}\frac{\partial p}{\partial x}=c.
+    $$
+    $$
+    V=V_0-ct,\qquad
+    p=c\rho x+p_1.
+    $$
+    $$
+    p_2=c\rho L+p_1
+    \quad\Longrightarrow\quad
+    p=\frac{p_2-p_1}{L}x+p_1,
+    $$
+    $$
+    V=V_0-\frac{p_2-p_1}{\rho L}t.
+    $$
+    \end{proof}
+
+    \item[8.]考察固定在 $y=0$ 与 $y=1$ 处两个平板之间的定常粘性不可压缩流体沿 $x$ 方向的流动。设 $p=p(x)$，且已知 $p(0)=p_1$，$p(L)=p_2$，$p_1>p_2$。试求该流场的速度 $\boldsymbol{u}(x,y)$ 与压力 $p(x)$（忽略体积力）。
+
+    \begin{proof}
+    条件可以总结为：稳态不可压缩、定常，
+    $\boldsymbol{v}=v(x,y)\boldsymbol{e}_x$，$ p=p(x)$.而方程
+    可以写为：
+    $$
+    \begin{cases}
+    \nabla\cdot\boldsymbol{v}=0,\\
+    (\boldsymbol{v}\cdot\nabla)\boldsymbol{v}
+    -\mu\Delta\boldsymbol{v}
+    +\dfrac{1}{\rho}\nabla p=0,
+    \end{cases}
+    $$
+    结合条件，可得：
+    $$
+    \nabla\cdot\boldsymbol{v}=0
+    \quad\Longrightarrow\quad
+    \frac{\partial v}{\partial x}=0,
+    $$
+    $$
+    (\boldsymbol{v}\cdot\nabla)\boldsymbol{v}
+    =v\frac{\partial}{\partial x}(v,0,0)=0.
+    $$
+    故
+    $$
+    \mu\frac{\partial^2v(y)}{\partial y^2}
+    =\frac{1}{\rho}\frac{\partial p(x)}{\partial x}
+    :=c.
+    $$
+    $$
+    p=c\rho x+p_1,\qquad
+    p=\frac{p_2-p_1}{L}x+p_1.
+    $$
+    $$
+    v=\frac{1}{2\mu}cy^2+C_1y+C_2.
+    $$
+    需要边界条件（粘性流体边界上为 $0$），即$y=0,\ y=L$ 时 $v=0$，
+    $$
+    \Longrightarrow\quad
+    v=\frac{p_1-p_2}{2\mu\rho L}y(L-y).
+    $$
+    \end{proof}
+
+    \item[9.]设 $\Omega\subset\mathbb R^3$ 为有界域，$\boldsymbol{u}$ 为纳维--斯托克斯方程组 (3.4)--(3.5) 满足边界条件 (3.7) 的解，其中体积力 $\boldsymbol{F}\equiv0$。证明流体的动能随时间的增加而减少，即
+    $$
+    \frac{\mathrm d}{\mathrm dt}
+    \int_\Omega\frac{1}{2}|\boldsymbol{u}|^2\,\mathrm dx\leq0.
+    $$
+
+    \begin{proof}
+    $$
+    \begin{cases}
+    \nabla\cdot\boldsymbol{v}=0,\\[1mm]
+    \displaystyle
+    \frac{\partial\boldsymbol{v}}{\partial t}
+    -\mu\Delta\boldsymbol{v}
+    +(\boldsymbol{v}\cdot\nabla)\boldsymbol{v}
+    +\frac{1}{\rho}\nabla p=0.
+    \end{cases}
+    $$
+    $$
+    \begin{aligned}
+    \frac{1}{2}\frac{\mathrm d}{\mathrm dt}
+    \int_\Omega|\boldsymbol{v}|^2\,\mathrm dV
+    &=\int_\Omega\boldsymbol{v}\cdot
+    \frac{\partial\boldsymbol{v}}{\partial t}\,\mathrm dV\\
+    &=\int_\Omega\left(
+    \mu\boldsymbol{v}\cdot\Delta\boldsymbol{v}
+    -\boldsymbol{v}\cdot
+    ((\boldsymbol{v}\cdot\nabla)\boldsymbol{v})
+    -\frac{1}{\rho}\boldsymbol{v}\cdot\nabla p
+    \right)\mathrm dV\\
+    &=\int_\Omega\left(
+    \mu v_i\frac{\partial^2v_i}{\partial x_j\partial x_j}
+    -\frac{1}{2}v_j\frac{\partial(v_iv_i)}{\partial x_j}
+    -\frac{1}{\rho}v_j\frac{\partial p}{\partial x_j}
+    \right)\mathrm dV\\
+    &=-\int_\Omega\mu
+    \frac{\partial v_i}{\partial x_j}
+    \frac{\partial v_i}{\partial x_j}\,\mathrm dV
+    +\frac{1}{2}\int_\Omega v_iv_i
+    \frac{\partial v_j}{\partial x_j}\,\mathrm dV
+    +\int_\Omega\frac{p}{\rho}
+    \frac{\partial v_j}{\partial x_j}\,\mathrm dV\\
+    &=-\int_\Omega\mu
+    \left(\frac{\partial v_i}{\partial x_j}\right)^2
+    \mathrm dV\leq0.
+    \end{aligned}
+    $$
+    其中倒数第二个等号使用分部积分，最后一个等号用到不可压缩性质。
+    \end{proof}
+
+    \item[10.]试证明：一维理想流体力学方程组的拉格朗日形式 (5.22)--(5.24) 也可写为如下形式
+    $$
+    \begin{cases}
+    \displaystyle\frac{\partial\tau}{\partial t}
+    -\frac{\partial u}{\partial x}=0,\\[2mm]
+    \displaystyle\frac{\partial u}{\partial t}
+    +\frac{\partial p}{\partial x}=F,\\[2mm]
+    \displaystyle\frac{\partial}{\partial t}
+    \left(e+\frac{u^2}{2}\right)
+    +\frac{\partial}{\partial x}(pu)=Fu.
+    \end{cases}
+    $$
+
+    \begin{proof}
+        要验证
+    $$
+    \begin{cases}
+    \displaystyle\frac{\partial\tau}{\partial t}
+    -\frac{\partial u}{\partial x}=0,\\[2mm]
+    \displaystyle\frac{\partial u}{\partial t}
+    +\frac{\partial p}{\partial x}=F,\\[2mm]
+    \displaystyle\frac{\partial s}{\partial t}=0
+    \end{cases}
+    \quad\Longleftrightarrow\quad
+    \begin{cases}
+    \displaystyle\frac{\partial\tau}{\partial t}
+    -\frac{\partial u}{\partial x}=0,\\[2mm]
+    \displaystyle\frac{\partial u}{\partial t}
+    +\frac{\partial p}{\partial x}=F,\\[2mm]
+    \displaystyle\frac{\partial}{\partial t}
+    \left(e+\frac{u^2}{2}\right)
+    +\frac{\partial}{\partial x}(pu)=Fu.
+    \end{cases}
+    $$
+    由热力学基本微分方程：
+    $$
+    \mathrm de=T\,\mathrm ds-p\,\mathrm d\tau
+    \quad\Longrightarrow\quad
+    \frac{\partial e}{\partial t}
+    =T\frac{\partial s}{\partial t}
+    -p\frac{\partial\tau}{\partial t}
+    =-p\frac{\partial u}{\partial x}.
+    $$
+    代入验证即得。
+    \end{proof}
+
+    \item[11.]对由第 10 题中给出的拉格朗日形式的一维理想流体力学方程组，给出其解在强间断线上应满足的间断连接条件（假设体积力 $F=0$）。
+
+    \begin{proof}
+    记间断线速度 $U$。由R-H条件，即可写出
+    $$
+    [\tau]U=-[u],
+    $$
+    $$
+    [u]U=[p],
+    $$
+    $$
+    \left[e+\frac{u^2}{2}\right]U=[pu].
+    $$
+    \end{proof}
+
+    \item[12.]设函数 $L(\xi_0,\xi_1,\cdots,\xi_n)$ 关于变量 $\xi_0>0,\xi_1,\cdots,\xi_n$ 为严格凸的。证明函数
+    $$
+    M=\frac{1}{\xi_0}L(\xi_0,\xi_1,\cdots,\xi_n)
+    $$
+    关于变量
+    $$
+    \eta_0=\frac{1}{\xi_0},\qquad
+    \eta_1=\frac{\xi_1}{\xi_0},\qquad
+    \cdots,\qquad
+    \eta_n=\frac{\xi_n}{\xi_0}
+    $$
+    为严格凸的。
+
+
+\begin{proof}
+
+
+任取两个不同的点
+\[
+\eta=(\eta_0,\eta_1,\ldots,\eta_n),
+\qquad
+\bar\eta=(\bar\eta_0,\bar\eta_1,\ldots,\bar\eta_n),
+\]
+其中 $\eta_0,\bar\eta_0>0$，并任取 $t\in(0,1)$。令
+\[
+\eta^{(t)}=(1-t)\eta+t\bar\eta,
+\qquad
+d=(1-t)\eta_0+t\bar\eta_0.
+\]
+再令
+\[
+\alpha=\frac{(1-t)\eta_0}{d},
+\qquad
+\beta=\frac{t\bar\eta_0}{d}.
+\]
+显然
+\[
+\alpha>0,
+\qquad
+\beta>0,
+\qquad
+\alpha+\beta=1.
+\]
+
+记
+\[
+\xi=
+\left(
+\frac{1}{\eta_0},
+\frac{\eta_1}{\eta_0},
+\ldots,
+\frac{\eta_n}{\eta_0}
+\right),
+\qquad
+\bar\xi=
+\left(
+\frac{1}{\bar\eta_0},
+\frac{\bar\eta_1}{\bar\eta_0},
+\ldots,
+\frac{\bar\eta_n}{\bar\eta_0}
+\right).
+\]
+由于上述变量变换是一一对应的，$\eta\neq\bar\eta$ 蕴含
+$\xi\neq\bar\xi$。
+
+设 $\xi^{(t)}$ 是与 $\eta^{(t)}$ 对应的 $\xi$ 变量。直接计算可得
+\begin{align*}
+\xi_0^{(t)}
+&=
+\frac{1}{d}
+=
+\alpha\xi_0+\beta\bar\xi_0,\\
+\xi_i^{(t)}
+&=
+\frac{(1-t)\eta_i+t\bar\eta_i}{d}\\
+&=
+\alpha\xi_i+\beta\bar\xi_i.
+\end{align*}
+因此
+\[
+\xi^{(t)}=\alpha\xi+\beta\bar\xi.
+\]
+
+利用 $L$ 的严格凸性以及 $\xi\neq\bar\xi$，得到
+\[
+L\bigl(\xi^{(t)}\bigr)
+<
+\alpha L(\xi)+\beta L(\bar\xi).
+\]
+两边乘以 $d>0$，便有
+\begin{align*}
+M\bigl((1-t)\eta+t\bar\eta\bigr)
+&=
+dL\bigl(\xi^{(t)}\bigr)\\
+&<
+d\bigl[\alpha L(\xi)+\beta L(\bar\xi)\bigr]\\
+&=
+(1-t)\eta_0L(\xi)
++t\bar\eta_0L(\bar\xi)\\
+&=
+(1-t)M(\eta)+tM(\bar\eta).
+\end{align*}
+所以 $M$ 关于变量
+$\eta_0,\eta_1,\ldots,\eta_n$ 是严格凸函数。
+\end{proof}
+
+
+    \item[13.]试引进新的未知函数，将 $p$--方程组
+    $$
+    \frac{\partial\tau}{\partial t}
+    -\frac{\partial u}{\partial x}=0,\qquad
+    \frac{\partial u}{\partial t}
+    +\frac{\partial}{\partial x}p(\tau)=0
+    $$
+    化为守恒律形式的一阶拟线性对称双曲组。这里假定 $p'(\tau)<0$。
+
+    \begin{proof}
+    $$
+    \frac{\partial}{\partial t}
+    \begin{pmatrix}\tau\\ u\end{pmatrix}
+    +\begin{pmatrix}
+    0&-1\\
+    p'(\tau)&0
+    \end{pmatrix}
+    \frac{\partial}{\partial x}
+    \begin{pmatrix}\tau\\ u\end{pmatrix}
+    =0.
+    $$
+    按照教材第二章定理1.1的办法，设
+    $$
+    \frac{\partial w}{\partial t}
+    +\frac{\partial h}{\partial x}=0.
+    $$
+    $$
+    \begin{aligned}
+    0
+    &=\frac{\partial w}{\partial\tau}\frac{\partial\tau}{\partial t}
+    +\frac{\partial w}{\partial u}\frac{\partial u}{\partial t}
+    +\frac{\partial h}{\partial\tau}\frac{\partial\tau}{\partial x}
+    +\frac{\partial h}{\partial u}\frac{\partial u}{\partial x}\\
+    &=\frac{\partial w}{\partial\tau}\frac{\partial u}{\partial x}
+    -\frac{\partial w}{\partial u}\frac{\partial p}{\partial x}
+    +\frac{\partial h}{\partial\tau}\frac{\partial\tau}{\partial x}
+    +\frac{\partial h}{\partial u}\frac{\partial u}{\partial x}\\
+    &=\frac{\partial u}{\partial x}
+    \left(\frac{\partial w}{\partial\tau}
+    +\frac{\partial h}{\partial u}\right)
+    +\frac{\partial\tau}{\partial x}
+    \left(-p'(\tau)\frac{\partial w}{\partial u}
+    +\frac{\partial h}{\partial\tau}\right).
+    \end{aligned}
+    $$
+    需有
+    $$
+    \begin{cases}
+    \displaystyle\frac{\partial w}{\partial\tau}
+    +\frac{\partial h}{\partial u}=0,\\[2mm]
+    \displaystyle-p'(\tau)\frac{\partial w}{\partial u}
+    +\frac{\partial h}{\partial\tau}=0.
+    \end{cases}
+    $$
+    $$
+    \Longrightarrow\quad
+    \frac{\partial^2w}{\partial\tau^2}
+    =-p'(\tau)\frac{\partial^2w}{\partial u^2}.
+    $$
+    找一组特解：
+    $$
+    \begin{cases}
+    \displaystyle\frac{\partial^2w}{\partial\tau^2}
+    =-p'(\tau),\\[2mm]
+    \displaystyle\frac{\partial^2w}{\partial u^2}=1.
+    \end{cases}
+    $$
+    故有严格凸解
+    $
+    w=-\int p\,\mathrm d\tau+\frac{1}{2}u^2,
+    $
+    进一步$ h=up.$
+    做Legendre 变换：
+    $$
+    (\tau,u,w)\longrightarrow(v_1,v_2,L),
+    $$
+    $$
+    v_1=\frac{\partial w}{\partial\tau}=-p,\qquad
+    v_2=\frac{\partial w}{\partial u}=u.
+    $$
+    因
+    $$
+    \frac{\partial v_1}{\partial\tau}=-p'(\tau)>0,
+    $$
+    故有反函数 $v_1=-p(\tau)$，
+    $$
+    \tau=\tau(v_1),\qquad u=v_2.
+    $$
+    故方程化为
+    $$
+    \begin{cases}
+    \displaystyle\frac{\partial}{\partial t}\tau(v_1)
+    -\frac{\partial v_2}{\partial x}=0,\\[2mm]
+    \displaystyle\frac{\partial v_2}{\partial t}
+    -\frac{\partial v_1}{\partial x}=0.
+    \end{cases}
+    $$
+    写成拟线性形式为
+    $$
+    \begin{pmatrix}
+    \dfrac{\mathrm d\tau}{\mathrm dv_1}&0\\
+    0&1
+    \end{pmatrix}
+    \begin{pmatrix}
+    (v_1)_t\\
+    (v_2)_t
+    \end{pmatrix}
+    +\begin{pmatrix}
+    0&-1\\
+    -1&0
+    \end{pmatrix}
+    \begin{pmatrix}
+    (v_1)_x\\
+    (v_2)_x
+    \end{pmatrix}
+    =0.
+    $$
+    \end{proof}
+\end{itemize}
+
+\section{弹性力学}
+
+\begin{itemize}
+    \item[1.]证明引理 2.1。
+
+    \begin{proof}
+    要证明极分解：对$\det F\neq0$，则
+    \(F=RU=VR,\)其中$R$ 正交，$U,V$ 正定。
+
+    $F^{\mathrm T}F$ 正定。设 $S$ 是正交阵，
+    $$
+    F^{\mathrm T}F=S\Lambda^2S^{\mathrm T},
+    $$
+    $$
+    \Lambda=\operatorname{diag}(\lambda_1,\ldots,\lambda_n),
+    \qquad \lambda_i>0.
+    $$
+    令
+    $$
+    T=FS\Lambda^{-1},
+    $$
+    则
+    $$
+    T^{\mathrm T}T=I.
+    $$
+    $$
+    F=T\Lambda S^{\mathrm T}
+    =\underbrace{T\Lambda T^{\mathrm T}}_{V}
+    \underbrace{TS^{\mathrm T}}_{R}.
+    $$
+    另一边一样证明。
+    \end{proof}
+
+    \item[2.]验证 (3.6) 式，即证明
+    $$
+    \frac{\mathrm dJ}{\mathrm dt}
+    =J\operatorname{div}_y\boldsymbol{v}.
+    $$
+
+    \begin{proof}
+    
+    $$
+    \det F=\sum_\sigma(-1)^\sigma
+    f_{1\sigma(1)}\cdots f_{n\sigma(n)}.
+    $$
+    \begin{equation*}
+        \begin{aligned}
+            \frac{\mathrm d}{\mathrm dt}\det F
+    &=\sum_k\sum_\sigma(-1)^\sigma
+    f_{1\sigma(1)}\cdots
+    \frac{\mathrm df_{k\sigma(k)}}{\mathrm dt}
+    \cdots f_{n\sigma(n)}\\
+    &=\sum_k\sum_j\frac{\mathrm df_{kj}}{\mathrm dt}
+    (F^{-1})_{jk}\det F\\
+    &=\det F\,
+    \operatorname{tr}\left(F^{-1}\frac{\mathrm dF}{\mathrm dt}\right).
+        \end{aligned}
+    \end{equation*}
+
+
+    $$
+    \begin{aligned}
+    \frac{\mathrm d}{\mathrm dt}(\det F)=J\operatorname{tr}\left(F^{-1}\frac{\mathrm dF}{\mathrm dt}\right)
+    &=J\left(
+    \frac{\partial x_k}{\partial y_j}
+    \frac{\partial f_{jk}}{\partial t}
+    \right),
+    \end{aligned}
+    $$
+    而代入$f_{jk}=\frac{\partial y_j}{\partial x_k},$可得
+
+    \[\frac{\mathrm d}{\mathrm dt}(\det F)
+    =J\frac{\partial x_k}{\partial y_j}
+    \frac{\partial v_j}{\partial x_k}
+    =J\frac{\partial v_j}{\partial y_j}.\]
+    
+    
+
+    \end{proof}
+
+    \item[3.]试证明：在物质描述下，动量矩守恒定律等价于第二彼奥拉应力张量的对称性。
+
+    \begin{proof}
+
+
+角动量守恒为
+\[
+\frac{\mathrm d}{\mathrm dt}
+\int_{\Omega_t}
+\varepsilon_{ijk}y_j\rho v_k\,\mathrm d^3y
+=
+\int_{\partial\Omega_t}
+\varepsilon_{ijk}y_jP_{kl}\nu_l\,\mathrm dS_t
++
+\int_{\Omega_t}
+\varepsilon_{ijk}y_j\rho b_k\,\mathrm d^3y.
+\]
+由教材引理3.1，并结合
+\[
+\varepsilon_{ijk}v_jv_k=0,
+\]
+故左端为
+\[
+\int_{\Omega_t}
+\varepsilon_{ijk}y_j\rho_0\dot v_k\,\mathrm d^3y.
+\]
+
+把积分区域拉到$t=0$时刻的构形上，
+具体地，即
+\begin{equation*}
+    \begin{aligned}
+        \rho d^3y&=\rho Jd^3x=\rho_0 \mathrm d^3x,\\
+        \int_{\Sigma_t} T_{ij}\nu_j\boldsymbol{e_i}dS_t&=\int_{\Sigma}P_{ij}n_j\boldsymbol{e_i}\mathrm dS.
+    \end{aligned}
+\end{equation*}
+有
+\[\int_{\Omega}\varepsilon_{ijk}\rho_0y_j\frac{dv_k}{dt}
+\mathrm d^3x=\int_{\partial\Omega}\varepsilon_{ijk}
+y_jP_{kl}n_l\mathrm dS+\int_{\Omega}\varepsilon_{ijk}y_j\rho_0
+b_k\mathrm d^3x.\]
+
+由动量方程，\(\rho_0\frac{dv_k}{dt}=\frac{\partial P_{kl}}{\partial x_l}+\rho_0b_k.\)
+
+另一方面，由散度定理，
+\[
+\begin{aligned}
+\int_{\partial\Omega}
+\varepsilon_{ijk}y_jP_{kl}n_l\,\mathrm dS
+&=
+\int_\Omega
+\varepsilon_{ijk}
+\frac{\partial}{\partial X_l}(y_jP_{kl})\,\mathrm d^3x\\
+&=
+\int_\Omega
+\varepsilon_{ijk}
+\left(
+\frac{\partial y_j}{\partial x_l}P_{kl}
++y_j\frac{\partial P_{kl}}{\partial X_l}
+\right)\mathrm d^3x.
+\end{aligned}
+\]
+结合上面的动量方程和散度定理，带入角动量守恒方程，得到：
+\[
+\int_\Omega
+\varepsilon_{ijk}\frac{\partial y_j}{\partial x_l}P_{kl}\,\mathrm d^3x=0.
+\]
+由于 \(\Omega\) 任意，
+\[
+\varepsilon_{ijk}F_{jl}P_{kl}=0.
+\]
+又因为
+\[
+F_{jl}P_{kl}=(FP^{T})_{jk},
+\]
+所以
+\[
+FP^{T}=PF^{T}.
+\]
+
+第二 Piola--Kirchhoff 应力张量 \(\Sigma\) 满足
+\[
+P=F\Sigma.
+\]
+因此
+\[
+FP^{T}=F\Sigma^{T}F^{T},
+\qquad
+PF^{T}=F\Sigma F^{T}.
+\]
+由于 \(F\) 可逆，
+\[
+FP^{T}=PF^{T}
+\quad\Longleftrightarrow\quad
+\Sigma^{T}=\Sigma.
+\]
+故角动量守恒等价于第二 Piola--Kirchhoff 应力张量的对称性。
+\end{proof}
+
+
+    
+
+    \item[5.]设超弹性材料的赋能函数 $\widehat W$ 满足 (4.19) 式，证明由它决定的柯西应力张量 $T$ 满足客观性假设 (4.7) 式。
+
+    \item[6.]设超弹性材料的赋能函数 $\widehat W$ 满足 (4.37) 式，证明由它决定的柯西应力张量 $T$ 满足各向同性条件 (4.21) 式。
+
+    \item[7.]在线性弹性情形，证明对各向同性材料，强椭圆性条件 (5.6) 等价于拉梅常数满足
+    $$
+    \mu>0,\qquad \lambda+2\mu>0.
+    $$
+
+    \begin{proof}
+    各向同性线性弹性张量为
+    $$
+    a_{ijkl}
+    =\lambda\delta_{ij}\delta_{kl}
+    +\mu(\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk}).
+    $$
+    因而
+    $$
+    \begin{aligned}
+    a_{ijkl}\xi_i\eta_j\xi_k\eta_l
+    &=\lambda\xi_i\eta_i\xi_k\eta_k
+    +\mu\xi_i\eta_j\xi_i\eta_j
+    +\mu\xi_i\eta_j\xi_j\eta_i\\
+    &=\mu\|\boldsymbol{\xi}\|^2\|\boldsymbol{\eta}\|^2
+    +(\lambda+\mu)
+    (\boldsymbol{\xi}\cdot\boldsymbol{\eta})^2\\
+    &=\mu\left(
+    \|\boldsymbol{\xi}\|^2\|\boldsymbol{\eta}\|^2
+    -(\boldsymbol{\xi}\cdot\boldsymbol{\eta})^2
+    \right)
+    +(\lambda+2\mu)
+    (\boldsymbol{\xi}\cdot\boldsymbol{\eta})^2.
+    \end{aligned}
+    $$
+    当 $\boldsymbol{\xi}\perp\boldsymbol{\eta}$ 时，强椭圆性给出
+    $\mu>0$；当 $\boldsymbol{\xi}\parallel\boldsymbol{\eta}$ 时，强椭圆性给出
+    $\lambda+2\mu>0$。反之，由柯西--施瓦茨不等式，上式在
+    $\boldsymbol{\xi},\boldsymbol{\eta}\neq\boldsymbol{0}$ 时严格为正。
+    \end{proof}
+
+    \item[8.]在线性弹性情形，证明对各向同性材料，稳定性条件 (5.27) 等价于拉梅常数满足
+    $$
+    \mu>0,\qquad \lambda+\frac{2}{3}\mu>0.
+    $$
+
+    \begin{proof}
+    设 $(e_{ij})$ 对称，则
+    $$
+    \begin{aligned}
+    a_{ijkl}e_{ij}e_{kl}
+    &=\lambda e_{ii}e_{kk}
+    +\mu(e_{ij}e_{ij}+e_{ij}e_{ji})\\
+    &=\lambda(e_{11}+e_{22}+e_{33})^2
+    +2\mu(e_{11}^2+e_{22}^2+e_{33}^2)\\
+    &\quad+4\mu(e_{12}^2+e_{13}^2+e_{23}^2).
+    \end{aligned}
+    $$
+    因此首先必须有 $\mu>0$。关于
+    $e_{11},e_{22},e_{33}$ 的对称矩阵为
+    $$
+    \begin{pmatrix}
+    \lambda+2\mu&\lambda&\lambda\\
+    \lambda&\lambda+2\mu&\lambda\\
+    \lambda&\lambda&\lambda+2\mu
+    \end{pmatrix},
+    $$
+    其顺序主子式为
+    $$
+    \lambda+2\mu,\qquad
+    4\mu(\lambda+\mu),\qquad
+    12\mu^2\left(\lambda+\frac{2}{3}\mu\right).
+    $$
+    由正定性判据，稳定性等价于
+    $$
+    \mu>0,\qquad
+    \lambda+\frac{2}{3}\mu>0.
+    $$
+    \end{proof}
+
+
+\end{itemize}
+
+\section{气体分子运动论}
+
+\begin{itemize}
+    \item[2.]设 $f(t,\boldsymbol{x},\boldsymbol{v})$ 为玻尔兹曼方程
+    $$
+    \frac{\partial f}{\partial t}
+    +\boldsymbol{v}\cdot\nabla_x f=J
+    $$
+    的 $C^1$ 解，且对任何 $t\geq0$，$f$ 关于变量
+    $\boldsymbol{x}$ 及 $\boldsymbol{v}$ 是紧支集的。证明：积分
+    $$
+    \int_{\mathbb R^3}\int_{\mathbb R^3}
+    f(t,\boldsymbol{x},\boldsymbol{v})
+    |\boldsymbol{x}-t\boldsymbol{v}|^2
+    \,\mathrm d^3x\,\mathrm d^3v
+    $$
+    为一个与 $t\geq0$ 无关的常数。
+
+    \begin{proof}
+    记碰撞项为 $J_f$。则
+    $$
+    \begin{aligned}
+    &\frac{\mathrm d}{\mathrm dt}
+    \int_{\mathbb R^3}\int_{\mathbb R^3}
+    f(t,\boldsymbol{x},\boldsymbol{v})
+    |\boldsymbol{x}-t\boldsymbol{v}|^2
+    \,\mathrm d^3x\,\mathrm d^3v\\
+    &=\iint
+    \frac{\partial f}{\partial t}
+    |\boldsymbol{x}-t\boldsymbol{v}|^2
+    \,\mathrm d^3x\,\mathrm d^3v
+    -2\iint f\boldsymbol{v}\cdot
+    (\boldsymbol{x}-t\boldsymbol{v})
+    \,\mathrm d^3x\,\mathrm d^3v\\
+    &=-\iint
+    \boldsymbol{v}\cdot\nabla_x f\,
+    |\boldsymbol{x}-t\boldsymbol{v}|^2
+    \,\mathrm d^3x\,\mathrm d^3v
+    +\iint J_f|\boldsymbol{x}-t\boldsymbol{v}|^2
+    \,\mathrm d^3x\,\mathrm d^3v\\
+    &\quad-2\iint f\boldsymbol{v}\cdot
+    (\boldsymbol{x}-t\boldsymbol{v})
+    \,\mathrm d^3x\,\mathrm d^3v\\
+    &=-\iint\nabla_x\cdot\left(
+    f\boldsymbol{v}|\boldsymbol{x}-t\boldsymbol{v}|^2
+    \right)\,\mathrm d^3x\,\mathrm d^3v\\
+    &\quad+\iint J_f\left(
+    |\boldsymbol{x}|^2
+    -2t\boldsymbol{x}\cdot\boldsymbol{v}
+    +t^2|\boldsymbol{v}|^2
+    \right)\,\mathrm d^3x\,\mathrm d^3v\\
+    &=0.
+    \end{aligned}
+    $$
+    最后一步使用了紧支集条件以及碰撞不变量
+    $1,\boldsymbol{v},|\boldsymbol{v}|^2$。
+    \end{proof}
+
+    \item[3.]设 $\widetilde J$ 为由 (6.13) 式定义的希尔伯特空间
+    $H$ 中的积分算子。证明该算子为非负的自共轭算子。
+
+    \begin{remark}
+        这里由于原命题太困难，只证明是对称算子。
+    \end{remark}
+
+    \begin{proof}
+    设
+\[
+B(\boldsymbol v,\boldsymbol w,\Omega)
+=\sigma(\Omega)|\boldsymbol w-\boldsymbol v|,
+\]
+并记
+\[
+\Delta\varphi
+=\varphi(\boldsymbol v)+\varphi(\boldsymbol w)
+-\varphi(\boldsymbol v')-\varphi(\boldsymbol w').
+\]
+则
+\[
+\begin{aligned}
+(\widetilde J(\varphi),\psi)_H
+&=\frac1n\int_{\mathbb R^3}\int_{\mathbb R^3}
+\int_{S^2}
+B f^{(0)}(\boldsymbol v)f^{(0)}(\boldsymbol w)
+\Delta\varphi\,\psi(\boldsymbol v)
+\,d\Omega\,d^3\boldsymbol w\,d^3\boldsymbol v.
+\end{aligned}
+\]
+
+交换两个粒子
+\[
+(\boldsymbol v,\boldsymbol w,\boldsymbol v',\boldsymbol w')
+\longmapsto
+(\boldsymbol w,\boldsymbol v,\boldsymbol w',\boldsymbol v'),
+\]
+微分散射截面不变，从而积分不变不变，故
+\[
+(\widetilde J(\varphi),\psi)_H
+=\frac1n\iiint
+B f^{(0)}(\boldsymbol v)f^{(0)}(\boldsymbol w)
+\Delta\varphi\,\psi(\boldsymbol w).
+\]
+与原式取平均，得到
+\[
+(\widetilde J(\varphi),\psi)_H
+=\frac1{2n}\iiint
+B f^{(0)}(\boldsymbol v)f^{(0)}(\boldsymbol w)
+\Delta\varphi
+\bigl(\psi(\boldsymbol v)+\psi(\boldsymbol w)\bigr).
+\tag{1}
+\]
+
+再作碰撞前后变量替换
+\[
+(\boldsymbol v,\boldsymbol w,\boldsymbol v',\boldsymbol w')
+\longmapsto
+(\boldsymbol v',\boldsymbol w',\boldsymbol v,\boldsymbol w).
+\]
+碰撞变换保持相对速度和微分散射截面不变。又由能量守恒，
+\[
+|\boldsymbol v|^2+|\boldsymbol w|^2
+=
+|\boldsymbol v'|^2+|\boldsymbol w'|^2,
+\]
+所以 Maxwell 分布满足
+\[
+f^{(0)}(\boldsymbol v)f^{(0)}(\boldsymbol w)
+=
+f^{(0)}(\boldsymbol v')f^{(0)}(\boldsymbol w').
+\]
+而在此变换下，\(\Delta\varphi\) 变为 \(-\Delta\varphi\)，故
+\[
+(\widetilde J(\varphi),\psi)_H
+=-\frac1{2n}\iiint
+B f^{(0)}(\boldsymbol v)f^{(0)}(\boldsymbol w)
+\Delta\varphi
+\bigl(\psi(\boldsymbol v')+\psi(\boldsymbol w')\bigr).
+\tag{2}
+\]
+
+将式 \((1)\) 与式 \((2)\) 取平均，得
+\[
+(\widetilde J(\varphi),\psi)_H
+=\frac1{4n}\iiint
+B f^{(0)}(\boldsymbol v)f^{(0)}(\boldsymbol w)
+\Delta\varphi\,\Delta\psi
+\,d\Omega\,d^3\boldsymbol w\,d^3\boldsymbol v,
+\]
+其中
+\[
+\Delta\psi
+=\psi(\boldsymbol v)+\psi(\boldsymbol w)
+-\psi(\boldsymbol v')-\psi(\boldsymbol w').
+\]
+右端关于 \(\varphi,\psi\) 对称，因此
+\[
+(\widetilde J\varphi,\psi)_H
+=(\varphi,\widetilde J\psi)_H.
+\]
+故 \(\widetilde J\) 关于 \((\cdot,\cdot)_H\) 对称。
+    \end{proof}
+
+    \item[4.]利用 $\widetilde a_i,\widetilde b_{ij}$ 的表达式 (6.24)，
+    直接证明 (6.33) 式对一切守恒量 $\chi$ 成立。
+
+    \begin{proof}
+        只给出$\widetilde a_i$的部分示例，其余自行验证。
+    $$
+    \widetilde a_i
+    =\left(\frac{1}{2}m|\boldsymbol{u}|^2
+    -\frac{5}{2}kT\right)u_i.
+    $$
+    $\chi$ 为守恒量，需要证明
+    $$
+    (\widetilde a_i,\chi)_H=0,
+    \qquad
+    \chi:\ 1,\ \boldsymbol{u},\ |\boldsymbol{v}|^2.
+    $$
+    以 $(\widetilde a_i,|\boldsymbol{v}|^2)_H$ 为例，
+    $$
+    \begin{aligned}
+    (\widetilde a_i,|\boldsymbol{v}|^2)_H
+    &=\int_{\mathbb R^3}
+    \left(\frac{1}{2}m|\boldsymbol{u}|^2
+    -\frac{5}{2}kT\right)
+    u_i f^{(0)}(\boldsymbol{u})
+    |\boldsymbol{u}+\boldsymbol{v}|^2
+    \,\mathrm d^3u\\
+    &=2\int_{\mathbb R^3}
+    \left(\frac{1}{2}m|\boldsymbol{u}|^2
+    -\frac{5}{2}kT\right)
+    f^{(0)}(\boldsymbol{u})u_iu_jv_j
+    \,\mathrm d^3u
+    \end{aligned}
+    $$
+
+而
+\[
+f^{(0)}(\boldsymbol u)
+=n\left(\frac{m}{2\pi kT}\right)^{3/2}
+e^{-\frac{m}{2kT}|\boldsymbol u|^2}.
+\]
+令 \(\boldsymbol u=u\boldsymbol\omega\)，其中
+\(u=|\boldsymbol u|\)、\(\boldsymbol\omega\in S^2\)，则
+\[
+u_i u_j=u^2\omega_i\omega_j,
+\qquad
+\mathrm d^3\boldsymbol u=u^2\,\mathrm du\,\mathrm d\boldsymbol\omega.
+\]
+由球面对称性，
+\[
+\int_{S^2}\omega_i\omega_j\,\mathrm d\boldsymbol\omega
+=\frac{4\pi}{3}\delta_{ij}.
+\]
+因此
+\[
+\begin{aligned}
+&2\int_{\mathbb R^3}
+\left(\frac12m|\boldsymbol u|^2-\frac52kT\right)
+f^{(0)}(\boldsymbol u)u_i u_jv_j\,\mathrm d^3\boldsymbol u\\
+&=
+2n\left(\frac{m}{2\pi kT}\right)^{3/2}v_j
+\int_0^\infty
+\left(\frac12mu^2-\frac52kT\right)
+e^{-\frac{m}{2kT}u^2}u^4\,\mathrm du
+\int_{S^2}\omega_i\omega_j\,\mathrm d\boldsymbol\omega\\
+&=
+\frac{8\pi}{3}v_j\delta_{ij}\,
+n\left(\frac{m}{2\pi kT}\right)^{3/2}
+\int_0^\infty
+\left(\frac12mu^2-\frac52kT\right)
+e^{-\frac{m}{2kT}u^2}u^4\,\mathrm du\\
+&=
+\frac{8\pi}{3}v_i n
+\left(\frac{m}{2\pi kT}\right)^{3/2}
+\int_0^\infty
+\left(\frac12mu^2-\frac52kT\right)
+e^{-\frac{m}{2kT}u^2}u^4\,\mathrm du.
+\end{aligned}
+\]
+
+令 \(a=m/(2kT)\)。由
+\[
+\int_0^\infty u^6e^{-au^2}\,\mathrm du
+=\frac{5}{2a}\int_0^\infty u^4e^{-au^2}\,\mathrm du
+=\frac{5kT}{m}\int_0^\infty u^4e^{-au^2}\,\mathrm du,
+\]
+可知
+\[
+\int_0^\infty
+\left(\frac12mu^2-\frac52kT\right)
+e^{-\frac{m}{2kT}u^2}u^4\,\mathrm du=0.
+\]
+    \end{proof}
+
+    \item[6.]设 $f(t,\boldsymbol{x},\boldsymbol{v})$ 为由伏拉索夫--麦克斯韦方程组
+    决定的粒子的连续可微的分布函数，且对任何 $t\geq0$，
+    $f$ 关于变量 $\boldsymbol{x}$ 及 $\boldsymbol{v}$ 是紧支集的。
+    又设 $\phi$ 为光滑函数，且 $\phi(0)=0$。证明：积分
+    $$
+    \int_{\mathbb R^3}\int_{\mathbb R^3}
+    \phi\bigl(f(t,\boldsymbol{x},\boldsymbol{v})\bigr)
+    \,\mathrm d^3x\,\mathrm d^3v
+    $$
+    为一个不随时间 $t\geq0$ 变化的常量。
+
+    \begin{proof}
+设
+\[
+I(t)=\iint_{\mathbb R^3\times\mathbb R^3}
+\phi(f(t,\boldsymbol x,\boldsymbol v))
+\,\mathrm d^3\boldsymbol x\,\mathrm d^3\boldsymbol v.
+\]
+由 Vlasov 方程
+\[
+\partial_t f+\boldsymbol v\cdot\nabla_{\boldsymbol x}f
++\frac qm(\boldsymbol E+\boldsymbol v\times\boldsymbol B)
+\cdot\nabla_{\boldsymbol v}f=0,
+\]
+以及链式法则，得
+\[
+\begin{aligned}
+I'(t)
+&=-\iint \boldsymbol v\cdot\nabla_{\boldsymbol x}\phi(f)
+\,\mathrm d^3\boldsymbol x\,\mathrm d^3\boldsymbol v\\
+&\quad-\frac qm\iint
+(\boldsymbol E+\boldsymbol v\times\boldsymbol B)
+\cdot\nabla_{\boldsymbol v}\phi(f)
+\,\mathrm d^3\boldsymbol x\,\mathrm d^3\boldsymbol v.
+\end{aligned}
+\]
+
+由于 \(\phi(0)=0\)，且 \(f\) 关于
+\((\boldsymbol x,\boldsymbol v)\) 紧支撑，故 \(\phi(f)\) 也紧支撑。
+对上式分部积分，边界项均为零，从而
+\[
+\begin{aligned}
+I'(t)
+&=\iint \phi(f)\,\nabla_{\boldsymbol x}\cdot\boldsymbol v
+\,\mathrm d^3\boldsymbol x\,\mathrm d^3\boldsymbol v\\
+&\quad+\frac qm\iint \phi(f)\,
+\nabla_{\boldsymbol v}\cdot
+(\boldsymbol E+\boldsymbol v\times\boldsymbol B)
+\,\mathrm d^3\boldsymbol x\,\mathrm d^3\boldsymbol v.
+\end{aligned}
+\]
+又因为
+\[
+\nabla_{\boldsymbol x}\cdot\boldsymbol v=0,
+\qquad
+\nabla_{\boldsymbol v}\cdot\boldsymbol E=0,
+\qquad
+\nabla_{\boldsymbol v}\cdot(\boldsymbol v\times\boldsymbol B)=0,
+\]
+所以
+\[
+I'(t)=0.
+\]
+因此
+\[
+\iint_{\mathbb R^3\times\mathbb R^3}
+\phi(f(t,\boldsymbol x,\boldsymbol v))
+\,\mathrm d^3\boldsymbol x\,\mathrm d^3\boldsymbol v
+\]
+不随时间 \(t\) 变化。
+\end{proof}
+
+    \item[7.]求解一维伏拉索夫方程的柯西问题：
+    $$
+    \begin{cases}
+    \displaystyle
+    \frac{\partial f}{\partial t}
+    +v\frac{\partial f}{\partial x}
+    +g\frac{\partial f}{\partial v}=0,
+    &t>0,\ (x,v)\in\mathbb R^2,\\[2mm]
+    f(0,x,v)=f^0(x,v),
+    \end{cases}
+    $$
+    其中 $g$ 为常数，$f^0(x,v)$ 为给定的适当光滑函数。
+
+    \begin{proof}
+    特征方程为
+    $$
+    \frac{\mathrm dt}{1}
+    =\frac{\mathrm dx}{v}
+    =\frac{\mathrm dv}{g}
+    =\frac{\mathrm df}{0}.
+    $$
+    显然有首次积分 $f$ 与 $v-gt$，并且
+    $$
+    \frac{\mathrm dx}{v}
+    =\frac{\mathrm dv}{g}
+    \quad\Longrightarrow\quad
+    x-\frac{v^2}{2g}
+    $$
+    也是首次积分。因此通解为
+    $$
+    f=\varphi\left(
+    x-\frac{v^2}{2g},v-gt
+    \right).
+    $$
+    当 $t=0$ 时，
+    $$
+    \varphi\left(x-\frac{v^2}{2g},v\right)
+    =f^0(x,v),
+    $$
+    从而
+    $$
+    \varphi(\xi,v)
+    =f^0\left(\xi+\frac{v^2}{2g},v\right).
+    $$
+    故
+    $$
+    \begin{aligned}
+    f(t,x,v)
+    &=f^0\left(
+    x-\frac{v^2}{2g}
+    +\frac{(v-gt)^2}{2g},v-gt
+    \right)\\
+    &=f^0\left(
+    x-vt+\frac{1}{2}gt^2,v-gt
+    \right).
+    \end{aligned}
+    $$
+    \end{proof}
+
+    \item[8.]求解下述一维伏拉索夫方程的边值问题：
+    $$
+    \begin{cases}
+    \displaystyle
+    \frac{\partial f}{\partial t}
+    +v\frac{\partial f}{\partial x}=0,
+    &t>0,\ x>0,\ v\in\mathbb R,\\[2mm]
+    f(0,x,v)=f^0(x,v),
+    &x>0,\ v\in\mathbb R,\\[2mm]
+    f(t,0,v)=f(t,0,-v),
+    &t>0,\ v<0,
+    \end{cases}
+    $$
+    其中 $f^0(x,v)$ 为给定的适当光滑函数，并满足相容性条件
+    $$
+    f^0(0,v)=f^0(0,-v),\qquad v<0.
+    $$
+
+    \begin{proof}
+    特征方程为
+    $$
+    \frac{\mathrm dt}{1}
+    =\frac{\mathrm dx}{v}
+    =\frac{\mathrm dv}{0}
+    =\frac{\mathrm df}{0},
+    $$
+    首次积分为 $f,v,x-vt$，故
+    $$
+    f=\varphi(x-vt,v).
+    $$
+    当 $v>0$ 且 $x>vt$，或 $v\leq0$ 时，特征线与初始线相交，
+    因而
+    $$
+    f(t,x,v)=f^0(x-vt,v).
+    $$
+    当 $v>0$ 且 $x-vt<0$ 时，利用反射边界条件，
+    $$
+    \begin{aligned}
+    f(t,x,v)
+    &=f\left(t-\frac{x}{v},0,v\right)
+    =f\left(t-\frac{x}{v},0,-v\right)\\
+    &=f^0\left(
+    0-(-v)\left(t-\frac{x}{v}\right),-v
+    \right)\\
+    &=f^0(vt-x,-v).
+    \end{aligned}
+    $$
+    因此
+    $$
+    f(t,x,v)=
+    \begin{cases}
+    f^0(x-vt,v),
+    &v\leq0,\ \text{或 }v>0,\ x\geq vt,\\[1mm]
+    f^0(vt-x,-v),
+    &v>0,\ x<vt.
+    \end{cases}
+    $$
+    \end{proof}
+\end{itemize}

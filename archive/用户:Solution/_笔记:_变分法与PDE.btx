@@ -1,0 +1,522 @@
+\theoremstyle{plain}\newtheorem*{problem}{问题}
+
+\textsize{24pt}{\textbf{参考文献}}
+\begin{references}
+    \bibitem[Jost]{Jost}
+    Jürgen Jost \& Xianqing Li-Jost. \textit{Calculus of Variations}.
+    Cambridge Studies in Advanced Mathematics \textbf{64}. 
+    Cambridge University Press, 1998.
+    \bibitem[Struwe]{Struwe}
+    Michael Struwe. \textit{Variational Methods}.
+    A Series of Modern Surveys in Mathematics \textbf{38}. 
+    Springer, 2008.
+    \bibitem[Zhang]{Zhang}
+    张恭庆. 非线性分析方法. 现代数学基础. 高等教育出版社, 2020.
+    \bibitem[Liu]{Liu}
+    刘宪高. 变分法与偏微分方程. 科学研究生教学丛书. 科学出版社, 2016.
+\end{references}
+
+== 变分法入门 ==
+
+\begin{problem}
+    设$\Omega\subset\R^n$是有界区域，
+    $f\in C(\overline{\Omega})$。以下方程有解吗？
+    \begin{equation*}
+        \left\{\begin{aligned}
+            \triangle u&=f,\\
+            u|_{\partial\Omega}&=0.
+        \end{aligned}\right.
+    \end{equation*}
+\end{problem}
+为此，考虑空间
+\[X=\{u\in C^1(\overline{\Omega}): u|_{\partial\Omega}=0\},\]
+以及泛函$F\colon X\to\R$，
+\[F(u)=\frac{1}{2}\int_\Omega|\nabla u|^2+\int_\Omega fu.\]
+\begin{proposition}\label{int}
+    假设$v\in X$满足$F(v)=\inf\limits_{u\in X}F(u)$，则
+    \[\int_\Omega(\nabla v\cdot\nabla\varphi+f\varphi)=0,
+    \quad\forall\,\varphi\in C_c^\infty(\Omega).\]
+\end{proposition}
+\begin{proof}
+    首先注意到$\inf\limits_X F>-\infty$，毕竟Poincaré不等式说
+    \[\int_\Omega|\nabla u|^2\ge C\int_\Omega u^2,\]
+    那么
+    \[F(u)\ge\frac{1}{2}\int_\Omega|\nabla u|^2
+    -\frac{C}{2}\int_\Omega u^2-\frac{1}{2C}\int_\Omega f^2
+    \ge-\frac{1}{2C}\int_\Omega f^2.\quad(*)\]
+    更重要的是，$\dfrac{d}{dt}\Big|_{t=0}F(v+t\varphi)=0$
+    （不难验证$F(v+\cdot\,\varphi)\in C^1(\R)$），原因是
+    \[F(v+t\varphi)\ge F(v),\quad\forall\,t\in\R.\]
+    由此，
+    \[0=\frac{d}{dt}\Big|_{t=0}F(v+t\varphi)
+    =\int_\Omega(\nabla v\cdot\nabla\varphi+f\varphi).\qedhere\]
+\end{proof}
+那么，现在要关心的就是这样的$v$是否存在了。
+对于一个$X$中的\textbf{极小化序列}$\{v_n\}_{n\ge1}$，即
+\[\lim_{n\to\infty}F(v_n)=\inf_X F,\]
+$\{v_n\}_{n\ge1}$是否（或在什么意义下）会收敛于一个$v$呢？
+$v\in X$吗？进一步，$F(v)=\inf\limits_X F$成立吗？
+
+回忆一下Banach--Alaoglu定理，是说Banach空间的闭单位球是弱*紧的，
+尤其是对于自反Banach空间，闭单位球是弱紧的。
+此定理能不能说明$\{v_n\}_{n\ge1}$有子列弱收敛于$v\in X$呢？这就要解决以下两个问题：
+
+(i) $X$是自反Banach空间吗？
+
+\quad\ \ 明显不是，但$X$关于$H^1$范数的完备化是Hilbert空间，
+因而是自反Banach空间，\textbf{记为$H_0^1(\Omega)$}，其中，
+\[\|u\|_{H^1}:=\int_\Omega|\nabla u|^2+\int_\Omega u^2.\]
+
+\begin{center}
+    $\boxed{\text{于是现在起改用 }H_0^1\text{ 为 }X,\ 
+    v_n\text{ 亦换成 }H_0^1(\Omega)\text{ 下 }F\text{ 的极小化序列。}}$
+\end{center}
+
+\quad\ \ 不难看出，命题\ref{int}对$X=H_0^1(\Omega)$照样成立。
+
+(ii) $\{v_n\}_{n\ge1}$关于$H^1$范数有界吗？
+
+\quad\ \ 确实如此，这是因为改进上面的$(*)$，得到
+\[F(u)\ge\frac{1}{2}\int_\Omega|\nabla u|^2
+-\frac{C}{4}\int_\Omega u^2-\frac{1}{C}\int_\Omega f^2
+\ge\frac{1}{4}\int_\Omega|\nabla u|^2-\frac{1}{C}\int_\Omega f^2.\]
+\quad\ \ 取$u$为$\{v_n\}_{n\ge1}$，数列$\{F(v_n)\}_{n\ge1}$有极限从而有上界，
+所以$\|\nabla v_n\|_{L^2}$有界，由Poincaré不等式，$\|v_n\|_{H^1}$同样有界。
+
+故$\{v_n\}_{n\ge1}$有子列弱收敛于$v\in H_0^1(\Omega)$，
+尽管目前还不知道是否$v\in X$。显然
+\[\inf_X F\le F(v)=\lim_{n\to\infty} F(v_n),\]
+那么只要说明$F(v)\le\inf\limits_X F$，就有$F(v)=\inf\limits_X F$了。
+
+\begin{definition}
+    设$X$是Banach空间，$F\colon X\to\R$是泛函。
+    \begin{itemize}
+        \item 若$x_n\to x$
+        必有$F(x)\le\varliminf\limits_{n\to\infty}F(x_n)$，则称$F$是下半连续的。
+        \item 若$x_n\rightharpoonup x$
+        必有$F(x)\le\varliminf\limits_{n\to\infty}F(x_n)$，
+        则称$F$是弱下半连续的。（$\rightharpoonup$是弱收敛）
+    \end{itemize}
+\end{definition}
+
+即是要说明$F$是弱下半连续的，这是简单的：由Poincaré不等式，
+只需说明$\|\nabla v_n\|_{L^2}\to\|\nabla v\|_{L^2}$，又由Cauchy不等式，
+\[\varliminf_{n\to\infty}\int_\Omega|\nabla v_n|^2
+\ge\int_\Omega|\nabla v|^2+2\int_\Omega\nabla v\cdot\nabla v_n
+-2\int_\Omega|\nabla v|^2=\int_\Omega|\nabla v|^2.\]
+
+令人惊喜（不爽）的是，本问题有简单得多的解法：
+
+注意$\varphi \mapsto -\int_\Omega f\varphi$是$H_0^1(\Omega)$上的有界线性泛函，
+由Riesz表示定理，存在$v\in H_0^1(\Omega)$使得
+\[\int_\Omega \nabla v\cdot\nabla\varphi=-\int_\Omega f\varphi.\]
+
+这里看上去未用变分法，不过Riesz表示定理的证明本身即是求解一个变分问题。
+
+\begin{problem}
+    设$\Omega\subset\R^n$是有界区域，
+    $g\in C^\infty(\partial\Omega)$。以下方程有解吗？
+    \begin{equation*}
+        \left\{\begin{aligned}
+            \triangle u&=0,\\
+            u|_{\partial\Omega}&=g.
+        \end{aligned}\right.
+    \end{equation*}
+\end{problem}
+这次，选取空间
+\[X=\{u\in H^1(\Omega): u|_{\partial\Omega}=g\},\]
+以及泛函$F\colon X\to\R$，
+\[F(u)=\frac{1}{2}\int_\Omega|\nabla u|^2.\]
+
+再回忆Mazur定理，是说Banach空间的闭凸集是弱闭的。
+故对于凸泛函$F\colon X\to\R$，即
+\[F(\lambda x+(1-\lambda y))\le\lambda F(x)+(1-\lambda)F(y)
+\quad\text{对 }x,y\in X,\lambda\in(0,1),\]
+下半连续等价于弱下半连续。这是因为，$\{F\le t\}$是凸集对任意$t\in\R$，
+那么由Mazur定理，$\{F\le t\}$闭等价于弱闭，
+而$F$下半连续就是$\{F\le t\}$是闭集对任意$t\in\R$，
+$F$下半连续就是$\{F\le t\}$是弱闭集对任意$t\in\R$。
+
+
+== Sobolev空间 ==
+
+\begin{definition}
+    对$u\in L^1_{\text{loc}}(\Omega)$，
+    称$D^\alpha u(\varphi)=(-1)^{|\alpha|}\int uD^\alpha\varphi$
+    对$\varphi\in C_c^\infty(\Omega)$为$u$的\textbf{广义导数}。
+\end{definition}
+
+\begin{definition}
+    对$k\in\N,p\in[1,\infty]$，$(k,p)$阶\textbf{Sobolev空间}$W^{k,p}(\Omega)$为
+    \[W^{k,p}(\Omega)=\{u\in L^p(\Omega):
+    D^\alpha u\in L^p(\Omega),\forall\,|\alpha|\le k\}.\]
+    $W_0^{k,p}(\Omega)$为$C_c^\infty(\Omega)$在$\|\cdot\|_{k,p}$范数下的完备化。
+\end{definition}
+
+\begin{theorem}
+    \begin{itemize}
+        \item $W^{k,p}(\Omega)\cap C^\infty(\Omega)$在$W^{k,p}(\Omega)$中稠密。
+        \item 若$\Omega$具有$C^1$边界，
+        则$C^\infty(\overline{\Omega})$在$W^{k,p}(\Omega)$中稠密。
+    \end{itemize}
+\end{theorem}
+
+$W^{1-\frac1p,p}(\partial\Omega)
+=W^{1,p}(\Omega)/W_0^{1,p}(\partial\Omega)$，即
+\[\|\{u+W_0^{1,p}(\Omega)\}\|_{W^{1-\frac1p,p}(\Omega)}
+=\inf_{v\in W_0^{1,p}(\Omega)}\|u+v\|.\]
+\begin{theorem}[迹定理]
+    $\partial\Omega\in C^1$，存在有界线性算子
+    $T\colon W^{1,p}(\Omega)\to L^p(\partial\Omega)$，使得
+    \begin{itemize}
+        \item $Tu=u|_{\partial\Omega}$，
+        $u\in W^{1,p}(\Omega)\cap C(\overline{\Omega})$.
+        \item $\|Tu\|_{L^p(\partial\Omega)}\le C\|u\|_{W^{1,p}}(\Omega)$.
+        \item 对$\varphi\in C^1(\R^n,\R^n)$，有
+        \[\int_\Omega u\operatorname{div}\varphi=-\int_\Omega Du\cdot\varphi
+        +\int_{\partial\Omega}(\varphi\cdot\vec{n})Tu.\]
+    \end{itemize}
+\end{theorem}
+\begin{theorem}
+    $\partial\Omega\in C^1$，$1<p<\infty$，
+    存在有界线性映射$\operatorname{ext}\colon 
+    W^{1-\frac1p,p}(\partial\Omega)\to W^{1,p}(\Omega)$
+    使得$T\circ\operatorname{ext}=\operatorname{id}$。
+\end{theorem}
+
+== Banach空间上的微分 ==
+
+本讲基本来自于\cite{Zhang}。以下$L(X,Y)$是$X$到$Y$的连续线性算子全体。
+
+\begin{definition}[Gateaux导数，方向导数]
+    设$X,Y$是个Banach空间，$U$是$X$的开子集，$x_0\in U$，$f\colon U\to Y$，
+    $f$在$h$方向可导是指存在$l_h\in Y$使
+    \[\|f(x_0+th)-f(x_0)-tl_h\|_Y=o(t),\quad t\to0,\]
+    记为$\delta f(x_0,h)=l_h$，即
+    \[\delta f(x_0,h)=\frac{d}{dt}\bigg|_{t=0}f(x_0+th).\]
+\end{definition}
+\begin{definition}[Fréchet导数，可微]
+    记号同上，$f$在$x_0$可微是指存在$A(x_0)\in L(X,Y)$使
+    \[\|f(x)-f(x_0)-A(x_0)(x-x_0)\|_Y=o(\|x-x_0\|_X),\quad x\to x_0,\]
+    记为$Df(x_0)=A(x_0)$。此时对任意$h\in X$，
+    \[\delta f(x_0,h)=Df(x_0)h.\]
+\end{definition}
+\begin{definition}
+    记号同上，若$Df\colon U\to L(X,Y)$是连续的（$L(X,Y)$用算子范数拓扑），
+    则称$f$是$C^1$映射。
+\end{definition}
+\begin{theorem}
+    设$f\colon U\to Y$ $\text{G}$-可导，对于任意$x\in U$，存在$A(x)\in L(X,Y)$，
+    使得$\delta f(x_0,h)=A(x_0)h$对一切$h\in X$，且
+    \[x\in U\mapsto A(x)\in L(X,Y)\]
+    是连续的，则$f$在$x_0$处$\text{F}$-可导，且$Df(x_0)=A(x_0)$。
+\end{theorem}
+\begin{proof}
+    见\cite{Zhang}定理1.1.3。
+\end{proof}
+\begin{example}
+    \begin{itemize}
+        \item $f\colon U\to\R$，$x_0\in U\subset X$，
+        $f$在$x_0$可微，$Df(x_0)\in X^*$。
+        \item 当$X$是Hilbert空间，存在$y_0\in X$
+        使$Df(x_0)h=\langle y_0,h \rangle$。
+        \item 当$X$是Hilbert空间，$f\colon X\to\R,x\mapsto\|x\|^2$，
+        由于\[f(x_0+h)-f(x_0)=\|x_0+h\|^2-\|x_0\|^2
+        =2\langle x_0,h \rangle+\|h\|^2=2\langle x_0,h \rangle+o(\|h\|),\]
+        有$A(x_0)=2x_0$，则$x \mapsto A(x)$连续。
+        \item $\Omega$是有界集，对$u\in H_0^1(\Omega)$，令
+        \[f(u)=\frac12 \int_\Omega |\nabla u|^2-\int_\Omega |u|^p.\]
+        根据Sobolev嵌入$H_0^1(\Omega)\hookrightarrow L^{2^*}(\Omega)$，
+        在$p\le2^*=\frac{2n}{n-2}$时$f(u)$是有意义的。考察后一项是不是$C^1$的，记
+        \[A(u):=\frac{d}{dt}\bigg|_{t=0}\int_\Omega |u+th|^p
+        =p\int_\Omega |u|^{p-2}u\in(H_0^1(\Omega))^*:=H^{-1}(\Omega),\]
+        当$u_i\to u$于$H_0^1(\Omega)$时，由于$\|h\|_{L^p}\lesssim\|h\|_{H_0^1}$，
+        有（最后一步用了定理\ref{continuity}）
+        \begin{align*}
+            \|A(u_i)-A(u)\|_{H^{-1}(\Omega)}
+            &=\sup_{\begin{subarray}{c}h\in H_0^1(\Omega)\\
+                \|h\|\le1\end{subarray}}
+            p\bigg|\int_\Omega \big(|u_i|^{p-2}u_i-|u|^{p-2}u\big)h\bigg|\\
+            &\lesssim\||u_i|^{p-2}u_i-|u|^{p-2}u\|_{L^\frac{p}{p-1}}\to0.
+        \end{align*}
+    \end{itemize}
+\end{example}
+\begin{definition}
+    设$\Omega$是测度空间，称$\varphi\colon\Omega\times\R^N\to\R,
+    (x,\xi)\mapsto\varphi(x,\xi)$是Carathéodory函数，是说
+    \begin{itemize}
+        \item 对几乎处处的$x\in\Omega$，$\varphi(x,\cdot)$连续，
+        \item 对所有的$\xi\in\R^N$，$\varphi(\,\cdot\,,\xi)$可测。
+    \end{itemize}
+\end{definition}
+\begin{theorem}\label{continuity}
+    设$p_1,p_2\ge1$，$a>0,b\in L^{p_2}(\Omega)$。
+    设$\varphi$是Carathéodory函数，满足
+    \[|\varphi(x,\xi)|\le b(x)+a|\xi|^\frac{p_1}{p_2},\]
+    则
+    \begin{align*}
+        f\colon L^{p_1}(\Omega,\R^N) &\to L^{p_2}(\Omega,\R^N),\\
+        u(x) &\mapsto \varphi(x,u(x))
+    \end{align*}
+    是有界连续函数。
+\end{theorem}
+\begin{proof}
+    见\cite{Zhang}定理1.1.5。
+\end{proof}
+\begin{corollary}
+    设$\Omega\subset\R^n$，$\varphi\colon\Omega\times\R\to\R$
+    是Carathéodory函数，对几乎处处的$x$，$\varphi(x,\xi)\in C_\xi^1$，
+    且偏导数$\varphi_\xi\colon\Omega\times\R\to\R$亦是Carathéodory函数，而且
+    \begin{align*}
+        |\varphi(x,\xi)|\le b_1(x)+a_1|\xi|^\frac{2n}{n-2},
+        &\quad b_1\in L^1(\Omega),\\
+        |\varphi_\xi(x,\xi)|\le b_2(x)+a_2|\xi|^\frac{n+2}{n-2},
+        &\quad b_2\in L^\frac{2n}{n+2}(\Omega),
+    \end{align*}
+    那么$H^1(\Omega)$上的泛函
+    \[f(u)=\int_\Omega\varphi(x,u(x))\]
+    是$C^1$的，且
+    \[\delta f(u,v)=\int_\Omega\varphi_\xi(x,u(x)) \cdot v(x).\]
+\end{corollary}
+\begin{proof}
+    见\cite{Zhang}推论1.1.7。
+\end{proof}
+\begin{theorem}[隐函数定理]
+    设$X,Y,Z$是Banach空间，$U$是$X \times Y$的开子集，
+    $f\in C^1(U,Z)$。若对$(x_0,y_0)\in U$有
+    \[f(x_0,y_0)=0,\quad (f_y(x_0,y_0))^{-1}\in L(Z,Y),\]
+    则存在$r_0,r_1>0$及唯一的$u \in C(B_{r_0}(x_0),B_{r_1}(y_0))$
+    使得$B_{r_0}(x_0) \times B_{r_1}(y_0) \subset U$，且
+    \[u(x_0)=y_0,\quad f(x,u(x))=0\text{ 对 }x\in B_{r_0}(x_0),\]
+    此时
+    \[Du(x)=-\big(f_y(x,u(x))\big)^{-1} \circ f_x(x,u(x))
+    \quad\text{对 }x\in B_{r_0}(x_0).\]
+\end{theorem}
+\begin{proof}
+    见\cite{Zhang}定理1.2.1。
+\end{proof}
+\begin{definition}[Banach流形]\end{definition}
+
+== Lagrange乘子法 ==
+
+\begin{theorem}
+    设$X$是Banach空间，泛函$f,g\colon X\to\R$是$C^1$的，
+    若$M=\{x:g(x)=0\}$是$C^1$子流形，则在$f$限制于$M$的临界点$x_0$，
+    存在$\lambda\in\R$使得$Df(x_0)=\lambda Dg(x_0)$。
+\end{theorem}
+\begin{definition}[切空间]
+    $M$在$x_0$处的切空间是$X$的子空间
+    \[T_{x_0}M=\{h\in X:\text{存在 }M\text{ 中的 }C^1\text{ 曲线 }\gamma(t),
+    \gamma(0)=x_0,\gamma'(0)=h\}.\]
+\end{definition}
+\begin{proposition}
+    若$Dg(x_0)\ne0$，则$T_{x_0}M=\ker Dg(x_0)$。
+\end{proposition}
+\begin{proof}
+    根据定义，对任何的$h\in T_{x_0}M$，存在$M$中的$C^1$曲线使得$g(\gamma(t))=0$。
+    那么$0=\frac{d}{dt}\big|_{t=0}g(\gamma(t))=Dg(x_0)h$。
+
+    由$Dg(x_0)\ne0$，有$\operatorname{Im}Dg(x_0)=\R$，
+    则$X=\ker Dg(x_0)\oplus\R w$，即对任意$x\in X$，
+    \[x=h_1+\big(Dg(x_0)x\big)w.\]
+    找曲线$\gamma(t)=x_0+th+\alpha(t)w$，$\alpha(t)$待定，要求$\alpha'(0)=0$。
+    \[G(t,\alpha)=g(x_0+th+\alpha(t)w)=0.\]
+    由于
+    \[G(0,0)=0,\quad D_\alpha G(0,0)=Dg(x_0)w=1,\]
+    得$(0,0)$有邻域$B_{r_0}(0) \times B_{r_1}(0)$，对任意$t\in B_{r_0}$，
+    存在$\alpha$使得$G(t,\alpha(t))=0$。
+\end{proof}
+\begin{theorem}
+    设$f,g_1,\cdots,g_N\colon X\to\R$是$C^1$泛函，
+    则存在$\lambda_1,\cdots,\lambda_N\in\R$，使
+    \[Df(x_0)=\sum_{i=1}^N\lambda_iDg_i(x_0).\]
+\end{theorem}
+\begin{proof}
+    只证明$N=1$的情况。由于
+    \[0=\frac{d}{dt}\Big|_{t=0}f(\gamma(t))=Df(x_0)h,\]
+    有$\ker Dg(x_0)\subseteq\ker Df(x_0)$，可证存在$Df(x_0)=\lambda Dg(x_0)$。
+\end{proof}
+\begin{example}
+    $X=H_0^1(\Omega)$，
+    \begin{equation*}
+        \left\{\begin{aligned}
+            -\triangle u&=\lambda u,\\
+            u|_{\partial\Omega}&=0.
+        \end{aligned}\right.
+    \end{equation*}
+    考虑泛函$f,g\colon H_0^1(\Omega)\to\R$，
+    \[f(u)=\frac{1}{2}\int_\Omega|\nabla u|^2,\quad g(u)=\int_\Omega u^2-1.\]
+    设$u_0$是$f$在$M=\{g=0\}$上的最小值点，则$Df(u_0,v)=\lambda Dg(u_0,v)$，即
+    \[\int\nabla u_0\cdot\nabla v=\lambda\int u_0v.\]
+    由于$f(|u_0|)\le f(u_0)$，$|u_0|$也是最小值点，故$u_0\ge0$，
+    又由次调和函数的强极值原理，$u_0>0$。
+\end{example}
+\begin{example}
+    $X=W_0^{1,p}(\Omega)$，$1<p<\infty$，定义$p$-Laplace算子
+    \[\triangle_pu=\nabla(|\nabla u|^{p-2}\nabla u)\]
+    \begin{equation*}
+        \left\{\begin{aligned}
+            -\triangle_p u&=\lambda |u|^{p-2}u,\\
+            u|_{\partial\Omega}&=0.
+        \end{aligned}\right.
+    \end{equation*}
+    这个情况下变分法与$p=2$差别不大，而特征值非常复杂，未必是可数个。
+
+    不过$p=1$时$W_0^{1,1}(\Omega)$甚至不是自反的，
+    \[\min_{u\in W_0^{1,1}(\Omega)\backslash\{0\}}
+    \frac{\int_\Omega|\nabla u|}{\int_\Omega|u|}\]
+    都不存在，为了有最小值要在更大的有界变差空间$\operatorname{BV}(\Omega)$中做。
+\end{example}
+\begin{example}
+    \begin{equation*}
+        \left\{\begin{aligned}
+            -\triangle u&=|u|^{p-2}u,\\
+            u|_{\partial\Omega}&=0.
+        \end{aligned}\right.
+    \end{equation*}
+    $2<p<2^*$时，考虑泛函
+    \[f(u)=\frac{1}{2}\int_\Omega|\nabla u|^p-\frac{1}{p}\int_\Omega|u|^p,\]
+    \[\delta f(u,v)=\int_\Omega\nabla u\cdot\nabla v-\int_\Omega|u|^{p-2}uv.\]
+    $p>2^*$时，若对$x\in\partial\Omega$，$x\cdot\vec{n}(x)>0$，方程没有正解。
+    这是因为，两边乘以$x\cdot Du$再积分，得
+    \[\int_\Omega(\triangle u)x\cdot Du
+    =\Big(\frac{n}{2}-1\Big)\int_\Omega|\nabla u|^2
+    -\frac{1}{2}\int_{\partial\Omega}x_j|\nabla u|^2n_j
+    +\int_{\partial\Omega}\partial_iu\partial_jux_in_j,\]
+    \[\int_\Omega u^{p-1}x\cdot Du=-\frac{n}{p}\int_\Omega|u|^p.\]
+    其中
+    \[\int_{\partial\Omega}\partial_iu\partial_jux_in_j
+    =\int_{\partial\Omega}|\nabla u|^2x\cdot\vec{n}(x),\]
+    于是
+    \[\Big(\frac{n}{2}-1-\frac{n}{p}\Big)\int_\Omega|\nabla u|^2
+    =-\frac{1}{2}\int_{\partial\Omega}|\nabla u|^2x\cdot\vec{n}\le0,\]
+    而$\frac{n}{2}-1-\frac{n}{p}>0$，矛盾。
+\end{example}
+
+== Noehther定理 ==
+
+记$v(t)=\.x(t)$，定义\textbf{动量}$p=D_vL(v,x)$，这里$x,v,p\in\R^n$对任何$t$。
+例如$L=\frac{1}{2}m|v|^2-H(x)$，就有$p=mv$。
+
+设变换$\begin{cases}p=D_vL(v,x)\\x=x\end{cases}$可逆，
+记为$\begin{cases}v=v(p,x)\\x=x\end{cases}$，并定义
+\[H=p\cdot v-L(v,x).\]
+
+\begin{theorem}[Hamilton]
+    $\begin{cases}\.x(t)=\frac{\partial H}{\partial p}\\
+    \.p(t)=-\frac{\partial H}{\partial x}\end{cases}$，
+    且$H(p(t),v(t))=$常数。
+\end{theorem}
+\begin{proof}
+    由Euler--Lagrange方程，
+    \[\left\{\begin{aligned}
+    H_{p_i}&=v_i+p\cdot v_{p_i}-D_vL\cdot v_{p_i}=v_i=\.x_i,\\
+    H_{x_i}&=p\cdot v_{x_i}-D_vL\cdot v_{x_i}-D_{x_i}L=-D_{x_i}L
+    =-\frac{d}{dt}D_{v_i}L=-\.p_i.\end{aligned}\right.\]
+    由此，\[\frac{d}{dt}H=H_{p}\cdot\.p+H_{x}\cdot\.x=0.\qedhere\]
+\end{proof}
+
+现有区域变分\[\eta_\tau\colon\R^n\to\R^n,\eta_0(x)=x,
+\partial_\tau\eta_\tau\big|_{\tau=0}=X,\]
+与函数变分\[u_\tau\colon\R^n\to\R^n,u_0(x)=u(x),
+\partial_\tau u_\tau\big|_{\tau=0}=h.\]
+记\[F_\Omega(u)=\int_\Omega L(Du,u,x)\,dx.\]
+
+\begin{theorem}[Noether]
+    设$u$是$F_\Omega$的临界点，$F_\Omega$是关于$\eta_\tau,u_\tau$不变的，
+    则$\operatorname{div}(D_pv\cdot h-X)=0$当且仅当
+    $\sum_i\partial_{x_i}(hD_{p_i}L-LX_i)=0$.
+\end{theorem}
+\begin{proof}
+    见Evans 8.6.2 Theorem 1 (P513).
+\end{proof}
+
+\begin{example}
+    $u$是调和函数，$\eta_\tau\colon x\to x+\tau e_k,
+    \tau\in(-\varepsilon,\varepsilon)$，$u_\tau=u(x+\tau e_k)$，取
+    \[F_\Omega(u)=\int_\Omega|\nabla u|^2.\]
+    有\[F_\Omega(u_\tau)=\int_{\Omega_\tau}|\nabla u|^2.\]
+    此时
+    \[0=\operatorname{div}(D_pv\cdot h-X)
+    =\sum_i\partial_{x_i}(u_{x_i}Du_{x_k}-\frac{1}{2}|\nabla u|^2\delta_{ik}),\]
+    即对任意$\Omega$，
+    \[\int_{\partial\Omega}(u_{x_i}u_{x_k}-|\nabla u|^2\delta_{ik})n_i=0.\]
+\end{example}
+
+\begin{example}
+    \[\partial_{tt}u=\triangle u,\quad(t,x)\in\R\times\R^n,\]
+    取
+    \[F(u)=\int_{(0,T)\times\Omega}\frac{1}{2}(u_t^2-|\nabla u|^2.)\]
+    详见Evans 8.6.2 Example 3 (P515-6).
+\end{example}
+
+\begin{example}[调和映照]
+    设$u\colon M\to N$是流形间的映射，$u$为调和映照是说Euler--Lagrange方程成立。
+    如\[u\colon B_1\subset\R^n \to S^n\subset\R^{n+1},
+    \quad x\mapsto(u_1(x),\cdots,u_{n+1}(x)),\]
+    则$\sum\limits_{i=1}^{n+1}u_i(x)^2=1$。令
+    \[A=\{u\in H^1(B_1,\R^{m+1}),u|_{\partial B_1}=g,
+    u(x)\in S^n\text{ a.e. }x\in B_1.\}\]
+    \[\begin{cases}\triangle u=-u|\nabla u|^2,\\u|_{\partial B_1}=g.\end{cases}\]
+    用Noether定理,由球面的旋转对称性，
+    $u_\tau(x)=A_\tau u(x),A\in\mathrm{SO}_{n+1}$，守恒律为
+    \[\operatorname{div}(u^j\nabla u^i-u^i\nabla u^j)=0,
+    \quad \forall i,j=1,\cdots,n+1.\]
+\end{example}
+
+== 集中紧原理 ==
+
+参考\cite{Liu} 3.3节。
+
+回忆有嵌入$H^1(\R^n)\hookrightarrow L^{p*}(\R^n),2\le p\le 2^*=\frac{2n}{n-2}$。
+当$2<p<2^*$时，考虑$\R^n$上的方程
+\[-\triangle u+u=|u|^{p-2}u,\tag{$*$}\]
+其中$u\in H^1(\R^n)$。假如泛函
+\[F(u)=\frac{1}{2}\int|\nabla u|^2+|u|^2-\frac{1}{p}\int|u|^p\]
+有最小值$u_0$，则$u_0$满足方程$(*)$；然而它并无下界。转而取泛函
+\[F(u)=\frac{1}{2}\int|\nabla u|^2+|u|^2\]
+在$M=\{u\in H^1(\R^n):\|u\|_{L^p}=1\}$上的最小值，若存在，由Lagrange乘子法有
+\[-\triangle u+u=\lambda|u|^{p-2}u,\]
+取$v=au$，其中$\lambda a/a^{p-1}=1$，则$v$是$(*)$的解了。
+然而用极小化序列找$u$遇到的困难是，$H^1(\R^n)\hookrightarrow L^p(\R^n),2<p<2^*$
+不是紧的：有两种方法使得$H^1(\R^n)$的有界集不是$L^p(\R^n)$的紧集，一种是平移至无穷远处，
+另一种是$u(x)$变成$u_\lambda(x)=\lambda^n u(\lambda x),\lambda\to\infty$
+（称为集中紧）。下面的定理把这严格化。
+
+\begin{theorem}
+    设$\{\mu_m\}_{m\ge1}$是一列$\R^n$上的概率测度，则存在子列，
+    仍记作$\{\mu_m\}_{m\ge1}$，满足以下性质：
+    \begin{itemize}
+        \item[紧性] 存在$\R^n$的点列$\{x_m\}$，使得$\forall\varepsilon>0$，
+        存在$R>0$使得$\mu_m(B_R(x_m))\ge1-\varepsilon$。
+        \item[消失] 对任何$R>0$，
+        $\lim\limits_{n\to\infty}\sup\limits_{x\in\R^n}\mu_m(B_R(x))=0$。
+        \item[二分] $\forall\varepsilon>0$，存在$R>0$与点列$\{x_m\}$
+        和的数列$\{R_m\}\to\infty$，使得
+        \[\varlimsup_{m\to\infty}|\mu_m\big(B_R(x_m)\big)-\lambda|
+        +|\mu_m\big(\R^n\backslash B_{R_m}(x_m)\big)-(1-\lambda)|\le\varepsilon.\]
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    见\cite{Liu} 定理3.17（P112--5）。
+\end{proof}
+回到前面的问题。在定理中令$\mu_m=|u_m|^pdx$，则这三个性质之一成立。
+假设“紧性”成立，则对于极小化序列$v_m(x)=u_m(x+x_m)$，有
+\[\int_{B_R}|v_m|^pdx\ge1-\varepsilon.\]
+由于$H^1(\R^n)$中$v_m\rightharpoonup v$，
+用紧嵌入$H^1(B_R)\hookrightarrow L^p(B_R)$，
+得$L^p(B_R)$中有子列$v_m\to v$，则$\|v\|_{L^p(B_R)}^p\ge1-\varepsilon$，
+令$\varepsilon\to0$得$v\in M$。下面要排除“消失”和“二分”的情况。
+\begin{lemma}[Lions]
+    设$\{u_m\}$是$H^1$的有界序列，存在$R>0$使
+    $\varliminf\limits_{m\to\infty}\|u_m\|_{L^2(B_R)}=0$，
+    则存在子列$u_m\to0$于$L^p(\R^n)$对任意$p\in(2,2^*)$。
+\end{lemma}
+\begin{proof}
+    暂缺。
+\end{proof}
+假设是消失的情况，现在引理说明$\|u_m\|_{L^p}\to0$，
+则$\|u\|_{L^p}=0$，$u\notin M$，矛盾。这排除了“消失”。
+
+假设是二分的情况，构造$B_{R_m}$上的紧支函数$\varphi_m$，在$B_{R_m/2}$上为$1$。
+(...)这排除了“二分”。

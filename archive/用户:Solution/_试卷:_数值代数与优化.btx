@@ -1,0 +1,147 @@
+\setdisplaytitle{试卷：数值代数与优化}
+\sethtmltitle{试卷：数值代数与优化}
+
+\section{26春期末考}
+
+本次考试两大题除最后一问外完全开卷, 可自由使用ai, 需在3小时内完成并上传代码. 两道大题的最后一问是另发试卷, 在最后一小时内完成, 完全开放任何纸质资料. 总时长4小时.
+
+数据集下载: \url{https://pan.baidu.com/s/1Twv-LoniVcjVI1fAYztqew?pwd=antc}
+
+\begin{enumerate}
+    \item[一、]
+Given a sparse matrix $A\in\mathbb{R}^{m\times n}$ and a vector $b\in\mathbb{R}^m$. We look for a vector $x$ that minimizes the norm
+\[
+    \|Ax-b\|_2.
+\]
+The matrix $A$ and the vector $b$ are given in the dataset.
+
+\begin{itemize}
+    \item[(1) (10 pt)] Find a property, e.g., sparsity, low-rank, etc., of the given matrices and vectors in the dataset. Based on this property, propose three potential methods to solve the problem.
+
+    [Mention the method names if they were discussed in class, or propose a short pseudocode and explain why the methods are suitable.]
+
+    \item[(2) (15 pt)] Design an algorithm to address the problem with matrices and vectors in the given dataset.
+
+    \item[(3) (5 pt)] Discuss the requirements of $A$ and $b$ such that your designed algorithm can be applied.
+
+    \item[(4) (10 pt)] Write the value of $x_3$ for each matrix-vector pair in the dataset. 
+    
+    [Keep 6 decimal digits in your answer.]
+
+    \item[(5) (10 pt)] (This problem was answered under closed-book conditions.) 
+    Given matrix $L\in\mathbb{R}^{p\times n}$, 
+    and a parameter $\lambda>0$, consider the regularized least-squares problem
+\[
+    \min
+        \|Ax-b\|_2^2+\lambda\|Lx\|_2^2
+\]
+
+Give a necessary and sufficient condition such that the above minimization problem has a unique minimizer.
+
+\end{itemize}
+
+
+
+\item[二、]
+Consider the following constrained optimization problem:
+\[
+    \min_{\substack{\operatorname{ReLU}(c_i^\top x+\beta_i)=0\\
+    i=K+1,\ldots,M}}
+    \sum_{i=1}^{K} w_i\operatorname{ReLU}(c_i^\top x+\beta_i).
+\]
+In the above problem, the ReLU function is defined as
+\[
+    \operatorname{ReLU}(z)=\max(0,z).
+\]
+
+\begin{itemize}
+    \item[(1) (10 pt)] Write a KKT-like condition for the above system. More precisely, please write the necessary conditions for the optimality of the above optimization problem.
+
+    [If the above problem cannot be answered directly, you could replace $\operatorname{ReLU}$ by $\operatorname{ReLU}^2$ and then write down the KKT conditions.]
+
+    \item[(2) (10 pt)] Design and implement an algorithm to find a feasible point for the optimization problem with given data.
+
+    [The algorithm could adopt the property of the given dataset and be adapted to your following optimization solver.]
+
+    \item[(3) (10 pt)] Design and implement an algorithm to solve the optimization problem with given data.
+
+    \item[(4) (10 pt)] Apply the designed algorithm to the given matrices. Write the minimum objective values.
+
+    [Keep 6 decimal digits in your answer.]
+
+    \item[(5) (10 pt)] (This problem was answered under closed-book conditions.) 
+    Solve this problem by hand
+    \[
+    \min_{
+    \substack{
+    \operatorname{ReLU}(x_1 +2x_2 - x_3 + 4)=0\\
+    \operatorname{ReLU}(-2x_1 +x_2 + x_3 + 3)=0\\
+    \operatorname{ReLU}(x_1 - x_2 + 3x_3 + -6)=0\\
+    \operatorname{ReLU}(-x_1 +4x_2 + x_3 + 7)=0
+    }
+    }
+    \operatorname{ReLU}(2x_1 -3 x_2 -4 x_3 -2)
+\]
+
+\end{itemize}
+\end{enumerate}
+
+\section{25春期末考}
+第一题, 除矩阵向量运算外, 任何作为解答的算法需要自行实现, 不能直接调用矩阵分解, 线性方程组求解等库函数. 例如, 若将 LU 分解作为解答, 需要自行实现 LU 分解算法, 不得直接调用 MATLAB 自带 [L,U]=lu(A) 函数. 
+
+第二题, 允许调用矩阵分解等库函数, 但不允许直接调用优化求解器.
+
+\begin{enumerate}
+    \item[一、]
+Given a symmetric matrix $A\in\mathbb{R}^{n\times n}$. We look for a unitary matrix $W$ such that, 
+\[
+W = \begin{pmatrix}
+    A & \ast\\
+    \ast & \ast
+\end{pmatrix}, 
+\] 
+where $\ast$ denotes an unspecified block of the matrix. The matrix given in the dataset is $A^2$. 
+
+\begin{itemize}
+    \item[(1) (10 pt)] Give an if-and-only-if condition on $A$ such that the unitary matrix $W$ exists.
+
+    \item[(2) (10 pt)] Assume $A$ could be embedded into a unitary matrix $W$, where the size of $W$ is a power of $2$, i.e., $W\in\mathbb{R}^{2^k\times 2^k}$ for some integer $k$. Design a unitary matrix $W$. 
+
+    \item[(3) (20 pt)] Design an algorithm taking $A^2$ as the input and compute the application of $W$ on a given vector. 
+
+    [Your algorithm should include factorization of $A$. The algorithm could be tailored to the specific structure of $A^2$ in the dataset.]
+
+    \item[(4) (10 pt)] Let $n$ be the size of $A$. Embed $A$ into $W$ of size $2n$. Write the value of 
+\[
+\begin{pmatrix}
+    1 & 1 & 0 & \cdots & 0
+\end{pmatrix}W(e_1+e_{n+1}), 
+\]
+for each $A^2$ in the dataset, where $e_i\in\mathbb{R}^{2n}$ is a zero column vector with $1$ at the $i$-th position. 
+\end{itemize}
+ 
+
+
+\item[二、]Given two nonsingular matrices $A\in\mathbb{R}^{m\times k}$ and $B\in\mathbb{R}^{k\times n}$ with $k<\min(m, n)$, a weight vector $c\in\mathbb{R}^n$, and a vector $b\in\mathbb{R}^m$. Consider the following linear program, 
+\[
+\min_{\substack{ABx=b \\ x\geq 0}} c^\top x. 
+\]
+
+\begin{itemize}
+    \item[(1) (10 pt)] Write the KKT condition for above system. 
+
+    \item[(2) (20 pt)] Design and implement an algorithm to solve the linear program. 
+
+    [The algorithm could be tailored to the specific structure of matrices in the dataset.]
+
+    \item[(3) (5 pt)] Based on the given datasets, analyze the computational complexity, and give a complexity upper bound for your designed algorithm. 
+
+    \item[(4) (15 pt)]  Apply the designed algorithm to the given matrices. Write the minimum objective values. 
+
+    [Keep 6 decimal digits in your answer.]
+
+\end{itemize}
+
+
+
+\end{enumerate}

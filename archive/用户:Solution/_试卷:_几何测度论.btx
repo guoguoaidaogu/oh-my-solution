@@ -1,0 +1,62 @@
+\setdisplaytitle{试卷：几何测度论}
+\sethtmltitle{试卷：几何测度论}
+
+== 2025秋 ==
+
+\begin{itemize}
+    \item[1.] (i) 请陈述Frostman引理。\\
+    (ii) 设 $\alpha>n-1$, $\mu$ 是 $\mathbb{R}^n$ 上的 $\alpha$-Frostman 测度。
+    $\mathbb{S}^{n-1}=\{x\in \mathbb{R}^n:|x|=1\}$. 证明：
+    \[
+        \mu(\mathbb{S}^{n-1})=0.
+    \]
+    \item[2.] (i) 请陈述Minkowski维数的定义。 \\
+    (ii) 设 $k$ 是正整数，$S_k := \{k^{-n} : n \in \mathbb{Z}_{\ge 0}\}$. 计算 $S_k$ 的 Minkowski 维数。
+    \item[3.] 设 $\mu$, $\lambda$ 是 $\mathbb{R}^n$ 上的 Radon 测度，且 $\mu \ll \lambda$. 证明：
+    \[
+        \int D(\mu,\lambda,x)^2\,\mathrm{d}\lambda(x) = \int D(\mu,\lambda,x)^2\,\mathrm{d}\mu(x).
+    \]
+    \item[4.] (i) 设 $\mu$ 是一个 $s$-Frostman测度，$0<s<n$. 证明：
+    \[
+        \int_{B(0,R)} |\hat{\mu}(x)|^2\,\mathrm{d}x \leq CR^{n-s}.
+    \]
+    (ii) 设 $\mu$ 是一个紧支撑有限 Radon 测度，满足对任意的 $R\geq 1$, 成立
+    \[
+        \int_{B(0,R)} |\hat{\mu}(x)|^2\,\mathrm{d}x \leq CR^{n-s},
+    \]
+    证明：对任意的 $t\in (0,s)$, 有 $I_t(\mu)<\infty$.
+    \item[5.] (i) 请陈述迭代函数系统的强分离条件和开集条件的定义。\\
+    (ii) 证明：强分离条件蕴含开集条件。
+\end{itemize}
+
+== 2024春 ==
+
+\begin{itemize}
+    \item[1.] (i) 请陈述Hausdorff测度的定义。\\
+    (ii) 设$0<r<\infty$。证明$\mathcal{H}(B(x,r))\subset(0,\infty)$，
+    由此证明存在$c\in(0,\infty)$使得$\mathcal{H}^n\subset c\mathscr{L}^n$。
+
+    \item[2.] 
+    (i) 设$\mu$是$\alpha$-Frostman测度。
+    设$\!\varPsi\in C_c^\infty(\R^n)$满足$\!\varPsi\ge0$且$\int\!\varPsi=1$。
+    证明$\mu_\varepsilon:=\!\varPsi_\varepsilon*\mu$都是$\alpha$-Frostman测度（一致）。\\
+    (i)  设$\mu$是$E$上的$\alpha$-Frostman测度。
+    证明存在$E$上的两个紧集$K_1$和$K_2$，使得$\operatorname{dist}(K_1,K_2)>0$，
+    且$\mu|_{K_1}$和$\mu|_{K_2}$是$\alpha$-Frostman测度。
+
+    \item[3.] 设$\lambda,\mu$是$\R^n$上的Radon测度。\\
+    (i) 设$\mu\ll\lambda$。证明
+    \[\int_B D(\mu,\lambda,x)d\lambda=\mu(B).\]
+    (ii) 找$\mu,\lambda$，使得对某个$B$有
+    \[\int_B D(\mu,\lambda,x)d\lambda<\mu(B).\]
+
+    \item[4.] 称一个测度是\textbf{连续的}，是指每个点都是零测的。\\
+    设$\{\mu_N\},N=1,2,\dots$和$\nu$是$\R$上的非负Radon测度，$\nu$是连续的。
+    若$\widehat{\mu}_N(\xi)\to\widehat{\nu}(\xi)$当$N\to\infty$，
+    对所有的$\xi\in\R$，证明$\mu_N((a,b))\to\nu((a,b))$对所有的$a<b$。
+
+    \item[5.] (i) 请陈述迭代函数系（IFS）吸引子$K$的定义，并验证其是良定义的。\\
+    (ii) 对于概率测度$p=p_i,i\in\Lambda$，
+    证明在吸引子$K$上存在Borel概率测度$\mu$满足
+    \[\mu=\sum_{i\in\Lambda}p_i(\varphi_i)_\#\mu.\]
+\end{itemize}

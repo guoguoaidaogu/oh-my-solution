@@ -1,0 +1,737 @@
+\setdisplaytitle{4 Fourier Transforms}
+\sethtmltitle{4 Fourier Transforms}
+\theoremstyle{definition}
+
+The main references of this chapter are [Folland; Real Analysis, Chapter 8], [Mattila;
+Fourier analysis and Hausdorff dimension, Chapter 3, Chapter 4, Chapter 5],
+and [Mattila 1987; Spherical averages of Fourier transforms of measures with
+finite energy; dimensions of intersections and distance sets]
+
+For $f \in L^{1}$, 
+$$
+\hat{f}(\xi):=\int _{\mathbb{R}^{n}}f(x)e^{-2\pi ix\cdot \xi}\ \mathrm{d}x.
+$$
+For $f \in L^{p}$: existence of $\hat{f}$ ?
+
+\section{Schwarz functions and distributions}
+
+\begin{definition}\label{def:schwarz}
+$f\in C^{\infty}(\mathbb{R}^{n})$ is a Schwarz function if $\forall \alpha,\beta \in \mathbb{N}^{n}$, the semi-norm
+$$
+\rho _{\alpha,\beta}(f):=\sup_{x \in \mathbb{R}^{n}}\lvert x^{\alpha}\partial ^{\beta}f \rvert<\infty.
+$$
+We use $\mathscr{S}(\mathbb{R}^{n})$ to denote the class of Schwarz functions.
+\end{definition}
+
+\begin{example}\label{ex:schwarz_examples}
+\begin{enumerate}[label=(\roman*)]
+    \item $C_{0}^{\infty}(\mathbb{R}^{n})\subset \mathscr{S}(\mathbb{R}^{n})$;
+    \item $e^{-x^{2}} \in \mathscr{S}(\mathbb{R})$;
+    \item $e^{-\lvert x \rvert}\notin \mathscr{S}(\mathbb{R})$.
+    \item For a polynomial $P$, and $f \in \mathscr{S}(\mathbb{R}^{n})$, we have $Pf\in \mathscr{S}(\mathbb{R}^{n})$.
+\end{enumerate}
+\end{example}
+
+\begin{remark}\label{rmk:schwarz_properties}
+\begin{enumerate}[label=(\roman*)]
+    \item $f \in \mathscr{S}(\mathbb{R}^{n})$ if and only if $\forall \alpha \in \mathbb{N}^{n}, N \in \mathbb{N}$, $\exists C_{\alpha,N}$ such that $$\lvert \partial ^{\alpha}f(x) \rvert \leq C_{\alpha,N}(1+\lvert x \rvert )^{-N}. $$
+    \item $f \in \mathscr{S}\Rightarrow \partial ^{\alpha}f \in \mathscr{S}$.
+    \item $f_{k}\to f$ in $\mathscr{S}(\mathbb{R}^{n})\Leftrightarrow \rho(f_{k}-f)\to 0, \forall \rho=\rho _{\alpha ,\beta}$.
+\end{enumerate}
+\end{remark}
+
+\begin{theorem}\label{thm:1.1}
+Let $f,g \in \mathscr{S}(\mathbb{R}^{n})$, $y \in \mathbb{R}^{n}$, $b \in \mathbb{C}$, $\alpha \in \mathbb{N}^{n}$, $t>0$. Then
+\begin{enumerate}[label=(\roman*)]
+    \item $\widehat{f+g}=\hat{f}+\hat{g}$,
+    \item $\widehat{bf}=b \hat{f}$,
+    \item $\hat{\tilde{f}}(\xi)=\tilde{\hat{f}}(\xi)$, where $\tilde{f}(x)=f(-x)$,
+    \item $\hat{\bar{f}}(\xi)=\bar{\hat{f}}(\xi)$,
+    \item $\widehat{\tau ^{y}f}(\xi)=\hat{f}(\xi)e^{-2\pi iy\cdot \xi}$, where $\tau ^{y}f(x)=f(x-y)$,
+    \item $\widehat{[e^{2\pi iy\cdot x}f(x)]}(\xi)=\hat{f}(\xi-y)$,
+    \item $\hat{f}(x)(0)=\int f$,
+    \item $\left\| \hat{f} \right\|_{L^{\infty}}\leq \left\| f \right\|_{L^{1}}$,
+    \item $\widehat{f*g}(\xi)=\hat{f}(\xi)\hat{g}(\xi)$,
+    \item $\widehat{\partial ^{\alpha}f}(\xi)=(2\pi i\xi)^{\alpha}\hat{f}(\xi)$,
+    \item $\partial ^{\alpha}\hat{f}(\xi)=\widehat{[(-2\pi ix)^{\alpha}f(x)]}(\xi)$,
+    \item $\hat{f}\in \mathscr{S}(\mathbb{R}^{n})$,
+    \item $\widehat{\delta ^{t}f}(\xi)=t^{-n}\hat{f}(t^{-1}\xi):=(\hat{f})_{t}(\xi)$, where $\delta ^{t}f(x):=f(tx)$.
+    \item $\widehat{f\circ A}(\xi)=\hat{f}(A\xi)$, where $A$ is an orthogonal matrix.
+\end{enumerate}
+\end{theorem}
+
+\begin{definition}\label{def:radial}
+$f$ is radial if $\exists F$ defined on $\mathbb{R}$ such that $f(x)=F(\lvert x \rvert)$.
+\end{definition}
+
+\begin{corollary}\label{cor:1.2}
+$f$ is radial $\Rightarrow$ $\hat{f}$ is radial.
+\end{corollary}
+
+Question: under what condition
+$$
+f(x)=\int \hat{f}(\xi)e^{2\pi ix\cdot \xi}\ \mathrm{d}\xi \quad?
+$$
+
+\begin{definition}\label{def:inverse_fourier}
+$f^{\vee}(\xi):=\int f(x)e^{2\pi ix\cdot \xi}\ \mathrm{d}x$ is called inverse Fourier transform.
+\end{definition}
+
+\begin{theorem}\label{thm:1.3}
+Let $f,g,h \in \mathscr{S}(\mathbb{R}^{n})$. Then
+\begin{enumerate}[label=(\roman*)]
+    \item $\int _{\mathbb{R}^{n}}\hat{f}(x)g(x)\mathrm{d}x=\int _{\mathbb{R}^{n}}f(x)\hat{g}(x)\mathrm{d}x$
+    \item $(\hat{f})^{\vee}=f=\widehat{(f^{\vee})}$
+    \item $\int f(x)\bar{h}(x)\mathrm{d}x=\int \hat{f}(\xi)\bar{\hat{h}}(\xi)\mathrm{d}\xi$
+    \item $\left\| f \right\|_{2}=\left\| \hat{f} \right\|_{2}=\left\| f^{\vee} \right\|_{2}$
+    \item $\int _{\mathbb{R}^{n}}f(x)h(x)\mathrm{d}x=\int \hat{f}(x)h^{\vee}(x)\mathrm{d}x$.
+\end{enumerate}
+\end{theorem}
+
+\begin{lemma}\label{lem:1.4}
+$C_{0}^{\infty}$ is dense in $L^{2}(\mathbb{R}^{n})$.
+\end{lemma}
+
+$\mathscr{F}$: the extension of the Fourier transformation from $\mathscr{S}$ to $L^{2}$. It is an isometry.
+$\mathscr{F}^{-1}$: extension of $f\mapsto f^{\vee}$.
+Clearly $\mathscr{F}\circ \mathscr{F}^{-1}=I$ in $L^{2}(\mathbb{R}^{n})$.
+
+By a standard interpolation one can write $f\in L^{p}(\mathbb{R}^{n}),1<p<2$ as $f=f_{1}+f_{2}$ such that $f_{i}\in L^{i}(\mathbb{R}^{n})$. In this way we define
+$$
+\hat{f}=\hat{f_{1}}+\mathscr{F}f_{2}.
+$$
+
+\begin{proposition}[Hausdorff-Young]\label{prop:1.5}
+Suppose $1\leq p\leq 2$, $f \in L^{p}(\mathbb{R}^{n})$. Then
+$$
+\left\| \hat{f} \right\| _{L^{p'}(\mathbb{R}^{n})}\leq \left\| f \right\| _{L^{p}(\mathbb{R}^{n})},
+$$
+where $\frac{1}{p'}+\frac{1}{p}=1$.
+\end{proposition}
+
+Linear functional $u:\mathscr{S}(\mathbb{R}^{n})\to \mathbb{C}$ is continuous if and only if $\langle\mu,f_{k}\rangle\to 0$ whenever $f_{k}\to 0$ in $\mathscr{S}(\mathbb{R}^{n})$.
+
+Denote by $\mathscr{S}'(\mathbb{R}^{n})$ the set of all continuous linear functionals on $\mathscr{S}(\mathbb{R}^{n})$. 
+An element in $\mathscr{S}(\mathbb{R}^{n})$ is called a tempered distribution.
+
+\begin{proposition}\label{prop:1.6}
+$u \in \mathscr{S}'(\mathbb{R}^{n})$ if and only if $\exists C,k,m$ such that
+$$
+|\langle u,f\rangle| \leq C \sum_{\substack{|\alpha| \leq m,\\|\beta| \leq k}}\rho_{\alpha,\beta}(f).
+$$
+\end{proposition}
+
+\begin{example}\label{ex:distributions}
+\begin{enumerate}[label=(\roman*)]
+    \item $\langle \delta_{0},f\rangle=f(0)\leq \rho _{0,0}(f)$, $\forall f \in \mathscr{S}(\mathbb{R}^{n})$
+    \item $L^{p}(\mathbb{R}^{n})\subset \mathscr{S}'(\mathbb{R}^{n})$, $\forall 1\leq p\leq \infty$
+    \item $\mathcal{M}(\mathbb{R}^{n})\subset \mathscr{S}'(\mathbb{R}^{n})$.
+\end{enumerate}
+\end{example}
+
+\begin{definition}\label{def:distribution_operations}
+Let $u \in \mathscr{S}'(\mathbb{R}^{n})$
+\begin{enumerate}[label=(\roman*)]
+    \item $\partial ^{\alpha}u$ is defined by $$\langle \partial ^{\alpha}u,f\rangle=(-1)^{\alpha}\langle u,\partial ^{\alpha}f\rangle,$$
+    \item $\langle \hat{u},f\rangle:= \langle u,\hat{f}\rangle$,
+   $\langle u^{\vee},f\rangle:=\langle u,f^{\vee}\rangle$
+\end{enumerate}
+\end{definition}
+
+\begin{remark}\label{rmk:delta_transform}
+$\hat{\delta _{0}}=1$; $\widehat{(\partial ^{\alpha}\delta _{0})}(x)=(2\pi ix)^{\alpha}$.
+\end{remark}
+
+\begin{definition}\label{def:distribution_trans_conv}
+\begin{enumerate}[label=(\roman*)]
+    \item $\langle \tau ^{t}u,f \rangle:= \langle u,\tau ^{-t}f \rangle$
+   $\langle \delta ^{a}u,f \rangle:= \langle u, a^{-n}\delta ^{a^{-1}}f \rangle$
+   $\langle \tilde{u},f \rangle:=\langle u,\tilde{f} \rangle$
+    \item For $h \in \mathscr{S}(\mathbb{R}^{n})$, $u \in \mathscr{S}'(\mathbb{R}^{n})$, define
+   $\langle hu,f \rangle:=\langle u,hf \rangle$
+   $\langle h*u,f \rangle:=\langle u, \tilde{h}*f \rangle$.
+\end{enumerate}
+\end{definition}
+
+
+\section{Fourier transformation of measures}
+$\alpha(x,y):= x+y$
+Let $u,v \in \mathcal{M}(\mathbb{R}^{n})$, then
+$$u*v=(\alpha)_{\sharp}(u\times v).$$
+
+\begin{proposition}\label{prop:2.1}
+Let $\mu,\nu \in \mathcal{M}(\mathbb{R}^{n})$.
+\begin{enumerate}[label=(\roman*)]
+    \item Convolution of measure is commutative and associative.
+    \item $\forall$ bounded Borel measure function $h$, $$\int h\ \mathrm{d}(\mu*\nu)=\iint h(x+y)\ \mathrm{d}\mu(x)\mathrm{d}\mu(y).$$
+    \item $\left\| \mu*\nu \right\|=\left\| \mu \right\|*\left\| \nu \right\|$.
+    \item If $\mathrm{d}\mu=f\ \mathrm{d}\mathcal{L}^{n}$, and $\mathrm{d}\nu= g\ \mathrm{d}\mathcal{L}^{n}$, then $(\mu*\nu)=(f*g)\ \mathrm{d}\mathcal{L^{n}}$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proposition}\label{prop:2.2}
+Let $1\leq p\leq \infty$, $\mu \in \mathcal{M}(\mathbb{R}^{n})$, $\forall f\in L^{p}(\mathbb{R}^{n})$, the convolution $f*\mu$ exists for $\mathcal{L}^{n}$-a.e. $x$, and
+\begin{equation}\label{eq:2.2_star}
+\left\| f*\mu \right\| _{L^{p}(\mathbb{R}^{n})}\leq \left\| f \right\| _{L^{p}(\mathbb{R}^{n})}\left\| \mu \right\|.
+\end{equation}
+\end{proposition}
+\begin{proof}
+It suffices to consider the case $f\geq {0}$, when $f*\mu(x)$ is well-defined although it could be $\infty$. By Minkowski's inequality for integrals, we obtain \eqref{eq:2.2_star}, therefore $(f*\mu)(x)<\infty$ for $\mathcal{L}^{n}$-a.e. $x$.
+\end{proof}
+
+Given $\mu \in \mathcal{M}(\mathbb{R}^{n})$, we define
+$$\hat{\mu}(\xi):=\int e^{-2\pi ix\cdot \xi}\ \mathrm{d}\mu(x).$$
+
+\begin{proposition}\label{prop:2.3}
+If $\mu \in \mathcal{M}(\mathbb{R}^{n})$, then
+$$
+\left\| \hat{\mu} \right\| _{L^{\infty}(\mathbb{R}^{n})}\leq \left\| \mu \right\| ,
+$$
+and
+$$
+\lvert \hat{\mu}(\xi)-\hat{\mu}(\eta) \rvert \leq C\left\| \mu \right\| \lvert \xi-\eta \rvert ,
+$$
+where $C$ can be taken as $R$ if $\operatorname{supp} \mu \subset B(0,R).$
+\end{proposition}
+
+\begin{remark}\label{rmk:measure_decay}
+Unlike the case of integrable functions, we do not have $\hat{\mu}(\xi)\to 0$ as $\lvert \xi \rvert\to 0$. For example, $\hat{\delta_{0}}(\xi)=1\notin L^{p}(\mathbb{R}^{n}), \forall p<\infty$.
+\end{remark}
+
+\begin{proposition}\label{prop:2.4}
+Let $f \in L^{1}(\mathbb{R}^{n})$ and $\mu \in \mathcal{M}(\mathbb{R}^{n})$. Then
+$$
+\widehat{f*\mu}=\hat{f}\hat{\mu}.
+$$
+\end{proposition}
+
+\begin{lemma}\label{lem:2.5}
+Let $\mu,\nu \in \mathcal{M}(\mathbb{R}^{n})$. If $\hat{\mu}=\hat{\nu}$, then $\mu=\nu$.
+\end{lemma}
+\begin{proof}
+Let $\{ \varphi _{\varepsilon} \}$ be an approximate identity. $\mu _{\varepsilon}:=\varphi _{\varepsilon}*\mu\to \mu$ weakly. If $\hat{\mu}=0$, then $\hat{\mu}_{\varepsilon}=\hat{\varphi}_{\varepsilon}\hat{\mu}=0$. Recalling that $\mu _{\varepsilon}\in C_{c}^{\infty}$, we have $\mu _{\varepsilon}=0$. As a result, $\mu=0$.
+\end{proof}
+
+Given $\mu \in \mathcal{M}(\mathbb{R}^{n})$ we $\mu \ll \mathcal{L}^{n}$, we can find $f \in L^{1}(\mathbb{R}^{n})$ such that $\mathrm{d}\mu=f\ \mathrm{d}\mathcal{L}^{n}$. If there is no risk of confusion, we identify $\mu$ and $f$.
+
+\begin{theorem}\label{thm:2.6}
+Let $\mu \in \mathcal{M}(\mathbb{R}^{n})$. If $\hat{\mu}\in L^{2}(\mathbb{R}^{n})$, then $\mu \in L^{2}(\mathbb{R}^{n})$.
+\end{theorem}
+\begin{proof}
+As the Fourier transform is an isometry on $L^{2}(\mathbb{R}^{n})$, we can find $f \in L^{2}(\mathbb{R}^{n})$ such that $\hat{f}=\hat{\mu}.$ This implies that $\hat{\mu}_{\varepsilon}=\hat{f}_{\varepsilon}$ where $f_{\varepsilon}=f*\varphi _{\varepsilon}$. Since $f_{\varepsilon}\to f$ in $L^{2}(\mathbb{R}^{n})$, we have $f_{\varepsilon}\to f$ weakly. Recalling that $\mu _{\varepsilon}\to \mu$ weakly, we have $\mu=f$.
+\end{proof}
+
+\section{Energy and Fourier transformation}
+$0<s<n$
+$s$-energy $I_{s}(\mu):=\displaystyle \iint \lvert x-y \rvert^{-s}\ \mathrm{d}\mu (x)\mathrm{d}\mu(y)$.
+$k_{s}(x):=\lvert x \rvert^{-s}$ Riesz kernel.
+
+\begin{theorem}\label{thm:3.1}
+Let $\mu \in \mathcal{M}(\mathbb{R}^{n})$, and $0<s<n$. Then
+\begin{equation}\label{eq:3.1_main}
+I_{s}(\mu)=\gamma(n,s)\int \lvert \hat{\mu}(\xi) \rvert ^{2}\lvert \xi \rvert ^{s-n}\ \mathrm{d}\xi.
+\end{equation}
+\end{theorem}
+
+\begin{theorem}\label{thm:3.2}
+Let $0<s<n$. There exists $\gamma(n,s)\in(0,\infty)$ such that
+$$
+\hat{k}_{s}=\gamma(n,s)k_{n-s}
+$$
+in the sense of tempered distributions.
+\end{theorem}
+\begin{proof}
+As $\widehat{(e^{-\pi \lvert x \rvert^{2}})}(\xi)=e^{-\pi \lvert \xi \rvert^{2}}$, we have, for $t>0$, 
+\begin{equation}\label{eq:3.2_star}
+\int _{\mathbb{R}^{n}}e^{-\pi t\lvert x \rvert ^{2}}\varphi(x)\ \mathrm{d}x=t^{-n/2}\int _{\mathbb{R}^{n}}e^{-\pi \lvert x \rvert ^{2}/t}\hat{\varphi}(x)\ \mathrm{d}x.
+\end{equation}
+We multiply both sides of \eqref{eq:3.2_star} by $t^{-s/2-1}$ and integrate over $t\in(0,\infty)$, then
+\begin{equation}\label{eq:3.2_double_star}
+\int _{\mathbb{R}^{n}}\int _{0}^{\infty}e^{-\pi t\lvert x \rvert ^{2}}\cdot t^{-s/2-1}\ \mathrm{d}t\ \varphi(x)\ \mathrm{d}x=\int _{\mathbb{R}^{n}}\int _{0}^{\infty}e^{-\pi \lvert x \rvert ^{2}/t}\cdot t^{-n/2+s/2-1}\ \mathrm{d}t\ \hat{\varphi}(x)\ \mathrm{d}x.
+\end{equation}
+Recall that $\Gamma(\lambda):=\displaystyle \int _{0}^{\infty}e^{-t}t^{\lambda-1}\ \mathrm{d}t$, have
+$$
+\int _{0}^{\infty}e^{-\pi t\lvert x \rvert ^{2}}t^{s/2-1}\ \mathrm{d}t=\Gamma\left( \frac{s}{2} \right)(\pi \lvert x \rvert ^{2})^{-s/2},
+$$
+and
+$$
+\int _{0}^{\infty}e^{-\pi t^{-1}\lvert x \rvert ^{2}}t^{-\frac{n-s}{2}} \frac{\mathrm{d}t}{t}=\Gamma\left( \frac{n-s}{2} \right)(\pi \lvert x \rvert ^{2})^{\frac{s-n}{2}}.
+$$
+Plugging them into \eqref{eq:3.2_double_star}, we obtain
+$$
+\int _{\mathbb{R}^{n}}\lvert x \rvert ^{-s}\varphi(x)\ \mathrm{d}x=\frac{\Gamma\left( \frac{n-s}{2} \right)\pi ^{\frac{2s-n}{2}}}{\Gamma\left( \frac{s}{2} \right)}\int _{\mathbb{R}^{n}}\lvert x \rvert ^{-\frac{n-s}{2}}\hat{\varphi}(x)\ \mathrm{d}x.
+$$
+
+$$
+(\mu*\nu)(E):= \iint \chi _{E}(x+y)\ \mathrm{d}\mu(x)\mathrm{d}\nu(y)
+$$
+$$
+\begin{aligned}
+\iint k_{s}(x-y)\ \mathrm{d}\mu(x)\mathrm{d}\mu(y) & = \int(k_{s}*\mu)(y)\ \mathrm{d}\mu(y) \\
+ & =\widehat{(k_{s}*\mu)}(\xi)\bar{\hat{\mu}}(\xi)\ \mathrm{d}\xi \\
+ & = \hat{k_{s}}(\xi)\hat{\mu}(\xi)\bar{\hat{\mu}}(\xi)\ \mathrm{d}\xi \\
+ & = \gamma(n,s)\int \lvert \xi \rvert ^{s-n}\lvert \hat{\mu}(\xi) \rvert ^{2}\ \mathrm{d}\xi
+\end{aligned}
+$$
+\begin{equation}\label{eq:3.2_1}
+\iint \lvert x-y \rvert ^{-s}\ \mathrm{d}\mu(x)\mathrm{d}\mu(y)=\gamma(n,s)\int \lvert \xi \rvert ^{s-n}\lvert \hat{\mu}(\xi) \rvert ^{2}\ \mathrm{d}\xi.
+\end{equation}
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{thm:3.1}]
+Equation \eqref{eq:3.2_1} is easy when $\mathrm{d}\mu=\varphi\ \mathrm{d}x$ with $\varphi \in \mathscr{S}(\mathbb{R}^{n})$. Hence for $\mu _{\varepsilon}:=\varphi _{\varepsilon}*\mu$, we have
+$$
+\begin{aligned}
+ & \iint\left(\iint \lvert x-y \rvert ^{-s}\varphi _{\varepsilon}(x-z)\varphi _{\varepsilon}(y-w)\ \mathrm{d}x\mathrm{d}y\right)\ \mathrm{d}\mu(z)\mathrm{d}\mu(w) \\
+= & I_{s}(\mu _{\varepsilon}) \\
+= & \gamma(n,s)\int \lvert \hat{\mu}(\xi)\hat{\varphi}(\varepsilon \xi) \rvert ^{2}\lvert \xi \rvert ^{s-n}\ \mathrm{d}\xi.
+\end{aligned}
+$$
+\textbf{Claim 1}:
+\begin{equation}\label{eq:claim_1}
+\lim_{ \varepsilon \to 0 }\int \lvert \hat{\mu}(\xi)\hat{\varphi}(\varepsilon \xi) \rvert^{2}\lvert \xi \rvert^{s-n}\ \mathrm{d}\xi=\int \lvert \hat{\mu}(\xi) \rvert^{2}\lvert \xi \rvert^{s-n}\ \mathrm{d}\xi.
+\end{equation}
+\textbf{Claim 2}: For $z\neq w$, we have
+\begin{equation}\label{eq:claim_2_eq}
+\lim_{ \varepsilon \to 0 } \iint \lvert x-y \rvert ^{-s}\varphi _{\varepsilon}(x-z)\varphi _{\varepsilon}(y-w)\ \mathrm{d}x\mathrm{d}y=\lvert z-w \rvert ^{-s},
+\end{equation}
+and
+\begin{equation}\label{eq:claim_2_ineq}
+\left\lvert \iint \lvert x-y \rvert ^{-s}\varphi _{\varepsilon}(x-z)\varphi _{\varepsilon}(y-w)\ \mathrm{d}x\mathrm{d}y \right\rvert\lesssim \lvert z-w \rvert ^{-s}
+\end{equation}
+uniformly in $\varepsilon>0$.
+
+By \textbf{Claim 1} and \textbf{Claim 2}, we complete the proof by Lebesgue's Dominated Convergence Theorem, and Fatou's Lemma.
+
+\textbf{Proof of Claim 1}:
+RHS of \eqref{eq:claim_1} $< \infty$: LDCT.
+RHS of \eqref{eq:claim_1} $=\infty$: Fatou's Lemma.
+
+\textbf{Proof of Claim 2}:
+LHS of \eqref{eq:claim_2_eq}
+\begin{equation}\label{eq:claim_2_proof}
+=\int \lvert \varepsilon(u-v)+(z-w) \rvert^{-s}\varphi(u)\varphi(v)\ \mathrm{d}u\mathrm{d}v.
+\end{equation}
+As $z\neq w$, we have $\lvert \varepsilon(u-v)+(z-w) \rvert \sim \lvert z-w \rvert$ for $\varepsilon$ small. We can apply LDCT to verify \eqref{eq:claim_2_eq}.
+Fix $\varepsilon>0$. Let $a=z-w$, by \eqref{eq:claim_2_proof}, \eqref{eq:claim_2_ineq} is obvious when $\varepsilon\geq 10\lvert a \rvert$ or $\varepsilon\leq \frac{\lvert a \rvert}{10}$. It remains to consider the case $\frac{\lvert a \rvert}{10}\leq \varepsilon \lvert u-v \rvert\leq 10\lvert a \rvert$, which implies that $\lvert a \rvert\leq 20\varepsilon$. Using this and decomposing $(u,v)$ dyadically (in terms of $\left\lvert  u-v+\frac{a}{\epsilon}  \right\rvert$), we obtain \eqref{eq:claim_2_ineq}.
+\end{proof}
+
+
+If $\mu \in \mathcal{M}(\mathbb{R}^{n})$ and $I_{s}(\mu)<\infty$, where $0<s<n$, then
+\begin{equation}\label{eq:mu_bound}
+\begin{aligned}
+\int _{B(0,R)}\lvert \hat{\mu}(x) \rvert ^{2}\ \mathrm{d}x & \leq R^{n-s}\int _{B(0,R)}\lvert x \rvert ^{s-n}\lvert \hat{\mu}(x) \rvert ^{2}\ \mathrm{d}x \\
+ & \leq CI_{s}(\mu)R^{n-s}.
+\end{aligned}
+\end{equation}
+
+\begin{lemma}\label{lem:3.4}
+Let $0<s<n$, and let $\mu$ be an $s$-Frostman measure on $\mathbb{R}^{n}$. Then $\exists C \in(0,\infty)$ such that
+$$
+\int _{B(0,R)}\lvert \hat{\mu}(x) \rvert^{2}\ \mathrm{d}x\leq CR^{n-s}.
+$$
+\end{lemma}
+\begin{proof}
+Take $\varphi \in \mathscr{S}(\mathbb{R}^{n})$ such that $\hat{\varphi}\geq 0$ and $\hat{\varphi}(x)=1$ for $\lvert x \rvert\leq 1$. Define $\varphi _{R}(x)=R^{n}\varphi(Rx)$. Then
+$$
+\begin{aligned}
+\int _{B(0,R)}\lvert \hat{\mu}(x) \rvert ^{2}\ \mathrm{d}x & \leq \int \hat{\varphi}_{R}\lvert \hat{\mu}(x) \rvert ^{2}\ \mathrm{d}x \\
+ & =\int \hat{\varphi}_{R}(x)\hat{\mu}(x)\bar{\hat{\mu}}(x)\ \mathrm{d}x \\
+ & =\int(\varphi _{R}* \mu)(x)\ \mathrm{d}\mu(x)
+\end{aligned}
+$$
+By dyadic decomposition,
+$$
+\varphi _{R}* \mu\lesssim R^{n}\mu(B(0,R^{-1}))\sim R^{n-s}.
+$$
+Therefore,
+$$
+\int _{B(0,R)}\lvert \hat{\mu}(x) \rvert ^{2}\ \mathrm{d}x\lesssim R^{n-s}.
+$$
+\end{proof}
+
+The following lemma says that the "converse" of \eqref{eq:mu_bound} is true.
+\begin{lemma}\label{lem:3.5}
+Let $0<s<n$. Suppose $\mu \in \mathcal{M}(\mathbb{R}^{n})$ satisfies
+\begin{equation}\label{eq:lem_3.5_cond}
+\int _{B(0,R)}\lvert \hat{\mu}(x) \rvert ^{2}\ \mathrm{d}x\leq CR^{n-s}\quad\forall R\geq 1,
+\end{equation}
+then $I_{t}(\mu)<\infty$, $\forall t\in(0,s)$. In particular, $\operatorname{dim}(\operatorname{supp}\mu)\geq s$.
+\end{lemma}
+\begin{proof}
+Recall that
+$$
+I_{t}(\mu)=c\int _{\mathbb{R}^{n}}\lvert \xi \rvert ^{t-n}\lvert \hat{\mu}(\xi) \rvert \ \mathrm{d}\xi,
+$$
+we will control the RHS:
+$$
+\int _{B(0,1)}\lvert \xi \rvert ^{t-n}\lvert \hat{\mu}(\xi) \rvert ^{2}\,\mathrm{d}\xi\leq C,
+$$
+$$
+\begin{aligned}
+\int _{\lvert \xi \rvert \geq {1}}\lvert \xi \rvert ^{t-n}\lvert \hat{\mu}(\xi) \rvert ^{2}\,\mathrm{d}\xi & =\sum _{k\geq{1}}\int _{\lvert \xi \rvert \sim 2^{k}}\lvert xi \rvert ^{t-n}\lvert \hat{\mu}(\xi) \rvert ^{2}\,\mathrm{d}\xi \\
+ & \leq \sum _{k\geq 1} 2^{k(t-n)}\int _{B(o,2^{k})}\lvert \hat{\mu}(\xi) \rvert ^{2}\,\mathrm{d}\xi \\
+ & \leq \sum _{k\geq 1}2^{k(t-n)}2^{k(n-s)} \\
+ & < \infty.
+\end{aligned}
+$$
+\end{proof}
+
+\begin{remark}\label{rmk:hausdorff_dim}
+$\mu(B(x,r))\leq Cr^{s}\implies \displaystyle \int _{B(0,R)}\lvert \hat{\mu}(\xi) \rvert^{2}\ \mathrm{d}\xi\leq CR^{n-s}\implies \operatorname{dim}_{\mathcal{H}}(\operatorname{supp}\mu)\geq s$. \eqref{eq:lem_3.5_cond} morally says that
+\begin{equation}\label{eq:moral_decay}
+\lvert \hat{\mu}(\xi) \rvert\leq C \lvert \xi \rvert^{-\frac{s}{2}}.
+\end{equation}
+\end{remark}
+
+\begin{example}\label{ex:example_3}
+$E:=[0,1]\times \{ 0 \}\subset \mathbb{R}^{2}$ has Hausdorff dimension $1$, 
+which does not satisfy \eqref{eq:claim_2_eq} for any $s>0$. 
+Let $\mu$ be the $1$-dimensional Hausdorff measure on $E$, 
+then $\hat{\mu}(\xi_{1},\xi_{2})$ is a function that depends only on $\xi_{1}$, 
+which cannot go to $0$ as $\lvert \xi \rvert \to \infty$.
+\end{example}
+
+\begin{definition}\label{def:fourier_dimension}
+The \textbf{Fourier Dimension} of a set $A\subset \mathbb{R}^{n}$ is defined by
+$$
+\dim_{F}(A):=\sup\left\{  s\geq0: \exists \mu \in \mathcal{M}(A) \text{ s.t. } \lvert \hat{\mu}(\xi) \rvert \leq C\lvert \xi \rvert ^{-\frac{s}{2}},\forall \xi \in \mathbb{R}^{n}  \right\}.
+$$
+\end{definition}
+
+\begin{theorem}\label{thm:3.6}
+Suppose $A$ is a Borel set. Then
+$$
+\operatorname{dim}_{F}(A)\leq \operatorname{dim}_{\mathcal{H}}(A).
+$$
+\end{theorem}
+\begin{proof}
+Apply Lemma \ref{lem:3.5}.
+\end{proof}
+
+\begin{definition}\label{def:salem_set}
+A set $A\subset \mathbb{R}^{n}$ is called salem set if $\operatorname{dim}_{F}(A)=\operatorname{dim}_{\mathcal{H}}(A)$.
+\end{definition}
+
+\begin{remark}\label{rmk:salem_condition}
+It is equivalent to say, $\forall s <\operatorname{dim}_{\mathcal{H}}A$, $\exists \mu \in \mathcal{M}(A)$ such that
+$$
+\lvert \hat{\mu}(\xi) \rvert \lesssim \lvert \xi \rvert ^{-\frac{s}{2}}.
+$$
+\end{remark}
+
+\begin{example}\label{ex:salem_examples}
+\begin{enumerate}[label=(\roman*)]
+    \item Let $n\geq 2$, and let $\sigma$ be the surface measure on the unit sphere $S^{n-1}$. It is well known that $$\lvert \hat{\sigma}(\xi) \rvert \leq C(1+\lvert \xi \rvert )^{-\frac{n-1}{2}}.$$Thus $S^{n-1}$ is a salem set.
+    \item Fix $\alpha>0$, and define $$E_{\alpha}:=\left\{  x \in \mathbb{R}: \exists \text{ infinitely many rationals } \frac{p}{q} \text{ with } q\geq 1\text{ s.t. } \left\lvert  x-\frac{p}{q}  \right\rvert \leq q^{-(2+\alpha)}  \right\}.$$Then $E_{\alpha}$ is a salem set with Hausdorff dimension $\frac{2}{2+\alpha}$.
+\end{enumerate}
+\end{example}
+
+\section{Orthogonal Projections}
+
+\begin{theorem}\label{thm:4.1}
+Let $E$ be a Borel set in $\mathbb{R}^{2}$ with dimension $s$. If $s\leq 1$, then
+$$
+\operatorname{dim}(\pi _{e}(E))=s \qquad \text{for a.e. } e\in S^{1};
+$$
+if $s>1$, then
+$$
+\mathcal{H}^{1}(\pi _{e}(E))>0\qquad \text{for a.e. }e \in S^{1}.
+$$
+\end{theorem}
+\begin{proof}
+Let $\mu _{e}:=(\pi _{e})_{\sharp}\mu$.
+$s\leq 1$: Take $\mu \in \mathcal{M}(E)$ satisfying $I_{t}(\mu)<\infty$ with $t<s$. $\hat{\mu}_{e}(r)\int e^{irt}\ \mathrm{d}\mu _{e}(t)=\hat{\mu}(re).$ Then
+$$
+\begin{aligned}
+ & \int _{S^{1}}I_{t}(\mu _{e})\ \mathrm{d}\sigma(e)  \\
+= & \int _{S^{1}}\iint \lvert u-v \rvert ^{-t}\ \mathrm{d}\mu _{e}(u)\mathrm{d}\mu _{e}(v)\mathrm{d}\sigma(e) \\
+= & \int _{S^{1}}\iint \lvert e\cdot(x-y) \rvert ^{-t}\ \mathrm{d}\mu(x)\mathrm{d}\mu(y)\mathrm{d}\sigma(e) \\
+= & \iint \lvert x-y \rvert ^{-t}\int _{S^{1}}\left\lvert e\cdot \frac{x-y}{\lvert x-y \rvert }\right\rvert ^{-t}\ \mathrm{d}\sigma(e)\mathrm{d}\mu(x)\mathrm{d}\mu(y) \\
+\leq & C_{t}I_{t}(\mu).
+\end{aligned}
+$$
+(因为 $\displaystyle \int _{S^{1}}\lvert e\cdot e_{1} \rvert^{-t}\ \mathrm{d}\sigma(e)\leq C_{t}<\infty$ 当 $t<1$ 时)
+$I_{t}(\mu _{e})<\infty$ for a.e. $e$,
+$\operatorname{dim}(\pi _{e}(E))\geq t$ for a.e. $e$,
+$\operatorname{dim}(\pi _{e}(E))=s$ for a.e. $e$.
+
+$s>1$: Take $\mu$ such that $I_{1}(\mu)<\infty$.
+$$
+\begin{aligned}
+ & \int _{S^{1}}I_{1}(\mu _{e})\ \mathrm{d}\sigma(e) \\
+= & \int _{S^{1}}\int \lvert \hat{\mu}(re) \rvert ^{2}\ \mathrm{d}r \mathrm{d}\sigma(e) \\
+= & \int \lvert \xi \rvert \lvert \hat{\mu}(\xi )\rvert ^{2}\ \mathrm{d}\xi = I_{1}(\mu)<\infty.
+\end{aligned}
+$$
+\end{proof}
+
+\begin{theorem}\label{thm:4.2}
+Let $A \subset \mathbb{R}^{2}$ be a Borel set with $\operatorname{dim}A=s\leq 1$. Then, $\forall t\in[0,s]$, the exceptional set
+$$
+E_{t}:=\{ e\in S^{1}: \operatorname{dim} \pi _{e}(E)<t \}
+$$
+satisfies
+$$
+\operatorname{dim}E_{t}\leq t.
+$$
+\end{theorem}
+\begin{proof}
+Fixing $\sigma<t$, take $\mu \in \mathcal{M}(A)$ with $I_{\sigma}(\mu)<\infty$. As $\mu _{e}\in \mathcal{M}(\pi _{e}(A))$, we have
+$$
+E_{\sigma}\subset E_{\sigma}^{1}:=\{ e\in S^{1}:I_{\sigma}(\mu _{e})=\infty \}.
+$$
+Actually, $\forall e\in E_{\sigma}$, $I_{\sigma}(\mu _{e})=\infty$. Otherwise, $\operatorname{dim}(\operatorname{supp}\mu _{e})\geq \sigma$, which contradicts that $\operatorname{dim}\pi _{e}(A)<\sigma$.
+Suppose $\operatorname{dim}E_{\sigma}^{1}>t$, then we can find a (non-zero) $t$-Frostman measure $\nu \in \mathcal{M}(E_{\sigma}^{1})$. Observe that
+$$
+\begin{aligned}
+ & \int _{S^{1}}I_{\sigma}(\mu _{e})\ \mathrm{d}\nu(e) \\
+= & \iint \int _{S^{1}}\lvert e\cdot(x-y) \rvert ^{-\sigma}\ \mathrm{d}\nu(e)\mathrm{d}\mu(x)\mathrm{d}\mu(y) \\
+\leq & CI_{\sigma}(\mu)<\infty
+\end{aligned}
+$$
+as
+$$
+\begin{aligned}
+\int _{S^{1}}\lvert e\cdot e_{1} \rvert ^{-\sigma}\ \mathrm{d}\nu(e) & \lesssim \sum _{k\geq 1} (2^{-k})^{-\sigma}\nu(I_{k}) \\
+ & \leq C_{\nu}\sum _{k\geq1} 2^{k\sigma}2^{-kt} \\
+ & \leq C_{\nu}.
+\end{aligned}
+$$
+This contradicts with
+$$
+\int _{S^{1}}I_{\sigma}(\mu _{e})\ \mathrm{d}\nu(e)=\infty .
+$$
+Therefore $\operatorname{dim}E_{\sigma}^{1}\leq t.$
+\end{proof}
+
+\section{Falconer's distance set conjecture}
+Given a finite subset $P\subset \mathbb{R}^{2}$ of $N$ points, we define the associated distance set
+$$
+\Delta(P):=\{ \lvert x-y \rvert :x,y \in P \}.
+$$
+
+\begin{proposition}\label{prop:5.1}
+Let $P=\{ (m,n)\in \mathbb{Z}^{2}:0\leq m,n\leq \sqrt{ N } \}$, then $\displaystyle \left\lvert  \Delta(P)\geq C \frac{N}{\sqrt{ \log N }}  \right\rvert$.
+\end{proposition}
+
+\begin{conjecture}[Distinct Distance]
+Suppose that $P \subset \mathbb{R}^{2}$ is a set of $N$ points. Then
+$$
+\lvert \Delta(P) \rvert \geq C \frac{N}{\sqrt{ \log N }}.
+$$
+	Guth-Katz 2015: $\displaystyle \lvert \Delta(P) \rvert \geq C \frac{N}{\log N}$.
+\end{conjecture}
+
+$\displaystyle u_{2}(N):=\sup_{\lvert P \rvert=N} \left|\{ (x,y)\in P\times P:\lvert x-y \rvert=1 \}\right|.$
+
+\begin{conjecture}[Unit Distance]
+$\displaystyle u_{2}(N)\leq CN\sqrt{ \log N }$.
+\end{conjecture}
+
+\begin{remark}\label{rmk:conjecture_relation}
+Conjecture 2 $\implies$ Conjecture 1. In fact,
+$$
+\begin{aligned}
+N^{2} & =\#\{ (x,y):x,y \in P \} \\
+ & =\sum _{d \in \Delta(P)}\sum 1 \\
+ & \leq \lvert \Delta(P) \rvert u_{2}(N).
+\end{aligned}
+$$
+\end{remark}
+
+Now replace $P$ with arbitrary Borel set $E \subset \mathbb{R}^{2}$, $\Delta(E):=\{ \lvert x-y \rvert:x,y \in E \}\subset \mathbb{R}$. Is $\operatorname{dim}(\Delta(E))=\min \{ \operatorname{dim}E,1 \}$ true?
+
+\begin{conjecture}[Falconer]
+Suppose $E \subset \mathbb{R}^{n}$ is Borel with $\operatorname{dim} E > \frac{n}{2}$. Then
+$$
+\lvert \Delta(E) \rvert >0.
+$$
+In particular,
+$$
+\operatorname{dim}\Delta(E)=1.
+$$
+\end{conjecture}
+
+\begin{theorem}\label{thm:5.2}
+If $\operatorname{dim}E> \frac{n+1}{2}$, then the interior of $\Delta(E)$ is non-empty. In particular, $\lvert \Delta(E) \rvert>0$.
+\end{theorem}
+
+To prove \textbf{Theorem \ref{thm:5.2}}, we introduce some notations first.
+$\pi(x,y):=\lvert x-y \rvert$, $\pi:E\times E\to \Delta(E)$, $\pi$ introduces a measure on $\mathbb{R}$, the \textbf{push-forward measure} of $\mu\times \mu$,
+$$
+\begin{aligned}
+\delta _{\mu} & :=(\pi)_{\sharp}(\mu \times \mu), \\
+\delta _{\mu}(B) & =(\mu \times \mu)(\pi ^{-1}B).
+\end{aligned}
+$$
+It's clear that
+$$
+\langle \delta _{\mu},\varphi \rangle =\iint _{E\times E}\varphi(\lvert x-y \rvert )\ \mathrm{d}\mu(x)\mathrm{d}\mu(y), \quad\forall \varphi \in C_{c}(\mathbb{R}),
+$$
+therefore $\operatorname{supp} \delta _{\mu}\subset \Delta(E)$.
+Denote $\sigma _{r}$ for the Hausdorff measure on $S_{r}^{n-1}:=\{ x \in \mathbb{R}^{n}:\lvert x \rvert=r \}$. Let $\varphi _{r}(x):=r^{n-1}\varphi(rx)$, then
+$$
+\langle \sigma _{r},\varphi \rangle =\langle \sigma,\varphi _{r} \rangle ,
+$$
+and
+$$
+\hat{\sigma}_{r}(\xi)=\hat{\sigma}(r\xi)r^{n-1}.
+$$
+
+\begin{lemma}\label{lem:5.3}
+$\displaystyle \hat{\sigma}(\xi)= \frac{2\pi}{\lvert \xi \rvert^{\frac{n-2}{2}}}J_{\frac{n-2}{2}}(2\pi \lvert \xi \rvert)$, where the Bessel function $J_{\alpha}$ of order $\alpha$ is defined by
+$$
+J_{\alpha}(t):= \frac{\left( \frac{t}{2} \right)^{\alpha}}{\Gamma\big( \alpha+\frac{1}{2} \big)\Gamma\big( \frac{1}{2} \big)}\int _{-1}^{1}e^{its}(1-s^{2})^{\alpha-1/2}\ \mathrm{d}s
+$$
+for $\operatorname{Re}\alpha>-\frac{1}{2}, t\geq {0}$.
+In particular, $\lvert \hat{\sigma}(\xi) \rvert\leq C(1+\lvert \xi \rvert)^{-\frac{n-1}{2}}$.
+\end{lemma}
+
+\begin{lemma}\label{lem:5.4}
+If $\mu \in \mathcal{M}(\mathbb{R}^{n})$ satisfies $I_{\frac{n+1}{2}}(\mu)<\infty$, then $\delta _{\mu}$ is a continuous function defined by
+$$
+\delta _{\mu}(r)=r^{n-1}\int _{\mathbb{R}^{n}}\hat{\sigma}(r\xi)\lvert \hat{\mu}(\xi) \rvert ^{2}\ \mathrm{d}\xi.
+$$
+\end{lemma}
+\begin{proof}
+We consider first the case when $\mathrm{d}\mu=f \mathrm{d}\mathcal{L}^{n}$, where $f \in C_{c}(\mathbb{R}^{n})$ is non-negative and real-valued. For $g \in C_{c}(\mathbb{R})$,
+$$
+\begin{aligned}
+\langle \delta _{f},g \rangle  & = \iint g(\lvert x-y \rvert )f(x)f(y)\ \mathrm{d}x\mathrm{d}y \\
+ & =\iint g(\lvert z \rvert )f(y+z)\ \mathrm{d}z\ f(y)\ \mathrm{d}y \\
+ & =\iint _{0}^{\infty}\int _{S^{n-1}} g(r)f(g+r\theta)\ \mathrm{d}\sigma(\theta)\ r^{n-1}\ \mathrm{d}r\ f(y)\ \mathrm{d}y \\
+ & =\int _{0}^{\infty}g(r)\int f(y)\int _{S^{n-1}}f(y+r\theta)r^{n-1}\ \mathrm{d}\sigma(\theta)\mathrm{d}y\mathrm{d}r.
+\end{aligned}
+$$
+Hence
+$$
+\begin{aligned}
+\delta _{f}(r) & =\int(f*\sigma _{r})(y)f(y)\ \mathrm{d}y \\
+ & =\int \hat{f}(\xi)\hat{\sigma}_{r}(\xi)\bar{\hat{f}}(\xi)\ \mathrm{d}\xi \\
+ & =r^{n-1}\int \hat{\sigma}(r\xi)\lvert \hat{f}(\xi) \rvert ^{2}\ \mathrm{d}\xi.
+\end{aligned}
+$$
+Take a real-valued $\psi \in C_{c}^{\infty}(\mathbb{R}^{n})$ with $\displaystyle \int \psi=1$, 
+and define $\psi_{\varepsilon}(z)=\varepsilon ^{-n}\psi(\varepsilon ^{-1}z)$. 
+Let $\mu _{\varepsilon}=\mu* \psi_{\varepsilon}$, then $\mu_{\varepsilon}\to \mu$. 
+In particular, $\hat{\mu}_{\varepsilon}(\xi)\to \hat{\mu}(\xi), \forall \xi$.
+Since $\lvert \hat{\sigma}(r\xi) \rvert\leq c(1+\lvert r\xi \rvert)^{-\frac{n-1}{2}}$, and
+$$
+I_{\frac{n+1}{2}}=\int \lvert \xi \rvert ^{-\frac{n-1}{2}}\lvert \hat{\mu}(\xi) \rvert ^{2}\ \mathrm{d}\xi,
+$$
+we obtain from Lebesgue's dominated convergence theorem that
+$$
+\begin{aligned}
+\delta _{\mu _{\varepsilon}}(r) & =r^{n-1} \int \hat{\sigma}(r\xi)\lvert \hat{\mu}_{\varepsilon}(\xi) \rvert ^{2}\ \mathrm{d}\xi \\
+ & \to r^{n-1}\int \hat{\sigma}(r\xi)\lvert \mu(\xi) \rvert ^{2}\ \mathrm{d}\xi.
+\end{aligned}
+$$
+We show below that $\delta _{\mu _{\varepsilon}}\rightharpoonup \delta _{\mu}$. As
+$$
+\begin{aligned}
+ & \int F \ \mathrm{d}(\mu _{\varepsilon}\times \mu _{\varepsilon}) \\
+= & \int \hat{F}(\xi_{1},\xi_{2}) \hat{\mu}(\xi_{1})\hat{\psi}(\varepsilon \xi_{1})\hat{\mu}(\xi_{2})\hat{\psi}(\varepsilon \xi_{2})\ \mathrm{d}\xi_{1}\mathrm{d}\xi_{2} \\
+\to & \int \hat{F}(\xi_{1},\xi_{2})\hat{\mu}(\xi_{1})\hat{\mu}(\xi_{2})\ \mathrm{d}\xi_{1} \mathrm{d}\xi_{2} \\
+= & \int F\ \mathrm{d}(\mu \times \mu),
+\end{aligned}
+$$
+we have $\mu _{\varepsilon}\times \mu _{\varepsilon}\rightharpoonup \mu \times \mu$. This implies that
+$$
+\delta _{\mu _{\varepsilon}}\rightharpoonup \delta _{\mu}
+$$
+using that $\delta _{\mu}=(\pi)_{\sharp}(\mu\times \mu)$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{thm:5.2}]
+Take $\mu \in \mathcal{M}(E)$ with $I_{\frac{n+1}{2}}(\mu)<\infty$. Applying \textbf{Lemma \ref{lem:5.4}}, we obtain $\delta _{\mu}$ which is a non-zero continuous function. In particular, $\operatorname{supp}\mu$ contains an interior point, then $\Delta(F)$ contains nonempty interior.
+\end{proof}
+
+\section{Spherical average}
+$\displaystyle \sigma(\mu)(r)=\int _{S^{n-1}}\lvert \hat{\mu}(r\theta) \rvert^{2}\ \mathrm{d}\sigma(\theta)$ spherical average.
+
+\begin{lemma}\label{lem:6.1}
+For all $\mu \in \mathcal{M}(\mathbb{R}^{n})$ with $I_{\frac{n+1}{2}}(\mu)<+\infty$,
+$$
+\delta _{\mu}(t)=ct^{n/2}\int _{0}^{\infty}r^{n/2}J_{\frac{n-2}{2}}(tr)\sigma(\mu)(r)\ \mathrm{d}r.
+$$
+\end{lemma}
+\begin{proof}
+$$
+\begin{aligned}
+\delta _{\mu}(t) & =\int \hat{\sigma}_{t}(\xi)\lvert \hat{\mu}(\xi) \rvert ^{2}\ \mathrm{d}\xi \\
+ & = \int _{0}^{\infty} t^{n-1} \hat{\sigma}(tr)\int _{S^{n-1}}\lvert \hat{\mu}(r\theta) \rvert ^{2}\ \mathrm{d}\sigma(\theta)\ r^{n-1}\ \mathrm{d}r \\
+ & =\int _{0}^{\infty}(tr)^{n/2}\cdot J_{\frac{n-2}{2}}(2\pi tr)\sigma(\mu)(r)\ \mathrm{d}r.
+\end{aligned}
+$$
+\end{proof}
+
+\begin{definition}\label{def:delta_sigma}
+$\Delta _{\mu}(t):=t^{-\frac{n-1}{2}}\delta _{\mu}(t)$, $\Sigma(\mu)(r)=r^{\frac{n-1}{2}}\sigma(\mu)(r)$.
+\end{definition}
+
+\begin{lemma}\label{lem:6.2}
+Let $\mathcal{H}_{k}$ be the Hankel transformation
+$$
+\mathcal{H}_{k}(f)(t)=\int _{0}^{\infty}J_{k}(tr)f(r)r\ \mathrm{d}r,
+$$
+then
+$$
+\mathcal{H}_{k}\mathcal{H}_{k}(f)=f.
+$$
+\end{lemma}
+
+\begin{proposition}\label{prop:6.3}
+Let $f \in C_{c}(\mathbb{R}^{n})$ be non-negative and real-valued. Then
+$$
+\int _{0}^{\infty}\Delta _{f}(t)^{2}\ \mathrm{d}t=c\int _{0}^{\infty}\Sigma(f)(r)^{2}\ \mathrm{d}r.
+$$
+\end{proposition}
+\begin{proof}
+By \textbf{Lemma \ref{lem:6.1}},
+$$
+\begin{aligned}
+ & \int _{0}^{\infty}\Delta _{f}(t)^{2}\ \mathrm{d}t \\
+= & c\int _{0}^{\infty}t\int _{0}^{\infty}r^{1/2}J_{\frac{n-2}{2}}(2\pi tr)\Sigma(f)(r)\ \mathrm{d}r \\
+ & \qquad \quad \int _{0}^{\infty}s^{1/2}J_{\frac{n-2}{2}}(2\pi ts)\Sigma(f)(s)\ \mathrm{d}s \mathrm{d}t \\
+= & c\int _{0}^{\infty}r^{1/2}\Sigma(f)(r)\int _{0}^{\infty}tJ_{\frac{n-2}{2}}(2\pi tr)\int _{0}^{\infty}sJ_{\frac{n-2}{2}}(2 \pi ts)\Sigma(f)(s)s^{-1/2}\ \mathrm{d}s \mathrm{d}t \mathrm{d}r \\
+= & c\int _{0}^{\infty}r^{1/2}\Sigma(f)(r)\int _{0}^{\infty}tJ_{\frac{n-2}{2}}(tr)\mathcal{H}_{\frac{n-2}{2}}(\Sigma(f)(s)s^{-1/2})(t)\ \mathrm{d}t \mathrm{d}r \\
+= & c\int _{0}^{\infty}r^{1/2}\Sigma(f)(r)\cdot\Sigma(f)(r) r^{-1/2}\ \mathrm{d}r \\
+= & c \int _{0}^{\infty}\Sigma(f)(r)^{2}\ \mathrm{d}r.
+\end{aligned}$$
+\end{proof}
+
+球面平均与Energy有天然的联系:
+\begin{lemma}\label{lem:6.4}
+$\displaystyle I_{\alpha}(\mu)=\int _{0}^{\infty}r^{\alpha-1}\sigma(\mu)(r)\ \mathrm{d}r.$
+\end{lemma}
+\begin{proof}
+$\displaystyle I_{\alpha}(\mu)=\int _{\mathbb{R}^{n}}\lvert \xi \rvert^{\alpha-n}\lvert \hat{\mu}(\xi) \rvert^{2}\ \mathrm{d}\xi=\int _{0}^{\infty}r^{\alpha-1}\int _{S^{n-1}}\lvert \hat{\mu}(r\theta) \rvert^{2}\ \mathrm{d}\sigma(\theta)\mathrm{d}r.$
+\end{proof}
+
+\begin{theorem}\label{thm:6.5}
+Let $\displaystyle C_{\gamma}:=\sup_{r>0}\sigma(\mu)(r)r^{\gamma}$. For $\mu \in \mathcal{M}(\mathbb{R}^{n})$, we have
+$$
+\int _{0}^{\infty}\Delta _{\mu}(t)^{2}\ \mathrm{d}t\lesssim I_{\alpha}(\mu)C_{n-\alpha}.
+$$
+Suppose that, for some $\alpha \in\left( \frac{n}{2},n \right)$, we have
+$$
+I_{\alpha}(\mu)<\infty\implies C_{\gamma}<\infty
+$$
+for some $\gamma>n-\alpha$. Then $\Delta(\mu)\in L^{2}$ for all $\mu \in \mathcal{M}(\mathbb{R}^{n})$ satisfying $I_{\alpha}(\mu)<\infty$. In particular, Falconer's distance set conjecture is true for $\alpha$.
+\end{theorem}
+\begin{proof}
+By \textbf{Proposition \ref{prop:6.3}} and \textbf{Lemma \ref{lem:6.4}},
+$$
+\begin{aligned}
+\int _{0}^{\infty}\lvert \Delta _{\mu}(t) \rvert ^{2}\ \mathrm{d}t & =\int _{0}^{\infty}r^{n-1}\sigma(\mu)(r)^{2}\ \mathrm{d}r \\
+& \leq C_{n-\alpha}\int _{0}^{\infty}r^{\alpha-1}\sigma(\mu)(r)\ \mathrm{d}r \\
+& \sim C_{n-\alpha}I_{\alpha}(\mu).
+\end{aligned}
+$$
+As $\sigma(\mu)(r)<\infty$, if $C_{\gamma}<\infty$, then
+$$
+C_{\beta}<\infty \quad\text{for}\quad \beta\leq r.
+$$
+Then ``$C_{\gamma}<\infty$ with $\gamma>n-\alpha$'' implies $C_{n-\alpha}<\infty$, which implies $\Delta _{\mu}\in L^{2}$.
+\end{proof}

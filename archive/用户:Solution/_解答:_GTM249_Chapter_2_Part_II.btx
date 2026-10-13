@@ -1,0 +1,796 @@
+\setdisplaytitle{Solution\ to\ GTM249\ Chapter\ 2\ Part\ II}
+\sethtmltitle{Solution\ to\ GTM249\ Chapter\ 2\ Part\ II}
+
+\section*{2.4 More About Distributions and the Fourier Transform}
+\begin{itemize}
+\item[2.4.1]
+
+Any sequence of functions
+$$g(x)\frac{e^{-2\pi ix\cdot(\xi+h_ne_j)}-e^{-2\pi ix\cdot\xi}}{h_n}$$
+where $e_j$ is the unit vector with $1$ in the $j$th entry and
+ $h_n\rightarrow0$ as $n\rightarrow\infty$ converges pointwise to
+$$g(x)(-2\pi ix_j)e^{-2\pi ix\cdot\xi},$$
+and is bounded by (use $|e^{ia}-e^{ib}|\le|a-b|$)
+$$|g(x)(-2\pi ix_j)|,$$
+which is expected to be integrable.
+Under such assumption, it follows from the Lebesgue dominated convergence theorem that
+$$\int_{\R^n} g(x)\frac{e^{-2\pi ix\cdot(\xi+h_ne_j)}-e^{-2\pi ix\cdot\xi}}{h_n}\,dx
+\rightarrow\int_{\R^n} g(x)(-2\pi ix_j)e^{-2\pi ix\cdot\xi}\,dx.$$
+In other words,
+$$\frac{\partial\widehat{g}}{\partial \xi_j}(\xi)
+=\int_{\R^n} g(x)(-2\pi ix_j)e^{-2\pi ix\cdot\xi}\,dx.$$
+
+Take $g(x)=f(x)(-2\pi ix)^\alpha$ for all multi--indices $\alpha$ 
+with sizes $|\alpha|=0,\cdots,M-1$ consecutively, 
+which all satisfy the integrability hypothesis since
+$$|g(x)(-2\pi ix_j)|=|f(x)(-2\pi ix)^{\alpha+e_j}|
+\leq\frac{(2\pi)^{|\alpha|+1}C}{(1+|x|)^{N-(|\alpha|+1)}}$$
+where $N-(|\alpha|+1)>(M+n)-M=n$.
+
+Now we get the expression for $\widehat{f}^{(M)}$, 
+and therefore $\widehat{f}\in\mathscr{C}^M$.
+
+\item[2.4.2]
+
+A bounded harmonic function, which is surely a tempered distribution, 
+must be a polynomial by Corollary 2.4.3, 
+and is a constant as all polynomials tend to $\infty$ as $x\rightarrow\infty$.
+
+Suppose that $p(z)$ is a polynomial on $\mathbb{C}$ without any complex root. 
+Then the entire function  $\frac{1}{p(z)}$, 
+which is a complex--valued harmonic function on $\R^2$, 
+is bounded as it tends to $0$ as $z\rightarrow\infty$, 
+and is therefore a constant by Liouville's theorem for harmonic functions, 
+yielding a contradiction.
+
+\item[2.4.3]
+
+$e^x$ is not in $\mathscr{S}'(\R)$, as $e^{-x}\eta\in\mathscr{S}(\R)$ where 
+$\eta$ is a smooth function that equals $1$ for $x>0$ and vanishes for $x<-1$, 
+but $\langle e^x,e^{-x}\eta\rangle=\int\eta$ does not converge.
+
+For all $f\in\mathscr{S}(\R)$,
+$$|\langle e^xe^{ie^x},f\rangle|=|\langle e^{ie^x}\!/i,f'\rangle|
+\leq\|f'\|_{L^1}\leq C\sum_{\alpha\leq3}\rho_{\alpha,1}(f)$$
+by Proposition 2.2.6, so $e^xe^{ie^x}$ is in $\mathscr{S}'(\R)$ by Proposition 2.3.4 (b).
+
+\item[2.4.4]
+
+Recall that $\operatorname{sech}(x)=\frac{1}{\cosh(x)}=\frac{2}{e^{x}+e^{-x}}$. 
+We need to show that
+$$I=\int_\R\frac{2}{e^{\pi x}+e^{-\pi x}}e^{-2\pi ix\xi}\,dx=\frac{2}{e^{\pi\xi}+e^{-\pi\xi}}.$$
+Let $$f(z)=\frac{2}{e^{\pi z}+e^{-\pi z}}e^{-2\pi iz\xi}.$$
+Integrate $f(z)$ over the rectangle contour $\gamma_R$ 
+with corners $(-R,0)$, $(R,0)$, $(-R,i)$ and $(R,i)$, 
+using that $f(z+i)=-e^{2\pi\xi}f(z)$ and that the integral of $f$ 
+over the two vertical sides goes to $0$ as $R\rightarrow\infty$ 
+since $|f(z)|\leq \frac{2}{e^{\pi R}}e^{2\pi|\xi|}$ 
+when $\operatorname{Re}z=\pm R$, we get
+$$\big(1-(-e^{2\pi\xi})\big)I=\lim_{R\rightarrow\infty}\int_{\gamma_R}f(z)\,dz
+=2\pi i\operatorname{Res}\Big(f,\frac{i}{2}\Big),$$
+and proceed our calculation as follows:
+\begin{align*}
+    I&=\frac{1}{1+e^{2\pi\xi}}\,2\pi i\lim_{z\rightarrow\frac{i}{2}}\frac{2(z-\frac{i}{2})}{e^{\pi z}+e^{-\pi z}}e^{-2\pi i\frac{i}{2}\xi}\\
+    &=\frac{2}{e^{\pi\xi}+e^{-\pi\xi}}\,2\pi i\,\frac{1}{(e^{\pi z}+e^{-\pi z})'|_{z=\frac{i}{2}}}\\
+    &=\frac{2}{e^{\pi\xi}+e^{-\pi\xi}}.
+\end{align*}
+
+\item[2.4.5]
+
+Let $w$ be a smooth function the support of whose Fourier transform is $[-1/2,1/2]$ 
+and let $\phi$ be a real-valued smooth nonconstant periodic function with period $1$, 
+which we can make further assumptions upon later. 
+Then take a family of Schwartz functions
+$$f_a(x)=w(x)e^{i\phi(x-a)}\quad\textup{for }a\in(0,1/3).$$
+Clearly it is an uncountable family of Schwartz functions 
+such that $|f_a|=|f_b|$ for all $a$ and $b$, and we will show that 
+the $f_a$'s are linearly independent, which will be addressed later, 
+and that $|\widehat{f_a}|=|\widehat{f_b}|$. 
+To this end, we expand the function $e^{i\phi(x)}$ in the Fourier series
+$$e^{i\phi(x)}=\sum_{k=-\infty}^\infty c_ke^{2\pi ikx}.$$
+Then
+$$f_a(x)=\sum_{k=-\infty}^\infty c_ke^{-2\pi ika}e^{2\pi ikx}w(x),$$
+so
+$$\widehat{f_a}(\xi)=\sum_{k=-\infty}^\infty c_ke^{-2\pi ika}\widehat{w}(\xi-k).$$
+
+Since the functions $\widehat{w}(\xi-k)$ are supported in 
+mutually disjoint intervals $[k-1/2,k+1/2)$, we have
+$$|\widehat{f_a}(\xi)|=|c_k\widehat{w}(\xi-k(\xi))|,$$
+where $k(\xi)$ is the integer such that $\xi-k(\xi)\in [-1/2,1/2)$, 
+which shows that $|\widehat{f_a}(\xi)|$ is independent of $a$.
+
+Now we return to the linear independence of the $f_a$'s, 
+under certain additional assumption on $\phi$. Suppose that
+$$\sum_{k=1}^nd_ke^{i\phi(x-a_k)}=0$$
+for some distinct $a_k\in(0,1/3)$. Let $\phi(x)$ coincide with $\frac{1}{x}$ on $(1/3,1)$, then
+$$\sum_{k=1}^nd_ke^{\frac{i}{z-a_k}}=0$$
+by the uniqueness of meromorphic functions 
+as the left side equals $0$ for $z\in(2/3,1)$ (hence $z-a_k\in(1/3,1)$). 
+Taking $z=i\varepsilon+a_k$ where $\varepsilon\rightarrow0^+$ gives $d_k=0$.
+
+\item[2.4.6]
+
+We are going to verify that $(P_y*f)(x)$ satisfies the mean value property 
+and is continuous on $\R_+^{n+1}$. 
+The two properties together imply that $f$ is harmonic.
+(Sketch: On any ball consider the difference of such a function 
+and the harmonic function solving the Dirichlet problem 
+where the boundary--value is given by its confinement, 
+which supposedly attains its nonzero maximum or minimum on a closed set, 
+at the farthest point away from the center of the ball of which 
+the mean value property fails.)
+%定义平均积分\intbar
+\newcommand\tbbint{{-\mkern -16mu\int}}
+\newcommand\dbbint{{-\mkern -19mu\int}}
+\newcommand\intbar{{\mathchoice{\dbbint}{\tbbint}{\tbbint}{\tbbint}}}
+
+First establish the mean value property: 
+for a ball $B$ in $\R_+^{n+1}$ centering at $(x_0,y_0)$,
+\begin{align*}
+    \intbar_{\!\!\!\!B} (P_y*f)(x)\,d\bar{x}
+    &=\intbar_{\!\!\!\!B}\int_{\R^n}\!\!P_y(x-z)f(z)\,dzd\bar{x}\\
+    &=\int_{\R^n}\Big(\ \intbar_{\!\!\!\!B}\ P_y(x-z)\,d\bar{x}\Big)f(z)\,dz\\
+    &=\int_{\R^n}\!\!P_{y_0}(x_0-z)f(z)\,dz\\
+    &=(P_{y_0}*f)(x_0),
+\end{align*}
+where $\bar{x}=(x,y)$ and a slash through an integral denotes an average.
+
+Then check its continuity:
+\begin{align*}
+    |(P_{y'}*f)(x')-(P_y*f)(x)|
+    \leq\|P_{y'}(x'-x+\,\cdot\,)-P_y(\,\cdot\,)\|_{L^{p'}}\|f\|_{L^p}
+    \rightarrow0
+\end{align*}
+as $(x',y')\rightarrow(x,y)$, where $\frac{1}{p}+\frac{1}{p'}=1$ and 
+$\|P_{y'}(x'-x+\,\cdot\,)-P_y(\,\cdot\,)\|_{L^{p'}}\rightarrow0$ 
+is easily confirmed by, say, the Lebesgue dominated convergence theorem.
+
+To show that $P_{y_1}*P_{y_2}=P_{y_1+y_2}$, 
+it suffices to show that their Fourier transforms agree. 
+Indeed, applying Proposition 2.2.11 (8) and Exercise 2.2.11, 
+$$\widehat{P_y}=(y^{-n}\delta^y P)^\wedge=\delta^y \widehat{P}=e^{-2\pi y|\xi|},$$
+so
+$$(P_{y_1}*P_{y_2})^\wedge=\widehat{P_{y_1}}\widehat{P_{y_2}}
+=e^{-2\pi y_1|\xi|}e^{-2\pi y_2|\xi|}=e^{-2\pi (y_1+y_2)|\xi|}
+=\widehat{P_{y_1+y_2}}.$$
+
+\item[2.4.7]
+(a) Observe that $v(x;x_0)$ is harmonic is equivalent to 
+$v(x+x_0;x_0)$ is harmonic, where
+\begin{align*}
+    v(x+x_0;x_0)&=(|x_0|^2-|x+x_0|^2)|x|^{-n}\\
+    &=-2x_0\cdot x|x|^{-n}-|x|^{2-n}
+\end{align*}
+is a linear combination of the harmonic function $|x|^{2-n}$ and 
+its partial derivatives $\frac{\partial}{\partial x_j}|x|^{2-n}=(2-n)x_j|x|^{-n}$ 
+for $n\geq3$, and $\frac{\partial}{\partial x_j}\log|x|=x_j|x|^{-2}$ for $n=2$.
+
+Alternatively, one may calculate directly as follows:
+\begin{align*}
+    \Delta v(x+x_0;x_0)
+    &=\Delta\big((1-|x+x_0|^2)\cdot|x|^{-n}\big)\\
+    &=\Delta(1-|x+x_0|^2)|x|^{-n}+2\nabla(1-|x+x_0|^2)\cdot\nabla(|x|^{-n})
+    +(1-|x+x_0|^2)\Delta|x|^{-n}\\
+    &=(-2n)|x|^{-n}+2(-2(x+x_0))\cdot(-n|x|^{-n-2}x)
+    +(1-|x+x_0|^2)\,2n|x|^{-n-2}\\
+    &=2n\,|x|^{-n-2}\big(\!-|x|^2+2(x+x_0)\cdot x+|x_0|^2-|x+x_0|^2\big)\\
+    &=0,
+\end{align*}
+in which the calculation of $\Delta|x|^{-n}$ deserves elaboration:
+\begin{align*}
+    \Delta|x|^{-n}
+    &=\operatorname{div}\big(\!-\!nx|x|^{-n-2}\big)
+    =-n\big(\operatorname{div}(x)|x|^{-n-2}+x\cdot\nabla|x|^{-n-2}\big)\\
+    &=-n\Big(n|x|^{-n-2}+x\cdot\Big(\frac{-n-2}{2}|x|^{-n-4}2x\Big)\Big)
+    =2n|x|^{-n-2}.
+\end{align*}
+
+(b) For $\theta\in\mathbf{S}^{n-1}$ such that $|\theta-x_0|>\delta$, we have
+\begin{align*}
+    v(rx_0;\theta)=\frac{1-r^2}{|rx_0-\theta|^n}
+    =\frac{1-r^2}{|(r-1)x_0+(x_0-\theta)|^n}
+    \leq\frac{1-r^2}{(\delta-(1-r))^n}.
+\end{align*}
+Then
+\begin{align*}
+\int_{\begin{subarray}{c}
+\theta\in\mathbf{S}^{n-1} \\ |\theta-x_0|>\delta 
+\end{subarray}}v(rx_0;\theta)\,d\theta
+\leq\omega_{n-1}\frac{1-r^2}{(\delta-(1-r))^n}
+\end{align*}
+tends to $0$ uniformly in $x_0$ as $r\uparrow1$.
+
+(c) $$\frac{1}{\omega_{n-1}}\int_{\mathbf{S}^{n-1}}\frac{1-|x|^2}{|x-\theta|^n}\,d\theta
+=\intbar_{\!\!\!\mathbf{S}^{n-1}}\frac{1-\big||x|\theta\big|^2}{\big||x|\theta-\frac{x}{|x|}\big|^n}\,d\theta=1,$$
+where the first equality is justified by the illustration below, 
+and the second by the mean value property of the integrand 
+which is the harmonic function $\theta\mapsto v(|x|\theta;\frac{x}{|x|})$
+and $v(0;\frac{x}{|x|})=1$.
+\begin{center}
+    \begin{tikzpicture}[scale=2]
+    \coordinate [label=right:$\theta$] (x) at (6.66,0.14);
+    \coordinate [label=right:$\frac{x}{|x|}$] (y) at (6.33,0.68);
+    \coordinate [label=right:$x$] (z) at (6.0,0.28);
+    \coordinate [label=right:$|x|\theta$] (w) at (6.15,-0.07);
+    \draw (6,0) circle (20pt);
+    \draw (6,0) -- (6.68,0.13) -- (6.2,0.24);
+    \draw (6,0) -- (6.45,0.53)  -- (6.305,0.055);
+\end{tikzpicture}
+\end{center}
+
+(d) The harmonicity of $u$ is easily shown 
+by taking the Laplacian inside the integral; 
+the continuity of $u$ at the boundary is 
+a consequence of the observation in part (b) that 
+the Poisson kernel $v(rx_0;\theta)$ is massed at $\theta$ as $r\uparrow1$ 
+--- to put it more clearly, by part (c) we have
+\begin{align*}
+    |u(rx_0)-f(x_0)|
+    &=\bigg|\ \intbar_{\!\!\!\mathbf{S}^{n-1}}\big(f(\theta)-f(x_0)\big)v(rx_0;\theta)\,d\theta\bigg|\\
+    &\leq\sup_{|\theta-x_0|\leq\delta}\!\!|f(\theta)-f(x_0)|\cdot\intbar_{\!\!\!\mathbf{S}^{n-1}}v(rx_0;\theta)\,d\theta\\
+    &+\sup_{\theta\in\mathbf{S}^{n-1}}|f(\theta)-f(x_0)|\cdot\frac{1}{\omega_{n-1}}\int_{\begin{subarray}{c}
+    \theta\in\mathbf{S}^{n-1} \\ |\theta-x_0|>\delta \end{subarray}}v(rx_0;\theta)\,d\theta,
+\end{align*}
+first choose $\delta$ small enough so that 
+the first term is vanishingly small by the continuity of $f$, 
+and then for the fixed $\delta$, let $r\uparrow1$ 
+so that the second term becomes vanishingly small as well by part (b).
+
+\item[2.4.8]
+
+(a) In Appendix D.4 the following identity is obtained:
+$$\int_{\mathbf{S}^{n-1}}\frac{d\theta}{|\theta-e_1|^\alpha}
+=\frac{\omega_{n-2}}{2^\frac{\alpha}{2}}\int_{-1}^{+1}(1-s)^\frac{n-3-\alpha}{2}(1+s)^{\frac{n-3}{2}}ds.$$
+
+Since $\mathbf{S}^n$ is invariant 
+under the rotation that carries $\eta$ to $e_1$, we get
+\begin{align*}
+    \int_{\mathbf{S}^n}|\xi-\eta|^{-\lambda}\,d\xi
+    &=\int_{\mathbf{S}^n}|\xi-e_1|^{-\lambda}\,d\xi\\
+    &=\frac{\omega_{n-1}}{2^\frac{\lambda}{2}}\int_{-1}^{+1}(1-s)^{\frac{n-\lambda}{2}-1}(1+s)^{\frac{n}{2}-1}\,ds\\
+    &=\frac{\omega_{n-1}}{2^\frac{\lambda}{2}}\int_{-1}^{+1}(2-2t)^{\frac{n-\lambda}{2}-1}(2t)^{\frac{n}{2}-1}\,d(2t-1)\\
+    &=\omega_{n-1}2^{n-\lambda-1}\int_{0}^{1}(1-t)^{\frac{n-\lambda}{2}-1}t^{\frac{n}{2}-1}\,dt\\
+    &=\omega_{n-1}2^{n-\lambda-1}B\Big(\frac{n-\lambda}{2},\frac{n}{2}\Big)\\
+    &=\frac{2\pi^\frac{n}{2}}{\varGamma(\frac{n}{2})}2^{n-\lambda-1}
+    \frac{\varGamma(\frac{n-\lambda}{2})\varGamma(\frac{n}{2})}{\varGamma(n-\frac{\lambda}{2})}\\
+    &=\pi^\frac{n}{2}2^{n-\lambda}\frac{\varGamma(\frac{n-\lambda}{2})}{\varGamma(n-\frac{\lambda}{2})}.
+\end{align*}
+
+(b) Notice that
+\begin{align*}
+    &\int_{\R^n}|x-y|^{-\lambda}(1+|x|^2)^\frac{\lambda}{2}(1+|y|^2)^\frac{\lambda}{2}(1+|x|^2)^{-n}\,dx\\
+    =&\int_{\R^n}(|\varPi(x)-\varPi(y)|/2)^{-\lambda}J_\varPi(x)/2^n\,dx\\
+    =&\ 2^{\lambda-n}\int_{\mathbf{S}^{n-1}}|\xi-\eta|^{-\lambda}\,d\xi\\
+    =&\ \frac{\pi^\frac{n}{2}\varGamma(\frac{n-\lambda}{2})}{\varGamma(n-\frac{\lambda}{2})},
+\end{align*}
+where $\varPi$ is the stereographic projection in Appendix D.6, 
+in the first equality the so--called interesting formula 
+$|\varPi(x)-\varPi(y)|=2|x-y|(1+|x|^2)^{-1/2}(1+|y|^2)^{-1/2}$ is used, 
+and the last equality is by (a), from which we deduce that 
+the Jacobian of $\varPi$ is $J_\varPi(x)=\big(\frac{2}{1+|x|^2}\big)^n$ 
+(instead of $J_\varPi(x)=\big(\frac{2}{1+|x|^2}\big)^{-n}$ as Appendix D.6 claims).
+
+Now we give a proof of the formula for $|\varPi(x)-\varPi(y)|$.
+\begin{center}
+    \begin{tikzpicture}
+    \coordinate [label=center:$e$] (e) at (0,2.3);
+    \coordinate [label=center:$e'$] (e') at (0,-2.3);
+    \coordinate [label=center:$x$] (x) at (-3.15,-0.65);
+    \coordinate [label=center:$y$] (y) at (2.75,-0.03);
+    \coordinate [label=center:$O$] (O) at (-0.16,0.13);
+    \coordinate [label=center:$\varPi(x)$] (Pix) at (-2.41,0.27);
+    \coordinate [label=center:$\varPi(y)$] (Piy) at (2.1,0.77);
+    \draw (0,0) circle (60pt);
+    \draw[dashed] (0,2.1)--(0,-2.1);
+    \draw (-2.06,0.5)--(-2.5,0.5)--(-4,-1)--(2.5,-1)--(4,0.5)--(2.06,0.5);
+    \draw[dashed] (-2.1,0.5)--(2.1,0.5);
+    \draw[dashed] (-2,-0.4)--(0,0)--(2.1,0);
+    \draw (-2,-0.4)--(-3,-0.6)--(2.6,0)--(2.1,0);
+    \draw (-2,0.31)--(-3,-0.6);
+    \draw[dashed] (0,2.1)--(-2,0.31)--(0,-2.1);
+    \draw (1.7,0.8)--(2.6,0);
+    \draw[dashed] (0,2.1)--(1.7,0.8)--(0,-2.1);
+    \draw[dashed] (1.7,0.8)--(-2,0.31);
+\end{tikzpicture}
+\end{center}
+Observe that $\triangle exy\backsim\triangle e\varPi(y)\varPi(x)$ 
+with a scale denoted by $1:k$ as
+$$|ex||e\varPi(x)|=|ey||e\varPi(y)|=|eO||ee'|=2,$$
+where $e=(0,\cdots,0,1)$ and $e'=(0,\cdots,0,-1)$ 
+are the north pole and the south pole. Since 
+$$2=|ex||e\varPi(x)|=k|ex||ey|=k(1+|x|^2)^{1/2}(1+|y|^2)^{1/2},$$
+we get
+$$|\varPi(x)\varPi(y)|=k|xy|=2|xy|(1+|x|^2)^{-1/2}(1+|y|^2)^{-1/2}.$$
+
+\item[2.4.9]
+
+Theorem 2.4.6 establishes the formula
+$$\pi^{\frac{z+n}{2}}\varGamma\Big(\frac{z+n}{2}\Big)^{-1}(|x|^z)^\wedge
+=\pi^{-\frac{z}{2}}\varGamma\Big(\!-\frac{z}{2}\Big)^{-1}|x|^{-n-z},$$
+
+that is,
+$$(|x|^z)^\wedge=\pi^{-z-\frac{n}{2}}\frac{\varGamma(\frac{z+n}{2})}{\varGamma(-\frac{z}{2})}|x|^{-n-z}\triangleq c_z|x|^{-n-z}.$$
+
+Then
+\begin{align*}
+    &\int_{\R^n}\frac{dt}{|x-t|^{\alpha_1}|y-t|^{\alpha_2}}\\
+    =\ &(|t|^{-\alpha_1}*|t|^{-\alpha_2})(x-y)\\
+    =\ &((|t|^{-\alpha_1})^\wedge(|t|^{-\alpha_2})^\wedge)^\vee(x-y)\\
+    =\ &c_{-\alpha_1}c_{-\alpha_2}(|t|^{-n+\alpha_1-n+\alpha_2})^\vee(x-y)\\
+    =\ &c_{-\alpha_1}c_{-\alpha_2}c_{-2n+\alpha_1+\alpha_2}|x-y|^{n-\alpha_1-\alpha_2},
+\end{align*}
+where
+\begin{align*}
+    &c_{-\alpha_1}c_{-\alpha_2}c_{-2n+\alpha_1+\alpha_2}\\
+    =\ &\pi^{\alpha_1-\frac{n}{2}}\frac{\varGamma(\frac{n-\alpha_1}{2})}{\varGamma(\frac{\alpha_1}{2})}
+    \pi^{\alpha_2-\frac{n}{2}}\frac{\varGamma(\frac{n-\alpha_2}{2})}{\varGamma(\frac{\alpha_2}{2})}
+    \pi^{2n-\alpha_1-\alpha_2-\frac{n}{2}}\frac{\varGamma(\frac{n-2n+\alpha_1+\alpha_2}{2})}{\varGamma(-\frac{-2n+\alpha_1+\alpha_2}{2})}\\
+    =\ &\pi^\frac{n}{2}\frac{\varGamma(\frac{n-\alpha_1}{2})\varGamma(\frac{n-\alpha_2}{2})\varGamma(\frac{\alpha_1+\alpha_2-n}{2})}
+    {\varGamma(\frac{\alpha_1}{2})\varGamma(\frac{\alpha_2}{2})\varGamma(n-\frac{\alpha_1+\alpha_2}{2})}.
+\end{align*}
+
+\item[2.4.10]
+
+(a) This is because for all rotations $A$ and $\xi\in\R^n$, 
+by Proposition 2.2.11 (13),
+$$\hat{f}(A\xi)=\widehat{f\circ A}(\xi)=\hat{f}(\xi).$$
+
+(b) Now the identity above holds for all rotations $A$ which keep $e_1$ fixed.
+
+\item[2.4.11]
+
+The translation $(x,y)\mapsto(x+z,y+z)$ and a dilation with a rotation 
+that carries $y$ to $e_1$ reduce matters to the case that $z=0$ and $y=e_1$. 
+We prove the identity by showing that the Fourier transforms 
+\textbf{in} $\boldsymbol{x}$ of both sides coincide.
+
+First take the Fourier transform on the right side, setting aside its coefficient, and get
+\begin{align*}
+    &(|x-e_1|^{d_1-n}|x|^{d_3-n})^\wedge(\xi)\\
+    =\ &c_{d_1-n}c_{d_3-n}(|\xi|^{-d_1}e^{-2\pi i\xi e_1})*|\xi|^{-d_3}\\
+    =\ &c_{d_1-n}c_{d_3-n}\int_{\R^n}|t|^{-d_1}e^{-2\pi it\cdot e_1}|\xi-t|^{-d_3}dt\\
+    =\ &c_{d_1-n}c_{d_3-n}|\xi|^{-d_1-d_3+n}\int_{\R^n}|t|^{-d_1}e^{-2\pi i|\xi|t\cdot e_1}|\xi/|\xi|-t|^{-d_3}dt.
+\end{align*}
+Let $A_\xi$ be a rotation that transforms $e_1$ to $\xi/|\xi|$, then the expression above is equal to
+\begin{align*}
+    =\ &c_{d_1-n}c_{d_3-n}|\xi|^{-d_1-d_3+n}\int_{\R^n}|A_\xi^{-1}t|^{-d_1}e^{-2\pi i|\xi|A_\xi^{-1}t\cdot A_\xi^{-1}e_1}|e_1-A_\xi^{-1}t|^{-d_3}d(A_\xi^{-1}t)\\
+    =\ &c_{d_1-n}c_{d_3-n}|\xi|^{-d_1-d_3+n}\hat{h}(A_\xi^{-1}e_1),
+\end{align*}
+where $h(t)=|t|^{-d_1}|t-e_1|^{-d_3}$.
+
+Next take the Fourier transform on the left side, and get
+$$(h*|t|^{-d_2})^\wedge(\xi)=c_{-d_2}|\xi|^{n-d_2}\hat{h}(\xi).$$
+
+Since $-d_1-d_3+n=n-d_2$ and 
+\begin{align*}
+&c_{-d_2}/(c_{d_1-n}c_{d_3-n})\\
+=\ &\pi^{d_2-\frac{n}{2}}\frac{\varGamma(\frac{n-d_2}{2})}{\varGamma(\frac{d_2}{2})}\bigg/
+\bigg(\pi^{\frac{n}{2}-d_1}\frac{\varGamma(\frac{d_1}{2})}{\varGamma(\frac{n-d_1}{2})}
+\pi^{\frac{n}{2}-d_3}\frac{\varGamma(\frac{d_3}{2})}{\varGamma(\frac{n-d_3}{2})}\bigg)\\
+=\ &\pi^\frac{n}{2}\prod_{j=1}^3\frac{\varGamma(\frac{n-d_j}{2})}{\varGamma(\frac{d_j}{2})},
+\end{align*}
+it remains to show that $\hat{h}(\xi)=\hat{h}(A_\xi^{-1}e_1)$, 
+which explains what part (b) of the preceding exercise is for.
+
+\item[2.4.12]
+
+(a) On $P_2$ we have $\big|e^{i(Re^{i\theta})^2}\big|
+=e^{-R^2\sin(2\theta)}\leq e^{-\frac{4}{\pi}R^2\theta}$, and hence
+$$\bigg|\int_{P_2}e^{iz^2}dz\bigg|
+\leq \int_0^\frac{\pi}{4} e^{-\frac{4}{\pi}R^2\theta}|Re^{i\theta}d\theta|
+\leq \frac{1}{R}\int_0^\infty e^{-\frac{4}{\pi}R^2\theta}d(R^2\theta)
+\rightarrow0\quad\textup{as }R\rightarrow\infty.$$
+Then we get from $\int_{P_1\cup P_2\cup P_3}e^{iz^2}dz=0$ that
+\begin{align*}
+    \lim_{R\rightarrow\infty}\int_0^R e^{ix^2}dx
+    &=\lim_{R\rightarrow\infty}\int_{P_1} e^{iz^2}dz
+    =-\lim_{R\rightarrow\infty}\int_{P_3} e^{iz^2}dz\\
+    &=-\lim_{R\rightarrow\infty}\int_0^R e^{-r^2}e^{i\frac{\pi}{4}}\,dr
+    =e^{i\frac{\pi}{4}}\frac{\sqrt{\pi}}{2}
+    =\frac{\sqrt{2\pi}}{4}(1+i).
+\end{align*}
+
+(b) Enough to deal with the case of $n=1$, 
+and the general case is its mere multiplication. When $n=1$,
+\begin{align*}
+    \int_{\R}e^{i\pi x^2}e^{-2\pi ix\xi}\,dx
+&=e^{-i\pi\xi^2}\int_{\R}e^{i\pi(x-\xi)^2}dx\\
+&=e^{-i\pi\xi^2}2\int_0^\infty e^{i\pi x^2}dx\\
+&=e^{-i\pi\xi^2}e^{i\frac{\pi}{4}}.
+\end{align*}
+\end{itemize}
+
+\section*{2.5 Convolution Operators on $L^p$ Spaces and Multipliers}
+
+\begin{itemize}
+\item[2.5.1]
+By the Lebesgue dominated convergence theorem, $\forall \varepsilon >0,\exists N$ 
+s.t. $$\Vert f-f\chi_{B(0,N)}\Vert_{L^q}<\varepsilon.$$
+Let $g=f\chi_{B(0,N)}$. Then for $\vert h\vert >2N$, 
+the supports of $\tau^h(g)$ and $g$ are disjoint, so
+\begin{align*}
+\big\vert\Vert \tau^h(f) + f\Vert_{L^q}-2^{\frac1q}\Vert f\Vert_{L^q}\big\vert
+&=\big\vert\Vert \tau^h(f) + f\Vert_{L^q}-\Vert \tau^h(g) 
++ g\Vert_{L^q}-2^{\frac1q}(\Vert f\Vert_{L^q}-\Vert g\Vert_{L^q})\big\vert \\
+&\leq \Vert \tau^h(f-g) + (f-g)\Vert_{L^q} 
++ 2^{\frac{1}{q}}\big\vert \Vert f\Vert_{L^q} - \Vert g\Vert_{L^q} \big\vert \\
+&\leq \Vert \tau^h(f-g) \Vert_{L^q} + \Vert (f-g)\Vert_{L^q} 
++ 2^{\frac{1}{q}} \Vert f - g\Vert_{L^q}\\
+&\leq (2+2^{\frac1q})\varepsilon.
+\end{align*}
+Let $\varepsilon$ tend to $0$ to come to the required conclusion.
+
+\item[2.5.2]
+To verify Proposition 2.5.14, we have
+\begin{align*}
+&\Vert\tau^x(m)\Vert_{\mathscr{M}_{p}}
+=\sup \frac{\Vert(\tau^{x}(\tau^{-x}(\hat{f})m))^\vee\Vert_{L^p}}{\Vert f\Vert_{L^p}}=
+\sup \frac{\Vert(\widehat{e^{-2\pi i(\,\cdot\,)\cdot x}f}m)^\vee\Vert_{L^p}}{\Vert e^{-2\pi i(\,\cdot\,)\cdot x}f\Vert_{L^p}}=
+\sup\frac{\Vert(\hat{f}m)^\vee\Vert_{L^p}}{\Vert f\Vert_{L^p}}
+ =\Vert m\Vert_{\mathscr{M}_{p}}.\\
+&\Vert\delta^h(m)\Vert_{\mathscr{M}_{p}}
+=\sup \frac{\Vert(\delta^{h}(\delta^{h^{-1}}(\hat{f})m))^\vee\Vert_{L^p}}{\Vert f\Vert_{L^p}}=
+\sup \frac{\Vert(\widehat{\delta^{h}f}m)^\vee\Vert_{L^p}}{\Vert \delta^{h}f\Vert_{L^p}}=
+\sup\frac{\Vert(\hat{f}m)^\vee\Vert_{L^p}}{\Vert f\Vert_{L^p}}
+ =\Vert m\Vert_{\mathscr{M}_{p}}.\\
+&\Vert \widetilde{m}\Vert_{\mathscr{M}_{p}} 
+=\sup\frac{\Vert(\hat{f}\widetilde{m})^\vee\Vert_{L^p}}{\Vert f\Vert_{L^p}}
+=\sup\frac{\Vert(\,\,\hat{\!\!\tilde{f}}m)^\vee\Vert_{L^p}}{\Vert \tilde{f}\Vert_{L^p}}=
+\sup\frac{\Vert(\hat{f}m)^\vee\Vert_{L^p}}{\Vert f\Vert_{L^p}}
+ =\Vert m\Vert_{\mathscr{M}_{p}}.\\
+&\Vert e^{2\pi i(\,\cdot\,)\cdot x}m\Vert_{\mathscr{M}_{p}} 
+=\sup \frac{\Vert(\widehat{f}e^{2\pi i(\,\cdot\,)\cdot x}m)^\vee\Vert_{L^p}}{\Vert f\Vert_{L^p}}=
+\sup\frac{\Vert(\widehat{\tau^{-x}f}m)^\vee\Vert_{L^p}}{\Vert \tau^{-x}f\Vert_{L^p}}=
+\sup\frac{\Vert(\hat{f}m)^\vee\Vert_{L^p}}{\Vert f\Vert_{L^p}}=\Vert m\Vert_{\mathscr{M}_{p}}.\\
+&\Vert m\circ A\Vert_{\mathscr{M}_{p}} =
+\sup\frac{\Vert(\widehat{f\circ A^{-1}}\circ A\cdot m\circ A)^\vee\Vert_{L^p}}{\Vert f\Vert_{L^p}}=
+\sup\frac{\Vert(\widehat{f\circ A^{-1}}m)^\vee\circ A\Vert_{L^p}}{\Vert f\circ A^{-1}\Vert_{L^p}}=
+\sup\frac{\Vert(\hat{f}m)^\vee\Vert_{L^p}}{\Vert f\Vert_{L^p}}=\Vert m\Vert_{\mathscr{M}_{p}}.
+\end{align*}
+Note that $\delta_j^n\hat{f}(\xi)=\frac1h\widehat{\delta_j^{h^{-1}}}$, 
+then the proof is similar with that of $\delta^h$.
+
+\item[2.5.3]
+(a)$$\Vert \psi m\Vert_{\mathscr{M}_{p}}=\sup\frac{\Vert(\hat{f}\psi m)^\vee\Vert_{L^p}}{\Vert f\Vert_{L^p}}=\sup\frac{\Vert(\hat{f}m)^\vee*\psi^\vee\Vert_{L^p}}{\Vert f\Vert_{L^p}}.$$
+By Young's inequality,
+$$\Vert \psi m\Vert_{\mathscr{M}_{p}}
+\leq \sup\frac{\Vert(\hat{f} m)^\vee\Vert_{L^p}}{\Vert f\Vert_{L^p}}\Vert \psi^\vee\Vert _{L^1}
+=\Vert m\Vert _{\mathscr{M}_{p}}\Vert \psi^\vee\Vert_{L^1}.$$
+(b) Since $m$ is essentially bounded, by Fubini's theorem, 
+\begin{align*}
+    T_{\psi*m}(f)(x)&=\int_{\R^n} \int_{\R^n} \psi(y)m(\xi-y)\,\mathrm{d}y \,\hat{f}(\xi)e^{2\pi i x\cdot\xi}\,\mathrm{d}\xi\\
+    &=\int_{\R^n} \psi(y)\int_{\R^n} m(\xi-y) \hat{f}(\xi)e^{2\pi i x\cdot\xi}\,\mathrm{d}\xi\mathrm{d}y\\
+    &=\int_{\R^n} \psi(y)\big(m(\,\cdot-y)\hat{f}(\,\cdot\,)\big)^\vee(x)\,\mathrm{d}y.
+\end{align*}
+Therefore 
+\begin{align*}
+    \Vert T_{\psi*m}(f)\Vert _{L^p}&\leq \int_{\R^n} \vert \psi(y)\vert \Vert (\tau^ym\hat{f})^\vee\Vert_{L^p}\,\mathrm{d}y\\
+    &\leq \int_{\R^n} \left\vert \psi(y) \right\vert \Vert m\Vert _{\mathscr{M}_p}\Vert f\Vert _{L^p}\,\mathrm{d}y\\
+    &=\Vert \psi\Vert_{L^1}\Vert m\Vert _{\mathscr{M}_p}\Vert f\Vert _{L^p},
+\end{align*}
+where in the last inequality the first property of Proposition 2.5.14 is used.
+\item[2.5.4]
+(a)
+Notice that $\widehat{T(f)} = \widehat{f * \partial^{\gamma}\delta_{0}} 
+= \hat{f}\widehat{\partial^{\gamma}\delta_{0}} = \hat{f}(2\pi ix)^{\gamma}$, 
+which shows that the operator $\mathscr{F} \circ T$ is continuous 
+as it is bounded. But $\mathscr{F}$ is a homeomorphism on $\mathscr{S}$,
+which implies that $T$ is continuous.
+
+(b)
+When $p>q$, $\mathscr{M}_{p,q}=0$, implying that there is no nontrivial element.
+
+When $q\geq p$, for $f\in \mathscr{S}$,
+\[\frac{\Vert T(\delta^{\lambda} f)\Vert_{L^q}}{\Vert \delta ^\lambda f \Vert_{L^p}}
+= \frac{\Vert \delta^{\lambda} f * \partial^{\gamma}\delta_{0} \Vert_{L^q}}
+{\Vert \delta^{\lambda} f \Vert_{L^q}}
+= \frac{\Vert \partial^{\gamma}{\delta^{\lambda} f} * \delta_{0} \Vert_{L^q}}
+{\Vert \delta^{\lambda} f \Vert_{L^q}}
+= \frac{|\lambda|^{|\gamma|}|\lambda|^{\frac{n}{q}}}{|\lambda|^{\frac{n}{p}}}\frac{\Vert T(f)\Vert_{L^q}}{\Vert f \Vert_{L^p}}
+=|\lambda|^{|\gamma|+\frac{n}{q}-\frac{n}{p}}\frac{\Vert T(f)\Vert_{L^q}}{\Vert f \Vert_{L^p}}.\]
+By the condition, the coefficient $|\lambda|^{|\gamma|+\frac{n}{q}-\frac{n}{p}}$ 
+is unbounded when $\lambda$ varies.
+
+\item[2.5.5]
+Let $r=\frac{n}{n-\gamma}$. 
+From Theorem 1.4.25, $$\frac{\Vert f*K_\gamma\Vert_{L^q}}{\Vert f\Vert _{L^p}}
+\leq B\Vert K_\gamma\Vert_{L^{r,\infty}}=B\nu_n.$$
+
+\item[2.5.6]
+(a) We only need to consider the case of $1\leq p\leq 2$.
+Note that $\Vert m_j\Vert_{L^\infty}\leq \Vert m_j\Vert _{\mathscr{M}_p}\leq C.$
+By the Lebsegue dominated convergence theorem,
+$$T_{m_j}(f)(x)=\int_{\mathbb{R}^n}\hat{f}(\xi)m_j(\xi)e^{2\pi ix\cdot\xi}\,d\xi
+\rightarrow \int_{\mathbb{R}^n}\hat{f}(\xi)m(\xi)e^{2\pi ix\cdot\xi}\,d\xi
+=T_m(f)(x).$$
+By Fatou's lemma,$$\int_{\mathbb{R}^n}\vert T_m(f)\vert^p\,dx
+\leq \liminf_{j\rightarrow\infty} \int _{\mathbb{R}^n}\vert T_{m_j}(f)\vert^p\,dx
+\leq \liminf_{j\rightarrow\infty}\Vert m_j\Vert^p_{\mathscr{M}_p}\Vert f\Vert _{L^p}^p.$$
+Therefore, $\Vert m\Vert_{\mathscr{M}_{p}}
+\leq \liminf\limits_{j\rightarrow\infty}\Vert m_j\Vert_{\mathscr{M}_{p}}\leq C.$
+
+(b)
+Let $m_j=\delta^{\frac1j}m, j\geq 1$, then $m_j\rightarrow m_0$.
+
+Note that $\Vert m_j\Vert_{\mathscr{M}_{p}}=\Vert m\Vert_{\mathscr{M}_{p}}$, so by part (a),
+$\Vert m_0\Vert_{\mathscr{M}_{p}}\leq \Vert m\Vert_{\mathscr{M}_{p}}.$
+
+(c) 
+Obviously, $m_0(x)=
+\begin{cases}
+m(0+),x>0,\\
+m(0-),x<0.\\
+\end{cases}$
+Therefore, $$\Vert m_0\Vert_{\mathscr{M}_p}\geq \Vert m_0\Vert_{\mathscr{M}_2}
+=\Vert m_0\Vert_{L^\infty}=\max(\vert m(0+)\vert,\vert m(0-)\vert).$$
+
+(d)
+By Fubini's theorem and Minkowski's inequality, we see that
+$$\Vert m\Vert_{\mathscr{M}_p}
+=\sup \frac{\big\Vert \int_0^\infty(m_t\hat{f})^\vee\frac{dt}{t}\big\Vert_{L^p}}{\Vert f\Vert_{L^p}}
+\leq \int_0^\infty \Vert m_t\Vert_{\mathscr{M}_p}\frac{dt}{t}.$$
+
+\item[2.5.7]
+$$\Vert f\Vert_{L^p}=\|(\hat{f}m^{-1}m)^\vee\|_{L^p}
+\leq \Vert m\Vert _{\mathscr{M}_p}\Vert(\hat{f}m^{-1})^\vee\Vert_{L^p}
+= \Vert m\Vert _{\mathscr{M}_p}\Vert T(f)\Vert_{L^p}.$$
+The lower bound for $|m|$ is to guarantee that $\hat{f}m^{-1}\in L^1(\R^n)$ 
+so that $(\hat{f}m^{-1})^\vee$ is indeed a function.
+
+\item[2.5.8]
+(a)
+Using Exercise 1.2.9, we have
+$$\Vert m\Vert_{\mathscr{M}_p}
+=\sup\frac{\Vert f*m^\vee\Vert_{L^p}}{\Vert f\Vert _{L^p}}
+=\Vert m^\vee\Vert_{L^1}.$$
+(b) $$(m_2m_1^{-1})^\vee(\xi)=\int_{-1}^1(1-|x|)e^{-2\pi ix\xi}\,dx
+=\frac1{2(\pi \xi)^2}(\cos(2\pi\xi)-1)\leq0 .$$
+By part (a),
+$$\Vert m_2m_1^{-1}\Vert_{\mathscr{M}_p}=\Vert (m_2m_1^{-1})^\vee\Vert_{L^1}
+=\int_\R\frac{1-\cos x}{\pi x^2}\,dx.$$
+Consider the integral of $f(z)=\frac{e^{iz}-1}{z^2}$ 
+along the path below, which is the boundary of half of an annulus. 
+Since $e^{iz}=1+iz+O(|z|^2)$ near $0$, 
+$$\int_{\gamma_2}\frac{e^{iz}-1}{\pi z^2}\,dz
+=\int_{\gamma_2}\frac{i}{\pi z}+O(1)\,dz
+=\frac{i}{\pi}(-i\pi)+O(r)=1+O(r).$$
+Since $|e^{iz}|=e^{-\operatorname{Im}z}\le1$ on the upper half--plane,
+$$\bigg|\int_{\gamma_4}\frac{e^{iz}-1}{\pi z^2}\,dz\bigg|
+\le\int_{\gamma_4}\frac{|e^{iz}|+1}{\pi |z|^2}\,|dz|
+\le\int_{\gamma_4}\frac{2}{\pi R^2}\,|dz|=\frac{2}{R}.$$
+As $f$ has no singularity in the domain enclosed, we have
+$$\int_\R\frac{1-\cos x}{\pi x^2}\,dx
+=-\operatorname{Re}\lim_{\begin{subarray}{c}r\to0,\\R\to\infty\end{subarray}}
+\int_{\gamma_1\cup\gamma_3}\frac{e^{iz}-1}{\pi z^2}\,dz
+=\operatorname{Re}\lim_{\begin{subarray}{c}r\to0,\\R\to\infty\end{subarray}}
+\int_{\gamma_2\cup\gamma_4}\frac{e^{iz}-1}{\pi z^2}\,dz=1.$$
+\begin{tikzpicture}
+    \draw[->-,>=stealth] (-3,0)to(3,0);
+    \draw[->-,>=stealth] (0,-0.15)to(0,3);
+    \draw[->-,>=stealth] (2.2,0)arc(0:91.5:2.2);
+    \draw (0,2.2)arc(91.5:180:2.2);
+    \draw[->-,>=stealth] (-0.3,0)arc(180:82:0.3);
+    \draw (0,0.3)arc(82:0:0.3);
+    \draw[->-,>=stealth] (-1.18,0)to(-1.17,0);
+    \draw[->-,>=stealth] (1.3,0)to(1.31,0);
+    \coordinate [label=center:$\gamma_1$] (1) at (-1.2,-0.25);
+    \coordinate [label=center:$\gamma_3$] (3) at (1.29,-0.25);
+    \coordinate [label=center:$\gamma_2$] (2) at (0.05,0.54);
+    \coordinate [label=center:$\gamma_4$] (4) at (0.05,2.44);
+    \coordinate [label=center:$-R$] (-R) at (-2.2,-0.25);
+    \coordinate [label=center:$R$] (R) at (2.2,-0.25);
+    \coordinate [label=center:$-r$] (-r) at (-0.4,-0.25);
+    \coordinate [label=center:$r$] (r) at (0.3,-0.25);
+\end{tikzpicture}
+Hence $\Vert m_2m_1^{-1}\Vert _{\mathscr{M}_p}=1$. Then
+$$\Vert m_2\Vert _{\mathscr{M}_p}
+\leq \Vert m_2m_1^{-1}\Vert _{\mathscr{M}_p}\Vert m_1\Vert _{\mathscr{M}_p}
+=\Vert m_1\Vert _{\mathscr{M}_p}.$$
+Note that $m_1(\xi)=\lim\limits_{R\rightarrow\infty} m_2\big(\frac{\xi}{R}\big)$, 
+then by Exercise 2.5.6 (b), 
+$$\Vert m_1\Vert _{\mathscr{M}_p}\leq \Vert m_2\Vert_{\mathscr{M}_p}.$$
+
+\item[2.5.9]
+$$\bigg\Vert \Big(\sum\limits_m a_me^{-2\pi imx}\hat{f}(x)\Big)^\vee\bigg\Vert_{L^p}
+=\bigg\Vert \Big(\sum\limits_m a_m\widehat{\tau^mf}\Big)^\vee\bigg\Vert_{L^p}
+=\bigg\Vert \sum\limits_m a_m\tau^mf\bigg\Vert_{L^p}
+=\bigg\Vert \sum\limits_m a_mf(x-m)\bigg\Vert_{L^p},$$
+from which we know (a) is equivalent to (b).
+
+For a sequence $\{a_m\} $ that satisfies (c), 
+it is easy to see $\{a_m\}\in l^p(\mathbb{Z}^n)$.
+Let $K$ be the operator
+$$L^p(\R^n)\rightarrow L^p(\R^n),\quad f\mapsto\sum\limits_ma_mf(x-m).$$ 
+Write the cube $Q=\big[\!-\!\frac12,\frac12\big]^n$, $|Q|=1$.
+Note that $$\Vert f\Vert_{L^p}^p=\int_Q\sum\limits_n\vert f(x+n)\vert^p\,dx,$$ 
+so $\{ f(x-m)\}_{m\in \mathbb{Z}^n}\in l^p(\mathbb{Z}^n),\mathrm{a.e.}\ x $, 
+so $Kf$ is defined almost everywhere.
+$$\int_{\R^n} \vert Kf\vert^p\,dx=\int_Q\sum\limits_n\Big\vert \sum_m a_mf(a+n-m)\Big\vert^p\,dx
+\leq \int_QA^p\sum\limits_n\vert f(x+n)\vert^p\,dx=A^p\Vert f\Vert^p_{L^p}.$$
+This implies $\Vert K\Vert\leq A.$
+
+For a sequence $\{c_m\}$, take $f(x)=\sum\limits_mc_m\chi_Q(x-m)$. Then 
+\begin{align*}
+    &\frac{\Big(\sum\limits_n\Big\vert\sum\limits_ma_mc_{n-m}\Big\vert^p\Big)^{\frac1p}}{\Big(\sum\limits_n\vert c_n\vert^p\Big)^{\frac1p}}
+    =\frac{\Big(\sum\limits_n\Big\vert\int_{n+Q}\sum\limits_m a_mf(x-m)\,dx\Big\vert^p\Big)^{\frac1p}}{\Big(\sum\limits_n\vert c_n\vert^p\Big)^{\frac1p}}\\
+    \leq&\frac{\Big(\sum\limits_n\int_{n+Q}\Big\vert\sum\limits_m a_mf(x-m)\Big\vert^p\,dx\Big)^{\frac1p}}{\Vert f\Vert_{L^p}}
+    =\frac{\Big\Vert\sum\limits_m a_mf(x-m)\Big\Vert_{L^p}}{\Vert f\Vert_{L^p}}\leq \Vert K\Vert.
+\end{align*}
+Here we use Hölder's inequality. This implies $A\leq \Vert K\Vert$. So (a) is equivalent to (c).
+
+\item[2.5.10]
+Let $Q=\big[\!-\!\frac12,\frac12\big]^n$, 
+by the invariance of norm under translation, 
+we can assume that $m$ is supported in $Q$. 
+Since $m$ is in $L^\infty$ and is compactly supported, 
+it lies in $L^2$ and hence it has a Fourier expansion. 
+Write $$m(\xi )=\sum_{j\in \mathbb{Z}^n}a_je^{2\pi ij\cdot \xi},\quad \xi \in [0,1]^n.$$
+Then $$M(\xi)=\sum_{j\in \mathbb{Z}^n}a_je^{2\pi ij\cdot \xi},\quad \xi \in \mathbb{R}^n.$$
+Let $h\in C^\infty$ to be determined later. Define the operators
+\begin{align*}E(\{c_j\}_j)&=\sum_{k\in \mathbb{Z}^n}c_k\chi _Q(x+k),\\
+R(f)(j)&=\int_{-j+Q}f(x)\,\mathrm{d}x.\end{align*}
+Consider 
+\begin{align*}
+    RT_{mh}E(\{c_k\}_k)(j)&=RT_{mh}\Big(\sum_{k\in\Z^n}c_k\chi _Q(\,\cdot+k)\Big)(j)\\
+    &=R\Big(\Big(mh\sum_{k\in\Z^n}c_k\widehat{\chi _Q}e^{2\pi i (\,\cdot\,)\cdot k}\Big)^\vee\Big)(j)\\
+    &=\sum_{k\in\Z^n}c_kq_{j-k},
+\end{align*}
+where 
+\begin{align*}
+    q_j&=\int _Q(mh\widehat{\chi _Q})^\vee(x-j)\,\mathrm{d}x\\
+    &=\int_Q\int_Qm(\xi)h(\xi)\widehat{\chi _Q}(\xi)e^{2\pi i (x-j)\cdot \xi}\,\mathrm{d}\xi\mathrm{d}x\\
+    &=\sum_{k\in\Z^n}a_k\int_{Q}(\widehat{\chi _Q})^2(\xi)h(\xi)e^{2\pi i(k-j)\cdot \xi}\,\mathrm{d}\xi.
+\end{align*}
+(The exchange of sum and integral is from the convergence of the series in $L^2$.) 
+Thus $q_j=a_j$ if we pick a $C_c^\infty(\mathbb{R}^n)$ function $h$ 
+equal to 
+\begin{align*}
+    (\widehat{\chi _Q})^{-2}(\xi)
+    &=\prod_{j=1}^n\bigg(\int_{-1/2}^{1/2}e^{-2\pi ix_j\xi_j}dx_j\bigg)^{-2}\\
+    &=\prod_{j=1}^n\bigg(\frac{e^{-\pi i\xi_j}-e^{\pi i\xi_j}}{-2\pi i\xi_j}\bigg)^{-2}\\
+    &=\prod_{j=1}^n\pi^2\xi_j^2\sin^{-2}(\pi \xi_j)
+\end{align*} on $Q$. 
+Therefore the operator $RT_{mh}E$ is given by convolution with the sequence $\{a_j\}_j$.
+
+It is obvious that $\Vert E\Vert _{l^p\to L^p}\leq 1$, and by Hölder's inequality, 
+$\Vert R\Vert _{L^p\to l^p}\leq 1$. So we have
+$$\Vert RT_{mh}E\Vert _{l^p\to l^p}\leq \Vert T_{mh}\Vert _{L^p\to L^p}
+\leq \Vert h^\vee\Vert _{L^1}\Vert m\Vert _{\mathscr{M}_p}.$$
+The last inequality comes from Exercise 2.5.3, 
+and the required conclusion comes from Exercise 2.5.9.
+
+\item[2.5.11]
+
+By Proposition 2.4.8, $\hat{u}\in C^\infty(\mathbb{R}^n\backslash\{0\})$, 
+and $\hat{u} $ is homogenous of degree $-i\tau$. Let $m=\hat{u}$, then
+$$\Vert m\Vert_{L^\infty(\mathbb{R}^n\backslash\{0\})} 
+=\Vert m\Vert _{L^\infty(\partial B(0,1))}<\infty.$$
+So $$\frac{\Vert f*u\Vert_{L^2}}{\Vert f\Vert_{L^2}}
+=\frac{\Vert (\hat{f}m)^\vee\Vert_{L^2}}{\Vert f\Vert_{L^2}}
+\leq \Vert m\Vert_{\mathscr{M}_2}=\Vert m\Vert _{L^\infty}<\infty.$$
+
+\item[2.5.12]
+
+Consider $T:(m_1,m_2,f)\mapsto \big((m_1*m_2)\hat{f}\big)^\vee$. Note that
+$$\Vert T(m_1,m_2,f)\Vert_{L^2}=\Vert (m_1*m_2)f^\vee\Vert_{L^2}
+\leq \Vert m_1*m_2\Vert_{L^\infty}\Vert f\Vert_{L^2}
+\leq \Vert m_1\Vert_{L^\infty}\Vert m_2\Vert _{L^1}\Vert f\Vert_{L^2}.$$
+So $T$ maps $L^\infty\times L^1\times L^2$ to $L^2$ with norm no more than $1$.
+\begin{align*}
+    \Vert T(m_1,m_2,f)\Vert_{L^1}&\leq \Vert (m_1*m_2)^\vee\Vert_{L^1}\Vert f\Vert_{L^1}
+    =\Vert m_1^\vee m_2^\vee\Vert_{L^1}\Vert f\Vert_{L^1}\\
+    &\leq\Vert f\Vert_{L^1}\Vert m_1^\vee \Vert_{L^2}\Vert  m_2^\vee\Vert_{L^2}
+    =\Vert f\Vert_{L^1}\Vert m_1\Vert_{L^2}\Vert  m_2\Vert_{L^2}.
+\end{align*}
+So $T$ maps $L^2\times L^2\times L^1$ with norm no more than $1$.
+
+Observe that
+$\begin{cases}
+\frac{1}{r}=\frac12\frac2r\\
+\frac1{r'}\!=\frac12\frac2r+1\big(1-\frac2r\big)\\
+\frac{1}{p}=\frac2r+\frac12\big(1-\frac2r\big)\end{cases}$. 
+By the multilinear interpolation theorem (see GTM250 pp.516-7), we have
+$$\Vert T(m_1,m_2,f)\Vert_{L^p}
+\leq \Vert m_1\Vert_{L^r}\Vert m_2\Vert_{L^{r'}}\Vert f\Vert_{L^p},$$
+which implies that $m_1*m_2 \in \mathscr{M}_p(\mathbb{R}^n).$
+
+\item[2.5.13]
+
+By Exercise 2.4.12, $(e^{i\vert \xi\vert^2})^\vee
+=e^{i\frac{\pi n}{4}}e^{-i\pi|x|^2}\in L^\infty $. 
+Let $m(\xi) =e^{i\vert\xi\vert^2}$, then
+$$\Vert T_m(f)\Vert _{L^\infty}=\Vert f*m^\vee\Vert_{L^\infty}
+\leq \Vert f\Vert_{L^1}\Vert m^\vee\Vert_{L^\infty},$$
+which implies $T_m$ is of strong $(1,\infty)$ type. Plus,
+$$\Vert T_m(f)\Vert_{L^2}= \Vert \hat{f}(\xi)e^{i\vert \xi \vert^2}\Vert _{L^2}
+=\Vert \hat{f}(\xi)\Vert _{L^2}=\Vert f\Vert _{L^2},$$
+which implies $T_m$ is of strong $(2,2)$ type.
+
+Consequently by the Riesz--Thorin interpolation theorem, 
+$T_m$ is of strong $(p,p')$ type.
+
+If $T_m$ were of strong $(p,p)$ type for some $p\not=2$, 
+for $\Vert m\Vert_{\mathscr{M}_p}=\Vert m\Vert _{\mathscr{M}_{p'}}$, 
+we could assume that $1\leq p<2$. 
+Then by Riesz--Thorin again, $T_{m}$ is of strong $(p,2)$ type with
+$$\Vert f\Vert _{L^2}=\Vert T_m(f)\Vert_{L^2}\leq \Vert f\Vert _{L^p}.$$
+This is surely not true.
+
+\end{itemize}
+
+\section*{2.6 Oscillatory Integrals}
+\begin{itemize}
+\item[2.6.1]
+Since $u^{(k)}$ is continuous, it can assumed that $u^{(k)}$ is positive. 
+Replacing $\frac{u}{c_0},c_0\lambda$ with $u,\lambda$ in Proposition 2.6.7 
+leads to the required conclusion.
+
+\item[2.6.2]
+Let $u(t)=
+\begin{cases}
+    t+m(k-1),&t\in[2m,2m+1)\\
+    kt+(m+1)(1-k),&t\in[2m+1,2m+2)
+\end{cases},m\in \mathbb{N}$.
+
+It is easy to see
+$$\bigg|\int_0^{2n}e^{i\lambda u(t)}\,\mathrm{d}t\bigg|=
+\bigg|\bigg(\sum\limits_{m=0}^{n-1}e^{i\lambda(k+1)m}\bigg)\cdot
+\frac1{\lambda}\bigg(e^{i\lambda}-1+\frac{e^{i(k+1)\lambda}-e^{i\lambda}}{k}\bigg)\bigg|
+=\bigg|\frac{1-e^{i\lambda(k+1)n}}{1-e^{i\lambda (k+1)}}\frac1{\lambda}\bigg(e^{i\lambda}-1+\frac{e^{i(k+1)\lambda}-e^{i\lambda}}{k}\bigg)\bigg|.
+$$
+Let $\lambda=\pi$, for any $\varepsilon >0$, by Kroncker's lemma (4.2.2), 
+there exists $k>2,k\in \mathbb{Z}$ such that 
+$\big\vert 1-e^{i\lambda (k+1)}\big\vert <\varepsilon $, 
+and choose $n\in \mathbb{Z}$ such that 
+$\big\vert 1-e^{i\lambda (k+1)n}\big\vert>1$.
+
+Modify in the $\delta$-neighborhood of $\mathbb{Z}$ to make $u$ smooth, 
+choose $\varepsilon$ sufficiently small, we get the counterexample.
+
+\item[2.6.3]
+
+\item[2.6.4]
+(a) Apply Exercise 2.6.1 to the intervals $[a,c-\delta]$ and $[c+\delta, b]$, 
+and notice that $\big\vert \int _{c-\delta}^{c+\delta}e^{i\lambda u(t)}\big\vert \leq 2\delta$, 
+we reach the conclusion.
+
+(b) Similar to part (a).
+
+(c) Choose $\delta =\lambda^{-\frac1{k+1}}$.\\
+
+\item[2.6.5]
+(a) Notice that
+$$\int _{\varepsilon\leq \vert t\vert \leq 1} e^{i\lambda t}\,\frac{\mathrm{d}t}{t}
+=\int _{\varepsilon\leq \vert t\vert \leq 1} 2i\sin(\lambda t)\,\frac{\mathrm{d}t}{t}=
+\int _{\lambda\varepsilon\leq \vert t\vert \leq \lambda} 2i\sin t\,\frac{\mathrm{d}t}{t}.$$
+By Exercise 2.2.9, we come to the required conclusion.
+
+(b) $$\bigg| \int _{\varepsilon\leq \vert t\vert \leq 1} e^{i(\lambda t\pm t^k)}\frac{\mathrm{d}t}{t}\bigg| 
+=\bigg| \int _{\varepsilon\leq \vert t\vert \leq 1}e^{i\lambda t}\frac{e^{\pm it^k}-1}{t}+\frac{e^{i\lambda t}}{t}\,\mathrm{d}t\bigg| 
+\leq \bigg| \int _{\varepsilon\leq \vert t\vert \leq 1}\frac{e^{i\lambda t }}{t}\,\mathrm{d}t\bigg| 
++\int_{\varepsilon\leq \vert t\vert \leq 1}\vert t\vert ^{k-1}\,\mathrm{d}t.$$
+By part (a), we come to the required conclusion.
+
+(c) When $\xi_1=\xi_2=0$, it is trivial. 
+When $\xi_2=0$, it follows from the same argument in part (a).
+
+When $\xi_2\neq 0$, let $t = \vert \xi_2\vert^{\frac1k}s$, 
+and split the domain of integration into 
+the sets $\vert t\vert  ≥ 1$ and $\vert t\vert  ≤ 1$.
+
+When $\vert t\vert  ≤ 1$ use part (b) and
+in the case $\vert t\vert  \geq 1$ use Corollary 2.6.8, noting that 
+$$\frac{\mathrm{d}^k}{\mathrm{d}t}(\xi_1\vert \xi_2\vert ^{-\frac1k}t+t^k)= k!≥1.$$
+
+\item[2.6.6]
+(a) $$\bigg\vert \int_0^{a\lambda}e^{i\lambda \log t}\,\mathrm{d}t\bigg\vert 
+=\bigg\vert \frac1{i\lambda+1}a\lambda e^{i\lambda\log (a\lambda)}\bigg\vert \leq a .$$
+(b) Split $(0,b)$ into $(0,1) $ and $(1,b)$. 
+Apply Proposition 2.6.7 with $k=1$ to the former one, and $k=2$ to the other.
+
+\item[2.6.7]
+We can assume that $\lambda =1$, for otherwise let $s=\lambda^{\frac1\gamma}t$.
+On the interval $(0,δ)$ apply Proposition 2.6.7 with $k = [\gamma] + 1$, 
+and on the interval $(\delta,b)$ with $k = [\gamma]$.
+
+\end{itemize}

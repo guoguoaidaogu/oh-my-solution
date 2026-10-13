@@ -1,0 +1,2342 @@
+
+\numberwithin{equation}{subsection}
+
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbS}{\mathbb{S}}
+
+\newcommand{\scrA}{\mathscr{A}}
+\newcommand{\scrB}{\mathscr{B}}
+\newcommand{\scrC}{\mathscr{C}}
+\newcommand{\scrD}{\mathscr{D}}
+\newcommand{\scrF}{\mathscr{F}}
+\newcommand{\scrU}{\mathscr{U}}
+\newcommand{\scrH}{\mathscr{H}}
+\newcommand{\scrL}{\mathscr{L}}
+
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calP}{\mathcal{P}}
+
+
+
+
+\newcommand{\fa}{\mathfrak{a}}
+\newcommand{\fb}{\mathfrak{b}}
+\newcommand{\fc}{\mathfrak{c}}
+\newcommand{\fF}{\mathfrak{F}}
+\newcommand{\fn}{\mathfrak{n}}
+\newcommand{\fm}{\mathfrak{m}}
+\newcommand{\fp}{\mathfrak{p}}
+\newcommand{\fq}{\mathfrak{q}}
+\newcommand{\fR}{\mathfrak{R}}
+\newcommand{\fN}{\mathfrak{N}}
+
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\Ima}{\operatorname{Im}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Ck}{\operatorname{Coker}}
+\newcommand{\Ann}{\operatorname{Ann}}
+\newcommand{\Tor}{\operatorname{Tor}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\chc}{\operatorname{char}}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Div}{\operatorname{Div}}
+\newcommand{\Reg}{\operatorname{Reg}}
+
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+\newcommand{\Oz}{\overline{z}}
+\newcommand{\Ow}{\overline{w}}
+\newcommand{\Opartial}{\overline{\partial}}
+\newcommand{\varep}{\varepsilon}
+\newcommand{\Over}{\overline}
+
+
+\newtheorem{lem}{引理}[subsection]
+\newtheorem{coro}{推论}[subsection]
+\newtheorem{defn}{定义}[subsection]
+\newtheorem{theo}{定理}[subsection]
+\newtheorem{exam}{例子}[subsection]
+\newtheorem{prop}{命题}[subsection]
+\newtheorem{exer}{习题}[subsection]
+\newtheorem{rem}{注}[subsection]
+
+\theoremstyle{definition}
+\newtheorem*{prf}{证明}
+\newtheorem*{prl}{引理的证明}
+
+
+
+	
+	\section{准备知识}
+	%
+	\subsection{Riemann面}
+			
+		\begin{exam}	
+		$\sqrt{z}$: 多值函数. $\sqrt{z}$的黎曼面.
+		\end{exam}
+		
+			
+		\begin{defn}
+			$2$维连通流形$X$, $X$上一个坐标指一个同胚$\varphi:U\subset X\rightarrow V\subset \mathbb{C}$.
+		\end{defn}
+			
+		\begin{defn}
+			称两个坐标$\varphi_i:U_i\rightarrow V_i$, $i=1,2$是全纯相容的，若$\varphi_2\circ \varphi_1^{-1}:\varphi_1(U_1\cap U_2)\rightarrow \varphi_2(U_1\cap U_2)$双全纯.
+		\end{defn}
+			
+			
+		\begin{defn}
+			$X$上一个复图表指一族全纯相容的坐标$\mathscr{U}=\{\varphi_j:U_j\rightarrow V_j, j\in J\}$使得$X=\bigcup\limits_j U_j$.
+		\end{defn}
+		
+		\begin{defn}
+			$X$上一个复结构$\Sigma=[\mathscr{U}]$, $\mathscr{U}:X$上的复图表，$\mathscr{U}\sim \mathscr{U}'$等价于其中任意两个坐标全纯相容.
+		\end{defn}
+			
+		\begin{defn}
+			$(X,\Sigma)$称为一个Riemann面.--H. Weyl.
+		\end{defn}
+
+		
+		\begin{exam}
+			$X$: Riemann面, $Y\subset X$开、连通，则$Y$也是Riemann面.\par
+			设$\mathscr{U}$是$X$上的一个开图表，则$\mathscr{U}|_Y$也是$Y$的一个开图表.
+		\end{exam}
+		
+		\begin{exam}
+			$\Omega\subset \mathbb{C}$中的区域均为$Riemann$面，取$\mathscr{U}=\{\id:\Omega\rightarrow \Omega\}$.
+		\end{exam}
+
+		\begin{exam}
+			Riemann球面$\mathbb{P}^1$是（紧）Riemann面.\par
+			$\mathbb{P}^1=\mathbb{C}\cup \{\infty\}$，有球极投影$\mathbb{P}^1\cong \mathbb{S}^2$，故$\mathbb{P}^1$是紧连通流形.\par
+		
+			 取$U_1=\mathbb{C}$, $U_2=\mathbb{C}^*\cup \{\infty\}$. 定义：$\varphi_1:U_1\rightarrow \mathbb{C}$, $z\mapsto z$. $\varphi_2:U_2\rightarrow \mathbb{C}, z\mapsto \frac{1}{z}, \infty \mapsto 0$. $U_1\cap U_2=\mathbb{C}^*$. $\varphi_1(U_1\cap U_2)=\varphi_2(U_1\cap U_2)=\mathbb{C}^*$. $\varphi_2\circ \varphi_1^{-1}: \mathbb{C}^*\rightarrow \mathbb{C}^*, z\mapsto \frac{1}{z}$是双全纯. 故$\mathscr{U}=\{\varphi_j:j=1,2\}$是$\mathbb{P}^1$的一个复图表.
+		\end{exam}
+
+		\begin{exam} 环面是Riemann面.\par
+			设$\omega_1, \omega_2$是$\mathbb{R}$-线性无关的向量. 称$\Gamma:=\mathbb{Z}\omega_1+\mathbb{Z}\omega_2=\{m\omega_1+n\omega_2:m,n\in \mathbb{Z}\}$是$\mathbb{C}$中的一个格.\par
+			定义$z\sim z'$等价于$z-z'\in \Gamma$. 称$\mathbb{C}/\Gamma:=\mathbb{C}/\sim$为一个环面. 商映射$\pi: z\mapsto [z]$给出了$\mathbb{C}/\Gamma$上的一个拓扑，其是一个紧连通流形.\par
+			设$V\subset \mathbb{C}$是一个区域，使得$V$中任何两个点不等价，则$\pi:V\rightarrow U:=\pi(V)$是一个同胚. 进而$\varphi:=\pi^{-1}:U\rightarrow V$是一个坐标.\par
+			设$\varphi_i:U_i\rightarrow V_i$为坐标，$i=1,2$. 令$\psi:=\varphi_2\circ \varphi_1^{-1}:\varphi_1(U_1\cap U_2)\rightarrow \varphi_2(U_1\cap U_2)$.\par
+			因为$\pi\circ \psi(z)=\varphi_1^{-1}(z)=\pi(z)$，所以有$\psi(z)-z\in \Gamma$.\par
+			因为$\psi(z)-z$连续，且取值在一个离散集上，所以$\psi(z)-z$在$\varphi_1(U_1\cap U_2)$的任何一个连通分支上均为常数. 因此$\psi$是双全纯函数. 覆盖是容易的.
+		\end{exam}
+		
+		
+		\begin{exam}
+			设$f\in C(\mathbb{C})$, 考虑$f$的图像$\Gamma(f):=\{(z,f(z))\in \mathbb{C}\times \mathbb{C}:z\in \mathbb{C}\}$. 取$$\mathscr{U}=\{P:\Gamma(f)\rightarrow \mathbb{C}, (z,f(z))\mapsto z\},$$
+	推出$\Gamma(f)$为Riemann面.
+		\end{exam}
+		
+		\begin{rem}
+			Riemann面是由“同胚”来定义的，只是两个坐标的转换函数是双全纯的.
+		\end{rem}
+		
+		
+		\begin{theo}(Gauss证明实解析情形；Korn-Lichtenstein证明一般情形)\par
+			任何一个可定向的光滑曲面，均存在一个复结构，使得其称为一个Riemann面.\par
+			参见Jost, 紧Riemann面(有关PDE).
+		\end{theo}
+		
+		\begin{defn}
+			$X$是Riemann面，称函数$f:X\rightarrow \mathbb{C}$为一个全纯函数，若对任意坐标$\varphi:U\rightarrow V$，有$f\circ \varphi^{-1}: V\rightarrow \mathbb{C}$全纯. 记$\mathcal{O}(X)$为$X$上的全纯函数全体.
+		\end{defn}
+		
+		\begin{rem}
+			使用$\mathcal{O}$是为了纪念Oka.
+		\end{rem}
+		
+		\begin{theo} Riemann可去奇点定理.\par
+			$X$: Riemann面，$U\subset X$是开集，$a\in U$. 若$f\in \mathcal{O}(U\backslash \{a\})\cap L^\infty(U)$, 则存在唯一的$\tilde{f}\in \mathcal{O}(U)$使得$\tilde{f}|_{U\backslash \{a\}}=f$. 利用平面区域的情形.
+		\end{theo}
+		
+		\begin{defn}
+			$X, Y$: Riemann面，$f\in C(X,Y)$. 称$f$是全纯的，若对所有的坐标$\varphi_1:U_1\subset X\rightarrow V_1$, $\varphi_2: U_2\subset Y\rightarrow V_2$, 其中$f(U_1)\subset U_2$, 有
+					$$\varphi_2\circ f \circ \varphi_1^{-1}:V_1\rightarrow V_2$$
+		全纯.\par
+			记$\mathcal{O}(X,Y)$为$X\rightarrow Y$的全纯映射全体.
+		\end{defn}
+		
+		\begin{rem}
+			验证此处$f\in C(X,Y)$不可少. 
+		\end{rem}
+		
+		\begin{defn}
+			若$f:X\rightarrow Y$同胚，且$f, f^{-1}$全纯，则称$f$为双全纯映射.
+		\end{defn}
+		
+		\begin{prop} 恒等原理.\par
+			 $f_1, f_2\in \mathcal{O}(X,Y)$, 记$A:=\{x\in X: f_1(x)=f_2(x)\}$. 若$A$有聚点，则$f_1\equiv f_2$.
+		\end{prop}
+		
+		\begin{prf}
+			令$G:=\{x\in X:$ 存在邻域$W\ni x,\ \text{s.t.}\ f_1|_W=f_2|_W\}$. 则$G$是开集.\par
+			$G\subset X$闭：设$b\in \partial G\cap X$，因为$f_i$连续，所以有$f_1(b)=f_2(b)$.\par
+			取坐标$\varphi:b\in U\subset X\rightarrow V$, $\psi:U'\subset Y\rightarrow V'$使得$f_i(U)\subset U'$且$U$连通. 记$g_i=\psi\circ f_i\circ \varphi^{-1}$. 由平面区域上的恒等原理，推出$g_1=g_2$在$V$上. 进而$f_1=f_2$在$U$上，故$b\in G$. 所以$G$是闭集.\par
+			再由平面区域恒等原理，有聚点$a\in G$.\par
+			因为$X$连通，非空，且既开又闭，故有$G=X$. 进而$f_1\equiv f_2$.
+		\end{prf}
+	
+		\begin{defn}
+			$X$: Riemann面. $X$上的一个亚纯函数(Meromorphic)指，$f\in \mathcal{O}(X')$，其中$X'\subset X$开且使得\par
+				1. $X\backslash X'$离散.\quad 2. $\forall p\in X\backslash X'$为$f$的极点，即$f(x)\to \infty(x\to p)$.\par
+			记$\mathcal{M}(X)$为$X$上的亚纯函数全体.
+		\end{defn}
+		
+		\begin{exam}
+			$p(z)=z^n+c_1z^{n-1}+\cdots+c_n\in \mathcal{O}(\mathbb{C})$. $p(z)\to \infty(z\to \infty)$, 故$p\in \mathcal{M}(\mathbb{P}^1)$.
+		\end{exam}
+
+		\begin{theo}
+			$f\in \mathcal{M}(X)$, 补充定义$f$在极点处取值为$\infty$, 则$f\in \mathcal{O}(X,\mathbb{P}^1)$. 反之，若$f\in \mathcal{O}(X,\mathbb{P}^1)$, 则$f\equiv \infty$或$f\in \mathcal{M}(X)$.
+		\end{theo}
+		
+		\begin{prf}
+			设$f\in \mathcal{M}(X)$, $f\neq \infty$, 则$P=f^{-1}(\infty)$为离散的. 考虑坐标$\varphi:U\subset X\rightarrow V$, $\psi:U'\subset \mathbb{P}^1\rightarrow V'$, 使得$f(U)\subset U'$, 且$V'$有界.\par
+			 在$U$中有限个极点，进而在$\varphi(U)$上亦为有限个极点，而$\psi\circ f\circ \varphi^{-1}$是有界的. 由Riemann可去奇点定理，使得$\psi\circ f\circ \varphi^{-1}\in \mathcal{O}(V)$, 进而$f\in \mathcal{O}(X,\mathbb{P}^1)$.
+		\end{prf}
+	
+		\begin{theo} 全纯映射局部行为.\par
+			$f\in \mathcal{O}(X,Y)$非常值，$a\in X$, $b:=f(a)\in Y$. 则存在$k\in \mathbb{Z}^+$，以及坐标$\varphi:U\subset X\rightarrow V$, $\psi:U'\subset Y\rightarrow V'$使得$f(U)\subset U'$, $\varphi(a)=\psi(b)=0$且
+					\begin{equation} 
+					F(z):=\psi\circ f\circ \varphi^{-1}(z)=z^k.
+					\end{equation}
+		称$k$为$f$在$a$处的重数.
+		\end{theo}
+	
+		\begin{prf}
+			首先可取坐标$\varphi, \psi$使得其满足除了方程(1.1.1)以外的所有性质.\par
+			定义$f_1:=\psi\circ f\circ \varphi^{-1}\in \mathcal{O}(V,V')$, 使得$f_1(0)=0$且$f_1$不是常值. 进而$f_1(z)=z^kg(z)$, 其中$g\in \mathcal{O}(V)$, $g(0)\neq 0$. \par
+			适当选取$U$, 可使$V$单连通，且$|g||_V>0$. 故存在$g^\frac{1}{k}$的一个单值分支$h$, 使得$f_1(z)=(z\cdot h(z))^k$. $z\mapsto z\cdot h(z)$双全纯(适当收缩$U$).\par
+			 记$\alpha(z):=z\cdot h(z)$. 只需用$\alpha\circ \varphi$来代替$\varphi$即可.
+		\end{prf}
+		
+	
+		\begin{coro}(开映射)$f\in \mathcal{O}(X,Y)$不是常值映射，则$f$是开映射.\par
+			证明：对于任意$a$, 任意邻域$U$, 则$f(U)$是$f(a)$的一个邻域.
+		\end{coro}
+		
+		\begin{coro}
+			$f\in \mathcal{O}(X,Y)$且单，则$f:X\rightarrow f(X)$双全纯.\par
+			证明：$f$单叶，则$f$在任何点的重数为$1$，故$f^{-1}$全纯.
+		\end{coro}
+		
+		
+		\begin{coro} (最大模) $f\in \mathcal{O}(X)$非常值，则$f$不能在$X$内部取最大值.\par
+			证明：假设存在$a\in X$, 使得$|f(a)|=R:=\sup\limits_X |f|$, 则$f(X)\subset K:=\{z\in \mathbb{C}:|z|\leq R\}$. 因为$f(X)$开，所以$f(X)\subset \overset{\circ}{K}$，但$f(a)\in \partial K$，矛盾.
+		\end{coro}
+	
+		\begin{theo}
+			$X, Y$: Riemann面，$X$紧，$f\in \mathcal{O}(X,Y)$非常值，则$f$满且$Y$紧.
+		\end{theo}
+		
+		\begin{prf}
+			$\varnothing \neq f(X)\subset Y$开，且$f(X)\subset Y$是紧集进而闭集. 又因为$Y$连通，所以$Y=f(X)$.
+		\end{prf}
+		
+		\begin{coro}
+			$X$是紧Riemann面，$f\in \mathcal{O}(X)$, 则$f$是常数.
+		\end{coro}
+		
+		\begin{coro}
+			$f\in \mathcal{M}(\mathbb{P}^1)$非常值，则$f$是有理函数，即$f=\frac{P_1}{P_2}$，其中$P_2, P_2$是多项式.
+		\end{coro}
+	
+		\begin{prf}
+			因为$\mathbb{P}^1$是紧的，且$f^{-1}(\infty)$离散，所以$f^{-1}(\infty)$有限. 不妨设$f(\infty)\neq \infty$(否则用$\frac{1}{f}$来代替$f$). 进而$f^{-1}(\infty)=\{a_1,\cdots,a_n\}\subset \mathbb{C}$.\par
+			令$h_\nu$为$f$在$a_\nu$处的主部，则$g:=f-\sum\limits_{\nu=1}^{n} h_\nu\in \mathcal{O}(\mathbb{P}^1)$，进而$g$是常数.
+		\end{prf}
+	
+		\begin{coro} Liouville定理: $f\in \mathcal{O}(\mathbb{C})$且有界，则$f$是常数.
+		\end{coro}
+		
+		\begin{prf}
+			由Riemann可去奇点定理，有$f\in \mathcal{O}(\mathbb{P}^1)$. 又因为$\mathbb{P}^1$紧，故$f$是常数.
+		\end{prf}
+	
+		\begin{coro} 代数学基本定理: $p(z)=z^n+a_1z^{n-1}+\cdots+a_n$, 则$p(z)=0$至少有一个复根.
+		\end{coro}
+		
+		\begin{prf}
+			$p\in \mathcal{O}(\mathbb{P}^1,\mathbb{P}^1)$, $f^{-1}(\infty)=\{\infty\}$. $p$非常值，所以$p$是满射，进而$p^{-1}(0)\cap \mathbb{C}\neq \varnothing$.
+		\end{prf}
+	
+	
+		\begin{rem}
+			Gauss是第一个定义复数的数学家：复整数.
+		\end{rem}
+	
+		\begin{defn} 双周期函数.\par
+			设$\Gamma=\mathbb{Z}\omega_1+\mathbb{Z}\omega_2\in \mathbb{C}$为一个格，称$f\in \mathcal{M}(\mathbb{C})$为$\Gamma$-双周期的，若
+					$$f(z)=f(z+\omega_i), \ \forall z\in \mathbb{C}.\ i=1,2$$
+					$$\iff f(z)=f(z+\omega),\ \forall z\in \mathbb{C},\ \omega\in \Gamma.$$
+		若$f$是$\Gamma$-双周期函数，则其诱导出$F\in \mathcal{M}(\mathbb{C}/ \Gamma)$使得$f=F\circ \pi$. 反之，若$F\in \mathcal{M}(\mathbb{C}\backslash \Gamma)$, 则$f=F\circ \pi$是$\Gamma$-双周期的.
+		
+		\end{defn}
+		
+		\begin{theo} 两个定理：
+			\begin{enumerate}
+				\item[1.] $f\in \mathcal{O}(\mathbb{C})$为$\Gamma$-双周期，则$f$是常数.
+				\item[2.] $f\in \mathcal{M}(\mathbb{C})$为$\Gamma$-双周期，且$f$不是常数，则$f(\mathbb{C})=\mathbb{P}^1$.
+			\end{enumerate}
+		\end{theo}
+		
+		
+		\begin{exam} Weierstrass $\mathcal{P}$-函数.\par
+				$$\mathcal{P}(z):=\frac{1}{z^2}+\sum\limits_{\omega\in \Gamma\backslash \{0\}} [\frac{1}{(z-\omega)^2}-\frac{1}{\omega^2}]$$
+			为$\Gamma$-双周期的.
+		\end{exam}
+		
+		
+		\begin{rem}
+			可证明：$F: \mathbb{C}/\Gamma\rightarrow \mathbb{P}^2$，$[z]\mapsto [1:\mathcal{P}(z):\mathcal{P}'(z)]$为一个全纯嵌入（进而推出$\mathbb{C}/\Gamma$为代数曲线，一维流形）
+		\end{rem}
+		
+	
+	
+	\subsection{Riemann面上的微积分}
+		
+		\begin{defn}
+		设$U$是$\mathbb{C}$中的一个开集，令$z=x+iy$，$\overline{z}=x-iy$，定义
+				$\frac{\partial}{\partial z}=\frac{1}{2}(\frac{\partial}{\partial x}-i\frac{\partial }{\partial y})$,
+				$\frac{\partial}{\partial \overline{z}}=\frac{1}{2}(\frac{\partial}{\partial x}+i\frac{\partial }{\partial y})$, $f\in \mathcal{O}(U)$等价于$\frac{\partial f}{\partial \overline{z}}=0$.\par
+				
+			利用$dx=\frac{1}{2}(dz+d\overline{z})$, $dy=\frac{1}{2i}(dz-d\overline{z})$. 则$U$上的任意一个可微1-形式$fdx+gdy$写为$\varphi dz+\psi d\overline{z}$.\par
+			$X$是Riemann面，称$f$为$X$上的一个可微函数，即$f\in \mathcal{E}(X)$，若对任意坐标$z:U\subset X\rightarrow V\subset \mathbb{C}$，存在$\tilde{f}\in \mathcal{E}(V)$使得$f=\tilde{f}\circ z$.
+		\end{defn}
+		
+		
+		\begin{defn}
+			设$\mathscr{U}=\{(U,z_U)\}$为$X$上一个复图表. 若存在$f_U, g_U\in \mathcal{E}(U)$, 使得当$U\cap U'\neq \varnothing$时，有
+				$$f_Udz_U+g_Ud\overline{z_U}=f_{U'}dz_{U'}+g_{U'}d\overline{z_{U'}}$$
+	在$U\cap U'$上成立，则称$\omega|_U:=f_Udz_U+g_Ud\overline{z_U}$为$X$上的一个可微1-形式. 记$\mathcal{E}^1(X)$是$X$上可微1-形式全体.\par
+	
+		若$g_U\equiv 0$, $\forall U$(resp. $f_U\equiv 0$, $\forall U$), 则称$\omega$为一个可微$(1,0)$形式(resp. (0,1)形式)，其全体分别记为$\mathcal{E}^{(1,0)}(X)$(resp. $\mathcal{E}^{(0,1)}(X)$).
+		\end{defn}
+		
+		
+		\begin{exam} $f\in \mathcal{E}(X)$,
+				$$df|_U:=\frac{\partial f}{\partial z} dz+\frac{\partial f}{\partial \overline{z}} d\overline{z}\in \mathcal{E}^1(X),$$
+				$$d'f|_U:=	\frac{\partial f}{\partial z} dz\in \mathcal{E}^{(1,0)}(X),$$
+				$$d''f|_U:=\frac{\partial f}{\partial \overline{z}} d\overline{z}\in  \mathcal{E}^{(0,1)}(X).$$ 
+	$d=d'+d''$. $f\in \mathcal{O}(X) \iff d''f=0$(Cauchy-Riemann).\par
+			($d''u=v$, 非齐次C-R方程)
+		\end{exam}
+		
+	
+		\begin{defn}
+			$\Omega(X)$为$X$上全纯1-形式全体，即$\omega\in \mathcal{E}^{(1,0)}(X)$且局部可表示为$\omega=fdz,\ f\in \mathcal{O}(X)$.
+		\end{defn}
+		
+		\begin{defn}
+			设$a\in X$, $\omega\in \Omega(X\backslash \{a\})$. 取坐标$(U,z)$使得$z(a)=0$. $\omega:=f(z)dz$, $f\in \mathcal{O}(U\backslash\{a\})$. 定义$\omega$在$a$处的留数(Residue)为
+				$$\Res_a \omega:=\frac{1}{2\pi i}\int_{|z|=\varepsilon} f(z)dz=c_{-1}, \ \varepsilon <<1.$$
+		其中$f(z)=\sum\limits_{n=-\infty}^\infty c_nz^n$.
+		\end{defn}
+		
+		\begin{lem}
+			留数不依赖于复坐标的选取.
+		\end{lem}
+		
+		\begin{prf}
+			设$(U',z')$为另一个复坐标，使得$z'(a)=0$, $\omega|_{U'}=g(z')dz'$. 当$\varepsilon<<1$时，坐标变换$z'\mapsto z$，将$\{|z'|<\varepsilon\}$映射为一个光滑Jordan区域$D_\varepsilon$使得$0\in D_\varepsilon$. 取$\varepsilon'<<\varepsilon$使得$\{|z|<\varepsilon'\}\subset D_\varepsilon$, 则
+		$$\frac{1}{2\pi i} \int_{|z'|=\varepsilon} g(z')dz'=\frac{1}{2\pi i}\int_{\partial D_{\varepsilon}} f(z)dz=\frac{1}{2\pi i} \int_{|z|=\varepsilon'} f(z)dz.$$
+		\end{prf}
+	
+		\begin{defn}
+			$X$上一个1-形式$\omega$称为亚纯1-形式，若$\omega\in \Omega(X')$，其中$X'\subset X$开，$X\backslash X'$离散且$\forall a\in X\backslash X'$为$\omega$的极点.\par
+			记$\mathcal{M}^1(X)$为$X$上亚纯1-形式全体，也称为Abel微分全体.
+		\end{defn}
+		
+		Abel微分的分类(Riemann)：
+
+			\quad 1. 全纯1-形式. \quad 2. $\forall a\in X\backslash X'$, $Res_a \omega=0$. \quad 3. 其余.
+
+		
+		\begin{defn}
+		类似于1-形式，我们可以定义2-形式，使得局部地，$\omega=f(z)dz\wedge d\overline{z}$. 我们记$\mathcal{E}^2(X)$为$X$上可微2-形式全体.
+		\end{defn}
+		
+		\begin{defn}
+			定义$d:\mathcal{E}^1\rightarrow \mathcal{E}^2$, $\omega=fdz+gd\overline{z}\mapsto d\omega:=df\wedge dz+dg\wedge d\overline{z}$.\par
+			同样可以定义$d', d''$，且有$d=d'+d''$.
+		\end{defn}
+		
+		\begin{prop} 一些性质
+			\begin{enumerate}
+				\item[1.] $d^2f=d'^2f=d''^2f=0$. 推出$0=d^2=(d'+d'')^2=d'^2+d'd''+d''d'+d''^2$即$d'd''=-d''d'$.
+				\item[2.] $f\in \mathcal{E}(X)$, $\omega\in \mathcal{E}^1(X)$, 则$d(f\cdot \omega)=df\wedge \omega+f\cdot d\omega$. 同样对$d',d''$成立.\par
+					特别地，$\forall f\in \mathcal{E}(X)$，$d'd''f=\frac{\partial^2 f}{\partial z\partial \overline{z}}dz\wedge d\overline{z}$，则称$f$在$X$上调和若$d'd''f=0$. (解$d'd''u=v$.)
+				\item[3.] $\mathcal{E}^{(1,0)}\cap \Ker d=\Omega$.
+			\end{enumerate}
+		\end{prop}
+
+		\begin{defn}
+		$X, Y$是Riemann面，$F\in \mathcal{O}(X,Y)$，定义拉回(pull-back):\par
+			$\omega=fdz+gd\overline{z}$, $F^*\omega:=F^*(f)dF+F^*(g)d\overline{F}$, 其中$F^*(f)=f\circ F$.\par
+			$\omega=fdz\wedge d\overline{z}$, $F^*\omega=F^*(f)dF\wedge d\overline{F}$.
+		\end{defn}
+		
+		\begin{prop}
+			$F^*$与$d$交换，即$dF^*=F^*\circ d$，对$d', d''$也成立.
+		\end{prop}
+		
+		\begin{coro}
+			若$f$在$Y$上调和，则$F^*(f)$在$X$上调和.
+		\end{coro}
+
+		\begin{defn} 积分.\par	
+			 $X$是Riemann面，$c$为$X$上的分段光滑曲线，i.e. 存在连续映射$c:[0,1]\rightarrow X$，取分划$0=t_0<t_1<\cdots<t_n=1$, 坐标$(U_k,z_k)$使得$c([t_{k-1},t_k])\subset U_k$且$x_k\circ c, y_k\circ c\in C^1([t_{k-1},t_k])$.\par
+			设$\omega\in \mathcal{E}^1(X)$使得$\omega|_{U_k}=f_kdz_k+g_kd\overline{z_k}$. 定义$\omega$在$c$上的积分为
+					$$\int_c \omega:=\sum\limits_{k=1}^n \int_{t_{k-1}}^{t_k} (f_k\circ c \frac{d(z_k\circ c)}{dt}+g_k\circ c \frac{d(\Oz_k\circ c)}{dt}) dt.$$
+		\end{defn}
+
+		\begin{theo} Newton-Lebniz.\par
+			$F\in \mathcal{E}(X)$，则$\int_c dF=F\circ c|_0^1$.
+		\end{theo}
+		
+		\begin{defn}
+			设$U$是复平面中的一个区域，$\omega\in \mathcal{E}^2(U)$, $\omega=fdx\wedge dy=f\circ \frac{i}{2}dz\wedge d\overline{z}$. 设$\operatorname{supp} \omega\subset U$, 定义
+					$$\int_U \omega:=\int_U fdx \wedge dy=\frac{i}{2}\int_U fdz\wedge d\overline{z}.$$
+				若$\varphi:V\rightarrow U$是双全纯映射, $\varphi(s)=z$.
+			$$\int_U\omega =\frac{i}{2}\int_U fdz \wedge d\overline{z}=\frac{i}{2}\int_Vf\circ \varphi |\varphi'|^2 ds\wedge d\overline{s}=\int_V \varphi^* \omega.$$
+		\end{defn}
+		
+		\begin{defn}
+		$X$是Riemann面，$\varphi:U\rightarrow V$是坐标，$\omega\in \mathcal{E}^2(X)$，且$\operatorname{supp} \omega \subset U$(推出$(\varphi^{-1})^*\omega $的支集在$V$中)，则定义
+			$$\int_X \omega =\int_U \omega:=\int_V (\varphi^{-1})^*\omega.$$
+		定义与坐标选取无关.
+		\end{defn}
+		
+		\begin{defn}
+			设$X$是仿紧的Riemann面，则可选取坐标$\varphi_k:U_k\rightarrow V_k$, $k\in \mathbb{Z}^+$，使得$X=\bigcup\limits_{k} U_k$，且每个$U_k$至多与其它有限个$U_j$相交非空.\par
+			取$\{\chi_k\}$为从属于覆盖$\{U_k\}$的单位分解，i.e. $\chi_k\in C_0^\infty(U_k)$, 且$\sum\limits_k \chi_k=1$. 则若$\omega\in \mathcal{E}^1(X)$，则定义
+					$$\int_X\omega:=\sum\limits_k \int_X(\chi_k \cdot \omega).$$
+		\end{defn}
+		
+		\begin{theo} 留数定理.\par
+			设$X$是紧Riemann面，$a_1,\cdots, a_n\in X$，推出$\forall \omega\in \Omega(X\backslash \{a_1,\cdots,a_n\})$有
+						$$\sum\limits_{k=1}^n \Res_{a_k} \omega=0.$$
+		\end{theo}
+		
+		\begin{lem}
+			$\omega\in \mathcal{E}^1(X)$且具有紧支集，则$\int_X d\omega=0$.
+		\end{lem}
+		
+		\begin{prf}留数定理的证明.\par
+			取坐标$(U_k,z_k)$,使得$z_k(a_k)=0$且$U_k\cap U_j=\varnothing$, $\forall j\neq k$，$z_k(U_k)\subset \mathbb{C}$是一个圆盘.\par
+			令$X'=X\backslash  \{a_1,\cdots,a_n\}$. 取$\chi_k\in C^\infty_0(U_k)$使得$\chi_k=1$在$a_k$上的一个邻域. 令$g:=1-\sum\limits_{k=1}^n \chi_k$，则$g\in \mathcal{E}(X)$且$g$在$a_k$的某个邻域取值为$0$，故$g\cdot \omega\in \mathcal{E}^1(X)$. 
+					$$0=\int_Xd(g\cdot \omega)=\int_{X'} d(g\cdot \omega)=\int_{X'} d\omega-\sum\limits_{k=1}^n \int_{X'} d(\chi_k\cdot \omega)$$
+				\begin{align*}
+					\int_{X'} d(\chi_k\omega)&=\lim\limits_{\varepsilon\to 0} \int_{X\backslash \{|z_k|\leq \varepsilon\}} d(\chi_k\omega)\\
+					&=-\lim\limits_{\varepsilon\to 0} \int_{|z_k|=\varepsilon} \chi_k \omega\\
+					&=-\lim\limits_{\varepsilon \to 0} \int_{|z_k|=\varepsilon} \omega\\
+					&=-2\pi i \Res_{a_k} \omega.
+				\end{align*}
+					
+					
+		\end{prf}
+		
+		\begin{coro}
+			$X$是紧的Riemann曲面，$f\in \mathcal{M}(X)$且非常数，则$\#f^{-1}(0)=\#f^{-1}(\infty)$，这里计重数在内.
+		\end{coro}
+		
+		\begin{prf}
+			令$\omega:=\frac{df}{f}\in \Omega(X\backslash (f^{-1}(0)\cup f^{-1}(\infty)))$. 设$a\in f^{-1}(0)$，其阶为$m$. 取坐标$(U,z)$使得$z(a)=0$，则$f(z)=z^mg(z)$，其中$g\in \mathcal{O}(U)$且$g(0)\neq 0$.
+				$$\frac{f'(z)}{f(z)}=(\log f(z))'=(m\log z+\log g(z))'=\frac{m}{z}+\frac{g'(z)}{g(z)},$$
+推出$\Res_a \omega=m$.\par
+
+			同理，若$b$是$\omega$的$-m$阶极点，则$\Res_b \omega=-m$. 应用留数定理即得.
+			
+		\end{prf}
+		
+		\begin{lem} Poincaré引理.\par
+			 设$U:=\{z:|z|<R\}$, $0<R\leq \infty$. $\omega\in \mathcal{E}^1(U)$且$d\omega=0$，则存在$F\in \mathcal{E}(U)$使得$dF=\omega$.
+			
+		\end{lem}
+		
+		\begin{prf}
+			设$\omega=fdx+gdy$，$d\omega=df\wedge dx+dg\wedge dy=(\frac{\partial g}{\partial x}-\frac{\partial f}{\partial y})dx\wedge dy$，故$d\omega=0$等价于$\frac{\partial g}{\partial x}=\frac{\partial f}{\partial y}$.\par
+			令$F(x,y):=\int_0^1 [f(tx,ty)x+g(tx,ty)y] dt$. 则有
+				\begin{align*}
+				\frac{\partial F}{\partial x}&=\int_0^1 [f(tx,ty)+\frac{\partial f}{\partial x}(tx,ty)tx+\frac{\partial g}{\partial x}(tx,ty)ty] dt\\
+				&=\int_0^1 [f(tx,ty)+\frac{\partial f}{\partial x}(tx,ty)tx+\frac{\partial f}{\partial y}(tx,ty)ty] dt\\
+				&=\int_0^1 \frac{d}{dt}[tf(tx,ty)] dt=tf(tx,ty)|_0^1=f(x,y).
+				\end{align*}
+		同理$\frac{\partial F}{\partial y}=g$，证毕.
+		\end{prf}
+		
+		\begin{lem} Dolbeault引理(Grothendieck).\par
+			设$\omega\in \mathcal{E}^{(0,1)}(U)$，则存在$f\in \mathcal{E}(U)$使得$d''f=\omega$.
+		
+		
+		\end{lem}
+		
+		\begin{prop}
+			设$g\in C^\infty_0(\mathbb{C})$，则存在$f\in \mathcal{E}(\mathbb{C})$使得$\frac{\partial f}{\partial \overline{z}}=g$.
+		\end{prop}
+		
+		\begin{prf}
+			令$f(z)=\frac{1}{2\pi i}\int_\mathbb{C} \frac{g(\zeta)d\zeta\wedge d\overline{\zeta}}{\zeta-z}$. 令$\zeta=z+re^{i\theta}$，$dx\wedge dy=\frac{i}{2}d\zeta\wedge d\overline{\zeta}$, 则
+				$$d\zeta\wedge d\overline{\zeta}=-2i dx\wedge dy=-2ir dr\wedge d\theta,$$
+	推出	
+			$$f(z)=-\frac{1}{\pi}\int_0^\infty\int_0^{2\pi} g(z+re^{i\theta})e^{-i\theta}dr\wedge d\theta,$$
+	进而$f\in \mathcal{E}(\mathbb{C})$且
+			$$\frac{\partial f}{\partial \overline{z}}=-\frac{1}{\pi}\int_0^\infty\int_0^{2\pi} \frac{\partial g}{\partial \overline{z}}(z+re^{i\theta})e^{-i\theta}dr\wedge d\theta$$
+	令$\zeta=re^{i\theta}$，原式化为
+		$$\frac{1}{2\pi i}\int_\mathbb{C} [\frac{\partial g}{\partial \overline{z}}(z+\zeta)/\zeta] d\zeta\wedge d\overline{\zeta}.$$
+	当$\zeta\neq 0$时
+			$$\frac{\partial g}{\partial \overline{z}}(z+\zeta)/\zeta=\frac{\partial g}{\partial \overline{\zeta}}(z+\zeta)/\zeta=\frac{\partial}{\partial \overline{\zeta}}(g(z+\zeta)/\zeta),$$
+	推出
+			\begin{align*}
+				\frac{\partial f}{\partial \overline{z}}&=\lim\limits_{\varepsilon \to 0^+}\frac{1}{2\pi i} \int_{|\zeta|\geq \varepsilon} \frac{\partial }{\partial \overline{\zeta}} (\frac{g(z+\zeta)}{\zeta})d\zeta\wedge d\overline{\zeta}\\
+					&=\lim\limits_{\varepsilon \to 0^+} \frac{1}{2\pi i}\int_{|\zeta|\geq \varepsilon} d(-\frac{g(z+\zeta)}{\zeta} d\zeta)\\
+					&=\lim\limits_{\varepsilon \to 0^+} \frac{1}{2\pi i} \int_{|\zeta|=\varepsilon}\frac{g(z+\zeta)}{\zeta}d\zeta\\
+					&=\lim\limits_{\varepsilon \to 0^+} \frac{1}{2\pi} \int_0^{2\pi} g(z+\varepsilon e^{i\theta}) d\theta=g(z).
+			\end{align*}
+		\end{prf}
+		
+		\begin{prf} 逐次逼近法证明Dolbeault引理.\par
+		取$R_n$从小严格逼近$R$. 令$U_n:=\{z:|z|<R_n\}$，则$U_1\subset U_2\subset U_3\subset \cdots$(严格包含)且$U=\bigcup\limits_{n=1}^\infty U_n$. 取$x_n\in C^\infty_0(U_{n+1})$且$x_n|_{U_n}=1$.\par
+		设$\omega=gd\overline{z}$，由命题推出对于任意$n\in \mathbb{Z}^+$，存在$f_n\in \mathcal{E}(U)$使得$\frac{\partial f_n}{\partial \overline{z}}=x_n \cdot g$.\par
+			我们归纳地构造一列$\tilde{f}_n\in \mathcal{E}(U)$使得\par
+			\qquad 1. $\frac{\partial \tilde{f}_n}{\partial \overline{z}}=g$于$U_n$.\par
+			 \qquad 2. $\Vert \tilde{f}_{n+1}-\tilde{f}_n\Vert_{L^\infty(U_{n-1})}\leq 2^{-n}$.\par
+			取$\tilde{f}_1:=f_1$，则其满足1.\par
+			假设$\tilde{f}_1, \cdots, \tilde{f}_n$已构造，则在$U_n$上有$\frac{\partial (f_{n+1}-\tilde{f}_n)}{\partial \overline{z}}=g-g=0$，故$f_{n+1}-\tilde{f}_n\in \mathcal{O}(U_n)$. 因此存在多项式$P_n$使得$\Vert f_{n+1}-\tilde{f}_n-P_n\Vert_{L^\infty(U_{n-1})} \leq 2^{-n}$，只需取$\tilde{f}_{n+1}:=f_{n+1}-P_n$.\par
+			对于任意正整数$n$，任意$k>l>n$
+				\begin{align*}
+				\Vert \tilde{f}_k-\tilde{f}_l\Vert_{L^\infty(U_{n-1})}
+					&\leq \sum\limits_{j=l}^{k-1} \Vert \tilde{f}_{j+1}-\tilde{f}_j\Vert_{L^\infty(U_{n-1})}\\
+					&\leq \sum\limits_{j=l}^{k-1} 2^{-j}\leq 2^{-n+1}
+				\end{align*}
+		说明$\{ \tilde{f}_n\}$在$U$上内闭匀敛于某个$f\in C(U)$.\par
+			因为在每个$U_n$上有$f=\tilde{f}_n+\sum\limits_{k=n}^\infty (\tilde{f}_{k+1}-\tilde{f}_k)$，又因为$\frac{\partial }{\partial \overline{z}} (\tilde{f}_{k+1}-\tilde{f}_k)=g-g=0$于$U_n$，即$\tilde{f}_{k+1}-\tilde{f}_k\in \mathcal{O}(U_n)$且$\sum\limits_{k=n}^\infty(\tilde{f}_{k+1}-\tilde{f}_k)$一致收敛.\par
+			进而$f=\tilde{f}_n+\text{全纯函数}$于$U_n$. 进而$f\in \mathcal{E}(U_n)$且$\frac{\partial f}{\partial \overline{z}}=\frac{\partial \tilde{f}_n}{\partial \overline{z}}=g$于$U_n$. 由$n$的任意性即得.
+		
+		\end{prf}
+		
+		
+		\begin{coro}
+			对于$U$上任意可微函数$g$，存在可微函数$f$使得$g=\frac{\partial^2 f}{\partial z\partial \overline{z}}$.
+		\end{coro}
+		
+		\begin{prf}
+			存在可微函数$f_1$使得$\frac{\partial f_1}{\partial \overline{z}}=g$. 又存在可微函数$f_2$使得$\overline{f}_1=\frac{\partial f_2}{\partial \overline{z}}$进而$\frac{\partial \overline{f}_2}{\partial z}=f_1$. 取$f=\overline{f}_2$即可.
+		\end{prf}
+		
+		
+		
+		
+		\subsection{层(Sheaf)}
+
+		\begin{defn}
+			$X$是拓扑空间，$\mathscr{T}$是$X$上的开集全体. 关于$X$上的一个预层是指一对$(\mathscr{F},\rho)$使得\par
+				1. $\forall U\in \mathscr{T}$，$\mathscr{F}(U)$均为Abel群，且$\mathscr{F}=\{\mathscr{F}(U):U\in \mathscr{T}\}$.\par
+				2. $\rho=\{\rho_V^U: V\subset U, V,U\in \mathscr{T}\}$其中$\rho_V^U$为$\mathscr{F}(U)$到$\mathscr{F}(V)$的群同态使得\par
+			\qquad (a) $\rho^U_U=\id_{\mathscr{F}(U)}$.\par
+			\qquad (b) $\rho_W^V\circ \rho_V^U=\rho_W^U$, 对于任意开集$W\subset V\subset U$.\par
+	通常记$(\mathscr{F},\rho)$为$\mathscr{F}$. $\rho^U_V(f):=f|_V$是限制映射.
+		\end{defn}
+		
+		\begin{exam}
+			$X$拓扑空间，$U\in \mathscr{T}$，记$\mathcal{C}(U)$为$U$上的连续函数全体，$\rho^U_V$是通常意义下的限制映射. 则诱导出预层$\mathcal{C}$.
+		\end{exam}
+		
+		\begin{defn}
+			设$\mathscr{F}$是$X$上的一个预层. 若对于任意开集$U$，对任意$U_\alpha \in \mathscr{T}$使得$U:=\bigcup_\alpha U_\alpha$，有\par
+				1. $f,g\in \mathscr{F}(U)$使得$f|_{U_\alpha}=g|_{U_\alpha}$，对于任意$\alpha$，则$f\equiv g$.\par
+				2. 拼接原理. 设$f_i\in \mathscr{F}(U_i)$. 若$f_i|_{U_i\cap U_j}=f_j|_{U_i\cap U_j}$, 则$f|_{U_i}:=f_i\in \mathscr{F}(U)$.\\
+		则称$\mathscr{F}$为$X$上的一个层.
+		\end{defn}
+		
+		\begin{exam}$X$是Riemann面，\par
+				(1) $\mathcal{C}$是一个层，类似地有$\mathcal{E}$，$\mathcal{E}^{(1,0)}$和$\mathcal{E}^{(0,1)}$是层.\par
+				(2) 对于$U\in \mathscr{T}$，有层$\mathcal{O}$. 类似地有$\mathcal{M}$, $\Omega$(全纯1-形式), $\mathcal{M}^1$(亚纯1-形式).\par
+				(3) $\mathcal{O}^*=\mathcal{O}(U,\mathbb{C}^*)$, $U\in \mathscr{T}$，则可诱导层$\mathcal{O}^*$，类似可定义$\mathcal{M}^*$.
+		\end{exam}
+		
+		\begin{exam}
+				存在预层但不是层.\par
+				 设$X$是拓扑空间，$G=\mathbb{Z}$. 取$X$上的预层如下，对于任意非空开集$U$，令$\mathscr{G}(U)=G$，$\mathscr{G}(\varnothing)=0$. 定义$\rho^U_V=\begin{cases} \id_G, &V\neq \varnothing \\ 0, &V=\varnothing \end{cases}$. 这是一个预层.\par
+				设$X$上至少有两个不相交的非空开集$U_1, U_2$. 取$g_1\equiv 1\in \mathscr{G}(U_1)$, $g_2\equiv -1\in \mathscr{G}(U_2)$. 因为$U\cap V=\varnothing$, 故$g_1|_{U_1\cap U_2}=0=g_2|_{U_1\cap U_2}$. 但不存在$g\in \mathscr{G}(U_1\cup U_2)$使得$g|_{U_1}=g_1$, $g|_{U_2}=g_2$，所以$\mathscr{G}$不是层.
+		\end{exam}
+		
+		\begin{defn}
+		设$\mathscr{F}$是$X$上的预层，$a\in X$，在不相交并$\bigcup\limits_{\mathscr{T}\ni U\ni a} U$中引入等价关系$\sim_a$如下:\par
+			设$f\in \mathscr{F}(U)$, $g\in \mathscr{F}(V)$, $U,V \in \mathscr{T}$, $a\in U\cap V$, 定义$f\sim_a g$等价于存在邻域$a\in W\subset U\cap V$使得$f|_W=g|_W$. 称$\mathscr{F}_a:=\bigcup_{\mathscr{T}\ni U\ni a} \mathscr{F}(U)/\sim_a$为$\mathscr{F}$在$a$处的茎(stalk).\par
+			设$\mathscr{T}\ni U\ni a$，定义$\rho_a:\mathscr{F}(U)\rightarrow \mathscr{F}_a$, $f\mapsto [f]$. 称$\rho_a(f)$为$f$在$a$处的芽(germ).
+		\end{defn}
+		
+		\begin{exam}
+			$X\subset \mathbb{C}$区域，$a\in X$. $\mathcal{O}_a:=\{[f]:f$在$a$的某个邻域上全纯$\}$.\par
+				考虑Taylor展开，$f(z)=\sum\limits_{n=0}^\infty c_n(z-a)^n$，则$f\sim_a g$等价于$f,g$在$a$处有相同的Taylor展开. 这表明$\mathcal{O}_a\cong \mathbb{C}\{z-a\}:$关于$z-a$的收敛级数组成的环.
+		\end{exam}
+		
+		\begin{defn}
+			令$|\mathscr{F}|:=\bigcup\limits_{a\in X} \mathscr{F}_a$, 投射$P:|\mathscr{F}|\rightarrow X$由$\varphi\in \mathscr{F}_\alpha \mapsto \alpha$给出. 引入$|\mathscr{F}|$的拓扑如下:\par
+			 $U\in \mathscr{T}$, $f\in \mathscr{F}(U)$，令$[U,f]:=\{\rho_\alpha(f):\alpha \in U\}\subset |\mathscr{F}|$.
+		\end{defn}
+		
+		\begin{theo}
+			$\mathscr{B}:=\{[U,f]:U\in \mathscr{T}, f\in \mathscr{F}(U)\}$为$|\mathscr{F}|$的拓扑基，且$P:|\mathscr{F}|\rightarrow X$为局部同胚.
+		
+		\end{theo}
+		
+		\begin{prf}
+			先证明$\mathscr{B}$是拓扑基，即证明:\par
+				1. 对于任意点$\varphi\in |\mathscr{F}|$，存在$[U,f]\ni \varphi$.\par
+				2. 对于任意点$\varphi\in [U,f]\cap [V,g]$，则存在$[W,h] \subset [U,f]\cap [V,g]$使得$\varphi\in [W,h]$.\par
+				设$P(\varphi)=x$, $x\in U\cap V$，则$\varphi=\rho_x(f)=\rho_x(g)$，进而存在邻域$x\in W\subset U\cap V$使得$f|_W=g|_W=:h$. 则$\varphi\in [W,h]\subset [U,f]\cap [V,g]$.\par
+				 然后证明$P$是局部同胚.\par
+				设$\varphi\in |\mathscr{F}|$, $P(\varphi)=x$，则存在$[U,f]\ni \varphi$，$U\ni x$，$P:[U,f]\rightarrow U$为双射，连续，开映射，进而$P$是局部同胚.
+		\end{prf}
+		
+		\begin{defn}
+			设$\mathscr{F}$是$X$上的预层，称$\mathscr{F}$满足恒等原理若对于任意区域$Y\subset X$，若$f, g \in \mathscr{F}(Y)$使得$\rho_a(f)=\rho_a(g)$在某点$a\in Y$成立，则$f\equiv g$.
+		\end{defn}
+		
+		\begin{exam}
+			$\mathcal{O},\Omega$满足恒等原理，$\mathcal{E}, \mathcal{E}^1$不满足恒等原理.
+		\end{exam}
+		
+		\begin{theo}
+			$X$局部连通，Hausdorff. 设$\mathscr{F}$是$X$上的预层且满足恒等原理，则$|\mathscr{F}|$也是Hausdorff空间.
+		\end{theo}
+		
+		\begin{prf}
+			需证明，对于任意$\varphi_1\neq \varphi_2$, $\varphi_1, \varphi_2\in |\mathscr{F}|$，存在不相交的开集分离$\varphi_1$和$\varphi_2$.\par
+				 (i) $P(\varphi_1)=x\neq y=P(\varphi_2)$.\par
+				取开集$U\ni x$, $V\ni y$使得$U\cap V=\varnothing$. 则$P^{-1}(U)\ni \varphi_1$, $P^{-1}(V)\ni \varphi_2$开且$P^{-1}(U)\cap P^{-1}(V)=\varnothing$.\par
+				(ii) $P(\varphi_1)=x=P(\varphi_2)$.\par
+				设$\varphi_1\in [U_1,f_1]$, $\varphi_2\in [U_2, f_2]$, $x\in U_1\cap U_2$. 设区域$x\in U\subset U_1\cap U_2$. 则$\varphi_1\in [U,f_1|_U]$, $\varphi_2\in [U,f_2|_U]$. 下证$[U,f_1|_U]\cap [U,f_2|_U]=\varnothing$.\par
+				假设存在$\psi \in [U,f_1|_U]\cap [U,f_2|_U]$，设$P(\psi)=y$，则$\psi=\rho_y(f_1)=\rho_y(f_2)$，由恒等原理$f_1\equiv f_2$于$U$，进而$\varphi_1=\varphi_2$一个矛盾.
+		\end{prf}
+		
+		
+		\begin{lem}
+			$\mathscr{F}$是层，$U\subset X$开集，$f\in \mathscr{F}(U)$，则$f=0$等价于$\rho_x(f)=0$, $\forall x\in U$.
+		\end{lem}
+		
+		\begin{prf}
+			$\forall x\in U$, 存在邻域$x\in U_x\subset U$使得$f|_{U_x}=0$. 因为$U=\bigcup\limits_{x\in U} U_x$，由层的性质，$f=0$于$U$.
+		\end{prf}
+		
+		\begin{rem}
+			约定$\# \mathscr{F}(\varnothing)=1$(层的定义中).\par
+			 考虑$\mathcal{C}$，设$U_1, U_2$是$X$中的非空开集，使得$U_1\cap U_2=\varnothing$. 设$f_1, f_2$分别是$U_1, U_2$上的连续函数. 总希望
+				$f=\begin{cases} f_1, &\text{on}\ U_1\\
+							f_2, &\text{on}\ U_2\end{cases} \in \mathcal{C}(U_1\cup U_2)$. \par
+				由于$\rho^{U_1}_\varnothing \circ \rho^{U_1\cup U_2}_{U_1} (f)=\rho^{U_1\cup U_2}_\varnothing (f)=\rho^{U_2}_\varnothing \rho^{U_1\cup U_2}_{U_2}(f)$，则$\rho^{U_1}_\varnothing(f_1)=\rho^{U_2}_\varnothing(f_2)$. 因此约定$\#\mathscr{F}(\varnothing)=1$是合理的.		
+		\end{rem}
+		
+		
+		
+		\subsection{上同调群}
+		
+		
+		\begin{defn}设$X$是拓扑空间，$\mathscr{F}$是$X$上的一个层. 设$\mathscr{U}=\{U_i\}_{i\in I}$是$X$的一个开覆盖. 整数$q\geq 0$，定义相应于$\mathscr{U}$的$\mathscr{F}$的$q$-阶上链群为
+				$$C^q(\mathscr{U},\mathscr{F})=\prod_{i_j\in I} \mathscr{F}(U_{i_0}\cap U_{i_1}\cap \cdots \cap U_{i_q}),$$
+		其中$C^q(\mathscr{U},\mathscr{F})$中任意元素($q$-上链)可表示为$(f_{i_0\ldots i_q})_{i_j\in I}$，其中$f_{i_0\ldots i_{q}}\in \mathscr{F}(U_{i_0}\cdots U_{i_q})$.
+		\end{defn}
+		
+		
+		
+		\begin{defn}定义上边缘算子$\delta: C^k(\mathscr{U},\mathscr{F})\rightarrow C^{k+1}(\mathscr{U},\mathscr{F})$.\par
+			 若$(f_i)_{i\in I}\in C^0(\mathscr{U},\mathscr{F})$，则定义
+				$$\delta((f_i)_{i\in I})=(g_{ij})_{i,j\in I},$$
+		其中$g_{ij}=f_i-f_j\in \mathscr{F}(U_i\cap U_j)$.\par
+			若$(f_{ij})_{i,j\in I}\in C^1(\mathscr{U},\mathscr{F})$，则定义
+				$$\delta((f_{ij})_{i,j\in I})=(g_{ijk})_{i,j,k\in I},$$
+		其中$g_{ijk}=f_{ij}+f_{jk}-f_{ik}\in \mathscr{F}(U_i\cap U_j\cap U_k)$.
+		\end{defn}
+		
+		\begin{defn}
+				$$Z^1(\mathscr{U},\mathscr{F}):=\Ker(\delta:C^1(\mathscr{U},\mathscr{F})\rightarrow C^2(\mathscr{U},\mathscr{F})),$$
+				$$B^1(\mathscr{U},\mathscr{F}):=\Im(\delta:C^0(\mathscr{U},\mathscr{F})\rightarrow C^1(\mathscr{U},\mathscr{F})),$$
+		记$Z^1(\mathscr{U},\mathscr{F})$是一阶闭上链群，$B^1(\mathscr{U},\mathscr{F})$是一阶上边缘群.\par
+		
+			$(f_{ij})\in Z^1(\mathscr{U},\mathscr{F})$等价于$f_{ij}+f_{jk}=f_{ik}$于$U_i\cap U_j\cap U_k$. 特别地，$f_{ii}=0$, $f_{ij}=-f_{ji}$.\par
+			若$(f_{ij})\in B^1(\mathscr{U},\mathscr{F})$，则$(f_i)\in C^0(\mathscr{U},\mathscr{F})$使得$f_{ij}=\delta((f_i))=f_i-f_j$，因此$B^1(\mathscr{U},\mathscr{F})\subset Z^1(\mathscr{U},\mathscr{F})$.\par
+		
+			称商群$H^1(\mathscr{U},\mathscr{F}):=Z^1(\mathscr{U},\mathscr{F})/B^1(\mathscr{U},\mathscr{F})$为相应于$\mathscr{U}$的系数在$\mathscr{F}$中的一阶上同调群.\par
+		\end{defn}
+		
+		为了得到仅依赖于$X, \mathscr{F}$的一个上同调群，须引入加细覆盖的概念.
+		
+		\begin{defn}
+			称$X$的开覆盖$\mathscr{V}=\{V_k\}_{k\in K}$为$\mathscr{U}=\{U_i\}_{i\in I}$的一个加细，记为$\mathscr{V}<\mathscr{U}$，若对于任意$k\in K$，存在$i\in I$使得$V_k\subset U_i$.\par
+				则存在加细映射$\tau:K\rightarrow I$使得$V_k\subset U_{\tau(k)}$.
+		\end{defn}
+		
+		\begin{defn}定义
+			\begin{align*}
+				\tau^{\mathscr{U}}_{\mathscr{B}}: Z^1(\mathscr{U}, \mathscr{F}) &\rightarrow Z^1(\mathscr{V},\mathscr{F})\\	
+							(f_{ij})&\mapsto (g_{kl}=f_{\tau(k), \tau(l)}|_{V_k\cap V_l}).		
+			\end{align*}
+		有$g_{kl}+g_{lm}=g_{km}$于$V_k\cap V_l \cap V_m$，故其良定. 且有$\tau^{\mathscr{U}}_{\mathscr{V}}:B^1(\mathscr{U},\mathscr{F})\rightarrow B^1(\mathscr{V},\mathscr{F})$，则其诱导出映射
+			$$\tau^{\mathscr{V}}_{\mathscr{U}}:H^1(\mathscr{U},\mathscr{F})\rightarrow H^1(\mathscr{V},\mathscr{F}).$$
+		\end{defn}
+		
+		\begin{lem}
+			$\tau^{\mathscr{U}}_{\mathscr{V}}: H^1(\mathscr{U},\mathscr{F})\rightarrow H^1(\mathscr{V},\mathscr{F})$不依赖于加细映射的选取.
+		\end{lem}
+		
+		\begin{prf}
+			设$\tilde{\tau}:K\rightarrow I$是另一个加细映射. 设$(f_{ij})\in Z^1(\mathscr{U}, \mathscr{F})$，有$g_{kl}$与$\tilde{g}_{kl}$，需证明$(g_{kl})\sim (\tilde{g}_{kl})$.\par
+			因为$V_k\subset U_{\tau(k)}\cap U_{\tilde{\tau}(k)}$，则可定义$h_k:=f_{\tau(k),\tilde{\tau}(k)}|_{V_k}\in \mathscr{F}(V_k)$.\par
+			在$V_k\cap V_l$上，
+				\begin{align*}
+					g_{kl}-\tilde{g}_{kl}&=f_{\tau(k),\tau(l)}-f_{\tilde{\tau}(k), \tilde{\tau}(l)}\\
+						&=(f_{\tau(k),\tau(l)}+f_{\tau(l),\tilde{\tau}(k)})-(f_{\tau(l),\tilde{\tau}(k)}+f_{\tilde{\tau}(k),\tilde{\tau}(l)})\\
+						&=f_{\tau(k),\tilde{\tau}(k)}-f_{\tau(l),\tilde{\tau}(l)}\\
+						&=h_k-h_l	,
+				\end{align*}
+		推出$(g_{kl})\sim (\tilde{g}_{kl})$.
+		\end{prf}
+		
+		\begin{lem}
+			$\tau^{\mathscr{U}}_{\mathscr{B}}:H^1(\mathscr{U}, \mathscr{F})\rightarrow H^1(\mathscr{V},\mathscr{F})$是单射.
+		\end{lem}
+		
+		\begin{prf}
+			设$(f_{ij})\in Z^1(\mathscr{U}, \mathscr{F})$使得$\tau((f_{ij}))\in B^1(\mathscr{V},\mathscr{F})$. 需证明$(f_{ij})\in B^1(\mathscr{U},\mathscr{F})$.\par
+			设$f_{\tau(k),\tau(l)}=g_k-g_l$，其中$(g_k)\in C^0(\mathscr{V},\mathscr{F})$. 在$U_i\cap V_k\cap V_l$上
+				$$g_k-g_l=f_{\tau(k),\tau(l)}=f_{\tau(k),i}+f_{i,\tau(l)}=f_{i,\tau(l)}-f_{i,\tau(k)},$$
+	推出$g_k+f_{i,\tau(k)}=g_l+f_{i,\tau(l)}$. 进而由拼接引理，$h_i|_{V_k}:=g_k+f_{i,\tau(k)}\in \mathscr{F}(U_i)$.\par
+			在$U_i\cap U_j\cap V_k$上,
+			$$f_{ij}=f_{i,\tau(k)}+f_{\tau(k),j}=(f_{i,\tau(k)}+g_k)-(f_{j,\tau(k)}+g_k)=h_i-h_j.$$
+	由$k$的任意性及层的性质，$f_{ij}=h_i-h_j$于$U_i \cap U_j$，进而$[(f_{ij})]=0$.
+		\end{prf}
+		
+		\begin{defn}
+		在不相交并$\bigsqcup\limits_{\mathscr{U}}H^1(\mathscr{U},\mathscr{F})$中引入等价关系如下：\par
+		$\xi \in H^1(\mathscr{U},\mathscr{F})\sim \eta\in H^1(\mathscr{U}',\mathscr{F})$等价于，存在加细$\mathscr{V}<\mathscr{U}, \mathscr{U}'$使得$\tau^\mathscr{U}_\mathscr{V}(\xi)=\tau^{\mathscr{U}'}_\mathscr{V}(\eta)$.\par
+		定义$H^1(X,\mathscr{F}):=\bigsqcup\limits_{\mathscr{U}} H^1(\mathscr{U}, \mathscr{F})/\sim$，称其为$X$上系数在$\mathscr{F}$中的一阶上同调群.
+		\end{defn}
+		
+		\begin{rem}
+		$H^1(X,\mathcal{O})$最重要，亏格.
+		\end{rem}
+		
+		\begin{defn}
+		设$x=[\xi], y=[\eta]\in H^1(X, \mathscr{F})$，$\xi\in H^1(\mathscr{U}, \mathscr{F})$，$\eta\in H^1(\mathscr{U}',\mathscr{F})$.\par
+		设$\mathscr{V}< \mathscr{U}, \mathscr{U}'$，则定义
+			$$x+y:=[\tau^\mathscr{U}_\mathscr{V}(\xi)+\tau^{\mathscr{U}'}_\mathscr{V}(\eta)]\in H^1(X, \mathscr{F}).$$
+	验证该定义与代表元$\xi, \eta$以及加细$\mathscr{V}$的选取无关.
+		\end{defn}
+		
+		\begin{prop}
+			典则映射$H^1(\mathscr{U},\mathscr{F})\rightarrow H^1(X, \mathscr{F})$，$\xi \mapsto [\xi]$是单射.
+		
+		\end{prop}
+		
+		\begin{prf}
+			设$[\xi]=[\eta]$，则存在$\mathscr{V}<\mathscr{U}$使得$\tau^\mathscr{U}_\mathscr{V}(\xi)=\tau^\mathscr{U}_\mathscr{V}(\eta)$，由引理知$\eta=\xi$.
+		
+		\end{prf}
+		
+		\begin{prop}
+			$H^1(X,\mathscr{F})=0$等价于$H^1(\mathscr{U},\mathscr{F})=0$，对于任意开覆盖$\mathscr{U}$.
+		
+		\end{prop}
+		
+		\begin{theo}
+			$X$是Riemann面，$\mathcal{E}$是$X$上的可微函数层，则$H^1(X,\mathcal{E})=0$.
+		\end{theo}
+		
+		\begin{prf}
+			设$\mathscr{U}=\{U_i\}_{i\in I}$为$X$的任何一个开覆盖，不妨设为局部有限的. 只需证$H^1(\mathscr{U}, \mathcal{E})=0$.\par
+			取$\{\chi_i\}_{i\in I}$是从属于$\mathscr{U}$的一个单位分解. 设$(f_{ij})\in Z^1(\mathscr{U},\mathcal{E})$.\par
+			$\chi_j f_{ij}\in \mathcal{E}(U_i)$，定义$g_i:=\sum\limits_{j} \chi_jf_{ij}\in \mathcal{E}(U_i)$. 在$U_i\cap U_j$上
+			\begin{align*}
+				g_i-g_j&=\sum\limits_k \chi_kf_{ik}-\sum\limits_k \chi_kf_{jk}\\
+						&=\sum\limits_k \chi_k(f_{ik}-f_{jk})\\
+						&=f_{ij},
+			\end{align*}
+		推出$(f_{ij})\in B^1(\mathscr{U}, \mathcal{E})$.
+		\end{prf}
+		
+		
+		
+		\begin{theo}
+			设$X=\{z\mid |z|<R\}$, $0<R\leq +\infty$.\par
+			1. $H^1(X,\mathbb{C})=0$. \qquad 2. $H^1(X,\mathbb{Z})=0$. \qquad $H^1(X, \mathcal{O})=0$.
+		\end{theo}
+		
+		\begin{prf}
+			设$\mathscr{U}=\{U_i\}_{i\in I}$为开覆盖.
+			\begin{enumerate}
+			\item[1.] \qquad  设$(C_{ij})\in Z^1(\mathscr{U}, \mathbb{C})\subset Z^1(\mathscr{U},\mathcal{E})$. 因为$H^1(\mathscr{U}, \mathcal{E})=0$，所以$C_{ij}=f_i-f_j$, $f_i\in \mathcal{E}(U_i)$. 因为$0=dC_{ij}=df_i-df_j$于$U_i\cap U_j$，所以$\omega|_{U_i}:=df_i\in \mathcal{E}^1(X)$且$d\omega=0$.\par
+			\qquad 由Poincaré引理，存在$f\in \mathcal{E}(X)$使得$\omega=df$. 令$C_i=f_i-f$，则$dC_i=df_i-df=0$. 因此$((C_i))\in C^0(\mathscr{U},\mathbb{C})$且$C_{ij}=f_i-f_j=C_i-C_j$，故$((C_{ij}))\in B^1(\mathscr{U}, \mathbb{C})$.
+			
+			\item[2.] \qquad 设$(a_{jk})\in Z^1(\mathscr{U}, \mathbb{Z})\subset Z^1(\mathscr{U}, \mathbb{C})$. 因为$H^1(\mathscr{U}, \mathbb{C})=0$，所以$a_{jk}=C_j-C_k$，$(C_j)\in C^0(\mathscr{U}, \mathbb{C})$.\par
+			\qquad 因为$1=e^{2\pi i a_{jk}}=e^{2\pi i (C_j-C_k)}$，所以$e^{2\pi i C_j}=e^{2\pi i C_k}=b\neq 0$. 取$C\in \mathbb{C}$使得$b=e^{2\pi i C}$，令$a_j:=C_j-C$.\par
+			\qquad 因为$e^{2\pi i a_j}=e^{2\pi i(C_j-C)}=1$，所以$(a_j)\in C^0(\mathscr{U},\mathbb{Z})$且$a_{jk}=C_j-C_k=a_j-a_k$，故$(c_{jk})\in B^1(\mathscr{U}, \mathbb{Z})$.
+			
+			\item[3.] \qquad 设$(f_{ij})\in Z^1(\mathscr{U},\mathcal{O})\subset Z^1(\mathscr{U}, \mathcal{E})$. 故$f_{ij}=f_i-f_j$，其中$f_i\in \mathcal{E}(U_i)$. $0=d''f_{ij}=d''f_i-d''f_j$于$U_i\cap U_j$，则定义$\omega|_{U_i}=d''f_i\in \mathcal{E}^{(0,1)}(X)$.\par
+			\qquad 由Dolbeault引理，存在$f\in \mathcal{E}(X)$使得$\omega=d''f$. 令$g_i:=f_i-f$，因为$d''g_i=d''f_i-d''f=0$，故$(f_{ij})\in B^1(\mathscr{U}, \mathcal{O})$.
+			
+		
+			\end{enumerate}
+		\end{prf}
+		
+		
+		\begin{theo} Leray.\par
+		 $X$是拓扑空间，$\mathscr{F}$是$X$上的一个层，$\mathscr{U}=\{U_i\}_{i\in I}$是$X$的一个开覆盖. 若$H^1(U_i,\mathscr{F})=0$, $\forall i\in I$，则$H^1(X,\mathscr{F})\cong H^1(\mathscr{U}, \mathscr{F})$.
+		
+		\end{theo}
+		
+		\begin{prf}
+			只需证明对于任意$\mathscr{V}<\mathscr{U}$，设$\tau$为对应的加细映射，有同构
+					$$\tau^\mathscr{U}_\mathscr{V}:H^1(\mathscr{U}, \mathscr{F})\rightarrow H^1(\mathscr{V}, \mathscr{F}).$$
+		只需再验证其是满射.\par
+			 设$(f_{\alpha \beta})\in Z^1(\mathscr{V}, \mathscr{F})$，需找$(F_{ij})\in Z^1(\mathscr{U}, \mathscr{F})$使得$(F_{\tau(\alpha), \tau(\beta)})-(f_{\alpha \beta})\in B^1(\mathscr{V}, \mathscr{F})$(i.e. $\tau^\mathscr{U}_\mathscr{V}([(F_{ij})])=[(f_{\alpha\beta})]$).\par
+			 $\{U_i\cap V_\alpha\}_\alpha$构成$U_i$的一个开覆盖，记$U_i\cap \mathscr{V}$. 因为$H^1(U_i, \mathscr{F})=0$，所以$H^1(U_i\cap \mathscr{V},\mathscr{F})=0$. 进而存在$g_{i\alpha}\in \mathscr{F}(U_i\cap V_\alpha)$使得$f_{\alpha\beta}=g_{i\alpha}-g_{i\beta}$于$U_i\cap V_\alpha \cap V_\beta$，$f_{\alpha\beta}=g_{j\alpha}-g_{j\beta}$于$U_j\cap V_\alpha \cap V_\beta$于$U_j\cap V_\alpha\cap V_\beta$.\par
+			 因此在$U_i\cap U_j\cap V_\alpha\cap V_\beta$上，$g_{j\alpha}-g_{i\alpha}=g_{j\beta}-g_{i\beta}$. 我们定义$F_{ij}|_{U_i\cap U_j \cap V_\alpha}:=g_{j\alpha}-g_{i\alpha}\in \mathscr{F}(U_i\cap U_j)$且$(F_{ij})\in Z^1(\mathscr{U}, \mathscr{F})$.\par
+			令$h_\alpha:=g_{\tau(\alpha),\alpha}\in \mathscr{F}(V_\alpha)$，有
+				$$F_{\tau(\alpha),\tau(\beta)}-f_{\alpha\beta}=(g_{\tau(\beta),\alpha}-g_{\tau(\alpha),\alpha})-(g_{\tau(\beta),\alpha}-g_{\tau(\beta),\beta})=g_{\tau(\beta),\beta}-g_{\tau(\alpha),\alpha}=h_\beta-h_\alpha,$$
+		推出$(F_{\tau(\alpha),\tau(\beta)})-(f_{\alpha,\beta})\in B^1(\mathscr{V},\mathscr{F})$.
+		\end{prf}
+		
+		\begin{theo}
+			$H^1(\mathbb{P}^1,\mathcal{O})=0$.
+		\end{theo}
+		
+		\begin{prf}
+			令$U_1=\mathbb{P}^1\backslash \{\infty\}$，$U_2=\mathbb{P}^1\backslash \{0\}$，$\mathbb{P}^1=U_1\cup U_2$. 则$U_1=\mathbb{C}$，$U_2\cong \mathbb{C}$，故$H^1(U_i, \mathcal{O})=0$，$i=1,2$.\par
+			 由Leray定理，$H^1(\mathbb{P}^1,\mathcal{O})\cong H^1(\mathscr{U},\mathcal{O})$. 因为$U_1\cap U_2=\mathbb{C}^*$，则对于任意$f_{12}\in \mathcal{O}(U_1\cap U_2)$，可展开为$f_{12}(z)=\sum\limits_{n=-\infty}^{+\infty} a_nz^n$.\par
+			令$f_1(z)=\sum\limits_{n=0}^\infty a_nz^n$, $f_2(z)=-\sum\limits_{n=-\infty}^{-1} a_nz^n$. 则$f_1\in \mathcal{O}(U_1)$，$f_2\in \mathcal{O}(U_2)$且$f_{12}=f_1-f_2$，故$(f_{12})\in B^1(\mathscr{U},\mathcal{O})$推出$H^1(\mathscr{U}, \mathcal{O})=0$.
+		\end{prf}
+		
+		\begin{prop}
+			$H^0(X, \mathscr{F})\cong \mathscr{F}(X)$
+		\end{prop}
+		\begin{prf}
+		若$(f_i)\in Z^0(\mathscr{U}, \mathscr{F})$，则$0=\delta((f_i))=f_i-f_j$，推出$f_i=f_j$于$U_i\cap U_j$，故可定义$f|_{U_i}=f_i\in \mathscr{F}(X)$.\par
+		反过来，对于任意$f\in \mathscr{F}(X)$，若令$f_i=f|_{U_i}$，则$(f_i)\in Z^0(\mathscr{U},\mathscr{F})$，因此$H^0(X, \mathscr{F})\cong \mathscr{F}(X)$.
+		\end{prf}
+		
+		
+		
+		\subsection{有限性定理}
+		
+		\begin{rem}
+			目标：若$X$是紧Riemannm面，则$\dim_\mathbb{C} H^1(X,\mathcal{O})<\infty$.
+		\end{rem}
+		
+		\begin{prop}
+			$E,F$是Banach空间，$T:E\rightarrow F$是一个连续，线性满射，则存在$C>0$使得$\forall y\in F$，存在$x\in E$使得$Tx=y$且$\Vert x\Vert \leq C\Vert y\Vert$.
+		
+		\end{prop}
+		
+		\begin{prf}
+			令$U:=\{x\in E\mid \Vert x\Vert < 1\}$. 由Banach开映射定理，存在$\varepsilon>0$使得
+					$$F(U)\supset V:=\{y\in F\mid \Vert y\Vert <\varepsilon\}.$$
+					
+			不妨设$y\neq 0$. 则取$y_1:=\frac{\varepsilon}{2}\cdot \frac{y}{\Vert y\Vert}\in V$. 则存在$x_1\in U$使得$Tx_1=y_1$. 因为$T$线性，故$T(\frac{2\Vert y\Vert}{\varepsilon}x_1)=y$. 令$x:=\frac{2\Vert y\Vert}{\varepsilon}x_1$，则$Tx=y$，且$\Vert x\Vert \leq \frac{2}{\varepsilon} \Vert y\Vert$.
+		\end{prf}
+		
+		\begin{defn}
+		设$D\subset \mathbb{C}$是开集，
+				$$L^2(D):=\{f\mid \int_D \vert f\vert^2<\infty\},$$
+		定义$A^2(D)=L^2(D)\cap \mathcal{O}(D)$是Bergman空间.
+		\end{defn}
+		
+		\begin{lem} Bergman不等式.\par
+			 记$D_r=\{z\in D:d(z,\partial D)>r\}$，则$\forall f\in A^2(D)$，有
+				$$\Vert f\Vert_{L^\infty(D_r)}\leq \frac{1}{\sqrt{\pi}r}\cdot \Vert f\Vert_{L^2(D)}.$$
+		\end{lem}
+		
+		\begin{prf}
+			对于$D_r$中的任意一点，$\Delta(a,r)\subset D$. 由调和函数均值性
+					$f^2(a)=\frac{1}{\vert \Delta(a,r)\vert}\int_{\Delta(a,r)}f^2$，
+		有$$\vert f(a)\vert^2\leq \frac{1}{\pi r^2}\int_{\Delta(a,r)} \vert f\vert^2\leq \frac{1}{\pi r^2}\int_D \vert f\vert^2.$$
+		\end{prf}
+		
+		
+		\begin{lem} $L^2$-Schwarz引理.\par
+			 设$D^1\subset \subset D\subset \mathbb{C}$为两个开集，则对于任意$\varepsilon>0$，存在余维数有限的闭子空间$A\subset A^2(D)$使得$\Vert f\Vert_{L^2(D)}\leq \varepsilon \Vert f\Vert_{L^2(D)}$, $\forall f\in A$.
+		
+		\end{lem}
+		
+		\begin{prf} 因为$\overline{D^1}\subset D$是紧集，所以由Heine-Borel定理，存在$a_1,\cdots, a_k\in \overline{D^1}$以及$r>0$使得\par
+			 \qquad 1. $\Delta(a_j,r)\subset \subset D$, $1\leq j\leq k$;\par
+			\qquad  2. $\overline{D^1}\subset \bigcup\limits_{j=1}^k \Delta(a_j,\frac{r}{2})$.\par
+			 取$n$充分大使得$\frac{k}{2^{n+1}}<\varepsilon$，令
+				$$A:=\{f\in A^2(D): \ord_{a_j} f\geq n, 1\leq j\leq k\},$$
+			则$a\subset A^2(D)$为闭子空间.
+			
+				$$A^{\perp}\subset \bigcup\limits_{j=1}^k \{f\in A^2(D): \ord_{a_j}f<n\},$$
+			则$\dim A^{\perp}<k\cdot n$.\par
+			
+			设$f\in A$，其在每个$a_j$处有Taylor展开$f(z)=\sum\limits_{\nu=n}^\infty c_\nu (z-a_j)^\nu$. 设$\rho\leq r$，则
+				\begin{align*}
+					\int_{\Delta(a_j,\rho)} \vert f\vert^2 &=\int_{\Delta(a_j,\rho)} \sum\limits_{\mu, \nu=n}^\infty C_\mu \overline{C_\nu} (a-a_j)^\nu (\overline{z-a_j})^\nu\\
+					&=\int_0^\rho \sum\limits_{\mu, \nu=n}^\infty  C_\mu \overline{C_\nu} t^{\mu+\nu}e^{i(\mu-\nu)\theta} t dt d\theta\\
+					&=\int_0^\rho \int_0^{2\pi} \sum\limits_{\nu=n}^\infty \vert C_\nu \vert^2 t^{2\nu} t dt d\theta\\
+					&=\pi \sum\limits_{\nu=n}^\infty \vert C_\nu \vert^2 \cdot \frac{\rho^{2\nu+2}}{\nu+1}.
+				\end{align*}
+			故有
+				$$\Vert f \Vert_{L^2(\Delta(a_j,\frac{r}{2}))}\leq \frac{1}{2^{n+1}} \Vert f \Vert_{L^2(\Delta(a_j,r))}.$$
+			进而
+				\begin{align*}
+					\Vert f\Vert_{L^2(D^1)}&\leq \sum\limits_{j=1}^k \Vert f \Vert_{L^2(\Delta(a_j,\frac{r}{2}))}\\
+						&\leq \frac{1}{2^{n+1}} \sum\limits_{j=1}^k  \Vert f \Vert_{L^2(\Delta(a_j,r))}\\
+						&\leq \frac{k}{2^{n+1}} \cdot \Vert f\Vert_{L^2(D)}\\
+						&< \varepsilon \cdot  \Vert f\Vert_{L^2(D)}.
+				\end{align*}
+		\end{prf}
+		
+		\begin{defn}
+		$X$是Riemann面，考虑有限个坐标圆盘$U_1^*, \cdots, U_n^*$，即$z_j(U_j^*)\subset \mathbb{C}$是一个圆盘. 设$U_j\subset U_j^*$是开集，令$\mathscr{U}=\{U_j\}_{j=1}^n$.\par
+		我们引入$C^0(\mathscr{U},\mathcal{O})$以及$C^1(\mathscr{U},\mathcal{O})$上的$L^2$范数如下：\par
+		若$\eta=(f_i)\in C^0(\mathscr{U},\mathcal{O})$，定义
+				$$\Vert \eta\Vert_{L^2(\mathscr{U})}:=\sqrt{\sum\limits_{i=1}^n \Vert f_i\Vert_{L^2(U_i)}}.$$
+		
+		若$\xi=(f_{ij})\in C^1(\mathscr{U},\mathcal{O})$，定义
+				$$\Vert \xi \Vert_{L^2(\mathscr{U})}:=\sqrt{\sum\limits_{i,j=1}^n \Vert f_{ij}\Vert_{L^2(U_i\cap U_j)}}.$$
+		这里$\Vert f_i\Vert_{L^2(U_i)}=\Vert f_i\circ z_i^{-1}\Vert_{z_i(L^2(U_i))}$, $\Vert f_{ij}\Vert_{L^2(U_i\cap U_j)}=\Vert f_{ij}\circ z_i^{-1}\Vert_{z_i(L^2(U_i\cap U_j))}$.\par
+		
+		令$C^0_{(2)}(\mathscr{U},\mathcal{O}):=C^0(\mathscr{U},\mathcal{O})\cap L^2$，$C^1_{(2)}(\mathscr{U},\mathcal{O}):=C^1(\mathscr{U},\mathcal{O})\cap L^2$，$Z^1_{(2)}(\mathscr{U},\mathcal{O}):=Z^1_{(2)}(\mathscr{U},\mathcal{O})\cap L^2$.\par
+		设$\mathscr{V}=\{V_i\}_{i=1}^n$，其中开集$V_i\subset \subset U_i$，记$\mathscr{V}<<\mathscr{U}$.\par
+		由上一个引理，$\forall \varepsilon>0$，存在余维数有限的闭子空间$A\subset Z^1_{(2)}(\mathscr{U},\mathcal{O})$使得$\Vert \zeta\Vert_{L^2(\mathscr{V})} \leq \varepsilon \cdot \Vert \zeta\Vert_{L^2(\mathscr{U})}$, $\forall \xi\in A$.
+		\end{defn}
+		
+		\begin{lem}
+			设$\mathscr{W}<<\mathscr{V}<<\mathscr{U}<<\mathscr{U}^*$，其中$\mathscr{U}^*$如上. 则存在$C>0$使得$\forall \xi\in Z^1_{(2)}(\mathscr{V}, \mathcal{O})$，存在$\zeta\in Z^1_{(2)}(\mathscr{U},\mathcal{O})$，$\eta\in C^0_{(2)}(\mathscr{W},\mathcal{O})$使得$\zeta=\xi+\delta \eta$于$\mathscr{W}$，且
+				$$\max\{\Vert \zeta \Vert_{L^2(\mathscr{U})},\Vert \eta\Vert_{L^2(\mathscr{W})}\} \leq C\cdot \Vert \xi \Vert_{L^2(\mathscr{V})}.$$
+		\end{lem}
+		
+		\begin{prf}
+			(1). 设$\xi=(f_{ij})\in Z^1_{(2)}(\mathscr{V},\mathcal{O})\subset Z^1(\mathscr{V}, \mathcal{E})$. 因为$H^1(\mathscr{V}, \mathcal{E})=0$，所以$f_{ij}=g_i-g_j$于$V_i\cap V_j$，$g_i\in \mathcal{E}(V_i)$.\par
+			$d''f_{ij}=0$，所以$d''g_i=d''g_j$于$U_i\cap U_j$. 故定义$\omega|_{V_i} :=d''g_i\in \mathcal{E}^{(0,1)}(\vert \mathscr{V}\vert)$，其中$\vert \mathscr{V}\vert=\bigcup\limits_{i=1}^n V_i$.\par
+			因为$\mathscr{W}<<\mathscr{V}$，所以存在可微函数$\psi$使得$supp\ \psi\subset \vert \mathscr{W}\vert$且$\psi|_{\mathscr{W}}=1$. 进而$\psi \cdot \omega \in \mathcal{E}^{(0,1)}(\vert \mathscr{U}^*\vert)$.\par
+			因为任意$U_i^*$是坐标圆盘，由Dolbeault引理，存在$H_i\in \mathcal{E}(U_i^*)$使得$d''h_i=\psi \cdot \omega$.\par
+			在$U_i^*\cap U_j^*$上，$d''h_i=d''h_j$，故$h_i-h_j\in \mathcal{O}(U_i^*\cap U_j^*)$. 令$F_{ij}=h_i-h_j$，$\zeta:=(F_{ij})\in Z^1_{(2)}(\mathscr{U},\mathcal{O})$.\par
+			
+			设$\mathscr{W}=\{W_i\}_{i=1}^n$，在每个$W_i$上有$d''h_i=\omega=d''g_i$，进而$h_i-g_i\in \mathcal{O}(W_i)\cap L^2(W_i)$. 定义
+					$$\eta:=((g_i-h_i)|_{W_i})\in C^0_{(2)}(\mathscr{W},\mathcal{O}).$$
+				$$F_{ij}-f_{ij}=(h_i-h_j)-(g_i-g_j)=(h_i-g_i)-(h_j-g_j)$$
+			即有$\zeta-\xi=\delta \eta$于$\mathscr{W}$.
+			
+			(2). 考虑Hilbert空间
+					$$H:=Z^1_{(2)}(\mathscr{U},\mathcal{O})\times Z^1_{(2)}(\mathscr{V},\mathcal{O})\times C^0_{(2)}(\mathscr{W},\mathcal{O}),$$
+					$$\Vert (\zeta,\xi,\eta)\Vert_H:=\sqrt{\Vert \zeta\Vert^2_{L^2(\mathscr{U})}+\Vert \xi \Vert^2_{L^2(\mathscr{B})}+\Vert \eta\Vert^2_{L^2(B)}}.$$
+				作子空间
+					$$L:=\{(\zeta,\xi,\eta)\in H: \zeta=\xi +\delta \eta \ at\ \mathscr{W}\},$$
+				则$L\subset H$是闭子空间(练习，利用Bergman不等式). 特别地，$L$是Hilbert空间.\par
+				
+				考虑投射$\pi:L\rightarrow Z^1_{(2)}(\mathscr{V},\mathcal{O})$，$(\zeta,\xi,\eta)\mapsto \xi$，其为线性映射，且由(1)知其为满射. 由命题，对于任意$\xi \in Z^1_{(2)}(\mathscr{V},\mathcal{O})$，存在$(\zeta,\xi,\eta)\in L$使得$\pi(\zeta,\xi,\eta)=\xi$且
+					$$\Vert(\zeta,\xi,\eta)\Vert_H\leq C\cdot \Vert \xi\Vert_{L^2(\mathscr{V})}.$$
+				
+			
+		\end{prf}
+		
+		
+		\begin{lem} 在上一个引理的条件下，存在有限维子空间$S\subset Z^1_{(2)}(\mathscr{U},\mathcal{O})$使得对于任意$\xi \in Z^1(\mathscr{U},\mathcal{O})$，存在$\sigma\in S$，$\eta\in C^0_{(2)}(\mathscr{W},\mathcal{O})$使得$\sigma=\xi +\delta \eta$于$\mathscr{W}$.\par
+			 即限制映射$H^1(\mathscr{U},\mathcal{O})\rightarrow H^1(\mathscr{W},\mathcal{O})$，$[\xi]\mapsto [\xi|_{\mathscr{W}}]=[\sigma|_\mathscr{W}]$的像的维数有限.
+		
+		\end{lem}
+		
+		\begin{prf}
+			取$C$为上一个引理中的常数，由上上条引理，对于$\varepsilon:=\frac{1}{2C}$，存在余维数有限的子空间$A\subset Z^1_{(2)}(\mathscr{U},\mathcal{O})$使得$\Vert \xi\Vert_{L^2(\mathscr{B})}\leq \varepsilon \Vert \xi \Vert_{L^2(\mathscr{U})}$, $\forall \xi \in A$.\par
+			令$S:=A^{\perp}\subset Z^1_{(2)}(\mathscr{U},\mathcal{O})$，则$\dim S<\infty$. 设$\xi \in Z^1(\mathscr{U},\mathcal{O})$，因为$\mathscr{B}<<\mathscr{U}$，所以$\Vert \xi \Vert_{L^2(\mathscr{B})}:=M<\infty$. 由上一条引理，存在$\zeta_0\in Z^1_{(2)}(\mathscr{U},\mathcal{O})$, $\eta\in C^0_{(2)}(\mathscr{W},\mathcal{O})$使得$\zeta_0=\xi+\delta \eta$于$\mathscr{W}$，且$\Vert \zeta_0 \Vert_{L^2(\mathscr{U})}\leq C\cdot M$，$\Vert \eta\Vert_{L^2(B)}\leq C\cdot M$.\par
+			令$\zeta_0=\xi_0\oplus \sigma_0\in A\bigoplus A^{\perp}$. 归纳地，构造$\xi_\nu \in Z^1_{(2)}(\mathscr{U},\mathcal{O})$, $\eta_\nu \in C^0_{(2)}(\mathscr{W},\mathcal{O})$，$\xi_\nu \in A$, $\sigma_\nu \in A^{\perp}$使得
+			
+			 \qquad 1. $\zeta_\nu=\xi_{\nu-1}+\delta \eta_\nu$于$\mathscr{W}$.\par
+			\qquad 2. $\zeta_\nu=\xi_\nu \oplus \sigma_\nu\in A\bigoplus S$.\par
+			\qquad 3. $\Vert \zeta_\nu \Vert_{L^2(\mathscr{U})}\leq \frac{C\cdot M}{2^\nu}$. $\Vert \eta_\nu \Vert_{L^2(B)}\leq \frac{C\cdot M}{2^\nu}$.\par
+			$\nu=0$成立. 假设$\nu$时已构造，因为$\zeta_\nu=\xi_\nu\oplus \sigma_\nu$，所以
+				$$\Vert \xi_\nu \Vert_{L^2(\mathscr{U})}\leq \Vert \zeta_\nu \Vert_{L^2(\mathscr{U})}\leq \frac{C\cdot M}{2^\nu}.$$
+			进而$$\Vert \xi_\nu \Vert_{L^2(\mathscr{B})}\leq \varepsilon \Vert \zeta_\nu \Vert_{L^2(\mathscr{U})} \leq \frac{M}{2^{\nu+1}}.$$
+			
+			由上条引理，存在$\zeta_{\nu+1}\in Z^1_{(2)}(\mathscr{U},\mathcal{O})$，$\eta_{\nu+1}\in C^0(\mathscr{W},\mathcal{O})$使得$\zeta_{\nu+1}=\xi_\nu+\delta \eta_{\nu+1}$且
+				$$\Vert \zeta_{\nu+1} \Vert_{L^2(\mathscr{U})}\leq C\cdot \Vert \xi_\nu \Vert_{L^2(\mathscr{B})}\leq \frac{C\cdot M}{2^{\nu+1}},$$
+				$$\Vert \eta_{\nu+1} \Vert_{L^2(B)}\leq C\cdot \Vert \xi_\nu \Vert_{L^2(\mathscr{B})}\leq \frac{C\cdot M}{2^{\nu+1}},$$
+			只需正交分解$\zeta_{\nu+1}=\xi_{\nu+1}\oplus \sigma_{\nu+1}$即可.\par
+			
+			$$\begin{cases}
+				\xi_0+\sigma_0=\xi +\delta\eta_0\\
+				\xi_1+\sigma_1=\xi_0+\delta \eta_1\\
+				\vdots \\
+				\xi_k+\sigma_k=\xi_{k-1}+\delta \eta_k.
+			\end{cases}$$
+			相加，得到$\zeta_k+\sum\limits_{j=0}^k \sigma_j=\xi +\delta \sum\limits_{j=0}^k \eta_j$.\par
+			
+			由3，当$k\to \infty$时，$\zeta_k\to 0$，
+				$$\sum\limits_{j=0}^k \sigma_j \to \sum\limits_{j=0}^\infty \sigma_j=:\sigma \in S.$$
+				$$\sum\limits_{j=0}^k \eta_j \to \sum\limits_{j=0}^\infty \eta_j=:\eta\in C^0_{(2)}(\mathscr{W},\mathcal{O}).$$
+			则$\sigma=\xi+\delta \eta$于$\mathscr{W}$.
+		\end{prf}
+		
+		
+		\begin{theo}
+			$X$是Riemann面，$Y_1\subset \subset Y_2\subset X$是开集，则限制映射$H^1(Y_2,\mathcal{O})\rightarrow H^1(Y_1,\mathcal{O})$的像的维数有限.
+		
+		\end{theo}
+		
+		\begin{prf}
+			取有限个坐标圆盘$\{U_i^*\subset Y_2\}_{i=1}^n$，再取坐标圆盘$W_i\subset \subset V_i\subset \subset U_i\subset \subset U_i^*$使得$Y_1\subset \bigcup\limits_{i=1}^n W_i=:Y'\subset Y'':=\bigcup\limits_{i=1}^n U_i \subset \subset Y_2$. 令$\mathscr{W}=\{W_i\}$, $\mathscr{V}=\{V_i\}$, $\mathscr{U}=\{U_i\}$, $\mathscr{U}^*=\{U_i^*\}$，则$\mathscr{W}<<\mathscr{V}<<\mathscr{U}<<\mathscr{U}^*$.\par
+			由上个引理，限制映射$H^1(\mathscr{U}, \mathcal{O})\rightarrow H^1(\mathscr{W},\mathcal{O} )$的像的维数有限. 由Dolbeault引理，$H^1(U_i,\mathcal{O})=0=H^1(W_i,\mathcal{O})$，由Leray定理，$H^1(Y'',\mathcal{O})\cong H^1(\mathscr{U},\mathcal{O})$，$H^1(Y',\mathcal{O})\cong H^1(\mathscr{W},\mathcal{O})$. 因此限制映射$H^1(Y'',\mathcal{O})\rightarrow H^1(Y',\mathcal{O})$的像的维数有限.\par
+			$H^1(Y_2,\mathcal{O})\rightarrow H^1(Y_1,\mathcal{O})$的限制映射由下面的限制映射复合而成:
+				$$H^1(Y_2, \mathcal{O})\rightarrow H^1(Y'',\mathcal{O} )\rightarrow H^1(Y',\mathcal{O} )\rightarrow H^1(Y_1, \mathcal{O}),$$
+			得证.
+		\end{prf}
+		
+		\begin{coro}
+			$X$是紧Riemann面，则
+				$$g:=\dim_{\mathbb{C}} H^1(X,\mathcal{O})<\infty.$$
+		称其为$X$的亏格(genus).
+		\end{coro}
+		
+		\begin{prf}
+			只需在定理中取$Y_1=Y_2=X$.
+		\end{prf}
+		
+		\begin{exam}
+			$H^1(\mathbb{P}^1,\mathcal{O})=0$，故$\mathbb{P}^1$的亏格为$0$.
+		\end{exam}
+		
+		
+		\begin{theo}
+			设$X$是Riemann面，$Y\subset \subset X$开，则对于任意$a\in Y$，存在$f\in \mathcal{M}(Y)$使得$f\in \mathcal{O}(Y\backslash \{a\})$，且$a$是$f$的极点.
+		\end{theo}
+		
+		\begin{prf}
+			由定理，$k:=\dim \Im(H^1(X,\mathcal{O})\rightarrow H^1(Y,\mathcal{O}))<\infty$. 取$a$处的坐标邻域$(U_1,z)$使得$z(a)=0$. 令$U_2=X\backslash \{a\}$，则$\mathscr{U}=\{U_1,U_2\}$是$X$的一个开覆盖.\par
+			 $U_1\cap U_2=U_1\backslash \{a\}$，所以$z^{-j}\in \mathcal{O}(U_1\cap U_2)$, $1\leq j\leq k+1$. 其代表了一个$\zeta_j\in Z^1(\mathscr{U}, \mathcal{O})$. 则$\zeta_j|_Y\in Z^1(\mathscr{U}\cap Y,\mathcal{O})$, $1\leq j\leq k+1$，在模去上边缘以后是线性相关的. 即存在不全为$0$的复数$c_1,\cdots, c_{k+1}$以及$\eta=(f_1,f_2)\in C^0_{(2)}(\mathscr{U}\cap Y,\mathcal{O})$使得
+				$$c_1\zeta_1+\cdots+c_{k+1}\zeta_{k+1}=\delta \eta,$$
+			则$\sum\limits_{j=1}^{k+1}c_jz^{-j}=f_2-f_1$于$U_1\backslash \{a\}=U_1\cap U_2$
+			
+			令$f:=\begin{cases} f_1+\sum\limits_{j=1}^{k+1}c_jz^{-j}, &\text{at}\ U_1\cap Y\\
+						f_2, &\text{at}\ U_2\cap Y \end{cases} \in \mathcal{M}(Y)$即为所求.
+		
+		\end{prf}
+		
+		\begin{coro}插值问题\par
+		 $X$是紧Riemann面，$a_1,\cdots, a_n\in X$是$n$个不同点，则对于任意$c_1,\cdots,c_n\in \mathbb{C}$，存在亚纯函数$f\in \mathcal{M}(Y)$使得
+					$$f(a_j)=c_j, \ \forall 1\leq j\leq n.$$
+			
+		\end{coro}
+		
+		\begin{prf}
+			由上一个定理，对任意$i,j$，存在$f_{ij}\in \mathcal{M}(X)$使得$a_i$为$f_{ij}$的极点，$f_{ij}\in \mathcal{O}_{a_j}$. 取$\lambda_{ij}\in \mathbb{C}^*$使得$f_{ij}(a_k)\neq f_{ij}(a_j)-\lambda_{ij}, \ \forall i,j,k$.\par
+			令$g_{ij}:=\frac{f_{ij}-f_{ij}(a_j)}{f_{ij}-f(a_j)+\lambda_{ij}}\in \mathcal{M}(X)$，则$g_{ij}\in \mathcal{O}_{a_k}, \ \forall i,j,k$，且$g_{ij}(a_i)=1$, $g_{ij}(a_j)=0$.\par
+			令$H_i:=\prod\limits_{k\neq i} g_{ik}\in \mathcal{M}(X)$使得$h_i(a_j)=\delta_{ij}$. 令$f:=\sum\limits_{i=1}^n c_i h_i$即可.
+		\end{prf}
+		
+		\begin{coro}
+			$X$是非紧的Riemann面，$Y\subset \subset X$开，则存在$f\in \mathcal{O}(Y)$使得其在$Y$的任何一个连通分支上非常值.
+		
+		\end{coro}
+		
+		\begin{prf}
+			取区域$Y'$使得$Y\subset \subset Y'\subset \subset X$. 取$a\in Y'\backslash Y$，对$(Y',a)$应用定理，即得.
+		\end{prf}
+		
+		\begin{theo}
+			$X$是非紧的Riemann面，$Y\subset \subset Y' \subset \subset X$开，则
+				$$\Im ( H^1(Y',\mathcal{O})\rightarrow H^1(Y,\mathcal{O}))=0.$$
+		\end{theo}
+		
+		\begin{prf}
+			记像集为$L$，设$n:=\dim L<\infty$. 取$\xi_1,\cdots,\xi_n\in H^1(Y',\mathcal{O})$使得$\xi_1|_Y,\cdots, \xi_n|_Y$生成$L$. 取$Y'$上的全纯函数$f$使得其在$Y'$的任何连通分支上非常值.\par
+			取$C_{\mu \nu}\in \mathbb{C}$使得
+				$$f\xi_\nu=\sum\limits_{\mu=1}^n C_{\mu\nu}\xi_\mu \ \text{at} \ Y, 1\leq \nu \leq n.$$
+			令$A:=(f\cdot \delta_{\mu\nu}-C_{\mu\nu})_{n\times n}$, $F:=\det A$. 则$F\in \mathcal{O}(Y')$且在$Y'$的任何连通分支上不恒为$0$.\par
+			则有$A\cdot \begin{pmatrix} \xi_1\\ \vdots \\ \xi_n \end{pmatrix} =0$. 记$A^*$为$A$的伴随矩阵，则$A^*A=\begin{pmatrix} &F &0 &\cdots &0\\ &0 &F &\cdots &0 \\ &\vdots  &\vdots &\ddots &\vdots \\ &0 &0 &\cdots &F \end{pmatrix}$，推出$F\xi_\nu=0$, $1\leq \nu \leq n$于$Y$.\par
+			设$\zeta \in H^1(Y', \mathcal{O})$可由某个$(f_{ij})\in Z^1(\mathscr{U},\mathcal{O})$表示，$\mathscr{U}=\{U_i\}$是$Y'$的开覆盖，使得$\forall U_i$至多包含$F$的一个零点，则$F\in \mathcal{O}^*(U_i\cap U_j), \forall i\neq j$. 进而$g_{ij}:=f_{ij}/F\in \mathcal{O}^*(U_i\cap U_j)$. 令$\xi:=[(g_{ij})]\in H^1(Y',\mathcal{O})$，则$\zeta|_Y=F\xi|_Y=0$.		
+		\end{prf}
+		
+		
+		\begin{coro}$X$是非紧的Riemann面，$Y\subset \subset Y' \subset \subset X$开，则任意$\omega \in \mathcal{E}^{(0,1)}(Y')$，存在$f\in \mathcal{E}(Y)$，使得$d''f=\omega$于$Y$.
+		
+		\end{coro}
+		
+		\begin{prf}取$\mathscr{U}=\{U_i\}_i $为$Y'$的一个坐标圆盘覆盖，由Dolbeault引理，对于任意$f_i\in \mathcal{E}(U_i)$使得$d''f_i=\omega$于$U_i$.\par
+		
+			因为$d''(f_i-f_j)=\omega-\omega=0$于$U_i\cap U_j$，所以$f_i-f_j\in \mathcal{O}(U_i\cap U_j)$，故$(f_i-f_j)\in Z^1(\mathscr{U},\mathcal{O})$.\par
+		
+			因为$[(f_i-f_j)|_{Y\cap \mathscr{U}}]=0$，所以存在$g_i\in \mathcal{O}(Y\cap U_i)$使得$f_i-f_j=g_i-g_j$于$Y\cap U_i\cap U_j$，等价于$f_i-g_i=f_j-g_j$.\par
+			
+			定义$f|_{Y\cap U_i}:=f_i-g_i\in \mathcal{E}(Y)$使得$d''f=d''f_i-\omega$.
+		\end{prf}
+		
+	
+	\subsection{正合上同调列}
+		\begin{defn}
+			设$X$是拓扑空间，$\mathscr{F}, \mathscr{G}$是$X$上的层，一个层同态$\alpha:\mathscr{F}\rightarrow \mathscr{G}$是指一族群同态$\alpha_U:\mathscr{F}(U)\rightarrow \mathscr{G}(U)$，$\forall U\subset X$开，满足	$\forall V\subset U$开，有下列图表交换
+				$$\begin{tikzcd}
+					&\mathscr{F}(U) \dar["\rho^U_V"] \rar["\alpha_U"] &\mathscr{G}(U) \dar["\rho^U_V"]\\
+					&\mathscr{F}(V) \rar["\alpha_V"] &\mathscr{G}(V)
+				\end{tikzcd}.$$
+				
+		\end{defn}
+		
+		\begin{exam}
+			1. 外微分算子$d, d', d''$.\par
+			
+			2. 包含映射
+				$\iota:\mathcal{O}\rightarrow \mathcal{E}$, $\mathbb{C}\rightarrow \mathcal{E}$, $\mathbb{Z}\rightarrow \mathcal{O}$.\par
+			
+			3. $ex: \mathcal{O} \rightarrow \mathcal{O}^*$，对于任意开集$U$，
+					\begin{align*}
+						ex|_U:\mathcal{O}(U) &\rightarrow \mathcal{O}^*(U)\\
+							f&\mapsto e^{2\pi i f}
+					\end{align*}
+		\end{exam}
+		
+		\begin{defn}
+		设$\alpha :\mathscr{F}\rightarrow \mathscr{G}$是层同态，对于任意开集$U$，定义
+				$$K(U):=\Ker (\mathscr{F}(U)\xrightarrow{\alpha_U} \mathscr{G}(U),$$
+		配以通常的限制映射，其诱导出一个层$\kappa=\Ker\ \alpha$.
+		\end{defn}
+		
+		\begin{exam}
+			$\mathcal{O}=\Ker(\mathcal{E}\xrightarrow{d''} \mathcal{E}^{(0,1)})$，即是Cauchy-Riemann方程.\par
+			
+			$\Omega=\Ker(\mathcal{E}^{(1,0)}\xrightarrow{d} \mathcal{E}^2)$.\par
+			
+			$\mathbb{Z}=\Ker(\mathcal{O}\xrightarrow{ex} \mathcal{O}^*)$.
+		\end{exam}
+		
+		\begin{defn}
+			设$\alpha :\mathscr{F}\rightarrow \mathscr{G}$是层同态，对于任意开集$U$，定义
+				$$B(U):=\Im (\mathscr{F}(U)\xrightarrow{\alpha_U} \mathscr{G}(U),$$
+		配以通常的限制映射，其诱导出一个预层$\Im\ \alpha$，但一般来说其不是层. （一般不满足拼接原理）
+		\end{defn}
+		
+		\begin{exam}
+			$ex:\mathcal{O}\rightarrow \mathcal{O}^*$，令$U_+:=\mathbb{C}^*\backslash \mathbb{R}_+$，$U_-:=\mathbb{C}^*\backslash \mathbb{R}_-$，则$\mathbb{C}^*=U_+\cup U_-$. 因为$U_{\pm}$单连通，
+				$$\text{存在}\ f_{\pm}\in \mathcal{O}(U_\pm),\ \text{s.t.} \ ex(f_\pm)=z$$
+		且$f_+=f_-$于$U_+\cap U_-$. 但是不存在$f\in \mathcal{O}(\mathbb{C}^*)$ 使得$ex(f)=z$成立. 拼接原理不成立.
+		\end{exam}
+		
+		\begin{defn}
+		设$\alpha:\mathscr{F}\rightarrow \mathscr{G}$是一个层，其诱导出群同态$\alpha_x:\mathscr{F}_x\rightarrow \mathscr{G}_x$.\par
+		
+		称$\mathscr{F}\xrightarrow{\alpha} \mathscr{G}\xrightarrow{\beta} \mathscr{H}$是正合的，若对任意$x\in X$，有
+			$$\mathscr{F}_x\xrightarrow{\alpha_x} \mathscr{G}_x\xrightarrow{\beta_x} \mathscr{H}_x$$
+		正合，即$\Ker \beta_x-\Im \alpha_x$.\par
+		
+		称$$\mathscr{F}\xrightarrow{\alpha_1} \mathscr{F}_1\xrightarrow{\alpha_2} \mathscr{F}_3\xrightarrow{\alpha_3} \cdots \xrightarrow{\alpha_{n-1}} \mathscr{F}_n$$
+		是正合的，若$\mathscr{F}_k\xrightarrow{\alpha_k} \mathscr{F}_{k+1}\xrightarrow{\alpha_{k+1}} \mathscr{F}_{k+2}$正合，$\forall 1\leq k\leq n-2$.\par
+		
+		称正合列$0\rightarrow \mathscr{F}\xrightarrow{\alpha} \mathscr{G}\xrightarrow{\beta} \mathscr{H}\rightarrow 0$是一个短正合列.
+		\end{defn}
+		
+		\begin{exam} 短正合列
+				$$0\rightarrow \mathcal{O} \xrightarrow{\iota} \mathcal{E} \xrightarrow{d''} \mathcal{E}^{(0,1)} \rightarrow 0,$$
+		最后一步是Dolbeault引理.
+				
+				$$0\rightarrow \mathbb{C} \xrightarrow{\iota} \mathcal{E} \xrightarrow{d} Ker(d:\mathcal{E}^1\rightarrow \mathcal{E}^2) \rightarrow 0,$$
+		最后一步是Poincaré引理.
+		
+				$$0\rightarrow \mathbb{C} \xrightarrow{\iota} \mathcal{O} \xrightarrow{d} \Omega \rightarrow 0,$$
+		最后一步是Poincaré引理.
+		
+				$$0\rightarrow \Omega\xrightarrow{\iota} \mathcal{E}^{(1,0)} \xrightarrow{d} \mathcal{E}^2 \rightarrow 0,$$
+		$\forall \Phi=gdz\wedge d\overline{z}$, 设$\omega=fdz\in \mathcal{E}^{(1,0)}$，则$d\omega=\Phi$等价于$\frac{\partial f}{\partial \overline{z}}=-g$，这由Dolbeault引理保证.
+		
+				$$0\rightarrow \mathbb{Z} \xrightarrow{\iota} \mathcal{O} \xrightarrow{ex} \mathcal{O}^* \rightarrow 0.$$
+
+		\end{exam}
+
+		\begin{lem}
+			若$\alpha: \mathscr{F}\rightarrow \mathscr{G}$是单射，则对于任意开集$U$，$\alpha_U:\mathscr{F}(U)\rightarrow \mathscr{G}(U)$是单射.
+		\end{lem}
+
+			\begin{prf}
+				设$f\in \mathscr{F}(U)$，使得$\alpha_U(f)=0$.\par
+				
+				因为对于任意$x\in U$，$\alpha_x:\mathscr{F}_x\rightarrow \mathscr{G}_x$是单射，故存在邻域$x\in V_x\subset U$使得$f|_{V_x}=0$. 因为$U=\bigcup\limits_{x\in U} V_x$，由层的定义，$f|_U=0$.
+
+			\end{prf}
+
+
+		\begin{lem}
+			设$0\rightarrow \mathscr{F}\xrightarrow{\alpha} \mathscr{G} \xrightarrow{\beta} \mathscr{H}$正合，则对于任意开集$U$，有正合列
+				$$0\rightarrow \mathscr{F}(U)\xrightarrow{\alpha_U} \mathscr{G}(U) \xrightarrow{\beta_U} \mathscr{H}(U).$$
+		\end{lem}
+		
+			\begin{prf}
+				由引理1.6.1，第一处正合. 我们考虑第二处.\par
+				
+				$\Im\ \alpha\subset \Ker\ \beta$：设$f\in \mathscr{F}(U)$，$g=\alpha_U(f)$. 因为$\Ker\ \beta_x=\Im \ \alpha_x$，故存在邻域$x\in V_x\subset U$使得$\beta(g)=\beta\circ \alpha(f)=0$于$V_x$. 因为$U=\bigcup\limits_{x\in U} V_x$，由层的定义，$\beta(g)=0$于$U$，即$\Im\ \alpha\subset \Ker\ \beta$.\par
+				
+				$\Ker \ \beta \subset \Im\ \alpha$：设$g\in \mathscr{G}(U)$使得$\beta(g)=0$. 因为对于任意$x\in X$，有$\Ker\ \beta_x=\Im\ \alpha_x$，故存在邻域$\alpha\in V_x\subset U$以及$f_x\in \mathscr{F}(V_x)$使得$\alpha(f_x)=g$于$V_x$.\par
+				因为$\alpha(f_x-f_y)=g-g=0$于$V_x\cap V_y$，由引理1.6.1，推出$f_x\cong f_y$于$V_x\cap V_y$. 故由拼接原理，存在$f\in \mathscr{F}(U)$使得$f|_{V_x}:=f_x\in \mathscr{F}(V_x)$且在每个$V_x$上，$\alpha(f)=\alpha(f_x)=g$.
+			\end{prf}
+		
+		
+		\begin{defn}
+		设$\alpha: \mathscr{F}\rightarrow \mathscr{G}$是层同态，其诱导出
+				$$\alpha^1:H^1(X,\mathscr{F})\rightarrow H^1(X,\mathscr{G})$$
+	如下：设$\mathscr{U}=\{U_i\}$是$X$的一个开覆盖. 定义
+			\begin{align*}
+				\alpha_\mathscr{U}:C^1(\mathscr{U},\mathscr{F})&\rightarrow C^1(\mathscr{U},\mathscr{G})\\
+				(f_{ij})&\mapsto (\alpha(f_{ij})).
+			\end{align*}
+		则$\alpha_\mathscr{U}:Z^1(\mathscr{U},\mathscr{F})\rightarrow Z^1(\mathscr{U},\mathscr{G})$，$\alpha_\mathscr{U}:B^1(\mathscr{U},\mathscr{F})\rightarrow B^1(\mathscr{U},\mathscr{G})$. 故$\alpha_\mathscr{U}$可以诱导出	
+			$$ \tilde{\alpha}_\mathscr{U}:H^1(\mathscr{U},\mathscr{F})\rightarrow H^1(\mathscr{U},\mathscr{G}).$$
+		其诱导出同态
+			$$\alpha^1:H^1(X,\mathscr{F})\rightarrow H^1(X,\mathscr{G})$$
+		\end{defn}
+		
+		\begin{defn} 有短正则列$0\rightarrow \mathscr{F} \xrightarrow{\alpha} \mathscr{G} \xrightarrow{\beta} \mathscr{H}\rightarrow 0$. 定义连接同态$\delta^*: \mathscr{H}(X)=H^0(X,\mathscr{H})\rightarrow H^1(X,\mathscr{F})$如下：\par
+			
+			设$h\in \mathscr{H}(X)$，$\mathscr{G}_x\xrightarrow{\beta_x} \mathscr{H}_x$满，故存在开覆盖$\mathscr{U}=\{U_i\}$以及$g_i\in \mathscr{G}(U_i)$使得$\beta(g_i)=h$于$U_i$. 因为$\beta(g_i-g_j)=h-h=0$于$U_i\cap U_j$，故由引理1.6.2，存在$f_{ij}\in \mathscr{F}(U_i\cap U_j)$使得$\alpha(f_{ij})=g_i-g_j$.\par
+			在$U_i\cap U_j\cap U_k$上，$\alpha(f_{ij}+f_{jk}+f_{ki})=0$，由引理6.1，有$f_{ij}+f_{jk}+f_{ki}=0$，故$(f_{ij})\in Z^1(\mathscr{U},\mathscr{F})$. 定义$\delta^* h:=[(f_{ij})]\in H^1(X,\mathscr{F})$.\par
+			良定性，需要验证与开覆盖选取无关、与$g_i$的选取无关.\par
+			若$g_i'\in \mathscr{G}(U_i), f_{ij}'\in \mathscr{F}(U_i\cap U_j)$使得$\beta(g_i')=h, \alpha(f_{ij}')=g_i'-g_j'$. 因为$\beta(g_i-g_i')=h-h=0$，由引理6.2，存在$f_i\in \mathscr{F}(U_i)$使得$\alpha(f_i)=g_i-g_i'$.
+				$$\alpha(f_{ij})-\alpha(f_{ij}')=(g_i-g_j)-(g_i'-g_j')=\alpha(f_i)-\alpha(f_j),$$
+			推出$f_{ij}-f_{ij}'-(f_i-f_j)\in Ker\ \alpha_{U_i\cap U_j}=\{0\}$，即有$f_{ij}-f_{ij}'=f_i-f_j$，即$[(f_{ij})]=[(f_{ij}')]$.	
+		\end{defn}
+		
+		\begin{theo} 设$0\rightarrow \mathscr{F}\xrightarrow{\alpha} \mathscr{G} \xrightarrow{\beta} \mathscr{H}\rightarrow 0$正合，则有
+				$$0\rightarrow H^0(X,\mathscr{F})\xrightarrow{\alpha^0} H^0(X,\mathscr{G})\xrightarrow{\beta^0} H^0(X,\mathscr{H})\xrightarrow{\delta^*} H^1(X,\mathscr{F})\xrightarrow{\alpha^1} H^1(X,\mathscr{G})\xrightarrow{\beta^1} H^1(X,\mathscr{H}).$$
+		
+		\end{theo}
+		
+		\begin{prf} 我们需要验证第三、四、五处的正合性.
+		\begin{enumerate}
+		\item[1.] $\Im\ \beta^0 \subset \Ker\ \delta^*$. 设$g\in \mathscr{G}(X), h=\beta(g)$. 在$\delta^*$的定义中取$g_i=g|_{U_i}$，则$\alpha(f_{ij})=g_i-g_j=0$，由$\alpha$单，$f_{ij}=0$，故$\delta^*h=[(f_{ij})]=0$，即$h\in \Ker\ \delta^*$.
+		\item[2.] $\Ker\ \delta^*\subset \Im\ \beta^0$. 设$h\in \Ker\ \delta^*$，设$\delta^*h=[(f_{ij})]=0$，则$f_{ij}=f_i-f_j$，$f_i\in \mathscr{F}(U_i)$. 推出$\alpha(f_{ij})=\alpha(f_i)-\alpha(f_j)$，即$g_i-g_j=\alpha(f_i)-\alpha(f_j)$，其中$\beta(g_i)=h$，则$g_i-\alpha(f_i)=g_j-\alpha(f_j)$于$U_i\cap U_j$，故存在$g\in \mathscr{G}(X)$使得$g|_{U_i}=g_i-\alpha(f_i)$在$U_i$上，且
+			$\beta(g)=\beta(g_i)-\beta\circ \alpha(f_i)=h$于$U_i$，$\forall i$. 则$h\in \Im\ \beta^0$.
+		\item[3.] $\Im\ \delta^*\subset \Ker\ \alpha^1$. 设$\delta^*h=[(f_{ij})]$. 因为$\alpha(f_{ij})=g_i-g_j$，所以$\delta^*h\in \Ker\ \alpha^1$.
+		\item[4.] $\Ker\ \alpha^1\subset Im\ \delta^*$. 设$\xi\in \Ker\ \alpha^1$, $\xi=[(f_{ij})]$. 因为$\alpha^1(\xi)=0$，所以$\alpha(\xi_{ij})=g_i-g_j$，其中$g_i \in \mathscr{G}(U_i)$. 推出$0=\beta \circ \alpha(f_{ij})=\beta(g_i)-\beta(g_j)$于$U_i\cap U_j$. 故存在$h\in \mathscr{H}(X)$使得$h|_{U_i}=\beta(g_i)$. 由$\delta^*$定义，$\delta^*h=\xi$.
+		\item[5.] $\Im\ \alpha^1\subset \Ker\ \beta^1$. 因为$\mathscr{F}(U_i\cap U_j)\xrightarrow{\alpha} \mathscr{G}(U_i\cap U_j) \xrightarrow{\beta} \mathscr{H}(U_i\cap U_j)$正合
+		\item[6.] $\Ker\ \beta^1\subset \Im\ \alpha^1$.\par
+			\qquad 设$\eta=[(g_{ij})]\in \Ker\ \beta^1$，其中$(g_{ij})\in Z^1(\mathscr{U},\mathscr{G})$. 则$\beta(g_{ij})=h_i-h_j$，其中$h_i\in \mathscr{H}(U_i)$.\par
+			\qquad 对于任意$x\in X$，存在$\tau x\in I$，使得$x \in U_{\tau x}$. 因为$\beta_x:\mathscr{G}_x\rightarrow \mathscr{H}_x$是满射，所以存在邻域$x\in V_x\subset U_{\tau x}$使得存在$g_{x}\in \mathscr{G}(V_x)$使得$\beta(g_x)=h_{\tau x}|_{V_x}$.\par
+			\qquad 令$\tilde{g}_{xy}:=g_{\tau x, \tau y}|_{V_x\cap V_y}$. 考虑$\mathscr{V}=\{V_x\}_{x\in X}$，因为$\mathscr{V}<\mathscr{U}$，所以$\eta=[(\tilde{g}_{xy})]$. 令$\psi_{xy}:=\tilde{g}_{xy}-g_x+g_y$，则$\eta=[(\psi_{xy})]$且$\psi_{xy}\in \Ker\ \beta$:
+				$$\beta(\psi_{xy})=\beta(\tilde{g}_{xy})-\beta(g_x)+\beta(g_y)=h_{\tau x}-h_{\tau y}-h_{\tau x}+h_{\tau y}=0.$$
+		由引理1.6.2，存在$f_{xy}\in \mathscr{F}(V_x\cap V_y)$使得$\alpha(f_{xy})=\psi_{xy}$. 因为$\psi_{xy}+\psi_{yz}+\psi_{zx}=0$，所以$\alpha(f_{xy}+f_{yz}+f_{zx})=0$，又$\alpha$单，故$f\in Z^1(\mathscr{V},\mathscr{F})$，且$\alpha^1\left([(f_{ij})]\right)=\eta$.
+		\end{enumerate}
+		\end{prf}
+		
+		\begin{theo}
+			设$0\rightarrow \mathscr{F}\xrightarrow{\alpha} \mathscr{G} \xrightarrow{\beta} \mathscr{H}\rightarrow 0$正合，且$H^1(X,\mathscr{G})=0$，则
+					$$H^1(X,\mathscr{F})\cong \mathscr{H}(X)/\beta \left(\mathscr{G}(X)\right).$$
+		\end{theo}
+		
+		\begin{theo} Dolbeault.设 $X$是Riemann面，则\par
+			1. $H^1(X,\mathcal{O})\cong \mathcal{E}^{(0,1)}(X)/d''\mathcal{E}(X)$.\par
+			2. $H^1(X, \Omega)\cong \mathcal{E}^2(X)/d\mathcal{E}^{(1,0)}(X)$.
+		
+		\end{theo}
+		
+		\begin{prf}
+			由$$0\rightarrow \mathcal{O} \xrightarrow{\iota} \mathcal{E} \xrightarrow{d''} \mathcal{E}^{(0,1)} \rightarrow 0$$
+		正合及$H^1(X,\mathcal{E})=0$.\par
+		
+			由$$0\rightarrow \Omega\xrightarrow{\iota} \mathcal{E}^{(1,0)} \xrightarrow{d} \mathcal{E}^2 \rightarrow 0$$正合及$H^1(X,\mathcal{E}^{(1,0)})=0$.
+
+		
+		\end{prf}
+		
+		
+		\begin{defn}
+			$X$是Riemann面，称
+				$$Rh^1(X):=\frac{\Ker\left(d: \mathcal{E}^1\rightarrow \mathcal{E}^2\right)}{\Im\left(d:\mathcal{E}\rightarrow \mathcal{E}^1\right)}$$
+			为一阶de Rham上同调群.
+		\end{defn}
+		
+		\begin{theo} de Rham
+			$$H^1(X,\mathbb{C})\cong Rh^1(X).$$
+		\end{theo}
+		
+		\begin{prf}
+			$$0\rightarrow \mathbb{C} \rightarrow \mathcal{E} \xrightarrow{d} \Ker(d:\mathcal{E}^1\rightarrow\mathcal{E}^2)\rightarrow 0$$
+		正合，且$H^1(X,\mathcal{E})=0$即得.
+		\end{prf}
+		
+
+	\section{紧Riemann面}
+	
+	\subsection{Riemann-Roch定理}
+		\begin{defn}
+			$X$是Riemann面，$X$上一个除子(divisor)指一个映射$D:X\rightarrow \mathbb{Z}$使得对于任意紧集$K\subset X$，只有有限个$x\in K$使得$D(x)\neq 0$.\par
+			
+			记$\Div(X)$为$X$上除子全体，配以加法运算后，其为一个Abel群.\par
+			
+			设$D, D'\in \Div(X)$，定义$D\leq D'$等价于$\forall x\in X$, $D(x)\leq D'(x)$.
+		\end{defn}	
+		
+		\begin{exam}
+			设$0\neq f\in \mathcal{M}(X)$，对$x\in X$，定义
+				$$\ord_xf= \begin{cases} 0, &f(x)\neq 0\text{且} f\in \mathcal{O}_x\\
+						k, &x\text{为}f\text{的}k\text{阶零点}\\
+						-k, &x\text{为}f\text{的}k\text{阶极点}
+					\end{cases},$$
+		则$x\mapsto \ord_xf \in \Div(X)$，记为$(f)$.
+		\end{exam}
+		
+		\begin{exam}
+			设$0\neq \omega\in \mathcal{M}^1(X)$，对于任意$x\in X$，在$x$的某坐标邻域使得$z(x)=0$，$\omega=fdz$，定义$\ord_x\omega:=\ord_0 f$. 验证其与局部坐标选取无关.\par
+			
+			则$x\mapsto \ord_x \omega\in \Div(X)$，记为$(\omega)$，称为典范除子canonical divisor.
+		
+		
+		设$f,g\in \mathcal{M}(X)\backslash \{0\}$，$\omega\in \mathcal{M}^1(X)\backslash \{0\}$，则$(f\cdot g)=(f)+(g)$，$(f\cdot \omega)=(f)+(\omega)$，$(\frac{1}{f})=-(f)$.
+		\end{exam}
+		
+		\begin{defn}
+			称一个除子$D\in \Div(X)$为一个主除子，若存在$f\in \mathcal{M}\backslash \{0\}$使得$D=(f)$.\par
+			
+			对于$D, D'\in \Div(X)$，则定义$D\sim D'$当且仅当$D-D'$是主除子.
+		\end{defn}
+		
+		\begin{exam}
+			设$\omega_1,\omega_2\in \mathcal{M}^1(X) \backslash\{0\}$，则$(\omega_1)\sim (\omega_2)$.\par
+			
+			设$\omega \in \mathcal{M}^1(X)$，设$(U,z_U), (V,z_V)$是两个局部坐标. 设$\omega=\begin{cases} f_Udz_U,\ \text{on} \ U\\ f_Vdz_V,\ \text{on}\ V \end{cases}$, 则$f_U=f_V\cdot \frac{\partial z_V}{\partial z_U}$于$U\cap V$.\par
+			
+			设在局部坐标下，$\omega_1=f_1 dz, \omega_2=f_2dz$，定义$f:=\frac{\omega_1}{\omega_2}=\frac{f_1}{f_2}\in \mathcal{M}\backslash \{0\}$，则$(\omega_1)-(\omega_2)=(f)$，进而$(\omega_1)\sim (\omega_2)$.
+		\end{exam}
+
+		\begin{defn} $X$是紧Riemann面，定义映射
+			\begin{align*}
+				\deg: \Div(X) &\rightarrow \mathbb{Z}\\
+					D &\mapsto \deg D:=\sum\limits_{x\in X} D(x)
+			\end{align*}
+		称其为$D$的阶.
+		\end{defn}
+		
+		对于任意$f\in \mathcal{M}(X)\backslash \{0\}$，则$\# f^{-1}(0)= \#f^{-1}(\infty)$，则$\deg (f)=0$. 故若$D\sim D'$，则$\deg D=\deg D'$.
+
+
+		\begin{defn}
+			给定$D\in \Div(X)$，$U\subset X$开集，定义
+				$$\mathcal{O}_D(U):=\{f\in \mathcal{M}(U): \ord_xf\geq -D(x), \forall x\in U\}$$
+		配以通常的限制映射，其诱导出一个$X$上的层$\mathcal{O}_D$.
+		\end{defn}
+		
+		
+		\begin{prop} $\mathcal{O}_D$的基本性质.\par
+			1. 若$D=0$，则$\mathcal{O}_D=\mathcal{O}$.\par
+			2. 若$D\sim D'$，则$\mathcal{O}_D \cong \mathcal{O}_{D'}$.
+		
+		\end{prop}
+		
+		\begin{prf}
+			2. 对于任意$\psi \in \mathcal{M}(X)\backslash \{0\}$使得$D-D'=(\psi)$. 定义同构
+				\begin{align*}
+					\mathcal{O}_D(U) &\rightarrow \mathcal{O}_{D'}(U)\\
+						f&\mapsto f\cdot \psi
+				\end{align*}
+		$(f\cdot \psi)=(f)+(\psi)\geq -D+(\psi)=-D'$. 类似定义
+				\begin{align*}
+					\mathcal{O}_{D'}(U) &\rightarrow \mathcal{O}_{D}(U)\\
+						g&\mapsto g/\psi
+				\end{align*}
+		再验证即可.
+		\end{prf}
+		
+		\begin{theo}
+			$X$是紧Riemann面，$D\in \Div(X)$使得$\deg D<0$，则$H^0(X, \mathcal{O}_D)=0$.
+		\end{theo}
+		
+		\begin{prf}
+			假设存在$f\in H^0(X, \mathcal{O}_D)\backslash \{0\}$，使得$f\geq -D$. $0=\deg(f)\geq -\deg D>0$，矛盾.
+		\end{prf}
+		
+		\begin{defn}
+			固定$p\in X$，对于$U\subset X$开集，定义
+				 $\mathbb{C}_p(U):=\begin{cases} \mathbb{C}, &p\in U\\ 0, &p\notin U\end{cases}$,
+		其诱导出$X$上的一个层$\mathbb{C}_p$，称其为一个摩天大楼层.
+		\end{defn}
+		
+		\begin{lem}
+			1. $H^0(X, \mathbb{C}_p)\cong \mathbb{C}$.\qquad  2. $H^1(X,\mathbb{C}_p)=0$.
+		\end{lem}
+		
+		\begin{prf}
+			1. $H^0(X,\mathbb{C}_p)\cong \mathbb{C}_p(X)=\mathbb{C}$.\par
+			2. 设$\zeta=[(f_{ij})\in H^1(X,\mathbb{C}_p)]$，其中$(f_{ij})\in Z^1(\mathscr{U},\mathbb{C}_p)$，$\mathscr{U}$是$X$的一个开覆盖. 取$\mathscr{U}$的一个加细$\mathscr{V}=\{V_\alpha\}$使得只有一个$V_\alpha \ni p$，即$p \notin V_\alpha\cap V_\beta$，$\forall \beta\neq \alpha$. 即得$\zeta=0$.
+		
+		\end{prf}
+		
+		\begin{defn}
+		设$p \in X$，定义单点除子$P$为在$p$点取值为$1$，在其它点取值为$0$的除子.\par
+		\end{defn}
+		
+		对于任意$D\in \Div(X)$，有$D\leq D+P$，故存在包含同态$\iota: \mathcal{O}_D \rightarrow \mathcal{O}_{D+P}$是一个层同态.\par
+		取复坐标$z$使得$z(p)=0$，定义层同态$\beta: \mathcal{O}_{D+P}\rightarrow \mathbb{C}_p$如下\par
+		设$U\subset X$是开集，若$p\notin U$，则定义$\beta_U:=0$. 若$p\in U$，则对于任意$f\in \mathcal{O}_{D+P}(U)$，在$p$的某邻域有Laurant展开$f(z)=\sum\limits_{n=-k-1}^\infty c_n\cdot z^n$，其中$k=D(p)$. 此时，定义$\beta_U(f):=c_{-k-1}\in \mathbb{C}=\mathbb{C}_p(U)$.\par
+		则
+			$$0\rightarrow \mathcal{O}_D \xrightarrow{\iota} \mathcal{O}_{D+P} \xrightarrow{\beta} \mathbb{C}_p \rightarrow 0$$
+	正合. 进而有长正合列
+			$$0\rightarrow H^0(X, \mathcal{O}_D) \rightarrow H^0(X, \mathcal{O}_{D+P}) \rightarrow \mathbb{C} \rightarrow H^1(X, \mathcal{O}_D) \rightarrow H^1(X, \mathcal{O}_{D+P})\rightarrow 0.$$
+		
+		
+		\begin{theo} Riemann-Roch定理.\par
+				$X$是紧Riemann面，$D\in \Div(X)$，$g$是$X$的亏格，则$\dim H^0(X, \mathcal{O}_D)$和$\dim H^1(X, \mathcal{O}_D)$有限，且
+				$$\dim H^0(X, \mathcal{O}_D)-\dim H^1(X, \mathcal{O}_D)=1-g+\deg D.$$
+			
+		\end{theo}
+		
+		
+		\begin{prf} 当$D=0$时，$H^0(X, \mathcal{O})\cong \mathbb{C}$，故$\dim H^0(X, \mathcal{O})=1$，而$g=\dim H^1(X, \mathcal{O})$，$\deg D=0$.\par
+			设$D\in \Div(X)$，$p\in X$，令$D'=D+P$. 有长正合列
+		$$0\rightarrow H^0(X, \mathcal{O}_D) \rightarrow H^0(X, \mathcal{O}_{D'}) \rightarrow \mathbb{C} \rightarrow H^1(X, \mathcal{O}_D) \rightarrow H^1(X, \mathcal{O}_{D'})\rightarrow 0.$$
+		令$V:=\Im (H^0(X, \mathcal{O}_{D'})\rightarrow \mathbb{C})$, $W=\mathbb{C}/V$. 则$\dim V+\dim W=1=\deg D'-\deg D$. 于是有两个短正合列
+			$$0\rightarrow H^0(X, \mathcal{O}_D) \rightarrow H^0(X, \mathcal{O}_{D'}) \rightarrow V \rightarrow 0,$$
+			$$0\rightarrow W \rightarrow H^1(X, \mathcal{O}_D) \rightarrow H^1(X, \mathcal{O}_{D'})\rightarrow 0.$$
+		于是，
+			$$\dim H^0(X, \mathcal{O}_{D'})=\dim H^0(X, \mathcal{O}_D)+\dim V,$$
+			$$\dim H^1(X, \mathcal{O}_D)=\dim H^1(X, \mathcal{O}_{D'})+\dim W.$$
+			
+		由于任何除子$D=P_1+\cdots+P_m-Q_1-\cdots -Q_n$，且$\dim H^0(X, \mathcal{O}), \dim H^1(X,\mathcal{O})$有限，所以$\dim H^0(X, \mathcal{O}_D), \dim H^1(X, \mathcal{O}_D)$有限. 有
+		 	$$\dim H^0(X,\mathcal{O}_{D'})+\dim H^1(X, \mathcal{O}_D)= \dim H^0(X, \mathcal{O}_D)+\dim H^1(X, \mathcal{O}_{D'})+\deg D' -\deg D,$$
+		则	
+			$$\dim H^0(X, \mathcal{O}_{D'})-\dim H^1(X, \mathcal{O}_{D'})-\deg D'=\dim H^0(X, \mathcal{O}_{D})-\dim H^1(X, \mathcal{O}_{D})-\deg D,$$
+		于是若Riemann-Roch定理对$D, D'$中一个成立，则对另一个也成立.\par
+			由于任何一个$D\in \Div(X)$可写为$P_1+\cdots +P_m-Q_1-\cdots-Q_n$，故再由数学归纳法即得.
+		\end{prf}
+		
+		\begin{theo}
+			设$X$是亏格为$g$的紧Riemann面，设$a\in X$，则存在$f\in \mathcal{M}(X)$使得$f\in \mathcal{O}(X\backslash \{a\})$且$a$为$f$的极点且其阶不超过$g+1$.
+		\end{theo}
+		
+		\begin{prf}
+			取$D\in \Div(X)$如下，$D(X)=\begin{cases} g+1, &x=a\\ 0, &x\neq a\end{cases}$. 由Riemann-Roch定理，
+				$$\dim H^0(X, \mathcal{O}_D)\geq 1-g +\deg D=1-g+g+1=2.$$
+		故存在非常值函数$f\in H^0(X, \mathcal{O}_D)$其满足要求.
+		\end{prf}
+		
+		\begin{coro}
+			$X$是紧Riemann面，$g$是亏格，则存在分歧全纯覆盖$f:X\rightarrow \mathbb{P}^1$，其叶数不超过$g+1$.
+		
+		\end{coro}
+		
+		\begin{prf}
+			取$f$如上一个定理，其定义了全纯映射$X\rightarrow \mathbb{P}^1$，其在$\infty$的重数不超过$g+1$.
+		\end{prf}
+		
+		\begin{coro}
+			亏格为$0$的紧Riemann面$\cong \mathbb{P}^1$.（双全纯等价）
+		\end{coro}
+		
+		\begin{prf}
+			由上一个推论知叶数为$1$，而叶数为$1$的覆盖映射必双全纯.
+		\end{prf}
+		
+		
+	
+		\subsection{Serre对偶定理}
+			此节假设$X$是紧Riemann面.\par
+			
+			\begin{defn}
+			若$D\in \Div(X)$，对$U\subset X$开集，定义
+		$$\Omega_D(U)=\{\omega\in \mathcal{M}^1(U): (\omega)\geq -D \ \text{于}\ U\},$$
+诱导出层$\Omega_D$.
+			\end{defn}
+			
+			\begin{theo} Serre对偶定理.
+				$$H^1(X, \mathcal{O}_D)\cong H^0(X, \Omega_{-D})$$
+				$$H^1(X, \Omega_D)\cong H^0(X, \mathcal{O}_{-D})$$
+			
+			\end{theo}
+		
+			\begin{rem}
+				1. 当$D=0$时，$\dim H^0(X, \Omega)=\dim H^1(X, \mathcal{O})=g$.\par
+				2. 设$K$是典范除子，$\Omega_{-K}\cong \mathcal{O}$，$\Omega\cong \mathcal{O}_K$.
+			\end{rem}
+		
+			\begin{prf}
+				设$K=(\omega)$，对$\omega_1\in \Omega_{-K}(U)$，则$(\omega_1)\geq K=(\omega)$，则$f=\omega_1/\omega \in \mathcal{O}(U)$，这定义了一个从$\Omega_{-k}(U)$到$\mathcal{O}(U)$的同构.
+			\end{prf}
+		
+			\begin{rem}
+				R. Narasinhan, Compact Riemannian Surfaces.
+			\end{rem}
+		
+			\begin{theo}
+				设$\omega\in \mathcal{M}^1(X)\backslash \{0\}$，则$\deg (\omega)=2g-2$. 特别地，若$\omega\in \Omega(X)\backslash \{0\}$，则其零点个数为$2g-2$.
+			\end{theo}
+		
+			\begin{prf}
+				设$K=(\omega)$，由Riemann-Roch定理，$\dim H^0(X,\mathcal{O}_K)-\dim H^1(X, \mathcal{O}_K)=1-g+\deg K$，而
+				$$\text{LHS}=\dim H^1(X, \Omega_{-K})-\dim H^0(X, \Omega_{-K})=\dim H^1(X, \mathcal{O})-\dim H^0(X, \mathcal{O})=g-1,$$
+			故$\deg K=2g-2$.
+			\end{prf}
+			
+			\begin{coro}
+				环面$\mathbb{C}/\Gamma$的亏格为$1$.
+			
+			\end{coro}
+		
+			\begin{prf}
+				$dz$关于$\Gamma$不变，其诱导出$\mathbb{C}/\Gamma$上的一个全纯1-形式$\omega$，其无零点，进而$0=\deg \omega=2g-2$推出$g=1$.
+			\end{prf}
+		
+			
+			\begin{theo}
+				若$g\geq 1$，则对于任意$p\in X$，存在$\omega\in \Omega(X)$使得$\omega|_p\neq 0$.
+			
+			\end{theo}
+		
+			\begin{prf}
+				因为$X$不同构于$\mathbb{P}^1$，所以$\dim H^0(X, \mathcal{O}_P)=1$（否则存在非常值$f\in H^0(X, \mathcal{O}_P)$且$(f)\geq -P$推出$X\cong \mathbb{P}^1$，矛盾.）\par
+				由Serre对偶，$\dim H^1(X, \Omega_{-P})=\dim H^0(X, \mathcal{O}_P)=1$，由Riemann-Roch定理，
+					$$\dim H^0(X, \Omega_{-P})=\dim H^1(X, \Omega_{-P})+1-g+\deg K-1=g-1=\dim H^0(X, \Omega)-1,$$
+			推出存在$\omega\in H^0(X, \Omega)\backslash H^0(X, \Omega_{-P})$，则$\omega|_p\neq 0$.
+			\end{prf}
+			
+			
+			\begin{theo}
+				$D\in \Div(X)$，$\deg D>2g-2$，则$H^1(X, \mathcal{O}_D)=0$.
+			\end{theo}
+			
+			\begin{prf}
+				取$K$为典范除子，
+				\begin{align*}
+					\dim H^1(X, \mathcal{O}_D)&=\dim H^0(X, \Omega_{-D}) (Serre)\\
+						&=\dim H^0(X, \mathcal{O}_{K-D})\\
+						&=0
+				\end{align*}
+			因为$\deg(K-D)=2g-2-\deg D<0$.
+			\end{prf}
+			\begin{rem}
+				多元的情形即为Kodaira消灭定理.
+			\end{rem}
+			
+			
+			\begin{coro}
+				$H^1(X, \mathcal{M})=0$.
+			\end{coro}
+			
+			\begin{prf}
+				设$\xi=[(f_{ij})]\in H^1(X, \mathcal{M})$，其中$(f_{ij})\in Z^1(\mathscr{U}, \mathcal{M})$，$\mathscr{U}$是$X$的开覆盖.\par
+				取$\mathscr{V}=\{V_i\}<<\mathscr{U}=\{U_i\}, i=1,2,\cdots,n$. 因为$\overline{V_i}\cap \overline{V_j}\subset U_i\cap U_j$，所以存在$D\in \Div(X)$使得$\deg D>2g-2$且$(f_{ij})\geq -D$于$\overline{V_i}\cap \overline{V_j}$. 推出$(f_{ij}|_{V_i\cap V_j})\in Z^1(\mathscr{V}, \mathcal{O}_D)$.\par
+				因为$H^1(\mathscr{V}, \mathcal{O}_D)=0$，所以$f_{ij}=f_i-f_j$于$V_i\cap V_j$，其中$f_i\in C^0(V_i,\mathcal{O}_D)\subset C^0(V_i, \mathcal{M})$，故$\xi=0$.
+			\end{prf}
+			
+			\begin{defn}
+				设$D\in \Div(X)$，称$\mathcal{O}_D$为整体生成的，若$\forall x\in X$，存在$f\in H^0(X,\mathcal{O}_D)$使得$\ord_x f=-D(x)$.
+			\end{defn}
+			
+			\begin{theo}
+				若$\deg D\geq 2g$则$\mathcal{O}_D$是整体生成的.
+			\end{theo}
+			
+			\begin{prf}
+				令$D'(y):=\begin{cases} D(y), &y\neq x\\ D(x)-1, &y=x\end{cases}$. 则$D'\in \Div(X)$使得$\deg D'=\deg D-1\geq2g-1> 2g-2$. 推出$H^1(X,\mathcal{O}_D)=H^1(X, \mathcal{O}_{D'})=0$.\par
+				由Riemann-Roch定理，$\dim H^0(X, \mathcal{O}_D)> \dim H^0(X, \mathcal{O}_{D'})$.\par
+				因为$H^0(X, \mathcal{O}_{D'})\subset H^0(X, \mathcal{O}_D)$（$(f)\geq -D'\geq -D$），所以只需取$f\in H^0(X, \mathcal{O}_D)\backslash H^0(X, \mathcal{O}_{D'})$.
+			\end{prf}
+			
+			\begin{defn} $N$维复射影空间$\bbP^N$.\par
+				令$\mathbb{P}^N:=\mathbb{C}^{N+1}/\sim$，其中$(z_0,\cdots,z_N)\sim (z_0',\cdots,z_N')$等价于存在$\lambda\in \mathbb{C}^*$使得$z_j'=\lambda\cdot z_j, 0\leq j\leq N$.\par
+				设$[z_0;z_1;\cdots;z_N]$为由$(z_0,\cdots,z_N)$所代表的等价类. 令$U_j:=\{[z_0;\cdots;z_N]: z_j\neq 0\}$，则$\{U_j\}_{j=0}^N$是一个开覆盖. 考虑同胚$\varphi_j:U_j\rightarrow \mathbb{C}^n$，$[z_0;\cdots;z_N]\mapsto (\frac{z_0}{z_j},\cdots,\frac{z_{j-1}}{z_j} ,\frac{z_{j+1}}{z_j},\cdots,\frac{z_N}{z_{j}})$为一个复坐标.
+			\end{defn}
+		
+			\begin{defn}
+				$X$是紧Riemann面，$F\in C(X,\mathbb{P}^N)$，则$\{W_j:=F^{-1}(U_j)\}$构成$X$的开覆盖. 令$F_j:=\varphi_j \circ F: W_j\rightarrow \mathbb{C}^N$，记$F_j=(F_{j1},\cdots,F_{jN})$，若$\forall F_{j\nu}$全纯，则称$F_j$为全纯映射. 如果$\forall x\in X$，存在$W_j \ni x$，且存在$\nu$使得$dF_{j\nu}|_x\neq 0$，则称$F$是全纯浸入. 称$F$为全纯嵌入，若$F$是全纯浸入且$F$是单射.
+			\end{defn}
+			
+			设$f_0,\cdots,f_N\in \mathcal{M}\backslash \{0\}$，则构造全纯映射$F:=[f_0:f_1:\cdots:f_N]: X\rightarrow \mathbb{P}^N$如下：\par
+			对于任意$x\in X$，取坐标$z$使得$z(x)=0$. 令$k=\min\limits_{0\leq j\leq N} \ord_x f_j$. 则$f_j=z^k\cdot g_j, g_j\in \mathcal{O}_x$，且至少有一个$g_j(x) \neq 0$. 则令$F(x):=[g_0(x):g_1(x):\cdots:g_N(x)]$. 而
+				$$F_j=(\frac{g_0}{g_j},\cdots,\frac{g_{j-1}}{g_j},\frac{g_{j+1}}{g_j},\cdots, \frac{g_N}{g_j})\in \mathcal{O}_x^{\oplus N}.$$
+			
+			\begin{theo}
+				设$D\in \Div(X)$使得$\deg D\geq 2g+1$，设$f_0,\cdots,f_N\in H^0(X, \mathcal{O}_D)$的一组基，则
+						$$F:[f_0:f_1:\cdots:f_N]:X\hookrightarrow \mathbb{P}^N$$
+			为一个全纯嵌入.
+			\end{theo}
+			
+			\begin{rem}多复变\par
+			若$X$是非紧的Riemann面，则$X$可以作为闭一维复子流形全纯嵌入到$\mathbb{C}^3$中.
+			\end{rem}
+			
+			\begin{prf} 我们只需证明$F$是单浸入.\par
+				\begin{enumerate} 
+					\item[1.] $F$是单射.\par
+					\qquad 作$D' \in \Div(X)$如下：$D'(x)=\begin{cases} D(X), &x\neq x_2\\ D(x_2)-1, &x=x_2\end{cases}$. 因为$\deg D'=\deg D-1\geq 2g$，所以$\mathcal{O}_{D'}$是整体生成的. 于是存在$f\in H^0(X,\mathcal{O}_{D'})$使得
+						$$\ord_{x_1} f=-D'(x_1)=-D(x_1).$$
+					显然
+						$$\ord_{x_2} f\geq -D'(x_2)=-D(x_2)+1.$$
+					因为$H^0(X,\mathcal{O}_{D'})\subset H^0(X,\mathcal{O}_D)$，所以$f=\sum\limits_{j=0}^N \lambda_jf_j, \lambda_j\in \mathbb{C}$.\par
+					\qquad 取$x_1, x_2$处的坐标$(V_1,z_1), (V_2,z_2)$使得$z_1(x_1)=z_2(x_2)=0$. 因为$\mathcal{O}_D$是整体生成的，$k_\mu:=\min_j \ord_{x_\mu} f_j=-D(x_\mu), \mu=1,2$.\par
+					\qquad 在$x_\mu$附近，$f_j=z_\mu^{k_\mu}\cdot g_{\mu j}$，$f=z_\mu^{k_\mu} \cdot g$, 其中$g_{\mu j}, g \in \mathcal{O}_{x_\mu}, \mu=1,2$. 推出$F(x_\mu)=[g_{\mu 0}:g_{\mu 1}:\cdots: g_{\mu N}]$且$\sum\limits_{j=0}^N \lambda_j g_{\mu j} (x_\mu)=g(x_\mu), \mu=1,2$.\par
+					\qquad 由$\ord_{x_1} f=-D'(x_1)=-D(x_1)$推出$g(x_1)\neq 0$，由$\ord_{x_2} f\geq -D'(x_2)=-D(x_2)+1$推出$g(x_2)=0$. 则$F(x_1)\neq F(x_2)$. 若否，则存在$\lambda\in \mathbb{C}$使得$g_{\mu j}(x_1)=g_{\mu j}(x_2)\cdot \lambda$. 则	
+					$$0\neq g(x_1)=\sum\limits_{j=0}^N \lambda_j g_{\mu j}(x_1)=\lambda \cdot \sum\limits_{j=0}^N \lambda_j g_{\mu j}(x_2)=\lambda \cdot g(x_2)=0,$$
+				得到矛盾.
+					\item[2.] $F$是浸入.\par
+					\qquad 设$x_0\in X$，取$D'\in \Div(X)$如下：$D'(x)=\begin{cases} D(X), &x\neq x_0\\ D(x_0)-1, &x=x_0\end{cases}$. 取$f\in H^0(X,\mathcal{O}_{D'})\subset H^0(X,\mathcal{O}_D)$使得
+						$$\ord_{x_0}f=-D'(x_0)=-D(x)+1.$$
+					\qquad 设$f=\sum\limits_{j=0}^N \lambda_j f_j$. 取$k=\min_j \ord_{x_0}f_j=-D(x_0)$使得取$x_0$处复坐标$z$使得$f_j=z^k\cdot g_j, f=z^k \cdot g$, 其中$g_i,g\in \mathcal{O}_{x_0}$. 不妨设$g_0(x_0)\neq 0$. 则$F_0:=\varphi_0\cdot F:W_0=F^{-1}(U_0)\rightarrow \mathbb{C}^N$,
+						$$F_0=(F_{01},\cdots,F_{0N})=(\frac{g_1}{g_0},\cdots,\frac{g_N}{g_0}).$$
+						
+						$$\sum\limits_{j=1}^N \lambda_j F_{0j}=\sum\limits_{j=1}^N \frac{\lambda_jg_j}{g_0}=\frac{g}{g_0}-\lambda_0$$
+					推出
+						$$\sum\limits_{j=1}^N \lambda_jdF_{oj}(x_0)=d(\frac{g}{g_0})(x_0).$$
+				因为$g(x_0)\neq 0$, 且$\ord_{x_0}f=-D'(x_0)=-D(x)+1$推出$\ord_{x_0}=1$. 所以
+					$$d(\frac{g}{g_0})(x_0)=\frac{dg(x_0)}{g_0(x_0)}-\frac{g(x_0)\cdot dg_0(x_0)}{g_0(x_0)^2}=\frac{d g(x_0)}{g(x_0)}\neq 0$$
+				故存在某个$j$使得$dF_{0j}(x_0)\neq 0$，故$F$是浸入.
+				\end{enumerate}
+			\end{prf}
+			
+			\begin{rem}
+				$N+1=\dim H^0(X,\mathcal{O}_D)= 1-g+\deg\ D\geq g+2$，因此$X\hookrightarrow \mathbb{P}^{g+1}$，其中$g$是$X$的亏格. 特别地，$\mathbb{C}/\Gamma \hookrightarrow \mathbb{P}^2$.
+				一般地，任意紧Riemann面$X\hookrightarrow \mathbb{P}^3$.
+			\end{rem}
+			
+			\begin{rem}
+				若$X$是非紧Riemann面，则存在逆紧全纯嵌入$X\hookrightarrow \mathbb{C}^3$(Bishop-Narasimhan-Remmert). \par
+				Conjecture: 存在逆紧全纯嵌入$X\hookrightarrow \mathbb{C}^2$.
+			\end{rem}
+			
+			\begin{defn}
+			$X, Y$是紧Riemann面，非常值映射$F\in \mathcal{O}(X,Y)$. 令$f$在$x$处的重数$\nu(f,x):=\# (f^{-1}(y)\cap U)$，这里$U\ni x$是充分小邻域，$y\neq f(x)$但充分接近于$f(x)$.\par
+			称$b(f,x)=\nu(f,x)-1$为$f$在$x$处的分歧阶(分歧：branch). 令$b:=\sum\limits_{x\in X}b(f,x)$.\par
+			称$n:=\sum\limits_{x\in f^{-1}(y)} \nu(f,x)$为$f$的叶数. $g$和$g'$分别是$X$和$Y$的亏格.
+			\end{defn}
+			
+			\begin{theo} Riemann-Hurwitz定理.
+				$$g=\frac{b}{2}+n(g'-1)+1.$$
+			\end{theo}
+			
+			\begin{rem} 推出$b$是偶数.\end{rem}
+			
+			\begin{prf}
+				设$\omega\in \mathcal{M}^1(Y)\backslash \{0\}$，由Riemann Roch定理，$\deg \omega=2g'-2$. 而$f^*\omega\in \mathcal{M}^1(X)\backslash \{0\}$，再由Riemann-Roch定理，$\deg f^*\omega=2g-2$.\par
+				设$x\in X$，$y=f(x)\in Y$. 取$x, y$处的坐标$z, w$使得$z(x)=w(y)=0$，且$f$可表示为$w=z^k$，$k=\nu(f,x)$.
+				设$\omega=\psi(w)dw$，则$f^*\omega=\psi(z^k)dz^k=kz^{k-1}\psi(z^k)dz$. 于是有
+					$$\ord_x f^*\omega=b(f,x)+\nu(f,x)\cdot \ord_y \omega.$$
+				推出
+					$$\sum\limits_{x\in f^{-1}(y)}\ord_x f^*\omega=\sum\limits_{x\in f^{-1}(y)} b(f,x)+n\cdot \ord_y\omega.$$
+				故	
+					\begin{align*}
+						\deg f^*\omega&=\sum\limits_{x\in X}\ord_x f^*\omega\\
+							&=\sum\limits_{y\in Y} \sum\limits_{x\in f^{-1}(y)} \ord_x f^*\omega\\
+							&=\sum\limits_{y\in Y}\sum\limits_{x\in f^{-1}(y)} b(f,x)+n\sum\limits_{y\in Y}\ord_y \omega\\
+							&=b+n\cdot \deg \omega.
+					\end{align*}
+			\end{prf}
+			
+			\begin{exam}
+				当$Y=\mathbb{P}^1$时，则$g=\frac{b}{2}-n+1$.\par
+				特别地，当$n=2$时，$g=\frac{b}{2}-1$，此时称$X$为超椭圆的.
+			\end{exam}
+			
+			
+		
+		\subsection{除子与线丛，Serre定理证明}	
+			
+		\begin{defn}
+			$X$是Riemann面，$X$上一个全纯线丛指$L=\bigcup\limits_{i\in I} U_i\times \mathbb{C}/\sim$，其中$\mathscr{U}=\{U_i\}_{i\in I}$为$X$的一个开覆盖，$(x,v)\in U_i\times \mathbb{C}\sim (y,w)\in U_j\times \mathbb{C}$等价于$x=y$且$v=g_{ij}(x)\cdot w$，其中$g_{ij}\in \mathcal{O}^*(U_i\cap U_j)$满足$g_{ij}\cdot g_{jk}=g_{ik}$于$U_i\cap U_j \cap U_k$. 称$\{g_{ij}\}$为$L$的转换函数.
+		\end{defn}
+		
+		\begin{defn}
+			设$U\subset X$为开集，$L$在$U$上的一个全纯截影指一族$(f_i)_{i\in I}$，其中$f_i\in \mathcal{O}(U\cap U_i)$使得$f_i=g_{ij}\cdot f_j$于$U\cap U_i \cap U_j$. 记$\Gamma(U,L)=\{L$在$U$上的全纯截影$\}$. 其诱导出一个层，记为$\mathcal{O}_L$.
+		\end{defn}
+			
+		\begin{defn}
+			$L$在$U$上的一个亚纯截影指一个$f\in \Gamma(X',L)$，其中$X'\subset X$开，满足\par
+				1. $X\backslash X'$离散.\par
+				2. $\forall a\in X\backslash X'$，存在$a$处坐标$(U,z)$使得$z(a)=0$且存在$n\in \mathbb{Z}^+$使得$z^n\cdot f\in \Gamma(U,L)$.
+		\end{defn}
+		
+		\begin{exam} 一些例子.\par
+			1. 平凡线丛$L=X\times \mathbb{C}$. 此时$g_{ij}=1$，$\mathcal{O}=\mathcal{O}_L$.\par
+			2. 设$\{(U_i,z_i)\}_{i\in I}$为$X$的一个坐标邻域覆盖. 定义$g_{ij}:=\frac{dz_j}{dz_i}$，称以$\{g_{ij}\}$为转换函数诱导的全纯线丛为$X$上的典范线丛$K_X$（即为$X$上的全纯余切丛）.\par
+			3. $L, L'$为$X$上全纯线丛，转换函数$\{g_{ij}\}, \{g_{kl}'\}$，取一个公共加细覆盖后，不妨设转换函数为$\{g_{ij}\}$于$\{g_{ij}'\}$，称以$\{g_{ij}\cdot g_{ij}'\}$为转移函数诱导出的全纯线丛为$L$与$L'$的张量积，记为$L\otimes L'$.\par
+			记$L^{\otimes m}=L\otimes L\otimes \cdots \otimes L$共$m$个做张量积. 称$K^{\otimes m}$为pluri-canonical line bundle，$P_m:=\Gamma(X, K^{\otimes m})$为pluri-genera.\par
+			4. 设$L$的转换函数为$\{g_{ij}\}$，以$\{g_{ij}^{-1}\}$为转移函数诱导出的全纯线丛为$L$的对偶线丛.\par
+			5. 设$D\in 、Div(X)$，取$X$的开覆盖$\mathscr{U}=\{U_i\}_{i\in I}$，以及$\psi_i\in \mathcal{M}(U_i)$, $i\in I$使得$(\psi_i)=D$于$U_i$. 则$g_{ij}:=\psi_i/\psi_j \in \mathcal{O}^*(U_i\cap U_j)$. 记$L_D$为以$\{g_{ij}\}$为转换函数的全纯线丛.
+		\end{exam}
+			
+		\begin{lem}
+				$$\mathcal{O}_D\cong \mathcal{O}_{L_D}.$$
+		\end{lem}
+			
+		\begin{prf}
+			设$U\subset X$为一个开集，$f \in \mathcal{O}_D(U)$则$(f)\geq -D$于$U$. 故$f_i:=f\cdot \psi_i\in \mathcal{O}(U\cap U_i)$. ($(f_i)=f(f)+(\psi_i)\geq -D+(\psi_i)=0$.)\par
+			在$U\cap U_i \cap U_j$上，$\frac{f_i}{\psi_i}=f=\frac{f_j}{\psi_j}$推出$f_i=g_{ij}f_j$，推出$(f_i)\in \Gamma(U, L_D)$.\par
+			反过来，设$(f_i)\in \Gamma(U,L_D)$，在$U\cap U_i\cap U_j$上，$f_i=g_{ij}f_j$，则$\frac{f_i}{\psi_i}=\frac{f_j}{\psi_j}$，推出$f|_{U\cap U_i}:=\frac{f_i}{\psi_i}\in \mathcal{M}(U)$，且使得$(f)=(f_i)-(\psi_i)\geq (-\psi_i)=-D$，$\forall U\cap U_i$，则$f\in \mathcal{O}_D(U)$.
+		\end{prf}
+		
+		\begin{defn}
+			设$L$是$X$上的全纯线丛，记$\pi:L\rightarrow X$，$[(x,v)]\mapsto x$为自然投影. 商映射$\bigcup\limits_{i\in I} U_i\times \mathbb{C}\rightarrow L$诱导出同胚$\Phi_i:\pi^{-1}(U_i)\rightarrow U_i\times \mathbb{C}$使得下图交换
+				$$\begin{tikzcd}
+					&\pi^{-1}(U_i) \dar["\pi"] \rar["\Phi_i"] &U_i \times \mathbb{C} \dlar\\
+					&U_i &
+				\end{tikzcd}$$
+			称$\Phi_i$为$L$在$U_i$上的平凡化. $\Phi_i\circ \Phi_j^{-1}(x,v)=(x,g_{ij}(x)v)$是全纯的. 说明$L$为一个二维复流形.\par
+			称$\xi_i:=\Phi_i^{-1}(x,1)$为$L$在$U_j$上的一个局部标架. 则有$\xi_j=g_{ij}\xi_i$.\par
+			
+			设$f=(f_i)\in \Gamma(U,L)$, $U\subset X$开，则$\tilde{f}|_{U\cap U_i}:=f_i \times \xi_i\in \mathcal{O}(U,L)$. 我们将$f$与$\tilde{f}$恒同起来（解释了为什么叫全纯截影）.
+		\end{defn}
+		
+		\begin{defn}
+			$L$上的一个Hermitian度量$h$指一族函数$\{h_i\}$，其中$0<h_i\in \mathcal{E}(U_i)$使得$h_i=h_j/\vert g_{ij}\vert^2$于$U_i\cap U_j$.\par
+			设$f\in \Gamma(U,L)$，$f=(f_i)$，其中$f_i\in \mathcal{O}(U\cap U_i)$，有$\vert f_i\vert^2 h_i=\vert f_j\vert^2 h_j$于$U\cap U_i\cap U_j$. 定义$\vert f\vert^2_h|_{U_i}:=\vert f_i\vert^2 \cdot h_i \in \mathcal{E}(U)$，称其为$f$关于$h$的点态长度的平方.
+		\end{defn}
+		
+		\begin{defn}
+			因为$d'd''(-\log h_i)=d'd''(-\log h_j)$于$U_i\cap U_j$，故定义$\Theta|_{U_i}:=id'd''(-\log h_i)\in \mathcal{E}^{(1,1)}(X)$称为$h$的曲率.
+		\end{defn}
+			
+		\begin{defn}
+			称$C(L):=\frac{1}{2\pi}\int_X \Theta_h$为$L$的Euler示性数或第一陈类.
+		\end{defn}
+				
+		\begin{theo} Gauss-Bonnet.\par
+			$X$是紧Riemann面，$D\in \Div(X)$，则$C(L_D)=\deg D$.
+		\end{theo}
+			
+		\begin{prf}
+			取$X$的（有限）坐标邻域覆盖$\mathscr{U}=\{(U_i,z_i)\}$以及$\psi\in \mathcal{M}(U_i)$使得$(\psi_i)=D$于$U_i$. 于是有$f=(\psi_i)\in \mathcal{M}(X,L_D)$.\par
+			设$D=\sum\limits_{k=1}^n n_k \cdot P_k$，$n_k\in \mathbb{Z}$, $P_k\in X$. 令$X'=X\backslash \{P_1,\cdots,P_n\}$则$f\in \Gamma(X',L_D)$且无零点. 则$\Theta_h=id'd''(-\log |f|_h^2)$于$X'$. 所以
+				$$C(L_D)=\frac{1}{2\pi}\int_{X'} \Theta_h=\frac{1}{2\pi}\int_{X'} id'd''(-\log \vert f\vert_h^2).$$
+			设$z_k$为$P_k$处坐标使得$z_k(P_k)=0$. 则$\xi_k$为$L$在$P_k$附近的一个局部标架.\par
+			设$f=z_k^{n_k}\cdot g_k \otimes \xi_k$于$P_k$附近，$g_k\in \mathcal{O}_{P_k}^*$，推出
+				\begin{align*}
+				C(L_D)&=\lim\limits_{\delta\to 0} \frac{1}{2\pi} \int_{X\backslash \bigcup_{k=1}^n \{\vert z_k\vert <\delta\} } idd'\log \vert f\vert_h^2\\
+				&=\lim\limits_{\delta\to 0} \frac{1}{2\pi i} \sum\limits_{k=1}^n \int_{\vert z_k\vert=\delta} d'\log  \vert f\vert_h^2\\
+				&=\lim\limits_{\delta \to 0} \sum\limits_{k=1}^n \frac{1}{2\pi i} \int_{\vert z_k\vert =\delta} (n_k \frac{dz_k}{z_k} +d'\log \vert g_k\otimes \xi_k \vert_h^2)\\
+				&=\sum\limits_{k=1}^n n_k =\deg D.
+				\end{align*}
+		\end{prf}
+			
+		\begin{rem}
+			设$g=\lambda^2 dz\otimes d\overline{z}$为$X$上一个Riemann度量，其可以看作$X$的全纯切丛$K^*$上的一个Hermitian度量.  记$\omega_g:=\frac{i}{2}\lambda^2 dz\wedge d\overline{z}$为$g$的Kähler形式. 称$K_g:=-\frac{2}{\lambda^2} \frac{\partial \log \lambda^2}{\partial z\partial \overline{z}}$为$g$的Gauss曲率. 则$\Theta_g=K_g\cdot \omega_g$. 则由上条定理推出
+				$$\frac{1}{2\pi} \int_X K_g\cdot \omega_g=-\deg K=2-2g=\chi(X).$$
+		其中$K$是Canonical divisor，$g$是$X$的“柄”的个数，$\chi(X)$是$X$的Euler示性数. 
+		\end{rem}
+
+		\begin{defn}
+			$X$是Riemann面，$L$是$X$上的全纯线丛，$U\subset X$开，与全纯截影类似可定义$C^\infty$截影，令
+					$$\calE_L(U):=\{L\text{在} U\text{上的} C^\infty \text{截影}\},$$
+					$$\calE_L^{(0,1)}(U):=\calE^{(0,1)}(U)\otimes \calE_L(U).$$
+		$\{\calE_L(U)\}, \{\calE_L^{(0,1)}(U)\}$诱导出层$\calE_L$和$\calE_L^{(0,1)}$.
+		\end{defn}
+
+		\begin{defn}
+			引入层同态$d'':\calE_L\rightarrow \calE_L^{(0,1)}$，设$U\subset X$开，$\scrU=\{U_i\}$为$X$的开覆盖使得$L_{U_i}$平凡.\par
+			设$S\in \calE_L(U)$，则$S=f_i\otimes \xi_i$于$U\cap U_i$，$f_i\in \calE(U_i\cap U)$. 定义$d''S|_{U\cap U_i}:=d''f_i\otimes \xi_i$. 则$d''S\in \calE_{L}^{(0,1)}(U)$: $f_i\otimes \xi_i=f_j\otimes \xi_j$于$U\cap U_i\cap U_j$, $f_i=g_{ij}f_j$，$\xi_i=g_{ij}^{-1}\xi_j$. 
+			\begin{align*}
+				d''f_i\otimes \xi_i&=d''(g_{ij}f_j)\otimes (g_{ij}^{-1}\xi_j)\\
+					&=g_{ij}d''f_j\otimes (g_{ij}^{-1}\xi_j)\\
+					&=d''f_j\otimes \xi_j.
+			\end{align*}
+		\end{defn}
+		
+		\begin{rem}
+			无法定义$d':\calE_L\rightarrow \calE_L^{(1,0)}$.
+		\end{rem}
+		
+		令$H^0(X,L):=H^0(X,\calO_L)$, $H^1(X,L):=H^1(X,\calO_L)$. 则有
+		
+		\begin{theo} Dolbeault定理\par
+			$H^1(X,L)\cong \calE_L^{(0,1)}(X)/d''\calE_L(X)$.
+		\end{theo}
+	
+		\begin{defn}
+		设$L$是$X$上的全纯线丛，$L^*$是$L$的对偶丛，$K$是$X$上的典范线丛，定义双线性形式$\langle,\rangle: H^0(X,K\otimes L^*)\times \calE_L^{(0,1)}(X)\rightarrow \bbC$如下\par
+		设$\xi$为$L$的一个局部标架，则$\xi^*:=\xi^{-1}$为$L^*$的一个局部标架，则对于任意$S\in H^0(X,K\times L^*)$以及对于任意$\varphi\in \calE_L^{(0,1)}(X)$，可局部表示为
+				$$S=fdz\otimes \xi^*, f\in \calO(U)$$
+				$$\varphi=gd\overline{z}\otimes \xi, g\in \calE(U)$$
+	定义$(S,\varphi)|_U:=f\cdot gdz\wedge d\overline{z}$，其不依赖于$U$以及标架的选取，故$(S,\varphi)\in \calE^{(1,1)}(X)$，则定义$\langle S,\varphi\rangle:=\int_X (S,\varphi)$.
+		\end{defn}
+		
+		\begin{theo}
+			表示定理\par
+			$X$是紧Riemann面，$L$是$X$上的全纯线丛，$F:\calE_L^{(0,1)}\rightarrow \bbC$是一个连续线性泛函，使得$F|_{d''\calE_L(X)}=0$可推出存在唯一的$S\in H^0(X,K\otimes L^*)$使得$F(\varphi)=\langle S,\varphi\rangle, \forall \varphi\in \calE_L^{(0,1)}(X)$.
+		\end{theo}
+		
+		\begin{prf}
+			(i). 设$U\subset X$开，$\sigma\in H^0(U,K\otimes L^*)$使得$\langle \sigma,\varphi\rangle =0, \forall \varphi\in \calE_L^{(0,1)}(X)$, $\Supp \varphi \subset U$，则$\sigma=0$（定理的唯一性）\par
+			(ii). 设$U$为$X$的一个坐标邻域，使得$L|_U$平凡，则存在$S\in H^0(U,K\otimes L^*)$使得$F(\varphi)=\langle S,\varphi\rangle, \forall \varphi \in \calE_L^{(0,1)}(X)$且$\Supp \varphi\subset U$.\par
+			假设(ii)成立，取$X$的坐标邻域覆盖$\{(U_i,z_i)\}$使得$L|_{U_i}$平凡，由2，存在$S_i\in H^0(U_i,K\otimes L^*)$使得$F(\varphi)=\langle S_i,\varphi\rangle, \forall \varphi\in \calE_L^{(0,1)}(X)$且$\Supp \varphi\subset U_i$. 若$\Supp \varphi\subset U_i\cap U_j$，则$\langle S_i-S_j,\varphi\rangle =0$，由(i)推出$S_i=S_j$于$U_i\cap U_j$，故定义$S|_{U_i}:=S_i$，有$S\in H^0(X,K\otimes L^*)$.\par
+			取$\{\chi_i\}$为从属于$\{U_i\}$的单位分解，对$\varphi\in \calE_L^{(0,1)}(X)$，令$\varphi_i=\chi_i\varphi$，则$\Supp \varphi_i\subset U_i$且$\varphi=\sum\limits_i\varphi_i$. 
+				$$\langle S,\varphi\rangle=\sum \langle S,\varphi_i\rangle =\sum \langle S_i,\varphi_i\rangle =\sum F(\varphi_i)=F(\sum \varphi_i)=F(\varphi).$$
+			接下来我们证明(ii)成立. 设$S=fdz\otimes \xi^*$，$\varphi=gd\Oz\otimes \xi$，则$\langle S,\varphi\rangle =\int_U f\cdot gdz\wedge dOz$. 因此只需证明下面的Weyl引理.\par
+				设$U\subset \subset \bbC$是有界区域，$T:C^\infty_0(U)\rightarrow \bbC$为一个线性映射，使得\par
+					\quad 1. 若$f_j \in C^\infty_0(U)$按$C^\infty$拓扑收敛于$f\in C^\infty_0(U)$,则$Tf_j\rightarrow Tf$;\par
+					\quad 2. $T(\partial g/\partial \Oz)=0, \forall g\in C^\infty_0(U)$（即在分布意义下，$\Opartial T=0$）\\
+					则存在唯一的$h\in \calO(U)$，使得$Tg=\int_U h\cdot gdz\wedge d\Oz$.
+		\end{prf}
+		
+		
+		我们证明Weyl引理.
+		\begin{lem} Weyl引理.\par
+			设$U\subset \subset \bbC$是有界区域，$T:C^\infty_0(U)\rightarrow \bbC$为一个线性映射，使得\par
+					\quad 1. 若$f_j \in C^\infty_0(U)$按$C^\infty$拓扑收敛于$f\in C^\infty_0(U)$,则$Tf_j\rightarrow Tf$;\par
+					\quad 2. $T(\partial g/\partial \Oz)=0, \forall g\in C^\infty_0(U)$（即在分布意义下，$\Opartial T=0$）\\
+			则存在唯一的$h\in \calO(U)$，使得$Tg=\int_U h\cdot gdz\wedge d\Oz$.
+		\end{lem}
+		
+		\begin{prl}
+			$\forall \varep >0$，定义$U_\varep:=\{z\in U: d(z,\partial U)>\varep\}$，取$\chi_\varep\in C_0^\infty(\Delta_\varep)$使得$\chi_\varep|_{\overline{\Delta_{\frac{\varep}{2}}}}=1$. \par
+			对于$f\in C^\infty_0(U_\varep)$，定义$f_\varep \in C^\infty_0(U)$如下：
+				$$f_\varep(z):=\frac{1}{2\pi i} \int_\bbC f(z+w)\cdot \frac{\chi_\varep(w)}{w} dw\wedge d\Ow.$$
+				\begin{align*}
+					\frac{\partial f_\varep}{\partial \Oz}&=\frac{1}{2\pi i}\int_\bbC \frac{\partial}{\partial \Oz}f(z+w)\frac{\chi_\varep(w)}{w} dw\wedge dOw\\
+						&=\lim\limits_{\delta \to 0} \frac{1}{2\pi i} \int_{\bbC\backslash \overline{\Delta_\delta}} \frac{\partial}{\partial \Ow} f(z+w)\frac{\chi_\varep(w)}{w}dw\wedge d\Ow\\
+						&=-\lim\limits_{\delta \to 0} \frac{1}{2\pi i} \int_{\bbC\backslash \overline{\Delta_\delta}} d\left(f(z+w)\frac{\chi_\varep(w)}{w}dw\right)-\lim\limits_{\delta \to 0}\frac{1}{2\pi i} \int_{\bbC\backslash \overline{\Delta_\delta}} f(z+w)\frac{\partial}{\partial \Ow}(\frac{\chi_\varep(w)}{w}) dw\wedge d\Ow\\
+						&=\lim\limits_{\delta\to 0} \frac{1}{2\pi i} \int_{\partial \Delta_\delta} f(z+w)\frac{\chi_\varep(w)}{w}dw-\lim\limits_{\delta\to 0} \frac{1}{2\pi i} \int_{\bbC\backslash \Delta_\delta} f(w) \rho_\varep(w-z)dw\wedge d\Ow\\
+						&=f(z)-\frac{1}{2\pi i} \int_\bbC f(w) \rho_\varep (w-z)dw\wedge d\Ow,
+				\end{align*}
+		其中$\rho_\varep(w)=\frac{\partial}{\partial \Ow}(\frac{\chi_\varep(w)}{w}) \in C^\infty_0(\Delta_\varep \backslash \overline{\Delta_{\frac{\varep}{2}}})$.\par
+			将上面积分写成Riemann和的极限，再利用1推出$\forall f\in C^\infty_0(U_\varep)$，有
+				$$0=T(\frac{\partial f_\varep}{\partial \Oz})=Tf-\frac{1}{2\pi i} \int_U f(w)h_\varep(w)dw\wedge d\Ow,$$
+			其中$h_\varep(w)=T(z\to \rho_\varep(w-z))$，第一处等号是因为2，则
+				$$Tf=\frac{1}{2\pi i} \int_U f(w)h_\varep(w)dw\wedge d\Ow.$$
+				$$\frac{h_\varep(w+t)-h_\varep(w)}{t}=T(\frac{\rho_\varep(w+t-\cdots)-\rho_\varep(w-\cdots)}{t})\to T(\frac{\partial \rho_\varep}{\partial t}$$
+			推出$h_\varep\in C^1(U_\varep)$.\par
+			设$g\in C^\infty_0(U_\varep)$，则
+				\begin{align*}
+					0&=T(\frac{\partial g}{\partial \Oz})\\
+						&=\frac{1}{2\pi i}\int_{U_\varep} \frac{\partial g}{\partial \Oz}\cdot h_\varep (z)dz\wedge d\Oz\\
+						&=0\frac{1}{2\pi i} \int_{U_\varep} g\cdot \frac{\partial h_\varep}{\partial \Oz} dz\wedge d\Oz			
+				\end{align*}
+			推出$\frac{\partial h_\varep}{\partial \Oz}-9$，故$h_\varep \in \calO(U_\varep)$.\par
+			设$\varep_1<\varep_2$，则$U_{\varep_1}\supset U_{\varep_2}$，对$g\in C^\infty_0(U_{\varep_2})$,
+				$$Tg=\frac{1}{2\pi i}\int_U g(w)\cdot h_{\varep_2}(w)dw\wedge d\Ow=\frac{1}{2\pi i} \int_U g(w)h_\varep(w) dw\wedge d\Ow.$$
+			推出$\int_{U_{\varep_2}} g(w)(h_{\varep_1}(w)-h_{\varep_2}(w))dw\wedge d\Ow=0, \forall g\in C^\infty_0(U_{\varep_2})$，则$h_{\varep_1}|_{U_{\varep_2}}=h_{\varep_2}$.\par
+			最后，取$h|_{U_\varep}:=\frac{1}{2\pi i} h_\varep\in \calO(U)$，其满足要求.	
+		\end{prl}
+		
+		\begin{lem}
+			$X$是紧Riemann面，$f\in \calE_L(X)$，$S\in H^0(X,K\otimes L^*)$，则$\langle S, d''f\rangle =0$.
+		\end{lem}
+		
+		\begin{prl}
+			设$\{(U_i,z_i)\}$是$X$的一个坐标邻域覆盖，使得$L_{U_i}$平凡. 取$\{U_i\}$的单位分解$\chi_i$令$f_i=\chi_i \cdot f\in C^\infty_0(U_i)$，$f=\sum f_i$，$S|_{U_i}=h_i dz_i \otimes \xi^*, h_i \in \calO(U_i)$.
+				\begin{align*}
+					\langle S, d''f\rangle &=\sum \langle S, d''f_i \rangle\\
+						&=\sum \int_{U_i} h_i \cdot \frac{\partial f_i}{\partial \Over{z_i}}dz_i \wedge d\Over{z_i}\\
+						&=-\sum \int_{U_i} \frac{\partial h_i}{\partial \Over{z_i}} f_i dz_i \wedge d\Over{z_i}=0.
+				\end{align*}
+		\end{prl}
+		 
+		\begin{defn}
+		于是$\langle \cdot ,\cdot \rangle $诱导出一个双线性形式
+				$$H^0(X, K\otimes L^*)\times \left(\calE^{(0,1)}_L(X)/d''\calE_L(X)\right) \rightarrow  \bbC$$
+		仍记为$\langle \cdot, \cdot \rangle$.\par
+		设$D:H^1(X,L)\rightarrow \calE^{(0,1)}_L(X)/d''\calE_L(X)$为Dolbeault同构，再定义一个双线性形式
+				$$H^0(X,K\otimes L^*)\times H^1(X,L)\rightarrow \bbC$$
+				$$\langle S, \xi \rangle_L:=\langle S, D(\xi)\rangle$$
+		其诱导出映射$\Delta_L: H^0(X, K\otimes L^*)\rightarrow H^1(X,L)^*$, $S\mapsto \Delta_L(S): \xi \mapsto \langle S, \xi \rangle_L$.
+		\end{defn}
+		
+		\begin{theo} Serre.\par
+			$\Delta_L$是一个同构.
+		\end{theo}
+		
+		\begin{prf}
+			$\Delta_L$单：若$S\in  H^0(X, K\otimes L^*)$使得$\langle S,\varphi\rangle =0, \forall \varphi\in \calE^{(0,1)}_L(X)$，则$S=0$.\par
+			$\Delta_L$满. 设$l: \calE^{(0,1)}_L(X)/d'' \calE_L(X) \rightarrow \bbC$是一个线性映射，因为$\dim \calE^{(0,1)}_L(X)/d'' \calE_L(X)<\infty$，故$l$ 连续. 定义线性映射
+					\begin{align*}
+						F:\calE^{(0,1)}_L(X) &\rightarrow \bbC\\
+						\varphi &\mapsto l([\varphi]).
+					\end{align*}
+			则$F$为连续线性泛函，且使得$F|_{d''\calE_L(X)}=0$，所以由表示定理，存在唯一的$S\in H^0(X, K\otimes L^*)$使得
+				$$l([\varphi])=F(\varphi)=\langle S, \varphi \rangle =\langle S, [\varphi] \rangle, \forall \varphi \in \calE^{(0,1)}_L(X).$$
+		再利用同构$D$，知$\Delta_L$是满的.
+		\end{prf}
+		
+		\begin{coro} Serre对偶定理.
+			$$H^0(X,\Omega_{-D})\cong H^1(X, \calO_D)^*.$$
+			$$H^0(X, \calO_{-D})\cong H^1(X, \Omega_D)^*.$$
+		\end{coro}
+		\begin{prf}第一个是因为
+			$$\Omega_{-D}\cong \calO_{K\otimes L_D^*},$$
+			$$\calO_D \cong \calO_{L_D}.$$
+			第二个是
+				$$H^0(X, \calO_{-D})\cong H^0(X, \Omega_{-K-D}) \cong H^1(X, \calO_{K+D})\cong H^1(X, \Omega_D).$$
+		\end{prf}
+		
+		
+		
+		
+		\subsection{调和微分形式}
+		
+		\begin{defn}
+		$X$是Riemann面，$\omega\in \calE^1(X)$，局部地，$\omega=fdz+gd\Oz$. 定义$\overline{\omega}:=\overline{f}d\Oz+\overline{g}dz\in \calE^1(X)$.\par
+		若$\omega=\Over{\omega}$，则称$\omega$为实的. 令$\Re \omega:=\frac{1}{2}(\omega+\Over{\omega})$，则$\omega$为实的等价于$\omega=Re \omega$.\par
+		$\Over{\Omega}(X)=\{\Over{\omega}:\omega\in \Omega(X)\}$. $\forall \omega\in \calE^1(X)$，存在唯一分解$\omega=\omega_1+\omega_2$，其中$\omega_1\in \calE^{(1,0)}(X)$，$\omega_2\in \calE^{(0,1)}(X)$.
+		\end{defn}
+		
+		\begin{defn}
+		定义Hodge $*$ 算子如下：$*\omega:=i(\Over{\omega_1}-\Over{\omega_2})$（其为一个共轭线性算子.）
+		\end{defn}
+		
+		\begin{prop}Hodge $*$ 算子的若干性质.\par
+			1.$**\omega=-\omega$, $\Over{*\omega}=*\Over{\omega}$.\par
+			2. $d*\omega=id(\Over{\omega_1}-\Over{\omega_2})=id'\Over{\omega_1}-id''\Over{\omega_2}$.\par
+			3. $*d'f=i\Over{d'}=id''\Over{f}$, $*d''f=-id'\Over{f}$.\par
+			4. $d*df=2id'd''\Over{f}$.
+		\end{prop}
+		
+		\begin{defn}
+			称$\omega\in \calE^1(X)$为调和的，若
+				$$d\omega=0=d*\omega.$$
+		记$\mathscr{H}^1(X)$是$X$上的调和$1$-形式全体.
+		\end{defn}
+		
+		\begin{theo} 下列命题等价(TFAE):\par
+			1. $\omega\in \scrH^1(X)$.\par
+			2. $d'\omega=0=d''\omega$.\par
+			3. $\omega=\omega_1+\omega_2\in \Omega(X)+\Over{\Omega}(X)$.\par
+			4. $\forall a\in X$，存在坐标邻域$U\ni a$以及$f\in \scrH(U)$使得$\omega=df$.
+		\end{theo}
+		
+		\begin{prf}
+			$$0=d\omega=d\omega_1+d\omega_2=d''\omega_1+d'\omega_2$$
+			$$0=d*\omega=id(\Over{\omega_1}-\Over{\omega_2})=i(d'\Over{\omega_1}-d''\Over{\omega_2})$$
+			等价于$0=d''\omega_1-d'\omega_2$. 故$\omega\in \scrH^1(X)$等价于$d''\omega_1=0=d'\omega_2$. 容易验证1，2，3等价.\par
+			3推4：设$\omega_1=h_1dz$, $\Over{\omega_2}=h_2dz$, $h_1,h_2\in \calO$. 令
+				$$f(z):=\int_0^z h_1dz+ \int_0^{\Oz} \Over{h_2dz}\in \scrH(X),$$
+			则$df=h_1dz+\Over{h_2dz}=\omega$.\par
+			4推1：设$\omega=df$，$d\omega=d^2f=0$. $d*\omega=d*df=2id'd''\Over{f}=0$推出$\omega\in \scrH^1(X)$.	
+		\end{prf}
+		
+		\begin{theo}
+			设$\sigma\in \scrH^1(X)$且是实的，则存在唯一的$\omega\in \Omega(X)$使得$\sigma=Re\ \omega$.
+		\end{theo}
+		
+		\begin{prf}
+			存在性：设$\sigma=\omega_1+\Over{\omega_2}$，$\omega_1, \omega_2\in \Omega(X)$. $\omega_1+\Over{\omega_2}=\sigma=\Over{\sigma}=\Over{\omega_1}+\omega_2$. 推出$\omega_1-\omega_2=\Over{\omega_1-\omega_2}$，故$\omega_1=\omega_2$，因此$\sigma=\omega+\Over{\omega}=2\Re\ \omega$.\par
+			唯一性：设$\omega\in \Omega(X)$使得$\Re\ \omega=0$. 局部地，$\omega=df$，$f\in \calO$.
+					$$0=\Re\ \omega=\Re\ df=d \Re\ f$$
+		推出$\Re\ f$局部为常数，进而$f$局部为常数，进而$df=0$，则$\omega=0$.
+		
+		\end{prf}
+		
+		\begin{defn}
+		设$X$是紧Riemann面（本节下述命题均有此假设），$\omega_1,\omega_2\in \calE^1(X)$，令$\langle \omega_1,\omega_2\rangle :=\int_X \omega_1\wedge *\omega_2$.
+		\end{defn}
+		
+		局部地，设$\omega_1=f_1dz+g_1d\Oz$，$\omega_2=f_2dz+g_2d\Oz$，
+			\begin{align*}
+				\omega_1\wedge *\omega_2&=(f_1dz+g_1d\Oz)\wedge i(\Over{f_2}d\Oz-\Over{g_2}dz)\\
+						&=i(f_1\Over{f_2}+g_1\Over{g_2})dz\wedge d\Oz
+			\end{align*}
+		故$\langle \cdot, \cdot \rangle$是$\calE^1(X)$上的一个内积.
+		
+		
+		\begin{lem}
+			1. $d'\calE(X), d''\calE(X), \Omega(X), \Over{\Omega}(X)$相互正交.\par
+			2. $d\calE(X)$与$*d\calE(X)$正交，且$d\calE(X)\oplus *d\calE(X)=d'\calE(X)\oplus d''\calE(X)$.
+		\end{lem}
+		
+		\begin{prl}
+			第一条引理：$\calE^{(1,0}(X) \perp \calE^{(0,1)}(X)$显然，故$\calE^1(X)=\calE^{(1,0)}(X)\oplus \calE^{(0,1)}(X)$. 故只需证$d'\calE(X) \perp \Omega(X)$，$d''\calE(X)\perp \Over{\Omega}(X)$.\par
+			设$f\in \calE(X)$, $\omega\in \Omega(X)$
+			$$\omega \wedge *d'f=\omega \wedge id''\Over{f}=-id''(\Over{f}\omega)=-id(\Over{f}\omega)$$
+		推出
+			$$\langle \omega, d'f\rangle=\int_X \omega\wedge *d'f=-i\int_X d(\Over{f}\omega)=0$$
+		故$\omega \perp d'f$.\par
+			
+			第二条引理：设$f,g\in \calE(X)$，则$df\wedge **dg=-df\wedge dg=-d(fdg)$，推出$\langle df,*dg\rangle=-\int_X d(fdg)=0$，进而$d\calE(X)\perp *d\calE(X)$.\par
+			又因为$d'\calE(X)\oplus d''\calE(X)\supset d\calE(X)$，$*d\calE(X)\subset d'\calE(X)\oplus d''\calE(X)$(性质3). 所以LHS包含于RHS.\par
+			RHS包含于LHS由性质3易得.
+		\end{prl}
+		
+		\begin{coro}
+			$\scrH^1(X)=\Omega(X)\oplus \Over{\Omega}(X)$，进而$\dim \scrH^1(X)=2\dim \Omega(X)=2g$.
+		\end{coro}
+		
+		\begin{coro}
+			$\sigma\in \scrH^1(X)$且正合，则$\sigma=0$.($\sigma \in \scrH^1(X)\cap d\calE(X)$)
+		\end{coro}
+		
+		\begin{coro}
+			$f\in \scrH(X)$，则$f$恒为常数.(考虑$\sigma=df$)
+		\end{coro}
+		
+		\begin{theo}
+			$\calE^{(0,1)}(X)=d''\calE(X)\oplus \Over{\Omega}(X)$.
+		\end{theo}
+		
+		\begin{prf}
+			由Dolbeault定理，$\calE^{(0,1)}(X)/d''\calE(X)\cong H^1(X,\calO)$，则$\dim \calE^{(0,1)}(X)/d''\calE(X)=g$.\par
+			显然$\calE^{(0,1)}(X)\supset d''\calE(X)\oplus \Over{\Omega}(X)$，则$\calE^{(0,1)}(X)/d''\calE(X)\supset \Over{\Omega}(X)$.\par
+			因为$\dim \Over{\Omega}=g$，所以$\calE^{(0,1)}(X)/d''\calE(X)=\Over{\Omega}(X)$.
+		\end{prf}
+		
+		\begin{theo} Hodge正交分解定理.
+				$$\calE^1(X)=d\calE(X)\oplus *d\calE(X)\oplus \scrH^1(X).$$
+		\end{theo}
+		
+		\begin{prf}
+			由上述定理，$\calE^{(1,0)}=d'\calE(X)\oplus \Omega(X)$，推出
+				\begin{align*}
+					\calE^1(X) &= \calE^{(1,0)}(X)\oplus \calE^{(0,1)}(X)\\
+							&=d'\calE(X)\oplus d''\calE(X)\oplus \Omega(X)\oplus \Over{\Omega}(X)\\
+							&=d\calE(X)\oplus *d\calE(X)\oplus \scrH^1(X).
+				\end{align*}
+		\end{prf}
+		
+		\begin{coro}
+			$\sigma\in \calE^{(0,1)}(X)$，方程$d''f=\sigma$可解等价于
+				$$\int_X\sigma\wedge \omega=0, \quad \forall \omega\in \Omega(X).$$
+		\end{coro}
+		
+		\begin{prf}
+			左推右：
+				$$\int_X \sigma\wedge \omega=\int_X d''f\wedge \omega=\int_X d''(f\omega)=\int_Xd(f\omega)=0.$$
+			右推左：
+				$$\langle \sigma,\Over{\omega}\rangle =\int_X \sigma\wedge (-i\omega)=-i \int_X \sigma\wedge \omega=0$$
+			推出$\sigma\perp \Over{\Omega}(X)$，由定理2.4.3知$\sigma\in d''\calE(X)$.
+		\end{prf}
+	
+		\begin{theo}
+			$$\Ker \left(d:\calE^1(X)\rightarrow \calE^2(X)\right) =d\calE(X) \oplus \scrH^1(X).$$
+		\end{theo}
+		
+		\begin{prf}
+			记LHS为$\scrL$，LHS包含RHS是显然的，对于另一方向，由Hodge正交分解，只需证$\scrL\perp *d\calE(X)$即可.\par
+			设$\omega\in \scrL$，$f\in \calE(X)$，
+				$$\omega\wedge **df=-\omega \wedge df=d(f\omega)$$
+			推出$\langle \omega, *df\rangle =\int_Xd(f\omega)=0$.
+		\end{prf}
+		
+		\begin{coro}
+			$\sigma\in \calE^1(X)$正合（即$df=\sigma$可解）等价于
+				$$\int_X \sigma\wedge \omega=0, \quad \forall \text{闭} \omega\in \calE^1(X).$$
+		\end{coro}
+		
+		\begin{prf}
+			左推右是Stokes公式，右推左：
+				$$\langle \omega, *\sigma\rangle =\int_X \omega\wedge **\sigma=-\int_X \omega\wedge \sigma=0$$
+		对于任意闭的$\omega\in \calE^1(X)$. 推出$*\sigma\perp \scrL$，则由Hodge分解，$*\sigma \in *d\calE(X)$，进而$\sigma \in d\calE(X)$.
+		\end{prf}
+		
+		\begin{theo} Hodge-de Rham.
+				$$H^1(X,\bbC)\cong Rh^1(X) \cong \scrH^1(X)$$
+			其中第一个同构是de Rham同构，第二处同构是上一条定理.
+		\end{theo}
+		
+		\begin{defn}
+			称$b_1:=\dim H^1(X,\bbC)$为$X$的第一Betti数，其为一个拓扑不变量.
+		\end{defn}
+		
+		\begin{rem}
+		由Hodge-de Rham定理，$b_1=2g$，故$g$也是拓扑不变量.
+		\end{rem}
+		
+		\begin{rem}
+		由可定向紧曲面的拓扑分类，$X$同胚于球面加上$g$个柄.
+		\end{rem}
+		
+		
+		
+	
+	\subsection{Mittag-Leffler问题}
+		
+		\begin{theo} Mittag-Leffler定理.\par
+			给定$\bbC$中一个离散点列上的一列主部，存在$f\in \calM(\bbC)$使得$f$在这些点上的主部恰好为给定主部.
+		\end{theo}
+		
+		问：在Riemann面上是否有类似现象？
+		
+		\begin{defn}
+			$X$是Riemann面，$\scrU=\{U_i\}_{i\in I}$为$X$的开覆盖. 称$\mu=(f_i)\in C^0(\scrU, \calM)$为一个Mittag-Leffler分布，若$f_i-f_j \in \calO(U_i\cap U_j), \forall i,j$，即$\delta \mu \in Z^1(\scrU, \calO)$.\par
+			相应于$\mu$的一个解指的是一个$f\in \calM(X)$使得$f-f_i\in \calO(U_i), \forall i$.
+		\end{defn}
+		
+		\begin{rem}
+			则Mittag-Leffler定理等价于$\bbC$上的任何M-L分布存在解.
+		\end{rem}
+		
+		\begin{theo}
+			M-L分布$\mu$存在解等价于$[\delta \mu]=0$于$H^1(\scrU,\calO)$.
+		\end{theo}
+		
+		\begin{prf} 左推右：设$f$为$\mu=(f_i)$的解，则$g_i:=f_i-f\in \calO(U_i)$，
+				$$\delta \mu=(f_i-f_j)=(g_i-g_j)\in B^1(\scrU,\calO).$$
+			右推左：$[\delta \mu]=0$，推出存在$g_i\in \calO(U_i)$使得$\delta \mu=(g_i-g_j)$，则$f_i-f_j=g_i-g_j$，即$f_i-g_i=f_j-g_j$，做$f|_{U_i}:=f_i-g_i \in \calM(X)$，其为$\mu$的解.
+		\end{prf}
+		
+		\begin{rem}
+			设$X$是紧Riemann面，则$H^1(X,\calM)=0$. 对于任意$\xi\in H^1(X,\calO)$，则$\xi=[(f_{ij})], (f_{ij})\in Z^1(\scrU, \calO)\subset Z^1(\scrU, \calM)$，故存在$f_i\in \calM(U_i)$，使得$f_{ij}=f_i-f_j$. 故$\mu=(f_i)$为一个M-L分布，且$\xi=[\delta \mu]$.\par
+			当$g\geq 1$时，存在$\xi\in H^1(X, \calO)$非$0$，其对应的M-L分布$\mu$不存在解.
+		\end{rem}
+		
+		\begin{defn}
+			称$\mu=(\omega_i)_{i \in I}\in C^0(\scrU, \calM^1)$为一个M-L分布，若$\omega_i-\omega_j \in \Omega(U_i\cap U_j), \forall i,j$.\par
+			对于$a\in X$，定义$\mu$在$a$处的留数为$\Res_a \mu :=\Res_a \omega_i$，若$a\in U_i$.（验证定义良好）\par
+			若$X$是紧Riemann面，则定义$\Res \mu =\sum\limits_{a\in X} \Res_a \mu$.（本质是有限和）
+		\end{defn}
+		
+		\begin{theo}
+			$X$是紧Riemann面，M-L分布$\mu=(f_i)$存在解等价于
+					$$\Res \mu \omega=0, \quad \forall \omega \in \Omega(X).$$
+		\end{theo}
+		
+		\begin{prf}
+			左推右：设$f$为$\mu$的解，则$f-f_i\in \calO(U_i)$，则$\forall x\in U_i$，$\Res_x f\cdot \omega=\Res_x f_i\cdot \omega, \forall i$. 另一方面，因为$f\cdot \omega \in \calM^1(X)$，由留数定理，$\Res f\cdot \omega=0$.\par
+			右推左：因为$\delta \mu \in Z^1(\scrU, \calO)\subset Z^1(\scrU, \calE)$，而$H^1(\scrU, \calE)=0$，故存在$(\sigma_i)\in C^0(\scrU, \calE)$使得$\calO(U_i\cap U_j)\ni f_i-f_j=\sigma_i-\sigma_j$于$U_i\cap U_j$. 故$d''\sigma_i=d''\sigma_j$于$U_i\cap U_j$，则$\alpha|_{U_i}:=d''\sigma_i \in \calE^{(0,1)}(X)$. 我们假设有
+				\begin{equation}
+				\int_X \alpha \wedge \omega=0, \quad \forall \omega \in \Omega(X),
+				\end{equation}
+		则存在$u \in \calE(X)$使得$d''u=\alpha$.\par
+			令$g_i=\sigma_i-u$，则$d''g_i=0$，故$g_i\in \calO(U_i)$，且$\delta \mu =(f_i-f_j)=(\sigma_i-\sigma_j)=(g_i-g_j)$，则$[\delta \mu]=0$，故$\mu$存在解.\par
+			我们再说明方程(2.5.1)成立. 令$\beta|_{U_i}:=f_i-\sigma_i\in \calE(X^1)$，$X'=X\backslash \{a_1,\cdots,a_n\}$，其中$a_j$是$\mu$的极点. 则$d''\beta=d''f_i-d''\sigma_i=-\alpha$于$X'$.
+				\begin{align*}
+					\int_X \alpha \wedge \omega&=- \lim\limits_{\varep\to 0} \int_{X\backslash \bigcup\limits_j \{\vert z_j \vert \leq \varep\}} d''\beta\wedge \omega\\
+					&=-\lim\limits_{\varep\to 0} \int_{X\backslash \bigcup\limits_j \{\vert z_j \vert \leq \varep\}}  d(\beta\wedge \omega)\\
+					&=\sum\limits_{j=1}^n \lim\limits_{\varep\to 0} \int_{\{\vert z_j \vert = \varep\}} \beta\wedge \omega\\
+					&=\sum\limits_{j=1}^n \lim\limits_{\varep\to 0} \int_{\{\vert z_j \vert = \varep\}} f_j\wedge \omega-\sigma_j\wedge \omega\\
+					&=2\pi i \Res \mu \cdot \omega=0.
+				\end{align*}
+		\end{prf}
+		
+		一些应用.\par
+		$g=1$的情形. $\Gamma:=\bbZ\gamma_1+\bbZ\gamma_2$为一个格. $P:=\{t_1\gamma_1+t_2\gamma_2: t_1, t_2\in [0,1)\}.$
+		\begin{prop}
+		给定$a_1,\cdots,a_n\in P$以及主部$\sum\limits_{\nu=-r_j}^{-1} C_\nu^j (z-a_j)^\nu$，$1\leq j\leq n$.\par
+			存在$\Gamma$双周期亚纯函数，使得其在$a_j$处有上述给定主部，等价于
+					$$\sum\limits_{j=1}^n C^j_{-1}=0.$$
+		\end{prop}
+		
+		\begin{prf}
+			设$X=\bbC/\Gamma$. 记$\omega$为由$dz$诱导的$X$上的全纯1-形式，则$\Omega(X)=\bbC \cdot \omega$. 设$\mu$为相应的M-L分布. 则$\mu$存在解等价于$\Res \mu \cdot \omega=0$（这里用到了$\omega$构成基），即等价于$\sum\limits_{j=1}^n C^j_{-1}=0$.
+		\end{prf}
+		
+		$g\geq 2$的情形.
+		\begin{defn}
+		$U\subset \bbC$为区域，$f_1,\cdots,f_g\in \calO(U)$，称
+				$$W(f_1,\cdots,f_g):=\det \begin{pmatrix} &f_1 &f_2 &\cdots &f_g\\ &f_1' &f_2' &\cdots &f_g'\\ &\vdots &\vdots &\ddots &\vdots\\ &f_1^{(g-1)} &f_2^{(g-1)} &\cdots &f_g^{(g-1)} \end{pmatrix}$$
+		为Wronski行列式.
+		\end{defn}
+		
+		\begin{lem}
+			$f_1,\cdots,f_g$线性无关等价于$W(f_1,\cdots,f_g)$不恒等于$0$.
+		\end{lem}
+		
+		\begin{prl}
+			右推左：假设$f_1,\cdots,f_g$线性相关，即存在不全为$0$的$c_1,\cdots,c_g\in \bbC$使得
+				$$c_1f_1+\cdots+c_gf_g=0.$$
+			不妨设$c_g\neq 0$，则$f_g=-\sum\limits_{j=1}^{g-1} \frac{c_j}{c_g}f_j$，则$W(f_1,\cdots,f_g)\equiv 0$，矛盾.\par
+			左推右：首先证明，若$h_j=\varphi \cdot f_j, \varphi\in \calO(U)$，则$W(h_1,\cdots,h_g)=\varphi^g \cdot W(f_1,\cdots,f_j)$. 由Lebnitz法则，$H_k^{(\nu)}=\varphi\cdot f_k^{(\nu)}+\sum\limits_{\mu<\nu} C_\nu^\mu \varphi^{(\nu-\mu)}f_k^{(\mu)}$，则
+				$$W(h_1,\cdots,h_g)=\det(\varphi f_k^{(j)})=\varphi^g W(f_1,\cdots,f_g).$$
+			回到原题，用数学归纳法，$g=1$时显然，现假设$g-1$情形已证明，若$f_g^{-g}W(f_1,\cdots,f_g)=0$，且不妨设$f_g$不恒等于$0$. 令$V:=U\backslash f_g^{-1}(0)$，在$V$上
+				$$W(\frac{f_1}{f_g},\cdots,\frac{f_{g-1}}{f_g},1)=f_g^{-g}W(f_1,\cdots,f_g)=0$$
+			记$h_k:=\frac{f_k}{f_g}$，有
+				$$W(\frac{f_1}{f_g},\cdots,\frac{f_{g-1}}{f_g},1)=W(h_1,\cdots,h_{g-1},1)=\pm W(h_1',\cdots,h_{g-1}')$$
+			由归纳假设，存在不全为$0$的复数$c_1,\cdots,c_{g-1}$使得$\sum\limits_{j=1}^{g-1} c_j h_j'=0$，则$\sum\limits_{j=1}^{g-1} c_j h_j$时常数，故$h_1,\cdots,h_{g-1},1$线性相关，即$f_1,\cdots,f_g$在$V$上线性相关. 又$V\subset U$稠密，所以$f_1,\cdots,f_g$再$U$上线性相关，矛盾.
+		\end{prl}
+		
+		\begin{defn}
+		$X$是紧Riemann面，亏格恰为$g$，设$\omega_1,\cdots,\omega_g$为$\Omega(X)$的一组基. 局部地，$\omega_k=f_kdz$，定义$W_z(\omega_1,\cdots,\omega_g):=W(f_1,\cdots,f_g)$.
+		\end{defn}
+		
+		\begin{theo}
+			设$(U,z)$和$(V,\Oz)$为$X$上的两个坐标邻域，且$U\cap V$非空. 则在$U\cap V$上成立
+				$$W_z(\omega_1,\cdots,\omega_g)=(\frac{d\Oz}{dz})^N W_{\Oz}(\omega_1,\cdots,\omega_g),$$
+		其中$N=\frac{g(g+1)}{2}$.
+		\end{theo}
+		
+		\begin{rem}
+			$\sigma|_U:=W_z(\omega_1,\cdots,\omega_g)dz^{\otimes N}\in \Gamma(X,K^{\otimes N})$.
+		\end{rem}
+		
+		\begin{defn}
+			设$g\geq 2$，称$p\in X$为一个Weierstrass点，若存在基$\omega_1,\cdots,\omega_g\in \Omega(X)$以及坐标$(U,z)$使得$W_z(\omega_1,\cdots,\omega_g)|_p=0$. 上述定理保证此定义不依赖于坐标选取，还需验证定义与$\Omega(X)$的正交基的选取无关\par
+			$(\omega_1,\cdots,\omega_g)=(\Over{\omega_1},\cdots,\Over{\omega_g})\cdot C$，则$W_z(\omega_1,\cdots,\omega_g)=\vert C\vert W_z(\Over{\omega_1},\cdots,\Over{\omega_g})$（练习）
+		\end{defn}
+	
+		\begin{theo}
+			设$p\in X$，存在$f\in \calM(X) \cap \calO(X\backslash \{p\})$使得其在$p$处有阶小于等于$g$的极点，等价于，$p$是一个Weierstrass点.
+		\end{theo}
+		\begin{prf}
+			取$\omega_1,\cdots,\omega_g\in \Omega(X)$的一组基. 取坐标$(U,z)$使得$z(p)=0$. 记$\omega_k=\sum\limits_{\gamma=0}^\infty a_{k\gamma}z^\gamma dz$于$U$. 则存在$f\in \calM(X)\cap \calO(X\backslash \{p\})$，其在$p$处主部为$h=\sum\limits_{\gamma=0}^{q-1} c_\gamma/z^{\gamma+1}$，$c_0,\cdots,c_{q-1}$不全为$0$，等价于其是下面M-L分布的一个解: $\mu=(h,0)\in C^0(\scrU,\calM)$，$\scrU=\{U,X\backslash \{p\}\}$. 
+					$$\Res(\omega_k \mu)=\Res_p(\omega_k \cdot h)=\sum\limits_{\gamma=0}^{g-1} a_{k\gamma}\cdot c_\gamma$$
+		推出$\begin{cases} \Res(\omega_k \mu)=0\\ q\leq k\leq g\end{cases}$有非平凡解$(c_0,\cdots,c_{g-1})$等价于$\det(a_{k\gamma})_{1\leq k\leq g, 0\leq \gamma\leq g-1}=0$，即$W_z(\omega_1,\cdots,\omega_g)|_p=0$，$p$为一个Weierstrass点.
+		\end{prf}
+		
+		\begin{theo}
+			Weierstrass点的个数为$(g-1)g(g+1)$，记重数在内.
+		\end{theo}
+		
+		\begin{prf}
+			设$(U_i,z_i)$，$i\in I$为$X$的一个坐标邻域覆盖，记$\psi_{ij}:=dz_j/dz_i$于$U_i\cap U_j$. 设$\omega_1,\cdots,\omega_g\in \Omega(X)$为一组基. 令$W_i=W_{z_i}(\omega_1,\cdots,\omega_g)\in \calO(U_i)$.\par
+			定义$D\in \Div(X)$：$D(x):=\ord_x W_i$若$x\in U_i$. 只须证明$\deg D=(g-1)g(g+1)$.\par
+			设$D_1=(\omega_1)$，则$\deg D_1=2g-2$. 设$\omega_1=f_{1i}dz_i$于$U_i$，则$D_1(x)=\ord_x f_{1i}$，若$x\in U_i$. 注意到$f_{1i}=\psi_{ij}f_{1j}$于$U_i\cap U_j$，则$\psi_{ij}=f_{1i}/f_{1j}$.\par
+			因为$W_i=\psi_{ij}^N W_j$，所以$W_i \cdot f_{1i}^{-N}=W_j\cdot f_{1j}^{-N}$于$U_i \cap U_j$. 进而$f|_{U_i}:=W_i \cdot f_{1i}^{-N}\in \calM(X)$. 则$0=\deg (f)=\deg D-N\cdot \deg D_1$，
+					$$\deg D=N\cdot \deg D_1=(g-1)g(g+1).$$
+		\end{prf}
+		
+		\begin{coro}
+			$g\geq 2$时，Weierstrass点存在，更加地，存在分歧全纯覆盖$f:X \rightarrow \bbP^1$使得叶数不超过$g$.\par
+			特别地，若$g=2$，则全纯覆盖的叶数只能为$2$，进而$X$为超椭圆.
+		\end{coro}
+		
+		\begin{defn}
+			$X$是紧Riemann面，定义$X$的阶为
+				$$\deg X:=\min \{n:\text{存在}n\text{叶全纯覆盖} f:X\rightarrow \bbP^1\}.$$
+			由推论，$\deg X\leq g$.
+		\end{defn}
+		
+		
+		\subsection{Abel定理}
+		
+		\begin{theo} Weierstrass\par
+			设$\{a_n\}\subset \bbC$离散，$\{m_n\}\in \bbZ\backslash \{0\}$，则存在$f\in \calM(\bbC)$使得$f\in \calO\backslash\{a_1,\cdots,a_n,\cdots\}$且$\ord_{a_n}f=m_n$.
+		\end{theo}
+		
+		问：在Riemann面上是否有类似现象？
+		
+		\begin{defn}
+			$X$是Riemann面，$D\in \Div(X)$. 称$f$为$D$的一个解，若$f\in \calM(X)$使得$(f)=D$（即$D$是一个主除子）.
+		\end{defn}
+		
+		\begin{rem}
+		则Weierstrass定理等价于，任意$D\in \Div(X)$存在一个解.
+		\end{rem}
+		
+		若$X$是紧Riemann面，则$D\in \Div(X)$存在解可推出$\deg D=0$. 
+		
+		记$X_D=\{x\in X: D(x)\geq 0\}$，则$X\backslash X_D$离散.
+		
+		\begin{defn}
+			$D$的一个弱解指一个$f\in \calE(X_D)$使得$\forall a\in X$，存在坐标$(U,z)$使得$z(a)=0$及$\psi\in \calE(U)$，$\psi(a)\neq 0$，使得$f=z^k\cdot \psi$于$X_D\cap U$，$k=D(a)$.\par
+			弱解$f$为一个解，等价于$f\in \calO(X_D)$.
+		\end{defn}
+		
+		\begin{prop}
+		若$f_1,f_2$为$D_1,D_2$的弱解，则$f_1\cdot f_2$是$D_1+D_2$的弱解，$f_1/f_2$是$D_1-D_2$的弱解.
+		\end{prop}
+		
+		\begin{prop}
+		设$f$为$D$的一个弱解，则$\frac{df}{f}\in \calE^1(X\backslash \Supp D)$.
+		\end{prop}
+		
+		\begin{defn}
+		对$a\in \Supp D$, $k=D(a)$，则$f=z^k \cdot \psi$，$\psi(a)\neq 0$.
+			$\frac{df}{f}=k\frac{dz}{z}+\frac{d\psi}{\psi}$. 则可定义$\int_X\frac{df}{f}\wedge \sigma$，$\sigma\in \calE^1(X)$具紧支集.\par
+		注意$\frac{d''f}{f}=\frac{d''\psi}{\psi}$，则$\frac{d''f}{f}\in \calE^{(0,1)}(X)$.
+		\end{defn}
+		
+		\begin{lem}
+			设$a_1,\cdots,a_n\in X$，$k_1\cdots,k_n\in \bbZ$，设$D=\sum\limits_{j=1}^n k_j\cdot a_j \in \Div(X)$. 若$f$为$D$的一个弱解，则$\forall g\in \calE(X)$具紧支集，有
+				$$\frac{1}{2\pi i}\int_X \frac{df}{f}\wedge dg=\sum\limits_{j=1}^n k_j g(a_j).$$
+		\end{lem}
+		
+		\begin{prl}
+			取坐标$(U_j,z_j)$使得$z_j(a_j)=0$，且在$U_j$上$f=z_j^{k_j}\cdot \psi_j$，$\psi_j\in \calE(U_j)$，$\psi_j(a_j)\neq 0$.
+			\begin{align*}
+				\int_X \frac{df}{f}\wedge dg&=-\lim\limits_{\varep \to 0} \int_{X\backslash \bigcup\limits_j \{\vert z_j\vert \leq \varep\} } d(g\cdot \frac{df}{f})\\
+					&=\lim\limits_{\varep \to 0} \sum\limits_j \int_{\vert z_j \vert =\varep} g\cdot \frac{df}{f}\\
+					&=\lim\limits_{\varep \to 0} \sum\limits_j \int_{\vert z_j \vert =\varep} (gk_j\cdot \frac{dz_j}{z_j}+g\cdot \frac{d\psi_j}{\psi_j}\\
+					&=2\pi i  \sum\limits_j  k_jg(a_j).
+			\end{align*}
+		\end{prl}
+		
+		\begin{defn}
+			$X$上一个$1$-链指$C=\sum\limits_{j=1}^k n_jc_j$，$n_j\in \bbZ$，$c_j:[0,1]\rightarrow X$为分段光滑曲线. 记$C_1(X)$为$X$上$1$-链全体.\par
+			若$\omega\in \calE^1(X)$，则定义$\int_C\omega:=\sum\limits_{j=1}^k n_j \int_{C_j}\omega$. 定义上边缘算子$\partial: C_1(X) \rightarrow \Div(X)$如下：\par
+			设$c:[0,1]\rightarrow X$为一条曲线，若$c(0)=c(1)$，则$\partial C:=0$，否则定义
+					$$\partial C(x)=\begin{cases} 1, &x=c(1)\\ -1, &x=c(0)\\ 0, &\text{其余情形}\end{cases}.$$
+		一般地，若$c=\sum\limits_{j=1}^k n_jc_j\in C_1(X)$，则定义$\partial c:= \sum\limits_{j=1}^k n_j \partial c_j$.
+		\end{defn}
+		
+		若$X$是紧Riemann面，$D\in \Div(X)$，$\deg D=0$，则$D=a_1+a_2+\cdots+a_n-b_1-\cdots-b_n$. 令$c_j$为连接$a_j,b_j$的一条曲线. 则定$c=c_1+\cdots+c_k$，则$\partial c=D$.
+		
+		\begin{defn}
+			称$Z_1(X):=\Ker \left(C_1(X) \xrightarrow{\partial} \Div(X)\right)$为$X$上一个$1$-循环群.\par
+			对于$c,c'\in Z_1(X)$，定义$c\sim c'$等价于$\int_c \omega=\int_{c'}\omega$，对于任意闭的$\omega\in \calE^1(X)$成立.\par
+			称$H_1(X):=Z_1(X)/\sim$为$X$的一阶下同调群.
+		\end{defn}
+		
+		\begin{theo} Abel定理\par
+			$X$是紧Riemann面，$D\in \Div(X)$，$\deg D=0$. 则$D$有一个解等价于，存在$c\in C_1(X)$使得$\partial c=D$且$\int_c\omega=0$对于任意$\omega\in \Omega(X)$成立.
+		\end{theo}
+		
+		\begin{prf}
+			右推左：Step 1，寻找弱解；Step 2，通过解$d''$方程把弱解调整为强解.
+		\end{prf}
+		
+		\begin{lem}
+			$X$是Riemann面，$c$是$X$上曲线，$U\supset c$为一个相对紧邻域，则存在$\partial c$的弱解$f$，使得
+				1. $f|_{X\backslash U}=1$，2. $\int_c \omega = \frac{1}{2\pi i} \int_X \frac{df}{f}\wedge \omega$，对于任意闭的$\omega\in \calE^1(X)$.
+		\end{lem}
+		
+		\begin{prl}
+			首先设$(U,z)$为一个坐标邻域，使得$z(U)$为单位圆盘，且$c\subset U$. 记$a=c(0)$，$b=c(1)$，取$r<1$使得$c\subset \Over{\Delta_r}$. 则$\log \frac{z-b}{z-a}$在$\{r<\vert z\vert <1\}$上可取单指支，再取$r<r'<1$及$\psi\in C_0^\infty(\Delta_{r'})$，$\psi|_{\Over{\Delta_r}}=1$. 定义
+				$$f:=\begin{cases} \exp (\psi \cdot \log \frac{z-b}{z-a}), &r<\vert z \vert <1\\ \frac{z-b}{z-a}, &\vert z\vert \leq r\\ 1, &X\backslash U\end{cases}.$$
+		则$f$为$\partial c$的一个弱解. 设$\omega \in \calE^1(X)$闭，由Poincaré引理，存在$g\in \calE(X)$使得$\Supp g\subset X$且$\omega=dg$于$\Over{\Delta_{r'}}$.（取$r'<r''<1$，则$h\in \calE(\Delta_{r''})$使得$dh=\omega$于$\Delta_{r''}$，取$\chi\in C^\infty_0(\Delta_{r''})$使得$\chi|_{\Over{\Delta|_{r'}}}=1$，取$g=\chi\cdot h\in \calE(X)$）.\par
+		
+			$$\frac{1}{2\pi i} \int_X \frac{df}{f}\wedge \omega=\frac{1}{2\pi i} \int_X \frac{df}{f}\wedge dg \xlongequal{\text{引理2.6.1}} g|_a^b =\int_c dg=\int_c \omega.$$ 一般地，取划分$0=t_0<t_1<t_2<\cdots<t_n=1$及坐标邻域$(U_j,z_j)$，$1\leq j\leq n$使得\par
+		(i) $c_j:=c|_{[t_{j-1},t_j]} \subset U_j \subset U$.\par
+		(ii) $z_j(U_j)$为单位圆.		
+		取$\partial c_j$的弱解$f_j$使得$f_j|_{X\backslash U_j}=1$且$\int_{c_j}\omega =\frac{1}{2\pi i} \int_X \frac{df_j}{f_j}\wedge \omega$，对于任意闭的$\omega\in \calE^1(X)$. 取$f:=f_1\cdots f_n$，则$f$为$\partial c$的一个弱解，使得$f|_{X\backslash U}=1$且
+			$$\frac{1}{2\pi i} \int_X \frac{df}{f}\wedge \omega=\sum\limits_j \frac{1}{2\pi i} \int_X \frac{df_j}{f_j}\wedge \omega =\sum\limits_j \int_{c_j} \omega =\int_c \omega.$$
+		\end{prl}
+		
+		\begin{prf} 回到Abel定理，右推左方向. 设$c=\sum\limits_{j=1}^k n_j c_j$，由引理2.6.2，存在相应于$\partial c_j$的弱解$f_j$使得$\frac{1}{2\pi i} \int_X \frac{df_j}{f_j} \wedge \omega=\int_c \omega$，对于任意闭的$\omega\in \calE^1(X)$.\par
+			令$f:=f_1^{n_1}\cdots f_k^{n_k}$，则$f$为$\partial c$的一个弱解，且
+				$$\frac{1}{2\pi i} \int_X \frac{df}{f}\wedge \omega =\sum\limits_j \frac{n_j}{2\pi i} \int_X \frac{df_j}{f_j}\wedge \omega =\sum\limits_j n_j \int_{c_j} \omega=\int_c \omega.$$
+			对于$\omega\in \Omega(X)$，则
+				$$0=\int_c \omega=\frac{1}{2\pi i} \int_X \frac{df}{f}\wedge \omega=\frac{1}{2\pi i} \int_X \frac{d'' f}{f} \wedge \omega.$$
+			注意到$\frac{d''f}{f}\in \calE^{(0,1)}(X)$，由Hodge理论，存在$g\in \calE(X)$使得$d''g=\frac{d''f}{f}$.\par
+			令$F:=e^{-g}\cdot f$，则$F$也为$D=\partial c$的一个弱解，且在$X_D$上，
+				$$d''F=-e^{-g}d''g\cdot f+e^{-g}\cdot d''f=0.$$
+			进而$F\in \calO(X_D)$，即$F$是$D$的一个解.
+		\end{prf}
+		
+		\begin{rem} Oka原理\par
+			$M$是复流形，使得$d''u=v$对任意$v\in \calE^{(0,1)}(X)$使得$d''v=0$，均可解.\par
+			那么一个问题，在全纯框架下可解，等价于其在拓扑框架下可解.
+		\end{rem}
+		
+		\begin{prf}
+			Abel定理的左推右方向. 设$f$为$D$的一个解，其定义一个分歧覆盖$X\rightarrow \bbP^1$. 记$a_1,\cdots, a_r$为分歧点全体，记$Y=\bbP^1\backslash \{f(a_1),\cdots,f(a_r)\}=\bbP^1\backslash \{y_1,\cdots,y_s\}$，$s\leq r$.\par
+			对$\omega\in \Omega(X)$，定义Push-down $f_*\omega$如下：\par
+			$\forall y\in Y$，存在邻域$V\ni y$，使得$f^{-1}(V)=\bigcup\limits_{k=1}^n U_k$，$U_k\subset X\backslash \{a_1,\cdots,a_r\}$且$f|_{U_k}:U_k\rightarrow V$是双全纯映射，令$\varphi_k=(f|_{U_k})^{-1}$. 定义
+					$$f_*\omega|_V:=\sum\limits_{k=1}^n \varphi_k^*\omega,$$
+			其与$V$的选取无关，故$f_*\omega\in \Omega(Y)$.\par
+			则有如下的可去奇性：
+					\begin{equation}{\label{*}}
+					f_*\omega \text{可全纯延拓至} \bbP^1 
+					\end{equation}
+			
+			假设(*)成立，则$f_*\omega\in \Omega(\bbP^1)$，进而$f_*\omega=0$. 取曲线$\gamma:[0,1]\rightarrow \bbP^1$，$\gamma(0)=\infty$，$\gamma(1)=0$，$\gamma|_{(0,1)}\subset Y$.\par
+			令$f^{-1}(\gamma)=c_1+\cdots+c_n=:c\in C_1(X)$. 其中$c_j$为$X$中连接$f$的极点与零点的曲线，则$\partial c=D$，且$\forall \omega\in \Omega(X)$，有$\int_c \omega=\sum\limits_{k=1}^n \int_\gamma f_*\omega=0$.\par
+			
+			不妨设$f^{-1}(y_1)\cap \{a_1,\cdots,a_r\}=\{a_1,\cdots,a_{r'}\}$，$r'\leq r$. 记$n_j=\ord_{a_j}f$，不妨设$\varphi_1,\cdots,\varphi_{n_1}$由$a_1$确定. 只需证明，$\varphi_1^*\omega+\cdots+\varphi_{n_1}^*\omega$可全纯沿拓至$y_1$.\par
+			取$a_1$处坐标$(U,z)$，$y_1$处坐标$(W,\zeta)$，使得$f$可表示为$\zeta=z^{n_1}$. 若$\omega=z^m dz$，$m\in \bbZ^+$.\par
+			注意到$\varphi_1(\zeta),\cdots,\varphi_{n_1}(\zeta)$为多项式$h(z,\zeta):=z^{n_1}-\zeta$的根.\par
+			当$\vert \zeta\vert <<1$时，$\vert \varphi_j(\zeta)\vert <<1$. 取$0<\delta <<\varep <<1$，当$\vert \zeta\vert <\delta$，计算留数
+				\begin{align*}
+				\sum\limits_{k=1}^{n_1} \varphi_k(\zeta)^l&=\frac{1}{2\pi i} \int_{\vert z\vert=\varep} \frac{z^l \partial h(z,\zeta)/\partial z}{h(z,\zeta)} dz\\
+				&=\frac{n_1}{2\pi i} \int_{\vert z\vert=\varep} \frac{z^{l+n_1-1}}{z^{n_1}-\zeta}dz\\
+				&=\frac{n_1}{2\pi i}  \int_{\vert z\vert=\varep} z^{l-1} \sum\limits_{j=0}^\infty (\zeta/z^{n_1})^j dz\in \calO_0.
+				\end{align*}
+		推出
+			$\sum\limits_{k=1}^{n_1} \varphi_k^*\omega=\sum\limits_{k=1}^{n_1} \varphi_k^md\varphi_k =\frac{1}{m} d(\sum\limits_{k=1}^{n_1} \varphi_k^{m+1})$，可全纯沿拓过$\zeta=0$，即$y_1$.\par
+			对于一般的$\omega$，总可写有Taylor展开$\omega=\sum\limits_{m=0}^\infty a_m z^m dz$，即得.
+		\end{prf}
+		
+		\begin{prop}
+		$\Gamma=\bbZ \gamma_1+\bbZ \gamma_2\subset \bbC$为一个格，$P=\{t_1\gamma_1+t_2\gamma_2: t_1,t_2\in [0,1)\}$，$a_1,\cdots,a_n,b_1,\cdots,b_n\in P$.\par
+		存在$\Gamma$-双周期函数以$a_j$为零点，$b_j$为极点，等价于$\sum\limits_{j=1}^n (a_j-b_j)\in \Gamma$.
+		\end{prop}
+		
+		\begin{prf}
+			记$\pi:\bbC \rightarrow \bbC/\Gamma$是自然投影. 记$D=\pi a_1+\cdots+\pi a_n-\pi b_1-\cdots-\pi b_n$，则$\deg D=0$. 记$c_j=[a_j,b_j]$是连接$a_j,b_j$的线段.\par
+			令$c:=\pi c_1 +\cdots +\pi c_n\in C_1(\bbC/\Gamma)$使得$\partial C=D$. 设$dz$诱导$\omega\in \Omega(\bbC/\Gamma)$，则$\int_c \omega=\sum\limits_k \int_{c_k} dz=\sum\limits_k (b_k-a_k)$，则$\int_c \omega=0$等价于$\sum\limits_k (b_k-a_k)\in \Gamma$，由Abel定理即证.
+		\end{prf}

@@ -1,0 +1,329 @@
+\setdisplaytitle{Chapter 2 Tensors and Differential Forms}
+\sethtmltitle{Chapter 2 Tensors and Differential Forms}
+\begin{enumerate}
+\item (a) Let $l\colon V \times W \rightarrow U$ be a bilinear map. 
+Then by the universal property of free module, $\bar{l}\colon \mathcal{F}(V \times W) \rightarrow U$ is well defined, 
+and by the bilinearity, generators of 2.1(1) are in the kernel of $\bar{l}$. 
+Therefore, the map $\tilde{l}\colon V \otimes W \rightarrow U$ is well defined. 
+Also, it satisfies $\tilde{l} \circ \varphi=l$ by the definition of the map. 
+Since $\tilde{l}(v \otimes w)$ is determined by the value of $l$ and elements of the form $v \otimes w$ generate $V \otimes W$, such $\tilde{l}$ must be unique. 
+The rest of the argument is directly followed by the properties of universal objects.
+
+(b) Since $V \times W \cong W \times V$, it is true because of the universal property.
+
+(c) For $v \in V$, let $f_{v}\colon W \times U \rightarrow(V \times W) \times U \rightarrow(V \otimes W) \times U \rightarrow(V \otimes W) \otimes U$ 
+be the map $(w, u) \mapsto ((v, w), u) \mapsto(v \otimes w, u) \mapsto(v \otimes w) \otimes u$. 
+Since it is bilinear, one can define $\tilde{f}_{v}\colon W \otimes U \rightarrow(V \otimes W) \otimes U$. 
+Then, if we set $g\colon V \times(W \otimes U) \rightarrow(V \otimes W) \otimes U,(v, x) \mapsto \tilde{f}_{v}(x)$ for all $x \in W \otimes U$, it is also bilinear, 
+hence one can define $\tilde{g}\colon V \otimes(W \otimes U) \rightarrow(V \otimes W) \otimes U$, 
+and $\tilde{g}(v \otimes(w \otimes u))=(v \otimes w) \otimes u)$. 
+By the same method, one can also define $\tilde{h}\colon(V \otimes W) \otimes U \rightarrow V \otimes(W \otimes U)$, 
+and it is easy to see that $\tilde{g}$ and $\tilde{h}$ are the inverse to each other. 
+Therefore, $V \otimes(W \otimes U) \cong(V \otimes W) \otimes U$.
+
+(d) Let $f\colon V^{*} \times W \rightarrow \operatorname{Hom}(V, W)$ be a function such that $f(\varphi, w)(v)=\varphi(v) \cdot w$. 
+Since it is bilinear, one can define a map $\alpha\colon V^{*} \otimes W \rightarrow \operatorname{Hom}(V, W)$.
+
+(1) Let $\{v_{i}\},\{w_{j}\}$ be a basis of $V, W$, respectively, 
+and $\{v_{i}^{*}\}$ be the dual basis corresponding to $\{v_{i}\}$, i.e., $v_{a}^{*}(v_{b})=\delta_{ab}$. 
+Then elements of $V^{*} \otimes W$ can be represented as $\sum_{i, j} a_{i j} v_{i}^{*} \otimes w_{j}$. 
+If $\alpha\big(\sum_{i, j} a_{ij} v_{i}^{*} \otimes w_{j}\big)=0$, 
+then $\forall v \in V, \sum_{i, j} a_{ij} v_{i}^{*}(v) \cdot w_{j}=0$. 
+In particular, if one substitutes $v_{i}$ for $v$, then $\sum_{j} a_{ij} w_{j}=0, \forall i$. 
+Therefore, by the linear independence of the basis, $a_{ij}=0, \forall i, j$, and it means $\alpha$ is injective.
+
+(2) Let $\varphi \in \operatorname{Hom}(V, W)$. Then if $\varphi(v_{i})=\sum_{j} a_{i j} w_{j}$, 
+set $\psi=\alpha\big(\sum_{i, j} a_{ij} \otimes w_{j}\big)$. 
+Then $\psi$ and $\varphi$ have the same value at $v_{i}$, so they must be the same linear map. Therefore, $\alpha$ is surjective.
+Therefore, $\alpha$ is an isomorphism. Hence, $\dim V^{*} \otimes W=\dim \operatorname{Hom}(V, W)=(\dim V)(\dim W)$, 
+and $\dim V \otimes W=\dim V^{**} \otimes W=\left(\dim V^{*}\right)(\dim W)=(\dim V)(\dim W)$.
+
+(e) By arguments similar to the above, $\left\{e_{i} \otimes f_{j}\right\}$ span $V \otimes W$. Since the number of $\left\{e_{i} \otimes f_{j}\right\}$ is the same as the dimension of $V \otimes W$ by (d), it must be a basis.
+\item (a) Let $V=\mathbb{R}^{2}$, and consider $e_{1} \otimes e_{2}-e_{2} \otimes e_{1} \in V \otimes V$. If it is decomposable, say $\left(a e_{1}+b e_{2}\right) \otimes\left(c e_{1}+d e_{2}\right)$, then $a c=b d=0, a d=1, b c=-1$, which is impossible.
+
+(b) If the dimension is $1$ or $2$, then it is trivially true. 
+Let $\dim V=3, V=\langle v_{1}, v_{2}, v_{3}\rangle$. 
+Then we only need to check that all elements of $\Lambda_{2}(V)$ are decomposable. 
+However, for any element
+\[x=a v_{1} \wedge v_{2}+b v_{2} \wedge v_{3}+c v_{3} \wedge v_{1} \in \Lambda_{2}(V),\]
+if $a=0$, then $x=(b v_{2}-c v_{1}) \wedge v_{3}$, and if $a \neq 0$, 
+then $x=\big(v_{1}-\frac{b}{a} v_{3}\big) \wedge(a v_{2}-c v_{3})$. Therefore $x$ is always decomposable.
+
+(c) If $V=\mathbb{R}^{4}$, then $e_{1} \wedge e_{2}+e_{3} \wedge e_{4}$ is indecomposable. If it is decomposable, say
+\[(a_{1} e_{1}+a_{2} e_{2}+a_{3} e_{3}+a_{4} e_{4}) \wedge (b_{1} e_{1}+b_{2} e_{2}+b_{3} e_{3}+b_{4} e_{4}),\]
+then \[a_{1} b_{2}-b_{1} a_{2}=a_{3} b_{4}-b_{3} a_{4}=1,\]
+\[a_{1} b_{3}-b_{1} a_{3}=a_{1} b_{4}-b_{1} a_{4}
+=a_{2} b_{3}-b_{2} a_{3}=a_{2} b_{4}-b_{2} a_{4}=0.\]
+If $a_{1}=0, b_{1} a_{2}=-1, b_{1} a_{3}=b_{1} a_{4}=0$, so $a_{3}=a_{4}=0$, which contradicts $a_{3} b_{4}-b_{3} a_{4}=1$.
+
+If $a_{1} \neq 0, b_{3}=\frac{b_{1} a_{3}}{a_{1}}, b_{4}=\frac{b_{1} a_{4}}{a_{1}}$, which also contradicts $a_{3} b_{4}-b_{3} a_{4}=1$.
+
+(d) No. Let $\alpha=e_{1} \wedge e_{2}+e_{3} \wedge e_{4} \in \Lambda_{2}(\mathbb{R}^{4})$. 
+Then $\alpha \wedge \alpha=2 e_{1} \wedge e_{2} \wedge e_{3} \wedge e_{4} \in \Lambda_{4}(\mathbb{R}^{4})$, which is not zero.
+\item (a) That $u \wedge v \in \lambda_{k+l}(V)$ is a direct consequence of the associativity of tensor products. 
+Since the last equation is bilinear, we only need to show if $u$ and $v$ are decomposable. 
+However, if $u=u_{1} \wedge \ldots \wedge u_{k}$ and $v=v_{1} \wedge \ldots \wedge v_{l}$,
+\begin{align*}
+v \wedge u&=v_{1} \wedge \ldots \wedge v_{l} \wedge u_{1} \wedge \ldots \wedge u_{k}\\
+&=(-1)^{l} u_{1} \wedge v_{1} \wedge \ldots \wedge v_{l} \wedge u_{2} \wedge \ldots \wedge u_{k}\\
+&=\ldots\\
+&=(-1)^{kl} u_{1} \wedge \ldots \wedge u_{k} \wedge v_{1} \wedge \ldots \wedge v_{l}=(-1)^{kl} u \wedge v.
+\end{align*}
+(b) Let us follow the argument in the text. 
+Since an arbitrary element of $I(V)$ has zero determinant, 
+$e_{1} \otimes \ldots \otimes e_{n}$ cannot be in $I(V)$, 
+i.e., $e_{1} \wedge \ldots \wedge e_{n} \neq 0$. 
+That $\left\{e_{\Phi}\right\}$ spans $\Lambda(V)$ is obvious. 
+If $\sum_{\Phi} a_{\Phi} e_{\Phi}=0$, since homogeneous parts should be zero, 
+$\forall 0 \leq k \leq n$, $\sum_{|\Phi|=k} a_{\Phi} e_{\Phi}=0$. 
+However, for some $\Phi_{0}$, if we wedge $e_{\Phi_{0}^{c}}$ on the equation, 
+then we get $a_{\Phi_{0}} e_{1} \wedge \ldots \wedge e_{n}=0$, hence $a_{\Phi_{0}}=0$. 
+Since $\Phi_{0}$ is arbitrary, it means $\{e_{\Phi}\}$ is linearly independent. 
+Therefore, $\{e_{\Phi}\}$ is a basis. The rest of the argument trivially follows.
+
+(c) $\tilde{h}$ can be defined because of the universal property of tensor products 
+and $I(V)$ should be in the kernel of the induced map since $h$ is alternating. 
+Its uniqueness is also followed by the universal property of tensor products. 
+If $W=\mathbb{R}$, since $\tilde{h} \in \Lambda_{k}(V)^{*}$ and $h \in A_{k}(V)$, 
+$\varphi^{*}\colon \Lambda_{k}(V)^{*} \rightarrow A_{k}(V)$ gives an isomorphism.
+\item Since (2), (3), and (4) are bilinear forms, we only need to consider when $f$ and $g$ are both induced by decomposable elements. 
+Therefore if $\varphi\colon \Lambda(V)^{*} \rightarrow A(V)$ is the isomorphism, 
+and $f=\varphi \circ \alpha(w_{1}^{*} \wedge \ldots \wedge w_{p}^{*}), 
+g=\varphi \circ \alpha(w_{p+1}^{*} \wedge \ldots \wedge w_{p+q}^{*})$. Then
+\begin{align*}
+f \wedge_{\alpha} g(v_{1}, \ldots, v_{p+q}) & =w_{1}^{*} \wedge \ldots \wedge w_{p}^{*} \wedge w_{p+1}^{*} \wedge \ldots \wedge w_{p+q}^{*}(v_{1} \wedge \ldots \wedge v_{p+q}) \\
+& =\det(w_{i}^{*} v_{j})_{1 \leq i, j \leq p+q} \\
+& =\sum_{\sigma \in S_{p+q}} \operatorname{sgn}(\sigma) \prod_{i=1}^{p+q} w_{i}^{*} v_{\sigma(i)} \\
+& =\sum_{\pi: p, q \text{ shuffles}} \sum_{\sigma_{1} \in S_{p}} \sum_{\sigma_{2} \in S_{q}} \operatorname{sgn}(\pi) \operatorname{sgn}(\sigma_{1}) \operatorname{sgn}(\sigma_{2}) 
+\prod_{i_{1}=1}^{p} w_{i_{1}}^{*} v_{\pi(\sigma_{1}(i_{1}))} \prod_{i_{2}=1}^{q} w_{p+i_{2}}^{*} v_{\pi(p+\sigma_{2}(i_{2}))} \operatorname{sgn}(\pi) \det(w_{i}^{*} v_{\pi(i)})_{1 \leq i \leq p} \det(w_{j}^{*} v_{\pi(j)})_{p+1 \leq j \leq p+q} \\
+& =\sum_{\pi: p, q \text{ shuffles}} \operatorname{sgn}(\pi) f(v_{\pi(1)}, \ldots, v_{\pi(p)}) g(v_{\pi(p+1)}, \ldots, v_{\pi(p+q)}).
+\end{align*}
+On the other hand, let $f=\varphi \circ \beta(w_{1}^{*} \wedge \ldots \wedge w_{p}^{*}), 
+g=\varphi \circ \beta(w_{p+1}^{*} \wedge \ldots \wedge w_{p+q}^{*})$. Then
+\begin{align*}
+f \wedge_{\beta} g(v_{1}, \ldots, v_{p+q}) & =w_{1}^{*} \wedge \ldots \wedge w_{p}^{*} \wedge w_{p+1}^{*} \wedge \ldots \wedge w_{p+q}^{*}(v_{1} \wedge \ldots \wedge v_{p+q}) \\
+& =\frac{1}{(p+q)!} \det(w_{i}^{*} v_{j})_{1 \leq i, j \leq p+q} \\
+& =\frac{1}{(p+q)!} \sum_{\sigma \in S_{p+q}} \operatorname{sgn}(\sigma) \prod_{i=1}^{p+q} w_{i}^{*} v_{\sigma(i)} \\
+& =\frac{1}{(p+q)!} \sum_{\pi: p, q \text{ shuffles}} \sum_{\sigma_{1} \in S_{p}} \sum_{\sigma_{2} \in S_{q}} \operatorname{sgn}(\pi) \operatorname{sgn}(\sigma_{1}) \operatorname{sgn}(\sigma_{2}) 
+\prod_{i_{1}=1}^{p} w_{i_{1}}^{*} v_{\pi(\sigma_{1}(i_{1}))} 
+\prod_{i_{2}=1}^{q} w_{p+i_{2}}^{*} v_{\pi(p+\sigma_{2}(i_{2}))} \\
+& =\frac{1}{(p+q)!} \sum_{\pi: p, q \text{ shuffles}} \operatorname{sgn}(\pi) \det(w_{i}^{*} v_{\pi(i)})_{1 \leq i \leq p} \det(w_{j}^{*} v_{\pi(j)})_{p+1 \leq j \leq p+q} \\
+& =\frac{p!q!}{(p+q)!} \sum_{\pi \in S_{p+q}} \operatorname{sgn}(\pi) \det(w_{i}^{*} v_{\pi(i)})_{1 \leq i \leq p} \det(w_{j}^{*} v_{\pi(j)})_{p+1 \leq j \leq p+q} \\
+& =\frac{1}{(p+q)!} \sum_{\pi \in S_{p+q}} \operatorname{sgn}(\pi) f(v_{\pi(1)}, \ldots, v_{\pi(p)}) g(v_{\pi(p+1)}, \ldots, v_{\pi(p+q)}).
+\end{align*}
+Therefore,
+\begin{align*}
+f \wedge_{\alpha} g(v_{1}, \ldots, v_{p+q}) & =\sum_{\pi: p, q \text{ shuffles}} \operatorname{sgn}(\pi) f(v_{\pi(1)}, \ldots, v_{\pi(p)}) g(v_{\pi(p+1)}, \ldots, v_{\pi(p+q)}) \\
+& =\frac{1}{p!q!} \sum_{\pi \in S_{p+q}} \operatorname{sgn}(\pi) f(v_{\pi(1)}, \ldots, v_{\pi(p)}) g(v_{\pi(p+1)}, \ldots, v_{\pi(p+q)}) \\
+& =\frac{(p+q)!}{p!q!} f \wedge_{\beta} g.
+\end{align*}
+\item (where $\gamma$ is an integral curve of $X$)
+\begin{align*}
+L_{X}(f)|_{m} & =\lim_{t \rightarrow 0} \frac{\delta X_{t}(f_{X_{t}(m)})-f_{m}}{t}
+=\lim_{t \rightarrow 0} \frac{f_{X_{t}(m)}-f(m)}{t} \\
+& =\lim_{t \rightarrow 0} \frac{f(\gamma_{m}(t))-f(m)}{t}
+=d \gamma\left(\frac{d}{d t}\bigg|_{0}\right)(f) \\
+& =X_{m}(f).
+\end{align*}
+\item (Since $\sqrt{t}$ is defined on $[0, \varepsilon)$, the limit should be calculated when $t \rightarrow 0^{+}$.) We will use L'Hôpital's rule.
+
+Let $g(x, y, z, w)=f(Y_{-x} X_{-y} Y_{z} X_{w})(m)$. Then,
+\begin{align*}
+\frac{\partial g}{\partial x}(x, y, z, w) & =-Y_{Y_{-x} X_{-y} Y_{z} X_{w}(m)}(f) \\
+\frac{\partial g}{\partial y}(x, y, z, w) & =-X_{X_{-y} Y_{z} X_{w}(m)}(f \circ Y_{-x}) \\
+\frac{\partial g}{\partial z}(x, y, z, w) & =Y_{Y_{z} X_{w}(m)}(f \circ Y_{-x} \circ X_{-y}) \\
+\frac{\partial g}{\partial w}(x, y, z, w) & =X_{X_{w}(m)}(f \circ Y_{-x} \circ X_{-y} \circ Y_{z}) \\
+\frac{\partial^{2} g}{\partial x^{2}}(x, y, z, w) & =Y_{Y_{-x} X_{-y} Y_{z} X_{w}(m)}(Y(f)) \\
+\frac{\partial^{2} g}{\partial y^{2}}(x, y, z, w) & =X_{X_{-y} Y_{z} X_{w}(m)}(X(f \circ Y_{-x})) \\
+\frac{\partial^{2} g}{\partial z^{2}}(x, y, z, w) & =Y_{Y_{z} X_{w}(m)}(Y(f \circ Y_{-x} \circ X_{-y})) \\
+\frac{\partial^{2} g}{\partial w^{2}}(x, y, z, w) & =X_{X_{w}(m)}(X(f \circ Y_{-x} \circ X_{-y} \circ Y_{z})) \\
+\frac{\partial^{2} g}{\partial x \partial y}(x, y, z, w) & =X_{X_{-y} Y_{z} X_{w}(m)}(Y(f) \circ Y_{-x}) \\
+\frac{\partial^{2} g}{\partial x \partial z}(x, y, z, w) & =-Y_{Y_{z} X_{w}(m)}(Y(f) \circ Y_{-x} \circ X_{-y}) \\
+\frac{\partial^{2} g}{\partial x \partial w}(x, y, z, w) & =-X_{X_{w}(m)}(Y(f) \circ Y_{-x} \circ X_{-y} \circ Y_{z}) \\
+\frac{\partial^{2} g}{\partial y \partial z}(x, y, z, w) & =-Y_{Y_{z} X_{w}(m)}(X(f \circ Y_{-x}) \circ X_{-y}) \\
+\frac{\partial^{2} g}{\partial y \partial w}(x, y, z, w) & =-X_{X_{w}(m)}(X(f \circ Y_{-x}) \circ X_{-y} \circ Y_{z}) \\
+\frac{\partial^{2} g}{\partial z \partial w}(x, y, z, w) & =X_{X_{w}(m)}(Y(f \circ Y_{-x} \circ X_{-y}) \circ Y_{z})
+\end{align*}
+Therefore,
+\begin{align*}
+\lim_{t \rightarrow 0^{+}} \frac{f(\beta(t))-f(\beta(0))}{t} & = \lim_{t \rightarrow 0^{+}} \frac{f(\beta(t^{2}))-f(\beta(0))}{t^{2}} \\
+& = \lim_{t \rightarrow 0^{+}} \frac{g(t, t, t, t)-g(0,0,0,0)}{t^{2}} \\
+& = \lim_{t \rightarrow 0^{+}} \frac{d g(t, t, t, t) / d t}{2t} \\
+& = \lim_{t \rightarrow 0^{+}} \frac{d^{2} g(t, t, t, t) / d t^{2}}{2}.
+\end{align*}
+Since
+\[d g(t, t, t, t) /d t|_{t=0}= -Y_{m}(f)-X_{m}(f)+Y_{m}(f)+X_{m}(f)=0,\]
+we have
+\begin{align*}
+\lim_{t \rightarrow 0^{+}} \frac{d^{2} g(t, t, t, t) / d t^{2}}{2}
+& = \frac{1}{2}\left(Y_{m}(Y(f))+X_{m}(X(f))+Y_{m}(Y(f))+X_{m}(X(f))\right) \\
+& +X_{m}(Y(f))-Y_{m}(Y(f))-X_{m}(Y(f))-Y_{m}(X(f)) \\
+& -X_{m}(X(f))+X_{m}(Y(f)) \\
+& = X_{m}(Y(f))-Y_{m}(X(f))=[X, Y]|_{m}(f).
+\end{align*}
+\item For $m \in M$, let $x_{1}, \ldots, x_{n}$ be local coordinates around $m$. 
+Since the equation is linear with respect to $\omega$, it is enough to consider the case when $\omega$ is decomposable, i.e., $\omega=g d x_{m_{1}} \wedge \ldots \wedge d x_{m_{p}}$. Then,
+\begin{align*}
+L_{Y_{0}}(\omega(Y_{1}, \ldots, Y_{p})) &= Y_{0}(g \det(Y_{1}(x_{m_{i}}), \ldots, Y_{p}(x_{m_{i}}))_{1 \leq i \leq p}) \\
+&= Y_{0}(g) \det(Y_{1}(x_{m_{i}}), \ldots, Y_{p}(x_{m_{i}}))_{1 \leq i \leq p} \\
+&+\sum_{j=1}^{p} g \det(Y_{1}(x_{m_{i}}), \ldots, Y_{0}(Y_{j}(x_{m_{i}})), \ldots, Y_{p}(x_{m_{i}}))_{1 \leq i \leq p},
+\end{align*}
+\begin{align*}
+L_{Y_{0}}(\omega)(Y_{1}, \ldots, Y_{p}) &= Y_{0}(g) \det(Y_{1}(x_{m_{i}}), \ldots, Y_{p}(x_{m_{i}}))_{1 \leq i \leq p} \\
+&+\sum_{j=1}^{p} g \det(Y_{1}(x_{m_{i}}), \ldots, Y_{j}(Y_{0}(x_{m_{i}})), \ldots, Y_{p}(x_{m_{i}}))_{1 \leq i \leq p},
+\end{align*}
+\begin{align*}
+\omega(Y_{1}, \ldots, L_{Y_{0}} Y_{j}, \ldots, Y_{p})
+& =\det(Y_{1}, \ldots, Y_{0}(Y_{j}(x_{m_{i}})), \ldots, Y_{p})_{1 \leq i \leq p}\\
+& -\det(Y_{1}, \ldots, Y_{j}(Y_{0}(x_{m_{i}})), \ldots, Y_{p})_{1 \leq i \leq p}.
+\end{align*}
+(e) follows by combining these equations.
+\item $(\Rightarrow) \forall(m, n) \in M \times N, \forall Y_{2}, \ldots, Y_{p} \in(M \times N)_{(m, n)}$, 
+\begin{align*}
+i(X) \omega_{(m, n)}(Y_{2}, \ldots, Y_{p})
+&=i(X) \delta \pi(\alpha)_{(m, n)}(Y_{2}, \ldots, Y_{p})\\
+&=\delta \pi(\alpha)_{(m, n)}(X_{(m, n)}, Y_{2}, \ldots, Y_{p})\\
+&=\alpha_{m}(d \pi(X_{(m, n)}), d \pi(Y_{2}), \ldots, d \pi(Y_{p}))=0.
+\end{align*}
+Also,
+\begin{align*}
+i(X) d \omega_{(m, n)}(Y_{2}, \ldots, Y_{p})
+&=i(X) d(\delta \pi(\alpha))_{(m, n)}(Y_{2}, \ldots, Y_{p})\\
+&=d(\delta \pi(\alpha))_{(m, n)}(X_{(m, n)}, Y_{2}, \ldots, Y_{p})\\
+&=\delta \pi(d \alpha)_{(m, n)}(X_{(m, n)}, Y_{2}, \ldots, Y_{p})\\
+&=d \alpha_{m}(d \pi(X_{(m, n)}), d \pi(Y_{2}), \ldots, d \pi(Y_{p}))=0.
+\end{align*}
+Since $L_{X}=i(X) \circ d+d \circ i(X)$, $L_{X} \omega=0$.
+
+$(\Leftarrow)$ Let $(m, n) \in M \times N$, and choose local coordinates of $m \in M, n \in N$, 
+say $\{x_{1}, \ldots, x_{s}\},\{y_{1}, \ldots, y_{t}\}$, 
+such that local coordinates of $(m, n) \in M \times N$ consist of $\{x_{1}, \ldots, x_{s}, y_{1}, \ldots, y_{t}\}$. 
+Then, $\omega$ can be described as
+\[\sum_{|\Phi|+|\Psi|=p} g_{\Phi, \Psi} d x_{\Phi} \wedge d y_{\Psi}.\]
+And we can take a vector field $X$ on $M \times N$ as $\frac{\partial}{\partial x_{i}} \times\left(\mathcal{C}^{\infty}\right.$ function which is zero outside the local chart and $1$ at $(m, n))$. 
+Then $X_{(m, n)}=\frac{\partial}{\partial x_{i}}\big|_{(m, n)}$ and $d \pi(X)=0$. 
+Therefore, by assumption, $L_{X} \omega=0$. But,
+\[L_{X} \omega=\sum_{|\Phi|+|\Psi|=p} \frac{\partial g_{\Phi, \Psi}}{\partial x_{i}} d x_{\Phi} \wedge d y_{\Psi}.\]
+Therefore $\forall x_{i}, \frac{\partial g_{\Phi, \Psi}}{\partial x_{i}}=0$. 
+If we let $\iota_{m^{\prime}}\colon N \rightarrow M \times N, n^{\prime} \mapsto\left(m^{\prime}, n^{\prime}\right)$,
+\[(\delta \iota_{m} \omega)_{n}=\sum_{|\Psi|=p} g_{\Phi, \Psi}(m, n) d y_{\Psi}.\] 
+Therefore, by the result above, on the small neighborhood of $m \in M$ and for all $m^{\prime}$ in the neighborhood, 
+$\left(\delta \iota_{m}^{\prime} \omega\right)_{n}$ is the same as $\left(\delta l_{m} \omega\right)_{n}$. 
+Since $(m, n)$ is arbitrary, we can say that $\delta \iota_{m} \omega$ is locally the same regardless of the choice of $m$. 
+Also, since $M$ is connected, we conclude that $\delta \iota_{m} \omega$ is always the same regardless of the choice of $m \in M$. 
+Let $\alpha$ be this $p$-form on $N$. Then, $\omega=\delta \pi(\alpha)$. 
+Indeed, for all $(m, n) \in M \times N$, and $X_{1}, \ldots, X_{p} \in(M \times N)_{(m, n)}$,
+\begin{align*}
+(\omega-\delta \pi(\alpha))_{(m, n)}(X_{1}, \ldots, X_{p}) 
+& =\omega_{(m, n)}(X_{1}, \ldots, X_{p})-\delta \pi(\delta \iota_{m} \omega)_{(m, n)}(X_{1}, \ldots, X_{p}) \\
+& =\omega_{(m, n)}(X_{1}, \ldots, X_{p})-\omega_{(m, n)}(d(\iota_{m} \circ \pi)(X_{1}), \ldots, d(\iota_{m} \circ \pi)(X_{p})) \\
+& =\omega_{(m, n)}(X_{1}-d(\iota_{m} \circ \pi)(X_{1}), \ldots, X_{p}-d(\iota_{m} \circ \pi)(X_{p})).
+\end{align*}
+The last term is zero since if we set $X$ as a vector field of $M \times N$ such that
+\[X_{(m, n)}=X_{1}-d(\iota_{m} \circ \pi)(X_{1})\]
+and $d \pi X=0$, (it is possible since
+\[d \pi(X_{1}-d(\iota_{m} \circ \pi)(X_{1}))=0,\]
+the last term is
+\[(i(X) \omega)_{(m, n)}(X_{2}-d(\iota_{m} \circ\pi)(X_{2}), \ldots, X_{p}-d(\iota_{m} \circ \pi)(X_{p}))\]
+which should be zero by the assumption.
+\item $(\Leftarrow)$ If $a_{1} v_{1}+\ldots+a_{r} v_{r}=0$ and some of $a_{i}$'s are nonzero, 
+then without loss of generality, one can assume $a_{1} \neq 0$. 
+Dividing the equation by $a_{1}$, one can also assume $a_{1}=1$. Then
+\[v_{1} \wedge \ldots \wedge v_{n}=(-a_{2} v_{2}-\ldots-a_{r} v_{r}) \wedge v_{2} \wedge \ldots \wedge v_{r}=0.\]
+
+$(\Rightarrow)$ Suppose $v_{1}, \ldots, v_{p}$ are linearly independent, 
+then there is a linear map $\varphi\colon V \rightarrow k^{r}, v_{i} \mapsto e_{i}$. 
+By the universal property, it induces a map $\Lambda_{r}(\varphi)\colon \Lambda_{r}(V) \rightarrow \Lambda_{r}(k^{r})$. 
+Since $\varphi(v_{1} \wedge \ldots \wedge v_{p})=e_{1} \wedge \ldots \wedge e_{p} \neq 0$ by 2.6, $v_{1} \wedge \ldots \wedge v_{p} \neq 0$.
+\item $(\Rightarrow)$ Let $v_{i}=\sum_{j} a_{ij} w_{j}$. 
+Then by direct calculation, $v_{1} \wedge \ldots \wedge v_{r}=(\det A) w_{1} \wedge \ldots \wedge w_{r}$.
+
+$(\Leftarrow)$ If $w \in \langle w_{1}, \ldots, w_{r}\rangle\setminus\langle v_{1}, \ldots v_{r}\rangle$, 
+$v_{1} \wedge \ldots \wedge v_{r} \wedge w \neq 0$ by Exercise 9, 
+which contradicts $w_{1} \wedge \ldots \wedge w_{r} \wedge w=0$. 
+Therefore $\langle w_{1}, \ldots, w_{r}\rangle\subset\langle v_{1}, \ldots v_{r}\rangle$ and vice versa.
+\item (Condition$\Rightarrow$(a)) Since $d_{\omega_{i}} \in \mathfrak{I}$ by definition of differential ideals.
+
+((a)$\Rightarrow$(b))
+\[d \omega=d \omega_{1} \wedge \ldots \wedge \omega_{r}+\ldots+(-1)^{r+1} \omega_{1} \wedge \ldots \wedge d \omega_{r}=\alpha \wedge \omega\]
+by using (a).
+
+((b)$\Rightarrow$(a))
+\[d \omega=d \omega_{1} \wedge \ldots \wedge \omega_{r}+\ldots+(-1)^{r+1} \omega_{1} \wedge \ldots \wedge d \omega_{r}=\alpha \wedge \omega.\]
+Since $\omega \wedge \omega_{i}=0$, by wedging $\omega_{i}$ on the equation, we get $d \omega_{i} \wedge \omega=0$. 
+Therefore, $d \omega_{i} \in \langle\omega_{1}, \ldots, \omega_{r}\rangle$.
+
+((a)$\Rightarrow$condition)
+\[d\langle \omega_{1}, \ldots, \omega_{r}\rangle\subset\langle d \omega_{1}, \ldots, d \omega_{r}, \omega_{1}, \ldots, \omega_{r}\rangle\]
+by the property of derivations, and the result directly follows.
+\item For another basis $w_{1}, \ldots, w_{n}$, let $w_{i}=\sum_{j} a_{ij} v_{j}$. Then
+\begin{align*}A w_{1} \wedge \ldots \wedge A w_{n}
+&=\sum_{j} a_{1j} A v_{j} \wedge \ldots \wedge \sum_{j} a_{nj} A v_{j}\\
+&=\det(a_{ij}) A v_{1} \wedge \ldots \wedge A v_{n}.\end{align*}
+Therefore by Exercise 10, $\det A$ does not depend on the choice of basis. 
+If we choose the standard basis $e_{1}, \ldots, e_{n}$, the equation of $\det A$ follows directly. 
+Also, for two matrices $A, B$,
+\[B v_{1} \wedge \ldots \wedge B v_{n}
+=(\det B) v_{1} \wedge \ldots \wedge v_{n},\]
+so
+\begin{align*}
+A B v_{1} \wedge \ldots \wedge A B v_{n}
+&=(\det B) A v_{1} \wedge \ldots \wedge A v_{n}\\
+&=(\det B)(\det A) v_{1} \wedge \ldots \wedge v_{n},
+\end{align*}
+which proves $\det A \det B=\det AB$.
+\item The orthonormality comes from direct calculations.
+
+(5) Since $* *$ is linear, we only need to show this property for the basis elements. 
+If $\Phi=\left\{i_{1}, \ldots, i_{p}\right\} \subset \{1, \ldots, n\}$ 
+and let $f$ be the element which satisfies $e_{\Phi} \wedge f=e_{1} \wedge \ldots \wedge e_{n}$, then
+\[f \wedge e_{\Phi}=(-1)^{p(n-p)} e_{1} \wedge \ldots \wedge e_{n}.\]
+Therefore $* * e_{\Phi}= \pm * f=(-1)^{p(n-p)} e_{\Phi}$.
+
+(6) Since the equation is bilinear in $v$ and $w$, 
+we only need to show this for the basis elements. 
+Therefore we can assume that $v=e_{\Phi_{1}}, w=e_{\Phi_{2}}$. If $v \neq w$,
+\[\langle v, w\rangle=*(w \wedge * v)=*(v \wedge * w)=0\]
+by definition of star and inner product. If $v=w$,
+\[\langle v, w\rangle=*(w \wedge * v)=*(v \wedge * w)=1\]
+also by definition. Hence (6) is proved.
+\item It suffices to show that for all $v \in \Lambda_{p+1}(V)$ and $w \in \Lambda_{p}(V)$, 
+\[\langle \gamma(v), w\rangle=\langle v, \xi \wedge w\rangle.\]
+But it is equivalent to (using Exercise 13):
+\begin{align*} 
+& (-1)^{np}\langle w, *(\xi \wedge * v)\rangle=\langle\xi \wedge w, v\rangle \\
+\Leftrightarrow & (-1)^{np} *\big(w \wedge(-1)^{p(n-p)} \xi \wedge * v\big)=\langle \xi \wedge w, v\rangle \\
+\Leftrightarrow & (-1)^{p} *(w \wedge \xi \wedge * v)=\langle\xi \wedge w, v\rangle \\
+\Leftrightarrow & *(\xi \wedge w \wedge * v)=\langle\xi \wedge w, v\rangle
+\end{align*}
+which is true by Exercise 13.
+\item (It is true only if $\xi \neq 0$) Obviously $(\xi \wedge)^{2}=0$. 
+Conversely, if $\xi \wedge w=0$, then
+\[w=\xi \wedge \gamma\left(\frac{w}{\langle\xi, \xi\rangle}\right).\]
+To prove this, it is enough to show that for all $v \in \Lambda_{p+1}(V)$,
+\[\langle \xi \wedge \gamma(w), v\rangle=\langle \xi, \xi\rangle \langle w, v\rangle.\]
+But
+\begin{align*}
+\langle \xi \wedge \gamma(w), v\rangle&=\langle \gamma(w), \gamma(v)\rangle\\
+&=\langle (-1)^{np} *(\xi \wedge * w),(-1)^{np} *(\xi \wedge * v)\rangle\\
+&=*(*(\xi \wedge * w) \wedge(-1)^{p(n-p)} \xi \wedge * v)\\
+&=*(\xi \wedge * v \wedge *(\xi \wedge * w))\\
+&=\langle \xi \wedge * v, \xi \wedge * w\rangle.
+\end{align*}
+Let us consider a basis $\{v_{i}\}$ of $V$ which contains $\xi$ and an expression of $w$ in terms of the basis derived by $\left\{v_{i}\right\}$, 
+say $\sum_{|I|=p+1} a_{I} v_{I}$ where $I=\{v_{i_{1}}, \ldots, v_{i_{p+1}}\} \subset\{v_{i}\}$ and $v_{I}=v_{i_{1}} \wedge \ldots \wedge v_{i_{p+1}}$ 
+(to clarify the definition, it is assumed that orders of elements of all finite subset of $\{v_{i}\}$ are determined, possibly by using the Axiom of Choice if necessary). 
+Since $\xi \wedge w=0$, it follows that all $I$ which $a_{I} \neq 0$ should contain $\xi$. 
+Therefore, considering an expression of $* w$ derived by $w$, 
+we see that there is no $\xi$ in the expression of $* w$. 
+It means that if calculating $\langle\xi \wedge * v, \xi \wedge * w\rangle$ by splitting matrices and getting determinants, 
+the first column of matrices should be $(\langle\xi, \xi\rangle, 0, \ldots, 0)$. 
+It means that $\langle\xi \wedge * v, \xi \wedge * w\rangle$ should be 
+$\langle \xi, \xi\rangle \langle * v, * w\rangle=\langle \xi, \xi\rangle\langle v, w\rangle$.
+\item $\sum_{i} \theta_{i} \wedge \omega_{i}=0$. If we wedge $\omega_{1} \wedge \ldots \wedge \widehat{\omega_{i}} \wedge \ldots \wedge \omega_{p}$, we get
+\[\theta_{i} \wedge \omega_{1} \wedge \ldots \wedge \omega_{p}=0.\]
+Therefore $\theta_{i} \in\langle\omega_{1}, \ldots, \omega_{p}\rangle$. 
+So it is possible to write $\theta_{i}=\sum_{j} A_{ij} \omega_{j}$, 
+where $A_{ij}$ are $\mathcal{C}^{\infty}$ functions. 
+One can derive $A_{ij}=A_{ji}$ by just putting these expressions into the given equation and noting that $\omega_{i} \wedge \omega_{j}$'s are linearly independent.
+\end{enumerate}

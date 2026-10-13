@@ -1,0 +1,219 @@
+\setdisplaytitle{Chapter 1 Manifolds}
+\sethtmltitle{Chapter 1 Manifolds}
+\begin{enumerate}
+\item Let $x=\left(x_{1}, \ldots, x_{n+1}\right)$. Then for $x \in S_{n}-n$, 
+the map $p_{n}\colon S^{d}-n \rightarrow \mathbb{R}^{n}$ is defined as 
+$p_{n}(x)=\frac{1}{1-x_{n+1}}\left(x_{1}, \ldots, x_{n}\right)$. 
+Similarly, if $x \in S_{n}-s$, then $p_{n}(x)=\frac{1}{1+x_{n+1}}\left(x_{1}, \ldots, x_{n}\right)$. 
+Therefore each function is continuous on its domain, respectively. 
+Also on $p_{s}(S_{n}-n-p)$, $p_{n} \circ p_{s}^{-1}\colon p_{s}(S_{n}-n-p) \rightarrow p_{n}(S_{n}-n-p) \subset \mathbb{R}^{n}$ is defined as $p_{n} \circ p_{s}^{-1}(y_{1}, \ldots, y_{n})=\frac{1}{k}(y_{1}, \ldots, y_{n})$ $(k=\sum_{i=1}^{n} y_{i}^{2})$, 
+which is smooth since $(0, \ldots, 0) \notin p_{s}(S_{n}-n-p)$. 
+Similarly, $p_{s} \circ p_{n}^{-1}$ is also smooth.
+Therefore, the maximal collection including these coordinate systems is indeed a differentiable structure on $S^{d}$.
+\item Let $f(t)=t^{3}$. Then $\operatorname{id}_{\mathbb{R}} \circ f^{-1}(t)=t^{\frac{1}{3}}$, which is not differentiable at $t=0$, 
+and it means $\mathscr{F} \neq \mathscr{F}_{1}$. 
+However, if we set $\varphi\colon(\mathbb{R}, \mathscr{F}) \rightarrow\left(\mathbb{R}, \mathscr{F}_{1}\right), t \mapsto t^{\frac{1}{3}}$, 
+then $\operatorname{id}_{\mathbb{R}} \circ \,\varphi \circ f^{-1}(t)=t$, which is a diffeomorphism. 
+Therefore, $(\mathbb{R}, \mathscr{F})$ and $\left(\mathbb{R}, \mathscr{F}_{1}\right)$ are diffeomorphic.
+\item By Theorem 1.11, given an open cover $\left\{U_{\alpha}\right\}$, 
+there exists a partition of unity $\left\{\varphi_{\alpha}\right\}$ subordinate to the cover $\left\{U_{\alpha}\right\}$. 
+If we set $V_{\alpha}=\varphi_{\alpha}^{-1}(\mathbb{R} \backslash\{0\})$, 
+then it is also an open cover since for every $m \in M$, $\sum_{\alpha} \varphi_{\alpha}(m)=1$, 
+which means $\varphi_{\alpha}(m) \neq 0$ for some $\alpha$, and $m \in V_{\alpha}$. 
+Also, by definition of support, $\overline{V_{\alpha}} \subset U_{\alpha}$. 
+Therefore $\left\{V_{\alpha}\right\}$ is the refinement satisfying the condition.
+\item Suppose two closed subsets $C, D \subset M$ are given. 
+Then by regularity, $\forall c \in C$, $\exists$ open subset $U_{c}, V_{c} \subset M$ 
+s.t. $c \in U_{c}, D \subset V_{c}$, and $U_{c} \cap V_{c}=\varnothing$. 
+Then $\left\{U_{c}\right\}_{c \in C} \cup M \backslash C$ is an open cover of $M$. 
+Hence, by paracompactness, there exists a refinement of $\left\{U_{c}\right\}_{c \in C} \cup M \backslash C$ which is locally finite. 
+By discarding the open sets which do not intersect $C$, 
+one can obtain an open cover of $C$ which is locally finite, 
+say $\big\{\widetilde{U}_{\beta}\big\}$. 
+Then, $\forall d \in D, \exists \widetilde{V_{d}}$ s.t. $\widetilde{V}_{d} \cap \widetilde{U}_{\beta} \neq \varnothing$ for only finite $\beta^{\prime}$'s, 
+which we can label as $\beta_{1}, \ldots, \beta_{n}$. 
+Since $\big\{\widetilde{U}_{\beta}\big\}$ is a refinement, 
+one can find $c_{i} \in C$ for each $\beta_{i}$ s.t. $\widetilde{U}_{\beta_i} \subset U_{c_{i}}$. 
+If we set $W_{d}=\widetilde{V_{d}} \cap \bigcap_{i=1}^{n} V_{c_{i}}$, 
+then one can easily see that $\forall \beta, W_{d} \cap \widetilde{U}_{\beta}=\varnothing$ and $W_{d}$ is an open neighborhood of $d$. 
+If we set $U=\bigcup \widetilde{U}_{\beta}, W=\bigcup W_{d}$, then each open set is a neighborhood of $C$ and $D$ respectively which does not intersect each other. 
+Since $C$ and $D$ are arbitrary, $M$ is normal.
+\item (a) If $\vec{a}=(a_{1}, \ldots, a_{d})$ and $\vec{v}=(v_{1}, \ldots, v_{d})$, 
+$\tilde{\psi} \circ \tilde{\varphi}^{-1}(\vec{a}, \vec{v})=\left(\psi \circ \varphi^{-1}(\vec{a}), \mathcal{J}(\psi \circ \varphi^{-1})(\vec{v})\right)$, which is $\mathcal{C}^{\infty}$.
+
+(b) $\tilde{\varphi}\colon \pi^{-1}(U) \rightarrow \mathbb{R}^{2d}$ is a bijection between $\pi^{-1}(U)$ and $\varphi(U) \times \mathbb{R}^{d}$, which is open in $\mathbb{R}^{2d}$. 
+Also, for any $(V, \psi), \tilde{\psi}^{-1}(W^{\prime}) \cap \pi^{-1}(U)$ is of the form $\tilde{\varphi}^{-1}(W)$, 
+which is $\tilde{\varphi}^{-1}\big(\tilde{\varphi} \circ \tilde{\psi}^{-1}\big(\psi(U \cap V) \times \mathbb{R}^{d} \cap W^{\prime}\big)\big)$. 
+Therefore, on the defined topology, $\tilde{\varphi}$ is a homeomorphism and that $T(M)$ is a $2d$-dimensional locally Euclidean space directly follows. 
+For second countability, since $M$ is second countable, we can choose countable such $(U, \varphi)$ that cover $T(M)$. 
+Since $\mathbb{R}^{2d}$ is also second countable, it follows that $T(M)$ is second countable.
+
+(c) By (a) and (b), it directly follows.
+\item By Theorem 1.30, Corollary (a), $\psi$ is a diffeomorphism if and only if $d \psi$ is surjective everywhere. 
+Suppose that $d \psi$ is not surjective at $m \in M$. 
+Since it is nonsingular, $\dim M=p<\dim N=d$. 
+Pick a coordinate system on $N$, $(U, \varphi)$, such that $\varphi(U)=\mathbb{R}^{d}$. 
+Then $\varphi \circ \psi\colon \psi^{-1}(U) \rightarrow \mathbb{R}^{d}$ is surjective. 
+Also, by the second countability of $M$, one can find countable coordinate systems of $\psi^{-1}(U)$, 
+say $\left\{\left(V_{\alpha}, f_{\alpha}\right)\right\}_{\alpha \in A}$. 
+Then $\mathbb{R}^{d}=\bigcup_{\alpha \in A} \varphi \circ \psi \circ f_{\alpha}^{-1}(\mathbb{R}^{p})$. 
+Using Proposition 1.35, since $\varphi \circ \psi \circ f_{\alpha}^{-1}$ is an immersion, 
+one can obtain a countable cover $\left\{U_{\beta}\right\}$ of $\mathbb{R}^{p}$ such that $\varphi \circ \psi \circ f_{\alpha}^{-1}(U_{\beta})$ is a subset of a slice of a open set in $\mathbb{R}^{d}$, which is nowhere dense. 
+Therefore, by the Baire category theorem, $\bigcup_{\alpha \in A} \varphi \circ \psi \circ f_{\alpha}^{-1}(\mathbb{R}^{p})$ cannot be all of $\mathbb{R}^{d}$, 
+contradicting the assumption. Therefore, $\psi$ is a diffeomorphism.
+\item (a) For two differentiable structures on $A$, $\mathscr{F}$ and $\mathscr{F}^{\prime}$, 
+$\operatorname{id}_{A}\colon(A, \mathscr{F}) \rightarrow\left(A, \mathscr{F}^{\prime}\right)$ is continuous, hence $\mathcal{C}^{\infty}$ by Theorem 1.32. 
+Since its inverse is also $\mathcal{C}^{\infty}$, it is a diffeomorphism: that is, two structures are the same.
+
+(b) Let $(\tilde{A}, \iota^{\prime})$ be $A$ equipped with a manifold structure possibly different from the induced structure form $M$. 
+Then $\operatorname{id}_{A}\colon \tilde{A} \rightarrow A$ is continuous and hence $\mathcal{C}^{\infty}$ by Theorem 1.32. 
+Also it is nonsingular since $d \iota^{\prime}=d(\iota \circ \operatorname{id}_{A})$ is. 
+Therefore, by Exercise 6, it is a diffeomorphism, which means that a manifold structure on $\tilde{A}$ is equal to that on $A$.
+\item Use notations of Theorem 1.37. Since $\Big\{\frac{\partial f_{i}}{\partial s_{j}}\Big|_{\left(r_{0}, s_{0}\right)}\Big\}$ is nonsingular (i.e., invertible), 
+by continuity, there exists an open set $(r_{0}, s_{0}) \in V_{0} \times W_{0} \subset U$ such that $d f$ is surjective. 
+Also, $(r_{0}, s_{0}) \in f^{-1}(0)$, hence nonempty. 
+Therefore, by Theorem 1.38, $P=f|_{V_{0} \times W_{0}}^{-1}(0)$ is an imbedded submanifold of $V_{0} \times W_{0}$ of dimension $c-d$. 
+Now, let $\pi_{1}\colon V_{0} \times W_{0} \rightarrow V_{0}$ be the first projection. 
+Then, $\pi_{1} \circ \iota\colon P \rightarrow V_{0}$ is $\mathcal{C}^{\infty}$, 
+and $d(\pi_{1} \circ \iota)\colon P_{\left(r_{0}, s_{0}\right)} \rightarrow V_{0 r_{0}}$ is an isomorphism. 
+$\left(\because P_{(r_{0}, s_{0})}\right.$ can be identified with $\ker d f \subset V_{0} \times W_{0(r_{0}, s_{0})}$, and $\left.d f\right|_{W_{0 s_{0}}}$ is an isomorphism, 
+$V_{0} \times W_{0(r_{0}, s_{0})}=\ker d f \oplus W_{s_{0}}=V_{0 r_{0}} \oplus W_{0 s_{0}}$. 
+Hence $\ker df \rightarrow V_{0 r_{0}}$ is an isomorphism also.) 
+Therefore, by Theorem 1.30, one can find an open set $(r_{0}, s_{0}) \in V \times W \subset V_{0} \times W_{0}$ such that $\pi_{1} \circ \iota_{P \cap V \times W}^{-1}\colon V \rightarrow P \cap V \times W$ is an one-to-one onto $\mathcal{C}^{\infty}$ map. 
+Therefore, if we set $g=\pi_{2} \circ \iota \circ\big(\pi_{1} \circ \iota|_{P \cap V \times W}^{-1}\big)\colon V \rightarrow W$ (where $\pi_{2}$ is the second projection), then it is the map satisfying the condition.
+\item $\frac{\partial f}{\partial x}=3 x^{2}+y, \frac{\partial f}{\partial y}=x+3 y^{2}$. 
+Therefore, $\frac{\partial f}{\partial x}=\frac{\partial f}{\partial y}=0$ if and only if $(x, y)=(0,0),\left(-\frac{1}{3},-\frac{1}{3}\right)$. 
+Therefore, by Theorem 1.38, $f^{-1}\big(f\left(\frac{1}{3}, \frac{1}{3}\right)\big)$ is an imbedded submanifold, 
+since $(0,0),\big(-\frac{1}{3},-\frac{1}{3}\big) \notin f^{-1}\big(f\big(\frac{1}{3}, \frac{1}{3}\big)\big)$. 
+$f^{-1}(f(0,0))$ is not a manifold since $(0,0)$ is a node. 
+If $p=\left(-\frac{1}{3},-\frac{1}{3}\right)$, then $f(x, y)=f\big(\frac{1}{3}, \frac{1}{3}\big)$ iff
+\[x^{3}+x y+y^{3}-\frac{1}{27}=0\] iff 
+\[\left(x+y-\frac{1}{3}\right)\left(x^{2}+y^{2}+\frac{1}{9}+\frac{x}{3}+\frac{y}{3}-x y\right)=0\]
+iff $x+y=\frac{1}{3}$, since
+\[x^{2}+y^{2}+\frac{1}{9}+\frac{x}{3}+\frac{y}{3}-x y
+=\frac{1}{2}\left(\Big(x+\frac{1}{3}\Big)^{2}+\Big(y+\frac{1}{3}\Big)^{2}+(x-y)^{2}\right).\]
+Therefore $f^{-1}\big(f\big(\!-\frac{1}{3},-\frac{1}{3}\big)\big)$ is a line, which is an imbedded submanifold.
+\item Since $f(M)$ is compact, $\exists m \in M$ s.t. $|f(m)|$ is the biggest. If $df\colon M_{m} \rightarrow \mathbb{R}_{f(m)}^{n}$ is nonsingular, 
+then by Theorem 1.30, Corollary (a), $\exists U \subset f(M)$ neighborhood of $f(m)$, which contradicts the maximality of $|f(m)|$.
+\item Not closed: $\left(-\frac{\pi}{2}, \frac{\pi}{2}\right) \subset \mathbb{R}, g(x)=\tan x$.
+
+Not imbedded: Second Example of 1.28, $g(x)=x$.
+
+To prove the converse: if there is a disk $D(x, r) \subset \mathbb{R}^{n}$, 
+one can construct a $\mathcal{C}^{\infty}$ function which is nonzero exactly on $D(x, r)$ and zero elsewhere. 
+Since $M$ is locally Euclidean, there exists a basis $\left\{B_{\alpha}\right\}$ of $M$ such that $\forall B_{\alpha}, \exists g_{\alpha}$ s.t. $g_{\alpha}^{-1}(\mathbb{R} \backslash\{0\})=B_{\alpha}$. 
+Then by the assumption there is a $\mathcal{C}^{\infty}$ function $f_{\alpha}$ on $N$ such that $f_{\alpha} \circ \psi=g_{\alpha}$. 
+Since $f_{\alpha}^{-1}(\mathbb{R} \backslash\{0\}) \cap \psi(M)=\psi(B_{\alpha})$, 
+$\psi(B_{\alpha})$ is open in $\psi(M)$ with relative topology, which means $\psi$ is an imbedding.
+Therefore we can say $M \subset N$. If $M$ is not closed in $N$, 
+then there is $n \in \bar{M} \backslash M$ and $(U, \varphi)$ a coordinate system of $n$, 
+and there is a $\mathcal{C}^{\infty}$ function $g$ on $M$ such that
+\[g(m)=\frac{1}{\varphi(m)-\varphi(n)}\]
+on the neighborhood of $n$ on $M$. 
+However, since $n$ is a limit point of $M$, it cannot be extended to all of $N$. Therefore, $M$ should be closed in $N$.
+\item (a) Since $d f=\sum 2 r_{i} d r_{i}$, it is surjective except at the origin. Therefore one can use Theorem 1.38. 
+Also, since it is a submanifold with the relative topology, it should be the same as 1.5(d) by 1.33(b).
+
+(b) By following the argument, we need only to show that $d \psi_{I}$ is surjective. 
+Since $\psi(A)=\big(\sum_{k} a_{ik} a_{jk}\big)_{ij}$, $d \psi_{A}=\big(\sum_{k}(a_{jk} d a_{ik}+a_{ik} d a_{jk})\big)_{ij}$. $\therefore d \psi_{I}=\left(d a_{i j}+d a_{j i}\right)_{i j}$. But, since $G l(n, \mathbb{R})_{I} \cong M_{n \times n}(\mathbb{R})$, it is surjective onto $\operatorname{Sym}_{n}(\mathbb{R})_{I} \cong \operatorname{Sym}_{n}(\mathbb{R})$.
+\item (a) If we set $X=\sum a_{i} \frac{\partial}{\partial x_{i}}, Y=\sum b_{i} \frac{\partial}{\partial x_{i}}$ locally as Proposition 1.43(b),
+\[[X, Y]=\sum_{i} \sum_{j}\left(a_{i} \frac{\partial b_{j}}{\partial x_{i}}-b_{i} \frac{\partial a_{j}}{\partial x_{i}}\right) \frac{\partial}{\partial x_{j}}.\]
+Therefore by 1.43(b), it is a smooth vector field.
+
+(b) Using the same notation as above,
+\begin{align*}
+{[fX, gY] } & =\sum_{i} \sum_{j}\left(f a_{i} \frac{\partial g b_{j}}{\partial x_{i}}-g b_{i} \frac{\partial f a_{j}}{\partial x_{i}}\right) \frac{\partial}{\partial x_{j}} \\
+& =\sum_{i} \sum_{j}\left(f g a_{i} \frac{\partial b_{j}}{\partial x_{i}}-f g b_{i} \frac{\partial a_{j}}{\partial x_{i}}+f a_{i} b_{j} \frac{\partial g}{\partial x_{i}}-g a_{j} b_{i} \frac{\partial f}{\partial x_{i}}\right) \frac{\partial}{\partial x_{j}} \\
+& =f g[X, Y]+f(Xg) Y-g(Y\!f) X.
+\end{align*}
+(c) \[[X, Y]=\sum_{i} \sum_{j}\left(a_{i} \frac{\partial b_{j}}{\partial x_{i}}-b_{i} \frac{\partial a_{j}}{\partial x_{i}}\right) \frac{\partial}{\partial x_{j}}
+=-\sum_{i} \sum_{j}\left(b_{i} \frac{\partial a_{j}}{\partial x_{i}}-a_{i} \frac{\partial b_{j}}{\partial x_{i}}\right) \frac{\partial}{\partial x_{j}}=-[Y, X].\]
+(d) Let $Z=\sum c_{i} \frac{\partial}{\partial x_{i}}$. Then,
+\begin{align*}
+{[[X, Y], Z]=} & \sum_{i} \sum_{j} \sum_{k}\left(\left(a_{i} \frac{\partial b_{j}}{\partial x_{i}}-b_{i} \frac{\partial a_{j}}{\partial x_{i}}\right) \frac{\partial c_{k}}{\partial x_{j}}\right. \\
+& -c_{j}\left.\left(\frac{\partial a_{i}}{\partial x_{j}} \frac{\partial b_{k}}{\partial x_{i}}+a_{i} \frac{\partial^{2} b_{k}}{\partial x_{j} \partial x_{i}}-\frac{\partial b_{i}}{\partial x_{j}} \frac{\partial a_{k}}{\partial x_{i}}-b_{i} \frac{\partial^{2} a_{k}}{\partial x_{j} \partial x_{i}}\right)\right) \frac{\partial}{\partial x_{k}}
+\end{align*}
+and by direct calculation, the Jacobi identity gets proved.
+\item No. If $X_{x}=\exp (x) \frac{\partial}{\partial r}$ and $\gamma_{0}(t)$ is the integral curve at $0 \in \mathbb{R}$, 
+then by definition, $\frac{d\gamma_{0}}{dt}(t)=\exp (\gamma_{0}(t))$ and $\gamma_{0}(0)=0$. 
+By solving the differential equation, $\gamma_{0}(t)=-\log (-t+1)$, and it is not defined on $(-\infty, \infty)$.
+\item Use the equation of Exercises 13(a) above.
+\item Consider the first example of 1.31 and a curve along the horizontal part of the submanifold. 
+It is clear that on $0 \in \mathbb{R}^{2}$, the tangent vector of the integral curve should be horizontal, whereas $N_{0}$ consists of vertical vectors.
+\item By 1.48(f), $\bigcup_{t>0} \mathcal{D}_{t}=\bigcup_{t<0} \mathcal{D}_{t}=M$, 
+thus by the compactness of $M$, $\exists t_{0}>0$ s.t. $\mathcal{D}_{t_{0}}=\mathcal{D}_{-t_{0}}=M$. 
+Thus by 1.48(g), $X_{t_{0}}$ is an endomorphism, and $\forall n \in \mathbb{N}$, $X_{t_{0}}^{n}$ is defined on all of $M$. 
+Therefore by 1.48(h), $\forall N>0, \mathcal{D}_{N}=M$. 
+Likewise, $\forall N<0, \mathcal{D}_{N}=M$. 
+Since it is clear that $D_{0}=M$, $\mathrm{M}$ is complete.
+\item If it is one-to-one, the image should be infinite. 
+Therefore, there exist $a, b, c \in \operatorname{im}f$ s.t. $a<b<c$. 
+By erasing $b$, $a$ and $c$ can be separated by open sets $(-\infty, b) \cap \operatorname{im}f$ and $(b, \infty) \cap \operatorname{im}f$, 
+hence $\operatorname{im}f$ is disconnected, whereas $\mathbb{R}^{2} \backslash f^{-1}(b)$ is connected since $f^{-1}(b)$ consists of one point. 
+This contradicts the continuity of $f$.
+\item (1.60$\Leftarrow$1.61) Follow the remark of 1.61. Then,
+$$\left[Y_{a}, Y_{b}\right]=\sum_{j=1}^{d-c}\left(\frac{\partial f_{j b} \circ \gamma}{\partial y_{a}}-\frac{\partial f_{ja} \circ \gamma}{\partial y_{b}}\right) \frac{\partial}{\partial y_{c+j}}
++\sum_{j=1}^{d-c} \sum_{k=1}^{d-c}\left(\frac{\partial f_{jb} \circ \gamma}{\partial y_{c+k}} f_{k a}-\frac{\partial f_{j a} \circ \gamma}{\partial y_{c+k}} f_{k b}\right) \frac{\partial}{\partial y_{c+j}}.$$
+Since $\mathcal{D}$ is involutive, $\left[Y_{a}, Y_{b}\right] \in \mathcal{D}$. But the expression above does not include $\frac{\partial}{\partial y_{i}}$ terms for $1 \leq i \leq c$, it must be zero. 
+Therefore, the assumption 1.61(2) is satisfied. 
+Then we obtain a map $\alpha$ as 1.61(3). 
+Since $a(r_{0}, s)=s$, $(\operatorname{id}, \alpha)^{-1}$ is $\mathcal{C}^{\infty}$ local homeomorphism, 
+so shrinking the neighborhood if necessary, we obtain a local chart $\varphi=(\operatorname{id}, \alpha)^{-1} \circ \gamma\colon W \rightarrow U \times V$ and $\left(z_{1}, \ldots, z_{d}\right)=(\operatorname{id}, \alpha)^{-1} \circ\left(y_{1}, \ldots, y_{d}\right)$ is coordinate functions. 
+Also, if $1 \leq i \leq c$, 
+\[\frac{\partial}{\partial z_{i}}=\sum_{j=1}^{d} \frac{\partial y_{j}}{\partial z_{i}} \frac{\partial}{\partial y_{j}}
+=\frac{\partial}{\partial y_{i}}+\sum_{j=1}^{d-c} f_{ji} \circ \gamma \frac{\partial}{\partial y_{c+j}}=Y_{i}\]
+by 1.61(4) and (6). 
+Therefore, if we let $I$ be a submanifold defined by $z_{j}=$ constant for $c+1 \leq j \leq d$, it is an integral manifold of $\mathcal{D}$.
+
+(1.60$\Rightarrow$1.61) Let $X_{i}=\frac{\partial}{\partial r_{i}}+\sum_{j=1}^{n} b_{ji} \frac{\partial}{\partial s_{j}}$ for $1 \leq i \leq n$ and $\mathcal{D}$ be a distribution generated by $X_{i}$'s. 
+Then by similar calculation above, $\left[X_{a}, X_{b}\right]=0 \in \mathcal{D}$ by assumption 1.61 (2). 
+Thus by 1.60, there exists a cubic coordinate system $(W, \varphi)$ with coordinate functions $\left(x_{1}, \ldots, x_{m}, y_{1}, \ldots, y_{n}\right)$ defined as the theorem. 
+Let us define $\alpha$ on the neighborhood of $(0,0)$ s.t. $y_{j}(r, \alpha_{s}(r))=y_{j}(r_{0}, s), \forall 1 \leq j \leq n$ by implicit function theorem. 
+We can define this because $X_{1}, \ldots, X_{m}, \frac{\partial}{\partial s_{1}}, \ldots, \frac{\partial}{\partial s_{1}}$ is a basis of tangent space and $X_{i}(y_{j})=0$ since $y_{j}$'s are constant on integral manifolds of $\mathcal{D}$, 
+which means $\left\{\frac{\partial y_{j}}{\partial s_{k}}\right\}$ should be nonsingular. 
+Then clearly $\alpha_{s}(r_{0})=s$ and
+\[\frac{\partial y_{j}}{\partial r_{i}}+\sum_{k=1}^{n} \frac{\partial y_{j}}{\partial s_{k}} \frac{\partial \alpha_{s, k}}{\partial r_{i}}=0.\]
+Also, $X_{i}(y_{j})=0$ means
+\[\frac{\partial y_{j}}{\partial r_{i}}+\sum_{k=1}^{n} b_{ki} \frac{\partial y_{j}}{\partial s_{k}}=0.\]
+Since $\left\{\frac{\partial y_{j}}{\partial s_{k}}\right\}$ is nonsingular, condition (4) is satisfied.
+\item Let $M=\mathbb{R}, N=\left(-\frac{\pi}{2}, \frac{\pi}{2}\right)$ and regard $N$ as a submanifold imbedded in $M$ and $\varphi$ as an inclusion. 
+If $X(t)=\tan (t) \frac{\partial}{\partial r}$, then it satisfies the assumption since $\varphi$ is one-to-one, but it cannot be extended to any vector field on $M$.
+\item It is clearly one-to-one, $\mathcal{C}^{\infty}$, and nonsingular. 
+To simplify the calculation, let us think the torus as $T=\mathbb{R}^{2} / \mathbb{Z} \times \mathbb{Z}$ and $\varphi\colon \mathbb{R} \rightarrow T, x \mapsto(x, \alpha x)$. 
+Then $\operatorname{im} \varphi \cap\{(0, y) \in T\}$ is dense in $\{(0, y) \in T\}$, since $\alpha$ is irrational. 
+Also, given $x_{0}$, $\operatorname{im} \varphi \cap\left\{\left(x_{0}, y\right) \in T\right\}$ is dense in $\left\{\left(x_{0}, y\right) \in T\right\}$ since it is the transition of $\operatorname{im} \varphi \cap\{(0, y) \in T\}$. 
+Since $x_{0}$ is arbitrary, the image of $\varphi$ is dense in $T$.
+\item Let $t_{0}$ be a point satisfying $\dot{\gamma}(t_{0})=0$. 
+Then, the constant map whose image is $\gamma(t_{0})$ is also an integral curve. 
+Therefore, by Theorem 1.48(c), $\gamma$ should be a constant map.
+\item Let $\left\{U_{\alpha}\right\}$ be an open cover of $M$ such that $\forall \alpha,\left(U_{\alpha}, \psi_{\alpha}\right)$ is a chart. 
+By Theorem 1.11, there exists a partition of unity $\left\{\varphi_{\alpha}\right\}$ subordinate to the cover. 
+Also, on each chart, there exists a positive definite inner product induced by the standard inner product on the Euclidean space, say $\langle\ ,\,\rangle_{\alpha}$, and it is smooth on each chart. 
+If we set $\langle\ ,\,\rangle_{m}=\sum_{\alpha}\langle\ ,\,\rangle_{\alpha, m} \varphi_{\alpha}(m)$, 
+then it is an inner product which makes $M$ a Riemannian manifold.
+\item (a) $(\Rightarrow)$ Obvious.
+
+$(\Leftarrow) \forall(U, \varphi), \forall(V, \psi)$ charts of $M$ and $N$ respectively, $(U \times V, \varphi \times \psi)$ is a chart of $M \times N$. 
+Then $(\varphi \times \psi) \circ \alpha=\left(\varphi \circ \pi_{1} \circ \alpha, \psi \circ \pi_{2} \circ \alpha\right)$ is $\mathcal{C}^{\infty}$ 
+if $\pi_{1} \circ \alpha, \pi_{2} \circ \alpha$ are $\mathcal{C}^{\infty}$.
+
+(b) Let $m \in U, n \in V$, and $(x_{1}, \ldots, x_{s}),(y_{1}, \ldots, y_{t})$ be the local coordinates of $U, V$ respectively. Then
+\[(M \times N)_{(m, n)}=\bigoplus_{i} \mathbb{R} \frac{\partial}{\partial x_{i}}\Big|_{(m, n)} \bigoplus_{j} \mathbb{R} \frac{\partial}{\partial y_{j}}\Big|_{(m, n)} \cong M_{m} \oplus N_{n}.\]
+
+(c) On $U \times V, \tilde{X}=\sum_{i} a_{i}(x_{1}, \ldots, x_{s}) \frac{\partial}{\partial x_{i}}$ and $\tilde{Y}=\sum_{j} b_{j}(y_{1}, \ldots, y_{t}) \frac{\partial}{\partial y_{j}}$. 
+Therefore, by direct calculation, $[\tilde{X}, \tilde{Y}]=0$.
+
+(d) Let
+\[v=\sum_{i} c_{i} \frac{\partial}{\partial x_{i}}\bigg|_{(m_{0}, n_{0})}
++\sum_{j} d_{j} \frac{\partial}{\partial y_{j}}\bigg|_{(m_{0}, n_{0})} \in(M \times N)_{\left(m_{0}, n_{0}\right)}.\]
+Then \[d \pi_{1}(v)=\sum_{i} c_{i} \frac{\partial}{\partial x_{i}}\bigg|_{m_{0}},
+\quad d \pi_{2}(v)=\sum_{j} d_{j} \frac{\partial}{\partial y_{j}}\bigg|_{n_{0}}.\]
+Also, \[\frac{\partial f \circ i_{n_{0}}}{\partial x_{i}}\bigg|_{m_{0}}
+=\frac{\partial f}{\partial x_{i}}\bigg|_{(m_{0}, n_{0})},
+\quad \frac{\partial f \circ i_{m_{0}}}{\partial y_{j}}\bigg|_{n_{0}}
+=\frac{\partial f}{\partial y_{j}}\bigg|_{(m_{0}, n_{0})}.\]
+Summing up,
+\[v(f)=\sum_{i} c_{i} \frac{\partial f}{\partial x_{i}}\bigg|_{(m_{0}, n_{0})}
++\sum_{j} d_{j} \frac{\partial f}{\partial y_{j}}\bigg|_{(m_{0}, n_{0})}
+=v_{1}(f \circ i_{n_{0}})+v_{2}(f \circ i_{m_{0}}).\]
+\end{enumerate}

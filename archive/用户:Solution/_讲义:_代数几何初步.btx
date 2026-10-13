@@ -1,0 +1,39 @@
+\begin{center}
+    \textsize{28pt}{\textbf{代数几何初步 2022秋 9.5—11.23}} \\ 绝赞更新中qwqqqqqqqq 
+    \\ （注：本文内容忠于上课内容，但不忠于顺序，并会在适当处做补充.）
+
+\end{center}
+
+\begin{flushleft}
+    更新日志： \\
+    v.1.0（2022.11.20） 上课基本内容，内容未作合理性调整. \\
+    v.1.1（2022.11.22） 将$6$章内容分为$1$-$3$章与$4$-$6$章. \\
+    v.1.5（2023.02.13） 将$1$-$3$章与$3$-$6$章划分为$1$、$2$、$3$、$4$、$5$、$6$章. \\
+    v.1.6（2023.03.08） 做成讲义. 更简洁惹！（形式主义更新到此结束.）
+\end{flushleft}
+
+\begin{structure}
+
+    \subpage{代数簇与Hilbert零点定理}
+
+    \subpage!{层与概形}
+
+    \subpage{射影空间与射影代数簇}
+
+    \subpage!{Proj的构造}
+
+    \subpage{维数理论}
+
+    \subpage{实例：Grassmannian簇}
+
+    \subpage{光滑性}
+
+    \subpage!{正规性与Noetherian正规化}
+
+    \subpage{除子与线丛}
+
+    \subpage{拟凝聚层}
+
+    \subpage!{简单平面曲线}
+
+\end{structure}

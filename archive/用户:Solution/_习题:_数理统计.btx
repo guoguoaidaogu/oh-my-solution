@@ -1,0 +1,1702 @@
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\Cov}{\operatorname{Cov}}
+\newcommand{\Bin}{\operatorname{Binomial}}
+\newcommand{\Poi}{\operatorname{Poisson}}
+
+\newcommand{\Ex}{\mathbb{E}}
+\newcommand{\indep}{\perp\!\!\!\perp}
+\newcommand{\1}{\mathbf{1}}
+
+
+\renewcommand\thesection{Chapter \arabic{section}}
+
+\textbf{24春(hyq)}
+
+参考教材:
+
+\textit{Statistical Inference} by George Casella
+
+概率论与数理统计教程.茆诗松
+
+\textbf{Warning}: In this document, $Gamma(\alpha,\beta)$ refers to the p.d.f. $\rho(x)=\frac{1}{\beta^\alpha\Gamma(\alpha)}x^{\alpha-1}e^{-\frac{x}{\beta}}1_{\{x>0\}}$. This definition is same as the definition in \textit{Statistical Inference} by George Casella, but may be different from many other books by Chinese authors. Therefore, conclusions regarding the Gamma distribution or the exponential distribution may differ by a reciprocal transformation of the second parameter $\beta$.
+
+\section{Review of Probability and Extension}
+
+\subsection*{Problem 1.2}
+$X_{1}\sim Gamma(\alpha_{1},\beta)$, $X_{2}\sim Gamma(\alpha_{2},\beta)$, $X_{1}$ and $X_{2}$ are independent. Calculate the conditional distribution of $X_{1}|X_{1}+X_{2}=t$ for any $t>0$.
+
+{Solution:}
+Since $X_{1}\sim\text{Gamma}\left(\alpha_{1},\beta\right),X_{2}\sim\text{Gamma}\left(\alpha_{2},\beta\right)$, we know that
+\[
+\rho_{X_{1}}\left(x_{1}\right)=\frac{1}{\beta^{\alpha_{1}}\Gamma\left(\alpha_{1}\right)}x_{1}^{\alpha_{1}-1}e^{-\frac{x_{1}}{\beta}}\1_{\left(0,+\infty\right)}\left(x_{1}\right),
+\]
+\[
+\rho_{X_{2}}\left(x_{2}\right)=\frac{1}{\beta^{\alpha_{2}}\Gamma\left(\alpha_{2}\right)}x_{2}^{\alpha_{2}-1}e^{-\frac{x_{2}}{\beta}}\1_{\left(0,+\infty\right)}\left(x_{2}\right),
+\]
+then
+\[
+\rho_{X_{1},X_{2}}\left(x_{1},x_{2}\right)=\frac{1}{\beta^{\alpha_{1}+\alpha_{2}}\Gamma\left(\alpha_{1}\right)\Gamma\left(\alpha_{2}\right)}x_{1}^{\alpha_{1}-1}x_{2}^{\alpha_{2}-1}e^{-\frac{x_{1}+x_{2}}{\beta}}\1_{\left(0,+\infty\right)}\left(x_{1}\right)\1_{\left(0,+\infty\right)}\left(x_{2}\right).
+\]
+
+we know that
+\[
+\rho_{X_{1},X_{1}+X_{2}}\left(y_{1},y_{2}\right)=\rho_{X_{1},X_{2}}\left(y_{1},y_{2}-y_{1}\right)\cdot 1=\frac{y_{1}^{\alpha_{1}-1}\left(y_{2}-y_{1}\right)^{\alpha_{2}-1}}{\beta^{\alpha_{1}+\alpha_{2}}\Gamma\left(\alpha_{1}\right)\Gamma\left(\alpha_{2}\right)}e^{-\frac{y_{2}}{\alpha_{2}}}\1_{\left(y_{2}>y_{1}>0\right)}.
+\]
+
+Thus
+\[
+\rho_{X_{1}|X_{1}+X_{2}}\left(y_{1}\mid y_{2}\right) =\frac{\rho_{X_{1},X_{1}+X_{2}}\left(y_{1},y_{2}\right)}{\rho_{X_{1}+X_{2}}\left(y_{2}\right)}
+=\frac{\rho_{X_{1},X_{1}+X_{2}}\left(y_{1},y_{2}\right)}{\int_{\mathbb{R}}\rho_{X_{1},X_{1}+X_{2}}\left(y_{1},y_{2}\right)dy_{1}}
+\]
+\[
+=\frac{y_{1}^{\alpha_{1}-1}\left(y_{2}-y_{1}\right)^{\alpha_{2}-1} \1_{\{y_{2}>y_{1}>0\}}}{\int_{\mathbb{R}}y_{1}^{\alpha_{1}-1}\left(y_{2}-y_{1}\right)^{\alpha_{2}-1}\1_{\{y_{2}>y_{1}>0\}}dy_{1}}
+=\frac{y_{1}^{\alpha_{1}-1}\left(y_{2}-y_{1}\right)^{\alpha_{2}-1} \1_{\{y_{2}>y_{1}>0\}}}{B\left(\alpha_{1},\alpha_{2}\right)y_{2}^{\alpha_{1}+\alpha_{2}-1}}.
+\]
+So, 
+\[
+X_{1}\mid X_{1}+X_{2}=t\sim\frac{x^{\alpha_{1}-1}\left(t-x\right)^{\alpha_{2}-1}}{B\left(\alpha_{1},\alpha_{2}\right)t^{\alpha_{1}+\alpha_{2}-1}}\1_{(0,t)}\left(x\right)dx.
+\]
+
+\subsection*{Problem 1.3}
+For positive integer $n$, (use integration by parts to) show $\mathbb{P}(\operatorname{Gamma}(n,\beta)\leq x)=\mathbb{P}\left(\operatorname{Poisson}\left(\frac{x}{\beta}\right)\geq n\right)$.
+
+{Solution:}
+\[
+\text{LHS }=\int_{0}^{x}\frac{1}{\beta^{n}\Gamma(n)}t^{n-1}e^{-\frac{t}{\beta}}dt=f(x)
+\]
+\[
+\text{RHS }=1-\sum_{k=0}^{n-1}\frac{\left(\frac{x}{\beta}\right)^{k}}{k!}e^{-\frac{x}{\beta}}=g(x)=\sum_{k=n}^{\infty}\frac{\left(\frac{x}{\beta}\right)^{k}}{k!}e^{-\frac{x}{\beta}}
+\]
+\[
+f^{\prime}(x)=\frac{1}{\beta^{n}\Gamma(n)}x^{n-1}e^{-\frac{x}{\beta}}
+\]
+after some algebra.
+\[
+g^{\prime}(x)=e^{-\frac{x}{\beta}}\cdot x^{n-1}\frac{1}{\beta^{n}}\frac{1}{\left(n-1\right)!},
+\]
+\[
+\because f^{\prime}(x)=g^{\prime}(x),f(0)=g(0)=0,f(x)=g(x).
+\]
+
+\subsection*{Problem 1.5}
+Check
+(1) If $X\sim F(m,n)$, then $1/X\sim F(n,m)$;
+(2) If $X\sim t(n)$, then $X^{2}\sim F(1,n)$;
+(3) If $X\sim F(m,n)$, then $\frac{m}{1+\frac{m}{n}X}\sim\text{Beta}\left(\frac{m}{2},\frac{n}{2}\right)$ (cf. Definition 1.6);
+(4) $\mathbb{E}\left(\frac{1}{\operatorname{Gamma}(\alpha,\beta)}\right)=\frac{1}{\left(\alpha-1\right)\beta}$ for $\alpha>1$. Further, $\mathbb{E}\left(\frac{1}{X^{2}(n)}\right)=\frac{1}{n-2}$ and $\mathbb{E}(F(m,n))=\frac{n}{n-2}$ for $n>2$.
+
+{Solution:}
+(1) 
+\[
+X=\frac{\chi^{2}(m)/m}{\chi^{2}(n)/n}\sim F(m,n)
+\]
+So,
+\[
+\frac{1}{X}=\frac{\chi^{2}(n)/n}{\chi^{2}(m)/m}\sim F(n,m)
+\]
+(2)
+\[
+X=\frac{X_{1}}{\sqrt{X_{2}/n}}\sim t_{n},\quad X_{1}\sim N(0,1),X_{2}\sim\chi^{2}(n)
+\]
+\[
+X^{2}=\frac{X_{1}^{2}}{X_{2}/n}\sim F(1,n),
+\]
+where $X_{1}^{2}\sim\chi^{2}(1)$.
+
+(3) Let
+\[
+X=\frac{Z/m}{Y/n},\quad Z\sim\chi^{2}(m),Y\sim\chi^{2}(n)
+\]
+then $\frac{m}{1+\frac{m}{n}X}=\frac{Z}{Z+Y}$. Let's consider a general transform for
+\[
+U=Z+Y,\quad V=\frac{Z}{Z+Y}
+\]
+where $Z\sim\operatorname{Gamma}(\alpha_{1},\beta)$ and $Y\sim\operatorname{Gamma}(\alpha_{2},\beta)$, $Z$ and $Y$ are independent. Note $\operatorname{Gamma}\big(\frac{n}{2},2\big)=\chi^{2}(n)$
+\[
+(Z,Y)\sim\frac{1}{\Gamma(\alpha_{1})\Gamma(\alpha_{2})\beta^{\alpha_{1}+\alpha_{2}}}z^{\alpha_{1}-1}y^{\alpha_{2}-1}e^{-\frac{z}{\beta}}e^{-\frac{y}{\beta}},\quad z>0,\quad y>0.
+\]
+
+Therefore,
+\[
+(U,V)\sim\frac{1}{\Gamma(\alpha_{1})\Gamma(\alpha_{2})\beta^{\alpha_{1}+\alpha_{2}}}(uv)^{\alpha_{1}-1}[u(1-v)]^{\alpha_{2}-1}ue^{-\frac{u}{\beta}}
+\]
+\[
+=\frac{1}{\Gamma(\alpha_{1}+\alpha_{2})\beta^{\alpha_{1}+\alpha_{2}}}u^{\alpha_{1}+\alpha_{2}-1}e^{-\frac{u}{\beta}}\frac{\Gamma(\alpha_{1}+\alpha_{2})}{\Gamma(\alpha_{1})\Gamma(\alpha_{2})}v^{\alpha_{1}-1}(1-v)^{\alpha_{2}-1}
+\]
+Further, we have
+\[
+U\sim\operatorname{Gamma}(\alpha_{1}+\alpha_{2},\beta)\textrm{ and }V\sim\operatorname{Beta}(\alpha_{1},\alpha_{2}),
+\]
+and $U$ and $V$ are independent. Particularly, $\frac{m}{1+\frac{m}{n}X}\sim\operatorname{Beta}\big(\frac{m}{2},\frac{n}{2}\big)$.
+
+(4)
+\[
+E\left(\frac{1}{\operatorname{Gamma}(\alpha,\beta)}\right)=\frac{1}{\beta^{\alpha}\Gamma(\alpha)}\int_{0}^{\infty}\frac{1}{x}x^{\alpha-1}e^{-\frac{x}{\beta}}dx=\frac{\Gamma(\alpha-1)}{\Gamma(\alpha)}\frac{1}{\beta}=\frac{1}{\beta(\alpha-1)}
+\]
+$\chi^{2}$ distribution is $\operatorname{Gamma}\big(\frac{n}{2},2\big)$, so,
+\[
+E\left(\frac{1}{\chi^{2}(n)}\right)=\frac{1}{n-2}
+\]
+\[
+E(F(m,n))=E\left(\frac{Y/m}{X/n}\right)=\frac{n}{m}E(Y)E\left(\frac{1}{X}\right)
+=\frac{n}{m}\times m\times\frac{1}{n-2}=\frac{n}{n-2}
+\]
+
+
+
+
+
+\subsection*{Problem 1.8}
+$X\mid\lambda\sim$ Poisson$(\lambda)$ and $\lambda\sim$ Gamma$(\alpha,\beta)$, derive the distribution of $X$. (It is a negative binomial if $\alpha$ is an integer.)
+
+{Solution:}
+The pmf of $X$, for $x=0,1,\ldots$, is
+\[
+f_{X}(x)=\int_{0}^{\infty}f_{X}(x\mid\lambda)f_{\Lambda}(\lambda)d\lambda=\int_{0}^{\infty}\frac{\lambda^{x}e^{-\lambda}}{x!}\frac{1}{\Gamma(\alpha)\beta^{\alpha}}\lambda^{\alpha-1}e^{-\lambda/\beta}d\lambda
+\]
+\[
+=\frac{1}{x!\Gamma(\alpha)\beta^{\alpha}}\int_{0}^{\infty}\lambda^{(x+\alpha)-1}\exp\left\{-\frac{\lambda}{\left(\frac{\beta}{1+\beta}\right)}\right\}d\lambda
+=\frac{1}{x!\Gamma(\alpha)\beta^{\alpha}}\Gamma(x+\alpha)\left(\frac{\beta}{1+\beta}\right)^{x+\alpha}
+\]
+\[
+=\frac{\Gamma(x+\alpha)}{x!\Gamma(\alpha)}\left(\frac{\beta}{1+\beta}\right)^{x}\left(\frac{1}{1+\beta}\right)^{\alpha}.
+\]
+
+\subsection*{Problem 1.9}
+Further, $X\mid N\sim\text{Binomial}(N,p)$, $N\sim\text{Poisson}(\Lambda)$, and $\Lambda\sim\text{Gamma}(\alpha,\beta)$, find the marginal distribution of $X$. (three-stage model) (hint: derive $X\mid\Lambda\sim\text{Poisson}(\Lambda p)$ first)
+
+{Solution:}
+For $x=0,1,\ldots$, we have
+\[
+P(X=x\mid\lambda)=\sum_{n=x}^{\infty}P(X=x\mid N=n,\lambda)P(N=n\mid\lambda)
+\]
+\[
+=\sum_{n=x}^{\infty}\binom{n}{x} p^{x}(1-p)^{n-x}\frac{e^{-\lambda}\lambda^{n}}{n!}
+=\sum_{n=x}^{\infty}\frac{1}{x!(n-x)!}\left(\frac{p}{1-p}\right)^{x}\left[(1-p)\lambda\right]^{n}e^{-\lambda}
+\]
+\[
+=e^{-\lambda}\sum_{m=0}^{\infty}\frac{1}{x!m!}\left(\frac{p}{1-p}\right)^{x}\left[(1-p)\lambda\right]^{m+x}\quad(\text{let }m=n-x)
+\]
+\[
+=\frac{1}{x!}e^{-\lambda}\left(\frac{p}{1-p}\right)^{x}\left[(1-p)\lambda\right]^{x}\sum_{m=0}^{\infty}\frac{\left[(1-p)\lambda\right]^{m}}{m!}
+=\frac{e^{-\lambda}(p\lambda)^{x}e^{(1-p)\lambda}}{x!}=\frac{(p\lambda)^{x}e^{-p\lambda}}{x!},
+\]
+i.e. the Poisson$(p\lambda)$ pmf. Thus $X\mid\Lambda\sim\text{Poisson}(p\lambda)$. Now calculations like those in Problem 1.8 yield the pmf of $X$, for $x=0,1,\ldots$, is
+\[
+f_{X}(x)=\frac{1}{\Gamma(\alpha)x!(p\beta)^{\alpha}}\Gamma(x+\alpha)\left(\frac{p\beta}{1+p\beta}\right)^{x+\alpha}
+\]
+\[
+=\frac{(\alpha+x-1)(\alpha+x-2)\cdots(\alpha+1)\alpha}{x!}\left(\frac{p\beta}{1+p\beta}\right)^{x}\left(\frac{1}{1+p\beta}\right)^{\alpha}.
+\]
+
+\subsection*{Problem 1.10}
+If $X\mid\mu\sim N\left(\mu,\sigma_{1}^{2}\right)$ and $\mu\sim N\left(\delta,\sigma_{2}^{2}\right)$, check $X\sim N\left(\delta,\sigma_{1}^{2}+\sigma_{2}^{2}\right)$ and $\mu\mid X\sim N\left(\frac{\sigma_{1}^{2}}{\sigma_{1}^{2}+\sigma_{2}^{2}}\delta+\frac{\sigma_{2}^{2}}{\sigma_{1}^{2}+\sigma_{2}^{2}}X,\frac{\sigma_{1}^{2}\sigma_{2}^{2}}{\sigma_{1}^{2}+\sigma_{2}^{2}}\right)$. So the mean of posterior distribution, i.e. Bayes estimator of $\mu$, is a weighted sum of prior mean and $X$.
+
+{Solution:}
+(1)
+\[
+E\left(e^{tX}\mid\mu\right)=e^{\mu t+\frac{1}{2}\sigma_{1}^{2}t^{2}},\quad E\left(e^{\mu t}\right)=e^{\delta t+\frac{1}{2}\sigma_{2}^{2}t^{2}}
+\]
+\[
+E\left(e^{tX}\right)=E\left(E\left(e^{tX}\mid\mu\right)\right)=E\left(e^{\mu t}\cdot e^{\frac{1}{2}\sigma_{1}^{2}t^{2}}\right)=e^{\frac{1}{2}\sigma_{1}^{2}t^{2}}\cdot E\left(e^{\mu t}\right)=e^{\delta t+\frac{1}{2}\left(\sigma_{1}^{2}+\sigma_{2}^{2}\right)t^{2}},
+\]
+so $X\sim N\left(\delta,\sigma_{1}^{2}+\sigma_{2}^{2}\right)$.
+
+(2)
+\[
+f(\mu\mid X)=\frac{f(X,\mu)}{f(X)}=\frac{\frac{1}{\sqrt{2\pi}\sigma_{1}}e^{-\frac{(X-\mu)^{2}}{2\sigma_{1}^{2}}}\frac{1}{\sqrt{2\pi}\sigma_{2}}e^{-\frac{(\mu-\delta)^{2}}{2\sigma_{2}^{2}}}}{\frac{1}{\sqrt{2\pi\left(\sigma_{1}^{2}+\sigma_{2}^{2}\right)}}e^{-\frac{(X-\delta)^{2}}{2\left(\sigma_{1}^{2}+\sigma_{2}^{2}\right)}}}
+\]
+\[
+=\frac{1}{\sqrt{2\pi}\sqrt{\frac{\sigma_{1}^{2}\sigma_{2}^{2}}{\sigma_{1}^{2}+\sigma_{2}^{2}}}}\cdot\exp\left[-\frac{\left[\mu-\frac{\sigma_{1}^{2}}{\sigma_{1}^{2}+\sigma_{2}^{2}}\delta-\frac{\sigma_{2}^{2}}{\sigma_{1}^{2}+\sigma_{2}^{2}}X\right]^{2}}{2\frac{\sigma_{1}^{2}\sigma_{2}^{2}}{\sigma_{1}^{2}+\sigma_{2}^{2}}}\right]
+\]
+Therefore,
+\[
+\mu\mid X\sim N\left(\frac{\sigma_{1}^{2}}{\sigma_{1}^{2}+\sigma_{2}^{2}}\delta+\frac{\sigma_{2}^{2}}{\sigma_{1}^{2}+\sigma_{2}^{2}}X,\frac{\sigma_{1}^{2}\sigma_{2}^{2}}{\sigma_{1}^{2}+\sigma_{2}^{2}}\right).
+\]
+
+\subsection*{Problem 1.11}
+Part I:
+
+For any two r.v.s $X$ and $Y$ with finite variances, prove that
+
+(a) $\Cov(X,Y)=\Cov(X,E(Y\mid X))$;
+
+(b) $X$ and $Y-E(Y\mid X)$ are uncorrelated;
+
+(c) $\Var(Y-E(Y\mid X))=E(\Var(Y\mid X))$.
+
+Part II:
+
+For any three r.v.s $X$, $Y$, and $Z$ with finite variances, prove the covariance identity
+\[
+\Cov(X,Y)=E(\Cov(X,Y\mid Z))+\Cov(E(X\mid Z),E(Y\mid Z)),
+\]
+where $\Cov(X,Y\mid Z)$ is the covariance of $X$ and $Y$ under the pdf $f(x,y\mid z)$.
+
+{Solution:}
+(a) First, $E[XE(Y\mid X)]=E[E(XY\mid X)]=E(XY)$
+\[
+\Cov(X,E(Y\mid X))=E[XE(Y\mid X)]-EX\cdot E[E(Y\mid X)]=E(XY)-EX\cdot EY=\Cov(X,Y).
+\]
+
+(b)
+\[
+\Cov(X,Y-E(Y\mid X))=E[XY-XE(Y\mid X)]-EX\cdot E[Y-E(Y\mid X)]
+\]
+\[
+=E(XY)-E(XY)-EX(EY-EY)=0.
+\]
+
+(c)
+\[
+\Var(Y-E(Y\mid X))=E(Y-E(Y\mid X))^{2}-[E(Y-E(Y\mid X))]^{2}
+\]
+\[
+=E[Y^{2}+E^{2}(Y\mid X)-2YE(Y\mid X)]
+\]
+\[
+=EY^{2}+E[E^{2}(Y\mid X)]-2E[YE(Y\mid X)]
+\]
+Note that $E[YE(Y\mid X)]=E[E[YE(Y\mid X)\mid X]]=E[E(Y\mid X)E(Y\mid X)]$, so
+\[
+\Var[Y-E(Y\mid X)]=EY^{2}-E[E^{2}(Y\mid X)].
+\]
+As for $E(\Var(Y\mid X))=E(E(Y^{2}\mid X)-E^{2(Y\mid X)})=EY^{2}-E[E^{2}(Y\mid X)]$,
+
+we have $\Var(Y-E(Y\mid X))=E(\Var(Y\mid X))$.
+
+Part II:
+
+\[
+\Cov(X,Y)=E(XY)-E(X)E(Y)=E(E(XY\mid Z))-E(E(X\mid Z))E(E(Y\mid Z))
+\]
+\[
+=E(E(XY\mid Z))-E[E(X\mid Z)E(Y\mid Z)]+E[E(X\mid Z)E(Y\mid Z)]-E(E(X\mid Z))E(E(Y\mid Z))
+\]
+\[
+=E[E(XY\mid Z)-E(X\mid Z)E(Y\mid Z)]+E[E(X\mid Z)E(Y\mid Z)]-E(E(X\mid Z))E(E(Y\mid Z))
+\]
+\[
+=E(\Cov(X,Y\mid Z))+\Cov(E(X\mid Z),E(Y\mid Z)).
+\]
+
+\subsection*{Problem 1.12}
+Assumption as in the previous ``Property'', prove that $ES\leq\sigma$, and if $\sigma^{2}>0$, then $ES<\sigma$.
+
+{Proof.}
+$X_{1},\ldots,X_{n}\stackrel{\text{i.i.d.}}{\sim}(\mu,\sigma^{2})$.
+
+\[
+S_{n}^{2}=\frac{1}{n-1}\left(\sum_{i=1}^{n}X_{i}^{2}-n\bar{X}^{2}\right)
+\]
+\[
+E(S_{n}^{2})=\frac{1}{n-1}\left(\sum_{i=1}^{n}E(X_{i}^{2})-nE(\bar{X}^{2})\right)
+\]
+First we calculate $E\left(\bar{X}^{2}\right)$.
+\[
+E\left(\bar{X}^{2}\right)=\frac{1}{n^{2}}E\left(\sum_{i=1}^{n}X_{i}\right)^{2}=\frac{1}{n}E\left(X_{1}^{2}\right)+\frac{n-1}{n}\mu^{2}=\frac{\sigma^{2}}{n}+\mu^{2}.
+\]
+So we derive that $E\left(S_{n}^{2}\right)=\sigma^{2}$. With Jensen inequality: given a convex function $g$, we have $g(EX)\leq E(g(X))$. Take $g(x)=x^{2}$, we can conclude that $\left(E\left(S_{n}\right)\right)^{2}\leq E\left(S_{n}^{2}\right)$, thus
+\[
+E\left(S_{n}\right)\leq\sigma.
+\]
+Further, if $\sigma>0$, then $P\left(S_{n}=E\left(S_{n}\right)\right)=0$. Note that $g(x)=x^{2}$ is a strictly convex function, $\left(E\left(S_{n}\right)\right)^{2}<E\left(S_{n}^{2}\right)$, thus $E\left(S_{n}\right)<\sigma$.
+
+\subsection*{Problem 1.14}
+Let $X_{1},X_{2},\ldots,X_{n}$ be a random sample, and the sample mean and sample variance are calculated in the usual way.
+
+(1) Show that $S^{2}=\frac{1}{2n(n-1)}\sum_{i=1}^{n}\sum_{j=1}^{n}\left(X_{i}-X_{j}\right)^{2}$. Assume now that the $X_{1}$ has a finite fourth moment, and denote $\theta_{1}=EX_{1}$, $\theta_{j}=E\left(X_{1}-\theta_{1}\right)^{j}$, $j=2,3,4$.
+
+(2) Show that $\Var\left(S^{2}\right)=\frac{1}{n}\left(\theta_{4}-\frac{n-3}{n-1}\theta_{2}^{2}\right)$.
+
+(3) Find $\Cov\left(\bar{X},S^{2}\right)$ in terms of $\theta_{1},\theta_{2},\theta_{3}$, and $\theta_{4}$. Under what conditions is $\Cov\left(\bar{X},S^{2}\right)=0$?
+
+{Solution:}
+(1)
+\[
+\frac{1}{2n(n-1)}\sum_{i=1}^{n}\sum_{j=1}^{n}\left(X_{i}-X_{j}\right)^{2}=\frac{1}{2n(n-1)}\sum_{i=1}^{n}\sum_{j=1}^{n}\left(X_{i}^{2}+X_{j}^{2}-2X_{i}X_{j}\right)
+\]
+\[
+=\frac{1}{2n(n-1)}\left[\sum_{i=1}^{n}2nX_{i}^{2}-2\sum_{i=1}^{n}X_{i}\sum_{j=1}^{n}X_{j}\right]=\frac{1}{n-1}\left(\sum_{i=1}^{n}X_{i}^{2}-n\bar{X}^{2}\right)
+\]
+and
+\begin{align*}
+S^{2}&=\frac{1}{n-1}\sum_{i=1}^{n}(X_{i}-\bar{X})^{2}\\
+&=\frac{1}{n-1}\left(\sum_{i=1}^{n}X_{i}^{2}-2n\bar{X}^{2}+n\bar{X}^{2}\right)\\
+&=\frac{1}{n-1}\left(\sum_{i=1}^{n}X_{i}^{2}-n\bar{X}^{2}\right),
+\end{align*}
+so
+\[
+S^{2}=\frac{1}{2n(n-1)}\sum_{i=1}^{n}\sum_{j=1}^{n}(X_{i}-X_{j})^{2}.
+\]
+
+(2)
+\begin{align*}
+E\left(S^{2}\right)&=\frac{1}{2n(n-1)}\sum_{i}\sum_{j}E(X_{i}-X_{j})^{2}\\
+&=\frac{1}{2n(n-1)}\left(n^{2}-n\right)E(X_{1}-X_{2})^{2}=\Var\left(X_{1}\right)=\sigma^{2}.
+\end{align*}
+$\Var\left(S^{2}\right)=E\left(\left(S^{2}\right)^{2}\right)-\sigma^{4}$, where
+\begin{align*}
+\left(S^{2}\right)^{2}&=\frac{1}{4n^{2}(n-1)^{2}}\left(\sum(X_{i}-X_{j})^{2}\right)^{2}\\
+&=\frac{1}{4n^{2}(n-1)^{2}}\sum_{i\neq j}(X_{i}-X_{j})^{2}\sum_{k\neq l}(X_{k}-X_{l})^{2}\\
+&=\frac{1}{4n^{2}(n-1)^{2}}4\sum_{i<j}(X_{i}-X_{j})^{2}\sum_{k<l}(X_{k}-X_{l})^{2}\\
+&=\sum_{(i<j)\&(k<l)}\frac{1}{4n^{2}(n-1)^{2}}4(X_{i}-X_{j})^{2}(X_{k}-X_{l})^{2}.
+\end{align*}
+We discuss the six following situations of $(i,j),(k,l)$. Since each term is the addition and subtraction of random variables, let $\tilde{X}_{i}=X_{i}-\mu$, we assume that each $X_{i}$ has been centralized, i.e. $E\left(X_{i}\right)=0,\forall i,1\leq i\leq n$.
+
+case (1): $(i,j)\equiv(k,l),\quad E\left(X_{i}-X_{j}\right)^{4}=2\theta_{4}+6\theta_{2}^{2}$;
+
+case (2): $k=i,j\neq l$, i.e. $(i,j)\&(i,l)\quad E\left[\left(X_{i}-X_{j}\right)^{2}\left(X_{i}-X_{l}\right)^{2}\right]=\theta_{4}+3\theta_{2}^{2}$;
+
+case (3): $l=j,i\neq k$, i.e. $(i,j)\&(k,j)\quad E\left[\left(X_{i}-X_{j}\right)^{2}\left(X_{k}-X_{j}\right)^{2}\right]=\theta_{4}+3\theta_{2}^{2}$;
+
+case (4): $i=l,j\neq k$, i.e. $(i,j)\&(k,i)\quad E\left[\left(X_{i}-X_{j}\right)^{2}\left(X_{k}-X_{i}\right)^{2}\right]=\theta_{4}+3\theta_{2}^{2}$;
+
+case (5): $j=k,i\neq l$, i.e. $(i,j)\&(j,l)\quad E\left[\left(X_{i}-X_{j}\right)^{2}\left(X_{j}-X_{l}\right)^{2}\right]=\theta_{4}+3\theta_{2}^{2}$;
+
+case (6): $i\neq k,j\neq l$, i.e. $(i,j)\&(k,l)\quad E\left[\left(X_{i}-X_{j}\right)^{2}\left(X_{k}-X_{l}\right)^{2}\right]=4\theta_{2}^{2}$.
+
+Calculate solvability (number) of cases (1)-(6),
+
+case (1): $\binom{n}{2}$;
+
+case (2): $\frac{n(n-1)(n-2)}{3}$;
+
+case (3): $\frac{n(n-1)(n-2)}{3}$;
+
+case (4): $\frac{1}{2}\frac{n(n-1)(n-2)}{3}$;
+
+case (5): $\frac{1}{2}\frac{n(n-1)(n-2)}{3}$;
+
+case (6): $\binom{n}{2}\binom{n-2}{2}=\frac{n(n-1)(n-2)(n-3)}{4}$.
+
+Then
+\[
+\Var\left(S^{2}\right)=\frac{1}{n}\left[\theta_{4}+\frac{\theta_{2}^{2}}{n-1}\left(n^{2}-2n+3\right)-n\theta_{2}^{2}\right]=\frac{1}{n}\left[\theta_{4}-\frac{n-3}{n-1}\theta_{2}^{2}\right].
+\]
+
+(3) We assume $X_{i}=X_{i}-E\left(X_{i}\right)$,
+\begin{align*}
+\Cov\left(\bar{X},S^{2}\right)&=\frac{1}{n}n\Cov\left(X_{1},S^{2}\right)=\Cov\left(X_{1},S^{2}\right)\\
+&=\frac{1}{2n(n-1)}\left[\Cov\left(X_{1},\left(X_{1}-X_{2}\right)^{2}\right)+\cdots+\Cov\left(X_{1},\left(X_{1}-X_{n}\right)^{2}\right)\right]\\
+&=\frac{1}{n}\Cov\left(X_{1},\left(X_{1}-X_{2}\right)^{2}\right)=\frac{1}{n}\Cov\left(X_{1},X_{1}^{2}-2X_{1}X_{2}+X_{2}^{2}\right)\\
+&=\frac{1}{n}\left[\Cov\left(X_{1},X_{1}^{2}\right)-2\Cov\left(X_{1},X_{1}X_{2}\right)\right],
+\end{align*}
+and
+\begin{align*}
+\Cov\left(X_{1},X_{1}^{2}\right)&=E\left(X_{1}^{3}\right)-EX_{1}E\left(X_{1}^{2}\right)=\theta_{3},\\
+\Cov\left(X_{1},2X_{1}X_{2}\right)&=E\left(X_{1}^{2}X_{2}\right)-0=0.\end{align*}
+So, $\Cov\left(\bar{X},S^{2}\right)=\frac{1}{n}\theta_{3}$ and if $\theta_{3}=0$, we have $\Cov\left(\bar{X},S^{2}\right)=0$.
+
+\subsection*{Problem 1.15 (Related to Gaussian Graphical Model)}
+1. Assume bivariate $\boldsymbol{X}=\left(X_{1},X_{2}\right)^{T}\sim\left(\boldsymbol{\mu}_{2\times 1},\boldsymbol{\Sigma}_{2\times 2}\right)$ and let $\Sigma^{-1}=\left(\sigma^{ij}\right)_{2\times 2}$. Prove the correlation coefficient between $X_{1}$ and $X_{2}$ is $\rho_{X_{1}X_{2}}=-\sigma^{12}/\sqrt{\sigma^{11}\sigma^{22}}$.
+
+2. Assume $\boldsymbol{X}=(X_{1},X_{2},\ldots,X_{n})^{T}\sim(\boldsymbol{\mu}_{n\times 1},\boldsymbol{\Sigma}_{n\times n})$. Find
+
+$\max_{\beta_{1}^{2}+\beta_{2}^{2}+\ldots+\beta_{n}^{2}=1}\Var\left(\beta_{1}X_{1}+\beta_{2}X_{2}+\ldots+\beta_{n}X_{n}\right)$.
+
+3. Assume $\boldsymbol{X}=(X_{1},X_{2},\ldots,X_{n})^{T}\sim(\boldsymbol{\mu}_{n\times 1},\boldsymbol{\Sigma}_{n\times n})$. Let $\Theta=(\theta_{ij})_{n\times n}=\Sigma^{-1}$ be the precision matrix. 
+
+Prove $-(\theta_{12},\theta_{13},\ldots,\theta_{1n})^{\top}/\theta_{11}=\operatorname{argmin}_{\beta_{2},\beta_{3},\ldots,\beta_{n}}\Var\left(X_{1}-\beta_{2}X_{2}-\beta_{3}X_{3}-\ldots-\beta_{n}X_{n}\right)$.
+
+Note $\Var\left(X_{1}-\beta_{2}X_{2}-\beta_{3}X_{3}-\ldots-\beta_{n}X_{n}\right)=E\left(X_{1}-\beta_{2}X_{2}-\beta_{3}X_{3}-\ldots-\beta_{n}X_{n}\right)^{2}$ when $\boldsymbol{\mu}=0$, i.e. leading to a linear combination of $X_{2},X_{3},\ldots,X_{n}$ to approximate $X_{1}$.
+
+4. Assume $\boldsymbol{X}=(X_{1},\ldots,X_{n})^{T}\sim N\left(\boldsymbol{\mu}_{n\times 1},\boldsymbol{\Sigma}_{n\times n}\right)$. Prove that $X_{1}\indep X_{2}\mid X_{3},\ldots,X_{n}$ (conditional independent) iff the $(1,2)$ entry of the precision matrix $\Theta$ is zero, i.e. $\theta_{1,2}=0$.
+
+{Solution:}
+(1)
+\[
+\Sigma=\begin{pmatrix}\sigma_{11}&\sigma_{12}\\ \sigma_{21}&\sigma_{22}\end{pmatrix},\quad
+\Sigma^{-1}=\frac{1}{|\Sigma|}\begin{pmatrix}\sigma_{22}&-\sigma_{12}\\ -\sigma_{21}&\sigma_{11}\end{pmatrix}
+\]
+\[
+\rho_{X_{1}X_{2}}=\frac{\Cov(X_{1},X_{2})}{\sqrt{\Var(X_{1})\Var(X_{2})}}=\frac{\sigma_{12}}{\sqrt{\sigma_{11}\sigma_{22}}}=\frac{-|\Sigma|\sigma^{12}}{\sqrt{|\Sigma|\sigma^{22}}\sqrt{|\Sigma|\sigma^{11}}}=\frac{-\sigma^{12}}{\sqrt{\sigma^{11}\sigma^{22}}}.
+\]
+
+(2)
+\[
+\boldsymbol{\beta}=(\beta_{1},\ldots,\beta_{n})^{\top},\quad \max_{\boldsymbol{\beta}^{\top}\boldsymbol{\beta}=1}\Var\left(\boldsymbol{\beta}^{\top}\boldsymbol{X}\right)=\max_{\boldsymbol{\beta}^{\top}\boldsymbol{\beta}=1}\boldsymbol{\beta}^{\top}\Sigma\boldsymbol{\beta}.
+\]
+Let $L(\boldsymbol{\beta},\lambda)=\boldsymbol{\beta}^{\top}\Sigma\boldsymbol{\beta}-\lambda\left(\boldsymbol{\beta}^{\top}\boldsymbol{\beta}-1\right)$,
+\[
+\frac{\partial L}{\partial\boldsymbol{\beta}}=2\Sigma\boldsymbol{\beta}-2\lambda\boldsymbol{\beta}=0\Rightarrow\Sigma\boldsymbol{\beta}=\lambda\boldsymbol{\beta},\quad \boldsymbol{\beta}^{\top}\Sigma\boldsymbol{\beta}=\boldsymbol{\beta}^{\top}\lambda\boldsymbol{\beta}=\lambda.
+\]
+Therefore, $\max_{\boldsymbol{\beta}^{\top}\boldsymbol{\beta}=1}\Var\left(\boldsymbol{\beta}^{\top}\boldsymbol{X}\right)=\lambda_{1}$ (the maximum eigenvalue of $\Sigma$).
+
+(3) Let $\boldsymbol{\beta}=(1,-\beta_{2},\ldots,-\beta_{n})^{\top}$, then
+\[
+\min\Var\left(X_{1}-\beta_{2}X_{2}-\ldots-\beta_{n}X_{n}\right)\Leftrightarrow\min\boldsymbol{\beta}^{\top}\Sigma\boldsymbol{\beta}\ \text{s.t.}\ \boldsymbol{\beta}^{\top}\begin{pmatrix}1\\0\\\vdots\\0\end{pmatrix}=1.
+\]
+Let $L(\boldsymbol{\beta},\lambda)=\boldsymbol{\beta}^{\top}\Sigma\boldsymbol{\beta}-\lambda\left(\boldsymbol{\beta}_{1}-1\right)$,
+\[
+\begin{cases}
+\frac{\partial L}{\partial\boldsymbol{\beta}}=2\Sigma\boldsymbol{\beta}-\lambda\begin{pmatrix}1\\0\\\vdots\\0\end{pmatrix}=0\Rightarrow\boldsymbol{\beta}=\frac{\lambda}{2}\Sigma^{-1}\begin{pmatrix}1\\0\\\vdots\\0\end{pmatrix}=\frac{\lambda}{2}\begin{pmatrix}\theta_{11}\\ \theta_{12}\\ \vdots\\ \theta_{1n}\end{pmatrix}\\
+\frac{\partial L}{\partial\lambda}=0\Rightarrow\beta_{1}=1,\lambda=\frac{2}{\theta_{11}}
+\end{cases}
+\]
+Therefore, $\beta_{i}=-\frac{\theta_{1i}}{\theta_{11}},\ i=2,\ldots,n$.
+
+(4) Let $\boldsymbol{Y}=(X_{3},\ldots,X_{n})$, and partition
+\[
+\Sigma=\begin{pmatrix}\Sigma_{11}&\Sigma_{12}\\ \Sigma_{21}&\Sigma_{22}\end{pmatrix},\quad \Sigma_{11}=\begin{pmatrix}\sigma_{11}&\sigma_{12}\\ \sigma_{21}&\sigma_{22}\end{pmatrix}_{2\times2}.
+\]
+Then
+\[
+(X_{1},X_{2})\mid\boldsymbol{Y}\sim N\left(*,\ \Sigma_{11}-\Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21}\triangleq A_{2\times2}\right),\quad A=\begin{pmatrix}a_{11}&a_{12}\\ a_{21}&a_{22}\end{pmatrix}.
+\]
+$X_{1}\indep X_{2}\mid\boldsymbol{Y}\Leftrightarrow a_{12}=0\Leftrightarrow$ the $(1,2)$ entry of $A^{-1}$ is zero.
+Note that
+\[
+\Theta=\begin{pmatrix}(\Sigma_{11}-\Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21})^{-1}&*\\ *&*\end{pmatrix},
+\]
+so $\theta_{1,2}$ is the $(1,2)$ entry of $A^{-1}$. Hence $X_{1}\indep X_{2}\mid\boldsymbol{Y}\Leftrightarrow\theta_{1,2}=0$.
+
+\section{Sample, Statistics and Distribution}
+
+\subsection*{Problem 2.1}
+Population $U[0,1]$, order statistics $U_{(1)}\leq U_{(2)}\leq\ldots\leq U_{(n)}$. Check
+
+(1) Joint pdf: $f(u_{1},\dots,u_{n})=n!{1}_{\{0<u_{1}<u_{2}<\dots<u_{n}<1\}}$
+
+(2) $U_{(k)}\sim Beta(k,n-k+1)$
+
+(3) $U_{(i+k)}-U_{(i)}\sim Beta(k,n-k+1)$ independent of $i$
+
+(4) Range $U_{(n)}-U_{(1)}\sim Beta(n-1,2)$
+
+{Solution:}
+(1) Easy.
+
+(2)\[
+\rho_{U_{(k)}}(x)=\frac{n!}{(k-1)!(n-k)!}x^{k-1}(1-x)^{n-k}{1}_{[0,1]}(x).
+\]
+So
+\begin{align*}
+\rho_{U_{(k)}}(x)&=\frac{n!}{(k-1)!(n-k)!}x^{k-1}(1-x)^{n-k}{1}_{[0,1]}(x)\\
+&=\frac{\Gamma(n+1)}{\Gamma(k)\Gamma(n-k+1)}x^{k-1}(1-x)^{n-k+1-1}{1}_{[0,1]}(x)\\
+&=\frac{x^{k-1}(1-x)^{n-k+1-1}}{B(k,n-k+1)}{1}_{[0,1]}(x).
+\end{align*}
+Hence $U_{(k)}\sim\mathrm{Beta}(k,n-k+1)$.
+
+(3)
+\[
+\rho_{(U_{(i)},U_{(i+k)})}(x,y)=\frac{n!}{(i-1)!(k-1)!(n-i-k)!}x^{i-1}(y-x)^{k-1}(1-y)^{n-i-k}1_{\{0\leq x<y\leq 1\}}.
+\]
+Therefore
+\[
+\rho_{(U_{(i+k)}-U_{(i)},U_{(i)})}(z,w)=\rho_{(U_{(i)},U_{(i+k)})}(w,z+w)\cdot 1
+\]
+\[
+=\frac{n!}{(i-1)!(k-1)!(n-i-k)!}w^{i-1}z^{k-1}(1-z-w)^{n-i-k}1_{\{w\geq 0,z\geq 0,w+z\leq 1\}}.
+\]
+Hence
+\[
+\rho_{U_{(i+k)}-U_{(i)}}(z)=\int_{\mathbb{R}}\rho_{(U_{(i+k)}-U_{(i)},U_{(i)})}(z,w)dw
+\]
+\[
+=\frac{n!}{(i-1)!(k-1)!(n-i-k)!}z^{k-1}1_{[0,1]}(z)\int_{0}^{1-z}w^{i-1}(1-z-w)^{n-i-k}dw
+\]
+\[
+=\frac{n!}{(i-1)!(k-1)!(n-i-k)!}z^{k-1}(1-z)^{n-k}1_{[0,1]}(z)\int_{0}^{1}x^{i-1}(1-x)^{n-i-k}dx
+\]
+\[
+=\frac{n!}{(i-1)!(k-1)!(n-i-k)!}\frac{(i-1)!(n-i-k)!}{(n-k)!}z^{k-1}(1-z)^{n-k}1_{[0,1]}(z)
+\]
+\[
+=\frac{n!}{(k-1)!(n-k)!}z^{k-1}(1-z)^{n-k}1_{[0,1]}(z).
+\]
+Namely $U_{(i+k)}-U_{(i)}\sim\text{Beta}(k,n-k+1)$.
+
+(4) Take $i=1$ and $k=n-1$ in problem(3) and we know that $U_{(n)}-U_{(1)}\sim\text{Beta}(n-1,2)$.
+
+\subsection*{Problem 2.2}
+Population $U_{\{1,2,\dots,N\}}$, order statistics $U_{(1)}\leq U_{(2)}\leq\dots\leq U_{(n)}$. Calculate $P(U_{(1)}=k),P(U_{(n)}=k)$, and $P(U_{(i)}=k)$. Further, calculate the joint pmf of $U_{(1)}$ and $U_{(n)}$.
+
+In addition, let $U_{1},U_{2},\dots,U_{n}$ be the sample randomly drawn from the population of $\{1:N\}$ without replacement $(n<N)$. Are the pmfs of $U_{i},i=1,2,\dots,n$ equal? Calculate $E\big[\frac{n+1}{n}U_{(n)}-1\big]$.
+
+{Solution:}
+(1)
+\[
+\mathbb{P}\left(U_{(1)}=k\right)=\mathbb{P}\left(U_{(1)}\geq k\right)-\mathbb{P}\left(U_{(1)}\geq k+1\right)=\left(\frac{N-k+1}{N}\right)^{n}-\left(\frac{N-k}{N}\right)^{n}.
+\]
+\[
+\mathbb{P}\left(U_{(n)}=k\right)=\mathbb{P}\left(U_{(n)}\leq k\right)-\mathbb{P}\left(U_{(n)}\leq k-1\right)=\left(\frac{k}{N}\right)^{n}-\left(\frac{k-1}{N}\right)^{n}.
+\]
+\[
+\mathbb{P}\left(U_{(i)}=k\right)=\mathbb{P}\left(U_{(i)}\leq k\right)-\mathbb{P}\left(U_{(i)}\leq k-1\right)
+\]
+\[
+=\left[\sum_{j=i}^{n}C_{n}^{j}\left(\frac{k}{N}\right)^{j}\left(\frac{N-k}{N}\right)^{n-j}\right]-\left[\sum_{j=i}^{n}C_{n}^{j}\left(\frac{k-1}{N}\right)^{j}\left(\frac{N-k+1}{N}\right)^{n-j}\right].
+\]
+
+For $1\leq k\leq l\leq N$, if $k=l$,
+\begin{align*}
+\mathbb{P}\left(U_{(1)}=k,U_{(n)}=l\right)&=\mathbb{P}\left(U_{(1)}=k,U_{(n)}=k\right)=\mathbb{P}\left(U_{(1)}=k,U_{2}\leq k,\cdots,U_{n}\leq k\right)\\
+&=\mathbb{P}\left(U_{(1)}=k\right)\mathbb{P}\left(U_{2}\leq k\right)\cdots\mathbb{P}\left(U_{n}\leq k\right)=\frac{k^{n-1}}{N^{n}}.
+\end{align*}
+if $k<l$,
+\begin{align*}\mathbb{P}\left(U_{(1)}=k,U_{(n)}=l\right)&=\mathbb{P}\left(U_{(1)}=k,\text{ the largest of }U_{2}\text{ to }U_{n}=l\right)\\
+&=\mathbb{P}\left(U_{(1)}=k\right)\mathbb{P}\left(\text{ the largest of }U_{2}\text{ to }U_{n}=l\right)\\
+&=\frac{1}{N}\left[\left(\frac{l}{N}\right)^{n-1}-\left(\frac{l-1}{N}\right)^{n-1}\right].
+\end{align*}
+The two formulas above show the joint pmf of $U_{(1)}$ and $U_{(n)}$.
+
+(2) Yes. And $E\big[\frac{n+1}{n}U_{(n)}-1\big]=N$.
+
+\subsection*{Problem 2.3}
+Assume $X_{1},X_{2},\ldots,X_{n}$ is a random sample from the population of uniform distribution $U[\theta,\theta+1]$, $-\infty<\theta<\infty$. $X_{(1)},X_{(2)},\ldots,X_{(n)}$ are the order statistics, $R=X_{(n)}-X_{(1)}$ and $M=\left(X_{(1)}+X_{(n)}\right)/2$ are the sample range and sample midrange.
+
+Verify:
+
+(1) $\left(X_{(1)},X_{(n)}\right)\sim n(n-1)\left(x_{(n)}-x_{(1)}\right)^{n-2}I_{\left\{\theta\leq x_{(1)}<x_{(n)}\leq\theta+1\right\}}$;
+
+(2) $\left(R,M\right)\sim n(n-1)r^{n-2}1_{\left\{0\leq r\leq 1,\theta+r/2\leq m\leq\theta+1-r/2\right\}}$;
+
+(3) $R\sim n(n-1)r^{n-2}(1-r)I_{\left\{0\leq r\leq 1\right\}}$, which is Beta$(n-1,2)$. A statistic is called ancillary if its distribution doesn't involve parameter(s).
+
+{Solution:}
+(1)
+\[
+f\left(x,\theta\right)=I_{\left\{\theta\leq x\leq\theta+1\right\}},
+\]
+\[
+\prod f\left(x_{i},\theta\right)=\prod_{i=1}^{n}I_{\left\{\theta\leq x_{i}\leq\theta+1\right\}}=I_{\left\{X_{(1)}\geq\theta\right\}}I_{\left\{X_{(n)}\leq\theta+1\right\}}.
+\]
+$\left(X_{(1)},X_{(n)}\right)$ are sufficient statistics,
+\[
+f_{X_{(1)},X_{(n)}}=n(n-1)\left(x_{(n)}-x_{(1)}\right)^{n-2}I_{\left\{\theta\leq x_{(1)}<x_{(n)}\leq\theta+1\right\}}.
+\]
+
+(2)
+
+\[
+f_{R,M}(r,m)=n(n-1)r^{n-2}I_{\left\{0\leq r\leq 1,\theta+\frac{r}{2}\leq m\leq\theta+1-\frac{r}{2}\right\}}.
+\]
+
+(3)
+\[
+f_{R}(r)=\int f_{R,M}(r,m)dm=n(n-1)r^{n-2}(1-r)I_{\{0\leq r\leq 1\}}\equiv\text{Beta}(n-1,2),
+\]
+which doesn't involve $\theta$, so it is ancillary.
+
+\subsection*{Problem 2.5}
+$X_{1},...,X_{n}\overset{\text{i.i.d}}{\sim}\theta+Exponential(1).$
+
+(1) Construct a sufficient statistic $T(X)$ for $\theta$.
+
+(2) If we use $T(x)$ to estimate $\theta$, calculate the loss function $E(T(X)-\theta)^{2}$.
+
+{Solution:}
+(1)
+\[
+f(x,\theta)=\prod_{i=1}^{n}e^{-(x_{i}-\theta)}\mathbf{1}_{\{x_{(1)}\geq\theta\}}.
+\]
+Then we have a sufficient statistic $X_{(1)}$ for $\theta$.
+
+(2)
+\[
+E(X_{(1)}-\theta)^{2}=\int_{0}^{+\infty}ne^{-n\sqrt{x}}\frac{1}{2\sqrt{x}}x\mathrm{d}x=\frac{2}{n^{2}}.
+\]
+
+\subsection*{Problem 2.6}
+Find minimal sufficient statistics of Normal population $N\left(\mu,\sigma^{2}\right)$ with unknown $\mu$ and $\sigma^{2}$.
+
+{Solution:}
+Suppose $X=(X_{1},\cdots,X_{n})^{T}\sim f(x;\theta),\theta=(\mu,\sigma^{2})^{T}$ then
+\[
+f\left(x_{1},\cdots,x_{n};\theta\right)=\prod_{k=1}^{n}\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{\left(x_{k}-\mu\right)^{2}}{2\sigma^{2}}}=\left(\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{\mu^{2}}{2\sigma^{2}}}\right)^{n}\cdot e^{-\frac{1}{2\sigma^{2}}\sum_{k=1}^{n}x_{k}^{2}+\frac{\mu}{\sigma^{2}}\sum_{k=1}^{n}x_{k}}.
+\]
+Let $T(X)=\left(\sum_{k=1}^{n}x_{k}^{2},\sum_{k=1}^{n}x_{k}\right)^{T}$, then $T(X)$ is sufficient statistic for $\left(\mu,\sigma^{2}\right)^{T}$.
+
+Since
+\[\frac{f(x;\theta)}{f(y;\theta)}=e^{-\frac{1}{2\sigma^{2}}\sum_{k=1}^{n}\left(x_{k}^{2}-y_{k}^{2}\right)+\frac{\mu}{\sigma^{2}}\sum_{k=1}^{n}\left(x_{k}-y_{k}\right)},\]
+$\frac{f(x;\theta)}{f(y;\theta)}$ is independent of $\left(\mu,\sigma^{2}\right)^{T}$ iff $\sum_{k=1}^{n}\left(x_{k}-y_{k}\right)=\sum_{k=1}^{n}\left(x_{k}^{2}-y_{k}^{2}\right)=0$, which is $T(x)=T(y)$.
+
+Thus $T(X)=\left(\sum_{k=1}^{n}x_{k}^{2},\sum_{k=1}^{n}x_{k}\right)^{T}$ is a minimal sufficient statistic of $\theta=\left(\mu,\sigma^{2}\right)^{T}$.
+
+$(\bar{X},S^{2})$ can also be regarded as the minimal sufficient statistic of $\theta=\left(\mu,\sigma^{2}\right)^{T}$.
+
+\subsection*{Problem 2.7}
+Find minimal sufficient statistics of
+
+(1) Population: Exponential ($\lambda$)
+
+(2) Population: $\theta+$ Exponential ($\lambda$) with unknown $\theta$ and $\lambda$.
+
+{Solution:}
+(1) Suppose $X=(X_{1},\cdots,X_{n})^{T}\sim f(x;\lambda)$, then
+\[
+f(x;\lambda)=\prod_{k=1}^{n}\lambda e^{-\lambda x_{k}}\mathbf{1}_{\{x_{k}>0\}}.
+\]
+Let $T(X)=\sum_{k=1}^{n}X_{k}$, then $T(X)$ is a sufficient statistic of $\lambda$. Since
+\[\frac{f(x;\lambda)}{f(y;\lambda)}=e^{-\lambda\sum_{k=1}^{n}(x_{k}-y_{k})}\frac{1_{\{x_{1}>0,x_{2}>0,\cdots,x_{n}>0\}}}{1_{\{y_{1}>0,y_{2}>0,\cdots,y_{n}>0\}}},\]
+$\frac{f(x;\lambda)}{f(y;\lambda)}$ is independent of $\lambda$ iff $\sum_{k=1}^{n}(x_{k}-y_{k})=0$, which is $T(x)=T(y)$. Thus $T(X)=\sum_{k=1}^{n}X_{k}$ is a minimal sufficient statistic of $\lambda$. ($\bar{X}$ is also right.)
+
+(2) Suppose $X=(X_{1},\cdots,X_{n})^{T}\sim f\left(x;(\theta,\lambda)^{T}\right)$, then
+\[
+f\left(x_{1},\cdots,x_{n};(\theta,\lambda)^{T}\right)=\prod_{k=1}^{n}\lambda e^{-\lambda(x_{k}-\theta)}1_{\{x_{k}>\theta\}}=\lambda^{n}e^{n\lambda\theta-\lambda\sum_{k=1}^{n}x_{k}}1_{\{x_{1}>\theta,x_{2}>\theta,\cdots,x_{n}>\theta\}}.
+\]
+Let $T(X)=\left(\sum_{k=1}^{n}X_{k},X_{(1)}\right)^{T}$, then $T(X)$ is a sufficient statistic of $(\theta,\lambda)^{T}$.
+
+Since \[\frac{f\left(x;(\theta,\lambda)^{T}\right)}{f\left(y;(\theta,\lambda)^{T}\right)}=e^{-\lambda\sum_{k=1}^{n}(x_{k}-y_{k})}\frac{1_{\{x_{(1)}>\theta\}}}{1_{\{y_{(1)}>\theta\}}},\]
+$\frac{f\left(x;(\theta,\lambda)^{T}\right)}{f\left(y;(\theta,\lambda)^{T}\right)}$ is independent of $(\theta,\lambda)^{T}$ iff $\sum_{k=1}^{n}\left(x_{k}-y_{k}\right)=x_{(1)}-y_{(1)}=0$, which is $T(x)=T(y)$.
+
+Thus $T(X)=\left(\sum_{k=1}^{n}X_{k},X_{(1)}\right)^{T}$ is a minimal sufficient statistic of $(\theta,\lambda)^{T}$.
+
+\subsection*{Problem 2.9}
+Verify: Family of Poisson ($\lambda$), $\lambda>0$ distribution is complete.
+
+{Solution:}
+If $E_{\lambda}(g(X))=\sum_{k=0}^{\infty}g(k)\frac{\lambda^{k}}{k!}e^{-\lambda}=0$ for all $\lambda>0$, then
+\[
+h(\lambda)=\sum_{k=0}^{\infty}g(k)\frac{\lambda^{k}}{k!}=0
+\]
+for all $\lambda>0$.
+
+Let
+\[
+f(\lambda)=\sum_{x=0}^{\infty}\frac{g(x)}{x!}\lambda^{x},
+\]
+and $f([0,\infty))\equiv 0$, we take derivatives of $f(\lambda)$ and can get
+\[
+\frac{g(x)}{x!}=f^{(x)}(\lambda)\frac{1}{x!}=0\quad\forall x\geq 0
+\]
+thus $g(X)\equiv 0$, the distribution is complete.
+
+\subsection*{Problem 2.10}
+Assume $X_{1},X_{2},\ldots,X_{n}\stackrel{\rm iid}{\sim}pmf:\theta(1-\theta)^{k-1},\theta\in(0,1),k=1,2,3,\ldots$. Show that $\sum_{i=1}^{n}X_{i}$ is sufficient for $\theta$, and find the family of distribution of $\sum_{i=1}^{n}X_{i}$. Is the family complete?
+
+{Solution:}
+Suppose $X=(X_{1},\cdots,X_{n})^{T}\sim f(x;\theta)$, then
+\[
+f\left(x_{1},\cdots,x_{n};\theta\right)=\prod_{k=1}^{n}\theta(1-\theta)^{x_{k}-1}1_{\{x_{k}\in\mathbb{Z}_{+}\}}=\theta^{n}(1-\theta)^{-n}(1-\theta)^{\sum_{k=1}^{n}x_{k}}1_{\{x_{k}\in\mathbb{Z}_{+},k=1,2,\cdots,n\}}.
+\]
+So let $T(X)=\sum_{k=1}^{n}X_{k}$, then $T(X)$ is sufficient for $\theta$.
+
+\[
+f(t;\theta)=\sum_{x_{1}+x_{2}+\cdots+x_{n}=t}f\left(x_{1},\cdots,x_{n};\theta\right)=\sum_{x_{1}+x_{2}+\cdots+x_{n}=t}\theta^{n}(1-\theta)^{t-n}1_{\{x_{k}\in\mathbb{Z}_{+},k=1,2,\cdots,n\}}=C_{t-1}^{n-1}\theta^{n}(1-\theta)^{t-n}.
+\]
+If $E_{\theta}(g(T))=\sum_{t=n}^{\infty}g(t)C_{t-1}^{n-1}\theta^{n}(1-\theta)^{t-n}$ for all $\theta$, then $h(\theta)=\sum_{t=n}^{\infty}g(t)C_{t-1}^{n-1}(1-\theta)^{t-n}=0$ for all $\theta$. Since $g(t)=\frac{1}{(t-n)!C_{t-1}^{n-1}}\lim_{\theta\to 0^{+}}h^{(t-n)}(\theta)=0,t=n,n+1,\cdots$. We know the family is complete.
+
+\subsection*{Problem 2.11}
+Assume $X_{1},X_{2},\ldots,X_{n}\stackrel{\rm iid}{\sim}pdf:\theta x^{\theta-1},x\in(0,1),\theta>0$.
+
+(1) Is $\sum_{i=1}^{n}X_{i}$ sufficient for $\theta$ ?
+
+(2) Find a complete sufficient statistic for $\theta$.
+
+{Solution:}
+(1) Suppose $X=(X_{1},\cdots,X_{n})^{T}\sim f(x;\theta)$, then
+\[
+f(x_{1},\cdots,x_{n};\theta)=\prod_{k=1}^{n}\theta x_{k}^{\theta-1}1_{\left\{0<x_{k}<1\right\}}=\theta^{n}\left(\prod_{k=1}^{n}x_{k}\right)^{\theta-1}1_{\left\{0<x_{(1)}<x_{(n)}<1\right\}}.
+\]
+It is easy to see that $\sum_{k=1}^{n}X_{k}$ is not sufficient for $\theta$.
+
+(2) Let $T(X)=\prod_{k=1}^{n}X_{k}$, then $T(X)$ is a sufficient statistic for $\theta$. Let $Y_{k}=\prod_{i=1}^{k}X_{i},k=1,2,\cdots,n$, then
+\begin{align*}
+f_{Y}(y_{1},y_{2},\cdots,y_{n};\theta)&=\frac{1}{y_{1}y_{2}\cdots y_{n-1}}f_{X}\left(y_{1},\frac{y_{2}}{y_{1}},\cdots,\frac{y_{n}}{y_{n-1}};\theta\right)\\
+&=\frac{1}{y_{1}y_{2}\cdots y_{n-1}}\theta^{n}y_{n}^{\theta-1}1_{\left\{0<y_{n}<y_{n-1}<\cdots<y_{1}<1\right\}}.
+\end{align*}
+\begin{align*}
+f(t;\theta)&=\int f_{Y}\left(y_{1},y_{2},\cdots,y_{n-1},t;\theta\right)dy_{1}dy_{2}\cdots dy_{n-1}\\
+&=\int\frac{1}{y_{1}y_{2}\cdots y_{n-1}}\theta^{n}t^{\theta-1}1_{\{0<t<y_{n-1}<\cdots<y_{1}<1\}}dy_{1}dy_{2}\cdots dy_{n-1}\\
+&=\theta^{n}t^{\theta-1}\int 1_{\{0<t,\ln t<z_{n-1}<\cdots<z_{1}<0\}}dz_{1}dz_{2}\cdots dz_{n-1}\\
+&=\theta^{n}t^{\theta-1}\frac{(-\ln t)^{n-1}}{(n-1)!}1_{\{0<t<1\}}.
+\end{align*}
+If
+\begin{align*}
+E_{\theta}(g(T))&=\int_{0}^{1}g(t)\theta^{n}t^{\theta-1}\frac{(-\ln t)^{n-1}}{(n-1)!}dt\\
+&=\frac{\theta^{n}}{(n-1)!}\int_{0}^{\infty}g\left(e^{-s}\right)s^{n-1}e^{-s\theta}ds=0
+\end{align*}
+is true for every $\theta$, with Laplace transformation, we have $g(e^{-s})s^{n-1}=0$ a.e., which means $T(X)=\prod_{k=1}^{n}X_{k}$ is complete.
+
+\subsection*{Problem 2.12}
+Assume $X_{1},X_{2},\ldots,X_{n}\stackrel{\rm iid}{\sim}U(\theta,2\theta)$. Find a minimal sufficient statistic for $\theta$. Is the statistic complete?
+
+{Solution:}
+Suppose $X=(X_{1},\cdots,X_{n})^{T}\sim f(x;\theta)$, then
+\[
+f\left(x_{1},\cdots,x_{n};\theta\right)=\prod_{k=1}^{n}\frac{1}{\theta}1_{\{\theta<x_{k}<2\theta\}}=\frac{1}{\theta^{n}}1_{\{\theta<x_{(1)},x_{(n)}<2\theta\}}.
+\]
+Let $T(X)=\left(X_{(1)},X_{(n)}\right)^{T}$, then $T(X)$ is a sufficient statistic of $\theta$. Since $\frac{f(x;\theta)}{f(y;\theta)}=\frac{1_{\{\theta<x_{(1)},x_{(n)}<2\theta\}}}{1_{\{\theta<y_{(1)},y_{(n)}<2\theta\}}}$, $\frac{f(x;\theta)}{f(y;\theta)}$ is independent of $\theta$ iff $x_{(1)}-y_{(1)}=x_{(n)}-y_{(n)}=0$, which is $T(x)=T(y)$.
+
+Thus $T(X)=\left(X_{(1)},X_{(n)}\right)^{T}$ is a minimal sufficient statistic for $\theta$.
+
+\[
+f(t;\theta)=n(n-1)\left(\frac{1}{\theta}\right)^{2}\left(\frac{t_{2}-t_{1}}{\theta}\right)^{n-2}1_{\{\theta<t_{1}<t_{2}<2\theta\}}.
+\]
+If
+\[
+E_{\theta}(g(T))=\int g(t)f(t;\theta)dt=\int g(t)n(n-1)\left(\frac{1}{\theta}\right)^{2}\left(\frac{t_{2}-t_{1}}{\theta}\right)^{n-2}1_{\{\theta<t_{1}<t_{2}<2\theta\}}dt_{1}dt_{2}=0,
+\]
+equivalently, $\int g(t)\left(t_{2}-t_{1}\right)^{n-2}1_{\{\theta<t_{1}<t_{2}<2\theta\}}dt_{1}dt_{2}=0$.
+
+Let $g\left(t_{1},t_{2}\right)=\left(\frac{1}{t_{2}-t_{1}}\right)^{n-2}1_{\{t_{1}<t_{2}<kt_{1}\}}-\left(\frac{1}{t_{2}-t_{1}}\right)^{n-2}1_{\{kt_{1}<t_{2}<2t_{1}\}}$ where $k=\frac{9-\sqrt{17}}{4}$, then
+\[
+\int g(t)\left(t_{2}-t_{1}\right)^{n-2}1_{\{\theta<t_{1}<t_{2}<2\theta\}}dt_{1}dt_{2}\equiv 0
+\]
+thus $T$ is not complete.
+
+\subsection*{Problem 2.13}
+Assume $X_{1},X_{2},\ldots,X_{n}\stackrel{\rm iid}{\sim}\text{Gamma}(\alpha,\beta)$, where $\alpha$ is known, then for $T=\sum_{1\leq i\leq n}X_{i}$
+\[
+E\left(X_{(i)}\mid T\right)=E\left[\frac{X_{(i)}}{T}T\mid T\right]=T\frac{E\left[X_{(i)}\right]}{ET}.
+\]
+
+{Solution:}
+Suppose $X=(X_{1},\cdots,X_{n})^{T}\sim f(x;\beta)$, then
+\begin{align*}
+f(x_{1},\cdots,x_{n};\beta)&=\prod_{k=1}^{n}\frac{1}{\beta^{\alpha}\Gamma(\alpha)}x_{k}^{\alpha-1}e^{-\frac{x_{k}}{\beta}}\mathbf{1}_{\{x_{k}>0\}}\\
+&=\left(\frac{1}{\beta^{\alpha}\Gamma(\alpha)}\right)^{n}\left(\prod_{k=1}^{n}x_{k}\right)^{\alpha-1}e^{-\frac{1}{\beta}\sum_{k=1}^{n}x_{k}}\mathbf{1}_{\{x_{(1)}>0\}}.
+\end{align*}
+Let $T(X)=\sum_{k=1}^{n}X_{k}$, then $T(X)$ is a sufficient statistic of $\beta$. By semi-generation of Gamma distribution, we have $T\sim\text{Gamma}(n\alpha,\beta)$.
+
+If
+\[
+E_{\beta}(g(T))=\int g(t)f(t;\beta)dt=\int g(t)\frac{1}{\beta^{n\alpha}\Gamma(n\alpha)}t^{n\alpha-1}e^{-\frac{t}{\beta}}\mathbf{1}_{\{t>0\}}dt=0,\quad\forall\beta
+\]
+then
+\[
+\int_{0}^{\infty}g(t)t^{n\alpha-1}e^{-\frac{t}{\beta}}dt=0\quad\forall\beta.
+\]
+By Laplace transformation, we have $g(t)t^{n\alpha-1}=0$ a.e., which means $g(t)=0$ a.e.. Thus $T$ is complete.
+
+Since $\frac{X_{1}}{\beta},\frac{X_{2}}{\beta},\cdots,\frac{X_{n}}{\beta}\sim\text{Gamma}(\alpha,1)$, $\frac{X_{(i)}}{T}=\frac{\frac{X_{(i)}}{\beta}}{\sum_{k=1}^{n}\frac{X_{k}}{\beta}}$ is ancillary statistic. By Basu's Theorem, we have $T$ is independent of $\frac{X_{(i)}}{T}$. Thus
+\begin{align*}
+E\left(X_{(i)}\mid T\right)&=E\left(\frac{X_{(i)}}{T}T\mid T\right)=TE\left(\frac{X_{(i)}}{T}\mid T\right)\\
+&=TE\left(\frac{X_{(i)}}{T}\right)=T\frac{E\left(\frac{X_{(i)}}{T}\right)ET}{ET}=T\frac{E\left(X_{(i)}\right)}{ET}.
+\end{align*}
+
+\section{Point and Interval Estimations}
+
+\subsection*{Problem 3.1}
+\[
+\begin{aligned}
+X &= G\gamma + g(U)+\varepsilon_{X} \\
+Y &= X\beta + h(U)+\varepsilon_{Y} \\
+\varepsilon_{X} &\indep \varepsilon_{Y}; \quad \{U,\varepsilon_{X},\varepsilon_{Y}\} \indep G \text{ (IV: Instrumental Variable)}
+\end{aligned}
+\]
+(1) Check $\beta=\operatorname{Cov}(Y,G)/\operatorname{Cov}(X,G)$;
+(2) If we have a realization of triple $(G,X,Y)$ for $n$ individuals, i.e. $(G_i,X_i,Y_i)$, $i=1,2,\ldots,n$, what is the estimator of causal effect $\beta$ ?
+
+{Solution:}
+(1)
+\[
+\begin{aligned}
+\operatorname{Cov}(Y,G) &= E[YG]-EY\cdot EG \\
+&= \beta E[XG]+EG\cdot Eh(U)+EG\cdot E\varepsilon_{Y}-(\beta EX+Eh(U)+E\varepsilon_{Y})\cdot EG \\
+&= \beta(E[XG]-EX\cdot EG) \\
+&= \beta\operatorname{Cov}(X,G).
+\end{aligned}
+\]
+Thus $\beta=\frac{\operatorname{Cov}(Y,G)}{\operatorname{Cov}(X,G)}$.
+
+(2)
+\[
+\beta=\frac{n\sum_{i=1}^{n}Y_{i}G_{i}-(\sum_{i=1}^{n}Y_{i})\left(\sum_{i=1}^{n}G_{i}\right)}{n\sum_{i=1}^{n}X_{i}G_{i}-(\sum_{i=1}^{n}X_{i})\left(\sum_{i=1}^{n}G_{i}\right)}.
+\]
+
+
+\subsection*{Problem 3.4: Find moment estimator}
+Population:
+(1) $U_{\{1,2,\ldots,N\}}$;
+(2) $\mu+$ exponential ($\theta$), i.e. $\frac{1}{\theta}\exp\left(-\frac{x-\mu}{\theta}\right)I_{\{x>\mu\}},\theta>0$;
+(3) Binomial $(m,p)$ with unknown $m$ and $p\in(0,1)$.
+
+{Solution:}
+1. $\hat{N}=2\bar{X}-1$.
+
+2.
+\[
+EX=\int_{\mu}^{\infty}\frac{1}{\theta}e^{-\frac{x-\mu}{\theta}}xdx=\theta+\mu, \quad \Var(X)=\Var(\text{Exponential}(\theta))=\theta^{2}.
+\]
+Thus $\hat{\mu}=\bar{X}-\sqrt{S^{2}},\hat{\theta}=\sqrt{S^{2}}$.
+
+3.
+\[
+EX=mp, \quad EX^{2}=m(m-1)p^{2}+mp, \quad \Var(X)=EX^{2}-(EX)^{2}=mp(1-p).
+\]
+Then
+\[
+\hat{p}=1-\frac{S^{2}}{\bar{X}}, \quad \hat{m}=\frac{(\bar{X})^{2}}{\bar{X}-S^{2}}.
+\]
+
+\subsection*{Problem 3.5: Find MLE}
+For population:
+(1) $\mu+$ exponential ($\theta$), i.e. $\frac{1}{\theta}\exp\left(-\frac{x-\mu}{\theta}\right)I_{\{x>\mu\}},\theta>0$;
+(2) $\frac{1}{k\theta}I_{\{\theta<x<(k+1)\theta\}}$, unknown positive $\theta$ and known positive $k$;
+(3) $\frac{1}{2\theta}\exp\left(-\frac{|x|}{\theta}\right)$ with unknown positive $\theta$;
+(4) $I_{\{\theta-\frac{1}{2}<x<\theta+\frac{1}{2}\}}$
+(5) $\frac{1}{\theta_{2}-\theta_{1}}I_{\{\theta_{1}<x<\theta_{2}\}}$ with unknown $\theta_{1}$ and $\theta_{2}$.
+
+{Solution:}
+1.
+\[
+L(\theta,\mu)=\frac{1}{\theta^{n}}\exp\left\{-\frac{1}{\theta}\left(\sum_{i=1}^{n}X_{i}-n\mu\right)\right\}\cdot \mathbf{1}_{\{X_{(1)}>\mu\}}.
+\]
+For any fixed $\theta$, $\hat{\mu}_{\text{MLE}}=X_{(1)}$ to insure $L(\theta,\mu)$ attains its maximum. The log-likelihood function
+\[
+l(\theta)=\log L(\theta)=-\frac{1}{\theta}\left(\sum_{i=1}^{n}X_{i}-n\mu\right)-n\log\theta.
+\]
+Let $\dot{l}(\theta_0)=0$, we get $\theta_0=\bar{X}-X_{(1)}$. Check that $\ddot{l}(\theta_0)=-\frac{n}{\big(\bar{X}-X_{(1)}\big)^{2}}<0$. Thus $\hat{\theta}_{\text{MLE}}=\bar{X}-X_{(1)},\hat{\mu}_{\text{MLE}}=X_{(1)}$.
+
+2.
+\[
+L(\theta)=\frac{1}{(k\theta)^{n}}\mathbf{1}_{\{\theta<X_{(1)}<X_{(n)}<(k+1)\theta\}}.
+\]
+Thus $\hat{\theta}_{\text{MLE}}=\frac{X_{(n)}}{k+1}$.
+
+3.
+\[
+L(\theta)=\frac{1}{(2\theta)^{n}}\exp\left\{-\frac{1}{\theta}\sum_{i=1}^{n}|X_{i}|\right\}.
+\]
+The log-likelihood function
+\[
+l(\theta)=\log L(\theta)=-\frac{1}{\theta}\sum_{i=1}^{n}|X_{i}|-n\log\theta+\text{constant}.
+\]
+Let $\dot{l}(\theta_0)=0$, we get $\theta_0=\frac{\sum_{i=1}^{n}|X_{i}|}{n}$. Check that $\ddot{l}(\theta_0)=-\frac{\sum_{i=1}^{n}|X_{i}|}{\theta_0^{3}}<0$. Thus $\hat{\theta}_{\text{MLE}}=\frac{\sum_{i=1}^{n}|X_{i}|}{n}$.
+
+4.
+\[
+L(\theta)=\mathbf{1}_{\{\theta-\frac{1}{2}<X_{(1)}<X_{(n)}<\theta+\frac{1}{2}\}}.
+\]
+Thus $\hat{\theta}_{\text{MLE}}=\big(X_{(n)}-\frac{1}{2},X_{(1)}+\frac{1}{2}\big)$.
+
+5.
+\[
+L(\theta)=\frac{1}{(\theta_{2}-\theta_{1})^{n}}\cdot \mathbf{1}_{\{\theta_{1}<X_{(1)}<X_{(n)}<\theta_{2}\}}.
+\]
+Thus $\hat{\theta}_{1\text{MLE}}=X_{(1)},\hat{\theta}_{2\text{MLE}}=X_{(n)}$.
+
+\subsection*{Problem 3.6}
+(1) Assume $X_{1}\sim$ Exponential ($\lambda_{1}$) and $X_{2}\sim$ Exponential ($\lambda_{2}$), and they are independent. Define $X=\min\left\{X_{1},X_{2}\right\}$ and $Y=I_{\left\{X=X_{1}\right\}}$. Calculate the joint distribution $P\{X\leq x,Y=0\}$ and $P\{X\leq x,Y=1\}$.
+(2) For a random sample $(X_{1},Y_{1}),(X_{2},Y_{2}),\ldots,(X_{n},Y_{n})$ from $(X,Y)$ shown in (1), calculate the MLEs of $\lambda_{1}$ and $\lambda_{2}$.
+
+{Solution:}
+Let $Y_{1}=X_{1}-X_{2},Y_{2}=X_{2}$. The joint pdf of $(Y_{1},Y_{2})$ is
+\[
+\rho\left(y_{1},y_{2}\right)=\lambda_{1}\lambda_{2}e^{-\lambda_{1}y_{1}}e^{-(\lambda_{1}+\lambda_{2})y_{2}}\cdot \mathbf{1}_{\{y_{1}>0,y_{1}+y_{2}>0\}}.
+\]
+Therefore
+\begin{align*}
+P(X\leq x,Y=0)&=P(Y_{1}>0,Y_{2}\leq x)\\
+&=\lambda_{1}\lambda_{2}\int_{0}^{x}\int_{0}^{\infty}e^{-\lambda_{1}y_{1}}e^{-(\lambda_{1}+\lambda_{2})y_{2}}dy_{1}dy_{2}\\
+&=\frac{\lambda_{2}}{\lambda_{1}+\lambda_{2}}\left(1-e^{-(\lambda_{1}+\lambda_{2})x}\right)
+\end{align*}
+For the same reason, $P(X\leq x,Y=1)=\frac{\lambda_{1}}{\lambda_{1}+\lambda_{2}}\left(1-e^{-(\lambda_{1}+\lambda_{2})x}\right)$.
+
+(2) Random sample $(X_{i},Y_{i}),i=1,2,\ldots,n$. Suppose the number of $Y=1$ of samples is $m$, i.e. $m=\sum_{i=1}^{n}Y_{i}$.
+\[
+L(\lambda_{1},\lambda_{2})=\lambda_{2}^{m}\lambda_{1}^{n-m}\exp\left\{-\left(\lambda_{1}+\lambda_{2}\right)\sum_{i=1}^{n}X_{i}\right\}.
+\]
+The log-likelihood function
+\[
+l(\theta)=\log L(\theta)=m\log\lambda_{2}+(n-m)\log\lambda_{1}-\left(\lambda_{1}+\lambda_{2}\right)\sum_{i=1}^{n}X_{i}.
+\]
+Let $\frac{\partial l}{\partial\lambda_{1}}=0$, $\frac{\partial l}{\partial\lambda_{2}}=0$. We get
+\[
+\lambda_{1}=\frac{n-m}{\sum_{i=1}^{n}X_{i}},\quad \lambda_{2}=\frac{m}{\sum_{i=1}^{n}X_{i}}.
+\]
+Check that $\frac{\partial^{2}l}{\partial\lambda_{1}\partial\lambda_{2}}=-\operatorname{diag}\left(\frac{n-m}{\lambda_{1}^{2}},\frac{m}{\lambda_{2}^{2}}\right)$ is negative. Therefore
+\[
+\hat{\lambda}_{1\text{MLE}}=\frac{n-\sum_{i=1}^{n}Y_{i}}{\sum_{i=1}^{n}X_{i}},\quad \hat{\lambda}_{2\text{MLE}}=\frac{\sum_{i=1}^{n}Y_{i}}{\sum_{i=1}^{n}X_{i}}.
+\]
+
+\subsection*{Problem 3.7}
+A random sample from normal population $N\left(\mu,\sigma^{2}\right)$. Write the likelihood function $\ell\left(\mu,\sigma^{2}\right)$, and for any fixed $\mu$, find $\sigma^{2}(\mu)=\operatorname{argmax}_{\sigma^{2}}\ell\left(\mu,\sigma^{2}\right)$ and then $\ell_{p}(\mu)$ and $\hat{\mu}=\operatorname{argmax}_{\mu}\ell_{p}(\mu)$.
+
+{Solution:}
+\[
+L\left(\mu,\sigma^{2}\right)=\left(2\pi\sigma^{2}\right)^{-\frac{n}{2}}\exp\left\{-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}(X_{i}-\mu)^{2}\right\}.
+\]
+The log-likelihood
+\[
+l\left(\mu,\sigma^{2}\right)=\log L\left(\mu,\sigma^{2}\right)=-\frac{n}{2}\log 2\pi-\frac{n}{2}\log\sigma^{2}-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}(X_{i}-\mu)^{2}.
+\]
+Now fix $\mu$. Let $\frac{\partial l}{\partial\sigma^{2}}=0$, we get $\sigma_{0}^{2}=\frac{1}{n}\sum_{i=1}^{n}(X_{i}-\mu)^{2}$. Check that $\frac{\partial^{2}l}{\partial^{2}\sigma^{2}}\left(\sigma_{0}^{2}\right)<0$, thus
+\[
+\sigma^{2}(\mu)=\operatorname{argmax}_{\sigma^{2}}l\left(\mu,\sigma^{2}\right)=\frac{1}{n}\sum_{i=1}^{n}(X_{i}-\mu)^{2}.
+\]
+So
+\[
+l_{p}(\mu)=l\left(\mu,\sigma^{2}(\mu)\right)=-\frac{n}{2}\log 2\pi-\frac{n}{2}\log\frac{1}{n}\sum_{i=1}^{n}(X_{i}-\mu)^{2}-\frac{n}{2}.
+\]
+And
+\[
+\hat{\mu}=\operatorname{argmax}_{\mu}l_{p}(\mu)=\operatorname{argmin}_{\mu}\sum_{i=1}^{n}(X_{i}-\mu)^{2}=\bar{X}.
+\]
+
+\subsection*{Problem 3.8}
+Given likelihood
+\[
+\ell(\beta,\gamma_{1},\gamma_{2},\ldots,\gamma_{M})=\text{Constant}-\frac{1}{2}\sum_{j=1}^{M}\left[\frac{(X_{j}-\gamma_{j})^{2}}{\sigma_{X_{j}}^{2}}+\frac{(Y_{j}-\beta\gamma_{j})^{2}}{\sigma_{Y_{j}}^{2}}\right],
+\]
+check
+\[
+\ell_{p}(\beta)=-\frac{1}{2}\sum_{j=1}^{M}\frac{(Y_{j}-X_{j}\beta)^{2}}{\sigma_{X_{j}}^{2}\beta^{2}+\sigma_{Y_{j}}^{2}}
+\]
+up to a constant.
+
+{Solution:}
+\[
+l(\beta,\gamma_{1},\ldots,\gamma_{M})=\text{Constant}-\frac{1}{2}\sum_{j=1}^{M}\left[\frac{(X_{j}-\gamma_{j})^{2}}{\sigma_{X_{j}}^{2}}+\frac{(Y_{j}-\beta\gamma_{j})^{2}}{\sigma_{Y_{j}}^{2}}\right].
+\]
+Fix $\beta$, let
+\[f(\gamma_{1},\ldots,\gamma_{M})=\sum_{j=1}^{M}\left[\frac{(X_{j}-\gamma_{j})^{2}}{\sigma_{X_{j}}^{2}}+\frac{(Y_{j}-\beta\gamma_{j})^{2}}{\sigma_{Y_{j}}^{2}}\right].\]
+We turn to solve minimal value of $f$. Let
+\[
+\frac{\partial f}{\partial\gamma_{j}}=\frac{2(\gamma_{j}-X_{j})}{\sigma_{X_{j}}^{2}}+\beta\frac{2(\beta\gamma_{j}-Y_{j})}{\sigma_{Y_{j}}^{2}}=0.
+\]
+We attain
+\[
+\hat{\gamma}_{j}=\frac{X_{j}\sigma_{Y_{j}}^{2}+\beta Y_{j}\sigma_{X_{j}}^{2}}{\sigma_{Y_{j}}^{2}+\beta^{2}\sigma_{X_{j}}^{2}}.
+\]
+Check that $\frac{\partial^{2}f}{\partial\lambda_{i}\partial\lambda_{j}}=4\operatorname{diag}\left[\left(\frac{1}{\sigma_{X_{j}}^{2}}+\frac{\beta}{\sigma_{Y_{j}}^{2}}\right)_{j=1}^{n}\right]$ is positive. Therefore (up to a constant)
+\[
+\begin{aligned}
+l_{p}(\beta)&=-\frac{1}{2}\sum_{j=1}^{M}\left[\frac{\left(X_{j}-\gamma_{j}\right)^{2}}{\sigma_{X_{j}}^{2}}+\frac{\left(Y_{j}-\beta\gamma_{j}\right)^{2}}{\sigma_{Y_{j}}^{2}}\right] \\
+&=-\frac{1}{2}\sum_{j=1}^{M}\left[\frac{\left(X_{j}-\frac{X_{j}\sigma_{Y_{j}}^{2}+\beta Y_{j}\sigma_{X_{j}}^{2}}{\sigma_{Y_{j}}^{2}+\beta^{2}\sigma_{X_{j}}^{2}}\right)^{2}}{\sigma_{X_{j}}^{2}}+\frac{\left(Y_{j}-\frac{\beta X_{j}\sigma_{Y_{j}}^{2}+\beta^{2}Y_{j}\sigma_{X_{j}}^{2}}{\sigma_{Y_{j}}^{2}+\beta^{2}\sigma_{X_{j}}^{2}}\right)^{2}}{\sigma_{Y_{j}}^{2}}\right] \\
+&=-\frac{1}{2}\sum_{j=1}^{M}\left[\frac{\left(\beta^{2}X_{j}\sigma_{X_{j}}^{2}-\beta Y_{j}\sigma_{X_{j}}\right)^{2}}{\sigma_{X_{j}}^{2}\left(\sigma_{Y_{j}}^{2}+\beta^{2}\sigma_{X_{j}}^{2}\right)^{2}}+\frac{\left(Y_{j}\sigma_{Y_{j}}^{2}-\beta X_{j}\sigma_{Y_{j}}\right)^{2}}{\sigma_{Y_{j}}^{2}\left(\sigma_{Y_{j}}^{2}+\beta^{2}\sigma_{X_{j}}^{2}\right)^{2}}\right] \\
+&=-\frac{1}{2}\sum_{j=1}^{M}\frac{\left(Y_{j}-X_{j}\beta\right)^{2}}{\left(\sigma_{Y_{j}}^{2}+\beta^{2}\sigma_{X_{j}}^{2}\right)^{2}}.
+\end{aligned}
+\]
+
+\subsection*{Problem 3.12}
+Assume $X_{1},X_{2},\ldots,X_{n}$ is a simple random sample from $N\left(\mu,\sigma^{2}\right)$, and let $A=\frac{1}{n-1}\sum_{i=1}^{n}\\
+\left(X_{i}-\bar{X}\right)^{2},B=\frac{1}{n}\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2}$, $C=\frac{1}{n+1}\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2}$. Based on MSE (mean squared error) criterion, which one is the best for estimating $\sigma^{2}$ ?
+
+{Solution:}
+\[
+\operatorname{MSE}(A)=\frac{2}{n-1}\sigma^{4},\quad \operatorname{MSE}(B)=\frac{2n-1}{n^{2}}\sigma^{4},\quad \operatorname{MSE}(C)=\frac{2}{n+1}\sigma^{4}.
+\]
+Among them the minimal is $\operatorname{MSE}(C)$, thereby $C=\frac{1}{n+1}\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2}$ is best for estimating $\sigma^{2}$.
+
+\subsection*{Problem 3.13}
+Assume $X_{1},X_{2},\ldots,X_{n}$ is a simple random sample from $U(0,\theta)$, and we already know that MLE of $\theta$ is $\hat{\theta}_{\text{mle}}=X_{(n)}$ (it is also sufficient for $\theta$), the moment estimator $2\bar{X}$ of $\theta$, and the unbiased estimator $\frac{n+1}{n}X_{(n)}$ of $\theta$. Which one do you prefer based on MSE? Further, find a constant $c$ such that $\operatorname{MSE}\big[cX_{(n)}\big]<\operatorname{MSE}\big[\frac{n+1}{n}X_{(n)}\big]$ for all $\theta,n>1$.
+
+{Solution:}
+\[
+EX_{(n)}=\frac{n}{n+1}\theta,\quad E\Big[X_{(n)}^{2}\Big]=\frac{n}{n+2}\theta^{2}.
+\]
+\[
+\operatorname{MSE}\big(X_{(n)}\big)=\frac{2}{(n+2)(n+1)}\theta^{2},\quad \operatorname{MSE}(2\bar{X})=\frac{4}{n}\Var(X_{1})=\frac{1}{3n}\theta^{2},
+\]
+\[
+\operatorname{MSE}\bigg(\frac{n+1}{n}X_{(n)}\bigg)=\frac{(n+1)^{2}}{n^{2}}\Var\big(X_{(n)}\big)=\frac{1}{n(n+2)}\theta^{2}.
+\]
+Thus, for $n>1$, $\frac{n+1}{n}X_{(n)}$ is better based on MSE.
+
+$c=\frac{n+2}{n+1}$.
+
+\subsection*{Problem 3.14}
+(1) For given $n$ pairs of $(x_{i},y_{i}),i=1,\ldots,n$, let $(a,b)=\operatorname{argmin}_{a,b}\sum_{i=1}^{n}(y_{i}-a-bx_{i})^{2}$, then $b=\frac{\sum_{i=1}^{n}(x_{i}-\bar{x})y_{i}}{\sum_{i=1}^{n}(x_{i}-\bar{x})^{2}},a=\bar{y}-b\bar{x}$, where $\bar{x}=\frac{1}{n}\sum_{i=1}^{n}x_{i},\bar{y}=\frac{1}{n}\sum_{i=1}^{n}y_{i}$. We call $y=a+bx$ the best line to fit $\big\{(x_{i},y_{i}),1\leq i\leq n\big\}$. Check the validity of $a$ and $b$.
+
+(2) $Y_{i}=\beta_{0}+\beta_{1}x_{i}+\epsilon_{i},\epsilon_{1},\epsilon_{2},\ldots,\epsilon_{n}\overset{\text{iid}}{\sim}N\left(0,\sigma^{2}\right),x_{1},x_{2},\ldots,x_{n}$ are fixed constants. $\beta_{0},\beta_{1}$, and $\sigma^{2}$ are unknown parameters of interest.
+
+(i) Check $\left(\sum_{i=1}^{n}Y_{i},\sum_{i=1}^{n}x_{i}Y_{i},\sum_{i=1}^{n}Y_{i}^{2}\right)$ is sufficient for the unknown parameters.
+
+(ii) Find the MLEs of unknown parameters and judge if it is unbiased. 
+
+(iii) Find the distributions of MLEs.
+
+{Solution:}
+(1)
+\[
+L(a,b):=\sum_{i=1}^{n}\left(y_{i}-a-bx_{i}\right)^{2}.
+\]
+Let $\frac{\partial L}{\partial a}=0,\frac{\partial L}{\partial b}=0$. We get
+\[
+\hat{a}=\bar{y}-\hat{b}\bar{x},\quad \hat{b}=\frac{\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)y_{i}}{\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}}.
+\]
+Check that
+\[
+\frac{\partial^{2}L}{\partial a\partial b}=\begin{pmatrix}n & \sum_{i=1}^{n}x_{i}\\ \sum_{i=1}^{n}x_{i} & \sum_{i=1}^{n}x_{i}^{2}\end{pmatrix}
+\]
+which is nonnegative. Thus $(\hat{a},\hat{b})=\operatorname{argmin}_{a,b}\sum_{i=1}^{n}(y_{i}-a-bx_{i})^{2}$.
+
+(2) $Y_{i}=\beta_{0}+\beta_{1}x_{i}+\epsilon_{i},\epsilon_{i}\sim N\left(0,\sigma^{2}\right)$ i.i.d..
+
+(i) $Y_{i}\sim N\left(\beta_{0}+\beta_{1}x_{i},\sigma^{2}\right)$ independently. Therefore the joint pdf of $y=(y_{1},\ldots,y_{n})$ is
+\[
+f(y)=\left(2\pi\sigma^{2}\right)^{-\frac{n}{2}}\cdot\exp\left\{-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\beta_{1}x_{i}\right)^{2}\right\}.
+\]
+Considering $\sum_{i=1}^{n}\left(y_{i}-\beta_{0}-\beta_{1}x_{i}\right)^{2}=\sum_{i=1}^{n}Y_{i}^{2}+\sum_{i=1}^{n}\left(\beta_{0}+\beta_{1}x_{i}\right)^{2}-2\sum_{i=1}^{n}Y_{i}\left(\beta_{0}+\beta_{1}x_{i}\right)$, by the factorization theorem, $\left(\sum_{i=1}^{n}Y_{i},\sum_{i=1}^{n}x_{i}Y_{i},\sum_{i=1}^{n}Y_{i}^{2}\right)$ is sufficient for the unknown parameters.
+
+(ii) \& (iii): Considering the matrix version of this problem we have
+\[
+\hat{\beta}=(\hat{\beta}_{1},\hat{\beta}_{0})^{T}=(X^{T}X)^{-1}X^{T}y
+\]
+where $X=\begin{pmatrix}x_{1}&1\\ x_{2}&1\\ \vdots&\vdots\\ x_{n}&1\end{pmatrix}_{n\times2}$. Thus $\hat{\beta}$ is unbiased.
+
+Let $G=X(X^{T}X)^{-1}X^{T}$, then $\hat{\sigma}^{2}=\frac{y^{T}(I-G)y}{n}\sim\frac{\sigma^{2}}{n}\chi^{2}(n-2)$. Thus $\hat{\sigma}^{2}$ is unbiased.
+
+\subsection*{Problem 3.15}
+Population: $\theta x^{\theta-1}I_{\{0<x<1\}},\theta>0$.
+
+(1) Find the MLE of $\frac{1}{\theta}$;
+
+(2) Find the efficient estimator of $\frac{1}{\theta}$.
+
+{Solution:}
+(1) $l(\theta)=\sum_{i=1}^{n}\left((\theta-1)\ln X_{i}+\ln\theta\right)=n\ln\theta+\left(\sum_{i=1}^{n}\ln X_{i}\right)\theta-\sum_{i=1}^{n}\ln X_{i}$. Thus $\hat{\theta}_{\text{mle}}=-\frac{n}{\sum_{i=1}^{n}\ln X_{i}}$, and
+\[
+\left(\frac{1}{\hat{\theta}}\right)_{\text{mle}}=\frac{1}{\hat{\theta}_{\text{mle}}}=-\frac{1}{n}\sum_{i=1}^{n}\ln X_{i}.
+\]
+
+(2) Let $S=-\frac{1}{n}\sum_{i=1}^{n}\ln X_{i}\in\left(0,+\infty\right)$, then $S\sim\frac{(n\theta)^{n}}{(n-1)!}e^{-n\theta s}s^{n-1}ds$.
+\[
+ES=\int_{0}^{+\infty}s\frac{(n\theta)^{n}}{(n-1)!}e^{-n\theta s}s^{n-1}\mathrm{d}s=\frac{1}{n!\theta}\int_{0}^{+\infty}e^{-t}t^{n}\mathrm{d}t=\frac{1}{\theta}.
+\]
+Therefore $S$ is an unbiased estimator of $\frac{1}{\theta}$.
+\[
+ES^{2}=\int_{0}^{+\infty}s^{2}\frac{(n\theta)^{n}}{(n-1)!}e^{-n\theta s}s^{n-1}\mathrm{d}s=\frac{1}{n\cdot n!\theta^{2}}\int_{0}^{+\infty}e^{-t}t^{n+1}\mathrm{d}t=\frac{n+1}{n\theta^{2}},\Var(S)=ES^{2}-(ES)^{2}=\frac{1}{n\theta^{2}}.
+\]
+\[
+i\left(\frac{1}{\theta}\right)=E\Big[\left(-\theta^{2}\ln x-\theta\right)^{2}\Big]=\int_{0}^{1}\theta x^{\theta-1}\left(\theta^{2}\ln x+\theta\right)^{2}\mathrm{d}x=\theta^{2},\quad I\left(\frac{1}{\theta}\right)=ni\left(\frac{1}{\theta}\right)=n\theta^{2}.
+\]
+Thus $\Var(S)=\frac{1}{n\theta^{2}}=\frac{1}{I\left(\frac{1}{\theta}\right)}$, so $S=-\frac{1}{n}\sum_{i=1}^{n}\ln X_{i}$ is the efficient estimator of $\frac{1}{\theta}$.
+
+\subsection*{Problem 3.16}
+Population: Gamma $(\alpha,\beta),\alpha>0$ is known. Prove that $\bar{X}/\alpha$ is efficient for $\beta$.
+
+{Solution:}
+We know
+\[
+E[\text{Gamma}(\alpha,\beta)]=\alpha\beta,\quad \Var(\text{Gamma}(\alpha,\beta))=\alpha\beta^{2}.
+\]
+The log-likelihood function
+\[
+l(\beta)=-n\log\left(\Gamma(\alpha)\beta^{\alpha}\right)+(\alpha-1)\sum_{i=1}^{n}\log X_{i}-\frac{1}{\beta}\sum_{i=1}^{n}X_{i}.
+\]
+\[
+\dot{l}(\beta)=-\frac{\alpha n}{\beta}+\frac{\sum_{i=1}^{n}X_{i}}{\beta^{2}},\quad \ddot{l}(\beta)=\frac{\alpha n}{\beta^{2}}-\frac{2\sum_{i=1}^{n}X_{i}}{\beta^{3}}.
+\]
+Check that
+\[
+E\left(\frac{\bar{X}}{\alpha}\right)=\frac{1}{\alpha}E(\text{Gamma}(\alpha,\beta))=\beta,\quad \Var\left(\frac{\bar{X}}{\alpha}\right)=\frac{\Var(\bar{X})}{\alpha^{2}}=\frac{\beta^{2}}{\alpha n}.
+\]
+\[
+E(-\ddot{l}(\beta))=-\frac{\alpha n}{\beta^{2}}+\frac{2n}{\beta^{3}}E(\text{Gamma}(\alpha,\beta))=\frac{\alpha n}{\beta^{2}}.
+\]
+Thus $\frac{\bar{X}}{\alpha}$ is unbiased and satisfies $\Var\left(\frac{\bar{X}}{\alpha}\right)=\frac{1}{I(\beta)}$.
+
+\subsection*{Problem 3.17}
+Population $U[0,\theta]$, Sample $X_{1},\ldots,X_{n}$. Find MVUE of unknown parameter $\theta$.
+
+{Solution:}
+Population: $U[0,\theta]$. Let $T=\frac{n+1}{n}X_{(n)}$. Then
+\[
+ET=\int_{0}^{\theta}\frac{n+1}{n}x\cdot n\frac{1}{\theta^{n}}x^{n-1}dx=\theta,
+\]
+thus $T$ is unbiased. Besides, for any $\theta$, if $g(x)$ satisfies
+\[
+\int_{0}^{\theta}g(x)\frac{n}{\theta^{n}}x^{n-1}dx\equiv 0.
+\]
+Then, by taking derivatives,
+\[
+-\int_{0}^{\theta}g(x)\frac{n^{2}}{\theta^{n+1}}x^{n-1}dx+\frac{n}{\theta}g(\theta)\equiv 0.
+\]
+Thus $g(x)\equiv 0$, then $X_{(n)}$ is complete.
+
+We also know that $X_{(n)}$ is sufficient. So by Theorem 3.6, $T=\frac{n+1}{n}X_{(n)}$ is the unique MVUE of $\theta$.
+
+\subsection*{Problem 3.18}
+Population: Poisson ($\lambda$)
+
+(1) Calculate the Fisher information $i\left(\frac{1}{\lambda}\right)$;
+
+(2) Find one function $g(\lambda)$ such that $i[g(\lambda)]$ does not dependent on $\lambda$.
+
+{Solution:}
+Population: Poisson ($\lambda$). (1) The log-likelihood function
+\[
+l(\lambda)=-n\frac{1}{\lambda}-\sum_{i=1}^{n}X_{i}\cdot\log\frac{1}{\lambda}.
+\]
+\[
+\frac{\partial l}{\partial\frac{1}{\lambda}}=\lambda\left(n\lambda-\sum_{i=1}^{n}X_{i}\right).
+\]
+Thus
+\[
+I\left(\frac{1}{\lambda}\right)=E\left[\left(\frac{\partial l}{\partial\frac{1}{\lambda}}\right)^{2}\right]=n\lambda^{3},\quad i\left(\frac{1}{\lambda}\right)=\frac{1}{n}I\left(\frac{1}{\lambda}\right)=\lambda^{3}.
+\]
+
+(2) $g(\lambda)=\sqrt{\lambda}$ is desired.
+\[
+l(\lambda)=-n(\sqrt{\lambda})^{2}+2\sum_{i=1}^{n}X_{i}\cdot\log\sqrt{\lambda}.
+\]
+Then
+\[
+\frac{\partial^{2}l}{\partial\sqrt{\lambda}^{2}}=-2n-\frac{2\sum_{i=1}^{n}X_{i}}{\sqrt{\lambda}^{2}}.
+\]
+\[
+i(\sqrt{\lambda})=\frac{1}{n}E\left(\frac{\partial^{2}l}{\partial\sqrt{\lambda}^{2}}\right)=4.
+\]
+Therefore, $i(g(\lambda))$ does not depend on $\lambda$.
+
+\subsection*{Problem 3.19}
+Population: $N(\mu,1)$. Find the MVUE of $\mu^{2}$ and prove that its variance is bigger that the CRLB.
+
+{Solution:}
+\[
+l(\mu)=-\frac{1}{2}\sum_{i=1}^{n}X_{i}^{2}+\sum_{i=1}^{n}X_{i}\cdot\sqrt{\mu^{2}}-\frac{n}{2}\mu^{2}-\frac{n}{2}\log 2\pi.
+\]
+We can derive that
+\[
+I\left(\mu^{2}\right)=E\left[\frac{\partial^{2}l}{(\partial\mu^{2})^{2}}\right]=\frac{n}{4\mu^{2}}.
+\]
+With factorization theorem, we know that $T=\frac{\sum_{i=1}^{n}X_{i}}{n}$ is sufficient, and $T\sim N\left(\mu,\frac{1}{n}\right)$. By Laplace transformation, we can get $N\left(\mu,\frac{1}{n}\right)$ is complete. Now let $g(x)=x^{2}-\frac{1}{n}$. Then $g(T)$ is an unbiased estimator. So $g(T)$ is MVUE of $\mu^{2}$. Now let $X=\sqrt{n}(T-\mu)$. Then $X^{2}\sim\chi^{2}(1)$, thus $\Var\left(X^{2}\right)=2$. So
+\[
+\Var((T-\mu)^{2})=\frac{2}{n}.
+\]
+We get
+\[
+\Var(g(T))=\Var\left(T^{2}\right)=\frac{2}{n}+\frac{4\mu^{2}}{n}
+\]
+which is strictly bigger than CRLB.
+
+\subsection*{Problem 3.20}
+Two independent samples $X_{1},X_{2},\ldots,X_{n}\overset{\text{iid}}{\sim}N\left(\mu,\sigma^{2}\right)$ and $Y_{1},Y_{2},\ldots,Y_{n}\overset{\text{iid}}{\sim}N\left(\mu,2\sigma^{2}\right)$. Find the MVUE of $\mu$ and $\sigma^{2}$, respectively.
+
+{Solution:}
+For $X$, we have done in class. $\hat{\mu}_{X}=\bar{X},\hat{\sigma^{2}}_{X}=S^{2}$. For $Y,\hat{\mu}_{Y}=\bar{Y},\hat{\sigma}^{2}_{Y}=\frac{1}{2}S^{2}$.
+\[
+f\left(y;\mu,2\sigma^{2}\right)=\frac{1}{\sqrt{4\pi\sigma^{2}}}\exp\left(-\frac{1}{4\sigma^{2}}(y-\mu)^{2}\right),
+\]
+\[
+l\left(\mu,\sigma^{2}\right)=-\frac{1}{2}\log 2\pi-\frac{1}{2}\log 2\sigma^{2}-\frac{1}{4\sigma^{2}}(y-\mu)^{2}.
+\]
+Then
+\[
+E\hat{\mu}_{Y}=E\bar{Y}=\mu;\quad E\hat{\sigma^{2}}_{Y}=\frac{1}{2}ES^{2}=\sigma^{2};
+\]
+\[
+\Var\hat{\mu}_{Y}=\frac{1}{n}\Var Y=\frac{2\sigma^{2}}{n};\quad \Var\hat{\sigma}^{2}_{Y}=\Var\frac{(n-1)S^{2}}{2\sigma^{2}}=\frac{2}{n-1}\sigma^{4}.
+\]
+Besides,
+\[
+\dot{l}(\mu)=\frac{1}{2\sigma^{2}}(Y-\mu);\quad I(\mu)=\frac{n}{2\sigma^{2}};
+\]
+\[
+\dot{l}(\sigma^{2})=\frac{1}{2\sigma^{2}}[(\frac{Y-\mu}{\sqrt{2}\sigma})^{2}-1];\quad I(\sigma^{2})=\frac{n}{2\sigma^{4}},
+\]
+which shows that MVUE is no smaller than CRLB.
+
+\subsection*{Problem 3.21}
+Population: Exponential ($\theta$). We know that the sample mean is the moment estimator, MLE, sufficient, and consistent, and also MVUE (cf. Example 3.7). Prove that there exists $\hat{\theta}$ such $\operatorname{MSE}(\hat{\theta})<\operatorname{MSE}(\bar{X})$. (Hint: consider $c\bar{X}$).
+
+{Solution:}
+\begin{align*}
+\operatorname{MSE}(c\bar{X})&=E(c\bar{X}-\theta)^{2}=E\left(c^{2}(\bar{X})^{2}-2c\theta\bar{X}+\theta^{2}\right)\\
+&=\frac{c^{2}}{n^{2}}E\left(X_{1}+\cdots+X_{n}\right)^{2}-\frac{2c\theta}{n}n\theta+\theta^{2}\\
+&=\frac{c^{2}}{n^{2}}\left(2n\theta^{2}+\left(n^{2}-n\right)\theta^{2}\right)-2c\theta^{2}+\theta^{2}\\
+&=\left(\frac{n+1}{n}c^{2}-2c+1\right)\theta^{2}.
+\end{align*}
+Let $c=1,\frac{n}{n+1}$, then
+\[
+\operatorname{MSE}(\bar{X})=\frac{\theta^{2}}{n},\quad \operatorname{MSE}(\hat{\theta})=\frac{\theta^{2}}{n+1}.
+\]
+Thus, $\hat{\theta}=\frac{n}{n+1}\bar{X}$ satisfies the requirement.
+
+\subsection*{Problem 3.23}
+Population: $\operatorname{Exponential}(\lambda) = \operatorname{Gamma}(1,\lambda)$. Find the $1-\alpha$ CI for $\lambda$;
+Population: $\theta+\operatorname{Exponential}(1)$. Find the $1-\alpha$ CI for $\theta$.
+
+{Solution:}
+$X\sim\operatorname{Gamma}(1,\lambda)$, $Y:=\frac{X}{\lambda}$, then
+\[
+\rho_{Y}(y)=\rho_{X}(\lambda y)\lambda=e^{-y}\cdot\mathbf{1}_{(0,\infty)}(y).
+\]
+Thus CDF of $Y$ is $F(y)=1-e^{-y}$. Let $y_{1},y_{2}$ solutions of $F(y_{1})=\frac{\alpha}{2},F(y_{2})=1-\frac{\alpha}{2}$, respectively. 
+Then $y_{1}=-\log\left(1-\frac{\alpha}{2}\right),y_{2}=-\log\left(\frac{\alpha}{2}\right)$. We have
+\[
+P\left(y_{1}\leq Y\leq y_{2}\right)=1-\alpha,\quad P\left(\frac{X}{y_{2}}\leq\lambda\leq\frac{X}{y_{1}}\right)=1-\alpha.
+\]
+
+\subsection*{Problem 3.24}
+Population: $U\left(\theta-\frac{1}{2},\theta+\frac{1}{2}\right)$.
+Prove $\frac{X_{(1)}+X_{(n)}}{2}-\theta$ is a pivot and then find the $1-\alpha$ CI for $\theta$.
+
+{Solution:}
+Let $X\sim U\left(\theta-\frac{1}{2},\theta+\frac{1}{2}\right),Y=X-\theta$. Then $Y\sim U\left(-\frac{1}{2},\frac{1}{2}\right)$. Note that $\frac{X_{(1)}+X_{(n)}}{2}-\theta=\frac{Y_{(1)}+Y_{(n)}}{2}$ which is independent of $\theta$, Thus $\frac{X_{(1)}+X_{(n)}}{2}-\theta$ is a pivot. Let $P\left(a\leq\frac{Y_{(1)}+Y_{(n)}}{2}\leq b\right)=1-\alpha$, Then
+\[
+P\left(\frac{X_{(1)}+X_{(n)}}{2}-b\leq\theta\leq\frac{X_{(1)}+X_{(n)}}{2}-a\right)=1-\alpha.
+\]
+
+\subsection*{Problem 3.25}
+Population: $U\left(\theta_{1},\theta_{2}\right)$.
+Find the $1-\alpha$ CIs for $\theta_{2}-\theta_{1}$ and $\frac{\theta_{1}+\theta_{2}}{2}$, respectively.
+
+{Solution:}
+Let $Y_{1}=X_{(n)}-X_{(1)},Y_{2}=X_{(n)}$. We can get
+\[
+P\left(X_{(1)}\leq x_{1},X_{(n)}\leq x_{2}\right)=\frac{\left(x_{2}-\theta_{1}\right)^{n}-\left(x_{2}-x_{1}\right)^{n}}{\left(\theta_{2}-\theta_{1}\right)^{n}}.
+\]
+The joint pdf of $\left(X_{(1)},X_{(n)}\right)$ is
+\[
+\rho_{X}\left(x_{1},x_{2}\right)=\frac{n(n-1)}{\left(\theta_{2}-\theta_{1}\right)^{n}}\left(x_{2}-x_{1}\right)^{n-2}\mathbf{1}_{\left\{\theta_{1}\leq x_{1}\leq x_{2}\leq\theta_{2}\right\}}\left(x_{1},x_{2}\right).
+\]
+\[
+\rho_{Y}\left(y_{1},y_{2}\right)=\rho_{X}\left(y_{2}-y_{1},y_{2}\right)=\frac{n(n-1)}{\left(\theta_{2}-\theta_{1}\right)^{n}}y_{1}^{n-2}\cdot\mathbf{1}_{\left\{0\leq y_{1},y_{1}+\theta_{1}\leq y_{2}\leq\theta_{2}\right\}}.
+\]
+Thus marginal pdf of $Y_{1}$ is
+\[
+\rho\left(y_{1}\right)=\int_{y_{1}+\theta_{1}}^{\theta_{2}}\rho_{Y}\left(y_{1},y_{2}\right)dy_{2}=\frac{n(n-1)}{(\theta_{2}-\theta_{1})^{n-1}}y_{1}^{n-2}\bigg(1-\frac{y_{1}}{\theta_{2}-\theta_{1}}\bigg).
+\]
+Then pdf of $X$ is
+\[
+f(x)=\frac{1}{\theta_{2}-\theta_{1}}\rho\bigg(\frac{x}{\theta_{2}-\theta_{1}}\bigg)=n(n-1)x^{n-2}(1-x)\cdot 1_{\left(0,1\right)}(x).
+\]
+Then $\frac{X_{(n)}-X_{(1)}}{\theta_{2}-\theta_{1}}\sim\operatorname{Beta}(n-1,2)$. The $1-\alpha$ C.I. for $\theta_{2}-\theta_{1}$ satisfies
+\[
+1-\alpha=P\left\{L\leq\theta_{2}-\theta_{1}\leq U\right\}=P\left\{\frac{X_{(n)}-X_{(1)}}{U}\leq\frac{X_{(n)}-X_{(1)}}{\theta_{2}-\theta_{1}}\leq\frac{X_{(n)}-X_{(1)}}{L}\right\}
+\]
+that is
+\[
+\left(\frac{X_{(n)}-X_{(1)}}{U},\frac{X_{(n)}-X_{(1)}}{L}\right)=\left(\operatorname{Beta}_{\frac{\alpha}{2}}(n-1,2),\operatorname{Beta}_{1-\frac{\alpha}{2}}(n-1,2)\right),
+\]
+\[
+(L,U)=\left(\frac{X_{(n)}-X_{(1)}}{\operatorname{Beta}_{1-\frac{\alpha}{2}}(n-1,2)},\frac{X_{(n)}-X_{(1)}}{\operatorname{Beta}_{\frac{\alpha}{2}}(n-1,2)}\right).
+\]
+
+(2) Let
+\[
+u=\frac{X_{(1)}+X_{(n)}-\left(\theta_{1}+\theta_{2}\right)}{X_{(n)}-X_{(1)}},\quad v=X_{(n)}-X_{(1)}.
+\]
+Then the joint pdf of $\left(X_{(1)},X_{(n)}\right)$ is
+\[
+f(x,y)=\frac{n(n-1)}{(\theta_{2}-\theta_{1})^{n}}(y-x)^{n-2}1_{\{\theta_{1}\leq x\leq y\leq\theta_{2}\}},
+\]
+so the joint pdf of $(u,v)$ is
+\[
+l(u,v)=f\left(\frac{uv+\theta_{1}+\theta_{2}-v}{2},\frac{uv+v+\theta_{1}+\theta_{2}}{2}\right)\frac{|v|}{2}.
+\]
+Thus
+\[
+l(u,v)=\frac{n(n-1)v^{n-1}}{2(\theta_{2}-\theta_{1})^{n}}1_{\left\{\theta_{1}\leq\frac{uv+\theta_{1}+\theta_{2}-v}{2}\leq\frac{uv+v+\theta_{1}+\theta_{2}}{2}\leq\theta_{2}\right\}}.
+\]
+Thus the pdf of $U$ is
+\[
+f(u)=\int l(u,v)dv=\frac{n(n-1)}{2(\theta_{2}-\theta_{1})^{n}}\left(1_{\{u\geq 0\}}\int_{0}^{\frac{\theta_{1}+\theta_{2}}{1+u}}v^{n-1}dv+1_{\{u\leq 0\}}\int_{0}^{\frac{\theta_{2}-\theta_{1}}{1-u}}v^{n-1}dv\right)=\frac{n-1}{2(1+|u|)^{n}}.
+\]
+The $1-\alpha$ C.I. for $\frac{\theta_{1}+\theta_{2}}{2}$ satisfies
+\[
+\frac{\alpha}{2}=\int_{t}^{\infty}\frac{n-1}{2(1+u)^{n}}du=\frac{(1+t)^{-(n-1)}}{2},
+\]
+then $t=\alpha^{-\frac{1}{n-1}}-1$. We need
+\[
+1-\alpha=P\left\{L\leq\theta_{1}+\theta_{2}\leq U\right\}=P\left\{\frac{X_{(1)}+X_{(n)}-U}{X_{(n)}-X_{(1)}}\leq\frac{X_{(1)}+X_{(n)}-(\theta_{1}+\theta_{2})}{X_{(n)}-X_{(1)}}\leq\frac{X_{(1)}+X_{(n)}-L}{X_{(n)}-X_{(1)}}\right\}
+\]
+that is
+\[
+(L,U)=\left(X_{(1)}+X_{(n)}-\left(X_{(n)}-X_{(1)}\right)\left(\alpha^{-\frac{1}{n-1}}-1\right),X_{(1)}+X_{(n)}+\left(X_{(n)}-X_{(1)}\right)\left(\alpha^{-\frac{1}{n-1}}-1\right)\right).
+\]
+
+\subsection*{Problem 3.26}
+Two independent samples $X_{1},X_{2},\ldots,X_{m}\overset{\text{iid}}{\sim}U\left(0,\theta_{1}\right)$ and $Y_{1},Y_{2},\ldots,Y_{n}\overset{\text{iid}}{\sim}U\left(0,\theta_{2}\right)$. Find the $1-\alpha$ CI for $\frac{\theta_{1}}{\theta_{2}}$. (Hint: consider $\frac{X_{(m)}}{Y_{(n)}}$)
+
+{Solution:}
+Let $T_{1}=X_{(m)},T_{2}=Y_{(n)}$, then $X=\frac{T_{1}}{\theta_{1}}\sim B(m,1),Y=\frac{T_{2}}{\theta_{2}}\sim B(n,1)$. Thus, $T=\frac{X}{Y}$ is a pivot. The pdf of $T$ is
+\[
+\begin{aligned}
+f(t)&=\frac{mn}{m+n}t^{m-1},\quad 0<t<1; \\
+f(t)&=\frac{mn}{m+n}t^{-n-1},\quad t\geq 1.
+\end{aligned}
+\]
+Then the $1-\alpha$ C.I. for $\frac{\theta_{1}}{\theta_{2}}$ is
+\[
+\left[\frac{X_{(m)}}{Y_{(n)}}\left(\frac{m+n}{m}\frac{\alpha}{2}\right)^{\frac{1}{n}},\frac{X_{(m)}}{Y_{(n)}}\left(\frac{m+n}{n}\frac{\alpha}{2}\right)^{-\frac{1}{m}}\right].
+\]
+
+\subsection*{Problem 3.27}
+For population: Bernoulli ($p$), we already know that $T=\sum_{i=1}^{n}X_{i}\sim\text{Binomial}(n,p)$ is sufficient for $p$.
+
+(1) Use integration by parts or differentiation both sides with respect to $p$ to prove $P\{\text{Binomial}(n,p)\geq k\}=P\{\text{Beta}(k,n-k+1)\leq p\}$.
+
+(2) Immediate Property from definition:
+\[
+P\{\text{Beta}(k,n-k+1)\leq p\}=P\{\text{Beta}(n-k+1,k)\geq 1-p\},\quad F_{\alpha}(m,n)=\frac{1}{F_{1-\alpha}(n,m)}.
+\]
+
+(3) Prove the $1-\alpha$ CI for $p$ is
+\[
+\left[\frac{T}{T+(n-T+1)F_{1-\frac{\alpha}{2}}(2n-2T+2,2T)},\frac{(T+1)F_{1-\frac{\alpha}{2}}(2T+2,2n-2T)}{(n-T)+(T+1)F_{1-\frac{\alpha}{2}}(2T+2,2n-2T)}\right].
+\]
+Hint. Use property of $F$ distribution. cf. Homework 1.5, page 27.
+
+{Solution:}
+(1) Same as Problem 1.6.
+
+(2) $P\{\text{Beta}(k,n-k+1)\leq p\}=P\{\text{Beta}(n-k+1,k)\geq 1-p\}$, and $F_{\alpha}(m,n)=\frac{1}{F_{1-\alpha}(n,m)}$.
+
+By changing variables,
+\begin{align*}
+    P\{\text{Beta}(k,n-k+1)\leq p\}
+    &=\int_{0}^{p}\frac{1}{B(k,n-k+1)}x^{k-1}(1-x)^{n-k}dx\\
+    &=\int_{1-p}^{1}\frac{1}{B(n-k+1,k)}(1-x)^{k-1}x^{n-k}dx\\
+    &=P\{\text{Beta}(n-k+1,k)\geq 1-p\}.
+\end{align*}
+
+Let $F\sim F(m,n)$, by definition,
+\[
+\alpha=P\left\{F<F_{\alpha}(m,n)\right\}=P\left\{\frac{1}{F}>\frac{1}{F_{\alpha}(m,n)}\right\}.
+\]
+Note that $\frac{1}{F}\sim F(n,m)$, thus
+\[
+\alpha=P\left\{\frac{1}{F}>F_{1-\alpha}(n,m)\right\}.
+\]
+Thus
+\[
+F_{\alpha}(m,n)=\frac{1}{F_{1-\alpha}(n,m)}.
+\]
+
+(3) The CDF of $T$ is
+\[
+G(t,p)=P_{p}(T\leq t)=\sum_{i=1}^{[t]}C_{n}^{i}p^{i}(1-p)^{n-i}=\frac{\Gamma(n+1)}{\Gamma(k+1)\Gamma(n-k)}\int_{p}^{1}u^{k}(1-u)^{n-i}du
+\]
+where $[t]=k$. $G(t,p)$ is continuous and strictly decreasing for $p$. Let $T=k$,
+\[
+\sum_{i=0}^{k-1}C_{n}^{i}p^{i}(1-p)^{n-i}=1-\frac{\alpha}{2}
+\]
+that is
+\[
+\frac{\Gamma(n+1)}{\Gamma(k-1)\Gamma(n-k+1)}\int_{0}^{p}u^{k-1}(1-u)^{n-k}du=\frac{\alpha}{2}.
+\]
+Note that if $B\sim\text{Beta}(m,n)$, then $F=\frac{B}{1-B}\frac{n}{m}\sim F(2m,2n)$. Here $F=\frac{p}{1-p}\frac{n-k+1}{k}\sim F(2k,2(n-k+1))$. Let
+\[
+\frac{p}{1-p}\frac{n-k+1}{k}=F_{\alpha/2}(2k,2(n-k+1)).
+\]
+We use $T$ to denote $k$, thus
+\[
+p_{l}=\frac{kF_{\alpha/2}}{kF_{\alpha/2}+(n-k+1)}=\frac{T}{T+(n-k+1)F_{1-\alpha/2}(2(n-k+1),2k)}.
+\]
+For $p_{u}$, let
+\[
+\sum_{i=0}^{k}C^{i}_{n}p^{i}(1-p)^{n-i}=\frac{\alpha}{2}.
+\]
+Note that
+\[
+\frac{p}{1-p}\frac{n-k}{k+1}\sim F(2(k+1),2(n-k)),
+\]
+then $\frac{p}{1-p}\frac{n-k}{k+1}=F_{1-\alpha/2}(2(k+1),2(n-k))$. We use $T$ to denote $k$, thus
+\[
+p_{u}=\frac{(T+1)F_{1-\alpha/2}(2(k+1),2(n-k))}{(n-k)+(k+1)F_{1-\alpha/2}(2(k+1),2(n-k))}.
+\]
+
+\section{Testing Statistical Hypothesis}
+\subsection*{Problem 4.1}
+
+\textbf{Normal population}: \( N(\mu, \sigma^2) \).Testing for:
+
+(1) \( H_0 : \mu = \mu_0 \) vs \( H_1 : \mu \neq \mu_0 \).
+
+(2) \( H_0 : \sigma = \sigma_0 \) vs \( H_1 : \sigma \neq \sigma_0 \).
+
+\subsection*{Problem 4.2}
+
+Two independent samples from normal populations \( N(\mu_X, \sigma_X^2) \) and \( N(\mu_Y, \sigma_Y^2) \), respectively.
+
+(1) Testing for \( H_0 : \sigma_X^2 = \sigma_Y^2 \) vs \( H_1 : \sigma_X^2 \neq \sigma_Y^2 \);
+
+(2) If \( \sigma_X = \sigma_Y = \sigma \), testing for \( H_0 : \mu_X = \mu_Y \) vs \( H_1 : \mu_X \neq \mu_Y \);
+
+(3) If \( \sigma_X = \sigma_Y = \sigma \), testing for \( H_0 : \sigma = \sigma_0 \) vs \( H_1 : \sigma \neq \sigma_0 \).
+
+\subsection*{Problem 4.7}
+For the simple null hypothesis $H_0:\theta=\theta_0$, verify $p(X)\sim U(0,1)$ under $H_0$, where $p(x) = \inf\{\alpha\in(0,1)|\varphi_{\alpha}(x)=1\},E_{\theta_0}[\varphi_{\alpha}(X)]=\alpha$, \(\varphi_\alpha\) is a non-randomized test function (i.e., \(\varphi_\alpha(x) \in \{0,1\}\) for all \(x\)),\(\{x : \varphi_{\alpha_1}(x) = 1\} \subseteq \{x : \varphi_{\alpha_2}(x) = 1\}\) when \(\alpha_1 < \alpha_2\).
+
+{Solution:}
+$\alpha=E_{\theta_0}[\varphi_{\alpha}(X)]=P_{\theta_0}(\varphi_{\alpha}(X)=1)$
+
+$p(x)< \alpha \Rightarrow \varphi_{\alpha}(x)=1 \Rightarrow p(x)\leq \alpha$
+
+$P_{\theta_0}(p(X)< \alpha)\leq P_{\theta_0}(\varphi_{\alpha}(X)=1)=\alpha \leq P_{\theta_0}(p(X)\leq \alpha),\forall \alpha\in(0,1)$
+
+$P(Y<\alpha)\leq \alpha \leq P(Y\leq \alpha)$
+
+If $P(Y=\beta)=r>0,$
+
+$ \beta+\varepsilon\geq P(Y<\beta+\varepsilon)\geq P(Y\leq \beta-\delta)+P(Y=\beta)\geq \beta-\delta+r$
+
+Let $\varepsilon,\delta>0,\varepsilon+\delta<r$. The contradiction was derived.
+
+\subsection*{Problem 4.12}  
+
+Let \( G_1, \cdots, G_M \) be the genotypes of an individual at loci \( 1 \sim M \), respectively, and \( D \) be his/her affection status, i.e. \( D = 1 \) means affected and \( D = 0 \) means unaffected.  
+
+The logistic regression model is  
+
+\[\mathrm{logit} P(D = 1|G_1, \cdots, G_M) = \beta_0 + G_1\beta_1 + \cdots + G_M\beta_M.\]  
+
+Now we collect the genotypes and phenotypes for \( n \) individuals \(\{(D_i, G_{i1}, \cdots, G_{iM}) | i = 1, 2, \cdots, n\}\). Derive the Score test statistic about the null hypothesis of no association between \( M \)-locus genotype and phenotype \( H_0: \beta_1 = \cdots = \beta_M = 0\).
+
+\section*{25春, 25秋(yy)}
+
+25秋考试范围:
+
+1.统计量:\textbf{充分统计量-因子分解定理}, 极小充分统计量, \textbf{(关于分布族的)完备统计量}, Basu定理, \textbf{指数型分布族}
+
+2.点估计-无偏性准则: 均方误差(MSE), \textbf{一致最小方差无偏估计(UMVUE)}, Fisher信息矩阵, \textbf{无偏估计的Cramer-Rao下界}
+
+待估参数$g(\theta)$的\textbf{UMVUE的3种求解方法}:
+
+(a)求出$\theta$的一个完备充分统计量$T$之后,待定可测函数$h$使得$\mathbb{E}_{\theta}[h(T(X))]=g(\theta)$
+
+(b)求出$\theta$的一个完备充分统计量$T$与$g(\theta)$的一个无偏估计$\hat{g}$之后,计算条件期望$\mathbb{E}[\hat{g}(X)\mid T(X)]$
+
+(c)求出$\theta$的一个充分统计量$T$之后,待定可测函数$h$使得$\mathbb{E}_{\theta}[h(T(X))f(T(X))]=0,\forall$可测函数$f$ s.t. $\mathbb{E}_{\theta}[f(T(X))]=0,\mathbb{E}_{\theta}[(f(T(X)))^2]<+\infty$.
+如果这样的$h$不存在,则UMVUE不存在(Based on Theorem 3.2 and Theorem 2.5 (ii) in \textit{Mathematical Statistics} by Jun Shao)
+
+3.点估计-估计方法:\textbf{矩估计,极大似然估计(MLE)}
+
+4.假设检验-参数检验问题-最优势准则:
+
+(1)假设检验问题的相关基本定义:
+
+(随机化)检验函数(简称“检验” in Jun Shao's book)的势函数(power function)、显著性水平(level of significance)、检验水准(size)
+
+非随机化检验的拒绝域、检验统计量
+
+一族以size $\alpha\in(0,1)$为参数的非随机化检验函数$\varphi_{\alpha}$相对于给定的$x\in \mathbb{R}^{n}$ (这里的$n$对应到样本$X$是$n$维随机向量) 的$p$-值$p(x):=\inf\{\alpha\in (0,1)\mid \varphi_{\alpha}(x)=1\}$
+
+(2)\textbf{一致最优势检验(UMPT)}:简单假设检验问题的UMPT,单调似然比分布族的单边检验问题的UMPT,单参数指数型分布族的一种双边检验问题的UMPT
+
+(3)一致最优势无偏检验(UMPUT):无偏检验、边界相似检验的定义,多参数指数型分布族中的结论,正态分布族中的结论
+
+5.假设检验-参数检验问题-检验方法:
+
+(1) \textbf{似然比检验(LRT)}
+
+(2) (在零假设对应的参数空间维数小于整体参数空间维数时)\textbf{似然比统计量的渐近分布}, Wald检验, Rao得分检验
+
+6.假设检验-非参数检验问题-检验方法:
+
+(1)单样本中位数检验问题: Wilcoxon符号秩检验, 两样本中位数检验问题: Mann-Whitney检验
+
+(2)拟合优度检验问题:
+
+(一维连续型分布) Kolmogorov-Smirnov检验, Cramér-von Mises检验, Anderson–Darling检验
+
+(离散型分布) Pearson$\,\chi^2$检验,列联表独立性检验
+
+7.区域估计:
+
+最精确准则:一致最精确置信域(UMA)
+
+估计方法:\textbf{反转假设检验问题的拒绝域,构造枢轴量}
+
+---
+
+考试范围之外但上课讲授的内容:
+
+Wald统计决策理论的基本概念
+
+Bayes估计与Minimax估计的基本概念
+
+大样本理论中的一些结论(相合性,强相和性,渐近分布,即概率极限理论中的依概率,几乎必然,依分布收敛)
+
+线性模型中的最小二乘估计
+
+用U统计量构造无偏估计
+
+参考教材:
+
+[1] Mathematical Statistics by Jun Shao
+
+其他可以参考的统计学书籍:
+
+[2] Theory of Point Estimation by Erich Lehmann
+
+[3] Testing Statistical Hypotheses by Erich Lehmann
+
+[4] Mathematical Statistics: Basic Ideas and Selected Topics (Two Volumes) by Peter J. Bickel
+
+[5]高等统计学.薛留根
+
+[6]数理统计引论.陈希孺
+
+25秋期末的最后一题:设参数$r\in(0,+\infty)$, $\mathbb{R}^2$上相对于Lebesgue测度的密度函数族为
+$f_r(x,y)=\frac{1}{\pi r^2}\mathbb{1}_{\{x^2+y^2 \leqslant r^2\}}$,
+取$n$个相互独立的样本$\{(X_i,Y_i)\}_{i=1}^n\stackrel{\rm i.i.d}{\sim}f_r(x,y)\,{\rm d}x{\rm d}y$.
+
+(1)求参数$r\in(0,+\infty)$的一个完备充分统计量.
+    
+答案: $\max\limits_{1 \leqslant i \leqslant n}(X_i^2+Y_i^2)$
+    
+(2) 求参数$r$的一个最小方差无偏估计.
+    
+答案: $\frac{2n+1}{2n}\sqrt{\max\limits_{1 \leqslant i \leqslant n}(X_i^2+Y_i^2)}$
+    
+(3) 求参数$r$的一个置信水平为$1-\alpha$的置信区间.
+    
+答案: $\left[\frac{\sqrt{\max\limits_{1 \leqslant i \leqslant n}(X_i^2+Y_i^2)}}{(1-\frac{\alpha}{2})^\frac{1}{2n}},\frac{\sqrt{\max\limits_{1 \leqslant i \leqslant n}(X_i^2+Y_i^2)}}{(\frac{\alpha}{2})^\frac{1}{2n}}\right]$
+
+\subsection*{Homework 1}
+
+Due: March 16, 2025
+
+\begin{enumerate}
+    \item Let $\begin{pmatrix}X \\ Y\end{pmatrix} \sim \mathcal{N}_{k+\ell}\left(\begin{pmatrix}\mu_X \\ \mu_Y\end{pmatrix},
+    \begin{pmatrix}
+        \Sigma_{XX} & \Sigma_{XY} \\
+        \Sigma_{YX} & \Sigma_{YY}
+    \end{pmatrix}\right)$,
+    
+    
+     where \(X\sim\mathcal{N}_{k}\left(\mu_{X},\Sigma_{XX}\right)\). 
+    \begin{enumerate}
+        \item Find the joint distribution of \(X\) and \(Y-BX\), where \(B\) is a constant \(\ell\times k\) matrix.
+        \item Derive the conditional distribution of \(Y\) given \(X=x\).
+    \end{enumerate}
+
+    \item Show that \(\{P_{\theta}:\theta\in\Theta\}\) is an exponential family and find its canonical form and natural parameter space, when
+    \begin{enumerate}
+        \item \(P_{\theta}\) is the Poisson distribution \(P(\theta),\theta\in\Theta=(0,\infty)\);
+        \item \(P_{\theta}\) is the negative binomial distribution \(NB(\theta,r)\) with a fixed \(r\), \(\theta\in\Theta=(0,1)\);
+        \item \(P_{\theta}\) is the exponential distribution \(E(a,\theta)\) with a fixed \(a,\theta\in\Theta=(0,\infty)\);
+        \item \(P_{\theta}\) is the gamma distribution \(\Gamma(\alpha,\gamma),\theta=(\alpha,\gamma)\in\Theta=(0,\infty)\times(0,\infty)\);
+        \item \(P_{\theta}\) is the beta distribution \(B(\alpha,\beta),\theta=(\alpha,\beta)\in\Theta=(0,1)\times(0,1)\);
+        \item \(P_{\theta}\) is the Weibull distribution \(W(\alpha,\theta)\) with a fixed \(\alpha>0,\theta\in\Theta=(0,\infty)\).
+    \end{enumerate}
+
+    \item Let \(X_{1},\ldots,X_{n}\) be i.i.d. random variables from \(P_{\theta}\in\{P_{\theta}:\theta\in\Theta\}\). In the following cases, find a sufficient statistic for \(\theta\in\Theta\) that has the same dimension as \(\theta\).
+    \begin{enumerate}
+        \item \(P_{\theta}\) is the Poisson distribution \(P(\theta),\theta\in(0,\infty)\).
+        \item \(P_{\theta}\) is the negative binomial distribution \(NB(\theta,r)\) with a known \(r,\theta\in(0,1)\).
+        \item \(P_{\theta}\) is the exponential distribution \(E(0,\theta),\theta\in(0,\infty)\).
+        \item \(P_{\theta}\) is the gamma distribution \(\Gamma(\alpha,\gamma),\theta=(\alpha,\gamma)\in(0,\infty)\times(0,\infty)\).
+        \item \(P_{\theta}\) is the beta distribution \(B(\alpha,\beta),\theta=(\alpha,\beta)\in(0,1)\times(0,1)\).
+        \item \(P_{\theta}\) is the log-normal distribution \(LN\left(\mu,\sigma^{2}\right),\theta=\left(\mu,\sigma^{2}\right)\in\mathcal{R}\times(0,\infty)\).
+        \item \(P_{\theta}\) is the Weibull distribution \(W(\alpha,\theta)\) with a known \(\alpha>0,\theta\in(0,\infty)\).
+    \end{enumerate}
+
+    \item Let \(X_{1},\ldots,X_{n}\) be i.i.d. random variables having the exponential distribution \(E(a,\theta),a\in\mathcal{R}\), and \(\theta>0\). Show that the smallest order statistic, \(X_{(1)}\), has the exponential distribution \(E(a,\theta/n)\) and that \(2\sum_{i=1}^{n}\left(X_{i}-X_{(1)}\right)/\theta\) has the chi-square distribution \(\chi_{2n-2}^{2}\).
+
+    \item Let \(X_{1},\ldots,X_{n}(n\geq 2)\) be i.i.d. random variables having the normal distribution \(N(\theta,2)\) when \(\theta=0\) and the normal distribution \(N(\theta,1)\) when \(\theta\in\mathcal{R}\) and \(\theta\neq 0\). Show that the sample mean \(\bar{X}\) is a complete statistic for \(\theta\) but it is not a sufficient statistic for \(\theta\).
+
+    \item Let \(T\) and \(S\) be two statistics such that \(S=\psi(T)\) for a measurable \(\psi\). Show that
+    \begin{enumerate}
+        \item if \(T\) is complete, then \(S\) is complete;
+        \item if \(T\) is complete and sufficient and \(\psi\) is one-to-one, then \(S\) is complete and sufficient;
+        \item the results in (a) and (b) still hold if the completeness is replaced by the bounded completeness.
+    \end{enumerate}
+
+    \item A discrete random variable \(X\) with 
+    \[
+    P(X=x)=\gamma(x)\theta^{x}/c(\theta),\quad x=0,1,2,\ldots
+    \]
+    where \(\gamma(x)\geq 0,\theta>0\), and \(c(\theta)=\sum_{x=0}^{\infty}\gamma(x)\theta^{x}\), is called a random variable with a power series distribution.
+    \begin{enumerate}
+        \item Show that \(\{\gamma(x)\theta^{x}/c(\theta):\theta>0\}\) is an exponential family.
+        \item Suppose that \(X_{1},\ldots,X_{n}\) are i.i.d. with a power series distribution \(\gamma(x)\theta^{x}/c(\theta)\). Show that \(\sum_{i=1}^{n}X_{i}\) has the power series distribution \(\gamma_{n}(x)\theta^{x}/[c(\theta)]^{n}\), where \(\gamma_{n}(x)\) is the coefficient of \(\theta^{x}\) in the power series expansion of \([c(\theta)]^{n}\).
+    \end{enumerate}
+
+    \item Let \(Y_{1},\ldots,Y_{n}\) be i.i.d. random variables having the Lebesgue p.d.f. \(\lambda x^{\lambda-1}I_{(0,1)}(x)\) with an unknown \(\lambda>0\) and let \(Z_{1},\ldots,Z_{n}\) be i.i.d. discrete random variables having the power series distribution given in Question 7 with an unknown \(\theta>0\). Assume that \(Y_{i}\)'s and \(Z_{j}\)'s are independent. Let \(X_{i}=Y_{i}+Z_{i},i=1,\ldots,n\). Find a complete and sufficient statistic for the unknown parameter \((\theta,\lambda)\) based on the sample \(X=(X_{1},\ldots,X_{n})\).
+
+    \item Let \(X_{1},\ldots,X_{n}\) be i.i.d. random variables having the exponential distribution \(E(a,\theta)\).
+    \begin{enumerate}
+        \item Show that \(\sum_{i=1}^{n}\left(X_{i}-X_{(1)}\right)\) and \(X_{(1)}\) are independent for any \((a,\theta)\).
+        \item Show that \(Z_{i}=\left(X_{(n)}-X_{(i)}\right)/\left(X_{(n)}-X_{(n-1)}\right),i=1,\ldots,n-2\), are independent of \(\left(X_{(1)},\sum_{i=1}^{n}\left(X_{i}-X_{(1)}\right)\right)\).
+    \end{enumerate}
+\end{enumerate}
+
+\subsection*{Homework 2}
+
+Due: April 13, 2025
+
+\begin{enumerate}
+    \item Let \(X_1, \ldots, X_n\) be i.i.d. with Lebesgue probability density function \(f_\theta(x) = \theta x^{-2} I_{(\theta, \infty)}(x)\), where \(\theta > 0\) is an unknown parameter. Suppose \(\eta = P(X_1 > t)\), where \(t > 0\) is a constant. Find the UMVUE of \(\eta\).
+
+    \item Let \(X_1, \ldots, X_n\) be i.i.d. from \(N(\mu, \sigma^2)\), where \(\mu \in \mathbb{R}\) is unknown and \(\sigma^2 > 0\) is known.
+    \begin{enumerate}
+        \item Find the UMVUE of \(\mu^3\) and \(\mu^4\).
+        \item For a fixed \(t \in \mathbb{R}\), find the UMVUE of:
+        \[
+        P(X_1 \leq t) \quad \text{and} \quad \frac{d}{dt} P(X_1 \leq t).
+        \]
+    \end{enumerate}
+
+    \item Let \(X_1, \ldots, X_n\) be i.i.d. uniformly distributed on the interval \((\theta_1 - \theta_2, \theta_1 + \theta_2)\), where \(\theta_1 \in \mathbb{R}, \theta_2 > 0, \text{ and } n > 2\). Find the UMVUE of \(\theta_j (j = 1, 2)\) and \(\theta_1 / \theta_2\).
+
+    \item Let \((X_1, \ldots, X_n)\) be i.i.d. with Lebesgue density
+    \[
+    f_{\alpha, \beta}(x) = \alpha \beta^{-\alpha} x^{\alpha-1} I_{(0, \beta)}(x), \quad \alpha, \beta > 0.
+    \]
+    Find the method of moments estimator for the parameter \(\theta = (\alpha, \beta)\).
+
+    \item Let \(X_1, \ldots, X_n\) be i.i.d. from \(N(\mu, 1)\) truncated at two known points \(\alpha < \beta\), i.e., the Lebesgue density of \(X_i\) is (\(\Phi\) is the c.d.f. of the standard normal distribution)
+    \[
+    \frac{1}{\sqrt{2\pi [\Phi(\beta - \mu) - \Phi(\alpha - \mu)]}} e^{-(x - \mu)^2/2} I_{(\alpha, \beta)}(x).
+    \]
+    \begin{enumerate}
+        \item Show that the sample mean \(\bar{X}\) is an asymptotically efficient estimator for \(\theta = E[X_1]\).
+        \item Show that \(\bar{X}\) is the unique maximum likelihood estimator (MLE) of \(\theta\).
+    \end{enumerate}
+
+    \item Suppose \(n\) observations are obtained from the \(N(\mu, 1)\) distribution (\(\mu\) unknown), but only whether each observation is less than $0$ is recorded. Find the MLE of \(\mu\).
+
+    \item Let \(X_1, \ldots, X_n\) be i.i.d. with Lebesgue PDF \(f(x; \mu, \sigma) = \frac{1}{\sigma} f\left(\frac{x - \mu}{\sigma}\right)\), where \(f(x) > 0\) and \(f'(x)\) exists for all \(x \in \mathbb{R}, \mu \in \mathbb{R}, \sigma > 0\) (location-scale family). Denote \(\theta = (\mu, \sigma)^T\). Then the Fisher information matrix contained in \(X_1, \ldots, X_n\) about \(\theta\) is
+    \[
+    I(\theta) = \frac{n}{\sigma^2} \begin{pmatrix}
+    \int \frac{[f'(x)]^2}{f(x)} dx & \int \frac{x f'(x) f''(x)}{f(x)} dx \\
+    \int \frac{x f'(x) f''(x)}{f(x)} dx & \int \frac{[x f'(x)]^2}{f(x)} dx
+    \end{pmatrix}.
+    \]
+
+    \item Let \(X_1, \ldots, X_n\) be i.i.d. from \(N(\mu, \sigma^2)\), where the mean \(\mu \in \mathbb{R}\) is unknown and the variance \(\sigma^2 > 0\) is known.
+    \begin{enumerate}
+        \item Find the UMVUE of \(\vartheta = e^{t\mu}\), where \(t \neq 0\).
+        \item Determine whether the variance of the UMVUE obtained in (a) attains the Cramér-Rao lower bound.
+    \end{enumerate}
+
+    \item Let \(X = (X_1, \ldots, X_n)\) be a simple sample from the Gamma distribution \(\Gamma(r, \lambda)\), where \(r\) is known. Assume the prior distribution of \(\lambda\) is Gamma \(\Gamma(b, a)\). Show that the posterior distribution of \(\lambda\) given \(X\) is still a Gamma distribution.
+
+    \item Draw \(n = 1000\) samples \(x_1, \ldots, x_n\) from the gamma distribution \(\Gamma(3, 1)\). Starting from the initial value \(\alpha = 1\), use the Newton-Raphson iteration method to simulate the solution of Example 8 in Lecture 5 slides.
+\end{enumerate}
+
+\subsection*{Homework 3}
+
+Due: May 6, 2025
+
+\begin{enumerate}
+    \item Let \(X_1, \ldots, X_n\) be independent binomial random variables with success probability \(p = P(X_1 = 1)\). Consider testing
+    \[
+    H_0: p = p_0 \quad \text{vs} \quad H_1: p = p_1,
+    \]
+    where \(0 < p_0 < p_1 < 1\). Find the uniformly most powerful (UMP) test.
+
+    \item Let \(X_1, \ldots, X_n\) be i.i.d. from a Lebesgue density \(f_\theta\), where \(\theta \in \Theta \subset \mathbb{R}\). For testing \(H_0: \theta \leq \theta_0\) vs \(H_1: \theta > \theta_0\) at significance level \(\alpha\), find the UMP test when:
+    \begin{enumerate}
+        \item \(f_\theta(x) = \theta^{-1} e^{-x/\theta} I_{(0, \infty)}(x), \theta > 0\)
+        \item \(f_\theta(x) = \theta^{-1} x^{\theta - 1} I_{(0, 1)}(x), \theta > 0\)
+        \item \(f_\theta(x)\) is the density of \(N(1, \theta)\);
+        \item \(f_\theta(x) = \theta^{-c} c x^{c-1} e^{-(x/\theta)^c} I_{(0, \infty)}(x), \theta > 0\), where \(c > 0\) is a known constant.
+    \end{enumerate}
+
+    \item Suppose \(X_i = \beta_0 + \beta_1 t_i + \epsilon_i\), where \(t_i\) are fixed constants not all equal, \(\epsilon_i\) are i.i.d. normal with mean 0 and variance \(\sigma^2\), and \(\beta_0, \beta_1, \sigma^2\) are unknown. Derive the uniformly most powerful unbiased (UMPU) test at level \(\alpha\) for:
+    \begin{enumerate}
+        \item \(H_0: \beta_0 \leq \theta_0\) vs \(H_1: \beta_0 > \theta_0\);
+        \item \(H_0: \beta_0 = \theta_0\) vs \(H_1: \beta_0 \neq \theta_0\);
+        \item \(H_0: \beta_1 \leq \theta_0\) vs \(H_1: \beta_1 > \theta_0\);
+        \item \(H_0: \beta_1 = \theta_0\) vs \(H_1: \beta_1 \neq \theta_0\).
+    \end{enumerate}
+
+    \item Let \((X_1, \ldots, X_n)\) be a random sample from \(N(\mu, \sigma^2)\). Solve the following:
+    \begin{enumerate}
+        \item Assume \(\sigma^2 = \gamma \mu^2\) with \(\gamma > 0\), and \(\mu \in \mathbb{R}\) unknown. Derive the likelihood ratio test for \(H_0: \gamma = \gamma_0\) vs \(H_1: \gamma \neq \gamma_0\).
+        \item By inverting the acceptance region of the LR test derived in (a), obtain a confidence interval for \(\gamma\) with confidence coefficient \(1 - \alpha\).
+    \end{enumerate}
+
+    \item For the following cases, construct a confidence interval with confidence coefficient \(1 - \alpha_0\) using the UMP test for \(H_0: \theta = \theta_0\) vs \(H_1: \theta \neq \theta_0\).
+    \begin{enumerate}
+        \item Let \(X_1, \ldots, X_n \overset{i.i.d.}{\sim} Gamma(\nu, \theta)\), each with density \(x \to \frac{1}{\Gamma(\nu)} \theta x^{\nu - 1} e^{-x/\theta} I_{[x > 0]}\), where \(\theta > 0\) is unknown and \(\nu > 0\) is known.
+        \item Let \(X_i \sim N(t_i, \theta, \sigma^2)\), \(1 \leq i \leq n\), be independent, where \(t_i\) and \(\sigma > 0\) are known.
+    \end{enumerate}
+
+    \item Let \(X = (X_1, \ldots, X_n) (n > 1)\) be a random sample from the exponential distribution on \((\theta, \infty)\) with scale parameter \(\theta\), where \(\theta > 0\) is unknown; i.e., \(f_\theta(x) = \theta^{-1} e^{-(x-\theta)/\theta} I_{[x > \theta]}\).
+    \begin{enumerate}
+        \item Show that \(\overline{X} / \theta\) and \(X_{(1)} / \theta\) are both pivotal quantities, where \(\overline{X}\) is the sample mean and \(X_{(1)}\) is the smallest order statistic.
+        \item Using the two pivotal quantities in (a), derive confidence intervals for \(\theta\) with confidence coefficient \(1 - \alpha\).
+        \item Discuss which of the confidence intervals in (b) is superior in terms of length.
+    \end{enumerate}
+\end{enumerate}

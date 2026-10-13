@@ -1,0 +1,334 @@
+\setcounter{section}{2}
+\section{自由模}
+
+\begin{enumerate}    
+    \item[3.0]设$R$是交换环，$M$是自由$R$-模，
+    $\operatorname{rk}(M)=n$，$\{e_1,\cdots,e_n\}$是其一组基.
+    设$\{u_1,\cdots,u_n\}$是$M$的另一组基，则存在唯一的$c_{ij}\in R$
+    使得$u_i=\sum\limits_{j=1}^nc_{ij}e_j,1\leq i\leq n$.
+    证明：$C=(c_{ij})\in\mathrm{GL}_n(R)$.
+
+    \item[\textbf{证明:}]
+
+    \item[3.1]设$R$是PID，$n,m$是正整数，$\alpha\colon R^m\rightarrow R^n$是非零模同态.
+    证明：存在$R^m$的一组基$\{u_1,\cdots,u_m\}$，$R^n$的一组基$\{v_1,\cdots,v_n\}$，
+    正整数$r$，$1\leq r\leq\min\{m,n\}$，使得
+    $$\alpha(u_i)=\begin{cases}d_iv_i&\text{若 }1\leq i\leq r\\
+    0&\text{若 }r<i\leq m,\end{cases}$$
+    这里$d_i\in R\setminus\{0\}$，$1\leq i\leq r$且$d_1|d_2|\cdots|d_r$.
+
+    \item[\textbf{证明:}]
+
+    \item[3.2]设$F$是一个域，$n\geq2$是一个正整数，
+    $SL_n(F)=\{A\in GL_n(F)\mid\det A=1\}$是$F$上的特殊线性群.
+    对$1\leq i\neq j\leq n$，记$E_{ij}\in M_n(F)$
+    其第$i$行第$j$列位置上的元素是$1$，其他位置上的元素是$0$.
+    记$T_{ij}(a)=I+aE_{ij}\in SL_n(F),1\leq i\neq j\leq n,a\in F$.
+    设$E_n(F)$是$GL_n(F)$中由子集
+    $\{T_{ij}(a)\mid 1\leq i\neq j\leq n,a\in F\}$生成的子群.
+    \item[(a)]证明：对$A\in GL_n(F)$，有分解$A=BD$，
+        其中$B\in E_n(F),D=\operatorname{diag}(1,\cdots,1,d)$是对角阵，$d\in F^*$.
+    \item[\textbf{证明:}]
+
+    \item[(b)]证明：$SL_n(F)=E_n(F)$.
+    \item[\textbf{证明:}]
+    $T_{ij}(a)\in SL_n(F)$表明$E_n(F)\subset SL_n(F)$。
+    对$A\in SL_n(F)$，由(a)有$A=BD$，$B\in E_n(F)$，推出$D\in SL_n(F)$，
+    则$D=I$，$A=B\in E_n(F)$。
+
+    \item[3.3]
+    \begin{itemize}
+        \item[(i)]设$\mathbb{Z}^n$是秩为$n$的自由$\mathbb{Z}$-模，
+        $\{u_1,\cdots,u_n\}$是其一组基.
+        设$K$是其一个子模，由$n$个元素$f_i=\sum_{j=1}^na_{ij}u_j,1\leq i\leq n$生成，
+        其中$a_{ij}\in\mathbb{Z}$. 记$A=(a_{ij})\in M_n(\Z)$.
+        如果$d=\det(A)\neq0$，证明$|\mathbb{Z}^n/K|=|d|$.
+        \item[\textbf{证明:}]
+        先证明$\{f_i\}$是$K$的一组基.
+
+        如果存在$x_i\in \mathbb{Z}$,使得$\sum_{i=1}^n x_i f_i = 0$,
+        则$(x_i)^T A (u_i) = 0$,由$u_i$为基得到$A(x_i) = 0$,左右两边同时乘$A^*$得到$\mathrm{det}(A) x_i = 0$,因而$x_i = 0$,
+        从而得到$\{f_i\}$是一组基.
+         
+        设$A$相抵于$D=\operatorname{diag}(d_1,\cdots,d_n)$，
+        写为$D=PAQ$，$(f_1,\cdots,f_n)^T=A(u_1,\cdots,u_n)^T$
+        即$P(f_1,\cdots,f_n)^T=DQ^{-1}(u_1,\cdots,u_n)^T$。
+        令$Q^{-1}(u_1,\cdots,u_n)^T=(v_1,\cdots,v_n)^T$，
+        得$P(f_1,\cdots,f_n)^T=(d_1v_1,\cdots,d_nv_n)^T$，由此
+        $\Z^n/K=(\Z v_1\oplus\cdots\oplus\Z v_n)
+        /(\Z d_1v_1\oplus\cdots\oplus\Z d_nv_n)
+        \simeq\Z/(d_1)\oplus\cdots\oplus\Z/(d_n)$，
+        有$|\Z^n/K|=|d_1|\cdots|d_n|=|\det D|=|\det A|$.
+
+        \item[(ii)]设$R=\mathbb{Z}[i]=\{a+bi\mid a,b\in\mathbb{Z}\}$，
+        $i=\sqrt{-1}$，是Gauss整数环.设$x=a+bi\in R$且$x\neq0$. 
+        $I=(x)$是由$x$生成的主理想. 证明：$|R/I|=a^2+b^2$.（Hint: try to use (i)）
+        \item[\textbf{证明:}]
+        $I=\Z[i]x=\Z x\oplus\Z ix=(a+bi)\oplus(-b+ai)$，
+        由(i)，$|R/I|=\begin{vmatrix}a&b\\-b&a\end{vmatrix}=a^2+b^2$.
+    \end{itemize}
+
+    \item[3.4]
+    设$R=\mathbb{Z}[i]=\{a+bi\mid a,b\in\mathbb{Z}\}$，$i=\sqrt{-1}$，
+    是Gauss整数环.确定$M=R^3/K$的$R$-模结构（即分解为循环子模的不变因子），
+    其中$K$是由$f_1=(1,3,6),f_2=(2+3i,-3i,12-18i),f_3=(2-3i,6+9i,-18i)$生成的子模.
+    证明$M$是有限集，并求$M$的阶.
+
+    \item[\textbf{证明:}]
+    \begin{align*}
+        \begin{pmatrix}1&3&6\\2+3i&-3i&12-18i\\2-3i&6+9i&-18i\end{pmatrix}
+        &\sim\begin{pmatrix}1& & \\ &-6-12i&-36i\\ &18i&-12\end{pmatrix}
+        \xrightarrow[-36i(2+i)=36-72i]{(-6-12i)(2+i)=-30i}\\
+        \sim\begin{pmatrix}1& & \\ &-6-12i&-36i\\ &-12i&24-72i\end{pmatrix}
+        &\sim\begin{pmatrix}1& & \\ &-6&-24+36i\\ &-12i&24-72i\end{pmatrix}\\
+        \sim\begin{pmatrix}1& & \\ &-6&-24+36i\\ & &96-24i\end{pmatrix}
+        &\sim\begin{pmatrix}1& & \\ &-6& \\ & &96-24i\end{pmatrix},
+    \end{align*}
+    因此$M\simeq\Z[i]/(6)\oplus\Z[i]/(96-24i)$，$|M|=6^2(96^2+24^2)=352512$.
+
+    \item[3.5.]
+        设$R=\mathbb{Z}[x]$是整系数一元多项式环. $M=(2,x)$是由$2$和$x$生成的理想.
+    \item[(a)] 证明：$R$不是PID.
+    \item[\textbf{证明:}]
+        $M=(2,x)$不是主理想, 否则, 设$M=(2,x)=(d)$.\par
+        因为$2\in (d)$, 存在$p(x)\in \mathbb{Z}[x]$, 使得$2=p(x)d$, 
+        所以$d=\pm 1, \pm 2$.\par
+        若$d=\pm 1$, 则$1\in M=(2,x)$, 
+        即存在$p(x), q(x)\in \mathbb{Z}[x]$使得$1=2p(x)+xq(x)$, 
+        比较常数项得$1=2a_0$，矛盾.\par
+        若$d=\pm 2$, 则$M=(2)=(-2)$. 又$x\in M$, 
+        故存在$p(x)\in \mathbb{Z}[x]$使得$x=2p(x)$, 
+        比较一次项系数得$1=2a_1$，矛盾. 
+            
+    \item[(b)] 作为$R$-模, $M$不能分解为循环子模的直和.
+    \item[\textbf{证明:}]
+        假设$M=\bigoplus\limits_{i\in I} \mathbb{Z}[x]m_i$.\par
+        若$|I|>1$, 则存在$m_{i}, m_{i'}$, $i, i'\in I$, 
+        但$m_{i}, m_{i'}$是$\mathbb{Z}[x]$-线性相关的, 这与直和的定义矛盾.\par
+        若$|I|=1$, 与(a)矛盾.
+            
+    \item[(c)] 将$R$作为$R$-模, $M$作为子模是自由$R$-模吗？说明理由.
+    \item[\textbf{证明:}]
+        假设$M$是自由$R$-模, 设$\{e_i\}_{i\in I}$是其一组基.\par
+        因为$\mathbb{Z}[x]$是交换环, 所以$M$中任意两个元素
+        $\mathbb{Z}[x]$-线性相关.\par
+        因此$|I|=1$, 即$M$由一个元素生成, 
+        也就是$\mathbb{Z}[x]$的主理想, 与(a)矛盾.
+    \end{enumerate}
+    {{comment|这提供了一个当 $R$ 不是PID时, $R$-模不一定能做直和分解的例子.}}
+    
+    \begin{enumerate}
+    \item[3.6.] 设$R$是PID，$M$是有限生成$R$-模. 
+    定义$M$的秩为有限生成自由模$M/T(M)$的秩，记为$\operatorname{rk}(M)$，
+    这里$T(M)$是$M$的挠子模.
+    \item[(a)] 若$M$同构于商模$R^{n}/K$，
+        证明：$\operatorname{rk}(M)=n-\operatorname{rk}(K)$.
+    \item[\textbf{证明:}]
+        此时，存在$R^{n}$的一组基$\{e_{i}\}_{i=1}^{n}$使得
+        $\{d_{i}e_{i}\}_{i=1}^{m}$为$K$的一组基，其中$d_{i} \in R$且$m \leq n$. 
+        那么$M \simeq R^{n-m} \oplus \big(\bigoplus_{i=1}^{m} R/(d_{i})\big)$.
+        那么$\operatorname{rk}(M)=n-m=n-\operatorname{rk}(K)$. \qed
+    \item[(b)] 设$N$是$M$的子模. 
+        证明：$\operatorname{rk}(M)=\operatorname{rk}(N)+\operatorname{rk}(M/N)$.
+    \item[\textbf{证明:}]
+        存在正整数$n$使得$N=R^{n}/K$，则$M=S/K$，
+        其中$K,S$是$R^{n}$的子模，由$R$是PID，$S$是自由模，
+        由(a)，$\operatorname{rk}(S/K)=\operatorname{rk}(S)-\operatorname{rk}(K)$. 
+        那么
+        \begin{align*}
+        \operatorname{rk}(M)-\operatorname{rk}(N) 
+        = \operatorname{rk}(R^{n}/K) - \operatorname{rk}(S/K) 
+        = (n-\operatorname{rk}(K)) - (\operatorname{rk}(S)-\operatorname{rk}(K)) 
+        = n - \operatorname{rk}(S),
+        \end{align*}
+        由第三同构定理有
+        $\operatorname{rk}(M/N) = \operatorname{rk}((R^{n}/K)/(S/K)) 
+        = \operatorname{rk}(R^n/S)= n - \operatorname{rk}(S)$. \qed
+    \item[\textbf{另证:}]
+        令$F=\operatorname{Frac(R)}$为$R$的分式域，
+        则$F$是平坦$R$-模（事实上，平坦模的分式化仍平坦，而$R$是自由模，从而平坦）. 
+        故短正合列$0 \rightarrow N \rightarrow M \rightarrow M/N \rightarrow 0$
+        诱导了短正合列
+        $0 \rightarrow N \otimes_{R} F \rightarrow M \otimes_{R} F 
+        \rightarrow (M/N) \otimes_{R} F \rightarrow 0$. 
+        注意到$R \otimes_{R} F \simeq F$，而对于挠模$R/(d) \otimes_{R} F =0$. 
+        前者显然，后者是因为
+        $\bar{a} \otimes d = \overline{da} \otimes \frac{1}{d} =0$. 
+        故实则$0 \rightarrow F^{\operatorname{rk}(N)} 
+        \rightarrow F^{\operatorname{rk}(M)} 
+        \rightarrow F^{\operatorname{rk}(M/N)} \rightarrow 0$. 
+        由于三者皆为有限维线性空间，所以自然有
+        $\operatorname{rk}(M)=\operatorname{rk}(N)+\operatorname{rk}(M/N)$. \qed
+    \end{enumerate}
+
+\section{PID上的有限生成模}
+\begin{enumerate}
+    \item[4.1] 设$m>1,n>1$是两个正整数，$A=\Z/m\Z\oplus\Z/n\Z$，
+    作为有限生成$\Z$-模，求$A$的不变因子。
+    
+    \item[\textbf{解答:}]
+    设$m=\prod\limits_{i=1}^kp_i^{\alpha_i},n=\prod\limits_{i=1}^kp_i^{\beta_i}$，
+    不变因子是$\prod\limits_{i=1}^kp_i^{\min(\alpha_i,\beta_i)},
+    \prod\limits_{i=1}^kp_i^{\max(\alpha_i,\beta_i)}$.
+    
+    \item[4.2] 设
+    $$A=\begin{pmatrix}
+        1&0&0&0\\0&1&0&0\\-2&-2&0&1\\-2&0&-1&-2
+    \end{pmatrix}\in M_4(\mathbb{Q}).$$
+    求$A$在$M_4(\mathbb{Q})$中的有理标准型$B$；
+    求一矩阵$P\in GL_4(\mathbb{Q})$，使得$PAP^{-1}=B$.
+
+    \item[\textbf{解答:}]
+    \begin{align*}\begin{pmatrix}
+        \lambda-1& & & \\ &\lambda-1& & \\2&2&\lambda&-1\\2& &1&\lambda+2
+    \end{pmatrix}\sim
+    \begin{pmatrix}
+        1& &2&\lambda+2\\\lambda&2&2&-1\\ & &\lambda-1& \\ &\lambda-1& & 
+    \end{pmatrix}\sim
+    \begin{pmatrix}
+        1& & & \\&1&2(1-\lambda)&-(\lambda+1)^2\\ & &\lambda-1& \\ &\frac{\lambda-1}{2}& & 
+    \end{pmatrix}&\\ \sim
+    \begin{pmatrix}
+        1& & & \\&1& & \\ & &\lambda-1& \\ &\frac{\lambda-1}{2}&(\lambda-1)^2&-\frac{(\lambda-1)(\lambda+1)^2}{2} 
+    \end{pmatrix}\sim
+    \begin{pmatrix}
+        1& & & \\&1& & \\ & &\lambda-1& \\ & & &\lambda^3+\lambda^2-\lambda-1
+    \end{pmatrix}&,\end{align*}这样
+    $$B=\begin{pmatrix}
+        1& & & \\ &0&1&0\\ &0&0&1\\ &1&1&-1
+    \end{pmatrix}.$$
+
+    \item[4.3]
+    \begin{itemize}
+    \item[(i)]
+        设$p$是一个素数，$\mathbb{F}_p=\mathbb{Z}/p\mathbb{Z}$是含$p$个元素的有限域.
+        考虑下面两个$p$阶矩阵$A,B\in M_p(\mathbb{F}_p)$：
+        $$A=\begin{pmatrix}0&1&\cdots&0&0\\
+        0&0&1&\cdots&0\\
+        \cdots&\cdots&\cdots&\cdots&\cdots\\
+        0&0&\cdots&0&1\\
+        1&0&\cdots&0&0
+    \end{pmatrix},
+        B=\begin{pmatrix}1&1&\cdots&0&0\\
+        0&1&1&\cdots&0\\
+        \cdots&\cdots&\cdots&\cdots&\cdots\\
+        0&0&\cdots&1&1\\
+        0&0&\cdots&0&1
+    \end{pmatrix}.$$
+    问：$A$与$B$在$M_p(\mathbb{F}_p)$中是否相似？说明理由.
+    \item[\textbf{证明:}]
+    相似，$\lambda I-A,\lambda I-B$都相抵于
+    $\operatorname{diag}(1,\cdots,1,(\lambda-1)^p)$。
+    或者注意到$B$是$A$的Jordan标准型，因为$(I-A)^{p-1}\ne0$而$(I-A)^p=0$.
+
+    \item[(ii)]考虑下面的矩阵$A,B\in M_3(\mathbb{Q})$：
+    $$A=\begin{pmatrix}-8&-10&-1\\7&9&1\\3&2&0\end{pmatrix},
+    B=\begin{pmatrix}-3&2&4\\4&-1&4\\4&-2&5\end{pmatrix}.$$
+    问：$A$与$B$在$M_3(\mathbb{Q})$中是否相似？说明理由.
+    \item[\textbf{证明:}] 不相似，$\det A=-1$，$\det B=-33$.
+    \end{itemize}
+
+    \item[4.4.]设$F$是域，称$A\in M_n(F)$是幂零矩阵，若存在正整数$r$使得$A^r=0$.
+    设$A\in M_n(F)$是幂零矩阵，证明：$A$在$M_n(F)$中相似于下面形式的分块对角矩阵：
+    $$\begin{pmatrix}N_1&0&\cdots&0&0\\
+        0&N_2&0&\cdots&0\\
+        \cdots&\cdots&\cdots&\cdots&\cdots\\
+        0&0&\cdots&N_{s-1}&0\\
+        0&0&\cdots&0&N_s
+    \end{pmatrix},$$
+    其中
+    $$N_i=\begin{pmatrix}0&1&\cdots&0&0\\
+        0&0&1&\cdots&0\\
+        \cdots&\cdots&\cdots&\cdots&\cdots\\
+        0&0&\cdots&0&1\\
+        0&0&\cdots&0&0
+    \end{pmatrix}.$$
+    \item[\textbf{证明:}]
+    $A$的特征值都是$0$，所以$A$在$M_n(\overline{F})$
+    （$\overline{F}$是$F$的代数闭包）中的Jordan标准型形如这样.
+    既然$A$在$M_n(\overline{F})$中相似于它，
+    那么也在$M_n(F)$中相似于它.
+
+    \item[4.5]设$A\in M_3(\mathbb{Q})$，$A^3=I$，
+    求$A$在$M_3(\mathbb{Q})$中的所有可能的有理标准型。
+
+    \item[\textbf{解答:}]
+    $$I,\begin{pmatrix} &1& \\ & &1\\1& & \end{pmatrix}.$$
+
+    \item[4.6.]设$F$是域，$A\in M_n(F)$，
+    $m(\lambda)\in F[\lambda]$是$A$在$F$上的极小多项式.
+    $s=\deg(m(\lambda))$.
+    证明：$A$在$M_n(F)$中相似于对角阵当且仅当$m(\lambda)$在$F$中有$s$个互不相同的根.
+    \item[\textbf{证明:}]
+    $A$在$M_n(F)$中相似于对角阵，
+    当且仅当$A$在$M_n(\overline{F})$中相似于$M_n(F)$中的对角阵，
+    也就是说$A$在$M_n(\overline{F})$中的Jordan标准型是$M_n(F)$中的对角阵，
+    当且仅当$m(\lambda)$的根全都属于$F$且互不相同.
+
+    \item[4.7](i) 设$F$是一个域，$A\in M_n(F)$，$A'$表示矩阵$A$的转置.
+    证明：$A$与$A'$在$M_n(F)$中相似.
+
+    (ii)设$E/F$是域扩张，$A,B\in M_n(F)$，若$A,B$在$M_n(E)$中相似，
+    问$A,B$在$M_n(F)$中是否一定相似？说明理由。
+
+    \item[\textbf{证明:}]
+    (i) $A$在$\overline{F}$上的Jordan标准型可由$r((\lambda I-A)^l)$所确定，
+    其中$\lambda\in\overline{F},l\in\N$，
+    具体来说，以$\lambda$为特征值的$l$阶Jordan块的个数为
+    $$r((\lambda I-A)^{l+1})+r((\lambda I-A)^{l-1})-2r((\lambda I-A)^l).$$
+    由于$r((\lambda I-A)^l)=r((\lambda I-A')^l)$
+    对任意$\lambda\in\overline{F},l\in\N$成立，
+    $A$与$A'$具有同样的Jordan标准型，
+    故$A$与$A'$在$\overline{F}$中相似，那么也在$F$中相似.
+
+    (ii) （来自高等代数学（第三版），姚慕生等，推论7.3.4）
+    $A,B$在$E$上相似，则$\lambda I-A$与$\lambda I-B$在$E$上有相同的不变因子，
+    也就是说它们有相同的Smith标准型。但在求Smith标准型的过程中只涉及多项式的加、减、乘
+    及数的加、减、乘、除运算。而数域在加、减、乘、除运算下封闭，
+    数域上的多项式在加、减、乘及数乘下也封闭。
+    因此由$\lambda$-矩阵的Smith标准型与初等变换的选取无关，
+    Smith标准型中的不变因子多项式$d_i(\lambda)$仍是$F$上的多项式，
+    与初等变换相对应的初等矩阵也是$F$上的$\lambda$-矩阵，
+    这就是说存在$F$上的可逆$\lambda$-矩阵
+    $P(\lambda),Q(\lambda),M(\lambda),N(\lambda)$，使
+    $$P(\lambda)(\lambda I-A)Q(\lambda)=M(\lambda)(\lambda I-B)N(\lambda)
+    =\operatorname{diag}(d_1(\lambda),\cdots,d_n(\lambda)),$$
+    从而$$M(\lambda)^{-1}P(\lambda)(\lambda I-A)Q(\lambda)N(\lambda)^{-1}=\lambda I-B,$$
+    即$\lambda I-A$与$\lambda I-B$在$F$上相抵，得$A$与$B$在$F$上相似。
+    
+    \item[4.8.]
+    设$R$是环，$0\rightarrow A\stackrel{f}{\rightarrow}B
+    \stackrel{g}{\rightarrow}C\rightarrow 0$
+    是一个$R$-模短正合列. 证明下列命题等价：
+    \begin{itemize}
+    \item[(1)] 上面这个短正合列是可裂的；
+    \item[(2)] 存在$R$-模同态$s:C\rightarrow B$使得$g\circ s=1_C$；
+    \item[(3)] 存在$R$-模同态$r:B\rightarrow A$使得$r\circ f=1_A$.
+    \end{itemize}
+        \item[\textbf{证明:}]
+    (1) $\Rightarrow$ (2)
+    \ 设$B=f(A)\oplus D$且$g|_D:D\rightarrow C$为同构，那么令$s=(g|_D)^{-1}$即可.
+
+    (2) $\Rightarrow$ (3)
+    \ 令$r(b)=f^{-1}(b-s\circ g(b))$.
+     
+     由于$g(b-s\circ g(b))=g(b)-g(b)=0$，
+     得到$b-s\circ g(b)\in\operatorname{Ker}g=\operatorname{Im}f$，
+     而且$f$是单射，所以$f^{-1}$是有意义的.
+
+     由$g\circ f=0$，得到$r\circ f= f^{-1}(f-s\circ g\circ f)=1_A$.
+
+    (3) $\Rightarrow$ (1)
+    \ 通过把$b\in B$写成$b=(f\circ r)(b)+b-(f\circ r)(b)$，
+    并且由于$r\circ f=1_A$说明$r$是满射，得到
+    $$B=\operatorname{Im}(f\circ r)+ \operatorname{Im}(1-f\circ r)
+    = \operatorname{Im}f+ \operatorname{Im}(1-f\circ r).$$
+    由$r\circ f=1_A$得
+    $\operatorname{Im}(1-f\circ r)\subset\operatorname{Ker}r$及
+    $\operatorname{Im}f\cap\operatorname{Ker}r=\{0\}$，
+    因此$B=\operatorname{Im}f\oplus\operatorname{Im}(1-f\circ r)$.
+
+    由$\operatorname{Im}f=\operatorname{Ker}g$，
+    又得到$B=\operatorname{Ker}g\oplus\operatorname{Im}(1-f\circ r)$，
+    由此不难说明$g|_{\operatorname{Im}(1-f\circ r)}$是同构. \qed
+\end{enumerate}

@@ -1,0 +1,490 @@
+\newcommand{\sch}[1]{\mathbf{Sch}_{#1}}
+\newcommand{\Sch}{\mathbf{Sch}}
+\newcommand{\grp}{\mathbf{Grp}}
+\newcommand{\ab}{\mathbf{AbGrp}}
+\newcommand{\ring}{\mathbf{Ring}}
+\newcommand{\sets}{\mathbf{Sets}}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\spec}{\operatorname{Spec}}
+\renewcommand{\hom}{\operatorname{Hom}}
+\newcommand{\oalg}[1]{\mathscr{O}_{#1}-\mathbf{Alg}}
+\newcommand{\gr}[2]{\mathscr{Gr}(#1,#2)}
+\newcommand{\grass}[3]{\mathscr{Grass}_{#1}(#2,#3)}
+\newcommand{\hilb}{\operatorname{Hilb}}
+\newcommand{\rB}{\mathrm{B}}
+\newcommand{\rE}{\mathrm{E}}
+
+\section{模空间问题简介}
+    
+    \subsection{“分类”空间}
+    代数几何的终极问题之一是分类代数簇. 这个问题派生出了许多不同的学问. 
+    比如双有理几何的目的是为了在双有理等价的意义下分类代数簇. 
+    另一种办法是对具有共性的一类目标进行参数化. 思考如下例子：
+    \begin{example}
+        考虑$\mathbb{P}^{2}(\mathbb{C})$中的二次曲线. 若坐标为$x$，$y$，$z$，
+        那么任一二次曲线都形如
+        \[ax^{2} + by^{2} + cz^{2} + dxy + exz + fyz = 0.\]
+        由于每个这样的方程定义相同的二次曲线当且仅当其系数差一个共同的倍数，
+        我们发现平面二次曲线与$\mathbb{P}^{5}(\mathbb{C})$中的点是一一对应的.
+        某种意义上，我们可以说$\mathbb{P}^{5}$是平面二次曲线的分类空间.
+    \end{example}
+
+    这则例子在后续Hilbert概形的章节会被严格化. 
+    在这则例子中，我们将每条代数曲线都对应到了$\mathbb{P}_{\mathbb{C}}^{5}$
+    中的闭点上去. 换而言之，我们找到了一个几何对象，
+    使其中的每个点参数化我们给定的一族对象.
+
+    在代数拓扑中有一个类似的办法来分类一种特殊的几何对象——向量丛. 
+    对于任一个群$G$，存在一个空间$\rB G$与其上的$G$-主丛$\rE G \to \rB G$，
+    满足对于任何与一个流形$M$，$M$到$\rB G$的映射同伦类$[M,\rB G]$
+    与$M$上的$G$主丛一一对应. 这个一一对应由$\rE G$的拉回实现.
+    我们称$\rB G$为\textbf{分类空间}，而$\rE G$为\textbf{万有线丛}.
+
+    一则典型应用如下：
+    实向量丛正好是$\operatorname{GL}_{n}(\mathbb{R})$-主丛，
+    而类似地，复向量丛可看作$\operatorname{GL}_{n}(\mathbb{C})$.
+    所以流形$M$上的实向量丛全体同伦类正好是
+    $[M,\operatorname{BGL}_{n}(\mathbb{R})]$，
+    而复向量丛全体的同伦类则是$[M,\operatorname{BGL}_{n}(\mathbb{C})]$.
+    $\operatorname{BGL}_{n}(\mathbb{R})$有一个十分好的刻画，
+    即无穷维Grassman流形$\mathrm{G}_{n}(\mathbb{R}^{\infty})$.
+    其$\Gamma$系数的上同调的生成元是已知的（其中$\Gamma$是含$\dfrac{1}{2}$的整环）.
+    这些生成元在对应的$M \to \operatorname{BGL}_{n}(\mathbb{R})$下给出Potryagin类
+    （在偶数维时还会给出欧拉类）. 而复的版本给出陈类.
+    
+    这则思路下，流形上的$G$-主丛的同伦类全体被实现为流形到某个具体空间映射的同伦类.
+    在代数几何中，这就是模空间的雏形.
+
+    模函子的定义范畴也通常是$\Sch$的俯范畴$\sch{S}$. 
+    注意到$\Sch = \sch{\Z}$.
+
+    \subsection{可表性问题及其解决办法}
+
+    \begin{definition}
+        对于模函子$h:\Sch^{op} \to \sets$，若概形$M$使$h \cong h_{M}$，
+        则称$M$为$h$的\textbf{细模空间}. 
+        
+        注意到一旦$M$存在，由米田引理知它是同构意义下唯一的.
+    \end{definition}
+
+    细模空间是对一个模问题的最好答案：
+    如果模函子$h$被$M$表出，那么这就可以保留这个模问题的所有信息.
+    这其中也包括给出任何一族我们想要的对象的刻画.
+    具体来说，存在\textbf{万有族}$U \to M$使得对于任意一族考虑的对象$X \to S$，
+    都存在一个态射$f:S \to M$使得$T \cong U \times_{M,f} S$.
+
+    但细模空间对于许多模问题来说都是不存在的. 这其中包括一些研究的比较透彻的例子，例如
+    曲线、K3曲面、Abel簇、Enrique曲面的模空间、向量丛的模空间等.
+
+    在概形的框架下，一则解决办法是\textbf{粗模空间}.
+
+    \begin{definition}
+        对于模函子$h:\Sch^{op} \to \sets$，若存在概形$M$
+        与函子$\Phi:h \to h_{M}$使
+        \begin{itemize}
+            \item[(a)]
+            对于任何域$k$，$\Phi(\spec(k)): h(\spec(k)) \to h_{M}(\spec(k))$是双射；
+
+            \item[(b)]
+            对于任一概形$N$与任一函子$\Psi:h \to h_{N}$，
+            \textbf{存在唯一}态射$M \to N$使得对于任何概形$S$，
+            如下图表交换
+            \begin{center}
+                \begin{tikzcd}
+                                                                    &  & h_{M}(S) \arrow[dd, "h_{f}(S)"] \\
+                h(S) \arrow[rru, "\Phi(S)"] \arrow[rrd, "\Psi(S)"'] &  &                                 \\
+                                                                    &  & h_{N}(S)                       
+                \end{tikzcd}
+            \end{center}
+        \end{itemize}
+        则称$M$为$h$的\textbf{粗模空间}.
+    \end{definition}
+
+\section{模函子}
+    本节我们给出一些模空间问题中的重要例子.
+    \subsection{例子：仿射空间}
+    考虑整体函子
+    \begin{equation*}\begin{aligned}
+        \Gamma: \quad \sch{S}^{\op} &\longrightarrow \ring ; \\
+        [X \to S] &\longmapsto \Gamma(X,\mathscr{O}_{X}). \\
+    \end{aligned}\end{equation*}
+    其中$S$-态射$[f:X \to Y]$被映为
+    $\Gamma(f^{\#}):\Gamma(Y,\mathscr{O}_{Y}) 
+    \to \Gamma(Y,f_{*}\mathscr{O}_{X}) = \Gamma(X,\mathscr{O}_{X})$.
+    整体截面函子是典型的可表函子. 
+    其由$S$上的仿射直线
+    $\mathbb{A}_{S}^{1} := 
+    \underline{\spec}_{S}(\mathscr{O}_{S}[t])$表出. 
+    这件事在$S = \spec(\Z)$时是极其直观的. 
+    此时$\mathbb{A}_{\Z}^{1} = \spec(\Z[t])$.
+    那么熟知的自然同构
+    \[\hom_{\Sch}(X,\mathbb{A}_{\Z}^{1}) 
+    \cong \hom_{\ring}(\Z[t],\Gamma(X,\mathscr{O}_{X})) 
+    \cong \Gamma(X,\mathscr{O}_{X})\]
+    给出了$\Gamma$的可表性，而给出这样的环同态即给定$t$的像，而$t$的像可以任意指定.
+    而对于一般的概形$S$，这件事可以写成
+    \[\hom_{\sch{S}}(X,\mathbb{A}_{S}^{1}) 
+    \cong \hom_{\oalg{S}}(\mathscr{O}_{S}[t],f_{*}O_{X}) 
+    \cong \Gamma(S,f_{*}\mathscr{O}_{X}) 
+    = \Gamma(X,\mathscr{O}_{X})\]
+    (或者\[\hom_{\sch{S}}(X,\mathbb{A}_{S}^{1}) 
+    \cong \hom_{\Sch}(X,\mathbb{A}_{\Z}^{1}) \times \{[X \to S]\}
+    \cong \hom_{\Sch}(X,\mathbb{A}_{\Z}^{1}) 
+    \cong \Gamma(X,\mathscr{O}_{X})\}.\] 
+    第一个同构是纤维积的泛性质. 这里展示两种方法以供初学者练习.)
+
+    一则推广是考虑$n$个整体截面的函子
+    \begin{equation*}\begin{aligned}
+        \Gamma^{n}: \quad \sch{S}^{\op} &\longrightarrow \ring ; \\
+        [X \to S] &\longmapsto \Gamma(X,\mathscr{O}_{X})^{n}. \\
+    \end{aligned}\end{equation*}
+    这个函子同样也是可表的，且由$S$上的仿射空间
+    $\mathbb{A}_{S}^{n} := 
+    \underline{\spec}_{S}(\mathscr{O}_{S}[x_{1},\cdots,x_{n}])$
+    表出. 
+
+    我们也可考虑如下函子：
+    \begin{equation*}\begin{aligned}
+        \operatorname{GL}_{1}: \quad \sch{S}^{\op} &\longrightarrow \ab ; \\
+        [X \to S] &\longmapsto \Gamma(X,\mathscr{O}_{X})^{\times}. \\
+    \end{aligned}\end{equation*}
+    这个函子由环面$\mathbb{G}_{m,S} := 
+    \underline{\operatorname{Spec}}_{S}(\mathscr{O}_{S}[t,t^{-1}])$表出. 
+    与仿射直线的例子类似，$\operatorname{GL}_{1}$由环面表出是因为
+    $t$的可能的像正好就是$\Gamma(X,\mathscr{O}_{X})$中的乘法可逆元. 
+    
+    \subsection{例子：Picard函子}
+    我们考虑更高阶的上同调，例如$\operatorname{H}^{1}$. 
+    一则基本的事实是
+    \[\operatorname{H}^{1}(X,\mathscr{O}_{X}^{*}) 
+    \cong \operatorname{H}_{\mathrm{ét}}^{1}(X,\mathscr{O}_{X}^{*})
+    \cong \operatorname{H}_{\mathrm{fppf}}^{1}(X,\mathscr{O}_{X}^{*})
+    \cong \operatorname{Pic}(X).\]
+    欲将Picard群也做成一个模函子，并期望其可表性，
+    以找到一个集合对象分类任一概形上的全体线丛. 最符合直观的定义如下：
+
+    “对于$S$-概形$Y$，
+    定义$\operatorname{Pic}_{Y}:\sch{S}^{\op} \to \sets;
+    [X \to S] \mapsto \operatorname{Pic}(X \times_{S} Y)$.
+    其中$S$-态射被映为线丛的拉回.”
+
+    很不幸的是，这个函子是通常是不可表的. 
+    理由如下：
+    （设$k$为代数闭域. 不妨设$S = \spec(k)$. ）
+
+    “记$\pi_{X}:X \times Y \to X$为第一分量投影，其具有截面. 
+    设$\mathscr{L}$为$X$上一非平凡线丛. 
+    沿着$\pi_{X}$拉回得线丛$\mathscr{L}_{X}$. 
+    那么$\mathscr{L}_{X}$也是非平凡线丛. 
+    这是因为$\mathscr{L}_{X}$沿着截面拉回是$\mathscr{L}$，
+    而这是非平凡的.
+
+    若概形$P$表出上述Picard函子，
+    且$\mathscr{U} \in \operatorname{Pic}_{Y}(P)$是万有线丛，
+    那么存在唯一态射$g:X \to P$使得$(g \times \operatorname{id}_{Y})^{*}\mathscr{U} = \mathscr{L}_{X}$.
+    那么也存在唯一$k$-点$p:\spec(k) \to P$
+    使得$(p \times \operatorname{id}_{Y})^{*}\mathscr{U} = \mathscr{O}_{\spec(k) \times Y}$.
+    设$\{\sigma_{i}:U_{i} \hookrightarrow X\}_{i \in I}$是$\mathscr{L}$的平凡化覆盖.
+    那么$(\pi_{U_{i}} \circ \sigma)^{*}\mathscr{L}$是$U_{i} \times Y$上的平凡丛.
+    令态射$f_{i}:U_{i} \to P$为使得
+    $(f_{i} \times \operatorname{id}_{Y})^{*}\mathscr{L}_{U_{i}}$
+    成立的唯一态射. 那么$f_{i}$穿过$p:\spec(k) \to P$. 
+    由于$\{U_{i}\}_{i \in I}$是一族覆盖，故$g:X \to P$也应穿过$p:\spec(k) \to P$.
+    我们将上述文字归于下述图表：
+    \begin{center}\begin{tikzcd}
+        \coprod_{i}U_{i} \arrow[r] \arrow[d, "\coprod_{i}\sigma_{i}"']  & \spec(k) \arrow[d, "p"] \\
+        X \arrow[r, "g"] \arrow[ru, "g'", dotted]   & P                      
+    \end{tikzcd}\end{center}
+    但这意味着
+    \[\mathscr{L}_{X} = (g \times \operatorname{Y})^{*}\mathscr{U}
+    = (g' \times \operatorname{Y})^{*}(p \times \operatorname{Y})^{*}\mathscr{U}
+    = (g' \times \operatorname{Y})^{*}\mathscr{O}_{\spec(k) \times \mathscr{U}}
+    = \mathscr{O}_{X \times Y},\]
+    矛盾！”
+    
+    模函子的不可表性一般来源于“非平凡对象”或者“非平凡自同构”的存在. 
+    上述构造的Picard函子就是一个典型的例子. 
+    下面曲线模空间中的例子将再次印证这点，而代数叠的出现就是为了解决“非平凡自同构”.
+    
+    上述的Picard函子还是显得过于naive了. 我们正式定义Picard函子如下：
+    \begin{definition}
+        对于$S$-概形$X$，定义$\operatorname{Pic}_{X/S}:\sch{S}^{\op} \to \sets$为
+        \[\operatorname{Pic}_{X/S}(T) := 
+        \operatorname{Pic}(X \times_{S} T)/\pi_{X}^{*}\operatorname{Pic}(X),\]
+        其中$\pi_{X}:X \times_{S} Y \to X$为第一分量投影. 
+        其函子性为线丛等价类的拉回.
+    \end{definition}
+    请读者自行验证上述线丛等价类的拉回是良定义的.
+
+    在这则改动下，Picard函子的可表性得到了明显的改善：
+    \begin{theorem}[Grothendieck可表性定理]
+        设$X$是平坦射影$S$-概形，且几何纤维整，那么$\operatorname{Pic}_{X/S}$
+        可表，且表出该函子的概形在$S$上分离且是局部有限型的.
+    \end{theorem}
+    表出Picard函子的概形称为\textbf{Picard概形}，记作$\mathbf{Pic}_{X/S}$.
+    一些典型的应用场景如$S = \spec(\mathbb{C})$，而$X$是复射影代数簇.
+
+    关于Picard函子有如下重要注记：
+    \begin{remark}
+        取定$S = \spec(\mathbb{C})$.
+        \begin{itemize}
+            \item[(1)] 设复概形$X$有Picard概形$\mathbf{Pic}_{X/\mathbb{C}}$.
+            称$\mathbf{Pic}_{X/\mathbb{C}} \times_{\mathbb{C}} X$上的
+            线丛$\mathscr{L}$为\textbf{Poincaré线丛}，
+            若其在$\mathbf{Pic}_{X/\mathbb{C}} \times_{\mathbb{C}} X$上的万有从代表类中.
+            Poincaré线丛在模$\pi^{*}\mathbf{Pic}_{X/\mathbb{C}}$的意义下是唯一的，
+            其中$\pi:\mathbf{Pic}_{X/\mathbb{C}} \times_{\mathbb{C}} X \to \mathbf{Pic}_{X/\mathbb{C}}$
+            为第一分量投影.
+
+            \item[(2)] Picard概形$\mathbf{Pic}_{X/\mathbb{C}}$是一个交换代数群
+            （因为Picard函子穿过$\ab$）. 其复点的群结构与Picard群本身相容.
+
+            \item[(3)] $\mathbf{Pic}_{X/\mathbb{C}}$未必连通. 
+            取单位连通分支$\mathbf{Pic}_{X/\mathbb{C}}^{0}$. 
+            若$X$是光滑复射影曲线，则称$\mathbf{Pic}_{X/\mathbb{C}}^{0}$为
+            $X$的Jacobi簇. 它具有很多奥秘.
+        \end{itemize}
+    \end{remark}
+
+    \subsection{例子：射影空间与Grassmann簇}
+    \subsubsection{射影空间}
+    考虑如下函子：
+    \begin{equation*}\begin{aligned}
+        F: \quad \sch{S}^{\op} &\longrightarrow \sets ; \\
+        [X \to S] &\longmapsto 
+        \{(\mathscr{L};s_{0},\cdots,s_{n}) 
+        \}/\cong, \\
+    \end{aligned}\end{equation*}    
+    其中$\mathscr{L}$是$X$上的可逆层，
+    而$s_{0},\cdots,s_{n}$是$\mathscr{L}$的$n+1$个整体生成的截面
+    （即对于任一点$x \in X$，
+    $\mathscr{L}_{x} = (s_{0,x},\cdots,s_{n,x})$）. 
+    这里同构“$(\mathscr{L};s_{0},\cdots,s_{n}) 
+    \cong (\mathscr{L}';s_{0}',\cdots,s_{n}')$”的定义为”
+    存在$f:\mathscr{L} \overset{\cong}{\to} \mathscr{L}'$
+    使得$s_{i}' = f(s_{i})$（$0 \leq i \leq n$）”. 
+    对于$S$-态射$[f:X \to Y]$与
+    $(\mathscr{L};s_{0},\cdots,s_{n})$，
+    定义
+    \[F(f)((\mathscr{L};s_{0},\cdots,s_{n})) 
+    := (f^{*}\mathscr{L};f^{*}s_{i}).\]
+
+    事实上，上述一组数据$(\mathscr{L};s_{0},\cdots,s_{n})$
+    给出一个局部自由层的满射
+    \begin{equation*}\begin{aligned}
+        \mathscr{O}_{S}^{\oplus n+1} &\longrightarrow \mathscr{L};\\
+        (f_{0},\cdots,f_{n}) &\longmapsto \sum_{i=0}^{n}f_{i}s_{i}. 
+    \end{aligned}\end{equation*}
+    该映射是保同构类的. 而任一局部自由层的满射（其中$\mathscr{L}$是线丛）
+    \[q:\mathscr{O}_{S}^{\oplus n+1} \longrightarrow \mathscr{L} \]
+    都给出一组数据$(\mathscr{L};q(e_{0}),\cdots,q(e_{n}))$，
+    其中$e_{i}$（$0 \leq i \leq n$）是$\mathscr{O}_{S}^{\oplus n+1}$中
+    第$i$分量为$1$，其余为$0$的整体截面. 
+    这个映射也是保同构类的，并且上述两个映射是自然且互逆的. 
+    这提示我们可以将$F$重新表述为如下：
+    \begin{equation*}\begin{aligned}
+        F: \quad \sch{S}^{\op} &\longrightarrow \sets ; \\
+        [X \to S] &\longmapsto 
+        \{\mathscr{O}_{S}^{\oplus n+1} &\longrightarrow \mathscr{L} \to 0\mid
+        \mathscr{L}秩1
+        \}/\cong, \\
+    \end{aligned}\end{equation*}    
+
+    回顾如下事实：
+    给出$X$到$\mathbb{P}^{n}$的一个态射，
+    等价于给出$X$上的一个可逆层（线丛）及其$n+1$个整体生成的截面.
+    这个事实很大程度上告诉我们，上述定义的函子$F$可以被$\mathbb{P}^{n}$表出.
+    \begin{proof}
+
+    \end{proof}
+
+    \subsubsection{Grassmann簇I}
+    我们从最原汁原味的一类Grassmann簇出发. 定义Grassmann函子如下：
+    \begin{equation*}\begin{aligned}
+        \gr{r}{n}: \Sch^{\op} &\longrightarrow \sets ; \\
+        X &\longmapsto 
+        \{\mathscr{O}_{X}^{\oplus n} \to \mathscr{Q} \to 0,
+        \operatorname{rk}(Q) = r
+        \}/\cong,
+    \end{aligned}\end{equation*} 
+    其中$Q$是秩$n - r$的局部自由层. 
+    在给出这个函子合理性的一些注记前，
+    我们先谈谈它为什么和我们认知中的Grassmann是相符的：
+    考虑其在代数闭域上的取值$\gr{r}{n}(\spec(k))$. 
+    由于$\spec(k)$上的一切凝聚层无外乎$k$-线性空间. 
+    这时研究满射$\mathscr{O}_{X}^{\oplus n} \to \mathscr{Q}$的同构类即研究
+    满秩的$r \times n$阶矩阵. 
+    而这种矩阵在模$\operatorname{GL}_{r}(k)$左乘下与$k^{n}$的
+    $r$维子空间是一一对应的. 而这就是我们印象中的Grassmann.
+
+    以下是Grassmann函子的一些注记：
+    \begin{remark}
+        \begin{itemize}
+            \item[(1)] 为什么不采用子层而采用商层喵？
+            道理其一在于局部自由层的商层并不总是局部自由的
+            （考虑$\spec(\Z)$上由$\Z$与$\Z/2\Z$定义的层）. 
+            但一个局部自由层间态射的核一定是局部自由的. 
+            这与向量丛是不一样的. 道理其二见下文的4.
+
+            \item[(2)] 对于态射$f:X \to Y$，Grassmann函子应将
+            $q:\mathscr{O}_{Y}^{\oplus n} \to Q$
+            同构类映为$f^{*}q:\mathscr{O}_{X}^{\oplus n} \to f^{*}Q$
+            的同构类.
+            这个映射的良定性由以下四点保证：
+            \begin{itemize}
+                \item[1.] 拉回保结构层，
+                即$f^{*}\mathscr{O}_{Y} = \mathscr{O}_{X}$；
+                \item[2.] $f^{*}$是加性函子；
+                \item[3.] $f^{*}$保持层的局部自由性；
+                \item[4.] $f^{*}$是右正合的.
+            \end{itemize}
+        \end{itemize}
+    \end{remark}
+
+    如上定义的Grassmann函子是可表的. 这是一切模空间构造的起点.
+    \begin{proposition}\label{grassrep}
+        对于$0 < r < n$，Grassmann函子$\gr{r}{n}$可由概形表出.
+    \end{proposition}
+
+    在证明该命题前，我们先做一个准备：
+    \begin{lemma}[01JJ]
+        对于模函子$F:\sch{S} \to \sets$，若其满足如下条件：
+        \begin{itemize}
+            \item[(1)]
+            $F$是Zariski层；
+
+            \item[(2)]
+            存在开可表子函子$\{\varphi_{i}:F_{i}\}_{i \in I}$
+            （$I$为指标集）形成的Zariski开覆盖.
+        \end{itemize}
+        那么$F$可被一个概形表出.
+    \end{lemma}
+    \begin{proof}
+        设$F_{i}$被$S$-概形$X_{i}$表出. 
+        我们证明题设的两个条件给出了概形的粘接数据，从而给出表出$F$的概形$X$.
+        
+        题设说明$F_{j} \subseteq F$被开浸入表出. 
+        对于任意$i \in I$，存在开浸入$U_{ij} \hookrightarrow X_{i}$使得
+
+        
+    \end{proof}
+
+    我们回到原命题的证明：
+    \begin{proof}
+        对于任意$I \in \displaystyle{[n] \choose r}$，定义$G_{I}$如下：
+        \begin{equation*}\begin{aligned}
+        G_{I}: \Sch^{\op} &\longrightarrow \sets ; \\
+        X &\longmapsto 
+        \{[\mathscr{O}_{X}^{\oplus n} \overset{q}\to \mathscr{Q} \to 0] 
+        \in \gr{r}{n}(X) \mid
+        q \circ s_{I} 是同构
+        \}.
+        \end{aligned}\end{equation*}
+        这里$s_{I}:\mathscr{O}_{X}^{\oplus r} \to \mathscr{O}_{X}^{n}$
+        是依照$I$给出的指标的分量嵌入. 
+        对于任何$f:X \to Y$以及$X$与$Y$上相应的$s_{I}$与$s_{I}'$，
+        都有$f^{*}s_{I}' = s_{I}$，故$G_{i}$是良定的子函子.
+
+        首先，我们证明$G_{i}$都可表.
+        简便起见，不妨设$I = [r]$. 
+        这时，所求的同构类$[q]$必形如
+        $[\mathscr{O}_{X}^{\oplus n} \overset{q}\to \mathscr{O}_{X}^{\oplus n - r}]$.
+        记$e_{i}$为$\mathscr{O}_{X}^{\oplus n}$中第$i$分量
+        （$1 \leq i \leq n$）整体截面中的$1$，
+        而$f_{i}$为$\mathscr{O}_{X}^{\oplus r}$中第$j$分量
+        （$1 \leq i \leq r$）整体截面中的$1$，
+        那么这种映射$q$必须满足$q(X)(e_{i}) = f_{i}$对任意$1 \leq i \leq r$成立.
+        那么$q$完全由$q(X)(e_{r+1}),\dots,q(X)(e_{n}) \in \Gamma(X,\mathscr{O}_{X})^{\oplus n-r}$决定.
+        这意味着$G_{I}$实则与$X \mapsto (\Gamma(X,\mathscr{O}_{X})^{\oplus r})^{n-r}$同构.
+        由前文，$G_{I}$可被$\mathbb{A}_{\Z}^{r(n-r)}$表出.
+
+        其次，我们证明$G_{I}$都是$\gr{r}{n}$的开子函子. 
+        固定$I$. 
+        任一概形$X$与自然变换$g:h_{X} \to \gr{r}{n}$都对应于某一正合列
+        $\mathscr{O}_{X}^{\oplus n} \overset{q}{\to} \mathscr{E} \to 0$的同构类，
+        其中$\mathscr{E}$是秩$r$局部自由层. 
+        对于任一概形$S$， 
+        函子$G_{I} \times_{\gr{r}{n}} h_{X}$的$S$-点为
+        \[(G_{I} \times_{\gr{r}{n}} h_{X})(S) 
+        = \{f \in X(S) \mid 
+        \mathscr{O}_{S}^{n} \overset{f^{*}q}{\to} \mathscr{E} \to 0, 
+        f^{*}q \circ s_{I} 为同构\}.\]
+        欲证$G_{I} \to G$是开子函子，要证存在满足如下性质的$X$的开子概形$U$：
+        “态射$f:S \to X$穿过$U$\textbf{当且仅当}$f^{*}q \circ s_{I}$是同构”.
+        记\[U_{X} = \{x \in X \mid (q \circ s_{I})_{x}满\}\]
+        如此定义的$U_{X}$是开子概形（若$f:\mathscr{F} \to \mathscr{G}$
+        是有限型拟凝聚层的态射，则$\{x \in X \mid f_{x}满\}$是开集）. 
+        由中山引理，
+        \[|U_{X}| = \{x \in X \mid k(x)^{\oplus n-r} 
+        \xrightarrow{(q \circ s_{I})_{x}}\mathscr{Q}_{x}/\mathfrak{m}_{x}\mathscr{Q}_{x} 满\}\]
+        注意到对于任何$f:S \to X$，若$f(s) = x \in X$，
+        则$(f^{*}\mathscr{Q})_{s} = 
+        \mathscr{Q}_{x} \otimes_{\mathscr{O}_{X,x}} \mathscr{O}_{S,s}$.
+        那么$(f^{*}q \circ f^{*}s_{I})_{s}$正好就是将$(q \circ s_{I})$
+        通过域扩张$k(s)/k(x)$基变换而来，而域扩张忠实平坦.
+        故$x \in |U|$\textbf{当且仅当}$s$在$f^{*}q$对应的$S$开子概形$U_{S}$中.
+        这也就是说$f:S \to X$穿过$U_{X}$当且仅当$f^{*}q \in G_{I}(S)$.
+
+        再次，我们证明$\{G_{I}\}$形成$\gr{r}{n}$的开覆盖.
+        由上文，只需要证明如下事实：对于$q \in \gr{r}{n}(X)$，
+        存在$x \in X$与$I \in \displaystyle{[n] \choose r}$使得
+        $q \circ s_{I}$在$x$的一个邻域内满. 
+        这即
+        \[k(x)^{\oplus r} \xrightarrow{(s_{I})_{x}} k(x)^{\oplus n}
+        \xrightarrow{q_{x}} \mathscr{Q}_{s}/\mathfrak{m}_{s}\mathscr{Q}_{s}\]
+        正合. 任意固定$x \in X$，该$I$的存在性即Steinitz替换定理.
+    \end{proof}
+
+    \begin{remark}
+        有的文献定义$G_{I}$时只要求$q \circ s_{I}$满. 事实上，两种定义是一样的.
+        这是因为等秩局部自由模间的满射等价于同构.
+    \end{remark}
+
+    作为重要例子，我们有典范同构$\gr{1}{n+1} \cong \mathbb{P}^{n}$.
+
+    \subsubsection{Grassmann簇II}
+    作为推广，我们将$\gr{r}{n}$中的$\mathscr{O}_{X}^{\oplus n}$替换成任一拟凝聚层$\mathscr{E}$，
+    并考虑其秩$r$局部自由商层. 考虑相对版本的Grassmann函子
+    \begin{equation*}\begin{aligned}
+        \grass{S}{r}{\mathscr{E}}: \quad \Sch^{\op} &\longrightarrow \sets ; \\
+        [f:X \to S] &\longmapsto 
+        \{f^{*}\mathscr{E} \to \mathscr{Q} \to 0,
+        \operatorname{rk}(Q) = r
+        \}/\cong,
+    \end{aligned}\end{equation*}
+    其中$\mathscr{Q}$为秩$r$局部自由层. 
+    注意到$\gr{r}{n}$不过是$\grass{\Z}{r}{\mathscr{O}_{\Z}^{\oplus n}}$.     
+
+
+    \subsection{例子：Hilbert概形与Quot概形}
+    固定概形$S$. 
+    给定射影$S$-概形$X \to S$以及一个有理系数多项式$P \in \mathbb{Q}[t]$，
+    选取$X$上的相对丰沛线丛$\mathscr{O}(1)$并在此意义下讨论Hilbert多项式.
+    定义Hilbert函子如下：
+    \begin{equation*}\begin{aligned}
+        \hilb_{X/S}^{P}: \sch{S}^{\op} &\longrightarrow \sets;\\
+        [Z \to S] &\longmapsto 
+        \{V \mid V \hookrightarrow X \times_{S} Z为子概形, \,
+        V \to S 紧合平坦，且\mathrm{Hilbert}多项式为P\}/\cong
+    \end{aligned}\end{equation*}
+
+    Grothendieck的一则主要工作是Hilbert函子的可表性：
+    \begin{theorem}
+        设$X \to S$射影，$S$局部诺特，且给定$P \in \mathbb{Q}[t]$.
+        固定$X$上的相对丰沛线丛$\mathscr{O}(1)$，并在此意义下计算Hilbert多项式，
+        那么$\hilb_{X/S}^{P}$可被一个射影$S$-概形表出.
+    \end{theorem}
+
+    \subsection{例子：曲线模空间}
+    曲线模空间就是分类代数曲线的空间. 
+    对于曲线来说，其最重要的一个双有理不变量就是亏格. 
+
+    \begin{definition}我们定义\textbf{一族亏格$g$的光滑射影曲线}为一个光滑紧合的态射
+    $C \to S$，满足其任一几何纤维都是连通射影且亏格为$g$的曲线.
+    \end{definition}
+
+    定义亏格$g$的曲线模函子如下：
+    \begin{equation*}\begin{aligned}
+        \mathscr{M}_{g}: \Sch &\longrightarrow \sets;\\
+        B &\longmapsto \{C \to B \mid C \to B 是一族亏格为 g 的光滑射影曲线\}/\cong.
+    \end{aligned}\end{equation*}

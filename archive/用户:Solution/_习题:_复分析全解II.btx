@@ -1,0 +1,432 @@
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+\setcounter{section}{6}
+
+== Riemann曲面简介 ==
+
+\subsection*{7.1 黎曼曲面}
+\begin{itemize}
+    
+    \item[7.1.1] 首先说明 $f$的取值是合理的.对任意相交非空的局部坐标图 
+    $(U_\alpha,\phi_\alpha),\ (U_\beta,\phi_\beta)$, 由定义, 
+    $$f\circ \phi_\alpha^{-1}|_{\phi_\alpha(U_\alpha \cap U_\beta)} 
+    =  f\circ \phi_\beta^{-1}|_{\phi_\beta(U_\alpha \cap U_\beta)} 
+    = f|_{U_\alpha \cap  U_\beta},$$
+    这说明 $f$在 $S$上的取值是良定的,并且不依赖于坐标图册.
+
+    其次说明 $f$的解析性不依赖于坐标图册, 事实上由坐标转移函数 
+    $\phi_\beta \circ\phi_{\alpha}^{-1}$的共形性质, 
+    知 $f\circ \phi_\alpha^{-1}$解析等价于 $f\circ \phi_\beta^{-1}$解析. 证毕.
+
+    
+    \item[7.1.2] 记聚点为 $x_0$, 则存在 $x_0$附近的坐标图 
+    $(U_\alpha,\phi_\alpha)$使得 $E$在 $U_\alpha$里面有聚点 $x_0$. 
+    这说明 $\phi_\alpha(E)$在 $\phi_\alpha(U_\alpha)$里面有聚点,
+    由解析函数的唯一性定理 $f\circ \phi_\alpha^{-1}|_{\phi_\alpha(U_\alpha)} \equiv 0$,
+    因此 $f|_{U_\alpha}\equiv 0$.
+    
+    对 任意的 $x \in S$, 由 $S$连通且局部道路连通, 知其道路连通, 
+    从而可取道路$\gamma:[0,1]\to S$使其分别以 $x_0$和 $x$作为起点和终点. 
+    由紧性可取有限个局部坐标邻域 $\{U_i\}_{i=1}^n$使得  
+    $\gamma([0,1])\subseteq \bigcup_{i=1}^n U_i $. 
+    按前述可归纳证明 $f|_{U_i}\equiv 0$, 从而说明 $f(x)=0$. 由此 $f\equiv 0.$ 
+
+    
+    \item[7.1.3] 取格点群$\Gamma = \omega_1 \mathbb{Z}+\omega_2 \mathbb{Z}$,
+    其中 $\omega_1$和 $\omega_2$不共线.
+    要证明题中结论,只需说明存在唯一的 
+    $\tau \in \{-\frac{1}{2}<\Re\tau\le \frac{1}{2},\ |\tau|> 1,
+    \ \Im\tau>0\}\cup \{0\le \Re\tau\le \frac{1}{2} , |\tau|=1\}$ 
+    使得 $\tau = \frac{\omega_1'}{\omega_2'}$, 
+    其中 $\mathbb{C}/\Gamma$由  $(\omega_1',\omega_2')$生成.
+    
+    (1)存在性: 先是取 $\omega_2'$为 $\Gamma$中模长最小的元素, 
+    由 $w_1,w_2$不共线, 知 $\Gamma \backslash \omega_2' \mathbb{Z}$非空, 
+    取其中模长最小的元素 $\omega_1'$. 显然有 $\frac{\omega_2'}{\omega_1'}$不为实数, 
+    否则辗转相除得到比 $\omega_2'$模长更小的,矛盾. 
+    下面说明 $\Gamma= \omega_1' \mathbb{Z}+\omega_2' \mathbb{Z}$. 
+    对任一 $\omega \in \Gamma$, 现求解如下方程
+    \begin{align*}
+        \omega = \lambda_1 \omega_1' +\lambda_2 \omega_2',\ \overline{\omega} 
+        = \lambda_1 \overline{\omega}_1' +\lambda_2 \overline{\omega}_2' .
+    \end{align*}
+    
+    显然有 $\omega_1' \overline{\omega}_2' - \omega_2' \overline{\omega}_1'$
+    不为零, 说明解唯一. 注意到  $(\lambda_1,\lambda_2)$
+    和 $(\overline{\lambda}_1,\overline{\lambda}_2)$都是解, 说明该解为实数. 
+    取 $(m_1,m_2)$使得 $|\lambda_1-m_1|\le \frac{1}{2}, |\lambda_2-m_2|
+    \le \frac{1}{2}$. 由 $\omega \in \Gamma$, 知 $w-m_1 \omega_1'-m_2 \omega_2' 
+    = (\lambda_1-m_1) \omega_1'+  (\lambda_2-m_2) \omega_2'$。 
+    这说明$|w-m_1 \omega_1'-m_2 \omega_2'|< \frac{1}{2}(| \omega_1'|+|\omega_2'|)
+    \le |\omega_1'|$. 按 $\omega_1'$的定义 知 
+    $w-m_1 \omega_1'-m_2 \omega_2' \in \omega_2' \mathbb{Z}$. 
+    这说明 $\Gamma \subseteq  \omega_1' \mathbb{Z}+\omega_2' \mathbb{Z}$, 
+    反过来是显然的.
+
+    由对上面给出的 $\omega_1',\omega_2'$, 
+    知 $|\omega_2'|\le |\omega_1'|,\ |\omega_2'|\le |\omega_2'\pm \omega_1'|$. 
+    记 $\tau = \frac{\omega_1'}{\omega_2'}$, 代入上述不等式得到 
+    $|\tau|\ge 1,\ |\Re\tau|\le \frac{1}{2}$. 由前述讨论知 $\Im\tau = 0$. 
+    若 $\Im\tau>0$, 用 $-\omega_1'$代替 $\omega_1'$;  
+    若 $|\tau|=1$且 $\Re\tau<0$, 同样用 $-\omega_1'$代替 $\omega_1'$;
+    若  $\Re\tau = -\frac{1}{2} $, 用 $\omega_1'+\omega_2'$代替 $\omega_1'$. 
+    这样得到 $\tau = \frac{\omega_1'}{\omega_2'} \in \{-\frac{1}{2}
+    <\Re\tau\le \frac{1}{2},\ |\tau|> 1,\ \Im\tau>0\}
+    \cup \{0\le \Re\tau\le \frac{1}{2}\}$
+    并且 $\Gamma =  \omega_1' \mathbb{Z}+\omega_2' \mathbb{Z}$.
+
+    (2)唯一性: 现在给定 $\Gamma = \omega_1 \mathbb{Z}+\omega_2 \mathbb{Z}
+    = \omega_1' \mathbb{Z}+\omega_2' \mathbb{Z}$, 
+    和 $\tau = \frac{\omega_1}{\omega_2} ,\tau' = \frac{\omega_1'}{\omega_2'}$. 
+    先说明存在$A \in \text{SL}_2(\mathbb{Z})$ 
+    使得 $(\omega_1', \omega_2')^{T} = A(\omega_1,\omega_2)^{T}$. 
+    事实上存在 $A,A' \in \text{Mat}_{\mathbb{Z}}(2)$
+    使得 $(\omega_1', \omega_2')^{T} 
+    = A(\omega_1,\omega_2)^{T}, (\omega_1, \omega_2)^{T} 
+    = A'(\omega'_1,\omega'_2)^{T}$. 取共轭就得到
+   $$ \begin{pmatrix}
+        \omega_1 & \overline{\omega}_1\\
+        \omega_2 & \overline{\omega}_2
+   \end{pmatrix} = A \begin{pmatrix}
+    \omega'_1 & \overline{\omega}'_1\\
+    \omega'_2 & \overline{\omega}'_2
+\end{pmatrix} = AA'\begin{pmatrix}
+    \omega_1 & \overline{\omega}_1\\
+    \omega_2 & \overline{\omega}_2
+\end{pmatrix}.$$
+
+又因为  $\omega_1' \overline{\omega}_2' 
+- \omega_2' \overline{\omega}_1'$不为零, 得到 $1 = \det A \cdot \det A'$,  
+说明 $\det A = 1.$ 而 $A$为整数阵,从而得到 $A \in \text{SL}_2(\mathbb{Z})$.
+
+记 
+$$A = \begin{pmatrix}
+   a& b\\
+   c& d
+\end{pmatrix},$$
+计算可知 
+$$\tau' = \frac{a \tau +b}{c\tau+d},
+\ \Im\tau' = \frac{\pm \Im\tau}{|c\tau+d|^2}.$$
+
+此时 $ad-cb=\pm1$,且$a,b,c,d \in \mathbb{Z}$. 
+不妨适当改变 $\omega_1,\omega_2$的正负号使得 $ad-cb = 1$. 
+同时由对称性不妨设 $|\Im\tau|\le |\Im\tau'|$,于是 $|c\tau+d|\le 1$.
+
+下面说明若  $\tau,\tau' \in \frac{\omega_1'}{\omega_2'} 
+\in \{-\frac{1}{2}<\Re\tau\le \frac{1}{2},\ |\tau|> 1,
+\ \Im\tau>0\}\cup \{0\le \Re\tau\le \frac{1}{2}, |\tau|=1\}$,
+则必有 $\tau=\tau'$. 分情况讨论.
+
+(a) $c=0$. 则 $d= a=\pm 1$, 此时 $\pm \tau' = \pm \tau+b $. 
+于是 $|b| = |\Re\tau-\Re\tau'|<1$, 从而 $b=0, \tau = \tau'$.
+
+(b) $c \ne 0,\ d \ne 0.$ 因此 $|c|,|d|\ge 1$, 
+从而 $|\tau + \frac{d}{c}|\le \frac{1}{|c|}\le 1 $. 
+若 $|c|\ge 2$, 则 $|\tau-(-\frac{d}{c})|\le \frac{1}{2}$. 
+但是 $\text{dist}(\tau,[-\frac{1}{2},0])\ge \frac{\sqrt{3}}{2}$,矛盾. 
+由此 $c=\pm 1$. 此时 $|\tau\pm d|\le 1$. 
+按 $\tau$的区域,此时只能是 $\tau = e^{i\frac{\pi}{3}}$
+并且 $|\tau+ \frac{d}{c}| = 1, d = \mp 1$, 
+由 $\Im\tau = \Im\tau' = \frac{\sqrt{3}}{2}$和区域限制,解得 $\tau = \tau'$.
+
+(c)  $c \ne 0,\ d= 0.$ 此时有 $c=-b=\pm 1$, 同时 $|\tau|\le 1$, 于是 $|\tau|=1$. 
+由此 $\tau' =\frac{a\tau\mp1}{\pm\tau}= \pm a- \frac{1}{\tau }=\pm a -\overline{\tau}$. 
+这说明 $\Re(\tau+\tau') = \pm a$. 由区域限制只能是 $a=0, \tau = i$. 
+代入解出 $\tau' = -\overline{\tau} = i=\tau$. 
+
+\end{itemize}
+
+\subsection*{7.2 解析覆盖和模函数}
+
+\begin{itemize}
+    
+    \item[7.2.1] 对任一Riemann曲面 $(S,\sigma)$,取其万有覆盖 $(\tilde{S},\pi)$,
+    其上赋予由 $\pi$拉回得到的复结构 $\tau = \pi^* \sigma $, 
+    则 $(\tilde{S},\tau)$自动成为对应的解析万有覆盖.
+    \item[7.2.2]  (1)对任一 $z \in S$和 $\tilde{z} \in \pi^{-1}(z)$,
+    存在 $\tilde{z}$的邻域$V$作为 $\pi^{-1}(\pi(V))$的连通分支
+    使得 $\pi|_{V}:V\to \pi(V)$是同胚. 
+    对 $\gamma(\tilde{z})\in V$, 由 $\pi(\gamma(\tilde{z})) = \pi(x)$和局部同胚性, 
+    知 $\gamma(\tilde{z})=\tilde{z}$, 亦即 $\tilde{z}$是 $\Gamma(\tilde{z})$的孤立点. 
+    又因为 $\Gamma(\tilde{z})$在 覆盖变换 $\gamma$下保持不变, 
+    前述推理实际上得到了 $\Gamma(\tilde{z})$每一点都是孤立点.
+    
+    (2) 按(1)所述, 若存在 $\tilde{z}_0\in S$使得 $\gamma(\tilde{z}_0)=\tilde{z}_0$, 
+    则存在 $\tilde{z}_0$的邻域 $V \subseteq U$, 
+    其上 $\gamma(V)\subseteq U$ 并且 $\pi|_{U}:U\to \pi(U)$是同胚. 
+    又因为$\pi\circ\gamma=\pi$,得到 $\gamma|_{V}=\text{id}$. 
+    经类似于解析函数的唯一定理(习题7.1.2) 的推理得到 $\gamma=\text{id}$.
+
+    
+    \item[7.2.3] 对 $z \in S$ 和$w=\pi(z)$考虑 $z$的邻域 $U$使得
+    对 $\pi^{-1}(U)$的连通分支 $V$, $\pi|_{V}:V\to U$是同胚. 
+    由 $\Gamma(w)= \{w_\alpha\}_{\alpha}$的离散性和 $\pi$在其上的局部同胚性,
+    不同的$w_\alpha$在 $\pi^{-1}(U)$所处的连通分支互不相交,记为 $\{W_\alpha\}_\alpha$. 
+    由 $\gamma$是共形自同构以及 $\pi \circ \gamma = \pi$, 
+    可知 对不同的 $W_\alpha, W_{\alpha'}$, 
+    存在 $\gamma \in \Gamma$使得 $\gamma:W_\alpha\to W_{\alpha'}$  是同胚. 
+    若记 $W_{\alpha_0}$是 $w$所在的连通分支,  
+    则有 $\pi(W_\alpha) = \pi \circ \gamma(W_\alpha) = \pi(W_{\alpha_0}) = U $. 
+    
+    记 $[V_\alpha] = \{[\tilde{z}]\ | \tilde{z} \in V_\alpha\}
+    \subseteq \tilde{S}/ \Gamma $.  由上述讨论可知
+    $\tilde{\pi} |_{[W_{\alpha}]}: [W_\alpha]\to U$是连续的双射,
+    下面说明其逆也是连续的. 事实上, 对任一 $[w] \in \tilde{S}/\Gamma$,
+    取类似于上述讨论中的充分小的邻域 $[W_\alpha]$, 
+    则$\pi([W_{\alpha}]) = \pi(W_{\alpha_0}) =U$是开集,
+    说明 $\pi$是开映射, 也说明其逆的连续性.
+    
+    \item[7.2.4] 若有 $\gamma_1,\gamma_2 \in \Gamma$
+    使得 $\gamma_i(\tilde{z}_0) = \tilde{z}_0'$, 
+    则有 $\gamma_1 \circ \gamma_2^{-1}(\tilde{z}_0) = \tilde{z}_0$,
+    由 7.1.2得到 $\gamma_1 \circ \gamma_2^{-1}=\text{id}$,
+    即 $\gamma_1 =\gamma_2$.
+
+    \item[7.2.5] (1) 由$\mathbb{C}_\infty \cong \mathbb{S}^2$, 
+    知 $f(\mathbb{C}_\infty)$是 $\mathbb{C}$上紧集, 亦即有界闭集. 
+    由Liouville定理得到其为常值映射.
+    
+    (2) 由 $\mathbb{C}$单连通, 可取模函数 $\varphi:\mathbb{D}\to \mathbb{C}_{0,1}$, 
+    由映射提升性质存在 $\tilde{f}:\mathbb{D}\to \mathbb{C}$
+    使得 $f = \tilde{f}\circ \varphi$, 而由Liouville定理 $\tilde{f}$是常值映射,
+    由此 $f$亦为常值映射.
+
+    (3) 考虑 $g(z) = f(\frac{1}{z})$, 则 $g:\mathbb{C}\to \mathbb{C}_{0,1}$,
+    由(2)知其为常值映射, 从而 $f$为常值映射.
+
+    \item[7.2.6] 考虑解析映射 $f:\mathbb{C}_{0,1}\to \mathbb{D}$. 
+    若$0,1$不为本性奇点或极点, 则为可去奇点, 于是$f$可延拓成复平面上有界解析函数,为常值函数;
+    若$0,1$中至少有一个为本性奇点或极点, 则存在 $z_n \in \mathbb{C}_{0,1}$
+    使得 $f(z_n)\to \infty$, 矛盾.因此 $f$只能是常值函数.
+\end{itemize}
+
+== 双曲度量 ==
+
+\subsection*{8.1 单位圆上的 Poincar\'{e}度量}
+\begin{itemize}
+    
+    \item[8.1.1] 取保持球面度量的分式线性变换 $\varphi(z) = \frac{az+b}{cz+d}$, 
+    计算得到
+    \begin{align*}
+        \mathrm{d}\varphi(s)& = \frac{2|\mathrm{d}\varphi(z)|}{1+|\varphi(z)|^2} 
+        = \frac{2|ad-bc||\mathrm{d}z|}{|cz+d|^2+|az+b|^2}\\
+        & = \frac{2|ad-bc||\mathrm{d}z|}{(|a|^2+|c|^2)|z|^2 
+        + 2\text{Re}[(c\bar{d}+ a\bar{b})z]+ (|b|^2+|d|^2)} 
+        = \frac{2|\mathrm{d}z|}{1+|z|^2}.
+    \end{align*} 
+
+    上述等式成立当且仅当
+    $$\begin{cases} |a|^2+|c|^2 = |b|^2+|d|^2= |ad-bc|,   \\
+          c\bar{d}+ a\bar{b} = 0. \end{cases}$$
+    由第一式, 
+    $$|a|^2+|c|^2 +|b|^2+|d|^2 = 2|ad-bc|
+    \le 2|a||d|+2|b||c|\le|a|^2+|c|^2 +|b|^2+|d|^2, $$
+则上述不等号全为等号, 说明 $|a| =|d|,\ |c|=|b| $. 
+设 $(a,d,b,c) = (|a|e^{i\theta_1},|a|e^{i\theta_2},|b|e^{i\theta'_1},|b|e^{i\theta'_2})$, 
+代入第二式得到  $e^{i(\theta_1+\theta_2)} = -e^{i(\theta_1'+\theta_2')}$, 
+于是  $e^{i \frac{(\theta_1+\theta_2)}{2}} 
+=\pm i  e^{i \frac{(\theta_1'+\theta_2')}{2}}$. 于是
+$$\varphi(z) 
+= \frac{e^{i\theta_1}|a|z+ |b|e^{i\theta'_1}}
+{e^{i\theta'_2}|b|z+ |a|e^{i\theta_2}} 
+= \frac{e^{i\frac{\theta_1-\theta_2}{2}}|a|z
+\pm   i |b|e^{i\frac{\theta'_1-\theta'_2}{2}}}
+{\pm   i |b|e^{i\frac{\theta'_2-\theta'_1}{2}}
++ |a|e^{i\frac{\theta_2-\theta_1}{2}}} 
+= \frac{a'z-b'}{\bar{b}' z+\bar{a}}, $$
+其中
+$$ a' =\frac{|a|}{\sqrt{|a|^2+|b|^2}}e^{i\frac{\theta_1-\theta_2}{2}},
+\ b' = \frac{\pm |b|}{\sqrt{|a|^2+|b|^2}}  i e^{i\frac{\theta'_1-\theta'_2}{2}},$$
+显然有 $|a'|^2+|b'|^2=1$,  此即题目所求.
+
+\item[8.1.2] (1)验证 (8.1)事实上由 $|z|\to 1$,  
+有 $\frac{|z-z_0|}{|z^{-1}-z_0|}\to 1$, 
+并且 $\delta(z_1,z_0 )\to 1$,  从而
+$$ d_{\mathbb{D}}(z_1,z_0)\sim \log \frac{2}{1-\delta(z_1,z_0)} 
+= \log \frac{2}{1-|z|\frac{|z-z_0|}{|z^{-1}-z_0|}}\sim \log \frac{2}{1-|z|}.$$
+
+(2)验证 (8.2) 考虑区域 $\{d_{\mathbb{D}}(z_0,z)<R \}$的边界 
+$\{d_{\mathbb{D}}(z_0,z)=R \} = \{\delta(z_0,z) = \sigma\} 
+= \{|z-z_0| = \sigma|1-\bar{z}_0 z| \}=\{|z-z_0| 
+= \sigma|z_0||z-\frac{z_0}{|z_0|^2}| \}$, 此边界为阿式圆, 
+解出其圆心为 $z_0 \frac{1-\sigma^2}{1-\sigma^2 |z_0|^2}$, 
+半径为 $\sigma \frac{1-|z_0|^2}{1-\sigma^2 |z_0|^2}$. 
+这说明所求区域即为该圆的内部区域.
+
+\item[8.1.3]取共形映射  $\varphi: \mathbb{H}\to \mathbb{D},
+\ w\mapsto \frac{1+iw}{1-iw}$, 则由Poincar\'{e} 度量在共形映射下的不变性
+有 $d_{\mathbb{H}}(w_1,w_2) = d_{\mathbb{D}}(\varphi(w_1),\varphi(w_2)) 
+= \log \frac{|\bar{w}_1 - w_2|+|w_1-w_2|}{|\bar{w}_1 - w_2|-|w_1-w_2|}$. 
+\item[8.1.4] 由映射提升性质存在 $\tilde{f}:\mathbb{D}\to \mathbb{D}$
+使得  $f = \varphi\circ\tilde{f} $. 由Schwarz引理得
+$$ \sup_{|z|\le r}|f(z)| = \sup_{|z|\le r}|\varphi\circ\tilde{f}(z)| 
+= \sup_{|\tilde{f}(z)|\le r}|\varphi(z)|\le  \sup_{|z|\le r}|\varphi(z)|. $$
+\end{itemize}
+
+\subsection*{8.2 一般区域上的双曲度量}
+
+\begin{itemize}
+    
+    \item[8.2.1] 测地线等价定义为局部邻域上弧长变分的极值曲线, 
+    而由解析覆盖映射 $\pi$所给出 $\Omega_1$上度量
+    是 $(\Omega_2,g)$上度量的拉回 $\pi^* g$, 
+    由此知 $\pi$保持弧长变分, 从而曲线提升后的弧长变分和原曲线相同, 
+    再由 $\pi$的局部同胚性质,知提升后的曲线仍为局部邻域中弧长变分的极值曲线,亦即测地线.
+
+    \item[8.2.2] 不妨设 $z$趋于 $\zeta \in \partial\Omega$, 
+    由 $\Omega$是双曲区域不妨设 $\Omega \subseteq  \mathbb{C}\backslash \{0,\zeta\}$,
+    并且  $\zeta \ne \infty$
+    (否则采用 $\mathbb{C}_\infty$上分式线性变换将其与另一有界余分支中的点交换), 
+    则由本节推论8.8和下一节推论8.16, $z\to \zeta $时有
+    $$\rho_\Omega(z)\ge \rho_{\zeta,0}(z)
+    \sim \frac{1}{|z-\zeta|\log \frac{1}{|z-\zeta|}}\to \infty.$$
+
+    
+    \item[8.2.3] (1)取覆盖映射为恒等映射即得.
+    
+    (2)考虑共形映射 $\varphi: \mathbb{H}\to \mathbb{D},
+    \ w\mapsto \frac{1+iw}{1-iw}$, 则
+    $$\rho_{\mathbb{H}}(w) = \rho_{\mathbb{D}}(\varphi(w))|\varphi'(w)| 
+    = \frac{4}{|1-iw|^2-|1+iw|^2} = \frac{1}{\Im w}.$$
+
+    (3) 考虑解析覆盖映射 $\varphi: \mathbb{H}\to \mathbb{D}^*,\ z\mapsto e^{iz}$, 
+    则对 $w = e^{iz}$, 在 $z$的一个充分小的局部邻域上由定义给出的双曲度量满足
+    $$\rho_{\mathbb{D}^*}(e^{iz})|\varphi'(z)| 
+    =\rho_{\mathbb{D}^*}(e^{iz})|e^{iz}| = \rho_{\mathbb{H}}(z) 
+    = \frac{1}{\Im z} =- \frac{1}{\log|e^{iz}|}.$$
+
+    从而说明  $$\rho_{\mathbb{D}^*}(w) = \frac{1}{|w|\log \frac{1}{|w|}}.$$
+
+    (4)考虑共形映射$\varphi: \Omega\to \mathbb{D},\ z\mapsto \frac{z-c}{R}$, 
+    按定义有
+    $$ \rho_\Omega(z)= \rho_{\mathbb{D}}(\varphi(z))|\varphi'(z)| 
+    = \frac{1}{R}\cdot \frac{2}{1-|\frac{z-c}{R}|^2} = \frac{2R}{R^2-|z-c|^2} .$$
+
+    (5) 考虑解析覆盖映射$\varphi: \Omega\to \mathbb{D}^*,\ z\mapsto \frac{z}{R}$, 按定义有
+    $$  \rho_\Omega(z)= \rho_{\mathbb{D}^*}(\varphi(z))|\varphi'(z)| 
+    = \frac{1}{R} \frac{1}{\big|\frac{z}{R}\big|\log \frac{R}{|z|}} 
+    = \frac{1}{|z|\log \frac{R}{|z|}}.$$
+
+    \item[8.2.4]
+    由Riemann映射定理, 取 $\varphi: \mathbb{D}\to \Omega$,
+    并且 $\varphi^{-1}(z)=0, \varphi^{-1}(w) = \zeta$,  则由 Koebe偏差定理  
+    $$  \frac{1-|\zeta|}{(1+|\zeta|)^3}
+    \le\frac{|\varphi'(\zeta)|}{|\varphi'(0)|}
+    \le \frac{1+|\zeta|}{(1-|\zeta|)^3}.  $$
+
+    由单连通区域上双曲度量的定义
+    \begin{align*}
+        |\log \rho_\Omega(z) - \log \rho_\Omega(w)| 
+        &= \Big|\log \frac{2}{|\varphi'(0)|} 
+        - \log \frac{2}{|\varphi'(\zeta)|(1-|\zeta|^2)} \Big| 
+        =  \Big|\log \frac{|\varphi'(\zeta)|(1-|\zeta|^2)}{|\varphi'(0)|}\Big|\\
+        &\le \log \Bigl(\frac{1+|\zeta|}{1-|\zeta|}\Bigr)^2 
+        = 2 d_{\mathbb{D}}(\varphi^{-1}(z),\varphi^{-1}(w)) = 2d_{\Omega}(z,w).
+    \end{align*}
+
+    \item[8.2.5] 取  $w \in \mathbb{D}_\Omega(z)$. 
+    由直径的定义只需证明  $\delta(z)\lesssim |w-z|\lesssim \delta(z)$. 
+    由习题 8.2.4,  $e^{-2} \rho_\Omega(z)\le \rho_{\Omega}(w)
+    \le e^{2}\rho_{\Omega}(z)$.取$\gamma$为连接 $z,w$的曲线, 
+    记 $\gamma'$ 为 $\gamma$于 $\mathbb{D}_{\Omega}$内部的部分,则
+    $$1=d_{\Omega}(z,w)\ge  \inf_{\gamma} \int_{\gamma'}\rho(\zeta) |\mathrm{d}\zeta|
+    \ge e^{-2}\rho(z)\inf_{\gamma} \int_{\gamma'} |\mathrm{d}\zeta|
+    \ge e^{-2}\rho(z) |w-z|\ge \frac{2e^{-2}|w-z|}{\delta(z)}.$$
+
+   再取 $\gamma_0$为连接 $z,w$的直线段,有
+   $$1 = d_{\Omega}(z,w)\le \int_{\gamma_0}\rho(\zeta) |\mathrm{d}\zeta|
+   \le e^2 \rho(z) |w-z|\le \frac{2e^2 |w-z|}{\delta(z)}.  $$
+
+   由此$\delta(z)\lesssim |w-z|\lesssim \delta(z)$, 命题得证.
+    \item[8.2.6]   (1) 由Green函数的共形不变性,
+    $$g_{\Omega}(z,a) = g_{\mathbb{D}}(\varphi(z),a) 
+    = \log \frac{1}{|\varphi(z)|}.$$
+    (2) 由 $\varphi:\Omega^*\to \mathbb{D}^*$是解析覆盖映射, 得到 
+    $$\rho_{\Omega^*}(z) = \rho_{^*}(\varphi(z))|\varphi'(z)| 
+    = \frac{|\varphi'(z)|}{|\varphi(z)|\log \frac{1}{|\varphi(z)|}}.$$
+    (3) 记 $\gamma$ 为 $\mathbb{D}^*$中连接 $w_1,w_2$的曲线,
+    不妨设 $|w_1|<|w_2|$, 有
+    $$d_{\mathbb{D}^*}(w_1,w_2) 
+    = \inf_{\gamma}\int_{\gamma}\rho(\zeta) |\mathrm{d}\zeta|
+    \ge \int_{|w_1|}^{|w_2|} \frac{r' \mathrm{d}r}{r\log \frac{1}{r}} 
+    = \log\left(\frac{\log|w_2|}{\log|w_1|}\right) 
+    = |\log g_{\mathbb{D}^*}(w_1,0)-\log g_{\mathbb{D}^*}(w_2,0)|.$$
+
+    对$w_1,w_2$作用 $\varphi^{-1}$就得到对 $z_1,z_2 \in \Omega^*$, 
+    $$d_{\Omega^*}(z_1,z_2)\ge|\log g_{\Omega^*}(z_1,a)-\log g_{\Omega^*}(z_2,a)|. $$
+\end{itemize}
+
+\subsection*{8.3 超双曲度量}
+
+\begin{itemize}
+    
+    \item[8.3.1]
+     注意到 $\varphi:\Omega_\infty\to \Omega_1,\ z\mapsto \frac{1}{z}$是共形变换, 
+     并且保持 $\mathbb{C}_{0,1}$上双曲度量, 得到对 $z \in \Omega_\infty$,
+     $$ \rho_{0,1}(z) = \rho_{0,1}\Big(\frac{1}{z}\Big)\frac{1}{|z|^2}
+     \ge \frac{|\xi'(z^{-1})|}{|z^2 \xi(z^{-1})|(4-\log|\xi(z^{-1})|)}
+     =\frac{1}{\sqrt{|z|(1-|z|)}(4-\log|\xi(z)|)}.$$
+
+     并且 $z\to \infty$时,由推论8.16 $$\rho_{0,1}(z) 
+     = \rho_{0,1}\Big(\frac{1}{z}\Big)\frac{1}{|z|^2} 
+     \sim  \frac{1}{|z|^2} \frac{|z|}{\log|z|} = \frac{1}{|z|\log|z|}\to 0.$$
+
+    \item[8.3.2]
+    由推论8.14和8.17,不妨设 $\Omega\subseteq \mathbb{C}\backslash\{0,\zeta\} $
+    且 $\zeta\ne \infty$ (否则 $\delta(z)$不良定义),则 $z\to \zeta$时
+    $$\rho_\Omega(z)\ge \rho_{\zeta,0}(z) 
+    = \frac{1+o(1)}{|z-\zeta|\log \frac{1}{|z-\zeta|}} 
+    = \frac{1+o(1)}{\delta(z)\log \frac{1}{\delta(z)}}.$$
+
+    同时由  $B(z,\delta(z))\subseteq \Omega$, 有  
+     $$\rho_{\Omega}(z)\le \rho_{B(z,\delta(z))}(z) 
+     = \frac{2\delta(z)}{\delta(z)^2 - |z-z|^2} = \frac{2}{\delta(z)}.$$
+    \item[8.3.3]
+    (1)若 $\mathbb{C}^*$上存在超双曲度量 $\rho_{\mathbb{C}^*}$,
+    对固定的  $z$, 取 $z \in B(z,R)\backslash\{0\}\subseteq \mathbb{C}^*, \ R>0$, 
+    从而
+    $\rho_{\mathbb{C}^*}(z)\le \rho_{B(z,R)\backslash\{0\}}(z) 
+    =\frac{1}{|z|\log \frac{R}{|z|}}. $
+    令 $R\to \infty$, 就得到 $\rho_{\mathbb{C}^*}(z) =0$, 
+    由 $z$任意性知  $\rho_{\mathbb{C}^*}\equiv 0$, 矛盾, 
+    故不存在 $\mathbb{C}^*$上的双曲度量.
+
+    (2)若 $\mathbb{C}$上存在超双曲度量 $\rho_{\mathbb{C}}$,
+    对固定的  $z$, 考虑 $z \in B(z,R)\subseteq \mathbb{C}, \ R>0$, 从而
+    $\rho_{\mathbb{C}}(z)\le \rho_{B(z,R)}(z) =\frac{2R}{R^2-|z|^2}$.
+    令 $R\to \infty$, 就得到 $\rho_{\mathbb{C}}(z) =0$, 
+    由 $z$任意性知  $\rho_{\mathbb{C}}\equiv 0$, 矛盾, 
+    故不存在 $\mathbb{C}$上的双曲度量.
+
+    \item[8.3.4]
+     不妨设 $\Omega \subseteq \mathbb{C}_{0,1}$, 
+     按定义 $$\lim_{z \to \zeta}\frac{\rho_{\Omega}(z)}{\rho_{S}(z)} 
+     = \lim_{z \to \zeta} \frac{(1+|z|^2)\rho_\Omega(z)}{2}.$$
+    (1) 若 $\zeta \ne \infty$, 则 由推论8.17知 
+    $\lim_{z \to \zeta}\rho_{\Omega}(z) = \infty$, 显然有
+    $$\lim_{z \to \zeta}\frac{\rho_{\Omega}(z)}{\rho_{S}(z)} 
+    = \lim_{z \to \zeta} \frac{(1+|z|^2)\rho_\Omega(z)}{2} = \infty.$$
+    (2) 若 $\zeta =\infty$, 则由 习题8.3.1 
+    $$\lim_{z \to \infty}\frac{\rho_{\Omega}(z)}{\rho_{S}(z)} 
+    = \lim_{z \to \infty} \frac{(1+|z|^2)\rho_\Omega(z)}{2}
+    \ge \frac{1}{4} \lim_{z \to \infty}\frac{|z|^2}{|z|\log|z|}=\infty.$$
+
+    \item[8.3.5] (限于笔者水平，此处只能给出$\Omega$是单连通区域的证明) 假定区域单连通，对固定的$z_0\in \Omega$, 取黎曼映射
+    $\varphi: \mathbb{D} \mapsto \Omega$使得$\varphi(0)=z_0$. 则
+    $$\mathbb{D}_{\Omega}(z_0) = \{z\in \Omega | d_\Omega(z,z_0) <1\} = \{w\in \mathbb{D} | d_\mathbb{D}(w,0) <1\}= \{|w|<\frac{e-1}{e+1}\}.$$
+    按定义，有
+    $$\operatorname{diam}\mathbb{D}_{\Omega}(z_0)\le2|\varphi(w)|\le 2\frac{|w|}{(1-|w|)^2}|\varphi'(0)|\lesssim|\varphi'(0)| .$$
+    再使用偏差定理，有
+    $$\frac{1}{4}|\varphi'(0)|\le d_{E}(\varphi(z),\partial \varphi(\mathbb{D}))\le d_{E}(z_0,\partial \Omega),$$
+    此处$d_E$代表标准欧氏度量.至此题目结论是显然的.
+
+    \item[8.3.6]  不妨设 $f:\mathbb{C}\to \mathbb{C}_{0,1}$. 
+    考虑  $\tilde{f}:\mathbb{D}\to \mathbb{C}_{0,1}, \ z \mapsto f(2Rz)$, 
+    则由Schottkey定理
+    $$\sup_{|z| = R} \log|f(z)| = \sup_{|z| = \frac{1}{2}} \log|\tilde{f}(z)|
+    \le (\eta^{-1}+\log^+ |f(0)|)\frac{1+|z|}{1-|z|}
+    -\eta^{-1}\Big|_{|z|=\frac{1}{2}}<+\infty.$$
+    注意到 $R$可以任意大,上式说明 $f$是 $\mathbb{C}$ 上有界的解析函数, 
+    由Liouville定理知其为常值.
+\end{itemize}

@@ -1,0 +1,1534 @@
+\def\r{\boldsymbol{r}}
+\def\v{\boldsymbol{v}}
+\def\a{\boldsymbol{a}}
+\def\xx{\boldsymbol{x}}
+\def\p{\boldsymbol{p}}
+\def\q{\boldsymbol{q}}
+\newcommand{\h}{\boldsymbol{h}}
+\def\pp{\boldsymbol{P}}
+\def\rr{\boldsymbol{R}}
+\def\f{\boldsymbol{f}}
+\def\F{\boldsymbol{F}}
+\def\G{\boldsymbol{G}}
+\def\M{\boldsymbol{M}}
+\def\J{\boldsymbol{J}}
+\def\j{\mathbb{J}}
+\def\tr{\operatorname{tr}}
+\def\o{\boldsymbol{\omega}}
+\def\dis{\displaystyle}
+\theoremstyle{plain}\newtheorem{formula}{公式}
+\theoremstyle{remark}\newtheorem{ge}{推广}
+{{comment|整理《经典物理选讲》的笔记于此，只做了一部分。以后的人可以继续写下去，谢谢。}}
+\section{牛顿力学}
+本章的参考材料为\cite{Li}第1章。
+\subsection{质点运动}
+\begin{definition}
+    \begin{itemize}
+        \item[$\circ$] 位矢 $\r(t)$.
+        \item[$\circ$] 速度 $\v=\.{\r}(t)$.
+        \item[$\circ$] 加速度 $\displaystyle \a=\"{\r}=\frac{d\v}{dt}=\frac{d^2\r}{dt^2}$.
+    \end{itemize}
+\end{definition}
+\begin{definition}
+    设平面上的点$(x,y)=(r\cos\theta,r\sin\theta)$，
+    $e_r,e_\theta$分别为沿$r,\theta$增加的方向的单位向量，即
+    $$e_r\coloneqq (\cos\theta,\sin\theta),\quad
+    e_\theta\coloneqq -(\sin\theta,\cos\theta).$$
+\end{definition}
+\begin{formula}
+    $$\.e_r=\.\theta e_\theta,\quad\.e_\theta=-\.\theta e_r.$$
+    $$\v=\frac{d}{dt}(re_r)=\.re_r+r\.\theta e_\theta,$$
+    $$\text{即}\quad v_r=\.r,\quad v_\theta=r\.\theta.$$
+\end{formula}
+\begin{formula}
+    \begin{align*}\a&=\frac{d}{dt}(\.re_r+r\.\theta e_\theta)\\
+    &=\"re_r+\.r\.\theta e_\theta+\.r\.\theta e_\theta+r\"\theta e_\theta+r\.\theta(-\.\theta e_r)\\
+    &=(\"r-r\.\theta^2)e_r+(2\.r\.\theta+r\"\theta)e_\theta,\end{align*}
+    $$\text{即}\quad a_r=\"r-r\.\theta^2,
+    \quad a_\theta=2\.r\.\theta+r\"\theta=\frac{1}{r}\frac{d}{dt}(r^2\.\theta).$$
+\end{formula}
+\begin{definition}
+    当质点的轨道给定，任取轨道上一点$Q$为原点，定义$Q$到$P$的弧长$s$为$P$的\textbf{弧坐标}。
+\end{definition}
+\begin{formula}
+    设位矢为$\r=\r(s)$，速度为
+    $$\v=\frac{d\r}{dt}=\frac{d\r}{ds}\frac{ds}{dt}=\.s\tau,$$
+    其中$\tau$为切线方向的单位矢量（因为$|\tau|=\frac{|d\r|}{ds}=1$），加速度为
+    $$\a=\frac{d}{dt}(\.s\tau)=\"s\tau+\.s^2\frac{d\tau}{ds}
+    =\"s\tau+\frac{\.s^2}{\rho}n,$$
+    其中\textbf{曲率矢量}$$\boldsymbol{N}=\frac{d\tau}{ds}=Nn=\frac{n}{\rho}.$$
+    曲率矢量的方向称为\textbf{主法线方向}，通常指向直线弯曲的一侧，
+    $n$为主法线方向的单位矢量，$N$称为空间曲线的\textbf{曲率}，
+    $\rho$称为\textbf{曲率半径}（是曲线内切圆的半径），于是有\textbf{内秉方程}
+    $$a_\tau=\"s=\.v=v\frac{dv}{ds},\quad a_n=\frac{\.s^2}{\rho}=\frac{v^2}{\rho}.$$
+\end{formula}
+\begin{formula}
+    对于不同的轨道方程，曲率半径为
+    \begin{align*}
+        \begin{cases}x=x(t),\\y=y(t),\end{cases}
+        &\quad\rho=\frac{(\.x^2+\.y^2)^{3/2}}{|\.x\"y-\"x\.y|};\\
+        \begin{cases}x=x(s),\\y=y(s),\\z=z(s),\end{cases}
+        &\quad\rho=\frac{1}{\sqrt{\"x_s^2+\"y_s^2+\"z_s^2}}.
+    \end{align*}
+\end{formula}
+\begin{example}
+    地面上有一半球形粗糙凹坑，质点在坑边无初速地跌入，求质点到达坑底的速度。
+    凹坑的半径为$R$，坑与质点之间的摩擦系数为$\mu$。
+\begin{tikzpicture}
+    \draw[->-,>=stealth](1.2,-1.6)to(0.6,-0.8);
+    \draw[->-,>=stealth](1.2,-1.6)to(1.2,-2.6);
+    \draw[->-,>=stealth](1.2,-1.6)to(1.6,-1.3);
+    \draw(2.05,0)to(2.5,0);
+    \draw(-2.5,0)to(-2.05,0);
+    \draw[dashed](0.3,-0.4)to(0,0)to(2,0);
+    \draw[dashed](0.72,-1.96)to(1.2,-1.6)to(1.68,-2.24);
+    \filldraw (1.2,-1.6) circle (0.05);
+    \draw (-2.05,0)arc(180:360:2.05);
+    \coordinate [label=center:$R$] (R) at (1,0.2);
+    \coordinate [label=center:$mg$] (mg) at (1.2,-2.8);
+    \coordinate [label=center:$N$] (N) at (0.48,-0.64);
+    \coordinate [label=center:$\mu N$] (muN) at (1.92,-1.15);
+    \coordinate [label=center:$\theta$] (theta) at (0.4,-0.2);
+    \coordinate [label=center:$\theta$] (theta) at (1.05,-1.9);
+\end{tikzpicture}
+\end{example}
+\begin{proofc}[解答] 从切向、法向的受力有
+    \begin{equation*}\left\{\begin{aligned}
+        mg\cos\theta-\mu N&=m\frac{dv}{dt},\\
+        N-mg\sin\theta&=mv^2/R.
+    \end{aligned}\right.\end{equation*}
+    两式消去$N$，得
+    $$\frac{dv}{dt}=g\cos\theta-\mu(g\sin\theta+v^2/R),$$
+    即
+    $$2R\frac{dv}{dt}=2gR(\cos\theta-\mu\sin\theta)-2\mu v^2.$$
+    为了使上式不显含$t$，把左边化为
+    $$2R\frac{dv}{dt}=2R\frac{d\theta}{dt}\frac{dv}{d\theta}
+    =2v\frac{dv}{d\theta}=\frac{d(v^2)}{d\theta},$$
+    再令$v^2=z$，那么
+    $$\frac{dz}{d\theta}+2\mu z-2gR(\cos\theta-\mu\sin\theta)=0.$$
+    现在解微分方程。乘以$e^{2\mu\theta}$有
+    $$e^{2\mu\theta}\frac{dz}{d\theta}+2\mu e^{2\mu\theta}z
+    =2gR(\cos\theta-\mu\sin\theta)e^{2\mu\theta},$$
+    两边对$\theta$积分，得
+    $$e^{2\mu\theta}z=gR\int2(\cos\theta-\mu\sin\theta)e^{2\mu\theta}.$$
+    由于
+    $$2(\cos\theta-\mu\sin\theta)
+    =e^{i\theta}+e^{-i\theta}+i\mu(e^{i\theta}-e^{-i\theta})
+    =(1+i\mu)e^{i\theta}+(1-i\mu)e^{-i\theta},$$
+    得
+    $$e^{2\mu\theta}z=gR\bigg(\frac{1+i\mu}{i+2\mu}e^{(i+2\mu)\theta}
+    +\frac{1-i\mu}{-i+2\mu}e^{(-i+2\mu)\theta}+C\bigg).$$
+    当$\theta=0$时，$z=v^2=0$，确定了$C$，即
+    $$e^{2\mu\theta}z=gR\bigg(\frac{1+i\mu}{i+2\mu}(e^{(i+2\mu)\theta}-1)
+    +\frac{1-i\mu}{-i+2\mu}(e^{(-i+2\mu)\theta}-1)\bigg).$$
+    坑底处$\theta=\frac{\pi}{2}$，代入得
+    $$e^{\mu\pi}z=gR\bigg(\frac{1+i\mu}{i+2\mu}(ie^{\mu\pi}-1)
+    +\frac{1-i\mu}{-i+2\mu}(-ie^{\mu\pi}-1)\bigg),$$
+    算出来
+    $$v=z^{1/2}
+    =\bigg(\frac{-2\mu^2-3\mu e^{-\mu\pi}+1}{1+4\mu^2}2gR\bigg)^{1/2}.\qedhere$$
+\end{proofc}
+\textbf{习题1.}如图，曲柄$OA$长为$r$，以恒定角速度$\omega$绕定点$O$转动。
+此曲柄借连杆$AB$使滑块$B$沿直线$Ox$运动。
+求连杆中点$C$的轨迹和速率。
+\begin{proofc}[解答]
+    $C$的坐标为
+    $$(r\cos\phi+\sqrt{a^2-\Big(\frac{r}{2}\sin\phi\Big)^2},\frac{r}{2}\sin\phi),
+    \quad \phi=\omega t,$$
+    速率为
+    \begin{align*}
+        |(-r\sin\phi\,\omega-\frac{r^2}{2}\sin\phi\cos\phi\,\omega\Big/
+        \sqrt{a^2-\Big(\frac{r}{2}\sin\phi\Big)^2},
+        \frac{r}{2}\cos\phi\,\omega)|\\
+        =r\omega\sqrt{\bigg(\sin\phi+\frac{r}{2}\sin\phi\cos\phi\Big/
+        \sqrt{a^2-\Big(\frac{r}{2}\sin\phi\Big)}\bigg)^2
+        +\Big(\frac{\cos\phi}{2}\Big)^2}.
+    \end{align*}
+\end{proofc}
+\textbf{习题2.}质点作平面运动，其速度为
+$$\v=pe_x+qe_\theta,$$
+其中$p,q$为常量，且$q>p>0$。求极坐标轨道方程。
+\begin{proofc}[解答]
+    注意到$$e_x=e_r\cos\theta-e_\theta\sin\theta,$$
+    得$$\.re_r+r\.\theta e_\theta
+    =p(e_r\cos\theta-e_\theta\sin\theta)+qe_\theta,$$
+    即\[\left\{\begin{aligned}
+        \.r&=p\cos\theta,\\
+        r\.\theta&=-p\sin\theta+q,
+    \end{aligned}\right.\]
+    于是$$\frac{\.r}{r}=\frac{p\cos\theta\,\.\theta}{-p\sin\theta+q},$$
+    得$$r(-p\sin\theta+q)=C.\qedhere$$
+\end{proofc}
+\textbf{习题3.}直线$FM$在一给定的椭圆平面内以匀角速$\o$转动。
+求此直线与椭圆交点$M$的速度。已知以焦点为坐标原点的椭圆的极坐标方程为
+$$r=\frac{a(1-e^2)}{1+e\cos\theta},$$
+式中$a$为椭圆的长半轴，$e$为偏心率，都是常数。
+\begin{proofc}[解答]
+    $$\.{\r}=\frac{e\sin\theta}{1+e\cos\theta}\r\omega,$$
+    速度及其大小为
+    $$\v=\frac{e\sin\theta}{1+e\cos\theta}r\omega e_r+r\omega e_\theta,$$
+    $$v=r\omega\bigg|\Big(\frac{e\sin\theta}{1+e\cos\theta},1\Big)\bigg|
+    =r\omega\frac{\sqrt{1+2e\cos\theta+e^2}}{1+e\cos\theta}.\qedhere$$
+\end{proofc}
+\textbf{习题8.}一质点沿着抛物线$y^2=2qx$运动，其切向加速度的量值为法向加速度量值的$2k$倍，
+如此质点从正交弦$(\frac{q}{2},q)$的一段以速度$u$出发，
+试求其达到正交弦另一端$(\frac{q}{2},-q)$时的速率。
+\begin{proofc}[解答]
+    要$$a_\tau=2ka_n,$$
+    即$$v\frac{dv}{ds}=2k\frac{v^2}{\rho},$$
+    用$\dis \rho=\left|\frac{ds}{d\theta}\right|$，$\theta$是切线与$x$轴的夹角，得
+    $$\frac{dv}{v}=2k\frac{ds}{\rho}=2kd\theta,$$
+    由此$$v=e^{2k\theta+C}.$$
+    起点与终点的切线及夹角分别为
+    \begin{align*}
+        qy=q\Big(x+\frac{q}{2}\Big),&\quad\theta=\frac{\pi}{4},\\
+        -qy=q\Big(x+\frac{q}{2}\Big),&\quad\theta=\frac{3\pi}{4},\\
+    \end{align*}
+    故末速率为
+    $$v=ue^{k\pi}.\qedhere$$
+\end{proofc}
+\textbf{习题9.}质点沿着半径为$R$的圆周运动，加速度与速度的夹角为$\alpha$，
+初速度为$v_0$。试证质点的速度可表示为
+$$v=v_0e^{(\theta-\theta_0)\cot\alpha}.$$
+\begin{proofc}
+    要$$a_\tau=a_n\cot\alpha,$$
+    即$$\.v=\frac{v^2}{R}\cot\alpha,$$
+    得$$\frac{\.v}{v}=\frac{v}{R}\cot\alpha=\.\theta\cot\alpha,$$
+    由此$$v=e^{\theta\cot\alpha+C},$$
+    代入初值得
+    $$v=v_0e^{(\theta-\theta_0)\cot\alpha}.\qedhere$$
+\end{proofc}
+\textbf{习题15.}物体沿铅垂平面内开口向上的光滑摆线运动，证明质点一定作简谐振动，
+且周期与振幅的大小无关。摆线的参数方程是
+$$x=b(2\theta+\sin2\theta),\quad y=b(1-\cos2\theta).$$
+提示：用自然坐标。
+\begin{proofc}
+    由$$(\.x,\.y)=(b\.\theta(2+2\cos2\theta),b\.\theta\,2\sin2\theta),$$
+    有$$v=b\.\theta\,2(2\cos\theta)=4b(\sin\theta)'.$$
+    切向加速度由重力的切向分力引起，即
+    $$a_\tau=-g\sin\theta,$$
+    又$$a_\tau=\.v=4b(\sin\theta)'',$$
+    解得$$\sin\bigg(2\sqrt{\frac{b}{g}}\theta\bigg)=C\sin(t-t_0),$$
+    从而周期是
+    $$T=2\pi\sqrt{\frac{b}{g}}.\qedhere$$
+\end{proofc}
+\subsection{质点力学}
+\begin{definition}
+    一个质点在惯性系中所受的力通常可表示为$\r,\.{\r},t$的函数，所以牛顿第二定律是微分方程
+    $$m\"{\r}=\F(\r,\.{\r},t).$$
+    如果质点的运动受到某种限制，比如被限制在某个曲面或曲线上运动，
+    这种限制称为\textbf{约束}，这种运动叫作\textbf{约束运动}。
+    这实际上是产生约束的物体（称为\textbf{约束物体}）对质点提供的反作用力，通常是弹性力。
+    相应的微分方程是
+    $$m\"{\r}=\F(\r,\.{\r},t)+\boldsymbol{R}.$$
+\end{definition}
+解算约束运动，一般用内秉方程方便，对于表面光滑的曲线，取$\tau,n,b$为右手坐标系，有
+\begin{align*}
+    m\frac{dv}{dt}&=F_\tau,\\
+    m\frac{v^2}{r}&=F_n+R_n,\\
+    0&=F_b+R_b.
+\end{align*}
+\begin{definition}
+    引入\textbf{动量}
+    $$\p=m\v,$$
+    因为经典力学中质点的质量为常数，牛顿第二定律$\F=m\a$可以写成
+    $$\F=\frac{d\p}{dt},$$
+    称为\textbf{动量定理}，在广义相对论下仍然成立，尽管那时$m$不再是常数了。
+\end{definition}
+\begin{theorem}
+    当$\F=0$时，有
+    $$\p=\text{常数},$$
+    叫做\textbf{动量守恒定律}。当某个直角坐标分量$\F_x=0$时，有
+    $$\p_x=\text{常数}.$$
+    将动量定理对时间积分，得\textbf{冲量}等于动量的增加，系
+    $$\text{冲量}\coloneqq\int_{t_1}^{t_2}\F\,dt=\Delta\p.$$
+\end{theorem}
+根据动量定理，有
+$$\r\times\F=r\times\frac{d\p}{dt}
+=\frac{d}{dt}(\r\times\p)-\frac{d\r}{dt}\times\p,$$
+右端第二项即$\v\times m\v=0$。引入以下概念：
+\begin{definition}
+    \begin{itemize}
+        \item[$\circ$] 力矩 $\M=\r\times\F$。
+        \item[$\circ$] 角动量 $\J=\r\times\p=\r\times m\.{\r}$。
+    \end{itemize}
+\end{definition}
+可得\textbf{角动量定理}$$\M=\frac{d\J}{dt}.$$
+若$\M=0$，则$\J=$常数，这称为\textbf{角动量守恒定律}；
+特别地，若$\F/\!/\,\r$，则角动量守恒。
+
+再根据动量定理，有
+$$\r\cdot\F=r\cdot\frac{d\p}{dt}
+=\frac{d}{dt}(\r\cdot\p)-\frac{d\r}{dt}\cdot\p
+=\frac{d}{dt}(\r\cdot\p)-2T,$$
+其中$\dis T=\frac{1}{2}mv^2$为质点的\textbf{动能}。移项有
+$$\r\cdot\F+2T=\frac{d}{dt}(\r\cdot\p),$$
+如果质点的$\r,\p$均保持有限，对一段时间$\tau$取平均，即
+$$\frac{1}{\tau}\int_{t_0}^{t_0+\tau}(\r\cdot\F)\,dt
+=\frac{1}{\tau}\r\cdot\p\Big|_{t_0}^{t_0+\tau},$$
+令$\tau\to\infty$，上式右端为$0$，于是得到
+$$\overline{T}=-\frac{1}{2}\overline{\r\times\F},$$
+上横线代表对无限长时间取平均，此式称为\textbf{位力原理}。
+
+\subsection{运动参考系}
+经典力学是建立在伽利略和牛顿所提出的绝对时空观基础之上的，
+按照绝对时空观，两个处在不同参考系中的观察者，所观测到的空间距离和时间间隔
+不会因参考系的相对运动而存在差异。
+\subsubsection*{平动参考系}
+    设参考系$S'$相对于$S$平动，$\overrightarrow{OO'}=\r_0$。
+    称$S$为\textbf{静止参考系}，$S'$为\textbf{运动参考系}.
+    由$$\r=\r'+\r_0,$$
+    有$$\v=\v'+\v_0.$$
+    称$\v$为\textbf{绝对速度}，$\v'$为\textbf{相对速度}，$\v_0$为\textbf{牵连速度}，
+    又有$$\a=\a'+\a_0.$$
+    称$\a$为\textbf{绝对加速度}，$\a'$为\textbf{相对加速度}，$\a_0$为\textbf{牵连加速度}.
+    于是得到$S$系中的运动方程
+    $$\F=m\a+m\a_0,$$
+    为了将$S’$系中的运动方程写成牛顿第二定律的形式，移项得
+    $$\F+\G=m\a',$$
+    其中$\G=-m\a_0$为\textbf{惯性力}。
+
+\subsubsection*{转动参考系}
+参考系绕轴线以角速度$\o$转动，轴线通过原点$O$，
+其中\textbf{角速度矢量}$\o$的方向与转动方向成右手螺旋关系，
+$$\v=\o\times\r$$称为\textbf{牵连速度}，成立
+$$|\v|=|\o\times\r|=|\o||\r|\sin\theta=|\o|R.$$
+\begin{tikzpicture}
+    \draw[->-,>=stealth](0,0)to(1,0);
+    \draw[->-,>=stealth](-4,0)to(0,-1.5);
+    \draw[->-,>=stealth](0,-1.5)to(0.5,-1);
+    \draw(-4,0)to(-0.6,0);
+    \draw[dashed](-0.6,0)to(0,0);
+    \draw[dashed](0,0)to(0,-1.5);
+    \draw[->] (-0.591,0.75)arc(-210:170:0.6 and 1.5);
+    \coordinate [label=center:$\r$] (r) at (0,-1.7);
+    \coordinate [label=center:$\v$] (v) at (0.64,-0.9);
+    \coordinate [label=center:$\o$] (omega) at (1.2,0);
+    \coordinate [label=center:$O$] (O) at (-4.25,0);
+    \coordinate [label=center:$R$] (R) at (0,-0.7);
+    \coordinate [label=center:$\theta$] (theta) at (-3.1,-0.17);
+\end{tikzpicture}
+设参考系$S'$与$S$的原点重合，$S'$系以角速度$\o$相对于$S$系转动，
+不妨设$S'$系绕$z$轴转动。
+
+取任意矢量$\boldsymbol{P}$，它在$S'$系中分解为
+$$\pp=P_x'e_x'+P_y'e_y'+P_z'e_z',$$
+则
+$$\frac{d\pp}{dr}
+=\Big(\frac{dP_x'}{dt}e_x'+\frac{dP_y'}{dt}e_y'+\frac{dP_z'}{dt}e_z'\Big)
++\Big(P_x'\frac{de_x}{dt}+P_y'\frac{de_y}{dt}+P_z'\frac{de_z}{dt}\Big),$$
+由于
+$$\frac{de_x'}{dt}=\o\times e_x',\quad
+\frac{de_x'}{dt}=\o\times e_x',\quad
+\frac{de_x'}{dt}=\o\times e_x',$$
+于是
+$$\frac{d\pp}{dt}=\frac{d'\pp}{dt}+\o\times\pp,$$
+其中
+$$\frac{d'\pp}{dt}=\frac{dP_x'}{dt}e_x'+\frac{dP_y'}{dt}e_y'+\frac{dP_z'}{dt}e_z'$$
+称为\textbf{相对变化率}，是$\pp$在$S'$系中随时间的变化率，
+$\o\times\pp$称为\textbf{相对变化率}，$\dis \frac{d\pp}{dt}$是\textbf{绝对变化率}。
+
+取$\pp=$位矢$\r$，有
+$$\v=\v'+\o\times\r,$$
+这是\textbf{绝对速度}$\v$与\textbf{相对速度}$\v'$的关系，
+$\o\times\r$称为\textbf{转动牵连速度}。
+\begin{align*}
+    \frac{d\v}{dt}&=\frac{d\v'}{dt}+\frac{d\o}{dt}\times\r+\o\times\v\\
+    &=\Big(\frac{d'\v'}{dt}+\o\times\v'\Big)+\frac{d\o}{dt}\times\r
+    +\o\times(\v'+\o\times\r)\\
+    &=\frac{d'\v'}{dt}+\frac{d\o}{dt}\times\r
+    +\o\times(\o\times\r)+2\o\times\v',
+\end{align*}
+这是\textbf{绝对加速度}$\dis \a=\frac{d\v}{dt}$
+与\textbf{相对加速度}$\dis \a'=\frac{d'\v'}{dt}$的关系，
+$\dis \frac{d\o}{dt}\times\r$称为\textbf{转动牵连加速度}，
+$\o\times(\o\times\r)$称为\textbf{向轴加速度}，
+$2\o\times\v'$称为\textbf{科里奥利加速度}。
+
+于是得到$S'$中质点的动力学方程
+$$m\a'=\F-m\frac{d\o}{dt}\times\r
+-m\o\times(\o\times\r)-2m\o\times\v',$$
+引入了三种惯性力：
+\begin{itemize}
+        \item[$\circ$] $\dis -m\frac{d\o}{dt}\times\r$是参考系$S'$的角速度引起的惯性力，
+        当$\o$为恒矢量时此项为零；
+        \item[$\circ$] $-m\o\times(\o\times\r)$称为\textbf{惯性离心力}；
+        \item[$\circ$] $-2m\o\times\v'$称为\textbf{科里奥利力}，
+        在地球表面引起一系列的效应：气旋，河岸冲刷，铁轨磨损，落体东偏等.
+\end{itemize}
+\subsubsection*{一般参考系}
+下面来研究地球运动所引起的效应，地球是匀速自转的非惯性系。
+把坐标放在$S'=O'x'y'z'$，记$\overrightarrow{OO'}=\rr$，
+$\overrightarrow{OP}=\r$，$\overrightarrow{O'P}=\r'$，
+有$\dis \frac{d\o}{dt}=0$，$|\r'|\ll|\rr|$即$\r\approx\rr$，那么
+$$\a=\a'+\o\times(\o\times\rr)+2\o\times\v'.$$
+于是得到地球上的运动方程
+$$m\a'=\F-m\o\times(\o\times\rr)-2m\o\times\v'.$$
+
+设物体在纬度$\lambda$处，从$h$高度自由落下，在地球表面建立坐标系，
+$z$轴向上，$x$轴向南，$y$轴向东，落体方程为
+$$m\"{\r}=m\boldsymbol{g}-2m\o\times\v.$$
+\begin{tikzpicture}
+    \draw (0,0) circle (2);
+    \draw[dashed] (0,0) ellipse (1.03 and 2);
+    \draw[dashed] (0.9,1)to(0,0)to(1,-0.2);
+    \draw[->-,>=stealth] (0.9,1)to(1.1,0.2);
+    \draw[->-,>=stealth] (0.9,1)to(1.7,1.1);
+    \draw[->-,>=stealth] (0.9,1)to(1.485,1.65);
+    \draw[->-,>=stealth] (0.9,1)to(0.9,1.84);
+    \coordinate [label=center:$\lambda$] (lambda) at (0.3,0.13);
+    \coordinate [label=center:$x$] (x) at (1.14,0.08);
+    \coordinate [label=center:$y$] (y) at (1.8,1.1);
+    \coordinate [label=center:$z$] (z) at (1.54,1.76);
+    \coordinate [label=center:$\o$] (omega) at (0.9,1.98);
+\end{tikzpicture}
+为了这一方程写成分量的形式，计算
+$$\o=(-\omega\cos\lambda,0,\omega\sin\lambda),\quad \v=(\.x,\.y,\.z),$$
+$$\o\times\v=(-\.y\omega\sin\lambda,
+\omega\cos\lambda\,\.z+\omega\sin\lambda\,\.x,-\omega\cos\lambda\,\.y),$$
+于是
+\[\left\{\begin{aligned}m\"x&=2m\.y\,\omega\sin\lambda,\\
+    m\"y&=-2m(\omega\cos\lambda\,\.z+\omega\sin\lambda\,\.x),\\
+    m\"z&=-mg+2m\omega\cos\lambda\,\.y,\\
+\end{aligned}\right.\quad\text{即}\quad
+\left\{\begin{aligned}\"x&=2\.y\,\omega\sin\lambda,\\
+    \"y&=-2\omega(\cos\lambda\,\.z+\sin\lambda\,\.x),\\
+    \"z&=-g+2\omega\cos\lambda\,\.y.\\
+\end{aligned}\right.\]
+当$h\ll R$时忽略$\omega\.x,\omega\.y$，有
+\[\left\{\begin{aligned}\"x&=0,\\
+    \"y&=-2w\cos\lambda\,\.z,\\
+    \"z&=-g.\\
+\end{aligned}\right.\]
+积分两次，结合初始条件
+\begin{align*}(x(0),y(0),z(0))&=(0,0,h),\\
+(\.x(0),\.y(0),\.z(0))&=(0,0,0),\end{align*}
+得\[\left\{\begin{aligned}x&=0,\\
+    y&=\frac{1}{3}\omega gt^3\cos\lambda,\\
+    z&=h-\frac{1}{2}gt^2.\\
+\end{aligned}\right.\]
+从后两个方程中消去$t$，得轨道方程
+$$y^2=-\frac{8}{9}\frac{\omega^2\cos^2\lambda}{g}(z-h)^3.$$
+到达地面时$z=0$，向东的偏移值为
+$$y=\frac{1}{3}\sqrt{\frac{8h^3}{g}}\omega\cos\lambda.$$
+取$\lambda=45^\circ$，$h=100$米，有$y\approx1.535$厘米，该值很小，故难以察觉。
+
+\textbf{习题22.}位于竖直平面里的光滑滑钢丝圈的半径为$r$，其上套一质量为$m$的小环。
+若钢丝圈以恒定加速度$a$沿竖直方向运动，求小环相对速度的量值$v'$及圈对小环的约束力$\rr$，
+用极角$\theta$表示，设$x$轴竖直向下。
+\begin{proofc}[解答]
+    功能原理表明
+    $$(mg-ma)(r\cos\theta_0-r\cos\theta)=\frac{1}{2}mv'^2-\frac{1}{2}m{v'_0}^2,$$
+    故
+    $$v'=\sqrt{{v'_0}^2+2(g-a)(r\cos\theta_0-r\cos\theta)}.$$
+    \begin{tikzpicture}[scale=1.5]
+        \draw (0,0) circle (1);
+        \draw[->-,>=stealth] (0.73,-0.67)to(0.23,-0.17);
+        \draw[->-,>=stealth] (0.73,-0.67)to(1.03,-0.97);
+        \draw[->-,>=stealth] (0.73,-0.67)to(0.73,-1.1);
+        \draw[rotate=-45,very thick,lightgray] (1.02,0)arc(-70:265:0.1 and 0.05);
+    \end{tikzpicture}
+    以钢丝圈为参照系，径向的受力平衡为
+    $$R=\frac{mv'^2}{r}-(mg-ma)\cos\theta,$$
+    得到
+    $$R=\frac{m{v'_0}^2}{r}+(mg-ma)(2\cos\theta_0-3\cos\theta).\qedhere$$
+\end{proofc}
+
+\textbf{习题23.}竖直的$Oxy$平面内固定有一光滑曲线$y=f(x)$，
+$Oxy$平面绕竖直轴$y$以角速度$\o$转动。一质量为$m$的小环穿在曲线上，
+并可在曲线上任意位置实现相对平衡。求曲线的方程和小环所受的约束力，设曲线过原点$O$.
+\begin{proofc}[解答]
+    约束力$\rr$与曲线的切线垂直，于是有
+    $$f'(x)=\frac{m\omega^2x}{mg},$$
+    即$$f(x)=\frac{\omega^2x^2}{2g}.$$
+\begin{tikzpicture}
+\begin{semilogyaxis}
+\draw[domain=0:1.8]plot(\x,{\x^2/4});
+\draw[->-,>=stealth](1,0.25)to(1,-0.35);
+\draw[->-,>=stealth](1,0.25)to(1.3,0.25);
+\draw[->-,>=stealth](1,0.25)to(0.7,0.85);
+\coordinate [label=center:$\rr$] (R) at (0.6,1.05);
+\end{semilogyaxis}
+\end{tikzpicture}
+    $\rr$的大小为
+    $$R=m\sqrt{g^2+(\omega^2x)^2}.\qedhere$$
+\end{proofc}
+\textbf{习题24.}一质点在北纬$\lambda$处自地面竖直上抛，
+它到达的最大高度为$h$，求它回至地面时，相对于初位置的偏离。
+\begin{proofc}[解答]
+    以最高时为$t=0$，设抛起时$t=t_0<0$，落地时$t=t_1>0$。现在的条件是
+\begin{align*}
+    (x(t_0),y(t_0),z(t_0))&=(0,0,0),\\
+\.x(t_0)=\.y(t_0)&=0,\\
+z(0)=h,\ \ \.z(0)&=0,\end{align*}
+得\[\left\{\begin{aligned}x&=0,\\
+    y&=\omega g\cos\lambda\Big(\frac{1}{3}gt^3-\frac{1}{2}t_0t^2+\frac{1}{6}t_0^3\Big),\\
+    z&=h-\frac{1}{2}gt^2.\\
+\end{aligned}\right.\]
+抛起与落地时$z=0$，有$-t_0=t_1=\sqrt{\frac{2h}{g}}$，对应
+$$y(t_0)=-y(t_1)=2\omega g\cos\lambda\sqrt{\frac{8h^3}{g^3}}
+=\frac{2}{3}\omega\cos\lambda\sqrt{\frac{8h^3}{g}},$$
+故向东偏离的距离是$$y=y(t_1)-y(t_0)=-\frac{4}{3}\omega\cos\lambda\sqrt{\frac{8h^3}{g}}.\qedhere$$
+\end{proofc}
+\textbf{习题25.}在北纬$\lambda$处以仰角$\alpha$向东抛出一质点，
+因地球的自转，质点的落地点将发生向南的横向偏移，证明偏移量为
+$\dis \frac{4v_0^3\omega\sin\lambda\sin^2\alpha\cos\alpha}{g^2}$。
+式中$\omega$是地球自转角速度，$v_0$为质点初速度。
+\begin{proofc}由近似$\omega\.y\ll g,\omega\ll v_0$，方程成为
+    \[\left\{\begin{aligned}\"x&=2\.y\omega\sin\lambda,\\
+    \.y&=v_0\cos\alpha,\\
+    \"z&=-g,\\
+\end{aligned}\right.\]
+以及初速度为
+$$(\.x(0),\.y(0),\.z(0))=(0,v_0\cos\alpha,v_0\sin\alpha),$$
+解得\[\left\{\begin{aligned}x&=\omega\,v_0\cos\alpha\sin\lambda\,t^2,\\
+    y&=v_0\cos\alpha\,t,\\
+    z&=-\frac{1}{2}gt^2+v_0\sin\alpha,\\
+\end{aligned}\right.\]
+并且落地时$\dis t=\frac{2v_0\sin\alpha}{g}$，对应
+$$x(t)=\omega\cos\alpha\sin\lambda\frac{4v_0^3\sin^2\alpha}{g^2}.\qedhere$$
+\end{proofc}
+
+\section{拉格朗日力学}
+本章参考材料为\cite{Ar}第三、四章。
+
+\subsection{变分法}
+变分学可以参考\cite{Zh}。
+
+$C^1$曲线构成的空间$C^1([t_0,t_1])$在范数
+$$\|\gamma(t)\|_{C^1}=\max_{t\in[t_0,t_1]}|\gamma(t)|+|\gamma'(t)|$$
+下构成一个Banach空间。
+
+令$X=\{x=x(t)\in C^1([t_0,t_1];\R^n)\mid x(t_0)=x_0,x(t_1)=x_1\}$。
+
+\begin{theorem}\label{EL}
+    曲线$\gamma\in C^2([t_0,t_1];\R^n)\cap X$是
+    泛函$\dis \Phi(x)=\int_{t_0}^{t_1}L(x,\.x,t)\,dt$在$X$中的极值，
+    当且仅当$x=\gamma(t)$满足E--L方程
+    $$\frac{d}{dt}\frac{\partial L}{\partial\.x}
+    =\frac{\partial L}{\partial x},\quad\forall t\in[t_0,t_1].$$
+\end{theorem}
+为此，需要两个准备工作：
+
+$\boxed{\text{(i) }\Phi\text{ 的微分.}}$
+$\dis \Phi(x)=\int_{t_0}^{t_1}L(x,\.x,t)\,dt$
+是$C^1([t_0,t_1])$中可微的泛函，微分是
+$$F(h)=\int_{t_0}^{t_1}\bigg[\frac{\partial L}{\partial x}
+-\frac{d}{dt}\frac{\partial L}{\partial\.x}\bigg]h\,dt
++\bigg(\frac{\partial L}{\partial\.x}h\bigg)\bigg|_{t_0}^{t_1}.$$
+这是因为
+\begin{align*}
+    \Phi(x+h)-\Phi(x)&=\int_{t_0}^{t_1}\big[L(x+h,\.x+\.h,t)-L(x,\.x,t)\big]\,dt\\
+    &=\int_{t_0}^{t_1}\bigg[\frac{\partial L}{\partial x}h
+    +\frac{\partial L}{\partial\.x}\.h\bigg]\,dx+O(h^2)\\
+    &=\int_{t_0}^{t_1}\bigg[\frac{\partial L}{\partial x}
+    -\underbrace{\frac{d}{dt}\frac{\partial L}{\partial\.x}\bigg]h\,dt
+    +\bigg(\frac{\partial L}{\partial\.x}h\bigg)\bigg|_{t_0}^{t_1}}
+    _{分部积分得到}+O(h^2).
+\end{align*}
+$\boxed{\text{(ii) 一个标准的引理.}}$
+若$f\in C([t_0,t_1])$对一切适合$h(t_0)=h(t_1)=0$的$h\in C^1([t_0,t_1])$
+（其实$C^\infty([t_0,t_1])$即可）均有$\dis \int_{t_0}^{t_1}fh=0$，则$f\equiv0$。
+{{image|MathAnalysis_L0101.svg|center}}
+对任意$t_*\in(t_0,t_1)$，取$h(t)=\chi_\varepsilon(t-t_*)$，
+其中$\{\chi_\varepsilon\}_{\varepsilon\to0}$是逼近恒等（如图），即得$f(t_*)=0$。
+\begin{proof}[\ref{EL}的证明]
+    对$x\in X$，对一切适合$h(t_0)=h(t_1)=0$的$h\in C^1([t_0,t_1])$有$x+h\in X$，
+    则$F(h)=0$。由(i)的表达式，其中第二项为零，有
+    $$\int_{t_0}^{t_1}\bigg[\frac{\partial L}{\partial x}
+    -\frac{d}{dt}\frac{\partial L}{\partial\.x}\bigg]h\,dt=0.$$
+    又由(ii)，得证。
+\end{proof}
+
+\begin{theorem}
+当$L$与$t$无关，即$L=L(x,\.x)$时，Hamilton函数
+$$H(x,\.x)=\.x\frac{\partial L}{\partial \.x}-L$$
+是常数。
+\end{theorem}
+\begin{proof}
+    直接计算有
+\begin{align*}
+    \frac{d}{dt}H(x,\.x)&=\.x\frac{d}{dt}\frac{\partial L}{\partial \.x}
+    +\"x\frac{\partial L}{\partial \.x}
+    -\.x\frac{\partial L}{\partial x}-\"x\frac{\partial L}{\partial \.x}\\
+    &=\.x\bigg[\frac{d}{dt}\frac{\partial L}{\partial \.x}
+    -\frac{\partial L}{\partial x}\bigg]=0.
+\end{align*}
+注：这即是定理\ref{hc}。下面的两题要用，所以提前给出。
+\end{proof}
+
+\textbf{习题1.}设平面与地平面垂直，$A,B$是此平面上的两点，$y_A>y_B$且$x_A\ne x_B$。
+质点$M$在重力作用下沿曲线$AB$由$A$点滑落到$B$点，初速度为零，所需时间为$T_{AB}$。
+令$AB$为光滑曲线$y=y(x)$，求泛函$T_{AB}(y(x))$，
+并进一步求出泛函$T_{AB}$所对应的Lagrange方程。
+\begin{tikzpicture}
+    \draw[->-,>=stealth](-0.5,0)to(3,0);
+    \draw[->-,>=stealth](0,0.5)to(0,-2.1);
+    \draw(0,-1.6)to(2.56,-1.6);
+    \draw[domain=0:1.6]plot(\x^2,{-\x});
+    \foreach \i in{0.4,0.58,0.75} \draw (\i^2,-\i)to(0,-\i-\i^2);
+    \foreach \i in{0.91,1.05,1.18,1.3,1.4,1.5} \draw (\i^2,-\i)to(\i+\i^2-1.6,-1.6);
+    \filldraw[lightgray,fill opacity=0.7](0.49,-0.43)circle(0.2);
+    \coordinate [label=center:$A$] (A) at (-0.2,0.2);
+    \coordinate [label=center:$B$] (B) at (2.76,-1.6);
+\end{tikzpicture}
+
+\begin{proofc}[解答]
+    设$A$为原点，根据功能原理，$$mgy=\frac{1}{2}mv^2,$$
+    即$$v=\sqrt{2gy}.$$
+    为了计算$t$关于$x$的变化率，设$M$走了长度$s$，有
+    $$\frac{dt}{dx}=\frac{ds}{dx}\bigg/\frac{ds}{dt}
+    =\frac{\sqrt{1+\.y^2}}{\sqrt{2gy}}.$$
+    故
+    $$T_{AB}=\int_{t_A}^{t_B}dt
+    =\int_{x_A}^{x_B}\frac{\sqrt{1+\.y^2}}{\sqrt{2gy}}\,dx.$$
+    E--L方程是
+    $$0=\frac{d}{dx}\frac{\partial L}{\partial\.y}
+    -\frac{\partial L}{\partial y}
+    =\frac{d}{dx}\frac{\.y}{\sqrt{2gy}\sqrt{1+\.y^2}}
+    +\frac{\sqrt{1+\.y^2}}{2\sqrt{2gy}y}.$$
+    由于Hamilton量守恒，
+    $$\frac{\.y^2}{\sqrt{2gy}\sqrt{1+\.y^2}}
+    -\frac{\sqrt{1+\.y^2}}{2\sqrt{2gy}}=C,$$
+    化为
+    $$y(1+\.y^2)=C/2.$$
+    换元$y=C(1-\cos\theta)$，得
+    $$1+\.y^2=\frac{1}{2(1-\cos\theta)}=1+\cot^2\frac{\theta}{2},$$
+    于是
+    $$\cot\frac{\theta}{2}=\.y=C\sin\theta\,\.\theta,$$
+    那么
+    $$\frac{dx}{d\theta}=1/\.\theta=C(1-\cos\theta),$$
+    故曲线的参数方程为
+    \[\left\{\begin{aligned}
+        x&=C(\theta-\sin\theta),\\y&=C(1-\cos\theta),
+    \end{aligned}\right.\]
+    $\theta\in[0,\Theta]$，其中$C,\Theta$由$B$的坐标给出。
+\end{proofc}
+
+\textbf{习题2.}（旋转极小曲面）在平面上给定两点$P_1=(x_1,y_1),P_2=(x_2,y_2)$，
+$y_1,y_2>0$，$x_1<x_2$。求连接这两点的一个函数$u\in C^1[x_1,x_2]$，
+使得它的图像绕$x$轴旋转后，所得到的旋转曲面的面积最小。
+\begin{tikzpicture}
+    \draw[->-,>=stealth](-0.5,0)to(3,0);
+    \draw[->-,>=stealth](0,-1.5)to(0,1.5);
+    \draw (0.6,0)circle(0.15 and 0.5);
+    \draw (2.4,-1)arc(-90:90:0.3 and 1);
+    \draw[dashed] (2.4,1)arc(95:265:0.3 and 1);
+    \draw[domain=0.6:2.4]plot(\x,\x^2/10.8+7/15);
+    \draw[domain=0.6:2.4]plot(\x,-\x^2/10.8-7/15);
+    \coordinate [label=center:$P_1$] (P1) at (0.6,0.724);
+    \coordinate [label=center:$P_2$] (P2) at (2.4,1.2);
+\end{tikzpicture}
+
+\begin{proofc}[解答]
+    面积为
+    $$S=2\pi\int_{x_1}^{x_2}u(x)\sqrt{1+\.u(x)^2}\,dx.$$
+    由于Hamilton量守恒，
+    $$\frac{u\.u^2}{\sqrt{1+\.u^2}}-u\sqrt{1+\.u^2}=C,$$
+    化为
+    $$\frac{\.u}{\sqrt{(u/C)^2-1}}=1,$$
+    积分得
+    $$u=C\cosh\Big(\frac{x}{C}+C'\Big),$$
+    其中$C,C'$由边界点给出。
+\end{proofc}
+
+\subsection{拉格朗日方程组}
+我们把下面两个方程相比较：
+\begin{itemize}
+    \item[\circ] 牛顿方程 $\dis \frac{d}{dt}(m_i\.r_i)
+    +\frac{\partial U}{\partial r_i}=0$。
+    \item[\circ] 拉格朗日方程 $\dis \frac{d}{dt}\frac{\partial L}{\partial\.r}
+    =\frac{\partial L}{\partial r}$。
+\end{itemize}
+
+\begin{theorem}[Hamilton最小作用量原理]
+    力学系统的运动恰好是$\dis \Phi(\gamma)=\int_{t_0}^{t_1}L\,dt$的驻定曲线，这里
+    $$L=T-U=\frac{1}{2}m_i\.r_i^2-U(\r).$$
+\end{theorem}
+\begin{proof}
+    $\gamma$是$\dis \Phi(\gamma)=\int_{t_0}^{t_1}L\,dt$的驻定曲线当且仅当
+    $\dis \frac{d}{dt}\frac{\partial L}{\partial\.r}=\frac{\partial L}{\partial r}$，
+    代入$L=\dfrac{1}{2}m_i\.r_i^2-U(r_i)$，即得
+    $$\frac{d}{dt}(m_i\.r_i)=-\frac{\partial U}{\partial r_i}.\qedhere$$
+\end{proof}
+
+\begin{ge}[\textcolor{ff0000}{重要!}]
+    这一原理能立即推广到任意一组坐标，
+    也就是说不一定要用欧式坐标$r_i\ (i=1,\cdots,n)$，
+    换成曲线坐标$q_i\ (i=1,\cdots,n)$（比方说$\R^3$用球面坐标$r,\theta,\varphi$），
+    把$L$用$q_i$及其导数$\.q_i$写出来（即$L=L(\q,\.{\q},t)$），
+    $\gamma$依然是$\Phi$的驻定点，因此
+    $$\dis \frac{d}{dt}\frac{\partial L}{\partial\.q_i}
+    =\frac{\partial L}{\partial q_i},\quad i=1,\cdots,n.$$
+\end{ge}
+
+对于力学系统的$L$，我们有
+$$\frac{\partial L}{\partial\.r_i}=m_i\.r_i=p_i,\quad
+\frac{\partial L}{\partial r_i}=-\frac{\partial U}{\partial r_i}=F_i.$$
+模仿这个，在新坐标系$q_i$下（称$q_i$为\textbf{广义坐标}，
+$\.q_i$为\textbf{广义速度}），定义\textbf{广义动量}和\textbf{广义力}为
+$$\frac{\partial L}{\partial\.q_i}=p_i,\quad
+\frac{\partial L}{\partial q_i}=F_i.$$
+此时Euler--Lagrange方程就写成
+$$\.p_i=F_i.$$
+
+\textbf{习题3.}证明在连接$A=\r(t_0),B=\r(t_1)$的所有光滑曲线中，
+直线$AB$不仅使泛函$\dis \int_{t_0}^{t_1}(\.q_1^2+\.q_2^2+\.q_3^2)\,dt$
+达到极值，而且是最小值。
+
+\begin{proofc}
+    用E--L方程求
+    $$E=\int_{t_0}^{t_1}(\.q_1^2+\.q_2^2+\.q_3^2)\,dt$$
+    的极值点，有
+    $$0=\frac{d}{dt}\frac{\partial L}{\partial \.q_i}
+    -\frac{\partial L}{\partial q_i}=2\.q_i,$$
+    于是$q_i$均为常数，曲线$\r$是线段$AB$。
+    这时$E$是最小值是因为，对任意光滑曲线$\r$都有
+    \begin{align*}E(\r)&=\int_{t_0}^{t_1}(\.q_1^2+\.q_2^2+\.q_3^2)\,dt\\
+    &\ge\frac{1}{t_1-t_0}\bigg(\bigg|\int_{t_0}^{t_1}\.q_1\,dt\bigg|^2
+    +\bigg|\int_{t_0}^{t_1}\.q_2\,dt\bigg|^2
+    +\bigg|\int_{t_0}^{t_1}\.q_3\,dt\bigg|^2\bigg)\\
+    &=\frac{1}{t_1-t_0}|AB|^2=E(AB).\end{align*}
+\end{proofc}
+
+\begin{example}
+    考虑有心力场中的平面运动。用极坐标$q_1=r,q_2=\theta$，动能写为
+    $$T=\frac{1}{2}mv^2=\frac{1}{2}m(\.r^2+r^2\.\theta^2),$$
+    则
+    $$L=\frac{1}{2}m(\.r^2+r^2\.\theta^2)-U(r).$$
+    广义动量为
+    $$p_1=\frac{\partial L}{\partial\.r}=m\.r,\quad
+    p_2=\frac{\partial L}{\partial\.\theta}=mr^2\.\theta.$$
+    第一个Lagrange方程$\.p_1=\partial L/\partial r$是
+    $$m\"r=mr\.\theta^2-\frac{\partial U}{\partial r}.$$
+    $L$中不出现$\theta$，所以第二个Lagrange方程是
+    $\.p_2=\partial L/\partial\theta=0$，系$p_2=$常数，这正是角动量守恒定律。
+
+    （一般地说，若场不是有心场，即$U=U(r,\theta)$，得到
+    $\.p_2=-\dfrac{\partial U}{\partial\theta}$。）
+\end{example}
+这个例子启示我们把角动量守恒定律推广如下。
+\begin{definition}
+    对$L=L(q_1,\cdots,q_n,\.q_1,\cdots,\.q_n,t)$，若$L$不含坐标$q_i$
+    （即$\dfrac{\partial L}{\partial q_i}=0$），称$q_i$为\textbf{循环坐标}。
+\end{definition}
+
+\begin{theorem}
+    对应于循环坐标的广义动量守恒，即$p_i=$常数。
+\end{theorem}
+\begin{proof}
+    $\dis \frac{dp_i}{dt}=\frac{d}{dt}\frac{\partial L}{\partial\.q_i}
+    =\frac{\partial L}{\partial q_i}=0$.
+\end{proof}
+
+\subsection{勒让德变换}
+\begin{definition}
+    在集合$S=\{f(x)\in C^\infty(\R)\mid f''(x)>0,f(x)\text{ 超线性}\}$上，
+    定义$f(x)$的勒让德变换$Lf$为一个关于新变量$p$的函数$g$，
+    $$Lf\coloneqq g(p)=\sup_{x\in\R}\big(px-f(x)\big).$$
+\end{definition}
+
+\begin{example}
+    设$\alpha,\beta>1$，$1/\alpha+1/\beta=1$，
+    $f(x)=x^\alpha/\alpha$，勒让德变换是
+    $$g(p)=\sup_{x\in\R}\big(px-x^\alpha/\alpha\big)
+    =\big(px-x^\alpha/\alpha\big)\big|_{p=x^{\alpha-1}}=p^\beta/\beta.$$
+\end{example}
+
+\begin{theorem}
+    $f$是$S$上的对合变换，即：对$f\in S$，有$Lf\in S$，且$L^2=\operatorname{id}$。
+\end{theorem}
+
+\begin{definition}
+    Hamilton函数$H(\p,\q,t)=\p\.{\q}-L(\q,\.{\q},t)$。
+\end{definition}
+
+\begin{theorem}
+    Lagrange方程组等价于$2n$个一阶方程组（Hamilton方程组）
+    $$\.{\p}=-\frac{\partial H}{\partial\q},\quad
+    \.{\q}=\frac{\partial H}{\partial\p}.$$
+\end{theorem}
+\begin{proof}
+    对$H$的表达式两边取微分，得
+    $$\frac{\partial L}{\partial\q}=-\frac{\partial H}{\partial\q},\quad
+    \.{\q}=\frac{\partial H}{\partial\p}.$$
+    故Hamilton方程组的前$n$个等价于$\.{\p}=\dfrac{\partial L}{\partial\q}$，
+    后$n$个自动成立。
+\end{proof}
+
+\begin{corollary}\label{hc}
+    $\dfrac{dH}{dt}=\dfrac{\partial H}{\partial t}$。特别地，
+    若$H$不显含时间$t$（即$\dfrac{\partial H}{\partial t}=0$），
+    则能量守恒定律成立：$H(\p,\q)=$常数。
+\end{corollary}
+\begin{proof}
+    $$\dfrac{dH}{dt}
+    =\frac{\partial H}{\partial\p}\cdot\bigg(\!-\frac{\partial H}{\partial\q}\bigg)
+    +\frac{\partial H}{\partial\q}\cdot\frac{\partial H}{\partial\p}
+    +\frac{\partial H}{\partial t}=\frac{\partial H}{\partial t}.\qedhere$$
+\end{proof}
+
+\subsection{刘维尔定理}
+
+\begin{definition}
+设常微分方程$$\.{\xx}=\f(\xx),\quad x\in\R^n,$$
+\textbf{相流}是单参数变换群
+$$g^t\colon\xx(0)\mapsto\xx(t).$$
+\end{definition}
+
+\begin{theorem}
+令$D(0)$是$\xx$空间中一个有界区域，$v(0)$为其体积，$v(t)$为$D(t)$的体积，
+这里$D(t)=g^tD(0)$。若$\operatorname{div}\f=0$，则$v(t)=v(0)$.
+\end{theorem}
+\begin{proof}
+$$v(t)=\int_{D(t)}dx=\int_{g^tD(0)}dx
+=\int_{D(0)}\bigg|\det\frac{\partial g^t\xx}{\partial\xx}\bigg|\,dx,$$
+其中
+$$g^t\xx=\xx+\f(\xx)t+O(t^2)\Rightarrow
+\frac{\partial g^t\xx}{\partial\xx}
+=I+\frac{\partial\f}{\partial\xx}t+O(t^2)$$
+推出
+$$\bigg|\det\frac{\partial g^t\xx}{\partial\xx}\bigg|
+=1+\tr\frac{\partial\f}{\partial\xx}t+O(t^2)
+=1+\operatorname{div}\f\,t+O(t^2),$$
+于是
+$$v(t)=\int_{D(0)}1+\operatorname{div}\f\,t+O(t^2)\,dx.$$
+求导并代入$\operatorname{div}\f=0$，得
+$$\frac{dv(t)}{dt}=\int_{D(0)}\operatorname{div}\f\,dx=0.\qedhere$$
+\end{proof}
+特别地，对哈密顿方程组有
+$$\operatorname{div}H
+=\frac{\partial}{\partial\p}\bigg(\!\!-\frac{\partial H}{\partial\q}\bigg)
++\frac{\partial}{\partial\q}\bigg(\frac{\partial H}{\partial\p}\bigg)=0.$$
+
+\textbf{习题1.}对线性方程组$\.{\xx}=A(t)\xx$的Wronsky行列式$W$，
+证明$W=W_0 e^{\int\tr A\,dt}$。
+\begin{proofc}
+    $W$是$\frac{\partial x_1(t)}{\partial\xx},\cdots,
+    \frac{\partial x_n(t)}{\partial\xx}$为边的平行多面体$V$的有向体积，
+    $$W(t+\Delta t)=\int_{V(t+\Delta t)}dx=\int_{g^{\Delta t}V(t)}dx
+    =\int_{V(t)}\det\frac{\partial g^{\Delta t}\xx}{\partial\xx}\,dx.$$
+    现在
+    $$\det\frac{\partial g^{\Delta t}\xx}{\partial\xx}
+    =1+\tr A(t)\Delta t+O((\Delta t)^2),$$
+    于是
+    $$\frac{dW(t)}{dt}=\int_{V(t)}\tr A(t)\,dx=\tr A(t)W(t).\qedhere$$
+\end{proofc}
+
+\textbf{习题2.}证明哈密顿方程在相空间中不可能有渐近稳定点。
+\begin{proofc}
+    设稳定点存在，以之为原点，对哈密顿方程组的固定的初值很小的解，
+    由于$A(t)=\begin{pmatrix}0&-I_n\\I_n&0\end{pmatrix}$，
+    $\tr A=0$，$W$为非零常数；
+    稳定点又说当$t\to\infty$时$W\to0$，矛盾。
+\end{proofc}
+
+\subsection{庞加莱回归定理}
+
+\begin{theorem}
+    $(X,\mathscr{S},\mu)$是一个概率空间，$f\colon X\to X$是一保测变换，
+    即$\forall E\in\mathscr{I}$，$\mu(f^{-1}(E))=\mu(E)$，
+    则$\forall E\in\mathscr{S}$，$E$中满足$f^nx\notin E,\forall n>0$的点是零测集。
+\end{theorem}
+
+\begin{proof}
+    令$A_n=\bigcup\limits_{k=n}^\infty\{x\in X:f^kx\in E\}
+    =\bigcup\limits_{k=n}^\infty f^{-k}(E)$，有$E\subset A_0$，
+    $A_i\subset A_j$，$A_i=f^{j-i}A_j$，$j\le i$。
+
+    对于$n>0$，$\mu(E-A_n)\le\mu(A_0-A_n)=\mu(A_0)-\mu(A_n)=0$。
+    特别地，$\mu(E-A_1)=0$。
+\end{proof}
+
+\textbf{习题1.}验证$A_i=f^{j-i}A_j$，$j\le i$。
+\begin{proof}
+    $f^{j-i}A_j=f^{j-i}\bigcup\limits_{k=j}^\infty f^{-k}(E)
+    =\bigcup\limits_{k=i}^\infty f^{-k}(E)=A_i$.
+\end{proof}
+
+\textbf{习题2.}事实上$E$中几乎每个点均无穷次回归。
+\begin{proof}
+    $\mu\big(E-\bigcap\limits_{n=1}^\infty A_n\big)
+    =\mu\big(\bigcup\limits_{n=1}^\infty (E-A_n)\big)=0$.
+\end{proof}
+
+\begin{theorem}[弱的版本]
+    设$D\subset\R^n$是有界区域，$g\colon D\to D$是保持体积的一对一的同胚，
+    则对于$D$的任何点$x_0$及开邻域$U$，存在$x\in U,n\ge1$使$g^nx\in U$。
+\end{theorem}
+
+\begin{proof}
+    $\forall\,D$中可测集$E$，$\mu(g^{-1}(E))=\mu(g(g^{-1}(E)))=\mu(E)$，
+    从而满足前一定理的条件，所以不回归点零测，更不能有开邻域那样大。
+\end{proof}
+
+\begin{theorem}
+    设$\gamma$是无理数，$\{\gamma\},\{2\gamma\},\cdots,\{n\gamma\},\cdots$
+    在$[0,1)$上均匀分布。
+\end{theorem}
+
+证明见\cite{SS} Chapter 4 Theorem 2.1 (P107-110).
+
+\textbf{习题3.} $2^n$的首位数的排列为$1,2,4,8,1,3,6,\cdots$，
+证明数字$7$出现的次数与数字$8$出现的次数的比例趋于$\dfrac{\log8-\log7}{\log9-\log8}$.
+
+\begin{proof}
+    $\{n\lg2\}$在$[0,1)$上均匀分布，特别地
+    $$\#\big\{\{n\lg2\}\in[\lg7,\lg8):1\le n\le N\big\}/N\to\lg8-\lg7
+    =\lg e\,(\log8-\log7),$$
+    $$\ \ \ \#\big\{\{n\lg2\}\in[\lg9,\lg8):1\le n\le N\big\}/N\to\lg9-\lg8
+    =\lg e\,(\log9-\log8).\qedhere$$
+\end{proof}
+
+近几十年来，Furstenberg把庞加莱回归定理推广为如下的多重回归定理：
+\begin{theorem}
+    设$(X,\mathscr{S},\mu)$是测度空间，$T_1,\cdots,T_l$是交换的保测变换，
+    则对任意$E\in\mathscr{S}$使$\mu(E)>0$，
+    存在正整数$n$使$\mu(E\cap T_1^{-n}E\cap\cdots\cap T_l^{-n}E)>0$。
+\end{theorem}
+由此有下面的推论，这两个结论具体参考\cite{Fu} 3.7节（p.77）。
+设$S$是$\Z$的子集，称$S$的\textit{上Banach密度}为
+$$\limsup_{\text{区间 }|I|\to\infty}\frac{|S\cap I|}{|I|}.$$
+\begin{theorem}[Szemerédi]
+    设$S$是$\Z$的上Banach密度为正的子集，则$S$包含任意长的等差数列。
+\end{theorem}
+
+\subsection{诺特定理}
+\begin{quotation}
+    \quad Fraulein Noether was the most significant creative mathematician 
+    thus far produced since the higher education of women began.
+    \begin{flushright}
+        ---   Albeit Einstein
+    \end{flushright}
+\end{quotation}
+
+$\circ$ 诺特定理在场和基本粒子的现代理论中有着非常广泛的应用。
+
+$\circ$ 20世纪下半叶，诺特定理成为了粒子物理学标准模型的基础。
+标准模型描述了微观尺度的世界，并预言了希格斯玻色子的存在。
+今天，物理学家在谱写新理论时，仍然依赖于诺特定理。
+
+\begin{theorem}[诺特定理]
+    若系统$(M,L)$容许一个单参数微分同胚群$h^s\colon M\to M,s\in\R$，
+    则相应于$L$的拉格朗日方程组有一个首次积分$I\colon TM\to\R$。
+    在$M$的局部坐标$\q$下，首次积分$I$可写为
+    $$I(\q,\.{\q})=\frac{\partial L}{\partial\.{\q}}
+    \frac{dh^s(\q)}{ds}\bigg|_{s=0}.$$
+\end{theorem}
+
+\begin{proof}
+    仅对$M=\R^n$的情况给出证明。令$\q=\q(t)\colon\R\to M$是拉格朗日方程组的解，
+    记$\Phi(s,t)=h^s(\q(t))$，由$h^s$是容许映射，可以证明$\forall s\in(-1,1)$，
+    $h^s(\q(t))$也是方程$\dis \frac{d}{dt}\frac{\partial L}{\partial\.{\q}}
+    =\frac{\partial L}{\partial\q}\ (*)$的解（习题4）。
+
+    目标证明$\dis \frac{d}{dt}\bigg(\frac{\partial L}{\partial\.{\q}}
+    (\Phi,\.\Phi)\frac{d\Phi}{ds}\bigg)=0$，
+    用$\,\.{}\,$记对$t$的导数，用$'$记对$s$的导数，即
+    $$\frac{d}{dt}\bigg(\frac{\partial L}{\partial\.{\q}}
+    (\Phi,\.\Phi)\bigg)\Phi'
+    +\frac{\partial L}{\partial\.{\q}}(\Phi,\.\Phi)\frac{d\Phi'}{dt}=0.$$
+    由$(*)$，这等价于
+    $$\frac{\partial L}{\partial\q}(\Phi,\.\Phi)\Phi'
+    +\frac{\partial L}{\partial\.{\q}}(\Phi,\.\Phi)\frac{d\Phi'}{dt}=0.$$
+    $h^s$为容许映射表明
+    $$\frac{\partial L}{\partial s}(\Phi,\.\Phi)=0,$$
+    此即上式。
+\end{proof}
+
+\textbf{习题4.}若系统$(\R^n,L)$容许一个单参数微分同胚群
+$h^s\colon\R^n\to\R^n,\forall s$，
+$\q(t)$为相应于$L$的拉格朗日方程组的解。
+证明$\forall s\in(-1,1)$，$h^s(\q(t))$也是相应于$L$的拉格朗日方程组的解。
+
+\begin{proof}
+    记$S=\int L(\q,\.{\q})$，有$S(\q+\h)-S(\q)=O(\h^2)$，
+    于是$S(h^s(\q+\h))-S(h^s\q)=O(\h^2)=O((h^s\h)^2)$，
+    故$h^s\q$也是$L$对应的拉格朗日方程的解。
+\end{proof}
+
+\section{哈密顿力学}
+本章参考材料为\cite{MR}，第2章。
+\subsection{线性辛空间上的哈密顿系统}
+\begin{definition}
+    设$Z$是实Banach空间，$\Omega\colon Z\times Z\to\R$为$Z$上的连续双线性形式，
+    映射$\Omega^\flat\colon Z\to Z^*,z\to\Omega(z,\,\cdot\,)$。
+    若$\Omega^\flat$单，即$\forall z_2\in Z,\Omega(z_1,z_2)=0$蕴含$z_1=0$，
+    称$\Omega$为弱非退化形式。
+    若$\Omega^\flat$单且满，称$\Omega$为强非退化形式。
+\end{definition}
+
+\begin{definition}
+    向量空间$Z$上的一个辛形式$\Omega$是$Z$上的一个非退化的斜对称双线性形式，
+    $(Z,\Omega)$称为一个辛向量空间。
+\end{definition}
+
+\begin{example}
+    $(\R^{2n},\j)$，$\j(u,v)=\langle u,Jv\rangle$（$\R^{2n}$中内积），
+    $J=\begin{pmatrix}0&I_n\\-I_n&0\end{pmatrix}$.
+\end{example}
+\begin{example}[正则形式]
+    设$W$为赋范线性空间，$W'$为其对偶空间，$Z=W\times W'$，
+    定义$Z$上的正则辛形式为
+    $\Omega((w_1,\alpha_1),(w_2,\alpha_2))=\alpha_2(w_1)-\alpha_1(w_2)$.
+\end{example}
+\begin{example}[与内积空间相关联的辛形式]
+    设$W$为实内积空间，$Z=W\times W$，定义$Z$上的正则辛形式为
+    $\Omega((w_1,w_2),(z_1,z_2))
+    =\langle z_2,w_1\rangle-\langle z_1,w_2\rangle$.
+\end{example}
+\begin{example}[$\mathbb{C}^n$上的辛形式]
+    $\forall z,w\in\mathbb{C}^n$，记$z=x+iy,w=u+iv$，
+    $$z\cdot\bar{w}=(x+iy)\cdot(u-iv)=(x,y)\cdot(u,v)-i(x\cdot v-y\cdot u),$$
+    即$\operatorname{Re}(z\cdot\bar{w})=(x,y)\cdot(u,v)$是$\R^{2n}$中内积，
+    $-\operatorname{Im}(z\cdot\bar{w})=x\cdot v-y\cdot u
+    =\Omega((x,y),(u,v))$是辛形式.
+\end{example}
+\begin{example}[量子力学的辛形式]
+    复Hilbert空间$\mathscr{H}$上，例如$\mathscr{H}=L^2(\R^n)$，
+    令$\Omega(\psi_1,\psi_2)
+    =-2\hbar\operatorname{Im}\langle\psi_1,\psi_2\rangle$，
+    其中$\hbar$是普朗克常数.
+\end{example}
+
+\subsection{辛几何初步}
+\begin{definition}[辛向量空间]
+    设$V^{2n}$为$2n$维向量空间，$\Omega\colon V^{2n}\times V^{2n}\to\R$
+    是一个非退化双线性的反对称$2$-形式。称$(V^{2n},\Omega)$为辛向量空间，
+    称该$2$-形式为斜数量积。辛空间中两向量$\xi$与$\eta$若$\Omega(\xi,\eta)=0$，
+    称为斜正交，记为$\xi\perp\eta$。
+\end{definition}
+\begin{example}
+    $\R^{2n}$上的斜数量积$\Omega((u_1,u_2),(v_1,v_2))=v_2\cdot u_1-v_1\cdot u_2$。
+\end{example}
+\begin{definition}[辛基]
+    $V^{2n}$中的辛基是$2n$个向量$e_{p_1},\cdots,e_{p_n},e_{q_1},\cdots,e_{q_n}$
+    满足$\Omega(e_{p_i},e_{p_j})=\Omega(e_{p_i},e_{q_j})
+    =\Omega(e_{q_i},e_{q_j})=0,\forall\,i,j=1,\cdots,n$，
+    除了$\Omega(e_{p_i},e_{q_i})=1,\forall\,i=1,\cdots,n$.
+\end{definition}
+
+\begin{theorem}
+    每一个$2n$维辛向量空间均存在一组辛基，而且能取任何非零向量$e$作为第一个基向量，
+    $e$称为辛一基（划掉）。
+\end{theorem}
+
+\begin{corollary}
+    所有同维数的辛空间均与标准辛空间$(\R^{2n},\Omega)$同构。
+\end{corollary}
+
+\begin{definition}
+    辛空间$\R^{2n}$到自身的线性变换$S\colon\R^{2n}\to\R^{2n}$称为辛变换，
+    若$\Omega(S\xi,S\eta)=\Omega(\xi,\eta),\forall\xi,\eta\in\R^{2n}$。
+    $\R^{2n}$上所有辛变换之集称为辛群，记作$\operatorname{Sp}(n,\R)$。
+\end{definition}
+
+\begin{theorem}
+    辛变换的行列式为$1$。
+\end{theorem}
+
+\begin{theorem}
+    线性变换$S\colon\R^{2n}\to\R^{2n}$为辛变换
+    等价于它将某一个（从而也将任一个）辛基底变为辛基底。
+\end{theorem}
+\begin{proof}
+    基向量的线性组合之斜数量积可以用基向量的斜数量积来表示。
+    若此变换不改变基向量的斜数量积，则亦不改变任何向量的斜数量积。
+\end{proof}
+
+\begin{definition}[辛矩阵]
+    称满足$A^TJA=J$的实$2n$阶矩阵$A$为辛矩阵。
+\end{definition}
+
+\begin{theorem}
+    辛矩阵$A$的特征多项式$p(\lambda)=\det(A-\lambda I)$是反射的，
+    i.e. $p(\lambda)=\lambda^{2n}p\big(\frac{1}{\lambda}\big)$。
+\end{theorem}
+\begin{proof}
+    $A=J^{-1}A^{T-1}J$，故
+    \begin{align*}
+        p(\lambda)&=\det(J^{-1}A^{T-1}J-\lambda I)
+        =\det(A^{T-1}-\lambda I)=\det(A^{-1}-\lambda I)\\
+        &=\det(I-\lambda A)
+        =\lambda^{2n}\det\big(\tfrac{1}{\lambda}I-A\big)
+        =\lambda^{2n}p\big(\tfrac{1}{\lambda}\big).
+    \end{align*}
+\end{proof}
+\begin{corollary}
+    若$\lambda$是辛矩阵$A$的特征根，则$\frac{1}{\lambda}$也是其特征根。
+\end{corollary}
+
+\textbf{习题.}设$(Z,\Omega)$为一个有限维辛向量空间，$V\subset Z$为一个子空间。令
+$$V^\Omega=\{z\in Z\mid \Omega(z,v)=0,\ \forall v\in V\},$$
+称为$V$的辛正交补。证明：
+
+(1) $V\subset W\Rightarrow W^\Omega\subset V^\Omega$.\\
+(2) $Z/V^\Omega$和$V^*$是同构的向量空间.\\
+(3) $\dim V+\dim V^\Omega=\dim Z$.\\
+(4) $V^{\Omega\Omega}=V$.\\
+(5) 假设$V$是辛的，即$\Omega$限制在$V\times V$上是非退化的，
+则$V^\Omega$是辛的且$Z=V\oplus V^\Omega$.
+
+\begin{proof}
+    (1) 显然。\\
+    (2) $\Omega^\flat\colon Z\to V^*,z\mapsto\Omega(z,\,\cdot\,)$，
+    $\ker\Omega^\flat=V^\Omega$。\\
+    (3) $\dim Z-\dim V^\Omega=\dim V^*=\dim V$。\\
+    (4) $V\subset\{z\in Z\mid \Omega(z,v)=0,\ \forall v\in V^\Omega\}
+    =V^{\Omega\Omega}$，且$\dim V=\dim V-\dim V^\Omega=\dim V^{\Omega\Omega}$.\\
+    (5) $V$是辛的说明$V\cap V^\Omega=0$，由(3)有$Z=V\oplus V^\Omega$.\\
+    设对$\tilde{v}\in V^\Omega$成立$\Omega(\tilde{v},V^\Omega)=0$，
+    又$\Omega(\tilde{v},V)=0$，那么$\Omega(\tilde{v},Z)=0$，故$\tilde{v}=0$.
+\end{proof}
+
+\subsection{哈密顿方程}
+\begin{definition}
+    设$(Z,\Omega)$是辛向量空间，$Z$上的向量场$X\colon Z\to Z$称为哈密顿的，
+    若$\forall z\in Z$及某一个$H\in C^1(Z)$，
+    有$\Omega^\flat(X(z))=dH(z)$，i.e. $\Omega(X(z),v)=dH(z)(v),\forall v\in Z$.
+
+    若$H$存在，称$H$为哈密顿函数，对应的向量场$X(z)$亦记为$X_H(z)$，
+    称之为$H$的哈密顿向量场。
+
+    称$\.z=X_H(z)$为哈密顿方程。
+\end{definition}
+\begin{remark}
+    这是梯度在辛流形上的类比：\\
+    黎曼流形上可微函数$H$的梯度$\nabla H$就是
+    满足对任何向量场$Y$，$\left<\nabla H,Y\right>=YH$的向量场$\nabla H$；\\
+    辛流形上可微函数$H$的哈密顿向量场$X_H$就是
+    满足对任何向量场$Y$，$\Omega(X_H,Y)=YH$的向量场$X_H$。
+\end{remark}
+\begin{remark}
+    若$Z$为有限维，则$\Omega^\flat\colon Z\to Z^*,z\mapsto dH(z)$是双射。
+\end{remark}
+
+\begin{definition}
+    \begin{align*}
+    函数的拉回\quad &\varphi^*f=f\circ\varphi.\\
+    函数的推进\quad &\varphi_*g=g\circ\varphi^{-1}.\\
+    向量场的推进\quad &\varphi_*X(\varphi(z))=D\varphi(z)\cdot X(z).\\
+    向量场的拉回\quad &\varphi^*Y=(\varphi^{-1})_*Y.\\
+    \end{align*}
+\end{definition}
+
+\subsection{典则变换或辛变换}
+\begin{definition}
+    设$(Z,\Omega),(Y,\Xi)$为辛度量空间，一个光滑映射$f\colon Z\to Y$称为辛的或典则的，
+    若$f$保持辛形式，即$\Xi(Df(z)\cdot z_1,Df(z)\cdot z_2)=\Omega(z_1,z_2)$
+    对所有$z\in Z,z_1,z_2\in Z$成立，简写为$f^*\Xi=\Omega$。
+\end{definition}
+
+\begin{example}
+    设$f$是$q$的光滑函数，$q=(q_1,\cdots,q_n)$，
+    定义$\varphi\colon(\R^{2n},\j)\to(\R^{2n},\j)$，
+    $$\varphi(q,p)=(q,p+df(q))=(q_1,\cdots,q_n,
+    p_1+\frac{\partial f}{\partial q_1},\cdots,
+    p_n+\frac{\partial f}{\partial q_n}).$$
+    $\varphi$是辛变换，这是因为$D\coloneqq D\varphi
+    =\begin{bmatrix}I& \\f_{qp}&I\end{bmatrix}$符合$D^TJD=J$。
+\end{example}
+
+\begin{proposition}
+    设$(Z,\Omega)$是辛向量空间，$H\in C^1(Z)$为哈密顿函数，则
+    $$H(z)-H(0)=\int_0^1\Omega(X_H(tz),z)\,dt.$$
+\end{proposition}
+\begin{proof}
+    $$H(z)-H(0)=\int_0^1\frac{dH(tz)}{dt}\,dt=\int_0^1dH(tz)\cdot z\,dt
+    =\int_0^1\Omega(X_H(tz),z)\,dt.\qedhere$$
+\end{proof}
+
+\begin{proposition}
+    设$(Z,\Omega),(Y,\Xi)$为辛向量空间，$f\colon Z\to Y$是一个微分同胚，
+    则$f$是辛变换当且仅当对$Y$上所有哈密顿向量场$X_H$，有$f_*X_{H\circ f}=X_H$，
+    即$Df(z)\cdot X_{H\circ f}(z)=X_H(f(z))$。
+\end{proposition}
+\begin{proof}
+    当$f$是辛的，
+    \begin{align*}
+        &\Xi(Df(z)\cdot X_{H\circ f}(z),Df(z)\cdot u)
+        =\Omega(X_{H\circ f}(z),u)\\
+        &=d(H\circ f)(z)\cdot u=dH(f(z))\cdot f_*(z)\cdot u\\
+        &=\Xi(X_H(f(z)),f_*(z)\cdot u).
+    \end{align*}
+    反过来，有
+    $$\Xi(Df(z)\cdot X_{H\circ f}(z),Df(z)\cdot u)=\Omega(X_{H\circ f}(z),u),$$
+    恰当地选择哈密顿函数$H$，$X_{H\circ f}(z)$能取到任一$z\in Z$，因而$f$是辛的。
+\end{proof}
+
+\textbf{习题.}设$\R^{2n}$上的斜对称双线性形式$\Omega$有矩阵
+$$\begin{bmatrix}B&I\\-I&0\end{bmatrix},$$
+其中$B=[B_{ij}]$是一个$n\times n$斜对称矩阵，$I$是单位阵。\\
+(a) 证明$\Omega$是非退化的，从而是$\R^{2n}$上的辛形式。\\
+(b) 证明关于$\Omega$的哈密顿方程在标准坐标下为
+$$\frac{dq^i}{dt}=\frac{\partial H}{\partial p_i},\quad
+\frac{dp_i}{dt}=-\frac{\partial H}{\partial q^i}-B_{ij}\frac{\partial H}{\partial p_j}.$$
+\begin{proof}
+    设$z(t)=(q^i(t),p_i(t))$，用
+    $$\begin{bmatrix}B&I\\-I&0\end{bmatrix}\begin{bmatrix}-B&-I\\I&0\end{bmatrix}
+    =\begin{bmatrix}I&0\\0&I\end{bmatrix},$$
+    得
+    $$\frac{dz}{dt}=X_H(z)=\nabla H\cdot\begin{bmatrix}-B&-I\\I&0\end{bmatrix},$$
+    即
+    $$\left(\frac{dq^i}{dt},\frac{dp_i}{dt}\right)
+    =\left(\frac{\partial H}{\partial q^i},\frac{\partial H}{\partial p_i}\right)
+    \begin{bmatrix}-B&-I\\I&0\end{bmatrix}
+    =\left(\frac{\partial H}{\partial p_i},-\frac{\partial H}{\partial q^i}
+    -B_{ij}\frac{\partial H}{\partial p_j}\right).\qedhere$$
+\end{proof}
+
+\begin{example}
+    设$(\R^{2n},\j)$是标准的$2n$维辛向量空间，正则坐标为$(q^i,p_i)$，
+    $X_H\colon Z\to Z$由$$X_H=J\cdot\nabla H$$给出，这就是经典的哈密顿方程
+    $$\Big(\frac{dq^i}{dt},\frac{dp_i}{dt}\Big)
+    =\Big(\frac{\partial H}{\partial p_i},-\frac{\partial H}{\partial q^i}\Big).$$
+\end{example}
+
+\begin{proposition}[能量的保持]
+    设$c(t)$为$X_H$的一条积分曲线，则$H(c(t))$为常数。\\
+    设$\varphi_t$为$X_H$的流，即$\varphi_t$是方程$\.z=X_H(z)$
+    的初始条件为$z(0)=z\in Z$的解，则$H\circ\varphi_t=H$。
+\end{proposition}
+\begin{proof}
+    $$\frac{d}{dt}H(c(t))=dH(c(t))\cdot\.c(t)=\Omega(H(c(t)),\.c(t))
+    =\Omega(H(c(t)),H(c(t)))=0.$$
+    从而$H(c(t))=H(c(0))$，即$H\circ\varphi_t(z)=H(z)$。
+\end{proof}
+
+\subsection{方程何时是哈密顿的}
+\begin{proposition}\label{skew}
+    设$X\colon Z\to Z$是辛向量空间$(Z,\Omega)$的光滑向量场，则
+    $X=X_H$对某个$H\colon Z\to\R$成立当且仅当$\forall z$，$DX(z)$是$\Omega$-斜的。
+\end{proposition}
+\begin{proof}
+    设$X=X_H$，在$u$方向上，关于$z$对
+    $$\Omega(X_H(z),v)=dH(z)\cdot v$$
+    微分，得到
+    $$\Omega(DX_H(z)\cdot u,v)=D^2H(z)(v,u).$$
+    用二阶偏导数的对称性，得到
+    $$\Omega(DX_H(z)\cdot u,v)=D^2H(z)(u,v)
+    =\Omega(DX_H(z)\cdot v,u)=-\Omega(u,DX_H(z)\cdot v).$$
+    反过来，设$\Omega(DX_H(z)\cdot u,v)=-\Omega(u,DX_H(z)\cdot v)$，定义
+    $$H(z)=\int_0^1\Omega(X(tz),z)\,dt,$$
+    则有$X=X_H$，这是因为
+    \begin{align*}
+        &\Omega(X_H(z),u)=dH(z)\cdot u\\
+        &=\int_0^1\Omega(DX(tz)\cdot tu,z)\,dt
+        +\int_0^1\Omega(X(tz),u)\,dt\\
+        &=-\int_0^1\Omega(tu,DX(tz)\cdot z)\,dt
+        +\int_0^1\Omega(X(tz),u)\,dt\\
+        &=\int_0^1\Omega(tDX(tz)\cdot z,u)\,dt
+        +\int_0^1\Omega(X(tz),u)\,dt\\
+        &=\int_0^1\Omega(tDX(tz)\cdot z+X(tz),u)\,dt\\
+        &=\int_0^1\Omega\Big(\frac{d}{dt}(X(tz)t),u\Big)\,dt\\
+        &=\Omega(X(z),u).
+    \end{align*}
+\end{proof}
+
+\begin{corollary}
+    设$X(z)=Az$是线性向量场，则$A$是哈密顿的当且仅当
+    $\Omega(Au,v)=-\Omega(u,Av)$对任意$u,v\in Z$，
+    并且这时
+    $$H=\int_0^1\Omega(tAz,z)\,dt=\frac{1}{2}\Omega(Az,z).$$
+\end{corollary}
+
+\textbf{习题.}设$(Z,\Omega)$是辛向量空间，令$A\colon Z\to Z$是线性映射，
+且假设$I-A$是可逆的。证明：$A$是哈密顿的，当且仅当它的Cayley变换
+$$(I+A)(I-A)^{-1}$$
+是辛的。给出一个哈密顿向量场的例子，使得$I-A$不是可逆的。
+\begin{proof}
+\begin{align*}
+    &\Omega((I+A)(I-A)^{-1}z_1,(I+A)(I-A)^{-1}z_2)=\Omega(z_1,z_2)\\
+    \Leftrightarrow\quad&\Omega((I+A)z_1,(I+A)z_2)=\Omega((I-A)z_1,(I-A)z_2)\\
+    \Leftrightarrow\quad&\Omega(Az_1,z_2)+\Omega(z_1,Az_2)
+    =\Omega(-Az_1,z_2)+\Omega(z_1,-Az_2)\\
+    \Leftrightarrow\quad&\Omega(Az_1,z_2)=-\Omega(z_1,Az_2).
+\end{align*}
+例子i. $(\R^{2n},\j)$上，$A=\begin{pmatrix}I_n&0\\0&-I_n\end{pmatrix}$。
+
+例子ii. 令$Z$是一个无限维Hilbert空间，$A=iT$，$T$是$Z$上的对称而不自伴的算子
+（具体例子见\cite{ZG}例6.1.6, 6.1.7等），
+则$I-A$不映满整个$Z$（见\cite{ZG}定理6.2.4）。
+\end{proof}
+
+\textbf{习题.}设$(Z,\Omega)$是有限维辛向量空间，令$\varphi\colon Z\to Z$
+是满足$\det\varphi=1$的线性辛映射。如果$\lambda$是重数为$k$的特征值，
+则$1/\lambda$也是。利用$\varphi$的特征多项式证明之。
+\begin{proof}
+    设$\varphi$的特征多项式是$p(x)=(x-\lambda)^kq(x)$，则
+    $$p(x)=x^{2n}p\big(\tfrac{1}{x}\big)
+    =x^{2n}\big(\tfrac{1}{x}-\lambda\big)^kq\big(\tfrac{1}{x}\big)
+    =(1-\lambda x)^kx^{2n-k}q\big(\tfrac{1}{x}\big).\qedhere$$
+\end{proof}
+
+\subsection{哈密顿流}
+考察辛向量空间$(Z,\Omega)$上的哈密顿向量场$X_H$，这里$H\colon Z\to\R$，
+其上定义流$\varphi_t\colon Z\to Z$满足
+$$\frac{d}{dt}\varphi_t(z)=X_H\circ\varphi_t(z),\quad\forall\,z\in Z,t\in\R.$$
+
+\begin{proposition}
+    哈密顿向量场$X_H$的流$\varphi_t$是典则变换。
+    反之，若一个向量场$X$的流是典则变换，则它是哈密顿的。
+\end{proposition}
+\begin{proof}
+    对哈密顿向量场$X_H$的流$\varphi_t$，用命题\ref{skew}，
+    \begin{align*}
+        &\frac{d}{dt}\Omega(D\varphi_t(z)\cdot u,D\varphi_t(z)\cdot v)\\
+        &=\Omega(D\Big(\frac{d}{dt}\varphi_t(z)\Big)\cdot u,D\varphi_t(z)\cdot v)
+        +\Omega(D\varphi_t(z)\cdot u,D\Big(\frac{d}{dt}\varphi_t(z)\Big)\cdot v)\\
+        &=\Omega(D(X_H\circ\varphi_t(z))\cdot u,D\varphi_t(z)\cdot v)
+        +\Omega(D\varphi_t(z)\cdot u,D(X_H\circ\varphi_t(z))\cdot v)\\
+        &=\Omega(DX_H(\varphi_t(z))\cdot D\varphi_t(z)\cdot u,D\varphi_t(z)\cdot v)
+        +\Omega(D\varphi_t(z)\cdot u,DX_H(\varphi_t(z))\cdot D\varphi_t(z)\cdot v)\\
+        &=0.
+    \end{align*}
+    反之，$\varphi_t^*\Omega=\Omega$说明
+    \begin{align*}
+        0&=\frac{d}{dt}\Omega(D\varphi_t(z)\cdot u,D\varphi_t(z)\cdot v)\\
+        &=\Omega(DX(\varphi_t(z))\cdot D\varphi_t(z)\cdot u,D\varphi_t(z)\cdot v)
+        +\Omega(D\varphi_t(z))\cdot u,D(X(\varphi_t(z))\cdot D\varphi_t(z)\cdot v).
+    \end{align*}
+    取$t=0$，$D\varphi_0=I$，就有
+    $$0=\Omega(DX(z)\cdot u,v)+\Omega(u,DX(z)\cdot v),$$
+    由命题\ref{skew}可知$X$是哈密顿的。
+\end{proof}
+
+\begin{remark}
+    在哈密顿系统标准理论中，我们经常构造一个函数$F(p,q)$，
+    用$F(p,q)$生成的哈密顿向量场$X_F$对应的时间$1$映射作为辛变换，记为$X_F^1$。
+\end{remark}
+
+\subsection{泊松括号}
+\begin{definition}
+    设$(Z,\Omega)$为辛向量空间，定义两个函数$F,G\colon Z\to\R$的\textbf{泊松括号}
+    $\{F,G\}\colon Z\to\R$如下：
+    $$\{F,G\}(z)=\Omega(X_F(z),X_G(z)).$$
+    [[Lie 导数]]$L_Xf=df\cdot X$在欧氏空间的标准坐标下
+    $$L_Xf=\left(\sum_{j=1}^n\frac{\partial f}{\partial z_j}dz_j\right)
+    \left(\sum_{j=1}^nX_j\partial_{z_j}\right)
+    =\sum_{j=1}^n\frac{\partial f}{\partial z_j}X_j.$$
+\end{definition}
+这样\begin{align*}
+    \{F,G\}(z)&=\Omega(X_F(z),X_G(z))=dF(z)\cdot X_G(z)=L_{X_G}F(z)\\
+    &=-\Omega(X_G(z),X_F(z))=dG(z)\cdot X_F(z)=-L_{X_F}G(z).
+\end{align*}
+
+\begin{example}
+    设$Z$是$2n$维辛向量空间，在其辛坐标$q^i,p_i$下
+    $$\{F,G\}=\Omega(X_F,X_G)=
+    \Omega\Big(\Big(\frac{\partial F}{\partial p_i},-\frac{\partial F}{\partial q^i}\Big),
+    \Big(\frac{\partial G}{\partial p_i},-\frac{\partial G}{\partial q^i}\Big)\Big)
+    =\sum_{i=1}^n\frac{\partial F}{\partial q^i}\frac{\partial G}{\partial p_i}
+    -\frac{\partial F}{\partial p_i}\frac{\partial G}{\partial q^i}.$$
+    据此有
+    $$\{q^i,q^j\}=0,\quad\{p_i,p_j\}=0,\quad
+    \{q^i,p_j\}=\sum_{k=1}^n\frac{\partial q^i}{\partial q^k}\frac{\partial p_j}{\partial p_k}
+    -\frac{\partial q^i}{\partial p_k}\frac{\partial p_j}{\partial q^k}=\delta_j^i.$$
+\end{example}
+
+\begin{definition}
+    两个函数$F,G\colon Z\to\R$称为\textbf{对合的}或\textbf{泊松可交换}的，若$\{F,G\}=0$。
+\end{definition}
+
+给定$\R^n$上的两个光滑向量场$X,Y$，
+通常$\varphi_X^t\varphi_Y^s\ne\varphi_Y^s\varphi_X^t$对$t,s\in\R$。
+
+\begin{example}
+    $\R^2$上的向量场$X=\dfrac{\partial}{\partial x},Y=x\dfrac{\partial}{\partial y}$。
+    \begin{align*}
+        X=\frac{\partial}{\partial x}&\Rightarrow\begin{cases}\.x=1\\\.y=0\end{cases}
+        \Rightarrow\begin{cases}x(t)=t+x_0\\y(t)=y_0\end{cases},\\
+        Y=x\frac{\partial}{\partial y}&\Rightarrow\begin{cases}\.x=0\\\.y=x\end{cases}
+        \Rightarrow\begin{cases}x(t)=x_0\\y(t)=x_0t+y_0\end{cases}.
+    \end{align*}
+    那么\begin{align*}
+        \varphi_X^t\varphi_Y^s(x_0,y_0)&=\varphi_X^t(x_0,x_0s+y_0)
+        =(t+x_0,x_0s+y_0),\\
+        \varphi_Y^s\varphi_X^t(x_0,y_0)&=\varphi_Y^s(t+x_0,y_0)
+        =(t+x_0,ts+x_0s+y_0).
+    \end{align*}
+    当$ts\ne0$时，
+    $$\varphi_X^t\varphi_Y^s(x_0,y_0)\ne\varphi_Y^s\varphi_X^t(x_0,y_0).$$
+\end{example}
+
+为了刻画$X,Y$生成的流$\varphi_X^t,\varphi_Y^s$的交换性，定义$[X,Y]$。
+\begin{definition}
+    两个向量场$X,Y$的\textbf{Jacobi--Lie括号}$[X,Y]$定义如下：对$f\in C^\infty(Z)$，
+    $$df[X,Y]=d(df\cdot Y)\cdot X-d(df\cdot X)\cdot Y,$$
+    即
+    $$L_{[X,Y]}f=L_XL_Yf-L_YL_Xf.$$
+\end{definition}
+
+\begin{proposition}
+    $$[X,Y]^j=X^i\frac{\partial Y^j}{\partial z^i}
+    -Y^i\frac{\partial X^j}{\partial z^i}=XY^j-YX^j.$$
+\end{proposition}
+\begin{proof}
+    后一等号就是$X=X^i\dfrac{\partial}{\partial z^i},
+    Y=Y^i\dfrac{\partial}{\partial z^i}$。前一等号是因为
+    \begin{align*}
+        [X,Y]f&=X^i\frac{\partial }{\partial z^i}
+        \left(Y^j\frac{\partial f}{\partial z^j}\right)
+        -Y^j\frac{\partial }{\partial z^j}
+        \left(X^i\frac{\partial f}{\partial z^i}\right)\\
+        &=X^i\frac{\partial Y^j}{\partial z^i}\frac{\partial f}{\partial z^j}
+        +X^iY^j\frac{\partial^2f}{\partial z^i\partial z^j}
+        -Y^j\frac{\partial X^i}{\partial z^j}\frac{\partial f}{\partial z^i}
+        -Y^jX^i\frac{\partial^2f}{\partial z^j\partial z^i}\\
+        &=X^i\frac{\partial Y^j}{\partial z^i}\frac{\partial f}{\partial z^j}
+        -Y^j\frac{\partial X^i}{\partial z^j}\frac{\partial f}{\partial z^i}.
+    \end{align*}
+    注：这就是说$[X,Y]=(XY^j-YX^j)\dfrac{\partial}{\partial z^j}$。
+\end{proof}
+\begin{example}
+    $\R^2$上的向量场$X=\dfrac{\partial}{\partial x},
+    Y=x\dfrac{\partial}{\partial y}$，根据上式计算，
+    $$[X,Y]=\big(X(0)-Y(1)\big)\dfrac{\partial}{\partial x}
+    +\big(X(x)-Y(0)\big)\dfrac{\partial}{\partial y}
+    =\dfrac{\partial}{\partial y}.$$
+\end{example}
+
+\begin{lemma}
+    $$[X_F,X_G](z)=dX_G(z)\cdot X_F(z)-dX_F(z)\cdot X_G(z).$$
+\end{lemma}
+\begin{proof}
+    $\forall\,f\in C^\infty(Z)$，
+    \begin{align*}
+        L_{[X_F,X_G]}f&=L_{X_F}L_{X_G}f-L_{X_G}L_{X_F}f\\
+        &=L_{X_F}(df\cdot X_G)-L_{X_G}(df\cdot X_F)\\
+        &=d(df\cdot X_G)\cdot X_F-d(df\cdot X_F)\cdot X_G\\
+        &=d^2f\cdot X_G\cdot X_F+df\cdot(dX_G\cdot X_F)
+        -d^2f\cdot X_F\cdot X_G-df\cdot(dX_F\cdot X_G)\\
+        &=df\cdot(dX_G\cdot X_F-dX_F\cdot X_G)\\
+        &=L_{dX_G\cdot X_F-dX_F\cdot X_G}f.
+    \end{align*}
+\end{proof}
+
+\begin{corollary}
+    $$X_{\{F,G\}}=-[X_F,X_G].$$
+\end{corollary}
+\begin{proof}
+    \begin{align*}
+        \Omega(X_{\{F,G\}},v)&=d\{F,G\}\cdot v\\
+        &=d(\Omega(X_F,X_G))\cdot v\\
+        &=\Omega(dX_F\cdot v,X_G)+\Omega(X_F,dX_G\cdot v)\\
+        &=\Omega(dX_F\cdot X_G,v)-\Omega(dX_G\cdot X_F,v)\\
+        &=\Omega(-[X_F,X_G],v).
+    \end{align*}
+\end{proof}
+
+\subsection{Lie代数}
+\begin{definition}
+    一个[[Lie 代数|\textbf{Lie代数}]]是向量空间$L$以及双线性反对称算子
+    $[-,-]\colon L\times L\to L$，并且满足\textbf{Jacobi恒等式}
+    $$[[A,B],C]+[[B,C],A]+[[C,A],B]=0.$$
+\end{definition}
+
+\begin{theorem}
+    泊松括号$\{-,-\}\colon C^\infty(Z)\times C^\infty(Z)\to C^\infty(Z)$
+    使得$C^\infty(Z)$成为一个Lie代数。
+\end{theorem}
+\begin{proof}
+    由于$$\{F,G\}=\Omega(X_F,X_G)=dF\cdot X_G=X_G(F),$$
+    得
+    \begin{align*}
+        \{H,\{F,G\}\}&=-X_{\{F,G\}}H=[X_F,X_G]H\\
+        &=X_FX_GH-X_GX_FH\\
+        &=X_F\{G,H\}-X_G\{F,H\}\\
+        &=\{F,\{G,H\}\}-\{G,\{F,H\}\}\\
+        &=\{F,\{G,H\}\}+\{G,\{H,F\}\}.
+    \end{align*}
+\end{proof}
+
+\begin{corollary}
+    设$(Z,\Omega)$为有限维辛向量空间，$Z$上的哈密顿场$\mathscr{X}_{\text{Ham}}(Z)$
+    形成李代数$\mathscr{X}(Z)$的李子代数。
+\end{corollary}
+\begin{proof}
+    对$X_F,X_G\in\mathscr{X}_{\text{Ham}}(Z)$，
+    $[X_F,X_G]=-X_{\{F,G\}}=X_{\{G,F\}}\in\mathscr{X}_{\text{Ham}}(Z)$。
+\end{proof}
+
+\begin{corollary}
+    设$X_H$是$Z$上的哈密顿向量场，其流为$\varphi_t$，则对于$F\in C^\infty(Z)$，
+    $$\frac{d}{dt}(F\circ\varphi_t)
+    =\{F\circ\varphi_t,H\}=\{F,H\}\circ\varphi_t.$$
+\end{corollary}
+\begin{proof}
+    $$\frac{d}{dt}(F\circ\varphi_t)=dF\cdot\frac{d}{dt}\varphi_t
+    =dF\cdot X_H\circ\varphi_t=\{F,H\}\circ\varphi_t.$$
+    $$\{F,H\}\circ\varphi_t=\varphi_t^*\{F,H\}=\{\varphi_t^*F,\varphi_t^*H\}
+    =\{F\circ\varphi_t,H\circ\varphi_t\}=\{F\circ\varphi_t,H\}.\qedhere$$
+\end{proof}
+
+\begin{corollary}
+    设$F,G\in C^\infty(Z)$，则$F$沿$X_G$的积分曲线为常数当且仅当
+    $G$沿$X_F$的积分曲线为常数当且仅当$\{F,G\}=0$。
+\end{corollary}
+\begin{proof}
+    $$\frac{d}{dt}(F\circ\varphi_t^G)=0
+    \Leftrightarrow\{F,G\}\circ\varphi_t=0\Leftrightarrow\{F,G\}=0.\qedhere$$
+\end{proof}
+
+\begin{theorem}
+    设$(Z,\Omega)$为$2n$维辛向量空间，$Z$上的哈密顿函数$H$
+    在以$F$为哈密顿函数的单参数变换群下不变，则$F$是$X_H$之首次积分。
+\end{theorem}
+\begin{proof}
+    即$\dis \frac{d}{dt}(H\circ\varphi_t^F)=0$
+    推出$\dis \frac{d}{dt}(F\circ\varphi_t^H)=0$，事实上两者皆是$\{F,H\}=0$。
+\end{proof}
+
+\begin{corollary}[泊松定理]
+    具有哈密顿函数$H$的方程组之两个首次积分$F_1,F_2$的泊松括弧仍为首次积分。
+\end{corollary}
+\begin{proof}
+    现有$\{F_1,H\}=0,\{F_2,H\}=0$，由Jacobi恒等式，$\{\{F_1,F_2\},H\}=0$。
+\end{proof}
+
+\textbf{习题.}验证$\varphi^*(L_Xf)=L_{\varphi^*X}(\varphi^*f)$。
+\begin{proof}
+    \begin{align*}
+        L_{\varphi^*X}(\varphi^*f)(z)&=L_{\varphi_*^{-1}X}f\circ\varphi(z)\\
+        &=d(f\circ\varphi)\cdot(\varphi_*^{-1}X)(z)\\
+        &=df(\varphi(z))\cdot D\varphi(z)\cdot D\varphi^{-1}(\varphi(z))\cdot X(\varphi(z))\\
+        &=df(\varphi(z))\cdot X(\varphi(z))=df(X)(\varphi(z))\\
+        &=(L_Xf)\circ\varphi(z)=\varphi^*(L_Xf)(z).
+    \end{align*}
+\end{proof}
+
+\subsection*{附：重点概念英文及示例}
+\begin{center}
+\begin{tabular}{|c|l|}
+    \hline mechanics (力学) & classical mechanics, Lagrangian mechanics, Hamiltonian mechanics \\
+    \hline motion (运动) & equation of motion \\
+    \hline velocity (速度) & relative velocity, angular velocity \\ 
+    \hline acceleration (加速度) & centripetal acceleration, acceleration due to gravity \\ 
+    \hline momentum (动量) & angular momentum, generalized momentum \\
+    \hline force (力) & external force, frictional force, Coriolis force, Lorentz force \\
+    \hline moment (矩) & moment of force \\ 
+    \hline energy (能量) & potential energy, kinetic energy, total energy \\ 
+    \hline conservation (守恒) & conservation law, conservation of momentum, conservation of energy 
+\end{tabular}
+\end{center}
+
+\subsection*{参考文献}
+\begin{references}
+    \bibitem[Li]{Li}
+        李书民. 经典力学概论. 中国科学技术大学出版社, 2007.
+    \bibitem[Zh]{Zh}
+        张恭庆. 变分学讲义. 现代数学基础. 高等教育出版社, 2001.
+    \bibitem[Ar]{Ar}
+        В. И. Arnold. 经典力学的数学方法. 俄罗斯数学教材选译. 高等教育出版社, 2006.
+    \bibitem[SS]{SS}
+        E. M. Stein, R. Shakarchi. \textit{Fourier Analysis: An Introduction}. 
+        Princeton Lectures in Analysis I. Princeton University Press, 2001.
+    \bibitem[Fu]{Fu}
+        H. Furstenberg. \textit{Recurrence in Ergodic Theory and Combinatorial Number Theory}. 
+        Princeton University Press, 1981.
+    \bibitem[MR]{MR}
+        J. E. Marsden, T. S. Raitu. 力学和对称性导论——经典力学系统初探. 
+        应用数学译丛. 清华大学出版社, 1999.
+    \bibitem[ZG]{ZG}
+        张恭庆,郭懋正. 泛函分析讲义（下册）. 大学基础课教材. 北京大学出版社, 2001.
+\end{references}

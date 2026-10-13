@@ -1,0 +1,301 @@
+\setdisplaytitle{泛函分析\ 附录解答}
+\sethtmltitle{泛函分析\ 附录解答}
+\theoremstyle{plain}\newtheorem*{1}{习题1}
+\theoremstyle{plain}\newtheorem*{2}{习题2}
+\theoremstyle{plain}\newtheorem*{3}{习题3}
+\theoremstyle{plain}\newtheorem*{4}{习题4}
+\theoremstyle{plain}\newtheorem*{5}{习题5}
+\theoremstyle{plain}\newtheorem*{6}{习题6}
+\theoremstyle{plain}\newtheorem*{7}{习题7}
+\theoremstyle{plain}\newtheorem*{10}{习题10}
+\theoremstyle{plain}\newtheorem*{11}{习题11}
+\theoremstyle{plain}\newtheorem*{12}{习题12}
+\theoremstyle{plain}\newtheorem*{13}{习题13}
+\theoremstyle{remark}\newtheorem*{remark*}{注}
+
+===* 附录C\ \ Stone--Weierstrass定理 ===
+\begin{4}
+    对紧度量空间$X$，设$\mathcal{A}$是实值连续函数空间$C(X)$中分离$X$中点的闭子代数。
+    证明：$\mathcal{A}=C(X)$或存在一点$x_0 \in X$使得
+    \[\mathcal{A}=\{f \in C(X):f(x_0)=0\}.\]
+\end{4}
+\begin{proof}
+    $\mathcal{A}$离Stone--Weierstrass定理的条件就相差个含单位元了，
+    因此可以发现$\{g+c:g\in\mathcal{A},c\in\R\}$就是$C(X)$。下面分两种情况讨论。
+
+    如果存在一点$x_0 \in X$使得对$\mathcal{A}$中的函数$g$均有$g(x_0)=0$，
+    那么对$f \in C(X)$且$f(x_0)=0$，设$f$可写成$g+c$，
+    由$x_0$处的取值得到$c=0$，即$f=g$，也就是$f\in\mathcal{A}$，
+    这表明$\mathcal{A}=\{f \in C(X):f(x_0)=0\}$。
+
+    如果不存在这样的点$x_0$，即$X$有开覆盖$\bigcup\limits_{g\in\mathcal{A}}\{g\ne0\}$，
+    就有有限子覆盖$\bigcup\limits_{i=1}^k\{g_i\ne0\}$，
+    那么$h=\sum\limits_{i=1}^kg_i^2$是恒正的。
+    令$j=h/\|h\|\in\mathcal{A}$，记$\delta=\min\limits_Xj>0$，
+    则$\|(1-j)^n\|=(1-\delta)^n\to0$，
+    故$\mathcal{A}$中的序列$1-(1-j)^n$收敛于$1$，
+    从而$1\in\mathcal{A}$，进而$\mathcal{A}=C(X)$。
+\end{proof}
+\begin{5}
+    对于Banach空间
+    \[C_0(\R)=\{f\text{ 在 }\R\text{ 上连续}:\lim_{|x|\to\infty}f(x)=0\},\]
+    设$\mathcal{A}$是$C_0(\R)$中的自伴闭子代数，分离$\R$中的点，
+    并在任意点$x\in\R$，有$f\in\mathcal{A}$使得$f(x)\ne0$。
+    证明：$\mathcal{A}=C_0(\R)$。
+\end{5}
+\begin{proof}
+    这次的问题在于$\R$不是紧集，那么可以单点紧化成单位圆周$\mathbb{T}$。考察同构映射
+    \begin{align*}
+        \varPsi\colon C_0(\R)&\to\mathcal{B}
+        =\{g\text{ 在 }\mathbb{T}\setminus\{-1\}\text{ 上连续}:\lim_{w\to-1}g(w)=0\},\\
+        f&\mapsto g,\text{ 其中 }f(\tan\theta)=g\big(e^{{\rm i}2\theta}\big),
+    \end{align*}
+    后者相当于$\mathcal{B}'=\{g\text{ 在 }\mathbb{T}\text{ 上连续}:g(-1)=0\}$。
+    由条件可得$\varPsi(\mathcal{A})$是$C(\mathbb{T})$中分离点的自伴闭子代数，
+    结合上题知$\varPsi(\mathcal{A})=\mathcal{B}'$，从而$\mathcal{A}=C_0(\R)$。
+\end{proof}
+
+===* 附录D\ \ 弱拓扑中的一些定理 ===
+\begin{1}
+    设$X$是Banach空间，$\gamma\geqslant0$，$f_1,\cdots,f_n$是$X$上的$n$个有界线性泛函，
+    $\alpha_1,\cdots,\alpha_n$是$n$个给定的数。那么对于任意的$\varepsilon>0$，
+    存在$x_\varepsilon \in X$使得
+    $$f_i(x_\varepsilon)=\alpha_i\ (i=1,2,\cdots,n),
+    \quad\text{以及}\quad\|x_\varepsilon\|\leqslant\gamma+\varepsilon$$
+    的充要条件是不等式
+    $$\bigg|\sum_{i=1}^n\beta_i\alpha_i\bigg|
+    \leqslant\gamma\bigg\|\sum_{i=1}^n\beta_if_i\bigg\|$$
+    对于任意的$n$个数$\beta_1,\cdots,\beta_n$都成立。
+\end{1}
+\begin{proof}
+    设前一条件成立，那么对于任意的$\varepsilon>0$，
+    $$\bigg|\sum_{i=1}^n\beta_i\alpha_i\bigg|
+    =\bigg|\bigg(\sum_{i=1}^n\beta_if_i\bigg)(x_\varepsilon)\bigg|
+    \leqslant(\gamma+\varepsilon)\bigg\|\sum_{i=1}^n\beta_if_i\bigg\|,$$
+    令$\varepsilon\to0^+$即得。
+
+    先假定$f_1,\cdots,f_n$线性无关。设前一条件不成立，即存在$\varepsilon>0$使得$\alpha$不属于$f(B_{\gamma+\varepsilon})$，
+    其中$\alpha=(\alpha_1,\cdots,\alpha_n)\in\R^n$，$f=(f_1,\cdots,f_n)\colon X\to\R^n$。
+    那么存在一个超平面分离$\alpha$与$f(B_{\gamma+\varepsilon})$，
+    换言之存在非零的$(\beta_1,\cdots,\beta_n)\in\R^n$使
+    $$\bigg|\sum_{i=1}^n\beta_if_i(x)\bigg|
+    \leqslant \bigg|\sum_{i=1}^n\beta_i\alpha_i\bigg|$$
+    对所有$\|x\|\leqslant\gamma+\varepsilon$成立，故有
+    $$(\gamma+\varepsilon)\bigg\|\sum_{i=1}^n\beta_if_i\bigg\|
+    \leqslant \bigg|\sum_{i=1}^n\beta_i\alpha_i\bigg|.$$
+    由于$\Big\|\sum\limits_{i=1}^n\beta_if_i\Big\|>0$，后一条件不成立。
+
+    对一般的情况，取$f_1,\cdots,f_n$的一个极大的线性无关子集即可。
+\end{proof}
+
+\begin{3}
+    若赋范线性空间$X$的单位球$B_1(X)$是弱紧的，
+    证明：自然映射$J:X\to X^{**}$是满射，即$X$是自反的。
+\end{3}
+\begin{proof}
+    即习题2.5节第9题后的(d)$\Rightarrow$(a)。
+\end{proof}
+
+===* 附录E\ \ 局部凸空间 ===
+
+===* 附录F\ \ Lomonosov不变子空间定理 ===
+\begin{quotation}
+    \quad As regards the invariant subspace problem …, 
+    explain why the problem is (a) trivial in $\mathbb{C}^n$, 
+    (b) different in $\R^n$, (c) uninteresting if $X$ is not separable.
+    \begin{flushright}
+        ------ \cite{Ru} p.274
+    \end{flushright}
+\end{quotation}
+\begin{1}
+    设$X$是不可分Banach空间，$T\in\mathfrak{B}(X)$。证明：
+    存在$X$的一个非平凡闭子空间$M$使得$TM\subseteq M$。
+\end{1}
+\begin{proof}
+    设$x$是$X$的任何非零元素，令$M$为$\{x,Tx,T^2x,\cdots\}$生成的子空间的闭包。
+\end{proof}
+\begin{remark*}
+    事实上，$T$不存在非平凡闭不变子空间当且仅当对所有的$x$，
+    $\{x,Tx,T^2x,\cdots\}$生成的子空间稠密。
+\end{remark*}
+
+\begin{2}
+    叙述$X=\mathbb{C}^n$时的定理F.1，并给出直接的证明。
+\end{2}
+\textbf{定理 F.1$'$}
+    设$T$是$\mathbb{C}^n$上的非零算子。那么，存在$\mathbb{C}^n$的一个非平凡子空间$M$，
+    对于每个与$T$交换的算子$S$都有：$S(M) \subset M$。
+\begin{proof}
+    取$T$的一个特征子空间$\ker(T-\lambda I)$为$M$即可，
+    对$x \in M$，$(T-\lambda I)Sx=S(T-\lambda I)x=0$，即$Sx \in M$。
+\end{proof}
+\begin{3}
+    设$R(\{x_1,x_2,\cdots\})=\{0,x_1,x_2,\cdots\}$是$l^2$上的右移位算子，
+    $T$是$l^2$上的紧算子。若$TR=RT$，证明：$T=0$。
+\end{3}
+\begin{proof}
+    对任何$x \in l^2$，序列$\{R^nx\}$在$n\to\infty$时弱收敛于$0$，
+    那么$\{TR^nx\}$收敛于$0$，即$\{R^nTx\}$收敛于$0$。
+    由于$R$是等距映射，必有$Tx=0$。
+\end{proof}
+\begin{remark*}
+    \cite{Ha} 问题148（pp.79 \& 271--2）表明，本题如果不假定$T$是紧算子，
+    那么$T$是一列$R$的多项式$\{p_n(R)\}$的强算子极限。
+\end{remark*}
+
+===* 附录G\ \ $C^*$代数与正规算子谱理论 ===
+\begin{1}
+    设$\mathcal{A}=\left\{\begin{pmatrix}a&b\\0&a\end{pmatrix}:a,b\in\mathbb{C}\right\}$
+    为$M_2(\mathbb{C})$的Banach子代数，求$\mathcal{A}$的非零可乘线性泛函。
+\end{1}
+\begin{proof}[解答]
+    设$\phi$是$\mathcal{A}$上的非零可乘线性泛函，
+    记$Q=\begin{pmatrix}0&1\\0&0\end{pmatrix}$，注意到
+    \[\phi(Q)^2=\phi(Q^2)=\phi(0)=0,\]
+    即$\phi(Q)=0$。由于$\dim\ker\phi=\dim\mathcal{A}-1=1$，
+    得出$\ker\phi=\mathbb{C}Q$，从而
+    \[\phi\begin{pmatrix}a&b\\0&a\end{pmatrix}=a.\qedhere\]
+\end{proof}
+\begin{2}
+    对于带单位元的Banach代数$\mathcal{A}$，若$\mathcal{A}$的极大理想空间能分离$\mathcal{A}$中元素：
+    若$a \ne b$，则有可乘线性泛函$\phi$使得$\phi(a)\ne\phi(b)$。证明$\mathcal{A}$是交换Banach代数。
+\end{2}
+\begin{proof}
+    重述一下条件：若对所有的可乘线性泛函$\phi$都有$\phi(a)=\phi(b)$，则$a=b$。
+    既然如此，对任意的$x,y\in\mathcal{A}$，由于对所有的可乘线性泛函$\phi$
+    都有$\phi(xy)=\phi(yx)$，那么$xy=yx$。
+\end{proof}
+\begin{3}
+    设$C^{(1)}[0,1]=\{f \in C[0,1]:f\text{ 在 }[0,1]\text { 上连续可导}\}$，其上范数定义为
+    \[\|f\|=\sup_{x\in[0,1]}(|f(x)|+|f'(x)|).\]
+    证明：$C^{(1)}[0,1]$依此范数构成Banach代数。并求$C^{(1)}[0,1]$的极大理想空间。
+\end{3}
+\begin{proof}[解答]
+    是全体$\{f \in C^{(1)}[0,1]:f(x_0)=0\}$，其中$x_0$取遍$[0,1]$。方法同例G.1。
+\end{proof}
+\begin{5}
+    下面来看$L^1(\R)$的极大理想空间和Gel'fand变换。
+    \begin{enumerate}[label=(\roman*)]
+    \item 令$\R$为赋予加法结构的实数群，$\mathbb{T}=\{z\in\mathbb{C}:|z|=1\}$
+    为赋予乘法运算结构的酉群。若连续群同态$h\colon\R\to\mathbb{T}$不是常值映射，
+    证明：加法子群$h^{(-1)}(\{1\})$为$\R$的离散子集。
+    并说明$h^{(-1)}(\{1\})\setminus\{0\}$到点$0$距离严格大于$0$且是可达的。
+    \item 令$\hat{\R}=\{h:h\text{ 是从 }\R\text{ 到 }\mathbb{T}\text{ 的连续群同态}\}$。
+    证明：$\hat{\R}=\{h_t(x)=e^{{\rm i}tx}:t\in\R\}$。
+    并且证明$\hat{\R}$在乘法作用$(h_1 \times h_2)(x)=h_1(x)h_2(x)$下构成乘法群。
+    \item 任取一个$h\in\hat{\R}$。证明：
+    \[\phi(f)=\int_\R f(x)\overline{h(x)}\,{\rm d}m(x)\]
+    为Banach代数$L^1(\R)$上非零可乘线性泛函。
+    \item 设$\phi\colon L^1(\R)\to\mathbb{C}$是$L^1(\R)$上非零可乘线性泛函。
+    证明：存在$h \in L^\infty(\R)$使得
+    \[\phi(f)=\int_\R f(x)\overline{h(x)}\,{\rm d}m(x),\]
+    且对几乎处处$x,y\in\R$，有$h(x+y)=h(x)h(y)$。
+    \item 为说明(iv)中$h$的连续性，对(iv)中的$\phi$，取定一个$g \in L^1(\R),\phi(g)=1$。
+    证明：$h(x)=\phi(g(\cdot-x))$对几乎处处$x\in\R$成立。
+    \item 证明(iv)中$h\in\hat{\R}$。
+    \end{enumerate}
+\end{5}
+\begin{proof}
+    本题表明，$L^1(\R)$的Gel'fand变换就是$\R$上的Fourier变换。
+    \begin{enumerate}[label=(\roman*)]
+    \item $\R$的子群有聚点的话就是稠密的，因此$\R$的闭子群除了本身均是离散的。
+    \item $h$是群同态就是说$h(x+y)=h(x)h(y)$，两边对$y$求导再取$y=0$，
+    得出$h'(x)=h(x)h'(0)$，从而$h(x)=e^{h'(0)x}$。
+    取值范围是$\mathbb{T}$进一步要求$h(x)=e^{{\rm i}tx}$，其中$t\in\R$。
+
+    不过刚才假定了$h$是可导的，这一点是有待说明的。为此，取$h$的原函数$g(t)=\int_0^th$，
+    由于$h(0)=1$，取定很小的$\delta>0$会使得$g(\delta)>0$，则有
+    \[h(x)=\frac{g(x+\delta)-g(x)}{g(\delta)},\]
+    右边分子是可导的且分母是常数，从而左边亦是可导的。
+    \item 设$h(x)=e^{{\rm i}tx}$，那么
+    \begin{align*}
+        \phi(f*g)&=\int_\R\left[\int_\R f(x-y)g(y)\,{\rm d}y\right]e^{-{\rm i}tx}\,{\rm d}x\\
+        &=\int_\R\left[\int_\R f(x-y)e^{-{\rm i}t(x-y)}\,{\rm d}x\right]g(y)e^{-{\rm i}ty}\,{\rm d}y=\phi(f)\phi(g).
+    \end{align*}
+    \item $\phi$属于$L^1(\R)$的对偶空间，对应着$L^\infty(\R)$中的函数$h$。比较一下
+    \begin{align*}
+        \phi(f*g)&=\int_\R\left[\int_\R f(x-y)g(y)\,{\rm d}y\right]\overline{h(x)}\,{\rm d}x\\
+        &=\int_\R\int_\R f(x)g(y)\overline{h(x+y)}\,{\rm d}x{\rm d}y,
+    \end{align*}
+    和
+    \begin{align*}
+        \phi(f)\phi(g)&=\left[\int_\R f(x)\overline{h(x)}\,{\rm d}x\right]
+        \left[\int_\R g(y)\overline{h(y)}\,{\rm d}y\right]\\
+        &=\int_\R\int_\R f(x)g(y)\overline{h(x)h(y)}\,{\rm d}x{\rm d}y,
+    \end{align*}
+    得到$h(x+y)=h(x)h(y)$几乎处处成立。
+    \item 由于
+    \[\phi(g(\cdot-x))=\int_\R g(y-x)\overline{h(y)}\,{\rm d}y,\]
+    得到
+    \[\phi(f*g)=\int_\R f(x)\phi(g(\cdot-x))\,{\rm d}x.\]
+    $\phi(g)=1$说明$\phi(f*g)=\phi(f)$，这样上式同
+    \[\phi(f)=\int_\R f(x)\overline{h(x)}\,{\rm d}x\]
+    比较，就得出$\overline{h(x)}=\phi(g(\cdot-x))$几乎处处成立。
+    \item 结合前两问得出$h$是$\R$到$\mathbb{C}$的连续群同态，还要说明的是$|h(x)|=1$。
+    这是因为对任何整数$n$，都有$|h(x)|^n=|h(nx)|\leqslant\|h\|_\infty$。\qedhere
+    \end{enumerate}
+\end{proof}
+\begin{6}
+    设$\mathcal{A}$是带单位元的Banach代数。若$x,y\in\mathcal{A}$，$xy=yx$，证明：
+    \[\sigma_{\mathcal{A}}(x+y)\subset\sigma_{\mathcal{A}}(x)+\sigma_{\mathcal{A}}(y),
+    \quad\sigma_{\mathcal{A}}(xy)\subset\sigma_{\mathcal{A}}(x)\sigma_{\mathcal{A}}(y).\]
+\end{6}
+\begin{proof}
+    \cite{Ru} Theorem 11.23 (p.293)。
+\end{proof}
+\begin{7}
+    设$\mathcal{A}$是一个带单位元的交换Banach代数，
+    $\mathcal{B}$是一个半单的带单位元的交换Banach代数。
+    证明：任一同态$\varphi\colon\mathcal{A}\to\mathcal{B}$是连续的。
+\end{7}
+\begin{proof}
+    \cite{Ru} Theorem 11.10 (pp.281--2)。
+\end{proof}
+\begin{10}
+    设$\mathcal{A}$是一个带单位元$e$的$C^*$代数。
+    若$\mathcal{A}$中元素$x$满足$xx^*=x^*x=e$，则称$x$是一个酉元。
+    证明：$\mathcal{A}$中任何元素可表示为四个酉元的线性组合。
+\end{10}
+\begin{proof}
+    由于$\mathcal{A}$中任何元素都能写成两个自共轭元的线性组合，
+    只需证明自共轭元$x$都能写成两个酉元的线性组合，
+    且通过考虑$x/\|x\|$，可设$\|x\|\leqslant1$。令
+    \[u=x\pm{\rm i}\sqrt{e-x^2},\]
+    其中$\sqrt{e-x^2}$是指定理G.10中$\sqrt{1-\lambda^2} \in C(\sigma(x))$
+    在$\varPsi$的作用下的像，那么
+    \[uu^*=u^*u=x^2+e-x^2=e.\qedhere\]
+\end{proof}
+\begin{11}
+    若$T$是自伴的，证明：存在正算子$T_+$与$T_-$使得
+    $T=T_+-T_-,|T|=T_++T_-,T_+T_-=0$。
+\end{11}
+\begin{proof}
+    见习题4.6第9题(ii)方法II。
+\end{proof}
+\begin{12}
+    设$N$是Hilbert空间$H$上的正规算子，$E$是$N$的谱测度(见定理G.11)。
+    若$f \in C(\sigma(N)),S=f^{(-1)}(\{0\})$，
+    证明：$E(S)$是从$H$到子空间$\ker f(N)$的正交投影。
+\end{12}
+\begin{proof}
+    系习题4.6第6题的引理。
+\end{proof}
+\begin{13}
+    设$N$是Hilbert空间$H$上的紧正规算子。若$f\in C(\sigma(N))$，$f(0)=0$，
+    证明：$f(N)$也是紧的。
+\end{13}
+\begin{proof}
+    \cite{Ru} Theorem 12.31 (b) (pp.329--30)。
+\end{proof}
+
+\subsection**{参考文献}
+\begin{references}
+    \bibitem[Ha]{Ha}
+        P. R. Halmos.
+        \textit{A Hilbert Space Problem Book}.
+        Graduate Texts in Mathematics 19. Springer, 1982.
+    \bibitem[Ru]{Ru}
+        W. Rudin.
+        \textit{Functional Analysis}. International Series in 
+        Pure and Applied Mathematics. McGraw--Hill, Inc, 1991.
+\end{references}

@@ -1,0 +1,27 @@
+\setdisplaytitle{试卷：线性与非线性规划}
+\sethtmltitle{试卷：线性与非线性规划}
+
+== 2025--2026学年第一学期《线性与非线性规划》（杨卫红）期末试题 ==
+(注:考试时间为120分钟)
+\begin{enumerate}
+    \item (20分) 考虑线性规划问题 $\min c^T x, \text{s.t. } Ax = b, x \geq 0$. 其中 $$A = \begin{bmatrix} 1 & 2 & 1 & 0 & 0 \\ 2 & 1 & 0 & 1 & 0 \\ 1 & 1 & 0 & 0 & 1 \end{bmatrix}, \quad b = \begin{bmatrix} 4 \\ 5 \\ 3 \end{bmatrix}, \quad c = (-3, -5, 0, 0, 0)^T.$$ 用单纯形法求解得到如下\textbf{最优单纯形表}: $$\begin{array}{c|ccccc|c} x_B & x_1 & x_2 & x_3 & x_4 & x_5 & \bar{b} \\ \hline r & 0 & 0 & \frac73 & \frac13 & 0 & h \\ \hline x_2 & 0 & 1 & a & b & 0 & 1 \\ x_1 & 1 & 0 & c & d & 0 & 2 \\ x_5 & 0 & 0 & e & f & 1 & g \end{array}$$
+    (1) 求出表中所有的未知常数 $a, b, c, d, e, f, g, h$ 的值.\\
+    (2) 求出对偶规划的最优解 $\lambda^*$.\\
+    (3) 若右端向量 $b$ 变为 $(4+\Delta, 5, 3)^T$, 求使当前基保持可行的 $\Delta$ 范围.\\
+    (4) 若将目标函数中 $x_3$ 的系数从 $0$ 改为 $-1$, 当前基是否仍最优? 为什么？\\
+    (5) 当前最优解是否退化? 是否存在其他最优解? 若存在, 请给出; 若不存在, 说明原因.
+    \item (20分) 给定标准线性规划 (LP): $\min c^Tx, \text{s.t. } Ax=b, x \geq 0$. 假设 $\alpha$ 为 (LP) 的最优值, 并且存在指标 $j$ 使得 (LP) 任意一个最优解 $x^*$ 均有 $x_j^*=0$. 考虑如下线性规划 (LP)': $$\begin{aligned} \min \quad & x_j \\ \text{s.t.} \quad & Ax=b, \quad x\geq 0, \\ &-c^Tx \geq - \alpha. \end{aligned}$$
+    (1) 写出 (LP)' 的对偶规划.\\
+    (2) 将矩阵 $A$ 的第 $j$ 列记为 $A_{\cdot j}$, 证明\textbf{标准线性规划 (LP) 的对偶规划}存在一个最优的 $p$ 使得 $p^TA_{\cdot j}<c_j$ 成立.
+    \item (10分) 写出 Armijo 和 Wolfe 的步长规则.
+    \item (17分) 给定二次函数 $f(x) = \frac12 x^T Q x - q^T x$, 其中 $Q$ 是 $n$ 阶对称矩阵, $q \in \mathbb{R}^n$.\\
+    (1) 分情况讨论 $\min f(x)$ 何时有最优解并求出最优解, 何时无下界, 并给出证明.\\
+    (2) 假设 $Q$ 正定, 证明: 对任意初始点 $x_0$, 求解 $\min f(x)$ 的标准牛顿法一步就可以得到最优解 $x^*$.
+    \item (16分) (1) 写出标准线性规划 (LP) 及其对偶问题 (LD).\\
+    (2) 将求解 (LP) 最优解问题转化为非线性方程组 $F(x, \lambda, s) = 0$ 求根的形式.\\
+    (3) 写出  $F(x, \lambda, s)$ 的雅可比矩阵 $J(x, \lambda, s)$, 然后写出求解 $F(x, \lambda, s) = 0$ 的牛顿法迭代公式.\\
+    (4) 假设迭代点是内点, 将下面问题消元得到一个小规模问题 $$J(x,\lambda,s)\begin{bmatrix}\Delta x \\ \Delta \lambda \\ \Delta s \end{bmatrix} = \begin{bmatrix} -r_c \\ -r_b \\ -r_{xs} \end{bmatrix}.$$
+    \item (15分) 考虑 $$\begin{aligned}\min \quad & x^T A_0 x + 2 b_0^T x +c_0, \\ \text{s.t.} \quad & x^T A_1 x + 2 b_1^T x +c_1 \leq 0. \end{aligned}$$ 其中 $A_0, A_1$ 为 $n$ 阶对称矩阵, $b_0, b_1$ 为 $n$ 维向量, $c_0, c_1$ 为常数.\\
+    (1) 写出该问题的拉格朗日函数.\\
+    (2) 证明其对偶规划为 $$\begin{aligned} \max_{\gamma, \lambda} \quad &\gamma, \\ \text{s.t.} \quad & \lambda \geq 0, \\ & \begin{bmatrix} A_0+\lambda A_1 & b_0+\lambda b_1 \\ (b_0+\lambda b_1)^T & c_0+\lambda c_1 - \gamma \end{bmatrix}\text{半正定}. \end{aligned}$$
+\end{enumerate}

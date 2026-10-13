@@ -1,0 +1,103 @@
+\setdisplaytitle{页面指南}
+\sethtmltitle{页面指南}
+
+== 概述 ==
+
+\qquad 欢迎来到复旦大学数学系的资料合集页面。感谢香蕉空间提供了极好的平台。
+
+\qquad 本页面由复旦数学20级于2022年创建，为各课程编写资料，
+即\textbf{汇总笔记（$/\!$摘要）、撰写习题解答（$/\!$提示）、收集期末试卷等}。
+这里收录的是与具体课程直接相关的资料，仅仅间接相关则需征询管理者意见。
+
+\qquad 自行创建栏目、写作新内容、修正或改善已有内容即可，无需先取得授权。
+平日的课程笔记、作业解答，与期中、期末的试题，
+皆能上传于此，尤其是对于常年开设且内容稳定的课程，
+而\textcolor{993333}{\textbf{新的内容并不会凭空出现，离不开每个人的参与。}}
+目前的大量内容还很不完善，修订和续写的需要是迫切的。
+
+\qquad 加入编辑的微信群，或对本页面有任何疑问或建议，
+可添加微信号\textcolor{8B8970}{Will_Kymlicka}联系。
+
+== 编写指南 ==
+
+\qquad 注册账号后即得权限。登录后点击右上角的``\textcolor{0099ff}{编辑}''，就能开始写作。
+
+\qquad 创建新栏目只需在Solution的主页添加
+\code*{\subpage!{\qquad A：B}}，
+\code*{A}从``讲义''、``笔记''、``提纲''、``习题''、``试卷''等之中选取，
+\code*{B}是其关乎的内容，一般是课程名称（或书名）。
+整理课程内容按质量和完整程度从前三项降序选择类别\code*{A}，
+而若要调用香蕉空间的``讲义''功能，用\code*{[[讲义:B]]}。
+修改现有栏目标题用重定向（即右上角的``操作：移动''），或者建立新的、删去老的；
+仅直接改动栏目标题是无效的。
+
+\qquad 本页面以宁缺毋滥为原则。
+编辑者需审慎地构想、推敲表述，内容要清晰有条理，
+排版尽可能整齐，注重对思路的揭示，文风不必拘谨刻板，而要有对话感；
+之后应不定期回看，校正笔误与错误，改进表述及排版等。编写的格式规范见下一节。
+
+\qquad 请注意，这里并不保障上传内容不受改动甚至删除（清空的话都不会留下历史记录），
+所以，对特别重要的内容，建议在本地留下存档。
+此外，极偶尔有保存页面失败的情况，故保存前最好先复制代码。
+
+== 格式规范 ==
+
+\begin{itemize}
+\item[\circ] 一行代码不宜过长，不要明显超过编辑区域的宽度，以便他人改动。
+
+\item[\circ] 课程笔记原则上要用香蕉空间的内置环境，即命题、定理、推论等。
+
+\item[\circ] 习题用\code*{\begin{enumerate}\item[...]... ...\end{enumerate}}来列举。
+
+\item[\circ] 记号应当同教材、教师一致，除非其确实不妥或不合习惯。
+
+\item[\circ] 数学符号请遵守香蕉空间的规范，并着重留意：
+\begin{itemize}
+    \item[] 括号要与其内的公式等高，
+    依情况用\code*{\big(...\big)}、\code*{\Big(...\Big)}等。
+    \item[] 正体符号用\code*{\operatorname{...}}，
+    不用\code*{\mathrm{...}}（矩阵群除外）、\code*{\text{...}}。
+    \item[] 形如$X\stackrel{f}{\longrightarrow}Y$，
+    用\code*{X\stackrel{f}{\longrightarrow}Y}，
+    不用\code*{X\xrightarrow{f}Y}。
+    \item[] 标点后面不能无间距（错误示例：\textcolor{669933}{故,$\alpha>0$}）；
+    句末的行间公式末要有句点。
+\end{itemize}
+
+\item[\circ] 换行用两个回车（系空一行），
+不用\code*{\par}，而行距很小的换行用\code*{//}。
+
+\item[\circ] 多用行间公式，很长的公式若置于文字中会显得过于拥挤。
+
+\item[\circ] 多绘制交换图、插图，插图尽量用tikzpicture画（而不是外源图片）。
+
+\item[\circ] 对非平凡的概念，可添加香蕉空间的词条链接（若有的话）。
+
+\item[\circ] 引用的文献附于文末（格式仿照现有），正文中标出相应的编号、章节或页码。
+\end{itemize}
+
+== 结语 ==
+
+\qquad 有人会说，这一个页面是不可能有成效的，
+不切实际地期望会有人参与这样的无法为自己带来好处的项目是不应该的：
+毕竟人必然是困囿于己利的，该项目只能在袖手旁观中内容寥寥、无甚用处。
+对此，我只能引罗尔斯《万民法》一书的结语来作答：
+
+\begin{quotation}
+    \quad If a reasonably just Society of Peoples 
+    whose members subordinate their power to reasonable aims is not possible, 
+    and human beings are largely amoral, 
+    if not incurably cynical and self--centered, one might ask, with Kant, 
+    whether it is worthwhile for human beings to live on the earth.
+    \begin{flushright}
+        --- \cite{LP}, p.128.
+    \end{flushright}
+\end{quotation}
+
+\qquad 而这个页面起码在制度上为此希望带来了可能。
+\subsection*{参考文献}
+\begin{references}
+    \bibitem[LP]{LP}
+    John Rawls. \textit{The Law of Peoples}.
+    Cambridge, Mass: Harvard University Press. 1999.
+\end{references}

@@ -1,0 +1,93 @@
+\setdisplaytitle{数论基础\ 试题}
+\sethtmltitle{数论基础\ 试题}
+
+== 2025--2026学年秋期末试题（任汝飞） ==
+
+\begin{enumerate}
+    \item(20 points)
+    \begin{enumerate}
+        \item State the \textbf{Quadratic Reciprocity Law}, and
+        \item give one of its proofs.
+    \end{enumerate}
+
+    \item(20 points) Let $p$ be prime, $b \in \mathbb{F}_{p}^{*}$. Let $M$ 
+    be the number of solutions of the projective equation $y^{2}z = x^{3} + b^{2}z^{3}$ in $P^{2}(\mathbb{F}_{p})$. 
+    Prove that $|M - (p + 1)| \leqslant 2p^{1/2}$.
+
+    \item(20 points) Prove that \\
+    \begin{enumerate}
+        \item $\sum_{n \leqslant x}d(n) = x\log x + O(x)$, where $d(n)$ is the number of factors of $n$ (including $1$ and $n$).
+        \item $\sum_{n \leqslant x}d(n) = x\log x + (2C - 1)x + O(\sqrt{x})$, where $C$ is Euler's constant.
+    \end{enumerate}
+
+    \item(20 points) Let $\alpha$ be an algebraic integer and $K = \mathbb{Q}[\alpha]$. 
+    Prove that $R = \mathbb{Z}[\alpha] \cap \mathcal{O}_{K}$ is the largest subring as finitely generated $\mathbb{Z}$-module.
+
+    \item(20 points) Calculate the ideal class group of $\mathcal{O}_{K}$ where $K = \mathbb{Q}[\alpha]$ and $\alpha$ is a root of $x^{3} - 3x^{2} + 2x - 5$.
+
+    \item(20 points) Prove that in RSA knowing $\phi(N)$ is no easier than factoring $N$.
+\end{enumerate}
+
+== 2024--2025学年秋期末试题（任汝飞） ==
+
+\begin{enumerate}
+    \item（20分）给定一素数$p$,求以下方程的解$(x,y,z)\in\mathbb{F}_{p}^{3}$的个数:
+    \[
+    x^{4}+y^{4}=z^{2}
+    \]
+
+    \item（20分）给定素数$p\geq 5$,证明：
+    \[
+    \sum_{j=1}^{p-1}\frac{1}{j}\equiv 0 \bmod p^{2}
+    \]
+
+    \item（20分）令$\mu(n)$为Möbius函数, $\nu(n)$为$n$的正因数个数, $\sigma(n)$为$n$的正因数和,证明：\\
+    \begin{enumerate}[label=(\arabic*)]
+        \item $\displaystyle\sum_{n=1}^{\infty}\frac{\mu(n)}{n^{s}}=\zeta(s)^{-1}$
+        \item $\displaystyle\sum_{n=1}^{\infty}\frac{\nu(n)}{n^{s}}=\zeta(s)^{2}$
+        \item $\displaystyle\sum_{n=1}^{\infty}\frac{\sigma(n)}{n^{s}}=\zeta(s)\zeta(s-1)$
+    \end{enumerate}
+
+    \item（20分）令$K=\mathbb{Q}[\alpha]$,其中$\alpha$为多项式$x^{3}-x^{2}+x-9$的一根,设$\mathcal{O}_{K}$为$K$中代数整数环：\\
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求$K$的判别式$d_{K}$. (即$d(\mathcal{O}_{K})$)
+        \item 给出$\mathcal{O}_{K}$的一组整基.
+    \end{enumerate}
+
+    \item（20分）令$K=\mathbb{Q}[\alpha]$,其中$\alpha=\sqrt{38}$或$\sqrt{-235}$,试分别求出两种情况下$K$的理想类$Cl_{K}$.
+
+    \item（20分）叙述Elgamal公开密钥系统的过程及原理.
+\end{enumerate}
+
+== 2020--2021学年秋期末试题（石荣刚）==
+\begin{enumerate}
+    \item 记 $K=\mathbb{Q}(\sqrt{2})$，证明：$h_{K}=1$。
+    \item 对数域 $K$ 上所有素位，取其标准绝对值 $v$，证明：对 $\alpha \in K^{*}$ 总成立 $\prod|\alpha|_{v}=1$。
+    \item 对数域 $K$，设 $\mathfrak{p}$ 为其某个非零素理想，$\mathfrak{o}$ 为其整环，$v$ 为 $\mathfrak{p}$ 对应的赋值，$K_{v}$ 为 $K$ 在此赋值下的完备化，
+    $\mathfrak{o}_{v}$ 与 $\mathfrak{p}_{v}$ 分别为 $\mathfrak{o}$ 与 $\mathfrak{p}$ 的闭包，$k=\mathfrak{o}_{v} / \mathfrak{p}_{v}$。
+    对 $a \in K_{v}^{*}$，在域的乘法群中此元素 $a$ 有个阶数 $\operatorname{ord}(a) \in \mathbb{N}^{*} \cup\{\infty\}$。
+    定义 $U_{0}=\{a \in K_{v}^{*} \mid \operatorname{ord}(a)<\infty, \operatorname{gcd}(\operatorname{ord}(a), \operatorname{char}(k))=1\}$，证明 $U_{0} \simeq k^{*}$。
+    \item 设 $K$ 是数域，$\zeta=e^{2 \pi i / m}$, $m>2$ 为正整数，$L=K(\zeta)$。
+    设 $\mathfrak{p}$ 为 $K$ 的某个非零素理想，$\mathfrak{o}_{K}$ 为 $K$ 的整环。证明：
+    \begin{enumerate}[label=(\arabic*)]
+    \item $\mathfrak{p}$ 在 $L$ 中无分歧。
+    \item 记 $q=\sharp \mathfrak{o}_{K} / \mathfrak{p}$，
+    并设 $\mathfrak{P}$ 为 $L$ 中整除 $\mathfrak{p}$ 的某个素理想，
+    证明： $\mathfrak{p}$ 的剩余次数为最小的正整数 $n$ 使得 $q^{n} \equiv 1 \bmod m$。
+    \end{enumerate}
+    \item 设 $m, n$ 为两个 $\equiv 1 \bmod 4$ 的不是 $1$ 的整数，不含平方因子且互素。
+    记 $L=\mathbb{Q}(\sqrt{m}, \sqrt{n})$，证明：
+    \begin{enumerate}[label=(\arabic*)]
+    \item $L / \mathbb{Q}$ 是四次Abel扩张。
+    \item 有理素数 $p$ 在 $L$ 中有分歧当且仅当 $p \mid mn$。
+    而对于任一有理素数 $p$，其在 $L$ 中的分歧次数总是$1$或$2$。
+    \item 记 $K=\mathbb{Q}(\sqrt{mn})$，则 $K$ 中任一非零素理想在 $L$ 中无分歧。
+    \end{enumerate}
+    \item 记 $K=\mathbb{Q}(\sqrt[3]{2})$，求解以下问题：
+    \begin{enumerate}[label=(\arabic*)]
+    \item 给出 $\mathfrak{o}_{k}^{*}$ 的群结构，无需给出基本单位。
+    \item 计算 $\operatorname{Tr}_{K/\mathbb{Q}}(\sqrt[3]{2})$，
+    和 $2\mathfrak{o}_{K}, 3\mathfrak{o}_{K}, (\sqrt[3]{2}-1)\mathfrak{o}_{K}$ 的Dedekind分解。
+    \item 证明 $\mathfrak{o}_{K}=\mathbb{Z}[\sqrt[3]{2}]$。
+    \end{enumerate}
+\end{enumerate}

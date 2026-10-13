@@ -1,0 +1,48 @@
+\setcounter{section}{5}
+
+\section{凝聚层的上同调}
+    \subsection{层}
+    \begin{definition}[预层（Presheaf）]
+        设$X$是一个拓扑空间，则$X$上的一个\textbf{预层}$\mathscr{F}$指以下资料：
+        \begin{enumerate}
+            \item[(1)] 对于$X$中的每个开集$U$，指定一个Abel群$\mathscr{F}(U)$.
+            \item[(2)] 对于开集$V \subset U$，
+                       存在限制映射$r_{UV}:\mathscr{F}(U) \rightarrow \mathscr{F}(V)$.
+            \item[(3)] 规定$\mathscr{F}(\varnothing)=0$，$r_{UU}=\operatorname{id}_{U}$，
+                       且$r_{VW}\circ r_{UV}=r_{UW}$若$W \subset V \subset U$.
+        \end{enumerate}
+    \end{definition}
+
+    \begin{definition}[层（Sheaf）]
+        更进一步地，若拓扑空间$X$上的一个预层$\mathscr{F}$满足以下粘接条件：
+        \begin{enumerate}
+            \item[(4)] 若$\{U_{i}\}_{i \in I}$是开集$U$的一个开覆盖，其中$U_{i} \subset U,\;\forall i \in I$，且$s \in \mathscr{F}(U)$
+                       满足$r_{U_{i}U}(s)=0$，（或直接写为$s\mid_{U_{i}}=0$），则$s=0$.
+            \item[(5)] 若$\{U_{i}\}_{i \in I}$是开集$U$如（4）中所述的开覆盖，
+                       且$s_{i} \in \mathscr{F}(U_{i})$满足
+                       $s_{i}\mid_{U_{ij}}=s_{j}\mid_{U_{ij}}$，其中$U_{ij}=U_{i} \cap U_{j}$，
+                       则存在$s \in \mathscr{F}(U)$，使得对于任意$i \in I$有$s\mid_{U_{i}}=s_{i}$.
+        \end{enumerate}
+    \end{definition}
+
+    \begin{definition}[层的态射]
+        若拓扑空间$X$上有两个预层（层）$\mathscr{F}$与$\mathscr{G}$，
+        则称$\varphi:\mathscr{F} \rightarrow \mathscr{G}$是层的态射，若
+        \begin{enumerate}
+            \item[(1)] 对于任意开集，存在群同态
+                       $\varphi(U):\mathscr{F}(U) \rightarrow \mathscr{G}(U)$.
+            \item[(2)] 若$V \subset U$，则有下图交换：
+                       \begin{tikzcd}
+                            \mathscr{F}(U) \arrow[r,"\varphi(U)"] \arrow[d,"r_{VU}"'] & \mathscr{G}(U) \arrow[d, "r_{VU}"] \\
+                            \mathscr{F}(V) \arrow[r,"\varphi(V)"] & \mathscr{G}(V) 
+                       \end{tikzcd}
+        \end{enumerate}
+    \end{definition}
+
+    \begin{proposition}[推出层]
+        若$X$与$Y$是拓扑空间，且$\mathscr{F}$是$X$上的层，则可在$Y$上定义一个层$\varphi^{*}\mathscr{F}$，
+        使得对于任意开集$V \subset Y$，有$\varphi^{*}\mathscr{F}(V)=\mathscr{F}(\varphi^{-1}(V))$.
+    \end{proposition}
+    \begin{proof}
+        显然$\varphi^{*}\mathscr{F}(\varnothing)=\mathscr{F}(\varnothing)=0$.
+    \end{proof}

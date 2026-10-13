@@ -1,0 +1,240 @@
+\setdisplaytitle{试卷：拓扑学}
+\sethtmltitle{试卷：拓扑学}
+
+\section{2025～2026 学年第二学期期末考试试卷}
+\begin{enumerate}
+\item[一、](16分)多项选择题(答案未必唯一):
+\item 设 $X$ 是一个集合，则下列正确的答案是 $\underline{\qquad\qquad}$。\\
+A．$X$ 的任何子集族均为 $X$ 上的拓扑；\\
+B．$X$ 上总存在拓扑；\\
+C．$X$ 上的拓扑有唯一的一个拓扑基；\\
+D．$X$ 上的拓扑被它的拓扑基唯一确定；\\
+E．$X$ 上的拓扑是它的子基的最粗拓扑.
+\item 设 $Y=\{a, b, c, d\}$, 其上的一个拓扑为 $\{Y, \emptyset,\{a\},\{b\},\{a, b\},\{b, c, d\}\}$。
+$f$ 为 $Y$ 到其自身的映射, 满足 $f(a)=b, f(b)=d, f(c)=b, f(d)=c$。
+则 $f$ 有性质$\underline{\qquad\qquad\qquad\qquad}$。\\
+A. $f$ 在 $c$ 点连续但在 $d$ 点不连续;\\
+B. $f$ 在 $c, d$ 两点均连续;\\
+C. $f$ 在 $c$ 点不连续但在 $d$ 点连续;\\
+D. $f$ 在 $a, b$ 两点均连续;\\
+E. $f$ 在 $c, d$ 两点均不连续.
+\item 覆盖空间的问题
+\item 下列正确的答案为 $\underline{\qquad\qquad}$。\\
+A．伦型不变性是拓扑不变性；\\
+B．拓扑不变性是伦型不变性；\\
+C．基本群既是伦型不变的又是拓扑不变的；\\
+D．紧性既是伦型不变性又是拓扑不变性；\\
+E．一个拓扑空间和它的形变收缩核具有相同的拓扑不变性.
+\item[二、]举例说明连续双射不一定是同胚.
+\item[三、]\\
+$$X=(\bigcup_{n\in\Z^+}\{\frac1n\}\times[0,1])\cup(\{0\}\times[0,1])\cup([0,1]\times\{0\})$$
+\begin{enumerate}
+    \item 证明$X$连通，道路连通，不局部连通，不局部道路连通.
+    \item 证明存在同伦$G$，连接恒同映射和映到$(0,1)$中常值的常值映射.
+    \item 证明不存在相对于$(0,1)$的同伦$H$连接恒同映射和映到$(0,1)$中常值的常值映射.
+\end{enumerate}
+\item[四、]构造下列空间的同胚\\
+\begin{enumerate}
+    \item $\mathbb{R}^2\setminus\{0\}$
+    \item $\{(x_1,x_2,x_3)|x_1^2+x_2^2=1\}$
+    \item $\{(x_1,x_2,x_3)|x_1^2+x_2^2-x_3^2=1\}$
+\end{enumerate}
+\item[五、]$X$是实射影平面$\mathbb{RP}^2$去掉三个点得到的拓扑空间，证明$X$的基本群不可交换.
+\item[六、]把$S^3$看成$\mathbb{C}^2$的子空间$\{(z_1,z_2)\in\mathbb{C}^2|\|z_1\|^2+\|z_2\|^2=1\}$，
+设$(p,q)=1$，定义$f(z_1,z_2)=(e^{2\pi i/p}z_1,e^{2\pi q i/p}z_2)$，
+$(z_1,z_2)\sim (w_1,w_2)$当且仅当存在正整数$r$使得$f^r(z_1,z_2)=(w_1,w_2)$，由此得到商空间$S^3/\sim$.
+\begin{enumerate}
+    \item[(1)]求$S^3$的基本群.
+    \item[(2)]求$S^3/\sim$的基本群.
+\end{enumerate}
+\item[七、]$X_i,i=1,2,\cdots$，全部是序列紧空间
+\begin{enumerate}
+    \item 给出$X=\prod\limits_{i=1}^{\infty}X_i$上积拓扑的定义.
+    \item 证明$X$是序列紧空间.
+\end{enumerate}
+\end{enumerate}
+\section{2024～2025 学年第二学期期末考试试卷}
+\begin{enumerate}
+\item[一、](16分)多项选择题(答案未必唯一):
+\item 设 $X$ 是一个集合，则下列正确的答案是 $\underline{\qquad\qquad}$。\\
+A．$X$ 的任何子集族均为 $X$ 上的拓扑；\\
+B．$X$ 上总存在拓扑；\\
+C．$X$ 上的拓扑有唯一的一个拓扑基；\\
+D．$X$ 上的拓扑被它的拓扑基唯一确定；\\
+E．$X$ 上的拓扑是它的子基的最细拓扑。
+
+\item 下列正确的答案为 $\underline{\qquad\qquad}$。\\
+A．伦型不变性是拓扑不变性；\\
+B．拓扑不变性是伦型不变性；\\
+C．基本群既是伦型不变的又是拓扑不变的；\\
+D．紧性既是伦型不变性又是拓扑不变性；\\
+E．一个拓扑空间和它的形变收缩核具有相同的拓扑不变性。
+
+\item 设 $X$ 是拓扑空间，则下列正确的是 $\underline{\qquad\qquad}$。\\
+A．$X$ 满足 $T_1$ 公理当且仅当 $X$ 的任意单点集均为闭集；\\
+B．若 $X$ 是Hausdorff 空间，则其子集 $A$ 是紧集的充要条件为 $A$ 是闭集；\\
+C．$X$ 是连通的当且仅当存在连续的满射 $f: X \rightarrow S^0=\{ \pm 1\}$；\\
+D．若 $X$ 是连通且局部道路连通的，则 $X$ 是道路连通的。但反之末必。\\
+E．若 $X$ 上的拓扑可度量化（即其上拓扑是某度量诱导的拓扑），则它必满足第二可数性公理。
+
+\item 二维球面和环面不同胚可由下列拓扑性质 $\underline{\qquad\qquad}$ 决定。\\
+A．可数性；\\
+B．紧性；\\
+C．基本群；\\
+D．道路连通性；\\
+E．分离性。
+
+\item[二、](18分) 证明覆盖空间映射提升定理：
+设 $B$ 是连通且局部道路连通的空间，$(E, P)$ 是 $B$ 的覆盖空间，
+$b_0 \in B,  e_0 \in P^{-1}(b_0)$，$X$ 是连通且局部道路连通的空间，
+则连续映射 $f:(X, x_0) \rightarrow (B, b_0)$ 存在覆盖映射 $\tilde{f}:(X, x_0) \rightarrow (E, e_0)$ 
+当且仅当 $f_*(\pi_1(X, x_0)) \leq P_*(\pi_1(E, e_0))$。并且当 $\tilde{f}$ 存在时，证明其唯一。
+
+\item[三、](14分) 假设任何正规空间 $X$ 的有限开覆盖 $\mathcal{U}$，
+有从属于 $\mathcal{U}$ 的单位分解。往证任何紧流形可嵌入到适当维数的欧氏空间。
+
+\item[四、](16分) \\
+(1) 给出拓扑空间 $X$ 满足第一可数公理的定义；\\
+(2) 给出拓扑空间 $X$ 满足第二可数公理的定义；\\
+(3) 设拓扑空间 $X$ 和 $Y$ 是满足第一可数公理的拓扑空间，往证乘积空间 $X \times Y$ 满足第一可数公理；\\
+(4) 设拓扑空间 $X$ 和 $Y$ 是满足第二可数公理的拓扑空间，往证乘积空间 $X \times Y$ 满足第二可数公理。
+
+\item[五、](15分) 设 $P$ 是全体无理数的集合，
+在实数集 $\mathbb{R}$ 上定义集族 $\mathcal{T}$，$\mathcal{T}$ 的成员为 $U-A$ 这种形式给出，
+其中 $U$ 遍历 $\mathbb{R}$ 在欧氏拓扑下的开集，$A$ 遍历 $P$ 的子集。\\
+(1) 试证明 $\mathcal{T}$ 是 $\mathbb{R}$ 上的一个拓扑；\\
+(2) 证明这个拓扑满足 $T_2$ 公理。
+
+\item[六、](9分) 
+现有两维环面 $\mathbb{T}^2=\mathbb{S}^1 \times \mathbb{S}^1$ 和Klein瓶 $K$。\\
+(1) 构造 $\mathbb{T}^2$ 到自身的一个 $3$ 叶覆盖；\\
+(2) 构造 $\mathbb{T}^2$ 到 $K$ 的一个 $2$ 叶覆盖；\\
+(3) 构造 $\mathbb{T}^2$ 到 $K$ 的一个 $10$ 叶覆盖。
+
+\item[七、](12分) 拓扑空间 $X=\mathbb{S}^1 \vee \mathbb{S}^2$ 
+是圆周 $\mathbb{S}^1$ 和两维球面 $\mathbb{S}^2$ 的一点并，求 $X$ 的基本群。
+\end{enumerate}
+
+\section{2023～2024 学年第二学期期末考试试卷}
+\begin{itemize}
+
+    \item[一、]
+    不定项选择.
+
+    \item[二、]
+    证明分类定理.
+
+    \item[三、]
+    拓扑空间$\{(x,y)\in \mathbb{R}^2\mid y=\sin \dfrac{1}{x},x\in (0,1]\}\cup\{(0,0)\}$是否连通?局部连通?道路连通?紧?局部紧?
+
+    \item[四、]
+    写出$\mathbb{R}$上的五种拓扑.
+
+    \item[五、]
+    (1)紧$T_2$空间为$T_4$空间；\\
+    (2)局部紧$T_2$空间为$T_3$空间.
+
+    \item[六、]
+    二维环面$\mathbb{T}^2=\mathbb{S}^1\times\mathbb{S}^1$，
+    有子集$A=\{1\}\times\mathbb{S}^1\cup\mathbb{S}^1\times\{1\}\subset\mathbb{T}^2$，
+    求$\mathbb{T}^2$将$A$捏为一点所得商空间的基本群.
+
+    \item[七、]
+    对任意$\lambda \in \Lambda$，拓扑空间$X_\lambda$同伦等价于$Y_\lambda$，
+    求证：$\prod\limits_{\lambda\in \Lambda}X_\lambda$
+    与$\prod\limits_{\lambda \in \Lambda} Y_\lambda$同伦等价.
+\end{itemize}
+
+\section{2021～2022 学年第二学期期末考试试卷}
+
+\begin{center}
+    \textsize{24pt}{复旦大学数学科学学院\\
+    2021$\sim$2022学年第二学期期末考试试卷\\
+    $\blacksquare$ $\text{A}$ 卷 \qquad $\square$ $\text{B}$ 卷}
+
+    \textsize{22pt}{课程名称：\ \ $\underline{\qquad\ \ \ 拓扑学\qquad\ \ \ }$课程代码：\ \ $\underline{\text{MATH130010}}$\\
+    开课院系：\ \ $\underline{\quad\ \ \,数学科学学院\quad\ \ }$考试形式：\ \ $\underline{\qquad闭卷\qquad\,}$\\
+    姓\ \ 名：\ $\underline{\qquad\quad\ \ \ }$\ \ \ 学\ \ 号：\ $\underline{\qquad\quad\ \ \ }$\ \ \ 专\ \ 业：\ $\underline{\qquad\qquad\quad\ \ \ \,}$}
+\end{center}
+\qquad 声明：我已知悉学校与考试相关的纪律以及违反纪律的后果, 
+并将严守纪律，不作弊，不抄袭，独立答题。
+\begin{flushright}
+    学生（签名）：$\underline{\qquad\qquad\qquad}$\\
+    年\qquad\ 月\qquad\ 日\quad\ 
+\end{flushright}
+\begin{table}
+    \begin{tabular}{|c|c|c|c|}
+        题\ \ 目 &\quad$1$\quad&\quad$2$\quad&\quad$3$\quad&\quad$4$\quad&\quad$5$\quad&\quad$6$\quad&\quad$7$\quad&\ \ 总分\ \ \\
+        得\ \ 分 & & & & & & & & 
+    \end{tabular}
+\end{table}
+
+\begin{enumerate}
+\item[一、](16分)多项选择题(答案未必唯一):
+  \item 设 $Y=\{a, b, c, d, e\}$, 
+  其上的一个拓扑为 $\{Y, \emptyset,\{a\},\{b\},\{a, b\},\{b, c, d\}\}$。
+  $f$ 为 $Y$ 到其自身的映射, 满足 $f(a)=b, f(b)=d, f(c)=b, f(d)=c, f(e)=e$。
+  则 $f$ 有性质$\underline{\qquad\qquad\qquad\qquad}$。\\
+A. $f$ 在 $c$ 点连续但在 $d$ 点不连续;\\
+B. $f$ 在 $c, d$ 两点均连续;\\
+C. $f$ 在 $c$ 点不连续但在 $d$ 点连续;\\
+D. $f$ 在 $a, b$ 两点均连续;\\
+E. $f$ 在 $c, d$ 两点均不连续。
+
+  \item 下列正确的答案为$\underline{\qquad\qquad\qquad\qquad}$。\\
+A. 拓扑不变性是伦型不变性;\\
+B. 伦型不变性是拓扑不变性;\\
+C. 紧性既是伦型不变性又是拓扑不变性;\\
+D. 基本群既是伦型不变的又是拓扑不变的;\\
+E. 一个拓扑空间和它的形变收缩核具有相同的拓扑不变性。
+
+  \item 设 $(X, T)$ 是一个拓扑空间, 且 $T$ 是它的拓扑。
+  则下列正确的答案是$\underline{\qquad\qquad\qquad\qquad}$。\\
+A. $T$ 的拓扑基总是存在，并且唯一;\\
+B. $X$ 的子集族 $B$ 是 $T$ 的一个拓扑基当且仅当 $X=\cup_{U \in B} U$;\\
+C. $T$ 的子集族 $S$ 是 $T$ 的一个拓扑子基当且仅当 $X=\cup_{U \in S} U$;\\
+D. $T$ 的子集族 $S$ 是 $T$ 的一个拓扑子基当且仅当 $S$ 中有限多个成员的交集全体成为 $T$ 的一个拓扑基;\\
+E. $X$ 的子集族 $B$ 是 $T$ 的一个拓扑基当且仅当对任意 $U \subset X$ 
+及任意 $x \in U$, 存在 $N \in B$ 使得 $x \in N \subset U$。
+
+  \item 设 $E, B$ 为连通且局部道路连通的空间, 并且 $(E, p)$ 是 $B$ 上的覆盖空间, 
+  $b_{0} \in B, e_{0} \in p^{-1}(b_{0})$。
+  则下列正确的是$\underline{\qquad\qquad\qquad\qquad}$。\\
+A. $B$ 中的两个定端同伦的道路的覆盖道路总是定端同伦的;\\
+B. 因为 $p$ 是满射，故诱导同态 $p_{*}: \pi_{1}(E, e_{0}) \rightarrow \pi_{1}(B, b_{0})$ 也是满同态;\\
+C. $p_{*}(\pi_{1}(X, x_{0}))$ 一定是 $\pi_{1}(B, b_{0})$ 的正规子群;\\
+D. $B$ 中的任何以 $b_{0}$ 为起点的道路 $\sigma:(I, 0) \rightarrow(B, b_{0})$ 
+总存在以 $e_{0}$ 为起点的覆盖道路 $\tilde{\sigma}:(I, 0) \rightarrow(E, e_{0})$;\\
+E. 连续映射 $f:(X, x_{0}) \rightarrow (B, b_{0})$ 
+总存在覆盖映射 $\tilde{f}:(X, x_{0}) \rightarrow (E, e_{0})$, 
+其中 $X$ 连通且局部道路连通。
+
+\item[二、](16分) 证明覆盖空间分类定理：设 $B$ 是连通且局部道路连通的空间, 
+$(E_{1}, p_{1})$ 和 $(E_{2}, p_{2})$ 是 $B$ 上两个覆盖空间, 
+则 $(E_{1}, p_{1})$ 和 $(E_{2}, p_{2})$ 同构的充要条件是它们的示性类相同 
+(即 $p_{1 *} \pi_{1}(E_{1})$ 和 $p_{2 *} \pi_{1}(E_{2})$ 在 $\pi_{1}(B)$ 中共轭）。
+
+\item[三、](12分) 试用图示来将三维球面 $\mathbb{S}^{3}$、
+三维环面 $\mathbb{T}^{3}=\mathbb{S}^{1} \times \mathbb{S}^{1} \times \mathbb{S}^{1}$、
+两维实射影平面与单位圆周的乘积 $\mathbb{RP}^{2} \times \mathbb{S}^{1}$ 等
+表示为单位正方体 $[0,1]^{3}$ 的商空间。
+
+\item[四、](20分) 设 $X$ 是一个拓扑空间, 求证:\\
+(1). 当 $X$ 为紧空间时, 且 $X$ 满足 $T_{2}$ 公理, 则 $X$ 满足 $T_{4}$ 公理;\\
+(2). 当 $X$ 为局部紧空间时, 且 $X$ 满足 $T_{3}$ 公理, 则 $X$ 满足 $T_{4}$ 公理。
+
+\item[五、](14分) 设 $\N$ 是所有正整数的集合, 
+$\mathcal{T}$ 是 $\N$ 的一些满足如下条件的集合 $U$ 构成的集族, 
+``若自然数 $n$ 在 $U$中, 则 $n$ 的每个因数都在 $U$ 中''。
+证明 $\mathcal{T}$ 是 $\N$ 上一个拓扑, 并讨论 $\mathcal{T}$ 是否是离散拓扑。
+
+\item[六、](10分) $\mathbb{S}^{2}$ 是 $\R^{3}$ 中单位球面, 
+$f: \mathbb{S}^{2} \rightarrow \R^{4}$ 为映射, 
+$f(x, y, z)=(x^{2}-y^{2}, xy, xz, yz)$。
+证明 $f$ 的像同胚于两维射影平面 $\mathbb{RP}^{2}$。
+
+\item[七、](12分) 设 $X$ 是道路连通且局部道路连通的空间, 
+并且基本群 $\pi_{1}(X)$ 是有限群, 证明任意连续映射
+$$f: X \rightarrow \mathbb{S}^{1}$$
+是零伦的。
+\end{enumerate}

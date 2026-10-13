@@ -1,0 +1,546 @@
+
+\section{Recollection on $f_*, f^*, \otimes$, and $\mathcal{H}om(-, -)$}
+
+\begin{definition}
+Let $X$ be a topological space, and let $\operatorname{Sh}(X)$ denote the category of sheaves of $\mathbb{C}$-vector spaces on $X$. The derived category of $\operatorname{Sh}(X)$ is defined as $D(X) = K(\operatorname{Sh}(X))[Q^{-1}]$. 
+We define the associated bounded derived categories as follows:
+\begin{itemize}
+    \item $D^+(X) = \{ \mathcal{F} \in D(X) \mid \text{there exists } N\in\mathbb{Z} \text{ such that } H^i(\mathcal{F})=0 \text{ for all } i<N \}$
+    \item $D^-(X) = \{ \mathcal{F} \in D(X) \mid \text{there exists } N\in\mathbb{Z} \text{ such that } H^i(\mathcal{F})=0 \text{ for all } i>N \}$
+    \item $D^b(X) = \{ \mathcal{F} \in D(X) \mid \text{there exists } N>0 \text{ such that } H^i(\mathcal{F})=0 \text{ for all } |i|>N \}$
+\end{itemize}
+\end{definition}
+
+For a continuous map $f: X \to Y$, the pullback functor $f^*: \operatorname{Sh}(Y) \to \operatorname{Sh}(X)$ is exact, whereas the pushforward functor $f_*: \operatorname{Sh}(X) \to \operatorname{Sh}(Y)$ is left exact. This implies that there exist derived functors:
+\begin{itemize}
+    \item $Rf^* = f^* : D^?(Y) \to D^?(X)$, where $? \in \{\emptyset, +, -, b\}$.
+    \item $Rf_* : D^+(X) \to D^+(Y)$ (and respectively on $D^b$).
+\end{itemize}
+
+\begin{proposition}[Adjunction]
+There is a natural adjunction isomorphism given by
+\begin{equation*}
+    \operatorname{Hom}_{D(X)}(f^*\mathcal{G}, \mathcal{F}) \cong \operatorname{Hom}_{D(Y)}(\mathcal{G}, Rf_*\mathcal{F}).
+\end{equation*}
+\end{proposition}
+
+\begin{definition}
+For complexes $\mathcal{F}, \mathcal{G} \in \operatorname{Ch}(X)$, we define their tensor product complex by
+\begin{equation*}
+    (\mathcal{F} \otimes \mathcal{G})^n := \bigoplus_{p+q=n} \mathcal{F}^p \otimes \mathcal{G}^q,
+\end{equation*}
+equipped with the differential $d(x^p \otimes y^q) = (dx^p) \otimes y^q + (-1)^p x^p \otimes (dy^q)$.
+\end{definition}
+
+This construction induces the left derived tensor product functor:
+\begin{equation*}
+    \otimes^L : D^-(X) \times D^-(X) \to D^-(X), \quad (\mathcal{F}, \mathcal{G}) \mapsto \mathcal{F} \otimes^L \mathcal{G}.
+\end{equation*}
+
+\begin{definition}
+For complexes $\mathcal{F}, \mathcal{G} \in \operatorname{Ch}(X)$, the global homomorphism complex $\operatorname{Hom}(\mathcal{F}, \mathcal{G})$ belongs to $\operatorname{Ch}(pt)$. Its degree $n$ component is given by
+\begin{equation*}
+    \operatorname{Hom}^n(\mathcal{F}, \mathcal{G}) = \prod_{p \in \mathbb{Z}} \operatorname{Hom}(\mathcal{F}^p, \mathcal{G}^{p+n}),
+\end{equation*}
+with the corresponding differential defined as $d^n(\varphi) = d \circ \varphi + (-1)^{n+1} \varphi \circ d$.
+
+Furthermore, we define the sheaf hom complex $\mathcal{H}om(\mathcal{F}, \mathcal{G}) \in \operatorname{Ch}(X)$ by associating to each open subset $U \subset X$ the complex $\operatorname{Hom}(\mathcal{F}|_U, \mathcal{G}|_U)$.
+\end{definition}
+
+This sheafified version induces the right derived sheaf hom functor:
+\begin{equation*}
+    R\mathcal{H}om : D^-(X)^{\text{op}} \times D^+(X) \to D^+(X).
+\end{equation*}
+
+\begin{proposition}[Adjunction]
+For $\mathcal{F}, \mathcal{G}\in D^-(X)$ and $\mathcal{A}\in D^+(X)$, we have the following adjunction isomorphism for derived functors:
+\begin{equation*}
+    R\mathcal{H}om(\mathcal{F} \otimes^L \mathcal{G}, \mathcal{A}) \cong R\mathcal{H}om(\mathcal{F}, R\mathcal{H}om(\mathcal{G}, \mathcal{A})).
+\end{equation*}
+\end{proposition}
+
+\section{The Functor $f_!$ (!-pushforward)}
+
+\begin{definition}
+A continuous map $f \colon X \to Y$ is \textbf{proper} if it is universally closed, that is, for any topological space $Z$, the product map $f \times \operatorname{id}_Z \colon X \times Z \to Y \times Z$ is closed.
+\end{definition}
+
+\begin{proposition}
+Let $X$ and $Y$ be Hausdorff, locally compact spaces, and let $f \colon X \to Y$ be a continuous map. Then the following are equivalent:
+\begin{enumerate}
+    \item $f$ is proper.
+    \item For any compact subset $K \subset Y$, the preimage $f^{-1}(K) \subset X$ is compact.
+    \item The map $f$ is closed, and for every $y \in Y$, the fiber $f^{-1}(y)$ is compact.
+\end{enumerate}
+\end{proposition}
+
+\begin{remark}
+For a finite type morphism $f \colon X \to Y$ between algebraic varieties, the induced continuous map on complex points $f \colon X(\mathbb{C}) \to Y(\mathbb{C})$ is proper if and only if $f$ is a proper morphism in the sense of algebraic geometry.
+\end{remark}
+
+\begin{definition}
+For a continuous map $f \colon X \to Y$ and a sheaf $\mathcal{F} \in \operatorname{Sh}(X)$, we define the sheaf $f_!\mathcal{F} \in \operatorname{Sh}(Y)$ by specifying its sections over an open set $U \subset Y$:
+\begin{equation*}
+    (f_!\mathcal{F})(U) = \{ s \in \mathcal{F}(f^{-1}(U)) \mid \text{the restricted map } f|_{\operatorname{supp}(s)} \colon \operatorname{supp}(s) \to U \text{ is proper} \}.
+\end{equation*}
+where $\operatorname{supp}(s)$ is by definition contained in $f^{-1}(U)$.
+Clearly, $f_!\mathcal{F}$ is a subsheaf of the pushforward sheaf $f_*\mathcal{F}$.
+\end{definition}
+
+\begin{lemma}
+The functor $f_! \colon \operatorname{Sh}(X) \to \operatorname{Sh}(Y)$ is left exact.
+\end{lemma}
+
+\begin{proof}[\textbf{Hint:}]
+This follows from the fact that $f_!\mathcal{F}$ is defined as a subsheaf of $f_*\mathcal{F}$ and the properties of its definition.
+\end{proof}
+
+As a consequence of this left exactness, there exists a right derived functor $Rf_! \colon D^+(X) \to D^+(Y)$.
+
+\textit{
+\textbf{Convention： Whenever the functor $f_!$ is involved, we will assume that all spaces are locally compact.
+}}
+
+For the constant map to a point $a_X \colon X \to \text{pt}$, we denote the space of compactly supported sections by
+\begin{equation*}
+    \Gamma_c(\mathcal{F}) = a_{X!}\mathcal{F} = \{ s \in \Gamma(\mathcal{F}) \mid \operatorname{supp}(s) \text{ is compact} \}.
+\end{equation*}
+This induces the derived functor $R\Gamma_c := Ra_{X!}$, and we define \textbf{the cohomology with compact support} as
+\begin{equation}\label{cohomology_compact_support}
+    H^k_c(\mathcal{F}) := H^k(R\Gamma_c(\mathcal{F})).
+\end{equation}
+
+\begin{example}
+If a continuous map $f \colon X \to Y$ is proper, then $f_! = f_*$.
+\end{example}
+
+\begin{proof}[\textbf{Proof}]
+It suffices to show that for all $s \in \mathcal{F}(f^{-1}(U))$, the map $\operatorname{supp}(s) \to U$ is proper. 
+Note that an immersion $Z \hookrightarrow U$ is proper if and only if $Z$ is closed in $U$.
+
+Consider the sequence of maps:
+\begin{equation*}
+    \operatorname{supp}(s) \hookrightarrow f^{-1}(U) \xrightarrow{f} U.
+\end{equation*}
+By definition, $\operatorname{supp}(s)$ is closed in $f^{-1}(U)$, so the inclusion $\operatorname{supp}(s) \hookrightarrow f^{-1}(U)$ is proper. Since $f \colon X \to Y$ is proper, its base change $f^{-1}(U) \to U$ is also proper. Therefore, the composition $\operatorname{supp}(s) \to U$ is proper, which completes the proof.
+\end{proof}
+
+\begin{example}[Extension by zero]
+Let $j \colon Y \to X$ be an embedding of a locally closed subspace, and let $\mathcal{F} \in \operatorname{Sh}(Y)$. Then the stalks of $j_!\mathcal{F}$ are given by
+\begin{equation*}
+    (j_!\mathcal{F})_x = 
+    \begin{cases} 
+        \mathcal{F}_x, & \text{if } x \in Y, \\
+        0, & \text{if } x \notin Y. 
+    \end{cases}
+\end{equation*}
+In particular, the functor $j_!$ is exact.
+
+Moreover, $j_!\mathcal{F}$ is the sheafification of the presheaf $j_{!,\text{pre}}\mathcal{F}$ defined by
+\begin{equation*}
+    j_{!,\text{pre}}\mathcal{F}(U) = 
+    \begin{cases} 
+        \mathcal{F}(U \cap Y), & \text{if } U \cap \overline{Y} \subset Y, \\
+        0, & \text{otherwise}.
+    \end{cases}
+\end{equation*}
+\end{example}
+
+\begin{proof}[\textbf{Proof}]
+Assume $Y = Y_1 \cap Y_2$, where $Y_1$ is an open subset and $Y_2$ is a closed subset of $X$.
+
+\textbf{Case 1:} If $x \in Y$, we will show that $(j_!\mathcal{F})_x = \mathcal{F}_x$. 
+
+Take an open neighborhood $U \subseteq Y_1$ such that $x \in U$. Then $U \cap Y = U \cap Y_1 \cap Y_2 = U \cap Y_2$. For any section $s \in \mathcal{F}(U \cap Y)$, we have the inclusion $\operatorname{supp}(s) \hookrightarrow U \cap Y = U \cap Y_2$. 
+
+Since $Y_2$ is closed in $X$, $U \cap Y_2$ is closed in $U$. Thus $\operatorname{supp}(s)$, being closed in $U \cap Y$, is also closed in $U$. This implies that the map $\operatorname{supp}(s) \to U$ is proper. Therefore, every section in $\mathcal{F}(U \cap Y)$ has proper support over $U$, which means $(j_!\mathcal{F})(U) = \mathcal{F}(U \cap Y)$. Passing to the stalk at $x$ yields $(j_!\mathcal{F})_x = \mathcal{F}_x$.
+
+\textbf{Case 2:} If $x \notin Y$. 
+
+Let $U \subseteq X$ be an open neighborhood of $x$. For any section $s \in (j_!\mathcal{F})(U) \subseteq \mathcal{F}(U \cap Y)$, the map $\operatorname{supp}(s) \hookrightarrow U \cap Y \hookrightarrow U$ is proper. This properness implies that $\operatorname{supp}(s)$ is closed in $U$. 
+
+Since $s \in \mathcal{F}(U \cap Y)$, we know $\operatorname{supp}(s) \subseteq Y$. Because $x \notin Y$, it follows that $x \notin \operatorname{supp}(s)$. Therefore, $x \in U \setminus \operatorname{supp}(s)$. Since $\operatorname{supp}(s)$ is closed in $U$, its complement $U \setminus \operatorname{supp}(s)$ is an open neighborhood of $x$. 
+
+Restricting $s$ to this smaller neighborhood, we obtain $s|_{U \setminus \operatorname{supp}(s)} = 0$. Thus, the germ of $s$ at $x$ is $0$, which implies $(j_!\mathcal{F})_x = 0$.
+
+\bigskip
+
+For the presheaf $j_{!,\text{pre}}\mathcal{F}$, consider an open subset $U \subset X$ such that $U \cap \overline{Y} \subset Y$. Any closed subset of $U \cap Y$ is also closed in $U$. This holds because if $V \subset X$ is a closed subset, then $U \cap Y \cap V = U \cap \overline{Y} \cap V$ by our given condition. Thus, we have
+\begin{equation*}
+    (j_!\mathcal{F})(U) = \{ s \in \mathcal{F}(U \cap Y) \mid \text{the map } \operatorname{supp}(s) (\hookrightarrow U \cap Y \hookrightarrow) U \text{ is proper} \} = \mathcal{F}(U \cap Y).
+\end{equation*}
+This implies that there is a natural morphism from the sheafification $(j_{!,\text{pre}}\mathcal{F})^+$ to $j_!\mathcal{F}$.
+
+To prove that this morphism is an isomorphism, we need to show that the stalks are given by
+\begin{equation*}
+    (j_{!,\text{pre}}\mathcal{F})_x = 
+    \begin{cases} 
+        \mathcal{F}_x, & \text{if } x \in Y, \\
+        0, & \text{if } x \notin Y. 
+    \end{cases}
+\end{equation*}
+We verify this case by case:
+\begin{itemize}
+    \item At $x \notin \overline{Y}$, it is clear that $(j_{!,\text{pre}}\mathcal{F})_x = 0$.
+    \item At $x \in \overline{Y} \setminus Y$, every open neighborhood $U$ of $x$ satisfies $U \cap \overline{Y} \not\subset Y$. Therefore, the stalk is zero, i.e., $(j_{!,\text{pre}}\mathcal{F})_x = 0$.
+    \item At $x \in Y$, since $Y$ is a locally closed subspace, we can write $Y = Y_1 \cap Y_2$, where $Y_1$ is open and $Y_2$ is closed. Let $U$ be an open neighborhood of $x$ such that $x \in U \subset Y_1$. Then $U \cap \overline{Y} \subset Y_1 \cap \overline{Y_2} \subset Y_1 \cap Y_2 = Y$. This implies that $(j_{!,\text{pre}}\mathcal{F})_x = \mathcal{F}_x$.
+\end{itemize}
+This completes the proof.
+\end{proof}
+
+\textit{\textbf{Notation and Conventions:
+Henceforth, we will use $f_*$, $f^*$, and $f_!$ to denote the corresponding functors for derived categories. 
+For the corresponding functors in abelian categories, we will use the notation $^\circ f_*$, $^\circ f^*$, and $^\circ f_!$.
+}}
+
+Furthermore, for the composition of morphisms $X \xrightarrow{f} Y \xrightarrow{g} Z$, we have the following natural isomorphisms:
+\begin{equation*}
+    (g \circ f)^* \simeq f^* \circ g^*, \quad (g \circ f)_* \simeq g_* \circ f_*, \quad \text{and} \quad (g \circ f)_! \simeq g_! \circ f_!.
+\end{equation*}
+
+\section{Proper Base Change}
+
+Let us consider a Cartesian diagram of topological spaces:
+\begin{equation*}
+\begin{tikzcd}
+    X' \arrow[r, "g'"] \arrow[d, "f'"'] & X \arrow[d, "f"] \\
+    Y' \arrow[r, "g"'] & Y
+\end{tikzcd}
+\end{equation*}
+
+\begin{theorem}
+For any $\mathcal{F} \in D^+(X)$, there exists a natural isomorphism
+\begin{equation*}
+    g^* f_! \mathcal{F} \xrightarrow{\sim} f'_! (g')^* \mathcal{F}.
+\end{equation*}
+\end{theorem}
+
+\begin{remark}
+If $f$ is proper, then $f_! = f_*$, which means the "$!$" can be replaced by "$*$" on the right-hand side. In general, this is not true. This theorem is very useful.
+\end{remark}
+
+Before proving the theorem, we first establish the following lemma.
+
+\begin{lemma}
+For any $\mathcal{G} \in D^+(X')$, there exists a natural morphism
+\begin{equation*}
+    f_! g'_* \mathcal{G} \longrightarrow g_* f'_! \mathcal{G}.
+\end{equation*}
+\end{lemma}
+
+\begin{proof}[\textbf{Proof Sketch of Lemma}]
+Let $h = f \circ g' = g \circ f' \colon X' \to Y$. 
+To establish the morphism, 
+we compare the sections over an open subset $U \subset Y$ at the level of abelian categories.
+
+For the left-hand side, we have:
+
+\begin{align*}
+    (^\circ f_!\  {}^\circ g'_* \mathcal{G})(U) = \{ s \in (^\circ g'_* \mathcal{G})(f^{-1}(U)) \mid \text{the map } f|_{\operatorname{supp}_X(s)} \colon \operatorname{supp}_X(s) \to U \text{ is proper} \}
+\end{align*}
+
+For the right-hand side, we have:
+\begin{align*}
+    (^\circ g_* \ ^\circ f'_! \mathcal{G})(U) &= (^\circ f'_! \mathcal{G})(g^{-1}(U)) \\
+    &= \{ s \in \mathcal{G}((f')^{-1}(g^{-1}(U))) \mid \text{the map } f'|_{\operatorname{supp}_{X'}(s)} \colon \operatorname{supp}_{X'}(s) \to g^{-1}(U) \text{ is proper} \}
+\end{align*}
+Notice that the underlying group of sections is the same, since
+\begin{equation*}
+    (^\circ g'_* \mathcal{G})(f^{-1}(U)) = \mathcal{G}((g')^{-1}(f^{-1}(U))) = \mathcal{G}(h^{-1}(U)) = \mathcal{G}((f')^{-1}(g^{-1}(U))).
+\end{equation*}
+
+Now we compare the properness conditions. We have the following diagram of supports:
+\begin{equation*}
+\begin{tikzcd}
+    \operatorname{supp}_{X'}(s) \arrow[r, hook] \arrow[dr, "\text{proper}"'] & (g')^{-1}(\operatorname{supp}_X(s)) \arrow[r] \arrow[d, "\text{proper}"] & \operatorname{supp}_X(s) \arrow[d, "\text{proper}"] \\
+    & g^{-1}(U) \arrow[r] & U
+\end{tikzcd}
+\end{equation*}
+If the map $\operatorname{supp}_X(s) \to U$ is proper, then by the property of Cartesian squares, its base change $(g')^{-1}(\operatorname{supp}_X(s)) \to g^{-1}(U)$ is also proper. Since $\operatorname{supp}_{X'}(s)$ is a closed subset of $(g')^{-1}(\operatorname{supp}_X(s))$, the restriction $\operatorname{supp}_{X'}(s) \to g^{-1}(U)$ is also proper.
+
+Therefore, any section satisfying the properness condition for the left-hand side also satisfies the properness condition for the right-hand side. This gives an inclusion:
+\begin{equation*}
+    (^\circ f_! \ ^\circ g'_* \mathcal{G})(U) \subseteq (^\circ g_* \ ^\circ f'_! \mathcal{G})(U).
+\end{equation*}
+To prove the lemma, it is sufficient to check this inclusion in the abelian category case. This completes the proof of the lemma.
+\end{proof}
+
+\begin{proof}[\textbf{Proof Sketch of Theorem}]
+    Let $\mathcal{G} = (g')^* \mathcal{F}$. We have the following sequence of morphisms:
+\begin{equation*}
+    g^* f_! \mathcal{F} \longrightarrow g^* f_! g'_* (g')^* \mathcal{F} \xrightarrow{\text{by Lemma}} g^* g_* f'_! (g')^* \mathcal{F} \longrightarrow f'_! (g')^* \mathcal{F}.
+\end{equation*}
+To show that this composition is an isomorphism, one checks it on the stalks. The detailed proof is omitted here. 
+
+\textit{(Hint: This can be proved by reduction to the case where $Y'$ is a point. For details, see [Kashiwara-Shapira, Sheaves on Manifolds]).}
+\end{proof}
+
+\section{The Functor $f^!$ (!-pullback)}
+
+\begin{definition}
+Let $f \colon X \to Y$ be a continuous map. The functor $^\circ f_! \colon \operatorname{Sh}(X) \to \operatorname{Sh}(Y)$ is said to \textbf{have finite cohomological dimension} if there exists an integer $r \in \mathbb{N}$ such that for all $k > r$ and for all sheaves $\mathcal{F} \in \operatorname{Sh}(X)$, we have $R^k (^\circ f_!) \mathcal{F} = 0$. 
+
+This condition is denoted by $\dim(^\circ f_!) < +\infty$.
+\end{definition}
+
+\begin{example}
+Let $X$ be an algebraic or analytic variety. Every sheaf $\mathcal{F} \in \operatorname{Sh}(X)$ has an injective resolution of length at most $2 \dim X$. This implies that for any continuous map $f \colon X \to Y$ between varieties, we always have $\dim(^\circ f_!) < +\infty$.
+\end{example}
+
+\begin{theorem}[Verdier Duality]
+Let $f \colon X \to Y$ be a continuous map such that $\dim(^\circ f_!) < +\infty$. Then there exists a triangulated functor $f^! \colon D^+(Y) \to D^+(X)$ such that we have a natural isomorphism
+\begin{equation*}
+    R\mathcal{H}om(f_! \mathcal{F}, \mathcal{G}) \simeq f_* R\mathcal{H}om(\mathcal{F}, f^! \mathcal{G})
+\end{equation*}
+for all $\mathcal{F} \in D^-(X)$ and all $\mathcal{G} \in D^+(Y)$. In other words, the functor $f_!$ has a right adjoint.
+\end{theorem}
+
+\begin{remark}
+    A sheaf $\mathcal{F}\in\mathrm{Sh}(X)$ is \textbf{$f$-soft} if for every fiber $X_y$ of $f$, $\mathcal{F}|_{X_y}$ is $c$-soft. 
+    A sheaf $\mathcal{F}$ is \textbf{$c$-soft} if for every compact subset $K \subset X$, the restriction map $\Gamma(X, \mathcal{F}) \to \Gamma(K, \mathcal{F}|_K)$ is surjective.
+\end{remark}
+
+\begin{proof}[\textbf{Proof Sketch}]
+Fix a finite $f$-soft resolution $\mathcal{K}$ of the constant sheaf $\mathbb{C}_X$. 
+Such a resolution exists by the assumption that $^\circ f_!$ has finite cohomological dimension.
+
+For any complex $\mathcal{G} \in \operatorname{Ch}^+(\operatorname{Sh}(Y))$, we define a presheaf $f^!\mathcal{G}$ as follows. For each open subset $U \subset X$ with the inclusion $j_U \colon U \hookrightarrow X$, we set
+\begin{equation*}
+    (f^!\mathcal{G})(U) := \operatorname{Hom}(^\circ f_! j_{U!} (\mathcal{K}|_U), \mathcal{G}).
+\end{equation*}
+
+One then verifies the following properties:
+\begin{itemize}
+    \item $f^!\mathcal{G}$ is a complex of sheaves.
+    \item It induces a well-defined functor $D^+(Y) \to D^+(X)$.
+    \item There is a natural isomorphism $R\mathcal{H}om(f_!\mathcal{F}, \mathcal{G}) \simeq f_* R\mathcal{H}om(\mathcal{F}, f^!\mathcal{G})$.
+\end{itemize}
+This isomorphism is clear, for example, when $\mathcal{F} = \mathbb{C}_X$. For detailed verifications, we refer to [Kashiwara-Shapira, \S 3.1].
+\end{proof}
+
+By the uniqueness of right adjoints, we have a natural isomorphism $(g \circ f)^! \simeq f^! \circ g^!$.
+
+\begin{remark}
+In general, $f^!$ is not the derived functor of its zeroth cohomology, that is, $f^! \not\simeq R(^\circ f^!)$.
+However, this is true in some special cases.
+\end{remark}
+
+\begin{example}[Restriction with supports in $X$]
+Let $f \colon X \hookrightarrow Y$ be an inclusion of a locally closed subspace. We define the functor $^\circ f^! \colon \operatorname{Sh}(Y) \to \operatorname{Sh}(X)$ at the level of abelian categories as follows. For any open subset $U \subset X$ and any sheaf $\mathcal{F} \in \operatorname{Sh}(Y)$, we set
+\begin{equation*}
+    (^\circ f^!\mathcal{F})(U) = \varinjlim_{\substack{V \subseteq Y \text{ open} \\ V \cap \overline{X} = U}} \{ s \in \mathcal{F}(V) \mid \operatorname{supp}(s) \subseteq U \}.
+\end{equation*}
+(Homework: verify that $^\circ f^!\mathcal{F}$ is indeed a sheaf on $X$).
+\end{example}
+
+In particular, for an open subset $X$, we have $^\circ f^! \mathcal{F} ={}^\circ f^* \mathcal{F}$. In general, there is a natural morphism $^\circ f^! \longrightarrow {}^\circ f^*$. 
+
+One can check that the functor $^\circ f^!$ is left exact. Thus, we can define its right derived functor as
+\begin{equation*}
+    f^! = R(^\circ f^!) \colon D^+(Y) \longrightarrow D^+(X).
+\end{equation*}
+
+\begin{proposition}
+There is a natural adjunction isomorphism:
+\begin{equation*}
+    \operatorname{Hom}_{D(Y)}(f_! \mathcal{F}, \mathcal{G}) \simeq \operatorname{Hom}_{D(X)}(\mathcal{F}, f^! \mathcal{G}).
+\end{equation*}
+\end{proposition}
+
+\begin{remark}
+By the uniqueness of right adjoints, this derived functor coincides with the functor $f^!$ defined previously.
+\end{remark}
+
+\begin{proof}[\textbf{Proof Sketch}]
+Recall that the presheaf pushforward with proper supports is given by
+\begin{equation*}
+    (f_{!,\text{pre}}\mathcal{F})(U) = 
+    \begin{cases} 
+        \mathcal{F}(U \cap X), & \text{if } U \cap \overline{X} \subseteq X, \\
+        0, & \text{otherwise}.
+    \end{cases}
+\end{equation*}
+
+To establish the adjunction, we describe the unit and counit morphisms.
+
+For the unit $\mathcal{F} \longrightarrow {}^\circ f^! f_{!,\text{pre}} \mathcal{F}$: 
+given an open subset $U \subseteq X$ and an open subset $V \subseteq Y$ such that $V \cap \overline{X} = U$, 
+we clearly have $U = V \cap X$. 
+The morphism is defined by the identity map 
+\begin{equation*}
+    \mathcal{F}(U) \longrightarrow \mathcal{F}(V \cap X)=\mathcal{F}(U),
+\end{equation*}
+
+For the counit $f_{!,\text{pre}} {}^\circ f^! \mathcal{G} \longrightarrow \mathcal{G}$: 
+for an open subset $V \subseteq Y$ with
+ $V \cap \overline{X} \subseteq X$, 
+ where $U = V \cap X = V \cap \overline{X}$. The morphism is given by the natural inclusion 
+\begin{equation*}
+    \{s \in \mathcal{G}(V) \mid \operatorname{supp}(s) \subseteq U\} \longrightarrow \mathcal{G}(V).
+\end{equation*}
+This completes the proof.
+\end{proof}
+
+\begin{definition}
+Let $i_x \colon \{x\} \hookrightarrow X$ be the inclusion of a point. The complex $i_x^! \mathcal{F}$ is called the \textbf{costalk} of $\mathcal{F}$ at $x$.
+\end{definition}
+
+\begin{definition}
+For the constant map to a point $a_X \colon X \longrightarrow \text{pt}$, assume that the cohomological dimension satisfies $\dim(^\circ a_{X!}) < +\infty$. 
+We define the \textbf{dualizing sheaf} of $X$ as
+\begin{equation*}
+    \omega_X := a_X^! \mathbb{C} \in D^+(X).
+\end{equation*}
+\end{definition}
+
+\begin{lemma}
+The $i$-th cohomology sheaf $\mathcal{H}^i(\omega_X) \in \operatorname{Sh}(X)$ is the sheaf associated to the presheaf defined by
+\begin{equation*}
+    V \longmapsto (H^{-i}_c(V))^\vee,
+\end{equation*}
+where the right-hand side represents the dual space of the compactly supported cohomology in degree $-i$.
+\end{lemma}
+
+\begin{remark}
+    We define $H^k_c(V):=H^k_c(\mathbb{C}_V)$ which is defined in (\ref{cohomology_compact_support}).
+\end{remark}
+
+\begin{proof}[\textbf{Proof Sketch}]
+Recall that for a complex $\mathcal{F} \in D^+(X)$, its $i$-th cohomology sheaf $\mathcal{H}^i(\mathcal{F})$ is the sheaf associated to the presheaf given by
+\begin{equation*}
+    U \longmapsto \operatorname{Hom}_{D(X)}(\mathbb{C}_U, \mathcal{F}[i]).
+\end{equation*}
+For the dualizing sheaf $\mathcal{F} = \omega_X = a_X^! \mathbb{C}$, we can compute the sections of this presheaf as follows:
+\begin{equation*}
+    \operatorname{Hom}_{D(U)}(\mathbb{C}_U, a_U^! \mathbb{C}[i]) \simeq 
+    \operatorname{Hom}_{D(\mathrm{pt})}(a_{U!} \mathbb{C}_U[i], \mathbb{C}) 
+    = (H^{-i}(R\Gamma_c(\mathbb{C}_U)))^\vee = (H^{-i}_c(U))^\vee.
+\end{equation*}
+This establishes the lemma.
+\end{proof}
+
+\begin{remark}
+\begin{enumerate}
+    \item The cohomology $H^{-i}(X, \omega_X)$ is defined as the Borel-Moore homology $H_i^{BM}(X)$. This is particularly useful in geometric representation theory.
+    \item Next time, we will discuss that for a smooth morphism $f$ between varieties of relative complex dimension $d$, we have the isomorphism
+    \begin{equation*}
+        f^! \mathcal{F} \simeq f^* \mathcal{F}[2d].
+    \end{equation*}
+    (Note: the shift $(d)$ is often called the "Tate twist" in related contexts). 
+    
+    In particular, for a smooth variety $X$, the dualizing sheaf is given by $\omega_X = \mathbb{C}_X[2\dim_{\mathbb{C}} X]$.
+
+
+Furthermore, for $d > 0$, we have $\mathcal{H}^0(f^!) = \mathcal{H}^0(f^*[2d]) = 0$ because the pullback functor $f^*$ is exact. However, the cohomology at other degrees $\mathcal{H}^i$ is not necessarily zero. Therefore, we can see that $R(\mathcal{H}^0(f^!)) = 0$, which is clearly not isomorphic to $f^!$.
+
+
+
+More generally, for an orientable real manifold $X$ of real dimension $n$, the dualizing sheaf is isomorphic to $\mathbb{C}_X[n]$. Consider the adjunction for the constant map $a_X \colon X \to \text{pt}$:
+\begin{align*}
+    R\mathcal{H}om(a_{X!} \mathbb{C}_X, \mathbb{C}) 
+    &\simeq a_{X*} R\mathcal{H}om(\mathbb{C}_X, a_X^! \mathbb{C}) \\
+    &= a_{X*} R\mathcal{H}om(\mathbb{C}_X, \mathbb{C}_X[n]) \\
+    &= R\Gamma(X)[n].
+\end{align*}
+On the other hand, the left-hand side can be computed directly as:
+\begin{equation*}
+    \text{LHS} = (R\Gamma_c(X))^\vee.
+\end{equation*}
+By taking the $-k$-th cohomology $H^{-k}$ on both sides of the isomorphism $(R\Gamma_c(X))^\vee \simeq R\Gamma(X)[n]$, we obtain
+\begin{equation*}
+    (H^k_c(X))^\vee \simeq H^{n-k}(X),
+\end{equation*}
+which is exactly the statement of Poincar\'e duality.
+\item For a continuous map $f \colon X \to Y$, we have the relation $f^! \omega_Y \simeq \omega_X$.
+\end{enumerate}
+\end{remark}
+
+\section{Verdier Duality Functor}
+
+\begin{definition}
+The \textbf{Verdier duality functor} is defined as:
+\begin{equation*}
+    \mathbb{D} = \mathbb{D}_X \colon D^-(X)^{\text{op}} \longrightarrow D^+(X),
+\end{equation*}
+where the action on a complex $\mathcal{F}$ is given by
+\begin{equation*}
+    \mathbb{D}(\mathcal{F}) = R\mathcal{H}om(\mathcal{F}, \omega_X).
+\end{equation*}
+\end{definition}
+
+\begin{lemma}
+For a continuous map $f \colon X \to Y$, we have the following natural isomorphisms:
+\begin{enumerate}
+    \item $f_* \mathbb{D}\mathcal{F} \simeq \mathbb{D}(f_! \mathcal{F})$
+    \item $f^! \mathbb{D}\mathcal{F} \simeq \mathbb{D}(f^* \mathcal{F})$
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}[\textbf{Proof}]
+Recall the Verdier duality adjunction for a map $f \colon X \to Y$:
+\begin{equation*}
+    R\mathcal{H}om(f_! \mathcal{F}, \mathcal{G}) \simeq f_* R\mathcal{H}om(\mathcal{F}, f^! \mathcal{G}).
+\end{equation*}
+
+(1) To prove the first isomorphism, we let $\mathcal{G} = \omega_Y$. 
+The left-hand side becomes $R\mathcal{H}om(f_! \mathcal{F}, \omega_Y) = \mathbb{D}(f_! \mathcal{F})$. 
+The right-hand side becomes $f_* R\mathcal{H}om(\mathcal{F}, f^! \omega_Y)$. Since $f^! \omega_Y \simeq \omega_X$, this is exactly $f_* \mathbb{D}\mathcal{F}$.
+
+(2) To prove the second isomorphism, we first need the following theorem:
+
+\begin{theorem}[Projection Formula]
+There is a natural isomorphism:
+\begin{equation} 
+    f_! \mathcal{F} \otimes^L \mathcal{G} \simeq f_! (\mathcal{F} \otimes^L f^* \mathcal{G}). 
+\end{equation}
+\end{theorem}
+
+The detailed proof can be found in [Kashiwara-Shapira, Proposition 2.6.6].
+
+From the projection formula, we can deduce the following fundamental isomorphism:
+\begin{equation} \label{2.eq:deduction}
+    f^! R\mathcal{H}om(\mathcal{F}_1, \mathcal{F}_2) \simeq R\mathcal{H}om(f^* \mathcal{F}_1, f^! \mathcal{F}_2). 
+\end{equation}
+In fact, for any complex $\mathcal{F}$, we have the following sequence of natural isomorphisms:
+\begin{align*}
+    \operatorname{Hom}(\mathcal{F}, f^! R\mathcal{H}om(\mathcal{F}_1, \mathcal{F}_2)) 
+    &\simeq \operatorname{Hom}(f_! \mathcal{F} \otimes^L \mathcal{F}_1, \mathcal{F}_2) \\
+    &\simeq \operatorname{Hom}(f_! (\mathcal{F} \otimes^L f^* \mathcal{F}_1), \mathcal{F}_2)\\
+    &\simeq \operatorname{Hom}(\mathcal{F} \otimes^L f^* \mathcal{F}_1, f^! \mathcal{F}_2) \\
+    &\simeq \operatorname{Hom}(\mathcal{F}, R\mathcal{H}om(f^* \mathcal{F}_1, f^! \mathcal{F}_2)).
+\end{align*}
+Since this holds for any $\mathcal{F}$, the isomorphism \eqref{2.eq:deduction} follows.
+
+Finally, let us substitute $\mathcal{F}_1 = \mathcal{F}$ and $\mathcal{F}_2 = \omega_Y$ into \eqref{2.eq:deduction}. This yields:
+\begin{equation*}
+    f^! R\mathcal{H}om(\mathcal{F}, \omega_Y) \simeq R\mathcal{H}om(f^* \mathcal{F}, f^! \omega_Y).
+\end{equation*}
+Notice that the left-hand side is $f^! \mathbb{D}\mathcal{F}$. For the right-hand side, since $f^! \omega_Y \simeq \omega_X$, it becomes $R\mathcal{H}om(f^* \mathcal{F}, \omega_X) = \mathbb{D}(f^* \mathcal{F})$. This completes the proof.
+\end{proof}
+
+\begin{remark}
+If we expect the Verdier duality functor to be an involution, that is, $\mathbb{D}^2 = \operatorname{Id}$, 
+we need to restrict our attention to complexes $\mathcal{F} \in D^b_c(X)$. 
+This implies that we need the fact that all functors above keep constructible sheaves.
+
+By the properties of the duality functor, it interchanges the pushforward and pullback operations. This yields the following relations, which are extremely useful in computations:
+\begin{align}\label{2.remark.1}
+    f_! &= \mathbb{D} \circ f_* \circ \mathbb{D}, \\
+    f^! &= \mathbb{D} \circ f^* \circ \mathbb{D}.
+\end{align}
+\end{remark}
+
+An important geometric case arises when we consider a closed subspace $Z$ of $X$ and its open complement $U = X \setminus Z$. Let $i$ and $j$ be the corresponding closed and open immersions, respectively:
+\begin{equation*}
+    Z \overset{i}{\hookrightarrow} X \overset{j}{\hookleftarrow} U.
+\end{equation*}
+
+For any complex $\mathcal{F}$, there exist the following two fundamental distinguished triangles:
+\begin{equation*}
+    j_! j^* \mathcal{F} \longrightarrow \mathcal{F} \longrightarrow i_* i^* \mathcal{F} \xrightarrow{+1}
+\end{equation*}
+and
+\begin{equation*}
+    i_* i^! \mathcal{F} \longrightarrow \mathcal{F} \longrightarrow j_* j^* \mathcal{F} \xrightarrow{+1}.
+\end{equation*}
+the second triangle can be “obtained”\ by applying Verdier functor and (\ref{2.remark.1}) to the first one.

@@ -1,0 +1,550 @@
+
+\begin{remark}
+    From now on, for $\mathcal{F}\in D(X)$, the notation $H^k(\mathcal{F})$ and $\mathcal{H}^k(\mathcal{F})$ will be used interchangeably to denote the $k$-th cohomology sheaf of $\mathcal{F}$.
+\end{remark}
+
+\section{Open-closed distinguished triangle}
+
+Let $i \colon Z \hookrightarrow X$ be a closed subset, and let $j \colon U = X \setminus Z \hookrightarrow X$ be the open complement. We have the relations:
+\begin{equation*}
+    i_* = i_! \quad \text{and} \quad j^* = j^!
+\end{equation*}
+
+\begin{theorem}
+For the inclusions $i \colon Z \hookrightarrow X$ and $j \colon U \hookrightarrow X$, the following hold:
+\begin{enumerate}
+    \item $i^* j_! = i^! j_* = j^* i_* = 0$.
+    \item For any sheaf $\mathcal{F} \in D(X)$, there exists a natural distinguished triangle:
+    \begin{equation*}
+        j_! j^* \mathcal{F} \longrightarrow \mathcal{F} \longrightarrow i_* i^* \mathcal{F} \xrightarrow{+1}
+    \end{equation*}
+    \item For any sheaf $\mathcal{F} \in D(X)$, there exists a natural distinguished triangle:
+    \begin{equation*}
+        i_* i^! \mathcal{F} \longrightarrow \mathcal{F} \longrightarrow j_* j^* \mathcal{F} \xrightarrow{+1}
+    \end{equation*}
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}
+    Notice that the first maps in the triangles essentially use "$!$", while the second maps use "$*$". This pattern works because $i_* = i_!$ and $j^* = j^!$.
+\end{remark}
+
+\begin{proof}[\textbf{Proof}]
+It suffices to show these properties in the abelian category of sheaves. 
+
+For (1), consider the stalks of the sheaves. For a sheaf $\mathcal{F}$, the stalk $(j_! \mathcal{F})_x = 0$ for $x \notin U$. Similarly, $(i_! \mathcal{F})_x = 0$ for $x \notin Z$. This immediately implies that:
+\begin{equation*}
+    i^* j_! = j^* i_* = 0
+\end{equation*}
+By Verdier duality, the functor $i^! \circ j_*$ is the right adjoint to the functor $j^* \circ i_* = 0$. Because the right adjoint of the zero functor is also zero, it follows that $i^! \circ j_* = 0$.
+
+For (2), we utilize the properties of adjunction. From the adjunction isomorphism $\operatorname{Hom}(j^* \mathcal{F}, j^* \mathcal{F}) \cong \operatorname{Hom}(j_! j^* \mathcal{F}, \mathcal{F})$, the identity map on the left induces a natural counit map:
+\begin{equation*}
+    j_! j^* \mathcal{F} \longrightarrow \mathcal{F}
+\end{equation*}
+The natural unit map $\mathcal{F} \longrightarrow i_* i^* \mathcal{F}$ can also be obtained in a similar manner. 
+
+In abelian categories, for a sheaf $\mathcal{F} \in \operatorname{Sh}(X)$, we can verify exactness by checking the stalks. Consider the sequence of stalks:
+\begin{equation} \label{stalk_seq}
+    (j_! j^* \mathcal{F})_x \longrightarrow \mathcal{F}_x \longrightarrow (i_* i^* \mathcal{F})_x \tag{*}
+\end{equation}
+For $x \in U$, we have $(j_! j^* \mathcal{F})_x = \mathcal{F}_x$ and $(i_* i^* \mathcal{F})_x = 0$. 
+For $x \notin U$, we have $(j_! j^* \mathcal{F})_x = 0$ and $(i_* i^* \mathcal{F})_x = \mathcal{F}_x$. 
+In both cases, the sequence \eqref{stalk_seq} is exact. This exact sequence in the abelian category induces the corresponding distinguished triangle in the derived category.
+
+For (3), first we consider the abelian category. By definition, for any open set $V$, the sections of the pushforward of the pullback are given by:
+\begin{equation*}
+    (j_* j^* \mathcal{F})(V) = \mathcal{F}(V \cap U)
+\end{equation*}
+The kernel of the unit map $\mathcal{F} \longrightarrow j_* j^* \mathcal{F}$ evaluated on $V$ is:
+\begin{align*}
+    \ker(\mathcal{F} \longrightarrow j_* j^* \mathcal{F})(V) &= \{ s \in \mathcal{F}(V) \mid s|_{V \cap U} = 0 \} \\
+    &= \{ s \in \mathcal{F}(V) \mid \operatorname{supp} s \subseteq V \cap Z \}
+\end{align*}
+Since $Z$ is a closed subset (i.e., $Z = \overline{Z}$), this coincides with the sections with supports in $Z$, namely $(i^! \mathcal{F})(V \cap Z)$. 
+Therefore, the following sequence is exact:
+\begin{equation*}
+    0 \longrightarrow i_* i^! \mathcal{F} \longrightarrow \mathcal{F} \longrightarrow j_* j^* \mathcal{F}
+\end{equation*}
+
+To extend this to the derived category, we take an injective resolution of $\mathcal{F}$. Recall that injective sheaves are flasque. For an injective (and hence flasque) sheaf $\mathcal{I}$, the restriction map is surjective:
+\begin{equation*}
+    \mathcal{I}(V) \longrightarrow (j_* j^* \mathcal{I})(V) = \mathcal{I}(V \cap U) \text{ is surjective.}
+\end{equation*}
+
+To properly extend this to the derived category $D(X)$, we replace $\mathcal{F}$ with its injective resolution $\mathcal{I}^\bullet$. Since a sheaf and its injective resolution are quasi-isomorphic, they are isomorphic in $D(X)$. 
+
+Furthermore, because injective sheaves are flasque, the restriction map $\mathcal{I}^\bullet \longrightarrow j_*j^*\mathcal{I}^\bullet$ is surjective in every degree. This elevates our previous left-exact sequence to a short exact sequence of complexes:
+$$0 \longrightarrow i_*i^!\mathcal{I}^\bullet \longrightarrow \mathcal{I}^\bullet \longrightarrow j_*j^*\mathcal{I}^\bullet \longrightarrow 0$$
+A short exact sequence of complexes naturally induces a distinguished triangle in the derived category, yielding $i_* i^! \mathcal{F} \longrightarrow \mathcal{F} \longrightarrow j_* j^* \mathcal{F} \xrightarrow{+1}$. This completes the proof.
+\end{proof}
+
+
+\begin{example}[Relative cohomology]
+    Let $i \colon Z \hookrightarrow X$ be a closed embedding, and let $j \colon U = X \setminus Z \hookrightarrow X$ be the open complement. 
+
+For a $\mathbb{C}$-vector space $M$, we define the \textbf{relative cohomology} of the pair $(X, Z)$ with coefficients in $M$ as:
+\begin{equation*}
+    H^k(X, Z; M) := H^k(X; j_! M_U)
+\end{equation*}
+Applying the open-closed distinguished triangle to the constant sheaf $M_X$:
+\begin{equation*}
+    j_! j^* M_X \longrightarrow M_X \longrightarrow i_* i^* M_X
+\end{equation*}
+Notice that $j_! j^* M_X = j_! M_U$ and $i_* i^* M_X = i_* M_Z$. Taking the long exact sequence of cohomology yields the standard sequence for relative cohomology:
+\begin{equation*}
+    \cdots \longrightarrow H^k(X, Z; M) \longrightarrow H^k(X; M) \longrightarrow H^k(Z; M_Z) \longrightarrow \cdots
+\end{equation*}
+\end{example}
+
+\begin{example}
+    Consider the compactly supported cohomology of the real line $\mathbb{R}$:
+\begin{equation*}
+    H_c^k(\mathbb{R}) = 
+    \begin{cases} 
+        \mathbb{C} & k = 1 \\ 
+        0 & k \neq 1 
+    \end{cases}
+\end{equation*}
+This satisfies Poincaré duality when compared against the standard cohomology of $\mathbb{R}$:
+\begin{equation*}
+    H^k(\mathbb{R}) = 
+    \begin{cases} 
+        \mathbb{C} & k = 0 \\ 
+        0 & k \neq 0 
+    \end{cases}
+\end{equation*}
+\end{example}
+
+\begin{proof}[\textbf{Proof}]
+    The topological space $\mathbb{R}$ is homeomorphic to the open interval $(0, 1)$. Because compactly supported cohomology is a topological invariant under homeomorphisms, we immediately have:
+\begin{equation*}
+    H_c^k(\mathbb{R}) \cong H_c^k((0, 1))
+\end{equation*}
+
+First, since the closed interval $[0,1]$ is compact, its compactly supported cohomology coincides with its standard cohomology, which in turn is isomorphic to its singular cohomology. That is,
+\begin{equation*}
+    H_c^k([0,1]) = H^k([0,1]) \cong H_{\text{sing}}^k([0,1])
+\end{equation*}
+This yields the standard result:
+\begin{equation*}
+    H_c^k([0,1]) = 
+    \begin{cases} 
+        \mathbb{C} & \text{if } k = 0, \\ 
+        0 & \text{if } k > 0. 
+    \end{cases}
+\end{equation*}
+\begin{remark}
+    In general, this isomorphism holds for locally contractible spaces. Here, the space is hereditarily paracompact.
+\end{remark}
+
+Second, let $X = [0,1]$. Consider the closed subset $Z = \{1\}$ with inclusion $i \colon Z \hookrightarrow X$, and the open complement $U = [0,1)$ with inclusion $j \colon U \hookrightarrow X$. 
+
+We apply the compactly supported cohomology functor $H_c^k$ to the distinguished triangle associated with the constant sheaf $\mathbb{C}_X$:
+\begin{equation*}
+    j_! \mathbb{C}_U = j_! j^* \mathbb{C}_X \longrightarrow \mathbb{C}_X \longrightarrow i_* i^* \mathbb{C}_X = i_* \mathbb{C}_{\text{pt}} \xrightarrow{+1}
+\end{equation*}
+This induces a long exact sequence in compactly supported cohomology:
+\begin{equation*}
+    0 \longrightarrow H_c^0([0,1)) \longrightarrow H^0([0,1]) \xrightarrow{\cong} H^0(\text{pt}) \longrightarrow H_c^1([0,1)) \longrightarrow H^1([0,1]) \longrightarrow H^1(\text{pt}) \longrightarrow \cdots
+\end{equation*}
+Substituting the known cohomology groups (where $H^0([0,1]) \cong \mathbb{C}$, $H^0(\text{pt}) \cong \mathbb{C}$, and the degree 1 terms are $0$), we obtain:
+\begin{equation*}
+    0 \longrightarrow H_c^0([0,1)) \longrightarrow \mathbb{C} \xrightarrow{\cong} \mathbb{C} \longrightarrow H_c^1([0,1)) \longrightarrow 0 \longrightarrow 0 \longrightarrow \cdots
+\end{equation*}
+Because the map between the $\mathbb{C}$ terms is an isomorphism, it forces the surrounding terms to vanish. Therefore, we conclude that:
+\begin{equation*}
+    H_c^k([0,1)) = 0 \quad \text{for all } k \in \mathbb{Z}.
+\end{equation*}
+
+Third, we repeat the process by setting $X = [0,1)$. Consider the closed subset $Z = \{0\}$ with inclusion $i \colon Z \hookrightarrow X$, and the open complement $U = (0,1)$ with inclusion $j \colon U \hookrightarrow X$.
+
+Taking the long exact sequence in compactly supported cohomology for this new decomposition yields:
+\begin{equation*}
+    0 \longrightarrow H_c^0((0,1)) \longrightarrow H_c^0([0,1)) \longrightarrow H_c^0(\text{pt}) \longrightarrow H_c^1((0,1)) \longrightarrow H_c^1([0,1)) \longrightarrow H_c^1(\text{pt}) \longrightarrow \cdots
+\end{equation*}
+From our previous step, we know that $H_c^0([0,1)) = 0$ and $H_c^1([0,1)) = 0$. We also know that for a point, $H_c^0(\text{pt}) = \mathbb{C}$ and $H_c^1(\text{pt}) = 0$. Substituting these values into the exact sequence gives:
+\begin{equation*}
+    0 \longrightarrow H_c^0((0,1)) \longrightarrow 0 \longrightarrow \mathbb{C} \xrightarrow{\cong} H_c^1((0,1)) \longrightarrow 0 \longrightarrow 0 \longrightarrow \cdots
+\end{equation*}
+This sequence implies that $H_c^0((0,1)) = 0$ and $H_c^1((0,1)) \cong \mathbb{C}$. Consequently, we arrive at the final computation:
+\begin{equation*}
+    H_c^k((0,1)) = 
+    \begin{cases} 
+        \mathbb{C} & \text{if } k = 1, \\ 
+        0 & \text{if } k \neq 1. 
+    \end{cases}
+\end{equation*}
+\end{proof}
+
+Let $\mathcal{F} \in D(X)$ and $\mathcal{G} \in D(Y)$ be objects in the derived categories of spaces $X$ and $Y$, respectively. Consider the natural projection maps from the product space $X \times Y$:
+\begin{equation*}
+    X \xleftarrow{pr_1} X \times Y \xrightarrow{pr_2} Y
+\end{equation*}
+The \textbf{external tensor product} of $\mathcal{F}$ and $\mathcal{G}$, denoted $\mathcal{F} \boxtimes \mathcal{G} \in D(X \times Y)$, is defined as:
+\begin{equation*}
+    \mathcal{F} \boxtimes \mathcal{G} := pr_1^* \mathcal{F} \otimes^{L} pr_2^* \mathcal{G}
+\end{equation*}
+
+\begin{proposition}
+Let $f \colon X \longrightarrow X'$ and $g \colon Y \longrightarrow Y'$ be continuous maps. For any complexes of sheaves $\mathcal{F} \in D^+(X)$ and $\mathcal{G} \in D^+(Y)$, there is a natural isomorphism:
+\begin{equation*}
+    f_! \mathcal{F} \boxtimes g_! \mathcal{G} \cong (f \times g)_! (\mathcal{F} \boxtimes \mathcal{G}).
+\end{equation*}
+\end{proposition}
+
+\begin{proof}[\textbf{Proof}]
+The proof of this isomorphism is left as a homework exercise.
+\end{proof}
+
+If we apply this proposition to the case where $X'$ and $Y'$ are single points, we obtain the isomorphism:
+\begin{equation}\label{3.kunneth}
+    R\Gamma_c(X, \mathcal{F}) \otimes R\Gamma_c(Y, \mathcal{G}) \cong R\Gamma_c(X \times Y, \mathcal{F} \boxtimes \mathcal{G}),  
+\end{equation}
+which is the statement of the \textbf{Künneth formula}. 
+
+As an immediate consequence, we can compute the compactly supported cohomology of Euclidean space. Since $\mathbb{R}^n$ is the product of $n$ copies of $\mathbb{R}$, we have:
+\begin{equation*}
+    H_c^k(\mathbb{R}^n) = 
+    \begin{cases} 
+        \mathbb{C} & \text{if } k = n, \\ 
+        0 & \text{if } k \neq n. 
+    \end{cases}
+\end{equation*}
+
+\section{Smooth Morphisms}
+
+\begin{definition}
+A continuous map $f \colon X \longrightarrow Y$ is called a \textbf{topological submersion} of relative dimension $n$ if for all $x \in X$, there exists a neighborhood $U$ of $x$ such that $f(U)$ is open in $Y$, and there exists a homeomorphism $U \cong f(U) \times \mathbb{R}^n$ making the following diagram commute:
+\[
+\begin{tikzcd}
+    U \arrow[r, "\simeq"] \arrow[rd, "f"] & f(U)\times\mathbb{R}^n \arrow[d, "pr_1"] \\
+                                      & f(U)       
+\end{tikzcd}
+\]
+\end{definition}
+
+For such a trivializing neighborhood $U$, we can compute the compactly supported pushforward of the constant sheaf along the restriction $f|_U$. Let $a_{\text{pt}} \colon \mathbb{R}^n \longrightarrow \text{pt}$ denote the map to a point. We have:
+\begin{align*}
+    (f|_U)_! \mathbb{C}_U &\cong (pr_1)_! \mathbb{C}_{f(U) \times \mathbb{R}^n} \\
+    &\cong (\operatorname{id}_{f(U)} \times a_{\text{pt}})_! \mathbb{C}_{f(U) \times \mathbb{R}^n} \\
+    &\cong \mathbb{C}_{f(U)} \otimes R\Gamma_c(\mathbb{R}^n, \mathbb{C}) \\
+    &\cong \mathbb{C}_{f(U)} \otimes \mathbb{C}[-n] \\
+    &\cong \mathbb{C}_{f(U)}[-n].
+\end{align*}
+
+\begin{definition}
+Define the \textbf{relative orientation sheaf} for a topological submersion $f \colon X \longrightarrow Y$ as the sheafification of a specific presheaf:
+\begin{equation*}
+    \text{or}_f := (\text{or}_{f, \text{pre}})^+
+\end{equation*}
+where the presheaf $\text{or}_{f, \text{pre}}$ evaluated on an open set $U$ is given by:
+\begin{equation*}
+    \text{or}_{f, \text{pre}}(U) = \operatorname{Hom}_{\text{Sh}(f(U))} \left( H^{-n}((f|_U)_! \mathbb{C}_U), \mathbb{C}_{f(U)} \right).
+\end{equation*}
+\end{definition}
+
+Over a trivializing neighborhood where $U \cong f(U) \times \mathbb{R}^n$ and $f|_U$ acts as the first projection, we can directly see that:
+\begin{equation*}
+    \text{or}_{f|_U} \cong \mathbb{C}_U.
+\end{equation*}
+Because this property holds locally around every point, this implies that the relative orientation sheaf $\text{or}_f \in \operatorname{Loc}(X)$ is a local system of rank 1 on $X$.
+
+\begin{lemma}
+Let $f \colon X \longrightarrow Y$ be a topological submersion of relative dimension $n$. Then there is an isomorphism:
+\begin{equation*}
+    f^! \mathbb{C}_Y \simeq \text{or}_f[n].
+\end{equation*}
+\end{lemma}
+
+\begin{proof}[\textbf{Proof}]
+By definition, the relative orientation presheaf $\text{or}_{f, \text{pre}}$ evaluated on an open set $U$ is given by:
+\begin{align*}
+\mathrm{or}_{f,\text{pre}}(U) &= \mathrm{Hom}_{\mathrm{Sh}(f(U))} \left( H^{-n}((f|_U)_!\mathbb{C}_U), \mathbb{C}_{f(U)} \right) \\
+&= \mathrm{Hom}_{\mathrm{D}(f(U))} \left( (f|_U)_!\mathbb{C}_U[n], \mathbb{C}_{f(U)} \right)
+\end{align*}
+Using the adjunction between $(f|_U)_!$ and $(f|_U)^!$, we can move the pushforward to the right-hand side. Note that the adjunction takes us from the derived category over $f(U)$ to the derived category over $U$:
+\begin{align*}
+\mathrm{Hom}_{\mathrm{D}(f(U))} \left( (f|_U)_!\mathbb{C}_U[n], \mathbb{C}_{f(U)} \right) &= \mathrm{Hom}_{\mathrm{D}(U)} \left( \mathbb{C}_U[n], (f|_U)^!\mathbb{C}_{f(U)} \right) \\
+&= \mathrm{Hom}_{\mathrm{D}(U)} \left( \mathbb{C}_U, f^!\mathbb{C}_Y|_U[-n] \right).
+\end{align*}
+This perfectly matches the presheaf definition for the local sections of $f^! \mathbb{C}_Y[-n]$, which implies that the sheafification $\text{or}_f$ is isomorphic to $f^! \mathbb{C}_Y[-n]$. Therefore, $f^! \mathbb{C}_Y \simeq \text{or}_f[n]$.
+\end{proof}
+
+\begin{theorem}
+Let $f \colon X \longrightarrow Y$ be a topological submersion of relative dimension $n$ as above. For any complex of sheaves $\mathcal{F} \in D^+(Y)$, there is a natural isomorphism:
+\begin{equation*}
+    \text{or}_f \otimes^{L} f^* \mathcal{F}[n] \xrightarrow{\simeq} f^! \mathcal{F}.
+\end{equation*}
+\end{theorem}
+
+\begin{proof}[\textbf{Proof}]
+By the preceding lemma, we have $\text{or}_f \otimes^{L} f^* \mathcal{F}[n] \simeq f^! \mathbb{C}_Y \otimes^{L} f^* \mathcal{F}$. Thus, we want to construct a morphism:
+\begin{equation*}
+    f^! \mathbb{C}_Y \otimes^{L} f^* \mathcal{F} \longrightarrow f^! \mathcal{F}.
+\end{equation*}
+By the adjunction between the functors $f_!$ and $f^!$, specifying this morphism is equivalent to providing a morphism:
+\begin{equation*}
+    f_! \left( f^! \mathbb{C}_Y \otimes^{L} f^* \mathcal{F} \right) \longrightarrow \mathcal{F}.
+\end{equation*}
+Using the projection formula, the left-hand side can be rewritten as:
+\begin{equation*}
+    f_! \left( f^! \mathbb{C}_Y \otimes^{L} f^* \mathcal{F} \right) \simeq (f_! f^! \mathbb{C}_Y) \otimes^{L} \mathcal{F}.
+\end{equation*}
+We can now obtain the desired map to $\mathcal{F}$ by taking the standard counit map $f_! f^! \mathbb{C}_Y \longrightarrow \mathbb{C}_Y$ and tensoring it with $\mathcal{F}$.
+
+To show that this constructed map is indeed an isomorphism, we may assume locally that $X \cong Y \times \mathbb{R}^n$ and that $f \colon Y \times \mathbb{R}^n \xrightarrow{pr_1} Y$ is the first projection. In this trivialized case, we have $\text{or}_f \simeq \mathbb{C}_X$.
+
+Checking the isomorphism locally on the cohomology sheaves $H^i(f^! \mathcal{F})$ is equivalent to evaluating the presheaf:
+\begin{equation*}
+    U \longmapsto \operatorname{Hom}(\mathbb{C}_U, f^! \mathcal{F}[i]).
+\end{equation*}
+We can take basic open sets of the form $U = V \times W \subseteq Y \times \mathbb{R}^n$, where $W \cong \mathbb{R}^n$ is an open ball. 
+For such an open set, the restriction of $f$ acts as $f|_U = \operatorname{id}_V \times a_W$, where $a_W \colon W \longrightarrow \text{pt}$ is the map to a point.
+
+Using adjunction and the Künneth formula (\ref{3.kunneth}) for pushforwards, we compute:
+\begin{align*}
+    \operatorname{Hom}(\mathbb{C}_U, f^! \mathcal{F}[i]) &\cong \operatorname{Hom}((f|_U)_! \mathbb{C}_U, \mathcal{F}[i]) \\
+    &\cong \operatorname{Hom}(\mathbb{C}_V \otimes a_{W!} \mathbb{C}_W, \mathcal{F}[i]) \\
+    &\cong \operatorname{Hom}(\mathbb{C}_V[-n], \mathcal{F}[i])\\
+    &\cong \operatorname{Hom}(\mathbb{C}_V, \mathcal{F}[n][i]) \\
+    &\cong \operatorname{Hom}(\mathbb{C}_U, f^* \mathcal{F}[n][i]) \quad \text{because } f \text{ is surjective.}
+\end{align*}
+Therefore, gluing these local isomorphisms together, we conclude that there is a global isomorphism:
+\begin{equation*}
+    \text{or}_f \otimes^{L} f^* \mathcal{F}[n] \simeq f^! \mathcal{F}.
+\end{equation*}
+\end{proof}
+
+\begin{theorem}
+Let $f \colon X \longrightarrow Y$ be a smooth morphism of relative complex dimension $d$ between algebraic varieties. Then the relative orientation sheaf is trivial, namely $\text{or}_f \simeq \mathbb{C}_X$. 
+
+Consequently, for any complex of sheaves $\mathcal{F} \in D^+(Y)$, there is a natural isomorphism:
+\begin{equation*}
+    f^* \mathcal{F}[2d] \simeq f^! \mathcal{F}.
+\end{equation*}
+\end{theorem}
+
+\begin{proof}[\textbf{Proof}]
+The proof of this statement can be found in Achar, Proposition 2.2.8.
+\end{proof}
+
+\begin{remark}
+    The condition of smoothness is crucially used in the proof of the following lemma.
+
+\begin{lemma}
+Let $U \subseteq \mathbb{C}^n$ be an open subset, and let $j \colon U \hookrightarrow \mathbb{C}^n$ be the inclusion map. Let $f \colon U \longrightarrow \mathbb{C}^n$ be a holomorphic map such that $f$ induces a biholomorphism onto its image, i.e., $f \colon U \xrightarrow{\sim} f(U)$. Then the induced maps on compactly supported cohomology coincide and yield isomorphisms:
+\begin{equation*}
+    j_\# = f_\# \colon H_c^{2n}(U) \xrightarrow{\simeq} H_c^{2n}(\mathbb{C}^n) 
+\end{equation*}
+\end{lemma}
+\end{remark}
+
+\section{Constructibility}
+
+\begin{remark}
+    Henceforth, we will assume that all spaces considered are algebraic varieties.
+\end{remark}
+
+Recall the definition of the constructible derived category: $D_c^b(X)$ is the full subcategory of $D^b(X)$ consisting of bounded complexes of sheaves $\mathcal{F}^\bullet$ such that for every integer $k$, the cohomology sheaf $\mathcal{H}^k(\mathcal{F}^\bullet)$ is a constructible sheaf.
+
+It is an easy verification to show that $D_c^b(X)$ is a triangulated subcategory. Specifically, it is stable under the shift functor $[1]$ and under taking mapping cones.
+
+\textbf{Goal:} Our primary goal in the upcoming sections is to show that the constructible derived category $D_c^b(X)$ is stable under the Grothendieck six functors.
+
+\begin{proposition}
+Let $f \colon X \longrightarrow Y$ be a morphism between algebraic varieties. For any complex $\mathcal{F} \in D^b_c(Y)$, the pullback $f^* \mathcal{F}$ belongs to $D^b_c(X)$.
+\end{proposition}
+
+\begin{proof}[\textbf{Proof}]
+Choose a stratification $Y = \coprod Y_t$ such that for every integer $k$, the cohomology sheaf restricted to the stratum, $\mathcal{H}^k(\mathcal{F})|_{Y_t}$, is a finite-rank local system (i.e., it belongs to $\operatorname{Loc}(Y_t)^{\text{fin}}$). 
+
+Taking the preimages of these strata yields a stratification on $X$, given by $X = \coprod f^{-1}(Y_t) = \coprod X_t$ . Because the pullback of a local system is a local system and the exactness of pullback, the restriction of the cohomology of the pullback, $\mathcal{H}^k(f^* \mathcal{F})|_{f^{-1}(Y_t)}$, belongs to $\operatorname{Loc}(f^{-1}(Y_t))^{\text{fin}}$. This demonstrates that $f^* \mathcal{F}$ is constructible.
+\end{proof}
+
+\begin{proposition}
+The derived tensor product functor $\otimes^{L}$ maps $D^b_c(X) \times D^b_c(X)$ into $D^b_c(X)$.
+\end{proposition}
+
+\begin{proof}[\textbf{Proof}]
+The proof is straightforward and left as an exercise.
+\end{proof}
+
+\begin{theorem}
+Let $f \colon X \longrightarrow Y$ be a morphism between algebraic varieties, and let $\mathcal{F} \in D^b_c(X)$. Then the pushforward complexes $f_* \mathcal{F}$ and $f_! \mathcal{F}$ both belong to $D^b_c(Y)$.
+\end{theorem}
+
+\begin{proof}[\textbf{Proof Sketch}]
+The rigorous proof of this theorem is highly non-trivial; we refer the reader to Achar, Theorem 2.7.1. We provide a sketch of the proof below.
+
+First, we invoke \textbf{Nagata's Compactification Theorem}: for any morphism $f \colon X \longrightarrow Y$ between algebraic varieties, there exists an algebraic variety $\tilde{X}$, an open embedding $j \colon X \hookrightarrow \tilde{X}$, and a proper morphism $\tilde{f} \colon \tilde{X} \longrightarrow Y$ such that:
+$f = \tilde{f} \circ j$.
+
+Since the functors compose naturally as $f_* = \tilde{f}_* \circ j_*$ and $f_! = \tilde{f}_! \circ j_!$, it suffices to reduce the problem to verifying the statement for two specific types of morphisms: an open embedding, and a proper morphism. (Recall that for a proper morphism, $f_* = f_!$).
+
+\begin{enumerate}
+    \item Let us consider the case where $f \colon X \hookrightarrow Y$ is an open embedding. (In fact, this assumption can be weakened to $f$ being a locally closed embedding). 
+\begin{enumerate}
+    \item We can choose a stratification $Y = \coprod Y_s$ such that $X$ is exactly a union of a subset of these strata, and the restriction $\mathcal{H}^k(\mathcal{F})|_{Y_s}$ belongs to $\operatorname{Loc}(Y_s)^{\text{fin}}$. For the extension by zero functor $f_!$, its restriction to a stratum $Y_s$ is given by:
+\begin{equation*}
+    (f_! \mathcal{F})|_{Y_s} = 
+    \begin{cases} 
+        \mathcal{F}|_{Y_s} & \text{if } Y_s \subseteq X, \\ 
+        0 & \text{if } Y_s \not\subseteq X. 
+    \end{cases}
+\end{equation*}
+In both cases, the restriction is constructible. This immediately implies that $f_! \mathcal{F} \in D^b_c(Y)$.
+
+\item To show that $f_* \mathcal{F}$ is constructible, we proceed through a series of reductions:
+
+\begin{itemize}
+    \item By using truncation distinguished triangles, we can reduce the problem from bounded complexes to considering a single sheaf $\mathcal{F}$ in the abelian category $\operatorname{Sh}(X)$.
+    
+    \item We can proceed by induction on the number of irreducible components of $X$. By applying the open-closed distinguished triangle $j_! j^* \mathcal{F} \longrightarrow \mathcal{F} \longrightarrow i_* i^* \mathcal{F} \xrightarrow{+1}$, we can reduce the problem to the case where $X$ is an irreducible variety.
+    
+    \item Any morphism $f \colon X \longrightarrow Y$ can be factored as $X \longrightarrow \overline{f(X)} \hookrightarrow Y$, where the second map is a proper closed embedding. This allows us to reduce to the case where $f$ is a dominant morphism.
+\end{itemize}
+    Choose an open embedding $h \colon U \hookrightarrow X$ such that the restriction $\mathcal{L} = \mathcal{F}|_U$ is a finite-rank local system, meaning $\mathcal{L} \in \operatorname{Loc}(U)^{\text{fin}}$. Let $i \colon Z = X \setminus U \hookrightarrow X$ be the closed embedding of the complement. We have the distinguished triangle:
+    \begin{equation*}
+        i_* i^! \mathcal{F} \longrightarrow \mathcal{F} \longrightarrow h_* \mathcal{L} \xrightarrow{+1}
+    \end{equation*}
+    Applying the functor $f_*$, we obtain the distinguished triangle:
+    \begin{equation*}
+        (f \circ i)_* i^! \mathcal{F} \longrightarrow f_* \mathcal{F} \longrightarrow f_* h_* \mathcal{L} \xrightarrow{+1}
+    \end{equation*}
+
+To analyze the term $f_* h_* \mathcal{L}$, we need to invoke the \textbf{resolution of singularities}. 
+
+    Suppose $X$ is an irreducible variety and $Z \subsetneq X$ is a proper closed subset such that the complement $X \setminus Z$ is non-empty and smooth. There exists a proper morphism $\pi \colon \widetilde{X} \longrightarrow X$ satisfying the following properties:
+\begin{enumerate}
+    \item The space $\widetilde{X}$ is a smooth variety.
+    \item The restriction of $\pi$ over the complement, $\pi|_{\pi^{-1}(X \setminus Z)} \colon \pi^{-1}(X \setminus Z) \longrightarrow X \setminus Z$, is an isomorphism.
+    \item The preimage $\pi^{-1}(Z) \subset \widetilde{X}$ is a simple normal crossing divisor (which means locally it can be defined by an equation of the form $\prod x_i = 0$).
+\end{enumerate}
+
+Using this resolution, the problem reduces to a local computation for the normal crossing case, specifically an embedding of the form $i \colon \{0\} \times \mathbb{C}^d \hookrightarrow \mathbb{C}^{n-d} \times \mathbb{C}^d$. From here, one applies an ad hoc argument (details of which can be found in the appendix of Achar's book).
+\end{enumerate}
+\item Finally, if $f$ is a proper morphism, one can use induction on the dimension to reduce to the case where $\dim Y = 0$. In this case, we need to show that $f_* \mathcal{F} \in D^b_c(\text{pt})$, which essentially means the cohomology groups are finite-dimensional. This fact follows from the Artin Vanishing Theorem.
+\begin{theorem}[Artin Vanishing, cf. Achar Theorem 2.6.2]
+Let $X$ be an affine algebraic variety, and let $\mathcal{F} \in \operatorname{Sh}_c(X)$ be a constructible sheaf. Then the complex dimension of the cohomology groups is finite, meaning $\dim_{\mathbb{C}} H^k(X, \mathcal{F}) < \infty$ for all $k$. Furthermore, we have:
+\begin{equation*}
+    H^k(X, \mathcal{F}) = 0
+\end{equation*}
+unless $0 \leq k \leq \dim_{\mathbb{C}} \operatorname{supp} \mathcal{F} \leq \dim_{\mathbb{C}} X$.
+\end{theorem}
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+For any complexes $\mathcal{F}, \mathcal{G} \in D^b_c(X)$, the derived sheaf Hom complex $R\mathcal{H}om(\mathcal{F}, \mathcal{G})$ belongs to $D^b_c(X)$.
+\end{proposition}
+
+\begin{proof}[\textbf{Proof}]
+Take an open subset $U$ with inclusion $j \colon U \hookrightarrow X$ such that the cohomology sheaves $\mathcal{H}^k(\mathcal{F}|_U)$ and $\mathcal{H}^k(\mathcal{G}|_U)$ are finite-rank local systems (i.e., they belong to $\operatorname{Loc}(U)^{\text{fin}}$). Let $i \colon Z = X \setminus U \hookrightarrow X$ denote the closed embedding of the complement. 
+
+We start with the standard open-closed distinguished triangle for $\mathcal{F}$:
+\begin{equation*}
+    j_! j^* \mathcal{F} \longrightarrow \mathcal{F} \longrightarrow i_* i^* \mathcal{F} \xrightarrow{+1}
+\end{equation*}
+Applying the functor $R\mathcal{H}om(-, \mathcal{G})$, we obtain the following distinguished triangle:
+\begin{equation*}
+    R\mathcal{H}om(i_* i^* \mathcal{F}, \mathcal{G}) \longrightarrow R\mathcal{H}om(\mathcal{F}, \mathcal{G}) \longrightarrow R\mathcal{H}om(j_! j^* \mathcal{F}, \mathcal{G}) \xrightarrow{+1}
+\end{equation*}
+By adjunction and the projection formula, we can rewrite the outer terms. The distinguished triangle becomes:
+\begin{equation*}
+    i_* R\mathcal{H}om(i^* \mathcal{F}, i^! \mathcal{G}) \longrightarrow R\mathcal{H}om(\mathcal{F}, \mathcal{G}) \longrightarrow j_* R\mathcal{H}om(\mathcal{F}|_U, \mathcal{G}|_U) \xrightarrow{+1}
+\end{equation*}
+
+We know that $j_* R\mathcal{H}om(\mathcal{F}|_U, \mathcal{G}|_U)$ belongs to $D^b_c(X)$ because $\mathcal{F}|_U$ and $\mathcal{G}|_U$ are local systems (making their internal Hom a local system) and the pushforward $j_*$ preserves constructibility. Therefore, to show that the middle term $R\mathcal{H}om(\mathcal{F}, \mathcal{G})$ is in $D^b_c(X)$, we only need to show that the left term $i_* R\mathcal{H}om(i^* \mathcal{F}, i^! \mathcal{G})$ is in $D^b_c(X)$.
+
+By an induction argument on the dimension of the space, it suffices to show that $i^! \mathcal{G} \in D^b_c(Z)$.
+
+To see this, consider the standard distinguished triangle for $\mathcal{G}$:
+\begin{equation*}
+    i_* i^! \mathcal{G} \longrightarrow \mathcal{G} \longrightarrow j_* j^* \mathcal{G} \xrightarrow{+1}
+\end{equation*}
+By our initial assumptions, $\mathcal{G} \in D^b_c(X)$. Furthermore, because the functors $j^*$ and $j_*$ preserve constructibility, the term $j_* j^* \mathcal{G}$ also belongs to $D^b_c(X)$. 
+
+Since two out of the three terms in the distinguished triangle belong to the triangulated category $D^b_c(X)$, the third term must as well. This implies that $i_* i^! \mathcal{G} \in D^b_c(X)$. Finally, applying the pullback functor $i^*$ (which also preserves constructibility), we conclude:
+\begin{equation*}
+    i^* (i_* i^! \mathcal{G}) \simeq i^! \mathcal{G} \in D^b_c(Z).
+\end{equation*}
+This completes the proof.
+\end{proof}
+
+
+\begin{proposition}
+Let $X$ be an algebraic variety. Then the dualizing complex $\omega_X := a_X^! \mathbb{C}_{\text{pt}}$ belongs to $D^b_c(X)$, where $a_X \colon X \longrightarrow \text{pt}$ is the map to a point.
+
+In particular, the Verdier duality functor $\mathbb{D} := R\mathcal{H}om(-, \omega_X)$ is a well-defined functor from $D^b_c(X)$ to $D^b_c(X)^{\text{op}}$.
+\end{proposition}
+
+\begin{proof}[\textbf{Proof}]
+We proceed by induction on the dimension of $X$. 
+
+If $\dim X = 0$ (so $X$ is a point), the statement is obvious.
+
+For the general case, we can take an open, dense, smooth subset $U$ with inclusion $j \colon U \hookrightarrow X$, and let $i \colon Z \hookrightarrow X$ be the closed embedding of the complement.
+We apply the standard open-closed distinguished triangle to the dualizing complex $\omega_X$:
+\begin{equation*}
+    i_* \omega_Z = i_* i^! \omega_X \longrightarrow \omega_X \longrightarrow j_* j^* \omega_X = j_* \omega_U \xrightarrow{+1}
+\end{equation*}
+By our induction hypothesis, the term $i_* \omega_Z$ belongs to the constructible derived category $D^b_c(X)$. For the open term, because $U$ is chosen to be a smooth variety, its dualizing complex is simply a shifted constant sheaf, $\omega_U \simeq \mathbb{C}_U[2\dim U]$. Since the pushforward along an open embedding preserves constructibility, we have $j_* \omega_U \in D^b_c(X)$. 
+
+Because two out of the three terms in the distinguished triangle belong to $D^b_c(X)$, it follows that the middle term $\omega_X$ must also belong to $D^b_c(X)$. This completes the induction and the proof.
+\end{proof}
+
+
+There is a natural evaluation map for the derived tensor product:
+\begin{equation*}
+    \mathbb{D}\mathcal{F} \otimes^{L} \mathcal{F} = R\mathcal{H}om(\mathcal{F}, \omega_X) \otimes^{L} \mathcal{F} \longrightarrow \omega_X.
+\end{equation*}
+By the tensor-Hom adjunction formula, we have an isomorphism of Hom-sets:
+\begin{equation*}
+    \operatorname{Hom}(\mathbb{D}\mathcal{F} \otimes^{L} \mathcal{F}, \omega_X) \cong \operatorname{Hom}(\mathcal{F}, R\mathcal{H}om(\mathbb{D}\mathcal{F}, \omega_X)) = \operatorname{Hom}(\mathcal{F}, \mathbb{D}^2\mathcal{F}).
+\end{equation*}
+The natural evaluation map on the left-hand side corresponds, under this adjunction, to a canonical evaluation morphism:
+\begin{equation*}
+    \mathcal{F} \longrightarrow \mathbb{D}^2\mathcal{F}.
+\end{equation*}
+
+\begin{proposition}
+Let $X$ be an algebraic variety, and let $\mathcal{F} \in D^b_c(X)$. The canonical evaluation map $\mathcal{F} \xrightarrow{\simeq} \mathbb{D}^2\mathcal{F}$ is an isomorphism.
+\end{proposition}
+
+\begin{remark}
+The condition that $\mathcal{F}$ belongs to the constructible bounded derived category $D^b_c(X)$ cannot be omitted. If one considers general complexes of sheaves, there are counterexamples even in the simplest case where $X$ is a single point (e.g., complexes of infinite-dimensional vector spaces).
+\end{remark}
+
+\begin{proof}[\textbf{Proof Sketch}]
+For the case where $X$ is a smooth variety, we have an explicit description of the dualizing complex: $\omega_X \simeq \mathbb{C}_X[2\dim X]$. In this case, the double dual is easily verified to be an isomorphism.
+
+For a general variety $X$, one employs a similar trick of stratifying the space into smooth locally closed pieces and proceeding by induction on the dimension. (This process requires several other technical ingredients, which we will skip for today). For a complete proof, refer to Achar, Theorem 2.8.6.
+\end{proof}
+
+
+
+\textbf{Recall:} The Verdier duality functor interacts with the Grothendieck pushforward and pullback functors in the following ways. For any complex $\mathcal{F} \in D^b_c(X)$, there are natural isomorphisms:
+\begin{align*}
+    f_* \mathbb{D} \mathcal{F} &\simeq \mathbb{D} f_! \mathcal{F}, \\
+    f^! \mathbb{D} \mathcal{F} &\simeq \mathbb{D} f^* \mathcal{F}.
+\end{align*}
+
+\begin{proposition}
+Let $f \colon X \longrightarrow Y$ be a morphism between algebraic varieties, and let $\mathcal{F} \in D^b_c(Y)$. Then the exceptional pullback $f^! \mathcal{F}$ belongs to $D^b_c(X)$.
+\end{proposition}
+
+\begin{proof}[\textbf{Proof}]
+Using the properties of Verdier duality and the biduality isomorphism established above, we can write:
+\begin{equation*}
+    f^! \mathcal{F} \simeq f^! \mathbb{D}(\mathbb{D}\mathcal{F}) \simeq \mathbb{D} f^* (\mathbb{D} \mathcal{F}).
+\end{equation*}
+We already know that $\mathbb{D}$ preserves constructibility. Since $\mathcal{F} \in D^b_c(Y)$, we have $\mathbb{D}\mathcal{F} \in D^b_c(Y)$. We also know that the standard pullback $f^*$ preserves constructibility, so $f^* (\mathbb{D} \mathcal{F}) \in D^b_c(X)$. Applying the duality functor $\mathbb{D}$ one final time, we conclude that $\mathbb{D} f^* (\mathbb{D} \mathcal{F}) \in D^b_c(X)$. 
+\end{proof}
+
+\begin{remark}
+A similar algebraic manipulation can be applied to the proper pushforward functor. We have the sequence of isomorphisms:
+\begin{equation*}
+    f_! \mathcal{F} \simeq \mathbb{D}(\mathbb{D} f_! \mathcal{F}) \simeq \mathbb{D} f_* (\mathbb{D} \mathcal{F}).
+\end{equation*}
+\end{remark}

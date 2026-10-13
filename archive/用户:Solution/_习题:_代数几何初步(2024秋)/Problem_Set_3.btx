@@ -1,0 +1,160 @@
+\theoremstyle{plain}
+\newtheorem{exercise}{练习}
+\nosectionnumbers
+
+\begin{exercise}[可逆层的显式构造]
+    记 $\mathbb{P}^{1}=\operatorname{Proj} k[x_{0}, x_{1}]$，
+    它有一个仿射覆盖 $U_{0}=D(x_{0})=$ $\operatorname{Spec} k[x_{1} / x_{0}]$ 
+    和 $U_{1}=D(x_{1})=\operatorname{Spec} k[x_{0} / x_{1}]$。
+    证明我们可按如下方式定义可逆层 $\mathcal{O}(n)$: 
+    它在开集 $U_{0}$ 和 $U_{1}$ 上都是平凡的，转移函数为
+    \begin{tikzcd}
+        {k[x_1/x_0]} \ar[rr, "\times (x_0/x_1)^n", bend left] &  & {k[x_0/x_1].} \ar[ll, "\times (x_1/x_0)^n", bend left]
+    \end{tikzcd}
+    通过该描述计算 $\mathcal{O}(n)$ 的整体截面，并说明当 $n \neq 0$ 时其不同构于 $\mathcal{O}_{\mathbb{P}^1}$。
+\end{exercise}
+
+见 \cite{Va24} p.426.   
+
+\begin{exercise}[分离概形]
+    设 $X$ 是一个 $Z$-诺特概形， $Y$ 是一个分离的 $Z$-诺特概形。
+    取 $X$ 上的 Cartier 除子 $D$，证明任意 $Z$-态射 $X \setminus D \rightarrow Y$ 至多可以以一种方式延拓为态射 $X \rightarrow Y$。
+\end{exercise}
+
+\begin{exercise}[颇合性]
+    以下假设各个概型都是Noether的. 设 $f: X \rightarrow Y$ 是 $S$-概形间的态射。如果 $X \rightarrow S$ 是颇合的且 $Y \rightarrow S$ 是分离的，证明 $f$ 颇合。
+\end{exercise}
+
+见 \cite{Har77} 命题2.4.8(e).
+
+
+\begin{exercise}[颇合性]
+    \begin{enumerate}
+        \item 证明 $\mathbb{A}^{n}$ 不是颇合概形。
+        \item 用赋值判别法证明带二重原点的仿射直线不是分离的。
+    \end{enumerate}
+\end{exercise}
+
+见 \cite{Har77} 命题2.4.7.
+
+
+\begin{exercise}[凝聚层]
+    设 $f: X \rightarrow Y$ 是一个拟紧的分离态射。
+    证明如果 $\mathcal{F}$ 是 $X$ 上的拟凝聚层，
+    那么 $f_{*} \mathcal{F}$ 是 $Y$ 上的拟凝聚层。
+\end{exercise}
+
+见 \cite{Har77} 命题2.5.8(c).
+
+\begin{exercise}[秩函数]
+    设 $\mathcal{F}$ 是诺特概形 $X$ 上的凝聚层。
+    设 $k(x)=\mathcal{O}_{x} / m_{x}$ 是 $x$ 点处的留数域。考虑函数
+    $$
+        \phi(x)=\operatorname{dim}_{k(x)} \mathcal{F}_{x} \otimes k(x).
+    $$
+    证明
+    \begin{enumerate}
+        \item $\phi(x)$ 是上半连续的。
+        \item 如果 $\mathcal{F}$ 局部自由且 $X$ 连通，则 $\phi$ 是常值函数。
+        \item 反之，如果 $X$ 是约化的且 $\phi$ 是常值函数，那么 $\mathcal{F}$ 局部自由。
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}[向量丛]
+    设 $\mathcal{E}$ 是概形 $Y$ 上的秩 $n$ 局部自由层。记 $S(\mathcal{E})=\bigoplus \operatorname{Sym}^{\bullet} \mathcal{E}$ 为 $\mathcal{E}$ 的对称代数层。
+    \begin{enumerate}
+        \item 证明对任意 $Y$ 中的仿射开集 $V$，截面 $S(\mathcal{E})(V)$ 是一个 $\mathcal{O}_{Y}(V)$ 代数。
+        \item 证明存在唯一的概形 $X$ 和态射 $f: X \rightarrow Y$，使得对任意 $Y$ 中的仿射开集 $V$,
+            $$
+                f^{-1}(V) \cong \operatorname{Spec} S(\mathcal{E})(V)
+            $$
+            且对 $V$ 的任意仿射开集 $U$，有由 $S(\mathcal{E})(V) \rightarrow S(\mathcal{E})(U)$ 诱导的嵌入 $f^{-1}(U) \hookrightarrow f^{-1}(V)$。
+            我们记 $X=\operatorname{Spec}_{\mathcal{O}_{Y}} S(\mathcal{E})$，并称其为 $\mathcal{E}$ 的\textit{几何向量丛}。
+        \item 设 $Y=\mathbb{P}^{n}$，考虑 $\mathcal{O}(-1)^{\vee}$ 对应的几何向量丛，证明其恰好是 $\mathbb{P}^{n}$ 上的重言丛。
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}[曲线的Picard群]
+    设 $X$ 是一个曲线，$f: \tilde{X} \rightarrow X$ 是正规化。对 $X$ 中的点 $p$，记 $\tilde{\mathcal{O}}_{p}$ 为局部环 $\mathcal{O}_{p}$ 的整闭包。我们用角标 $*$ 表示取单位元的群。
+    \begin{enumerate}
+        \item 若 $X=\operatorname{Spec} k[x, y] /(x^{n} - y^{m})$, 
+        $p=(\bar{x}, \bar{y})$ 对应原点, 计算环 $\widetilde{\mathcal{O}}_{p}$.
+        \item 证明有如下短正合列
+            $$
+                0 \rightarrow \bigoplus_{p \in X} \tilde{\mathcal{O}}_{p}^{*} / \mathcal{O}_{p}^{*} \rightarrow \operatorname{Pic}(X) \stackrel{f^{*}}{\longrightarrow} \operatorname{Pic} \tilde{X} \rightarrow 0.
+            $$
+        \item 计算曲线 $y^{2}=x^{2 n+1}$ 的 Picard 群。
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Picard群]
+    证明概形 $X$ 的 Picard 群 $\operatorname{Pic}(X)$ 同构于 $H^{1}(X, \mathcal{O}_{X}^{*})$。
+\end{exercise}
+
+\begin{exercise}[除子]
+    设 $X=\operatorname{Spec} k[x, y, z] /\left(x y-z^{2}\right)$。
+    \begin{enumerate}
+        \item 证明 $\operatorname{Cl} X \cong \mathbb{Z} / 2 \mathbb{Z}$, 且生成元是 $Y: y=z=0$。
+        \item 证明 Weil 除子 $Y$ 并不是 Cartier 除子，但 $2 Y$ 是 Cartier 除子。
+    \end{enumerate}
+\end{exercise}
+
+见\cite{Har77} 例2.6.5.2.
+
+\begin{exercise}[除子]
+    设 $X=\operatorname{Spec} k[w, x, y, z] /(w z-x y)$ 且 $Z$ 是由 $w=x=0$ 截出的 Weil 除子。
+    \begin{enumerate}
+        \item 证明仿射概形挖掉一个有效 Cartier 除子仍然是仿射概形。
+        \item 证明对任意的 $n \neq 0$, $n Z$ 都不是 Cartier 除子。
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Picard群]
+    设 $Y$ 是 $\mathbb{P}^{n}$ 中的 $d$ 次不可约超曲面。
+    证明 $\operatorname{Pic}(Y) \cong \mathbb{Z} /(d)$。
+\end{exercise}
+
+\begin{exercise}[射影空间的自同构]
+    记 $\mathrm{PGL}_{n+1}$ 是射影一般线性群，按如下方式证明 $\mathbb{P}^{n}$ 的自同构群是 $\mathrm{PGL}_{n+1}$。
+    \begin{enumerate}
+        \item 如果 $f: \mathbb{P}^{n} \rightarrow \mathbb{P}^{n}$ 是自同构，那么 $f^{*} \mathcal{O}(1) \cong \mathcal{O}(1)$。
+        \item 证明 $f^{*}: \Gamma(\mathbb{P}^{n}, \mathcal{O}(1)) \rightarrow \Gamma(\mathbb{P}^{n}, \mathcal{O}(1))$ 是一个同构。
+        \item 证明 $\mathbb{P}^{n}$ 的自同构群是 $\mathrm{PGL}_{n+1}$。
+    \end{enumerate}
+\end{exercise}
+
+见\cite{Har77}例2.7.1.1.
+
+\begin{exercise}[Segre嵌入]
+    设 $X=\mathbb{P}^{m} \times \mathbb{P}^{n}$, $p_{1}, p_{2}$ 为投影态射。
+    定义 $\mathcal{O}(a, b)$ 为 $p_{1}^{*} \mathcal{O}(a) \otimes p_{2}^{*} \mathcal{O}(b)$.
+    \begin{enumerate}
+        \item 证明 $\mathcal{O}(1,1)$ 决定了闭嵌入 $\mathbb{P}^{m} \times \mathbb{P}^{n} \rightarrow \mathbb{P}^{m n+n+m}$，被称为 $\textit{Segre}$ \textit{嵌入}。
+        \item 请在恰当的坐标下写出 Segre 嵌入 $\mathbb{P}^{1} \times \mathbb{P}^{1} \rightarrow \mathbb{P}^{3}$ 像的定义方程。
+    \end{enumerate}
+\end{exercise}
+
+见 \cite{GoWe20} 4.14节.
+
+\begin{exercise}[爆破]
+    计算 $\mathbb{P}^{2}$ 爆破一个点 $P=\left[p_{1}, p_{2}, p_{3}\right]$。
+    将其嵌入 $\mathbb{P}^{2} \times \mathbb{P}^{2}$ 并写出具体的定义方程。
+\end{exercise}
+
+\subsection**{参考文献}
+\begin{references}
+    \bibitem[GöWe20]{GoWe20}
+        Ulrich Görtz, Torsten Wedhorn.
+        \textit{Algebraic Geometry I: Schemes}.
+        Springer Studium Mathematik. Springer, 2020.
+    
+    \bibitem[Har77]{Har77}
+        Robin Hartshorne.
+        \textit{Algebraic Geometry}.
+        Graduate Text in Mathematics, 52. Springer, 1977.
+
+    \bibitem[Va24]{Va24}
+        Ravi Vakil.
+        \textit{The Rising Sea: Foundations of Algebraic Geometry}.
+        Preprint, 2024.07.
+\end{references}

@@ -1,0 +1,878 @@
+\newenvironment{solution}{\begin{proofc}[解答]}{\end{proofc}}
+
+== 习题A ==
+
+计算下列不定积分:
+
+\begin{center}
+\begin{tabular}{l l l}
+    1.$\displaystyle\int \frac{e^{3x} + 1}{e^{x} + 1} \mathrm{d}x$ 
+    & 2. $\displaystyle\int \frac{\mathrm{d}x}{x^2(1 + x^2)}$ 
+    & 3. $\displaystyle\int \sqrt{x\sqrt{x}} \mathrm{d}x$\\
+    4.$\displaystyle\int \left(\sqrt{\frac{1 + x}{1 - x}} + \sqrt{\frac{1 - x}{1 + x}}\right)\mathrm{d}x$
+    & 5. $\displaystyle \int \tan^2 x \mathrm{d}x$
+    & 6. $\displaystyle \int \frac{1 + \sin^2 x}{\cos^2 x} \mathrm{d}x$\\
+    7. $\displaystyle \int \frac{\mathrm{d}x}{\cos^2 x \sin^2 x}$
+    & 8. $\displaystyle \int \frac{\cos 2x}{\cos^2 x \sin^2 x} \mathrm{d}x$
+    & 9. $\displaystyle \int \frac{\mathrm{d}x}{2 + 3x^2}$\\
+    10. $\displaystyle \int \frac{\mathrm{d}x}{2 - 3x^2}$
+    & 11. $\displaystyle \int \sqrt[3]{1 - 3x} \mathrm{d}x$
+    & 12. $\displaystyle \int x \cdot \sqrt[3]{1 - 3x} \mathrm{d}x$\\
+    13. $\displaystyle \int \frac{\mathrm{d}x}{\sqrt{3x^2 - 2}}$
+    & 14. $\displaystyle \int \frac{\mathrm{d}x}{x\sqrt{x^2 + 1}}$
+    & 15. $\displaystyle \int \sqrt{\frac{a + x}{a - x}} \mathrm{d}x \quad (a > 0)$\\
+    16.$\displaystyle \int \sqrt{\frac{x - a}{x + a}} \mathrm{d}x \quad (a \geq 0)$
+    & 17. $\displaystyle \int \frac{2x + 3}{(x - 2)(x + 5)} \mathrm{d}x$
+    & 18. $\displaystyle \int \frac{\mathrm{d}x}{8 - 2x - x^2}$\\
+    19. $\displaystyle \int \frac{\mathrm{d}x}{(x + 1)^2(x - 1)}$
+    & 20. $\displaystyle \int \frac{2x - 3}{x^2 + 2x + 1} \mathrm{d}x$
+    & 21. $\displaystyle \int \frac{\mathrm{d}x}{(x + 1)(x^2 + 1)}$\\
+    22. $\displaystyle \int \frac{x^4}{x^4 + 5x^2 + 4} \mathrm{d}x$
+    & 23. $\displaystyle \int \cos x \sin^2 x \mathrm{d}x$
+    & 24. $\displaystyle \int \frac{\cos x}{1 + \sin x} \mathrm{d}x$\\
+    25. $\displaystyle \int \tan x \sin^2 x \mathrm{d}x$
+    & 26. $\displaystyle \int \tan^3 x \mathrm{d}x$
+    & 27. $\displaystyle \int \cos^4 x \sin^3 x \mathrm{d}x$\\
+    28. $\displaystyle \int \frac{\sin^3 x}{1 + \cos^2 x} \mathrm{d}x$
+    & 29. $\displaystyle \int \frac{\mathrm{d}x}{\sin^2 x \cos x}$
+    & 30. $\displaystyle \int \frac{\sin 2x}{2 + \tan^2 x} \mathrm{d}x$\\
+    31. $\displaystyle \int \sec^3 x \mathrm{d}x$
+    & 32. $\displaystyle \int \frac{\sin^2 x}{1 + \cos^2 x} \mathrm{d}x$
+    & 33. $\displaystyle \int \frac{\sin 2x}{\cos^4 x + \sin^4 x} \mathrm{d}x$\\
+    34. $\displaystyle \int \frac{\mathrm{d}x}{2 \cos^2 x + \sin x \cos x + \sin^2 x}$
+    & 35. $\displaystyle \int \frac{\mathrm{d}x}{(1 + \cos x)^2}$
+    & 36. $\displaystyle \int \frac{\mathrm{d}\theta}{1 + r^2 - 2r\cos\theta} (0< r< 1)$\\
+    37. $\displaystyle \int \frac{\sqrt{x}}{1 + \sqrt[4]{x^3}} \mathrm{d}x$
+    & 38. $\displaystyle \int \frac{\mathrm{d}x}{1 + \sqrt{x} + \sqrt{x + 1}}$
+    & 39. $\displaystyle \int \frac{x}{x + \sqrt{x^2 - 1}} \mathrm{d}x$\\
+    40. $\displaystyle \int \frac{\mathrm{d}x}{1 + \sqrt{1 - 2x - x^2}}$
+    & 41. $\displaystyle \int \frac{1}{x}\sqrt{\frac{x + 1}{x - 1}} \mathrm{d}x$
+    & 42. $\displaystyle \int \frac{\mathrm{d}x}{\sqrt{x + 1} + \sqrt[3]{x + 1}}$\\
+    43. $\displaystyle \int \sqrt{x^2 + \frac{1}{x^2}} \mathrm{d}x$
+    & 44. $\displaystyle \int \frac{\mathrm{d}x}{x + \sqrt{x^2 - x + 1}}$
+    & 45. $\displaystyle \int \frac{xe^x}{(1 + x)^2} \mathrm{d}x$\\
+    46. $\displaystyle \int \frac{\mathrm{d}x}{(1 + e^x)^2}$ &  &
+\end{tabular}
+\end{center}
+\begin{solution}(注意答案并不唯一，与所给答案相差一个常数的也正确.)\\
+    \begin{enumerate}
+    \item[1.]
+    \[
+    \begin{aligned}
+    \int \frac{e^{3x}+1}{e^x+1}\mathrm{d}x=\int(e^{2x}-e^x+1)\mathrm{d}x=\frac{1}{2}e^{2x}-e^x+x+C.
+    \end{aligned}
+    \]
+
+    \item[2.]
+    \[
+    \begin{aligned}
+    \int \frac{\mathrm{d}x}{x^2(1+x^2)}=\int \left(\frac{1}{x^2}-\frac{1}{1+x^2}\right)\mathrm{d}x=-\frac{1}{x}-\arctan{x}+C.
+    \end{aligned}
+    \]
+
+    \item[3.]
+    \[
+    \begin{aligned}
+    \int \sqrt{x\sqrt{x}}\mathrm{d}x=\int x^{\frac{3}{4}}\mathrm{d}x=\frac{4}{7}x^{\frac{7}{4}}+C.
+    \end{aligned}
+    \]
+
+    \item[4.]
+    \[
+    \begin{aligned}
+    \int \left(\sqrt{\frac{1+x}{1-x}}+\sqrt{\frac{1-x}{1+x}}\right)\mathrm{d}x=\int \frac{2}{\sqrt{1-x^2}}\mathrm{d}x=2\arcsin{x}+C.
+    \end{aligned}
+    \]
+
+    \item[5.]
+    \[
+    \begin{aligned}
+    \int \tan^2{x}\mathrm{d}x=\int\left(\sec^2{x}-1\right)\mathrm{d}x=\tan{x}-x+C.
+    \end{aligned}
+    \]
+
+    \item[6.]
+    \[
+    \begin{aligned}
+    \int\frac{1+\sin^2{x}}{\cos^2{x}}\mathrm{d}x=\int\left(\sec^2{x}+\tan^2{x}\right)\mathrm{d}x=\tan{x}+\tan{x}-x+C=2\tan{x}-x+C.
+    \end{aligned}
+    \]
+
+    \item[7.]
+    \[
+    \begin{aligned}
+    \int\frac{\mathrm{d}x}{\sin^2{x}\cos^2{x}}=\int\frac{4}{\sin^2{2x}}\mathrm{d}x=\int 4\csc^2{2x}\mathrm{d}x=-2\cot{2x}+C=\tan{x}-\cot{x}+C.
+    \end{aligned}
+    \]
+
+    \item[8.]
+    \[
+    \begin{aligned}
+    \int\frac{\cos{2x}}{\cos^2{x}\sin^2{x}}\mathrm{d}x=\int\frac{\cos^2{x}-\sin^2{x}}{\cos^2{x}\sin^2{x}}\mathrm{d}x=\int\left(\csc^2{x}-\sec^2{x}\right)\mathrm{d}x=-\cot{x}-\tan{x}+C=-2\csc{2x}+C.
+    \end{aligned}
+    \]
+
+    \item[9.]
+    \[
+    \begin{aligned}
+    \int\frac{\mathrm{d}x}{2+3x^2}=\frac{1}{3}\int\frac{\mathrm{d}x}{x^2+\frac{2}{3}}=\frac{1}{3}\frac{1}{\sqrt{\frac{2}{3}}}\arctan{\frac{x}{\sqrt{\frac{2}{3}}}}+C=\frac{\sqrt{6}}{6}\arctan{\frac{\sqrt{6}}{2}x}+C.
+    \end{aligned}
+    \]
+
+    \item[10.]
+    \[
+    \begin{aligned}
+    \int\frac{\mathrm{d}x}{2-3x^2}&=\frac{1}{3}\int\frac{\mathrm{d}x}{\left(\sqrt{\frac{2}{3}}-x\right)\left(\sqrt{\frac{2}{3}}+x\right)}=\frac{1}{3}\cdot\frac{1}{2\sqrt{\frac{2}{3}}}\int\left(\frac{1}{\sqrt{\frac{2}{3}}-x}-\frac{1}{\sqrt{\frac{2}{3}}+x}\right)\mathrm{d}x\\
+    &=\frac{\sqrt{6}}{12}\ln\left|\frac{\sqrt{2}+\sqrt{3}x}{\sqrt{2}-\sqrt{3}x}\right|+C.
+    \end{aligned}
+    \]
+
+    \item[11.]
+    \[
+    \begin{aligned}
+    \int\sqrt[3]{1-3x}\mathrm{d}x=-\frac{1}{3}\int\sqrt[3]{1-3x}\mathrm{d}(1-3x)=-\frac{1}{3}\cdot\frac{3}{4}(1-3x)^{\frac{4}{3}}+C=-\frac{1}{4}(1-3x)^{\frac{4}{3}}+C.
+    \end{aligned}
+    \]
+
+    \item[12.]
+    \[
+    \begin{aligned}
+    \int x\cdot\sqrt[3]{1-3x}\mathrm{d}x&\overset{u=1-3x}{=}-\frac{1}{9}\int u(1-u)^{\frac{1}{3}}\mathrm{d}x=-\frac{1}{9}\int\left(u^{\frac{1}{3}}-u^{\frac{4}{3}}\right)=-\frac{1}{9}\left(\frac{3}{4}u^{\frac{4}{3}}-\frac{3}{7}u^{\frac{7}{3}}\right)+C\\
+    &\quad=-\frac{1}{12}(1-3x)^{\frac{4}{3}}+\frac{1}{21}(1-3x)^{\frac{7}{4}}+C.
+    \end{aligned}
+    \]
+
+    \item[13.]
+    \[
+    \begin{aligned}
+    \int \frac{\mathrm{d}x}{\sqrt{3x^2-2}}=\frac{1}{\sqrt{3}}\int\frac{\mathrm{d}x}{\sqrt{x^2-\frac{2}{3}}}=\frac{1}{\sqrt{3}}\ln\left|\sqrt{3}x+\sqrt{3x^2-2}\right|+C.
+    \end{aligned}
+    \]
+
+    \item[14.]
+    \[
+    \begin{aligned}
+    \int\frac{\mathrm{d}x}{x\sqrt{x^2+1}}\overset{x=\tan{t}}{=}\int\frac{\sec^2{t}}{\tan{t}\sec{t}}\mathrm{d}t=\int\csc{t}\mathrm{d}t=\ln\left|\csc{t}-\cot{t}\right|+C=\ln\left|\frac{\sqrt{x^2+1}-1}{x}\right|+C.
+    \end{aligned}
+    \]
+
+    \item[15.]\\
+    \[
+    \begin{aligned}
+    \int\sqrt{\frac{a+x}{a-x}}\mathrm{d}x&=\int\frac{a+x}{\sqrt{a^2-x^2}}\mathrm{d}x=a\int\frac{\mathrm{d}x}{\sqrt{a^2-x^2}}+\int\frac{x}{\sqrt{a^2-x^2}}\mathrm{d}x\\
+    &=a\arcsin{\frac{x}{a}}-\sqrt{a^2-x^2}+C.\quad(a>0).
+    \end{aligned}
+    \]
+
+    \item[16.]\\
+    当$a=0$时，
+    \[
+    \begin{aligned}
+    \int\sqrt{\frac{x-a}{x+a}}\mathrm{d}x=\int \mathrm{d}x=x+C.
+    \end{aligned}
+    \]
+    当$x>a$且$a>0$时，
+    \[
+    \begin{aligned}
+    \int\sqrt{\frac{x-a}{x+a}}\mathrm{d}x&=\int\frac{x-a}{\sqrt{x^2-a^2}}\mathrm{d}x=\int\frac{x}{\sqrt{x^2-a^2}}\mathrm{d}x-a\int\frac{\mathrm{d}x}{\sqrt{x^2-a^2}}\\
+    &=\sqrt{x^2-a^2}-a\ln\left|x+\sqrt{x^2-a^2}\right|+C.
+    \end{aligned}
+    \]
+    当$x<-a$且$a>0$时，类似有
+    \[
+    \begin{aligned}
+    \int\sqrt{\frac{x-a}{x+a}}\mathrm{d}x&=\int\frac{a-x}{\sqrt{x^2-a^2}}\mathrm{d}x=-\int\frac{x}{\sqrt{x^2-a^2}}\mathrm{d}x+a\int\frac{\mathrm{d}x}{\sqrt{x^2-a^2}}\\
+    &=-\sqrt{x^2-a^2}+a\ln\left|x+\sqrt{x^2-a^2}\right|+C.
+    \end{aligned}
+    \]
+
+    \item[17.]
+    \[
+    \begin{aligned}
+    \int\frac{2x+3}{(x-2)(x+5)}\mathrm{d}x=\int\left(\frac{1}{x-2}+\frac{1}{x+5}\right)\mathrm{d}x=\ln\left|x^2+3x-10\right|+C.
+    \end{aligned}
+    \]
+
+    \item[18.]
+    \[
+    \begin{aligned}
+    \int\frac{\mathrm{d}x}{8-2x-x^2}=-\int\frac{\mathrm{d}x}{(x+4)(x-2)}=\frac{1}{6}\int\left(\frac{1}{x+4}+\frac{1}{2-x}\right)\mathrm{d}x=\frac{1}{6}\ln\left|\frac{x+4}{2-x}\right|+C.
+    \end{aligned}
+    \]
+
+    \item[19.]
+    \[
+    \begin{aligned}
+    \int\frac{\mathrm{d}x}{(x+1)^2(x-1)}=\int\left(-\frac{1}{4}\cdot\frac{1}{x+1}-\frac{1}{2}\cdot\frac{1}{(x+1)^2}+\frac{1}{4}\cdot\frac{1}{x-1}\right)\mathrm{d}x=\frac{1}{4}\ln\left|\frac{x-1}{x+1}\right|+\frac{1}{2x+2}+C.
+    \end{aligned}
+    \]
+
+    \item[20.]
+    \[
+    \begin{aligned}
+    \int\frac{2x-3}{x^2+2x+1}\mathrm{d}x=\int\left(\frac{2}{x+1}-\frac{5}{(x+1)^2}\right)\mathrm{d}x=2\ln\left|x+1\right|+\frac{5}{x+1}+C.
+    \end{aligned}
+    \]
+
+    \item[21.]\\
+    \[
+    \begin{aligned}
+    \int\frac{\mathrm{d}x}{(x+1)(x^2+1)}&=\int\left(\frac{1}{2}\cdot\frac{1}{x+1}-\frac{1}{2}\cdot\frac{x}{x^2+1}+\frac{1}{2}\cdot\frac{1}{x^2+1}\right)\mathrm{d}x\\
+    &=\frac{1}{2}\ln\left|x+1\right|-\frac{1}{4}\ln\left|x^2+1\right|+\frac{1}{2}\arctan{x}+C\\
+    &=\frac{1}{2}\ln\left|\frac{x+1}{\sqrt{x^2+1}}\right|+\frac{1}{2}\arctan{x}+C.
+    \end{aligned}
+    \]
+
+    \item[22.]
+    \[
+    \begin{aligned}
+    \int\frac{x^4}{x^4+5x^2+4}\mathrm{d}x=\int\left(1+\frac{1}{3}\cdot\frac{1}{x^2+1}-\frac{16}{3}\cdot\frac{1}{x^2+4}\right)\mathrm{d}x=x+\frac{1}{3}\arctan{x}-\frac{8}{3}\arctan{\frac{x}{2}}+C.
+    \end{aligned}
+    \]
+
+    \item[23.]
+    \[
+    \begin{aligned}
+    \int\cos{x}\sin^2{x}\mathrm{d}x=\int \sin^2{x}\mathrm{d}(\sin{x})=\frac{1}{3}\sin^3{x}+C.
+    \end{aligned}
+    \]
+
+    \item[24.]
+    \[
+    \begin{aligned}
+    \int\frac{\cos{x}}{1+\sin{x}}\mathrm{d}x=\int\frac{1}{1+\sin{x}}\mathrm{d}(\sin{x})=\ln\left|1+\sin{x}\right|+C=\ln\left(1+\sin{x}\right)+C.
+    \end{aligned}
+    \]
+
+    \item[25.]
+    \[
+    \begin{aligned}
+    \int\tan{x}\sin^2{x}\mathrm{d}x=\int\frac{\sin{x}(1-\cos^2{x})}{\cos{x}}\mathrm{d}x=-\int\frac{1-\cos^2{x}}{\cos{x}}\mathrm{d}(\cos{x})=-\ln\left|\cos{x}\right|+\frac{1}{2}\cos^2{x}+C.
+    \end{aligned}
+    \]
+
+    \item[26.]\\
+    \[
+    \begin{aligned}
+    \int\tan^3{x}\mathrm{d}x&=\int\tan{x}(\sec^2{x}-1)\mathrm{d}x=\int\tan{x}\sec^2{x}\mathrm{d}x-\int\tan{x}\mathrm{d}x\\
+    &=\int\tan{x}\mathrm{d}(\tan{x})-\int\tan{x}\mathrm{d}x=\frac{1}{2}\tan^2{x}+\ln\left|\cos{x}\right|+C.
+    \end{aligned}
+    \]
+
+    \item[27.]
+    \[
+    \begin{aligned}
+    \int\cos^4{x}\sin^3{x}\mathrm{d}x=-\int\cos^4{x}(1-\cos^2{x})\mathrm{d}(\cos{x})=-\frac{1}{5}\cos^5{x}+\frac{1}{7}\cos^7{x}+C.
+    \end{aligned}
+    \]
+
+    \item[28.]\\
+    \[
+    \begin{aligned}
+    \int\frac{\sin^3{x}}{1+\cos^2{x}}\mathrm{d}x&=-\int\frac{1-\cos^2{x}}{1+\cos^2{x}}\mathrm{d}(\cos{x})=-\int\left(\frac{2}{1+\cos^2{x}}-1\right)\mathrm{d}(\cos{x})\\
+    &=\cos{x}-2\arctan\left(\cos{x}\right)+C.
+    \end{aligned}
+    \]
+
+    \item[29.]\\
+    \[
+    \begin{aligned}
+    \int\frac{\mathrm{d}x}{\sin^2{x}\cos{x}}&=\int\frac{\mathrm{d}(\sin{x})}{\sin^2{x}(1-\sin^2{x})}=\int\left(\frac{1}{\sin^2{x}}+\frac{1}{1-\sin^2{x}}\right)\mathrm{d}(\sin{x})\\
+    &=-\csc{x}+\frac{1}{2}\ln\left|\frac{1+\sin{x}}{1-\sin{x}}\right|+C=\ln\left|\sec{x}+\tan{x}\right|-\csc{x}+C.
+    \end{aligned}
+    \]
+
+    \item[30.]\\
+    \[
+    \begin{aligned}
+    \int\frac{\sin{2x}}{2+\tan^2{x}}\mathrm{d}x&=\int\frac{2\sin{x}\cos{x}}{1+\sec^2{x}}\mathrm{d}x=\int\frac{2\sin{x}\cos^3{x}}{1+\cos^2{x}}\mathrm{d}x=-\int\frac{2\cos^3{x}}{1+\cos^2{x}}\mathrm{d}(\cos{x})\\
+    &=-\int\left(2\cos{x}-\frac{2\cos{x}}{1+\cos^2{x}}\right)\mathrm{d}(\cos{x})=-\cos^2{x}+\ln\left(1+\cos^2{x}\right)+C.
+    \end{aligned}
+    \]
+
+    \item[31.]\\
+    \[
+    \begin{aligned}
+    I&\coloneqq\int\sec^3{x}\mathrm{d}x=\sec{x}\tan{x}-\int\tan{x}\cdot\sec{x}\tan{x}\mathrm{d}x=\sec{x}\tan{x}-\int\sec{x}(\sec^2{x}-1)\mathrm{d}x\\
+    &=\sec{x}\tan{x}-\int\sec^3{x}\mathrm{d}x+\int\sec{x}\mathrm{d}x=\sec{x}\tan{x}+\ln\left|\sec{x}+\tan{x}\right|-I.\\
+    \Rightarrow &I=\frac{1}{2}\sec{x}\tan{x}+\frac{1}{2}\ln\left|\sec{x}+\tan{x}\right|+C.
+    \end{aligned}
+    \]
+
+    \item[32.]\\
+    \[
+    \begin{aligned}
+    \int\frac{\sin^2{x}}{1+\cos^2{x}}\mathrm{d}x&=\int\frac{1-\cos^2{x}}{1+\cos^2{x}}\mathrm{d}x=\int\left(\frac{2}{1+\cos^2{x}}-1\right)\mathrm{d}x=2\int\frac{1}{1+\cos^2{x}}\mathrm{d}x-\int\mathrm{d}x\\
+    &\overset{t=\tan{x}}{=}2\int\frac{1}{1+\frac{1}{1+t^2}}\cdot\frac{\mathrm{d}t}{1+t^2}-x+C=\int\frac{1}{2+t^2}\mathrm{d}t-x+C\\
+    &=\frac{\sqrt{2}}{2}\arctan\left(\frac{\tan{x}}{\sqrt{2}}\right)-x+C.
+    \end{aligned}
+    \]
+
+    \item[33.]\\
+    \[
+    \begin{aligned}
+    \int\frac{\sin{2x}}{\cos^4{x}+\sin^4{x}}\mathrm{d}x&=\int\frac{\sin{2x}}{1-\frac{1}{2}\sin^2{2x}}\mathrm{d}x=2\int\frac{\sin{2x}}{1+\cos^2{2x}}\mathrm{d}x\\
+    &\overset{u=\cos{2x}}{=}2\int\frac{1}{1+u^2}\cdot\left(-\frac{1}{2}\right)\mathrm{d}u=-\arctan{u}+C=-\arctan\left(\cos{2x}\right)+C.
+    \end{aligned}
+    \]
+
+    \item[34.]\\
+    \[
+    \begin{aligned}
+    \int\frac{\mathrm{d}x}{2\cos^2{x}+\sin{x}\cos{x}+\sin^2{x}}&\overset{t=\tan{x}}{=}\int\frac{1}{2\cdot\frac{1}{1+t^2}+\frac{t}{1+t^2}+\frac{t^2}{1+t^2}}\frac{\mathrm{d}t}{1+t^2}=\int\frac{1}{\frac{2+t+t^2}{1+t^2}}\cdot\frac{\mathrm{d}t}{1+t^2}\\
+    &=\int\frac{1}{t^2+t+2}\mathrm{d}t=\int\frac{1}{\left(t+\frac{1}{2}\right)^2+\left(\frac{\sqrt{7}}{2}\right)^2}\mathrm{d}t\\
+    &=\frac{2}{\sqrt{7}}\arctan\left(\frac{2\tan{x}+1}{\sqrt{7}}\right)+C.
+    \end{aligned}
+    \]
+
+    \item[35.]\\
+    \[
+    \begin{aligned}
+    \int\frac{\mathrm{d}x}{(1+\cos{x})^2}&=\int\frac{\mathrm{d}x}{4\cos^4{\left(\frac{x}{2}\right)}}=\frac{1}{4}\int\sec^4{\left(\frac{x}{2}\right)}\mathrm{d}x\overset{u=\frac{x}{2}}{=}\frac{1}{4}\int\sec^4{u}\cdot2\mathrm{d}u\\
+    &=\frac{1}{2}\int(1+\tan^2{u})\sec^2{u}\mathrm{d}u\overset{v=\tan{u}}{=}\frac{1}{2}\int(1+v^2)\mathrm{d}v=\frac{1}{2}\left(v+\frac{1}{3}v^3\right)+C\\
+    &=\frac{1}{2}\tan{u}+\frac{1}{6}\tan^3{u}+C=\frac{1}{2}\tan\left(\frac{x}{2}\right)+\frac{1}{6}\tan^3{\left(\frac{x}{2}\right)}+C.
+    \end{aligned}
+    \]
+
+    \item[36.]\\
+    \[
+    \begin{aligned}
+    \int\frac{\mathrm{d}\theta}{1+r^2-2r\cos\theta}&=\int\frac{\mathrm{d}\theta}{(1-r)^2+2r(1-\cos\theta)}=\int\frac{\mathrm{d}\theta}{(1-r)^2+4r\sin^2\left(\frac{\theta}{2}\right)}\\
+    &\overset{u=\frac{\theta}{2}}{=}\int\frac{2\mathrm{d}u}{(1-r)^2+4r\sin^2{u}}=\frac{2}{(1-r)^2}\int\frac{\mathrm{d}u}{\cos^2{u}+\frac{(1+r)^2}{(1-r)^2}\sin^2u}\\
+    &=\frac{2}{(1-r)^2}\int\frac{\mathrm{d}(\tan{u})}{1+\frac{(1+r)^2}{(1-r)^2}\tan^2{u}}=\frac{2}{(1-r)^2}\cdot\frac{1-r}{1+r}\arctan\left(\frac{1-r}{1+r}\tan{u}\right)+C\\
+    &=\frac{2}{1-r^2}\arctan\left(\frac{1-r}{1+r}\tan\left(\frac{\theta}{2}\right)\right)+C.
+    \end{aligned}
+    \]
+    或者直接换元
+    \[
+    \begin{aligned}
+    \int\frac{\mathrm{d}\theta}{1+r^2-2r\cos\theta}
+    &\overset{t=\tan\frac{\theta}{2}}{=}\int\frac{\frac{2}{1+t^2}}{r^2+1-2r\cdot\frac{1-t^2}{1+t^2}}\mathrm{d}t=\int\frac{2\mathrm{d}t}{(r^2+1)(1+t^2)-2r(1-t^2)}\\
+    &=\int\frac{2\mathrm{d}t}{(1-r)^2+(r+1)^2t^2}\overset{u=\frac{1+r}{1-r}t}{=}\int\frac{2\cdot\frac{1+r}{1-r}\mathrm{d}u}{(1-r)^2+(1-r)^2u^2}\\
+    &=\frac{2}{1-r^2}\arctan\left( \frac{1+r}{1-r}\tan\left( \frac{\theta}{2} \right) \right)+C.
+    \end{aligned}
+    \]
+    
+    \item[37.]\\
+    \[
+    \begin{aligned}
+    \int\frac{\sqrt{x}}{1+\sqrt[4]{x^3}}\mathrm{d}x&\overset{u=x^{\frac{1}{4}}}{=}	\int\frac{u^2}{1+u^3}\cdot4u^3\mathrm{d}u=4\int\frac{u^5}{1+u^3}\mathrm{d}u=4\int\left(u^2-\frac{u^2}{1+u^3}\right)\mathrm{d}u\\
+    &=4\left(\frac{1}{3}u^3-\frac{1}{3}\ln\left|1+u^3\right|\right)+C=\frac{4}{3}x^{\frac{3}{4}}-\frac{4}{3}\ln \left(1+x^{\frac{3}{4}}\right)+C.
+    \end{aligned}
+    \]
+
+    \item[38.]\\
+    \[
+    \begin{aligned}
+    \int\frac{\mathrm{d}x}{1+\sqrt{x}+\sqrt{x+1}}&\overset{u=\sqrt{x}}{=}\int\frac{2u}{1+u+\sqrt{u^2+1}}\mathrm{d}u=\int\left(u+1-\sqrt{u^2+1}\right)\mathrm{d}u\\
+    &=u+\frac{u^2}{2}-\frac{u}{2}\sqrt{u^2+1}-\frac{1}{2}\ln\left|u+\sqrt{u^2+1}\right|+C\\
+    &=\sqrt{x}+\frac{1}{2}x-\frac{1}{2}\sqrt{x^2+x}-\frac{1}{2}\ln\left(\sqrt{x}+\sqrt{x+1}\right)+C.
+    \end{aligned}
+    \]
+
+    \item[39.]\\
+    \[
+    \begin{aligned}
+    \int\frac{x}{x+\sqrt{x^2-1}}\mathrm{d}x&=\int x\left(x-\sqrt{x^2-1}\right)\mathrm{d}x=\int x^2\mathrm{d}x-\int x\sqrt{x^2-1}\mathrm{d}x\\
+    &=\frac{1}{3}x^3-\frac{1}{3}(x^2-1)^{\frac{3}{2}}+C.
+    \end{aligned}
+    \]
+
+    \item[40.]\\
+    \[
+    \begin{aligned}
+    &\int\frac{\mathrm{d}x}{1+\sqrt{1-2x-x^2}}=\int\frac{\mathrm{d}x}{1+\sqrt{2-(x+1)^2}}\overset{u=x+1}{=}\int\frac{\mathrm{d}u}{1+\sqrt{2-u^2}}\\
+    &\overset{u=\sqrt{2}\sin\theta}{=}\int\frac{\sqrt{2}\cos\theta}{1+\sqrt{2}\cos\theta}\mathrm{d}\theta=\int\mathrm{d}\theta-\int\frac{\mathrm{d}\theta}{1+\sqrt{2}\cos\theta}\overset{t=\tan\frac{\theta}{2}}{=}\theta-\int\frac{1}{1+\sqrt{2}\cdot\frac{1-t^2}{1+t^2}}\cdot\frac{2}{1+t^2}\mathrm{d}t\\
+    &=\theta-\int\frac{2}{(1+\sqrt{2})+(1-\sqrt{2})t^2}\mathrm{d}t=\theta-2(\sqrt{2}-1)\int\frac{\mathrm{d}t}{1-(\sqrt{2}-1)^2t^2}=\theta-\ln\left|\frac{1+(\sqrt{2}-1)t}{1-(\sqrt{2}-1)t}\right|+C\\
+    &=\arcsin\left(\frac{x+1}{\sqrt{2}}\right)+\frac{1}{2}\ln\left|\frac{\sqrt{1-2x-x^2}-x+1}{\sqrt{1-2x-x^2}+x+3}\right|+C.
+    \end{aligned}
+    \]
+
+    \item[41.]\\
+    \[
+    \begin{aligned}
+    \int\frac{1}{x}\sqrt{\frac{x+1}{x-1}}\mathrm{d}x&\overset{t=\sqrt{\frac{x+1}{x-1}}}{=}\int \frac{1}{\frac{t^2+1}{t^2-1}}\cdot t\cdot\left(-\frac{4t}{(t^2-1)^2}\right)\mathrm{d}t=-\int\frac{4t^2}{(t^2+1)(t^2-1)}\mathrm{d}t\\
+    &=-2\int\left(\frac{1}{1+t^2}+\frac{1}{t^2-1}\right)\mathrm{d}t=-2\arctan\left(\sqrt{\frac{x+1}{x-1}}\right)+\int\left(\frac{1}{1+t}+\frac{1}{1-t}\right)\mathrm{d}t\\
+    &=-2\arctan\left(\sqrt{\frac{x+1}{x-1}}\right)+\ln\left(x+\sqrt{x^2-1}\right)+C.
+    \end{aligned}
+    \]
+
+    \item[42.]\\
+    \[
+    \begin{aligned}
+    \int\frac{\mathrm{d}x}{\sqrt{x+1}+\sqrt[3]{x+1}}&\overset{u=x+1}{=}\int\frac{\mathrm{d}u}{\sqrt{u}+\sqrt[3]{u}}\overset{t=\sqrt[6]{u}}{=}\int\frac{6t^5\mathrm{d}t}{t^3+t^2}=\int\left(6t^2-6t+6-\frac{6}{t+1}\right)\mathrm{d}t\\
+    &=2t^3-3t^2+6t-6\ln\left|1+t\right|+C\\
+    &=2(1+x)^{\frac{1}{2}}-3(1+x)^{\frac{1}{3}}+6(1+x)^{\frac{1}{6}}-6\ln\left|1+(1+x)^{\frac{1}{6}}\right|+C.
+    \end{aligned}
+    \]
+
+    \item[43.]\\
+    \[
+    \begin{aligned}
+    \int\sqrt{x^2+\frac{1}{x^2}}\mathrm{d}x&=\int\frac{\sqrt{x^4+1}}{\left|x\right|}\mathrm{d}x\overset{t=x^2}{=}\int\frac{\sqrt{t^2+1}}{\sqrt{t}}\cdot\frac{\mathrm{d}t}{2\sqrt{t}}=\frac{1}{2}\int\frac{\sqrt{t^2+1}}{t}\mathrm{d}t\\
+    &\overset{t=\tan\theta}{=}\frac{1}{2}\int\frac{\sec\theta}{\tan\theta}\cdot\sec^2\theta\mathrm{d}\theta=\frac{1}{2}\int\frac{1}{\sin\theta\cos^2\theta}\mathrm{d}\theta\\
+    &=\frac{1}{2}\int\frac{\sin^2\theta+\cos^2\theta}{\sin\theta\cos^2\theta}\mathrm{d}\theta=\frac{1}{2}\int\left(\tan\theta\sec\theta+\csc\theta\right)\\
+    &=\frac{1}{2}\left(\ln\left|\csc\theta-\cot\theta\right|+\sec\theta\right)+C\\
+    &=\frac{1}{2}\ln\left|\frac{\sqrt{x^4+1}-1}{x^2}\right|+\frac{1}{2}\sqrt{x^4+1}+C.
+    \end{aligned}
+    \]
+
+    \item[44.](非常困难)\\
+    \[
+    \begin{aligned}
+    &\int\frac{\mathrm{d}x}{x+\sqrt{x^2-x+1}}\overset{u=\sqrt{x^2+x+1}}{=}\int{\dfrac{2\,\left({u}^{2}-u+1\right)}{u\,\left({2\,u-1}\right)^{2}}}{\;\mathrm{d}u}=2\int{\dfrac{{u}^{2}-u+1}{4u\left({u-\dfrac{1}{2}}\right)^{2}}}{\;\mathrm{d}u}\\
+    &=\dfrac{1}{2}\int\left({\dfrac{4}{u}-\dfrac{3}{u-\dfrac{1}{2}}+\dfrac{3}{2\,\left({u-\dfrac{1}{2}}\right)^{2}}}\right){\;\mathrm{d}u}=-\dfrac{3\,\ln\left|2\,u-1\right|}{2}+2\,\ln\left|u\right|-\dfrac{3}{2\,\left(2\,u-1\right)}+C\\
+    &=-\dfrac{3\,\ln\left|2\,\sqrt{{x}^{2}-x+1}+2\,x-1\right|}{2}+2\,\ln\left|\sqrt{{x}^{2}-x+1}+x\right|-\dfrac{3}{2\,\left(2\,\sqrt{{x}^{2}-x+1}+2\,x-1\right)}+C.
+    \end{aligned}
+    \]
+
+    \item[45.]
+    \[
+    \begin{aligned}
+    \int\frac{xe^x}{(1+x)^2}\mathrm{d}x=\int e^x\left(\frac{1}{1+x}-\frac{1}{(1+x)^2}\right)\mathrm{d}x=\frac{e^x}{1+x}+C.
+    \end{aligned}
+    \]
+
+    \item[46.]\\
+    \[
+    \begin{aligned}
+    &\int\frac{\mathrm{d}x}{(1+e^x)^2}\overset{u=e^x}{=}\int\frac{\mathrm{d}u}{u(1+u)^2}=\int\left(\frac{1}{u}-\frac{1}{1+u}-\frac{1}{(1+u)^2}\right)\mathrm{d}u\\
+    &=\ln\left|u\right|-\ln\left|1+u\right|+\frac{1}{1+u}+C=x-\ln\left(1+e^x\right)+\frac{1}{1+e^x}+C.
+    \end{aligned}
+    \]
+    \end{enumerate}
+
+    此外，介绍一下 \textbf{Euler 换元}，其可将二次根式化为有理式便于积分. 对于上面的题目也可以提供另一种方法.
+
+    对于 $\sqrt{ax^2+bx+c},\,(a\neq 0)$，主要分为以下三类：(有同时覆盖多个的，方法任选.)
+    \begin{enumerate}
+        \item[i.]$a>0$，不妨设 $a=1$. \\
+        令 $\sqrt{x^2+bx+c}=x+t$，则 $x^2+bx+c=x^2+2tx+t^2$，进而解得 $\displaystyle x=\frac{c-t^2}{2t-b}$.
+        \item[ii.]$c>0$，不妨设 $c=1$. \\
+        令 $\sqrt{1+ax^2+bx}=1+xt\,(x\neq0)$，则 $1+ax^2+bx=1+2xt+x^2t^2$，进而 $(a-t^2)x^2=(2t-b)x$，解得 $\displaystyle x=\frac{2t-b}{a-t^2}$.
+        \item[iii.]$ax^2+bx+c=a(x-\alpha)(x-\beta)\,(\alpha\neq\beta)$，不妨设 $a=-1$，因为 $a=1$ 在 i. 中已经讨论. \\
+        令 $\sqrt{-(x-\alpha)(x-\beta)}=t(x-\alpha)\,(x\neq \alpha)$，则 $(x-\alpha)(\beta-x)=t^2(x-\alpha)^2$，从而 $\beta-x=t^2(x-\alpha)$，解得 $\displaystyle x=\frac{\beta+\alpha t^2}{1+t^2}$.
+    \end{enumerate}
+\end{solution}
+
+== 习题B ==
+
+求下列不定积分的递推公式:
+
+\begin{center}
+\begin{tabular}{l l l}
+    1. $\displaystyle \int x^n e^x \mathrm{d}x$ 
+    & 2. $\displaystyle\int x^n (\ln x)^m \mathrm{d}x$ \\
+    3. $\displaystyle\int \sin^n x \mathrm{d}x$ 
+    & 4. $\displaystyle\int \frac{\mathrm{d}x}{\sin^n x} (n \geq 2)$\\
+    5. $\displaystyle\int \tan^n x \mathrm{d}x$ 
+    & 6. $\displaystyle\int e^x \sin^n x \mathrm{d}x$\\
+    7. $\displaystyle\int \frac{x^n}{\sqrt{1 - x^2}} \mathrm{d}x$
+    & 8. $\displaystyle\int \frac{1}{x^n \sqrt{1 + x}} \mathrm{d}x$
+\end{tabular}
+\end{center}
+\begin{solution}
+    \begin{enumerate}
+    \item[1.]
+    \[
+    \begin{aligned}
+    I_{n}\coloneqq\int x^ne^x\mathrm{d}x=x^ne^x-\int nx^{n-1}e^x\mathrm{d}x=x^ne^x-I_{n-1}.
+    \end{aligned}
+    \]
+
+    \item[2.]\\
+    \[
+    \begin{aligned}
+    I_{n,m}&\coloneqq\int x^n\left(\ln{x}\right)^m\mathrm{d}x\\
+    &=\frac{x^{n+1}}{n+1}\left(\ln{x}\right)^m-\int\frac{x^{n+1}}{n+1}\cdot m\left(\ln{x}\right)^{m-1}\cdot\frac{1}{x}\mathrm{d}x\\
+    &=\frac{x^{n+1}}{n+1}\left(\ln{x}\right)^m-\frac{m}{n+1}I_{n,m-1}.
+    \end{aligned}
+    \]
+
+    \item[3.]\\
+    \[
+    \begin{aligned}
+    I_{n}&\coloneqq \int\sin^n{x}\mathrm{d}x\\
+    &=-\sin^{n-1}{x}\cos{x}-\int(-\cos{x})\cdot(n-1)\sin^{n-2}{x}\cos{x}\mathrm{d}x\\
+    &=-\sin^{n-1}{x}\cos{x}+(n-1)\int\sin^{n-2}{x}\cos^2{x}\mathrm{d}x\\
+    &=-\sin^{n-1}{x}\cos{x}+(n-1)\int\sin^{n-2}{x}(1-\sin^2{x})\mathrm{d}x\\
+    &=-\sin^{n-1}{x}\cos{x}+(n-1)I_{n-2}-(n-1)I_{n}.
+    \end{aligned}
+    \]
+    \[
+    \begin{aligned}
+    \Rightarrow &I_{n}=-\frac{1}{n}\sin^{n-1}{x}\cos{x}+\frac{n-1}{n}I_{n-2}.
+    \end{aligned}
+    \]
+
+    \item[4.]\\
+    \[
+    \begin{aligned}
+    I_{n}&\coloneqq \int\frac{\mathrm{d}x}{\sin^n{x}}\\
+    &=-\csc^{n-2}\cot{x}-\int\left(-\cot{x}\right)\cdot\left(-(n-2)\csc^{n-3}{x}\cdot\csc{x}\cot{x}\right)\mathrm{d}x\\
+    &=-\csc^{n-2}{x}\cot{x}-(n-2)\int\csc^{n-2}{x}\cot^2{x}\mathrm{d}x\\
+    &=-\csc^{n-2}{x}\cot{x}-(n-2)\int\csc^{n-2}{x}(\csc^2{x}-1)\mathrm{d}x\\
+    &=-\csc^{n-2}{x}\cot{x}-(n-2)I_{n}+(n-2)I_{n-2}.
+    \end{aligned}
+    \]
+    \[
+    \begin{aligned}
+    \Rightarrow &I_{n}=-\frac{1}{n-1}\csc^{n-2}{x}\cot{x}+\frac{n-2}{n-1}I_{n-2}\quad(n\geq 2).
+    \end{aligned}
+    \]
+
+    \item[5.]\\
+    \[
+    \begin{aligned}
+    I_{n}&\coloneqq\int\tan^n{x}\mathrm{d}x\\
+    &=\int\tan^{n-2}{x}\left(\sec^2{x}-1\right)\mathrm{d}x=\int\tan^{n-2}{x}\sec^2{x}\mathrm{d}x-\int\tan^{n-2}{x}\mathrm{d}x\\
+    &=\int\tan^{n-2}{x}\mathrm{d}(\tan{x})-I_{n-2}=\frac{\tan^{n-1}{x}}{n-1}-I_{n-2}\quad(n\geq 2).
+    \end{aligned}
+    \]
+
+    \item[6.]\\
+    \[
+    \begin{aligned}
+    I_{n}&\coloneqq\int e^x\sin^{n}{x}\mathrm{d}x\\
+    &=e^x\sin^{n}{x}-\int e^x\cdot n\sin^{n-1}{x}\cos{x}\mathrm{d}x\\
+    &=e^x\sin^{n}x-n\int e^x\sin^{n-1}{x}\cos{x}\mathrm{d}x\\
+    &=e^x\sin^{n}x-n\left(e^x\sin^{n-1}{x}-\int e^x\left((n-1)\sin^{n-2}{x}\cos^2{x}-\sin^{n}{x}\right)\mathrm{d}x\right)\\
+    &=e^x\sin^{n}x-ne^x\sin^{n-1}{x}+n(n-1)\int e^x\sin^{n-2}{x}\cos^2{x}\mathrm{d}x-n\int e^x\sin^{n}x\mathrm{d}x\\
+    &=e^x\sin^{n}x-ne^x\sin^{n-1}{x}+n(n-1)\int e^x\sin^{n-2}{x}(1-\sin^2{x})\mathrm{d}x-n\int e^x\sin^{n}x\mathrm{d}x\\
+    &=e^x\sin^{n}x-ne^x\sin^{n-1}{x}+n(n-1)I_{n-2}-n^2I_{n}.
+    \end{aligned}
+    \]
+    \[
+    \begin{aligned}
+    \Rightarrow&I_{n}=\frac{e^x\sin^{n-1}{x}(\sin{x}-n\cos{x})}{1+n^2}+\frac{n(n-1)}{1+n^2}I_{n-2}.
+    \end{aligned}
+    \]
+
+    \item[7.]\\
+    \[
+    \begin{aligned}
+    I_{n}&\coloneqq\int\frac{x^n}{\sqrt{1-x^2}}\mathrm{d}x=\int x^{n-1}\cdot\frac{x}{\sqrt{1-x^2}}\mathrm{d}x\\
+    &=x^{n-1}\left(-\sqrt{1-x^2}\right)-\int\left(-\sqrt{1-x^2}\right)\cdot(n-1)x^{n-2}\mathrm{d}x\\
+    &=-x^{n-1}\sqrt{1-x^2}+(n-1)\int x^{n-2}\sqrt{1-x^2}\mathrm{d}x\\
+    &=-x^{n-1}\sqrt{1-x^2}+(n-1)\int x^{n-2}\frac{1-x^2}{\sqrt{1-x^2}}\mathrm{d}x\\
+    &=-x^{n-1}\sqrt{1-x^2}+(n-1)(I_{n-2}-I_{n}).
+    \end{aligned}
+    \]
+    \[
+    \begin{aligned}
+    \Rightarrow&I_{n}=-\frac{1}{n}x^{n-1}\sqrt{1-x^2}+\frac{n-1}{n}I_{n-2}.
+    \end{aligned}
+    \]
+
+    \item[8.]\\
+    \[
+    \begin{aligned}
+    I_{n}&\coloneqq \int\frac{1}{x^{n}\sqrt{1+x}}\mathrm{d}x\\
+    &=\frac{2\sqrt{1+x}}{x^{n}}-\int 2\sqrt{1+x}\cdot\left(-\frac{n}{x^{n+1}}\right)\mathrm{d}x=\frac{2\sqrt{1+x}}{x^{n}}+2n\int\frac{\sqrt{1+x}}{x^{n+1}}\mathrm{d}x\\
+    &=\frac{2\sqrt{1+x}}{x^{n}}+2n\int\frac{1+x}{x^{n+1}\sqrt{1+x}}\mathrm{d}x\\
+    &=\frac{2\sqrt{1+x}}{x^{n}}+2n(I_{n+1}+I_{n}).
+    \end{aligned}
+    \]
+    \[
+    \begin{aligned}
+    \Rightarrow&I_{n}=-\frac{\sqrt{1+x}}{(n-1)x^{n-1}}-\frac{2n-3}{2(n-1)}I_{n-1}\quad (n\geq 2).
+    \end{aligned}
+    \]
+    \end{enumerate}
+\end{solution}
+
+== 习题C ==
+
+\begin{enumerate}
+    \item[1.]已知 $f(x)$ 的一个原函数为 $\displaystyle\frac{\sin x}{1 + x \sin x}$, 
+    求 $\displaystyle\int f(x) f'(x) \mathrm{d}x$.
+    
+    \item[2.]设 $\displaystyle f'(\sin^2 x) = \cos 2x + \tan^2 x$, 求 $f(x)$.
+
+    \item[3.]设 $\displaystyle f(\ln x) = \frac{\ln(1 + x)}{x}$, 求 $\displaystyle\int f(x) \mathrm{d}x$.
+
+    \item[4.]设 $y = y(x)$ 满足 $\displaystyle y'' = F'(y)$, 其中 $F(y)$ 为非零的 $C^1$ 函数. 
+    通过在方程两端同乘 $y'$ 描述方程的通解 (在 $x = 0$ 附近), 可以用反函数表示.
+
+    \item[5.]设 $\displaystyle y = y(x) > 0$ 在 $(0, +\infty)$ 上连续, 二阶微分方程 $\displaystyle y'' + y^{-\gamma} = 0$ 
+    对 $x \in (0, +\infty)$ 成立 (其中 $\gamma > 1$ ) 且有极限 $y(0+) = 0$ 成立. 设导数满足极限 $\displaystyle y' (+\infty) = \lambda > 0$, 证明:
+    \[
+        y(x) \sim f(x)\coloneq
+        \begin{cases}
+            \displaystyle x^{\frac{2}{1+\gamma}} & \displaystyle, 0<x<\lambda^{\frac{1+\gamma}{1-\gamma}}\\
+            \displaystyle \lambda x & \displaystyle, x> \lambda^{\frac{1+\gamma}{1-\gamma}}.
+        \end{cases}
+    \]
+    
+    即存在与 $\displaystyle (\lambda, x)$ 无关的常数 $C$, 使得上述“等式”左右两端的比例介于 $\displaystyle\frac{1}{C}$ 与 $C$ 之间.
+    \begin{solution}
+        \textbf{首次积分}\\
+        将方程乘以 $y'$ 并积分：
+        \[
+        y''y' + y^{-\gamma}y' = 0 \;\Longrightarrow\; \frac12 (y')^2 + \int y^{-\gamma}\,\mathrm{d}y =\text{常数}.
+        \]
+        由于 $\displaystyle\int y^{-\gamma}\mathrm{d}y = \frac{y^{1-\gamma}}{1-\gamma} = -\frac{y^{1-\gamma}}{\gamma-1}$，得
+        \[
+        \frac12 (y')^2 - \frac{y^{1-\gamma}}{\gamma-1} = C_0.
+        \]
+        由 $y'(+\infty)=\lambda>0$ 和 $y\to+\infty$ 时 $y^{1-\gamma}\to0$，得 $\displaystyle C_0 = \frac{\lambda^2}{2}$. 故
+        \[
+        (y')^2 = \lambda^2 + \frac{2}{\gamma-1} y^{-(\gamma-1)}.
+        \]
+        因为 $\lambda>0$ 且 $y>0$，所以由上式可知 $y'\neq 0$. 
+        由二阶微分方程 $y''+y^{-\gamma}=0$ 以及 $y$ 在 $(0,\,+\infty)$ 上连续可知 $y''=-y^{-\gamma}<0$，因此 $y'$ 在 $(0,\,+\infty)$ 上
+        严格递减，又 $y'(+\infty)=\lambda>0$，从而 $y'>0$.
+        由 $y(0+)=0$ 和 $y'>0$ 可知方程取正根
+        \[
+        y' = \sqrt{\lambda^2 + \frac{2}{\gamma-1} y^{-(\gamma-1)}}. \tag{1}
+        \]
+
+        \textbf{缩放变换}\\
+        令
+        \[
+        t = \lambda^{\frac{\gamma+1}{\gamma-1}} x, \quad u(t) = \lambda^{\frac{2}{\gamma-1}} y(x).
+        \]
+        则
+        \[
+        \frac{\mathrm{d}t}{\mathrm{d}x} = \lambda^{\frac{\gamma+1}{\gamma-1}},\quad y = \lambda^{-\frac{2}{\gamma-1}}u,\quad y' = \lambda u'(t),\quad y'' = \lambda^{\frac{2\gamma}{\gamma-1}} u''(t).
+        \]
+        代入原方程得 $u''+u^{-\gamma}=0$. 
+
+        边界条件：$x\to0+$ 时 $y\to0$，故 $u(0)=0$；$x\to+\infty$ 时 $y'=\lambda u'(t)\to\lambda$，故 $u'(+\infty)=1$.
+        
+        因此 $u(t)$ 满足
+        \[
+        u''+u^{-\gamma}=0,\quad u(0)=0,\quad u'(+\infty)=1. \tag{2}
+        \]
+
+        \textbf{$u(t)$ 的积分表示}\\
+        对 (2) 类似地做首次积分得
+        \[
+        (u')^2 = 1 + \frac{2}{\gamma-1} u^{-(\gamma-1)},\quad u'>0,
+        \]
+        于是
+        \[
+        u' = \sqrt{1 + \frac{2}{\gamma-1} u^{-(\gamma-1)}}.
+        \]
+        分离变量并积分可得
+        \[
+        t = \int_0^u \frac{\mathrm{d}v}{\sqrt{1+\frac{2}{\gamma-1}v^{-(\gamma-1)}}}. \tag{3}
+        \]
+
+        \textbf{渐近行为}\\
+        \begin{enumerate}
+        \item[i.] 当 $u\to0+$ 时，被积函数 $\displaystyle\sim \sqrt{\frac{\gamma-1}{2}}\,v^{\frac{\gamma-1}{2}}$，所以
+        \[
+        t \sim \sqrt{\frac{\gamma-1}{2}}\int_0^u v^{\frac{\gamma-1}{2}}dv = \frac{2\sqrt{\gamma-1}}{(\gamma+1)\sqrt{2}}\, u^{\frac{\gamma+1}{2}}.
+        \]
+        因此
+        \[
+        u(t) \sim \left(\frac{\gamma+1}{\sqrt{2(\gamma-1)}}\,t\right)^{\frac{2}{\gamma+1}},\quad t\to0+.
+        \]
+        故存在常数 $\displaystyle c_0 = \left(\frac{\gamma+1}{\sqrt{2(\gamma-1)}}\right)^{\frac{2}{\gamma+1}} >0$ 使得
+        \[
+        \lim_{t\to0+}\frac{u(t)}{t^{\frac{2}{\gamma+1}}} = c_0. \tag{4}
+        \]
+
+        \item[ii.] 当 $u\to+\infty$ 时，被积函数 $\sim 1$，且积分
+        \[
+        \int_0^{+\infty}\left(\frac{1}{\sqrt{1+\frac{2}{\gamma-1}v^{-(\gamma-1)}}}-1\right)\mathrm{d}v
+        \]
+        收敛. (因为由 Taylor 公式可知，被积函数在 $v\to+\infty$ 时 $\sim -\frac{1}{\gamma-1}v^{-(\gamma-1)}$，$\gamma-1>0$.)
+        由 (3) 得
+        \[
+        t = u + C_1 + o(1),\quad C_1 = \int_0^\infty\left(\frac{1}{\sqrt{1+\frac{2}{\gamma-1}v^{-(\gamma-1)}}}-1\right)dv.
+        \]
+        故 $u(t) = t - C_1 + o(1)$，于是
+        \[
+        \lim_{t\to\infty}\frac{u(t)}{t} = 1. \tag{5}
+        \]
+        \end{enumerate}
+
+        \textbf{有界性}\\
+        定义
+        \[
+        g(t) = \begin{cases}
+        t^{\frac{2}{\gamma+1}}, & 0<t\le 1,\\
+        t, & t\ge 1.
+        \end{cases}
+        \]
+        由 (4) 和 (5) 知 $\frac{u(t)}{g(t)}$ 在 $(0,+\infty)$ 上连续，且
+        \[
+        \lim_{t\to 0+}\frac{u(t)}{g(t)} = c_0,\quad \lim_{t\to+\infty}\frac{u(t)}{g(t)} = 1.
+        \]
+        因此存在常数 $m>0$ 和 $M>0$ 使得 $\displaystyle m \le \frac{u(t)}{g(t)} \le M$ 对所有 $t>0$ 成立.
+        取 $\displaystyle C = \max\{M,\frac{1}{m}\}$，则
+        \[
+        \frac{1}{C} \le \frac{u(t)}{g(t)} \le C,\quad \forall t>0. \tag{6}
+        \]
+
+        \textbf{返回原变量}\\
+        由变换 $\displaystyle t = \lambda^{\frac{\gamma+1}{\gamma-1}}x$，$\displaystyle u(t) = \lambda^{\frac{2}{\gamma-1}}y(x)$，并注意 $\displaystyle \lambda^{\frac{1+\gamma}{1-\gamma}} = \lambda^{-\frac{\gamma+1}{\gamma-1}}$。
+        \begin{enumerate}
+        \item[i.] 当 $x \le \lambda^{\frac{1+\gamma}{1-\gamma}}$ 时, $t\le1$，此时
+        \[
+        f(x) = x^{\frac{2}{\gamma+1}} = \bigl(\lambda^{-\frac{\gamma+1}{\gamma-1}}t\bigr)^{\frac{2}{\gamma+1}} = \lambda^{-\frac{2}{\gamma-1}}t^{\frac{2}{\gamma+1}} = \lambda^{-\frac{2}{\gamma-1}}g(t).
+        \]
+        \item[ii.] 当 $x \ge \lambda^{\frac{1+\gamma}{1-\gamma}}$ 时, $t\ge1$，此时
+        \[
+        f(x) = \lambda x = \lambda\cdot\lambda^{-\frac{\gamma+1}{\gamma-1}}t = \lambda^{-\frac{2}{\gamma-1}}t = \lambda^{-\frac{2}{\gamma-1}}g(t).
+        \]
+        \end{enumerate}
+        综上，总有 $f(x) = \lambda^{-2/(\gamma-1)} g(t)$.
+        于是
+        \[
+        \frac{y(x)}{f(x)} = \frac{\lambda^{-2/(\gamma-1)}u(t)}{\lambda^{-2/(\gamma-1)}g(t)} = \frac{u(t)}{g(t)}.
+        \]
+        结合 (6) 即得
+        \[
+        \frac{1}{C} \le \frac{y(x)}{f(x)} \le C,\quad \forall x>0,
+        \]
+        其中 $C$ 仅依赖于 $\gamma$，与 $\lambda$ 和 $x$ 无关.
+    \end{solution}
+\end{enumerate}
+
+== 习题D ==
+
+利用分离变量法求解下列常微分方程:
+
+\begin{enumerate}
+    \item[1.]\(\displaystyle y^{\prime} = e^{y - x}, \quad y(0) = 0\).
+    \item[2.]\(\displaystyle y^{\prime} = y^{2}(x + 1), \quad y(0) = 2\).
+    \item[3.]\(\displaystyle\frac{\mathrm{d}y}{\mathrm{d}x} = y^{3}x e^{x^{2}}, \quad y(0) = 1\).
+    \item[4.]\(\displaystyle\frac{\mathrm{d}y}{\mathrm{d}t} = y^{2}e^{x}\sin (3x), \quad y(0) = 1\).
+    \item[5.]\(\displaystyle y^{\prime} = 2xy(1 + 2y), \quad y(0) = -1\).
+    \item[6.]\(\displaystyle \frac{\mathrm{d}x}{d\mathrm{d}t} = \ln (t)\sqrt{1 - x^{2}}, \quad x(1) = 0\).
+    \item[7.]\(\displaystyle y^{\prime} = 3x^{2}\left(y^{2} + 4\right), \quad y(0) = 0\).
+    \item[8.]\(\displaystyle y^{\prime} = -2x\tan (y), \quad y(0) = \frac{\pi}{2}\).
+\end{enumerate}
+\begin{solution}
+    \begin{enumerate}
+    \item[1.]\\
+    \[
+    \begin{aligned}
+    &y'=e^{y-x}\Rightarrow \frac{\mathrm{d}y}{e^y}=\frac{\mathrm{d}x}{e^x}\Rightarrow-e^{-y}=-e^{-x}+C\Rightarrow e^{-y}=e^{-x}-C.\\
+    &y(0)=0\Rightarrow C=0 \Rightarrow y=x.
+    \end{aligned}
+    \]
+
+    \item[2.]\\
+    \[
+    \begin{aligned}
+    &y'=y^2(x+1)\Rightarrow \frac{\mathrm{d}y}{y^2}=(x+1)\mathrm{d}x\Rightarrow -\frac{1}{y}=\frac{1}{2}x^2+x+C.\\
+    &y(0)=2\Rightarrow C=-\frac{1}{2} \Rightarrow y=-\frac{2}{x^2+2x-1}.
+    \end{aligned}
+    \]
+
+    \item[3.]\\
+    \[
+    \begin{aligned}
+    &\frac{\mathrm{d}y}{\mathrm{d}x}=y^3xe^{x^2}\Rightarrow\frac{\mathrm{d}y}{y^3}=xe^{x^2}\mathrm{d}x\Rightarrow -\frac{1}{2y^2}=\frac{1}{2}e^{x^2}+C.\\
+    &y(0)=1\Rightarrow C=-1\Rightarrow y=\frac{1}{\sqrt{2-e^{x^2}}}.
+    \end{aligned}
+    \]
+
+    \item[4.]\\
+    \[
+    \begin{aligned}
+    &\frac{\mathrm{d}y}{\mathrm{d}x}=y^2e^x\sin\left(3x\right)\Rightarrow \frac{\mathrm{d}y}{y^2}=e^x\sin\left(3x\right)\mathrm{d}x\Rightarrow -\frac{1}{y}=\frac{e^x\left(\sin{3x}-3\cos{3x}\right)}{10}+C.\\
+    &y(0)=1\Rightarrow C=-\frac{7}{10}\Rightarrow y=\frac{10}{7-e^x(\sin(3x)-3\cos(3x))}.
+    \end{aligned}
+    \]
+
+    \item[5.]\\
+    \[
+    \begin{aligned}
+    &y'=2xy(1+2y)\Rightarrow \frac{\mathrm{d}y}{y(1+2y)}=2x\mathrm{d}x\Rightarrow \ln\left|\frac{y}{2y+1}\right|=x^2+C.\\
+    &y(0)=-1\Rightarrow C=0\Rightarrow y=\frac{e^{x^2}}{1-2e^{x^2}}.
+    \end{aligned}
+    \]
+
+    \item[6.]\\
+    \[
+    \begin{aligned}
+    &\frac{\mathrm{d}x}{\mathrm{d}t}=\ln(t)\sqrt{1-x^2}\Rightarrow\frac{\mathrm{d}x}{\sqrt{1-x^2}}=\ln{t}\mathrm{d}t\Rightarrow \arcsin{x}=t\ln{t}-t+C.\\
+    &x(1)=0\Rightarrow C=1\Rightarrow x=\sin(t\ln{t}-t+1).
+    \end{aligned}
+    \]
+
+    \item[7.]\\
+    \[
+    \begin{aligned}
+    &y'=3x^2(y^2+4)\Rightarrow\frac{\mathrm{d}y}{y^2+4}=3x^2\mathrm{d}x\Rightarrow \frac{1}{2}\arctan\left(\frac{y}{2}\right)=x^3+C.\\
+    &y(0)=0\Rightarrow C=0\Rightarrow y=2\tan(2x^3).
+    \end{aligned}
+    \]
+
+    \item[8.]\\
+    \[
+    \begin{aligned}
+    &y'=-2x\tan{y}\Rightarrow \cot{y}\mathrm{d}y=-2x\mathrm{d}x\Rightarrow \ln\left|\sin{y}\right|=-x^2+C.\\
+    &y(0)=\frac{\pi}{2}\Rightarrow C=0\Rightarrow y=\arcsin\left(e^{-x^2}\right).
+    \end{aligned}
+    \]
+    \end{enumerate}
+\end{solution}
+
+== 习题E ==
+
+假设我们已经知道:不定积分 $\displaystyle\int e^{x^{2}}\mathrm{d}x$ 存在初等表示,
+当且仅当常微分方程 $\displaystyle p^{\prime}(x)+2x p(x) = 1$ 存在有理函数解.
+
+设 $\displaystyle p(x) = \frac{A(x)}{B(x)}$ 为既约分式.
+
+\begin{enumerate}
+    \item[1.]证明:若 $p(x)$ 满足常微分方程 $\displaystyle p^{\prime}(x) + 2x p(x) = 1$,
+    则多项式 $A(x)$ 的次数必须比多项式 $B(x)$ 的次数小1.
+    \item[2.]证明:若 $p(x)$ 满足常微分方程 $\displaystyle p^{\prime}(x) + 2x p(x) = 1$, 则 $B$ 整除 $A B^{\prime}$.
+    \item[3.]证明: $\displaystyle p^{\prime}(x) + 2x p(x) = 1$ 不存在有理函数解.
+\end{enumerate}
+\begin{solution}
+    \begin{enumerate}
+    \item[1.]
+    将 $\displaystyle p(x)=\frac{A(x)}{B(x)}$ 代入微分方程得到
+    \[
+    \frac{A'(x)B(x)-A(x)B'(x)}{B^2(x)}+2x\frac{A(x)}{B(x)}=1.
+    \]
+    即
+    \[
+    A'(x)B(x)-A(x)B'(x)+2xA(x)B(x)=B^2(x).
+    \]
+    即
+    \[
+    B(x)\left[A'(x)+2xA(x)-B(x)\right]=A(x)B'(x). \tag{1}
+    \]
+    设 $\deg A(x)=m,\,\deg B(x)=n$.\\
+    若 $m\geq n$，则由方程(1)可知 $B(x)$ 整除 $A(x)B'(x)$，又 $A(x),\,B(x)$ 互质，因此 $B(x)$ 整除 $B'(x)$.\\
+    但 $\deg B'(x)=n-1<n=\deg B(x)$，因此 $B'(x)=0$，即 $B(x)$ 为常数多项式，则 $p(x)=\frac{A(x)}{B}$，代回微分方程得到
+    \[
+    A'(x)+2xA(x)=B(x).
+    \]
+    若 $A(x)$ 不是常数多项式，则左侧多项式次数至少为1，但右边是常数，次数不大于1，矛盾；\\
+    若 $A(x)$ 为常数多项式，则方程化为
+    \[
+    2Ax=B
+    \]
+    其不可能对任意实数$x$都成立，也导致矛盾.\\
+    因此假设 $m\geq n$ 不成立，从而 $m<n$.\\
+    若 $m<n-1$，则方程(1)左侧次数为 $n+n=2n$，右侧次数为 $m+n-1$，二者不可能相等，矛盾.\\
+    因此只有可能是 $m=n-1$，即多项式 $A(x)$ 的次数必须必多项式 $B(x)$ 的次数小1. 
+
+    \item[2.]
+    由第一问中的方程(1)，即
+    \[
+    B(x)\left[A'(x)+2xA(x)-B(x)\right]=A(x)B'(x). 
+    \]
+    可知 $B(x)$ 整除 $A(x)B'(x)$.
+
+    \item[3.]
+    假设存在有理数解，则由第一问可知 $\deg A=\deg B-1$.\\
+    由第二问可知 $B(x)$ 整除 $A(x)B'(x)$，又 $A(x)$ 与 $B(x)$ 互质，因此 $B(x)$ 整除 $B'(x)$.\\
+    但是 $\deg B(x)=n>n-1=\deg B'(x)$，所以 $B'(x)=0$，即 $B(x)$ 为非零常数多项式.\\
+    而若 $B(x)$ 为非零常数多项式，则
+    \[
+    \deg A(x)=\deg B(x)-1=0-1=-1.
+    \]
+    而这不可能，因为多项式的次数要么是非负整数，要么是 $-\infty$，故不存在这样的有理函数解.
+    \end{enumerate}
+\end{solution}

@@ -1,0 +1,413 @@
+\setdisplaytitle{苏步青《微分几何》习题解答}
+\sethtmltitle{苏步青《微分几何》习题解答}
+\setcounter{section}{-1}
+\def\r{\boldsymbol{r}}
+\def\n{\boldsymbol{n}}
+\def\v{\boldsymbol{v}}
+
+== 前言 ==
+
+正文中的题号表示的是《微分几何学习指导》中的题号。
+
+===** 参考文献 ===
+\begin{references}
+    \bibitem[X1]{X1}
+        徐森林\ 等. 微分几何. 中国科学技术大学出版社, 2013.
+    \bibitem[X2]{X2}
+        徐森林\ 等. 微分几何学习指导. 中国科学技术大学出版社, 2014.
+    \bibitem[JH]{JH}
+        姜国英, 黄宣国. 微分几何一百例. 高等教育出版社, 2014.
+    \bibitem[dC]{dC}
+        M.P. do Carmo. \textit{Differential Geometry of Curves and Surfaces}. 
+        Dover Publications Inc., 2016.
+\end{references}
+
+== 曲线的性质 ==
+
+===** \S1 曲线\ 曲线的切向量\ 弧长 ===
+\begin{tabular}{ccccccc}
+    !1(2)&!1(3)&!2&!3&!4&!5&!6\\
+    1.1.1&1.1.2&1.1.4&例1.1.2--3&1.1.5&1.1.6&1.1.7
+\end{tabular}
+
+===** \S2 主法向量与从法向量\ 曲率与挠率 ===
+\begin{tabular}{cccccccc}
+    !2(1)&!2(2)&!2(3)&!2(4)&!3(1)&!3(2)&!4&!6\\
+    1.2.3&1.2.4&1.2.5&1.2.6&1.2.1&例1.2.3&1.2.8&1.2.7
+\end{tabular}
+
+===** \S3 Frenet标架 Frenet公式 ===
+\begin{tabular}{ccccccc}
+    !1&!2&!3&!5&!6&!7(1)&!7(2)\\
+    1.3.1&1.3.2&1.3.3&1.4.6&1.5.1&1.3.5&1.3.6--7
+\end{tabular}
+
+===** \S4 曲线在一点临近的性质 ===
+\begin{tabular}{cccc}
+    !3&!7&!8&!9\\
+    1.4.1&1.4.2&1.4.3(1)&1.4.3(2)
+\end{tabular}
+
+===** \S5 曲线论基本定理 ===
+\begin{tabular}{ccccc}
+    !2&!3(1)&!3(2)&!4&!5(1)\\
+    1.5.2&例1.3.5(1)&1.3.25&引理1.3.1&例1.3.5(2)\\
+    !5(2)&!6&!8&!9&!10\\
+    定理1.3.2&1.3.11&1.6.10&1.6.2&1.6.15
+\end{tabular}
+
+===** \S6 平面曲线的一些整体性质 ===
+\begin{tabular}{cccccc}
+    !1&!2&!3&!4&!5&!6\\
+    1.7.2&1.7.8&1.7.3&1.7.7&例1.6.1&1.7.4
+\end{tabular}
+
+===** \S7 空间曲线的整体性质 ===
+\begin{tabular}{cccc}
+    !1&!2&!3&!4\\
+    1.7.5&1.7.6&定理1.7.15&定理1.7.17
+\end{tabular}
+
+== 曲面的局部性质 ==
+
+=== 1.1 曲面的定义 ===
+\begin{tabular}{c}例2.1.3\end{tabular}
+
+=== 1.2 切向量\ 切平面 ===
+\begin{tabular}{cc}
+    !2&!3\\2.1.10&2.1.5
+\end{tabular}
+
+=== 1.3 法向量 ===
+\begin{tabular}{cc}
+    !1&!2\\2.1.8&2.1.9
+\end{tabular}
+
+=== 1.4 曲面的参数变换 ===
+\begin{tabular}{c}!2(1)\\2.1.7\end{tabular}
+
+=== 1.5 例 ===
+
+=== 1.6 单参数曲面族\ 平面族的包络面\ 可展曲面 ===
+\begin{tabular}{ccccccc}
+    !1(1)&!1(2)&!2&!3&!6&!7&!9\\
+    2.2.2&2.2.3&2.2.1&2.2.4&2.2.6&2.1.6&2.2.7
+\end{tabular}
+
+=== 2.1 曲面的第一基本形式 ===
+\begin{tabular}{ccccc}
+    !1&!2&!3&!4&!5\\
+    2.3.1&2.3.4&2.3.19&2.3.3&2.3.6\\
+    !6&!7&!8&!9&!10\\
+    2.3.8&2.3.5&2.3.7&2.3.9&2.3.2
+\end{tabular}
+
+=== 2.2 曲面的正交参数曲线网 ===
+\begin{tabular}{cc}!1&!2\\2.3.12&2.3.17\end{tabular}
+
+=== 2.3 等距对应\ 曲面的内蕴几何学 ===
+
+=== 2.4 共形对应 ===
+
+=== 2.5 曲面的第二基本形式 ===
+\begin{tabular}{cccc}!1&!2&!3&!4&!5\\
+    2.3.1&2.3.16&2.9.6&2.9.7&2.3.13或2.9.8\end{tabular}
+
+=== 3.1 省略和式记号的约定 ===
+
+=== 3.2 曲面上的活动标架\ 曲面的基本公式 ===
+\begin{tabular}{ccccc}
+    !1&!2&!3&!4&!5\\
+    2.4.1&注2.3.1&2.8.27&2.4.3&2.4.8
+\end{tabular}
+
+=== 3.3 Weingarten变换$W$ ===
+
+=== 3.4 曲面的共轭方向\ 渐近方向\ 渐近曲线 ===
+\begin{tabular}{cccccc}
+    !1&!2&!3&!4&!5&!6\\
+    2.4.4&2.4.5&2.4.6&2.4.7&2.4.9&2.4.10\\
+    !7&!8&!9&!10&!11\\
+    2.4.11&2.4.12&2.4.13&2.4.14&2.4.15
+\end{tabular}
+
+=== 4.1 曲面上曲线的法曲率 ===
+\begin{tabular}{cccc}
+    !1&!2&!3&!4\\2.5.1&2.5.2&2.5.4&2.5.3
+\end{tabular}
+
+=== 4.2 主方向\ 主曲率 ===
+\begin{tabular}{cc}!1&!3\\2.5.5&2.5.6\end{tabular}
+
+=== 4.3 Dupin标线 ===
+
+=== 4.4 曲率线 ===
+\begin{tabular}{ccc}!1&!2&!7\\2.5.7&2.5.8&2.5.9\end{tabular}
+
+=== 4.5 主曲率及曲率线的计算\ 总曲率\ 平均曲率 ===
+\begin{tabular}{ccccccc}
+    !1&!2&!3&!4&!6&!7&!9\\
+    2.5.10&2.6.2&2.6.4&2.6.9&2.6.5&2.6.8&2.5.14
+\end{tabular}
+
+=== 4.6 曲率线网 ===
+\begin{tabular}{cc}
+    !1&!2\\2.5.13&2.5.12
+\end{tabular}
+
+=== 4.7 曲面在一点邻近处的形状 ===
+\begin{tabular}{ccc}!3&!4&!5\\2.6.13&2.6.14&2.6.15\end{tabular}
+
+=== 4.8 曲面在一点邻近处的形状 ===
+\begin{tabular}{cc}!1&!2\\2.6.10&2.6.11\end{tabular}
+
+=== 4.9 总曲率、平均曲率满足某些性质的曲面 ===
+\begin{tabular}{ccccc}
+    !1&!2&!4&!5&!6&!7\\
+    2.6.6&2.5.19&2.7.9&2.7.12&2.7.13&2.7.7\\
+    !8&!9&!10&!11&!12\\
+    2.7.8&2.7.4&例2.7.9&2.7.3&2.7.2
+\end{tabular}
+\begin{itemize}
+    \item[9.] 可直接由5得出。
+    \item[11.] \cite{JH} 例61（pp.117--8）。
+    注意到这是等温坐标系且$\triangle\r=(6u-6u,6v-6v,6-6)=0$，
+    用\cite{JH} 例63（pp.119--20）或\cite{dC} 3-5 B.Proposition 2 (p.204)。
+\end{itemize}
+
+=== 5.1 曲面的基本方程 ===
+\begin{tabular}{ccccc}
+    !1&!2&!3&!4(1)&!4(2)--(4)\\2.9.1&2.9.2&2.9.3&例2.9.1&2.9.5\\
+    !5&!6&!7&!9&!10\\2.9.4&2.9.9&2.9.10&2.9.16&2.9.17
+\end{tabular}
+\begin{itemize}
+    \item[4.] (1) 记$\rho=\sqrt{E}=\sqrt{G}=\dfrac{1}{1+\frac{k}{4}(u^2+v^2)}$，
+    则$\rho_u=-\dfrac{k}{2}u\rho^2$，从而
+    \[\Big(\frac{\rho_u}{\rho}\Big)_u=-\frac{k}{2}(u\rho)_u
+    =-\frac{k}{2}(\rho+u\rho_u)=-\frac{k}{2}\Big(\rho-\frac{k}{2}u^2\rho^2\Big).\]
+    由此，\begin{align*}
+        K&=-\frac{1}{\rho^2}\bigg[\Big(\frac{\rho_u}{\rho}\Big)_u
+        +\Big(\frac{\rho_v}{\rho}\Big)_v\bigg]\\
+        &=\frac{k}{2\rho^2}\Big(\rho-\frac{k}{2}u^2\rho^2+\rho-\frac{k}{2}v^2\rho^2\Big)\\
+        &=k\bigg[\frac{1}{\rho}-\frac{k}{4}(u^2+v^2)\bigg]\\
+        &=k.
+    \end{align*}
+    (2) 记$\rho=\sqrt{E}=\sqrt{G}=a/v$，则
+    \[K=-\frac{1}{(a/v)^2}\bigg(\frac{-a/v^2}{a/v}\bigg)_v=-\frac{1}{a^2}.\]
+    (3) $\sqrt{E}=1$，$\sqrt{G}=e^{\frac{u}{a}}$，则
+    \[K=-e^{-\frac{u}{a}}\big(e^{\frac{u}{a}}\big)_{uu}=-\frac{1}{a^2}.\]
+    (4) $\sqrt{E}=1$，$\sqrt{G}=\ch\dfrac{u}{a}$，则
+    \[K=-\ch^{-1}\frac{u}{a}\Big(\ch\frac{u}{a}\Big)_{uu}=-\frac{1}{a^2}.\]
+
+    \item[8.] 球面$K>0$，柱面$K=0$，鞍面
+    \[K=\frac{z_{xx}z_{yy}-z_{xy}^2}{(1+z_x^2+z_y^2)^2}=\frac{-4}{(1+4(x^2+y^2))^2}<0.\]
+\end{itemize}
+
+=== 5.2 曲面论的基本定理 ===
+\begin{tabular}{ccc}!1&!2&!3\\2.9.11&2.9.12&2.9.13\end{tabular}
+
+=== 6.1 测地曲率向量\ 测地曲率 ===
+\begin{tabular}{c}2.8.1\end{tabular}
+
+=== 6.2 计算测地曲率的Liouville公式 ===
+\begin{tabular}{cccc}
+    !1&!2&!3&!4\\2.8.2&2.8.3&2.8.4&2.8.5
+\end{tabular}
+
+=== 6.3 测地线 ===
+\begin{tabular}{cccccc}
+    !1&!2&!3&!4&!5&!6\\2.8.10&2.8.11&2.8.9&2.8.7&2.8.8&2.8.12(1)(2)\\
+    !8&!9&!10&!12&!13&!14\\2.8.12(3)&2.8.13&2.8.6&2.8.15(1)&2.8.15(2)&2.8.16
+\end{tabular}
+
+=== 6.4 法坐标系\ 测地极坐标系\ 测地坐标系 ===
+\begin{tabular}{cc}!1&!2\\2.8.28&2.8.17\end{tabular}
+\begin{itemize}
+    \item[1.] 前者见\cite{dC} 4-6节 p.296；后者就是
+    \begin{align*}
+        A(r)=\int_0^rL(s)\,ds&=\int_0^r2\pi s-\frac{\pi}{3}s^3K+o(s^3)\,ds\\
+        &=\pi r^2-\frac{\pi}{12}r^4K+o(r^4).
+    \end{align*}
+\end{itemize}
+
+=== 6.5 应用 ===
+\begin{tabular}{ccccc}
+    !1&!2&!3&!4&!6\\2.8.23&2.8.24&2.8.25&2.8.20&2.9.18
+\end{tabular}
+
+=== 6.6 测地挠率 ===
+
+=== 6.7 Gauss--Bonnet公式 ===
+
+=== 7.1 向量沿曲面上一条曲线的平行移动\ 绝对微分 ===
+
+=== 7.2 绝对微分的运算性质 ===
+
+=== 7.3 自平行曲线 ===
+
+=== 7.4 向量绕闭曲线一周的平行移动\ 总曲率的又一种表示 ===
+
+=== 7.5 沿曲面上曲线的平行移动与欧式平面中平行移动的关系 ===
+
+== 曲面的整体性质 ==
+
+\begin{itemize}
+\item[1-3] 记题目所述的坐标区域为$U_1,U_2$.由于$U_1\cap U_2$是一个连通的坐标区域，
+从而可以在$U_1\cap U_2$上指定一个光滑单位法向量场$\n$，并且可以在$U_1$和$U_2$上分别延拓，
+即有一个$S$上整体定义的光滑单位法向量场，从而$S$可定向.
+
+\item[1-4] 必要性：由$S$可定向，$S$上存在使得转移Jacobi矩阵行列式恒正的光滑坐标卡覆盖.
+
+在任意的坐标卡的开集$U$上，取正向的单位法向量$\n$，
+即$\n=\frac{\r_u\times\r_v}{|\r_u\times\r_v|}$。
+整个曲面上$\n$的定义是一致的，原因是对任意和$U$相交的坐标卡的开集$V$，
+由于Jacobi矩阵行列式为正，$U,V$上的$\n$方向一样，从而相同.
+
+充分性：考虑两块相交的坐标区域并选取恰当的坐标系$(U,u,v)$和$(V,\bar{u},\bar{v})$.
+由$\n=\frac{\r_u\times \r_v}{|\r_u\times \r_v|}
+=\frac{\r_{\bar{u}}\times \r_{\bar{v}}}{|\r_{\bar{u}}\times \r_{\bar{v}}|}$可知，
+所有转移Jacobi矩阵行列式为正.
+
+\item[1-5] 如若不然，则在$V_1$上取定一个光滑单位法向量场$\n$.
+由于$W_1$坐标变换的Jacobi矩阵行列式为正且$S$可定向，故$\n$可延拓到$V_2$上，
+从而$\n$是一个整体定义的单位法向量场，则$W_2$上坐标变换的Jacobi矩阵为正，矛盾.故$S$不可定向.
+
+\item[1-6] 取坐标覆盖
+$$V_1:\begin{cases}u=x\\v=y\end{cases},x\in(0,3),\qquad
+V_2:\begin{cases}u=x\\v=y\end{cases},x\in(2,4],\quad
+\begin{cases}u=x+4\\v=1-y\end{cases},x\in[0,1),\quad$$
+\begin{tikzpicture}
+    \draw (0,0)to(4,0);\draw (0,1)to(4,1);
+    \foreach \i in{1,2,3} \draw (\i,0)to(\i,1);
+    \draw[->,>=stealth] (0,0)to(0,0.57); \draw (0,0.56)to(0,1);
+    \draw[->,>=stealth] (4,1)to(4,0.43); \draw (4,0.44)to(4,0);
+    \draw (1.5,1.2) node {$\overbrace{\qquad\qquad\qquad\qquad\ }$};
+    \draw (-0.5,-0.2) node {$\underbrace{\qquad\qquad\qquad\qquad\ }$};
+    \draw (3.5,-0.2) node {$\underbrace{\qquad\qquad\qquad\qquad\ }$};
+    \fill[white](-2,-0.3)rectangle(0,0);\fill[white](4,-0.3)rectangle(6,0);
+    \draw (1.5,1.5) node {$V_1$};
+    \draw (3.5,-0.5) node {$V_2$};
+    \draw (2.5,0.5) node {$W_1$};
+    \draw (0.5,0.5) node {$W_2$};
+    \draw[->,>=stealth] (4,0)to(4.5,0);
+    \draw[->,>=stealth] (0,1)to(0,1.5);
+    \draw (0,-0.125)to(0,0)to(-0.125,0);
+\end{tikzpicture}
+$W_1$中Jacobi为$1$，$W_2$中Jacobi为$-1$，使用1-5题的结论得到Möbius带是不可定向的.
+
+\item[2-1] 距离原点最远的点$K>0$（理由见下），由连续性，其某个邻域$T$内$K>0$，
+从而由Gauss--Bonnet公式，可定向的$S$不同胚于球面说明$\chi(S)\le0$，
+故$K$在$S$上的积分小于等于$0$，得出$S\backslash T$内存在点使得$K<0$.
+再由连续性及介值原理得到存在点使得$K=0$.
+
+附注：由于$S$是紧集，存在距离原点最远的点$P$，设距离为$r$。
+那么，$P$属于球面$S^2(r)$，且$S^2(r)$将曲面$S$包在了里面；
+从而，过$P$的法截线$C$比过$P$的圆周$S^1(r)$向内弯曲得更快，
+得到$k_n(C) \ge k_n(S^1(r))$。于是$K_S(P) \ge K_{S^2(r)}(P)=1/r^2$。
+
+\begin{tikzpicture}
+    \fill[lightgray,fill opacity=0.3] 
+    (1.2,0) arc (0:180:1.2 and 1.5) to (-1.2,0);
+    \draw[dashed] (1.5,0) arc (0:180:1.5);
+    \draw (1.2,0) arc (0:180:1.2 and 1.5);
+    \draw (0,0) node {$O$};
+    \draw (0,1.7) node {$P$};
+    \draw (1.96,0.2) node {$S^1(r)$};
+    \draw (0.96,0.2) node {$C$};
+    \filldraw (0,1.5) circle (0.03)
+\end{tikzpicture}
+
+\item[2-2](2) $S$同胚于球面，所以为$2$.
+
+\item[2-3] 进行如下的剖分，即可得到$\chi(T^2)=1-3+2=0$.
+\begin{tikzpicture}[scale=1.2]
+    \draw[->,>=stealth] (-1,-1)to(0.02,0.02); \draw (0,0)to(1,1);
+    \draw[->,>=stealth,red] (-1,-1)to(-1,0.02); \draw[red] (-1,0)to(-1,1);
+    \draw[->,>=stealth,red] (1,-1)to(1,0.02); \draw[red] (1,0)to(1,1);
+    \draw[->,>=stealth,blue] (-1,1)to(0.02,1); \draw[blue] (0,1)to(1,1);
+    \draw[->,>=stealth,blue] (-1,-1)to(0.02,-1); \draw[blue] (0,-1)to(1,-1);
+    \fill[fill=violet](1,1)circle(0.05); \fill[fill=violet](1,-1)circle(0.05);
+    \fill[fill=violet](-1,1)circle(0.05); \fill[fill=violet](-1,-1)circle(0.05);
+\end{tikzpicture}
+
+\item[2-5] 如果不然，则代入Gauss--Bonnet公式，由于光滑测地线（测地曲率为$0$）
+以及单连通（欧拉数为$1$）可计算得曲率的积分为$2\pi$，与曲率为负矛盾.
+
+\item[2-6] 由于$K>0$，故Gauss映射$f:M\to S^2$是局部单的，从而$S^2$的每个点原象个数相等.
+
+由于$M$的欧拉数和$S^2$的欧拉数为$2$，故是1-1的.
+
+(建议了解微分拓扑中的正则点、正则值以及代数拓扑中覆叠空间的知识.)
+
+\item[3-1](4) $(0,0)$是$x^2-y^2=-2xy=0$的孤立零点，
+取$$C=(\cos t,\sin t),t\in[0,2\pi),
+\quad a(t)=\cos^2t-\sin^2t=\cos 2t,\quad b(t)=-2\cos t\sin t=-\sin 2t,$$指标为
+$$\frac{1}{2\pi}\oint_C \cos 2t\cdot(-2\cos 2t)-(-\sin 2t)\cdot(-2\sin 2t)\,dt=-2.$$
+
+(5) $(0,0)$是$x^3-3xy^2=y^3-3x^2y=0$的孤立零点，
+取$$C=(\cos t,\sin t),t\in[0,2\pi),
+\quad a(t)=4\cos^3t-3\cos t=\cos 3t,\quad b(t)=4\sin^3t-3\sin t=-\sin 3t,$$指标为
+$$\frac{1}{2\pi}\oint_C \cos 3t\cdot(-3\cos 3t)-(-\sin 3t)\cdot(-3\sin 3t)\,dt=-3.$$
+
+\item[3-2] 必要性：由Poincaré定理知欧拉数为$0$，从而同胚于环面.
+
+充分性：由于维数小于等于$3$时，同胚的流形必为微分同胚的，设$S$通过$f$微分同胚于环面.
+如图15所示，环面上存在一个无奇点的可微分向量场$X$，则$(f^{-1})_*X$即所求.
+
+\item[3-3] 取$\mathbb{R}^2$上的向量场$(\sin \pi x,\sin \pi y)$，孤立奇点为格点.
+
+\item[3-4] 当$\v$绕$C$走一圈时，$C$的单位切向量转了一圈，故$\v$同样转了一圈，
+否则由介值原理，在某处$\v$与切向量同向。于是$C$的两个区域中都有$\v$的奇点。
+\begin{tikzpicture}
+    \draw[->,>=stealth] (0,0)to(4,0); \draw[dashed] (0,1)to(4,1);
+    \draw[->,>=stealth] (0,0)to(0,1.5);
+    \draw (0,0.7)..controls(0.6,0.7)..(1.6,1);
+    \draw (1.6,0)..controls(3,0.6)..(4,0.7);
+    \draw[thick] (0,0.3)..controls(3,1)and(2,0)..(4,0.3);
+    \draw (-0.15,0) node {$0$};
+    \draw (-0.25,1) node {$2\pi$};
+    \draw (4.23,0.7) node {$C$};
+    \draw (4.23,0.3) node {$\v$};
+\end{tikzpicture}
+
+有一个暴力的证明：假设结论不成立，
+则我们可以在二维单位圆盘$\mathbb{D}^2$上得到无奇点
+且$\v$在边界满足切向值和各阶导数为$0$，径向值为某个常数$V$，各阶导为$0$的向量场，
+从而把这个圆盘和每点向量场大小相同且方向恰好相反的圆盘沿边界对粘，
+就得到了一个无奇点的拓扑球面，这显然是矛盾的.但这个证明需要滥用单位分解定理.
+
+用到的一个引理是如果存在光滑函数$f:[a,b]\to\mathbb{R}_+$，
+则存在光滑函数$g:[a,b]\to\mathbb{R}_+$，使得$f(a)=g(a),f(b)=g(b)$，
+$a$点$f-g$各阶导数为$0$，$b$点$g$各阶导数为$0$.该引理可以用单位分解定理证明.
+
+\item[4-1] 题目应增加条件``只考虑$H>0$的情况''，否则不对.
+
+由$S$无脐点，$K>0,H>0$可知，$k_1>k_2>0$且$k_1,k_2$处处可导.
+如若不然，则有点$p$满足题意.
+由$p$点处$$\frac{\partial(k_1k_2)}{\partial u}
+=\frac{\partial(k_1+k_2)}{\partial u}
+=\frac{\partial(k_1k_2)}{\partial v}
+=\frac{\partial (k_1+k_2)}{\partial v}=0,$$
+故$p$点处$$\frac{\partial k_1}{\partial u}
+=\frac{\partial k_2}{\partial u}
+=\frac{\partial k_1}{\partial v}
+=\frac{\partial k_2}{\partial v}=0.$$
+
+由题意可知，在$p$点处，$\forall\,(\mu,\lambda)\ne(0,0)$，
+总有$$\frac{\partial^2(k_1+k_2)}{(\partial(\mu u+\lambda v))^2}<0,
+\frac{\partial^2(k_1k_2)}{(\partial(\mu u+\lambda v))^2}>0.$$
+
+从而$$\frac{\partial^2k_1}{(\partial(\mu u+\lambda v))^2}
++\frac{\partial^2k_2}{(\partial(\mu u+\lambda v))^2}<0,\tag*{$(*)$}$$
+
+$$k_2\frac{\partial^2k_1}{(\partial(\mu u+\lambda v))^2}
++k_1\frac{\partial^2k_2}{(\partial(\mu u+\lambda v))^2}>0.\tag*{$(**)$}$$
+
+$k_1\times(*)-(**)$得到在$p$点处$k_1$极大，
+$(**)-k_2\times(*)$得到在$p$点处$k_2$极小，从而$p$为脐点，矛盾.
+
+\item[4-2] 反例为平面.
+
+\item[5-1] 极小曲面$H=0$即$k_1+k_2=0$，于是$K=k_1k_2\le0$；
+但是紧致曲面上存在点$K>0$，矛盾。
+\end{itemize}

@@ -1,0 +1,5 @@
+一、习题1.3.7\\
+二、习题2.1.11\\
+三、习题2.3.10\\
+四、习题2.2.12\\
+五、$m_\alpha(x):=(1+4\pi^2\vert x\vert ^2)^{-\alpha},\alpha\in(0,1)$，求$m_\alpha$的Fourier变换，并以此证明$m_\alpha(x)$是一个$L^p-$Fourier乘子.

@@ -1,0 +1,315 @@
+\setdisplaytitle{试卷：代数几何进阶}
+\sethtmltitle{试卷：代数几何进阶}
+
+\section{2025秋季(周杨)}
+
+\section*{第一题（共 30 分）}
+We work over an algebraically closed field. Let $C$ be a connected smooth
+projective curve of genus $g$. Let $f : C \to \mathbb{P}^n$ be an embedding of degree $d$,
+thus $f_*([C])$ is $d$ times the generator of $A_1(\mathbb{P}^n)$, where $[C]$ is the fundamental
+class of $C$.
+\begin{enumerate}[label=\arabic*.]
+\item Compute the degree of $f_*N$, where $N$ is the normal bundle of $f(C)$.
+\item Let $\pi : X \to \mathbb{P}^n$ be the blow up along $f(C)$ and let $E$ be the exceptional
+divisor. Compute $\int_X E^n$.
+\end{enumerate}
+
+\subsection*{Solutions}
+We identify $C$ with its image $f(C)$.
+\begin{enumerate}[label=\arabic*.]
+\item The degree of a vector bundle over a proper curve is the degree of its first Chern class,
+which is additive for short exact sequences. We have a short exact sequence
+\[
+0 \to T_C \to f^*T_{\mathbb{P}^n} \to N \to 0.
+\]
+Taking first Chern classes we have
+\[
+c_1(f^*T_{\mathbb{P}^n}) = c_1(T_C) + c_1(N).
+\]
+Note that $c_1(f^*T_{\mathbb{P}^n})=(n+1)H$, where $H$ is the class of a hyperplane.
+Hence by the projection formula
+\[
+\int_C c_1(f^*T_{\mathbb{P}^n})
+= \int_{\mathbb{P}^n} (n+1)H \cdot f_*([C]) = (n+1)d.
+\]
+Moreover,
+\[
+\int_C c_1(T_C)=2-2g.
+\]
+Hence
+\[
+\deg(N)=(n+1)d-2+2g.
+\]
+
+\item Note that $E \cong \mathbb{P}(N)$ with projection $\pi:\mathbb{P}(N)\to C$, and
+$\mathcal{O}(E)|_E$ is the relative $\mathcal{O}_{\mathbb{P}(N)}(-1)$.
+Let $\xi=c_1(\mathcal{O}_{\mathbb{P}(N)}(1))$, then we have
+\[
+\xi^{n-1} + \pi^*c_1(N)\cdot \xi^{n-2}=0,
+\]
+since $c_2(N)=c_3(N)=\cdots=0$. We have
+\begin{align*}
+\int_X E^n
+&=\int_X \bigl(c_1(\mathcal{O}(E))\bigr)^{n-1}\cdot E \\
+&=\int_E \bigl(c_1(\mathcal{O}(E)|_E)\bigr)^{n-1} \\
+&=\int_E (-1)^n\, \pi^*(c_1(N))\cdot \xi^{n-2}.
+\end{align*}
+Note that $\pi_*(\xi^{n-2})=[C]$. Hence by the projection formula
+\[
+\int_X E^n = \int_C (-1)^n c_1(N) = (-1)^n\bigl((n+1)d-2+2g\bigr).
+\]
+\end{enumerate}
+
+\bigskip
+
+\section*{第二题（共 30 分）}
+We work over an algebraically closed field. Let $(x_0,\ldots,x_3)$ be the homogeneous coordinates on
+$\mathbb{P}^3$. Let
+\begin{itemize}
+\item $p\in\mathbb{P}^3$ be a closed point;
+\item $H_i\subset\mathbb{P}^3$ be the line defined by $x_i=0$, $i=0,\ldots,3$;
+\item $Z=H_0\cup H_1\cup H_2\cup H_3$.
+\end{itemize}
+Let $\iota_p,\iota_{H_i},\iota_Z$ be their inclusion morphisms into $\mathbb{P}^3$.
+\begin{enumerate}[label=\arabic*.]
+\item Compute $\mathrm{ch}(\iota_{p,*}(\mathcal{O}_p))$.
+\item Compute $\mathrm{ch}(\iota_{H_0,*}(\mathcal{O}_{H_0}))$.
+\item Compute $\mathrm{ch}(\iota_{Z,*}(\mathcal{O}_Z))$.
+\end{enumerate}
+
+\subsection*{Solutions}
+\begin{enumerate}[label=\arabic*.]
+\item By the Grothendieck--Riemann--Roch theorem, let $N_p$ be the normal ``bundle'' of $p$, then
+\[
+\mathrm{ch}(\iota_{p,*}(\mathcal{O}_p))
+=\iota_{p,*}\bigl(\mathrm{ch}(\mathcal{O}_p)\cdot \mathrm{Td}(N_p)^{-1}\bigr)
+=\iota_{p,*}(1\cdot 1)=[p].
+\]
+
+\item Let $H$ be the class of a hyperplane. Then
+\[
+\mathrm{ch}(\mathcal{O}_{\mathbb{P}^3}(-1))=e^{-H}.
+\]
+We have a resolution
+\[
+0\to \mathcal{O}_{\mathbb{P}^3}(-1)\to \mathcal{O}_{\mathbb{P}^3}\to \iota_{H_0,*}(\mathcal{O}_{H_0})\to 0.
+\]
+Thus in $K$-theory,
+\[
+\iota_{H_0,*}(\mathcal{O}_{H_0})=\mathcal{O}_{\mathbb{P}^3}-\mathcal{O}_{\mathbb{P}^3}(-1).
+\]
+Since $\mathrm{ch}(\cdot)$ is additive for $K$-theory classes,
+\[
+\mathrm{ch}(\iota_{H_0,*}(\mathcal{O}_{H_0}))=1-e^{-H}.
+\]
+
+\item Similarly, from the short exact sequence
+\[
+0\to \mathcal{O}_{\mathbb{P}^3}(-4)\to \mathcal{O}_{\mathbb{P}^3}\to \iota_{Z,*}(\mathcal{O}_Z)\to 0,
+\]
+we have
+\[
+\mathrm{ch}(\iota_{Z,*}(\mathcal{O}_Z))=1-e^{-4H}.
+\]
+\end{enumerate}
+
+\bigskip
+
+\section*{第三题（共 40 分）}
+We work over an algebraically closed field $k$. Consider the following moduli stack.
+For a scheme $S$, an object $\xi$ over $S$ is a pair
+\[
+\xi=(E,\phi)
+\]
+where $E$ is a vector bundle of rank $2$ over $S$ and
+\[
+\phi=(\phi_1,\ldots,\phi_4)\in H^0(S,E^{\oplus 4})
+\]
+such whenever we have a local trivialization $\sigma:E|_U\simeq \mathcal{O}_U^{\oplus 2}$,
+all the $2\times 2$ minors of the $2\times 4$ matrix $\sigma(\phi)$ (with entries in $H^0(U,\mathcal{O}_U)$) vanish.
+
+Given another object $\xi'=(E',\phi')$ over $S'$ and a morphism $f:S'\to S$,
+an arrow $\theta:\xi'\to \xi$ lifting $f$ is a pair $\theta=(f,g)$, where $g:E'\to f^*E$
+is an isomorphism of vector bundles such that $g(\phi')=f^*\phi$.
+
+Now fix $\xi^\circ=(k^2,\vec{0}=(0,0,0,0))$ over $\mathrm{Spec}\,k$.
+In this problem we study the deformations of $\xi^\circ$. Let $\mathcal{C}$ be the category of Artin local $k$-algebras.
+\begin{enumerate}[label=\arabic*.]
+\item Write down one precise definition of the (not-crude) functor $F:\mathcal{C}\to \mathrm{Set}$ of deformations of $\xi^\circ$.
+\item Compute the (dimension of) the Zariski tangent space $t_F$.
+\item Find an obstruction theory for the moduli problem and find some deformation of $\xi^\circ$ whose higher order deformation is obstructed.
+\item Determine if the functor has a versal/miniversal/universal deformation. And briefly explain.
+\end{enumerate}
+
+\subsection*{Solutions}
+For any ring $R$, we denote by $R^{m\times n}$ the set of all $m\times n$ matrices with entries in $R$.
+\begin{enumerate}[label=\arabic*.]
+\item For $(A,\mathfrak{m}_A)\in \mathcal{C}$, the set $F(A)$ is
+\[
+\Bigl\{X\in A^{2\times 4}\ \big|\ \text{all }2\times 2\text{ minors of }X\text{ vanish, and }X\equiv 0\!\!\!\pmod{\mathfrak{m}_A}\Bigr\}\Big/\sim,
+\]
+where $X\sim X'$ iff there exists $T\in A^{2\times 2}$ such that
+\[
+T\equiv I_2\pmod{\mathfrak{m}_A}
+\quad\text{and}\quad
+TX=X',
+\]
+and $I_2$ is the identity matrix of size $2$.
+
+For a map $A\to A'$, the map $F(A)\to F(A')$ is the obvious induced map.
+
+Or equivalently, an element of $F(A)$ is represented by $(M,\phi,\kappa)$, where
+$M$ is a free $A$-module of rank $2$, $\phi\in M^{\oplus 4}$ satisfies the vanishing-minors-condition
+for any $A$-isomorphism $M\simeq A^{\oplus 2}$, and $\kappa:M\otimes_A k\to k^2$ is a $k$-linear isomorphism.
+Two such triples $(M,\phi,\kappa)$ and $(M',\phi',\kappa')$ represent the same element iff there exists an isomorphism
+$\eta:M\to M'$ of $A$-modules making the diagram commute:
+\[
+\begin{tikzcd}
+M\otimes_A k \arrow[r,"\eta\otimes 1_k"] \arrow[d,"\kappa"'] & M'\otimes_A k \arrow[d,"\kappa'"] \\
+k^2 \arrow[r,equal] & k^2
+\end{tikzcd}
+\]
+
+\item Let $D=k[\epsilon]$ with $\epsilon^2=0$ be the dual numbers. Using the first description above,
+an element of $F(D)$ is uniquely represented by
+\[
+X=\epsilon Y,
+\]
+where $Y\in k^{2\times 4}$ is arbitrary. It is straightforward to check that the $k$-linear structure is just the standard one on $k^{2\times 4}$.
+Hence
+\[
+\dim t_F = 8.
+\]
+
+\item Let
+\[
+0\to J\to A'\to A\to 0
+\]
+be an extension of the Artin local $k$-algebra $(A,\mathfrak{m}_A)$ such that $\mathfrak{m}_A J=0$.
+Given an object over $A$ represented by $X=(a_{ij})\in A^{2\times 4}$, pick any lift
+$X'=(a'_{ij})\in (A')^{2\times 4}$. Then the $6$-tuple
+\[
+\left(\det
+\begin{pmatrix}
+a'_{1i} & a'_{1j}\\
+a'_{2i} & a'_{2j}
+\end{pmatrix}\right)_{1\le i<j\le 4}
+\in J^{\oplus 6}
+\]
+is an element in $J^{\oplus 6}$. Different choices of the lift give the same element,
+since the partial derivatives of the $2\times 2$-minors (as polynomials in the entries) vanish at the zero matrix.
+This defines the obstruction class, whose vanishing is equivalent to the existence of a lift to an object over $A'$.
+Naturality is obvious, thus $k^{\oplus 6}$ together with this assignment is an obstruction theory.
+
+To find an obstructed deformation, let $A=k[t]/(t^2)$ and $A'=k[t]/(t^3)$. Take
+\[
+X=
+\begin{pmatrix}
+t & 0 & 0 & 0\\
+0 & t & 0 & 0
+\end{pmatrix}.
+\]
+Then the obstruction class is the class of $(t^2,0,\ldots,0)$ in $\bigl((t^2)/(t^3)\bigr)^{\oplus 6}$.
+
+\item It has a miniversal deformation but no universal deformation.
+
+One approach is to write down a miniversal deformation directly. The base of the miniversal deformation is
+\[
+R = k\bigl[\bigl[\{x_{ij}\}_{1\le i\le 2,\,1\le j\le 4}\bigr]\bigr]\Big/\bigl(\text{all the }2\times 2\text{-minors}\bigr),
+\]
+and the universal family is given by (the formal completion of) the ``tautological'' matrix
+\[
+X=
+\begin{pmatrix}
+x_{11} & x_{12} & x_{13} & x_{14}\\
+x_{21} & x_{22} & x_{23} & x_{24}
+\end{pmatrix}.
+\]
+
+\begin{itemize}
+\item We verify that the map $h_R\to F$ induced by the universal family is surjective.
+Given any $X_A\in A^{2\times 4}$ representing an element in $F(A)$, write $X_A=(a_{ij})$.
+Then along the map $R\to A$ sending $x_{ij}\mapsto a_{ij}$, the universal family pulls back to the given one.
+
+\item We verify that it is strongly surjective. Given an extension
+\[
+0\to J\to A'\to A\to 0
+\]
+as above, given
+\begin{itemize}
+\item a family $X_A\in A^{2\times 4}$,
+\item a family $X_{A'}\in (A')^{2\times 4}$,
+\item a map $\varphi:R\to A$,
+\item a matrix $T\in A^{2\times 2}$, $T\equiv I_2$,
+\end{itemize}
+such that $\varphi(X)=TX_A$ and $X_{A'}\equiv X_A\ (\mathrm{mod}\ J)$.
+We need to lift $\varphi$ to $\varphi':R\to A'$ and find a matrix $T'\in (A')^{2\times 2}$ such that
+$T'\equiv I_2$ and $\varphi'(X)=T'X_{A'}$.
+To do this, find any lift $T'$ of $T$ and define $\varphi'$ by sending $x_{ij}$ to the $(i,j)$-entry of $T'X_{A'}$.
+
+\item It is immediate that $h_R(D)\to F(D)$ is an isomorphism.
+\end{itemize}
+
+It does not have a universal family. A miniversal family is unique up to (possibly non-unique) isomorphism.
+Hence it suffices to show that the miniversal family is not universal. To see this, take $A=k[t]/(t^3)$, then
+\[
+\begin{pmatrix}
+1+t & 0\\
+0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+t+t^2 & 0 & 0 & 0\\
+0 & 0 & 0 & 0
+\end{pmatrix}
+=
+\begin{pmatrix}
+t+2t^2 & 0 & 0 & 0\\
+0 & 0 & 0 & 0
+\end{pmatrix}.
+\]
+Hence, the two maps $R\to A$ sending $x_{11}$ to $t+t^2$ and to $t+2t^2$ (and other $x_{ij}$ to $0$) induce the same element in $F(A)$.
+Hence it is not universal.
+
+Another approach is to use Schlessinger's criterion. As in many deformation problems, given an object $\xi$ over $A$ the set
+\[
+\frac{\{\xi'\mid \xi'\text{ is a lift of }\xi\text{ to an object over }A'\}}
+{\{\text{isomorphisms of }\xi'\text{ which is identity on }\xi\}}
+\]
+is a pseudo-torsor over $t_F$. Thus one can apply Schlessinger's criterion to show that a miniversal family exists.
+To show that it is not universal, it suffices to show that there is an automorphism of $\xi$ that
+\begin{itemize}
+\item restricts to identity over $k=A/\mathfrak{m}_A$, and
+\item does not lift to an automorphism of $\xi'$.
+\end{itemize}
+Let $A=k[t]/(t^2)$ and $A'=k[t]/(t^3)$. Let $\xi$ be the object represented by
+\[
+\begin{pmatrix}
+t & 0 & 0 & 0\\
+0 & 0 & 0 & 0
+\end{pmatrix}.
+\]
+An automorphism of $\xi$ restricting to identity on $k$ is $I_2+tB$, for arbitrary $B\in k^{2\times 2}$.
+However, if we take $B=\begin{pmatrix}1&0\\0&0\end{pmatrix}$, then it does not lift to an automorphism of the object $\xi'$
+represented by
+\[
+X_{A'}=
+\begin{pmatrix}
+t+t^2 & 0 & 0 & 0\\
+0 & 0 & 0 & 0
+\end{pmatrix},
+\]
+since for any $C\in k^{2\times 2}$, we always have
+\[
+(I+tB+t^2C)X_{A'}=
+\begin{pmatrix}
+t+2t^2 & 0 & 0 & 0\\
+0 & 0 & 0 & 0
+\end{pmatrix}
+\ne X_{A'}.
+\]
+
+\medskip
+\textbf{[Note:]} We are actually describing the stack $[Z/GL(2,k)]$, where
+$Z\subset \mathbb{A}^{2\times 4}$ is the space of $2\times 4$ matrices with rank at most $1$.
+For more on formal moduli in the context of stacks, see Alper's \emph{Stacks and Moduli}.
+\end{enumerate}

@@ -1,0 +1,177 @@
+\setdisplaytitle{试卷：微分流形(H)}
+\sethtmltitle{试卷：微分流形(H)}
+
+== 2025--2026秋季学期东瑜昕《微分流形》（H）期末试题(12.22) ==
+（注：这是研究生期末试题）
+\begin{itemize}
+    \item[1.]叙述光滑流形的定义,说明$S^2\times\mathbb{R}^k$是$2+k$维光滑流形.
+    \item[2.]设$f:\mathbb{R}^n\to\mathbb{R}^k$是光滑映射,定义$f$的图像为\[\Gamma(f)=\{(x,y)\in\mathbb{R}^n\times\mathbb{R}^k:y=f(x)\}.\]证明$\Gamma(f)$是$\mathbb{R}^{n+k}$的$n$维光滑子流形.
+    \item[3.]设$M$和$N$分别是$m$维和$n$维的$C^\infty$-微分流形, $F:M\to N$是 光滑映照.对于$p\in M,q=F(p)\in N$,设二者的局部坐标系分别是$(U,x^i),(V,y^\alpha)$,它们分别给出了$T_p^*M$和$T_q^*N$的自然基$\{\operatorname{d} x^i\}$和$\{\operatorname{d} y^\alpha\}$.求拉回映射\[F^*:T_q^*N\to T_p^*M\]在该基下的矩阵表示,并证明,当$F$是微分同胚时, $F^*$是线性同构.
+    \item[4.]设映照$f:\mathbb{R}^2\to\mathbb{R}^2$的表达式为$y_1=x_1\textup{e}^{x_2}+x_2,y_2=x_1\textup{e}^{x_2}-3x_2$.证明$f$是光滑微分同胚,并写出$f$在欧氏空间的自然基底下$f$诱导的切映射$f_*$的矩阵表示.
+    \item[5.]
+    \begin{enumerate}
+        \item[(1)]设$V$是$n$维向量空间.给出空间$\Lambda^k(V^*)$的基和维数.
+        \item[(2)]设$\omega\in\Lambda^r(V^*),\sigma\in\Lambda^s(V^*)$.证明$\omega\wedge\sigma=(-1)^{rs}\sigma\wedge\omega$.
+    \end{enumerate}
+    \item[6.]
+    \begin{enumerate}
+        \item[(1)]叙述Frobenius定理.
+        \item[(2)]设$X,Y$是光滑流形$M$上的光滑切向量场,并且有局部表示\[X=\sum_iX^i\frac{\partial}{\partial x^i},Y=\sum_iY^i\frac{\partial}{\partial x^i}.\]求Lie括号$[X,Y]$在自然基下的表示.
+    \end{enumerate}
+    \item[7.]证明紧子流形一定是正则子流形.
+    \item[8.]
+    \begin{enumerate}
+        \item[(1)]叙述定向流形上外微分形式的积分的定义,并证明该定义与与单位分解的选择无关.
+        \item[(2)]请叙述Stokes定理.
+    \end{enumerate}
+\end{itemize}
+
+== 2025--2026秋季学期东瑜昕《微分流形》（H）期末试题(12.22) ==
+（注：这是本科生期末试题）
+\begin{itemize}
+    \item[1.]
+    \begin{enumerate}
+        \item[(1)]请叙述光滑流形定义.
+        \item[(2)]设$M$, $N$分别是$m, n$维光滑流形. 请描述$M \times N$上的微分结构, 并说明$M \times N$是$m+n$维光滑流形.
+    \end{enumerate}
+    
+    \item[2.]设$F: M \rightarrow N$ 是光滑流形之间的光滑映照。请证明$F$是光滑同胚的充分必要条件是$F$是一对一的, 并且对于任意的$p \in M$, 切映照$F_{*p}: T_{p} M \rightarrow T_{F(p)} N$是线性同构.
+    
+    \item[3.]
+    \begin{enumerate}
+        \item[(1)]请叙述Frobenius定理.
+        \item[(2)]请叙述嵌入子流形的定义.
+    \end{enumerate}
+    
+    \item[4.]设$X, Y$ 是光滑流形$M$上的光滑切向量场, 并且有局部表示$X = \sum_i \xi^i \partial/\partial x^i, Y = \sum_j \eta^j \partial/\partial x^j$. 请求出Lie括号$[X, Y]$在自然基下的表示.
+    
+    \item[5.]设$V$为有限维实线性空间, $\Phi \in \Lambda^r(V^*), \Psi \in \Lambda^s(V^*)$. 请证明$\Phi \wedge \Psi = (-1)^{rs} \Psi \wedge \Phi$.
+    
+    \item[6.]设$V$为有限维实线性空间, $\Phi \in V^0_r$. 证明$\Phi$是反称的当且仅当$\mathcal{A}_r(\Phi) = \Phi$.
+    
+    \item[7.]设$M$为$n$维光滑流形, $\omega$为$M$上一阶微分形式, $X, Y$为$M$上光滑向量场. 请证明:
+    \begin{center}
+        $\mathrm{d}\omega(X, Y) = X\omega(Y)-Y\omega(X)-\omega([X, Y])$
+    \end{center}
+    
+    \item[8.]
+    \begin{enumerate}
+        \item[(1)]请叙述微分流形上微分形式的积分的定义, 并说明其与单位分解的选择无关;
+        \item[(2)]请叙述Stokes定理.
+    \end{enumerate}
+\end{itemize}
+
+== 2024--2025秋季学期东瑜昕《微分流形》（H）期末试题(12.26) ==
+（注：这是研究生期末试题）
+\begin{itemize}
+    \item[1.]
+    \begin{enumerate}
+        \item[(1)]请叙述微分流形定义。
+        \item[(2)]证明 $\mathrm{GL}(n,\mathbb{R})$是光滑流形，给出维数.
+    \end{enumerate}
+    \item[2.]设若 $M$ 和 $N$ 分别是 $m$ 维和 $n$ 维的 $C^{\infty}$-微分流形, 
+$F: M \rightarrow N$ 是 $C^{\infty}$-微分流形之间的光滑映照。
+对于 $p \in M$ 以及 $q=F(p) \in N$, $F$ 自然地确定了一个切映照 $F_{*p}: T_{p} M \rightarrow T_{q} N$.
+如果 $p$ 处有局部坐标 $\left(U, x^{i}\right)$, $q$ 处有局部坐标 $\left(V, y^{\alpha}\right)$，
+它们分别给出了 $T_{p} M$ 和 $T_{q} N$ 的自然基 $\big\{\big(\frac{\partial}{\partial x^i}\big)_{p}\big\}$ 和 $\big\{\big(\frac{\partial}{\partial y^\alpha}\big)_{q}\big\}$。
+请写出 $F_{*p}$ 在该基下的矩阵表示，并证明，当 $F$ 是微分同胚时，上述 $F_{*p}$ 还是线性同构。
+    \item[3.]$f:\mathbb{R}^3\to\mathbb{R}^3,f(x_1, x_2, x_3)=(x_2\cos x_3+x_1\sin x_3, x_1\cos x_3-x_2\sin x_3, x_3)$.证明 $f$限制 $S^2$上是 $S^2$的光滑自同胚.
+    \item[4.]
+    \begin{enumerate}
+        \item[(1)]给出并证明$(r,s)$型张量的分量的基变换公式。
+        \item[(2)] $\omega \in \mathcal{A}^r(M),\sigma \in \mathcal{A}^s(M)$，
+        证明 $\omega \wedge \sigma=(-1)^{rs}\sigma \wedge \omega$.
+    \end{enumerate}
+    \item[5.]
+    \begin{enumerate}
+        \item[(1)]给出流形上的外微分算子 $\mathrm{d}$的定义.
+        \item[(2)]说明 $\mathrm{d}$是局部算子.
+    \end{enumerate}
+    \item[6.]证明紧子流形一定是嵌入子流形.
+    \item[7.]
+    \begin{enumerate}
+        \item[(1)]叙述Frobenius定理.
+        \item[(2)]设 $M$ 是 $C^{\infty}$-微分流形, $u, v \in C^{\infty}(M)$, 
+        $X, Y \in \mathscr{X}(M)$, $[-,-]$ 是Lie括号。请展开 $[u X, v Y]$.
+    \end{enumerate}
+    \item[8.]    叙述微分形式的积分的定义，证明其与坐标邻域选取无关。叙述Stokes公式。
+\end{itemize}
+
+== 2024--2025秋季学期东瑜昕《微分流形》（H）期末试题 ==
+\begin{itemize}
+    \item[1.]
+    \begin{enumerate}
+        \item[(1)]
+        请叙述光滑流形的定义。
+        \item[(2)]
+        $S^2 \times \mathbb{R}^k$ 是光滑流形吗？
+        \item[(3)]
+        拓扑流形上一定存在微分结构吗？如果存在，微分结构唯一吗？
+    \end{enumerate}
+    
+    \item[2.]
+        设$F: M \to N$是微分同胚，证明:其在每一点 $p\in M$ 处的切映照都是线性同构。
+        反过来，如果一个光滑映射$F$在每一点处的切映照都是线性同构，它一定是微分同胚吗？
+    \item[3.]
+    叙述秩定理。叙述正则子流形的定义。
+    
+    \item[4.]
+    设$X,Y$是光滑流形$M$上的光滑向量场，证明Lie括号$[X,Y]$是$M$上的光滑向量场。
+
+    \item[5.]
+    证明：$n$维线性空间$V$上的$r$次反对称张量空间$\Lambda^r (V^*)$的维数是$C_n^r$，其中 $0\leq r \leq n$.
+    \item[6.]
+    给出并证明$(r,s)$型张量的分量的基变换公式。
+    \item[7.]
+    设$\omega$是$M$上一次微分形式，对任意的光滑向量场$X,Y$，证明：
+    \[\text{d} \omega(X,Y) = X\omega(Y)-Y\omega(X)-\omega([X,Y]).\]
+    \item[8.]
+    叙述微分形式的积分的定义，证明其良定性。叙述Stokes公式。
+\end{itemize}
+
+== 2018--2019秋季学期东瑜昕《微分流形》（H）期末试题 ==
+
+\textbf{试题1.}
+
+\qquad 叙述 $C^{\infty}$-微分流形的定义. 设若 $M$ 和 $N$ 分别是 $m$ 维和 $n$ 维的 $C^{\infty}$-微分流形, 证明 $M \times N$ 是 $m+n$ 维 $C^{\infty}$-微分流形。
+
+\textbf{试题 2.}
+
+\qquad 设若 $M$ 和 $N$ 分别是 $m$ 维和 $n$ 维的 $C^{\infty}$-微分流形, 
+$F: M \rightarrow N$ 是 $C^{\infty}$-微分流形之间的光滑映照。
+对于 $p \in M$ 以及 $q=F(p) \in N$, $F$ 自然地确定了一个余切空间的拉回映照 $F_{q}^{*}: T_{q}^{*} N \rightarrow T_{p}^{*} M$。
+如果 $p$ 处有局部坐标 $\left(U, u^{i}\right)$, $q$ 处有局部坐标 $\left(V, v^{\alpha}\right)$，
+它们分别给出了 $T_{p}^{*} M$ 和 $T_{q}^{*} N$ 的自然基 $\{(\mathrm{d} u^{i})_{p}\}$ 和 $\{(\mathrm{d} v^{\alpha})_{q}\}$。
+请写出 $F_{q}^{*}$ 在该基下的矩阵表示，并证明，当 $F$ 是微分同胚时，上述 $F_{q}^{*}$ 还是线性同构。
+
+\textbf{试题 3.}
+
+\qquad 设映照 $f: \mathbb{R}^{2} \rightarrow \mathbb{R}^{2}$ 的具体形式是 $y_{1}=x_{1} \mathrm{e}^{x_{2}}+x_{2}, y_{2}=x_{1} \mathrm{e}^{x_{2}}-x_{2}$。
+试写出 $f$ 在欧氏空间自然基底下，诱导出切空间之间映照 $f_{*}$ 的矩阵表示，并证明 $f$ 是个光滑同胚。
+
+\textbf{试题 4.}
+
+\qquad 设 $M$ 是 $C^{\infty}$-微分流形, $f, g \in C^{\infty}(M)$, 
+$X, Y \in \mathscr{X}(M)$, $[-,-]$ 是Lie括号。请展开 $[f X, g Y]$.
+
+\textbf{试题 5.}
+
+\qquad 设 $M$ 是 $C^{\infty}$-微分流形, $X, Y \in \mathscr{X}(M)$, 
+$\omega \in \Lambda^{1}(M)$, $[-,-]$ 是Lie括号。证明公式
+$$\mathrm{d} \omega(X, Y)=X \omega(Y)-Y \omega(X)-\omega([X, Y]).$$
+
+\textbf{试题 6.}
+
+\qquad 设 $M$ 是 $m$ 维 $C^{\infty}$-紧致无边微分流形， 
+$f: M \rightarrow \mathbb{R}^{m}$ 是光滑映照。
+试证明存在 $p \in M$，使得 $f$ 在 $p$ 处的秩小于 $m$.
+
+\textbf{试题 7.}
+
+\qquad 设 $M_{1}, M_{2}$ 是 $C^{\infty}$-微分流形, 
+$f: M_{1} \rightarrow M_{2}$ 是局部微分同胚. 
+若 $M_{2}$ 是可定向的, 证明 $M_{1}$ 也是可定向的。
+
+\textbf{试题 8.}
+
+\qquad 证明，具有紧支集的形式的积分和单位分解的选取无关. 再叙述Stokes定理.

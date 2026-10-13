@@ -1,0 +1,301 @@
+\newcommand{\T}{\mathbb{T}}
+
+{{comment|作业如下，可以做在这个页面orz}}
+
+\section{Fourier Series}
+The main references of this chapter are [Grafakos, Classical Fourier Analysis
+(3rd), Chapter 3], and [Rudin, Real and Complex Analysis, Chapter 4].
+
+\subsection*{1.1}
+\begin{itemize}
+    \item[1.]Prove the following identities.
+
+    (i)$$D_N(x)=\frac{\sin(2N+1)\pi x}{\sin \pi x}.$$
+    (ii)$$F_N(x)=\sum_{k=0}^N\big(1-{\textstyle \frac{k}{N+1}}\big)e^{2\pi ikx}
+    =\frac{1}{N+1}\Big[\frac{\sin(N+1)\pi x}{\sin \pi x}\Big]^2.$$
+    (iii)$$P_r(x)=\frac{1-r^2}{1-2r\cos(2\pi x)+r^2}.$$ 
+
+    \item[2.]Let $1\le p\le\infty$. Suppose that $f\in L^p(\R^n)$ and $g\in L^1(\R^n)$.
+    Then $f\!*\!g$ exists a.e., and
+    $$\|f\!*\!g\|_{L^p(\R^n)}\le\|f\|_{L^p(\R^n)}\|g\|_{L^1(\R^n)}.$$
+
+    \item[3.]\begin{itemize}
+        \item[(i)]Calculate $\|D_N\|_{L^p(\T)}$ for $0<p\le\infty$.\\
+        \item[(ii)]Prove the sharpness of the above result.\\
+        \item[(iii)]Show that $D_N$ is not an approximate identity.
+        \end{itemize}
+\end{itemize}
+\subsection*{1.2}
+\begin{itemize}
+    \item[1.]Suppose that $f\in L^1(\T)$, and $\lim_{x\to x_0}f(x)$ exists.
+    Show that $F_N\!*\!f(x_0)\to f(x_0)$ as $N\to\infty$.
+
+    \item[2.]Suppose that $f\in C(\T)$, and $\lim_{N\to\infty}D_N\!*\!f(x_0)$ exists.
+    Prove that $\lim_{N\to\infty}D_N\!*\!f(x_0)=f(x_0)$.
+
+    \item[3.]Prove the Marcinkiewicz interpolation theorem.
+    
+    \item[4.]Prove the Vitali covering lemma.
+\end{itemize}
+\subsection*{1.3}
+\begin{itemize}
+    \item[1.]Let $f(x)=\chi_{[-1/2,1/2]}(x)$. Show that $\mathcal{M}f\notin L^1$.
+    
+    \item[2.]Let $1<p<\infty$. Show that $C_0^\infty$ is dense in $L^p(\R^n)$.
+    Show that $C_0^\infty$ is not dense in $L^\infty(\R^n)$.
+\end{itemize}
+
+\section{Fourier tranform}
+The main references of this chapter are [Grafakos, Classical Fourier Analysis
+(3rd), Chapter 2, Chapter 4], and [Stein, Weiss, Introduction to Fourier analysis
+on Euclidean spaces, Chapter VII].
+
+\subsection*{2.1}
+\begin{itemize}
+    \item[1.]Prove the following statement: $f\in\mathcal{S}(\R^n)$ if and only if
+    for any $\alpha\in\N^n$ and $N\in\N$, there exists a constant $C_{\alpha,N}<\infty$ such that
+    $$|\partial^\alpha f(x)|\le C_{\alpha,N}(1+|x|)^{-N}.$$
+
+    \item[2.]Let $f(x)=e^{-\pi x^2}$. Show that $\hat{f}(\xi)=f(\xi)$.
+
+\end{itemize}
+\subsection*{2.2}
+\begin{itemize}
+    \item[1.]Suppose that $f_n\to f$ in $L^p$ for some $p\in(0,\infty)$.
+    Show that there exists a subsequence $\{f_{n_j}\}$ such that $f_{n_j}\to f$ a.e.
+
+    \item[2.]Let $1<p<2$ and $f\in L^p(\R^n)$. Show that $f\chi_{|f|\ge1}\in L^1$ 
+    and $f\chi_{|f|\le1}\in L^2$.
+
+    \item[3.]For $f\in L^p(\R^n)$ with $1<p<2$, we define $\hat{f}=\hat{f_1}+\mathcal{F}(f_2)$ 
+    with $f_1\in L^1$ and $f_2\in L^2$. Show that this definition is independent 
+    of the choice of $f_1$ and $f_2$.
+    
+    \item[4.]\begin{itemize}
+        \item[(i)]Construct a Schwartz function supported in the unit ball.
+
+        \item[(ii)]Construct a $C_0^\infty(\R^n)$ function equal to $1$ 
+        on the annulus $1\le|x|\le2$, and vanishing off the annulus $1/2\le|x|\le4$.
+
+        \item[(iii)]Construct a nonnegative nonzero Schwartz function $f$ on $\R^n$ 
+        such that $\hat{f}$ is nonnegative and compactly supported.
+
+        \item[(iv)]Show that a nonzero Schwartz function $f$ cannot be 
+        nonnegative if $\hat{f}(\xi)=1$ for $|\xi|\le1$.
+    \end{itemize}
+\end{itemize}
+\subsection*{2.3}
+\begin{itemize}
+    \item[1.]The Dirichlet means does not converge in $L^1(\T)$.
+
+    \item[2.]Let $1<p<\infty$ and $\frac{1}{p}+\frac{1}{p'}=1$. Prove
+    \begin{itemize}
+    \item[(i)]$m\in\mathcal{M}_p(\R^n)$ if and only if $m\in\mathcal{M}_{p'}(\R^n)$.
+
+    \item[(ii)]If $m\in\mathcal{M}_p(\R^n)$, then $m\in\mathcal{M}_2(\R^n)$.
+
+    \item[(iii)]$m\in\mathcal{M}_2(\R^n)$ if and only if $m\in L^\infty(\R^n)$.
+    \end{itemize}
+
+    \item[3.]Let $1<p<\infty$. Then there exists a nonnegative function 
+    $\eta\in C_0^\infty(\R^n)$ such that $\eta(0)=1$ and 
+    $\sum_{k\in\Z^n}|\eta(x+k)|^p=1$ for $x\in\R^n$.
+    
+    \item[4.]Suppose $m(\xi)\in\mathcal{M}_p(\R^n)$. Then 
+    (i) $m(\lambda\xi)\in\mathcal{M}_p(\R^n)$ for $\lambda>0$;
+    (ii) $m(\xi+y)\in\mathcal{M}_p(\R^n)$ for $y\in\R^n$.
+
+    \item[5.]Suppose that $m(\xi,\eta)\in\mathcal{M}_p(\R^{n+m})$, 
+    where $1<p<\infty$. Then for almost every $\xi\in\R^n$, the function 
+    $\eta\mapsto m(\xi,\eta)$ is in $\mathcal{M}_p(\R^m)$ with
+    $$\|m(\xi,\cdot)\|_{\mathcal{M}_p(\R^m)}\le\|m\|_{\mathcal{M}_p(\R^{n+m})}.$$
+
+\end{itemize}
+\subsection*{2.4}
+\begin{itemize}
+    \item[1.]Let $\beta,\delta>0$, and $|m|\le R$. Show that
+    $$\big({\textstyle 1-\frac{|m|^2}{R^2}}\big)^{\beta+\delta}
+    =C_{\beta,\delta}R^{-2\beta-2\delta}\int_{|m|}^R
+    (R^2-t^2)^{\beta-1}t^{2\delta+1}\big({\textstyle 1-\frac{|m|^2}{t^2}}\big)^\delta dt.$$
+
+    \item[2.]Let $1<p<\infty$, and $\lambda\ge0$. 
+    Prove that $(1-|\xi|^2)^\lambda_+\in\mathcal{M}_p(\R^n)$ if and only if 
+    $(1-|\xi|)^\lambda_+\in\mathcal{M}_p(\R^n)$.
+
+    \item[3.]Let $k\in\Z$. Suppose $F\in L^1(\R^2)$ is of the form
+    $$F(re^{i\theta})=f(r)e^{ik\theta}.$$
+    We define the Hankel transform of order $k$ of $f$ by
+    $$H_k(f)(\rho)=\int_0^\infty f(r)J_k(\rho r)rdr,$$
+    where $J_k(r)=\frac{1}{2\pi}\int_{-\pi}^\pi e^{ir\sin\theta-ik\theta}d\theta$ 
+    is the Bessel function of order $k$. Show that
+    $$\widehat{F}(\rho e^{i\varphi})=2\pi(-i)^kH_k(f)(\rho)e^{ik\varphi}.$$
+    \textit{Hint: Use polar coordinates.}
+    
+    \item[4.]Fo $f\in L^2(\R_+,rdr)$, we have
+    $$H_k(H_k(f))=f,$$
+    and
+    $$\int_0^\infty|f(r)|^2rdr=\int_0^\infty|H_k(f)(\rho)|^2\rho d\rho.$$
+\end{itemize}
+\section{Disc multiplier}
+The main references of this chapter are [de Guzman, Differentiation of integrals
+in $\R^n$, Chapter V], [Stein, Harmonic Analysis, Chapter X], [Wolff, Lectures on
+Harmonic Analysis, Chapter 11], and [Grafakos, Modern Fourier Analysis (3rd),
+Chapter 5].
+
+\subsection*{3.1}
+\begin{itemize}
+    \item[1.]Show that $$|\Phi_\alpha(\triangle ABC)|=2(1-\alpha)^2|\triangle ABC|.$$
+
+    \item[2.]Show that for any Kakeya set $E$, and $\varepsilon,\delta>0$, 
+    there exists a Kakeya set $F\subset E(\varepsilon)$ such that $|F|<\delta$, 
+    where $E(\varepsilon)$ is the $\varepsilon$--neighborhood of $E$.
+
+\end{itemize}
+\subsection*{3.2}
+\begin{itemize}
+    \item[1.]Let $T$ be a linear operator bounded on $L^p(\R^n)$. Prove that
+    $$\Big\|\Big(\sum_{j=1}^M|T(f_j)|^2\Big)^{1/2}\Big\|_{L^p}
+    \le C\Big\|\Big(\sum_{j=1}^M|f_j|^2\Big)^{1/2}\Big\|_{L^p}.$$
+
+    \item[2.]For a collection $\{v_j\}_{j=1}^M$ of unit vectors in $\R^2$, 
+    we define $H_j=\{\xi\in\R^n:\xi\cdot v_j\ge0\}$, where $v_j\in\R^2$ 
+    is a direction. Let $S_j$ be the linear operator whose multiplier is $\chi_{H_j}$. 
+    Prove that if $\chi_{B(0,1)}\in\mathcal{M}_p(\R^2)$, then
+    $$\Big\|\Big(\sum_{j=1}^M|S_j(f_j)|^2\Big)^{1/2}\Big\|_{L^p}
+    \le C\Big\|\Big(\sum_{j=1}^M|f_j|^2\Big)^{1/2}\Big\|_{L^p}.$$
+
+    \item[3.]Let $H$ be the Hilbert transform. Show that, for $y\in[2,3]$, we have 
+    $$\frac{I+iH}{2}(\chi_{[0,1]})(y)=\frac{i}{2}\ln\Big(1+\frac{1}{y-1}\Big).$$
+\end{itemize}
+
+
+\section{The Uncertainty Principle}
+The main references of this chapter are [Wolff, Lectures on Harmonic Analysis,
+Chapter 5] and [Muscalu, Schlag, Classical and multilinear harmonic analysis, I,
+Chapter 10].
+
+\begin{itemize}
+    \item[1.] (Hardy's inequality) For $n\ge3$, we have
+    $$-\Delta\ge\frac{(n-2)^2}{4|x|^2}$$
+    in the sense that, for any $f\in\mathcal{S}(\R^n)$,
+    $$-\langle\Delta f,f\rangle\ge\frac{(n-2)^2}{4}\langle|x|^{-2}f,f\rangle,$$
+    i.e.
+    $$\||x|^{-1}f\|_{L^2(\R^n)}\le\frac{2}{n-2}\|\nabla f\|_{L^2(\R^n)}.$$
+    \textit{Hint: Let $p:=-i\nabla$, $r:=|x|$, and $Xf(x):=xf(x)$. 
+    Use the commutator $[r^{-1}pr^{-1},X]$.}
+
+    \item[2.]Prove Young's inequality: Let $1\le p\le q\le\infty$. Then
+    $$\|f\!*\!K\|_{L^q(\R^n)}\le\|K\|_{L^r(\R^n)}\|f\|_{L^p(\R^n)}$$
+    for $\frac{1}{q}+1=\frac{1}{r}+\frac{1}{p}$.
+
+    \item[3.]Let $I=[-1/2,1/2]$, and $w_N(x)=(1+|x|)^{-N}$ an associated weight 
+    with $N\ge100$. Suppose that $f\in\mathcal{S}(\R)$ 
+    and $\operatorname{supp}\hat{f}\subset I$. 
+    Prove that, for $1\le p\le q\le\infty$, we have
+    $$\|f\|_{L_{avg}^p(w_N)}\lesssim\|f\|_{L_{avg}^q(w_N)}$$
+    and
+    $$\|f\|_{L_{avg}^q(w_N)}\lesssim\|f\|_{L_{avg}^p(w_{N'})}$$
+    with $N'=Np/q$. Here $\|f\|_{L_{avg}^q(w)}
+    =\big(\frac{1}{\|w\|}\int_\R|f(x)|^qw(x)dx\big)^\frac{1}{q}$.
+
+    \textit{Hint: $\R=\cup_{k\in\Z}I_k$ with $I_k=I+k$, hence 
+    $w_N(x)\lesssim\sum_{k\in\Z}a_k\chi_{I_k}$ with $a_k=w_N(k)$. 
+    Then apply Bernstein's inequality to each $I_k$.}
+    
+    \item[4.]Let $0<p\le q\le\infty$. Then for any $f\in\mathcal{S}(\R^n)$ with 
+    $\operatorname{supp}\hat{f}\subset B(0,R)$, it holds
+    $$\|f\|_{L^q(\R^n)}\le CR^{n(\frac{1}{p}-\frac{1}{q})}\|f\|_{L^p(\R^n)}.$$
+\end{itemize}
+
+\section{Oscillatory Integrals}
+The main reference of this chapter is [Stein, Harmonic Analysis, Chapter VIII].
+\begin{itemize}
+    \item[1.] Supppose $\boldsymbol{\psi}\in C_c^\infty(\R)$. 
+    Then, for $\mu>-1$, we have the asymptotic expansion
+    $$\int_0^\infty e^{i\lambda x}\boldsymbol{\psi}(x)x^\mu dx
+    \sim\sum_{j=0}^\infty a_j\lambda^{-j-1-\mu},$$
+    where $a_j=i^{j+\mu+1}\Gamma(j+\mu+1)\frac{\boldsymbol{\psi}^{(j)}(0)}{j}$.
+
+    \textit{Hint:}
+    $$\int_0^\infty e^{i\lambda x}\boldsymbol{\psi}(x)x^\mu dx
+    =\lim_{\varepsilon\to0}\int_0^\infty 
+    e^{i\lambda x}e^{-\varepsilon x}\boldsymbol{\psi}(x)x^\mu dx.$$
+
+    \item[2.](1) There exists a constant $C>0$ such that 
+    for any $\gamma>1,\lambda,b>1$, it holds
+    $$\bigg|\int_0^b e^{i\lambda t^\gamma}dt\bigg|\le C\lambda^{-1/\gamma}.$$
+    (2) For any $\gamma\in(0,1)$, there exists a constant $C$ such that
+    $$\bigg|\int_0^1 e^{i\lambda t^\gamma}dt\bigg|\le C\gamma^{-1}\lambda^{-1}.$$
+    (3) Show that the result in (2) is sharp in that 
+    there is no $\alpha\in(1,\infty)$ such that
+    $$\bigg|\int_0^1 e^{i\lambda t^\gamma}dt\bigg|\le C\lambda^{-\alpha}.$$
+    
+\end{itemize}
+\section{Restriction}
+The main references of this chapter are [Tao, Restriction theorems and applications
+ (course notes 1-3), 1999. \url{https://www.math.ucla.edu/tao/254b.1.99s/}], and
+[Muscalu, Schlag, Classical and multilinear harmonic analysis, I, Chapter 11].
+\subsection*{6.1}
+\begin{itemize}
+    \item[1.]Let $1\le q\le\infty$, and $S$ the unit ball of a hyperplane in $\R^n$.
+    Show that $\|\hat{f}\|_{L^q(S)}\le C\|f\|_{L^p}$ if and only if $p=1$.
+
+    \item[2.]Let $\sigma$ be the surface measure on $\mathbb{S}^{n-1}$. Prove that
+    $$\widehat{d\sigma}(\xi)=c_1e^{-2\pi i|\xi|}|\xi|^{-\frac{n-1}{2}}
+    +c_2e^{2\pi i|\xi|}|\xi|^{-\frac{n-1}{2}}+O(|\xi|^{-\frac{n+1}{2}}).$$
+
+    \item[3.]Let $\varphi$ be a Schwartz function. 
+    Prove that there exists a constant $C$ such that
+    $$|\varphi_k*(d\sigma)(\xi)|\le C2^k$$
+    for all $k\ge1$, where $\varphi_k(x)=2^{kn}\varphi(2^kx)$.
+
+    \textit{Hint: Decompose $\varphi$ dyadically into 
+    $\sum_{j\ge0}\boldsymbol{\psi}_j$ 
+    where $\boldsymbol{\psi}_0$ is supported in the unit ball, 
+    and $\boldsymbol{\psi}_j$ is supported 
+    in $\{\xi:|\xi|\sim2^j\}$ for $j\ge1$.}
+    
+    \item[4.]Let $1<p,q<\infty$. Show that $R(p\to q)$ if and only if $R^*(q'\to p')$.
+\end{itemize}
+
+\subsection*{6.2}
+\begin{itemize}
+    \item[1.]Suppose that $T(f)$ is a linear operator such that there exists 
+    a constant $R>0$ satisfying $\operatorname{supp}T(f)\subset B(x,2R)$ for any 
+    $f$ with $\operatorname{supp}f\subset B(x,R)$. Then, for $0<p\le q<\infty$, 
+    $$\|T(f)\|_{L^q(\R^n)}\le C\|f\|_{L^p(\R^n)}$$
+    is equivalent to
+    $$\|T(f)\|_{L^q(\R^n)}\le C\|f\|_{L^p(\R^n)},
+    \quad\forall\,\operatorname{supp}f\subset B(x,R)\text{ and }x\in\R^n.$$
+
+    \item[2.]Let $N\in\N$ be a large number, and $\phi_k(x)=2^{kn}(1+2^k|x|)^{-N}$. 
+    Show that
+    $$|\phi_k*(d\sigma)(x)|\le C2^k(1+2^kd(x,\mathbb{S}^{n-1}))^{-N'}$$
+    for some large number $N'$. Here $d(x,\mathbb{S}^{n-1})$ is the distance 
+    between $x$ and $\mathbb{S}^{n-1}$.
+
+    \item[3.]$m_0^\lambda(\xi)=(1-|\xi|^2)^\lambda_+[1-\varphi(2^k(1-|\xi|))]$. 
+    Show that
+    $$|(\Delta^Nm_0^\lambda)(\xi)|
+    \le2^{-k(\lambda-2N)}[1+2^kd(\xi,\mathbb{S}^{n-1})]^{-(2N-\lambda)}.$$
+    
+\end{itemize}
+
+\section{Kakeya}
+The main references of this chapter are [Tao, Restriction theorems and applications 
+(course notes 6-7), 1999. \url{https://www.math.ucla.edu/tao/254b.1.99s/}],
+[Wolff, Lectures on Harmonic Analysis, Chapter 10] and 
+[Mattila, Fourier analysis and Hausdorff dimension, Chapter 22].
+\begin{itemize}
+    \item[1.](Schur's test) Let $T(f)(x)=\int_{\R^n}K(x,y)f(y)dy$. Suppose that
+    $$\sup_y\int_{\R^n}|K(x,y)|dx\le A$$ and
+    $$\sup_x\int_{\R^n}|K(x,y)|dy\le B.$$
+    Prove that $$\|T(f)\|_{L^2}\le\sqrt{AB}\|f\|_{L^2}.$$
+
+    \item[2.] Use Schur's test to prove the Kakeya tube conjecture in the plane.
+
+    \item[3.] Let $2\le p\le s:=2\frac{n+1}{n-1}$. Show that
+    $$\|\widehat{fd\sigma}\|_{L^p(B_R)}
+    \le CR^{\frac{n+1}{2}(\frac{1}{p}-\frac{1}{s})}\|f\|_{L^2(\mathbb{S}^{n-1})}.$$
+    
+\end{itemize}

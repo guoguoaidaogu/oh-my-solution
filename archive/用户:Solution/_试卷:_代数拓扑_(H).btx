@@ -1,0 +1,343 @@
+\setdisplaytitle{代数拓扑(H)试卷}
+\sethtmltitle{代数拓扑(H)试卷}
+
+== 2025--2026学年期末（研, 12.26）==
+
+注.考试时间2小时15分钟.
+
+\begin{enumerate}
+    \item[一.] (20分)
+    \begin{itemize}
+        \item[1.] (10分)设$m,n$都是正整数,请构造一个道路连通的3维CW复形$X$,使得
+        $H_1(X)=\mathbb{Z}/m,H_2(X)=\underbrace{\mathbb{Z}\oplus\cdots\oplus\mathbb{Z}}_{n},H_3(X)=\mathbb{Z}$.
+        \item[2.] 对上述构造的$X$,求解上同调群$H^p(X;\mathbb{Z})$及$H^p(X;\mathbb{Z}/6)$.
+    \end{itemize}
+    \item[二.] (26分)
+    \begin{itemize}
+        \item[1.] (8分)证明$\mathbb{R} P^n$是可三角剖分的CW复形.
+        \item[2.] (10分)设$h:|K|\to|K|$是连续映射, $K$是有限复形.设$n>0$是偶数.\\
+        (a) (5分)若$|K|=\mathbb{R} P^n$,证明$h$必有不动点.\\
+        (b) (5分)若$|K|=S^n$,证明$h\circ h$必有不动点.
+        \item[3.] (8分)证明Lefschetz数也可以用对应的上同调表达.即,记上同调群$H^p(K)$的挠子群为$T^p(K)$,则\[\begin{aligned}
+        \Lambda(h)&=\sum_p(-1)^p\operatorname{Trace}(h_*:H_p(K)/T_p(K)\to H_p(K)/T_p(K))\\
+        &=\sum_p(-1)^p\operatorname{Trace}(h^*:H^p(K)/T^p(K)\to H^p(K)/T^p(K)).
+        \end{aligned}\]
+    \end{itemize}
+    \item[三.] (16分)设$h\in C(|K|,|L|)$, $K$是有限复形.
+    \begin{itemize}
+        \item[1.] (8分)举例说明,可以不存在任何单纯映射$\phi:K\to L$逼近$h$.
+        \item[2.] (8分)证明:存在正整数$m$,使得存在$h$的单纯逼近$\phi:\operatorname{sd}^mK\to L$.
+    \end{itemize}
+    \item[四.] (20分)
+    \begin{itemize}
+        \item[1.] (10分)设$K$是单纯复形.\\
+        (a) (5分)证明$|K|$是CW复形.\\
+        (b) (5分)假设已知$H_*(\mathcal{C}(K))\cong H_*(\mathcal{S}(|K|))$,
+        证明$H_*(\mathcal{C}(K))\cong H_*(\mathcal{D}(|K|))$.
+        \item[2.] (10分)设$X$是拓扑空间,有一族滤子$X_0\subset X_1\subset\cdots\subset X_p\subset\cdots$,
+        满足$X=\bigcup_pX_p$.又设$i\neq p$时$H_i(X_p,X_{p-1})=0$.\\
+        (c) (5分)对正整数$q,r>p$,证明$H_p(X_q)\cong H_p(X_r,X_{p-2})$.（注：这里需要$X_0$是零调的，否则取非零调的$X_i = X, \forall i$是一个反例）\\
+        (d) (5分)若存在$i\neq p$满足$H_i(X_p,X_{p-1})\neq0$,上面同构是否仍然成立?此时对于$H_p(X)$的计算,说说你的想法.
+    \end{itemize}
+    \item[五.] (18分)
+    \begin{itemize}
+        \item[1.] (8分)对链复形$\mathcal{C}$,考虑上下同调群的Kronecker积\[\begin{aligned}
+        H^p(\mathcal{C};G)\times H_p(\mathcal{C})&\longrightarrow G,\\
+        (\alpha^p,\beta_p)&\longmapsto\langle\alpha^p,\beta_p\rangle,
+        \end{aligned}\]其中$G$是Abel群.给出$\langle\alpha^p,\beta_p\rangle$的定义,
+        并证明上下同调群的Kronecker积是良定义的.
+        \item[2.] (8分)对自由链复形$\mathcal{C}$,上下同调群的Kronecker积提供给我们一个同态\[\begin{aligned}
+        \kappa:H^q(\mathcal{C};G)&\longrightarrow\operatorname{Hom}(H_q(\mathcal{C}),G),\\
+        \alpha&\longmapsto\langle\alpha,\cdot\rangle.
+        \end{aligned}\]证明存在同态$\lambda:\operatorname{Hom}(H_q(\mathcal{C}),G)\longrightarrow H^q(\mathcal{C};G)$,
+        使得$\kappa\circ\lambda=\operatorname{id}_{\operatorname{Hom}(H_q(\mathcal{C}),G)}$.
+        \item[3.] (2分)举例说明$\kappa$不总是同构.
+    \end{itemize}
+\end{enumerate}
+
+
+== 2025--2026学年期末 ==
+
+\begin{enumerate}
+    \item \begin{itemize}
+        \item [(1)] 给出一个道路连通的$4$维CW复形$X$，使得$H_1(X) = \mathbb{Z}/6\mathbb{Z}$，$H_2(X) \cong H_3(X) = \mathbb{Z}^4$，$H_4(X) = \mathbb{Z}$; 
+        \item [(2)] 对上题的$X$，计算上同调群$H^p(X; \mathbb{Z})$与$H^p(X; \mathbb{Z}/3\mathbb{Z})$。
+    \end{itemize}
+
+    \item \begin{itemize}
+        \item [(1)] 设 $K$ 是有限单纯复形，且 $h \in C(|K|,|K|)$。请写出 $h$ 的Lefschetz数 $\Lambda(h)$ 的定义;
+        \item [(2)] 设 $f \in C(S^{n}, S^{n})$，
+且 $\overline{f}$ 是被 $f$ 经由 $p: S^{n} \longrightarrow \mathbb{R} P^{n}(=S^{n} / x \sim-x)$ 所诱导的 $\mathbb{R} P^{n}$ 到自身的连续映射，即下图可换：
+\begin{cd}
+S^{n} \ar[r,"f"] \ar[d,"p"'] & S^{n} \ar[d,"p"']\\
+\mathbb{R}P^{n} \ar[r,"\overline{f}"] & \mathbb{R}P^{n}.
+\end{cd}
+求证:
+
+(i) 若 $n$ 为偶数，则 $\overline{f}$ 必有不动点;
+
+(ii) 若 $n$ 为奇数，且 $\text{deg} f \neq (-1)^{n+1}$, 则 $\overline{f}$ 必有不动点; 而若 $\text{deg} f = (-1)^{n+1}$, $\overline{f}$是否有不动点? 请给出理由。
+    \end{itemize}
+
+    \item \begin{itemize}
+        \item [(1)] 设$K, L$是单纯复形，$h: |K| \rightarrow |L|$是连续映射，$\phi, \psi$均为$h$的单纯逼近。证明$\phi_{\#} \simeq \psi_{\#}$；
+        \item [(2)] 设$f \simeq g: |K| \rightarrow |L|$是连续映射，且$K$为有限单纯复形。证明$f_* = g_*$。
+    \end{itemize}
+
+    \item 设$X$是CW复形，记$X^p$为$X$的$p$维骨架。\begin{itemize}
+        \item [(1)] 对正整数$l > q > r \geqslant 0$，证明我们有如下长正合列：
+        \begin{center}
+            \begin{tikzcd}
+\cdots \arrow[r] & {H_p(X^q, X^r)} \arrow[r] & {H_p(X^l, X^r)} \arrow[r] & {H_p(X^l, X^q)} \arrow[r] & {H_{p-1}(X^q, X^r)} \arrow[r] & \cdots
+\end{tikzcd}
+        \end{center}
+        \item [(2)] 设$l, q >p$为正整数，证明$H_p(X^l, X^{p-2}) \cong H_p(X^q, X^{p-2})$。
+    \end{itemize}
+
+    \item \begin{itemize}
+        \item [(1)] 设$X$为单点拓扑空间，证明$\widetilde{H}_p(X) = 0$且对任意交换群$G$, $\widetilde{H}^p(X; G) = 0$，
+        \item [(2)] 设$f: X \rightarrow Y$为拓扑空间之间的连续映射，证明：
+        \begin{center}
+            $\langle f^*(\alpha), \beta \rangle = \langle \alpha, f_*(\beta) \rangle$，
+        \end{center}
+        其中$\alpha \in H^p(Y; G), \beta \in H_p(X)$。
+    \end{itemize}
+
+    \item  设$K$为有限单纯复形, 证明:
+    \begin{center}
+        $\chi(K) = \sum_p (-1)^pf_p(K)$,
+    \end{center}
+    其中$\chi(K)$为$K$的Euler数, $f_p(K)$为$K$的$p$阶整系数上同调群自由部分的秩.
+\end{enumerate}
+
+== 2024--2025学年期末 ==
+
+\begin{center}
+    \textsize{24pt}{复旦大学数学科学学院\\
+    2024$\sim$2025学年第一学期本研合开课程期末考试试卷\\
+    $\blacksquare$ ${\rm A}$ 卷$\quad\square$ ${\rm B}$ 卷$\quad\square$ ${\rm C}$ 卷}
+\end{center}
+\textsize{20pt}{\textbf{考试时间：$\ \underline{\quad2024年12月19日\quad}$\\
+本科生课程名称：$\ \underline{\ \text{代数拓扑（H）}}$\ \ 课程代码：$\ \underline{\text{MATH130112h.01}}$\\
+研究生课程名称：$\ \underline{\ \text{代数拓扑基础}}$\quad\ 课程代码：$\ \underline{\text{MATH620001}}$}}\\
+\begin{center}
+    \textsize{20pt}{\textbf{课程名称：\ \ $\underline{\qquad数学科学学院\qquad}$考试形式：\ \ $\underline{\qquad闭卷\qquad\,}$\\
+    姓\ \ 名：\ $\underline{\qquad\qquad\ }$\ \ \ 学\ \ 号：\ $\underline{\qquad\qquad\ }$\ \ \ 专\ \ 业：\ $\underline{\qquad\qquad\quad\ \ }$}}
+\end{center}
+\qquad 提示：请同学们秉持诚实守信宗旨，谨守考试纪律，摒弃考试作弊。
+学生如有违反学校考试纪律的行为，学校将按《复旦大学学生纪律处分条例》规定予以严肃处理。
+\begin{center}\begin{tabular}{cccccccc}
+\textbf{题\ \ \ 目} &\ \ \ $1$\ \ \ &\ \ \ $2$\ \ \ &\ \ \ $3$\ \ \ &\ \ \ $4$\ \ \ &\ \ \ $5$\ \ \ &\ \ \ $6$\ \ \ &\ \textbf{总分}\ \\
+\textbf{得\ \ \ 分} & & & & & & & 
+\end{tabular}\end{center}
+
+\begin{enumerate}
+    \item (10分, 5+5) $K_1, K_2$是单纯复形 $K$的子复形。
+    \begin{itemize}
+        \item [(1)] 证明： $K_1\cap K_2, K_1\cup K_2$仍然是单纯复形。
+        \item [(2)] 证明： $\chi(K_1\cup K_2)+\chi(K_1\cap K_2)=\chi(K_1)+\chi(K_2)$，这里 $\chi(\cdot)$是Euler数。
+    \end{itemize}
+
+    \item (20分, 10+10) 
+    \begin{itemize}
+        \item [(1)] 证明： $\mathbb{R}P^n$每个维数 $p$ 有一个 $p$维胞腔，并且$\mathbb{R}P^n$的$p$维骨架是 $\mathbb{R}P^p$。
+        \item [(2)] $f:\mathbb{R}P^n\to\mathbb{R}P^n$是连续映射，$f$有不动点吗？证明你的结论。
+    \end{itemize}
+
+    \item (12分, 6+6) $f:S^n\to S^n$是连续映射。
+    \begin{itemize}
+        \item [(1)] 写出映射度 $\deg f$的定义。
+        \item [(2)] $g:S^n\to S^n$是连续映射，且 $f(x)\neq g(x), \forall x\in S^n$，
+        给出$\deg f,\deg g$之间满足的方程，证明你的结论。
+    \end{itemize}
+
+    \item (12分, 6+6) $T:\Delta_p\to X$是奇异单形。
+    \begin{itemize}
+        \item [(1)] 给出 $\partial$的定义。
+        \item [(2)] 证明 $\partial^2=0$。
+    \end{itemize}
+
+    \item (10分) 设$q,r>p$, $X^p$是CW复形$X$的$p$维骨架，证明： $H_p(X^q)\cong H_p(X^r)$。
+
+    下面开始本科生做第1题，研究生 2选1
+    \item (6-1, 12分) 设 $0\to\mathcal{C}\to{\mathcal D}\to\mathcal{E}\to0$是自由链复形，
+    $\varphi:\mathcal{C}\to\mathcal{D}$，证明:若 $\varphi_*$ 是同构，则 $\varphi^*$ 亦是同构.
+    \item (6-2, 12分) 设 $h \in C(|K|,|L|)$，其中 $K$ 是一个有限单纯复形。
+求证：存在正整数 $m$ 以及一个单纯映射 $\phi: \operatorname{sd}^{m}\!K \longrightarrow L$，
+使得对 $\operatorname{sd}^{m}\!K$ 的任意顶点 $v$ 满足
+$$
+h(\operatorname{Star}(v, \operatorname{sd}^{m}\!K)) \subset \operatorname{Star}(\phi(v), L) .
+$$
+此时，称 $\phi$ 为 $h$ 的从 $\operatorname{sd}^{m}\!K$ 到 $L$ 的一个单纯逼近。
+
+    \item (7-1, 12分, 6+6) 
+    \begin{itemize}
+        \item [(1)] 给出环面$T^2,X=S^1\vee S^1\vee  S^2$的上同调环结构。
+        \item [(2)] 设 $f: X \longrightarrow T^{2}$ 是 $X$到 $2$ 维环面的一个连续映射。
+        证明： $f^{*}: H^{2}(T^{2}) \longrightarrow H^{2}(X)$ 是平凡同态。
+    \end{itemize}
+    
+    \item (7-2, 12分, 4+4+4)
+    \begin{itemize}
+        \item [(1)] 构造只有$0,1,2$维胞腔各$1$个的胞腔复形$X$，使得$H_1(X)=\Z/n\Z$。
+        \item [(2)] $X$是$2$维流形吗，请证明。
+        \item [(3)] 证明 $f:X\to T^2$诱导的 $f_*:H_p(X)\to H_p(T^2)$在 $p=1,2$是平凡的。
+    \end{itemize}
+
+    \item (8-1, 12分) $H^p(X)$是 $X$的$\Z$系数上同调群，证明： $H_p(X)$自由部分的秩$=H^p(X)$自由部分的秩。
+    \item (8-2, 12分) 假设有限单纯复形上的某自同态的不动点都是孤立的，证明：该自同态的不动点数量是它的Lefschetz数。
+\end{enumerate}
+
+
+== 2023--2024学年期末 ==
+
+{{warning|本次考试内容覆盖到前16周。以下只回忆了本科生的试题，
+只上到前12周的研究生考试内容与此有部分试题不同。}}
+
+\begin{center}
+    \textsize{24pt}{复旦大学数学科学学院\\
+    2023$\sim$2024学年第一学期本研合开课程期末考试试卷\\
+    $\blacksquare$ ${\rm A}$ 卷$\quad\square$ ${\rm B}$ 卷$\quad\square$ ${\rm C}$ 卷}
+\end{center}
+\textsize{20pt}{\textbf{考试时间：$\ \underline{\quad2023年12月18日\quad}$\\
+本科生课程名称：$\ \underline{\ \text{代数拓扑（H）}}$\ \ 课程代码：$\ \underline{\text{MATH130112h.01}}$\\
+研究生课程名称：$\ \underline{\ \text{代数拓扑基础}}$\quad\ 课程代码：$\ \underline{\text{MATH620001}}$}}\\
+\begin{center}
+    \textsize{20pt}{\textbf{课程名称：\ \ $\underline{\qquad数学科学学院\qquad}$考试形式：\ \ $\underline{\qquad闭卷\qquad\,}$\\
+    姓\ \ 名：\ $\underline{\qquad\qquad\ }$\ \ \ 学\ \ 号：\ $\underline{\qquad\qquad\ }$\ \ \ 专\ \ 业：\ $\underline{\qquad\qquad\quad\ \ }$}}
+\end{center}
+\qquad 提示：请同学们秉持诚实守信宗旨，谨守考试纪律，摒弃考试作弊。
+学生如有违反学校考试纪律的行为，学校将按《复旦大学学生纪律处分条例》规定予以严肃处理。
+\begin{center}\begin{tabular}{cccccccc}
+\textbf{题\ \ \ 目} &\ \ \ $1$\ \ \ &\ \ \ $2$\ \ \ &\ \ \ $3$\ \ \ &\ \ \ $4$\ \ \ &\ \ \ $5$\ \ \ &\ \ \ $6$\ \ \ &\ \textbf{总分}\ \\
+\textbf{得\ \ \ 分} & & & & & & & 
+\end{tabular}\end{center}
+\begin{enumerate}
+    \item 20分，4+8+8
+    \begin{itemize}
+        \item[(1)]请给出一种$T^2\#\R P^2$的胞腔剖分中，
+        所用到每个维数的胞腔数目都是最小可能值的剖分.
+        \item[(2)]请给出(1)中胞腔复形的同调群.
+        \item[(3)]构造只有$0,1,2$维胞腔各$1$个的胞腔复形$X$，使得$H_1(X)=\Z/m\Z$.
+    \end{itemize}
+    \item 18分，10+8
+    \begin{itemize}
+        \item[(1)]如果两个保持增广的链映射$\phi,\psi$都被同一个零调承载子$\Phi$所承载，
+        证明$\phi$和$\psi$同伦.
+        \item[(2)]如果两个保持增广的上链映射$\phi,\psi$都被同一个零调承载子$\Phi$所承载，
+        证明$\phi$和$\psi$同伦.
+    \end{itemize}
+    \item 18分，4+14
+    \begin{itemize}
+        \item[(1)]给出$S^n$到$S^n$的映射的映射度的定义.
+        \item[(2)]构造映射度是任意给定整数的映射.
+    \end{itemize}
+    \item 16分，8+8
+    \begin{itemize}
+        \item[(1)]证明CW复形中紧集至多与有限个开胞腔相交.
+        \item[(2)]如果$U$是$X$中的开集，$A$是紧集，且为$U$的形变收缩核.
+        证明$H_*(X,A)\cong\tilde{H}_*(X/A)$.
+    \end{itemize}
+    \item 8分
+    
+    一个单纯$n$单形和它的面构成一个复形$X$.
+    $X$到自身的单纯映射如果不动点是孤立的，证明它只有一个不动点.
+    \item 20分，4+8+8
+    \begin{itemize}
+        \item[(1)]给出奇异上链中杯积的定义.
+        \item[(2)]证明上述的杯积诱导上同调群之间的杯积.
+        \item[(3)]证明任何从$S^1\vee S^1\vee S^1\vee S^2$到$T^2$
+        的映射诱导的$2$维上同调群的映射是零映射.
+    \end{itemize}
+\end{enumerate}
+
+
+== 2022--2023学年期末 ==
+\begin{center}
+    \textsize{24pt}{复旦大学数学科学学院\\
+    2022$\sim$2023学年第一学期本研合开课程期末考试试卷\\
+    $\blacksquare$ ${\rm A}$ 卷$\quad\square$ ${\rm B}$ 卷$\quad\square$ ${\rm C}$ 卷}
+\end{center}
+\textsize{20pt}{\textbf{考试时间：$\ \underline{\quad2022年12月23日\quad}$\\
+本科生课程名称：$\ \underline{\ \text{代数拓扑（H）}}$\ \ 课程代码：$\ \underline{\text{MATH130112h.01}}$\\
+研究生课程名称：$\ \underline{\ \text{代数拓扑基础}}$\quad\ 课程代码：$\ \underline{\text{MATH620001}}$}}\\
+\begin{center}
+    \textsize{20pt}{\textbf{课程名称：\ \ $\underline{\qquad数学科学学院\qquad}$考试形式：\ \ $\underline{\qquad闭卷\qquad\,}$\\
+    姓\ \ 名：\ $\underline{\qquad\qquad\ }$\ \ \ 学\ \ 号：\ $\underline{\qquad\qquad\ }$\ \ \ 专\ \ 业：\ $\underline{\qquad\qquad\quad\ \ }$}}
+\end{center}
+\qquad 提示：请同学们秉持诚实守信宗旨，谨守考试纪律，摒弃考试作弊。
+学生如有违反学校考试纪律的行为，学校将按《复旦大学学生纪律处分条例》规定予以严肃处理。
+\begin{center}\begin{tabular}{cccccccc}
+\textbf{题\ \ \ 目} &\ \ \ $1$\ \ \ &\ \ \ $2$\ \ \ &\ \ \ $3$\ \ \ &\ \ \ $4$\ \ \ &\ \ \ $5$\ \ \ &\ \ \ $6$\ \ \ &\ \textbf{总分}\ \\
+\textbf{得\ \ \ 分} & & & & & & & 
+\end{tabular}\end{center}
+
+\textbf{一、\ \ (共计30分)}
+
+\textbf{1. (6分)} 设 $X$ 是一个CW复形。论述它的胞腔链复形 $\mathcal{D}(X)=\{\left(D_{p}(X), \partial\right)\}$ 是如何定义的?
+
+\textbf{2. (24分)} 设 $Y=\mathbb{R} P^{2} \sharp \mathbb{R} P^{2} \sharp \mathbb{R} P^{2}$ 是三个实射影平面的连通和。
+
+(i) (8分) 请画图给出 $Y$ 的一个可三角刨分的CW复形结构，
+并用这个结构给出其对应的胞腔链复形 $\mathcal{D}(Y)$ （包括链群及边缘算子的确定）；
+
+(ii) (8分) 计算 $Y$ 的整系数同调群 $H_{p}(Y)$;
+
+(iii) (8分) 计算 $Y$ 的系数群为整数模 $6$ 的上同调群 $H^{p}(Y ; \mathbb{Z} / 6 \mathbb{Z})$。
+
+\textbf{二、\ \ (18分)}
+
+\textbf{1. (10分)} 设 $h \in C(|K|,|L|)$，其中 $K$ 是一个有限单纯复形。
+求证：存在正整数 $m$ 以及一个单纯映射 $\phi: \operatorname{sd}^{m}\!K \longrightarrow L$，
+使得对 $\operatorname{sd}^{m}\!K$ 的任意顶点 $v$ 满足
+$$
+h(\operatorname{Star}(v, \operatorname{sd}^{m}\!K)) \subset \operatorname{Star}(\phi(v), L) .
+$$
+此时，称 $\phi$ 为 $h$ 的从 $\operatorname{sd}^{m}\!K$ 到 $L$ 的一个单纯逼近。
+
+\textbf{2. (8分)} 设 $K=\{1,6,(1,6)\}$ 和 $L=\{1,3,6,(1,3),(3,6)\}$ 是 $\mathbb{R}$ 中的两个一维单纯复形，满足 $|K|=|L|$。
+求证：恒同映射 $id_{|K|}:|K| \longrightarrow |L|$ 不存在从 $K$ 到 $L$ 的单纯逼近。
+进一步, 求最小的正整数 $m$, 使得恒同映射 $id_{|K|}$ 存在单纯逼近 $\phi: \operatorname{sd}^{m}\!K \longrightarrow L$。
+
+\textbf{三、\ \ (12分)}
+
+\textbf{1. (6分)} 设 $M^{n}$ 是 $n$ 维拓扑流形，计算其局部同调群
+$$H_{p}(M^{n}, M^{n}-x)=?$$
+其中 $x \in M^{n}$。
+
+\textbf{2. (6分)} 求证： $\mathbb{R}^{m}$ 同胚于 $\mathbb{R}^{n}$ 当且仅当 $m=n$。
+
+\textbf{四、\ \ (共计20分)} 设 $X$ 是一个拓扑空间, 
+且 $S^{p}(X ; R)=\operatorname{Hom}(S_{p}(X), R)$ 是其 $p$ 维奇异上链群。
+
+\textbf{1. (4分)} 问：杯积
+$$\cup: S^{p}(X ; R) \times S^{q}(X ; R) \longrightarrow S^{p+q}(X ; R)$$
+是如何定义的？
+
+\textbf{2.(8分)} 求证： $\delta(c^{p} \cup c^{q})
+=(\delta c^{p}) \cup c^{q}+(-1)^{p} c^{p} \cup (\delta c^{q})$，
+其中 $c^{p} \in S^{p}(X ; R)$ 且 $c^{q} \in S^{q}(X ; R)$。
+
+\textbf{3. (8分)} 设 $f: S^{2} \longrightarrow T^{2}$ 是 $2$ 维球面到 $2$ 维环面的一个连续映射。
+证明： $f^{*}: H^{2}(T^{2}) \longrightarrow H^{2}(S^{2})$ 是平凡同态。
+
+\textbf{五、\ \ (共计20分)}
+
+\textbf{1. (4分)} 设 $K$ 是有限单纯复形, 且 $h \in C(|K|,|K|)$。
+请写出 $h$ 的Lefschetz数 $\Lambda(h)$ 的定义。
+
+\textbf{2. (16分)} 设 $f \in C(S^{n}, S^{n})$，
+且 $\overline{f}$ 是被 $f$ 经由 $p: S^{n} \longrightarrow \mathbb{R} P^{n}(=S^{n} / x \sim-x)$ 所诱导的 $\mathbb{R} P^{n}$ 到自身的连续映射，即下图可换：
+\begin{cd}
+S^{n} \ar[r,"f"] \ar[d,"p"'] & S^{n} \ar[d,"p"']\\
+\mathbb{R}P^{n} \ar[r,"\overline{f}"] & \mathbb{R}P^{n}.
+\end{cd}
+求证:
+
+(i) (8分) 若 $n$ 为奇数，则 $\Lambda(f)=\Lambda(\overline{f})$。
+
+(ii) (8分) 若 $n$ 为偶数，则 $\overline{f}$ 必有不动点。
+
+\textbf{六、\ \ (选做题，可不做）}
+
+对任何一个大于 $1$ 的正整数 $m$，构造一个仅由一个 $0$ 维开胞腔，一个 $1$ 维开胞腔以及一个 $2$ 维开胞腔做成的 $2$ 维 CW 复形 $X=e^{0} \cup e^{1} \cup e^{2}$，使得 $H^{2}(X) \cong \mathbb{Z} / m \mathbb{Z}$。

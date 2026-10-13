@@ -1,0 +1,402 @@
+\theoremstyle{plain}\newtheorem*{1}{习题1}
+\theoremstyle{plain}\newtheorem*{2}{习题2}
+\theoremstyle{plain}\newtheorem*{3}{习题3}
+\theoremstyle{plain}\newtheorem*{4}{习题4}
+\theoremstyle{plain}\newtheorem*{5}{习题5}
+\theoremstyle{plain}\newtheorem*{6}{习题6}
+\theoremstyle{plain}\newtheorem*{7}{习题7}
+\theoremstyle{plain}\newtheorem*{8}{习题8}
+\theoremstyle{plain}\newtheorem*{9}{习题9}
+\theoremstyle{plain}\newtheorem*{10}{习题10}
+\def\E{\mathbb{E}}
+\def\R{\mathbb{R}}
+\def\N{\mathbb{N}}
+\def\B{\mathcal{B}}
+\def\M{\mathcal{M}}
+\def\prob{\mathbb{P}}
+\def\t{\underline{t}}
+\def\c{\underline{c}}
+\newtheorem{prop}{性质}
+
+问题：如何证明 ESD 的收敛？
+
+\begin{definition}
+    设 \(\mu\) 是 \((\mathbb{R}, \B)\) 上的测度，若 \(\forall k = 0, 1, 2, \ldots,\langle\mu,|x|^k\rangle < \infty,\)
+则 \(m_k = \langle \mu,x^k\rangle\) 被称为是 \(\mu\) 的 \(k\) 阶矩，且称 \(\mu\) 具有有限的 \(k\)阶矩。若 \(\langle \mu,x^k\rangle = \infty\)，则称$\mu$的 \(k\) 阶矩不存在。
+
+这里$\langle \mu,x^k\rangle=\int x^k \, d\mu(x)$.
+\end{definition}
+
+\section{矩问题(Hamburger问题)}
+
+给定实数序列 \((m_k)_{k \in \mathbb{N}}\)，是否存在唯一的 \((\mathbb{R}, B)\) 上的测度 \(\mu\)，使得 \(m_k\) 是 \(\mu\) 的 \(k\) 阶矩？
+
+1° 存在性
+
+2° 唯一性
+
+\begin{equation*}
+\begin{cases} 
+\text{唯一} & \text{determinate} \\
+\text{不唯一} & \text{indeterminate}
+\end{cases}
+\end{equation*}
+我们不加证明地给出如下两个定理：
+
+\begin{theorem}{(存在性刻画)}
+    一族实数列 \((m_k)_{k \in \mathbb{N}}\) 构成了 \((\R,\B)\) 上至少一个测度的矩 \(\Leftrightarrow \forall N \in \mathbb{N}\)，Hankel 矩阵
+
+\begin{equation*}
+\begin{pmatrix}
+m_0 & m_1 & m_2 & \cdots & m_N \\
+m_1 & m_2 & m_3 & \cdots & m_{N+1} \\
+m_2 & m_3 & m_4 & \cdots & m_{N+2} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+m_N & m_{N+1} & m_{N+2} & \cdots & m_{2N}
+\end{pmatrix}
+\end{equation*}
+
+是半正定的。
+\end{theorem}
+
+\begin{theorem}{(唯一性刻画)}
+
+    设 \((m_k)_{k \in \mathbb{N}}\) 是一族实数列，若下面三个条件中的任何一方满足，则最多存在 \((\R,\B)\) 上的一个测度以 \(m_k\) 为矩。
+
+(1) \begin{equation*}
+\sum_{k=1}^{\infty} (m_{2k})^{-\frac{1}{2k}} = \infty \quad (\text{Carleman 条件})
+\end{equation*}
+
+(2) \begin{equation*}
+\lim\sup_{k \to \infty} \frac{(m_{2k})^{\frac{1}{2k}}}{2k} < \infty
+\end{equation*}
+
+(3) 存在 \(C, D > 0\)，s.t. \(\forall k \in \mathbb{N}\)，\(|m_k| \leq C D^k k!\)
+\begin{remark}
+    (2) \(\Rightarrow\) (1)：令 \(\alpha_k = (m_{2k})^{\frac{1}{2k}}\)，\(r := \lim \sup\limits_{k \to \infty} \frac{\alpha_k}{2k} < \infty\)。
+
+\(\Rightarrow \exists k_0 \in \N\)，s.t. \(k > k_0\)，\(\frac{\alpha_k}{2k} \leq r + 1\)，即 \(\alpha_k \leq 2k(r+1)\)。
+
+\(\Rightarrow \sum\limits_{k=1}^{\infty} \frac{1}{\alpha_k} \geq \sum\limits_{k=k_0}^{\infty} \frac{1}{2k(r+1)} = \infty\)。
+
+(3) \(\Rightarrow\) (2)：\(\frac{(m_{2k})^{\frac{1}{2k}}}{2k} \leq \frac{(C D^{2k} (2k)!)^{\frac{1}{2k}}}{2k} \leq \frac{C^{\frac{1}{2k}} D ((2k)!)^{\frac{1}{2k}}}{2k} \le C^{\frac{1}{2k}} D\)
+\end{remark}
+
+\end{theorem}
+
+\begin{corollary}
+    具有紧支撑的概率测度：设 \(\nu\) 是 \((\R, \B)\) 上的概率测度且有紧支撑 \([-a,a]\)，\(a>0\)。则：
+
+(1) \(\nu\) 具有各阶矩。
+
+(2) \(\forall k \in \mathbb{N}\)，\(|\langle \nu, x^k \rangle| \leq a^k\)。
+
+(3) $\nu$由它的矩唯一决定。
+\end{corollary}
+
+\section{概率测度的矩方法}
+
+\begin{theorem}
+    设 \((\mu_n)_n\) 是 \(\M_1(\R)\) 中的一个序列且所有矩都存在。若存在一个实序列 \((m_k)_{k \in \N}\)，s.t. \(\forall k \in \N\)，
+
+\begin{equation*}
+\lim_{n \to \infty} \langle \mu_n, x^k \rangle = m_k
+\end{equation*}
+
+则 \(\exists \mu \in \M_1(\R)\) 以及 \((\mu_n)_n\) 中的子序列弱收敛到 \(\mu\)，且有 \(\langle \mu, x^k \rangle = m_k\)。若 \(\mu\) 由它的矩唯一决定，则整个序列弱收敛到 \(\mu\)。
+\end{theorem}
+
+\begin{proof}
+取 $k = 2$。由之前引理知 $(\mu_n)_{n \in \mathbb{N}}$ 是紧的，故
+\[
+\exists \mu \in M_1(\mathbb{R}),\ J \subset \mathbb{N},\ \text{s.t.}\ (\mu_n)_{n \in J}\ \text{弱收敛到}\ \mu.
+\]
+取 $g = 1 + x^{2k}$，则 由条件，$(\langle \mu, g \rangle)_{n \in J}$ 有界，且 $\frac{x^k}{g} \to 0,\ x \to \infty$.
+由习题4， $\langle \mu_n, x^k \rangle \to \langle \mu, x^k \rangle$，即 $m_k$ 是 $\mu$ 的 $k$ 阶矩。
+
+若 $\mu$ 由它的矩唯一决定，设子序列中的另一子序列具有相同的弱极限，$\forall I\subset \mathbb{N},\exists J' \subset I$，$v \in M_1(\mathbb{R})$，$(\mu_n)_{n \in J'} \to \nu$ 弱收敛，且 $\nu$ 以 $m_k$ 为 $k$ 阶矩。
+由于 $m_k$ 决定唯一测度，故 $\mu = \nu$。
+\end{proof}
+
+\begin{remark}
+该定理逆命题不成立。存在 $(\mu_n)_n$ 与 $\mu \in \M_1(\mathbb{R})$ 满足：
+\begin{enumerate}
+    \item $\mu$ 的各阶矩存在
+    \item $\mu_n$ 弱收敛到 $\mu$
+    \item $\langle \mu_n, x^k \rangle \to \langle \mu, x^k \rangle$不成立
+\end{enumerate}
+
+取 $\mu_n = \frac{n-1}{n}\delta_0 + \frac{1}{n}\delta_{e^n}$，则 $\mu_n \xrightarrow{w} \mu$，其中 $\mu = \delta_0$。
+
+对于任意 $f$，有
+\[
+\langle \mu_n, f \rangle = \frac{n-1}{n}f(0) + \frac{1}{n}f(e^n) \to f(0) = \langle \mu, f \rangle.
+\]
+
+对于矩，
+\[
+\langle \mu_n, x^k \rangle = \frac{1}{n}e^{nk} \ \text{不趋于} \ 0=\langle\mu,f\rangle,\ n \to \infty,
+\]
+
+\end{remark}
+
+
+
+\section{随机概率测度的矩方法}
+
+\begin{theorem}
+     设 \((\mu_n)_n\) 是 \((\R, \B)\) 上的随机概率测度，\(\mu\) 是 \((\R, \B)\) 上的由它的矩唯一决定的概率测度。且假定下列论述中各量都是良定义且有限的。
+
+(1) \(\forall k \in \mathbb{N}, \E \langle \mu_n, x^k \rangle \to \langle \mu, x^k \rangle\)，则 \(y_n\) 依期望弱收敛到 \(\mu\)。
+
+(2) \(\forall k \in \mathbb{N}\),若 \(\langle \mu_n, x^k \rangle\) 依概率收敛到 \(\langle \mu, x^k \rangle\)，则 \(\mu_n\) 依概率弱收敛到 \(\mu\)。
+
+(3) \(\forall k \in \mathbb{N}, \langle \mu_n, x^k \rangle \to \langle \mu, x^k \rangle \quad \prob\ a.s\)，则 \(\mu_n \to \mu \quad w.a.s.\)
+\end{theorem}
+\begin{proof}
+    (1) \(\mu_n\) 依期望弱收敛到 \(\mu\)，即，\(\E \mu_n \in \M_1(\R)\) 弱收敛到 \(\mu\)。由于$\mu$由它的矩唯一决定，故只需证明\( \E \langle \mu_n, x^k \rangle \to \langle \mu, x^k \rangle\).结合条件，只需证明\(\langle \E \mu_n, x^k \rangle = \E \langle \mu_n, x^k \rangle\),这只需证明$\E\mu_n$具有各阶矩。
+    
+由之前引理，对非负可测函数 \(f\)，\(\langle \E \mu_n, f \rangle = \E \langle \mu_n, f \rangle\)，故对 \(f = x^{2k}\) 成立。
+
+由柯西不等式， \(\langle \E \mu_n, |x|^k \rangle^2 \leq \langle \E \mu_n, x^{2k} \rangle = \E \langle \mu_n, x^{2k} \rangle < \infty\),故可得各阶矩的存在性。
+
+(2) \(\mu_n \overset{w}{\to} \mu\) in prob.即\(\forall f \in C_b (\R), \langle\mu_n, f \rangle \to \langle \mu, f \rangle \text{ in prob}.\)
+这等价于对任何子列，都有几乎处处收敛的子列。
+
+现在对某个子列$J \subseteq \N,\langle \mu_n, x^k \rangle_{n \in J} \to \langle \mu, x^k \rangle \text{ in prob}$,
+则存在$I \subseteq J, \Omega_1 \subseteq \Omega, P(\Omega_1) = 1,\forall \omega \in \Omega_1, \forall k \in \N, \langle \mu_n(\omega), x^k \rangle \to \langle\mu(\omega), x^k \rangle$,由概率测度的矩方法，
+\(\Rightarrow \mu_n(\omega), n \in I \text{ 弱收敛到 } \mu.\)
+
+由于子列$J$ 是任意的，我们证明了对于任何子列，都存在几乎处处弱收敛的子列，这等价于 $\mu_n$依概率弱收敛到$μ$.
+
+(3)\( \forall k \in \mathbb{N}, \exists \Omega_k, P(\Omega_k) = 1, s.t. \forall \omega \in \Omega_k, \langle \mu_n(\omega), x^k \rangle \to \langle \mu, x^k \rangle \).
+
+令\(\hat{\Omega} = \bigcap_{k=1}^{\infty} \Omega_k \subseteq \Omega.\)则\(P(\hat{\Omega}) = 1,\)且有
+\(\forall \omega \in \hat{\Omega},\forall k, \langle \mu_n(\omega), x^k \rangle \to \langle \mu, x^k \rangle\)
+故$\mu_n(\omega)$  弱收敛到$  \mu$.从而$\mu_n \to \mu \quad w.a.s.$
+\end{proof}
+
+\begin{theorem}{(Practical version)}
+    $(\mu_n)_n$ 为随机概率测度，$(m_k)_k$ 为实数序列，且在 $(\mathbb{R}, \mathcal{B})$ 上至少存在一个概率测度以 $m_k$ 为 $k$ 阶矩。
+
+(M1) $\E \langle \mu_n, x^k \rangle \to m_k$。$\forall k$，有分解
+\[
+\langle \mu_n, x^k \rangle = D_n^{(k,1)} + \cdots + D_n^{(k,l_k)},
+\]
+s.t. $\forall k, i=1,\ldots,l_k$，$\E D_n^{(k,i)} \to c_k$.
+
+(M2) $\forall k \in \mathbb{N}, i = 1, \ldots, l_k$，$\exists z \in \mathbb{N}$，
+\[
+\E \left( \left| D_n^{(k,i)} - \E D_n^{(k,i)} \right|^z \right) \xrightarrow{n \to \infty} 0.
+\]
+
+(M3) $\forall k, i$，$\exists z \in \mathbb{N}$，s.t.
+\[
+\E \left( \left| D_n^{(k,i)} - \E D_n^{(k,i)} \right|^z \right) \to 0 \quad \text{可加快}.
+\]
+
+我们有以下结论：
+
+(M1) $\Rightarrow \exists \mu \in M_1(\mathbb{R})$，$\langle \mu, x^k \rangle = m_k$，s.t. $\E\mu_n$ 弱收敛到 $\mu$（$\mu_n$ 依期望弱收敛到 $\mu$）。
+
+(M1) + (M2) $\Rightarrow \mu_n$ 依概率弱收敛到 $\mu$。
+
+(M1) + (M3) $\Rightarrow \mu_n$ 几乎处处弱收敛到 $\mu$。
+
+\end{theorem}
+\begin{remark}
+    可加快在这里指的是这个序列的和收敛。
+\end{remark}
+
+\begin{lemma}
+设 $z \in \mathbb{N}$，$(Y_n)_n$ 是随机变量且 $\forall n$，$E(|Y_n|^2) < \infty$。若 $E Y_n \to y$，且 $E(|Y_n - E Y_n|^z) \to 0$，则 $Y_n \to y$ in prob。若 $E(|Y_n - E Y_n|^z) \to 0$ 可求和，则 $Y_n \to y$ a.s.
+\end{lemma}
+
+\begin{proof}
+    由 Markov 不等式，
+    \begin{equation*}
+        \begin{aligned}
+            P(|\gamma_n - y| \geq \varepsilon)& = P(|\gamma_n - \E\gamma_n + \E\gamma_n - y| \geq \varepsilon)\\
+            &\leq P(|\gamma_n - \E\gamma_n| > \frac{\varepsilon}{2}) + P(|\E\gamma_n - y| > \frac{\varepsilon}{2})\\
+            &\leq \left( \frac{\varepsilon}{2} \right)^{-z} \cdot \E(|\gamma_n - \E\gamma_n|^z) + P(|\E\gamma_n - y| > \frac{\varepsilon}{2}) \to 0.
+        \end{aligned}
+    \end{equation*}
+进一步，若 $\sum \E(|Y_n - \E Y_n|^z) < \infty$，则可证明$\sum P(|Y_n - y| > \varepsilon) < \infty$，由 Borel-Cantelli 引理， $Y_n \to y$ a.s.
+
+\end{proof}
+
+对定理的第二条和第三条，由引理，
+$D_n^{(k,i)} \to \text{Const}$ in prob / a.s.故
+
+\[
+\langle \mu_n, x^k \rangle = D_n^{(k,1)} + \cdots + D_n^{(k,l_k)} \implies m_k \quad \text{in prob / a.s.}
+\]
+
+\section{半圆分布和 MP 分布的矩}
+
+半圆分布 $\sigma$的密度函数：$f_\sigma(x) = \frac{1}{2\pi} \sqrt{4 - x^2}$，$x \in [-2,2]$.对于其矩，我们有如下结论：$\forall k=0,1,2,\cdots,$
+
+\begin{equation*}
+    \begin{aligned}
+        \begin{cases}
+            m_{2k}^\sigma = \frac{1}{2\pi} \int_{-2}^{2} \sqrt{4 - x^2} x^{2k} \, dx = \frac{(2k)!}{k!(k+1)!},\\
+            m_{2k+1}^\sigma = 0.
+        \end{cases}
+    \end{aligned}
+\end{equation*}
+\begin{8}
+    证明半圆分布的矩有上述形式。
+\end{8}
+\begin{proof}
+    首先，由于 $f_\sigma(x)$ 是偶函数，而 $x^{2k+1}$ 是奇函数，因此奇数阶矩为零：
+\[
+m_{2k+1}^\sigma = \int_{-2}^{2} x^{2k+1} f_\sigma(x) \, dx = 0
+\]
+
+对于偶数阶矩：
+\[
+m_{2k}^\sigma = \frac{1}{2\pi} \int_{-2}^{2} x^{2k} \sqrt{4 - x^2} \, dx
+\]
+
+由于被积函数是偶函数，可简化为：
+\[
+m_{2k}^\sigma = \frac{1}{\pi} \int_{0}^{2} x^{2k} \sqrt{4 - x^2} \, dx
+\]
+
+令 $x = 2\sin\theta$，则 $dx = 2\cos\theta \, d\theta$，当 $x$ 从 $0$ 到 $2$ 时，$\theta$ 从 $0$ 到 $\frac{\pi}{2}$：
+\[
+m_{2k}^\sigma = \frac{1}{\pi} \int_{0}^{\frac{\pi}{2}} (2\sin\theta)^{2k} \sqrt{4 - 4\sin^2\theta} \cdot 2\cos\theta \, d\theta
+\]
+\[
+= \frac{1}{\pi} \int_{0}^{\frac{\pi}{2}} 2^{2k} \sin^{2k}\theta \cdot 2\cos\theta \cdot 2\cos\theta \, d\theta
+= \frac{2^{2k+2}}{\pi} \int_{0}^{\frac{\pi}{2}} \sin^{2k}\theta \cos^2\theta \, d\theta
+\]
+
+现在计算积分：
+\[
+J_k = \int_{0}^{\frac{\pi}{2}} \sin^{2k}\theta \cos^2\theta \, d\theta
+= \int_{0}^{\frac{\pi}{2}} \sin^{2k}\theta (1 - \sin^2\theta) \, d\theta
+= I_{2k} - I_{2k+2}
+\]
+
+其中 $I_n = \int_{0}^{\frac{\pi}{2}} \sin^n\theta \, d\theta$。由 Wallis 公式：
+\[
+I_{2k} = \frac{(2k-1)!!}{(2k)!!} \cdot \frac{\pi}{2}, \quad
+I_{2k+2} = \frac{(2k+1)!!}{(2k+2)!!} \cdot \frac{\pi}{2}
+\]
+
+利用关系式 $(2k)!! = 2^k k!$ 和 $(2k-1)!! = \frac{(2k)!}{2^k k!}$，得：
+\[
+I_{2k} = \frac{(2k)!}{2^{2k} (k!)^2} \cdot \frac{\pi}{2}, \quad
+I_{2k+2} = \frac{(2k+2)!}{2^{2k+2} ((k+1)!)^2} \cdot \frac{\pi}{2}
+\]
+
+化简 $I_{2k+2}$：
+\[
+I_{2k+2} = \frac{(2k+2)(2k+1)(2k)!}{2^{2k+2} (k+1)^2 (k!)^2} \cdot \frac{\pi}{2}
+= \frac{(2k+1)(2k)!}{2^{2k+1} (k+1)(k!)^2} \cdot \frac{\pi}{2}
+\]
+
+于是：
+\[
+J_k = I_{2k} - I_{2k+2} = \frac{\pi}{2} \cdot \frac{(2k)!}{2^{2k} (k!)^2} \left[ 1 - \frac{2k+1}{2(k+1)} \right]
+= \frac{\pi}{2} \cdot \frac{(2k)!}{2^{2k} (k!)^2} \cdot \frac{1}{2(k+1)}
+= \frac{\pi (2k)!}{2^{2k+2} k!(k+1)!}
+\]
+
+代回原式：
+\[
+m_{2k}^\sigma = \frac{2^{2k+2}}{\pi} \cdot J_k
+= \frac{2^{2k+2}}{\pi} \cdot \frac{\pi (2k)!}{2^{2k+2} k!(k+1)!}
+= \frac{(2k)!}{k!(k+1)!}
+\]
+
+这正是卡特兰数 $C_k$ 的表达式。可以验证此结果满足卡特兰数的递推关系：
+\[
+\frac{C_k}{C_{k-1}} = \frac{\frac{(2k)!}{k!(k+1)!}}{\frac{(2k-2)!}{(k-1)!k!}}
+= \frac{(2k)(2k-1)}{k(k+1)} = \frac{2(2k-1)}{k+1}
+\]
+
+因此，半圆分布的矩公式为：
+\[
+m_{2k}^\sigma = \frac{(2k)!}{k!(k+1)!}, \quad m_{2k+1}^\sigma = 0
+\]
+\end{proof}
+\begin{remark}
+
+(a)$\sigma$ 具有紧支集，故由矩唯一决定。
+
+(b) Catalan 数：
+\[
+C_k = \frac{(2k)!}{k!(k+1)!} = \binom{2k}{k} - \binom{2k}{k-1}
+\]
+\[
+\Rightarrow m_k^\sigma = 
+\begin{cases} 
+C_{k/2}, & k \text{ even}, \\
+0, & k \text{ odd}.
+\end{cases}
+\]
+\end{remark}
+
+
+MP 分布$\mu^y, y>0,y_\pm = (1 \pm \sqrt{y})^2$.其密度函数为
+\[
+f_{\mu^y}(x) = \frac{1}{2\pi x y} \sqrt{(y_+ - x)(x - y_-)} \chi_{[y_-, y_+]}(x) + \left(1 - \frac{1}{y}\right) \delta_0 \chi_{[y>1]}(x)
+\]
+\[
+\text{其矩为}\quad\langle \mu^y, x^k \rangle = \sum_{r=0}^{k-1} \frac{y^r}{r+1} \binom{k}{r} \binom{k-1}{r}
+\]
+
+\section{RMT 中矩方法的应用}
+
+$(X_n)_n$：随机矩阵。
+
+$(\sigma_n)_n$：经验谱分布。
+
+\[
+ \sigma_n = \frac{1}{n} \sum_{i=1}^{n} \delta_{\lambda_i}(X_n)
+\]
+\begin{equation*}
+    \begin{aligned}
+        \langle \sigma_n, x^k \rangle & = \frac{1}{n} \sum_{i=1}^{n} \lambda_i^k(X_n)= \frac{1}{n} Tr(X_n^k)\\
+        & = \frac{1}{n} \sum_{t_1, \ldots, t_k=1}^{n} X_n(t_1, t_2) X_n(t_2, t_3) \cdots X_n(t_k, t_1)
+    \end{aligned}
+\end{equation*}
+
+
+\begin{theorem}
+设 $(\sigma_n)_n$ 是随机矩阵 $(X_n)_n$ 的经验谱分布，且 $X_n$ 中各元素有各阶绝对矩 $\E(|X_n(i,j)|^p) < \infty$。若 $\forall k \in \mathbb{N}$，$\E \langle \sigma_n, x^k \rangle \to m_k$，且 $(m_k)_k$ 满足 Carleman 条件，则 $\sigma_n$ 依期望弱收敛到 $\mu \in \M_1(\mathbb{R})$，且 $\langle \mu, x^k \rangle = m_k$。
+
+\end{theorem}
+证明这个定理只需说明$\E \langle \sigma_n, x^k \rangle$ 有限。
+
+\begin{lemma}
+   设 $Y_1, \ldots, Y_k$ 是取$\mathbb{K}$值的随机变量，且 $\E(|Y_i|^k) < \infty$，则
+\[
+\E(|Y_1 Y_2 \cdots Y_k|) \leq \left(\E(|Y_1|^k)\right)^{1/k} \cdots \left(\E(|Y_k|^k)\right)^{1/k}.
+\]
+\end{lemma}
+\begin{proof}
+    Cauchy–Schwarz 不等式 + 归纳法。
+\end{proof}
+
+从而结合引理及
+\[
+\langle \sigma_n, x^k \rangle = \frac{1}{n} \sum_{t_1, \ldots, t_k=1}^{n} X_n(t_1, t_2) \cdots X_n(t_k, t_1).
+\]
+可得$\E \langle \sigma_n, x^k \rangle$ 有限。
+
+\begin{theorem}
+设 $(\sigma_n)_n$ 是 Hermite 随机矩阵 $(X_n)_n$ 的经验谱分布，且 $X_n$ 中所有元素具有各阶绝对矩。$\mu$ 是由 $(m_k)_k$ 唯一决定的概率测度。
+
+(i) 假设 $\forall k \in \mathbb{N}$，存在分解：
+\(
+\langle \sigma_n, x^k \rangle = D_n^{(k,1)} + \cdots + D_n^{(k,l_k)},
+\)
+且 $\lim_{n \to \infty} \E D_n^{(k,i)}$ 存在。若 $\sigma_n$ 依期望收敛到 $\mu$，则 $\E \langle \sigma_n, x^k \rangle \to m_k$。
+
+(ii) 若 (i) 成立，且 $\exists z \in \mathbb{N}$，$\E(|D_n^{(k,i)} - \E D_n^{(k,i)}|^z) \to 0$，则 $\mu_n \to \mu$ in prob。
+
+(iii) 若 (i) 成立，且 $\exists z \in \mathbb{N}$，$\E(|D_n^{(k,i)} - \E D_n^{(k,i)}|^z) \to 0$ 可加快，则 $\mu_n \to \mu$ a.s.
+\end{theorem}

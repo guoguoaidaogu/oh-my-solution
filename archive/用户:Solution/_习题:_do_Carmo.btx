@@ -1,0 +1,1125 @@
+\setdisplaytitle{Selected Solutions to do Carmo}
+\sethtmltitle{Selected Solutions to do Carmo}
+\setcounter{section}{-1}
+
+== Differentiable Manifolds ==
+
+\begin{itemize}
+    \item[2.] Prove that the tangent bundle of a differentiable manifold 
+    is orientable (even though $M$ may not be).
+
+    Let $\pi$ be the projection from $TM$ to $M$. 
+    Cover $M$ with $\{(U,\varphi)\}$, 
+    then $\{\pi^{-1}(U)\}$ covers $TM=\pi^{-1}(M)$, 
+    and we need to find the trivialization $\tilde{\varphi}$ 
+    associated to $\pi^{-1}(U)$ for each $U$.
+
+    Given any smooth chart $\varphi\colon U\subset M\to\R^n$, 
+    define $\tilde{\varphi}\colon \pi^{-1}(U)\subset TM\to\R^{2n}$ by
+    \[v|_p \mapsto (\varphi(p),v).\]
+    For any two overlapping charts $(U,\varphi)$ and $(V,\psi)$, 
+    the transition map $\tilde{\psi}\circ\tilde{\varphi}^{-1}
+    \colon \varphi(U\cap V)\times\R^n\to\psi(U\cap V)\times\R^n$ is given by
+    \[(x,v)\mapsto(\tilde{x},\frac{\partial\tilde{x}}{\partial x}v),\]
+    where $\psi\circ\varphi^{-1}(x):=\tilde{x}(x)
+    =(\tilde{x}^1(x),\cdots,\tilde{x}^n(x))$. 
+    Then the determinant is $\bigg(\!\det\dfrac{\partial\tilde{x}}{\partial x}\bigg)^2>0$.
+\end{itemize}
+
+== Riemannian Metrics ==
+
+\begin{itemize}
+    \item[2.] In terms of $\tilde{\pi}\colon
+    \R^n\stackrel{\pi}{\longrightarrow}{T^n}\hookrightarrow\R^{2n}$, 
+    which is, \[\tilde{\pi}(x_1,\cdots,x_n)
+    =(\cos x_1,\sin x_1,\cdots,\cos x_n,\sin x_n),\] 
+    we have $d\tilde{\pi}=\operatorname{diag}((-\sin x_1,\cos x_1),\cdots,(-\sin x_n,\cos x_n))$. 
+    So the induced metric on $\R^n$ is 
+    \[(-\sin x_j du^j)\otimes(-\sin x_j du^j)
+    +(\cos x_j du^j)\otimes(\cos x_j du^j)=du^j\otimes du^j.\]
+
+    \item[4.] (a) For $g(t)=yt+x$ and $f(t)=bt+a$, 
+    \[(g\circ f)(t)=y(bt+a)+x=ybt+ya+x.\]
+    That is to say, $L_g$ carries $(a,b)$ to $(ya+x,yb)$, and thus
+    \[dL_g=\begin{pmatrix}y&0\\0&y\end{pmatrix}.\]
+    As $L_g(0,1)=(x,y)$, we have
+    \[\langle-,-\rangle_{(0,1)}=\langle(dL_g)-,(dL_g)-\rangle_{(x,y)}
+    =y^2\langle-,-\rangle_{(x,y)}.\]
+    (b) Check that $-\dfrac{4dzd\bar{z}}{(z-\bar{z})^2}$ 
+    is invariant under $z\mapsto az+b$ and $z\mapsto 1/z$.
+
+    \item[6.] Exercise 2 provides a local isometry $\pi\colon\R^n\to T^n$, 
+    but there is no local isometry $\rho\colon T^n\to\R^n$. 
+    Indeed, write $\rho=(\rho_1,\cdots,\rho_n)$. 
+    $\rho_1$ mapping the compact set $T^n$ to $\R$ 
+    attains its maximum at some $p\in T^n$, 
+    and consequently $d\rho_1(p)=0\in\R^n$. 
+    Then $d\rho(p)=(0,\cdots)\in\R^{n\times n}$ is singular.
+\end{itemize}
+
+== Affine and Riemannian Connections ==
+
+\begin{itemize}
+    \item[1.] Denote $P$ by $P_t$ instead. Since
+    \[\frac{d}{dt}\langle P_tv,P_tw \rangle
+    =\bigg\langle \frac{D}{dt}(P_tv),P_tw \bigg\rangle
+    +\bigg\langle P_tv,\frac{D}{dt}(P_tw) \bigg\rangle=0,\]
+    $P_t$ is an isometry. Then $\det P_t\in\{1,-1\}$. Because $P_t$ is 
+    continuously dependent on $t$ and $P_{t_0}=\operatorname{id}$, 
+    we have $\det P_t$ is always $1$, and in particular positive.
+
+    \item[2.] Proved in \cite{CL} Chapter 2 Theorem 7.2 (pp.142-3).
+
+    \item[4.] a) According to Exercise 3, $\nabla_{\.c}V$ is 
+    the tangential component of $\overline{\nabla}_{\.c}V$, 
+    i.e. the orthonormal projection from $T_{c(t)}\R^3$ onto $T_{c(t)}M$, 
+    where $\overline{\nabla}$ is the Riemannian connection of $\R^3$. 
+    $\overline{\nabla}_{\.c}V$ is simply 
+    the usual derivative $\frac{dV}{dt}$, so $\nabla_{\.c}V=0$ 
+    iff the projection of $\frac{dV}{dt}$ onto $T_{c(t)}M$ vanishes.
+
+    b) The acceleration of the unit velocity field along a great circle, 
+    namely $\frac{dV}{dt}$, points to the center of the sphere, 
+    perpendicular to the tangent space embedded in $\R^3$ (or $\R^{n+1}$).
+
+    \item[7.] Method I. Consider the cone $C$ tangent to $S^2$ along $c$, 
+    then the parallel transport of $V_0$ along $c$ 
+    is the same, whether taken relative to $S^2$ or to $C$, 
+    as the tangent spaces  along $c$ 
+    whether taken relative to $S^2$ or to $C$ are the same. 
+    Flatten the cone (locally, or at least minus a line) 
+    to a sector on the plane (in other words, $C$ is locally isometric 
+    to a sector in $\R^2$ with $c$ being its arc). 
+    The parallel transport of $V_0$ on the plane is merely translation in $\R^2$. 
+    From the perspective of a person walking along $c$, 
+    $V_0$ appears to be rotating at constant speed, 
+    reminiscent of a scene when the theme song of \textit{Detective Conan} goes 
+    `運命のルーレット廻して、ずっと君を見ていた'. 
+    For details, refer to \cite{dC} 4-4 Example 1 (p.246).
+
+    \begin{tikzpicture}
+    \draw (1.732,0) arc (-30:-150:2) to (0,1) to (1.732,0);
+    \draw[->,>=stealth] (1.6,-0.2) to (1.3,-0.8);
+    \draw[->,>=stealth] (1.2,-0.6) to (0.9,-1.2);
+    \draw[->,>=stealth] (0.8,-0.833) to (0.5,-1.433);
+    \draw[->,>=stealth] (0.4,-0.96) to (0.1,-1.56);
+    \draw[->,>=stealth] (1.63,-0.16) to (1.6,-0.2);
+    \draw[->,>=stealth] (1.24,-0.57) to (1.2,-0.6);
+    \draw[->,>=stealth] (0.818,-0.825) to (0.8,-0.833);
+    \draw[->,>=stealth] (0.45,-0.95) to (0.4,-0.96);
+    \draw (0,-1) node {$c$};
+    \draw (0,0) node {$C$};
+    \draw (1.3,-1.1) node {$V_0$}
+    \end{tikzpicture}
+    
+    Method II. Consider the cone $C$ tangent to $S^2$ along $c$, parametrized as
+    \[\{(av\cos u,av\sin u,bv)\in\R^3:u,v\in\R\},\]
+    where $a^2+b^2=1$. The parallel transport of $V_0$ along $c$ 
+    is the same, whether taken relative to $S^2$ or to $C$, 
+    as the tangent spaces  along $c$ 
+    whether taken relative to $S^2$ or to $C$ are the same. 
+    Now we carry out a bit of calculations to see the effect of 
+    parallel--translating $V_0$ along $c$, written $U(t)\partial_u+V(t)\partial_v$. 
+    Besides, let $u(t)=t,v(t)=v_0$ be the local expression for $c(t)$. First,
+    \[g_{uu}=a^2v^2,\quad g_{uv}=0,\quad g_{vv}=1,\]
+    and then
+    \[\Gamma_{uu}^u=0,\quad\Gamma_{vu}^u=\frac{1}{v},\quad
+    \Gamma_{uu}^v=-a^2v,\quad\Gamma_{vu}^v=0.\]
+    Substituting into
+    \begin{equation*}\left\{\begin{aligned}
+        \.U+(\Gamma_{uu}^u\.u+\Gamma_{uv}^u\.v)U
+        +(\Gamma_{vu}^u\.u+\Gamma_{vv}^u\.v)V=0,\\
+        \.V+(\Gamma_{uu}^v\.u+\Gamma_{uv}^v\.v)U
+        +(\Gamma_{vu}^v\.u+\Gamma_{vv}^v\.v)V=0,
+    \end{aligned}\right.\end{equation*}
+    where $\.u=1,\.v=0$, we get
+    \begin{equation*}\left\{\begin{aligned}
+        \.U+\ \frac{1}{v}\ V=0,\\
+        \.V-a^2vU=0.
+    \end{aligned}\right.\end{equation*}
+    Hence,
+    \begin{equation*}\left\{\begin{aligned}
+        &U=\,\ c\,\ \cos(at+d),\\
+        &V=av_0\sin(at+d)
+    \end{aligned}\right.\end{equation*}
+    for two constants $c,d$. 
+    We conclude that the vector rotates at angular velocity $a$, 
+    if the angular velocity of $c$ along the parallel is taken to be $1$.
+\end{itemize}
+
+== Geodesics; Convex Neighborhoods ==
+
+\begin{itemize}
+    \item[1.] a) The induced metric is
+    \[\big(d(f(v)\cos u)\big)^2+\big(d(f(v)\sin u)\big)^2+\big(d(g(v))\big)^2
+    =f^2du^2+(f'^2+g'^2)dv^2.\]
+    b) The inverse is
+    \[g^{11}=\frac{1}{f^2},\quad g^{12}=0,\quad g^{22}=\frac{1}{f'^2+g'^2}.\]
+    Then the coefficients in these differential equations are
+    \begin{align*}
+        \Gamma_{12}^1+\Gamma_{21}^1&=2\Gamma_{12}^1
+        =g^{k1}(\partial_1g_{2k}+\partial_2g_{1k}-\partial_kg_{12})
+        =g^{11}\partial_2g_{11}=\frac{2ff'}{f^2},\\
+        \Gamma_{11}^2
+        &=\frac12 g^{k2}(\partial_1g_{1k}+\partial_1g_{1k}-\partial_kg_{11})
+        =-\frac12 g^{22}\partial_2g_{11}=-\frac{ff'}{f'^2+g'^2},\\
+        \Gamma_{22}^2
+        &=\frac12 g^{k2}(\partial_2g_{2k}+\partial_2g_{2k}-\partial_kg_{22})
+        =\frac12 g^{22}\partial_2g_{22}=\frac{f'f''+g'g''}{f'^2+g'^2}.
+    \end{align*}
+    c) Let
+    \[\gamma(t)=\big(f(v(t))\cos u(t),f(v(t))\sin u(t),g(v(t))\big),\]
+    then
+    \[|\gamma'(t)|^2=f^2u'^2+(f'^2+g'^2)v'^2.\]
+    Thus by the first (which gives $f^2u''=-2ff'u'v'$) 
+    and the second equation subsequently,
+    \begin{align*}
+        \frac12\frac{d}{dt}|\gamma'(t)|^2
+        &=f^2u'u''+ff'v'u'^2+(f'^2+g'^2)v'v''+(f'f''+g'g'')v'^3\\
+        &=-2ff'u'^2v'+ff'v'u'^2+(f'^2+g'^2)v'v''+(f'f''+g'g'')v'^3\\
+        &=-ff'v'u'^2+(f'^2+g'^2)v'v''+(f'f''+g'g'')v'^3\\
+        &=v'(f'^2+g'^2)\bigg(-\frac{ff'}{f'^2+g'^2}u'^2
+        +v''+\frac{f'f''+g'g''}{f'^2+g'^2}v'^2\bigg)=0.
+    \end{align*}
+    We have
+    \[r=\text{radius of }\{\big(f(v)\cos u,f(v)\sin u,g(v)\big):u\}=f(v),\]
+    and $\gamma'=u'\partial_1+v'\partial_2$,
+    \[r\cos\beta=r\frac{\langle\gamma',\partial_1\rangle}{|\gamma'||\partial_1|}
+    =f\frac{u'f^2}{|\gamma'|f}=\frac{u'f^2}{|\gamma'|}.\]
+    That $|\gamma'|$ is constant has been verified, and
+    \[(u'f^2)'=u''f^2+u'2ff'v'=0\]
+    shows that $u'f^2$ is constant as well.
+
+    d) \href{https://math.stackexchange.com/questions/3632077/geodesics-on-paraboloid-self-interesect-in-an-infinite-number-of-points?r=SearchResults}{Click}, 
+    or cf. \cite{dC} 4-4 Example 6 (pp.261-2), 
+    or \cite{CL} Chapter 3 Exercise 2 (pp.465-6).
+    
+    \item[2.] a) The inner product being well--defined is because 
+    \[d\pi(V)=p'(0),\quad \frac{Dv}{dt}(0)
+    =v'(0)+p_i'(0)v^{j\prime}(0)\nabla_{\partial_i}\partial_j\]
+    depends only on $V=(p'(0),v'(0))=(p_i'(0),v^{j\prime}(0))$, 
+    not essentially on $\alpha$.
+    To show that it is a Riemannian metric, properties like 
+    symmetry, bilinearity, non-negativity and smooth dependence are all obvious, 
+    and $\langle V,V\rangle=0$ implies $p'(0)=\dfrac{Dv}{dt}(0)=0$, 
+    which further implies $v'(0)=0$ by the expression of 
+    $\dfrac{Dv}{dt}(0)$ in local coordinates above.
+
+    b) We have the decomposition
+    \[T_{(p,v)}TM\simeq T_v(T_pM)\oplus\pi^{-1}(p)\simeq T_pM\oplus T_pM,\]
+    and $(p'(t),v'(t))\perp\pi^{-1}(p)$ iff $\dfrac{Dv}{dt}=0$, 
+    i.e. $v$ is parallel along $p$.
+
+    c) Simply because $\gamma'$ is parallel along $\gamma$.
+
+    d) The hint is a solution indeed.
+
+    e) With respect to the decomposition given in b), 
+    $W=d\pi(W)+0$ if $W$ is horizontal, 
+    and $W=0+W=0+\dfrac{Dw}{dt}(0)$ if $W$ is vertical.
+
+    \item[4.] a) Write $A$ for the convex neighborhood 
+    and $a$ for any of its points. 
+    By definition, for any $b\in A$, there is a unique geodesic 
+    $\gamma_{b}\colon [0,1]\to A$ joining $a$ to $b$. 
+    Then $h\colon [0,1]\times A \to A,
+    (t,b)\mapsto\operatorname{exp}_a(t\gamma'_b)$ 
+    is a homotopy between $k_a$ and $\operatorname{id}_A$.
+
+    b) For any $p\in M$ pick a convex neighborhood. 
+    A finite union of convex neighborhoods is again convex 
+    (check by definition), hence contractible.
+
+    \item[7.] Let $U$ be a normal neighborhood of $p$ in $M$, 
+    that is, $\exp_p\colon V\to U$ is a diffeomorphism. 
+    Define $E_i(\exp_p(v))=(d\exp_p)_v(\partial_i)$, 
+    where $v\in V\subset T_pM$, $\partial_i=\frac{\partial}{\partial x_i}$, 
+    and $x_i,i=1,\cdots,n$ are the standard Euclidean coordinates 
+    on $T_pM\simeq\R^n$. In other words, $(d\exp_p)_v$ 
+    maps $\partial_i$ at $v$ to $E_i$ at $\exp_p(v)$.
+
+    For any $v=(v_i)_{i=1,\cdots,n}\in V$, 
+    $\gamma(t)=\exp_p(tv),t\in[0,1]$ is a geodesic. 
+    Then $(\nabla_{\gamma'}\gamma')(\exp_p(tv))=0$, 
+    where $\gamma'=\big(\exp_p(tv)\big)'=\sum\limits_i v_iE_i(\exp_p(tv))$. 
+    In particular let $t=0$, we get $(\nabla_{\gamma'}\gamma')(p)=0$ 
+    where $\gamma'=\sum\limits_i v_iE_i(p)$, 
+    and consequently $\nabla_{E_i}E_j(p)=0$ by the arbitrariness of $v$.
+
+    \item[8.] a) The first is because
+    \[\langle \operatorname{grad}f,\sum_i v_iE_i \rangle
+    =df(\sum_i v_iE_i)=\sum_i v_iE_i(f)
+    =\langle \sum_i E_i(f)E_i,\sum_i v_iE_i \rangle.\]
+    For the second, for $Y=\sum\limits_j g_jE_j$, the trace of the mapping
+    \[\sum_j g_jE_j \mapsto \nabla_{\sum\limits_j g_jE_j}\sum_i f_iE_i
+    =\sum_{i,j} g_jE_j(f_i)E_i\]
+    is $\operatorname{div}X=\sum\limits_i E_i(f_i)$.
+
+    b) Apply a), as $\frac{\partial}{\partial x_1},\cdots,
+    \frac{\partial}{\partial x_n}$ is a geodesic frame.
+
+    \item[10.] Differentiate $\big\langle\frac{\partial f}{\partial s},
+    \frac{\partial f}{\partial t}\big\rangle$ with respect to $s$, obtaining
+    \begin{align*}
+        \frac{d}{ds}\bigg\langle\frac{\partial f}{\partial s},
+        \frac{\partial f}{\partial t}\bigg\rangle
+        &=\bigg\langle\frac{D}{ds}\frac{\partial f}{\partial s},
+        \frac{\partial f}{\partial t}\bigg\rangle+
+        \bigg\langle\frac{\partial f}{\partial s},
+        \frac{D}{ds}\frac{\partial f}{\partial t}\bigg\rangle\\
+        &=0+\bigg\langle\frac{\partial f}{\partial s},
+        \frac{D}{dt}\frac{\partial f}{\partial s}\bigg\rangle\\
+        &=\frac{1}{2}\frac{d}{dt}\bigg\langle\frac{\partial f}{\partial s},
+        \frac{\partial f}{\partial s}\bigg\rangle=0,
+    \end{align*}
+    we get
+    \[\bigg\langle\frac{\partial f}{\partial s},
+    \frac{\partial f}{\partial t}\bigg\rangle(s_0,t_0)
+    =\bigg\langle\frac{\partial f}{\partial s},
+    \frac{\partial f}{\partial t}\bigg\rangle(0,t_0)=0.\]
+\end{itemize}
+
+== Curvature ==
+
+\begin{itemize}
+    \item[1.] a) Combine 
+    \[\nabla_XY+\nabla_YX=\nabla_{(X+Y)}(X+Y)-\nabla_XX-\nabla_YY=0\]
+    and
+    \[\nabla_XY-\nabla_YX=[X,Y].\]
+
+    b) Using a) and the Jacobi identity,
+    \begin{align*}
+        R(X,Y)Z&=\nabla_X\nabla_YZ-\nabla_Y\nabla_XZ+\nabla_{[X,Y]}Z\\
+        &=\frac{1}{2}\big(\nabla_Y[X,Z]-\nabla_X[Y,Z]+[[X,Y],Z]\big)\\
+        &=\frac{1}{4}\big([Y,[X,Z]]-[X,[Y,Z]]\big)+\frac{1}{2}[[X,Y],Z]\\
+        &=\frac{1}{4}[[X,Y],Z].
+    \end{align*}
+
+    c) By the equation (3) of Chapter 1 section 2 (p.40), we have
+    \begin{align*}
+        K(\sigma)&=\langle R(X,Y)X,Y\rangle=\frac{1}{4}\langle[[X,Y],X],Y\rangle\\
+        &=-\frac{1}{4}\langle[X,Y],[Y,X]\rangle=\frac{1}{4}\|[X,Y]\|^2.
+    \end{align*}
+
+    \item[2.] a) $0=Z\langle X,X \rangle=2\langle A_X(Z),X \rangle$。
+    
+    b) Let $S$ be the right side, that is to say,
+    \[S=Z\langle\nabla_ZX,X\rangle+\langle\nabla_Z\nabla_XX,Z\rangle
+    -\langle\nabla_X\nabla_ZX,Z\rangle+\langle\nabla_{[X,Z]}X,Z\rangle.\]
+    Using the Killing equation $\langle\nabla_ZX,X\rangle
+    +\langle\nabla_XX,Z\rangle=0$, the sum of first two terms becomes
+    \[Z\langle\nabla_ZX,X\rangle+\langle\nabla_Z\nabla_XX,Z\rangle
+    =-Z\langle\nabla_XX,Z\rangle+\langle\nabla_Z\nabla_XX,Z\rangle
+    =-\langle\nabla_XX,\nabla_ZZ\rangle;\]
+    note that $\langle\nabla_ZX,Z\rangle=0$, implying 
+    $X\langle\nabla_ZX,Z\rangle=0$, and then the third term becomes
+    \[-\langle\nabla_X\nabla_ZX,Z\rangle=\langle\nabla_ZX,\nabla_XZ\rangle;\]
+    the fourth term is
+    \[\langle\nabla_{[X,Z]}X,Z\rangle=-\langle\nabla_ZX,[X,Z]\rangle.\]
+    Adding together, we get
+    \[S=-\langle\nabla_XX,\nabla_ZZ\rangle+\langle\nabla_ZX,\nabla_ZX\rangle.\]
+    Because of the Killing equation at $p$ and a), 
+    \[0=(\langle\nabla_XX,Y\rangle+\langle\nabla_YX,X\rangle)(p)
+    =\langle\nabla_XX,Y\rangle(p)\]
+    for any $Y$, it is inferred that $\nabla_XX(p)=0$, and therefore
+    \[S(p)=\langle\nabla_ZX,\nabla_ZX\rangle(p).\]
+
+    \item[3.] That $A$ is anti--symmetric is simply
+    \[\langle A(y),z \rangle+\langle y,A(z) \rangle
+    =\langle \nabla_YX,Z \rangle+\langle Y,\nabla_ZX \rangle=0,\]
+    and that $A$ is an isomorphism is because by 2.b),
+    \[\langle A(y),z \rangle+\langle y,A(z) \rangle(p)
+    =\frac{1}{2}Z_p(Zf)+(X,Z,X,Z)(p)>0.\]
+    As $-A=A^{\rm T}$, taking determinant on both sides gives
+    \[(-1)^{\dim E}\det A=\det A.\]
+    This implies $\dim E=\dim M-1$ is even, 
+    which is a contradiction to $\dim M$ being even.
+
+    \item[5.] Observe that, for all $Z\in\mathscr{X}(M)$, 
+    at $\gamma(0)$ we have (where $Z'=\frac{DZ}{dt}$)
+    \begin{align*}
+        0&=(\nabla_{\gamma'}R)(\gamma',X,\gamma',Z)
+        =\nabla R(\gamma',X,\gamma',Z,\gamma')\\
+        &=\gamma'(R(\gamma',X,\gamma',Z))
+        -R(\gamma',X',\gamma',Z)-R(\gamma',X,\gamma',Z')\\
+        &=\gamma'\langle R(\gamma',X)\gamma',Z\rangle
+        -\langle R(\gamma',X')\gamma',Z\rangle
+        -\langle R(\gamma',X)\gamma',Z'\rangle\\
+        &=\langle\nabla_{\gamma'}(R(\gamma',X)\gamma'),Z\rangle
+        -\langle R(\gamma',X')\gamma',Z\rangle.
+    \end{align*}
+    The first equality is because the tensor $\nabla_{\gamma'}R$ 
+    is tensorial in the second component and $X$ vanishes at $\gamma(0)$, 
+    and the third equality is because $\gamma''=0$.
+
+    \item[6.] a) $\nabla R=0$ implies that for any $W$,
+    \begin{align*}
+        \gamma'(R(X,Y,Z,W))
+        &=R(\nabla_{\gamma'}X,Y,Z,W)+R(X,\nabla_{\gamma'}Y,Z,W)\\
+        &+R(X,Y,\nabla_{\gamma'}Z,W)+R(X,Y,Z,\nabla_{\gamma'}W).
+    \end{align*}
+    Substituting $\nabla_{\gamma'}X=\nabla_{\gamma'}Y=\nabla_{\gamma'}Z=0$, we get
+    \[\gamma'(R(X,Y,Z,W))=R(X,Y,Z,\nabla_{\gamma'}W),\]
+    which is $\langle\nabla_{\gamma'}(R(X,Y)Z),W\rangle=0$.
+
+    b) For any curve $\gamma$, let $X,Y$ be two orthonormal 
+    parallel unit vector fields along $\gamma$. Then we have
+    \[\frac{d}{dt}\big(R(X,Y,X,Y)(\gamma(t))\big)
+    =\langle\nabla_{\gamma'}(R(X,Y)X),Y\rangle
+    +\langle R(X,Y)X,\nabla_{\gamma'}Y\rangle=0.\]
+    To put it another way, $R(X,Y,X,Y)$ is constant along $\gamma$. 
+    Therefore $R(X,Y,X,Y)$ is constant over $M$.
+
+    c) Recall that $M$ has constant sectional curvature $K_0$ means
+    \[R(X,Y,Z,W)=K_0(\langle X,W\rangle\langle Y,Z\rangle
+    -\langle Y,W\rangle\langle X,Z\rangle).\]
+    Then $\nabla R(X,Y,Z,W,V)=0$, i.e.
+    \begin{align*}
+        V(R(X,Y,Z,W))&=R(\nabla_VX,Y,Z,W)+R(X,\nabla_VY,Z,W)\\
+        &+R(X,Y,\nabla_VZ,W)+R(X,Y,Z,\nabla_VW),
+    \end{align*}
+    becomes the identity
+    \begin{align*}
+        &V(\langle X,W\rangle\langle Y,Z\rangle
+        -\langle Y,W\rangle\langle X,Z\rangle)\\
+        &=\langle \nabla_VX,W\rangle\langle Y,Z\rangle
+        -\langle Y,W\rangle\langle \nabla_VX,Z\rangle\\
+        &+\langle X,W\rangle\langle \nabla_VY,Z\rangle
+        -\langle \nabla_VY,W\rangle\langle X,Z\rangle\\
+        &+\langle X,W\rangle\langle Y,\nabla_VZ\rangle
+        -\langle Y,W\rangle\langle X,\nabla_VZ\rangle\\
+        &+\langle X,\nabla_VW\rangle\langle Y,Z\rangle
+        -\langle Y,\nabla_VW\rangle\langle X,Z\rangle.
+    \end{align*}
+
+    \item[7.] In this frame $\nabla_{e_i}e_j(p)=0$, hence
+    \begin{align*}
+        \nabla R(e_i,e_j,e_k,e_\ell,e_h)
+        &=e_h\langle R(e_i,e_j)e_k,e_\ell\rangle
+        =e_h\langle R(e_k,e_\ell)e_i,e_j\rangle\\
+        &=\langle\nabla_{e_h}\nabla_{e_\ell}\nabla_{e_k}e_i
+        -\nabla_{e_h}\nabla_{e_k}\nabla_{e_\ell}e_i,e_j\rangle.
+    \end{align*}
+    Note that though there is supposed to be one more term 
+    $\langle\nabla_{e_h}\nabla_{[e_k,e_\ell]}e_i,e_j\rangle$ 
+    in the second line above, it actually vanishes, as long as we observe that
+    \[[e_k,e_\ell](p)=(\nabla_{e_k}e_\ell-\nabla_{e_\ell}e_k)(p)=0.\]
+    In the second Bianchi Identity, $(i,j)$ stays invariant, 
+    while $(k,\ell,h)\to(\ell,h,k)\to(h,k,\ell)$ permutes cyclically. 
+    Summing these three equations yields
+    \begin{align*}
+        &\nabla R(e_i,e_j,e_k,e_\ell,e_h)+\nabla R(e_i,e_j,e_\ell,e_h,e_k)
+        +\nabla R(e_i,e_j,e_h,e_k,e_\ell)\\
+        &=\langle\nabla_{e_h}\nabla_{e_\ell}\nabla_{e_k}e_i
+        -\nabla_{e_h}\nabla_{e_k}\nabla_{e_\ell}e_i,e_j\rangle\\
+        &+\langle\nabla_{e_k}\nabla_{e_h}\nabla_{e_\ell}e_i
+        -\nabla_{e_k}\nabla_{e_\ell}\nabla_{e_h}e_i,e_j\rangle\\
+        &+\langle\nabla_{e_\ell}\nabla_{e_k}\nabla_{e_h}e_i
+        -\nabla_{e_\ell}\nabla_{e_h}\nabla_{e_k}e_i,e_j\rangle\\
+        &=R(e_\ell,e_h,\nabla_{e_k}e_i,e_j)
+        +R(e_h,e_k,\nabla_{e_\ell}e_i,e_j)
+        +R(e_k,e_\ell,\nabla_{e_h}e_i,e_j)\\
+        &=0,
+    \end{align*}
+    where the last equality is simply since 
+    $\nabla_{e_k}e_i=\nabla_{e_\ell}e_i=\nabla_{e_h}e_i=0$ at $p$.
+\end{itemize}
+
+== Jacobi Fields ==
+
+\begin{itemize}
+    \item[3.] Assume that $a\in C(p)$, then the existence of 
+    a non-trivial Jacobi field $J$ along the geodesic $\gamma\colon[0,a]\to M$, 
+    with $\gamma(0)=p,J(0)=J(a)=0$. Using the Jacobi equation, we have
+    \[\frac{d}{dt}\bigg\langle\frac{DJ}{dt},J\bigg\rangle
+    =-(\gamma',J,\gamma',J)+\bigg\|\frac{DJ}{dt}\bigg\|^2\ge0.\]
+    But $\big\langle\frac{DJ}{dt},J\big\rangle=0$ at $t=0,a$, 
+    then $\big\langle\frac{DJ}{dt},J\big\rangle\equiv0$. 
+    Since $\frac{d}{dt}\langle J,J \rangle
+    =2\big\langle\frac{DJ}{dt},J\big\rangle\equiv0$, 
+    we get $\|J\|^2\equiv\text{constant}$, 
+    and hence $\equiv0$, a contradiction.
+
+    \item[4.] From Example 2.3, the Jacobi field $J_1$ along $\gamma$ 
+    satisfying $J_1(0)=0,J_1'(0)=\frac{u_0}{|u_0|}$, is given by
+    \[J_1(t)=\frac{\sin(t\sqrt{-b})}{\sqrt{-b}}w(t).\]
+    In addition, from Corollary 2.5,
+    \[J_1(\ell)=(d\exp_p)_{\ell\gamma'(0)}(\ell w(0)).\]
+    It follows that
+    \[J(\ell)=v=(d\exp_p)_{\ell\gamma'(0)}(u_0)
+    =J_1(\ell)\frac{|u_0|}{|\ell w(0)|}=J_1(\ell)\frac{|u_0|}{\ell}.\]
+    In addition, since $|w(t)|=|w(0)|=1$,
+    \[1=|v|=|J(\ell)|=|J_1(\ell)|\frac{|u_0|}{\ell}
+    =\frac{\sin(\ell\sqrt{-b})}{\sqrt{-b}}\frac{|u_0|}{\ell},\]
+    we have
+    \[\frac{|u_0|}{\ell}=\bigg(\frac{\sin(\ell\sqrt{-b})}{\sqrt{-b}}\bigg)^{-1},\]
+    which implies what was asserted.
+
+    \item[6.] a) By Proposition 2.9, 
+    $\exp_p\colon B_\delta(0)\subset T_pM \to B_\delta(p)\subset M$ 
+    is a diffeomorphism onto an open subset $\bar{U}$ of $M$. 
+    To make the polar coordinates $(\rho,\theta)$ into 
+    a coordinate system indeed, an entire radius 
+    $-\rho v(0),0\le\rho<\delta$ in $B_\delta(0)$ must be removed, 
+    and correspondingly the ray $\exp_p(-\rho v(0)),0\le\rho<\delta$ 
+    in $\bar{U}$, forming the required $U$.
+
+    b) $f(0,\theta),-\pi<\theta<\pi$ is the point $p$ 
+    instead of a curve, so $g_{12}(0,\theta)=0$. 
+    Considering the unit--speed geodesic $f(\rho,\theta_0),0<\rho<\delta$ 
+    where $\rho$ varies and $\theta_0$ is fixed, we get $g_{11}=1$, 
+    and $\nabla_{\partial_\rho}\partial_\rho=0$ 
+    for $\partial_\rho:=\frac{\partial f}{\partial\rho}(\rho,\theta_0)$, 
+    the latter implying
+    \[0=2\langle\partial_\theta,\nabla_{\partial_\rho}\partial_\rho\rangle
+    =2\partial_\rho\langle\partial_\rho,\partial_\rho\rangle
+    -\partial_\theta\langle\partial_\rho,\partial_\rho\rangle,\]
+    i.e.
+    \[0=2\partial_1g_{12}-\partial_2g_{11}.\]
+    So $\partial_1g_{12}=0$, and consequently $g_{12}=0$. 
+    $g_{22}=\big|\frac{\partial f}{\partial\theta}\big|^2$ 
+    is too simple to be explained.
+
+    c) On one hand, according to b) and Corollary 2.10,
+    \[\sqrt{g_{22}}=\bigg|\frac{\partial f}{\partial\theta}\bigg|
+    =|J(\rho)|=\rho-\frac{1}{6}K(p)\rho^3+o(\rho^3);\]
+    on the other hand, the Taylor expansion yields
+    \[\sqrt{g_{22}}=\big[\sqrt{g_{22}}+(\sqrt{g_{22}})_\rho\rho
+    +\frac{1}{2}(\sqrt{g_{22}})_{\rho\rho}\rho^2
+    +\frac{1}{6}(\sqrt{g_{22}})_{\rho\rho\rho}\rho^3\big]\big|_{(0,0)}
+    +o(\rho^3).\]
+    Comparing the coefficients, we get
+    \[\sqrt{g_{22}}=0,\quad (\sqrt{g_{22}})_\rho=1,\quad 
+    (\sqrt{g_{22}})_{\rho\rho}=0,\quad
+    (\sqrt{g_{22}})_{\rho\rho\rho}=-K(p)\]
+    at $(0,0)$, and then
+    \[(\sqrt{g_{22}})_{\rho\rho}=\big[(\sqrt{g_{22}})_{\rho\rho}
+    +(\sqrt{g_{22}})_{\rho\rho\rho}\rho\big]\big|_{(0,0)}+o(\rho)
+    =-K(p)\rho+o(\rho).\]
+
+    d) \[\lim_{\rho\to0}\frac{(\sqrt{g_{22}})_{\rho\rho}}{\sqrt{g_{22}}}
+    =\lim_{\rho\to0}\frac{-K(p)\rho+o(\rho)}{\rho+o(\rho)}=-K(p).\]
+
+    \item[7.] Using Exercise 6 c), we have
+    \[L_r=\int_0^{2\pi}\bigg|\frac{\partial f}{\partial\theta}\bigg|d\theta
+    =\int_0^{2\pi}(-K(p)\rho+o(\rho^3))\,d\theta
+    =2\pi r-\frac{\pi}{3}K(p)r^3+o(r^3).\]
+\end{itemize}
+
+== Isometric Immersions ==
+
+\begin{itemize}
+    \item[1.] a) Trivially verified by definition or local expressions.
+
+    b) Suppose that $\gamma_p=\{p\}\times\gamma$ is a geodesic of $(M_2)_p$, 
+    naturally identified with $\gamma$ which is a geodesic of $M_2$. 
+    That is to say, $\nabla^2_{\gamma'}\gamma'=0$. Then using a), we too have
+    $\nabla_{\gamma_p'}\gamma_p'=\nabla^1_00+\nabla^2_{\gamma'}\gamma'=0$.
+
+    c) Easy to see that $x,y$ commute, and so do $\nabla^1_x,\nabla^2_y$. 
+    Hence $R(x,y)=[\nabla_y,\nabla_x]+\nabla_{[x,y]}=0$, and then $K(\sigma)=0$.
+
+    \item[2.] $d\mathbf{x}_p\colon T_p\R^2 \to T_{\mathbf{x}(p)}\R^4$, given by
+    \[\frac{1}{\sqrt{2}}\begin{pmatrix}
+        -\sin\theta&0\\\cos\theta&0\\0&-\sin\varphi\\0&\cos\varphi
+    \end{pmatrix},\]
+    is injective, and the composite $\pi \circ d\mathbf{x}_p\colon T_p\R^2 
+    \to T_{\mathbf{x}(p)}\R^4 \to T_{\mathbf{x}(p)}S^3$ ($\pi$ is the projection) 
+    is also injective, since the vector $d\mathbf{x}_p(v)$ is perpendicular to 
+    $\overrightarrow{Op}=\frac{1}{\sqrt{2}}(\cos\theta,\sin\theta,\cos\varphi,\sin\varphi)$, 
+    and as a result, $d\mathbf{x}_p(v)$ lies in $T_{\mathbf{x}(p)}S^3$ 
+    for $v\in T_p\R^2$ and then $\pi=\operatorname{id}$.
+
+    The zero sectional curvature is simply from $\mathbf{x}(\R^2)
+    =S^1\big(\frac{1}{\sqrt{2}}\big) \times S^1\big(\frac{1}{\sqrt{2}}\big)$ 
+    and Exercise 1.c).
+
+    \item[3.] Use the fact that $N$ is totally geodesic in $M$ 
+    iff all geodesics in $N$ are also geodesics in $M$.
+
+    \item[4.] For $x=x_1+x_2,y=y_1+y_2\in T_{p_1}N_1 \oplus T_{p_2}N_2$, 
+    from Exercise 1.a) we have
+    \[B(x,y)=\overline{\nabla}_{\overline{X}}\overline{Y}-\nabla_XY
+    =\overline{\nabla}^1_{\overline{X}_1}\overline{Y}_1
+    +\overline{\nabla}^2_{\overline{X}_2}\overline{Y}_2
+    -\nabla^1_{X_1}Y_1-\nabla^2_{X_2}Y_2=B_1(x_1,y_1)+B_2(x_2,y_2).\]
+    Then for $\eta=\eta_1+\eta_2\in(T_{p_1}N_1)^\perp\oplus(T_{p_2}N_2)^\perp$,
+    we have\[H_\eta(x,y)=H_{\eta_1}(x_1,y_1)+H_{\eta_2}(x_2,y_2),\]
+    so $H_{\eta_1},H_{\eta_2}$ vanish implies that $H_\eta$ vanishes.
+
+    \item[5.] Let $X_1+Y_1,X_2+Y_2\in\mathscr{X}(S^2)\oplus\mathscr{X}(S^2)
+    =\mathscr{X}(S^2 \times S^2)$, then
+    \[R(X_i,X_j,X_k,Y_\ell)=R(X_i,X_j,Y_k,Y_\ell)=R(X_i,Y_j,Y_k,Y_\ell)=0\]
+    for all $i,j,k,\ell\in\{1,2\}$. 
+    The reason is that $g_{X_iY_j}=0$ for all $i,j\in\{1,2\}$, 
+    and thus $\nabla_{X_i}Y_j=0$. Expand the curvature below, we have
+    \[R(X_1+Y_1,X_2+Y_2,X_1+Y_1,X_2+Y_2)
+    =R(X_1,X_2,X_1,X_2)+R(Y_1,Y_2,Y_1,Y_2)\ge0\]
+    as $K(S^2)=1>0$.
+
+    Let $i$ be the inclusion from $S^1$ into an equator of $S^2$. 
+    By Exercise 4, $(i,i)\colon T^2=S^1 \times S^1 \hookrightarrow 
+    S^2 \times S^2$ is totally geodesic.
+
+    \item[7.] For any $p\in M$ and $\eta\in(T_pM)^\perp$, 
+    $H_\eta(X,Y)=\langle B(X,Y),\eta \rangle\equiv0$, which is to say, 
+    $B(X,Y)=\overline{\nabla}_{\overline{X}}\overline{Y}-\nabla_XY\equiv0$.
+
+    \item[8.] a) Note that $e_1=\sqrt{2}\frac{\partial\mathbf{x}}{\partial\theta},
+    e_2=\sqrt{2}\frac{\partial\mathbf{x}}{\partial\varphi}$, 
+    and therefore $e_1,e_2\in T_pT^2$. 
+    And check without effort that $e_1,e_2,n_1,n_2$ 
+    form an orthonormal basis of $T_p\R^4$.
+
+    b) Extend $e_1\in T_pT^2$ to $\sqrt{2}(-x_2\partial_1+x_1\partial_2)\in T_p\R^4$, 
+    and $e_2\in T_pT^2$ to $\sqrt{2}(-x_4\partial_3+x_3\partial_4)\in T_p\R^4$. 
+    As $\overline{\nabla}_XY=\sum\limits_k X(y_k)\partial_k$ 
+    for $Y=\sum\limits_k y_k\partial_k$ in $\R^4$, we have
+    \begin{align*}\overline{\nabla}_{e_1}e_1
+    &=2\big([(-x_2\partial_1+x_1\partial_2)(-x_2)]\partial_1
+    +[(-x_2\partial_1+x_1\partial_2)(x_1)]\partial_2\big)\\
+    &=2(-x_1\partial_1-x_2\partial_2)=-n_1+n_2,
+    \end{align*}
+    and $\overline{\nabla}_{e_1}e_2=0$, $\overline{\nabla}_{e_2}e_1=0$, 
+    $\overline{\nabla}_{e_2}e_2=2(-x_3\partial_3-x_4\partial_4)=-n_1-n_2$. Then
+    \[\left.\begin{array}{l}\langle S_{n_1}e_1,e_1\rangle
+    =\langle\overline{\nabla}_{e_1}e_1,n_1\rangle=-1,\\
+    \langle S_{n_1}e_1,e_2\rangle
+    =\langle\overline{\nabla}_{e_1}e_2,n_1\rangle=0\end{array}\right\}
+    \Rightarrow S_{n_1}e_1=-e_1;\]
+    \[\left.\begin{array}{l}\langle S_{n_1}e_2,e_1\rangle
+    =\langle\overline{\nabla}_{e_2}e_1,n_1\rangle=0,\\
+    \langle S_{n_1}e_2,e_2\rangle
+    =\langle\overline{\nabla}_{e_2}e_2,n_1\rangle=-1\end{array}\right\}
+    \Rightarrow S_{n_1}e_2=-e_2;\]
+    \[\left.\begin{array}{l}\langle S_{n_2}e_1,e_1\rangle
+    =\langle\overline{\nabla}_{e_1}e_1,n_2\rangle=1,\\
+    \langle S_{n_2}e_1,e_2\rangle
+    =\langle\overline{\nabla}_{e_1}e_2,n_2\rangle=0\end{array}\right\}
+    \Rightarrow S_{n_2}e_1=e_1;\]
+    \[\left.\begin{array}{l}\langle S_{n_2}e_2,e_1\rangle
+    =\langle\overline{\nabla}_{e_2}e_1,n_2\rangle=0,\\
+    \langle S_{n_2}e_2,e_2\rangle
+    =\langle\overline{\nabla}_{e_2}e_2,n_2\rangle=-1\end{array}\right\}
+    \Rightarrow S_{n_2}e_2=-e_2.\]
+    c) Since $T_pS^3(1)\oplus\R n_1=T_p\R^4$ and $T_pT^2\oplus\R n_2=T_pS^3(1)$, 
+    the mean curvature of $\mathbf{x}$ is $\frac{1}{2}\operatorname{trace}S_{n_2}=\frac{1}{2}(1-1)=0$.
+
+    \item[9.] Follow the hint, and a visualization is offered here.
+    \begin{tikzpicture}
+    \fill[grey!3] (3.4,1.4)--(0.6,-1.4)--(-3.4,-1.4)--(-0.6,1.4)--(3.4,1.4);
+    \draw[->,>=stealth] (-2,0) to (2,0);
+    \draw[->,>=stealth] (1.4,1.4) to (-1.4,-1.4);
+    \draw[->,>=stealth,dashed] (0,-2) to (0,2);
+    \draw (1.6,2) arc (0:-45:1.6 and 2);
+    \draw (-1.13,0.59) arc (-135:-180:1.6 and 2);
+    \draw[blue] (1.13,0.59) arc (-45:-135:1.6 and 2);
+    \draw[blue] (1.13,0.117) arc (-45:-135:1.6 and 0.4);
+    \draw[->,>=stealth,blue] (1.1,0.46) to (1.1,0.17);
+    \draw[blue] (1.3,0.36) node {$\pi$};
+    \draw (1.37,1.8) node {$M$};
+    \draw (0,-0.2) node {$p$};
+    \draw[blue] (1,0.7) node {$U$};
+    \draw[blue] (1,-0.1) node {$M'$};
+    \draw (2.4,0) node {$T_pM$};
+    \draw (-1.5,-1.6) node {$\mathbb{R}\eta$};
+    \draw (0.6,-1.4) node {$V$};
+    \end{tikzpicture}
+
+    \item[10.] Differentiating $\langle S_\eta X,Y\rangle
+    =\langle X,S_\eta Y\rangle$ with respect to $V$, we obtain
+    \[\langle\nabla_V(S_\eta X),Y\rangle+\langle S_\eta X,\nabla_VY\rangle
+    =\langle\nabla_VX,S_\eta Y\rangle+\langle X,\nabla_V(S_\eta Y)\rangle.\]
+    Using the fact that
+    \begin{align*}
+        (\nabla_VS_\eta)(X,Y)&=(\nabla S_\eta)(X,Y,V)\\
+        &=V(S_\eta(X,Y))-S_\eta(X,\nabla_VY)-S_\eta(\nabla_VX,Y)\\
+        &=V\langle S_\eta X,Y\rangle-\langle S_\eta X,\nabla_VY\rangle
+        -\langle\nabla_VX,S_\eta Y\rangle\\
+        &=\langle\nabla_V(S_\eta X),Y\rangle-\langle\nabla_VX,S_\eta Y\rangle
+    \end{align*}
+    and the previous expression, we obtain that
+    \[(\nabla_VS_\eta)(X,Y)=(\nabla_VS_\eta)(Y,X).\]
+
+    \item[11.] a) By definition,
+    \begin{align*}
+        \overline{\triangle}f&=\operatorname{div}\operatorname{grad}f\\
+        &=\text{trace of the linear mapping }Y\mapsto\nabla_Y\operatorname{grad}f\\
+        &=\text{trace}\,\operatorname{Hess}f.
+    \end{align*}
+    b) Use $\overline{\nabla}_XY-\overline{\nabla}_YX=XY-YX$ and
+    \begin{align*}
+        \langle(\operatorname{Hess}f)Y,X\rangle
+        &=\langle\overline{\nabla}_Y\operatorname{grad}f,X\rangle\\
+        &=Y\langle\operatorname{grad}f,X\rangle
+        -\langle\operatorname{grad}f,\overline{\nabla}_YX\rangle\\
+        &=Y(df(X))-df(\overline{\nabla}_YX)\\
+        &=(YX-\overline{\nabla}_YX)f.
+    \end{align*}
+    c) Follow the hint, where $\langle\overline{\nabla}_\eta\eta,\eta\rangle
+    =\eta\langle\eta,\eta\rangle/2=0$.
+
+    d) We need to verify that $\operatorname{grad}f(p)\perp T_pM$. 
+    In fact, for any $v\in T_pM$, let $\gamma$ be a curve in $M$ 
+    with $\gamma(0)=p,\gamma'(0)=v$, and then $f\circ\gamma=a$. 
+    It follows that $\langle\operatorname{grad}f(p),v\rangle=df_p(v)
+    =\frac{d}{dt}\big|_{t=0}(f\circ\gamma)=0$.
+\end{itemize}
+
+== Complete Manifolds; Hopf--Rinow and Hadamard Theorems ==
+
+\begin{itemize}
+    \item[1.] Take $M$ to be a non--convex subset of $N=\R^n$.
+
+    \item[7.] For any curve $\gamma$ joining $p,q\in M$, 
+    $f\circ\gamma$ is a curve joining $f(p),f(q)\in\overline{M}$, then
+    \[\int|\gamma'|\ge c\int|df(\gamma')|
+    =c\int|(f\circ\gamma)'|\ge cd(f(p),f(q)).\]
+    Taking infimum on $\gamma$, we obtain that
+    \[d(p,q)\ge cd(f(p),f(q)).\]
+    We are now equipped to verify that $M$ is complete as a metric space. 
+    Let $\{p_n\}$ be a Cauchy sequence in $M$, that is, $d(p_n,p_m)\to0$. 
+    Then $d(f(p_n),f(p_m))\to0$ too. As $\overline{M}$ is complete, 
+    $\{f(p_n)\}$ converges to some point in $\overline{M}$, 
+    written $f(p)$, for $f$ is surjective. 
+    Then $\{p_n\}$ converges to $p$, as $f$ is a diffeomorphism.
+
+    \item[8.] Were $f$ not injective, i.e. $f(p)=f(q)$ 
+    for two distinct points $p,q\in M$, then for a geodesic $\gamma$ 
+    joining $p$ to $q$, $f\circ\gamma$ is a loop. 
+    Because $f$ is a local isometry, $f\circ\gamma$ is a geodesic too. 
+    Take any point $r$ different from $f(p)$ in the image of $f\circ\gamma$, 
+    then there are two geodesics joining $f(p)$ to $r$, a contradiction.
+
+    Next we show that $f$ is surjective. For any $s\in\overline{M}$, 
+    let $\bar{\gamma}$ be the geodesic segment joining $f(p)$ to $s$, 
+    where $f(p)$ is any point in the image of $f$. 
+    Let $\gamma$ be the geodesic starting from $p$ with initial speed $v$ 
+    such that $df_p(v)=\bar{\gamma}'(0)$. 
+    Then $\bar{\gamma}$ is precisely $f\circ\gamma$ 
+    as both are geodesics that start from $f(p)$ with the same initial speed, 
+    and it follows that $(f\circ\gamma)(l(\bar{\gamma}))=s$, 
+    where owing to the completeness of $M$, $\gamma$ is defined 
+    on the entire $[0,\infty)$, and in particular at $l(\bar{\gamma})$.
+
+    Here we used the fact that a local isometry $M\to f(M)$ 
+    maps geodesics $\gamma$ to geodesics $f\circ\gamma$ (mentioned on p.73). 
+    The reason: The geodesic equation depends on the metric 
+    and its first derivatives in a coordinate chart. 
+    A local isometry preserves the metric and is a local diffeomorphism. 
+    So it induces coordinates on $f(M)$ with the same metric coefficients. 
+    In particular, it must take geodesics to geodesics.
+
+    \item[9.] The length is
+    \[\int_\varepsilon^1\sqrt{\frac{1}{y}}dy
+    =2\sqrt{y}\big|_\varepsilon^1=2-2\sqrt{\varepsilon}\to2.\]
+    Note that $x=0,\varepsilon\le y\le1$ is a geodesic 
+    that does not extend beyond $2$, and therefore $M$ is not complete.
+
+    \item[10.] Method I. As illustrated by Chapter 3 Example 3.10 (p.73), 
+    all the geodesics in the Lobatchevski plane are of the form $x=x_0,y>0$ 
+    or $x=x_0+r\cos\theta,y=r\sin\theta,\theta\in(0,\pi)$. 
+    Their lengths are respectively
+    \[\int_0^\infty\frac{dy}{y}=\infty \quad\text{or}\quad 
+    \int_\curvearrowleft\frac{\sqrt{dx^2+dy^2}}{y}
+    =\int_0^\pi\frac{rd\theta}{r\sin\theta}
+    \ge\int_0^\pi\frac{d\theta}{\min(\theta,\pi-\theta)}=\infty.\]
+
+    Method II. Exhaust $\R^2_+$ by a sequence of compact sets 
+    $K_n=[-n\ln n,n\ln n]\times[1/n,n]$. Let $p=(0,1)$, 
+    then for $q_n\notin K_n$, it is not hard to show that
+    \[d(p,q_n)>\min\bigg(\frac{n\ln n}{n},\int_{1/n}^1\frac{dy}{y},
+    \int_1^n\frac{dy}{y}\bigg)=\ln n\to\infty.\]
+\end{itemize}
+
+== Spaces of Constant Curvature ==
+
+\begin{itemize}
+    \item[1.] a) Recall that by Chapter 4 Corollary 3.5 (p.96), 
+    the metric having constant curvature $K$ is equivalent to
+    $R_{ijij}=-R_{ijji}=K$ for all $i\ne j$ 
+    and $R_{ijk\ell}=0$ in the other cases. From the calculation 
+    at the end of p.161 and
+    \[f_i=\frac{F_i}{F},\quad f_{ii}=\frac{F_{ii}F-F_i^2}{F^2},\]
+    we get
+    \[R_{ijij}=-\sum_\ell (F_\ell)^2+(F_{ii}+F_{jj})F;\]
+    from the formula (2) on the same page,
+    \[R_{ijk\ell}=R_{ijk}^s\frac{\delta_{s\ell}}{F^2}
+    =\frac{R_{ijk}^\ell}{F^2}
+    =\frac{(-f_kf_j-f_{kj})\delta_{i\ell}+(f_if_k+f_{ik})\delta_{j\ell}}{F^2}
+    =\frac{-F_{kj}\delta_{i\ell}+F_{ik}\delta_{j\ell}}{F^4},\]
+    taking $i\ne j=k=\ell$, we get $F_{ij}=0$ provided that $R_{ijk\ell}=0$.
+
+    b) i. $F_{ij}=0$ for $i\ne j$ implies that $F_i$ depends only on $x_i$ 
+    for all $1\le i\le n$. Then for $x=(x_1,\cdots,x_n)$,
+    \[F(x)=F(0)+\int_0^{(x_1,0,\cdots,0)}F_1+\cdots
+    +\int_{(x_1,\cdots,x_{n-1},0)}^{(x_1,\cdots,x_{n-1},x_n)}F_n
+    :=G_1(x_1)+\cdots+G_n(x_n).\]
+    ii. Note that $(F_{ii})_j=(F_{ij})_i=0$, denote $F_{ii}\equiv2a$, 
+    where each $a$ for $i=1,\cdots,n$ coincides 
+    due to the second equation in a). Then we write
+    \[F=ax_i^2+b_ix_i+c_i(x_1,\cdots,\hat{x}_i,\cdots,x_n),\]
+    where the $\hat{\ }$ means $h_i$ is a function independent of $x_i$. 
+    Further, express $F$ as
+    \[F=\sum_i(ax_i^2+b_ix_i)+c(x_1,\cdots,x_n)\]
+    and make a comparison ($n$ comparisons indeed), we find that 
+    $c$ does not depend on $x_i$ for each $i=1,\cdots,n$ indeed. Therefore
+    \[F=\sum_i(ax_i^2+b_ix_i)+c,\]
+    and substituting into the second equation in a) yields
+    \[\Big(\sum_i(ax_i^2+b_ix_i)+c\Big)4a=K+\sum_{i=1}^n(2ax_i+b_i)^2.\]
+
+    c) This is a statement, instead of a problem.
+
+    d) For any $x=(x_1,\cdots,x_n)\in\R^n$, the distance between $0$ and $x$ 
+    is bounded by the length of the curve $\gamma=\{tx:0\le t\le 1\}$, 
+    which is
+    \begin{align*}
+        d(0,x)&\le\int_\gamma|\gamma'|_g
+        =\int_\gamma\frac{1}{1+\frac{K}{4}|tx|^2}|x|\\
+        &=\int_0^1\frac{d(t|x|)}{1+\left(\frac{\sqrt{K}}{2}t|x|\right)^2}\\
+        &=\frac{2}{\sqrt{K}}\arctan\Big(\frac{\sqrt{K}}{2}|x|\Big)
+        <\frac{\pi}{\sqrt{K}}.
+    \end{align*}
+    Hence $(\R^n,g)$ is bounded, and also closed as it is the whole space. 
+    But $\R^n$ is non--compact (compactness is a topological property), 
+    violating b) of Hopf--Rinow Theorem. Then $(\R^n,g)$ is not complete.
+
+    \item[13.] It is clear that $\sigma(\gamma(t))=\gamma(-t)$, 
+    as both are geodesics with the same starting point $p$ 
+    and initial speed $-\gamma'(t)$. To prove that 
+    $d\sigma_{\gamma(t)}X(\gamma(t))$ is parallel along $\gamma(t)$, compare 
+    \[\frac{d}{dt}\langle X,Y \rangle_{\gamma(t)}
+    =\langle X,\nabla_{\.\gamma}Y \rangle_{\gamma(t)}
+    +\langle \nabla_{\.\gamma}X,Y \rangle_{\gamma(t)}
+    =\langle X,\nabla_{\.\gamma}Y \rangle_{\gamma(t)}\]
+    and
+    \begin{align*}
+    \frac{d}{dt}\langle d\sigma(X),d\sigma(Y) \rangle_{\sigma(\gamma(t))}
+    &=\langle d\sigma(X),\nabla_{d\sigma(\.\gamma)}d\sigma(Y) \rangle_{\sigma(\gamma(t))}
+    +\langle \nabla_{d\sigma(\.\gamma)}X,d\sigma(Y) \rangle_{\sigma(\gamma(t))}\\
+    &\textcolor{teal}{=}\langle X,\nabla_{\.\gamma}Y \rangle_{\gamma(t)}
+    +\langle \nabla_{d\sigma(\.\gamma)}X,d\sigma(Y) \rangle_{\sigma(\gamma(t))},
+    \end{align*}
+    we get the last term is $0$, and consequently 
+    $\nabla_{d\sigma(\.\gamma)}X(\sigma(\gamma(t)))=0$ 
+    by the arbitrariness of $Y$ (and that $d\sigma$ is surjective). 
+    Note that at the colored ``$\textcolor{teal}{=}$'', 
+    $d\sigma(\nabla_{\.\gamma}Y)=\nabla_{d\sigma(\.\gamma)}d\sigma(Y)$ 
+    is used (check it using (9) of Chapter 2 Theorem 3.6, p.55).
+\end{itemize}
+
+== Variations of Energy ==
+\begin{itemize}
+    \item[1.] Suppose that $\{q_n\}$ is a sequence of points in $N$ 
+    such that $d(p_0,q_n)\to d(p_0,N)$, then it follows from the boundedness 
+    and thus compactness of $\{q_n\}$ that there is a cluster point $q_0$, 
+    and $q_0\in N$ as $N$ is closed. Let $\gamma\colon[0,\ell]\to M$ 
+    be a minimizing geodesic joining $p_0$ to $q_0$. 
+    Consider the variational fields $V(t)$ of variations keeping 
+    the starting point $p_0$ fixed yet with varying end points in $N$. 
+    As $\"\gamma=0$ and $V(0)=0$, we have
+    \[0=\frac{1}{2}E'(0)=-\int_0^\ell\langle V,\"\gamma\rangle
+    -\langle V(0),\.\gamma(0)\rangle+\langle V(\ell),\.\gamma(\ell)\rangle
+    =\langle V(\ell),\.\gamma(\ell)\rangle,\]
+    then $\.\gamma(\ell)$ is perpendicular to all $V(\ell)\in T_{q_0}N$.
+
+    \item[2.] Suppose, to the contrary, that $K(x,y)\ge\frac{1}{\kappa^2}>0$ 
+    on $\{(x,y):x^2+y^2\ge R^2\}$ for a certain $R>0$. 
+    As will be soon shown, 
+    $\operatorname{diam}\R^2\le 2\pi\kappa+\operatorname{diam}B_R$, 
+    where $B_R=\{(x,y):x^2+y^2\le R^2\}$ is compact hence bounded. 
+    Then the whole $\R^2$ is bounded and hence compact, a contradiction.
+
+    For any $p,q\in\R^2$, join them by a minimizing geodesic $\gamma$ 
+    and establish a uniform upper bound of its length. 
+    If $\gamma\subset B_R$, then $\ell(\gamma)\le\operatorname{diam}B_R$; 
+    if $\gamma\subset B_R^c$, then $\ell(\gamma)\le\pi\kappa$ as the proof 
+    of Bonnet--Myers theorem (Theorem 3.1) indicates. 
+    Things are worse if $p\notin B_R,q\in B_R$, in which case 
+    $\ell(\gamma)\le\pi\kappa+\operatorname{diam}B_R$; 
+    the worst case is when $\gamma$ intersects $\{(x,y):x^2+y^2=R^2\}$ twice 
+    (had it crossed the boundary more than twice, 
+    it would not be the shortest), and 
+    $\ell(\gamma)\le2\pi\kappa+\operatorname{diam}B_R$.
+    \begin{tikzpicture}
+        \draw (2.5,1) .. controls (-0.3,0) .. (2.5,-1);
+        \draw (-2,1) .. controls (-1.1,0.8) .. (-0.5,0);
+        \draw (0,0) circle (1);
+        \draw (2.7,1) node {$p$};
+        \draw (2.7,-1) node {$q$};
+        \draw (-2.2,1) node {$p$};
+        \draw (-0.5,-0.2) node {$q$};
+        \draw (0.0) node {$B_R$}
+    \end{tikzpicture}
+
+    \item[3.] Suppose that the geodesic is of length $\ell$, then
+    \begin{align*}
+        0\le\sum_{j=1}^{n-1}E_j''(0)
+        &\le\int_0^\ell\sin^2\frac{\pi s}{\ell}
+        \Big[(n-1)\Big(\frac{\pi}{\ell}\Big)^2
+        -(n-1)\Big(a+\frac{df}{ds}\Big)\Big]ds\\
+        &=(n-1)\int_0^\ell\sin^2\frac{\pi s}{\ell}
+        \Big[\Big(\frac{\pi}{\ell}\Big)^2-a-\frac{df}{ds}\Big]ds\\
+        &=(n-1)\bigg[\frac{\ell}{2}\Big[\Big(\frac{\pi}{\ell}\Big)^2-a\Big]
+        +\int_0^\ell\frac{\pi}{\ell}\sin\frac{2\pi s}{\ell}f\,ds\bigg]\\
+        &\le(n-1)\bigg(\frac{\pi^2}{2\ell}-\frac{a\ell}{2}-2c\bigg).
+    \end{align*}
+    So
+    \[\ell\le\frac{2c+\sqrt{4c^2+a\pi^2}}{a}.\]
+
+    \item[4.] Suppose that $P_{\gamma(t)}$ is the parallel transport 
+    along $\gamma$ from $\gamma(0)$ to $\gamma(t)$, 
+    and denote $P_{\gamma(2\pi)}$ by $P$, where $\gamma$ is assumed to 
+    be parametrized by $[0,2\pi)$ (so $\gamma(0)=\gamma(2\pi)$). 
+    $P$ preserves the inner product and is thus orthogonal; 
+    $M$ is orientable and $n$ is even, so $\det P=1=(-1)^n$. 
+    Applying Lemma 3.8 (p.203), $P$ leaves invariant 
+    some nonzero $v\perp\.\gamma(0)$, that is, 
+    $Pv=v\in T_{\gamma(2\pi)}M=T_{\gamma(0)}M$. 
+    Then $V(t):=P_{\gamma(t)}$ is a vector field along 
+    the closed curve $\gamma$, and $Pv=v$ ensures that it is well--defined. Now
+    \[\frac{1}{2}E''_V(0)=-\int_0^{2\pi}\langle V,R(\.\gamma,V)\.\gamma\rangle<0.\]
+    Note that though a variation that generates $V$ is improper, 
+    the last four terms of (5) of this chapter (p.199) all offset 
+    as $\gamma$ is a closed curve.
+
+    \item[5.] a) Existence is from compactness, 
+    and using Exercise 1 twice we get $\gamma\perp N_1,\gamma\perp N_2$.
+
+    b) Denote $\nabla,\nabla^{(1)},\nabla^{(2)}$ the Riemannian connections on $M,N_1,N_2$, 
+    and write $h'$ for $\frac{\partial h}{\partial s}$. We have
+    \begin{align*}
+        \frac{1}{2}E''(0)&=I_\ell(V,V)
+        +\bigg\langle\frac{D}{ds}\frac{\partial h}{\partial s},\.\gamma\bigg\rangle(0,\ell)
+        -\bigg\langle\frac{D}{ds}\frac{\partial h}{\partial s},\.\gamma\bigg\rangle(0,0)\\
+        &=I_\ell(V,V)+\langle\nabla_{h'}h',\.\gamma\rangle(0,\ell)
+        -\langle\nabla_{h'}h',\.\gamma\rangle(0,0)\\
+        &=I_\ell(V,V)+\langle B(h',h'),\.\gamma\rangle(0,\ell)
+        -\langle B(h',h'),\.\gamma\rangle(0,0)\\
+        &=I_\ell(V,V)+\langle V(\ell),S_{\.\gamma(\ell)}^{(2)}V(\ell) \rangle
+        -\langle V(0),S_{\.\gamma(0)}^{(1)}V(0) \rangle.
+    \end{align*}
+    Here we used $h'(\ell)\in T_{p_2}N_2,h'(0)\in T_{p_1}N_1$ 
+    where $p_1,p_2$ are the two endpoints of $\gamma$, 
+    and hence $\nabla^{(2)}_{h'(\ell)}h'(\ell)\in T_{p_2}N_2\perp\.\gamma(\ell),
+    \nabla^{(1)}_{h'(0)}h'(0)\in T_{p_1}N_1\perp\.\gamma(0)$.
+
+    \item[6.] a) (i) Since $\"\gamma\equiv0,V(0)=0$,
+    \[\frac{1}{2}E'(s)=-\int_0^\ell\langle V,\"\gamma\rangle
+    -\langle V(0),\.\gamma(0)\rangle+\langle V(s),\.\gamma(s)\rangle
+    =\langle V(s),\.\gamma(s)\rangle=\langle\sigma'_s(d(s)),\.\gamma(s)\rangle.\]
+    (ii) Put $V(t)=\frac{\partial h}{\partial s}(s_0,t)$. Then
+    \[\frac{1}{2}E''(s_0)=I_{d(s_0)}(V,V)
+    -\bigg\langle\frac{D}{ds}\frac{\partial h}{\partial s},\.\gamma\bigg\rangle(s_0,0)
+    +\bigg\langle\frac{D}{ds}\frac{\partial h}{\partial s},\.\gamma\bigg\rangle(s_0,d(s_0))
+    =I_{d(s_0)}(V,V)\ge0,\]
+    where we used $\frac{\partial h}{\partial s}(s_0,0)=0$ 
+    as $h(s_0,0)=\sigma_{s_0}(0)\equiv p$, 
+    and $\frac{D}{ds}\frac{\partial h}{\partial s}(s_0,d(s_0))
+    =\frac{D}{ds}\frac{\partial\gamma}{\partial s}(s_0)=0$ 
+    as $\gamma$ is a geodesic. Suppose that $E''(s_0)=0$, 
+    then combined with $K\le 0$ we get $\.V(t)\equiv0$, 
+    so $V(t)\equiv0$ as a result of $V(0)=0$.
+
+    b) By Hadamard's theorem (3.1 of Chapter 7), 
+    $\exp_p\colon T_p\tilde{M}\to\tilde{M}$ is a diffeomorphism. 
+    Hence every geodesic joining $p$ to any point $\gamma(s)$ of $\gamma$ 
+    is a curve in the variation $h$ (where $s$ is assumed to 
+    range over the entire $(-\infty,\infty)$). Use the property of convex functions.
+
+    c) When $K\le0$ is dropped, let $\tilde{M}$ be a sphere, 
+    $p$ be the north pole and $\gamma$ be its equator, 
+    then there are infinitely many perpendicular lines of minimal length.
+
+    When simple connectedness is dropped, 
+    let $\tilde{M}$ be an infinite cylinder and $p$ be any point, 
+    and $\gamma$ be the straight line passing through the antipodal point of $p$, 
+    then there are two lines reaching minimal length.
+    \begin{tikzpicture}
+    \draw (-3,0) circle (1.5);
+    \draw[teal,dashed] (-1.5,0) arc (0:180:1.5 and 0.3);
+    \draw[teal] (-1.5,0) arc (0:-180:1.5 and 0.3);
+    \draw[cyan,dashed] (-3,1.5) arc (90:180:1.2 and 1.32);
+    \draw[cyan,dashed] (-3,1.5) arc (90:0:1.2 and 1.32);
+    \draw[cyan,dashed] (-3,1.5) to (-3,0.3);
+    \draw[cyan] (-3,1.5) arc (90:180:0.75 and 1.76);
+    \draw[cyan] (-3,1.5) arc (90:0:0.75 and 1.76);
+    \filldraw[teal] (-3,1.5) circle (0.03);
+    \draw (3,1.2) arc (0:-180:1 and 0.2);
+    \draw[dashed] (3,1.2) arc (0:180:1 and 0.2);
+    \draw[cyan] (3,0) arc (0:-180:1 and 0.2);
+    \draw[dashed,cyan] (3,0) arc (0:180:1 and 0.2);
+    \draw (3,-1.2) arc (0:-180:1 and 0.2);
+    \draw[dashed] (3,-1.2) arc (0:180:1 and 0.2);
+    \draw (1,1.2) to (1,-1.2);
+    \draw[teal] (3,1.2) to (3,-1.2);
+    \filldraw[teal] (1,0) circle (0.03);
+    \end{tikzpicture}
+\end{itemize}
+
+== The Rauch Comparison Theorem ==
+
+\begin{itemize}
+    \item[2.] Take $K_0>0$ arbitrarily small in Klingenberg's lemma 
+    and show that if $M$ is simply connected, 
+    there exists a unique geodesic joining the two points $p,q\in M$. 
+    This is because were there to exist two such geodesics $\alpha_0$ 
+    and $\alpha_1$, they would be homotopic by the simple connectedness, 
+    and by Klingenberg's lemma, there would exist a sequence of curves 
+    $\alpha_t$ in this homotopy of lengths $\ge\pi/\sqrt{K_0}$, 
+    which would be arbitrarily big; however, $\ell(\alpha_t)$ 
+    as a continuous function of $t\in[0,1]$ is bounded, a contradiction.
+
+    This asserts that $\exp_p\colon T_pM\to M$ is a one-one map. 
+    That is, it has an inverse $\exp_p^{-1}$. 
+    It suffices to show that $\exp_p$ is a local diffeomorphism then, 
+    as this will imply that $\exp_p^{-1}$ is continuous locally, 
+    and hence globally. This is a consequence of Rauch's Theorem, 
+    in combination with Chapter 5 Proposition 3.5 (p.117) 
+    (and Chapter 0 Theorem 2.10, p.10).
+
+    \item[3.] Note that $\tilde{\gamma}(t)=tv$ is a geodesic on $T_pM$, 
+    and $\tilde{J}(t)=tw$ is a Jacobi field along $\tilde{\gamma}$; 
+    further, $J(t)=(d\exp_p)_{tv}(tw)$ is a Jacobi field along $\gamma$. As
+    \[J(0)=\tilde{J}(0)=0,\quad J'(0)=\tilde{J}'(0)=w,
+    \quad \gamma'(0)=\tilde{\gamma}'(0)=v,\]
+    and $K\le0=\tilde{K}$, we have $|J(1)|\ge|\tilde{J}(1)|$, 
+    which is $|(d\exp_p)_v(w)|\ge|w|$.
+
+    \item[5.] a) For all $t\in[0,\ell]$, integration by parts gives
+    \begin{align*}
+        0&=\int_0^t\tilde{f}(f''+Kf)-f(\tilde{f}''+\tilde{K}\tilde{f})\\
+        &=[\tilde{f}f'-f\tilde{f}']_0^t+\int_0^t(K-\tilde{K})f\tilde{f}.
+    \end{align*}
+    From the initial conditions $f(0)=0$ and $f'(0)=1$, 
+    $f$ is positive in a neighborhood of $0$. Assume that $f(t_1)=0$ 
+    for certain $t_1<t_0$. Then take $t=t_1$ and get
+    \[0=\big(\underbrace{\tilde{f}(t_1)}_{>0}\underbrace{f'(t_1)}_{\le0}
+    -\underbrace{f(t_1)}_{=0}{\tilde{f}'(t_1)}\big)
+    -\big(\underbrace{\tilde{f}(0)}_{=0}f'(0)
+    -\underbrace{f(0)}_{=0}\tilde{f}'(0)\big)
+    +\int_0^{t_1}(\underbrace{K-\tilde{K}}_{\le0})\underbrace{f\tilde{f}}_{>0},\]
+    forcing $K\equiv\tilde{K}$. 
+    Then $f$ and $\tilde{f}$ satisfy exactly the same ode, 
+    with the same initial conditions 
+    $f(0)=\tilde{f}(0)=0$ and $f'(0)=\tilde{f}'(0)=1$, 
+    and for this reason $f\equiv\tilde{f}$.
+
+    b) Again, examine
+    \[0=\big(\tilde{f}(t)f'(t)-f(t)\tilde{f}'(t)\big)
+    -\big(\underbrace{\tilde{f}(0)}_{=0}f'(0)
+    -\underbrace{f(0)}_{=0}\tilde{f}'(0)\big)
+    +\int_0^t(\underbrace{K-\tilde{K}}_{\le0})\underbrace{f\tilde{f}}_{>0}.\]
+    It follows that $\tilde{f}f'-f\tilde{f}'\ge0$, that is, 
+    $(f/\tilde{f})'=(\tilde{f}f'-f\tilde{f}')/(\tilde{f}^2)\ge0$. 
+    Conclude by
+    \[f/\tilde{f}\ge\lim_{t\to0}(f/\tilde{f})=\lim_{t\to0}(f'/\tilde{f}')=1.\]
+    For equality, $\tilde{f}f'-f\tilde{f}'\equiv0$ 
+    forces $K\equiv\tilde{K}$ as a).
+    
+    To verify the Theorem of Rauch in dimension two as an application, 
+    first reduce the Jacobi fields in question to normal Jacobi fields 
+    as the proof in the book does, and hence suppose that $J(t)=f(t)e_2(t)$ 
+    where $e_2(t)$ is the parallel transport of a unit vector 
+    $e_2\in T_{\gamma(0)}M$ with $e_2\perp\gamma'(0)$. 
+    Then $\frac{D^2J}{dt^2}=f''e_2$, 
+    so the Jacobi equation is equivalent to 
+    \[\langle f''e_2+R(\gamma',fe_2)\gamma',\gamma'\rangle=0\,\]
+    and
+    \[\langle f''e_2+R(\gamma',fe_2)\gamma',e_2\rangle=0,\]
+    since $\{\gamma',e_2\}$ spans $T_{\gamma(t)}M$. 
+    The first equation trivially holds, 
+    and the second is $f''+Kf=0$. Similarly for $\tilde{J}(t)$.
+
+    \item[6.] Suppose that $\tilde{f}(t)\ne0$ for all $t\in[0,t_0]$. 
+    Using the expression from the last exercise,
+    \[\int_0^{t_0}\underbrace{(K-L)}_{\le0}\underbrace{f\tilde{f}}_{<0}
+    +\underbrace{\tilde{f}(t_0)}_{>0}\underbrace{f'(t_0)}_{\ge0}
+    -\underbrace{\tilde{f}(0)}_{>0}\underbrace{f'(0)}_{\le0}=0.\]
+    This forces $K\equiv L$, as well as $f'(0)=f'(t_0)=0$. 
+    Then the initial conditions $f(0)=f'(0)=0$ 
+    imply that $f\equiv0$, contradicting that $J\ne0$ on $(0,t_0)$.
+
+    \item[7.] A correction: it should be
+    \[\bigg|\int_t^\infty K(s)ds\bigg|\le\frac{1}{4(t+1)}.\]
+
+    a) \[\omega^2\le\bigg(\frac{1}{4(t+1)}+\frac{1}{4(t+1)}\bigg)^2
+    =\bigg(-\frac{1}{4(t+1)}\bigg)'=-\omega'-K.\]
+    b) $\tilde{f}'=\omega\tilde{f}$, and $\tilde{f}''
+    =\omega'\tilde{f}+\omega\tilde{f}'=(\omega'+\omega^2)\tilde{f}=-L\tilde{f}$. 
+    $\tilde{f}(0)=\exp0=1$.
+
+    c) $-L=\omega'+\omega^2\le-K$, which is $K\le L$. 
+    Then the oscillation theorem of Sturm yields that 
+    $\tilde{f}$ has a zero on $[0,s_0]$. But $\tilde{f}>0$.
+\end{itemize}
+
+== The Morse Index Theorem ==
+
+\begin{itemize}
+    \item[2.] Expand $f$ and $f'$ into the Fourier series
+    \[f(t)=\sum_{n=1}^\infty a_n\sin nt,\quad 
+    f'(t)=\sum_{n=1}^\infty na_n\cos nt.\]
+    Then the inequality follows from
+    \[\int_0^\pi f^2=\frac{\pi}{2}\sum_{n=1}^\infty a_n^2,\quad 
+    \int_0^\pi f'^2=\frac{\pi}{2}\sum_{n=1}^\infty n^2a_n^2.\] 
+    Yet we need to justify that differentiating $f$ by terms 
+    does produce $f'$, which relies on the decay of the coefficients $a_n$. 
+    Indeed, integrating by parts, we find
+    \[\frac{\pi}{2}a_n=\int_0^\pi f\sin nt=\int_0^\pi f'\frac{\cos nt}{n}
+    =-\int_0^\pi f''\frac{\sin nt}{n^2}.\]
+    Then
+    \begin{align*}&\bigg(\sum_{n=1}^\infty na_n\bigg)^2
+    \le\sum_{n=1}^\infty(n^2a_n)^2\sum_{n=1}^\infty\frac{1}{n^2}\\
+    &=\Big(\frac{\pi}{2}\Big)^{-2}\sum_{n=1}^\infty\bigg(\int_0^\pi f''\sin nt\bigg)^2\frac{\pi^2}{6}
+    =\frac{2}{3}\int_0^\pi f''^2<\infty,\end{align*}
+    yielding the uniform convergence of the series of $f'$, 
+    and consequently the justification.
+
+    \item[3.] It follows that $K(t)\equiv0$ for $t\in(0,\pi)$. 
+    Let $t\to0$, we get $K(p)=1$. Then use Theorem 4.1 of Chapter 8 (p.163).
+
+    \item[4.] $\varphi'(0)=0,\varphi''(0)=-a(0)<0$ implies that 
+    $\varphi'(t_0)<0$ for some $t_0>0$. Suppose that $\varphi$ 
+    has no positive zero, then $\varphi''=-a\varphi\le0$ on $(0,+\infty)$. 
+    Hence $\varphi'(t)\le\varphi'(t_0)$ for $t>t_0$. 
+    But then $\varphi(t)\le\varphi(t_0)+(t-t_0)\varphi'(t_0)\to-\infty$ 
+    as $t\to+\infty$, a contradiction.
+
+    \item[5.] Since $\varphi(-t_1)=\varphi(t_2)=0$, 
+    and $\varphi_Y\ge K\ge a$ with strict inequality at $0$,
+    \begin{align*}
+        I_{[-t_1,t_2]}(X,X)&=\int_{-t_1}^{t_2}\varphi'^2-\varphi^2\varphi_Y\\
+        =(\varphi\varphi')\big|_{-t_1}^{t_2}
+        &-\int_{-t_1}^{t_2}\varphi\varphi''+\varphi^2\varphi_Y
+        <-\int_{-t_1}^{t_2}\varphi\varphi''+\varphi^2a=0.
+    \end{align*}
+
+    \item[6.] From Exercise 5, there exists $t_0>0$ 
+    and a vector field $Y$ along the segment $\gamma([-t_0,t_0])$ 
+    such that $I(Y,Y)<0$. Let $f$ be a proper variation that generates $Y$, 
+    then $\frac{1}{2}E''(0)=I(Y,Y)<0$, which is, 
+    $\gamma([-t_0,t_0])$ does not minimize the length between its endpoints.
+
+    If $K\ge0$ instead, $M=\R\times S^{n-1}$ violates the theorem.
+
+    Remark: Cf. \cite{YS} 1.2 (pp.13--7) for the proof of 
+    the splitting theorem (Cheeger--Gromoll, 1971) below.
+
+    Let $M$ be an $n$-dimensional complete Riemannian manifold 
+    with $\operatorname{Ric}(M)\ge0$. Suppose that $M$ has a line. 
+    Then $M$ is isometric to $\R\times N$, where $N$ is 
+    an $(n-1)$-dimensional Riemannian manifold with the product metric.
+    \end{itemize}
+
+\subsection**{References}
+\begin{references}
+    \bibitem[CL]{CL}
+        陈维桓, 李兴校. 黎曼几何引论（上册）.
+        北京大学数学教学系列丛书. 北京大学出版社, 2002.
+    \bibitem[dC]{dC}
+        M.P. do Carmo. \textit{Differential Geometry of Curves and Surfaces}. 
+        Dover Publications Inc., 2016.
+    \bibitem[YS]{YS}
+        丘成桐, 孙理察. 微分几何讲义. 高等教育出版社, 2018.
+\end{references}

@@ -1,0 +1,348 @@
+\setdisplaytitle{Chapter 3 Lie Groups}
+\sethtmltitle{Chapter 3 Lie Groups}
+\begin{enumerate}
+\item Let $e \in U \subset G$ be a locally Euclidean open neighborhood of $e$. 
+Then by Theorem 3.18, $G=\bigcup_{n=1}^{\infty} U^{n}$. 
+Now, fix a countable basis of $U$, say $\{B_{i}\}$. 
+Then for all open sets $V \subset U^{n}$ and for all points $g \in V$, 
+$g$ can be expressed as $g=g_{1} \ldots g_{n}$ by definition. 
+Also, since multiplication on $G$ is continuous, 
+we can find open neighborhoods of $g_{k}$, 
+say $V_{k}$, such that $V_{1} \ldots V_{n} \subset V$. 
+Then, we can find $B_{i_{k}}$'s such that $g_{k} \in B_{i_{k}} \subset V_{k}$, 
+and as a result $g=g_{1} \ldots g_{n} \in B_{i_{1}} \ldots B_{i_{n}} \in V$. 
+Therefore it follows from this that $\{B_{i}^{n}\}$ becomes a basis of $U^{n}$ and $U^{n}$ is second countable, and so is $G$.
+\item (a) It is definitely a differential manifold. 
+Also, subtraction is continuous under the standard topology.
+
+(b) It is also almost obvious.
+
+(c) Since it is a subgroup of $\mathbb{C}^{*}$, and the zero set of $|z|-1$, which is nonsingular.
+
+(d) It is also a manifold, and the operation is continuous by definition of product topology.
+
+(e) It directly follows from (c) and (d).
+
+(f) Since matrix multiplication is defined by a polynomial, 
+and inverse by a polynomial divided by determinant which is continuous.
+
+(g) Since it is the zero set of the elements below the diagonal of $Gl(n, \mathbb{R})$.
+
+(h) It is surely a manifold. Also, $(s, t)(s_{1}, t_{1})^{-1}=\big(\frac{s}{s_{1}},-\frac{s t_{1}}{s_{1}}+t\big)$ is continuous.
+
+(i) It is also a manifold, and $(A, v)(A_{1}, v_{1})^{-1}=(A A_{1}^{-1},-A A_{1}^{-1} v_{1}+v)$ is continuous.
+\item (a) It is a vector space, and Lie bracket operation satisfies the given conditions by Proposition 1.45.
+
+(b) Trivial Lie bracket trivially satisfies the conditions.
+
+(c) \[[B, A]=B A-A B=-[A, B],\]
+and \begin{align*}
+[[A, B], C]+[[B, C], A]+[[C, A], B]
+&=A B C-B A C-C A B+C B A\\
+&+B C A-C B A-A B C+A C B\\
+&+C A B-A C B-B C A+B A C=0.
+\end{align*}
+(d) $[ax+by, cx+dy]=(ad-bc) y$. It is a Lie algebra by direct calculation.
+
+(e) Cross product also satisfies the conditions. 
+Note that $(a \times b) \times c=b(a \cdot c)-a(b \cdot c)$.
+\item (a) It suffices to check that for all smooth vector fields $X_{i}$ $(1 \leq i \leq r)$ on $G$, $\omega(X_{1}, \ldots, X_{r})$ is smooth. But
+\[\omega(X_{1}, \ldots, X_{r})(\sigma)=\omega_{\sigma}(X_{1 \sigma}, \ldots, X_{r \sigma})
+=(\delta l_{\sigma^{-1}} \omega_{e})(X_{1 \sigma}, \ldots, X_{r \sigma})
+=\omega_{e}(d l_{\sigma^{-1}} X_{1 \sigma}, \ldots, d l_{\sigma^{-1}} X_{r \sigma}),\]
+so we need to check that $\omega_{e}(d l_{\sigma^{-1}} X_{1 \sigma}, \ldots, d l_{\sigma^{-1}} X_{r \sigma})$ is smooth. 
+Now let $\tilde{\omega}$ be a smooth form such that $\tilde{\omega}_{e}=\omega_{e}$. 
+Then for $\varphi\colon G \times G \rightarrow G,(a, b) \mapsto a b$, $\delta \varphi \tilde{\omega}$ is smooth. 
+Also, $\left[0, X_{i}\right]$ is a smooth vector field on $G \times G$, 
+and $\iota\colon G \rightarrow G \times G, \tau \mapsto(\tau^{-1}, \tau)$ is smooth. 
+Therefore, $\delta \varphi \tilde{\omega}([0, X_{1}], \ldots,[0, X_{r}])(\iota(\sigma))$ is smooth with respect to $\sigma$. 
+But,
+\begin{align*}
+&\quad\ \,\delta \varphi \tilde{\omega}\big([0, X_{1}], \ldots,[0, X_{r}]\big)(\iota(\sigma))\\
+&=\delta \varphi \tilde{\omega}_{(\sigma^{-1}, \sigma)}\big([0, X_{1}]_{(\sigma^{-1}, \sigma)}, \ldots,[0, X_{r}]_{(\sigma^{-1}, \sigma)}\big)\\
+&=\tilde{\omega}_{e}\big(d \varphi[0, X_{1}]_{(\sigma^{-1}, \sigma)}, \ldots, d \varphi[0, X_{r}]_{(\sigma^{-1}, \sigma)}\big).
+\end{align*}
+Furthermore,
+\begin{align*}
+d \varphi[0, X_{i}]_{(a, b)}(f)&=[0, X_{i}]_{(a, b)}(f \circ \varphi)\\
+&=0_{a}(f \circ \varphi \circ \iota_{b}^{1})+X_{ib}(f \circ \varphi \circ \iota_{a}^{2})\\
+&=X_{ib}(f \circ l_{a})=d l_{a} X_{ib}(f).
+\end{align*}
+Therefore
+\[\tilde{\omega}_{e}\big(d \varphi[0, X_{1}]_{(\sigma^{-1}, \sigma)}, \ldots, d \varphi[0, X_{r}]_{(\sigma^{-1}, \sigma)}\big)
+=\omega_{e}(d l_{\sigma^{-1}} X_{1 \sigma}, \ldots, d l_{\sigma^{-1}} X_{r \sigma}),\]
+and the result follows.
+
+(b) $\delta l_{\sigma}$ is an algebra endomorphism and $E_{\text{linv}}^{*}(G)=\bigcap_{\sigma \in G}\{\delta l_{\sigma}$-invariant elements$\}$, so $E_{\text{linv}}^{*}(G)$ is a subalgebra. 
+Also, $\varepsilon\colon E_{\text{linv}}^{*}(G) \rightarrow \Lambda(G_{e}^{*}), \omega \mapsto \omega(e)$ is a homomorphism. 
+And since
+\[\omega(e)=\omega^{\prime}(e) 
+\Rightarrow \omega_{\sigma}=\delta l_{\sigma^{-1}} \omega_{e}
+=\delta l_{\sigma^{-1}} \omega_{e}^{\prime}=\omega_{\sigma}^{\prime} 
+\Rightarrow \omega=\omega^{\prime},\]
+$\varepsilon$ is injective. 
+Furthermore, for all $\chi \in \Lambda(G_{e}^{*})$, 
+if we set $\omega(a)=\delta l_{a^{-1}} \chi$, then
+\[(\delta l_{\tau} \omega)(\sigma)
+=\delta l_{\tau}(\omega(\tau \sigma))
+=\delta l_{\tau} \delta l_{\sigma^{-1} \tau^{-1}} \chi
+=\delta l_{\sigma^{-1}} \chi=\omega(\sigma),\]
+so $\omega \in E_{\text{linv}}^{*}(G)$. 
+Also, $\varepsilon(\omega)=\chi$, so $\varepsilon$ is surjective.
+
+(c) \[\omega(X)(\sigma)=\omega_{\sigma}(X_{\sigma})
+=(\delta l_{\sigma^{-1}} \omega)_{\sigma}(X_{\sigma})
+=\omega_{e}(d l_{\sigma^{-1}} X_{\sigma})
+=\omega_{e}(X_{e})=\omega(X)(e),\]
+so $\omega(X)$ is constant on $G$. 
+Also, if $\alpha^{*}\colon G_{e}^{*} \rightarrow \mathfrak{g}^{*}$ 
+is the dual map of $\alpha$ defined in Proposition 3.7, then
+\[\alpha^{*}(\varepsilon(\omega))(X)
+=\alpha(\omega(e))(X)=\omega(e)(X(e))=\omega(X)(e).\]
+(d) \[d \omega(X, Y)=X(\omega(Y))-Y(\omega(X))-\omega([X, Y])=-\omega([X, Y])\]
+since $\omega(X), \omega(Y)$ are constants.
+
+(e) Since $\mathfrak{g}$ is closed under the Lie bracket, such $c_{ijk}$'s exist, 
+and the relation (3) is directly followed by the properties of the Lie bracket, 
+i.e., anti-symmetry and the Jacobi identity. 
+Also, since $\delta l_{\sigma}$ commutes with $d$, $d \omega_{i} \in E_{\text{linv}}^{2}(G)$ and
+\[d \omega_{i}(X_{j}, X_{k})=-\omega_{i}[X_{j}, X_{k}],\]
+so we can write
+\[d \omega_{i}=\sum_{j<k} c_{j k i} \omega_{k} \wedge \omega_{j}+\omega^{\prime}\]
+where $\omega^{\prime}(X, Y)=0, \forall X, Y \in(g)$. But, since
+\[\varepsilon\colon E_{\text{linv}}^{2}(G) \rightarrow \Lambda_{2}(G_{e}) \cong \mathfrak{g} \wedge \mathfrak{G}\]
+is an isomorphism, $\omega^{\prime}$ must be zero. 
+Hence the Maurer--Cartan equations are derived.
+\item Consider $\operatorname{id}, \pi_{2}\colon \mathbb{Z} \times \mathbb{R} \rightarrow \mathbb{Z} \times \mathbb{R}$.
+\item ($\Leftarrow$) part is obvious since $d \omega(X, Y)=-\omega[X, Y]$.
+
+For ($\Rightarrow$) part, $d \omega(X, Y)=-\omega[X, Y]=0$ by assumption, 
+so by using the Maurer--Cartan equation, $d \omega$ should be in $\mathcal{I}$.
+\item (a) See \cite{1}, pp. 61--62, or follow the sketch given in the textbook.
+
+(b) See \cite{1}, pp. 64--65, or follow the sketch given in the textbook.
+
+(c) If $\pi\colon \tilde{X} \rightarrow X$ is a covering and $X$ is simply connected, 
+then by (a), there is a unique continuous map $\tilde{\alpha}\colon X \rightarrow \tilde{X}$ s.t. $\pi \circ \tilde{\alpha}=\operatorname{id}_{X}$. 
+Therefore, $\pi \circ(\tilde{\alpha} \circ \pi)=\pi$. 
+Then by uniqueness, $\tilde{\alpha} \circ \pi=\operatorname{id}_{\tilde{X}}$ also. 
+Therefore, $\tilde{\alpha}$ and $\pi$ are inverses to each other, which means $\pi$ is a homeomorphism.
+\item (Following the proof of \cite{4}, Prop. 1.9.) There is a countable open cover $\mathcal{U}$ whose elements are homeomorphic to open ball in Euclidean space. 
+For all $U, U^{\prime} \in \mathcal{U}, U \cap U^{\prime}$ has at most countably many components, each of which is path connected. 
+Let $\mathcal{X}$ be a countable set containing one point from each component of $U \cap U^{\prime}$ (including $U=U^{\prime}$). 
+For each $U \in \mathcal{U}$ and each $x, x^{\prime} \in \mathcal{X}$ s.t. $x, x^{\prime} \in U$, let $p_{x, x^{\prime}}^{U}$ be a path joining $x$ and $x^{\prime}$ and contained in $U$.
+Since the fundamental groups based at any two points in the same component of $M$ are isomorphic, and $\mathcal{X}$ contains at least one point in each component of $M$, we may as well choose a point $q \in \mathcal{X}$ as base point. 
+Define a ``special loop'' to be a loop based at $q$ that is equal to a finite product of paths of the form $p_{x, x^{\prime}}^{U}$. 
+Clearly, the set of special loops is countable, and each special loop determines an element of $\pi_{1}(M, q)$. 
+To show that $\pi_{1}(M, q)$ is countable, therefore, it suffices to show that every element of $\pi_{1}(M, q)$ is represented by a special loop.
+Suppose $f\colon [0,1] \rightarrow M$ is any loop based at $q$. 
+The collection of components of sets of the form $f^{-1}(U)$ as $U$ ranges over $\mathcal{U}$ is an open cover of $[0,1]$, so by compactness it has a finite subcover. 
+Thus there are finitely many numbers $0=a_{0}<a_{1}<\ldots<a_{k}=1$ such that $\left[a_{i-1}, a_{i}\right] \subset f^{-1}(U)$ for some $U \in \mathcal{U}$. 
+For each $i$, let $f_{i}$ be the restriction of $f$ to the interval $[a_{i-1}, a_{i}]$, reparametrized so that its domain is $[0,1]$, and let $U_{i} \in \mathcal{U}$ be a coordinate ball containing the image of $f_{i}$. 
+For each $i$, we have $f(a_{i}) \in B_{i} \cap B_{i+1}$, and there is some $x_{i} \in \mathcal{X}$ that lies in the same component of $B_{i} \cap B_{i+1}$ as $f(a_{i})$. 
+Let $g_{i}$ be a path in $B_{i} \cap B_{i+1}$ from $x_{i}$ to $f(a_{i})$, with the understanding that $x_{0}=x_{k}=q$, and $g_{0}$ and $g_{k}$ are both equal to the constant path $c_{q}$ based at $q$. 
+Then, because $g_{i}^{-1} \cdot g_{i}$ is path homotopic to a constant path,
+\begin{align*}
+f & \sim f_{1} \cdot \ldots \cdot f_{k} \\
+& \sim g_{0} \cdot f_{1} \cdot g_{1}^{-1} \cdot g_{1} \cdot f_{2} \cdot g_{2}^{-1} \cdot \ldots \cdot g_{k-1}^{-1} \cdot g_{k-1} \cdot f_{k} \cdot g_{k}^{-1} \\
+& \sim \tilde{f}_{1} \cdot \tilde{f}_{2} \cdot \ldots \cdot \tilde{f}_{n}
+\end{align*}
+where $\tilde{f}_{i}=g_{i-1} \cdot f_{i} \cdot g_{i}^{-1}$. 
+For each $i$, $\tilde{f}_{i}$ is a path in $U_{i}$ from $x_{i-1}$ to $x_{i}$. 
+Since $B_{i}$ is simply connected, $\tilde{f}_{i}$ is path homotopic to $p_{x_{i-1}, x_{i}}^{U_{i}}$. 
+It follows that $f$ is path homotopic to a special loop, as claimed.
+\item $(\Rightarrow)$ part is easy since
+\[\delta l_{\sigma} \delta \varphi \omega=\delta(\varphi \circ l_{\sigma}) \omega
+=\delta(l_{\varphi(\sigma)} \circ \varphi) \omega=\delta \varphi \omega.\]
+For the converse, let $\mathcal{I}$ be an ideal generated by
+\[\delta \pi_{1} \delta \varphi(\omega_{i})-\delta \pi_{2}(\omega_{i})\]
+for projections $\pi_{1}\colon G \times H \rightarrow G, \pi_{2}\colon G \times H \rightarrow H$. 
+Then by direct calculation similar to 3.15, (6), it is a differential ideal. 
+Therefore, there exists $I$, maximal connected integral manifold of $\mathcal{I}$ through $(e, e)$. 
+But since $\delta \pi_{1}, \delta \pi_{2}$, and $\delta \varphi$ pull left invariant forms back to left invariant forms, 
+by Thm 3.19, Corollary (c), $I$ is a Lie subgroup of $G \times H$.
+Meanwhile, let $(G, g)$ be a graph of $\varphi$ where $g(\sigma)=(\sigma, \varphi(\sigma))$. 
+Then also by direct calculation (following 2.33), it is an integral manifold of $\mathcal{I}$. 
+Since $G$ is connected, $g(G) \subset I$ by maximality. 
+Now, let $\pi_{1}|_{I}\colon I \rightarrow G$ be a restriction map which is a homomorphism. 
+Then, $d \pi_{1}\colon I_{(e, e)} \rightarrow G_{e}$ is an isomorphism since for
+\[(X, Y) \in I_{(e, e)} \Leftrightarrow 
+\forall i, [\delta \pi_{1} \delta \varphi(\omega_{i})-\delta \pi_{2}(\omega_{i})](X, Y)=0 
+\Leftrightarrow Y=d \varphi(X).\]
+Therefore by Theorem 3.26, $\pi_{1}|_{I}$ is a covering map. 
+If $(\sigma, \tau) \in I$, then by path--connectedness, 
+there is a path $\ell=(\ell_{G}, \ell_{H})$ from $(e, e)$ to $(\sigma, \tau)$ in $I$. 
+Then $\big(\ell_{G}^{-1}, \varphi(\ell_{G}^{-1})\big) \cdot \ell$ is also a path in $I$ which joins $(e, e)$ and $(e, \varphi(\sigma^{-1}) \cdot \tau)$ since $g(G) \subset I$. 
+However, since the ``$G$ coordinate'' of this path is constantly $e$ and there is a local isomorphism from a neighborhood of $(e, e) \in I$ to a neighborhood of $e \in G$, 
+it should be a constant path, which means $\varphi(\sigma^{-1}) \cdot \tau=e$. 
+Therefore, since $I$ is a Lie subgroup, $(\sigma, \tau) \in I \Rightarrow (\sigma^{-1}, \tau^{-1}) \in I \Rightarrow \varphi(\sigma)=\tau \Rightarrow I \subset g(G)$. 
+Thus $I=g(G)$ and it means that $\varphi$ is a homomorphism.
+
+Connectedness is necessary: Consider $G=\mathbb{Z}, H=\mathbb{R}$, 
+$\varphi\colon \mathbb{Z} \rightarrow \mathbb{R}, x \mapsto x^{2}$.
+\item If there exists $A \in \mathfrak{gl}(2, \mathbb{R})$ s.t.
+\[\begin{pmatrix}-2 & 0 \\ \\ 0 & -1\end{pmatrix}=e^{A}.\]
+Then regarding $A$ as an element of $\mathfrak{gl}(2, \mathbb{C})$, 
+one can find a matrix $L=\begin{pmatrix}a & b \\ c & d\end{pmatrix} \in \mathfrak{gl}(2, \mathbb{C})$ 
+s.t. $LAL^{-1}$ is upper triangular. Then
+\[L\begin{pmatrix}-2 & 0 \\ \\ 0 & -1\end{pmatrix} L^{-1}=Le^{A}L^{-1}=e^{LAL^{-1}}\]
+is also upper triangular.
+\[L\begin{pmatrix}-2 & 0 \\ \\ 0 & -1\end{pmatrix} L^{-1}
+=\frac{1}{ad-bc}\begin{pmatrix}-2ad+bc & ab \\ \\ -cd & -ad+2bc\end{pmatrix},\]
+thus $cd=0$. If $c=0$,
+\[L\begin{pmatrix}-2 & 0 \\ \\ 0 & -1\end{pmatrix} L^{-1}
+=\frac{1}{ad}\begin{pmatrix}-2 ad & ab \\ \\ 0 & -ad\end{pmatrix}
+=\begin{pmatrix}-2 & b \\ \\ 0 & -1\end{pmatrix}.\]
+If $d=0$,
+\[L\begin{pmatrix}-2 & 0 \\ \\ 0 & -1\end{pmatrix} L^{-1}
+=\frac{1}{-bc}\begin{pmatrix}bc & ab \\ \\ 0 & 2bc\end{pmatrix}
+=\begin{pmatrix}-1 & -\frac{a}{c} \\ \\ 0 & -2\end{pmatrix}.\]
+Therefore, the diagonal elements of $e^{LAL^{-1}}$ should be $-2$ and $-1$. 
+Meanwhile, if we let $\lambda_{1}, \lambda_{2}$ be the eigenvalues of $A$ (and $LAL^{-1}$), since $A$ is real, two eigenvalues are either both real or complex conjugates. 
+But since $LAL^{-1}$ is upper triangular, the diagonal elements of $e^{LAL^{-1}}$ are $e^{\lambda_{1}}$ and $e^{\lambda_{2}}$, which should not be $-2$ and $-1$ in either case. 
+Therefore, there is no $A$ satisfying the condition.
+\item For $\eta$ defined as the text, using Exercise 1.24(d),
+\[d \eta(X, Y)=d \eta d \iota_{e}^{1}(X)+d \eta d \iota_{e}^{2}(Y)=X+Y\]
+for $\iota_{e}^{1}\colon G \rightarrow G \times G, \sigma \mapsto(\sigma, e)$ 
+and $\iota_{e}^{2}\colon G \rightarrow G \times G, \sigma \mapsto(e, \sigma)$. 
+Therefore,
+\[d \alpha=d \eta(d \sigma, d \beta)=d \sigma+d \beta.\]
+Evaluating both sides at $\frac{\partial}{\partial t}\big|_{t=0}$, we obtain the given result.
+\item For any $\sigma \in G$, a path $\ell$ from $e$ to $\sigma$, and $\tau \in \ker \varphi$, 
+$\ell \cdot \tau \cdot \ell^{-1}$ is a curve in $\ker \varphi$ also. 
+Since $\ker \varphi$ is discrete, the curve should be constant, 
+which means $\sigma \cdot \tau \cdot \sigma^{-1}=\tau$. 
+Therefore $\ker \varphi \subset Z(G)$.
+For the second statement, for any Lie group $G$, let $\pi\colon \tilde{G} \rightarrow G$ is the universal covering. 
+Then since $\pi$ is a local homeomorphism, $\ker \pi$ is discrete, 
+so $\ker \pi \in Z(\tilde{G})$, which says that $\ker \pi$ is abelian. 
+But by the lifting property, the fundamental group of $G$ can be identified with a subgroup of $\ker \pi$, so it is also abelian.
+\item Let the Lie algebra of 3.5(d) be $L=(\mathbb{R}^{2},[\cdot, \cdot])$. 
+For any non-abelian Lie algebra $\bar{L}=(\mathbb{R}^{2}, \overline{[\cdot, \cdot]})$ 
+which is defined by $\overline{[e_{1}, e_{2}]}=se_{1}+te_{2}$, let
+\[f\colon \bar{L} \rightarrow L,\ \ ae_{1}+be_{2} \mapsto (at-bs) e_{1}+(as+bt) e_{2}.\] 
+It is by definition a linear isomorphism, and
+\begin{align*}
+f(\overline{[ae_{1}+be_{2}, ce_{1}+de_{2}]})
+&=(ad-bc) f(se_{1}+te_{2})=(ad-bc)(s^{2}+t^{2}) e_{2},\\
+[f(ae_{1}+be_{2}), f(ce_{1}+de_{2})]
+&=[(at-bs) e_{1}+(as+bt) e_{2},(ct-ds) e_{1}+(cs+dt) e_{2}]\\
+&=((at-bs)(cs+dt)-(as+bt)(ct-ds)) e_{2}\\
+&=(ad-bc)(s^{2}+t^{2}) e_{2}.
+\end{align*}
+Therefore $f$ is a Lie algebra isomorphism.
+For the statement below, consider $(\mathbb{R}^{>0}, \cdot) \times(\mathbb{R},+)$ instead of 3.3(h). 
+Then it can be easily checked that $\big\{x \frac{\partial}{\partial x}, x \frac{\partial}{\partial y}\big\}$ is left invariant tangent fields that satisfies
+\[\left[x \frac{\partial}{\partial x}, x \frac{\partial}{\partial y}\right]=x \frac{\partial}{\partial y}.\]
+Therefore, by Theorem 3.27, Corollary, it is (up to isomorphism) the unique simply connected $2$-dimensional non-abelian Lie group.
+\item Let $A=\begin{pmatrix}0 & 1 \\ 0 & 0\end{pmatrix}, B=\begin{pmatrix}0 & 0 \\ 0 & 1\end{pmatrix}$. Then
+\[e^{A} e^{B}=\begin{pmatrix}1 & e \\ 0 & e\end{pmatrix}, \quad 
+e^{A+B}=\begin{pmatrix}1 & e-1 \\ 0 & e\end{pmatrix}.\]
+\item If suffices to check that all Jordan canonical forms are in the image, 
+since basis change and the exponential function commute, 
+and the exponent of block diagonal matrices is block diagonal matrices of which blocks consist of the exponent of the original blocks. 
+For $A$ an elementary Jordan matrix, let $A=\lambda I \cdot N$, where the diagonal entries of $N$ are $1$'s. 
+Since $(I-N)^{k}=0$ for $k>n$,
+\[\log N=-\sum_{k=1}^{\infty} \frac{(I-N)^{K}}{k}\]
+exists and $e^{\log N}=N$ by calculation dealing with formal series. 
+Also, $\lambda I=e^{\log \lambda I}$ for any $\log \lambda$ regardless of the choice of the branch of $\log$. 
+Since $\log \lambda I$ is in the center, $e^{\log \lambda I+\log N}=e^{\log \lambda I} e^{\log N}=A$.
+\item It is a Lie algebra because of Proposition 1.55 and if we denote it by $\mathfrak{h}$, 
+$\mathfrak{h} \rightarrow G_{e}, X \mapsto X(e)$ is an isomorphism. 
+Also, for $X$ a left invariant vector field on $G$,
+\[dr_{\sigma} d\varphi(X)=d\varphi dl_{\sigma^{-1}}(X)=d\varphi(X),\]
+so $d\varphi(X) \in \mathfrak{h}$. 
+Also, for $\eta\colon G \times G \rightarrow G, (\sigma, \tau) \rightarrow \sigma \tau$, 
+$\eta(\operatorname{id}_{G}, \varphi)$ is a constant function to $e$. 
+Thus $0=d \eta(d\operatorname{id}_{G}, d\varphi)=d\operatorname{id}_{G}+d\varphi$ and $d\varphi(X)(e)=-X(e)$. 
+Also, by the same argument, $d\varphi(\mathfrak{h}) \subset \mathfrak{g}$. 
+Then, since $\varphi$ is an involution, $d\varphi d\varphi=\operatorname{id}$, 
+so $\mathfrak{g}$ and $\mathfrak{h}$ are isomorphic via $d \varphi$.
+\item Consider ($\mathbb{Q}$, discrete topology) $\hookrightarrow$ ($\mathbb{R}$, standard topology).
+\item By Theorem 3.50, Corollary (b) and Theorem 3.28, $\mathbb{R}^{n}$ is the unique simply connected abelian Lie group up to isomorphism. 
+Then, since $\pi\colon \mathbb{R}^{n} \rightarrow G$ is the universal cover of $G$, $G \simeq \mathbb{R}^{n} / \ker \pi$. 
+Also, the kernel of a covering homomorphism is discrete. 
+Then following the argument in the text, $\ker \pi=\bigoplus_{i=1}^{k} \mathbb{Z} v_{i}$ for some linearly independent elements $v_{1}, \ldots, v_{k}$. 
+Therefore, $G \simeq \mathbb{R}^{n} / \bigoplus_{i=1}^{k} \mathbb{Z} v_{i} \simeq \mathbb{R}^{n-k} \times T^{k}$.
+\item Clearly $A_{B}(V)$ is an abstract subgroup of $\operatorname{Aut}(V)$ 
+and $\mathfrak{d}_{B}$ is a subalgebra of $\operatorname{End}(V)$. 
+According to Theorem 3.42, $A_{B}(V)$ is a closed Lie subgroup of $\operatorname{Aut}(V)$ since
+\[A_{B}(V)=\bigcap_{v, w \in V} \ker(\alpha \mapsto(\alpha(v), \alpha(w))-(v, w))\]
+is closed. $\mathfrak{a}$ be the Lie algebra of $A_{B}(V)$. 
+If $l \in \mathfrak{a}$, $\exp tl \in A_{B}(V)$. Therefore
+\[((\exp tl)(v),(\exp tl)(w))=(v, w).\]
+Taking their derivatives at $t=0$,
+\[(lv, w)+(v, lw)=0.\]
+Therefore $l \in \mathfrak{d}_{B}$. Conversely, suppose that $l \in \mathfrak{d}_{B}$. 
+Then $B(l \otimes 1+1 \otimes l)=0$ by definition. 
+Thus, $B(l \otimes 1+1 \otimes l)^{n}=0$ for $n \geq 1$ and $B \circ e^{t(l \otimes 1+1 \otimes l)}=B$. 
+But since \[e^{t(l \otimes 1+1 \otimes l)}=e^{t(l \otimes 1)} e^{t(1 \otimes l)}
+=(e^{tl} \otimes 1)(1 \otimes e^{t l})=e^{tl} \otimes e^{tl},\]
+$\exp tl \in A_{B}(V)$, and $l \in \mathfrak{a}$. 
+Therefore, $\mathfrak{a}=\mathfrak{d}_{B}$.
+\item Thanks to the outline, we only need to prove that $A(G)$ is naturally isomorphic with the closed subgroup of $A(\tilde{G})$ consisting of those automorphisms of $\tilde{G}$ which map $D$ onto $D$. 
+However, if $g\colon G \rightarrow G \in A(G)$, 
+then by the lifting property, there is a unique map $\tilde{g}\colon \tilde{G} \rightarrow \tilde{G}$ s.t. $\pi \circ \tilde{g}=g \circ \pi$, 
+and since $\tilde{g} \circ g^{-1}=\operatorname{id}_{\tilde{G}}$ by the uniqueness, $\tilde{g} \in A(\tilde{G})$. 
+By definition $\tilde{g}(D) \subset D$ and $\tilde{g}(D^{c}) \subset D^{c}$, thus $\tilde{g}(D)=D$ since it is an automorphism. 
+Conversely, if $h \in A(\tilde{G})$ and $h(D)=D$, there exists a map $\hat{h}\colon G \rightarrow G$ s.t. $\hat{h} \circ \pi=\pi \circ h$
+and it is also an automorphism since $\ker(\pi \circ h)=\ker \pi$. 
+Then it is easy to see that $\hat{\tilde{g}}=g$ and $\tilde{\hat{h}}=h$.
+\item $\varphi\colon U(n) \rightarrow S^{1} \times SU(n), A \mapsto\big(\!\det A, \frac{A}{\det A}\big)$ is a diffeomorphism.
+\item (a) First, find an eigenvalue $\lambda$ and a corresponding unit eigenvector $v$. Since
+\[\lambda\|v\|=\lambda \bar{v}^{t} v=\bar{v}^{t} A v
+=\bar{v}^{t} \bar{A}^{t} v=\bar{\lambda} \bar{v}^{t} v=\bar{\lambda}\|v\|,\]
+$\lambda$ is real. Then if $v^{t} \bar{w}=0$,
+\[\langle v, Aw\rangle=v^{t} \overline{Aw}=v^{t} \bar{A} \bar{w}
+=v^{t} A^{t} \bar{w}=\lambda v^{t} \bar{w}=0.\]
+Therefore $\langle v\rangle$ and $\langle v\rangle^{\perp}$ are both $A$-stable. 
+Then we can use induction on the rank of $A$ to find orthonormal basis which consists of $\left\{v_{i}\right\}$ eigenvectors of $A$. 
+Set $B=\left(v_{1} v_{2} \ldots v_{n}\right)^{-1}$. 
+For the real symmetric case, first find an eigenvalue $\lambda$ (which is real) and a corresponding eigenvector $v$ which can be complex valued. Since
+\[A \bar{v}=\overline{A v}=\overline{\lambda v}=\lambda \bar{v},\]
+$\bar{v}$ is also an eigenvector of $\lambda$. 
+Therefore, $\operatorname{Re}(v)$ and/or $\operatorname{Im}(v)$ is an real eigenvector of $\lambda$ and after scaling, we can find an unit real eigenvector. 
+Now use the same induction as above.
+
+(b) For a hermitian matrix $A$, by (a) we can find $B \in U(n)$ s.t. $BAB^{-1}$ is diagonal. 
+Then $e^{A}=B^{-1} e^{BA ^{-} 1} B$. 
+Since eigenvalues of $A$ is real, $e^{BAB^{-1}}$ is a diagonal matrix whose diagonal entries are all positive. 
+Therefore, since $B \in U(n)$, $e^{A}$ is also positive definite hermitian. 
+Meanwhile, for a positive definite hermitian matrix $H$, we can find $B \in U(n)$ as above. 
+Then since eigenvalues of $H$ are all positive, we can find a real diagonal matrix $A$ s.t. $e^{A}=B H B^{-1}$. 
+Then $e^{B^{-1} A B}=H$, and $B^{-1} A B$ is a hermitian matrix. 
+If $e^{A}=e^{A^{\prime}}$ for two hermitian matrices $A$ and $A^{\prime}$, 
+find $B \in U(n)$ s.t. $B A B^{-1}$ is real diagonal, and note that $e^{B A B^{-1}}=e^{B A^{\prime} B^{-1}}$ is positive definite diagonal. 
+Also, there exists $C \in U(n)$ s.t. $CBA^{\prime}B^{-1}C^{-1}$ is real diagonal, 
+and $e^{CBAB^{-1}C^{-1}}=e^{CBA^{\prime}B^{-1}C^{-1}}$ is also positive definite diagonal. 
+But since $CBAB^{-1}C^{-1}$ is also real diagonal by direct calculation, 
+it means $CBAB^{-1}C^{-1}=CBA^{\prime}B^{-1}C^{-1}$, 
+which says $A=A^{\prime}$. Therefore $\exp$ is well-defined one-to-one onto.
+
+For a real symmetric $A$, $e^{A}$ is positive definite hermitian by above and real, 
+so positive definite symmetric. Injectivity is explained above. 
+For a positive definite symmetric matrix $H$, we can find $B \in O(n)$ as (a), 
+and there exists a real diagonal matrix $A$ s.t. $e^{A}=BHB^{-1}$. 
+Then note that $e^{B^{-1}AB}=H$ and $B^{-1}AB$ is real symmetric.
+\item If $\sigma=P R=P_{1} R_{1}$, then
+\[P^{2}=P R R^{t} P^{t}=P_{1} R_{1} R_{1}^{t} P_{1}^{t}=P_{1}^{2}.\]
+Find $A, B$ real symmetric matrices satisfying $e^{A}=P$ and $e^{B}=P_{1}$, and we see that
+\[e^{2A}=(e^{A})^{2}=P^{2}=P_{1}^{2}=(e^{B})^{2}=e^{2B},\]
+so by injectivity, $2 A=2 B$ or $A=B$. It follows that $P=P_{1}$. Therefore, $R=R_{1}$ also.
+\item $\sigma \bar{\sigma}^{t}$ is positive definite hermitian, 
+so $\exists B \in U(n)$ s.t. $B \sigma \bar{\sigma}^{t} B^{-1}$ is positive definite diagonal. 
+Set $P=B^{-1}(B \sigma \bar{\sigma}^{t} B^{-1})^{\frac{1}{2}} B$, 
+which is positive definite hermitian, and $R=P^{-1} \sigma$ a unitary matrix.
+\item $U(n)$ is connected, and there exists a path $tI+(1-t)P$ joining $I$ and $P$ a positive definite hermitian matrix. 
+Thus by similar argument of Theorem 3.68 and using Exercise 24, $Gl(n, \mathbb{C})$ is connected.
+\item Follow the argument and use actions $SU(n) \times X \rightarrow X$ for (b) and $SO(n) \times \mathbb{P}^{n-1} \rightarrow \mathbb{P}^{n-1}$ for (c).
+\end{enumerate}
+\textbf{References}
+\begin{references}
+\bibitem[1]{1} Allen Hatcher, \textit{Algebraic Topology}, Cambridge University Press, 2002.
+\bibitem[2]{2} Daniel Murfet, \textit{Automorphisms of Power Series Rings}, in his \href{http://therisingsea.org}{blog}, 2005.
+\bibitem[3]{3} Frank W. Warner, \textit{Foundations of Differentiable Manifolds and Lie Groups}, Springer, 1983.
+\bibitem[4]{4} John M. Lee, \textit{Introduction to Smooth Manifolds}, 2nd ed., Springer, 2010.
+\bibitem[5]{5} Paul Loya, \textit{An introductory course in differential geometry and the Atiyah--Singer index theorem}, Binghamton University, 2005.
+\bibitem[6]{6} C. H. Dowker, \textit{Lectures on Sheaf Theory}, Tata Institute of Fundamental Research, 1956.
+\end{references}

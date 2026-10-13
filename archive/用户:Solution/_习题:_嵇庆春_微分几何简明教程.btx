@@ -1,0 +1,1006 @@
+\newtheorem{excise}{练习}
+
+\renewcommand*{\Re}{\operatorname{Re}}
+\renewcommand*{\Im}{\operatorname{Im}}
+\newcommand{\T}{\mathrm{T}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\sgn}{\operatorname{sgn}}
+
+\newcommand{\widebar}{\bar}
+
+\newcommand{\d}{\mathrm{d}}
+\newcommand{\C}{\mathbb{C}} 
+\newcommand{\Q}{\mathbb{Q}} 
+\newcommand{\D}{\mathbb{D}}
+
+\newcommand{\df}[2]{\dfrac{\d #1}{\d #2}}
+\newcommand{\pf}[2]{\dfrac{\partial #1}{\partial #2}}
+
+\newtheorem*{thm*}{定理}
+
+% 数学 平行 符号
+\newcommand{\pll}{\kern 0.56em/\kern -0.8em /\kern 0.56em}
+
+\theoremstyle{remark}\newtheorem*{remark*}{前言}
+\begin{remark*}
+本习题解答形成于2024年秋及2025年秋笔者担任微分几何课程助教期间,习题中截止到目前已知的笔误已经在本文中修订,本习题解答仅假设读者拥有直到当前章节的知识,所以部分题目或许会有更简洁的做法,这部分内容不会呈现在本文中.部分解答参考了2024和2025两年微分几何课程同学作业中的优质解答,在此感谢他们.另外由于本解答直接复制自LaTeX代码,所以可能有一些排版上的不美观,还望多多包涵.
+\end{remark*}
+\section{曲线论的基本概念}
+
+\section{曲线论基本定理}
+
+\section{平面曲线的相对曲率}
+\begin{excise}
+		参考2.2节, 叙述并证明平面曲线的基本定理(用相对曲率代替曲率).
+	\end{excise}
+	\begin{thm*}[平面曲线基本定理]
+		$I\subseteq \R$是一个区间,不妨设$0\in I$.任给$\bar{\kappa}_{r}\in C^{\infty}(I)$,再任给常向量$\gamma_{0},T_{0},N_{r0}\in\R^{2}$,使得
+		$$
+		T_{0}\text{ 是单位向量},N_{r0}\text{ 是\ }T_{0}\text{ 逆时针旋转\ }\frac{\pi}{2}\text{ 得到的向量}.
+		$$
+		则存在唯一的弧长参数化平面曲线$\gamma: I\to\R^{2}$满足
+		$$
+		\text{相对曲率\ }\kappa_{r}=\bar{\kappa}_{r},
+		$$
+		以及
+		$$
+		\gamma(0)=\gamma_{0},\quad \gamma\text{ 在\ }s=0\text{ 处的标架\ }[T(0),N_{r}(0)]=[T_{0},N_{r0}].
+		$$
+	\end{thm*}
+	\begin{proof}
+		考虑如下常微分方程组
+		\begin{equation}\label{eq3.1}
+			\begin{cases}
+				\dfrac{\d \gamma}{\d s} = F_{1},\\\\
+				\dfrac{\d F_{1}}{\d s} = \bar{\kappa}_{r}F_{2},\\\\
+				\dfrac{\d F_{2}}{\d s} = -\bar{\kappa}_{r}F_{1},
+			\end{cases}
+		\end{equation}
+		由于 \eqref{eq3.1} 是关于$\gamma, F_{1}, F_{2}$的线性常微分方程组,存在唯一解$\gamma, F_{1}, F_{2}$满足
+		$$
+		\gamma(0)=\gamma_{0},\quad F_{1}(0)=T_{0},\quad F_{2}(0)=N_{r0}.
+		$$
+		接下来只要证明
+		$$
+		[T(s),N_{r}(s)]=F(s):=[F_{1}(s),F_{2}(s)]\in SO(2),\quad s\in I.
+		$$
+		由 \eqref{eq3.1} 式的第2, 3式可知$f:=F^{-1}\cdot\dfrac{\d F}{\d s}$是反对称矩阵.从而,
+		\begin{align*}
+			\frac{\d (FF^{\T})}{\d s}&=\frac{\d F}{\d s}F^{\T}+F\left(\frac{\d F}{\d s}\right)^{\T}\\
+			&=F(f+f^{\T})F^{\T}=0.
+		\end{align*}
+		再由
+		$$
+		F(0)=[T_{0},N_{r0}]\in SO(2)
+		$$
+		可知$F(s)\in SO(2)$对任何$s\in I$成立.
+	\end{proof}
+
+	\begin{excise}
+		如果存在常数$0\neq a \in \R$,使得$\kappa_{r}\equiv a$,
+		则$\gamma(I)$包含在以$\dfrac{1}{|a|}$为半径的圆周内.
+	\end{excise}
+	\begin{proof}
+		至多相差一个参数变换,可设$\gamma$是弧长参数化的.设$T(s)=\bigl(\cos\theta(s),\sin\theta(s)\bigr)^{\T}$, $s\in I$.则有
+		$$
+		\frac{\d \theta}{\d s}=\kappa_{r}=a.
+		$$
+		至多相差一个平移变换,可以取$T(s)=\bigl(\cos(as),\sin(as)\bigr)^{\T}$.于是至多相差一个曲线的平移,可以取
+		$$
+		\gamma(s)=\dfrac{1}{a}\bigl(\sin(as),-\cos(as)\bigr)^{\T},\quad s\in I
+		$$
+		包含在以$\dfrac{1}{|a|}$为半径的圆周内.
+	\end{proof}
+
+	\begin{excise}
+		设$f(z)$是复平面中圆心在原点的单位闭圆盘的某个开邻域上的全纯函数,
+		$\dfrac{\d f}{\d z}$在单位圆周上处处非零.证明:
+		\begin{enumerate}[label=(\roman*)]
+			\item 如下映射
+			\begin{align*}
+				\gamma:\ &[0,2\pi]\to\R^{2}\\
+				&\theta\mapsto(\Re f,\Im f)^{\T}(e^{\sqrt{-1}\theta})
+			\end{align*}
+			是一个正则参数化的曲线.
+			\item $\gamma$的相对曲率
+			$\kappa_{r}(\theta)=\dfrac{\Re\left(e^{\sqrt{-1}\theta}\dfrac{\d^{2}f}{\d z^{2}}+\dfrac{\d f}{\d z}\right)\overline{\dfrac{\d f}{\d z}}}{\left|\dfrac{\d f}{\d z}\right|^{3}}(e^{\sqrt{-1}\theta})$.       
+			\item $\displaystyle \frac{1}{2\pi}\int_{0}^{2\pi}\kappa_{r}(\theta)\left|\frac{\d\gamma}{\d\theta}\right|\d\theta=1+\frac{\d f}{\d z}\text{ 在单位圆盘内的零点数(按重数计)}$.
+		\end{enumerate}
+	\end{excise}
+	\begin{proof}
+		\begin{enumerate}[label=(\roman*)]
+			\item $\dfrac{\d \gamma}{\d \theta}=\left(-\Im e^{\sqrt{-1}\theta}\dfrac{\d f}{\d z},\Re e^{\sqrt{-1}\theta}\dfrac{\d f}{\d z}\right)^{\T}(e^{\sqrt{-1}\theta})$在$[0,2\pi]$上处处非零,故$\gamma(\theta)$, $\theta\in[0,2\pi]$是一个正则参数化的曲线.
+			\item $\dfrac{\d^{2} \gamma}{\d \theta^{2}}=\Biggl(-\Re e^{\sqrt{-1}\theta}\left(e^{\sqrt{-1}\theta}\dfrac{\d^{2} f}{\d z^{2}}+\dfrac{\d f}{\d z}\right),-\Im e^{\sqrt{-1}\theta}\left(e^{\sqrt{-1}\theta}\dfrac{\d^{2} f}{\d z^{2}}+\dfrac{\d f}{\d z}\right)\Biggr)^{\T}(e^{\sqrt{-1}\theta})$,于是
+			\begin{align*}
+				\begin{vmatrix}
+					\dfrac{\d x^{1}}{\d \theta}&\dfrac{\d x^{2}}{\d \theta}\\ \\
+					\dfrac{\d^{2} x^{1}}{\d \theta^{2}}&\dfrac{\d^{2} x^{2}}{\d \theta^{2}}
+				\end{vmatrix}&=\Re e^{\sqrt{-1}\theta}\left(e^{\sqrt{-1}\theta}\dfrac{\d^{2} f}{\d z^{2}}+\dfrac{\d f}{\d z}\right)\Re e^{-\sqrt{-1}\theta}\overline{\dfrac{\d f}{\d z}}(e^{\sqrt{-1}\theta})\\
+				&\quad\,-\Im e^{\sqrt{-1}\theta}\left(e^{\sqrt{-1}\theta}\frac{\d^{2} f}{\d z^{2}}+\frac{\d f}{\d z}\right)\Im e^{-\sqrt{-1}\theta}\overline{\frac{\d f}{\d z}}(e^{\sqrt{-1}\theta})\\
+				&=\Re\left(e^{\sqrt{-1}\theta}\frac{\d^{2}f}{\d z^{2}}+\frac{\d f}{\d z}\right)\overline{\frac{\d f}{\d z}}(e^{\sqrt{-1}\theta}).
+ 			\end{align*}
+			故$\kappa_{r}(\theta)=\dfrac{
+			\begin{vmatrix}
+				\frac{\d x^{1}}{\d \theta}&\frac{\d x^{2}}{\d \theta}\\
+				\frac{\d^{2} x^{1}}{\d \theta^{2}}&\frac{\d^{2} x^{2}}{\d \theta^{2}}
+			\end{vmatrix}}{\left(\left(\frac{\d x^{1}}{\d \theta}\right)^{2}+\left(\frac{\d x^{2}}{\d \theta}\right)^{2}\right)^{\frac{3}{2}}}=\dfrac{\Re\left(e^{\sqrt{-1}\theta}\dfrac{\d^{2}f}{\d z^{2}}+\dfrac{\d f}{\d z}\right)\overline{\dfrac{\d f}{\d z}}}{\left|\dfrac{\d f}{\d z}\right|^{3}}(e^{\sqrt{-1}\theta})$.
+			\item 
+			\begin{align*}
+				\frac{1}{2\pi}\int_{0}^{2\pi}\kappa_{r}(\theta)\left|\frac{\d\gamma}{\d\theta}\right|\d\theta&=\frac{1}{2\pi}\int_{0}^{2\pi}\frac{\Re\left(e^{\sqrt{-1}\theta}\dfrac{\d^{2}f}{\d z^{2}}+\dfrac{\d f}{\d z}\right)\overline{\dfrac{\d f}{\d z}}}{\left|\dfrac{\d f}{\d z}\right|^{2}}(e^{\sqrt{-1}\theta})\d\theta\\
+				&=1+\frac{1}{2\pi}\Re\int_{0}^{2\pi}\frac{e^{\sqrt{-1}\theta}\dfrac{\d^{2}f}{\d z^{2}}}{\dfrac{\d f}{\d z}}(e^{\sqrt{-1}\theta})\d\theta\\
+				&=1+\frac{1}{2\pi\sqrt{-1}}\oint_{\partial\D}\frac{\dfrac{\d^{2}f}{\d z^{2}}}{\dfrac{\d f}{\d z}} \d z\\
+				&=1+\frac{\d f}{\d z}\text{ 在单位圆盘内的零点数(按重数计)},
+			\end{align*}
+			其中倒数第二个等号作了代换$z=e^{\sqrt{-1}\theta}$,最后一个等号用到了辐角原理.\qedhere
+		\end{enumerate}
+	\end{proof}
+
+\section{平面简单闭曲线}
+
+\section{曲面论的基本概念}
+\begin{excise}
+		$\phi(D)$在局部上总可表示为$\R^3$中某个坐标平面(中开区域)上的函数的图.
+	\end{excise}
+	\begin{proof}
+		由于$\phi$是正则参数化的曲面,于是
+		$$
+		\rank
+		\begin{bmatrix}
+			\partial_{u^{1}}x^{1}&\partial_{u^{2}}x^{1}\\ \\
+			\partial_{u^{1}}x^{2}&\partial_{u^{2}}x^{2}\\ \\
+			\partial_{u^{1}}x^{3}&\partial_{u^{2}}x^{3}
+		\end{bmatrix}=2
+		$$
+		在$D$上处处成立,于是总存在某个坐标平面$x^{i}Ox^{j}$, $1\leqslant i<j \leqslant 3$使得雅可比行列式
+		$$
+		\begin{vmatrix}
+			\partial_{u^{1}}x^{i}&\partial_{u^{2}}x^{i}\\ \\
+			\partial_{u^{1}}x^{j}&\partial_{u^{2}}x^{j}
+		\end{vmatrix}\neq 0
+		$$
+		在局部上成立.由反函数定理可知,存在光滑函数$u^{1}(x^{i},x^{j}), u^{2}(x^{i},x^{j})$使得
+		$$
+		u^{1}=u^{1}(x^{i},x^{j}),\quad u^{2}=u^{2}(x^{i},x^{j})
+		$$
+		在局部上成立.此时$\phi(u)$可表示为$x^{i}Ox^{j}$平面(中开区域)上的函数$x^{k}\bigl(u^{1}(x^{i},x^{j}),u^{2}(x^{i},x^{j})\bigr)$的图,其中$x^{k}$为$x^{i}, x^{j}$剩下的那个分量.
+	\end{proof}
+		
+	\begin{excise}\label{5.2}
+		若 $g_{ij}, h_{ij}$ 均为常数 $(1\leqslant i,j \leqslant 2)$, 则 $\phi(D) \subseteq \R^3$ 
+		是平面或正圆柱面的开子集.
+	\end{excise}
+	\begin{proof}
+		至多相差一个线性变换,可设$g$在某一点处对角化成单位阵,又由$g_{ij}$为常数 $(1\leqslant i,j \leqslant 2)$,所以这个对角化是全局的.至多相差一个旋转变换,可设$h$在某一点处对角化,又由$h_{ij}$为常数 $(1\leqslant i,j \leqslant 2)$,所以这个对角化是全局的.不妨设在$D$上
+		$$
+		g=
+		\begin{bmatrix}
+			1& & \\
+			 & &1
+		\end{bmatrix},\quad h=
+		\begin{bmatrix}
+			h_{11}&\\
+			&h_{22}
+		\end{bmatrix}.
+		$$
+		于是$\displaystyle w_{j}^{k}=\sum_{l=1}^{2}h_{jl}g^{lm}=h_{jk}, \Gamma_{ij}^{k}=\frac{1}{2}\sum_{l=1}^{2}(\partial_{u^{i}}g_{jl}+\partial_{u^{j}}g_{il}-\partial_{u^{l}}g_{ij})g^{kl}=0$, $(1\leqslant i,j,k \leqslant 2)$.由标架运动方程,有
+		\begin{equation}\label{eq5.1}
+			\begin{cases}
+				\phi_{ij}=h_{ij}\nu,\\
+				\nu_{j}=-h_{jj}\phi_{j},
+			\end{cases}
+		\end{equation}
+		由方程组 \eqref{eq5.1} 的相容性条件得: $h_{11}h_{22}=0$,至多相差一个对称变换,可设$h_{22}=0$.由方程组 \eqref{eq5.1} 的第二式可知,若$h_{11}=0$,则$\nu$为一常向量,此时$\phi(D)$为平面的开子集.若$h_{11}\neq0$,至多相差一个平移变换以及曲面的刚体运动,可取$\nu(u)=-\bigl(\sin (h_{11}u^{1}),\cos (h_{11}u^{1}),0\bigr)^{\T}$,进而至多相差一个曲面的平移,可取$\phi(u)=\dfrac{1}{h_{11}}\bigl(\sin (h_{11}u^{1}),\cos (h_{11}u^{1}),h_{11}u^{2}\bigr)^{\T}$, $u\in D$为正圆柱面的开子集.
+	\end{proof}
+	\begin{excise}\label{5.3}
+		不妨设$0\in D, \phi(0)=0$.证明:
+		\begin{enumerate}[label=(\roman*)]
+			\item\label{5.3.1} $\displaystyle \phi(u)=\sum_{k=1}^{2}\left( u^{k}+\frac{1}{2}\sum_{i,j=1}^{2}\Gamma_{ij}^{k}(0)u^{i}u^{j} \right)\partial_{u^{k}}\phi(0)+\left( \frac{1}{2}\sum_{i,j=1}^{2}h_{ij}(0)u^{i}u^{j} \right)\nu_{\phi}(0)+o(|u|^{2})$.
+			\item 存在参数变换$\phi\circ\sigma:\widebar{D}\to\R^{3},F\in C^{\infty}(\widebar{D})$使得
+			$$
+			\phi\circ\sigma(\bar{u})=\sum_{i=1}^{2}\bar{u}^{i}\partial_{u^{i}}\phi(0)+F(\bar{u})\nu_{\phi}(0),
+			$$
+			$$
+			\partial_{\bar{u}^{i}}F(0)=0(i=1,2),\quad [\partial_{\bar{u}^{i}}\partial_{\bar{u}^{j}}F(0)]=[h_{ij}(0)],\quad \sigma(0)=0.
+			$$
+		\end{enumerate}
+	\end{excise}
+	\begin{proof}
+		\begin{enumerate}[label=(\roman*)]
+			\item 在$u=0$处对$\phi(u)$进行$2$阶泰勒展开得
+			\begin{align*}
+				\phi(u)&=\sum_{k=1}^{2}u^{k}\partial_{u^{k}}\phi(0)+\frac{1}{2}\sum_{i,j=1}^{2}u^{i}u^{j}\phi_{ij}(0)+o(|u|^{2})\\
+				&=\sum_{k=1}^{2}u^{k}\partial_{u^{k}}\phi(0)+\frac{1}{2}\sum_{i,j=1}^{2}u^{i}u^{j}\left(\sum_{k=1}^{2}\Gamma_{ij}^{k}(0)\partial_{u^{k}}\phi(0)+h_{ij}(0)\nu_{\phi}(0)\right)+o(|u|^{2})\\
+				&=\sum_{k=1}^{2}\left( u^{k}+\frac{1}{2}\sum_{i,j=1}^{2}\Gamma_{ij}^{k}(0)u^{i}u^{j} \right)\partial_{u^{k}}\phi(0)+\left( \frac{1}{2}\sum_{i,j=1}^{2}h_{ij}(0)u^{i}u^{j} \right)\nu_{\phi}(0)+o(|u|^{2}),
+			\end{align*}
+			其中倒数第二个等号用到了标架运动方程.
+			\item 令$\bigl(\bar{u}^{1}(u),\bar{u}^{2}(u),f(u)\bigr)^{\T}:=[\partial_{u^{1}}\phi(0),\partial_{u^{2}}\phi(0),\nu_{\phi}(0)]^{-1}\phi(u)$, 由 (i) 可知
+			$$
+			\bar{u}^{k}(u)=u^{k}+\frac{1}{2}\sum_{i,j=1}^{2}\Gamma_{ij}^{k}(0)u^{i}u^{j}+o(|u|^{2}),\quad k=1,2.
+			$$
+			于是映射
+			\begin{align*}
+				\tau:\ &D\to\R^{2}\\
+					(u^{1},u^{2})&\mapsto\bigl(\bar{u}^{1}(u),\bar{u}^{2}(u)\bigr)
+			\end{align*}
+			在$0$处的雅可比行列式
+			$$
+			\begin{vmatrix}
+				1&&0\\
+				0&&1
+			\end{vmatrix}\neq 0,\quad \tau(0)=0,
+			$$
+			由反函数定理,存在$0$的开邻域$\widebar{D}\subseteq\R^{2}$,使$\tau$有逆映射$\sigma:\widebar{D}\to D$, $\sigma(0)=0$.于是令
+			$$
+			F(\bar{u}):=f\circ\sigma(\bar{u}),
+			$$
+			则有参数变换$\phi\circ\sigma:\widebar{D}\to\R^{3},F\in C^{\infty}(\widebar{D})$使得
+			$$
+			\phi\circ\sigma(\bar{u})=\sum_{i=1}^{2}\bar{u}^{i}\partial_{u^{i}}\phi(0)+F(\bar{u})\nu_{\phi}(0).
+			$$
+			由 (i) 可知$\displaystyle F\circ\tau(u)=\frac{1}{2}\sum_{i,j=1}^{2}h_{ij}(0)u^{i}u^{j}+o(|u|^{2})$,于是
+			$$
+			F(0)=\partial_{\bar{u}^{i}}F(0)=0(i=1,2),\quad [\partial_{\bar{u}^{i}}\partial_{\bar{u}^{j}}F(0)]=[h_{ij}(0)](1\leqslant i,j\leqslant 2).\qedhere
+			$$
+		\end{enumerate}
+	\end{proof}
+
+	\begin{excise}
+		证明: $K=\dfrac{h_{11}h_{22}-h_{12}^{2}}{g_{11}g_{22}-g_{12}^{2}},H=\dfrac{g_{11}h_{22}+g_{22}h_{11}-2g_{12}h_{12}}{2(g_{11}g_{22}-g_{12}^{2})}$.
+	\end{excise}
+	\begin{proof}
+		\begin{align*}
+			K&=\det\omega=\frac{\det h}{\det g}\\
+			&=\frac{h_{11}h_{22}-h_{12}^{2}}{g_{11}g_{22}-g_{12}^{2}}.\\ \\
+			H&=\frac{1}{2}\tr\omega=\frac{1}{2}\tr hg^{-1}\\
+			&=\frac{1}{2\det g}\tr
+			\begin{bmatrix}
+				h_{11}&h_{12}\\ \\
+				h_{12}&h_{22}
+			\end{bmatrix}
+			\begin{bmatrix}
+				g_{22}&-g_{12}\\ \\
+				-g_{12}&g_{11}
+			\end{bmatrix}\\
+			&=\frac{g_{11}h_{22}+g_{22}h_{11}-2g_{12}h_{12}}{2(g_{11}g_{22}-g_{12}^{2})}.
+		\end{align*}
+	\end{proof}
+
+	\begin{excise}
+		设$c_{i}:(-\varepsilon,\varepsilon)\to D$是光滑映射, $i=1,2$. $c_{1}(0)=c_{2}(0):=u_{0}$,证明:
+		\begin{align*}
+		\mathrm{I\!I}_{u_{0}}\left( \frac{\d\phi\circ c_{1}}{\d t}(0), \frac{\d\phi\circ c_{2}}{\d t}(0)\right)&=-\frac{\d\phi\circ c_{1}}{\d t}(0)\cdot\frac{\d\nu\circ c_{2}}{\d t}(0),\\
+		W_{u_{0}}\left( \frac{\d\phi\circ c_{1}}{\d t}(0) \right)&=-\frac{\d\nu\circ c_{1}}{\d t}(0).
+		\end{align*}
+	\end{excise}
+	\begin{proof}
+		设$c_{i}(t)=\bigl(u_{i}^{1}(t),u_{i}^{2}(t)\bigr)$, $i=1,2$,则
+		\begin{align*}
+			\mathrm{I\!I}_{u_{0}}\left( \frac{\d\phi\circ c_{1}}{\d t}(0), \frac{\d\phi\circ c_{2}}{\d t}(0)\right)&=W_{u_{0}}\left(\sum_{k=1}^{2}\frac{\d u_{2}^{k}}{\d t}(0)\phi_{k}(u_{0})\right)\cdot \left(\sum_{k=1}^{2}\frac{\d u_{1}^{k}}{\d t}(0)\phi_{k}(u_{0})\right)\\
+			&=-\left(\sum_{j=1}^{2}\frac{\d u_{2}^j}{\d t}(0)\nu_{j}(u_{0})\right)\cdot\left(\sum_{k=1}^{2}\frac{\d u_{1}^{k}}{\d t}(0)\phi_{k}(u_{0})\right)\\
+			&=-\frac{\d\phi\circ c_{1}}{\d t}(0)\cdot\frac{\d\nu\circ c_{2}}{\d t}(0).\\ \\
+			W_{u_{0}}\left( \frac{\d\phi\circ c_{1}}{\d t}(0) \right)&=W_{u_{0}}\left(\sum_{k=1}^{2}\frac{\d u_{1}^{k}}{\d t}(0)\phi_{k}(u_{0})\right)\\
+			&=-\left(\sum_{j=1}^{2}\frac{\d u_{1}^j}{\d t}(0)\nu_{j}(u_{0})\right)\\
+			&=-\frac{\d\nu\circ c_{1}}{\d t}(0).
+		\end{align*}
+	\end{proof}
+
+	\begin{excise}
+		设常数$\lambda\in \R$满足$1-2\lambda H_{\phi}+\lambda^{2}K_{\phi}\neq 0$在$D$上成立,证明：
+		\begin{enumerate}[label=(\roman*)]
+			\item $\phi^{\lambda}:=\phi+\lambda\nu_{\phi}:D\to \R^{3}$是正则参数化的曲面.
+			\item\label{5.6.2} $K_{\phi^{\lambda}}=\dfrac{K_{\phi}}{1-2\lambda H_{\phi}+\lambda^{2}K_{\phi}},H_{\phi^{\lambda}}=\dfrac{H_{\phi}-\lambda K_{\phi}}{|1-2\lambda H_{\phi}+\lambda^{2}K_{\phi}|}.$
+			\item 利用前面的结果讨论如何从具有常平均曲率$H\neq 0$ (常高斯曲率$K>0$)的曲面构造具有常高斯曲率(常平均曲率)的曲面.
+		\end{enumerate}
+	\end{excise}
+	\begin{proof}
+		\begin{enumerate}[label=(\roman*)]
+			\item 由标架运动方程,有$\displaystyle \phi_{k}^{\lambda}=\phi_{k}-\sum_{i=1}^{2}\lambda w_{k}^{i}\phi_{i}$,于是
+			\begin{equation}\label{eq5.2}
+			\phi_{1}^{\lambda}\times \phi_{2}^{\lambda}=(1-2\lambda H_{\phi}+\lambda^{2}K_{\phi})\phi_{1}\times \phi_{2}\neq 0,
+			\end{equation}
+			故$\phi^{\lambda}$是正则参数化的曲面.
+			\item 由 (\ref{eq5.2}) 可知$\nu_{\phi^{\lambda}}=\nu_{\phi}\sgn(1-2\lambda H_{\phi}+\lambda^{2}K_{\phi})$,而$\displaystyle \nu_{\phi^{\lambda}j}=-w_{\phi^{\lambda}j}^{k}\phi_{k}^{\lambda}=-w_{\phi^{\lambda}j}^{k}\left(\phi_{k}-\sum_{i=1}^{2}\lambda w_{k}^{i}\phi_{i}\right)$,与$\phi^{\lambda}$的标架运动方程比较可知
+			$$
+			\omega_{\phi^{\lambda}}=\omega_{\phi}\sgn(1-2\lambda H_{\phi}+\lambda^{2}K_{\phi})+\lambda\omega_{\phi^{\lambda}}\omega_{\phi}.
+			$$
+			于是$K_{\phi^{\lambda}}=\det\omega_{\phi^{\lambda}}=\dfrac{K_{\phi}}{1-2\lambda H_{\phi}+\lambda^{2}K_{\phi}},H_{\phi^{\lambda}}=\dfrac{1}{2}\tr \omega_{\phi^{\lambda}}=\dfrac{H_{\phi}-\lambda K_{\phi}}{|1-2\lambda H_{\phi}+\lambda^{2}K_{\phi}|}$.
+			\item 由 (ii) 可知,当$\phi$具有常平均曲率$H_{\phi}\neq 0$时,不妨设其高斯曲率不恒为$0$,于是至多收缩$D$,可设$K_{\phi}$恒不等于$0$,此时$\phi^{\frac{1}{2H_{\phi}}}$具有常高斯曲率$4H_{\phi}^{2}$.
+            当$\phi$具有常高斯曲率$K_{\phi}>0$时,不妨设其不具有常平均曲率,于是至多相差一个对称变换以及收缩$D$,可设$H_{\phi}<0$,此时$\phi^{\frac{1}{\sqrt{K_{\phi}}}}$具有常平均曲率$-\dfrac{\sqrt{K_{\phi}}}{2}$.\qedhere
+		\end{enumerate}
+	\end{proof}
+	\begin{excise}\label{5.7}
+		设$\phi:D\to\R^{3}$是正则参数化的曲面, $u_{0}\in D$.
+		\begin{enumerate}[label=(\roman*)]
+			\item\label{5.7.1} 证明:当$K(u_{0})>0$时,存在$u_{0}$的非空开邻域$U$使得$\phi(U)$包含于切平面$\phi(u_{0})+T_{u_{0}}\phi$的同一侧.
+			\item\label{5.7.2} 证明：当$K(u_{0})<0$时,对$u_{0}$的任何非空开邻域$U$, $\phi(U)$都经过切平面$\phi(u_{0})+T_{u_{0}}\phi$的两侧.
+			\item 进一步讨论当$K(u_{0})=0$时是否有类似性质成立.
+		\end{enumerate}
+	\end{excise}
+	\begin{proof}
+		\begin{enumerate}[label=(\roman*)]
+			\item 由\textbf{练习 \ref{5.3}} 可知,存在参数变换$\sigma:\widebar{D}\to D$使得
+			$$
+			\phi\circ\sigma(\bar{u})=\phi(u_{0})+\sum_{i=1}^{2}\bar{u}^{i}\partial_{u^{i}}\phi(u_{0})+F(\bar{u})\nu_{\phi}(u_{0}),\quad \sigma(0)=u_{0}.
+			$$
+			由$h_{\phi}(u_{0})=h_{\phi\circ\sigma}(0)=\nabla^{2}F(0)$可知$\det\nabla^{2}F(0)>0$,由$F(0)=0$知$F(\bar{u})$在$0$的某去心邻域$\mathring{\widebar{U}}\subseteq \widebar{D}$上定号,于是
+			$$
+			\bigl(\phi(u)-\phi(u_{0})\bigr)\cdot\nu_{\phi}(u_{0})=\bigl(\phi\circ\sigma(\bar{u})-\phi(u_{0})\bigr)\cdot\nu_{\phi}(u_{0})=F(\bar{u})
+			$$
+			在$u_{0}$的某去心邻域$\mathring{U}=\sigma(\mathring{\widebar{U}})\subseteq D$上定号,故$\phi(U)$包含于切平面$\phi(u_{0})+T_{u_{0}}\phi$的同一侧.
+			\item 由 (i) 可知,当$K(u_{0})<0$时, $\bigl(\phi(u)-\phi(u_{0})\bigr)\cdot\nu_{\phi}(u_{0})$在$u_{0}$的任何非空开邻域$U$上不定号,于是$\phi(U)$都经过切平面$\phi(u_{0})+T_{u_{0}}\phi$的两侧.
+			\item 当$K(u_{0})=0$时, (i) 与 (ii) 以及之外的情况均有可能出现.例如圆柱面满足 (i) 中情况, $\left\{\bigl(x^{1},x^{3}=(x^{1})^{3}\bigr)\bigm|x^{1}\in\R\right\}\times\left\{x^{2}\bigm|x^{2}\in\R\right\}$满足 (ii) 中情况,平面均不满足 (i) 与 (ii) 中情况.\qedhere
+		\end{enumerate}
+	\end{proof}
+	\begin{excise}\label{5.8}
+		定义 $D$ 上的 $1$-形式
+		$$
+		\beta:=\sum_{i=1}^2\left(\phi, \nu, \phi_i\right) \d u^i \quad \text { 和 } \quad \gamma:=\sum_{i=1}^2\left(\phi, \nu, \nu_i\right) \d u^i,
+		$$
+		证明:
+		$$
+		\d\beta=-2(1+H \phi \cdot \nu) \d A, \quad \d\gamma=2(H+K \phi \cdot \nu) \d A.
+		$$
+	\end{excise}
+	\begin{proof}
+		\begin{align*}
+			\d \beta&=\bigl(2(\phi_{1},\nu,\phi_{2})+(\phi,\nu_{1},\phi_{2})-(\phi,\nu_{2},\phi_{1})\bigr)\d u^{1}\wedge\d u^{2}\\
+			&=-2\d A+\bigl(w_{2}^{2}(\phi,\phi_{2},\phi_{1})-w_{1}^{1}(\phi,\phi_{1},\phi_{2})\bigr)\d u^{1}\wedge\d u^{2}\\
+			&=-2(1+H \phi \cdot \nu) \d A,
+		\end{align*}
+		其中倒数第二个等号用到了标架运动方程.
+		\begin{align*}
+			\d \gamma&=\bigl(2(\phi_{1},\nu_{1},\nu_{2})+(\phi_{1},\nu,\nu_{2})-(\phi_{2},\nu_{2},\phi_{1})\bigr)\d u^{1}\wedge\d u^{2}\\
+			&=2K\phi\cdot\nu\d A+\bigl(w_{1}^{1}(\phi_{2},\nu,\phi_{1})-w_{2}^{2}(\phi_{1},\nu,\phi_{2})\bigr)\d u^{1}\wedge\d u^{2}\\
+			&=2(H+K \phi \cdot \nu) \d A,
+		\end{align*}
+		其中倒数第二个等号用到了标架运动方程.
+	\end{proof}
+
+\section{几类特殊曲面}
+\begin{excise}
+		直纹面是可展曲面当且仅当$\nu_{2}=0$ (提示: $\nu_{2}=0\Leftrightarrow \nu(u^{1},u^{2})$平行于$\nu(u^{1},u^{2}+\varepsilon)$).
+	\end{excise}
+	\begin{proof}
+		直纹面是可展曲面$\Leftrightarrow K=0\Leftrightarrow(b',a',b)=0\Leftrightarrow  b'\times b\pll a'\Leftrightarrow b'\times b\pll \nu\Leftrightarrow\nu(u^{1},u^{2})\pll\nu(u^{1},u^{2}+\varepsilon)\Leftrightarrow\nu_{2}=0$.
+	\end{proof}
+\section{曲面上的曲线}
+\begin{excise}
+		设$\gamma: I\to \R^{3}$是弧长参数化的曲线, $\gamma$的曲率$\kappa \neq 0$,
+		证明: $N:I\to\R^{3}$是正则曲线,并且$N$作为单位球面$S^{2}$中的曲线有测地曲率
+		$$
+		\kappa_{g}=\pm\left.
+		\begin{vmatrix}
+			\kappa&\tau\\ \\
+			\dfrac{\d\kappa}{\d s}&\dfrac{\d\tau}{\d s}
+		\end{vmatrix}\right/(\kappa^{2}+\tau^{2})^{\frac{3}{2}},
+		$$
+		其中右边的正负号由$S^{2}$的定向确定, $\tau$是$\gamma$的挠率.
+	\end{excise}
+	\begin{proof}
+		由Frenet标架的运动方程,可知$\dfrac{\d N}{\d s}=-\kappa T+\tau B\neq 0$,故$N:I\to\R^{3}$是正则曲线.进一步,还能得到
+		$$
+		\left|\frac{\d N}{\d s}\right|=\sqrt{\kappa^{2}+\tau^{2}},\quad \frac{\d^{2} N}{\d s^{2}}=-\frac{\d \kappa}{\d s}T-(\kappa^{2}+\tau^{2})N+\frac{\d \tau}{\d s}B.
+		$$
+		由于$N$作为单位球面$S^{2}$中的曲线,故有
+		$$
+		n(s)=\pm N(s),
+		$$
+		其中右边的正负号由$S^{2}$的定向确定.于是
+		\begin{align*}
+			\kappa_{g}&=\left(n,\frac{\d N}{\d s},\frac{\d^{2} N}{\d s^{2}}\right)\left/\left|\frac{\d N}{\d s}\right|^{3}\right.\\
+			&=\pm\left.\left(N,-\kappa T+\tau B,-\frac{\d \kappa}{\d s}T+\frac{\d \tau}{\d s}B\right)\right/(\kappa^{2}+\tau^{2})^{\frac{3}{2}}\\
+			&=\pm\left.(\tau T+\kappa B)\cdot \left(-\frac{\d \kappa}{\d s}T+\frac{\d \tau}{\d s}B\right)\right/(\kappa^{2}+\tau^{2})^{\frac{3}{2}}\\
+			&=\pm\left.
+			\begin{vmatrix}
+				\kappa&\tau\\ \\
+				\dfrac{\d\kappa}{\d s}&\dfrac{\d\tau}{\d s}
+			\end{vmatrix}\right/(\kappa^{2}+\tau^{2})^{\frac{3}{2}},
+		\end{align*}
+		其中倒数第二个等号用了Frenet标架的运动方程.
+	\end{proof}
+	\begin{excise}
+		利用(5.18)证明:
+		$$
+		\tau_{g}(t)=\frac{1}{\sqrt{\det g}\left| \dfrac{\d\gamma}{\d t} \right|^{2}}
+		\begin{vmatrix}
+			\left( \dfrac{\d u^{2}}{\d t} \right)^{2}&-\dfrac{\d u^{1}}{\d t}\dfrac{\d u^{2}}{\d t}&\left( \dfrac{\d u^{1}}{\d t} \right)^{2}\\ \\
+			g_{11}&g_{12}&g_{22}\\ \\
+			h_{11}&h_{12}&h_{22}
+		\end{vmatrix}.
+		$$
+	\end{excise}
+	\begin{proof}
+		\begin{align*}
+			\tau_{g}&=\left(\frac{\d \gamma}{\d t},n,\frac{\d n}{\d t}\right)\left/\left|\frac{\d \gamma}{\d t}\right|^{2}\right.\\
+			&=\Biggl(\sum_{i=1}^{2}\phi_{i}\frac{\d u^{i}}{\d t},n,W_{c}\left(\sum_{j=1}^{2}\phi_{j}\frac{\d u^{j}}{\d t}\right)\Biggr)\left/\left|\frac{\d \gamma}{\d t}\right|^{2}\right.\\
+			&=\sum_{i,j,k,l=1}^{2}\frac{\d u^{i}}{\d t}\frac{\d u^{j}}{\d t}h_{jk}g^{kl}(\phi_{i},n,\phi_{l})\left/\left|\frac{\d \gamma}{\d t}\right|^{2}\right.\\
+			&=\frac{1}{\sqrt{\det g}\left| \dfrac{\d\gamma}{\d t} \right|^{2}}\sum_{i,j,k,l=1}^{2}\frac{\d u^{i}}{\d t}\frac{\d u^{j}}{\d t}h_{jk}g_{il}\varepsilon^{kl}\\
+			&=\frac{1}{\sqrt{\det g}\left| \dfrac{\d\gamma}{\d t} \right|^{2}}
+			\begin{vmatrix}
+				\left( \dfrac{\d u^{2}}{\d t} \right)^{2}&-\dfrac{\d u^{1}}{\d t}\dfrac{\d u^{2}}{\d t}&\left( \dfrac{\d u^{1}}{\d t} \right)^{2}\\ \\
+				g_{11}&g_{12}&g_{22}\\ \\
+				h_{11}&h_{12}&h_{22}
+			\end{vmatrix},
+		\end{align*}
+		其中第二个等号用到了式(5.18),最后一个等号是行列式的组合定义.
+	\end{proof}
+	\begin{excise}
+		若$\phi(D)\subseteq S^{2}$($\R^{3}$中球心在原点的单位球面),取$n=\gamma$,证明:
+		$$
+		\kappa_{n}=-1,\quad \kappa_{g}^{2}=\kappa^{2}-1,\quad \tau_{g}=0,\quad \frac{\d\kappa_{g}}{\d s}=\kappa^{2}\tau.
+		$$
+	\end{excise}
+	\begin{proof}
+		因为$\sin\theta=N\cdot\gamma=\dfrac{1}{\kappa}\dfrac{\d T}{ds}\cdot\gamma=-\dfrac{1}{\kappa}|T|^{2}=-\dfrac{1}{\kappa}$,于是立得$\kappa_{n}=-1$, $\kappa_{g}^{2}=\kappa^{2}-1$.另一方面, $\tau_{g}=\left(T,n,\dfrac{\d n}{\d s}\right)=\left(T,n,\dfrac{\d \gamma}{\d s}\right)=0$.进一步,
+		\begin{align*}
+			\frac{\d \kappa_{g}}{\d s}&=\frac{\d }{\d s}\left(n,T,\frac{\d T}{\d s}\right)\\
+			&=\left(n,T,\frac{\d^{2} T}{\d s^{2}}\right)\\
+			&=\left(-\frac{\d T}{\d s},T,\frac{\d^{2} T}{\d s^{2}}\right)\\
+			&=\kappa^{2}\tau.
+		\end{align*}
+		其中倒数第二个等号用到了$n=\gamma\equiv-\dfrac{\d T}{\d s}\mod \left(T,\dfrac{\d^{2} T}{\d s^{2}}\right)$.
+	\end{proof}
+	\begin{excise}
+		在6.2节的旋转曲面中设$\left|\dfrac{\d F}{\d u^{1}}\right|^{2}+\left|\dfrac{\d G}{\d u^{1}}\right|^{2}\equiv 1$,证明:
+		\begin{enumerate}[label= (\arabic*) ]
+			\item 该曲面上的测地线方程为
+			$$
+			\frac{\d^{2}u^{1}}{\d t^{2}}=F\frac{\d F}{\d u^{1}}\left( \frac{\d u^{2}}{\d t} \right)^{2},\quad \frac{\d}{\d t}\left( F^{2}\frac{\d u^{2}}{\d t} \right)=0.
+			$$
+			\item 对任何$a\in I$,由$u^{1}\equiv a$确定的曲线是测地线$\Leftrightarrow\dfrac{\d F}{\d u^{1}}(a)=0$.
+			\item 设$\gamma(t)=\phi\bigl(u^{1}(t),u^{2}(t)\bigr)$是该曲面上弧长参数化曲线($t\in[0,L]$),则
+			\begin{enumerate}[label= (\alph*) ]
+				\item\label{a} 存在$\theta\in C^{\infty}[0,L]$使得$\dfrac{\d u^{1}}{\d t}=\cos\theta,\dfrac{\d u^{2}}{\d t}=\dfrac{\sin\theta}{F\bigl(u^{1}(t)\bigr)}$.
+				\item $\gamma(t)$是测地线$\Rightarrow F\bigl(u^{1}(t)\bigr)\sin\theta(t)=$常数.
+				\item $F\bigl(u^{1}(t)\bigr)\sin\theta(t)=$常数且$\dfrac{\d u^{1}}{\d t}$处处非零$\Rightarrow \gamma(t)$是测地线.
+			\end{enumerate}
+		\end{enumerate}
+	\end{excise}
+	\begin{proof}
+		\begin{enumerate}[label= (\arabic*) ]
+			\item 此时
+			$$
+			g=\begin{bmatrix}
+				1&0\\ \\
+				0&F^{2}
+			\end{bmatrix},\quad g^{-1}=\begin{bmatrix}
+			1&0\\ \\
+			0&F^{-2}
+		\end{bmatrix},
+			$$
+			于是除$\Gamma_{22}^{1}=-F\dfrac{\d F}{\d u^{1}}$, $\Gamma_{12}^{2}=\Gamma_{21}^{2}=F^{-1}\dfrac{\d F}{\d u^{1}}$之外的联络系数均为$0$,直接代入测地线方程组可得
+			$$
+			\frac{\d^{2}u^{1}}{\d t^{2}}=F\frac{\d F}{\d u^{1}}\left( \frac{\d u^{2}}{\d t} \right)^{2},\quad \frac{\d}{\d t}\left( F^{2}\frac{\d u^{2}}{\d t} \right)=0.
+			$$
+			\item 对任何$a\in I$,由$u^{1}\equiv a$确定的曲线是测地线$\Leftrightarrow u^{1}\equiv a$与$\dfrac{\d u^{2}}{\d t}=$常数$\neq 0$满足测地线方程$\Leftrightarrow\dfrac{\d F}{\d u^{1}}(a)=0$.
+			\item 
+			\begin{enumerate}[label= (\alph*) ]
+				\item 由于$\left|\dfrac{\d \gamma}{\d t}\right|^{2}=\left|\dfrac{\d u^{1}}{\d t}\right|^{2}+F^{2}\left|\dfrac{\d u^{2}}{\d t}\right|^{2}=1$,于是由映射提升定理,存在$\theta\in C^{\infty}[0,L]$使得$\dfrac{\d u^{1}}{\d t}=\cos\theta$, $\dfrac{\d u^{2}}{\d t}=\dfrac{\sin\theta}{F\bigl(u^{1}(t)\bigr)}$.
+				\item 由测地线方程,
+				$$
+				F^{2}\frac{\d u^{2}}{\d t}=\text{常数},
+				$$
+				将 \ref{a} 代入即得$F\bigl(u^{1}(t)\bigr)\sin\theta(t)=$常数.
+				\item 此时第二个测地线方程自动满足.对条件求导得
+				$$
+				\frac{\d F}{\d u^{1}}\frac{\d u^{1}}{\d t}\sin\theta+F\frac{\d \sin\theta}{\d t}=0.
+				$$
+				将 \ref{a} 代入可知第一个测地线方程满足,即$\Rightarrow \gamma(t)$是测地线.\qedhere
+			\end{enumerate}
+		\end{enumerate}
+	\end{proof}
+	\begin{excise}
+		证明:在6.7节的管状曲面中任意固定参数$u^{2}$得到的圆周都是管状曲面的测地线.
+	\end{excise}
+	\begin{proof}
+		固定$u^{2}=$常数,不妨设曲线弧长参数化,于是
+		\begin{align*}
+			\kappa_{g}&=\left(n,T,\frac{\d T}{\d s}\right)\\
+			&=\left(\frac{\d u^1}{\d s}\right)^{3}(n,\phi_{1},\phi_{11})\\
+			&=\left(\frac{\d u^1}{\d s}\right)^{3}\Gamma_{11}^{2}\sqrt{\det g}\\
+			&=0
+		\end{align*}
+		最后一个等号是因为$\Gamma_{11}^{2}=0$.即任意固定参数$u^{2}$得到的圆周都是管状曲面的测地线.
+	\end{proof}
+	\begin{excise}
+		证明：沿6.2节中旋转曲面上的测地线，$F\sin\theta=$常数.
+	\end{excise}
+	\begin{proof}
+		由于6.2节中旋转曲面是正交参数化的,于是由Liouville定理,沿着测地线,
+		$$
+		\frac{\d \theta}{\d s}+\frac{F'\sin\theta}{F\sqrt{g_{11}}}=0.
+		$$
+		代入$\dfrac{\d u^{1}}{\d s}=\dfrac{\cos \theta}{\sqrt{g_{11}}}$整理即得
+		$$
+		\frac{\d (F\sin\theta)}{\d s}=0,
+		$$
+		即$F\sin\theta=$常数.
+	\end{proof}
+
+\section{两类特殊参数化}
+\begin{excise}\label{8.1}
+		证明:当高斯曲率恒为零时, 在命题 8.1 中 $g_{i j} \equiv \delta_{i j}(1 \leqslant$ $i, j \leqslant 2)$.
+	\end{excise}
+	\begin{proof}
+		此时在极坐标参数下,有$\partial_{\rho}\partial_{\rho}|\partial_{\theta}\Phi|=0$,结合初值条件即得$|\partial_{\theta}\Phi|=\rho$,即
+		$$
+		g_{\Phi}(\rho,\theta)=\begin{bmatrix}
+			1&0\\
+			0&\rho^{2}
+		\end{bmatrix}.
+		$$
+		又由于极坐标变换的Jacobi矩阵为
+		$$
+		J=
+		\begin{bmatrix}
+			\cos\theta&\sin\theta\\
+			-\rho\sin\theta&\rho\cos\theta
+		\end{bmatrix},
+		$$
+		于是
+		$$
+		g=J^{-1}\cdot g_{\Phi}\cdot (J^{-1})^{\T}=\begin{bmatrix}
+			1&0\\
+			0&1
+		\end{bmatrix}
+		$$
+		恒成立.
+	\end{proof}
+	\begin{excise}
+		记号和8.1节一致.取
+		\begin{align*}
+		c:[-\delta,\delta]&\to U\\
+		t&\mapsto x(t)
+		\end{align*}
+		使得$\gamma:=\phi\circ c$是弧长参数化的曲线, $c(0)=u_{0}$.记
+		$$
+		\frac{\d\gamma(t)}{\d t}\times\nu\bigl(c(t)\bigr)=\sum_{i=1}^{2}v^{i}(t)\phi_{i}\circ c(t).
+		$$
+		证明:
+		\begin{enumerate}[label=(\roman*)]
+			\item 映射
+			\begin{align*}
+			\Psi:(-\varepsilon,\varepsilon)\times(-\delta,\delta)&\to \R^{3}\\
+			(s,t)&\mapsto \phi\circ u\bigl(1,x(t),sv(t)\bigr)
+		\end{align*}
+			定义了一个正则参数化的曲面,其中$\varepsilon$是充分小的正数.
+			\item $g_{\Psi}(s,t)=\begin{bmatrix}
+				1&0\\
+				0&\left( 1+\kappa_{g}(t)s-\dfrac{K_{\phi}(0,t)}{2}s^{2}+o(s^{2}) \right)^{2}
+			\end{bmatrix}$,其中$\kappa_{g}$是$\gamma$的测地曲率.
+		\end{enumerate}
+	\end{excise}
+	\begin{proof}
+		\begin{enumerate}[label=(\roman*)]
+			\item 当$\varepsilon$充分小时,有$u(1,x,sv)=u(s,x,v)$,于是$\displaystyle \partial_{s}\Psi(0,t)=\sum_{i=1}^{2}v^{i}(t)\phi_{i}\circ c(t)=\frac{\d\gamma(t)}{\d t}\times\nu\bigl(c(t)\bigr)$以及$\displaystyle \partial_{t}\Psi(0,t)=\sum_{i=1}^{2}\frac{\d x^{i}(t)}{\d t}\phi_{i}\circ c(t)=\frac{\d\gamma(t)}{\d t}$,于是$\partial_{s}\Psi(0,t)$和$\partial_{t}\Psi(0,t)$线性无关.即对充分小的$\varepsilon$, $\Psi$定义了一个正则参数化的曲面.
+			\item 由$u(1,x,sv)=u(s,x,v)$可知, $s\to\Psi(s,t)$是弧长参数化的测地线,即$|\partial_{s}\Psi|\equiv 1$,且$\partial_{s}\partial_{s}\Psi\pll \nu$,于是
+			$$
+			\partial_{s}(\partial_{s}\Psi\cdot\partial_{t}\Psi)=\frac{1}{2}\partial_{t}|\partial_{s}\Psi|^{2}=0.
+			$$
+			又由于$\partial_{s}\Psi(0,t)\cdot\partial_{t}\Psi(0,t)=0$,故$\partial_{s}\Psi\cdot\partial_{t}\Psi\equiv 0$.另一方面,由$\displaystyle \partial_{t}\Psi=\frac{\d\gamma}{\d t}+s\sum_{i=1}^{2}\frac{\d v^{i}}{\d t}\phi_{i}\circ c$可知
+			$$
+			|\partial_{t}\Psi|^{2}=1+2s\kappa_{g}(t)+o(s),
+			$$
+			从而$\displaystyle \lim_{s\to 0}|\partial_{t}\Psi|=1$, $\displaystyle \lim_{s\to 0}\partial_{s}|\partial_{t}\Psi|=\kappa_{g}(t)$.再由正交参数化的Gauss方程可知
+			$$
+			\partial_{s}\partial_{s}|\partial_{t}\Psi|=-K_{\phi}|\partial_{t}\Psi|.
+			$$
+			于是得到$|\partial_{t}\Psi|=1+\kappa_{g}(t)s-\dfrac{K_{\phi}(0,t)}{2}s^{2}+o(s^{2})$,即
+			$$
+			g_{\Psi}(s,t)=\begin{bmatrix}
+				1&0\\
+				0&\left( 1+\kappa_{g}(t)s-\dfrac{K_{\phi}(0,t)}{2}s^{2}+o(s^{2}) \right)^{2}
+			\end{bmatrix}.\qedhere
+			$$
+		\end{enumerate}
+	\end{proof}
+	\begin{excise}
+		设$\phi: D\to\R^{3}$是共形参数化的曲面,记$w=u^{1}+\sqrt{-1}u^{2}\in D$.
+		证明对光滑映射$c:I\to D$, $\phi\circ c$是测地线($I\subseteq\R$是一个区间)当且仅当
+		$$
+		\frac{\d^{2}w\circ c}{\d t^{2}}+\left( \frac{\d w\circ c}{\d t} \right)^{2}(\partial_{w}\log g_{11})\circ c=0.
+		$$
+	\end{excise}
+	\begin{proof}
+		由于曲面共形参数化,于是由正交参数化的联络系数可知
+		$$
+		\Gamma_{22}^{1}=-\frac{\partial_{1}g_{11}}{2g_{11}},\quad \Gamma_{11}^{2}=-\frac{\partial_{2}g_{11}}{2g_{11}},\quad \Gamma_{ij}^{i}=\frac{\partial_{j}g_{11}}{2g_{11}},\quad 1\leqslant i,j\leqslant 2,
+		$$
+		其中$\partial_{i}:=\partial_{u^{i}}$, $i=1,2$.代入测地线方程组可知
+		$$
+			0=\frac{\d^{2}u^{k}}{\d t^{2}}+\sum_{i,j=1}^{2}\Gamma_{ij}^{k}\frac{\d u^{i}}{\d t}\frac{\d u^{j}}{\d t}=\frac{\d^{2}u^{k}}{\d t^{2}}+\sum_{i=1}^{2}\partial_{i}\log g_{11}\frac{\d u^{i}}{\d t}\frac{\d u^{k}}{\d t}-\frac{1}{2}\partial_{k}\log g_{11}\sum_{i=1}^{2}\left(\frac{\d u^{i}}{\d t}\right)^{2}.
+		$$
+		将上式$k=1$时与$k=2$时的$\sqrt{-1}$倍相加,利用
+		$$
+		\frac{\d^{2} w}{\d t^{2}}=\frac{\d^{2} u^{1}}{\d t^{2}}+\sqrt{-1}\frac{\d^{2} u^{2}}{\d t^{2}},\quad \left(\frac{\d w}{\d t}\right)^{2}=\left(\frac{\d u^{1}}{\d t}\right)^{2}+2\sqrt{-1}\frac{\d u^{1}}{\d t}\frac{\d u^{2}}{\d t}-\left(\frac{\d u^{2}}{\d t}\right)^{2}
+		$$
+		以及$\partial_{w}=\dfrac{1}{2}(\partial_{1}-\sqrt{-1}\partial_{2})$可得测地线方程组等价于
+		$$
+		\frac{\d^{2}w\circ c}{\d t^{2}}+\left( \frac{\d w\circ c}{\d t} \right)^{2}(\partial_{w}\log g_{11})\circ c=0.\qedhere
+		$$
+	\end{proof}
+
+\section{曲面论基本定理}
+\begin{excise}
+		用类似的方法证明: $\partial_{j}\partial_{k}\nu$关于下标的对称性等价于(9.2).
+	\end{excise}
+	\begin{proof}
+		对任何$1\leqslant j,k\leqslant 2$,
+		$$
+		\partial_{j}\partial_{k}\nu=-\sum_{m=1}^{2}\left(\partial_{j}w_{k}^{m}+\sum_{l=1}^{2}w_{k}^{l}\Gamma_{jl}^{m}\right)\phi_{m}-h_{jl}w_{k}^{l}\nu.
+		$$
+		于是$\partial_{j}\partial_{k}\nu$关于下标的对称性等价于如下两组等式,对$1\leqslant j,k,m\leqslant 2$,
+		$$
+		\begin{cases}
+			\displaystyle \partial_{j}w_{k}^{m}-\partial_{k}w_{j}^{m}+\sum_{l=1}^{2}w_{k}^{l}\Gamma_{jl}^{m}-\sum_{l=1}^{2}w_{j}^{l}\Gamma_{kl}^{m}=0,\\
+			h_{jl}w_{k}^{l}-h_{kl}w_{j}^{l}=0.
+		\end{cases}
+		$$
+		注意到$\displaystyle w_{j}^{l}=\sum_{i=1}^{2}h_{ji}g^{il}$,故上述第二式是自动成立的,于是$\partial_{j}\partial_{k}\nu$关于下标的对称性等价于第一式.利用$\displaystyle h_{ki}=\sum_{m=1}^{2}w_{k}^{m}g_{mi}$,其中$i=1,2$以及$\displaystyle \Gamma_{jl}^{m}=\frac{1}{2}\sum_{p=1}^{2}(\partial_{j}g_{lp}+\partial_{l}g_{jp}-\partial_{p}g_{jl})g^{mp}$,将第一式乘上$g_{mi}$并对$m=1,2$作和,可得第一式的等价形式
+		\begin{align*}
+		&\partial_{j}h_{ki}-\sum_{m=1}^{2}w_{k}^{m}\partial_{j}g_{mi}-\partial_{k}h_{ji}+\sum_{m=1}^{2}w_{j}^{m}\partial_{k}g_{mi}\\
+		+&\frac{1}{2}\sum_{l=1}^{2}w_{k}^{l}(\partial_{j}g_{li}+\partial_{l}g_{ji}-\partial_{i}g_{jl})-\frac{1}{2}\sum_{l=1}^{2}w_{j}^{l}(\partial_{k}g_{li}+\partial_{l}g_{ki}-\partial_{i}g_{kl})=0,
+		\end{align*}
+		利用$\displaystyle w_{k}^{l}=\sum_{m=1}^{2}h_{jm}g^{ml}$,整理即得
+		$$
+		\partial_{j}h_{ki}-\partial_{k}h_{ji}+\sum_{m=1}^{2}\Gamma_{ki}^{m}h_{jm}-\sum_{m=1}^{2}\Gamma_{ji}^{m}h_{km}=0,
+		$$
+		此即(9.2)式.
+	\end{proof}
+	\begin{excise}
+		记$\nabla_{i}:=\nabla_{\phi_{i}}(i=1,2)$,证明:对$1\leqslant i,j,k,l\leqslant 2$,有
+		\begin{enumerate}[label=(\roman*)]
+			\item $\displaystyle \nabla_{j}\phi_{k}=\sum_{m=1}^{2}\Gamma_{kj}^{m}\phi_{m}$;
+			\item\label{9.2.2} $(\nabla_{i}\nabla_{j}\phi_{k}-\nabla_{j}\nabla_{i}\phi_{k})\cdot\phi_{l}=R_{ijkl}$;
+			\item\label{9.2.3} $\partial_{i}\partial_{j}g_{kl}=\nabla_{i}\nabla_{j}\phi_{k}\cdot\phi_{l}+\phi_{k}\cdot\nabla_{i}\nabla_{j}\phi_{l}+\nabla_{j}\phi_{k}\cdot\nabla_{i}\phi_{l}+\nabla_{i}\phi_{k}\cdot\nabla_{j}\phi_{l}$,
+		\end{enumerate}
+        并用 (ii), (iii) 重新证明(9.4).
+	\end{excise}
+	\begin{proof}
+		\begin{enumerate}[label=(\roman*)]
+			\item 由定义, $\displaystyle \nabla_{j}\phi_{k}=\sum_{l,m=1}^{2}\left(\partial_{l}\delta_{k}^{m}+\sum_{i=1}^{2}\Gamma_{il}^{m}\delta_{k}^{i}\right)\delta_{j}^{l}\phi_{m}=\sum_{m=1}^{2}\Gamma_{kj}^{m}\phi_{m}$.
+			\item 由于$\displaystyle \nabla_{i}\nabla_{j}\phi_{k}=\sum_{m=1}^{2}\partial_{i}\Gamma_{kj}^{m}\phi_{m}+\sum_{m=1}^{2}\Gamma_{kj}^{m}\nabla_{i}\phi_{m}=\sum_{m=1}^{2}\partial_{i}\Gamma_{kj}^{m}\phi_{m}+\sum_{m,p=1}^{2}\Gamma_{kj}^{m}\Gamma_{mi}^{p}\phi_{p}$,于是
+			\begin{align*}
+				(\nabla_{i}\nabla_{j}\phi_{k}-\nabla_{j}\nabla_{i}\phi_{k})\cdot\phi_{l}&=\sum_{m=1}^{2}g_{ml}\left(\partial_{i}\Gamma_{kj}^{m}-\partial_{j}\Gamma_{ki}^{m}+\sum_{p=1}^{2}\Gamma_{kj}^{p}\Gamma_{pi}^{m}-\sum_{p=1}^{2}\Gamma_{ki}^{p}\Gamma_{pj}^{m}\right)\\
+				&=R_{ijkl}.
+			\end{align*}
+			\item 由于
+			\begin{align*}
+				\nabla_{i}\nabla_{j}\phi_{k}\cdot\phi_{l}+\nabla_{j}\phi_{k}\cdot \nabla_{i}\phi_{l}&=\sum_{m=1}^{2}\partial_{i}\Gamma_{kj}^{m}g_{ml}+\sum_{m,p=1}^{2}\Gamma_{kj}^{m}\Gamma_{mi}^{p}g_{pl}+\sum_{m,p=1}^{2}\Gamma_{kj}^{m}\Gamma_{il}^{p}g_{mp}\\
+				&=\frac{1}{2}(\partial_{i}\partial_{k}g_{jl}+\partial_{i}\partial_{j}g_{kl}-\partial_{i}\partial_{l}g_{jk})
+			\end{align*}
+			于是$\nabla_{i}\nabla_{j}\phi_{k}\cdot\phi_{l}+\phi_{k}\cdot\nabla_{i}\nabla_{j}\phi_{l}+\nabla_{j}\phi_{k}\cdot\nabla_{i}\phi_{l}+\nabla_{i}\phi_{k}\cdot\nabla_{j}\phi_{l}=\partial_{i}\partial_{j}g_{kl}$.由 (ii) 立知$R_{ijkl}=-R_{jikl}$.
+            另一方面,将 (iii) 中的$k,l$交换之后与原式相减可知$(\nabla_{i}\nabla_{j}\phi_{k}-\nabla_{j}\nabla_{i}\phi_{k})\cdot\phi_{l}+(\nabla_{i}\nabla_{j}\phi_{l}-\nabla_{j}\nabla_{i}\phi_{l})\cdot\phi_{k}=0$,此即$R_{ijkl}=-R_{ijlk}$.\qedhere
+		\end{enumerate}
+	\end{proof}
+	\begin{excise}\label{9.3}
+		证明:
+		\begin{enumerate}[label=(\roman*)]
+			\item\label{9.3.1} 若 $\phi : D \to \R^3 $ 是共形参数化的曲面, 则
+			$H = $常数$\Leftrightarrow h_{11} - h_{22} - 2\sqrt{-1}h_{12}$ 是 $z = u^1 + \sqrt{-1}u^2 \in D$ 的全纯函数.
+			\item 常平均曲率曲面要么是全脐点的要么仅有离散脐点.
+		\end{enumerate}
+	\end{excise}
+	\begin{proof}
+		\begin{enumerate}[label=(\roman*)]
+			\item ``$\Rightarrow$''由于$\phi$是共形参数化的,故有:
+			\begin{align*}
+				H&=\frac{1}{2}\tr
+				\begin{bmatrix}
+					h_{11}&h_{12}\\ \\
+					h_{21}&h_{22}
+				\end{bmatrix}
+				\begin{bmatrix}
+					g_{11}&\\ \\
+					&g_{11}
+				\end{bmatrix}^{-1}\\
+				&=\frac{h_{11}+h_{22}}{2g_{11}}.
+			\end{align*}
+			整理后对$u^{1},u^{2}$求导可得
+			$$
+			\begin{cases}
+				2H\partial_{1}g_{11}=\partial_{1}(h_{11}+h_{22}),\\
+				2H\partial_{2}g_{11}=\partial_{2}(h_{11}+h_{22}).
+			\end{cases}
+			$$
+			再由正交参数化的Codazzi方程,可得
+			$$
+			\begin{cases}
+				\partial_{2}h_{11}-\partial_{1}h_{12}-H\partial_{2}g_{11}=0,\\
+				\partial_{1}h_{22}-\partial_{2}h_{12}-H\partial_{1}g_{11}=0.
+			\end{cases}    
+			$$
+			代入得
+			$$
+			\begin{cases}
+				\partial_{1}(h_{11}-h_{22})=\partial_{2}(-2h_{12}),\\
+				\partial_{2}(h_{11}-h_{22})=-\partial_{1}(-2h_{12}),
+			\end{cases}
+			$$
+			满足Cauchy-Riemann方程,于是$h_{11}-h_{22}-2\sqrt{-1}h_{12}$是$z = u^1 + \sqrt{-1}u^2$的全纯函数.\\
+			``$\Leftarrow$''利用Cauchy-Riemann方程以及正交参数化的Codazzi方程可得
+			$$
+			\begin{cases}
+				2H\partial_{1}g_{11}=\partial_{1}(h_{11}+h_{22}),\\ 
+				2H\partial_{2}g_{11}=\partial_{2}(h_{11}+h_{22}).
+			\end{cases}
+			$$
+			对$H=\dfrac{h_{11}+h_{22}}{2g_{11}}$求导可知$\partial_{1}H=\partial_{2}H=0$,即$H$为常数.
+			\item 在局部上取曲面的共形参数化,记$f(z) = h_{11} - h_{22} - 2\sqrt{-1}h_{12}$, 它为这个局部上的全纯函数.直接计算可得
+			\begin{align*}
+				H^2 - K &= \left(\frac{h_{11} + h_{22}}{2g_{11}}\right)^2-\frac{h_{11}h_{22}-h_{12}^2}{g_{11}^{2}}\\
+				&= \frac{(h_{11} - h_{22})^2 + 4 h_{12}^2}{4g_{11}^2}.
+			\end{align*}
+			故脐点等价于在该点处 $h_{11} - h_{22} = 0$ 且 $2h_{12} = 0$, 即 $f(z)\bigr|_u = 0$.
+            于是由全纯函数零点的性质,在局部上要么是全脐点的要么仅有离散脐点.
+            最后由$\Sigma$的连通性可知曲面要么是全脐点的要么仅有离散脐点.\qedhere
+		\end{enumerate}
+	\end{proof}
+	
+	\begin{excise}\label{9.4}
+		证明: 对无脐点的常平均曲率曲面, 在局部上总存在参数使得第一基本型、\,第二基本型有如下形式: 
+		\begin{align*}
+		g_{11} = g_{22} &= \frac{1}{\sqrt{H^2 - K}},\quad g_{12} = 0, \\
+		h_{11} = \frac{H}{\sqrt{H^2 - K}} - 1,\ h_{22} & = \frac{H}{\sqrt{H^2 - K}} + 1,\quad h_{12} = 0.
+		\end{align*}
+	\end{excise}
+	\begin{proof}
+		固定曲面上一点$p$, 存在它的一个邻域可以被共形参数化, 不妨记这个坐标区域为$D$, 即 $g_{11} = g_{22},  g_{12} = 0$. 设$p = \phi(u_0)$.因为平均曲率为常数, 由\textbf{练习 \ref{9.3}} 知 $f(z) = h_{11} - h_{22} - 2\sqrt{-1}h_{12}$ 是 $z = u^1 + \sqrt{-1}u^2$ 的全纯函数. 又因为无脐点, 故 $H^2 - K \neq 0$, 即 $f(z) \neq 0$ 在曲面上处处成立. 不妨假设所选取的坐标区域 $D$ 充分小且单连通, 使得 $\sqrt{f(z)}$ 在 $D$ 上可以选取一个单值支, 成为 $D$ 上的全纯函数.现在考虑参数变换 
+		\[w = F(z) := \int_{u_0}^z \sqrt{f(\zeta)/2} \, d \zeta, \quad z\in D ,\]
+		则 $F(z)$ 将 $D$ 变为另一个坐标区域 $U$, 其中$w = x^1 + \sqrt{-1}x^2$, $x^1$和$x^2$为$U$上的坐标.
+		且 $F'(z) = \sqrt{f(z)/2} \neq 0$, 故 $F$ 是共形微分同胚. 可将 $F(z)$ 看作从 $(u^1, u^2)$ 到 $(x^1, x^2)$ 的参数变换, 它的Jacobi矩阵为 
+		$$
+		J  = \left(\frac{\partial x^i}{\partial u^j}\right) = \begin{bmatrix}
+			\Re\sqrt{f(z)/2} & -\operatorname{Im}\sqrt{f(z)/2} \\ \\
+			\Im\sqrt{f(z)/2} & \operatorname{Re}\sqrt{f(z)/2}
+		\end{bmatrix} =: \begin{bmatrix}
+			a(z) & -b(z) \\ \\
+			b(z) & a(z)
+		\end{bmatrix}.
+		$$
+		容易验证 
+		$$
+		\begin{aligned}
+			JJ^{\T} = J^{\T}J &= |\sqrt{f(z)/2}|^{2}I_{2} \\
+			&= \frac{|f|}{2}I_{2} \\
+			&= \frac{\sqrt{(h_{11} - h_{22})^2 + 4h_{12}^2}}{2}I_{2} \\
+			&= \sqrt{H^2 - K}g_{11}I_{2}.
+		\end{aligned}
+		$$
+		为了记号简便, 记 
+		$$
+		M = \frac{(h_{11} - h_{22})^2 + 4h_{12}^2}{4} = g_{11}^2(H^2 - K),
+		$$
+		则 $JJ^{\rm T} = \sqrt{M}I$.
+		所以变换后的第一基本型为
+		\[
+		g_{\phi\circ F} = (J^{\T})^{-1} g_{\phi} J^{-1} = \frac{1}{\sqrt{H^2 - K}}I_{2}.
+		\]
+		同理计算第二基本型可以发现也满足要求, 这里需要注意到
+		\begin{align*}
+			&\sqrt{f(z)/2} = a + \sqrt{-1}b \\
+			\Leftrightarrow &h_{11} - h_{22} - 2\sqrt{-1}h_{12} = 2(a^2 - b^2) + 4\sqrt{-1}ab \\
+			\Leftrightarrow & \begin{cases}
+				a^2 - b^2 = (h_{11} - h_{22})/2, \\
+				ab = -h_{12}/2.
+			\end{cases}
+		\end{align*}
+	\end{proof}
+	\begin{excise}\label{9.5}
+		证明: 具有常平均曲率和常高斯曲率的正则参数化曲面 $\phi : D \to \R^3 $ 的像 $\phi(D)$ 是平面、\,球面或正圆柱面中的开子集.
+	\end{excise}
+	\begin{proof}
+		由于曲面的Gauss曲率和平均曲率是常数,于是曲面要么全脐点,要么无脐点.若曲面全脐点,可知曲面是平面或球面的开子集.若曲面无脐点,利用\textbf{练习 \ref{9.4}} 可知,存在局部上的参数化使$g_{ij}$, $h_{ij}$常数,其中$1\leqslant i,j\leqslant 2$,于是由\textbf{练习 \ref{5.2}} 可知曲面在局部上是平面或正圆柱面的开子集,最后由$D$的连通性可知$\phi(D)$是平面或正圆柱面的开子集.
+	\end{proof}
+	\begin{excise}
+		$D\subseteq\R^{2}$是单连通开区域, $\theta\in C^{\infty}(D), 0<\theta<\dfrac{\pi}{2}$.证明: $\theta$满足
+		$$
+		(\partial_{1}\partial_{1}-\partial_{2}\partial_{2})\theta=\cos\theta\sin\theta
+		$$
+		当且仅当存在正则参数化的曲面$\phi: D\to\R^{3}$使得第一基本型、\,第二基本型的系数为
+		\begin{align*}
+		g_{11}&=\cos^{2}\theta,\quad g_{12}=g_{21}=0,\quad g_{22}=\sin^{2}\theta,\\
+		h_{11}&=-h_{22}=\cos\theta\sin\theta,\quad h_{12}=h_{21}=0.
+		\end{align*}
+	\end{excise}
+	\begin{proof}
+		由正交参数化的Codazzi方程可知$\phi$自动满足Codazzi方程,其Gauss方程等价于上述$\theta$满足的式子,于是由曲面论基本定理可知结论成立.
+	\end{proof}
+	\begin{excise}
+		设$D\subseteq\R^{2}$是单连通的开区域, $f\in C^{\infty}(D)$, $a,b$是两个实数,证明:
+		\begin{enumerate}[label=(\arabic*)]
+			\item 存在正则参数化曲面$\phi: D\to\R^{3}$使得
+			$$
+			g_{11}=g_{22}=e^{-f},\quad h_{11}=a,\quad h_{22}=b,\quad g_{12}=h_{12}=0
+			$$
+			当且仅当以下两个条件之一成立:
+			\begin{enumerate}[label=(\roman*)]
+				\item $a+b=0,(\partial_{1}^{2}+\partial_{2}^{2})f=2abe^{f}$;
+				\item $a$和$b$中恰有一个为零, $f$是常数函数.
+			\end{enumerate}
+			\item 当上述两个条件之一成立时, $\phi$的高斯曲率$K\leqslant 0$.此外, $K=0$当且仅当$\phi(D)$是平面或圆柱面中的开子集.
+		\end{enumerate}
+	\end{excise}
+	\begin{proof}
+		\begin{enumerate}[label=(\arabic*)]
+			\item 直接计算Gauss曲率和平均曲率可得$K=abe^{2f}$, $H=\dfrac{a+b}{2}e^{f}$,应用共形参数化的Gauss方程和正交参数化的Codazzi方程可得
+			$$
+			\begin{cases}
+				(\partial_{1}^{2}+\partial_{2}^{2})f=2abe^{f},\\
+				(a+b)\partial_{1}f=0,\\
+				(a+b)\partial_{2}f=0.
+			\end{cases}
+			$$
+			当$a+b=0$时, Gauss-Codazzi方程等价于$(\partial_{1}^{2}+\partial_{2}^{2})f=2abe^{f}$,当$a+b\neq 0$时, Gauss-Codazzi方程等价于$f$是常值函数,并且$a$和$b$中恰有一个为零,于是由曲面论基本定理可知结论成立.
+			\item 当上述两个条件之一成立时, $ab\leqslant 0$,于是$K\leqslant 0$. 
+            $K=0$当且仅当$a,b$中至少一个为$0$,当只有一个$0$时,可知$f$是常值函数,此时Gauss曲率和平均曲率均为常数,
+            由\textbf{练习 \ref{9.5}} 可知$\phi(D)$是平面、\,球面或圆柱面中的开子集,又由$K=0$,可知$\phi(D)$是平面或圆柱面中的开子集.
+            当$a,b$都为$0$时, $\phi$是全脐点曲面,于是$\phi(D)$是平面或球面的开子集,又由$K=0$,可知$\phi(D)$是平面的开子集.
+            反之,当$\phi(D)$是平面或圆柱面中的开子集时,显然$K=0$.\qedhere
+		\end{enumerate}
+	\end{proof}
+
+\section{极小曲面}
+\begin{excise}
+		记$B_{r}=\left\{u\in\R^{2}\bigm||u|<r\right\}$, $0<r\leqslant +\infty$,
+		设$f\in C^{\infty}(B_{r})$的图有常平均曲率$H$,证明:
+		\begin{enumerate}[label=(\arabic*)]
+			\item $H\leqslant\dfrac{1}{r}$;
+			\item 当$r=+\infty$时, $f$是线性函数(提示:利用 (6.1),并在$B_{r}$上用散度定理).
+		\end{enumerate}
+	\end{excise}
+	\begin{proof}
+		\begin{enumerate}[label=(\arabic*)]
+			\item 由图的平均曲率公式 (6.1) 可得$H=\dfrac{1}{2}\nabla\cdot\left(\dfrac{\nabla f}{\sqrt{1+|\nabla f|^{2}}}\right)$,于是
+			\begin{align*}
+				H=\frac{1}{\pi r^{2}}\int_{B_{r}}H\d A&=\frac{1}{2\pi r^{2}}\int_{B_{r}}\nabla\cdot\left(\dfrac{\nabla f}{\sqrt{1+|\nabla f|^{2}}}\right)\d A\\
+				&=\frac{1}{2}\int_{\partial B_{r}}\dfrac{\nabla f\cdot\nu}{\sqrt{1+|\nabla f|^{2}}}\d s\\
+				&\leqslant\frac{1}{2\pi r^{2}}\int_{\partial B_{r}}1 \d s=\frac{1}{r},
+			\end{align*}
+			其中第三个等号用了Green公式, $\nu$为$\partial B_{r}$的单位外法向.
+			\item 当$r=+\infty$时, $H=0$,即$f$为$\R^{2}$上的极小图,由Bernstein定理可知$f$是线性函数.\qedhere
+		\end{enumerate}
+	\end{proof}
+	\begin{excise}
+		证明:极小曲面的高斯曲率要么恒为零,要么仅有离散零点.
+	\end{excise}
+	\begin{proof}
+		由共形参数化的局部存在性,利用Weierstrass数据,可知$\Phi\times\partial_{z}\Phi$为全纯函数,于是在局部上Gauss曲率要么恒为零,要么仅有离散零点.由曲面的连通性可知曲面的高斯曲率要么恒为零,要么仅有离散零点.
+	\end{proof}
+\section{曲面的整体描述}
+\begin{excise}
+		证明: $ \left\{x \in \R^3 \bigm| x_3^2=x_1 x_2\right\} \subseteq \R^3$ 不是 $\R^3$ 中的曲面.
+	\end{excise}
+	\begin{proof}
+		假设曲面$\Sigma=\left\{x \in \R^3 \bigm| x_3^2=x_1 x_2\right\}$为$\R^3$ 中的曲面,考虑原点处,设$(0,0,0)\in\Sigma_{\lambda}$, $\phi_{\lambda}:D_{\lambda}\to\Sigma_{\lambda}$是同胚,注意到$\Sigma_{\lambda}\backslash\{(0,0,0)\}$被分成了两块不连通的区域,但是$D_{\lambda}\backslash\phi_{\lambda}^{-1}(0,0,0)$仍然连通,这说明$\phi_{\lambda}$不可能是同胚,于是$\Sigma$不是 $\R^3$ 中的曲面.
+	\end{proof}
+	\begin{excise}
+		证明:映射$F:\Sigma\to M$是光滑映射当且仅当$F:\Sigma\to\R^{3}$是光滑映射并且$F(\Sigma)\subseteq M$.
+	\end{excise}
+	\begin{proof}
+		$F:\Sigma\to M$是光滑映射$\Leftrightarrow F:\Sigma\to M$是连续映射,且当$F(\Sigma_{\lambda})\cap M_{\lambda'}\neq\varnothing$时, 
+		$$
+		\psi_{\lambda'}^{-1}\circ F\circ \phi_{\lambda}:\phi_{\lambda}^{-1}\bigl(F^{-1}(M_{\lambda'})\cap\Sigma_{\lambda}\bigr)\to\R^{2}
+		$$
+		是光滑映射$\Leftrightarrow F:\Sigma\to M$是连续映射,且当$F(\Sigma_{\lambda})\cap M_{\lambda'}\neq\varnothing$时, 
+		$$
+		F\circ \phi_{\lambda}:\phi_{\lambda}^{-1}\bigl(F^{-1}(M_{\lambda'})\cap\Sigma_{\lambda}\bigr)\to M_{\lambda'}\subseteq \R^{3}
+		$$
+		是光滑映射$\Leftrightarrow F(\Sigma)\subseteq M$,且对所有$\lambda\in\Lambda$, $F\circ \phi_{\lambda}:D_{\lambda}\to \R^{3}$是光滑映射$\Leftrightarrow F:\Sigma\to\R^{3}$是光滑映射并且$F(\Sigma)\subseteq M$.
+	\end{proof}
+	
+	\begin{excise}
+		证明: 莫比乌斯带(定义见6.3.2小节)是$\R^{3}$中的曲面.
+	\end{excise}
+	\begin{proof}
+		取坐标覆盖$\{(\Sigma_{1},\phi_{1}),(\Sigma_{2},\phi_{2})\}$即可,其中$D_{1}=(-\pi,\pi)\times\R$, $D_{2}=(0,2\pi)\times\R$, $\phi_{\lambda}=\phi\bigr|_{D_{\lambda}}$, $\Sigma_{\lambda}=\phi_{\lambda}(D_{\lambda})$, $\lambda=1,2$.
+	\end{proof}
+	\begin{excise}
+		证明莫比乌斯带(定义见6.3.2小节)是$\R^{3}$中的不可定向曲面.
+	\end{excise}
+	\begin{proof}
+		记莫比乌斯带为$\Sigma$,设$\nu$为法向量, $n$为$\Sigma$上的光滑法向量场,考虑$n\circ\phi_{2}$在圆周$a(u^{1})$上的限制$n\circ\phi_{2}(u^{1},0)$,作函数$f(u^{1})=\nu(u^{1},0)\cdot n\circ\phi_{2}(u^{1},0)$,由$\nu(0,0)=-\nu(2\pi,0)$以及
+		$$\displaystyle \lim_{u^{1}\to0}n\circ\phi_{2}(u^{1},0)=\lim_{u^{1}\to 2\pi}n\circ\phi_{2}(u^{1},0)=n\circ\phi_{1}(0,0).
+		$$
+		于是$\displaystyle \lim_{u^{1}\to0}f(u^{1})=-\lim_{u^{1}\to2\pi}f(u^{1})=\nu(0,0)\cdot n\circ\phi_{1}(0,0)$.这意味着要么$n\circ\phi_{1}(0,0)=0$,要么存在$u_{0}^{1}\in(0,2\pi)$使得$f(u_{0}^{1})=0$,即$n\circ\phi_{2}(u_{0}^{1},0)=0$,这说明$\Sigma$上不存在处处非零的光滑法向量场,即$\Sigma$不可定向.
+	\end{proof}
+
+	\begin{excise}
+		设 $\Sigma \subseteq \R^3$ 是紧曲面, 证明: $\nu_{\Sigma}(\Sigma_{+})=S^{2}$, 其中 $\Sigma_{+}:= \left\{P \in \Sigma \bigm| K(P) \geqslant 0\right\}$.
+	\end{excise}
+	\begin{proof}
+		由于$\R^{3}$中的紧曲面均可定向,不妨设$\nu_{\Sigma}$为外法向.对任意$n\in S^{2}$,作$\Sigma$上函数$f(x)=n\cdot x$,由$\Sigma$的紧性可知存在$x_{0}\in\Sigma$使得$f$达到最大值.在$x_{0}$处,有$n\perp T_{x_{0}}\Sigma$,于是$\nu_{\Sigma}(x_{0})=n$.另一方面,在$x_{0}$处,有$\Sigma$在$T_{x_{0}}\Sigma$的同一侧,由\textbf{练习 \ref{5.7}} 可知,$K(x_{0})\geqslant 0$,即$x_{0}\in \Sigma_{+}$,这意味着$\nu_{\Sigma}(\Sigma_{+})=S^{2}$.
+	\end{proof}
+	\begin{excise}
+		证明：具有常平均曲率且双全纯等价于球面的紧曲面只能是球面 (提示:利用上面的(11.3)式, \textbf{练习 \ref{9.3}(i)} 以及$h_{11}-h_{22}-2 \sqrt{-1} h_{12}=4 \partial_z^2 \phi \cdot \nu$).
+	\end{excise}
+	\begin{proof}
+		设该曲面为$M$,赋予球面球极投影坐标覆盖$\{(\Sigma_{\pm},\phi_{\pm})\}$,记球面到$M$的双全纯映射为$F$,则$\{(M_{\pm},\psi_{\pm})\}$便给出了$M$的坐标覆盖,其中$M_{\pm}=F(\Sigma_{\pm})$, $\psi_{\pm}=F\circ\phi_{\pm}$.于是$\psi_{\pm}$为共形参数化,且由(11.3)式可知$\zeta=\psi_{-}^{-1}\circ\psi_{+}=\phi_{-}^{-1}\circ\phi_{+}=\dfrac{1}{z}$.由$M$具有常平均曲率,利用 \textbf{练习 \ref{9.3}(i)} 可知$h_{11}-h_{22}-2 \sqrt{-1} h_{12}$为全纯函数.先来考虑在$M_{+}$上,此时$h_{11}-h_{22}-2 \sqrt{-1} h_{12}$是$z$的整函数.又由于在$M_{+}\cap M_{-}$上,有
+		$$
+		h_{11}-h_{22}-2 \sqrt{-1} h_{12}=4 \partial_{z}^2 \psi_{+} \cdot \nu=\frac{4}{z^{4}} \partial_{\zeta}^2 \psi_{-}\Big(\frac{1}{z}\Big) \cdot \nu,
+		$$
+		故当$z\to\infty$时,有$h_{11}-h_{22}-2 \sqrt{-1} h_{12}\to 0$,于是由Liouville定理可知$h_{11}-h_{22}-2 \sqrt{-1} h_{12}\equiv 0$,即$M_{+}$是全脐点的,类似可得$M_{-}$也是全脐点的,于是$M$全脐点,配合上紧性可得$M$只能是球面.
+	\end{proof}
+	\begin{excise}
+		证明: 满足 $K>0$ 且 $H / K$ 为常数的紧曲面只能是球面 (提示: 利用\textbf{练习 \ref{5.8}}).
+	\end{excise}
+	\begin{proof}
+		记该曲面为$\Sigma$,由\textbf{练习 \ref{5.8}} 可知,若令$\alpha=\beta+\dfrac{H}{K}\gamma$,则有$\d\alpha=\dfrac{2(H^{2}-K)}{K}\d A$.于是由Stokes公式,有
+		$$
+		0=\int_{\Sigma}\d\alpha=\int_{\Sigma}\frac{2(H^{2}-K)}{K}\d A,
+		$$
+		这意味着$H^{2}-K\equiv 0$,于是$\Sigma$是全脐点的,配合上紧性可得$\Sigma$只能是球面.
+	\end{proof}
+	\begin{excise}
+		证明: 在不同胚于球面的紧曲面上, 高斯曲率取到正值、\,负值和零. 判断该结论的逆命题是否成立.
+	\end{excise}
+	\begin{proof}
+		由于紧曲面的Gauss曲率必定能够取到正值,若Gauss曲率恒非负,则由整体Gauss-Bonnet公式可知该曲面同胚于球面,矛盾.故在不同胚于球面的紧曲面上, 高斯曲率取到正值、\,负值和零.该结论的逆命题不成立,考虑被“压瘪”的球面即可.
+	\end{proof}
+	\begin{excise}
+		构造球面上不恒为零的亚纯微分以及环面上处处非零的全纯微分.
+	\end{excise}
+	\begin{proof}
+		赋予球面球极投影坐标覆盖$\{(\Sigma_{\pm},\phi_{\pm})\}$,取$\omega=\{\omega_{\pm}\}$即可,其中$\omega_{+}=z$, $\omega_{-}=-\dfrac{1}{\zeta^{3}}$,这是球面上不恒为零的亚纯微分.将环面视为$\C/\Lambda$,其中$\Lambda$为某格点.考虑$\C$上的函数$z$,由于微分形式$\d z$是平移不变的,并且$z$下降到环面上是环面上的全纯函数,于是$z$在局部坐标下就是环面上处处非零的全纯微分.
+	\end{proof}
+	\begin{excise}
+		证明: $\gamma$是$\Sigma$上的测地线$\Leftrightarrow \dfrac{\d\gamma}{\d t}\times \dfrac{\d^{2}\gamma}{\d t^{2}}:I\to\R^{3}$是$\Sigma$沿$\gamma$的切向量场且$\left| \dfrac{\d\gamma}{\d t} \right|$是$I$上常数函数.
+	\end{excise}
+	\begin{proof}
+		$\gamma$是$\Sigma$上的测地线$\Leftrightarrow \gamma$在每个坐标邻域上是测地线$\Leftrightarrow$在每个坐标邻域上$\kappa_{g}\equiv0$且$\left| \dfrac{\d\gamma}{\d t} \right|$是常数函数$\Leftrightarrow$在每个坐标邻域上$\dfrac{\d\gamma}{\d t}\times \dfrac{\d^{2}\gamma}{\d t^{2}}\perp n$且$\left| \dfrac{\d\gamma}{\d t} \right|$是常数函数$\Leftrightarrow \dfrac{\d\gamma}{\d t}\times \dfrac{\d^{2}\gamma}{\d t^{2}}:I\to\R^{3}$是$\Sigma$沿$\gamma$的切向量场且$\left| \dfrac{\d\gamma}{\d t} \right|$是$I$上常数函数.
+	\end{proof}
+	\begin{excise}
+		设$\gamma_{1},\gamma_{2}:I\to\Sigma$均是测地线,存在$t_{0}\in I$使得$\dfrac{\d^{i}\gamma_{1}}{\d  t^{i}}(t_{0})=\dfrac{\d^{i}\gamma_{2}}{\d t^{i}}(t_{0}),i=0,1$,证明$\gamma_{1}\equiv\gamma_{2}$.
+	\end{excise}
+	\begin{proof}
+		只用在每个坐标邻域上进行证明.考虑以$t_{0}$为初值的测地线方程组,由条件可知$\gamma_{1}$和$\gamma_{2}$是同一个测地线方程组的解,由常微分方程组解的存在唯一性可知$\gamma_{1}\equiv\gamma_{2}$.
+	\end{proof}
+
+\section{内蕴距离与三角剖分}
+\begin{excise}
+		当$\Sigma$为$\R^{3}$中单位球面时,对任何点$P\in\Sigma$确定上述定理中$\delta_{P}$的最大值.
+	\end{excise}
+	\begin{proof}
+		由球面的对称性,任意点$P$对应的$\delta_{P}$最大值是一样的.又知球面上的测地线是大圆,所以$B_{P}(\delta_{P})$是球冠.
+        当$\delta_{P}=\dfrac{\pi}{2}$时, $B_{P}\Big(\dfrac{\pi}{2}\Big)$和$B_{Q}\Big(\dfrac{\pi}{2}\Big)$都是半球,满足定理要求,但当$\delta_{P}>\dfrac{\pi}{2}$时,只要取$B_{P}(r)$中位于半球之外同一大圆上的两点,其中$\dfrac{\pi}{2}<r<\delta_{P}$,即知它们之间的最短测地线不再位于$B_{P}(r)$中,不满足定理要求.故$\delta_{P}$的最大值是$\dfrac{\pi}{2}$.
+	\end{proof}
+	\begin{excise}\label{12.2}
+		设$P\in\Sigma$, $\delta_{P}$为上述定理中的常数,证明:
+		\begin{enumerate}[label=(\roman*)]
+			\item\label{12.2.1} $B_{P}(\delta_{P})$中的测地线都是简单曲线;
+			\item\label{12.2.2} $B_{P}(\delta_{P})$中的任何两条不同的测地线至多交于一点;
+			\item\label{12.2.3} 对任何$r\in(0,\delta_{P})$, $\partial B_{P}(r):=\left\{Q\in\Sigma\bigm|d(P,Q)=r\right\}$与$B_{P}(\delta_{P})$中的任何一条测地线至多交于两点;
+			\item\label{12.2.4} 对任何$r\in(0,\delta_{P})$, $\overline{B_{P}(r)}:=\left\{Q\in\Sigma\bigm|d(P,Q)\leqslant r\right\}$均是$\Sigma$中强凸集.
+		\end{enumerate}
+	\end{excise}
+	\begin{proof}
+		\begin{enumerate}[label=(\roman*)]
+			\item 若$B_{P}(\delta_{P})$中的测地线自交,记交点为$A$,任取该测地线在自交部分上的一点$B$,取$B_{P}(r)$包含该测地线自交出的闭区域,于是$A,B\in B_{P}(r)$,但是$B_{P}(r)$中$A,B$间的测地线不只一条,与$B_{P}(r)$强凸矛盾.故$B_{P}(\delta_{P})$中的测地线都是简单曲线.
+			\item 若$B_{P}(\delta_{P})$中的两条测地线交于两点及以上,设$A,B$是相邻的两个交点,取$B_{P}(r)$包含这两条测地线在$A,B$间交出的闭区域,于是$A,B\in B_{P}(r)$,但是$B_{P}(r)$中$A,B$间的测地线不只一条,与$B_{P}(r)$强凸矛盾.故$B_{P}(\delta_{P})$中的任何两条不同的测地线至多交于一点.
+			\item 若$\partial B_{P}(r)$与$B_{P}(\delta_{P})$中某条测地线交于三点及以上,设$A,B,C$为相邻的三个交点,不妨设$AB$段在$B_{P}(r)$内, $BC$段在$B_{P}(r)$外,考察$d^{2}(P,\cdot)$限制在该测地线上$AC$部分,即知该函数在$AB$段小于$r^{2}$,在$BC$段大于$r^{2}$,与严格凸矛盾.故$\partial B_{P}(r)$与$B_{P}(\delta_{P})$中的任何一条测地线至多交于两点.
+			\item 由于$B_{P}\left(r+\dfrac{1}{n}\right)$是$\Sigma$中强凸集,其中$n>N$使得$r+\dfrac{1}{n}<\delta_{P}$.则$\displaystyle\overline{B_{P}(r)}=\bigcap_{n>N}B_{P}\left(r+\frac{1}{n}\right)$是$\Sigma$中强凸集.\qedhere
+		\end{enumerate}
+	\end{proof}
+	\begin{excise}
+		证明:\begin{enumerate}[label=(\roman*)]
+			\item 测地三角形区域均是强凸集.
+			\item 强凸的测地多边形区域可表示为有限个测地三角形区域的并集,使得其中任何两个不同的测地三角形区域至多相交于一个公共顶点或者一个公共边.
+		\end{enumerate}
+	\end{excise}
+	\begin{proof}
+		\begin{enumerate}[label=(\roman*)]
+			\item 取$B_{Q}(r)$外接该测地三角形区域$T$,由\textbf{练习 \ref{12.2}(i)} 和\textbf{练习 \ref{12.2}(iii)} 可知(注意到\textbf{练习 \ref{12.2}} 的结论对任何$Q\in B_{P}(\delta_{P})$也成立) $\gamma_{12}$把$B_{Q}(r)$分成两块区域,记包含$T$的部分为$T_{1}$,类似定义$T_{2}$和$T_{3}$.
+            下面说明$\overline{T_{i}}$为强凸集,从而$\displaystyle T=\bigcap_{i=1}^{3}\overline{T_{i}}$为强凸集.由\textbf{练习 \ref{12.2}(iv)}, 只用证明对$T_{i}$中任意两点$A,B$, $\gamma_{A,B}$落在$T_{i}$中,下面以$T_{1}$为例证明.
+            若结论不对,则$\gamma_{A,B}$将与$\gamma_{12}$相交出不只一点, 这与\textbf{练习 \ref{12.2}(ii)} 矛盾.于是测地三角形区域均是强凸集.
+			\item 对强凸的测地多边形区域的顶点数$n\geqslant 3$进行归纳.当$n=3$时结论显然.设结论对$n-1$成立,则对于顶点数为$n$的强凸的测地多边形区域$A$,任取间隔一个顶点的两顶点用测地线连接,由$A$的强凸性以及$A\subseteq B_{P}(\delta_{P})$,该测地线不会与$\partial A$相交也不会自交.
+            于是$A$被拆成了一个测地三角形区域和另一个顶点数为$n-1$的区域$A^{-}$,且这两个区域至多相交于一个公共边,对$A^{-}$使用归纳假设即知$A$可表示为有限个测地三角形区域的并集,且其中任何两个不同的测地三角形区域至多相交于一个公共顶点或者一个公共边.\qedhere
+		\end{enumerate}
+	\end{proof}
+	\begin{excise}
+		如果曲面$\Sigma$的高斯曲率恒为零,证明:存在的坐标覆盖$\{(\Sigma_{\lambda},\phi_{\lambda})\}_{\lambda\in\Lambda}$使得当$\Sigma_{\lambda\mu}\neq\varnothing$时,坐标转移$\phi_{\lambda\mu}:\phi_{\mu}^{-1}(\Sigma_{\lambda\mu})\to\phi_{\mu}^{-1}(\Sigma_{\lambda\mu})$是仿射映射,即线性映射和平移的复合映射(提示:利用\textbf{练习 \ref{8.1}},并注意到当$g_{ij}$均为常数时测地线方程组的解是一次函数).
+	\end{excise}
+	\begin{proof}
+		由\textbf{练习 \ref{8.1}} 可知,取测地法坐标可使$g_{ij}$均为常数,此时测地线方程组的解是一次函数,又注意到测地线方程组不依赖于局部坐标的选取,于是立即得到坐标转移$\phi_{\lambda\mu}:\phi_{\mu}^{-1}(\Sigma_{\lambda\mu})\to\phi_{\mu}^{-1}(\Sigma_{\lambda\mu})$是仿射映射.
+	\end{proof}

@@ -1,0 +1,8 @@
+\begin{center}2022学年期末试卷\end{center}
+一、（15分）\ 习题1.3.7.\\
+二、（30分）\ 习题2.1.11.\\
+三、（10分）\ 习题2.3.10.\\
+四、（15分）\ 习题2.2.12.\\
+五、（30分）\ $m_\alpha(x):=(1+4\pi^2\vert x\vert ^2)^{-\alpha},\alpha\in(0,1)$，
+求$m_\alpha$的Fourier变换（不必给出显式表达），
+并以此证明$m_\alpha(x)$是一个$L^p$ Fourier乘子，$1\leqslant p\leqslant\infty$.

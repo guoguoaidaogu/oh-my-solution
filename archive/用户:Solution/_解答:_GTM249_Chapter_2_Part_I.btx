@@ -1,0 +1,1108 @@
+\setdisplaytitle{Solution\ to\ GTM249\ Chapter\ 2\ Part\ I}	
+\sethtmltitle{Solution\ to\ GTM249\ Chapter\ 2\ Part\ I}
+\newcommand{\>}{\hspace{0.12em}}
+
+\section*{2.1 Maximal Functions}
+
+\begin{itemize}
+\item[2.1.1]
+
+(a) Similar to the proof of Theorem 2.1.6, except for the only difference 
+$$D(\mu)\sum_{r=1}^l\mu(B_{j_r})\geq \mu(\bigcup_{i=1}^k B_i).$$
+
+(b) $$\lim_{r\rightarrow0}\frac{1}{\mu(B(x,r))}\int_{B(x,r)}f(y)\,dy=f(x).$$
+
+\item[2.1.2]
+
+(a) Select a subset $\mathscr{G}$ of $\mathscr{F}$ with the minimal cardinality such that 
+$\bigcup_{J\in \mathscr{G}}J=\bigcup_{I\in \mathscr{F}}I$. 
+Assume that $\bigcup_{J\in \mathscr{G}}J$ is connected, 
+otherwise consider every connected component. \\
+Write $\mathscr{G}=\{(a_i,b_i)\mid 1\leq i\leq n\}$. 
+Let $\mathscr{G}_1=\{(a_i,b_i)\mid i\text{ is odd}\}$. 
+We claim that $\mathscr{G}_1$ is a family of mutually disjoint intervals. 
+Otherwise there exists $j$ such that $(a_j,b_j)\cap(a_{j+2},b_{j+2})\neq \varnothing$. 
+If $b_{j+1}\leq b_{j+2}$, then 
+$(a_{j+1},b_{j+1})\subset (a_j,b_{j+2})=(a_{j},b_{j})\cup(a_{j+2},b_{j+2})$, 
+so $(a_{j+1},b_{j+1})$ can be removed; 
+if $b_{j+1}>b_{j+2}$, then $(a_{j+2},b_{j+2})\subset (a_{j+1},b_{j+1})$, 
+so $(a_{j+2},b_{j+2})$ can be removed. 
+In both cases the minimality of $\mathscr{G}$ fails.
+\\Similarly we can prove that $\mathscr{G}_2$ is 
+a family of mutually disjoint intervals.\\
+Similar to the proof of Theorem 2.1.6, except for the only difference 
+$$\mu(K)\leq \mu(\bigcup_{B_x\in \mathscr{F}}B_x)
+\leq \mu(\bigcup_{B_x\in \mathscr{G}_1}B_x)
++\mu(\bigcup_{B_x\in \mathscr{G}_2}B_x)\leq\frac2{\alpha}\int_{E_\alpha}|f|\,d\mu.$$
+(b) The first inequality is equivalent to 
+$$\int_X(\vert f\vert-\alpha)(\chi_A-\chi_{\vert f\vert >\alpha})\>d\mu\le0.$$
+This inequality holds because the integrand is nonpositive 
+whether $\vert f \vert>\alpha $ or $\vert f\vert\leq\alpha$.\\
+Set $E_\alpha=\{M_{\mu}(f)>\alpha\}$, the following notation follows from the proof of part (a).\\
+Let $F_1=\bigcup_{B_x\in \mathscr{G}_1}B_x\cap K,F_2=\bigcup_{B_x\in \mathscr{G}_2}B_x\cap K$, 
+where $K$ is a compact subset of $E_\alpha$. We have
+\begin{align*}
+\mu(K)+\mu(F_1\cap F_2)
+&=\mu(F_1)+\mu(F_2)\leq\frac{1}{\alpha}\bigg(\int_{F_1}\vert f\vert\>d\mu +\int_{F_2}\vert f\vert\>d\mu \bigg)\\
+&=\frac1{\alpha}\bigg(\int_{K}\vert f\vert\>d\mu +\int_{F_1\cap F_2}\vert f\vert\>d\mu \bigg).
+\end{align*}
+Take $A=F_1\cap F_2$ in the first inequality and get
+$$\frac{1}{\alpha}\int_{F_1\cap F_2}|f|\>d\mu-\mu(F_1\cap F_2)\leq
+\frac{1}{\alpha}\int_{\{|f|>\alpha\}\}}|f|\>d\mu-\mu(\{|f|>\alpha\}).$$
+Add up the two inequalities, we obtain
+$$\mu(\{\vert f\vert >\alpha\})+\mu(K)
+\leq\frac1{\alpha}\bigg(\int_{K}\vert f\vert\>d\mu +\int_{\{\vert f\vert >\alpha\}}\vert f\vert\>d\mu \bigg).$$
+Take the supremum in $K$, and then the required conclusion follows.\\
+When $\alpha=1$ and $f(x)=\vert x\vert^{-\frac1p}$, $M(f)(x)=a^{-\frac1p}$, 
+where $a$ is the positive root of $$-\frac1p a^{1-\frac1p}+\vert x\vert \Big(\Big(1-\frac1p\Big)a^{-\frac1p}-\vert x\vert ^{-\frac1p}\Big)=0.$$
+$$\{M(f)(x)>1\}=\Big\{\!-\frac1p+\vert x\vert \Big(\Big(1-\frac1p\Big)-\vert x\vert ^{-\frac1p}\Big)<0\Big\}\triangleq(-A,A).$$
+So we have
+$$\int_{\{M(f)(x)>1\}}(|f|-1)=\frac p{p-1}A^{1-\frac1p}-A
+=-\frac2{p-1}=-\int_{\{|f|>1\}}(|f|-1).$$
+(c) Multiplying the last inequality of part (b) by $p\alpha^{p-1}$, 
+and integrating with respect to $\alpha$ from $0$ to $\infty$ yields
+\begin{align*}
+\|f\|_{L^p}^p+\|M(f)\|_{L^p}^p
+&\leq \frac p{p-1}\bigg(\int_\mathbb{R} M(f)^{p-1}|f|\>d\mu+\|f\|_{L^p}^p\bigg)\\
+&\leq \frac p{p-1}(\|M(f)\|_{L^p}^{p-1}\|f\|_{L^p}+\|f\|_{L^p}^p).
+\end{align*}
+Let $t=\frac{\|M(f)\|_{L^p}}{\|f\|_{L^p}}$, 
+then $$(p-1)t^p-pt^{p-1}-1\leq 0.$$
+So $\|f\|_{L^p\rightarrow L^p}\leq A_p.$\\
+(d) According to part (b), $\frac{M(f)(x)}{|x|^{-\frac1p}}$ 
+is the positive root of $$(p-1)x^p-px^{p-1}-1,$$
+which means $M(f)(x)=A_p$.\\
+Consider $f_{\varepsilon,N}(x):=|x|^{-\frac1p+\varepsilon}\chi_N(|x|)$, 
+where $\chi_N=\chi_{[0,N]}$.\\
+It is easy to see that
+$$\lim_{N\rightarrow\infty}\lim_{\varepsilon\rightarrow 0}
+\frac{\|M(f_{\varepsilon,N})\|_{L^p}}{\|f_{\varepsilon,N}\|_{L^p}}\geq A_p.$$
+
+\item[2.1.3]
+
+(a) Obviously, $\mathcal{M}(f)\leq M(f).$\\
+For $B(z,r)$ containing $x$,
+$$\frac{1}{\vert B(z,r)\vert }\int_{B(z,r)}\vert f\vert\leq \frac{2^n}{\vert B(x,2r)\vert }\int_{B(x,2r)}\vert f\vert.$$
+Take the supremum to get $M(f)\leq2^n\mathcal{M}(f).$\\
+For a ball $B$ containing $x$, $C_B$ denotes the minimal cube containing $B$, then
+$$\frac{1}{\vert B\vert }\int_{B}\vert f\vert\leq \frac{\vert C_B\vert}{\vert B\vert }\cdot\frac{1}{\vert C_B\vert }\int_{C_B}\vert f\vert =\frac{2^n}{\nu_n}\frac{1}{\vert C_B\vert }\int_{C_B}\vert f\vert.$$
+Take the supremum to get $M(f)\leq\frac{2^n}{\nu_n}M_c(f)$.\\
+For a cube $C$ containing $x$, $B_C$ denotes the minimal ball containing $C$, then
+$$\frac{1}{\vert C\vert }\int_{C}\vert f\vert\leq \frac{\vert B_C\vert}{\vert C\vert }\cdot\frac{1}{\vert B_C\vert }\int_{B_C}\vert f\vert =\frac{n^{\frac n2}\nu_n}{2^n}\frac{1}{\vert B_C\vert }\int_{B_C}\vert f\vert.$$
+Take the supremum to get $M_c(f)\leq\frac{n^{\frac n2}\nu_n}{2^n}M(f)$.\\
+Similar process can be applied to obtain the third inequality.\\
+For $f\in L^1(\mathbb{R}^n)$,
+$$\alpha d_{M_c(f)}(\alpha)\leq\alpha d_{M(f)}\bigg(\frac{2^n\alpha}{n^{\frac n2}\nu_n}\bigg)
+\leq \frac{n^{\frac n2}\nu_n}{2^n}\Vert M(f)\Vert_{L^{1,\infty}}.$$
+So $M_c(f)\in L^{1,\infty}(\mathbb{R}^n)$.
+
+For $f\in L^p(\mathbb{R}^n)$,
+$$\Vert M_c(f)\Vert_{L^p}\leq \frac{n^{\frac n2}\nu_n}{2^n}\Vert M(f)\Vert_{L^p}.$$
+So $M_c(f)\in L^p(\mathbb{R}^n)$.\\
+Similarly, $\mathcal{M}_c$ has the same property.
+
+\item[2.1.4]
+
+(a) Write $f=f\chi_{\{\vert f\vert>\alpha/2\}}+f\chi_{\{\vert f\vert\leq\alpha/2\}}:=f_1+f_2$.
+\\Notice that $M(f)\leq M(f_1)+M(f_2)\leq M(f_1)+\alpha/2$, so $\{M(f)>\alpha\}\subset \{M(f_1)>\alpha/2\}$.\\
+From Theorem 2.1.6, $$\mu(\{M(f)>\alpha\})\leq\mu(\{M(f_1)>\alpha/2\})
+\leq \frac{3^n}{\alpha/2}\int \vert f_1\vert\>dy
+=\frac{3^n}{\alpha/2}\int_{\{\vert f\vert>\alpha/2\}}\vert f\vert\>dy.$$
+So 
+\begin{align*}
+\alpha^p\mu(\{M(f)>\alpha\})
+=2^p\cdot3^n(\alpha/2)^{p-1}\int_{\{\vert f\vert>\alpha/2\}}\vert f\vert\>dy
+\leq 2^p\cdot3^n\Vert f\Vert_{L^p}^p,
+\end{align*}
+and hence
+$$\|M(f)\|_{L^{p,\infty}}\leq2\cdot3^{n/p}\|f\|_{L^p}.$$
+(b) Write $f=f\chi_{\{\vert f\vert>1/2\}}+f\chi_{\{\vert f\vert\leq1/2\}}:=f_1+f_2$.
+\\Taking $p=1$ in part (a) yields 
+$\alpha d_{M(f_1)}(\alpha)\leq2\cdot3^n\|f_1\|_{L^1}$, so
+\begin{align*}
+\Vert M(f_1)\Vert_{L^1(B)}&=\int_1^{\infty}d_{M(f_1)}(\alpha)\>d\alpha+\int_0^1 d_{M(f_1)}(\alpha)\>d\alpha\\
+&\leq \int_1^{\infty}\frac{3^n}{\alpha/2}\int_{\{\vert f\vert>1/2\}}\vert f\vert\>dyd\alpha+\int_0^1 \vert B\vert\>d\alpha\\
+&=2\cdot3^n\int_B\bigg(\int_1^{\max(1,2\vert f\vert)}\frac{d\alpha}{\alpha}\bigg)\vert f\vert\>dy+\vert B\vert\\
+&=2\cdot 3^n\Vert f\log^+(2\vert f\vert)\Vert_{L^1(B)}+\vert B\vert.
+\end{align*}
+Then $M(f)$ is also integrable over $B$, as $M(f)\leq M(f_1)+M(f_2)\leq M(f_1)+1/2$.
+
+(c) From Theorem 2.1.20, there exists a collection of disjoint open cubes $Q_j$ such that 
+$\bigcup Q_j\subset\{M_c(f)>\alpha\}$ and $\bigcup_jQ_j\supset\{f>\alpha\}$, so
+$$\int_{\{\vert f\vert>\alpha\}}\vert f\vert\leq\sum\int_{Q_j}\vert f\vert\leq 2^n\alpha\sum\vert Q_j\vert.$$
+From Exercise 2.1.3,
+$$\vert\{M(f)>c_n\alpha\}\vert\geq \vert\{M_c(f)>\alpha\}\vert
+\geq \sum\vert Q_j\vert\geq\frac{1}{2^n\alpha}\int_{\{\vert f\vert>\alpha\}}\vert f\vert.$$
+(d) Let $x'=\rho^2\vert x\vert^{-2}x$ for some $\rho<|x|<2\rho$. 
+For $y\in B(0,\rho)$, we have $$\vert x-y\vert^2-\vert x'-y\vert ^2
+\geq(|x|-|x'|)(|x|+|x'|-2|y|)>0.$$ 
+Consequently, for $R>\vert x\vert-\rho$, $B(x,R)\cap B(0,\rho)
+\subset B(x',R)$, and thus
+$$\int_{B(x,R)}\vert f\vert=\int_{B(x,R)\cap B(0,\rho)}\vert f\vert 
+\leq \int_{B(x',R)}\vert f\vert,$$
+which implies that 
+$$\mathcal{M}(f)(x)\leq\mathcal{M}(f)(\rho^2\vert x\vert^{-2}x).$$
+Using polar coordiantes, the determinant of the map $x\mapsto
+\rho^2\vert x\vert^{-2}x$ is $\pm(\rho/\vert x\vert)^{2n}$. Thus we have
+\begin{align*}
+\int_{B(0,2\rho)}\mathcal{M}(f)(x)\>dx
+&\leq \int_{B(0,\rho)}\mathcal{M}(f)(x)\>dx+\int_{B(0,2\rho)\backslash B(0,\rho)}\mathcal{M}(f)(\rho^2|x|^{-2}x)\>dx\\
+&=\int_{B(0,\rho)}\mathcal{M}(f)(x)\>dx+\int_{B(0,\rho)\backslash B(0,\rho/2)}\mathcal{M}(f)(y)\Big(\frac{|y|}{\rho}\Big)^{2n}\>dy\\
+&\leq (4^n+1)\int_{B(0,\rho)}\mathcal{M}(f)(x)\>dx.
+\end{align*}
+From Exercise 2.1.3, we conclude that 
+$$\int_{B(0,2\rho)}M(f)(x)\>dx\leq2^n(4^n+1)\int_{B(0,\rho)}M(f)(x)\>dx.$$
+(e) For $x\notin 2B$,
+$$M(f)(x)=\sup_{x\in\widetilde{B},\operatorname{diam} \widetilde{B}>\rho}
+\frac1{|\widetilde{B}|}\int_{\widetilde{B}}|f|\>dx<\frac{2^n}{|B|}\|f\|_{L^1}=\lambda_0.$$
+Therefore we have
+\begin{align*}
+\int_{2B}M(f)(x)\>dx
+&\geq \int_{c_n^{-1}\lambda_0}^{\infty}\vert\{x\in 2B\mid M(f)(x)>c_n\alpha\}\vert\>d\alpha\\
+&=\int_{c_n^{-1}\lambda_0}^{\infty}\vert\{ M(f)>c_n\alpha\}\vert\>d\alpha\\
+&\geq \int_{c_n^{-1}\lambda_0}^{\infty}\frac{2^{-n}}{\alpha}\int_{\{\vert f\vert>\alpha\}}\vert f(y)\vert\>dyd\alpha\\
+&= 2^{-n}\int_{\{\vert f\vert>\alpha\}}\bigg(\int_{c_n^{-1}\lambda_0}^{\max(|f|,c_n^{-1}\lambda_0)}\frac{d\alpha}{\alpha}\bigg)\vert f(y)\vert\>dy\\
+&= 2^{-n}\Vert f\log^+(\lambda_0^{-1}c_n\vert f\vert)\Vert_{L^1},
+\end{align*}
+where the second inequality is from part (c).\\
+From part (d), $$\int_{2B}M(f)(x)\>dx\leq2^n(4^n+1)\int_{B}M(f)(x)\>dx,$$
+and then the required conclusion follows.
+
+\item[2.1.5]
+We have
+\begin{align*}
+&\int_A\vert S(f)\vert^qdx\\
+=&\int_0^\infty q\alpha^{q-1}\vert A\cap\{S(f)>\alpha\}\vert\>d\alpha\\
+\leq &\int_0^{\frac{B}{\vert A\vert}\Vert f\Vert_{L^1}}q\alpha^{q-1}\vert A\vert\>d\alpha+\int_{\frac{B}{\vert A\vert}\Vert f\Vert_{L^1}}^\infty q\alpha^{q-1}\frac{B}{\alpha}\Vert f\Vert_{L^1}d\alpha\\
+\leq &\,\Big(\frac{B}{\vert A\vert}\Vert f\Vert_{L^1}\Big)^q|A|+\frac{q}{1-q}\Big(\frac{B}{\vert A\vert}\Vert f\Vert_{L^1}\Big)^{q-1}B\Vert f\Vert_{L^1}\\
+= &\,\frac1{1-q}B^q\Vert f\Vert_{L^1}^q\vert A\vert^{1-q}.
+\end{align*}
+The second result follows from taking $S=M$, then $B=3^n$.
+
+\item[2.1.6]
+
+(a) Define 
+$$M_1^{(i)}:=\frac{1}{b_i-a_i}\sup_{(a_i,b_i)\ni x_i}\int_{a_i}^{b_i}\vert f(y_1,\cdots,y_n)\vert \,dy_i.$$ 
+It is obvious that $M_s(f)(x)= M_1^{(1)}\circ\cdots\circ M_1^{(n)}(f)(x)$.\\
+Thus, 
+\begin{align*}
+\int_{\R^n}  M_s(f)(x)^pdx
+&\leq \int_{\R^n} M_1^{(1)}\circ\cdots\circ M_1^{(n)}(f)(x)^pdx_1\cdots dx_n\\
+&\leq A_p^p\int_{\R^{n-1}} M_1^{(2)}\circ\cdots\circ M_1^{(n)}(f)(x)^pdx_2\cdots dx_n\\
+&\leq \cdots\\
+&\leq A_p^{pn}\Vert f\Vert_{L^p}^p.
+\end{align*}
+(b) Consider $g_{\varepsilon,N}(x):=\prod\limits_{j=1}^nf_{\varepsilon,N}(x_j)$ 
+where $f_{\varepsilon,N}(x_j):=\vert x_j \vert^{-\frac1p+\varepsilon}\chi_N(\vert x_j \vert)$.\\
+From Exercise 2.1.2 (c), $\Vert M_s\Vert\geq A_p^n$, so $\Vert M_s\Vert=A_p^n$.\\
+(c) Consider $f_m=m^n\chi_{[0,\frac1m]^n}$, then $\Vert f\Vert _{L^1}=1$.\\
+For $x\in E_m:=\Big\{\prod\limits_{i=1}^n x_i\leq 1, x_i\geq \frac1m, i=1,\cdots,n\Big\}$, 
+write $R_x=\prod\limits_{i=1}^n[0,x_i]$, we have
+$$M_s(f_m)(x)\geq \frac{1}{\vert R_x\vert }\int _{R_x}f_m(x)\,dx= \frac1{|R_x|}\|f_m\|_{L^1}\geq 1.$$
+Thus $$\frac{\|M_s(f_m)\|_{L^{1,\infty}}}{\|f_m\|_{L^1}}\geq |\{M_s(f_m)\geq1\}|\geq |E_m|.$$
+Yet let $m\rightarrow\infty$, by the Lebesgue monotone convergence theorem and Tonelli's theorem, 
+\begin{align*}
+    \lim_{m\rightarrow \infty}|E_m|
+    &=\int_{\prod\limits_{i=1}^nx_i\leq 1, x_i>0, i=1,\cdots ,n}\mathrm{d}x_1\cdots \mathrm{d}x_n\\
+    &=\int_{\mathbb{R}^{n-1}}\frac1{x_2\cdots x_n}\mathrm{d}x_2\cdots \mathrm{d}x_n
+    \bigg(\int_{\mathbb{R}}\frac1x\mathrm{d}x\bigg)^{n-1}=\infty.
+\end{align*}
+So $M_s$ is not of weak type $(1,\!1)$.
+
+\item[2.1.7]
+Write $\psi(x)=(1+\left\vert x \right\vert )^{-1-\varepsilon},x\in \mathbb{R}$, 
+and $T(f):=\sup\limits_{t_1, \ldots ,t_n>0}\left\vert f*\varphi_{t_1, \ldots ,t_n} \right\vert $.\\
+Notice that \begin{align}\vert f*\varphi_{t_1, \ldots ,t_n}\vert 
+&\leq A\left\vert f*((1+\left\vert x_1 \right\vert )^{-1-\varepsilon}\cdots (1+\left\vert x_n \right\vert )^{-1-\varepsilon}) \right\vert \\
+&\leq A\Vert \psi\Vert_{L^1}M^{(1)}(f*((1+\left\vert x_2 \right\vert )^{-1-\varepsilon}\cdots (1+\left\vert x_n \right\vert )^{-1-\varepsilon}))\\
+&\leq \cdots\\
+&\leq A\Vert \psi\Vert_{L^1}^nM^{(1)}\circ\cdots \circ M^{(n)}(f)
+=A\Vert \psi\Vert_{L^1}^nM_s(f).\end{align}
+
+\item[2.1.8]
+Let $f_0$ be the characteristic function of the unit ball $B$ in $\R^n$. Note that
+$$M(f_0)(x)\geq\frac1{|B_x|}\int_{B_x}f_0(y)\>dy,$$ 
+where $B_x=B\big(\frac12(\vert x\vert-\vert x\vert^{-1})\frac{x}{\vert x\vert},
+\frac12(\vert x\vert+\vert x\vert^{-1})\big)$ for $|x|>1$.\\
+For $z\in B(0,1)$,
+\begin{align*}
+z\in B_x&\Leftrightarrow \textstyle{\big\vert z-\frac12(\vert x\vert-\vert x\vert^{-1})\frac{x}{\vert x\vert}\big\vert^2
+<\big\vert\frac12\big(\vert x\vert+\vert x\vert^{-1}\big)\big\vert^2}\\
+&\Leftrightarrow \textstyle{\vert z\vert^2-(\vert x\vert-\vert x\vert^{-1})\frac{z\cdot x}{\vert x\vert}
+<\big\vert\frac12\big(\vert x\vert+\vert x\vert^{-1}\big)\big\vert^2-\big\vert\frac12\big(\vert x\vert-\vert x\vert^{-1}\big)\big\vert^2}\\
+&\Leftrightarrow \textstyle{(-\vert x\vert+\vert x\vert^{-1})\frac{z\cdot x}{\vert x\vert}<1-\vert z \vert^2}\\
+&\Leftarrow z\cdot x>0.
+\end{align*}
+This means half of the unit ball $\{z\in B\mid z\cdot x>0\}$ 
+is contained in $B_x$, implying that
+$$M(f_0)(x)\geq \frac{|B|/2}{\vert B_x\vert}=\big(\textstyle{\frac{1}{2}}(\vert x\vert+\vert x\vert^{-1})\big)^{-n}/2.$$
+So 
+\begin{align*}
+\frac{\Vert M(f_0)\Vert_{L^p}^p}{\Vert f_0\Vert_{L^p}^p}
+&\geq \frac{1}{|B|}\int_{\vert x\vert>1}\big[\big(\textstyle{\frac{1}{2}}(\vert x\vert+\vert x\vert^{-1})\big)^{-n}/2\big]^pdx\\
+&=\frac{n}{2^p}\int_1^\infty r^{n-1}\big(\textstyle{\frac{1}{2}}(r+r^{-1})\big)^{-np}dr\\
+\end{align*}
+Let $f(r)=r\big(\textstyle{\frac{1}{2}}(r+r^{-1})\big)^{-p}$. 
+Then $f(1)=1$ and $f'(1)=1$, so $f(r)>1$ on some interval $(1,r_0)$. Therefore,
+\begin{align*}
+\frac{\Vert M(f_0)\Vert_{L^p}^p}{\Vert f_0\Vert_{L^p}^p}
+\geq \frac{n}{2^p}\int_1^\infty\frac{f(r)^n}rdr
+>\frac{n}{2^p}\int_1^{r_0}\frac{dr}{r}\rightarrow \infty\quad\text{as }n\rightarrow \infty.
+\end{align*}
+
+\item[2.1.9]
+
+Consider the Besicovitch Set $E_\varepsilon$ (see Elias M. Stein, 
+\textit{Harmonic Analysis}, X.1, p.435), which satisfies \\
+(1) $E_\varepsilon $ is a union of $2^N$ rectangles $R_1,\cdots, R_{2^N}$, 
+each having side lengths $1$ and $2^{-N}$, 
+and $| E_\varepsilon |<\varepsilon$, and \\
+(2) the $\widetilde{R}_j$'s are mutually disjoint, $j=1,\cdots,2^N$. 
+Here the $\widetilde{R}_j$ is defined to be the rectangle obtained 
+by translating $R_j$ by two units along the longer side of $R_j$.\\
+So $\Vert \chi_{E_\varepsilon}\Vert_{L^p}^p<\varepsilon$, 
+and for $x\in \widetilde{R}_j$, $M_0(\chi_{E_\varepsilon})(x)\geq \frac13$, 
+which implies that 
+$$\Vert M_0(\chi_{E_\varepsilon})\Vert_{L^p}^p\geq \frac13.$$
+Let $\varepsilon \rightarrow 0$, and then we can see the unboundedness.\\
+Notice that $M_0$ is weak type $(\infty,\infty)$, if $M_0$ is weak type $(1,1)$, 
+from the Marcinkiewicz interpolation theorem, $M_0$ is strong type $(2,2)$. Contradiction!\\
+(b) Lemma: 
+Let $\{B_1,\cdots,B_k\}$ be a finite collection of open rectangles 
+in $\mathbb{R}^2$, whose eccentricity is $b$. 
+Then there exists a finite subcollection of pairwise disjoint rectangles 
+$\{B_{j_1},\cdots,B_{j_l}\}$ such that 
+$$16b^2\sum\limits_{r=1}^l\vert B_{j_r}\vert\geq\vert \mathop{\bigcup}\limits_{i=1}^kB_i\vert.$$
+Proof of lemma: 
+First notice that if two rectangles with eccentricity $b$ intersect, 
+we claim that the smaller one $B$ is contained in the bigger one $A$ scaled $4b$ times.\\
+We place the center of $A$ at $0$, the longer edge being parallel to the $x$-axis. 
+Let the length of the edge of $A,B$ be $1,b;c,bc$, where $c<1$.\\
+So the abscissa of points in $B$ is no more than 
+$\frac12+\operatorname{diam}{B}\leq 4b\cdot\frac12$, 
+and the ordinate of points in $B$ is no more than 
+$\frac{b}2+\operatorname{diam}B\leq4b\cdot\frac{b}2$.\\
+This implies $4bA\supset B$.\\
+Then follows the proof of Lemma 2.1.5 to prove the lemma. 
+Similar to the proof of Theorem 2.1.6, we see that 
+$$\Vert M_{00}(f)\Vert_{L^{1,\infty}}\leq 16b^2\Vert f\Vert _{L^1}.$$
+(c) Notice that for rectangles $A,B$ satisfying the assumption above, 
+if $A$ and $B$ intersect, $\vert A\vert\geq \vert B \vert$, then $3A \subset B$. 
+The coefficient $3$ does not depend on the $\{a_2,\cdots,a_n\}$.\\
+Then we can deduce the similar conclusion as in part (b).
+
+\item[2.1.10]
+
+(a)
+Define $O_f(y)=\limsup\limits_{\varepsilon\rightarrow0}\vert T_{\varepsilon}(f)(y)\vert $,
+then for $y \in D$,
+$$O_f(y)\leq K\big((O_{f-g}(y)+O_g(y)\big)=KO_{f-g}(y).$$
+
+We claim $\mu \{O_f(y)>\delta\}=0,\forall \delta>0.$
+
+Note that $\forall \eta>0, \exists g\in D,\Vert f-g\Vert _{L^p}<\eta.$
+So we have 
+\begin{align*}
+\mu\{O_f(y)>\delta\}
+&\leq \mu\{O_{f-g}(y)>\delta/K\} \leq \mu\{T_*(f-g)>\delta/K\}\\
+&\leq (K/\delta\|T_*(f-g)\|_{L^{q,\infty}})^q
+\leq (K/\delta\Vert T_*\Vert_{L^p\rightarrow L^{q,\infty}}\Vert f-g\Vert _{L^p})^q.
+\end{align*}
+
+Let $\eta \rightarrow 0 $, we have proved our assertion, which implies that 
+$\limsup\limits_{\varepsilon\rightarrow0}\vert T_\varepsilon(f)(y)\vert =0$.
+
+(b) Define $$T_\varepsilon(f)(x):=\sup\limits_{x\in B}\bigg(\frac1{\vert B\vert}\int_B\vert f(y)-f(x)\vert ^p\>dy\bigg)^{\frac1p}.$$
+By Minkowski's inequality, we have 
+$$\bigg(\int_B|f(y)-f(x)+g(y)-g(x)|^p\>dy\bigg)^{\frac1p}\leq 
+\bigg(\int_B|f(y)-f(x)|^p\>dy\bigg)^{\frac1p}+\bigg(\int_B|g(y)-g(x)|^p\>dy\bigg)^{\frac1p}.$$
+So we have $T_\varepsilon(f+g)\leq T_\varepsilon(f)+T_\varepsilon(g).$\\
+When $p\geq 1$, by Minkowski's inequality, 
+$$\bigg(\int_B|f(y)-f(x)|^p\>dy\bigg)^{\frac1p}
+\leq \bigg(\int_B|f(y)|^p\>dy\bigg)^{\frac1p}+|f(x)|
+\leq |f|+M(|f|^p)^{\frac1p};$$
+when $p<1$, by part (c) of Exercise 1.1.5, 
+\begin{align*}
+\bigg(\int_B|f(y)-f(x)|^p\>dy\bigg)^{\frac1p}
+&\leq \bigg(\int_B|f(y)|^p +|f(x)|^p\>dy\bigg)^{\frac1p}\\
+&\leq 2^{\frac1p-1}\bigg(\bigg(\int_B|f(y)|^p\>dy\bigg)^{\frac1p}+|f(x)|\bigg)\\
+&\leq 2^{\frac1p-1}\big(|f|+M(|f|^p)\big)^{\frac1p}.
+\end{align*}
+Note that $M:L^1\rightarrow L^{1,\infty} $ is bounded, we have 
+$$\delta^p\mu\{M(|f|^p)^{\frac1p}\}
+=\delta ^p\mu\{M(|f|^p)>\delta^p\}\leq \|f^p\|_{L^1}\cdot \|M\| 
+=\|f\|^p_{L^p}\cdot \|M\|.$$
+So $f\mapsto M(|f|^p)^{\frac1p}$ is of weak type $(p,p)$, 
+and the norm is less equal to $\|M\|^{\frac1p}$, 
+which implies $T_*$ is of weak type $(p,p)$. 
+For $f$ continuous, $T_*(f)=0$, 
+and $\mathscr{C}(\mathbf{R}^n) $ is dense in $L^p(\mathbf{R}^n)$. 
+Then we finish the proof by part (a).\\
+(c) Set $Q=[0,1]^n$, then $f\chi_{Q+m}\in L^1(\mathbf{R}^n),m\in \mathbf{Z}^n$. 
+Apply part (b) to $f\chi_{Q+m}$, we have $f(x)=0$, a.e. on every $m+Q$, 
+therefore a.e. on $\mathbf{R}^n$.
+
+
+\item[2.1.11]
+
+(a) It's easy to see $E_\alpha:=\{M_R(f)>\alpha\}$ is open.\\
+Write $E_\alpha=\biguplus (a_i,b_i)$. For $x\in (a_j,b_j)$, let 
+$$N_x=\{s\mid\int_x^s\vert f\vert dt>\alpha(s-x)\}\cap(x,b_j].$$
+The set $N_x$ is nonempty, and $\sup N_{x} = b_{n}$. 
+Otherwise, there exists $r>0$ s.t. 
+$\displaystyle{\int_{x}^{x+r}|f(t)|dt > \alpha r}$.
+Thus $x+r > b_{n}$, namely $r > b_{n} - x$. But as $b_{n} \notin E_{\alpha}$, 
+$\displaystyle{\int_{b_{n}}^{b_{n} + r'}|f(t)|dt \leq \alpha r'}$ 
+for all $r' > 0$. Take $r' = x+r -b_{n}$, then
+$\displaystyle{\int_{b_{n}}^{x+r}|f(t)|dt \leq \alpha(x + r - b_{n})}$.
+This leads to $\displaystyle{\int_{x}^{b_{n}}|f(t)|dt > \alpha(b_{n} - x)}$, 
+whence $b_{n} \in N_{x}$, contradiction! 
+Let $s_0 =\sup N_x$, then $\forall \epsilon >0,\exists s_\epsilon $ 
+such that $\displaystyle{\int_x^{s_\epsilon}\vert f\vert>\alpha(s-x)}$. 
+If $s_0<b_j$, from the definition of $E_\alpha$, there exists $s_0'>s_0$, 
+such that $\displaystyle{\int_{s_0}^{s_0'}\vert f\vert>\alpha(s_0'-s_0)}$.\\
+Let $\displaystyle{\epsilon\rightarrow 0, \int_x^{s_0'}\vert f\vert>\alpha(s_0'-x)}$, 
+contradictory to the supremum. So $s_0=b_j$.\\
+Let $x\rightarrow a_j,\displaystyle{\int_{a_j}^{b_j}\vert f\vert\geq\alpha(b_j-a_j)}$. 
+If $\displaystyle{\int_{a_j}^{b_j}\vert f\vert>\alpha(b_j-a_j)}$, 
+then $a_j\in E_\alpha$, a contradiction. 
+Thus, $$\int_{a_j}^{b_j}\vert f\vert=\alpha(b_j-a_j),$$
+which implies that 
+$$\vert M_R(f)>\alpha \vert=\frac1\alpha \int_{\{M(f)>\alpha\}}\vert f\vert dt.$$
+Similar for $M_L(f)$.
+
+(b)
+\begin{align*}
+\Vert M_R(f)\Vert_{L^p}^p
+&=\int_0^\infty p\alpha^{p-1}\frac1\alpha\int_{\{M(f)>\alpha\}}\vert f\vert\>dtd\alpha\\
+&=\frac{p}{p-1}\int_{\R^n} M(f)^{p-1}\vert f\vert\>dt\\
+&\leq \frac{p}{p-1}\Vert M_R(f)\Vert_{L^p}^{p-1}\Vert f\Vert_{L^p}.
+\end{align*}
+Here we use Hölder's inequality for the last inequality. Then we get $$\Vert M_R(f)\Vert_{L^p}\leq \frac{p}{p-1}\Vert f\Vert_{L^p}.$$
+(c) Consider $f_{\varepsilon,N}:=x^{-\frac1p+\varepsilon}\chi_{(0,N)}.$\\
+We have 
+$$\Vert f_{\varepsilon,N}\Vert_{L^p}^p=\int_0^N x^{-1+\varepsilon p}dx=\frac1{\varepsilon p}N^{\varepsilon p},
+\ M(f)(x)=\frac1x\int_0^xt^{-\frac1p+\varepsilon}dt
+=\frac{x^{-\frac1p+\varepsilon}}{1-\frac1p+\varepsilon}.$$
+So
+$$\Vert M(f_{\varepsilon,N})\Vert_{L^p}^p
+\geq \int_0^N\Big(\frac{x^{-\frac1p+\varepsilon}}{1-\frac1p+\varepsilon}\Big)^pdx
+=\Big(\frac{1}{{1-\frac1p+\varepsilon}}\Big)^p\cdot \frac1{\varepsilon p}N^{\varepsilon p}.$$
+Let $\varepsilon\rightarrow 0$, then $\Vert M\Vert\geq\frac{p}{p-1}.$\\
+(d)
+\begin{align*}
+M(f)(x)
+&\leq\sup\limits_{x\in(a,b)}\int_a^b\vert f\vert\frac{1}{b-a}\\
+&\leq\sup\limits_{x\in(a,b)}\frac{\int_a^x\vert f\vert}{x-a}\frac{x-a}{b-a}+\frac{\int_x^b\vert f\vert}{b-x}\frac{b-x}{b-a}\\
+&\leq \max(M_R,M_L)(f)(x).
+\end{align*}
+Let $a\rightarrow x^{-}$, then $\frac{\int_x^b\vert f\vert}{b-x}\leq M(f)(x)$, 
+so $M_R(f)\leq M(f)$. Similarly we have $M_L(f)\leq M(f)$. 
+
+We deduce from the three inequalities that $\max(M_R,M_L)=M(f)$.\\
+(e)
+\begin{align*}
+\int_\R M(f)^p+N(f)^pdx&=\int_0^\infty p\alpha^{p-1}(\vert\{\max(M_L,M_R)(f)>\alpha\}\vert+\vert\{\min(M_L,M_R)(f)>\alpha\}\vert)\>d\alpha\\
+&=\int_0^\infty p\alpha^{p-1}\frac1\alpha\Big(\int_{\{M_L(f)>\alpha\}}\vert f\vert\>dx+\int_{\{M_R(f)>\alpha\}}\vert f\vert\>dx\Big)d\alpha\\
+&=p\int_{\mathbb{R}}\vert f\vert\Big(\int_0^{M_L(f)}\!\alpha^{p-2}d\alpha+\int_0^{M_R(f)}\!\alpha^{p-2}d\alpha\Big)dx\\
+&=\frac{p}{p-1}\int_\R \vert f\vert\big(M_L(f)^{p-1}+M_R(f)^{p-1}\big)\>dx\\
+&=\frac{p}{p-1}\int_\R\vert f\vert \big(M(f)^{p-1}+N(f)^{p-1}\big)\>dx.
+\end{align*}
+(f) Use part (e), we further get
+\begin{align*}
+    \int_\R M(f)^p+N(f)^pdx
+    &= \frac{p}{p-1}\int_\R \vert f\vert\big(M(f)^{p-1}+N(f)^{p-1}\big)\>dx\\
+    &\leq\frac{p}{p-1}\bigg(\int_\R \vert f\vert M(f)^{p-1}
+    +\int_\R \vert f\vert^p+\int_\R N(f)^p\bigg).
+\end{align*}
+Here we used Hölder's inequality. Cancel the $\int N(f)^p$, 
+then we obtain the required inequality.
+
+\item[2.1.12]
+
+(a) Firstly notice that $\mathscr{F}$, defined to be the set of all dyadic cubes, is countable. 
+So any cover of dyadic cubes has a countable subcover, which is pairwise disjoint.\\
+Let $E_\alpha=\{M_d(f)>\alpha\}$. 
+$\forall x\in E_\alpha$, $\exists Q_x\in \mathscr{F}$ containing $x$, 
+such that $\int_{Q_x}\vert f\vert>\alpha\vert Q_x\vert, Q_x\subset E_\alpha$.\\
+So $E_\alpha=\bigcup\limits_{x\in E_\alpha}Q_x=\bigcup\limits_{x\in I}Q_x$, where $I$ is countable, 
+$\{Q_x\}_{x\in I}$ are mutually disjoint.\\
+$$\vert E_\alpha\vert\leq\vert\bigcup\limits_{x\in I}Q_x\vert
+=\sum\limits_{x\in I}\vert Q_x\vert<\frac{1}{\alpha}\sum\int_{Q_x}\vert f\vert
+=\frac1\alpha\int_{E_\alpha}\vert f\vert.$$
+(b) Apply the result of part (a), we have
+\begin{align*}
+\Vert M_d(f)\Vert_{L^p}^p
+&=p\int_0^\infty\alpha^{p-1}\vert \{M_d(f)>\alpha\}\vert\>d\alpha\\
+&\leq p\int_0^\infty\alpha^{p-2}\int_{\{M_d(f)>\alpha\}}\vert f\vert\>dtd\alpha\\
+&=p\int_{\R^n}\int_0^{M_d(f)}\alpha^{p-2}d\alpha \,\vert f\vert\>dt\\
+&=\frac{p}{p-1}\int_{\R^n} \vert M_d(f)\vert^{p-1}\vert f\vert\>dt\\
+&\leq\frac{p}{p-1}\Vert M_d(f)\Vert_{L^p}^{p-1}\Vert f\Vert_{L^p}.
+\end{align*}
+
+\item[2.1.13]
+Use the result of Exercise 1.1.12 (a), we deduce
+$$\lambda\vert\{M(f)>\lambda\}\vert^{\frac1p}
+\leq3^n|M(f)>\lambda|^{-1+\frac{1}{p}}\int_{M(f)>\lambda}|f(y)|\,dy
+\leq3^n\left(\frac{p}{p-1}\right)\Vert f\Vert_{L^{p,\infty}}.$$
+Taking the supremum in $\lambda$ yields
+$$\Vert M(f)\Vert_{L^{p,\infty}}\leq 3^n\left(\frac{p}{p-1}\right)\Vert f\Vert_{L^{p,\infty}}.$$
+
+\item[2.1.14]
+
+It suffices to prove the inequality for $x=0$, as we may replace $f(t)$ by $f(t+x)$. 
+Define $F,G$ as in Theorem 2.1.10,  
+and let 
+$$A_{\varepsilon_0}=\sup_{\varepsilon>\varepsilon_0}
+\frac{1}{\varepsilon^n}\int_{\vert y\vert\leq\varepsilon }\vert f(y)\vert \,dy
+=\sup_{\varepsilon>\varepsilon_0}\frac{1}{\varepsilon^n}G(\varepsilon).$$ 
+Then for any $\varepsilon>\varepsilon_0$,
+\begin{align*}
+(f*K_\varepsilon)(0)
+&=\int_0^{\infty}G(r)d(-K_\varepsilon(re_1))\\
+&\leq\int_0^{\varepsilon_0}\varepsilon_0^nA_{\varepsilon_0}d(-K_\varepsilon(re_1))+\int_{\varepsilon_0}^{\infty}r^nA_{\varepsilon_0}d(-K_\varepsilon(re_1))\\
+&=\varepsilon_0^nA_{\varepsilon_0}\big(K_\varepsilon(0)-K_\varepsilon(\varepsilon_0e_1)\big)+\varepsilon_0^nA_{\varepsilon_0}K_\varepsilon(\varepsilon_0e_1)+\int_{\varepsilon_0}^{\infty}nr^{n-1}A_{\varepsilon_0}K_\varepsilon(re_1)\,dr\\
+&=\big(\varepsilon_0^nK_\varepsilon(0)+\Vert K_\varepsilon(re_1)\Vert_{L^1(B(0,\varepsilon_0)^c)}/\nu_n\big)A_{\varepsilon_0}\\
+&\leq \big(\varepsilon_0^n/\varepsilon^n+\|K_\varepsilon\|_{L^1}/\nu_n\big)A_{\varepsilon_0}\\
+&\leq \big(1+\Vert K\Vert_{L^1}/\nu_n\big)A_{\varepsilon_0}\coloneqq C_{n,\delta}A_{\varepsilon_0}.
+\end{align*}
+\end{itemize}
+
+\section*{2.2 The Schwartz Class and the Fourier Transform}
+\begin{itemize}
+\item[2.2.1]
+
+(a)
+$g(x)=\left\{
+\begin{matrix}
+e^{\frac{1}{|x|-1}} & |x|<1,\\
+0 & |x|\geq1.
+\end{matrix}
+\right.$
+
+(b)
+$h(x)=\left\{
+\begin{matrix}
+0 & |x|\leq\frac{1}{2},\\
+\frac{e^{\frac{1}{1-|x|}}}
+{e^{\frac{1}{|x|-\frac{1}{2}}}+e^{\frac{1}{1-|x|}}} & \frac{1}{2}<|x|<1,\\
+1 & 1\leq|x|\leq2,\\
+\frac{e^{\frac{1}{|x|-2}}}
+{e^{\frac{1}{4-|x|}}+e^{\frac{1}{|x|-2}}} & 2<|x|<4,\\
+0 & |x|\geq4.
+\end{matrix}
+\right.$
+
+(c) Take some $\phi\in\mathscr{S}$ such that $\phi^\vee$ is 
+odd, real--valued and compactly supported.
+
+For instance, $\phi^\vee(\xi)=\xi_1h(\xi)$ where $\xi=(\xi_1,\cdots,\xi_n)$ 
+and $h$ is defined as in part (b).
+
+Then $\phi=(\phi^\vee)^\wedge$ takes purely imaginary values, 
+so $\phi*\widetilde{\phi}$ takes real values.
+
+Let
+$$f=(\phi*\widetilde{\phi})^2=((\phi*\widetilde{\phi})^\wedge*(\phi*\widetilde{\phi})^\wedge)^\vee,$$
+then
+$$\hat{f}=(\phi*\widetilde\phi)^\wedge*(\phi*\widetilde{\phi})^\wedge=(\hat{\phi}\phi^\vee)*(\hat{\phi}\phi^\vee)=(-\phi^{\vee2})*(-\phi^{\vee2})$$
+is nonnegative and compactly supported.
+
+\item[2.2.2]
+
+For all multi--indices $\alpha,\beta$,
+\begin{align*}
+\|x^\alpha(\partial^\beta(\hat{f_k}-\hat{f}))(x)\|_{L^\infty}&
+=\frac{(2\pi)^\beta}{(2\pi)^\alpha}\|(\partial^\alpha(x^\beta (f_k(x)-f(x))))^\wedge\|_{L^\infty}\\
+&\leq\frac{(2\pi)^\beta}{(2\pi)^\alpha}\|\partial^\alpha(x^\beta (f_k(x)-f(x)))\|_{L^1}\rightarrow0.
+\end{align*}
+The last step is because $f_k\rightarrow f$ in $\mathscr{S}$ implies 
+$x^\beta f_k\rightarrow x^\beta f$ in $\mathscr{S}$, 
+and subsequently $\partial^\alpha(x^\beta f_k)\rightarrow \partial^\alpha(x^\beta f)$ in $\mathscr{S}$, hence in $L^1$ by Proposition 2.2.6. 
+And $\hat{\tilde{f_k}}\rightarrow \,\,\hat{\!\!\tilde{f}}$ 
+gives $f_k^\vee\rightarrow f^\vee$.
+
+\item[2.2.3]
+
+If there exists nonzero functions $f$ such that $\hat{f}=\lambda f$, then
+$$f=\,\,\tilde{\!\!\tilde{f}}=\,\,\hat{\hat{\hat{\!\!\hat{f}}}}=\lambda^4 f,$$
+so $\lambda^4=1$, then $\lambda=1,-1,i,-i$. 
+Now verify that $\{1,-1,i,-i\}$ is exactly the spectrum of the Fourier transform indeed:
+$$(e^{-\pi x^2})^\wedge=e^{-\pi x^2}$$
+shows that $1$ is an eigenvalue;
+$$(-2\pi xe^{-\pi x^2})^\wedge=(\partial(e^{-\pi x^2}))^\wedge=2\pi ixe^{-\pi x^2}$$
+shows that $-i$ is an eigenvalue;
+\begin{align*}
+    (4\pi^2x^2e^{-\pi x^2}-\pi e^{-\pi x^2})^\wedge
+    &=(4\pi^2x^2e^{-\pi x^2}-2\pi e^{-\pi x^2})^\wedge+\pi(e^{-\pi x^2})^\wedge\\
+    &=(\partial^2(e^{-\pi x^2}))^\wedge+\pi e^{-\pi x^2}\\
+    &=-4\pi^2x^2e^{-\pi x^2}+\pi e^{-\pi x^2}
+\end{align*}
+shows that $-1$ is an eigenvalue;
+\begin{align*}
+    (-8\pi^3x^3e^{-\pi x^2}+6\pi^2x e^{-\pi x^2})^\wedge
+    &=(-8\pi^3x^3e^{-\pi x^2}+12\pi^2x e^{-\pi x^2})^\wedge+3\pi(-2\pi x e^{-\pi x^2})^\wedge\\
+    &=(\partial^3(e^{-\pi x^2}))^\wedge+6\pi^2ix e^{-\pi x^2}\\
+    &=-8\pi^3ix^3e^{-\pi x^2}+6\pi^2ix e^{-\pi x^2}
+\end{align*}
+shows that $i$ is an eigenvalue.
+
+
+\item[2.2.4]
+
+Without loss of generality, assume $A=B=1$, $M=N=L$, then the proposition becomes
+$$\int_{\R^n}(1+|x-y|)^{-L}(1+|y|)^{-L}dy\leq C(1+|x|)^{-L}.$$
+
+This is because
+\begin{align*}
+    &\int_{\R^n}(1+|x|)^{L}(1+|x-y|)^{-L}(1+|y|)^{-L}dy\\
+    \leq&\int_{\R^n}(1+|x-y|+1+|y|)^{L}(1+|x-y|)^{-L}(1+|y|)^{-L}dy\\
+    \leq&\int_{\R^n}2^{L-1}\big((1+|x-y|)^{L}+(1+|y|)^{L}\big)(1+|x-y|)^{-L}(1+|y|)^{-L}dy\\
+    =&\int_{\R^n}2^{L-1}\big((1+|y|)^{-L}+(1+|x-y|)^{-L}\big)dy\\
+    \leq&\ C.
+    \end{align*}
+
+\item[2.2.5]
+
+Let $L_0^p=\{f\in L^p\mid f=0\textup{ a.e. outside some compact set }K\}$.
+
+When $1\leq p<\infty$, let $k_\varepsilon(x)
+=\varepsilon^{-n}k(\varepsilon^{-1}x)$ where $k\in \mathscr{C}_0^\infty$, 
+then $\{k_\varepsilon\}_{\varepsilon>1}$ is a smooth approximate identity 
+all the supports of which are contained in $\operatorname{support}k$. 
+For $f\in L^p_0$, we have $f*k_\varepsilon\in \mathscr{C}_0^\infty$ 
+by the Lebesgue dominated convergence theorem, 
+and $f*k_\varepsilon\stackrel{L^p}{\longrightarrow}f$ by Theorem 1.2.19 (a), 
+which shows that $\mathscr{C}_0^\infty$ is dense in $L_0^p$, 
+hence dense in $L^p$.
+
+When $p<1$, by the $p=1$ case $\mathscr{C}_0^\infty$ 
+is dense in $L_0^1$ with respect to the $L^1$ norm 
+and therefore also with respect to the $L^p$ norm 
+because for $f\in L_0^1$ we have
+$$\|f*k_\varepsilon-f\|_{L^p}\leq |\operatorname{support}f+\operatorname{support}k|^{\frac{1}{p}-1}\|f*k_\varepsilon-f\|_{L^1}.$$
+Moreover, $L_0^1$ is dense in $L_0^p$ since for $f\in L_0^p$ 
+we have $f\chi_{|f|\leq n}\in L_0^1$, hence dense in $L^p$.
+
+When $p=\infty$, any sequence of $\mathscr{C}_0^\infty$ functions converges 
+with respect to the $L^\infty$ norm to a continuous function, 
+so $\mathscr{C}_0^\infty$ is not dense in $L^\infty$.
+
+\item[2.2.6]
+
+(a) $\|\hat{f}-\tau^y\hat{f}\|_{L^\infty}$
+
+\ \ $=\|\hat{f}-(e^{2\pi ixy}f)^\wedge\|_{L^\infty}$ by Proposition 2.2.11 (6)
+
+\ \ $\leq\|f-e^{2\pi ixy}f\|_{L^1}\rightarrow0$ as $y\rightarrow0$ by the Lebesgue dominated convergence theorem.
+
+(b) \begin{align*}
+     &\int_{\R^n}f(x)\widehat{g}(x)\>dx=\int_{\R^n}f(x)\bigg(\int_{\R^n}g(y)e^{-2\pi ixy}dy\bigg)dx \\
+     =&\int_{\R^n}\bigg(\int_{\R^n}f(x)e^{-2\pi ixy}dx\bigg)g(y)\>dy=\int_{\R^n}\widehat{f}(y)g(y)\>dy
+\end{align*}
+by Fubini's theorem.
+
+(c) Use (2.2.15). But now the left--hand side of (2.2.15) may not converge to $f(t)$ pointwise; 
+only is known that the left--hand side converges to $f(t)$ with respect to the $L^1$ norm. 
+Yet by the Riesz--Fischer theorem, there is a sequence of  $\varepsilon_n\rightarrow0$ as $n\rightarrow\infty$ 
+such that the left--hand side converges to $f(t)$ a.e. if $\varepsilon$ is taken to be $\varepsilon_n$, 
+and the right--hand side still converges to $(\hat{f})^\vee(t)$ 
+after the restriction of $\varepsilon$, so we obtain $f=(\hat{f})^\vee$ a.e.
+
+\item[2.2.7]
+
+(a) Let $g(x)=e^{-\pi|\varepsilon x|^2}$ in Exercise 2.2.6 (b), 
+then $\hat{g}(x)=\varepsilon^{-n}e^{-\pi|x/\varepsilon|^2}$, 
+which is an approximate identity, so 
+$$\lim_{\varepsilon\rightarrow0}\int_{\R^n}\hat{f}(x)e^{-\pi|\varepsilon x|^2}dx
+=\lim_{\varepsilon\rightarrow0}\int_{\R^n}f(x)\varepsilon^{-n}e^{-\pi|x/\varepsilon|^2}dx=f(0)$$
+because $f$ is continuous at $0$ and 
+$\varepsilon^{-n}e^{-\pi|x/\varepsilon|^2}$ is an approximate identity.
+
+(b) Suppose that $\hat{f}\notin L^1$, then $\int_K \hat{f}(x)dx>f(0)$ 
+for some bounded area $K$, so 
+$$\lim_{\varepsilon\rightarrow0}\int_{\R^n}\hat{f}(x)e^{-\pi|\varepsilon x|^2}dx
+\geq\lim_{\varepsilon\rightarrow0}\int_K\hat{f}(x)e^{-\pi|\varepsilon x|^2}dx=\int_K \hat{f}(x)\>dx>f(0),$$
+contradicting the result of part (a). So $\hat{f}\in L^1$, and it follows that 
+$\|\hat{f}\|_{L^1}=f(0)$ by the Lebesgue dominated convergence theorem.
+
+\item[2.2.8]
+
+Let $h=f*\,\,\bar{\!\!\tilde{f}}$, then $h\in L^1(\R^n)\cap L^\infty(\R^n)$ because
+\begin{align*}
+    \|h\|_{L^1}&\leq\|f\|_{L^1}\|\bar{\tilde{f}}\|_{L^1}=\|f\|_{L^1}^2<\infty\\
+    {\ \rm and\ } \|h\|_{L^\infty}&\leq\|f\|_{L^2}\|\,\,\bar{\!\!\tilde{f}}\|_{L^2}=\|f\|_{L^2}^2<\infty
+\end{align*}
+by Theorem 1.2.12, $$\hat{h}=\hat{f}\ \hat{\bar{\!\!\tilde{f}}}\overset{(5)}{=}
+\hat{f}\,\,\bar{\tilde{\hat{\!\!\tilde{f}}}}\overset{(4)}{=}
+\hat{f}\,\,\bar{\tilde{\tilde{\!\!\hat{f}}}}=\hat{f}\,\,\bar{\!\!\hat{f}}\geq0$$
+where (5) and (4) stands for Proposition 2.2.11 (5) and (4), 
+and $f$ is continuous at $0$ because
+\begin{align*}
+    |h(y)-h(0)|&=|((\tau^{-y}f-f)*\bar{\tilde{f}})(0)|\leq\|(\tau^{-y}f-f)*\bar{\tilde{f}}\|_{L^\infty}\\
+    &\leq\|\tau^{-y}f-f\|_{L^2}\|\,\,\bar{\!\!\tilde{f}}\|_{L^2}\rightarrow0\quad\text{as } y\rightarrow0.
+\end{align*}
+Exercise 2.2.7 (b) yields $$\|\hat{f}\|_{L^2}^2=\|\hat{h}\|_{L^1}=h(0)=\int_{\R^n}f(x)\overline{\tilde{f}(-x)}\>dx=\|f\|_{L^2}^2.$$
+
+\item[2.2.9]
+(a) For $t\in[2n\pi,(2n+2)\pi]$ where $n\in\N$,
+\begin{align*}
+\int_0^t\frac{\sin(\xi)}{\xi}d\xi
+&\leq\int_0^{(2n+1)\pi}\frac{\sin(\xi)}{\xi}\>d\xi\\
+&=\int_0^{\pi}\frac{\sin(\xi)}{\xi}\>d\xi+\sum_{k=1}^{n}\int_0^{\pi}\bigg(\frac{\sin(\xi+(2k-1)\pi)}{\xi+(2k-1)\pi}
++\frac{\sin(\xi+2k\pi)}{\xi+2k\pi}\bigg)d\xi\\
+&=\int_0^{\pi}\frac{\sin(\xi)}{\xi}\>d\xi+\sum_{k=1}^{n}\int_0^{\pi}\bigg(\!-\frac{\sin(\xi)}{\xi+(2k-1)\pi}+\frac{\sin(\xi)}{\xi+2k\pi}\bigg)d\xi\\
+&\leq\int_0^{\pi}\frac{\sin(\xi)}{\xi}\>d\xi\leq\pi.
+\end{align*}
+And for similar reasons, 
+$$\int_0^t\frac{\sin(\xi)}{\xi}\>d\xi
+\geq\sup_{n\in\N}\int_0^{2n\pi}\frac{\sin(\xi)}{\xi}\>d\xi\geq0.$$
+So $$\bigg|\int_\varepsilon^t \frac{\sin(\xi)}{\xi}\>d\xi\bigg|\leq\pi.$$
+
+(b) $f$ is odd implies that $\hat{f}(\xi)=-i\int_\R f(x)\sin(2\pi x\xi)\>dx$,
+so by part (a)
+\begin{align*}
+    &\bigg|\int_\varepsilon^t\frac{\hat{f}(\xi)}{\xi}\>d\xi\bigg|
+    =\bigg|\int_\varepsilon^t\int_\R f(x)\frac{\sin(2\pi x\xi)}{\xi}\>dxd\xi\bigg|\\
+    =\ &\bigg|\int_\R f(x)\int_{2\pi\varepsilon\xi}^{2\pi t\xi} \frac{\sin(2\pi x\xi)}{2\pi x\xi}\>d(2\pi x\xi) dx\bigg| \leq 4\|f\|_{L^1}.
+\end{align*}
+
+(c) Suppose that such $f$ exists,
+then by part (b) $$4\|f\|_{L^1}\geq\int_2^t\frac{g(\xi)}{\xi}\>d\xi
+=\int_2^t\frac{d\xi}{\xi\log(\xi)}
+=\log(\log(\xi))\big|_2^t\rightarrow+\infty,$$ a contradiction.
+
+\item[2.2.10]
+
+By substituting $x$ with $-\frac{1}{x}$ which increases from 0 to $+\infty$ 
+then from $-\infty$ to $0$ as $x$ ranges from $-\infty$ to $+\infty$, we get
+\begin{align*}
+    \int_{-\infty}^{+\infty}f\Big(x-\frac{1}{x}\Big)dx
+    &=\frac{1}{2}\bigg(\int_{-\infty}^{+\infty}f\Big(x-\frac{1}{x}\Big)dx
+    +\int_{-\infty}^{+\infty}f\Big(\!-\frac{1}{x}+x\Big)d\Big(\!-\frac{1}{x}\Big)\bigg)\\
+    &=\frac{1}{2}\int_{-\infty}^{+\infty}f\Big(x-\frac{1}{x}\Big)d\Big(x-\frac{1}{x}\Big).
+\end{align*}
+
+Then since $u=x-\frac{1}{x}$ increases from $-\infty$ to $+\infty$ twice 
+as $x$ ranges from $-\infty$ to $+\infty$, 
+$$\frac{1}{2}\int_{-\infty}^{+\infty}f\Big(x-\frac{1}{x}\Big)d\Big(x-\frac{1}{x}\Big)=\int_{-\infty}^{+\infty}f(u)\>du.$$
+
+\item[2.2.11]
+
+(a) Use Exercise 2.2.10 with $f(x)=e^{-tx^2}$ to obtain that
+\begin{align*}
+    \int_0^\infty e^{-y-\frac{t^2}{y}+2t}\frac{dy}{\sqrt{y}}
+    &=2\int_0^\infty f\Big(\sqrt{\frac{y}{t}}-\sqrt{\frac{t}{y}}\Big)d\Big(\sqrt{t}\sqrt{\frac{y}{t}}\Big)\\
+    &=\int_{-\infty}^{+\infty}f(u)\>d(\sqrt{t}u)\\
+    &=\int_{-\infty}^{+\infty}e^{-tu^2}d(\sqrt{t}u)\\
+    &=\sqrt{\pi}.
+\end{align*}
+
+(b) Set $t=\pi|x|$ in part (a) to get that
+\begin{align*}
+    (e^{-2\pi|x|})^\wedge(\xi)
+    &=\int_{\R^n}e^{-2\pi|x|}e^{-2\pi i\xi x}dx\\
+    &=\frac{1}{\sqrt{\pi}}\int_{\R^n}\int_0^\infty e^{-y-\frac{\pi^2|x|^2}{y}-2\pi i\xi x}\frac{dy}{\sqrt{y}}dx\\
+    &=\frac{1}{\sqrt{\pi}}\int_0^\infty\int_{\R^n} e^{-(1+|\xi|^2)y-\frac{\pi^2|x|^2}{y}-2\pi i\xi x+|\xi|^2y}dx\frac{dy}{\sqrt{y}}.
+\end{align*}
+
+For all $1\leq j\leq n$, use a rectangle contour to lift the $x$-axis and get that
+$$\int_\R e^{-\frac{\pi^2x_j^2}{y}-2\pi i\xi_j x_j+\xi_j^2y}dx_j
+=\frac{\sqrt{y}}{\sqrt{\pi}}\int_\R e^{-\pi\big(\frac{\sqrt{\pi}x_j}{\sqrt{y}}+\frac{i\xi_j\sqrt{y}}{\sqrt{\pi}}\big)^2}d\frac{\sqrt{\pi}x_j}{\sqrt{y}}=\frac{\sqrt{y}}{\sqrt{\pi}}$$ where $x=(x_1,\cdots,x_n)$ and $\xi=(\xi_1,\cdots,\xi_n)$, plugging into above
+\begin{align*}
+    &=\frac{1}{\pi^{\frac{n+1}{2}}}\int_0^\infty  e^{-(1+|\xi|^2)y}y^{\frac{n-1}{2}}dy\\
+    &=\frac{\varGamma(\frac{n+1}{2})}{\pi^\frac{n+1}{2}}\frac{1}{(1+|\xi|^2)^{\frac{n+1}{2}}}.
+\end{align*}
+
+\item[2.2.12]
+
+(a) For all $x\in\R$,
+$$|f(x)|^2=\bigg|\int_{-\infty}^x (f^2)'(t)\>dt\bigg|=2\bigg|\int_{-\infty}^x f(t)f'(t)\>dt\bigg|\leq2\|f\|_{L^p}\|f'\|_{L^{p'}}.$$
+
+(b) For $x=(x_1,\cdots,x_n)\in\R^n$, write $\Omega=\{(t_1,\cdots,t_n)\in\R^n\mid t_1\leq x_1,\cdots,t_n\leq x_n \}$. We have
+\begin{align*}
+    |f(x)|^2
+    &=\bigg|\int_{-\infty}^{x_n}\cdots\int_{-\infty}^{x_1}\partial_1\cdots\partial_n(f^2)(t)\>dt_1\cdots dt_n\bigg|
+    =\bigg|\int_\Omega\partial^{(1,\cdots,1)}(f^2)(t)\>dt\bigg|\\
+    &\leq\|\!\!\!\!\sum_{\alpha+\beta=(1,\cdots,1)}\!\!\!\!(\partial^\alpha f)(\partial^\beta f)\|_{L^1}
+    \leq\!\!\!\!\sum_{\alpha+\beta=(1,\cdots,1)}\!\!\!\!\|\partial^\alpha f\|_{L^p}\|\partial^\beta f\|_{L^{p'}}.
+\end{align*}
+
+\item[2.2.13]
+
+Let $y\in\R^n$. Integrate by parts and apply the Cauchy--Schwarz inequality 
+and Plancherel's identity, we get
+\begin{align*}
+    \|f\|_{L^2}^2
+    &=\frac{1}{n}\int_{\R^n}f(x)\overline{f(x)}\sum_{j=1}^n \partial_j(x_j-y_j)\,dx\\
+    &=\frac{1}{n}\int_{\R^n}\sum_{j=1}^n\partial_j(f(x)\overline{f(x)}) (x_j-y_j)\,dx\\
+    &=\frac{1}{n}\bigg[\int_{\R^n}\sum_{j=1}^n(\partial_jf)(x)\overline{f(x)}(x_j-y_j)\,dx
+    +\int_{\R^n}\sum_{j=1}^n\overline{(\partial_jf)(x)}f(x)(x_j-y_j)\,dx\bigg]\\
+    &\leq\frac{1}{n}\bigg[\Big(\int_{\R^n}\sum_{j=1}^n|\partial_jf(x)|^2dx\Big)^{\frac{1}{2}}\Big(\int_{\R^n}\sum_{j=1}^n|\overline{f(x)}(x_j-y_j)|^2dx\Big)^\frac{1}{2}\\
+    &\ \ \ \ \ +\Big(\int_{\R^n}\sum_{j=1}^n|\overline{(\partial_jf)(x)}|^2dx\Big)^\frac{1}{2}\Big(\int_{\R^n}\sum_{j=1}^{n}|f(x)(x_j-y_j)|^2dx\Big)^\frac{1}{2}\bigg]\\
+    &=\frac{2}{n}\Big(\int_{\R^n}\sum_{j=1}^n|\partial_jf(x)|^2dx\Big)^{\frac{1}{2}}\Big(\int_{\R^n}\sum_{j=1}^n|f(x)(x_j-y_j)|^2dx\Big)^\frac{1}{2}\\
+    &=\frac{2}{n}\Big(\int_{\R^n}\sum_{j=1}^n|\widehat{\partial_jf}(\xi)|^2d\xi\Big)^{\frac{1}{2}}\Big(\int_{\R^n}\sum_{j=1}^n|f(x)(x_j-y_j)|^2dx\Big)^\frac{1}{2}\\
+    &=\frac{4\pi}{n}\Big(\int_{\R^n}\sum_{j=1}^n|\xi_j\hat{f}(\xi)|^2dx\Big)^{\frac{1}{2}}\Big(\int_{\R^n}\sum_{j=1}^n|f(x)(x_j-y_j)|^2dx\Big)^\frac{1}{2}\\
+    &=\frac{4\pi}{n}\Big(\int_{\R^n}|\xi|^2|\hat{f}(\xi)|^2d\xi\Big)^{\frac{1}{2}}\Big(\int_{\R^n}|f(x)|^2|x-y|^2dx\Big)^\frac{1}{2}.
+\end{align*}
+Then replace $f(x)$ by $f(x)e^{2\pi ixz}$ in the inequality above and the desired inequality follows from
+$$\sum_{j=1}^n|(\partial_j(f(\xi) e^{2\pi i\xi z})^\wedge|^2=(2\pi)^2\sum_{j=1}^n|(\xi_j-z_j)\hat{f}(\xi)|^2=(2\pi)^2|\xi-z|^2|\hat{f}(\xi)|^2.$$
+
+\item[2.2.14]
+
+Let $B$ be the unit ball $\{x\in\R^n\mid|x|<1\}$ and $B^c$ its complement. 
+By the Cauchy--Schwarz inequality,
+\begin{align*}
+    &\,\|g\|_{L^1}=\|g\|_{L^1(B)}+\|g\|_{L^1(B^c)}\\
+    \leq&\,\||x|^{-\alpha}\|_{L^2(B)}\||x|^{\alpha}g(x)\|_{L^2(B)}+\||x|^{-\beta}\|_{L^2(B^c)}\||x|^{\beta}g(x)\|_{L^2(B^c)}\\
+    \leq&\,C(\||x|^{\alpha}g(x)\|_{L^2}+\||x|^{\beta}g(x)\|_{L^2}).
+\end{align*}
+Then repalce $g(x)$ by $g(\lambda x)$ for $\lambda>0$ and get
+\begin{align*}
+    &\,\|g\|_{L^1}=\lambda^n\|g(\lambda x)\|_{L^1}\\
+    \leq&\,C\lambda^n(\||x|^{\alpha}g(\lambda x)\|_{L^2}+\||x|^{\beta}g(\lambda x)\|_{L^2})\\
+    =&\,C(\lambda^{n/2-\alpha}\||x|^{\alpha}g(x)\|_{L^2}+\lambda^{n/2-\beta}\||x|^{\beta}g(x)\|_{L^2})\\
+    =&\,C\||x|^{\alpha}g(x)\|_{L^2}^{\frac{\beta-n/2}{\beta-\alpha}}\||x|^{\beta}g(x)\|_{L^2}^\frac{n/2-\alpha}{\beta-\alpha} {\ \rm by\ taking\ suitable\  \lambda}.
+\end{align*}
+\end{itemize}
+
+\section*{2.3 The Class of Tempered Distributions}
+\begin{itemize}
+\item[2.3.1]
+
+Such $\mu$ can be identified with the functional
+$$f\mapsto \int_{\R^n}f\>d\mu$$
+which is a tempered distribution 
+because the condition of Proposition 2.3.4 (b) is satisfied: in fact,
+\begin{align*}
+\bigg|\int_{\R^n}f\>d\mu\bigg|&
+=\int_{\R^n}|f(x)|(1+|x|)^k\frac{d\mu}{(1+|x|)^k}\\
+&\leq M\sup_{x\in\R^n}|f(x)|(1+|x|)^k\\
+&\leq MC_k\sum_{|\alpha|\leq k}\sup_{x\in\R^n}|x^\alpha f(x)|\quad\text{for all }f \in\mathscr{S},
+\end{align*}
+where the last inequality is due to (2.2.3).
+
+The Lebesgue measure as a tempered distribution coincides with $1$ since
+$$\langle f,1\rangle=\int_{\R^n}f(x)\>dx\quad\text{for all }f \text{ in }\mathscr{S}.$$
+
+\item[2.3.2]
+
+Pick any nonzero vector $v\in\R^n$, and it is easily shown that 
+$(x+v)^{\alpha_1}\varphi_\varepsilon$ is $bv^{\alpha_1}$ times an approximate 
+identity for any multi--index $\alpha_1$ as $\varphi\in\mathscr{S}$. 
+Then for all multi--indices $\alpha,\beta$,
+\begin{align*}
+    &\sup_{x\in\R^n}|x^\alpha\partial^\beta(\varphi_\varepsilon*f-bf)|\\
+    =&\sup_{x\in\R^n}|x^\alpha(\varphi_\varepsilon*\partial^\beta f-b\partial^\beta f)|\quad\text{by Proposition 2.2.7}\\
+    \leq&\sum_{\alpha_1+\alpha_2=\alpha}\binom{\alpha}{\alpha_1}
+    \sup_{x\in\R^n}|\big((x+v)^{\alpha_1}\varphi_\varepsilon\big)*\big((x-v)^{\alpha_2}\partial^\beta f\big)-bv^{\alpha_1}(x-v)^{\alpha_2}\partial^\beta f|\\
+    \rightarrow&\ 0\quad\text{by Proposition 1.2.21 (b)}.
+\end{align*}
+In the last step $(x-v)^{\alpha_2}\partial^\beta f\in\mathscr{S}$ 
+and is hence uniformly continuous on $\R^n$.
+
+\item[2.3.3]
+We have
+\begin{align*}
+    &\,\langle (\delta^a f)*(\delta^a u),g\rangle\\
+    =&\,\langle \delta^a u,\widetilde{\delta^a f}*g\rangle\\
+    =&\,\langle u,a^{-n}\delta^{1/a}(\widetilde{\delta^a f}*g)\rangle\\
+    =&\,\langle u,a^{-n}\textstyle{\int_{\R^n}}f(-ay)g(a^{-1}x-y)\>dy\rangle\\
+    =&\,\langle u,a^{-n}\textstyle{\int_{\R^n}}f(-y)g(a^{-1}x-a^{-1}y)\>d(a^{-1}y)\rangle\\
+    =&\,\langle a^{-n}u,a^{-n}\tilde{f}*\delta^{1/a}g\rangle\\
+    =&\,\langle a^{-n}f*u,a^{-n}\delta^{1/a}g\rangle\\
+    =&\,\langle a^{-n}\delta^a(f*u),g\rangle \quad\textup{for all }g\in\mathscr{S}.
+\end{align*}
+
+Or check that the two distributions have identical Fourier transforms:
+\begin{align*}
+    \big((\delta^a f)*(\delta^a u)\big)^\wedge
+    &=(\delta^a f)^\wedge(\delta^a u)^\wedge
+    =a^{-n}\delta^{1/a}\hat{f}a^{-n}\delta^{1/a}\hat{u}
+    =a^{-2n}\delta^{1/a}(\hat{f}\hat{u}),\\
+    \big(a^{-n}\delta^a(f*u)\big)^\wedge
+    &=a^{-n}(a^{-n}\delta^{1/a}(f*u)^\wedge)
+    =a^{-2n}\delta^{1/a}(\hat{f}\hat{u}).
+\end{align*}
+
+\item[2.3.4]
+
+(a) $$\langle\partial\chi_{[a,b]},f\rangle
+=-\langle\chi_{[a,b]},f'\rangle=-(f(b)-f(a))
+=\langle\delta_a-\delta_b,f\rangle.$$
+(b) To simplify notations, let $j=1$. Sure enough, 
+everything is essentially the same for $j=2$.
+\begin{align*}
+    \langle\partial_1\chi_{B(0,1)},f\rangle
+    &=-\langle\chi_{B(0,1)},\partial_1 f\rangle\\
+    &=-\int_{B(0,1)}\partial_1 f\>dx\\
+    &=-\int_{-1}^1\int_{-\sqrt{1-x_1^2}}^{\sqrt{1-x_1^2}}\partial_1 f\>dx_1dx_2\\
+    &=-\int_{-1}^1 f(\sqrt{1-x^2},x)-f(-\sqrt{1-x^2},x)\>dx.
+\end{align*}
+(c) \begin{align*}
+    \langle(\sin x)^\wedge,f\rangle&=\langle \sin x,\hat{f}\rangle=\langle(e^{ix}-e^{-ix})/2i,\hat{f}\rangle\\
+    &=\big((\hat{f})^\vee\big(\textstyle{\frac{1}{2\pi}}\big)-(\hat{f})^\vee\big(\textstyle{-\frac{1}{2\pi}}\big)\big)/2i\\
+    &=\big(f\big(\textstyle{\frac{1}{2\pi}}\big)-f\big(\textstyle{-\frac{1}{2\pi}}\big)\big)/2i\\
+    &=\langle(\delta_{\frac{1}{2\pi}}-\delta_{-\frac{1}{2\pi}})/2i,f\rangle.
+    \end{align*}
+(d) \begin{align*}
+    \langle \partial\log|x|,\varphi\rangle&=-\langle\log|x|,\varphi'\rangle=-\int_\R\log|x|\varphi'(x)\>dx\\
+    &=-\lim_{\varepsilon\rightarrow0}\int_{\varepsilon\leq|x|}\log|x|\varphi'(x)\>dx\\
+    &=\lim_{\varepsilon\rightarrow0}\int_{\varepsilon\leq|x|}\varphi(x)\frac{dx}{x}+\big(\varphi(-\varepsilon)-\varphi(\varepsilon)\big)\log|\varepsilon|\\
+    &=\lim_{\varepsilon\rightarrow0}\int_{\varepsilon\leq|x|}\varphi(x)\frac{dx}{x}\quad\text{since }\varphi(-\varepsilon)-\varphi(\varepsilon)=O(\varepsilon).
+    \end{align*}
+
+\item[2.3.5]
+
+(a) For all multi--indices $\alpha,\beta$ and $|h|<1$,
+\begin{align*}
+&\sup_{x\in\R^n} \Big|x^\alpha \partial^\beta\Big(\frac{\tau^{-he_j}f-f}{h}-\partial_j f\Big)\Big|\\
+=&\sup_{x\in\R^n} \Big|x^\alpha \frac{(\partial^\beta f)(x+he_j)-(\partial^\beta f)(x)}{h}-\partial_j \partial^\beta f(x)\Big|\\
+=&\sup_{x\in\R^n} |x^\alpha \partial_j \partial^\beta f(x+\theta he_j)-\partial_j \partial^\beta f(x)| \quad \textup{where}\ \theta=\theta(x)\in(0,1)\\
+\leq&\ h\sup_{x\in\R^n} |x^\alpha \partial_j^2\partial^\beta f(x+\theta'he_j)| \quad \textup{where}\ \theta'=\theta'(x)\in(0,\theta(x))\\
+\leq&\ h\sup_{x\in\R^n} |\max\{(x+e_j)^\alpha,(x-e_j)^\alpha\} \partial_j^2\partial^\beta f(x)|\\
+\rightarrow&\ 0 \quad \text{as } h\rightarrow0,
+\end{align*}
+where the last step is because $|(x\pm e_j)^\alpha|$ are 
+both dominated by a finite sum of some $|x^\gamma|$'s.
+
+In part (b) and (c), assume $f$ is identically equal to $1$ in $B(0,r)$.
+
+(b) 
+For all multi--indices $\alpha,\beta$,
+\begin{align*}
+&\sup_{x\in\R^n} |x^\alpha \partial^\beta(\varphi_k f-f)|\\
+=&\sup_{x\in\R^n} |(\varphi_k-1)x^\alpha \partial^\beta f+\sum_{\gamma\leq\beta,\gamma\neq0}x^\alpha\partial^\gamma\varphi_k\,\partial^{\beta-\gamma}f|\\
+\leq&\ \|\varphi_k-1\|_{L^\infty}\sup_{|x|>kr}|x^\alpha\partial^\beta f|
++\sum_{\gamma\leq\beta,\gamma\neq0}\frac{\|\partial^\gamma\varphi\|_{L^\infty}}{k^{|\gamma|}}\sup_{x\in\R^n} |x^\alpha \partial^{\beta-\gamma}f|.
+\end{align*}
+Noticing that $|x_i|>kr/\sqrt{n}$ for some $1\leq i\leq n$ when $|x|>kr$, 
+we have $$\sup_{|x|>kr}|x^\alpha\partial^\beta f|
+\leq\max\limits_{1\leq i\leq n}\frac{\sup\limits_{|x|>kr}|x^{\alpha+e_i}\partial^\beta f|}{kr/\sqrt{n}}$$
+where $e_i$ is the multi--index whose $i$-th component is $1$ and the others $0$, 
+so $\sup\limits_{x\in\R^n} |x^\alpha \partial^\beta(\varphi_k f-f)|\rightarrow0$ as $k\rightarrow\infty$.
+
+(c) By part (b) $(\varphi_k f)^\wedge\rightarrow \hat{f}$ in $\mathscr{S}$ 
+since the Fourier transform is a homeomorphism (Corollary 2.2.15), 
+which on one hand reduces the proposition to 
+$\varphi_k(\varphi_k f)^\wedge-(\varphi_k f)^\wedge\rightarrow0$ in $\mathscr{S}$, 
+and on the other hand implies that for all $k$ and multi--indices $\alpha,\beta$,
+$$\sup_{x\in\R^n} |x^\alpha\partial^\beta (\varphi_k f)^\wedge|\leq C_{\alpha,\beta}<\infty.$$
+
+Then for all multi--indices $\alpha,\beta$,
+\begin{align*}
+    &\sup_{x\in\R^n} |x^\alpha\partial^\beta \big((\varphi_k-1)(\varphi_k f)^\wedge\big)|\\
+    =&\sup_{x\in\R^n} |x^\alpha (\varphi_k-1)\partial^\beta\big((\varphi_k f)^\wedge\big)+
+    \sum_{\gamma\leq\beta,\gamma\neq0} \partial^\gamma(\varphi_k-1)x^\alpha\partial^{\beta-\gamma}\big((\varphi_k f)^\wedge\big)|\\
+    \leq&\ \|\varphi_k-1\|_{L^\infty}\sup_{|x|>kr}|x^\alpha\partial^\beta \big((\varphi_k f)^\wedge\big)|
+    +\sum_{\gamma\leq\beta,\gamma\neq0}\frac{\|\partial^\gamma\varphi\|_{L^\infty}}{k^{|\gamma|}}C_{\alpha,\beta-\gamma}.
+\end{align*}
+
+For the same reason as part (b),
+
+$$\sup_{|x|>kr} |x^\alpha\partial^\beta \big((\varphi_k f)^\wedge\big)|
+\leq\max\limits_{1\leq i\leq n}\frac{C_{\alpha+1_i,\beta}}{kr/\sqrt{n}},$$
+
+so $\sup\limits_{x\in\R^n} |x^\alpha \partial^\beta\big((\varphi_k-1)(\varphi_k f)^\wedge\big)|\rightarrow0$ as $k\rightarrow\infty$.
+
+\item[2.3.6]
+
+The Fourier transform of a nonzero $\mathscr{C}^\infty_0$ function, 
+as a distribution with compact support, 
+is a real analytic function by Theorem 2.3.21, 
+which cannot be a $\mathscr{C}^\infty_0$ function 
+for it would otherwise be identically $0$ 
+due to the uniqueness of real analytic functions 
+(the uniqueness is obtained by showing that the interior of the zero set 
+of a real analytic function is both open and closed).
+
+\item[2.3.7]
+
+For all $h\in \mathscr{S}$,
+\begin{align*}
+    \langle g_N,h\rangle-\langle \hat{f},h\rangle
+    &=\langle (f\chi_{B(0,N)})^\wedge,h\rangle-\langle \hat{f},h\rangle\\
+    &=\langle f\chi_{B(0,N)}-f,\hat{h}\rangle\\
+    &\leq\|f\chi_{B(0,N)}-f\|_{L^p}\|\hat{h}\|_{L^{p'}}
+    \rightarrow 0 \quad \text{as } N\rightarrow\infty.
+\end{align*}
+
+\item[2.3.8]
+
+Let
+$$u_N=\sum_{|k|\leq N}c_k\delta_k,\ u=\sum_{k\in\Z^n}c_k\delta_k.$$
+Then $u_k \rightarrow u$ in $\mathscr{S}'$ because for all $f\in \mathscr{S}$,
+\begin{align*}
+    |\langle u-u_N,f\rangle|
+    &=|\sum_{|k|>N}c_kf(k)|\\
+    &\leq A\sum_{|k|>N}(1+|k|)^M|f(k)|\\
+    &\leq A_N\sup_{|k|>N}(1+|k|)^{M+n+1}|f(k)|\\
+    &\leq A_N\sup_{x\in\R^n}(1+|x|)^{M+n+1}|f(x)|\\
+    &\leq A_N\sum_{|\beta|\leq M}C_{n,M}\sup_{x\in\R^n}|x^\beta f(x)|\rightarrow0\quad\text{as}\ N\rightarrow\infty,
+\end{align*}
+where $A_N=A\sum\limits_{|k|>N}(1+|k|)^{-n-1}\rightarrow0$ as $N\rightarrow\infty$ 
+and in the last inequality (2.2.3) is used.
+
+Since $\widehat{u_N}=h_N$ (see Example 2.3.9), for all $f\in \mathscr{S}$,
+$$\langle \widehat{u}-h_N,f\rangle
+=\langle \widehat{u}-\widehat{u_N},f\rangle
+=\langle u-u_N,\hat{f}\rangle\rightarrow0\quad\text{as}\ N\rightarrow\infty.$$
+
+\item[2.3.9]
+
+(a) The usual definition for functions (still denoted by $u$) 
+homogeneous of degree $\gamma\in\mathbb{C}$ is 
+$\delta^\lambda u=\lambda^\gamma u$ for all $\lambda>0$, 
+which agrees with the one given in the problem because for functions $u$,
+\begin{align*}
+    &\delta^\lambda u=\lambda^\gamma u
+    \hspace{8.7em}\text{for all }\lambda>0\\
+    \Leftrightarrow\ & \langle\delta^\lambda u,\varphi\rangle
+    =\langle \lambda^\gamma u,\varphi\rangle
+    \hspace{4.95em}\text{for all }\lambda>0,\ \varphi\in\mathscr{S}\\
+    \Leftrightarrow\ & \lambda^{-n}\langle u,\delta^{1/\lambda}\varphi\rangle
+    =\langle \lambda^\gamma u,\varphi\rangle
+    \hspace{2.65em}\text{for all }\lambda>0,\ \varphi\in\mathscr{S}\\
+    \Leftrightarrow\ & \langle u,\delta^{1/\lambda}\varphi\rangle
+    =(1/\lambda)^{-n-\gamma}\langle u,\varphi\rangle
+    \hspace{1em}\text{for all }\lambda>0,\ \varphi\in\mathscr{S}.
+\end{align*}
+
+(b) This is because
+$$\langle \delta_0,\delta^\lambda\varphi\rangle
+=\langle \delta_0,\varphi\rangle=\varphi(0).$$
+
+(c) Since
+\begin{align*}
+    \langle \partial^{\alpha}u,\delta^{\lambda}\varphi \rangle
+    &= (-1)^{|\alpha|}\langle u,\partial^{\alpha}(\delta^{\lambda}\varphi) \rangle
+    = (-1)^{|\alpha|}\langle u,\lambda^{|\alpha|}\delta^{\lambda}(\partial^{\alpha}\varphi) \rangle
+    = \lambda^{|\alpha|}(-1)^{|\alpha|}\langle u, \delta^{\lambda}(\partial^{\alpha}\varphi)\rangle
+    \\&=
+    \lambda^{|\alpha|}(-1)^{|\alpha|}\lambda^{-n-\gamma}\langle u,\partial^{\alpha}\varphi\rangle
+    = \lambda^{-n-(\gamma-|\alpha|)}\langle \partial^{\alpha}u,\varphi\rangle.
+\end{align*}
+
+(d) Since
+\begin{align*}
+    \langle \hat{u},\delta^{\lambda}\varphi \rangle = \langle u,\widehat{\delta^{\lambda}\varphi} \rangle
+    = \langle u,\lambda^{-n}\delta^{\lambda^{-1}}\hat{\varphi} \rangle 
+    = \lambda^{-n}\langle u,\delta^{\lambda^{-1}}\hat{\varphi} \rangle
+    = \lambda^{-n}\Big(\frac{1}{\lambda}\Big)^{-n-\gamma}\langle u,\hat{\varphi} \rangle
+    = \lambda^{-n-(-n-\gamma)}\langle \hat{u},\varphi \rangle.
+\end{align*}
+
+The converse follows similarly.
+
+\item[2.3.10]
+
+(a) $e^{inx}$ and $e^{-inx}$ converge to $0$ in $\mathscr{S}'$ and $\mathscr{D}'$ 
+as $n\rightarrow\infty$ as a consequence of Proposition 2.2.17, 
+from which we know that the multiplication of distributions is not 
+a continuous operation even when it is defined, 
+for $(e^{inx},e^{-inx})\rightarrow(0,0)$ in $\mathscr{S}'\times\mathscr{S}'$ 
+yet $e^{inx}e^{-inx}=1$.
+
+(b) $\sqrt{n}(1+n|x|^2)^{-1}\rightarrow\pi\delta_0$ in $\mathscr{D}'$.
+
+This is because for all $f\in\mathscr{C}_0^\infty$, 
+by the Lebesgue dominated convergence theorem,
+\begin{align*}
+    &\lim_{n\rightarrow\infty}\int_\R \frac{\sqrt{n}}{1+nx^2}f(x)\>dx\\
+    =&\lim_{n\rightarrow\infty}\int_\R \frac{1}{1+x^2}f\Big(\frac{x}{\sqrt{n}}\Big)dx\\
+    =&\ \int_\R \frac{1}{1+x^2}f(0)\>dx\\
+    =&\ \pi f(0).
+\end{align*}
+
+\item[2.3.11]
+
+Let $h$ be a Schwartz function in $\R^n$ whose Fourier transform 
+is equal to $1$ on the ball $B(0,1)$ and vanishes outside the ball $B(0,2)$ 
+(which can be  constructed as the inverse Fourier transform of 
+a Schwartz function with the properties that 
+the desired Fourier transform of $h$ is supposed to have). Since
+$$(f*R^{-n}\delta^R h)^\wedge=\hat{f}(R^{-n}\delta^R h)^\wedge
+=\hat{f}\delta^{\frac{1}{R}}\hat{h}=\hat{f},$$
+we establish the identity $f=f*R^{-n}\delta^R h$.
+Then
+\begin{align*}
+\|\partial^\alpha f\|_{L^\infty}
+=&\ \|f*\partial^\alpha(R^{-n}\delta^R h)\|_{L^\infty}\\
+\leq&\ \|f\|_{L^\infty}\|\partial^\alpha(R^{-n}\delta^R h)\|_{L^1}\\
+=&\ \|f\|_{L^\infty}R^{|\alpha|}\|\partial^\alpha h\|_{L^1}.
+\end{align*}
+
+\item[2.3.12]
+
+(a) $(\,\widehat{\!\!\varPhi}(\xi/2^N)-1)\hat{f}\rightarrow0$ in $\mathscr{S}$ 
+for $f\in\mathscr{S}$ as $N\rightarrow\infty$
+because for all multi--indices $\alpha,\beta$,
+\begin{align*}
+    &\sup_{x\in\R^n} |x^\alpha\partial^\beta \big((\,\widehat{\!\!\varPhi}(\xi/2^N)-1)\hat{f}\big)|\\
+    =&\sup_{x\in\R^n} |\big(\,\widehat{\!\!\varPhi}(\xi/2^N)-1\big)x^\alpha \partial^\beta\hat{f}+
+    \sum_{\gamma\leq\beta,\gamma\neq0} |\partial^\gamma\big((\,\widehat{\!\!\varPhi}(\xi/2^N)-1\big)x^\alpha\partial^{\beta-\gamma}\hat{f}|\\
+    \leq&\ \|\,\widehat{\!\!\varPhi}\|_{L^\infty}\sup_{|x|>2^N}|x^\alpha\partial^\beta \hat{f}|
+    +\sum_{\gamma\leq\beta,\gamma\neq0}\frac{\|\partial^\gamma\,\widehat{\!\!\varPhi}\|_{L^\infty}}{2^{N|\gamma|}}\sup_{x\in\R^n}|x^\alpha\partial^{\beta-\gamma}\hat{f}|,
+\end{align*}
+and for the same reason as Exercise 2.3.5,
+
+$$\sup_{|x|>2^N} |x^\alpha\partial^\beta \hat{f}|
+\leq\max\limits_{1\leq i\leq n}\frac{\sup\limits_{x\in\R^n}|x^{\alpha+1_i}\partial^\beta \hat{f}|}{2^N/\sqrt{n}}.$$
+Thus for all $f\in\mathscr{S}$,
+\begin{align*}
+    |\langle (\,\widehat{\!\!\varPhi}(\psi/2^N)\widehat{u})^\vee-u,f\rangle|
+    &=|\langle \,\,\widehat{\!\!\varPhi}(\psi/2^N)\widehat{u}-\widehat{u},\hat{f}\rangle|\\
+    &=|\langle \widehat{u},\big(\,\,\widehat{\!\!\varPhi}(\psi/2^N)-1\big)\hat{f}\rangle|\rightarrow 0 \quad \text{as } N\rightarrow\infty.
+\end{align*}
+
+(b) Suppose that $\,\,\widehat{\!\!\varTheta}\,$ is equal to $0$ in $B(0,r)$, 
+then $1-\,\,\widehat{\!\!\varTheta}\,$ is equal to $1$ in $B(0,r)$. 
+Apply part (a), which is also true when $B(0,1)$ is replaced by $B(0,r)$, and get
+$$\Big(\big(1-\,\,\widehat{\!\!\varTheta}(\xi/2^N)\big)\widehat{u}\Big)^\vee\rightarrow u\quad\textup{in }\mathscr{S}'\text{ as } N\rightarrow\infty,$$
+namely,
+$$\big(\,\,\widehat{\!\!\varTheta}(\xi/2^N)\widehat{u}\big)^\vee\rightarrow 0\quad\textup{in }\mathscr{S}'\textup{ as } N\rightarrow\infty.$$
+
+\item[2.3.13]
+
+Assume the converse. Then for all $f\in L^p(\R^n)$, 
+$\hat{f}$ is locally integrable and hence the map $f\rightarrow\hat{f}$ 
+is a well defined operator from $L^p(\R^n)$ to $L^1(B(0,M))$ for all $M>0$ 
+(i.e. $\|\hat{f}\|_{L^1(B(0,M))}<\infty$ for all $f\in L^p(\R^n)$, 
+since $B(0,M)$ is covered by a finite number of neighborhoods of 
+$x\in \overline{B(0,M)}$ on which $\hat{f}$ is integrable).
+
+Then we shall use the closed graph theorem to deduce that the operator is 
+bounded, or in other words, $\|\hat{f}\|_{L^1(B(0,M))}\leq C_M\|f\|_{L^p(\R^n)}$.
+
+Suppose $(f_n,\hat{f_n})\rightarrow(f,g)$ in $L^p(\R^n)\times L^1(B(0,M))$, 
+then by Proposition 2.3.22, $f_n\rightarrow f$ in $\mathscr{S}'$, 
+so $\hat{f_n}\rightarrow \hat{f}$ in $\mathscr{S}'$. 
+Note that $\hat{f_n}\rightarrow g$ in $L^1(B(0,M))$ implies convergence in $\mathscr{S}'$, 
+so we can conclude that $g$ is indeed $\hat{f}$ once we check that: 
+if two $L^1$ functions are identical as tempered distributions, 
+then they are the same as functions.
+
+In fact, if for all $\varphi\in\mathscr{S}$, $\int_{\R^n}\hat{f}\varphi=\int_{\R^n}g\varphi$, 
+then so will be true for $\varphi=\chi_{\{\hat{f}\geq g\}}-\chi_{\{\hat{f}<g\}}$, 
+which is justified by finding a sequence of Schwartz functions all bounded by $1$ 
+converging pointwise to $\varphi$ and making use of the Lebesgue dominated convergence theorem 
+--- such Schwartz functions can be taken as a sequence of step functions $\chi_{A_n}-\chi_{B_n}$ 
+mollified at the endpoints approximating $\varphi$, where the $A_n$'s and $B_n$'s are 
+each a finite combination of intervals contained in $\{\hat{f}\geq g\}$ and $\{\hat{f}<g\}$ 
+with $m({\{\hat{f}\geq g\}}\backslash A_n)\rightarrow0$ and $m({\{\hat{f}<g\}}\backslash B_n)\rightarrow0$. 
+Then we get $\hat{f}=g$ in the usual sense of functions.
+
+To violate the previous inequality 
+$\|\hat{f}\|_{L^1(B(0,M))}\leq C_M\|f\|_{L^p(\R^n)}$ 
+whenever $p>2$, take $$f_N(x)=t^{-n}e^{-\pi t^{-2}|x|^2},$$
+where $t=(1+iN)^{1/2}$. Then for $\operatorname{Re}(t^{-2})=\frac{1}{1+N^2}=|t|^{-4}$,
+$$\|f_N\|_{L^p(\R^n)}=|t|^{-n}\bigg(\int_{\R^n}e^{-\pi(|t|^{-2}|x|)^{2p}}dx\bigg)^\frac{1}{p}
+=|t|^{(-1+\frac{2}{p})n}\|e^{-\pi|x|^2}\|_{L^p(\R^n)}.$$
+
+And $$\widehat{f_N}(\xi)=(t^{-n}\delta^{t^{-1}}(e^{-\pi|x|^2}))^\wedge(\xi)
+=(\delta^t f)(\xi)=e^{-\pi|\xi|^2(1+iN)}$$
+using Proposition 2.2.11 and Example 2.2.9, 
+so $\|\widehat{f_N}\|_{L^1(B(0,M))}=\|e^{-\pi|\xi|^2}\|_{L^1(B(0,M))}$ 
+is a constant. Therefore the inequality cannot be true, 
+for $|t|^{(-1+\frac{2}{p})n}\rightarrow0$ as $N\rightarrow\infty$.
+\end{itemize}

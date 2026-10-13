@@ -1,0 +1,105 @@
+\setdisplaytitle{试卷：表示论基础（H）（wyp）}
+\sethtmltitle{试卷：表示论基础（H）}
+
+\section{2026年春期中}
+
+\begin{center}
+    \textbf{REPRESENTATION THEORY: MIDTERM EXAM}
+\end{center}
+
+In what follows, $k$ is always a field and $G$ is always a finite group. By a representation, we always mean a linear representation of $G$ over $k$.
+
+\begin{enumerate}
+    \item True or False? (10 points) Not necessary to give a proof or a counterexample.
+    \begin{enumerate}
+        \item[(1)] Suppose that $p := \mathrm{char}(k)$ divides $|G|$. Then a representation $V$ is irreducible if and only if its dual $V^*$ is irreducible.
+        \item[(2)] Suppose that $\mathrm{char}(k) = 0$. A representation $V$ is irreducible if and only if for any finite extension $k'/k$, the scalar extension $V \otimes_k k'$ is irreducible.
+        \item[(3)] Let $V$ be a representation over $\mathbb{C}$, then $V \cong V^*$ if and only if $\chi_V \in \mathrm{CF}(G, \mathbb{R})$.
+        \item[(4)] Let $X$ be a finite $G$-set and $kX$ be the induced linear representation of $G$. Then $X$ is irreducible if and only if $kX$ is irreducible.
+        \item[(5)] The tensor product $V \otimes_k W$ of two irreducible representations $V$ and $W$ is also irreducible.
+    \end{enumerate}
+
+    \item (10 points) Let $X$ be a $G$-set. Show that the following statements are equivalent:
+    \begin{enumerate}
+        \item[(a)] $X$ is indecomposable.
+        \item[(b)] $X$ is irreducible.
+        \item[(c)] $X$ is transitive.
+    \end{enumerate}
+
+    \item (15 points) Suppose that $\mathrm{char}(k) = 0$. Show that if $V$ is a linear representation of $G$, then for any sub-representation $W \subset V$, there exists another sub-representation $W^\perp \subset V$ such that $V = W \oplus W^\perp$.
+
+    \item (20 points) Suppose that $\mathrm{char}(k) = 0$. For any representation $V$, put $D_V := \mathrm{End}_G(V)$.
+    \begin{enumerate}
+        \item[(1)] Show that $V$ is irreducible if and only if $D_V$ is a division algebra.
+        \item[(2)] Show that there exists an isomorphism of $k$-algebras $\rho_G : kG \to \prod_{V \in \mathrm{Irr}_k(G)} \mathrm{End}_{D_V}(V)$.
+    \end{enumerate}
+
+    \item (20 points) Let $G = \mathbb{Z}/n\mathbb{Z}$ be the cyclic group of order $n \ge 3$. Find all irreducible representations of $G$ over $\mathbb{R}$.
+
+    \item (10 points) Suppose that $(V, \rho)$ is a faithful irreducible linear representation of $G$ over $\mathbb{C}$. Show that the center $Z(G)$ of $G$ is a cyclic group.
+
+    \item (15 points) For any representation $W$ of $G$ over $\mathbb{C}$, it defines a representation $W_\mathbb{R}$ of $G$ over $\mathbb{R}$ by regarding $W$ as a vector space over $\mathbb{R}$. Let $V$ be an irreducible representation of $G$ over $\mathbb{R}$. Show that:
+    \begin{enumerate}
+        \item[(1)] The morphism of $\mathbb{C}$-algebras
+        \[ \iota : \mathbb{C} \otimes_\mathbb{R} \mathrm{End}_G(V) \to \mathrm{End}_G(\mathbb{C} \otimes_\mathbb{R} V), \lambda \otimes \phi \mapsto \lambda \phi \]
+        is an isomorphism.
+        \item[(2)] $\mathbb{C} \otimes_\mathbb{R} V$ is irreducible if and only if $\langle \chi_V, \chi_V \rangle_G = 1$; in this case, $\mathrm{End}_G(V) \cong \mathbb{R}$.
+        \item[(3)] If $\mathbb{C} \otimes_\mathbb{R} V$ is not irreducible, then there is an irreducible representation $W$ over $\mathbb{C}$ such that $\mathbb{C} \otimes_\mathbb{R} V \cong W \oplus W^*$ and $W_\mathbb{R} \cong V$.
+        \begin{enumerate}
+            \item[(i)] If $W$ is not isomorphic to $W^*$, show that $\mathrm{End}_G(V) \cong \mathbb{C}$.
+            \item[(ii)] If $W \cong W^*$, show that $W$ is not $\mathbb{R}$-rational and $\dim_\mathbb{R} \mathrm{End}_G(V) = 4$.
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+\section{2026年春期末}
+\begin{enumerate}
+\item[一] ($2.5\times 4=10'$)陈述下列定理:
+\begin{enumerate}
+    \item Schur引理;
+    \item Frobenius定理;
+    \item 类函数的Mackey公式;
+    \item 表示的projection分解.
+\end{enumerate}
+\item[二] ($10'$)设$D_{2n}=\langle\sigma,\tau\mid\sigma^n=\tau^2=(\sigma\tau)^2=1\rangle$是二面体群，
+有唯一的$n$阶循环正规子群$S_n=\langle\sigma\rangle$. 
+设$S_n$的表示$(V,\rho)$为$V=\mathbb{C}, \rho(\sigma)=\zeta_n$, 
+其中$\zeta_n=\exp\left(\frac{2\pi i}{n}\right)$.
+请给出$\text{Coind}_{S_{n}}^{D_{2n}}V:=\text{Hom}_{\mathbb{C}S_n}(\mathbb{C}D_{2n},V)$的一组基，并给出$\sigma,\tau$在其上的矩阵.
+\item[三] ($20'$)构造四阶置换群$S_4$的全体不可约复表示，并给出其特征标表。
+\item[四] ($5+5+10=20'$)设$H\lhd G, V\in\text{Irr}_k(G), T\in\text{Irr}_k(H), T\subseteq\text{Res}_H^GV$.
+记$G_T=\{\sigma\in G\mid{ }^\sigma T\cong T\}$.
+\begin{enumerate}
+    \item 证明$G_T$是一个包含$H$的子群;
+    \item 证明$\big(\text{Res}_H^GV\big)_T$是一个$G_T$不变空间.
+    \item 证明$\text{Ind}_{G_T}^G\big(\text{Res}_H^GV\big)_T\cong V$.
+\end{enumerate}
+\item[五] ($5+5+10=20'$)设$k$是有限域，$k^*$为其乘法子群，$G={\rm GL}_2(k)$为$k$的二阶特殊矩阵群，并设
+$B=\left\{\left.\begin{pmatrix}
+    a&b\\0&d
+\end{pmatrix}\right|b\in k, ad\in k^*\right\},\omega=\begin{pmatrix}
+    0&1\\1&0
+\end{pmatrix},T=\left\{\left.\begin{pmatrix}
+    a&0\\0&d
+\end{pmatrix}\right|ad\in k^*\right\}.$
+\begin{enumerate}
+    \item 证明$G=B\sqcup B\omega B$且$T=\omega B\omega^{-1}.$
+    \item 设$k^*$的一维复表示为$\chi_1,\chi_2$, 下面设
+    $\theta_{(\chi_1,\chi_2)}\begin{pmatrix}
+        a&b\\0&d
+    \end{pmatrix}=\chi_1(a)\chi_2(d).$
+    证明它是一个$B$表示.
+    \item 证明$\text{Ind}_B^G\theta_{(\chi_1,\chi_2)}$是不可约的当且仅当$\chi_1\chi_2^{-1}\neq 1.$ 
+\end{enumerate}
+\item[六] ($4+4+6+6=20'$)设群$H<G$，满足对任意的$\sigma\in G/H$，$\sigma H\sigma^{-1}\cap H=\{1\}$，
+设$N=G\setminus\left(\bigcup_{\sigma \in G}\sigma H\sigma^{-1}\right),k=\mathbb{C}.$
+\begin{enumerate}
+    \item 证明：对于任意的类函数$f\in \text{CF}(H,k)$ 存在唯一的$\tilde{f} \in \text{CF}(G,k)$
+    使得$\text{Res}_H^G\tilde{f}=f$, 且对任意的$\tau\in N$有$\tilde{f}(\tau)=f(1)$.
+    \item 设$\psi=\text{Ind}_H^G1_H-1_G$，证明：$\tilde{f}=\text{Ind}_H^Gf-f(1)\psi$，
+    并证明$\langle f_1,f_2\rangle_H=\langle \tilde{f}_1,\tilde{f}_2\rangle_G.$
+    \item 设$V\in\text{Irr}_k(H), f=\chi_V.$证明存在一个$G$表示$(\tilde{V},\rho_{\tilde{V}})$使得$\chi_{\tilde{V}}=\tilde{f}$. 
+    证明它是不可约表示，且对任意的$\tau\in N$有$\rho_{\tilde{V}}(\tau)=\text{id}_{\tilde{V}}.$
+    \item 设$L=N\cup\{1\}$, 证明$L$是正规子群，$LH=G$, $L\cap H=\{1\}.$
+\end{enumerate}
+\end{enumerate}

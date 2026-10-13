@@ -1,0 +1,247 @@
+\newcommand{\I}{\operatorname{I}}
+\begin{itemize}
+    \item[1.]
+    验证$\mathbf{C}^n$上所有多元全纯函数所构成的集合$\mathcal{O}$是一个环。
+
+    \item[\textit{Pf:}]
+    对于$f,g\in\mathcal{O}$，即$f,g$满足Cauchy-Riemann方程组，这等价于
+    $f,g$作为每个分量的函数
+    （如$f(\,\cdot\,,z_2,\cdots,z_n)$，$z_2,\cdots,z_n\in\mathbf{C}$固定）
+    满足Cauchy-Riemann方程，则$f,g$作为每个分量的函数全纯，
+    于是$f+g,fg$作为每个分量的函数也全纯，
+    那么$f+g,fg$也满足Cauchy-Riemann方程组，
+    得到$f+g,fg\in\mathcal{O}$.\\
+    或使用$f\in\mathcal{O}$等价于$f$复可微
+    （即$f(z+\Delta z)=f(z)+f'(z)\cdot\Delta z+o(\Delta z)$
+    当$\Delta z\rightarrow0$），复可微函数相加、相乘所得函数复可微.
+
+    ~\\
+    \item[2.]
+    设$f\colon M^m\rightarrow N^n$在$p$点是淹没，
+    则存在$p$点附近的局部坐标卡$(U,\varphi)$和
+    $q=f(p)$点附近的局部坐标卡$(V,\psi)$使
+    $\psi\circ f\circ\varphi^{-1}\colon\varphi(U)\rightarrow\psi(V)$的表达式为
+    $(x_1,\cdots,x_m)\mapsto(x_1,\cdots,x_n)$.
+
+    \item[\textit{Pf:}]
+    设$p$点附近有局部坐标卡$(U',\varphi')$，
+    $q$点附近有局部坐标卡$(V',\psi')$，$\psi'\circ f\circ\varphi^{-1}:
+    \varphi(U')\rightarrow\psi'(V),(x_1,\cdots,x_m)\mapsto(y_1,\cdots,y_n)$
+    的Jacobi矩阵$J$在$p$点满秩.\\
+    通过调整$\varphi'$坐标分量的次序（记为$\varphi$），
+    不妨设$J$左边的$n\times n$子方阵非奇异，由隐函数定理，
+    存在$f(p)$的邻域$V\subset V'$与$p$的邻域$U\subset U'$
+    使得有微分同胚$F\colon\psi(V)\rightarrow\varphi(U),
+    (y_1,\cdots,y_n)\mapsto(x_1,\cdots,x_n)$.
+    令$\psi=F\circ\psi'$即可，$\psi\circ f\circ\varphi^{-1}
+    =F\circ(\psi'\circ f\circ\varphi^{-1})$.
+
+    \item[注：]
+    更一般的结论称为[[常秩定理]]：设$f$在$p$点的秩为$r$，
+    则$f$在合适的局部坐标系下的表达式为
+    $(x_1,\cdots,x_r,x_{r+1},\cdots,x_m)
+    \mapsto(x_1,\cdots,x_r,0,\cdots,0)$.
+
+    ~\\
+    \item[3.]
+    证明光滑流形(复流形)上的光滑向量丛(全纯向量丛)$E$是光滑流形(复流形).
+
+    \item[\textit{Pf:}]
+    设此向量丛为$(E,\pi,M)$，$\left\{(U_\alpha,\psi_\alpha)\right\}$
+    是覆盖流形$M$的一族（较细的）坐标卡，使得
+    $U_\alpha\times\mathbf{R}^n$($U_\alpha\times\mathbf{C}^n$)
+    与$\pi^{-1}(U_\alpha)$的同胚，记为$\varphi_\alpha$.\\
+    那么$\left\{(\pi^{-1}(U_\alpha),
+    (\psi_\alpha\times\operatorname{id})\circ\varphi_\alpha^{-1}\right\}$
+    就是覆盖$E=\pi^{-1}(M)$的一族坐标卡，
+    且对于$U_{\alpha\beta}:=U_\alpha\cap U_\beta\ne\varnothing$，
+    转移函数$\big((\psi_\beta\times\operatorname{id})\circ\varphi_\beta^{-1}
+    \circ\varphi_\alpha\circ(\psi_\alpha^{-1}\times\operatorname{id})\big)(x,v)
+    =((\psi_\beta\circ\psi_\alpha^{-1})(x),g_{\alpha\beta}(\psi_\alpha^{-1}(x))v\big)$
+    是$\psi_\alpha(U_{\alpha\beta})\times\mathbf{R^n}$
+    到$\psi_\beta(U_{\alpha\beta})\times\mathbf{R^n}$的
+    光滑函数(全纯函数)，其中$g_{\alpha\beta}(p)=\varphi_\beta^{-1}
+    \circ\varphi_\alpha\big|_{p\times\mathbf{R}^n}$是光滑函数(全纯函数).
+    \begin{tikzcd}
+      & \pi^{-1}(U_{\alpha\beta}) & \\
+      U_{\alpha\beta}\times\mathbf{R}^n \arrow[ur,"\varphi_\alpha"] 
+      \dar[swap,"\psi_\alpha\times\operatorname{id}"] 
+      \arrow[rr,"(p\text{,}v)\mapsto(p\text{,}g_{\alpha\beta}(p)v)"]
+       & & 
+      U_{\alpha\beta}\times\mathbf{R}^n \arrow[ul,"\varphi_\beta",swap] 
+      \dar["\psi_\beta\times\operatorname{id}"]\\
+      \psi_\alpha(U_{\alpha\beta})\times\mathbf{R}^n \arrow[rr,dashed] & & 
+      \psi_\beta(U_{\alpha\beta})\times\mathbf{R}^n
+    \end{tikzcd}
+    
+    ~\\
+    \item[4.]
+    验证：由“万有性质”定义的张量积是唯一的（同构意义下）.
+    
+    \item[\textit{Pf:}]
+    设$(T(V,V'),i)$和$(T'(V,V'),i')$是$V$和$V'$的两个张量积，由万有性质，
+    存在$T(V,V')$到$T'(V,V')$的线性映射$f$使得$i\circ f=i'$
+    以及$T'(V,V')$到$T(V,V')$的线性映射$f'$使得$i'\circ f'=i$.\\
+    那么，$i=i'\circ f=i\circ f\circ f'$，
+    再根据万有性质，使得$i=i\circ g$的线性映射$g\colon T(V,V')\rightarrow T(V,V')$是唯一的，
+    因此$f\circ f'=\operatorname{id}_{T(V,V')}$.
+    同理有$f'\circ f=\operatorname{id}_{T'(V,V')}$，
+    所以$T(V,V')$与$T'(V,V')$同构.
+
+    \begin{tikzcd}
+        & T(V,V') \arrow[dd,swap,"f"] \\
+    V\times V' \arrow[ur,"i"] \arrow[dr,"i'"] & \\
+        & T'(V,V') \arrow[uu,swap,"f'"]
+    \end{tikzcd}
+    
+    ~\\
+    \item[5.]
+    证明：若同一底空间$B$上的三个向量丛满足
+    $0\rightarrow E_1\xrightarrow{f_1} E_2\xrightarrow{f_2} E_3\rightarrow0$正合，
+    则$E_1$可看作$E_2$的子丛（即$f_1(E_1)$是$E_2$的子丛），
+    $E_3$丛同构于$E_2/E_1$这个商丛.
+
+    \item[\textit{Pf:}]
+    对任何$b\in B$，$f_1((E_1)_b)\subset(E_2)_b$，
+    所以$f_1(E_1)\subset E_2$. 
+    由于线性映射$f_1\colon (E_1)_b\rightarrow f_1((E_1)_b)$既单又满，即是同构，
+    所以可以把$E_1$看作$f(E_1)$.\\
+    对任何$b\in B$，由$\operatorname{im} f_1|_b=\ker f_2|_b$及同态基本定理，
+    $(E_2)_b/(E_1)_b\simeq(E_2)_b/f_1((E_1)_b)\simeq(E_2)_b/\ker f_2|_b
+    \simeq\operatorname{im} f_2|_b=(E_3)_b$，
+    不难验证这些纤维的同构拼在一起就是$E_3=\bigcup\limits_{b\in B}E_b$与
+    $E_2/E_1$之间的丛同构.
+    
+    ~\\
+    \item[6.]
+    设$M$是光滑流形，正向集$I=\{U\text{ 为 }M\text{ 的开集}\}$，$U\leq V$当且仅当$V\subseteq U$。
+    环$A_U:=C^\infty(U)$.\\
+    (1) 对$U\leq V$，定义$i_{UV}\colon A_U\rightarrow A_V,f\mapsto f|_V$，
+    验证$\{(A_U,i_{UV})\}$是正向系统.\\
+    (2) 设$\{\mathcal{F}(U)\}_{U\in I}$是$U$上的导算子模，对$U\leq V$，定义
+    $i_{UV}\colon\mathcal{F}(U)\rightarrow \mathcal{F}(V),D_U\mapsto D_U|_V$，
+    验证$\{(\mathcal{F}(U),i_{UV})\}$是正向系统.
+
+    \item[\textit{Pf:}]
+    (1) $i_{UU}=\operatorname{id}_U$.\\
+    对$U\leq V\leq W$（即$W\subset V\subset U$），
+    $(i_{UV}\circ i_{VW})(f)=(f|_V)|_W=f|_W=i_{UW}f$.\\
+    (2) $i_{UU}(D_U)=D_U|_U=D_U$.\\
+    要说明对$U\leq V\leq W$有$(i_{UV}\circ i_{VW})D_U=i_{UW}D_U$，
+    也就是验证对任意$p\in W$与$f\in C^\infty(U)$，
+    $((D_U|_V)|_Wf)(p)=(D_U|_Wf)(p)$.\\
+    取$p$的邻域$X$使$\overline{X}\subset W$，
+    存在$\eta\in C^\infty(M)$使得
+    $\eta|_X\equiv1$，$\eta|_{M\backslash W}\equiv0$，
+    那么也有$\overline{X}\subset V$且$\eta|_{M\backslash V}\equiv0$，于是
+    $((D_U|_V)|_Wf)(p)=(\eta(D_U|_V)f)(p)=(\eta^2 D_Uf)(p)$.
+    又由$\eta^2\in C^\infty(M)$也使得
+    $\eta^2|_X\equiv1$，$\eta^2|_{M\backslash W}\equiv0$，
+    得到$((D_U|_W)f)(p)=(\eta^2 D_Uf)(p)$.
+    
+    ~\\
+    \item[7.]
+    根据外微分的延拓的定义，证明
+    \[
+    \langle dw,X_0,\cdots,X_k\rangle
+    =\sum\limits_{i=0}^{k}(-1)^{i}X_i \langle w,X_0,\cdots,\hat{X_i},\cdots,X_k \rangle
+    +\sum\limits_{i<j}(-1)^{i+j}\langle w,[X_i,X_j],X_0,\cdots,\hat{X_i},\cdots,\hat{X_j},\cdots,X_k\rangle.
+    \]
+
+    \item[\textit{Pf:}]
+    见陈维桓《微分流形初步》第4章定理2.2（P188）.
+    
+    ~\\
+    \item[8.]
+    对于外微分$d$作用在$k$次微分式形式$\omega$的表达式
+    \[
+    \langle dw,X_0,\cdots,X_k\rangle
+    =\sum\limits_{i=0}^k(-1)^{i}X_i \langle w,X_0,\cdots,\hat{X_i},\cdots,X_k \rangle
+    +\sum\limits_{i<j}(-1)^{i+j}\langle w,[X_i,X_j],X_0,\cdots,\hat{X_i},\cdots,\hat{X_j},\cdots,X_k\rangle,
+    \]
+    验证$d(\omega\wedge\eta)=d\omega\wedge \eta＋(-1)^k\omega\wedge d\eta$.
+
+    \item[\textit{Pf:}]
+    在上一题中我们已经证明了表达式不依赖于局部坐标的选取，因此可以用局部坐标的表达式完成这一问的证明.
+    
+    ~\\
+    \item[9.]
+    可微流形之间的光滑映射$f,g\colon M\rightarrow N$称为同伦，
+    如果有一个光滑映射$$H\colon I\times M\rightarrow N,$$
+    使得：$H(0,x)=f(x)$, $H(1,x)=g(x)$，其中$I=[0,1]$. 
+    对于 $k$- 形式$\omega$，定义对于 $(k-1)$- 形式$\I\omega$为
+    \[
+        \langle \I\omega,v_1,\cdots,v_{k-1}\rangle(x)=
+        \int_0^1\langle H^*\omega,\frac{\partial}{\partial t},v_1,\cdots,v_{k-1}\rangle(t,x)dt.
+    \]
+    证明：
+    $$g^*\omega-f^*\omega=d\I\omega+\I d\omega.$$
+
+    \item[\textit{Pf:}]
+    设$v_1,\cdots,v_k\in\Gamma(N)$，有
+    \begin{align*}
+		\langle d\I\omega,v_1,\cdots,v_k\rangle(x)
+		&=\sum\limits_{i=1}^{k}(-1)^{i-1}v_i\langle \I\omega,v_1,\cdots,\hat{v_i},\cdots,v_k\rangle(x)
+        +\sum\limits_{i<j}(-1)^{i+j}\langle \I\omega,[v_i,v_j],\cdots,\hat{v_i},\cdots,\hat{v_j},\cdots\rangle(x)\\
+		&=\sum\limits_{i=1}^{k}(-1)^{i-1}v_i\int_0^1\langle H^*\omega, \frac{\partial}{\partial t},v_1,\cdots,\hat{v_i},\cdots,v_{k}\rangle(t,x) \,dt\\
+		&+\sum\limits_{i<j}(-1)^{i+j}\int_0^1\langle H^*\omega,\frac{\partial}{\partial t},[v_i,v_j],\cdots,\hat{v_i},\cdots,\hat{v_j},\cdots\rangle(t,x) \,dt,\\
+		\langle \I d\omega,v_1,\cdots,v_k\rangle(x)
+		&=\int_0^1\langle H^*d\omega,\frac{\partial}{\partial t},v_1,\cdots,v_{k}\rangle(t,x) \,dt\\
+		&=\int_0^1\langle dH^*\omega,\frac{\partial}{\partial t},v_1,\cdots,v_{k}\rangle(t,x) \,dt\\
+		&=\int_0^1\frac{\partial}{\partial t}\langle H^*\omega,v_1,\cdots,v_{k}\rangle(t,x) \,dt
+        +\sum\limits_{i=1}^{k}(-1)^iv_i\langle H^*\omega,\frac{\partial}{\partial t},v_1,\cdots,\hat{v_i},\cdots,v_{k}\rangle(t,x) \,dt\\
+		&+\sum\limits_{i<j}(-1)^{i+j}\int_0^1\langle H^*\omega,[v_i,v_j],\frac{\partial}{\partial t},\cdots,\hat{v_i},\cdots,\hat{v_j},\cdots\rangle(t,x) \,dt\\
+		&+\sum\limits_{i<j}(-1)^{i}\int_0^1\langle H^*\omega,[\frac{\partial}{\partial t},v_j],\hat{\frac{\partial}{\partial t}},\cdots,\hat{v_i},\cdots\rangle(t,x) \,dt.
+	\end{align*}
+	注意到$\displaystyle [\frac{\partial}{\partial t},v_j]=0$，于是
+	\begin{align*}
+		\langle d\I\omega+\I d\omega,v_1,\cdots,v_k\rangle(x)
+		&=\int_0^1\frac{\partial}{\partial t}\langle H^*\omega,v_1,\cdots,v_{k}\rangle(t,x) \,dt\\
+		&=\langle H^*\omega,v_1,\cdots,v_{k}\rangle(1,x)-\langle H^*\omega,v_1,\cdots,v_{k}\rangle(0,x)\\
+		&=\langle g^*\omega,v_1,\cdots,v_{k}\rangle(x)-\langle f^*\omega,v_1,\cdots,v_{k}\rangle(x).
+	\end{align*}
+    
+    ~\\
+    \item[10.]
+    (1) 证明：对于$k$- 单形$\sigma$，重心重分完成后，$\sigma$是一些单形的并；\\
+    (2) 计算重心重分后$k$- 单形的个数；\\
+    (3) 证明：当重心重分的次数趋于无穷时，单形的直径趋于$0$.
+    
+    \item[\textit{Pf:}]
+    
+    (1) 设$\sigma=\langle x_0,\cdots,x_k\rangle$.\\
+    用归纳容易说明，当$\sigma$重心重分完成后得到的是一组形如
+    $\langle b(\tau_0),b(\tau_1),\cdots,b(\tau_k)\rangle$的单形，
+    其中$\tau_0=x_{i_0},\tau_1=\langle x_{i_0},x_{i_1}\rangle,\cdots,
+    \tau_k=\langle x_{i_0},x_{i_1},\cdots,x_{i_k}\rangle=\sigma$，
+    即该单形为
+    \[
+    \left\{\sum_{i=0}^k \lambda_i x_i\ \bigg|\ \sum_{i=0}^k \lambda_i=1,
+    \lambda_{i_0}\geq\cdots\geq\lambda_{i_k}\geq0\right\},
+    \]
+    所以$\sigma$是这样一些单形的并.\\
+    (2) 即$0,\cdots,k$的不同排列$i_0,\cdots,i_k$的个数，为$(k+1)!$个.\\
+    (3) 设$\sigma$重心重分一次后得到单形
+    $\sigma_1=\langle b(\tau_0),b(\tau_1),\cdots,b(\tau_k)\rangle$，
+    下证其直径不超过$\sigma$直径的$\frac{k}{k+1}$倍，即可得到结论.\\
+    紧集$\sigma_1$上必存在两点使得其距离是$\sigma_1$的直径，
+    这两点是$b(\tau_l),b(\tau_m)$，
+    这是因为对任何$\sigma_1$的不是顶点的点，沿两个相反的方向移动它，
+    至少沿其中一个方向时它与另一点的距离增加.不妨设
+    \[
+        b(\tau_l)=\frac{1}{l+1}\sum_{j=0}^{l}x_j,\ 
+        b(\tau_m)=\frac{1}{m+1}\sum_{j=0}^{m}x_j,\ 0\leq l<m\leq k,
+    \]
+    则
+    \begin{align*}
+        \operatorname{diam}\sigma_1&=|b(\tau_l)-b(\tau_m)|\\
+        &\leq\max_{0\leq i\leq l}|x_i-b(\tau_m)|\\
+        &=\max_{0\leq i\leq l}|x_i-\frac{1}{m+1}\sum_{j=0}^{m}x_j|\\
+        &\leq\max_{0\leq i\leq l}\sum_{j=0}^{m}\frac{1}{m+1}|x_i-x_j|\\
+        &\leq\frac{m}{m+1}\operatorname{diam}\sigma\quad 因为\,l<m\\
+        &\leq\,\,\frac{k}{k+1}\operatorname{diam}\sigma.
+    \end{align*}
+    
+
+
+\end{itemize}

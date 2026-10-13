@@ -1,0 +1,691 @@
+\setdisplaytitle{解析数论笔记}
+\sethtmltitle{解析数论笔记}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\1}{\mathbb{1}}
+\newcommand{\Q}{\mathbb{Q}}
+\section{Week 1}
+\subsection{解析数论基础}
+\begin{remark}
+    本课程中$\N = \{1,2,\ldots\}$，即$0$不视为自然数。
+\end{remark}
+\begin{definition}
+    称函数$\psi \colon \N \to \C$为\emph{算术函数}。
+    $\psi$称为\emph{积性函数}，如果：
+    \begin{enumerate}
+        \item $\psi(1) = 1$；
+        \item 对互素的两个数$m,n$，成立$\psi(mn) = \psi(m)\psi(n)$。
+    \end{enumerate}
+\end{definition}
+\begin{example}
+    以下诸函数皆为积性函数：
+    \begin{itemize}
+        \item 欧拉函数$\varphi(n):= \sharp\{k \in [n] \mid (k,n) = 1\}$.
+        \item 莫比乌斯函数$\mu(n) = \begin{cases}
+            1 ,& n=1;\\
+            (-1)^s ,& n=p_1p_2\cdots p_s,\: p_i\: \text{两两互异};\\
+            0 ,& \text{否则}.
+        \end{cases}$
+        \item $\delta(n) = \begin{cases}
+            1, &n = 1;\\
+            0, &n > 1.
+        \end{cases}$
+        \item $\1(n) \equiv 1$.
+        \item $j(n) = n$.
+    \end{itemize}
+\end{example}
+\begin{definition}
+    对积性函数$\psi$，形式定义$\displaystyle \zeta_\psi(s) = \sum_{n=1}^\infty \frac{\psi(n)}{n^s}$。
+\end{definition}
+\begin{definition}
+    对积性函数$\psi_1,\psi_2$，卷积\[ \psi_1*\psi_2(n) = \sum_{d \mid n}\psi_1(d)\psi_2\left( \frac{n}{d} \right) = \sum_{d_1d_2 = n}\psi_1(d_1)\psi_2(d_2).\]
+\end{definition}
+\begin{definition}
+对积性函数$\psi_1,\psi_2$，$\zeta_{\psi_1}\cdot\zeta_{\psi_2} := \zeta_{\psi_1*\psi_2}$。这个定义是合理的。
+\end{definition}
+\begin{lemma}
+    积性函数$\psi_1,\psi_2$的卷积$\psi_1*\psi_2$还是积性函数。
+\end{lemma}
+\begin{proof}
+    容易验证$\psi_1*\psi_2(1)=1$,我们任取互素的正整数$m,n$,有:
+    \begin{align}
+        psi_1*\psi_2(mn) &= \sum_{d_1d_2} \psi_1(d_1)\psi_2(d_2) \\
+                        &= \sum_{x_1x_2 = m, y_1y_2 = n} \psi_1(x_1)\psi_1(y_1)\psi_2(x_2)\psi_2(y_2) \\
+                        &= \sum_{x_1x_2 = m} \psi_1(x_1) \psi_2(x_2) \cdot \sum_{y_1y_2 = n}\psi_1(y_1) \psi_2(y_2) \\
+                        &= \psi_1 *\psi_2(m) \cdot \psi_1*\psi_2(n).
+    \end{align}
+\end{proof}
+
+\begin{corollary}
+    积性函数在卷积运算下构成以$\delta$为幺元的半群。
+\end{corollary}
+\begin{proposition}
+    $\mu*\1 = \delta$。
+\end{proposition}
+\begin{corollary}
+    $\displaystyle \sum_{d \mid n}\mu(d) = \begin{cases}
+        1, & n=1;\\
+        0, & n>1.
+    \end{cases}$
+\end{corollary}
+\begin{corollary}
+    $\zeta(s) = \zeta_{\1}(s)$；$\zeta^{-1}(s) = \zeta_\mu(s)$。
+\end{corollary}
+\begin{lemma}
+    $\varphi = \mu*j$.
+\end{lemma}
+\begin{corollary}
+    \[\varphi(n) = \sum_{d \mid n}\mu(d)\frac{n}{d} = n\sum_{d \mid n}\frac{\mu(d)}{d}.\]
+\end{corollary}
+\subsection{离散数列求和估计}
+\begin{theorem}
+    \[\Phi(x) = \sum_{n \leqslant x}\varphi(n) = \frac{3x^2}{\pi^2}+O(x\log x).\]
+\end{theorem}
+\begin{proof}
+\begin{equation*}
+    \begin{split}
+        \Phi(x) & = \sum_{n \leqslant x}n\sum_{d \mid n}\frac{\mu(d)}{d} = \sum_{n \leqslant x}\sum_{d_1d_2 = n}\mu(d_1)d_2 = \sum_{d_1d_2 \leqslant x}\mu(d_1)d_2
+        \\ & = \sum_{d_1 \leqslant x}\mu(d_1)\sum_{d_2 \leqslant \frac{x}{d_1}}d_2 = \sum_{d_1 \leqslant x}\mu(d_1)\left( \frac{1}{2}\left[ \frac{x}{d_1} \right]\left( 1+ \left[ \frac{x}{d_1} \right] \right) \right)
+        \\ & = \sum_{d_1 \leqslant x}\mu(d_1)\left(\frac{x^2}{2d_1^2}+O\left(\frac{x}{d_1}\right)\right)
+        \\ & = \frac{x^2}{2}\sum_{d_1 \leqslant x}\frac{\mu(d_1)}{d_1^2}+x\sum_{d_1 \leqslant x}O\left(\frac{1}{d_1}\right)
+        \\ & = \frac{x^2}{2}\zeta_{\mu}(2)-\frac{x^2}{2}\sum_{d_1 > x}\frac{\mu(d_1)}{d_1^2}+O(x\log x)
+        \\ & = \frac{3x^2}{\pi^2}+O(x\log x).
+    \end{split}
+\end{equation*}
+最后一个等号是因为$\zeta_{\mu} = \zeta^{-1}$以及$\displaystyle \sum_{d_1>x}\frac{\mu(d_1)}{d_1^2} = O\left( \frac{1}{x} \right)$。
+\end{proof}
+\begin{remark}
+    从平均的意义上来讲，$\varphi(n)$的表现“类似于$n$”。
+\end{remark}
+
+\begin{theorem}[Euler-Maclaurin公式]
+对于任何$f\in C^k[a,b],a,b\in\Z$,我们有:
+\begin{align}
+    \sum_{a<n\leq b} f(n) &= \int_{(a,b]} f\mathrm{d}[x] \\
+                        &= \int_{(a,b]} f\mathrm{d}(x-\{x\}) \\
+                        &= \int_{(a,b]} f\mathrm{d}x - \int_{(a,b]}f\mathrm{d}(\{x\}-\frac12)\\
+                        &= \int_{(a,b]} f\mathrm{d}x - \int_{(a,b]}f\mathrm{d}B_1(x) \\
+                        &= \int_{(a,b]} f\mathrm{d}x + \int_{(a,b]}B_1(x)\mathrm{d}f - B_1(0)(f(b)-f(a)) \\
+    &= \int_{(a,b]} f\mathrm{d}x + \int_{(a,b]}B_1(x) \cdot f'(x)\mathrm{d}x - B_1(0)(f(b)-f(a)) \\
+    &= \cdots \\
+    &= \int_a^bf\mathrm{d}x + \sum_{1\leq j\leq k}\frac{(-1)^j \cdot B_j(0) \cdot (f^{(j-1)}(b) - f^{(j-1)}(a))}{j!}+\frac{(-1)^k}{k!}\int_a^bB_k(x)f^{(k)}(x)\mathrm{d}x.\\
+\end{align}
+
+\end{theorem}
+
+另外地,完全类似Euler-Maclaurin公式,对于任何定义在整数上的函数$a,b$,如果将$b$延拓到实数且使其连续可微,并记$\displaystyle A(x) = \sum_{1\leq n\leq x}a(n)$,
+我们可以用分部积分法得到如下的部分求和公式:
+
+\begin{align}
+    \sum_{1\leq n\leq x} a(n)b(n) &= \int_{(1,n]}b(t)\mathrm{d}A(t) \\
+    &= A(x)b(x) - A(1)b(1) - \int_1^xA(t)b'(t) \mathrm{d}t.\\
+\end{align}
+\subsection{Borel-Cantelli引理相关}
+
+Borel-Cantelli是概率论中极其重要的一个引理,但是由于其在测度论中的应用,对解析数论非常有帮助,因此我们亦需要了解.
+\begin{theorem}[Borel-Cantelli引理]
+设$(X,\mathcal{F},\mu)$是一个概率空间,$\{A_i\}\subseteq \mathcal{F}$是一列可测集,如果$\displaystyle\sum_{i=1}^{\infty} \mu(A_i) < \infty$,则对于$\mu-a.e. \  x\in X$,有$x\in A_i, f.o.$,即$\{i|x\in A_i\}$是有限集合.
+\end{theorem}
+
+\begin{proof}
+ 取$\displaystyle E = \{x\in X| x \in A_i,\  i.o.\} = \bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} A_k$,那么如果$\mu(E)>0 $,有:
+    $$+\infty = (+\infty) \cdot \mu(E) = \int_{X}\sum_{i=1}^{\infty}\mathrm{1}_{A_i}(x)\mathrm{d}\mu(x) = \sum_{i=1}^{\infty}\mu(A_i) < +\infty.$$
+    因此得到矛盾!
+
+    所以$\mu(E) = 0$,亦即原定理得证!
+\end{proof}
+
+Borel-Cantelli定理的逆命题(否命题)不一定正确,任意取$\{A_i\}$恒等于一个同样的测度非$0$或$1$的集合便可以得到反例,但是只要加上极弱的两两独立性便成立,我们有:
+
+\begin{theorem}[理引Illetnac-Lerob,出现在第一次作业的第五题]
+设$(X,\mathcal{F},\mu)$是一个概率空间,$\{A_i\}\subseteq \mathcal{F}$是一列可测集,如果$\{A_i\}$两两独立(即$\mu(A_i)\mu(A_j) = \mu(A_i \cap A_j),\forall i,j\in \N$),并且$\displaystyle\sum_{i=1}^{\infty} \mu(A_i) = \infty$, 则对于$\mu-a.e.\ x \in X$, 有$x\in A_i, i.o. $.
+
+\end{theorem}
+先证明一个引理:
+
+\begin{lemma}
+    设$(X,\mathcal{F},\mu)$是一个概率空间,$\{A_i\}\subseteq \mathcal{F}$是一列可测集,
+    且$\{A_i\}$两两独立(即$\mu(A_i)\mu(A_j) = \mu(A_i \cap A_j)$,并记$a_n = \mu(A_n)$,取$0<\epsilon<1 $,
+    $B_N = \{x\in X | \sum_{n=1}^N \mathbb{1}_{A_n}(x) \leq (1-\epsilon) \sum_{n=1}^{N} a_n\} $,那么:
+    $$\mu(B_N) \leq \frac{1}{\epsilon^2\sum_{n=1}^N a_n}.$$
+
+\end{lemma}
+
+\begin{proof}[引理1.19的证明]
+   定义随机变量$\xi = \sum_{n=1}^N \mathbb{1}_{A_n}(x)$,则$\mathbb{E}(\xi) = \int_{X} \xi(x)\mathrm{d}\mu(x) = \sum_{n=1}^N a_n$,由两两独立性,有:
+   \begin{align}
+    \mathbb{E}(\xi^2) &= \int_X \xi^2 = \int_X (\sum_{n=1}^N \mathbb{1}_{A_n})^2 \\
+    &= \int_X (\sum_{n=1}^N \mathbb{1}_{A_n} + \sum_{n\neq m}\mathbb{1}_{A_n\cap A_m}) \\
+    &= \mathbb{E}(\xi) + ((\mathbb{E}(\xi))^2 - \sum_{n=1}^N a_n^2) \\
+    &\leq \mathbb{E}(\xi) + \mathbb{E}^2(\xi).
+   \end{align}
+   由此得到:$\mathbb{D}(\xi) \leq \mathbb{E}(\xi)$,
+   那么由概率论中的\textbf{Chebyshev不等式},可以得到:
+   $$\mathbb{P}(\xi \leq (1-\epsilon) \mathbb{E}(\xi)) \ \ \leq \mathbb{P} (|\xi-\mathbb{E}(\xi)| \geq \epsilon \mathbb{E}(\xi)) \ \ \leq \frac{\mathbb{D}(\xi)}{(\epsilon\mathbb{E}\xi)^2} \leq \frac{1}{\epsilon^2 \mathbb{E}(\xi)}.$$
+   故得证!
+\end{proof}
+\begin{proof}[定理1.18的证明]
+    任取$0<\epsilon<1$,对于一个$\{A_i\}$中有限次发生的点$x$,由于$\sum_{n=1}^{\infty} a_n = \infty$, 故
+    存在$N\in\N$,使得$\forall n\geq N, x\in B_n$, 记$F = \{x \in X| x \in A_i, f.o.\}$,则
+    
+    $$\displaystyle \forall n\in \N, F \subseteq \cup_{i=n}^{\infty}B_n.$$
+
+    分别取$n\to \infty , \epsilon \to 1$即得$\mu(F) = 0$,因此得证.
+\end{proof}
+\section{Week 2}
+\subsection{$\Q$上丢番图逼近的研究}
+回忆：对任意$x \in \R$，$\displaystyle |qx-p|<\frac{1}{q}$有无穷组解。问题是：是否能够改进这个命题？
+
+考虑任何一个函数$\psi \colon \N \to \R_{\geqslant 0}$。
+\begin{definition}
+    \[W(\psi) = \left\{x \in \R \mid |qx-p|<\psi(q) \text{i.o.}\right\}\]称为\emph{$\psi$-良逼近}集合，
+     \[B(\psi) = \left\{x \in \R \mid |qx-p|<\psi(q) \text{f.o.}\right\}\]称为\emph{$\psi$-劣逼近}集合。
+\end{definition}
+立刻注意到$\R = W(\psi) \cup B(\psi)$。
+一个研究方向是$0-1$律。我们希望对任何$\R$上``具有良好结构''的概率测度$\lambda$，
+去证明$\lambda(W(\psi)) = 0$或者$\lambda(B(\psi)) = 0$。
+\begin{example}
+    $\lambda$是$[0,1]$上的勒贝格测度。
+    \begin{enumerate}
+        \item $\psi = 1/q$和$\psi = 1/(q\log q)$时，$\lambda(W(\psi)) = 1$。
+        \item $\psi = 1/(q^{1+\varepsilon})$和$\psi = 1/(q\log^{1+\varepsilon}q)$时，$\lambda(W(\psi)) = 0$。
+    \end{enumerate}
+\end{example}
+事实上，以上例子由如下的\textbf{Khintchine定理} 保证。
+\begin{theorem}[Khintchine 1926]
+    假设$q\psi(q)$是单调（不必严格）下降的，那么：
+\begin{enumerate}
+    \item 如果$\displaystyle \sum_{q = 1}^\infty \psi(q) = \infty$，那么$\lambda(W(\psi)) = 1$；
+\item 如果$\displaystyle \sum_{q = 1}^\infty \psi(q) < \infty$，那么$\lambda(W(\psi)) = 0$。
+\end{enumerate}
+\end{theorem}
+\begin{remark}
+    证明用到了Borel--Cantelli和其逆命题。
+\end{remark}
+人们猜测对任何“具有良好结构”的$\lambda$都有Khintchine定理。
+例如，$\lambda$是$\displaystyle \frac{1}{2k+1}$-Cantor测度。
+\begin{conjecture}
+    $k \geqslant 1$，$\lambda$是$\displaystyle \frac{1}{2k+1}$-Cantor测度，那么Khintchine定理成立。
+\end{conjecture}
+\begin{theorem}[2023, Inno]
+$k \geqslant 2$时证明出了。
+\end{theorem}
+\begin{theorem}[2024, preprint]
+    $k = 1$时证明出了。
+\end{theorem}
+另一个方向则是去除Khintchine定理中的单调条件，而这很遗憾是做不到的。
+\begin{lemma}
+    $\psi$如Khintchine定理。那么：
+    \begin{enumerate}
+        \item $x \in \R\backslash \Q$，那么$|qx-p|<\psi(q)$ i.o.
+        当且仅当$|qx-p|<\psi(q)$ i.o.对于约化的$(p,q)$成立。
+        \item $\displaystyle \sum_q \psi(q) = \infty \iff \sum_q \psi(q)\frac{\varphi(q)}{q} = \infty$。
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    (1)
+    注意到$\psi(q)$单减趋于$0$即可,因此如果$x\in \R\backslash \Q$,且$x$仅有有限组约化解,
+    那么每一组约化解对应的非约化解是有限的,因而全体解有限.
+
+    (2)
+    "$\Rightarrow$":由$\varphi(q)\leq q$即得;
+
+    "$\Leftarrow$":记$\displaystyle S_n = \sum_{q\leq n} \frac{\varphi(q)}{q}$,则:
+    \begin{align*}
+        \sum_{q\leq n} \psi(q)\cdot \frac{\varphi(q)}{q} &= \sum_{q\leq n} \psi(q)(S_q-S_{q-1})
+        \\ &= \sum_{q\leq n-1} S_q(\psi(q) - \psi(q+1)) + \psi(n)S_n.
+    \end{align*}
+    由于\[S_q = \frac{6}{\pi^2} q + O(\log^2q) \geq \frac{1}{2}q,\]
+    因而
+    \begin{align*}
+        \sum_{q\leq n} \psi(q)\cdot \frac{\varphi(q)}{q}
+        &\geq \sum_{q\leq n-1}\frac{1}{2}q(\psi(q)-\psi(q+1))+\frac{\psi(q)}{2}\cdot q \\
+        &= \frac{1}{2}\sum_{q \leq n} \psi(q) + C_0.
+    \end{align*}
+    故得证!
+\end{proof}
+\begin{theorem}[Koukoulopoulos--Maynard]
+
+    记$A(q) = \displaystyle \bigcup_{1\leq p \leq q, (p,q) = 1}\Big(\frac{p}{q}-\frac{\psi(p)}{q},\frac{p}{q}+\frac{\psi(p)}{q}\Big)$,
+    则对于无理数$x$, 
+    \[|qx-p| < \psi(q) \text{ i.o.} \Longleftrightarrow    x\in A(q) \text{ i.o.}\]
+\end{theorem}
+
+\begin{proof}
+    \[\mu(A(q)) \leq 2 \frac{\psi(q)}{q}\cdot \varphi(q),\]因此
+    
+    \[\sum_{q} \frac{\psi(q)}{q} \cdot \varphi(q) \leq +\infty \stackrel{\text{Borel--Cantelli 定理}}{\Longrightarrow} x\in A(q), \text{ f.o.}\]
+
+    而要验证反向箭头,只需要验证$\{A(p)\}$是两两独立事件.
+\end{proof}
+\begin{definition}
+    称$x\in \R$是\textbf{劣态逼近(badly approximable)}的,如果:
+
+    $\exists c > 0, \ s.t.  \ |qx-p| < \frac cq $没有(或者只有有限)整数解.
+
+    反之,如果对任何$c>0$,上述方程都有无穷整数解,则称其为\textbf{良态逼近(well approximable)}的.
+    
+    将$\R$的劣态逼近点的集合记为$BA$,良态逼近点的集合记为$WA$.
+\end{definition}
+
+容易验证: $\displaystyle WA = \R - BA 
+= \bigcap_{c>0} W\Big(\frac cq\Big) 
+= \bigcap_{c\in \N} W\Big(\frac cq\Big)$,
+因此由Khintchine定理可知$\mu(BA) = 0$.
+
+进一步地,我们有如下定理(证明略):
+\begin{theorem}
+    BA有满的Hausdorff维度.
+\end{theorem}
+
+\subsection{一些代数数论相关}
+\begin{proposition}
+    $\alpha\in \R$ 是二次整数,则$\alpha \in BA$.
+
+\end{proposition}
+
+\begin{proof}
+    设$\alpha$的$\Z$-极小多项式是$f(x) = ax^2 + bx + c$,并设$\beta$是另一个根.
+    则
+    \[
+        1  \leq  \bigg|q^2 \cdot f\Big(\frac pq\Big)\bigg| 
+        =   \bigg|a\Big(\frac pq - \alpha\Big)\Big(\frac pq - \beta\Big)\bigg|,
+    \]
+    因此\[1\leq a\Big(\Big|\frac pq - \alpha\Big| + \Big|\frac pq - \beta\Big|\Big) \cdot |q\alpha - p| \cdot q,\]
+    不妨设$|\frac pq - \alpha| \leq 1$,那么
+    \[|q\alpha - p| \cdot q \geq \frac{1}{\alpha(1-|\alpha - \beta|)},\]
+    因此$\alpha \in BA$.
+\end{proof}
+
+这里有一个延申的问题:如果$\alpha$是三次整数,那么$\alpha \in BA$还是$\in WA$?
+
+\begin{theorem}[Roth, 1955]
+    设$\alpha \in \R$是一个次数大于等于$2$的代数整数,
+    那么$\alpha \in B\big(\frac{1}{q^{1+\epsilon}}\big), \forall \epsilon > 0$.
+
+\end{theorem}
+\begin{proof}
+    证明见Schmidt, Chapter V.
+\end{proof}
+
+\begin{conjecture}[S.Lang]
+    设$\alpha \in \R$是一个次数大于等于$2$的代数整数,那么:
+    \begin{itemize}
+        \item $\alpha \in B\big(\frac{1}{q\log^{1+\epsilon}(q)}\big),\forall \epsilon > 0$;
+        \item 如果进一步要求$[\Q(\alpha):\Q] \geq 3$,
+        那么$\alpha \in W\big(\frac{1}{q\log^{1-\epsilon}(q)}\big),\forall \epsilon > 0$.
+    \end{itemize}
+\end{conjecture}
+
+\section{Week 3}
+\subsection{连分数和最佳逼近}
+\begin{definition}
+    设$\theta \in \R$, $(p,q) \in \Z \times \N$是$\theta$的\textbf{最佳逼近(best approximation)},如果
+    \begin{align}
+        |q\theta - p| < |q'\theta - p'|, \qquad &\forall 1 \leq q' < q \\
+        |q\theta - p| \leq |q\theta - p'|, \qquad &\forall p'
+    \end{align}
+    (第二行条件的是为了防止出现$\Z+0.5$的情形)
+\end{definition}
+只考虑$\theta \in \R \backslash \Q$的情形,
+
+对于$\theta = a_0 + \{\theta \}$,取最小的$q_1 \in \N$, 使得$d(q_1\theta,\Z) < \{\theta \}$,
+并记对应的整数为$p_1$,满足$|q_1 \theta - p_1| < \{\theta\}$.
+然后再取最小的$q_2\in\N, q_2>q_1$,使得$d(q_2\theta,\Z) < |q_1\theta - p_1|$,
+并记对应的整数为$p_2$,满足$|q_2\theta - p_2| < |q_1\theta - p_1|$,以此类推.
+
+那么由于无理数的Dirichlet定理,该过程可以无限进行,因此得到一列$\{(p_n,q_n)\}$,
+则易见$\{(p_n,q_n)\}$恰为所有的对$\theta$的最佳逼近.
+
+接下来给出$\{(p_n,q_n)\}$的一些性质:
+
+\begin{lemma}
+    \begin{enumerate}
+        \item $q_{n+1}\theta - p_{n+1}$和$q_n \theta - p_n$异号;
+        \item 若$\theta \in \R \backslash \Q$, 则$\frac{p_n}{q_n} \to \theta$;
+        \item $p_{n+1} q_n - q_{n+1} p_n = (-1)^n$;
+        \item $q_n|q_{n+1} \theta - p_{n+1}| + q_{n+1}|p_n \theta - q_n| = 1$.
+
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    1. 由\[|(q_n \theta - p_n) - (q_{n+1} \theta - p_{n+1})| 
+    = |(q_{n+1} - q_{n}) \theta - (p_{n+1} - p_n)|  < |q_n\theta - p_n|\]即得;
+
+    3. 
+    \begin{align}
+        p_{n+1}q_n - q_{n+1}p_n &= q_{n+1}(q_n \theta - p_n) - q_n(q_{n+1} \theta - p_{n+1}) \\
+        &=(-1)^n(|q_n\theta - p_n| q_{n+1} + q_n|q_{n+1} \theta - p_{n+1}|) \\
+        &= (-1)^n \qquad (由于(|RHS| \leq \frac{q_{n+1}}{q_{n+1}} + \frac{q_n}{q_{n+2}} < 2)).
+    \end{align}
+
+    2.由3即得;
+
+    4.由1,3即得.
+\end{proof}
+
+\begin{lemma}
+    存在一列$\{a_n\}_{n\ge 1} \subseteq \N$, 使得
+    \begin{enumerate}
+        \item $ q_n = a_n q_{n-1} + q_{n-2}; $
+        \item $p_n = a_n p_{n-1} + p_{n-2}$;
+        \item $|q_{n-2} \theta - p_{n-2}| = a_n |q_{n-1} \theta - p_{n-1}| + |q_n \theta - p_n|$.
+    \end{enumerate}
+
+\end{lemma}
+\begin{proof}
+    由于$p_n q_{n-1} - p_{n-1}, q_n(p_n-p_{n-2}) = p_{n-1}(q_n- q_{n-2})$,且$\gcd(p_{n-1}, q_{n-1}) = 1$,
+    因此$\exists ! a_n \in \N$, 使得\[\begin{cases}
+        p_n - p_{n-2} = a_n p_{n-1} \\
+        q_n - q_{n-2} = a_n q_{n-1}
+    \end{cases}.\]
+    
+    将上式乘$\theta$减掉下式得到:
+    $$q_n \theta - p_n = a_n(q_{n-1} \theta - p_{n-1}) + (q_{n-2} \theta - p_{n-2}),$$
+    $$ \Rightarrow a_n = \frac{|q_n \theta - p_n| - |q_{n-2} \theta - p_{n-2}|}{|q_{n-1} \theta - p_{n-1}|},$$
+    因此如果记$\theta_n = \frac{|q_n \theta - p_n|}{|q_{n-1} q_{n-1} \theta - p_{n-1}|}, 0 < \theta_n < 1$,
+    
+    那么$\frac{1}{\theta_{n-1}} = a_n + \theta_n, \ \  a_n = [\frac{1}{\theta_{n-1}}],\ \ \theta_0 = \{ \theta \}$,
+    \begin{align}
+        \theta &= a_0 + \theta_0 \\
+            &= a_0 + \frac{1}{\theta_0 ^{-1}} \\
+             &= a_0 + \frac{1}{a_1 + \theta_1}
+             &= \cdots \ \ := [a_0; a_1, \cdots, a_N].
+    \end{align}
+
+    由已经得到的结论,$\begin{bmatrix}
+        p_n & p_{n-1} \\
+        q_n & q_{n-1}
+    \end{bmatrix}
+    =\begin{bmatrix}
+        p_{n-1} & p_{n-2} \\
+        q_{n-1} & q_{n-2}
+    \end{bmatrix}
+    \begin{bmatrix}
+        a_n & 1 \\
+        1& 0
+    \end{bmatrix},$
+    
+    假设已有$\frac{p_{n-1}}{q_{n-1}} = [a_0;a_1, \cdots, a_{n-1}]$,
+    
+    那么由于$[a_0; a_1,\cdots, a_n] = a_{0} + \frac{1}{[a_1;a_2,\cdots, a_n]} = a_0 + \frac {q_{n-1}}{p_{n-1}} = \frac{a_0 p_{n-1} + q_{n-1}}{p_{n-1}}$,
+    对比系数得到$\frac{p_n}{q_n} = [a_0;a_1, \cdots, a_n],$完成归纳过渡.
+
+    因此我们如此构造得到的$\{a_n\}\subseteq \N$确实满足条件. 
+
+\end{proof}
+
+进一步地,当$\theta \in \R\backslash \Q$时,$q_n$将以指数的速度增长,具体地,
+
+$q_n = a_nq_{n-1} + q_{n-2} \geq 2 q_{n-2} \Rightarrow q_n \geq 2^{\frac{n-1}{2}}.$
+
+\begin{theorem}
+    $\displaystyle \forall \theta \in \R \backslash \Q, \theta = \lim_{n\to +\infty} [a_0;a_1, \cdots, a_n]  \stackrel{\delta}{=} [a_0; a_1, a_2, \cdots],相反地,\forall a_0 \in \Z, a_1, \cdots, a_n \in \N,$
+    $[a_0;a_1, a_2, \cdots] = \theta \in \R \backslash \Q$.
+
+\end{theorem}
+\begin{proof}
+    前半部分由最佳逼近性即得,对于后半部分,由于只需要研究收敛性,故
+    不妨假设$a_0 > 0$,由于$|\frac{p_n}{q_n} -\frac{p_{n-1}}{q_{n-1}} | = \frac{1}{q_n q_{n+1}},$
+    并且$\displaystyle |\sum_{j=n}^{\infty} \frac{(-1)^{n+1}}{q_j q_{j-1}}| \leq \sum_{j=n}^{\infty} 2^{-j} \to 0$,
+    因此收敛性得证!
+    并且由于有理数的最佳逼近列一定有限,故$\theta \notin \Q$.
+    
+\end{proof}
+\begin{proposition}
+    我们有一个$\R \backslash \Q$和$\Z \times \N^{\N}$之间的双射:$\theta \leftrightsquigarrow [a_0;a_1, a_2,\cdots].$
+\end{proposition}
+\section{Week 4}
+\subsection{数的几何}
+
+我们考虑赋予Lebesgue测度的欧氏空间$(\R^n,\mu)$,在上面依Lebesgue测度定义体积.
+
+\begin{definition}
+    $\R^n$的一个离散且\textbf{余紧(cocompact, 商空间为紧集)}的子群$\Lambda$被称为\textbf{格点(lattice)}.
+\end{definition}
+
+\begin{proposition}
+    任何一个格点都可以有形式$g\Z^n=\{gv|v\in \Z^n\},g\in GL_n(\R)$.
+\end{proposition}
+
+\begin{definition}
+    $\Lambda \subseteq \R^n$ 是一个格点,如果一个Borel可测集$F\subseteq \R^n$满足
+    $\displaystyle     \R^n = \sqcup_{v\in \Lambda} (F+v)$,那么称其为\textbf{基本区域(fundamental domain)}.
+\end{definition}
+
+例如,格点$\Z^n$的基本格点可以是$[0,1)\times [0,1)$,或者以$(1,1),(1,0)$张成的半开平行四边形.
+
+\begin{definition}
+    称格点的任何一个基本区域$F$的体积(在Lebesgue测度意义下)为$d(\Lambda)$.
+\end{definition}
+\begin{proposition}
+    上述定义良定(即不依赖基本区域的选取).
+\end{proposition}
+\begin{proof}
+    设$F_1,F_2$为$\Lambda$的两个基本区域,那么:
+    $$F_2 = F_2 \cap \R^n = F_2 \cap (\sqcup_{v\in \Lambda}(F_1 + v)) = \sqcup_{v\in \Lambda}(F_2 \cap(F_1+v)).$$
+    故得到:
+    $$vol(F_2) = \sum_{v\in \Lambda} vol(F_2 \cap (F_1 + v)) = \sum_{v\in \Lambda}vol((F_2 - v) \cap F_1) = vol(F_1).$$
+
+\end{proof}
+
+\begin{theorem}[Blichfeldt 1914]
+$E\subseteq \R^n$是Borel 可测集,$\Lambda \subseteq \R^n$是格点,
+那么如果$vol(E) > m \cdot d(\Lambda),m\in \N$,或者$vol(E) = m\cdot d(\Lambda),E紧$,则$E$中有$m+1$个不同的点$\{ x_0, x_1, \cdots, x_m\}$使得$x_1- x_0, \cdots, x_m-x_0\in \Lambda \backslash 0$.
+\end{theorem}
+\begin{proof}
+    对于第一种情形,
+
+    \begin{align}
+        \int_{E} \sum_{v\in\Lambda} \mathbb{1}_E(x+v)\mathrm{d} vol(x) &= \sum_{v\in\Lambda} \int_F \mathbb{1}_E(x+v)\mathrm{d} vol(x) \\
+        & =\sum_{v\in\Lambda} \int_{E+v} \mathbb{1}_E(x)\mathrm{d} vol(x) \\
+        & = \int_{\R^n} \mathbb{1}_E(x)\mathrm{d} vol(x) \\
+        & = vol(E) > m \cdot d(\Lambda)
+    \end{align}
+    因此存在$x \in F, \sum_{v\in\Lambda} \mathbb{1}_E(x+v) \geq m+1 $,
+
+    这可以得到:$x+v_i \stackrel{\triangle}{=} x_i \in E, 0\leq i \leq m$.
+
+    对于第二种情形,
+
+    $\forall \epsilon > 0, (1+\epsilon)E$是紧集,且体积大于$m\cdot d(\Lambda)$,
+    可以取
+    $(1+\epsilon)E$中的$(m+1)$个不同的点$\{(1+\epsilon) x_0, \cdots, (1+\epsilon)x_m)\},s.t. \ (1+\epsilon)(x_{\delta, i} - x_{\delta, 0})\in \Lambda$,
+
+    $E$是紧集$\Rightarrow$每一个$\{x_{\delta,i}\}$都有一个子列趋于一个$x_i \in E$,
+    因此可以不妨设每个$\{x_{\delta,i}\}$均趋于$x_i$.
+
+    那么由$x_i - x_0 = \lim_{\epsilon \to 0}(1+\epsilon)(x_{\epsilon,i} - x_{\epsilon,0}) \in \Lambda$,
+    知这样选出来的$\{x_i\}$符合题意.
+
+\end{proof}
+
+\subsection{Minkowski凸体定理}
+\begin{theorem}[Minkowski第一凸体定理]
+    如果$E \subseteq \R^n$是一个凸且中心对称的区域,$vol(E) > m\cdot 2^n d(\Lambda)$,
+    或者$E$是凸且中心对称的闭区域,$vol(E) \geq m\cdot 2^n d(\Lambda)$,
+    那么可以找到$m$对不同的且不为$0$的点对$\{(u_i,-u_i)\}\subseteq E\cap \Lambda$.
+\end{theorem}
+\begin{proof}
+    对$\frac{1}{2}E$用Blichfeldt定理,
+    我们可以找到$(m+1)$对点$\frac12x_0, \cdots, \frac12x_m \in \frac12E$,
+    
+    对$\{x_i\}$用字典序排序(例如按照欧式坐标),我们可以得到一个序关系:
+    $$x_0<x_1<\cdots<x_n,$$
+    那么$\pm \frac12(x_j - x_0)$为两两不同的点对.
+\end{proof}
+
+\begin{theorem}[Approximation Theorem]
+设$g = (g_{ij}) \in \mathrm{SL}_n(\R)$,则对于任意的实数组$a_1,\cdots, a_n,\ \ a_1  a_2 \cdots a_n = 1$,
+存在一个向量 $\mathbf{x} = (x_1, \cdots, x_n)^T \in \Z^n$,使得$l_i(\mathbb{x}) = |g\mathbf{x}\text{的第i分量}|<a_i$.
+\end{theorem}
+\begin{proof}
+    定义$E_{\epsilon} = \{\mathbf{x}\in \R^n, l_i(\mathbf{x}) < a_i, \forall 1 \leq i \leq n-1, |l_n(x)| \leq a_n(1+\epsilon)\}$,
+    则$vol(E_{\epsilon}) = |\mathrm{det} \ g| \cdot a_1 \cdots a_n(1+\epsilon) \cdot 2^n = 2^n(1+\epsilon)$.
+    使用Minkowski第一凸体定理,可以找到$\mathbf{x}_{\epsilon} \in (\Z^n \backslash 0) \cap E_{\epsilon}$,
+    并且$g\mathbf{x}_{\epsilon}$是有界的.
+    利用欧式空间中有界闭集的紧性,存在一列子列$\{\mathbf{x}_{\epsilon_k}\}_k$,使得$\displaystyle \lim_{k\to \infty}\mathbf{x}_{\epsilon_k} = \mathbf{x},\lim_{k\to\infty} \epsilon_k = 0$.
+
+    那么由于$l_i$具有连续性,知$\displaystyle l_i(\mathbf{x}) = \lim_{k\to \infty} l_i(\mathbf{x}_{\epsilon_k}) < a_i,\forall 1 \leq i \leq n-1,$
+    $l_n(\mathbf{x}) \leq a_n$.
+    
+    如果等号不取到,则已经得证,下面设$l_n(\mathbf{x}) = a_n$,
+
+    不妨记这个$\mathbf{x}$为$\mathbf{x_n} = (x_{n,1}, \cdots, x_{n,n})^T$,
+    同理可以得到$\mathbf{x_1},\cdots, \mathbf{x_{n-1}}$,容易发现$\mathbf{x_1},\cdots, \mathbf{x_n}$是$\Z-$(或者$\Q-$)线性无关的,
+
+    否则可以设$\mathbf{x_n} = q_1 \mathbf{x_1}+\cdots + q_{n-1}\mathbf{x_{n-1}}$,
+    则$l_n(\mathbf{x_n}) < a_n$,已经得证.
+
+    因此如果记矩阵$X = [x_{i,j}]_{1\leq i,j\leq n}$,则$\mathrm{det}(X) \neq 0$,
+    任取素数$p $整除$\mathrm{det}(X)$,则在域$\mathbb{F}_p$当中方程$(c_1, \cdots, c_n) X = 0$有非零整数解,
+
+    那么记$\mathbf{y} = c_1 \mathbf{x_1} + \cdots + c_n \mathbf{x_n}$,有$\mathbf{y}\neq 0$并且$p$整除$\mathbf{y}$的每一个分量,则$\frac{\mathbf{y}}{p}$符合要求.
+
+\end{proof}
+
+\begin{theorem}[推广版Dirichlet定理]
+    记$\theta = [\theta_{i,j}] \in \R^{m\times n},Q > 1$,则存在向量$(\mathbf{p},\mathbf{q}) = (p_1, \cdots, p_m, q_1, \cdots, q_n)$,使得
+    
+    $\begin{cases}
+        |\theta_{i,1}q_1 + \cdots + \theta_{i,n}q_n + p_i| \leq \frac 1Q, \ 1\leq i \leq m, \\
+        1 \leq max(|q_1|,\cdots, |q_n|) < Q^{\frac{m}{n}}. 
+    \end{cases}$
+\end{theorem}
+\begin{proof}
+    取$u(\theta) = \begin{bmatrix}
+        1_m \ 0 \\
+        0 \ 1_n
+    \end{bmatrix}$,并且取$a_1 = a_2 = \cdots = a_m = \frac1Q, a_{m+1} = \cdots = a_n = Q^{\frac mn}$,
+    然后使用定理4.8即可.
+\end{proof}
+
+\begin{definition}
+    称$\theta = [\theta_{i,j}] \in \R^{m\times n}$ 是劣态逼近的,如果
+    存在$c>0,$使得$\forall (p,q) \in \Z^{m+n}, q\neq 0,$都有$|\theta q+ p|^m |q|^n \geq c$,
+    否则,称为良态逼近的.
+\end{definition}
+
+\begin{theorem}[Dani Theorem]
+    如果 $a_t = diag(e^{\frac tm},\cdots, e^{\frac tm},e^{-\frac tn},\cdots, e^{-\frac tn}),\{a_t \cdot u(\theta) | t \geq 0\}$在$G/\Lambda$中有界,则$\theta \in BA$.
+\end{theorem}
+
+\begin{theorem}
+    设$k$是一个数域,$1,\theta_1, \cdots, \theta_n \in \R$是$k/\Q$的一组基,
+    则$(\theta_1, \cdots, \theta_n)$是劣态逼近的.
+\end{theorem}
+\begin{proof}
+    $\forall (p,q) \in \Z \times \Z^n \backslash \{0\}$,
+    由于当$(p,q)$为整向量的时候,
+
+    $N_{k/\Q}(\theta_1q_1 + \cdots + \theta_nq_n + p)$相当于计算一个形如$\begin{bmatrix}
+        &a_{11}q_1 \ &a_{12}q_2 \ &\cdots \ &a_{1n}q_n \\
+        &a_{21}q_1 \ &a_{22}q_2 \ &\cdots \ &a_{2n}q_n \\
+        &\vdots \ &\vdots \ & \ &\vdots \\
+        &a_{n1}q_1 \ &a_{n2}q_2 \ &\cdots \ &a_{nn}q_n
+    \end{bmatrix}$的行列式,其中$a_{ij} \in \Q$,则因为行列式不等于$0$,故其绝对值有最小值,
+    这个最小值仅和基$\theta$的选取有关,记为$C_1(\theta)$.
+
+    而另一方面,由$N_{k/\Q}$的计算公式,有
+    \begin{align}
+        |N_{k/\Q}(\theta_1q_1 + \cdots + \theta_nq_n + p)| &= \prod_{\sigma \in \mathrm{Gal}(k/\Q)}|\sigma(\theta_1q_1 + \cdots + \theta_nq_n + p)| \\
+    &=|\theta_1q_1 + \cdots + \theta_nq_n + p| \cdot \prod_{\sigma \neq \mathrm{id}} |(\sigma(\theta_1)q_1 + \cdots + \sigma(\theta_n)q_n + p)| \\
+    &\leq |\theta_1q_1 + \cdots + \theta_nq_n + p| \cdot \prod_{\sigma \neq \mathrm{id}}(|q|_{\sup}|\sigma(\theta)|_{\sup}\cdot n + |p|)\\
+    &\leq |\theta_1q_1 + \cdots + \theta_nq_n + p| |q|^{n-1} \cdot C_2(\theta)
+    \end{align}
+    因此$\exists c > 0, s.t. |q_1\theta_1 + \cdots + q_n\theta_n + p| \cdot |q|^n \geq c|q|$,
+
+    亦即$\exists c' > 0, s.t. |q_1\theta_1 + \cdots + q_n\theta_n + p| \cdot |q|^n \geq c'$,因此$\theta$是劣态逼近的.
+
+\end{proof}
+
+\subsection{逐次极小值(Successive Minima)}
+\begin{definition}[逐次极小值(Successive Minima)]
+    设$\Lambda \subseteq \R^n$是格点,$K$是一个\textbf{凸体}(中心对称,内点非空的凸集合),
+    那么:
+    $$\lambda_i(K,\Lambda) \stackrel{\mathrm{def}}{=} \inf \{\lambda > 0 |\mathrm{dim}_{\R}(\mathrm{Span}_{\R} (\lambda K \cap \Lambda) )\geq i\}$$
+被称为$\Lambda$的\textbf{第i个逐次极小值(i-th successive minima)}.
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 存在$c>0$,使得$\Lambda$ 包含一组基$v_1, \cdots, v_n$且$|v_i| \leq c\lambda_i(K,\Lambda)$,
+        \item $\Lambda$ 有一组基$v_1, \cdots, v_n$, 使得$v_i\in \lambda_i K$.
+    \end{enumerate}
+\end{remark}
+
+\begin{theorem}[Minkowski第二凸体定理]
+$\Lambda \subseteq \R^n$是格点,$K$是凸体,那么:
+$$\frac{2^n}{n!} d(\Lambda) \leq \lambda \cdot \cdots \cdot vol(K) \leq 2^n d(\Lambda).$$
+\end{theorem}
+
+\begin{proof}
+    对于不等式的左端:
+
+    取一组无关的$v_i \in \lambda_i K \cap \Lambda$,考虑如下的映射:
+    $g:v_i \mapsto \lambda_i^{-1} v_i \in K$,则$g\in GL_n(\R)$,并记$y_i = gv_i$,
+
+    定义$\displaystyle E = \{t_1y_1 + \cdots t_ny_n|\sum_{i=1}^n|t_i| \leq 1\}\subseteq K$,
+    那么
+    $$vol(E) = |det(y_1, y_2, \cdots, y_n)| \cdot vol(\{\sum |t_i| \leq 1\})$$
+    $$ = d(\sum_{i=1}^n \Z y_i) \cdot \frac{2^n}{n!} = \lambda_1 ^{-1} \cdots \lambda_n^{-1}  d(\sum_{i=1}^n\Z \lambda_i)\cdot \frac{2^n}{n!}$$
+    $$\geq \lambda_1 ^{-1} \cdots \lambda_n^{-1} \cdot d(\Lambda) \cdot \frac{2^n}{n!}.$$
+    结合$vol(E) \leq vol(K)$知不等式左端得证.
+\end{proof}
+
+为了证明不等式的右端,我们需要一些前置知识.
+
+\begin{definition}
+    称子空间$L\subseteq \R^n$是\textbf{$\Lambda$-有理型($\Lambda$-rational)},如果$L\cap \Lambda$是$L$中的一个格点(即要求$L\cap\Lambda$完备).
+\end{definition}
+\begin{lemma}
+    $L_1 \subseteq L_2 \subseteq L_3 \subseteq \cdots \subseteq L_n = \R^n$是一列$\Lambda$-有理型的$\R^n$的子空间,
+    并且$\mathrm{dim}(L_m) = m$,那么存在一组$\Lambda$的基$x_1, \cdots, x_n,x_i \in L_i$,  i.e. 对任何的$i$,$x_1,\cdots, x_i$是$L_i\cap \Lambda$的一组基.
+\end{lemma}
+
+\begin{proof}
+    $L_1\cap \Lambda$是$L_1$的格点,那么由于维度为1,必须为$L_1\cap \Lambda = \Z x_1,\exists x_1\in \Lambda \cap L_1$,
+    下面用归纳法证明原结论.
+
+    取$t = \min\{d(x,L_{j-1} | x \in (\Lambda \cap L_j) \backslash L_{j-1})\}$,我们声称$t>0$.
+
+    固定$y\in (\Lambda \cap L_j) \backslash L_{j-1}$,
+    $\forall x\in \Lambda \cap L_j,x$可以写成$ x = a_1x_1 + \cdots + a_{j-1} x_{j-1} + a_jy, a_i\in \R$,
+
+    由距离的定义得到:$d(x, L_{j-1}) = d(a_j y, L_{j-1})$,因此我们只需要证明$\exists c > 0, \ \ \ s.t. |a_j| \geq c,\forall x$.
+    
+    反设结论不成立,如果记$v\in \Lambda \cap L_{j-1}$, 使得$x^{(k)} \triangleq x-v = b_1 x_1 + \cdots + b_{j-1}x_{j-1} + a_jy, 0\leq b_i < 1$,
+
+    那么存在一列$(L_j\backslash L_{j-1}) \cap \Lambda$中的点列$\{x_s^{(k)}\}_s$趋向于某个$x_0\in L_{j-1} \cap \Lambda$.
+
+    与格点的离散性矛盾!故$t>0$.
+
+    接下来,给定$x \in (L_j \cap \Lambda) \backslash L_{j-1}$,$x = cx_j + y, y \in L_{j-1}$,
+    那么$x - [c]x_j = (c-[c])x_j + y$,
+
+    那么由于$(c-[c])\cdot d(x-x_{j-1}) < t$,便得到$c = [c],c\in \Z$,因此$\mathrm{Span}_{\Z}(\{x_j\}) = L_j \cap \Lambda, \forall j\in \Z$.
+
+    这就完成了归纳过渡!
+\end{proof}
+\begin{definition}[Minkowski距离]
+    设$K$是一个中心对称的凸体,那么$F_K:\R^n \to \R_{\geq 0}, F_K(x) \triangleq \inf\{\lambda > 0 | x \in \lambda K\}$称为$\R^n$上关于$K$的Minkowski距离.
+\end{definition}
+由简单的分析和线性代数知识可以得到以下性质:
+\begin{proposition}
+\begin{enumerate}
+    \item $F(tx) = |t|F(x)$;
+    \item $F(x) = 0 \Leftrightarrow x = 0$;
+    \item $F(x+y) \leq F(x) + F(y)$;
+    \item $F$连续;
+    \item 对于任何的$g\in GL_n(\R), F_{gK}(gx) = F_{K}(x)$.
+\end{enumerate}
+\end{proposition}
+
+\begin{lemma}
+    存在一组$\Lambda$的$\R$-基$x_1, \cdots, x_n$, 使得$\forall x\in \Lambda, F(x) < \lambda_j$,有$x\in \Z x_1+ \cdots  + \Z x_j$.
+\end{lemma}
+\begin{proof}
+    任取一组$\R$-基$\{v_n\}$满足:$F(v_j) = \lambda_j$(这可以通过伸缩变换结合4.19.1得到),
+
+    取$L_i = \mathrm{Span}_{\R} (v_1, \cdots, v_i)$,
+    由引理条件 
+\end{proof}

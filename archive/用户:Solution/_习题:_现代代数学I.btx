@@ -1,0 +1,432 @@
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\char}{\operatorname{char}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Gal}{\operatorname{Gal}}
+
+== 24年习题 ==
+
+\qquad\quad 序号是周数+题号。其中2是分析题, 11.1是代数数论题，13.2是代数几何题。
+\begin{itemize}
+    \item[2]
+    求证Liouville定理:
+    对于任何$n$次有非有理根$\alpha$的整系数多项式$f$,
+    求证:存在只与多项式有关的常数$c_f>0$,使得
+    $\big|\frac{p}{q} - \alpha\big| \geq \frac{c_f}{q^n}$对任意$p,q\in \Z$成立.
+
+    \item[3.1]
+    令$E/F$是代数扩张，
+    $E_{\text{sep}} := \{\alpha \in E | \alpha $为
+    $ F $上可分元
+    $\} $，
+    求证：$E_{\text{sep}}$是包含$F$的$E$的子域。
+
+    \item[3.2]
+    设$E/F$是有限扩张，$\Omega$是$E$的代数闭包。
+    求证：\[ \left|S_F^{E \to \Omega}\right|=[E:F]_s=[E_{\text{sep}}:F]. \]
+
+    \item[3.3]
+    设$L/E/F$是有限扩张，求证：\[ [L:F]_s = [L:E]_s[E:F]_s. \]
+
+    \item[4.1]
+    $\xi=e^{2\pi i/7}$，$\Q[\xi]/\Q$有两个非平凡的中间域，请具体写出这两个中间域。
+
+    \item[4.2]
+    接上题，$p$是素数，令$E/\Q$是$x^n-p \in \Q[x]$的分裂域。求证：$\Gal(E/\Q)$非交换。
+
+    \item[4.3]
+    $\xi_n$是$\Q$的$n$次单位素根，$\Phi_n(x)$是$\xi_n$的极小多项式，
+    由课上已知$\deg \Phi_n(x)=\varphi(n)$。求证：
+     \begin{align*}
+     	\Phi_n(x)=\prod_{d|n}^{}(x^{n/d}-1)^{\mu(d)}
+     \end{align*}
+     其中：
+     \begin{center}
+     	$$\mu(k)=
+     	\left\{
+     	\begin{array}{cc}
+     		(-1)^r & k=p_1\ldots p_r \\
+     		0 & p^2|k \\
+     		1 & k=1
+     	\end{array}
+     	\right.
+     	$$
+     \end{center}
+
+    \item[4.4]设$f(x)=x^3+bx+c$且$\char(F) \neq 3$，求证：
+		\begin{align*}
+			D(f)=-4b^3-27c^2.
+		\end{align*}
+    
+    \item[5.1]$f(x)=x^4-2$，具体写出$E_f/\Q$的所有中间域。
+
+    \item[5.2]给定不可约多项式$f(x)=x^4+ax^2+b \in F[x]$，通过分析$a,b$来判断$G_f$。
+
+    \item[5.3]计算$x^4-2x^3-8x-3 \in \Q[x]$的Galois群。
+
+    \item[5.4]计算$\mathbb{F}_p[x]$上的$n$次不可约多项式个数。
+
+    \item[5.5]找一个$6$次多项式$f(x)\in \Q[x]$使得$G_f \cong S_6$。
+
+    \item[5.6]$f(x)=a_nx^n+a_{n-1}x^{n-1}+\ldots+a_0\in F[x]$的根在其分裂域中是$\alpha_1,\ldots,\alpha_n$，$g(x)=b_mx^m+b_{m-1}x^{m-1}+\ldots+b_0\in F[x]$的根在其分裂域中是$\beta_1,\ldots,\beta_m$。求证:
+    	\[
+    	\det
+    	\left[
+    	\begin{array}{ccccccc}
+    		a_n & a_{n-1} & \cdots & a_0  &    &    &   \\
+    		    & a_n     & a_{n-1}&\cdots&a_0 &    &   \\
+    		    &         & \ddots &\ddots&    &\ddots&   \\
+    		    &         &        &a_n   &a_{n-1}&\cdots&a_0 \\
+    		b_m &b_{m-1}  & \cdots &\cdots&b_0 &    &   \\
+    		    & \ddots  &  \ddots&      &    &\ddots&   \\
+    		    &         &b_m &b_{m-1} &\cdots &\cdots&b_0   
+    	\end{array}
+    	\right]
+    	=a_n^mb_m^n\prod_{\substack{1\leq i \leq n\\
+    	1\leq j \leq m}}(\alpha_i-\beta_j). 
+    	\]
+    
+    \item[6.1]取$G= \{\id,\sigma\}\cong C_2$，
+    考虑$G$-模$\Z$，其中$\sigma(n)=-n$。
+    容易发现$\Z^G=\{ 0 \}$。考虑短正合列：
+		\begin{align*}
+			0 \longrightarrow \Z \stackrel{n\mapsto an}{\longrightarrow} \Z \stackrel{自然}{\longrightarrow} \Z/a\Z \longrightarrow 0
+		\end{align*}
+		写出它对应的长正合列：
+		\begin{align*}
+				0 \longrightarrow 
+				\Z^G \longrightarrow 
+				\Z^G \longrightarrow
+				(\Z/a\Z)^G \longrightarrow
+				H^1(G,\Z) \longrightarrow
+				H^1(G,\Z) \longrightarrow
+				H^1(G,\Z/a\Z) \longrightarrow
+				0
+		\end{align*}
+
+    \item[6.2]$f(x)=x^5+ax+b \in \Q[x]$，求证：
+        $$
+        G_f \cong D_5
+        \Longleftrightarrow
+        \left\{
+        \begin{aligned}
+        	&f(x)\ 不可约 \\
+        	&f(x)\ 根式可解 \\
+        	&\mathrm{disc}(f)\ 是平方数
+        \end{aligned}
+        \right.
+        $$
+
+    \item[7.1]
+    分别写出满足$G_f\cong C_5$和$G_f\cong \mathrm{AGL}(1,5)$的$5$次不可约多项式$f(x)\in \Q[x]$。
+
+    \item[8.1]
+    $\mu_n=\langle\xi\rangle\subseteq F$，
+		$\xi$为$n$次单位根，$E/F$是Galois扩张，
+		且$G = \Gal(E/F)$是指数为$n$的有限Abel群。
+		\begin{align*}
+			\delta : B(E)=E^{*n}\cap F^* \longrightarrow \mathrm{Hom}(G,\mu_n)
+		\end{align*}
+		任意$a\in B(E)$，
+		$\alpha^n = a$，
+		$\alpha \in E^*$，
+		\begin{align*}
+			\delta(a)=(\sigma \to \sigma(\alpha)\alpha^{-1})
+		\end{align*}
+		根据课上内容，$\delta$诱导了$B(E)/F^*$到$\mathrm{Hom}(G,\mu_n)$的同构，
+		事实上，
+		可以直接不妨让$\delta$是$B(E)/F^*$到$\mathrm{Hom}(G,\mu_n)$的同构。
+		求证：
+		\begin{align*}
+			\bigl\{
+			\mathrm{Hom}(G,\mu_n)\ 的子群
+			\bigr\}
+			\stackrel{1-1}{\longleftrightarrow}
+			\bigl\{
+			G\ 的商群
+			\bigr\}
+		\end{align*}
+    
+    \item[8.2]
+    记$[E:F]=n$。
+		设$F$是有限域，$E/F$是有限扩张，则$\mathrm{Tr}_{E/F}:E\to F$和$\mathrm{Nm}_{E/F}:E^*\to F^*$都是满射。
+    
+    \item[9.1]
+    求证可分闭包的存在性。
+
+    \item[9.2]求证：
+		$F$的可分闭包在$F$-同构意义下唯一。
+    
+    \item[11.1]
+    设$E/\Q$是$n$次分圆扩张，
+		$E=\Q[\zeta_n]$，
+		$\zeta_n$是$n$次单位素根，
+		且$n=p^mq$，
+		$q$和$p$互素。
+		承认$R=\mathbb{Z}[\zeta_n]$是$\mathbb{Z}$在$E$上的整闭包，
+		由课上内容，
+		设：
+		\begin{align*}
+			pR=P_1^{a_1}\ldots P_r^{a_r}
+		\end{align*}
+		求$r$和$a_1,\ldots,a_r$。
+
+    \item[12.1]
+    $\Omega/F$是Galois扩张，
+		$G=\Gal(\Omega/F)$，
+		$G(x)=\{\sigma\in G:\sigma(x)=x\}$。
+		求证：
+		$\{G(x):x\in \Omega\}$能形成$e$的一组邻域基。
+
+    \item[13.1]令$f\in F[x_1,\ldots,x_n]$是不可约多项式，
+		则$R=F[x_1,\ldots,x_n]/(f)$是一个整环，
+		计算$\mathrm{trdeg}(\mathrm{Frac}(R)/F)$。
+    
+    \item[13.2]令$P\subseteq F[x_1,\ldots,x_n]$为素理想，
+		且设$P$由多项式$f_1,\ldots,f_m$生成，
+		且满足上述$m$的最小性（防止类似$f_1=f_2$的情况出现），
+		$R=F[x_1,\ldots,x_n]/P$，
+		求证：$\mathrm{trdeg}(\mathrm{Frac}(R)/F)\geqslant n-m$，并给出等号不成立的例子。
+
+    \item[13.3]
+    设$A\subseteq\Omega$是$\Omega/F$的一个超越基，
+		求证：
+		任意一个别的超越基$B$，总有$A$和$B$的势相同。
+
+    \item[13.4]
+    求$\mathrm{trdeg}(\mathbb{C}/\Q)$及$\# \mathrm{Aut}(\mathbb{C}/\Q)$.
+
+    \item[14.1]
+    $R$是一个整环，$D$是$R$上的一个derivative。
+		$K=\mathrm{Frac}(R)$。
+		$D$延拓到$K$上形成$D_K$：
+		\begin{align*}
+			D_K:K\to K:\dfrac{f}{g}\mapsto\dfrac{fDg-gDf}{g^2}
+		\end{align*}
+		其中$f,g\in R$。
+        验证：$D_K$是良定的，且确实为$K$上的derivative。
+
+    \item[14.2]设$L/F$是有限可分生成的域扩张
+		（即存在一组有限可分超越基），
+		则：
+		\begin{align*}
+			\dim_F\mathcal{D}_{L/F}
+			=
+			\mathrm{trdeg}(L/F)
+		\end{align*}
+		并且$t_1,\ldots,t_r$构成$L/F$的一组可分超越基当且仅当
+		$dt_1,\ldots,dt_r$构成$\mathcal{D}_{L/F}^*$的一组基。
+        (记号$\mathcal{D}$参考Serge Lang上关于derivative的内容)
+    
+\end{itemize}
+
+== 22年习题 ==
+
+\qquad\quad 序号是周数+题号。
+\begin{itemize}
+    \item[4.1] 考虑$\C(X)$的自同构：$\sigma\colon X\to\dfrac{X+i}{X-i},
+    \tau\colon X\to\dfrac{iX-i}{X+1}$。证明$\sigma$和$\tau$
+    在$\Aut(\C(X)/\C)$中生成的子群同构于$A_4$，并给出其固定域。
+
+    \item[4.2] 令$E=\C(X,Y)$为复数域两个变量的多项式环的分式域。
+    其自同构群$\Aut(E/\C)$称为Cremona群。
+
+    A) 对于任一$3\times3$复可逆矩阵$A=(a_{ij})_{1\le i,j \le3}$，映射
+    \[\varphi_M\colon X\to\dfrac{a_{11}X+a_{12}Y+a_{13}}{a_{31}X+a_{32}Y+a_{33}};
+    \quad Y\to\frac{a_{21}X+a_{22}Y+a_{23}}{a_{31}X+a_{32}Y+a_{33}}\]
+    构成了$E$的一个自同构，并证明$\mathrm{PGL}_3(\C)\subset\Aut(E/\C)$。
+
+    B) 举例说明上面的包含关系是严格的。
+
+    \item[5.1] 设$E/F$为有限扩张，证明$\Aut(E/F)$的阶整除$[E:F]$。
+
+    \item[5.2] 计算如下多项式的判别式：$X^3+pX+q; X^4+pX+q$。
+
+    \item[5.3] 设$E/F$为Galois扩张且$\Gal(E/F)\simeq\Z_2\times\Z_{12}$。
+    则有多少中间域$L$使得$[L:F]=4$？有多少中间域$L$使得$\Gal(E/L)\simeq\Z_4$？
+
+    \item[5.4] 设$E/F$为Galois扩张且$\Gal(E/F)\simeq A_4$。
+    $E/F$有多少中间域？其中有多少为$F$的Galois扩张？
+
+    \item[5.5] 设$f(X)\in\Q[X]$为$3$次不可约多项式且其Galois群为$S_3$。
+    计算$(X^3-1)f(X)$在$\Q$上分裂域$E$可能的Galois群$\Gal(E/\Q)$。
+
+    \item[6.1] 计算形如$X^4+aX+b$的多项式的判别式和结式。
+
+    \item[6.2] 计算$X^4+8X+12,X^4+X+1,X^4+4X^2+2\in\Q[X]$在$\Q$上的Galois群。
+
+    \item[6.3] （较难）考虑$f(X)=X^5+aX+b\in\Q[X]$在$\Q$上的Galois群$G_f$。
+    证明$G_f\simeq D_5$当且仅当 (1) $f(X)\in\Q[X]$不可约；
+    (2) 判别式$D(f)$是平方数；(3) $f(X)$根式可解。
+
+    \item[7.1] 考虑$\xi_7\in\C$为本原$7$次单位根。计算如下元素在$\Q$上的次数：
+    $\xi+\xi^5,\xi^3+\xi^4,\xi^3+\xi^5+\xi^6$。
+
+    \item[7.2] 令$p>0$为素数，计算方程$X^5-p^2X-p\in\Q[X]$在$\Q$上的Galois群。
+    此方程根式可解吗？
+
+    \item[7.3] 列出$\Q$上五次不可约但根式可解的方程的Galois群的可能性。
+
+    \item[8.1] 设$E/F$为有限Galois扩张，
+    令$F(T_1,T_2,\cdots,T_n)$为$n$个变量的多元多项式环的分式域。
+    证明$E(T_1,\cdots,T_n)/F(T_1,\cdots,T_n)$也为Galois扩张，
+    且其Galois群同构于$\Gal(E/F)$。（此题用于Dedekind关于Galois群计算的定理的证明中）
+
+    \item[8.2] 计算如下多项式的Galois群：$X^5+X^2+1,X^5-55X+88\in\Q[X]$。
+
+    \item[8.3] 给出一有限域扩张的例子$E/F$，使得$\Gal(E/F)\simeq S_6$。
+    进一步，有$F=\Q$的例子吗？
+
+    \item[8.4] 证明$\Q$的任一有限扩张$E$都只包含有限多个单位根。
+
+    \item[9.1] 给定有限Abel群$G$，证明存在无穷多个$\Q$的Galois $G$-扩张。
+
+    \item[9.2] 证明存在无穷多个非零整数$a,b$使得$-4a^3-27b^2$为$\Z$中平方数。
+
+    \item[9.3] 令$E/F$为循环扩张，令$G=\langle\sigma\rangle$为其Galois群。
+    设域的特征为$p>0$，且$[E:F]=p^{m-1},m\ge2$。
+    令$\beta\in E$使得$\operatorname{Tr}_{E/F}(\beta)=1$。
+    证明存在$\alpha\in E$使得$\sigma(\alpha)-\alpha=\beta^p-\beta$。
+    证明$X^p-X-\alpha\in E[X]$是不可约的。
+    设$\theta$为此方程的一个根，证明$F[\theta]/F$为$p^m$阶循环扩张，
+    且存在$\sigma'\in\Gal(F[\theta]/F)$使得$\sigma'(\theta)=\theta+\beta$。
+
+    \item[10.1] 令$a\ge2$为无平方因子的正整数。对素数$p>1$，
+    令$E_p\subset\C$为$X^p-a\in\Q[X]$的分裂域。证明$[E_p:\Q]=p(p-1)$。
+
+    对于无平方因子的正整数$m\ge2$，令$K_m\subset\C$为所有$E_p,p|m$生成的域。
+    证明当$m$为奇数时，$[K_m:\Q]=\prod\limits_{p|m}[E_p:\Q]$。
+
+    当$m$为偶数时，讨论$[K_m:\Q]$的值。
+    
+    \item[12.1] 令$p$为素数，令$\Omega\subset\C$为有理数域
+    加上所有$p^m,m\ge1$次单位根生成的子域。
+    证明$\Omega/\Q$为Galois扩张且$\Gal(\Omega/\Q)\simeq(\Z_p)^*
+    =\big(\lim\limits_{\overleftarrow{m\ge1}}\Z/p^m\Z\big)^*$。
+
+    \item[12.2] 令$p$为素数，令$\Omega/\mathbb{F}_p$为代数闭包。
+    描述$\Gal(\Omega/\mathbb{F}_p)$。
+
+    \item[13.1] 令$F$为域，证明$\Aut(F(X)/F)\simeq\mathrm{PGL}_2(F)$。
+    列出$\mathbb{F}_2(X)/\mathbb{F}_2$的所有中间域$E$
+    使得$\mathbb{F}_2(X)/E$为有限Galois扩张。
+
+    \item[13.2] 找到$\Aut(\C/\Q)$中与复共轭交换的元素。
+
+    \item[13.3] 设$F/\Q$为有限生成的域扩张。证明存在域嵌入$F\to\C$。
+\end{itemize}
+
+\begin{proofc}[对个答案]
+\begin{itemize}
+    \item[5.1] $F\subseteq E^{\Aut(E/F)}$，
+    故$|\Aut(E/F)|=[E:E^{\Aut(E/F)}]\big|[E:F]$。
+    \item[5.2] $-4p^3-27q^2,-27p^4+256q^3$。
+    \item[5.3] $3$个，$2$个。
+    \item[5.4] $10$个，$3$个（含$E,F$）。
+    \item[5.5] $S_3$或$S_3\times\Z_2$。
+    \item[6.1] $D=R=256b^3-27a^4$。
+    \item[6.2] $A_4,S_4,\Z_4$。
+    \item[6.3] 关键的引理：$A_5$的子群阶数不超过$12$。
+    \item[7.1] $6,3,2$。
+    \item[7.2] $S_5$，不可解。
+    \item[7.3] $\Z_5,D_5,F_{20}$。
+    \item[8.2] $S_5,A_5$。
+    \item[8.4] 不然$E$含$n$任意大的$\xi_n$，则$\varphi(n)=[\Q(\xi_n):\Q]\big|[E:\Q]$。\\
+    对$(p,\alpha)\ne(2,1)$，成立$\varphi(p^\alpha)=p^{\alpha-1}(p-1)\geqslant\sqrt{p^\alpha}$，\\
+    得$\varphi(n)=\prod\varphi(p^\alpha)\geqslant\prod\sqrt{p^\alpha}\big/2=\sqrt{n}/2\to\infty$，矛盾。
+    \item[9.2] 取$a=-3k^2,b=k^3$ ($k\in\Z_{\ne0}$)，有$-4a^3-27b^2=81k^6$。
+    \item[10.1] $[K_m:\Q]=\begin{cases}
+        \dfrac{m\varphi(m)}{2},&\sqrt{a}\in K_{m/2}\\
+        m\varphi(m),&\sqrt{a}\notin K_{m/2}\end{cases}$。
+    \item[12.2] $\lim\limits_{\overleftarrow{m\ge1}}\Z/m\Z$。
+    \item[13.2] 恒等与复共轭。\qedhere
+\end{itemize}
+\end{proofc}
+
+== Miscellaneous ==
+
+\begin{itemize}
+    \item[1.]
+    设域扩张$E/F$，$\char F=p$，$\alpha\in E$. 
+    证明$\alpha$在$F$上可分当且仅当$F(\alpha)=F(\alpha^p)$.
+
+    \item[\textbf{证明.}]
+    设$\alpha$在$F$上可分，只需证明$\alpha\in F(\alpha^p)$.
+    假设$\alpha\notin F(\alpha^p)$，则$\min(\alpha,F(\alpha^p))=X^p-\alpha^p$，
+    于是$\min(\alpha,F)|X^p-\alpha^p$，这表明要么$\alpha\in F$，
+    要么$\alpha$在$F$上不可分，矛盾.
+
+    设$\alpha$在$F$上不可分，
+    则$\min(\alpha,F)$形如$f(X^p)$，其中$f(X)$在$F[X]$中不可约，
+    于是有$\min(\alpha^p,F)=f(X)$，
+    那么$[F(\alpha^p):F]=\deg f(X)<\deg f(X^p)=[F(\alpha):F]$，
+    即$F(\alpha^p)\subsetneq F(\alpha)$.
+
+    \item[2.]
+    （1）设$\alpha$在$F$上可分，$\beta$在$F(\alpha)$上可分，证明$\beta$在$F$上可分.\\
+    （2）设$E/F$为代数扩张，$E$的子集$S$的元素均在$F$上可分，证明$F(S)/F$为可分扩张.
+
+    \item[\textbf{证明.}]
+    （1）只需考虑$\char F=p$的情况.
+    设$\min(\alpha,F(\beta))=f(X)$，则$f(X)^p\in F(\beta^p)[X]$，
+    又设$\min(\alpha,F(\beta^p))=g(X)$，由$f(\alpha)^p=0$得$f(X)|g(X)|f(X)^p$，
+    故$g(X)=f(X)^t$（因$f(X)$在$F(\beta)[X]$中不可约）.
+    但$\alpha$在$F$上更在$F(\beta^p)$上可分，只能$g(X)=f(X)$，由此得到
+    $[F(\beta)(\alpha):F(\beta)]=\deg f(X)=\deg g(X)=[F(\beta^p)(\alpha):F(\beta^p)]$.
+    根据上一题，$\beta$在$F(\alpha)$上可分说明$F(\alpha)(\beta)=F(\alpha)(\beta^p)$，
+    从而$F(\beta)=F(\beta^p)$，再根据上一题得到$\beta$在$F$上可分.
+
+    （2）对$\alpha\in F(S)$，存在$s_1,\cdots,s_n\in S$
+    使得$\alpha\in F(s_1,\cdots,s_n)$.
+    由于$s_n$在$F(s_1,\cdots,s_{n-1})$上可分，
+    且$\alpha$在$F(s_1,\cdots,s_{n-1})(s_n)$上可分，
+    由（1）得$\alpha$在$F(s_1,\cdots,s_{n-1})$上可分.
+    重复这一过程，得到$\alpha$在$F$上可分.
+
+    \item[3.]
+    证明或否定：（1）若$L/E,E/F$均为可分扩张，则$L/F$为可分扩张.\\
+    \qquad\qquad\quad\ \,（2）若$L/F$为可分扩张，则$L/E,E/F$均为可分扩张.
+
+    \item[\textbf{证明.}]
+    （1）对$\beta\in L$，设$\min(\beta,E)=X^n+a_{n-1}X^{n-1}+\cdots+a_0$，
+    $\beta$实际上在包含了其系数的扩域$F(a_0,\cdots,a_{n-2})(a_{n-1})$上已经可分，
+    又$a_{n-1}\in E$在$F(a_0,\cdots,a_{n-2})$上可分，
+    由上一题得$\beta$在$F(a_0,\cdots,a_{n-2})$上可分.
+    重复这一过程，得到$\beta$在$F$上可分.
+
+    （2）显然正确.
+
+    \item[4.]
+    证明或否定：（1）若$L/E,E/F$均为正规扩张，则$L/F$为正规扩张.\\
+    \qquad\qquad\quad\ \,（2）若$L/F$为正规扩张，则$L/E,E/F$均为正规扩张.
+
+    \item[\textbf{证明.}]
+    （1）未必正规.例如$\Q(\sqrt[4]{2})/\Q(\sqrt{2}),\Q(\sqrt{2}),\Q)$均正规，
+    但$\Q(\sqrt[4]{2})/\Q$不正规.
+
+    （2）$L/E$未必正规.例如$\Q(\sqrt[3]{2},\omega)/\Q$正规，
+    而$\Q(\sqrt[3]{2})/\Q$不正规，$\omega$是$3$次本原单位根.
+
+    \quad\ \,$E/F$一定正规，这是因为设$L$是$F[X]$中一些多项式$\{f_i\}$在$F$上的分裂域，
+    则$L$也是$\{f_i\}$在$E$上的分裂域.
+
+    \item[5.]
+    设$a_1,\cdots,a_n\in\mathbb{Z}^+$不全是完全平方数，
+    证明$\sqrt{a_1}+\cdots+\sqrt{a_n}$是无理数.
+    
+    \item[\textbf{证明.}]
+    对于域扩张$\Q(\sqrt{a_1},\cdots,\sqrt{a_n})/\Q$，
+    任取其Galois群一元素$\sigma\neq\id$，
+    $\sigma$把一部分$\sqrt{a_i}$变成了$-\sqrt{a_i}$，
+    所以$\sigma(\sqrt{a_1}+\cdots+\sqrt{a_n})<\sqrt{a_1}+\cdots+\sqrt{a_n}$，
+    故$\sqrt{a_1}+\cdots+\sqrt{a_n}\notin\Q$.
+
+    这个问题有初等的解法.
+    设$\sqrt{a_1}\notin\Q$，
+    注意到$p(X)=\prod(X\pm\sqrt{a_2}\pm\cdots\pm\sqrt{a_n})\in\Z[X]$.
+    假设$\alpha=\sqrt{a_1}+\cdots+\sqrt{a_n}\in\Q$，
+    则$p(\alpha+\sqrt{a_1})=a+b\sqrt{a_1},
+    p(\alpha-\sqrt{a_1})=a-b\sqrt{a_1}$ ($a,b\in\Q$)，
+    但$p(\alpha+\sqrt{a_1})>0$而$p(\alpha-\sqrt{a_1})=0$，矛盾.
+\end{itemize}

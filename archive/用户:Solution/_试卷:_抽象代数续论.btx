@@ -1,0 +1,90 @@
+\setdisplaytitle{抽象代数续论试卷}
+\sethtmltitle{抽象代数续论试卷}
+\def\Hom{\operatorname{Hom}}
+
+== 2025年秋季 ==
+\begin{itemize}
+    \item[1.]设$C$是一个范畴, $F:C\to Set$是一个函子, $A\in \mathrm{ob}C, a\in FA$. 对$B\in \mathrm{ob}C$, 记$a_B$为映射
+    $$\Hom_C(A,B)\to FB, k\mapsto F(k)a.$$
+    (1)证明$\eta=\{B\leadsto a_B:\Hom_C(A,B)\to FB\}$是$\Hom_C(A,-)$到$F$的自然变换.\\
+    (2)叙述并证明Yoneda引理.\\
+    (3)给出所有的$\Hom_C(A,-)$到$\Hom_C(A',-)$的自然变换.
+    \item[2.]设$P_R$是右$R$-模, 记$P^*=\Hom_R(P_R,\ _RR_R)$为对偶模. 对$x\in P$, 记$x^{**}:P^*\to R$为映射$x^{**}(f)=f(x),\forall f\in P^*$.\\
+    (1)若$P_R$是投射模, 证明$P\to P^{**}, x\mapsto x^{**}$是单同态.\\
+    (2)若$P_R$是有限生成投射模, 证明$P^*$是投射左$R$-模.\\
+    (3)若$P_R$是有限生成投射模, 证明(1)中的同态是同构.
+    \item[3.](同2025年10月博资考抽代1)
+    (1.2.同讲义module-theory-note习题3.8.1, 3.8.2)\\
+    (1)设$S,T$为环, ${}_SM, N_T, {}_SE_T$为模. 证明典范同构
+    $$ \Hom_S({}_SM, \Hom_T(N_T, {}_SE_T)) \cong \Hom_T(N_T, \Hom_S({}_SM, {}_SE_T)). $$
+    (2)考虑函子$\Hom_T(-, {}_SE_T) : \text{Mod-}T \to (S\text{-Mod})^{op}$与$\Hom_S(-, {}_SE_T) : (S\text{-Mod})^{op} \to \text{Mod-}T$. 证明$\Hom_T(-, {}_SE_T)$和$\Hom_S(-, {}_SE_T))$是一对伴随函子.\\
+    (3)若$_SM$是投射模, $E_T$是内射模, 证明$\Hom_S(_{S}M,{}_{S}E_T)$是内射右$T$-模.
+    \item[4.]$R$是环. 称左平坦$R$-模$M$是忠实平坦左$R$-模, 若对任何右$R$-模$X\neq0,X\otimes_R M\neq0$.\\
+    (1)证明$M$是忠实平坦左$R$-模当且仅当对$M$是平坦的且对任何$R$的真右理想$I$, 都有$IM\neq M$.\\
+    (2)设$B\subseteq A$是环扩张, $A$是忠实平坦左$B$-模. 证明: 对任何右$B$-模$M$, $M\to M\otimes_B A, a\mapsto a\otimes 1$是单同态.\\
+    (3)$A,B$同(2). 设$\alpha: A\to A\otimes_B A, a\mapsto a\otimes1-1\otimes a$. $B\subseteq \ker\alpha$. 证明$B=\ker\alpha$. (提示: 证明$\ker\alpha/B\otimes_B A=0$.)
+\end{itemize}
+
+
+== 2024年秋季 ==
+\begin{itemize}
+\item[1.]
+同2023年秋季2.
+
+\item[2.]
+证明左伴随函子保持正向极限.
+
+\item[3.]
+$A,B$是$K$-代数，$M$是左$A$模，$X$是左$B$模，$E$是左$M\otimes_K X $模.
+
+(1)给出 $M\otimes_K X$的一个左 $A\otimes_K B$模结构，并验证合理性；
+给出 $\Hom_A(M,E)$的左 $B$模结构，并验证合理性.
+
+(2)证明 $\Hom_B(-,\mathrm{Hom}_A(M, E))$和$\Hom_{A\otimes_K B}(M\otimes-, E)$自然同构.
+
+(3)$E$是内射左 $M\otimes_KX$-模，证明 $\Hom_A(M,E)$是内射左 $B$-模
+
+\item[4.]
+(1)证明Noether模等价于其子模都是有限生成模.
+
+(2)举例有限生成模的子模不一定有限生成.
+
+(3)作为$\mathbb Z$模，$\mathbb Q$没有极大子模.
+\end{itemize}
+
+
+== 2023年秋季 ==
+
+每个小题各10分,满分100分.
+
+\begin{itemize}
+\item[1.]
+(1)证明$\Hom(A,\prod\limits_{i\in I} B_i)
+\cong\prod\limits_{i\in I}\Hom(A, B_i)$.
+
+(2)证明$\Hom(\coprod\limits_{i\in I} A_i,B)
+\cong\prod\limits_{i\in I}\Hom(A_i, B)$.
+
+\item[2.]
+(1)如果模$M,N,P$以及映射$f:M\to N$和$g:N\to P$满足对任意模$X$,
+都有$f^*,g^*$给出的$\Hom(P,X)\to\Hom(N,X)\to\Hom(M,X)$为正合列,
+则$f,g$给出的$M\to N\to P$是正合列.
+
+(2)如果模$M,N,P$以及映射$f:M\to N$和$g:N\to P$满足对任意模$X$,
+都有$f_*,g_*$给出的$\Hom(X,M)\to\Hom(X,N)\to\Hom(X,P)$为正合列,
+则$f,g$给出的$M\to N\to P$是正合列.
+
+\item[3.]
+(1)叙述伴随函子的定义.
+
+(2)证明在模范畴中,左伴随函子右正合,右伴随函子左正合.
+
+\item[4.]
+(1)证明右Noether模的满自同态是同构.
+
+(2)证明右Artin模的单自同态是同构.
+
+(3)证明左或右Noether环的满自同态是同构.
+
+(4)是否有左或右Artin环的单自同态是同构?如果是请证明,如果不是请举出反例.
+\end{itemize}

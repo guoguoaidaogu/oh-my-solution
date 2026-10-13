@@ -1,0 +1,46 @@
+\setdisplaytitle{试卷：动力系统}
+\sethtmltitle{试卷：动力系统}
+
+== Autumn 2025 Exam: Dynamical systems (李嘉伦) ==
+
+\qquad You can use all the results from the course and please write clearly the name or the content of the result. Each sub-question has 10 points.
+
+\textbf{Exercise 1 (Unique ergodicity)} • Give a definition of unique ergodicity of a continuous dynamical system $f: X \rightarrow X$ on a compact metric space.
+\begin{itemize}
+\item Give one example of uniquely ergodic system.
+\item If $(f, X)$ is a uniquely ergodic system, 
+show that for any continuous function $\varphi$, 
+the $S_{n} \varphi(x)$ converges uniformly for $x \in X$.
+\end{itemize}
+
+\textbf{Exercise 2 (Symbolic dynamics)} Let $\Lambda=\{1,2, \cdots, k\}$ be a finite set, 
+$\Omega=\Lambda^{\times \N}$ and $S$ is the shift map on $\Omega$ given by $S(x_{n})_{n}=(x_{n+1})_{n}$.
+\begin{itemize}
+\item What are the periodic points of $S$?
+\item Let $P_{n}$ be the set of periodic points of period $n$ (that is $S^{n} x=x$), what is $\# P_{n}$, the cardinality of $P_{n}$?
+\item What is the weak limit of the following measures?
+$$\lim_{n \rightarrow \infty} \frac{1}{\# P_{n}} \sum_{x \in P_{n}} \delta_{x}$$
+\item If we let $P_{n}^{\prime}$ be the set of primitive periodic points with period $n$ (that is if $S^{m} x=x$ then $n$ divides $m$), 
+show the same convergence as the previous one when replacing $P_{n}$ by $P_{n}^{\prime}$.
+\end{itemize}
+
+\textbf{Exercise 3 (Entropy)} We write $T_{p}$ for the times $p$ map on $\mathbb{T}=\R/\Z$. 
+Let $\mu$ be a $T_{2}$ invariant measure on $\mathbb{T}$.
+\begin{itemize}
+\item Show
+$$h_{(T_{3})_{*} \mu}(T_{2}) \leq h_{\mu}(T_{2})$$
+\item Show
+$$h_{\mu}(T_{2})=h_{(T_{3})_{*} \mu}(T_{2})$$
+\end{itemize}
+
+\textbf{Exercise 4 (Torus and Subtorus)} Let $M=\begin{pmatrix}2 & 1 & 1 \\ 1 & 1 & 1 \\ 0 & 0 & 1\end{pmatrix}$, 
+and consider the map $f_{M}$ on the torus $\mathbb{T}^{3}$ given by
+$$f_{M}\begin{pmatrix}x \\ y \\ z\end{pmatrix}
+=M\begin{pmatrix}x \\ y \\ z\end{pmatrix} \quad \bmod \Z^{3}.$$
+\begin{itemize}
+\item Is the Lebesgue measure on $\mathbb{T}^{3}$ ergodic for $f_{M}$?
+\item For any $t \in \mathbb{T}$, show the measure $d\mu_{t}=dx dy$ on the subtorus $z=t$ is ergodic for $f_{M}$.
+\item Show it is also mixing for $f_{M}$.
+\end{itemize}
+
+What about the same questions for $M=\begin{pmatrix}2 & 1 & 0 \\ 1 & 1 & 0 \\ 1 & 1 & 1\end{pmatrix}$?

@@ -1,0 +1,1106 @@
+\setdisplaytitle{习题：复变函数}
+\sethtmltitle{习题：复变函数}
+\theoremstyle{plain}\newtheorem*{1}{1}
+\theoremstyle{plain}\newtheorem*{2}{2}
+\theoremstyle{plain}\newtheorem*{3}{3}
+\theoremstyle{plain}\newtheorem*{4}{4}
+\theoremstyle{plain}\newtheorem*{5}{5}
+\theoremstyle{plain}\newtheorem*{6}{6}
+\theoremstyle{plain}\newtheorem*{7}{7}
+\theoremstyle{plain}\newtheorem*{8}{8}
+\theoremstyle{plain}\newtheorem*{9}{9}
+\theoremstyle{plain}\newtheorem*{10}{10}
+\theoremstyle{plain}\newtheorem*{11}{11}
+\theoremstyle{plain}\newtheorem*{12}{12}
+
+本页面所涉及的教材是复旦数院即将于2026年出版的复变函数教材.
+目前在复旦大学的复变函数课程(2025--2026春季学期)上使用.
+
+== 复数和复变函数 ==
+=== 1.1复数和复平面 ===
+\begin{6}
+    设复数$z,w$满足$|z|<1,|w|<1$，证明不等式
+    \[\frac{|w|-|z|}{1-|z||w|}\leq\left|\frac{w-z}{1-\bar{z}w}\right|
+    \leq\frac{|w|+|z|}{1+|z||w|}.\]
+\end{6}
+\begin{proof}
+    观察到
+    \begin{align*}
+        |w-z|^2&=-\bar{z}w-z\bar{w}+|w|^2+|z|^2\\
+        &=(1-\bar{z}w-z\bar{w}+|w|^2|z|^2)-(1-|w|^2-|z|^2+|w|^2|z|^2)\\
+        &=|1-\bar{z}w|^2-(1-|w|^2)(1-|z|^2),
+    \end{align*}
+    由此有
+    \[\left|\frac{w-z}{1-\bar{z}w}\right|^2=1-\frac{(1-|w|^2)(1-|z|^2)}{|1-\bar{z}w|^2}
+    \begin{cases}\leq1-\dfrac{(1-|w|^2)(1-|z|^2)}{(1+|z||w|)^2}=\left(\dfrac{|w|+|z|}{1+|z||w|}\right)^2,\\ \\
+    \geq1-\dfrac{(1-|w|^2)(1-|z|^2)}{(1-|z||w|)^2}=\left(\dfrac{|w|-|z|}{1-|z||w|}\right)^2.\end{cases}\]
+\end{proof}
+
+\begin{8}
+    给定$0<\rho<1$和两个不同的点$p,q\in\mathbb{C}$。
+    证明$|z-p|=\rho|z-q|$表示复平面中的一个圆周，求出这个圆周的圆心和半径。
+\end{8}
+\begin{proof}[解答]
+    两边平方，合并同类项得
+    \[\big(1-\rho^2\big)|z|^2-\overline{p-\rho^2q}z-\big(p-\rho^2q\big)\bar{z}+|p|^2-|\rho q|^2=0,\]
+    等价于
+    \[|z|^2-\frac{\overline{p-\rho^2q}}{1-\rho^2}z-\frac{p-\rho^2q}{1-\rho^2}\bar{z}
+    +\left|\frac{p-\rho^2q}{1-\rho^2}\right|^2
+    -\bigg(\left|\frac{p-\rho^2q}{1-\rho^2}\right|^2-\frac{|p|^2-|\rho q|^2}{1-\rho^2}\bigg)=0,\]
+    常数项的分子是
+    \[|p-\rho^2q|^2-\big(1-\rho^2\big)\big(|p|^2-|\rho q|^2\big)=\rho^2|p-q|^2.\]
+    同$(1.12)$式比较，得出
+    \[\text{圆心 }z_0=\frac{p-\rho^2q}{1-\rho^2},\quad
+    \text{半径 }r=\frac{\rho|p-q|}{1-\rho^2}.\qedhere\]
+\end{proof}
+
+=== 1.2 复数的极坐标表示 ===
+\begin{4}
+    利用复数证明：$\arctan\dfrac{1}{2}+\arctan\dfrac{1}{3}=\dfrac{\pi}{4}$。
+\end{4}
+\begin{proof}
+    对$(2+{\rm i})(3+{\rm i})=5+5{\rm i}$两端取辐角。
+\end{proof}
+
+\begin{9}
+    给定任意三角形$\triangle z_1z_2z_3$，沿该三角形三条边分别向外作三个正三角形
+    $\triangle z_1z_2w_1,\triangle z_2z_3w_2$和$\triangle z_3z_1w_3$。
+    又设这三个三角形的中心分别为$p_1,p_2,p_3$，证明$\triangle p_1p_2p_3$是正三角形。
+\end{9}
+\begin{tikzpicture}
+    \draw (0,-1)to(-1.732,0)to(0.5,2)to(1.732,0);
+    \draw[->,>=stealth] (1.732,0)to(-1.732,0);
+    \draw[->,>=stealth] (1.732,0)to(0,-1);
+    \draw (-2,0) node {$z_2$};\draw (2,0) node {$z_3$};
+    \draw (0.5,2.2) node {$z_1$};\draw (0.05,-1.2) node {$p_2$};
+    \draw (1.432,0)arc(180:210:0.3);
+    \draw[->,>=stealth] (4.268,0.3)to(7.732,0.3);
+    \draw[->,>=stealth] (6,-1.432)to(6,2.032);
+    \draw[->,>=stealth,blue] (6,0.3)to(5.134,0.8);
+    \draw[->,>=stealth,blue] (6,0.3)to(6,-0.7);
+    \draw[->,>=stealth,blue] (6,0.3)to(6.866,0.8);
+    \draw (4.67,0.86) node {$\zeta-1$};\draw (7.05,0.85) node {$\zeta$};
+    \draw (6.1,-0.9) node {$1-2\zeta$};
+    \draw (7.9,0.3) node {$1$};\draw (6,2.3) node {${\rm i}$};
+\end{tikzpicture}
+\begin{proof}
+    记$\zeta={\rm e}^{{\rm i}\pi/6}/\sqrt{3}$，
+    乘上$\zeta$就是长度变为原来的$1/\sqrt{3}$并顺时针转$30^\circ$。
+    如图所示，$p_2-z_3=\zeta(z_2-z_3)$，即$p_2=\zeta z_2+(1-\zeta)z_3$；
+    同理有$p_1=\zeta z_1+(1-\zeta)z_2$，从而
+    \[p_1-p_2=\zeta z_1+(1-2\zeta)z_2+(\zeta-1)z_3,\]
+    $z_1,z_2,z_3$的系数模长均为$1/\sqrt{3}$且互相的夹角均为$120^\circ$，
+    且$p_2-p_3,p_3-p_1$的表达式中的下标轮换对称，
+    因而这三个复数同样模长相等且互相的夹角均为$120^\circ$。
+\end{proof}
+
+=== 1.3 邻域、极限和区域 ===
+\begin{3}
+    设$T(z)=\dfrac{z+{\rm i}}{z+1}$。令$z_1=1$，$z_n=T(z_{n-1}),n\ge2$。
+    证明$\lim\limits_{n\to+\infty}z_n$存在，且等于$\dfrac{1+{\rm i}}{\sqrt{2}}$。
+\end{3}
+\begin{proof}
+    不难验证
+    \[\frac{T(z)-\dfrac{1+{\rm i}}{\sqrt{2}}}{T(z)+\dfrac{1+{\rm i}}{\sqrt{2}}}
+    =\frac{\sqrt{2}-1}{{\rm i}}\frac{z-\dfrac{1+{\rm i}}{\sqrt{2}}}{z+\dfrac{1+{\rm i}}{\sqrt{2}}}.\qedhere\]
+\end{proof}
+
+== 全纯函数 ==
+=== 2.3 初等全纯函数 ===
+\begin{3}
+    设函数$f$在$\mathbb{C}$上全纯，满足$f'(z)=f(z)$，且$f(0)=1$。证明：$f(z)={\rm e}^z$。
+\end{3}
+\begin{proof}
+    设$f(z)=1+a_1z+a_2z^2+a_3z^3+\cdots$，由$f'(z)=f(z)$得
+    \[a_1+2a_2z+3a_3z^2+\cdots=1+a_1z+a_2z^2+\cdots,\]
+    比较系数得$a_1=1,a_2=\dfrac{1}{2!},a_3=\dfrac{1}{3!},\cdots$，
+    即$f(z)=1+z+\dfrac{z^2}{2!}+\dfrac{z^3}{3!}+\cdots={\rm e}^z$。
+\end{proof}
+\begin{12}
+    求$z^{1/3}$在$\mathbb{C}\setminus[0,+\infty)$上的所有单值支，
+    并给出每个单值支的像区域。试描述其Riemann面。
+\end{12}
+\begin{proof}[解答]
+    参考\cite{SB} \S10 (p.135).
+\end{proof}
+
+=== 2.5 初等共形映射 ===
+\begin{1}
+    求从水平带域$\{z:|\operatorname{Im}z|<A\}$到右半平面$\{w:\operatorname{Re}w>0\}$，
+    且将$0$映成$1$的一个共形映射。
+\end{1}
+\begin{proof}[解答]
+    $w=\exp(\pi z/2A)$将$\{z:|\operatorname{Im}z|<A\}$
+    映成了$\{w:|\arg w|<\pi/2\}=\{w:\operatorname{Re}w>0\}$。
+\end{proof}
+\begin{2}
+    求从角域$\{z:|\arg z|<B\}$到右半平面$\{w:\operatorname{Re}w>0\}$，
+    且将$1$映成$1$的一个共形映射。
+\end{2}
+\begin{proof}[解答]
+    $w=z^\frac{\pi}{2B}$将$\{z:|\arg z|<B\}$
+    映成了$\{w:|\arg w|<\pi/2\}=\{w:\operatorname{Re}w>0\}$。
+\end{proof}
+
+== 全纯函数积分理论 ==
+=== 3.2 复积分 ===
+\begin{7}
+    证明如下复形式的Green公式
+    \[\int_{\partial\Omega} f(z)\,{\rm d}z+g(z)\,{\rm d}\bar{z}
+    =2{\rm i}\iint_{\Omega}\left(\frac{\partial f}{\partial \bar{z}}
+    -\frac{\partial g}{\partial z}\right){\rm d}x\wedge{\rm d}y,\]
+    其中$\Omega$是由有线条分段光滑曲线所围区域，$f,g$是$\overline{\Omega}$上$C^1$函数。
+\end{7}
+\begin{proof}
+    由Stokes公式，
+    \begin{align*}
+        \int_{\partial\Omega}f(z)\,{\rm d}z+g(z)\,{\rm d}\bar{z}
+        &=\iint_{\Omega}\frac{\partial f}{\partial \bar{z}}\,{\rm d}\bar{z}\wedge{\rm d}z
+        +\frac{\partial g}{\partial z}\,{\rm d}z\wedge{\rm d}\bar{z}\\
+        &=\iint_{\Omega}\left(\frac{\partial f}{\partial \bar{z}}
+        -\frac{\partial g}{\partial z}\right){\rm d}\bar{z}\wedge{\rm d}z,
+    \end{align*}
+    其中${\rm d}\bar{z}\wedge{\rm d}z=({\rm d}x-{\rm i}{\rm d}y)\wedge({\rm d}x+{\rm i}{\rm d}y)
+    =2{\rm i}\,{\rm d}x\wedge{\rm d}y$。
+\end{proof}
+\begin{8}
+    设$\Omega$是由一条分段光滑Jordan曲线$\gamma$所围的区域，证明：$\Omega$的面积为
+    \[\operatorname{Area}(\Omega)=\frac{1}{2{\rm i}}\int_\gamma\bar{z}\,{\rm d}z
+    =\frac{1}{{\rm i}}\int_\gamma(\operatorname{Re}z)\,{\rm d}z.\]
+\end{8}
+\begin{proof}
+    在上一题中取$f(z)=\bar{z}, g(z)=0$得出前者；
+    取$f(z)=\operatorname{Re}z,g(z)=0$得出后者，这里
+    \[\frac{\partial f}{\partial \bar{z}}=\frac{1}{2}\left(\frac{\partial f}{\partial x}
+    -{\rm i}\frac{\partial f}{\partial y}\right)=\frac{1}{2}.\qedhere\]
+\end{proof}
+
+=== 3.3 Cauchy定理 ===
+\begin{7}
+    设$\Omega$是分段光滑Jordan曲线所围的有界区域，$f$是$\overline{\Omega}$上全纯函数，证明
+    \[\sup_{\zeta\in\partial\Omega}|\overline{\zeta}-f(\zeta)|\ge2\frac{A(\Omega)}{\ell(\partial\Omega)},\]
+    其中$A(\Omega)$表示$\Omega$的面积，$\ell(\partial\Omega)$表示$\partial\Omega$的长度。
+\end{7}
+\begin{proof}
+    这是因为
+    \[2A(\Omega)=\left|\int_{\partial\Omega}\overline{\zeta}-f(\zeta)\,{\rm d}\zeta\right|
+    \le\ell(\partial\Omega)\sup_{\zeta\in\partial\Omega}|\overline{\zeta}-f(\zeta)|.\qedhere\]
+\end{proof}
+    
+=== 3.4 Cauchy积分公式 ===
+\begin{6}
+    设$f$是整函数，存在常数$C>0$使得当$|z|$充分大时，$|f(z)|\le C|z|^k$。
+    证明：$f$是一个次数不超过$k$的多项式。
+\end{6}
+\begin{proof}
+    由Cauchy不等式，对任何一点$z\in\mathbb{C}$有
+    \[|f^{(k+1)}(z)|\le\frac{(k+1)!C(|z|+R)^k}{R^{k+1}}\to0, \quad R\to+\infty,\]
+    从而$f^{(k+1)}(z)\equiv0$。
+\end{proof}
+\begin{8}
+    设$A$是一个$n \times n$矩阵，$f(z)=\det(zI-A)$是矩阵$A$的特征多项式，
+    利用Cauchy积分公式证明$f(A)=0$ (Cayley--Hamilton定理)。
+\end{8}
+\begin{proof}
+    参考\href{https://www.tandfonline.com/doi/abs/10.1080/00029890.1975.11993841}
+    {Charles A. McCarthy, \textit{The American Mathematical Monthly}, Volume 82, 1975--Issue 4, pp.390--1}。
+\end{proof}
+
+== 全纯函数级数理论 ==
+=== 4.1 级数和幂级数 ===
+\begin{7}
+    设幂级数$\sum\limits_{n=0}^{\infty}a_nz^n$在其收敛圆$D(0,R)$内的和函数为$f$,证明:
+    \begin{enumerate}
+        \item[(1)] 对于任意$r\in (0,R)$, $\displaystyle\frac{1}{2\pi}\int_0^{2\pi}|f(re^{{\rm i}\theta})|^2d\theta =\sum\limits_{n=0}^{\infty}|a_n|^2r^{2n}$.
+        \item[(2)] 若$|f(z)|\leq M,z\in D(0,R)$,则$\displaystyle\sum_{n=0}^{\infty}|a_n|^2R^{2n}\leq M^2$.
+    \end{enumerate}
+\end{7}
+\begin{proof}
+    \begin{enumerate}
+        \item[(1)] 对于$r\in(0,R)$，取$\rho\in(r,R)$，
+        那么对充分大的$n$有$|a_n|^\frac{1}{n}\leqslant1/\rho$，
+        即$|a_n|r^n\leqslant(r/\rho)^n$，从而
+        \begin{align*}
+            \frac{1}{2\pi}\int_0^{2\pi}|f(re^{{\rm i}\theta})|^2d\theta
+            &=\frac{1}{2\pi}\int_0^{2\pi}f(re^{{\rm i}\theta})\overline{f(re^{{\rm i}\theta})}d\theta\\
+            &=\frac{1}{2\pi}\int_0^{2\pi}\left(\sum_{n=0}^{\infty}a_nr^ne^{{\rm i}n\theta}\right)
+            \left(\sum_{n=0}^{\infty}\overline{a_n}r^ne^{-{\rm i}n\theta}\right)d\theta
+        \end{align*}
+        的两个括号内的级数相乘是绝对收敛的，则可重新排序并交换求和与积分，逐项积分即得结论。
+        \item[(2)] 对于任意$r\in(0,R)$都有
+        \[\sum_{n=0}^{\infty}|a_n|^2r^{2n}
+        \leq\frac{1}{2\pi}\int_0^{2\pi}|f(re^{{\rm i}\theta})|^2d\theta\le M^2,\]
+        令$r\rightarrow R$,由Fatou引理,可得$\displaystyle\sum_{n=0}^{\infty}|a_n|^2R^{2n}\leq M^2$.\qedhere
+    \end{enumerate}
+\end{proof}
+\begin{8}
+    设$a_n$是实数，满足$a_0 \ge a_1 \ge\cdots\ge a_n \ge\cdots$及$\lim\limits_{n\to\infty}a_n=0$。
+    证明：当$z$满足$|z|=1$且$z\ne1$时，级数$\sum\limits_{n=0}^{\infty}a_nz_n$收敛。(提示：考虑$S_n(z)-zS_n(z)$.)
+\end{8}
+\begin{proof}
+    由Weierstrass-$M$判别法可知$S_n(z)-zS_n(z)=a_0+(a_1-a_0)z+\cdots+(a_n-a_{n-1})z^n-a_nz^{n+1}$收敛，除去$1-z$还是收敛。
+\end{proof}
+
+=== 4.2 全纯函数的幂级数展开 ===
+\begin{2}
+    由如下幂级数展开式所定义的数$B_n$称为Bernoulli数：
+    \[z\cot\frac{z}{2}=1+\sum_{n=1}^{+\infty}(-1)^{n-1}\frac{B_n}{n!}z^n.\]
+    (1) 证明：$B_{2k+1}=0$，$k=0,1,\dots$；(2) 求右端幂级数的收敛半径；(3) 求$B_2,B_4,B_6$。
+\end{2}
+\begin{proof}[解答]
+    参考\cite{AG} Example 4.3.12.
+\end{proof}
+\begin{4}
+    设$a_0=a_1=1$，$a_n=a_{n-1}+a_{n-2}$ $(n\ge2)$，称数列$\{a_n\}$为Fibonacci数列。
+    求幂级数$\sum\limits_{n=0}^{+\infty}a_nz^n$的收敛半径。
+\end{4}
+\begin{proof}[解答]
+    由于
+    \[(1-z-z^2)\sum_{n=0}^{+\infty}a_nz^n=\sum_{n=0}^{+\infty}a_nz^n
+    -\sum_{n=0}^{+\infty}a_{n-1}z^n-\sum_{n=2}^{+\infty}a_{n-2}z^n=a_0+a_1z-a_0z=1,\]
+    得到$\displaystyle\sum_{n=0}^{+\infty}a_nz^n=\frac{1}{1-z-z^2}$，
+    从而收敛半径为$\dfrac{\sqrt{5}-1}{2}$。
+\end{proof}
+\begin{7}
+    设函数$f$在圆$D(0,R)$上全纯，其幂级数展开式为$f(z)=z+\sum\limits_{n=2}^{+\infty}a_nz^n$。
+    又设$|f(z)|<M,z \in D(0,R)$。证明：当$0<|z|<R^2/(M+R)$时，$f(z)\ne0$。
+\end{7}
+\begin{proof}
+    $g(z)=(f(z)-z)/z$是从$D(0,R)$到$D(0,(M+R)/R)$的全纯函数，且$g(0)=0$，由Schwarz引理，
+    \[\frac{|f(z)-z|}{|z|}=|g(z)|\le\frac{|z|}{R^2/(M+R)},\]
+    从而当$0<|z|<R^2/(M+R)$时$|f(z)-z|<|z|$，进而$f(z)\ne0$。
+\end{proof}
+
+=== 4.3 全纯函数的零点 ===
+\begin{8}
+    设$f$在区域$\Omega$上全纯，如果对任意$z_0\in\Omega$，
+    存在自然数$n$使得$f^{(n)}(z_0)=0$，证明：$f$是一个多项式。
+\end{8}
+\begin{proof}
+    对任何$n\in\N$，由零点的孤立性和习题1.3.5，$\{z:f^{(n)}(z)=0\}$是可数集（除非是整个$\Omega$），
+    而题目是说$\Omega=\bigcup\limits_{n\in\N}\{z:f^{(n)}(z)=0\}$，
+    身为不可数集的$\Omega$不能是可数个可数集的并，
+    从而必有$n\in\N$使得$\Omega=\{z:f^{(n)}(z)=0\}$，即$f^{(n)}\equiv0$。
+\end{proof}
+\begin{11}
+    设$f$在$D(z_0,r)$上全纯，$z_0$是$f$的$n$阶零点，且是唯一零点。
+    证明：存在$D(z_0,r)$上的全纯函数$g$使得$z_0$是$g$的唯一的单零点，
+    且满足$g^n(z)=f(z),\ z \in D(z_0,r)$。
+\end{11}
+\begin{proof}
+    设$f(z)=(z-z_0)^nh(z)$，由于$h(z)$在单连通区域$D(z_0,r)$上非零，
+    可写为$h(z)={\rm e}^{\phi(z)}$的形式。取$g(z)=(z-z_0){\rm e}^{\phi(z)/n}$即可。
+\end{proof}
+
+=== 4.4 Laurent级数 ===
+\begin{7}
+    设$f(z)=\sum\limits_{n=-\infty}^{+\infty}a_nz^n$
+    是闭圆环$\overline{A(0;R_1,R_2)}$的某个邻域上单叶函数，其中$0<R_1<R_2<+\infty$。
+
+    (2) 若$f$将圆环$A(0;R_1,R_2)$映成圆环$A(0;T_1,T_2)$，证明：$R_2/R_1=T_2/T_1$。
+\end{7}
+\begin{proof}
+    不妨设$f$把$|z|=R_1$映到了$|z|=T_1$，把$|z|=R_2$映到了$|z|=T_2$ (不然取$T_1T_2/f$)。由(1)有
+    \begin{align*}
+        S_{R_1}&=\pi T_1^2=\pi\sum_{n=-\infty}^{+\infty}n|a_n|^2R_1^{2n},\\
+        S_{R_2}&=\pi T_2^2=\pi\sum_{n=-\infty}^{+\infty}n|a_n|^2R_2^{2n},
+    \end{align*}
+    两式相除得
+    \[\frac{T_1^2}{T_2^2}=\frac{\cdots+2|a_2|^2R_1^4+|a_1|^2R_1^2-|a_{-1}|^2R_1^{-2}+\cdots}
+    {\cdots+2|a_2|^2R_2^4+|a_1|^2R_2^2-|a_{-1}|^2R_2^{-2}+\cdots}\le\frac{R_1^2}{R_2^2},\]
+    即$T_1/T_2 \le R_1/R_2$，然后考察$f$的逆映射得反向的不等号。
+\end{proof}
+\begin{8}
+    设$f(z)=z+\sum\limits_{n=0}^{+\infty}b_nz^{-n}$
+    是$\mathbb{C}\setminus\overline{\mathbb{D}}$上单叶函数，证明：
+    \[\sum_{n=1}^{+\infty}n|b_n|^2\le1.\]
+\end{8}
+\begin{proof}
+    对任意 $r>1$，$g(|z|=r)$ 是一条 Jordan 曲线，由3.2节习题8，其所围区域 $D_r$ 的面积为
+    $$\operatorname{Area}(D_r)=\frac{1}{2 \mathrm{i}} \int_{g(|z|=r)} \bar{w}\,dw
+    =\frac{1}{2\mathrm{i}} \int_{|z|=r} \overline{g(z)} g^{\prime}(z)\,dz.$$
+    记 $z=r\mathrm{e}^{\mathrm{i}\theta}$，并将 $g$ 的 Laurent 展开式代入上式，得到
+    \begin{align*}
+        \operatorname{Area}(D_r) &= \frac{1}{2} \int_0^{2 \pi}\left(r e^{-\mathrm{i} \theta}+\sum_{n=0}^{\infty} \bar{b}_n r^{-n} \mathrm{e}^{\mathrm{i} n \theta}\right)\left(1-\sum_{m=1}^{\infty} m b_m r^{-(m+1)} \mathrm{e}^{-\mathrm{i}(m+1) \theta}\right) r \mathrm{e}^{\mathrm{i} \theta} d\theta \\
+        & = \frac{1}{2} \int_0^{2 \pi}\left(r^2+\sum_{n=0}^{\infty} \bar{b}_n r^{-(n-1)} \mathrm{e}^{\mathrm{i}(n+1) \theta}-\sum_{m=1}^{\infty} m b_m r^{-(m-1)} \mathrm{e}^{-\mathrm{i}(m+1) \theta}\right. \\
+        & \left.\qquad\qquad\qquad-\sum_{n=0}^{\infty} \sum_{m=1}^{\infty} m b_m \bar{b}_n r^{-(m+n)} \mathrm{e}^{-\mathrm{i}(m-n) \theta}\right) d\theta \\
+        & = \pi\left(r^2-\sum_{n=1}^{\infty} n|b_n|^2 r^{-2n}\right) \geq 0,
+    \end{align*}
+    令 $r \rightarrow 1^+$ 即得 $\sum\limits_{n=1}^{+\infty} n|b_n|^2 \leq 1$。
+\end{proof}
+
+=== 4.5 全纯函数的孤立奇点 ===
+\begin{6}
+    设函数$f$在$D(0,R)$上全纯，在$D(0,R+\varepsilon)$上半纯，这里$R,\varepsilon>0$。
+    如果$f$在圆周$C(0,R)$上有唯一极点$z_0$，且在$D(0,R)$上有幂级数展开式
+    \[f(z)=\sum_{k=0}^{+\infty}a_kz^k, \qquad z \in D(0,R),\]
+    证明：当$k\to\infty$时，$a_k/a_{k+1} \to z_0$。
+\end{6}
+\begin{proof}
+    设$f(z)$去掉在$z_0$的主部后是
+    \[g(z)=f(z)-\sum_{n=1}^{N}\frac{c_n}{(1-z/z_0)^n},\]
+    其中诸项在$z=0$处的幂级数展开式为（为方便表达，略去常系数$c_n$）
+    \[\left(\frac{1}{1-z/z_0}\right)^n
+    =\left[\sum_{k=0}^{+\infty}\bigg(\frac{z}{z_0}\bigg)^k\right]^n
+    :=\sum_{k=0}^{+\infty}b_{n,k}\bigg(\frac{z}{z_0}\bigg)^k,\]
+    其中$b_{n,k}$是求和为$k$的$n$元非负整数组的数目，即求和为$k+n$的$n$元正整数组的数目，
+    那么$\displaystyle b_k=\binom{k+n-1}{n-1}$，
+    当$k\to\infty$时，$b_{n,k}/b_{n,k+1}\to1$。
+    由于$g(z)$在$D(0,R+\varepsilon)$上全纯，其收敛半径大于等于$R+\varepsilon$，
+    从而其在$z=0$处的幂级数展开式系数有控制
+    \[\left|a_k-\sum_{n=1}^{N}c_nb_{n,k}z_0^{-k}\right|
+    \lesssim(R+\varepsilon)^{-k}=o\big(R^{-k}\big),\]
+    进而有
+    \[\frac{a_k}{a_{k+1}}=\frac{\ \ \ \displaystyle\sum_{n=1}^{N}c_nb_{n,k}z_0^{-k}+o\big(R^{-k}\big)}
+    {\displaystyle\sum_{n=1}^{N}c_nb_{n,k+1}z_0^{-(k+1)}+o\big(R^{-(k+1)}\big)} \to z_0.\qedhere\]
+\end{proof}
+
+=== 4.6 Mittag--Leffler定理 ===
+\begin{4}
+    设$\{z_n\}$为$\mathbb{C}$中互不相同的非零点组成的序列，
+    满足$\sum\limits_{n=1}^{+\infty}|z_n|^{-(d+1)}<+\infty$，这里$d>1$是整数。证明
+    \[f(z)=\sum_{n=1}^{+\infty}\left(\frac{1}{(z_n-z)^d}-\frac{1}{z_n^d}\right)\]
+    定义了$\mathbb{C}$上的半纯函数，以$z_n$为极点，且为$d$阶极点，$n=1,2,\dots$。
+\end{4}
+\begin{proof}
+    限制在每个$D(0,R)$中考察，$\sum\limits_{n=1}^{+\infty}|z_n|^{-(d+1)}$的收敛性
+    表明$|z_n|\to+\infty$，从而当$n>$很大的$N$时，有$|z_n|>2R$。由于
+    \[f(z)=\sum_{n=1}^{N}\left(\frac{1}{(z_n-z)^d}-\frac{1}{z_n^d}\right)
+    +\sum_{n=N+1}^{+\infty}\left(\frac{1}{(z_n-z)^d}-\frac{1}{z_n^d}\right),\]
+    左边带来了$D(0,R)$内的极点，只需要说明右边是一致收敛的级数从而全纯即可。
+    对于$\gamma\in\mathbb{C},|\gamma|<1$，有
+    \[|(1+\gamma)^d-1|=\left|\gamma\sum_{j=1}^{d}\binom{d}{j}\gamma^{j-1}\right|
+    \le|\gamma|\sum_{j=1}^{d}\binom{d}{j}\le2^d|\gamma|.\]
+    对每个$n>N$，取$\gamma=z/(z_n-z)$，由$|z_n|>2R,|z|<R$有
+    \[|\gamma|\le\frac{|z|}{|z_n|-|z_n|/2}<\frac{2R}{|z_n|}<1,\]
+    得出估计
+    \[\left|\frac{1}{(z_n-z)^d}-\frac{1}{z_n^d}\right|
+    =\frac{1}{|z_n|^d}\left|\left(\frac{z_n}{z_n-z}\right)^d-1\right|
+    \le\frac{2^d|\gamma|}{|z_n|^d}<\frac{2^{d+1}R}{|z_n|^{d+1}}.\qedhere\]
+\end{proof}
+
+== 留数定理和辐角原理 ==
+
+=== 5.1 留数和留数定理 ===
+\begin{3}
+    设$P(z)$和$Q(z)$是没有公共零点的多项式，且$Q(z)$的零点$z_1,z_2,\dots,z_m$都是单零点，
+    如果$\deg P(z)<\deg Q(z)$ ($\deg$表示多项式的次数)，证明：有理函数$P(z)/Q(z)$有部分分式分解
+    \[\frac{P(z)}{Q(z)}=\sum_{j=1}^{m}\frac{P(z_j)}{Q'(z_j)}\frac{1}{z-z_j}.\]
+\end{3}
+\begin{proof}
+    多项式\[R(z)=P(z)-Q(z)\sum_{j=1}^{m}\frac{P(z_j)}{Q'(z_j)}\frac{1}{z-z_j}\]
+    的次数$\deg R(z)<\deg Q(z)$，且由$\lim\limits_{z \to z_j}R(z)=P(z_j)-P(z_j)=0$得到$R(z_j)=0$，从而$R(z)\equiv0$。
+\end{proof}
+\begin{9}
+    证明：\[\frac{1}{2\pi}\int_0^{2\pi}\cos^{2n}\theta\,{\rm d}\theta
+    =\frac{(2n)!}{2^{2n}(n!)^2}, \quad n>0.\]
+\end{9}
+\begin{proof}
+\begin{align*}
+    \frac{1}{2\pi}\int_0^{2\pi}\cos^{2n}\theta\,{\rm d}\theta
+    &=\frac{1}{2\pi}\int_0^{2\pi}\left(\frac{{\rm e}^{{\rm i}\theta}+{\rm e}^{-{\rm i}\theta}}{2}\right)^{2n}{\rm d}\theta
+    =\frac{1}{2\pi}\int_{|z|=1}\left(\frac{z+z^{-1}}{2}\right)^{2n}\frac{{\rm d}z}{{\rm i}z}\\
+    &=\frac{1}{2^{2n}}\frac{1}{2\pi{\rm i}}\int_{|z|=1}\sum_{k=0}^{n}\binom{2n}{k}z^{2n-2k-1}\,{\rm d}z
+    =\frac{1}{2^{2n}}\binom{2n}{n}.
+\end{align*}
+\end{proof}
+
+\begin{11}
+    通过在合适的围道上对$\dfrac{\cot(\pi z)}{z^2+1}$积分，
+    求$\displaystyle\sum_{n=0}^{+\infty}\frac{1}{n^2+1}$。
+    又如何求$\displaystyle\sum_{n=0}^{+\infty}(-1)^n\frac{1}{n^2+1}$？
+\end{11}
+\begin{proof}[解答]
+    前者见\cite{AG} Example 5.6.3。至于后者，在4.6节习题2 (1)中令$z={\rm i}$，得到
+    \[\frac{\pi}{\sin \pi{\rm i}}=\frac{1}{{\rm i}}
+    +\sum_{n=1}^{+\infty}(-1)^n\frac{2{\rm i}}{-1-n^2},\]
+    即
+    \[\frac{\pi}{\sinh\pi}=1+2\sum_{n=1}^{+\infty}(-1)^n\frac{1}{n^2+1}.\qedhere\]
+\end{proof}
+
+=== 5.2 利用留数计算积分 ===
+\begin{1}
+    利用留数计算下列积分：
+    \[(3) \int_0^{+\infty}\frac{{\rm d}x}{x^n+1},\ (n\ge2\text{ 自然数})\qquad
+    (4) \int_0^{+\infty}\frac{\cos x}{(x^2+1)^2}\,{\rm d}x.\]
+\end{1}
+\begin{proof}[解答]
+    (3) 见\cite{RS} Exercise VI.2.1 (b)，答案是$\dfrac{\pi/n}{\sin(\pi/n)}$。
+
+    (4) 见\cite{RS} Exercise VI.2.8 (a)，答案是$\dfrac{\pi}{2{\rm e}}$。
+\end{proof}
+\begin{2}
+    利用留数计算下列积分：
+    \[(1) \int_0^{+\infty}\frac{x^{-a}}{1+x}\,{\rm d}x\ (0<a<1),\qquad
+    (2) \int_0^{+\infty}\frac{1}{1+x^b}\,{\rm d}x\ (b>1).\]
+\end{2}
+\begin{proof}[解答]
+    (1) 见\cite{RS} Exercise VI.2.15 (a)，答案是$\dfrac{\pi}{\sin(\pi a)}$。
+
+    (2) 见\cite{AG} Example 5.3.7，答案是$\dfrac{\pi/b}{\sin(\pi/b)}$。
+\end{proof}
+\begin{3}
+    选取适当的围道(第一象限$1/4$圆环边界)，利用留数定理证明：对$0<a<1$，
+    \[\int_0^{+\infty}x^{a-1}\cos x\,{\rm d}x=\Gamma(a)\cos(\pi a/2),\quad
+    \int_0^{+\infty}x^{a-1}\sin x\,{\rm d}x=\Gamma(a)\sin(\pi a/2),\]
+    其中$\displaystyle\Gamma(a)=\int_0^{+\infty}t^{a-1}{\rm e}^{-t}{\rm d}t$为$\Gamma$函数。
+\end{3}
+\begin{proof}
+    见\cite{AG} Example 5.5.2.
+\end{proof}
+\begin{4}
+    选取适当的围道(顶角为$\pi/4$的扇形边界)，利用留数定理证明：
+    \[\int_0^{+\infty}\cos(x^2)\,{\rm d}x
+    =\int_0^{+\infty}\sin(x^2)\,{\rm d}x=\frac{\sqrt{\pi}}{2\sqrt{2}}.\]
+\end{4}
+\begin{proof}
+    由上一题的结论，
+    \[\int_0^{+\infty}\frac{\cos x}{\sqrt{x}}\,{\rm d}x
+    =\Gamma\Big(\frac{1}{2}\Big)\cos\frac{\pi}{4}=\sqrt{\frac{\pi}{2}},\quad
+    \int_0^{+\infty}\frac{\sin x}{\sqrt{x}}\,{\rm d}x
+    =\Gamma\Big(\frac{1}{2}\Big)\sin\frac{\pi}{4}=\sqrt{\frac{\pi}{2}},\]
+    替换$x$为$x^2$即可。
+\end{proof}
+\begin{5}
+    选取合适的围道计算定积分
+    \[\int_0^{+\infty}\frac{\sin x}{\sinh x}\,{\rm d}x.\]
+\end{5}
+\begin{proof}[解答]
+    见\cite{AG} 5.4 Exercise 24.
+\end{proof}
+\begin{6}
+    选取合适的围道和被积函数，利用留数计算下列积分：
+    \[\int_0^{+\infty}\frac{{\rm d}x}{(x+a)(\ln^2x+\pi^2)}\quad(a>0).\]
+\end{6}
+\begin{proof}
+    参考\href{https://cs.uwaterloo.ca/journals/JIS/VOL20/Blagouchine/blag5.html}{这篇文章}。
+\end{proof}
+
+=== 5.3 辐角原理 ===
+\begin{2}
+    给定复数$\lambda$，证明：如果$m$和$n$是充分大的正整数，那么方程${\rm e}^z=z+\lambda$
+    在带域$\{-2\pi{\rm i}m<\operatorname{Im}z<2\pi{\rm i}n\}$内恰有$m+n$个根。
+\end{2}
+\begin{proof}
+    对充分大的$K>0$，取矩形围道$\Gamma=\gamma_1\cup\gamma_2\cup\gamma_3\cup\gamma_4$，
+    其中$\gamma_1=\{x+2\pi{\rm i}n:x$从$-K$到$K\}$，
+    $\gamma_2=\{K+{\rm i}y:y$从$2\pi n$到$-2\pi m\}$，
+    $\gamma_3=\{x-2\pi{\rm i}m:x$从$K$到$-K\}$，
+    $\gamma_4=\{-K+{\rm i}y:y$从$-2\pi m$到$2\pi n\}$，如下图所示。
+    结论等价于$\Gamma$在$f(z)={\rm e}^z-z$下的像$f(\Gamma)$绕着定点$\lambda$转了$m+n$圈。
+\begin{tikzpicture}
+    \draw[->,>=stealth] (-3,0)to(3,0);\draw[->,>=stealth] (0,-3)to(0,3);
+    \draw[->,>=stealth] (-2,1)to(0.05,1);\draw[->,>=stealth] (2,-1)to(-0.05,-1);
+    \draw[->,>=stealth] (-2,-1)to(-2,0.05);\draw[->,>=stealth] (2,1)to(2,-0.05);
+    \draw (0,1)to(2,1) (0,-1)to(-2,-1) (-2,0)to(-2,1) (2,0)to(2,-1);
+    \draw (0,1.3) node {$\gamma_1$};\draw (0,-1.3) node {$\gamma_3$};
+    \draw (2.3,0) node {$\gamma_2$};\draw (-2.3,0) node {$\gamma_4$};
+\end{tikzpicture}
+$f(\gamma_1)=\{{\rm e}^x-x-2\pi{\rm i}n:x$从$-K$到$K\}$，
+是从$A_1={\rm e}^{-K}+K-2\pi{\rm i}n$向左走到$1-2\pi{\rm i}n$
+再向右走到$A_2={\rm e}^{K}-K-2\pi{\rm i}n$；
+$f(\gamma_2)=\{{\rm e}^{K+{\rm i}y}-K-{\rm i}y:y$从$2\pi n$到$-2\pi m\}$，
+其中$|{\rm e}^{K+{\rm i}y}|={\rm e}^K$非常大，令$-K-{\rm i}y$相形见绌，
+故$f(\gamma_2)$是从$A_2$开始绕着原点转了$m+n$圈至$A_3={\rm e}^K-K+2\pi{\rm i}m$停下；
+$f(\gamma_3)=\{{\rm e}^x-x+2\pi{\rm i}m:x$从$K$到$-K\}$，
+相当于$f(\gamma_1)$向上平移$2\pi(m+n)$后反着走了一遍，记终点为$A_4$；
+最后$f(\gamma_4)=\{{\rm e}^{-K+{\rm i}y}+K-{\rm i}y:y$从$-2\pi m$到$2\pi n\}$，
+其中$|{\rm e}^{-K+{\rm i}y}|={\rm e}^{-K}$小如沧海一粟，从而这个式子约等于$K-{\rm i}y$，
+故$f(\gamma_4)$近乎于从$A_4$向下降落到$A_1$，草图如下。
+由于横纵坐标${\rm e}^{-K}+K,{\rm e}^{K}-K,2\pi m,-2\pi n$都能取得很大，
+$\lambda$相较之下离原点很近，可知$f(\Gamma)$环绕$\lambda$的圈数就是$m+n$。
+\begin{tikzpicture}
+    \draw[->,>=stealth] (-5,0)to(5,0);
+    \draw[->,>=stealth] (0,-5)to(0,5);
+    \draw[->,>=stealth] (2,-2)to(1.15,-2); \draw (1.2,-2)to(0.4,-2);
+    \draw[->,>=stealth] (0.4,-2.04)to(2.25,-2.04); \draw (2.2,-2.04)to(4,-2.04);
+    \draw (2,2)to(1.2,2); \draw[->,>=stealth] (0.4,2)to(1.25,2);
+    \draw (0.4,2.04)to(2.2,2.04); \draw[->,>=stealth] (4,2.04)to(2.15,2.04);
+    \draw[->,>=stealth] (2,2)to(2,0); \draw (2,0)to(2,-2);
+    \draw[->,>=stealth] (-4.517,0.3)to(-4.517,0.2);
+    \draw[->,>=stealth] (-4.518,0.1)to(-4.518,0);
+    \draw[->,>=stealth] (-4.517,-0.1)to(-4.517,-0.2);
+    \draw (2,-2) node {$A_1$};\draw (4,-2) node {$A_2$};\draw (0,0)circle(4.518);
+    \draw (4,2) node {$A_3$};\draw (2,2) node {$A_4$};\draw (0.4,-0.2) node {$1$};
+    \draw (0.4,2)arc(-90:-270:0.02);\draw (0.4,-2)arc(90:270:0.02);
+    \draw (2,-0.2) node {$\scriptstyle{\rm e}^{-K}+K$};
+    \draw (4,-0.2) node {$\scriptstyle{\rm e}^{K}-K$};
+    \draw (-0.45,2) node {$2\pi{\rm i}m$};\draw (-0.55,-2) node {$-2\pi{\rm i}n$};
+\end{tikzpicture}
+\end{proof}
+
+\begin{5}
+    记$B(z)=z^2\dfrac{z-a}{1-az}$。
+
+    (1) 证明：如果$a>3$，则$B$在单位圆周$\mathbb{T}$上的限制是$\mathbb{T}$到$\mathbb{T}$的保向同胚。
+\end{5}
+\begin{proof}
+    求导得\[(1-az)^2B'(z)=-z\underbrace{\big[2az^2-(a^2+3)z+2a\big]}_{p(z)},\]
+    当$a>3$时，$p(z)$的判别式为\[(a^2+3)^2-4\cdot4a^2=(a^2-1)(a^2-9)>0,\]
+    从而$p(z)$有两个互异实根（而不是一对共轭虚根），
+    这说明$z\in\mathbb{T}$时$p(z)\ne0$，进而$B'(z)\ne0$，故$B$是局部微分同胚。
+\end{proof}
+
+\begin{8}
+    利用Rouché定理证明代数基本定理。
+\end{8}
+\begin{proof}
+    对于$p(z)=a_nz^n+a_{n-1}z^{n-1}+\cdots+a_0$，当$R>0$很大时，对$|z|=R$，
+    \[|a_nz^n|=|a_n|R^n>|a_{n-1}|R^{n-1}+\cdots+|a_0|\ge|a_{n-1}z^{n-1}+\cdots+a_0|,\]
+    从而$p(z)$在$|z|\le R$中的根的个数与$a_nz^n$相同，是$n$个。
+\end{proof}
+
+\begin{9}
+    设$f$是闭单位圆$\overline{\mathbb{D}}$上全纯函数，且$|f(z)|<1,z\in\overline{\mathbb{D}}$。
+    证明：$f$在$\overline{\mathbb{D}}$内恰有一个不动点，即存在唯一的$z_0\in\mathbb{D}$使得$f(z_0)=z_0$。
+\end{9}
+\begin{proof}
+    在$\partial\mathbb{D}$上$|f(z)|<|z|$，
+    由Rouché定理，$f(z)-z$与$z$在$\mathbb{D}$内的根的个数相同，都是$1$。
+\end{proof}
+
+\begin{10}
+    设$f,g$在$\overline{\mathbb{D}}$上除了有限个极点外全纯，且满足
+    \[|f(z)+g(z)|<|f(z)|+|g(z)|,\qquad|z|=1.\]
+    证明：$f$和$g$在$\mathbb{D}$内的零点个数之差等于极点个数之差。
+\end{10}
+\begin{proof}
+    条件是说在$|z|=1$上$f(z),g(z)$的辐角不会相同，可知两者关于原点的绕数相同。
+    直观来看就是$f(z),g(z)$绕着操场跑，两人的位置从不重合，
+    则没有发生过套圈，从而跑的圈数相同。
+\end{proof}
+
+=== 5.4 全纯函数局部和全局性质 ===
+\begin{1}
+    证明全纯函数的如下反函数定理：设 $f$ 在 $z_0$ 的某个邻域内全纯，
+    $f(z_0)=w_0$，且 $f^{\prime}(z_0) \neq 0$。
+    那么，存在 $r>0$，使得 $\delta=\inf\limits_{|z-z_0|=r}|f(z)|>0$，
+    则在 $D(w_0,\delta)$ 上存在 $f$ 的反函数 $f^{-1}$，且成立
+    $$f^{-1}(w)=\frac{1}{2\pi{\rm i}} \int_{|\zeta-z_0|=r} \frac{\zeta f^{\prime}(\zeta)}{f(\zeta)-w} d\zeta, \quad w \in D(w_0, \delta).$$
+\end{1}
+\begin{proof}
+    参考\cite{AG} Theorem 5.7.17.
+\end{proof}
+
+\begin{2}
+    利用辐角原理证明关于全纯函数局部映射性质的定理。
+\end{2}
+\begin{proof}
+    扰动$\delta$充分小时，$f(|z-z_0|=r)$绕$w$点的圈数不变。
+\end{proof}
+
+\begin{3}
+    设 $\Omega$ 是有界区域，函数 $f$ 在 $\overline{\Omega}$ 上连续，在 $\Omega$ 上全纯。证明：
+    \begin{enumerate}[label=(\arabic*)]
+    \item 如果对 $z \in \partial \Omega$，$|f(z)|$ 是常数，
+    证明 $f$ 是常值函数或在 $\Omega$ 内有零点。
+    \item 如果对 $z \in \partial \Omega$，$\operatorname{Re} f(z)$ 为常数，证明 $f$ 为 $\Omega$ 上常值函数。
+\end{enumerate}
+\end{3}
+\begin{proof}
+    (1) 设$c$是题中常数，若$f$无零点，用最大模原理和最小模原理得到
+    $\min\limits_{\partial\Omega}|f|\le|f(z)|\le\max\limits_{\partial\Omega}|f|$。
+
+    (2) 设$c$是题中常数，$\operatorname{Re} f(z)-c$是边界上为零的调和函数。
+\end{proof}
+
+\begin{4}
+    (1) 设 $f$ 在区域 $\Omega$ 上全纯，$D(z_0,\rho) \subset \Omega$，证明：对 $p \geq 1$，
+    $$|f(z_0)|^p \leq \frac{1}{2\pi} \int_0^{2\pi}|f(z_0+r{\rm e}^{{\rm i}\theta})|^p{\rm d}\theta, \quad r \in(0, \rho).$$
+    等号成立的充要条件为 $|f(z_0)|=|f(z_0+r{\rm e}^{{\rm i}\theta})|,\,\theta\in[0,2\pi]$。
+
+    (2) 设 $f_1, \ldots, f_n$ 都是区域 $\Omega$ 上全纯函数，若对某个 $p \geq 1$ 满足
+    $$|f_1(z)|^p+\cdots+|f_n(z)|^p=1,$$
+    证明：$f_1, \ldots, f_n$ 都是常值函数。
+\end{4}
+\begin{proof}
+    (1) 由均值公式，
+    \[|f(z_0)|^p = \left|\frac{1}{2\pi} \int_0^{2\pi}f(z_0+r{\rm e}^{{\rm i}\theta})\,{\rm d}\theta\right|^p
+    \leq \frac{1}{2\pi} \int_0^{2\pi}|f(z_0+r{\rm e}^{{\rm i}\theta})|^p{\rm d}\theta.\]
+    注：$\mathbb{D}$上满足\[\sup_{0<r<1}\left(\frac{1}{2\pi} \int_0^{2\pi}|f(r{\rm e}^{{\rm i}\theta})|^p{\rm d}\theta\right)^\frac{1}{p}<+\infty\]
+    的全纯函数全体称为Hardy空间，记为$H^p$。
+
+    (2) 任取一点$w\in\Omega$，对所有的$1 \le k \le n$，取$\theta_k\in\R$使得${\rm e}^{{\rm i}\theta_k}f_k(w)=|f_k(w)|$，构造全纯函数
+    \[F(z)=({\rm e}^{{\rm i}\theta_1}f_1(z))^p+\cdots+({\rm e}^{{\rm i}\theta_n}f_n(z))^p,\]
+    则$F(w)=1$且$|F|\le1$，由最大模原理，$F\equiv1$，迫使$f_1,\dots,f_n$的辐角不变，同开映射定理矛盾。
+\end{proof}
+
+\begin{6}
+    设$\zeta_1,\dots,\zeta_n$是单位圆周$\mathbb{T}$上$n$点，
+    证明：存在$z\in\mathbb{D}$使得$z$到$\zeta_1,\dots,\zeta_n$的距离的乘积大于$1$。
+\end{6}
+\begin{proof}
+    全纯函数$(z-\zeta_1)\dots(z-\zeta_n)$在$\overline{\mathbb{D}}$上的最大模不能在内点$0$取到。
+\end{proof}
+
+\begin{8}
+    证明广义Liouville定理：设$f$是整函数，且对任意$z\in\mathbb{C}$，
+    有$|f(z)|<1/|\operatorname{Im}z|$，则$f(z)\equiv0,z\in\mathbb{C}$。
+    (提示：考虑$g(z)=(z^2-R^2)f(z)$在圆周$|z|=R$上的最大模.)
+\end{8}
+\begin{proof}
+    当$|z|=R$时，有
+    \[|(z^2-R^2)f(z)|=|2{\rm i}(\operatorname{Re}z)(\operatorname{Im}z)f(z)|
+    \le2|\operatorname{Re}z|\le2R.\]
+    由最大模原理，只要$|z| \le R$，就有
+    \[|f(z)|\le\frac{2R}{|z^2-R^2|},\]
+    令$R\to+\infty$即得$f(z)=0$。
+\end{proof}
+
+\begin{9}
+    设$f$是在闭上半平面$\overline{\mathbb{H}}$上连续，
+    在$\mathbb{H}$上全纯的有界函数，
+    如果对于任意实数$x\in\mathbb{R}$，$|f(x)|\leq M$，
+    证明：对于任意$z\in\mathbb{H}$，$|f(z)|\leq M$。
+    试举例说明，$f$的有界性条件不能去掉。
+    (提示：考虑$g_n(z)=f(z)^n/(z+{\rm i})$，在$\mathbb{H}\cap D(0,R)$上使用最大模原理.)
+\end{9}
+\begin{proof}
+    令$g_n(z)=f(z)^n/(z+{\rm i})$，则$g_n$在$\mathbb{H}$上全纯有界，
+    记$A=\sup\limits_{x\in\mathbb{H}}|f(z)|$。
+    在$\mathbb{H}\cap D(0,R)$的边界上，
+    当$x\in\partial\mathbb{H}$时$|g_n(z)|\leq M^n$，
+    当$x\in\partial D(0,R)$时$|g_n(z)|\leq A^n/(R-1)$。
+
+    对于固定的$z\in\mathbb{H}$，对任何的$\alpha>1$，
+    存在很大的$n$使得$|z+{\rm i}|^{\frac{1}{n}}<\alpha$。
+    对于某个给定的这样的$n$，取充分大的$R$使得$A^n/(R-1)\leq M^n$，
+    从而$g_n(z)$在$\mathbb{H}\cap D(0,R)$上满足$|g_n(z)|\leq M^n$，进而
+    \[|f(z)|=|g_n(z)|^\frac{1}{n}|z+{\rm i}|^{\frac{1}{n}}<M\alpha.\]
+    由$\alpha$的任意性,得到$|f(z)|\leq M$。
+
+    当不要求$f$有界时，取$f(z)=\sin z$即可。
+\end{proof}
+
+\begin{10}
+    设$f$是$\mathbb{C}$上半纯函数，如果存在自然数$m$，使得对任意$w\in\mathbb{C}$，
+    $f^{-1}(w)$至多包含$m$个点(计重数)，证明：$f$是有理函数。
+\end{10}
+\begin{proof}
+    设$f^{-1}(w_0)=\{z_1,\dots,z_n\}$中的元素个数$n$最多，
+    对$f(z)$在$z_j$ $(1 \le j \le n)$用开映射定理，可知对任给的$\delta>0$ (如$\delta=1$)，
+    有$f(D(z_j,\delta)) \supset D(w_0,\varepsilon)$对某个小的$\varepsilon>0$成立。
+    那么对一切$w \in D(w_0,\varepsilon)$，在各个$D(z_j,\delta)$之内已有$f(z)=w$的$n$个解，
+    无法再有更多的解了，即$f(z)$在各个$D(z_j,\delta)$之外不取$D(w_0,\varepsilon)$中的值，
+    这就表明$1/(f(z)-w_0)$是在无穷远处有界的半纯函数，必定是有理函数，从而$f(z)$亦是。
+\end{proof}
+
+\begin{11}
+    设$f(z)$上单位圆周$\mathbb{T}=\{|z|=1\}$上的连续函数。
+    证明：$f(z)$可以被复变量多项式在$\mathbb{T}$上一致逼近
+    (即：存在多项式序列$\{P_n(z)\}$使得$P_n(z)$在$\mathbb{T}$上一致收敛于$f(z)$)
+    的充要条件是存在闭单位圆$\overline{\mathbb{D}}$上连续，
+    且在$\mathbb{D}$上全纯的函数$F(z)$使得$F(z)=f(z),z\in\mathbb{T}$。
+\end{11}
+\begin{proof}
+    必要性：若$f(z)$在$\mathbb{T}$上被多项式序列${P_n(z)}$一致逼近，
+    则${P_n(z)}$是$\mathbb{T}$上的一致收敛的Cauchy列，
+    由最大模原理，${P_n(z)}$也是$\overline{\mathbb{D}}$上一致收敛的Cauchy列，
+    于是${P_n(z)}$在$\overline{\mathbb{D}}$上的极限函数$F(z)$即为所求.
+
+    充分性：若符合题意的$F(z)$存在，则$F(z)$在$\overline{\mathbb{D}}$上一致连续，
+    令$F_r(z)=F(rz),r<1$，则$r\rightarrow1^-$时$F_r(z)$中$\mathbb{T}$上一致收敛到$F(z)$，
+    注意到$F_r(z)$均在$\overline{\mathbb{D}}$上全纯，
+    于是在$\mathbb{T}$上有一致收敛的幂级数展开，作截断即可得到一致逼近的多项式序列，
+    接下来$\forall n>1$，取$P_n(z)$为$F_{1-\frac{1}{n}}$在$\mathbb{T}$上的多项式截断，
+    满足$\forall z\in\mathbb{T},|P_n(z)-F_{1-\frac{1}{n}}(z)|<\frac{1}{n}$，则取出的$\{P_n\}$即为所求。
+\end{proof}
+
+=== 5.5 Schwarz引理 ===
+\begin{1}
+    设$f$在单位圆$\mathbb{D}$上全纯，满足$|f(z)|\le1,z\in\mathbb{D}$，
+    且$0$是$f$的$n$阶零点$(n>1)$。证明：
+    \[|f(z)|\le|z|^n,\quad z\in\mathbb{D},\qquad\text{以及}\quad|f^{(n)}(0)|\le n!.\]
+    等号成立的充要条件是$f(z)={\rm e}^{{\rm i}\theta}z^n$。
+\end{1}
+\begin{proof}
+    $0$是$g(z)=f(z)/z^n$的可去奇点，取值为$g(0)=f^{(n)}(0)/n!$。
+\end{proof}
+\begin{2}
+    设$f$在单位圆$\mathbb{D}$上全纯，满足$|f(z)|\le1,z\in\mathbb{D}$。
+    如果$z_0\in\mathbb{D}$是$f$的一个$n$阶零点，证明：$|z_0|^n\ge|f(0)|$。
+\end{2}
+\begin{proof}
+    令\[\varphi_{z_0}(z)=\frac{z-z_0}{1-\bar{z}_0z},\]
+    对$h(z)=f(z)/\varphi_{z_0}^n(z)$用最大模原理，得$|h(0)|\le1$。
+\end{proof}
+\begin{3}
+    设$f$是单位圆$\mathbb{D}$上的全纯函数，满足$\operatorname{Re}f(z)>0$。
+    证明：对$z,z_0\in\mathbb{D}$，
+
+    (1) $\left|\dfrac{f(z)-f(z_0)}{f(z)+\overline{f(z_0)}}\right|
+    \le\left|\dfrac{z-z_0}{1-\bar{z}_0z}\right|$，\quad
+    (2) $|f'(z)|\le\dfrac{2\operatorname{Re}f(z)}{1-|z|^2}$。
+\end{3}
+\begin{proof}
+    令\[g(z)=\frac{1-f(z)}{1+f(z)},\]
+    算出来\[\frac{g(z)-g(z_0)}{1-\overline{g(z_0)}g(z)}
+    =\frac{-f(z)+f(z_0)}{f(z)+\overline{f(z_0)}},\qquad
+    \frac{|g'(z)|}{1-|g(z)|^2}=\frac{|f'(z)|}{2\operatorname{Re}f(z)},\]
+    对$g$用Schwarz--Pick定理即可。
+\end{proof}
+\begin{4}
+    设$f$是单位圆$\mathbb{D}$上全纯函数，满足$\operatorname{Re}f(z)>0$，$f(0)=1$。证明：
+\begin{enumerate}[label=(\alph*)]
+    \item $\dfrac{1-|z|}{1+|z|}\le\operatorname{Re}f(z)\le\dfrac{1+|z|}{1-|z|}$，
+    \item $\operatorname{Im}f(z)\le\dfrac{2|z|}{1-|z|^2}$，
+    \item $\dfrac{1-|z|}{1+|z|}\le|f(z)|\le\dfrac{1+|z|}{1-|z|}$。
+\end{enumerate}
+\end{4}
+\begin{proof}
+    令\[g(z)=\frac{1-f(z)}{1+f(z)}.\]
+    一方面，$\operatorname{Re}f(z)>0$说明$|1-f(z)|<|1+f(z)|$，
+    从而$g$是$\mathbb{D}$到$\mathbb{D}$的映射，
+    结合$g(0)=0$知$|g(z)|\le|z|$，从而有
+    \[-|z|(1+|f(z)|)\le1-|f(z)|\le|z|(1+|f(z)|),\]
+    整理得(c)。另一方面，反解出
+    \[f(z)=\frac{1-g(z)}{1+g(z)},\]
+    进而\[\operatorname{Re}f(z)=\frac{1-|g(z)|^2}{|1+g(z)|^2},
+    \quad\operatorname{Im}f(z)=\frac{-2\operatorname{Im}g(z)}{|1+g(z)|^2},\]
+    放缩即得(a)和(b)。
+\end{proof}
+\begin{5}
+    设$f(z)$是$\mathbb{D}$到区域$\Omega$的共形映射，
+    证明$f(0)$到$\partial\Omega$的距离$\operatorname{dist}(f(0),\partial\Omega)$满足
+    \[\operatorname{dist}(f(0),\partial\Omega)\le|f'(0)|.\]
+\end{5}
+\begin{proof}
+    令\[g(z)=\frac{f(z)-f(0)}{f'(0)},\]
+    记$r=\operatorname{dist}(0,\partial g(\mathbb{D}))$，
+    则$r=\operatorname{dist}(f(0),\partial\Omega)/|f'(0)|$，
+    且$D(0,r) \subset g(\mathbb{D})$。由于$g$亦是共形映射，
+    对$g^{-1}\colon D(0,r)\to\mathbb{D}$用Schwarz引理得$|(g^{-1})'(0)|\le1/r$，
+    从而$r\le1/|(g^{-1})'(0)|=|g'(0)|=1$。
+\end{proof}
+\begin{9}
+    设$f(z)=a_1z+a_2z^2+\cdots$在$\mathbb{D}$中全纯，
+    $|f(z)|<1$，证明：$|a_2|\le1-|a_1|^2$。
+\end{9}
+\begin{proof}
+    对$g(z)=f(z)/z$在$z=0$用Schwarz--Pick定理，得$|g'(0)|\le1-|g(0)|^2$。
+\end{proof}
+\begin{10}
+    证明Jensen不等式：设$f(z)$在闭圆$\overline{D(0,R)}$上全纯，$f(0)\ne0$。
+    记$f(z)$在$D(0,R)$内的零点为$z_1,z_2,\dots,z_n$ ($k$重零点重复记$k$次)，
+    $M_R=\max_{|z|=R}|f(z)|$，则：
+    \[\ln\frac{R^n}{|z_1z_2\cdots z_n|}\le\ln M_R-\ln|f(0)|.\]
+\end{10}
+\begin{proof}
+    通过[[Jensen 公式]]易得结论。
+\end{proof}
+
+=== 5.6 单位圆上的双曲几何 ===
+\begin{1}
+    证明：对任意$z,w\in\mathbb{D}$，如果$|z|,|w|\le r$ $(0<r<1)$，则
+    \[d_{\mathbb{D}}(z^2,w^2)\le\frac{2r}{1+r^2}d_{\mathbb{D}}(z,w).\]
+\end{1}
+\begin{proof}
+    令$\gamma$取遍连接$z$和$w$的曲线，则
+    \[d_{\mathbb{D}}(z^2,w^2)\le\inf_\gamma\int_\gamma\frac{2|d(u^2)|}{1-|u^2|^2}
+    =\inf_\gamma\int_\gamma\frac{2|u|}{1+|u|^2}\frac{2|du|}{1-|u|^2}
+    \le\frac{2r}{1+r^2}d_{\mathbb{D}}(z,w).\qedhere\]
+\end{proof}
+\begin{4}
+    （Wolff--Denjoy定理）设 $f: \mathbb{D} \rightarrow \mathbb{D}$ 全纯，
+    记 $f^{\circ n}= f \circ f \circ \cdots \circ f$ (复合 $n$ 次)，
+    若 $f$ 不是共形映射，则 $\{f^{\circ n}\}$ 在 $\mathbb{D}$ 上
+    内闭一致收敛于一个常数 $c \in \overline{\mathbb{D}}$。
+    如果 $c \in \mathbb{D}$，则 $f(c)=c$，$|f^{\prime}(c)|<1$。
+\end{4}
+\begin{proof}
+由于 $f$ 不是共形映射，由 Schwarz 引理
+$$\frac{|f^{\prime}(z)|}{1-|f(z)|^2}<\frac{1}{1-|z|^2}.$$
+对任意紧集 $K \subset \mathbb{D}$，存在常数 $\lambda=\lambda(K)<1$，使得
+$$\frac{|f^{\prime}(z)|}{1-|f(z)|^2} \leq \lambda \frac{1}{1-|z|^2}, \quad z \in K.$$
+写成 Poincaré 距离形式，就有
+$$d_{\mathbb{D}}(f(z_1), f(z_2)) \leq \lambda d_{\mathbb{D}}(z_1, z_2), \quad z_1, z_2 \in K.$$
+分两种情形讨论：
+
+（1）存在 $z \in \mathbb{D}$ 使得 $|f^{\circ n}(z)| \nrightarrow 1$ $(n \rightarrow \infty)$。
+
+此时，存在子列 $\{n_k\}$ 使得 $f^{\circ n_k}(z) \rightarrow c \in \mathbb{D}$ $(n \rightarrow \infty)$。
+于是，存在 $0<r<1$，使得 $f^{\circ n_k}(z) \in \overline{D(0, r)}$，等价于
+\[d_{\mathbb{D}}\left(f^{\circ n_k}(z), 0\right) \leq R:=\log \frac{1+r}{1-r}<\infty.\]
+又由 Schwarz 引理，
+\begin{align*}
+d_{\mathbb{D}}(f^{\circ(n+1)}(z), 0) & \leq d_{\mathbb{D}}(f^{\circ(n+1)}(z), f(0))+d_{\mathbb{D}}(f(0), 0) \\
+& \leq d_{\mathbb{D}}(f^{\circ n}(z), 0)+d_{\mathbb{D}}(f(0), 0) \\
+& \leq R+d_{\mathbb{D}}(f(0), 0)=R_1.
+\end{align*}
+这表明序列 $\{f^{\circ n}(z)\}$ 和 $\{f^{\circ(n+1)}(z)\}$ 都落于紧集 $\overline{D(0, r_1)}$ 中，
+这里 $r_1=\frac{e^{R_1-1}}{e^{R_1+1}}<1$。于是，存在 $0<\lambda<1$，使得
+$$d_{\mathbb{D}}(f^{\circ(n_k+2)}(z), f^{\circ(n_k+1)}(z)) 
+\leq \lambda d_{\mathbb{D}}(f^{\circ(n_k+1)}(z), f^{\circ n_k}(z)).$$
+对任意 $n$，有
+$$d_{\mathbb{D}}(f^{\circ(n+1)}(z), f^{\circ n}(z)) 
+\leq \lambda^m d_{\mathbb{D}}(f(z), z),$$
+这里，$m$ 是 $\{1,2, \ldots, n-1\}$ 中含有子列 $\left\{n_k\right\}$ 中元素的个数，
+当 $n \rightarrow \infty$ 时，$m \rightarrow \infty$。因此，
+$$d_{\mathbb{D}}(f^{\circ(n+1)}(z), f^{\circ n}(z)) \rightarrow 0 \quad(n \rightarrow \infty).$$
+在上式中取 $n=n_k$，因 $f^{\circ n_k}(z) \rightarrow c$，就得
+$$d_{\mathbb{D}}(f(c), c)=0, \quad \text { 即 } f(c)=c.$$
+于是，对任意紧集 $K \subset \mathbb{D}$，以及 $z \in K$，
+存在 $M>0$ 使得 $d_{\mathbb{D}}(z, c) \leq M$。而
+\[d_{\mathbb{D}}(f^{\circ n}(z), c)
+=d_{\mathbb{D}}(f^{\circ n}(z), f^{\circ n}(c)) 
+\leq d_{\mathbb{D}}(z, c) \leq M.\]
+表明 $\{f^{\circ n}(z)\}$ 位于紧集 $\{z \in \mathbb{D}: d_{\mathbb{D}}(z, c) \leq M\}$ 内。因此存在 $0<\lambda_1<1$ 使得
+$$d_{\mathbb{D}}(f^{\circ n}(z), c) 
+\leq \lambda_1^n d_{\mathbb{D}}(z, c) \leq \lambda_1^n M \rightarrow 0,$$
+即 $f^{\circ n}(z)$ 在 $K$ 中一致收敛于 $c \in \mathbb{D}$。
+由 Schwarz 引理，$|f^{\prime}(c)|<1$。
+
+（2）对任意 $z \in \mathbb{D}$，$|f^{\circ n}(z)| \rightarrow 1$。
+
+对任意 $0<\varepsilon<1$，令 $f_{\varepsilon}(z)=(1-\varepsilon) f(z)$。
+则 $|f_{\varepsilon}(z)|<1-\varepsilon$。
+按（1）的讨论，存在 $f_{\varepsilon}$的不动点 $c_{\varepsilon} \in \overline{D(0,1-\varepsilon)}$ 
+使得 $f_{\varepsilon}^{\circ n}(z) \rightarrow c_{\varepsilon}$。
+存在 $\varepsilon_j \rightarrow 0$ 使得 $c_{\varepsilon_j} \rightarrow c \in \overline{\mathbb{D}}$。
+
+如果 $c \in \mathbb{D}$，则 $c$ 是 $f$ 的不动点，按（1）的讨论 $f^{\circ n}(z)$ 内闭一致收敛于 $c$，
+与 $|f^{\circ n}(z)| \rightarrow 1$ 矛盾。因此，$c \in \partial \mathbb{D}$。
+
+令 $r_{\varepsilon}=d_{\mathbb{D}}(c_{\varepsilon}, 0), 
+D_\rho(c_{\varepsilon}, r_{\varepsilon})=\{z \in \mathbb{D}: d_{\mathbb{D}}(z, c_{\varepsilon})<r_{\varepsilon}\}$。
+那么，对 $z \in D_\rho(c_{\varepsilon}, r_{\varepsilon})$，我们有
+$$d_{\mathbb{D}}(f_{\varepsilon}(z), c_{\varepsilon})
+<d_{\mathbb{D}}(z, c_{\varepsilon})<r_{\varepsilon},$$
+意味着 $f_{\varepsilon}(z) \in D_\rho(c_{\varepsilon}, r_{\varepsilon})$。
+注意到 $D_\rho(c_{\varepsilon}, r_{\varepsilon})$ 的欧氏圆心和半径分别为
+$$\zeta_{\varepsilon}=c_{\varepsilon} \frac{1-\sigma_{\varepsilon}^2}{1-\sigma_{\varepsilon}^2|c_{\varepsilon}|^2}, 
+\quad R_{\varepsilon}=\sigma_{\varepsilon} \frac{1-|c_{\varepsilon}|^2}{1-\sigma_{\varepsilon}^2|c_{\varepsilon}|^2}, 
+\quad \text { 这里 } \sigma_{\varepsilon}=\frac{e^{r_{\varepsilon}}-1}{e^{r_{\varepsilon}}+1}=|c_{\varepsilon}|.$$
+当 $\varepsilon_j \rightarrow 0$，有 $c_{\varepsilon_j} \rightarrow c \in \partial \mathbb{D}$，
+$\sigma_{\varepsilon_j}=|c_{\varepsilon_j}| \rightarrow 1$ 得到 $\zeta_{\varepsilon_j} \rightarrow c/2, R_{\varepsilon_j} \rightarrow 1/2$。
+即 $D_\rho(c_{\varepsilon_j}, r_{\varepsilon_j}) \rightarrow D(c/2,1/2)$。
+又由于 $f_{\varepsilon_j} \rightarrow f$，故当 $z \in D(c/2,1/2)$ 时，$f^{\circ n}(z) \in D(c/2,1/2)$。
+而 $|f^{\circ n}(z)| \rightarrow 1$，必有 $f^{\circ n}(z) \rightarrow c$。
+\end{proof}
+
+== 共形映射 ==
+
+=== 6.1 典型区域 ===
+\begin{1}
+    证明$\mathbb{H}$上共形自同构为
+    \[\varphi(z)=\frac{az+b}{cz+d},
+    \quad\text{ 其中 }a,b,c,d\in\mathbb{R},\ \ ad-bc=1.\]
+    $\mathbb{H}$上的共形自同构群$\operatorname{Aut}(\mathbb{H})$
+    同构于实射影特殊线性群${\rm PSL}(2,\mathbb{R})$.
+\end{1}
+\begin{proof}
+    容易验证题目所给的$\varphi(z)$确为$\mathbb{H}$的共形自同构，
+    并且所有$\mathbb{H}$的分式线性自同构都有$\varphi(z)$的形式。
+    往证$\mathbb{H}$的共形自同构均为分式线性的。
+    取一$\mathbb{H}$到$\mathbb{D}$的分式线性同构$f(z)$ (例如$\dfrac{z-{\rm i}}{z+{\rm i}}$)，
+    对任意$\mathbb{H}$的共形自同构$g(z)$，$f\circ g\circ f^{-1}$为$\mathbb{D}$的共形自同构，
+    由Schwarz引理，$\mathbb{D}$的共形自同构一定为分式线性自同构，于是反解出$g(z)$也为分式线性的。
+
+    最后证明$\operatorname{Aut}(\mathbb{H})\cong{\rm PSL}(2,\R)$：由前面的论述知
+    \[\pi:{\rm SL}(2,\R)\to\operatorname{Aut}(\mathbb{H}),
+    \quad\begin{pmatrix}a&b\\c&d\end{pmatrix}\mapsto\frac{az+b}{cz+d}\]
+    是满射,容易验证还是一个满群同态，$\operatorname{Ker}\pi=\{\pm\,I_2\}$，于是
+    \[{\rm PSL}(2,\R)={\rm SL}(2,\R)/\{\pm\,I_2\}
+    \cong\operatorname{Aut}(\mathbb{H}).\qedhere\]
+\end{proof}
+
+\begin{2}
+    证明$\mathbb{D},\mathbb{C}$和$\mathbb{C}_\infty$两两互不共形等价。
+\end{2}
+\begin{proof}
+    前两者不共形等价是因为，由Liouville定理，不存在$\mathbb{C}\to\mathbb{D}$的非常值全纯映射；
+    共形映射是同胚，$\mathbb{C}_\infty$是紧集而$\mathbb{D},\mathbb{C}$都不是，故$\mathbb{C}_\infty$与前两者都不共形等价。
+\end{proof}
+
+=== 6.2 全纯函数的紧性 ===
+\begin{1}
+    设$\mathcal{F}$是区域$\Omega\subset\mathbb{C}$上的全纯函数族，
+    如果满足$\operatorname{Re}f(z)\geq0,\forall\,f(z)\in\mathcal{F}$。
+    则对$\mathcal{F}$中任何序列$\{f_n(z)\}$，存在子序列$\{f_{n_k}(z)\}$
+    使得$\{f_{n_k}(z)\}$在$\Omega$上内闭一致收敛于一个全纯函数或内闭一致趋向于$\infty$。
+\end{1}
+\begin{proof}
+    取$g(z)=\dfrac{z-{\rm i}}{z+{\rm i}}$，置$g_n=g\circ f_n$，
+    则$\{g_n(z)\}$是$\Omega$到$\mathbb{D}$的全纯函数族，进而是一致有界的，
+    于是存在内闭一致收敛的子列$\{g_{n_k}(z)\}$，取对应的子列$\{f_{n_k}(z)\}$，
+    若$\{g_{n_k}(z)\}$内闭一致收敛到常值$1$，则$\{f_{n_k}(z)\}$内闭一致趋于$\infty$；
+    若$\{g_{n_k}(z)\}$内闭一致收敛到一个不是常值函数$1$的全纯函数，
+    断言该极限函数不能取到值$1$，否则$\{f_{n_k}(z)\}$将收敛到一个亚纯函数，
+    但是亚纯函数的极点附近不可能实部总是非负的，与题设矛盾，
+    从而$\{f_{n_k}(z)\}$就内闭一致收敛到一个全纯函数。
+\end{proof}
+
+\begin{2}
+    设$\{f_n(z)\}$是区域$\Omega$上一致有界全纯函数序列，$z_0\in\Omega$。
+    如果对任意$m\geq0$，当$n\rightarrow\infty$时，
+    $f_n^{(m)}(z_0)\rightarrow0$，则$f_n(z)$在$\Omega$上内闭一致收敛于$0$。
+\end{2}
+\begin{proof}
+    设$M=\sup\limits_{z\in\Omega,n\in\mathbb{N}}|f_n(z)|$,
+    取一$0<r<1/2$使得$B(z_0,r)\subset\Omega$,
+    设$f_n(z)$在$B(z_0,r)$上的幂级数展开为
+    \[f_n(z)=\sum_{k=0}^{\infty}a_k^{(n)}(z-z_0)^k,\]
+    其中$a_k^{(n)}=f_n^{(k)}(z_0)/k!$，由Cauchy积分公式，有估计$|a_k^{(n)}|\leq M/r^k$。
+
+    首先$\forall n\in\mathbb{N},z\in B(z_0,r/2)$，
+    \[|f_n(z)|\leq\sum_{k=0}^{\infty}|a_k^{(n)}z^k|\leq\sum_{k=0}^{\infty}\frac{M}{2^k}.\]
+    同时$\forall \varepsilon>0,\exist m\in\mathbb{N},\displaystyle\sum_{k=m}^{\infty}\frac{M}{2^k}<\frac{\varepsilon}{2}$。
+    由题设，$\exist N\in\mathbb{N},\forall n\geq N,\forall 1\leq k\leq m,a_k^{(n)}<\dfrac{\varepsilon}{4}$。
+    从而$\forall n\leq N,z\in B(z_0,r/2)$，
+    \[|f_n(z)|<\frac{\varepsilon}{4}\sum_{k=0}^m\frac{r^k}{2^k}+\frac{\varepsilon}{2}<\varepsilon.\]
+    于是${f_n(z)}$在$B(z_0,r/2)$上一致收敛于$0$，
+    进而$\forall m\in\mathbb{N}$，${f_n^{(m)}(z)}$也在$B(z_0,r/2)$上一致收敛到$0$。
+
+    这说明了$\Omega'=\{z\in\Omega\mid\forall m\in\mathbb{N},f_n^{(m)}(z)\rightarrow0\}$是一个开集，
+    由定义这显然是一个闭集，由$\Omega$的连通性知$\Omega'=\Omega$。
+
+    由上述证明可见$\{f_n(z)\}$在任意一点$w\in\Omega$的某个邻域内是一致收敛到$0$的，
+    对于任意紧集$K\subset\Omega$取这些小邻域组成的开覆盖的有限覆盖，
+    即可得到在$K$上的一致收敛性，从而得证。
+\end{proof}
+
+\begin{3}
+设$f(z)$是带域$\{-1<\operatorname{Im}z<1\}$上有界全纯函数，
+使得当$x=\operatorname{Re}z\rightarrow +\infty$时，$f(z)\rightarrow 0$。
+证明对任意充分小的$\varepsilon>0$，$f(z)$在带域$\{-1+\varepsilon<\operatorname{Im}z<1-\varepsilon\}$上，
+当$x\rightarrow+\infty$时一致收敛于$0$。
+\end{3}
+\begin{proof}
+    置$f_n(z)=f(z+n),n\in\mathbb{N}$，则$\{f_n(z)\}$在$\{-1<\operatorname{Im}z<1\}$上一致有界,
+    故${f_n(z)}$的任意子列$S=\{f_{n_k}(z)\}$都有子列$\{f_{n_{k_j}}(z)\}$内闭一致收敛到一全纯函数，记作$g_S(z)$。
+    由于$x\rightarrow+\infty$时$f(x)\rightarrow0$，故对所有$x\in\mathbb{R}$，$g_S(x)=0$，
+    由唯一性定理,$g_A(z)$恒为$0$.即$\{f_n(z)\}$的任意子列都有收敛到$0$的子列。
+
+    断言$\{f_n(z)\}$内闭一致收敛到$0$，若不然，则存在紧集$K\subset\{-1<\operatorname{Im}z<1\}$。
+    在$K$上，$\exist \varepsilon>0,\forall N>0,\exist n_k>N$，使得$\sup |f_{n_k}(z)|>\varepsilon$。
+    取出该子列$\{f_{n_k}(z)\}$，可见该子列不可能在$K$上收敛到$0$，矛盾。
+
+    回到原命题，取紧集$K_{\varepsilon}=\{-1+\varepsilon\leqslant\operatorname{Im}z\leqslant1-\varepsilon,0\leqslant\operatorname{Re}z\leqslant1\}$,
+    $\{f_n(z)\}=\{f(z+n)\}$在$K_\varepsilon$上一致收敛到$0$，
+    也即$f(z)$在带域$\{-1+\varepsilon<\operatorname{Im}z<1-\varepsilon\}$上，
+    当$\operatorname{Re}z\rightarrow+\infty$时一致收敛于$0$。
+\end{proof}
+
+\begin{4}
+    设$\mathcal{F}$是单位圆$\mathbb{D}$上全纯函数族，
+    对任意$f(z)\in\mathcal{F}$，其幂级数展开式
+    \[f(z)=\sum_{n=0}^{\infty}a_nz^n\quad\text{满足}\quad|a_n| \le n.\]
+    证明$\mathcal{F}$是正规族。
+\end{4}
+\begin{proof}
+    注意$\displaystyle F(z)=\sum_{n=0}^\infty\frac{a_n}{n+1}z^{n+1}$是$f(z)$的原函数，且
+    \[|F(z)|\le\sum_{n=0}^\infty|z|^{n+1}=\frac{|z|}{1-|z|}\]
+    内闭一致有界，从而$f(z)$亦如是。
+\end{proof}
+\begin{5}
+    设$\mathcal{F}$是区域$\Omega$上全纯函数族，满足对任意$f(z)\in\mathcal{F}$，
+    \[\iint_D|f(z)|\,dxdy\le1.\]
+    证明，$\mathcal{F}$是$\Omega$上正规族。
+\end{5}
+\begin{proof}
+    设$K$是$\Omega$的紧子集，由习题1.3.6有$r:=\operatorname{dist}(K,\mathbb{C}\setminus\Omega)>0$，从而对任意的$z \in K$，
+    \[|f(z)|\le\frac{1}{\pi r^2}\iint_{D(z,r)}|f|\,dxdy\le\frac{1}{\pi r^2}.\qedhere\]
+\end{proof}
+
+=== 6.3 Riemann映射定理 ===
+\begin{1}
+    设$f(z)$是整函数，如果存在简单曲线$\gamma:[0,+\infty)\to\mathbb{C},\gamma(t)\to\infty$ $(t\to+\infty)$，
+    使得$f(z)\in\mathbb{C}\setminus\gamma,\forall\,z\in\mathbb{C}$。证明$f(z)$是常值函数。
+\end{1}
+\begin{proof}
+    $f$的值域有一道裂缝取不到，这使得$\log f(z)$的单值支成为整函数，
+    设带状区域$S$包含了$\log f(z)$的值域，再复合一个$S$到单位圆盘$\mathbb{D}$的共形映射即可。
+\end{proof}
+
+== 调和函数 ==
+
+=== 7.1 调和函数和共轭调和函数 ===
+\begin{1}
+    证明下列函数是复平面$\mathbb{C}$上调和函数：
+
+    (a) $x^2-y^2$, \quad (b) $\sinh x\sin y$, \quad (c) $xy+3xy^2-y^3$, \quad (d) ${\rm e}^{x^2-y^2}\cos(2xy)$.
+\end{1}
+\begin{proof}
+    (a) $\operatorname{Re}(z^2)=x^2-y^2$,
+
+    (b) $\operatorname{Im}(\cosh z)=\sinh x\sin y$,
+
+    (c) $\operatorname{Im}(z^2/2+z^3)=xy+3xy^2-y^3$,
+
+    (d) $\operatorname{Re}\big({\rm e}^{z^2}\big)={\rm e}^{x^2-y^2}\cos(2xy)$.
+\end{proof}
+
+\begin{2}
+    设$h(z)$是某区域上的复值调和函数。证明：如果$zh(z)$也是调和的，则$h(z)$是全纯函数。
+\end{2}
+\begin{proof}
+    这是因为
+    \[0=4\frac{\partial}{\partial z}\frac{\partial}{\partial \bar{z}}(zh)
+    =4\frac{\partial}{\partial z}\left(z\frac{\partial h}{\partial \bar{z}}\right)
+    =4\frac{\partial h}{\partial \bar{z}}+z\Delta h
+    =4\frac{\partial h}{\partial \bar{z}}.\qedhere\]
+\end{proof}
+
+=== 7.4 Poisson公式 ===
+\begin{3}
+    设$f(z)$是整函数，满足$\lim\limits_{z\to\infty}\dfrac{1}{z}\operatorname{Re}f(z)=0$。
+    证明：$f(z)$为常数。
+\end{3}
+\begin{proof}
+    记$u(z)=\operatorname{Re}f(z)$，
+    注意到$\dfrac{\partial u}{\partial z}$同样是调和函数，
+    那么对任何一点$z_0$，由7.3节习题2，
+    \[\frac{\partial u}{\partial z}(z_0)=\frac{1}{\pi r^2}\iint_{D(z_0,r)}\frac{\partial u}{\partial z}\,dxdy.\]
+    接着，由3.2节习题7，又有
+    \[\int_{|z-z_0|=r}u(z)\,d\bar{z}=-2{\rm i}\iint_{D(z_0,r)}\frac{\partial u}{\partial z}\,dxdy.\]
+    结合两者，得出
+    \[\left|\frac{\partial u}{\partial z}(z_0)\right|
+    =\frac{1}{2\pi r^2}\left|\int_{|z-z_0|=r}u(z)\,d\bar{z}\right|
+    \le\frac{1}{r}\max_{|z-z_0|=r}|u(z)|.\tag{$*$}\]
+    $(*)$称为调和函数的\textbf{梯度估计}，值得熟练掌握。以上都是调和函数的一般性质，
+    现在开始用题目的条件：对任意$\varepsilon>0$，只要$r>|z_0|$够大，
+    当$|z-z_0|=r$时$z$的模长就够大，从而有
+    \[|u(z)|<\varepsilon|z|\le\varepsilon(|z_0|+r)<2\varepsilon r,\]
+    进而
+    \[\left|\frac{\partial u}{\partial z}(z_0)\right|
+    \le\frac{1}{r}\max_{|z-z_0|=r}|u(z)|\le2\varepsilon,\]
+    由$\varepsilon$的任意性知道$\dfrac{\partial u}{\partial z}(z_0)=0$，
+    即$\dfrac{\partial u}{\partial z}\equiv0$，
+    表明$u(z)$为常数，由此$f(z)$为常数。
+\end{proof}
+
+\begin{4}
+    设$u(z)$在复平面$\mathbb{C}$上调和，$|u(z)| \le k|y|$，这里$z=x+{\rm i}y$。
+    证明：$u(z)=ky$，其中$k$为实常数，满足$|k| \le K$。
+\end{4}
+\begin{proof}
+    用上一题中的梯度估计$(*)$，同样限定$r>|z_0|$，可知
+    \[\left|\frac{\partial u}{\partial z}(z_0)\right|
+    \le\frac{1}{r}\max_{|z-z_0|=r}|u(z)|
+    \le\frac{1}{r}\max_{|z-z_0|=r}k|y|\le2k,\]
+    由Liouville定理，$\dfrac{\partial u}{\partial z}\equiv$常数，写为
+    \[\frac{\partial u}{\partial z}
+    =\frac{1}{2}\left(\frac{\partial u}{\partial x}-{\rm i}\frac{\partial u}{\partial y}\right)
+    \equiv\frac{1}{2}(j-{\rm i}k),\]
+    即$\dfrac{\partial u}{\partial x}\equiv j,\dfrac{\partial u}{\partial y}\equiv k$，
+    得到$u(z)=u(0)+jx+ky$，代入条件即得结论。
+\end{proof}
+
+\begin{5}
+    证明$\mathbb{C}^*=\mathbb{C}\setminus\{0\}$上正调和函数是常数。
+\end{5}
+\begin{proof}
+    若$u(z)$是$\mathbb{C}^*$上的正调和函数，则$u({\rm e}^z)$是$\mathbb{C}$上的正调和函数。
+\end{proof}
+
+\subsection**{参考文献}
+\begin{references}
+    \bibitem[AG]{AG}
+    Nakhlé H. Asmar, Loukas Grafakos.
+    \textit{Complex Analysis with Applications}.
+    Undergraduate Texts in Mathematics. Springer, 2018.
+    \bibitem[RS]{RS}
+    Rami Shakarchi, \textit{Problems and Solutions for Complex Analysis}. Springer, 1999.
+    \bibitem[SB]{SB}
+    Б. В. Шабат (沙巴特)，《复分析导论：第一卷\ 单复变函数》，胥鸣伟、李振宇译，高等教育出版社，2011年.
+\end{references}

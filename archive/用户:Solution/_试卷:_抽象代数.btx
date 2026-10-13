@@ -1,0 +1,748 @@
+\setdisplaytitle{试卷：抽象代数}
+\sethtmltitle{试卷：抽象代数}
+\def\Q{\mathbb{Q}}
+\def\C{\mathbb{C}}
+
+== 2025--2026秋期末 （平行班） ==
+\begin{enumerate}
+\item 判断题 (15分)
+\begin{enumerate}
+    \item 忘了。
+    \item 特征为零的域都是完全域。
+    \item 一个交换环是整环当且仅当零理想是素理想。
+    \item 特征非零的域都是有限域。
+    \item 交换幺环上的 $n$ 次多项式最多有 $n$ 个互异根。
+\end{enumerate}
+\item （10分）
+定义集合 $R = \left\{ \begin{pmatrix}z & w \\ -\overline{w} & \overline{z}\end{pmatrix} \mid z, w \in \mathbb{C} \right\}$，证明：
+\begin{enumerate}
+    \item $R$ 在 $M_{2}(\mathbb{C})$ 的加法和乘法下成环；
+    \item $R$ 与 Hamilton 四元数体同构。
+\end{enumerate}
+
+\item （15分）
+考虑 $\mathbb{F}_{3}$ 上的多项式 $f(X) = X^{4} + X^{3} + X - 1$，
+设 $\alpha \in \overline{\mathbb{F}}_{3}$ 是 $f(X)$ 的一个根。
+\begin{enumerate}
+    \item 列出 $\mathbb{F}_{3}$ 上所有的二次首一不可约多项式；
+    \item $f(X)$ 是否是不可约多项式？请说明理由；
+    \item 求 $\mathbb{F}_{3}(\alpha)$ 的元素个数；
+    \item $f(X)$ 在 $\mathbb{F}_{3}(\alpha)$ 上有几个不同根？
+\end{enumerate}
+
+\item （20分）
+考虑实数子集 $R = \{ a + b\sqrt{10} \mid a, b \in \mathbb{Z} \}$，
+定义 $N: R \rightarrow \mathbb{Z}$ 为 $N(a + b\sqrt{10}) = a^{2} - 10b^{2}$
+\begin{enumerate}
+    \item 证明：$\alpha \in R^{*}$ 当且仅当 $N(\alpha) = \pm 1$；
+    \item $R^{*}$ 是否是有限群？说明理由；
+    \item 证明：$R$ 中每个非零非单位元都可分解为有限个不可约元的乘积；
+    \item $2$ 是否是 $R$ 中的不可约元？是否是 $R$ 中的素元？给出理由；
+    \item $R$ 是否是 UFD？说明理由.
+\end{enumerate}
+
+\item （20分）
+\begin{enumerate}
+    \item 求 $[\mathbb{Q}(\sqrt{5}, \sqrt{-5}): \mathbb{Q}]$；
+    \item 证明 $\mathbb{Q}(\sqrt{5}, \sqrt{-5}) = \mathbb{Q}(\sqrt{5} + \sqrt{-5})$。
+    \item $\mathbb{Q}(\sqrt{5})$和$\mathbb{Q}(\sqrt{-5})$是否同构？说明理由.
+\end{enumerate}
+
+\item （20分）
+设 $\alpha = \sqrt{1 + \sqrt{2}}$。
+\begin{enumerate}
+    \item 求 $\alpha$ 在 $\mathbb{Q}$ 上的极小多项式 $f(X)$；
+    \item 求 $f(X)$ 在 $\mathbb{Q}$ 上的分裂域 $E$，并求 $[E: \mathbb{Q}]$；
+    \item 证明 $E/\mathbb{Q}$ 是 Galois 扩张，并求 $\mathrm{Gal}(E/\mathbb{Q})$；
+    \item $\text{Gal}(E/\mathbb{Q})$中有几个$4$阶元，有几个$2$阶元？
+    \item 求 $E/\mathbb{Q}$ 所有的中间域 $M$，使得 $M/\mathbb{Q}$ 是 Galois 扩张。
+\end{enumerate}
+\end{enumerate}
+
+== 2025--2026秋期末（远班）==
+\begin{itemize}
+\item[(一)] 选择题
+    \item[1.] 设 $G$ 为 $2026$ 阶群, 以下 $G$ 一定有的性质是 ().
+    \begin{itemize}
+        \item[(A)] $G$ 是 Abel 群;
+        \item[(B)] $G$ 是单群;
+        \item[(C)] $G$ 中有一个正规循环子群;
+        \item[(D)] $G$ 中有唯一的二阶元.
+    \end{itemize}
+    \item[2.] $\mathbb{F}_9$ 中 $x^4 + x^3 - x + 1$ 的根的个数为 ().
+    \begin{itemize}
+        \item[(A)] $0$ 个;
+        \item[(B)] $1$ 个;
+        \item[(C)] $2$ 个;
+        \item[(D)] $3$ 个;
+    \end{itemize}
+    \item[3.] 下列扩张中不是 Galois 扩张的有 ().
+    \begin{itemize}
+        \item[(A)] $\mathbb{Q}(\sqrt{2}, \sqrt{3}) / \mathbb{Q}$;
+        \item[(B)] $\mathbb{Q}(\sqrt[3]{2}, \sqrt[3]{6}) / \mathbb{Q}$;
+        \item[(C)] $\mathbb{Q}(\sqrt{2026})/\mathbb{Q}$;
+        \item[(D)] $\mathbb{Q}(\sqrt[3]{5}, i) / \mathbb{Q}$.
+    \end{itemize}
+    \item[4.] $600$ 阶 Abel 群的不同的种类数为 ().
+    \begin{itemize}
+        \item[(A)] $3$ 个;
+        \item[(B)] $4$ 个;
+        \item[(C)] $5$ 个;
+        \item[(D)] $6$ 个;
+    \end{itemize}
+    \item[5.] 下列命题中正确的有 ().
+    \begin{itemize}
+        \item[(A)] 整区的商环还是整区;
+        \item[(B)] 整区到一个环的非零环同态的像还是整区;
+        \item[(C)] 无限域的非平凡子环还是域;
+        \item[(D)] 无限域到一个环的非零环同态的像还是域.
+    \end{itemize}
+    \item[6.] 下列命题中正确的有 ().
+    \begin{itemize}
+        \item[(A)] 主理想整区一定是欧氏整区;
+        \item[(B)] 欧氏整区一定是唯一分解整区;
+        \item[(C)] 唯一分解整区一定是主理想整区;
+        \item[(D)] 欧氏整区一定是主理想整区.
+    \end{itemize}
+\item[(二)] 设有群 $G$, $a \in G$. 定义 $T(a) = \{ gag^{-1} \mid g \in G \}$.
+若 $H$ 是 $G$ 的子群, $b_1, b_2 \in T(a)$, $b_1 \in H$, $b_2 \notin H$, $H$ 是否是 $G$ 的正规子群? 说明理由.
+\item[(三)] 设 $F$ 是域, \[
+    R = \left\{ \sum_{i=0}^n a_i x^i \in F[x]\Bigm| a_1 = 0 \right\}.
+\]
+
+证明以下命题:
+\begin{itemize}
+    \item[(1)] $R$ 是 $F[x]$ 的子环;
+    \item[(2)] $x^2$ 是 $R$ 中的不可约元, 但 $(x^2)$ 不是 $R$ 中的素理想;
+    \item[(3)] $(x^2, x^3)$ 不是 $R$ 中的主理想;
+    \item[(4)] $R$ 中的任何理想最多由两个元素生成.
+\end{itemize}
+
+\item[(四)] 设 $p$ 是奇素数, $n$ 是大于 $2$ 的正整数且 $p \nmid n$.
+设 $E = \mathbb{F}_{p^n}$. 设 $c \in E$ 满足 $c^{p^2} = c$. 考虑 \[
+    f(x) = x^{p^2} - x - c \in E[x].
+\]
+\begin{itemize}
+    \item[(1)] $x^{p^2} - x$ 在 $E$ 上是否分裂? 说明理由;
+    \item[(2)] 证明 $f(x)$ 在 $E$ 中没有根;
+    \item[(3)] 证明 $f(x)$ 在 $E$ 中是可约的;
+    \item[(4)] 若 $g(x) \in E[x]$ 是不可约多项式, $g(x) | f(x)$, 求 $\deg g(x)$ 的可能取值.
+\end{itemize}
+
+\item[(五)]
+设 $K$ 是任意域, 正整数 $n$ 大于 $3$ . 令 $E = K(x_1, x_2, \dots, x_n)$ 是 $K$ 上的 $n$ 元有理函数域.
+设 $\sigma \in \operatorname{Aut}(E)$ 是满足 \[
+    \sigma(x_k) = x_{k+1}\ (k = 1, 2, \dots, n, x_{n+1} = x_1), \sigma|_K = \mathrm{id}_K
+\]
+的 $E$ 的自同构. 设 $F = E^{\langle \sigma \rangle}$ 是所有在由 $\sigma$ 生成的子群 $\langle \sigma \rangle$ 下保持不变的元素构成的 $E$ 的子域.
+\begin{itemize}
+    \item[(1)] 证明 $E/F$ 是 Galois 扩张;
+    \item[(2)] 证明 $F(x_1^2 + x_2^2) / F$ 是 Galois 扩张;
+    \item[(3)] 证明 $F(x_1^2 + x_2^2) = E$.
+\end{itemize}
+\end{itemize}
+
+== 2025--2026秋期中 （平行班） ==
+\begin{enumerate}
+\item 判断题 (15分)
+\begin{enumerate}
+    \item 在 $n$ 阶群中一定存在 $n$ 阶元;
+    \item 任意有限群均同构于某个 $S_n$ 的子群;
+    \item 在群中两个有限阶元的乘积的阶还是有限的;
+    \item 整数集 $\mathbb{Z}$ 关于减法构成群;
+    \item 在域中乘法消去律成立.
+\end{enumerate}
+
+\item （12分）
+\begin{enumerate}
+    \item 在 $S_n$ 中计算 $(12)(123)(1234)$;
+    \item 在 $S_6$ 中计算 $(123456)^{2025}$;
+    \item 请问 $S_6$ 中有多少个元素 $a$ 满足 $a^{2025} = e$.
+\end{enumerate}
+
+\item （18分）
+设 $d \in \mathbb{Z}$.令 $R = \mathbb{Q}[\sqrt{d}] := \left\{a + b \sqrt{d} \in \mathbb{C} \mid a,b \in \mathbb{Q}\right\}$.
+\begin{enumerate}
+    \item 证明 $R$ 关于数的加法和乘法构成幺环.请问 $R$ 是否构成域,并说明理由;
+    \item 请问当 $d$ 满足什么条件时,加群 $(R,+)$ 同构于 $\mathbb{Q} \times \mathbb{Q}$;
+    \item 令 $S = \left\{\frac{a+b\sqrt{-3}}{2} \in \mathbb{C} \mid a,b \in \mathbb{Z}, a+b \in 2\mathbb{Z}\right\}$.证明 $S$ 是 $\mathbb{Q}[\sqrt{-3}]$ 的子环;
+    \item 求 $S$ 的单位群 $S^*$.
+\end{enumerate}
+
+\item （20分）
+设 $\mathbb{Z}_{21}^{*} := \left\{\bar{a} \in \mathbb{Z}_{21} \mid (a,21)=1\right\}$ 是模 $21$ 的乘法群.
+\begin{enumerate}
+    \item 求 $|\mathbb{Z}_{21}^{*}|$;
+    \item 求 $\langle \bar{2} \rangle$ 和 $\langle \overline{20} \rangle$;
+    \item 请问 $\mathbb{Z}_{21}^{*}$ 是否是 $\langle \bar{2} \rangle$ 和 $\langle \overline{20} \rangle$ 的内直积?证明你的结论;
+    \item 请问是否存在满同态 $\mathbb{Z}_{24} \to \mathbb{Z}_{21}^{*}$?证明你的结论.
+\end{enumerate}
+
+\item （20分）
+设 $G = \mathrm{GL}_{2}(\mathbb{F}_{3})$.考虑 $G$ 按矩阵乘法作用于列向量空间 $\mathbb{F}_{3}^{2} := \mathbb{F}_{3} \times \mathbb{F}_{3}$ 上.
+\begin{enumerate}
+    \item 请问该作用有几个轨道?写出每一个轨道;
+    \item 令 $x = (\bar{1},\bar{0})^{t}$,求稳定子群 $\mathrm{Stab}_{G}(x)$;
+    \item 求 $G$ 的阶 $|G|$;
+    \item 在 $G$ 中所有的非平凡正规子群中,最大的阶是多少?
+\end{enumerate}
+
+\item （15分）
+设 $G$ 为 $2025$ 阶群.
+\begin{enumerate}
+    \item 若 $G$ 为 Abel 群,请问 $G$ 的同构类有多少种,并分类 $G$ 所有可能的同构类;
+    \item 若 $P$ 和 $Q$ 是 $G$ 的两个不同的 Sylow $5$-子群,证明 $P \cap Q$ 是 $G$ 的正规子群;
+    \item 证明 $2025$ 阶群一定不是单群.
+\end{enumerate}
+\end{enumerate}
+
+== 2025--2026秋期中（远班、猛班）==
+\begin{itemize}
+\item[(一)] (20分) 设$G$为群，考虑子群列：$K \triangleleft H \triangleleft G$，求解下列问题：
+    \item[(a)] 举例说明：一般情况下$K \triangleleft G$ 不一定成立； \\
+    \item[(b)]若 $|G| = p_1p_2\cdots p_n$，其中 $ p_1,p_2,\cdots, p_n $ 为互不相同的素数，证明 $K \triangleleft G$。
+
+\item[(二)] (20分) 设 $H$ 是群 $G$ 的子群，定义 $K := \bigcap_{g \in G} gHg^{-1}$ 为 $H$ 所有共轭的交。 \\
+   \item[(a)]证明：$K$ 是 $G$ 的正规子群； \\
+   \item[(b)]若 $[G:H]$ 有限，证明 $\{ gHg^{-1} \mid g \in G \}$ 为有限集合； \\
+   \item[(c)]若 $[G:H]$ 有限，证明 $[G:K]$ 有限。
+
+\item[(三)] (20分) 设$R$ 为交换环，$I$ 是 $R$ 的一个理想，定义 $I$ 的根理想为：
+    \[
+    \sqrt{I} = \{ x \in R \mid \exists\, n \in \mathbb{Z}_{>0} \text{ 使得 } x^n \in I \}.
+    \]
+    回答下列问题：
+    \item[(a)]证明：$\sqrt{I} \subseteq \bigcap_{P \supseteq I,P\text{ 是素理想}} P$。 \\
+    \item[(b)]求出 $\mathbb{Z}_6$ 的所有素理想，求出这个例子中的理想 $\sqrt{0}$ 和 $\bigcap_{P\text{ 是素理想}} P$。
+
+\item[(四)] (20分) 设 $G$ 是一个$24$阶有限群。若$G$的中心平凡，试证 \\
+   \item[(1)]$G$ 没有正规的 Sylow-$3$子群； \\
+   \item[(2)]利用(1)证明 $G \cong S_4$。
+
+\item[(五)] (20分) 令 $p>2$ 为素数。设$G$ 是一个 $p(p+1)$ 阶群，且没有正规的 Sylow-$p$ 子群。考虑集合
+    \[
+    X = \{ a \in G \mid \mathrm{ord}(a) \nmid p \}.
+    \]
+   \item[(a)]求集合 $X$ 中元素的个数； \\
+   \item[(b)]对于一个 Sylow-$p$ 子群 $P$，对任意 $a \in X$，我们有 $aP \neq Pa$； \\
+   \item[(c)]对于 $X$ 中的任意两个元素 $a,b$，存在元素 $g \in P$ 使得 $a = g^{-1} b g$； \\
+   \item[(d)]证明：$p + 1$ 是 $2$ 的幂。
+\end{itemize}
+
+== 2024--2025秋期末（猛班）==
+
+一、\ 填空题
+\begin{itemize}
+\item[1.]设$\sigma=(1357)\in S_8$,则$\sigma^{-3}=\underline{\qquad\quad},\sigma^{-1}(2468)\sigma=\underline{\qquad\quad}$.
+\item[2.]已知$a=\bar{x}\in\mathbb{Q}[x]/(x^3+x+2)$,则$a^5$是否可逆？$\underline{\qquad\quad}$ (填“是”或“否”.)若可逆,用$1,a,a^2$的线性组合表示之$\underline{\qquad\quad}$.（待修正）
+\item[3.]写出一个$\mathbb{F}_3$上的四次不可约多项式.
+\item[4.]$833$阶群是否为Abel群？$\underline{\qquad\quad}$ (填“是”或“否”.)（待修正）\\
+\item[5.]$\mathbb{F}_9$中，$x^6+x^4+x^3+x-1$根的个数为$\underline{\qquad\quad}$.（待修正）
+\item[6.]写出$2025$阶Abel群的所有可能结构，请用书中形式写.
+\item[7.]$x^4+5\in\mathbb{Q}[x]$在$\mathbb{Q}$上的分裂域(记为$E$)是$\underline{\qquad\quad}$.
+$[E:\mathbb{Q}]=\underline{\qquad\quad}$.
+$E/\mathbb{Q}$ $\underline{\qquad\quad}$(填“是”或“否”.)为Galois扩张.
+\end{itemize}
+二、\ 解答题
+\begin{itemize}
+\item[1.]对于群$G$，$C(G)$是其中心，证明：$C(G/C(G))$不可能是非平凡循环群.\\
+\item[2.]对于环$\mathbb{Z}[i]$，$I=(3)$是其理想，请问$I$是素理想吗？请问$I$是极大理想吗？\\
+\item[3.]令$S=\{n \in \mathbb{Z} \bigm| p|n\}$，在$\mathbb{Z}\times S$上建立“关系”，
+$(n_1,s_1) \sim(n_2,s_2) \Leftrightarrow n_1s_2=n_2s_1.$
+    \begin{itemize}
+        \item[(1)] 证明$\sim$是等价关系。
+        \item[(2)] 在$\mathbb{Z}_{(p)}=\mathbb{Z}\times S/\sim$上定义加法和乘法：
+        $$[(n_1,s_1)]+[(n_2,s_2)]=[(n_1s_2+n_2s_1,s_1s_2)],\ [(n_1,s_1)] \cdot [(n_2,s_2)]=[(n_1n_2,s_1s_2)].$$
+        证明其良定且使$\mathbb{Z}_{(p)}$成为环。
+        \item[(3)] 证明$\mathbb{Z}_{(p)}$为PID.
+        \item[(4)] 求$\mathbb{Z}_{(p)}$的分式域。
+    \end{itemize}
+\item[4.]令$R=\{a+3b\sqrt{10}|a,b \in \mathbb{Z}\}$.
+    \begin{itemize}
+        \item[(1)] 证明$R$是一个整区。
+        \item[(2)] 举出$R$的一列（无限可列）可逆元。
+        \item[(3)] 证明$2$是$R$中不可逆元。
+    \end{itemize}
+\item[5.]$K=\mathbb{Q}(\sqrt{2}+\sqrt{3}),\theta=\sqrt{(2-\sqrt{2})(9-6\sqrt{3})},E=K(\theta)\neq K$.
+问$E/\mathbb{Q}$是不是Galois扩张？如果是，求$\operatorname{Gal}(E/\mathbb{Q})$.
+\end{itemize}
+
+== 2024--2025秋样卷（芬班）==
+
+\begin{enumerate}
+    \item (15分) 设$R$是含幺环，$I$是$R$的理想，$\pi:R \to R/I$是商映射，$T$是$R/I$的理想。
+    \begin{enumerate}[label=(\alph*)]
+        \item 若$T$是$R/I$的素理想，证明$\pi^{-1}(T)$是$R$的素理想。
+        \item 反之，若$\pi^{-1}(T)$是$R$的素理想，$T$是否一定是$R/I$的素理想？说明理由。
+    \end{enumerate}
+    \item (20分) 设$R=\{m+n\sqrt{-11}\in\mathbb{C}|m,n\in\Z\}$是$\mathbb{C}$的子环。
+    定义映射$N:R\to\Z$如下：$N(m+n\sqrt{-11})=m^2+11n^2$。
+    \begin{enumerate}[label=(\alph*)]
+        \item 证明：对任意$x,y \in R$，都有$N(xy)=N(x)N(y)$；
+        \item 求$R^*=\{x \in R|\text{存在 }y \in R\text{ 使得 }xy=yx=1\}$，说明理由；
+        \item $R$是否为唯一分解整区（UFD）？说明理由。
+    \end{enumerate}
+    \item (20分) 令$f(x)=x^4-5x^3-2x^2+2x-2\in\mathbb{Q}[x]$。
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求$f(x)$的一个有理数根；
+        \item 设$u\in\R$为$f(x)$的一个非有理数根，求域扩张次数$[\mathbb{Q}(u):\mathbb{Q}]$；
+        \item 将$(1+u)^{-1}$表示成$1,u$和$u^2$的$\mathbb{Q}$-线性组合。
+    \end{enumerate}
+    \item (20分) 设$F\subset\mathbb{C}$为$x^3-2$在$\mathbb{Q}$上的分裂域。
+    \begin{enumerate}[label=(\arabic*)]
+        \item 验证$\omega=\frac{-1+\sqrt{3}i}{2} \in F$，并求出扩张次数$[\mathbb{Q}(\omega):\mathbb{Q}]$；
+        \item 计算$[F:\mathbb{Q}]$(请写出严格的计算过程)，并给出域扩张$F/\mathbb{Q}$的一组基。
+    \end{enumerate}
+    \item (15分) 设$p$是一个素数，$K=\mathbb{F}_p(t)$为多项式环$\mathbb{F}_p[t]$的分式域。
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明$x^p-t$在多项式环$K[x]$中不可约，并且在$K$的代数闭包$\bar{K}$中有一个$p$-重根；
+        \item 构造一个$p$次首一不可约多项式$f(x) \in K[x]$，满足$f$在$\bar{K}$中没有重根(解释理由)。
+    \end{enumerate}
+    \item (10分) 设$G$为Galois群$\operatorname{Gal}(\mathbb{F}_{q^n}/\mathbb{F}_q)$。对于每个$a\in\mathbb{F}_{q^n}$，令
+    \[T(a)=\sum_{\sigma \in G}\sigma(a), \qquad N(a)=\prod_{\sigma \in G}\sigma(a).\]
+    求证：
+    \begin{enumerate}[label=(\arabic*)]
+        \item $T:\mathbb{F}_{q^n}\to\mathbb{F}_q$是$\mathbb{F}_q$-线性满射；
+        \item $N(\mathbb{F}^*_{q^n})\subset\mathbb{F}^*_q$且$N:\mathbb{F}^*_{q^n}\to\mathbb{F}^*_q$是乘法群的满同态。
+    \end{enumerate}
+\end{enumerate}
+
+== 2024--2025秋期中（猛班）==
+\begin{itemize}
+    \item[(一)]（共20分）分别举出满足下列条件的群$G$各一例：
+    \begin{enumerate}[label=(\arabic*)]
+        \item $G$ 是一个不可交换的无限群；
+        \item $G$ 是一个阶可被 $2^{10}$ 整除的有限单群；
+        \item $G$ 中每个元素的阶均有限，但 $G$ 是无限群；
+        \item $G$ 中除了子群 $\{e\}$ 外，每个子群都有无限多个正规子群；
+        \item $G$ 是这样一个 $m(m > 1)$ 阶群，对 $m$ 的每个因子 $n$，
+        $G$ 都有唯一的一个 $n$ 阶子群。
+    \end{enumerate}
+    \item[(二)]（20分）设$G$是有限阶群， $K\triangleleft H \triangleleft G$，
+    且 $\gcd(|K|, |H/K|)=1$，证明：$K \triangleleft G$。
+    \item[(三)]（20分）设 $R$ 是一个非零环，且 $R$ 除了零理想外没有其他理想，
+    证明：$R$ 的中心 $Z(R)$ 是一个域。
+    \item[(四)]（20分）叙述欧氏整区的定义，并证明每一个欧氏整区都是主理想整区(PID)。
+    \item[(五)]（20分）设 $G$ 是有限群，$P$ 是 $G$ 的 Sylow-$p$ 子群 ($p$ 为素数)，
+    $H \lhd G$，$p \mid |H|$。记 $n_p(G)$ 为 $G$ 的 Sylow-$p$ 子群的个数。证明：
+    \begin{itemize}
+        \item[(1)] $P \cap H$ 是 $H$ 的一个 Sylow-$p$ 子群;
+        \item[(2)] $n_p(G) = [G : N_G(P)]$;
+        \item[(3)] $n_p(H) \mid n_p(G)$。
+    \end{itemize}
+\end{itemize}
+
+
+== 2023--2024秋期中（猛班）==
+\begin{itemize}
+    \item[(一)]单项选择题（共30分）
+    \begin{itemize}
+        \item[(a)]$\mathbb{Z},A_2,A_4,A_6,M_n(F)$（矩阵环；$F$为一个域）中哪些是单群或单环？
+        \begin{itemize}
+            \item[(A).]$\mathbb{Z},A_4,A_6,M_n(F)$；
+            \item[(B).]$\mathbb{Z},A_2,A_6,M_n(F)$；
+            \item[(C).]$\mathbb{Z},A_2,A_4,M_n(F)$；
+            \item[(D).]$A_2,A_4,A_6$；
+            \item[(E).]以上都不对。
+        \end{itemize}
+        \item[(b)]下列哪个环是主理想整环？
+        \begin{itemize}
+            \item[(A).]$\mathbb{Z}_{25}$；
+            \item[(B).]$\mathbb{Z}[x]$；
+            \item[(C).]二元多项式环的商$\mathbb{R}[x,y]/I,I=\langle x^2+1,y^2-2\rangle$；
+            \item[(D).]$\mathbb{R}[x,y]/I,I=\langle x^2+1\rangle$。
+        \end{itemize}
+        \item[(c)]设$R_1,R_2$是带$1$的环，$f:R_1\to R_2$是非零环同态.考虑下面两个命题：
+        \begin{itemize}
+            \item[(I).]设$I$是$R_1$的理想，则$f(I)$是$R_2$的理想.
+            \item[(II).]设$J$是$R_2$的极大理想，则$f^{-1}(J)=\{x\in R_1|f(x)\in J\}$是$R_1$的素理想.
+        \end{itemize}
+        下面关于它们的判断$\textbf{正确}$的是？
+        \begin{itemize}
+            \item[(A).](I)错误，(II)正确；
+            \item[(B).](I)正确，(II)错误；
+            \item[(C).](I)与(II)都正确；
+            \item[(D).](I)与(II)都错误。
+        \end{itemize}
+        \item[(d)]设$R$是整区，下列命题中，哪个$\textbf{正确}$？
+        \begin{itemize}
+            \item[(A).]设$I$是$R$的一个非平凡理想，则$R/I$必为整区；
+            \item[(B).]$R$不可能包含一个非整子环；
+            \item[(C).]设$S$是一个交换环，$f:R\to S$是一个非零环同态，则其像$f(R)$必为整区；
+            \item[(D).]如果$R$不是域，$R$不可能包含任何非零子域。
+        \end{itemize}
+        \item[(e)]设$G$是一个群，下列哪个命题$\textbf{正确}$？
+        \begin{itemize}
+            \item[(A).]$G$的任何一个循环子群都是有限群；
+            \item[(B).]如$G$是Abel群，则$G$的任何子群、商群必为Abel群；
+            \item[(C).]如$G$是无限群，则$G$中至少有一个元素的阶(order)非有限；
+            \item[(D).]除了幺元以外，$G$至少有一个素数阶元素。
+        \end{itemize}
+    \end{itemize}
+    \item[(二)]（15分）设$S_5$中的两个元素$\sigma=(12)(45),\tau=(12345)$，试证明：
+    \begin{itemize}
+        \item[(1)]子群$H=\langle\sigma,\tau\rangle$满足$|H|\geq30$；
+        \item[(2)]$A_5=\langle\sigma,\tau\rangle$。
+    \end{itemize}
+    \item[(三)]（15分）设$G$为群，$H$为$G$的正规子群，$K$为$G$的子群，
+    若对于任意元素$x\in G/H$，都存在唯一的$k\in K$使$kH=x$，证明$K\cong G/H$。
+    \item[(四)]（15分）设$P$是有限群$G$的Sylow $p$-子群，
+    $H$为$G$的子群且$N_G(P)\subseteq H$，证明：$H=N_G(H)$。
+    \item[(五)]（15分）设$G$为一个群，$H$为$G$的一个子群。
+    \begin{itemize}
+        \item[(1)]令$H_G=\bigcap_{g\in G}g^{-1}Hg$，
+        证明$H_G$是$G$的包含于$H$的最大正规子群；
+        \item[(2)]设从$G$到$S_n$只有有限多个不同的群同态，
+        证明$G$只有有限多个指数为$n$的子群。
+    \end{itemize}
+    \item[(六)]（10分）设$R_1,R_2$为两个带$1$的环，
+    如果映射$\varphi:R_1\to R_2$满足$\varphi(1_{R_1})=1_{R_2}$，且(1), (2)成立：
+    \begin{itemize}
+        \item[(1)]$\varphi:(R_1,+)\to(R_2,+)$是群同态；
+        \item[(2)]对任意$a,b\in R_1$，$\varphi(ab)=\varphi(b)\varphi(a)$，
+        则称$\varphi$是一个反同态。又，如果$\varphi$满足(1), (2)$'$：
+        \item[(2)$'$]对任意$a,b\in R_1$，$\varphi(ab)=\varphi(a)\varphi(b)$
+        或$\varphi(b)\varphi(a)$，则称$\varphi$是一个半同态。
+    \end{itemize}
+    试证明：若映射$\varphi$是半同态，则$\varphi$是同态或反同态。
+\end{itemize}
+
+== 2023--2024秋期中（雪班、远班） ==
+\begin{itemize}
+\item[（一）]（20分）单选题
+\begin{itemize}
+\item[1.] $\{A_n \mid n\geqslant 3\}$中有多少个群不是单群？
+\begin{itemize}
+    \item[A.] $1$.
+    \item[B.] $2$.
+    \item[C.] $3$.
+    \item[D.] 无穷多.
+\end{itemize}
+\item[2.] （关于正规子群的一个问题）
+\item[3.] （关于群同态的一个问题）
+\item[4.] 设$D_8$是正方形上的二面体群，下列正确的是：
+\begin{itemize}
+    \item[A.] $D_8$中存在$8$阶元.
+    \item[B.] $D_8$的四阶子群一定是Abel群.
+    \item[C.] $C(D_8)=\{1\}$.
+    \item[D.] $[D_8,D_8]$是$2$阶群.
+\end{itemize}
+\end{itemize}
+
+\item[（二）]（20分）填空题
+\begin{itemize}
+\item[5.] 求所有群同态$f:\mathbb{Z}_6\to\mathbb{Z}_6$的个数.
+\item[6.] 求$S_6$中$3$阶元的个数.
+\item[7.] 求$A_4$中共轭类的个数.
+\item[8.] 设有限群$G$满足$|G|=35$，写出$C(G)$的所有可能的阶数.
+\end{itemize}
+
+\item[（三）] （15分）设$G$是一个群，$G^3=\{a^3\mid a\in G\}$.
+\begin{itemize}
+    \item[1.] 若$G$是Abel群，证明$G^3$是$G$的子群.
+    \item[2.] 若$G=S_3$，$G^3$还是$G$的子群吗？
+\end{itemize}
+
+\item[（四）] （15分）证明：$\mathbb{Q}/\mathbb{Z}$和$\mathbb{R}/\mathbb{Q}$不同构.
+
+\item[（五）] （15分）非Abel群$G$满足$|G|=21$，求$G$的子群个数.
+
+\item[（六）] （15分）证明：$324$阶群不是单群.
+\end{itemize}
+
+== 2022--2023秋期中（猛班）==
+\begin{itemize}
+    \item[(一)]单项选择题
+    \begin{itemize}
+        \item[(a)]下列四个环中哪个是PID？
+        \begin{itemize}
+            \item[(A).]$\Z[x]$；
+            \item[(B).]$\Z_n , n\ge 2$；
+            \item[(C).]$\Q [x,y]$；
+            \item[(D).]$\Z_p[x]$，$p$为素数。
+        \end{itemize}
+        \item[(b)]下列哪对Abel群$\textbf{不}$同构？
+        \begin{itemize}
+            \item[(A).]$\Z_6,\Z_2 \times \Z_3$；
+            \item[(B).]$(\Z_6)^*,(\Z_2)^* \times (\Z_3)^*$；
+            \item[(C).]$\Z_8,\Z_2 \times \Z_4$；
+            \item[(D).]$(\Z_8)^*,(\Z_3)^* \times (\Z_3)^*$。
+        \end{itemize}
+        \item[(c)]考虑下面两个命题
+        \begin{itemize}
+            \item[(I).]设$f(x) \in \Z[x], 0 \neq g(x) \in \Z[x]$，
+            则存在$q(x),r(x) \in \Z[x]$使得$f(x) = g(x)q(x) + r(x)$，
+            且$\deg r(x) < \deg g(x)$。
+            \item[(II).]设$A,B,C$是Abel群，若$A \times B \cong A \times C$，则$B \cong C$。
+        \end{itemize}
+        下面关于它们的判断$\textbf{正确}$的是？
+        \begin{itemize}
+            \item[(A).](I)错误，(II)正确；
+            \item[(B).](I)正确，(II)错误；
+            \item[(C).](I)错误，(II)错误；
+            \item[(D).](I)正确，(II)正确。
+        \end{itemize}
+        \item[(d)]设$f:R \to S$是含幺交换环之间的非零环同态，则下列命题中$\textbf{正确}$的是？
+        \begin{itemize}
+            \item[(A).]若$R$是整区，则$f(R)$也是整区；
+            \item[(B).]若$f$是满同态，且$I$是$R$的理想，则$f(I)$也是$S$的理想；
+            \item[(C).]若$\mathfrak{p}$是$R$的素理想，则$f(\mathfrak{p})$也是$S$的素理想；
+            \item[(D).]若$\mathfrak{m}$是$R$的极大理想，则$f(\mathfrak{m})$也是$S$的极大理想。
+        \end{itemize}
+    \end{itemize}
+    \item[(二)]填空题
+    \begin{itemize}
+        \item[(a)]设$\sigma = (12345)(1234) \in S_5$，
+        则$\sigma$的阶是 $\underline{\qquad\quad}$，
+        $\sigma$是 $\underline{\qquad\quad}$ （填“奇”或“偶”）置换。
+        设$\tau = (321)(21)(514) \in S_5$，则$\tau \sigma \tau^{-1}=\underline{\qquad\qquad\qquad}$。
+        \item[(b)]$S_9$中与$(12345)(67)(89)$共轭的元素有 $\underline{\qquad\quad}$ 个，
+        $S_9$中有 $\underline{\qquad\quad}$ 个$10$阶元。
+        \item[(c)]$\Z_{54000}$有 $\underline{\qquad\quad}$ 个子群，
+        $\Z_7 \times \Z_7 \times \Z_7$有 $\underline{\qquad\quad}$ 个子群。
+    \end{itemize}
+    \item[(三)]设$R$是含幺环。若$R$无非零幂零元，则称$R$是约化的。
+    \begin{itemize}
+        \item[(1)]证明$R$是约化的当且仅当$\forall x \neq 0,x^2 \neq 0$。
+        \item[(2)]设$R$是约化的，$x,y \in R$使得$xy = 0$。证明：$yRx = \{0\}$。
+        \item[(3)]设$R$是约化的，$x \in R$是幂等元，即$x^2 = x$。证明：$\forall y \in R,xy = yx$。
+    \end{itemize}
+    \item[(四)]考虑交换群$(\Q,+)$及其商群$\Q/\Z$，证明：
+    \begin{itemize}
+        \item[(1)]设$r \in \Z\setminus\{0\},s \in \N$，有$o(\frac{r}{s} + \Z) = \frac{s}{\operatorname{gcd}(r,s)}$；
+        \item[(2)]对于任意的正整数$n$，$\Q/\Z$有且仅有一个$n$阶子群；
+        \item[(3)]$\Q/\Z$中有限个元素生成的群均为循环群。
+    \end{itemize}
+    \item[(五)]设$R$为含幺交换环，$a,b \in R$。记$\bar{a} = a + (b)$为$a$在自然同态$R \to R/(b)$下的像。证明：
+    \begin{itemize}
+        \item[(1)]$(\bar{a}) = (a,b)/(b)$；
+        \item[(2)]$(R/(b))/(\bar{a}) \cong R/(a,b)$，$(R/(b))/(\bar{a}) \cong (R/(a))/(\tilde{b})$，其中$\tilde{b} = b + (a)$是$b$在自然同态$R \to R/(a)$下的像；
+        \item[(3)]记$\Z[\sqrt{-5}] = \{ a+b\sqrt{-5} \mid a,b \in \Z \} \subseteq \C$。定义环同态
+        $$ \varphi :\Z[x]/(x+1) \to \Z[\sqrt{-5}]/(\sqrt{-5}+1)$$
+        $$ \varphi (\overline{a+bx}) = \overline{a+b\sqrt{-5}},\ \ \forall a,b \in \Z$$
+        请问$\varphi$是否为环同构？若是，请证明之；若否，请给出理由；
+        \item[(4)]证明$\Z[\sqrt{-5}]/(2,\sqrt{-5}+1)$环同构于$\Z/2\Z$。
+    \end{itemize}
+    \item[(六)]设$G$是阶数为$2^n\cdot m$的群，其中$n \ge 1,m$为奇数。若$G$中含有$2^n$阶元，则$G$含有一个指数为$2^n$的正规子群。
+\end{itemize}
+
+== 2022--2023秋期末（猛班）==
+
+一、\ 填空题
+\begin{itemize}
+\item[1.]设$\sigma=(12345)\in S_6$,则$\sigma^{-2}=\underline{\qquad\quad},\sigma^{-1}(126)\sigma=\underline{\qquad\quad}$.
+\item[2.]已知$a=\bar{x}\in\mathbb{Q}[x]/(x^3+x+2)$,则$a^5$是否可逆？$\underline{\qquad\quad}$ (填“是”或“否”.)
+若可逆,用$1,a,a^2$的线性组合表示之$\underline{\qquad\quad}$.
+\item[3.]写出两个$\mathbb{F}_2$上的三次不可约多项式.
+\item[4.]$833$阶群是否为Abel群？$\underline{\qquad\quad}$ (填“是”或“否”.)
+\item[5.]$\mathbb{F}_8$中，$x^6+x^4+x^3+x-1$根的个数为$\underline{\qquad\quad}$.
+\item[6.]写出$3996$阶Abel群的所有可能结构.
+\item[7.]$x^4+2\in\mathbb{Q}[x]$在$\mathbb{Q}$上的分裂域(记为$E$)是$\underline{\qquad\quad}$.
+$[E:\mathbb{Q}]=\underline{\qquad\quad}$.
+$E/\mathbb{Q}$ $\underline{\qquad\quad}$ (填“是”或“否”.)为Galois扩张.
+\end{itemize}
+二、\ 解答题
+\begin{itemize}
+\item[1.]若$R_1,R_2$是两个同构的整区，$F_1,F_2$是对应的分式域. 证明：$F_1,F_2$同构.\\
+\item[2.]$E/F$是域扩张，$u\in E$，$[F(u):F]=p$，其中$p$是素数.
+证明：$\forall m\in \mathbb{N},0<m<p$，$F(u^m)=F(u).$\\
+\item[3.]求$f(x)=(x^2-5)(x^3+1)$在$\mathbb{Q}$上的分裂域$E$,描述$\operatorname{Gal}(E/\mathbb{Q})$的结构.\\
+\item[4.]构造一个$\mathbb{F}_5[x]/(x^2+2)$到$\mathbb{F}_5[x]/(x^2+3)$的具体域同构并证明它是同构.\\
+\item[5.]证明：$715$阶群的中心包含该群的一个Sylow-$13$子群.
+\end{itemize}
+
+== 2022--2023秋期末（雪班）==
+\begin{itemize}
+\item[1.]（20分）设$G$是一个群，$A,B$是$G$的子群，记$AB=\{ab|a\in A,b\in B\}$。\\
+\begin{itemize}
+    \item[(a)]如果$G$是Abel群，证明$AB$是$G$的子群；
+    \item[(b)]设$G=S_3$，$A=\{1,(13)\}$，$B=\{1,(12)\}$。问：$AB$是否是$S_3$的子群，说明理由。
+\end{itemize}
+\item[2.]（20分）设$R=\{m+n\sqrt{11}i\in\mathbb{C}|m,n\in\Z\}$是$\mathbb{C}$的子环，
+$i^2=-1$。定义映射$N:R\to\Z$如下：$N(m+n\sqrt{11}i)=m^2+11n^2$。
+\begin{itemize}
+    \item[(a)]证明：对任意$x,y\in R$，都有$N(xy)=N(x)N(y)$；
+    \item[(b)]求$R^*=\{x\in R|\text{存在 }y\in R\text{ 使得 }xy=yx=1\}$，说明理由；
+    \item[(c)]$R$是否是唯一分解整区（U.F.D.）？说明理由。
+\end{itemize}
+\item[3.]（15分）设$G$是一个有限群，$|G|=48$。证明：$G$有$16$阶或$8$阶的正规子群。
+
+\item[4.]（15分）设$f(x)=x^6+\sqrt{5}x^5+\sqrt{7}x^3+\sqrt[3]{11}x+1\in\R[x]$，
+$\alpha\in\mathbb{C}$是$f(x)$的一个零点。证明：$\alpha$是$\Q$上的代数元。
+
+\item[5.]（15分）设$\mathbb{F}_{81}$为$81$元的有限域。
+$T=\{\alpha\in\mathbb{F}_{81}|\mathbb{F}_{81}=\mathbb{F}_3(\alpha)\}$。
+求$T$中元素的个数，说明理由。
+
+\item[6.]（15分）设$E/\Q$是一个有限Galois扩张且$[E:\Q]=4$。
+若$\operatorname{Gal}(E/\Q)$不是循环群，证明存在$\alpha,\beta\in E$
+使得$E=\Q(\alpha,\beta)$且$\alpha^2,\beta^2\in\Q$。
+
+\end{itemize}
+
+== 2020--2021秋期中（猛班） ==
+
+\begin{itemize}
+    \item[(一)]单项选择题（共30分）
+    \begin{itemize}
+        \item[(a)]$A_3$，$A_4$，$A_5$，$M_n(F)$（矩阵环；$F$为一个域）中
+        哪些是单群或单环？\  $\underline{\qquad\quad}$
+        \begin{itemize}
+            \item[(A).]$A_4$，$A_5$，$M_n(F)$；
+            \item[(B).]$A_3$，$A_5$，$M_n(F)$；
+            \item[(C).]$A_3$，$A_4$，$M_n(F)$；
+            \item[(D).]$A_3$，$A_4$，$A_5$。
+        \end{itemize}
+        \item[(b)]下列哪个环是整环？\  $\underline{\qquad\quad}$
+        \begin{itemize}
+            \item[(A).]$\Z_4$；
+            \item[(B).]$\Z[i]$，$i$是虚数单位；
+            \item[(C).]二元多项式环的商$R[x,y]/I$，$I=\langle xy\rangle$；
+            \item[(D).]$n$元实矩阵环$M_n(\R)$。
+        \end{itemize}
+        \item[(c)]设$R_1,R_2$是带$1$的环，$f:R_1\to R_2$是非零环同态。考虑下面两个命题：
+        \begin{itemize}
+            \item[(I).]设$S$是$R_1$的子环，则$f(S)$是$R_2$的子环。
+            \item[(II).]设$J$是$R_2$的素理想，
+            则$f^{-1}(J)=\{x\in R_1|f(x)\in J\}$是$R_1$的素理想。
+        \end{itemize}
+        下面关于它们的判断$\textbf{正确}$的是？\  $\underline{\qquad\quad}$
+        \begin{itemize}
+            \item[(A).](I)错误，(II)正确；
+            \item[(B).](I)正确，(II)错误；
+            \item[(C).](I)与(II)都错误；
+            \item[(D).](I)与(II)都正确。
+        \end{itemize}
+        \item[(d)]设$R$是整区，下列命题中，哪个$\textbf{正确}$？ \ $\underline{\qquad\quad}$
+        \begin{itemize}
+            \item[(A).]设$I$是$R$的一个非平凡理想，则$R/I$必为整区；
+            \item[(B).]$R$完全有可能包含一个非整子环；
+            \item[(C).]设$S$是一个交换环，$f:R\to S$是一个非零环同态，则其像$f(R)$必为整区；
+            \item[(D).]即使$R$不是域，$R$完全有可能包含一个子环且该子环为域。
+        \end{itemize}
+        \item[(e)]设$G$是乘法群，下列哪个命题$\textbf{正确}$？\  $\underline{\qquad\quad}$
+        \begin{itemize}
+            \item[(A).]$G$的任何一个循环子群都是单群；
+            \item[(B).]如$G$是Abel群，则$G$的任何子群、商群必为Abel群；
+            \item[(C).]如$G$是无限群，则$G$中至少有一个元素的阶(order)非有限；
+            \item[(D).]除了幺元以外，$G$至少有一个有限阶元素。
+        \end{itemize}
+        \item[(f)]设$R$为整区，$R[x,y]$为$R$上的二元多项式环，
+        下列哪个命题$\textbf{正确}$？ \ $\underline{\qquad\quad}$
+        \begin{itemize}
+            \item[(A).]如$R[x,y]$是UFD，则$R$必为UFD；
+            \item[(B).]如$R[x,y]$是UFD，则$R[x]$不一定是UFD；
+            \item[(C).]如$R$是PID，则$R[x,y]$也是PID；
+            \item[(D).]以上命题都不对。
+        \end{itemize}
+    \end{itemize}
+    \item[(二)]（15分）设$p$为素数，试证明：
+    \begin{itemize}
+            \item[(1)]群$\Z_{p^3}$与群$\Z_p\oplus\Z_p\oplus\Z_p$不同构；
+            \item[(2)]求出$\Z_{p^3}$的所有子群；
+            \item[(3)]求出$\Z_p\oplus\Z_p\oplus\Z_p$的所有子群。
+    \end{itemize}
+
+    \item[(三)]（15分）设$F_2$是含两个元素的域，$n\ge4$为正整数，
+    $$R=\{(a_{ij})\in M_n(F_2)|a_{ij}=0,\forall\ 1\le j<i\le n\}.$$
+    试分别举例说明：
+    \begin{itemize}
+            \item[(1)]环$R$不是交换环；
+            \item[(2)]环$R$不是整环；
+            \item[(3)]设理想$I\subseteq R$含有矩阵$E_{23}$
+            （即在$(2,3)$位置为$1$且其余位置为$0$的矩阵），则$I$至少含有多少个元素。
+    \end{itemize}
+
+    \item[(四)]（15分）设$G$为一个群，$H$和$K$分别为$G$的有限指数子群，
+    即$[G:H]<+\infty$，$[G:K]<+\infty$。如果$G=HK$，试证明$[G:H\cap K]=[G:H][G:K]$。
+
+    \item[(五)]（15分）设$D$为可除环，$K$为$D$的可除子环，记$D^*,K^*$分别为$D,K$的乘法群。
+    设$N=N_{D^*}(K^*),C=C_{D^*}(K^*)$分别为$K^*$在$D^*$中的正规化子和中心化子。
+    对任意$h\in D\setminus\{0,1\}$，证明$h,1-h\in N$当且仅当$h\in K\cup C$。
+
+    \item[(六)]（10分）设$f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_0$
+    为一个$n$次实系数多项式，$x_1,x_2,\cdots,x_n$为给定的$n$个实数，
+    令$S=\{I|I\subseteq\{1,2,\cdots,n\}\}$。
+    求$\sum_{I\in S}(-1)^{|I|}f(\sum_{i\in I}x_i)$的值，其中$|I|$表示$I$中的元素个数。
+    若$I$是空集，则规定$(-1)^{|I|}f(\sum_{i\in I}x_i)=f(0)=a_0$。
+
+\end{itemize}
+\begin{proofc}[（六）\ 解答]
+    设$F(x_1,\cdots,x_n)=\sum_{I\in S}(-1)^{|I|}f(\sum_{i\in I}x_i)$，
+    注意\begin{align*}
+        &\textstyle F(x_1,\cdots,x_{j-1},0,x_{j+1},\cdots,x_n)\\
+        &\textstyle =\sum_{I\notni x_j}(-1)^{|I|}f(\sum_{i\in I}x_i)
+        +\sum_{I\ni x_j}(-1)^{|I|}f(\sum_{i\in I}x_i)\\
+        &\textstyle =\sum_{I\notni x_j}(-1)^{|I|}f(\sum_{i\in I}x_i)
+        +\sum_{I\notni x_j}(-1)^{|I\cup\{x_j\}|}f(\sum_{i\in I}x_i+0)=0,
+    \end{align*}
+    于是$x_j|F(x_1,\cdots,x_n)$。
+    因为$\deg F\le n$，所以$F(x_1,\cdots,x_n)=Cx_1\cdots x_n$。
+
+    观察到$F$的表达式中唯一出现$x_1\cdots x_n$一项的是$(-1)^na_n(x_1+\cdots+x_n)^n$，
+    故$C=(-1)^na_nn!$。
+\end{proofc}
+
+== 2020--2021秋期末（雪班、远班） ==
+\begin{itemize}
+\item[（一）]（20分）填空题
+\begin{itemize}
+\item[1.] 方程$x^2-1=0$在环$R=\Z/8\Z$中有 $\underline{\qquad\quad}$ 个不同的解。
+\item[2.] 设$u=\sqrt{2}-\sqrt{3}$，写出$u$在有理数域$\Q$上的首一极小多项式：$\underline{\qquad\qquad\qquad\quad}$。
+\item[3.] 写出对称群$S_4$的一个Sylow $3$子群：$\underline{\qquad\qquad\qquad\quad}$。
+\item[4.] 设$f(x)=x^4+x^2+1$。在$\mathbb{F}_2[x]$中将$f(x)$分解成不可约多项式的乘积：$\underline{\qquad\qquad\qquad\quad}$。\\
+          在$\mathbb{F}_3[x]$中将$f(x)$分解成不可约多项式的乘积：$\underline{\qquad\qquad\qquad\quad}$。
+\item[5.] 设$f(x)\in\Q[x]$是一个$3$次不可约多项式，$r_1,r_2,r_3$是$f(x)$在$\mathbb{C}$中的零点，
+          满足条件$r_1\in \R,r_2\notin \R,r_3\notin \R$。
+          设$E=\Q(r_1,r_2,r_3)$，则扩张次数$[E:\Q]=\underline{\qquad\quad}$。
+\end{itemize}
+
+\item[（二）]（20分）选择题（单选）
+\begin{itemize}
+\item[6.] 下列关于群的命题，哪个正确？$\underline{\qquad\quad}$
+\begin{itemize}
+    \item[A.] 最小的有限单群是$60$阶群；
+    \item[B.] 如果一个群没有非平凡子群，则该群为循环群；
+    \item[C.] 如果一个群的每个非平凡子群都是循环群，则该群为Abel群；
+    \item[D.] 无限阶的Abel群不是有限生成的。
+\end{itemize}
+\item[7.] 多项式$f(x)=x^4+1$在域$\mathbb{F}_9$上有几个不同的零点？$\underline{\qquad\quad}$\\
+\,\,A. $1$;\qquad\qquad B. $2$;\qquad\qquad C. $3$;\qquad\qquad D. $4$.
+\item[8.] 下列环中，不是域的是 $\underline{\qquad\quad}$.
+\begin{itemize}
+    \item[A.] $\mathbb{F}_3[x]/(x^2+1)$；
+    \item[B.] $\Q[x]/(x^4-x^2+1)$；
+    \item[C.] $\Z[x]/(x^2+2)$；
+    \item[D.] $\Z/31\Z$。
+\end{itemize}
+\item[9.] 设$G$为一个$24$阶的Abel群。设$n_4$为$G$中$4$阶子群的个数，则$n_4$不可能等于 $\underline{\qquad\quad}$.\\
+\,\,A. $4$;\qquad\qquad B. $3$;\qquad\qquad C. $2$;\qquad\qquad D. $1$.
+\item[10.] 设$E/F$为有限Galois扩张且$\operatorname{Gal}(E/F)$同构于交错群$A_4$。则下列命题不成立的是 $\underline{\qquad\quad}$.
+\begin{itemize}
+    \item[A.] 存在一个中间域$K$且$[E:K]=3$，使得$E/K$为Galois扩张；
+    \item[B.] 存在一个中间域$K$且$[E:K]=4$，使得$E/K$为Galois扩张；
+    \item[C.] 存在一个中间域$K$且$[E:K]=4$，使得$K/F$为Galois扩张；
+    \item[D.] 存在一个中间域$K$且$[E:K]=6$，使得$K/F$为Galois扩张。
+\end{itemize}
+\end{itemize}
+
+\item[（三）]（18分）设$\Z[i]=\{a+bi\in\mathbb{C}|a,b\in\Z\}$是高斯整数环，$i^2=-1$。
+定义映射$N:\Z[i]\to\Z$如下：$N(a+bi)=a^2+b^2$。
+\begin{itemize}
+    \item[(i)] 证明：对任意$x,y\in\Z[i]$，都有$N(xy)=N(x)N(y)$；
+    \item[(ii)] 证明：$x\in\Z[i]$是乘法可逆元当且仅当$N(x)=1$。
+    \item[(iii)] $11$是否是$\Z[i]$的不可约元？说明理由。
+\end{itemize}
+
+\item[（四）]（12分）设$G$是有限群，$|G|=132$。证明：$G$不是单群。
+
+\item[（五）]（15分）设$r_1,r_2,r_3$为多项式$f(x)=x^3-2x+1\in\Q[x]$在$\mathbb{C}$
+中的三个根，设$E=\Q(r_1,r_2,r_3)$。求$\operatorname{Aut}(E/\Q)$，说明理由。
+
+\item[（六）]（15分）设$F$是一个域且其特征为素数$p$。设$a\in F$，$f(x)=x^p-x-a\in F[x]$。
+设$\overline{F}$是$F$的代数闭包，$u\in\overline{F}$是$f(x)$的一个零点。
+\begin{itemize}
+    \item[(i)] 证明：$u+1$是$f(x)$的零点；
+    \item[(ii)] 设$E=F(u)$，证明$E/F$是Galois扩张。
+\end{itemize}
+\end{itemize}

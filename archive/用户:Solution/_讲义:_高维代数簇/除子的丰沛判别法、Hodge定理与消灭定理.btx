@@ -1,0 +1,54 @@
+\newcommand{\dR}{\rm{dR}}
+
+\section{除子的丰沛性}
+\begin{theorem}[中井-Moishezon判别法，[Har77.V.1.10]]
+    设$S$是光滑射影曲面，$D$是$S$上的除子，且满足
+    \begin{itemize}
+        \item[(1)] $D^{2} > 0$；
+        \item[(2)] 对于任何有效除子$C$，有$D \cdot C > 0$，
+    \end{itemize}
+    则$D$是丰沛的.
+\end{theorem}
+
+\section{一些解析理论}
+\begin{theorem}[Hodge]
+    设$X$是光滑射影簇，则成立
+    \begin{itemize}
+        \item[(1)] $H_{\dR}^{k}(X) \cong 
+                    \bigoplus_{p+q=k}H^{p,q}(X) = 
+                    \bigoplus_{p+q=k}H^{q}(X,\Omega^{p})$；
+        \item[(2)] $H^{p,q}(X) = \overline{H^{q,p}(X)}$；
+        \item[(3)] $h^{p,q}(X) = h^{n-p,n-q}(X)$.
+    \end{itemize}
+\end{theorem}
+
+\section{消灭定理}
+\begin{theorem}[Kodaira消灭定理]
+    设$X$是$n$维射影簇，$L$上$X$上的丰沛线丛，
+    则$\forall \, i > 0$，有
+    \[H^{i}(X,\omega_{X} \otimes L) 
+    \cong H^{n-i}(X,L^{-1})^{\vee} = 0.\]
+\end{theorem}
+
+\begin{theorem}[Ramanujan消灭定理]
+    设$S$是光滑射影曲面，有效除子$D \geq 0$满足
+    \begin{itemize}
+        \item[(1)] $D$是$1$-连通的；
+        \item[(2)] 存在$n > 0$使得$h^{0}(S,nD) \geq 2$，且$|nD|$是有理线束.
+    \end{itemize}
+    则$\forall \, i > 0$，$H^{i}(S,K_{S} + D) = 0$.
+\end{theorem}
+
+\begin{corollary}[Ramanujan]
+    设$S$是光滑射影曲面，有效除子$D \geq 0$是$1$-连通的，且$D^{2} > 0$，
+    则$H^{1}(S,K_{S} + D) = 0$.
+\end{corollary}
+
+\begin{theorem}[川又-Viehweg消灭定理]
+    设$S$是光滑射影簇，$D$是nef且big的$\mathbb{Q}$-除子，
+    且$\{D\} := D - \lfloor D \rfloor$的支集是snc的，
+    则$\forall \, i > 0$，$H^{i}(X,K_{X} + \lceil D \rceil) = 0$.
+    特别地，若$D$还是整除子，则$\forall \, i > 0$，有$H^{i}(X,K_{X} + D) = 0$.
+\end{theorem}
+
+\section{Ramanujan消灭定理的证明}

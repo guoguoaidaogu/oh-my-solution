@@ -1,0 +1,47 @@
+\section{25年秋}
+\begin{enumerate}
+    \item[1.]同24秋1.
+    \item[2.]同24秋2.
+    \item[3.]叙述Hessian比较定理和Laplace比较定理.
+    \item[4.]计算标准球面和双曲空间距离函数的拉普拉斯.
+    \item[5.]设$M$是完备Riemann流形, Ricci曲率以$(n-1)$为下界. 若$M$直径等于$\pi$, 证明$M$和单位球面等距.
+    \item[6.]设$M$是偶数维定向正截面曲率Riemann流形, $\gamma$是$M$中闭测地线. 证明: $\gamma$同伦于一条长度严格小于$\gamma$的闭曲线.
+    \item[7.]同24秋8.
+    \item[8.]设$M$是$\R^{n+1}$中极小曲面, 且$M$上存在光滑正函数$f$, 满足$|A|^2f<-\Delta_M f$, 其中$|A|^2$是第二基本形式, $\Delta_M$是Laplace算子. 证明$M$是稳定的, 即对$M$上任何紧支撑光滑函数$\phi$, 都成立
+    $$\int_M |A|^2\phi^2\leq \int_M|\nabla_M\phi|^2 .$$
+\end{enumerate}
+
+\section{24年秋}
+前四题各12分，后四题各13分。
+\begin{enumerate}
+    \item[1.]叙述流形上曲率张量的定义及其基本性质.
+    \item[2.]叙述割点、共轭点的定义，并写出它们之间的关系.
+    \item[3.]叙述距离函数的Laplace比较定理和Bishop--Gromov体积比较定理.
+    \item[4.]计算标准球面上距离函数的Hessian和Laplace.
+    \item[5.]根据标准正交基下流形上光滑函数的梯度和Laplace的定义，计算曲线坐标系下光滑函数的梯度和Laplace的表达式.
+    \item[6.]设Riemann流形$M$的截面曲率$K$满足$0<L\le K\le H$，
+    其中$H$和$L$是常数。设$\gamma$是$M$中的测地线，
+    证明：$\gamma$上相邻共轭点沿着$\gamma$的距离$d$满足
+    \[\frac{\pi}{\sqrt{H}}\le d \le\frac{\pi}{\sqrt{L}}.\]
+    \item[7.]计算欧氏空间中的极小超曲面上位置函数的Laplace，并证明欧氏空间中不存在紧（无边）极小超曲面.
+    \item[8.]证明：具有正截面曲率的流形上不存在line，即极小测地线$\gamma\colon (-\infty,+\infty)\rightarrow M$. 并判断：对于一个具有非负截面曲率的流形，如果其上有一点的截面曲率为正，是否存在line.
+\end{enumerate}
+
+\section{24年春}
+前四题各10分，后四题各15分。
+\begin{enumerate}
+    \item[1.]叙述Levi-Civita联络的定义.
+    \item[2.]叙述割点、共轭点的定义，并写出它们之间的关系.
+    \item[3.]计算常曲率空间中距离函数的Laplacian.
+    \item[4.]叙述距离函数的Laplacian比较定理和Bishop--Gromov体积比较定理.
+    \item[5.]设$M$是非正曲率完备Riemann流形, $x\in M$, 
+    证明: $\exp_x\colon \mathrm{T}_xM\rightarrow M$不减距离, 
+    即对任意$X\in\mathrm{T}_xM$, $v\in\mathrm{T}_{X}(\mathrm{T}_xM)\cong\mathrm{T}_xM$, 
+    有$\left|(\mathrm{d}\exp_x)_{X}(v)\right|\geq |v|$.
+    \item[6.]设$M$是偶数维正曲率紧Riemann流形, 
+    证明: 对$M$上的任意Killing向量场$X$, 存在$p\in M$, 使得$X(p)=0$.
+    \item[7.]证明: Clifford环面$S^1\big(\frac{1}{\sqrt{2}}\big)\times S^1\big(\frac{1}{\sqrt{2}}\big)$
+    是$S^3$中的极小曲面.
+    \item[8.]设$k$是正整数, 证明：Clifford环面$S^k\big(\frac{1}{\sqrt{2}}\big)\times S^k\big(\frac{1}{\sqrt{2}}\big)$是$S^{2k+1}$中的极小超曲面. 
+    $S^k\big(\frac{1}{\sqrt{2}}\big)\times S^k\big(\frac{1}{\sqrt{2}}\big)$是否具有非负截面曲率？请证明.
+\end{enumerate}

@@ -1,0 +1,455 @@
+\theoremstyle{plain}\newtheorem*{1}{习题1}
+\theoremstyle{plain}\newtheorem*{2}{习题2}
+\theoremstyle{plain}\newtheorem*{3}{习题3}
+\theoremstyle{plain}\newtheorem*{4}{习题4}
+\theoremstyle{plain}\newtheorem*{5}{习题5}
+\theoremstyle{plain}\newtheorem*{6}{习题6}
+\theoremstyle{plain}\newtheorem*{7}{习题7}
+\theoremstyle{plain}\newtheorem*{8}{习题8}
+\theoremstyle{plain}\newtheorem*{9}{习题9}
+\theoremstyle{plain}\newtheorem*{10}{习题10}
+\def\E{\mathbb{E}}
+\def\B{\mathcal{B}}
+\def\M{\mathcal{M}}
+\def\prob{\mathbb{P}}
+\def\t{\underline{t}}
+\def\c{\underline{c}}
+\newtheorem{prop}{性质}
+
+\section{随机矩阵的定义方式}
+\begin{enumerate}
+    \item 给定具体元素的具体分布。
+    \item 给定一个矩阵空间，在空间上赋予一定测度。
+\end{enumerate}
+
+\section{Gaussian Orthogonal Ensemble, GOE}
+\begin{definition}[GOE 的两种等价定义]
+\begin{enumerate}
+    \item[(一)] 矩阵 $A_N$ 是 $N \times N$ 的实对称矩阵 ($A_N^T=A_N$)。
+    其元素 $A_N(i,j)$ ($i \le j$) 是相互独立的、均值为 $0$ 的正态分布随机变量，方差为：
+    \[ \text{Var}(A_N(i,j)) = \begin{cases} 1/N, & i < j \\ 2/N, & i = j \end{cases} \]
+    \item[(二)] 在 $N$ 阶实对称矩阵的空间 $\Omega_N$ 上，赋予如下的概率测度：
+    \[ d\mathbb{P}_N(A_N) = C_N \exp\left(-\frac{N}{4} \operatorname{tr}(A_N^2)\right) \prod_{ i \le j } dx_{ij} \]
+    其中 $C_N$ 是归一化常数。
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+\begin{itemize}
+    \item[a)] 该测度在正交变换下不变。
+    记 $O$ 为正交阵 ($OO^T = I_N$)，对于变换 $B = OAO^T$，
+    有
+     \[\operatorname{Tr}(B^2) = \operatorname{Tr}(OAO^T OAO^T) 
+     = \operatorname{Tr}(O A^2 O^T) = \operatorname{Tr}(O^T O A^2) 
+     = \operatorname{Tr}(A^2).\]
+     进而有$dB=dA$。
+    \item[b)] 对于 $N=2$, 
+    $A=\begin{pmatrix} x_{11} & x_{12} \\ x_{12} & x_{22} \end{pmatrix}$。第二种定义给出的分布（忽略常数）为 
+    \begin{equation*}
+        \begin{aligned}
+            \exp(-\frac{1}{2} \operatorname{Tr} A^2) &= \exp(-\frac{1}{2}(x_{11}^2 + 2x_{12}^2 + x_{22}^2)) \\
+            &= \exp(-\frac{x_{11}^2}{2})\exp(-x_{12}^2)\exp(-\frac{x_{22}^2}{2})
+        \end{aligned}
+    \end{equation*}
+    这与第一种定义中各元素独立的方差设定是相符的。
+    一般情形类似可推得，故在 Gaussian 情形下，两种定义等价。
+\end{itemize}
+\end{remark}
+
+\section{高斯酉系综 (Gaussian Unitary Ensemble, GUE)}
+\begin{definition}[GUE]
+矩阵 $A_N = (a_{ij})$ 是 $N \times N$ 的复厄米矩阵 ($A_N^* = A_N$) ($a_{ij} = \overline{a_{ji}}$)。
+其中 $a_{ij} = x_{ij} + i y_{ij}$ ($i<j$) 和 $a_{ii} = x_{ii}$ 的实部和虚部是 i.i.d 的高斯随机变量，且 $E(|a_{ij}|^2) = 1/N$。
+其概率测度为：
+\[ d\mathbb{P}(A_N) = C_N \exp\left(-\frac{N}{2} \operatorname{Tr}(A_N^2)\right) dA_N \]
+其中 $dA_N = \prod\limits_{i=1}^N dx_{ii} \prod\limits_{i<j} dx_{ij} dy_{ij}$.
+\end{definition}
+
+\begin{remark}
+\begin{itemize}
+    \item[a)] GUE 的概率分布在酉变换 ($A \to U^*AU$) 下不变。
+    \item[b)] 更一般的概率测度可以定义为
+    \[\frac{1}{Z_N} \exp(-N \operatorname{Tr} V(M)) dM,\]
+    其中 $V(M)$ 称为势函数，$Z_N$ 称为配分函数 (partition function)。
+    \item 对于一般的 $V$, 可以定义一个能量泛函 
+    \[E(\mu) = \iint \log|x-y| d\mu(x)d\mu(y) + \int V(x) d\mu(x).\]
+    通过求解其极小值问题（平衡测度问题）可以得到 $N\to\infty$ 时的极限分布。
+    以上仅是大致叙述，详细论述本课程不做讨论。
+\end{itemize}
+\end{remark}
+
+\section{GUE 和 GOE 特征值分布的解析表达式}
+任何厄米/对称矩阵可以被对角化，$A_N = U^*DU$ (或 $O^TDO$)，
+其中 $D = \text{diag}(\lambda_1, \dots, \lambda_N)$。
+
+\begin{example}[考查 GOE(2) 以体会特征值分布]
+$A = \begin{pmatrix} x_{11} & x_{12} \\ x_{12} & x_{22} \end{pmatrix}$，
+其概率密度为 $P(A) = C_2 \exp(-\frac{1}{2}\operatorname{Tr}A^2)$。
+
+进行变量代换 $A=O^TDO$，其中 $D = \begin{pmatrix} \lambda_1 & \\ & \lambda_2 \end{pmatrix}$，$O = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$。由此可得 $x_{ij}$ 与 $(\lambda_1, \lambda_2, \theta)$ 的关系。
+
+取$\lambda_1<\lambda_2,\quad \cos \theta\geq 0,\quad \theta\in(-\pi/2,\pi/2)$，则
+可求得$x_{ij}$与新参数的变量代换关系。
+
+计算得到变换的雅可比行列式为 $\det J = -(\lambda_1-\lambda_2)$。
+因此，新的联合概率密度函数为 ：
+\[q(\lambda_1, \lambda_2, \theta) = P(A(\lambda, \theta))|\det J| = C_2 \exp(-\frac{1}{2}(\lambda_1^2 + \lambda_2^2)) |\lambda_1 - \lambda_2|.\]
+
+该密度与 $\theta$ 无关。对任意函数 $f(\lambda_1, \lambda_2)$，其期望为：
+\[E[f] = \iiint q(\lambda_1, \lambda_2, \theta) f(\lambda_1, \lambda_2) d\lambda_1 d\lambda_2 d\theta.\]
+积分掉 $\theta$ 后，得到特征值的联合概率密度 (jpdf) 为：
+\[ p(\lambda_1, \lambda_2) = \tilde{C}_2 \exp(-\frac{1}{2}(\lambda_1^2 + \lambda_2^2)) |\lambda_1 - \lambda_2| \]
+这里$\tilde{C}_2=\pi C_2.$
+\end{example}
+
+\begin{theorem}[GOE 特征值 jpdf]
+GOE(N) 的特征值 $\lambda_1 < \lambda_2 < \dots < \lambda_N$ 的联合概率密度函数为：
+\[ p(\lambda_1, \dots, \lambda_N) = \tilde{C}_N \exp\left(-\frac{N}{4} \sum_{i=1}^N \lambda_i^2\right) \prod_{1 \le k < l \le N} (\lambda_l - \lambda_k) \]
+乘积项 $\prod (\lambda_l - \lambda_k)$ 称为 interacting term，
+它表明特征值之间存在“排斥” (repulsion)，即两个特征值靠得很近的概率会变小。
+\end{theorem}
+
+\begin{proof}[证明思路]
+$A=(X_{kl})$ 的概率密度为 $\mathbb{P}(A) = C_N \exp(-\frac{N}{4} \text{Tr} A^2)$。
+
+进行变量变换 $A=O^TDO$，其中 $D=\text{diag}(\lambda_1, \dots, \lambda_N)$，$\lambda_1 < \dots < \lambda_N$。
+
+利用 Lie 群 $\mathrm{SO}(N)$ 及其 Lie 代数 $\mathfrak{so}(N)$ 进行参数化，
+令 $O = e^{-H}$，其中 $H$ 为反对称矩阵 ($H^T=-H$)。
+则 $O^T = (e^{-H})^T = e^{-H^T} = e^H$，
+故 $O^TO = e^H e^{-H} = I_N$。从而 $A=O^TDO = e^HDe^{-H}$。
+
+我们需要计算该变换的雅可比行列式 (Jacobian)。
+在 $H=0$ 点计算 Jacobian ，此时 $O=I_N$。变换的微分形式为：
+\[ dA = (dH)D - D(dH) + dD \]
+写出分量形式： 
+\[ dx_{ij} = \lambda_j dh_{ij} - \lambda_i dh_{ij} + \delta_{ij} d\lambda_i = (\lambda_j - \lambda_i) dh_{ij} + \delta_{ij} d\lambda_i \]
+由此可得 Jacobian $J = \det(\frac{\partial x}{\partial (\lambda, h)}) = \prod\limits_{k<l} (\lambda_l - \lambda_k)$。
+
+最终联合密度为 $P(A) |J| = C_N \exp(-\frac{N}{4}\sum \lambda_i^2) \prod\limits_{k<l}(\lambda_l - \lambda_k)$。
+\end{proof}
+\begin{remark}
+    这个证明也许有些不严谨，请参考别的随机矩阵书籍。
+\end{remark}
+\begin{theorem}[GUE 特征值 jpdf]
+GUE(N) 的特征值 $\lambda_1 < \dots < \lambda_N$ 的 jpdf 为：
+\[ p(\lambda_1, \dots, \lambda_N) = \hat{C}_N \exp\left(-\frac{N}{2}\sum_{i=1}^N\lambda_i^2\right)\prod_{1 \le k < l \le N}(\lambda_l-\lambda_k)^2 \]
+证明是类似的，但使用酉矩阵 $U=e^{-iH}$ ($H$为厄米矩阵) 进行参数化。
+\end{theorem}
+
+\begin{remark}[$\beta$-系综]
+对 GSE (辛系综, S为辛矩阵)，结论变为 $\prod(\lambda_l-\lambda_k)^4$。
+
+从而可定义 $\beta$-系综：
+$\exp(-D\sum \lambda_i^2) \prod\limits_{k<l}(\lambda_l-\lambda_k)^\beta$ ($\beta>0$)
+
+一般的酉系综为 $C_{V,N} \exp(-\frac{N}{2} \sum V(\lambda_i)) \prod\limits_{k<l}(\lambda_l-\lambda_k)^2$。
+\end{remark}
+
+\begin{remark}[Vandermonde 行列式]
+注意到 $\prod\limits_{k<l}(\lambda_l-\lambda_k)$ 是范德蒙行列式，由行列式的性有：
+\[ \prod_{1 \le k < l \le N}(\lambda_l - \lambda_k) = \det 
+\begin{pmatrix}
+1 & 1 & \dots & 1 \\
+\lambda_1 & \lambda_2 & \dots & \lambda_N \\
+\vdots & \vdots & \ddots & \vdots \\
+\lambda_1^{N-1} & \lambda_2^{N-1} & \dots & \lambda_N^{N-1}
+\end{pmatrix}
+= \det(P_{i-1}(\lambda_j))_{i,j=1}^N
+\]
+其中 $P_k(x)$是至多$k$次多项式。
+在 GUE 的 jpdf 中，可以选取特殊的 $P_k$：Hermite 多项式。
+\end{remark}
+
+\section{ GUE 与 Hermite 核}
+\begin{definition}[Hermite 多项式]
+\begin{itemize}
+    \item[a)] $H_n(x)$ 是首项系数为$1$的 $n$ 次多项式。
+    \item[b)] $\forall n,m \ge 0$,
+    \[ \int_{\mathbb{R}} \frac{1}{\sqrt{2\pi}} e^{-x^2/2} H_m(x) H_n(x) dx = n! \delta_{n,m} \]
+\end{itemize}
+\end{definition}
+\begin{remark}
+$H_n$ 可通过 Gram-Schmidt 正交化得到。
+\end{remark}
+
+\begin{prop}
+    (1) Rodrigues 公式:
+\[H_n(x)=(-1)^{n}e^{\frac {x^2}{2}}\frac{d^n}{dx^n}(e^{-\frac{x^2}2}) \]
+\[H_0(x)=1,\quad H_1(x)=x,\quad H_2(x)=x^2-1.\]
+(2) Three terms recurrence relation:
+    $$x H_n (x) = H_{n+1} (x) + n H_{n-1} (x)$$
+(3) Differential equation:
+    $$y''(x) - xy'(x) + ny (x) = 0$$
+    \[L(f) = f'' -xf' ,\quad L(H_n) = -n H_n (x)\]
+\end{prop}
+
+\begin{1}
+    证明性质5.3.
+\end{1}
+\begin{proof}
+    (1) 由Gram-Schmidt正交化过程，在给定内积下，首一正交多项式序列是唯一的。从而只需验证 
+\[ H_n(x) = (-1)^n e^{\frac{x^2}{2}} \frac{d^n}{dx^n} (e^{-\frac{x^2}{2}}) \]
+满足条件。首先容易证明 $H_n$ 确实是首一的 $n$ 次多项式。
+
+对任何次数 $m<n$ 的多项式 $P(x)$，由于 $e^{-\frac{x^2}{2}}$ 下降速度远快于任何多项式，
+\begin{equation*}
+    \begin{aligned}
+        \int_{\R} \frac{d^n}{dx^n} (e^{-\frac{x^2}{2}}) \cdot P(x)  dx
+&= \frac{d^{n-1}}{dx^{n-1}} (e^{-\frac{x^2}{2}}) \cdot P(x) \bigg|_{-\infty}^{\infty}- \int_{-\infty}^{\infty} \frac{d^{n-1}}{dx^{n-1}} (e^{-\frac{x^2}{2}}) \cdot P'(x)  dx\\
+&= -\int_{-\infty}^{\infty} \frac{d^{n-1}}{dx^{n-1}} (e^{-\frac{x^2}{2}}) P'(x)  dx\\
+&= \cdots = (-1)^n \int_{-\infty}^{\infty} (e^{-\frac{x^2}{2}}) \cdot P^{(n)}(x)  dx = 0
+    \end{aligned}
+\end{equation*}
+
+
+
+从而
+\[
+\forall m \neq n, \quad \int_{\R} \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}} H_m(x) H_n(x)  dx = 0.
+\]
+
+对 $m=n$，
+\begin{equation*}
+    \begin{aligned}
+      \int_{\R} \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}} \cdot \left[(-1)^n e^{\frac{x^2}{2}} \frac{d^n}{dx^n} (e^{-\frac{x^2}{2}})\right]^2  dx
+&= \frac{(-1)^n}{\sqrt{2\pi}} \int_{\R} H_n(x) \frac{d^n}{dx^n} (e^{-\frac{x^2}{2}})  dx\\  
+&=(\text{分部积分 $n$ 次})\frac{(-1)^n}{\sqrt{2\pi}} \int_{\R} \frac{d^n}{dx^n}(H_n(x))  (e^{-\frac{x^2}{2}})  dx\\
+&=(\text{$H_n$ 为 $n$ 次首一多项式)}\frac{n!}{\sqrt{2\pi}} \int_{\R}   e^{-\frac{x^2}{2}}  dx\\
+&=n!
+    \end{aligned}
+\end{equation*}
+
+
+(2) 由于 $x H_n(x)$ 是 $n+1$ 次多项式，其可表示为 Hermite 多项式的线性组合：
+\[
+xH_n(x) = \sum_{k=0}^{n+1} C_k H_k(x), \quad C_k = \frac{\langle xH_n, H_k\rangle}{\langle H_k, H_k\rangle} = \frac{\langle xH_n, H_k\rangle}{k!}
+\]
+
+若 $k < n-1$，$C_k = \frac{\langle H_n, xH_k\rangle}{k!} = 0$。
+
+\[
+C_{n-1} = \frac{\langle xH_n, H_{n-1}\rangle}{(n-1)!} = \frac{\langle H_n, xH_{n-1}\rangle}{(n-1)!} 
+\]
+由于$xH_{n-1}(x)$首一、次数为$n$，故其低次项与$H_n$的内积为$0$,故$C_{n-1}= \frac{\langle H_n, H_{n}\rangle}{(n-1)!}=n$.
+
+被积函数为奇函数，有
+\[
+C_n = \frac{\langle xH_n, H_n\rangle}{n!} = \frac{1}{n!} \int_{\R} \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}} \cdot x (H_n(x))^2 dx = 0
+\]
+
+
+而 直接由$xH_n,H_{n+1}$均为首一$n+1$次多项式即得$C_{n+1} = 1$.
+
+因此：
+\[
+xH_n(x) = H_{n+1}(x) + nH_{n-1}(x)
+\]
+
+(3) 
+\begin{equation*}
+    \begin{aligned}
+        H_n'(x) &= (-1)^n \cdot \frac{d}{dx} \left[ e^{\frac{x^2}{2}} \frac{d^n}{dx^n} (e^{-\frac{x^2}{2}}) \right]\\
+        &= (-1)^n \cdot e^{\frac{x^2}{2}} \left[ x \frac{d^n}{dx^n} (e^{-\frac{x^2}{2}}) + \frac{d^{n+1}}{dx^{n+1}} (e^{-\frac{x^2}{2}}) \right]\\
+        &= x H_n(x) - H_{n+1}(x) = n H_{n-1}(x).
+    \end{aligned}
+\end{equation*}
+
+因此：
+\[
+H_n'(x) - x H_n'(x) + n H_n(x) = n H_{n-1}(x) - n x H_{n-1}(x) + n H_n(x) = 0
+\]
+\end{proof}
+还有几个其他常用的多项式，如：
+
+\begin{itemize}
+    \item \textbf{Laguerre多项式}: \\
+    \[I=(0,+\infty),\quad \omega_L(x)=x^\alpha e^{-x}.\]
+
+    \item \textbf{Jacobi多项式}: \\
+   \[I=(-1,1),\quad \omega(x)=(x+1)^\alpha(1-x)^\beta\]
+   若$\alpha=\beta=0$，则Jacobi 多项式成为 Legendre多项式；
+   若$\alpha=\beta=\pm\frac12$,则Jacobi多项式成为Chebyshev 多项式。
+\end{itemize}
+
+用处：\textbf{Gauss积分法则}
+
+$$\int_I f(x) \omega(x) dx \approx \sum f(x_i) \omega_i $$
+这里$x_i$是节点，$\omega_i$可以看做权重。
+
+$f(x)=x^{i}, \quad i=0,1,\dots,2n-1$时,上式等号严格成立.
+这里$x_{i}$取成 $P_n(x)$的零点.
+
+现在我们回到上小节节末，使用Hermite核来处理$GUE$的联合特征值分布函数。既有：
+$$\Delta (\lambda_1, \ldots, \lambda_N) = \det (H_{i-1} (\lambda_j))_{i,j=1}^N$$
+从而
+\begin{equation*}
+    \begin{aligned}
+        q(\lambda_1, \ldots, \lambda_N) &= \hat{C}_N e^{-\frac{1}{2} \sum\limits_{i=1}^N \lambda_i^2} \Delta (\lambda_1, \ldots, \lambda_N)^2\\
+        &=(\text{做换元 }\mu_i=\sqrt{N}\lambda_i) \quad \hat{C}_N e^{-\frac{1}{2N} \sum\limits_{i=1}^N \mu_i^2} \Delta (\frac{\mu_1}{\sqrt{N}}, \ldots, \frac{\mu_N}{\sqrt{N}})^2 (\frac{1}{\sqrt{N}})^{N(N-1)}
+    \end{aligned}
+\end{equation*}
+
+
+这里$\mu_i$为未归一的GUE矩阵$\sqrt{N} A_N$的特征值，
+($\mu_1, \ldots, \mu_N$) $\in \mathbb{R}^N$, 未排序。
+
+进而$\mu_i$的联合分布为：
+\begin{equation*}
+    \begin{aligned}
+    p(\mu_1, \ldots, \mu_N) &= \tilde{C}_N e^{-\frac{1}{2} (\mu_1^2 + \ldots + \mu_N^2)} \Delta (\mu_1, \ldots, \mu_N)^2\\
+    &=\tilde{C}_N e^{-\frac{1}{2} (\mu_1^2 + \ldots + \mu_N^2)} \det [H_{i-1} (\mu_j)]^2\\
+    &=\tilde{C}_N [ \det (e^{-\frac{1}{4} \mu_j^2} H_{i-1} (\mu_j))]^2\\    
+    \end{aligned}
+\end{equation*}
+这里$\tilde{C}_N = \hat{C}_N (\frac{1}{\sqrt{N}})^{N(N-1)} N!$.
+
+\begin{definition}
+    $H_n$是$n$次Hermite多项式。定义Hermite函数：
+    \[\Psi_n(x) = (2\pi)^{-\frac{1}{4}} (n!)^{-\frac{1}{2}} e^{-\frac{1}{4}x^2} H_n(x).\]
+    则其满足：
+    \[\int_{\mathbb{R}} \Psi_n(x) \Psi_m(x) dx = \frac{1}{\sqrt{2\pi}} \frac{1}{\sqrt{n!m!}} \int_{\mathbb{R}} H_n(x) H_m(x) e^{-\frac{1}{2}x^2} dx=\delta_{n,m}\]
+\end{definition}
+
+
+那么，由于$(\det M)^2=\det M\cdot \det M^t=\det(M\cdot M^t)$,有
+\[p(\mu_1, \ldots, \mu_N) = C_N [ \det (\Psi_{i-1} (\mu_j))_{i,j=1}^N ]^2=C_N (\det K_N(\mu_i, \mu_j)_{i,j=1}^N).\]
+这里$K_N(x,y) = \sum\limits_{k=0}^{N-1} \Psi_k(x) \Psi_k(y)$，
+其中$\Psi_k$是Hermite函数，称$K_N$为Hermite核。
+
+类似地,对一般权函数$\omega(x)$,可以写成
+$$\prod_{i=1}^N \omega(x_i) \Delta(x_1, \ldots, x_n)^2 = \det (K_N(x_i, x_j))$$
+其中$K_N$用$\omega$表示(这里用的是Hermite多项式对应的权函数).
+
+\begin{prop}
+    $N$阶 Hermite 核是一个再生核(reproducing kernel), i.e.
+    \[\int_{\mathbb{R}} K_N(x,u) K_N(u,y) du = K_N(x,y).\]
+\end{prop}
+\begin{proof}
+    \begin{equation*}
+\begin{aligned}
+\text{LHS} &= \int_{\mathbb{R}} \left(\sum_{k=0}^{N-1} \Psi_k(x) \Psi_k(u)\right) \left(\sum_{l=0}^{N-1} \Psi_l(u) \Psi_l(y)\right) du \\
+&= \sum_{k=0}^{N-1} \sum_{l=0}^{N-1} \Psi_k(x) \Psi_l(y) \int_{\mathbb{R}} \Psi_k(u) \Psi_l(u) du \\
+&= \sum_{k=0}^{N-1} \Psi_k(x) \Psi_k(y) = K_N(x,y).
+\end{aligned}
+\end{equation*}
+\end{proof}
+
+\begin{lemma}
+    $K: \mathbb{R}^2 \to \mathbb{R}$ 是再生核,则对 $n \ge 2$,
+    $$\int_{\mathbb{R}} \det (K(x_i, x_j))_{i,j=1}^n dx_n = (d-n+1) \det (K(x_i, x_j))_{i,j=1}^{n-1}$$
+    其中$d=\int K(x,x)dx$.
+\end{lemma}
+\begin{proof}
+  $n=2$时,
+\begin{equation*}
+    \begin{aligned}
+        &\int_{\mathbb{R}} \det \begin{pmatrix} K(x_1, x_1) & K(x_1, x_2) \\ K(x_2, x_1) & K(x_2, x_2) \end{pmatrix} dx_2\\
+        &= \int_{\mathbb{R}} (K(x_1, x_1) K(x_2, x_2) - K(x_1, x_2) K(x_2, x_1)) dx_2\\
+        &= d K(x_1, x_1) - K(x_2, x_2) = (d-1) K(x_1, x_1).
+    \end{aligned}
+\end{equation*}
+
+$n\geq 2$时留作习题.
+\end{proof}
+  
+\begin{2}
+    对一般的$n$证明引理5.6.
+\end{2}
+\begin{proof}
+    \[
+\det(K(x_i, y_j))_{i,j=1}^n = \sum_{\sigma \in S_n} \text{sgn}(\sigma) \cdot \prod_{i=1}^n K(x_i, x_{\sigma(i)})
+\]
+
+将 $S_n$ 分割为两个不交集合：
+\[
+A = \{\sigma \in S_n : \sigma(n)=n\}, \quad B = \{\sigma \in S_n : \sigma(n) \neq n\}
+\]
+
+对 $\sigma \in A$，
+\[
+\prod_{i=1}^n K(x_i, x_{\sigma(i)}) = K(x_n, x_n) \prod_{i=1}^{n-1} K(x_i, x_{\sigma(i)})
+\]
+\[
+\Rightarrow \int_{\R} \prod_{i=1}^n K(x_i, x_{\sigma(i)}) dx_n = d \prod_{i=1}^{n-1} K(x_i, x_{\sigma(i)})
+\]
+
+对 $\sigma \in B$，
+\[
+\prod_{i=1}^n K(x_i, x_{\sigma(i)}) = K(x_j, x_n) K(x_n, x_k) \prod_{i \neq j} K(x_i, x_{\sigma(i)})
+\]
+其中 $j = \sigma^{-1}(n)$, $k = \sigma(n)$
+
+\begin{equation*}
+    \begin{aligned}
+        \Rightarrow \int_{\R} \prod_{i=1}^n K(x_i, x_{\sigma(i)}) dx_n &= \left( \prod_{i \neq j,n} K(x_i, x_{\sigma(i)}) \right) \int_{\R} K(x_j, x_n) K(x_n, x_k) dx\\
+&= \left( \prod_{i \neq j,n} K(x_i, x_{\sigma(i)}) \right) K(x_j, x_k)
+    \end{aligned}
+\end{equation*}
+
+
+定义 $\sigma' \in S_{n-1}$：对于 $i \neq j$，$\sigma'(i) = \sigma(i)$，且 $\sigma'(j) = k$。
+则 $\text{sgn}(\sigma') = -\text{sgn}(\sigma)$（交换 $(n,k)$ 这一逆序对）。
+
+且对每个 $\sigma' \in S_{n-1}$，在 $B$ 中有 $(n-1)$ 个 $\sigma$ 与之对应（因为 $j$ 可取 $1$ 到 $n-1$）。
+
+因此：
+\begin{equation*}
+    \begin{aligned}
+        \int_{\R} \det(K(x_i, x_j))_{i,j=1}^n dx_n &= \sum_{\sigma \in A} \int_{\R} \prod_{i=1}^n K(x_i, x_{\sigma(i)}) dx_n + \sum_{\sigma \in B} \int_{\R} \prod_{i=1}^n K(x_i, x_{\sigma(i)}) dx_n\\
+        &= d \sum_{\sigma \in S_{n-1}} \text{sgn}(\sigma) \cdot \prod_{i=1}^{n-1} K(x_i, x_{\sigma(i)}) \\
+        &+ (n-1) \cdot \sum_{\sigma' \in S_{n-1}} (-\text{sgn}(\sigma')) \prod_{i=1}^{n-1} K(x_i, x_{\sigma'(i)})\\
+        &= (d-n+1) \det(K(x_i, x_j))_{i,j=1}^{n-1}
+    \end{aligned}
+\end{equation*}
+\end{proof}
+
+\begin{corollary}
+    记$K_N$为 Hermite 核,由于
+    \[d = \int K_N(x,x)dx = \sum_{i=0}^{N-1} \int \Psi_i(x) \Psi_i(x)dx=n\]
+    \begin{equation*}
+        \begin{aligned}
+            &\int_{\mathbb{R}} \ldots \int_{\mathbb{R}} (\det (K_N(x_i, x_j)))_{i,j=1}^n dx_1 \ldots dx_n\\
+            &=(d-n+1) \int_{\mathbb{R}} \ldots \int_{\mathbb{R}} (\det (K_N(x_i, x_j)))_{i,j=1}^{n-1} dx_1 \ldots dx_{n-1}\\
+            &= \ldots = (d-n+1) \ldots (d-1)d = n!
+        \end{aligned}
+    \end{equation*}
+    
+又因为
+\begin{equation*}
+    \begin{aligned}
+        1 &= \int_{\mathbb{R}^N}p_N (\mu_1, \ldots, \mu_N) d\mu_1 \ldots d\mu_N\\
+        &=C_N \int_{\mathbb{R}^N} \det(K_N (\mu_i, \mu_j))_{i,j=1}^n \prod_{i=1}^n d\mu_i
+    \end{aligned}
+\end{equation*}
+
+因此 $C_N = \frac{1}{n!}$
+\end{corollary}
+
+\begin{theorem}
+    未归一的$GUE(N)$的平均特征值密度是
+    \begin{equation*}
+        \begin{aligned}
+            P_N(\mu) &= \frac{1}{N} K_N(\mu,\mu) = \frac{1}{N} \sum_{k=0}^{N-1} \Psi_k(\mu)^2\\
+            &= \frac{1}{\sqrt{2\pi}} \frac{1}{N} \sum_{k=0}^{N-1} \frac{1}{k!} H_k(\mu)^2 e^{-\frac{1}{2}\mu^2}.
+        \end{aligned}
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    $P(\mu_1, \ldots, \mu_N)$是jpdf,即$N$个特征值位于$\mu_1, \ldots, \mu_N$ 的概率.
+\begin{equation*}
+    \begin{aligned}
+        P_N(y) = \int_{\mathbb{R}^{N-1}} P(y_1, \ldots, y_{N-1}, y) d y_1 \ldots d y_{N-1}
+    \end{aligned}
+\end{equation*}
+
+\begin{equation*}
+    \begin{aligned}
+        P_N(\mu) &= \int_{\mathbb{R}^{N-1}} P(\mu_1, \ldots, \mu_{N-1}, \mu) d \mu_1 \ldots d \mu_{N-1}\\
+        &= \frac{1}{N!} \int_{\mathbb{R}^{N-1}} \det (K_N(\mu_i, \mu_j))_{i,j=1}^N d\mu_1 \ldots d\mu_{N-1}\\
+        &= \frac{(N-1)!}{N!} K_N(\mu,\mu) = \frac{1}{N} K_N(\mu,\mu)
+    \end{aligned}
+\end{equation*}
+
+\end{proof}

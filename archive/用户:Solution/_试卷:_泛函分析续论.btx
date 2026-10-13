@@ -1,0 +1,159 @@
+\setdisplaytitle{试卷：泛函分析续论}
+\sethtmltitle{试卷：泛函分析续论}
+
+下文涉及的课本为郭坤宇编著的《算子理论基础》(第二版)，若版本不同，
+页码和命题、习题的序号可能会有差异。
+
+\section{2026春期末(回忆版)}
+\begin{itemize}
+\item[一、]证明推论4.3.5 (i) (ii), 4.3.6.
+
+\item[二、]证明定理4.5.7.
+
+\item[三、]叙述并证明von Neumann二次换位子定理（定理4.6.1）.
+
+\item[四、]叙述连续函数代数的表示定理，并利用此证明Riesz表示定理，即：
+设$X$是一个紧Hausdorff空间，$C(X)$是$X$上连续函数赋以最大模范数构成的Banach空间，
+若$F$是$C(X)$上的一个正线性泛函，那么存在$X$上唯一的正则Borel测度$\mu$使得
+$F(f)=\displaystyle\int_X f\text{d}\mu$，$f\in C(X)$.
+
+\item[五、]设$H$是Hilbert空间，$A,B\in B(H)$是Fredholm算子，证明：
+\begin{itemize}
+    \item[(1)]$AB$是Fredholm算子.
+    \item[(2)]$\operatorname{ind}(AB)=\operatorname{ind}(A)+\operatorname{ind}(B)$.
+\end{itemize}
+
+\end{itemize}
+
+
+\section{2025秋期末}
+\begin{itemize}
+\item[一、]
+\begin{itemize}
+    \item[(1)]证明Banach逆算子定理和闭图像定理等价.
+    \item[(2)]同23秋2.(2).
+\end{itemize}
+
+\item[二、]设$(X,d)$是完备度量空间, $\{f_n\}$是$X$中连续函数列, 且$\{f_n\}$逐点收敛到$f$. 
+证明: $f$的不连续点集是第一纲集, 连续点集是第二纲的稠密子集.
+
+\item[三、]叙述Hahn--Banach定理的锥版本, 即Krein--Riesz延拓定理. 并证明, $\mathbb{R}$上存在一个在所有子集上有定义的, 有限可加的广义正测度$\nu$. 且对于Lebesgue可测集$E$, 有$\nu(E)=m(E)$.
+
+\item[四、]设$\Omega$是一个拓扑空间, 存在一列紧集$\{K_n\}$满足$K_1\subseteq K_2\subseteq \cdots$且$\cup_n K_n=\Omega$. 
+记$C(\Omega)$为$\Omega$上连续函数全体构成的空间. 在$C(\Omega)$上定义一列半范数:
+$$\rho_n(f)=\max_{x\in K_n}|f(x)|.$$
+记$\tau$为半范数族$\{\rho_n\}$诱导的拓扑.
+\begin{itemize}
+    \item[(1)]证明$\{f:\rho_n(f)<\frac{1}{n}\}$可以组成原点的邻域基.
+    \item[(2)]定义度量
+    $$d(f,g)=\max_n\frac{1}{2^n}\frac{\rho_n(f-g)}{1+\rho_n(f-g)},$$
+    证明$(C(\Omega),d)$是完备度量空间.
+    \item[(3)]证明$\tau$和$d$诱导的拓扑一致.
+\end{itemize}
+
+\item[五、]课本第四章4.2节习题11.
+
+\end{itemize}
+
+\section{2025春期末}
+每大题20分.
+\begin{itemize}
+\item[一、]
+\begin{itemize}
+    \item[(1)]叙述von Neumann二次换位子定理，证明p.184习题1.
+    \item[(2)]用Gelfand--Naimark定理证明定理4.4.17.
+\end{itemize}
+
+\item[二、]证明推论4.3.5 (i) (ii), 4.3.6.
+
+\item[三、]叙述连续函数代数的表示定理，并利用此证明Riesz表示定理，即：
+设$X$是一个紧Hausdorff空间，$C(X)$是$X$上连续函数赋以最大模范数构成的Banach空间，
+若$F$是$C(X)$上的一个正线性泛函，那么存在$X$上唯一的正则Borel测度$\mu$使得
+$F(f)=\displaystyle\int_X f\text{d}\mu$，$f\in C(X)$.
+
+\item[四、]证明p.180习题1.
+
+\item[五、]记$\mathcal{S}$为直线$\R$上的速降函数空间，$f\in\mathcal{S}$，证明：
+\begin{itemize}
+    \item[(1)]$\hat{f}\in\mathcal{S}$.
+    \item[(2)]$f(t)=\displaystyle\int_{\R}\hat{f}(s)e^{\text{i}st}\text{d}m(s),\quad t\in\R.$
+\end{itemize}
+\end{itemize}
+
+\section{2024秋期末}
+\begin{itemize}
+\item[1.] (i) 陈述并证明Baire纲定理，并以之证明共鸣定理。\\
+(ii) 陈述并证明Banach--Alaoglu定理，并予以证明。\\
+(iii) 设$\mathcal{A}$为交换的Banach代数，
+证明$\mathcal{A}$中的极大理想与$\mathcal{A}$上的可乘线性泛函一一对应。
+
+\item[2.] 设$PC[0,\infty)$表示$[0,\infty)$上周期为$2\pi$的连续函数全体构成的Banach空间，
+$\|f\|=\sup_{0 \leqslant x < \infty}|f(x)|$。定义$(S(t)f)(s)=f(t+s)$。证明：\\
+(i) $\{S(t):t\geqslant0\}$是一个等距的$C_0$-算子半群。\\
+(ii) 求其母元$S$的表达式及其定义域$\mathcal{D}(S)$。
+
+\item[3.] 设拓扑线性空间$X$上的拓扑由一族半范数$\mathcal{P}=\{p_n\}$定义，
+$f$为$X$上的线性泛函。证明：$f$连续当且仅当存在$p_1,\cdots,p_n\in\mathcal{P}$和$M>0$，
+使得$|f(x)| \leqslant M\big(p_1(x)+\cdots+p_n(x)\big)$。
+
+\item[4.] 求$l^1(\Z)$的Gelfand变换，并证明Wiener定理。
+
+\item[5.] 设$G$为离散的Abel群，$X$为局部紧的Hausdorff空间，$G$在$X$上有连续的作用，
+证明：存在$X$的Borel子集全体上的一个非负函数$\mu$，使得
+(i) $\mu$是有限可加的，(ii) $\mu(X)=1$，(iii) $\mu$是关于$G$-作用不变的。
+\end{itemize}
+
+\section{2024春期末}
+\begin{itemize}
+\item[1.] 证明推论4.3.5, 4.3.6. (25分)
+
+\item[2.] 用Moore再生核函数方法证明GNS构造. (15分)
+
+\item[3.] 证明定理4.5.7. (20分)
+
+\item[4.] 叙述并证明von Neumann二次换位子定理. (20分)
+
+\item[5.] (1) 如果$f$是$\R$上的速降函数，证明$f$的Fourier变换$\hat{f}$是速降函数.\\
+(2) 证明$\|f\|_{L^2}=\|\hat{f}\|_{L^2}$.\\
+(3) 证明Fourier变换可以唯一延拓为$L^2(\R)$上的酉算子. (20分)
+\end{itemize}
+
+\section{2023秋期末}
+\begin{itemize}
+\item[1.] 叙述Baire纲定理, 并且证明如下命题: 给定 $f$为完备度量空间$X$上的函数, 
+其连续点集 $C_f$在 $X$中稠密. 证明其不连续点集$D_f$是第一纲的.
+
+\item[2.] 
+(1) 叙述并证明开映射定理.\\
+(2) 对复数序列 $(a_n)_{n\in\mathbb{Z}},\ \lim_{|n|\to \infty}a_n=0$, 
+是否存在 $f\in L^1[0,2\pi]$使得 $\hat{f}(n)=a_n$?
+
+\item[3.] 课本第二章2.2节习题的第2题.
+
+\item[4.]
+(1)课本第二章2.3节习题的第19题.\\
+(2) (课本第二章2.3.4小节的例子2.3.12)请用Krein--Milman定理和Banach--Alaoglu定理
+说明 $L^1[0,1]$不是赋范线性空间的对偶.
+
+\item[5.] 课本第四章4.2节正文一开始到定理4.2.2证明结束.
+\end{itemize}
+
+\section{2023春期末}
+\begin{itemize}
+\item[一.]
+\begin{itemize}
+    \item[(1)](i)证明$C^*$-代数上的正线性泛函连续；
+    (ii)证明正线性泛函的Cauchy--Schwarz不等式.
+    \item[(2)]叙述正规元的连续函数演算及$\sigma(f(N))=$?
+    \item[(3)]叙述von Neumann二次换位子定理，证明P184习题1.
+    \item[(4)]证明$C^*$-代数之间的单同态是等距，特别地，
+    对于同态$\rho:\mathcal{A}\to \mathcal{B}$，
+    $\rho(\mathcal{A})$是$\mathcal{B}$的子代数.
+\end{itemize}
+\item[二.]
+证明p.145系4.3.5.
+\item[三.]
+证明p.171定理4.5.7.
+\item[四.]
+证明p.180习题1.
+\end{itemize}

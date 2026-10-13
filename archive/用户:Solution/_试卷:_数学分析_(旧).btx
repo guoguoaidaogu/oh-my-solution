@@ -1,0 +1,1559 @@
+\setdisplaytitle{试卷：数学分析}
+\sethtmltitle{试卷：数学分析}
+
+{{comment|谢谢大家的积极供稿，本页面目前已接近香蕉空间单个页面的承载容量上限。
+后续的试卷上传非常可能会因此显示``编译错误''，
+如果发生此情况，请新开一个页面上传，谢谢。}}
+
+==26春数学分析AII期末(吴昊)==
+\textbf{注：}本卷A约65分，A+约70-75分。
+\begin{enumerate}
+\item 一、填空题(35分)
+\begin{enumerate}[label=\arabic*.]
+\item 求极限：$\displaystyle \lim_{n \to \infty} \prod_{k=1}^n \left( 1 + \frac{k}{n^2} \right)$
+\item 求积分：$\displaystyle \int_0^{+\infty} \frac{1}{(x^2+1)(x^{2026}+1)} \, dx$
+\item 求二重极限：$\displaystyle \lim_{(x, y) \to (0, 0)} (x^2 + y^2)^{xy}$
+\item 判断级数的敛散性：通项为 $a_n = n^{\frac{1}{n^2+1}} - 1$ 的级数是收敛还是发散？（填：收敛 / 发散）
+\item 设函数 $f(x) = \dfrac{1-x+x^2}{1+x+x^2}$，求 $f^{(2026)}(0)$ 的值。
+\end{enumerate}
+
+\item 二、解答题(65分)
+\begin{enumerate}[label=\arabic*.]
+\item （10分）设 $f(x) \in C[0, 1]$，求极限：
+\[
+\lim_{p \to +\infty} \left( \int_0^1 |f(x)|^p e^{2026x} \, dx \right)^{\frac{1}{p}}
+\]
+
+\item （10分）设 $\displaystyle \lim_{x^2+y^2 \to +\infty} f(x, y) = 0$，证明：$f(x, y)$ 在 $\mathbb{R}^2$ 上至少具有最小值或最大值。
+
+\item （10分）证明：级数 $\displaystyle \sum_{n=1}^{\infty} \frac{x^n \sin nx}{n}$ 在区间 $[-1, 1]$ 上一致收敛。
+
+\item （10分）设积分 $\displaystyle \int_0^{+\infty} f^2(x) \, dx$ 存在，函数 $g(x) = \int_0^x f(t) \, dt$，且 $f(x) \in C[0, +\infty)$。证明：积分 $\displaystyle \int_0^{+\infty} \frac{g^2(x)}{x^2} \, dx$ 收敛，并且满足不等式：
+\[
+\int_0^{+\infty} \frac{g^2(x)}{x^2} \, dx \le 4 \int_0^{+\infty} f^2(x) \, dx
+\]
+
+\item （15分）设函数列 $f_n(x) = \dfrac{x^n}{n!} e^{-x}, \quad (x \ge 0)$。
+\begin{enumerate}[label=(\arabic*)]
+\item 设 $a_n = \sup_{[0, +\infty)} f_n(x)$，求 $a_n$。
+\item 讨论 $\{f_n\}$ 在 $[0, +\infty)$ 上的一致收敛性。
+\item 求积分 $\displaystyle \int_0^{+\infty} f_n(x) \, dx$。
+\item 将 (2) 与一致收敛性的判定结果进行比较，得出结论并予以证明。
+\end{enumerate}
+
+\item （10分）设 $f, m_1, m_2$ 均为 $[0, +\infty)$ 上的连续非负函数，且 $\alpha > 0$。满足微分不等式：
+\[
+\frac{d}{dx} f^2(x) + \alpha f^2(x) \le m_1(x) f(x) + m_2(x)
+\]
+\begin{enumerate}[label=(\arabic*)]
+\item 证明不等式：
+\[
+f^2(t) \le 2 f^2(0) e^{-\alpha t} + \int_0^t m_1(s) e^{-\frac{\alpha}{2}(t-s)} \, ds + 2 \int_0^t m_2(s) e^{-\alpha(t-s)} \, ds
+\]
+\item 若存在常数 $M > 0$，使得 $\displaystyle \sup_{r \ge 0} \int_r^{r+1} m_i(t) \, dt \le M \ (i=1, 2)$，证明：$f(t)$ 在 $[0, +\infty)$ 上一致有界。
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+
+== 26秋期末数学分析II试卷解答与补充 ==
+
+\begin{enumerate}
+\item[一、] 第三题的详细证明过程（级数一致收敛）
+\begin{enumerate}
+\item 题目：证明 $\displaystyle \sum_{n=1}^{\infty} \frac{x^n \sin nx}{n}$ 在 $[-1,1]$ 上一致收敛。
+\item 证：令 $a_n(x)=x^n\sin nx$, $b_n=1/n$。由 Dirichlet 判别法，只需验证：
+\begin{enumerate}
+\item $b_n$ 单调趋于0（显然）
+\item 部分和 $S_n(x)=\sum_{k=1}^n x^k\sin kx$ 在 $[-1,1]$ 上一致有界。
+\end{enumerate}
+利用 $\sin kx = \operatorname{Im}(e^{ikx})$，得
+\[
+S_n(x)=\operatorname{Im}\Bigl(\sum_{k=1}^n (xe^{ix})^k\Bigr).
+\]
+记 $z=xe^{ix}$。由于 $z=1$ 在 $[-1,1]$ 上无解，故恒有
+\[
+\sum_{k=1}^n z^k = z\frac{1-z^n}{1-z} = xe^{ix}\frac{1-x^ne^{inx}}{1-xe^{ix}}.
+\]
+因此
+\[
+|S_n(x)|\le |x|\frac{|1-x^ne^{inx}|}{|1-xe^{ix}|}\le\frac{2}{|1-xe^{ix}|}.
+\]
+计算分母的模长平方：
+\[
+|1-xe^{ix}|^2 = 1-2x\cos x+x^2 = (x-\cos x)^2+\sin^2x.
+\]
+该式在 $[-1,1]$ 上为零需要同时满足 $x=\cos x$ 和 $\sin x=0$，即 $x=0$ 且 $0=\cos0=1$，不可能。故分母恒正，由连续性在紧集 $[-1,1]$ 上存在正的最小值 $\delta>0$，从而 $|1-xe^{ix}|\ge\sqrt\delta>0$。于是对所有 $x,n$ 有
+\[
+|S_n(x)|\le \frac{2}{\sqrt\delta},
+\]
+即部分和一致有界。由 Dirichlet 判别法，原级数一致收敛。 \hfill $\square$
+\end{enumerate}
+
+\item[二、] 第二题的单点紧致化证明
+\begin{enumerate}
+\item 题目：设 $f:\mathbb{R}^2\to\mathbb{R}$ 连续，且 $\displaystyle\lim_{x^2+y^2\to+\infty}f(x,y)=0$，证明 $f$ 至少具有最小值或最大值。
+\item 证（单点紧致化）：在 $\mathbb{R}^2$ 中添加无穷远点 $\infty$，得到单点紧化空间 $\widehat{\mathbb{R}}^2=\mathbb{R}^2\cup\{\infty\}$，其中 $\infty$ 的邻域基为 $\{\infty\}\cup(\mathbb{R}^2\setminus K)$，$K$ 为 $\mathbb{R}^2$ 的紧子集。定义 $\tilde f:\widehat{\mathbb{R}}^2\to\mathbb{R}$：
+\[
+\tilde f(p)=\begin{cases}
+f(p), & p\in\mathbb{R}^2,\\
+0, & p=\infty.
+\end{cases}
+\]
+$\tilde f$ 在 $\mathbb{R}^2$ 上自然连续。在 $\infty$ 处：任给 $\varepsilon>0$，由极限条件存在 $R>0$，当 $\sqrt{x^2+y^2}>R$ 时 $|f(x,y)|<\varepsilon$。取 $K=\overline{B}(0,R)$，则邻域 $U=\{\infty\}\cup(\mathbb{R}^2\setminus K)$ 中的点均满足 $|\tilde f(p)-0|<\varepsilon$，故 $\tilde f$ 在 $\infty$ 连续。
+
+$\widehat{\mathbb{R}}^2$ 是紧空间（单点紧化的基本性质），$\tilde f$ 连续，因此 $\tilde f$ 取到最大值 $M$ 与最小值 $m$。由于 $\tilde f(\infty)=0$：
+\begin{itemize}
+\item 若 $M>0$，最大值在 $\mathbb{R}^2$ 内取到；
+\item 若 $M=0$ 且 $f$ 不恒为零，则 $m<0$ 在 $\mathbb{R}^2$ 内取到；
+\item 若 $f\equiv0$，则既取最大值也取最小值。
+\end{itemize}
+综上，$f$ 在 $\mathbb{R}^2$ 上至少具有最小值或最大值。 \hfill $\square$
+\end{enumerate}
+
+\item[三、] 给大一新生的学习建议
+\begin{enumerate}
+\item 第三题中我们使用复指数将三角函数转化为等比数列，这一技巧本质属于\textbf{复变函数}。欧拉公式 $e^{i\theta}=\cos\theta+i\sin\theta$ 是数学分析的“桥梁”，复数让许多求和与积分计算变得优雅。建议提前翻阅复变函数的入门章节，如 Ahlfors 或 Stein 的前三章。
+\item 第二题用到了\textbf{点集拓扑}中的单点紧致化，将无穷远点补充进空间，把无穷远处的极限行为转化为边界点的连续性。这种思想在分析、几何、拓扑中反复出现。推荐阅读 Munkres《拓扑学》前三章，它将帮你从更抽象的层面理解连续、紧性等概念，为后续学习泛函分析、微分几何等打下基础。
+\item 这两条进阶路径并不是大一必修，但了解它们的存在、偶尔翻阅，会让你在分析学习中获得“另一双眼睛”，常常有豁然开朗之感。笔者在考前就学习了一部分点集拓扑和复变函数，感到受益匪浅。
+\end{enumerate}
+\end{enumerate}
+
+== 25秋数学分析AI期中（梁振国，吴昊）==
+
+\begin{enumerate}
+\item 计算题（共2小题，每小题18分，共36分）
+\begin{enumerate}
+    \item[(i)] (18分) 求极限 $\lim\limits_{n \to +\infty} \dfrac{(n!)^{1/n}}{n}$.
+    \item[(ii)] (18分) 求极限 $\lim\limits_{x \to +\infty} (\sin\sqrt{x+2} - \sin\sqrt{x})$.
+\end{enumerate}
+
+\item (14分) 设 $a_n \neq 0$, $n \geq 1$, 且 $\lim\limits_{n \to +\infty} a_n = 0$. 
+证明：若 $\lim\limits_{n \to +\infty} \dfrac{a_{n+1}}{a_n} = l$, 则 $|l| \leq 1$.
+
+\item (14分) 考虑函数 $f(x) = \dfrac{x+3}{x+1} \sin\dfrac{1}{x}$, $x \in (0, +\infty)$. 
+证明：$f$ 在 $(0,1)$ 内非一致连续，在 $[1,+\infty)$ 上一致连续.
+
+\item (14分) 数列 $\{a_n\}$ 满足下述两个条件:
+\begin{enumerate}
+    \item[(1)] $a_n > 0$, $a_{n+1} \leq a_n$ $(n=1,2,\cdots)$;
+    \item[(2)] $\lim\limits_{n \to +\infty} a_n = 0$.
+\end{enumerate}
+定义新数列 $\{S_n\}$, $S_n = a_1 - a_2 + \cdots + (-1)^{n-1} a_n$. 
+证明: $\lim\limits_{n \to +\infty} S_n$ 存在.
+
+\item (7分) 设 $f$, $g$ 均为定义在 $[0,1]$ 上的连续函数, 
+其值域满足 $R(f) \subset [0,1]$, $R(g) \subset [0,1]$. 
+若对任意 $x \in [0,1]$, 成立 $f(g(x)) = g(f(x))$, 
+证明: 存在 $\xi \in [0,1]$, 使得 $f(\xi) = g(\xi)$.
+
+\item (7分) 设函数 $f$ 在 $[a,b]$ 上连续，且不是常值函数. 
+证明：存在 $\xi \in (a,b)$，使得在 $\xi$ 的任意邻域中，
+既存在函数值大于 $f(\xi)$ 的点，又存在函数值小于 $f(\xi)$ 的点.
+
+\item (共2小题，每小题4分，共8分)
+定义：设 $f$ 在 $x_0$ 的某个邻域 $E$ 上有定义，
+所谓 $f$ 在 $x_0$ 处上半连续，是指：对任意 $\epsilon > 0$，存在 $\delta > 0$，
+当 $x \in E$，$|x - x_0| < \delta$ 时，成立 $f(x) < f(x_0) + \epsilon$。
+所谓 $f$ 在 $x_0$ 处下半连续，是指：对任意 $\epsilon > 0$，存在 $\delta > 0$，
+当 $x \in E$，$|x - x_0| < \delta$ 时，成立 $f(x) > f(x_0) - \epsilon$。
+\begin{enumerate}
+    \item[(i)] (4分). 若函数 $f$ 在 $(a,b)$ 内下半连续，
+    证明：存在闭区间 $[\alpha, \beta] \subset (a,b)$，$f$ 在 $[\alpha, \beta]$ 上有上界.
+    \item[(ii)] (4分). 设函数 $f_n$ 在 $(a,b)$ 上有定义且上半连续 $(n=1,2,\cdots)$。此外，假设
+    \[
+    f_1(x) \geq f_2(x) \geq \cdots \geq f_n(x) \geq f_{n+1}(x) \geq \cdots \quad \forall\, x \in (a,b)
+    \]
+    且 $\lim\limits_{n \to +\infty} f_n(x) = f(x)$。证明: $f$ 在 $(a,b)$ 中上半连续.
+\end{enumerate}
+\end{enumerate}
+
+== 24秋数学分析AI 期中==
+\begin{enumerate}
+\item[一]{（计算题，每小题12分，共48分）}
+\item 求极限 $\lim\limits_{n\rightarrow\infty}a_{n}$，这里 $a_{n}=(n^k+1)^{1/k}$。
+
+\item 求极限 $\lim\limits_{n\rightarrow+\infty} a_{n}$，这里
+$$a_n=\frac{1}{\sqrt{n(n+1)}}+\frac{1}{\sqrt{(n+1)(n+2)}}+\cdots+\frac{1}{\sqrt{2n(2n+1)}},\quad n\in \mathbb{N}.$$
+
+\item 求极限 $\displaystyle\lim_{x\rightarrow+\infty}\left(\frac{e^x+e^{-x}}{e^x-e^{-x}}\right)^{e^{2x}}$。
+
+\item 设 $0<a_{1}<1$, $a_{n+1}=a_{n}(1-a_{n})$ $(n\in \mathbb{Z}^{+})$，
+求极限 $\lim\limits_{n\rightarrow+\infty}\dfrac{n(1-n a_{n})}{\ln n}$。
+\end{enumerate}
+
+\begin{enumerate}
+\item[二] (13分)
+设 $f$ 为 $[0, n]$ 上的实值连续函数，并且 $f(0)=0$, $f(n)=n$，这里 $n$ 为不小于 $2$ 的正整数。
+证明：必定存在 $\xi_n\in[0, n-1]$ 使得 $f(\xi_n+1)=f(\xi_n)+1$。
+
+\item[三] (13分)
+证明：有界闭区间上的无界函数一定在这个区间中的某一点的每一个邻域上都无界。
+
+\item[四] (13分)
+设 $n$ 为正整数，$f$ 是定义在 $\mathbb{R}$ 上的连续函数，满足下列方程
+$$f(x+y^n)=f(x)+[f(y)]^n,\quad\forall\, x, y\in \mathbb{R}.$$
+求所有可能的 $f$。
+
+\item[五] (13分)
+判断函数 $f(x)=x\cos\frac{1}{x}$ 在 $(0,+\infty)$ 内是否一致连续。请证明你的结论。
+\end{enumerate}
+
+== 25秋数学分析III 期中（李洪全）==
+\begin{enumerate}
+\item[一] 设函数 $f(x, y) = |x - y|g(x, y)$，其中 $g(x, y)$ 在 $(0, 0)$ 点连续:
+\begin{enumerate}
+    \item[(1)] 当 $g(x, y)$ 满足什么性质时, $f_{x}(0, 0), f_{y}(0, 0)$ 都存在?
+    \item[(2)] 在上面的条件下, 讨论 $f$ 在 $(0, 0)$ 点的可微性.
+\end{enumerate}
+
+\item[二] 设 $F: \mathbb{R}^{n} \rightarrow \mathbb{R}$ 是 $C^{1}$ 的, 
+并存在 $\boldsymbol{a} = (a_{1}, \cdots, a_{n}) \in \mathbb{R}^{n}$ 使得
+\[
+    F(\boldsymbol{x}) = \boldsymbol{a} \cdot \nabla F(\boldsymbol{x})
+    = \sum_{j=1}^{n}a_{j}\dfrac{\partial F}{\partial x_{j}}(\boldsymbol{x}),
+    \qquad \forall\, \boldsymbol{x} \in \mathbb{R}^{n}.
+\]
+若存在 $K > 0$ 使得 $|F(\boldsymbol{x})| < K$ 在 $\mathbb{R}^{n}$ 上恒成立, 证明: $F(\boldsymbol{x}) \equiv 0$.
+
+\item[三] 求积分 $\displaystyle\int_{0}^{1}d x \int_{x}^{\sqrt{x}}\dfrac{\sin y}{y} d y$.
+
+\item[四] 设连续函数 $f: \mathbb{R} \rightarrow (0, +\infty)$ 满足 $\int_{\mathbb{R}}f = 1$，
+若 $[a, b]$ 是长度最小的使得 $\int_{a}^{b}f = 1/2$ 的区间, 
+试用隐函数定理和 Lagrange 乘数法两种完全不同的方法证明: $f(a) = f(b)$.
+
+\item[五] 设 $u(x, y, z)$ 在约束 $\varphi(x, y, z) = \psi(x, y, z) = 0$ 下
+在 $(x_{0}, y_{0}, z_{0})$ 点取得极值 $m$, 证明曲面 $u(x, y, z) = m, \varphi(x, y, z) = 0, \psi(x, y, z) = 0$ 
+在 $(x_{0}, y_{0}, z_{0})$ 点的法线共面, 其中 $u, \varphi, \psi \in C^{1}$.
+
+\item[六] 讨论函数 $f(x, y) = x^{3} - y^{3} + 3\alpha xy$ 的极值点和极值.
+
+\item[七] 考虑方程 $x + \dfrac{y^{2}}{2} + \dfrac{z}{2} + \sin z = 0$:
+\begin{enumerate}
+    \item[(1)] 证明: 方程在 $(0, 0, 0)$ 点附近唯一确定了函数 $z = f(x, y)$;
+    \item[(2)] 求 $z = f(x, y)$ 在 $(0, 0)$ 处的带 Peano 余项的二阶 Taylor 展开.
+\end{enumerate}
+
+\item[八]
+\begin{enumerate}
+\item[(1)] 证明下列反常重积分收敛并求值:
+    \[
+        \iint_{\mathbb{R}^{2}}\min(x, y)e^{-x^{2} - y^{2}}d x d y.
+    \]
+\item[(2)] 判断下列反常重积分是否收敛, 若收敛, 求值:
+    \[
+        \iint_{x, y \geqslant 1}\dfrac{x^{2} - y^{2}}{(x^{2} + y^{2})^{2}}d x d y.
+    \]
+\end{enumerate}
+\item[九] 设曲线 $\Gamma: \begin{cases}x = x^{2} + z^{2} \\ y = \sqrt{x^{2} + z^{2}}\end{cases}$
+绕 $z$ 轴旋转一圈得到曲面:
+\begin{enumerate}
+    \item[(1)] 证明: 曲面具有形式 $(x^{2} + y^{2} + z^{2} - 1)^{2} = 1 - 4z^{2}$;
+    \item[(2)] 求重积分
+        \[
+            \displaystyle\iiint_{\Omega}\sqrt{x^{2} + y^{2} + z^{2}}d x d y d z.
+        \]
+    其中 $\Omega$ 是曲面围成的区域.
+\end{enumerate}
+\end{enumerate}
+
+
+== 25春数学分析I (H)期末（严金海）==
+\begin{enumerate}
+\item[一] 设$f(x,y)$是有连续偏导数的二元函数，
+证明：存在连续的单射$G$ ($G$是$\R\to\R^2$的向量值函数) 使得$f(G(t))$ 是常数。
+
+\item[二] 考虑反常重积分$\displaystyle\iint_{0 \le x \le y}\frac{1}{x^\alpha y^\beta+1}\,dxdy$，
+试问$\alpha,\beta$满足什么 (充要) 条件时，该积分收敛。
+
+\item[三] 证明阿基米德浮力定律。
+
+\item[四] 求
+\[\iint\!\cdots\!\int_{\Omega}\sqrt{1-(x_1+\cdots+x_n)}\sqrt{x_1 \cdots x_n}\,dx_1 \cdots dx_n,\]
+其中$\Omega=\{(x_1,\cdots,x_n)\in\R^n \mid x_i\ge0,x_1+\cdots+x_n\le1\}$。(提示：用余面积公式.)
+
+\item[五]\begin{enumerate}[label=(\arabic*)]
+    \item 求$f(x)=\dfrac{\pi-x}{2}$的Fourier展开，并求其Fourier级数在$[0,2\pi]$的和函数。
+    \item 对于$\displaystyle f(x)=\sqrt{x}\sum_{n=1}^{\infty}\frac{\sin(nx)}{\sqrt{n}}$，
+    证明$f$在$0$处的右极限存在，并给出计算公式。
+    \item 对于$\displaystyle f(x)=\frac{1}{\ln x}\sum_{n=1}^{\infty}\frac{(\ln n)\sin(nx)}{n}$，
+    证明$f$在$0$处的右极限存在，并给出计算公式。
+\end{enumerate}
+\end{enumerate}
+
+== 25春数学分析I (H)期中（严金海）==
+\begin{enumerate}
+\item[一] (20 分). 设 $x_n>0$ 满足 $\displaystyle\liminf_{n \rightarrow \infty} n\left(\frac{x_n}{x_{n+1}}-1\right)>0$。
+证明：$\displaystyle\sum_{n=1}^{\infty}(-1)^n x_n$ 收敛。
+
+\item[二] (20 分). 设 $\displaystyle\sum_{n=1}^{\infty} x_n$ 发散，
+下面哪个条件下（各条件单独考虑）$\displaystyle\sum_{n=1}^{\infty} a_n x_n$ 必发散。给出证明或给出反例。
+\begin{enumerate}[label=(\arabic*)]
+\item 数列 $a_n$ 有正下界；
+\item 数列 $a_n$ 单调且有正下界；
+\item 数列 $a_n \rightarrow+\infty$。
+\end{enumerate}
+
+\item[三] (20 分). 设 $D \subset \mathbb{R}^n$ 为连通开集。证明 $D$ 也是道路连通的。
+
+\item[四] (20 分). 讨论级数 $\displaystyle\sum_{n=0}^{\infty} \frac{x^n}{n!} e^{-x}$ 在下面两个区间上是否分别一致收敛？\\
+(1) $(-\infty, 0]$;\ \ (2) $[0, \infty)$。
+\end{enumerate}
+(注意：从第五题第六题中选做一题，全对者加 5 分，卷面综合分 $=\min(\text{总得分},100)$)
+\begin{enumerate}
+\item[五] (20+5 分). 设 $\displaystyle f(x)=\prod_{n=1}^{\infty}\left(\prod_{k=n+1}^{\infty}\left(1+\frac{(-1)^k}{k^x}\right)\right)$，
+求 $f(x)$ 的定义域 $D$ (包括无穷乘积发散到零的点)，并研究 $f(x)$ 在 $D$ 上的连续性，可微性。
+
+\item[六] (20+5 分). 设在 $\mathbb{R}$ 上 $f(x)$ 三阶可导 $f^{\prime \prime \prime}(x) \geq 0$，
+且 $\displaystyle \sum_{n=1}^{\infty}\left(f\Big(n+\frac{1}{n}\Big)-f(n)\right)$ 收敛。
+$\displaystyle g(x)=\sum_{n=1}^{\infty}\left(f\Big(x+n+\frac{1}{n}\Big)-f(x+n)\right)$。
+证明 $g(x)$ 在 $\mathbb{R}$ 上二阶可导。
+\end{enumerate}
+
+== 24秋数学分析I (H)期中（严金海）==
+\begin{enumerate}
+    \item[一] 计算题(40分，共4小题，每小题10分).
+    \begin{enumerate}
+        \item[(1)]\(d(n)\)表示能整除正整数\(n\)的因数的个数。
+        计算：\(\lim\limits_{n\to\infty}\sqrt[n]{d(n)}\).
+        \item[(2)]数列\(\{x_n\}\)满足
+        \(\lim\limits_{n\to+\infty}x_n=1\)，计算：
+        \[
+            \lim_{n\to+\infty}\frac{2^nx_n-2^{n-1}x_{n-1}
+            +2^{n-2}x_{n-2}+\cdots+(-1)^n2^0x_0}
+            {2^n-2^{n-1}+2^{n-2}+\cdots+(-1)^n2^0}.
+        \]
+        \item[(3)]计算：
+        \[
+            \lim_{n\to+\infty}n^{\frac{\frac1{n+1}+\frac1{n+2}+\cdots+\frac{1}{n+n}}
+            {\frac11+\frac12+\cdots+\frac1{2n}}}.
+        \]
+        \item[(4)]计算：
+        \[
+            \lim_{x\to0}\frac{\sqrt{1+\tan\sin x}-\sqrt{1+\sin\sin x}}
+            {e^{\tan x}-e^{\sin x}}.
+        \]
+    \end{enumerate}
+    \item[二](15分). 设\(p\ne0\)为常数，对\(a,b\ge0\)，当\(p<0\)时
+    还要求\(a,b>0\)，记\(M(a,b)=\left(\dfrac{a^p+b^p}2\right)^{\frac1p}\)，
+    三个正数数列\(\{x_n\},\{y_n\},\{z_n\}\)满足：
+    \[
+        \begin{cases}
+            0\le x_{n+1}\le M(x_n,y_n),&n\ge1;\\
+            0\le y_{n+1}\le M(x_n,y_n),&n\ge1;\\
+            0\le z_{n+1}\le M(z_{n+1},z_n),&n\ge1.
+        \end{cases}
+    \]
+    证明：\(\{x_n\},\{y_n\},\{z_n\}\)均收敛且
+    \(\lim\limits_{n\to\infty}x_n=\lim\limits_{n\to\infty}y_n\).
+    （注：考试过程中规定\(p=2\)）
+    \item[三](15分). 设函数\(f(x)\)在\(\R\)上连续。下列结论
+    成立的请证明，不成立的请举反例。
+    \begin{enumerate}
+        \item[(1)]若\(\sqrt{|f(x)|}\)在\(\R\)上一致连续，则
+        \(f(x)\)也在\(\R\)上一致连续。
+        \item[(2)]若\(f^2(x)\)在\(\R\)上一致连续，则\(f(x)\)
+        也在\(\R\)上一致连续。
+    \end{enumerate}
+    \item[四](10分). 设\(f(x)\)在\(x=0\)点连续，记\(g(x)=|f(x)|\)，
+    问\(f'(0)\)与\(g'(0)\)是否一个存在另一个也必存在？说明理由。
+    \item[五](10分). 设\(f(x)\)为\([0,+\infty)\)上的单调连续函数，
+    且对于任意的\(\{x_n\}\)，\(x_{n+1}-x_n\ge1\)，存在\(T>0\)，使得
+    \[
+        \lim_{n\to+\infty}\left[f(x_n+T)-f(x_n)\right]=0.
+    \]
+    证明：\(f(x)\)在\([0,+\infty)\)上一致连续。
+    \item[六](10分). 设\(f\)是定义在闭区间\([0,1]\)上的函数，
+    满足对任意的常数\(a_i,b_i,c_i,i=1,2\)，
+    函数\(g(x)=|a_1x+b_1f(x)+c_1|+|a_2x+b_2f(x)+c_2|\)
+    在\([0,1]\)的任意闭子区间上能分别取到最大值和最小值。
+    证明：\(f\)是\([0,1]\)上的连续函数。
+    \item[七](20分). 设\(x_0\in\R\), \(x_n=2\sin(x_{n-1})-x_{n-1}\),
+    \(n=1,2,3,\dots\)。证明：\(\{x_{2k-1}\},\{x_{2k}\}\)分别收敛。
+\end{enumerate}
+
+==24秋数学分析III试卷（肖体俊）==
+\begin{enumerate} 
+\item[1] (10分)判断以下命题是否正确,对的打“$\surd$”,错的打“$\times$”。
+\begin{enumerate}
+\item[(1)]若函数$f(x,y)$在区域$D$上的偏导数为$0$,则$f$必是常值函数.
+\item[(2)]$\Gamma$函数在区间$(1,2)$上有唯一极小值点.
+\item[(3)]在平面区域上,$\displaystyle\int_{L}P\,\mathrm{d}x+Q\,\mathrm{d}y$与路径无关,则$P\,\mathrm{d}x+Q\,\mathrm{d}y$是某个函数的全微分.
+\item[(4)]积分$\displaystyle \iint_{[0,1]\times[0,1]} \frac{x-3y}{(x+4y)^{3}}\,\mathrm{d}x \mathrm{d}y$收敛.
+\item[(5)][回忆缺失]
+\end{enumerate}
+
+\item[2](20分)
+\begin{enumerate}
+\item[(1)][回忆缺失]
+\item[(2)]设有一线形构件,其形状为星形线$x(t)=\mathrm{cos}^{3}t,y(t)=\mathrm{sin}^{3}t,t\in\left[0,2\pi\right]$,
+其密度分布为$\rho(x,y)=|x|$,求其质量.
+\item[(3)]计算
+\[\iint_{\Sigma}x\,\mathrm{d}y\mathrm{d}z-y\,\mathrm{d}z\mathrm{d}x+2z\,\mathrm{d}x\mathrm{d}y\]
+其中$\Sigma$为旋转抛物面$\{(x,y,z)\mid y=x^{2}+z^{2},0\leq y \leq 1\}$,定向为左侧.
+\end{enumerate}
+
+\item[3](15分)计算以下积分：
+\begin{enumerate}
+\item[(1)]
+\[\iiint_{\Omega}\sqrt{1-\frac{x^{2}}{a^{2}}-\frac{y^{2}}{b^{2}}-\frac{z^{2}}{c^{2}}}\, \mathrm{d}x\mathrm{d}y\mathrm{d}z,\]
+其中$\Omega$是椭球$\{(x,y,z)\mid \dfrac{x^{2}}{a^{2}}+\dfrac{y^{2}}{b^{2}}+\dfrac{z^{2}}{c^{2}}\leq 1\}$ $(a,b,c >0)$。
+\item[(2)]
+\[\iint_{\Sigma}(x+z)^{2}+y^2 \,\mathrm{d}S,\]
+其中 $\Sigma$是球面$\{(x,y,z)\mid x^{2}+y^{2}+z^{2}=4x+2y\}$。
+\end{enumerate}
+
+\item[4](10分)设有曲面$x=yf\Big(\dfrac{z}{y}\Big)$ $(y\neq 0)$，
+其中$f$具有连续偏导数。证明:这曲面上任一点的切平面过原点。
+
+\item[5](10分)设$f(x)=x+\pi$，$x\in[0,\pi]$。
+\begin{enumerate}
+\item[(1)]将$f$展开成正弦级数,并求这级数的和函数；
+\item[(2)]求$f$的Fourier系数的平方和。
+\end{enumerate}
+
+\item[6](10分)利用Stokes公式计算以下积分
+\[\int_{L}(x-y)\,\mathrm{d}x+(x+y)\,\mathrm{d}y+2z\,\mathrm{d}z,\]
+其中$L$为平面$x+z=a$和椭圆柱面$\Big(x-\dfrac{a}{2}\Big)^{2}+\dfrac{y^{2}}{4}=1$ $(a>0)$的交线,从$z$轴正向看去,是顺时针方向.
+
+\item[7](15分)考察含参变量积分
+\[f(a)=\frac{1}{4\pi^{2}} \int_{0}^{+\infty}\frac{x^{a-1}\ln x}{1+\sqrt{x}}\,\mathrm{d}x, \quad a\in\left(0,\dfrac{1}{2}\right).\]
+\begin{enumerate}
+\item[(1)]证明：$f(a)=-\dfrac{\cos(2\pi a)}{\sin^{2}(2\pi a)}$。
+\item[(2)]该积分是否对$a \in \left(\dfrac{1}{3},\dfrac{1}{2}\right)$一致收敛？证明你的结论。
+\end{enumerate}
+
+\item[8](10分)设定义在区域$D$上的函数$f$满足
+\[f=\sum_{i=1}^{n}x_{i}^{3}\frac{\partial f}{\partial x_{i}}, \quad f\Big|_{\partial D}=0.\]
+证明：$f\equiv 0$。
+\end{enumerate}
+
+==24春数学分析II期末(吴昊)==
+
+\textbf{1. 填空题 (每空格 5 分，共 30 分)}
+\begin{enumerate}[label=(\arabic*)]
+\item 求极限 $\displaystyle\lim_{x \rightarrow 0} \frac{1}{x} \int_{0}^{x}[1+\sin (2024 t)]^{\frac{1}{t}} {\rm d} t=\underline{\quad e^{2024} \quad}$。
+\item 设二元函数 $f$ 在 $D=[-1,1]^{2}$ 上有界，并且对任意 $t \in[-1, 1]$ 成立 $f(tx,ty)=t^{2} f(x,y)$。
+求极限 $\lim\limits_{(x,y)\rightarrow(0,0)}\left[f(x,y)+(x-1)e^{y}\right]=\underline{\quad-1\quad}$。
+\item 设 $\{a_{n}\}$ 为关于 $n$ 单调递减的正实数序列，并且满足 $\lim\limits_{n \rightarrow \infty} a_{n}=0$。
+若 $b_{n}=a_{n}-2 a_{n+1}+a_{n+2} \geq 0$ 恒成立，则 $\displaystyle\sum_{n=1}^{\infty} nb_{n}=\underline{\quad a_1 \quad}$。
+\item 设函数 $\dfrac{1}{(1-ax)(1-bx)}$ 可以在 $0$ 的某个邻域内展开为收敛的幂级数 
+$\displaystyle\sum_{k=0}^{\infty} c_{k}x^{k}$，其中 $a \neq b$ 是给定的实数。
+则 $\displaystyle\sum_{k=0}^{\infty} c_{k}^{2}x^{k}=\underline{\quad\frac{(1+abx)}{(1-abx)(1-a^{2}x){(1-b^{2}x)}}\quad}$。
+\item 设 $P$ 为抛物线 $y=x^{2}$ 在第一象限部分上的一点，抛物线过 $P$ 点的切线与 $x$ 轴的夹角为 $\pi/4$，
+则从原点 $O$ 到 $P$ 的弧长 $\displaystyle=\underline{\quad\frac{1}{4}\sqrt{2}+\frac{1}{4}\ln(1+\sqrt{2})\quad}$。
+\item 判断下列反常积分
+$$I=\int_{1}^{+\infty} \frac{1}{x^{\frac{1}{2}}} \sin x\left(\cos \frac{1}{x}\right) \ln \left(x+\frac{1}{x}\right) {\rm d} x$$
+的敛散性（请回答``收敛''或者``发散''） $\underline{\quad\text{收敛}\quad}$。
+\end{enumerate}
+\textbf{2. 解答题 (共 70 分)}
+\begin{enumerate}\setcounter{enum-{list-level}}{1}
+\item (15 分) 设 $f_{0}(x)$ 在 $[0,1]$ 上连续，令
+$$f_{n}(x)=\int_{0}^{x} f_{n-1}(t) \, \mathrm{d} t, \quad n=1,2,\cdots$$
+证明：函数序列 $\{f_{n}(x)\}$ 在 $[0,1]$ 上一致收敛于 $0$。
+\item (10 分) 设 $f$ 是 $\mathbb{R}$ 上的连续函数并且反常积分 $\displaystyle\int_{-\infty}^{+\infty} f(x) \,{\rm d} x$ 存在。试求
+$$\int_{-\infty}^{+\infty} f\Big(x-\frac{1}{x}\Big) \,{\rm d} x.$$
+\item (10 分)设函数 $f$ 在 $[0,1]$ 上连续，$g$ 在 $\mathbb{R}$ 上连续且周期为 $1$。试求
+$$\lim_{n \rightarrow \infty} \int_{0}^{1} f(x) g(nx) \,{\rm d} x.$$
+\item (共 15 分) (1) 叙述 Weierstrass 第一逼近定理。 (5 分)
+
+(2) 设 $f$ 是 $[a,b]$ 上的连续函数，满足
+$$\int_{a}^{b} x^{n} f(x) \,\mathrm{d} x=0, \quad \forall\, n \in \mathbb{N}.$$
+求所有可能的 $f$。 (10 分)
+\item (12 分) 设 $n$ 是正整数。
+
+(1) 计算：(5 分)
+$$\int_{0}^{\infty} t^{n} e^{-t} \,{\rm d} t.$$
+(2) 证明：(7 分)
+$$\sum_{k=0}^{n} \frac{n^{k}}{k!}>\frac{e^{n}}{2}.$$
+\item (8 分) 假设 $g(t), h(t), y(t)$ 是 $(0,+\infty)$ 上非负的局部可积函数
+（即在 $(0,+\infty)$ 的任意有界子区间上可积），
+$y^{\prime}(t)$ 在 $(0,+\infty)$ 上存在且局部可积。若成立微分不等式
+$$\frac{{\rm d} y}{{\rm d} t} \leq g y+h, \quad \forall\, t>0,$$
+且对任意 $t \geq 0$ 成立
+$$\int_{t}^{t+r} g(s) \,{\rm d} s \leq a_{1}, 
+\quad \int_{t}^{t+r} h(s) \,{\rm d} s \leq a_{2}, 
+\quad \int_{t}^{t+r} y(s) \,{\rm d} s \leq a_{3},$$
+其中 $r, a_{1}, a_{2}, a_{3}$ 是给定的正常数。证明：
+$$y(t+r) \leq \left(\frac{a_{3}}{r}+a_{2}\right) e^{a_{1}}, \quad \forall\, t \geq 0.$$
+\end{enumerate}
+
+==23秋数学分析I期末==
+\begin{enumerate}
+    \item[一]填空题，本题每空5分，共30分。
+    \begin{enumerate}
+    \item 已知数列$\{x_n\}$满足$x_1=\dfrac{1}{2}$，$x_{n+1}\le2^nx_n^2$，
+    则$\lim\limits_{n\to\infty}x_n=\underline{\qquad\quad}$。
+    \item $\displaystyle\lim_{x\to0}\frac{\tan\tan x-\sin\sin x}{\tan x-\sin x}
+    =\underline{\qquad\quad}$。
+    \item $f(x)=(1+\sqrt{x})^{4048}$，求$f^{(2023)}(1)=\underline{\qquad\quad}$。
+    \item $\displaystyle\int\frac{dx}{\sin^4x+\cos^4x}=\underline{\qquad\quad}$。
+    \item 设一圆柱体积为$V$，底面直径为$d$，高为$h$。现将该圆柱侧面涂满颜料，
+    其中侧面颜料价格为$80$元/平方米，底面颜料价格为$100$元/平方米，
+    则当$\dfrac{h}{d}=\underline{\qquad\quad}$时花费最少。（$V$是固定值）
+    \item $f(x)=x\sqrt{\dfrac{x}{1+x}}$，则$f(x)$的渐近线方程为$\underline{\qquad\quad}$。
+    \end{enumerate}
+    \item[二] 分析函数性质并作图：$f(x)=\sqrt{x^3-x}$。
+    \item[三] 已知$f'(\sin x)=\cos x+\tan x+x,-\dfrac{\pi}{2}<x<\dfrac{\pi}{2}$，
+    且$f(0)=2023$，求$f(x)$。
+    \item[四] 已知$f(x)=\dfrac{(x-1)^{x-1}x^x}{\big(\frac{2x-1}{2}\big)^{2x-1}}$，
+    求$\sup\limits_{x>1}f(x)$和$\inf\limits_{x>1}f(x)$。
+    \item[五] 已知$f(x)$在$[-1,1]$上连续，$(-1,1)$内可导，且$f(0)=0$，$f(1)=1$，
+    求证：存在互不相同的$2023$个数$x_i\ (i=1,2,\dots,2023)$，
+    使得$\displaystyle\sum_{i=1}^{2023}\frac{1}{f'(x_i)}=2023$。
+    \item[六] 已知$f(x)$在$[-1,1]$上连续，$(-1,1)$内可导，
+    且对任意$x\in[-1,1]$有$|f(x)|\le1,|f''(x)|\le4$，求证：$|f'(x)|\le4$。
+    \item[七] 设函数$f(x)$在$[0,1]$上一阶可导，
+    在$x=0$处任意阶可导且$f^{(k)}(0)=0\ (k=0,1,\cdots,n)$，
+    满足：$|xf'(x)|\le2023|f(x)|$对一切$x\in[0,1]$成立。
+    求证：$x\in[0,1]$时$f(x)\equiv0$。
+\end{enumerate}
+
+==23秋数学分析I期中==
+\begin{enumerate}
+    \item[一] 计算题（每小题12分，共48分）
+    \begin{enumerate}[label=(\arabic*)]
+    \item 求极限$\lim\limits_{n\to+\infty}(n^2+n)^\frac{1}{2n}$。
+    \item 若$\lim\limits_{n\to+\infty}(2023a_n-a_{n-1})=2022$，
+    求极限$\lim\limits_{n\to+\infty}a_n$。
+    \item 实数列$\{a_n\}$满足$a_{n+1}=a_n+e^{-a_n},n\ge1$，且$a_1=1$，
+    求极限$\lim\limits_{n\to+\infty}\dfrac{a_n}{\ln n}$。
+    \item 求$\lim\limits_{x\to0}\dfrac{\sqrt[3]{1+x}-\sqrt{1+x}}{\ln(1+x)}$。
+    \end{enumerate}
+    \item[二] （12分）设$f$是$(0,+\infty)$上的正值函数，满足
+    \[\lim_{x\to0^+}\left(f(x)+\frac{1}{f(x)}\right)=2.\]
+    求极限$\lim\limits_{x\to0^+}f(x)$。
+    \item[三] （20分）\begin{enumerate}[label=(\arabic*)]
+    \item 证明：对任意的正整数$n$，存在唯一的$x_n>1$满足$(x_n-1)\ln x_n=n$。
+    \item 在上面条件下，求极限$\lim\limits_{n\to+\infty}\dfrac{x_n\ln n}{n}$。
+    \end{enumerate}
+    \item[四] （10分）设函数$f$满足\[f(f(x))=-x,\qquad\forall\,x\in\R.\]
+    证明：$f$不是$\R$上的连续函数。
+    \item[五] （10分）设$f$是$\R$上的连续有界函数，满足
+    \[\lim_{h\to0^+}\sup\limits_{x\in\R}|f(x+h)+f(x-h)-2f(x)|=0.\]
+    问：$f$在$\R$上是否一致连续？说明理由。\href{https://mp.weixin.qq.com/s/KmSXAGo-JMCw9p1BPfrG3Q}{[参考解答]}
+\end{enumerate}
+
+== 23春数学分析II期末（梁振国）==
+\begin{enumerate}
+\item 填空题（每空格6分，共36分）
+\end{enumerate}
+\begin{enumerate}[label=(\arabic*)]
+\item 记 $[x]$ 为（下）取整函数，则 $\displaystyle\int_0^{+\infty} e^{-[x]}\sin\pi x\,{\rm d}x=\underline{\qquad\qquad}$。
+\item $\displaystyle\int_0^{+\infty} \frac{\sin x}{x^a}\,{\rm d}x$ 收敛，当且仅当参数 $a$ 满足：$\underline{\qquad\qquad}$。
+\item $\displaystyle\sum_{n=1}^{\infty} \frac{(-1)^n}{(2 n)!}$ 的和为 $\underline{\qquad\qquad}$。
+\item 问 $\displaystyle\prod_{n=1}^{\infty}\Big(1+\frac{1}{\sqrt{n}}\Big)^{(-1)^n}$ 是否收敛？$\underline{\qquad\qquad}$。
+\item 函数 $f(x)=\dfrac{x}{\sin x}, x \neq 0, f(0)=0$ 的 Maclaurin 级数中 $x^4$ 项的系数为 $\underline{\qquad\qquad}$。
+\item $\displaystyle\sum_{n=1}^{\infty}(-1)^{n-1} n^5(1-x)^a x^n$ 在 $x \in[0,1]$ 上一致收敛，
+当且仅当参数 $a$ 满足：$\underline{\qquad\qquad}$。
+\end{enumerate}
+\begin{enumerate}\setcounter{enum-{list-level}}{1}
+\item (15 分) 计算极限：$\displaystyle\lim_{n \rightarrow+\infty} \sum_{k=1}^{\infty} \frac{n}{n^2+k^2}$。
+
+\item (15 分) 求参数曲线段：$\begin{cases}x=t-\sin t \\ y=1-\cos t\end{cases} \quad(0 \leq t \leq 2 \pi)$ 绕 $x$ 轴旋转一周所得旋转曲面的面积。
+
+\item (14 分) 设有界闭区间$[a,b]$上的连续函数序列 $\{S_n(x)\}$ 
+在 $[a,b]$ 上一致收敛到 $S(x)$。证明：$S(x)$ 在 $[a,b]$ 上连续。
+
+\item (10 分) 设非空有界集 $S_k \subset \mathbb{R}^n$，
+满足 $S_{k+1} \subset S_k$ 且 $S_{k+1} \neq S_k$，$k=1,2,\ldots$。\\
+(1) 当 $S_k,k=1,2,\ldots$ 都是闭集时，证明 $\displaystyle\bigcap_{k=1}^{\infty} S_k$ 是非空闭集；\\
+(2) 当 $S_k,k=1,2,\ldots$ 都是开集时，问 $\displaystyle\bigcap_{k=1}^{\infty} S_k$ 是否一定不是非空开集？为什么？
+
+\item (10 分) 求极限：$\displaystyle\lim_{n \rightarrow+\infty} \int_0^{\frac{\pi}{2}} \frac{\sin^n x+\cos^n x}{\sin^{n+1} x+\cos^{n+1} x}\,{\rm d}x$。
+\end{enumerate}
+
+== 22春数学分析II期末（梁振国）==
+\begin{enumerate}
+\item 填空题（每空格6分，共36分）
+\end{enumerate}
+\begin{enumerate}[label=(\arabic*)]
+\item 计算极限 $\displaystyle\lim_{n \rightarrow+\infty} n \int_0^1 \frac{x^{n+2022}}{1+x^n}\,{\rm d}x=\underline{\quad \ln 2 \quad}$。
+\item $\displaystyle\int_0^{+\infty} \sin \left(x^{2022}+\frac{1}{x^{2022}}\right) {\rm d}x$ 是否绝对收敛？$\underline{\quad\text{否}\quad}$。
+\item $\displaystyle\sum_{n=1}^{\infty} \frac{1}{n(2n+1)}$ 的和为 $\underline{\quad 2(1-\ln 2) \quad}$。
+\item 问 $\displaystyle\prod_{n=1}^{\infty}\left(1-\sum_{k=n}^{\infty} \frac{1}{k^2}\right)$ 是收敛的还是发散的？$\underline{\quad\text{发散}\quad}$。
+\item 函数 $f(x)=\dfrac{3+x^2}{1-x-x^2+x^3}$ 的 Maclaurin 级数中 $x^{2022}$ 项的系数为：$\underline{\quad 4047 \quad}$。
+\item $\displaystyle\sum_{n=0}^{\infty} a_n x^n$ 在 $x\in(-\infty,+\infty)$ 上一致收敛，
+当且仅当数列 $a_n$ 满足：$\underline{\quad a_n\text{ 只有有限项非零} \quad}$。
+\end{enumerate}
+\begin{enumerate}\setcounter{enum-{list-level}}{1}
+\item (15 分) 计算定积分：$\displaystyle\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \frac{\cos x}{e^x+1}\,{\rm d}x$。[答案：$1$.]
+
+\item (15 分) 平面区域 $D$ 由曲线 $y=\sqrt{x} e^{-x^2}, x\in[0,+\infty)$ 及直线 $x=0$ 与 $y=0$ 所围成，
+求 $D$ 绕 $x$ 轴旋转所得到的旋转体的体积。[答案：$\dfrac{\pi}{4}$.]
+
+\item (14 分) 证明函数项序列的连续性定理。设函数序列 $S_n(x)$ 满足：\\
+(1) $S_n(x)$ 在有界闭区间 $[a, b]$ 上一致收敛到 $S(x)$；\\
+(2) $S_n(x), n=1,2,\ldots$ 均在 $x \in[a, b]$ 上连续。\\
+证明：$S(x)$ 在 $[a, b]$ 上连续。
+
+\item (10 分) 证明$\R^n$内的紧集必为有界闭集。
+
+\item (10 分) (1) 求 $\displaystyle I(\alpha)=\int_0^1|\alpha x-1|\,{\rm d}x$ 在 $\alpha \in[0,+\infty)$ 上的最小值。\\
+(2) 设 $f(x)$ 在区间 $[0,1]$ 上可积且 $\displaystyle\int_0^1 f(x)\,{\rm d}x=1, \int_0^1 xf(x)\,{\rm d}x=0$，
+证明 $\max\limits_{x\in[0,1]}|f(x)| \geq \sqrt{2}+1$。
+\end{enumerate}
+
+== 21秋数学分析III期末（李洪全） ==
+\begin{enumerate}
+    \item[一] (20分) 假设$U\subset\R^n$是非空凸开集。若$f:U\to\R$为凸函数，即有
+    \[f(\lambda x+(1-\lambda)y)\le\lambda f(x)+(1-\lambda)f(y),
+    \qquad\forall x,y\in U,\ 0\le\lambda\le1.\]
+    证明：\begin{enumerate}[label=(\roman*)]
+    \item $f$的任一极小值点也是$f$的最小值点。
+    \item $f$的最小值点集合为$\R^n$中的凸集。
+    \item 若进一步假设$f$是严格凸的，即有
+    \[f(\lambda x+(1-\lambda)y)<\lambda f(x)+(1-\lambda)f(y),
+    \qquad\forall x \ne y\in U,\ 0<\lambda<1,\]
+    则$f$最多有一个最小值点。
+    \item 若$f\in C^1$，则$x^*\in U$是$f$的最小值点的充分必要条件为
+    \[\forall\,i=1,2,\cdots,n,\quad\frac{\partial f}{\partial x_i}(x^*)=0.\]
+    \end{enumerate}
+    \item[二] (15分) 设$\alpha\in\R$，试讨论下面积分的敛散性：
+    \[\int_{\R^2}(|x|+|y|)\left(e^{(x^2+y^2)^\frac{\alpha}{2}}-1\right)^{-1}\sin(x^3)\,dxdy.\]
+    \item[三] (10分) 令$\mathcal{M}_{n,n}=\{A;A\text{ 为 }n\text{ 阶实方阵}\}$。
+    假设$A_0\in\mathcal{M}_{n,n}$有$n$个互异的实特征值$\lambda_1(A_0)<\cdots<\lambda_n(A_0)$。
+    证明存在$A_0$的一个邻域$U$使得：对于任意的$A\in U$亦有$n$个互异的实特征值$\lambda_1(A)<\cdots<\lambda_n(A)$
+    且函数$\lambda_j(A)\ (1\le j\le n)$在$U$中连续。
+    \item[四] (10分) 假设$A$为$n$阶正定矩阵，$\alpha\in\R^n$。计算
+    \[\int_{\R^n}\exp\{-\langle Ax,x \rangle-\alpha\cdot x\}\,dx.\]
+    \item[五] (15分) 求曲线\[\bigg(\frac{x}{h}+\frac{y}{k}\bigg)^4=
+    \frac{x^2}{a^2}+\frac{y^2}{b^2},\qquad(h,k,a,b>0)\]
+    在第一象限与坐标轴所围区域$D$的面积。
+    \item[六] (10分) 经过直线\[l:\begin{cases}
+        10x+2y-2z=27\\x+y-z=0
+    \end{cases}\]作曲面$3x^2+y^2-z^2=27$的切平面，求此切平面方程。
+    \item[七] (15分) \begin{enumerate}[label=(\arabic*)]
+    \item 利用$f(t)=(\cos t,\sin t)\ (t\in\R)$构造一个反例来说明向量值函数情形没有相应的中值定理。
+    \item 给定$C^1$向量值函数$f,g:\R^n\to\R^m$，
+    定义$F(x)=\langle f(x),g(x) \rangle\ (x\in\R^n)$。求$F'(x)$。
+    \item 回忆线性变换$A:\R^n\to\R^n$的范数定义为$\|A\|=\max_{\|x\|\le1}\|Ax\|$。
+    若$f:\R^n\to\R^m$且$f\in C^1(\R^n)$，证明：
+    \[\|f(x)-f(y)\|\le\sup_{0\le t\le1}\|f'(tx+(1-t)y)\|\|x-y\|.\]
+    \end{enumerate}
+    \item[八] (25分) \begin{enumerate}[label=(\arabic*)]
+    \item 利用条件极值的方法，证明：对$a_i\ge0,x_i\ge0,i=1,\dots,n$，
+    $p,q>1$且$\frac{1}{p}+\frac{1}{q}=1$，有如下Hölder不等式：
+    \[\sum_{i=1}^na_ix_i\le\left(\sum_{i=1}^na_i^p\right)^\frac{1}{p}
+    \left(\sum_{i=1}^nx_i^q\right)^\frac{1}{q}.\]
+    \item 求解Huyghens问题：在$a$和$b$ $(0<a<b)$之间插入$n$个数$a\le x_1\le\dots\le x_n\le b$，使得：
+    \[u(x_1,\dots,x_n)=\frac{x_1x_2\dots x_n}{(a+x_1)(x_1+x_2)\dots(x_n+b)}\]
+    的值为最大。（提示：利用(1)以及数学归纳法.）
+    \end{enumerate}
+\end{enumerate}
+
+== 21秋数学分析I期中 ==
+\begin{enumerate}
+\item[一] 
+\begin{enumerate}[label=(\arabic*)]
+    \item 记 $p(n)$ 为能整除 $n$ 的素数的个数, 求 $\lim\limits_{n \to \infty} \dfrac{p(n)}{n}$。
+    \item 设正项数列 $\left\{x_{n}\right\}$ 满足 $\lim\limits_{n \to \infty} x_{n}=1$, 常数 $0<a<1$, 
+    求 $\lim\limits_{n \to \infty}(x_{n}+a x_{n-1}+\cdots+a^{n} x_{0})$。
+    \item 设 $|x|<1$, 求 $\displaystyle\lim_{n \to \infty}\left(1+\frac{1+x+\cdots+x^{n}}{n}\right)^{n}$。
+    \item 求 $\displaystyle\lim_{x \to 0} \frac{\sqrt{1+\tan x}-\sqrt[3]{1-\sin x}}{e^{2 \tan x}-e^{\sin x}}$。
+\end{enumerate}
+
+\item[二] 设正项数列 $\{x_{n}\}$ 满足 $x_{n+1} \le \dfrac{x_{n}+x_{n-1}}{2}$。\\
+(1) 设 $y_{n}=\max\{x_{n}, x_{n-1}\}$，判断$\{y_{n}\}$的敛散性。\\
+(2) 判断$\{x_{n}\}$的敛散性。
+
+\item[三] 设连续函数 $f(x):[0,+\infty) \to \mathbb{R}$ 是有界的, 求证:
+对任意的$T>0$, 存在数列 $\{x_{n}\}$满足$x_{n} \to +\infty$, 
+使得 $\lim\limits_{n \to \infty}(f(x_{n}+T)-f(x_{n}))=0$。
+
+\item[四] 设 $f(x)$是$[a, b]$上的函数, 
+若对 $[a, b]$ 的任意子区间 $[\alpha, \beta]$ 和任意在 $f(\alpha)$ 与 $f(\beta)$ 之间的数 $c$,
+方程 $f(x)=c$ 在 $[\alpha, \beta]$ 的解存在且个数有限, 证明： $f(x)$ 在 $[a, b]$ 连续。
+
+\item[五] 设 $f(x)$ 和 $g(x)$ 在 $\mathbb{R}$ 上一致连续。问：\\
+(1) $\sqrt{f^{2}(x)+g^{2}(x)}$ 是否一致连续？\\
+(2) $\sqrt{|f(x) g(x)|}$ 是否一致连续？
+\end{enumerate}
+
+== 21春数学分析II期中(严金海) ==
+\begin{itemize}
+\item[一]（20 分）计算定积分：\[\int_0^\frac{\pi}{2}\frac{\sin x}{1-\sin x\cos x}\,{\rm d}x.\]
+\item[二]（20 分）有一盛满水的水塘，其水体所在的三维区域形成横放的柱体
+$V:\{(x,y,z) \mid 0 \le x \le 2\pi,f(x) \le y \le 0,0 \le z \le 1\}$，其中函数曲线$y=f(x)$即为旋转线
+$$\begin{cases}x=\,t-\sin t\\ y=\cos t-1\end{cases}, \quad t\in[0,2\pi]$$
+欲将此水塘的水抽干（水的密度$\rho$，重力加速度$g$，地面位于$y=0$处），需至少做多少功？
+\item[三]（20 分）已知$\xi_n\in[0,\frac{\pi}{2}]$满足：
+$\displaystyle \int_0^\frac{\pi}{2}\sin^nx\,{\rm d}x=\frac{\pi}{2}\sin^n\xi_n$，
+求极限：$\lim\limits_{n\to\infty}\xi_n$。
+\item[四]（20 分）关于参数$p$讨论广义积分的收敛性（绝对收敛或条件收敛或发散）：
+\[\int_{0}^{+\infty}\sin\big(x^p+\frac{1}{x^p}\big)\,{\rm d}x.\]
+\item[五]（20 分）设$f(x)$为区间$[0,1]$上单调上升的连续函数，
+\[R(x)=\begin{cases}\frac{1}{p},&\text{当 }x=\frac{q}{p},\,q,p\text{ 为互质整数},p>0\\
+1,&\text{当 }x\text{ 为整数}\\0,&\text{当 }x\text{ 为无理数}\end{cases}\]
+证明$R(f(x))$在$[0,1]$上可积。
+\end{itemize}
+
+== 20秋数学分析I期中 ==
+\begin{enumerate}
+    \item[一] (20分) (1) 构造一个从闭区间$[0,1]$到开区间$(0,1)$的一一对应；\\
+    (2) 构造一个数列$\{a_n\}$，使得：$\forall\, x_0\in\R$，
+    存在子列$\{a_{n_k}\}$使得$\lim\limits_{k\to\infty}a_{n_k}=x_0$。
+    \item[二] (20分) 用Bolzano--Weierstrass定理证明单调有界必收敛定理。
+    \item[三] (20+10分) 设数列$\{x_n\}$满足
+    \[x_{n+1}=x_n+\sin x_n, \quad n=1,2,\cdots.\]
+    (1) 证明$\{x_n\}$收敛，并求其极限$A$；\\
+    (附加题2) 设$x_1 \ne A$，求极限：
+    \[\lim_{n\to\infty}\bigg|\ln\frac{1}{|x_n-A|}\bigg|^\frac{1}{n}.\]
+    \item[四] (20分) 设有界数列$\{x_n\}$满足
+    \[x_{n+1} \ge x_n-\frac{1}{2^n}, \quad \forall\, n\in\N.\]
+    记\[S_n=|x_1|+|x_2-x_1|+\cdots+|x_n-x_{n-1}|,\]
+    分别证明：$\{x_n\}$及$\{S_n\}$都收敛。
+    \item[五] (20分) 设$f(x)$在$[1,+\infty)$上连续，
+    问$\lim\limits_{x\to+\infty}\dfrac{f(x)}{x}$存在
+    及$\dfrac{f(x)}{x}$在$[1,+\infty)$上有界
+    分别是$f(x)$在$[1,+\infty)$上一致连续的何种条件，并说明理由：\\
+    (1)充分非必要条件；\quad(2)必要非充分条件；\\
+    (3)充分且必要条件；\quad(4)非充分非必要条件。
+\end{enumerate}
+
+== 20秋数学分析III期中（李洪全）==
+\begin{enumerate}
+\item 设 $u, x \in \mathbb{R}^{n}$，且 $\varphi(u, x)$ 为 $\mathbb{R}^{2n}$ 上的光滑函数，
+且关于 $x$ 为一个次数为 $2$ 的齐次函数，即
+\[\varphi(u, tx)=t^{2} \varphi(u, x), 
+\qquad \forall\, t>0, u, x \in \mathbb{R}^{n}. \tag{1}\]
+进一步假设
+\[\begin{pmatrix}
+\frac{\partial^{2} \varphi}{\partial x_{1}^{2}} & \ldots & \frac{\partial^{2} \varphi}{\partial x_{1} \partial x_{n}}  \\
+\vdots & \vdots & \vdots \\
+\frac{\partial^{2} \varphi}{\partial x_{n} \partial x_{1}} & \cdots & \frac{\partial^{2} \varphi}{\partial x_{n}^{2}}
+\end{pmatrix}\tag{2}\]
+为一个可逆矩阵，那我们可以引入
+\[y_{j}=\frac{\partial \varphi}{\partial x_{j}}, \qquad 1 \leq j \leq n,\]
+并用 $(u, y)$ 作为新坐标，且在此新坐标下，$\varphi(u, x)$ 变为 $\psi(u, y)$。证明：
+
+(1) $\frac{\partial \psi}{\partial y_{j}}=x_{j}, \quad 1 \leq j \leq n$。
+
+(2) $\frac{\partial \psi}{\partial u_{j}}+\frac{\partial \varphi}{\partial u_{j}}=0, \quad 1 \leq j \leq n$。
+\item 设 $f: \mathbb{R}^{n} \rightarrow \mathbb{R}^{n}$ 为一个 $C^{1}$ 映射，
+假设 Jacobi 矩阵满足条件
+\[\det(J(f))(x) \neq 0, \qquad \forall \, x \in \mathbb{R}^{n}.\]
+(1) 证明：对任何 $\mathbb{R}^{n}$ 中的有界闭集 $D$，
+方程 $f(x)=0$ 在 $D$ 中的解至多有有限个。
+
+(2) 如果进一步假设：对每个正数 $M$，集合
+\[\{x ;|f(x)| \leq M\}\]
+是一个有界集。证明：$f$ 把 $\mathbb{R}^{n}$ 映满 $\mathbb{R}^{n}$。
+\item 设 $1 \leq p<\infty$, $f$ 为矩形区域 $[0,1] \times [0,1]$ 上的非负连续函数。
+
+(a) 证明：
+\[\left[\int_{0}^{1}\left(\int_{0}^{1} f(x, y) dx\right)^{p} dy\right]^{\frac{1}{p}} 
+\leq \int_{0}^{1}\left[\int_{0}^{1} f(x, y)^{p} dy\right]^{\frac{1}{p}} dx.\]
+(b) 若 $0<p<1$，证明上述不等式反向成立。
+\item 证明与曲面 $a x^{2}+b y^{2}+c z^{2}=1$ $(a, b, c>0)$ 相切的三个互相垂直的平面的交点
+在球面 $x^{2}+y^{2}+z^{2}=\frac{1}{a}+\frac{1}{b}+\frac{1}{c}$ 上。
+\item 假设 $f$ 为 $[0,1]$ 上的可积函数，证明：
+\[\int_{0}^{\frac{\pi}{2}} \int_{0}^{\frac{\pi}{2}} \sin^{3}(y) f(\sin (x) \sin (y)) dx dy
+=\frac{\pi}{4} \int_{0}^{1}(t^{2}+1) f(t) dt.\]
+\item 函数 $f(x, y)$ 和 $g(x, y)$ 是定义在 $\mathbb{R}^{2}$ 上的函数，并且满足
+
+(i) 对于任意固定的 $(x, y) \in \mathbb{R}^{2}$ 存在极限
+\[\lim_{t \rightarrow 0+} \frac{f(tx, ty)-f(0,0)}{t}=g(x, y);\]
+(ii) 对于任意的 $\alpha, \beta \in \mathbb{R}$ 以及 $(x_{1}, y_{1}),(x_{2}, y_{2}) \in \mathbb{R}^{2}$，有
+\[g(\alpha x_{1}+\beta x_{2}, \alpha y_{1}+\beta y_{2})
+=\alpha g(x_{1}, y_{1})+\beta g(x_{2}, y_{2});\]
+(iii) 存在 $M>0$，使得对于任意的 $(x_{1}, y_{1}),(x_{2}, y_{2}) \in \mathbb{R}^{2}$，
+\[|f(x_{1}, y_{1})-f(x_{2}, y_{2})| 
+\leq M \sqrt{(x_{1}-y_{1})^{2}+(x_{2}-y_{2})^{2}}.\]
+证明当 $\sqrt{x^{2}+y^{2}}$ 趋于 $0$ 时，有
+\[f(x, y)=f(0,0)+g(x, y)+o(\sqrt{x^{2}+y^{2}}).\]
+\item 设 $n$ 元函数 $u$ 满足
+\[u\left(x_{1}, \ldots, x_{n}\right)=f\left(\sqrt{x_{1}^{2}+\ldots+x_{n}^{2}}\right),\]
+其中 $f$ 是 $\mathbb{R}^{+}$上的函数，并且具有二阶连续偏导数。若 $u$ 满足
+\[\sum_{i=1}^{n} \frac{\partial^{2} u}{\partial x_{i}^{2}}=0,\]
+试求出 $f$。
+\item 设 $D$ 是抛物线 $y=x^{2}-1$ 和 $y=-x^{2}+1$ 所围成的区域，
+试在 $D$ 中求一椭圆 $\frac{x^{2}}{a^{2}}+\frac{y^{2}}{b^{2}}=1$，使其面积为最大。
+\item 试计算积分
+\[A=\int_{0}^{\infty} \int_{0}^{\infty} e^{-x-y} \frac{\cos (2k \sqrt{xy})}{\sqrt{xy}} dx dy,\]
+其中 $k$ 为一个常数。
+\end{enumerate}
+\begin{proofc}[7,8,9 的答案]
+\begin{enumerate}\setcounter{enum-{list-level}}{6}
+\item \[f(r)=\begin{cases}C_1r+C_2,&n=1;\\ & \\
+C_1\ln r+C_2,&n=2;\\ & \\C_1r^{-(n-2)}+C_2,&n \geqslant 3,\end{cases}\]
+其中$r=\sqrt{x_1^2+\ldots+x_n^2}$。这三个是最经典的调和函数，值得熟记。
+\item $a=\sqrt{\dfrac{2}{3}},b=\dfrac{2\sqrt{2}}{3}$。
+\item 作变量代换$u=x+y,v=2\sqrt{xy}$，然后令$v=u\sin\theta$，
+化为关于$dud\theta$的积分，算出来是$\dfrac{\pi}{\sqrt{k^2+1}}$。\qedhere
+\end{enumerate}
+\end{proofc}
+
+== 20春数学分析II期末（楼红卫）==
+
+一\ （36 分）填空题（每题6分）：
+\begin{enumerate}[label=(\arabic*)]
+\item 记 $[x]$ 为（下）取整函数，则 $\displaystyle\int_{0}^{n} x e^{[x^{2}]} \, d x=\underline{\quad\frac{e^{n^{2}}-1}{2(e-1)}\quad}$。
+\item 设 $p, q>0$，若 $\displaystyle\int_{0}^{+\infty} \sin \Big(x^{p}+\frac{1}{x^{q}}\Big) \, d x$ 收敛，
+则 $p, q$ 满足的条件为： $\underline{\quad p>1 \quad}$。
+\item $\displaystyle\sum_{n=1}^{\infty} \frac{n^{2}}{(2n)!}$ 的和为： $\underline{\quad\dfrac{e}{4}\quad}$。
+\item 判断 $\displaystyle\prod_{n=1}^{\infty}\bigg(\frac{\pi}{2} \prod_{k=1}^{n}\Big(1-\frac{1}{(2k)^{2}}\Big)\bigg)$ 是收敛的还是发散的： $\underline{\quad\text{发散}\quad}$。
+\item 函数 $x \ln(x+\sqrt{1+x^{2}})-\sqrt{1+x^{2}}$ 的 Maclaurin 级数中 $x^{2020}$ 项的系数为：$\underline{\quad-\dfrac{2017!!}{2019\cdot2020!!}\quad}$。
+\item $\displaystyle\sum_{n=20}^{+\infty} \frac{(-1)^{n} x}{n^{ax}+(-1)^{n} x}$ 关于 $x \in[1,+\infty)$ 一致收敛，
+则参数 $a \in \mathbb{R}$ 满足的条件为：$\underline{\quad a>\dfrac{1}{2} \quad}$。
+\end{enumerate}
+\begin{enumerate}
+\item[二]（15 分）计算积分 $\displaystyle\int_{0}^{\frac{\pi}{2}} \frac{x^{2}}{\sin^{2}x} \, d x$。[答案：$\pi\ln2$.]
+
+\item[三]（15 分）将旋轮线：$\begin{cases}x=a(t-\sin t) \\ y=a(1-\cos t)\end{cases}, t \in[0,2 \pi]$ $(a>0)$
+绕 $y$ 轴旋转一周，求所得旋转曲面的面积。[答案：$16\pi^2a^2$.]
+
+\item[四]（15 分）证明一致收敛的逐项可积性定理：设 $u_{n}(x)$ 在 $x \in[a, b]$ 上连续 $(n=1,2,3, \ldots)$，
+且函数项级数 $\displaystyle\sum_{n=1}^{\infty} u_{n}(x)$ 关于 $x \in[a, b]$ 一致收敛，则
+\[\int_{a}^{b}\left(\sum_{n=1}^{\infty} u_{n}(x)\right) d x
+=\sum_{n=1}^{\infty}\left(\int_{a}^{b} u_{n}(x) \, d x\right).\]
+
+\item[五]（10 分）设 $E \subset \mathbb{R}^{n}$ 是非空紧集，
+其上的函数 $f(x)$ 满足：$\forall x_{0} \in E^{\prime}$，有
+\[\lim_{\substack{x \rightarrow x_{0} \\ x \in E}} f(x) \text { 存在}.\]
+证明：$f(x)$ 在 $E$ 上为有界函数。
+
+\item[六]（10 分）设 $b_{n} \geq 0$，且 $\displaystyle\phi(x)=\sum_{n=1}^{\infty} b_{n} \sin nx$ 在 $\R$ 上一致收敛，
+证明 $\phi(x) \in C^{1}(\R)$ 的充要条件为：$\displaystyle\sum_{n=1}^{\infty} nb_{n}$ 收敛。
+\end{enumerate}
+
+== 19秋数学分析I期末（楼红卫）==
+\begin{enumerate}
+\item[一] (30分)填空题(每题6分)：
+\begin{enumerate}[label=(\arabic*)]
+\item $\displaystyle\int \frac{\sin^{2} x}{\cos 2x+1} \, dx=\underline{\quad \frac{1}{2} \tan x-\frac{x}{2}+C \quad}$。
+\item 设函数 $y=y(x)$ 在 $x=1$ 处有三阶导数，$y(1)=0$，
+其反函数 $x=x(y)$ 满足：$x=1+y+3y^{2}-4 y^{3}+o(y^{3})$ $(y \rightarrow 0)$。
+则 $y(x)$ 在 $x=1$ 处的带 Peano 型余项的三阶 Taylor 展式为：
+$\underline{\quad(x-1)-3(x-1)^{2}+22(x-1)^{3}+o\big((x-1)^{3}\big), \quad(x \rightarrow 1)\quad}$。
+\item 设实数 $a, A, B$ 满足 $\displaystyle\lim_{x \rightarrow \infty}\left[A\Big(\cos \frac{1}{x}+a\sin\frac{1}{x^{2}}+2\cos\frac{1}{x^{3}}+\sin\frac{1}{x^{4}}\Big)\right]^{x^{4}}=B$。
+则 $a=\underline{\begin{cases}\text{(i)}\in\mathbb{R}, \\ \text {(ii)}\in\left(-\infty, \frac{1}{2}\right), \\ \text {(iii)}\ \frac{1}{2}\end{cases} \quad}, 
+A=\underline{\begin{cases}\text{(i)}\in\left[0, \frac{1}{3}\right), \\ \text{(ii)}\ \frac{1}{3}, \\ \text{(iii)}\ \frac{1}{3}\end{cases}\quad}, 
+B=\underline{\begin{cases}\text{(i)}\ 0, \\ \text{(ii)}\ 0, \\ \text{(iii)}\ e^{25/72}\end{cases}\quad}$。
+\item 设 $a>0$，函数 $f(x)$ 在 $(-a, a)$ 内可导，$f(0)=2$。
+若在平面直角坐标系 $O x y$ 中，对任何 $x_{0} \in(-a, a)$，
+曲线 $y=f(x)$ 在点 $P_{0}(x_{0}, f(x_{0}))$ 处的法线
+（即过 $P_{0}$ 且垂直于曲线在 $P_{0}$ 处的切线的直线）经过点 $\big(0, \frac{f(x_{0})}{2}\big)$。
+则使得满足上述条件的 $f$ 存在的最大的 $a$ 为 $\underline{\quad\sqrt{2}\quad}$，
+且相应的（$a$ 取最大值时的）$f(x)=\underline{\qquad\sqrt{2(2-x^{2})}, \quad(x \in(-2,2))\qquad}$。
+\item 平面上曲线 $y=x^{2}-3x+3$ 上的点到原点 $(0,0)$ 的距离的最小值是 $\underline{\quad\sqrt{2}\quad}$。
+\end{enumerate}
+\item[二] (10 分) 设 $x>0$，证明：$\ln(1+x)+e^{x}-1>2x$。
+
+\item[三] (10 分) 设 $F(x)=f(x)-g(x)$，且 $f(x), g(x)$ 均为有界闭区间 $[a, b]$ 上的单调增加函数。
+如果 $F(x)$ 在 $[a, b]$ 上有介值性（即对于 $[a, b]$ 的任何闭子区间 $[\alpha, \beta] \subseteq[a, b]$，
+以及介于 $F(\alpha)$ 与 $F(\beta)$ 之间的实数 $\eta$，总存在 $\xi \in[\alpha, \beta]$ 使得 $F(\xi)=\eta$)。
+证明：$F(x)$ 在 $[a, b]$ 内连续。
+
+\item[四] (15 分) 设 $f(x)$ 在 $\mathbb{R}$ 有两阶导数，满足：$f(0)=a, f^{\prime}(0)=b-1$ 以及 $f^{\prime \prime}(x)=-\sin x$ $(\forall\, x \in \mathbb{R})$。
+试问，是否存在 $b$，使得对任何 $a$，函数 $f(x)$ 在 $\mathbb{R}$ 上均有且只有 $2019$ 个零点（不计算重数）。请给出论证过程。
+
+\item[五] (15 分) 设 $f(x)$ 在 $[0,+\infty)$ 上连续，$\lim\limits_{n \rightarrow \infty} f(\sqrt{n})=0$。
+证明： $\lim\limits_{x \rightarrow+\infty} f(x)$ 存在的充分必要条件是 $f(x)$ 在 $[0,+\infty)$ 上一致连续．
+
+\item[六] (20 分) 依次证明以下各小题（各小题独立计分，每小题5分。
+完整证明第 4 小题---无论是否证明第 1---3 小题，给满分）：
+\end{enumerate}
+\begin{enumerate}
+\item 证明微分 Darboux 定理：若 $f(x)$ 在 $[a, b]$ 上点点可导，$f^{\prime}(a)<\eta<f^{\prime}(b)$，则存在 $\xi \in(a, b)$ 使得 $f^{\prime}(\xi)=\eta$。
+\item 设 $f(x)$ 在 $[a, b]$ 上可导，且 $f^{\prime}(x)$ 在 $(a, b)$ 内单调。证明：$f^{\prime}(x)$ 在 $[a, b]$ 上连续。
+\item 设 $f(x)$ 在 $[a, b]$ 上可导，在 $(a, b)$ 内两阶可导。证明：存在 $\xi \in(a, b)$ 使得
+\[f^{\prime}(b)-f^{\prime}(a)=f^{\prime \prime}(\xi)(b-a).\]
+\item 设 $f(x)$ 在 $[a, b]$ 上可导，在 $(a, b)$ 内三阶可导。证明：存在 $\xi \in(a, b)$，使得：
+\[f(b)=f(a)+\frac{1}{2}(b-a)(f^{\prime}(a)+f^{\prime}(b))
+-\frac{1}{12}(b-a)^{3}f^{\prime \prime \prime}(\xi).\]
+\begin{proofc}[4 的证明]
+尽管不是必要的，我们还是引入满足以下条件的插值（三次）多项式 $P(x)$ 以简化问题：
+\[P(a)=f(a), P^{\prime}(a)=f^{\prime}(a), 
+P(b)=f(b), P^{\prime}(b)=f^{\prime}(b).\]
+则 $P(x)$ 由以下方程确定：
+\[\det\begin{pmatrix}
+P(x) & 1 & x-a & (x-a)^{2} & (x-a)^{3} \\ \\
+f(a) & 1 & 0 & 0 & 0 \\ \\
+f^{\prime}(a) & 0 & 1 & 0 & 0 \\ \\
+f(b) & 1 & b-a & (b-a)^{2} & (b-a)^{3} \\ \\
+f^{\prime}(b) & 0 & 1 & 2(b-a) & 3(b-a)^{2}
+\end{pmatrix}=0.\]
+我们有 $P^{\prime \prime \prime}(x)=\dfrac{6(b-a)(f^{\prime}(a)+f^{\prime}(b))-12(f(b)-f(a))}{(b-a)^{3}}$。
+令 $g(x)=f(x)-P(x)$，则原问题化为：设 $g(x)$ 在 $[a, b]$ 上可导，
+在 $(a, b)$ 内三阶可导，$g(a)=g^{\prime}(a)=g(b)=g^{\prime}(b)=0$，
+证明：存在 $\xi \in(a, b)$，使得：$g^{\prime \prime \prime}(\xi)=0$。
+
+由 Rolle 定理，利用 $g(a)=g(b)=0$ 以及 $g(x)$ 可导，
+存在 $\xi_{1} \in(a, b)$ 使得 $g^{\prime}(\xi_{1})=0$。
+
+利用第 3 小题，存在 $\xi_{2}\in(a, \xi_{1})$ 与 $\xi_{3}\in(\xi_{1}, b)$ 
+使得 $g^{\prime \prime}(\xi_{2})=g^{\prime \prime}(\xi_{3})=0$。最后，利用 Rolle 定理即得结论。
+\end{proofc}
+\end{enumerate}
+
+== 19秋数学分析I期中 ==
+\begin{center}
+    \textsize{24pt}{复旦大学数学科学学院\\
+    2019$\sim$2020学年第一学期期中试卷}
+
+    \textsize{22pt}{课程名称：\ \ $\underline{\quad\ \ \ \text{数学分析 }\,\text{AI}\quad\ \ \ }$课程代码：\ \ $\underline{\text{MATH120014}}$\\
+    开课院系：\ \ $\underline{\quad\ \ \,数学科学学院\quad\ \ }$考试形式：\ \ $\underline{\qquad闭卷\qquad\,}$\\
+    姓\ \ 名：\ $\underline{\qquad\quad\ \ \ }$\ \ \ 学\ \ 号：\ $\underline{\qquad\quad\ \ \ }$\ \ \ 专\ \ 业：\ $\underline{\qquad\qquad\quad\ \ \ \,}$}
+
+\begin{table}\begin{tabular}{|c|c|c|c|}
+题\ \ \ 目 &\quad一\quad&\quad二\quad&\quad三\quad&\quad四\quad&\quad五\quad&\ \ 总分\ \ \\
+得\ \ \ 分 & & & & & & 
+\end{tabular}\end{table}
+\end{center}
+\begin{itemize}
+\item[一]（20 分）设 $\alpha>0, x>0$, $\displaystyle f(x)=\lim_{n \rightarrow+\infty}\left(1-\frac{x}{n^\alpha}\right)^n$。
+试讨论 $f(x)$ 在 $(0,+\infty)$ 内的连续性。
+\item[二]（20 分）设
+$$f(x)= \begin{cases}e^{2x-1}+1, & x<\frac{1}{2}, \\ 
+\dfrac{1}{2x}+1, & \frac{1}{2} \leq x \leq 2, \\ 
+1+\cos x \sin x, & x>2.\end{cases}$$
+任取 $x_0 \in \mathbb{R}$，并设 $x_{n+1}=f(x_n)$ $(n \geq 0)$。
+问 $\left\{x_n\right\}$ 是否一定收敛。不一定，请举出反例，若收敛，请证明并求出极限。
+\item[三]（20 分）计算下列极限并说明理由：
+\[1. \lim_{n \rightarrow+\infty} \frac{1+\frac{1}{\sqrt{2}}+\frac{1}{\sqrt{3}}+\ldots+\frac{1}{\sqrt{n}}}{\sqrt{n}}, 
+\quad 2. \lim_{n \rightarrow+\infty} \frac{1}{\sqrt{n}} \sum_{k=1}^n \frac{\sqrt[k]{k}}{\sqrt{n+1-k}}.\]
+\item[四]（20 分）证明：不存在 $\mathbb{R}$ 上的实连续函数 $f$ 满足 $f(f(x))=x^4-e^x$。
+\item[五]（20 分）设 $f(x), g(x)$ 在 $\mathbb{R}$ 上一致连续。
+
+1．若 $f(x), g(x)$ 均有界，则 $f(x) g(x)$ 也在 $\mathbb{R}$ 上一致连续。
+
+2．若 $\lim\limits_{x\rightarrow \infty} x g(x)=0$，则 $f(x) g(x)$ 也在 $\mathbb{R}$ 上一致连续。
+
+3．是否存在 $\alpha \in(0,1)$ 使 $\lim\limits_{x \rightarrow \infty}|x|^\alpha g(x)=0$ 可以保证 $f(x) g(x)$ 在 $\mathbb{R}$ 上一致连续？
+\end{itemize}
+\begin{proofc}[答案]\begin{itemize}
+\item[一] $f(x)$在$(0,+\infty)$内连续。
+\item[二] $\{x_n\}$收敛且收敛于$\frac{1+\sqrt{3}}{2}$。
+\item[三] 两个极限都是$2$。
+\item[四] 关键在于$\lim\limits_{x\to\infty}f(x)=\infty$。
+\item[五] 3中的$\alpha$不存在。\qedhere\end{itemize}\end{proofc}
+
+== 19春数学分析II期末（楼红卫）==
+\begin{enumerate}
+\item 填空题（每空格6分，共36分）：
+\end{enumerate}
+\begin{enumerate}[label=(\arabic*)]
+\item $\displaystyle\int_{0}^{n\pi} x|\sin x|\,{\rm d} x=\underline{\quad n^2\pi \quad}$。
+\item 若 $\displaystyle\int_{0}^{+\infty} \frac{\cos^{p}x-\cos^{q}x}{x}\,{\rm d} x$ 收敛，
+则自然数 $p, q$ 满足的条件为：$\underline{\quad p,q\text{ 均为奇数, 或者 }p,q\text{ 为相同的偶数} \quad}$。
+\item $\displaystyle\sum_{n=1}^{\infty} \frac{1}{n(2n-1)}$ 的和为$\underline{\quad 2\ln 2 \quad}$。
+\item 判断 $\displaystyle\prod_{n=1}^{\infty} \sum_{k=1}^{n} \frac{(-1)^{k-1}}{k\ln 2}$ 是收敛的还是发散的：$\underline{\quad\text{收敛}\quad}$。
+\item 函数 $\dfrac{1+2x+3x^{2}}{(1+x+x^{2}+x^{3})^{2}}$ 的 Maclaurin 级数中 $x^{2019}$ 项的系数为：$\underline{\quad -2020 \quad}$。
+\item $\displaystyle\sum_{n=1}^{\infty}\left(x-\frac{1}{n}\right)^{n}(1-x)^{a}$ 关于 $x \in[0,1]$ 一致收敛，
+则参数 $a \in \mathbb{R}$ 满足的条件为：$\underline{\quad a>1 \quad}$。
+\end{enumerate}
+\begin{enumerate}\setcounter{enum-{list-level}}{1}
+\item (15 分) 计算积分 $\displaystyle\int_{0}^{+\infty} \frac{\arctan x}{(1+x)^{2}}\,{\rm d} x$。[答案：$\dfrac{\pi}{4}$.]
+
+\item (15 分) 将平面曲线：$(x-b)^{2}+y^{2}=a^{2}$ $(0<a<b)$
+绕 $y$ 轴旋转一周，求所得旋转曲面的面积。[答案：$4\pi^2 ab$.]
+
+\item (14 分) 证明一致收敛的连续性定理：设 $u_{n}(x)$ 在 $x \in[a, b]$ 上连续 $(n=1,2,3, \ldots)$，
+且函数项级数 $\displaystyle\sum_{n=1}^{\infty} u_{n}(x)$ 关于 $x \in[a, b]$ 一致收敛，
+证明函数项级数的和函数 $S(x)$ 在 $[a, b]$ 上连续。
+
+\item (10 分) 设 $S_{k} \subset \mathbb{R}^{n}$ 是非空有界闭集且 $S_{k+1} \subset S_{k}$ $(k=1,2,3, \ldots)$。
+证明：$\bigcap\limits_{k=1}^{\infty} S_{k}$ 仍是非空有界闭集。
+又问，如果把有界性条件去掉结论应如何变化？
+
+\item (10 分) 设 $\displaystyle\zeta(x)=\sum_{n=1}^{\infty} \frac{1}{n^{x}}$。\\
+(1) 证明：$\zeta(x)$ 在 $(1,+\infty)$ 上有任意阶导函数；\\
+(2) 问：$\forall x_{0}>1$ 是否存在 $\delta>0$ 
+使 $\displaystyle\zeta(x)=\sum_{n=0}^{\infty} \frac{\zeta^{(n)}(x_{0})}{n!}(x-x_{0})^{n}$ 
+当 $|x-x_{0}|<\delta$ 时成立？说明理由。[答案：(2)可以取$\delta=\dfrac{x_0-1}{2}$.]
+\end{enumerate}
+
+== 18秋数学分析III 期末 ==
+
+\begin{center}
+    \textsize{24pt}{复旦大学数学科学学院\\
+    2018$\sim$2019学年第一学期期末考试试卷\\
+    $\surd$ $\text{A}$ 卷 $\quad\square$ $\text{B}$ 卷}
+
+    \textsize{22pt}{课程名称：\ \ $\underline{\quad\ \ \ \text{数学分析 }\,\text{III}\quad\ \ \ }$课程代码：\ \ $\underline{\text{MATH130001}}$\\
+    开课院系：\ \ $\underline{\quad\ \ \,数学科学学院\quad\ \ }$考试形式：\ \ $\underline{\qquad闭卷\qquad\,}$\\
+    姓\ \ 名：\ $\underline{\qquad\quad\ \ \ }$\ \ \ 学\ \ 号：\ $\underline{\qquad\quad\ \ \ }$\ \ \ 专\ \ 业：\ $\underline{\qquad\qquad\quad\ \ \ \,}$}
+\end{center}
+
+\qquad 提示：请同学们秉持诚实守信宗旨，谨守考试纪律，摒弃考试作弊。
+学生如有违反学校考试纪律的行为，学校将按《复旦大学学生纪律处分条例》规定予以严肃处理。
+
+\begin{table}\begin{tabular}{|c|c|c|c|}
+\textbf{题\ \ \ 目} &\quad$1$\quad&\quad$2$\quad&\quad$3$\quad&\quad$4$\quad&\quad$5$\quad&\quad$6$\quad&\quad$7$\quad&\ \ \textbf{总分}\ \ \\
+\textbf{得\ \ \ 分} & & & & & & & & 
+\end{tabular}\end{table}
+
+\begin{enumerate}
+\item[一、] (10分）记 $S_r^2 \subset \mathbb{R}^3$ 为以原点为心、半径为 $r>0$ 的球面. 
+若 $\triangle$ 为其上的一个球面三角形，其三个内角分别为 $0<\alpha, \beta, \gamma<\pi$。
+利用数分 3 的知识求 $\triangle$ 的面积 $S_{\triangle}$ (需有计算过程)。
+
+\item[二、] (5+5+5分) 令 $f(x, y, z)=\cos y\,e^{\sin x-x^2-y^2}$. 求外微分 $df$ 及
+$$\lim_{T_0 \rightarrow+\infty} \int_{\Gamma_{T_0}} df+\frac{\sin 4z}{z}\,dz,$$
+其中曲线 $\Gamma_{T_0}$ 为
+$$x(t)=t\,e^{t^{2018}}, \quad y(t)=t^2 \sin \left(1+t^{2019}\right), \quad 
+z(t)=\phi(t), \ \ t \text { 从 } 0 \text { 至 } T_0$$
+且 $\phi$ 为直线上的光滑函数满足 $\phi(0)=0$、$\ \phi^{\prime} \geq 1$.
+
+\item[三、] (7分) 假设 $\alpha>0$, $f \in C(\mathbb{R}^3)$. 求第二类曲面积分
+$$\iint_{\Sigma}[f(x, y, z)+x]\ dy \wedge dz
++\left[\frac{2}{\alpha} f(x, y, z)+y\right] dz \wedge dx
++[f(x, y, z)+z]\ dx \wedge dy$$
+其中 $\Sigma$ 为平面 $x-\alpha y+z=1$ 在第四象限部分 (即 $x, z \geq 0, y \leq 0$), 方向取上侧.
+
+\item[四、] (5+8分) 计算积分：
+$$\int_0^{\frac{\pi}{2}} \ln \left(\frac{a+b \sin \theta}{a-b \sin \theta}\right) \frac{d \theta}{\sin \theta} \quad(0 \leq b<a)$$
+及
+$$\int_{\frac{\pi}{2}-\alpha}^{\frac{\pi}{2}} \sin \theta \arccos \left(\frac{\cos \alpha}{\sin \theta}\right) d\theta \quad\left(0 \leq \alpha \leq \frac{\pi}{2}\right).$$
+
+\item[五、] (5+5+3+5+5+2分) 假设 $\alpha>0$。考虑以 $2 \pi$ 为周期的函数 $f(x)=\cosh (\alpha x)$.
+
+(1) 写出 $f$ 在 $[-\pi, \pi]$ 上的 Fourier 级数及其和函数.
+
+(2) 利用所得结果，(a) 求
+$$\sum_{n=1}^{+\infty} \frac{1}{\alpha^2+n^2}, \qquad 
+\sum_{n=1}^{+\infty} \frac{1}{(\alpha^2+n^2)^2},$$
+(b) 直接写出 $g(x)=\sinh (\alpha x)$ 在 $[-\pi, \pi]$ 上的 Fourier 级数并计算
+$$\sum_{n=1}^{+\infty} \frac{(-1)^n}{n^2+1}.$$
+
+\item[六、] (5+5分) 假设 $u \in C^2(\mathbb{R}^3)$ 为调和函数, 
+即满足 $\Delta u=\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}+\frac{\partial^2 u}{\partial z^2}=0$. 
+设 $P=(x_0, y_0, z_0) \in \mathbb{R}^3, r>0$. 记 $S(P, r)$ 为以 $P$ 点为心, $r$ 为半径的球面. 证明: (1)
+$$\iint_{S(P, r)} \frac{\partial u}{\partial n}\,d S=0,$$
+其中 $n$ 为 $S(P, r)$ 的单位外法向量.
+
+(2) 平均值公式
+$$u(P)=\frac{1}{4 \pi r^2} \iint_{S(P, r)} u\,d S.$$
+
+\item[七、] (10+10分) 假设 $\lambda \geq 0, a>0$。(1) 求
+$$R(\lambda)=\int_0^{\infty} \cdots \int_0^{\infty} 
+e^{-\left(x_1+\cdots+x_{n-1}+\frac{\lambda^n}{x_1 \cdots x_{n-1}}\right)} 
+x_1^{\frac{1}{n}-1} \cdots x_{n-1}^{\frac{n-1}{n}-1} dx_1 \cdots dx_{n-1}$$
+(2) 试利用(1)的结果证明 $\Gamma$ 函数的高斯公式
+$$\Gamma(a) \Gamma(a+\frac{1}{n}) \cdots \Gamma(a+\frac{n-1}{n})
+=\frac{(2\pi)^{\frac{n-1}{2}}}{n^{na-\frac{1}{2}}} \Gamma(na).$$
+\end{enumerate}
+
+== 18秋数学分析III 期末 (李洪全) ==
+\begin{enumerate}
+\item[一、] 设 $D \subset \mathbb{R}^{2}$ 为有界闭区域, $u(x, y)$ 在 $D$ 上连续可导, 且
+\begin{align*}
+u(x, y)=\frac{\partial u}{\partial x}(x, y)&+\frac{\partial u}{\partial y}(x, y), \quad \forall\, (x, y) \in D, \\
+&u|_{\partial D}=0.
+\end{align*}
+证明 $u$ 在 $D$ 上恒为 $0$.
+
+\item[二、] 假设 $f: D=[0,1]^{n} \longrightarrow[-1,1](n \geq 2)$ 可积. 证明:
+$$\lim_{k \rightarrow+\infty} \prod_{j=1}^{n} \prod_{\alpha_{j}=1}^{k}\left[1+\frac{1}{k^{n}} f\left(\frac{\alpha_{1}}{k}, \ldots, \frac{\alpha_{n}}{k}\right)\right]
+=\exp \left\{\int_{D} f(x) d x\right\}.$$
+
+\item[三、] 假设 $f \in C^{1}(\mathbb{R}^{2})$, 
+且曲面 $z=f(x, y)$ 上的切平面均过一定点 $(a, b, c)$. 证明：
+$$f(t(x-a)+a, t(y-b)+b)-c=t \cdot(f(x, y)-c).$$
+
+\item[四、] 令 $\mathcal{M}_{n, n}$ 为所有 $n$ 阶实方阵全体，考虑光滑函数
+\begin{align*}
+\phi: \mathcal{M}_{n, n} &\longrightarrow \mathbb{R} \\
+A=\left(a_{i, j}\right)_{1 \leq i, j \leq n} &\longmapsto \phi(A)=\det A
+\end{align*}
+
+1. 计算 $\frac{\partial}{\partial a_{i, j}} \phi(A)$ (可以用代数余子式表示).
+
+2. 给定 $H_{1}, \ldots, H_{n}>0$，假设 $A_{0}$ 为 $\phi^{2}(A)$ 在约束条件
+$$\sum_{j=1}^{n} a_{i, j}^{2}=H_{i}, \quad i=1, \ldots, n \tag{1}$$
+下的极大值点. 证明 $A_{0}$ 的行向量在 $\mathbb{R}^{n}$ 中两两正交.
+
+3. 记满足条件 $(1)$ 的方阵全体为 $\Sigma$。利用 $(\det A)^{2}=(\det A)\left(\det A^{T}\right)$，证明：
+$$\max_{A \in \Sigma} \phi^{2}(A)=\prod_{i=1}^{n} H_{i}.$$
+
+\item[五、] 若 $f: \mathbb{R}^{n} \longrightarrow \mathbb{R}$ $(n \geq 2)$ 为满足常数 $L>0$ 的 Lipschitz函数, 即
+$$|f(x)-f(y)| \leq L|x-y|, \quad \forall\, x, y \in \mathbb{R}^{n}.$$
+进一步假设在原点 $o$, $f$ 沿任意方向 $v \in \mathbb{S}^{n-1}$ 的方向导数 $\frac{\partial f}{\partial v}(o)$ 存在. 
+将 $v$ 看成列向量，定义
+$$Q(v ; t)=\frac{f(tv)-f(o)}{t}-f^{\prime}(o) v, \quad v \in \mathbb{S}^{n-1}, t \in \mathbb{R} \backslash\{0\}.$$
+
+证明: 1. $\forall\, v, v^{\prime} \in \mathbb{S}^{n-1}$ 有 
+$\left|Q(v ; t)-Q(v^{\prime} ; t)\right| 
+\leq(\sqrt{n}+1) L\left|v-v^{\prime}\right|$.
+
+2. 对于任意的 $\epsilon>0$ ，存在 $\delta_{\epsilon}>0$ 使得
+$$|Q(v ; t)|<\epsilon, \quad \forall\, 0<|t|<\delta_{\epsilon}, v \in \mathbb{S}^{n-1}.$$
+
+3. $f$ 在 $o$ 点可微。
+
+\item[六、] 1. 求函数
+$$H(x, y)=\frac{x(1-x) y(1-y)}{1-x y}$$
+在区域 $0 \leq x \leq 1,0 \leq y \leq 1$ 上的最大值.
+
+2. 记
+$$L_{n}=\left(\int_{0}^{1} \int_{0}^{1} \frac{x^{n} y^{n}(1-x)^{n}(1-y)^{n}}{(1-xy)^{n+1}} dx dy\right)^{\frac{1}{n}},$$
+求 $\lim_{n \rightarrow \infty} L_n$.
+
+\item[七、] 设 $f \in C(\mathbb{R}), b \in \mathbb{R}, n \geq 2, v \in \mathbb{R}^{n} \backslash\{o\}$。
+令 $C_{n-1}$ 表示 $\mathbb{R}^{n-1}$ 中单位球的体积。证明：
+$$\int_{B(o, 1)} f(v \cdot x+b) d x=C_{n-1} \int_{-1}^{1} f(|v| s+b)\left(1-s^{2}\right)^{\frac{n-1}{2}} ds.$$
+
+\item[八、] 假设 $n \geq 2, \alpha \in \mathbb{R}$. 给出重积分
+$$\int_{B(o, 1)}\left(x_{1}-x_{n}\right)\left[\sin \left(\sum_{j=1}^{n} \frac{j}{100 n^{2}}\left|x_{j}\right|\right)\right]^{\alpha} dx$$
+收敛的充要条件，并求其值。
+
+\item[九、] 设 $a>0$. 试将积分
+$$K=\int_{-\frac{\pi}{4}}^{\frac{\pi}{2}} d \theta 
+\int_{0}^{2 a \cos \theta} f(r \cos \theta, r \sin \theta) r dr$$
+交换积分顺序，再将它化为直角坐标，写出先对 $x$ 再对 $y$ 以及先对 $y$ 再对 $x$ 的两个累次积分。
+\end{enumerate}
+
+== 18秋数学分析III 期中（李洪全）==
+\begin{enumerate}
+\item[一、] (8分) 假设 $A$ 为 $n \times n$ 实可逆矩阵，记
+$$\begin{aligned}
+T_A:\ \ \mathbb{R}^n \longrightarrow \mathbb{R}^n \qquad\qquad\\
+\ \ \qquad\qquad x \mapsto T_A(x)=A x .
+\end{aligned}$$
+若 $\phi: \mathbb{R}^n \rightarrow \mathbb{R}$ 为 $C^2$ 函数. 求
+$$\nabla(\phi \circ T_A)(x)=\left(\frac{\partial(\phi \circ T_A)}{\partial x_1}, \cdots, \frac{\partial(\phi \circ T_A)}{\partial x_n}\right)(x)$$
+以及
+$$\operatorname{Hess}(\phi \circ T_A)(x)
+=\left(\frac{\partial^2(\phi \circ T_A)}{\partial x_i \partial x_j}(x)\right)_{1 \leq i, j \leq n}.$$
+
+\item[二、] (8+7分) 假设 $f \in C^2(\mathbb{R}^2)$ 满足
+$$f(0,0)=|\nabla f(0,0)|=0.$$
+(a) 若 $\frac{\partial^2 f}{\partial x \partial y}(0,0)=0, 
+\frac{\partial^2 f}{\partial x^2}(0,0)>0$ 
+且 $\frac{\partial^2 f}{\partial y^2}(0,0)<0$. 
+证明在 $0$ 点附近, 存在两个不同的隐函数 $g_i(x), i=1,2$, 使得
+$$g_i(0)=0, \quad f(x, g_i(x))=0, \quad g_i \in C^1 \text { 且 } g_1^{\prime}(0) \neq g_2^{\prime}(0).$$
+
+(b) 更一般地, 若 $\frac{\partial^2 f}{\partial y^2}(0,0) \neq 0$ 且
+$$\left(\frac{\partial^2 f}{\partial x \partial y}(0,0)\right)^2
+-\frac{\partial^2 f}{\partial x^2}(0,0) \frac{\partial^2 f}{\partial y^2}(0,0)>0,$$
+证明 (a) 中的结论依然成立.
+
+\item[三、] (3+5+8分) 令 $n \geq 2$, $I_n=[0,1]^n$. 
+假设 $u \in C^1(\mathbb{R}^n)$ 满足 $u(x)=0, \forall x \notin I_n$. 
+记 $x=(x^{\prime}, x_n), x^{\prime}=(x_1, \cdots, x_{n-1})$.
+
+(a) 证明 $u(x)=u(x^{\prime}, x_n)=\int_0^{x_n} \frac{\partial u}{\partial x_n}(x^{\prime}, t) dt$.
+
+(b) 证明 $\int_{I_n}|u(x)|^2 dx \leq \int_{I_n}|\nabla u(x)|^2 dx$.
+
+(c) 假设已知
+$$\left(\int_{I_n}|u(x)|^{\frac{n}{n-1}} dx\right)^{\frac{n-1}{n}} 
+\leq C_n \int_{I_n}|\nabla u(x)| dx,$$
+其中 $C_n>0$ 与 $u$ 无关. 试利用上面不等式证明
+$$\left(\int_{I_n}|u(x)|^{\frac{np}{n-p}} dx\right)^{\frac{n-p}{n}} 
+\leq C(n, p) \int_{I_n}|\nabla u(x)|^p dx,$$
+其中常数 $p>1$ 而 $C(n, p)>0$ 与 $u$ 无关.
+
+\item[四、] (3+4+8分) 记 $n \times n$ 的所有对称正定矩阵集合为 $\Gamma$. 设定义在 $\Gamma$ 上的函数
+$$f(A)=\operatorname{det}^{\frac{1}{n}}\!A, \quad \forall\, A \in \Gamma.$$
+\begin{enumerate}[label=(\alph*)]
+\item 求 $f$ 在 $A$ 的微分 $df_{(A)}$. (即求 $\frac{\partial f}{\partial A_{ij}}=df_{(A)}(E_{ij})$)
+\item 求 $\frac{\partial^2 f}{\partial A_{ij} \partial A_{kl}}(A)$. (即 $f$ 在 $A$ 处的 Hessian 矩阵)
+\item 证明
+$$\frac{\partial^2 f}{\partial A_{ij} \partial A_{kl}}(A) \xi_{ij} \xi_{kl}<0, \quad 
+\forall\, \xi=\left(\xi_{ij}\right)_{1 \leq i, j \leq n} \neq 0,$$
+即 $f$ 为凹函数.
+\end{enumerate}
+
+\item[五、] (15分) 设 $\Omega \subset \mathbb{R}^n$ 是有界区域， 
+$u$ 在 $\Omega$ 上二阶连续可微， $u$ 是非负函数，且满足
+$$L(u)=\sum_{i, j=1}^n a_{ij}(x) \frac{\partial^2 u}{\partial x_i \partial x_j}+\sum_{k=1}^n b_k(x) \frac{\partial u}{\partial x_k}+c(x) u \geq 0,$$
+其中 $a_{ij}, b_k, c$ 在 $\Omega$ 上一阶连续可微, $c(x) \leq 0$; 
+$a_{ij}=a_{ji}$, 且 $\exists \alpha> 0$ 使对 $\forall x \in \overline{\Omega}$ 
+和 $\xi=(\xi_1, \cdots, \xi_n) \in \mathbb{R}^n$ 成立
+$$\sum_{i, j=1}^n a_{ij}(x) \xi_i \xi_j \geq \alpha \sum_{i=1}^n \xi_i^2.$$
+证明
+$$\max_{x \in \overline{\Omega}} u(x)=\max_{x \in \partial \Omega} u(x).$$
+
+\item[六、] (15分) 设函数 $f$ 定义在 $\Omega=\left\{(x, y, z) \mid x^2+y^2 \leq z^2, 0 \leq z \leq 1\right\}$ 上且有界可积, 并在 $(0,0,0)$ 处连续。令
+$$I_n=\int_{\Omega} e^{-nz} f(x, y, z) dx dy dz,$$
+其中 $n$ 为正整数。试求：当 $n \rightarrow \infty$, $n^3 I_n$ 的极限。
+
+\item[七、] (3+5+8分) 下面我们考虑积分
+$$I_{p, q, r, s}=\int_D x^p y^q z^r(1-x-y-z)^s dx dy dz,$$
+其中 $p, q, r, s$ 均为正整数, $D=\{(x, y, z) \mid x, y, z \geq 0, x+y+z \leq 1\}$。
+
+若我们记 $D(t)=\{(x, y, z) \mid x, y, z \geq 0, x+y+z \leq t\}$, 以及
+$$I_{p, q, r, s}(t)=\int_{D(t)} x^p y^q z^r(t-x-y-z)^s dx dy dz.$$
+
+(1) 试说明 $\int_0^1 I_{p, q, r, s}(t) dt=\frac{I_{p, q, r, s}}{p+q+r+s+4}$。
+
+(2) 试说明 $I_{p, q, r, s+1}=\frac{s+1}{p+q+r+s+4} I_{p, q, r, s}$。
+
+(3) 从而计算得 $I_{p, q, r, s}=\frac{p!q!r!s!}{(p+q+r+s+3)!}$。
+（已知 $\int_0^1 x^p(1-x)^{q+1} dx=$ $\frac{p!(q+1)!}{(p+q+2)!}$.）
+\end{enumerate}
+
+== 17秋数学分析I期末（楼红卫）==
+一\ （30 分）填空题（每题5分）：
+\begin{enumerate}[label=(\arabic*)]
+\item 设 $f(x)=3 x^{4}-16 x^{3}-42 x^{2}+120 x$，则 $f(x)$ 在区间 $[-3,3]$ 上的最大值为 $\underline{\quad 65 \quad}$。
+\item $\displaystyle\int\left(e^{x}\Big(\ln x+\frac{1}{x}\Big)+\ln x+1\right) dx=\underline{\quad \left(e^{x}+x\right) \ln x+C \quad}$。
+\item 设函数 $f(x)$ 在 $x=1$ 有三阶导数，并满足 $f^{\prime}(x)=f(f(x))$ 以及 $f(1)=1$。
+则 $f(x)$ 在 $x=1$ 处的带 Peano 型余项的三阶 Taylor 展式为：
+$\underline{\quad 1+(x-1)+\frac{(x-1)^{2}}{2}+\frac{(x-1)^{3}}{3}+o((x-1)^{3}), \quad(x \rightarrow 1) \quad}$。
+\item 对于 $n \geq 1$，设 $\xi_{n} \in\left(0, \dfrac{1}{n}\right)$ 
+满足 $\sin \dfrac{1}{n}=\dfrac{1}{n} \cos \xi_{n}$，
+则 $\lim\limits_{n \rightarrow \infty} n \xi_{n}=\underline{\quad\dfrac{\sqrt{3}}{3}\quad}$。
+\item 设曲线 $y=x^{2}$ 在点 $A(x_{0}, x_{0}^{2})$ 处的切线与 $x$ 轴交于 $P$ 点。
+若线段 $AP$ 的长度为 $1$，则 $x_{0}= \underline{\quad \pm \sqrt{\dfrac{\sqrt{65}-1}{8}} \quad}$。
+\item 设 $f(x)=x^{1999} e^{x} \sin x$，
+则 $f^{(2018)}(0)=\underline{\quad\dfrac{2018!}{19!} \cdot 2^{9}\quad}$。
+\end{enumerate}
+\begin{enumerate}
+\item[二]（10 分）设 $f(x)$ 在 $[-1,1]$ 上连续，在 $(-1,0)$ 和 $(0,1)$ 内可导。
+若 $\lim\limits_{x \rightarrow 0} f^{\prime}(x)$ 存在，证明：$f(x)$在 $x=0$ 处可导。
+
+\item[三]（20 分）设 $y=y(x)$ 由参数方程 $\begin{cases}x=e^{t}+2 t, \\ y=\sin t-t,\end{cases}$ 确定。\\
+（1）计算 $\dfrac{d^{2}y}{dx^{2}}$。\qquad\qquad
+（2）计算 $\displaystyle\int y(x) \, dx$。\\
+（3）任取 $x_{0} \in \mathbb{R}$，定义 $x_{n+1}=y(x_{n})$ $(n \geq 0)$。
+证明：$\left\{x_{n}\right\}$ 收敛。
+
+\item[四]（10 分）试构造 $\mathbb{R}$ 上二阶连续可导的凸函数 $f(x)$，满足
+$$|f(x)| \leq |x|+1, \qquad \forall\, x \in \mathbb{R}.$$
+
+\item[五]（10 分）设 $y=\sqrt[3]{\dfrac{x^{4}}{x+1}}$，
+试讨论函数的单调性、极值、凸性、拐点，求出它的渐近线，并作出它的简图。
+
+\item[六]（10 分）将区间 $(0,1)$ 内的实数用十进制小数 $0.a_{1}a_{2}a_{3} \ldots a_{n} \ldots$ 表示，约定不将 $9$ 作为循环节。定义
+$$f(0.a_{1}a_{2}a_{3}\ldots a_{n}\ldots)
+:=0.a_{1}0a_{2}0a_{3}0\ldots a_{n}0\ldots,$$
+试问 $f(x)$ 在 $(0,1)$ 内的哪些点连续，哪些点不连续。
+
+\item[七]（10 分）设 $f(x)$ 在 $[0,+\infty)$ 上有两阶的连续导数，
+满足 $f(0)=f^{\prime}(0)=0$ 以及 $f^{\prime \prime}(x)+3 f^{\prime}(x)+2 f(x) \geq 0$。证明：$f(x) \geq 0$。
+\end{enumerate}
+
+== 17秋数学分析I期中==
+\begin{enumerate}
+\item 记函数\[R(x)=\begin{cases}
+\frac{1}{q},&x\in\mathbb{Q}\setminus\{0\}, \, x=\pm\frac{p}{q}, \, p,q\text{ 为既约正整数}\\
+0,&x=0\text{ 或 }x\in\R\setminus\mathbb{Q}
+\end{cases}.\]求证$\lim\limits_{x\to0}R(x)=0$。
+\item 设$f$为$[0,+\infty)$上的连续函数。\\
+(1) $\lim\limits_{x\to+\infty}f(x)=0$，求证$f(x)$一致连续。\\
+(2) $\lim\limits_{x\to+\infty}\dfrac{f(x)}{x}=+\infty$，求证$f(x)$非一致连续。\\
+(3) $\lim\limits_{x\to+\infty}\dfrac{f(x)}{x}=1$，举例说明$f(x)$可能一致连续也可能非一致连续。
+\item 设$x_0\in(0,1)$，$x_{n+1}=x_n(1-x_n^4)$，求$\lim\limits_{n\to\infty}n^\frac{1}{4}x_n$。
+\item 求$\displaystyle\lim_{x\to0}\left(\frac{\sin x+\cos x}{1+2\tan x}\right)^\frac{1}{x}$。
+\item 设$f,g$为$\R$上的连续函数，求证$h=\max\{f,g\}$为$\R$上的连续函数。
+\item 设$a_1,a_2,\cdots,a_n>0$，求$\displaystyle\lim_{x\to+\infty}\frac{a_1^{x+1}+a_2^{x+1}+\cdots+a_n^{x+1}}{a_1^x+a_2^x+\cdots+a_n^x}$。
+\item 设$f(x)$为$[a,b]$上的连续函数，
+\[F(x)\triangleq\lim_{y \to x^+}\frac{f(y)-f(x)}{y-x},\quad\forall\, x\in(a,b).\]
+证明：(1) 若恒有$F(x)$为正或$+\infty$，则$f$严格增。\\
+\qquad\ \, (2) 若恒有$F(x)=0$，则$f$为常数。
+\end{enumerate}
+
+== 17春数学分析II期末（楼红卫）==
+一\ （36 分）填空题（每题6分）：
+\begin{enumerate}[label=(\arabic*)]
+\item $\displaystyle\int_{0}^{2017}(-1)^{[x]}x\,dx=\underline{\quad\frac{2017}{2}\quad}$。
+\item 若 $\displaystyle\int_{0}^{+\infty}(\ln x) \sin (x^{p})\,dx$ 收敛，
+则参数 $p \in \mathbb{R}$ 满足的条件为：$\underline{\quad |p|>1 \quad}$。
+\item $\displaystyle\sum_{n=0}^{\infty} \frac{(-1)^{n}}{2n+1}$ 的和为：
+$\underline{\quad\dfrac{\pi}{4}\quad}$。
+\item 判断 $\displaystyle\prod_{n=1}^{\infty} \frac{\sin \frac{1}{\sqrt{2 n-1}}}{\sin \frac{1}{\sqrt{2n}}}$ 是收敛的还是发散的：$\underline{\quad 发散的 \quad}$。
+\item $\dfrac{x}{1-x^{2}}$ 在 $x=3$ 处展开成 Taylor 级数时的收敛半径为： $\underline{\quad 2 \quad}$。
+\item 若 $\displaystyle\sum_{n=0}^{\infty} \frac{1}{n^{a}}\left[e^{x}-\left(1+\frac{x}{n}\right)^{n}\right]$ 在 $x \in(-\infty,+\infty)$ 上内闭一致收敛，
+则参数 $a \in \mathbb{R}$ 满足的条件是 $\underline{\quad a>0\quad}$。
+\end{enumerate}
+\begin{enumerate}
+\item[二]（15 分）计算积分：$\displaystyle\int_{0}^{\frac{\pi}{2}} \frac{1+\cos x}{1+\sin x}\,dx$。[答案：$1+\ln2$.]
+
+\item[三]（15 分）求参数曲线段：$\begin{cases}x=t-\sin t, \\ y=1-\cos t,\end{cases} \quad(0 \leq t \leq 2 \pi)$ 
+绕 $x$ 轴旋转一周，所得旋转曲面的面积。[答案：$\dfrac{64\pi}{3}$.]
+
+\item[四]（10 分）证明函数列 $S_{n}(x)$ 在 $x \in D$ 一致收敛到 $S(x)$ 的充要条件是：
+$\forall\, x_{n} \in D$，必有 $\lim\limits_{n \rightarrow \infty}(S_{n}(x_{n})-S(x_{n}))=0$。
+
+\item[五]（14 分）设 $x=-a_{n}$ 是方程： $1+x+\dfrac{x^{2}}{2!}+\dfrac{x^{3}}{3!}+\cdots+\dfrac{x^{2n-1}}{(2n-1)!}=0$ 的解，
+$\displaystyle f(x)=\sum_{n=1}^{\infty} a_{n} x^{p} e^{-a_{n} x}$，其中 $p \in \mathbb{R}$ 为常数。证明
+
+（1）存在正常数 $C_{1}, C_{2}$ 使得 $C_{1} n \leq a_{n} \leq C_{2} n$ $(n=1,2, \ldots)$；
+
+（2）$f(x)$ 在 $(0,+\infty)$ 上连续。
+\begin{proofc}
+对于 $n \geq 0$，记 $\displaystyle f_{n}(x)=\sum_{k=0}^{n} \frac{x^{k}}{k!}, x \in \mathbb{R}$。
+
+首先，归纳易证 $f_{2n}(x)$ 在 $\mathbb{R}$ 上有正的最小值，
+而 $f_{2n+1}(x)$ 在 $\mathbb{R}$ 上严格单增，有唯一的零点。
+具体地，对于 $f_{0}(x)$ 与 $f_{1}(x)$，上述结论成立。
+现归纳假设对于某个 $n \geq 0$, $f_{2n}(x)$ 在 $\mathbb{R}$ 上有正的最小值，
+而 $f_{2n+1}(x)$ 在 $\mathbb{R}$ 上严格单增，且有唯一的零点 $t_{2n+1}$。
+则注意到 $f_{2n+2}^{\prime}(x)=f_{2n+1}(x)$，我们知道
+$$f_{2n+2}(x) \geq f_{2n+2}(t_{2n+1})
+=f_{2n+1}(t_{2n+1})+\frac{t_{2n+1}^{2n+2}}{(2n+2)!}
+=\frac{t_{2n+1}^{2n+2}}{(2n+2)!}>0, \qquad \forall\, x \in \mathbb{R}.$$
+即 $f_{2n+2}(x)$ 在 $\mathbb{R}$ 上有正的最小值。
+进一步，由 $f_{2n+3}^{\prime}(x)=f_{2n+2}(x)$，
+得到而 $f_{2n+3}(x)$ 在 $\mathbb{R}$ 上严格单增，
+结合 $f_{2n+3}(-\infty)=-\infty, f_{2n+3}(+\infty)=+\infty$ 
+知 $f_{2n+3}(x)$ 在 $\mathbb{R}$ 上有唯一的零点。
+当 $n \geq 1, x \geq 0$ 时，$f_{2n-1}(x)>0$，
+可知满足 $f_{2n-1}(-a_{n})=0$的 $a_{n}$ 唯一且为正。
+
+（1）法 I. 由 Taylor 展式，我们有 $\xi_{n} \in (0, a_{n})$ 使得
+$$e^{-a_{n}}=f_{2n-1}(-a_{n})+\frac{e^{-\xi_{n}}}{(2n)!} a_{n}^{2n}
+=\frac{e^{-\xi_{n}}}{(2n)!} a_{n}^{2n}.$$
+于是
+$$a_{n}=\left(\frac{(2n)!e^{\xi_{n}}}{e^{a_{n}}}\right)^{\frac{1}{2n}} 
+\leq\big((2n)!\big)^{\frac{1}{2n}} \leq 2n.$$
+即可取 $C_{2}=2$。进一步，又有
+$$a_{n}=\left(\frac{(2n)!e^{\xi_{n}}}{e^{a_{n}}}\right)^{\frac{1}{2n}} 
+\geq\left(\frac{(2n)!}{e^{2n}}\right)^{\frac{1}{2n}} 
+\sim \frac{2n}{e^{2}}, \qquad(n \rightarrow \infty).$$
+所以存在 $C_{1}>0$ 使得 $\forall\, n \geq 1, a_{n} \geq C_{1} n$。
+
+法 II. 我们有 $a_{1}=1$。对于 $n \geq 2$，当 $x \leq-(2n-1)$ 时，
+$$f_{2n-1}(x)=\sum_{k=0}^{n-1} \frac{x^{2k}}{(2k)!}\left(1+\frac{x}{2k+1}\right)<0.$$
+因此，$a_{n}<2n-1$ $(n \geq 2)$。
+
+另一方面，在 $(-(2n+1),+\infty)$ 内，$f_{2n+1}(x)>f_{2n-1}(x)$。因此，
+$$f_{2n-1}(-a_{n+1})<f_{2n+1}(-a_{n+1})=0.$$
+这表明 $a_{n}<a_{n+1}$ $(n \geq 1)$。
+
+总之，有 $a_{n}<a_{n+1}<2n+1$。
+
+注意到 $f_{2n}^{\prime}(x)=f_{2n-1}(x)$ 在 $(-\infty,-a_{n})$ 内为负，
+从而在 $[-a_{n+1},-a_{n})$ 为负，所以
+$$\begin{gathered}
+f_{2n}(x) \geq f_{2n}(-a_{n})=\frac{a_{n}^{2n}}{(2n)!}, \qquad x \in [-a_{n+1},-a_{n}], \\
+f_{2n}(x) \leq f_{2n}(-a_{n+1})=\frac{a_{n+1}^{2n+1}}{(2n+1)!}, \qquad x \in [-a_{n+1},-a_{n}].
+\end{gathered}$$
+由中值定理，我们有 $\xi_{n} \in (-a_{n+1},-a_{n})$ 使得
+$$0=f_{2n+1}(-a_{n+1})=f_{2n+1}(-a_{n})-f_{2n}(\xi_{n})(a_{n+1}-a_{n}).$$
+所以
+\begin{align*}
+0 & =\frac{a_{n}^{2n}}{(2n)!}-\frac{a_{n}^{2n+1}}{(2n+1)!}-f_{2n}(\xi_{n})(a_{n+1}-a_{n}) \\
+& \leq \frac{a_{n}^{2n}}{(2n)!}-\frac{a_{n}^{2n+1}}{(2n+1)!}-\frac{a_{n}^{2n}}{(2n)!}(a_{n+1}-a_{n}).
+\end{align*}
+由此得到
+$$a_{n+1}-a_{n} \leq 1-\frac{a_{n}}{2n+1} \leq 1.$$
+从而
+$$a_{n} \leq n, \qquad \forall\, n \geq 1.$$
+另一方面，
+\begin{align*}
+0 & =\frac{a_{n}^{2n}}{(2n)!}-\frac{a_{n}^{2n+1}}{(2n+1)!}-f_{2n}(\xi_{n})(a_{n+1}-a_{n}) \\
+& \geq \frac{a_{n}^{2n}}{(2n)!}-\frac{a_{n}^{2n+1}}{(2n+1)!}-\frac{a_{n+1}^{2n+1}}{(2n+1)!}(a_{n+1}-a_{n}).
+\end{align*}
+于是
+\begin{align*}
+& a_{n+1}-a_{n} \geq \frac{2n+1}{a_{n+1}}\left(\frac{a_{n}}{a_{n+1}}\right)^{2n}\left(1-\frac{a_{n}}{2n+1}\right) \\
+& \geq 1 \cdot\left(\frac{a_{n}}{a_{n}+1}\right)^{2n} \cdot\left(1-\frac{n}{2n+1}\right) 
+\geq \frac{1}{2\left(1+\frac{1}{n}\right)^{2n}} \geq \frac{1}{2e^{2}}.
+\end{align*}
+因此，
+$$a_{n} \geq \frac{n}{2e^{2}}, \qquad \forall\, n \geq 1.$$
+即取 $C_{1}=\dfrac{1}{2e^{2}}, C_{2}=1$ 时成立 $C_{1} n \leq a_{n} \leq C_{2} n$ $(n=1,2, \ldots)$。
+
+（2）对于 $X>1$，
+$$0<a_{n} x^{p} e^{-a_{n} x} \leq n X^{|p|} e^{-\frac{n}{2Xe^{2}}}, 
+\qquad \forall\, x \in\Big[\frac{1}{X}, X\Big],$$
+由此可得 $\displaystyle\sum_{n=1}^{\infty} a_{n} x^{p} e^{-a_{n} x}$ 在 $\left[\frac{1}{X}, X\right]$ 上一致收敛。
+即 $\displaystyle\sum_{n=1}^{\infty} a_{n} x^{p} e^{-a_{n} x}$ 在 $(0,+\infty)$ 内闭一致收敛。
+由于级数的一般项连续，因此 $f(x)$ 在 $(0,+\infty)$ 内连续。
+\end{proofc}
+
+\item[六]（10 分）题目条件同上一题，试关于 $p$ 讨论：
+
+（3）广义积分 $\displaystyle\int_{0}^{+\infty} f(x)\,dx$ 的收敛性；
+
+（4）在上述广义积分收敛时，它是否可以逐项积分？
+
+\begin{proofc}[解答]
+（3）我们有
+\begin{align*}
+f(x)& =\sum_{n=1}^{\infty} a_{n} x^{p} e^{-a_{n} x} 
+\leq \sum_{n=1}^{\infty} n x^{p} e^{-\frac{nx}{2e^{2}}} \\
+&= x^{p} \sum_{n=1}^{\infty} n\big(e^{-\frac{x}{2e^{2}}}\big)^{n}
+= x^{p} \frac{e^{-\frac{x}{2e^{2}}}}{\big(1-e^{-\frac{x}{2e^{2}}}\big)^{2}},
+\end{align*}
+以及
+\begin{align*}
+f(x)& =\sum_{n=1}^{\infty} a_{n} x^{p} e^{-a_{n} x} \geq \frac{1}{2e^{2}} \sum_{n=1}^{\infty} n x^{p} e^{-nx} \\
+& = x^{p} \frac{e^{-x}}{\left(1-e^{-x}\right)^{2}},
+\end{align*}
+由此不难看到 $\displaystyle\int_{0}^{+\infty} f(x)\,dx$ 当且仅当 $p>1$ 时收敛。
+
+（4）事实上，在局部可积性成立且被积函数非负的情形下，积分与求和总可以交换次序。
+（这是实分析中的标准结论，称为单调收敛定理。）
+
+本题，我们在已知知识范围内证明如下．
+\begin{align*}
+& \sum_{n=1}^{\infty} \int_{0}^{+\infty} a_{n} x^{p} e^{-a_{n} x} dx
+=\lim_{m \rightarrow+\infty} \sum_{n=1}^{m} \int_{0}^{+\infty} a_{n} x^{p} e^{-a_{n} x} dx \\
+= & \lim_{m \rightarrow+\infty} \int_{0}^{+\infty} \sum_{n=1}^{m} a_{n} x^{p} e^{-a_{n} x} dx 
+\leq \lim_{m \rightarrow+\infty} \int_{0}^{+\infty} \sum_{n=1}^{+\infty} a_{n} x^{p} e^{-a_{n} x} dx \\
+= & \int_{0}^{+\infty} \sum_{n=1}^{+\infty} a_{n} x^{p} e^{-a_{n} x} dx.
+\end{align*}
+另一方面，由 $\displaystyle\sum_{n=1}^{+\infty} a_{n} x^{p} e^{-a_{n} x}$ 在 $(0,+\infty)$ 的内闭一致收敛性，得到
+\begin{align*}
+& \int_{0}^{+\infty} \sum_{n=1}^{+\infty} a_{n} x^{p} e^{-a_{n} x} dx
+=\lim_{\substack{\delta \rightarrow 0^+\\A \rightarrow+\infty}} \int_{\delta}^{A} \sum_{n=1}^{+\infty} a_{n} x^{p} e^{-a_{n} x} dx \\
+& = \lim _{\substack{\delta \rightarrow 0^+\\A \rightarrow+\infty}} \sum_{n=1}^{+\infty} \int_{\delta}^{A} a_{n} x^{p} e^{-a_{n} x} dx 
+\leq \lim _{\substack{\delta \rightarrow 0^+\\A \rightarrow+\infty}} \sum_{n=1}^{+\infty} \int_{0}^{+\infty} a_{n} x^{p} e^{-a_{n} x} dx \\
+& = \sum_{n=1}^{+\infty} \int_{0}^{+\infty} a_{n} x^{p} e^{-a_{n} x} dx.
+\end{align*}
+因此，可以逐项积分。
+$$\int_{0}^{+\infty} \sum_{n=1}^{+\infty} a_{n} x^{p} e^{-a_{n} x} dx
+=\sum_{n=1}^{\infty} \int_{0}^{+\infty} a_{n} x^{p} e^{-a_{n} x} dx.\qedhere$$
+\end{proofc}
+\end{enumerate}
+
+== 16春数学分析II期末（楼红卫）==
+\begin{enumerate}[label=\Roman*.]
+\item 填空题（每空格6分，共36分）
+\begin{enumerate}[label=(\arabic*)]
+    \item 设$\displaystyle f(x)=\int_x^1\frac{\sin t}{t}\,dt$，则$\displaystyle \int_0^1f(x)\,dx=\underline{\quad 1-\cos1 \quad}$。
+    \item 使积分$\displaystyle \int_0^{+\infty}\frac{\sin\pi x}{x^a|x-1|^b}\,dx$收敛，参数$a,b$满足的条件为：$\underline{a<2,b<2,a+b>0}$。
+    \item $\displaystyle \sum_{n=0}^\infty\frac{1}{(2n)!}$为$\underline{\quad \frac{e+e^{-1}}{2} \quad}$。
+    \item 判断$\displaystyle \prod_{n=1}^\infty n\sin\frac{1}{n}$是收敛的还是发散的：$\underline{\quad 收敛 \quad}$。
+    \item $\dfrac{x}{1-x^2}$的Maclaurin级数中$x^n$（$n$是非负整数）项的系数为：$\underline{\quad \frac{1-(-1)^n}{2} \quad}$。
+    \item 函数序列$\displaystyle S_n(x)=n|\ln x|^\alpha\Big(\sin\frac{\pi x}{2}\Big)^n$在$x\in(0,1)$上一致收敛，
+    则$\alpha\in\R$满足的条件是$\underline{\quad a>2 \quad}$。
+\end{enumerate}
+\item 解答题（共64分）
+\end{enumerate}
+\begin{enumerate}[label=\arabic*]\setcounter{enum-{list-level}}{1}
+\item (15分) 计算积分：$\displaystyle \int_0^\pi \frac{x}{1+\sin^2x}\,dx$。
+
+\item (15分) 求参数曲线段：$\begin{cases}x=t-\sin t,\\y=1-\cos t\end{cases}(0 \le t \le 2\pi)$
+与$x$轴之间所围区域绕$x$轴旋转一周，所得旋转体的体积。
+
+\item (10分) 证明$\R^n$中的紧集必是有界闭集。
+
+\item (14分) 设$\displaystyle S(x)=\sum_{n=0}^\infty x^\frac{3}{2}\sqrt{n}e^{-nx}$，
+求$S(x)$的定义域并讨论其连续性、可微性。
+
+\item (10分) 求极限：$\lim\limits_{n\to\infty}\frac{\displaystyle \int_0^1\Big(1-\frac{x}{2}\Big)^n\Big(1-\frac{x}{4}\Big)^ndx}{\displaystyle \int_0^1\Big(1-\frac{x}{2}\Big)^ndx}$。
+\end{enumerate}
+[答案] \quad 2. $\dfrac{\sqrt{2}\pi^2}{4}$ \qquad 3. $5\pi^2$ \qquad 4. 略\\
+\qquad\qquad 5. 在$[0,+\infty)$上有定义，在$(0,+\infty)$内连续可微，在$0$点不连续。
+\begin{proofc}[6 的解答] 对于 $\alpha\in(0,1)$，我们有
+\[\lim_{n \rightarrow+\infty} \frac{\displaystyle \int_0^1(1-\alpha x)^n dx}{\displaystyle \int_0^1\left(1-\frac{x}{2}\right)^n dx}
+=\lim _{n \rightarrow+\infty} \frac{\displaystyle \frac{1}{\alpha(n+1)}\left(1-(1-\alpha)^{n+1}\right)}{\displaystyle \frac{2}{n+1}\left(1-\frac{1}{2^{n+1}}\right)}=\frac{1}{2\alpha}.\]
+对于 $\varepsilon\in(0,1)$，注意到 $\displaystyle \Big(1-\frac{x}{2}\Big)\Big(1-\frac{x}{4}\Big)=1-\frac{3}{4}x+\frac{x^2}{8}$，我们有
+\begin{align*}
+& \quad\frac{\displaystyle \int_0^1\Big(1-\frac{3}{4} x\Big)^n d x}{\displaystyle \int_0^1\left(1-\frac{x}{2}\right)^n dx} 
+\leq \frac{\displaystyle \int_0^1\left(1-\frac{x}{2}\right)^n\left(1-\frac{x}{4}\right)^n dx}{\displaystyle \int_0^1\left(1-\frac{x}{2}\right)^n dx} \\
+& \leq \frac{\displaystyle \int_{\varepsilon}^1\left(1-\frac{x}{2}\right)^n\left(1-\frac{\varepsilon}{4}\right)^n dx}{\displaystyle \int_0^1\left(1-\frac{x}{2}\right)^n dx}
++\frac{\displaystyle \int_0^{\varepsilon}\left(1-\frac{3}{4} x+\frac{\varepsilon}{4} x\right)^n dx}{\displaystyle \int_0^1\left(1-\frac{x}{2}\right)^n dx} \\
+& \leq \left(1-\frac{\varepsilon}{4}\right)^n+\frac{\displaystyle \int_0^1\left(1-\frac{3-\varepsilon}{4} x\right)^n dx}{\displaystyle \int_0^1\left(1-\frac{x}{2}\right)^n dx}.
+\end{align*}
+令 $n \rightarrow+\infty$ 得到
+\begin{align*}
+\frac{2}{3} & \leq \lim_{n \rightarrow+\infty} \frac{\displaystyle \int_0^1\left(1-\frac{x}{2}\right)^n\left(1-\frac{x}{4}\right)^n dx}{\displaystyle \int_0^1\left(1-\frac{x}{2}\right)^n dx} \\
+& \leq \varlimsup_{n \rightarrow+\infty} \frac{\displaystyle \int_0^1\left(1-\frac{x}{2}\right)^n\left(1-\frac{x}{4}\right)^n dx}{\displaystyle \int_0^1\left(1-\frac{x}{2}\right)^n dx} \leq \frac{2}{3-\varepsilon}, \quad \forall\,\varepsilon\in(0,1),
+\end{align*}
+因此，$\lim\limits_{n \rightarrow \infty} \frac{\displaystyle \int_0^1\left(1-\frac{x}{2}\right)^n\left(1-\frac{x}{4}\right)^n dx}{\displaystyle \int_0^1\left(1-\frac{x}{2}\right)^n dx}=\dfrac{2}{3}$.\end{proofc}
+
+== 14秋数学分析III期中 ==
+
+\begin{center}
+    \textsize{24pt}{复旦大学数学科学学院\\
+    2014$\sim$2015学年第一学期期中考试试卷}
+
+    \textsize{22pt}{课程名称：\ \ $\underline{\quad\ \ \ \text{数学分析 }\,\text{III}\quad\ \ \ }$课程代码：\ \ $\underline{\text{MATH130001}}$\\
+    开课院系：\ \ $\underline{\quad\ \ \,数学科学学院\quad\ \ }$考试形式：\ \ $\underline{\qquad闭卷\qquad\,}$\\
+    姓\ \ 名：\ $\underline{\qquad\quad\ \ \ }$\ \ \ 学\ \ 号：\ $\underline{\qquad\quad\ \ \ }$\ \ \ 专\ \ 业：\ $\underline{\qquad\qquad\quad\ \ \ \,}$}
+\end{center}
+
+\qquad 提示：请同学们秉持诚实守信宗旨，谨守考试纪律，摒弃考试作弊。
+学生如有违反学校考试纪律的行为，学校将按《复旦大学学生纪律处分条例》规定予以严肃处理。
+
+\begin{table}\begin{tabular}{|c|c|c|c|}
+题\ \ \ 目 &\quad\ $1$\quad\ &\quad\ $2$\quad\ &\quad\ $3$\quad\ &\quad\ $4$\quad\ &\quad\ $5$\quad\ &\quad\ $6$\quad\ &\quad\ $7$\quad\ \\
+得\ \ \ 分 & & & & & & & \\
+题\ \ \ 目 &$8$&$9$&$10$&$11$&$12$&$13$&总\ 分\\
+得\ \ \ 分 & & & & & & & 
+\end{tabular}\end{table}
+
+一、\ \ (多元函数微分部分)
+\begin{enumerate}
+\item (6分) 假设 $F \in C^1(\mathbb{R}^3)$, 并满足
+$$y^{2014}\left(\frac{\partial F}{\partial x}\right)^2
++x^{2015}\left(\frac{\partial F}{\partial y}\right)^2
++\left(\frac{\partial F}{\partial z}\right)^{2016} \geq 1.$$
+证明 $F$ 在 $\mathbb{R}^3$ 上无界。
+\item (6分) 假设 $n \geq 2$, 求
+$$f(x_1, \cdots, x_n)=\sum_{1 \leq i<j \leq n} x_i x_j$$
+在紧集
+$$D=\{(x_1, \cdots, x_n) ; x_i \geq 0, \forall 1 \leq i \leq n, \sum_{i=1}^n x_i \leq 1\}$$
+上的最大值(需有推导过程)。
+\item (1+2+7分) 用 $\mathcal{M}_{n, n}$ 表示 $n \times n$ 实矩阵全体。
+若 $A=(a_{i j})_{1 \leq i, j \leq n} \in$ $\mathcal{M}_{n, n}$，定义
+$$\|A\|=\max_{1 \leq i, j \leq n}|a_{i, j}|.$$
+\item[\bullet] 证明 $\forall A \in \mathcal{M}_{n, n}, m \in \mathbb{N}^{+}$有 $\left\|A^m\right\| \leq n^{m-1}\|A\|^m$ 且
+$$I_n+\sum_{m=1}^{+\infty} \frac{A^m}{m!}$$
+收敛。上述极限记为 $e^A$。
+\item[\bullet] 证明
+$$f(A)=e^{A A^T}$$
+在 $I_n$ 点可微，并求其微分(即给出 $df(I_n)(B), B \in \mathcal{M}_{n, n}$ 的确切表达式)。
+\item (7分) 假设 $f \in C^1(\mathbb{R}^2)$, 且 $f(1,0)=f(-1,0)$。
+证明对任意给定的 $b>0$, $\{(x, y) ; y \neq 0\}$ 中存在至少两个点使得
+$$y \frac{\partial f}{\partial x}(x, y)=b x \frac{\partial f}{\partial y}(x, y).$$
+\item (7分) 设 $U \subset \mathbb{R}^2$ 为开区域, 
+函数 $f, g \in C^1(U)$, 且在 $U$ 内任意点处均有
+$$\frac{\partial f}{\partial x} \frac{\partial g}{\partial y}
+-\frac{\partial f}{\partial y} \frac{\partial g}{\partial x} \neq 0.$$
+又设有界闭区域 $D \subset U$. 试证在 $D$ 中满足方程组
+$$\begin{cases}f(x, y)=0, \\g(x, y)=0\end{cases}$$
+的点至多有有限个。
+\item (10分) 设 $f \in C(\mathbb{R}^n)$ $(n \geq 2)$, 
+在点 $P=(a_1, \cdots, a_n)$ 附近可偏导, 
+但其偏导数在 $P$ 点均不连续, 则 $f$ 在 $P$ 处不可微。
+判断这个命题是否正确, 若正确, 请给出证明, 若不正确, 请举出反例。
+\item (4+3+3分)
+\item[\bullet] 设
+$$f(t, x)=\sum_{i=0}^n a_i(t) x^i, \quad t, x \in \mathbb{R},$$
+其中 $a_i \in C^1(-1,1)$。假设多项式 $f(0, x)$ 有 $n$ 个不同的实根 $\lambda_1<$ $\lambda_2<\cdots<\lambda_n$。
+证明: 存在 $\epsilon>0$, 对于任意的 $t \in(-\epsilon, \epsilon)$, 
+$f(t, x)$ 有 $n$ 个实根 $\lambda_1(t)<\lambda_2(t)<\cdots<\lambda_n(t)$，
+且它们关于 $t$ 是连续可导的。
+\item[\bullet] 设 $(a_{i j}(t))_{n \times n}, t \in(-1,1)$, 
+为 $n \times n$ 的函数矩阵, 且 $a_{i j} \in C^1(-1,1)$。
+若矩阵 $(a_{i j}(0))_{n \times n}$ 是对称阵，
+即 $a_{i j}(0)=a_{j i}(0), \forall 1 \leq i, j \leq n$, 且其特征值各不相同, 
+证明: 存在 $\epsilon>0$, 使得 $t \in(-\epsilon, \epsilon)$ 时, 
+$(a_{i j}(t))_{n \times n}$ 的特征值各不相同, 
+记为 $\lambda_1(t)<\lambda_2(t)<\cdots<\lambda_n(t)$, 
+且 $\lambda_i(t)$ 关于 $t$ 是连续可导的。
+\item[\bullet] 同上, 证明: 存在 $e_i(t), 1 \leq i \leq n$, 
+是矩阵 $(a_{i j}(t))_{n \times n}$ 对应 $\lambda_i(t)$ 的归一化特征向量, 
+即其长度为 $1$, 且 $e_i(t)$ 关于 $t$ 也是连续可导的。
+\item (12分) 记 $B:=\left\{(x, y) \mid x^2+y^2<1\right\}$。
+假设 $f \in C^2(B)$ 为有界正值函数，且满足
+$$\frac{\partial^2 \ln f(x, y)}{\partial x^2}
++\frac{\partial^2 \ln f(x, y)}{\partial y^2} \geq f^2(x, y),$$
+证明
+$$f(x, y) \leq \frac{2}{1-x^2-y^2}.$$
+[上传者注：本题来自于复分析中的超双曲度量，是说对单位圆盘$B$上共形于Euclid度量的Riemann度量，
+曲率$K\le-1$意味着其小于等于双曲度量。
+证明见Lars V. Ahlfors, \textit{Conformal Invariants: Topics in Geometric Function Theory}, 
+American Mathematical Society, 2010, Lemma 1-1, p.13.]
+\end{enumerate}
+二、\ \ (重积分部分) 
+\begin{enumerate}
+\setcounter{enum-{list-level}}{8}
+\item (5分) 如果一元函数 $f$ 在 $[1, \infty)$ 上广义黎曼可积，
+则二元函数 $\tilde{f}$ (定义为 $\tilde{f}(x, y)=f(x)$) 在 $[1, \infty) \times[0,1]$ 上广义黎曼可积。
+判断这个命题是否正确，若正确，请给出证明，若不正确，请举出反例。
+\item (7分) 给出下述（广义）重积分存在的充要条件：
+$$\int_{x^2+y^2+z^2 \leq 1} \frac{x}{\ln^\alpha(1+|x|+|y|+|z|)}\, dx dy dz, 
+\qquad \alpha \in \mathbb{R}.$$
+\item (4+3+3分)
+\item[\bullet] 证明：对于任意单位列向量 $(a, b, c)^T \in \mathbb{R}^3$，
+即 $a^2+b^2+c^2=1$，存在一个正交线性变换 $A$ (作为矩阵 $A A^T=I_3$)使得
+$$A\begin{pmatrix}a \\b \\c\end{pmatrix}
+=\begin{pmatrix}0 \\0 \\1\end{pmatrix}.$$
+\item[\bullet] 给定 $a, b, c \in \mathbb{R}$ 满足 $a^2+b^2+c^2=1$, 计算
+$$\int_{x^2+y^2+z^2 \leq 1}\left(e^{a x+b y+c z}+x y^2\right) dx dy dz.$$
+\item (10分) 求证
+$$\int_0^1 \int_0^1(xy)^{xy} dx dy=\int_0^1 y^y dy.$$
+（约定 $0^0=1$.）
+\item (10分) 计算
+$$\iint\limits_{0<y<x<\pi} \ln \sin (x-y) dx dy.$$
+
+\end{enumerate}

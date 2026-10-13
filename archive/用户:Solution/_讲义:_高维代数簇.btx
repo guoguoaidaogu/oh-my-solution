@@ -1,0 +1,37 @@
+\begin{center}
+    \textsize{28pt}{\textbf{代数几何选讲 2024春}} \\
+     本课内容与以往《高维代数簇》一课内容相似
+    \\ （注：本内容尽可能忠实于上课的内容）
+
+\end{center}
+
+\begin{structure}
+    \subpage!{}
+    
+    \textsize{24pt}{\textbf{代数曲面}}
+
+    \subpage!{回顾：曲线上的Riemann-Roch定理}
+
+    \subpage!{曲面上的相交理论}
+
+    \subpage!{除子的丰沛判别法、Hodge定理与消灭定理}
+
+    \subpage!{代数曲面的极小模型纲领（MMP）}
+
+    \subpage!{纤维化与例外曲线}
+
+    \subpage!{陈类与Noether公式}
+
+    \subpage!{曲面的有理奇点}
+
+    \subpage!{有限覆盖}
+
+    \subpage!{曲面的分类}
+
+    \textsize{24pt}{\textbf{高维代数簇初探}}
+
+    \subpage!{极小模型纲领}
+
+    \subpage!{三维代数簇}
+
+\end{structure}

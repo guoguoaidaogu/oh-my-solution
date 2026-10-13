@@ -1,0 +1,54 @@
+\setdisplaytitle{试卷：Riemann曲面}
+\sethtmltitle{试卷：Riemann曲面}
+
+\section{26年Riemann曲面期末}
+\begin{enumerate}
+    \item[1.]
+    \begin{enumerate}
+        \item[(1)] 什么是层？ (6分)
+        \item[(2)] 什么是Mittag-Leffler分布？ (6分)
+        \item[(3)] 写出1-链全体$C^1(X)$的定义以及上边缘算子的定义. (8分)
+    \end{enumerate}
+
+    \item[2.] 叙述并证明Leray定理. (20分)
+
+    \item[3.] $X$是紧Riemann面，$D\in \text{Div}(X)$，证明下式成立. (20分)
+    $$
+        \frac{1}{2\pi}\int_{X}\Theta_{L_D}=\deg D
+    $$
+
+    \item[4.] $X$为亏格为$g$的紧Riemann面，证明Weierstrass点的个数为$(g-1)g(g+1)$. (20分)
+
+    \item[5.] $X$为亏格为$g$的紧Riemann面，$g>2$，$\omega_1,\cdots,\omega_g$为$\Omega(X)$的一组基，证明：
+    $$
+        x\mapsto [\omega_1(x),\cdots,\omega_g(x)]\in\mathbb{P}^{g-1}
+    $$
+是全纯浸入. (20分)
+\end{enumerate}
+
+\section{25年Riemann曲面期末}
+\begin{enumerate}
+    \item[1.]
+    \begin{enumerate}
+        \item[(1)] 什么是Riemann面？ (6分)
+        \item[(2)] 什么是层？ (6分)
+        \item[(3)] 写出连接同态的定义. (6分)
+    \end{enumerate}
+
+    \item[2.] 叙述并证明留数定理. (20分)
+
+    \item[3.] 叙述并证明Perron引理. (20分)
+
+    \item[4.] $X$为非紧Riemann面，$Y \Subset Y' \Subset X$为开集，证明：
+    $$\operatorname{Im}(H^1(Y',\mathcal{O})\rightarrow H^1(Y,\mathcal{O}))=0.$$
+
+    \item[5.]$ Y$为紧Riemann曲面，亏格为$g$，其上有$m$个点$a_1,\cdots,a_m\in Y$，
+    满足$2g-2+m>0$。令$X=Y\setminus\{a_1,\cdots,a_m\}$，$K_X$为典范线丛。
+    \begin{enumerate}
+        \item[(1)] 证明：$\|s\|=\int_X|f|i\,dz \wedge d\bar{z}$,
+        $s=f\,dz^{\otimes2}\in\Gamma(X,K_X^{\otimes2})$
+        为$\Gamma(X,K_X^{\otimes2})$上一个定义合理的范数.
+
+        \item[(2)] 计算线性空间$H=\{s\in\Gamma(X,K_X^{\otimes2}):\|s\|<\infty\}$的复维数.
+    \end{enumerate}
+\end{enumerate}

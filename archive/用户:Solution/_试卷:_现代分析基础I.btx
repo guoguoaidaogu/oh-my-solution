@@ -1,0 +1,54 @@
+\setdisplaytitle{试卷：现代分析基础 I}
+\sethtmltitle{试卷：现代分析基础 I}
+
+\section{2023春期末试卷}
+\begin{itemize}
+\item[1.](20分)设$T:L^p(\mathbb{R}^n)\to L^p(\mathbb{R}^n)$是有界线性算子，
+$\{ f_j \}_{j=1}^M \subseteq L^p(\mathbb{R}^n)$，
+证明存在不依赖于$M$的常数$C$，使得
+$$\bigg\Vert \bigg(\sum_{j=1}^M \left\vert T(f_j) \right\vert ^2\bigg)^{\frac{1}{2}}\bigg\Vert _{L^p(\mathbb{R}^n)}
+\leq C \bigg\Vert \bigg(\sum_{j=1}^M \left\vert f_j \right\vert ^2\bigg)^{\frac{1}{2}}\bigg\Vert _{L^p(\mathbb{R}^n)}.$$
+注：这个引理在Fefferman关于圆盘乘子的证明中出现过.
+\item[2.](20分) (1)构造$\mathbb{R}^n$中支撑在单位闭球内的非零紧支光滑函数.\\
+(2)构造$\mathbb{R}^n$中在$\{ 1\leq \left\vert x \right\vert \leq 2 \}$等于$1$且在$\{ \frac{1}{2}\leq \left\vert  x \right\vert \leq 4 \}$之外为$0$的紧支光滑函数.\\
+(3)设$f$为非负Schwartz函数，当$ \left\vert \xi \right\vert \leq 1 $时，$\hat{f}(\xi)$为常数，证明$f=0$.
+\item[3.](20分) (1)对于$\lambda,\gamma,b>1$，证明存在不依赖于$\lambda,\gamma,b$的常数$C$使得
+$$\bigg\vert \int_0^be^{i \lambda t^\gamma}\mathrm{d}t\bigg\vert \leq C \lambda^{-{\frac{1}{\gamma}}}.$$
+(2)对于$b,\lambda>1$，证明存在不依赖于$b,\lambda$的常数$C$使得
+$$\bigg\vert \int_0^be^{i\lambda t\log t}\mathrm{d}t\bigg\vert \leq C\lambda^{-\frac{1}{2}}.$$
+(3)证明第(2)问中的指数是最佳的，即当$b,\lambda>1,\alpha>\frac{1}{2}$，不存在不依赖于$b,\lambda$的常数$C$使得
+$$\bigg\vert \int_0^be^{i\lambda t\log t}\mathrm{d}t\bigg\vert \leq C\lambda^{-\alpha}.$$
+\item[4.](20分) (1)证明以下等价：(i) $R^*(2\to p')$；(ii) $\Vert f*\widehat{\mathrm{d}\sigma}\Vert_{L^{p'}(\mathbb{R}^n)}\lesssim \Vert f\Vert_{L^p(\mathbb{R}^n)}.$\\
+(2)叙述Stein--Tomas定理.
+\item[5.](20分) (1)证明$D_N(x):=\sum\limits_{\left\vert k \right\vert \leq N}e^{2 \pi ikx}={\displaystyle\frac{\sin(2N+1)\pi x}{\sin \pi x}}$；\\
+(2)证明存在$C>0$,使得$\Vert D_N\Vert_{L^1({\mathbb{T}})}\geq C \log N,N\geq 2$.
+\end{itemize}
+\section{2022春期末试卷}
+\begin{itemize}
+\item[1.](20分) 对单位球面$\mathbb{S}^{n-1}$上的函数$f$，定义
+$E(f)(x)=\int_{\mathbb{S}^{n-1}}f(\xi)e^{2\pi ix\cdot\xi}d\sigma(\xi)$，
+其中$\sigma$为$\mathbb{S}^{n-1}$上的标准测度。\\
+证明：若存在常数$C>0$使得对于任意$f\in L^p(\mathbb{S}^{n-1})$有
+$$\|E(f)\|_{L^q(\R^n)}\le C\|f\|_{L^p(\mathbb{S}^{n-1})},$$
+则$q>\frac{2n}{n-1}$，且$q\ge \frac{n+1}{n-1}p'$。
+\item[2.](20分) 考虑振荡积分$I(\lambda)=\int_{[a,b]}e^{i\lambda\varphi(t)}\psi(t)dt$，
+其中$\psi$和$\varphi$均为光滑实值函数。\\
+(i)证明：设$\forall t\in(a,b)$有$\varphi'(t)\ne0$，且$\psi$的支集包含于有限区间$(a,b)$。
+对于任意$N\ge0$，当$\lambda\to+\infty$时有
+$$I(\lambda)=O(\lambda^{-N}).$$
+(ii)请举例说明：若$\psi$的支集不是有限区间$(a,b)$的子集，则上述结论可能不成立。
+\item[3.](20分) (i)请陈述Hardy--Littlewood极大函数$M(f)(x)$的定义。\\
+(ii)设$\varphi(x)=(1+|x|)^{-n-1},x\in\R^n$。请证明：存在常数$C>0$使得对任意局部可积函数$f$有
+$$T_*(f)(x):=\sup_{t>0}|(f*\varphi_t)(x)|\le CM(f)(x).$$
+其中$\varphi_t(x)=t^{-n}\varphi(t^{-1}x)$。
+\item[4.](20分) (i)对于$x\in\mathbb{T}=\big[\!\!-\!\!\frac{1}{2},\frac{1}{2}\big)$
+以及$0\le r<1$，定义Poisson核
+$$P_r(x)=\sum_{k\in\Z}r^{|k|}e^{2\pi ikx}.$$
+请证明：
+$$P_r(x)=\frac{1-r^2}{1-2r\cos(2\pi x)+r^2}.$$
+(ii)证明：当$r\to1^-$时$\{P_r(x)\}_r$是$\mathbb{T}$上的逼近恒等（approximate identity）。
+\item[5.](20分) 请证明：\\
+(i)若$f(x)=e^{-\pi|x|^2},x\in\R^n$，则$\hat{f}(\xi)=f(\xi)$。\\
+(ii)记$f^\vee$为$f$的傅里叶逆变换。请利用上述结论证明：对于任意Schwartz函数$f$有
+$$(\hat{f})^\vee(x)=f(x).$$
+\end{itemize}

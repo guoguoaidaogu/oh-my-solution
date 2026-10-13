@@ -1,0 +1,655 @@
+\setdisplaytitle{The Legacy of FDUer}
+\sethtmltitle{The Legacy of FDUer}
+
+这里是复旦数学资源库，邀请各位共同来编写，在一代代的接力中建设得越来越完善.
+
+请先阅读[[User:Solution/页面指南|页面指南]].投稿可添加微信\textcolor{8B8970}{Will_Kymlicka} (李晓宇) 联系.
+
+
+\section{分析和微分方程}
+
+\begin{structure}
+    \subpage!{}  
+
+    \subsection*{数学分析}
+
+        \subpage!{\qquad 习题：楼分析}
+
+        \subpage!{\qquad 试卷：楼分析}
+        
+        \subpage!{\qquad 习题：数学分析（DK）}
+
+        \subpage!{\qquad 试卷：数学分析（新）}
+
+        \subpage!{\qquad 试卷：数学分析（旧）}
+
+    \subsection*{常微分方程}
+
+        \subpage!{\qquad 试卷：常微分方程}
+
+        \subpage!{\qquad 试卷：现代常微分方程}
+
+
+    \subsection*{复分析}
+
+        \subpage!{\qquad 试卷：复变函数}
+
+        \subpage!{\qquad 习题：复变函数}
+        
+        \subpage!{\qquad 习题：复分析选解}
+
+        \subpage!{\qquad 习题：复分析全解I}
+
+        \subpage!{\qquad 习题：复分析全解II}
+
+        \subpage!{\qquad 试卷：复分析}
+
+    \subsection*{实分析}
+        \subpage!{\qquad 习题：实分析 xsz}[\qquad 习题：实分析（xsz）]
+
+        \subpage!{\qquad 习题：实分析 wk}[\qquad 习题：实分析（wk）]
+
+        \subpage!{\qquad 习题：实分析}[\qquad 习题：实分析（swx）]
+
+        \subpage!{\qquad 试卷：实分析}
+
+    \subsection*{泛函分析}
+        
+        \subpage!{\qquad 习题：泛函分析 第一章}
+
+        \subpage!{\qquad 习题：泛函分析 第二章}
+
+        \subpage!{\qquad 习题：泛函分析 第三章}
+
+        \subpage!{\qquad 习题：泛函分析 第四章}
+
+        \subpage!{\qquad 习题：泛函分析 附录}
+
+        \subpage!{\qquad 习题：泛函分析(补充)}
+
+        \subpage!{\qquad 习题：泛函分析 (yyj)}
+
+        \subpage!{\qquad 试卷：泛函分析}
+
+        \subpage!{\qquad 习题：泛函分析续论}
+
+        \subpage!{\qquad 试卷：泛函分析续论}
+
+    \subsection*{算子代数}
+        \subpage!{\qquad 试卷：算子代数}
+
+        \subpage!{\qquad 试卷：算子代数K理论}
+
+        \subpage!{\qquad 试卷：高指标理论}
+        
+    \subsection*{数理方程}
+
+        \subpage!{\qquad 习题：数理方程第二章}
+
+        \subpage!{\qquad 习题：数理方程第三章}
+
+        \subpage!{\qquad 习题：数理方程第四章}
+
+        \subpage!{\qquad 注疏：数理方程讲义}
+
+        \subpage!{\qquad 试卷：数理方程}
+
+    \subsection*{偏微分方程}
+
+        \subpage!{\qquad 笔记：现代偏微分方程}
+
+        \subpage!{\qquad 试卷：现代偏微分方程}
+        
+        \subpage!{\qquad 笔记：二阶椭圆型方程}
+
+        \subpage!{\qquad 笔记：非线性发展方程}
+
+        \subpage!{\qquad 试卷：非线性发展方程}
+
+        \subpage!{\qquad 笔记：非线性波动方程}
+
+        \subpage!{\qquad 笔记：拟线性双曲型方程组}
+        
+        \subpage!{\qquad 笔记：变分法与PDE}
+
+        \subpage!{\qquad 笔记：PDE的控制理论}
+
+        \subpage!{\qquad 试卷：应用偏微分方程}
+
+        \subpage!{\qquad 习题：应用偏微分方程}
+
+        \subpage!{\qquad 试题：微局部分析}
+
+
+    \subsection*{Fourier分析}
+    
+        \subpage!{\qquad 解答：GTM249 Chapter 1 Part I}
+
+        \subpage!{\qquad 解答：GTM249 Chapter 1 Part II}
+
+        \subpage!{\qquad 解答：GTM249 Chapter 2 Part I}
+        
+        \subpage!{\qquad 解答：GTM249 Chapter 2 Part II}
+
+        \subpage!{\qquad 解答：Fourier分析上课习题}
+
+        \subpage!{\qquad 试卷：Fourier分析}
+
+    \subsection*{现代分析基础I}
+
+        \subpage!{\qquad 提纲：现代分析基础I}
+
+        \subpage!{\qquad 习题：现代分析基础I}
+        
+        \subpage!{\qquad 试卷：现代分析基础I}
+
+    \subsection*{现代分析基础II}
+
+        \subpage!{\qquad 提纲：现代分析基础II}
+
+        \subpage!{\qquad 习题：现代分析基础II}
+
+        \subpage!{\qquad 试卷：现代分析基础II}
+    
+    \subsection*{拓扑群}
+
+        \subpage!{\qquad 笔记：拓扑群}
+
+        \subpage!{\qquad 试卷：拓扑群}
+        
+    \subsection*{几何测度论}
+
+        \subpage!{\qquad 讲义：几何测度论}
+    
+        \subpage!{\qquad 习题：几何测度论}
+
+        \subpage!{\qquad 试卷：几何测度论}
+
+    \subsection*{Sobolev空间}
+        \subpage!{\qquad 试卷：Sobolev空间}
+    \subsection*{动力系统}
+
+        \subpage!{\qquad 试卷：动力系统}
+
+    \subsection*{谱理论基础}
+        \subpage!{\qquad 笔记：谱理论基础}
+        \subpage!{\qquad 试卷：谱理论基础}
+\end{structure}
+
+
+\section{代数}
+\begin{structure}
+    \subpage!{ }
+    \subsection*{高等代数}
+
+        \subpage!{\qquad 试卷：高等代数（平行班）}
+        \subpage!{\qquad 习题：高等代数习题课练习卷（平行班）}
+
+        \subpage!{\qquad 试卷：高等代数（英才班）}
+
+        \subpage!{\qquad 参考答案：高等代数（英才班）}
+    
+    \subsection*{抽象代数}
+
+        \subpage!{\qquad 习题：抽象代数}
+
+        \subpage!{\qquad 试卷：抽象代数}
+
+    \subsection*{抽象代数}
+
+        \subpage!{\qquad 试卷：抽象代数II}     
+
+    \subsection*{现代代数学I}
+
+        \subpage!{\qquad 习题：现代代数学I}
+        
+        \subpage!{\qquad 试卷：现代代数学I}
+
+    \subsection*{现代代数学II}
+
+        \subpage!{\qquad 笔记：现代代数学II 模论}
+        
+        \subpage!{\qquad 笔记：现代代数学II 表示论}\\
+        \qquad [[讲义:有限群的经典表示理论|讲义：现代代数学II 表示论]]
+
+        \subpage!{\qquad 习题：现代代数学II 模论 (i)}
+
+        \subpage!{\qquad 习题：现代代数学II 模论 (ii)}
+
+        \subpage!{\qquad 习题：现代代数学II 模论 (iii)}
+
+        \subpage!{\qquad 习题：现代代数学II 模论 (iv)}
+
+        \subpage!{\qquad 习题：现代代数学II 表示论}
+
+        \subpage!{\qquad 试卷：现代代数学II}
+
+    \subsection*{交换代数}
+
+        \subpage!{\qquad 习题：交换代数}
+
+        \subpage!{\qquad 试卷：交换代数}
+
+    \subsection*{表示论基础}
+
+        \subpage!{\qquad 试卷：表示论基础（H）}  
+
+        \subpage!{\qquad 试卷：表示论基础（H）（wyp）}  
+
+    \subsection*{抽象代数续论}
+
+        \subpage!{\qquad 习题：抽象代数续论}
+
+        \subpage!{\qquad 试卷：抽象代数续论}
+
+    \subsection*{抽象代数续论(H)}
+
+        \subpage!{\qquad 试卷：抽象代数续论(H)}
+
+    \subsection*{几何群论}
+
+        \subpage!{\qquad 笔记：几何群论}
+
+        \subpage!{\qquad 试题：几何群论}
+    
+    \subsection*{图论初步}
+
+        \subpage!{\qquad 试卷：图论初步}
+    
+    \subsection*{集合论}
+
+        \subpage!{\qquad 试卷：集合论}
+    
+    \subsection*{集合与图论}
+
+        \subpage!{\qquad 试卷：集合与图论}
+
+\end{structure}
+
+
+\section{微分几何}
+    \begin{structure}
+        \subpage!{  }
+
+        \subsection*{解析几何}
+
+           \subpage!{\qquad 试卷：解析几何}
+
+           \subpage!{\qquad 习题：解析几何}
+
+        \subsection*{经典数学思想}
+
+           \subpage!{\qquad 试卷：经典数学思想}
+        
+        \subsection*{几何拓扑选讲}
+
+           \subpage!{\qquad 试卷：几何拓扑选讲}
+
+        \subsection*{曲线曲面的微分几何}
+
+           \subpage!{\qquad 习题：苏步青\ 微分几何}
+           \subpage!{\qquad 试卷：微分几何}
+           \subpage!{\qquad 习题：嵇庆春\ 微分几何简明教程}
+
+        \subsection*{微分流形}
+
+            \qquad 22，23年的讲义\href{https://www.overleaf.com/read/jhmmzjnbsfrf}{pdf}.
+
+            \subpage!{\qquad 习题：Warner GTM 94}
+
+            \subpage!{\qquad 习题：微分流形上课习题}
+
+            \subpage!{\qquad 习题：陈维桓\ 微分流形}
+
+            \subpage!{\qquad 试卷：微分流形}
+
+        \subsection*{微分流形（H）}
+
+            \subpage!{\qquad 试卷：微分流形（H）}
+            
+        \subsection*{现代微分几何基础}
+
+            \subpage!{\qquad 笔记：现代微分几何基础}
+
+            \subpage!{\qquad 试卷：现代微分几何基础}
+        
+        \subsection*{现代微分几何}
+
+            \subpage!{\qquad 试卷：现代微分几何}
+
+        \subsection*{流形的拓扑学/微分拓扑}    
+
+            \subpage!{\qquad 试卷：流形的拓扑学}
+
+        \subsection*{代数拓扑与微分形式}  
+
+            \subpage!{\qquad 习题：Bott \& Tu}
+
+            \subpage!{\qquad 试卷：代数拓扑与微分形式}\\
+            \qquad 参考资料：[[User:Eee/Review of Bott|Review]], 
+            [[User:Eee/Remark on Thom Isomorphism|Thom Isomorphism]].
+
+        \subsection*{Riemann几何}
+
+            \subpage!{\qquad 习题：do Carmo}
+
+            \subpage!{\qquad 习题：Riemann几何}
+
+            \subpage!{\qquad 试卷：Riemann几何}
+
+        \subsection*{Riemann曲面}    
+
+            \subpage!{\qquad 笔记：Riemann曲面 (i)}
+
+            \subpage!{\qquad 笔记：Riemann曲面 (ii)}
+
+            \subpage!{\qquad 笔记：Riemann曲面 (iii)}
+
+            \subpage!{\qquad 试卷：Riemann曲面}
+
+        \subsection*{李群和李代数}
+
+            \subpage!{\qquad 试卷：李群和李代数}
+
+        \subsection*{非交换几何}
+
+            \subpage!{\qquad 笔记：非交换几何}
+
+            \subpage!{\qquad 习题：非交换几何}
+
+            \subpage!{\qquad 试卷：非交换几何}            
+
+    \end{structure}
+
+\section{拓扑}
+
+    \begin{structure}
+        \subpage!{   }
+
+        \subsection*{拓扑学}
+
+           \subpage!{\qquad 试卷：拓扑学} 
+
+           \subpage!{\qquad 习题：拓扑学}
+
+           \subpage!{\qquad 习题：拓扑学 II}
+
+        \subsection*{代数拓扑}
+
+            \subpage!{\qquad 试卷：拓扑学(II)}\\
+            \qquad [[讲义：代数拓扑(H)]]\\
+            \qquad 习题选解于讲义[[讲义:代数拓扑_(H)/附录|附录]]。\\
+            
+            \subpage!{\qquad 试卷：代数拓扑（H）}\\
+            \qquad 参考资料：[[User:Eee/Hatcher|Hatcher]]
+
+        \subsection*{示性类}
+
+            \subpage!{\qquad 笔记：示性类}
+    
+    \end{structure}
+
+\section{代数几何}
+    \begin{structure}
+        \subpage!{    }
+        \subsection*{代数几何初步}
+
+            \subpage!{\qquad 讲义：代数几何初步}
+            
+            \subpage!{\qquad 试卷：代数几何初步}
+
+            \subpage!{\qquad 习题：代数几何初步(2024秋)}
+        
+        \subsection*{代数几何进阶}
+
+            \subpage!{\qquad 试卷：代数几何进阶}
+
+        \subsection*{高维代数簇}
+
+            \subpage!{\qquad 讲义：高维代数簇}
+
+        \subsection*{双有理几何}
+
+            \subpage!{\qquad 讲义：双有理几何}   
+
+        \subsection*{模空间理论初步}
+
+            \subpage!{\qquad 讲义：模空间与代数叠}                  
+
+        \subsection*{相交理论}
+
+            \subpage!{\qquad 讲义：相交理论}
+
+    \end{structure}
+
+\section{数论和表示论}
+    \begin{structure}
+        \subpage!{     }
+        \subsection*{数论基础}
+
+            \subpage!{\qquad 习题：数论基础}
+
+            \subpage!{\qquad 习题：数论基础(rrf)}
+
+            \subpage!{\qquad 补充：数论基础}
+
+            \subpage!{\qquad 试卷：数论基础}
+
+        \subsection*{解析数论}
+
+            \subpage!{\qquad 笔记：解析数论}
+
+            \subpage!{\qquad 试卷：解析数论}
+
+        \subsection*{模形式}
+
+            \subpage!{\qquad 作业：模形式}
+
+            \subpage!{\qquad 试卷：模形式}
+        \subsection*{代数数论}
+
+            \subpage!{\qquad 试卷：代数数论}
+
+        \subsection*{代数数论进阶}
+            \qquad 25秋的讲义+习题\href{https://ridongen031110.github.io/ridongen.github.io/files/2025_Fall_CFT_Note.pdf}{pdf}
+            \subpage!{\qquad 试卷：代数数论进阶}
+        
+        \subsection*{表示论专题}
+            \subpage!{\qquad 笔记：表示论专题}
+    \end{structure}
+
+\section{数学物理}
+    \begin{structure}     
+        \subpage!{      }
+
+        \subsection*{大学物理}
+
+            \subpage!{\qquad 试卷：大学物理}
+        
+        \subsection*{基础力学}
+
+            \subpage!{\qquad 试卷：基础力学}
+        
+        \subsection*{经典物理选讲}
+
+            \subpage!{\qquad 笔记：经典力学}
+
+            \subpage!{\qquad 习题:经典物理选讲}
+
+            \subpage!{\qquad 试卷：经典物理选讲}
+        
+        \subsection*{量子力学}
+
+           \subpage!{\qquad 习题(上)：量子力学}
+           
+           \subpage!{\qquad 习题(下)：量子力学}
+
+           \subpage!{\qquad 习题：量子力学(数学部分)}
+
+           \subpage!{\qquad 试卷：量子力学}
+
+
+        \subsection*{规范场}
+
+           \subpage!{\qquad 习题：规范场}
+
+           \subpage!{\qquad 试卷：规范场}
+
+        \subsection*{广义相对论}
+
+            \subpage!{\qquad 课程概要及预备知识}
+
+            \subpage!{\qquad 试卷：广义相对论}
+
+        \subsection*{量子场论}
+
+            \subpage!{\qquad 笔记：量子场论}
+
+            \subpage!{\qquad 习题：量子场论}
+
+            \subpage!{\qquad 试卷：量子场论}
+
+    \end{structure}
+
+    \section{概率和统计}
+    \begin{structure}     
+        \subpage!{       }
+        \subsection*{概率论}
+            \subpage!{\qquad 习题：概率论}
+            
+            \subpage!{\qquad 试卷：概率论}
+            
+            \subpage!{\qquad 习题：概率论(H)}
+
+            \subpage!{\qquad 试卷：概率论(H)}
+
+            \subpage!{\qquad 试卷：现代概率论基础Ⅰ}
+
+            \subpage!{\qquad 试卷：现代概率论基础II}
+        
+        \subsection*{随机过程}
+
+            \subpage!{\qquad 习题：随机过程}
+
+            \subpage!{\qquad 试卷：随机过程}
+
+        \subsection*{随机分析}
+
+            \subpage!{\qquad 习题：随机分析}
+
+            \subpage!{\qquad 试卷：随机分析}
+
+        \subsection*{数理统计}
+        
+            \subpage!{\qquad 习题：数理统计}
+            \subpage!{\qquad 试卷：数理统计}
+        
+        \subsection*{测度论}
+        
+            \subpage!{\qquad 习题：测度论}
+            \subpage!{\qquad 试卷：测度论}
+
+        \subsection*{布朗运动}
+        
+            \subpage!{\qquad 习题：布朗运动}
+
+
+        \subsection*{概率极限理论}
+            
+            \subpage!{\qquad 习题：概率极限理论}
+            \subpage!{\qquad 试卷: 概率极限理论}
+    \end{structure}
+
+    \section{应用}
+    \begin{structure}     
+        \subpage!{        }
+
+        \subsection*{数学模型}
+
+            \subpage!{\qquad 试卷：数学模型}
+
+        \subsection*{数学控制论}
+            
+            \subpage!{\qquad 笔记：数学控制论(H)}
+
+            \subpage!{\qquad 习题：数学控制论(H)}
+
+            \subpage!{\qquad 试卷：数学控制论(H)}
+        
+        \subsection*{控制理论基础}
+            \subpage!{\qquad 试卷：控制理论基础(G)}
+
+        \subsection*{数值代数与优化}
+
+            \subpage!{\qquad 习题：数值代数与优化}
+
+            \subpage!{\qquad 试卷：数值代数与优化}
+        
+        \subsection*{最优化方法}
+
+            \subpage!{\qquad 试卷：最优化方法}
+
+        \subsection*{金融中的随机分析}
+
+            \subpage!{\qquad 笔记：金融中的随机分析}
+
+        \subsection*{深度学习}
+
+            \subpage!{\qquad 作业：深度学习}
+            \subpage!{\qquad 试卷：深度学习}
+
+        \subsection*{深度学习基础}
+
+            \subpage!{\qquad 试卷：深度学习基础}
+        
+        \subsection*{微分方程数值解法}
+
+            \subpage!{\qquad 试卷：微分方程数值解法}
+
+        \subsection*{计算方法}
+
+            \subpage!{\qquad 试卷：计算方法}
+        
+        \subsection*{数值代数及其应用}
+
+            \subpage!{\qquad 试卷：数值代数及其应用}
+        
+        \subsection*{线性与非线性规划}
+
+            \subpage!{\qquad 试卷：线性与非线性规划}
+
+        \subsection*{科学计算}
+
+            \subpage!{\qquad 试卷：科学计算}
+        
+        \subsection*{非寿险精算数学}
+
+            \subpage!{\qquad 试卷：非寿险精算数学}
+
+        \subsection*{随机矩阵理论}
+
+            \subpage!{\qquad 笔记及习题解答：随机矩阵理论}
+        
+        \subsection*{数学金融学}
+
+            \subpage!{\qquad 试卷：数学金融学}
+        \subsection*{时间序列分析}
+
+            \subpage!{\qquad 习题：时间序列分析}
+        
+
+    \end{structure}
+
+    \section{试题汇萃}
+    \begin{structure}
+        \subpage!{         }
+        \subsection*{夏令营}
+            \subpage!{\qquad 试卷：复旦数学夏令营}
+        \subsection*{英才班}
+            \subpage!{\qquad 试卷：英才班选拔}
+        \subsection*{博资考}
+            \subpage!{\qquad 试卷：2024}
+            \subpage!{\qquad 试卷：2023}
+        \subsection*{转专业}
+            \subpage!{\qquad 试卷：转专业试题}
+    \end{structure}

@@ -1,0 +1,1443 @@
+\setdisplaytitle{习题：经典物理选讲}
+\sethtmltitle{习题：经典物理选讲}
+\def\r{\boldsymbol{r}}
+\def\v{\boldsymbol{v}}
+\def\a{\boldsymbol{a}}
+\def\p{\boldsymbol{p}}
+\def\T{\boldsymbol{T}}
+\def\N{\boldsymbol{N}}
+\def\J{\boldsymbol{J}}
+\def\q{\boldsymbol{q}}
+\def\n{\boldsymbol{n}}
+\def\f{\boldsymbol{f}}
+{{comment|这份习题解答对应2024--25秋季学期周子翔老师的讲义，题目内容和部分图示暂时没有附上，请暂时对照讲义参考，如果有人有时间可以补上，谢谢。}}
+\section{经典力学}
+\subsection{1.1 质点力学基础}
+\begin{enumerate}
+    \item 设一个质点的轨迹为曲线 $\r(t)$. 记 $\v=\dot{\r}$, $v=\|\v\|$, $s$ 为弧长参数.
+    对于曲线上一点, 记 $\T=\dfrac{\mathrm{d} \r}{\mathrm{d} s}$ 为曲线的单位切向量, 
+    $k=\left\|\dfrac{\mathrm{d} \boldsymbol{T}}{\mathrm{d} s}\right\|$ 为曲线在该点的曲率, 
+    当 $k \neq 0$ 时 $\N=\dfrac{1}{k} \dfrac{\mathrm{d} \boldsymbol{T}}{\mathrm{~d} s}$ 为曲线的单位主法向量. 
+    证明 $\ddot{\r}=\dfrac{\mathrm{d} v}{\mathrm{d} t} \boldsymbol{T}+k v^2 \boldsymbol{N}$.
+    
+    注：由此结论知道，加速度向量一定在曲线的密切平面内，它的切向分量等于速度大小的变化率，
+    法向分量等于沿该点的密切圆作匀速圆周运动所需要的向心加速度。
+
+    解：直接得到
+    \begin{align*}
+        \r&=\frac{d\v}{dt}=\frac{d}{dt}\left(\frac{d\r}{ds} \frac{ds}{dt}\right)
+        =\frac{d}{dt}\left(\T\frac{ds}{dt}\right)\\
+        &=\frac{d^2s}{dt^2}\T+\frac{d\T}{dt}\frac{ds}{dt}\\
+        &=\frac{dv}{dt\T}+\frac{d\T}{ds}\frac{ds}{dt}\frac{ds}{dt}\\
+        &=\frac{dv}{dt}\T+k v^2\N.
+    \end{align*}
+
+    \item 两个质量分别为 $m_1, m_2$ 的质点在空间发生弹性碰撞, 
+    设碰撞前后它们的速度分别是 $\v_1, \v_2$ 和 $\v_1^{\prime}, \v_2^{\prime}$, 
+    证明 $\|\v_2^{\prime}-\v_1^{\prime}\|=\|\v_2-\v_1\|$.
+    
+    注：在 $n$ 维空间中，碰撞后两个质点的速度共有 $2n$ 个分量，
+    但动量守恒和能量守恒只能给出 $n+1$ 个方程。
+    所以对一维的弹性碰撞，可完全决定碰撞后的速度，
+    但对二维或更高维的弹性碰撞，碰撞后的速度同碰撞的具体细节有关
+    （例如对两个小球，碰撞点在球上的不同位置会有不同的结果），
+    仅靠这几个守恒定律是无法确定解的。
+    本题只说明两个质点的相对速度的大小是不变的，但并不知道碰撞后具体的速度。
+
+    解：在质心系中考虑本问题，由动量守恒定律及能量守恒定律，有：
+    \begin{align*}
+        m_1\v_{1c}+m_2\v_{2c}&=m_1\v_{1c}'+m_2\v_{2c}'\\
+        \frac{1}{2}m_1\v_{1c}^2+\frac{1}{2}m_2\v_{2c}^2&
+        =\frac{1}{2}m_1\v_{1c}'^2+\frac{1}{2}m_2\v_{2c}'^2.
+    \end{align*}
+    问题已转化到质心系中，碰撞等效为完全对心正碰，故现在$\v_{1c},\v_{2c},\v_{1c}',\v_{2c}'$均在同一直线上，
+    可以解出：
+    \begin{align*}
+        \v_{1c}'&=\frac{m_2}{m_1+m_2}(\v_{1c}-\v_{2c})\\
+        \v_{2c}'&=-\frac{m_1}{m_1+m_2}(\v_{1c}-\v_{2c})
+    \end{align*}
+    故可得$\v_{1c}-\v_{2c}=\v_{1c}'-\v_{2c}'$,
+    换回原来的参考系即有$\|\v_1-\v_2\|=\|\v_1'-\v_2'\|$.
+
+    \item 如下图，一根长为 $l$、质量为 $m$ 的均匀链条放在地上，一端连接一根细绳，
+    细绳通过无摩擦的滑轮，在另一端挂有一个质量为 $M$ $(M>m)$ 的物体. 滑轮离地的高度超过链条的长度. 
+    设 $t=0$ 时链条完全在地上，物体 $M$ 静止，且绳子恰好拉紧。问链条被完全拉起时的速度。
+    \begin{tikzpicture}
+    \draw(0,0)to(3,0) (0,4)to(3,4) (1.5,3.3)to(1.5,4) 
+    (1.2,2.8)to(1.2,3.3) (1.8,0.05)to(1.8,3.3)
+    (1.1,2.8)to(1.3,2.8)to(1.3,2.6)to(1.1,2.6)to(1.1,2.8);
+    \foreach \i in{0,0.3,0.6,0.9,1.2,1.5,1.8,2.1,2.4,2.7} 
+    \draw (\i,4)to(\i+0.2,4.2) (\i,-0.2)to(\i+0.2,0);
+    \draw (0.8,2.7) node {$M$};\draw (2.18,0.25) node {$m$};
+    \draw (1.5,3.3) circle (0.3);
+    \foreach \i in{1.85,2.05,2.25,2.45}
+    \draw[thick,domain=-0.05:0.05]plot({\x+\i},{0.02+20*(\x)^2});
+    \foreach \i in{1.95,2.15,2.35}
+    \draw[thick,domain=-0.05:0.05]plot({\x+\i},{0.12-20*(\x)^2});
+    \end{tikzpicture}
+    注：本问题中，机械能是不守恒的. 地面上的链条被突然拉起时有一部分能量会转化为热能。
+
+    解：本题不能使用能量守恒。我们假设$t$时刻链条比例为$x$ $(0<x<1)$的部分
+    位于空中，初始时刻$x(0)=0$.则绳子运动速率为：
+    $$v=\frac{d(xl)}{dt}=l\frac{dx}{dt}.$$
+    对物体在竖直方向用动量守恒定律(这里假设$[t,t+\Delta t]$时间绳子对物体、链条的冲量大小均为$I$)：
+    $$Mg\Delta t-I=M\Delta v,$$
+    对链条在竖直方向用动量守恒定律：
+    $$I-mxg\Delta x=(x+\Delta x)m(v+\Delta v)-xmv,$$
+    两式相加即有：
+    $$(M-mx)g\Delta t=(M+mx)\Delta v+mv\Delta x+m\Delta x\Delta v.$$
+    令$\Delta v\rightarrow 0$并略去二阶小量即得：
+    $$(M-mx)g=(M+mx)\frac{dv}{dt}+mv\frac{dx}{dt}=(M+mx)\frac{dv}{dt}+mv^2/l.$$
+    整理得到关于$v^2$的一个一阶线性常系数常微分方程：
+    $$v^2+\frac{M+xm}{2m}\frac{d(v^2)}{dx}-(M-xm)gl=0.$$
+    对于$x\in[0,1]$积分，并用初始条件$x(0)=0$，即得链条被完全拉起时的速度：
+    $$v=\frac{\sqrt{2gl\big(M^2-\dfrac13 m^2\big)}}{M+m}.$$
+
+    \item 有一在竖直平面内的形为摆线的轨道, 它的方程是 $x=\dfrac{l}{4}(s+\sin s)$, $y=\dfrac{l}{4}(1-\cos s)$. 
+    证明一个质点从轨道上任一高度由静止无摩擦地滑动到最低点所用的时间是常值。
+
+    注: $l$ 是轨道在最低点的曲率半径。一个单摆摆球的运动相当于一个质点沿无摩擦的圆弧形轨道的运动，它的周期会随着摆幅的增大而增大 但如果将轨道的形状换成摆线，它的周期就同摆幅无关了。这就是摆线这个名称的来源。
+    寻找周期同摆幅无关的轨道的问题是由 Huygens 提出并由 Abel 解出了其中的积分方程。
+
+    解：这一轨道的参数方程$x=\dfrac l4 (s+\sin s),y=\dfrac l4 (1-\cos s)$对应的轨迹的底部
+    在$(0,0)$,顶点在$\Big(-\dfrac{\pi l}{4},\dfrac{l}{2}\Big)$.
+    假设质点从高度$y(\omega)(\omega\in[-\pi,0])$出发，
+    由机械能守恒，质点运动到高度$y$时速率为
+    $$v=\sqrt{2g(y(\omega)-y)}.$$
+    又$$v=\frac{\sqrt{dx^2+dy^2}}{dt}=\sqrt{(\.x^2+\.y^2)}\frac{ds}{dt}=\frac{l\cos{\dfrac{s}{2}}}{2}\frac{ds}{dt}.$$
+    进而
+    $$dt=\frac{ds}{\sqrt{2g(y(\omega)-y)}}\frac{l\cos\dfrac {s}{2}}{2}.$$
+    从$\omega$到$0$积分:
+    \begin{align*}
+        t&=\sqrt{\frac{2l}{g}}\int_{\omega}^{0}\frac{\cos \dfrac {s}{2}}{\cos s-\cos\omega}\\
+        &=\sqrt{\frac{l}{g}}\int_{\sin(\frac{\omega}{2})}^{0}\frac{dt}{\sqrt{\sin^2(\dfrac{\omega}{2})-t^2}}\\
+        &=\sqrt{\frac{l}{g}}\int_{-1}^{0}\frac{dt}{\sqrt{1-t^2}}\\
+        &=\frac{\pi}{2}\sqrt{\frac{l}{g}}.
+    \end{align*}
+    因此滑落时间与初始位置无关。
+
+    \item 一个半径为 $r$ 的转盘绕其竖直的对称轴匀速转动，除了转轴处外不受其他力的作用，
+    转盘的质量可忽略。在转盘边缘固定一个质量为 $m$的小物体，转盘的角速度为 $\omega_0$。
+    现在在转盘上方离轴 $\displaystyle\frac{r}{2}$ 处轻轻掉下一个质量为 $m$ 的小物体并粘在转盘上, 求这时转盘的角速度.
+
+    解：只有转轴受力，故整体相对原点的力矩为$0$.由角动量守恒，有：
+    $$mr^2\omega_0=mr^2\omega+m(\frac{r}{2})^2\omega，$$
+    得$\omega=\dfrac{4}{5}\omega_0$.
+
+    \item 一个质点作平面运动, 其轨迹 $L$ 可写成极坐标方程 $r=r(\theta)$. 
+    记极角为 $0$ 和 $\theta$ 的两条射线与曲线 $L$ 围成区域的面积为 $S(\theta)$. 
+    证明 $\dfrac{\mathrm{d} S(\theta(t))}{\mathrm{d} t}$ 正比于质点的角动量的大小.
+    
+    注：由此可知，Kepler 第二定律就是说行星的角动量守恒.
+
+    解：$$\frac{dS(\theta(t))}{dt}=\dfrac{\frac{1}{2} r^2(\theta)d\theta}{dt}=\frac{r^2\.\theta}{2}.$$
+    而质点的角动量大小：
+    $$J=|m\r(\theta)\times \.{\r}|=|m\r\r\.{\theta}|=mr^2\.{\theta}.$$
+    从而$\dfrac{dS(\theta(t))}{dt}\propto J.$
+
+\end{enumerate}
+
+
+
+
+
+\subsection{1.2 经典力学的Lagrange形式}
+\begin{enumerate}
+    \item 如下图,一个质量为$M$的表面光滑的双侧斜面放在光滑的地面上,
+    两侧斜面的倾角均为$\alpha$.开始时双侧斜面静止,
+    并在它的顶端两侧分别静止着一个质量为$m_1$和$m_2$的小木块.
+    在两个木块均未到达地面的情况下,求时刻$t$时双侧斜面的加速度.
+
+    \begin{tikzpicture}
+        \draw (-2,0)to(2,0)to(0,1)to(-2,0);
+        \draw (0.8,0.6)to(0.9,0.8)to(1.1,0.7)to(1,0.5);
+        \draw (-0.8,0.6)to(-0.9,0.8)to(-1.1,0.7)to(-1,0.5);
+        \draw (1.4,0.7) node {$m_2$};\draw (-1.4,0.7) node {$m_1$};
+        \draw (0,0.3) node {$M$};
+        \draw (1.4,0.13) node {$\alpha$};\draw (-1.4,0.13) node {$\alpha$};
+    \end{tikzpicture}
+
+    解:取向右为正方向,取过斜面顶点且与地面平行的平面为零势能面,视质量为$m_1,m_2$的小木块为质点$a_1,a_2$.\\
+    由于系统自由度为$3$,记广义坐标为$\q(t)=(x,d_1,d_2)$.
+    其中$x$表示双侧斜面水平方向的位移,
+    $d_1,d_2$分别表示$a_1,a_2$与斜面顶点的距离.其Lagrange函数为
+    \begin{align*}
+        L&=\sum\frac{1}{2}m\|\dot{\r}\|^2-U\\
+        &=\frac{1}{2}\big(M\dot{x}^2+m_1((\dot{d_1}\sin\alpha)^2+(-\dot{d_1}\cos\alpha+\dot{x})^2\big)
+         +m_2\big((\dot{d_1}\sin\alpha)^2+(\dot{d_1}\cos\alpha+\dot{x})^2\big)-(m_1d_1+m_2d_2)g\sin\alpha-U,\\
+    \end{align*}
+    其中$U$表示斜面的势能,它是一个常数,在求导之后等于$0$.
+    从而Lagrange方程为
+    $$\begin{pmatrix}
+        (M+m_1+m_2)\ddot{x}-m_1\ddot{d_1}\cos\alpha+m_2\ddot{d_2}\cos\alpha\\ \\
+        m_1(\ddot{d_1}-\ddot{x}\cos\alpha)\\ \\
+        m_2(\ddot{d_2}-\ddot{x}\cos\alpha)\\
+        \end{pmatrix}
+        =\begin{pmatrix}0\\ \\m_1g\sin\alpha\\ \\m_2g\sin\alpha\\\end{pmatrix}$$
+    这是一个关于$\ddot{x},\ddot{d_1},\ddot{d_2}$的线性方程,简单计算即知
+    $$\ddot{x}=\frac{(m_1-m_2)g\sin\alpha\cos\alpha}{M+(m_1+m_2)\sin^2\alpha}.$$
+
+    \item 设一质点在旋转抛物面$z=\dfrac{1}{2a}(x^2+y^2)$内表面运动,抛物面表面光滑.
+    如果初始时刻质点位置为$\Big(r_0,0,\dfrac{r_0^2}{2a}\Big)$,速度为
+    $(0,v_0,0)$且$v_0^2>\dfrac{g}{a}r_0^2$.求质点能达到的最大高度.
+ 
+    解:物体做二自由度运动,设广义坐标为$(r,\theta)$,满足$\displaystyle (x,y,z)=\big(r\cos\theta,r\sin\theta,\frac{r^2}{2a}\big)$.
+    其Lagrange函数为
+    \begin{align*}
+    L&=\frac{1}{2}m(\.{x}^2+\.{y}^2+\.{z}^2)-mgz\\
+    &=\frac{1}{2}m\left((\.{r}\cos\theta-\.{\theta}r\sin\theta)^2+(\.{r}\cos\theta-\.{\theta}r\sin\theta)^2
+    +\Big(\frac{r\.{r}}{a}\Big)^2\right)-\frac{mgr^2}{2a}\\
+    &=\frac{1}{2}m\left(\Big(1+\frac{a^2}{r^2}\Big)\.{r}^2+\.{\theta}^2r^2\right)
+    -\frac{mgr^2}{2a}.
+    \end{align*}
+    故Lagrange方程为
+    $$\frac{\mathrm{d}}{\mathrm{d}t}\begin{pmatrix}(1+\dfrac{r^2}{a^2})\.{r}\\ \\
+        r^2\.{\theta}\end{pmatrix}=
+    \begin{pmatrix}\dfrac{\.{r}^2}{a^2}r+r\.{\theta}^2-\dfrac{g}{a}r\\ \\0\end{pmatrix}$$
+    由此可知物体角动量$J=\.{\theta}r^2$守恒.由初值知$J=v_0r_0$.\\
+    代入$\.{\theta}=\dfrac{J}{r^2}$,第一个方程变为
+    $$\left(1+\frac{r^2}{a^2}\right)\ddot{r}+\frac{r}{a^2}\dot{r}^2=\frac{J^2}{r^3}-\frac{g}{a}r.$$
+    记$p=\dot{r}$,则有
+    $$\left(1+\frac{r^2}{a^2}\right)p\frac{\mathrm{d}p}{\mathrm{d}r}+\frac{r}{a^2}p^2=\frac{J^2}{r^3}-\frac{g}{a}r,$$
+    解得$$p^2=\frac{-gar^4+Cr^2-a^2J^2}{r^2(a^2+r^2)}.$$
+    由$J=\dot{\theta}r^2=vr$,且当速度取最大值或最小值时, $p=0$.
+    设此时其对应的$r$为$r_1,r_2$.它们恰为$-gar^4+Cr^2-a^2J^2$的解.
+    从而$r_1^2r_2^2=\dfrac{aJ^2}{g}$.又因为速度取最大值时对应的$r_1=r_0$,故$r_2=\dfrac{v_0^2}{2g}$.
+
+    \item 两个质量为$m$的质点在光滑的水平面上运动,
+    两个质点之间以及每个质点同平面上的固定点$O$之间均以长度为$l$、\ 弹性系数为$k$的弹簧相连,
+    求此系统在平衡位置做小幅震动的固有角频率.
+
+    解:系统平衡时,两质点位置$A,B$和$O$形成边长为$l$的等边三角形.
+    不妨设此时$A$的坐标为$A_0=\big(\!-\frac{1}{2}l,\frac{\sqrt{3}}{2}l\big)$, 
+    $B$的坐标为$B_0=\big(\frac{1}{2}l,\frac{\sqrt{3}}{2}l\big)$.
+    假设$A,B$分别作位置变换为$(x_1,y_1),(x_2,y_2)$的微小震动.则系统的Lagrange函数为
+    $$L=\frac{1}{2}m\big(\dot{x_1}^2+\dot{y_1}^2+\dot{x_2}^2+\dot{y_2}^2\big)-U$$
+    其中$U$是系统的弹性势能.
+
+    计算\[|\overrightarrow{OA}-\overrightarrow{OA_0}|
+    =\left|\sqrt{\bigg(\!-\frac{1}{2}l+x_1\bigg)^2+\bigg(\frac{\sqrt{3}}{2}l+y_1\bigg)^2}-l\right|.\]
+    约去二阶小量可得结果为
+    $\big|\!-\frac{1}{2}x_1+\frac{\sqrt{3}}{2}y_1\big|$.同理可得
+    \[|\overrightarrow{OB}-\overrightarrow{OB_0}|=\left|\frac{1}{2}x_1+\frac{\sqrt{3}}{2}y_1\right|,
+    \quad|\overrightarrow{AB}-\overrightarrow{A_0B_0}|=|x_1-x_2|.\]
+    再结合$U=\frac{1}{2}k(\Delta x)^2$即求得Lagrange函数.
+
+    从而对应的Lagrange方程为
+    $$\begin{pmatrix}
+        \ddot{x_1}\\ \\
+        \ddot{y_1}\\ \\
+        \ddot{x_2}\\ \\
+        \ddot{y_2}\\
+    \end{pmatrix}=
+    \frac{\omega_0^2}{4}
+    \begin{pmatrix}
+        5 & -\sqrt{3} & -4 & 0 \\ \\
+        -\sqrt{3} & 3 & 0 & 0 \\ \\
+        -4 & 0 & 5 & \sqrt{3}\\ \\
+        0 & 0 & \sqrt{3} & 3 \\
+    \end{pmatrix}
+    \begin{pmatrix}
+        x_1 \\ \\
+        x_2 \\ \\
+        x_3 \\ \\
+        x_4 \\
+    \end{pmatrix}
+    $$
+    其中$\omega_0=\sqrt{\dfrac{k}{m}}$.
+
+    上述$4\times4$矩阵的特征值为$0,1,\dfrac{3\pm\sqrt{3}}{2}$,故固有角频率为
+    $\dfrac{1}{2}\sqrt{\dfrac{k}{m}},\dfrac{1}{2}\sqrt{\dfrac{3\pm\sqrt{3}}{2}}\sqrt{\dfrac{k}{m}}$.
+
+    \item 一个光滑水平转盘以角速度$\omega$ 匀速转动。转盘上有一个质点，从惯性系看，除了
+    重力和转盘的支持力外不受其他外力的作用。在转盘上固定一个平面直角坐标系($\xi, \eta$)
+    并以($\xi, \eta$)为广义坐标，请写出Lagrange方程。
+
+    注：由此方程即可得到匀速转动参考系中的惯性离心力和Coriolis力。
+
+    解：以$(x,y)$为地面上的直角坐标，则$x=\xi \cos(\omega t)+ \eta \sin 
+    (\omega t)$, $y=-\xi \sin (\omega t)+ \eta \cos (\omega t)$.Lagrange
+    函数为\begin{align*}
+        L=\frac{1}{2}m(\dot{x}^2+\dot{y}^2)=\frac{1}{2}m(\dot{\xi}^2
+        +\dot{\eta}^2+\omega^2\xi^2+\omega^2\eta^2+\omega\dot{\xi}\eta
+        -\omega\xi\dot{\eta})
+    \end{align*}
+    Lagrange方程为\begin{align*}
+        \ddot{\xi}=\omega^2\xi-2\omega\dot{\eta}, \quad \ddot{\eta}=\omega^2
+        \eta+2\omega\dot{\xi}
+    \end{align*}
+    \item 两个质点被一根无质量刚性细棒连接,证明这个约束是理想约束.
+
+    解:假设两质点广义坐标为$\boldsymbol{x}_1,\boldsymbol{x}_2$.
+    由于木棒没有质量，故木棒两端受力方向均沿杆，大小相等方向相反
+    且与$\boldsymbol{x}_1-\boldsymbol{x}_2$平行.从而
+    \[\N_1\cdot\frac{\partial\boldsymbol{x}_1}{\partial q_\alpha}
+    +\N_2\cdot\frac{\partial\boldsymbol{x}_2}{\partial q_\alpha}
+    =\f\cdot\frac{\partial(\boldsymbol{x}_1-\boldsymbol{x}_2)}{\partial q_\alpha}.\]
+    注意到$\boldsymbol{x}_1-\boldsymbol{x}_2$模长不变,故其导数和自身垂直,又因为$\f$与其平行,故
+    \[\f\cdot\frac{\partial(\boldsymbol{x}_1-\boldsymbol{x}_2)}{\partial q_\alpha}=0.\]
+
+    \item 设一个质点被约束在曲面$\Sigma$上运动,约束力垂直于曲面,并且质点不受其他外力作用.证明质点的轨迹是曲面上的一条测地线.
+
+    \item 设系统的Lagrange函数是$L=\sqrt{\dot{\theta}^2+\sin^2\theta}$.证明
+    $\displaystyle \frac{\sin^2\theta}{\sqrt{\dot{\theta}^2+\sin^2\theta}}$是守恒量.
+
+    解：$L$中不显含$t$，因此有守恒的“能量”: $\dot{\theta}\displaystyle\frac
+    {\partial L}{\partial \dot{\theta}}-L=-\displaystyle \frac{\sin^2\theta}
+    {\sqrt{\dot{\theta}^2+\sin^2\theta}}$.
+\end{enumerate}
+
+
+\subsection{1.3 万有引力}
+\begin{enumerate}
+    \item 同步卫星位于地球赤道的一个固定点的上方沿圆轨道运动。
+    已知地球半径为$6370\text{ km}$，求同步卫星离地面的高度。
+
+    解：角速度$\displaystyle \omega=\frac{2\pi}{T}$，其中$T=24\times3600\text{ s}$，
+    设卫星到地球中心的距离为$R$，则引力大小为
+    \[m\omega^2R=\frac{mgr^2}{R^2},\]
+    其中$r$是地球半径，从而\[R^3=g(\frac{Tr}{2\pi})^2,\]
+    代入$g=9.8\text{ m}/\text{s}^2$得$R\approx42210\text{ km}$，
+    即高度为$R-r\approx35840\text{ km}$。
+
+    \item Bohr原子理论中,假设氢原子中在第$n$条轨道上的电子角动量
+    是$n\hbar=n\dfrac{h}{2\pi}$,其中$h$是Planck (普朗克)常数.证明第$n$条轨道上的
+    电子的能量为$-\dfrac{me^4}{2(4\pi\epsilon_0)^2\hbar^2}\dfrac{1}{n^2}$,
+    其中$e$是基本电荷, $m$是电子的质量.
+
+    解: $J=n\hbar=m\omega r^2=mvr$.库仑力提供向心力,有
+    \[\frac{e^2}{4\pi\epsilon_0r^2}=m\frac{v^2}{r}=\frac{J^2}{mr^3},\]
+    得到$\dfrac{1}{r}=\dfrac{me^2}{4\pi\epsilon_0J^2}$.从而电子势能为
+    \[-\frac{e^2}{4\pi\epsilon_0r}=-\frac{me^4}{(4\pi\epsilon_0)^2\hbar^2}\frac{1}{n^2}.\]
+    电子动能为
+    \[\frac{1}{2}mv^2=\frac{J^2}{2mr^2}=\frac{me^4}{2(4\pi\epsilon_0)^2\hbar^2}\frac{1}{n^2}.\]
+    相加即证.
+
+    \item ${ }^*$设位于原点的质量为 $m$ 的质点在 $\boldsymbol{r}$ 处产生的势为 $m U(\|\boldsymbol{r}\|)$。
+    如果对任一质量为 $m$ 的中心在原点的均匀球壳，球壳外一点 $\boldsymbol{r}$ 处的势都是 $m U(\|\boldsymbol{r}\|)$，
+    证明必成立 $U(r)=-\dfrac{k}{r}$，其中 $k$ 为常数。
+
+    解：设球壳的半径为$R$.球壳在$\r$处的引力为
+    \begin{align*}
+        mU(\| \r \|)=\int_{\| \r'\| = R}\frac{m}{4\pi R^2}U(\| \r-\r'\|)\text{d}S',
+    \end{align*}
+    其中d$S'$表示关于$\r'$的面积元。
+    取$z$轴沿$\r$方向。记$v(s)=U(\sqrt{S})$,$w(s)$为$v(s)$的原函数，则
+    \begin{align*}
+        v(r^2)&=\int_{0}^{\pi}\frac{1}{2}v(r^2+R^2-2rR\cos\theta')\sin\theta'
+        \text{d}\theta'\\
+        &=\frac{1}{4Rr}(w((r+R)^2)-w((r-R)^2))
+    \end{align*}
+    记$W(s)=w(s^2)$,则$\displaystyle v(r^2)=\frac{\text{d}W(r)}{\text{d}r^2}=\frac{1}{2r}W'(r)$,从而
+    \begin{align*}
+    2RW'(r)=W(r+R)-W(r-R).
+    \end{align*}
+    此式要对任意的$R>0$和$R>0$成立。将等式右边在$r$处作Taylor展开，即得$W'''(r)=0$，
+    从而$W(r)=ar^2+2br+c$，其中$a,b,c$是常数。由此得$\displaystyle U(r)=\frac{1}{2r}
+    W'(r)=a+\frac{b}{r}$.势可以差一个相加常数，所以结论成立。
+
+    \item 设一个质点系中质点间的作用力都是万有引力，且质点系不受其他外力。记质点系的动能和势能分别为 $E_K$ 和 $U$。
+    证明位力定理：如果质点的运动是周期的，周期为 $T$，则 $\displaystyle \frac{1}{T} \int_0^T (2E_K+U) \,{\rm d}t=0$；
+    如果质点的位置和速度都有界，则 $\displaystyle \lim_{T \rightarrow+\infty} \frac{1}{T} \int_0^T (2E_K+U) \,{\rm d}t=0$。
+    （提示：计算 $\boldsymbol{r} \cdot \boldsymbol{p}$ 对时间的导数。）
+
+    解：\begin{align*}
+        \frac{\text{d}}{\text{d}t}(\sum_{i}\r_i\cdot \p_i)=&\sum_{i}(\dot{\r_{i}}\cdot\p_i+\r_{i}\dot{\p_{i}})\\
+        =&\sum_{i}m_{i}\|\dot{\r_i}\|^2-\sum_{i \neq j}\r_{i}\cdot Gm_im_j\frac{\r_i-\r_j}{\|\r_i-\r_j\|^3}\\
+        =&2\sum_{i}\frac{1}{2}m_{i}\|\dot{\r_i}\|^2-\sum_{i < j}(\r_{i}-\r_{j})\cdot Gm_im_j\frac{\r_i-\r_j}{\|\r_i-\r_j\|^3}\\
+        =&2\sum_{i}\frac{1}{2}m_{i}\|\dot{\r_i}\|^2-\sum_{i < j}Gm_im_j\frac{\r_i-\r_j}{\|\r_i-\r_j\|}\\
+        =&2E_K+U
+    \end{align*}
+    从而\begin{align*}
+        \frac{1}{2}\int_0^T(2E_K+U)\text{d}t=&\frac{1}{T}\r\cdot\p\Big|_{t=0}^T. 
+        \end{align*}
+    由此即得需证结论。
+    \item 设 $U(r)$ 是中心势。（1）证明 Runge--Lenz 向量（也称为 Laplace--Runge--Lenz 向量）
+    $\boldsymbol{A}=\boldsymbol{p} \times \boldsymbol{J}+mU(r)\boldsymbol{r}$ 是守恒量当且仅当 $U(r)=-\dfrac{k}{r}$，其中 $k$ 是常数。
+    （2）对行星的运动，证明 Runge--Lenz 向量指向轨道的近日点。\\
+
+    解：(1)由于$\J$是守恒量，由Newton运动方程$\dot{\p}=-U'(r)\dfrac{\r}{r}$得到
+    \begin{align*}
+        \dot{\boldsymbol{A}}=&\dot{\p}\times \boldsymbol{A}+mU'(r)\frac{\r \cdot \dot{\r}}{r}\cdot \r+mU'(r)\dot{\r}\\
+        =&-U'(r)\frac{\r}{r}\times(\r \times \p)+\frac{U'(r)}{r}(\r \cdot \p)\r+U(r)\p\\
+        =&U'(r)r\p+U(r)\p=(rU'(r)+U(r))\p.
+    \end{align*}
+    所以$\boldsymbol{A}$是守恒量当且仅当$rU'(r)+U(r)=0$，即$U(r)=-\dfrac{k}{r}$.\\
+    (2)势能为$U(r)=-\dfrac{GMm}{r}$.
+    \begin{align*}
+        \r \cdot =&\r \cdot(\p \times \J)+mr^2U(r)\\
+        =&(\r \times \p)\cdot \J +mr^2U(r)=\|\J\|^2-GMm^2r.
+    \end{align*}
+    记$\boldsymbol{A}$与$\r$的夹角为$\theta$，则$r(\|\boldsymbol{A}\|\cos\theta+GMm^2)=\|\J\|^2$，即
+    \begin{align*}
+        r=\frac{(GMm^2)^{-2}\|\J\|^2}{1+(GMm^2)^{-2}\|\boldsymbol{A}\|\cos\theta}.
+    \end{align*}
+    这就是行星轨道的方程，其中$\|\J\|$和$\|\boldsymbol{A}\|$都是常数，且$\|\boldsymbol{A}\|$正比于轨道的离心率。
+    当$\theta=0$时，$r$最小，于是$\boldsymbol{A}$的方向为近日点方向。
+
+    \item ${ }^*$设系统的 Lagrange 函数为 $L=\dfrac{1}{2}m\|\dot{\boldsymbol{r}}\|^2+\dfrac{GMm}{r}$。对 $\alpha=1,2,3$，作坐标变换
+    $$x_i^{(\varepsilon)}=x_i-\varepsilon m(2\dot{x}_i x_\alpha-x_i \dot{x}_\alpha-\boldsymbol{r} \cdot \dot{\boldsymbol{r}} \delta_{i \alpha}),$$
+    并记 $L^{(\varepsilon)}(\boldsymbol{x}, t)=L(\boldsymbol{x}^{(\varepsilon)}, t)$。证明
+    $$\frac{\partial L^{(\varepsilon)}}{\partial \varepsilon}\bigg|_{\varepsilon=0}
+    =\frac{{\rm d}}{{\rm d}t}\left((\boldsymbol{x} \cdot \boldsymbol{p}) p_\alpha-\|\boldsymbol{p}\|^2 x_\alpha-GMm^2 \frac{x_\alpha}{r}\right),$$
+    并由此说明通过 Noether 定理给出的守恒量就是 Runge--Lenz 向量。
+
+    解：使用Einstein求和约定。在变换$\boldsymbol{x} \rightarrow \boldsymbol{x}^{(\epsilon)}$下,$\dot{x_i}$变为
+    \begin{align*}
+        \dot{x_i}^{(\epsilon)}=&\dot{x}_i-\epsilon m(2\ddot{x}_ix_{\alpha}+\dot{x}_i\dot{x}_{\alpha}-
+        x_i\ddot{x}_{\alpha}-(x_l\ddot{x}_l+\dot{x}_l\dot{x}_l)\delta_{i\alpha}),\\
+        L^{(\epsilon)}=&\frac{1}{2}m\dot{x}_i^{(\epsilon)}\dot{x}_i^{(\epsilon)}+GMm(x_i^{(\epsilon)}x_i^{(\epsilon)})^{-1/2}\\
+        =&L-\epsilon m^2(2\dot{x}_i\ddot{x}_i\dot{x}_{\alpha}-x_i\dot{x}_i\ddot{x}_{\alpha}-x_i\ddot{x}_i\dot{x}_{\alpha})+
+        \epsilon\frac{GMm^2}{r^3}(x_i\dot{x}_ix_{\alpha}-x_ix_i\dot{x}_{\alpha})+O(\epsilon^2).\\
+        \frac{\partial L^{(\epsilon)}}{\partial \epsilon}\Big|_{\epsilon=0}=&-m^2(2\dot{x}_i\ddot{x}_i\dot{x}_{\alpha}
+        -x_i\dot{x}_i\ddot{x}_{\alpha}-x_i\ddot{x}_i\dot{x}_{\alpha})+\frac{GMm^2}{r^3}(r\dot{r}x_{\alpha}-r^2\dot{x}_{\alpha})\\
+        =&-m^2\frac{\text{d}}{\text{d}t}(-x_i\dot{x}_i\dot{x}_{\alpha}+\dot{x}_i\dot{x}_ix_{\alpha})-GMm^2\frac{\text{d}}{\text{d}t}(\dfrac{x_{\alpha}}{r})\\
+        =&\frac{\text{d}}{\text{d}t}\Big(x_ip_ip_{\alpha}-p_ip_ix_{\alpha}-GMm^2\frac{x_{\alpha}}{r}\Big).
+    \end{align*}
+    所以有守恒量
+    \begin{align*}
+        &\frac{\partial L}{\partial \dot{x}_i}\frac{\partial x_i^{(\epsilon)}}{\partial \epsilon}\Big|_{\epsilon=0}-
+        \Big(x_ip_ip_{\alpha}-p_ip_ix_{\alpha}-GMm^2\frac{x_{\alpha}}{r}\Big)\\
+        =&x_ip_ip_{\alpha}-p_ip_ix_{\alpha}+GMm^2\frac{x_{\alpha}}{r}.
+    \end{align*}
+    写成向量形式，即为$-\Big[\p \times (\r \times \p)-GMm^2\dfrac{\r}{r}\Big]$.
+\end{enumerate}
+
+
+
+\subsection{1.4 经典力学的Hamilton形式}
+\begin{enumerate}
+    \item 设 $q_1, q_2$ 和 $p_1, p_2$ 分别为广义坐标和广义动量，
+    求解 Hamilton 函数为 $H=p_1p_2+\dfrac{1}{2}q_1^2$ 的 Hamilton 正则方程。
+    \footnote{这仅是一个练习，不是真实的物理问题。}
+
+    解：Hamilton正则方程为$\dot{q}_1=p_2, \dot{q}_2=p_1,\dot{p}_1=-q_1,\dot{p}_2=0$.由此解得
+    \begin{align*}
+        q_1=&C_4t+C_1,\quad q_2=-\frac{1}{6}C_4t^3-\frac{1}{2}C_1t^2+C_3t+C_2,\\
+        p_1=&-\frac{1}{2}C_4t^2-C_1t+C_3, \quad p_2=C_4.
+    \end{align*}
+
+    \item 设一个质点在旋转抛物面 $z=\dfrac{1}{2a}(x^2+y^2)$ 内部运动，抛物面表面光滑。
+    请用柱坐标中的 $(r, \theta)$ 为广义坐标，写出相应的 Hamilton 函数。
+
+    解：由$x=r\cos\theta,y=r\sin\theta, z=\dfrac{r^2}{2a}$,得到Lagrange函数
+    \begin{align*}
+        L=\frac{1}{2}m(\dot{x}^2+\dot{y}^2+\dot{z}^2)-mgz=\frac{1}{2}m\Big((1
+        +\dfrac{r^2}{a^2})\dot{r}^2+r^2\dot{\theta}^2\Big)-\frac{mg}{2a}r^2.
+    \end{align*}
+    广义动量为
+    \begin{align*}
+        p_r=\frac{\partial L}{\partial \dot{r}}=m\Big(1+\frac{r^2}{a^2}\Big)\dot{r}^2,
+        \quad p_{\theta}=mr^2\dot{\theta}.
+    \end{align*}
+    Hamilton函数为
+    \begin{align*}
+        H=\dot{r}p_r+\dot{\theta}p_{\theta}-L=\frac{p_r^2}{2m(1+\dfrac{r^2}{a^2})}
+        +\frac{p_{\theta}^2}{2mr^2}+\frac{mg}{2a}r^2.
+    \end{align*}
+
+    \item 对一个 Hamilton 系统，设 $f, g$ 都是守恒量，证明 $fg, f/g,\{f, g\}$都是守恒量。
+
+    解：如果$\dfrac{\partial f}{\partial t}+\{f,H\}=0,\dfrac{\partial g}{\partial t}+\{g, H\}=0$，那么
+    \begin{align}
+        \frac{\partial\{f,g\}}{\partial t}+\{\{f,g\},H\}=\Big\{\Big(\frac{\partial f}{\partial t}+\{f,H\}\Big),g\Big\}
+        -\Big\{\Big(\frac{\partial g}{\partial t}+\{g,H\}\Big),f\Big\}=0.
+    \end{align}
+
+    \item 设势函数是球对称的，即一个质点的 Hamilton 函数为 $H=\dfrac{\|\boldsymbol{p}\|^2}{2m}+U(\|\boldsymbol{r}\|)$。
+    记 $\boldsymbol{J}=(J_1, J_2, J_3)$ 为角动量，$J^2=\|\boldsymbol{J}\|^2$。
+    证明对 $i=1,2,3$，成立 $\{J_i, H\}=0,\{J_i, J^2\}=0,\{J^2, H\}=0$。
+
+    解：已经知道$\{J_i,H\}=0, \{J_i, J_j\}=\epsilon_{ijk}J_k$.所以
+    \begin{align*}
+        &\{J_3, J^2\}=\{J_3, J_1^2+J_2^2\}\\
+        =&J_1\{J_3,J_1\}+\{J_3,J_1\}+J_2\{J_3,J_2\}+\{J_3,J_2\}J_2\\
+        =&J_1J_2+J_2J_1-J_2J_1-J_1J_2=0.\\
+        &\{J^2,H\}=\sum_{i=1}^3(J_i\{J_i,H\}+\{J_i,H\}J_i)=0.
+    \end{align*}
+    \item 引力场中的 Lagrange 函数为
+    $$L=\frac{1}{2} m(\dot{r}^2+r^2 \dot{\theta}^2)+\frac{GMm}{r}.$$
+    （1）写出相应的 Hamilton 函数。
+    （2）验证 Runge--Lenz 向量 $\boldsymbol{A}=m^2\dot{\boldsymbol{r}}\times(\boldsymbol{r}\times\dot{\boldsymbol{r}})-\dfrac{GMm^2}{r}\boldsymbol{r}$ 是守恒量。
+\end{enumerate}
+\printfootnotes
+
+\subsection{1.5 等距变换与刚体力学}
+\begin{enumerate}
+    \item 设有一个密度为 $1$ 的均匀圆锥体，表面方程为 $x^2+y^2=z^2$ $(0 \leqslant z \leqslant a)$。
+    （1）计算它的惯量矩阵。（2）记 $l$ 为它的质心到原点的距离，$m$ 为它的质量，计算 $\dfrac{2ml^2I_{11}}{I_{33}^2}$。
+
+    解：(1)用柱坐标，则圆锥体内部为$\Omega =\{(r,\theta, z)|0\leq r \leq z, 0\leq \theta \leq 2\pi\}$.\\
+    它的质量为$m=\dfrac{1}{3}\pi a^3$.
+    \begin{align*}
+        I_{11}=I_{22}=&\int_{\Omega}{(r^2\cos^2\theta+z^2)r\text{d}r\text{d}\theta\text{d}z}=\frac{3}{4}ma^2，\\
+        I_{33}=&\int_{\Omega}r^3\text{d}r\text{d}\theta\text{d}z=\frac{3}{10}ma^2.
+    \end{align*}
+    由对称性，$I_{12}=I_{13}=I_{23}=0$.所以惯量矩阵为
+    \begin{align*}
+        \boldsymbol{I}=\frac{3}{20}ma^2\text{diag}(5,5,2).
+    \end{align*}
+    (2)因为$l=\dfrac{1}{m}\displaystyle \int_{\Omega}zr\text{d}r\text{d}\theta\text{d}z=\dfrac{3}{4}a$,
+    所以$\dfrac{2ml^2I_{11}}{I^2_{33}}=\dfrac{75}{8}$
+
+    \item 求边长为 $a$ 和 $b$，锐角夹角为 $\theta$、\ 质量为 $m$ 的均匀平行四边形薄板关于它的中心的惯量矩阵。设长为 $a$ 的边平行于 $x$ 轴。
+    
+    解：平行四边形区域为$\Omega:-\dfrac{b}{2}\sin\theta\leq y \leq\dfrac{b}{2}\sin \theta, -\dfrac{a}{2}+y\cot \theta\leq x
+    \leq \dfrac{a}{2}+y\cot \theta$.
+    薄板的面密度为$\rho =\dfrac{m}{ab\sin\theta}$.惯量矩阵的各分量计算如下：
+    \begin{align*}
+        I_{11}=&\rho\int_{\Omega}y^2\text{d}S=\frac{1}{12}mb^2\sin^2\theta,\\
+        I_{12}=&-\rho\int_{\Omega}xy\text{d}S=-\frac{1}{12}mb^2\sin\theta\cos\theta, \quad I_{33}=0,\\
+        I_{22}=&\rho\int_{\Omega}x^2\text{d}S=\dfrac{1}{12}m(a^2+b^2\cos^2\theta), \quad I_{23}=0,\\
+        I_{33}=&\rho\int_{\Omega}(x^2+y^2)\text{d}S=\frac{1}{12}m(a^2+b^2).
+    \end{align*}
+    所以，我们得到惯量矩阵
+    \begin{align*}
+        \boldsymbol{I}=\frac{m}{12}\begin{pmatrix}
+            b^2\sin^2\theta & -b^2\sin\theta\cos\theta & 0 \\
+            -b^2\sin\theta\cos\theta & a^2+b^2\cos^2\theta & 0 \\
+            0 & 0 & a^2+b^2 \\
+        \end{pmatrix}.
+    \end{align*}
+
+    \item 设有一个密度均匀的三角形薄板，质量为 $m$，三条边长分别为 $a, b, c$。
+    求此三角形薄板相对过质心且垂直于它所在平面的直线的转动惯量。
+
+    \item 设一个刚体作定点转动，角速度为 $\boldsymbol{\omega}$，
+    则每一点的速度 $\boldsymbol{v}=\boldsymbol{\omega} \times \boldsymbol{r}$ 构成一个向量场。
+    证明 $\nabla \times \boldsymbol{v}=2\boldsymbol{\omega}$。
+
+    解：\begin{align*}
+        (\nabla\times \boldsymbol{v})_i=&(\nabla \times (\boldsymbol{\omega}\times\r))_i=
+        \epsilon_{ijk}\frac{\partial}{\partial x_j}(\epsilon_{klm}\omega_lx_m)\\
+        =&\frac{\partial}{\partial x_j}(\omega_ix_j)-\frac{\partial}{\partial x_j}(\omega_jx_i)=3\omega_i-\omega_i=2\omega_i.
+    \end{align*}
+
+    \item 证明：对于一个均匀物体，如果存在相对一点 $O$ 的三个非恒等的转动，它们的转动轴线性无关且互相不正交，使得转动后惯量矩阵不变，那么这个物体相对任一过 $O$ 的轴的转动惯量是常值。
+
+    \textbf{注：}由此可知，如果一个均匀物体是正多面体，则它相对任一过中心的轴的转动惯量是常值。
+    对于正方体和正八面体，当然可以更简单地直接得到结论。
+
+    解：（本解答中重复指标均不求和）以$O$为原点，取定一个直角坐标系，设相应的惯量矩阵为$\boldsymbol{A}$.设
+    $\boldsymbol{Q}_i(i=1,2,3)$是满足要求的旋转，$\boldsymbol{Q}_i$的旋转轴为$\boldsymbol{v}_i$，那么
+    $\boldsymbol{Q}_i\boldsymbol{v}_i=\boldsymbol{v}_i$.经$\boldsymbol{Q}_i$的旋转，惯量矩阵变为
+    $\boldsymbol{Q}_i^{\text{T}}\boldsymbol{A}\boldsymbol{Q}_i$.因为它与$\boldsymbol{A}$相等，所以有
+    $\boldsymbol{A}\boldsymbol{Q}_i=\boldsymbol{Q}_i\boldsymbol{A}$,从而$\boldsymbol{Q}_i\boldsymbol{A}\boldsymbol{v}_i
+    =\boldsymbol{A}\boldsymbol{Q}_i\boldsymbol{v}_i=\boldsymbol{A}\boldsymbol{v}_i$.由于$\boldsymbol{Q}_i$不是恒等变换，旋转轴是唯一的，
+    因此必存在数$I_i$,使得$\boldsymbol{A}\boldsymbol{v}_i=I_i\boldsymbol{v}_i$.根据对称矩阵相应于不同特征值的特征向量正交得$\boldsymbol{A}$
+    的三个特征值全部相等。
+
+    \item 一块形状为凸区域的均匀板按一条竖直线轴对称，并可绕其最高点在板所在的竖直平面内摆动。
+    请确定板的形状，使得用任一水平线截去其下面部分后，小摆动时的周期是常值。
+
+    解：设边界的曲线为$x=x(y)$,且截去$y=h$以下的部分。设它的质量为$m$，那么，质心到旋转中心的距离为
+    \begin{align*}
+        l=\frac{1}{m}\int_0^hy\cdot 2x(y)\text{d}y=\frac{2}{m}\int_0^hyx(y)\text{d}y,
+    \end{align*}
+    转动惯量为
+    \begin{align*}
+        I=\int_0^h\text{d}y\int_{-x(y)}^{x(y)}(x^2+y^2)\text{d}x=2\int_0^h\Big(\frac{1}{3}x(y)^3+y^2x(y)\Big)\text{d}y
+    \end{align*}
+    由$\dfrac{I}{ml}$与$h$无关得
+    \begin{align*}
+        \frac{1}{3}x^3+xy^2=2kxy
+    \end{align*}
+    其中$k$是常数，即
+    \begin{align*}
+        x^2+3(y-k)^2=3k^2.
+    \end{align*}
+    这是一个椭圆，离心率为$\dfrac{\sqrt{6}}{3}$,且旋转中心位于半短轴的顶点。
+\end{enumerate}
+
+
+
+\subsection{1.6 流体力学}
+\begin{enumerate}
+    \item 设热流 $\boldsymbol{q}=0$，并记 $S$ 为单体质量的流体的熵。
+    由热力学基本方程，成立 $T \dfrac{{\rm d} S}{{\rm d} t}
+    =\dfrac{{\rm d} e}{{\rm d} t}+p \dfrac{{\rm d} V}{{\rm d} t}$，
+    其中 $T$ 是温度，$V=1/\rho$ 是单位质量的体积。
+    请根据理想流体力学方程组证明 $\dfrac{{\rm d} S}{{\rm d} t}=0$。
+
+    解：由能量方程及$\nabla\cdot \q=0$:
+    $$\frac{de}{dt}=\frac{\partial{e}}{\partial{t}}+(\v\cdot \nabla )e=-\frac{p\nabla \cdot \v}{\rho}$$
+    由质量方程:
+    $$\frac{d\rho}{dt}=\frac{\partial\rho}{\partial t}+(\v\cdot\nabla)\rho=(\v\cdot\nabla)\rho-\nabla\cdot(\rho\v).$$
+    进而有:
+    \begin{align*}
+        \frac{de}{dt}+p\frac{dV}{dt}&=\frac{de}{dt}+p\frac{d(1/\rho)}{dt}\\
+        &=\frac{de}{dt}-\frac{p}{\rho^2}\frac{d\rho}{dt}\\
+        &=-\frac{p\nabla \cdot \v}{\rho}-\frac{p}{\rho^2}[(\v\cdot\nabla)\rho-\nabla\cdot(\rho\v)]\\
+        &=\frac{p}{\rho^2}[\nabla\cdot(\rho\v)-\rho(\nabla\cdot\v)-(\v\cdot\nabla)\rho]
+    \end{align*}
+    又因为:
+    $$(\nabla\cdot(\rho\v))=\sum_{i}\frac{\partial{(\rho v_i)}}{\partial{x_i}}
+    =\sum_i\left({\rho \frac{\partial{v_i}}{\partial{x_i}}+v_i\frac{\partial{\rho}}{\partial{x_i}}}\right)
+    =\rho\nabla\cdot\v+(\v\cdot\nabla)\rho$$
+    从而$T\frac{dS}{dt}=\frac{de}{dt}+p\frac{dV}{dt}=0.$
+    而绝对温度$T>0$,故$\frac{dS}{dt}=0.$
+
+    \item 导出理想流体的能量方程
+    \begin{align*}
+        & \quad \frac{\partial}{\partial t}\left(\rho\big(e+\frac{1}{2} v_i v_i\big)\right)
+        +\frac{\partial}{\partial x_j}\left(\rho v_j\big(e+\frac{1}{2} v_i v_i\big)\right)
+        +\frac{\partial}{\partial x_j}(p v_j) \\
+        & = \rho f_i v_i-\frac{\partial q_i}{\partial x_i}.
+    \end{align*}
+
+    解：$\Omega$内总能量：
+    $$\int_{\Omega}(\rho e+\frac12\|\v\|^2)dV,$$
+    $[t_1,t_2]$从$\partial\Omega$流出的能量(分为流出流体的能量和热传导出去的能量)：
+    $$\int_{t_1}^{t_2}\int_{\Omega}\rho \v(e+\frac12\|\v\|^2)\cdot \n dSdt+\int_{t_1}^{t_2}\int_{\partial\Omega}\q\cdot\n dSdt,$$
+    $[t_1,t_2]$所有力(包括外力和压强)：
+    $$\int_{t_1}^{t_2}\int_{\Omega}\rho \f\cdot\v+\int_{t_1}^{t_2}\int_{\partial\Omega}(-p\n)\cdot \v dSdt. $$
+    因此由能量守恒，有：
+    $$\int_{\Omega}(\rho e+\frac12\|\v\|^2)dV|_{t_1}^{t_2}
+    =-\left[\int_{t_1}^{t_2}\int_{\Omega}\rho \v(e+\frac12\|\v\|^2)\cdot \n dSdt
+    +\int_{t_1}^{t_2}\int_{\partial\Omega}\q\cdot\n dSdt\right]
+    +\left[\int_{t_1}^{t_2}\int_{\Omega}\rho \f\cdot\v
+    +\int_{t_1}^{t_2}\int_{\partial\Omega}(-p\n)\cdot \v dSdt\right]$$
+    由Gauss公式，化简得：
+    $$\frac{\partial}{\partial t}\left(\rho(e+\frac12 v_iv_i)\right)
+    +\frac{\partial}{\partial{x_j}}(pv_j)-\rho f_iv_i+\frac{\partial{q_i}}{\partial{x_i}}
+    +\frac{\partial}{\partial{x_j}}\left(\rho v_j(e+\frac12 v_iv_i)\right)=0.$$
+    即得理想流体的能量方程：
+    $$\frac{\partial}{\partial{t}}\left(\rho(e+\frac12 \|v\|^2)\right)
+    +\frac{\partial}{\partial{x_j}}\left(\rho v_j(e+\frac12 \|v\|^2)+pv_j\right)
+    =\rho f_iv_i-\frac{\partial{q_i}}{\partial{x_i}}.$$
+
+    \item 设空气是温度为 $T$ 的理想气体。证明在地面附近，空气密度 $\rho$ 随高度 $z$ 的变化规律为 
+    $\rho=\rho_0 \mathrm{e}^{-\frac{m g z}{R T}}$，
+    其中 $g$ 为重力加速度，$R$ 为理想气体常数，
+    $m$ 为 $1 {\rm mol}$ 空气的质量，$\rho_0$ 为地面上的空气密度．
+
+    解：宏观上达到平衡态时，可以假设$\v=0$.
+
+    我们考虑高度为$z$处的一个小气体圆柱，由力学平衡条件(气体圆柱中气体质量=上下压力差)：
+    $$dp_z=-\rho_z gdz.$$
+    由理想气体状态方程：
+    $$p_z=\frac{nRT}{V}=\frac{nRT}{nm/\rho_z}=\frac{\rho_z RT}{m}.$$
+    故整理得微分方程：
+    $$\frac{RT}{m}d\rho_z=-\rho_z gdz.$$
+    进而：
+    $$\frac{d\log(\rho_z)}{dz}=-\frac{mg}{RT}.$$
+    结合初值条件$\rho_0$,解得：
+    $$\rho_z=\rho_0 e^{-\frac{mgz}{RT}}.$$
+
+    \item 证明 Bernoulli 定理 II：对于作定常无旋流动的理想不可压缩流体，
+    如果外力 $\boldsymbol{f}=-\nabla U$，那么
+    $$\frac{1}{2}\|\boldsymbol{v}\|^2+U+\frac{p}{\rho}$$
+    在全空间为常值。
+
+    解：作定常无旋流动的理想不可压缩流体，遵循无旋性、质量方程与动量方程：
+    \begin{align*}
+        &\nabla\cdot\v=0,\text{ 即 }\frac{\partial{v_i}}{\partial{x_j}}=\frac{\partial{v_j}}{\partial{x_i}}\\
+        &(\v\cdot\nabla)\v+\frac{1}{\rho}\nabla p+\nabla U=0\\
+        &\nabla\times\v=0
+    \end{align*}
+    故
+    \begin{align*}
+        \nabla\left(\frac12\|\v\|^2+U+\frac{p}{\rho}\right)&=\frac{\partial\big(\frac12 v_iv_i\big)}{\partial x_j}+\nabla U+\frac{1}{\rho}p\\
+        &=v_i\frac{\partial{v_i}}{\partial{x_j}}+\nabla U+\frac{1}{\rho}p\\
+        &=v_i\frac{\partial{v_j}}{\partial{x_i}}-(\v\cdot\nabla)\v\\
+        &=0,
+    \end{align*}
+    从而全空间上$\dfrac12\|\v\|^2+U+\dfrac{p}{\rho}$为常数.
+    
+    \item 考虑不可压缩流体的平面定常无旋运动，流体在上半平面流动，
+    且在 $x=0,0 \leqslant y \leqslant a$ 有一个障碍物，
+    无穷远处的速度为 $(v_0, 0)$。请写出流线的表达式。
+\end{enumerate}
+
+
+\section{狭义相对论}
+
+
+
+
+\subsection{2.1 Lorentz变换}
+\begin{enumerate}
+    \item 根据速度相加公式
+    $$\boldsymbol{u}=\frac{\boldsymbol{u}^{\prime}
+    +(\gamma-1) \dfrac{\boldsymbol{u}^{\prime} \cdot \boldsymbol{v}}{v^2} \boldsymbol{v}
+    +\gamma \boldsymbol{v}}{\gamma\left(1+\dfrac{\boldsymbol{u}^{\prime} \cdot \boldsymbol{v}}{c^2}\right)}$$
+    证明：如果 $\|\boldsymbol{u}^{\prime}\|<c,\|\boldsymbol{v}\|<c$，则合速度必定仍小于光速 $c$；
+    而如果 $\|\boldsymbol{u}^{\prime}\|$和 $\|\boldsymbol{v}\|$ 中有一个等于 $c$，则合速度必定等于 $c$。
+    
+    解:
+    $$c^2-\|\boldsymbol{u}\|^2=\frac{(c^2-\|\boldsymbol{u}^{\prime}\|^2)(c^2-v^2)}{c^2\big(1+\dfrac{\boldsymbol{u}^{\prime}\cdot\boldsymbol{v}}{c^2}\big)^2}.$$
+
+    \item 设 $K^{\prime}$ 系相对 $K$ 系以速度 $v=\tanh \theta$ 沿 $x$ 轴运动，请写出 Lorentz 变换的表达式。
+    
+    解:直接使用Lorentz变换即可。$x=x^{\prime} \cosh\theta+ct^{\prime} \sinh\theta, y=y^{\prime}, z=z^{\prime}, ct=x^{\prime} \sinh\theta+ct^{\prime} \cosh\theta$。
+
+    \item 设参考系 $K_i$ $(i=0, \cdots, n)$ 的坐标轴互相平行且同向，
+    每个 $K_i$ 系相对 $K_{i-1}$ 以速度 $v$ 沿 $x$ 轴向作匀速运动，
+    求 $K_n$ 系相对 $K_0$ 系的速度。
+    
+    解:记$v_s$表示系$K_s$相对$K_0$匀速向右运动的速率.则由速度相加公式,有
+    $$v_{s+1}=\frac{vv_s}{1+vv_s/c^2}.$$
+    这是一个一阶线性递推数列,容易证明
+    $$v_n=c\frac{(c+v)^n-(c-v)^n}{(c+v)^n+(c-v)^n}.$$
+
+    \item 设列车的长度为 $20 c$（在列车上测量），并以速度 $0.6 c$ 行驶。
+    现在列车上在车头，中点和车尾各有一个钟，并已对准。
+    当地面上观察到列车上中点的钟所指的时间为 $1^{\prime} 00^{\prime \prime}$ 时，
+    求地面上观察到车头和车尾的钟所指的时间。
+
+    解:以地面为$K$系,列车为$K^{\prime}$系.已知$\Delta t=0$, $\Delta x^{\prime}=10c$和$v=0.6c$.考虑Lorentz逆变换公式
+    $$0=\Delta t=\frac{\Delta t^{\prime}+v\Delta x^{\prime}/c^2}{\sqrt{1-v^2/c^2}},$$
+    得车头的$\Delta t^{\prime}$为$-6s$,时钟显示为$54$秒.
+    车尾的$\Delta t^{\prime}$为$6s$,时钟显示为$1$分$6$秒.
+\end{enumerate}
+
+
+\subsection{2.2 四维Minkowski时空}
+\begin{enumerate}
+    \item 设在惯性系 $K$ 中，两个事件分别发生于 $\boldsymbol{q}_i=(t_i, \boldsymbol{r}_i)$ $(i=1,2)$。
+    对另一个惯性系 $K^{\prime}$ 中，两个事件分别发生于 $\boldsymbol{q}_i^{\prime}=(t_i^{\prime}, \boldsymbol{r}_i^{\prime})$ $(i=1,2)$。
+    $\boldsymbol{v}=\boldsymbol{q}_2-\boldsymbol{q}_1$.
+    
+    （1）若 $\boldsymbol{v}$ 是类时向量，$t_2>t_1$，
+    则对任一惯性系 $K^{\prime}$，都有 $t_2^{\prime}>t_1^{\prime}$。
+    
+    （2）若 $\boldsymbol{v}$ 是类空向量，$t_2>t_1$，
+    则存在惯性系 $K^{\prime}$，使得 $t_2^{\prime}<t_1^{\prime}$。
+
+解：（1）由 $t_{2}>t_{1}$ 及 $\|\boldsymbol{r}_{2}-\boldsymbol{r}_{1}\|<c(t_{2}-t_{1})$，经 Lorentz 变换，
+$$t_{2}^{\prime}-t_{1}^{\prime}=\gamma\left(t_{2}-t_{1}-\frac{\left(\boldsymbol{r}_{2}-\boldsymbol{r}_{1}\right) \cdot \boldsymbol{v}}{c^{2}}\right) 
+\geqslant \gamma\left(t_{2}-t_{1}-\frac{\left\|\boldsymbol{r}_{2}-\boldsymbol{r}_{1}\right\|}{c}\right)>0.$$
+（2）现在 $t_{2}>t_{1}$ 且 $\|\boldsymbol{r}_{2}-\boldsymbol{r}_{1}\|<c(t_{2}-t_{1})$。经 Lorentz 变换，
+$$t_{2}^{\prime}-t_{1}^{\prime}=\gamma\left(t_{2}-t_{1}-\frac{\left(\boldsymbol{r}_{2}-\boldsymbol{r}_{1}\right) \cdot \boldsymbol{v}}{c^{2}}\right)。$$
+当 $\boldsymbol{v}\ \|\ (\boldsymbol{r}_{2}-\boldsymbol{r}_{1})$ 且两者同向时，
+$$t_{2}^{\prime}-t_{1}^{\prime}=\gamma\left(t_{2}-t_{1}-\frac{v}{c}\left\|\boldsymbol{r}_{2}-\boldsymbol{r}_{1}\right\|\right).$$
+当 $v$ 非常接近于 $c$ 时，可使上式为负。
+    
+    \item 证明：对两个指向未来的类时向量 $\boldsymbol{v}_1, \boldsymbol{v}_2$，成立以下结论．
+    
+    （i）$\langle\boldsymbol{v}_1, \boldsymbol{v}_2\rangle>0$。
+    
+    （ii） $\boldsymbol{v}_1+\boldsymbol{v}_2$ 也是指向未来的类时向量。
+    
+    （iii）$\langle\boldsymbol{v}_1, \boldsymbol{v}_2\rangle 
+    \geqslant\|\boldsymbol{v}_1\|\|\boldsymbol{v}_2\|$。
+    
+    （iv）$\|\boldsymbol{v}_1+\boldsymbol{v}_2\| 
+    \geqslant\|\boldsymbol{v}_1\|+\|\boldsymbol{v}_2\|$。
+
+解：记 $\boldsymbol{v}_{i}=(ct_{i}, \boldsymbol{r}_{i})$ $(i=1,2)$，
+则 $\langle\boldsymbol{v}_{1}, \boldsymbol{v}_{2}\rangle=c^{2}t_{1}t_{2}-\boldsymbol{r}_{1} \cdot \boldsymbol{r}_{2}$。
+由于 $\boldsymbol{v}_{1}, \boldsymbol{v}_{2}$都是指向未来的类时向量，
+有 $\|\boldsymbol{r}_{i}\|<ct_{i}$ $(i=1,2)$，且 $t_{1}, t_{2}>0$。
+
+（1）由 Schwarz 不等式，$|\boldsymbol{r}_{1} \cdot \boldsymbol{r}_{2}|<c^{2}t_{1}t_{2}$，
+从而 $\langle\boldsymbol{v}_{1}, \boldsymbol{v}_{2}\rangle>0$。
+
+（2）$\langle\boldsymbol{v}_{1}+\boldsymbol{v}_{2}, \boldsymbol{v}_{1}+\boldsymbol{v}_{2}\rangle
+=\langle\boldsymbol{v}_{1}, \boldsymbol{v}_{1}\rangle+\langle\boldsymbol{v}_{2}, \boldsymbol{v}_{2}\rangle
++2\langle\boldsymbol{v}_{1}, \boldsymbol{v}_{2}\rangle>0$。
+又由 $t_{1}+t_{2}>0$ 得 $\boldsymbol{v}_{1}+\boldsymbol{v}_{2}$ 是指向未来的类时向量。
+
+（3）记 $\theta$ 为 $\boldsymbol{r}_{1}$ 与 $\boldsymbol{r}_{2}$ 之间的夹角。
+\begin{align*}
+& \quad (c^{2}t_{1}t_{2}-\boldsymbol{r}_{1}\cdot\boldsymbol{r}_{2})^{2}-(c^{2}t_{1}^{2}-r_{1}^{2})(c^{2}t_{2}^{2}-r_{2}^{2}) \\
+& = -2c^{2}t_{1}t_{2} \boldsymbol{r}_{1}\cdot\boldsymbol{r}_{2}+c^{2}t_{2}^{2}r_{1}^{2}+c^{2}t_{1}^{2}r_{2}^{2}-r_{1}^{2}r_{2}^{2}+(\boldsymbol{r}_{1}\cdot\boldsymbol{r}_{2})^{2} \\
+& = -2c^{2}t_{1}t_{2}r_{1}r_{2}\cos\theta+c^{2}t_{2}^{2}r_{1}^{2}+c^{2}t_{1}^{2}r_{2}^{2}-r_{1}^{2}r_{2}^{2}+r_{1}^{2}r_{2}^{2}\cos^{2}\theta \\
+& = (ct_{1}r_{2}-ct_{2}r_{1}\cos\theta)^{2}+r_{1}^{2}(c^{2}t_{2}^{2}-r_{2}^{2})\sin^{2}\theta \geqslant 0.
+\end{align*}
+
+（4）由（3）即得。
+    
+    \item 找出 $\mathbf{R}^{1,3}$ 中的两组类空向量 $\boldsymbol{v}_1, \boldsymbol{v}_2$，
+    使得它们分别满足 $\langle\boldsymbol{v}_1, \boldsymbol{v}_2\rangle^2
+    <\langle\boldsymbol{v}_1, \boldsymbol{v}_1\rangle
+    \langle\boldsymbol{v}_2, \boldsymbol{v}_2\rangle$ 
+    和 $\langle\boldsymbol{v}_1, \boldsymbol{v}_2\rangle^2
+    >\langle\boldsymbol{v}_1, \boldsymbol{v}_1\rangle
+    \langle\boldsymbol{v}_2, \boldsymbol{v}_2\rangle$。
+
+解：取 $\boldsymbol{v}_{1}=(a,1,0,0), \boldsymbol{v}_{2}=(a,0,1,0)$，则
+$$\langle\boldsymbol{v}_{1}, \boldsymbol{v}_{1}\rangle\langle\boldsymbol{v}_{2}, \boldsymbol{v}_{2}\rangle
+-\langle\boldsymbol{v}_{1}, \boldsymbol{v}_{2}\rangle^{2}=1-2a^{2},$$
+因此当 $|a|<1/\sqrt{2}$ 时成立 $\langle\boldsymbol{v}_{1}, \boldsymbol{v}_{2}\rangle^{2}<\langle\boldsymbol{v}_{1}, \boldsymbol{v}_{1}\rangle\langle\boldsymbol{v}_{2}, \boldsymbol{v}_{2}\rangle$，
+而当 $\sqrt{2}/2<|a|<1$ 时成立 $\langle\boldsymbol{v}_{1}, \boldsymbol{v}_{2}\rangle^{2}>\langle\boldsymbol{v}_{1}, \boldsymbol{v}_{1}\rangle\langle\boldsymbol{v}_{2}, \boldsymbol{v}_{2}\rangle$。
+    
+    \item 设 $M$ 是 $\mathbf{R}^{1,3}$ 上的一个正 Lorentz 变换矩阵，
+    并将它写成分块矩阵 $\boldsymbol{M}=\begin{pmatrix}a & \boldsymbol{p}^{\mathrm{T}} \\ \\ \boldsymbol{q} & \boldsymbol{D}\end{pmatrix}$，
+    其中 $\boldsymbol{D}$ 是 $3 \times 3$ 实矩阵，
+    $\boldsymbol{p}$ 和 $\boldsymbol{q}$ 是两个 $3$ 维实列向量，$a$ 是一个实数。
+    
+    请证明下面的结论。
+    
+    （1） $\det \boldsymbol{D}>0$．
+    
+    （2）存在 $\mathbf{R}^3$ 中的旋转 $\boldsymbol{S}_1$，
+    使得 $\boldsymbol{S}_1 \boldsymbol{M}=\left(\begin{array}{cccc}* & * & * & * \\ * & * & * & * \\ 0 & * & * & * \\ 0 & * & * & *\end{array}\right)$。
+    
+    （3）存在一个沿 $x$ 方向作匀速运动的 Lorentz 变换 $\boldsymbol{S}_2$，使得
+    $$\boldsymbol{S}_2 \boldsymbol{S}_1 \boldsymbol{M}
+    =\begin{pmatrix}1 & 0 & 0 & 0 \\0 & * & * & * \\
+    0 & * & * & * \\0 & * & * & *\end{pmatrix}.$$
+    于是，任何一个正 Lorentz 变换必可分解为若干个 $\mathbf{R}^3$ 中的旋转与沿 $x$ 方向作匀速运动的 Lorentz 变换的复合。
+
+    解：(1)由条件$\boldsymbol{M}^{\text{T}}\boldsymbol{g}\boldsymbol{M}=\boldsymbol{g}$得
+    ($\boldsymbol{g}$是$\mathbf{R}^{1,3}$的度量矩阵)，
+    \begin{align*}
+        \boldsymbol{D}^{\text{T}}\boldsymbol{D}=&\boldsymbol{p}\boldsymbol{p}^{\text{T}}+\boldsymbol{I}\\
+        \boldsymbol{q}^{\text{T}}=&a\boldsymbol{p}^{T}\\
+        a^2=&\boldsymbol{q}^{\text{T}}\boldsymbol{q}+1.
+    \end{align*}
+    由上面三式，
+    \begin{align*}
+        \text{det}\boldsymbol{M}=\text{det}(a\boldsymbol{D}-\boldsymbol{q}\boldsymbol{p}^{\text{T}})
+        =a^{-1}\text{det}\Big((\boldsymbol{q}^{\text{T}}\boldsymbol{q}+1)\boldsymbol{I}-\boldsymbol{q}
+        \boldsymbol{q}^{\text{T}}\Big)\text{det}\boldsymbol{D}.
+    \end{align*}
+    由于$\boldsymbol{q}\boldsymbol{q}^{\text{T}}$的三个特征值分别为$\boldsymbol{q}^{\text{T}}\boldsymbol{q},0,0$，
+    所以由$a>0,\text{det}\boldsymbol{M}>0$得$\text{det}\boldsymbol{D}>0$.\\
+    (2)如果$\boldsymbol{q}=\boldsymbol{0}$，那么结论已成立。下面假设$\boldsymbol{q}\neq \boldsymbol{0}$.\\
+    \quad取$\mathbb{R}^3$中的单位向量$\boldsymbol{u}_2, \boldsymbol{u}_3$，使得
+    $u_1=\dfrac{\boldsymbol{q}}{\|\boldsymbol{q}\|},\boldsymbol{u}_2, \boldsymbol{u}_3$构成标准正交基，且
+    $\text{det}(\boldsymbol{u}_1,\boldsymbol{u}_2, \boldsymbol{u}_3)=1$.令$\boldsymbol{R}=(\boldsymbol{u}_1,\boldsymbol{u}_2, \boldsymbol{u}_3)^{\text{T}},
+    \boldsymbol S_1=\begin{pmatrix}
+        1 & \  \\
+        \ & \boldsymbol{R}\\
+    \end{pmatrix}$ 
+    则$\boldsymbol{S}_1\boldsymbol{M}$仍是固有Lorentz变换，其左下角的块为$\boldsymbol{R}\boldsymbol{q}=(\|\boldsymbol{q}\|,0,0)^{\text{T}}$，
+    所以$\boldsymbol{S}_1\boldsymbol{M}$具有要求的形式.\\
+    (3)设$\boldsymbol{S}_1\boldsymbol{M}=\begin{pmatrix}
+        a & * & * & * \\
+        -\beta a & * & * & *\\
+        0 & * & * & * \\
+        0 & * & * & * \\
+    \end{pmatrix}$.由$a^2=\boldsymbol{q}^{\text{T}}\boldsymbol{q}+1$得$|\beta|<1$.
+    令$\gamma = \dfrac{1}{\sqrt{1-\beta^2}}$,
+    \begin{align*}
+        \boldsymbol{S}_2=
+        \begin{pmatrix}
+            \gamma & \gamma \beta & 0 & 0\\
+            \gamma \beta & \gamma & 0 & 0\\
+            0 & 0 & 1 & 0\\
+            0 & 0 & 0 & 1\\
+        \end{pmatrix}
+    \end{align*}
+    则$\boldsymbol{S}_2$是固有Lorentz变换，从而
+    \begin{align*}
+        \boldsymbol{S}_2\boldsymbol{S}_1\boldsymbol{M}=
+        \begin{pmatrix}
+            a\sqrt{1-\beta^2} & \boldsymbol{0}\\
+            \boldsymbol{q}^{(2)} & \boldsymbol{D}^{(2)}\\
+        \end{pmatrix}
+    \end{align*}
+    也是固有Lorentz变换。\\
+    由$\boldsymbol{q}^{\text{T}}\boldsymbol{D}=a\boldsymbol{p}^{\text{T}}$
+    和$a^2=\boldsymbol{q}^{\text{T}}\boldsymbol{q}+1$得，
+    \begin{align*}
+        \boldsymbol{q}^{(2)\text{T}}\boldsymbol{D}^{(2)}=\boldsymbol{0},\quad
+        a^2(1-\beta^2)=\boldsymbol{q}^{(2)\text{T}}\boldsymbol{q}^{(2)}+1,
+    \end{align*}
+    从而有$\boldsymbol{q}^{(2)}=\boldsymbol{0},a=\gamma$,即
+    \begin{align*}
+        \boldsymbol{S}_2\boldsymbol{S}_1\boldsymbol{M}=
+        \begin{pmatrix}
+            1 & 0\\
+            0 & \boldsymbol{D}^{(2)}\\
+        \end{pmatrix}
+    \end{align*}
+    由于$\boldsymbol{S}_2\boldsymbol{S}_1\boldsymbol{M}$是固有Lorentz变换，
+    $\boldsymbol{D}^{(2)}$是$\mathbb{R}^3$中的旋转。
+
+    \item 设 $a d-b c=1$，那么有恒等式
+    $$\begin{pmatrix}a & b \\c & d\end{pmatrix}
+    =\begin{pmatrix}a & -\dfrac{\bar{c}}{|a|^2+|c|^2} \\
+    c & \dfrac{\bar{a}}{|a|^2+|c|^2}\end{pmatrix}
+    \begin{pmatrix}1 & \dfrac{\bar{a} b+\bar{c} d}{|a|^2+|c|^2} \\
+    0 & 1\end{pmatrix}.$$
+    定义 $\varphi: S L(2, \mathbf{C}) \rightarrow \mathbf{C}^2 \backslash\{(0,0)\} \times \mathbf{C}$,
+    $$\begin{pmatrix}a & b \\c & d\end{pmatrix} \mapsto
+    \left((a, c), \frac{\bar{a} b+\bar{c} d}{|a|^2+|c|^2}\right).$$
+    证明 $\varphi$ 是同胚．
+    
+    解：$\varphi$单：\\
+    \quad 设$\begin{pmatrix}
+        a & b\\
+        c & d\\
+    \end{pmatrix},
+    \begin{pmatrix}
+        a' & b'\\
+        c' & d'\\
+    \end{pmatrix}\in SL(2,\mathbb{C})$，且它们在$\varphi$下的像相等，则
+    $a'=a, c'=c, \bar{a}'b'+\bar{c}'d'=\bar{a}b+\bar{c}d$.\\
+    \quad 当$a=\bar{a}\neq 0$时，在$a(\bar{a}b'+\bar{c}d')=a(\bar{a}b+\bar{c}d)$中
+    用$ad=bc+1,ad'=bc'+1$代入得$b'=b$.再用$bc=ad-1,bc'=ad'-1$代入得$\bar{c}(d'-d)=0$.
+    若$c\neq0$,则$d'=d$.若$c=0$，则由$ad-bc=1$和$a'd'-b'c'=1$也得$d'=d$.\\
+    \quad 当$a=\bar{a}=0$时，必有$c=\bar{c}\neq0$，由$\bar{a}'b'+\bar{c}'d'=\bar{a}b+\bar{c}d$
+    得$d'=d$.再由$ad-bc=1$和$a'd'-b'c'=1$得$b'=b$.\\
+    \quad $\varphi$满：\\
+    \quad 对任意$a,c,\mu \in \mathbb{C}$,且$(a,c)\neq(0,0)$，令$b=\mu a-\dfrac{\bar{c}}{|a|^2+|c|^2},
+    d=\mu c+\dfrac{\bar{a}}{|a|^2+|c|^2}$.则$ad-bc=1$,且$\dfrac{\bar{a}b+\bar{c}d}{|a|^2+|c|^2}=\mu$.\\
+    \quad $\varphi$与$\varphi^{-1}$连续：\\
+    \quad $a\neq 0时，SL(2, \mathbb{C})$上可以以$(a,b,c)$为局部坐标，在此局部坐标下$\varphi$可表示为
+    \begin{align*}
+        \varphi':&\mathbb{C}^3\backslash\{(0,b,c)|b,c\in \mathbb{C}\}\rightarrow SL(2,\mathbb{C}),\\
+        &(a,b,c)\mapsto 
+        \begin{pmatrix}
+            a & b\\
+            c & a^{-1}(bc+1)\\
+        \end{pmatrix}
+    \end{align*}.这时,$\dfrac{\bar{a}b+\bar{c}d}{|a|^2+|c|^2}=b+\dfrac{\bar{c}}{a(|a|^2+|c|^2)}$
+    关于$(a,b,c)$连续。反之，对给定的$(a,c,\mu)\in (\mathbb{C}^2\backslash\{(0,0)\})\times\mathbb{C}$,有
+    $b=\mu a-\dfrac{\bar{c}}{|a|^2+|c|^2}$关于$(a,c,\mu)$连续。\\
+    \quad 类似地，当$c\neq 0$时，$SL(2,\mathbb{C})$上可以以$(a,c,d)$为局部坐标，在此局部坐标下$\varphi$可表示为
+    \begin{align*}
+        \varphi '':&\mathbb{C}^3\backslash\{(a,0,d)|a,d\in\mathbb{C}\}\rightarrow SL(2,\mathbb{C}).\\
+        &(a,c,d)\mapsto\begin{pmatrix}
+            a & c^{-1}(ad-1)\\
+            c & d\\
+        \end{pmatrix}.
+    \end{align*}
+    这时，$\dfrac{\bar{a}b+\bar{c}d}{|a|^2+|c|^2}=d-\dfrac{\bar{a}}{c(|a|^2+|c|^2)}$关于$(a,c,d)$连续。
+    反之，对给定的$(a,c,\mu)\in (\mathbb{C}^2\backslash\{(0,0)\})\times \mathbb{C}$,有$d=\mu c+\dfrac{\bar{a}}{|a|^2+|c|^2}$
+    关于$(a,c,\mu)$连续。\\
+    \quad 至此证明了$\varphi$是同胚。于是，$SL(2,\mathbb{C})$同胚于
+    \begin{align*}
+       (\mathbb{C}^2\backslash\{(0,0)\})\times \mathbb{C}\cong S^3\times \mathbb{R}^3.
+    \end{align*}
+\end{enumerate}
+
+\subsection{2.3 动力学方程}
+\begin{enumerate}
+\item 一个静止质量为 $M$ 的粒子在静止状态衰变为另一个静止质量为 $m$ 的粒子和一个光子。求产生的光子的能量。
+
+解：设衰变后粒子的动量为 $\p$，
+则由动量守恒，光子的动量为 $-\p$，能量为 $pc$，其中 $p=\|\p\|$。再由能量守恒，
+$$Mc^{2}=\sqrt{m^{2}c^{4}+p^{2}c^{2}}+pc,$$
+解得光子的能量
+$$pc=\frac{M^{2}-m^{2}}{2M} c^{2}.$$
+
+\item 证明两个静止质量非零的粒子碰撞后不可能变为一个光子。
+
+\textbf{注：}当正负电子碰撞时，产生的是两个光子。
+
+解：假设结果是一个光子。由能量--动量守恒得
+$$\frac{m_{1}c^{2}}{\sqrt{1-v_{1}^{2}/c^{2}}}+\frac{m_{2}c^{2}}{\sqrt{1-v_{2}^{2}/c^{2}}}=c\|\boldsymbol{p}\|, \quad 
+\frac{m_{1}\boldsymbol{v}_{1}}{\sqrt{1-v_{1}^{2}/c^{2}}}+\frac{m_{2}\boldsymbol{v}_{2}}{\sqrt{1-v_{2}^{2}/c^{2}}}=\boldsymbol{p},$$
+从而
+$$\left(\frac{m_{1}}{\sqrt{1-v_{1}^{2}/c^{2}}}+\frac{m_{2}}{\sqrt{1-v_{2}^{2}/c^{2}}}\right)^{2}
+=\left\|\frac{m_{1}\boldsymbol{v}_{1}/c}{\sqrt{1-v_{1}^{2}/c^{2}}}+\frac{m_{2} \boldsymbol{v}_{2}/c}{\sqrt{1-v_{2}^{2}/c^{2}}}\right\|^{2},$$
+即
+$$m_{1}^{2}+m_{2}^{2}+2m_{1} m_{2} \frac{1-\boldsymbol{v}_{1} \cdot \boldsymbol{v}_{2}/c^{2}}{\sqrt{1-v_{1}^{2}/c^{2}} \sqrt{1-v_{2}^{2}/c^{2}}}=0.$$
+但左边是正数，矛盾。
+
+\item 验证相对论流体力学的能量动量张量的分量 $T^{ij}=p\delta^{ij}+\dfrac{\gamma^2 v^i v^j}{c^2}(c^2\rho+p)$。
+
+解：\begin{align*}
+T^{ij} & =R^{i}{ }_{0} R^{j}{ }_{0} c^{2} \rho+R_{k}^{i} R^{j}{ }_{l} p \delta^{kl} \\
+& =\frac{\gamma}{c} v^{i} \frac{\gamma}{c} v^{j} c^{2} \rho+\left(\delta_{ik}+\frac{\gamma-1}{v^{2}} v^{i} v^{k}\right)\left(\delta_{jl}+\frac{\gamma-1}{v^{2}} v^{j} v^{l}\right) p \delta^{kl} \\
+& =\gamma^{2} \rho v^{i} v^{j}+p \delta^{ij}+\frac{2(\gamma-1)}{v^{2}} p v^{i} v^{j}+\frac{(\gamma-1)^{2}}{v^{2}} p v^{i} v^{j} \\
+& =\gamma^{2} \rho v^{i} v^{j}+p \delta^{ij}+\frac{\gamma^{2}-1}{v^{2}} p v^{i} v^{j} \\
+& =\gamma^{2} \rho v^{i} v^{j}+p \delta^{ij}+\frac{\gamma^{2}}{c^{2}} p v^{i} v^{j}.
+\end{align*}
+\end{enumerate}
+
+\subsection{2.4 场的Lagrange形式}
+\begin{enumerate}
+\item 验证当Lagrange函数$L$不显含$(x^{\mu})$时，能量动量张量$T_{\mu}^{\, \nu}=
+\partial_{\mu}\varphi^{K}\dfrac{\partial L}{\partial(\partial_{\nu}\varphi^{K})}-\delta_{\mu}^{\nu}L$满足
+$\dfrac{\partial T_{\mu}^{\, \nu}}{\partial x^{\nu}}=0$.
+
+解：利用Lagrange方程$\dfrac{\partial}{\partial x^{\nu}}\dfrac{\partial L}{\partial(\partial_{\nu}\varphi^{K})}=
+\dfrac{\partial L}{\partial\varphi^{K}}$和链式法则$\dfrac{\partial L}{\partial x^{\mu}}=
+\dfrac{\partial L}{\partial(\partial_{\nu}\varphi^{K})}\partial_{\mu}\partial_{\nu}\varphi^{K}+
+\dfrac{\partial L}{\partial \varphi^{K}}\partial_{\mu}\varphi^{K}$即可得结论。
+
+\item 设 $\mathbf{R}^{1,3}$ 中的复标量场 $\varphi$ 的 Lagrange 函数为 
+$L(\varphi, \nabla \varphi, \bar{\varphi}, \nabla \bar{\varphi})
+=\partial^\mu \bar{\varphi} \cdot \partial_\mu \varphi-m^2 \bar{\varphi} \varphi$，
+其中 $m$ 是常数。求出相应的 Lagrange 方程。
+
+解：$\partial^{\mu} \partial_{\mu} \varphi=-m^{2} \varphi$。
+
+\item 在 $\mathbf{R}^{1,1}$ 中，坐标为 $(t, x)$，实标量场 $\varphi$ 的 Lagrange 函数为 
+$L=\dfrac{\partial \varphi}{\partial x}\dfrac{\partial \varphi}{\partial t}-2 \cos \varphi$。
+（i）求出相应的 Lagrange 方程。（ii）此 Lagrange 函数在变换 $(t, x) \rightarrow (\mathrm{e}^{\lambda}t, \mathrm{e}^{-\lambda}x)$ 下保持不变，请求出相应的守恒量。
+
+解：(i)
+$$\partial_{x}\left(\frac{\partial L}{\partial \varphi_{x}}\right)
++\partial_{t}\left(\frac{\partial L}{\partial \varphi_{t}}\right)
+-\frac{\partial L}{\partial \varphi}=2\varphi_{xt}-2\sin\varphi,$$
+所以方程为 $\varphi_{xt}=\sin\varphi$。
+
+(ii) 变分向量场为
+\[X^{0}=\frac{\mathrm{d}}{\mathrm{d} \lambda}(\mathrm{e}^{\lambda} t)\bigg|_{\lambda=0}=t, 
+\quad X^{1}=\frac{\mathrm{d}}{\mathrm{d} \lambda}(\mathrm{e}^{-\lambda} x)\bigg|_{\lambda=0}=-x,\]
+所以守恒量为
+\begin{align*}
+& J^{0}=(-t\varphi_{t}+x\varphi_{x})\varphi_{x}+t(\varphi_{x}\varphi_{t}-2\cos\varphi)=x\varphi_{x}^{2}-2t\cos\varphi, \\
+& J^{1}=(-t\varphi_{t}+x\varphi_{x})\varphi_{t}-x(\varphi_{x}\varphi_{t}-2\cos\varphi)=-t\varphi_{t}^{2}+2x\cos\varphi.
+\end{align*}
+守恒律方程为
+$$\frac{\partial}{\partial t}(x\varphi_{x}^{2}-2t\cos\varphi)
++\frac{\partial}{\partial x}(-t\varphi_{t}^{2}+2x\cos\varphi)=0.$$
+
+\item 一维 Schrödinger 方程的 Lagrange 函数为
+$$L=\frac{\mathrm{i} \hbar}{2}(\psi \bar{\psi}_t-\bar{\psi} \psi_t)
++\frac{\hbar^2}{2m}|\psi_x|^2+U(x, t)|\psi|^2,$$
+其中 $m, \hbar$ 是常数，$U(x, t)$ 是给定的函数。
+（i）求出相应的 Lagrange 方程（即 Schrödinger 方程）。（ii）$L$ 在变换
+$$\psi^{\prime}(x, t)=\mathrm{e}^{\mathrm{i} \varepsilon} \psi(x, t)$$
+下保持不变，求出上述不变性所导出的守恒量。
+
+解：(i)
+$$\frac{\partial L}{\partial \bar{\psi}_{t}}=\frac{\mathrm{i}\hbar}{2}\psi, 
+\quad \frac{\partial L}{\partial \bar{\psi}_{x}}=\frac{\hbar^{2}}{2m}\psi_{x}, 
+\quad \frac{\partial L}{\partial \bar{\psi}}=-\frac{\mathrm{i}\hbar}{2}\psi_{t}+U\psi,$$
+代入 Lagrange 方程得
+$$\frac{\partial}{\partial t}\left(\frac{\mathrm{i}\hbar}{2}\psi\right)
++\frac{\partial}{\partial x}\left(\frac{\hbar^{2}}{2m}\psi_{x}\right)
++\frac{\mathrm{i}\hbar}{2}\psi_{t}-U\psi=0,$$
+即
+$$\mathrm{i} \hbar \frac{\partial \psi}{\partial t}
+=-\frac{\hbar^{2}}{2m}\frac{\partial^{2} \psi}{\partial x^{2}}+U\psi.$$
+(ii) 变分向量场为
+$$X=0, \quad Y=\mathrm{i}\psi, \quad \bar{Y}=-\mathrm{i}\bar{\psi}.$$
+守恒量
+\begin{align*}
+& J^{t}=Y\frac{\partial L}{\partial \psi_{t}}+\bar{Y}\frac{\partial L}{\partial \bar{\psi}_{t}}=\hbar|\psi|^{2}, \\
+& J^{x}=Y\frac{\partial L}{\partial \psi_{x}}+\bar{Y}\frac{\partial L}{\partial \bar{\psi}_{x}}
+=\frac{\mathrm{i}\hbar^{2}}{2m}(\psi\bar{\psi}_{x}-\bar{\psi}\psi_{x}).
+\end{align*}
+它们满足 $\dfrac{\partial J^{t}}{\partial t}+\dfrac{\partial J^{x}}{\partial x}=0$。
+\end{enumerate}
+
+\section{经典电动力学}
+
+
+\subsection{3.1 电磁学的基本规律}
+\begin{enumerate}
+\item 计算半径分别为 $a$ 和 $b$ $(a<b)$ 的两个同心导体球壳之间的电容。
+
+解：设小球壳带电 $q$，则两个球壳之间的电势差为 $\dfrac{q}{4\pi\varepsilon_{0}}\left(\dfrac{1}{a}-\dfrac{1}{b}\right)$，
+所以电容为 $4\pi\varepsilon_{0}\dfrac{ab}{b-a}$。
+
+\item 设一半径为 $R$ 的圆周上均匀带电，线电荷密度为 $\eta$。
+计算在通过圆心且垂直于圆周所在平面的直线上一点的电场强度。
+
+解：设所考虑点为 $(0,0,z)$，则
+$$\boldsymbol{E}=\frac{\eta}{4\pi\varepsilon_{0}} \int_{0}^{2\pi} \frac{(R\cos\theta, R\sin\theta, z)}{(R^{2}+z^{2})^{3/2}} R \, {\rm d} \theta
+=\frac{\eta}{2\varepsilon_{0}} \frac{R}{(R^{2}+z^{2})^{3/2}}(0,0,z).$$
+
+\item 设电荷密度 $\rho(\boldsymbol{r})$ 具有紧支集，证明电势
+$$\varphi(\boldsymbol{r})=\frac{1}{4\pi\varepsilon_0}\int_{\mathbf{R}^3}\frac{\rho(\boldsymbol{r})}{\|\boldsymbol{r}-\boldsymbol{r}_0\|}\,\mathrm{d}V$$
+满足
+\begin{align*}
+& \varphi(\boldsymbol{r})=\frac{1}{4\pi\varepsilon_0\|\boldsymbol{r}\|}\int_{\mathbf{R}^3} \rho(\boldsymbol{r}^{\prime})\,\mathrm{d}V^{\prime}+O\left(\frac{1}{\|\boldsymbol{r}\|^2}\right), \\
+& -\nabla \varphi(\boldsymbol{r})=\frac{\boldsymbol{r}^2}{4\pi\varepsilon_0\|\boldsymbol{r}\|^3} \int_{\mathbf{R}^3} \rho(\boldsymbol{r}^{\prime})\,\mathrm{d}V^{\prime}+O\left(\frac{1}{\|\boldsymbol{r}\|^3}\right).
+\end{align*}
+解：设 $\rho$ 在 $B_{R}$ 外全为 $0$，则当 $\|\boldsymbol{r}\|>2R$ 时，
+\begin{align*}
+\Delta & \triangleq\left|\varphi(\boldsymbol{r})-\frac{1}{4\pi\varepsilon_{0}\|\boldsymbol{r}\|} \int_{\mathbf{R}^{3}} \rho(\boldsymbol{r}^{\prime}) \, \mathrm{d} V^{\prime}\right| \\
+& \leqslant \frac{1}{4\pi\varepsilon_{0}} \int_{B_{R}}\left|\rho(\boldsymbol{r}^{\prime})\right|\left|\frac{1}{\left\|\boldsymbol{r}-\boldsymbol{r}^{\prime}\right\|}-\frac{1}{\|\boldsymbol{r}\|}\right| \mathrm{d} V^{\prime}.
+\end{align*}
+由 $\|\boldsymbol{r}\|>2R,\left\|\boldsymbol{r}^{\prime}\right\| \leqslant R$ 得 $\|\boldsymbol{r}\|-R \leqslant\left\|\boldsymbol{r}-\boldsymbol{r}^{\prime}\right\| \leqslant\|\boldsymbol{r}\|+R$ 及 $\|\boldsymbol{r}\|-R \geqslant\|\boldsymbol{r}\| / 2$ ，因而
+\begin{align*}
+\Delta & \leqslant \frac{1}{4\pi\varepsilon_{0}} \int_{B_{R}}\left|\rho(\boldsymbol{r}^{\prime})\right|\left(\frac{1}{\|\boldsymbol{r}\|-R}-\frac{1}{\|\boldsymbol{r}\|}\right) \mathrm{d} V^{\prime} \\
+& \leqslant \frac{R}{2\pi\varepsilon_{0}\|\boldsymbol{r}\|^{2}} \int_{B_{R}} |\rho(\boldsymbol{r}^{\prime})| \, \mathrm{d} V^{\prime}.
+\end{align*}
+同样可得 $\nabla \varphi$ 的渐近式。
+
+\item ${ }^*$空间有一个有界接地导体 $S_0$ 以及一个同外界绝缘的有界导体 $S_1$，
+$S_1$ 带的净电量为正。请用调和函数的极值原理证明 $S_0$ 上任何一点的电荷面密度都是负的。
+
+解：首先说明导体外任何一点的电势为正。假设有一点电势为负，由于无穷远处电势为零，
+因而不会在无穷远达到下确界，从而必在 $S_{1}$ 的边界达到最小值。
+由于导体表面等势，$\varphi$ 在 $S_{1}$ 上每一点都达到最小值。
+由强极值原理，在 $S_{1}$ 上每一点都有 $\dfrac{\partial \varphi}{\partial n}>0$，
+这里 $n$ 指向外法向，因此 $S_{1}$上每一点的电荷密度均为负，与 $S_{1}$ 上净电量为正矛盾。
+所以电势的最小值为 $0$。进一步，如果导体外有一点电势为零，则电势在该点达到局部极小，
+由极值原理，导体外电势恒为零，与 $S_{1}$ 上有正电荷矛盾。
+这样，我们证明了导体外任何一点的电势为正。
+
+现在假设 $S_{0}$ 上有一点 $Q$ 有非负的电荷密度，则在该点 $\dfrac{\partial \varphi}{\partial n} \leqslant 0$，
+由于 $\varphi(Q)=0$，在 $Q$ 点附近的导体外存在一点 $Q^{\prime}$，使得 $\varphi(Q^{\prime}) \leqslant 0$，与导体外电势为正矛盾。
+
+\item ${ }^*$证明在导体表面，$\dfrac{\partial \boldsymbol{E}}{\partial n}=-2H\boldsymbol{E}$，其中 $n$ 为表面的外法向量，$H$为表面在该点的平均曲率。
+
+[比较直观的解答]
+\begin{tikzpicture}
+    \draw (1,3.732)arc(75:105:3.864);\draw (1,3.732)to(0,0)to(-1,3.732);
+    \draw (2,2.764)arc(75:105:7.727);\draw (-1.1,3.3) node {$\varepsilon$};
+    \draw (0,2.8) node {$\Delta l$};\draw (-0.75,1.6) node {$\dfrac{1}{k_i}$};
+    \draw (0,4.1) node {$(1-k_i\varepsilon)\Delta l$}
+\end{tikzpicture}
+曲面的两个主方向互相垂直，设两个主曲率为 $k_{1}$ 和 $k_{2}$。
+设导体表面为 $\Sigma$，对于 $\Sigma$ 上的一点 $P$，在 $\Sigma$ 上 $P$ 点附近作一边平行于主方向的曲边矩形 $R$。
+再在导体外作一与 $\Sigma$ 平行且与 $\Sigma$ 距离为 $\varepsilon$ 的曲面 $\Sigma_{\varepsilon}$，
+过 $R$ 上每一点作 $\Sigma$ 的法线，这些法线形成的曲面与 $\Sigma_{\varepsilon}$ 相交于曲边矩形 $R_{\varepsilon}$。
+如图，设 $R$ 的面积为 $\Delta S$，$R$ 上的一条平行于主曲率 $k_{i}$ 的主方向的边长为 $\Delta l$，
+则相应的 $R_{\varepsilon}$ 上的边长为 $(1+k_{i} \varepsilon) \Delta l$，
+从而 $R_{\varepsilon}$ 的面积为
+$$(1+k_{1} \varepsilon)(1+k_{2} \varepsilon) \Delta S 
+\approx(1+(k_{1}+k_{2}) \varepsilon+o(\varepsilon)) \Delta S.$$
+由于在 $\Sigma$ 上 $\boldsymbol{E}$ 垂直于 $\Sigma$，由 Gauss 定理，
+$$\int_{R_{\varepsilon}} \boldsymbol{E} \cdot {\rm d} \boldsymbol{S}
+=\int_{R} \boldsymbol{E} \cdot {\rm d} \boldsymbol{S}+o(\varepsilon).$$
+令 $R$ 趋于一点 $P$，并记 $R_{\varepsilon}$ 趋于点 $P_{\varepsilon}$，则有
+$$\boldsymbol{E}(P_{\varepsilon})(1+(k_{1}+k_{2}) \varepsilon)
+=\boldsymbol{E}(P)+o(\varepsilon).$$
+再令 $\varepsilon \rightarrow 0$，则有
+$$\frac{\partial \boldsymbol{E}}{\partial n}
+=-(k_{1}+k_{2}) \boldsymbol{E}=-2H\boldsymbol{E}.$$
+
+[使用 Riemann 几何的解答]
+
+记导体表面为 $\Sigma$, $P$ 为 $\Sigma$ 上一点。在 $\Sigma$ 上 $P$ 点附近取法坐标 $(u, v)$，
+记 $\boldsymbol{r}(u, v), \boldsymbol{n}(u, v)$ 为 $P$ 附近 $\Sigma$ 上任一点的位置向量和单位法向量。
+那么在 $P$ 附近空间中的任一点 $\widetilde{\boldsymbol{r}}$，可有唯一的一组 $(u, v, \varepsilon)$，使得
+$$\widetilde{\boldsymbol{r}}=\boldsymbol{r}(u, v)+\varepsilon \boldsymbol{n}(u, v).$$
+于是，
+\begin{align*}
+\widetilde{\boldsymbol{r}}_{u} & =\boldsymbol{r}_{u}+\varepsilon \boldsymbol{n}_{u}, \\
+\widetilde{\boldsymbol{r}}_{v} & =\boldsymbol{r}_{v}+\varepsilon \boldsymbol{n}_{v}, \\
+\widetilde{\boldsymbol{r}}_{\varepsilon} & =\boldsymbol{n}.
+\end{align*}
+从而，空间的度量张量的分量为
+\begin{align*}
+& \widetilde{g}_{uu}=g_{uu}+2 \varepsilon L+\varepsilon^{2} \boldsymbol{n}_{u} \cdot \boldsymbol{n}_{u}, \\
+& \widetilde{g}_{uv}=g_{uv}+2 \varepsilon M+\varepsilon^{2} \boldsymbol{n}_{u} \cdot \boldsymbol{n}_{v}, \\
+& \widetilde{g}_{vv}=g_{vv}+2 \varepsilon N+\varepsilon^{2} \boldsymbol{n}_{v} \cdot \boldsymbol{n}_{v}, \\
+& \widetilde{g}_{u\varepsilon}=\widetilde{g}_{v\varepsilon}=0, \\
+& \widetilde{g}_{\varepsilon\varepsilon}=1,
+\end{align*}
+这里 $L=\r_{u}\cdot\n_{u}, M=\r_{u}\cdot\n_{v}=\r_{v}\cdot\n_{u}, N=\r_{v}\cdot\n_{v}$ 为 $\Sigma$ 的第二基本形式的系数。
+
+由于我们已在 $P$ 点取法坐标，在 $P$ 点相应的联络系数为
+\begin{align*}
+& \widetilde{\Gamma}_{j k}^{i}=0 \quad(i, j, k=u, v), \\
+& \widetilde{\Gamma}_{u \varepsilon}^{u}=L, \quad \widetilde{\Gamma}_{v \varepsilon}^{u}=\widetilde{\Gamma}_{u \varepsilon}^{v}=M, \quad \widetilde{\Gamma}_{v \varepsilon}^{v}=N, \\
+& \widetilde{\Gamma}_{u u}^{\varepsilon}=-L, \quad \widetilde{\Gamma}_{u v}^{\varepsilon}=\widetilde{\Gamma}_{v u}^{\varepsilon}=-M, \quad \widetilde{\Gamma}_{v v}^{\varepsilon}=-N, \\
+& \widetilde{\Gamma}_{\varepsilon k}^{\varepsilon}=\widetilde{\Gamma}_{\varepsilon \varepsilon}^{k}=0 \quad(k=u, v, \varepsilon).
+\end{align*}
+在导体外，电场强度 $\boldsymbol{E}$ 的散度为零，记
+$$\boldsymbol{E}=E^{u} \widetilde{\boldsymbol{r}}_{u}+E^{v} \widetilde{\boldsymbol{r}}_{v}+E^{\varepsilon} \widetilde{\boldsymbol{r}}_{\varepsilon},$$
+则 $\boldsymbol{E}$ 的散度
+$$E_{;i}^{i}=\partial_{i} E^{i}+\widetilde{\Gamma}_{ij}^{i} E^{j}=0,$$
+这里下标 ${ }_{;i}$ 表示对 $x_{i}$ 的共变导数。在 $P$ 点，成立
+\[E^{u}=E^{v}=0, \quad 
+\partial_{u} E^{u}=\partial_{v} E^{u}=\partial_{u} E^{v}=\partial_{v} E^{v}=0,\]
+所以 $\boldsymbol{E}$ 的散度为零的方程成为
+$$\partial_{\varepsilon} E^{\varepsilon}+LE^{\varepsilon}+NE^{\varepsilon}=0,$$
+又由于在 $P$ 点 $\boldsymbol{E}$ 只有法向分量，且方向导数 $\dfrac{\partial}{\partial \varepsilon}=\dfrac{\partial}{\partial n}$，所以有
+$$\frac{\partial \boldsymbol{E}}{\partial n}=-(L+N)\boldsymbol{E}.$$
+对于法坐标，平均曲率 $H=(L+N)/2$，所以
+$$\frac{\partial \boldsymbol{E}}{\partial n}=-2H\boldsymbol{E}.$$
+
+\item 一个无限大导体平面接地，一个与此平面不相交的无限长的半径为 $3a$ 的导体圆柱面上的电压为 $U_0$，
+圆柱面中心到平面的距离为 $5a$。求这两个导体之间电势为 $U_0/2$ 的等势面。
+
+在垂直于圆柱面的平面内建立复坐标系，不妨设 $a=1$，两个导体分别位于 $|z|=3$ 和 $\operatorname{Re} z=5$。
+在实轴上找一点 $c$，使得它关于圆和直线的对称点重合，即 $\dfrac{9}{c}=10-c$，从而 $c=1,9$。
+现在作分式线性映射 $z \mapsto \zeta$，使得 $1 \mapsto 0, 9 \mapsto \infty, 3 \mapsto 1$，
+那么 $\zeta=\dfrac{3(z-1)}{9-z}$。它将 $|z|=3$ 映为 $|\zeta|=1$，将 $\operatorname{Re} z=5$ 映为 $|\zeta|=3$。
+
+在 $\zeta$ 平面上，在 $|\zeta|=1$ 时 $\varphi=U_{0}$，在 $|\zeta|=3$ 时 $\varphi=0$。
+对于同轴圆柱面产生的电场，电场强度为 $\dfrac{\rho}{2\pi\varepsilon_{0}} \dfrac{1}{r}$，
+其中 $\rho$ 是圆柱面的单位长度带的电量。因此电势为 $\dfrac{\rho}{2\pi\varepsilon_{0}} \ln r+C$，
+从而复电势为 $\varphi=\dfrac{\rho}{2\pi\varepsilon_{0}} \ln \zeta+C$。
+分别取 $\zeta=1$ 和 $\zeta=3$ 代入得 $\varphi=\left(1-\log_{3}\zeta\right) U_{0}$，
+从而 $\varphi=U_{0} \log_{3} \dfrac{9-z}{z-1}$，
+其实部为 $U=U_{0} \log_{3}\left|\dfrac{9-z}{z-1}\right|$。
+记 $\lambda=3^{\frac{2U}{U_{0}}}$，则当电势为 $U$ 时，
+有 $(\lambda-1)(x^{2}+y^{2})-2(\lambda-9) x+\lambda-81=0$。
+当 $U=U_{0}/2$，即 $\lambda=3$ 时，等势面方程为 $x^{2}+y^{2}+6x-39=0$，
+即 $(x+3)^{2}+y^{2}=48$，从而它的半径为 $4\sqrt{3}$。
+所求的等势面是半径为 $4\sqrt{3}a$ 的圆柱面。
+
+\item 求下列电路中 $P, Q$ 两点间的电阻。
+\begin{tikzpicture}
+    \draw (-2,-2)to(-2,2)to(2,2)to(2,-2)to(-2,-2);
+    \draw (-2,0)to(2,0);\draw (0,-2)to(0,0);
+    \filldraw[fill=white,draw=black] (-2.1,0.5)rectangle(-1.9,1.5);
+    \filldraw[fill=white,draw=black] (2.1,0.5)rectangle(1.9,1.5);
+    \filldraw[fill=white,draw=black] (-2.1,-0.5)rectangle(-1.9,-1.5);
+    \filldraw[fill=white,draw=black] (2.1,-0.5)rectangle(1.9,-1.5);
+    \filldraw[fill=white,draw=black] (0.1,-0.5)rectangle(-0.1,-1.5);
+    \filldraw[fill=white,draw=black] (-0.5,-0.1)rectangle(-1.5,0.1);
+    \filldraw[fill=white,draw=black] (0.5,-0.1)rectangle(1.5,0.1);
+    \draw (0,0.25) node {$Q$};\draw (0,1.75) node {$P$};
+    \filldraw (0,0)circle(0.04);\filldraw (-2,0)circle(0.04);
+    \filldraw (2,0)circle(0.04);\filldraw (0,-2)circle(0.04);
+    \filldraw (0,2)circle(0.04);\draw (-2.4,1) node {$5\Omega$};
+    \draw (2.5,1) node {$10\Omega$};\draw (-2.5,-1) node {$10\Omega$};
+    \draw (-0.5,-1) node {$40\Omega$};\draw (2.4,-1) node {$5\Omega$};
+    \draw (-1,-0.36) node {$10\Omega$};\draw (1,-0.36) node {$10\Omega$}
+\end{tikzpicture}
+解：如图，在 $P, Q$ 点之间加一个电源 $\mathcal{E}$，并设 $P$ 点的电压为 $0$，则 $Q$点的电压为 $\mathcal{E}$。
+\begin{tikzpicture}
+    \draw (-2,-2)to(-2,2)to(2,2)to(2,-2)to(-2,-2);
+    \draw (-2,0)to(2,0);\draw (0,-2)to(0,1);\draw (0,1.1)to(0,2);
+    \draw (-0.2,1)to(0.2,1);\draw (-0.1,1.1)to(0.1,1.1);
+    \filldraw[fill=white,draw=black] (-2.1,0.5)rectangle(-1.9,1.5);
+    \filldraw[fill=white,draw=black] (2.1,0.5)rectangle(1.9,1.5);
+    \filldraw[fill=white,draw=black] (-2.1,-0.5)rectangle(-1.9,-1.5);
+    \filldraw[fill=white,draw=black] (2.1,-0.5)rectangle(1.9,-1.5);
+    \filldraw[fill=white,draw=black] (0.1,-0.5)rectangle(-0.1,-1.5);
+    \filldraw[fill=white,draw=black] (-0.5,-0.1)rectangle(-1.5,0.1);
+    \filldraw[fill=white,draw=black] (0.5,-0.1)rectangle(1.5,0.1);
+    \draw (0.4,1.05) node {$\mathcal{E}$};\draw (0.2,0.2) node {$Q$};
+    \draw (-2.2,0) node {$A$};\draw (2.2,0) node {$B$};
+    \draw (0.2,1.8) node {$P$};\draw (0.2,-2.2) node {$C$};
+    \filldraw (0,0)circle(0.04);\filldraw (-2,0)circle(0.04);
+    \filldraw (2,0)circle(0.04);\filldraw (0,-2)circle(0.04);
+    \filldraw (0,2)circle(0.04);\draw (-2.4,1) node {$5\Omega$};
+    \draw (2.5,1) node {$10\Omega$};\draw (-2.5,-1) node {$10\Omega$};
+    \draw (-0.5,-1) node {$40\Omega$};\draw (2.4,-1) node {$5\Omega$};
+    \draw (-1,-0.36) node {$10\Omega$};\draw (1,-0.36) node {$10\Omega$}
+\end{tikzpicture}
+又设 $A, B, C$ 三点的电压分别为 $U_{A}, U_{B}, U_{C}$，电源中从 $P$ 到 $Q$ 的电流为 $I$。由 Kirchhoff 电流定律，
+\begin{align*}
+\frac{\mathcal{E}-U_{A}}{10\Omega}+\frac{\mathcal{E}-U_{B}}{10\Omega}+\frac{\mathcal{E}-U_{C}}{40\Omega}&=I, \\
+\frac{U_{A}}{5\Omega}+\frac{U_{A}-\mathcal{E}}{10\Omega}+\frac{U_{A}-U_{C}}{10\Omega}&=0, \\
+\frac{U_{B}}{10\Omega}+\frac{U_{B}-\mathcal{E}}{10\Omega}+\frac{U_{B}-U_{C}}{5\Omega}&=0, \\
+\frac{U_{A}}{5\Omega}+\frac{U_{B}}{10\Omega}&=I.
+\end{align*}
+由此解得
+$$U_{A}=\frac{3}{8} \mathcal{E}, \quad U_{B}=U_{C}=\frac{1}{2} \mathcal{E}, \quad \frac{\mathcal{E}}{I}=8 \Omega.$$
+所以 $P, Q$ 间的电阻为 $8 \Omega$。
+
+\item 一根无限长直导线中通有稳恒电流 $I$。证明在离其距离为 $a$ 处的磁感强度为 $\boldsymbol{B}=\dfrac{\mu_0}{2\pi}\dfrac{I}{r}\boldsymbol{e}_{\varphi}$。
+
+解：设无限长直导线位于 $z$ 轴上，通有向上的稳恒电流 $I$。取柱坐标 $(r, \varphi, z)$，
+并记 $\boldsymbol{e}_{r}, \boldsymbol{e}_{\varphi}, \boldsymbol{e}_{z}$ 分别为 $r, \varphi, z$ 方向的单位向量。
+
+由对称性，设磁感强度
+$$\boldsymbol{B}=B_{r}(r) \boldsymbol{e}_{r}+B_{\varphi}(r) \boldsymbol{e}_{\varphi}.$$
+先作一个以 $z$ 轴为对称轴，半径为 $r$，上下底分别位于 $z= \pm h$ 的圆柱面 $\Sigma$（含上、\ 下底面），则
+$$\int_{\Sigma} \boldsymbol{B} \cdot \mathrm{d} \boldsymbol{S}=2 \pi r h B_{r}(r).$$
+由 Gauss 磁定理，$B_{r}=0$。再作一个以 $z$ 轴为圆心，半径为 $r$，位于平面 $z=z_{0}$ 上的圆 $L$，则
+$$\int_{L} \boldsymbol{B} \times \mathrm{d} \boldsymbol{r}=2 \pi r B_{\varphi}(r),$$
+由 Ampère 定理，
+$$B_{\varphi}=\frac{\mu_{0}}{2\pi} \frac{I}{r},$$
+从而，
+$$\boldsymbol{B}=\frac{\mu_{0}}{2\pi} \frac{I}{r} \boldsymbol{e}_{\varphi}.$$
+
+\item 设一半径为 $R$ 的圆周电路上的电流强度为 $I$。试计算在通过圆心垂直于圆周所在平面的直线上，由该圆周电路产生的磁场的磁感强度。
+
+解：设点离圆周所在平面距离为 $z$，则
+\begin{align*}
+\boldsymbol{B} & =\frac{\mu_{0}}{4\pi} \int_{0}^{2\pi} \frac{I\,(-\sin \theta, \cos \theta, 0) \times(-R \cos \theta,-R \sin \theta,z) \, R \,{\rm d} \theta}{(R^{2}+z^{2})^{3/2}} \\
+& =\frac{\mu_{0}IR^{2}}{2(R^{2}+z^{2})^{3/2}} \boldsymbol{e}_{z}.
+\end{align*}
+
+\item 设有一个无限长的柱形螺线管，单位长度有 $n$ 匝线圈，每一匝线圈是一条光滑的简单闭曲线，并且线圈中通有电流 $I$。
+证明线圈内部的磁感强度大小为 $B=\mu_0 n I$，方向平行于螺线管的轴线，线圈外部的磁感强度为零。
+
+解：以所考虑的点为原点，取 $z$ 轴垂直于线圈方向。
+考虑 $z$ 坐标为 $z$ 的一圈线圈，设它的参数方程为 $(x(t), y(t), z)$ $(t \in[\alpha, \beta])$。
+那么，由 Biot--Savart 定律，参数在 $[t, t+{\rm d}t]$ 中的电流元 $I \,{\rm d} t$ 在原点产生的磁感强度为
+$$\mathrm{d} \boldsymbol{B}=\frac{\mu_{0}}{4\pi} \frac{I\,(x^{\prime}(t), y^{\prime}(t), 0) \times(-x(t),-y(t),-z) \,{\rm d} t}{(x(t)^{2}+y(t)^{2}+z^{2})^{3/2}}.$$
+因此，整个螺线管在原点产生的磁感强度为
+$$\boldsymbol{B}=\frac{\mu_{0}}{4\pi} \int_{-\infty}^{+\infty} \int_{\alpha}^{\beta} \frac{nI\,(x^{\prime}(t), y^{\prime}(t), 0) \times(-x(t),-y(t),-z) \,{\rm d} t}{(x(t)^{2}+y(t)^{2}+z^{2})^{3/2}} \,{\rm d} z.$$
+由于 $z$ 的积分区间关于原点对称，有
+\begin{align*}
+\boldsymbol{B} & =\frac{\mu_{0}nI}{4\pi} \int_{-\infty}^{+\infty} \int_{\alpha}^{\beta} \frac{(x^{\prime}(t), y^{\prime}(t), 0) \times(-x(t),-y(t), 0) \,{\rm d} t}{(x(t)^{2}+y(t)^{2}+z^{2})^{3/2}} \,{\rm d} z \\
+& =\frac{\mu_{0}nI}{4\pi} \int_{\alpha}^{\beta} \int_{-\infty}^{+\infty} \frac{-y(t) x^{\prime}(t)+x(t) y^{\prime}(t)}{(x(t)^{2}+y(t)^{2}+z^{2})^{3/2}} \boldsymbol{e}_{z} \,{\rm d} z \,{\rm d} t.
+\end{align*}
+利用 $\displaystyle\int_{-\infty}^{+\infty} \frac{1}{(p^{2}+z^{2})^{3/2}} \, {\rm d} z=\frac{2}{p^{2}}$ 得到
+$$\boldsymbol{B}=\frac{\mu_{0}nI}{2\pi} \int_{\alpha}^{\beta} \frac{-y(t) x^{\prime}(t)+x(t) y^{\prime}(t)}{x(t)^{2}+y(t)^{2}} \,{\rm d} t \boldsymbol{e}_{z}
+=\mu_{0}nIK\boldsymbol{e}_{z},$$
+其中 $K$ 是绕原点的绕数。
+所以当原点在线圈内时 $\boldsymbol{B}=\pm\mu_{0}nI\boldsymbol{e}_{z}$，
+而当原点在线圈外时 $\boldsymbol{B}=0$。
+\end{enumerate}
+
+\subsection{3.2 Maxwell方程组}
+\begin{enumerate}
+\item 设空间 $z \geqslant 0$ 部分是电导率为 $\sigma$ 的导体，$z<0$ 部分是真空，导体内的电荷密度为零。
+现在在导体内有沿 $y$ 方向的有界正弦交变电场 $\boldsymbol{E}=\mathrm{e}^{\mathrm{i} \omega t} \varphi(z) \boldsymbol{e}_y$，角频率 $\omega$ 为常值。
+如果忽略 Maxwell 方程中的位移电流项，证明 $\varphi=C \mathrm{e}^{-\sqrt{\frac{\mu_0 \sigma \omega}{2}} z} \mathrm{e}^{-\mathrm{i} \sqrt{\frac{\mu_0 \sigma \omega}{2}} z}$，其中 $C$ 是常量。
+
+解：Maxwell 方程组为
+\begin{align*}
+& \nabla \cdot \boldsymbol{E}=0, \quad \nabla \cdot \boldsymbol{B}=0, \\
+& \nabla \times \boldsymbol{E}=-\frac{\partial B}{\partial t}, 
+\quad \nabla \times \boldsymbol{B}=\mu_{0} \sigma \boldsymbol{E}.
+\end{align*}
+于是，$\boldsymbol{E}$ 满足方程
+\[\frac{\partial \boldsymbol{E}}{\partial t}=\frac{1}{2a^{2}} \triangle \boldsymbol{E},\]
+其中 $a=\sqrt{\frac{\mu_{0} \sigma}{2}}$。
+在导体内，将 $\boldsymbol{E}$ 的表达式代入方程得 $\varphi^{\prime \prime}=2\mathrm{i}a^{2}\omega\varphi$，从而
+\[\varphi=C_{1}\mathrm{e}^{(1+\mathrm{i})a\sqrt{\omega}z}+C_{2}\mathrm{e}^{-(1+\mathrm{i})a\sqrt{\omega}z}.\]
+当 $z \rightarrow+\infty$ 时 $\varphi$ 有界，得 $C_{1}=0$，再由初值得
+\[\varphi=C_{2}\mathrm{e}^{-(1+\mathrm{i})a\sqrt{\omega}z}
+=C_{2}\mathrm{e}^{-\sqrt{\frac{\mu_{0}\sigma\omega}{2}}z} 
+\mathrm{e}^{-\mathrm{i}\sqrt{\frac{\mu_{0}\sigma\omega}{2}}z}.\]
+
+\item 设 $(\boldsymbol{A}, \varphi)$ 是给定的电磁势，证明必存在规范变换，
+使得变换后的电磁势 $(\boldsymbol{A}^{\prime}, \varphi^{\prime})$ 满足 Lorentz 规范条件 
+$\dfrac{1}{c^2} \dfrac{\partial \varphi^{\prime}}{\partial t}+\nabla \cdot \boldsymbol{A}^{\prime}=\mathbf{0}$。
+
+解：作规范变换
+\[\varphi^{\prime}=\varphi-\frac{\partial \alpha}{\partial t}, 
+\quad \boldsymbol{A}^{\prime}=\boldsymbol{A}+\nabla \alpha,\]
+其中函数 $\alpha$ 待定，则有
+$$\frac{1}{c^{2}} \frac{\partial \varphi^{\prime}}{\partial t}+\nabla \cdot \boldsymbol{A}^{\prime}
+=\frac{1}{c^{2}} \frac{\partial \varphi}{\partial t}+\nabla \cdot \boldsymbol{A}-\frac{1}{c^{2}} \frac{\partial^{2} \alpha}{\partial t^{2}}+\Delta \alpha.$$
+所以只要 $\alpha$ 满足非齐次波动方程
+$$\frac{1}{c^{2}} \frac{\partial^{2} \alpha}{\partial t^{2}}-\Delta \alpha
+=\frac{1}{c^{2}} \frac{\partial \varphi}{\partial t}+\nabla \cdot \boldsymbol{A}$$
+即可。
+
+\item 设 Lagrange 函数为
+$$L=\frac{1}{2} m\|\dot{\boldsymbol{r}}\|^2+f_j(\boldsymbol{r}, t)\dot{x}_j+g(\boldsymbol{r}, t).$$
+证明：如果它所相应的 Lagrange 方程为
+$$m \ddot{x}_i=-e\frac{\partial \varphi}{\partial x_i}-e\frac{\partial A_i}{\partial t}+e \dot{x}_j\left(\frac{\partial A_j}{\partial x_i}-\frac{\partial A_i}{\partial x_j}\right),$$
+那么 $\boldsymbol{f}=e(\boldsymbol{A}+\nabla \alpha), g=-e\Big(\varphi-\dfrac{\partial \alpha}{\partial t}\Big)$，其中 $\alpha$ 是任一函数。
+
+解：$$\frac{\mathrm{d}}{\mathrm{d} t} \frac{\partial L}{\partial \dot{x}_{i}}
+=m \ddot{x}_{i}+\frac{\partial f_{i}}{\partial x_{j}} \dot{x}_{j}+\frac{\partial f_{i}}{\partial t}, \quad 
+\frac{\partial L}{\partial x_{i}}=\frac{\partial f_{j}}{\partial x_{i}} \dot{x}_{j}+\frac{\partial g}{\partial x_{i}},$$
+从而 Lagrange 方程为
+$$m \ddot{x}_{i}=\left(\frac{\partial f_{j}}{\partial x_{i}}-\frac{\partial f_{i}}{\partial x_{j}}\right) \dot{x}_{j}
++\frac{\partial g}{\partial x_{i}}-\frac{\partial f_{i}}{\partial t}.$$
+同给定的方程比较得
+$$\frac{\partial f_{j}}{\partial x_{i}}-\frac{\partial f_{i}}{\partial x_{j}}
+=e\left(\frac{\partial A_{j}}{\partial x_{i}}-\frac{\partial A_{i}}{\partial x_{j}}\right), \quad \frac{\partial g}{\partial x_{i}}-\frac{\partial f_{i}}{\partial t}
+=-e \frac{\partial \varphi}{\partial x_{i}}-e \frac{\partial A_{i}}{\partial t}.$$
+于是 $\boldsymbol{f}=e(\boldsymbol{A}+\nabla \alpha), g=-e\Big(\varphi-\dfrac{\partial \alpha}{\partial t}\Big)$，其中 $\alpha$ 是任一函数。
+
+\item 带电粒子在电磁场中的 Hamilton 函数为
+$$H=\frac{1}{2m}\|\boldsymbol{p}-e\boldsymbol{A}\|^2+e\varphi,$$
+请导出它相应的运动方程。
+
+解：\begin{align*}
+\dot{x}_{i} & =\frac{\partial H}{\partial p_{i}}=\frac{1}{m}(p_{i}-eA_{i}), \\
+\dot{p}_{i} & =-\frac{\partial H}{\partial x_{i}}=\frac{e}{m}(p_{j}-eA_{j}) \frac{\partial A_{j}}{\partial x_{i}}-e\frac{\partial \varphi}{\partial x_{i}}.
+\end{align*}
+将第一式得到的 $p_{i}=m \dot{x}_{i}+e A_{i}$ 代入第二式得
+$$m \ddot{x}_{i}+e \frac{\partial A_{i}}{\partial x_{j}} \dot{x}_{j}+e \dot{A}_{i}
+=e \dot{x}_{j} \frac{\partial A_{j}}{\partial x_{i}}-e \frac{\partial \varphi}{\partial x_{i}},$$
+即
+$$m\ddot{x}_{i}=e\dot{x}_{j}\varepsilon_{ijk}(\nabla \times \boldsymbol{A})_{k}-e\frac{\partial \varphi}{\partial x_{i}}-e\dot{A}_{i}.$$
+写成向量形式为
+$$m\ddot{\boldsymbol{r}}=e\dot{\boldsymbol{r}} \times(\nabla \times \boldsymbol{A})-e\nabla\varphi-e\dot{\boldsymbol{A}},$$
+即
+$$m\ddot{\boldsymbol{r}}=e\dot{\boldsymbol{r}} \times \boldsymbol{B}+e\boldsymbol{E}.$$
+\end{enumerate}
+
+\subsection{3.3 用张量和微分形式表示Maxwell方程组}
+\begin{enumerate}
+\item 证明波动方程 $\dfrac{1}{c^2} \dfrac{\partial^2 \varphi}{\partial t^2}=\triangle \varphi$ 在 Lorentz 变换下保持不变，其中 $\varphi$是标量场。
+
+解：\[\frac{1}{c^{2}} \frac{\partial^{2} \varphi}{\partial t^{2}}-\triangle \varphi
+=g^{\mu \nu} \frac{\partial^{2} \varphi}{\partial x^{\mu} \partial x^{\nu}}.\]
+
+\item 验证在 Lorentz 变换下磁感强度的变换式为
+$$\boldsymbol{B}^{\prime}=\gamma \boldsymbol{B}-(\gamma-1) \frac{\boldsymbol{v} \cdot \boldsymbol{B}}{v^2} \boldsymbol{v}-\frac{\gamma}{c^2} \boldsymbol{v} \times \boldsymbol{E}.$$
+
+解：\begin{align*}
+B_{i}^{\prime} & = \frac{1}{2} \varepsilon_{ijk} F^{\prime jk} \\
+& = \frac{1}{2} \varepsilon_{ijk} R_{0}^{j} R^{k}{ }_{a} F^{0a}
++ \frac{1}{2} \varepsilon_{ijk} R^{j}{ }_{a} R^{k}{ }_{0} F^{a0} 
++ \frac{1}{2} \varepsilon_{ijk} R^{j}{ }_{a}R^{k}{ }_{b} F^{ab} \\
+& = -\frac{\gamma}{2c^{2}} \varepsilon_{ijk} v_{j}\left(\delta_{ka}+\frac{\gamma-1}{v^{2}} v_{k} v_{a}\right) E_{a} \\
+& \quad +\frac{\gamma}{2C^{2}} \varepsilon_{ijk} v_{k}\left(\delta_{ja}+\frac{\gamma-1}{v^{2}} v_{j} v_{a}\right) E_{a} \\
+& \quad +\frac{1}{2} \varepsilon_{ijk} \varepsilon_{abc}\left(\delta_{ja}+\frac{\gamma^{-1}}{v^{2}} v_{j} v_{a}\right)\left(\delta_{kb}+\frac{\gamma-1}{v^{2}} v_{k} v_{b}\right) B_{c} \\
+& = \gamma B_{i}-\frac{\gamma-1}{v^{2}} v_{i} v_{j} B_{j}-\frac{\gamma}{c^{2}} \varepsilon_{i j k} v_{j} E_{k} .
+\end{align*}
+
+\item 在 $\mathbf{R}^n$ 中，取直角坐标系 $(x^1, \cdots, x^n)$ 并以此为正定向，且取标准欧氏度量。
+设 $\boldsymbol{F}=(F_1, \cdots, F_n)$ 为光滑向量场，$\eta=F_i {\rm d} x^i$。
+验证 $\delta \eta=-\dfrac{\partial F_i}{\partial x^i}$。
+
+解：\begin{align*}
+\delta \eta & =-* {\rm d} * \eta=-* {\rm d}\left(F_{i} \varepsilon_{i,1,\cdots,\hat{i},\cdots,n} \,{\rm d} x^{1} \wedge \cdots \wedge \widehat{{\rm d} x^{i}} \wedge \cdots \wedge {\rm d} x^{n}\right) \\
+& =-* {\rm d}\left((-1)^{i-1} F_{i} \,{\rm d} x^{1} \wedge \cdots \wedge \widehat{{\rm d} x^{i}} \wedge \cdots \wedge {\rm d} x^{n}\right) \\
+& =-* \frac{\partial F_{i}}{\partial x^{i}} \,{\rm d} x^{1} \wedge \cdots \wedge {\rm d} x^{n}=-\frac{\partial F_{i}}{\partial x^{i}}.
+\end{align*}
+
+\item 设 $F=\dfrac{1}{2} F_{\mu \nu} \mathrm{d} x^\mu \wedge \mathrm{d} x^\nu, 
+G=\dfrac{1}{2} G_{\mu \nu} \mathrm{d} x^\mu \wedge \mathrm{d} x^\nu, J=J_\mu \mathrm{d} x^\mu$。
+证明 Maxwell 方程组 $\mathrm{d} F=0, \delta G=J$ 等价于
+$$\frac{\partial F_{\lambda \mu}}{\partial x^\nu}
++\frac{\partial F_{\mu \nu}}{\partial x^\lambda}
++\frac{\partial F_{\nu \lambda}}{\partial x^\mu}=0, 
+\quad \frac{\partial G^{\mu \nu}}{\partial x^\nu}=J^\mu.$$
+
+解：\begin{align*}
+{\rm d} F & =\frac{1}{2} \frac{\partial F_{\mu \nu}}{\partial x^{\lambda}} \,{\rm d} x^{\lambda} \wedge \mathrm{d} x^{\mu} \wedge \mathrm{d} x^{\nu} \\
+& =\frac{1}{6}\left(\frac{\partial F_{\lambda \mu}}{\partial x^{\nu}}+\frac{\partial F_{\mu \nu}}{\partial x^{\lambda}}+\frac{\partial F_{\nu \lambda}}{\partial x^{\mu}}\right) {\rm d} x^{\lambda} \wedge {\rm d} x^{\mu} \wedge {\rm d} x^{\nu}.
+\end{align*}
+上式中，括号内的系数已是反对称的，所以它必为零。
+\begin{align*}
+\delta G & =* {\rm d} * G=* {\rm d}\left(\frac{1}{2!} \frac{1}{2!} G_{\sigma \tau} g^{\sigma \xi} g^{\tau\eta} \varepsilon_{\xi\eta\rho\omega} \,{\rm d} x^{\rho} \wedge {\rm d} x^{\omega}\right) \\
+& =\frac{1}{4} *\left(\frac{\partial G_{\sigma \tau}}{\partial x^{\nu}} g^{\sigma \xi} g^{\tau \eta} \varepsilon_{\xi\eta\rho\omega} \,{\rm d} x^{\nu} \wedge {\rm d} x^{\rho} \wedge {\rm d} x^{\omega}\right) \\
+& =\frac{1}{4} \frac{\partial G_{\sigma \tau}}{\partial x^{\nu}} g^{\sigma \xi} g^{\tau \eta} \varepsilon_{\xi\eta\rho\omega} g^{\nu\zeta} g^{\rho\alpha} g^{\omega\beta} \varepsilon_{\zeta\alpha\beta\gamma} \,{\rm d} x^{\gamma} \\
+& =\frac{1}{4} \frac{\partial G_{\sigma \tau}}{\partial x^{\nu}}(g^{\xi \sigma} g^{\eta \tau} g^{\rho \alpha} g^{\omega\beta} \varepsilon_{\xi\eta\rho\omega}) g^{\nu\zeta} \varepsilon_{\alpha\beta\zeta\gamma} \,{\rm d} x^{\gamma} \\
+& =\frac{1}{4} \frac{\partial G_{\sigma \tau}}{\partial x^{\nu}} \det(g) \varepsilon^{\sigma \tau \alpha \beta} g^{\nu\zeta} \varepsilon_{\alpha\beta\zeta\gamma} \,{\rm d} x^{\gamma} \\
+& =-\frac{1}{2} \frac{\partial G_{\zeta \gamma}}{\partial x^{\nu}} g^{\nu \zeta} \mathrm{d} x^{\gamma}+\frac{1}{2} \frac{\partial G_{\gamma\zeta}}{\partial x^{\nu}} g^{\nu \zeta} \,{\rm d} x^{\gamma} \\
+& =\frac{\partial G^{\mu\nu}}{\partial x^{\nu}} g_{\mu\gamma} \,{\rm d} x^{\gamma},
+\end{align*}
+所以 $\delta G=J$ 等价于 $\dfrac{\partial G^{\mu \nu}}{\partial x^{\nu}}=J^{\mu}$。
+
+\item 记 $f^\mu=J_\nu F^{\nu \mu}$ 为四维 Lorentz 力的分量，
+$f=f_\mu \mathrm{d} x^\mu$。验证 $f=-*(J \wedge * F)$。
+
+\textbf{注：}也可以用 $*$ 算子的性质直接验证。
+
+解：一方面，$f=c^{-1} \boldsymbol{j} \cdot \boldsymbol{E} \,{\rm d} x^{0}-(\rho \boldsymbol{E}+\boldsymbol{j} \times \boldsymbol{B}) \,{\rm d} \boldsymbol{r}$。另一方面，
+\begin{align*}
+J \wedge * F & =(c \rho {\rm d} x^{0}-\boldsymbol{j} \cdot {\rm d} \boldsymbol{r}) \wedge (c^{-1} \boldsymbol{E} \cdot {\rm d} \boldsymbol{\sigma}-\boldsymbol{B} \cdot {\rm d} \boldsymbol{r} \wedge {\rm d} x^{0}) \\
+& = \rho \boldsymbol{E} \cdot {\rm d} \boldsymbol{\sigma} \wedge {\rm d} x^{0}-c^{-1} j_{k} E_{l} \,{\rm d} x^{k} \wedge \frac{1}{2} \varepsilon_{lab} {\rm d} x^{a} \wedge {\rm d} x^{b}+j_{k} B_{l} \,{\rm d} x^{k} \wedge {\rm d} x^{l} \wedge {\rm d} x^{0} \\
+& = \rho \boldsymbol{E} \cdot {\rm d} \boldsymbol{\sigma} \wedge {\rm d} x^{0}-c^{-1} \boldsymbol{j} \cdot \boldsymbol{E} \,{\rm d} V+(\boldsymbol{j} \times \boldsymbol{B}) \cdot {\rm d} \boldsymbol{\sigma} \wedge {\rm d} x^{0}.
+\end{align*}
+所以
+$$*(J \wedge * F)=-(\rho \boldsymbol{E}+\boldsymbol{j} \times \boldsymbol{B}) \cdot \mathrm{d} \boldsymbol{r}-c^{-1} \boldsymbol{j} \cdot \boldsymbol{E} \,{\rm d} x^{0}.$$
+\end{enumerate}
+
+\subsection{3.4 电磁场的Lagrange形式与守恒量}
+\begin{enumerate}
+\item 验证当 $J^\mu=0$ 时，$\partial_\nu((\partial_\lambda \omega_\mu) F^{\nu \lambda})=0$。
+
+解：$$\partial_{\nu}((\partial_{\lambda} \omega_{\mu}) F^{\nu \lambda})
+=(\partial_{\nu} \partial_{\lambda} \omega_{\mu}) F^{\nu \lambda}
++(\partial_{\lambda} \omega_{\mu}) \partial_{\nu} F^{\nu \lambda}.$$
+上式中第一项为零，因为 $\partial_{\nu} \partial_{\lambda}$ 关于 $\lambda, \nu$ 对称而 $F^{\nu \lambda}$ 关于 $\lambda, \nu$ 反对称。又由 Maxwell 方程组得第二项也为零。
+
+\item 记 $\mathrm{d}^4 x=* 1$ 为四维 Minkowski 时空的体积元。电磁场的作用量可以写成
+$$\mathcal{L}=\int\left(-\frac{1}{2}\langle F, F\rangle
++\mu_0\langle J, \omega\rangle\right) * 1,$$
+请直接通过对 $\omega$ 变分导出 Maxwell 方程组。
+
+解：如果 $\omega$ 变为 $\omega_{\varepsilon}=\omega+\varepsilon \tau$，
+则 $F$ 变为 $F_{\varepsilon}={\rm d} \omega+\varepsilon {\rm d} \tau$。
+对固定边界的变分，有
+\begin{align*}
+\frac{\mathrm{d}}{{\rm d} \varepsilon} \mathcal{L}(\omega+\varepsilon \rho)\bigg|_{\varepsilon=0}
+& =\frac{\mathrm{d}}{{\rm d} \varepsilon} \int\left(-\frac{1}{2}\langle F_{\varepsilon}, F_{\varepsilon}\rangle+\mu_{0}\langle J, \omega_{\varepsilon}\rangle\right)\bigg|_{\varepsilon=0} * 1 \\
+& =\int\left(-\langle{\rm d} \omega, {\rm d} \tau\rangle+\mu_{0}\langle J, \tau\rangle\right) * 1 \\
+& =\int\left(-\langle\delta F, \tau\rangle+\mu_{0}\langle J, \tau\rangle\right) * 1 .
+\end{align*}
+由此得方程 $\delta F=\mu_{0} J$。
+
+\item 设 $\mathbf{R}^{1,3}$ 中的复标量场 $\varphi$ 和电磁场 $(\omega^\mu)$ 耦合的 Lagrange 函数为
+$$L=-\frac{1}{4}F^{\mu\nu}F_{\mu\nu}+\frac{1}{2}g^{\mu\nu}(\partial_\mu\bar{\varphi}-\mathrm{i}e\omega_\mu\bar{\varphi})
+(\partial_\nu\varphi+\mathrm{i}e\omega_\nu\varphi)-\frac{1}{2}m^2\varphi \bar{\varphi},$$
+其中 $m, e$ 是常数。求出相应的 Lagrange 方程。
+
+解：\begin{align*}
+L & =-\frac{1}{4} g^{\mu\sigma} g^{\nu \tau}(\partial_{\nu} \omega_{\mu}-\partial_{\mu} \omega_{\nu})(\partial_{\tau} \omega_{\sigma}-\partial_{\sigma} \omega_{\tau}) \\
+& \quad +\frac{1}{2} g^{\mu\nu}(\partial_{\mu} \varphi+\mathrm{i} e \omega_{\mu} \varphi) \cdot(\partial_{\nu} \bar{\varphi}-\mathrm{i} e \omega_{\nu} \bar{\varphi})-\frac{1}{2} m^{2} \bar{\varphi} \varphi,
+\end{align*}
+\begin{align*}
+& \frac{\partial L}{\partial\left(\partial_{\alpha} \bar{\varphi}\right)}=\frac{1}{2} g^{\alpha\beta}(\partial_{\beta} \varphi+\mathrm{i} e \omega_{\beta} \varphi), \\
+& \frac{\partial L}{\partial \bar{\varphi}}=-\frac{1}{2} \mathrm{i} e g^{\alpha\beta} \omega_{\alpha}(\partial_{\beta} \varphi+\mathrm{i} e \omega_{\beta} \varphi)-\frac{1}{2} m^{2} \varphi, \\
+& \frac{\partial L}{\partial(\partial_{\alpha} \omega_{\beta})}=g^{\mu\alpha} g^{\nu\beta}(\partial_{\nu} \omega_{\mu}-\partial_{\mu} \omega_{\nu}), \\
+& \frac{\partial L}{\partial \omega_{\beta}}=\frac{\mathrm{i} e}{2} g^{\mu\beta}(\varphi \partial_{\mu} \bar{\varphi}-\bar{\varphi} \partial_{\mu} \varphi).
+\end{align*}
+由此得 Lagrange 方程
+\begin{align*}
+& g^{\alpha \beta}(\partial_{\alpha}+\mathrm{i} e \omega_{\alpha})(\partial_{\beta}+\mathrm{i} e \omega_{\beta}) \varphi+m^{2} \varphi=0, \\
+& \partial_{\alpha} F^{\alpha\beta}=\frac{\mathrm{i} e}{2} g^{\beta\mu}(\varphi \partial_{\mu} \bar{\varphi}-\bar{\varphi} \partial_{\mu} \varphi).
+\end{align*}
+\end{enumerate}

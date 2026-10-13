@@ -1,0 +1,674 @@
+%定义平均积分\intbar
+\newcommand\tbbint{{-\mkern -16mu\int}}
+\newcommand\dbbint{{-\mkern -19mu\int}}
+\newcommand\intbar{{\mathchoice{\dbbint}{\tbbint}{\tbbint}{\tbbint}}}
+%定义小的空格
+\newcommand{\>}{\hspace{0.0833em}}
+\renewcommand\thesection{4.\arabic{section}}
+\theoremstyle{remark}
+\newtheorem*{remark*}{注}
+
+\setdisplaytitle{第四章\ 波方程}
+\sethtmltitle{第四章\ 波方程}
+
+\section{方程的物理背景和定解问题}
+\begin{itemize}
+\item[2.]符号说明：
+\begin{align*}
+\operatorname{curl}\boldsymbol{B}&=\nabla\times\boldsymbol{B}=
+\begin{vmatrix}
+    i&j&k\\ \\
+    \partial_1&\partial_2&\partial_3\\ \\
+    B_1&B_2&B_3
+\end{vmatrix}
+=(\partial_2B_3-\partial_3B_2,\partial_3B_1-\partial_1B_3,\partial_1B_2-\partial_2B_1),\\
+\operatorname{div}\boldsymbol{u}&=\nabla\cdot\boldsymbol{u}
+=\partial_1u_1+\partial_2u_2+\partial_3u_3.
+\end{align*}
+（1）有公式$\nabla\operatorname{div}=\operatorname{curl}^2+\Delta$，
+这是因为$\nabla(\nabla\cdot\boldsymbol{a})=\nabla\times(\nabla\times\boldsymbol{a})
++(\nabla\cdot\nabla)\boldsymbol{a}$对$\boldsymbol{a}\in\R^3$.
+
+因此$\partial_t^2\boldsymbol{E}=-\operatorname{curl}^2\boldsymbol{E}=\Delta\boldsymbol{E}$，
+第二个等号是因为$\operatorname{div}\boldsymbol{E}=0$。
+同理有$\partial_t^2\boldsymbol{B}=\Delta\boldsymbol{B}$.
+
+（2）作用$\operatorname{div}$得
+$\operatorname{div}\partial_t^2\boldsymbol{u}-\mu\operatorname{div}\Delta\boldsymbol{u}
+-(\lambda+\mu)\operatorname{div}\nabla(\operatorname{div}\boldsymbol{u})=0$，
+
+化为$\partial_t^2\operatorname{div}\boldsymbol{u}
+-\mu\Delta\operatorname{div}\boldsymbol{u}
+-(\lambda+\mu)\Delta(\operatorname{div}\boldsymbol{u})=0$，
+
+即$\partial_t^2v-(\lambda+2\mu)\Delta v=0$.
+
+作用$\operatorname{curl}$得
+$\operatorname{curl}\partial_t^2\boldsymbol{u}
+-\mu\operatorname{curl}\Delta\boldsymbol{u}
+-(\lambda+\mu)\operatorname{curl}\nabla(\operatorname{div}\boldsymbol{u})=0$，
+
+化为$\partial_t^2\operatorname{curl}\boldsymbol{u}-\mu\Delta\operatorname{curl}\boldsymbol{u}=0$ 
+（因$\operatorname{curl}\nabla=\nabla\times\nabla=0$），
+
+即$\partial_t^2w-\mu\Delta w=0$.
+
+\item[3.] 要使
+$\partial_T^2-\partial_X^2
+=\partial_t^2-3\partial_{tx}-4\partial_x^2
+=\big(\partial_t-\frac{3}{2}\partial_x\big)^2-\big(\tfrac{5}{2}\partial_x\big)^2$，
+
+只需$\begin{pmatrix}
+    \partial_T\\ \\\partial_X
+\end{pmatrix}=\begin{pmatrix}
+    1&-\frac{3}{2}\\ \\0&\frac{5}{2}
+\end{pmatrix}\begin{pmatrix}
+    \partial_t\\ \\\partial_x
+\end{pmatrix}$，
+
+即$\begin{pmatrix}
+    \partial_t\\ \\\partial_x
+\end{pmatrix}=\begin{pmatrix}
+    \frac{\partial T}{\partial t}&\frac{\partial X}{\partial t}\\ \\
+    \frac{\partial T}{\partial x}&\frac{\partial X}{\partial x}
+\end{pmatrix}\begin{pmatrix}
+    \partial_T\\ \\\partial_X
+\end{pmatrix}=\begin{pmatrix}
+    1&\frac{3}{5}\\ \\0&\frac{2}{5}
+\end{pmatrix}\begin{pmatrix}
+    \partial_T\\ \\\partial_X
+\end{pmatrix}$，
+
+因此取
+$\left\{\begin{aligned}
+T&=t\\X&=\frac{3}{5}t+\frac{2}{5}x
+\end{aligned}\right.$。
+
+
+\item[5.] 即$-c\varPhi'+6\varPhi\varPhi'+\varPhi'''=0$，
+积分得$-c\varPhi+3\varPhi^2+\varPhi''$为常数，
+令$x\rightarrow+\infty$得此常数为$0$.
+
+那么$-c\varPhi\varPhi'+3\varPhi^2\varPhi'+\varPhi'\varPhi''=0$，
+再积分得$-\frac{c}{2}\varPhi^2+\varPhi^3+\frac{1}{2}(\varPhi')^2$为常数，
+且实际上是$0$，于是$\varPhi=\pm\frac{\varPhi'}{\sqrt{c-2\varPhi}}$.
+
+令$v=\sqrt{c-2\varPhi}$，则$\frac{c-v^2}{2}=\pm v'$，
+从而$\big(\ln\big|\frac{\sqrt{c}+v}{\sqrt{c}-v}\big|\big)'
+=\frac{2\sqrt{c}v'}{c-v^2}=\pm\sqrt{c}$.
+
+答案是$u(t,x)=\frac{c}{2}\operatorname{sech}^2\frac{\sqrt{c}(x-ct)+d}{2},d\in\R$，
+其中$\operatorname{sech}x=\frac{2}{e^x+e^{-x}}$.
+\end{itemize}
+
+\section{波方程的Cauchy问题}
+\begin{itemize}
+\item[1.] 注意到$S(0)=0$，求导得
+\[\partial_tu=S(0)f(t,x)+\int_0^t\partial_t(S(t-\tau)f(\tau,x))\,d\tau=\int_0^t\partial_t(S(t-\tau)f(\tau,x))\,d\tau,\tag{1}\]
+\[\partial^2_tu=\big[\partial_t(S(t-\tau)f(\tau,x))\big]\big|_{\tau=t}
++\int_0^t\partial_t^2(S(t-\tau)f(\tau,x))\,d\tau,\tag{2}\]
+\[\Delta u=\int_0^t\Delta(S(t-\tau)f(\tau,x))\,d\tau.\tag{3}\]
+由波算子的定义有$\big[\partial_t(S(t-\tau)f(\tau,x))\big]\big|_{\tau=t}=f(t,x)$ (想一想为什么)，
+且对$\tau\in[0,t]$都有$S(t-\tau)f(\tau,x)$满足波方程，$(2),(3)$两式相减得$\partial_t^2u-\Delta u=f$。
+初值$u(0,x)=0$是显然的，$(1)$式说明$\partial_tu(0,x)=0$。
+
+\item[3.] 设$u(t,y_1)$是$1$维波方程的解，则$\tilde{u}(t,y_1,y_2):=u(t,y_1)$是相应的初值条件下$2$维波方程的解，可得
+\[u(t,y_1)=\intbar_{\!\!\!D_{t}(x)}\big(\varphi(y_1)+\varphi'(y_1)(y_1-x_1)+t\psi(y_1)\big)\frac{t}{2\sqrt{t^2-(y_1-x_1)^2-(y_2-x_2)^2}}\,dy.\]
+由于
+\[\int_{x_2-\sqrt{t^2-(y_1-x_1)^2}}^{x_2+\sqrt{t^2-(y_1-x_1)^2}}\frac{dy_2}{\sqrt{t^2-(y_1-x_1)^2-(y_2-x_2)^2}}=\int_{-1}^{1}\frac{ds}{\sqrt{1-s^2}}=\pi,\]
+得到
+\begin{align*}
+    u(t,y_1)&=\frac{1}{2t}\int_{x_1-t}^{x_1+t}\varphi(y_1)+\varphi'(y_1)(y_1-x_1)+t\psi(y_1)\,dy_1\\
+    &=\frac{1}{2t}\left[\varphi(y_1)(y_1-x_1)\big|_{x_1-t}^{x_1+t}+\int_{x_1-t}^{x_1+t}t\psi(y_1)\,dy_1\right]\\
+    &=\frac{1}{2}\left[\varphi(x_1+t)+\varphi(x_1-t)+\int_{x_1-t}^{x_1+t}\psi(y_1)\,dy_1\right].
+\end{align*}
+
+\item[4.] 令$\tilde{t}=at$，则有\begin{equation*}
+    \left\{\begin{aligned}
+&(\partial^2_{\tilde{t}}-\Delta)u=0,\\
+&u(0,x)=\varphi(x),\ \partial_{\tilde{t}}u(0,x)=\frac{1}{a}\psi(x).
+\end{aligned}\right.
+\end{equation*}
+由此计算得到，对一般的$a$，$n=3$时表达式为
+\begin{align*}u(t,x)=\partial_t\left(\ \intbar_{\!\!\!\partial B_{at}(x)}t\varphi(y)\>dS_y\right)
++\intbar_{\!\!\!\partial B_{at}(x)}t\psi(y)\>dS_y.\end{align*}
+$n=2$时表达式为
+\begin{align*}u(t,x)=\partial_t\left(\ \intbar_{\!\!\!D_{at}(x)}t\varphi(y)\frac{t}{2\sqrt{t^2-|\frac{y-x}{a}|^2}}\>dy\right)
++\intbar_{\!\!\!D_{at}(x)}t\psi(y)\frac{t}{2\sqrt{t^2-|\frac{y-x}{a}|^2}}\>dy.\end{align*}
+
+\begin{remark*}
+$n=3$时表达式的第一项
+\begin{align*}
+    \partial_t\left(\ \intbar_{\!\!\!\partial B_{at}(x)}t\varphi(y)\>dS_y\right)
+    &=\partial_t\left(\ \intbar_{\!\!\!\partial B_{a}(0)}t\varphi(x+tz)\>dS_z\right)\\
+    &=\intbar_{\!\!\!\partial B_{a}(0)}\varphi(x+tz)+t\nabla\varphi(x+tz)\cdot z\>dS_z\\
+    &=\intbar_{\!\!\!\partial B_{at}(x)}\varphi(y)+\nabla\varphi(y)\cdot (y-x)\>dS_y,
+\end{align*}
+于是$n=3$时的解也写成
+\begin{align*}u(t,x)=\intbar_{\!\!\!\partial B_{at}(x)}\varphi(y)
++\nabla\varphi(y)\cdot (y-x)+t\psi(y)\>dS_y.\end{align*}
+相应地，$n=2$时的解也写成
+\begin{align*}
+    u(t,x)=\intbar_{\!\!\!D_{at}(x)}\big(\varphi(y)+\nabla\varphi(y)\cdot (y-x)
+    +t\psi(y)\big)\frac{t}{2\sqrt{t^2-|\frac{y-x}{a}|^2}}\>dy.
+\end{align*}
+\end{remark*}
+
+\item[5.] 记$C(x,t;a)$是以$(x,t)$为顶点、$D_{at}(x)\times0$为底面的圆锥.
+\begin{align*}
+    u(t,x)&=\partial_t\left(\ \intbar_{\!\!\!D_{at}(x)}t\varphi(y)\frac{t}{2\sqrt{t^2-|\frac{y-x}{a}|^2}}\>dy\right)
+    +\intbar_{\!\!\!D_{at}(x)}t\psi(y)\frac{t}{2\sqrt{t^2-|\frac{y-x}{a}|^2}}\>dy\\
+    &\quad+\int_0^t\intbar_{\!\!\!D_{a(t-\tau)}(x)}(t-\tau)^2\frac{f(\tau,y)}{2\sqrt{(t-\tau)^2-|\frac{y-x}{a}|^2}}\>dyd\tau\\
+    &=\intbar_{\!\!\!D_{at}(x)}\big(\varphi(y)+\nabla\varphi(y)\cdot (y-x)
+    +t\psi(y)\big)\frac{t}{2\sqrt{t^2-|\frac{y-x}{a}|^2}}\>dy\\
+    &\quad+\frac{1}{2\pi a^2}\int_{C(x,t;a)}\frac{f(\tau,y)}{\sqrt{(t-\tau)^2-|\frac{y-x}{a}|^2}}\>dyd\tau.
+\end{align*}
+
+\item[6.] 由于$dS_yd(a\tau)=dy$，
+\begin{align*}
+    u(t,x)&=\partial_t\left(\ \intbar_{\!\!\!\partial B_{at}(x)}t\varphi(y)\>dS_y\right)
+    +\intbar_{\!\!\!\partial B_{at}(x)}t\psi(y)\>dS_y
+    +\int_0^t\intbar_{\!\!\!\partial B_{a(t-\tau)}(x)}(t-\tau)f(\tau,y)\>dS_yd\tau\\
+    &=\intbar_{\!\!\!\partial B_{at}(x)}\varphi(y)
+    +\nabla\varphi(y)\cdot (y-x)+t\psi(y)\>dS_y
+    +\frac{1}{4\pi a^2}\int_{B_{at}(x)}\frac{f(t-|\frac{y-x}{a}|,y)}{|y-x|}\>dy.
+\end{align*}
+
+\item[7.] 令$v=e^{kt}u$，则
+\[\partial_t^2 v=\partial_t(e^{kt}(\partial_t+k)u)=e^{kt}(\partial_t+k)^2u,\]
+代入后$\partial_t^2 v=e^{kt}\partial_x^2 u=\partial_x^2 v$.
+
+\item[8.] (1) 求导得
+\begin{align*}
+    e'(t)&=\int_{-\infty}^{+\infty}\partial_tu\partial_{tt}u+\partial_xu\partial_{xt}u\,dx\\
+    &=\int_{-\infty}^{+\infty}\partial_tu\partial_{xx}u+\partial_xu\partial_{xt}u\,dx\\
+    &=\big(\partial_tu\partial_xu\big)\big|_{-\infty}^{+\infty}=0.
+\end{align*}
+(2) 写出$\partial_t u,\partial_x u$的表达式代入即可。具体来说，
+\begin{align*}
+    \partial_tu&=\big[\varphi'(x+t)-\varphi'(x-t)+\psi(x+t)+\psi(x-t)\big]/2,\\
+    \partial_xu&=\big[\varphi'(x+t)+\varphi'(x-t)+\psi(x+t)-\psi(x-t)\big]/2,
+\end{align*}
+那么
+\begin{align*}
+    k(t)-p(t)&=\frac{1}{2}\int_{-\infty}^{+\infty}(\partial_tu+\partial_xu)(\partial_tu-\partial_xu)\,dx\\
+    &=\frac{1}{2}\int_{-\infty}^{+\infty}\big(\varphi'(x+t)+\psi(x+t)\big)\big(\!-\!\varphi'(x-t)+\psi(x-t)\big)\,dx.
+\end{align*}
+设$\operatorname{supp}\varphi\cup\operatorname{supp}\psi\subset\{|x| \leqslant R\}$，
+则$k(t)-p(t)\ne0$要求要有$x\in\R$使得$|x+t| \leqslant R,|x-t| \leqslant R$，从而$|t| \leqslant R$。
+
+\item[9.] 令$v=e^{-\frac{t+x}{2}}u$，则有
+\begin{align*}
+    \partial_t^2v&=e^{-\frac{t+x}{2}}\big(\partial_t^2u-\partial_tu+u/4\big),\\
+    \partial_x^2v&=e^{-\frac{t+x}{2}}\big(\partial_x^2u-\partial_xu+u/4\big),\\
+\end{align*}
+从而$\partial_t^2v-\partial_x^2v=0$，可设$v(t,x)=F(x+t)+G(x-t)$.
+
+\item[10.] 设$u(t,x)=F(x+at)+G(x-at)$，可以不妨设$F(0)=G(0)=0$且$a>0$。对$x>0$有
+\begin{align*}
+    F(x)+G(x)&=\varphi(x),\\F'(x)-G'(x)&=\frac{\psi(x)}{a},
+\end{align*}
+推出
+\[F'(x)=\frac{\varphi'(x)}{2}+\frac{\psi(x)}{2a},\]
+进而有
+\[F(x)=\frac{\varphi(x)}{2}+\frac{\int_0^x\psi}{2a},\]
+从而
+\[G(x)=\frac{\varphi(x)}{2}-\frac{\int_0^x\psi}{2a}.\]
+上述表达式只对$x>0$有效。对$F$来说问题已解决，毕竟$x+at>0$。下面来求$G$在变量$<0$时的表达式。
+
+(i) 若$c=0$，由$u(t,0)=0$有$F(at)+G(-at)=0$对$t>0$成立，
+从而当$x<0$时有
+\[G(x)=-F(-x)=-\frac{\varphi(-x)}{2}-\frac{\int_0^{-x}\psi}{2a}.\]
+(ii) 若$c\neq0$，由$F(x)+G(-x)=c(F'(x)+G'(-x))$得
+$$\big(e^\frac{x}{c}G(-x)\big)'=e^\frac{x}{c}\left(-\frac{F(x)}{c}+F'(x)\right),$$
+从而当$x<0$时有
+$$G(x)=e^\frac{x}{c}\int_0^xe^{-\frac{s}{c}}\left(-\frac{F(-s)}{c}+F'(-s)\right)ds,$$
+代入$F$的表达式得出
+$$G(x)=e^\frac{x}{c}\int_0^xe^{-\frac{s}{c}}\left(-\frac{\varphi(-s)}{2c}-\frac{\int_0^{-s}\psi}{2ac}
++\frac{\varphi'(-s)}{2}+\frac{\psi(-s)}{2a}\right)ds.$$
+
+\item[11.] 设$u(t,x)=F(x+t)+G(x-t)$，则对$t>0$有
+\[F(t)+G(-t)=0, \quad F'(1+t)=0.\]
+这就是说$F$在变量$\geqslant1$时为常数$c$，$G$在变量$\leqslant-1$时为常数$-c$。
+取$T=2$，对$t\geqslant2,x\in[0,1]$都有$x+t\geqslant2>1,x-t\leqslant-1$，从而$u(t,x)=c-c=0$。
+
+\item[12.] (1) \begin{align*}
+    \partial_rh&=\frac{1}{\omega_{n-1}}\int_{S^{n-1}}\nabla\psi(x+r\xi)\cdot\xi\>dS_\xi\\
+    &=\frac{1}{\omega_{n-1}r^{n-1}}\int_{\partial B_r(x)}\frac{\partial\psi}{\partial\boldsymbol{n}}\>dS\\
+    &=\frac{1}{\omega_{n-1}r^{n-1}}\int_{B_r(x)}\Delta\psi\>dy\\
+    &=\frac{1}{r^{n-1}}\int_0^r\Delta h(x,\rho)\>\rho^{n-1}d\rho,
+\end{align*}
+因此$$\partial^2_rh+\frac{n-1}{r}\partial_rh
+    =\frac{1}{r^{n-1}}\partial_r(r^{n-1}\partial_rh)
+    =\Delta h.$$
+
+    (2) 记$x+r\xi=(x_1+r\mu,\tilde{x}+r\tilde{\xi})$.
+    \begin{align*}
+        h(x,r)&=\frac{1}{\omega_{n-1}}\int_{S^{n-1}}\psi(x+r\xi)\>dS_\xi\\
+        &=\frac{1}{\omega_{n-1}}\int_{-1}^1\int_{\sqrt{1-\mu^2}S^{n-2}}\phi(x_1+r\mu)\>dS_{\tilde{\xi}}\frac{d\mu}{\sqrt{1-\mu^2}}\\
+        &=\frac{\omega_{n-2}}{\omega_{n-1}}\int_{-1}^1\phi(x_1+r\mu)\sqrt{1-\mu^2}^{n-3}d\mu.
+    \end{align*}
+
+    (3) 把$x$看作参数，$v(x,\>\cdot\>)$是关于$r$的函数，得到
+    \begin{align*}
+        \partial^2_rw+\frac{n-1}{r}\partial_rw
+        &\overset{(2)}{=}\frac{\omega_{n-2}}{\omega_{n-1}}\int_{-1}^1\partial^2_tv(r\mu,x)(1-\mu^2)^\frac{n-3}{2}d\mu\\
+        &=\frac{\omega_{n-2}}{\omega_{n-1}}\int_{-1}^1\Delta v(r\mu,x)(1-\mu^2)^\frac{n-3}{2}d\mu\\
+        &=\Delta w.
+    \end{align*}
+
+    在(2)中取$\phi\equiv1$得到
+    $$w(x,0)=\frac{\omega_{n-2}}{\omega_{n-1}}\int_{-1}^1 g(x)(1-\mu^2)^\frac{n-3}{2}d\mu\overset{\phi\equiv1}{=}g(x).$$
+
+    (4) 作变量代换$r=t=\sqrt{s},r\mu=\sqrt{\sigma}$，代入得到
+    $$\omega_{n-2}\int_0^s v(\sqrt{\sigma},x)(s-\sigma)^\frac{n-3}{2}\frac{d\sigma}{\sqrt{\sigma}}
+    =s^\frac{n-2}{2}\int_{S^{n-1}}g(x+\sqrt{s}\xi)\>dS_\xi.$$
+    两边对$s$求$\frac{n-1}{2}$阶导，由于$\partial_s=\partial_{t^2}=\frac{1}{2t}\partial_t$，
+    得到
+    $$\omega_{n-2}v(t,x)\big({\textstyle \frac{n-3}{2}}\big)!
+    =t\Big(\frac{1}{2t}\partial_t\Big)^\frac{n-1}{2}\bigg(t^{n-2}\int_{S^{n-1}}g(x+t\xi)\>dS_\xi\bigg).$$
+    验算一下系数，
+    \begin{align*}
+        \omega_{n-2}\big(\tfrac{n-3}{2}\big)!
+        =\frac{2\pi^\frac{n-1}{2}}{\varGamma\big(\frac{n-1}{2}\big)}\varGamma\big(\tfrac{n-1}{2}\big)
+        =\frac{\varGamma\big(\frac{n}{2}\big)\omega_{n-1}}{\sqrt{\pi}}.
+    \end{align*}
+
+    (5) 记$\bar{x}=(x,0)\in\R^{n+1}$，令$\bar{u}(t,\bar{x})=u(t,x)$，
+    $\bar{g}(\bar{x})=g(x)$.
+
+    由于$\partial B_t(\bar{x})$在$(\xi,\pm\sqrt{t^2-|x-\xi|^2})$处的球面测度
+    与该点到“圆盘” $B_t(x)$上的投影的测度之比为
+    $$\frac{dS_\xi}{d\xi}=\frac{1}{\sqrt{1-\big|\frac{\xi-x}{t}\big|^2}},$$
+    升维并利用$n+1$维时解的表达式，得到
+    \begin{align*}
+        u(t,x)&=\bar{u}(t,\bar{x})\\
+        &=\frac{\sqrt{\pi}t}{\varGamma\big(\frac{n+1}{2}\big)}
+        \Big(\frac{1}{2t}\partial_t\Big)^\frac{n}{2}
+        \bigg(t^{n-1}\frac{1}{\omega_n}\int_{S^n}\bar{g}(\bar{x}+t\xi)\>dS_\xi\bigg)\\
+        &=\frac{\sqrt{\pi}t}{\varGamma\big(\frac{n+1}{2}\big)}
+        \Big(\frac{1}{2t}\partial_t\Big)^\frac{n}{2}
+        \bigg(t^{n-1}\frac{2}{\omega_n}\int_{B^n}\frac{g(x+t\xi)}{\sqrt{1-|\xi|^2}}\>d\xi\bigg).
+    \end{align*}
+    \begin{remark*}
+    本题源自\cite{LZ} 第二章 1.2--1.4 (pp.19--26).
+
+    (2)的中间一个等号用的积分公式之证明见\cite{Gr} Appendix D.2.
+
+    (4)的表达式的系数能化简为
+    $$\frac{\sqrt{\pi}}{\varGamma\big(\frac{n}{2}\big)}\Big(\frac{1}{2}\Big)^\frac{n-1}{2}\frac{1}{\omega_{n-1}}
+    =\frac{\varGamma\big(\frac{1}{2}\big)}{\frac{n-2}{2}\cdots\frac{3}{2}\frac{1}{2}\varGamma\big(\frac{1}{2}\big)}\Big(\frac{1}{2}\Big)^\frac{n-1}{2}\frac{1}{\omega_{n-1}}
+    =\frac{1}{(n-2)!!\omega_{n-1}},$$
+    故有\begin{align*}
+        u(t,x)=\frac{t}{(n-2)!!}
+        \Big(\frac{1}{t}\partial_t\Big)^\frac{n-1}{2}
+        \bigg(t^{n-1}\intbar_{\!\!\!\partial B_t(x)}g(\xi)\>dS_\xi\bigg).
+    \end{align*}
+    (5)的表达式的系数能化简为
+    \begin{align*}\frac{\sqrt{\pi}}{\varGamma\big(\frac{n+1}{2}\big)}\Big(\frac{1}{2}\Big)^\frac{n}{2}\frac{2}{\omega_n}
+    &=\frac{\sqrt{\pi}}{\varGamma\big(\frac{n+1}{2}\big)}\frac{\big(\frac{n-2}{2}\big)!}{(n-2)!!}\frac{1}{\omega_n}
+    =\frac{\sqrt{\pi}}{\varGamma\big(\frac{n+1}{2}\big)}\frac{\varGamma\big(\frac{n}{2}\big)}{n!!/n}\frac{1}{\omega_n}\\
+    &=\frac{2\pi^\frac{n+1}{2}/\varGamma\big(\frac{n+1}{2}\big)}{\big(2\pi^\frac{n}{2}/\varGamma\big(\frac{n}{2}\big)\big)/n}\frac{1}{n!!\omega_n}
+    =\frac{1}{n!!v_n},\end{align*}
+    其中$v_n=\omega_{n-1}/n$是$B^n$的体积，故有\begin{align*}
+        u(t,x)=\frac{t}{n!!}\Big(\frac{1}{t}\partial_t\Big)^\frac{n}{2}
+        \Bigg(t^{n-1}\intbar_{\!\!\!B_t(x)}\frac{g(\xi)}{\sqrt{1-\big|\frac{\xi-x}{t}\big|^2}}\>d\xi\Bigg).
+    \end{align*}
+    \end{remark*}
+\end{itemize}
+
+\section{波的传播和解关于时间的衰减性}
+\begin{itemize}
+
+\item[1.] 注意(2),\,(3)中$t$方向也是特征方向.
+
+\item[3.] 特征方向$l$满足方程
+$$\sum_{|\alpha|=m}c_\alpha(x)l^\alpha=0.$$
+
+特征曲面为$\{x\bigm|\varphi(x)=0\}$，其中$\varphi\in C^1$满足
+$$\sum_{|\alpha|=m}c_\alpha(x)(\nabla\varphi)^\alpha=0.$$
+
+其中对$l=(l_1,\cdots,l_n)$，$l^\alpha=l_1^{\alpha_1}\cdots l_n^{\alpha_n}$，
+$(\nabla\varphi)^\alpha$的含义相同.
+
+\item[4.] 假设$\varphi,\psi$有一定的衰减性，则对固定的$x$，
+当$t\rightarrow+\infty$时$\displaystyle{u(t,x)\rightarrow\frac{1}{2}\int_\R\psi}$.
+
+\item[5.] 由于\begin{align*}
+    &\quad\ \partial_t\left(\ \intbar_{\!\!\!D_t(x)}t\varphi(y)\frac{t}{2\sqrt{t^2-|y-x|^2}}\>dy\right)\\
+    &=\partial_t\left(\ \intbar_{\!\!\!D_1(0)}\frac{t\varphi(x+tz)}{2\sqrt{1-|z|^2}}\>dz\right)\\
+    &=\intbar_{\!\!\!D_1(0)}\frac{\varphi(x+tz)+t\nabla\varphi(x+tz)\cdot z}{2\sqrt{1-|z|^2}}\>dz\\
+    &=\intbar_{\!\!\!D_t(x)}\frac{t\varphi(y)+t\nabla\varphi(y)\cdot(y-x)}{2\sqrt{t^2-|y-x|^2}}\>dy,
+\end{align*}
+得到
+\begin{align*}
+    u(t,x)=\intbar_{\!\!\!D_t(x)}\frac{t\varphi(y)
+    +t\nabla\varphi(y)\cdot(y-x)+t^2\psi(y)}{2\sqrt{t^2-|y-x|^2}}\>dy.
+\end{align*}
+不过这里我们不用关心具体的表达式，需要的仅是当$t\geqslant1$时
+\begin{align*}
+    |u(t,x)|\leqslant\intbar_{\!\!\!D_t(x)}\frac{t^2\varPhi(y)}{2\sqrt{t^2-|y-x|^2}}\>dy
+    =\frac{1}{2\pi}\int_{D_t(0)}\frac{\varPhi(x+y)}{\sqrt{t^2-|y|^2}}\>dy,
+\end{align*}
+其中$\varPhi$是一个与$\varphi,\psi$有关的非负光滑紧支函数. 下面对上式给出两种估计.
+
+\textbf{方法I.} 设$\operatorname{supp}\varPhi\subset D_R(0)$，则
+\begin{align*}
+    |u(t,x)|\leqslant\frac{1}{2\pi}\int_{D_t(0)\cap D_R(-x)}\frac{dy}{\sqrt{t^2-|y|^2}}\|\varPhi\|_{L^\infty}.
+\end{align*}
+由于$\frac{1}{\sqrt{t^2-|y|^2}}$是在靠近$D_t(0)$的边缘处很大，
+那么若$D_R(-x)$在$D_t(0)$的中央，上式就不会太大. 具体写出来就是：
+
+第一种情况，$|x|\leqslant\frac{t}{2}$. 这时$|y|\leqslant|x|+R\leqslant\frac{t}{2}+R$，于是
+\begin{align*}
+    |u(t,x)|\leqslant\frac{|D_R(-x)|}{2\pi}\frac{1}{\sqrt{t^2-\big(\frac{t}{2}+R\big)^2}}\|\varPhi\|_{L^\infty}
+    \sim\frac{R^2}{\sqrt{3}t}\|\varPhi\|_{L^\infty}.
+\end{align*}
+    \begin{tikzpicture}
+        \draw (0,0) circle (2.5);
+        \draw (2,-1) circle (0.5);
+        \draw (2.05,-1.05) node {$-x$};
+        \draw (-0.12,0.05) node {$0$};
+        \draw (2.04,-0.76) node {$R$};
+        \draw (1.83,-1.22) node {$R$};
+        \draw (1.25,0) node {$t$};
+        \draw (0.6,-0.3) node {$\theta$};
+        \draw[dashed] (0,0) -- (2,-1);
+        \draw (0,0) -- (2.5,0);
+        \draw (2,-1) -- (2.118,-0.514) -- (0,0);
+        \draw (2,-1) -- (1.682,-1.386) -- (0,0);
+    \end{tikzpicture}
+接下来要考虑$D_R(-x)$同$D_t(0)$的边缘区域有重叠的情况，这时$|x|$相对$t$不太小，
+衰减性来自小圆$D_R(-x)$相对于大圆$D_t(0)$所占的圆心角$\theta$仅有大约$\frac{R}{|x|}$. 也就是说：
+
+第二种情况，$|x|>\frac{t}{2}$. 对$y=r\xi\ (r\in\R,\xi\in S^1)$，$dy=rdrdS_\xi$. 这时
+\[
+    |u(t,x)|\leqslant\frac{\theta}{2\pi}\int_{[|x|-R,|x|+R]\cap[0,t]}\frac{rdr}{\sqrt{t^2-r^2}}\|\varPhi\|_{L^\infty}.
+\]
+由于$$\frac{\theta}{2\pi}\leqslant\frac{\sin\frac{\theta}{2}}{2}=\frac{R}{2|x|}$$
+以及$$\int_{[|x|-R,|x|+R]\cap[0,t]}\frac{rdr}{\sqrt{t^2-r^2}}\leqslant\int_{t-2R}^{t}\frac{rdr}{\sqrt{t^2-r^2}}
+=-\sqrt{t^2-r^2}\Big|_{t-2R}^t\leqslant2\sqrt{Rt},$$
+相乘得
+$$|u(t,x)|\leqslant\frac{R\sqrt{Rt}}{|x|}\|\varPhi\|_{L^\infty}
+\leqslant\frac{2R\sqrt{R}}{\sqrt{t}}\|\varPhi\|_{L^\infty}.$$
+\textbf{方法II.} 写成径向积分
+\[|u(t,x)|\leqslant\frac{1}{2\pi}\int_0^t r\int_{S^1}\varPhi(x+r\xi)\>dS_\xi\frac{dr}{\sqrt{t^2-r^2}}.\]
+分成两段，对$r$不太接近$t$的部分可以直接估计：
+\begin{align*}
+    &\quad\int_0^{t-\varepsilon} r\int_{S^1}\varPhi(x+r\xi)\>dS_\xi\frac{dr}{\sqrt{t^2-r^2}}\\
+    &\leqslant\frac{1}{\sqrt{t^2-(t-\varepsilon)^2}}\int_0^{t-\varepsilon} r\int_{S^1}\varPhi(x+r\xi)\>dS_\xi dr\\
+    &\leqslant\frac{1}{\sqrt{2\varepsilon t-\varepsilon^2}}\|\varPhi\|_{L^1}.
+\end{align*}
+而当$r$接近于$t$时，需要更好地利用$\Phi$的衰减性：
+
+注意到由于$\varPhi$是紧支的，有
+\begin{align*}
+    &\quad\,r\int_{S^1}\varPhi(x+r\xi)\>dS_\xi\\
+    &=-r\int_{S^1}\int_r^\infty\frac{\partial\varPhi}{\partial s}(x+s\xi)\>dsdS_\xi\\
+    &\leqslant\int_r^\infty s\int_{S^1}|\nabla\varPhi(x+s\xi)|\>dS_\xi ds\\
+    &\leqslant\|\nabla\varPhi\|_{L^1},
+\end{align*}
+因此\begin{align*}
+    &\quad\,\int_{t-\varepsilon}^t r\int_{S^1}\varPhi(x+r\xi)\>dS_\xi\frac{dr}{\sqrt{t^2-r^2}}\\
+    &\leqslant\int_{t-\varepsilon}^t\frac{dr}{\sqrt{t^2-r^2}}\|\nabla\varPhi\|_{L^1}\\
+    &\leqslant\frac{1}{\sqrt{t}}\int_{t-\varepsilon}^t\frac{dr}{\sqrt{t-r}}\|\nabla\varPhi\|_{L^1}\\
+    &=\frac{2\sqrt{\varepsilon}}{\sqrt{t}}\|\nabla\varPhi\|_{L^1}.
+\end{align*}
+最后$\varepsilon$取为随便一个常数即可，两式相加就有
+$|u(t,x)|\leqslant\frac{C}{\sqrt{t}}\|\varPhi\|_{W^{1,1}}$对一切$x\in\R^2,t\geqslant1$成立.
+
+\begin{remark*}
+(i) 第二个估计的优点在于，这一上界不直接与支集半径$R$有关.
+
+(ii) $n$维的结论见\cite{LZ}第四章定理6.1 (p.85)，推论6.1 (pp.90--1).
+\end{remark*}
+\end{itemize}
+
+\section{分离变量法和初边值问题解的存在性}
+\begin{itemize}
+\item[2.] 令$v=e^{\frac{t}{2}}u$，则
+\begin{equation*}
+    \left\{\begin{aligned}
+        &\partial_t^2v-\partial_x^2v=\frac{v}{4},\\
+        &v(0,x)=\varphi(x),\ \partial_tv(0,x)=\psi(x)+\frac{1}{2}\varphi(x),\\
+        &v(t,0)=v(t,L)=0.
+    \end{aligned}\right.
+\end{equation*}
+考虑非零特解$v(t,x)=T(t)X(x)$，代入方程得到
+\[\frac{T''(t)}{T(t)}=\frac{X''(x)}{X(x)}+\frac{1}{4}=-\lambda,\]
+由边界条件$$X(0)=X(L)=0$$得到必须
+$\lambda=\frac{k^2\pi^2}{L^2}-\frac{1}{4},k\in\Z^+$，
+此时$X_k(x)=C_k\sin\frac{k\pi x}{L}$，
+$$T_k(t)=\begin{cases}
+    A_k\cos\Big(\sqrt{\frac{k^2\pi^2}{L^2}-\frac{1}{4}}t\Big)+
+    B_k\sin\Big(\sqrt{\frac{k^2\pi^2}{L^2}-\frac{1}{4}}t\Big),
+    &\lambda=\frac{k^2\pi^2}{L^2}-\frac{1}{4}>0,\text{ 即 }k>\frac{L}{2\pi},\\ \\
+    A_k\exp\Big(\sqrt{-\frac{k^2\pi^2}{L^2}+\frac{1}{4}}t\Big)+
+    B_k\exp\Big(\!-\!\sqrt{-\frac{k^2\pi^2}{L^2}+\frac{1}{4}}t\Big),
+    &\lambda=\frac{k^2\pi^2}{L^2}-\frac{1}{4}<0,\text{ 即 }k<\frac{L}{2\pi},\\ \\
+    At+B,
+    &\lambda=\frac{k^2\pi^2}{L^2}-\frac{1}{4}=0,\text{ 即 }k=\frac{L}{2\pi}.
+\end{cases}$$
+
+\item[3.] 从相容性条件\begin{equation*}
+    \left\{\begin{aligned}
+        &0=u(0,\pi)=\alpha\pi^4+\beta\pi^3,\\ \\
+        &0=\partial_t u(0,\pi)=-\gamma,\\ \\
+        &0=\partial^2_t u(0,\pi)=\partial^2_x u(0,\pi)=12\alpha\pi^2+6\beta\pi,
+    \end{aligned}\right.
+\end{equation*}
+解得$\alpha=\beta=\gamma=0$.
+求解方程得到$$u(t,x)=\cos t\sin x.$$
+
+\item[4.] (1) 由于$$h'(t)
+=\int_0^1 (2\partial_tu\>\partial^2_tu+8\partial_xu\>\partial_{xt}u)\>dx
+=(8\partial_tu\>\partial_xu)|_{x=0}^1=0,$$
+得到$$h\big(\tfrac{1}{3}\big)=h(0)
+=\int_0^1 (30x(1-x))^2+4(12\pi\sin^2\pi x\cos\pi x)^2\>dx
+=30+36\pi^2.$$
+
+(2) 由解的表达式
+$$u(t,x)=\sum_{k=1}^\infty(A_k\cos 2k\pi t+B_k\sin 2k\pi t)\sin k\pi x$$
+得到
+$$u(2,x)=u(0,x)=4\sin^3\pi x.$$
+
+\item[5.] 设$v(t,x)=u(t,x)+\lambda_1(x)g_1(t)+\lambda_2(x)g_2(t)$.
+
+要让\begin{equation*}
+    \left\{\begin{aligned}
+        (-\partial_x+\alpha)v(t,0)=0&\\
+        (\partial_x+\beta)v(t,L)=0&
+    \end{aligned}\right.,
+\end{equation*}
+可以令
+
+(1) $v(t,x)=u(t,x)-\frac{(x-L)^2}{2L+\alpha L^2}g_1(t)-\frac{x^2}{2L+\beta L^2}g_2(t)$.
+
+(2) $v(t,x)=u(t,x)-\frac{(x-L)^2}{2L}g_1(t)-\frac{x^2}{2L}g_2(t)$.
+
+(3) $v(t,x)=u(t,x)-\frac{1}{\alpha}g_1(t)-\frac{x^2}{2L}g_2(t)$.
+\end{itemize}
+
+\section{能量方法和解的唯一性与稳定性}
+
+\begin{itemize}
+\item[1.] 同4.5.2节的推导，得到
+$$\frac{dE(t)}{dt}-\int_{B_{t_0-t}(x_0)}\partial_t uf\,dx
+=-\frac{dF(t)}{dt},$$
+于是$$E(t)+F(t)=E(0)+\int_0^t\int_{B_{t_0-s}(x_0)}\partial_t uf\,dxds.$$
+定义$$G(t)=\int_0^t\int_{B_{t_0-s}(x_0)}
+\big((\partial_t u)^2+|\nabla u|^2\big)(s,x)\,dxds,$$
+则\begin{align*}
+    \frac{dG(t)}{dt}
+    &=\int_{B_{t_0-t}(x_0)}(\partial_t u)^2+|\nabla u|^2\>dx\\
+    &=2E(t)\\
+    &\leqslant2\big(E(0)+\int_0^t\int_{B_{t_0-s}(x_0)}\partial_t uf\,dxds\big)\\
+    &\leqslant2E(0)+G(t)+\int_0^t\int_{B_{t_0-s}(x_0)}f^2dxds.
+\end{align*}
+由Gronwall不等式,
+\begin{align*}
+    G(t)&\leqslant C(T)\big(2E(0)+\int_0^t\int_{B_{t_0-s}(x_0)}f^2dxds\big)\\
+    &\leqslant C(T)\big(2\|\psi\|_{L^2}^2+2\|\nabla\varphi\|_{L^2}^2
+    +\int_0^T\int_{B_{t_0-s}(x_0)}f^2dxds\big).
+\end{align*}
+
+\item[2.] $$\frac{dE(t)}{dt}=-\int_\varOmega(\partial_t u)^2\>dx\leqslant0.$$
+
+\item[3.] 我们有
+\begin{align*}
+    \int_\varOmega u^2(t,x)\>dx
+    &=\int_\varOmega u^2(0,x)\>dx+\int_\varOmega\int_0^t\partial_t(u^2)\>dtdx\\
+    &\leqslant\int_\varOmega u^2(0,x)\>dx+\int_\varOmega\int_0^t u^2+(\partial_t u)^2dtdx\\
+    &\leqslant\|\varphi\|_{L^2}^2+C\int_0^t\!E(t)\>dt.
+\end{align*}
+然后用定理4.5.1即可. 上面最后一个不等号用了Poincaré不等式，即：
+$\forall s\in(0,t)$，$\partial\varOmega$上$u(s,\cdot)=0$推出
+\[\|u(s,\cdot)\|_{L^2(\varOmega)} \leqslant C\|\nabla u(s,\cdot)\|_{L^2(\varOmega)}.\]
+不用了Poincaré不等式的方法是，同下一题转而考虑$F(t)$而不是$E(t)$。
+
+\item[4.] 设$u_1,u_2$都是解，令$v=u_1-u_2$，则
+\begin{equation*}
+    \left\{\begin{aligned}
+        &\partial^2_t v-\Delta v-\partial_t v=f(u_1)-f(u_2),\\
+        &v(0,x)=0,\ \partial_t v(0,x)=0,\\
+        &\frac{\partial v}{\partial\boldsymbol{n}}(t,x)=0.
+        \end{aligned}\right.
+\end{equation*}
+由$f$是Lipschitz的，有
+$$|f(u_1)-f(u_2)|\leqslant\alpha|u_1-u_2|=\alpha|v|,$$
+则\begin{align*}
+    \frac{dE(t)}{dt}
+    &=\int_\varOmega\partial_t v\big(\partial_t v+f(u_1)-f(u_2)\big)\>dx\\
+    &\leqslant\Big(1+\frac{\alpha}{2}\Big)\int_\varOmega(\partial_t v)^2+v^2\>dx.
+\end{align*}
+为了获得合适的微分不等式，令
+$$F(t)=\int_\varOmega v^2+(\partial_t v)^2+|\nabla v|^2\>dx,$$
+则
+\begin{align*}
+    \frac{dF(t)}{dt}&=\int_\varOmega 2v\partial_t v\>dx+\frac{dE(t)}{dt}\\
+    &\leqslant\Big(2+\frac{\alpha}{2}\Big)\int_\varOmega(\partial_t v)^2+v^2\>dx\\
+    &\leqslant\Big(2+\frac{\alpha}{2}\Big)F(t).
+\end{align*}
+由Gronwall不等式,
+\begin{align*}
+    F(t)&\leqslant C(t,\alpha)F(0)=0,
+\end{align*}
+因此$v\equiv0$.
+
+\item[5.] (1)
+$$\frac{dE(t)}{dt}=\int_\varOmega \partial_t u\>(-u^3)\>dx
+=-\frac{d}{dt}\frac{1}{4}\int_\varOmega u^4\>dx,$$
+即$\displaystyle{E(t)+\frac{1}{4}\int_{\varOmega} u^4\>dx}$是常数.
+
+(2) 此时$\displaystyle{E(0)+\frac{1}{4}\int_{\varOmega} u^4\>dx\Big|_{t=0}=0}$.
+
+\item[6.] 同4.5.2节的推导，得到
+$$\frac{dE(t)}{dt}
+=-\int_{B_{t_0-t}(x_0)}(\partial_t u)^{2n+2}\>dx-\frac{dF(t)}{dt}
+\leqslant-\frac{dF(t)}{dt}.$$
+对$t_0=s$，当$|x_0|$很大时$B_{s}(x_0)$与
+$\operatorname{supp}\varphi\cup\operatorname{supp}\psi$不相交，
+则$E(0)=0$，从而$E\equiv0$，于是$u(s,x_0)=0$.
+
+\item[7.] 设$u_1$，$u_2$都是解，令$v=u_1-u_2$，则
+\begin{equation*}
+    \left\{\begin{aligned}
+        &\partial^2_t v-\Delta v+|\partial_t u_1|^{p-1}\partial_t u_1
+        -|\partial_t u_2|^{p-1}\partial_t u_2=0,\\ \\
+        &v(0,x)=0,\ \partial_t v(0,x)=0.
+        \end{aligned}\right.
+\end{equation*}
+注意到由于$|x|^{p-1}x$递增，有
+$$\partial_t v\>\big(|\partial_t u_1|^{p-1}\partial_t u_1
+-|\partial_t u_2|^{p-1}\partial_t u_2\big)\geqslant0,$$
+因此$$\partial_t v\>(\partial^2_t v-\Delta v)\leqslant0.$$
+那么，同4.5.2节的推导得到
+$$\frac{dE(t)}{dt}\leqslant-\frac{dF(t)}{dt}.$$
+
+\item[8.] (1) 由(2)可得.
+
+(2) 以下每次出现的$C$代表不同的常数.
+
+记$$Lu=-\sum_{i,j=1}^n\partial_{x_i}(a_{ij}\partial_{x_j}u)
++\sum_{k=1}^nb_k\partial_{x_k}u+cu.$$
+与波动方程类似，来估计
+$$\int_0^t\int_\varOmega\partial_tu\>(\partial^2_tu+Lu)\>dxdt.$$
+首先，由$u$在$\partial\varOmega$恒为$0$得到$\partial_tu$在$\partial\varOmega$也为$0$，于是
+\begin{align*}
+    &\quad-\int_\varOmega\partial_tu\sum_{i,j=1}^n\partial_{x_i}(a_{ij}\partial_{x_j}u)\>dx\\
+    &=\int_\varOmega\sum_{i,j=1}^n\partial_{x_it}ua_{ij}\partial_{x_j}u\>dx\\
+    &=\frac{1}{2}\bigg(\int_\varOmega\sum_{i,j=1}^n\partial_{x_it}ua_{ij}\partial_{x_j}u\>dx
+    +\int_\varOmega\sum_{i,j=1}^n\partial_{x_jt}ua_{ij}\partial_{x_i}u\>dx\bigg)\\
+    &=\frac{1}{2}\int_\varOmega\partial_t\bigg(\sum_{i,j=1}^na_{ij}\partial_{x_i}u\partial_{x_j}u\bigg)dx
+    -\frac{1}{2}\int_\varOmega\sum_{i,j=1}^n\partial_ta_{ij}\partial_{x_i}u\partial_{x_j}u\>dx,
+\end{align*}
+中间的等号用到了$a_{ij}=a_{ji}$.
+
+由$\partial_ta_{ij}$的有界性，上式的第二项
+\[\left|\frac{1}{2}\int_\varOmega\sum_{i,j=1}^n\partial_ta_{ij}\partial_{x_i}u\partial_{x_j}u\>dx\right|\leqslant CE(t).\]
+此外，
+$$\left|\int_\varOmega\sum_{k=1}^n\partial_tu(b_k\partial_{x_k}u+cu)dx\right|\leqslant CE(t).$$
+又
+$$\int_0^t\frac{1}{2}\int_\varOmega\partial_t\bigg(\sum_{i,j=1}^na_{ij}\partial_{x_i}u\partial_{x_j}u\bigg)dxdt
+=\frac{1}{2}\int_\varOmega\sum_{i,j=1}^na_{ij}\partial_{x_i}u\partial_{x_j}u\>dx\Big|_{0}^t,$$
+以及
+$$\int_0^t\int_\varOmega\partial_tu\partial^2_tu\>dxdt
+=\frac{1}{2}\int_\varOmega(\partial_tu)^2dx\Big|_{0}^t.$$
+结合以上四式得到
+\begin{align*}    
+    &\quad\frac{1}{2}\int_\varOmega(\partial_tu)^2
+    +a_{ij}\partial_{x_i}u\partial_{x_j}u\>dx\Big|_{0}^t
+    -C\int_0^t\!E(t)\>dt\\
+    &\leqslant\int_0^t\int_\varOmega\partial_tu(\partial^2_tu+Lu)\>dxdt\\
+    &=\int_0^t\int_\varOmega\partial_t uf\>dxdt\\
+    &\leqslant\frac{1}{2}\int_0^t\int_\varOmega(\partial_t u)^2dxdt
+    +\frac{1}{2}\int_0^t\int_\varOmega|f|^2dxdt,
+\end{align*}
+即
+\begin{align*}
+    &\quad\int_\varOmega(\partial_tu)^2+a_{ij}\partial_{x_i}u\partial_{x_j}u\>dx\Big|_{t}\\
+    &\leqslant\int_\varOmega(\partial_tu)^2+a_{ij}\partial_{x_i}u\partial_{x_j}u\>dx\Big|_{0}
+    +\int_0^t\int_\varOmega(\partial_t u)^2dxdt
+    +\int_0^t\int_\varOmega|f|^2dxdt+C\int_0^t\!E(t)\>dt.
+\end{align*}
+由$(a_{ij})_{i,j}$的一致椭圆性和有界性，从上式进一步得到
+\begin{align*}
+    \int_\varOmega(\partial_tu)^2+|\nabla u|^2dx\Big|_{t}
+    \leqslant C\big(E(0)
+    +\int_0^t\int_\varOmega|f|^2dxdt+\int_0^t\!E(t)\>dt\big).
+\end{align*}
+还剩下$\displaystyle \int_{\varOmega} u^2dx\Big|_{t}$要估计.我们有
+\begin{align*}
+    \int_\varOmega u^2(t,x)\>dx
+    &=\int_\varOmega u^2(0,x)\>dx+\int_\varOmega\int_0^t\partial_t(u^2)\>dtdx\\
+    &\leqslant\int_\varOmega u^2(0,x)\>dx+\int_\varOmega\int_0^t u^2+(\partial_t u)^2dtdx\\
+    &\leqslant E(0)+\int_0^t\!E(t)\>dt.
+\end{align*}
+以上两式相加得
+\begin{align*}
+    E(t)&\leqslant C\big(E(0)+
+    \int_0^t\int_\varOmega|f|^2dxdt+\int_0^t\!E(t)\>dt\big)\\
+    &\leqslant C\big(E(0)+
+    \int_0^T\int_\varOmega|f|^2dxdt+\int_0^t\!E(t)\>dt\big).
+\end{align*}
+由Gronwall不等式得
+\begin{align*}
+    E(t)\leqslant C(T)\big(E(0)+\int_0^T\int_\varOmega|f|^2dxdt\big).
+\end{align*}
+(3) 为了仍有
+$$\int_{\partial\varOmega}\partial_t u\sum_{i,j=1}^na_{ij}\partial_{x_j}u\boldsymbol{n}_i\>dS=0,$$
+其中$\boldsymbol{n}=(\boldsymbol{n}_1,\cdots,\boldsymbol{n}_n)$，需要的边界条件为
+$$\sum_{i,j=1}^na_{ij}\partial_{x_j}u\boldsymbol{n}_i=0,
+\quad (t,x)\in(0,T)\times\partial\varOmega.$$
+\end{itemize}
+
+\subsection**{参考文献}
+\begin{references}
+    \bibitem[Gr]{Gr}
+        L. Grafakos. \textit{Classical Fourier Analysis}. 
+        Graduate Texts in Mathematics 249. Springer, 2014.
+    \bibitem[LZ]{LZ}
+        李大潜, 周忆. 非线性波动方程. 
+        现代数学丛书. 上海科学技术出版社, 2016. 
+        \href{https://link.springer.com/book/10.1007/978-3-662-55725-9}{➢Springer版下载}
+\end{references}

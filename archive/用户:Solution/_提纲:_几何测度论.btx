@@ -1,0 +1,159 @@
+\setdisplaytitle{几何测度论笔记}
+\sethtmltitle{几何测度论笔记}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\1}{\mathbb{1}}
+\newcommand{\Q}{\mathbb{Q}}
+\section{Week 1}
+\subsection{Minkowski dimension}
+\begin{definition}
+ \begin{enumerate}
+    \item For any $E\subset \mathbb{R}^n$, $\operatorname{diam}E=\sup_{x,y\in E}|x-y|$;
+    \item If $E\subset \cup_{\alpha\in A}E_\alpha$, then $\{E_\alpha\}_{\alpha \in A}$ is a covering of $E$. 
+    If $\{E_\alpha\}_{\alpha \in A}$ satisfies further $\operatorname{diam} E_\alpha \leq \delta$, 
+    then $\{E_\alpha\}_{\alpha \in A}$ is called a $\delta$-covering of $E$.
+ \end{enumerate}
+\end{definition}
+\begin{definition}
+ \begin{enumerate}
+    \item Given a bdd set $K\subset \mathbb{R}^n$, let $N(K,\delta)$ be the minimal cardinality of a $\delta$-covering of $K$, i.e. 
+    \[ N(K,\delta)=\min\{J:K\subset \bigcup_{j=1}^J,\operatorname{diam}(E_j)\leq \delta\}\]
+    \item The upper Minkowski dimension is defined as 
+    \[ \overline{\dim}_M(K)=\limsup_{\delta \rightarrow 0}\frac{\log N(K,\delta)}{\log\frac{1}{\delta}}\]
+    \item The lower Minkowski dimension is defined as
+    \[ \underline{\dim}_M(K)=\liminf_{\delta \rightarrow 0}\frac{\log N(K,\delta)}{\log\frac{1}{\delta}}\]
+    \item If $\overline{\dim}_M(K)=\underline{\dim}_M(K)$, then it is called the Minkowski dimension of $K$, and is denoted by $\dim_M(K)$.
+    \end{enumerate}
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+     \item $\dim_M(K)=\alpha \iff \forall \epsilon>0,\exists \delta_0>0$, s.t.$\forall \delta\in(0,\delta_0)$
+    \[ \delta^{-(\alpha-\epsilon)}\leq N(K,\delta)\leq \delta^{-(\alpha+\epsilon)}\]
+     \item $\underline{\dim}_M(K)=\alpha \iff \forall \epsilon>0,\exists \delta_0>0$, s.t.$\forall \delta\in(0,\delta_0)$
+    \[ \alpha-\epsilon<\inf_{\eta\in(0,\delta)}\frac{\log N(K,\eta)}{\log\frac{1}{\eta}}<\alpha+\epsilon\]
+    \item If $E\subset F$, then $\dim_M(E)\leq \dim_M(F)$.
+    \end{enumerate}
+\end{remark}
+\begin{lemma}
+    \begin{enumerate}
+        \item Let $N_B(E,\delta)$ be the minima size of a covering of E consisting of closed balls of radii $\delta$, 
+        then we can replace $N(K,\delta)$ by $N_B(K,\delta)$ in the definition of $\dim_M(K)$.
+        \item In  $N_B(E,\delta)$ we can replace balls of radii $\delta$ by axis-paralled boxes of length $\delta$.
+        \item If $A\subset \mathbb{R}^n$ is bounded, then
+        \[ \overline{\dim}_M(A)=\overline{\dim}_M(\overline{A})\]
+        \[ \underline{\dim}_M(A)=\underline{\dim}_M(\overline{A})\]
+    \end{enumerate}
+\end{lemma}
+\begin{example}
+    \begin{enumerate}
+     \item If $E$ is a finite set, then $\dim_M(E)=0$.
+     \item If $E=[0,1]$, then $\dim_M(E)=0$.
+     \item If $E\subset \mathbb{R}^n$ with $\dim_M(E)<n$, then $\mathcal{L}^n(E)=0$.
+     \item If $E = \{0\}\cup \{1,\frac{1}{2},\frac{1}{3},\cdots\}$, then $\dim_M(E)=\frac{1}{2}$.
+    \end{enumerate}
+\end{example}
+\begin{remark}
+    Let $E=\bigcup_{j=1}^\infty E_j$, $\dim_M(E)=\sup_j \dim_M E_j$ may fail.
+\end{remark}
+\begin{definition}
+    Let $P(E,\delta)$ be the greatest # of disjoint $\delta$-balls with centers in $E$,i.e.
+    \[ P(E,\delta)=\max \{ k: \exists \text{ disjoint balls }B(x_i,\delta),i=1,\cdots,k,\text{ s.t. }x_i\in E\}\]
+\end{definition}
+\begin{lemma}
+    $N_B(E,2\delta)\leq P(E,\delta) \leq N_B(E,\frac{\delta}{2})$. Consequently,
+\[ \dim_M(E)=\lim_{\delta \rightarrow 0}\frac{\log P(E,\delta)}{\log \frac{1}{\delta}}\]if it exists.
+\end{lemma}
+\begin{lemma}
+    Let $\alpha>0$, if $\exists C_\alpha >0$, s.t. $|E_\delta|\geq C_\alpha \delta^\alpha,\forall \delta >0$, 
+    where $E_\delta=\{x:d(x,E)<\delta\}$. Then $\underline{\dim}_M(E)\geq n-\alpha$.
+\end{lemma}
+
+\section{Week 2}
+\subsection{Outer Measure}
+\begin{definition}
+    Let X be a nonempty set, a mapping $\mu:2^X\rightarrow [0,\infty]$ is called an outer measure (we call it measure for short) of $X$ if it satisfies:
+    \begin{enumerate}
+        \item $\mu(\emptyset)=0$
+        \item If $A\subset \bigcup_{k=1}^{\infty}A_k$, then $\mu(A)\leq \sum_{k=1}^\infty \mu(A_k)$
+    \end{enumerate}
+\end{definition}
+\begin{definition}
+    $A\subset X$ is $\mu$-measurable if $\mu(B)=\mu(A\cap B)+\mu(B\setminus A)$,$\forall B\subset X$.
+\end{definition}
+\begin{theorem}
+    If $\mu$ is a measure on $X$, then the collection of all $\mu$-measurable subsets of $X$ is a $\sigma$-algebra.
+\end{theorem}
+\begin{proposition}
+    Let $\mu$ be a measure on $X$.
+    \begin{enumerate}
+        \item If $A\subset B\subset X$, then $\mu(A)\leq \mu(B)$.
+        \item $A$ is $\mu$-measurable $\iff A^c$ is $\mu$-measurable.
+        \item $\emptyset$ and $X$ are $\mu$-measurable.
+        \item If $\mu(A)=0$, then $A$ is $\mu$-measurable.
+        \item If $E \subset X$ and $A$ is $\mu$-measurable, then $A$ is $\mu|_E$-measurable.
+    \end{enumerate}
+\end{proposition}
+\begin{proposition}
+    Let $\{A_k\}_{k=1}^\infty$ be a sequence of $\mu$-measurable sets.
+    \begin{enumerate}
+        \item $\bigcup_{k=1}^\infty A_k,\bigcap_{k=1}^\infty A_k$ are $\mu$-measurable sets.
+        \item If $\{A_k\}_{k=1}^\infty$ are disjoint, then $\mu(\bigcup_{k=1}^\infty A_k)=\sum_{k=1}^\infty \mu(A_k)$.
+        \item If $A_1\subset\cdots\subset A_k\subset\cdots$, then $\mu(\bigcup_{k=1}^\infty A_k)=\lim_{k\rightarrow \infty}\mu(A_k)$.
+        \item If $A_1\supset\cdots\supset A_k\supset\cdots$, with $\mu(A_1)<\infty$, then $\mu(\bigcap_{k=1}^\infty A_k)=\lim_{k\rightarrow \infty}\mu(A_k)$.
+    \end{enumerate}
+\end{proposition}
+\begin{theorem}(Caratheodory's criterion)\\
+  Let $\mu$ be a measure in $\mathbb{R}^n$. 
+  If $\forall A,B\in \mathbb{R}^n$ satisfying $\operatorname{dist}(A,B)>0$, 
+  we have $\mu(A\cup B)=\mu(A)+\mu(B)$. Then $\mu$ is a Borel measure.
+\end{theorem}
+\begin{definition}
+    (i) A measure $\mu$ on $\mathbb{R}^n$ is Borel regular if $\mu$ is Borel and satisfies: 
+    $\forall A \subset \mathbb{R}^n$, $\exists$ a Borel set $B$, s.t. $A\subset B$ and $\mu(A)=\mu(B)$.\\
+    (ii) $\mu$ is a Radon measure if it is a Borel measure and satisfies:
+    \begin{enumerate}
+        \item $\mu(K)<\infty$, for any compact $K\subset \mathbb{R}^n$.
+        \item $\mu(V)=\sup\{\mu(K):K\subset V,K\text{ compact}\}$, for any open $V\subset \mathbb{R}^n$.
+        \item $\mu(A)=\{\mu(V):A\subset V,V\text{ open}\}$, for any $A \subset \mathbb{R}^n$.
+    \end{enumerate}
+\end{definition}
+\begin{theorem}
+    Let $\mu$ be a Borel regular measure on $\mathbb{R}^n$. 
+    Suppose $A\subset \mathbb{R}^n$ is $\mu$-measurable and $\mu(A)<\infty$. 
+    Then $\mu|_A$ is a Radon measure.
+\end{theorem}
+\begin{theorem}
+    Let $\mu$ be a Borel  measure on $\mathbb{R}^n$ and let $B$ be a Borel set.\\
+    (i) If $\mu(B)<\infty$, then $\forall \epsilon >0$, 
+    $\exists$ a closed set $C$, s.t. $C\subset B$ and $\mu(B\setminus C)<\epsilon$.\\
+    (ii) If $\mu$ is Borel regular and $\mu$ is locally finite, 
+    then $\forall \epsilon >0$,$\exists$ an open set $V$, 
+    s.t. $B\subset V$ and $\mu(V\setminus B)<\epsilon$.
+\end{theorem}
+\begin{definition}
+    A Borel regular measure $\mu$ on a metric space $X$ is called uniformly distributed if 
+    \[ 0<\mu(B(x,r))=\mu(B(y,r))<\infty\]
+    for any $x,y \in X$ and $0<r<\infty$.
+\end{definition}
+\begin{theorem}
+    Let $\mu$ and $\nu$ be uniformly distributed Radon measures on $\mathbb{R}^n$. 
+    Then $\exists c\in (0,\infty)$, s.t. $\mu=c\nu$.
+\end{theorem}
+
+\section{Week 3}
+\subsection{Hausdorff dimension}
+\begin{definition}
+    (i) Let $A\subset \mathbb{R}^n$,$0\leq s < \infty$,$0<\delta \leq \infty$, 
+    then we define $H^s_\delta(A)=\inf \big\{\sum_{j=1}^\infty (\operatorname{diam}(C_j))^s: A\subset \bigcup_{j=1}^\infty C_j,\operatorname{diam}(C_j)\leq \delta\big\}$;\\
+    (ii) $H^s(A)=\lim_{\delta \rightarrow 0} H^s_\delta(A)=\sup_{\delta >0}H^s_\delta(A)$, 
+    which is called $s$-dimensinal Hausdorff measure of $A$.
+\end{definition}
+\begin{theorem}
+    For $0\leq s <\infty $, $H^s$ is a Borel regular measure on $\mathbb{R}^n$.
+\end{theorem}
+\begin{theorem}
+    (i) $H^s$ is a counting measure;\\
+    (ii) $H^s\equiv 0$ on $\mathbb{R}^n$ provided $s>n$;\\
+    (iii) $H^s(\lambda A)=\lambda^s H^s(A)$, $\forall s>0,A\subset \mathbb{R}^n$;\\
+    (iv) $H^s(L(A))=H^s(A)$,$\forall$ affine isometry $L:\mathbb{R}^n \rightarrow \mathbb{R}^n,A\subset \mathbb{R}^n$;\\
+    (v) $H^n=c\mathcal{L}^n$ for some constant $c>0$.
+\end{theorem}

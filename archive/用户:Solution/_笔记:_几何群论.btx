@@ -1,0 +1,545 @@
+\newcommand{\edge}{\operatorname{edge}}
+\newcommand{\vt}{\operatorname{vert}}
+\newcommand{\rl}{\operatorname{real}}
+\newcommand{\Path}{\operatorname{Path}}
+\newcommand{\Circ}{\operatorname{Circ}}
+\newcommand{\Stab}{\operatorname{Stab}}
+\section{共合积（Amalgam）}
+\subsection{正向极限}
+\begin{definition}
+    设$(G_i)_{i \in I}$是一族群。对$(i,j) \in I \times I$，
+    $F_{ij}$由一些$G_i \to G_j$的群同态构成。$(G_i)$的\textbf{正向极限}
+    是一个群$G = \varinjlim G_i$以及一族同态$f_i \colon G_i \to G$，使得
+    对任何$f \in F_{ij}$都有$f_j \circ f = f_i$，且满足如下的泛性质：
+
+    若群$H$和$h_i \colon G_i \to H$满足$h_j \circ f = h_i$对任何$f \in F_{ij}$，
+    那么存在$h \colon G \to H$使得$h_i = h \circ f_i$。
+\end{definition}
+\begin{definition}
+    设有群$G_1,G_2,A$以及群同态$f_1 \colon A \to G_1$，$f_2 \colon A \to G_2$。
+    当$A = \{1\}$，定义\textbf{自由积}
+    \[G_1 * G_2 = \left\{ a_1\cdot b_1 \cdot \ldots \cdot a_n \cdot b_n \mid b_1,\ldots,b_{n-1} \neq e_{G_2},a_2,\ldots,a_n \neq e_{G_1}\right\}.\]
+
+    当$A \neq \{1\}$时，\textbf{共合积}$G_1 *_A G_2$的元素是$G_1*G_2$
+    中的元素商掉如下的等价关系：\[\left( a_1f_1(x) \right)\cdot b_1 = a_1 \cdot \left( f_2(x)b_1 \right);\left( b_1f_2(x) \right)\cdot a_2 = b_1 \cdot \left( f_1(x)a_2 \right),\]
+    其中$a_i \in G_1$，$b_i \in G_2$，$x \in A$。
+
+    类似地，可以定义一族群的自由积或者共合积。
+\end{definition}
+\begin{remark}
+    自由积是群范畴中的余积，直积是群范畴中的积，请读者自行回忆它们满足的泛性质。
+\end{remark}
+\begin{example}[Van Kampen 定理]
+设$X$是被开集$U_1,U_2$覆盖的拓扑空间。假设$U_1,U_2,U_{12} = U_1 \cap U_2 \neq \emptyset$是道路连通的。
+设$x \in U_{12}$，则基本群$\pi_1(X;x) = \pi_1(U_1;x) *_{\pi_1(U_{12};x)} \pi_1(U_2;x)$。
+\end{example}
+\subsection{共合积的结构}
+假设$g = a_1b_1\ldots a_nb_n \in G_1*_A G_2$，考虑$b_n = f_2(x_n)b_n'$，那么
+$g = a_1b_1 \ldots (a_nf_1(x_n))b_n'$。同样设$a_nf_1(x_n) = f_1(x_n')a_n'$并重复上述操作，则有：
+\begin{proposition}
+    \[G_1*_A G_2 = \left\{ xa_1b_1\ldots a_nb_n \mid x \in A,a_i \in G_1\backslash f_1(A),b_i \in G_2\backslash f_2(A) \right\},\]
+    这里$a_1$和$b_n$可以不出现。
+\end{proposition}
+
+假设诸$f_i$是单射，取定$f_i(A)$在$G_i$中的一组右陪集代表元系$1 \in S_i$ ($i = 1,2$)，
+那么可以找到\textbf{唯一}的表达式\[xa_1b_1\ldots a_nb_n,\]其中$x \in A$，$a_i \in S_1\backslash\{1\}$，
+$b_i \in S_2 \backslash \{1\}$且$a_1,b_n$可以不出现。对一般的共合积，总结如下：
+\begin{theorem}\label{structure}
+    设群$A$和一族群$(G_i)_{i \in I}$，有一族单射$A \to G_i$（因而$A$可以视为诸$G_i$的子群）。取定$A$在$G_i$中的右陪集代表元系$S_i$，
+    并记$f$和$f_i$分别是$A$和$G_i$映入$(*_A G_i)$中的典范映射。
+    那么对于$(*_A G_i)$中的任何元素$g$，均存在唯一的$\vec{i} = (i_1,\ldots,i_n)$、$a \in A$、$s_m \in S_{i_m}\backslash\{1\}$，
+    使得$g = f(a)f_{i_1}(s_1)\cdots f_{i_n}(s_n)$。
+\end{theorem}
+\begin{definition}
+    \begin{enumerate}
+        \item 对于$g \in *_A G_i$，定义$g$的\textbf{长度}$\ell(g)$为$g$
+        在\ref{structure}中表达式里的$n$。
+        \item 对于$g \in *_A G_i$使得$\ell(g) \geqslant 2$，称$g$是\textbf{循环约化}（cyclic reduced）的，
+        如果$i_1 \neq i_n$。
+    \end{enumerate}
+\end{definition}
+\begin{proposition}
+    \begin{enumerate}
+        \item $*_A G_i$中的元素要么和$G_i$中的某个元素共轭，要么和某个循环约化元共轭。
+        \item 循环约化元生成一个无限循环群。
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    第二点容易直接验证。
+
+    对于第一点，对$\ell(g)$归纳。若$\ell(g) \geqslant 2$且不是循环约化的，
+    设$g$对应于$\vec{i} = (i_1,\ldots,i_n)$且$i_1 = i_n$，$g = g_1\cdots g_n$，$g_m \in G_{i_m}\backslash \{1\}$。
+    那么$g_1^{-1}gg_1 = g_2 \cdots g_ng_1$，此时一定有$\ell(g_1^{-1}gg_1) < n$，
+    因此与$G_i$的某个元素或者某个循环约化元共轭，从而$g$亦然。
+\end{proof}
+\begin{corollary}
+    $(*_A G_i)$中的有限阶元素一定与$G_i$中的某个元素共轭。
+\end{corollary}
+\begin{proof}
+    否则其与循环约化元共轭，而这与有限阶矛盾。
+\end{proof}
+\begin{corollary}
+    若诸$G_i$无挠，则$(*_A G_i)$无挠。
+\end{corollary}
+\begin{proof}
+    假设有挠元，其与$G_i$中某挠元共轭，又由无挠导出只能是单位元。
+\end{proof}
+\begin{proposition}
+    设$H_i$是$G_i$的子群，且$B = H_i \cap A$与$i$无关，则
+    由$H_i \to G_i$诱导的$*_B H_i \to *_A G_i$是单射。
+\end{proposition}
+\begin{corollary}
+    若$H_i \cap A = \{1\}$，则在$(*_A G_i)$中由$H_i$自由生成的子群是$*H_i$。
+\end{corollary}
+\subsection{自由群}
+记由$n$ ($n \geqslant 2$)个元素生成的自由群是$F_n$。
+显然$F_2$可以作为$F_n$的子群；之后我们会证明，$F_n$也可以看成$F_2$的子群！
+\begin{proposition}
+    设$A,B$是群，$R = \ker(A*B \to A \times B)$，则$R$是自由群，以\[X = \left\{ [a,b] \mid a \in A\backslash\{1\},b \in B\backslash \{1\} \right\}\]
+    为生成元。
+\end{proposition}
+\begin{proof}
+    TBA。
+\end{proof}
+\begin{corollary}
+    两个有限群的自由积一定包含一个有限指标的自由子群。
+\end{corollary}
+\begin{proof}
+    设群是$A,B$，则前述定理中的$R$满足$[A*B:R] = |A \times B| < \infty$。
+\end{proof}
+\begin{example}
+    自由群的例子：
+    \begin{enumerate}
+        \item 无穷二面体群（infinite dihedral group）$D_\infty \cong \Z/2\Z * \Z/2\Z$。
+        \item 特殊射影线性群$\operatorname{PSL}_2(\Z) = \operatorname{SL}_2(\Z)/\{\pm 1\} \cong \Z/2\Z * \Z/3\Z$。
+    \end{enumerate}
+\end{example}
+\begin{remark}
+    $\operatorname{PSL}_2(\Z)$作为自由群的一组生成元是$\begin{pmatrix}
+        0 & 1\\ -1 & 0
+    \end{pmatrix}$（$2$阶）与$\begin{pmatrix}
+        0 & -1\\ 1 & 1
+    \end{pmatrix}$（$3$阶）。$\operatorname{SL}_2(\Z)$只有四个有限子群：
+    \[\{1\},\{\pm 1\},\left\langle \begin{pmatrix}
+        0 & 1\\ -1 & 0
+    \end{pmatrix} \right\rangle,\left\langle \begin{pmatrix}
+        0 & -1\\ 1 & 1
+    \end{pmatrix} \right\rangle.\]
+\end{remark}
+\begin{definition}
+    回忆半直积的概念。设$N \lhd G$，$H < G$，如果$1 \to N \to G \to H \to 1$正合，则称
+    $G$是$N$和$H$的一个\textbf{半直积}，记作$G = N \rtimes H$或$G = H \ltimes N$。
+
+    \textbf{外半直积}：设群$H$在群$N$上有群作用$\varphi$，在$N \times H$上定义新的乘法：
+    $(n_1,h_1)\cdot(n_2,h_2) = (n_1\varphi_{h_1}(n_2),h_1h_2)$，得到的群记为$N \rtimes H$。
+\end{definition}
+\begin{proposition}[G. Higman, B.H. Neumann, H. Neumann, 1949]
+    设$A < G$，$\theta \colon A \to G$是单同态（不一定是嵌入），那么存在群扩张
+    $G < G'$和$s \in G'$使得$\theta(a) = sas^{-1}$。进一步，如果$G$可数（或有限生成或无挠），
+    那么可选取拥有相同性质的$G'$。
+\end{proposition}
+\begin{proof}
+    对任意$n \in \Z$，考虑$A_n = A$和$G_n = G$。令$H = *_A G_n$，这里的共合
+    在$(g_1\theta(a))\cdot g_2 = g_1 \cdot (ag_2)$的意义下。考虑$u_n \colon G_n \to G_{n+1}$是恒等映射，
+    则$u_n$诱导了右平移映射$u \colon H \to H$。如果$a \in A \subseteq G = G_0$，则
+    此时$u(a) \in G_1 = \theta(a) \in G_0$。故$u$延拓了$\theta$。考虑半直积$G' = H \rtimes \Z$，其中$\Z$在$H$
+    上的作用由$u$给出。此时不难验证$s = (1_H,1)$满足上述性质。“进一步”之后的命题由上述构造直接得到。
+\end{proof}
+\begin{remark}
+    上述命题的H-N-N三人提出了如下问题：若$A,B$都是$G$的子群，那么是否存在群扩张$G < H$
+    以及$h \in H$使得$h^{-1}Ah = B$？显然，必要条件是$A \cong B$。非平凡的事情是，三人证明了这也是充分条件。
+\end{remark}
+\section{树}
+\subsection{图}
+\begin{definition}
+    一个\textbf{图}（graph）$\Gamma$由顶点集$X = \vt \Gamma$、边集$Y = \edge \Gamma$与映射
+    \[Y \to X \times X,y \mapsto (o(y),t(y))\]和\[Y \to Y,y \mapsto \bar{y}\]
+    构成，它们满足：对任何$y \in Y$都有$\bar{\bar{y}} = y$，$\bar{y} \neq y$以及$o(y) = t(\bar{y})$。
+\end{definition}
+直观地来看，在此定义中，一条边$y \in Y$是有方向的，以$o(y)$为起点（origin），
+以$t(y)$为终点（terminate）。$\bar{y}$则是将这条边的箭头反过来。
+\begin{definition}
+    图$\Gamma$的\textbf{定向}是$Y$的一个分解$Y = Y_{+} \sqcup \bar{Y}_+$。
+\end{definition}
+
+在实际中，我们用图表（diagram）来表示一个图（graph）。即，通俗地说，一个graph画在纸上叫作diagram。
+\begin{example}
+    TBA
+\end{example}
+\begin{definition}
+设$\Gamma$是图，$X = \vt \Gamma$，$Y = \edge \Gamma$。构造拓扑空间$T = X \sqcup (Y \times [0,1])$，这里
+$X,Y$赋予离散拓扑。图$\Gamma$的\textbf{实现}是拓扑空间$\rl(\Gamma) = T/R$，其中$R$是由$(y,0) = o(y),(y,1) = t(y)$
+以及$(y,t) = (\bar{y},1-t)$确定的等价关系。
+\end{definition}
+\begin{remark}
+    其上具有一个至多$1$维的CW复形结构。
+\end{remark}
+\begin{definition}
+    图$\Gamma$的\textbf{重心重分}是这样的一个图$\Gamma'$：$\vt \Gamma = X \cup \left\{ \{y,\bar{y}\} \mid y \in Y\right\}$
+    （后者代表每条边的中点）；$\edge \Gamma' = Y \times \{0,1\}$，其中$\overline{(y,\varepsilon)} = (\bar{y},1-\varepsilon)$，
+    $o(y,0) = o(y)$，$o(y,1) = \{y,\bar{y}\}$。
+\end{definition}
+容易验证，$t(y,0) = \{y,\bar{y}\}$，$t(y,1) = t(y)$，以及$\rl \Gamma'$同胚于$\rl \Gamma$的重心重分。
+\begin{definition}
+    图的范畴，对象由图构成。态射$f:\Gamma \to \Gamma'$由顶点的映射和边的映射构成，且满足
+    $f(o(y)) = o(f(y))$，$f(t(y)) = t(f(y))$以及$f(\bar{y}) = \overline{f(y)}$。
+\end{definition}
+\begin{definition}
+    图$\Path_n$是（TBA）。图$\Gamma$中长度为$n$的\textbf{路径}是$\Path_n$在$\Gamma$中的像。
+    如果图$\Gamma$中的任何两个点都有路径相连，则称$\Gamma$是\textbf{连通图}。
+\end{definition}
+\begin{definition}
+    图$\Circ_n$是（TBA）。图$\Gamma$中长度为$n$的\textbf{环路}是与$\Circ_n$同构的一个子图。
+    一个长度为$1$的环路称为\textbf{环}（loop）。不含$\Circ_2$或环作为子图的图称为\textbf{组合图}（combinatorial graph）。
+\end{definition}
+\subsection{图$\Gamma(G,S)$}
+设$G$是图，$S$是$G$的子集。
+\begin{definition}
+    定义图$\Gamma - \Gamma(G,S)$如下：$\vt \Gamma = G$（作为集合），定向$(\edge \Gamma)_+ = G \times S$，
+    满足$o(g,s) = g$和$t(g,s) = gs$。
+\end{definition}
+$G$在$G$上的左乘作用给出了$G$在$\Gamma$上的作用，使得$g\cdot h = gh$以及$g(h,s) = (gh,s)$。这是一个保持定向
+（$g\cdot (\edge \Gamma)_+ = (\edge \Gamma)_+$）并且自由（见\ref{def-free}）的作用。
+\begin{example}
+    考虑加法群$G = \Z^2$，$S = \{(0,1)\}$，则$\Gamma(G,S)$是（TBA）。
+\end{example}
+\begin{proposition}
+    \begin{enumerate}
+        \item $\Gamma$连通$\iff S$生成$G$。
+        \item $\Gamma$有环$\iff 1 \in S$。
+        \item $\Gamma$是组合图$\iff S \cap S^{-1} = \emptyset$。
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    容易验证。
+\end{proof}
+\subsection{树}
+\begin{definition}
+    \textbf{树}是一个非空无环路的连通图。
+\end{definition}
+\begin{example}
+    考虑由$S = \{x,y\}$生成的自由群$G = F(S)$，$\Gamma(G,S)$是树。
+
+    图TBA
+\end{example}
+\begin{proposition}
+    在树$\Gamma$中，对任何两个顶点$P,Q$，存在唯一一条连接$P,Q$的最短路径。
+\end{proposition}
+\begin{proof}
+    由连通性知存在连接$P,Q$的路径。这些路径一定是某$\Path_n$的单射像，
+    否则$\Gamma$中存在环路。那么必存在长度最短的路径，且无环路性保证了
+    最短路径的唯一性。
+\end{proof}
+由上述命题，在树中可以定义两点$P,Q$的距离$\ell(P,Q)$。对顶点$P$，可以定义$X_n = \{Q \mid \ell(P,Q) = n\}$。
+\begin{proposition}
+    树的几何实现是可缩空间。
+\end{proposition}
+\begin{proof}
+    连接$P,Q$的最短路径同胚于$[0,n]$，$F(x,t) = tx$实现$[0,n]$到单点集的同伦，
+    进而可以有全空间到单点集的同伦。
+\end{proof}
+\begin{definition}
+    对图$\Gamma$的顶点$P$，记$Y_P = \{y \in Y \mid t(y) = P\}$。
+    $P$的\textbf{指标}为$n = \sharp Y_P$。如果$n = 0$，那么或者$\Gamma$
+    不连通，或者$\Gamma$只由一点构成且无边。此时称$P$是\textbf{孤立点}。
+    如果$n \leqslant 1$，称$P$是\textbf{端点}（terminal vertex；pending vertex）。
+\end{definition}
+\begin{example}
+    在$\Path_n$中，最边上的两个点是端点。
+\end{example}
+\begin{proposition}
+    设$P$是图$\Gamma$非孤立的端点。
+    \begin{enumerate}
+        \item $\Gamma$连通$\iff \Gamma - P$（顶点集为$X-\{P\}$，边集为$Y-(Y_P \cup \bar{Y}_P$)）连通。
+        \item $\Gamma$中的任何环路不包含$P$（等价地，$\Gamma$的任何环路包含于$\Gamma - P$）。
+        \item $\Gamma$是树$\iff \Gamma - P$是树。
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    此时指标$n = 1$。如果$\Gamma$连通，那么对$\Gamma-P$的任何顶点$Q,Q'$，
+    由$\Gamma$的连通性知存在连接$Q,Q'$的路径；而这条路径一定也在$\Gamma-P$中。
+    反之假设$\Gamma-P$连通，则对任何顶点$Q$来说，首先有$P$到某顶点$Q'$的路径，再连接$Q'$和$Q$即可。
+
+    任何包含$P$的环路使得$n \geqslant 2$，故不会有环路包含$P$。
+
+    既然树是非空、不含环路的连通图，前两条导出了第三条。
+\end{proof}
+\begin{proposition}
+    设$\Gamma$是直径为$n<\infty$的树。（注意：此时端点数未必有限）那么：
+    \begin{enumerate}
+        \item 端点集$t(\Gamma)$非空。
+        \item 若$n \geqslant 2$，则$\Gamma$去掉所有端点（以及对应的边）得到一棵
+        直径为$n-2$的树。
+        \item 若$n = 0$，则$\Gamma \bumpeq \Path_0$；若$n = 1$，则$\Gamma \bumpeq \Path_1$。
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+第三条是显然的。
+
+假设$n \geqslant 2$，记去掉端点得到图$\Gamma'$。取$\Gamma$中长为$n$的路径，则
+其第一个和最后一个点一定是端点。去掉它们后得到$\Gamma'$中长度为$n-2$的路径。说明$\Gamma'$的
+直径不小于$n-2$。另一方面，任取$\Gamma'$的端点$P,Q$，记$\ell(P,Q) = m$，并取连接$P,Q$的最短路径。
+那么在$\Gamma$中此路径可以向两端延展为一条长度为$m+2 \leqslant n$的路径，表明$\Gamma'$的直径
+不超过$n-2$，$2$证明完毕。
+
+最后，$n = 0,1$时由$3.$知端点非空；$n \geqslant 2$时，如果端点为空，则去掉所有端点后得到的树直径还是$n$，与$2.$矛盾！
+\end{proof}
+\begin{corollary}
+    \begin{enumerate}\label{coro-tree-inv}
+        \item 一棵偶直径的树存在一个在所有自同构下不变的顶点。
+        \item 一棵奇直径的树存在一条在所有自同构下不变的几何边。
+    \end{enumerate}
+\end{corollary}
+\begin{proof}
+    图$\Gamma'$在$\Gamma$的所有自同构下不变，因此对$\Gamma$的直径归纳即可。
+\end{proof}
+\subsection{图的子树}
+设$\Gamma$是非空图，那么$\Gamma$的子树全体在包含关系下构成非空偏序集。
+不难验证此偏序集满足Zorn引理的条件，那么$\Gamma$有\textbf{极大子树}，
+也就是子树集合中的极大元。
+\begin{proposition}
+    非空连通图$\Gamma$的极大子树$\Lambda$包含$\Gamma$的全部顶点。
+\end{proposition}
+\begin{proof}
+    否则由连通性可取边$y$使得其起点在$\Lambda$中而终点$P$不在。此时图$\Lambda'$
+    （顶点集为$\vt \Lambda \cup \{P\}$，边集为$\edge \Lambda \cup \{y,\bar{y}\}$）
+    是树（因为$\Lambda = \Lambda'-P$是树），矛盾！
+\end{proof}
+\section{树和自由群}
+考虑群$G$在图$X$上的作用。一个\textbf{反转}是元素$g \in G$以及$y \in \edge X$，
+使得$gy = \bar{y}$。这等价于$X$上存在一个被$G$作用保持的定向。
+如果$G$的作用不包含反转，可以定义商图$G\backslash X$如下：
+\begin{definition}
+    $\vt G\backslash X = \vt X/\sim$，$\edge G\backslash X = \edge X/\sim$。
+    这里等价关系由$G$的作用给出。
+\end{definition}
+\begin{example}
+    考虑$X = \Z^2$，每相邻两点连一条边，$G = \Z$，作用$m\cdot(m_1,m_2) = (m_1,m_2+m)$。
+    商图$G\backslash X$（TBA）。
+\end{example}
+\begin{proposition}\label{prop-up}
+    设$X$是连通图，群$G$在其上有不包含反转的作用。那么$G \backslash X$的子树可以
+    提升为$X$的子树。
+\end{proposition}
+\begin{definition}
+    $X \mod{G}$的\textbf{代表元树}是$G\backslash X$中的一棵极大子树的提升。
+\end{definition}
+\subsection{自由群的图}
+\begin{proposition}
+    设$X = \Gamma(G,S)$是群$G$和子集$S$决定的图，那么以下等价：
+    \begin{enumerate}
+        \item $X$是树。
+        \item $G$是以$S$为基的自由群。
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    TBA
+\end{proof}
+\subsection{树上的自由作用}
+\begin{definition}\label{def-free}
+称群$G$在图$X$上\textbf{自由作用}，如果$G$的作用不含反转且没有非平凡元素$g$固定$X$的某个顶点。
+\end{definition}
+我们有：
+\begin{theorem}
+    自由作用在树上的群是自由群。
+\end{theorem}
+更严格地说，
+\begin{theorem}
+    设$G$是在树$X$上自由作用的群。选取$X \mod{G}$的代表元树$T$以及被$G$作用保持的一个定向$Y_+$。
+    \begin{enumerate}
+        \item 设\[S = \{g \neq 1 \mid \exists y \in Y_+,o(y)\in T,t(y) \in gT\},\]
+        那么$S$是$G$的一组基。
+        \item 如果$X^* = G\backslash X$只有有限个顶点（$s$个）并且$\sharp \edge X^* = 2a$，
+        那么$\sharp S-1 = a-s$。
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    TBA
+\end{proof}
+\begin{theorem}[Schreier]
+    自由群的子群是自由群。
+\end{theorem}
+\begin{proof}
+    自由群的子群也在树上自由作用。
+\end{proof}
+\begin{corollary}[Schreier index formula]
+设$G$是秩为$r_G$的自由群，$H$是秩为$r_H$的子群，$[G:H] = n < \infty$。此时\[r_H - 1 = n(r_G-1).\]
+\end{corollary}
+\begin{proof}
+    TBA
+\end{proof}
+\begin{proposition}
+设$G$是以$S$为基的自由群，$H$是$G$的子群。
+\begin{enumerate}
+    \item 可以选取$H\backslash G$的代表元集$T$，满足如下条件：
+
+    如果$t \in T$有如下的既约分解\[t = s_1^{\varepsilon_1}\cdots s_n^{\varepsilon_n}, s_i \in S, \varepsilon_i \in \{\pm 1\}, s_i = s_{i+1} \implies \varepsilon_i = \varepsilon_{i+1},\]
+    那么$1,s_1^{\varepsilon_1},\ldots,s_1^{\varepsilon_1}\cdots s_n^{\varepsilon_n}$都在$T$中。
+
+    \item 设$W = \{(t,s) \in T \times S \mid ts \not\in T\}$。对$(t,s) \in W$，置$h_{t,s} = tsu^{-1}$，
+    其中$u \in T$使得$Hts = Hu$。此时\[R = \{h_{t,s} \mid (t,s) \in W\}\]是$H$的一组基。
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+    TBA
+\end{proof}
+\section{树和共合积}
+\begin{definition}
+    假设$G$在图$X$上有不含反转的作用。$X \mod{G}$的一个\textbf{基本区域}
+    是指$X$的子图$T$，使得$T \to G\backslash X$是同构。
+\end{definition}
+\begin{example}
+    在$\R^2$上考虑$\R$的作用$r\cdot(x,y) = (x+r,y+\lambda r)$，其中$\lambda \in \R$。
+    此时$\R^2/\R \cong \R$。考虑环面$\R^2/\Z^2 = \mathbb{T}^2 = \mathbb{S}^1 \times \mathbb{S}^1$。
+    $\R$在$\R^2$上的作用诱导了$\R$在$\mathbb{T}^2$上的作用。如果$\lambda = 1$，则$\mathbb{T}^2/\R \cong \mathbb{S}^1$；
+    反之，如果$\lambda$是无理数，则任意一点出发的轨道是稠密的，基本区域会很糟糕。
+\end{example}
+显然，如果$G\backslash X$是树，则由\ref{prop-up}知基本区域确实存在。如果$X$是树，则反过来也是对的：
+\begin{proposition}
+    设$X$是树，$G$作用在$X$上。那么基本区域存在当且仅当$G\backslash X$是树。
+\end{proposition}
+\begin{proof}
+    一边不需证明。假设存在基本区域$T$，由$G\backslash X$连通且非空导出$T$亦然。$X$
+    没有环路推出$T$亦然，因此$T$是树，故$G \backslash X$亦然。
+\end{proof}
+接下来我们考虑一类特殊的图：segment（注：课上未给出中文译名，笔者也未找到较通用的译名，故保留）。
+\begin{definition}
+    一个同构于$\Path_1$的图称为\textbf{segment}。
+\end{definition}
+以下假设$G\backslash X$是segment，$T$是$X \mod{G}$的基本区域。我们考虑树和共合积的关系。
+\begin{theorem}\label{thm-treeiso}
+    设\[G_P = \{g \in G \mid gP = P\},G_Q = \{g \mid gQ = Q\}, \]
+    \[G_y = \{g \mid gy = y\} = G_P \cap G_Q\},\]
+    则如下等价：
+    \begin{enumerate}
+        \item $X$是树；
+        \item $G_P *_{G_y} G_Q \to G$是同构。
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    是\ref{lem-con}和\ref{lem-nocir}的直接推论。
+\end{proof}
+反过来，任何两个群的共合积在一个以segment为基本区域的树上作用。
+\begin{theorem}\label{thm-existtree}
+    设$G = G_1 *_A G_2$是群的共合积。那么存在（同构意义下唯一的）树$X$，使得
+    $G$在其上有一个以$T$为基本区域的作用；此外，$G_P = G_1$，$G_Q = G_2$以及
+    $A = G_y = G_1 \cap G_2$。
+\end{theorem}
+\begin{proof}
+    $X$在同构意义下只能是如下的图：
+    \[\vt X = (G/G_1) \sqcup (G/G_2),\edge X = (G/A) \sqcup \overline{(G/A)},\]
+    在定向$G/A$上映射$o\colon G/A \to G/G_1;t\colon G/A \to G/G_2$。
+    基本区域$T$由$P = 1\cdot G_1,Q = 1\cdot G_2$以及$y = 1\cdot A$确定。
+    最后，\ref{thm-treeiso}确保$X$是树。
+\end{proof}
+\begin{remark}
+    这是一种二部图（bipartite graph），每个顶点$G_1g_1$引出$[G_1:A]$条边，
+    每个顶点$G_2g_2$引出$[G_2:A]$条边。
+\end{remark}
+\begin{lemma}\label{lem-con}
+    $X$连通当且仅当$G$由$G_P \cup G_Q$生成。
+\end{lemma}
+\begin{proof}
+    TBA
+\end{proof}
+\begin{lemma}\label{lem-nocir}
+    $X$不包含环路当且仅当$G_P *_{G_y} G_Q \to G$是单射。
+\end{lemma}
+\begin{proof}
+    TBA
+\end{proof}
+\begin{example}
+    考虑$G = \operatorname{SL}_2(\Z)$。熟知，$G$在上半平面$\mathbb{H} = \{z=x+iy \mid y>0\}$上有
+    作用\[\begin{pmatrix}
+        a & b\\c & d
+    \end{pmatrix}\colon z \mapsto \frac{az+b}{cz+d}.\]令\[P = e^{\pi i/3},Q = i,y = e^{i\theta}\left(\frac{\pi}{3}\leqslant \theta \leqslant \frac{\pi}{2}\right).\]
+    又记$X$是$G$在$\overset{\frown}{PQ}$上作用得到的弧线的并。此时$X$是以$\overset{\frown}{PQ}$为基本区域的树，
+    并且\[G_P = \Z/6\Z,G_Q = \Z/4\Z, G_y = \Z/2\Z.\]因此有同构\[\operatorname{SL}_2(\Z) \cong (\Z/4\Z) *_{\Z/2\Z} (\Z/6\Z).\]
+\end{example}
+\begin{proposition}
+    假设$\Gamma < G_1 *_A G_2$。那么\[\Gamma \cap g_1G_1g_1^{-1} = \Gamma \cap g_2G_2g_2^{-1} = \{1\}\]
+    对任何$g_1 \in G_1,g_2 \in G_2$，等价于$\Gamma$在$X$上的作用是自由的（因此，$\Gamma$是自由群）。
+\end{proposition}
+\begin{proof}
+    $\Gamma$在$X$上的作用不自由等价于某个顶点有非平凡的稳定化子，不妨设$G_1g_1$在$h \neq 1$的
+    作用下不变。
+
+    $\Gamma \cap g_1G_1g_1^{-1} = \{1\}$
+    对任何$g_1 \in G_1$的反面是存在$h \neq 1$和$g_1 \in G_1$使得$h \in \Gamma \cap g_1G_1g_1^{-1}$。直接验证等价性即可。
+\end{proof}
+\begin{theorem}
+    $G_1*_A G_2$的有界（$\ell(\Sigma)$有界）子群$\Sigma$一定在$G_1$或$G_2$的共轭像中。
+\end{theorem}
+\begin{proof}
+    设$G_1 = G_P$，$G_2 = G_Q$，$A = G_y$。对于$g \in G_1 \cup G_2$，则$T$和$gT$有公共顶点。
+    那么对任何有界子集$\Sigma$都有$\Sigma \cdot (\vt T)$有界。因此由\ref{prop-vert-inv}知存在
+    顶点$P$在$\Gamma$的作用下不变，故$\Sigma$包含于$G_1$或$G_2$的一个共轭像中。
+\end{proof}
+\begin{corollary}
+    $G_1*_A G_2$的有限子群$\Sigma$一定在$G_1$或$G_2$的共轭像中。
+\end{corollary}
+\begin{proposition}\label{prop-vert-inv}
+设$\Gamma$是在树$X$上作用的群。TFAE：
+\begin{enumerate}
+    \item[(a)] 对$\vt X$的任何有界子集$A$，$\Gamma\cdot A$有界；
+    \item[(b)] 存在$P \in \vt X$使得$\Gamma \cdot P$有界；
+    \item[(c)] 存在$P \in \vt X$使得$P$在$\Gamma$的作用下稳定。
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+    $(a) \implies (b),(c) \implies (a)$平凡，只需验证$(b) \implies (c)$。
+    取$\Gamma \cdot P$生成的子树$Y$，它有界并且在$\Gamma$的作用下稳定。由\ref{coro-tree-inv}
+    知存在不变顶点或者不变边。如果存在不变边$\{y,\bar{y}\}$，$\Gamma$的作用
+    只能使$y$不变（因为我们的假设是没有反向作用），故也使得$y$的始终点不变。
+\end{proof}
+\subsection{群树的极限}
+\begin{definition}
+    \textbf{群图}（graph of groups）$(G,T)$由图$T$、$\{G_P \mid P \in \vt T\}$以及
+    $\{G_y \mid y \in \edge T\}$构成，使得对每个$G_y$，都有$G_y = G_{\bar{y}}$
+    以及一个单同态$G_y \longrightarrow G_{t(y)},a \mapsto a^y$。
+
+    如果$T$是树，那么称$(G,T)$是\textbf{树图}（tree of groups）。
+\end{definition}
+\begin{definition}
+    正向极限\[G_T:=\varinjlim (G,T)\]是诸$G_P$沿着$G_y$的共合积。
+\end{definition}
+\begin{example}
+    $T = \Path_1$时，$G_T$就是两个群的共合积。
+\end{example}
+\subsection{共合积与基本区域}
+\begin{theorem}
+    设$(G,T)$是树图。那么存在包含$T$的图$X$以及$G_T$在$X$上的作用，满足：
+    \begin{enumerate}
+        \item $T$是$X \mod G_T$的基本区域；
+        \item 对任何$P \in \vt T$（$y \in \edge T$），$P$（$y$）的稳定化子
+        是$G_P$（$G_y$）；
+        \item $X$是树。
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    必须有\[\vt X = \sqcup (G_T/G_P);\edge X = \sqcup (G_T/G_y).\]
+    此时$G_T$在$X$上自然有作用，并且满足第二条。以下证明$X$是树。由于无限树
+    可以视为其有限子树的极限，只需证明$T$有限的情况。
+
+    对$n = \sharp \vt T$归纳。如$n = 1$，那么$X = T$。假设$n > 1$，考虑$y \in \edge T$
+    使得$P = t(y)$是端点。那么$T' = T\backslash \{P,y\}$是树且$G_T = G_{T'} *_{G_y} G_P$。
+
+    记$X' = G_{T'}T' \subset X$，则$X'$是$(G,T')$对应的图，由归纳假设是树。此外，
+    对于$g \in G_T/G_{T'}$，诸$gX'$两两不交。令$\tilde{X}$是将所有$gX'$缩成一点
+    得到的图。此时$G_T$在$\tilde{X}$上作用，并且具有基本区域$T/T'$，是由$(T'),y,P$组成的segment。
+    此时$(T'),y,P$的稳定化子分别是$G_{T'}.G_y,G_P$。由于$G_{T'} *_{G_y} G_P \to G_T$是同构，
+    $\tilde{X}$是树，进而$X$也是。
+\end{proof}
+假设$G$作用在$X$上，基本区域$T$是树。考虑树图$(G,T)$，其中$G_P = \Stab(P) < G$，$G_y = \Stab(y) < G$。
+记$G_T = \varinjlim (G,T)$。那么包含映射$G_P \to G$延拓为同态$G_T \to G$。如果$X$连通，则事实是$G_T \twoheadrightarrow G$。
+
+又令$\tilde{X}$是和$(G,T)$关联的树（如前定义），则单位映射$T \to T$唯一地延拓为
+$\tilde{X} \to X$。
+\begin{theorem}
+    约定同上，以下等价：
+    \begin{enumerate}
+        \item $X$是树；
+        \item $\tilde{X}\to X$是同构；
+        \item $G_T \to G$是同构。
+    \end{enumerate}
+\end{theorem}

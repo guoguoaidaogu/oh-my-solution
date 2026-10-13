@@ -1,0 +1,878 @@
+\setdisplaytitle{习题：Bott\&Tu}
+\sethtmltitle{习题：Bott\&Tu}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\im}{\operatorname{im}}
+\qquad 此页面主要收录gtm 82的课后习题解答，和fjx教授与此相应课程的补充练习、Yau赛题目.\par
+\qquad 我们会混淆微分形式和微分形式类.
+
+\section{De Rham Theory}
+\subsection{$\R^{n}$上de Rham复形}
+\begin{enumerate}
+    \item[1.4.1] 计算$U=\R-0$的de Rham同调群.
+    \item[\textbf{解：}]
+
+        \qquad 我们用极坐标参数，$\begin{cases}
+                    x=r\cos \theta\\
+                    y=r\sin \theta
+                \end{cases}$，$r>0, \theta\in [0,2\pi)$.
+        对于零阶有$H^0(U)=Z^0(U)=\mathbb{R}$.
+        我们计算一阶上同调$H^1(U)=Z^1(U)/B^1(U)$. 对于任意$\omega\in Z^1(U)$, 
+        设为$\omega=fd\theta+gdr$, $f,g\in C^\infty(U)$，则有
+        $$0=d\omega=\bigg(\frac{\partial f}{\partial r}
+        -\frac{\partial g}{\partial \theta}\bigg)dr\wedge d\theta.$$
+        
+        \qquad 我们考虑$h(r,\theta)=\int_1^r g(t,\theta)dt$, 
+        则$\frac{\partial h}{\partial r}=g$.
+            
+        \begin{align*}
+           dh=\frac{\partial h}{\partial r}dr+\frac{\partial h}{\partial \theta}d\theta
+           &=gdr+\bigg(\int_1^r \frac{\partial g}{\partial \theta}dt\bigg)d\theta\\
+           &=gdr+\bigg(\int_1^r\frac{\partial f}{\partial r}dt\bigg)d\theta\\
+           &=g+f(r,\theta)d\theta-f(1,\theta)d\theta=\omega-f(1,\theta)d\theta.
+        \end{align*}
+        推出$[\omega]=[f(1,\theta)d\theta]$.
+        故我们考虑$f(1,\theta)d\theta$, 此时的函数与$r$无关. 
+        若存在$g\in C^\infty(U)$使得$dg=f(\theta)d\theta$, 则$g$亦与$r$无关. 
+        故我们只需在$\mathbb{S}^1$上考虑.
+        断言, $f(\theta)d\theta$恰当，当且仅当$\int_{\mathbb{S}^1}fd\theta=0$.
+        若$f(\theta)d\theta$恰当, 即存在$g\in C^\infty(\mathbb{S}^1)$, 
+        使得$dg=f(\theta)d\theta$, 则
+        $$\int_{\mathbb{S}^1}f(\theta)d\theta=\int_{\mathbb{S}^1}dg
+        =\int_{\partial \mathbb{S}^1}g=0.$$
+            
+        另一方面，若$\int_{\mathbb{S}^1} fd\theta=0$, 
+        则记$g(\theta)=\int_0^\theta f(t)dt$, 
+        则有$\frac{\partial g}{\partial \theta}=f$, 
+        且$g(\theta+2\pi)=g(\theta)$, 即$g\in C^\infty(\mathbb{S}^1)$.
+        特别地, 考虑$d\theta\in Z^1(\mathbb{S}^1)$, 因其积分为$2\pi$, 故其不恰当.
+        对于任意不恰当的$\eta\in Z^1(\mathbb{S}^1)$, 
+        即有$C=\int_{\mathbb{S}^1} \eta\neq 0$. 
+        我们令$\alpha=\frac{C}{2\pi}d\theta-\eta$, 
+        则有$\int_{\mathbb{S}^1} \alpha
+        =\frac{C}{2\pi}\int_{\mathbb{S}^1}d\theta-\int_{\mathbb{S}^1}\eta=0$.
+        故$\alpha$恰当, 即有$[\eta]=[\frac{C}{2\pi}d\theta]$.
+        因此, $Z^1(\mathbb{S}^1)$中的元素等价类都可以由$Cd\theta$表示, 
+        其中$C\in \mathbb{R}$. 又易见$[C_1d\theta]=[C_2d\theta]$, 若$C_1\neq C_2$. 
+        故有$H^1(U)=H^1(\mathbb{S}^1)=\mathbb{R}$.
+
+        \qquad 再计算$H^2(U)=Z^2(U)/B^2(U)=\Omega^2(U)/B^2(U)$. 
+        我们说任意$g(r,\theta)dr\wedge d\theta\in \Omega^2(U)$都是恰当的.
+        定义$f(r,\theta)=\int_1^r g(t,\theta)dt$, 则$fd\theta\in \Omega^1(U)$且
+        $df=\frac{\partial f}{\partial r}dr\wedge d\theta=gdr\wedge d\theta$, 
+        即$B^2(U)=\Omega^2(U)$, 进而有$H^2(U)=0$.        
+        或由Poincaré对偶, $H^2(U)=H^0_c(U)=0$.
+
+        \qquad 综上所述，$H^k(\R^2-0)=\begin{cases}
+                                    \mathbb{R}, &k=0;\\
+                                    \mathbb{R}, &k=1;\\
+                                    0, &k\geq 2.
+        \end{cases}$
+
+    \item[1.4.2] 计算$M=\R^2-p-q$的de Rham同调群,并求表示上同调类的闭形式.
+    \item[\textbf{解：}]
+
+        \qquad 记$U=\R^2-p$, $V=\R^2-q$. 则有$U\cap V=M$, $U\cup V=\R^2$.
+
+        \qquad $H^0(M)=\mathbb{R}$易知，我们计算一阶上同调群. 考虑M-V序列
+            $$H^1(\mathbb{R}^2)=0\rightarrow H^1(U)\oplus H^1(V)
+            \simeq \mathbb{R}\oplus \mathbb{R}\stackrel{f}{\longrightarrow} H^1(M)\rightarrow H^2(\mathbb{R}^2)=0,$$
+        由最后一处正合知$f$是满射，于是有群同构
+            $$H^1(M)\simeq (H^1(U)\oplus H^1(V))/\ker f
+            \simeq (\mathbb{R}\oplus \mathbb{R})/0=\mathbb{R}\oplus \mathbb{R},$$
+        式中用到了第一处的正合.
+
+        \qquad 我们再计算二阶上同调群. 同样考虑M-V序列
+            $$H^2(U)\oplus H^2(V)=0\rightarrow H^2(M)\rightarrow H^3(\mathbb{R}^2)=0,$$
+        故$H^2(M)=0$.
+
+        \qquad 综上所述，$H^k(\R^2-p-q)=\begin{cases}
+                                    \mathbb{R}, &k=0;\\
+                                    \mathbb{R}^2, &k=1;\\
+                                    0, &k\geq 2.
+        \end{cases}$
+
+        \qquad 我们具体地写出一阶同调群中的所有代表元. 不妨设$p=(-2,0)$, $q=(2,0)$. 
+        $U=\{x\leq 1\}\backslash \{p\}$, $V=\{x\geq -1\}\backslash \{q\}$.\par
+        \qquad 在$U$上，以$p$为中心考虑极坐标表示，则$C_1d\theta_1$
+        是$H^1(U)$上所有等价类的代表元，其中$C_1\in \mathbb{R}$. 
+        而$C_1d\theta_1=C_1\frac{(x+2)dy-ydx}{(x+2)^2+y^2}$. 
+        同理在$V$上有相似的结果，
+        且$C_2d\theta_2=C_2\frac{(x-2)dy-ydx}{(x-2)^2+y^2}$，其中$C_2\in \R$.
+
+        \qquad 在$B=U\cap V$上考虑$C_1d\theta_1-C_2d\theta_2$. 
+        因为其闭，由Poincaré引理，存在$f\in C^\infty(B)$使得
+        $C_1d\theta_1-C_2d\theta_2=df$.
+        
+        \qquad 我们将$f$光滑延拓到$\mathbb{R}^2$上，
+        得到$\tilde{f}\in C^\infty(\mathbb{R}^2)$. 考虑$\omega\in \Omega(M)$, 
+        使得$\omega|_U=C_1d\theta_1-d\tilde{f}$, $\omega|_V=C_2d\theta_2$. 
+        因为有$(C_1d\theta_1-d\tilde{f})|_B=(C_2d\theta_2)|_B$, 故$\omega$良定.
+
+        \qquad $\omega$闭是显然的. 我们说明，当$(C_1,C_2)\neq 0$时，
+        $\omega$不是恰当的. 否则存在$g\in C^\infty(M)$使得$\omega=dg$. 
+        不妨设$C_1\neq 0$, 我们在$U$上考虑，有
+            $$C_1d\theta_1-d\tilde{f}=\omega|_U=dg|_U,$$
+        则有$C_1d\theta_1=d(\tilde{f}+g|_U)\in B^1(U)$, 这与$C_1\neq 0$矛盾.
+
+        \qquad 容易验证，当二元数组$(C_1,C_2)$改变时，其定义的$[\omega]$亦改变. 
+        故由$(C_1,C_2)\in \mathbb{R}^2$定义的$\omega$即是互不等价的一阶闭微分形式.
+    
+    \item[1.6] 设$\omega=xdy-ydx+dz$是$\R^3$中的微分$1$-形式。
+    证明：对于处处非零的函数$f:\R^3\to\R$，$f\omega$不是闭的。
+    \item[\textbf{证明：}]
+        假设$f\omega$是闭的，则也是恰当的，从而其在$\Gamma=\{(x,y,0):x^2+y^2=1\}$上的积分为零。
+        然而换元$x=r\cos\theta,y=r\sin\theta$（$z$不变）过后，算出$\omega=r^2d\theta+dz$，
+        从而$0=\int_\Gamma f\omega=\int_\Gamma fd\theta$，
+        $f$若不恒零就有正有负，均同$f$处处非零相违。
+
+    \item[1.7] 令$\{e_{i}\}_{i=1,\cdots,n}$是线性空间$V$的一组基，
+               并令$\{\omega_{i}\}_{i=1,\cdots,n}$
+               为$\{e_{i}\}_{i=1,\cdots,n}$的对偶基.
+               证明：$\{\omega_{i_{1}} \wedge \cdots \wedge \omega_{i_{r}} \mid 
+               1 \leq i_{1} < i_{2} < \cdots < i_{r} \leq n\}$
+               是$\bigwedge\nolimits^{r}V^{*}$的一组基.
+    \item[\textbf{证明：}]
+
+\end{enumerate}
+
+\subsection{流形上的微积分}
+\begin{itemize}
+    \item[2.8] 令$M$是$4$维实流形. 称闭$2$-形式$\omega$为辛形式，
+               若$\omega \wedge \omega$是处处非零的$4$-形式.
+    \begin{enumerate}
+        \item[(1)] 试构造$\R^{4}$上的一个辛形式.
+        \item[\textbf{解：}] 考虑$\omega = \frac{1}{2}(dx_{1} \wedge dx_{2} + dx_{3} \wedge dx_{4})$，那么
+        $\omega$闭，且$\omega \wedge \omega = dx_{1} \wedge dx_{2} \wedge dx_{3} \wedge dx_{4}$是处处非零的.
+
+        \item[(2)] 证明：球面$S^{4}$上没有辛形式.
+        \item[\textbf{证明：}] \qquad $\omega$闭，
+        故存在$\eta\in \Omega^1(\mathbb{S}^4)$使得$\omega=d\eta$. 而有
+                $$d(\eta\wedge \omega)=d\eta\wedge \omega-\eta\wedge d\omega=\omega\wedge \omega,$$
+            故有
+                $$\int_{\mathbb{S}^4}\omega\wedge \omega
+                =\int_{\mathbb{S}^4}d(\eta\wedge \omega)
+                =\int_{\partial \mathbb{S}^4}\eta \wedge \omega=0.$$
+            而$\omega\wedge \omega$处处非零，记$\omega\wedge \omega=fV_M$，
+            其中$V_M$是体积形式，则有$f$始终同号，与$\int_{\mathbb{S}^4}fV_M=0$矛盾.    
+    \end{enumerate}
+
+   
+
+    \item[2.10] 令$M$是$n$维紧可定向带边黎曼流形，且$X$是$M$上的一个光滑向量场.
+                若$\mathbf{n}$是$\partial M$上向内的单位法向量场，证明：
+                \[\int_{M}\operatorname{div}(X)dV_{M} 
+                = \int_{\partial M}X \cdot \mathbf{n}\,dV_{\partial M}.\]
+    \item[\textbf{证明：}]
+        \qquad 此题可能依赖于定向的定义，我们忠于Bott教材的定义. 
+        最终的结果应该差一个负号，即我们证明
+        \[\int_{M}\operatorname{div}(X)dV_{M} 
+        = -\int_{\partial M}X \cdot \mathbf{n}\,dV_{\partial M}.\]
+
+        \qquad 我们考虑$\operatorname{div} X dV_M$的广义定义：
+        $\operatorname{div} XdV_M=\mathscr{L}_X(dV_M)$，
+        此处$\mathscr{L}_X$是Lie导数. 而
+        $$\mathscr{L}_X(dV_M)=(d\circ i_X+i_X\circ d)(dV_M)=d\circ i_X(dV_M).$$
+        这里$i_X$是里积，因此有
+        $$\int_M \operatorname{div}XdV_M=\int_M \mathscr{L}_X(dV_M)
+        =\int_M d\circ i_X(dV_M)=\int_{\partial M}i_X(dV_M).$$
+        因此，我们只需证明，在$\partial M$上有
+        $i_X(dV_M)=-\langle X, n\rangle dV_{\partial M}$.
+
+        \qquad 我们在$\partial M$上考虑点$p$的一个足够小邻域$V$
+        的标准正交标架$\{Y_1,\cdots,Y_{n-1}\}$. 
+        并考虑$\{Y_1,\cdots, Y_{n-1}, n\}$在点$p$在$M$上的足够小的、
+        使得$U\cap \partial M\subset V$的邻域$U$上做光滑延拓得到
+        $\{\tilde{Y}_1,\cdots,\tilde{Y}_{n-1},N\}$
+        且使得$\{\tilde{Y}_1,\cdots, \tilde{Y}_{n-1}, N\}$构成其上的标准正交标架.
+    则在$V\subset \partial M$上的任意点$q$，有   
+            $$dV_{\partial M}=(-1)^nY_1^*\wedge \cdots \wedge Y_{n-1}^*,$$
+            $$dV_M=\tilde{Y}_1^*\wedge \cdots \wedge \tilde{Y}_{n-1}^*\wedge N^*.$$
+    此处带$*$表示其对偶的余切向量，故
+            \begin{align}
+                i_X(dV_M)(\tilde{Y}_1,\cdots,\tilde{Y}_{n-1})&=dV_M(X,\tilde{Y}_1,\cdots,\tilde{Y}_{n-1})\\
+                    &=\det \begin{pmatrix}
+                        X^1 &1 &\cdots &0\\
+                        \vdots &\vdots &\ldots &\vdots\\
+                        X^{n-1} &0 &\cdots &1\\
+                        \langle X, N\rangle &0 &\cdots &0
+                    \end{pmatrix}\\
+                    &=(-1)^{n-1} \langle X, N\rangle.
+            \end{align}
+        推出
+            $$i_X(dV_M)=(-1)^{n-1}\langle X, N\rangle \tilde{Y}_1\wedge \cdots \wedge \tilde{Y}_{n-1}.$$
+        特别地，在$q$处有
+            $$i_X(dV_M)=(-1)^{n-1}\langle X, N\rangle \tilde{Y}_1\wedge \cdots \wedge \tilde{Y}_{n-1}
+            =(-1)^{n-1}\langle X, N\rangle Y_1\wedge \cdots\wedge Y_{n-1}
+            =-\langle X, N\rangle dV_{\partial M}.$$
+        于是，我们完成了证明.
+
+
+\end{itemize}
+
+\subsection{MV序列}
+\begin{itemize}
+    \item[3.1] 用具紧支集的MV序列计算$H^*_c(\mathbb{R}^2-P)$
+    与$H^*_c(\mathbb{R}^2-P-Q)$，其中$P, Q$是$\mathbb{R}^2$中两点.
+    \item[\textbf{解：}]
+       
+        \qquad 我们先计算$H^*_c(\mathbb{R}^2-P)$，不妨设$P=0$. 
+        考虑开集$U$和$V$，其中$U$是$\{x<1\}$再挖去以$(1,0)$为圆心半径为$1$的闭圆盘，
+        $V$是$\{x>-1\}$再挖去以$(-1,0)$为圆心半径为$1$的闭圆盘. 
+        我们如此构造是为了$U\cup V=\mathbb{R}^2-P$. 
+        注意到$U\cap V$是一个具有两个连通分支的区域. 于是我们有MV序列正合：
+        $$0=H_c^1(U)\oplus H_c^1(V)\rightarrow H_c^1(U\cup V)
+        \rightarrow H_c^2(U\cap V)=\mathbb{R}\oplus \mathbb{R}
+        \stackrel{\delta}{\rightarrow} H_c^2(U)\oplus H_c^2(V)
+        =\mathbb{R}\oplus \mathbb{R}\rightarrow H_c^2(U\cup V)\rightarrow 0,$$
+        \qquad 而对于$\omega\in H_c^2(U\cap V)$, 
+        $\delta(\omega)=((j_U)_*\omega, (j_V)_*\omega)\in H^2_c(U)\oplus H^2_c(V)$，
+        故$\im \delta$只有一维，进而同构于$\R$，进而$\ker\delta$亦同构于$\R$.
+        推出$$\begin{cases}
+            H_c^1(\mathbb{R}^2-P)=\ker \delta=\mathbb{R},\\
+            H_c^2(\mathbb{R}^2-P)=\im \delta=\mathbb{R}.
+            \end{cases}$$
+        其余情形显然是$0$.\par
+
+        \qquad 继续计算$H^*_c(\R^2-P-Q)$，取$U=\R^2-P$，$V=\R^2-Q$，
+        则$U\cup V=\R^2$，$U\cap V=\R^2-P-Q$. 有MV序列正合：
+        $$0=H^0_c(\mathbb{R}^2)\rightarrow H^1_c(\mathbb{R}^2-P-Q)
+        \rightarrow H^1_c(U)\oplus H^1_c(V)\rightarrow H^1_c(\mathbb{R}^2)=0,$$
+        得到$H^1_c(\R^2-P-Q)=\mathbb{R}\oplus \mathbb{R}$. 另外我们还有
+        $$0=H^1_c(\mathbb{R}^2)\rightarrow H^2_c(\mathbb{R}^2-P-Q)
+        \rightarrow H^2_c(U)\oplus H^2_c(V)=\mathbb{R}\oplus \mathbb{R}
+        \stackrel{s}{\rightarrow} H^2_c(\mathbb{R}^2)=\mathbb{R}\rightarrow 0,$$
+        其中$s(\omega,\tau)=\omega+\tau$的$\ker$是$\mathbb{R}$. 
+        故有$H^2_c(\R^2-P-Q)= \ker s=\mathbb{R}$. 
+        其余情形显然是$0$.
+
+
+    
+
+    \item[3.3] 计算去掉一点的二维实环面$\mathbb{T}^2 - p$的de Rham上同调，
+        其中$p \in \mathbb{T}^{2}$.若$(\mathbb{T}^2;x,y)$
+        是自$\R^{2}$诱导的自然坐标，试问：体积形式$\omega = dx \wedge dy$是否恰当？
+    \item[\textbf{解：}]
+        \qquad 考虑环面$\mathbb{T}^2=\mathbb{R}^2/\mathbb{Z}^2$，
+        去掉一个点后，环面同伦于一个图形，这个图形由一个点，两个圈构成.\par
+        \qquad 故由de Rham上同调群的同伦不变性，我们有
+                $$H^q(\mathbb{T}^2-p)=\begin{cases}
+                        \mathbb{R},&q=0;\\
+                        \mathbb{R}^2, &q=1;\\
+                        0,&q\geq 2.
+        \end{cases}$$
+
+
+\end{itemize}
+
+\subsection{Poincaré引理}
+\begin{itemize}
+    \item[4.8] 证明：逆紧映射$f:\R^{n} \to \R^{n}$的像$f(\R^{n})$闭.
+    \item[\textbf{证明：}]
+    任取$p\in \overline{f(\R^n)}$. 设$M=\{a\in \R^n: |a-p|\leq 1\}$为$\R^n$中紧集，
+    可知有一列$p_n\rightarrow p$满足$p_n\in M\cap f(\R^n)$. 
+    取$q_n\in f^{-1}(p_n)$， 由于$f$逆紧知$f^{-1}(M)$为紧集，
+    从而$\{q_n\}$有收敛子列（不妨设为其本身），即存在$q\in \R^n$满足$q_n\rightarrow q$. 
+    由此见$f(q)=\lim_{n\rightarrow\infty}f(q_n)
+    =\lim_{n\rightarrow\infty}p_n=p$，即$p\in f(\R^n)$. 
+    由$p$的任意性见$f(\R^n)=\overline{f(\R^n)}$，从而$f(\R^n)$为闭集.
+
+    \item[4.7] 证明（无边）紧流形$M$上的任何光滑函数都有至少两个临界点。
+    当$M$是$2$维环面时，证明$f$的临界点不止两个。
+    \item[\textbf{证明：}]
+        前一命题是因为最大值、最小值点一定是临界点，后一命题参考J. Milnor, 
+        \textit{Morse Theory}, Annals of Mathematics Studies 51, 
+        Princeton University Press, Theorem 4.1 (p.25).
+\end{itemize}
+
+\subsection{Poincaré对偶}
+\begin{itemize}
+    \item[5.4.1] 试求出映射$S^{1} \times S^{1} \to S^{2}$的所有可能的映射度.
+    \item[\textbf{解：}]  \qquad 此题非丘赛原题，我们先说此题. 
+    所有可能的映射度为任意整数. 事实上，注意到映射的复合会导致映射度作乘法，
+    又$S^2\rightarrow S^2$的映射度为任意整数，即
+        $$S^1\times S^1\stackrel{f}{\longrightarrow}S^2 
+        \stackrel{\varphi_k}{\longrightarrow} S^2$$
+    有$\deg (\varphi_k\circ f)=(\deg \varphi_k) \cdot (\deg f)=k\deg f$. 
+    故我们只需找到一个$f$使得$\deg f=1$即可.\par
+        \qquad 考虑置于三维欧氏空间中的环面$T^2=S^1\times S^1$，在环面内部任取一点$p$. 
+        定义$f:x\in T^2\rightarrow \frac{x-p}{\Vert x-p\Vert}\in S^2$. 
+        由映射度的拓扑定义知$\deg f=1$.
+
+    \item[5.4.2] 试求出映射$S^{2}\rightarrow S^1 \times S^1$的所有可能的映射度.
+    \item[\textbf{解：}] 
+        \qquad 我们从奇异上同调的角度考虑，证明映射度一定为$0$.\par
+        \qquad 设$H^1(S^1\times S^1)$的生成元是$\omega \smallfrown \eta$，
+        其中$\omega\in H^1(S^1)$，$\eta\in H^1(S^1)$，
+        $\smallfrown$表示上同调类的外乘法.\par
+        \qquad 故有$\deg f=f^*(\omega \smallfrown \eta)
+        =f^*(\omega)\smallfrown f^*(\eta)=0$，最后是因为$H^1(S^2)=0$.
+
+
+    \item[5.5] 令$T = \R^{2}/\Z^{2}$为二维实环面，且$L$是$\R^{2}$由$3x-7y$定义的直线，
+               而$S = \pi(L) \subset M$，其中$\pi:\R^{2} \to T$是典范投影.
+               试求一个$T$上$S$的Poincaré对偶代表元.
+    \item[\textbf{解：}]               
+\end{itemize}
+
+\subsection{Künneth公式}
+\begin{itemize}
+    \item[6.2]
+    \begin{enumerate}
+        \item[(a)] 试定义光滑映射$f:S^{2} \to S^{2}$的映射度$\deg f$，且证明其良定性.
+        \item[\textbf{定义：}] 见教材.
+ 
+
+        \item[(b)] 证明：对于任意$k \in \Z$，存在光滑映射$f:S^{2} \to S^{2}$使得$\deg f = k$.
+        \item[\textbf{证明：}] 
+            \qquad 考虑$S^n$的球坐标参数化
+                $x_1=\cos \theta_1, x_2=\sin \theta_1\cdot \cos \theta_2,\cdots, 
+                x_n=\sin \theta_1 \cdots \sin \theta_{n-1}\cdot \cos \theta_n, 
+                x_{n+1}=\sin \theta_1\cdots \sin \theta_n$. 
+                则体积元为$V=\frac{1}{\mathscr{V}}\sin \theta_1\cdots \sin \theta_{n-1} d\theta_1\cdots d\theta_n$.\par
+            \qquad 考虑映射$\varphi_k:S^n\rightarrow S^n$，
+                $(\theta_1,\cdots,\theta_n)\mapsto (\theta_1,\cdots,\theta_{n-1},k\theta_n)$，容易验证其良定性.
+                $$\int_{S^n} \varphi_k^*(\frac{1}{\mathscr{V}} 
+                \sin \theta_1\cdots \sin \theta_{n-1} d\theta_1\cdots d\theta_n)
+                =\sin \theta_1\cdots \sin \theta_{n-1} d\theta_1\cdots d(k\cdot\theta_n)=k.$$
+    \end{enumerate}
+    
+    \item[(3)] 构造拓扑空间$X$使得$H_{0}(X) = \Z$，
+    $H_{1}(X) = \Z/2\Z \times \Z/3\Z$，$H_{2}(X) = \Z$，
+    且$H_{i}(X) = 0$对于任意$i \geq 3$成立.
+    \item[\textbf{解：}] 只需胞腔复形为$0\to\Z^3
+    \stackrel{\begin{pmatrix}2&0&0\\0&3&0\end{pmatrix}}{\longrightarrow}
+    \Z^2\stackrel{0}{\longrightarrow}\Z$（$3$维至$0$维）。
+\end{itemize}
+
+\subsection{向量丛基础}
+\begin{itemize}
+    \item[7.5] 试计算$\operatorname{Vect}_{k}(S^{1})$.
+    \item[\textbf{解：}]
+        \qquad 考虑$[0,1]\stackrel{f}{\longrightarrow} S^1$，满足$f(0)=f(1)$. 
+        对于$S^1$上的任意$n$维向量丛$E$，有拉回丛
+        $f^{-1}E=\{(t,e)\in [0,1]\times E \mid f(t)=\pi(e)\}$.\par
+        \qquad 定义$F:f^{-1}E\rightarrow E,\ (t,e)\mapsto e$，则$F(0,e)=F(1,e)$. 
+        易知$F$是丛同态，可惜的是目前的$F$还不是丛同构. 
+        定义$\pi_1: f^{-1}E\rightarrow [0,1], \ (t,e)\mapsto t$. 于是有交换图
+            \begin{cd}
+            & f^{-1}E \ar[d,"\pi_1"] \ar[r,"F"] &E \ar[d,"\pi"]\\
+            & [0,1] \ar[r,"f"] & S^1
+            \end{cd}
+
+        \qquad 我们只需要将向量丛$f^{-1}E$在$0$和$1$处的两个纤维等同即可得到同构，
+        但我们先不做此事. 因为$[0,1]$是可缩空间，所以其上的向量丛是平凡的，
+        即存在丛同构$\varphi: [0,1]\times \mathbb{R}^n\rightarrow f^{-1}E$.
+
+        \qquad 具体地，我们有$\varphi(0,v)=(0,\varphi_0(v))\in f^{-1}E$，
+        $\varphi(1,v)=(1,\varphi_1(v))\in f^{-1}E$.
+        
+        \qquad 由于$F(0,e)=F(1,e)$，记$v_0:=\varphi_0^{-1}(e)$，
+        $v_1:=\varphi_1^{-1}(e)$，则有$$F(\varphi(0,v_0))=F(\varphi(1,v_1)),$$
+        注意到$(F\circ \varphi,f)$是从平凡丛到$E$的丛同态.
+            \begin{cd}
+            & [0,1]\times \mathbb{R}^n \ar[dr,"\pi_2"] \ar[r,"\varphi"] & f^{-1}E \ar[d,"\pi_1"] \ar[r,"F"] &E \ar[d,"\pi"]\\
+            & & [0,1] \ar[r,"f"] & S^1
+            \end{cd}
+        上式化为
+        $$F\circ \varphi(0,v_0)=F\circ \varphi(1,v_1),$$
+        而$v_1=\varphi_1^{-1}(e)=\varphi_1^{-1}\circ \varphi_0(v_0)$，
+        若记$\psi=\varphi_1^{-1}\circ \varphi_0$，则上式化为
+        $$F\circ \varphi(0,v_0)=F\circ \varphi(1,\psi(v_0)).$$
+        若我们将$(0,v)$与$(1,\psi(v))$等同，
+        则$\overline{F\circ \varphi}:
+        [0,1]\times \mathbb{R}^n/\sim \rightarrow E$是丛同构.
+        
+        \qquad 于是我们说，$\psi\in GL_n(\mathbb{R})$给出了$S^1$上$n$维向量丛的分类. 
+        $S^1$上只有两个$n$维向量丛，在同构意义下. 
+        我们先说明，在$GL_n(\mathbb{R})$同一个道路连通分支上的$\psi$诱导的向量丛同构.
+        
+        \qquad 设$\psi_1,\psi_2$的行列式同号，记$\iota=\psi_2\circ \psi_1^{-1}$，
+        则$\iota$的行列式为正. 我们考虑$GL_n(\mathbb{R})$中的一条光滑曲线
+        $\gamma:[0,1]\rightarrow GL_n(\mathbb{R})$连接$I$和$\iota$，
+        即$\gamma(0)=I$，$\gamma(1)=\iota$.
+        
+        \qquad 自然地，考虑丛同态$\Psi:[0,1]\times \mathbb{R}^n_{\psi_1}
+        \rightarrow [0,1]\times \mathbb{R}^n_{\psi_2}$，
+        $\Psi(t,v)=(t,\gamma(t)(v))$. 显然这是同构，
+        且有$\Psi(0,v)=(0,v)$，$\Psi(1,v)=(1,\iota(v))$.
+        
+        \qquad 在$\psi_1$诱导的丛中，我们将$(0,v)$与$(1,\psi_1(v))$等同，
+        在$\psi_2$诱导的丛中，我们将$(0,v)$与$(1,\psi_2(v)=\iota(\psi_1(v)))$等同. 
+        因此在做等同后，两个向量丛仍同构.
+
+        \qquad 我们还需说明，对于满足$\det \psi_1>0$，$\det \psi_2<0$的
+        两个$\psi_1,\psi_2$所诱导的向量丛不同构. 
+        若它们是同构，则存在类似上段定义的丛同态
+        $\Psi:[0,1]\times \mathbb{R}^n_{\psi_1}
+        \rightarrow [0,1]\times \mathbb{R}^n_{\psi_2}$，
+        $\Psi(t,v)=(t,\Psi_t(v))$满足如下图表交换
+            \begin{cd}
+            & (0,v) \ar[d,"\Psi"] \ar[r,"\sim_{\psi_1}"] &(1,\psi_1(v)) \ar[d,"\Psi"]\\
+            & (0,\Psi_0(v)) \ar[r,"\sim_{\psi_2}"] & (1, \Psi_1(\psi_1(v)))
+            \end{cd}
+        即要有
+            $$\Psi_1\circ \psi_1=\psi_2\circ \Psi_0,$$
+        在两侧取行列式，得$\Psi_1$与$\Psi_0$的行列式异号. 
+        但从$\Psi_t$是$GL_n(\mathbb{R})$中的连续变化，矛盾.
+
+        \qquad 综上所述，$S^1$上的$n$阶向量丛有且仅有两个，在同构意义下. 
+        特别地，在$n=1$时，不平凡的向量丛是Möbius带.
+
+    \item[7.6] 给定群$G$在光滑流形$M$上的一个纯不连续作用$F:G \times M \to M$，
+               证明：$M/G$是可定向的\textbf{当且仅当}$M$是可定向的
+               且$F(g,-)$保持$M$的定向.并由此证明：Möbius带不可定向，
+               而$\R\mathbb{P}^{n}$可定向当且仅当$2 \nmid n$.
+    \item[\textbf{证明：}] 见John M. Lee, \textit{Introduction to Smooth Manifolds}, 
+    GTM 218, Theorem 15.36, Example 15.37, 15.38.
+\end{itemize}
+
+\subsection{Thom同构}
+\begin{itemize}
+    \item[8.5] 考虑空间$X = M_{1} \cup M_{2}$，其中$M_{1}$与$M_{2}$是Möbius带，
+               而$M_{1} \cap M_{2} = \partial M_{1} = \partial M_{2}$. 
+               试计算$\pi_{1}(X)$.
+    \item[\textbf{解：}] 用cell去算.
+
+    \item[8.6] 对于任意不可定向流形$M$，
+               证明：存在可定向光滑流形$\tilde{M}$为$M$的二重覆叠. 该流形称为定向覆叠.
+               并求出$\R\mathbb{P}^{2}$与Möbius带的定向覆叠.
+    \item[\textbf{解：}] 见John M. Lee, \textit{Introduction to Smooth Manifolds}, 
+    GTM 218, Theorem 15.41(b)。$\R\mathbb{P}^{2}$的定向覆叠是球面$\mathbb{S}^2$，
+    Möbius带的定向覆叠是扭了两次的环形纸带。
+\end{itemize}
+
+\subsection{Poincaré对偶与Thom类}
+\begin{itemize}
+    \item[9.4] 若映射$f:S^{n} \to S^{n}$的映射度是奇数，
+               证明：存在$x_{0} \in S^{n}$使得$f(-x_{0}) = -f(x_{0})$.
+    \item[\textbf{证明：}]
+        \qquad 考虑$g(x)=f(-x)=f\circ (-\operatorname{id}) (x)$. 
+        反证法，若$f(-x)\neq -f(x)$对任意$x\in S^n$成立，
+        则有$f(x)\neq -g(x)$，于是$f$与$g$同伦.\par
+        \qquad 设$F_t(x)$是同伦的实现，即$F_0=f$，$F_1=g$. 
+        考虑$F_{\frac{1}{2}}$，则其满足$F_{\frac{1}{2}}(x)=F_{\frac{1}{2}}(-x)$. 
+        于是，对于任意$x\in \operatorname{Im}F_{\frac{1}{2}}$，其有两个原像，
+        故$\deg F_{\frac{1}{2}}$为偶.\par
+        \qquad 又因为同伦的映射有相同的映射度，得到矛盾.
+
+    \item[9.5] 若两个$n$维紧连通光滑流形$M$，$N$间的映射$f:M \to N$秩处处为$n$，
+               证明：$f$是覆叠映射.      
+    \item[\textbf{证明：}]    
+    首先，$f$是逆紧的. 这是因为取$K \subset N$紧，则由$N \,$Hausdorff知$K$闭，
+    故$f^{-1}(N) \subset M$闭.
+    而$M$紧，故$f^{-1}(N)$紧.
+
+    由此知$f$是闭映射. 
+    这是因为取$F \subset M$闭，则$U := N \backslash f(F) \subset N$开. 
+    由于$N$是流形，故局部紧. 故对任意$y \in U$，可取其在$V$的中具有紧闭包的开邻域$V$.
+    由$f$逆紧知$f^{-1}(\overline{V}) \subset M$紧. 
+    而由$M \,$Hausdorff知$f^{-1}(\overline{V})$闭，
+    故$W := F \cap f^{-1}(\overline{V})$闭，再由$M$紧知紧，从而$f(W)$紧.
+    这再由$N \,$Hausdorff知$f(W)$闭. 
+    考虑$X := V \backslash f(W)$，则$X$也是$y$的开邻域.
+    若存在$z \in X \cap f(F)$，则存在$x \in F$使得$f(x) = z$.
+    这说明$x \in f^{-1}(X) \subset f^{-1}(\overline{V})$. 
+    故$x \in W$而$z \in f(W)$，矛盾！
+    故$X \subset Y \backslash f(F)$. 这证明了$U$开，故$f(F)$闭.
+
+    其次，$f$是满的. 这是因为由$f$闭知$f(M) \subset N$闭. 
+    根据$N$的连通性，我们只需再说明$f(M)$开即可. 
+    但这是因为$f$处处满秩，故是局部同胚，从而得像开.
+
+    现在，我们证明$f$是覆叠映射. 考虑$y \in Y$的原像$f^{-1}(y)$. （上述说明其非空.）
+    由$f$是局部同胚知$f^{-1}(y)$离散. 
+    而$f$逆紧说明$f^{-1}(y)$紧，故$|f^{-1}(y)| < \infty$.
+    令$f^{-1}(y) = \{x_{1},\cdots,x_{n}\}$. 由$M \,$Hausdorff且$f$是局部同胚，
+    可设$x_{i}$有开邻域$U_{i}$，使得$\{U_{i}\}$两两不交，且$f\mid_{U_{i}}$是同胚.
+    令$U: = M \backslash (U_{1} \cup \cdots \cup U_{n})$，则$f(U) \subset N$闭.
+    且$y \notin f(U)$. 故$V := \Big(\bigcap\limits_{i=1}^{n}f(U_{i})\Big) \cap \big(N \backslash f(U)\big)$是
+    $y$的开邻域，且$f^{-1}(V) \subset U$. 令$U_{i}' = U_{i} \cap f^{-1}(V)$，
+    则$\{U_{i}'\}$是一坨不交开集，且$f^{-1}(V) = \bigcup\limits_{i=1}^{n}U_{i}'$，
+    且$f\mid_{U_{i}'}:U_{i}' \to V$均为同胚.
+    故$f$是覆叠映射，且是有限叶的. 
+\end{itemize}
+
+\subsection{平面丛Thom类的显式表示}
+\begin{itemize}
+    \item[10.4] 令$i:S^{n} \to S^{n}$为对径映射.
+    \begin{enumerate}
+        \item[(a)] 球面$S^{n}$上的一个微分形式$\omega$称为不变形式，若$i^{*}\omega = \omega$.
+                   球面$S^{n}$上的所有不变形式组成的向量空间$\Omega^{*}(S^{n})^{I}$是一个微分复形，
+                   故可定义$S^{n}$的不变上同调$H^{*}(S^{n})^{I}$. 
+                   证明：$H^{*}(\R\mathbb{P}^{n}) \simeq H^{*}(S^{n})^{I}$.
+        \item[\textbf{证明：}]
+        \qquad $\pi: S^n\rightarrow P^n$是局部微分同胚. 
+        对于任意$x\in P^n$，存在邻域$U_x$，
+        使得$\pi^{-1}(U_x)=U_{x1}\sqcup U_{x2}$，且$U_{x1}\simeq U_{x2}\simeq U$.
+
+        \qquad 对于$S^n$中的任意不变微分形式$\omega$，
+        定义$\pi_*\omega(x)=(\pi|_{U_{x1}}^{-1})^*\omega(\pi|_{U_{x1}}^{-1}(x))$, 
+        $\forall x\in P^n$. 由于$\omega$是不变微分形式，即$i^*\omega=\omega$，
+        我们$\pi_*$的定义与$U_{x1}, U_{x2}$的选取无关. 
+        另外也容易验证$\pi_*\omega$是整体定义的，故$\pi_*\omega\in \Omega^*(P^n)$.
+
+        \qquad 对于$\eta\in \Omega^*(P^n)$，对于任意$y\in S^n$，
+        取充分小的开集$V_1$使得$\pi|_{V_1}$是微分同胚. 
+        定义$\omega|_{V_1}=\pi|_{V_1}^*\eta$. 
+        在$-y$有类似定义的$V_2$和$\omega|_{V_2}$. 有                
+        $$i^*\omega|_{V_2}=i^*(\pi|_{V_2}^*\eta)
+        =(\pi|_{V_2}\circ i)^*\eta=(\pi|_{V_1})^*\eta=\omega|_{V_1},$$
+        由$y$的任意性，可整体定义$\omega$且满足$i^*\omega=\omega$，
+        即$\omega\in \Omega^*(S^n)^I$. 故有$\Omega^*(S^n)^I\simeq \Omega^*(P^n)$.
+
+        \qquad 由以上定义，容易检验$Z^*(S^n)^I\simeq Z^*(P^n)$
+        及$B^*(S^n)^I\simeq B^*(P^n)$. 故自然有$H^*(S^n)^I\simeq H^*(P^n)$.
+
+
+        \item[(b)] 证明：自然映射$n:H^{*}(S^{n})^{I} \to H^{*}(S^{n})$是单射.
+        \item[\textbf{证明：}]
+            \qquad 主要利用$H^k(S^n)=0$，若$k\neq 0,n$.\par
+            \qquad 当$k\neq 0,1$时，若$k$形式$\omega$使得$n([\omega])=0$，
+            即存在$k-1$形式$\eta$，使得$\omega=d\eta$. 
+            我们希望找到不变微分形式$\tilde{\eta}$，使得$\omega=d\tilde{\eta}$. 
+            如此，在同调意义下，有$[\omega]=0\in H^k(S^n)^I$.\par
+            \qquad 因为有
+                $$d\eta=\omega=i^*\omega=i^*d\eta=d(i^*\eta),$$
+            故有$\eta-i^*\eta$是恰当的，因为$H^{k-1}(S^n)=0$，
+            故存在$k-2$形式$\alpha$使得$i^*\eta=\eta+d\alpha$.\par
+            \qquad 又有
+                $$\eta=i^*(i^*\eta)=i^*(\eta+d\alpha)
+                =i^*\eta+d(i^*\alpha)=\eta+d(\alpha+i^*\alpha),$$
+            即$0=d(\alpha+i^*\alpha)$.\par
+            \qquad 令$\tilde{\eta}=\eta+d\alpha/2$，则
+                $$i^*\tilde{\eta}=i^*(\eta+d\alpha/2)
+                =i^*\eta+d(i^*\alpha/2)=\eta+d(\alpha+i^*\alpha/2)
+                =\eta+d\alpha/2=\tilde{\eta}.$$
+            则$\omega=d\eta=d\tilde{\eta}$，完成了此情形的证明.\par
+            \qquad 对于$k=1$，唯一的区别是$\eta-i^*\eta$是闭的$0$形式，
+            故存在$c\in \mathbb{R}$使得$\eta=i^*\eta+c$，
+            而$i^*\eta=i^*(i^*\eta+c)=\eta+c$，故有$c=0$，即$i^*\eta=\eta$.\par
+            \qquad 对于$k=0$，有$d\omega=0$，此处$\omega$是函数，
+            则$\omega$是常值，自然不变. 证明完毕.
+
+        \item[(c)] 给$S^{n}$标准定向. 
+                   证明：对径映射$i$对奇数$n$是保持定向的，对偶数$n$是反定向的.
+                   因此若$[\sigma]$是$H^{n}(S^{n})$的一个生成元，
+                   则$[\sigma]$是非平凡的不变上同调类\textbf{当且仅当}$n$是奇数.
+        \item[\textbf{证明：}]
+            \qquad 将对径映射视作$n+1$个反射的复合即可证明前半问.\par
+            \qquad 对于生成元$[\sigma]$，若$\int_{S^n}\sigma=1$，
+            则$\int_{S^n} i^*\sigma=(-1)^{n+1}$. 故当$n$为偶时有矛盾，
+            故有$[\sigma]=0$. 当$n$为奇时，取体积元即可.
+
+        \item[(d)] 证明$\R\mathbb{P}^{n}$的de Rham上同调
+        \begin{equation*}\begin{aligned}
+            H^{q}(\R\mathbb{P}^{n}) = 
+            \begin{cases}
+                \R, & q = 0; \\
+                0,  & 0 < q < n; \\
+                \R, & q = n, 2 \nmid n; \\
+                0,  & q = n, 2 \mid n.
+            \end{cases}
+        \end{aligned}\end{equation*}
+        \item[\textbf{证明：}] 结合前三问，这是显然的.
+    \end{enumerate}
+\end{itemize}
+
+\section{The Čech--de Rham Complex}
+\subsection{广义MV原理}
+
+\subsection{显式同构}
+
+\subsection{Čech上同调}
+
+\subsection{球面丛}
+\begin{itemize}
+    \item[5.] $\mathbb{R}\mathbb{P}^2$不能作为紧致三维流形的边界.
+    \item[\textbf{证明一}] 
+        \qquad 我们证明一个一般性结论：若流形$M$是紧致流形$B$的边界，则$\chi(M)$是偶数.\par
+        \qquad 将$B$与$B$沿边界$M$粘在一起得到闭流形$\tilde{B}$，
+        取$U, V$分别是包含第一、二个$B$的开集，
+        且满足$U,V$同伦等价于$B$，及$U\cap V$同伦等价于$M$. 有M-V序列
+            $$\cdots \rightarrow H_k(U\cap V)=H_k(M)
+            \rightarrow H_k(U)\oplus H_k(V)=H_k(B)\oplus H_k(B)
+            \rightarrow H_k(\tilde{B})\rightarrow \cdots$$
+    故$2\chi(B)=\chi(M)+\chi(\tilde{B})$.\par
+        \qquad 若$\dim M$是奇数，则$\chi(M)=0$. 
+        若$\dim M$是偶数，则$\dim \tilde{B}$是奇数，
+        故$\chi(\tilde{B})=0$，推出$\chi(M)=2\chi(B)$是偶数.\par
+        \qquad 回到此题，$\mathbb{P}^2=e_0\cup e_1\cup e_2$
+        推出$\chi(\mathbb{P}^2)=1$，故$\mathbb{P}^2$不能作为三维紧致流形的边界.
+    
+    \item[\textbf{证明二}]
+        \qquad 我们用配边理论中的Stiefel-Whitney class来解决.\par
+        \qquad 设$w_k(T\mathbb{P}^2)\in H^k(\mathbb{P}^2,\mathbb{Z}_2)$
+        是$T\mathbb{P}^2$的Stiefel-Whitney class，
+        $a\in H^1(\mathbb{P}^2,\mathbb{Z}_2)$是非平凡元，有
+            $$w(T\mathbb{P}^2)=(1+a)^3=1+3a+3a^2+a^3=1+a+a^2.$$
+        故$w_2(T\mathbb{P}^2)=a^2\neq 0$.\par
+        \qquad 取$\eta\in H_2(\mathbb{P}^2,\mathbb{Z}_2)$是生成元，
+        则Stiefel-Whitney数$\langle w_2(T\mathbb{P}^2),\eta\rangle=\langle a^2,\eta\rangle \neq 0.$\par
+        \qquad 由Pontrjagin定理：若紧致流形$B$有边界$M$，
+        则$M$的所有Stiefel-Whitney数均为$0$. 故$\mathbb{P}^2$不能作为三维紧致流形的边界.
+\end{itemize}
+
+
+\subsection{Hopf指标定理}
+\begin{itemize}
+
+
+    \item[11.26] Lefschetz不动点公式. 设$M$是紧定向$n$维流形，
+    $f:M\rightarrow M$是光滑映射. $f$的Lefschetz数定义为
+        $$L(f)=\sum_{q}(-1)^q \operatorname{trace}H^q(f),$$
+    其中$H^q(f):H^q(M)\rightarrow H^q(M)$是由$f$诱导的映射. 
+    设$\Gamma=\{(x,f(x))\mid x\in M\}$是$f$在$M\times M$的图.
+    \begin{enumerate}
+        \item[(a)] 证明\[\int_{\Delta} \eta_{\Gamma}=L(f).\]
+        \item[\textbf{证明:}] \qquad 定义$\tilde{f}:M\rightarrow M\times M, x\mapsto (x,f(x))$，
+        则$\tilde{f}(M)=\Gamma$且$\pi\circ \tilde{f}=\operatorname{id}, \rho\circ \tilde{f}=f$.
+            $$\int_{\Delta} \eta_\Gamma =\int_{M\times M}\eta_\Gamma\wedge \eta_\Delta
+            =(-1)^n \int_{M\times M} \eta_\Delta\wedge \eta_\Gamma
+            =(-1)^n \int_\Gamma \eta_\Delta=(-1)^n \int_M \tilde{f}^*\eta_\Delta.$$
+        而
+            \begin{align*}
+                (-1)^n \int_M\tilde{f}^*\eta_\Delta 
+                &=(-1)^n \sum (-1)^{\deg \omega_i} \int_M \tilde{f}^*(\pi^*\omega_i \wedge \rho^*\tau_i)\\
+                &=(-1)^n \sum (-1)^{\deg \omega_i} \int_M \omega_i \wedge f^*\tau_i.
+            \end{align*}
+        固定$\deg \omega_i=q$，则
+            \begin{align*}
+                (-1)^n \sum\limits_{\deg \omega_i=q} (-1)^q \int_M \omega_i \wedge f^*\tau_i
+                &=\sum\limits_{\omega_i} (-1)^{n-q}\int_M \omega_i \wedge f^*\tau_i\\
+                &=\sum\limits_{\deg \tau_i=n-q} (-1)^{n-q} \int_M \omega_i\wedge f^*\tau_i\\
+                &=(-1)^{n-q} \operatorname{trace}H^{n-q}(f).
+            \end{align*}
+        对$q$求和，即得所求式.
+        \item[(b)] 证明若$f$没有不动点，则$L(f)$为零.
+        \item[\textbf{证明:}] 若$f$无不动点，则$\Delta$与$\Gamma$不交，
+        可以取适当的$\eta_\Gamma$使得$(\Supp\eta_\Gamma) \cap \Delta=\varnothing$，故积分为$0$.
+
+        \item[(c)] $f$在不动点$p$的切映射$f_{*p}$是切空间$T_pM$的自同态. 
+        不动点$p$的重数定义为
+            $$\sigma_p=\operatorname{sgn}\det (I-f_{*p}).$$
+        证明若图$\Gamma$横截于$M\times M$中对角流形$\Delta$，则
+        \[L(f)=\sum_{p} \sigma_p,\]
+        此处是对$f$的所有不动点$p$求和.
+
+        \item[\textbf{证明}] 
+        1. 横截保证不动点离散，进而有限.\par
+        \qquad $\dim \Delta=\dim \Gamma=n$，$\dim(M\times M)=2n$
+        推出$\dim (\Delta\cap \Gamma)=0$，故离散. 而$M\times M$紧致，故有限.\par
+        2. 在不动点$p$附近，取$\eta_\Delta,\eta_\Gamma$
+        分别在$\Delta$和$\Gamma$的管状邻域的fiber上足够小，使得
+        $\Supp\eta_\Delta \cap \Supp\eta_\Gamma \subset \bigsqcup\limits_{p} U_p$. 
+        由(a)，
+                \begin{align*}
+                    L(f)=\int_\Delta \eta_\Gamma&=(-1)^n \int_\Gamma \eta_\Delta\\
+                    &=(-1)^n \sum\limits_p \int_{U_p\cap \Gamma} \eta_\Delta\\
+                    &=(-1)^n \sum\limits_p \int_{\tilde{U_p}} \tilde{f}^*\eta_\Delta\\
+                    &=(-1)^n \sum\limits_p \int_{\tilde{U_p}} \sum (-1)^{\deg \omega_i} \omega_i\wedge f^*\tau_i,
+                \end{align*}
+            其中$\tilde{f}(\tilde{U_p})=U_p\cap \Gamma$. 
+            由$\eta_\Delta,\eta_\Gamma$的定义知，
+            该积分在每个$U_p$上积分为$\pm 1$，故我们只在意符号.\par
+            3. 最后我们证明 \[(-1)^n \sum_p \int_{\tilde{U_p}} \sum (-1)^{\deg \omega_i} \omega_i\wedge f^*\tau_i
+            =\operatorname{sgn}\det (I-f_{*p}).\]
+            \qquad 不妨设$M$的体积为$1$ (这是为了使$\tau_i=*\omega$). 
+            在$p$点附近取标准正交标架场$\{e_i\}$，
+            取$\{\omega^i\}$是其对偶余切标架场. 
+            则对于$\omega=\omega^{i_1}\wedge \cdots\wedge \omega^{i_q}$，
+            有$\tau=*\omega=\operatorname{sgn}I \omega^{i_{q+1}}\wedge \cdots \wedge \omega^{i_n}$，其中
+            $i_1<\cdots<i_q$，$i_{q+1}<\cdots<i_n$
+            且$i_1,\cdots,i_n$是$1,\cdots,n$的置换，用$\operatorname{sgn}I$表示其奇偶性. 
+            设$f^*\omega^i=a_j^i \omega^j$，$A=\{a^i_j\}$.
+                \begin{align*}
+                    &\quad\ (-1)^n \sum\limits_p \int_{\tilde{U_p}} \sum (-1)^{\deg \omega_i} \omega_i\wedge f^*\tau_i\\
+                    &=(-1)^n \int_{\tilde{U_p}} \sum_{q=0}^n (-1)^q \sum_{i_1<\cdots<i_q} \omega^{i_1}\wedge\cdots\wedge \omega^{i_q}\wedge f^*(\operatorname{sgn}I \omega^{i_{q+1}}\wedge \cdots \wedge \omega^{i_n})\\
+                    &=(-1)^n \int_{\tilde{U_p}} \sum_{q=0}^n (-1)^q \sum_{i_1<\cdots<i_q} (\operatorname{sgn}I) \omega^{i_1}\wedge\cdots\wedge \omega^{i_q}\wedge (a^{i_{q+1}}_{\sigma_{q+1}}\omega^{\sigma_{q+1}}\wedge \cdots \wedge a^{i_n}_{\sigma_n}\omega^{\sigma_n})\\
+                    &=(-1)^n \int_{\tilde{U_p}} \sum_{q=0}^n (-1)^q \sum_{i_1<\cdots<i_q} (\operatorname{sgn}I) \omega^{i_1}\wedge \cdots \wedge \omega^{i_q}\wedge \omega^{\sigma_{q+1}}\wedge \cdots \wedge \omega^{\sigma_n} (a^{i_{q+1}}_{\sigma_{q+1}}\cdots a^{i_n}_{\sigma_n})\\
+                    &=(-1)^n \int_{\tilde{U_p}} \sum_{q=0}^n (-1)^q \sum_{i_1<\cdots<i_q} (\operatorname{sgn}I) (\operatorname{sgn}(I,\sigma)) \omega^{i_1}\wedge \cdots \wedge \omega^{i_n} (a^{i_{q+1}}_{\sigma_{q+1}}\cdots a^{i_n}_{\sigma_n})\\
+                    &=(-1)^n \int_{\tilde{U_p}} \sum_{q=0}^n (-1)^q \sum_{i_1<\cdots<i_q} \operatorname{sgn}(I,\sigma) (a^{i_{q+1}}_{\sigma_{q+1}}\cdots a^{i_n}_{\sigma_n}) \omega^1\wedge \cdots \wedge \omega^n.
+                \end{align*}
+            其中$\operatorname{sgn}(I,\sigma)$表示从$i_{q+1},\cdots,i_n$到$\sigma_{q+1},\cdots,\sigma_n$置换的奇偶. 故符号为
+                \begin{align*}
+                    &\quad\ (-1)^n \int_{\tilde{U_p}} \sum_{q=0}^n (-1)^q 
+                    \sum_{i_1<\cdots<i_q} \operatorname{sgn}(I,\sigma) 
+                    (a^{i_{q+1}}_{\sigma_{q+1}}\cdots a^{i_n}_{\sigma_n})\\
+                    &=(-1)^n \int_{\tilde{U_p}} \sum_{q=0}^n (-1)^q 
+                    \sum_{i_1<\cdots<i_q} \det A_{i_{q+1}\cdots i_n}\\
+                    &= (-1)^n \sum_{q=0}^n (-1)^q \sigma_{n-q}(A)\\
+                    &=\sum_{q=0}^n (-1)^q \sigma_{q}(A)\\
+                    &=\det(I-A)=\det (I-f_{*p}),
+                \end{align*}
+            其中$A_{i_{q+1},\cdots,i_n}$表示$A$中由第$i_{q+1},\cdots,i_n$行列
+            构成的方阵，$\sigma_q$是矩阵的$q$阶不变多项式，
+            满足$\det(I-A)=1-\sigma_1(A)\pm\cdots +(-1)^n \sigma_n(A)$.
+            \item[5.] Show that $SO(3)$ is a smooth manifold, and find its fundamental group.
+            \item[\textbf{证明:}] \qquad 将$SO(3)$视作空间$\mathbb{R}^9$的子集，
+            由$A^t A=I$给出了$6$个不同的多项式函数，再辅以$\det A=1$可证明其上点都是光滑的，
+            故该簇的光滑点全体即为$SO(3)$，进而$SO(3)$是光滑流形.
+
+            \qquad 我们再证明$SO(3)$拓扑同胚于$\mathbb{R}P^3$. 
+            $SO(3)$表示$\mathbb{R}^3$中的旋转全体，给定一个点$p\in S^2$，
+            则$p$确定了一个定向的旋转轴，按该定向确定的旋转方向旋转$\varphi$，$\varphi\in [0,\pi]$.
+            注意到$(p,0)=(q,0), \forall p,q\in S^2$，$(p,\pi)=(-p,\pi)$. 
+            因此$SO(3)=S^2\times [0,\pi]/\sim$，其中$\sim$由前面给出.
+
+            \qquad 定义映射$f:S^2\times [0,\pi] \rightarrow \mathbb{R}^3$，
+            $(p,\varphi)\rightarrow \frac{\varphi}{\pi}\cdot p$. 
+            当我们将$(p,0)$和$(q,0)$等同时($\forall p,q\in S^2$)，
+            得到双射$\tilde{f}:S^2\times [0,\pi]/(p,0)\sim (q,0)$
+            到三维欧氏空间中单位球的双射. 再粘合$(p,\pi)$和$(-p,\pi)$，
+            得到$SO(3)$到$\mathbb{R}P^3$的双射，容易验证这是同胚. 
+            故$SO(3)\simeq \mathbb{R}P^3$，进而
+            $\pi_1(SO(3))=\pi_1(\mathbb{R}P^3)
+            =\pi_1(\mathbb{R}P^2)=\mathbb{Z}_2$.
+
+            \item[4.] The unit tangent bundle of $S^2$ is the subset   
+            $$T^1(S^2)=\{p,v\in \mathbb{R}^3 \mid \Vert p\Vert=1, (p,v)=0, \Vert v\Vert=1\}.$$
+            Show that $T^1(S^2)$ is a smooth submanifold of the tangent bundle $T(S^2)$ 
+            and $T^1(S^2)$ is diffeomorphic to $\mathbb{R}P^3$.
+            \item[\textbf{证明:}] \qquad We only prove the second assertion. 
+            From the last problem, it suffices to show that 
+            $T^1(S^2)\simeq SO(3)$.\par
+            \qquad Firstly we choose an orthonormal frame $e_1,e_2,e_3$ 
+            in $\mathbb{R}^3$ and for any point $(p,v)$ in $T^1(S^2)$, 
+            there is a unique element in $SO(3)$, rotating $e_1$ to $p$ 
+            and $e_2$ to $v$. Then we only need to show the map 
+            $T^1(S^2)\rightarrow SO(3)$ is a diffeomorphism.
+        \end{enumerate}
+\end{itemize}
+
+\subsection{再论Poincaré对偶}
+
+\subsection{再论Thom同构}
+\begin{itemize}
+    \item[7.] Let $n,m$ be positive integers. 
+    Show that the product of spheres $S^n\times S^m$ 
+    has trivial tangent bundle if and only if $n$ or $m$ is odd.
+    \item[\textbf{Proof:}] 
+    \qquad If the tangent bundle of $S^m\times S^n$ is trivial, 
+    then $\chi(S^m\times S^n)=0$.\par
+    $$H^q(S^m\times S^n)=\bigoplus_{i+j=q} H^i(S^m)\otimes H^j(S^n),$$
+    then we have $\dim H^q(S^m\times S^n)
+    =\sum\limits_{i+j=q} \dim H^i(S^m)\cdot \dim H^j(S^n)$.
+        \begin{align*}
+            \chi(S^m\times S^n) &=\sum_{q=0}^{m+n} (-1)^q\dim H^q(S^m\times S^n)\\
+            &=\sum_{q=0}^{m+n} (-1)^q\sum_{i+j=q} \dim H^i(S^m)\cdot \dim H^j(S^n)\\
+            &=\sum_{q=0}^{m+n}\sum_{i+j=q} 
+            \left( (-1)^i \dim H^i(S^m) \right) \cdot \left( (-1)^j \dim H^j(S^n) \right)\\
+            &=\left( \sum_{i=0}^m (-1)^i \dim H^i(S^m) \right) \cdot 
+            \left( \sum_{j=0}^n (-1)^j \dim H^j(S^m) \right)\\
+            &=\chi(S^m)\cdot \chi(S^n).
+        \end{align*}
+        
+        \qquad Since $\chi(S^m\times S^n)=0$, we say $\chi(S^m)=0$ or $\chi(S^n)=0$, 
+        which is equivalent to $m$ is odd or $n$ is odd.
+
+        \qquad On the other hand, assume $m$ is odd, 
+        then $TS^m$ admits a non-vanishing vector field.
+
+        \qquad Endow $TS^m$ with a Riemannian metric, 
+        then it has an orthogonal decomposition: $TS^m=\mathcal{E}^1 \oplus E$, 
+        where $\mathcal{E}^1$ is a trivial line bundle on $S^m$.
+
+        \qquad Embed $S^n$ into $\mathbb{R}^{n+1}$, then we have 
+        $\mathcal{E}^{n+1}=TS^n \oplus NS^n$, 
+        where $NS^n$ is the natural normal bundle 
+        on $S^n$ and $NS^n\simeq \mathcal{E}^1$.
+            \begin{align*}
+                T(S^m\times S^n) &= \pi_1^*TS^m \oplus \pi_2^* TS^n\\
+                &=(\pi_1^*E\oplus \pi_1^*\mathcal{E}^1) \oplus \pi_2^*TS^n\\
+                &=\pi_1^*E \oplus \mathcal{E}^1 \oplus \pi_2^*TS^n\\
+                &=\pi_1^* E \oplus \pi_2^*\mathcal{E}^1 \oplus \pi_2^* TS^n\\
+                &=\pi_1^*E \oplus \pi_2^*(\mathcal{E}^1\oplus TS^n)\\
+                &=\pi_1^*E \oplus \pi_2^*\mathcal{E}^{n+1}\\
+                &=\pi_1^*E \oplus \mathcal{E}^{n+1}\\
+                &=\pi_1^*E\oplus \pi_1^*\mathcal{E}^1 \oplus \pi_1^*\mathcal{E}^1 \oplus \mathcal{E}^{n-1}\\
+                &=\pi_1^*(E\oplus \mathcal{E}^1)\oplus \pi_1^*\mathcal{E}^1 \oplus \mathcal{E}^{n-1}\\
+                &=\pi_1^*TS^m \oplus \pi_1^* \mathcal{E}^1 \oplus \mathcal{E}^{n-1}\\
+                &=\pi_1^*(TS^m \oplus \mathcal{E}^1)\oplus \mathcal{E}^{n-1}\\
+                &=\pi_1^*\mathcal{E}^{m+1} \oplus \mathcal{E}^{n-1}\\
+                &=\mathcal{E}^{m+n},
+            \end{align*}
+        where $\pi_1:S^m\times S^n\rightarrow S^m$ and $\pi_2: S^m\times S^n\rightarrow S^n$. It follows that $T(S^m\times S^n)$ is trivial.
+\end{itemize}
+
+\subsection{单纯复形理论}
+
+\subsection{单值性}
+
+\section{Spectral Sequences and Applications}
+\subsection{谱序列}
+
+\subsection{双复形的谱序列}
+
+\subsection{谱序列的应用}
+
+\subsection{整系数奇异同调}
+
+\subsection{奇异上同调}
+
+\subsection{道路纤维化}
+
+\subsection{纤维化的同伦序列}
+
+\textbf{补充练习2.} 当$q\geq 2$时，对$t\in [0,1]$定义微分同胚$h_t:S^q\rightarrow S^q$,
+        $$h_t(x)=(x_0\cos(t\pi)-x_1\sin(t\pi), x_0\sin(t\pi)+x_1\cos(t\pi),x_2,\cdots,x_q).$$
+试用$h_t$直接证明$\pi_q(X)$是一个Abel群，$q\geq 2$.\par
+\textbf{证明：}
+    重定义$I=[-\frac{1}{2},\frac{1}{2}]^q$，
+    设$\varphi:S^q\rightarrow \mathbb{R}^q$是以$(0,0,\cdots,1)$为极点的球极投影，
+    $\psi:\mathbb{R}^q\rightarrow I^q$是只改变到原点距离的光滑同胚.\par
+    \qquad $h_t$给出了$\operatorname{id}$与$(x_0,x_1,x_2,\cdots,x_q)
+    \mapsto (-x_1,-x_0,x_2,\cdots,x_q)$的光滑同伦，故
+    \[\psi\circ \varphi \circ h_t \circ \varphi^{-1} \circ \psi^{-1}: I^q\rightarrow I^q\]
+    给出了$\operatorname{id}$与$(x_1,x_2,x_3, \cdots,x_q)\mapsto (-x_2,-x_1,x_3, \cdots, x_q)$光滑同伦.\par
+    \qquad 故
+    $$\gamma(t_1,\cdots,t_q)=\begin{cases} \alpha(2t_1+\frac{1}{2},t_2,\cdots,t_q), &-\frac{1}{2}\leq t_1\leq 0\\
+            \beta(2t_1-\frac{1}{2},t_2,\cdots,t_q), &0\leq t_1\leq \frac{1}{2}\end{cases}$$
+        光滑同伦于
+            \begin{align*}
+                \tilde{\gamma}(t_1,t_2,\cdots,t_q)&=\gamma(-t_1,-t_2,t_3,\cdots,t_q)\\
+                &=\begin{cases} \alpha(-2t_1+\frac{1}{2},-t_2,t_3,\cdots,t_q), &-\frac{1}{2}\leq -t_1\leq 0\\
+                    \beta(-2t_1-\frac{1}{2},-t_2,t_3\cdots,t_q), &0\leq -t_1\leq \frac{1}{2}\end{cases}\\
+                &=\begin{cases} \beta(-2t_1-\frac{1}{2},-t_2,t_3,\cdots,t_q), &-\frac{1}{2}\leq t_1\leq 0\\
+                    \alpha(-2t_1+\frac{1}{2},-t_2,t_3\cdots,t_q), &0\leq t_1\leq \frac{1}{2}\end{cases}\\
+                &\sim \begin{cases} \beta(2t_1+\frac{1}{2},t_2,t_3,\cdots,t_q), &-\frac{1}{2}\leq t_1\leq 0\\
+                    \alpha(2t_1-\frac{1}{2},t_2,t_3\cdots,t_q), &0\leq t_1\leq \frac{1}{2}\end{cases}\\
+            \end{align*}
+        最后一步是对$\beta,\alpha$分别应用同伦. 故有$[\alpha][\beta]=[\beta][\alpha]$.
+\subsection{Hurewicz同构定理}
+\begin{itemize}
+    \item[17.3] 设$(X,d)$是紧度量空间，$f:X \to X$满足$d(f(x),f(y))=d(x,y)$对任意$x,y \in X$成立。证明$f$是满射。
+
+    \textbf{证明：} 对任何的$x \in X$，反复作用$f$所得的序列写为$\{f^{n}(x)\}$。
+    其必有子列$\{f^{n_k}(x)\}$收敛，则有
+    \[\lim_{k\to\infty}d(f^{n_k}(x),f^{n_{k+1}}(x))=0,\]
+    换句话说\[\lim_{k\to\infty}d(x,f^{n_{k+1}-n_k}(x))=0,\]
+    从而$d(x,f(X))=0$，结合$f(X)$亦为紧集得出$x \in f(X)$。
+\end{itemize}
+
+\subsection{EM空间}
+
+\subsection{$\pi_{4}(S^{3})$与$\pi_{5}(S^{3})$的计算}
+
+\subsection{有理同伦群}
+
+\section{Characteristic Classes}
+
+\subsection{Chern Classes of a Complex Vector Bundle}
+
+\subsection{The Splitting Principle and Flag Manifolds}
+\begin{itemize}
+    \item[21.1] Let $0\stackrel{f}{\longrightarrow} A
+    \stackrel{g}{\longrightarrow} B\stackrel{h}{\longrightarrow} C\rightarrow 0$ 
+    be a short exact sequence of $C^\infty$ complex vector bundles. 
+    Then $B$ is isomorphic to $A\oplus C$ as a $C^\infty$ bundle.
+
+    \item[\textbf{证明:}]  
+        \qquad 我们在$B\rightarrow M$上取一个可微度量$g$. 
+        容易证明$f(A)$在$B$中的正交补和$C$同构.\par
+        \qquad 此处给一个注记，我们只能做到在$C^\infty$意义下的同构，
+        而不能做到全纯意义下的，这是因为holomorphic metric不总是存在. 
+\end{itemize}
+
+\subsection{Pontrjagin Classes}
+
+\subsection{The Search for the Universal Bundle}

@@ -1,0 +1,173 @@
+\setdisplaytitle{试卷：李群和李代数}
+\sethtmltitle{试卷：李群和李代数}
+
+\newcommand{\g}{\mathfrak{g}}
+\newcommand{\h}{\mathfrak{h}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Ad}{\operatorname{Ad}}
+
+== 2026春 ==
+\begin{enumerate}
+
+\item[一、]（24分）
+
+记 $O(3,1)$ 为Minkowski空间 $\mathbb{R}^{3,1}$ 上的广义正交群，也就是说，$\phi \in O(3,1)$ 当且仅当 $\phi$ 为线性变换且保持Minkowski内积不变。
+
+\begin{itemize}[label=(\alph*)]
+\item 证明 $O(3,1)$ 为Lie群。
+\item 求 $O(3,1)$ 对应的Lie代数。
+\item $O(3,1)$ 有多少个连通分支？证明你的结论。
+\item $O(3,1)$ 是否为紧的？证明你的结论。
+\item $O(3,1)$ 的单位元连通分支的万有覆盖群是什么？
+\item 试将 $O(3,1)$ 的所有紧致连通Lie子群进行分类。
+\end{itemize}
+
+\item[二、]（24分）
+
+设 $G$ 为连通Lie群，$\mathfrak{g}$ 为 $G$ 的Lie代数，$\exp : \mathfrak{g} \to G$ 为指数映射。判断下列命题是否正确，并证明你的结论：
+
+\begin{itemize}
+\item $\exp$ 在原点附近为局部微分同胚，也就是说，存在 $0\in \mathfrak{g}$ 的一个邻域 $W$，使得 $\exp|_{W} : W \to \exp(W)$ 为微分同胚。
+\item $\exp$ 在 $\mathfrak{g}$ 的任意给定点附近为局部微分同胚。
+\item $\exp$ 为满射。
+\item $G$ 为可交换的，当且仅当 $\mathfrak{g}$ 为可交换的。
+\item $G$ 为单群当且仅当 $\mathfrak{g}$ 为单Lie代数。
+\item 设 $H$ 为 $G$ 的Lie子群，$\mathfrak{h}$ 为 $H$ 的Lie代数，则 $X \in \mathfrak{h}$ 当且仅当单参数子群 $\{\exp(tX) : t \in \mathbb{R}\} \subset H$。
+\end{itemize}
+
+\item[三、]（28分）
+
+设 $G$ 为连通紧Lie群，$\mathfrak{g}$ 为 $G$ 的Lie代数。记 $\mathrm{Aut}(G)$ 为 $G$ 的自同构群，$\mathrm{Aut}(\mathfrak{g})$ 为 $\mathfrak{g}$ 的自同构群。形如 $\mathrm{Ad}(g)\ (g \in G)$ 的全体伴随表示构成 $\mathfrak{g}$ 的内自同构群 $\mathrm{Ad}(\mathfrak{g})$。
+
+\begin{enumerate}
+\item $\mathrm{Aut}(G)$，$\mathrm{Aut}(\mathfrak{g})$ 和 $\mathrm{Ad}(\mathfrak{g})$ 是否为Lie群？证明你的结论。
+
+\item 以下关系式是否成立？若成立，请证明；若不一定成立，请举出反例，并给出关系式成立的条件。
+\begin{enumerate}[label=$\bullet$]
+\item $\operatorname{Aut}(G)=\operatorname{Aut}(\mathfrak{g})$。
+\item $\operatorname{Aut}(\mathfrak{g})=\operatorname{Ad}(\mathfrak{g})$。
+\end{enumerate}
+
+\item 设 $(\cdot,\cdot)$ 为 $\mathfrak{g}$ 上的伴随不变正定内积，$\mathfrak{h}$ 为 $\mathfrak{g}$ 的Cartan子代数，$\Delta \subset \mathfrak{h}^*$ 为 $(\mathfrak{g},\mathfrak{h})$ 的根系，$W$ 为 $\Delta$ 对应的Weyl群。判断下列命题是否正确，并证明你的结论。
+\begin{itemize}
+\item $(\cdot,\cdot)$ 与 $\mathfrak{g}$ 上的Killing型成比例。
+\item 若 $\phi \in \mathrm{Aut}(\mathfrak{g})$ 并且 $\phi(\mathfrak{h}) = \mathfrak{h}$，则 $\phi|_{\mathfrak{h}} \in W$。
+\item $\forall \sigma \in W$，存在 $\phi \in \mathrm{Ad}(\mathfrak{g})$，使得 $\phi|_{\mathfrak{h}} = \sigma$。
+\item 若 $\mathfrak{g}$ 为紧半单Lie代数，$\sigma$ 为 $(\mathfrak{h},(\cdot,\cdot))$ 上的正交变换，则存在 $\phi \in \mathrm{Aut}(\mathfrak{g})$，使得 $\phi|_{\mathfrak{h}} = \sigma$ 的充要条件是 $\sigma(\Delta) = \Delta$。
+\end{itemize}
+\end{enumerate}
+
+\item[四、]（9分）
+
+求证：存在紧单Lie代数 $\mathfrak{g}$，使得 $\mathfrak{g}$ 的根系与抽象根系 $G_2$ 同构。
+
+\item[五、]（15分）从以下两题中任选一题：
+
+\begin{enumerate}
+\item 本学期你印象最深刻的定理是什么？请说明理由。
+\item Lie群Lie代数理论有着广泛的应用。你对哪个领域的应用最有兴趣？请阐述理由。
+\end{enumerate}
+
+\end{enumerate}
+
+== 2025春 ==
+\textbf{一、(24分)}
+
+记 $ISO(\mathbb{R}^4)$ 为Euclid空间 $\mathbb{R}^4$ 上的等距变换群，
+$ISO_0(\mathbb{R}^4)$ 为 $ISO(\mathbb{R}^4)$ 的单位元连通分支。
+\begin{itemize}
+\item 证明 $ISO(\mathbb{R}^4)$ 和 $ISO_0(\mathbb{R}^4)$ 均为Lie群。
+\item 求 $ISO(\mathbb{R}^4)$ 对应的Lie代数。
+\item $ISO(\mathbb{R}^4)$ 是否是连通的？证明你的结论。
+\item $ISO_0(\mathbb{R}^4)$ 是否为紧的？证明你的结论。
+\item $ISO_0(\mathbb{R}^4)$ 的万有覆盖群是什么？
+\item 试将 $ISO(\mathbb{R}^4)$ 的所有紧致连通Lie子群进行分类。
+\end{itemize}
+
+\textbf{二、(20分)}
+
+设 $G$ 为Lie群，$H$ 为 $G$ 的子群。判断下列命题是否正确，并证明你的结论：
+\begin{itemize}
+\item 若 $H$ 为 $G$ 的嵌入Lie子群，则 $H$ 必为闭子群。
+\item 若 $H$ 为 $G$ 的闭子群，则 $H$ 必为 $G$ 的嵌入 Lie 子群。
+\item 若 $H$ 为 $\{a^k: k \in \mathbb{Z}\}$ 的闭包，则 $H$ 为 $G$ 的一个子环群。
+\item 若 $H$ 为 $G$ 的一个子环群，则存在 $a \in H$，使得 $H$ 为 $\{a^k: k \in \mathbb{Z}\}$ 的闭包．
+\item 若 $H$ 为 $G$ 的一个子环群，则存在 $G$ 的极大子环群（维数最大的子环群）$T$，使得 $H \subset T$。
+\end{itemize}
+
+\textbf{三、(24分)}
+
+设 $G$ 为连通紧 Lie 群，$\mathfrak{g}$ 为 $G$ 的Lie代数。
+记 $\operatorname{Aut}(G)$ 为 $G$ 的自同构群，
+$\operatorname{Aut}(\mathfrak{g})$ 为 $\mathfrak{g}$ 的自同构群。
+形如 $\operatorname{Ad}(g)(g \in G)$ 的全体伴随表示构成 $\mathfrak{g}$ 的内自同构群 $\operatorname{Ad}(\mathfrak{g})$。
+\begin{enumerate}[label=(\arabic*)]
+\item 以下关系式是否成立？若成立，请证明；若不一定成立，请举出反例，并给出关系式成立的条件。
+\begin{enumerate}[label=$\bullet$]
+\item $\operatorname{Aut}(G)=\operatorname{Aut}(\mathfrak{g})$。
+\item $\operatorname{Aut}(\mathfrak{g})=\operatorname{Ad}(\mathfrak{g})$。
+\end{enumerate}
+\item 设 $(\cdot, \cdot)$ 为 $\mathfrak{g}$ 上的伴随不变正定内积，
+$\mathfrak{h}$ 为 $\mathfrak{g}$ 的 Cartan 子代数，
+$\Delta \subset \mathfrak{h}$ 为 $(\mathfrak{g}, \mathfrak{h})$ 的根系，
+$W$ 为 $\Delta$ 对应的Weyl群。判断下列命题是否正确，并证明你的结论。
+\begin{enumerate}[label=$\bullet$]
+\item $(\cdot, \cdot)$ 与 $\mathfrak{g}$ 上的Killing型成比例．
+\item 若 $\phi \in \operatorname{Aut}(\mathfrak{g})$ 并且 $\phi(\mathfrak{h})=\mathfrak{h}$，则 $\phi|_{\mathfrak{h}} \in W$。
+\item $\forall \sigma \in W$，存在 $\phi \in \operatorname{Ad}(\mathfrak{g})$，使得 $\phi|_{\mathfrak{h}}=\sigma$。
+\item 若 $\mathfrak{g}$ 为紧半单 Lie 代数，$\sigma$ 为 $(\mathfrak{h},(\cdot, \cdot))$ 上的正交变换，
+则存在 $\phi \in \operatorname{Aut}(\mathfrak{g})$，
+使得 $\phi|_{\mathfrak{h}}=\sigma$ 的充要条件是 $\sigma(\Delta)=\Delta$。
+\end{enumerate}
+\end{enumerate}
+\textbf{四、(18分)}
+
+求证：存在紧单Lie代数 $\mathfrak{g}$，使得 $\mathfrak{g}$ 的根系与抽象根系 $F_4$ 同构。
+
+\textbf{五、(18分)} 从以下两题中任选一题：
+\begin{enumerate}[label=(\arabic*)]
+\item 本学期你印象最深刻的定理是什么？请说明理由。
+\item Lie群Lie代数理论有着广泛的应用。你对哪个领域的应用最有兴趣？请阐述理由。
+\end{enumerate}
+
+== 2024春 ==
+
+\begin{itemize}
+    \item[一] (20分) 设$G$为连通Lie群，$\g$为$G$的Lie代数，
+    $\exp\colon\g\to G$为指数映射。判断下列命题是否正确，并证明你的结论：
+
+    ($a$) $\exp$是光滑的。\quad ($b$) $\exp$为局部微分同胚。\quad  ($c$) $\exp$是满射。
+
+    ($d$) $G$为可交换Lie群当且仅当$\g$为可交换Lie代数。
+
+    \item[二] (15分) 设$G$为Lie群，$H$为$G$的子群。判断下列命题是否正确，并证明你的结论：
+    * 若$H$为$G$的嵌入Lie子群，则$H$必为闭子群。
+    * 若$H$为$G$的闭子群，则$H$必为$G$的Lie子群。
+    * 若$H$为$a\in G$生成的群，则$H$的闭包为$G$的一个子环群。
+
+    \item[三] (25分) 设$G$为连通紧Lie群，$\g$为$G$的Lie代数。
+    记$\Aut(G)$为$G$的自同构群，$\Aut(\g)$为$\g$的自同构群。
+    形如$\Ad(\g)\big(g\in G\big)$ 的全体伴随表示构成$\g$的内自同构群$\Ad(\g)$。
+
+    (1) 以下关系式是否成立？若成立，请证明；若不一定成立，请举出反例，并给出关系式成立的条件。
+    * $\Aut(G)=\Aut(\g)$.
+    * $\Aut(\g)=\Ad(\g)$.
+
+    (2) 设$(\cdot,\cdot)$为$\g$上的$\Ad(\g)$-不变正定内积，$\h$为$\g$的Cartan子代数，
+    $\Delta\subset\h$为$(\g,\h)$的根系，$W$为$\Delta$对应的Weyl群。
+    判断下列命题是否正确，并证明你的结论。
+    * 若$\phi\in\Aut(\g)$并且$\phi(\h)=\h$，则$\phi|_{\h}\in W$.
+    * $\forall\phi\in W$，存在$\phi\in\Ad(\g)$，使得$\phi|_{\h}=\sigma$.
+    * 若$\g$为紧半单Lie代数，$\sigma$为$(\h,(\cdot,\cdot))$上的正交变换，
+    则存在$\phi\in\Aut(\g)$，使得$\phi|_{\h}=\sigma$
+    的充要条件是$\sigma(\Delta)=\Delta$.
+
+    \item[四] (20分) 记$\mathbb{O}$为八元数域，求$\mathbb{O}$的
+    自同构群$\Aut(\mathbb{O})$的Lie代数、根系、Dynkin图以及万有覆盖群。
+
+    \item[五] (20分) 从以下两题中任选一题：
+
+    （1）本学期你印象最深刻的定理是什么？请说明理由。
+
+    （2）Lie群Lie代数理论有着广泛的应用。你对哪个领域的应用最有兴趣？请阐述理由。
+\end{itemize}

@@ -1,0 +1,23 @@
+\setdisplaytitle{试卷：算子代数}
+\sethtmltitle{试卷：算子代数}
+
+==25秋(徐胜芝)==
+本次考试总时间约为2.5小时(7:40--10:10)
+\begin{itemize}
+    \item[一、](50pts) Let $A$ be the algebra $\ell^1(\Z^n)$. For $a,b\in \ell^1(\Z^n)$, define $a*b: p\mapsto \sum\limits_{q\in \Z^n}a_qb_{p-q}$, and $a^*: p\mapsto \overline{a_{-p}}$. Let $\chi_q\in A$ be the sequence defined by $(\chi_q)_p=\delta_{p,q}$. For $z\in\mathbb{T}^n$ and $p\in \Z^n$, denote $z^p=z_1^{p_1}z_2^{p_2}\cdots z_n^{p_n}$.
+    \begin{itemize}
+        \item[(1)]Prove that $\overline{\{\chi_p|p\in\Z^n\}}=A,\chi_p*\chi_{p'}=\chi_{p+p'}$ and $\chi_0$ is the unit of $A$.
+        \item[(2)]For any $a\in A$, define the function $\Phi a: \mathbb{T}^n\to \mathbb{C}, z\mapsto \sum\limits_{p\in \Z^n} a_pz^p$. Show that $\Phi(a)$ is a continuous function on $\mathbb{T}^n$.
+        \item[(3)]Prove that $\Phi$ is an (involution) algebra morphism and $\|\Phi\|=1$.
+        \item[(4)]Prove that any character $\psi: A\to \mathbb{C}$ is of the form $\psi(a)=\Phi a(z)$ for a unique $z\in\mathbb{T}^n$.
+        \item[(5)]Prove that $a\in A$ is invertible if and only if $\Phi a$ has no zeros.
+    \end{itemize}
+    \item[二、](50pts)
+    \begin{itemize}
+        \item[(0)]Show that every positive functional $\psi: C_0(\R)\to \mathbb{C}$ is of the form $\psi(f)=\int_\R f(x)\mu(\mathrm{d}(x))$ for a finite Borel measure on $\R$.
+        \item[(1)]Show that the GNS construction of $\psi$ is the multiple representation on $L^2(\R,\mu)$ defined by $\pi(f)h=fh$ for $h\in L^2(\R,\mu)$.
+        \item[(2)]Find a function $h\in L^2(\R,\mu)$ such that $L^2(\R,\mu)=\overline{\{\pi(f)h|f\in C_0(\R)\}}$ and $\psi(f)=\langle h|\pi(f)h\rangle$.
+        \item[(3)]Show that the multiple representation can be extended to $L^\infty(\R,\mu)$. Denote also by $(\pi, L^2(\R,\mu))$. Show that the commutant of $\pi(C_0(\R))$ is $\pi(L^\infty(\R,\mu))$.
+        \item[(4)]Find the bicommutant of $\pi(C_0(\R))$. Prove that $\pi(L^\infty(\R,\mu))$ is a von Neumann algebra over $L^2(\R,\mu)$.
+    \end{itemize}
+\end{itemize}

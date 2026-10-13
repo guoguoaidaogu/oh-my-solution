@@ -1,0 +1,188 @@
+\theoremstyle{plain}
+\newtheorem{exercise}{习题}
+\nosectionnumbers
+
+\begin{exercise}[指标范畴与极限]
+    设 $\mathcal{J}$ 是一个小范畴， $\mathcal{C}$ 是任意范畴。
+    则一个函子 $F: \mathcal{J} \rightarrow \mathcal{C}$
+    （即，对任意的 $i \in \mathcal{J}$ 指定对象 $A_{i} \in \mathcal{C}$，且有自然的态射交换图）
+    被称为\textbf{被 $\mathcal{J}$ 指标化的图表}。我们称 $\mathcal{J}$ 是\textbf{指标范畴}。
+    指标范畴通常是一个偏序集，其任意两个对象间最多有一个态射。
+
+    我们可以定义图表 $F$ 的\textbf{极限}为
+    $\mathcal{C}$ 的一个对象 $\varprojlim A_{i}$
+    加上对任意 $j \in \mathcal{J}$ 的态射 
+    $f_{j}: \varprojlim A_{i} \rightarrow$ $A_{j}$，
+    且满足如下关系：如果 $m: j \rightarrow k$ 是 $\mathcal{J}$ 中的态射，则下图交换[记为(1.1)]
+    \begin{cd}
+        \varprojlim A_i \ar[d, "f_j"] \ar[dr, "f_k"] \\
+        A_j \ar[r, "F(m)"] & A_k
+    \end{cd}
+    且 $\varprojlim A_{i}$ 与 $f_{j}$ 在这个性质下是万有的。
+    根据万有性质的一般结果，如果极限存在，那么它在如下意义下是唯一的：
+    如果 ${\rm A}$ 和 ${\rm A}'$ 都是极限，那么它们之间有一个唯一的同构。
+
+    \begin{enumerate}
+        \item 如果 $\mathcal{C}$ 是集合范畴, $\mathcal{J}$是如下的偏序集
+        \begin{cd}
+            & \bullet \ar[d] \\
+            \bullet \ar[r] & \bullet
+        \end{cd}
+        证明极限等于纤维积.
+
+        \item 如果 $\mathcal{C}$ 是集合范畴, $\mathcal{J}$ 是如下集合
+        \begin{cd}
+            \bullet & \bullet
+        \end{cd}
+        证明极限等于积.
+
+        \item 假设 $\mathcal{J}$ 是一个有始对象 $e$ 的偏序集，
+        证明任意由 $\mathcal{J}$ 指标化的图表的极限都存在。
+
+        \item 如果 $\mathcal{C}$ 是\textit{集合}范畴, 
+        \[
+            \left\{ (a_{i})_{i \in \mathcal{J}}
+            \in \prod_{i} A_{i}: 
+            \text { 对任意的 } m \in 
+            \operatorname{Mor}_{\mathcal{J}}(j, k) 
+            \text { 有 } F(m)(a_{j})=a_{k}\right\}
+        \]
+        加上它到 $A_i$ 的自然的投影是 $\varprojlim A_{i}$ 的极限.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}[极限和余极限]
+    我们还可以定义极限的对偶概念余极限，
+    只需把极限定义的公式(1.1)中所有 $f_{i}$ 的箭头取反方向即可，
+    记作 $\varinjlim$. (试写出对应的图表)
+    \begin{enumerate}
+        \item 把集合的并翻译成某个余极限。(对偶地，集合的交是一个极限)
+        \item 设 $(S, \geq)$ 一个非空偏序集。
+        如果对任意 $x, y \in S$，
+        都有一个 $z \in S$ 使得 $x \geq z$ 且 $y \geq z$，
+        则称 $(S, \geq)$ 为\textbf{过滤的}。
+
+        现假设 $\mathcal{J}$ 是一个过滤的偏序集。
+        证明此时存在一个等价关系 $\sim:(a_{i}, i) \sim(a_{j}, j)$
+        当且仅当存在 $f: A_{i} \rightarrow A_{j}$ 和 $g: A_{j} \rightarrow A_{k}$，
+        其中在 $A_{k}$ 有 $f(a_{i})=g(a_{j})$。
+        证明对任何集合范畴中由 $\mathcal{J}$ 指标化的图表，
+        下面的对象加上 $A_{i}$ 到它自然的映射是余极限 $\varinjlim A_{i}$:
+
+        $$
+        \left\{\left(a_{i}, i\right) \in \sqcup_{i \in \mathcal{J}} A_{i}\right\} / \sim
+        $$
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}[极限的存在性]
+    假设 $\mathcal{C}$ 是一个范畴，其中终对象和拉回都存在。
+    证明 $\mathcal{C}$ 中任意有限（指标范畴有限）极限都存在。
+\end{exercise}
+
+\begin{proof}
+    记终对象为$1$. 对任意 $A, B \in \operatorname{Ob}(\mathcal{C})$,
+    考虑拉回图
+    \begin{cd}
+            A\times B \ar[r, "\pi_B"] \ar[d, "\pi_A"'] \ar[dr, "\ulcorner", phantom, very near start]
+            & B \ar[d, "t_B"] \\
+            A \ar[r, "t_A"'] & 1
+    \end{cd}
+    对任意的 $X\in \operatorname{Ob}(\mathcal{C})$ 及
+    $f:X\to A$, $g:X\to B$,
+    $t_A\circ f=t_B\circ g(=t_X)$. 由拉回的泛性质知
+    $\exist !h:X\to A\times B$使得 $\pi_A\circ h=f, \pi_B\circ h=g$,
+    所以这个拉回确实是 $A$和 $B$的乘积. 进一步, 在范畴 $C$中存在有限乘积.
+
+    再对 $A,B$考虑拉回图
+    \begin{cd}
+            E \ar[r, "e"] \ar[d, "l"'] \ar[rd, "\ulcorner", phantom, very near start] & A \ar[d, "{(f,g)}"] \\
+            B \ar[r, "{(1_B,1_B)}"']                                                  & B\times B             
+        \end{cd}
+    因为$\operatorname{Hom}$函子保持极限, 有拉回图
+    \begin{cd}
+            \operatorname{Hom}(X,E)\ar[r, "e_*"] \ar[d, "l_*"'] \ar[rd, "\ulcorner", phantom, very near start] & \operatorname{Hom}(X,A) \ar[d, "{(f_*,g_*)}"] \\
+            \operatorname{Hom}(X,B)\ar[r, "{1_*,1_*}"] & \operatorname{Hom}(X,B)\times \operatorname{Hom}(X,B)
+    \end{cd}
+    由习题1.1知在 $\operatorname{Set}$中拉回就是纤维积, 所以与 $e$的复合给出
+    $\operatorname{Hom}(X,E)$与 $\operatorname{Hom}(X,A)$中满足 $fa=ga$的子集 $\{a\}$的同构.
+    即等化子图有极限
+    \begin{tikzcd}
+            \operatorname{Hom}(X,E) \ar[r, tail, "e_*"]
+            & \operatorname{Hom}(X,A) \ar[r, shift left=0.5ex, "f_*"] \ar[r, shift right=0.5ex, "g_*"']
+            & \operatorname{Hom}(X,B)
+    \end{tikzcd}
+    而$\operatorname{Hom}$函子反映极限, 所以在$\mathcal{C}$中等化子图
+    \begin{tikzcd}
+            A \ar[r, shift left=0.5ex, "f"] \ar[r, shift right=0.5ex, "g"']
+            & B
+    \end{tikzcd}
+    总有极限
+    \begin{tikzcd}
+        E\ar[r, tail] & A\ar[r, shift right=0.5ex] \ar[r, shift left=0.5ex] & B
+    \end{tikzcd}
+
+    综上已证明了存在终对象和拉回的范畴存在二元(进而有限)乘积和等化子.
+    熟知存在(有限)乘积和等化子的范畴总存在(有限)极限; 这是由于对于极限总有等化子图
+    \begin{tikzcd}
+            \lim_{\mathcal{J}} F \ar[r, tail] &
+            \prod_{j \in \operatorname{Ob} \mathcal{J}} F(j) \ar[r, shift left=0.5ex, "c"] \ar[r, shift right=0.5ex, "d"'] &
+            \prod_{f \in \operatorname{Mor} \mathcal{J}} F(\operatorname{cod}f),
+    \end{tikzcd}
+    其中$c$是直接投影到$\operatorname{cod}f$, 而 $d$是先投影到$\operatorname{dom}f$, 再通过 $f$映到 $\operatorname{cod}f$,
+    所以我们可以考虑反过来利用等化子图存在证明极限存在.
+    详细的证明见\cite{Rie16}定理3.4.12.
+\end{proof}
+
+\begin{exercise}[单同态]
+    一个态射 $\pi: X \rightarrow Y$ 被称为单同态，
+    如果两个态射 $f_{1}: Z \rightarrow X$ 和 
+    $f_{2}: Z \rightarrow X$满足 
+    $\pi \circ f_{1}=\pi \circ f_{2}$，
+    则有 $f_{1}=f_{2}$。
+    \begin{enumerate}
+        \item 证明集合范畴中的单射是单同态.
+        \item 证明任意两个单同态的复合是单同态。
+        \item 证明在可除群范畴中 
+        $\mathbb{Q} \rightarrow \mathbb{Q} / \mathbb{Z}$ 
+        是单同态但不是单射。
+        \item 证明 $\pi: X \rightarrow Y$ 是单同态，
+        当且仅当纤维积 $X \times_{Y} X$ 存在，
+        且诱导的对角态射 $\delta: X \rightarrow X \times_{Y} X$ 
+        是一个同构。
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}[满同态]
+    一个态射 $\pi: X \rightarrow Y$ 被称为满同态，
+    如果两个态射 $f_{1}: Y \rightarrow Z$ 和 
+    $f_{2}: Y \rightarrow Z$满足 
+    $f_{1} \circ \pi=f_{2} \circ \pi$，
+    则有 $f_{1}=f_{2}$。
+    \begin{enumerate}
+        \item 证明集合范畴中的满射是满同态。
+        \item 证明在环范畴中， $\mathbb{Z} \rightarrow \mathbb{Q}$ 是满同态但不是满射。
+        \item 证明偏序集中，任意的态射都是满同态。
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Yoneda引理]
+    假设 $A$是范畴 $\mathcal{C}$中的一个对象. 
+    定义如下的反变函子 $h^A:\mathcal{C}^{\operatorname{op}}\to \mathrm{Sets}:$
+    在 $\mathcal{C}$的对象 $X$上
+    $$
+        h^A(X)= \operatorname{Hom}_{\mathcal{C}}(X,A),
+    $$
+    在 $\mathcal{C}$的态射 $f:Y\to X$上由复合给出态射的对应.
+
+    设 $F:\mathcal{C}^{op}\to \mathrm{Sets}$是任意的反变函子.
+    证明 $h^A$到 $F$的自然同构全体与 $F(A)$之间有一个自然的一一对应.
+\end{exercise}
+
+\subsection**{参考文献}
+\begin{references}
+    \bibitem[Rie16]{Rie16}
+        Emily Riehl.
+        \textit{Category Theory in Context}.
+        Dover Modern Math Originals. Dover Publications, 2016.
+\end{references}

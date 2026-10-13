@@ -1,0 +1,1122 @@
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\G}{\mathcal{G}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\W}{\mathcal{W}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\bE}{\overline{\E}}
+\newcommand{\bp}{\bar{p}}
+\newcommand{\bP}{\overline{\P}}
+\def\as{\text{ a.s. }}
+\def\st{\text{ s.t. }}
+\setdisplaytitle{随机过程习题}
+\sethtmltitle{随机过程习题}
+
+{{comment|\qquad习题来自于应坚刚老师的《随机过程讲义》(2025年5月16日版)，
+因为讲义会经常更新，以后的同学参考时可能题号会有微小的变动。}}
+
+== 预备知识 ==
+=== 1.1 单调类方法 ===
+\begin{enumerate}
+    \item[1.1.1] (1)举例说明$\lambda$-类不一定是$\sigma$-代数。
+
+    (2)如果$\G$既是$\lambda$-类又是$\pi$-类，则$\G$是$\sigma$-代数。
+    \begin{proof}
+        (1)令$\Omega=\{1,2,3,4\}$，$\G=\{\varnothing,\{1,2\},\{3,4\},\{1,4\},\{2,3\},\Omega\}$。
+        易见$\G$对补集运算封闭，且其所含的非平凡元素均要么相交，要么互补，因而$\G$对不交可列并运算封闭，
+        从而是$\lambda$-类。然而$\{1,2\}\cup\{1,4\}=\{1,2,4\}\notin\G$，故$\G$不是$\sigma$-代数。
+
+        (2)任取$\{A_n\}_{n=1}^\infty\subseteq\G$，令
+        \[B_1=A_1,B_n=A_n\backslash\bigg(\bigcup_{k=1}^{n-1}A_k\bigg)=A_n\cap\bigg(\bigcap_{k=1}^{n-1}A_k^c\bigg)\in\G(n\geqslant2),\]
+        则$\{B_n\}_{n=1}^\infty$互不相交，从而由$\G$为$\lambda$-类知
+        $\bigcup\limits_{n=1}^\infty A_n=\bigcup\limits_{n=1}^\infty B_n\in\G$，
+        即$\G$对可列并封闭，因而是$\sigma$-代数。
+    \end{proof}
+\end{enumerate}
+
+=== 1.2 可测性和与条件期望 ===
+\begin{enumerate}
+    \item[1.2.1] 非空集$A\in\G$成为$\G$的原子，如果除了空集和$A$自己，它不再包含$\G$的其他元素作为子集。
+    证明：如果$Y$是$\G$可测的，那么$Y$在$\G$的原子上是常数。
+    \begin{proof}
+        假设存在$\G$的原子$A$使得存在$a\neq b$满足$Y(A)\supseteq\{a,b\}$，则由$Y$是$\G$可测的知
+        $Y^{-1}(a),Y^{-1}(b)\in\G$，从而$Y^{-1}(a)\cap A$与$Y^{-1}(b)\cap A$是$A$的两个非空不交子集，
+        这意味着$A$除空集与自身外，还包含$Y^{-1}(a)\cap A\in\G$作为子集，与$A$为$\G$的原子矛盾。
+    \end{proof}
+    \item[1.2.3] 证明定理1.2.1的(1), (4), (5)。
+    \begin{proof}
+        (1)线性性：任取随机变量$Y_1,Y_2$与$c_1,c_2\in\R$。对任意$A\in\G$，由定义知
+        \begin{align*}
+            \E(\E(c_1Y_1+c_2Y_2|\G)\cdot1_A)=&\E((c_1Y_1+c_2Y_2)\cdot1_A)\\
+            =&c_1\E(Y_1\cdot1_A)+c_2\E(Y_2\cdot1_A)\\
+            =&c_1\E(\E(Y_1|\G)\cdot1_A)+c_2\E(\E(Y_2|\G)\cdot1_A)\\
+            =&\E((c_1\E(Y_1|\G)+c_2\E(Y_2|\G))\cdot1_A),
+        \end{align*}
+        因而由引理1.2.3知$\E(c_1Y_1+c_2Y_2|\G)=c_1\E(Y_1|\G)+c_2\E(Y_2|\G)$。
+
+        保序性：利用线性性，只需证若$Y\geqslant0,\as$，则$\E(Y|\G)\geqslant0,\as$。
+        假设不成立，则$\{\E(Y|\G)<0\}\in\G$具有正概率，因而由$Y\geqslant0,\as$知
+        \[0>\E(\E(Y|\G)\cdot1_{\{\E(Y|\G)<0\}})=\E(Y\cdot1_{\{\E(Y|\G)<0\}})\geqslant0,\]矛盾。
+
+        (4)对任意$A\in\G$，由定义知$\E(\E(Y|\G)\cdot1_A)=\E(Y\cdot1_A)=\E Y\cdot\E1_A=\E((\E Y)\cdot1_A)$，
+        因而由引理1.2.3知$\E(Y|\G)=\E Y$。
+
+        (5)对任意$A\in\G_1$，有$A\in\G_2$，从而
+        \[\E(\E(\E(Y|\G_1)|\G_2)\cdot1_A)=\E(\E(Y|\G_1)\cdot1_A)=\E(Y\cdot1_A)=\E(\E(Y|\G_2)\cdot1_A)=\E(\E(\E(Y|\G_2)|\G_1)\cdot1_A),\]
+        因而由引理1.2.3知$\E(\E(Y|\G_1)|\G_2)=\E(Y|\G_1)=\E(\E(Y|\G_2)|\G_1)$。
+    \end{proof}
+    \item[1.2.4] 设$X,Y$是独立同分布的可积随机变量。猜测$\E(X|X+Y)$并验证。
+    \begin{proof}
+        由$X,Y$独立同分布知$(X,Y)\xlongequal{\text{d}}(Y,X)$，从而对任意可测函数$f$(满足一定可积性)，
+        \[\E(\E(X|X+Y)\cdot f(X+Y))=\E(X\cdot f(X+Y))=\E(Y\cdot f(X+Y))=\E(\E(Y|X+Y)\cdot f(X+Y)),\]
+        因而$\E(X|X+Y)=\frac{1}{2}\E(X+Y|X+Y)=\frac{1}{2}(X+Y)$。
+    \end{proof}
+\end{enumerate}
+
+=== 1.3 随机过程及其分布 ===
+
+== 简单随机游动 ==
+
+=== 2.1 Bernoulli序列 ===
+
+=== 2.2 反射原理 ===
+\begin{enumerate}
+    \item[2.2.1] 为什么我们说随机游动样本轨道是格点轨道? 用$\W$表示从零点出发的格点轨道全体，
+    严格地证明：$\P(X\in\W)=1$。
+    \begin{proof}
+        设样本空间$\Omega=\{-1,1\}^{\N}$，赋予其乘积$\sigma$-代数和由分布
+        $\begin{bmatrix}1&-1\\p&1-p\end{bmatrix}$生成的概率测度$\P$，则对$\omega=(\omega_1,\omega_2,\cdots)\in\Omega$，
+        对应的随机游动为\[X_0(\omega)=0,X_n(\omega)=\sum_{k=1}^n\omega_k(n\geqslant1),\]
+        而\[\W=\{X:\N\to\Z|X(0)=0,|X(n+1)-X(n)|=1,\forall n\in\N\}.\]对任意$\omega\in\Omega$，
+        对应的样本轨道$X(\omega)=(X_0(\omega),X_1(\omega),\cdots)$满足
+        \[X_0(\omega)=0,|X_{n+1}(\omega)-X_n(\omega)|=|\omega_{n+1}|=1,X_n(\omega)\in\Z,\]
+        故$X(\omega)\in\W$，从而$\P(X\in\W)=\P(\Omega)=1$。
+    \end{proof}
+    \item[2.2.4] 对$n\geqslant1$，证明：\[\P(X_1>0,X_2>0,\cdots,X_{2n}>0)=\frac{1}{2}u_{2n},\quad
+    \P(X_1\geqslant0,X_2\geqslant0,\cdots,X_{2n}\geqslant0)=u_{2n}.\]
+    由第二个等式证明$\P(T=2n)=u_{2n-2}-u_{2n}$。
+    \begin{proof}
+        显然\[\P(X_1>0,X_2>0,\cdots,X_{2n}>0)=\sum_{k=1}^n\P(X_1>0,X_2>0,\cdots,X_{2n-1}>0,X_{2n}=2k).\]
+        由反射原理，满足$X_1>0,X_2>0,\cdots,X_{2n-1}>0,X_{2n}=2k$的格点轨道总数是
+        $N_{2n-1,2k-1}-N_{2n-1,-2k-1}=N_{2n-1,2k-1}-N_{2n-1,2k+1}$，因此
+        \[\P(X_1>0,X_2>0,\cdots,X_{2n}>0)=\frac{1}{2^{2n}}\sum_{k=1}^n(N_{2n-1,2k-1}-N_{2n-1,2k+1})=\frac{N_{2n-1,1}}{2^{2n}}=\frac{1}{2}u_{2n}.\]
+
+        对第二个等式，利用$X_{2n}>0\Rightarrow X_{2n+1}\geqslant0$可知
+        \[\P(X_i>0,1\leqslant i\leqslant2n)=\P(\xi_1>0,X_i-\xi_1\geqslant0,2\leqslant i\leqslant2n+1)=\frac{1}{2}\P(X_i\geqslant0,1\leqslant i\leqslant2n),\]
+        由此即证。
+
+        利用上述两个等式可知$\P(X_1\neq0,X_2\neq0,\cdots,X_{2n}\neq0)=\P(X_{2n}=0)$，从而
+        \[\P(T=2n)=\P(X_1\neq0,X_2\neq0,\cdots,X_{2n-2}\neq0,X_{2n}=0)=\P(X_{2n-2}=0)-\P(X_{2n}=0)=u_{2n-2}-u_{2n}.\]
+    \end{proof}
+    \item[2.2.10] 用$L_{2n}$表示长度为$2n$的格点轨道最后遇到$0$的时间，即\[L_{2n}:=\sup\{k\leqslant2n:X_k=0\},\]
+    被称为$0$点的(在时刻$2n$前的)末离时，它必是偶数。证明：\[\P(L_{2n}=2k)=u_{2k}\cdot u_{2n-2k},\quad0\leqslant k\leqslant n.\]
+    \begin{proof}
+        利用随机游动的独立性与练习2.2.4可知
+        \begin{align*}
+            \P(L_{2n}=2k)=&\P(X_{2k}=0,X_{2k+2}\neq0,\cdots,X_{2n}\neq0)\\
+            =&\P(X_{2k}=0)\cdot\P(X_1\neq0,X_2\neq0,\cdots,X_{2n-2k}\neq0)\\
+            =&\P(X_{2k}=0)\cdot\P(X_{2n-2k}=0)=u_{2k}\cdot u_{2n-2k}.
+        \end{align*}
+    \end{proof}
+\end{enumerate}
+
+=== 2.3 首达概率公式 ===
+\begin{enumerate}
+    \item[2.3.2] 利用母函数的方法计算$\P(T_1<\infty)$。
+    \begin{proof}
+        显然$T_1$取值于$+\infty$与正奇数全体，对$n\in\Z_+$，记$f_{2n-1}=\P(T_1=2n-1),g_{2n-1}=\P(X_{2n-1}=1)$。
+        对任意正整数$n$，当$X_{2n-1}=1$时，$T_1\leqslant2n-1$；而当$T_1=2n-1$时，$X_{2n-1}=1$，
+        因此利用定理2.3.1可知\[g_{2n-1}=\P(X_{2n-1}=1)=\sum_{r=1}^n\P(X_{2n-1}=1,T_1=2r-1)=
+        \sum_{r=1}^n\P(X_{2n-2r}'=0,T_1=2r-1)=\sum_{r=1}^nf_{2r-1}u_{2n-2r}.\]
+        
+        在等式两侧同时乘以$t^{2n-1}$后对$n$求和得\[\sum_{n=1}^\infty g_{2n-1}t^{2n-1}=
+        \sum_{n=1}^\infty\sum_{r=1}^nf_{2r-1}t^{2r-1}\cdot u_{2n-2r}t^{2n-2r}=
+        \bigg(\sum_{r=1}^\infty f_{2r-1}t^{2r-1}\bigg)\cdot\bigg(\sum_{n=r}^\infty u_{2n-2r}t^{2n-2r}\bigg),\]
+        即$G(t)=F(t)\cdot U(t)$，其中$G,F,U$分别为
+        $(g_n)_{n\geqslant0},(f_n)_{n\geqslant0},(u_n)_{n\geqslant0},$的母函数(注意到$g_0=f_0=0$)。
+
+        事实上，可计算得\[g_{2n-1}=\frac{(2n-1)!}{(n-1)!\cdot n!}\cdot p^nq^{n-1}=\frac{1}{2q}u_{2n},\quad
+        G(t)=\frac{1}{2qt}\sum_{n=1}^\infty u_{2n}t^{2n}=\frac{U(t)-1}{2qt},\]
+        因此\[F(t)=\frac{G(t)}{U(t)}=\frac{U(t)-1}{2qtU(t)}=\frac{1-\sqrt{1-4pqt^2}}{2qt},\]
+        从而\[\P(T_1<\infty)=\sum_{n=1}^\infty f_{2n-1}=\lim_{t\to1^-}F(t)=\frac{1-|p-q|}{2q}.\]
+    \end{proof}
+    \item[2.3.4] 令$\sigma_{2n}$是$0$到$2n$时段正的时段数，即\[\sigma_{2n}:=\sum_{k=1}^{2n}1_{\{X_{k-1}\geqslant0,X_k\geqslant0\}},\]
+    称为随机游动在正半轴上的逗留时，自然$\sigma_{2n}$也必是偶数。证明：\[\P(\sigma_{2n}=2k)=u_{2k}\cdot u_{2n-2k},\quad0\leqslant k\leqslant n.\]
+    {{comment|\qquad此题结论对于非对称情况是错误的，例如$\P(\sigma_4=2)=pq$，但$u_2^2=4p^2q^2$。下面仅证明对称情况。}}
+    \begin{proof}
+        在证明之前，补充定义$n<0$时，$u_{2n}=0$，那么在这种定义下，对任意正整数$n$，$m$，只要$m\geqslant n$，
+        都有首达概率公式\[u_{2n}=\sum_{r=1}^m f_{2r}\cdot u_{2n-2r}.\]
+
+        下面通过归纳证明。$\textcircled{1}\:n=2$时，由上述评注的计算知成立。
+
+        $\textcircled{2}$假设结论对不大于$n(\geqslant2)$的情形均成立，下证$n+1$的情形。首先，
+        对于$\sigma_{2n+2}=2n+2$的格点轨道，将其关于$\text{x}$轴对称可与$\sigma_{2n+2}=0$的格点轨道一一对应，
+        故$\P(\sigma_{2n+2}=0)=\P(\sigma_{2n+2}=2n+2)$，加之练习2.2.10表明
+        \[\sum_{k=0}^{n+1}u_{2k}\cdot u_{2n+2-2k}=1,\]故仅需证
+        $\P(\sigma_{2n+2}=2k)=u_{2k}\cdot u_{2n+2-2k}$对$1\leqslant k\leqslant n$成立即可。
+
+        此时由$0<\sigma_{2n+2}<2n+2$知$T<2n+2$。当$T=2r(1\leqslant r\leqslant n)$时，
+        $\sigma_{2n+2}=2k$可由$X$在$0$至$2r$时刻恒非负，而在$2r$至$2n+2$时刻有$2k-2r$个正时段数；
+        或在$0$至$2r$时刻恒非正，而在$2r$至$2n+2$时刻有$2k$个正时段数实现。因此利用随机游动的独立性，
+        归纳假设与首达概率公式可知
+        \begin{align*}
+            \P(\sigma_{2n+2}=2k)=&\sum_{r=1}^n f_{2r}\cdot\bigg(\frac{1}{2}\P(\sigma_{2n-2r+2}=2k-2r)+\frac{1}{2}\P(\sigma_{2n-2r+2}=2k)\bigg)\\
+            =&\frac{1}{2}\sum_{r=1}^n f_{2r}\cdot(u_{2k-2r}\cdot u_{2n-2k+2}+u_{2k}\cdot u_{2n-2k-2r+2})\\
+            =&\frac{1}{2}u_{2n-2k+2}\sum_{r=1}^n f_{2r}\cdot u_{2k-2r}+\frac{1}{2}u_{2k}\sum_{r=1}^n f_{2r}\cdot u_{2n-2k-2r+2}\\
+            =&\frac{1}{2}u_{2n-2k+2}\cdot u_{2k}+\frac{1}{2}u_{2k}\cdot u_{2n-2k+2}=u_{2k}\cdot u_{2(n+1)-2k},
+        \end{align*}
+        归纳成立。
+    \end{proof}
+\end{enumerate}
+
+=== 2.4 差分方程 ===
+\begin{enumerate}
+    \item[2.4.1] 试求解非对称情况下的差分方程。
+    \begin{proof}
+        先求解$g_x=pg_{x+1}+qg_{x-1}$。由$g_{x+1}-g_x=\frac{q}{p}(g_x-g_{x-1})$知对$0\leqslant x\leqslant a+b$，
+        \[g_x=g_0+\sum_{k=0}^{x-1}(g_{k+1}-g_k)=1+(g_1-g_0)\sum_{k=0}^{x-1}\bigg(\frac{q}{p}\bigg)^x=1+(g_1-g_0)\cdot\frac{1-(\frac{q}{p})^x}{1-\frac{q}{p}}.\]
+        利用$g_{a+b}=0$解得\[g_1-g_0=-\frac{1-\frac{q}{p}}{1-(\frac{q}{p})^{a+b}},\]
+        从而\[g_x=1-\frac{1-(\frac{q}{p})^x}{1-(\frac{q}{p})^{a+b}}.\]
+
+        再求解$E_x=pE_{x+1}+qE_{x-1}+1$。由$E_{x+1}-E_x+\frac{1}{p-q}=\frac{q}{p}(E_x-E_{x-1}+\frac{1}{p-q})$
+        知对$0\leqslant x\leqslant a+b$，\[E_{x+1}-E_x=\bigg(\frac{q}{p}\bigg)^x\bigg(E_1-E_0+\frac{1}{p-q}\bigg)-\frac{1}{p-q},\]
+        从而\[E_x=E_0+\sum_{k=0}^{x-1}(E_{k+1}-E_k)=\bigg(E_1-E_0+\frac{1}{p-q}\bigg)\cdot\frac{1-(\frac{q}{p})^x}{1-\frac{q}{p}}-\frac{x}{p-q}.\]
+        利用$E_{a+b}=0$解得\[E_1-E_0+\frac{1}{p-q}=\frac{a+b}{p-q}\cdot\frac{1-\frac{q}{p}}{1-(\frac{q}{p})^{a+b}},\]
+        因此\[E_x=\frac{a+b}{p-q}\cdot\frac{1-(\frac{q}{p})^x}{1-(\frac{q}{p})^{a+b}}-\frac{x}{p-q}.\]
+    \end{proof}
+\end{enumerate}
+
+=== 2.5 随机游动的马氏性 ===
+
+=== 2.6 停时与强马氏性 ===
+\begin{enumerate}
+    \item[2.6.1] 验证引理2.6.1及下面的事实。
+
+    (1)当$T$是一个固定时间$n$时，$T$是停时且$\F_T=\F_n$。
+
+    (2)设$T,S$是停时，那么$T\land S$也是。
+
+    (3)设$T,S$是停时且$S\leqslant T$，那么$\F_S\subset\F_T$。
+    \begin{proof}
+        引理2.6.1：$\F_T$包含全集、空集以及对可列并封闭是显然的，再利用
+        $B^c\cap\{T\leqslant n\}=\{T\leqslant n\}\backslash(B\cap\{T\leqslant n\})$与停时的定义可证明$\F_T$对取补集封闭。
+
+        (1)对任意自然数$k$，$\{T\leqslant k\}=\{n\leqslant k\}$，不是空集就是全集，总属于$\F_k$，因此$T$是停时。
+        对任意$B\in\F$与$B\cap\{T\leqslant k\}\in\F_k,\forall k\geqslant0\Leftrightarrow B\in\F_k,\forall k\geqslant n\Leftrightarrow B\in\F_n$。
+
+        (2)对任意自然数$n$，$\{T\land S\leqslant n\}=\{T\leqslant n\}\cap\{S\leqslant n\}$，由此易证。
+
+        (3)任取$B\in\F_S$，则对任意自然数$n$，由$\{T\leqslant n\}\in\F_n$知
+        $B\cap\{T\leqslant n\}=(B\cap\{S\leqslant n\})\cap\{T\leqslant n\}\in\F_n$，故$B\in\F_T$。
+    \end{proof}
+    \item[2.6.2] 验证：
+
+    (1)在$T$是停时的定义与$\F_T$的定义中把$\{T\leqslant n\}$改为$\{T=n\}$是一样的。
+
+    (2)停时$T$是$\F_T$可测的。
+
+    (3)对$y\in\Z$，其进入时与首中时是停时。
+
+    (4)随机变量$Y$是$\F_T$可测的当且仅当对任何$n$，$Y1_{\{T=n\}}$是$\F_n$可测的。
+    \begin{proof}
+        (1)对$B\in\F$，为证明$B\cap\{T\leqslant n\}\in\F_n,\forall n\geqslant0\Leftrightarrow B\cap\{T=n\}\in\F_n,\forall n\geqslant0$，
+        只需利用
+        \begin{align*}
+            B\cap\{T\leqslant n\}=\bigcup_{k=0}^n(B\cap\{T=k\})&,\\
+            B\cap\{T=0\}=B\cap\{T\leqslant0\}&,\\
+            B\cap\{T=n\}=(B\cap\{T\leqslant n\})\backslash(B\cap\{T\leqslant n-1\})(n\geqslant1)&
+        \end{align*}
+        与$\F_n$是$\sigma$-域即可。
+
+        为证明$\{T\leqslant n\}\in\F_n,\forall n\geqslant0\Leftrightarrow\{T=n\}\in\F_n,\forall n\geqslant0$，
+        在上述过程中令$B=\Omega$即可。
+
+        (2)由于$T$取值于$\Z_+\cup\{+\infty\}$，故仅需证$\forall k\geqslant0$，$\{T\leqslant k\}\in\F_T$，
+        即$\forall n\geqslant0$，$\{T\leqslant k\}\cap\{T\leqslant n\}\in\F_n$。根据自然流的性质与$T$是停时可知
+        $\{T\leqslant k\}\cap\{T\leqslant n\}=\{T\leqslant(k\land n)\}\in\F_{k\land n}\subseteq \F_n$，即证。
+
+        (3)记$y$的进入时与首中时分别为$\tau_y,T_y$。对任意$n\geqslant0$，
+        \[\{\tau_y\leqslant n\}=\bigcup_{k=0}^n\{X_k=y\}\in\F_n,\quad\{T_y\leqslant n\}=\bigcup_{k=1}^n\{X_k=y\}\in\F_n,\]
+        故$\tau_y,T_y$都是停时。
+
+        (4)由(1)可知$\F_T=\{B\in\F:B\cap\{T=n\}\in F_n,\forall n\geqslant0\}$。
+
+        充分性：对任意Borel集$A\subseteq\R$与$n\geqslant0$，由$Y1_{\{T=n\}}$是$\F_n$可测的知
+        $\{Y\in A\}\cap\{T=n\}=\{Y1_{\{T=n\}}\in A\}\cap\{T=n\}\in\F_n$，故$\{Y\in A\}\in\F_T$，
+        从而$Y$是$\F_T$可测的。
+
+        必要性：对任意Borel集$A\subseteq\R$与$n\geqslant0$，由$T$是停时知$\{T\neq n,0\in A\}\in\F_n$，
+        从而由$Y$是$\F_T$可测的知\[\{Y1_{\{T=n\}}\in A\}=(\{Y\in A\}\cap\{T=n\})\cup\{T\neq n,0\in A\}\in\F_n,\]
+        故$Y1_{\{T=n\}}$是$\F_n$可测的。
+    \end{proof}
+    \item[2.6.3] 思考：设$T$是停时，是否$\F_T=\sigma(X_{n\land T}:n\geqslant0)$？
+    \begin{proof}
+        记$\G=\sigma(X_{n\land T}:n\geqslant0)$。
+
+        先证明$\G\subseteq\F_T$，只需证对任意$n\geqslant0$，$X_{n\land T}$是$\F_T$可测的，再由练习2.6.2(4)，
+        只需证对任意$m\geqslant0$，$X_{n\land T}1_{\{T=m\}}$是$\F_m$可测的。事实上，
+        $X_{n\land T}1_{\{T=m\}}=X_{n\land m}1_{\{T=m\}}$，
+        而$X_{n\land m}$是$\F_{n\land m}\subseteq\F_m$可测的，$1_{\{T=m\}}$是$\F_m$可测的，即证。
+
+        再证明$\F_T\subseteq\G$。先通过归纳证明对任意$n\geqslant0$，有$\{T=n\}\in\G$。
+        $\textcircled{1}\:n=0$时，$\{T=0\}=\{T\leqslant0\}\in\F_0=\sigma(X_0)=\sigma(X_{0\land T})\subseteq\G$.
+
+        $\textcircled{2}$假设结论对不大于$n(\geqslant0)$的情形均成立，下证$n+1$的情形。
+        由$\{T=n+1\}\in\F_{n+1}=\sigma(X_0,\cdots,X_{n+1})$知存在一个Borel集$A\subseteq\R^{n+2}$使得
+        $\{T=n+1\}=\{\omega\in\Omega|(X_0(\omega),\cdots,X_{n+1}(\omega))\in A\}$。
+        由归纳假设知\[\{T\geqslant n+1\}\cup\{T=\infty\}=\{T\leqslant n\}^c=\bigg(\bigcup_{k=0}^n\{T=k\}\bigg)^c\in\G,\]因而
+        \begin{align*}
+            \{T=n+1\}=&\{\omega\in\Omega|(X_0(\omega),\cdots,X_{n+1}(\omega))\in A\}\cap(\{T\geqslant n+1\}\cup\{T=\infty\})\\
+            =&\{\omega\in\Omega|(X_0(\omega),\cdots,X_{n+1}(\omega))\in A,T(\omega)\geqslant n+1\:\text{或}\:T(\omega)=\infty\}\\
+            =&\{\omega\in\Omega|(X_{0\land T}(\omega),\cdots,X_{(n+1)\land T}(\omega))\in A,T(\omega)\geqslant n+1\:\text{或}\:T(\omega)=\infty\}\\
+            =&\{\omega\in\Omega|(X_{0\land T}(\omega),\cdots,X_{(n+1)\land T}(\omega))\in A\}\cap(\{T\geqslant n+1\}\cup\{T=\infty\})\in\G,
+        \end{align*}
+        归纳成立。此外，$\{T=\infty\}=(\bigcup\limits_{n=0}^\infty\{T=n\})^c\in\G$。
+
+        现在，任取$B\in\F_T$。任取$n\geqslant0$，则$B\cap\{T=n\}\in\F_n=\sigma(X_0,\cdots,X_n)$，从而
+        \begin{align*}
+            B\cap\{T=n\}\in&\sigma(X_0,\cdots,X_n)\cap\{T=n\}\\
+            =&\sigma(X_0\cdot1_{\{T=n\}},\cdots,X_n\cdot1_{\{T=n\}})\\
+            =&\sigma(X_{0\land T}\cdot1_{\{T=n\}},\cdots,X_{n\land T}\cdot1_{\{T=n\}})\\
+            =&\sigma(X_{0\land T},\cdots,X_{n\land T})\cap\{T=n\}\subseteq\G.
+        \end{align*}
+        此外，$B\cap\{T=\infty\}=B\backslash(\bigcup\limits_{n=0}^\infty\{T=n\})\in\sigma(X_n:n\geqslant0)$，
+        重复上述过程可以证明$B\cap\{T=\infty\}\in\G$。
+        
+        综上，$B=\bigcup\limits_{n=0}^\infty(B\cap\{T=n\})\cup(B\cap\{T=\infty\})\in\G$，证毕。
+    \end{proof}
+\end{enumerate}
+
+=== 2.7 马氏性的应用 ===
+\begin{enumerate}
+    \item[2.7.2] 当$p<q$时，定义$\xi=\sup_n X_n$。证明$\P^0(\xi<\infty)=1$，并求$\xi$的分布。
+    \begin{proof}
+        对任意正整数$k$，$\xi\geqslant k\Leftrightarrow\exists\:n\in\Z_+\st X_n\geqslant k\Leftrightarrow\tau_k<+\infty$，
+        故由2.7节的结论，$\P^0(\xi\geqslant k)=\P^0(\tau_k<+\infty)=\P^0(\tau_1<+\infty)^k=(\frac{p}{q})^k$。
+        由此可知$\P^0(\xi<\infty)=1-\lim\limits_{k\to+\infty}\P^0(\xi\geqslant k)=1$。此外，易见$\xi$只取非负整数值，
+        且对任意$k\geqslant0$，$\P^0(\xi=k)=\P^0(\xi\geqslant k)-\P^0(\xi\geqslant k+1)=(1-\frac{p}{q})(\frac{p}{q})^k$。
+    \end{proof}
+\end{enumerate}
+
+== 鞅及其应用 ==
+
+=== 3.1 鞅与鞅基本定理 ===
+\begin{enumerate}
+    \item[3.1.1] 设$(X_n)$是鞅，证明：
+
+    (1)对任何$m>n$，$\E(X_m|\G_n)=X_n$；
+
+    (2) $(|X_n|)$与$(X_n^2)$是下鞅。
+    \begin{proof}
+        (1)利用$\G_n\subseteq\G_{n+1}\subseteq\cdots\subseteq\G_{m-1}$可知
+        \[\E(X_m|\G_n)=\E(\E(X_m|\G_{m-1})|\G_n)=\E(X_{m-1}|\G_n)=\cdots=\E(X_{n+1}|\G_n)=X_n.\]
+
+        (2)对凸函数$f(x)=|x|$与$g(x)=x^2$使用条件Jensen不等式易证。
+    \end{proof}
+    \item[3.1.2] 设$X,Y$是独立可积随机变量，$\E Y=0$。证明：
+
+    (1) $X,X+Y$是鞅。这里是指它们按此顺序排列是鞅。
+
+    (2) $\E|X+Y|\geqslant\E|X|$。
+    \begin{proof}
+        (1)由$X,Y$可积知$X+Y$可积；$X,Y$独立表明$\E(Y|X)=\E Y=0$，故$\E(X+Y|X)=\E(X|X)=X$。
+
+        (2)由(1)与练习3.1.1(2)知$|X|,|X+Y|$是下鞅，即$\E(|X+Y|||X|)\geqslant\E|X|$，对两侧同时取数学期望即证。
+    \end{proof}
+    \item[3.1.3] 一个袋子中在时刻$0$有一个红球与一个白球。随机地从袋子中取一个球，
+    然后将它放回并放入一个相同颜色的球，无限地重复此过程。记$X_n$为$n$次后袋中白球数与总球数之比。证明：$\{X_n\}$是鞅。
+    \begin{proof}
+        $\{X_n\}$取值于$[0,1]$，显然可积。由题意，每次取球后袋中球数加$1$，因而$n$时刻袋中有$n+2$个球，
+        其中白球$(n+2)X_n$个，红球$(n+2)(1-X_n)$个，故对任意$n\geqslant0$，
+        \[\E(X_{n+1}|\F_n)=X_n\cdot\frac{(n+2)X_n+1}{n+3}+(1-X_n)\cdot\frac{(n+2)X_n}{n+3}=X_n,\]
+        故$\{X_n\}$是鞅。
+    \end{proof}
+    \item[3.1.4] 证明：如果$(X_n)$关于某个适应流是鞅，那么它关于自然流是鞅。
+    \begin{proof}
+        设$(X_n)$关于适应流$(\G_n)$是鞅，其对应的自然流是$(\F_n)$。$(X_n)$关于$(\F_n)$的适应性和可积性显然成立。
+        任取$n\geqslant0,0\leqslant k\leqslant n$，由$X_k$关于$\G_n$可测知$\F_n=\sigma(X_0,\cdots,X_n)\subseteq\G_n$，
+        因此$\E(X_{n+1}|\F_n)=\E(\E(X_{n+1}|\G_n)|\F_n)=\E(X_n|\F_n)=X_n$，故$(X_n)$关于自然流$(\F_n)$是鞅。
+    \end{proof}
+    \item[3.1.5] 设$\{X_n:n\geqslant0\}$是$(\F_n)$适应的可积随机序列，满足
+    \[\E(X_{n+1}|\F_n)=\alpha X_n+\beta X_{n-1},\quad n\geqslant1,\]
+    其中$\alpha>0,\beta>0$。问$\alpha,\beta,c$满足什么条件时，序列$Y_n:=cX_n+X_{n-1},n\geqslant1$是鞅？
+    \begin{proof}
+        ${Y_n}$关于$(\F_n)$的适应性和可积性是显然的，因此$\{Yn:n\geqslant1\}$是鞅当且仅当对任意$n\geqslant1$，
+        \[cX_n+X_{n-1}=Y_n=\E(Y_{n+1}|\F_n)=\E(cX_{n+1}+X_n|\F_n)=c(\alpha X_n+\beta X_{n-1})+X_n=(\alpha c+1)X_n+\beta c X_{n-1},\]
+        当且仅当$\alpha c+1=c,\beta c=1$，即$\alpha+\beta=1,c=\frac{1}{1-\alpha}$。
+    \end{proof}
+\end{enumerate}
+
+=== 3.2 鞅的应用：Doob停止定理 ===
+\begin{enumerate}
+    \item[3.2.1] 证明：如果对任何有界停时$T$有$\E X_T=\E X_0$，则$(X_n)$是鞅。
+    \begin{proof}
+        设$(X_n)$可积，对应的自然流为$(\F_n)$。对任意$n\geqslant0$与$A\in\F_n$，只需证明$\E(X_{n+1}1_A)=\E(X_n1_A)$。
+
+        先令$T=n+1_A$，易见对任意$k\geqslant0$，$\{T\leqslant k\}$只可能是$\varnothing$或$A^c$或$\Omega$，
+        均属于$\F_n$，因而$T$是有界停时。易见$X_T=X_n1_{A^c}+X_{n+1}1_A$，
+        因此题意表明$\E(X_n1_{A^c})+\E(X_{n+1}1_A)=\E X_0$。
+
+        再令$T=n$，练习2.6.1(1)表明$T$是有界停时，从而$\E X_n=\E X_0$。结合上述两式即证。
+    \end{proof}
+    \item[3.2.2] (Wald等式)设$\{\xi_n:n\geqslant1\}$是可积独立同分布随机序列且$\E\xi_1=0$，
+    $T$是可积停时，证明：$\E\sum\limits_{n=1}^T\xi_n=0$。
+    \begin{proof}
+        对$n\geqslant1$，记$S_n=\sum\limits_{k=1}^n\xi_k$，易见$\sum\limits_{n=1}^T\xi_n=S_T
+        =\sum\limits_{n=1}^\infty\xi_n1_{\{T\geqslant n\}}$。由于$\{\xi_n\}$独立同分布，
+        故$\xi_n$与$\sigma(\xi_1,\cdots,\xi_{n-1})$独立；而$\{T\geqslant n\}=\{T\leqslant n-1\}^c
+        \in\sigma(\xi_1,\cdots,\xi_{n-1})$，故$\xi_n$与$1_{\{T\geqslant n\}}$独立。
+
+        现在，利用$\{\xi_n\}$可积，独立同分布，$T$可积与Fubini定理可知
+        \[\E(\sum_{n=1}^\infty|\xi_n|1_{\{T\geqslant n\}})=\sum_{n=1}^\infty\E(|\xi_n|1_{\{T\geqslant n\}})=\E|\xi_1|\sum_{n=1}^\infty\P(T\geqslant n)=\E|\xi_1|\cdot\E T<+\infty,\]
+        从而由控制收敛定理知\[\E S_T=\sum_{n=1}^\infty\E(\xi_n1_{\{T\geqslant n\}})=\E\xi_1\cdot\E T=0.\]
+    \end{proof}
+    \item[3.2.3] 设$\xi_n$是独立同分布随机序列，$\E\xi_n=0,\E\xi_n^2=1$，令$X_n:=\sum\limits_{i=1}^n\xi_i$，
+    $T$是$\{X_n\}$的可积停时，证明：$\E X_T^2=\E T$。
+    \begin{proof}
+        令$Y_n=X_n^2-n$，容易从题意看出$(Y_n)$的可积性与适应性。对任意$n\in\Z_+$，
+        类似练习3.2.2可证$\xi_{n+1}$与$\F_n$独立，故\[\E(Y_{n+1}|\F_n)=
+        \E(Y_n+2X_n\xi_{n+1}+\xi_{n+1}^2-1|\F_n)=Y_n+2X_n\E\xi_{n+1}+\E\xi_{n+1}^2-1=Y_n,\]
+        因此$(Y_n)$是鞅。由于$T$是停时，故$(Y_{n\land T})$也是鞅，从而对任意$n\in\Z_+$，
+        $\E Y_{n\land T}=\E Y_1=\E X_1^1-1=0$，即
+        \begin{equation*}
+            \E X_{n\land T}^2=\E(n\land T). \tag{\dag}
+        \end{equation*}
+        
+        由于$T$几乎处处有限且可积，故由单调收敛定理知$\lim\limits_{n\to\infty}\E(n\land T)=\E T$，
+        结合Fatou引理知$\E X_T^2\leqslant\liminf\limits_{n\to\infty}\E X_{n\land T}^2=\E T<+\infty$，
+        即$X_T\in L^2$。利用控制收敛定理可得$\lim\limits_{n\to\infty}\E(X_T^21_{\{T>n\}})=0$，又注意到
+        \[X_{n\land T}^2=X_T^21_{\{T\leqslant n\}}+X_n^21_{\{T>n\}}=X_T^2-X_T^21_{\{T>n\}}+X_n^21_{\{T>n\}},\]
+        结合$(\dag)$式，为证题述结论，只需再证明$\lim\limits_{n\to\infty}\E(X_n^21_{\{T>n\}})=0$即可。
+
+        从$\E((X_T-X_n)1_{\{T>n\}}|\F_n)=0$开始。任取$A\in\F_n$，由$X_T=\sum\limits_{n=1}^\infty\xi_n1_{\{T\geqslant n\}}$
+        可知\[(X_T-X_n)1_{\{T>n\}}=\sum_{k=n+1}^\infty\xi_k1_{\{T\geqslant k\}},\]与练习3.2.2类似，
+        对$k\geqslant n+1$，$\xi_k$与$\F_{k-1}\supseteq\F_n$独立，故与$1_{\{T\geqslant k\}}$和$A$均独立，
+        从而利用Fubini定理可知\[\E(\sum_{k=n+1}^\infty|\xi_k|1_{\{T\geqslant k\}}1_A)=
+        \sum_{k=n+1}^\infty\E(|\xi_k|1_{\{T\geqslant k\}}1_A)\leqslant\E|\xi_1|\sum_{k=n+1}^\infty\P(T\geqslant k)
+        \leqslant\E|\xi_1|\cdot\E T<+\infty。\]再利用控制收敛定理就有
+        \[\E((X_T-X_n)1_{\{T>n\}}1_A)=\sum_{k=n+1}^\infty\E(\xi_k1_{\{T\geqslant k\}}1_A)
+        =\sum_{k=n+1}^\infty\E\xi_k\cdot\E(1_{\{T\geqslant k\}}1_A)=0,\]即证$\E((X_T-X_n)1_{\{T>n\}}|\F_n)=0$。
+
+        现在，我们有\[\E(X_n(X_T-X_n)1_{\{T>n\}})=\E(\E(X_n(X_T-X_n)1_{\{T>n\}}|\F_n))=\E(X_n\E((X_T-X_n)1_{\{T>n\}}|\F_n))=0,\]
+        因此\[\E(X_T^21_{\{T>n\}})=\E((X_n+(X_T-X_n))^21_{\{T>n\}})=\E(X_n^21_{\{T>n\}})+\E((X_T-X_n)^21_{\{T>n\}})
+        \geqslant\E(X_n^21_{\{T>n\}})\geqslant0,\]即证$\lim\limits_{n\to\infty}\E(X_n^21_{\{T>n\}})=0$。
+    \end{proof}
+    \item[3.2.4] 对于对称简单随机游动，求$\P^0(T_3<T_{-3}<T_6)$。
+    \begin{proof}
+        利用3.2节中结论可知\[\P^0(T_3<T_{-3}<T_6)=\P^0(T_3<T_{-3})-\P^0(T_3<T_{-3},T_{-3}\geqslant T_6)
+        =\P^0(T_3<T_{-3})-\P^0(T_6<T_{-3})=\frac{1}{2}-\frac{1}{3}=\frac{1}{6}.\]
+    \end{proof}
+    \item[3.2.5] 对于非对称情况，求输光概率与持续时间的期望及母函数。
+    \begin{proof}
+        先求输光概率$q_x:=\P^x(T_0<T_a)$。此时$p\neq q$，考虑指数鞅$\{(\frac{q}{p})^{X_n}\}$，
+        我们有$\E^x((\frac{q}{p})^{X_{n\land T}})=\E^x((\frac{q}{p})^{X_0})=(\frac{q}{p})^x$。
+        由于$n\land T\leqslant T\leqslant T_a$，$X_{n\land T}\in[0,a]$，故令$n\to+\infty$，
+        由控制收敛定理得\[\bigg(\frac{q}{p}\bigg)^x=\E^x\bigg(\bigg(\frac{q}{p}\bigg)^{X_T}\bigg)
+        =\E^x\bigg(\bigg(\frac{q}{p}\bigg)^{X_T}\bigg|T_0<T_a\bigg)+\E^x\bigg(\bigg(\frac{q}{p}\bigg)^{X_T}\bigg|T_0>T_a\bigg)
+        =q_x\cdot1+(1-q_x)\cdot\bigg(\frac{q}{p}\bigg)^a,\]
+        解得\[q_x=\frac{(\frac{q}{p})^x-(\frac{q}{p})^a}{1-(\frac{q}{p})^a}.\]
+
+        再求持续时间$T$的期望。对任意$n\geqslant0$，令$Y_n=X_n-n(p-q)$，显然可积且关于$(\F_n)$适应，
+        又\[\E(Y_{n+1}|\F_n)=\E(X_n+\xi_{n+1}-(n+1)(p-q)|\F_n)=X_n+\E\xi_{n+1}-(n+1)(p-q)=Y_n,\]
+        因此$(Y_n)$是鞅，从而$\E^x Y_{n\land T}=\E^x Y_0=\E^x X_0=x$，即$\E^x X_{n\land T}=x+(p-q)\E^x(n\land T)$。
+        由于$T$几乎处处有限，$X_{n\land T}\in[0,a]$，在上式中令$n\to\infty$，利用控制收敛定理可得
+        $\E^x X_T=x+(p-q)\E^x T$。又\[\E^x X_T=\E^x(X_T|T_0<T_a)+\E^x(X_T|T_0>T_a)=a\P^x(T_0>T_a),\]
+        故\[E^x T=\frac{a}{p-q}(1-q_x)-\frac{x}{p-q}=\frac{a-x}{p-q}-\frac{a((\frac{q}{p})^x-(\frac{q}{p})^a)}{(p-q)(1-(\frac{q}{p})^a)}.\]
+
+        最后求$T$的母函数。由简单随机游动的空间平移不变性与3.2节中的结论可知
+        \[\E^x(t^{T_0})=\E^0(t^{T_{-x}})=\bigg(\frac{1-\sqrt{1-4pqt^2}}{2pt}\bigg)^x,\quad
+        \E^x(t^{T_a})=\E^0(t^{T_{a-x}})=\bigg(\frac{1-\sqrt{1-4pqt^2}}{2qt}\bigg)^{a-x},\]因此
+        \begin{align*}
+            \E^x(t^T)=&\E^x(t^T|T_0<T_a)+\E^x(t^T|T_0>T_a)\\
+            =&q_x\E^x(t^{T_0})+(1-q_x)\E^x(t^{T_a})\\
+            =&\frac{(\frac{q}{p})^x-(\frac{q}{p})^a}{1-(\frac{q}{p})^a}\bigg(\frac{1-\sqrt{1-4pqt^2}}{2pt}\bigg)^x
+            +\frac{1-(\frac{q}{p})^x}{1-(\frac{q}{p})^a}\bigg(\frac{1-\sqrt{1-4pqt^2}}{2qt}\bigg)^{a-x}.
+        \end{align*}
+    \end{proof}
+\end{enumerate}
+
+=== 3.3 鞅的应用：不等式与强大数律 ===
+\begin{enumerate}
+    \item[3.3.3] 设$\{Y_n\}$是独立同分布随机序列，以概率$p$与$q$分别取值$\frac{1}{2}$与$\frac{3}{2}$。记$X_n:=Y_1Y_2\cdots Y_n$。
+
+    (1)求$p$的范围使$X_n$是下鞅，鞅，上鞅；
+
+    (2)求$p$的范围使$\lim\limits_{n\to\infty}\E X_n=\infty$；
+
+    (3)求$p$的范围使$X_n\as$趋于零。
+    \begin{proof}
+        (1)对任意$n\in\Z_+$，\[\E(X_{n+1}|\F_n)=\E(X_n\cdot Y_{n+1}|\F_n)=X_n\E Y_{n+1}=(\frac{3}{2}-p)X_n,\]
+        鉴于$X_n$恒正，因此$p\in[0,\frac{1}{2})$时为下鞅，$p=\frac{1}{2}$时为鞅，$p\in(\frac{1}{2},1]$时为上鞅。
+
+        (2)由于$\{Y_n\}$独立同分布，故$\E X_n=(\E Y_1)^n=(\frac{3}{2}-p)^n$，
+        显然$\lim\limits_{n\to\infty}\E X_n=\infty$当且仅当$p\in[0,\frac{1}{2})$。
+
+        (3)考虑$\ln X_n=\sum\limits_{k=1}^n\ln Y_k$，显然$X_n\xrightarrow{\as}0$当且仅当$\ln X_n\xrightarrow{\as}-\infty$。
+        注意到$\{\ln Y_n\}$独立同分布于$\begin{bmatrix}-\ln2&\ln3-\ln2\\p&1-p\end{bmatrix}$，可积，
+        因此Kolmogorov强大数定律表明$\frac{\ln X_n}{n}\xrightarrow{\as}\E Y_1=-\ln2+(1-p)\ln3$。
+        当$-\ln2+(1-p)\ln3<0$，即$p>1-\frac{\ln2}{\ln3}$时，$\ln X_n\xrightarrow{\as}-\infty$，符合题意；
+        当$-\ln2+(1-p)\ln3>0$，即$p<1-\frac{\ln2}{\ln3}$时，$\ln X_n\xrightarrow{\as}+\infty$，不符合题意。
+        下面具体考虑$p=1-\frac{\ln2}{\ln3}$的情形。
+
+        记$\ln Y_1$此时的方差为$\sigma^2>0$，因而由中心极限定理与Fatou引理可知
+        \[\P(\sup_n\{\ln X_n\}=+\infty)\geqslant\P(\limsup_{n\to\infty}\{\ln X_n>\sigma\sqrt{n}\})
+        \geqslant\lim_{n\to\infty}\P(\ln X_n>\sigma\sqrt{n})=1-\Phi(1)>0,\]
+        这表明$\ln X_n$不几乎处处趋于$-\infty$，不符题意。综上，$X_n\as$趋于零当且仅当$p\in(1-\frac{\ln2}{\ln3},1]$。
+    \end{proof}
+\end{enumerate}
+
+=== 3.4 鞅的应用：金融市场 ===
+\begin{enumerate}
+    \item[3.4.1] 设$X$是非零随机变量。问$X$满足什么条件可以存在$\P$的等价概率测度$\bP$使得$X_0=0,X_1=X$是鞅？
+    \begin{proof}
+        假设在概率$\bP$下，$X_0=0,X_1=X$是鞅，则$0=X_0=\bE(X_1|\F_0)=\bE X=\bE X^+-\bE X^-$。
+        由于$\P$与$\bP$等价，$X\neq0$表明$\bE X^+,\bE X^-$均非负且不同时为零，故若$\P(X>0)=0$，
+        则$\bP(X<0)>0,\bE X^->0$，从而$\bE X<0$，不成立；同理，$\P(X<0)=0$时有$\bE X>0$，也不成立。
+        总之，$\bP$存在的必要条件为$\P(X>0)>0,\P(X<0)>0$，下面证明这也是充分的。
+
+        记$\Omega_+=\{X>0\},\Omega_-=\{X<0\},\Omega_0=\{X=0\}$，则$\Omega_+,\Omega_-,\Omega_0\in\F$，
+        且$a:=\P(\Omega_+)>0,b:=\P(\Omega_-)>0,c:=\P(\Omega_0)=1-a-b\geqslant0$。又记
+        \[k_1=\frac{(a+b)\E X^-}{b\E X^++a\E X^-}>0,\quad k_2=\frac{(a+b)\E X^+}{b\E X^++a\E X^-}>0,\]
+        并对$A\in\F$，定义$\bP(A)=\P(A\cap\Omega_0)+k_1\P(A\cap\Omega_+)+k_2\P(A\cap\Omega_-)$，
+        则易见$\bP$为测度且$\bP(\Omega)=(1-a-b)+k_1a+k_2b=1$，从而为概率测度。此外，
+        由数学期望的基本定义可知$\bE X=\bE X^+-\bE X^-=k_1\E X^+-k_2\E X^-=0$，故$\bP$即为所求。
+    \end{proof}
+    \item[3.4.2] 证明：在二项市场中，等价鞅测度唯一。(在$n=2$时证明即可。)另外，考虑简单金融市场，
+    假设构成市场的$\xi_k$取有限多个非负值，请寻找等价鞅测度存在的(充要)条件，与等价鞅测度唯一的(充要)条件。
+    \begin{proof}
+        先证明二项市场中，等价鞅测度唯一。根据定理3.4.2，仅考虑$d<1+r<u$ (即等价鞅测度存在)的情形。
+        由于$\F_2=\sigma(\xi_1,\xi_2)=\sigma(\{\xi_1=u\},\{\xi_2=u\})$，故$(\Omega,\F_2)$
+        上的概率测度$\bP$由$\bP(\xi_1=u),\bP(\xi_2=u)$唯一确定，分别记为$p_1,p_2$。
+        下面假设$\bP$为等价鞅测度，则由$\bE((1+r)^{-1}S_1|\F_0)=S_0\cdot\bE(\frac{\xi_1}{1+r})$
+        与折现后的股票价格是鞅知$1+r=\bE\xi_1=p_1 u+(1-p_1)d$，即$p_1=\frac{1+r-d}{u-d}$；
+        再由$\bE((1+r)^{-2}S_2|\F_1)=(1+r)^{-1}S_1\cdot\bE(\frac{\xi_2}{1+r})$同理可知
+        $1+r=\bE\xi_2=p_2 u+(1-p_2)d$，即$p_2=\frac{1+r-d}{u-d}$。
+        由此可知$\bP$必须与定理3.4.2中解得的结果相同，即证唯一性。
+
+        下面再考虑简单金融市场中等价鞅测度存在$/$唯一的充要条件。设$\xi_1,\cdots,\xi_n$均只可取值于
+        $u_1<u_2<\cdots<u_k(k\geqslant2)$，则为使市场有意义，应有$0\leqslant u_1<1<u_k$。
+        当$1+r\geqslant u_k$时，与讲义过程相同，可通过买空股票存入银行套利；当$1+r\leqslant u_1$时，
+        可通过贷款购买股票套利。结合定理3.4.1可知等价鞅测度存在的必要条件是$u_1<1+r<u_k$，
+        下面讨论等价鞅测度唯一的充要条件的过程中也会看出这是充分的。
+
+        与前面对二项市场的分析同理，由$\F_n=\sigma(\xi_1,\cdots,\xi_n)$知$(\Omega,\F_n)$上的
+        概率测度$\bP$由$\bP(\xi_i=u_j)(1\leqslant i\leqslant n,1\leqslant j\leqslant k)$全体唯一确定，
+        记$p_j^{(i)}=\bP(\xi_i=u_j)$。为使$\bP$是等价鞅测度，对任意$1\leqslant i\leqslant n$，
+        同理有$1+r=\bE\xi_i=\sum\limits_{j=1}^kp_j^{(i)}u_j$。当$k\geqslant3$时，由于$u_1<1+r<u_k$，
+        故对任意$1\leqslant i\leqslant n$，均有不止一组$(p_1^{(i)},\cdots,p_k^{(i)})$符合要求，如
+        \[\bigg(\frac{2u_k+\sum_{j=2}^{k-1}u_j}{n(u_k-u_1)}-\frac{1+r}{u_k-u_1},\frac{1}{n},\cdots,
+        \frac{1}{n},\frac{1+r}{u_k-u_1}-\frac{2u_1+\sum_{j=2}^{k-1}u_j}{n(u_k-u_1)}\bigg)\]或
+        \[\bigg(\frac{(n+2)u_k+\sum_{j=2}^{k-1}u_j}{2n(u_k-u_1)}-\frac{1+r}{u_k-u_1},\frac{1}{2n},\cdots,
+        \frac{1}{2n},\frac{1+r}{u_k-u_1}-\frac{(n+2)u_1+\sum_{j=2}^{k-1}u_j}{2n(u_k-u_1)}\bigg),\]
+        此时的$\bP$均与$\P$等价，从而$\P$不唯一。当$k=2$时，可仿照最开始的过程归纳证明$\bP$存在且唯一。
+
+        综上，等价鞅测度存在当且仅当$u_1<1+r<u_k$，等价鞅测度唯一当且仅当$k=2$。
+    \end{proof}
+    \item[3.4.7] 设有一股票现在时刻$0$的价格是$50$元，在每个时间段都以$\frac{3}{4}$的概率上涨$20\%$，
+    以$\frac{1}{4}$的概率下跌$20\%$，假设利率可以忽略，某个顾客欲在证券代理公司购买在时刻$2$到期的商定价格为
+    $52$元的欧式看跌期权，也就是说他有在时刻$2$以$52$元的价格卖给代理公司一股股票的权力，问这份期权应该卖多少钱？
+    代理公司应该怎么投资来对冲风险？如果时刻$1$股票下跌，这份期权还值多少钱？代理公司又应该怎么操作？
+    \begin{proof}
+        这是一个二项市场，$S_0=50$，$\xi_1,\xi_2$独立同分布于$\begin{bmatrix}\frac{3}{4}&\frac{1}{4}\\1.2&0.8\end{bmatrix}$，
+        $r=0$，此处的权益$V_2=(52-S_2)^+$，由此计算得定理3.4.1中的$\bp=\frac{1+r-d}{u-d}=\frac{1}{2}$。
+        $V_2$共有三种可能：股票连涨两次，$S_2=72,V_2=0$；股票先涨再跌或先跌再涨，$S_2=48,V_2=4$；
+        股票连跌两次，$S_2=32,V_2=20$。为了给出每时刻该期权价值与代理公司的操作，即要构造一个$V_2$的对冲。
+
+        先计算时刻$1$。若$S_1=60(\xi_1=1.2)$，则\[V_1=\bE(V_2|\F_1)=\bp\cdot0+(1-\bp)\cdot4=2,
+        \Delta_1=\frac{0-4}{(1.2-0.8)\times60}=-\frac{1}{6};\]若$S_1=40(\xi_1=0.8)$，则 
+        \[V_1=\bE(V_2|\F_1)=\bp\cdot4+(1-\bp)\cdot20=12,\Delta_1=\frac{4-20}{(1.2-0.8)\times40}=-1.\]
+        再计算时刻$0$。\[V_0=\bE(V_1|\F_0)=\bp\cdot2+(1-\bp)\cdot12=7,\Delta_0=\frac{2-12}{(1.2-0.8)\times50}=-\frac{1}{2}.\]
+
+        综上，最初这份期权应该卖$7$元，代理公司应卖出$0.5$股股票来对冲风险；若时刻$1$股票下跌，这份期权值$12$元，
+        代理公司应额外卖出$1$股股票。
+    \end{proof}
+\end{enumerate}
+
+== 马氏链 ==
+
+=== 4.1 马氏链与转移函数 ===
+\begin{enumerate}
+    \item[4.1.4] 设$x\neq y$。
+
+    (1)证明：$x$可达$y$当且仅当存在$n\geqslant1,x_i\in E,0\leqslant i\leqslant n$使得
+    $p_{x_{i-1},x_i}>0,1\leqslant i\leqslant n$且$x_0=x,x_n=y$。
+
+    (2)证明：如果$|E|<\infty$，且$x$可达$y$，则存在$n<|E|$使得$p_{x,y}^{(n)}>0$。
+    \begin{proof}
+        (1)充分性：由定义可知$x=x_0$可达$x_1$，$x_1$可达$x_2,\cdots,x_{n-1}$可达$x_n=y$，从而由可达的传递性知$x$可达$y$。
+
+        必要性：由$x$可达$y$知存在$n\geqslant1$使$p_{x,y}^{(n)}>0$。令$x_0=x,x_n=y\in E$，
+        则由引理4.1.1知$\sum\limits_{z\in E}p_{x_0,z}p_{z,x_n}^{(n-1)}=p_{x_0,x_n}^{(n)}>0$，
+        从而存在$x_1\in E$使得$p_{x_0,x_1}>0,p_{x_1,x_n}^{(n-1)}>0$。再对$p_{x_1,x_n}^{(n-1)}$使用引理4.1.1，
+        归纳可证存在$x_i\in E(0\leqslant i\leqslant n)$使得$p_{x_{i-1},x_i}>0,1\leqslant i\leqslant n$且$x_0=x,x_n=y$。
+
+        (2)记\[S:=\{(x_0,x_1,\cdots,x_n)|n\geqslant1,x_i\in E(0\leqslant i\leqslant n),
+        p_{x_{i-1},x_i}>0(1\leqslant i\leqslant n),x_0=x,x_n=y\},\]则由(1)知$S$非空，
+        从而存在$(x_0,x_1,\cdots,x_n)\in S$使得其中的$n$值取到最小。
+
+        断言$(x_0,x_1,\cdots,x_n)$中没有重复元素。否则，设$0\leqslant i<j\leqslant n$满足$x_i=x_j$，
+        考虑$(x_0,\cdots,x_i,x_{j+1},\cdots,x_n)$，易见它也是属于$S$的，且序列长度为$n-j+i<n$，
+        与$(x_0,x_1,\cdots,x_n)$的长度最短性矛盾，即证。
+
+        因此，由$|E|<\infty$可知$n\leqslant|E|-1<|E|$，
+        且$p_{x,y}^{(n)}\geqslant p_{x_0,x_1}\cdot\cdots\cdot p_{x_{n-1},x_n}>0$。
+    \end{proof}
+    \item[4.1.5] 证明：当$x\neq y$时，$x$可达$y$当且仅当$f_{x,y}>0$。
+    \begin{proof}
+        充分性：由$\sum\limits_{n=1}^\infty f_{x,y}^{(n)}=f_{x,y}>0$知存在正整数$n$使得$f_{x,y}^{(n)}>0$，
+        从而$p_{x,y}^{(n)}\geqslant f_{x,y}^{(n)}>0$，由定义知$x$可达$y$。
+
+        必要性：由$x$可达$y$知存在正整数$n$使得$p_{x,y}^{(n)}>0$，而首达概率公式表明
+        $\sum\limits_{k=1}^n f_{x,y}^{(k)}p_{y,y}^{(n-k)}=p_{x,y}^{(n)}>0$，
+        故存在$1\leqslant k\leqslant n$使得$f_{x,y}^{(k)}>0$，从而$f_{x,y}\geqslant f_{x,y}^{(k)}>0$。
+    \end{proof}
+    \item[4.1.6] 设$\lim\limits_n p_{x,x}^{(n)}$存在且非零，证明极限是平均回归时$\E^x\tau_x$的倒数。
+    {{comment|这是定理4.3.1的直接推论，下面给出一个不依赖此定理的证法。}}
+    \begin{proof}
+        令$P(t)=\sum\limits_{n=0}^\infty p_{x,x}^{(n)}t^n,F(t)=\sum\limits_{n=1}^\infty f_{x,x}^{(n)}t^n$
+        分别为$\{p_{x,x}^{(n)}\},\{f_{x,x}^{(n)}\}$的母函数，记$\lim\limits_{n\to\infty}p_{x,x}^{(n)}=p\in(0,1]$。
+        首先，由上述极限式可知$P(t)$的收敛半径为$1$，而$F(1)=\P^x(\tau_x<\infty)\leqslant1$，故$F(t)$的收敛半径不小于$1$。
+        当$t\in(0,1)$时，由首达概率公式可知$P(t)F(t)=P(t)-1$，即$F(t)=1-\frac{1}{P(t)}$。
+        由$\lim\limits_{n\to\infty}p_{x,x}^{(n)}=p>0$知$\lim\limits_{t\to1^-}P(t)=+\infty$，故$F(1)=1$。
+
+        下面证明$\lim\limits_{t\to1^-}P(t)(1-t)=p$。考虑
+        \[P(t)(1-t)=\sum_{n=0}^\infty p_{x,x}^{(n)}t^n(1-t)=p(1-t)\sum_{n=0}^\infty t^n+
+        \sum_{n=0}^\infty(p_{x,x}^{(n)}-p)t^n(1-t)=p+\sum_{n=0}^\infty(p_{x,x}^{(n)}-p)t^n(1-t).\]
+        对任意$\eps\in(0,1)$，取正整数$N$使得对任意$n\geqslant N$，有$|p_{x,x}^{(n)}-p|<\eps$，则
+        \begin{align*}
+            \varlimsup_{t\to1^-}\bigg|\sum_{n=0}^\infty(p_{x,x}^{(n)}-p)t^n(1-t)\bigg|\leqslant&
+            \varlimsup_{t\to1^-}(1-t)\bigg|\sum_{n=0}^{N-1}(p_{x,x}^{(n)}-p)t^n\bigg|+\varlimsup_{t\to1^-}\sum_{n=N}^\infty\eps t^n(1-t)\\
+            \leqslant&\varlimsup_{t\to1^-}(1-t)\sum_{n=0}^{N-1}|p_{x,x}^{(n)}-p|+\varlimsup_{t\to1^-}\eps t^N=\eps,
+        \end{align*}
+        由$\eps$的任意性即证$\lim\limits_{t\to1^-}P(t)(1-t)=p$。
+
+        由此可知\[\frac{1}{p}=\lim_{t\to1^-}\frac{1}{P(t)(1-t)}=\lim_{t\to1^-}\frac{1-F(t)}{1-t}=\lim_{t\to1^-}\frac{F(1)-F(t)}{1-t},\]
+        这表明$F'(1-)$存在且等于$\frac{1}{p}$，即$\lim\limits_{n\to\infty}p_{x,x}^{(n)}=p=\frac{1}{F'(1-)}=\frac{1}{\E^x\tau_x}$。
+    \end{proof}
+    \item[4.1.7] 证明两个公式：
+
+    (1)对任何$x,y\in E$，\[f_{x,y}\sum_{n=0}^\infty p_{y,y}^{(n)}=\sum_{n=1}^\infty p_{x,y}^{(n)}.\]
+    (2) $f_{x,y}^{(n+1)}=\sum\limits_{z\neq y}p_{x,z}f_{z,y}^{(n)}$。
+    {{comment|(2)中公式对$n=0$显然是错误的，只有在$n\geqslant1$时成立。}}
+    \begin{proof}
+        (1)对首达概率公式中的$n$求和得\[\sum_{n=1}^\infty p_{x,y}^{(n)}=\sum_{n=1}^\infty\sum_{k=1}^n f_{x,y}^{(k)}p_{y,y}^{(n-k)}
+        =\sum_{k=1}^\infty\sum_{n=k}^\infty f_{x,y}^{(k)}p_{y,y}^{(n-k)}=
+        \sum_{k=1}^\infty f_{x,y}^{(k)}\cdot\sum_{n=0}^\infty p_{y,y}^{(n)}=f_{x,y}\sum_{n=0}^\infty p_{y,y}^{(n)}.\]
+
+        (2)为了使$\tau_y=n+1\geqslant2$，第一步的位置$z$必不等于$y$，从而
+        \[f_{x,y}^{(n+1)}=\P^x(\tau_y=n+1)=\sum_{z\neq y}\P^x(\tau_y=n+1,X_1=z)\,{\color{red}=}\,
+        \sum_{z\neq y}\P^x(X_1=z)\cdot\P^z(\tau_y=n)=\sum_{z\neq y}p_{x,z}f_{z,y}^{(n)}.\]
+        红色等号成立的原因：类似引理2.6.3，在事件$\{\tau_y=n+1\}$上，有$\tau_y=\tau_y\circ\theta_1+1$，
+        故由马氏性，\[\P^x(\tau_y=n+1,X_1=z)=\P^x(\tau_y\circ\theta_1=n,X_1=z)=
+        \E^x(\P^{X_1}(\tau_y=n)\cdot1_\{X_1=z\})=\P^x(X_1=z)\cdot\P^z(\tau_y=n).\]
+    \end{proof}
+\end{enumerate}
+
+=== 4.2 常返态与暂留态 ===
+\begin{enumerate}
+    \item[4.2.2] 严格地证明：如果$y$常返，则对任何$k$有$\P^y(\tau_y\circ\theta_k<\infty)=1$。
+    \begin{proof}
+        由定理4.2.1知$\P^y(\varlimsup\limits_{n\to\infty}\{X_n=y\})=1$，而
+        \[\{\tau_y\circ\theta_k<\infty\}=\{\exists m\in\Z_+\st X_{m+k}=y\}\supseteq\varlimsup_{n\to\infty}\{X_n=y\},\]
+        因此$\P^y(\tau_y\circ\theta_k<\infty)=1$。
+    \end{proof}
+    \item[4.2.3] 证明：
+
+    (1)有限状态马氏链至少有一个状态是常返的。
+
+    (2)不可分有限状态马氏链必是常返的。
+    \begin{proof}
+        (1)设状态集为$E$。对任意$x,y\in E$，由练习4.1.7(1)知$\sum\limits_{n=1}^\infty p_{x,y}^{(n)}
+        =f_{x,y}\sum\limits_{n=0}^\infty p_{y,y}^{(n)}\leqslant\sum\limits_{n=0}^\infty p_{y,y}^{(n)}$。
+        由于马氏链的每一步必位于$E$中某个状态，故对任意$n\in\Z_+$，$\sum\limits_{y\in E}p_{x,y}^{(n)}=1$。
+        因此利用$|E|<\infty$可知\[\sum_{y\in E}\sum_{n=0}^\infty p_{y,y}^{(n)}\geqslant
+        \sum_{y\in E}\sum_{n=1}^\infty p_{x,y}^{(n)}=\sum_{n=1}^\infty\sum_{y\in E}p_{x,y}^{(n)}=+\infty,\]
+        从而存在$y\in E$使得$\sum\limits_{n=0}^\infty p_{y,y}^{(n)}=+\infty$，即$y$常返。
+
+        (2)这是(1)与常返是类性质的直接推论。
+    \end{proof}
+    \item[4.2.7] 证明：
+
+    (1) $C$是闭的等价于对任何$x\in C,y\notin C$，有$p_{x,y}=0$。
+
+    (2)状态$x$可达的状态全体是闭的且连通的。
+
+    (3)常返态$x$可达的状态全体是不可分的。
+
+    (4)举例说明暂留状态全体不一定是闭的。
+
+    (5) $X$不可分当且仅当$E$没有非平凡闭子集。
+
+    (6)一个连通分支是闭的，但闭集未必是连通的。
+    \begin{proof}
+        (1)充分性：对任意$x\in C$，$\sum\limits_{y\in C}p_{x,y}=\sum\limits_{y\in E}p_{x,y}-
+        \sum\limits_{y\notin C}p_{x,y}=1-0=1$，故$C$是闭的。
+
+        必要性：对任意$x\in C$，$\sum\limits_{y\notin C}p_{x,y}=\sum\limits_{y\in E}p_{x,y}-
+        \sum\limits_{y\in C}p_{x,y}=1-1=0$，故对任意$y\notin C$，有$p_{x,y}=0$。
+
+        (2)记状态$x$可达的状态全体为$R(x)$。
+
+        闭性：假设存在$y\in R(x),z\notin R(x)$使得$p_{y,z}>0$，则$y$可达$z$，而$x$可达$y$，
+        故$x$可达$z$，与$z\notin R(x)$矛盾，结合(1)即证$R(x)$是闭的。
+
+        连通性：易见连通是一个等价关系，而$R(x)$中状态均与$x$连通，从而互相连通。
+
+        (3)由推论4.2.1，$x$与$R(x)$中任意状态均互达，而互达是等价关系，故$R(x)$中任意两个状态互达，即$R(x)$不可分。
+
+        (4)令$E=\{x,y\}$，其中$p_{x,x}=p_{y,x}=1$，则易见暂留态全体为$\{y\}$，但根据(1)，这不是闭的。
+
+        (5)充分性：对任意$x\in E$，由(2)可知$R(x)$是非空闭子集，因而必须$R(x)=E$。对任意$x,y\in E$，
+        由$R(x)=R(y)=E$知$x,y$互达，因此$X$不可分。
+
+        必要性：任取$E$的非空闭子集$C$，假设$C\neq E$，取$x\in C,y\notin C$。由于$X$不可分，
+        练习4.1.4(1)表明存在$n\geqslant1,x_i\in E,0\leqslant i\leqslant n$使得$p_{x_{i-1},x_i}>0,
+        1\leqslant i\leqslant n$且$x_0=x,x_n=y$。此时必存在$1\leqslant i\leqslant n$使得
+        $x_{i-1}\in C,x_i\notin C$，但$p_{x_{i-1},x_i}>0$，故(1)表明$C$不是闭的，矛盾，即证。
+
+        (6)连通分支是闭的：设$C$为一连通分支，假设$C$不是闭的，则存在$x\in C,y\notin C$使得$p_{x,y}>0$，
+        此时由定义知$x,y$相邻，从而连通，但$y\notin C$，这与$C$是连通分支矛盾，故$C$是闭的。
+
+        闭集未必连通：令$E=\{x,y\}$，其中$p_{x,x}=p_{y,y}=1$，则显然$E$是闭的，但不是连通的。
+    \end{proof}
+\end{enumerate}
+
+=== 4.3 正常返与遍历性 ===
+\begin{enumerate}
+    \item[4.3.3] 在例4.3.1中，求状态$1$的平均返回时间$\E^1\tau_1$。
+    \begin{proof}
+        显然$\tau_1\geqslant2$。如果$\tau_1=n\geqslant2$，则它必须先返回$0$，并保持在$0$不动，
+        直到$n$时刻恰好到达$1$，因而$\P^1(\tau_1=n)=\sum\limits_{k=1}^{n-1}
+        (p_1\cdot\cdots\cdot p_{k-1})\cdot q_k\cdot q_0^{n-k-1}\cdot p_0$，故
+        \begin{align}
+            \E^1\tau_1=&\sum_{n=2}^\infty n\P^1(\tau_1=n)\\
+            =&\sum_{n=2}^\infty\sum_{k=1}^{n-1}n(p_1\cdot\cdots\cdot p_{k-1})\cdot q_k\cdot q_0^{n-k-1}\cdot p_0\\
+            =&\sum_{k=1}^\infty(p_1\cdot\cdots\cdot p_{k-1})\cdot q_k\cdot p_0\cdot\bigg(\sum_{n=k+1}^\infty nq_0^{n-k-1}\bigg)\\
+            =&\sum_{k=1}^\infty(p_1\cdot\cdots\cdot p_{k-1})\cdot q_k\cdot p_0\cdot\frac{1}{1-q_0}\bigg(k+\frac{1}{1-q_0}\bigg)\\
+            =&\sum_{k=1}^\infty k(p_1\cdot\cdots\cdot p_{k-1})\cdot(1-p_k)+\frac{1}{p_0}\sum_{k=1}^\infty(p_1\cdot\cdots\cdot p_{k-1})\cdot(1-p_k)\\
+            =&\begin{cases}
+                \frac{1}{p_0}+\sum_{k=1}^\infty p_1\cdot\cdots\cdot p_{k-1}&, \sum_{k=1}^\infty p_1\cdot\cdots\cdot p_{k-1}\text{收敛 };\\
+                +\infty&, o/w.
+            \end{cases}
+        \end{align}
+    \end{proof}
+    \item[4.3.5] 对$x,y\in E$，应用首达概率公式证明\[\lim_n\frac{1}{n}\sum_{k=1}^n p_{x,y}^{(k)}=f_{x,y}\mu_y.\]
+    \begin{proof}
+        当$x$是暂留态时，$\sum\limits_{k=1}^np_{x,x}^{(k)}$关于$n$是有界量，而$\E^x\tau_x=+\infty$，
+        故$\lim\limits_{n\to\infty}\frac{1}{n}\sum\limits_{k=1}^np_{x,x}^{(k)}=0=\mu_x$，换言之，
+        定理4.3.1对于任意$x\in E$均成立。
+
+        对$k\in\Z_+$，记$S_k=\frac{1}{k}\sum\limits_{j=0}^kp_{y,y}^{(k)}$，
+        则$\lim\limits_{k\to\infty}S_k=\mu_y\in[0,\infty)$，从而是有界量，设上确界为$M$。分步证明：
+
+        $\textcircled{1}\:\lim\limits_{n\to\infty}\sum\limits_{j=1}^nf_{x,y}^{(j)}S_{n-j}=f_{x,y}\mu_y$。
+        对任意$\eps>0$，取正整数$N$使得对任意$n>N$，有$\sum\limits_{j=n}^\infty f_{x,y}^{(j)}<\eps,|S_n-\mu_y|<\eps$。
+        此时，对任意$n>2N,1\leqslant j\leqslant n$，总有$j>N$或$n-j>N$，从而
+        \[\bigg|\sum_{j=1}^nf_{x,y}^{(j)}S_{n-j}-\sum_{j=1}^nf_{x,y}^{(j)}\mu_y\bigg|\leqslant
+        \sum_{j=1}^Nf_{x,y}^{(j)}\cdot\eps+\sum_{j=N+1}^nf_{x,y}^{(j)}\cdot(M+\mu_y)
+        \leqslant\eps f_{x,y}+\eps(M+\mu_y),\]由$\eps$的任意性即证。
+
+        $\textcircled{2}\:\lim\limits_{n\to\infty}\sum\limits_{j=1}^n\frac{j}{n}f_{x,y}^{(j)}S_{n-j}=0$。
+        由于$\{S_k\}$是有界量，故只需证$\lim\limits_{n\to\infty}\sum\limits_{j=1}^n\frac{j}{n}f_{x,y}^{(j)}=0$。
+        对任意$n\in\Z_+$，\[\sum_{j=1}^n\frac{j}{n}f_{x,y}^{(j)}=\sum_{j=1}^{n}\frac{j}{n}\E^x(1_{\{\tau_y=j\}})
+        =\E^x\bigg(\sum_{j=1}^n\frac{j}{n}1_{\{\tau_y=j\}}\bigg)=\E^x\bigg(\sum_{j=1}^n\frac{\tau_y}{n}1_{\{\tau_y=j\}}\bigg)
+        =\E^x\bigg(\frac{\tau_y}{n}1_{\{1\leqslant\tau_y\leqslant n\}}\bigg).\]
+        注意到$\frac{\tau_y}{n}1_{\{1\leqslant\tau_y\leqslant n\}}\leqslant1$，且$\tau_y=\infty$时恒为$0$；
+        $\tau_y<\infty$时趋于$0$ ($n\to\infty$时)，故由控制收敛定理即证。
+
+        $\textcircled{3}\:\lim\limits_{n\to\infty}\frac{1}{n}\sum\limits_{k=1}^n p_{x,y}^{(k)}=f_{x,y}\mu_y$。
+        由首达概率公式知
+        \begin{align*}
+            \frac{1}{n}\sum_{k=1}^np_{x,y}^{(k)}=&\frac{1}{n}\sum_{k=1}^n\sum_{j=1}^kf_{x,y}^{(j)}p_{y,y}^{(k-j)}\\
+            =&\frac{1}{n}\sum_{j=1}^n\sum_{k=0}^{n-j}f_{x,y}^{(j)}p_{y,y}^{(k)}\\
+            =&\sum_{j=1}^n\frac{n-j}{n}f_{x,y}^{(j)}S_{n-j}\\
+            =&\bigg(\sum_{j=1}^nf_{x,y}^{(j)}S_{n-j}\bigg)-\bigg(\sum_{j=1}^n\frac{j}{n}f_{x,y}^{(j)}S_{n-j}\bigg),
+        \end{align*}
+        结合$\textcircled{1},\textcircled{2}$即证。
+    \end{proof}
+    \item[4.3.7] 证明：有限状态马氏链没有零常返态。
+    \begin{proof}
+        假设$E$为一有限状态马氏链的状态集，而$x\in E$为一个零常返态，记$C\subseteq E$为$x$可达的状态全体，
+        则由推论4.3.1知对任意$y\in C$，$y$都是零常返的，即$\mu_y=0$。由$C$的定义知对任意正整数$n$，
+        $\sum\limits_{y\in C}p_{x,y}^{(n)}=\sum\limits_{y\in E}p_{x,y}^{(n)}=1$，故
+        \[\sum_{y\in C}\bigg(\frac{1}{n}\sum_{k=1}^np_{x,y}^{(n)}\bigg)=\frac{1}{n}\sum_{k=1}^n\bigg(\sum_{y\in C}p_{x,y}^{(n)}\bigg)=1.\]
+        由于$|C|\leqslant|E|<\infty$，故由练习4.3.5知\[\lim_{n\to\infty}\sum_{y\in C}\bigg(\frac{1}{n}\sum_{k=1}^np_{x,y}^{(n)}\bigg)
+        =\sum_{y\in C}\bigg(\lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^np_{x,y}^{(n)}\bigg)=\sum_{y\in C}f_{x,y}\mu_y=0,\]
+        矛盾，因此有限状态马氏链没有零常返态。
+    \end{proof}
+    \item[4.3.8] 设$E=\{0,1\}$，$(p_{x,y})$是转移函数。
+
+    (1)验证：$p_{0,0}^{(n)}=p_{1,0}+(p_{0,0}-p_{1,0})p_{0,0}^{(n-1)}$；
+
+    (2)写出$p_{0,0}^{(n)}$的表达式并求出极限；
+
+    (3)求出$p_{x,y}^{(n)}$及其极限。
+    \begin{proof}
+        (1)利用Chapman-Kolmogorov公式可知\[p_{0,0}^{(n)}=p_{0,0}^{(n-1)}\cdot p_{0,0}+p_{0,1}^{(n-1)}\cdot p_{1,0}
+        =p_{0,0}\cdot p_{0,0}^{(n-1)}+p_{1,0}\cdot(1-p_{0,0}^{(n)})=p_{1,0}+(p_{0,0}-p_{1,0})p_{0,0}^{(n-1)}.\]
+
+        (2)可直接验证$p_{0,0}^{(n)}=\frac{p_{1,0}}{p_{0,1}+p_{1,0}}+\frac{p_{0,1}}{p_{0,1}+p_{1,0}}(p_{0,0}-p_{1,0})^n$
+        满足$p_{0,0}^{(1)}=p_{0,0}$与(1)中的递推式，因而就是$p_{0,0}^{(n)}$的表达式。
+
+        $\textcircled{1}\:|p_{0,0}-p_{1,0}|<1$，则$\lim\limits_{n\to\infty}p_{0,0}^{(n)}=\frac{p_{1,0}}{p_{0,1}+p_{1,0}}$。
+
+        $\textcircled{2}\:p_{0,0}-p_{1,0}=1$，则$p_{0,0}=p_{1,1}=1,p_{0,1}=p_{1,0}=0$，从而$p_{0,0}^{(n)}\equiv1$。
+
+        $\textcircled{3}\:p_{0,0}-p_{1,0}=-1$，则$p_{0,0}=p_{1,1}=0,p_{0,1}=p_{1,0}=1$，从而$p_{0,0}^{(n)}=\frac{1+(-1)^n}{2}$，没有极限。
+
+        (3) $p_{0,1}^{(n)}=1-p_{0,0}^{(n)}=\frac{p_{0,1}}{p_{0,1}+p_{1,0}}(1-(p_{0,0}-p_{1,0})^n)$，
+        再由对称性可知$p_{1,0}^{(n)}=\frac{p_{1,0}}{p_{0,1}+p_{1,0}}(1-(p_{1,1}-p_{0,1})^n)$，
+        $p_{1,1}^{(n)}=\frac{p_{0,1}}{p_{0,1}+p_{1,0}}+\frac{p_{1,0}}{p_{0,1}+p_{1,0}}(p_{1,1}-p_{0,1})^n$。
+
+        $\textcircled{1}\:|p_{0,0}-p_{1,0}|<1$，则$|p_{1,1}-p_{0,1}|<1$，从而$\lim\limits_{n\to\infty}p_{0,1}^{(n)}
+        =\frac{p_{0,1}}{p_{0,1}+p_{1,0}}$，$\lim\limits_{n\to\infty}p_{1,0}^{(n)}=\frac{p_{1,0}}{p_{0,1}+p_{1,0}}$，
+        $\lim\limits_{n\to\infty}p_{1,1}^{(n)}=\frac{p_{0,1}}{p_{0,1}+p_{1,0}}$。
+
+        $\textcircled{2}\:p_{0,0}-p_{1,0}=1$，则$p_{0,0}=p_{1,1}=1,p_{0,1}=p_{1,0}=0$，
+        从而$p_{0,1}^{(n)}\equiv0$，$p_{1,0}^{(n)}\equiv0$，$p_{1,1}^{(n)}\equiv1$。
+
+        $\textcircled{3}\:p_{0,0}-p_{1,0}=-1$，则$p_{0,0}=p_{1,1}=0,p_{0,1}=p_{1,0}=1$，
+        从而$p_{0,1}^{(n)}=p_{1,0}^{(n)}=\frac{1-(-1)^n}{2}$，$p_{1,1}^{(n)}=\frac{1+(-1)^n}{2}$，均没有极限。
+    \end{proof}
+\end{enumerate}
+
+=== 4.4 不变测度与平稳分布 ===
+\begin{enumerate}
+    \item[4.4.5] 设状态$1,2,3,4,5,6,7$的马氏链的转移矩阵为
+    \[\P:=\begin{bmatrix}0.5&0.5&0&0&0&0&0\\
+    0.3&0.7&0&0&0&0&0\\
+    0&0&0.1&0&0.9&0&0\\
+    0.25&0.25&0&0&0.25&0.25&0\\
+    0&0&0.7&0&0.3&0&0\\
+    0&0.2&0&0.2&0.2&0.4&0\\
+    0.5&0&0.2&0&0&0&0.3\end{bmatrix}.\]
+    问其中包含哪些闭子集？哪些不可分的闭子集？写出各状态是常返还是暂留的，以及每个常返态的平均返回时。
+    \begin{proof}
+        (非平凡)闭子集：$\{1,2\},\{1,2,3,5\},\{1,2,3,4,5,6\},\{1,2,3,5,7\},\{3,5\}$。
+
+        不可分闭子集：$\{1,2\},\{3,5\}$。
+
+        各状态性质(对常返态，分别在各自的不可分闭子集中利用推论4.4.1计算平均返回时)：$1,2,3,5$是常返态，
+        平均返回时依次为$\frac{8}{3},\frac{8}{5},\frac{16}{7},\frac{16}{9}$；$4,6,7$是暂留态。
+    \end{proof}
+    \item[4.4.6] 证明：
+
+    (1)直线与平面格点上对称简单随机游动是零常返的。
+
+    (2)有限状态不可分马氏链是正常返的。
+
+    (3)有限状态马氏链有平稳分布。
+    \begin{proof}
+        (1)对一维情形，$p_{0,0}^{(2k)}=\frac{1}{2^{2k}}C_{2k}^k\sim\frac{1}{\sqrt{\pi k}}\to0$，
+        因而由定理4.3.1知\[\frac{1}{\E^0\tau_0}=\lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^np_{0,0}^{(k)}
+        \lim_{n\to\infty}p_{0,0}^{(2k)}=0,\]即$\E^0\tau_0=+\infty$，即$0$是零常返的；
+        由对称性知所有状态都是零常返的。
+
+        对二维情形，定理4.2.3的证明过程中证明了$p_{0,0}^{(2k)}\sim\frac{1}{\pi k}\to0$，同理可证所有状态均零常返。
+
+        (2)这是练习4.2.3(2)，练习4.3.7与推论4.3.1的直接推论。
+
+        (3)由练习4.2.3(1)与练习4.2.7(2)，(3)可知该马氏链至少含有一个不可分闭集，且容易验证不同的不可分闭集互不相交。
+        对于一个不可分闭集$R$，将转移矩阵限制在$R$上仍是转移矩阵，且是有限状态不可分马氏链，因而由(2)知其不含暂留态。
+        由此可将原状态集分解为$E=T\sqcup R_1\sqcup\cdots\sqcup R_k$，其中$k\geqslant1$，$T$是暂留态全体，
+        $R_1,\cdots,R_k$是互不相交的不可分闭子集。
+        
+        现在，对$1\leqslant i\leqslant k$，由(2)知存在一个$R_i$上的平稳分布$\mu^{(i)}=(\mu_j^{(i)}:j\in R_i)$，
+        定义$E$上的非零测度$\mu=(\mu_y:y\in E)$为
+        \[\mu_y=\begin{cases}
+            \frac{1}{k}\mu_y^{(i)}&,y\in R_i\:(1\leqslant i\leqslant k);\\
+            0&,y\in T.
+        \end{cases}\]
+        容易验证$\mu$是$E$上的平稳分布。
+    \end{proof}
+    \item[4.4.7] 设$X$是转移函数为$p_{x,y}$的马氏链。对任何$x\in E$，定义
+    \[M_n:=\sum_{i=1}^n1_{\{X_i=y\}}-\sum_{x\in E}\bigg(\sum_{i=1}^n1_{\{X_{i-1}=x\}}\bigg)\cdot p_{x,y},\]证明：
+
+    (1)对任何$o\in E$，$(M_n:n\geqslant1)$是$\P^o$鞅。
+
+    (2)将Doob有界停止定理应用于$(M_n)$证明不可分常返的$X$有不变测度。
+    \begin{proof}
+        (1)由马氏性，对任意正整数$n$，\[\E^o(M_{n+1}-M_n|\F_n)=\E^o\bigg(1_{\{X_{n+1}=y\}}-
+        \sum_{x\in E}1_{\{X_n=x\}}\cdot p_{x,y}\bigg|\F_n\bigg)=\E^o(1_{\{X_{n+1}=y\}}|\F_n)
+        -\sum_{x\in E}\P^o(X_n=x)\cdot p_{x,y}=0,\]故$(M_n:n\geqslant1)$是$\P^o$鞅。
+
+        (2)由$X$不可分且常返可知$\tau_o<\infty,\P^o-\as$，从而$\tau_o^{(N)}:=\tau_o\land N\xrightarrow{\as}\tau_o$。
+        对任意正整数$N$，由(1)和Doob有界停止定理可知$\E^oM_{\tau_o^{(N)}}=\E^oM_1=0$，即
+        \[\E^o\bigg(\sum_{i=1}^{\tau_o^{(N)}}1_{\{X_i=y\}}\bigg)=\sum_{x\in E}p_{x,y}\cdot\E^o\bigg(\sum_{i=1}^{\tau_o^{(N)}}1_{\{X_{i-1}=x\}}\bigg),\]
+        令$N\to+\infty$，由单调收敛定理知\[\E^o\bigg(\sum_{i=1}^{\tau_o}1_{\{X_i=y\}}\bigg)=\sum_{x\in E}p_{x,y}\cdot\E^o\bigg(\sum_{i=0}^{\tau_o-1}1_{\{X_i=x\}}\bigg).\]
+        
+        现在对$y\in E$，定义\[\mu_y=\E^o\bigg(\sum_{i=1}^{\tau_o}1_{\{X_i=y\}}\bigg),\]
+        利用$\P^o(X_0=x)=\P(x=o)=\P^o(X_{\tau_o}=x)$容易验证$\mu$是$X$的不变测度。
+    \end{proof}
+\end{enumerate}
+
+=== 4.5 可逆马氏链与电路图 ===
+\begin{enumerate}
+    \item[4.5.1] 如果定义4.5.1中的$\pi$是非零测度，证明：$X$限制在$S_0=\{x:\pi(x)>0\}$上是可逆马氏链。
+    \begin{proof}
+        对任意$x\in S_0,y\notin S_0$，有$\pi(x)p_{x,y}=\pi(y)p_{y,x}=0$，即$p_{x,y}=0$，因此$S_0$是闭集，
+        $X$限制在$S_0$上仍是马氏链。可逆性容易验证。
+    \end{proof}
+    \item[4.5.4] 设$X$不可分且满足Kolmogorov回路测试。证明：对任何$x,y\in S$，若$p(x,y)>0$，
+    则$p(y,x)>0$。如果没有不可分性，这个命题还成立吗？
+    \begin{proof}
+        由$X$不可分知$y$可达$x$，即存在$z_0=y,z_1,\cdots,z_{n-1},z_n=x\in S$满足$p(z_{i-1},z_i)>0,i=1,\cdots,n$。
+        此时$x\to y\to z_1\to\cdots\to z_{n-1}\to x$为从$x$到$x$的回路，且正向转移概率大于$0$，
+        因而由Kolmogorov回路测试知\[p(y,x)\geqslant p(x,z_{n-1})\cdot\cdots\cdot p(z_1,y)\cdot p(y,x)>0.\]
+
+        如果没有不可分性，命题不成立，反例：令$S=\{x,y\}$，其中$p_{x,y}=p_{y,y}=1$，
+        易见$X$没有可分性，满足Kolmogorov回路测试但不满足命题。
+    \end{proof}
+    {{comment|以下练习4.5.8与4.5.9的图片由于个人原因没有添加，希望有人能加以补全。}}
+    \item[4.5.8] 左下图，$5$个顶点的图，每边的电阻是$1$，求
+
+    (1) $\P^a(\tau_b<\tau_a^+)$；
+
+    (2) $\P^a(\tau_c<\tau_a^+)$；
+
+    (3)设中间的顶点是$e$，求$\P^a(\tau_e<\tau_a^+)$。
+    \begin{proof}
+        利用简单的“星$\to$三角变换”可求出$a$与$b$，$a$与$c$，$a$与$e$之间的有效电阻分别为$\frac{8}{15}$，
+        $\frac{2}{3}$，$\frac{7}{15}$，因而由定理4.5.5可得三个结果分别为$\frac{5}{8}$，$\frac{1}{2}$，$\frac{5}{7}$。
+    \end{proof}
+    \item[4.5.9] 参考右上图，每边电阻为$1$，求$\P^2(\tau_3<\tau_2^+)$.
+    \begin{proof}
+        每个点的度数都是$4$，因此可考虑先使用“三角$\to$星变换”减少其中部分点的度数(例如，对$1,2,c$构成的三角形)，
+        于是再不断使用“星$\to$三角变换”可求出$2$与$3$之间的有效电阻为$\frac{5}{12}$，由定理4.5.5可得结果为$\frac{3}{5}$。
+    \end{proof}
+    \item[4.5.13] (1)用$T_k$表示每个顶点都有$k$个后代的正则树，在除去根外的每个顶点，它往parent跳的概率是$p$，
+    往每个child跳的概率是$\frac{q}{k}$。求$p$为何值时，该马氏链是暂留的？
+
+    (2)证明：平面上的六角形(蜂窝)格点网络和三角形网络上的简单随机游动是常返的。
+    \begin{proof}
+        (1)记$T_k$的根为$r$，定义$d:T_k\to\Z_{\geqslant0}$如下：$d(r)=0$；对任意$x\in T_k$与其child $y$，
+        令$d(y)=d(x)+1$ (由于每个顶点只有一个parent，这良定)。对任意$n\geqslant0$，记$P_n=\{x\in T_k:d(x)=n\}$；
+        对$x\in P_n$，记$P_{n+1}^x=\{y\in P_{n+1}:y\text{ 是 }x\text{ 的 child}\}$。
+
+        当$p=0$时，马氏链是暂留的；当$p=1$时，马氏链不是暂留的(因为根不是暂留的)；下设$p\in(0,1)$。
+        令$\pi(r)=k,\pi(x)=\frac{1}{p}(\frac{q}{kp})^{d(x)-1}(x\neq r)$，下证$\pi$为$T_k$的对称测度。
+        任取$x\in P_n,y\in P_{n+1}^x$。若$x=r$，则$p(x,y)=\frac{1}{k},p(y,x)=p,
+        \pi(x)\cdot p(x,y)=1=\pi(y)\cdot p(y,x)$；若$x\neq r$，则$p(x,y)=\frac{q}{k},p(y,x)=p,
+        \pi(x)\cdot p(x,y)=(\frac{q}{kp})^{d(x)}=\pi(y)\cdot p(y,x)$。由此可见$T_k$可逆，
+        对应电路图的电导率满足$c(x,y)=(\frac{q}{kp})^{d(x)}(x\in P_n,y\in P_{n+1}^x)$。
+
+        $\textcircled{1}\:p\in(0,\frac{1}{2})$，则$\frac{p}{q}\in(0,1)$。对$x\in P_n,y\in P_{n+1}^x$，
+        定义$j(x,y)=\frac{1}{k^{n+1}}$，则容易验证由此得到的反对称函数$j$为$r$到$\infty$的一个正流。此时，
+        \begin{align*}
+            \eps(j)=&\frac{1}{2}\sum_{(x,y)\in E}j(x,y)^2r(x,y)\\
+            =&\sum_{n=0}^\infty\sum_{x\in P_n}\sum_{y\in P_{n+1}^x}j(x,y)^2r(x,y)\\
+            =&\sum_{n=0}^\infty k^n\cdot k\cdot\bigg(\frac{1}{k^{n+1}}\bigg)^2\cdot\bigg(\frac{kp}{q}\bigg)^n\\
+            =&\sum_{n=0}^\infty\frac{1}{k}\cdot\bigg(\frac{p}{q}\bigg)^n=\frac{1-p}{k(1-2p)}<+\infty,
+        \end{align*}
+        由定理4.5.10可知$T_k$暂留。
+
+        $\textcircled{2}\:p\in[\frac{1}{2},1)$，则$\frac{p}{q}\in[1,+\infty)$。对任意$n\geqslant0$，
+        将所有点$P_n$中的点短路看成一个点$a_n$。由于$a_n,a_{n+1}$之间恰有$k^{n+1}$条边，每条边电导为$(\frac{q}{kp})^n$，
+        故$c(a_n,a_{n+1})=k\cdot(\frac{q}{p})^n$，从而\[R_{\text{eff}}(r,+\infty)=
+        \sum_{n=0}^\infty\frac{1}{k}\cdot\bigg(\frac{p}{q}\bigg)^n=+\infty,\]由定理4.5.6知$T_k$常返。
+
+        综上，$T_k$暂留当且仅当$p\in[0,\frac{1}{2})$。
+
+        (2)这两个随机游动显然都是不可分可逆马氏链，且由对称性，可以令所有边的电阻均为$1$。
+
+        对于六角形格点网络，将其中所有某个方向的边全部短路后，所得电路图与$\Z^2$上简单随机游动等价，而后者常返，因而前者常返。
+
+        对于三角形网络$\Delta$，取定一点$a_0$，定义路径距离
+        \[d(x,y)=\inf\{n\in\Z_{\geqslant0}:\exists\:x_0,x_1,\cdots,x_n\st x_0=x\sim x_1\sim\cdots\sim x_n=y\},\]
+        并对正整数$n$，记$P_n=\{x\in\Delta:d(x,a_0)=n\}$。将所有$P_n$中的点短路看成一个点$a_n$，
+        则$a_n$有$6(2n+1)$条边连接$a_{n+1}$，其中每条边电导为$1$，故$c(a_n,a_{n+1})=6(2n+1)$，
+        \[R_{\text{eff}}(a_0,+\infty)=\sum_{n=0}^\infty\frac{1}{6(2n+1)}=+\infty,\]
+        因而短路前的$\Delta$常返。
+    \end{proof}
+    \item[4.5.17] 设$\Z^2$是平面上整数格点，取$H=\{(x,y)\in\Z^2:|x|\leqslant1,|y|\leqslant1\}$以及$S=\overline{H}$，
+    每个边的电阻是$1$。令$A=\{(x,y)\in S:|x|=2\},B=\{(x,y)\in S:|y|=2\}$。求$\P^{(1,0)}(T_A<T_B)$。
+    \begin{proof}
+        对$(x,y)\in S$，记$p_{x,y}=\P^{(x,y)}(T_A<T_B)$，显然对任意$(x,y)\in A,p_{x,y}=1$；
+        对任意$(x,y)\in B,p_{x,y}=0$；对任意$(x,y)\in H$，由定理4.5.4知
+        \[p_{x,y}=\frac{1}{4}\sum_{(x',y')\sim(x,y)}p_{x',y'}.\]
+        
+        由此可得\[p_{0,0}=\frac{1}{4}(p_{1,0}+p_{0,1}+p_{-1,0}+p_{0,-1}),\quad
+        p_{1,1}+p_{1,-1}+p_{-1,1}+p_{-1,-1}=\frac{1}{2}(p_{1,0}+p_{0,1}+p_{-1,0}+p_{0,-1})+1,\]
+        因此\[p_{1,0}+p_{0,1}+p_{-1,0}+p_{0,-1}=p_{0,0}+\frac{1}{2}(p_{1,1}+p_{1,-1}+p_{-1,1}+p_{-1,-1})
+        +\frac{1}{2}=\frac{1}{2}(p_{1,0}+p_{0,1}+p_{-1,0}+p_{0,-1})+1,\]
+        即$p_{1,0}+p_{0,1}+p_{-1,0}+p_{0,-1}=2$，同时有$p_{0,0}=\frac{1}{2}$。
+
+        又由$p_{-1,1}+p_{-1,-1}=\frac{1}{2}+\frac{1}{2}p_{-1,0}+\frac{1}{4}(p_{0,1}+p_{0,-1})$
+        知\[p_{-1,0}=\frac{1}{4}+\frac{1}{4}p_{0,0}+\frac{1}{4}(p_{-1,1}+p_{-1,-1})=
+        \frac{1}{2}+\frac{1}{8}p_{-1,0}+\frac{1}{16}(p_{0,1}+p_{0,-1}),\]
+        即$p_{-1,0}=\frac{4}{7}+\frac{1}{14}(p_{0,1}+p_{0,-1})$。同理有
+        $p_{1,0}=\frac{4}{7}+\frac{1}{14}(p_{0,1}+p_{0,-1})$，故$p_{-1,0}=p_{0,1}$。
+        同理有$p_{0,1}=p_{0,-1}$，从而$p_{0,1}+p_{1,0}=p_{0,-1}+p_{1,0}=1$。
+
+        最后，$p_{1,1}=\frac{1}{4}+\frac{1}{4}(p_{0,1}+p_{1,0})=\frac{1}{2},
+        p_{1,-1}=\frac{1}{4}+\frac{1}{4}(p_{0,-1}+p_{1,0})=\frac{1}{2}$，因此
+        \[p_{0,1}=\frac{1}{4}+\frac{1}{4}p_{0,0}+\frac{1}{4}p_{1,1}+\frac{1}{4}p_{1,-1}=\frac{5}{8},\]
+        即$\P^{(1,0)}(T_A<T_B)=\frac{5}{8}$。
+    \end{proof}
+\end{enumerate}
+
+== 泊松过程与布朗运动 ==
+
+=== 5.1 泊松过程的定义与性质 ===
+\begin{enumerate}
+    \item[5.1.2] 设$\{\xi_n:n\geqslant1\}$是$01$值的Bernoulli随机序列，$S_0=0,S_n=\sum\limits_{j=1}^n\xi_j$。
+    对任何$t>0$，定义$X_t:=\inf\{n\geqslant0:S_n>t\}$。求$X_t$的分布与期望。
+    \begin{proof}
+        显然对任意$t>0,X_t>\lfloor t\rfloor$，且$X_t=X_{\lfloor t\rfloor}$，因而由$\xi_n$的独立性知
+        对任意$n>\lfloor t\rfloor$，\[\P(X_t=n)=\P(\xi_1,\cdots,\xi_{n-1}\text{ 中有 }\lfloor t\rfloor\text{ 个取 }1,\xi_n=1)
+        =\binom{n-1}{\lfloor t\rfloor}\cdot p^{\lfloor t\rfloor+1}\cdot(1-p)^{n-\lfloor t\rfloor-1}.\]
+        令$\{\tau_k\}_{k=1}^\infty\stackrel{\text{i.i.d}}{\sim}\operatorname{Geo}(p),Y_n=\sum\limits_{k=1}^n\tau_k$，
+        则对任意$m\geqslant n$，$\P(Y_n=m)=\binom{m-1}{n-1}p^nq^{m-n}$，故$X_t$与$Y_{\lfloor t\rfloor+1}$同分布，
+        \[\E X_t=\E Y_{\lfloor t\rfloor+1}=(\lfloor t\rfloor+1)\E\tau_1=\frac{\lfloor t\rfloor+1}{p}.\]
+    \end{proof}
+    \item[5.1.5] $S_n-S_{n-1}$是$n$个更新间隔的时间，而$S_{N_t+1}-S_{N_t}$称为跨越$t$时刻的更新间隔时间，
+    因为$S_{N_t+1}>t\geqslant S_{N_t}$。
+
+    (1)证明：$S_{N_t+1}-t$与$t-S_{N_t}$独立。
+
+    (2)求以上两个随机变量的分布。
+
+    (3)求$S_{N_t+1}-S_{N_t}=T_{N_t+1}$的分布与期望。
+
+    (4)设$\G_n=\sigma(T_j:j\leqslant n)$，证明：$N_t+1$是$(\G_n)$停时，而$N_t$不是。
+    \begin{proof}
+        (1)对任意$n\geqslant0,a,b>0$，利用泊松过程是独立增量过程可知
+        \begin{align*}
+            \P(S_{N_t+1}-t>a,t-S_{N_t}>b)=&\P(N_{t+a}-N_t=0,N_t-N_{t-b}=0)\\
+            =&\P(N_{t+a}-N_t=0)\cdot\P(N_t-N_{t-b}=0)\\
+            =&\P(S_{N_t+1}-t>a)\cdot\P(t-S_{N_t}>b).
+        \end{align*}
+
+        (2)同(1)可知对任意$a>0$，\[\P(S_{N_t+1}-t>a)=\P(N_{t+a}-N_t=0)=e^{-\lambda a},\]
+        故$S_{N_t+1}-t\sim\operatorname{Exp}(\lambda)$，同理可证$t-S_{N_t}\sim\operatorname{Exp}(\lambda)$。
+
+        (3)由(1)，(2)可知$T_{N_t+1}=(S_{N_t+1}-t)+(t-S_{N_t})\sim\Gamma(2,\lambda)$，
+        即其密度函数为$\rho(x)=\lambda^2xe^{-\lambda x}\cdot1_{(0,\infty)}(x)$，
+        $\E(T_{N_t+1})=2\E(S_{N_t+1}-t)=\frac{2}{\lambda}$。
+
+        (4)显然$N_t+1,N_t$均取值于$\Z_+\cup\{+\infty\}$。对任意$n\geqslant0$，\[\{N_t+1\leqslant n\}
+        =\{N_t\leqslant n-1\}=\{S_n>t\}=\{T_1+\cdots+T_n>t\}\in\G_n,\]故$N_t+1$是$(\G_n)$停时。
+        然而，$\{N_t\leqslant n\}=\{S_{n+1}>t\}=\{T_1+\cdots+ T_{n+1}>t\}$，由于$T_1,\cdots,T_{n+1}$相互独立，
+        故这不属于$\G_n$，从而$N_t$不是$(\G_n)$停时。
+    \end{proof}
+\end{enumerate}
+
+=== 5.2 布朗运动的定义与构造 ===
+
+=== 5.3 简单性质 ===
+
+=== 5.4 轨道性质 ===
+\begin{enumerate}
+    \item[5.4.3] 设$D=(t_i)$是区间$[0,t]$上的划分。求$\E(\sum\limits_{i=1}^nB_{t_{i-1}}(B_{t_i}-B_{t_{i-1}}))^2$
+    与$\E(\sum\limits_{i=1}^nB_{t_i}(B_{t_i}-B_{t_{i-1}}))^2$当$D$趋于零时的极限。
+    \begin{proof}
+        首先，\[\E\bigg(\sum_{i=1}^nB_{t_{i-1}}(B_{t_i}-B_{t_{i-1}})\bigg)^2=
+        \sum_{i=1}^n\E(B_{t_{i-1}}^2(B_{t_i}-B_{t_{i-1}})^2)+
+        2\sum_{1\leqslant i<j\leqslant n}\E(B_{t_{i-1}}(B_{t_i}-B_{t_{i-1}})B_{t_{j-1}}(B_{t_j}-B_{t_{j-1}})).\]
+        对$1\leqslant i\leqslant n$，\[\E(B_{t_{i-1}}^2(B_{t_i}-B_{t_{i-1}})^2)=
+        \E B_{t_{i-1}}^2\cdot\E(B_{t_i}-B_{t_{i-1}})^2=t_{i-1}(t_i-t_{i-1}).\]
+        对$1\leqslant i<j\leqslant n$，
+        \begin{align*}
+            \E(B_{t_{i-1}}(B_{t_i}-B_{t_{i-1}})B_{t_{j-1}}(B_{t_j}-B_{t_{j-1}}))=&\E(B_{t_{i-1}}(B_{t_i}-B_{t_{i-1}})(B_{t_{j-1}}-B_{t_i})(B_{t_j}-B_{t_{j-1}}))\\
+            &+\E(B_{t_{i-1}}(B_{t_i}-B_{t_{i-1}})B_{t_i}(B_{t_j}-B_{t_{j-1}}))\\
+            =&0+\E(B_{t_{i-1}}(B_{t_i}-B_{t_{i-1}})^2(B_{t_j}-B_{t_{j-1}}))\\
+            &+\E(B_{t_{i-1}}^2(B_{t_i}-B_{t_{i-1}})(B_{t_j}-B_{t_{j-1}}))\\
+            =&0.
+        \end{align*}
+        因此\[\lim_{m(D)\to0}\E\bigg(\sum_{i=1}^nB_{t_{i-1}}(B_{t_i}-B_{t_{i-1}})\bigg)^2=
+        \lim_{m(D)\to0}\sum_{i=1}^nt_{i-1}(t_i-t_{i-1})=\int_0^ts{\rm d}s=\frac{t^2}{2}.\]
+
+        又\[\E\bigg(\sum_{i=1}^nB_{t_i}(B_{t_i}-B_{t_{i-1}})\bigg)^2=
+        \sum_{i=1}^n\E(B_{t_i}^2(B_{t_i}-B_{t_{i-1}})^2)+
+        2\sum_{1\leqslant i<j\leqslant n}\E(B_{t_i}(B_{t_i}-B_{t_{i-1}})B_{t_j}(B_{t_j}-B_{t_{j-1}})).\]
+        对$1\leqslant i\leqslant n$，
+        \begin{align*}
+            \E(B_{t_i}^2(B_{t_i}-B_{t_{i-1}})^2)=&\E(B_{t_{i-1}}^2(B_{t_i}-B_{t_{i-1}})^2)+2\E(B_{t_{i-1}}(B_{t_i}-B_{t_{i-1}})^3)+\E(B_{t_i}-B_{t_{i-1}})^4\\
+            =&t_{i-1}(t_i-t_{i-1})+0+3(t_i-t_{i-1})^2.
+        \end{align*}
+        对$1\leqslant i<j\leqslant n$，利用上面的结果有
+        \begin{align*}
+            \E(B_{t_i}(B_{t_i}-B_{t_{i-1}})B_{t_j}(B_{t_j}-B_{t_{j-1}}))=&\E(B_{t_{i-1}}(B_{t_i}-B_{t_{i-1}})B_{t_{j-1}}(B_{t_j}-B_{t_{j-1}}))\\
+            &+\E(B_{t_{i-1}}(B_{t_i}-B_{t_{i-1}})(B_{t_j}-B_{t_{j-1}})^2)\\
+            &+\E((B_{t_i}-B_{t_{i-1}})^2(B_{t_j}-B_{t_{j-1}})^2)\\
+            &+\E((B_{t_i}-B_{t_{i-1}})^2B_{t_{j-1}}(B_{t_j}-B_{t_{j-1}}))\\
+            =&0+0+(t_i-t_{i-1})(t_j-t_{j-1})\\
+            &+\E(B_{t_{i-1}}(B_{t_i}-B_{t_{i-1}})^2(B_{t_j}-B_{t_{j-1}}))\\
+            &+\E((B_{t_i}-B_{t_{i-1}})^3(B_{t_j}-B_{t_{j-1}}))\\
+            &+\E((B_{t_i}-B_{t_{i-1}})^2(B_{t_{j-1}}-B_{t_i})(B_{t_j}-B_{t_{j-1}}))\\
+            =&(t_i-t_{i-1})(t_j-t_{j-1}).
+        \end{align*}
+        因此\[\E\bigg(\sum_{i=1}^nB_{t_i}(B_{t_i}-B_{t_{i-1}})\bigg)^2=\sum_{i=1}^nt_{i-1}(t_i-t_{i-1})
+        +\sum_{i=1}^n2(t_i-t_{i-1})^2+\bigg(\sum_{i=1}^n(t_i-t_{i-1})\bigg)^2,\]
+        \[\lim_{m(D)\to0}\E\bigg(\sum_{i=1}^nB_{t_i}(B_{t_i}-B_{t_{i-1}})\bigg)^2=\frac{t^2}{2}+0+t^2=\frac{3t^2}{2}.\]
+    \end{proof}
+    \item[5.4.4] 求下面三个随机变量的期望和方差。
+
+    (1) $\displaystyle\int_0^1B_t{\rm d}t$；
+
+    (2) $\displaystyle\int_0^1B_t^2{\rm d}t$；
+
+    (3) $\exp\bigg(\displaystyle\int_0^1B_t{\rm d}t\bigg)$。
+    \begin{proof}
+        (1)记$X=\displaystyle\int_0^1B_t{\rm d}t$，由Cauchy不等式知
+        \[\int_0^1\E|B_t|{\rm d}t\leqslant\int_0^1\frac{1}{2}(1+\E B_t^2){\rm d}t=\frac{3}{4}<\infty,\]
+        因而由Fubini定理知\[\E X=\int_0^1\E B_t{\rm d}t=0.\]
+        再由Cauchy不等式有\[\int_0^1\int_0^1\E|B_tB_s|{\rm d}t{\rm d}s\leqslant
+        \frac{1}{2}\int_0^1\int_0^1\E B_t^2+\E B_s^2{\rm d}t{\rm d}s=\frac{1}{2}<\infty,\]
+        再由Fubini定理知\[\E X^2=\E\bigg(\int_0^1 B_t{\rm d}t\bigg)^2=
+        \E\bigg(\int_0^1\int_0^1B_tB_s{\rm d}t{\rm d}s\bigg)=\int_0^1\int_0^1\E(B_tB_s){\rm d}t{\rm d}s
+        =\int_0^1\int_0^1t\land s{\rm d}t{\rm d}s=\frac{1}{3},\]
+        故\[\operatorname{Var}(X)=\E X^2-(\E X)^2=\frac{1}{3}.\]
+        
+        (2)由于$B_t^2$非负，直接利用Tonelli定理知
+        \[\E\bigg(\int_0^1B_t^2{\rm d}t\bigg)=\int_0^1\E B_t^2{\rm d}t=\int_0^1t{\rm d}t=\frac{1}{2}.\]
+        又因为当$0\leqslant s\leqslant t\leqslant1$时，
+        \[\E(B_s^2B_t^2)=\E B_s^4+2\E B_s^3\cdot\E(B_t-B_s)+\E B_s^2\cdot(\E B_t^2-2\E(B_tB_s)+\E B_s^2)
+        =3s^2+0+s(t-2s+s)=2s^2+st,\]
+        因此再由Tonelli定理知
+        \begin{align*}
+            \E\bigg(\int_0^1B_t^2{\rm d}t\bigg)^2=&\E\bigg(\int_0^1\int_0^1B_t^2B_s^2{\rm d}t{\rm d}s\bigg)\\
+            =&\int_0^1\int_0^1\E(B_t^2B_s^2){\rm d}t{\rm d}s\\
+            =&\int_0^1\int_0^s(2t^2+st){\rm d}t{\rm d}s+\int_0^1\int_s^1(2s^2+st){\rm d}t{\rm d}s\\
+            =&\int_0^1\frac{7}{6}s^3{\rm d}s+\int_0^1\bigg(2s^2+\frac{s}{2}-\frac{5}{2}s^3\bigg){\rm d}s=\frac{7}{12},
+        \end{align*}
+        从而\[\operatorname{Var}\bigg(\int_0^1B_t^2{\rm d}t\bigg)=\E\bigg(\int_0^1B_t^2{\rm d}t\bigg)^2
+        -\bigg(\E\bigg(\int_0^1B_t^2{\rm d}t\bigg)\bigg)^2=\frac{1}{3}.\]
+
+        (3)从(1)继续。对任意正整数$n$，令\[X_n=\sum_{i=1}^{2^n}\frac{1}{2^n}B_{\frac{i}{2^n}}=
+        \sum_{i=1}^{2^n}\frac{1}{2^n}\bigg(\sum_{j=1}^iB_{\frac{j}{2^n}}-B_{\frac{j-1}{2^n}}\bigg)
+        =\sum_{j=1}^{2^n}\frac{2^n+1-j}{2^n}(B_{\frac{j}{2^n}}-B_{\frac{j-1}{2^n}}).\]
+        由于$\{B_{\frac{j}{2^n}}-B_{\frac{j-1}{2^n}}:j=1,\cdots,2^n\}$相互独立且服从正态分布，
+        因此$X_n$均服从正态分布，设$X_n\sim\mathcal{N}(\mu_n,\sigma_n^2)$。由于布朗运动的轨道连续，
+        因此$X_n$几乎处处收敛到$X$，因而$\mu_n\to\E X=0,\sigma_n^2\to\operatorname{Var}(X)=\frac{1}{3}$，
+        由此可见$X\sim\mathcal{N}(0,\frac{1}{3})$，记$\sigma^2=\frac{1}{3}$。
+
+        现在可以计算得
+        \[\E(e^X)=\int_{-\infty}^\infty e^x\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{x^2}{2\sigma^2}}{\rm d}x
+        =\int_{-\infty}^\infty\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\sigma^2)^2}{2\sigma^2}+\frac{\sigma^2}{2}}{\rm d}x
+        =e^{\frac{\sigma^2}{2}}=e^{\frac{1}{6}},\]
+        \[\E(e^{2X})=\int_{-\infty}^\infty e^{2x}\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{x^2}{2\sigma^2}}{\rm d}x
+        =\int_{-\infty}^\infty\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-2\sigma^2)^2}{2\sigma^2}+2\sigma^2}{\rm d}x
+        =e^{2\sigma^2}=e^{\frac{2}{3}},\]
+        \[\operatorname{Var}(e^X)=\E(e^{2X})-(\E(e^X))^2=e^{\frac{2}{3}}-e^{\frac{1}{3}}.\]
+    \end{proof}
+    \item[5.4.5] 证明：当$[0,1]$上的分划$D$趋于零时，Riemann和$\sum\limits_it_i(B_{t_i}-B_{t_{i-1}})$
+    几乎处处收敛于某个随机变量$\xi$。求$\xi$的分布。
+    \begin{proof}
+        利用Abel变换得
+        \[\sum_{i=1}^nt_i(B_{t_i}-B_{t_{i-1}})=B_1-\sum_{i=1}^n(t_i-t_{i-1})B_{t_{i-1}},\]
+        因而与练习5.4.4同理可知当$D$趋于零时，上述Riemann和几乎处处收敛到$\xi=B_1-\displaystyle\int_0^1B_t{\rm d}t$。
+        
+        仍采用练习5.4.4中的记号，同理可证$\xi=B_1-X$服从正态分布，计算得
+        \[\E\xi=\E B_1-\E X=0,\]
+        \[\operatorname{Var}(\xi)=\E\xi^2=\E B_1^2-2\E(B_1X)+\E X^2=1-1+\frac{1}{3}=\frac{1}{3},\]
+        其中与练习5.4.4同理利用Fubini定理知
+        \[\E(B_1X)=\E\bigg(\int_0^1B_1B_t{\rm d}t\bigg)=\int_0^1\E(B_1B_t){\rm d}t=\int_0^1t{\rm d}t=\frac{1}{2}.\]
+        综上，$\xi\sim\mathcal{N}(0,\frac{1}{3})$。
+    \end{proof}
+\end{enumerate}
+
+=== 5.5 马氏性及其应用 ===
+
+=== 5.6 鞅性质及其应用 ===

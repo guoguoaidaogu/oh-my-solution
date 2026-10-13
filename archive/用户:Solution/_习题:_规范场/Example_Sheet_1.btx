@@ -1,0 +1,276 @@
+\theoremstyle{plain}\newtheorem{exercise}{Question}
+\nosectionnumbers
+
+范围包括微分流形、李群、李代数、表示.
+
+\begin{exercise}
+    Let $M$ and $N$ be smooth manifolds and $\phi: M\to N$
+    a smooth map.
+
+    \begin{itemize}
+        \item Suppose $X$ and $Y$ are vector fields on $M$
+            and $N$ respectively. If $Y$ is $\phi$-related to $X$
+            (i.e. $Y_{\phi(p)}=(D_p \phi)(X_p)$,$\forall p \in M$),
+            prove that
+            \begin{equation*}
+                (L_Y f)\circ \phi = L_X(f\circ \phi), 
+                \forall f \in C^{\infty} (N).
+            \end{equation*}
+
+        \item If $X'$ is $\phi$-related to $Y$, prove that
+            $[X',Y']$ is $\phi$-related to $[X,Y]$.
+    \end{itemize}
+\end{exercise}
+
+Solution:
+
+If $Y_{\phi (p)}=(D_p \phi)X_p,\forall p \in M$, then
+\begin{align}
+    (L_Y f)\circ \phi (p) &= (D_{\phi(p)}f)(Y_{\phi(p)})
+    = (D_{\phi(p)}f)(D_p \phi)(X_p) \\
+    &= ((D_p \phi)X_p)(f) = L_X(f\circ \phi)(p).
+\end{align}
+
+Hence $X'Y'(f\circ \phi)=X'((Yf)\circ \phi)=(XYf)\circ \phi$;
+similarly, $Y'X'(f\circ \phi)=(YXf)\circ \phi$. Therefore,
+\begin{align}
+    [X',Y'](f\circ \phi) &= X'Y'(f\circ \phi)-Y'X'(f\circ \phi) \\
+    &= (XYf)\circ \phi - (YXf)\circ \phi \\
+    &= ([X,Y]f)\circ \phi.
+\end{align}
+
+
+\begin{exercise}
+    Show that
+    \begin{itemize}
+        \item $\operatorname{GL}(n,\mathbb{R})$ is a non-compact Lie group of $n^2$ dimension;
+        \item $\operatorname{GL}(n,\mathbb{C})$ is a non-compact Lie group of $2n^2$ dimension;
+        \item both of them are non-abelian for $n\ge 2$.
+    \end{itemize}
+\end{exercise}
+
+Solution:
+
+Let $M(n,\mathbb{R})$ denote the set of $n\times n$ matrices with real entries.
+Because it is a real vector space of dimension $n^2$ under matrix
+addition and scalar multiplication, $M(n,\mathbb{R})$ is a
+smooth $n^2$-dimensional smooth manifold. Now $\operatorname{GL}(n,\mathbb{R})$
+is an open subset of $M(n,\mathbb{R})$, namely the set where
+$\operatorname{det}: M(n,\mathbb{R})\to \mathbb{R}$ is nonzero, 
+hence $\operatorname{GL}(n,\mathbb{R})$ is a smooth $n^2$-dimensional submanifold 
+of $M(n,\mathbb{R})$. Moreover, for all $x\in \operatorname{GL}(n,\mathbb{R})$, 
+$\lambda x \in \operatorname{GL}(n,\mathbb{R})\quad (\lambda \in \mathbb{R}-\{0\})$. 
+Therefore $\operatorname{GL}(n,\mathbb{R})$ is not bounded, hence non-compact.
+
+Next we prove that $\mathrm{GL}(n,\mathbb{R})$ admits a Lie group structure. 
+Multiplication is smooth because the matrix entries of a product matrix
+$AB$ are polynomials in the entries of $A$ and $B$. 
+Inversion is smooth by Cramer's Rule. When $n\ge 2$, $AB\neq BA$, 
+hence $\operatorname{GL}(n,\mathbb{R})$ is not Abelian when $n\geq 2$.
+
+The case for $\operatorname{GL}(n,\mathbb{C})$ is similar.
+
+\begin{exercise}
+    Find an explicit Lie group homomorphism
+    \begin{equation*}
+        \phi: SU(3)\times SU(2)\times U(1)\to SU(5)
+    \end{equation*}
+    with discrete kernel.
+\end{exercise}
+
+Solution:
+
+Consider the homomorphism
+\begin{align}
+    \phi :SU(3)\times SU(2)\times U(1)\to SU(5) \\
+    (U_3,U_2,e^{i\theta})\mapsto 
+        \left( 
+            \begin{matrix}
+	            e^{-2i\theta}U_3&		0\\
+	            0&		e^{3i\theta}U_2\\
+            \end{matrix} 
+        \right).
+\end{align}
+
+\begin{itemize}
+    \item $\phi$ is indeed a Lie group homomorphism. 
+    $\phi$ is clearly a group homomorphism; to prove $\phi$
+    is smooth, note just
+    \begin{equation*}
+        \phi(U_3,U_2,e^{i\theta})=
+        \operatorname{diag}\{e^{-2i\theta},e^{-2i\theta},e^{-2i\theta},
+        e^{3i\theta},e^{3i\theta}\}
+        \left( 
+            \begin{matrix}
+	            U_3&		0\\
+	            0&		U_2\\
+            \end{matrix} 
+        \right) .
+    \end{equation*}
+
+    The two terms of the left hand side of the above equation 
+    are embeddings of $U(1)$ and $SU(3)\times SU(2)$ into $SU(5)$,
+    respectively. Hence they are smooth; but also product operation
+    in Lie group is smooth, so $\phi$ is smooth.
+
+    \item The kernel of $\phi$ is discrete.
+
+    If $(U_3,U_2,e^{i\theta})\in \operatorname{Ker}\phi$,
+    then $U_3=\operatorname{diag}\{e^{2i\theta},e^{2i\theta},e^{2i\theta}\}$,
+    $U_2=\operatorname{diag}\{e^{-3i\theta},e^{-3i\theta}\}$.
+    Moreover, $U_3\in SU(3)$, $U_2\in SU(2)$ implies $e^{6i\theta}=1$, 
+    which means that the possible values of $\theta$ are taken
+    from $\left\{ \frac{n\pi}{3}: n\in \mathbb{Z} \right\}$,
+    which is discrete.
+\end{itemize}
+
+\begin{exercise}\label{4}
+    Let $\mathbb{K}=\mathbb{R},\mathbb{C}$ and identify the
+    Lie algebra of an embedded Lie subgroup of $\operatorname{GL}(n,\mathbb{K})$
+    with a Lie subalgebra of $\operatorname{Mat}(n\times n,\mathbb{K})$.
+    Prove that
+    \begin{itemize}
+        \item The Lie bracket on the Lie subalgebra of 
+            $\operatorname{Mat}(n\times n,\mathbb{K})$
+            is the standard commutator of matrices.
+
+        \item The Lie algebras of classical groups are the
+            following Lie subalgebras of $\operatorname{Mat}(n\times n, \mathbb{K})$.
+            \begin{equation*}
+                \mathfrak{sl}(n,\mathbb{K})=
+                \{
+                    M\in \operatorname{Mat}(n\times n,\mathbb{K}):
+                    \operatorname{tr}(M)=0
+                \},
+            \end{equation*}
+
+            \begin{equation*}
+                \mathfrak{o}(n)=
+                \{
+                    M\in \operatorname{Mat}(n\times n,\mathbb{K}):
+                    M + M^T =0
+                \},
+            \end{equation*}
+
+            \begin{equation*}
+                \mathfrak{u}(n)=
+                \{ 
+                    M\in \operatorname{Mat}(n\times n,\mathbb{K}):
+                    M + M^\dagger =0
+                \},
+            \end{equation*}
+
+            \begin{equation*}
+                \mathfrak{so}(n)=\mathfrak{o}(n),
+            \end{equation*}
+
+            \begin{equation*}
+                \mathfrak{su}(n)=
+                \{ 
+                    M\in \operatorname{Mat}(n\times n,\mathbb{K}):
+                    M + M^\dagger =0, \operatorname{tr}(M)=0
+                \}.
+            \end{equation*}
+    \end{itemize}
+
+    [Hint : Use the fact that `If $H$ is an embedded Lie subgroup of $G$,
+    then $\mathfrak{h}$ is an embedded Lie subalgebra of $\mathfrak{g}$'
+    and compute the dimension of each matrix group.]
+\end{exercise}
+
+See \cite{Ha} Theorem 1.5.22 and 1.5.27.
+
+\begin{exercise}
+    Let $X \in \mathfrak{g}$ and $g\in G$ with $(G,\mathfrak{g})$ lying in
+    \begin{equation*}
+        \{
+            (SL(n,\mathbb{K}),\mathfrak{sl}(n,\mathbb{K})),
+            (O(n),\mathfrak{o}(n)),
+            (U(n),\mathfrak{u}(n)),
+            (SO(n),\mathfrak{so}(n)),
+            (SU(n),\mathfrak{su}(n))
+        \}.
+    \end{equation*}
+    Show that $\mathfrak{g}$ is closed under the map
+    \begin{equation*}
+        X\mapsto g\cdot X\cdot g^{-1}.
+    \end{equation*}
+\end{exercise}
+
+Solution: Use Question \ref{4} and DIRECT calculation.
+
+\begin{exercise}
+    Let $G$ be a connected Lie group. Define the centre of $G$ as
+    \begin{equation*}
+        Z(G):=\{
+            g\in G:gh=hg ,\forall h \in G
+        \}.
+    \end{equation*}
+    Prove that
+    \begin{itemize}
+        \item $Z(G)$ is the kernel of the adjoint representation 
+        $\operatorname{Ad}_G$.
+        
+        \item $Z(G)$ is an embedded Lie subgroup in $G$ with
+        Lie algebra given by the centre $\mathfrak{z}(\mathfrak{g})$ of $\mathfrak{g}$.
+
+        \item $\mathfrak{g}$ is abelian if and only if $G$ is abelian.
+
+        \item $\operatorname{Ad}_G$ is trivial 
+        (i.e. every element of $G$ is mapped to the identity) 
+        if and only if $G$ is abelian.
+
+        \item The left-invariant and right-invariant vector fields on a connected 
+        Lie group $G$ coincide if and only if $G$ is abelian.
+    \end{itemize}
+\end{exercise}
+
+Solution: Suppose that $\operatorname{Ad}_g$ is trivial, and let
+$h=\operatorname{exp}(v)\in G$.
+Now $\gamma(t)=g\cdot \operatorname{exp}\cdot g^{-1}$
+is a curve in $G$ whose velocity at $t=0$ is $\operatorname{Ad}_g(v)=v$,
+since $\operatorname{Ad}_g$ is trivial. However, $\rho(t)=\operatorname{exp}(tv)$
+is also a curve in $G$ with initial velocity $v$, and by the
+uniqueness of integral curve,
+$g\cdot \operatorname{exp}(tv)\cdot g^{-1}=\operatorname{exp}(tv)$.
+In particular, when $t=1$ one has $gh=hg$. For general $h\in G$,
+since $G$ is connected, by Proposition 7.14 of \cite{Lee},
+$h$ can always be written as
+$h=\operatorname{exp}(v_1)\cdots\operatorname{exp}(v_k)$, 
+and the commutativity comes from iterating what we have done above. 
+Hence $\operatorname{Ker}(\operatorname{Ad}_g)\subset Z(G)$. 
+On the other hand elements of $Z(G)$ clearly fall into
+$\operatorname{Ker}(\operatorname{Ad}_G)$. Therefore
+$\operatorname{Ker}(\operatorname{Ad}_G)=Z(G)$.
+
+Now by Proposition 20.8 of \cite{Lee}, we have a commutative diagram
+\begin{equation*}
+    \begin{tikzcd}
+        \mathfrak{g} \arrow[r, "\operatorname{ad}"] \arrow[d, "\operatorname{exp}"']
+        & \operatorname{End}(\mathfrak{g}) \arrow[d, "\operatorname{exp}"]
+        \\
+        G \arrow[r, "\operatorname{Ad}"]
+        & \operatorname{GL}(\mathfrak{g})
+    \end{tikzcd}
+\end{equation*}
+Since $\operatorname{Ker}(\operatorname{Ad}_G)=Z(G)$,
+the Lie algebra $\mathfrak{z}(\mathfrak{g})$ of $Z(G)$
+is given by
+$\operatorname{Ker}(\operatorname{ad}_\mathfrak{g})
+=\{ X\in \mathfrak{g}: [X,Y]=0, \forall Y\in \mathfrak{g}\}.$
+In order this correspondence behaves well, one must demonstrate that $Z(G)$
+is a closed subgroup of $G$. For this, let
+$C_g=\{g_1\in G:g_1 g=gg_1\}$. Then $C_g$ is the preimage
+$f^{-1}(\{e\})$ where $f$ is the smooth map $f(g_1):=gg_1 g^{-1}g_1^{-1}$.
+Therefore, $C_g$ is closed, and then $Z(G)=\cap_{g\in G} C_g$
+is a closed subgroup of $G$.
+
+\section*{Reference}
+\begin{references}
+    \bibitem[Lee13]{Lee}
+        John M. Lee. \textit{Introduction to Smooth Manifolds}.
+        Graduate Texts in Mathematics. Springer, 2013.
+    \bibitem[Ha17]{Ha}
+        Hamilton, Mark J.D. \textit{Mathematical Gauge Theory}.
+        Universitext. Springer, 2017.
+\end{references}

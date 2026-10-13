@@ -1,0 +1,1793 @@
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{proposition}{命题}
+\newtheorem{corollary}{推论}
+\newtheorem{remark}{注}
+\newtheorem{example}{例}
+
+\section{微分流形}
+
+\subsection{微分流形}
+
+\subsubsection{微分流形基本概念}
+
+\begin{definition}
+设 $M$ 是满足 Hausdorff、第二可数的拓扑空间,且局部欧氏,即  
+\[
+\forall p \in M, \exists p \in U \text{ 开}, \text{使得 } \varphi : U \to \varphi(U) \subset \mathbb{R}^m \text{ 为同胚},
+\]
+则称 $M$ 为 $m$ 维拓扑流形.
+\end{definition}
+
+\begin{definition}
+对于坐标图册 $\{(U, \varphi_\alpha)\}_{\alpha \in \Lambda}$,若 $\forall U_\alpha \cap U_\beta \neq \emptyset$,$\varphi_\alpha \circ \varphi_\beta^{-1} \in C^\infty(\mathbb{R}^n)$,则称 $(U_\alpha, \varphi_\alpha), (U_\beta, \varphi_\beta)$ 是 $C^\infty$ 相容的.
+\end{definition}
+
+若对于所有下标 $\alpha, \beta \in \Lambda$ 均成立,则称该坐标图册 $C^\infty$ 相容,记为 $\mathcal{F}$.  
+若对于 $C^\infty$ 相容坐标图册 $\mathcal{F}_1 = \{(U_\alpha, \varphi_\alpha)\}_{\alpha \in \Lambda}$ 和 $\mathcal{F}_2 = \{(U_\beta, \varphi_\beta)\}_{\beta \in \Lambda'}$,$\forall \alpha \in \Lambda, \beta \in \Lambda'$,$(U_\alpha, \varphi_\alpha)$ 与 $(U_\beta, \varphi_\beta)$ 相容,则称 $\mathcal{F}_1$ 与 $\mathcal{F}_2$ 等价,记为 $\mathcal{F}_1 \sim \mathcal{F}_2$,等价类记为 $[\mathcal{F}]$,称为 $M$ 上的 $C^\infty$ 结构.  
+若 $m$ 维拓扑流形 $M$ 上有 $C^\infty$ 结构 $[\mathcal{F}]$,则称 $(M,[\mathcal{F}])$ 为微分流形.
+
+注:拓扑流形 + 微分结构 → 微分流形.
+
+\subsubsection{微分流形之间的映射}
+
+\begin{definition}
+$M^m$ 是 $C^\infty$ 流形,$f: M \to \mathbb{R}, p \in M$.如存在含 $p$ 的允许坐标系 $(U, \phi)$(属于 $\mathcal{F}$ 微分结构),使得 $f \circ \phi^{-1}$ 在 $\phi(p)$ 的某个邻域内是 $C^\infty$ 的,则称 $f$ 在 $p$ 点是 $C^\infty$ 的.如果 $f$ 在每一点都是 $C^\infty$ 的,则称 $f$ 是 $M$ 上的 $C^\infty$ 函数.记成 $f \in C^\infty(M)$.
+\end{definition}
+
+\begin{itemize}
+    \item 上述概念与允许坐标系的选取无关.
+    \item 类似的,可以定义 $f$ 在 $p$ 点是 $C^r$ 或者 $f \in C^r(M)$.
+\end{itemize}
+
+$C^\infty(M)$ 关于加法和数乘构成向量空间.
+
+\begin{definition}
+$M^m, N^n$ 是 $C^\infty$ 流形,$F : M \to N, p \in M$.如存在含 $p$ 的允许坐标系 $(U, \varphi)$,含 $F(p)$ 的允许坐标系 $(V, \psi)$(满足 $F(U) \subset V$),使得 $\psi \circ F \circ \varphi^{-1}$ 在 $\varphi(p)$ 的某个邻域内是 $C^\infty$ 的,则称 $F$ 在 $p$ 点是 $C^\infty$ 的.如果 $F$ 在每一点都是 $C^\infty$ 的,则称 $F$ 是 $M$ 上的 $C^\infty$ 映照.记成 $F \in C^\infty(M, N)$.
+\end{definition}
+
+\begin{itemize}
+    \item 若 $F(U) \not\subset V$,则可取 $\tilde{U} = F^{-1}(V) \cap U$.
+    \item 上述概念与允许坐标系的选取无关.
+    \item 如果 $(U, \varphi)$ 是 $M$ 的允许坐标系,则 $\varphi: U \to \varphi(U)$ 及 $\varphi^{-1}: \varphi(U) \to U$ 是 $C^\infty$ 的.
+    \item 设 $F : M \to N, G : N \to W$ 是 $C^\infty$ 映照,则 $G \circ F$ 是 $C^\infty$ 的.
+\end{itemize}
+
+\begin{definition}
+设 $F : M \to N$ 是 $C^\infty$ 流形之间的双射,如果 $F^{-1}$ 也是 $C^\infty$ 的,则称 $F : M \to N$ 是 $C^\infty$ 微分同胚(两个微分同胚的 $C^\infty$ 流形视为一样的).
+\end{definition}
+
+例:
+\begin{enumerate}
+    \item $F : S^2 \to \mathbb{R}^3$(球极投影)是 $C^\infty$ 微分同胚.
+    \item $F : B^n(1) \to \mathbb{R}^n, F(x) = \frac{x}{1 - \|x\|^2}$ 是 $C^\infty$ 微分同胚.
+\end{enumerate}
+
+问:给定拓扑流形 $M^m$,其上是否一定存在 $C^\infty$ 结构？唯一性($C^\infty$ 同胚意义下)？
+
+已知:
+\begin{enumerate}
+    \item $\mathbb{R}^m(m \neq 4)$ 存在唯一的 $C^\infty$ 结构.
+    \item $\mathbb{R}^4$ 存在无数个互不等价的 $C^\infty$ 结构.
+    \item $S^7$:Milnor 怪球,存在 28 个互不等价的 $C^\infty$ 结构.
+    \item 维度大于 3 时,总存在拓扑流形没有 $C^\infty$ 结构.
+\end{enumerate}
+
+\subsubsection{单位分解}
+
+\begin{lemma}[引理1]
+设 $D_1, D_2$ 是 $\mathbb{R}^m$ 中的开的同心球,$\bar{D}_1 \subset D_2$,则存在 $f \in C^\infty(\mathbb{R}^m)$ 使得
+\begin{enumerate}
+    \item $0 \leq f \leq 1$;
+    \item $f|_{D_1} \equiv 1, f|_{\mathbb{R}^m \setminus D_2} \equiv 0$.
+\end{enumerate}
+\end{lemma}
+
+证:令 $0 < a < b$ 分别为 $D_1, D_2$ 的半径,
+
+\[
+g(t) = 
+\begin{cases}
+e^{\frac{t}{(t-a^2)(t-b^2)}} & t \in (a^2, b^2)\\
+0 & t \notin (a^2, b^2)
+\end{cases}
+\]
+
+$g \in C^\infty(\mathbb{R})$,再令
+
+\[
+F(t) = \frac{\int_{t}^{+\infty} g(s) ds}{\int_{-\infty}^{+\infty} g(s) ds}
+\]
+
+有 $0 \leq F(t) \leq 1$,且
+
+\[
+F(t) = 
+\begin{cases} 
+1 & t \leq a^2 \\ 
+0 & t \geq b^2 
+\end{cases}
+\]
+
+取 $f(x^1, \ldots, x^m) = F((x^1)^2 + \cdots + (x^m)^2) \in C^\infty(\mathbb{R}^m)$ 即可.
+
+注:亦可利用示性函数与磨光算子的卷积得到该函数.
+
+由引理1,利用紧性我们可以证明
+
+\begin{lemma}[引理2]
+设 $U, V$ 是 $\mathbb{R}^m$ 中的开集,$\bar{V} \subset U$,$\bar{V}$ 紧,则存在 $f \in C^\infty(\mathbb{R}^m)$ 使得
+\begin{enumerate}
+    \item $0 \leq f \leq 1$;
+    \item $f|_V \equiv 1, f|_{\mathbb{R}^m \setminus U} \equiv 0$.
+\end{enumerate}
+\end{lemma}
+
+利用微分流形与欧式空间之间的局部同胚性可得到:
+
+\begin{lemma}[引理3]
+设 $U, V$ 是 $M^m$ 上的非空开集,$\bar{V} \subset U$,$\bar{V}$ 紧,则存在 $f \in C^\infty(M^m)$ 使得
+\begin{enumerate}
+    \item $0 \leq f \leq 1$;
+    \item $f|_V \equiv 1, f|_{M^m \setminus U} \equiv 0$.
+\end{enumerate}
+\end{lemma}
+
+\begin{definition}
+\begin{enumerate}
+    \item 设 $\{A_\alpha\}_{\alpha \in \Lambda}$ 是 $M$ 的覆盖,如果 $\forall p \in M$ 都存在 $p$ 的邻域 $U$ 使得 $U$ 只与有限个 $A_\alpha$ 相交,则称 $\{A_\alpha\}_{\alpha \in \Lambda}$ 是 $M$ 的局部有限的覆盖.
+    \item 设 $\{U_\alpha\}_{\alpha \in \Lambda}$ 和 $\{V_\beta\}_{\beta \in \Lambda'}$ 是 $M$ 的两个覆盖.如果 $\forall \beta \in \Lambda'$,$\exists \alpha \in \Lambda$,使得 $V_\beta \subset U_\alpha$,则称 $\{V_\beta\}_{\beta \in \Lambda'}$ 是 $\{U_\alpha\}_{\alpha \in \Lambda}$ 的加细.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+$M$ 拓扑空间,如果 $M$ 的任意开覆盖 $\{U_\alpha\}_{\alpha \in \Lambda}$ 均存在局部的加细,则称 $M$ 是仿紧的.
+\end{definition}
+
+现设 $M$ 是 $m$ 维 $C^\infty$ 流形,$\{A_\alpha\}_{\alpha \in \Lambda}$ 是 $M$ 的开覆盖.由 $M$ 满足第二可数公理知,$\{A_\alpha\}_{\alpha \in \Lambda}$ 存在可数的加细 $\{U_j\}_{j \in \mathbb{Z}}$,实际上可以取到 $\{A_\alpha\}_{\alpha \in \Lambda}$ 的加细 $\{(U_j, \varphi_j)\}_{j \in \mathbb{Z}}$.
+
+\begin{lemma}
+设 $M$ 是 $m$ 维 $C^\infty$ 流形,$\{A_\alpha\}_{\alpha \in \Lambda}$ 是 $M$ 的任意开覆盖,则存在由可数坐标构成的 $\{A_\alpha\}_{\alpha \in \Lambda}$ 的加细 $\{(U_j, \varphi_j)\}_{j \in \mathbb{Z}}$ 使得 $\varphi_j(U_j) = B^m_1(0)$,且 $\{V_j = \varphi_j^{-1}(B^m_1(0))\}_{j \in \mathbb{Z}}$ 也是 $M$ 的开覆盖.
+\end{lemma}
+
+\begin{definition}
+设 $M$ 是 $m$ 维 $C^\infty$ 流形,$\{f_i \in C^\infty(M)\}_{i \in \mathbb{N}}$ 满足:
+\begin{enumerate}
+    \item $0 \leq f_i \leq 1$;
+    \item $\sum f_i = 1$;
+    \item $\{\text{supp } f_i\}$ 是 $M$ 的局部有限覆盖(其中 $\text{supp } f = \overline{\{q|f(q) \neq 0\}}$),
+\end{enumerate}
+则称 $\{f_i\}$ 是 $M$ 的单位分解.
+\end{definition}
+
+注:$\sum f_i$ 中只有有限项非零.
+
+\begin{theorem}
+$M$ 是 $m$ 维 $C^\infty$ 流形,一定存在单位分解 $\{f_i\}$.
+\end{theorem}
+
+证:设 $\{A_\alpha\}_{\alpha \in A}$ 是 $M$ 的任意开覆盖,由上述引理知存在局部有限的加细 $\{(U_j, \varphi_j)\}$ 和加细 $\{(V_j, \varphi_j)\}$.对于 $B_{1}^{m}(0) \subset B_{2}^{m}(0) \subset \mathbb{R}^m$,存在 $f_j \in C^\infty(\mathbb{R}^m)$,$f_i|_{B_{1}^{m}(0)} = 1$,$f_i|_{\mathbb{R}^m \setminus B_{2}^{m}(0)} = 0$.令 $\tilde{f}_i = f_i \circ \varphi_i \in C^\infty(M)$,$V_i \subset \text{supp } f_i \subset U_i \Rightarrow \{\text{supp } f_i\}$ 构成 $M$ 的局部有限覆盖.
+
+令
+
+\[
+f = \sum \tilde{f}_i \in C^\infty(M), \quad g_i = \frac{\tilde{f}_i}{f} \in C^\infty(M)
+\]
+
+显然 $\{g_i\}$ 为所求单位分解(从属于开覆盖 $\{A_\alpha\}_{\alpha \in A}$ 的单位分解).
+
+\subsection{切丛}
+
+\subsubsection{切空间、余切空间}
+
+如何给定 $C^\infty$ 流形 $M^m$ 上每点的切空间和过一点的曲线的切向量？用 $C_p^\infty(M)$ 表示 $M$ 上在 $p$ 点处的 $C^\infty$ 函数全体.我们称下列映照
+
+\[
+X : C_p^\infty(M) \rightarrow \mathbb{R}, \quad X(f) = \frac{d}{dt}[f(c(t))]|_{t=t_0}
+\]
+
+为 $c(t)$ 在 $p$ 处的切向量.
+
+$C_p^\infty(M)$ 上可引入 "+", "·" 运算.且 $\forall f, g \in C_p^\infty(M)$,$X$ 满足:
+\begin{enumerate}
+    \item $X(a f + b g) = a X(f) + b X(g)$;
+    \item $X(f \cdot g) = X(f)g(p) + f(p)X(g)$.
+\end{enumerate}
+
+证:$X(f \cdot g) = \frac{d}{dt}(f(c(t))g(c(t))) |_{t=t_0} = X(f)g(p) + f(p)X(g)$.
+
+令 $T_p M = \{X \mid X \text{ 是过 } p \text{ 的曲线的切向量}\}$,称为 $M$ 在 $p$ 处的切空间.
+
+定义 $\tilde{T}_p M = \{ \tilde{X} : C_p^\infty(M) \rightarrow \mathbb{R}, \text{ 满足 } (1),(2)\}$(于是有 $T_p M \subset \tilde{T}_p M$).
+
+可以证明:
+
+\[
+\begin{cases}
+(\tilde{X}_1 + \tilde{X}_2)(f) = \tilde{X}_1(f) + \tilde{X}_2(f) \\
+(a \tilde{X})(f) = a \tilde{X}(f)
+\end{cases}
+\]
+
+均满足 (1),(2).即 $\tilde{T}_p M$ 是向量空间.(注:对于微分流形来说 $\tilde{T}_p M = T_p M$)
+
+但 $C_p^\infty(M)$ 不是向量空间,故引入 $C^\infty$ 函数芽的概念.对于光滑流形 $M^m$,取 $(U, \varphi; x^i)$.我们知道
+
+$\varphi: U \rightarrow \varphi(U)$ 是 $C^\infty$ 同胚,$\varphi^{-1} : \varphi(U) \rightarrow U, (x^1, \ldots, x^m) \rightarrow \varphi^{-1}(x^1, \ldots, x^m)$ 亦 $C^\infty$ 同胚.
+
+如果固定所有坐标,让 $x^i$ 变化,得到 $C^\infty$ 曲线 $\varphi^{-1}(x^1, \ldots, x^m)$,称为 $x^i$ 曲线 $(1 \leq i \leq m)$,过每点 $q \in U$ 有 $m$ 条坐标曲线,用 $\big(\frac{\partial}{\partial x^i}\big)_p$ 表示 $\varphi^{-1}(x^1, \ldots, x^m)$ 在 $p$ 处的切向量 $X_i$:
+
+\[
+X_i(f) = \frac{d}{dx^i}[f \circ \varphi^{-1}(x^1, \ldots, x^m)]|_{\varphi(p)} = \left[\frac{\partial}{\partial x^i}(f \circ \varphi^{-1})\right]|_{\varphi(p)}
+\]
+
+$\Rightarrow \big(\frac{\partial}{\partial x^i}\big)_p \in T_pM$.
+
+\begin{proposition}
+$T_pM$ 是 $m$ 维向量空间,$\{\big(\frac{\partial}{\partial x^i}\big)_p\}$ 构成其一组基.
+\end{proposition}
+
+证明:设 $(x^1(t), \ldots, x^m(t)) = \varphi \circ c(t)$,
+
+\[
+X(f) = \frac{d}{dt}[f(c(t))]|_{t=t_0} = \frac{d}{dt}[f \circ \varphi^{-1}(\varphi \circ c(t))]|_{t=t_0} = \frac{d}{dt}(x^i) \frac{\partial f}{\partial x^i} = a^i \frac{\partial f}{\partial x^i}.
+\]
+
+任给一个线性组合 $b^i(\frac{\partial}{\partial x^i})_p$,要找过 $p$ 点的曲线 $c(t)$ 使得 $\frac{d}{dt}x^i(t_0) = b^i$.
+
+不妨取 $x^i(t) = d^i + b^i(t - t_0), c(t) = \varphi^{-1}(x^1(t), \ldots, x^m(t))$,则 $c'(t_0) = b^i(\frac{\partial}{\partial x^i})_p$.
+
+另外,$X = a^i(\frac{\partial}{\partial x^i})_p, Y = b^i(\frac{\partial}{\partial x^i})_p, a, b \in \mathbb{R}$,则有
+
+\[
+aX + bY = (aa^i + bb^i)(\frac{\partial}{\partial x^i})_p \in T_pM
+\]
+
+这样就证明了其为向量空间.
+
+下证 $(\frac{\partial}{\partial x^i})_p$ 线性无关.可设 $a^i(\frac{\partial}{\partial x^i})_p = 0$,取 $x^j = \pi^j \circ \varphi \in C^\infty(M)$,则有 $\frac{\partial}{\partial x^i}x^j = \delta_{ij}$,因此:
+
+\[
+a^i(\frac{\partial}{\partial x^i})_p(x^j) = a^j = 0, \forall j.
+\]
+
+引入等价关系:
+
+\[
+\forall f, g \in C_p^\infty, f \sim g \iff \exists p \text{ 的充分小邻域 } W, \text{ 使得 } f|_W = g|_W
+\]
+
+得到商空间 $\mathcal{F}_p^\infty = C_p^\infty / \sim$,为向量空间,称为 $C^\infty$ 函数芽空间,则 $X : \mathcal{F}_p^\infty \rightarrow \mathbb{R}$ 定义为 $X([f]) = X(f)$.
+
+设 $V$ 是 $m$ 维向量空间,$e_i$ 为一组基,$V^* = \{w : V \rightarrow \mathbb{R} \text{ 线性函数}\}$ 也是向量空间,以 $w^i$ 为一组基,其中 $w^i(e_j) = \delta_{ij}$.
+
+设 $M^m$ 是 $m$ 维 $C^\infty$ 流形,$T_pM$ 是切空间.$T_p^*M$ 表示其对偶空间,称为 $M$ 在点 $p$ 处的余切空间.
+
+$X \in T_pM, f \in C_p^\infty$ 有方向导数 $X(f) = \omega_f(X)$,这里 $\omega_f : T_pM \rightarrow \mathbb{R}$.
+
+固定 $f \in C_p^\infty$,让 $X$ 在 $T_pM$ 中变化,得到线性函数 $\omega_f \in T_p^*M$,即:
+
+\[
+\omega_f(aX + bY) = a\omega_f(X) + b\omega_f(Y)
+\]
+
+记 $\omega_f$ 为 $(df)_p$,称为 $f$ 在 $p$ 点的微分.
+
+任取含 $p$ 的坐标系 $(U, \varphi, x^i)$,$x^i : U \rightarrow \mathbb{R}$,$x^i \in C^\infty(U)$,因此有 $(dx^i)_p \in T_p^*M$,$(dx^i)_p[(\frac{\partial}{\partial x^i})_p] = (\frac{\partial}{\partial x^i})_p(x^i) = \delta_{ij}$ $\Rightarrow$ $(dx^i)_p$ 构成 $T_p^*M$ 的基,称为自然基.
+
+$\forall f \in C_p^\infty$,$(df)_p \in T_p^*M$,$(df)_p = a_i(dx^i)_p$,两边作用 $(\frac{\partial}{\partial x^i})_p$ 得:
+
+\[
+(df)_p(\frac{\partial}{\partial x^i})_p = a_i(dx^i)_p(\frac{\partial}{\partial x^i})_p = a_j = (\frac{\partial}{\partial x^i})_p(f)
+\]
+
+\[
+\Rightarrow (df)_p = [(\frac{\partial}{\partial x^i})_p f](dx^i)_p.
+\]
+
+\subsubsection{切丛}
+
+$M^m$ 为 $m$ 维 $C^\infty$ 流形,在每一点有 $m$ 维向量空间 $T_pM$,$TM = \cup_{p \in M} T_pM$ 称为 $M$ 的切丛.$\pi:TM \rightarrow M$,$\pi(X) = p$(若 $X \in T_pM$).
+
+任取局部坐标系 $(U, \varphi, x^i)$,我们来考察 $\pi^{-1}(U)$.借助自然基 $(\frac{\partial}{\partial x^i})_p$,有双射:
+
+\[
+\hat{\Phi}: \pi^{-1}(U) \overset{\Phi}{\rightarrow} U \times \mathbb{R}^m \xrightarrow{\varphi \times id_{\mathbb{R}^m}} \varphi(U) \times \mathbb{R}^m
+\]
+
+其中 $X = \xi^i(\frac{\partial}{\partial x^i})_p$,$\Phi(X) = (\pi(X), (\xi^1, \ldots, \xi^m))$,$\hat{\Phi}(X) = (x^1, \ldots, x^m; \xi^1, \ldots, \xi^m)$.
+
+我们要赋予 $TM$ 一个自然拓扑结构使得 $\pi^{-1}(U)$ 是 $TM$ 的开子集且 $\hat{\Phi} : \pi^{-1}(U) \rightarrow \varphi(U) \times \mathbb{R}^m$ 为同胚.
+\begin{enumerate}
+    \item $(U_i, \varphi_i)$ 是由坐标系构成的 $M$ 的拓扑基.
+    \item $\hat{\Phi}_i : \pi^{-1}(U_i) \rightarrow \varphi_i(U_i) \times \mathbb{R}^m$ 双射,用 $\hat{\Phi}_i$ 定义 $\pi^{-1}(U_i)$ 的开子集.
+\end{enumerate}
+
+由所有 $\pi^{-1}(U_i)$ 的开子集构成 $TM$ 的拓扑基 $\Rightarrow TM$ 成为 $2m$ 维拓扑流形.
+
+$(U_\alpha, \varphi_\alpha)$ 是 $M$ 的 $C^\infty$ 的坐标图册,则 $\bar{\mathcal{F}} = \{(\pi^{-1}(U_\alpha), \hat{\Phi}_\alpha)\}$ 是 $TM$ 的坐标图册.即 $(TM,[\bar{\mathcal{F}}])$ 为 $2m$ 维 $C^\infty$ 流形.
+
+问题 1: $[fX, gY] = ?$
+
+问题 2: $(G \circ F)^* = F^* \circ G^*$,如果每点 $F_p$ 为线性同构,能否说明 $F$ 为 $C^\infty$ 同胚？
+
+问题 3: $F : M \rightarrow N$ 微分同胚,$X \in \mathfrak{X}(M)$,说明 $Y = dF(X) \in \mathfrak{X}(N)$.若 $F$ 不是微分同胚,则 $Y \notin \mathfrak{X}(N)$(将 $X$ 表示成基的线性组合即得).
+
+\subsubsection{向量场}
+
+\begin{definition}
+$E, M$ 为 $C^\infty$ 流形,$\pi : E \to M$ 是 $C^\infty$ 满射.$\forall p \in M$,$\pi^{-1}(p)$ 是 $\mathbb{R}$ 上的 $k$ 维向量空间,且存在 $p$ 的邻域 $U$ 及 $C^\infty$ 同胚 $\Psi : \pi^{-1}(U) \to U \times \mathbb{R}^k$ 满足:
+\[
+\begin{array}{ccc}
+\pi^{-1}(U) & \xrightarrow{\Psi} & U \times \mathbb{R}^k \\
+\pi & \searrow & \nearrow \pi_1 \\
+& U
+\end{array}
+\]
+其中 $\pi_1 \circ \Psi = \pi$,且 $\forall p \in U$,$\Psi|_{E_p} : E_p \to \mathbb{R}^k$ 为线性同构,则称 $E$ 为 $M$ 上的秩为 $k$ 的向量丛($E$ 称为丛空间,$M$ 称为底空间,$\pi^{-1}(p)$ 称为纤维).
+\end{definition}
+
+$U \times \mathbb{R}^k \xrightarrow{\pi_1} U$ 是 $U$ 上的平凡丛.
+
+$\Psi : \pi^{-1}(U) \to U \times \mathbb{R}^k$ 从同构,称为局部平凡化.
+
+设 $\{U_\alpha, \varphi_\alpha\}_{\alpha \in \Lambda}$ 是 $M$ 的坐标图册,$\Psi_\alpha : \pi^{-1}(U_\alpha) \to U_\alpha \times \mathbb{R}^k$ 为局部平凡化,则 $\forall \alpha, \beta \in \Lambda, U_\alpha \cup U_\beta \neq \emptyset$,我们有:
+
+\[
+\begin{aligned}
+&\Psi_\alpha |_{E_q} : E_q = \pi^{-1}(q) \to \mathbb{R}^k & \text{线性同构} \\
+&\Psi_\beta |_{E_q} : E_q = \pi^{-1}(q) \to \mathbb{R}^k & \text{线性同构}
+\end{aligned}
+\]
+
+因此
+
+\[
+\Psi_{\alpha \beta}(q) \triangleq \left( \Psi_\alpha |_{E_q} \right) \circ \left( \Psi_\beta |_{E_q} \right)^{-1} \in GL(k, \mathbb{R})
+\]
+
+为线性同构,即为 $C^\infty$ 映照,称为 $E$ 的转移函数.
+
+\begin{itemize}
+    \item $\{\Psi_{\alpha \beta} : U_\alpha \cap U_\beta \to GL(k, \mathbb{R})\}$ 满足 $\Psi_{\gamma \beta} \circ \Psi_{\beta \alpha} = \Psi_{\gamma \alpha}$.
+    \item $E = \bigcup_{\alpha \in \Lambda} (U_\alpha \times \mathbb{R}^k)/\{\Psi_{\beta \alpha}\}$,等价关系为 $(q, \xi) \in U_\alpha \times \mathbb{R}^k$,$(q, \eta) \in U_\beta \times \mathbb{R}^k$,$(q, \xi) \sim (q, \eta) \iff \eta = \Psi_{\beta \alpha}(\xi)$.
+\end{itemize}
+
+切丛:$TM = \bigcup_{p \in M} T_pM$.
+
+余切丛:$T^*M = \bigcup_{p \in M} T_p^*M$.
+
+$E$ 向量丛 $\Rightarrow$ 对偶丛 $E^* = \bigcup_p E_p^*$.
+
+\begin{definition}
+设 $E \xrightarrow{\pi} M$ 是秩为 $k$ 的向量丛,$U \subset M$ 开子集,$S : U \to E$ 是 $C^\infty$ 映照,满足 $\pi \circ S = id_U$,即 $\pi \circ S(q) = q, \forall q \in U$,则称 $S$ 是 $E$ 在 $U$ 上的 $C^\infty$-截面.
+\end{definition}
+
+$\Gamma(E|_U) \triangleq \{S : U \to E \ C^\infty\text{-映照},\pi \circ S = id_U\}$.
+
+$\Gamma(E) \triangleq \{S : M \to E \ C^\infty\text{-映照},\pi \circ S = id_M\}$.
+
+$\forall S_1, S_2 \in \Gamma(E|_U), f_1, f_2 \in C^\infty(U) \Rightarrow f_1 S_1 + f_2 S_2 \in \Gamma(E|_U)$.
+
+特别地,$aS_1 + bS_2 \in \Gamma(E|_U)$($\Gamma(E|_U)$ 为 $\infty$ 维向量空间).
+
+\begin{definition}
+设 $E \to M$ 是秩为 $k$ 的向量丛,$U \subset M$ 开子集,$S_1, \cdots, S_k \in \Gamma(E|_U)$ 满足 $\forall q \in U$,$S_1(q), \cdots, S_k(q)$ 是 $\pi^{-1}(q)$ 的基,则称 $\{S_1, \cdots, S_k\}$ 是 $E$ 在 $U$ 上的标架场.
+\end{definition}
+
+当 $E = TM$ 时,
+
+\begin{definition}
+设 $U \subset M$ 开子集,则 $X \in \Gamma(TM|U)$ 称为 $U$ 上的 $C^\infty$-向量场,简记 $\Gamma(TM|U) = \mathfrak{X}(U)$,$\Gamma(TM) = \mathfrak{X}(M)$.
+\end{definition}
+
+\begin{proposition}
+设 $X : M \to TM$ 满足 $\pi \circ X = id_M$,则 $X \in \mathfrak{X}(M) \iff \forall p$,存在 $p$ 的允许坐标系 $(U, \varphi; x^i)$,使得 $X|_U = \sum \xi_i \frac{\partial}{\partial x^i}$,且 $\xi_i \in C^\infty(U)$.
+\end{proposition}
+
+证:$X$ 的局部表示:$\Psi \circ X|_U \circ \varphi^{-1} : \varphi(U) \to \varphi(U) \times \mathbb{R}^m$,$\Psi \circ X|_U \circ \varphi^{-1}(x^1, \cdots, x^m) = (x^1, \cdots, x^m, \xi^1 \circ \varphi^{-1}, \cdots, \xi^m \circ \varphi^{-1})$.
+
+故 $X \in \mathfrak{X}(M) \iff \xi^i \circ \varphi^{-1} \in C^\infty \iff \xi^i \in C^\infty(U)$.
+
+局部标架场的例子:
+\begin{itemize}
+    \item $M$,$TM$,$(U, \varphi; x^i)$,$TM|_U$.
+    \item $\forall q \in U$,$T_qM$ 的一组基 $\left\{ \frac{\partial}{\partial x^i} \right\}_q$ 构成 $TM$ 在 $U$ 上的局部标架场.
+    \item $M$,$T^*M$,$(U, \varphi; x^i)$,$T^*M|_U$.
+    \item $\forall q \in U$,$T_q^*M$ 的一组基 $\left\{ dx^i \right\}$ 构成 $T^*M$ 在 $U$ 上的局部标架场.
+\end{itemize}
+
+对于 $C^\infty$-向量场 $X \in \mathfrak{X}(M) = \Gamma(TM)$,$\mathfrak{X}(M)$ 是 $C^\infty(M)$-模,即 $\forall f, g \in C^\infty(M)$,$X, Y \in \mathfrak{X}(M) \Rightarrow fX + gY \in \mathfrak{X}(M)$(用局部标架场表示即得).
+
+再利用 $X$ 在局部标架场下的表示可得:$\forall X \in \mathfrak{X}(M), f \in C^\infty(M)$,$Xf \in C^\infty(M)$.
+
+定义 $\mathfrak{X}(M)$ 上的“乘法”运算:
+
+\[
+[\, , \,] : \mathfrak{X}(M) \times \mathfrak{X}(M) \to \mathfrak{X}(M), \quad (X, Y) \to [X, Y]
+\]
+
+其中 $[X, Y]f \triangleq X(Yf) - Y(Xf), \forall f \in C^\infty(M)$.
+
+\begin{proposition}
+$[X, Y] \in \mathfrak{X}(M)$.
+\end{proposition}
+
+证:在允许坐标系 $(U, x^i)$ 内,
+
+\[
+X|_U = \sum_i \xi_i \frac{\partial}{\partial x^i}, \quad Y|_U = \sum_i \eta_i \frac{\partial}{\partial x^i}.
+\]
+
+利用定义,消去二阶项,则有
+
+\[
+[X, Y]_p f = \left[ \sum_{i,j} \left( \xi_i \frac{\partial \eta^j}{\partial x^i} - \eta_j \frac{\partial \xi^j}{\partial x^i} \right) \left( \frac{\partial}{\partial x^j} \right)_p \right] f, \quad \forall f \in C_p^\infty.
+\]
+
+因此有
+
+\[
+[X,Y]_p = \sum_{i,j} \left( \xi^i \frac{\partial \eta^j}{\partial x^i} - \eta^j \frac{\partial \xi^j}{\partial x^i} \right) \left( \frac{\partial }{\partial x^j} \right)_p \in T_pM, \quad \forall p \in U.
+\]
+
+由 $p, U$ 的任意性知:$[X,Y] \in \mathfrak{X}(M)$. $\square$
+
+$[X,Y]$ 满足:
+\begin{enumerate}
+    \item $[aX_1 + bX_2, Y] = a[X_1, Y] + b[X_2, Y], \forall X_1, X_2, Y \in \mathfrak{X}(M)$(分配律);
+    \item $[X,Y] = -[Y,X]$(反交换律);
+    \item $[[X,Y], Z] + [[Y,Z], X] + [[Z,X], Y] = 0, \forall X, Y, Z \in \mathfrak{X}(M)$(Jacobi 恒等式)(验证是直接的,略去).
+\end{enumerate}
+
+\begin{definition}
+$\mathcal{F}$ 向量空间,具有乘法 $[\, , \,]$ 满足 (1), (2), (3),则称 $\mathcal{F}$ 为 Lie 代数.(因此 $\mathfrak{X}(M)$ 是 $\infty$-维 Lie 代数),$[\, , \,]$ 称为 Lie 括号.
+\end{definition}
+
+\subsubsection{切映照、反函数定理、秩定理}
+
+设 $M^m, N^n$ 是 $C^\infty$ 流形,$F : M \to N$ 是 $C^\infty$ 映照.
+任一过 $p$ 点的曲线 $c(t)$,$c(0) = p$,$c'(0) = X$,则对应有过 $q = F(p)$ 的曲线 $F(c(t))$,切向量为 $Y$,这诱导了切空间之间的映照:
+
+\[
+F_{*p} : T_pM \to T_qN, \quad F_{*p}(X) = Y = F'(c(0))
+\]
+
+是线性映照,称为切映照.
+任取函数 $f \in C_q^\infty$,则
+
+\[
+Y(f) = F_{*p}(X)(f) = \frac{d}{dt}[f(F(c(0)))] = X(f \circ F)
+\]
+
+因此可得:
+\[
+F_{*p}(aX_1 + bX_2)(f) = aF_{*p}(X_1)(f) + bF_{*p}(X_2)(f), \text{即 } F_{*p}(aX_1 + bX_2) = aF_{*p}(X_1) + bF_{*p}(X_2).
+\]
+
+回忆 $\varphi : V \to W$ 为向量空间之间的线性映照,对偶映照 $\varphi^* : W^* \to V^*$ 定义为:$\forall w^* \in W^*$,
+
+\[
+(\varphi^*w^*) (v) := w^*(\varphi(v)), \forall v \in V.
+\]
+
+显然 $\varphi^* : W^* \to V^*$ 是线性的,也称为拉回映照.
+由上,$\forall p \in M$,有线性映照 $F_{*p} : T_pM \to T_qN$,则有拉回映照 $F^* : T_p^*N \to T_p^*M$.
+
+\begin{proposition}
+设 $F : M \to N, G : N \to W$ 是 $C^\infty$ 流形之间的 $C^\infty$ 映照,则:
+\begin{enumerate}
+    \item $(G \circ F)_{*p} = G_{*F(p)} \circ F_{*p} : T_pM \to T_{G(F(p))}W$(链式法则),其中 $q = F(p), s = G(q)$,且 $(G \circ F)^* = F^* \circ G^*$.
+    \item 如果 $F: M \to N$ 是 $C^\infty$-同胚,则 $\forall p \in M$,$F_{*p}: T_pM \to T_qN$ 是线性同构.
+\end{enumerate}
+\end{proposition}
+
+设 $M^m, N^n$ 是 $C^\infty$ 流形,$F: M \to N$ 是 $C^\infty$ 映照.
+$q = F(p)$.任取含 $p, q$ 的坐标系 $(U, \varphi, x^i)$,$(V, \psi, y^a)$.
+
+\begin{proposition}
+\begin{enumerate}
+    \item $F_{*p}(\frac{\partial}{\partial x^i})_p = (\frac{\partial}{\partial x^i})_p(y^a \circ F)(\frac{\partial}{\partial y^a})_q$,则表示矩阵为 $D\tilde{F} = (\frac{\partial F^a}{\partial x^i})$($n \times m$ 阶矩阵).
+    \item $F^*((dy^a)_q) = (\frac{\partial}{\partial x^i})_p(y^a \circ F)(dx^i)_p$.
+\end{enumerate}
+\end{proposition}
+
+\begin{definition}
+\begin{enumerate}
+    \item $F$ 在 $p$ 点的秩定义为 $F_{*p}$ 的秩 $= \text{rank}(D\tilde{F})_{\varphi(p)}$,记成 $r(F_{*p})$.
+    \item 如果 $F_{*p}: T_pM \to T_qN$ 是单射,即 $r(F_{*p}) = m$,则称 $F$ 在 $p$ 点处是浸入;如果 $F$ 在每一点处都是浸入,则称 $F: M \to N$ 是浸入.
+    \item 如果 $F_{*p}: T_pM \to T_qN$ 是满射,即 $r(F_{*p}) = n$,则称 $F$ 在 $p$ 点处是浸没;如果 $F$ 在每一点处都是浸没,则称 $F: M \to N$ 是浸没.
+\end{enumerate}
+\end{definition}
+
+反函数定理:设 $U \subset \mathbb{R}^m, V \subset \mathbb{R}^m$ 是开子集,$F: U \to V$ 是 $C^\infty$-映照,$p \in U, q = F(p) \in V$.如果 $DF(p)$ 非退化,则存在分别含 $p, q$ 的小邻域 $U_1, V_1$,使得 $F: U_1 \to V_1$ 为 $C^\infty$-同胚.
+
+流形上的反函数定理:$F: M \to N$ 是 $C^\infty$ 映照,$p \in M, q = F(p) \in N$,如果 $F_{*p}: T_pM \to T_qN$ 为线性同构,则存在分别含 $p, q$ 的小邻域 $U_1, V_1$,使得 $F: U_1 \to V_1$ 为 $C^\infty$-同胚.
+
+$F: M^m \to N^n$,在开子集 $U$ 上秩为 $k$,是否存在微分同胚 $G, H$ 使得 $H \circ F \circ G$ 简化？
+
+\textbf{秩定理}
+
+设 $F: M^m \to N^n$ 是 $C^\infty$ 映照,如果 $F$ 在 $p$ 的一个邻域内的秩为 $k$,则存在含 $p$ 的坐标系 $(U, \varphi, x^i)$ 和含 $q = F(p)$ 的坐标系 $(V, \psi, y^a)$,满足:
+
+\[
+\varphi(p) = (0, \ldots, 0) \in \mathbb{R}^m, \quad \psi(q) = (0, \ldots, 0) \in \mathbb{R}^n
+\]
+
+且
+
+\[
+\tilde{F}(x^1, \ldots, x^m) = \psi \circ F \circ \varphi^{-1}(x^1, \ldots, x^m) = (x^1, \ldots, x^k, 0, \ldots, 0).
+\]
+
+证明:通过选取允许坐标系我们不妨设 $M$ 和 $N$ 为开子集 $U \subset \mathbb{R}^m$ 和 $V \subset \mathbb{R}^n$.$DF(p)$ 秩为 $r$ 表示其存在 $r$ 阶子式非零.通过坐标重排,不妨设 $r$ 阶子式在左上角.$(\partial F^i / \partial x^j) i, j = 1, \ldots, r$.
+
+重新对坐标编号,$(x, y) = (x^1, \ldots, x^r, y^1, \ldots, y^{m-r}) \in \mathbb{R}^m$,$(v, w) = (v^1, \ldots, v^r, w^1, \ldots, w^{n-r}) \in \mathbb{R}^n$.不妨设 $p = (0, 0)$ 且 $F(p) = (0, 0)$.记 $F(x, y) = (Q(x, y), R(x, y))$,其中 $Q: U \to \mathbb{R}^r$ 而 $R: U \to \mathbb{R}^{n-r}$,则假设等价于 $(\partial Q^i / \partial x^j)$ 在 $(0, 0)$ 点非奇异.
+
+定义 $\varphi : U \rightarrow \mathbb{R}^m$ 为 $\varphi(x,y) = (Q(x,y),y)$.其在 $(0,0)$ 处的 Jacobian 阵为
+\[
+D\varphi(0,0) = 
+\begin{pmatrix}
+\frac{\partial Q^i}{\partial x^j}(0,0) & \frac{\partial Q^i}{\partial y^j}(0,0)\\
+0 & \delta_j^i
+\end{pmatrix}
+\]
+矩阵 $D\varphi(0,0)$ 非异.因此由反函数定理知,存在 $(0,0)$ 的连通的邻域 $U_0$ 及 $\varphi(0,0) = (0,0)$ 点的连通邻域 $\tilde{U}_0$ 满足 $\varphi : U_0 \rightarrow \tilde{U}_0$ 为微分同胚.通过缩小 $U_0$ 和 $\tilde{U}_0$ 我们不妨设 $\tilde{U}_0$ 为开矩形.记逆映射为 $\varphi^{-1}(x,y) = (A(x,y),B(x,y))$,其中 $A : \tilde{U}_0 \rightarrow \mathbb{R}^r$,$B : \tilde{U}_0 \rightarrow \mathbb{R}^{m-r}$ 光滑,而
+\[
+(x,y) = \varphi(A(x,y),B(x,y)) = (Q(A(x,y),B(x,y)),B(x,y))
+\]
+因此
+\[
+\varphi^{-1}(x,y) = (A(x,y),y)
+\]
+另一方面,$\varphi \circ \varphi^{-1} = id$ 表明 $Q(A(x,y),y) = x$,因此 $F \circ \varphi^{-1}$ 有如下形式
+\[
+F \circ \varphi^{-1}(x,y) = (x,\tilde{R}(x,y))
+\]
+其中 $\tilde{R} : \tilde{U}_0 \rightarrow \mathbb{R}^{n-r}$ 定义为 $\tilde{R}(x,y) = R(A(x,y),y)$.其在 $(x,y) \in \tilde{U}_0$ 点的 Jacobian 阵为
+\[
+D(F \circ \varphi^{-1})(x,y) = 
+\begin{pmatrix}
+\delta_j^i & 0\\
+\frac{\partial \tilde{R}^i}{\partial x^j}(x,y) & \frac{\partial \tilde{R}^i}{\partial y^j}(x,y)
+\end{pmatrix}
+\]
+又因为 $\varphi$ 是微分同胚,秩在 $\tilde{U}_0$ 内处处为 $r$.因此 $\partial \tilde{R}^i/\partial y^j$ 在 $\tilde{U}_0$ 内为 0,表示 $\tilde{R}$ 与 $(y^1, \ldots, y^{m-r})$ 无关.因此 $S(x) = \tilde{R}(x,0)$,于是有
+\[
+F \circ \varphi^{-1}(x,y) = (x,S(x))
+\]
+最后,令 $V_0 \subseteq V$ 为开邻域 $V_0 = \{(v,w) \in V : (v,0) \in \tilde{U}_0\}$.(假设 $\tilde{U}_0 \subseteq V$,否则我们缩小 $\tilde{U}_0$ 即可)因此 $V_0$ 为 $(0,0)$ 的邻域.又因为 $\tilde{U}_0$ 为开矩形且 $F \circ \varphi^{-1}$ 有如上形式,所以 $F \circ \varphi^{-1}(\tilde{U}_0) \subseteq V_0$,因此 $F(U_0) \subseteq V_0$.
+
+定义 $\psi : V_0 \rightarrow \mathbb{R}^n$ 为 $\psi(v,w) = (v,w - S(v))$.这是一个微分同胚,其逆为 $\psi^{-1}(s,t) = (s,t + S(s))$;因此 $(V_0, \psi)$ 为一个光滑坐标卡.由此得
+\[
+\psi \circ F \circ \varphi^{-1}(x,y) = \psi(x,S(x)) = (x,S(x) - S(x)) = (x,0)
+\]
+命题得证.
+
+注:秩定理只是局部定理.
+
+\begin{definition}
+$M^m$ 为 $C^\infty$-流形,$(U, \varphi, x^i)$ 是其上的坐标系,任取 $0 \leq k \leq m$,$a = (a^1, a^2, \ldots, a^m) \in \varphi(U)$,$S = \{q \in U | x^{k+1}(q) = a^{k+1}, \ldots, x^m(q) = a^m \} \subset U$ 诱导子空间拓扑,成为局部欧式的 $k$ 维拓扑流形.
+\end{definition}
+
+\[
+\bar{\varphi} = \varphi|_S : S \to \varphi(S) \subset \mathbb{R}^k, \quad q \to (x^1(q), \ldots, x^k(q))
+\]
+于是 $S$ 成为 $k$ 维 $C^\infty$-流形,称为 $U$ 中 $k$ 维切片.
+
+\subsection{子流形}
+
+曲线:$c:(a,b) \to \mathbb{R}^3$,$c'(t) \neq 0$,即秩为 1.
+曲面:$F: \Omega \subset \mathbb{R}^2 \to \mathbb{R}^3$,$F_u, F_v$ 线性无关,秩为 2.
+
+\begin{definition}
+设 $F: M^m \to N^n$ 是 $C^\infty$-映照,如果 $F$ 在每点的秩为 $m$,则称 $(M,F)$ 是 $N$ 中的浸入子流形.如果 $F$ 又是单射,则称之为子流形.
+\end{definition}
+
+注:浸入子流形局部是单射,但全局上不一定是单射.
+
+例 1:$U$ 是 $M$ 的开子集,则开子流形 $i: U \to M$ 在每点的秩为 $m = \dim U$.
+例 2:$F: \mathbb{R} \to \mathbb{R}^2$ 是 $C^\infty$-映照,$F(t) = (2\cos(t - \frac{\pi}{2}), \sin2(t - \frac{\pi}{2}))$,$\text{rank}(DF) = 1$,$(\mathbb{R},F)$ 是浸入子流形但不满足子流形(可能自交).
+例 3:$G: \mathbb{R} \to \mathbb{R}^2$ 是 $C^\infty$-映照,$G(t) = (2\cos(\arctan t - \frac{\pi}{2}), \sin2(\arctan t - \frac{\pi}{2}))$,$\text{rank}(DG) = 1$,$(\mathbb{R},G)$ 是子流形.(虽然 $F(\mathbb{R}) = G(\mathbb{R})$)
+例 4:$\mathbb{R}^2$ 上引入等价关系:$(x_1, y_1) \sim (x_2, y_2) \Longleftrightarrow x_1 - x_2, y_1 - y_2 \in \mathbb{Z}$,环面 $T = \mathbb{R}^2 / \sim$.设 $c: (-\infty, +\infty) \to \mathbb{R}^2$ 是过原点斜率 $k$ 不为 0 的直线.
+\begin{enumerate}
+    \item $k$ 为有理数,$\pi \circ c : \mathbb{R} \to T^2$ 为单射,则 $(\mathbb{R}, \pi \circ c)$ 为浸入子流形.
+    \item $k$ 为无理数,存在 $t_0$ 使得 $x(t_0) = m, y(t_0) = n \in \mathbb{Z} \Rightarrow \pi \circ c(t_0) = \pi \circ c(0)$,$(\mathbb{R}, \pi \circ c)$ 为子流形(“稠密”).
+\end{enumerate}
+
+\begin{definition}
+设 $F : M^m \to N^n$ 是子流形,如果 $\forall p \in M$,$\exists F(p)$ 的允许坐标系 $(V, \psi, y^\alpha)$ 使得 $F(M) \cap V$ 是 $V$ 中的切片,则称 $(M, F)$ 为 $N$ 中的正则子流形.
+\end{definition}
+
+另外,$F(M) \subset N$ 可以从 $N$ 中诱导子空间拓扑,记为 $\mathcal{T}^N$.
+$F : M \to F(M)$ 是连续双射,可将 $M$ 上拓扑通过 $F$ 诱导为 $F(M)$ 上的拓扑,记为 $\mathcal{T}^M$.
+
+注:若 $F$ 为同胚,则两个拓扑相同.
+
+\begin{definition}
+如果 $\mathcal{T}^N = \mathcal{T}^M$,则称 $(M, F)$ 为嵌入子流形.
+\end{definition}
+
+\begin{theorem}
+设 $F : M^m \to N^n$ 是子流形,则 $(M, F)$ 为嵌入子流形 $\iff$ $(M, F)$ 为正则子流形.(参考自《黎曼几何初步》)
+\end{theorem}
+
+\begin{theorem}
+设 $F : M \to N$ 是子流形,如果 $M$ 是紧致的,则 $(M, F)$ 为嵌入子流形.
+\end{theorem}
+
+证:赋予 $F(M)$ 作为 $N$ 中子集所诱导的拓扑,即 $\mathcal{T}^N$,由 $M$ 紧,$N$:$T_2$,$F$ 连续单射,则 $F : M \to F(M)$ 为同胚. $\square$
+
+\begin{theorem}
+设 $F : M^m \to N^n$ 是 $C^\infty$-映照,$q \in N$,$P = F^{-1}(q)$.如果 $\forall p \in P$ 有 $r(F_{*p}) = n$,则 $P$ 具有唯一的 $C^\infty$-流形结构使 $(P, i)$($i$ 为包含映射)是 $M$ 的正则子流形且 $\dim P = m - n$.
+\end{theorem}
+
+证:由秩定理知,存在含 $p$ 的坐标系 $(U, \varphi, x^i)$ 和含 $q$ 的坐标系 $(V, \psi, y^\alpha)$,使得 $\varphi(p) = 0 \in \mathbb{R}^m$,$\psi(q) = 0 \in \mathbb{R}^n$($m \geq n$),$\varphi(U) = C^{m}_\delta(0)$,$\psi(V) = C^{n}_\delta(0)$.
+
+令 $\hat{F} : C^{m}_\delta(0) \to C^{n}_\delta(0)$,$\hat{F}(x^1, \ldots, x^n, \ldots, x^m) = (x^1, \ldots, x^n)$,则 $\varphi(P \cap U) = \hat{F}^{-1}(0) = \{(0, \ldots, 0, x^{n+1}, \ldots, x^m) \in C^{m}_\delta(0)\}$,可见 $P \cap U$ 是 $(U, \varphi, x^i)$ 中的 $m - n$ 维切片.
+$(P \cap U, \varphi_{P \cap U})$ 是局部坐标系,$\varphi_{P \cap U} : P \cap U \to C^{m-n}_\delta(0)$ 是同胚.用这些坐标系去覆盖 $P$,使 $P$ 成为 $m - n$ 维拓扑流形.$(P \cap U, \varphi_{P \cap U})$ 形成 $P$ 的一个坐标图册,任意的 $U \cap \tilde{U} \neq \emptyset$,$\varphi_{P \cap U} : P \cap U \to (x^{n+1}, \ldots, x^m)$,$\varphi_{P \cap \tilde{U}} : P \cap \tilde{U} \to (\tilde{x}^{n+1}, \ldots, \tilde{x}^m)$,则
+\[
+(\varphi_{P \cap \tilde{U}}) \circ (\varphi_{P \cap U})^{-1}(x^{n+1}, \ldots, x^m) = \varphi_{P \cap \tilde{U}} \circ \varphi^{-1}(0, \ldots, 0, x^{n+1}, \ldots, x^m) \in C^\infty
+\]
+$\Rightarrow P$ 成为 $m - n$ 维 $C^\infty$-流形且 $i : P \to M$ 为正则子流形(切片性质使得坐标图册中必须有 $\{(P \cap U, \varphi_{P \cap U})\}$,从而保证唯一性). $\square$
+
+\begin{corollary}
+设 $F : M^m \to N^n$ 是淹没($F(M) = N$),则 $\forall q \in N$,$F^{-1}(q)$ 为 $M$ 中 $m - n$ 维正则子流形.
+\end{corollary}
+
+例 $F: \mathbb{R}^m \rightarrow \mathbb{R}$,$F(x^1, \ldots, x^m) = \sum_{i=1}^m (x^i)^2$.$\forall a > 0$,$P = F^{-1}(a)$ 为 $\mathbb{R}^m$ 中的正则子流形.
+
+例 $G: \mathbb{R}^3 \rightarrow \mathbb{R}$,$G(x,y,z) = x^2 + y^2 - z^2$.$P = G^{-1}(0)$,$p = 0 \Rightarrow r(G_{*p}) = 0$,$p \neq 0 \Rightarrow r(G_{*p}) = 1$,因此 $P$(锥面)不是 $\mathbb{R}^3$ 的正则子流形.
+
+给定 $C^\infty$-流形 $M^m$,是否存在 $F: M \rightarrow \mathbb{R}^N$ 使得 $(M,F)$ 是 $\mathbb{R}^N$ 中子流形？
+
+$N = m + 1$ 不一定存在,但由 H.Whitney 定理:$F: M \rightarrow \mathbb{R}^{2m+1}$ 是正则子流形.
+
+\subsection{Frobenius 定理}
+
+\subsubsection{向量场的积分曲线}
+
+\begin{definition}
+设 $X \in \mathfrak{X}(M)$,$\gamma : (a,b) \rightarrow M$ 为 $C^\infty$-曲线,如果 $\gamma'(t) = X_{\gamma(t)}, \forall t \in (a,b)$,则称 $\gamma$ 为向量场 $X$ 的积分曲线.一般将 $p = \gamma(0)$ 称为 $\gamma$ 的初始点.
+\end{definition}
+
+给定 $X \in \mathfrak{X}(M), p \in M$,任取含 $p$ 的坐标系 $(U, \varphi, x^i)$,$\{\frac{\partial}{\partial x^i}\}$ 为自然基.
+
+\[
+X|_U = \sum_i \xi^i \frac{\partial}{\partial x^i}
+\]
+\[
+X|_{\gamma(t)} = \sum_i \xi^i (\gamma(t)) (\frac{\partial}{\partial x^i})|_{\gamma(t)}
+\]
+\[
+\gamma'(t) = \sum_i \frac{d}{dt} (x^i)(t) (\frac{\partial}{\partial x^i})|_{\gamma(t)}
+\]
+
+因此
+
+\[
+\gamma'(t) = X|_{\gamma(t)} \iff \sum_i \frac{d}{dt} (x^i)(t) (\frac{\partial}{\partial x^i})|_{\gamma(t)} = \sum_i \xi^i (\gamma(t)) (\frac{\partial}{\partial x^i})|_{\gamma(t)}
+\]
+\[
+\iff \frac{d}{dt} (x^i)(t) = \xi^i (\gamma(t)) = \xi^i (x^1(t), \ldots, x^m(t))
+\]
+
+其中 $\xi^i = \xi^i \circ \varphi^{-1}$,$\varphi(\gamma(t)) = (x^1(t), \ldots, x^m(t))$.
+
+因此积分曲线存在等价于上述中的 ODE 有解,由常微分方程理论知:
+
+\begin{proposition}
+设 $X \in \mathfrak{X}(M), p \in M$,则存在唯一的 $C^\infty$-曲线 $\gamma: (-\varepsilon_p, \varepsilon_p) \rightarrow M$ 成为 $X$ 的积分曲线.
+\end{proposition}
+
+进一步,取 $V \subset U$,使得 $\varphi(V) = C_\delta^m = \{(x^1, \ldots, x^m)| |x^i| < \delta, i = 1, \ldots, m\}$,则存在 $\epsilon > 0$,$\forall p \in V$,$\exists \gamma : (-\epsilon, \epsilon) \rightarrow M$ 为 $X$ 的以 $p$ 为初值的积分曲线.
+
+\begin{definition}
+设 $X \in \mathfrak{X}(M)$,如果 $X_p = 0$,则称 $p$ 为 $X$ 的奇点.
+\end{definition}
+
+例:对于二维单位球面,$\forall X \in \mathfrak{X}(S^2)$,$\exists p \in S^2$,使得 $X_p = 0$.
+
+回忆切丛概念:$TM: 2n$ 维切丛,$U \subset M$,$TU = \pi^{-1}(U) \overset{\pi}{\longleftarrow} U \overset{\pi_1}{\longrightarrow} U \times \mathbb{R}^m$,其中 $TU, U \times \mathbb{R}^m$ 为 $C^\infty$ 同胚,这体现了 $TU$ 可局部平凡化.但 $TM = \pi^{-1}(U) \overset{\pi}{\longleftarrow} M \overset{\pi_1}{\longrightarrow} M \times \mathbb{R}^m$,而 $TM, M \times \mathbb{R}^m$ 不一定为 $C^\infty$ 同胚,因此 $TM$ 不是平凡切丛.
+
+例:$TS^2$ 不是平凡切丛.
+
+\begin{theorem}
+设 $X \in \mathfrak{X}(M)$,如果 $X_p \neq 0$,则存在含 $p$ 的坐标系 $(U, \varphi, x^i)$ 使得 $X|_U = \frac{\partial}{\partial x^1}$,即 $x^1$ 曲线为 $X$ 在 $U$ 中的积分曲线.
+\end{theorem}
+
+证:任取含 $p$ 的坐标系 $(U, \varphi, u^i)$,$\varphi(p) = 0$,
+
+\[
+X|_U = \sum_i \xi^i \frac{\partial}{\partial u^i} \neq 0.
+\]
+
+不妨设 $\xi^1(p) \neq 0$ 且在 $U$ 内处处不为 0.
+
+思路:如果要得到所求 $X|_U$ 的形式,两边同时作用坐标投影函数得:
+
+\[
+X|_U(u^j) = \sum_i \xi^i \frac{\partial}{\partial u^i}(u^j) = \xi^j = \frac{\partial u^j}{\partial x^1}.
+\]
+
+因此有 $\frac{\partial u^j}{\partial x^1} = \xi^j$.考虑下列常微分方程组:
+
+\[
+\begin{cases}
+\frac{du^{\alpha}}{du^1} = \frac{\xi^{\alpha}(u^1, \ldots, u^m)}{\xi^1(u^1, \ldots, u^m)} \\
+u^{\alpha}(0, v^2, \ldots, v^m) = v^{\alpha} \quad 2 \leq \alpha \leq m
+\end{cases}
+\]
+
+其中 $(v^2, \ldots, v^m) \in C_\delta^{m-1}$.
+
+由 ODE 知识:上述常微分方程存在唯一解 $(v^1, v^2, \ldots, v^m) \to (u^1, \ldots, u^m)$,在初值点处Jacobi行列式等于1
+
+由逆映照定理知:在小邻域内存在光滑映射 $(u^1, \ldots, u^m) \to (v^1, v^2, \ldots, v^m)$ 满足
+
+\[
+X|_U = \frac{\partial}{\partial v^1}.
+\]
+$\square$
+
+\subsubsection{分布,Frobenius 定理}
+
+\begin{definition}
+$M^m$ 为 $C^\infty$ 流形.如果对于每一点 $p \in M$ 指定一个 $T_pM$ 中的 $k$ 维子空间 $D_p$($0 \leq k \leq m$),则称 $D: p \to D_p$ 为 $M$ 上的 $k$ 维分布.
+\end{definition}
+
+如果 $\forall p \in M$,$\exists U(\ni p)$,$X_1, \ldots, X_k \in \mathfrak{X}(U)$,使得 $D_q = \text{span}\{X_1(q), \ldots, X_k(q)\}, \forall q \in U$,则称 $D$ 为 $M$ 上的 $k$ 维 $C^\infty$-分布,$\{X_1, \ldots, X_k\}$ 也称为局部标架场.
+
+注:$k = 0 \Rightarrow D_q = \{0\}$;$k = m \Rightarrow D_q = T_qM$ 此时 $D$ 相当于切丛 $TM$.
+
+对于 $0 \leq k < m$,$D$ 可视为 $TM$ 的秩为 $k$ 的子丛.
+
+例 $(U, \varphi, x^i) \subset M$,$\{\frac{\partial}{\partial x^i}\}_{i=1,\ldots,m}$ 自然基.令 $D_q = \text{span}\{\frac{\partial}{\partial x^1}(q), \ldots, \frac{\partial}{\partial x^k}(q)\}, \forall q \in U$,则 $D: q \to D_q$ 定义了 $U$ 上的 $C^\infty$-分布.
+
+\begin{definition}
+设 $D$ 为 $M$ 上的 $k$ 维 $C^\infty$-分布.$F: W \to M$ 是子流形,满足:
+\[
+F_{*p}(T_pW) = D_{F(p)}, \forall p \in W,
+\]
+则称 $(W, F)$ 为 $D$ 的积分子流形.
+\end{definition}
+
+局部的,不妨设 $W$ 为 $M$ 的子集,$i: W \to M$ 为子流形,则自然有 $T_pW = D_p, \forall p \in W$.
+
+例 1. $M = \mathbb{R}^m$,$(x^1, \ldots, x^m)$ 标准欧式坐标.$D = \text{span}\{\frac{\partial}{\partial x^1}, \ldots, \frac{\partial}{\partial x^k}\}, 1 \leq k \leq m$,则 $W = \{x^{k+1} = C^{k+1}, \ldots, x^m = C^m\}$ 是 $D$ 的积分子流形.
+\[
+T_pW = \text{span}\{\frac{\partial}{\partial x^1}, \ldots, \frac{\partial}{\partial x^k}\}, \forall p \in W.
+\]
+
+例 2. $(U, \varphi, x^i) \subset M$,$\{\frac{\partial}{\partial x^i}\}_{i=1,\ldots,m}$ 自然基;$D = \text{span}\{\frac{\partial}{\partial x^1}, \ldots, \frac{\partial}{\partial x^k}\}$,$W = \{q \in U|x^{k+1}(q) = C^{k+1}, \ldots, x^m(q) = C^m\}$ 为 $k$ 维切片,是 $D$ 在 $U$ 中的积分子流形.
+\[
+T_pW = \text{span}\{\frac{\partial}{\partial x^1}, \ldots, \frac{\partial}{\partial x^k}\}, \forall p \in W.
+\]
+
+例 3. $\mathbb{R}^{m+1}\backslash \{0\}$,$\forall x \in \mathbb{R}^{m+1}\backslash \{0\}$,定义 $D_p = \text{span}\{x\}$,则 $D$ 为 $m$ 维 $C^\infty$ 分布.令 $S(r) = \{\|x\| = r\}, r > 0$,则 $T_pS(r) = D_p, \forall p \in S(r) \Rightarrow S(r)$ 是 $D$ 的积分子流形.
+
+注:积分子流形可视为各个局部标架场的积分曲线交织所构成的子流形.
+
+下例告诉我们,给定 $M^m$ 上的一个 $k$ 维 $C^\infty$-分布 $D$,$\forall p \in M$,不一定存在 $D$ 的过 $p$ 点的积分子流形.
+
+例 4. $M^3 = \mathbb{R}^3$,$D = \text{span}\{X = \frac{\partial}{\partial x} + y\frac{\partial}{\partial z}, Y = \frac{\partial}{\partial y}\}$,$X, Y \in \mathfrak{X}(M)$(整体光滑向量场),在每一点线性无关,则 $D$ 是秩为 2 的 $C^\infty$ 分布.
+
+假设 $D$ 过每点都存在积分子流形,取 $p = 0$,积分子流形记作 $W$,$X|_W, Y|_W \in \mathfrak{X}(W)$.由 ODE 理论知,存在 $W$ 上唯一一条过 $q$ 的积分曲线,显然过原点的 $X$ 的积分曲线就是 $x$ 轴,因此 $x$ 轴 $\subset W$,同理 $y$ 轴 $\subset W$,因此 $xOy$ 平面就是这个积分子流形,但在 $y \neq 0$ 的点处 $X$ 不与 $W$ 相切,矛盾！
+
+\begin{definition}
+设 $D$ 是 $M$ 上的一个 $k$ 维 $C^\infty$-分布,如果过每点 $p \in M$ 都存在 $D$ 的积分子流形,则我们称 $D$ 是可积的,否则称之为不可积的.
+\end{definition}
+
+先看 $k = 1$ 的情形,$D$ 是 $M$ 上的 1 维分布,$U \subset M$,$X \in \mathfrak{X}(U)$ 使得 $D|_U = \text{span}\{X\}$,对于每个小邻域来说都存在唯一一条过 $p$ 的 $X$ 的积分曲线,此即 $D$ 的积分子流形 $W$ 的一部分.因此任何 1 维分布均为可积的.
+
+\begin{proposition}
+设 $D$ 是 $M$ 上的 $C^\infty$-分布.如果 $D$ 是可积的,则 $\forall X, Y \in \mathfrak{X}(D)$(即 $X_p, Y_p \in D_p, \forall p \in M$),有 $[X,Y] \in \mathfrak{X}(D)$.
+\end{proposition}
+
+证:由可积性,过 $p$ 点存在积分子流形 $i: N^k \to M$,由秩定理,$N$ 可局部看作含 $p$ 的某个坐标系 $(U,\varphi,x^i)$ 的切片,也就是
+
+\[
+p \in N = \{q|x^{k+1}(q) = \cdots = x^m(q) = 0\}, \quad T_qN = \text{span}\{\frac{\partial}{\partial x^1},\ldots,\frac{\partial}{\partial x^k}\}.
+\]
+
+因为 $X_p, Y_p \in D_p$,所以在自然基下
+
+\[
+X_p = \sum_{i=1}^m \xi^i \frac{\partial}{\partial x^i}, \quad Y_p = \sum_{j=1}^m \eta^j \frac{\partial}{\partial x^j}, \quad \xi^i, \eta^j \in C^\infty(U)
+\]
+
+其中 $\xi^i|_N = \eta^j|_N = 0, \forall k + 1 \leq i, j \leq m$.因此
+
+\[
+[X,Y]_p = [\sum_{i=1}^m \xi_i \frac{\partial}{\partial x^i}, \sum_{j=1}^m \eta_j \frac{\partial}{\partial x^j}] = \sum_{i,j=1}^m \left( \xi_i \frac{\partial \eta^j}{\partial x^i} - \eta_j \frac{\partial \xi^j}{\partial x^i} \right) \frac{\partial}{\partial x^j} 
+\]
+\[
+= \sum_{1 \leq i \leq m, 1 \leq j \leq k} \left( \xi_i \frac{\partial \eta^j}{\partial x^i} - \eta_j \frac{\partial \xi^j}{\partial x^i} \right) \frac{\partial}{\partial x^j} + \sum_{1 \leq i \leq m, k+1 \leq j \leq m} \left( \xi_i \frac{\partial \eta^j}{\partial x^i} - \eta_j \frac{\partial \xi^j}{\partial x^i} \right) \frac{\partial}{\partial x^j}
+\]
+\[
+= \sum_{1 \leq i \leq m, 1 \leq j \leq k} \left( \xi_i \frac{\partial \eta^j}{\partial x^i} - \eta_j \frac{\partial \xi^j}{\partial x^i} \right) \frac{\partial}{\partial x^j} \in T_qN \quad (\text{注意到 } \frac{\partial \eta^j}{\partial x^i} = \frac{\partial \xi^j}{\partial x^i} = 0, \forall k + 1 \leq j \leq m)
+\]
+
+由 $p$ 的任意性知 $[X,Y] \in \mathfrak{X}(D)$. $\square$
+
+\begin{definition}
+设 $D$ 是 $M$ 上的 $C^\infty$-分布,如果 $\forall X, Y \in \mathfrak{X}(D)$,都有 $[X,Y] \in \mathfrak{X}(D)$,则称 $D$ 是对合的.(可积 $\Rightarrow$ 对合)
+\end{definition}
+
+注:实际上只需对 $D$ 的局部标架场 $\{X_1,\ldots,X_k\}$ 验证 $[X_i,X_j] \in \mathfrak{X}(D), \forall 1 \leq i, j \leq k$ 即可.因为此时对于局部标架场 $U \subset M$,
+
+\[
+X_p = \sum_{i=1}^k \xi_i^i X_i, \quad Y_p = \sum_{j=1}^k \eta_j^j X_j, \quad X_p, Y_p \in \mathfrak{X}(U)
+\]
+
+\[
+[X,Y]|_U = \sum_{i,j=1}^k \{ \xi^i \eta^j [X_i, X_j] + \xi^i X_i (\eta^j) X_j - \eta^j X_j (\xi^i) X_i \} \in \mathfrak{X}(U).
+\]
+
+下面定理说明对合与可积实际上是等价的.
+
+\begin{theorem}[Frobenius]
+设 $D$ 是 $M$ 上的 $k$ 维 $C^\infty$-分布,如果 $D$ 是对合的,则 $\forall p \in M$,$\exists p$ 的坐标系 $(U, \varphi, x^i)$,使得 $k$ 维切片 $U_c = \{ q \in U | x^\alpha (q) = c^\alpha, k+1 \leq \alpha \leq m \}$ 都是 $D$ 的积分子流形.
+\end{theorem}
+
+证:考虑归纳法.
+
+$k=1$ 时显然成立.不妨设 $k-1$ 时成立,对于 $k$ 维分布:
+
+设 $\{ X_1, \ldots, X_k \}$ 为 $D$ 在含 $p$ 开子集 $U$ 上的局部标架场,由 $D$ 是对合:
+
+\[
+[X_i, X_j] = \sum_{l=1}^k a_{ij}^l X_l \equiv 0 \mod \{ X_1, \ldots, X_k \}
+\]
+
+其中 $a_{ij}^l \in C^\infty(U)$.考虑 $X_k$,存在坐标系 $(y^1, \ldots, y^m)$,使 $X_k = \frac{\partial}{\partial y^k}$(由前面定理).
+
+令 $X'_\lambda = X_\lambda - X_\lambda (y^k) \frac{\partial}{\partial y^k}, 1 \leq \lambda, \mu \leq k-1$,则有 $X'_\lambda (y^k) = X_\lambda (y^k) - X_\lambda (y^k) \frac{\partial y^k}{\partial y^k} = 0$,$X_k (y^k) = \frac{\partial y^k}{\partial y^k} = 1$.因此:
+
+\[
+[X'_\lambda, X'_\mu](y^k) = 0 \Rightarrow [X'_\lambda, X'_\mu] \equiv 0 \mod \{ X'_1, \ldots, X'_{k-1} \}.
+\]
+
+得到对合分布 $D' = \text{span} \{ X'_1, \ldots, X'_{k-1} \}$.
+
+由归纳假设知:存在含 $p$ 的坐标系 $(z^1, z^2, \ldots, z^m)$ 使得 $D' = \text{span} \{ \frac{\partial}{\partial z^1}, \ldots, \frac{\partial}{\partial z^{k-1}} \} = \text{span} \{ X'_1, \ldots, X'_{k-1} \}$.由 $X'_\lambda (y^k) = 0$ 得 $\frac{\partial}{\partial z^\lambda} (y^k) = 0, 1 \leq \lambda \leq k-1$.
+
+\[
+D = \text{span} \{ \frac{\partial}{\partial z^1}, \ldots, \frac{\partial}{\partial z^{k-1}}, X_k \},
+\]
+
+考察 $[\frac{\partial}{\partial z^\lambda}, X_k] = \sum_{l=1}^{k-1} c_{\lambda k}^l \frac{\partial}{\partial z^l} + b_\lambda X_k$,两边同时作用 $y^k$ 有:
+
+\[
+[\frac{\partial}{\partial z^\lambda}, X_k](y^k) = \frac{\partial}{\partial z^\lambda} X_k(y^k) - X_k \frac{\partial}{\partial z^\lambda} (y^k) = 0.
+\]
+
+因此 $b_\lambda = 0$,$[\frac{\partial}{\partial z^\lambda}, X_k] = \sum_{l=1}^{k-1} c_{\lambda k}^l \frac{\partial}{\partial z^l}$.将 $X_k$ 在 $(z^1, \ldots, z^m)$ 下表示出来:$X_k = \sum_{A=1}^m \xi^A \frac{\partial}{\partial z^A}$,则
+
+\[
+[\frac{\partial}{\partial z^\lambda}, \sum_{A=1}^m \xi^A \frac{\partial}{\partial z^A}] = \sum_{A=1}^m [\frac{\partial}{\partial z^\lambda}, \xi^A \frac{\partial}{\partial z^A}] = \sum_{A=1}^m \frac{\partial}{\partial z^\lambda} (\xi^A) \frac{\partial}{\partial z^A} = \sum_{l=1}^{k-1} c_{\lambda k}^l \frac{\partial}{\partial z^l}.
+\]
+
+从而 $\frac{\partial}{\partial z^\lambda} (\xi^A) = 0$,$k \leq A \leq m$,$\lambda \leq k-1$,即 $\xi^A$ 与 $z^\lambda$ 无关.令 $X_k' = X_k - \sum_{\lambda=1}^{k-1} \xi^\lambda \frac{\partial}{\partial z^\lambda}$,则
+
+\[
+D = \text{span} \{ \frac{\partial}{\partial z^1}, \ldots, \frac{\partial}{\partial z^{k-1}}, X_k' \},
+\]
+
+其中 $X_k'$ 与前 $k-1$ 个分量无关.由“向量场定理”知:存在坐标变换 $(z^1, \ldots, z^m) \rightarrow (w^1, \ldots, w^m)$ 满足
+
+\[
+w^\lambda = z^\lambda (1 \leq \lambda \leq k-1), \quad X_k' = \frac{\partial}{\partial w^k}.
+\]
+
+因此由 $D = \text{span} \{ \frac{\partial}{\partial w^1}, \ldots, \frac{\partial}{\partial w^{k-1}}, \frac{\partial}{\partial w^k} \}$ 即在该坐标系下 $k$ 维切片都是 $D$ 的积分子流形. $\square$
+
+\section{多重线性代数}
+
+\subsection{张量积}
+
+设 $V$ 是数域 $\mathbb{F} = \mathbb{R}$ 上的 $n$ 维向量空间,$\{e_1, \ldots, e_n\}$ 是 $V$ 的基.$v \in V$,$v = \sum_{i=1}^n a^i e_i$.
+
+\[
+V^* = \{f : V \to \mathbb{R} \text{ 线性函数} \},
+\]
+因为 $f(v) = \sum_{i=1}^n a^if(e_i)$,取值由 $\{f(e_1), \ldots, f(e_n)\}$ 唯一确定.
+
+因此不妨取 $\omega^i(e_j) = \delta_j^i$,则对于一般的 $f \in V^*$,$b_i = f(e_i)$,有 $f(v) = \sum_{i=1}^n a^ib_i = \sum_{i=1}^n b_i \omega^i(v) = (\sum_{i=1}^n b_i \omega^i)(v)$,所以
+
+\[
+f = \sum_{i=1}^n b_i \omega^i.
+\]
+
+又因为 $\{\omega^i\}$ 是线性无关的,所以 $\{\omega^i\}$ 构成对偶空间 $V^*$ 中的一组基.且有
+
+\[
+\omega^i(e_j) = \delta_j^i.
+\]
+
+我们称 $\{\omega^i\}$ 为 $\{e_i\}$ 的对偶基.
+
+\begin{proposition}
+设 $V$ 是 $n$ 维向量空间,则 $V^*$ 和 $V$(以自然的方式)互为对偶.
+\end{proposition}
+
+证:固定 $v \in V$,则可以定义 $V^*$ 上的一个线性函数 $v^* : V^* \to \mathbb{R}$,$v^*(f) = f(v)$,即 $v^* \in (V^*)^*$,可以验证 $\tau : v \to v^*$ 为线性的单射,由维度相同知 $\tau$ 为线性同构.即 $V \simeq (V^*)^*$. $\square$
+
+\begin{definition}
+设 $V_1, V_2, \ldots, V_r, Z$ 为 $r+1$ 个向量空间,若
+\[
+f : V_1 \times \cdots \times V_r \to Z, \quad (v_1, \ldots, v_r) \to f(v_1, \ldots, v_r)
+\]
+关于每一个分量是线性的,则称 $f$ 是 $r$ 重线性映照.特别地,当 $Z = \mathbb{R}$ 时,称 $f$ 是 $r$ 重线性函数.
+\end{definition}
+
+\[
+r = 1, \quad f : V \to Z \text{ 线性映照}; \\
+r = 2, \quad f : V_1 \times V_2 \to Z \text{ 双线性映照}.
+\]
+
+令 $\mathcal{L}(V_1, V_2, \ldots, V_r; Z) = \{ f : V_1 \times \cdots \times V_r \to Z, \ r\text{-线性} \}$,满足
+\[
+\begin{cases}
+(f + g)(v_1, \ldots, v_r) = f(v_1, \ldots, v_r) + g(v_1, \ldots, v_r) \\
+(af)(v_1, \ldots, v_r) = f(av_1, \ldots, av_r)
+\end{cases}
+\]
+则 $\mathcal{L}(V_1, V_2, \ldots, V_r; Z)$ 是向量空间.
+
+$r = 2$.设 $V, W$ 是向量空间,$\dim V = n, \dim W = m$,任取 $v^* \in V^*, w^* \in W^*$,可以引入如下双线性函数:
+\[
+(v^* \otimes w^*) (v, w) := v^*(v)w^*(w)
+\]
+因此 $v^* \otimes w^* \in \mathcal{L}(V, W; \mathbb{R})$,称为 $v^*$ 和 $w^*$ 的张量积.
+
+令
+\[
+h (= \otimes) : V^* \times W^* \to \mathcal{L}(V, W; \mathbb{R}), \quad (v^*, w^*) \to (v^* \otimes w^*)
+\]
+
+显然,$h$ 为双线性的,即 $\otimes$ 满足分配律.
+
+令 $(V^* \otimes W^*) = \text{span}\{\text{Im } h\} = \{\sum_{i=1}^r a_i v_i^* \otimes w_i^*, a_i \in \mathbb{R}\}$,称为 $V^*$ 和 $W^*$ 的张量积.
+
+\begin{proposition}
+$V^* \otimes W^* = \mathcal{L}(V, W; \mathbb{R})$.
+
+如果 $\{\omega^i\}_{1 \leq i \leq n}$,$\{\theta^\alpha\}_{1 \leq \alpha \leq m}$ 为 $V^*$ 和 $W^*$ 的基,则 $\{\omega^i \otimes \theta^\alpha\}_{1 \leq i \leq n, 1 \leq \alpha \leq m}$ 为 $V^* \otimes W^*$ 的一组基.
+
+特别地,$\dim V^* \otimes W^* = \dim V \cdot \dim W$.
+\end{proposition}
+
+证:首先容易验证,$\omega^i \otimes \theta^\alpha$ 线性无关(作用于对偶基 $\{e_i\}, \{\ell_\alpha\}$ 上).
+
+其次由定义即知,所有元素都由这组线性无关的元素组成,因此 $\{\omega^i \otimes \theta^\alpha\}_{1 \leq i \leq n, 1 \leq \alpha \leq m}$ 为 $V^* \otimes W^*$ 的一组基.由此知 $\dim V^* \otimes W^* = mn = \dim V \cdot \dim W$.
+
+最后注意到 $\forall f \in \mathcal{L}(V, W; \mathbb{R})$,$v \in V, w \in W$,$v = \sum_{i} c^ie_i$,$w = \sum_{\alpha} d^{\alpha} \ell_\alpha$,因此
+\[
+f(v, w) = f(\sum_{i} c^ie_i, \sum_{\alpha} d^{\alpha} \ell_\alpha) = \sum_{i, \alpha} f(c^ie_i, d^{\alpha} \ell_\alpha) = \sum_{i, \alpha} c^i d^{\alpha} f(e_i, \ell_\alpha).
+\]
+所以 $f$ 完全由 $\{f(e_i, \ell_\alpha)\}$ 确定.
+
+因此 $\mathcal{L}(V, W; \mathbb{R}) \simeq M(n, m) = \{(a_{ij})_{n \times m}|a_{ij} \in \mathbb{R}\} \simeq \mathbb{R}^{nm}$,也就是说 $\dim \mathcal{L}(V, W; \mathbb{R}) = nm$.
+
+于是,$V^* \otimes W^* = \mathcal{L}(V, W; \mathbb{R})$ 是 $nm$ 维空间且有基 $\{\omega^i \otimes \theta^\alpha\}_{1 \leq i \leq n, 1 \leq \alpha \leq m}$. $\square$
+
+根据 $V, V^*$ 以及 $W, W^*$ 的互为对偶性,类似地可以定义:
+
+$v \in V, w \in W$,$(v \otimes w)(v^*, w^*) = v(v^*)w(w^*) = v^*(v)w^*(w)$.
+
+令
+\[
+h(=\otimes):V \times W \rightarrow \mathcal{L}(V^*,W^*;\mathbb{R}), \quad (v,w) \rightarrow (v \otimes w).
+\]
+
+令 $(V \otimes W) = \text{span}\{\text{Im } h\} = \{\sum_{i=1}^r a_i v_i \otimes w_i, a_i \in \mathbb{R}\}$,称为 $V$ 和 $W$ 的张量积.
+
+同理有 $(V \otimes W)$ 是 $nm$ 维向量空间,基为 $\{e_i \otimes \ell_{\alpha}\}_{1 \leq i \leq n}^{1 \leq \alpha \leq m}$.
+
+\begin{definition}
+设 $V, W, U$ 是向量空间,$\psi: V \times W \rightarrow U$ 为双线性映照.如果对任意向量空间 $Z$,及双线性映照 $f: V \times W \rightarrow Z$ 都存在唯一线性映照 $g: U \rightarrow Z$ 使得 $f = g \circ \psi$,则称 $(U,\psi)$ 具有万有映照性质.
+\[
+\begin{array}{c}
+V \times W \xrightarrow{\psi} U \\
+\forall f \searrow \quad \swarrow \exists ! g \\
+Z
+\end{array}
+\]
+\end{definition}
+
+\begin{lemma}
+$(U,\psi)$ 在下述意义下是唯一的:如果 $(\tilde{U},\tilde{\psi})$ 也具有万有映照性质,则存在线性同构 $\alpha: U \rightarrow \tilde{U}$ 使得 $\tilde{\psi} = \alpha \circ \psi$.
+\end{lemma}
+
+证:
+\[
+\begin{array}{c}
+V \times W \xrightarrow{\psi} U \\
+\tilde{\psi} \searrow \quad \swarrow \alpha \\
+\tilde{U}
+\end{array}
+\]
+由万有映照性质,存在线性映照 $\alpha: U \rightarrow \tilde{U}$ 使得 $\tilde{\psi} = \alpha \circ \psi$,以及线性映照 $\beta: \tilde{U} \rightarrow U$ 使得 $\psi = \beta \circ \tilde{\psi}$,因此有
+\[
+\psi = \beta \circ (\alpha \circ \psi) = (\beta \circ \alpha) \circ \psi.
+\]
+\[
+\begin{array}{c}
+V \times W \xrightarrow{\psi} U \\
+\psi \searrow \quad \swarrow id_U \\
+U
+\end{array}
+\]
+由万有映照的唯一性知:$\beta \circ \alpha = id_U$.
+
+同理有:$\alpha \circ \beta = id_{\tilde{U}}$.
+
+即 $\alpha$ 为线性同构. $\square$
+
+\begin{proposition}
+设 $V, W$ 是向量空间,则 $(V \otimes W, h = \otimes)$ 具有万有映照性质.
+\end{proposition}
+
+证:设 $f: V \times W \rightarrow Z$,令线性映照 $g: V \otimes W \rightarrow Z$,满足 $g(e_i \otimes \ell_{\alpha}) = f(e_i, \ell_{\alpha})$,其中 $\{e^i\}_{1 \leq i \leq n}, \{\ell^{\alpha}\}_{1 \leq \alpha \leq m}$ 分别为 $V, W$ 的一组基.则容易证明下图可交换.
+\[
+\begin{array}{c}
+V \times W \xrightarrow{h} V \otimes W \\
+f \searrow \quad \swarrow g \\
+Z
+\end{array}
+\]
+且 $g$ 唯一性显然,因此命题得证. $\square$
+
+注:由唯一性 $(U, \psi) \simeq (V \otimes W, h)$.
+
+推论:$\mathcal{L}(V, W; Z) \simeq \mathcal{L}(V \otimes W; Z)$.
+
+特别地,$\mathcal{L}(V, W; \mathbb{R}) = V^* \otimes W^* \simeq (V \otimes W)^*$.
+
+设 $\varphi \in \mathcal{L}(V_1, \ldots, V_r; \mathbb{R})$,$\psi \in \mathcal{L}(W_1, \ldots, W_s; \mathbb{R})$,则定义
+\[
+\varphi \otimes \psi(v_1, \ldots, v_r, w_1, \ldots, w_s) := \varphi(v_1, \ldots, v_r) \psi(w_1, \ldots, w_s).
+\]
+
+\begin{proposition}
+$\varphi \in \mathcal{L}(V_1, \ldots, V_r; \mathbb{R})$,$\psi \in \mathcal{L}(W_1, \ldots, W_s; \mathbb{R})$,$\eta \in \mathcal{L}(Z_1, \ldots, Z_t; \mathbb{R})$,则 $(\varphi \otimes \psi) \otimes \eta = \varphi \otimes (\psi \otimes \eta)$,即满足结合律.
+\end{proposition}
+
+注:一般不满足交换律.
+
+设 $\varphi_1 \in V_1^* = \mathcal{L}(V_1; \mathbb{R}), \ldots, \varphi_r \in V_r^* = \mathcal{L}(V_r; \mathbb{R})$,则类似的 $\varphi_1 \otimes \cdots \otimes \varphi_r \in \mathcal{L}(V_1, \ldots, V_r; \mathbb{R})$.
+
+\[
+h : V_1^* \times \cdots \times V_r^* \rightarrow \mathcal{L}(V_1, \ldots, V_r; \mathbb{R}), \quad (\varphi_1, \ldots, \varphi_r) \rightarrow (\varphi_1 \otimes \cdots \otimes \varphi_r)
+\]
+称为 $\varphi_1, \ldots, \varphi_r$ 的张量积.
+
+\begin{proposition}
+$V_1^* \otimes \cdots \otimes V_r^* = \mathcal{L}(V_1, \ldots, V_r; \mathbb{R})$,$\dim(V_1^* \otimes \cdots \otimes V_r^*) = \dim V_1 \cdots \dim V_r$,且基是由所有各个向量空间的基的张量积组成的.
+\end{proposition}
+
+其余对偶空间的性质以及万有映射性质都同 $r = 2$.
+
+\begin{theorem}
+$(V_1^* \otimes \cdots \otimes V_r^*, h)$ 具有万有映照性质.
+\end{theorem}
+
+推论:$\mathcal{L}(V_1, \ldots, V_r; \mathbb{R}) \simeq \mathcal{L}(V_1 \otimes \cdots \otimes V_r; \mathbb{R})$.特别地 $(V_1 \otimes \cdots \otimes V_r)^* = V_1^* \otimes \cdots \otimes V_r^*$.
+
+推论:设 $V, W, Z$ 是向量空间.定义 $f : V^* \times W^* \times Z \rightarrow \mathcal{L}(V, W; Z)$ 如下:
+\[
+f(v^*, w^*, z)(v, w) \triangleq v^*(v)w^*(w)z \in Z,
+\]
+则存在线性映照 $g : V^* \otimes W^* \otimes Z \rightarrow \mathcal{L}(V, W; Z)$ 使得 $f = g \circ h$ 且 $g$ 是线性同构.
+
+证:同前构造 $g$ 并讨论即可.
+
+\subsection{张量}
+
+设 $V$ 是 $\mathbb{R}$ 上的 $n$ 维向量空间,令
+\[
+V_s^r = \underbrace{V \otimes \cdots \otimes V}_{r} \otimes \underbrace{V^* \cdots \otimes V^*}_{s} = \mathcal{L}(V^*, \ldots, V^*, V, \ldots, V; \mathbb{R})
+\]
+称为 $(r, s)$-型向量空间,其中的元素称为 $(r, s)$-型张量.
+
+\[
+V_0^1 = V, \quad V_1^0 = V^*, \quad V_0^0 = \mathbb{R}.
+\]
+
+设 $\{e_i\}$ 是 $V$ 的基,$\{\omega^i\}$ 是其对偶基,则 $\{e_{i_1} \otimes \cdots \otimes e_{i_r} \otimes \omega^{j_1} \otimes \cdots \otimes \omega^{j_s} \mid 1 \leq i_1, \ldots, i_r, j_1, \ldots, j_s \leq n\}$ 为 $V_s^r$ 的一组基.
+因此 $\dim V_s^r = n^{r+s}$.$\forall \Phi \in V_s^r$,
+
+\[
+\Phi = \sum_{1 \leq i_1, \ldots, i_r, j_1, \ldots, j_s \leq n} \Phi_{j_1, \ldots, j_s}^{i_1, \ldots, i_r} e_{i_1} \otimes \cdots \otimes e_{i_r} \otimes \omega^{j_1} \otimes \cdots \otimes \omega^{j_s}.
+\]
+
+有 $n^{r+s}$ 个分量 $\Phi_{j_1, \ldots, j_s}^{i_1, \ldots, i_r}$,两边同时作用 $(\omega^{k_1}, \ldots, \omega^{k_r}, e_{l_1}, \ldots, e_{l_s})$,有
+
+\[
+\Phi(\omega^{k_1}, \ldots, \omega^{k_r}, e_{l_1}, \ldots, e_{l_s}) = \Phi_{l_1, \ldots, l_s}^{k_1, \ldots, k_r}.
+\]
+
+$V$ 中取两组基 $\{e_i\}, \{\bar{e}_i\}$,相应的有对偶基 $\{\omega^i\}, \{\bar{\omega}^i\}$(下面均采用爱因斯坦求和约定)
+
+\[
+\bar{e}_i = a_i^j e_j, \quad (a_i^j)_{n \times n} \text{非退化,令 } (b_j^i) = (a_j^i)^{-1}.
+\]
+
+$(\bar{e}_1, \ldots, \bar{e}_n) = (e_1, \ldots, e_n)(a_j^i)$.设 $\bar{\omega}^i = c_j^i \omega^j$,两边同时作用 $\bar{e}_k$ 有:
+
+\[
+\delta_k^i = c_j^i a_k^j \Rightarrow (c_j^i)(a_k^j) = (\delta_k^i) = I_n.
+\]
+
+因此 $(\bar{\omega}^1, \ldots, \bar{\omega}^n) = (\omega^1, \ldots, \omega^n)(b_j^i)$.
+
+考虑 $\Phi$ 在不同基下的分量表示:
+
+\[
+\Phi = \Phi_{j_1, \ldots, j_s}^{i_1, \ldots, i_r} e_{i_1} \otimes \cdots \otimes e_{i_r} \otimes \omega^{j_1} \otimes \cdots \otimes \omega^{j_s} = \bar{\Phi}_{j_1, \ldots, j_s}^{i_1, \ldots, i_r} \bar{e}_{i_1} \otimes \cdots \otimes \bar{e}_{i_r} \otimes \bar{\omega}^{j_1} \otimes \cdots \otimes \bar{\omega}^{j_s}
+\]
+
+其中
+
+\[
+\bar{\Phi}_{j_1, \ldots, j_s}^{i_1, \ldots, i_r} = \Phi(\bar{\omega}^{k_1}, \ldots, \bar{\omega}^{k_r}, \bar{e}_{l_1}, \ldots, \bar{e}_{l_s})
+\]
+\[
+= b_{k_1}^{i_1} \cdots b_{k_r}^{i_r} a_{j_1}^{l_1} \cdots a_{j_s}^{l_s} \Phi(\omega^{k_1}, \ldots, \omega^{k_r}, e_{l_1}, \ldots, e_{l_s})
+\]
+\[
+= b_{k_1}^{i_1} \cdots b_{k_r}^{i_r} a_{j_1}^{l_1} \cdots a_{j_s}^{l_s} \Phi_{l_1, \ldots, l_s}^{k_1, \ldots, k_r}.
+\]
+
+因此,分量变换公式即为:
+
+\[
+\bar{\Phi}_{j_1, \ldots, j_s}^{i_1, \ldots, i_r} = b_{k_1}^{i_1} \cdots b_{k_r}^{i_r} \Phi_{l_1, \ldots, l_s}^{k_1, \ldots, k_r} a_{j_1}^{l_1} \cdots a_{j_s}^{l_s} = \Phi_{l_1, \ldots, l_s}^{k_1, \ldots, k_r} a_{j_1}^{l_1} \cdots a_{j_s}^{l_s} b_{k_1}^{i_1} \cdots b_{k_r}^{i_r}.
+\]
+
+观察到其中有 $r$ 个逆矩阵元素,$s$ 个原矩阵元素,因此称为 $r$ 阶反变,$s$ 阶共变.
+
+\[
+\underbrace{V^* \otimes \cdots \otimes V^*}_{k} = \mathcal{L}(V, \ldots, V; \mathbb{R}).
+\]
+
+\begin{definition}
+设 $\Phi \in V^* \otimes \cdots \otimes V^* = \mathcal{L}(V, \ldots, V; \mathbb{R})$.
+
+如果 $\Phi$ 满足:
+\[
+\Phi(v_1, \ldots, v_i, \ldots, v_j, \ldots, v_k) = \Phi(v_1, \ldots, v_j, \ldots, v_i, \ldots, v_k), \quad \forall 1 \leq i, j \leq k,
+\]
+则称 $\Phi$ 是对称的.如果 $\Phi$ 满足:
+\[
+\Phi(v_1, \cdots, v_i, \cdots, v_j, \cdots, v_k) = -\Phi(v_1, \cdots, v_j, \cdots, v_i, \cdots, v_k), \quad \forall 1 \leq i, j \leq k,
+\]
+则称 $\Phi$ 是反称的.
+\end{definition}
+
+对于 $\sigma \in \mathcal{S}(k)$(置换群).定义符号函数 $\text{sgn} : \mathcal{S}(k) \rightarrow \{-1, 1\}$,若 $\sigma$ 偶排列则 $\text{sgn}(\sigma) = 1$,若 $\sigma$ 奇排列则 $\text{sgn}(\sigma) = -1$.
+
+定义 $\sigma \in \mathcal{S}(k)$ 在 $\Phi$ 上的作用:
+\[
+(\sigma \Phi)(v_1, \cdots, v_k) := \Phi(v_{\sigma(1)}, \cdots, v_{\sigma(k)}).
+\]
+
+显然 $\sigma \Phi \in \underbrace{V^* \otimes \cdots \otimes V^*}_{k}$,$\sigma : V^* \otimes \cdots \otimes V^* \rightarrow V^* \otimes \cdots \otimes V^*$ 是线性映照.因此有:
+\begin{align*}
+\Phi \text{是对称的} &\iff \sigma \Phi = \Phi, \\
+\Phi \text{是反对称的} &\iff \sigma \Phi = (\text{sgn }\sigma) \Phi.
+\end{align*}
+
+用 $\Theta^k(V^*)$ 表示 $V^* \otimes \cdots \otimes V^*$ 中的对称张量全体.
+用 $\Lambda^k(V^*)$ 表示 $V^* \otimes \cdots \otimes V^*$ 中的反称张量全体.
+
+取定 $V$ 中的基 $\{e_i\}$,$\{\omega^i\}$ 是其对偶基,则
+\[
+\Phi = \Phi_{i_1,\cdots,i_k} \omega^{i_1} \otimes \cdots \otimes \omega^{i_k},
+\]
+其中 $\Phi_{i_1,\cdots,i_k} = \Phi(e_{i_1}, \cdots, e_{i_k})$.由此易知:
+\begin{align*}
+\Phi \text{对称} &\iff \Phi_{i_1,\cdots,i_k} \text{关于指标是对称的}, \\
+\Phi \text{反称} &\iff \Phi_{i_1,\cdots,i_k} \text{关于指标是反称的}.
+\end{align*}
+
+定义如下两个线性变换(简记 $\underbrace{V^* \otimes \cdots \otimes V^*}_{k}$ 为 $V_k$):
+\begin{align*}
+S_k &: V_k \rightarrow V_k, \quad \Phi \rightarrow \frac{1}{k!} \sum_{\sigma \in \mathcal{S}(k)} \sigma \Phi, \quad \text{称为对称化算子}; \\
+A_k &: V_k \rightarrow V_k, \quad \Phi \rightarrow \frac{1}{k!} \sum_{\sigma \in \mathcal{S}(k)} (\text{sgn }\sigma) \sigma \Phi, \quad \text{称为反称化算子}.
+\end{align*}
+
+\begin{proposition}
+\begin{enumerate}
+    \item $\Theta^k(V^*) = S_k(V_k)$,$\Lambda^k(V^*) = A_k(V_k)$.
+    \item $\Phi$ 对称 $\iff S_k(\Phi) = \Phi$;$\Phi$ 反称 $\iff A_k(\Phi) = \Phi$.
+\end{enumerate}
+\end{proposition}
+
+证:注意到 $\sigma$ 是线性映照,所以 $\forall \Phi \in V_k$,
+\[
+\tau [A_k(\Phi)] = \tau \left[ \frac{1}{k!} \sum_{\sigma \in \mathcal{S}(k)} (\text{sgn }\sigma)\sigma \Phi \right] = \frac{1}{k!} \sum_{\sigma \in \mathcal{S}(k)} (\text{sgn }\sigma)\tau \sigma \Phi = \text{sgn}(\tau) \frac{1}{k!} \sum_{\sigma \in \mathcal{S}(k)} (\text{sgn}(\tau \sigma))\tau \sigma \Phi = \text{sgn}(\tau) A_k(\Phi).
+\]
+由反称的充要条件即得 $A_k(\Phi) \in \Lambda^k(V^*)$,对于 $\Phi \in \Lambda^k(V^*)$,显然有 $\Phi = A_k(\Phi)$.
+
+因此 $\Lambda^k(V^*) = A_k(V_k)$.
+
+由反称的充要条件知(2)显然.
+
+对称同理可得.因此命题得证. $\square$
+
+设 $f: V \to W$ 是向量空间之间的线性映照.则 $f^* : W^* \to V^*$ 是线性的拉回映照,其中 $(f^* w^*)(v) = w^*(f(v))$.作如下推广:
+
+\[
+f^* : W_k \to V_k \quad \text{是线性的},
+\]
+其中 $(f^* \Phi)(v_1, \cdots, v_k) := \Phi(f(v_1), \cdots, f(v_k))$.
+
+\begin{proposition}
+$S_k \circ f^* = f^* \circ S_k$,$A_k \circ f^* = f^* \circ A_k$.
+\end{proposition}
+
+证:$\forall \Phi \in W_k$,两边同时作用 $(v_1, \cdots, v_k)$,容易证明 $S_k \circ f^* (\Phi) = f^* \circ S_k (\Phi)$. $\square$
+
+\subsection{外代数}
+
+$\Lambda^r(V^*) = A_r(V_r) \ (r \geq 0)$ 称为 $r$ 阶反称张量空间.
+
+约定 $\Lambda^1(V^*) = V^*$,$\Lambda^0(V^*) = \mathbb{R}$.
+
+设 $\Phi \in \Lambda^r(V^*)$,$\Psi \in \Lambda^s(V^*)$,定义 $\wedge : \Lambda^r(V^*) \times \Lambda^s(V^*) \to \Lambda^{r+s}(V^*)$ 如下:
+
+\[
+\Phi \wedge \Psi := \frac{(r + s)!}{r!s!} A(\Phi \otimes \Psi)
+\]
+称为 $\Phi$ 和 $\Psi$ 的外乘(外积).
+
+\begin{theorem}
+设 $\Phi, \Phi_1, \Phi_2 \in \Lambda^r(V^*)$,$\Psi, \Psi_1, \Psi_2 \in \Lambda^s(V^*)$,$\eta \in \Lambda^t(V^*)$,$a, b \in \mathbb{R}$,则
+\begin{enumerate}
+    \item $(a \Phi_1 + b \Phi_2) \wedge \Psi = a \Phi_1 \wedge \Psi + b \Phi_2 \wedge \Psi$;$\Psi \wedge (a \Phi_1 + b \Phi_2) = a \Psi \wedge \Phi_1 + b \Psi \wedge \Phi_2$.
+    \item $\Phi \wedge \Psi = (-1)^{rs} \Psi \wedge \Phi$.
+    \item $(\Phi \wedge \Psi) \wedge \eta = \Phi \wedge (\Psi \wedge \eta)$.
+\end{enumerate}
+(分别对应于分配律,反交换律,结合律)
+\end{theorem}
+
+证:(1) 直接利用定义和张量的线性性即得.
+(2) 引入置换
+\[
+\tau = \begin{pmatrix}
+1 & \cdots & r & r+1 & \cdots & r+s \\
+r+1 & \cdots & r+s & 1 & \cdots & r
+\end{pmatrix}
+\]
+利用该置换,并注意到 $\text{sgn }\tau = (-1)^{rs}$.
+(3) 通过逐步展开有:
+\[
+(\Phi \land \Psi) \land \eta = \frac{(r+s+t)!}{r!s!t!} A(\Phi \otimes \Psi \otimes \eta).
+\]
+更进一步地,有:
+\[
+\Phi_1 \land \cdots \land \Phi_k = \frac{(r_1 + \cdots + r_k)!}{r_1! \cdots r_k!} A(\Phi_1 \otimes \cdots \otimes \Phi_k).
+\]
+
+推论:
+\begin{enumerate}
+    \item 设 $\omega, \theta \in V^* = \Lambda^1(V^*)$,则 $\omega \land \theta = -\theta \land \omega$,特别地,$\omega \land \omega = 0$.
+    \item 设 $\theta^1, \cdots, \theta^k \in \Lambda^1(V^*)$,$x_1, \cdots, x_k \in V$,则 $\theta^1 \land \cdots \land \theta^k (x_1, \cdots, x_k) = \det(\theta^i(x_j))_{k \times k}$.
+    \item 设 $\theta^1, \cdots, \theta^k \in \Lambda^1(V^*)$,则 $\theta^1, \cdots, \theta^k$ 线性相关 $\iff \theta^1 \land \cdots \land \theta^k = 0$.
+\end{enumerate}
+
+\begin{corollary}
+设 $V$ 是 $n$ 维向量空间,$\{\omega^i\}$ 为 $V^*$ 的基.
+\begin{enumerate}
+    \item 如果 $r > n$,则 $\Lambda^r(V^*) = \{0\}$.
+    \item 如果 $0 \leq r \leq n$,则 $\dim \Lambda^r(V^*) = \binom{n}{r}$.
+\end{enumerate}
+\end{corollary}
+
+证:已知 $\Phi = \Phi_{i_1, \cdots, i_r} \omega^{i_1} \otimes \cdots \otimes \omega^{i_r}$,
+
+\[
+\Phi = A(\Phi) = \Phi_{i_1, \cdots, i_r} A(\omega^{i_1} \otimes \cdots \otimes \omega^{i_r}) = \frac{1}{r!} \Phi_{i_1, \cdots, i_r} \omega^{i_1} \land \cdots \land \omega^{i_r} = \sum_{1 \leq i_1 \leq \cdots \leq i_r} a_{i_1, \cdots, i_r} \omega^{i_1} \land \cdots \land \omega^{i_r}.
+\]
+
+因此 $\Lambda^r(V^*) = \text{span}\{\omega^{i_1} \land \cdots \land \omega^{i_r} \mid 1 \leq i_1 \leq \cdots \leq i_r \leq n\}$,利用上一个推论知 $r > n$ 时 $\Lambda^r(V^*) = \{0\}$.
+
+又由于 $\{\omega^{i_1} \land \cdots \land \omega^{i_r} \mid 1 \leq i_1 \leq \cdots \leq i_r \leq n\}$ 线性无关(作用上 $n - r$ 形式即知),因此 (2) 成立. $\square$
+
+\begin{corollary}
+设 $\{\theta^A\}, \{\omega^A\}$ 为 $V^*$ 的两组基,$\theta^A = a_B^A \omega^B$,则 $\theta^1 \land \cdots \land \theta^n = \det(a_B^A) \omega^1 \land \cdots \land \omega^n$.
+\end{corollary}
+
+证:
+\[
+\theta^1 \land \cdots \land \theta^n = a_{i_1}^1 \cdots a_{i_n}^n \omega^{i_1} \land \cdots \land \omega^{i_n} = \sum_{1 \leq i_1 \leq \cdots \leq i_r \leq n} (-1)^\tau a_{i_1}^1 \cdots a_{i_n}^n \omega^{i_1} \land \cdots \land \omega^{i_n} = \det(a_B^A) \omega^1 \land \cdots \land \omega^n.
+\]
+(其中 $\tau$ 为逆序数)
+
+\begin{lemma}[Cartan 引理]
+设 $\omega^i, \theta^i \in V^* (1 \leq i \leq r \leq \dim V)$,且设 $\{\omega^1, \cdots, \omega^r\}$ 线性无关,则
+\[
+\sum_{i=1}^r \omega^i \wedge \theta^i = 0 \iff \theta^i = \sum_{i=1}^r a_{ij} \omega^j \text{ 且 } a_{ij} = a_{ji}.
+\]
+\end{lemma}
+
+证:将 $\{\omega^1, \cdots, \omega^r\}$ 延拓为一组基 $\{\omega^1, \cdots, \omega^n\}$,
+
+\[
+\theta^i = \sum_{A=1}^n a_{iA} \omega^A = \sum_{j=1}^r a_{ij} \omega^j + \sum_{\alpha=r+1}^n a_{i\alpha} \omega^\alpha.
+\]
+
+因此有:
+\[
+\sum_{i=1}^r \omega^i \wedge \theta^i = \sum_{i=1}^r \sum_{j=1}^r a_{ij} \omega^i \wedge \omega^j + \sum_{i=1}^r \sum_{\alpha=r+1}^n a_{i\alpha} \omega^i \wedge \omega^\alpha = \sum_{1 \leq i \leq j \leq r} (a_{ij} - a_{ji}) \omega^i \wedge \omega^j + \sum_{i=1}^r \sum_{\alpha=r+1}^n a_{i\alpha} \omega^i \wedge \omega^\alpha.
+\]
+
+因此
+\[
+\sum_{i=1}^r \omega^i \wedge \theta^i = 0 \iff \theta^i = \sum_{i=1}^r a_{ij} \omega^j \text{ 且 } a_{ij} = a_{ji}. \quad \square
+\]
+
+\begin{theorem}
+设 $\omega^1, \cdots, \omega^r \in V^*$ 线性无关,$\Phi \in \Lambda^s(V^*)$,则 $\exists \psi^1, \cdots, \psi^r \in \Lambda^{s-1}(V^*)$ 使得 $\Phi = \omega^1 \wedge \Psi^1 + \cdots + \omega^r \wedge \Psi^r \iff \omega^1 \wedge \cdots \wedge \omega^r \wedge \Phi = 0$.
+\end{theorem}
+
+证:“$\Rightarrow$” 直接代入,显然.
+
+“$\Leftarrow$” 将 $\{\omega^1, \cdots, \omega^r\}$ 延拓为一组基 $\{\omega^1, \cdots, \omega^n\}$,则 $\Lambda^s(V^*)$ 有基 $\{\omega^{i_1} \wedge \cdots \wedge \omega^{i_s} \mid 1 \leq i_1 \leq \cdots \leq i_s \leq n\}$,因而有
+
+\[
+\Phi = \sum_{1 \leq i_1 \leq \cdots \leq i_s \leq n} c_{i_1 \cdots i_s} \omega^{i_1} \wedge \cdots \wedge \omega^{i_s} = \omega^1 \wedge \Psi^1 + \cdots + \omega^r \wedge \Psi^r + \text{(不含 } \omega^1, \cdots, \omega^r \text{ 的项)}.
+\]
+
+当 $r + s > n$ 时,即 $s > n - r$,故 $\Lambda^s(V^*) \ni \text{(不含 } \omega^1, \cdots, \omega^r \text{ 的项)}$(不超过 $n - r$-形式)=0.
+
+当 $r + s \leq n$ 时,$0 = \omega^1 \wedge \cdots \wedge \omega^r \wedge \Phi = \omega^1 \wedge \cdots \wedge \omega^r \wedge \text{(不含 } \omega^1, \cdots, \omega^r \text{ 的项)} \Rightarrow \text{(不含 } \omega^1, \cdots, \omega^r \text{ 的项)} = 0$. $\square$
+
+注:$n = km$,$n \equiv 0 \mod k$,则 $\Phi \equiv 0 \mod \{\omega^1, \cdots, \omega^r\} \iff \omega^1 \wedge \cdots \wedge \omega^r \wedge \Phi = 0$.
+
+回忆拉回映照 $f^* : W^* \to V^*$ 与反称化算子可交换,$A_k \circ f^* = f^* \circ A_k$.
+
+\begin{proposition}
+设 $f : V \to W$ 是向量空间之间的线性映射,$f^* : \Lambda^r(W^*) \to \Lambda^r(V^*) \ (0 \leq r \leq \dim W)$ 为拉回映照,则 $f^*(\Phi \wedge \Psi) = f^* \Phi \wedge f^* \Psi$,$\forall \Phi, \Psi \in \Lambda(W^*)$.
+\end{proposition}
+
+证:设 $\Phi \in \Lambda^r(W^*)$,$\Psi \in \Lambda^s(W^*)$,$X_1, \cdots, X_{r+s} \in V$,
+
+\[
+f^*(\Phi \land \Psi)(X_1, \cdots, X_{r+s}) = (\Phi \land \Psi)(f(X_1), \cdots, f(X_{r+s}))
+\]
+\[
+= \frac{(r + s)!}{r!s!} A(\Phi \otimes \Psi)(f(X_1), \cdots, f(X_{r+s}))
+\]
+\[
+= \frac{(r + s)!}{r!s!} f^*A(\Phi \otimes \Psi)(X_1, \cdots, X_{r+s})
+\]
+\[
+= \frac{(r + s)!}{r!s!} A(f^*\Phi \otimes f^*\Psi)(X_1, \cdots, X_{r+s})
+\]
+\[
+= f^*\Phi \land f^*\Psi(X_1, \cdots, X_{r+s}). \quad \square
+\]
+
+注:令 $\Lambda(V^*) = \bigoplus_{r=0}^n \Lambda^r(V^*) = \{ \omega_0 + \omega_1 + \cdots + \omega_n \mid \omega_r \in \Lambda^r(V^*), 0 \leq r \leq n \}$,则其上有加法、数乘运算,因此构成一个 $2^n$ 维向量空间($2^n = \sum_{i=0}^n \binom{n}{i}$),且满足
+\[
+\wedge : \Lambda(V^*) \times \Lambda(V^*) \rightarrow \Lambda(V^*).
+\]
+因此 $(\Lambda(V^*), \wedge)$ 构成一个代数,称为 $V^*$ 上的外代数.
+
+\section{外微分}
+
+\subsection{张量丛}
+
+$M^m$ 为 $m$ 维 $C^\infty$ 流形,切空间为 $T_pM$,则有 $(r,s)$-型张量空间:
+
+\[
+T_s^r(p) = \underbrace{T_pM \otimes \cdots \otimes T_pM}_{r} \otimes \underbrace{T_p^*M \otimes \cdots \otimes T_p^*M}_{s}
+\]
+其中 $\dim T_s^r(p) = m^{r+s}$.
+
+令 $T_s^r(M) = \bigcup_{p \in M} T_s^r(p)$ 可赋予自然地拓扑、微分结构,使之成为 $m + m^{r+s}$ 维 $C^\infty$ 流形.
+
+$\pi : T_s^r(M) \to M$ 自然投影:$\pi(\Phi) = p$.
+
+取含 $p$ 的坐标系 $(U, \varphi, x^i)$,于是每点 $q \in U$,$T_qM$,$T_q^*M$ 有自然基 $\{(\frac{\partial}{\partial x^i})_q\}$,$\{(dx^i)_q\} \Rightarrow T_s^r(q)$ 有自然基
+
+\[
+\{ (\frac{\partial}{\partial x^{i_1}})_q \otimes \cdots \otimes (\frac{\partial}{\partial x^{i_r}})_q \otimes (dx^{j_1})_q \otimes \cdots \otimes (dx^{j_s})_q \mid 1 \leq i_1, \ldots, i_r, j_1, \ldots, j_s \leq m \}.
+\]
+
+则有双射:
+\[
+\Psi : \pi^{-1}(U) \to U \times \mathbb{R}^N, \quad \Psi(\Phi) = (q, \Phi^{i_1,\ldots,i_r}_{j_1,\ldots,j_s}),
+\]
+\[
+\tilde{\Psi} : \pi^{-1}(U) \xrightarrow{\Psi} U \times \mathbb{R}^N \xrightarrow{\varphi \times id_{\mathbb{R}^N}} \varphi(U) \times \mathbb{R}^N,
+\]
+其中 $N = m^{r+s}$,且 $(\tilde{\Psi}_\alpha, \pi^{-1}(U_\alpha))$ 为 $T_s^r(M)$ 的坐标卡.
+
+\begin{definition}
+设 $M^m$ 为 $m$ 维 $C^\infty$ 流形,$\Phi : p \to \Phi(p) \in T_s^r(p)$,则称 $\Phi$ 为 $M$ 上 $(r,s)$-型张量场,若 $\Phi : M \to T_s^r(M) = \bigcup_{p \in M} T_s^r(p)$,$\pi \circ \Phi = id_M$.
+\end{definition}
+
+\begin{definition}
+如果上述映照 $\Phi : M \to T_s^r(M)$ 是 $C^\infty$ 映照,则称 $\Phi$ 是光滑 $(r,s)$-型张量场.
+\end{definition}
+
+$\Longleftrightarrow \forall p \in M$,$\exists p$ 的坐标系 $(U, \varphi, x^i)$,$\Phi = \Phi^{i_1,\ldots,i_r}_{j_1,\ldots,j_s} \frac{\partial}{\partial x^{i_1}} \otimes \cdots \otimes \frac{\partial}{\partial x^{i_r}} \otimes dx^{j_1} \otimes \cdots \otimes dx^{j_s}$ 有
+\[
+\Phi^{i_1,\ldots,i_r}_{j_1,\ldots,j_s} \in C^\infty(U).
+\]
+
+此时对于另一个坐标系 $(V, \psi, y^i)$,$\Phi$ 在 $V$ 上的分量函数满足
+\[
+\Phi^{i_1,\ldots,i_r}_{j_1,\ldots,j_s} = \Phi^{k_1,\ldots,k_r}_{l_1,\ldots,l_s} \frac{\partial y^{i_1}}{\partial x^{k_1}} \cdots \frac{\partial y^{i_r}}{\partial x^{k_r}} \frac{\partial x^{l_1}}{\partial y^{j_1}} \cdots \frac{\partial x^{l_s}}{\partial y^{j_s}}.
+\]
+
+$r = 1, s = 0$:$T_0^1(M) = TM$ 为切丛(张量场对应于切向量场).
+$r = 0, s = 1$:$T_1^0(M) = T^*M$ 为余切丛(张量场对应于余切向量场).
+
+\[
+T_s^r(p) = \underbrace{T_pM \otimes \cdots \otimes T_pM}_{r} \otimes \underbrace{T_p^*M \otimes \cdots \otimes T_p^*M}_{s} = \mathcal{L}(T_p^*M, \cdots, T_p^*M, T_pM, \cdots, T_pM; \mathbb{R}).
+\]
+
+考察 $(r, s)$-型张量场 $\Phi : M \rightarrow T_s^r(M)$,$\pi \circ \Phi = id_M$.
+
+$\Phi$ 诱导一个映照:
+\[
+\Phi : \Gamma(T^*M) \times \cdots \times \Gamma(T^*M) \times \Gamma(TM) \times \cdots \times \Gamma(TM) \rightarrow C^\infty(M)
+\]
+\[
+(\sigma_1, \ldots, \sigma_r, X_1, \ldots, X_s) \rightarrow \Phi(\sigma_1, \ldots, \sigma_r, X_1, \ldots, X_s)
+\]
+关于每一个分量是 $C^\infty(M)$-线性的.
+反过来,如果映照 $\Phi$ 关于每一个分量是 $C^\infty(M)$-线性的,则 $\Phi$ 为张量场.
+
+令 $\Gamma(T_s^r(M)) = \{C^\infty (r, s)\text{-型张量场}\}$,则其为 $\infty$-维向量空间.
+
+$M^m$,$C^\infty$ 流形,令 $\Lambda^r(T^*M) = \bigcup_{p \in M} \Lambda^r(T_p^*M)$,其中 $\dim \Lambda^r(T_p^*M) = \binom{m}{r}$,可赋予自然的拓扑和微分结构使之成为 $m + \binom{m}{r}$ 维 $C^\infty$ 流形,称为 $M$ 上的 $r$-次外形式丛.
+
+\begin{definition}
+$\Phi : M \rightarrow \Lambda^r(T^*M)$ 是 $C^\infty$ 映照,$\pi \circ \Phi = id_M$,则称 $\Phi$ 为 $r$-次外微分形式 $\iff \forall p \in M$,$\exists p$ 的坐标系 $(U, \varphi, x^i)$,$\Phi = a_{i_1, \ldots, i_r} dx^{i_1} \wedge \cdots \wedge dx^{i_r}$ 有 $a_{i_1, \ldots, i_r} \in C^\infty(U)$.
+\end{definition}
+
+令 $\mathcal{A}^r(M) = \Gamma(\Lambda^r(T^*M)) = \{\omega : M \rightarrow \Lambda^r(T^*M) \text{ 是 } C^\infty, \pi \circ \omega = id_M\}$ 为 $r$-次外微分形式空间,也是 $\infty$-维向量空间.
+对于 $\omega \in \Gamma(\Lambda^r(T^*M)) = \mathcal{A}^r(M)$,
+
+\[
+\omega = \mathcal{A}(\omega) = \omega_{i_1, \ldots, i_r} \mathcal{A}(dx^{i_1} \otimes \cdots \otimes dx^{i_r}) = \frac{1}{r!} \omega_{i_1, \ldots, i_r} dx^{i_1} \wedge \cdots \wedge dx^{i_r} = \sum_{1 \leq i_1 \leq \cdots \leq i_r \leq m} \omega_{i_1, \ldots, i_r} dx^{i_1} \wedge \cdots \wedge dx^{i_r}.
+\]
+
+例:$f \in C^\infty(M)$,$\forall p \in M, v \in T_p M$,$f$ 在 $p$ 处的微分
+
+\[
+(df)_p(v) = v(f), \quad (df)_p \in T_p^*M.
+\]
+
+任取坐标系 $(U, \varphi, x^i)$,
+
+\[
+df|_U = \sum_i \frac{\partial f}{\partial x^i} dx^i \quad \text{且} \quad \frac{\partial f}{\partial x^i} \in C^\infty(U).
+\]
+
+$\Rightarrow df \in \mathcal{A}^1(M)$.
+
+令 $\mathcal{A}(M) := \bigoplus_{r=0}^m \mathcal{A}^r(M)$ 为向量空间,对数乘与求和封闭($f\omega + g\sigma \in \mathcal{A}(M)$),称为微分形式空间.
+
+$\wedge: \mathcal{A}(M) \times \mathcal{A}(M) \rightarrow \mathcal{A}(M)$ 分层代数.
+
+设 $f : M \to N$ 为 $C^\infty$ 映照,$\forall p \in M$,$f_* : T_pM \to T_{f(p)}N$,$f^* : T_{f(p)}^*N \to T_p^*M$ 且
+
+\[
+f^* : \Gamma(T_r^0(N)) \rightarrow \Gamma(T_r^0(M))
+\]
+
+拉回映照.
+
+说明如下:设 $\Phi \in \Gamma(T_r^0(N)) = \Gamma(\cup_q T^*N \otimes \cdots \otimes T^*N)$,
+
+\[
+\mathcal{A}^r(M) = \Gamma(\Lambda^r(T^*M)) \subset \Gamma(T_r^0(M))
+\]
+
+$\Rightarrow f^* : \mathcal{A}^r(N) \rightarrow \mathcal{A}^r(M)$.
+
+\[
+f^* : \mathcal{A}(N) \rightarrow \mathcal{A}(M), \quad \sigma = \sum_{r=1}^k \sigma_r \rightarrow \sum_{r=1}^k f^*(\sigma_r)
+\]
+
+且保持外积运算,即
+
+\[
+f^*(\omega \wedge \sigma) = f^*(\omega) \wedge f^*(\sigma)
+\]
+
+因此为代数同态.
+
+\subsection{外微分}
+
+$M^m$ 为 $m$ 维 $C^\infty$ 流形,$\mathcal{A}(M) := \bigoplus_{r=0}^m \mathcal{A}^r(M)$.
+
+\begin{definition}
+设 $d : \mathcal{A}(M) \rightarrow \mathcal{A}(M)$ 是线性映照,满足
+\begin{enumerate}
+    \item $d : \mathcal{A}^r(M) \rightarrow \mathcal{A}^{r+1}(M)$;
+    \item 设 $\omega \in \mathcal{A}^r(M)$,$\sigma \in \mathcal{A}(M)$,则
+    \[
+    d(\omega \wedge \sigma) = d\omega \wedge \sigma + (-1)^r \omega \wedge d\sigma;
+    \]
+    \item 如果 $f \in \mathcal{A}^0(M) = C^\infty(M)$,则 $df$ 就是普通微分且 $d(df) = 0$,
+\end{enumerate}
+则称 $d$ 为 $M$ 上外微分算子,简称外微分.
+\end{definition}
+
+\begin{lemma}
+外微分算子为局部算子,即若 $\omega_1, \omega_2 \in \mathcal{A}(M)$,$U \subset M$ 开子集,$\omega_1|_U = \omega_2|_U$,则 $(d\omega_1)|_U = (d\omega_2)|_U$.
+\end{lemma}
+
+证:设 $\omega = \omega_1 - \omega_2$,因此 $\omega|_U = 0$.
+$\forall p \in U$,取含 $p$ 的 $V$ 使得 $V \subset U$,则 $\exists f \in C^\infty(M)$,满足 $f|_V = 1$,$f|_{M\setminus U} = 0$,因此 $f\omega = 0$,作外微分有:
+\[
+0 = d(f\omega)_p = [df \wedge \omega + f d\omega]_p = f(p)(d\omega)_p = (d\omega)_p. \quad \square
+\]
+
+\begin{theorem}
+$C^\infty$ 流形 $M$ 上外微分算子是存在唯一的.
+\end{theorem}
+
+证:先证唯一性.设 $d$ 为 $M$ 上外微分算子,任取 $U \subset M$ 开子集,则 $d$ 诱导 $U$ 上外微分算子,即 $d: \mathcal{A}(U) \rightarrow \mathcal{A}(U)$ 满足 (1)-(3):
+设 $\omega \in \mathcal{A}(U), p \in U$ 存在 $p$ 的邻域 $V$ 及 $\tilde{\omega} \in \mathcal{A}(M)$,使得 $\tilde{\omega}|_V = \omega|_V$(例如 $\tilde{\omega} = f\omega$,$f$ 为光滑截断函数),
+
+\[
+(d\omega)|_V := (d\tilde{\omega})|_V.
+\]
+
+根据 $d$ 的局部性,上述定义与 $\tilde{\omega}$ 选取无关,于是有 $d: \mathcal{A}(U) \rightarrow \mathcal{A}(U)$ 满足 (1)-(3).
+下面说明 $d$ 在坐标系内是唯一的.
+设 $(U, \varphi, x^i) \subset M$ 为坐标系,$\omega \in \mathcal{A}^r(M)$ 在 $U$ 内为单项,即 $\omega|_U = a dx^{i_1} \wedge \cdots \wedge dx^{i_r}$,则
+
+\[
+(d\omega)|_U = d(\omega|_U) = da \wedge dx^{i_1} \wedge \cdots \wedge dx^{i_r} + a d(dx^{i_1} \wedge \cdots \wedge dx^{i_r}) = da \wedge dx^{i_1} \wedge \cdots \wedge dx^{i_r}.
+\]
+
+因此 $d\omega$ 在 $U$ 内有确定表达式,也就说明了唯一性.
+在每个坐标系 $(U, \varphi, x^i)$ 中,同上 $\omega \in \mathcal{A}(U)$,$\omega|_U = a_{i_1 \cdots i_r}dx^{i_1} \wedge \cdots \wedge dx^{i_r}$,定义 $d\omega = da_{i_1 \cdots i_r} \wedge dx^{i_1} \wedge \cdots \wedge dx^{i_r}$,这里 $da_{i_1 \cdots i_r}$ 为函数的普通微分,于是有线性映照 $d: \mathcal{A}(U) \rightarrow \mathcal{A}(U)$,容易证明其满足性质 (1)-(3),接下来证明可以拼成一个整体的外微分算子.
+设 $\omega \in \mathcal{A}^r(M)$,$\omega|_U = a dx^{i_1} \wedge \cdots \wedge dx^{i_r}$,定义 $d$ 满足:
+\[
+d(\omega|_U) = da \wedge dx^{i_1} \wedge \cdots \wedge dx^{i_r}.
+\]
+
+对于另一个坐标系 $(W, y^i)$,$U \cap W \neq \emptyset$,$d|_U$,$d|_W$ 分别诱导了 $U \cap W$ 上的外微分算子 $d|_{U \cap W}$.由外微分算子的局部性和唯一性知,在重合部分诱导的外微分算子相同,因此可以拼接整个 $M$ 上的外微分算子. $\square$
+
+\begin{lemma}[Poincaré]
+$d^2 = 0$,即 $\forall \omega \in \mathcal{A}(M)$,则 $d(d\omega) = 0$.
+\end{lemma}
+
+证:对单项直接证明容易,再由线性性即得结论. $\square$
+
+例1. $f \in C^\infty(\mathbb{R}^3)$
+
+\[
+\text{grad }f = \frac{\partial f}{\partial x}i + \frac{\partial f}{\partial y}j + \frac{\partial f}{\partial z}k \in \mathfrak{X}(\mathbb{R}^3)
+\]
+\[
+df = \frac{\partial f}{\partial x}dx + \frac{\partial f}{\partial y}dy + \frac{\partial f}{\partial z}dz \in \mathcal{A}^1(\mathbb{R}^3).
+\]
+
+例2. $X = Ai + Bj + Ck \in \mathfrak{X}(\mathbb{R}^3) \iff \omega = Adx + Bdy + Cdz \in \mathcal{A}^1(\mathbb{R}^3)$,
+
+\[
+d\omega = \left(\frac{\partial C}{\partial y} - \frac{\partial B}{\partial z}\right)dy \wedge dz + \left(\frac{\partial A}{\partial z} - \frac{\partial C}{\partial x}\right)dz \wedge dx + \left(\frac{\partial B}{\partial x} - \frac{\partial A}{\partial y}\right)dx \wedge dy \in \mathcal{A}^2(\mathbb{R}^3)
+\]
+\[
+\text{curl }X = \left(\frac{\partial C}{\partial y} - \frac{\partial B}{\partial z}\right)i + \left(\frac{\partial A}{\partial z} - \frac{\partial C}{\partial x}\right)j + \left(\frac{\partial B}{\partial x} - \frac{\partial A}{\partial y}\right)k.
+\]
+
+例3. $Y = Ai + Bj + Ck \in \mathfrak{X}(\mathbb{R}^3)$,$\sigma = Ady \wedge dz + Bdz \wedge dx + Cdx \wedge dy \in \mathcal{A}^2(\mathbb{R}^3)$,
+
+\[
+d\sigma = \left(\frac{\partial A}{\partial x} + \frac{\partial B}{\partial y} + \frac{\partial C}{\partial z}\right)dx \wedge dy \wedge dz
+\]
+\[
+\text{div }Y = \frac{\partial A}{\partial x} + \frac{\partial B}{\partial y} + \frac{\partial C}{\partial z}.
+\]
+
+由 Poincaré 引理容易得到:$\text{curl}(\text{grad }f) = 0$,$\text{div}(\text{curl }X) = 0$.
+
+\begin{theorem}
+设 $\omega \in \mathcal{A}^1(M)$,$X, Y \in \mathfrak{X}(M)$,则
+\[
+d\omega(X,Y) = X(\omega(Y)) - Y(\omega(X)) - \omega([X,Y]).
+\]
+\end{theorem}
+
+证:设 $\omega = fdg$,则 $d\omega = df \wedge dg$,因此(均在坐标系内操作)
+
+左 $= d\omega(X,Y) = \det \begin{vmatrix}
+df(X) & df(Y) \\
+dg(X) & dg(Y)
+\end{vmatrix} = X(f)Y(g) - X(g)Y(f)$,
+
+右 $= X(fdg(Y)) - Y(fdg(X)) - fdg([X,Y]) = X(fY(g)) - Y(fX(g)) - f[X,Y](g) = X(f)Y(g) - X(g)Y(f) + f[X,Y](g) - f[X,Y](g) = X(f)Y(g) - X(g)Y(f) = \text{左}$. $\square$
+
+注:当 $\omega \in \mathcal{A}^r(M)$,$X_1, \cdots, X_{r+1} \in \mathfrak{X}(M)$ 时,
+
+\[
+d\omega(X_1, \cdots, X_{r+1}) = \sum_{i=1}^{r+1} (-1)^{i+1} X_i(\omega(X_1, \cdots, \hat{X_i}, \cdots, X_{r+1})) + \sum_{i<j} (-1)^{i+j} \omega([X_i, X_j], \cdots, \hat{X_i}, \cdots, \hat{X_j}, \cdots, X_{r+1}).
+\]
+
+(通过对单项分析不难验证上述成立)
+
+\begin{theorem}
+设 $f: M \to N$ 是 $C^\infty$-映照,则 $f^* \circ d = d \circ f^*$,即 $\forall \omega \in \mathcal{A}(N)$,有 $f^* \circ d\omega = d \circ f^* \omega$.
+\end{theorem}
+
+证:$r = 0$ 时,设 $\omega = u \in C^\infty (N)$,$\forall p \in M$,$X \in T_pM$,有
+\[
+(f^*du)_p(X) = (du)_p(f_*X) = f_*X(u) = X(u \circ f) = X(f^*(u)) = d(f^*u)_p(X).
+\]
+
+因此 $f^*du = d(f^*u)$.
+$r > 0$ 时,设 $\omega = u dy^{i_1} \wedge \cdots \wedge dy^{i_r}$,则
+\[
+f^*\omega = (u \circ f) d(y^{i_1} \circ f) \wedge \cdots \wedge d(y^{i_r} \circ f).
+\]
+
+由 $d$ 的性质和 $r=0$ 的情况即得. $\square$
+
+\subsection{流形的定向与外微分形式的积分}
+
+\subsubsection{流形的定向}
+
+定义 三维空间中,如果 $S$ 上存在连续的单位法向量场 $n$,则称 $S$ 是可定向的.
+
+设 $V$ 是 $m$ 维向量空间,$\{e_i\}, \{\bar{e}_i\}$ 为两组基,且 $(e_1, \cdots , e_m) = (\bar{e}_1, \cdots , \bar{e}_m)(a_j^i)_{m \times m}$,则称两组基等价,若 $\det(a_j^i) > 0$.则基集合只有两个等价类,给出 $V$ 的定向.
+定向的另一表述:$\dim \Lambda^m(V^*) = 1$,$0 \neq \Omega \in \Lambda^m(V^*)$,$(e_1, \cdots , e_m) = (\bar{e}_1, \cdots , \bar{e}_m)(a_j^i)_{m \times m}$,则 $\Omega(\bar{e}_1, \cdots , \bar{e}_m) = \Omega(e_1, \cdots , e_m) \det(a_j^i)_{m \times m}$,因此 $\Omega$ 作用于等价的基是同号的.于是有定义:
+
+\begin{definition}
+设 $M^m$ 为 $C^\infty$-流形,如果 $M$ 上存在一个连续的、处处不为零的 $m$ 次外微分形式 $\Omega$,则称 $M$ 是可定向的,$(M, \Omega)$ 称为可定向流形.
+\end{definition}
+
+注 1. 称 $\Omega : M \to \Lambda^mT^*M$ 为连续映照,$\pi \circ \Omega = id_M$,若局部的,$\Omega = fdx^1 \wedge \cdots \wedge dx^m$,$f \in C^0(U)$.
+注 2. 如果 $\Omega_1, \Omega_2$ 均为定向,则 $\Omega_2 = f\Omega_1$,其中 $f$ 连续且恒正或恒负($M$ 连通时).定向相同等价于 $f > 0$.
+注 3. 坐标系 $(U, x^i)$,$dx^1 \wedge \cdots \wedge dx^m$ 给出 $U$ 上的局部定向.对于定向流形,$\Omega = fdx^1 \wedge \cdots \wedge dx^m$,$f \in C^0(U)$,若 $f > 0$,则称 $(U, x^i)$ 的定向与 $\Omega$ 是一致的.
+
+\begin{theorem}
+设 $M^m$ 为 $C^\infty$-流形,则 $M$ 可定向 $\iff$ 存在坐标图 $\{(U_\alpha, \varphi_\alpha, x_{\alpha}^i)\}_{\alpha \in \Lambda}$,$\forall \alpha, \beta \in \Lambda$,$p \in U_\alpha \cap U_\beta$,有 $\det(D(\varphi_\alpha \circ \varphi_\beta^{-1})(p)) > 0$.
+\end{theorem}
+
+证:$\Rightarrow$ 可以认为 $M$ 是连通的,否则可对 $M$ 的每个连通分支来证明.现设 $\omega$ 为 $M$ 上处处不为零的连续的 $m$ 次外微分形式,且设坐标图 $\{(U_\alpha, \varphi_\alpha, x_{\alpha}^i)\}_{\alpha \in \Lambda}$ 覆盖 $M$.置
+\[
+\omega_\alpha = dx_\alpha^1 \wedge \cdots \wedge dx_\alpha^m.
+\]
+
+于是,可以认为
+\[
+\omega|_{U_{\alpha}} = f_{\alpha} \omega_{\alpha}, \quad f_{\alpha} > 0, \quad f_{\alpha} \in C^{0}(U_{\alpha}).
+\]
+因为当 $f_{\alpha} < 0$ 时,我们可用 $(-x_{\alpha}^{1}, x_{\alpha}^{2}, \cdots, x_{\alpha}^{m})$ 来代替 $(x_{\alpha}^{1}, \cdots, x_{\alpha}^{m})$,即改变其中某一个坐标的符号,这就使 $\omega_{\alpha}$ 改变符号,从而使 $f_{\alpha} > 0$.此外,在 $U_{\alpha} \cap U_{\beta}$ 上,令 $D_{\alpha \beta} \triangleq \det(\varphi_\alpha \circ \varphi_\beta^{-1})$,则
+\[
+\omega_{\alpha} = \det \left( \frac{\partial (x_{\alpha}^{1}, \cdots, x_{\alpha}^{m})}{\partial (x_{\beta}^{1}, \cdots, x_{\beta}^{m})} \right) \omega_{\beta} = D_{\alpha \beta} \omega_{\beta}.
+\]
+且又有 $f_{\beta} \omega_{\beta} = f_{\alpha} \omega_{\alpha}$,故 $\omega_{\alpha} = \frac{f_{\beta}}{f_{\alpha}} \omega_{\beta}$.于是在 $U_{\alpha} \cap U_{\beta}$ 上
+\[
+D_{\alpha \beta} = \frac{f_{\beta}}{f_{\alpha}} > 0.
+\]
+
+$\Leftarrow$ 设坐标图册 $\{(U_\alpha, \varphi_\alpha; x_{\alpha}^{i})\}$ 覆盖 $M$,并且在 $U_\alpha \cap U_\beta$ 上 $D_{\alpha \beta} > 0$.置 $\omega_{\alpha} = dx_{\alpha}^{1} \wedge \cdots \wedge dx_{\alpha}^{m}$,且设 $\{f_{\alpha}\}$ 为从属于 $\{U_\alpha\}$ 的 $C^{\infty}$ 单位分解.用下式定义 $M$ 上 $m$ 次外微分形式
+\[
+\omega = \sum_{\alpha} f_{\alpha} \omega_{\alpha}.
+\]
+因为对任一点 $p \in M$,集合 $S = \{\alpha \mid p \in \text{supp } f_{\alpha}\}$ 为非空有限集.于是
+\[
+\omega(p) = \sum_{\alpha \in S} f_{\alpha}(p) \omega_{\alpha}(p) = \left( \sum_{\alpha \in S} f_{\alpha}(p) D_{\alpha \alpha_0}(p) \right) \omega_{\alpha_0}(p),
+\]
+其中 $\alpha_0 \in S$ 是固定的.因为 $f_{\alpha} \geq 0$,$\sum_{\alpha \in S} f_{\alpha}(p) = 1$,$D_{\alpha \alpha_0}(p) > 0$.故知 $\omega(p) \neq 0$,即 $\omega$ 为 $M$ 上连续的且处处不为零的 $m$ 次外微分形式,从而 $M$ 是可定向的. $\square$
+
+注:可定向流形 $M$ 上可找到处处不为零的 $C^{\infty}$,$m$ 次外微分形式.
+
+\subsubsection{外微分形式的积分}
+
+欧式空间中的积分变量代换公式:设 $f \in C_c(\mathbb{R}^m)$,$h$ 微分同胚,则
+\[
+\int_{\mathbb{R}^m} f(x)dx = \int_{\mathbb{R}^m} f \circ h(y)|\det Dh|dy.
+\]
+
+若 $\det Dh > 0$,则 $h$ 保持 $\Omega = dx^1 \wedge \cdots \wedge dx^m$ 的定向,称为保定向的微分同胚.
+
+$(\mathbb{R}^m, h^{-1}; y)$ 可视为流形 $\mathbb{R}^m$ 上的另一个坐标系.
+
+令 $\omega = f(x)dx^1 \wedge \cdots \wedge dx^m$ 具有紧支集,连续 $m$ 次外微分形式为
+
+\[
+dx^1 \wedge \cdots \wedge dx^m = \det Dh \, dy^1 \wedge \cdots \wedge dy^m.
+\]
+
+于是 $\int_{\mathbb{R}^m} \omega := \int_{\mathbb{R}^m} f(x)dx^1 \wedge \cdots \wedge dx^m$.
+
+设 $(M, \Omega)$ 为可定向的 $C^{\infty}$-流形,$\omega$ 具有紧支集.
+
+(1) 局部坐标系 $(U, \varphi, x^i)$ 中(与定向相符),$\text{supp }\omega \subset U$,$\omega = f(x)dx^1 \wedge \cdots \wedge dx^m$,则
+\[
+\int_M \omega = \int_U \omega = \int_{\varphi(U)} (f \circ \varphi^{-1})(x^1, \cdots, x^m)dx^1 \cdots dx^m.
+\]
+
+(2) 一般情形.设 $\{(U_i, \varphi_i)\}$ 为与定向相符的坐标图册,及从属于它的单位分解 $\{f_i\}$,
+\[
+\omega = (\sum_i f_i)\omega = \sum_i f_i\omega, \quad \text{supp}(f_i\omega) \subset U_i.
+\]
+注意到 $\text{supp }\omega$ 紧,且 $\{\text{supp } f_i\}$ 局部有限,因此
+\[
+\int_M \omega = \sum_i \int_M f_i\omega.
+\]
+
+注:上述定义与坐标系和单位分解选取无关.
+\[
+\int_{(M, \Omega)} \omega = - \int_{(M, -\Omega)} \omega.
+\]
+
+$k$ 维外微分形式的积分:类似定义.
+
+\subsection{Stokes 公式}
+
+例 1. 微积分基本定理.
+例 2. Green 公式.
+例 3. Gauss 公式.
+
+\begin{definition}
+设 $M^m$ 是 $m$ 维 $C^\infty$ 流形,如果 $M$ 中的子集 $D$ 由下面两类点构成:
+\begin{enumerate}
+    \item 内点 $p$:$\exists V \subset M$ 开集,使得 $V \subset D$;
+    \item 边界点 $p$:$\exists U \subset M$ 和坐标系 $(U, \varphi, x^i)$ 使得 $\varphi(U \cap D) = \{q \in \varphi(U) \mid x^m(q) \geq 0\}$(适应坐标系),
+\end{enumerate}
+则称 $D$ 为带边区域,用 $\partial D$ 表示边界全体.
+\end{definition}
+
+因为每点 $p \in \partial D$ 有一个适应坐标系,这些适应坐标系构成 $\partial D$ 的一个覆盖 $\{(U_\alpha, \varphi_\alpha)\}$,则 $\partial D$ 的坐标图册 $\{(U_\alpha \cap \partial D, \varphi_\alpha |_{U_\alpha \cap \partial D}, x^1, \cdots, x^{m-1})\}$ 确定了 $\partial D$ 的 $C^\infty$ 结构.
+
+现设 $M$ 是定向流形,则可要求 $\partial D$ 的适应坐标系与定向相符,即有如下定理:
+
+\begin{theorem}
+设 $D$ 是 $C^\infty$-流形 $M$ 中带边区域,如果 $(M, \Omega)$ 可定向,则 $\partial D$ 也是可定向的.
+\end{theorem}
+
+证:$\partial \mathbb{R}^m$ 是 $\mathbb{R}^m$ 的子流形且与 $\mathbb{R}^{m-1}$ 同胚,故对 $M$ 的坐标图 $(U, \varphi)$,$\varphi(\partial D \cap U) = \varphi(U) \cap \partial \mathbb{R}^m$,是 $\partial \mathbb{R}^m$ 的开集.从而 $\partial D$ 上的微分结构可由坐标图册 $\{(U_\alpha, \varphi_\alpha)\}$ 所确定,其中 $\hat{U}_\alpha = U_\alpha \cap \partial D$,$\hat{\varphi}_\alpha = \varphi_\alpha |_{U_\alpha \cap \partial D}$,而 $(U_\alpha, \varphi_\alpha)$ 为 $D$ 的含有其边界点的坐标图,即 $U_\alpha \cap \partial D \neq \emptyset$.于是 $\partial D$ 为 $m-1$ 维 $C^\infty$ 微分流形.此外
+\[
+\varphi(U \cap \partial D) = \{x \in \varphi(U) \mid x^m = 0\}.
+\]
+
+故 $(i, \partial D)$ 是 $D$ 的正则子流形.再来证明 $D$ 的定向决定 $\partial D$ 的一个定向.设 $(U, \varphi; x^i)$ 和 $(V, \psi; y^i)$ 是 $D$ 中包含点 $p \in \partial D$ 的定向的坐标图.显然,$x^m \geq 0, y^m \geq 0$,且等号分别仅当 $U$ 和 $V$ 的点在 $\partial D$ 上时成立.$\psi \circ \varphi^{-1}$ 局部地可表成
+\[
+y^i = y^i \left( x^1, \cdots, x^m \right), \quad 1 \leq i \leq m.
+\]
+注意到 $0 = y^{m} \left( x^1, \cdots, x^{m-1}, 0 \right)$,故对任意的 $q \in U \cap V \cap \partial D$,有
+\[
+D \left( \psi \circ \varphi^{-1} \right)_{\varphi(q)} = \begin{pmatrix}
+\frac{\partial y^\alpha}{\partial x^\beta} & * \\
+0 & \frac{\partial y^m}{\partial x^m} 
+\end{pmatrix}_{\varphi(q)}, \quad \alpha, \beta = 1, \cdots, m - 1.
+\]
+现设 $\varphi(q) = (a^1, \cdots, a^{m-1}, 0)$,令
+\[
+f(t) = y^m \left( a^1, \cdots, a^{m-1}, t \right). \quad \forall t \geq 0,
+\]
+则 $f(t) \geq 0$,且 $\left( \frac{\partial y^m}{\partial x^m} \right)_{\varphi(q)} = f'(0) = \lim_{t \to +0} \frac{f(t)}{t} \geq 0$.但因为 $\det \left( D \left( \psi \circ \varphi^{-1} \right) \right) > 0$,故必须 $\left( \frac{\partial y^m}{\partial x^m} \right)_{\varphi(q)} > 0$ 及 $\det \left( \frac{\partial y^\alpha}{\partial x^\beta} \right)_{\varphi(q)} > 0$.注意到 $(x^1, \cdots, x^{m-1})$ 和 $(y^1, \cdots, y^{m-1})$,正是 $\partial D$ 的点在不同坐标系下的局部坐标,而 $\{ (\bar{U}, \bar{\varphi}) \}$ 为 $\partial D$ 的坐标图册,故知 $D$ 的定向诱导了 $\partial D$ 的一个定向. $\square$
+
+\begin{theorem}[Stokes公式]
+设 $(M, \Omega)$ 是可定向的 $C^\infty$-流形,$D$ 是 $M$ 中的带边区域,且从 $M$ 中自然地诱导一个定向.$\omega$ 是 $M$ 一个具有紧支集的,$C^1$ 的 $(m-1)$ 次外微分形式.则
+\[
+\int_D d\omega = \int_{\partial D} \omega.
+\]
+如果 $\partial D = \emptyset$,则右端为$0$.
+\end{theorem}
+(证明参见陈省身《微分几何讲义》)
+
+\section*{参考文献}
+\begin{enumerate}
+    \item John. M. Lee: \textit{Introduction to Smooth Manifolds}.
+    \item 陈省身:《微分几何讲义》.
+    \item 陈维桓:《微分流形初步》.
+    \item 白正国:《黎曼几何初步》.
+\end{enumerate}

@@ -1,0 +1,1300 @@
+\setdisplaytitle{试卷：实分析}
+\sethtmltitle{试卷：实分析}
+\theoremstyle{remark}\newtheorem*{remark*}{注}
+
+{{warning|本栏目尚有大幅提升空间，显著问题有中英夹杂、排版潦草、表述随意等，
+读者可以自行改进。我们对目前质量欠佳的内容可能造成的困扰表示抱歉。}}
+
+\section{25--26春 期末(H) (吴健超、章嘉雯)}
+\begin{enumerate}
+\item 在承认选择公理的前提下求\\(1) (4分) 实系数多项式全体构成的集合的势；\\(2) (6分) 全体$\mathbb{R}$到$\mathbb{R}$的单调函数构成的集合的势。
+\item 对每个自然数 $M$，定义 $\mathcal{D}_{M} = \big\{ \big[\frac{k}{2^{M}}, \frac{k + 1}{2^{M}}\big] \mid k = 0, 1, \cdots, 2^{M} - 1 \big\}$ 为所有二进区间全体组成的集合。\\
+(1) (8分)求证：对任意 Lebesgue 可测集 $A \subseteq [0, 1]$ 和任意 $\varepsilon > 0$，
+存在有限个二进区间 $I_{j} \in \mathcal{D}_{M}$ 使得 
+\[m(A \mathop{\triangle} \bigcup_{j = 1}^{n}I_{j}) < \varepsilon.\]
+(2) (12分)设 $r_{n}(x) = \mathrm{sgn}(\sin(2^{n}\pi x))$，$f$ 是 $[0, 1]$ 上的 Lebesgue 有界可测函数，求证：
+$$\lim_{n \to \infty}\int_{0}^{1}f(x)r_{n}(x)\,\text{d} x = 0.$$
+\item $(X,\mathcal{B},\mu)$是测度空间，设函数列$\{f_n\},f$都是取值在$\mathbb{R}$上的可测函数，函数$F:\mathbb{R}\to\mathbb{R}$是连续函数.\\
+(1) (2分)叙述$f_n$在$X$上依测度收敛收敛到$f$的定义。\\(2) (6分)若$F$一致连续，求证$F(f_n)$依测度收敛于$F(f)$。\\(3) （12分)若$F$只是连续（不一定一致连续）且$f$可积，求证$F(f_n)$依测度收敛于$F(f)$。
+\item 设 $K(x)$ 是 $\mathbb{R}$ 上非负的 Lebesgue 可积函数，满足
+\[\int_{\mathbb{R}}K(x)\,\text{d} m(x) = 1,\]
+定义 $K_{n}(x) = nK(nx)$。\\
+(1) (2分) 求证：\[\int_{\mathbb{R}}K_{n}(x)\,\text{d} m(x) = 1.\]
+(2) (4分) 证明：对任意 $\delta > 0$，有 \[\lim_{n \rightarrow \infty}\int_{|x| > \delta}K_{n}(x)\,\text{d} m(x) = 0.\]
+(3) (6分) 设 $f$ 是 $\mathbb{R}$ 上的有界 Lebesgue 可测函数，且 $f$ 在 $0$ 处连续，证明：
+\[\lim_{n \to \infty}\int_{\mathbb{R}}K_{n}(x)f(x)\,\text{d} m(x) = f(0).\]
+(4) (8分) 进一步假设 $K(x)$ 有界且存在 $M > 0$ 使得当 $|x| > M$ 时，有 $K(x) = 0$，
+设 $g$ 是 $\mathbb{R}$ 上的 Lebesgue 可积函数，叙述 $g$ 的 Lebesgue 点的定义，并证明 
+\[\lim_{n \to \infty}(K_{n} * g)(x) = g(x)\]
+对几乎处处的 $x$ 成立，其中
+\[(K_{n} * g)(x) = \int_{\mathbb{R}}K_{n}(x - y)g(y)\,\text{d} y.\]
+\item (10分) 求无穷级数$$\sum_{n=0}^{\infty}\int_0^{\pi/3}\big(1-\sqrt{\sin x}\big)^n\cos x \,\text{d}x.$$
+\item 设$f$是$(a,b)$上的单调递增函数，$E\subset(a,b)$，$t>0$为一常数，对于任意$x\in E$，$\overline{D}(f)>t$.\\
+(1) (4分) $E'=\{x\in E \mid f\text{ 在 }x\text{ 处连续}\}$，证明$m^*(E)=m^*(E'),m^*(f(E))=m^*(f(E'))$;\\
+(2) (6分) 对任意$\varepsilon>0$，存在一开集$O$包含$f(E')$满足$m(O)\leqslant m^*(f(E'))+\varepsilon$，记
+\[\mathcal{F}_0=\bigg\{[c,d]\subset[a,b]\biggm|\frac{f(d)-f(c)}{d-c}>t,\,[f(c),f(d)]\subset O\bigg\},\]
+求证$\mathcal{F}_0$是$E'$的Vitali覆盖;\\
+(3) (10分) 证明：$t\cdot m^*(E)\leqslant m^*(f(E))$.
+\end{enumerate}
+
+\section{25--26春 期末(王凯)}
+\begin{enumerate}
+\item (1) 叙述可数集的定义。
+(2) 固定$p$，求所有$p$进制有限小数的势。
+
+\item (1) 叙述Lusin定理。\\
+(2) 证明：$f$是$[0,2\pi]$上的Lebesgue可测函数等价于存在多项式序列$\{p_n\}_{n\geqslant1}$，
+使得$p_n\stackrel{a.e.}{\longrightarrow}f$。
+
+
+\item 设$E$是直线中 Lebesgue 可测集，$1\leqslant p,q\leqslant\infty,\frac{1}{p}+\frac{1}{q}=1$. 
+若$L^p(E)$中函数列$\{f_n\}$依$L^p$意义收敛于函数$f$，$L^q(E)$中函数列$\{g_n\}$依$L^q$意义收敛于函数$g$,那么 $\{f_ng_n\}$依$L^1$意义收敛于函数$fg$.
+
+\item (1) 依测度收敛的定义。\\
+(2) 设$E$是直线中的Lebesgue可测集，$\{fₙ\}$和$\{gₙ\}$是$E$上的两列Lebesgue可测函数，$f$和$g$是$E$上的几乎处处有限的Lebesgue可测函数，
+$f_n\stackrel{m}{\longrightarrow}f, g_n\Longrightarrow g$，$m(E)<\infty$，证明$f_ng_n\Longrightarrow fg$。
+
+\item (1) 叙述Tonelli定理。\\
+(2) 设$f:[0,1]\rightarrow[1,\infty)$是Lebesgue可测函数，证明
+\[\int_{[0,1]}f(x)\,dm(x)\int_{[0,1]}\ln f(x)\,dm(x)\leqslant\int_{[0,1]}f(x)\ln f(x)\,dm(x).\]
+
+\item (1) 叙述Levi定理。\\
+(2) 如果\[\lim_{n\to\infty}\int_{\R} f^n\,dm=\int_{\R} f\,dm,\]证明$f=\chi_A$.
+
+\item 回忆缺失，期待补全：
+$f$满足?证明$\lim\limits_{y\to 0}f(x,y)$连续；
+叙述绝对连续的定义……
+\end{enumerate}
+
+\section{24--25春 期末(H) (林华新)}
+\begin{enumerate}
+\item 设$E_1,\cdots,E_n,\cdots$是$(X,\mathcal{R},\mu)$中的一列集合，
+$F_1,\cdots,F_n,\cdots$为一列两两不交的可测集，且$E_n \subset F_n$。
+证明：$\mu^*\Big(\bigcup\limits_{n=1}^{\infty}E_n\Big)=\sum\limits_{n=1}^{\infty}\mu^*(E_n)$。
+
+\item 设有限闭区间$[a,b]$上的$\mu$-可测函数$f$几乎处处有限，证明：存在连续函数列$\{f_n\}$，
+使得$f_n\underset{\mu}{\stackrel{.}{\longrightarrow}}f$。
+
+\item 设可测函数列$f_n\underset{m}{\stackrel{.}{\longrightarrow}}0$，$0<f_n\le1$，
+求$\displaystyle\lim_{n\to\infty}\int_0^1\frac{1-\cos f_n(x)}{x^\frac{1}{2}f_n(x)^\frac{3}{2}}\,{\rm d}m$。
+
+\item 设$f_1,\cdots,f_n,\cdots$为$[0,1]$上的单调递增的绝对连续函数，
+$f(x)=\sum\limits_{n=1}^{\infty}f_n(x)$几乎处处有限,
+证明：$f(x)$也是绝对连续的。
+
+\begin{remark*}
+    本题疑似有误, 若``单调递增''指$f_1,\cdots,f_n,\cdots$均是单调递增的, 
+    则函数 $\frac{1}{1-x}$ 的幂级数展开是一个反例.
+\end{remark*}
+
+\item 设$M=\{(x,y)\in\R^2:0 \le x \le y \le 1\}$，
+求$\displaystyle\iint_M e^{-y^2}\,{\rm d}x{\rm d}y$。
+
+\item (1) 叙述Radon--Nikodym定理。\\
+(2) 对于复测度空间$(X,\mathcal{R},\mu)$，证明：存在可测函数$h$，
+$\forall\,x \in X$有$|h(x)|=1$，使得对于所有可测集$E$,都有$\mu(E)=\int_Eh\,{\rm d}|\mu|$。
+\end{enumerate}
+
+\section{24--25春 期末(王凯)}
+\begin{enumerate}
+\item (8分)\\
+(1)叙述可数集的定义.\\
+(2)设$A$是平面上有理点(即横纵坐标都是有理数的点)为中心、有理数为半径的圆的全体，证明：$A$是可列集.
+
+\item (8分)\\
+(1)叙述有界变差函数的定义.\\
+(2)设$[0,1]$上的函数$f$为
+\[f(x)=
+\begin{cases}
+\dfrac{\pi}{2}x\,\sin\dfrac{1}{x} & \text{ 若 }x\in (0,1];\\ \\
+0 &\text{ 若 }x=0.
+\end{cases}\]
+证明：$f$不是有界变差函数.
+
+\item (10分)\\
+(1)叙述Lebesgue控制收敛定理.\\
+(2)设$f$是$[0,1]$上Lebesgue可积函数,证明:
+\[\lim_{n\rightarrow \infty}\int_{[0,1]}n \ln\left(1+\frac{|f^{2}(x)|}{n^{2}}\right) \mathrm{d}m(x)=0.\]
+
+\item (10分)\\
+(1)叙述直线上Borel可测函数的定义.\\
+(2)设$\{f_{j}:j\in J\}$是直线上的连续函数族,证明:
+\[g(x)=\sup\{f_{j}(x):j \in J\}\]
+是Borel可测函数.若每个$f_{j}$只是Borel可测函数,问$g$是否是Borel可测函数?
+
+\item (10分)\\
+(1)叙述依测度收敛的定义.\\
+(2)设$E$是直线中的Lebesgue可测集，$m(E)<\infty$，${g_{n}}$是$E$上可测函数列，
+$g_{n}\,{\overset{m}{\Longrightarrow}}\,g$，并且$g_{n},g$在$E$上几乎处处不为零.
+证明：$\dfrac{1}{g_{n}}\,{\overset{m}{\Longrightarrow}}\,\dfrac{1}{g}$.
+又若$m(E)=\infty$,结论是否还成立?证明你的结论.
+
+\item (10分)\\
+(1)叙述Lusin定理及其逆定理.\\
+(2)证明Lusin定理的逆定理.
+
+\item (10分)\\
+(1)叙述直线上Lebesgue外测度以及Lebesgue可测集的定义.\\
+(2)设直线上的函数$g(x)=x^{2}$,证明:对$[a,b]$中的可测集$E$,像集$g(E)$是Lebesgue可测集.
+
+\item (10分)\\
+(1)证明:当$f$在$\mathbb{R}$上是Lebesgue可积函数时,
+\[\lim_{n \rightarrow \infty} \int_{\mathbb{R}}f(x)\cos(nx)\,\mathrm{d}m(x)=0.\]
+(2)设$\{n_{j}\}$是一个单调递增趋于无穷的正整数列,令$E=\{x\in [0,2\pi]:\sin(n_{j}x)\text{ 收敛}\}$，证明：其Lebesgue测度$m(E)=0$。
+
+\item (12分)设$F$是直线上的闭集，$m(\mathbb{R} \setminus F) < \infty$，
+定义距离函数$\delta(x)=\inf\{|x-y|:y\in F\}$.\\
+(1)证明：$\delta(x)$是$\mathbb{R}$上的连续函数.\\
+(2)考虑积分
+\[I(x)=\int_{\mathbb{R}}\frac{\delta(y)}{|x-y|^{2}}\,\mathrm{d}y.\]
+证明:对于任意$ x\in \mathbb{R} \setminus F$，$I(x)=\infty$；
+对几乎处处的$x \in F$，$I(x) < \infty$。
+
+\item (12分)\\
+设$A,B$是$[0,1]$的Lebesgue可测子集，
+证明：$\forall \, n \geq 2$，存在$0\leq x \leq y \leq1$，使得
+\[m(A\cap[x,y])=\frac{1}{n}m(A); \quad m(B\cap[x,y])=\frac{1}{n}m(B).\]
+\end{enumerate}
+
+\section{24--25春 期末(徐胜芝)}
+
+\begin{enumerate}
+	\item 证明映射集$\{f : A\to B\mid A \subseteq X, B \subseteq Y\}$中有偏序$\subseteq$. 
+	其中对$f_1:A_1 \to B_1$, $f_2:A_2 \to B_2$, $f_1 \subseteq f_2$表示$A_1 \subseteq A_2$, 
+	$B_1 \subseteq B_2$, 且$f_1(x)=f_2(x)(\forall x \in A_1)$. 
+    并证明该映射集的任意非空上有界子集有上确界. 
+	 
+	\item 证明单增的测度网$(\mu_i)_{i \in \beta}$的极限$\mu = \lim\limits_{i \uparrow \beta}\mu_i$为测度. 
+    且对$X$上任意非负可测函数$f$, 有$\int_{X}f d\mu = \lim\limits_{i \uparrow \beta}\int_X f d\mu_i$.
+	
+	\item 将$m \times n$阶方阵全体$\mathbb{R}(m,n)$视为Euclid空间$\mathbb{R}^{mn}$, 
+    对应的同构为$[x_1, x_2, \cdots, x_n] \to [x_1^t, x_2^t, \cdots, x_n^t]^t$. 
+    $\mathbb{R}(m,n)$上的Lebesgue测度记为$\lambda_m^n$, 以$T: x \to x^t$表示矩阵的转置. 
+	\begin{itemize}
+		\item[(1)] 任取Borel集$E \subseteq \mathbb{R}(m,n)$, 有$\lambda_n^m(T(E))=\lambda_m^n(E)$.
+		
+		\item[(2)] 对$a \in \mathbb{R}(m), b \in \mathbb{R}(n)$, 证明$\lambda_m^n(aE)=|\det(a)|^n\lambda_m^n(E)$,  $\lambda_m^n(Eb)=|\det(b)|^m\lambda_m^n(E)$.
+		
+		\item[(3)] 证明$n$阶可逆阵$\mathsf{GL}_n(\mathbb{R})$全体是一个开集, 对于其上的连续函数$f$, 记$\mu(dx)=f(x)\lambda_n^n(dx)$.
+		
+		\item[(4)] 找些$\mathsf{GL}_n(\mathbb{R})$上的连续函数, 使得对任意的$a \in \mathsf{GL}_n(\mathbb{R})$与Borel集$E$满足$\mu(aE)=\mu(E)=\mu(E^{-1})=\mu(Ea)$.
+	\end{itemize}
+	
+	\item 证明实轴中子集$A$为一个Lebesgue零集当且仅当有包含$A$的递减开集列$(B_k)_{k \geqslant 1}$使得级数
+	$\sum\limits_{k \geqslant 1}\mathfrak{m}(B_k)$可和. 函数$g_k(x)=\mathfrak{m}(B_k \cap (-\infty, x])$,
+    $g_A(x)=\sum\limits_{k \geqslant 1} g_k(x)$均连续且单调递增, 并且$g_A$在某闭区间$[a,b]$上绝对连续.
+\end{enumerate}
+
+\section{23--24春 期末(吴健超、章嘉雯)}
+
+\begin{enumerate}
+    \item[I](1)求$\{\mathbb{R}$到$\mathbb{R}$的连续函数$\!\}$的势.（提示：考虑$\mathbb{Q}$到$\mathbb{R}$的函数的势）\\
+    (2) Cantor集$C$的势(不需要证明).\\
+    (3) $\{f:\mathbb{R}\to \mathbb{R}\mid$存在$\mathbb{R}$到$\mathbb{R}$的连续函数列几乎处处收敛到$f\}$的势.（提示：考虑$\{\chi_E\mid E\subset C\}$）
+
+    \item[II](1)叙述Levi引理.\\
+    (2) $f_n,f$是$\mathbb{R}$上的可积函数，对任意$\mathbb{R}$的Lebesgue可测集$E$，
+    $\{\int_E f_n(x)\,\mathrm{d}m(x)\}_{n=1}^\infty$单调收敛到$\{\int_E f(x)\,\mathrm{d}m(x)\}$. 
+    试证明：$\{f_n\}$几乎处处递增到$f$.
+
+    \item[III]$(X,\mathcal{R},\mu)$为概率空间($\mu(X)=1$)，
+    集列$\{E_n\}$满足$\mu(E_n)\geq 0.2,\forall n\in \mathbb{N}$.
+    对于非负数列$\{a_n\}$，$\sum\limits_{n=1}^\infty a_n\chi_{E_n}$几乎处处收敛. 
+    试证明：$\sum\limits_{n=1}^\infty a_n$收敛.
+
+    \item[IV](1)叙述绝对连续函数的定义.\\
+    (2) 对于$[0,1]$的任何Lebesgue可测子集$E$，试证明：存在一列绝对连续函数列$\{f_n\}$，满足$\lim\limits_{n\to \infty} \int_{0}^{1}\left|f_n(x)-\chi_E \right| \mathrm{d}m(x)=0$.
+
+    \item[V](1)叙述$(\mathbb{R},m)\times (\mathbb{R},m)$上的Fubini定理.\\
+    (2) 设$E,F\subset\mathbb{R}$ Lebesgue可测，且$m(E),m(F)<\infty$，$G=\{(x,y)\in \mathbb{R}^2\mid x\in E, y-x\in F\}$，求证：$m(G)=m(E)\cdot m(F)$.\\
+    (3) 设$E,F\subset\mathbb{R}$ Lebesgue可测，且$m(E),m(F)>0$，证明：存在$c\in \mathbb{R}$，使得
+    \[ m(E\cap (F+c))>0.\]
+    (4) $A\subset \mathbb{R}$为Lebesgue可测集，求证：若对任意的$c\in \mathbb{R}$，
+    \[m(A\,\triangle\,(A+c))=0,\]
+    则$A$与$\mathbb{R} \setminus A$其中之一零测.\\
+    (5) 对于直线上的Lebesgue可测函数，定义$f_c=f(x-c),c\in \mathbb{R}$. 
+    若对任意$c\in \mathbb{R}$，$f$几乎处处等于$f_c$，求证：$f$几乎处处等于一个常值函数.
+\end{enumerate}
+
+
+\section{23--24春 期末(H) (王凯)} 
+本节为实分析(H)（王凯）的试卷.一共7道大题,时间为120分钟,满分100分.\\
+    如果未特殊说明,本试卷中提到的测度均为$\sigma$-有限的正测度.
+
+\begin{itemize}
+   
+    \item[一、]
+    (证明Riesz定理)设可测函数列$\{f_n\}$依测度Cauchy,证明:\\
+    (i)存在可测函数$f$,使得$\{f_n\}$依测度收敛于$f$;\\
+    (ii)存在$\{f_n\}$的子列$\{f_{n_k}\}$,使得$\{f_{n_k}\}$几乎处处收敛于$f$.
+    
+    \item[二、]
+    设$X$上的测度$\mu,\lambda,\sigma$满足$\mu \ll \lambda, \lambda \ll \sigma$,证明:
+    $$ \frac{\mathrm{d}\mu}{\mathrm{d}\lambda} \cdot \frac{\mathrm{d}\lambda}{\mathrm{d} \sigma} = \frac{\mathrm{d} \mu}{\mathrm{d} \sigma}, \quad\sigma \text{-} a.e.$$
+
+    \item[三、]
+    设函数$f(x)=x^3$,证明:对于任何Lebesgue可测集$E$, $f(E)$为Lebesgue可测集.
+    
+    \item[四、]
+    设$f$是$\mathbb{R}^2$上的可测函数,对$1\leqslant p,r<\infty$, 定义范数:
+    \[\| f\|_{p,r} = \bigg(\int_{\mathbb{R}}  \bigg(\int_{\mathbb{R}} |f(x,y)|^p \,\mathrm{d}m(x)\bigg)^\frac{r}{p}\mathrm{d}m(y)\bigg)^{\frac{1}{r}},\]
+    证明:如果$\| f\|_{p,r} < \infty$, 
+    那么对于任意$\varepsilon > 0$,存在$g \in C_c^{\infty}(\mathbb{R}^2)$, 
+    使得$\| f-g\|_{p,r} < \varepsilon$.
+
+    \begin{proofc}[解答]
+        \textbf{第一步}：用有界紧支撑函数逼近$f$。\\
+        对$n\in\N$，定义
+        \[f_n(x,y)=f(x,y)\cdot\chi_{|x|\leqslant n}\cdot\chi_{|y|\leqslant n}\cdot\chi_{|f(x,y)|\leqslant n},\]
+        则$\{f_n\}_n$几乎处处收敛到$f$。对任意$y\in\R$，定义
+        \[F_n(y)=\bigg( \int_{\R}|f(x,y)-f_n(x,y)|^p\,\mathrm{d}m(x) \bigg)^{\frac{r}{p}}.\]
+        由控制收敛定理与$\| f\|_{p,r} < \infty$知，对几乎所有$y\in\R$，$\lim_{n\to\infty}F_n(y)=0$。此外，
+        \[F_n(y)\leqslant\bigg( \int_{\R}|f(x,y)|^p\,\mathrm{d}m(x) \bigg)^{\frac{r}{p}}\in L^1(\R,\mathrm{d}m(y)),\]
+        因而由控制收敛定理知
+        \[\lim_{n\to\infty}\|f-f_n\|_{p,r}^r=\lim_{n\to\infty}\int_{\R}F_n(y)\,\mathrm{d}m(y)=0,\]
+        取$N$充分大使$\|f-f_N\|_{p,r}<\frac{\varepsilon}{2}$。\\
+        \textbf{第二步}：用$C_c^{\infty}(\mathbb{R}^2)$函数逼近$f_N$。\\
+        取$g\in C_c^{\infty}(\mathbb{R}^2)$使得$\operatorname{supp}g\subseteq[-2N,2N]^2$且$\|f_N-g\|_{L^p(\R^2)}<\delta$，
+        其中$\delta>0$待定。由于$f_N$有界，故
+        \[M:=\|f_N-g\|_{L^{\infty}(\R^2)}<\infty.\]
+        记
+        \[F(y)=\bigg(\int_{\R}|f_N(x,y)-g(x,y)|^p\,\mathrm{d}m(x)\bigg)^{\frac{1}{p}},\]
+        则$\operatorname{supp}(F)\subseteq[-2N,2N]$，$\|f_N-g\|_{p,r}=\|F\|_{L^r[-2N,2N]}$，且对任意$y\in[-2N,2N]$，
+        \[F(y)\leqslant\bigg(\int_{-2N}^{2N}|f_N(x,y)-g(x,y)|^p\,\mathrm{d}m(x)\bigg)^{\frac{1}{p}}\leqslant(4N)^{\frac{1}{p}}M.\]
+        若$r\geqslant p$，则
+        \[\int_{-2N}^{2N}F(y)^r\,\mathrm{d}m(y)\leqslant((4N)^{\frac{1}{p}}M)^{r-p}\int_{-2N}^{2N}F(y)^p\,\mathrm{d}m(y)<((4N)^{\frac{1}{p}}M)^{r-p}\delta^p.\]
+        若$r<p$，由H\"older不等式可知
+        \[\int_{-2N}^{2N}F(y)^r\,\mathrm{d}m(y)\leqslant\bigg(\int_{-2N}^{2N}F(y)^p\,\mathrm{d}m(y)\bigg)^{\frac{r}{p}}\bigg(\int_{-2N}^{2N}1\,\mathrm{d}m(y)\bigg)^{\frac{p-r}{p}}<\delta^r(4N)^{\frac{p-r}{p}}.\]
+        总之，可取$\delta>0$充分小使得$\|f_N-g\|_{p,r}<\frac{\varepsilon}{2}$，从而$\|f-g\|_{p,r}<\varepsilon$。
+    \end{proofc}
+    
+    \item[五、]
+    设$\mu$是复测度,定义$\mu$的测度Fourier变换为:
+    \[\hat{\mu}(\xi) = \int_\mathbb{R} e^{-2\pi i \xi \cdot x} \,\mathrm{d} \mu(x).\]
+    证明:\\
+    (i)\ $\displaystyle \lim_{r \to \infty} \frac{1}{2r} \int_{-r}^{r} \hat{\mu} (\xi) \,\mathrm{d} m(\xi) = \mu (\{0\})$.\\
+    (ii) $\displaystyle \lim_{r \to \infty} \frac{1}{2r} \int_{-r}^{r} |\hat{\mu} (\xi)|^2 \,\mathrm{d} m(\xi) = \sum_{r\in \mathbb{R}}|\mu (\{r\})|^2$.
+
+    \begin{proofc}[(ii)的提示]
+        定义复测度$\nu=\mu\ast\tilde{\mu}$，其中$\tilde{\mu}(E)=\overline{\mu(-E)}$，则$\hat{\nu}=|\hat{\mu}|^2$，从而由(i)知
+        \[\lim_{r\to\infty}\frac{1}{2r}\int_{-r}^{r}|\hat{\mu}(\xi)|^2\,\mathrm{d}m(\xi)
+        =\lim_{r\to\infty}\frac{1}{2r}\int_{-r}^{r}\hat{\nu}(\xi)\,\mathrm{d}m(\xi)
+        =\nu(\{0\})=\int_{\R}\mu({r})\,\mathrm{d}\bar{\mu}(r).\qedhere\]
+    \end{proofc}
+    
+    \item[六、]
+    设$H$是$\mathbb{R}_+$的乘法子群, $H$为Lebesgue可测集且测度为正,证明: $H=\mathbb{R}_+$.
+    
+    \item[七、]
+    对于一个实数集上的Lebesgue可测函数$f$, 定义其重排函数为:
+    $$f^*(x) = \inf \{y\mid\lambda_f(y) \leq x\}.$$
+    求证:如果$f,g\in  L^1(\mathbb{R})$, 则
+    \[\int_{\mathbb{R}} fg \leq \int_0^{+\infty} f^* g^*.\]
+\end{itemize}
+
+
+
+\section{22--23春 期中(沈维孝)}
+
+\begin{itemize}
+    \item[一、]
+    设$E$为$\mathbb{R}$中的有界闭集, $f:E\to \mathbb{R}$是连续函数,
+    满足: $\forall x\in\mathbb{R}$, $f^{-1}(x)$至多包含两个元素.
+    记$B_n=\{x\in\mathbb{R}\mid |f^{-1}(x)|=n\}\,(n=0,1,2)$.
+    证明: $\forall n\in \{0,1,2\}$, $B_n$为Borel集.
+    \item[二、]
+    (i)叙述Egoroff定理.\\
+    (ii)给定有限测度空间$(X,\mathcal{X},\mu)$,设$f_n:X\to\mathbb{R}$为可测函数,
+    满足: $\limsup\limits_{n\to\infty} f_n\le 0$.
+    证明: $\forall \varepsilon >0$, 存在$E\in\mathcal{X}$和$N\in\mathbb{N}^*$,
+    使得$\mu(X\backslash E)<\varepsilon$且
+    $\forall x\in E, n\ge N,f_n(x)<\varepsilon.$
+    \item[三、]
+    测度空间$(X,\mathcal{X},\mu)$满足: $\forall E\in \mathcal{X}$,
+    要么$\mu(E)=0$要么$\mu(X\backslash E)=0.$设$f:X\to\mathbb{R}$为可测函数,
+    证明: $\exists\: c\in\mathbb{R},f(x)=c \text{ a.e.}$
+    \item[四、]
+    求
+    $$ \lim_{n\to\infty} \int_0^n \frac{x^\frac{1}{n} \sin \pi x}{1+x^{2n}} \,\mathrm{d} x.$$
+    \item[五、]
+    (i)叙述Carathéodory条件.\\
+    (ii)设$U_i$ $(i=1,2,\ldots,n)$是一列互不相交的开集, $A_i \subset U_i$,
+    是否有$\mu^*(\bigcup\limits_{i=1}^n A_i)
+    =\sum\limits_{i=1}^n \mu^*(A_i)$成立?若是,请证明;若否,请举出反例.
+\end{itemize}
+
+\section{22--23春 期末A卷(沈维孝)}
+
+\subsection{原卷}
+\begin{itemize}
+\item[一、]
+对$ f\colon\mathbb{R} \to \mathbb{R}  $是可积函数,当$ r>0 $时定义
+$$F_r( x ) =\frac{1}{2r}\int_{x-r}^{x+r}{f( x ) \text{d}x},$$
+$$F( x ) =\limsup_{r\to0} F_r( x ).$$
+
+(1)证明$ F_{r}(x) $对$ x $是实值连续函数.
+
+(2)证明$ F(x) : \mathbb{R} \to \overline{\mathbb{R}}$是Borel可测函数.
+
+\item[二、]
+对$f\colon\mathbb{R} \to \mathbb{R}$是可积函数,求极限
+$$\lim_{k\rightarrow \infty}\lim_{n\rightarrow \infty}
+n\int_{1/n^2}^1{\frac{f(nx) \cos kx}{1+x^2}\text{d}x}.$$
+
+\item[三、]
+(1)叙述Lusin定理.\\
+(2)设$f\colon[0,1]\rightarrow [0,1]$是Lebesgue可测函数.
+证明：存在紧集$K_n \subset f([0,1]),n=1,2,\cdots$,满足
+\[m(\bigcup_{n=1}^{\infty}f^{-1}(K_n))=1.\]
+
+\item[四、]设$f\colon[0,1]\rightarrow \mathbb{R}$是Borel可测函数，
+满足对任意Borel可测集$E\subset[0,1]$均成立
+\[\int_{E}|f|\leq\sqrt{m(E)}.\]
+(1)设$1<p<2$，证明$f\in L^{p}([0,1])$.\\
+(2)举例说明$p=2$时(1)中结论不成立.
+
+
+
+\item[五、]
+Let $ f,f_{n},g\in \mathcal{L} ^{2}(\mathbb{R} ),n=1,2,\cdots $, 
+$ f_{n} $ converges to $ f $ a.e. and
+$$\int_{\mathbb{R}}|f_n(x)|^2\mathrm{d}x\le 1.$$
+Then
+$$\lim_{n\rightarrow \infty}\int_{\mathbb{R}}|f_n(x)-f(x)||g(x)|\mathrm{d}x=0.$$
+\end{itemize}
+
+\subsection{带答案}
+\begin{itemize}
+\item[一、]
+对$ f\colon\mathbb{R} \to \mathbb{R}  $是可积函数,当$ r>0 $时定义
+$$F_r(x) =\frac{1}{2r}\int_{x-r}^{x+r}{f(x) \text{d}x},$$
+$$F(x) =\limsup_{r\to0} F_r(x).$$
+
+(1)证明$ F_{r}(x) $对$ x $是实值连续函数.
+
+(2)证明$ F(x) : \mathbb{R} \to \overline{\mathbb{R}}$是Borel可测函数.
+\begin{proof}
+    (1) 由$f$的可积性知$\forall \varepsilon > 0$，
+    存在$\delta > 0$使得对任何测度小于$\delta$的可测集$A$成立
+    $\int_A |f(x)| \mathrm{d} x < r\varepsilon$。
+
+    不妨令上述$\delta < r$，此时$\forall x \in \mathbb{R}$及$\Delta x$
+    使得$|\Delta x| < \delta$，有
+    \[|F_r(x+\Delta x) - F_r(x)| 
+    \le \frac{1}{2r}\bigg(\bigg|\int_{x+r}^{x+\Delta x +r} f(x) \mathrm{d} x\bigg| 
+    + \bigg|\int_{x-r}^{x+\Delta x -r} f(x) \mathrm{d} x\bigg|\bigg) < \varepsilon.\]
+    (2) 不妨取$\bar{F}_n(x) = \text{sup}_{r < \frac{1}{n}} F_r(x)$，
+    那么$\bar{F}_n(x) \to F(x),n\to \infty$。
+    只需证明每个$\bar{F}_n(x)$是Borel可测函数。
+    进一步，我们来证明$\forall c \in \mathbb{R}$，$\{\bar{F}_n(x) > c\}$是开集。
+
+    取$x_0$使得$\bar{F}_n(x_0) > c$，
+    则存在$r_0 \in \big(0,\frac{1}{n}\big)$使得$F_{r_0}(x_0) > c$。
+    由连续性，存在$\delta > 0$
+    使得$\forall x \in (x_0-\delta ,x_0+\delta)$，$F_{r_0}(x) > c$。
+    进一步，$\forall x \in (x_0-\delta ,x_0+\delta)$有$\bar{F}_n(x) > c$。
+\end{proof}
+\item[二、]
+对$f\colon\mathbb{R} \to \mathbb{R}$是可积函数,求极限
+$$\lim_{k\rightarrow \infty}\lim_{n\rightarrow \infty}
+n\int_{1/n^2}^1{\frac{f(nx) \cos kx}{1+x^2}\text{d}x}.$$
+\begin{proof}
+    作变量代换$t=nx$，则原式化作
+    $$
+        \int_\frac{1}{n}^n \frac{f(t)\cos \frac{kt}{n}}{1+(\frac{t}{n})^2} \mathrm{d}t.
+    $$
+    令
+    $$g_n(t)=\frac{f(t)\cos \frac{kt}{n}}{1+\big(\frac{t}{n}\big)^2} \chi_{(\frac{1}{n},n)}.$$
+    则有诸$g_n$可测，$|g_n(t)| \le |f(t)|$且$g_n(t) \to f(t)\chi_{(0,\infty)},n\to\infty$。因此由Lebesgue控制收敛定理，
+    $$
+        \lim_{k \to \infty}\lim_{n\to \infty } \int_\frac{1}{n}^n \frac{f(t)\cos \frac{kt}{n}}{1+(\frac{t}{n})^2} \mathrm{d}t 
+        = \lim_{k \to \infty}\int_0^\infty f(x) \mathrm{d}x 
+        = \int_0^\infty f(x) \mathrm{d}x.\qedhere
+    $$
+\end{proof}
+\item[三、]
+(1)叙述Lusin定理.\\
+(2)设$f\colon[0,1]\rightarrow [0,1]$是Lebesgue可测函数.
+证明：存在紧集$K_n \subset f([0,1]),n=1,2,\cdots$,满足
+\[m(\bigcup_{n=1}^{\infty}f^{-1}(K_n))=1.\]
+\begin{proof}
+    (1) 略。\\
+    (2) 由Lusin定理，$\forall n \in \mathbb{N}$，
+    存在闭集$F_n \subset [0,1]$使得$m([0,1]\backslash F_n) < \frac{1}{n}$
+    且$f|_{F_n}$连续。进一步，存在连续函数$f_n(x)$满足$f_n(x)=f(x)$于$F_n$，
+    $\sup f_n \le f,\inf f_n \ge f$。
+    令$K_n=f_n(F_n)=f(F_n)\subset f([0,1])$。先证明$K_n$闭：\\
+    取一列$y_i \in K_n$且$y_i \to y_0$。则存在一列$x_i \in F_n$使得$y_i = f_n(x_i)$。由于$F_n$为紧集，$x_i$有收敛子列，不妨$x_i$本身收敛到$x_0 \in F_n$。此时由$f_n$的连续性，$y_0 = f_n(x_0)$，这说明$y_0 \in K_n$。\\
+    此时$F_n \subset f^{-1}(K_n)$，$m(f^{-1}(K_n)) \ge m(F_n) \ge 1-\frac{1}{n}$。因此有$m(\bigcup_{n=1}^{\infty}f^{-1}(K_n))=1.$
+\end{proof}
+
+\item[四、]设$f\colon[0,1]\rightarrow \mathbb{R}$是Borel可测函数，
+满足对任意Borel可测集$E\subset[0,1]$均成立
+\[\int_{E}|f|\leq\sqrt{m(E)}.\]
+(1)设$1<p<2$，证明$f\in L^{p}([0,1])$.\\
+(2)举例说明$p=2$时(1)中结论不成立.
+\begin{proof}
+    (1) 固定$1 < p <2$，取$\lambda = \frac{2}{2-p}$。
+    考虑$E_n = \{ n^\lambda \leq |f| < (n+1)^\lambda \},n=1,2,\ldots$.
+    由题设有
+    \[n^\lambda m(E_n) \leq \int_{E_n} |f| 
+    \leq \sqrt{m(E_n)} \implies m(E_n)\leq \frac{1}{n^{2\lambda}}.\]
+    因此
+    \[\int |f|^p \leq 1+\sum\limits_{n=1}^\infty \frac{(n+1)^{p\lambda}}{n^{2\lambda}}.\]
+    由于$\frac{(n+1)^{p\lambda}}{n^{2\lambda}}\sim \frac{1}{n^2}$，前述求和有限。
+
+    (2) 考虑$f(x)=\sum\limits_{n=2}^\infty n\chi_{E_n}$，
+    其中$E_n$是互不相交、长度为$\frac{1}{10n^3}$的区间。
+    显然有$f\not\in L^2([0,1])$，下证明$f$满足题设性质。
+    对Borel可测集$E$，不妨假设$m(E) \leq \sum\limits_{n=2}^\infty m(E_n)$，
+    否则去掉$\{f = 0\}$后，等式左边不变而右边减小。\\
+    记$N \in \mathbb{N}$使得$\sum\limits_{n=N}^\infty m(E_n) \geq m(E)$
+    且$\sum\limits_{n=N+1}^\infty m(E_n) < m(E)$。
+    此时\[\int_E f \leq N\left(m(E)-\sum_{n=N+1}^\infty \frac{1}{10n^3}\right) 
+    + \sum_{n=N+1}^\infty \frac{1}{10n^2}.\]
+    我们希望有
+    \[N\left(m(E)-\sum_{n=N+1}^\infty \frac{1}{10n^3}\right) 
+    + \sum_{n=N+1}^\infty \frac{1}{10n^2} \leq \sqrt{m(E)},\]
+    由二次函数的性质只需要对$m(E)$趋于$\sum\limits_{n=N}^\infty m(E_n)$
+    和$\sum\limits_{n=N+1}^\infty m(E_n)$时验证不等式，即验证
+    \[\sum_{n=N}^\infty \frac{1}{10n^2} 
+    \leq \sqrt{\sum_{n=N}^\infty \frac{1}{10n^3}}\]
+    对任意$N\geq 2$成立。
+
+    对左右两边用积分放缩，$\text{LHS} \leq \frac{1}{10(N-1)},\text{RHS} \ge \sqrt{\frac{1}{20N^2}}$，而
+    \[\frac{1}{10(N-1)} \leq \sqrt{\frac{1}{20N^2}} 
+    \iff N^2 \leq 5(N-1)^2 \iff \left(1-\frac{1}{N}\right)^2 \geq \frac{1}{5},\]
+    这是显然的。
+\end{proof}
+
+
+\item[五、]
+Let $ f,f_{n},g\in \mathcal{L} ^{2}(\mathbb{R} ),n=1,2,\cdots $, $ f_{n} $ converges to $ f $ a.e. and
+$$\int_{\mathbb{R}}|f_n(x)|^2\mathrm{d} x\le 1.$$
+
+Then
+$$\lim_{n\rightarrow \infty}\int_{\mathbb{R}}|f_n(x)-f(x)||g (x)|\mathrm{d}x=0.$$
+
+\begin{proof}
+	For any $ \varepsilon> 0 $, there exists a $ \delta>0 $ such that for any $ m(A)<\delta $ we have
+	$$
+		\int_A{g^2}<\varepsilon.
+	$$
+
+
+	At the same time, denote $E_n=\left\{ |x|>n \right\}$, then there exists an $N$ such that
+	$$\int_{E_N}{g^2}<\varepsilon.$$
+
+	By Egoroff's theorem, there exists a measurable $F$ such that $ m(\mathbb{R} \backslash (E_{N}\cup F))<\delta $, 
+    and $ f_{n}(x)\vert_{F}\rightrightarrows f(x)\vert_{F} $. 
+    Then there exists an $ N_{1} $ such that for any $k\ge N_{1},x\in F$, 
+    we have $|f_{k}-f|^{2}<\varepsilon/m(F)$. Thus
+	$$\int_F{|f_k-f|^2}<\frac{\varepsilon}{m(F)}m(F) =\varepsilon.$$
+	Again we also have
+	$$\int_{\mathbb{R} \backslash (E_{N}\cup F)}^{}{g^2}<\varepsilon 
+    \Rightarrow \int_{\mathbb{R} \backslash F}{g^2}<2\varepsilon.$$
+	Thus for any $ n\ge N+N_{1} $, we have
+	\begin{align*}
+        \int_{\mathbb{R}}{|f_n-f|g}&\le \int_{\mathbb{R}-F}{|f_n-f|g}+\int_F{|f_n-f|g}\\
+        &\le \sqrt{\int_{\mathbb{R}}{|f_n-f|^2}\int_{\mathbb{R}-F}{g^2}}+\sqrt{\int_F{|f_n-f|^2}\int_{\mathbb{R}}{g^2}}\\
+        &\le 2\sqrt{2\varepsilon}+\sqrt{M\varepsilon},
+    \end{align*}
+
+	where $M$ denotes a constant dependent on $g\in \mathcal{L}^{2}(\mathbb{R})$. Then we are done.
+\end{proof}
+\end{itemize}
+
+\section{21--22春期末(王凯)}
+\begin{enumerate}
+\item（8分）叙述可数集的定义。并求平面中端点坐标均为有理数的长方形全体的势。
+
+\item（8分）叙述 Egoroff 定理。并对 $[0,1]$ 上的函数列 $f_{n}(x)=x^{n}$ 验证 Egoroff 定理。
+
+\item（8分）（1）叙述 Fubini 定理。\\
+（2）设 $f(x)$ 是实直线 $\mathbb{R}$ 中 Lebesgue 可测集 $E$ 上的一个 Lebesgue可积函数．对一个正实数 $t$ 记
+$$\lambda_{f}(t)=m(E(|f(x)|>t)).$$
+证明：$\int_{E}|f(x)| dm(x)=\int_{(0, \infty)} \lambda_{f}(t) dm(t)$。
+
+\item（8分）叙述有限区间 $[a, b]$ 上的绝对连续函数的定义。
+设 $f$是 $[0,1]$ 上的 Lebesgue 可积函数，$f(0)=0 ; f(x)=x \sin \frac{\pi}{x}(0< x \leqslant 1)$。
+证明：$f$ 不是 $[0,1]$ 上的绝对连续函数。
+
+\item（10分）（1）叙述直线上 Lebesgue 可测集的定义。\\
+（2）设 $F$ 是直线上的 Lebesgue 可测集，$m(F)<\infty$。
+对 $F$ 的子集 $E$，若 $m^{*}(E)+m^{*}(F \setminus E)=m(F)$，证明 $E$ 也是Lebesgue 可测的。
+
+\item（10分）（1）叙述依测度收敛的定义。\\
+（2）设 $E$ 是实直线 $\mathbb{R}$ 中的 Lebesgue 可测集，$\{f_{n}\}$ 是 $E$ 上的实数值 Lebesgue 可测函数列，且对任何 $\epsilon>0$ 有
+$$\lim_{n, m \rightarrow \infty} m(E(|f_{n}-f_{m}| \geqslant \epsilon))=0.$$
+证明：存在函数 $f$ 使得 $\{f_{n}\}$ 依测度收敛于 $f$。
+
+\item（12分）（1）对于 $1 \leqslant p \leqslant+\infty$，给出 $L^{p}(\mathbb{R})$ 的定义。\\
+（2）设 $1 \leqslant p<\infty$, $f \in L^{p}(\mathbb{R})$，证明：
+$$\lim_{|h| \rightarrow \infty} \int_{\mathbb{R}}|f(x+h)-f(x)|^{p} dm(x)
+=2 \int_{\mathbb{R}}|f(x)|^{p} dm(x).$$
+
+\item（12分）（1）叙述Levi引理；\\
+（2）设 $f$ 是直线 $\mathbb{R}$ 上的 Lebesgue 可积函数，证明：
+$$\lim_{n \rightarrow+\infty} f(x+n)=0, \text { a.e. } x \in \mathbb{R}.$$
+
+\item（12分）设直线上Lebesgue可积函数列 $f_{n}$ 满足下列条件：\\
+（i） $\sup\limits_{n} \int_{\mathbb{R}}|f_{n}(t)|\, dm(t)<\infty$；\\
+（ii） $\lim\limits_{M \rightarrow \infty}\left[\sup\limits_{n} \int_{|f_{n}| \geqslant M}|f_{n}(t)|\, dm(t)\right]=0$；\\
+（iii） $\lim\limits_{\delta \rightarrow 0}\left[\sup\limits_{n} \int_{|f_{n}| \leqslant \delta}|f_{n}(t)|\, dm(t)\right]=0$。
+
+（1）若 $f_{n}$ 依测度收敛于 $f$，证明：$\lim\limits_{n \rightarrow \infty} \int_{\mathbb{R}}|f_{n}(t)-f(t)|\, dm(t)=0$。\\
+（2）若 $f_{n}$ 几乎处处收敛于 $f$，结论是否成立？并说明理由。
+
+\item（12分）将实数全体 $\mathbb{R}$ 看作有理数域 $\mathbb{Q}$ 上的线性空间，取其一组基 $\mathcal{F}$，
+即：$\mathcal{F}$ 是一个实数集，且对任意 $x \in \mathbb{R}$，可取唯一一个仅有有限个分量非零的有理数数组 $\{\alpha_{e}(x)\}_{e \in \mathcal{F}}$ 使得
+$$x=\sum_{e \in \mathcal{F}} \alpha_{e}(x) e.$$
+证明：对每个 $e \in \mathcal{F}$, $\alpha_{e}(x)$ 均不是关于实数 $x$ 的 Lebesgue 可测函数。
+\end{enumerate}
+
+\section{21--22春 期末A卷(沈维孝)}
+
+残缺不全的回忆版.
+
+\begin{itemize}
+\item[一、]
+证明三个命题等价，较难的一个方向:对一列Lebesgue可测集$ A_{n} $，
+当$n,m\to \infty$时有$m(A_{n} \triangle A_{m})\to 0$，
+证明存在Lebesgue可测集$A$使$m(A_{n} \triangle A)\to 0$.
+
+\item[二、]
+有关控制收敛定理的积分计算。
+
+\item[三、]
+同B卷
+
+\item[四、]
+同B卷
+
+\item[五、]
+与凸函数相关
+\end{itemize}
+
+\section{21--22春 期末B卷(沈维孝)}
+
+\subsection{原卷}
+\begin{itemize}
+\item[一、](20分)
+
+设 $E$ 是 $\mathbb{R}$ 的有界子集, 满足
+$$
+m^*(E)=\sup \left\{m^*(F): F \subset E, F \text { 是 } \mathbb{R} \text { 的闭子集}\right\},
+$$
+
+其中 $m^*$ 表示Lebesgue外测度. 证明 $E$ 是Lebesgue可测集.
+
+\item[二、](20分)
+
+设$ f\colon\mathbb{R} \to \mathbb{R}  $是Lebesgue可积函数,求极限
+$$
+\lim_{n\rightarrow \infty}n\int_{\frac{1}{n^2}}^{n^2}{f( nx ) \text{e}^{-x}\text{d}x}.
+$$
+
+\item[三、](20分)
+
+设$ f_{n}\colon\mathbb{R} \to \mathbb{R}  $是Lebesgue可测函数,
+几乎处处收敛到$ f\colon\mathbb{R} \to \mathbb{R} $且满足
+$$\int_{\mathbb{R}}{|f_n(x)|^3\log (|x|+2)\,\text{d}x}<10,$$
+$$\int_{\mathbb{R}}{|f_n(x)|\,\text{d}x}<10.$$
+
+证明$ f_{n} $依$ L^{2} $收敛到$ f $.
+
+注:原题的$ \log $中是$ 1 $不是$ 2 $,这样就是错题,反例可考虑$ f_{n}=\sqrt{n}\chi_{(0,1/n)} $.
+
+\item[四、](20分)
+
+设$ f\colon[0,1]\to [0,1] $，定义$ f(0)=0 $，
+当$ 0<x\le 1 $时，设正整数$ n $使得$ 1/(n+1)<x\le 1/n $,则定义$ f(x)=1/x-n $.
+
+设$ \mu $是$ [0,1] $上的概率测度,即对$ [0,1] $任意Borel子集$ E $，定义
+$$\mu(E) =\frac{1}{\log 2}\int_E\frac{1}{1+x}\,\text{d}x.$$
+
+对任意$ \varphi\colon[0,1]\to \mathbb{R}  $是连续函数，证明
+$$\int_0^1{\varphi \circ f(x) \,\text{d}\mu(x)}
+=\int_0^1{\varphi (x) \,\text{d}\mu(x)}.$$
+
+\item[五、](20分)
+
+Let $ f\colon\mathbb{R} \to \mathbb{R}  $ be Lebesgue integrable. 
+Then for $ x\in \mathbb{R}  $ a.e. the series converges:
+$$
+\sum_{n=1}^{\infty}{\frac{1}{\sqrt{n}}f( x-\sqrt{n} )}.
+$$
+
+\end{itemize}
+
+\subsection{带答案}
+\begin{itemize}
+\item[一、](20分)
+
+设 $E$ 是 $\mathbb{R}$ 的有界子集, 满足
+$$
+m^*(E)=\sup \left\{m^*(F): F \subset E, F \text { 是 } \mathbb{R} \text { 的闭子集}\right\},
+$$
+
+其中 $m^*$ 表示Lebesgue外测度. 证明 $E$ 是Lebesgue可测集.
+\begin{proof}
+对任意 $n=1,2, \ldots$, 存在 $\mathbb{R}$ 的闭子集 $F_n$, 满足 $F_n \subset E$,
+$$
+m^*(E) \leq m^*(F_n)+\frac{1}{n}.
+$$
+
+令 $F=\bigcup_{n=1}^{\infty} F_n$. 则 $F$ 是Lebesgue可测集. 由于 $m^*(E) \leq m(F)+1 / n$ 对 任意 $n=1,2, \ldots$ 成立, 从而 $m^*(E) \leq m(F)$. 另一方面, $F \subset E$, 从 而 $m(F) \leq m^*(E)$. 因此 $m^*(E)=m(F)$.
+
+设 $U$ 是满足 $U \supset E, m(U)=m^*(E)$ 的可测集.则有
+$$
+m^*(F)+m^*(U \backslash F)=m(U) = m^*(E)
+$$
+故
+$
+m(U \backslash F)=0
+$
+从而 $m^*(E \backslash F)=0$. 因此 $E \backslash F$ 是可测集, 从而
+$
+E=F \cap(E \backslash F)
+$
+也是可测集。
+
+事实上,此即Lebesgue内测度等于外测度.它与Carathéodory条件是等价的.
+\end{proof}
+
+\item[二、](20分)
+
+设$ f\colon\mathbb{R} \to \mathbb{R}  $是Lebesgue可积函数,求极限
+$$
+\lim_{n\rightarrow \infty}n\int_{\frac{1}{n^2}}^{n^2}{f( nx ) \text{e}^{-x}\text{d}x}.
+$$
+
+\begin{proof}
+易见
+$$
+I_n=\int_{\frac{1}{n}}^{n^3}{f( y ) \text{e}^{-\frac{y}{n}}\text{d}y}=\int_{\mathbb{R}}{g_n}.
+$$
+
+其中$ g_{n}=f( y ) \text{e}^{-y/n}\chi_{[1/n,n^{3}]} $,可见$ x>0 $时, $ g_{n}\to f $,而$ x\le 0 $时, $ g_{n}=0 $.
+
+考虑Lebesgue控制收敛定理，以及$ |g_{n}|\le f $，可知极限即为
+$$
+\lim_{n\rightarrow \infty}\int_{\mathbb{R}}^{}{g_n}=\int_0^{\infty}{f( x ) \text{d}x}.\qedhere
+$$
+\end{proof}
+
+\item[三、](20分)
+
+设$ f_{n}\colon\mathbb{R} \to \mathbb{R}  $是Lebesgue可测函数,
+几乎处处收敛到$ f\colon\mathbb{R} \to \mathbb{R} $且满足
+$$\int_{\mathbb{R}}{|f_n(x)|^3\log(|x|+2)\,\text{d}x}<10,$$
+$$\int_{\mathbb{R}}{|f_n(x)|\,\text{d}x}<10.$$
+
+证明$ f_{n} $依$ L^{2} $收敛到$ f $.
+
+注:原题的$ \log $中是$ 1 $不是$ 2 $,这样就是错题,反例可考虑$ f_{n}=\sqrt{n}\chi_{(0,1/n)} $.
+
+
+\item[四、](20分)
+
+设$ f\colon[0,1]\to [0,1] $，定义$ f(0)=0 $，
+当$ 0<x\le 1 $时，设正整数$ n $使得$ 1/(n+1)<x\le 1/n $,则定义$ f(x)=1/x-n $.
+
+设$ \mu $是$ [0,1] $上的概率测度,即对$ [0,1] $任意Borel子集$ E $，定义
+$$\mu(E) =\frac{1}{\log 2}\int_E\frac{1}{1+x}\,\text{d}x.$$
+
+对任意$ \varphi\colon[0,1]\to \mathbb{R}  $是连续函数，证明
+$$\int_0^1{\varphi \circ f(x) \,\text{d}\mu(x)}
+=\int_0^1{\varphi (x) \,\text{d}\mu(x)}.$$
+
+\begin{proof}
+因为$ \varphi $可以被阶梯函数一致逼近,不妨就设它是$ \chi_{(a,b)} $,其中$ 0\le a<b\le 1 $.
+右边即为
+$$\int_0^1{\varphi (x) \,\text{d}\mu(x)}
+=\frac{1}{\log 2}\int_a^b{\frac{\text{d}x}{1+x}}
+=\frac{1}{\log 2}\log \frac{1+b}{1+a}.$$
+
+而左边
+$$I=\int_0^1{\varphi \circ f(x) \,\text{d}\mu(x)}
+=\frac{1}{\log 2}\int_E\frac{\text{d}x}{1+x}
+=\frac{1}{\log 2}\sum_{n=1}^{\infty}\int_{E_n}\frac{\text{d}x}{1+x},$$
+
+其中
+$$E=\{x\in (0,1) \mid a<f(x)<b\} =\bigcup_{n=1}^{\infty}{E_n},$$
+$$E_n=\left\{ x\in \left( \frac{1}{n+1},\frac{1}{n} \right) \biggm| a<\frac{1}{x}-n<b \right\} 
+=\left( \frac{1}{n+b},\frac{1}{n+a} \right).$$
+
+最终有
+\begin{align*}
+I&=\frac{1}{\log 2}\sum_{n=1}^{\infty}\int_{\frac{1}{n+b}}^{\frac{1}{n+a}}\frac{\text{d}x}{1+x}
+=\frac{1}{\log 2}\sum_{n=1}^{\infty}\log\frac{1+\frac{1}{n+a}}{1+\frac{1}{n+b}}\\
+&=\frac{1}{\log 2}\sum_{n=1}^{\infty}\left[\log\frac{n+b}{n+a}-\log\frac{n+1+b}{n+1+a}\right]
+=\frac{1}{\log 2}\log\frac{1+b}{1+a}.
+\end{align*}
+\end{proof}
+
+\item[五、](20分)
+
+Let $ f\colon\mathbb{R} \to \mathbb{R}  $ be Lebesgue integrable. 
+Then for $ x\in \mathbb{R}  $ a.e. the series converges:
+$$
+\sum_{n=1}^{\infty}{\frac{1}{\sqrt{n}}f( x-\sqrt{n} )}.
+$$
+
+\begin{proof}
+	We prove that for any $ a<b $, the series is integrable on $ [a,b] $. Observe that
+	$$
+	\int_a^b{\sum_{n=1}^{\infty}{\frac{1}{\sqrt{n}}f( x-\sqrt{n} )}\mathrm{d} x}=\sum_{n=1}^{\infty}{\frac{1}{\sqrt{n}}\int_a^b{f( x-\sqrt{n} ) \mathrm{d} x}}
+	$$
+	$$
+	=\sum_{n=1}^{\infty}{\frac{1}{\sqrt{n}}\int_{\mathbb{R}}^{}{f( x ) \chi _{\left[ a-\sqrt{n},b+\sqrt{n} \right]}\mathrm{d} x}=\int_{\mathbb{R}}^{}{f( x ) S( x ) \mathrm{d} x}},
+	$$
+	
+	where we denote
+    \[S( x ) =\sum_{n=1}^{\infty}{\frac{1}{\sqrt{n}}\chi _{\left[ a-\sqrt{n},b-\sqrt{n} \right]}}.\] 
+    We claim that $ S(x) $ is bounded by $ C=C(a,b) $ independent of $ x $:
+	
+	For any $ x\in \mathbb{R}  $, the sum is taken over those $ n $ with $ a-\sqrt{n}\le x\le b-\sqrt{n} $, namely:
+    $$
+	S( x ) =\sum_{a-x\le \sqrt{n}\le b-x}^{}{\frac{1}{\sqrt{n}}}.
+	$$
+	
+	If $ a-x\le 1 $, we have
+	\begin{align*}
+	S( x ) &=\sum_{1\le n\le \left( b-x \right) ^2}{\frac{1}{\sqrt{n}}}
+    \le \int_0^{( b-x ) ^2}{\frac{\mathrm{d} t}{\sqrt{t}}}\\
+    &=2( b-x ) \le 2( b-a+1 ) 
+	\end{align*}
+	
+	If $ a-x>1 $, we have
+	\begin{align*}
+	S( x ) &=\sum_{( a-x ) ^2\le n\le ( b-x ) ^2}^{}{\frac{1}{\sqrt{n}}}
+    \le \int_{( a-x ) ^2-1}^{( b-x ) ^2}{\frac{\mathrm{d} t}{\sqrt{t}}}\\
+	&=2\left( ( b-x ) -\sqrt{( a-x ) ^2-1} \right) \le 2( b-a+1 ) 
+	\end{align*}
+	
+	The last inequality by the monotonicity.
+\end{proof}
+\end{itemize}
+
+\section{18--19春 B卷(沈维孝)}
+
+\subsection{原卷}
+\begin{itemize}
+\item[一、](20分)判断正误。以下论断正确的在前面的括号中填T,错误的填F:
+
+1. 设 $\mathcal{Z}$ 是整数集 $\mathbb{Z}$ 的全体子集构成的集合.则存在从 $\mathbb{R}$ 到 $\mathcal{Z}$ 上的 一一映射.
+
+2. $\mathbb{R}$ 的紧子集全体构成的集合是不可数集.
+
+3. $\mathbb{R}$ 的不可数闭子集中必然有一个有理数.
+
+4. 若 $E$ 是 $\mathbb{R}$ 的Lebesgue不可测子集,则 $E$ 的外测度必大于零.
+
+5. 若 $f: \mathbb{R} \rightarrow \mathbb{R}$ 是Lebesgue可测函数, $g: \mathbb{R} \rightarrow \mathbb{R}$ 是连续的一一 映射, 则 $g \circ f$ 是Lebesgue 可测的.
+
+6. 设 $f:[0,1] \rightarrow \mathbb{R}$ 是几乎处处可微的函数, $E \subset \mathbb{R}$ 是Lebesgue零测集,那么 $f(E)$ 也是Lebesgue零测集.
+
+7. 若 $f_n: \mathbb{R} \rightarrow \mathbb{R}, n=1,2, \ldots$ 是一列Lebesgue可测函数, 满 足 $\lim _{n \rightarrow \infty} \int_{\mathbb{R}}\left|f_n(x)-f(x)\right| d x=0$. 那么存在 $n_k \rightarrow \infty$ 使得 $f_{n_k}$ 几 乎处处收敛到 $f$.
+
+8. 设 $f:[0,1] \rightarrow \mathbb{R}$ 是有界函数. 则 $f$ 黎曼可积的 充分必要条件是 $f^{2}$ 黎曼可积.
+
+9. 设 $E_1, E_2$ 是 $\mathbb{R}$ 的非Borel子集. 则 $E_1 \times E_2$ 必不是 $\mathbb{R}^2$ 的Borel子集.
+
+10. 若 $f: \mathbb{R} \rightarrow \mathbb{R}$ 是Lebesgue可测函数, 则存在 $x_0 \in \mathbb{R}$, 使得对任 意 $\delta>0$,
+$$
+\lim_{r \rightarrow 0} \frac{m(\left\{x \in\left(x_0-r, x_0+r\right):\left|f(x)-f(x_0)\right|>\delta\right\})}{2r}=0.
+$$
+
+\item[二、](15分)
+
+1.对任意$ x\in\left(0,1\right] $，设$ x=0.x_{1}x_{2}\cdots $是$ x $的无穷十进制表示，
+定义$ f(x)=\max\limits_n x_{n} $,证明$ f(x) $在$ \left(0,1\right] $上Borel可测.
+
+2.对$ k=0,1,\cdots,9 $,求$ f^{-1}(k) $的测度.
+
+\item[三、](15分)
+
+1.叙述Lebesgue控制收敛定理.
+
+2.求极限
+$$
+\lim_{n\rightarrow \infty}\int_0^{n^2}{\frac{x^{1/n}\cos x}{1+x^n}\text{d}x}.
+$$
+
+\item[四、](15分)
+
+对 $f \in C^1(\mathbb{R})$ 以及 $t>0$, 定义
+$$I_t(f)=\frac{1}{t^2} \int_{\mathbb{R}}|f(x+t)-f(x)|^2 \text{d} x.$$
+证明:
+$$\lim_{t \rightarrow 0} I_t(f)=\int_{\mathbb{R}}|f^{\prime}(x)|^2 \text{d} x.$$
+
+
+\item[五、](15分)
+
+设$ f\colon \mathbb{R} \to \mathbb{R}  $是Lebesgue可测函数,满足如下性质:
+对任意$\varphi\in \mathcal{L}^{2}(\mathbb{R})$,
+都成立$f\varphi\in \mathcal{L}^{1}(\mathbb{R})$.
+证明: $f\in \mathcal{L}^{2}(\mathbb{R})$.
+
+\item[六、](20分)
+
+Let $ A=(a_{ij})_{1\le i,j\le n} $ be an $ n$-order real square symmetric matrix, and define
+$$ f( x_1,x_2,\cdots ,x_n ) =\exp \left( -\sum_{j,k=1}^n{x_{jk}a_ja_k} \right)  $$
+\begin{enumerate}
+\item Prove that $ f\in L^{1}(\mathbb{R} ^{n}) $ iff $ A $ is positive definite.
+\item Assuming $ A $ is positive definite, compute $ \int_{\mathbb{R} ^{n}}f(x)dx $.
+\end{enumerate}
+
+\end{itemize}
+
+\subsection{带答案}
+\begin{itemize}
+\item[一、](20分)判断正误。以下论断正确的在前面的括号中填T,错误的填F:
+
+1. (T) 设 $\mathcal{Z}$ 是整数集 $\mathbb{Z}$ 的全体子集构成的集合.
+则存在从 $\mathbb{R}$ 到 $\mathcal{Z}$ 上的 一一映射.
+
+\begin{proof}[解答]
+易见$ \mathcal{Z}  $的势是$ 2^{\aleph_{0}}=\aleph $.
+\end{proof}
+
+2. (T) $\mathbb{R}$ 的紧子集全体构成的集合是不可数集.
+
+\begin{proof}[解答]
+易见每一无理数都是一个紧子集.
+\end{proof}
+
+3. (F) $\mathbb{R}$ 的不可数闭子集中必然有一个有理数.
+
+\begin{proof}[解答]
+设$ r_{n} $是有理数的排布.又$ \mathbb{R} \backslash \bigcup_{n=1}^{\infty}(r_{n}-1/2^{n},r_{n}+1/2^{n}) $是闭集,不可数,不含有理数.
+\end{proof}
+
+4. (T) 若 $E$ 是 $\mathbb{R}$ 的Lebesgue不可测子集,则 $E$ 的外测度必大于零.
+
+\begin{proof}[解答]
+如果$ m^{*}(E)=0 $,我们将证明$ E $符合Carathéodory条件,从而Lebesgue可测.对任意测试集$ T $,有$ m^{*}(T\cap E)\le m^{*}(E)=0 $,此外$ m^{*}(T\cap E^{c})\le m^{*}(T) $,相加有$ m^{*}(T\cap E)+m^{*}(T\cap E^{c})\le m^{*}(T)  $,证完.
+\end{proof}
+
+5. (T) 若 $f: \mathbb{R} \rightarrow \mathbb{R}$ 是Lebesgue可测函数, $g: \mathbb{R} \rightarrow \mathbb{R}$ 是连续的一一 映射, 则 $g \circ f$ 是Lebesgue 可测函数.
+
+\begin{proof}[解答]
+对开集$U$，$g^{-1}(U)$是开集，则$(g\circ f)^{-1}(U)=f^{-1}(g^{-1}(U))$可测。
+
+因$ f $可测, $ f $有简单函数逼近$ \varphi_{k} $,使
+%$ 0\le |\varphi_{k}|\le |\varphi_{k+1}| $2
+$ \varphi_{k}\to f $.由此$ g(f(x))=g(\lim \varphi_{k}(x))=\lim g(\varphi_{k}(x)) $.现在将$ \varphi $写为特征函数形式$ \varphi_{k}=\sum c\chi $,则有$ g(f(x))=\lim \sum g(c)\chi $.这是简单函数之极限,仍可测.
+\end{proof}
+
+6. (F) 设 $f:[0,1] \rightarrow \mathbb{R}$ 是几乎处处可微的函数, $E \subset \mathbb{R}$ 是Lebesgue零测集,那么 $f(E)$ 也是Lebesgue零测集.
+
+\begin{proof}[解答]
+考虑Devil阶梯函数,将Cantor集映到$ [0,1] $.它单调,自然几乎处处可微,但Cantor集零测, $[0,1]$不是零测的.
+\end{proof}
+
+7. (T) 若 $f_n: \mathbb{R} \rightarrow \mathbb{R}, n=1,2, \ldots$ 是一列Lebesgue可测函数, 满 足 $\lim _{n \rightarrow \infty} \int_{\mathbb{R}}\left|f_n(x)-f(x)\right| d x=0$. 那么存在 $n_k \rightarrow \infty$ 使得 $f_{n_k}$ 几 乎处处收敛到 $f$.
+
+\begin{proof}[解答]
+$ L^{1} $收敛蕴含依测度收敛,而依测度收敛又蕴含了几乎处处收敛的子列.
+\end{proof}
+
+8. (F) 设 $f:[0,1] \rightarrow \mathbb{R}$ 是有界函数. 
+则 $f$ 黎曼可积的 充分必要条件是 $f^{2}$ 黎曼可积.
+\begin{proof}[解答]
+考虑Dirichlet函数与$ 1/2 $之差,则其不黎曼可积,但其平方黎曼可积.
+\end{proof}
+
+9. (T) 设 $E_1, E_2$ 是 $\mathbb{R}$ 的非Borel子集. 则 $E_1 \times E_2$ 必不是 $\mathbb{R}^2$ 的Borel子集.
+
+\begin{proof}[解答]
+若$ E_{1}\times E_{2} $是Borel集,其任一投影也是Borel集,从而$ E_{1},E_{2} $是Borel集,矛盾.
+\end{proof}
+
+10. (T) 若 $f: \mathbb{R} \rightarrow \mathbb{R}$ 是Lebesgue可测函数, 则存在 $x_0 \in \mathbb{R}$, 使得对任 意 $\delta>0$,
+$$
+\lim_{r \rightarrow 0} \frac{m(\left\{x \in\left(x_0-r, x_0+r\right):\left|f(x)-f(x_0)\right|>\delta\right\})}{2r}=0.
+$$
+
+\begin{proof}[解答]
+%变形为$$
+%\lim _{r \rightarrow 0} \frac{m(\left\{x \in\left(x_0-r, x_0+r\right):\left|f(x)-f\left(x_0\right)\right|\le\delta\right\})}{2 r}=1
+%$$
+%
+%考虑Lebesgue密度点之类的.
+题中的$ x_{0} $即为$ f $的一个几乎连续点.事实上有结论:可测函数是几乎连续a.e.的.如此$ x_{0} $不仅存在,而且a.e.都满足.
+\end{proof}
+
+\item[二、](15分)
+
+1.对任意$ x\in\left(0,1\right] $，设$ x=0.x_{1}x_{2}\cdots $是$ x $的无穷十进制表示，
+定义$ f(x)=\max\limits_n x_{n} $,证明$ f(x) $在$ \left(0,1\right] $上Borel可测.
+
+2.对$ k=0,1,\cdots,9 $,求$ f^{-1}(k) $的测度.
+
+\begin{proof}
+1.考虑$ f_{n}(x)=x_{n} $,则$ f(x)=\sup f_{n}(x) $.
+只需证明$ f_{n} $是Borel可测的,就有$ f $也是Borel可测的.
+
+注意到$ f_{n}(x)=[10^{n}x]-10[10^{n-1}x] $是简单函数,自然可测,证完.
+
+2.对任意$ x\in f^{-1}(9) $, $ x $的十进制展开含有$ 9 $,
+即$ f^{-1}(9)=\bigcup_{n=1}^{\infty}A_{n} $,
+其中$ A_{n} $即第$ n $位是$ 9 $,而前$ n-1 $位不是$ 9 $的数构成的集合.
+易见这是个无交并,又$ m(A_{n})=9^{n-1}10^{-n} $,可得$ m(f^{-1}(9))=1 $.
+从而$ k\le 8 $时其测度为$ 0 $.
+\end{proof}
+
+\item[三、](15分)
+
+1.叙述Lebesgue控制收敛定理.
+
+2.求极限
+$$
+\lim_{n\rightarrow \infty}\int_0^{n^2}{\frac{x^{1/n}\cos x}{1+x^n}\text{d}x}.
+$$
+
+\begin{proof}
+1.略
+
+2.对$$
+f_n( x ) =\frac{x^{1/n}\cos x}{1+x^n}\chi _{\left[ 0,n^2 \right]},
+$$
+
+其极限函数为
+$$
+f( x ) =\left\{ \begin{array}{ll}
+	0, & x\le 0 \text{ or } x>1\\
+	\cos x,&0<x<1\\
+	\frac{\cos 1}{2}, & x=1\\
+\end{array} \right. .
+$$
+
+考虑控制函数
+$$
+g( x ) =\left\{ \begin{array}{ll}
+	0,&x\le 0\\
+	1,&0<x<1\\
+	\frac{\sqrt{x}}{1+x^2},&x\ge 1\\
+\end{array} \right. ,
+$$
+
+因此可以直接换序算得
+$$
+\lim_{n\rightarrow \infty}\int_0^{n^2}{\frac{x^{1/n}\cos x}{1+x^n}\text{d}x}
+=\int_{\mathbb{R} }f(x)\mathrm{d} x=\sin1.\qedhere
+$$
+\end{proof}
+
+\item[四、](15分)
+
+对 $f \in C^1(\mathbb{R})$ 以及 $t>0$, 定义
+$$I_t(f)=\frac{1}{t^2} \int_{\mathbb{R}}|f(x+t)-f(x)|^2 \text{d} x.$$
+证明:
+$$\lim_{t \rightarrow 0} I_t(f)=\int_{\mathbb{R}}|f^{\prime}(x)|^2 \text{d} x.$$
+
+\begin{proof}
+由Fatou引理,
+$$\int_{\mathbb{R}}|f^{\prime}(x)|^2 \text{d} x
+=\int_{\mathbb{R}} \liminf_{t \rightarrow 0} \frac{|f(x+t)-f(x)|^2}{t^2} \text{d} x 
+\leq \liminf_{t \rightarrow 0} I_t(f).$$
+另一方面, 由Cauchy--Schwarz不等式,
+$$|f(x+t)-f(x)|^2=\left|\int_x^{x+t} f^{\prime}(y) \text{d}y\right|^2 
+\leq t \int_x^{x+t} f^{\prime}(y)^2 \text{d}y.$$
+故
+$$I_t(f) \leq \int_{\mathbb{R}} \int_x^{x+t} \frac{f^{\prime}(y)^2}{t} \text{d}y \text{d}x.$$
+由Tonelli (Fubini)定理, 上式右边
+$$
+	=\frac{1}{t} \int_{\mathbb{R}} f^{\prime}(y)^2\left(\int_{y-t \leq x \leq y} d x\right) \text{d} y=\int_{\mathbb{R}} f^{\prime}(y)^2 \text{d} y .
+$$
+因此 $I_t(f) \leq \int_{\mathbb{R}}|f^{\prime}(y)|^2 \text{d} y$ 对所有的 $t>0$ 成立. 故待证等式成立.
+\end{proof}
+
+\item[五、](15分)
+
+设$ f\colon \mathbb{R} \to \mathbb{R}  $是Lebesgue可测函数,满足如下性质:
+对任意$\varphi\in \mathcal{L}^{2}(\mathbb{R})$,
+都成立$f\varphi\in \mathcal{L}^{1}(\mathbb{R})$.
+证明: $f\in \mathcal{L}^{2}(\mathbb{R})$.
+
+\begin{proof}
+可以考虑Riesz表示定理.
+
+对$ \mathcal{L}^{2}(\mathbb{R}) $上的线性泛函$ T(\varphi)=\int f\varphi $，先验证它是有界的.
+如果不如此,可取得一列$ \varphi_{n} $使得$ \Vert \varphi_{n} \Vert_{2}=1/n $,同时$ |T(\varphi_{n})|>2^{n} $.
+现在对$\varphi=\sum \varphi_{n}/n$,它属于$\mathcal{L}^{2}(\mathbb{R})$：
+\begin{align*}
+    \int{\varphi ^2}&=\int{\bigg( \sum{\frac{\varphi_n}{n}} \bigg)^2}\\
+    &\le \int{\Big( \sum{\varphi_{n}^{2}} \Big) \bigg( \sum{\frac{1}{n^2}} \bigg)}\\
+    &=\frac{\pi^2}{6}\sum{\int{\varphi_{n}^{2}}}=\frac{\pi^4}{36}
+\end{align*}
+但我们有
+$$\int{|f\varphi|}=\sum{\frac{1}{n}\int{|f\varphi_n|}}
+\ge \sum{\frac{1}{n}\bigg|\int_{}^{}{f\varphi_n}\bigg|}
+\ge \sum{\frac{2^n}{n}}=\infty $$
+
+因而$ f\varphi\notin \mathcal{L} ^{1}(\mathbb{R} ) $,这与题设矛盾.
+
+由Riesz表示定理,存在唯一的$ g\in \mathcal{L} ^{2}(\mathbb{R} ) $,使得$ T(\varphi)=\int g\varphi  $.易得$ f\in \mathcal{L} ^{2}(\mathbb{R}) $.
+
+此外,还可以用常规的反证法.
+
+如果$ \int f^{2}=\infty $,
+%考虑$ E_{n}=\{1/n\le |f| \le n\} $,必然存在$ N $,使$ \int _{E_{N}}f^{2}>3 $.现在取$ F $是$ E_{N} $的有限测度子集,保持$ \int _{F}f^{2}>3 $.
+取一列两两不交的可测集$ E_{k} $,使得$
+1\le \int_{E_k}^{}{f^2}\le 2$，现在取$ \varphi=f\sum \chi _{E_{k}}/k $，其属于$ \mathcal{L} ^{2}(\mathbb{R}) $:
+$$
+\int_{}^{}{\varphi ^2}=\sum_{}^{}{\frac{1}{k^2}\int_{E_k}^{}{f^2}\le 2\sum_{}^{}{\frac{1}{k^2}}=\frac{\pi ^2}{3}}
+$$
+
+但我们有
+$$
+\int_{}^{}{f\varphi}=\sum_{}^{}{\frac{1}{k}\int_{E_k}^{}{f^2}\ge \sum_{}^{}{\frac{1}{k}}=\infty}
+$$
+
+这与题设矛盾.
+
+最后，还可以用[[闭图像定理]]。考虑$M_f\colon \mathcal{L}^{2}(\mathbb{R}) \rightarrow \mathcal{L}^{1}(\mathbb{R}) ,\varphi\mapsto f\varphi$.
+它是闭算子，这是因为设
+\[\varphi_n\stackrel{\mathcal{L}^{2}}{\longrightarrow}\varphi,
+\quad f\varphi_n\stackrel{\mathcal{L}^{1}}{\longrightarrow}\psi,\]
+有$\varphi_n,f\varphi_n$依测度收敛于$\varphi,\psi$，
+又不难说明$f\varphi_n$依测度收敛于$f\varphi$，从而$f\varphi=\psi$.
+于是由闭图像定理，$M_f$是有界算子，即$\|M_f\|<\infty$。
+那么取$\varphi=f\chi_{[-n,n]\cap\{|f|\leq n\}}$，得到
+\[\|f\chi_{[-n,n]\cap\{|f|\leq n\}}\|_2
+=\dfrac{\|f\varphi\|_1}{\|\varphi\|_2}\leq\|M_f\|,\]
+故$\|f\|_2\leq\|M_f\|$.
+\end{proof}
+
+\item[六、](20分)
+
+Let $ A=(a_{ij})_{1\le i,j\le n} $ be an $ n$-order real square symmetric matrix, and define
+$$ f( x_1,x_2,\cdots ,x_n ) =\exp \left( -\sum_{j,k=1}^n{x_{jk}a_ja_k} \right)  $$
+\begin{enumerate}
+\item Prove that $ f\in L^{1}(\mathbb{R} ^{n}) $ iff $ A $ is positive definite.
+\item Assuming $ A $ is positive definite, compute $ \int_{\mathbb{R} ^{n}}f(x)dx $.
+\end{enumerate}
+
+\begin{proof}
+	\begin{enumerate}
+	\item Since $ A $ is real and symmetric, it can be orthogonal diagonalized. Assume $ Q $ is orthogonal with $ \det Q=1 $, such that $ QAQ^{-1}=D=\mathrm{diag} \{\lambda_{1},\lambda_{2},\cdots,\lambda_{n}\} $, where each $ \lambda_{i} $ is an eigenvalue of $ A $.
+	
+	Then $ f(x)=\exp(-x^{T}Ax)=\exp(-x^{T}Q^{T}DQx)=\exp(-y^{T}Dy) $, where we denote $ y=Qx $.
+	
+	Thus 
+	\begin{align*}
+	\int_{\mathbb{R}^n}{f(x)\,\mathrm{d}x}
+    &=\int_{\mathbb{R}^n}{\exp(-y^TDy)\,\mathrm{d}x}
+    =\int_{\mathbb{R}^n}{\exp(-y^TDy)\,\mathrm{d}y}\\
+    &=\int_{\mathbb{R}^n}{\exp \left( -\sum_{k=1}^n{\lambda _ky_{k}^{2}} \right) \mathrm{d} y_1\cdots \mathrm{d} y_n}.
+	\end{align*}
+	
+	Therefore, $ f\in L^{1}(\mathbb{R} ^{n}) $ iff $ \forall i=1,2,\cdots n,\lambda_{i}>0  $ iff $ A $ is positive definite.
+	\item By the above discussions, using Tonelli's theorem we have 
+	$$\int_{\mathbb{R}^n}{f(x)\,\mathrm{d}x}
+    =\int_{\mathbb{R}^n}{\exp \left( -\sum_{k=1}^n{\lambda _ky_{k}^{2}} \right) \mathrm{d}y_1 \cdots \mathrm{d}y_n}
+    =\prod_{k=1}^n{\int_{\mathbb{R}}{\exp(-\lambda_kt^2)\,\mathrm{d}t}}
+    =\sqrt{\frac{\pi^{n}}{\det A}}.\qedhere$$
+	\end{enumerate}
+\end{proof}
+
+\end{itemize}
+
+\section{15--16春 A卷(沈维孝)}
+
+\subsection{原卷}
+\begin{itemize}
+\item[一、](20分)判断正误。以下论断正确的在前面的括号中填T,错误的填F:
+
+1.可数集的有限子集全体构成的集合是可数的.
+
+2.设$ \mathcal{L}  $是$ \mathbb{R}  $的全体Lebesgue可测子集构成的集合。
+则存在$ \mathcal{L}  $到$ \mathbb{R}  $的双射，但不存在$ \mathcal{L}  $到$ \mathbb{Q}  $的双射.
+
+3. $ \mathbb{R}  $的非空开子集的Lebesgue测度必大于零.
+
+4. Lebesgue外测度为正的$ \mathbb{R}  $的子集必是不可数集.
+
+5.若$ E $是$ \mathbb{R}  $的Lebesgue可测子集，则 $\ell(E)=
+ \sup\{\ell(K):K \text{ 是 }E\text{ 的紧子集}\}$.
+ 
+6.若 $f,g\colon\mathbb{R} \to \mathbb{R} $ 都是Lebesgue可测函数，
+则 $g\circ f$ 也是.
+
+7.若 $f\colon[0,1]\to \mathbb{R} $ 是绝对连续函数，
+则存在单调递增的绝对连续函数 $g,h\colon[0,1]\to \mathbb{R}$，使得 $f=g-h$。 
+
+8.若$ f $是$ \mathbb{R}  $上的Lebesgue可积函数, $ E_{n}=\{x\colon f(x)>n\},n=1,2,\cdots $,则$ \int_{E_{n}}f(x)\mathrm{d} x\to 0 $.
+
+9.设 $f\colon[0,1]\to \mathbb{R} $ 是有界函数.那么 $f(x)$ 是Riemann可
+积函数当且仅当 $f(x^{2})$ 是Riemann可积函数.
+
+10.设 $\ f_{n} \colon \mathbb{R} \to \mathbb{R} ,n=1,2,\cdots$是一列
+非负 Lebesgue 可测函数,满足$ \int _{\mathbb{R} }f_{n}(x)\mathrm{d} x=1 $.
+若 $f_{n}$ 依测度收敛于某个非负 Lebesgue可测函数$ f\colon\R \to \R$，
+则$ \int_{\mathbb{R} }f(x)\mathrm{d} x\le1 $.
+
+\item[二、](15分)设 $E$ 是十进制表示中不出现数字 $8$ 的 $[0,1]$ 中的无理数全体，
+证明 $E$ 是 $\mathbb{R}$ 的 Borel 子集，并求出 $E$ 的 Lebesgue 测度.
+
+\item[三、](15分)请准确叙述 Lebesgue 控制收敛定理，并求下面的极限:
+$$ \lim_{n\to \infty}\int_{0}^{n}\Big(1+\frac{x}{n}\Big)^{n}e^{-2x}\mathrm{d} x. $$
+
+\item[四、](15分)求积分
+$$\iint_E\left(x^2+y^2\right) \mathrm{d} x \mathrm{d} y,$$
+其中 $E=\{(x, y)\in \mathbb{R} ^{2}:|x| \leqslant \pi,|y| \leqslant \pi,|\sin x| \leqslant \frac{1}{2}, \cos (x+y) \text{ 是无理数} \}$.
+
+\item[五、] (15分)设$f\colon\mathbb{R}\rightarrow\R$是一致连续的Lebesgue可积函数。证明
+$$\lim_{x \rightarrow+\infty} f(x)=0.$$
+
+\item[六、](20分)设 $\left\{f_n(x)\right\}\colon[0,1]\rightarrow\R$
+是一列Lebesgue可测函数，且几乎处处收敛于 $0$，
+且 $\int_0^1 |f_n(x)|^2 \mathrm{d}x \leq 1$ 对所有的$n$成立.
+
+(1)证明或举反例否定: 存在子列 $\left\{f_{n_k}\right\}_{k=1}^{\infty}$使得
+$$\lim_{n_k \rightarrow \infty} \int_0^1 |f_{n_k}(x)|^2 \mathrm{d}x=0.$$
+
+(2)证明或举反例否定:
+$$\lim_{n \rightarrow \infty} \int_0^1 |f_n(x)| \mathrm{d}x=0.$$
+
+\end{itemize}
+
+\subsection{带答案}
+
+因未找到参考答案,以下内容由本人随便猜的,如果错了请直接改正或者联系我.
+\begin{itemize}
+\item[一、](20分)判断正误。以下论断正确的在前面的括号中填T,错误的填F:
+
+1.可数集的有限子集全体构成的集合是可数的.
+
+\begin{proof}[解答]
+T. 对子集的大小排序即可.
+\end{proof}
+
+2.设$ \mathcal{L} $是$ \mathbb{R} $的全体Lebesgue可测子集构成的集合。
+则存在$ \mathcal{L} $到$ \mathbb{R} $的双射, 但不存在$ \mathcal{L} $到$ \mathbb{Q} $的双射.
+
+\begin{proof}[解答]
+F.我们来证明全体Lebesgue可测集的势为$2^\aleph.$左受制于右显然.右受制于左:
+考虑Cantor三分集,其外测度为$0$,势为$\aleph.$它的任一子集外测度也为$0$,从而由完备性知是Lebesgue可测集.三分集的幂集具有势$2^\aleph.$
+\end{proof}
+
+3. $ \mathbb{R}  $的非空开子集的Lebesgue测度必大于零.
+
+\begin{proof}[解答]
+T. 非空开集必存在内点以及它的邻域,使测度大于零.
+\end{proof}
+
+4. Lebesgue外测度为正的$ \mathbb{R}  $的子集必是不可数集.
+
+\begin{proof}[解答]
+T. 若其可数,必有测度为$ 0 $.
+\end{proof}
+
+5.若$ E $是$ \mathbb{R}  $的Lebesgue可测子集，则 
+$\ell(E)=\sup\{\ell(K):K \text{ 是 }E\text{ 的紧子集}\}$.
+ 
+\begin{proof}[解答]
+待补
+\end{proof}
+ 
+6.若 $f,g\colon\mathbb{R} \to \mathbb{R} $ 都是Lebesgue可测函数，
+则 $g\circ f$ 也是.
+
+\begin{proof}[解答]
+F. 讲义中定理4.18给出了一个同胚$F\colon[0,1]\rightarrow[0,2]$，
+它把Cantor三分集$\mathbf{K}$映到了测度为$1$的集合$F(\mathbf{K})$。
+设$N$是$F(\mathbf{K})$的一个不可测子集，令$A=F^{-1}(N)$，
+由$A\subset\mathbf{K}$以及$\mathbf{K}$零测得到$A$是可测集。
+取连续函数$f$使之限制在$[0,2]$上是$F^{-1}$，$g=\chi_A$，
+那么$g\circ f$在$[0,2]$上就是$\chi_N$，不是可测函数。
+\end{proof}
+Remark:这一反例说明，即使加强条件为$f$连续，命题仍然不成立.
+
+7.若 $f\colon[0,1]\to \mathbb{R} $ 是绝对连续函数，
+则存在单调递增的绝对连续函数 $g,h\colon[0,1]\to \mathbb{R}$，使得 $f=g-h$. 
+
+\begin{proof}[解答]
+T.由于$f$绝对连续，$f(x)=f(0)+\int_0^x f'(t) \mathrm{d} t$且$f'(x)\in L^1([0,1]).$注意到这一点之后，取$h(x)=\int_0^x |f'(t)| \mathrm{d} t$便是自然的.
+\end{proof}
+
+8.若$ f $是$ \mathbb{R}  $上的Lebesgue可积函数, $ E_{n}=\{x\colon f(x)>n\},n=1,2,\cdots $,则$ \int_{E_{n}}f(x)\mathrm{d} x\to 0 $.
+
+\begin{proof}[解答]
+T. 可从积分的绝对连续性理解:因$ E_{n} $测度可足够小,在其上的积分也可足够小.
+\end{proof}
+
+9.设 $f\colon[0,1]\to \mathbb{R} $ 是有界函数.
+那么 $f(x)$ 是Riemann可积函数当且仅当 $f(x^{2})$ 是Riemann可积函数.
+
+\begin{proof}[解答]
+我猜T. 它们应该共享不连续点集?然后同时Riemann可积?但有界条件不知道作用.
+
+(afsd) 看不连续点集是正确的。有界性的要求在于，我们用“不连续点全体零测 $\Leftrightarrow$ Riemann可积”的这个判据时，它的前提就是要求函数是有界的，因为Riemann可积性天然要求有界。
+\end{proof}
+
+10.设 $\ f_{n} \colon \mathbb{R} \to \mathbb{R} ,n=1,2,\cdots$是一列
+非负 Lebesgue 可测函数,满足$ \int _{\mathbb{R} }f_{n}(x)\mathrm{d} x=1 $.若 $f_{n}$ 依测度收敛于某个非负 Lebesgue可测函
+数$ f\colon\mathbb{R} \to \mathbb{R}  $,则$ \int _{\mathbb{R} }f(x)\mathrm{d} x\le1 $.
+
+\begin{proof}[解答]
+T. 因$f_n$依测度收敛,其存在子列几乎处处收敛到$f$.此时在子列中使用Fatou引理即可.
+\end{proof}
+
+\item[二、](15分)设 $E$ 是十进制表示中不出现数字 $8$ 的 $[0,1]$ 中的无理数全体, 
+证明 $E$ 是 $\mathbb{R}$ 的 Borel 子 集, 并求出 $E$ 的 Lebesgue 测度.
+\begin{proof}
+前半段与一道作业题相同.后半段swx老师在课堂上讲过:只需要考虑每一次挖去区间的长度(求得为$\frac{9^{n-1}}{10^n}$),累加后取补即可.答案是$0$.
+\end{proof}
+
+\item[三、](15分)请准确叙述 Lebesgue 控制收敛定理，并求下面的极限:
+$$ \lim_{n\to \infty}\int_{0}^{n}\Big(1+\frac{x}{n}\Big)^{n}e^{-2x}\mathrm{d} x. $$
+
+\begin{proof}
+叙述略.被$e^{-x}\chi_{(0,+\infty)}$控制,极限是$\int_0^\infty e^{-x} \mathrm{d} x=1$.
+\end{proof}
+\item[四、](15分)求积分
+$$\iint_E\left(x^2+y^2\right) \mathrm{d} x \mathrm{d} y,$$
+其中 $E=\{(x, y)\in \mathbb{R} ^{2}:|x| \leqslant \pi,|y| \leqslant \pi,|\sin x| \leqslant \frac{1}{2}, \cos (x+y) \text{ 是无理数} \}$.
+\begin{proof}
+核心在于说明$\{(x, y)\in [-\pi,\pi]^2 \mid \cos(x+y) \in \mathbb{Q}\}$是零测集.
+
+直接将$ E $替换,算得$ 82\pi^{4}/81 $.
+\end{proof}
+
+\item[五、] (15分)设$f\colon\mathbb{R}\rightarrow\R$是一致连续的Lebesgue可积函数。证明
+$$\lim_{x \rightarrow+\infty} f(x)=0.$$
+\begin{proof}
+若结论不成立，存在$ \alpha>0 $以及一列$ x_{n}\to +\infty $，满足$ x_{n+1}\ge x_{n}+1,|f(x_{n})|>\alpha $.
+
+因$ f $一致连续，存在$ 1>\delta>0 $，只要$ |x-y|<\delta $就有$ |f(x)-f(y)|<\alpha/2 $.由此得
+$$
+\bigg|\int_{x_n-\frac{\delta}{2}}^{x_n+\frac{\delta}{2}}{f(x)\,\text{d}x}\bigg|\ge \frac{\alpha}{2}\delta, 
+$$
+
+从而$ \int |f|=\infty $,矛盾.
+\end{proof}
+
+\item[六、](20分)设 $\left\{f_n(x)\right\}\colon[0,1]\rightarrow\R$是一列Lebesgue可测函数，
+且几乎处处收敛于 $0$，且 
+$\int_0^1 |f_n(x)|^2 \mathrm{d}x \leq 1$ 对所有的$n$成立.
+
+(1)证明或举反例否定: 存在子列 $\left\{f_{n_k}\right\}_{k=1}^{\infty}$使得
+$$\lim_{n_k \rightarrow \infty} \int_0^1 |f_{n_k}(x)|^2 \mathrm{d}x=0.$$
+
+(2)证明或举反例否定:
+$$\lim_{n \rightarrow \infty} \int_0^1 |f_n(x)| \mathrm{d}x=0.$$
+\begin{proof}
+(1)是错的,反例取$f_n = \sqrt{n}\chi_{[0,\frac{1}{n}]}$.
+
+(2)是对的:
+    利用Egoroff定理, $\forall \varepsilon >0$, 存在可测集$E$,
+    使得$\mu(E)<\varepsilon $且在$E^{c}$上$f_k$一致收敛到$0$,
+    即$ n $足够大时$ |f_{n}|<\varepsilon $.
+    $$\int_0^1{|f_n|}=\int_E{|f_n|}+\int_{E^c}{|f_n|}
+    \le \left( \int_E{f_{n}^{2}}\int_E{1} \right) ^{\frac{1}{2}}+\varepsilon \int_{E^c}^{}{1}
+    \le \varepsilon^{\frac{1}{2}}+\varepsilon \qedhere$$
+\end{proof}
+
+\end{itemize}

@@ -1,0 +1,322 @@
+\newcommand{\spec}{\mathrm{Spec}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\GL}{\mathrm{GL}}
+\renewcommand{\mod}{\operatorname{mod}}
+\newcommand{\char}{\operatorname{char}}
+
+\newtheorem{exercise}{习题}
+
+\section{一些交换代数：Dedekind整环与分式理想}
+\subsection{Dedekind整环}
+\begin{exercise}
+若整环$D$满足任意非零理想可\textbf{唯一分解}为一些素理想的乘积，
+则$D$是Dedekind整环.
+\end{exercise}
+\begin{proofc}
+待补充.
+\end{proofc}
+
+\begin{exercise}
+    只具有有限多个素理想的Dedekind整环是PID. 可以举出一个例子嘛？
+\end{exercise}
+\begin{proofc}
+待补充.
+\end{proofc}
+
+\begin{exercise}
+    证明：对于Dedekind整环，UFD与PID等价.
+\end{exercise}
+
+\begin{exercise}
+    对于Dedekind整环$D$及其非零理想$I \lhd D$，$D/I$是PIR（未必是整环）.
+    由此证明$D$的任何理想至多双生成（即可由至多两个元素生成）.
+\end{exercise}
+\begin{proofc}
+待补充.
+\end{proofc}
+
+\begin{exercise}[Dedekind整环上的模]
+    \begin{itemize}
+        \item[(1)]
+        在Dedekind整环上，平坦模与无挠模等价. 
+        更一般地，在Prüfer整环上（注意到Dedekind即为诺特Prüfer环），
+        平坦与无挠等价.
+
+        \item[(2)]
+        Dedekind整环$D$上的有限生成挠模皆同构于
+        $\bigoplus_{i = 1}^{n}D/\mathfrak{p}_{i}^{n_{i}}$，
+        其中$\mathfrak{p}_{i} \in \spec(D), \ \forall i$.
+    \end{itemize}
+\end{exercise}
+\begin{proofc}
+待补充.
+\end{proofc}
+
+\subsection{分式理想}
+
+\begin{exercise}
+    环$R$中的任何可逆分式理想都是投射$R$-模.
+\end{exercise}
+
+\begin{exercise}
+    Dedekind整环中的任一理想类都可由一个整理想作为代表元.
+\end{exercise}
+
+
+\section{整数环}
+
+\subsection{幂整基}
+\begin{exercise}
+    令$\alpha \in \C$满足方程$x^{3}-x^{2}-2x-8 = 0$. 
+    考虑$K = \Q(\alpha)$.
+
+    \begin{itemize}
+        \item[(1)] 证明：$\mathscr{O}_{K} = \Z + \Z \alpha + \Z \dfrac{4}{\alpha}$.
+        \item[(2)] 证明：对于任意$\omega \in \mathscr{O}_{K}$，
+        $\mathscr{O}_{K} \neq \Z[\omega]$.
+    \end{itemize}
+\end{exercise}
+
+\subsection{纯三次域的整基}
+
+\begin{exercise}
+    对于$K = \Q(\sqrt[3]{n})$，其中$n \in \Z$无三次因子.
+    设$n = ab^{2}$，其中$a,b \in \Z$，且$a$无平方因子，则$\mathscr{O}_{K}$的一组整基为
+
+    \begin{equation*}\begin{aligned}
+        \mathscr{O}_{K} :=
+        \begin{cases}
+            \Z + \Z \sqrt[3]{n} + \Z \dfrac{\sqrt[3]{n^{2}}}{b},
+            & \text{若 } m^{2} \not\equiv 1 \mod 9, \\
+            \Z + \Z \sqrt[3]{n} + \Z \dfrac{b^{2} + b^{2}\sqrt[3]{n}
+             +\sqrt[3]{n^{2}}}{3b},
+            & \text{若 } m \equiv \pm 1 \mod 9.
+        \end{cases}
+    \end{aligned}\end{equation*}
+
+\end{exercise}
+
+\begin{exercise}
+证明：$Q(\sqrt[3]{175})$的一组整基为$\{1,\sqrt[3]{175},\sqrt[3]{245}\}$.
+\end{exercise}
+
+\subsection{分圆域}
+\begin{exercise}
+    若$\zeta_{n}$是$\Q$上的$n$次本原单位根，则$\Q[\zeta_{n}+\zeta_{n}^{-1}]$
+    的整数环为$\Z[\zeta_{n} + \zeta_{n}^{-1}]$.
+\end{exercise}
+
+\subsection{差分理想}
+
+\begin{exercise}
+    考虑$n$次单扩张$K = \Q(\alpha)$，且整数环恰为$\Z[\alpha]$.
+    令$f(x)$为$\alpha$在$\Q$上的极小多项式.
+    令$f(x) = (x-\alpha)(b_{0} + b_{1}x + \cdots +b_{n-2}x^{n-2} + b_{n-1}x^{n-1})$，
+    则$\{1,\alpha,\cdots,\alpha^{n-1}\}$的对偶基为
+    \[\{\frac{b_{0}}{f'(\alpha)},\cdots,\frac{b_{n-2}}{f'(\alpha)},\frac{1}{f'(\alpha)}\}.\]
+    从而$\mathscr{D}^{-1} = \dfrac{1}{f'(\alpha)}(\Z + \Z b_{0} + \cdots + \Z b_{n-2})$.
+\end{exercise}
+
+\begin{exercise}
+    若$K = \Q(\alpha)$，且整数环恰为$\Z[\alpha]$.
+    令$f(x)$为$\alpha$在$\Q$上的极小多项式. 则$\mathscr{D} = (f'(\alpha))$.
+
+    由此计算$\Q(\sqrt{d})$与$\Q[\zeta_{p}]$的差分理想，
+    其中$d$为无平方因子整数，而$\zeta_{p}$为$p$次单位根.
+\end{exercise}
+
+\subsection{判别式与理想类群}
+\begin{exercise}
+    计算下列域的整数环与理想类群：
+    \begin{itemize}
+        \item $\Q(\sqrt{14})$.
+        \item $\Q(\sqrt{105})$.
+        \item $\Q(\sqrt[3]{2})$.
+        \item $\Q(\alpha)$，其中$\alpha$为$x^{5}-x+1=0$的一根.
+    \end{itemize}
+\end{exercise}
+
+\begin{exercise}
+    若素数$p \equiv 11 \mod 12$，则$\mathrm{Cl}(\Q(\sqrt{-p}))$中含有
+    大于$\log_{3}(p)$的元.
+\end{exercise}
+
+\begin{exercise}
+    给定正整数$d_{K}$，则只能找到有限多个数域，使得其判别式为$d_{K}$.
+    从而数域（对于$\Q$）的扩张次数趋于$\infty$时，判别式$d_{K}$也趋于$\infty$.
+\end{exercise}
+
+\begin{exercise}
+    若数域$K/\Q$的判别式无平方因子，则$K$无非平凡子域.
+\end{exercise}
+
+\section{数的几何化初步：Minkowski}
+
+\subsection{Dirichlet单位定理}
+
+
+\section{局部域}
+\subsection{有关$\Q_{p}$}
+
+\begin{exercise}
+    证明：$\operatorname{Aut}(\Q_{p}) = 1$.
+\end{exercise}
+
+\begin{exercise}
+    证明：$\Q_{p} \cong \Q_{q}$当且仅当$p=q$，且$\Q_{p}$与$\R$都不同构.
+\end{exercise}
+
+
+\subsection{完备性}
+\begin{exercise}
+    对于非阿域$K$，其可分闭包$K_{\mathrm{sep}}$在$K$中稠密.
+\end{exercise}
+
+\begin{exercise}
+    若$K$是完备非阿域，而$L/K$是无限次代数扩张，则$L$在$K$的赋值的延拓下不完备.
+\end{exercise}
+
+\begin{exercise}
+    若$L$是完备非阿域，而子域$K$余维有限（即$[L:K] < \infty$），
+    则$K$也完备.
+\end{exercise}
+
+\subsection{Krasner引理}
+\begin{exercise}[根与系数的连续性]
+    设$K$为域，而$f,g \in K[x]$次数皆为$n$.
+    若$\alpha \in K^{\mathrm{al}}$为$f$一根，
+    则存在$g$的一根$\beta \in K^{\mathrm{al}}$，
+    满足$|\alpha - \beta| \leq \sqrt[n]{|f-g|}|f|$. 
+    
+    这里$|f|$指对系数取最大绝对值.
+\end{exercise}
+
+\begin{exercise}
+    若$K$为完备非阿域，而$p(x) \in K[x]$是$n$次首一不可约多项式，
+    且有$n$个不同的根$\alpha_{1},\cdots,\alpha_{n}$，
+    那么若$n$次多项式$q(x) \in K[x]$与$p(x)$足够接近
+    （即，各项系数足够接近），则$q(x)$也不可约.
+    在此假设下，若$q(x)$的根为$\beta_{1},\cdots,\beta_{n}$，
+    则在差一个重排的意义下，$K(\alpha_{i}) = K(\beta_{i})$.
+\end{exercise}
+
+\begin{exercise}
+    若$K/\Q_{p}$是$n$次扩张域扩张，则存在数域$E$以及$E$上的一个绝对值，
+    使得$\hat{E} \cong K$.
+\end{exercise}
+
+\begin{exercise}
+    若$K$是\textbf{特征零}完备非阿代数闭域，则$\hat{K}$也代数闭.
+    换句话说，特征零非阿完备化保持代数闭. （一般地，非阿完备化保持可分闭.）
+\end{exercise}
+
+\begin{exercise}
+    \begin{itemize}
+        \item[(1)]
+        $\Q_{p}$的$n$次非分歧扩张在同构意义下唯一.
+
+        \item[(2)]
+        $\Q_{p}$的$n$次扩张在同构意义下只有有限多个.
+    \end{itemize}
+\end{exercise}
+
+\subsection{非分歧、温分歧与蛮分歧}
+
+\begin{exercise}
+    若$K$是非阿局部域，且剩余类域有限，则$K$的任何有限非分歧扩张都Galois.
+\end{exercise}
+
+\begin{exercise}
+    $\Q_{p}$的任何有限扩张都可解.
+\end{exercise}
+
+\begin{exercise}
+    若$L/\Q_{p}$是有限非分歧扩张，而$K/L$是有限温分歧Galois扩张，
+    则$L/\Q_{p}$是Galois扩张.
+\end{exercise}
+
+\section{Galois表示初步}
+\subsection{p进域}
+设$K$是$\Q_p$的有限扩张，整数环为$\mathcal{O}_K$，$G_K=\Gal(\overline{K}/K)$是$K$的绝对Galois群，带有Krull拓扑.
+\begin{exercise}
+证明：任何连续同态$G_K\rightarrow\GL_n(\C)$的像均有限.
+\end{exercise}
+
+\begin{exercise}
+设$l$是素数，$\Q_l^n$中的一个格是一个秩为$n$的$\Z_l$子模$\Lambda$,
+满足自然同态$\Lambda\otimes_{\Z_l}\Q_l\rightarrow \Q_l^n$是同构.\\
+(1)证明：若$\Lambda_1,\cdots,\Lambda_m$是$\Q_l^n$中的一些格,
+则$\sum_{i=1}^{m}\Lambda_i$也是$\Q_l^n$中的一个格.\\
+(2)证明：给定连续同态$\rho\colon G_K\rightarrow\GL_n(\Q_l)$，
+存在$\GL_n(\Q_l)$中的元素$g$,使得有分解
+$g\rho g^{-1}\colon G_K\rightarrow\GL_n(\Z_l)\hookrightarrow\GL_n(\Q_l)$.
+
+注：\\
+1.这个结果使得我们可以讨论一个$l$-adic Galois表示的$\mod l$约化.
+感兴趣的读者可以思考$\mod l$约化后的Galois表示和习题(2)中$g$的选取的关系.\\
+2.事实上可以证明$\GL_n(\Z_l)$是$\GL_n(\Q_l)$的一个极大紧子群，
+且$\GL_n(\Q_l)$的极大紧子群均共轭于$\GL_n(\Z_l)$.
+(感兴趣的读者可以先思考如何证明$\mathrm{O}_n(\R)$是$\GL_n(\R)$的一个极大紧子群，
+此时习题(1)的类比是什么？)
+
+\end{exercise}
+\subsection{数域}
+以下取定$\Q$的一个代数闭包$\overline{\Q}$.
+\begin{definition}[Dirichlet密度]
+设$\mathcal{P}$是$\Z$中所有素数的集合，$\mathcal{S}\subset\mathcal{P}$.
+如果极限$\lim_{s\rightarrow 1+}\frac{\sum_{p\in \mathcal{S}}p^{-s}}{\sum_{p\in \mathcal{P}}p^{-s}}$存在，则称其为$\mathcal{S}$的Dirichlet密度，记作$\delta_{\mathcal{S}}$.
+\end{definition}
+\begin{theorem}[Chebotarev密度定理]
+    设$K/\Q$是有限扩张，$S\subset\mathcal{P}$是在$K$中分歧的那些素数.
+    则对$p\in \mathcal{P}-S$, $\operatorname{Frob}_p\subset\Gal(K/\Q)$
+    是良定的共轭类.对$\Gal(K/\Q)$中的一个共轭类$C$,
+    记$\mathcal{Q}_C=\{p\in\mathcal{P}-S:\operatorname{Frob}_p=C\}$，则
+    \[\delta_{\mathcal{Q}_C}=\frac{|C|}{|G|}.\]
+\end{theorem}
+\begin{exercise}
+设$S\subset\mathcal{P}$是有限集，$\Q^S$是$\Q$在$\overline{\Q}$中所有在$S$外非分歧的扩张的复合，记$G_S=\Gal(\Q^S/\Q)$.\\
+承认定理5.4，证明：$\bigcup_{p\in \mathcal{P-S}}\operatorname{Frob}_{p}$在$G_S$中稠密.
+（读者最好先思考如何定义$\operatorname{Frob}_{p}$.）\\
+注：此习题告诉我们$G_S$的一个连续表示由它在Frobenius上的取值决定.
+\end{exercise}
+下面的习题告诉我们在半单情形，“$G_S$的一个连续表示由其在Frobenius上的取值决定”有更加定量的描述.
+\begin{definition}[半单化]
+    设$k$是一个域，$V$是$k$上的一个有限维线性空间，带有群$G$的$k$-线性作用，
+    从而可以视为一个$k[G]$-模.由Jordan--H\"older定理，V存在合成列：
+    \[0=V_0\subsetneq V_1\cdots\subsetneq V_m=V,\]
+    其中$V_{i+1}/V_i,i=0,\cdots,m-1$是单的$k[G]$模.
+    定义$V$的半单化为$V^{\mathrm{ss}}=\bigoplus_{i=0}^{m-1}V_{i+1}/V_i$.
+\end{definition}
+\begin{exercise}
+    设$\rho_1,...,\rho_r$是群$G$在域$k$上一些互不同构的有限维不可约表示.\\
+    (1)设$R=\operatorname{Im}(k[G]\rightarrow \oplus{\operatorname{End}_k(V_i)})$，
+    证明: $R$是$k$上的有限维半单代数.\\
+    (2)假设下列条件之一成立：\\
+    \begin{itemize}
+        \item $\char k=0$ 或 $\char k>\max_{1\leq i\leq r}\dim{\rho_i}$;
+        \item $k$是有限域或代数闭域.
+    \end{itemize}
+    则存在$e_i\in k[G],i=1,\cdots,r$,使得$\operatorname{Tr}(\rho_i(e_j))=\delta_{i,j}$.\\
+提示：对$R$使用Artin--Wedderburn定理.
+\end{exercise}
+\begin{exercise}[Brauer--Nesbitt定理]
+设$\rho,\rho'\colon G\rightarrow\GL_n(k)$是群$G$在域$k$上的两个有限维表示.\\
+假设下列条件之一成立：\\
+    \begin{itemize}
+        \item $\char k=0$ 或 $\char k>n$,且对任意$g\in G$,
+        成立$\operatorname{Tr}(\rho(g))=\operatorname{Tr}(\rho'(g))$;\\
+        \item $k$是有限域或代数闭域，且对任意$g\in G$，
+        $\rho(g)$和$\rho'(g)$的特征多项式相同.
+    \end{itemize}
+证明: $\rho^{\mathrm{ss}}\cong\rho'^{\mathrm{ss}}$.
+
+注：\\
+1.现在可以思考在习题5.5后说的那句话是什么意思.
+(注意到$\rho(\operatorname{Frob}_p))$的迹和特征多项式均相同.)\\
+2.定理的同构只能确定到半单化，但如果本来就是半单表示（证明这点通常高度非平凡），
+则这个定理就能够直接建立一些唯一性. 读者能找到一些半单或者不半单的Galois表示的例子吗？
+\end{exercise}
+\subsection{例子}
+待补充.

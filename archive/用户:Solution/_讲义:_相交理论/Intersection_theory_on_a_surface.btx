@@ -1,0 +1,231 @@
+
+\begin{remark}
+    Let $X$ be a regular projective surface. (In fact, it is perhaps sufficient to only assume that $X$ is a Noetherian factorial scheme).
+\end{remark}
+
+\begin{definition}[Notations]
+Let $C$ and $D$ be effective divisors on $X$. We define the intersection number of $C$ and $D$, denoted as $(C \cdot D)$, by the following equality:
+\[
+\deg_C(\mathcal{O}(D)|_C) = -(\mathcal{O}(-D) \cdot C) = (\mathcal{O}(D) \cdot C) = (\mathcal{O}(D) \cdot \mathcal{O}(C) \cdot X) = \deg_D(\mathcal{O}(C)|_D).
+\]
+\end{definition}
+
+Furthermore, if we assume that $C \cap \text{Ass}(\mathcal{O}_D) = \emptyset$, then tensoring the short exact sequence
+\[
+0 \longrightarrow \mathcal{O}(-C) \longrightarrow \mathcal{O}_X \longrightarrow \mathcal{O}_C \longrightarrow 0
+\]
+with $\mathcal{O}_D$ preserves exactness. This implies:
+\[
+\deg_D(\mathcal{O}(C)|_D) = -\deg_D(\mathcal{O}(-C)|_D) = \chi(\mathcal{O}_{C \cap D}) = h^0(C \cap D, \mathcal{O}_{C \cap D}).
+\]
+
+\begin{remark}[20.2.1]
+When $X$ is a Cohen-Macaulay surface (for example, a regular surface), there are automatically no embedded associated points. In this case, the condition $C \cap \mathrm{Ass}(\mathcal{O}_D) = \emptyset$ can be safely replaced by the simpler geometric condition that $C$ and $D$ have no common irreducible components.
+(Because $\mathrm{Ass}\setminus \mathrm{Embedded} $ corresponds to those minimal associated primes.)
+Especially, if $C$ and $D$ are both irreducible and $C \neq D$ set-theoretically, then $(C \cdot D)=h^0(C\cap D)\geq 0$.
+\end{remark}
+
+\begin{remark}[20.2.3]
+Recall the definition of the normal bundle $\mathcal{N}_{C/X} := \mathcal{O}_X(C)|_C$. Then its degree is given by the self-intersection number: 
+\[
+\deg \mathcal{N}_{C/X} = (C \cdot C).
+\]
+\end{remark}
+
+\begin{remark}[20.2.4]
+As seen by the definition, the intersection number $(C \cdot D)$ can be expressed in several different ways, each with its own characteristics:
+\begin{enumerate}
+    \item $(\mathcal{O}(C) \cdot \mathcal{O}(D) \cdot X)$: This expression is very useful for formal manipulations, but it is geometrically somewhat abstract.
+    \item $\deg_D(\mathcal{O}(C)|_D)$: This expression is not manifestly symmetric.
+    \item $h^0(C \cap D, \mathcal{O}_{C \cap D})$: This expression is geometrically intuitive.
+\end{enumerate}
+\end{remark}
+
+\begin{example}
+Let $X = \mathbb{A}^2_k$. Consider the curves $C = V(y - x^2)$ and $D = V(y)$. The intersection scheme is given by:
+\[
+C \cap D \cong \text{Spec } k[x,y]/(y - x^2, y) \cong \text{Spec } k[x]/(x^2).
+\]
+Thus, we have $h^0 = 2$. This correctly reflects the geometric intuition of intersection multiplicity, as the line $D$ is tangent to the parabola $C$.
+\end{example}
+
+By definition, this intersection pairing induces a bilinear form on the Picard group:
+\begin{align*}
+\text{Pic}(X) \times \text{Pic}(X) &\longrightarrow \mathbb{Z} \\
+(\mathcal{O}(C), \mathcal{O}(D)) &\longmapsto (C \cdot D).
+\end{align*}
+
+\begin{theorem}[Application 1: Recovering B\'ezout's Theorem]
+Let $C$ and $D$ be curves in $\mathbb{P}^2$ that share no common components. Then the degree of their intersection is given by:
+\[
+\deg(C \cap D) = \deg C \cdot \deg D.
+\]
+\end{theorem}
+
+\begin{proof}[\textbf{Proof}]
+Let $c = \deg C$ and $d = \deg D$. Since $C$ and $D$ have no common components, the intersection is a proper intersection of dimension zero. The left-hand side is the number of intersection points counted with multiplicity, which equals the Euler characteristic of the intersection scheme:
+\begin{align*}
+\text{LHS} &= h^0(C \cap D, \mathcal{O}_{C \cap D}) \\
+&= (\mathcal{O}(C) \cdot \mathcal{O}(D) \cdot \mathcal{O}_{\mathbb{P}^2}) \\
+&= (\mathcal{O}(c) \cdot \mathcal{O}(d) \cdot \mathcal{O}_{\mathbb{P}^2}).
+\end{align*}
+
+Using the general formula for the intersection of two line bundles, $(\mathcal{L}_1 \cdot \mathcal{L}_2) = \chi(\mathcal{L}_1 \otimes \mathcal{L}_2) - \chi(\mathcal{L}_1) - \chi(\mathcal{L}_2) + \chi(\mathcal{O}_X)$, and the fact that $\chi(\mathcal{O}_{\mathbb{P}^2}(n)) = \frac{(n+1)(n+2)}{2}$, we can compute:
+\begin{align*}
+(\mathcal{O}(c) \cdot \mathcal{O}(d)) &= \chi(\mathcal{O}(c+d)) - \chi(\mathcal{O}(c)) - \chi(\mathcal{O}(d)) + \chi(\mathcal{O}_{\mathbb{P}^2}) \\
+&= \frac{(c+d+1)(c+d+2)}{2} - \frac{(c+1)(c+2)}{2} - \frac{(d+1)(d+2)}{2} + 1 \\
+&= cd.
+\end{align*}
+This completes the proof.
+\end{proof}
+
+\begin{proposition}[Application 2: 20.2.B]
+Assuming Serre's duality for a smooth projective surface $X$, the following holds:
+\begin{enumerate}
+    \item \textbf{Adjunction Formula:} For any curve $C \subset X$, 
+    \[
+    C \cdot (K_X + C) = 2p_a(C) - 2.
+    \]
+    \item \textbf{Riemann-Roch for Surfaces:} For any divisor $D$ on $X$, 
+    \[
+    \chi(X, \mathcal{O}_X(D)) = \frac{D \cdot (D - K_X)}{2} + \chi(X, \mathcal{O}_X).
+    \]
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[\textbf{Proof}]
+\textbf{Proof of (1):} 
+Consider the standard short exact sequence $0 \to \mathcal{O}_X(-C) \to \mathcal{O}_X \to \mathcal{O}_C \to 0$. We evaluate the intersection number $C \cdot (-K_X - C)$ using the definition:
+\[
+C \cdot (-K_X - C) = \chi(\mathcal{O}_X) - \chi(\mathcal{O}_X(K_X + C)) - \chi(\mathcal{O}_X(-C)) + \chi(\mathcal{O}_X(K_X)).
+\]
+By Serre duality, we know that $\chi(\mathcal{O}_X(K_X + C)) = \chi(\mathcal{O}_X(-C))$ and $\chi(\mathcal{O}_X(K_X)) = \chi(\mathcal{O}_X)$. Substituting these into the equation yields:
+\begin{align*}
+C \cdot (-K_X - C) &= 2 \big( \chi(\mathcal{O}_X) - \chi(\mathcal{O}_X(-C)) \big) \\
+&= 2 \chi(\mathcal{O}_C) \quad \text{(from the short exact sequence)} \\
+&= 2(1 - p_a(C)).
+\end{align*}
+Multiplying both sides by $-1$ gives $C \cdot (K_X + C) = 2p_a(C) - 2$.
+
+
+
+\textbf{Proof of (2):}
+First, we compute $-(D \cdot D)$ by treating it as $(D \cdot -D)$:
+\[
+-(D \cdot D) = \chi(\mathcal{O}_X) - \chi(\mathcal{O}_X(-D)) - \chi(\mathcal{O}_X(D)) + \chi(\mathcal{O}_X) = 2\chi(\mathcal{O}_X) - \chi(\mathcal{O}_X(D)) - \chi(\mathcal{O}_X(-D)).
+\]
+Next, we compute $D \cdot K_X$ by writing it as $(-D) \cdot (-K_X)$:
+\[
+D \cdot K_X = (-D) \cdot (-K_X) = \chi(\mathcal{O}_X) - \chi(\mathcal{O}_X(D)) - \chi(\mathcal{O}_X(K_X)) + \chi(\mathcal{O}_X(K_X + D)).
+\]
+Applying Serre duality again, $\chi(\mathcal{O}_X(K_X)) = \chi(\mathcal{O}_X)$ and $\chi(\mathcal{O}_X(K_X + D)) = \chi(\mathcal{O}_X(-D))$. Thus, the equation simplifies to:
+\[
+D \cdot K_X = \chi(\mathcal{O}_X(-D)) - \chi(\mathcal{O}_X(D)).
+\]
+Adding the expression for $-(D \cdot D)$ and $D \cdot K_X$ together, we obtain:
+\begin{align*}
+D \cdot (K_X - D) &= \big( \chi(\mathcal{O}_X(-D)) - \chi(\mathcal{O}_X(D)) \big) + \big( 2\chi(\mathcal{O}_X) - \chi(\mathcal{O}_X(D)) - \chi(\mathcal{O}_X(-D)) \big) \\
+&= 2\chi(\mathcal{O}_X) - 2\chi(\mathcal{O}_X(D)).
+\end{align*}
+Rearranging this equation directly recovers the Riemann-Roch formula for surfaces:
+\[
+\chi(X, \mathcal{O}_X(D)) = \frac{D \cdot (D - K_X)}{2} + \chi(X, \mathcal{O}_X).
+\]
+\end{proof}
+
+\begin{theorem}[20.2.C]
+We know that $\text{Pic}(\mathbb{P}^1 \times \mathbb{P}^1) = \mathbb{Z} \oplus \mathbb{Z}$. Let $l = \mathbb{P}^1 \times \{0\}$ and $m = \{0\} \times \mathbb{P}^1$. The line bundles $\mathcal{O}(l)$ and $\mathcal{O}(m)$ are the generators. Then we have the following intersection numbers:
+\[
+l \cdot l = m \cdot m = 0, \quad l \cdot m = 1.
+\]
+\end{theorem}
+
+\begin{proof}[\textbf{Proof}]
+The intersection $l \cap m$ is exactly one point (which corresponds to $\text{Spec } k$), so $l \cdot m = 1$. 
+
+Let $l' = \mathbb{P}^1 \times \{\infty\}$. We have $l \cap l' = \emptyset$, which implies $l \cdot l' = 0$. Since $l$ is linearly equivalent to $l'$, it follows that $l \cdot l = l \cdot l' = 0$. By a symmetric argument, we also obtain $m \cdot m = 0$.
+\end{proof}
+
+\textbf{Application:} Consider the diagonal $\Delta \cong \mathbb{P}^1 \hookrightarrow \mathbb{P}^1 \times \mathbb{P}^1$. What are the coefficients $a$ and $b$ such that the class $[\Delta] = a[l] + b[m]$?
+
+By computing the intersection numbers, we have $\Delta \cdot l = 1$ and $\Delta \cdot m = 1$. Expanding the intersection yields $a = 1$ and $b = 1$.
+
+\begin{theorem}[20.2.D]
+Let $X = \text{Bl}_p \mathbb{P}^2$ be the blow-up of $\mathbb{P}^2$ at a point $p$. Let $l$ be a line in $\mathbb{P}^2$ not passing through $p$ (identified with its strict transform), and let $e$ be the exceptional divisor. Then $\text{Pic}(X) = \mathbb{Z} l \oplus \mathbb{Z} e$, and their intersection numbers are:
+\[
+l \cdot l = 1, \quad e \cdot e = -1, \quad l \cdot e = 0.
+\]
+\end{theorem}
+
+\begin{proof}[\textbf{Proof Sketch}]
+This proof relies on a more geometric approach. Consider the blow-up morphism $\pi: \text{Bl}_p \mathbb{P}^2 \to \mathbb{P}^2$. Since the line $l \subset \mathbb{P}^2$ does not pass through $p$, its strict transform naturally avoids the exceptional divisor. 
+
+We can find another line $l'$ in $\mathbb{P}^2$ that passes through $p$. Since any two lines in $\mathbb{P}^2$ are linearly equivalent, we have $\mathcal{O}_X(l) \cong \mathcal{O}_X(l')$. The pullback of $l'$ is given by $\pi^* l' = e + m$, where $m$ is the strict transform of $l'$.
+
+First, we determine the self-intersection of $m$. We can find another line $l''$ passing through $p$, whose pullback is $\pi^* l'' = e + m'$. Since $\pi^* l' \sim \pi^* l''$, it follows that $m \sim m'$. We can choose $l'$ and $l''$ such that their strict transforms do not intersect, meaning $m \cap m' = \emptyset$. Therefore, $m \cdot m = 0$.
+
+Now we compute the remaining intersections:
+\begin{itemize}
+    \item $e \cdot m = 1$ (because the strict transform $m$ intersects the exceptional divisor $e$ at exactly one point).
+    \item $l \cdot e = 0$ (because the line $l$ does not pass through $p$, so its strict transform is disjoint from $e$).
+    \item $l \cdot m = 1$ (because the intersection $l \cap l'$ is exactly one point in $\mathbb{P}^2$ that is distinct from $p$).
+\end{itemize}
+
+Using these relations, we can deduce the self-intersection of $l$:
+\[
+l \cdot l = l \cdot \pi^* l' = l \cdot (e + m) = l \cdot e + l \cdot m = 0 + 1 = 1.
+\]
+For the exceptional divisor, since $\pi^* l' \sim l$, we substitute $e = \pi^* l' - m$:
+\[
+e \cdot e = (\pi^* l' - m) \cdot e = l \cdot e - m \cdot e = 0 - 1 = -1.
+\]
+
+By the excision exact sequence, we have:
+\[
+\mathbb{Z}e \longrightarrow \text{Pic}(X) \longrightarrow \text{Pic}(X \setminus e) \longrightarrow 0.
+\]
+Notice that $X \setminus e \cong \mathbb{P}^2 \setminus \{p\}$. Since the point $p$ has codimension strictly greater than 1 in $\mathbb{P}^2$, the Picard group remains unaffected by its removal. Thus, we have:
+\[
+\text{Pic}(X \setminus e) = \text{Pic}(\mathbb{P}^2 \setminus \{p\}) \cong \text{Pic}(\mathbb{P}^2) \cong \mathbb{Z}.
+\]
+Therefore, $\text{Pic}(X)$ can be generated by the classes of $l$ and $e$, and their intersection numbers are as stated.
+
+Finally, from the intersection numbers, we can verify that $l$ and $e$ are linearly independent in $\text{Pic}(X)$, confirming that $\text{Pic}(X) = \mathbb{Z} l \oplus \mathbb{Z} e$.
+\end{proof}
+
+Motivated by the above discussion, we have the following definition:
+
+\begin{definition}[20.2.8]
+Let $X$ be a surface over a field $k$. Let $C \subseteq X$ be a curve consisting of smooth points such that $C \cong \mathbb{P}^1_k$ and its self-intersection number is $(C \cdot C) = -1$. We call such a curve $C$ a $(-1)$-curve.
+\end{definition}
+
+\textbf{A glimpse:} $X$ is a smooth projective surface over $\mathbb{C}$. It is called \textbf{minimal} if it does not contain any rational (i.e. birational to $\mathbb{P}^1_{\mathbb{C}}$) $(-1)$-curves. 
+There is a conclusion that if $|mK_X|\neq 0$ for some $m>0$, then $X$ is minimal if and only if $K_X$ is nef, i.e. $(K_X \cdot C) \geq 0$ for every curve $C \subseteq X$.
+
+\begin{remark}
+By analyzing the generators of $\mathrm{Pic}(\mathbb{P}^1 \times \mathbb{P}^1)$ and $\mathrm{Pic}(\mathrm{Bl}_p \mathbb{P}^2)$ along with their intersection forms, we can deduce that $\mathbb{P}^1 \times \mathbb{P}^1 \not\cong \mathrm{Bl}_p \mathbb{P}^2$.
+\end{remark}
+
+
+
+\textbf{Classical Example (20.2.G):}
+Note that $l \cong \mathbb{P}^1 \cong e$. 
+Let us take two copies of $\text{Bl}_p \mathbb{P}^2$, denoted as $Y_1$ and $Y_2$. In $Y_1$, we have the naturally embedded curves $l_1$ and $e_1$; in $Y_2$, we have the curves $l_2$ and $e_2$. We construct a new space $X$ by gluing $Y_1$ and $Y_2$ along these curves such that $l_1$ is identified with $e_2$, and $e_1$ is identified with $l_2$. 
+
+Suppose, for the sake of contradiction, that $X$ is a projective scheme. Then there exists an ample line bundle $\mathcal{L}$ on $X$. Let $\mathcal{L}_1$ and $\mathcal{L}_2$ be the pullbacks of $\mathcal{L}$ via the natural inclusions $Y_1 \hookrightarrow X$ and $Y_2 \hookrightarrow X$, respectively. 
+
+Since the restriction of an ample line bundle to a closed subscheme remains ample, both $\mathcal{L}_1$ and $\mathcal{L}_2$ must still be ample. Consequently, their intersection with any curve in $Y_1$ and $Y_2$ must be strictly positive. In particular, for the curves $m_1 \sim l_1 - e_1$ and $m_2 \sim l_2 - e_2$, we have:
+\[
+\mathcal{L}_1 \cdot m_1 > 0 \quad \text{and} \quad \mathcal{L}_2 \cdot m_2 > 0.
+\]
+By linearity, this implies:
+\[
+\mathcal{L}_1 \cdot l_1 > \mathcal{L}_1 \cdot e_1 \quad \text{and} \quad \mathcal{L}_2 \cdot l_2 > \mathcal{L}_2 \cdot e_2.
+\]
+However, due to the gluing conditions, the intersection numbers evaluated on the identified curves must be equal:
+\[
+\mathcal{L}_1 \cdot l_1 = \mathcal{L}_2 \cdot e_2 \quad \text{and} \quad \mathcal{L}_1 \cdot e_1 = \mathcal{L}_2 \cdot l_2.
+\]
+This immediately leads to a contradiction! (We would obtain $\mathcal{L}_1 \cdot l_1 > \mathcal{L}_1 \cdot e_1 = \mathcal{L}_2 \cdot l_2 > \mathcal{L}_2 \cdot e_2 = \mathcal{L}_1 \cdot l_1$, which is impossible). 
+
+Therefore, $X$ is not projective. Since $X$ is constructed by gluing proper schemes along proper closed subschemes, $X$ itself is proper. This provides a classical example showing that a proper scheme is not necessarily projective.

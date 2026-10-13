@@ -1,0 +1,378 @@
+\setdisplaytitle{试卷：转专业试题}
+\sethtmltitle{试卷：转专业试题}
+
+
+==2026年转专业笔试题==
+共五题. 
+\begin{enumerate}
+\item[一、]
+\begin{enumerate}
+    \item[(1)]
+    设 $A,B$ 为 $3$ 阶方阵, 
+    $$A=\begin{pmatrix}
+        \frac{1}{2} & 0 & 0 \\ \\
+        0 & \frac{1}{4} & 0 \\ \\
+        0 & 0 & \frac{1}{7}
+    \end{pmatrix}$$
+    满足 $A^{-1}BA=6A-BA$,
+    求 $B$. 
+    \item[(2)]
+    若 $A=\begin{pmatrix} \alpha_1 & \alpha_2 & \alpha_3 \end{pmatrix}$,
+    其中 $\alpha_1,\alpha_2,\alpha_3$ 为三维列向量,
+    满足 $\det A=1$,
+    又 $B=\begin{pmatrix}
+        \alpha_1+\alpha_2+\alpha_3 &
+        \alpha_1+2\alpha_2+4\alpha_3 &
+        \alpha_1+3\alpha_2+9\alpha_3
+    \end{pmatrix}$,
+    求 $\det B$. 
+    \item[(3)]
+    设 $n$ 阶实方阵 $A=(a_{ij})_{ij}$ 满足
+    $$|a_{ii}|>\sum_{j=1,\ j\not=i}^n|a_{ij}|,\quad 1\leqslant i \leqslant n,$$
+    求证 $\det(A)\not=0$. 
+\end{enumerate}
+
+\item[二、]
+求
+$$\lim_{x\to 0}\left(\frac{2+\mathrm{e}^{\frac{1}{x}}}{1+\mathrm{e}^{\frac{4}{x}}}+\frac{\sin x}{|x|}\right).$$
+\begin{proofc}
+    由于
+    \begin{align*}
+        \lim_{x\to 0^{-}}\left(\frac{2+\mathrm{e}^{\frac{1}{x}}}{1+\mathrm{e}^{\frac{4}{x}}}+\frac{\sin x}{|x|}\right)
+        & = \lim_{x\to 0^{-}}\left(\frac{2+\mathrm{e}^{\frac{1}{x}}}{1+\mathrm{e}^{\frac{4}{x}}}+\frac{\sin x}{-x}\right)
+        = 2-1 = 1,\\
+        \lim_{x\to 0^{+}}\left(\frac{2+\mathrm{e}^{\frac{1}{x}}}{1+\mathrm{e}^{\frac{4}{x}}}+\frac{\sin x}{|x|}\right)
+        & = \lim_{x\to 0^{+}}\left(\frac{2+\mathrm{e}^{\frac{1}{x}}}{1+\mathrm{e}^{\frac{4}{x}}}+\frac{\sin x}{x}\right)
+        = 0+1 = 1,
+    \end{align*}
+    故
+    $$\lim_{x\to 0}\left(\frac{2+\mathrm{e}^{\frac{1}{x}}}{1+\mathrm{e}^{\frac{4}{x}}}+\frac{\sin x}{|x|}\right)=1.\qedhere$$
+\end{proofc}
+
+\item[三、]
+若 $y=f(x)$ 和 $y=\int_{0}^{\arctan x}\mathrm{e}^{-t^2}\mathrm{d}t$ 的曲线在 $(0,0)$ 处切线完全相同,
+求 $\lim\limits_{n\to +\infty} nf\big( \frac{2}{n} \big)$. 
+\begin{proofc}
+    由于
+    \begin{align*}
+        \left.\frac{\mathrm{d}}{\mathrm{d}x} \left( \int_{0}^{\arctan x} \mathrm{e}^{-t^2} \mathrm{d}t \right) \right|_{x=0}
+        &= \left. \mathrm{e}^{-\left(\arctan x\right)^2} \frac{\mathrm{d}}{\mathrm{d}x}\left( \arctan{x} \right) \right|_{x=0}\\
+        &= \left. \mathrm{e}^{-\left(\arctan x\right)^2} \frac{1}{x^2+1} \right|_{x=0}\\
+        &= 1,
+    \end{align*}
+    故 $f^\prime(0)=1$,
+    从而
+    $$\lim_{n\to +\infty} nf\left(\frac{2}{n}\right)
+    = \lim_{n\to +\infty} 2 \cdot \frac{f\big( \frac{2}{n} \big)}{\frac{2}{n}}
+    = 2 f^\prime(0)
+    = 1. \qedhere$$
+\end{proofc}
+
+\item[四、]
+设 $f(x)$ 连续可微,
+且 $\forall\,x\in \mathbb{R},\ f(x+1)-f(x)=f'(x)$. \\
+若 $\lim\limits_{x\to +\infty} f'(x)=c$,
+是否有 $f'(x)=c$? 证明你的断言. 
+\begin{proofc}
+    任取 $x\in\mathbb{R}$,
+    令 $S_x=\left\{ y\in\mathbb{R}:\ f^\prime(x) = f^\prime(y) \right\}$,
+    则 $x\in S_x$,
+    特别地, $S_x$ 非空,
+    故 $M\triangleq \sup S_x > -\infty$. \\
+    同时, 由假设条件, $f^\prime(x)$ 连续,
+    故 $S_x$ 是闭集. \\
+    从而若 $M<+\infty$,
+    则 $M\in S_x$.
+    而由 Lagrange 中值定理及题设知
+    存在 $\xi \in (0,1)$ 使得 
+    $$f^\prime(M+\xi) = \frac{f(M+1)-f(M)}{(M+1)-M}=f^\prime(M),$$
+    这与 $M=\sup S_x$ 矛盾. 故 $M=+\infty$. \\
+    于是, 存在一列 $\{ y_n \}_n \to +\infty$ 使得 $f^\prime(x)=f^\prime(y_n)$,
+    又 $\lim\limits_{x\to +\infty} f'(x)=c$, 故 $f^\prime(x)=c$. 
+\end{proofc}
+
+\item[五、]
+设 $f(x)$ 在 $[0,1]$ 上连续可微. 是否有
+$$\int_0^1 |f(x)|\mathrm{d}x \leqslant \max \left\{ \int_0^1\left| f'(x) \right| \mathrm{d}x , \left| \int_0^1 f(x) \mathrm{d}x \right| \right\}?$$
+证明你的断言. 
+\begin{proofc}
+    假设
+    $$\int_0^1 |f(x)|\mathrm{d}x > \left| \int_0^1 f(x) \mathrm{d}x \right|,$$
+    则 $f(x)$ 不能在整个 $(0,1)$ 上同号,
+    又 $f(x)$ 连续,
+    故存在 $x_0\in (0,1)$ 使得 $f(x_0)=0$.
+    从而由 $f(x)$ 连续可微知
+    \begin{align*}
+        \int_0^1 |f(x)|\mathrm{d}x
+        &= \int_0^{x_0} |f(x)|\mathrm{d}x + \int_{x_0}^{1} \left|f(x)-f(x_0)\right| \mathrm{d}x \\
+        &= \int_0^{x_0} \left| \int_0^{x} f^\prime(t)\mathrm{d}t \right| \mathrm{d}x + \int_{x_0}^1 \left| \int_{x_0}^x f^\prime(t)\mathrm{d}t \right| \mathrm{d}x \\
+        &\leqslant \int_0^{x_0} \int_0^{1} \left| f^\prime(t)\right| \mathrm{d}t \mathrm{d}x + \int_{x_0}^{1} \int_0^{1} \left| f^\prime(t) \right| \mathrm{d}t \mathrm{d}x \\
+        &= \int_0^{1} \int_0^{1} \left| f^\prime(t) \right| \mathrm{d}t \mathrm{d}x \\
+        &= \int_0^{1} \left| f^\prime(t) \right| \mathrm{d}t.
+    \end{align*}
+    故
+    $$\int_0^1 |f(x)|\mathrm{d}x \leqslant \max \left\{ \int_0^1\left| f'(x) \right| \mathrm{d}x , \left| \int_0^1 f(x) \mathrm{d}x \right| \right\}.\qedhere$$
+\end{proofc}
+
+\end{enumerate}
+
+==2025年转专业笔试题==
+\begin{enumerate}
+\item[一、(30分)]
+\\
+(1)(10分)
+设 $a_1, a_2, a_3, a_4 \ne 0$，求行列式
+\[
+\begin{vmatrix}
+ 1+a_1 & 1 & 1 & 1 \\ \\
+ 1 & 1+a_2 & 1 & 1 \\ \\
+ 1 & 1 & 1+a_3 & 1 \\ \\
+ 1 & 1 & 1 & 1+a_4
+\end{vmatrix}
+\]
+
+(2)(10分)
+设 $n$ 阶方阵 $A$ 满足
+\[
+A^2 + 2A + 2I = O,
+\]
+问 $A + bI$ 是否可逆？若可逆，求出逆阵.
+
+(3)(10分)
+设 $n$ 阶实方阵 $A = (a_{ij})$ 满足
+\[
+|a_{ii}| > \sum_{\substack{j=1 \\ j \ne i}}^{n} |a_{ij}|, \quad 1 \le i \le n,
+\]
+求证：$\det(A) \ne 0$。
+
+\item[二、(15分)]
+设 $f$ 在 $(0, +\infty)$ 上可微，满足
+\[
+\lim_{x \to +\infty} \frac{(x-1)f(x) + x f'(x)}{x^2} = 1,
+\]
+求:
+\[
+\lim_{x \to +\infty} \frac{f(x)}{x}
+\quad \text{和} \quad
+\lim_{x \to +\infty} \frac{f'(x)}{x}.
+\]
+
+\item[三、(15分)]
+设 $[0,1]$ 上的连续正值函数 $f$ 满足
+\[
+(f(x))^2 \le 1 + 2 \int_0^x f(s)\,ds,
+\]
+求证：$f(x) \le 1 + x$.
+
+\item[四、(20分)]
+设 $f$ 在 $(0,1)$ 上定义为
+\[
+f(x) =
+\begin{cases}
+0, & x \notin \mathbb{Q}, \\[6pt]
+\sin\left(p^{-3}\right), & x = \dfrac{q}{p},\ \gcd(p,q) = 1.
+\end{cases}
+\]
+
+
+(1) 求证：若 $\alpha \notin \mathbb{Q}$，则 $f$ 在 $x = \alpha$ 处连续；
+
+(2) 若 $\alpha$ 是有理数的平方根，问：$f$ 在 $x = \alpha$ 处是否可微？为什么？
+
+
+\item[五、(20分)]
+设 $f$ 在 $[0, +\infty)$ 上四阶可微，$\displaystyle\lim_{x \to +\infty} f(x)$ 存在且有限，$f^{(4)}$ 有界，问：
+\[
+\lim_{x \to +\infty} f^{(i)}(x) = 0, \quad i = 1,2,3
+\]
+是否成立？请给出理由.
+
+\end{enumerate}
+
+
+==2024年转专业笔试题==
+\begin{enumerate}
+\item[一、(20分)]
+\\
+
+(1)(10分) $A=\begin{bmatrix} 1 & 2 & 2 \\ \\2 & 3 & 2 \\ \\2 & 4 & 5 \end{bmatrix}$，$B$为$3\times 3$方阵，且$AB+2A+2B=I$，求$(B+2I)^{-1}$。
+    
+(2)(10分) $A,P$均为$n$阶方阵，且$P^{-1}AP=\text{diag}(2,\dots,2,0,\dots,0)$（其中共有$r$个$2$，$n-r$个$0$），求$\text{det}(A+2I)$。
+
+\item[二、(20分)]
+已知$A$和$A-I$均为对称正定阵，证明：$I-A^{-1}$也为对称正定阵，且$0<\text{det}(I-A^{-1})<1$。
+\item[三、(20分)]
+估计$\sqrt{37}$的值，保留到小数点后$5$位。
+\item[四、(20分)]
+$f(x)$为$[0,1]$上的连续函数，证明：
+$$
+\underset{h\to 0^+}{\text{lim}}\int_0^1\frac{hf(x)}{h^2+x^2}dx=\frac{\pi f(0)}{2}
+$$
+\item[五、(20分)]
+对于$\alpha\in(0,1)$，记
+\[
+f(x)=\left\{
+\begin{aligned}
+    &\alpha x+x^2\sin{\frac{1}{x}},\quad &x\neq0\\
+    &0,&x=0
+\end{aligned}
+\right.
+\]
+
+(1) $f(x)$是否处处可微？$f'(x)$在$x=0$处是否连续？
+
+(2)是否可以取到充分小的正实数$\varepsilon$，使得在区间$I=(-\varepsilon,\varepsilon)$内存在逆映射$f^{-1}$？并说明原因。
+
+\end{enumerate}
+
+==2023年转专业笔试题==
+\begin{enumerate}
+\item[一、(20分)]
+\\
+(1)(5分)矩阵$A$与$B$相似，$A=\begin{bmatrix} -1 & 2 & 2 \\ \\2 & -1 & 2 \\ \\2 & 2 & -1 \end{bmatrix}$，求$|B+I|$。
+
+(2)(7分)求：
+$$\underset{n\to\infty}{\lim}\begin{bmatrix} \frac{2}{3} &\frac{1}{2}\\ \\-\frac{1}{2} &\frac{2}{3}\end{bmatrix}^n$$
+
+(3)(8分)求：
+$$\underset{x\to 0}{\lim}\left[\frac{1}{\ln(x+\sqrt{1+x^2})}-\frac{1}{\ln(1+x)}\right]$$
+
+
+\item[二、(20分)]
+求：
+$$
+\lim_{h\to0^+}\frac{1}{h^3}\det\begin{bmatrix} f(x) & g(x) & p(x)\\ \\f(x+h) & g(x+h) & p(x+h)\\ \\ f(x+2h) & g(x+2h) & p(x+2h) \end{bmatrix}
+$$
+其中$f(x),g(x),p(x)$在$\mathbb{R}$上有连续的二阶导数。
+
+\item[三、(20分)]
+在$[a,b]$上有$f(x)\geq 0$，$f(x)$有连续的二阶导数，且$f''(x)\leq 0$，求证：对于$\forall x\in[a,b]$，有：
+$$(b-a)f(x)\leq 2\int_a^bf(x)dx$$
+
+\item[四、(20分)]
+设在区间$[a,b]$上，$f(x)$有连续的$n$阶导数，且对于$k \in \{0,1,\dots,n-1\}$，有$f^{(k)}(a)=0$。求证：
+$$
+\left(\int_a^b(f^{(k)}(x))^2dx\right)^\frac{1}{2}\leq\left(\frac{1}{2}\right)^\frac{m-k}{2}(b-a)^{m-k}\left(\int_a^b(f^{(m)}(x))^2dx\right)^\frac{1}{2}
+$$
+
+\item[五、(20分)]
+设$f(x)$在$\mathbb{R}$上有连续的二阶导数，且对于$l\in(-\infty,\infty)$，有：
+$$
+\underset{x\to +\infty}{\text{lim}}(f''(x)+4f'(x)+13f(x))=l
+$$
+求证：
+\begin{align*}
+    &\underset{x\to +\infty}{\text{lim}}f''(x)=0,\\
+    &\underset{x\to +\infty}{\text{lim}}f'(x)=0,\\
+    &\underset{x\to +\infty}{\text{lim}}f(x)=\frac{l}{13}.
+\end{align*}
+
+\end{enumerate}
+
+==?年转专业笔试题==
+\begin{enumerate}
+    \item 求极限：$$\underset{n\to \infty}{\text{lim}}\frac{1}{n(n+1)2^n}\sum\limits_{k=1}^n k^2\binom{n}{k}$$
+    \item 已知$f(x)$在定义域上连续，且$$f(x)^2=\int_0^xf(t)\frac{\tan t}{\sqrt{1+2\tan^2t}}dt$$求$f(x)$的表达式。
+    \item 是否存在$f(x)\in (-\infty,\infty)$，使得$f(x)$在定义域上的每一点都不可导，但极限$\lim\limits_{n\to \infty}n\big(f(x+\frac{1}{n})-f(x)\big)$存在？
+    \item 求以曲线$C:x^2+y^2+z^2=1$，$x+y+z=0$为准线，以$(1,1,1)$为母线的方向向量的圆柱面方程。
+    \item 已知方程组$A,B$同解，求$a,b,c$的值（应该是方程中的未知数，文件里没有，遇到这种题目对角化就ok了）
+    \item 已知向量$(1,1,-1)'$为矩阵$A$的特征向量，则：
+    \begin{itemize}
+        \item 求$a,b$的值；
+        \item $A$能否对角化？请说明理由。
+    \end{itemize}
+    \item 证明：
+    $$
+    \sqrt{\frac{1-\sin x}{1+\sin x}}>\frac{\ln(1+\sin x)}{x}
+    $$
+    \item 设$f(x)$在$D$上定义，若对于任意给定的$\varepsilon>0$，
+    存在$\delta>0$，只要$x_1,x_2$满足$|x_1-x_2|<\delta$，
+    就有$|f(x_1)-f(x_2)|<\varepsilon$，则称函数$f(x)$在$D$上一致连续。
+    \begin{itemize}
+        \item 求证：定义在$\mathbb{R}$上的连续周期函数一定一致连续；
+        \item 证明$\sin (x^3)$不是周期函数。
+    \end{itemize}
+    \item 证明：不存在定义在$[0,\infty)$的连续函数$y=f(x)$，使得：$$\frac{dy}{dx}=1+x^2+y^2$$
+\end{enumerate}
+
+
+==其他笔试题目举例==
+\subsection{分析篇}
+\begin{example}
+一个人，从$(1,1)$点，先向西走了$\frac{1}{2}$个单位，再向南走了前一段路的$\frac{1}{3}$，然后向东走了前一段的$\frac{1}{4}$，再向北走前一段路的$\frac{1}{5}$，如此循环，问最后会走到哪一点？
+\end{example}
+
+\begin{example}
+    设 $\displaystyle\int_0^\frac{\pi}{2}\psi(x)dx$ 绝对可积，$\lim\limits_{x\to (\frac{\pi}{2})^-}\psi{(x)}=0$，证明：
+    $$
+    \underset{n\to +\infty}{\text{lim}}\frac{\displaystyle\int_0^\frac{\pi}{2}\sin^nx\psi(x)dx}{\displaystyle\int_0^\frac{\pi}{2}\sin^nxdx}=0.
+    $$
+\end{example}
+
+\begin{example}
+$f(x)$定义在$(0,1)$上，且满足：
+    \[f(x)=\left\{
+    \begin{aligned}
+        \frac{1}{p^3},\quad &x=\frac{q}{p},\quad p,q\in\mathbb{Z}\\
+        0,\quad& x\text{为无理数}
+    \end{aligned}
+    \right.\]
+求证$f(x)$在$x=\alpha$可微，$\displaystyle\alpha=\frac{b\sqrt{2}}{a},a,b$为自然数。
+\end{example}
+\subsection{代数篇}
+\begin{example}
+    设$A,B$为同阶方阵，证明：$\text{det}(I-AB)=\text{det}(I-BA)$，其中$I$为单位矩阵。（考虑用摄动法）
+\end{example}
+
+==面试问题整理==
+\begin{example}[问题组1]关于广义积分的问题：
+\begin{enumerate}
+    \item (1)广义积分收敛；(2)$\underset{x\to +\infty}{\text{lim}}f(x)=0$间是否有关系；
+    \item 满足什么条件的时候，$\underset{x\to +\infty}{\text{lim}}f(x)=0$可以推得广义积分收敛？
+\end{enumerate}
+\end{example}
+
+\begin{example}[问题组2]关于高等代数的问题：
+\begin{enumerate}
+    \item 酉矩阵具有的特征（具体记不清了）；
+    \item 两个矩阵乘法可以交换，则可以同时在$\mathbb{C}$上上三角化。
+\end{enumerate}
+\end{example}
+
+\begin{example}[问题组3]关于微分中值定理的问题：
+\begin{enumerate}
+    \item 写出任意微分中值定理并给出证明；
+    \item 这一定理的条件能否修改，有没有什么应用；
+    \item （在回答基础上）用Cauchy中值定理推导某一形式的Taylor展开。
+\end{enumerate}
+\end{example}
+
+\begin{example}[问题组4]分析与数学学习：
+\begin{enumerate}
+    \item 数列和函数极限的$\varepsilon-\delta$语言，函数不趋于$A$的$\varepsilon-\delta$语言；
+    \item 印象最深的定理，定理表述，简述证明思路；
+    \item 遇到证明题怎么做，有没有给出过书上不同的证法？
+    \item 已知一个函数，如何去逼近？用多项式逼近和三角多项式逼近有何不同？
+\end{enumerate}
+\end{example}
+
+\begin{example}[问题组5]高等代数与分析：
+\begin{enumerate}
+    \item 证明：实对称矩阵特征值都是实数；
+    \item 追问：推导酉矩阵在平面上对向量的变换；
+    \item 能否构造一个函数在某一点光滑，其他点不连续？存在，$e^{-\frac{1}{x^2}}\cdot D(x)$；
+    \item 在高等代数中，如何证明一个方阵有两行相同，则其行列式为$0$。
+\end{enumerate}
+\end{example}
+
+\begin{example}[问题组6]空间解析几何与应用：
+\begin{enumerate}
+    \item 求以$3x-5y+2=0$为对称轴且过点$(3,2)$的抛物线方程；
+    \item $f(x)$在$(a,b)$上存在一阶导数，则以下结论是否正确：
+    \begin{itemize}
+        \item 若$\lim\limits_{x\to a^+}f(x)=\infty$，则是否有$\lim\limits_{x\to a^+}f'(x)=\infty$？
+        \item 若$\lim\limits_{x\to a^+}f'(x)=\infty$，则是否有$\lim\limits_{x\to a^+}f(x)=\infty$？
+    \end{itemize}
+    \item 在桌面边上叠起厚度极小，长度为$1$的木板，将上方的木板向右推，能否在不让木板倒下的前提下，使得$x=1$处木板的左端点到达无穷远处？
+\end{enumerate}
+\end{example}

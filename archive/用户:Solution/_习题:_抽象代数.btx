@@ -1,0 +1,7 @@
+\setdisplaytitle{抽象代数习题解答}
+\sethtmltitle{抽象代数习题解答}
+\begin{structure}
+\subpage{群论}
+\subpage{环论初步}
+\subpage{域论}
+\end{structure}

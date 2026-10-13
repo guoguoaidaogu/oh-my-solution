@@ -1,0 +1,194 @@
+\newcommand{\diam}{\operatorname{diam}}
+
+\section{调和函数}
+\subsection{平均值性质}
+\subsection{Green函数及应用}
+\subsection{Perron 方法与 Dirichlet 问题}
+
+\begin{definition}
+    对$u\in C(\Omega)$,若对任意球 $B\subset \subset \Omega $,
+    及满足 $\Delta h(x)=0,x\in B ;h(x)\geq u(x),x\in \partial B$的$h$,
+    均成立$h(x)\geq u(x),x\in B$,则称$u$在$\Omega$下调和.
+\end{definition}
+
+\begin{proposition}
+    对定义在 $\partial \Omega$上的函数$\varphi$,
+    考虑 $S_\varphi:=\{ v\mid v\text{ 下调和},
+    v\in C(\Omega),v(x)\leq \varphi (x),x\in\partial \Omega\}$,
+    则$u:= \sup \limits_{v\in S_\varphi} v $调和.
+\end{proposition}
+
+\begin{definition}
+    对于区域$\Omega,x_0\in \Omega,w\in C(\overline{\Omega})$是$\Omega$上的调和函数，
+    满足$w(x_0)=0,w(x)>0,\forall x\in \overline{\Omega}\backslash \{x_0\}$,
+    则称$w(x)$为$x_0 $处的一个闸函数.
+\end{definition}
+
+\begin{proposition}
+    对于区域$\Omega,x_0\in \partial \Omega$连续,且存在$x_0$处的一个闸函数$w(x)$,
+    则有$u= \sup\limits_{v\in S_\varphi}v$在$x_0$连续.
+\end{proposition}
+
+\begin{theorem}
+    对$\varphi\in C(\partial \Omega)$,$\partial \Omega$上的点均存在闸函数,
+    则相应的Dirichlet问题可解.
+\end{theorem}
+
+参考文献: Qing Han, and Fanghua Lin - \textit{Elliptic Partial Differential Equations} - American Mathematical Society (2000).
+
+
+\section{极值原理}
+对于 $\mathbb{R}^n$ 中的有界区域 $\Omega$,考虑算子$L$,
+对于$u\in C^2(\Omega)\cap C(\overline{\Omega})$, 
+$$Lu:=a_{ij}(x)\partial_{ij}u+b_{i}(x)\partial_{i}u+c(x)u.$$
+我们总是假设$a_{ij},b_{i},c$在$\overline{\Omega}$上连续，
+且$L$在$\Omega$中一致椭圆，即存在$\lambda>0$,使得
+$$a_{ij}(x)\xi_i\xi_j\geq \lambda \vert \xi\vert ^2,
+\forall x\in \Omega, \forall \xi \in \mathbb{R}^n.$$
+
+\begin{lemma}
+    $u\in C^2(\Omega)\cap C(\overline{\Omega})$,
+    满足 $Lu(x)>0,c(x)\leq 0,x\in \Omega$.
+    若 $u$在$\overline{\Omega}$上取到非负最大值，
+    则此最大值不能在内部取到(即只能在边界取到).
+\end{lemma}
+
+\begin{remark}
+    若$c(x)=0,x\in \Omega$,则非负的条件可以去掉.
+\end{remark}
+
+
+\begin{theorem}（弱极值原理）
+设 $u\in C^2(\Omega)\cap C(\overline{\Omega})$满足
+$Lu(x)\geq 0,c(x)\leq 0,x\in \Omega$.
+若$\sup\limits_{\overline{\Omega}} u(x)\geq0$,
+则$u$在$\partial \Omega$取到非负极大值.即
+$$\sup_{\overline{\Omega}}u\leq \sup_{\overline{\partial\Omega}}u.$$
+
+\end{theorem}
+\begin{lemma}（Hopf引理）
+$B$为$\mathbb{R}^n$中的开球，$x_0\in\partial B$. 
+设$u\in C^2(B)\cap C(B\cup \{x_0\})$,满足$Lu(x)\geq 0,c(x)\leq 0,x\in B$.
+若进一步，$u(x)<u(x_0),\forall x\in B$且$u(x_0)\geq 0$.
+则对任意指向外的向量$v$(即 $v\cdot n(x_0)>0$),我们有
+$$ \liminf_{t\rightarrow 0^+}\frac{1}{t}(u(x_0)-u(x_0-tv))>0.$$
+
+\end{lemma} 
+\begin{theorem}（强极值原理）
+设$u\in C^2(\Omega)\cap C(\overline{\Omega})$满足
+$Lu(x)\geq 0, c(x)\leq 0,x\in \Omega$.
+则$u$在$\overline{\Omega}$的非负最大值只能在$\partial \Omega$取到，除非$u$是常数.
+
+\end{theorem} 
+\begin{corollary}（比较原理）
+设$u\in C^2(\Omega)\cap C(\overline{\Omega})$满足
+$Lu(x)\geq 0, c(x)\leq 0,x\in \Omega$.
+若$u(x)\leq 0,x\in \partial \Omega$,则$u(x)\leq 0,x\in \Omega$.
+更进一步，要么$u(x)<0,x\in \Omega,$要么$u(x)=0,x\in \Omega$.
+
+\end{corollary}
+\begin{corollary}
+    设$\Omega $满足内球条件，$u\in C^2(\Omega)\cap C(\overline{\Omega})$满足
+    $Lu(x)\geq 0, c(x)\leq 0,x\in \Omega$.
+    若$u$在$x_0\in \partial \Omega$取到非负极大值，则对于任意指向外的向量$v$，我们有
+    $$ \frac{\partial u}{\partial v}(x_0)>0,$$
+    除非$u$是常数.
+\end{corollary}
+
+\begin{proposition}
+    设$\Omega$满足内球条件，考虑如下的边值问题
+ \begin{align*}
+    Lu(x)&=f(x),\quad x\in \Omega\\
+    \frac{\partial u}{\partial n}(x)+\alpha (x)u(x) &=\varphi(x),\quad x\in \partial \Omega.
+ \end{align*} 
+其中$f\in C(\overline{\Omega})$且$\varphi\in C(\partial \Omega)$.
+假设$c(x)\leq 0,x\in \Omega,\alpha (x)\geq 0,x\in \partial \Omega$.
+则当$a,c$至少一者不恒为$0$，此边值问题存在唯一解
+$u\in C^2(\Omega)\cap C(\overline{\Omega})$;
+当$a=c=0,$此边值问题在模掉常数的意义下存在唯一解
+$u\in C^2(\Omega)\cap C(\overline{\Omega})$.
+\end{proposition} 
+
+\begin{theorem}
+    设$u\in C^2(\Omega)\cap C(\overline{\Omega})$满足$Lu(x)\geq 0$.
+    若$u(x)<0,x\in \Omega,$则要么$u(x)<0,x\in \Omega$,要么$u(x)=0,x\in \Omega.$
+\end{theorem}
+\begin{proposition}
+    设存在$w\in C^2(\Omega)\cap C^1(\overline{\Omega})$满足
+    $Lw(x)\leq 0,x\in \Omega,w(x)>0,x\in \Omega$.
+    若$u\in C^2(\Omega)\cap C(\overline{\Omega})$满足$Lu(x)\geq 0$,
+    则$\frac{u}{v}$不能在$\Omega$中取到非负最大值，除非$\frac{u}{w}$为常数.
+    进一步，若$u$在$x_0\in \partial \Omega$取到非负极大值
+    且$\frac{u}{w}$不恒为常数，则对于任意指向外的向量$v$,
+    $$\frac{\partial }{\partial v}\Big(\frac{u}{w}\Big)(x_0)>0.$$
+\end{proposition} 
+
+\begin{proposition}（窄区域极值原理）
+设$d>0,e$为单位向量，满足$\vert (y-x)\cdot e\vert <d,\forall x,y\in \Omega$.
+则存在只依赖于$\lambda, \sup b_i,\sup c^+$的$d_0>0$,
+使得当$d\leq d_0$时，上述定理的条件成立.
+\end{proposition}
+
+\subsection{先验估计}
+在本节中，我们对$L,\Omega$的定义同上一节.
+
+设$\sup\limits_{\Omega}\vert a_{ij}\vert
++\sup\limits_{\Omega}\vert b_i\vert \leq \Lambda$.
+
+\begin{proposition}
+    设$u\in C^2(\Omega)\cap C(\overline{\Omega})$满足
+\begin{align*}
+    Lu(x)&=f(x),\quad x\in \Omega\\
+    u(x) &=\varphi(x),\quad x\in \partial \Omega.
+ \end{align*} 
+
+其中$f\in C(\overline{\Omega }),\varphi \in C(\partial \Omega)$,
+若$c(x)\leq 0,$则 
+$$ \vert u(x)\vert \leq \sup_{\partial \Omega}\vert \varphi\vert 
++C_{\lambda,\Lambda,\diam(\Omega)}\sup_{\Omega}\vert f\vert ,x\in\Omega.$$
+\end{proposition} 
+
+\begin{proposition}
+    设$u\in C^2(\Omega)\cap C^1(\overline{\Omega})$ 满足 
+\begin{align*}
+    Lu(x)&=f(x),\quad x\in \Omega\\
+    \frac{\partial u}{\partial n}(x)+\alpha (x)u(x) &=\varphi(x),
+    \quad x\in \partial \Omega.
+ \end{align*} 
+这里$n$为区域的外法向，若$c(x)\leq 0,x\in \Omega,
+\alpha (x)\geq \alpha_0>0,x\in \partial \Omega,$则 
+$$\vert u(x)\vert \leq C_{\alpha_0,\lambda ,\Lambda,\diam(\Omega)}
+(\sup_{\partial \Omega}\vert \varphi\vert +\sup_{\Omega}\vert f\vert ),x\in \Omega.$$
+\end{proposition} 
+
+\subsection{梯度估计}
+
+在本节中我们将考虑如下形式的方程
+$$a_{ij}(x)\partial_{ij}u+b_i(x)\partial_iu=f(x,u).$$
+其中$u\in C^2(\Omega),f\in C(\Omega\times\mathbb{R})$.
+我们仍假设$a_{ij},b_i$在$\overline{\Omega}$连续，
+且方程一致椭圆，即存在$\lambda>0$,使得
+$$a_{ij}(x)\xi_i\xi_j\geq \lambda \vert \xi\vert ^2,
+\forall x\in \Omega, \forall \xi \in \mathbb{R}^n.$$
+
+\begin{proposition}
+    设 $u\in C^3(\Omega)\cap C^1(\overline{\Omega})$满足
+$$a_{ij}(x)\partial_{ij}u+b_i(x)\partial_iu=f(x,u)，x\in \Omega.$$
+其中$a_{ij},b_i\in C^1(\overline{\Omega})$,
+且$f\in C^1(\overline{\Omega\times \mathbb{R}})$.则 
+$$\sup_{\Omega}\vert \nabla u\vert 
+\leq \sup_{\partial\Omega}\vert \nabla u\vert +C.$$
+其中$C>0$, 且$C$只依赖于 $\lambda,\diam(\Omega),
+\Vert a_{ij}\Vert_{C^1(\overline{\Omega})},
+\Vert b_i\Vert _{C^1(\overline{\Omega})},M=\Vert u\Vert _{L^\infty(\Omega)},
+\Vert f \Vert_{C^1(\overline{\Omega\times [-M,M]})}$.
+\end{proposition}
+
+\section{Schauder估计和Dirichlet问题解的存在性}
+\subsection{Laplace方程的Schauder估计}
+\subsection{一致椭圆方程的Schauder估计}
+\subsection{Dirichlet问题解的存在性}
+
+\section{$W^{2,p}$估计}
+\subsection{Marcinkiewicz插值定理和Calderon-Zygmund分解}
+\subsection{Laplace方程的$W^{2,p}$估计}

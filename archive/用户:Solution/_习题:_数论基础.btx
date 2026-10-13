@@ -1,0 +1,57 @@
+\renewcommand{\mod}{\operatorname{mod}}
+
+\section{PROBLEM SET 1}
+
+1.设$K$是数域，证明：$\Delta_K\equiv 0\ \mathrm{or}\ 1(\mod 4)$.
+
+2.设$K=\mathbb{Q}(\sqrt{2},\sqrt{3})$，
+证明：$\mathcal{O}_K=\mathbb{Z}[\frac{\sqrt{2}+\sqrt{6}}{2}]$.
+
+3.设$K\subset L$是数域，证明：$\Delta_K|\Delta_L$.
+
+4.设$\Phi_N(T)$是第$N$个分圆多项式，
+证明：若$p,q$是相异素数，则$\Phi_q(T^p)=\Phi_q(T)\Phi_{pq}(T)$.
+
+5.证明：$\mathcal{O}_{\mathbb{Q}(\sqrt[3]{3})}=\mathbb{Z}[\sqrt[3]{3}]$.
+
+6.设$K=\mathbb{Q}(\theta)$，其中$\theta$满足$\theta^3+2\theta+1=0$，
+证明：$\mathcal{O}_K=\mathbb{Z}[\theta]$.
+
+7.设$n=p^a$是一个素数幂，$\zeta_n$是一个$n$次本原单位根，
+证明：$\mathcal{O}_{\mathbb{Q}(\zeta_n+\zeta_n^{-1})}=\mathbb{Z}[\zeta_n+\zeta_n^{-1}]$.
+
+\section{PROBLEM SET 2}
+1.设$K=\mathbb{Q}(\sqrt[3]{2})$,在$\mathcal{O}_K$内分解$(3),(5),(11)$，
+并找出一个在其中完全分裂的素数.
+
+2.设$K=\mathbb{Q}(\sqrt{-2},\sqrt{-5})$,
+证明：$\mathcal{O}_K$没有形如$\{1,\alpha,\alpha^2,\alpha^3\}$的整基.
+(通过在$\mathcal{O}_K$中分解$(3)$来反证.)
+
+3.设$K$是数域，判别式为$\Delta_K$，
+证明：$K$的正规闭包包含二次域$\mathbb{Q}(\sqrt{\Delta_K})$.
+
+4.设$K\subset L$是次数为$n$的数域扩张，
+$\mathfrak{p}\subset \mathcal{O}_K$是一个在$L$中完全分歧的素理想，
+$\mathfrak{P}$是其上的唯一素理想($\mathfrak{p}\mathcal{O}_L=\mathfrak{P}^n$).
+\begin{itemize}
+    \item 证明：$\mathfrak{p}$在任何中间域$K\subset M\subset L$中均分歧.
+    \item 证明：如果$\mathfrak{p}$在另一个数域$L'$中非分歧，那么$L\cap L'=K$.
+    \item 用上述结论给出$[\mathbb{Q}(\zeta_m):\mathbb{Q}]=\phi(m)$的一个新证明.
+\end{itemize}
+5.此问题有两部分.
+\begin{itemize}
+\item 设$K$是一个数域，证明：存在无穷多$\mathcal{O}_K$中的素理想$\mathfrak{P}$,
+满足$f(\mathfrak{P}|p)=1$,其中$(p)=\mathfrak{P}\cap\Z$.
+\item 将第一问运用在分圆域上，证明：对任意正整数$m$,
+存在无穷多素数$p$满足$p\equiv 1(\mod m)$.
+\end{itemize}
+6.设$K$是一个数域，记$\mathcal{D}^{-1}=\{x\in K:\operatorname{Tr}_{K|\mathbb{Q}}(x\mathcal{O}_K)\subset\mathbb{Z}\}$.
+\begin{itemize}
+    \item 证明：$\mathcal{D}^{-1}$是一个分式理想.
+    令$\mathcal{D}=(\mathcal{D}^{-1})^{-1}$,证明：$D$是一个整理想.
+    \item 证明：$\mathrm{N}_{K|Q}(\mathcal{D})=|\Delta_K|$.
+    \item 若$p$是一个素数，$\mathfrak{p}\subset\mathcal{O}_K$是一个素理想，
+    满足$\mathfrak{p}^e|p\mathcal{O}_K$,证明：$\mathfrak{p}^{e-1}|\mathcal{D}$.
+    \item 证明：若$p$在$K$中分歧，则$p|\Delta_K$.
+\end{itemize}

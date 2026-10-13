@@ -1,0 +1,569 @@
+\begin{center}
+    \textsize{24pt}{2024年秋泛函分析习题}
+\end{center}
+
+== 习题1 ==
+
+\begin{itemize}
+	\item[1]分析$\mathcal{L}^1([0,+\infty))$和$\mathcal{L}^2([0,+\infty))$
+    是否有包含关系, 说明理由.
+
+	\item[2]列出一族（无穷多个）无限维线性空间$V_0\supset V_1 \supset V_2 \supset \dots$, 满足：\par
+	$ 1)\ V_{i+1}$是$V_i$的真子空间；
+
+	$ 2)\ \displaystyle \bigcap_{i\in \mathbb{N}}V_i = {0}$.
+    \item[3]设$a, b, p$是实数，且$p\geqslant 1$。证明不等式
+	$$|ta+(1-t)b|^p \leqslant t|a|^p+(1-t)|b|^p$$
+	对任意$0 \leqslant t \leqslant 1$都成立。
+    \item[4]证明：有界实数列全体所构成的赋范线性空间
+    $\ell^{\infty}$和空间$C[0,1]$的某个子空间之间存在一个
+    等距的一一映射。
+    \item[5]设$f,g:(X,\mu)\rightarrow \mathbb{C}$是两个$\mu$-可测函数。
+    证明，对于$p \geqslant 1$，
+	$$\bigg(\int_{X}|f+g|^p\mathrm{d}\mu\bigg)^{\frac{1}{p}}
+    \leqslant \bigg(\int_{X}|f|^p\mathrm{d}\mu\bigg)^{\frac{1}{p}} + 
+    \bigg(\int_{X}|g|^p\mathrm{d}\mu\bigg)^{\frac{1}{p}}.$$
+    \item[6$^*$]在自然数集（或者正整数集）上能否建立一个概率测度，
+    使得``一个数被$p$整除的概率是$\displaystyle \frac{1}{p}$''?
+\end{itemize}
+
+== 习题2 ==
+\begin{itemize}
+    \item[1]试举例说明, 在实赋范线性空间中, 凸集的代数内点集与凸集的
+    (拓扑)内点集可以是不同的.
+    \item[2]设$A$是$\mathbb{R}^2$中有界闭凸集, $B$是$A$在$x$−轴上的投影. 
+    证明, 存在两个$B$上的凸函数$f_1(x)$和$f_2(x)$, 使得
+	$$A=\{(x,y): -f_1(x)\geqslant y \geqslant f_2(x)\}$$
+    \item[3]$\mathbb{R}^n$中, 闭集的凸包是否一定是闭集?
+    \item[4] (1)设$f:(a,b)\rightarrow\mathbb{R}$是一个有界可测函数, 
+    且满足$\displaystyle f\left(\frac{x+y}{2}\right)\leqslant\frac{f(x)+f(y)}{2}$. 
+    取一列积分为$1$的非负光滑函数$\{j_n\}$, 
+    $\operatorname{supp}j_n \subset \left(-\dfrac{1}{n}, \dfrac{1}{n}\right)$. 
+    证明,对于任意$\delta > 0$, 函数列$\{j_n*f\}$在$(a +\delta, b −\delta)$上是等度连续的, 
+    由此证明, $f$几乎处处等于一个连续函数.\par
+    (2$^*$)你能把$f$有界的条件去掉吗？
+    \item[5]在测度空间$(X,\mu)(\mu (X)<+\infty)$上, 非负函数$g(x)$满足
+    $\displaystyle \int_{X}g(x)\mathrm{d}\mu=1$.\par
+    	(1)对于有界可测函数$F,G$, 定义
+	$$\Psi(t;F,G,g)=\ln\left(\int_{X}\text{exp}((1-t)F+tG)g\mathrm{d}\mu\right).$$
+    证明，对于固定的$t_0$，
+	$$\Psi(t+t_0;F,G,g)=\Psi(t;0,G-F,\mathrm{e}^{(1-t_0)F+t_0G}g)
+    =\Psi(t_0;F,G,g)+\Psi(t;0,G-F,g'),$$
+    其中，
+	$$g'=\frac{\mathrm{e}^{(1-t_0)F+t_0G}g}{\int_{X}\mathrm{e}^{(1-t_0)F+t_0G}g\mathrm{d}\mu}.$$
+    	(2)利用指数函数的凸性，证明
+	$$\Psi(t;0,G-F,g')\geqslant \left(\int_{X}(G-F)g'\mathrm{d}\mu\right)·t.$$
+    由此证明, 对于固定的$F,G,g$, $\Psi (t;F,G,g)$是$t$的凸函数.\par
+	    (3)对于$p,q,r\in [1,+\infty), \displaystyle \frac{1}{p}+\frac{1}{q}=\frac{1}{r}$, 
+        设$ f=\mathrm{e}^{\frac{F}{p}}, g=\mathrm{e}^{\frac{G}{q}}$, 证明,
+	$$\|fg\|_r \leqslant \|f\|_p \|g\|_q.$$
+	    (4)由此推出上述Hölder不等式对于一般的$f \in L^p, g\in L^q$都成立.
+\end{itemize}
+
+== 习题3 ==
+
+\subsection*{复线性空间中的凸锥}
+\begin{itemize}
+	\item[1]证明:复线性空间中的凸集在复线性泛函$f$映射下的像集是$\mathbb{C}$中的凸集.
+	\item[2]证明复线性空间上的Hahn--Banach定理：设$V_0$是复线性空间$V$的子空间，$p$是$V$上的齐次凸泛函，
+    $f_0:V_0\rightarrow \mathbb{C}$是线性泛函，且满足
+	$$|f_0(x)|\leqslant p(x), \forall x \in V_0,$$
+	则存在定义在全空间$V$上的线性泛函$f$，满足条件
+	$$f(x)=f_0(x), \forall x \in V_0, \text{ 且 }|f(x)|\leqslant p(x).$$
+	\item[3]在一个线性空间中, 点集$M$称为是\textbf{均衡}的, 
+    当且仅当对于任意的$x\in M$和$|\alpha|\leqslant 1$, $\alpha x\in M.$ 
+    证明, 在一个赋范复线性空间$V$中, 如果集合$A$是一个均衡的凸开集, $B$是一个和$A$不相交的非空凸集, 
+    那么存在一个复线性泛函$f$和$c > 0$, 使得在$A$上$|f(x)| < c$, 在$B$上$|f(x)|\geqslant c$.
+	\item[4]在一个线性空间中, 一个\textbf{锥}$C$是指一族过原点的射线的并集, 
+    即$v\in C \Leftrightarrow \lambda v \in C, \forall \lambda > 0.$\par
+	在$\mathbb{C}^n$中,包含$\{(z, z^2, \dots, z^n)\in \mathbb{C}^n, |z| \leqslant 1\}$的最小\textbf{凸}锥记为 $X$.\par
+	证明, 如果$\overline {X} \neq \mathbb{C}^n$, 那么存在一个非零复线性泛函$f$, 使得$f$在$X$上的取值都是实部非负的复数.
+	\item[5]接上题,利用复数的指数形式证明,上述$f$在$\{(z, z^2, \dots, z^n)\in \mathbb{C}^n:|z| =1\}$上的取值的实部都是$0$.
+	\item[6]接上题, 利用复变函数的知识推出矛盾, 从而$\overline X = \mathbb{C}^n$.
+	\item[7]证明, $\mathbb{R}^n$中的稠密凸集一定是全空间.
+	\item[8]接6, 证明, $X = \mathbb{C}^n$.
+\end{itemize}
+
+\subsection*{包含对称凸集的最小椭球}
+
+\qquad 设 $V$ 是 $\mathbb{R}^{3}$ 中的一个关于原点对称的有界凸开集。
+我们知道，$V$ 唯一对应到 $\mathbb{R}^{3}$ 的一个范数($N(V=\{x, N(x)<1\}$). 
+我们记三阶（半）正定阵全体为 $Q_{+}$，对于 $q \in Q_{+}$，它对应的（可能退化的）椭球为 $q(x, x) \leqslant 1$，
+包含 $V$ 的（可能退化的）椭球面 $E$ 对应的三阶对称阵全体就是
+$$K=\{q \in Q_{+}, 0 \leqslant q(x, x) \leqslant(N(x))^{2}, 
+\forall x \in \mathbb{R}^{3}\}.$$
+\begin{itemize}
+\item[1]证明，$K$ 作为 $\mathbb{R}^{3 \times 3}$（赋予欧氏距离拓扑）中的子集是一个非空有界闭凸集．
+\item[2]我们记 $v(q)=$ 椭球 $\{q(x, x) \leqslant 1\}$ 的体积. 
+证明，存在 $q_{N}$，使得 $v(q_{N})$ 取到最小值．
+\item[3]对于 $q \in Q_{+}$，定义
+$$I(q):=\iiint \mathrm{e}^{-q(x, x)} \mathrm{d}^{3} x,$$
+对于其它的对称阵 $q$，定义 $I(q)=+\infty$ ．证明不等式
+$$I\left(\frac{q^{\prime}+q_{N}}{2}\right) 
+\leqslant \frac{I(q^{\prime})+I(q_{N})}{2}.$$
+从而说明，上述 $q_{N}$ 是唯一的.
+\item[4]由此证明，在所有关于原点对称且包含 $V$ 的椭球面 $E$ 中，
+存在唯一一个 $E_{0}$，使得其包围的体积取到最小值.
+\item[5]在椭球面 $E_{0}$ 上，我们取一点使得 $N(x)$ 达到最大值的点 $a$. 
+证明，椭球面 $E_{0}$在 $a$ 点处的切平面 $\Pi$ 与 $E_{0}$ 只有一个公共点 $a$.
+\item[6]我们定义 $H=\left\{y: q_{N}(a, y)=0\right\}$，则 $\Pi=a+H$. 
+对于 $y \in H, t \in \mathbb{R}$，定义 $\varphi(t)=N(a+t y)$. 
+证明，$\varphi$ 的最小值在 $t=0$ 时取到.
+\item[7]我们对于任意 $x \in \mathbb{R}^{3}$，
+定义（关于 $q_{N}$ 的）向 $H$ 的正交投影 $\pi_{H}(x)$，
+以及 $\pi_{a}(x)=x-\pi_{H}(x)$. 对于 $\varepsilon, \delta \in(0,1)$ 定义
+$$q(x, x)=(1+\varepsilon) q_{N}(\pi_{a}(x), \pi_{a}(x))
++(1-\delta) q_{N}(\pi_{H}(x), \pi_{H}(x)),$$
+证明，$q \in Q_{+}$，且 $I(q)=(1+\varepsilon)^{-1 / 2}(1-\delta)^{-1} I(q_{N})$．
+\item[8]对于任意 $x \in \mathbb{R}^{3}$，证明，
+$$q(x, x) \leqslant N^{2}(x)-\left[\delta-\frac{\delta+\varepsilon}{N^{2}(a)}\right] N^{2}(x).$$
+\item[9]由此证明，$N(a) \leqslant \sqrt{3}$.
+\item[10]证明，$E_{0} \subset \sqrt{3} V$.
+\end{itemize}
+
+== 习题4 ==
+\begin{itemize}
+	\item[1](1)证明函数列$\left\{\frac{1}{\sqrt{2}}, \cos t, \sin t, \cdots, \cos n t, \sin n t, \cdots\right\}$ 是 $L^{2}[0,2 \pi]$ 中的规范正交基，其中 $L^{2}[0,2 \pi]$ 中的内积为：
+	$$
+	\langle f, g \rangle=\frac{1}{\pi} \int_{0}^{2 \pi} f(t) \overline{g(t)} \mathrm{d} t, \quad \forall f, g \in L^{2}[0,2 \pi]
+	$$
+	(2)利用函数 $f(t)=t$ 对应的 Parseval 等式，证明：
+	$$\sum_{n=1}^{\infty} \frac{1}{n^{2}}=\frac{\pi^{2}}{6}$$
+	\item[2]不可分的 Hilbert 空间. \\
+	记 $X$ 为所有形如 $\displaystyle f(t)=\sum_{k=1}^{n} c_{k} \mathrm{e}^{i \alpha_{k} t}$ 的函数 $f: \mathbb{R} \rightarrow \mathbb{C}$ 构成的线性空间，
+	$n \in \mathbb{N}, c_{k} \in \mathbb{C}, \alpha_{k} \in \mathbb{R}, k=1,2, \ldots, n$。\par
+	(1)证明，由
+		$$
+		\langle f, g\rangle=\lim_{A \rightarrow \infty} \frac{1}{2 A} \int_{-A}^{A} f(t) \overline{g(t)} \mathrm{d} t
+		$$
+		定义的映射 $\langle\cdot, \cdot\rangle: X \times X \rightarrow \mathbb{C}$ 是 $X$ 上的一个内积．\par 
+	(2)证明，对于由内积 $\langle\cdot, \cdot\rangle$ 导出的范数 $\|\cdot\|$，
+		如果 $X$ 中的向量 $\displaystyle f=\sum_{k=1}^{n} c_{k} \mathrm{e}^{i \alpha_{k} t}$，
+		其中对于任意 $k \neq j, \alpha_{k} \neq \alpha_{j}$，
+		那么 $\displaystyle \|f\|=\left(\sum_{k=1}^{n}|c_{k}|^{2}\right)^{1 / 2}$。\par 
+	(3)证明，由 $X$ 关于范数 $\|\cdot\|$ 做完备化得到的 Hilbert 空间 $H$ 不是可分的。
+	
+	\item[3]我们考虑 $\ell^{2}$ 的子空间
+	$$V=\left\{(a_{n})\biggm|\sum_{k=1}^{\infty}| a_{k}|^{2}<+\infty, 
+	\text{只有有限项 } a_{k} \text { 非零 }\right\}$$
+	和向量
+	$$v=\left(1, \frac{1}{2}, \frac{1}{3}, \ldots\right).$$
+	(1)证明，$v$ 在 $\ell^{2}$ 中生成的线性子空间的正交补和 $V$ 的交集是 $V$ 的一个闭子空间。\\
+	(2)证明，上述线性子空间在 $V$ 中不是完备的.
+	\item[4]考虑 Hermite 多项式
+	$$H_{n}(t)=(-1)^{n} \mathrm{e}^{t^{2}} \frac{d^{n}}{d t^{n}} \mathrm{e}^{-t^{2}},$$
+	作
+	$$\psi_{n}(t)=\left(2^{n} n!\sqrt{\pi}\right)^{-\frac{1}{2}} \mathrm{e}^{-\frac{t^2}{2}} H_{n}(t).$$
+	证明，$\left\{\psi_{n}(t)\right\}$ 是 $L^{2}(\mathbb{R})$ 中的一族标准正交系。
+	\item[5](1)考虑所有的 $n \times n$ 实矩阵全体 $M_{n}(\mathbb{R})$。
+	证明，特殊正交阵全体构成 $M_{n}(\mathbb{R})$（在任何范数拓扑下的）非空闭子集，但不是凸的。\\
+	(2)证明，
+	$$\|T\|_{F}:=\left(\sum_{i,j=1}^{n}|t_{i j}|^{2}\right)^{1 / 2}$$
+	是 $M_{n}(\mathbb{R})$ 上的一个范数（称为 Frobenius 范数）.\\
+	(3)写出方阵极分解（polar decomposition）的定义。\\
+	(4)设 $\det F>0$，而 $R$ 是 $F$ 的极分解中出现的正交阵。证明，
+	$$\|F-R\|_{F}=\inf_{S \in S O_{n}}\|F-S\|_{F}.$$
+	\item[6]设 $M$ 是 Hilbert 空间 $H$ 中的一个闭子空间，$P$ 是 $M$ 对应的正交投影。
+	设 $\lambda \notin\{0,1\}$，证明，$\lambda I-P: H \rightarrow H$ 是一个连续双射，且其逆映射也是连续的。
+\end{itemize}
+
+== 习题5 ==
+
+\begin{itemize}
+	\item[1]设$Y$是实Hilbert空间$H$的非空凸闭子集，$b \notin Y$. 
+	证明，存在 $a \in H$， $\alpha \in \mathbb{R}$，使得对于任意的 $y \in Y$，成立
+	$$(b, a)<\alpha<(a, y).$$
+	证明时不要用Hahn--Banach定理。\\
+	\item[2](1)证明，若 $f \in L^{2}([0,1])$ 满足，对于任意 $[c, d] \subset[0,1]$，都成立
+	$$\int_{c}^{d} f \mathrm{d} m=0,$$
+	那么 $f=0 \in L^{2}([0,1])$。\\
+	(2)证明，$L^{2}([0,1])$ 中的一个标准正交系 $\left\{\varphi_{n}\right\}$ 是一个标准正交基，
+	当且仅当对于任意 $x \in[0,1]$，
+	$$\sum_{n=1}^{\infty}\left|\int_{0}^{x} \varphi_{n} \mathrm{d} m\right|^{2}=x.$$
+	(3)证明，$L^{2}([0,1])$ 中的一个标准正交系 $\left\{\varphi_{n}\right\}$ 是一个标准正交基，
+    当且仅当对于任意 $x \in[0,1]$，
+	$$\sum_{n=1}^{\infty} \int_{0}^{1}\left|\int_{0}^{x} \varphi_{n} \mathrm{d} m\right|^{2} d x=\frac{1}{2}.$$
+	\item[3]考虑区间 $(0,1)$ 上的一族光滑函数 $f_{n} \in C_{0}^{\infty}(0,1)$，
+	如果存在常数 $M> 0$，满足
+	$$\int_{0}^{1}|f_{n}(x)|^{2} \mathrm{d} x
+	+\int_{0}^{1}|f_{n}^{\prime}(x)|^{2} \mathrm{d} x<M^{2}, \quad \forall n .$$
+	证明：\\
+	(1)对于任意 $x \in(0,1)$, $|f_{n}(x)| \leqslant M(n=1,2, \ldots)$.\\
+	(2)存在 $\{f_{n}\}$ 的一个子列 $\{f_{n_{k}}\}$ 和一个 $f \in L^{2}(0,1)$，
+	使得对于任意的 $g \in$ $L^{2}(0,1)$, $\lim\limits_{k \rightarrow \infty}(g, f_{n_{k}})_{L^{2}(0,1)}=(g, f)_{L^{2}(0,1)}$.\\
+	(3)对于任意的 $\varepsilon>0$，取 $N$ 充分大，使得 $2 M^{2} / N^{2}<\varepsilon$. 
+	把 $(0,1)$ 区间 $N$ 等分，记为 $I_{1}, I_{2}, \ldots, I_{N}$，
+	考虑这些区间的特征函数 $\chi_{I_{m}}$，
+	由于 $\left(\chi_{I_{m}}, f_{n_{k}}\right)_{L^{2}(0,1)}$ 是一个 Cauchy 序列，
+	证明，存在 $K$，使得当 $k, p \geqslant K$ 时，
+	$$\left|\int_{I_{m}}(f_{n_{k}}-f_{n_{p}})(x) \mathrm{d} x\right|^{2} 
+    \leqslant \frac{\varepsilon}{2 N^{2}},\quad  \forall m.$$
+	(4)接上题，对于 $x, y \in I_{m}$，把 $\displaystyle f(x)-f(y)=\int_{y}^{x} f^{\prime}(t) \mathrm{d} t$ 两边取绝对值再平方，再用 Cauchy 不等式，证明
+	$$\frac{2}{N}\|f_{n_{k}}-f_{n_{p}}\|_{L^{2}(I_{m})}^{2} 
+	\leqslant 2\left|\int_{I_{m}}(f_{n_{k}}-f_{n_{p}})(x) \mathrm{d} x\right|^{2}
+	+\frac{1}{N^{3}}\|(f_{n_{k}}-f_{n_{p}})^{\prime}\|_{L^{2}(I_{m})}^{2}.$$
+	(5)由此证明 $\left\{f_{n_{k}}\right\}$ 是 $L^{2}$ 中的 Cauchy 序列，从而收敛.\\
+    [上传者注：本题的目标是证明$H^1(0,1) \hookrightarrow L^2(0,1)$是紧嵌入.]
+\end{itemize}
+
+== 习题6 ==
+\begin{itemize}
+	\item[1]
+		(1)设 $a<b<c<d$. 并设 $\mathbb{R}$ 上的 $C^{\infty}$ 函数 $f$ 在 $(a, c)$ 上是一个多项式，在 $(b, d)$ 上也是一个多项式。
+		证明，$f$ 在 $(a, d)$ 上是一个多项式。\\
+		(2)对于 $\mathbb{R}$ 上的 $C^{\infty}$ 函数 $f$，定义
+		$$\Omega=\bigcup_{f \text { 在 }(a, b) \text { 上是一个多项式 }}(a, b).$$
+		证明，$\Omega$ 是开集。\\
+		(3)现在设 $\mathbb{R}$ 上的 $C^{\infty}$ 函数 $f$ 还满足：
+		对于任意 $x \in \mathbb{R}$，存在整数 $n_{x}$，使得 $f^{(n_{x})}(x)=0$. 记
+		$$E_{n}=\left\{x, f^{(n)}(x)=0\right\}.$$
+		证明，对于任何非退化闭区间 $[a, b]$，存在 $n$，使得 $E_{n} \cap[a, b]$ 的内点集非空.\\
+		(4)证明，对于任何非退化闭区间 $[a, b]$, $\Omega \cap[a, b] \neq \varnothing$.\\
+		(5)证明， $\overline{\Omega}=\mathbb{R}$.\\
+		(6)证明，$X=\mathbb{R} \setminus \Omega$ 没有孤立点.\\
+		(7)假设 $X \neq \varnothing$。证明，存在 $(a, b)$ 和 $n$，
+		使得 $\varnothing \neq X \cap(a, b) \subset X \cap E_{n}$。\\
+		(8)接上题，证明，对于 $\Omega$ 的任何一个构成区间 $\left(a_{i}, b_{i}\right)$，
+		只要 $\left(a_{i}, b_{i}\right) \cap(a, b) \neq \varnothing$，
+		那么在 $\left(a_{i}, b_{i}\right)$ 上就有 $f^{(n)}=0$，从而推出矛盾。\\
+		(9)总结一下，我们证明了什么？\\
+		(10)如果把 $C^{\infty}$ 换成 $C^{1000}$ 的话，（9）中总结的命题还成立么？\\
+	\item[2]对于正整数 $n$，我们考虑 $[0,1]$ 中的 $n+1$ 个分点 $x_{n, k}=\displaystyle \frac{k}{n}(k=0,1, \ldots, n)$.\\
+		(1)对于 $[0,1]$ 上的连续函数 $f$，写出对应于 $\left(x_{n, k}, f(x_{n, k})\right)$ 的 Lagrange 插值多项式．\\
+		(2)记上述插值多项式为 $L_{n} f$，证明 $f \mapsto L_{n} f$ 是 $C([0,1])$ 到 $C([0,1])$ 的连续线性算子，并求其范数．\\
+		(3)证明， $\lim \limits_{n \rightarrow \infty}\left\|L_{n}\right\|=+\infty$ ．\\
+		(4)由此说明，存在连续函数 $f$，多项式列 $L_{n} f$ 不一致收敛到 $f$.
+\end{itemize}
+
+== 习题7 ==
+\begin{itemize}
+	\item[1]对于整数$n \geqslant 0$, 考虑$[0,1]$上所有$n$阶连续可微的复值函数全体$A_n$, 并定义
+	$$\|f\|=\sum_{k=0}^{n}\frac{1}{k!}\sup_{0 \leqslant t \leqslant 1}|f^{(k)}(t)|.$$
+	证明，$A_n$是一个有单位元的Banach代数，且只有当$n=m$时，才会有$A_n \simeq A_m$.
+	\item[2]设$A$是一个Banach代数，
+	$b=\displaystyle \inf_{x \neq 0}\frac{\|x^2\|}{\|x\|^2}$.证明，
+	$$b\leqslant \inf_{x \neq 0}\frac{r(x)}{\|x\|} \leqslant \sqrt{b}.$$
+    \item[3]设$A$是一个Banach代数，$x, y \in A$.证明，$r(xy)=r(yx)$.
+\end{itemize}
+\begin{proofc}
+\begin{enumerate}
+    \item 假设$\phi\colon A_n\stackrel{\sim}{\longrightarrow}A_m$是同构，
+    其中$n>m$。$\phi$把$A_n$中的元素$x$映成$\phi(x)$，
+    取不必是整数的$\alpha$使得$n>\alpha>m$，则$\phi(x)^\alpha \in A_m$，其原像为
+    \[\phi^{-1}(\phi(x)^\alpha)=\phi^{-1}(\phi(x))^\alpha=x^\alpha,\]
+    然而$x^\alpha \notin A_n$，不成立。
+    \item 由于$\|x^2\| \geqslant b\|x\|^2$，
+    对$n$归纳可得$\|x^{2^n}\| \geqslant b^{2^n-1}\|x\|^{2^n}$，从而
+    \[r(x)=\lim_{n\to\infty}\|x^{2^n}\|^{1/2^n} \geqslant b\|x\|,\]
+    此即前半部分；后半部分无非是$r(x)\leqslant\|x^2\|^{1/2}$。
+    \item 注意$r(xy)=\lim\limits_{n\to\infty}\|x(yx)^{n-1}y\|^{1/n} \leqslant r(yx)$，
+    另一侧同理。\qedhere
+\end{enumerate}
+\end{proofc}
+
+\section*{期中作业}
+\begin{enumerate}
+\item
+\begin{enumerate}[label=(\arabic*)]
+    \item 叙述 Baire 纲定理，开映照定理，共鸣定理中的两个.
+    \item 设 $1 \leqslant p<q<+\infty$，分别利用上面叙述的定理证明，$L^{q}([0,1])$ 是 $L^{p}([0,1])$中的第一纲集。
+\end{enumerate}
+\begin{proofc}
+\begin{itemize}
+\item 第一种办法是先证明 $B=\left\{f \in L^{p}([0,1]), \displaystyle\int_{0}^{1}|f(x)|^{q} \mathrm{~d} x \leqslant 1\right\}$ 是一个闭集。
+假设有 $B$ 中一列 $f_{n}$ 在 $L^{p}$ 范数下收敛到 $f$，
+我们知道有一个子列 $f_{n_{k}}$几乎处处收敛到 $f$，
+这样 $\left|f_{n_{k}}\right|^{q}$ 几乎处处收敛到 $|f|^{q}$。
+由 Fatou 引理可知 $f \in B$.
+
+然后再证明 $B$ 没有内点。用反证法，若不然，可知 $B$ 包含了 $L^{p}$ 中的一个球，由此可得 $L^{p}=L^{q}$，矛盾。
+
+这样 $B$ 是一个疏朗集，而 $L^{q}=\cup_n B$，从而 $L^{q}$ 是第一纲的。
+
+\item 第二种证明是考虑函数 $g_{n}(x)=n\left(0 \leqslant x \leqslant 1 / n^{q^{\prime}+1}\right)$，$=0$（其他情况）。
+$g_{n}$有界，从而有界线性泛函
+$$\varphi_{n}: f \mapsto \int_{0}^{1} f(x) g_{n}(x) \mathrm{d} x$$
+的范数 $\left\|\varphi_{n}\right\|=n$。
+
+对于 $L^{q}$ 中的函数 $f$，由 Hölder 不等式可知 $\varphi_{n}(f) \leqslant \dfrac{\|f\|_{L^{q}}}{n^{q^{\prime}}}$，这些上界是收敛到 $0$ 的。
+
+如果 $L^{q}$ 在 $L^{p}$ 中是第二纲的，那么存在某个 $k$ 使得 $\{f \in L^{p}, \sup_{n}|\varphi_{n}(f)| \leqslant k\} \cap L^{q}$ 在 $L^{p}$ 的某个开球中稠密，
+从而闭集 $\left\{f \in L^{p}, \sup _{n}\left|\varphi_{n}(f)\right| \leqslant k\right\}$在这个开球中稠密，这样这个开球就在这个闭集中。
+从而（类似于讲义上共鸣定理的证法二）可知对于每个 $f \in L^p$，$\sup_{n}|\varphi_{n}(f)| \leqslant k\} \cap L^{q}$ 在 $L^{p}$ 的某个开球中稠密，
+从而闭集 $\{f \in L^{p}, \sup _{n}\left|\varphi_{n}(f)\right|<+\infty$，由共鸣定理即得矛盾。
+
+\item 由 Hölder 不等式可知，从 $L^{q}$ 到 $L^{p}$ 的恒等映射是连续的，
+且映射的像为 $\bigcup_{n}\left\{f,\|f\|_{L^{q}} \leqslant n\right\}$。
+这样如果映射的像不是第一纲的，那么由开映照定理的证明可知像集应为全空间，矛盾。\qedhere
+\end{itemize}
+\end{proofc}
+\item 设 $E$ 和 $F$ 是两个 Banach 空间，$\mathcal{L}(E, F)$ 是从 $E$ 到 $F$ 的有界线性算子全体。
+\begin{enumerate}[label=(\arabic*)]
+\item 设 $E_{1}$ 是 $E$ 的一个有限维子空间，证明，存在 $E$ 的闭子空间 $E_{2}$，
+使得 $E=$ $E_{1}+E_{2}$ 且 $E_{1} \cap E_{2}=\{0\}$。
+\item 设 $T$ 是一个从 $E$ 到 $F$ 的有界线性\textbf{满射}。
+证明，存在 $k>0$，使得 $\{y \in$ $\left.F:\|y\|_{F} \leqslant 1\right\} \subset\left\{T x: x \in E,\|x\|_{E} \leqslant k\right\}$。
+\item 以下固定一个满足（2）的 $k$．证明，对于任意 $\ell \in F^{*}$, $k\|\ell \circ T\| \geqslant\|\ell\|$。
+\item 设 $S \in \mathcal{L}(E, F)$ 满足 $r:=k\|S-T\|<1$。
+证明，对于任意 $y \in F$，存在 $x \in E$，
+使得 $\|x\|_{E} \leqslant k\|y\|_{F}$ 且 $\|S x-y\|_{F} \leqslant r\|y\|_{F}$ 。
+\item 证明，可以找到 $E$ 中的一列 $\left\{x_{n}\right\}$ 
+和 $F$ 中的一列 $\left\{y_{n}\right\}$，
+使得 $y_{0}=y,\left\|x_{n}\right\|_{E} \leqslant$ $k\left\|y_{n}\right\|_{F}$，
+且 $y_{n+1}=y_{n}-S x_{n}$ 满足 $\left\|y_{n+1}\right\|_{F} \leqslant r\left\|y_{n}\right\|_{F}$。
+由此证明 $S$ 是满射。
+\item 证明， $\mathcal{L}(E, F)$ 中所有满射全体构成一个开集。
+\item 对于自然数 $n$ ，定义
+$$\Omega_{n}=\{T \in \mathcal{L}(E, F) \text { 是满射, 且 } \dim \ker T \geqslant n\}.$$
+\end{enumerate}
+对于 $T \in \Omega_{n}$，设 $E_{1} \subset \ker T$, $\dim E_{1}=n$，$E_{2}$ 如（1）所述。
+证明， $\mathcal{L}(E, F)$ 中所有``限制到 $E_{2}$ 上是满射''的算子 $S$ 构成的集合是一个开集.
+由此证明，$\Omega_{n}$ 是 $\mathcal{L}(E, F)$ 的开子集。
+\begin{proofc}
+(1) 把 $E_{1}$ 分解成 $\operatorname{dim} E_{1}$ 个一维子空间的直和：$E_{1}=L_{1} \oplus \cdots \oplus L_{n}$。
+由 Hahn--Banach，我们可以在 $E^{*}$ 中找到 $\ell_{k}$，
+使得 $E=L_{k}+\ker \ell_{k}$ 且 $L_{k} \cap \ker\ell_{k}=\{0\}$。
+取 $E_{2}=\cap_{k} \operatorname{ker} \ell_{k}$ 即可。
+
+(2) 反设这样的 $k$ 不存在，于是 $T\left\{\|x\|_{E} \leqslant 1\right\}$ 没有内点，从而是 $F$ 中的疏朗集。
+由 $F=\cup_{n} T\{\|x\|_{E} \leqslant n\}$ 和 $F$ 的完备性即得（与 Baire 纲定理的）矛盾。
+
+(3) 按线性泛函范数的定义，
+$$\begin{aligned}
+\|\ell\| & =\sup _{\|y\| \leqslant 1} \frac{|\ell(y)|}{\|y\|_{F}}
+=\sup _{\|T x\|_{F} \leqslant 1} \frac{|\ell \circ T(x)|}{\|T x\|_{F}}
+=\sup _{\|T x\|_{F} \leqslant 1} \frac{|\ell \circ T(x)|}{\|x\|_{E}} \frac{\|x\|_{E}}{\|T x\|_{F}} \\
+& \leqslant \sup _{\|T x\|_{F} \leqslant 1} \frac{|\ell \circ T(x)|}{\|x\|_{E}} \sup _{\|T x\|_{F} \leqslant 1} \frac{\|x\|_{E}}{\|T x\|_{F}} 
+\leqslant\|\ell \circ T\| \sup _{\|T x\|_{F} \leqslant 1} \frac{\|x\|_{E}}{\|T x\|_{F}} \leqslant k\|\ell \circ T\|.
+\end{aligned}$$
+(4) 对于任意 $y \in F$，存在 $x \in E$，使得 $\|x\|_{E} \leqslant k\|y\|_{F}$ 且 $T x=y$，
+这样 $\|S x-y\|_{F}=\|S x-T x\|_{F} \leqslant\|S-T\|\|x\|_{E} \leqslant r\|y\|_{F}$。
+
+(5) 我们取 $x_{n}$ 满足 $T x_{n}=y_{n}$，这样可以定义出 $\{x_{n}\}$ 和 $\{y_{n}\}$。
+我们要说明 $x_{0}+x_{1}+\cdots+x_{n}+\cdots$ 在 $E$ 中收敛（其极限 $x_{0}$ 必定满足 $S x_{0}=y_{0}=y$）。为此，只需注意到
+$$\|x_{n}\|_{E} \leqslant k\|y_{n}\|_{F} \leqslant k r^{n}\|y_{0}\|_{F}.$$
+
+(6) 对于 $T \in \mathcal{L}(E, F)$，找出（2）中的 $k$。
+由（5）即可得到，以 $T$ 为心， $1 / k$ 为半径的开球都是满射，即得。
+
+(7) 设 $S_{1} \in \mathcal{L}(E, F)$ 满足``限制到 $E_{2}$ 上是满射''。
+注意到 $\|S_{1}-S_{2}\| \geqslant\|S_{1}|_{E_{2}}-S_{2}|_{E_{2}}\|$，
+因此取 $S_{1}$ 相对于 $E_{2}$ 的 $k$，以 $S_{1}$ 为心，$1 / k$ 为半径的开球中的元素限制到 $E_{2}$ 上都是满射。
+
+这样对 $\Omega_{n}$ 中的任何一个 $T$，先利用（1）找出 $E_{2}$，再找出相应的 $k$，
+那么以 $T$ 为心，$1 / k$ 为半径的开球中的元素限制到 $E_{2}$ 上都是满射。
+对于这样的映射，其核空间一定是 $E_{2}$ 的补空间，从而维数至少是 $n$。
+\end{proofc}
+
+\item 设 $H$ 是一个 Hilbert 空间。我们称 $H$ 上的有界线性算子 $T$ 是一个\textbf{正}算子，
+如果 $T=T^{*}$ 且对于任意 $x \in H,\langle T x, x\rangle \geqslant 0$。
+
+\begin{enumerate}[label=(\arabic*)]
+\item 设 $T$ 是一个正算子，证明，对于任意自然数 $n$, $T^{n}$ 是正算子（规定 $T^{0}=I_{H}$），
+且对于任意 $S \in \mathcal{B}(H), ~ S^{*} T S$ 是正算子。
+\item 对于任意 $x, y \in H$，证明，$|\langle T x, y\rangle|^{2} \leqslant\langle T x, x\rangle\langle T y, y\rangle$。
+\item 如果 $I_{H}-T$ 也是正算子，证明，对于任意 $x \in H$ ，有 $\langle T x, T x\rangle \leqslant\langle T x, x\rangle$。
+\item 对于正算子 $T$，证明，``$I_{H}-T$ 正''$\Longrightarrow$``$T-T^{2}$ 正''
+$\Longrightarrow$``$\|T\| \leqslant 1$''。
+\end{enumerate}
+以下假设 $T$ 和 $I_{H}-T$ 都是正的。
+\begin{enumerate}[label=(\arabic*)]
+\setcounter{enum-{list-level}}{4}
+\item 对于任意自然数 $n$，证明，$T^{n}-T^{n+1}$ 是正的.
+\item 对于任意 $x \in H$，证明数列 $\{\left\langle T^{n} x, x\right\rangle\}$ 收敛.
+\item 对于任意 $x \in H$，证明 $\left\{T^{n} x\right\}$ 是 $H$ 中的 Cauchy 列。
+\item 设算子 $P$ 满足：$P x=\lim \limits_{n \rightarrow \infty} T^{n} x(\forall x \in H)$。
+证明，$P^{*}=P$ 且 $T P=P$。
+\item 证明，$P$ 是一个投影算子（提示：考虑 $T$ 的不动点）.
+\end{enumerate}
+\begin{proofc}
+(1) 首先，$(T^{n})^{*}=(T^{*})^{n}=T^{n}$。且
+$$\begin{cases}
+\langle T^{2n} x, x\rangle=\langle T^{n} x,(T^{n})^{*} x\rangle
+=\langle T^{n} x, T^{n} x\rangle \geqslant 0, \\
+\langle T^{2n+1} x, x\rangle=\langle T^{n+1} x,(T^{n})^{*} x\rangle
+=\langle T(T^{n} x), T^{n} x\rangle \geqslant 0.
+\end{cases}$$
+
+类似地，$(S^{*} T S)^{*}=S^{*} T^{*}(S^{*})^{*}=S^{*} T S$，
+且 $\langle S^{*} T S x, x\rangle=\langle T(S x), S x\rangle \geqslant 0$。
+
+(2) 我们在 $H$ 上定义了一个新的内积结构 $(x, y)=\langle T x, y\rangle$，这就是对应的 Cauchy 不等式。
+
+(3) 由 $T$ 是正算子可以得到
+$$\langle T(I_{H}-T) x,(I_{H}-T) x\rangle \geqslant 0,$$
+由 $I_{H}-T$ 是正算子可以得到
+$$\langle(I_{H}-T) T x, T x\rangle \geqslant 0.$$
+求和即得。
+
+(4) 第一个蕴涵关系即（3）。
+
+对于第二个蕴涵关系，如果 $\|T\|>1$，那么存在 $\lambda \in\{\|T\|,-\|T\|\}$ 是 $T$ 的特征值。
+于是：若 $T x=-\|T\| x$，则 $\langle T x, x\rangle=-\|T\|\|x\|^{2}<0$，矛盾；
+若 $T x=\|T\| x$，则 $\langle(T-T^{2}) x, x\rangle=\|T\|(1-\|T\|)\|x\|^{2}<0$，也矛盾。
+
+(5) 如果 $n=2k$，那么 $T^{n}-T^{n+1}=(T^{k})^{*}(I_{H}-T) T^{k}$；
+如果 $n=2k+1$，那么 $T^{n}-T^{n+1}=(T^{k})^{*}(T-T^{2}) T^{k}$.
+
+(6) 首先，$\langle T^{n} x, x\rangle$ 是一个有界数列，从而有收敛子列。
+而由（5）可知数列 $\langle T^{n} x, x\rangle$ 是单调的，从而整个数列收敛。
+
+(7) 注意到正算子的和还是正算子，所以对于 $m<n$，我们有
+\[\|(T^{m}-T^{n}) x\|^{4}=\left|\langle(T^{m}-T^{n}) x,(T^{m}-T^{n}) x\rangle\right|^{2} 
+\leqslant\langle(T^{m}-T^{n}) x, x\rangle\langle(T^{m}-T^{n})^{2} x,(T^{m}-T^{n}) x\rangle.\]
+最右边第二个因子是有界的($\left\|T^{m}-T^{n}\right\| \leqslant 2$)，
+第一个因子收敛到 $0$ (根据(6))，从而 $\{T^{n} x\}$ 是 $H$ 中的 Cauchy 列。
+
+(8) 由 $T^{*}=T$ 即可知 $P^{*}=P$，而 $T P x=T \lim T^{n} x=\lim T^{n+1} x=P x$。
+
+(9) 容易看到，$T$ 的不动点也是 $P$ 的不动点，从而由（8）的结论可知 $P^{2}=P$，从而 $P$ 是投影算子。
+（事实上， $\operatorname{Ran} P=\ker(I_{H}-T)$。）
+\end{proofc}
+\item 我们先来看两个定义：
+
+定义1。设线性空间 $F$ 是它的子空间 $E_{1}$ 和 $E_{2}$ 的直和. 
+$p_{E_{1}, E_{2}}: F \rightarrow F$ 是满足
+$$
+p_{E_{1}, E_{2}}(x)= \begin{cases}x, & \text { 若 } x \in E_{1} ; \\ 0, & \text { 若 } x \in E_{2} \end{cases}
+$$
+的线性映射。当 $F$ 是赋范线性空间时，固定 $E_{1}$，定义
+$$\pi(E_{1}, F)=\inf_{E_{2}}\left\|p_{E_{1}, E_{2}}\right\|.$$
+
+定义2。对于实数 $\lambda \geqslant 1$，我们称赋范线性空间 $E$ 是 $\mathcal{P}_{\lambda}$ 型的，
+若对于任意赋范线性空间 $H$和 $H$ 的任意线性子空间 $G$，
+以及任意连续线性算子 $u: G \rightarrow E$，
+都存在一个连续线性映射 $v: H \rightarrow E,\left.v\right|_{G}=u$，
+且 $\|v\| \leqslant \lambda\|u\|$。
+
+这样，Hahn--Banach 定理说的就是``$\mathbb{R} / \mathbb{C}$ 是 $\mathcal{P}_{1}$ 型的''。
+\begin{enumerate}[label=(\arabic*)]
+\item 我们考虑线性空间 $\mathbb{R}^{3}$，它的一组基是 $\vec{e}_{1}=(1,0,0), \vec{e}_{2}=(0,1,0), \vec{e}_{3}=$ $(0,0,1)$。
+考虑其上的范数 $\|\vec{x}\|_{\infty}=\max \limits_{1 \leqslant i \leqslant 3}|x_{i}|$。
+我们记 $\ell_{3}^{\infty}=\left(\mathbb{R}^{3},\|\cdot\|_{\infty}\right)$。
+设线性映射 $T: \ell_{3}^{\infty} \rightarrow \ell_{3}^{\infty}$ 关于基 $\left\{\vec{e}_{1}, \vec{e}_{2}, \vec{e}_{3}\right\}$ 的矩阵表示是 
+$A=(a_{ij})_{1 \leqslant i, j \leqslant 3}$。
+证明， $\displaystyle\|T\|=\max_{1 \leqslant i \leqslant 3} \sum_{j=1}^{3}|a_{ij}|$.
+
+\item 考虑由方程 $x_{1}+x_{2}+x_{3}=0$ 定义的超平面 $H$。对于 $t \in \mathbb{R}$，定义 $\varphi(t)=|1-t|+2|t|$.\\
+a）设三个实数 $\alpha_{1}, \alpha_{2}, \alpha_{3}$ 满足 $\alpha_{1}+\alpha_{2}+\alpha_{3}=1$, 
+$D$ 是由向量 $\alpha_{1} \vec{e}_{1}+\alpha_{2} \vec{e}_{2}+\alpha_{3} \vec{e}_{3}$ 确定的直线. 
+证明，$\left\|p_{H, D}\right\|=\max (\varphi(\alpha_{1}), \varphi(\alpha_{2}), \varphi(\alpha_{3}))$。\\
+b）利用函数 $\varphi$ 的凸性，证明，$\left\|p_{H, D}\right\| \geqslant \frac{4}{3}$. 试确定等号成立的条件.\\
+c）计算 $\pi(H, \ell_{3}^{\infty})$.
+\item 把 (1)和 (2)中的结果推广到一般的 $\ell_{n}^{\infty}$ 上去.
+\item 设 $E$ 是一个 $n$ 维赋范线性空间，且 $\psi$ 是一个给定的 $n$-线性反对称函数.
+$\left\{e_{1}, e_{2}, \ldots, e_{n}\right\}$ 是 $E$ 的一组使得 $\psi$ 取到最大值的基，
+$\|e_{i}\|=1$ $(i=1,2, \ldots, n)$。
+设 $E^{*}$ 中的向量 $e_{1}^{*}, e_{2}^{*}, \ldots, e_{n}^{*}$，
+满足 $e_{i}^{*}(e_{j})=\delta_{i j}(1 \leqslant i, j \leqslant n)$。\\
+a）证明，$\|e_{i}^{*}\|_{E^{*}}=1$。\\
+b）证明，$E$ 是 $\mathcal{P}_{n}$ 型的。
+
+\item 设 $E$ 是有限维赋范线性空间 $F$ 的子空间，
+我们记 $E^{\perp}$ 为 $F^{*}$ 中所有在 $E$上限制为 $0$ 的那些元素构成的子空间。\\
+a）证明，$\pi(E, F)-1 \leqslant \pi(E^{\perp}, F^{*}) \leqslant \pi(E, F)+1$。\\
+b）当 $E$ 是 $F$ 中的超平面时，证明，$\pi(E, F) \leqslant 2$。\\
+你能把这个结果再改进一下么？
+
+\item a）证明，$\ell_{n}^{\infty}$ 是 $\mathcal{P}_{1}$ 型的。\\
+b）对于一个非空集合 $X$ 上的有界函数全体 $\mathcal{B}(X, \mathbb{R})$，
+在加上范数 $\|f\|=$ $\sup \limits_{x \in X}|f(x)|$ 之后，是 $\mathcal{P}_{1}$ 型的。\\
+c）证明，对于任意赋范线性空间 $E$，都存在一个 $\mathcal{P}_{1}$ 型的赋范线性空间 $F$，使得 $E$ 是 $F$ 的子空间。
+
+\item 设 $E$ 是一个赋范线性空间，$\mu$ 是一个实数。证明，以下两条性质等价：\\
+（i）存在一个 $\mathcal{P}_{1}$ 型的赋范线性空间 $F$，使得 $E$ 是 $F$ 的子空间，且 $\pi(E, F)=\mu$.\\
+（ii） $\inf \limits_{E \text { 是 } \mathcal{P}_{\lambda} \text { 型的 }} \lambda=\mu$.
+\end{enumerate}
+\begin{proofc}
+1）由算子范数的定义，容易得到 $\displaystyle \|T\| \leqslant \max _{1 \leqslant i \leqslant 3} \sum_{j=1}^{3}\left|a_{i j}\right|$。
+对于右边的 $i$，取 $x_{j}=\operatorname{sgn} a_{ij}$ 即可。
+
+2）
+a）由 $\left\{\ell_{3}^{\infty} \leqslant 1\right\}$ 的凸性与 $p_{H, D}$ 的线性，
+可知为了计算算子范数，只需考虑 $( \pm 1, \pm 1, \pm 1)$ 即可。\\
+b）由 Jensen 不等式即得第一个结论。为使得等号成立，必须且只需 $\alpha_{1}=$ $\alpha_{2}=\alpha_{3}=1 / 3$。\\
+c）由 b）即得所求为 $4 / 3$。
+
+3）对应的 $\varphi_{n}(t)=|1-t|+(n-1)|t|$，可得 $\|p_{H, D}\|=\max (\varphi(\alpha_{1}), \ldots, \varphi(\alpha_{n}))$，
+于是 $\pi(H, \ell_{n}^{\infty})=(n+1) / n$。
+
+4）
+a）显然。\\
+b）对于任意的 $H$ 和 $G$，从 $G$ 到 $E$ 的线性映射 $T$ 等价于 $G$ 上的 $n$ 个线性泛函：$T x=\sum \ell_{i}(x) e_{i}$。
+由 Hahn--Banach，其中每一个都可以保范延拓到 $H$ 上，延拓后得到的 $\widetilde{T}$ 满足：
+$$\|\widetilde{T}\| \leqslant \sum\|\ell_{i}\|,$$
+而 $\|T\| \geqslant \max e_{i}^{*} \circ T=\max \|\ell_{i}\|$，即得。
+
+5）
+a）这里需要注意到这样一个事实：设 $s$ 是 $F$ 中关于 $E$ 的一个对称变换 (即 $s$ 保持 $E$ 不变，且 $x+s(x) \in E$)，
+那么对于满足 $(s^{t})(f)=f \circ s\left(\forall f \in F^{*}\right)$ 的 $s^{t},-s^{t}$ 是 $F^{*}$ 中关于 $E^{*}$ 的一个对称变换，
+且上述映射实现了这两类对称变换的一个保范一一对应。\\
+这样只要注意到，任意 $p_{E, E_{1}}$ 都可以表达成 $\dfrac{I_{F}+s}{2}$ 的形式，
+要证的不等式就是范数的三角形不等式的直接推论。\\
+b）当 $E$ 是 $F$ 中的超平面时，$E^{\perp}$ 是 $F^{*}$ 中的 $1$ 维线性子空间，
+于是由 Hahn--Banach 定理可知，$\pi(E^{\perp}, F^{*})=1$，
+从而 $\pi(E, F) \leqslant \pi(E^{\perp}, F^{*})+1=2$。
+
+6）a）对于任意赋范线性空间 $H$ 和它的一个子空间 $G$，
+任何 $u: G \rightarrow \ell_{n}^{\infty}$ 可以表达成
+$$u(x)=\sum_{k=1}^{n} f_{k}(x) e_{k},$$
+其中 $f_{k} \in G^{*}$，$\{e_{k}\}$ 是 $\ell_{n}^{\infty}$ 的一组基。
+这时 $\|u\|=\max \|f_{k}\|$。
+由 Hahn--Banach，我们可以把每一个 $f_{k}$ 保范地延拓到 $H$ 上，即得结论。\\
+b）根据 a），$X$ 是有限集时命题成立。满足
+$$\text{``}Y \subset X,(\mathcal{B}(X, \mathbb{R}),\|\cdot\|) \text { 是 } \mathcal{P}_{1} \text { 型的''}$$
+这一性质的 $Y$ 按照包含关系构成一个偏序集。我们可以看到，任何满足这一性质的集合的子集也满足这一性质（可以用 $0$ 延拓的方式把映到小子集的线性映射延拓成映到大子集的映射）。\\
+现在设有一列 $\{Y_{n}\}$ 均满足上述性质，且 $Y_{1} \subset Y_{2} \subset \cdots$。那么
+$$Y=\bigcup Y_{n}=\coprod(Y_{n} \setminus Y_{n-1})$$
+把 $u: G \rightarrow Y$ 分解成 $u_{n}: G \rightarrow Y_{n} \setminus Y_{n-1}$，
+再分别保范延拓到 $H$ 上，即可得到 $Y$ 也满足上述性质。\\
+这样由 Zorn 引理，存在一个极大的 $Y$，而容易看到 $Y=X$。\\
+c）由 Hahn--Banach 定理，我们知道，对于任意 $x \in E$，
+存在 $E^{*}$ 中的单位向量 $x^{*}$，使得 $x^*(x)=\|x\|$。
+从而 $E$ 就可以嵌入到 $(\mathcal{B}(\{\|y\|_{E^{*}}=1\}, \mathbb{R}),\|\cdot\|)$ 中，
+而后者是 $\mathcal{P}_{1}$ 型的。
+
+7）（i）$\Rightarrow$（ii）：首先，由 $\pi(E, F)$ 的定义，对于任意 $\varepsilon>0$，
+$I_{E}: E \rightarrow E$ 有一个延拓 $\tilde{I}: F \rightarrow E$，
+使得 $\|\tilde{I}\| \leqslant \mu+\varepsilon$。
+我们同时记 $E$ 到 $F$ 的嵌入映射为 $I_{E, F}$。
+
+现在对于任意 $u: G \rightarrow E$，考虑 $I_{E, F} \circ u: G \rightarrow F$。
+因为 $F$ 是 $\mathcal{P}_{1}$ 型的，所以存在 $I_{E, F} \circ u$ 的保范延拓 $v: H \rightarrow F$，
+这样 $\tilde{v}=\tilde{I} \circ v: H \rightarrow E$ 就满足 $\|\tilde{v}\| \leqslant(\mu+\varepsilon)\left\|I_{E, F} \circ u\right\| \leqslant(\mu+\varepsilon)\|u\|$。
+因此 $\inf\limits_{E \text { 是 } \mathcal{P}_{\lambda} \text { 型的 }} \lambda \leqslant \mu$。
+
+而 $\inf\limits_{E \text { 是 } \mathcal{P}_{\lambda} \text { 型的 }} \lambda$ 也不可能严格小于 $\mu$。
+若不然，$I_{E}: E \rightarrow E$ 有一个延拓 $\tilde{I}:F \rightarrow E$ 满足 $\|\tilde{I}\|<\mu$，和 $\pi(E, F)$ 的定义矛盾。
+
+（ii）$\Rightarrow$（i）：对于任意 $\varepsilon>0$，$E$ 是 $\mathcal{P}(\mu+\varepsilon)$ 型的，
+从而对于任意包含 $E$ 的赋范线性空间 $F$，
+我们有 $\left\|\pi_{E, E_{1}}\right\|=\left\|\pi_{E, E_{1}} \circ I_{E, F}\right\| \leqslant \mu+\varepsilon$。
+从而对于 6 c) 中的 $F$，我们得到 $\pi(E, F) \leqslant \mu+\varepsilon$，
+所以 $\pi(E, F) \leqslant \mu$。综上所述，命题成立。
+\end{proofc}
+\end{enumerate}
+
+\section*{Grothendieck的一个定理}
+\quad 对于某个$1 \leqslant p < +\infty$, 我们考虑$L^p([0, 1])$的一个闭子空间$E$. 
+假设$E$同时也是$L^{\infty}([0, 1])$的一个子集.
+\begin{itemize}
+    \item[1]证明, $E$是$L^\infty([0, 1])$的一个闭子空间.
+    \item[2]证明, 存在常数$M >0$, 使得对于任意$f \in E$, 
+    成立$\|f\|_{L^\infty}\leqslant M \|f\|_{L^p}$.
+    \item[3]对于$1\leqslant p \leqslant 2$, 证明, 对于任意$f \in E$, 成立
+    $\displaystyle \|f\|_{L^p}\leqslant \bigg(\int_{0}^{1}|f|^2\mathrm{d}x\bigg)^\frac{1}{2}$.
+    \item[4]对于$2<p<\infty$, 证明, 对于任意$f \in E$, 成立
+    $\displaystyle \|f\|_{L^p}^p \leqslant \bigg(\int_{0}^{1}|f|^2\text{d}x\bigg)\|f\|_{L^\infty}^{p-2}$.
+    \item[5]证明, 存在一个常数$A$, 使得对于任意$f \in E$, 成立
+    $\|f\|_{L^\infty} \leqslant A\|f\|_{L^2}$.
+    \item[6]设$f_1,f_2, \dots, f_n$是$E$中一组向量, 满足
+    $$\int_{0}^{1}f_k(t)\overline{f_l(t)}\mathrm{d}m=\delta_{kl}$$
+    对于$\mathbb{C}^n$中的长度不超过$1$的向量$a=(a_1, \dots , a_n)$, 
+    定义函数$\displaystyle f_a(x)=\sum_{j=1}^{n}a_jf_j(x)$. 
+    证明,存在一个常数$A$,使得对于几乎所有的$x$,成立$|f_a(x)|\leqslant A$.
+    \item[7]接上问, 证明, 对于几乎所有的$x$和所有的$a$, 成立$|f_a(x)| \leqslant A$.
+    \item[8]证明, 对于几乎所有的$x$, 都成立$\displaystyle \sum_{j=1}^{n}|f_j(x)|^2 \leqslant A^2$.
+    \item[9](Grothendieck 定理)证明, 这样的$E$是有限维的.
+    \item[10]证明, 题设中的$L^\infty$不能换成一个$L^q(q < \infty)$.
+\end{itemize}

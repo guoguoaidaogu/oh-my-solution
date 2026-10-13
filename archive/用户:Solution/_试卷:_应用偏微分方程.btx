@@ -1,0 +1,131 @@
+\setdisplaytitle{试卷：应用偏微分方程}
+\sethtmltitle{试卷：应用偏微分方程}
+
+==25-26春期末(周子翔)==
+\begin{itemize}
+    \item[一、]选择：
+    \begin{itemize}
+        \item[(1)] $H$定理表示的是随着时间的增加$\underline{\qquad\quad}$.
+        \begin{itemize}
+            \item[(A)] 总能量守恒
+            \item[(B)] 内能不增加
+            \item[(C)] 熵守恒
+            \item[(D)] 熵不减少
+        \end{itemize}
+
+        \item[(2)] Rankine-Hugoniot条件指$\underline{\qquad\quad}$.
+        \begin{itemize}
+            \item[(A)] 存在激波的条件
+            \item[(B)] 激波在边界上的边界条件
+            \item[(C)] 激波传播速度与流体运动的速度相等的条件
+            \item[(D)] 激波两侧各量的连接条件
+        \end{itemize}
+
+        \item[(3)] 理想流体在一横截面为直角
+        三角形的沿$z$方向的柱形直管中流动，
+        管壁方程为$x=0,\ y=0$和$x+y=2$，则流体速度
+        $\vec v=(v_1,v_2,v_3)$在边界上的$(1,1,0)$处需满足的边界条件是$\underline{\qquad\quad}$.
+        \begin{itemize}
+            \item[(A)] $v_1+v_2=0$
+            \item[(B)] $v_1-v_2=0$
+            \item[(C)] $v_1+v_2=0,\ v_3=0$
+            \item[(D)] $v_1-v_2=0,\ v_3=0$
+        \end{itemize}
+
+        \item[(4)] $\bm{E}=(e_{ij})$为无穷小应变张量，
+        则在无穷小变形中，
+        原来沿$dx_1$方向和$dx_2$方向的两个线元之间的夹角变化为$\underline{\qquad\quad}$.
+        \begin{itemize}
+            \item[(A)] $2e_{12}$
+            \item[(B)] $2e_{11}e_{22}$
+            \item[(C)] $e_{11}+e_{22}$
+            \item[(D)] $|e_{11}-e_{22}|$
+        \end{itemize}
+
+        \item[(5)] 对于一根圆柱形棒，Poisson比$\nu$表示在轴向的力作用下
+        横向的相对收缩与长度的相对伸长之比，它的范围为$-1<\nu\le \frac12$，
+        当$\nu$为$\underline{\qquad\quad}$时，制成该棒的材料的体积量不再膨胀的.
+        \begin{itemize}
+            \item[(A)] $-0.99$
+            \item[(B)] $-0.49$
+            \item[(C)] $0.01$
+            \item[(D)] $0.49$
+        \end{itemize}
+
+        \item[(6)] 记连续介质的密度为$\rho$，单位质点的体积为$\tau$，
+        速度为$\vec v$，则下列量中，表示体积的相对变化率
+        $\frac1\tau\frac{d\tau}{dt}$的为$\underline{\qquad\quad}$.（多选）
+        \begin{itemize}
+            \item[(A)] $\frac1\rho\frac{d\rho}{dt}$
+            \item[(B)] $-\frac1\rho\frac{d\rho}{dt}$
+            \item[(C)] $\nabla\cdot\vec v$
+            \item[(D)] $-\nabla\cdot\vec v$
+        \end{itemize}
+    \end{itemize}
+
+    \item[二、]证明对于作定常流动的理想不可压缩无旋流体，
+    如果无热流且单位质量所受的外力是保守力，即$\vec F=-\nabla V$，那么
+    $\frac12|\vec v|^2+V+\frac{p}{\rho}$在全空间内为常值.
+
+    \item[三、]各向同性线性弹性材料的弹性系数为
+    \[
+        a_{ijkl}=\lambda\delta_{ij}\delta_{kl}
+        +\mu(\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk}),
+    \]
+    如果对一切非零向量$\xi$和$\eta$，成立
+    \[
+        \sum_{i,j,k,l}a_{ijkl}\xi_i\eta_j\xi_k\eta_l>0,
+    \]
+    证明$\mu>0,\ \lambda+2\mu>0$.
+
+    \item[四、]设$F=(f_{ij})_{3\times 3}$是变形梯度张量，
+    \[
+        E=\frac12(F^TF-I),\qquad W=(\operatorname{tr}E)^2,
+    \]
+  请计算$\frac{\partial W}{\partial f_{ij}}$.
+
+    \item[五、]对于方程
+    \[
+        \frac{\partial v}{\partial t}+4v^3\frac{\partial v}{\partial x}=0,
+    \]
+    如果已知间断左侧和右侧流体的速度分别为$v_-$和$v_+$，
+    请计算间断的速度$U$，并给出$v_-$和$v_+$满足的Lax熵条件.
+
+    \item[六、]由单原子分子构成的理想气体，
+    在平衡态时分子的速度满足
+    Maxwell-Boltzmann分布
+    \[
+        f(\vec v)=n\left(\frac{m}{2\pi kT}\right)^{3/2}
+        e^{-m|\vec v|^2/2kT}.
+    \]
+    请在宏观速度为$0$时计算
+    \[
+        \int_{\mathbb R^3}|\vec v|^4 f(\vec v)\,d^3\vec v.
+    \]
+
+    \item[七、]设$(u,v)$满足方程组
+    \[
+        \begin{cases}
+            \dfrac{\partial u}{\partial t}-\dfrac{\partial v}{\partial x}=0,\\[0.6em]
+            \dfrac{\partial v}{\partial t}-u^2\dfrac{\partial u}{\partial x}=0,
+        \end{cases}
+        \qquad (u>0).
+    \]
+    请找出一组函数$W(u,v)$和$H(u,v)$，使得它们满足守恒律方程
+    \[
+        \frac{\partial W}{\partial t}+\frac{\partial H}{\partial x}=0,
+    \]
+    并且当$u>0$时$W(u,v)$是严格凸的.
+
+    \item[八、]求解线性各向同性弹性动力学方程组的初值问题
+    \[
+        \begin{cases}
+            \dfrac{\partial^2\vec u}{\partial t^2}
+            =4\Delta\vec u+5\nabla(\nabla\cdot\vec u),\\[0.6em]
+            \vec u|_{t=0}=(\cos x_1,0,0),\qquad
+            \dfrac{\partial\vec u}{\partial t}\bigg|_{t=0}
+            =(0,\cos x_1,0).
+        \end{cases}
+    \]
+    其中$(x_1,x_2,x_3)$为空间变量。(提示：存在无旋场和无源场分解.)
+\end{itemize}

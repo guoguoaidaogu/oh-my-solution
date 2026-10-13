@@ -1,0 +1,94 @@
+\setdisplaytitle{试卷：学术营笔试}
+\sethtmltitle{试卷：学术营笔试}
+
+==2025年学术营笔试试卷==
+\begin{enumerate}
+    \item 设 $(V,\langle \cdot,\cdot\rangle)$ 为实内积空间，$T:V\to V$ 为线性映射。
+    \begin{enumerate}
+        \item 写出 $T$ 的伴随算子 $T^*$ 的定义。
+        
+        \item 考虑 $V=\mathbb{R}^2$ 及其一组基
+        \[
+        e_1=(1,0),\qquad e_2=(0,1),
+        \]
+        设 $V$ 上两个线性映射在这组基下的矩阵分别为
+        \[
+        A=
+        \begin{pmatrix}
+        3 & 1\\
+        0 & -3
+        \end{pmatrix},
+        \qquad
+        B=
+        \begin{pmatrix}
+        1 & 0\\
+        -4 & -1
+        \end{pmatrix}.
+        \]
+        若它们在 $V$ 的某个内积下均成为自伴随算子，求该内积在上述基下的矩阵。
+    \end{enumerate}
+
+    \item 求
+    \[
+    \int_0^{\frac{\pi}{2}} \left(\frac{x}{\sin x}\right)^2 \, dx .
+    \]
+
+    \item 求行列式
+    \[
+    D=
+    \begin{vmatrix}
+    1 & x_1 & \cdots & x_1^{\,n-2} & (x_2+\cdots+x_n)^{n-1}\\
+    \vdots & \vdots & & \vdots & \vdots\\
+    1 & x_n & \cdots & x_n^{\,n-2} & (x_1+\cdots+x_{n-1})^{n-1}
+    \end{vmatrix}.
+    \]
+
+    \item 分析
+    \[
+    \int_0^{+\infty} \sin\left(x^p+\frac{1}{x^p}\right)\,dx
+    \]
+    在何时绝对收敛、条件收敛和发散。
+
+    \item 设 $a_n$ 为方程
+    \[
+    x^n+nx-1=0
+    \]
+    的正实根，求级数
+    \[
+    \sum_{n=1}^{\infty} a_n \cos nx
+    \]
+    的收敛域 $D$，并问其在 $D$ 中是否绝对收敛和一致收敛。
+
+    \item 设
+    \[
+    A=
+    \begin{pmatrix}
+    1 & 1 & 0\\
+    0 & 1 & 0\\
+    0 & 0 & 2
+    \end{pmatrix}.
+    \]
+    \begin{enumerate}
+        \item 问：$A$ 是否可对角化？
+        
+        \item 设
+        \[
+        \varphi:M(3,\mathbb{R})\to M(3,\mathbb{R}),\qquad
+        X\mapsto A^{-1}XA,
+        \]
+        求 $\operatorname{tr}(\varphi^{100})$。
+    \end{enumerate}
+
+    \item 设
+    \[
+    \lim_{x\to+\infty}
+    x\left(
+    \int_0^x \frac{t}{\arctan t}\,dt
+    -\frac{1}{\pi}x^2
+    -\frac{4}{\pi^2}x
+    -\frac{8}{\pi^3}\ln x
+    +A
+    \right)=B.
+    \]
+    求 $A$ 的表达式及 $B$ 的值。
+\end{enumerate}

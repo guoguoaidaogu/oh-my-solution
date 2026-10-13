@@ -1,0 +1,124 @@
+\setdisplaytitle{试卷：抽象代数II}
+\sethtmltitle{试卷：抽象代数II}
+
+== 2025--2026春期末 （朱胜林） ==
+\begin{itemize}
+
+\item[一、] 填空题（每空2分，共16分）
+
+\item[二、] 选择题（每题3分，共12分，单选）（填空选择考察了Galois扩张，矩阵环，群代数等内容.）
+
+\item[三、] （12分）$f(x) = x^{4}-4x^{2}+2\in \mathbb{Q}[x]$.
+\begin{itemize}
+\item[(1)]求$f(x)$在$\mathbb{Q}$上的分裂域$E$与$[E:\mathbb{Q}]$.
+
+\item[(2)]计算$\operatorname{Gal}(E/\mathbb{Q})$的结构.
+
+\item[(3)]求所有的中间域$F$使得$\mathbb{Q}\subseteq F\subseteq E$.
+\end{itemize}
+
+\item[四、]（12分）$M=\mathbb{Z}^{2}/N$为左$\mathbb{Z}$-模，其中$N$为(2,4)与(4,8)生成的子模.
+\begin{itemize}
+\item[(1)] 求以(2,4),(4,8)为行的矩阵的Smith标准型.
+\item[(2)] 求$M$的不变因子分解.
+\item[(3)] 求$M$的初等因子分解.
+\end{itemize}
+
+\item[五、]（12分）$R$为交换环，$M$是左$R$-模.证明:
+\begin{itemize}
+\item[(1)] $R\otimes_{R} M\cong M$.
+\item[(2)] 若$0\longrightarrow A\stackrel{f}{\longrightarrow}B\stackrel{g}{\longrightarrow}C\longrightarrow 0$是正合列,
+则$0\longrightarrow \operatorname{Hom}_{R}(M,A)\stackrel{\operatorname{Hom}_{R}(M,f)}{\longrightarrow}\operatorname{Hom}_{R}(M,B)\stackrel{\operatorname{Hom}_{R}(M,g)}{\longrightarrow}\operatorname{Hom}_{R}(M,C)$也是正合列.
+其中，$\operatorname{Hom}_{R}(M,f):\operatorname{Hom}_{R}(M,A)\to\operatorname{Hom}_{R}(M,B), \alpha\mapsto f\circ \alpha$
+\end{itemize}
+
+\item[六、]（12分）二面体群$D_{8}$是八阶群.
+\begin{itemize}
+\item[(1)]求$D_{8}$的所有共轭类及其大小.
+\item[(2)]求$D_{8}$的所有一维复表示.
+\item[(3)]由正交定理写出$D_{8}$的特征标表.  
+\end{itemize}
+
+\item[七、]（12分）$M$是有限长度不可分解左$R$-模,证明:$\operatorname{End}_{R}M$是局部环(即所有$\operatorname{End}_{R}M$中的不可逆元构成一个理想).
+
+\item[八、]（12分）证明下列等价:
+\begin{itemize}
+\item[(1)] $R$是半单环.
+\item[(2)] 任意左$R$-模都是射影模.
+\item[(3)] 任意半单左$R$-模都是射影模.
+\end{itemize}
+\end{itemize}
+
+== 2025--2026春期中 （朱胜林） ==
+\begin{itemize}
+
+\item[一、] 填空题（每空2分，共8分）
+\begin{itemize}
+\item[(1)] 设$E/F$是有限扩张，则$E/F$是Galois扩张当且仅当$|\operatorname{Aut}(E/F)|=\underline{\qquad\qquad}$。
+
+\item[(2)] 设$\zeta_7=e^{2\pi i/7}$，则$[\mathbb{Q}(\zeta_7+\zeta_7^{-1}):\mathbb{Q}]=\underline{\qquad\qquad}$。
+
+\item[(3)] 在特征$p>0$的域$F$上，多项式$x^p-x-a$要么不可约，要么完全分裂，且若$\alpha$是一个根，则所有根为$\underline{\qquad\qquad}$。
+
+\item[(4)] 设$F$包含$n$次本原单位根，则$F$上的$n$次循环扩张$E/F$必形如$E=F(\sqrt[n]{a})$，其中$a\in F^\times$，且$[E:F]$等于$\underline{\qquad\qquad}$在$F^\times/(F^\times)^n$中的阶。
+\end{itemize}
+
+\item[二、] 选择题（每题4分，共12分，单选）
+\begin{itemize}
+\item[(1)] 多项式$f(x)=x^4-2\in\mathbb{Q}[x]$的Galois群是(\quad)。
+\begin{itemize}
+\item[A.] $\mathbb{Z}/4\mathbb{Z}$
+\item[B.] $\mathbb{Z}/2\mathbb{Z}\times\mathbb{Z}/2\mathbb{Z}$
+\item[C.] $D_8$
+\item[D.] $A_4$
+\end{itemize}
+
+\item[(2)] 下列说法错误的是(\quad)。
+\begin{itemize}
+\item[A.] 在有限循环扩张$E/F$中，$\sigma$是$\operatorname{Gal}(E/F)$的生成元，则$N_{E/F}(\beta)=1$当且仅当$\beta=\alpha/\sigma(\alpha)$对某个$\alpha\in E^\times$。
+\item[B.] 在有限循环扩张$E/F$中，$\sigma$是$\operatorname{Gal}(E/F)$的生成元，则$\operatorname{Tr}_{E/F}(\beta)=0$当且仅当$\beta=\alpha-\sigma(\alpha)$对某个$\alpha\in E$。这里$\operatorname{Tr}_{E/F}(\beta)=\sum_{\sigma\in\operatorname{Gal}(E/F)}\sigma(\beta)$。
+\item[C.] 若$E/F$是$n$次循环扩张且$F$包含$n$次本原单位根$\zeta$，则存在$\alpha$使$\sigma(\alpha)=\zeta\alpha$且$\alpha^n\in F$。
+\item[D.] Hilbert定理90在特征$p$的$p$次循环扩张中不成立。
+\end{itemize}
+
+\item[(3)] 设$F$是特征$0$的域，$f(x)\in F[x]$不可约，$E$是$f$的分裂域。若$\operatorname{Gal}(E/F)$可解，则(\quad)。
+\begin{itemize}
+\item[A.] $f$的根均可表示为$F$中元素的根式，即落在某个根式塔中
+\item[B.] $f$的次数一定$\le 4$
+\item[C.] $E/F$一定是循环扩张
+\item[D.] $E$一定包含$F$上的所有单位根
+\end{itemize}
+\end{itemize}
+
+\item[三、] 简答题（共35分）
+\begin{itemize}
+\item[(1)]（10分）叙述并证明本原元定理（有限可分扩张的单扩张性）。
+
+\item[(2)]（10分）设$E/F$是有限Galois扩张，$G=\operatorname{Gal}(E/F)$。叙述Galois基本定理，并说明正规子群与正规子扩张的对应关系。
+
+\item[(3)]（15分）设$F$是特征为零的域，且$i=\sqrt{-1}\in F$。证明：$F$上的四次循环扩张$E/F$必可表示为$E=F\left(\sqrt{a+b\sqrt{c}}\right)$，其中$a,b,c\in F$，并说明$a,b,c$需要满足的条件。
+\end{itemize}
+
+\item[四、]（10分）
+求多项式$f(x)=x^{4}-5x^{2}+6\in \mathbb{Q}[x]$的Galois群，并写出所有的中间域。
+
+\item[五、]（10分）
+设$E=\mathbb{Q}(\sqrt[3]{2},\omega)$，其中$\omega=e^{2\pi i/3}$。
+\begin{enumerate}
+\item[(1)] 证明$E/\mathbb{Q}$是Galois扩张，并计算$[E:\mathbb{Q}]$。
+\item[(2)] 写出$\operatorname{Gal}(E/\mathbb{Q})$的群结构，并找出对应于子域$\mathbb{Q}(\sqrt[3]{2})$的子群。
+\item[(3)] 判断$E$中是否存在一个4次子域？说明理由。
+\end{enumerate}
+
+\item[六、]（10分）
+设$F$是特征$0$的域，$f(x)\in F[x]$是$n$次不可约多项式，$E$是$f$的分裂域。
+证明：若$\operatorname{Gal}(E/F)$是2-群（即阶为2的幂），则$f$的根均可由平方根表出（即存在根式塔，每步添加平方根）。
+
+\item[七、]（15分）
+设$F$是域，$n$为正整数，$\operatorname{char}(F)=0$且$F$包含$n$次本原单位根。设$a,b\in F^\times$，$E=F(\sqrt[n]{a},\sqrt[n]{b})$。
+\begin{itemize}
+    \item[(1)] 证明$E/F$是Galois扩张，且$\operatorname{Gal}(E/F)$是$(\mathbb{Z}/n\mathbb{Z})^2$的子群。
+    \item[(2)] 若$\sqrt[n]{a}\notin F$且$\sqrt[n]{b}\notin F$，但$F(\sqrt[n]{a})=F(\sqrt[n]{b})$，证明：存在与$n$互素的整数$k$使得$ab^{-k}\in (F^\times)^n$。
+    \item[(3)] 举例说明当$n=4$时，可能存在$a,b$使得$[E:F]=2$而非$4$或$1$。
+\end{itemize}
+\end{itemize}

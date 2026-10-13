@@ -1,0 +1,20 @@
+\section{2026春-代数几何拔尖计划讨论班}
+
+\begin{center}
+    \textsize{28pt}{\textbf{基础相交理论}}
+    \\ （参考教材：Foundations of Algebraic Geometry-Ravi Vakil）
+
+\end{center}
+
+\begin{structure}
+
+    \subpage!{Intersecting line bundles with a variety}
+
+    \subpage!{Intersection theory on a surface}
+
+    \subpage!{Hodge Index Theorem}
+
+
+   \subpage!{The Hirzebruch Surfaces}
+
+\end{structure}

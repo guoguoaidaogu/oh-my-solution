@@ -1,0 +1,649 @@
+\newcommand{\ee}{{\rm e}}
+\newcommand{\ii}{{\rm i}}
+\newcommand{\dd}{{\rm d}}
+\newcommand{\DD}{\operatorname{D}}
+\newcommand{\inp}[1]{\langle #1 \rangle}
+\theoremstyle{remark}\newtheorem*{1a}{习题$7.1.\mathcal{A}$}
+\theoremstyle{remark}\newtheorem*{1b}{习题$7.1.\mathcal{B}$}
+\theoremstyle{remark}\newtheorem*{2a}{习题$7.2.\mathcal{A}$}
+\theoremstyle{remark}\newtheorem*{2b}{习题$7.2.\mathcal{B}$}
+\theoremstyle{remark}\newtheorem*{3a}{习题$7.3.\mathcal{A}$}
+\theoremstyle{remark}\newtheorem*{3b}{习题$7.3.\mathcal{B}$}
+\theoremstyle{remark}\newtheorem*{4a}{习题$7.4.\mathcal{A}$}
+\theoremstyle{remark}\newtheorem*{4b}{习题$7.4.\mathcal{B}$}
+\pdef\(#+1\){\@setfalse{math-display}\@@enter{math}\displaystyle{#1}\@@exit{math}}
+
+\setdisplaytitle{第7章\ 微分问题}
+\sethtmltitle{第7章\ 微分问题}
+
+\section{隐函数存在定理}
+\subsection{隐函数存在定理,曲面的切平面,法向量}
+\begin{1a}
+\begin{enumerate}
+\item 证明方程\(\ee^z+\sin z+\ee^y+y-\sin x+x=2\)
+在点\((0,0,0)\)附近确定一个隐函数\(z=z(x,y)\), 
+并计算\(\frac{\partial z}{\partial x},\frac{\partial^2 z}{\partial x\partial y}\).
+\begin{proof}[解答]
+记\(F(x,y,z)=\ee^z+\sin z+\ee^y+y-\sin x+x-2\), 由隐函数定理可得
+\[\frac{\partial z}{\partial x}=-\frac{F_x}{F_z}=\frac{\cos x-1}{\ee^z+\cos z},\quad
+\frac{\partial z}{\partial y}=-\frac{F_y}{F_z}=-\frac{\ee^y+1}{\ee^z+\cos z},\]
+进一步得到\[\frac{\partial^2z}{\partial x\partial y}
+=\frac{\partial}{\partial y}\left(\frac{\partial z}{\partial x}\right)
+=\frac{(1-\cos x)(\ee^z+\cos z)}{(\ee^z+\cos z)^2}\frac{\partial z}{\partial y}
+=\frac{(\cos x-1)(\ee^z+\cos z)(1+\ee^y)}{(\ee^z+\cos z)^3}.\qedhere\]
+\end{proof}
+\item 证明方程组\[\begin{cases}
+    x+y+u+v=0,\\ x^2+y^2+u^4+v^4=2
+\end{cases}\]在\((x,y,u,v)=(-1,0,1,0)\)附近确定一个隐函数\(\begin{pmatrix}
+u\\ v
+\end{pmatrix}=\begin{pmatrix}
+u(x,y)\\v(x,y)
+\end{pmatrix}\). 进一步, 计算\(\frac{\partial u}{\partial x},\frac{\partial^2u}{\partial x^2}.\)
+\begin{proof}[解答]
+
+\end{proof}
+
+\item 证明方程组\[\begin{cases}
+    x+y+u+v=0,\\x^2+y^2+u^4+v^4=2
+\end{cases}\]在\((x,y,u,v)=(-1,0,1,0)\)附近确定一个隐函数\(\begin{pmatrix}
+y\\ u
+\end{pmatrix}=\begin{pmatrix}
+y(x,v)\\u(x,v)
+\end{pmatrix}\). 进一步, 计算
+\(\frac{\partial u}{\partial x},\frac{\partial^2u}{\partial x^2}.\)
+\begin{proof}[解答]
+
+\end{proof}
+\end{enumerate}
+\end{1a}
+
+\begin{1b}
+\begin{enumerate}
+\item 设\(n\geqslant 2\), \(\varOmega\)是\(\mathbb{R}^n\)中的区域, 
+\(F:\varOmega\rightarrow\mathbb{R}\)连续可微, 
+且\(F_{\boldsymbol{x}}(\boldsymbol{x})
+\ne\boldsymbol{0}\ (\forall\,\boldsymbol{x}\in\varOmega)\). 
+又设\(\boldsymbol{x}_0\in\varOmega\)使得\(F(\boldsymbol{x}_0)=0\). 
+证明存在\(\delta>0\), 使得对于任何满足\(F(\boldsymbol{x}_1)=0\)
+的\(\boldsymbol{x}_1\in B_\delta(\boldsymbol{x}_0)\), 
+均存在曲面\(F(\boldsymbol{x})=0\)上
+连接\(\boldsymbol{x}_0,\boldsymbol{x}_1\)的\(C^1\)曲线\(\boldsymbol{\tau}\). 
+即存在\(\boldsymbol{\tau}\in C^1([0,1];\mathbb{R}^n)\)
+满足\(F(\boldsymbol{\tau}(t))=0\ (\forall\, t\in[0,1])\)
+以及\(\boldsymbol{\tau}(0)=\boldsymbol{x}_0,\boldsymbol{\tau}(1)=\boldsymbol{x}_1\).
+\begin{proof}
+	
+\end{proof}
+\end{enumerate}
+\end{1b}
+
+\section{极值问题}
+\subsection{强制条件,极值问题,无条件极值,一阶必要条件,二阶必要条件,驻点,二阶必要条件,最小二乘法,线性拟合,条件极值, Lagrange乘子法,矩阵的诱导范数}
+\begin{2a}
+\begin{enumerate}
+\item 设\(n\geqslant 2\), \(\boldsymbol{\xi},\boldsymbol{\eta}\in\mathbb{R}^n\). 
+试计算\(\max_{\boldsymbol{x}\in S^{n-1}}
+\{\inp{\boldsymbol{\xi},\boldsymbol{x}}\cdot\inp{\boldsymbol{\eta},\boldsymbol{x}}\}\).
+\begin{proof}[解答]
+设$\theta$是$\boldsymbol{\xi},\boldsymbol{\eta}$的夹角，则
+\[\cos\theta=\frac{\langle\boldsymbol{\xi},\boldsymbol{\eta}\rangle}{|\boldsymbol{\xi}|·\!|\boldsymbol{\eta}|}.\]
+不难论证，上式的最大值在$\boldsymbol{x}$处于$\boldsymbol{\xi},\boldsymbol{\eta}$的角平分线上时取到，此时其取值为
+\[|\boldsymbol{\xi}|·\!|\boldsymbol{\eta}|\cos^2\frac{\theta}{2}
+=|\boldsymbol{\xi}|·\!|\boldsymbol{\eta}|\frac{1+\cos\theta}{2}
+=\frac{|\boldsymbol{\xi}|·\!|\boldsymbol{\eta}|+\langle\boldsymbol{\xi},\boldsymbol{\eta}\rangle}{2}.\qedhere\]
+\end{proof}
+
+\item 设\(1\leqslant p,q\leqslant+\infty\), 
+对\(\boldsymbol{A}\in\mathbb{R}^{m\times n}\), 
+定义\(\left\|\boldsymbol{A}\right\|_{p,q}
+=\max_{\|\boldsymbol{x}\|_q=1}\left\|\boldsymbol{Ax}\right\|_p\). 
+证明: \(\|\,\cdot\,\|_{p,q}\)定义了一个范数.
+\begin{proof}
+这就是$L^q([n]) \to L^p([m])$的算子范数，其中$[n]$是指$n$元集上每个元素的测度均为$1$。
+\end{proof}
+
+\item 设\(\boldsymbol{A}\)为\(n\)阶正定矩阵, 
+证明\(\inp{\boldsymbol{x,y}}_{\boldsymbol{A}}
+=\boldsymbol{y}^{\mathrm{T}}\boldsymbol{Ax}\)定义了\(\mathbb{R}^n\)中的一个内积.
+\begin{proof}
+由于(i)\[\inp{\boldsymbol{x,y}}_{\boldsymbol{A}}
+=\boldsymbol{y}^{\rm T}\boldsymbol{Ax}
+=(\boldsymbol{y}^{\rm T}\boldsymbol{Ax})^{\rm T}
+=\boldsymbol{x}^{\rm T}\boldsymbol{Ay}=\inp{\boldsymbol{y,x}}_{\boldsymbol{A}},\]
+(ii) \(\inp{\boldsymbol{x+y,z}}_{\boldsymbol{A}}=\inp{\boldsymbol{x,z}}_{\boldsymbol{A}}+\inp{\boldsymbol{y,z}}_{\boldsymbol{A}}\), 
+\(\inp{c\boldsymbol{x,y}}_{\boldsymbol{A}}=c\inp{\boldsymbol{x,y}}_{\boldsymbol{A}}\), 其中\(c\)为一常数, 
+(iii) 由\(\boldsymbol{A}\)正定可知对于任意\(\boldsymbol{x}\ne\boldsymbol{0}\), 
+有\(\inp{\boldsymbol{x,x}}_{\boldsymbol{A}}=\boldsymbol{x}^{\rm T}\boldsymbol{Ax}>0\), 从而上述的运算定义了一个内积.
+\end{proof}
+
+\item 设\(n\geqslant 2\), \(\boldsymbol{A}\)为\(n\)阶实对称矩阵, 
+\(\boldsymbol{\xi}_1\in S^{n-1}\)满足
+\(\lambda_1\equiv \boldsymbol{\xi}_1^{\mathrm{T}}\boldsymbol{A}\boldsymbol{\xi}_1
+=\max_{\boldsymbol{x}\in S^{n-1}}\boldsymbol{x}^{\mathrm{T}}\boldsymbol{A}\boldsymbol{x}.\)
+考虑在\(\boldsymbol{x}\in S^{n-1}\)以及
+\(\boldsymbol{x}\cdot\boldsymbol{\xi}_1=0\)的约束条件下
+最大化\(\boldsymbol{x}^{\mathrm{T}}\boldsymbol{A}\boldsymbol{x}\)的最大值问题, 
+证明存在\(\lambda_2\leqslant\lambda_1\)以及\(\boldsymbol{\xi}_2\in S^{n-1}\), 
+使得\(\boldsymbol{A\xi}_2=\lambda_2\boldsymbol{\xi}_2,\boldsymbol{\xi}_2\cdot\boldsymbol{\xi}_1=0\). 
+一般地, 证明存在\(\lambda_1\geqslant \lambda_2\geqslant\cdots\geqslant\lambda_n\)
+以及两两正交的\(\boldsymbol{\xi}_1,\boldsymbol{\xi}_2,\cdots,\boldsymbol{\xi}_n\in S^{n-1}\)
+使得\(\boldsymbol{A}\boldsymbol{\xi}_k=\lambda_k\boldsymbol{\xi}_k\ (1\leqslant k\leqslant n)\).
+\begin{proof}
+由于\(\boldsymbol{A}\)实对称, 故存在正交矩阵\(\boldsymbol{P}\)使得
+\[\boldsymbol{P}^{\rm T}\boldsymbol{AP}=\begin{bmatrix}
+\lambda_1'&&&\\
+&\lambda_2'&&\\
+&&\ddots&\\
+&&&\lambda_n'
+\end{bmatrix},\]
+其中\(\lambda_i'\ (1\leqslant i\leqslant n)\)是\(\boldsymbol{A}\)的特征值。
+这是来自高等代数的结论，本题旨在说明能用分析学的方法作出如下的证明。
+
+首先，根据例7.2.3得到\(\boldsymbol{A}\boldsymbol{\xi}_1=\lambda_1\boldsymbol{\xi}_1\)。
+其次，设在约束条件\(\boldsymbol{x}\in S^{n-1},\boldsymbol{x}\cdot\boldsymbol{\xi}_1=0\)下
+\(\boldsymbol{\xi}_2\)取到了\(F(\boldsymbol{x})=\boldsymbol{x}^{\rm T}\boldsymbol{A}\boldsymbol{x}\)的最大值\(\lambda_2\)，
+这说明$\partial F/\partial\boldsymbol{x}=2\boldsymbol{A}\boldsymbol{x}$
+在由$\boldsymbol{\xi}_1,\boldsymbol{\xi}_2$所张成的平面上，即
+\[\boldsymbol{A}\boldsymbol{\xi}_2=a\boldsymbol{\xi}_1+b\boldsymbol{\xi}_2,\]
+由于\[0=\lambda_1\boldsymbol{\xi}^{\rm T}_1\boldsymbol{\xi}_2
+=\boldsymbol{\xi}^{\rm T}_1\boldsymbol{A}\boldsymbol{\xi}_2
+=a\boldsymbol{\xi}^{\rm T}_1\boldsymbol{\xi}_1+b\boldsymbol{\xi}^{\rm T}_1\boldsymbol{\xi}_2=a,\]
+得到\[b=\boldsymbol{\xi}^{\rm T}_2\boldsymbol{A}\boldsymbol{\xi}_2
+=\lambda_2\boldsymbol{\xi}^{\rm T}_2\boldsymbol{\xi}_2=\lambda_2.\]
+接着同理有余下的特征向量$\boldsymbol{A}\boldsymbol{\xi}_k=\lambda_k\boldsymbol{\xi}_k$ $(3\leqslant k\leqslant n)$。
+\end{proof}
+
+\item 设\(\boldsymbol{A}\)为\(m\times n\)实矩阵, 
+证明\(\left\|\boldsymbol{A}\right\|
+=\max_{\substack{|\boldsymbol{z}|=1\\ \boldsymbol{z}\in\mathbb{C}^{n}}}|\boldsymbol{Az}|\).
+\begin{proof}
+
+\end{proof}
+
+\item 设\(\boldsymbol{A}\)为\(n\)阶实方阵, \(\lambda\)是它的(复)特征值. 
+证明: \(|\lambda|\leqslant\left\|\boldsymbol{A}\right\|\).
+\begin{proof}
+
+\end{proof}
+
+\item 设\(\boldsymbol{x}\in\mathbb{R}^n\), 证明\(|\boldsymbol{x}|
+=\max_{\substack{\|\boldsymbol{A}\|=1\\\boldsymbol{A}\in\mathbb{R}^{n\times n}}}|\boldsymbol{Ax}|.\)
+\begin{proof}
+
+\end{proof}
+
+\item 试推导两空间直线
+\[\frac{x-x_i}{l_i}=\frac{y-y_i}{m_i}=\frac{z-z_i}{n_i},\quad i=1,2\]
+间的距离公式, 其中\[(l_1m_2-l_2m_1)^2+(m_1n_2-m_2n_1)^2+(n_1l_2-n_2l_1)^2>0.\]
+%\begin{solution}
+%记题设直线分别为\(L_1,L_2\), 取\(\boldsymbol{x_1}\in L_1\), \(\boldsymbol{x_2}\in L_2\), 则\(L_1\)于\(L_2\)之间的距离\(d = \min\left\|\boldsymbol{x}_1-\boldsymbol{x}_2\right\|\), 于是不妨设\[\boldsymbol{x}_1=\left(l_1t_1+x_1,m_1t_1+y_1,n_1t_1+z_1\right),\quad \boldsymbol{x}_2=\left(l_2t_2+x_2,m_2t_2+y_2,n_2t_2+z_2\right),\]记\(D(t_1,t_2)=\left(l_1t_1+x_1-l_2t_2-x_2\right)^2+\left(m_1t_1+y_1-m_2t_2-y_2\right)^2+\left(n_1t_1+z_1-n_2t_2-z_2\right)^2\), 原问题即为求\(D(t_1,t_2)\)的最小值, 分别对\(t_1,t_2\)求偏导有\[\begin{split}
+%\frac{\partial D}{\partial t_1}&=2A_1t_1-2Bt_2+2l_1(x_1-x_2)+2m_1(y_1-y_2)+2n_1(z_1-z_2),\\
+%\frac{\partial D}{\partial t_2}&=2A_2t_2-2Bt_1-2l_2(x_1-x_2)-2m_2(y_1-y_2)-2n_2(z_1-z_2),
+%\end{split}\]
+%其中\(A_i=l_i^2+m_i^2+n_i^2(i=1,2),B=l_1l_2+m_1m_2+n_1n_2\). 令\(\frac{\partial D}{\partial t_1}=\frac{\partial D}{\partial t_2}=0\), 并且注意到\[A_1A_2-B_2^2=(l_1m_2-l_2m_1)^2+(m_1n_2-m_2n_1)^2+(n_1l_2-n_2l_1)^2>0,\]
+%由Cramer法则可得\[t'_1=\frac{BC_2-A_2C_1}{A_1A_2-B^2},\quad t'_2=\frac{A_1C_2-BC_1}{A_1A_2-B^2}\]其中\(C_i=l_i(x_1-x_2)+m_i(y_1-y_2)+n_i(z_1-z_2)(i=1,2)\). 将\(t'_1,t'_2\)代入\(D(t_1,t_2)\)得到
+%\end{solution}
+\begin{proof}[解答]
+记题设直线分别为\(L_1,L_2\), 取\(\boldsymbol{x_1}\in L_1\), 
+\(\boldsymbol{x_2}\in L_2\), 则\(L_1\)与\(L_2\)之间的距离
+\(d = \min\left|\boldsymbol{x}_1-\boldsymbol{x}_2\right|\)。记
+\[\boldsymbol{a}_i=(x_i,y_i,z_i)^{\rm T},\quad 
+\boldsymbol{d}_i=(l_i,m_i,n_i)^{\rm T},\quad i=1,2,\]
+于是\(\boldsymbol{x}_1=\boldsymbol{a}_1+t_1\boldsymbol{d}_1,
+\boldsymbol{x}_2=\boldsymbol{a}_2+t_2\boldsymbol{d}_2\), 从而令
+\[\begin{split}
+D(t_1,t_2)&=|\boldsymbol{x}_1-\boldsymbol{x}_2|^2
+=|\boldsymbol{a}_1-\boldsymbol{a}_2+t_1\boldsymbol{d}_1-t_2\boldsymbol{d}_2|^2
+=\inp{\boldsymbol{a}_1-\boldsymbol{a}_2+t_1\boldsymbol{d}_1-t_2\boldsymbol{d}_2,\boldsymbol{a}_1-\boldsymbol{a}_2+t_1\boldsymbol{d}_1-t_2\boldsymbol{d}_2}\\
+&=|\boldsymbol{d}_1|^2t_1^2-2\inp{\boldsymbol{d}_1,\boldsymbol{d}_2}t_1t_2+|\boldsymbol{d}_2|^2t_2^2+2\inp{\boldsymbol{a}_1-\boldsymbol{a}_2,\boldsymbol{d}_1}t_1-2\inp{\boldsymbol{a}_1-\boldsymbol{a}_2,\boldsymbol{d}_2}t_2+\left|\boldsymbol{a}_1-\boldsymbol{a}_2\right|^2,
+\end{split}\]
+分别记\(A_i=|\boldsymbol{d}_i|^2,B=\inp{\boldsymbol{d}_1,\boldsymbol{d}_2},
+C_i=\inp{\boldsymbol{a}_1-\boldsymbol{a}_2,\boldsymbol{d}_i}\) \((i=1,2)\), 这样就有
+\[D(t_1,t_2)=A_1t_1^2-2Bt_1t_2+A_2t_2^2+2C_1t_1-2C_2t_2+\left|\boldsymbol{a}_1-\boldsymbol{a}_2\right|^2,\]
+分别对\(t_1,t_2\)求偏导有
+\[\frac{\partial D}{\partial t_1}=2A_1t_1-2Bt_2+2C_1,\quad
+\frac{\partial D}{\partial t_2}=2A_2t_2-2Bt_1-2C_2,\]
+令\(\frac{\partial D}{\partial t_1}=\frac{\partial D}{\partial t_2}=0\), 并且注意到
+\[A_1A_2-B^2=(l_1m_2-l_2m_1)^2+(m_1n_2-m_2n_1)^2+(n_1l_2-n_2l_1)^2>0,\]
+由Cramer法则可得\[t'_1=\frac{BC_2-A_2C_1}{A_1A_2-B^2},\quad t'_2=\frac{A_1C_2-BC_1}{A_1A_2-B^2},\]
+代入\(D(t_1,t_2)\)开方即得结果.
+\end{proof}
+
+\item 计算两空间直线\(\frac{x-1}{1}=\frac{y-3}{2}=\frac{z-5}{3},
+\frac{x-7}{4}=\frac{y-9}{5}=\frac{z-11}{6}\)的公垂线.
+\begin{proof}[解答]
+观察到$(-1,-1,-1)$是两条直线的公共点，且$(1,-2,1)$垂直于两条直线，
+因而公垂线的参数方程是$(t-1,-2t-1,t-1)$。
+\end{proof}
+
+\item 试推导点\((x_0,y_0,z_0)\)与平面\(Ax+By+Cz+D=0\) \((A^2+B^2+C^2\ne 0)\)的距离公式.
+\begin{proof}[解答]
+我们先用条件极值的方法. 设
+\[f(\alpha,\beta,\gamma)=(\alpha-x_0)^2+(\beta-y_0)^2+(\gamma-z_0)^2,\]
+即求\(f\)在约束条件\(A\alpha+B\beta+C\gamma+D=0\)下的极值. 设
+\[F(\alpha,\beta,\gamma,\lambda)=(\alpha-x_0)^2+(\beta-y_0)^2+(\gamma-z_0)^2
++\lambda\left(A\alpha+B\beta+C\gamma+D\right),\]则令\[\begin{cases}
+F_{\alpha}=2\left(\alpha-x_0\right)+A\lambda=0,\\
+F_{\beta}=2\left(\beta-y_0\right)+B\lambda=0,\\
+F_{\gamma}=2\left(\gamma-z_0\right)+C\lambda=0,\\
+F_{\lambda}=A\alpha+B\beta+C\gamma+D=0,
+\end{cases}\]
+可以解得\[\lambda=\frac{2(Ax_0+By_0+Cz_0+D)}{A^2+B^2+C^2},\]
+\[\alpha=x_0-\frac{A\lambda}{2},\quad\beta=y_0-\frac{B\lambda}{2},
+\quad\gamma=z_0-\frac{C\lambda}{2},\]此时得到
+\[f_{\min}=\frac{(Ax_0+By_0+Cz_0+D)^2}{A^2+B^2+C^2},\]
+即得点\((x_0,y_0,z_0)\)到平面\(Ax+By+Cz+D=0\)的距离为
+\(\sqrt{f_{\min}}=\frac{\left|Ax_0+By_0+Cz_0+D\right|}{\sqrt{A^2+B^2+C^2}}\).
+
+另一种简单的方法是考虑几何关系, 
+记\((x_0,y_0,z_0)\)为\(P_1\), 取平面上一点\(P_2(a,b,c)\), 
+则考虑向量\(\overrightarrow{P_1P_2}=\left(a-x_0,b-y_0,c-z_0\right)\)
+与平面法向量\((A,B,C)\)夹角的余弦值(记较小的那个角为\(\theta\))可得点到平面距离
+\[d=\left|\overrightarrow{P_1P_2}\right|\cos\theta
+=\left|\overrightarrow{P_1P_2}\right|\frac{\left|\overrightarrow{P_1P_2}\cdot\left(A,B,C\right)\right|}{\left|\overrightarrow{P_1P_2}\right|\sqrt{A^2+B^2+C^2}}
+=\frac{\left|Ax_0+By_0+Cz_0+D\right|}{\sqrt{A^2+B^2+C^2}}.\qedhere\]
+\end{proof}
+
+\item 设\(f(x,y)=xy-x\ln x+x-\ee^y\ (x>0,y\in\mathbb{R})\). 
+证明: \(f(x,y)\leqslant 0\ (\forall\, x>0,y\in\mathbb{R})\).
+\begin{proof}
+\(e^{y-\ln x} \geqslant y-\ln x+1\).
+\end{proof}
+\end{enumerate}
+\end{2a}
+
+\begin{2b}
+\begin{enumerate}
+\item 试构造\(\R^2\)上的二元实函数\(f\)使得点\(\boldsymbol{0}\)不是它的极小值点, 
+但对任何\(\alpha\in[0,2\pi]\), \(g(t)=f(t\cos\alpha,t\sin\alpha)\)在\(t=0\)取得严格极小值. 
+进一步, 能否取到这样的一个\(f\)使得它在\(\R^2\)上连续? 请证明你的结论.
+\begin{proof}[解答]
+$f(x,y)=(x-y^2)(x-2y^2)$.
+\begin{tikzpicture}
+    \draw[->,>=stealth] (-2,0)to(2,0)node[below]{$y$};
+    \draw[->,>=stealth] (0,-2)to(0,2)node[left]{$x$};
+    \draw[domain=-1.4:1.4]plot(\x,{(\x)^2});
+    \draw[domain=-2:2]plot(\x,{0.5*(\x)^2});
+    \draw[->,>=stealth,cyan] (0,0)to(0.5,0);
+    \draw[->,>=stealth,cyan] (0,0)to(0.4,0.3);
+    \draw[->,>=stealth,cyan] (0,0)to(0.3,-0.4)
+\end{tikzpicture}
+通过上图看出，当$(x,y)=(t\cos\alpha,t\sin\alpha)$的方向往上时，
+对固定的角度$\alpha$，只要$t$够小就有$x>2y^2\geqslant y^2$（箭头够短时在两条抛物线的上方）；
+当其方向水平或往下时，始终有$x<y^2\leqslant 2y^2$（箭头一直在两条抛物线的下方）。
+是故$x-y^2,x-2y^2$同号，从而$g(t)$在$t=0$的一个去心邻域内是正的。
+\end{proof}
+
+\item 举例说明存在\(n\)阶方阵\(\boldsymbol{A}\), 
+使得其所有特征值的绝对值都严格小于\(\left\|\boldsymbol{A}\right\|\).
+\begin{proof}[解答]
+取$\boldsymbol{A}$是对角线元素均为\(0\)的上三角阵，其所有特征值都是\(0\)，
+而\(\boldsymbol{A}\ne\boldsymbol0\)时\(\|\boldsymbol{A}\|>0\).
+\end{proof}
+
+\item 若\(\boldsymbol{A}\)是\(n\)阶方阵, \(\left\|\boldsymbol{A}\right\|<1\). 
+证明: \(\left(\boldsymbol{I}-\boldsymbol{A}\right)^{-1}
+=\sum_{k=0}^{\infty}\boldsymbol{A}^k.\)
+\begin{proof}
+当$m\to\infty$时，\((\boldsymbol{I}-\boldsymbol{A})\sum_{k=0}^{m}\boldsymbol{A}^k
+=\boldsymbol{I}-\boldsymbol{A}^{m+1}\to\boldsymbol{I}\).
+\end{proof}
+
+\item 若\(\boldsymbol{A}\)是\(n\)阶可逆矩阵, 取\(\alpha>0\)足够小使得
+\(\boldsymbol{I}-\alpha\boldsymbol{AA}^\mathrm{T}\)正定. 令
+\[\boldsymbol{B}_0=\alpha\boldsymbol{A}^\mathrm{T},\boldsymbol{B}_{k+1}
+=\boldsymbol{B}_k(2\boldsymbol{I}-\boldsymbol{AB}_k)\ (k\geqslant 0).\]
+证明: \(\{\boldsymbol{AB}_k\}\)是单调增加的正定矩阵, 其极限为\(\boldsymbol{I}\). 
+特别地, \(\lim_{k\rightarrow+\infty}\boldsymbol{B}_k=\boldsymbol{A}^{-1}\).
+\begin{proof}
+注意到递推式可化为
+\[\boldsymbol{I}-\boldsymbol{A}\boldsymbol{B}_{k+1}
+=(\boldsymbol{I}-\boldsymbol{A}\boldsymbol{B}_k)^2,\]
+由此取$\boldsymbol{C}_k=\boldsymbol{I}-\boldsymbol{A}\boldsymbol{B}_k$，
+有$\boldsymbol{C}_{k+1}=\boldsymbol{C}_k^2$。
+设$\boldsymbol{C}_0=\boldsymbol{I}-\alpha\boldsymbol{AA}^{\rm T}$
+有特征值$\lambda$和相应的特征向量$\boldsymbol{x}$，则
+\[|\boldsymbol{x}|^2-\alpha|\boldsymbol{A}\boldsymbol{x}|^2=\lambda|\boldsymbol{x}|^2,\]
+从而$\lambda<1$；记$\boldsymbol{C}_0$正交对角化为
+$\boldsymbol{P}^{-1}\operatorname{diag}(\lambda_1,\cdots,\lambda_n)\boldsymbol{P}$，
+则诸$\lambda_1,\cdots,\lambda_n\in(0,1)$，从而
+\[\boldsymbol{C}_k=\boldsymbol{P}^{-1}\operatorname{diag}(\lambda_1^{2^k},\cdots,\lambda_n^{2^k})\boldsymbol{P}\searrow\boldsymbol{0}\qquad\text{当 }k\to\infty,\]
+亦即$\boldsymbol{A}\boldsymbol{B}_k\nearrow\boldsymbol{I}$。
+
+注：本题似乎意在提供一个求逆矩阵$\boldsymbol{A}^{-1}$的数值计算方法。
+随着$k$的增大，$\lambda^{2^k}$迅速地趋于$0$，
+因此迭代没多少次后，$\boldsymbol{B}_k$就能相当接近$\boldsymbol{A}^{-1}$了。
+\end{proof}
+
+\item 试对于\(\boldsymbol{A}\)为复矩阵的情形, 定义诱导范数并建立相关性质.
+
+\item 试改编以往遇到过的一个习题, 将一维情形的结果推广到矩阵情形.
+\end{enumerate}
+\end{2b}
+
+\section{常系数线性微分方程}
+\subsection{一阶常系数线性微分方程,矩阵指数函数,高阶常系数线性微分方程,特征方程,算子法}
+\begin{3a}
+\begin{enumerate}
+\item 求以下方程的通解:
+\begin{center}\begin{tabular}{ll}
+\((1)\,y''(x)-3y'(x)+2y(x)=0\);&\((2)\,y''(x)-3y'(x)+2y(x)=x\);\\
+\((3)\,y''(x)-3y'(x)+2y(x)=x\ee^{3x}\);&\((4)\,y''(x)-3y'(x)+2y(x)=x\ee^{2x}\);\\
+\((5)\,y''(x)-3y'(x)+2y(x)=x^2\ee^{x}\cos x\);&\((6)\,y''(x)-3y'(x)+2y(x)=x^2\ee^{x}\sin 2x\).
+\end{tabular}\end{center}
+\begin{proof}[解答]
+由特征方程\(\lambda^2-3\lambda+2=0\)得\(\lambda_1=1,\lambda_2=2\), 
+从而齐次方程\((1)\)的通解为\[y=C_1\ee^x+C_2\ee^{2x},\]
+根据线性方程的通解结构, 为得到后续方程的通解, 只需要得到这些方程的特解. 
+使用算子法, 即得各个特解如下:
+
+(2) \(y^*=\frac{1}{(\DD-1)(\DD-2)}x
+=\left(\frac{1}{\DD-2}-\frac{1}{\DD-1}\right)x
+=\left(\frac{1}{2}+\frac{3}{4}\DD\right)x=\frac{1}{2}x+\frac{3}{4}.\)
+
+(3) \(y^*=\frac{1}{(\DD-1)(\DD-2)}x\ee^{3x}=\ee^{3x}\frac{1}{(\DD+2)(\DD+1)}x
+=\ee^{3x}\left(\frac{1}{2}-\frac{3}{4}\DD\right)x
+=\ee^{3x}\left(\frac{1}{2}x-\frac{3}{4}\right).\)
+
+(4) \(y^*=\frac{1}{(\DD-1)(\DD-2)}x\ee^{2x}=\ee^{2x}\frac{1}{\DD(\DD+1)}x=\ee^{2x}\frac{1}{\DD}\left(1-\DD\right)x=\ee^{2x}\left(\frac{1}{2}x^2-x\right).\)
+\end{proof}
+
+\item 求以下方程的通解:
+\begin{center}\begin{tabular}{ll}
+\((1)\,y''(x)-4y'(x)+4y(x)=0\);&\((2)\,y''(x)-4y'(x)+4y(x)=x\);\\
+\((3)\,y''(x)-4y'(x)+4y(x)=x\ee^{3x}\);&\((4)\,y''(x)-4y'(x)+4y(x)=x\ee^{2x}\);\\
+\((5)\,y''(x)-4y'(x)+4y(x)=x^2\ee^{2x}\cos x\);&\((6)\,y''(x)-4y'(x)+4y(x)=x^2\ee^{x}\sin 2x\).
+\end{tabular}\end{center}
+\begin{proof}[解答]
+由特征方程\(\lambda^2-4\lambda+4=0\)得\(\lambda_1=\lambda_2=2\), 
+从而齐次方程\((1)\)的通解为\[y=C_1\ee^{2x}+C_2x\ee^{2x},\]
+根据线性方程的通解结构, 为得到后续方程的通解, 只需要得到这些方程的特解. 
+使用算子法, 即得各个特解如下:
+
+(2) \(y^*=\left(\frac{1}{\DD-2}\right)^2x
+=\frac{1}{4}(1+\DD)x=\frac{1}{4}x+\frac{1}{4}.\)
+
+(3) \(y^*=\left(\frac{1}{\DD-2}\right)^2x\ee^{3x}
+=\ee^{3x}\left(\frac{1}{\DD+1}\right)^2x
+=\ee^{3x}(1-2\DD)x=\left(x-2\right)\ee^{3x}.\)
+
+(4) \(y^*=\left(\frac{1}{\DD-2}\right)^2x\ee^{2x}
+=\ee^{2x}\frac{1}{\DD^2}x=\frac{1}{6}x^3\ee^{2x}.\)
+\end{proof}
+
+\item 求以下方程的通解:
+\begin{center}\begin{tabular}{ll}
+\((1)\,y''(x)+y'(x)+2y(x)=0\);&\((2)\,y''(x)+y'(x)+2y(x)=x^3+1\);\\
+\((3)\,y''(x)+y'(x)+2y(x)=x\ee^{3x}\);&\((4)\,y''(x)+y'(x)+2y(x)=x\sin 2x\);\\
+\((5)\,y''(x)+y'(x)+2y(x)=x^2\ee^{2x}\cos x\);&\((6)\,y''(x)+y'(x)+2y(x)=x^2\ee^{x}\sin 2x\).
+\end{tabular}\end{center}
+\begin{proof}[解答]
+由特征方程\(\lambda^2+\lambda+2=0\)得\(\lambda_1=\)
+
+开幕雷击，不想算了...
+\end{proof}
+
+
+\item 求以下方程的通解:
+\begin{center}\begin{tabular}{ll}
+\((1)\,y^{(5)}(x)+2y'''(x)+y'(x)=0\);&\((2)\,y^{(5)}(x)+2y'''(x)+y'(x)=(x+1)^2\);\\
+\((3)\,y^{(5)}(x)+2y'''(x)+y'(x)=x\sin 2x\);&\((4)\,y^{(5)}(x)+2y'''(x)+y'(x)=x\sin x\);\\
+\((5)\,y^{(5)}(x)+2y'''(x)+y'(x)=x^2\ee^{2x}\cos x\);&\((6)\,y^{(5)}(x)+2y'''(x)+y'(x)=x^2\ee^x\sin x\).
+\end{tabular}\end{center}
+\begin{proof}[解答]
+由特征方程\(\lambda^5+2\lambda^3+\lambda=0\)得
+\(\lambda_1=0,\lambda_2=\ii,\lambda_3=-\ii\), \(\lambda_2,\lambda_3\)均为二重根. 
+于是齐次方程(1)的通解为\[y=C_1+C_2\cos x+C_3x\cos x+C_4\sin x+C_5x\sin x,\]
+\end{proof}
+
+\item 求方程\(y''(x)-y(x)=1\)满足\(y(0)=1,y'(0)=2\)的特解.
+\begin{proof}[解答]
+    $y(x)=C_1{\rm e}^x+C_2{\rm e}^{-x}-1$，
+    初值说明$C_1+C_2-1=1,C_1-C_2=2$，得$y(x)=2{\rm e}^x-1$。
+\end{proof}
+
+\item 试研究当\(b\)为何值时, 对所有\(y_0,y_1\in\mathbb{R}\), 
+方程$y''(x)+y(x)=0$满足\(y(0)=y_0,y(b)=y_1\)的特解总是存在。
+\begin{proof}[解答]
+    $y(x)=C_1\cos x+C_2\sin x$，方程组$C_1=y_0,C_1\cos b+C_2\sin b=y_1$必有解，
+    就是$\sin b\ne0$，即$b\notin\{k\pi:k\in\Z\}$。
+\end{proof}
+
+\item 若\(n\)阶方阵\(\boldsymbol{A},\boldsymbol{B}\)可交换, 
+证明: \(\ee^{\boldsymbol{A}+\boldsymbol{B}}
+=\ee^{\boldsymbol{A}}\ee^{\boldsymbol{B}}\).
+
+\item 设\(n\geqslant 2\), \(\lambda\in\mathbb{C}\), \(n\)阶方阵\(\boldsymbol{A}\)为
+\[\begin{pmatrix}
+\lambda&1&0&\cdots&0&0\\ \\
+0&\lambda&1&\cdots&0&0\\ \\
+\vdots&\vdots&\vdots&&\vdots&\vdots\\ \\
+0&0&0&\cdots&\lambda&1\\ \\
+0&0&0&\cdots&0&\lambda
+\end{pmatrix}.\]试计算\(\ee^{x\boldsymbol{A}}\).
+\begin{proof}[解答]
+    注意到对\(\boldsymbol{J}=\boldsymbol{A}-\lambda\)，
+    当\(k \geqslant n\)时\(\boldsymbol{J}^k=0\)，则
+    \begin{align*}
+    \ee^{x\boldsymbol{J}}&=\boldsymbol{I}+x\boldsymbol{J}
+    +\frac{x^2}{2!}\boldsymbol{J}^2+\cdots
+    +\frac{x^{n-1}}{(n-1)!}\boldsymbol{J}^{n-1}\\
+    &=\begin{pmatrix}
+        1&\dfrac{x}{1!}&\dfrac{x^2}{2!}&\cdots&\dfrac{x^{n-1}}{(n-1)!}\\
+        &1&\ddots&\ddots&\vdots\\
+        & &\ddots&\ddots&\dfrac{x^2}{2!}\\
+        & & &\ddots&\dfrac{x}{1!}\\
+        & & & &1
+    \end{pmatrix}.\end{align*}
+    根据上一题，$\ee^{x\boldsymbol{A}}=\ee^{x\lambda}\ee^{x\boldsymbol{J}}$。
+\end{proof}
+\end{enumerate}
+\end{3a}
+
+\begin{3b}
+\begin{enumerate}
+\item 设\(P_1,P_2\)是次数依次为\(m,n\geqslant 1\)的多项式, 
+\(Q_1,Q_2\)是次数小于\(m,n\)的非零多项式, 
+满足\(\frac{1}{P(t)}=\frac{Q_1(t)}{P_1(t)}+\frac{Q_2(t)}{P_2(t)}\), 
+其中\(P(t)=P_1(t)P_2(t)\). 若\(f\)为\(I\)上的连续函数, 
+\(f_1,f_2\)依次为区间\(I\)上的\(m,n\)次连续可微函数, 
+满足\(P_1(\mathrm{D})f_1(x)=P_2(\mathrm{D})f_2(x)=f(x)\). 
+令\(F(x)=Q_1(\mathrm{D})f_1(x)+Q_2(\mathrm{D})f_2(x)\). 
+证明: \(F\)是\(m+n\)阶连续可导函数, 进而\(P(\mathrm{D})F(x)=f(x)\).
+
+\item 举例说明上题中, \(Q_1(\mathrm{D})f_1\)可以不是\(m+n\)阶连续可导的.
+\end{enumerate}
+\end{3b}
+
+\section{导数的其他应用}
+\subsection{Newton切线法,平方收敛,平面曲线的曲率和曲率半径,一元实函数的草图,拐点}
+\begin{4a}
+\begin{enumerate}
+\item 设\(a>0\), 用Newton法通过求解\(f(x)=\ee^x-a\)的零点计算\(\ln a\). 
+若取初值为\(1\), 试讨论Newton迭代法的收敛性, 并讨论误差估计.
+\begin{proof}[解答]
+
+\end{proof}
+
+\item 对于\(n\geqslant 2\)以及\(a>0\), 
+讨论通过Newton法计算\(f(x)=x^{10}-a\)的零点的可行性与误差估计.
+\begin{proof}[解答]
+
+\end{proof}
+
+\item 计算椭圆\(\frac{x^2}{4}+\frac{y^2}{9}=1\)上各点的曲率.
+\begin{proof}[解答]
+我们先推导由参数方程确定的平面曲线的曲率计算公式. 
+对于\(y_0=f(x_0)\), 当\(f''(x_0)\ne 0\)时曲率为
+\[K=\frac{|f''(x_0)|}{\big(1+|f''(x_0)|^2\big)^{3/2}}.\]
+先设平面曲线有如下的参数方程\(\begin{cases}
+x=\varphi(t)\\
+y=\phi(t)
+\end{cases}\),则有\[y'(x)=\frac{\dd y}{\dd x}
+=\frac{\dd y/\dd t}{\dd x/\dd t}=\frac{\phi'(t)}{\varphi'(t)},\]进一步有
+\[y''(x)=\frac{\dd}{\dd x}\left(\frac{\dd y}{\dd x}\right)
+=\frac{\dd}{\dd t}\left(\frac{\dd y}{\dd x}\right)\cdot\frac{1}{\dd x/\dd t}
+=\frac{\phi''(t)\varphi'(t)-\phi'(x)\varphi''(x)}{\left(\varphi'(x)\right)^3},\]
+将其代入\(K\)得到\[K=\frac{|\phi''(t)\varphi'(t)-\phi'(x)\varphi''(x)|}{\left(\left(\varphi'(t)\right)^2+\left(\phi'(t)\right)^2\right)^{3/2}}.\]
+一般地, 椭圆\(\frac{x^2}{a^2}+\frac{y^2}{b^2}=1\)的参数方程可设为
+\(\left(a\cos\theta,b\sin\theta\right)\), 代入上述公式即得
+\[K=\sqrt{\frac{a^2b^2}{\left(a^2\sin^2(t)+b^2\cos^2(t)\right)^3}}.\qedhere\]
+\end{proof}
+
+\item 设\(y=\sqrt[3]{\frac{x^4}{x+1}}\), 
+试讨论函数的单调性、极值、凸性、拐点, 求出它的渐近线, 并画出它的简图.
+\begin{proof}[解答]
+首先在\(x=-1\)处\(y(x)\)无定义, 易见其为铅直渐近线. 直接计算得到
+\[y'(x)=\frac{x^3(3x+4)}{3(1+x)^2}\cdot\left(\frac{x^4}{x+1}\right)^{-2/3},\quad x\ne -1,\]
+于是\(y(x)\)有驻点\(-\frac{4}{3},0\). 关于函数的单调性与极值等信息如下表:
+\begin{center}
+\begin{tabular}{c|c|c|c|c|c|c|c}
+\(\int\)&\(\left(-\infty,-\frac{4}{3}\right)\)&\(-\frac{3}{4}\)&\(\left(-\frac{4}{3},-1\right)\)&\(-1\)&\(\left(-1,0\right)\)&\(0\)&\(\left(0,+\infty\right)\)\\
+\(f'\)&\(+\)&\(0\)&\(-\)&不存在&\(-\)&\(0\)&\(+\)\\
+\(f\)&严格单增&极大值点&严格单减&渐近线&严格单减&极小值点&严格单增
+\end{tabular}
+\end{center}
+又有\[y''(x)=\frac{4x^2}{9(1+x)^3}\cdot\left(\frac{x^4}{x+1}\right)^{-2/3},\quad x\ne -1,\]
+可见\(y(x)\)在\((-\infty,-1)\)上凹而在\((-1,+\infty)\)上凸. 并且
+\[\lim_{x\rightarrow\infty}\frac{y(x)}{x}=1,\quad
+\lim_{x\rightarrow\infty}\left(y(x)-x\right)=\frac{1}{3},\]
+即\(y\)有渐近线\(f(x)=x-\frac{1}{3}\). 其简图如下:
+\[\text{[Lenin in Warsaw]}\]
+\end{proof}
+
+\item 设\(y=\ln\frac{x^2+x+1}{x^2-x+1}\), 
+试讨论函数的单调性, 极值, 凸性, 拐点, 求出它的渐近线, 并画出它的简图.
+\begin{proof}[解答]
+先设\(g(x)=\frac{x^2+x+1}{x^2-x+1}\), 有\(g(0)=1>0\), 当\(x\ne 0\)时, 
+\[g(x)=\frac{x^2+x+1}{x^2-x+1}=1+\frac{2x}{x^2-x+1}=1\frac{2}{x+1/x-1},\]
+\(x>0\)时\(x+\frac{1}{x}>2\), 从而\(g(x)>0\); 
+\(x<0\)时\(x+\frac{1}{x}\leqslant -2,\frac{2}{x+1/x-1}<-1\), 也有\(g(x)>0\). 
+从而\(y(x)\)的定义域为\(\R\). 直接计算得到\[y'(x)=\frac{-2x^2+2}{x^4+x^2+1},\]
+于是\(y(x)\)有驻点\(\pm1\). 关于函数的单调性与极值等信息如下表:
+\begin{center}
+\begin{tabular}{c|c|c|c|c|c}
+&\(\left(-\infty,-1\right)\)&\(-1\)&\(\left(-1,1\right)\)&\(1\)&\(\left(1,+\infty\right)\)\\\hline
+\(f'\)&\(-\)&\(0\)&\(+\)&\(0\)&\(-\)\\
+\(f\)&严格单减&极小值点&严格单增&极大值点&严格单减
+\end{tabular}
+\end{center}
+又有\[y''(x)=\frac{4x(x^4-2x^2-2)}{(x^4+x^2+1)^2},\]
+令\(y''(x)=0\), 得到三个实根分别为\(0,\pm\sqrt{1+\sqrt{3}}\). 关于函数凹凸性有下表:
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+&\(\left(-\infty,-\sqrt{1+\sqrt{3}}\right)\)&\(\left(-\sqrt{1+\sqrt{3}},0\right)\)&\(\left(0,\sqrt{1+\sqrt{3}}\right)\)&\(\left(\sqrt{1+\sqrt{3}},+\infty\right)\)\\
+\(f''\)&\(-\)&\(+\)&\(-\)&\(+\)\\
+\(f\)&严格凹&严格凸&严格凹&严格凸
+\end{tabular}
+\end{center}
+ 又有\[\lim_{x\rightarrow\infty}\ln\frac{x^2+x+1}{x^2-x+1}=0,\]
+ 从而\(y(x)\)有水平渐近线\(y=0\), 其简图如下.
+ \begin{center}
+    Jeremy Bentham developed the unique notion of ``self--incon'',\\
+    that is, the notion that a thing is its own best sign\\
+    (as in the Lewis Carroll joke about Englishmen using ever larger maps,\\
+    until they finally settled on using England itself as \textit{its own map}).
+\end{center}
+\end{proof}
+\end{enumerate}
+\end{4a}
+
+\begin{4b}
+\begin{enumerate}
+\item 试给出由参数方程确定的平面曲线曲率的计算公式.
+\begin{proof}[解答]
+参见本节\(\boldsymbol{\mathcal{A}}\)中的第3小题.
+\end{proof}
+
+\item 设\(\varphi\)为\((0,+\infty)\)内的凹函数, 证明:
+\[\lim_{x\rightarrow+\infty}\left(\varphi(2x)-2\varphi(x)\right)=-\infty\]
+当且仅当\(y=\varphi(x)\)当\(x\rightarrow+\infty\)时没有渐近线.
+\begin{proof}
+    下面的解答来自\href{https://zhuanlan.zhihu.com/p/450135371?utm_psn=1822598991424122880}{Polonaise的回答}。
+
+(1) $\varphi(2x)-2\varphi(x)$ 的性质
+
+由 $\varphi(x)$ 是凹函数，知当 $y>x$ 时，
+\[
+\frac{\varphi(2y)-\varphi(2x)}{2y-2x}\leqslant\frac{\varphi(y)-\varphi(x)}{y-x}.
+\]
+即
+\[\varphi(2y)-2\varphi(y)\leqslant\varphi(2x)-2\varphi(x).\]
+假设 $\lim\limits_{x\rightarrow+\infty}\bigl( \varphi(2x)-2\varphi(x) \bigr)=-\infty$ 不成立，则存在 $c\in\mathbb{R}$，使得
+\[\lim_{x\rightarrow+\infty}\bigl( \varphi(2x)-2\varphi(x) \bigr)=c,\]
+亦即
+\[\lim_{x\rightarrow+\infty}\bigl( \varphi(2x)-c-2(\varphi(x)-c) \bigr)=0.\]
+因此，不妨假设 $\lim\limits_{x\rightarrow+\infty}\bigl( \varphi(2x)-2\varphi(x) \bigr)=0$。
+
+(2) $\dfrac{\varphi(x)}{x}$ 的估计
+
+由于$\varphi$未定义在$0$点，需要找个大于$0$的点来作为起始点，比如说$1$。
+由 $\varphi(x)$ 是凹函数，知当 $y>x>1$ 时，
+\[\frac{\varphi(y)-\varphi(1)}{y-1}\leqslant\frac{\varphi(x)-\varphi(1)}{x-1}.\]
+
+故 $\dfrac{\varphi(x)-\varphi(1)}{x-1}$ 在 $(1,+\infty)$ 上单调递减，
+于是 $\lim\limits_{x\rightarrow+\infty}\dfrac{\varphi(x)-\varphi(1)}{x-1}$ 在广义实数系内存在，且这个极限就是
+\[\lim_{x\rightarrow+\infty}\frac{\varphi(x)-\varphi(1)}{x-1}
+=\lim_{x\rightarrow+\infty}\frac{\varphi(x)}{x}.\]
+
+令 $g(x)=\dfrac{\varphi(x)}{x}$，则
+\[\varphi(2x)-2\varphi(x)=2x\bigl( g(2x)-g(x) \bigr).\]
+
+由 $\lim\limits_{x\rightarrow+\infty}2x\bigl( g(2x)-g(x) \bigr)=0$，知存在 $M>0$，当 $x>M$ 时，成立：
+\[-1<2x\bigl( g(2x)-g(x) \bigr)<1,\]
+即
+\[|g(2x)-g(x)|<\frac{1}{2x}.\]
+进一步，有
+\[|g(4x)-g(2x)|<\frac{1}{4x},\]
+一直到
+\[|g(2^nx)-g(2^{n-1}x)|<\frac{1}{2^nx},\]
+求和得到
+\[|g(2^nx)-g(x)|<\frac{1}{2x}+\frac{1}{4x}+\cdots+\frac{1}{2^nx}<\frac{1}{x}.\]
+因此 $\bigl\{g(2^nx)\bigr\}$ 有界。假如 $\lim\limits_{x\rightarrow+\infty}g(x)=-\infty$，则由海涅（Heine）定理，必有 $\lim\limits_{n\rightarrow+\infty}g(2^nx)=-\infty$，引发矛盾。
+
+前面说明了$\lim\limits_{x\rightarrow+\infty}g(x)$存在，也就是说存在 $k\in\mathbb{R}$，使得
+\[\lim_{x\rightarrow+\infty}\frac{\varphi(x)}{x}=k.\]
+
+(3) $\varphi(x)-kx$ 的估计
+
+令 $h(x)=\varphi(x)-kx$，则现有条件转化为：
+\begin{align}
+&({\rm i})\ \lim_{x\rightarrow+\infty}\frac{h(x)}{x}=0; \\
+&({\rm ii})\ \lim_{x\rightarrow+\infty}\bigl( h(2x)-2h(x) \bigr)=0.
+\end{align}
+
+由 $({\rm ii})$ 知，$\forall\varepsilon>0$，$\exists L>0$，当 $x>L$ 时，
+\[\left|\frac{h(2x)}{2}-h(x)\right|<\frac{\varepsilon}{2}.\]
+进一步，有
+\[\left|\frac{h(4x)}{4}-\frac{h(2x)}{2}\right|<\frac{\varepsilon}{4},\]
+一直到
+\[\left|\frac{h(2^nx)}{2^n}-\frac{h(2^{n-1}x)}{2^{n-1}}\right|<\frac{\varepsilon}{2^n}.\]
+求和得到
+\[\left|\frac{h(2^nx)}{2^n}-h(x)\right|<\frac{\varepsilon}{2}
++\frac{\varepsilon}{4}+\cdots+\frac{\varepsilon}{2^n}<\varepsilon.\]
+由 $({\rm i})$ 知，对固定的 $x$，$\lim\limits_{n\rightarrow+\infty}\dfrac{h(2^nx)}{2^n}=0$，于是在上式中令 $n\rightarrow+\infty$ 得到
+\[|h(x)| \leqslant \varepsilon.\]
+因此，我们证明了
+\[\lim_{x\rightarrow+\infty}h(x)
+=\lim_{x\rightarrow+\infty}\bigl( \varphi(x)-kx \bigr)=0.\]
+
+(4) 结论
+
+由(2)与(3)知，在 $\lim\limits_{x\rightarrow+\infty}\bigl( \varphi(2x)-2\varphi(x) \bigr)=-\infty$ 不成立的条件下，成立
+\[
+\lim_{x\rightarrow+\infty}\frac{\varphi(x)}{x}=k
+\]
+与
+\[
+\lim_{x\rightarrow{+\infty}}\bigl( \varphi(x)-kx \bigr)=0,
+\]
+即$y=\varphi(x)$ 在 $x\rightarrow+\infty$ 时存在渐近线 $y=kx$。
+
+因此，若 $y=\varphi(x)$ 在 $x\rightarrow+\infty$ 时没有渐近线，则
+\[
+\lim_{x\rightarrow+\infty}\bigl( \varphi(2x)-2\varphi(x) \bigr)=-\infty.\qedhere
+\]
+
+\end{proof}
+\end{enumerate}
+\end{4b}

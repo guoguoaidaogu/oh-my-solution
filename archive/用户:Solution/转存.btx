@@ -1,0 +1,671 @@
+\theoremstyle{remark}\newtheorem{quiza}{A}
+\theoremstyle{remark}\newtheorem{quizb}{B}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\dd}{\mathrm{d}}
+\pdef\(#+1\){\@setfalse{math-display}\@@enter{math}\displaystyle{#1}\@@exit{math}}
+\setdisplaytitle{转存}
+\sethtmltitle{转存}
+\setcounter{section}{3}
+\section{幂级数的应用}
+\subsection{数项级数的计算,幂级数与三角级数, Abel和, Ces\'{a}ro和, Tauber型定理,母函数, Bernoulli多项式, Bernoulli数,幂级数的抽象应用, Hardy--Littlewood定理}
+\begin{quiza}
+\begin{enumerate}
+\item 利用幂级数计算级数\(\sum_{n=1}^{\infty}\frac{1}{(2n-1)(2n+1)(2n+3)}\).
+\begin{proof}[解答]
+由于\[\frac{1}{(2n-1)(2n+1)(2n+3)}
+=\frac{1}{8}\frac{1}{2n-1}-\frac{1}{4}\frac{1}{2n+1}+\frac{1}{8}\frac{1}{2n+3},\]
+考虑幂级数\[\sum_{n=1}^{\infty}\frac{x^{2n+3}}{(2n-1)(2n+1)(2n+3)}
+=\sum_{n=1}^{\infty}\left(\frac{x^4}{8}\frac{x^{2n-1}}{2n-1}
+-\frac{x^2}{4}\frac{x^{2n+1}}{2n+1}+\frac{1}{8}\frac{x^{2n+3}}{2n+3}\right),\]
+设\(S(x)=\sum_{n=1}^{\infty}\frac{x^{2n-1}}{2n-1}\), 
+则\(S'(x)=\sum_{n=1}^{\infty}x^{2n-2}=\frac{1}{1-x^2}\), 
+由此可得\[S(x)=\frac{1}{2}\ln\frac{1+x}{1-x},\quad
+\sum_{n=1}^{\infty}\frac{x^{2n+1}}{2n+1}=S(x)-x,\quad
+\sum_{n=1}^{\infty}\frac{x^{2n+3}}{2n+3}=S(x)-x-\frac{x^3}{3},\]
+于是\[\sum_{n=1}^{\infty}\frac{1}{(2n-1)(2n+1)(2n+3)}
+=\lim_{x\rightarrow 1^-}\frac{x^4}{8}S(x)-\frac{x^2}{4}\left(S(x)-x\right)
++\frac{1}{8}\left(S(x)-x-\frac{x^3}{3}\right)=\frac{1}{12}.\qedhere\]
+\end{proof}
+\item 计算\(\sum_{n=0}^{\infty}\frac{(-1)^n}{4n+1}\).
+\begin{proof}[解答]
+由于\(\sum_{n=0}^{\infty}(-1)^nx^{4n}=\frac{1}{1+x^4}\), 于是
+\[\sum_{n=0}^{\infty}\frac{(-1)^n}{4n+1}
+=\int_{0}^{1}\sum_{n=0}^{\infty}(-1)^nx^{4n}\,\dd x
+=\int_{0}^{1}\frac{1}{1+x^4}\,\dd x
+=\frac{\pi+\ln\left(1+\sqrt{2}\right)}{4\sqrt{2}}.\qedhere\]
+\end{proof}
+\item 计算\(\sum_{n=1}^{\infty}\frac{1}{n^4}\).
+\begin{proof}[解答]
+在2.7.\(\boldsymbol{\mathcal{B}}\) 第5题中, 我们得到了
+\[\sin\pi x=\pi x\prod_{n=1}^{\infty}\left(1-\frac{x^2}{n^2}\right),\]
+即有\(\frac{\sin \pi x}{\pi x}=\prod_{n=1}^{\infty}\left(1-\frac{x^2}{n^2}\right),\)注意到
+\[\frac{\sin \pi x}{\pi x}=1-\frac{\pi ^2 x^2}{6}+\frac{\pi ^4 x^4}{120}-o(x^5),\quad x\rightarrow 0,\]
+而根据根与系数的关系, 对右侧的无穷乘积有
+\[\prod_{n=1}^{\infty}\left(1-\frac{x^2}{n^2}\right)=1-x^2\sum_{n=1}^{\infty}\frac{1}{n^2}+x^4\sum_{i\ne j}\frac{1}{i^2\cdot j^2}+o(x^5),\quad x\rightarrow 0,\]
+于是有\(\sum_{n=1}^{\infty}\frac{1}{n^2}=\frac{\pi^2}{6},\sum_{i\ne j}\frac{1}{i^2\cdot j^2}=\frac{\pi^4}{120}\), 从而
+\[\sum_{n=1}^{\infty}\frac{1}{n^4}=\left(\sum_{n=1}^{\infty}\frac{1}{n^2}\right)^2-2\sum_{i\ne j}\frac{1}{i^2\cdot j^2}
+=\frac{\pi^4}{36}-\frac{\pi^4}{60}=\frac{\pi^4}{90}.\qedhere\]
+\end{proof}
+\item 计算\(\sum_{n=1}^{\infty}\frac{(n+1)H_n}{2^n},\sum_{n=1}^{\infty}\frac{H_n}{2^n},\sum_{n=1}^{\infty}\frac{H_n}{2^n(n+1)}\), 其中\(H_n=\sum_{k=1}^{n}\frac{1}{k}\).
+\begin{proof}[解答]
+注意到\[\sum_{n=1}^{\infty}\frac{(n+1)}{2^n}\sum_{k=1}^{n}\frac{1}{k}
+=\sum_{n=1}^{\infty}\frac{1}{n}\sum_{k=n}^{\infty}\frac{k+1}{2^k},\]
+而\[\begin{split}
+\sum_{k=n}^{\infty}\frac{k+1}{2^k}&=\sum_{k=1}^{\infty}\frac{k+1}{2^k}-\sum_{k=1}^{n-1}\frac{k+1}{2^k}
+=\left.\left(\sum_{k=1}^{\infty}x^{k+1}-\sum_{k=1}^{n-1}x^{k+1}\right)'\right|_{x=1/2}\\
+&=\left.\left(\frac{x^2}{1-x}-\frac{x^2(1-x^{n-1})}{1-x}\right)'\right|_{x=1/2}=\frac{2+n}{2^{n-1}}.
+\end{split}\]于是\[\begin{split}
+\sum_{n=1}^{\infty}\frac{(n+1)}{2^n}\sum_{k=1}^{n}\frac{1}{k}
+&=\sum_{n=1}^{\infty}\frac{1}{n}\sum_{k=n}^{\infty}\frac{k+1}{2^k}
+=\sum_{n=1}^{\infty}\frac{2+n}{n2^{n-1}}
+=\sum_{n=1}^{\infty}\frac{1}{2^{n-1}}+4\sum_{n=1}^{\infty}\frac{1}{n2^n}\\
+&=2+4\sum_{n=1}^{\infty}\int_{0}^{1/2}x^{n-1}\dd x
+=2+4\int_{0}^{1/2}\frac{1}{1-x}\dd x=2+4\ln 2.
+\end{split}\]
+同理\[\begin{split}
+\sum_{n=1}^{\infty}\frac{H_n}{2^n}
+&=\sum_{n=1}^{\infty}\frac{1}{n}\sum_{k=n}^{\infty}\frac{1}{2^n}
+=\sum_{n=1}^{\infty}\frac{1}{n}\left(\sum_{k=1}^{\infty}\frac{1}{2^n}
+-\sum_{k=1}^{n-1}\frac{1}{2^n}\right)
+=\sum_{n=1}^{\infty}\frac{1}{n\cdot 2^{n-1}}\\
+&=2\left(\sum_{n=1}^{\infty}\int_{0}^{1/2}x^{n-1}\dd x\right)
+=2\int_{0}^{1/2}\frac{1}{1-x}\dd x=2\ln 2.\end{split}\]
+以及\[\begin{split}
+\sum_{n=1}^{\infty}\frac{H_n}{2^n(n+1)}
+&=\sum_{n=1}^{\infty}\frac{1}{n}\sum_{k=n}^{\infty}\frac{1}{2^k(k+1)}
+=\sum_{n=1}^{\infty}\frac{1}{n}\left(\sum_{k=1}^{\infty}\frac{1}{2^k(k+1)}
+-\sum_{k=1}^{n-1}\frac{1}{2^k(k+1)}\right)\\
+&=2\sum_{n=1}^{\infty}\frac{1}{n}\left(\int_{0}^{1/2}\frac{x}{1-x}\dd x
+-\int_{0}^{1/2}\frac{x-x^n}{1-x}\dd x\right)
+=2\sum_{n=1}^{\infty}\frac{1}{n}\int_{0}^{1/2}\frac{x^n}{1-x}\dd x\\
+&=2\int_{0}^{1/2}\frac{1}{1-x}\int_{0}^{x}\frac{1}{1-t}\dd t\dd x
+=2\int_{0}^{1/2}\frac{\ln (1-x)}{x-1}\dd x=\left(\ln 2\right)^2.\end{split}\]
+\end{proof}
+\item 证明: 若级数\(\sum_{n=0}^{\infty}a_n\) Ces\'{a}ro可和, 
+则\(\left\lbrace\frac{a_n}{n+1}\right\rbrace\)有界.
+\begin{proof}
+记\(S_n=\sum_{k=1}^{n}a_k,\,\sigma_n=\frac{1}{n+1}\sum_{k=0}^{n}S_k\), 
+由题设\(\sigma=\lim_{n\rightarrow+\infty}\sigma_n\). 由于
+\[\frac{S_{n}}{n+1}=\frac{(n+1)\sigma_n-n\sigma_{n-1}}{n+1}
+=\sigma_n-\frac{n}{n+1}\sigma_{n-1}\rightarrow 0,\quad n\rightarrow+\infty,\]
+于是\[\frac{a_n}{n+1}=\frac{S_n-S_{n-1}}{n+1}
+=\frac{S_n}{n+1}-\frac{n}{n+1}\frac{S_{n-1}}{n}\rightarrow 0,\quad n\rightarrow+\infty,\]
+从而\(\left\lbrace\frac{a_n}{n+1}\right\rbrace \)有界.
+\end{proof}
+\item 举例说明存在Abel可和但不Ces\'{a}ro可和的级数.
+\begin{proof}[解答]
+\(\sum_{n=0}^{\infty}(-1)^n(n+1)\). 容易验证该级数Abel可和, 但不Ces\'{a}ro可和.
+\end{proof}
+\item 证明:\[\begin{split}
+\pi&=\frac{1}{64}\sum_{n=0}^{\infty}\frac{(-1)^n}{1024^n}\left(-\frac{32}{4n+1}-\frac{1}{4n+3}+\frac{256}{10n+1}-\frac{64}{10n+3}-\right.\\
+&\left.\frac{4}{10n+5}-\frac{4}{10n+7}+\frac{1}{10n+9}\right).\end{split}\]
+\begin{proofc}[失败的计算]
+	我们将上式从左到右分拆成七个级数, 分别记为\(a_1,a_2,\cdots,a_7\).
+	
+	我们先计算\(a_1=\sum_{n=0}^{\infty}\frac{(-1)^{n+1}32}{1024^n(4n+1)}\), 令
+    \[f(x):=2^{5/2}\cdot 32\sum_{n=0}^{\infty}\frac{(-1)^{n+1}x^{4n+1}}{4n+1},\quad x\in(0,1),\]
+    则\(f(2^{-5/2})=a_1\), 并且有\(f'(x)=-\frac{2^{5/2}\cdot 32}{1+x^4}\), 即有
+    \[-2^{5/2}\cdot 32\int_{0}^{2^{-5/2}}\frac{1}{1+x^4}\dd x=a_1,\]
+    同理可得\[a_2=\sum_{n=0}^{\infty}\frac{(-1)^{n+1}}{1024^n(4n+3)}=\int_{0}^{2^{-5/2}}\frac{-(2^{5/2})^3x^2}{1+x^4}\dd x,\]
+	以及\[a_k=\sum_{n=0}^{\infty}\frac{(-1)^{n+i_k}q_k}{1024^n\left(10n+(2k-5)\right)}=(-1)^{i_k}2^{2k-5}q_k\int_{0}^{1/2}\frac{x^{2k-6}}{1+x^{10}}\dd x,\quad k=3,4,5,6,7,\]
+    上式中的\(i_k,q_k\)由题设公式给出. 理论上积分算出来能有\(64\pi=\sum_{k=1}^{7}a_k\)，实际上计算难度过大。
+\end{proofc}
+\begin{proof}
+(1) 先来一道高中题：$\tan\alpha=1/2,\tan\beta=1/7$，问$\tan(2\alpha-\beta)$是多少。
+
+[解答] \(\tan(2\alpha)=\frac{1}{1-\frac{1}{4}}=\frac{4}{3}\)，
+从而\(\tan(2\alpha-\beta)=\frac{\frac{28-3}{21}}{1+\frac{4}{21}}=1\)。
+
+还有一个方法是$(2+\ii)^2(7-\ii)=25(1+\ii)$两边取辐角。
+
+(2) 用\[\arctan x=\sum_{n=0}^{\infty}\frac{(-1)^n}{2n+1}x^{2n+1},\]
+令$x=1/2$得\[2\arctan\frac{1}{2}=\sum_{n=0}^{\infty}\frac{(-1)^n}{4^n(2n+1)}.\]
+要凑$1024=4^5$，改写为\begin{align*}
+    2\arctan\frac{1}{2}&=\sum_{n=0}^{\infty}\frac{(-1)^n}{1024^n}
+    \left(\frac{1}{10n+1}-\frac{4^{-1}}{10n+3}+\frac{4^{-2}}{10n+5}-\frac{4^{-3}}{10n+7}+\frac{4^{-4}}{10n+9}\right)\\
+    &=\frac{1}{4\cdot64}\sum_{n=0}^{\infty}\frac{(-1)^n}{1024^n}
+    \left(\frac{256}{10n+1}-\frac{64}{10n+3}+\frac{16}{10n+5}-\frac{4}{10n+7}+\frac{1}{10n+9}\right).
+\end{align*}
+(3) 再来一个恒等式：\(\arctan\frac{1}{x-1}=\operatorname{Im}\left[-\ln\Big(1-\frac{1+\ii}{x}\Big)\right]\)。
+
+[解答] 图中的角度算两次，左边是几何关系，右边是复数的辐角。
+\begin{tikzpicture}[scale=1.5]
+    \draw[->,>=stealth](-0.5,0)to(2,0);\draw[->,>=stealth](0,-0.5)to(0,1.5);
+    \draw(0,0)to(1,1)to(1.6,0);\draw[dashed](1,0)to(1,1);
+    \draw[cyan](1.45,0)arc(180:121:0.15);
+    \node at (-0.1,-0.1) {$0$};\node at (1,-0.1) {$1$};
+    \node at (1.6,-0.1) {$x$};\node at (1,1.1) {$1+{\rm i}$};
+\end{tikzpicture}
+(4) 由于对$|z|<1$有\[-\ln(1-z)=\sum_{n=0}^{\infty}\frac{z^n}{n},\]
+当$x>|1+\ii|$时, (3)进而变为
+\[\arctan\frac{1}{x-1}=\operatorname{Im}\sum_{n=0}^{\infty}\frac{(1+\ii)^n}{x^nn}.\]
+每$4$项一组，分子上$(1+\ii)^4=(2\ii)^2=-4$，从而
+\begin{align*}
+    \arctan\frac{1}{x-1}&=\sum_{n=0}^{\infty}\left(\frac{(-4)^n\operatorname{Im}(1+\ii)}{x^{4n+1}(4n+1)}
+    +\frac{(-4)^n\operatorname{Im}(1+\ii)^2}{x^{4n+2}(4n+2)}
+    +\frac{(-4)^n\operatorname{Im}(1+\ii)^3}{x^{4n+3}(4n+3)}\right)\\
+    &=\sum_{n=0}^{\infty}\frac{(-4)^n}{x^{4n+3}}
+    \left(\frac{x^2}{4n+1}+\frac{2x}{4n+2}+\frac{2}{4n+3}\right).
+\end{align*}
+令$x=8$，这是为了$8^4/4=1024$，得出
+\begin{align*}
+    \arctan\frac{1}{7}&=\frac{1}{8^3}\sum_{n=0}^{\infty}\frac{(-1)^n}{1024^{n}}
+    \left(\frac{64}{4n+1}+\frac{16}{4n+2}+\frac{2}{4n+3}\right)\\
+    &=\frac{1}{4\cdot64}\sum_{n=0}^{\infty}\frac{(-1)^n}{1024^{n}}
+    \left(\frac{32}{4n+1}+\frac{20}{10n+5}+\frac{1}{4n+3}\right).
+\end{align*}
+(5) 结算时间到！通过(1)有\[\frac{\pi}{4}=2\arctan\frac{1}{2}-\arctan\frac{1}{7},\]
+代入(2),\,(4)所得即可。
+\end{proof}
+\end{enumerate}
+\end{quiza}
+
+\begin{quizb}
+\begin{enumerate}
+\item 计算积分\(\int_{0}^{1}\frac{\ln(1+x)}{x}\,\dd x.\)
+\begin{proof}[解答]
+由\(\ln(1+x)\)的幂级数展开, 
+\[\ln(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}+\cdots+\frac{(-1)^{n+1}x^n}{n}+\cdots,\]
+有\[\int_{0}^{1}\frac{\ln(1+x)}{x}\,\dd x
+=\lim_{n\rightarrow+\infty}\int_{0}^{1}\left(1-\frac{x}{2}+\frac{x^2}{3}+\cdots+\frac{(-1)^{n+1}x^{n-1}}{n}\right)\dd x
+=\sum_{n=1}^{\infty}\frac{(-1)^{n+1}}{n^2},\]
+众所周知\(\sum_{n=1}^{\infty}\frac{1}{n^2}=\frac{\pi^2}{6}\), 
+于是\[\sum_{n=1}^{\infty}\frac{(-1)^{n+1}}{n^2}
+=\sum_{n=1}^{\infty}\frac{1}{n^2}-\frac{1}{2}\sum_{n=1}^{\infty}\frac{1}{n^2}
+=\frac{\pi^2}{12}.\qedhere\]
+\end{proof}
+\item 试讨论级数\(\sum_{n=0}^{\infty}a_n\)和\(\sum_{n=0}^{\infty}b_n\)
+在各种收敛情况下(绝对收敛, 条件收敛, 发散), 它们的Cauchy乘积的收敛情况. 并给出证明或反例.
+\begin{proof}[解答]
+
+\end{proof}
+\item (小\(o\) Tauber定理)设\(\sum_{n=0}^{\infty}a_n\)的Abel和为\(A\).证明:
+\begin{enumerate}[label=(\arabic*)]
+\item 若\(\lim_{n\rightarrow+\infty}na_n=0\), 则\(\sum_{n=0}^{\infty}a_n=A\).
+\item \(\sum_{n=0}^{\infty}a_n\)收敛当且仅当
+\(\lim_{n\rightarrow+\infty}\frac{a_1+2a_2+\cdots+na_n}{n}=0.\)
+\end{enumerate}
+\begin{proof}
+(1)由于\(\lim_{n\rightarrow+\infty}na_n=0\), 
+可设\(\delta_n=\sup_{k\geqslant n}|k a_k|\), 
+则\(\{\delta_n\}\)单调递减趋于\(0\). 令
+\[S(x)=\sum_{n=0}^{\infty}a_nx^n,\quad 0\leqslant x<1.\]
+对于任何正整数\(N\), 都有\[\begin{split}
+\sum_{n=0}^{N}a_n-A&=\sum_{n=0}^{N}a_n-S(x)+S(x)-A\\
+&=\sum_{n=1}^{N}a_n(1-x^n)-\sum_{n=N+1}^{\infty}a_nx^n+\left(S(x)-A\right)\\
+&=:I_1(x)+I_2(x)+I_3(x),
+\end{split}\]对\(x\in[0,1)\), 有\begin{align*}
+\left|I_1(x)\right|&\leqslant (1-x)\sum_{n=1}^{N}|a_n|(1+x+\cdots+x^{n-1})\\
+&\leqslant (1-x)\sum_{n=1}^{N}n|a_n|\leqslant (1-x)N\delta_1,\\
+\end{align*}
+且有\begin{align*}
+\left|I_2(x)\right|&\leqslant \sum_{n=N+1}^{\infty}|na_n|\frac{x^n}{n}
+\leqslant\frac{\delta_N}{N}\sum_{n=N+1}^{\infty}x^n\\
+&=\frac{\delta_N}{N}\frac{x^{N+1}}{1-x}\leqslant\frac{\delta_N}{N(1-x)}.
+\end{align*}令\(x_N=1-\frac{\sqrt{\delta_N}}{N}\), 即\(N(1-x_N)=\sqrt{\delta_N}\). 
+易见当\(N\rightarrow+\infty\)时, \(x_N\rightarrow 1\), 且有
+\[|I_1(x_N)|\leqslant\delta_1\sqrt{\delta_N},\quad \left|I_2(x_N)\right|\leqslant\frac{\delta_N}{\sqrt{\delta_N}}=\sqrt{\delta_N},\quad I_3(x_N)=S(x_N)-A,\]
+结合\begin{align*}
+\left|\sum_{n=0}^{N}a_n-A\right|&\leqslant|I_1(x_N)|+|I_2(x_N)|+|I_3(x_N)|\\
+&\leqslant (\delta_1+1)\sqrt{\delta_N}+\left|S(x_N)-A\right|,
+\end{align*}
+令\(N\rightarrow+\infty\)结论即证.
+
+(2)必要性. 记\(A_k=a_1+a_2+\cdots+a_k\), 由题设\(\{A_n\}\)收敛到\(A\). 
+由Abel变换得到\[\lim_{n\rightarrow+\infty}\frac{a_1+2a_2+\cdots+na_n}{n}
+=\lim_{n\rightarrow+\infty}\frac{1}{n}\left(nA_n-\sum_{k=1}^{n-1}A_k\right),\]
+由Stolz公式\(\lim_{n\rightarrow+\infty}\frac{1}{n}\left(nA_n-\sum_{k=1}^{n-1}A_k\right)
+=A-\lim_{n\rightarrow+\infty}\frac{A_n}{(n+1)-n}=A-A=0\). 从而必要性成立.
+
+充分性. 记\(b_n=\frac{1}{n}\sum_{k=1}^{n}ka_k,b_0=0\), 
+则\(\lim_{n\rightarrow+\infty}b_n=0\), 由于
+\[na_n=nb_n-(n-1)b_{n-1}\Rightarrow a_n=b_{n}-b_{n-1}+\frac{b_{n-1}}{n},\]
+于是\(\sum_{n=1}^{\infty}a_n=\sum_{n=1}^{\infty}\frac{b_{n-1}}{n}\), 
+由\(\lim_{n\rightarrow+\infty}n\cdot\frac{b_{n-1}}{n}=0\)
+结合(1)可知\(\sum_{n=1}^{\infty}a_n\)收敛.
+\end{proof}
+\item \textbf{Hardy--Littlewood (哈代--利特尔伍德)定理}: 
+设\(S_n\geqslant 0\), \(\lim_{x\rightarrow 1^-}(1-x)\sum_{n=0}^{\infty}S_nx^n=A\),
+则\[\lim_{n\rightarrow+\infty}\frac{1}{n}\sum_{k=0}^{n}S_k=A.\]
+请按以下步骤证明该定理.
+\begin{enumerate}[label=(\arabic*)]
+\item 当\(f\)为多项式时, 成立\begin{equation*}\label{get}\tag{$\clubsuit$}
+\lim_{x\rightarrow 1^-}(1-x)\sum_{n=0}^{\infty}S_nx^nf(x^n)=A\int_{0}^{1}f(x)\,\dd x.
+\end{equation*}
+\item 对任何\(f\in C[0,1]\), $(\clubsuit)$式成立.
+\item 对任何分段常值函数, $(\clubsuit)$式成立.
+\item 取\(f(x)=\frac{1}{x}\chi_{[1/\ee,1]}(x), x_n=1-\frac{1}{n},\)
+证明\(\frac{1}{n}\sum_{k=0}^{n}S_k
+=(1-x_n)\sum_{n=1}^{\infty}S_kx_n^kf(x_n^k)\)并结束定理的证明.
+\end{enumerate}
+\begin{proof}
+不妨设\(A=1\).
+\begin{enumerate}[label=(\arabic*)]
+\item 对于任何\(k\in\mathbb{N}_+\), 由于\(1-x^{k+1}=(1-x)(1+x+x^2+\cdots+x^k)\), 我们有
+\[\lim_{x\rightarrow 1^-}(1-x^{k+1})\sum_{n=0}^{\infty}S_nx^{n(k+1)}
+=\lim_{x\rightarrow 1^-}(1-x)\sum_{n=0}^{\infty}S_nx^n=1,\]
+从而\[\lim_{x\rightarrow 1^-}(1-x)\sum_{n=0}^{\infty}S_nx^nx^{nk}
+=\frac{1}{k+1}=\int_{0}^{1}x^k\,\dd x,\]
+由此对于任何多项式\(f(x)\), 成立
+\(\lim_{x\rightarrow 1^-}(1-x)\sum_{n=0}^{\infty}S_nx^nf(x^n)
+=\int_{0}^{1}f(x)\,\dd x\).
+\item 现任取\(f\in C[0,1]\), 则有一列多项式\(P_k\)使得
+\[\varepsilon_k\equiv\max_{x\in[0,1]}\left|P_k(x)-f(x)\right|\rightarrow 0,\quad k\rightarrow+\infty,\]
+则对于\(x\in(0,1)\), 有\[\begin{split}
+&\quad\left|(1-x)\sum_{n=0}^{\infty}S_nx^nf(x^n)-\int_{0}^{1}f(x)\,\dd x\right|
+\leqslant (1-x)\sum_{n=0}^{\infty}S_nx^n|f(x^n)-P_k(x^n)|\\
+&+\left|(1-x)\sum_{n=0}^{\infty}S_nx^nP_k(x^n)-\int_{0}^{1}P_k(x)\,\dd x\right|+\int_{0}^{1}\left|f(x)-P_k(x)\right|\dd x\\
+&\leqslant\varepsilon_k(1-x)\sum_{n=0}^{\infty}S_nx^n+\left|(1-x)\sum_{n=0}^{\infty}S_nx^nP_k(x^n)-\int_{0}^{1}P_k(x)\,\dd x\right|+\varepsilon_k,\quad \forall\,k\geqslant 0,
+\end{split}\]令\(x\rightarrow 1^-\)得到
+\[\varlimsup_{x\rightarrow 1^-}\left|(1-x)\sum_{n=0}^{\infty}S_nx^nP_k(x^n)-\int_{0}^{1}P_k(x)\,\dd x\right|\leqslant 2\varepsilon_k,\quad \forall\,k\geqslant 0.\]
+再令\(k\rightarrow+\infty\)得到\[\lim_{x\rightarrow 1^-}(1-x)\sum_{n=0}^{\infty}S_nx^nf(x^n)=\int_{0}^{1}f(x)\,\dd x.\]
+\item 现对分段常值函数证明上式. 任取\(0<a<b<1\), 我们先证\(f=\chi_{[a,b]}\)的情况. 
+取\(\varepsilon\in\left(0,\min\left\lbrace a,1-b,\frac{b-a}{3}\right\rbrace \right)\). 
+作分段连续函数\(f^{\varepsilon}\)与\(f_{\varepsilon}\), 
+使得\(f^{\varepsilon}\)在\([0,a-\varepsilon]\)和\([b+\varepsilon,1]\)上的取值为\(0\), 
+在\([a,b]\)上为\(1\), 在余下的区间\([a-\varepsilon,a]\)和\([b,b+\varepsilon]\)上用直线连接. 
+而\(f_\varepsilon\)在\([0,a]\)与\([b,1]\)上为\(0\), 
+在\([a+\varepsilon,b-\varepsilon]\)上为\(1\), 
+在余下的区间\([a,a+\varepsilon]\)和\([b-\varepsilon,b]\)上用直线连接. 
+\[f^\varepsilon(x)=\begin{cases}
+1, & x\in[a,b],\\
+\frac{x-a+\varepsilon}{\varepsilon},\quad&x\in[a-\varepsilon,a],\\
+\frac{b+\varepsilon-x}{\varepsilon},&x\in[b,b+\varepsilon],\\
+0,&x\in[0,a-\varepsilon]\cup[b+\varepsilon,1],
+\end{cases}
+f_\varepsilon(x)=\begin{cases}
+1, & x\in[a+\varepsilon,b-\varepsilon],\\
+\frac{x-a}{\varepsilon},\quad&x\in[a,a+\varepsilon],\\
+\frac{b-x}{\varepsilon},&x\in[b-\varepsilon,b],\\
+0,&x\in[0,a]\cup[b,1],
+\end{cases}\]则\(f^\varepsilon,f_\varepsilon\)在\([0,1]\)上连续, 
+且\(\forall x\in(0,1)\),\[f_\varepsilon(x)\leqslant f(x)
+\leqslant f^\varepsilon(x).\]从而
+\[(1-x)\sum_{n=0}^{\infty}S_nx^nf_\varepsilon(x^n)
+\leqslant (1-x)\sum_{n=0}^{\infty}S_nx^nf(x^n)
+\leqslant (1-x)\sum_{n=0}^{\infty}S_nx^nf^\varepsilon(x^n),\]
+令\(x\rightarrow 1^-\)得到
+\[\int_{0}^{1}f_\varepsilon(x)\,\dd x
+\leqslant\varliminf_{x\rightarrow 1^-}
+(1-x)\sum_{n=0}^{\infty}S_nx^nf(x^n)
+\leqslant\varlimsup_{x\rightarrow 1^-}
+(1-x)\sum_{n=0}^{\infty}S_nx^nf(x^n)
+\leqslant\int_{0}^{1}f^\varepsilon(x)\,\dd x.\]
+再令\(\varepsilon\rightarrow 0^+\)即得$(\clubsuit)$式对于\(f=\chi_{[a,b]}\)成立. 
+同理或者利用已证结果可以证明当\(f\)为\(\chi_{[0,a]},\chi_{[b,1]},\chi_{(a,b)},\chi_{[a,b)}\)这样的区间时, $(\clubsuit)$式也成立, 
+从而当\(f\)为分段常值函数时, $(\clubsuit)$式成立.
+\item 取\(f(x)=\frac{1}{x}\chi_{[1/\ee,1]}(x), x_n=1-\frac{1}{n},\)
+即\(f(x)=\begin{cases}
+1/x,\quad&x\in[1/\ee,1],\\
+0,&x\in[0,1/\ee)
+\end{cases},\)便有\[\lim_{n\rightarrow+\infty}\frac{1}{n}\sum_{k=0}^{\infty}S_k\left(1-\frac{1}{n}\right)^kf\left(\left(1-\frac{1}{n}\right)^k\right)=\int_{0}^{1}f(x)\,\dd x=1,\]
+注意到\(\left(1-\frac{1}{n}\right)^n<\frac{1}{\ee}<\left(1-\frac{1}{n}\right)^{n-1}(n\geqslant 2)\), 
+我们有\(\lim_{n\rightarrow+\infty}\frac{1}{n}\sum_{k=0}^{n}S_k=1\), 结论得证.\qedhere
+\end{enumerate}
+\end{proof}
+\item 利用\(\sum_{k=0}^{n}C_{2k}^kC_{2(n-k)}^{n-k}=4^n\)
+证明: \(\sum_{k=0}^{n}\frac{C_{2k}^kC_{2n-2k}^{n-k}}{(2k+1)(2n-2k+1)}
+=\frac{4^{2(n+1)}}{8(n+1)^2C_{2n+2}^{n+1}}\). 
+进一步, 计算\(\arcsin^2x\)和\(\ln^2(x+\sqrt{1+x^2})\)的Maclaurin级数.
+\begin{proof}[解答]
+由幂级数的逐项可积性，
+\[\arcsin x=\int_0^x \frac{\dd t}{\sqrt{1-t^2}}
+=\int_0^x \sum_{n=0}^{\infty} \frac{\mathrm{C}_{2n}^n t^{2n}}{4^n} \dd t
+=\sum_{n=0}^{\infty} \frac{\mathrm{C}_{2n}^n}{(2n+1) 4^n} x^{2n+1}.\]
+所以在收敛域内，
+\[\arcsin^2 x=\sum_{n=0}^{\infty}\left[\sum_{\substack{k+j=n \\ 0 \leqslant k, j \leqslant n}} \frac{\mathrm{C}_{2k}^k \mathrm{C}_{2j}^j}{(2k+1)(2j+1)}\right] \frac{x^{2n+2}}{4^n}.\]
+我们有
+\begin{align*}
+\sum_{\substack{k+j=n \\0 \leqslant k, j \leqslant n}} \frac{\mathrm{C}_{2k}^k \mathrm{C}_{2j}^j}{(2k+1)(2j+1)} 
+& =\frac{1}{2(n+1)} \sum_{\substack{k+j=n \\0 \leqslant k, j \leqslant n}}\left(\frac{1}{2j+1}+\frac{1}{2k+1}\right) \mathrm{C}_{2k}^k \mathrm{C}_{2j}^j \\
+& =\frac{1}{n+1} \sum_{\substack{k+j=n \\0 \leqslant k, j \leqslant n}} \frac{\mathrm{C}_{2k}^k \mathrm{C}_{2j}^j}{2k+1} := \frac{I_n}{n+1}.
+\end{align*}
+类似地，
+\begin{align*}
+2(n+1) I_n & =\sum_{\substack{k+j=n \\0 \leqslant k, j \leqslant n}}\left(1+\frac{2j+1}{2k+1}\right) \mathrm{C}_{2k}^k \mathrm{C}_{2j}^j \\
+& =4^n+\sum_{\substack{k+j=n \\0 \leqslant k, j \leqslant n}} \frac{2j+1}{2k+1} \mathrm{C}_{2k}^k \mathrm{C}_{2j}^j \\
+& =4^n+\frac{1}{2} \sum_{\substack{k+j=n \\0 \leqslant k, j \leqslant n}} \frac{j+1}{2k+1} \mathrm{C}_{2k}^k \mathrm{C}_{2(j+1)}^{j+1} \\
+& =4^n+\frac{1}{2} \sum_{\substack{k+j=n+1 \\0 \leqslant k, j \leqslant n+1}} \frac{j}{2 k+1} \mathrm{C}_{2 k}^k \mathrm{C}_{2j}^j \\
+& =4^n+\frac{1}{4} \sum_{\substack{k+j=n+1 \\0 \leqslant k, j \leqslant n+1}}\left(\frac{2 n+3}{2 k+1}-1\right) \mathrm{C}_{2 k}^k \mathrm{C}_{2 j}^j \\
+& =\frac{2n+3}{4} I_{n+1}.
+\end{align*}
+于是，由上式及 $I_0=1$ 递推可得
+\[I_n=4^n \times \frac{(2n)!!}{(2n+1)!!}=\frac{4^{2(n+1)}}{8(n+1) \mathrm{C}_{2(n+1)}^{n+1}}.\]
+从而
+\[\sum_{\substack{k+j=n \\ 0 \leqslant k, j \leqslant n}} \frac{\mathrm{C}_{2k}^k \mathrm{C}_{2j}^j}{(2k+1)(2j+1)}
+=\frac{4^{2(n+1)}}{8(n+1)^2 \mathrm{C}_{2(n+1)}^{n+1}}.\]
+这样就得到
+\[\tag{$\blacklozenge$}\arcsin^2 x=\sum_{n=1}^{\infty} \frac{4^n}{2n^2 \mathrm{C}_{2n}^n} x^{2n}.\]
+注意到利用 Stirling 公式可得
+\[\frac{4^n}{2n^2 \mathrm{C}_{2n}^n} \sim \frac{4^n}{2n^2}\frac{2\pi n(n/\ee)^{2n}}{\sqrt{2\pi\cdot2n}(2n/\ee)^{2n}}
+=\frac{\sqrt{\pi}}{2n^{\frac{3}{2}}}\quad(n \rightarrow \infty),\]
+因此，$(\blacklozenge)$ 对所有 $x\in[-1,1]$ 成立。
+\end{proof}
+注：我们并不鼓励大家过于关注本题。对很多人来说，$\arcsin^2 x$ 在 $0$ 点的Taylor展开式难以得到，
+有人会因此断言这一展开式没有一个好的表达式，以上得到的结果可以提示我们下类似的断言时应该保持谨慎。
+
+\item 试计算级数\(\sum_{n=0}^{\infty}\frac{(2n)!}{2^{2n}(2n+1)(n!)^2}.\)
+\begin{proof}[解答]
+记级数一般项为\(u_n\), 则
+\[\begin{split}
+u_n&=\frac{(2n)!}{2^{2n}(2n+1)(n!)^2}=\frac{(2n-1)!!}{(2n+1)(2n)!!}\\
+&=\frac{2}{\pi}\cdot\frac{1}{2n+1}\cdot\int_{0}^{\frac{\pi}{2}}\sin^{2n}x\,\dd x\\
+&=\frac{2}{\pi}\int_{0}^{\frac{\pi}{2}}\frac{1}{\sin x}\int_{0}^{x}\cos t\cdot\sin^{2n}t\,\dd t\dd x,
+\end{split}\]从而\[\begin{split}
+\sum_{n=0}^{\infty}u_n&=\frac{2}{\pi}\int_{0}^{\frac{\pi}{2}}\frac{1}{\sin x}
+\int_{0}^{x}\cos t\sum_{n=0}^{\infty}\sin^{2n}t\,\dd t\dd x\\
+&=\frac{2}{\pi}\int_{0}^{\frac{\pi}{2}}\frac{1}{\sin x}\int_{0}^{x}\cos t\cdot\frac{1}{1-\sin^2 t}\,\dd t\dd x\\
+&=\frac{2}{\pi}\int_{0}^{\frac{\pi}{2}}\csc x\int_{0}^{x}\sec t\,\dd t\dd x
+=\frac{2}{\pi}\int_{0}^{\frac{\pi}{2}}\sec t\,\dd t\int_{t}^{\frac{\pi}{2}}\csc x\,\dd x\\
+&=-\frac{2}{\pi}\int_{0}^{\frac{\pi}{2}}\frac{\ln\left(\tan\frac{t}{2}\right)}{\cos t}\,\dd t
+\xlongequal{\tan\frac{t}{2}=x}-\frac{4}{\pi}\int_{0}^{1}\frac{\ln x}{1-x^2}\,\dd x
+=\frac{\pi}{2}.\end{split}\]
+\end{proof}
+\item 设\(|x|<1\), 考虑\textbf{第一类完全椭圆积分}
+\(K(x)=\int_{0}^{\pi/2}\frac{\dd\theta}{\sqrt{1-x^2\cos^2\theta}}\). 
+依次证明:
+\begin{enumerate}[label=(\arabic*)]
+\item 对任何\(x\in(-1,1)\), 成立\(K(x)=\frac{\pi}{2}\sum_{n=0}^{\infty}\frac{(C_{2n}^{n})^2x^{2n}}{4^{2n}}\).
+\item 对任何\(x\in(-1,1),\,\theta\in\left[0,2\pi\right)\), 
+有\(\frac{1}{|1-x\ee^{\mathrm{i}\theta}|}
+=\sum_{k=0}^{\infty}\frac{C_{2k}^kx^k}{4^k}\ee^{\mathrm{i}k\theta}\sum_{j=0}^{\infty}\frac{C_{2j}^jx^j}{4^j}\ee^{-\mathrm{i}j\theta}\).\\提示: 可以证明两边平方后的等式相等.
+\item 对任何\(x\in\left[0,1\right)\), 有
+\(\frac{1}{1+x}K\left(\frac{2\sqrt{x}}{1+x}\right)
+=\frac{\pi}{2}\sum_{n=0}^{\infty}\frac{(C_{2n}^n)^2x^{2n}}{4^{2n}}
+=K(x)\).
+\end{enumerate}
+\begin{proof}
+(1)由\[\frac{1}{\sqrt{1-x^2\cos^2\theta}}
+=\frac{C_{2n}^n}{4^n}x^{2n}\cos^{2n}\theta,\]
+又由之前结果\[\int_{0}^{\pi/2}\cos^{2n}\theta\,\dd \theta
+=\frac{(2n-1)!!}{(2n)!!}\frac{\pi}{2}=\frac{C^{n}_{2n}}{4^n}\frac{\pi}{2},\]
+于是\(K(x)=\frac{\pi}{2}\sum_{n=0}^{\infty}\frac{(C_{2n}^{n})^2x^{2n}}{4^{2n}}\).
+
+(2)由二项式展开式
+\[\frac{1}{\sqrt{1-z}}=\sum_{n=0}^{\infty}\frac{C_{2n}^n}{4^n}z^n,\qquad |z|<1,\]
+分别取\(z=x\ee^{\mathrm{i}\theta}\)与\(z=x\ee^{-\mathrm{i}\theta}\), 得
+\[\sum_{k=0}^{\infty}\frac{C_{2k}^k x^k}{4^k}\ee^{\mathrm{i}k\theta}
+=\frac{1}{\sqrt{1-x\ee^{\mathrm{i}\theta}}},\qquad
+\sum_{j=0}^{\infty}\frac{C_{2j}^j x^j}{4^j}\ee^{-\mathrm{i}j\theta}
+=\frac{1}{\sqrt{1-x\ee^{-\mathrm{i}\theta}}}.
+\]
+两式相乘:
+\[
+\sum_{k=0}^{\infty}\frac{C_{2k}^k x^k}{4^k}\ee^{\mathrm{i}k\theta}
+\sum_{j=0}^{\infty}\frac{C_{2j}^j x^j}{4^j}\ee^{-\mathrm{i}j\theta}
+=\frac{1}{\sqrt{(1-x\ee^{\mathrm{i}\theta})(1-x\ee^{-\mathrm{i}\theta})}}
+=\frac{1}{|1-x\ee^{\mathrm{i}\theta}|}.
+\]
+即得结论.
+
+(3)由(2)式并在\([0,2\pi]\)上积分,
+\[
+\frac{1}{2\pi}\int_0^{2\pi}\frac{\dd\theta}{|1-x\ee^{\mathrm{i}\theta}|}
+=\frac{1}{2\pi}\int_0^{2\pi}
+\sum_{k,j\geqslant 0}\frac{C_{2k}^kC_{2j}^j}{4^{k+j}}x^{k+j}\ee^{\mathrm{i}(k-j)\theta}\,\dd\theta
+=\sum_{n=0}^{\infty}\frac{(C_{2n}^n)^2}{4^{2n}}x^{2n},
+\]
+其中用到\(\frac1{2\pi}\int_0^{2\pi}\ee^{\mathrm{i}(k-j)\theta}\,\dd\theta=\delta_{kj}\).
+另一方面,
+\[
+\int_0^{2\pi}\frac{\dd\theta}{|1-x\ee^{\mathrm{i}\theta}|}
+=\int_0^{2\pi}\frac{\dd\theta}{\sqrt{1-2x\cos\theta+x^2}}
+=2\int_0^{\pi}\frac{\dd t}{\sqrt{(1-x)^2+4x\sin^2 t}}
+\]
+\[
+=\frac{2}{1+x}\int_0^{\pi}\frac{\dd t}{\sqrt{1-\left(\frac{2\sqrt{x}}{1+x}\right)^2\cos^2 t}}
+=\frac{4}{1+x}K\!\left(\frac{2\sqrt{x}}{1+x}\right).
+\]
+故
+\[
+\sum_{n=0}^{\infty}\frac{(C_{2n}^n)^2}{4^{2n}}x^{2n}
+=\frac{1}{2\pi}\cdot\frac{4}{1+x}K\!\left(\frac{2\sqrt{x}}{1+x}\right)
+=\frac{2}{\pi(1+x)}K\!\left(\frac{2\sqrt{x}}{1+x}\right).
+\]
+两边乘\(\frac\pi2\)得
+\[
+\frac{1}{1+x}K\!\left(\frac{2\sqrt{x}}{1+x}\right)
+=\frac{\pi}{2}\sum_{n=0}^{\infty}\frac{(C_{2n}^n)^2}{4^{2n}}x^{2n}.
+\]
+再由(1)式可知右端恰为\(K(x)\), 从而
+\[
+\frac{1}{1+x}K\!\left(\frac{2\sqrt{x}}{1+x}\right)=K(x),\qquad x\in[0,1).\qedhere
+\]
+\end{proof}
+\item 对于\(a,b>0\), 令\(M(a,b)=\int_{0}^{\frac{\pi}{2}}\frac{\dd\theta}{\sqrt{a^2\cos^2\theta+b^2\sin^2\theta}}\). 
+另一方面, 令\(a_0=a,b_0=b\), 并归纳定义\(a_{n+1}=\sqrt{a_nb_n},b_{n+1}=\frac{a_n+b_n}{2}\) \((n\geqslant 0)\). 
+依次证明:\begin{enumerate}[label=(\arabic*)]
+\item \(\{a_n\},\{b_n\}\)收敛到同一值, 记为\(AGM(a,b)\), 
+我们称之为\(a,b\)的\textbf{算术几何平均}.
+\item \(AGM\left(\sqrt{ab},\frac{a+b}{2}\right)=AGM(a,b),M\left(\sqrt{ab},\frac{a+b}{2}\right)=M(a,b)\).
+\item 成立如下的\textbf{Gauss (高斯)公式}: \(AGM(a,b)=\frac{\pi}{2M(a,b)}\).
+\end{enumerate}
+\begin{proof}
+(1) $a_n \leqslant b_n$对$n\geqslant1$成立，从而
+\[a_n\leqslant\sqrt{a_nb_n}=a_{n+1}\leqslant b_{n+1}=\frac{a_n+b_n}{2}\leqslant b_n,\]
+进而\[a_1\leqslant\cdots\leqslant a_n\leqslant a_{n+1}
+\leqslant\cdots\leqslant b_{n+1}\leqslant b_n\leqslant\cdots\leqslant b_1,\]
+推出$\{a_n\},\{b_n\}$都收敛。由于
+\[b_{n+1}-a_{n+1}\leqslant b_{n+1}-a_n=\frac{b_n-a_n}{2},\]
+归纳得$b_n-a_n\leqslant|b-a|/2^n$，故极限相同。
+
+(2) 前者显然，后者逆天。引入新变量$\sigma$使得
+\[\sin\theta=\frac{2a\sin\sigma}{a+b+(a-b)\sin^2\sigma},\]
+可验证$\sigma\in[0,\pi/2]$一一对应了$\theta\in[0,\pi/2]$，且
+\[\cos\theta=\frac{2\cos\sigma\sqrt{b_1^2\cos^2\sigma+a_1^2\sin^2\sigma}}{a+b+(a-b)\sin^2\sigma}.\]
+此外，对$\sin\theta$的表达式两边求导得
+\[\cos\theta\,\dd\theta=2a\frac{a+b-(a-b)\sin\sigma}{\big(a+b+(a-b)\sin^2\sigma\big)^2}\cos\sigma\,\dd\sigma,\]
+两式相除有\[\dd\theta=a\frac{a+b-(a-b)\sin\sigma}{a+b+(a-b)\sin^2\sigma}\frac{\dd\sigma}{\sqrt{b_1^2\cos^2\sigma+a_1^2\sin^2\sigma}}.\]
+神奇的注意力指示我们要算
+\begin{align*}
+    \sqrt{a^2\cos^2\theta+b^2\sin^2\theta}&=a\sqrt{1-(a^2-b^2)(\sin\theta/a)^2}\\
+    &=a\sqrt{1-\frac{4(a^2-b^2)\sin^2\sigma}{\big(a+b+(a-b)\sin^2\sigma\big)^2}}\\
+    &=a\frac{a+b-(a-b)\sin\sigma}{a+b+(a-b)\sin^2\sigma},
+\end{align*}
+从而\[\frac{\dd\theta}{\sqrt{a^2\cos^2\theta+b^2\sin^2\theta}}
+=\frac{\dd\sigma}{\sqrt{b_1^2\cos^2\sigma+a_1^2\sin^2\sigma}},\]
+两边积分得到
+\[M(a,b)=M(b_1,a_1).\]
+
+(3) 迭代发现\begin{align*}
+M(a,b)&=M(b_1,a_1)=M(b_2,a_2)=\cdots=\lim_{n\to\infty}M(b_n,a_n)\\
+&=M(AGM(a,b),AGM(a,b))=\frac{\pi}{2AGM(a,b)}.\end{align*}
+\end{proof}
+\item 设\(b_k\)和\(B_k\) \((k\geqslant 0)\)为Bernoulli数与Bernoulli多项式, 
+\(\zeta\)为Riemann \(\zeta\)函数.\begin{enumerate}[label=(\arabic*)]
+\item 利用\(\frac{t\ee^t}{e^t-1}=t+\frac{t}{\ee^t-1},\) 
+证明: 当\(k\ne 1\)时, \(B_k(1)=b_k\). 
+另一方面, 有\(b_0=1,b_1=-\frac{1}{2},B_k(1)=\frac{1}{2}\).
+\item 利用\(\frac{t\ee^{(1-x)t}}{\ee^t-1}=\frac{-t\ee^{-xt}}{\ee^{-t}-1}\)
+证明对任何\(k\geqslant 0\), 成立\(B_k(1-x)=(-1)^kB_k(x)\).
+\item 利用\(\frac{-t\ee^{xt}}{\ee^{-t}-1}=t\ee^{xt}+\frac{t\ee^{xt}}{\ee^t-1}\) 
+证明对任何\(k\geqslant 1\), 成立\(B_k(-x)=(-1)^kB_k(x)+(-1)^kkx^{k-1}\).
+\item 证明对任何\(k\geqslant 1\), 成立\(b_{2k+1}=0\).
+\item 证明对任何\(k\geqslant 0\), \(B_k\left(\frac{1}{2}-x\right)
+=(-1)^k\left(\frac{1}{2^{k-1}}B_k(2x)-B_k(x)\right)\).
+\item 证明对任何\(k\geqslant 0\), \(B'_{k+1}(x)=(k+1)B_k(x)\), 
+进而\(\int_{0}^{x}B_k(s)\,\dd s=\frac{B_{k+1}(x)-B_{k+1}}{k+1}\).
+\item 设\(n\geqslant 1\), 证明Euler公式:
+\(\zeta(2n)=(-1)^{n-1}\frac{2^{2n-1}b_{2n}}{(2n)!}\pi^{2n}\).
+\end{enumerate}
+提示: 对于\(x\in[0,1]\), 令\(T_0(x)=0\),
+\[T_n(x)=\frac{(-1)^{n-1}}{2(2n)!}B_{2n}(x)
+-\frac{1}{(2\pi)^{2n}}H_{n}(2\pi x),\quad\forall\, n\geqslant 1,\]
+其中\[H_n(x)=\sum_{k=1}^{\infty}\frac{\cos kx}{k^{2n}},\qquad x\in[0,2\pi],\]
+特别地,\[H_1(x)=\zeta(2)-\frac{\pi x}{2}+\frac{x^2}{4},\quad x\in[0,2\pi].\]
+验证\(T''_n(x)=-T_{n-1}(x)\).
+\begin{proof}
+见楼红卫《数学分析：要点 · 难点 · 拓展》，高等教育出版社，2020年，第31章195节。
+这里更具体地呈现一下Euler对(7)的证明：由于对$0<x<\pi$有（载于习题11.6.$\mathcal{B}$.2）
+\[x\cot x=1-2\sum_{n=1}^{\infty}\frac{\big(\frac{x}{n\pi}\big)^2}{1-\big(\frac{x}{n\pi}\big)^2}
+=1-2\sum_{n=1}^{\infty}\sum_{k=1}^{\infty}\frac{x^{2k}}{n^{2k}\pi^{2k}}
+=1-2\sum_{k=1}^{\infty}\zeta(2k)\frac{x^{2k}}{\pi^{2k}},\]
+同下题(4)的展开式比对系数即可。
+\end{proof}
+\item 利用Bernoulli数与Bernoulli多项式求以下函数的Maclaurin级数:
+\[(1)\tan x,\qquad (2)\sec x,\qquad (3)\tanh x,\qquad (4)\,x\cot x
+\,(\text{在 }x=0\text{ 处定义为 }1).\]
+\begin{proof}[解答]
+    变形出
+    \[x\cot x={\rm i}x\,\frac{2\cos x}{2{\rm i}\sin x}
+    ={\rm i}x\,\frac{e^{{\rm i}x}+e^{-{\rm i}x}}{e^{{\rm i}x}-e^{-{\rm i}x}}
+    ={\rm i}x\,\frac{e^{2{\rm i}x}+1}{e^{2{\rm i}x}-1}
+    ={\rm i}x+\frac{2{\rm i}x}{e^{2{\rm i}x}-1},\]
+    那么
+    \[x\cot x={\rm i}x+\sum_{k=0}^{\infty}b_k\frac{(2{\rm i}x)^k}{k!}
+    =\sum_{k=0}^{\infty}b_{2k}\frac{(2{\rm i}x)^{2k}}{(2k)!}
+    =\sum_{k=0}^{\infty}b_{2k}\frac{(-4)^k}{(2k)!}x^{2k},\]
+    中间的等号是因为$b_1=-1/2$从而$b_1(2{\rm i}x)=-{\rm i}x$
+    和$k\geqslant1$时$b_{2k+1}=0$。注意到
+    \[\tan x=\frac{1}{\tan x}-\frac{1-\tan^2x}{\tan x}=\cot x-2\cot 2x,\]
+    从而
+    \[\tan x=\sum_{k=0}^{\infty}b_{2k}\frac{(-4)^k}{(2k)!}\frac{x^{2k}-(2x)^{2k}}{x}
+    =\sum_{k=1}^{\infty}b_{2k}\frac{(-4)^k-(-16)^k}{(2k)!}x^{2k-1}.\]
+    $\tanh x$可用$\tan(\ii x)=\ii\tanh x$得出。$\sec x$好像表示不出来，其展开式
+    \[\sec x=\sum_{k=0}^{\infty}(-1)^k\frac{E_{2k}}{(2k)!}x^{2k}\]
+    中涉及的数$E_{2k}$称为Euler数。显然$E_0=1$，因为
+    \begin{align*}
+        1=\sec x\cos x&=\left(\sum_{k=0}^{\infty}(-1)^k\frac{E_{2k}}{(2k)!}x^{2k}\right)
+        \left(\sum_{\ell=0}^{\infty}(-1)^\ell\frac{x^{2\ell}}{(2\ell)!}\right)\\
+        &=\sum_{n=0}^{\infty}(-1)^n\left(\sum_{k+\ell=n}\frac{E_{2k}}{(2k)!(2\ell)!}\right)x^{2n},
+    \end{align*}
+    得出递推公式
+    \[\sum_{k=0}^{n}C_{2n}^{2k}E_{2k}=0.\qedhere\]
+\end{proof}
+\item 对于\(n\)阶正定矩阵\(\boldsymbol{A}\,\color{magenta}{\geqslant\boldsymbol{I}}\), 
+证明存在唯一的正定矩阵\(\boldsymbol{B}\), 使得\(\ee^{\boldsymbol{B}}=\boldsymbol{A}\).
+\begin{proof}
+设$\boldsymbol{B}$的谱分解为$\bigoplus\limits_k\lambda_k\boldsymbol{I}_{V_k}$，
+其中$\lambda_k>0$是互异的特征值，$V_k$为对应的特征子空间，
+那么$\boldsymbol{A}={\rm e}^{\boldsymbol{B}}=\bigoplus\limits_k{\rm e}^{\lambda_k}\boldsymbol{I}_{V_k}$。
+这是$\boldsymbol{A}$的谱分解，从而特征值${\rm e}^{\lambda_k}$和特征子空间$V_k$是完全确定的，
+没有自主选择的余地，继而$\lambda_k>0$也能唯一地通过对${\rm e}^{\lambda_k}$取$\ln$确定。
+以上证明了唯一性，从$\boldsymbol{A}$的谱分解出发不难证明存在性。
+\end{proof}
+注：有同学表示，要是${\rm e}^{\boldsymbol{B}}=\boldsymbol{A}$的话，既然
+\[\boldsymbol{B}=\lim_{t\to0}\frac{{\rm e}^{t\boldsymbol{B}}-\boldsymbol{I}}{t}
+=\lim_{t\to0}\frac{\boldsymbol{A}^t-\boldsymbol{I}}{t},\]
+$\boldsymbol{A}$是取定的从而右边是确定的，
+左边的$\boldsymbol{B}$就自然是唯一的。想一下，这个做法错在哪里了？
+\item 是否有\(\delta>0\)以及\((0,\delta)\)上的\(n\)阶正定矩阵值函数
+\(\boldsymbol{Y}(\cdot)\), 在\((0,\delta)\)上满足
+\(\boldsymbol{Y}(t)<\boldsymbol{I}\), 
+\(\boldsymbol{Y}'(t)=(\boldsymbol{I}-\boldsymbol{Y}^2(t))^{1/2}\)
+以及\(\lim_{t\rightarrow 0^+}\boldsymbol{Y}(t)=0\)?
+\item 考察各基本初等函数, 思考可以把它们的定义推广到什么样的\(n\)阶方阵?
+\end{enumerate}
+\end{quizb}
+
+\section{常微分方程初值问题解的存在性}
+\subsection{Picard迭代,等度连续, Arzel\`{a}--Ascoli定理,非Lipschitz条件下解的存在性,积分方程的解,解的延伸}
+\begin{quiza}
+\begin{enumerate}
+\item 设\(\boldsymbol{f}:\mathbb{R}\times \mathbb{R}^n\rightarrow\mathbb{R}^n\)连续可微. 证明:\begin{enumerate}[label=(\arabic*)]
+\item 设\(a<b<c\). 若在\([a,b]\)上, \(\boldsymbol{\varphi}'(t)=\boldsymbol{f}(t,\boldsymbol{\varphi}(t))\)且\(\boldsymbol{\varphi}(a)=\boldsymbol{x}_0\), 
+而在\([b,c]\)上, \(\boldsymbol{\psi}'(t)=\boldsymbol{f}(t,\boldsymbol{\psi}(t))\)且\(\boldsymbol{\psi}(b)=\boldsymbol{\varphi}(b)\), 则\(\boldsymbol{x}(t)=\begin{cases}
+\boldsymbol{\varphi}(t),\quad &t\in[a,b],\\
+\boldsymbol{\psi}(t)&t\in[b,c]
+\end{cases}\)是方程组\(\begin{cases}
+\boldsymbol{x}'(t)=\boldsymbol{f}(t,\boldsymbol{x}(t)),\\
+\boldsymbol{x}(a)=\boldsymbol{x}_0,
+\end{cases}t\in[a,c]\)的解.
+\item 方程组(9.5.2)的解的最大存在区间存在, 且为开区间.
+\end{enumerate}
+\item 证明方程\(x'(t)=(1-x^2(t))(\cos t^2+\sin x(t))\)的满足初值条件\(x(0)=0\)的解的最大存在区间是\((-\infty,+\infty)\).
+\item 证明\textbf{Gronwall--Bellman (格朗沃尔--贝尔曼)不等式}:
+
+设\(\alpha\in\mathbb{R}\), 而\(\varphi\in C[t_0,T],\psi,\beta\in L^1[t_0,T], \psi\)非负, 满足
+\[\varphi(t)\leqslant\alpha+\int_{t_0}^{t}\big(\psi(s)\varphi(s)+\beta(s)\big)\,\dd s,\quad\forall\,t\in[t_0,T].\]
+证明:\[\varphi(t)\leqslant\alpha\exp\left(\int_{t_0}^{t}\psi(s)\,\dd s\right)
++\int_{t_0}^{t}\exp\left(\int_{s}^{t}\psi(r)\,\dd r\right)\beta(s)\,\dd s,\quad\forall\,t\in[t_0,T].\]
+
+提示: 考虑满足以下等式的函数\(\varPhi\):
+\[\varPhi(t)=\alpha+\int_{t_0}^{t}\big(\psi(s)\varphi(s)+\beta(s)\big)\,\dd s,\quad\forall\,t\in[t_0,T].\]
+\begin{proof}
+考虑满足以下等式的函数\(\varPhi\):\[\varPhi(t)=\alpha+\int_{t_0}^{t}\left(\psi(s)\varphi(s)+\beta(s)\right)\dd s,\quad\forall\,t\in[t_0,T],\]
+即\(\varphi(t)\leqslant \varPhi(t)\), 又有
+\[\varPhi'(t)=\psi(t)\varphi(t)+\beta(t)\leqslant\psi(t)\varPhi(t)+\beta(t)\Rightarrow\left(\varPhi'(t)-\psi(t)\varPhi(t)\right)<\beta(t),\]
+则有\[\frac{\dd}{\dd t}\left(\varPhi(t)\cdot\exp\left(-\int_{t_0}^{t}\psi(s)\,\dd s\right)\right)
+\leqslant \exp\left(-\int_{t_0}^{t}\psi(s)\,\dd s\right)\beta(t),\]
+积分得到\[\begin{split}
+\int_{t_0}^{t}\frac{\dd}{\dd t}\left(\varPhi(t)\cdot\exp\left(-\int_{t_0}^{t}\psi(s)\,\dd s\right)\right)\dd t
+&=\varPhi(t)\cdot\exp\left(-\int_{t_0}^{t}\psi(s)\,\dd s\right)-\alpha\\
+&\leqslant\int_{t_0}^{t}\exp\left(-\int_{t_0}^{s}\psi(r)\,\dd r\right)\beta(s)\,\dd s,
+\end{split}\]于是\[\varPhi(t)\leqslant\alpha\exp\left(\int_{t_0}^{t}\psi(s)\,\dd s\right)+\int_{t_0}^{t}\exp\left(\int_{s}^{t}\psi(r)\,\dd r\right)\beta(s)\,\dd s,\quad\forall\,t\in[t_0,T].\]
+由\(\varphi(t)\leqslant \varPhi(t)\)即得结论.
+\end{proof}
+\item 设\(\boldsymbol{f}:\mathbb{R}\times\mathbb{R}^n\rightarrow\mathbb{R}^n\)连续可微, 
+且\(\boldsymbol{f}(t,\boldsymbol{x})\)关于\(\boldsymbol{x}\)满足\textbf{线性增长条件}, 即存在常数\(K>0\)使得
+\[|\boldsymbol{f}(t,\boldsymbol{x})|\leqslant K(|\boldsymbol{x}|+1),\quad\forall\,(t,\boldsymbol{x})\in\mathbb{R}\times\mathbb{R}^n.\]
+证明: 对于任何初值条件, 方程\(\boldsymbol{x}'(t)=\boldsymbol{f}(t,\boldsymbol{x}(t))\)的解的最大存在区间是\((-\infty,+\infty)\).
+\begin{proof}
+设解的最大存在区间为$(\alpha,\beta)$，下面用反证法说明$\beta=+\infty$。
+假如$\beta<+\infty$，待定$\eta,h>0$，考虑区域
+\[D=[\beta-3\eta,\beta+\eta]\times\overline{B_h(\boldsymbol{x}(\beta-\eta))},\]
+根据后面的推导，这里要的限制是$2\eta<1/K$且$h$很大；再令
+\[M=K(|\boldsymbol{x}(\beta-\eta)|+h+1)\geqslant\max_D|\boldsymbol{f}|.\]
+由定理9.5.4，方程过点$(\beta-\eta,\boldsymbol{x}(\beta-\eta))$的解
+在区间$(\beta-\eta-\delta,\beta-\eta+\delta)$上存在，其中$\delta=\min\{h/M,2\eta\}$。
+当$h$很大时$h/M \approx 1/K$，从而$\delta=2\eta$，即解在区间$(\beta-3\eta,\beta+\eta)$上存在，
+同$(\alpha,\beta)$为最大的区间矛盾。同理可得$\alpha=-\infty$。
+\end{proof}
+\item 设\(\delta>0\), \(f\)是\((-\delta,\delta)\)内的连续可微函数, 
+满足\(f'(x)=f^4(x)-x^8\)以及\(f(0)=0\), 
+试证明\(f\in C^{\infty}(-\delta,\delta)\), 并讨论\(f\)取正负的情况. 
+进一步, 讨论\(f\)的解析性.
+\end{enumerate}
+\end{quiza}
+\begin{quizb}
+\begin{enumerate}
+\item 构造函数\(f\)使得方程\(\begin{cases}
+x'(t)=f(t,x(t)),\\
+x(0)=0
+\end{cases}\)的解的最大存在区间为\((-\infty,1)\), 
+且其解\(x\)满足\(\varliminf_{t\rightarrow 1^-}x(t)=-\infty,
+\varlimsup_{t\rightarrow 1^-}x(t)=+\infty\).
+\item 设\(\{f_k\}\)是\(\R^n\)的紧子集\(E\)上的一列一致有界且等度连续的函数列, 
+\(f\in C(E)\). 证明: 若以下条件之一成立, 则\(\{f_k\}\)本身在\(E\)上一致收敛到\(f\).
+\begin{enumerate}[label=(\roman*)]
+\item \(\{f_k\}\)的任何在\(E\)上逐点收敛的子列均收敛到\(f\).
+\item 对于\(\{f_k\}\)的满足
+\[\lim_{j\rightarrow+\infty}\int_E f_{k_j}(\boldsymbol{x})h(\boldsymbol{x})\,\dd\boldsymbol{x}
+=\int_Eg(\boldsymbol{x})h(\boldsymbol{x})\,\dd\boldsymbol{x},\quad\forall\,h\in C(E)\]
+的子列\(\{f_{k_j}\}\)和相应的\(g\in C(E)\), 均成立\(g=f.\)
+\end{enumerate}
+\item 设\(T>0\), \(\boldsymbol{f}:[0,T]\times\R^n\rightarrow\R^n\)连续, 
+且\(\boldsymbol{f_x}(t,\boldsymbol{x})\)也在\([0,T]\times\R^n\)上连续且一致有界. 
+设\(\boldsymbol{x}_0\in\R^n\), 记\(\boldsymbol{x}(\cdot;\boldsymbol{x}_0)\)
+为方程\[\begin{cases}
+\boldsymbol{x}'(t)=\boldsymbol{f}(t,\boldsymbol{x}(t)),\quad t\in[0,T],\\
+\boldsymbol{x}(0)=\boldsymbol{x}_0
+\end{cases}\]的解. 任取\(\boldsymbol{e}\in S^{n-1}\), 
+证明: 当\(\varepsilon\rightarrow 0^+\)时, 
+\(\boldsymbol{X}_{\!\varepsilon}(\cdot;\boldsymbol{e})
+=\frac{\boldsymbol{x}(\cdot;\boldsymbol{x}_0+\varepsilon\boldsymbol{e})
+-\boldsymbol{x}(\cdot;\boldsymbol{x}_0)}{\varepsilon}\)
+在\([0,T]\)上一致收敛到方程\[\begin{cases}
+\boldsymbol{X}'(t)=\boldsymbol{f_x}(t,\boldsymbol{x}(t;\boldsymbol{x}_0)\boldsymbol{X}(t)),\quad t\in[0,T],\\
+\boldsymbol{X}(0)=\boldsymbol{e}
+\end{cases}\]的解\(\boldsymbol{X}(\cdot)\).
+\item 设\(T>0,\boldsymbol{x}_0\in\R^n\), 
+\(\boldsymbol{f}:[0,T]\times\R^n\times\R^m\rightarrow\R^n\)连续, 
+且\(\boldsymbol{f_x}(t,\boldsymbol{x},\boldsymbol{u}),
+\boldsymbol{f_u}(t,\boldsymbol{x},\boldsymbol{u})\)
+也在\([0,T]\times\R^n\times\R^m\)上连续且一致有界. 
+设\(\boldsymbol{\varphi}\in C([0,T];\R^m)\), 
+记\(\boldsymbol{x}(\cdot;\boldsymbol{\varphi})\)为方程\[\begin{cases}
+\boldsymbol{x}'(t)=f(t,\boldsymbol{x}(t),\boldsymbol{\varphi}(t)),\quad t\in[0,T],\\
+\boldsymbol{x}(0)=\boldsymbol{x}_0
+\end{cases}\]的解. 任取\(\boldsymbol{\psi}\in C([0,T];\R^m)\), 
+证明: 当\(\varepsilon\rightarrow0^+\)时, \(\boldsymbol{Y}_{\!\!\varepsilon}(\cdot)
+=\frac{\boldsymbol{x}(\cdot;\boldsymbol{\varphi}+\varepsilon\boldsymbol{\psi})
+-\boldsymbol{x}(\cdot;\boldsymbol{\varphi})}{\varepsilon}\)
+在\([0,T]\)上一致收敛到方程\[\begin{cases}
+\boldsymbol{Y}'(t)=\boldsymbol{f_x}(t,\boldsymbol{x}(t;\boldsymbol{\varphi}),\boldsymbol{\varphi}(t))\boldsymbol{Y}(t)
++\boldsymbol{f_u}(t,\boldsymbol{x}(t;\boldsymbol{\varphi}),\boldsymbol{\varphi}(t))\boldsymbol{\psi}(t),\quad t\in[0,T],\\
+\boldsymbol{Y}(0)=\boldsymbol{0}
+\end{cases}\]的解\(\boldsymbol{Y}(\cdot)\).
+\item 试讨论方程\(f'(x)=f^4(x)-x^8\)在何种初值条件下解的最大存在区间为整个\(\R\).
+\end{enumerate}
+\end{quizb}

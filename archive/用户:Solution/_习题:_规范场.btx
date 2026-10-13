@@ -1,0 +1,7 @@
+\begin{structure}
+    \subpage!{Example Sheet 1}
+   
+    \subpage!{Example Sheet 2}
+
+    \subpage!{Example Sheet 3}
+\end{structure}

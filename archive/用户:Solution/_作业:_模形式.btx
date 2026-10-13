@@ -1,0 +1,1194 @@
+
+
+来自王海宁的手写习题pdf.
+
+In the following text, we guarantee that $\mathbb{H} = 
+\{z \in \mathbb C, \mathrm{im}(z) > 0\}$, $E_n$ be the weight-$n$ normalized Eisenstein series, $\mathfrak{D}$ be the fundamental domain w.r.t. $\mathrm{SL_2}(\mathbb{Z})$.
+
+\section{第一次作业}
+\begin{enumerate}[1]
+    \item Let $d\mu = \frac{dxdy} {y^2}$, show that $d\mu$ is a $\mathrm{SL_2}(\mathbb{Z})-$invariant measure on $\mathbb{H}$.
+    \begin{proofc}[解答]
+        By complex analysis, we have $dxdy = 2idzd\bar{z}$, by the lesson we have $$\frac{d(gz)d(g\bar z)}{dz d\bar{z}} = \frac{d(gz)}{dz} \cdot \frac{d(g\bar z)}{d\bar{z}} = \frac{1}{(cz+d)^2 (c\bar z + d)^2} = \frac{1}{|cz+d| ^4}.$$
+        $$\frac{\mathrm{im}(gz)}{\mathrm{im}(z)} = \frac{1}{|c\bar z+d|^2}.$$
+
+        Combine these two above, we have done.
+    \end{proofc}
+
+    \item Find the value of $\displaystyle \iint_{\mathfrak {D}} \frac{dxdy} {y^2}$.
+    \begin{proofc}[解答]
+        \begin{align}
+            \iint_{\mathfrak {D}} \frac{dxdy} {y^2} & = \int_{-\frac12}^{\frac12} dx \int_{\sqrt{1-x^2}}^{+\infty} \frac{dy}{y^2}\\
+            & = \int_{-\frac12}^{\frac12} \frac{dx}{\sqrt{1-x^2}} \\
+            & = \frac{1\pi}{3}.
+        \end{align}
+    \end{proofc}
+
+    \item Show that the Bernoulli number vanishes for odd $k \geq 3$.
+    \begin{proofc}[解答]
+        By the definition of Bernoulli numbers, $$\frac{t}{e^t-1} = \sum_{n=0}^{+\infty} B_n \frac{t^n}{n!}$$
+        So $$\frac{t(e^t+1)}{2(e^t-1)} = \sum_{n\neq 1}B_n \frac{t^n}{n!}, $$
+        because $\frac{t(e^t+1)}{2(e^t-1)}$ is an even function, each of the $B_k, k\neq 1, \ k$ odd vanishes.
+    \end{proofc}
+
+
+
+    \item Show that for even $k \geq 2$, $(-1)^{\frac{k}{2}} B_k <0$.
+\begin{proofc}[解答]
+    By the definition of Bernoulli Polynomials, $$\frac{te^{xt}}{e^t-1} = \sum_{n=0}^{+\infty} B_n(x) \frac{t^n}{n!}, \ \ \ \ \text{with}\ \ B_n(0) = B_n.$$
+    In particular, if we extend $1$-periodically of the $[0,1)$ value of Bernoulli Polynomials to the whole $\R$, we gain the periodic Bernoulli function $\tilde{B_{n}}(x)$, and its Fourier series are:
+    $$\tilde{B_{2m}}(x) = (-1)^{m-1} \cdot \frac{2(2m)!}{(2\pi)^2m} \sum_{n=1}^{+\infty} \frac{\cos(2\pi nx)}{n^{2m}}.$$
+    So push $x = 0$ into it we gain:
+    \begin{align}
+        B_{2m} &= \tilde{B_{2m}}(0) \\
+        &= (-1)^{m-1} \frac{2(2m)!}{(2\pi)^{2m}} \sum_{n=1}^{+\infty}\frac{1}{n^{2m}} \\
+        &=   (-1)^{m-1} \frac{2(2m)!}{(2\pi)^{2m}} \zeta(2m).
+    \end{align}
+    and then we have done.
+\end{proofc}
+
+    \item Let $\Delta = \frac {1}{1728}(E^3_4 - E^2_6)$. Show that the $q$-expansion of $\Delta$ has integral coefficients.
+    \begin{proofc}[解答]
+        Immediately from the formula $\Delta = q\prod_{i=1}^{+\infty}(1-q^i)^{24}$.
+    \end{proofc}
+
+    \item Suppose $f$ has integral $q$-expansion coefficients \textbf{with modularity}, show that $f$ can be expressed by an \textbf{integral} polynomial in $E_4, E_6$ and $\Delta$. 
+    \begin{proofc}[解答]
+        We prove by induction on the weight $l$ of the modular form $f$ 12-stepwisely. 
+
+        Because we have already known $\mathrm{dim}(M_{2k}(1)) = 1$, for $k = 2, 3, 4, 5$, and we have the following formulas:
+        \[ E_4 = 1 + 240 \sum_{n=1}^{\infty} \sigma_3(n) q^n, \quad g_2 = (2\pi)^4 \frac{1}{2^2\cdot3} E_2 \]
+
+\[ E_6 = 1 - 504 \sum_{n=1}^{\infty} \sigma_5(n) q^n, \quad g_3 = (2\pi)^6 \frac{1}{2^3\cdot3^3} E_3 \]
+
+\[ E_8 = 1 + 480 \sum_{n=1}^{\infty} \sigma_7(n) q^n \]
+
+\[ E_{10} = 1 - 264 \sum_{n=1}^{\infty} \sigma_9(n) q^n \]
+
+    \[E_4^2 = E_8, \ \  E_4 \cdot E_6 = E_{10}\]
+    
+    we proved the conclusion for $k \leq 10$.
+
+    Then because $\times \Delta: M_k(1) \to S_{k+12}(1)$ gives an isomorphism, we may write $f = f_0 + m \cdot E_{l}$, where $f_0$ is a cusp form and $m \in \mathbb{Z}$, then $\displaystyle \frac{f_0}{\Delta}$ is a modular form of weight $l-12$, then because 
+    $$\frac{1}{\Delta} = \frac1q \prod_{i=1}^{+\infty} \frac{1}{(1-q^i)^{24}} = \frac1q \prod_{i=1}^{+\infty} \left(\sum_{j=0}^{+\infty} q^{ij}\right)^{24}$$
+    then $\displaystyle \frac{f_0}{\Delta}$ is also of integral coefficients, thus finishes the induction.
+    \end{proofc}
+
+
+    \item Let $f\in M_k(1)$, show that $\theta_k (f)=\frac{1}{2\pi i}\frac{d}{dz} f - \frac{k}{12}E_2\cdot f$  defines a linear map $\theta_k : M_k(1) \to M_{k+2}(1)$.
+    \begin{proofc}[解答]
+        By the definition of \(M_k\), for all \(\gamma = \begin{bmatrix}
+        a & b \\
+        c & d
+        \end{bmatrix}\in \mathrm{SL}_2(\mathbb{Z})\),
+        \[
+        f(\gamma z) = (cz+d)^{k}f(z),
+        \]
+        \[
+        (cz+d)^{-2}f'(\gamma z)=ck(cz+d)^{k-1}f(z)+(cz+d)^{k}f'(z).
+        \]
+        By the proposition used in hw2.3, 
+        
+        $$ E_2(\gamma z) = (cz+d)^2 E_2(z) + \frac{6c(cz+d)}{\pi i}.$$
+
+
+        So we have:
+
+        \begin{align}
+        
+        (\theta_k (f))(\gamma z) &= \frac{1}{2 \pi i}f'(\gamma z)
+        -\frac{k}{12}E_2(\gamma z)f(z) \\
+        &=\frac{1}{2 \pi i}[ck(cz+d)^{k+1}f(z)+(cz+d)^{k+2}f'(z)]
+        -\frac{k}{12}[(cz+d)^2 E_2(z) + \frac{6c(cz+d)}{\pi i}](cz+d)^kf(z) \\
+        &=\frac{1}{2 \pi i}(cz+d)^{k+2}f'(z)-\frac{k}{12}(cz+d)^{k+2} E_2(z)f(z) \\
+        &=(cz+d)^{k+2}(\theta_k (f))(z).
+   
+        \end{align}
+        
+        
+
+    \end{proofc}
+
+    \item Let $L$ be a lattice, show that $\mathbb{C}/L$ is a compact Riemann surface of genus $1$.
+    \begin{proofc}[解答]
+
+        \begin{itemize}
+        \item
+            Let $L=\Z \omega_1 \oplus \Z\omega_2$ be the lattice, where $\omega_1, \omega_2\in \mathbb{C}$ are linearly independent on $\R$,
+        then the closed parallelogram $P=\{a\omega_1 + b\omega_2: \ a, b \in [0,1]\}$ induces a projection $P\to \mathbb{C}/L$, thus $L$ is compact.
+        Hausdorff property and connectedness come easily from the property of $P$.
+
+        For each \( p \in \mathbb{C}/L \), choose \( z \in \mathbb{C} \) with \( \pi(z) = p \). \( \pi|_{D(z,\varepsilon)} : D(z,\varepsilon) \to U := \pi(D(z,\varepsilon)) \) is a homeomorphism. Define a chart \((U, \varphi)\), where \( \varphi = (\pi|_{D(z,\varepsilon)})^{-1} \).
+
+Suppose \((U_1, \varphi_1)\) and \((U_2, \varphi_2)\) are two such charts with \( U_1 \cap U_2 \neq \emptyset \). Let \( V_i = \varphi_i(U_i) \). On a connected component of \( \varphi_1(U_1 \cap U_2) \), the composition \( \varphi_2 \circ \varphi_1^{-1} \) satisfies
+\[
+\pi(\varphi_1^{-1}(z)) = \pi(\varphi_2^{-1}((\varphi_2 \circ \varphi_1^{-1})(z))),
+\]
+so \( \varphi_1^{-1}(z) - \varphi_2^{-1}((\varphi_2 \circ \varphi_1^{-1})(z)) \in L \). Since both points lie in small disks and \( L \) is discrete, this difference is constant on the component. Thus, \( \varphi_2 \circ \varphi_1^{-1} \) is a translation by a lattice element, hence holomorphic.
+
+These charts form a holomorphic atlas, making \( \mathbb{C}/L \) a Riemann surface.
+ 
+        
+        \item Secondly, we check it is of genus $1$.
+        \begin{center}
+    \begin{tikzpicture}[scale=1.2]
+        \begin{scope}[xshift=-5cm]
+            \draw (0,0) grid (3,3);
+            \node[left] at (0, 0) {$a_0$};
+            \node[left] at (0, 1) {$a_1$};
+            \node[left] at (0, 2) {$a_2$};
+            \node[left] at (0, 3) {$a_0$};
+            \node[above] at (1, 3) {$a_1$};
+            \node[above] at (2, 3) {$a_2$};
+            \node[right] at (3, 3) {$a_0$};
+            \node[right] at (3, 2) {$a_2$};
+            \node[right] at (3, 1) {$a_1$};
+            \node[right] at (3, 0) {$a_0$};
+            \node[below] at (1, 0) {$a_1$};
+            \node[below] at (2, 0) {$a_2$};
+            \draw (0,0) -- (1,1);
+            \draw (0,1) -- (1,2);
+            \draw (0,2) -- (1,3);
+            \draw (1,0) -- (2,1);
+            \draw (1,1) -- (2,2);
+            \draw (1,2) -- (2,3);
+            \draw (2,0) -- (3,1);
+\draw (2,1) -- (3,2);
+\draw (2,2) -- (3,3);
+            \end{scope}
+        \end{tikzpicture}
+        \end{center}
+        Because $\mathbb{C}/L \cong P/\{b\omega_2 \sim \omega_1 + b\omega_2, a\omega_1 \sim a\omega_1 + \omega_2\}$, we know $\mathbb{C}/L$ is homeomorphic to $T^2$, 
+
+        By the triangulation of $T^2$ above, we have $2-2g(T^2) = V+F-E = 9+18-27 = 0 \Rightarrow g(T^2) = 1$.
+
+
+
+        \end{itemize}
+    
+    
+    \end{proofc}
+    
+
+    \item Let $\mathbb{H}^{*} = \mathbb{H} \cup \{\infty \}$, and $\pi: \mathbb{H}^* \to X(1)$ be the projection, let $D_0 = \frac12 \pi(i) + \frac23 \pi(\rho) + \pi(\infty) \in \mathrm{Div}_{\mathbb{Q}}(X(1))$ be a $\mathbb{Q}$-Cartier Divisor, prove that the map:
+    \begin{align}
+        M_{2k}(1) &\to \{\omega \in \Omega_{X(1)}^k: \mathrm{div}(\omega) \geq -kD_0\} \\
+        f &\mapsto \omega_f = f(z)(dz)^k
+
+    \end{align}
+    gives an isomorphism, conclude from it that $M_{2k} \cong \mathfrak{O}(kK_{X_1} + [kD_0])$, then use Riemann-Roch Theory to calculate $\mathrm{dim} M_{2k}(1)$.
+    
+\begin{proofc}[解答]
+        We give a proof of the generalized case (where $\mathrm{SL}_2(\Z)$ may be replaced by any congruence group $\Gamma$).
+        \begin{itemize}
+            \item First we know that weight-$k$ modular form can be realized as a $\frac{k}{2}$-holomorphic differential on the complete modular curve $X(1)$, so the map $M_{2k}(1) \to \Omega_{X(1)}^k$ is well-defined.
+             We want to prove that there is an isomorphism: $A_{2k}(\Gamma) \to \Omega^{k}_{X(\Gamma)}$, where $A_{2k}$ denotes the modular functions (only meromorphic needed).
+
+            The realization is given as follow: 
+
+            For $\omega \in \Omega^{k}_{X(\Gamma)}$, directly define the pullback of the natural projection 
+            
+            $$\pi: \mathbb{H} \to X(\Gamma), \ \ \ \pi^* (\omega) \in \Omega_{\mathbb{H}}^k, $$
+            
+            because $\mathbb{H}$ is an open subset of $\mathbb{C}$, $\pi^*(\omega)$ can be written as $f(z)(dz)^k$, where $f$ is a global meromorphic function, 
+            and the transition compatibility 
+            
+            $$g^*(f(z)(dz)^k) = f(z)(dz)^k, \forall g \in \Gamma$$
+            
+            gives: 
+            
+            $$f(gz) = (cz+d)^{-2k}f(z),$$ 
+            
+            which means $f$ is modular of weight-$2k$.
+
+            For $f \in A_{2k}(\Gamma)$, 
+            we will construct a meromorphic differential \( \omega(f) \in \Omega^{k}_{X(\Gamma)} \) such that \( \pi^*(\omega) = f(\tau)(d\tau)^k \). 
+            By the definition of meromorphic differentials it suffices to construct local differentials that pull back to restrictions of \( f(\tau)(d\tau)^k \). 
+            Thus the idea is to express \( f(\tau)(d\tau)^k \) in local coordinates.
+
+Each local map \( \psi_j : U_j \longrightarrow V_j \) is a composite \( \psi_j = \rho_j \circ \delta_j : \tau \mapsto z \mapsto q \) with \( \delta_j \in \mathrm{GL}_2(\mathbb{C}) \). 
+Since \( \delta_j \) is invertible it is easy to transform \( f(\tau)(d\tau)^k \) into \( z \)-coordinates locally. 
+First extend the weight-\( k \) operator \( [\gamma]_k \) to matrices \( \gamma \in \mathrm{GL}_2(\mathbb{C}) \) by defining \( j(\gamma, \tau) = c\tau + d \) as 
+we define on the $\mathrm{SL}_2(\Z)$, and
+\[
+(f[\gamma]_k)(\tau) = (\det \gamma)^{k/2}j(\gamma, \tau)^{-k}f(\gamma(\tau))
+\]
+when this makes sense. Now let \( U_j' = U_j \cap \mathbb{H} \). 
+Then \( f(\tau)(d\tau)^k |_{U_j'} \) is a pullback \( \delta_j^*(\lambda_j) \) where \( \lambda_j \) is the differential obtained by pulling \( f(\tau)(d\tau)^k |_{U_j'} \) forward to \( z \)-space 
+under the change of multiplication by \( \delta_j^{-1} \). Letting \( \alpha = \delta_j^{-1} \),
+\[
+\begin{aligned}
+\lambda_j &= \alpha^*(f(\tau)(d\tau)^k |_{U_j'}) = f(\alpha(z))(d(\alpha(z)))^k \\
+&= (\det \alpha)^k j(\alpha, z)^{-2k}f(\alpha(z))(dz)^k = (f[\alpha]_{2k})(z)(dz)^k.
+\end{aligned}
+\]
+Thus \( \lambda_j \) is \( \delta_j \Gamma \delta_j^{-1} \)-invariant since \( f(\tau)(d\tau)^k \) is \( \Gamma \)-invariant. 
+
+Denote $r_h$ the multiplication by $\mu_h = e^{\frac{2\pi i}{h}}$.
+
+When $U_j$ does not contain a cusp, by $\delta_j \Gamma \delta_j^{-1}$-invariance, the pullback 
+$$r_{h}^*(\lambda_j) = (f[\alpha]_{2k})(\mu_h z)\cdot \mu_h^k (dz)^k = \lambda_j,$$
+Or equivalently, 
+$$(\mu_h z)^k (f[\alpha]_{2k})(\mu_h z ) = z^k (f[\alpha]_{2k})(z),$$
+
+This shows that the function $z^l (f[\alpha]_{2k})(z)$ takes the form $g_j(z^h)$ for some meromorphic function $g$, and then we define:
+\begin{equation}
+    \omega_j = \frac{g_j(q)}{(hq)^k}(dq)^k \ \ \text{on} \  V_j. \label{eq1}
+\end{equation}
+
+When $U_j$ contains a cusp, we similarly have the conclusion that $f([\alpha]_{2k})(z)$ takes the form $g_j(q_h)$, where $h$ is the width and $q_h = e^{\frac{2\pi i z}{h}}$,
+then we may define:
+\begin{equation}
+    \omega_j = \frac{g_j(q)}{(2\pi i q/h)^k}(dq)^k \ \ \text{on} \  V_j. \label{eq2}
+\end{equation}
+ 
+This finishes the construction of $\omega = \{\omega_j\}_{j\in J}$. By tedious calculation we may see these two maps gives out a bijection.
+
+Let $\tau_j$ be the center of $U_j$, from \eqref{eq1} and \eqref{eq2} we know 
+\begin{align}
+   v_{\pi(\tau_j)}(\omega) &= v_0(\frac{g_j(q)}{q^k}) \\
+   &= v_0(g_j) - k \\
+   &= \frac{1}{h}(v_{\tau_j}(f)) + \frac{n}{h} - k \\
+    &= v_{\pi(\tau_j)}(f) -k(1-\frac1h).
+\end{align}
+
+So this means when $f$ is a modular function (holomorphic), $v_{\pi(\tau_j)}(f) \geq 0, \ \forall \tau_j$, 
+
+then $v_{\pi(\tau_j)}(\omega) \geq -k\big(1-\frac1h\big)$, then:
+     $$M_{2k}(\Gamma) \to \{\omega \in \Omega_{X(\Gamma)}^k: \mathrm{div}(\omega) \geq -kD_0\} $$
+    
+    is an isomorphism.
+            
+            
+            
+            
+            
+            
+            
+            
+    \item In the rest of the answer, we denote $l(D) = \{ f \in \mathbb{C}(X(\Gamma)), f = 0 \ or \ \mathrm{div}(f) + D \geq 0\}$, then Riemann-Roch theorem says:
+    $$\mathrm{dim} (L(D)) = \deg(D) - g(X(\Gamma)) + 1 + \mathrm{dim} (L(\mathrm{div}(\lambda) - D)), \ \text{where} \ \lambda \ \text{is the canonical divisor}.$$
+
+    Then we introduce a lemma:
+    \begin{lemma}[lemma0.1]
+
+        (a) \(\mathrm{dim}(L(\mathrm{div}(\lambda))) = g\). 
+
+(b) \(\deg(\mathrm{div}(\lambda)) = 2g - 2\).  
+
+(c) If \(\deg(D) < 0\) then \(\mathrm{dim}(L(D)) = 0\).  
+
+(d) If \(\deg(D) > 2g - 2\) then \(\mathrm{dim}(L(D)) = \deg(D) - g + 1\).
+    \end{lemma}
+
+        \begin{proof}[Proof of lemma0.1]
+
+         Note that \(\mathrm{dim}(L(0)) = 1\) , then we put \(D = 0\) 
+         into the Riemann-Roch Theorem, it turns out that \(1 = -g + 1 + \mathrm{dim}(L(\mathrm{div}(\lambda)))\), 
+         proving (a). 
+         
+         Next set \(D = \text{div}(\lambda)\), 
+         combine the Riemann-Roch Theorem with (a) to get 
+         \(g = \deg(\text{div}(\lambda)) - g + 1 + 1\), 
+         and (b) follows. 
+         
+         Further, suppose \(\mathrm{dim}(L(D)) > 0\). 
+         Then some nonzero \(f \in L(D)\) exists, so \(\text{div}(f) 
+         \geq -D\) and taking degrees shows that \(\deg(D) \geq 0\), 
+         which is exactly (c).
+
+         Finally, (b) and (c) imply (d) since  \(\deg(D) > 2g - 2 \Rightarrow \deg(\mathrm{div}(\lambda) - D) < 0\). 
+        \end{proof}
+    
+
+
+
+    Back to the proof. We fix a modular function $f_0 \in A_{2k}$, then 
+    $$M_{2k} = \{ff_0 : f \in \mathbb{C}(X(\Gamma)), \mathrm{div}(ff_0) \geq 0 \}$$
+    which leads to:
+    $$M_{2k} = \{f\in \mathbb{C}(X(\Gamma)), f \equiv 0 \ or \ \mathrm{div}(f) + \mathrm{div}(f_0) \geq 0\} = L([\mathrm{div}(f_0)]).$$
+
+    By the discussion in the first question, if we pick $\omega \in \Omega_{X(\Gamma)}^k$ corresponding to $f_0$, we know: 
+    $$[ \mathrm{div}(f)] =  \mathrm{div}(\omega) + [\frac{k}{2}] i + [\frac{2k}{3}] \mu + k\cdot \infty.$$
+
+    By lemma we have $ \mathrm{div}(\omega) = 2kg-2k$, so
+    $$ \mathrm{deg}([ \mathrm{div}(f)]) = 2k(g-1)+[\frac{k}{2}] + [\frac{2k}{3}] + k \geq 2g-2.$$
+
+    Therefore by lemma, $$\dim (M_{2k}) = (2k-1)(g-1) + [\frac{k}{2}] + [\frac{2k}{3}] + k.$$
+        
+        Put the geometric conclusion $g = 0$ into it and classify by ${\rm mod}\ 6$, we have:
+
+        $$\dim(M_{2k}) = t+1, \ \text{when} \ \ k = 6t+0,2,3,4,5, \qquad \dim(M_{2k}) = t, \ \text{when} \ \ k = 6t+1.$$
+        
+
+
+
+
+        \end{itemize}
+    
+\end{proofc}
+
+\end{enumerate}
+
+
+\section{第二次作业}
+Notations:
+
+\begin{itemize}
+  \item
+  $f\mid_{k, \begin{bmatrix}
+    a & b\\
+    c & d
+\end{bmatrix}}(z) = (\det \begin{bmatrix}
+    a & b \\
+    c & d
+\end{bmatrix})^{k-1}(cz+d)^{-k} f(\begin{bmatrix} 
+    a & b \\
+    c & d
+\end{bmatrix}z)$, where the subscript $k$ could be omitted.
+  \item
+  $\Gamma_0(N) = \{\gamma \in \mathrm{SL}_2(\mathbb{Z}), \gamma \equiv \begin{bmatrix}
+    a & b \\
+    0 & d
+  \end{bmatrix} \ \ (\mathrm{mod} N) \}$;
+  \item
+   $\Gamma_1(N) = \{\gamma \in \mathrm{SL}_2(\mathbb{Z}), \gamma \equiv \begin{bmatrix}
+    1 & b \\
+    0 & 1
+  \end{bmatrix} \ \ (\mathrm{mod} N) \}$;
+    \item
+   $\Gamma(N) = \{\gamma \in \mathrm{SL}_2(\mathbb{Z}), \gamma \equiv \begin{bmatrix}
+    1 & 0 \\
+    0 & 1
+  \end{bmatrix} \ \ (\mathrm{mod} N) \}$, called principal congruence groups;
+\end{itemize}
+
+\begin{enumerate}
+  
+  \item Show that the cusps of the congruence group $\Gamma_0(p)$ ($p$ prime) are $\{0, \infty\}$.
+\begin{proofc}[解答]
+    For any $\frac{a}{b} \in \mathbb{Q}$, $\gcd(a, b) = 1$,
+    
+    if $p \nmid b$, then pick $bc \equiv 1 \ (\mathrm{mod} \ p)$, we have $\begin{bmatrix}
+        c & a \\
+        0 & b
+    \end{bmatrix} \cdot 0 = \frac{0+a}{0+b} = \frac{a}{b}$ with $\begin{bmatrix}
+        c & a \\
+        0 & b
+    \end{bmatrix} \in \Gamma_0(p)$;
+
+
+    if $p \mid b$, then $p \nmid a$, pick $ac \equiv 1 \ (\mathrm{mod} \ p)$,$\begin{bmatrix}
+        a & 0 \\
+        b & c
+    \end{bmatrix} \cdot \infty = \frac{a}{b}$ with $\begin{bmatrix}
+        a & 0 \\
+        b & c
+    \end{bmatrix} \in \Gamma_0(p)$.
+\end{proofc}
+
+\item Find all the cusps of the congruence group $\Gamma_0(4)$.
+\begin{proofc}[解答]
+
+Similar as the discussion in question 1, we know that for any $\frac{a}{b} \in \mathbb{Q}$, 
+if $4 \mid b$ or $2 \nmid b$, $\frac{a}{b} \sim 0$ or $\infty$, now consider $b = 2k, 2\nmid k$,
+then let $\begin{bmatrix}
+    1 & 0 \\
+    2 & 1
+\end{bmatrix}$ and $\begin{bmatrix}
+    a & c_1\\
+    2k & c_2
+\end{bmatrix}$ be the transition matrix from $\frac12$ and $\frac{a}{2k}$ to $\infty$ respectively, 
+we have:
+$$\begin{bmatrix}
+    1 & 0 \\
+    2 & 1
+\end{bmatrix} ^{-1} \begin{bmatrix}
+    a & c_1\\
+    2k & c_2
+\end{bmatrix}
+ = \begin{bmatrix}
+    a & c_1\\
+    -2a+2k & -2c_1+f
+ \end{bmatrix} \equiv \begin{bmatrix}
+    a & c_1 \\
+    0 & -2c_1 + f
+ \end{bmatrix} \ (\mathrm{mod} \ 4).$$
+
+Then we have that all the cusps of $\Gamma_0(4)$ are $\big\{0, \frac12, \infty\big\}$.
+\end{proofc}  
+
+\item
+Let $E_{2,N}(z) = E_2(z) - N E_{2}(Nz)$, show that $E_{2,N} \in M_2(\Gamma_0(N))$.
+
+
+\begin{proofc}[解答]
+    We first prove a proposition (transformation formula):
+\begin{proposition}
+   $$E_2(\frac{az+b}{cz+d}) = (cz+d)^2 E_2(z) + \frac{6c(cz+d)}{\pi i}.$$
+\end{proposition}
+Let $\displaystyle \eta(z) = q^{\frac{1}{24}}\cdot \prod_{n=1}^{\infty}(1-q^n)$,
+
+by the formula 4.48 of $\mathnormal{A \ Course \ in \ Arithmetic}$ 
+ and the fact that $\frac{\eta'}{\eta} = \frac{1}{24} \frac{F'}{F}$, 
+ we have:
+ $$E_2(z) = \frac{12}{\pi i}\frac{\eta'(z)}{\eta}.$$
+
+Because $\eta^{24}$ is modular of weight-$12$, let $\gamma  = \begin{bmatrix}
+    a & b \\
+    c & d
+\end{bmatrix} \in \mathrm{SL}_2(\mathbb{Z})$, 
+$$\eta(\gamma z) = \mu_{24} (cz+d)^{\frac12}\eta(z),\  \text{for some 24-th units of unity} \ \  \mu_{24};$$
+
+Taking the logarithmic derivative with respect to $z$:
+
+\begin{align}
+    \frac{d}{dz}\log \eta(\gamma z) &= \frac{d}{dz}(\log(\mu_{24}) + \frac12\log (cz+d) +\log \mu(z))\\
+    &= \frac{c}{2cz+2d} + \frac{\frac{d \eta}{dz}}{\eta}.
+\end{align}
+
+Alternatively, by the chain rule,
+$$\frac{d}{dz}\log \eta(\gamma z)  = \frac{1}{(cz+d)^2} \cdot \frac{\frac{d \eta}{dz}(\gamma z)}{\eta(\gamma z)}.$$
+
+Compare these two we get:
+$$\frac{\eta'(\gamma z)}{\eta(\gamma z )} = (cz+d)^2 \frac{\eta'(z)}{\eta(z)} + \frac{c(cz+d)}{2}.$$
+
+Substitude all the $\frac{\eta'}{\eta}$ into $E_2$ and we have done the proof.
+
+Back to the problem, pick $\gamma = \begin{bmatrix}
+    a & b \\
+    Nc & d
+\end{bmatrix} \in \Gamma_0(N)$, we have:
+$$E_2(\gamma z) = (Ncz+d)^2 E_2(z) + \frac{6Nc(Ncz+d)}{\pi i}.$$
+\begin{align}
+   E_2(N\gamma z) &= E_2(\begin{bmatrix}
+    a & Nb \\
+    c & d
+   \end{bmatrix} Nz) \\
+   &= (Ncz+d)^2 E_2(Nz) + \frac{6c(Ncz+d)}{\pi i}.
+\end{align}
+Therefore we have:
+\begin{align}
+    (E_{2,N}\mid_{\gamma})(z) &= (Ncz+d)^{-2}E_{2,N}(z) \\
+&= (Ncz+d)^{-2}(E_2(\gamma z) - NE_2(N\gamma z)) \\
+&= (Ncz+d)^{-2}((Ncz+d)^2 E_2(z) + \frac{6Nc(Ncz+d)}{\pi i} - (Ncz+d)^2 E_2(Nz) - \frac{6c(Ncz+d)}{\pi i}) \\
+&= E_{2, N}(z).
+\end{align}
+
+\end{proofc}
+
+
+
+
+\item
+Let $f \in M_k(\mathrm{SL}_2(\mathbb{Z}))$, prove that $f_{N}(z) \triangleq f(z) - N f(Nz) \in M_k(\Gamma_0(N))$.
+\begin{proofc}[解答]
+
+It suffices to prove $\displaystyle Nf \mid_{\begin{bmatrix}
+    a & d \\
+    Nc & b
+\end{bmatrix}}(z) = Nf(Nz)$, for any $\begin{bmatrix}
+    a & d \\
+    Nc & b
+\end{bmatrix} \in \Gamma_0(N)$.
+
+\begin{align}
+    f \mid_{\begin{bmatrix}
+    a & d \\
+    Nc & b
+\end{bmatrix}}(Nz) &= (Ncz+b)^{-k} \cdot f(\frac{Naz+Nd}{Ncz+b}) \\
+ &= f\mid_{\begin{bmatrix}
+    a & Nd \\
+    c & b
+ \end{bmatrix}}(Nz) \\
+ &= f(Nz).
+\end{align}
+\end{proofc}
+
+\item Show that $\dim (M_4(\Gamma_0(4))) = 3$.
+
+\begin{proofc}[解答]
+    We know from Problem 4 that $E_4(z) - 4E_4(4z) \in M_4(\Gamma_0(4))$, 
+    $E_4(z) - 2E_4(2z) \in M_4(\Gamma_0(2)) \subseteq M_4(\Gamma_0(4))$, $E_4 \in M_4(1) \subseteq M_4(\Gamma_0(4))$, 
+
+    and they are all linearly independent, so $\dim (M_4(\Gamma_0(4))) \geq 3$,
+
+    On the other hand, we know that $M_4(\Gamma_0(4))$ does not contain nonzero cusp forms,
+    which means:
+    
+     if $\dim (M_4(\Gamma_0(4))) > 3 = \# \{\text{Cusps of} \ \Gamma_0(4)\}$, then there is a linear combination of these modular forms which gives out a cusp form,
+     contradiction!
+
+     Therefore, $\dim (M_4(\Gamma_0(4))) = 3$.
+\end{proofc}
+\item Show that $\dim (M_2(\Gamma_0(4))) = 2$. Further, $E_{2,2}, \ E_{2, 4}$ is a basis.
+
+\begin{proofc}
+
+Similar to the previous proof we have that $\dim (M_2(\Gamma_0(4))) \leq 3$, and we know $E_{2,2}, E_{2,4} \in M_2(\Gamma_0(4))$ are linearly independent, now our goal is to prove that $\dim (M_2(\Gamma_0(4))) \neq 3$.
+
+Assume $\dim (M_2(\Gamma_0(4))) = 3$, by the index formula on $\mathnormal{A \ first \ course \ in \ modular \ forms, \ Page \ 14}$ (or by Problem 9), we have $[\mathrm{SL}_2(\mathbb{Z}) : \pm \Gamma_0(4)] = 3$.
+
+We may let $\{1, \alpha, \beta\}$ be the representatives of $\mathrm{SL}_2(\mathbb{Z})/\pm\Gamma_0(4)$, 
+such that $\{0, \alpha \cdot 0 , \beta \cdot 0\} = \{0, \frac12, \infty\}$.
+
+Assume $\{f_1, f_2, f_3\}$ be a basis of $M_2(\Gamma_0(4))$, 
+then consider $F_i = f_i |_1 + f_i |_{\alpha} + f_i |_{\beta}$,
+
+we may verify that $F_i |_{\gamma} = f_i |_{\gamma} + f_i |_{\alpha\gamma} + f_i |_{\beta\gamma} = F_i, \ \forall \gamma \in \mathrm{SL}_2(\Z)$, 
+so $F_i = 0$ for there are no weight-$2$ modular form of $\mathrm{SL}_2(\Z)$.
+
+Denote $j(\gamma, z) = cz+d, \gamma = \begin{bmatrix}
+    a & b \\
+    c & d
+\end{bmatrix}$, then write $A_1 = j(1, 0) = 1, A_2 = j(\alpha, 0), A_3 = j(\beta, 0)$,
+then:
+$$0 = F_i(0) = f(|_1 + |_{\alpha} + |_{\beta})(0) = A_1f_i(0) + A_2f_i(\frac12) + A_3f_i(\infty).$$
+
+Equivalently, 
+
+$$\begin{bmatrix}
+    f_1(0) & f_1(\frac12) & f_1(\infty) \\
+    f_2(0) & f_2(\frac12) & f_2(\infty) \\
+    f_3(0) & f_3(\frac12) & f_3(\infty) 
+\end{bmatrix} \cdot \begin{bmatrix}
+    A_1 \\
+    A_2 \\
+    A_3
+\end{bmatrix} = 0.$$
+
+Because there are no cusp forms in $M_2(\Gamma_0(4))$, the three vectors $(f_i(0), f_i(\frac12), f_i (\infty))$ are linearly independent, 
+therefore
+
+$$\begin{bmatrix}
+    A_1 \\
+    A_2 \\
+    A_3
+\end{bmatrix} = 0,$$
+
+Contradict to $A_1 = 1$!
+
+\end{proofc}
+
+
+
+
+
+
+
+
+
+\item Show that $\mathrm{SL}_2(\mathbb{Z}) \to \mathrm{SL}_2(\mathbb{Z}/N\mathbb{Z})$ is a surjective homomorphism.
+
+\begin{proofc}[解答]
+    We only need to prove the surjectivity, pick $\gamma = \begin{bmatrix}
+        a & b \\
+        c & d 
+    \end{bmatrix} \in \mathrm{SL}_2(\mathbb{Z}/N\mathbb{Z})$, we know that $\gcd(a,c,N) = \gcd(b,d,N) = 1$.
+
+    We know that $\gamma$ can be decomposed into $P_1 \cdots P_n \cdot \begin{bmatrix}
+        h & 0 \\
+        0 & r
+    \end{bmatrix}\cdot Q_1 \cdots Q_m$, where $P_1, \cdots P_n, Q_1, \cdots Q_m$ are elementary matrices,
+    and every elementary matrix has a preimage of the form $\begin{bmatrix}
+        1 & 0 \\
+        \star & 1
+    \end{bmatrix} $ or $\begin{bmatrix}
+        1 & \star \\
+        0 & 1
+    \end{bmatrix}$ or $\begin{bmatrix}
+        0 & 1 \\
+        1 & 0
+    \end{bmatrix}$ in $\mathrm{SL}_2(\mathbb{Z})$,
+
+    For the matrix $\begin{bmatrix}
+        h & 0 \\
+        0 & r
+    \end{bmatrix}$, we assume $hr = tN+1$, and uncertain $\begin{bmatrix}
+        h+h'N & fN \\
+        gN & r + r'N
+    \end{bmatrix}$, then we need $(h+h'N)(r+r'N) - gfN^2 = 1$.
+
+    Equivalently, 
+    $$N(h'r+r'h + N(h'r'-gf)) = -tN.$$
+    
+    Then because $\gcd(r, N) = \gcd(h, N) = 1$, we may find $h', r'\in \mathbb{Z}$ with $h'r + r'h + t \equiv 0 \ (\mathrm{mod} \ N)$.
+    then pick $g, f\in \mathbb{Z}$, we have done!
+
+
+\end{proofc}
+
+
+\item 
+
+(1) Show that $\mathrm{GL}_2(\mathbb{Z} / p\Z)$ has order $(p^2 - 1)(p^2 - p)$.
+
+(2) Show that $\mathrm{SL}_2(\mathbb{Z} / p\Z)$ has order $(p^2 - 1)p$.
+
+\begin{proofc}[解答]
+(1)
+
+This is equivalent to finding a basis of $(\Z/p\Z) ^2$, there are $(p^2-1)$ nonzero vectors in $(\Z/p\Z) ^2$ and $(p^2 - p)$ vectors that are not collinear with the first one.
+
+(2)
+
+We first pick the first row of $\mathrm{SL}_2(\Z/p\Z)$, there are $(p^2-1)$ nonzero vectors, 
+if one of the entries is zero, then the second row has one fixed entry and another free entry, which amount to $p$ vectors;
+
+if all the entries are nonzero, then we may pick any number in $\{0, 1, \cdots, p-1\}$ be the third entry, and the forth entry is fixed, which means there are also $p$ choices.
+
+By multiplication principle, there are totally $(p^2-1)p$ matrices.
+
+\end{proofc}
+
+
+
+\item Show that $\Gamma_1(N)$ has index $\displaystyle N^2 \prod_{p \mid N} (1-\frac{1}{p^2})$ in $\mathrm{SL}_2(\Z)$.
+
+\begin{proofc}[解答]
+    
+Consider the map $\mathrm{SL}_2(\Z) \to \mathrm{SL}_2(\Z/N\Z)$,
+$\begin{bmatrix}
+    a & b \\
+    c & d
+\end{bmatrix}\mapsto \begin{bmatrix}
+    a & b \\
+    c & d
+\end{bmatrix}(\mathrm{mod} \ N)$,
+then its kernel is $\Gamma(N)$, so $[\mathrm{SL}_2(\Z) : \Gamma(N)] = \mathrm{Card}(\mathrm{SL}_2(\Z/N\Z))$.
+
+Assume $N = \prod_{p\mid N} p^{v_p}$, by Chinese Remainder Theorem, $\displaystyle \mathrm{Card}(\mathrm{SL}_2(\Z/N\Z)) = 
+\prod_{p \mid N} \mathrm{Card}(\mathrm{SL}_2(\Z/p\Z)) = \prod_{p\mid N} (p^2-1)p^{3v_p} = N^3\prod_{p\mid N}(1-\frac{1}{p^2})$.
+
+Consider the map $\Gamma_1(N) \to \Z/N\Z$, $\begin{bmatrix}
+    1 & b \\
+    0 & 1
+\end{bmatrix} \mapsto b$, with the kernel $\Gamma(N)$, we have $[\Gamma_1(N) : \Gamma(N)] = N$, 
+
+Consider the map $\Gamma_0(N) \to (\Z/N\Z)^*, \begin{bmatrix}
+    a & b \\
+    0 & d
+\end{bmatrix}\mapsto d$, with the kernel $\Gamma_1(N)$, we have $\displaystyle [\Gamma_0(N) : \Gamma_1(N)] = \phi(N) = N\prod_{p\mid N}(1-\frac1p)$.
+
+Then combine these three formulae, we have done.
+
+\end{proofc}
+
+
+
+
+\item Show that $\Gamma_0(N)$ has index $\displaystyle N \prod_{p \mid N} (1+\frac{1}{p})$ in $\mathrm{SL}_2(\Z)$.
+
+\begin{proofc}[解答]
+    As written in Problem 9.
+\end{proofc}
+
+\item Let $f, g \in S_k(1)$ be normalized eigenforms for all the Hecke operators, show that either $\langle f,g \rangle_{\mathrm{SL}_2(\Z)} = 0$ or $f = g$.
+
+\begin{proofc}[解答]
+We will use two calculative facts proved in the class:
+
+(1) $T_p^* = \langle p^{-1}\rangle T_p$;
+
+(2) $\langle p \rangle^* = \langle p^{-1} \rangle$.
+
+We denote $\lambda_{f, n}, \lambda_{g, n}$ the eigenvalue of $T_n$ on $f, g$ respectively, $\mu_{f, n}, \mu_{g, n}$ the eigenvalues of 
+$\langle n \rangle$ on $f, g$ respectively.
+
+We assume that $\langle f, g \rangle = L \neq 0$, then consider:
+$$ \lambda_{f, p} L = \langle T_p f, g \rangle = \langle f, \langle p^{-1} \rangle T_p g\rangle = \overline {\lambda_{g, p}\mu_{g, p}} L$$
+We get:
+$$    \lambda_{f, p} = \overline{\lambda_{g,p} \mu_{g,p}}.$$
+
+We know from Problem 12 that $\lambda_{f, p} \in \R$, by a classical conclusion we have: $\mu_{p}$ is an $N$-th unity, 
+and when considering cusp forms of $\mathrm{SL}_2(\Z)$, we have $\mu_p = 1$.
+
+So we get:
+\begin{equation}
+    \lambda_{f, p} = \lambda_{g,p}.
+    \label{eq3}
+\end{equation}
+
+For any $n \geq 2$, we prove by induction that $\frac{\lambda_{f,p}}{\lambda_{g, p}} = \cdots = \frac{\lambda_{f, p^n}}{\lambda_{g, p^n}} = s$.
+By the formula $T_{p^r} = T_pT_{p^{r-1}} - p^{r-1}\langle p \rangle T_{p^{r-2}}$, we have:
+$\lambda_{p^r} = \lambda_{p} \lambda_{p^{r-1}} - p^{r-1} \mu_p \lambda_{p^{r-2}}$.
+
+This means:
+$$ \lambda_{f, p^n} = \overline{\lambda_{g,p^n} \mu_{g,p^n}} = \overline{\lambda_{g, p^n} (\mu_{g, p})^n} = \lambda_{g, p^n}.$$
+
+Therefore $f, g$ have exactly the same eigenvalues for all the Hecke operators and Diamond operators, therefore they are homothetic, also they are both normal forms, $f = g$.
+
+
+
+\end{proofc}
+
+
+
+
+
+
+\item Show that the eigenvalues of $T_n$ on $S_k(\mathrm{SL}_2(\Z))$ are real algebraic numbers (algebraic numbers that only admits real embeddings to $\mathbb{C}$).
+
+
+\begin{proofc}[解答]
+Let \( M_k(\mathbb{Z}) \) be the set of modular forms
+
+\[
+f = \sum_{n=0}^\infty c(n)q^n
+\]
+
+of weight \( k \) whose coefficients \( c(n) \) are integers. One can prove that there exists a \(\mathbb{Z}\)-basis of \( M_k(\mathbb{Z}) \) which is a \(\mathbb{C}\)-basis of \( M_k \). [More precisely, one can check that \( M_k(\mathbb{Z}) \) has the following basis (recall that \( F = q \prod_{n=1}^{\infty} (1-q^n)^{24} \)):
+
+\( k \) is of the form $4k$: One takes the monomials \( E_4^\alpha F^\beta \) where \( \alpha, \beta \in \mathbb{N} \), and \( \alpha + 3\beta = \frac{k}{2} \);
+
+\( k \) is of the form $4k+2$: One takes the monomials \( E_6 E_4^\alpha F^\beta \) where \( \alpha, \beta \in \mathbb{N} \), and \( \alpha + 3\beta = \frac{k-3}{2}\).
+
+Also, $M_k(\Z)$ is stable under $T(n), n \geq 1$.
+ We conclude from this that the coefficients of the characteristic polynomial of $T(n)$. 
+acting on $M_k$, are integers, therefore the eigenvalues are algebraic integers.
+
+Because Hecke operator $T_p$ is self-adjoint in Petersson Inner Product, the eigenvalues are real.
+
+Assume $\sigma \in \mathrm{Gal}(\mathbb{C}/\mathrm{Q})$ maps an eigenvalue $\lambda$ to $\sigma \lambda$, 
+we know that Hecke operators $T_n$ are algebraic on the coefficients of the Fourier series, therefore $f^{\sigma}$ is an eigenform of eigenvalue $\sigma \lambda$, therefore $\sigma \lambda \in \R$, which means $\lambda$ is totally real.
+
+\end{proofc}
+
+
+
+
+
+\item Let $f \in S_k(\Gamma_0(N), \chi)$ and $r \mid N$, suppose $f$ is an eigenform for all $T_n, \gcd(n, N) = 1$, show that
+$f |_{k, \begin{bmatrix}
+    r & 0 \\
+    0 & 1
+\end{bmatrix}}$ is also an eigenform for all $T_n, \gcd(n, N) = 1$, with the same eigenvalues.
+
+\begin{proofc}[解答]
+$f |_{k, \begin{bmatrix}
+    r & 0 \\
+    0 & 1
+\end{bmatrix}}(\eta) = r^{k-1} f(r\eta)$, therefore $f |_{k, \begin{bmatrix}
+    r & 0 \\
+    0 & 1
+\end{bmatrix}} \in S_k(\Gamma_0(rN), \chi)$.
+
+It suffices to prove that for any $p \nmid N$, $T_p f(r\eta)= \lambda f(\eta)$, where $\lambda$ is the eigenvalue of $T_p$ on $f$.
+
+Let
+$$f(\eta) = \sum_{n=1}^{+\infty} a_n(f) q^n.$$
+
+Then 
+$$f(r\eta) = \sum_{n=1}^{+\infty} a_n(f) q^{rn}.$$
+
+Because $f$ is a eigenform in $S_k(N,\chi)$, we have:
+\begin{equation}
+    \lambda a_n(f) = a_n(T_p f) = a_{np}(f) + \chi(p) p^{k-1}a_{\frac{n}{p}}(f).
+    \label{eqdiamond}
+\end{equation}
+
+And combine with $f(r \eta) \in S_k(rN, \chi)$, we have:
+\begin{align}
+a_{rn}(T_p f(r\eta)) &= a_{rnp}(f(r\eta)) + \chi(p) p^{k-1}a_{\frac{rn}{p}}(f(r\eta)) \\
+                    &= a_{np}(f) + \chi(p) p^{k-1}a_{\frac{n}{p}}(f) \\
+                    &= \lambda a_n(f) \\
+                    &= a_{rn}(f(r\eta)).
+\end{align}
+
+Therefore $f(r\eta)$ is also a Hecke eigenform.
+
+\begin{remark}
+    $r \mid N$ can not be omitted, since the formula \eqref{eqdiamond} needs $p$ not divide the level of the modular form, if $r \nmid N$, then there is some $p$ such that 
+    $p \nmid N$ but $p \mid rN$. 
+\end{remark}
+
+\end{proofc}
+
+
+
+
+
+\item Let $\omega_N = \begin{bmatrix}
+    0 & -1\\
+    N & 0
+\end{bmatrix}$, prove that $\omega_N \Gamma_0(N) \omega_N^{-1} \subseteq \Gamma_0(N)$.
+
+
+\begin{proofc}[解答]
+    By direct calculation:
+    $$\begin{bmatrix}
+        0 & -1\\
+        N & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        a & b\\
+        Nc & d
+    \end{bmatrix}
+    \begin{bmatrix}
+        0 & \frac1N\\
+        -1 & 0
+    \end{bmatrix} = \begin{bmatrix}
+        d & -c\\
+        -Nb & a
+    \end{bmatrix} \in \Gamma_0(N).
+    $$
+\end{proofc}
+
+
+
+
+\item 
+
+(1) Show that $f|_{k, \omega_N}\in M_k(\Gamma_0(N))$ if $f\in M_k(\Gamma_0(N))$.
+
+(2) Show that $f|_{k, \omega_N} |_{k, \omega_N} = f$.
+
+
+\begin{proofc}[解答]
+(1)
+
+By the previous question, for any $\gamma \in \Gamma_0(N)$, $\omega_N \gamma \omega^{-1} \in \Gamma_0(N)$, 
+then $f = f |_{k, \omega_N \gamma \omega^{-1}}$, which shows that 
+$$f|_{k, \omega_N} = (f|_{k, \omega_N})|_{k, \gamma}.$$
+
+
+(2)
+
+$f|_{k, \omega_N} |_{k, \omega_N}(z) = f|_{\begin{bmatrix}
+    -N & 0 \\
+    0 & -N
+\end{bmatrix}}(z) = (N^2)^{k-1} (-N)^{-k}f(z).$
+
+
+\end{proofc}
+
+
+
+
+
+
+
+
+
+
+
+\item
+Show that $S_k(\Gamma_1(N))^{old}$ is stable under all $T_n, \langle m \rangle$.
+
+
+
+We prove that for any $(f,g) \in S_k(\Gamma_1(\frac{N}{p}))^2$, $T_q(i_p(f,g)), \langle q \rangle(i_p(f,g))$ are still in $i_p(S_k(\Gamma_1(N))^2)$.
+In the rest of the proof, we write $T_{q, N}$ for the Hecke operator $T_q$ at the level $\Gamma_1(N)$.
+We may assume $f\in S_k(\frac{N}{p}, \chi_1), g \in S_k(\frac{N}{p}, \chi_2)$, and denote the lift of $\chi_i$ to $(\Z/N\Z)^*$ by $\chi_i'$, the s-th Fourier coefficient of $f$ by $a_s(f)$.
+
+
+
+(1) If $q = p$, then we prove:
+$$T_{p, N}f + T_{p, N}(g|_{\begin{bmatrix}
+    p  & 0\\
+    0 & 1
+\end{bmatrix}}) = T_{p, \frac{N}{p}}f + p^{k-1}g - (\langle p \rangle f)|_{\begin{bmatrix}
+    p & 0 \\
+    0 & 1
+\end{bmatrix}}.$$
+
+We prove this by compare their Fourier coefficients, 
+
+$(\langle p \rangle f)|_{\begin{bmatrix}
+    p & 0 \\
+    0 & 1
+\end{bmatrix}}(z) = \chi_2(p) p^{k-1} f(pz)$, thus $a_s((\langle p \rangle f)|_{\begin{bmatrix}
+    p & 0 \\
+    0 & 1
+\end{bmatrix}}) = \chi_2(p) p^{k-1} a_{\frac{s}{p}}(f)$, therefore by \eqref{eqdiamond}, 
+
+
+$$a_s(T_{p,\frac{N}{p}}f - \langle p \rangle f|_{\begin{bmatrix}
+    p & 0 \\
+    0 & 1
+\end{bmatrix}}) = a_{sp}(f) + \chi_2(p) p^{k-1}a_{\frac{s}{p}}(f) - \chi_2(p) p^{k-1}a_{\frac{s}{p}}(f).$$
+
+$$a_s(T_{p, N} f) = a_{sp}(f) + \chi_2'(p)p^{k-1} a_{\frac{s}{p}}(f).$$
+
+Thus $a_s(T_{p,\frac{N}{p}}f - \langle p \rangle f|_{\begin{bmatrix}
+    p & 0 \\
+    0 & 1
+\end{bmatrix}}) = a_s(T_{p, N} f) $.
+
+\begin{align}
+   a_s(T_{p, N}(g|_{\begin{bmatrix}
+    p  & 0\\
+    0 & 1
+\end{bmatrix}})) &= a_s(T_{p,N} (p^{k-1}g(pz))) \\
+&= p^{k-1} (a_{sp}(g(pz))+ \chi_2'(p) \times \cdots ) \\
+&= p^{k-1}(a_{sp}(g(pz)))\\
+&= p^{k-1} a_s(g)\\
+&= a_s(p^{k-1}g).
+
+ 
+\end{align}
+
+Thus finishes the proof, and by this we have a commutative diagram:
+
+\[\begin{tikzcd}
+	{S_k(\Gamma_1(\frac{N}{p}))^2} & {} &&& {S_k(\Gamma_1(\frac{N}{p}))^2} \\
+	{S_k(\Gamma_1(N))} &&&& {S_k(\Gamma_1(N))}
+	\arrow["\begin{array}{c} \begin{bmatrix}f \\g\end{bmatrix}\mapsto \begin{bmatrix}T_{p, \frac{N}{p}} & \ \ \  p^{k-1}\\ -\langle p\rangle &  \ \ \ 0\end{bmatrix}\begin{bmatrix}f \\g\end{bmatrix} \end{array}", from=1-1, to=1-5]
+	\arrow["{i_p}"', from=1-1, to=2-1]
+	\arrow["{i_p}", from=1-5, to=2-5]
+	\arrow["{T_{p, n}}"', from=2-1, to=2-5]
+\end{tikzcd}\]
+
+The diagram shows $T_{p,n}$ is stable.
+
+(2)If $q \neq p$, then the diamond operator $\langle q \rangle$ acts the same on both level $N$ and $\frac{N}{p}$,
+thus we only need to consider the Hecke operator $T_{q,n}$.
+We have:
+
+$$a_s(T_{q, N} f) = a_{sq}(f) + \chi_1'(q)q^{k-1} a_{\frac{s}{q}}(f).$$
+$$a_s(T_{q, \frac{N}{p}} f) = a_{sq}(f) + \chi_1(q)q^{k-1} a_{\frac{s}{q}}(f).$$
+
+Because $\chi_1(q) = \chi_1'(q)$, $T_{q, N} f = T_{q, \frac{N}{p}}f$.
+
+And also
+\begin{align}
+a_s(T_{q, N}(g|_{\begin{bmatrix}
+    p & 0 \\
+    0 & 1
+\end{bmatrix}})) &= p^{k-1}(a_{s}(T_{q, N} g(pz))) \\
+&= p^{k-1} (a_{sq}(g(pz)) + \chi_2'(q)q^{k-1}a_{\frac{s}{q}}(g(pz))) \\
+&= p^{k-1} a_{\frac{sq}{p}}(g) + \chi_2'(q) (pq)^{k-1} a_{\frac{s}{pq}}(g);
+\end{align}
+
+\begin{align}
+    a_s((T_{q, N}g)|_{\begin{bmatrix}
+    p & 0 \\
+    0 & 1
+\end{bmatrix}}) &= p^{k-1}a_{\frac{s}{p}}(T_{q,N}g) \\
+&= p^{k-1} (a_{\frac{sq}{p}}g + \chi_2'(q)q^{k-1}a_{\frac{s}{pq}}g) 
+\end{align}
+
+Therefore $(T_{q, N}g)|_{\begin{bmatrix}
+    p & 0 \\
+    0 & 1
+\end{bmatrix}} = T_{q, N}(g|_{\begin{bmatrix}
+    p & 0 \\
+    0 & 1
+\end{bmatrix}})$, therefore stable componentwisely.
+
+We have finished the proof.
+
+
+
+
+
+
+
+\end{enumerate}
+
+
+
+\section{第三次作业}
+
+Notations:
+
+(1) For a lattice $\Lambda \subseteq \mathbb{C}$, define 
+$$\wp_{\Lambda} (z) = \frac{1}{z^2} + \sum_{\lambda \in \Lambda_{\neq 0 }} \left(\frac{1}{(z-\lambda)^2} - \frac{1}{\lambda^2}\right).$$
+
+
+\begin{enumerate}
+    \item Suppose $\Lambda$ is a lattice, $z, w\in \mathbb{C} \backslash \Lambda$ and $z \neq w$, show that 
+    $$\wp(z+w) = -\wp(z)-\wp(w) + \frac14(\frac{\wp'(z) - \wp'(w)}{\wp(z) - \wp(w)})^2.$$
+
+    \begin{proofc}[解答]
+    Denote $M$ the fundamental domain of $\Lambda$, and write $\Lambda = \Z \omega_1 + \Z \omega_2$, 
+    
+    by a simple generalization of Cauchy Argument Principle, we have:
+    \begin{equation}
+        \frac{1}{2\pi i} \int_{\partial M} \frac{g(z)f'(z)}{f(z)}dz = \sum_{\omega \in M} g(\omega) \cdot \mathrm{ord}_{\omega}(f). 
+        \label{eq-cauchy}
+    \end{equation}
+
+    Pick $g \equiv 1$ in \eqref{eq-cauchy}, we get: the sum of orders of poles $=$ the sum of orders of zeros;
+
+    Pick $g \equiv z$ in \eqref{eq-cauchy}, we get: the sum of poles $=$ the sum of zeros ($\mathrm{mod} \ \ \Lambda$).
+
+    We assume the points $(\wp(z), \wp'(z)), (\wp(w), \wp'(w))$ passes through the line $y = Ax+B$, 
+    then consider the meromorphic function $F(\eta) = \wp'(\eta) - A\wp(\eta) - B$, it has a triple pole at $\eta = 0$ with holomorphic at anywhere else.
+
+    Then $F$ has three zeros in $M$, we have already known two of them, then by the previous discuss we know the third zero is $-z-w$.
+    
+    We have already known that $(\wp(\eta), \wp'(\eta))$ satisfies the Weierstrass equation 
+    $$\wp'^2 = 4\wp^3 - g_2 \wp - g_3.$$
+
+    Therefore put the linear equation $\wp'(\eta) = A\wp(\eta) + B$ we get:
+    $$4\wp^3 - A^2\wp^2 - (2AB+g_2)\wp - (B^2+g_3) = 0.$$
+
+    By Viete Coefficient Theorem we have:
+    $\begin{cases}
+        \frac{1}{4} A^2 = \wp(z)+\wp(w)+\wp(-z-w) = \wp(z) +\wp(w) + \wp(z+w) \\
+        \wp'(z) - \wp'(w) = A(\wp(z) - \wp(w))
+    \end{cases}$
+    
+    Therefore: $$\wp(z+w) = \frac{1}{4}(A^2) - \wp(z) - \wp(w) = \frac14\left(\frac{\wp'(z) - \wp'(w)}{\wp(z) - \wp(w)}\right)^2 - \wp(z) - \wp(w).$$
+    \end{proofc}
+
+
+    \item Notation as previous question, show that 
+    $$\wp(2z) = -2\wp(z) + \frac14(\frac{\wp''(z) }{\wp'(z)})^2.$$
+    \begin{proofc}[解答]
+        This is trivial by L'Hospital Principle and Problem 1.
+    \end{proofc}
+
+
+
+
+
+    \item  Given $A, B$ with $A^3 - 27 B^2 \neq 0$, show there exists a lattice $\Lambda$ such that its associated Weierstrass function $\wp_{\Lambda}(z)$ satisfies:
+    $$\wp'_{\Lambda}(z)^2 = 4\wp_{\Lambda}(z)^3 - A\wp_{\Lambda}(z) - B.$$
+
+
+    \begin{proofc}[解答]
+    Because the Weierstrass function of given $\Lambda$ is:
+    $$\wp'_{\Lambda}(z)^2 = 4\wp_{\Lambda}(z)^3 - g_2\wp_{\Lambda}(z) - g_3.$$
+
+    It suffices to find $g_2(\Lambda) = A, g_3(\Lambda) = B$.
+    We assume $\Lambda = \Z\omega_1 + \Z\omega_2 $, then 
+    $g_2(\Lambda) = g_2\big(\frac{\omega_1}{\omega_2}\big) \cdot \omega_2^{-4}, g_3(\Lambda) = g_3\big(\frac{\omega_1}{\omega_2}\big) \cdot \omega_2^{-6}$.
+
+    We know $j$ is a bijection from $X(1)$ to $\mathbb{C}$, then we pick $z_0 = j^{-1}\big(\frac{A^3}{A^3-27B^2}\big)$, and let 
+    $\omega_2 = \big(\frac{g_2(z_0)^3}{A^3}\big)^{\frac{1}{12}}, \omega_1 = \omega_2 \cdot z_0$.
+    Then 
+
+    $$ j(z_0) = \frac{A^3}{A^3-27B^2} \Longrightarrow \frac{g_2(z_0)^3}{g_2(z_0)^3 - 27g_3(z_0)^2} = \frac{A^3}{A^3-27B^2} \Longrightarrow \frac{g_3(z_0)^2}{g_2(z_0)^3} = \frac{B^2}{A^3}.$$
+
+    Therefore
+
+    $$g_2(\Gamma) = g_2(z_0) \cdot \left(\frac{g_2(z_0)^3}{A^3}\right)^{-\frac13} = A;$$
+
+    $$g_3(\Gamma) = g_3(z_0) \cdot \left(\frac{g_2(z_0)^3}{A^3}\right)^{-\frac12} = B.$$
+
+    \end{proofc}
+
+
+
+
+
+    \item Show that $j_N(z) = j(Nz)$ is a modular function for $\Gamma_0(N)$.
+    \begin{proofc}[解答]
+        This is similar to the proof of Section 2, Problem 3.
+    \end{proofc}
+
+    \item Let $\mathbb{C}(\Gamma_0(N))$ be the field of modular functions for $\Gamma_0(N)$. Show that $\mathbb{C}(\Gamma_0(N))$ is generated by $j_N(z)$ over $\mathbb{C}(j) = \mathbb{C}(\Gamma(1))$.
+
+    (Notice: ``field of modular functions'' means the function field of the modular curve $X_0(N)$, or equivalently the modular functions of weight-$0$).
+
+     \begin{proofc}[解答]
+        We consider a homomorphism $\theta: \mathrm{SL}_2(\Z) \to \mathrm{Aut}(\mathbb{C}(X_0(N))$,
+        $$\gamma \mapsto (f\mapsto f \circ \gamma),$$
+
+        (i)
+        
+        For any $\gamma  = \begin{bmatrix}
+            a & b \\
+            c & d
+            \end{bmatrix} \in \mathrm{SL}_2(\Z)$, we have:
+        \begin{align}
+            j_N(\gamma(\tau)) &= j(N\gamma \tau) \\
+            &= j(\begin{bmatrix}
+                a & Nb\\
+                \frac{c}{N} & d
+            \end{bmatrix} N\tau);
+        \end{align}
+
+        Because $j$ is a bijection between $X(1)$ to $\mathbb{C}$, if $\theta(\gamma) = \mathrm{id}$, then
+        $$j(N\tau) = j_N(\tau) = j_N(\gamma \tau) = j(\begin{bmatrix}
+            a & Nb \\
+            \frac{c}{N} & d
+        \end{bmatrix}N\tau)$$
+
+        gives out $N\tau = \begin{bmatrix}
+            a & Nb \\
+            \frac{c}{N} & d
+        \end{bmatrix}(N\tau) $ in $X(1)$, which means $\begin{bmatrix}
+            a & Nb\\
+             \frac{c}{N} & d
+        \end{bmatrix}\in \mathrm{SL}_2(\Z)$, or
+        equivalently, $\gamma \in \Gamma_0(N)$.
+
+        Therefore, the fixing group of $\mathbb{C}(j, j_N)$ is $\Gamma_0(N)$.
+
+        (ii)
+
+        We have already verified $j_N \in \mathbb{C}(\Gamma_0(N))$, then $\mathbb{C}(j,j_N) \subseteq \mathbb{C}(\Gamma_0(N))$, 
+        by the reverse inclusion, $$\ker \theta = \{ \text{the fixing group of } \mathbb{C}(\Gamma_0(N))\} \subseteq \{ \text{the fixing group of } \mathbb{C}(j,j_N)\}.$$
+
+        (iii)
+
+        Because the modular curve $X_0(N) = \mathbb{H} / \Gamma_0(N)$, $\Gamma_0(N)$ acts trivially on $X_0(N)$, therefore $\Gamma_0(N) \subseteq \ker \theta$.
+
+        (iv)
+
+        Combine (i),(ii),(iii), we know that all the $\subseteq$ should be $=$.
+        Then consider the fixing field $\mathbb{C}(X_0(N))^{\mathrm{SL}_2(\Z)/\ker \theta} = \mathbb{C}(j)$, by Galois Theory, $\mathbb{C}(X_0(N)) / \mathbb{C}(j)$ is a Galois extension
+        with Galois group $\mathrm{SL}_2(\Z)/\ker \theta = \mathrm{SL}_2(\Z)/\Gamma_0(N)$.
+
+        Similarly we have $\mathbb{C}(j, j_N) / \mathbb{C}(j)$ is also Galois with Galois group $\mathrm{SL}_2(\Z)/\Gamma_0(N)$, 
+        then by Galois correspondence $\mathbb{C}(j,j_N) = \mathbb{C}(\Gamma_0(N))$.
+
+
+    \end{proofc}
+    
+    
+
+
+    \item Let $\Lambda\subseteq \mathbb{C}$ be a lattice, and let $\alpha \in \mathbb{C} -\Z$, prove that $\wp_{\Lambda}(\alpha z)$ is a 
+    rational function of $\wp_{\Lambda}(z)$ if and only if $\alpha \Lambda \subseteq \Lambda$.
+
+    \begin{proofc}[解答]
+
+    When $\wp(\alpha z)$ is a rational function of $\wp(z)$, we know $\wp(\alpha(z+\omega)) = \wp(\alpha(z))$ for any $\omega \in \Gamma$, 
+    therefore $\alpha \Lambda \subseteq \Lambda$.
+
+    For the reverse, since $\wp(\alpha z)$ is $\Lambda/\alpha$-periodic and also $\Lambda$-periodic, $\wp(\alpha z)$ can be 
+    lifted to a function in $\mathbb{C} / \Lambda$, and hence in the function field $\Gamma(\mathbb{C} / \Lambda) = \mathbb{C} (\wp) [\wp']/(\wp'^2 - (4\wp^3-A\wp-B))$.
+
+    So we may write $\wp(\alpha z)$ in the form $c_1+\frac{f(\wp)}{c_2\wp' + g(\wp)}$, where $f,g$ are rational functions.
+    Because $\wp(\alpha z)$ is even, and $\wp$ is even, $\wp'$ is odd, there should not be $c_2 \wp'$ in the denominator, thus is $\wp(\alpha z)$ a rational funtion of $\wp(z)$.
+
+    \end{proofc}
+
+
+    \item*(Hard) (Use Hausdorff of fundamental domain?) Show that $j'(z) \neq 0$ except for:
+
+    (1) $z = \gamma i$, where $j'(z) = 0$ and $j''(z) \neq 0$;
+
+    (2) $z = \gamma \omega, \omega = e^{\frac{2\pi i }{3}}$, where $j'(z) = j''(z) = 0$, and $j'''(z) \neq 0$. (You may ignore this problem if you have tried hard)
+
+
+
+
+
+    \item
+
+    (1) Find a lattice $ \Lambda \subseteq \mathbb{C} $, such that $E(\Lambda)$ has complex multiplication by $\Z[i]$;
+
+    (2) Find $\mathrm{Aut}(E(\Lambda))$;
+
+    (3) Find $j(E(\Lambda))$;
+
+    (4) Find an elliptic curve defined over $\mathbb{Q}$ which is isomorphic to $E(\Lambda)$.
+
+    \begin{proofc}[解答]
+
+    (1) $\eta \Z[i]$, considered as a lattice in $\mathbb{C}$.
+
+    (2) $\Z/4\Z$.
+
+    (3) 1728.
+
+    (4) Any elliptic curve with j-invariant 1728 is OK. For example $y^2 = x^3 - x$.
+
+    \end{proofc}
+
+\end{enumerate}

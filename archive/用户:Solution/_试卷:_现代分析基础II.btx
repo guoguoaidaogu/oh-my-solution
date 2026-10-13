@@ -1,0 +1,334 @@
+\setdisplaytitle{现代分析基础II\ 试卷}
+\sethtmltitle{现代分析基础II\ 试卷}
+
+== 25春期末试卷(章嘉雯) ==
+\begin{enumerate}
+    \item[一] (15分) 设$G$为一个离散群。\\
+    (1) 叙述$l^\infty(G)$上左不变平均与顺从性的定义。\\
+    (2) 叙述F∅lner条件与Hulanicki--Reiter条件。\\
+    (3) 证明$\mathbb{F}_2$不是顺从群。
+    \item[二] (20分) 证明下面的群顺从：\\
+    (1) $G=\{\!$变换$x\mapsto ax+b\:(x\in\R):a,b\in\R,a>0\}$；\\
+    (2) $G=\prod\limits_{n\in\N}G_n$，其中$G_n$均为有限群且
+    $\sup\limits_{n\in\N}\#G_n$有限，$\#$表示集合的势。
+    \item[三] (15分) 对于局部凸空间$X$来说，设$K \subseteq X$为一个非空紧凸集，
+    $G$是一个局部紧群，作用在$K$上（$G \curvearrowright K$）。
+    我们称$G \curvearrowright K$是separately continuous的，若\\
+    $\quad\textcircled{1}$ 对任意$x \in K$，映射$G \to K,g \mapsto gx$连续；\\
+    $\quad\textcircled{2}$ 对任意$g \in G$，映射$K \to K,x \mapsto gx$连续。
+    
+    我们称$G \curvearrowright K$是仿射作用，若对任意$g \in G,x,y \in K$，有
+    \[g(tx+(1-t)y)=tg(x)+(1-t)g(y),\quad\forall\,0 \leqslant t \leqslant 1.\]
+    现在假设群$G$有如下性质：对于每个作用$G \curvearrowright K$，
+    其中$K$为局部凸空间的非空紧凸集，若这个作用是separately continuous的且是仿射作用，
+    则存在$x \in K$，使得$gx=x$对任意$g\in G$成立。证明：$G$是顺从群。
+    \item[四] (20分) 设$G$是一个局部紧群，且\textbf{不是单模的}，
+    $\mu_G$为$G$上的左Haar测度，$\Delta_G$为$G$的模函数。\\
+    (1) 证明：存在$a\in G$使得$\Delta_G(a^{-1})\geqslant2$。\\
+    (2) 证明：存在单位元$1_G$的一个对称开邻域$U$使得$U^2\subseteq\{x\in G:\frac{1}{2}<\Delta_G(x)<2\}$。\\
+    (3) 对正整数$k$，取单位元$1_G$的开邻域$W_k\subseteq U$使$\mu_G(W_k)\leqslant2^{-k}$，
+    其中$U$如(2)所述. 取一个单调递增的正整数数列$\{n_k\}_{k\in\N}$使得$\mu_G(W_k)\geqslant2^{-n_k+1}$。
+    令$W:=\bigcup\limits_{n\in\N}a^{n_k}W_k$，其中$a$如(1)所述。证明：$\mu_G(W)\leqslant1$，$\mu_G(W^{-1})=+\infty$。
+    \item[五] (15分) 设群$G=\left\{\begin{bmatrix}x&y\\0&1\end{bmatrix}:x,y\in\R,x\ne0\right\}$，
+    赋以欧氏拓扑。计算$G$的左Haar测度、右Haar测度与模函数。
+    \item[六] (15分) (1) 叙述Kazhdan's property (T)。\\
+    (2) 证明：有限群有Kazhdan's property (T)。
+\end{enumerate}
+
+== 24春期末试卷(章嘉雯) ==
+\begin{enumerate}
+    \item[一] (1) 叙述顺从性的定义。\\
+    (2) 叙述F∅lner条件与Hulanicki--Reiter条件。\\
+    (3) 证明$\mathbb{F}_2$不是顺从群。
+    \item[二] (1) $G\triangleq\{\!$双射$\sigma\colon\N\to\N:$
+    除了有限个点外，有$\sigma(n)=n$恒成立$\!\}$顺从吗？\\
+    (2) Heisenberg群$H\triangleq\left\{\begin{bmatrix}1&x&y\\0&1&z\\0&0&1\end{bmatrix}:x,y,z\in\Z\right\}$顺从吗？
+    \item[三] （阅读理解）对于局部凸空间$X$来说，设$K \subseteq X$为一个非空紧凸集，
+    $G$是一个局部紧群，作用在$K$上（$G \curvearrowright K$）。
+    我们称$G \curvearrowright K$是separately continuous的，若\\
+    $\quad\textcircled{1}$ 对任意$x \in K$，映射$G \to K,g \mapsto gx$连续；\\
+    $\quad\textcircled{2}$ 对任意$g \in G$，映射$K \to K,x \mapsto gx$连续。
+    
+    我们称$G \curvearrowright K$是仿射作用，若对任意$g \in G,x,y \in K$，有
+    \[g(tx+(1-t)y)=tg(x)+(1-t)g(y),\quad\forall\,0 \leqslant t \leqslant 1.\]
+    现在假设群$G$有如下性质：对于每个作用$G \curvearrowright K$，
+    其中$K$为局部凸空间的非空紧凸集，
+    若这个作用是separately continuous的且是仿射作用，
+    则存在$x \in K$，使得$gx=x$对任意$g\in G$成立。
+    证明：$G$是顺从群。
+    \item[四] (1) 叙述局部紧群上的左Haar测度的定义。\\
+    (2) 证明：对于局部紧群$G$来说，$G$是紧群当且仅当左Haar测度有限（$\mu(G)<\infty$）。
+    \item[五] 设群$G=\left\{\begin{bmatrix}x&y\\0&x^{-1}\end{bmatrix}:x,y\in\R,x\ne0\right\}$，
+    赋以欧氏拓扑。计算$G$的左Haar测度、右Haar测度与模函数。
+    \item[六] (1) 叙述a--T--menability性质，举出有a--T--menability性质但不是顺从群的例子（无需证明）。\\
+    (2) 叙述Kazhdan's property (T)。\\
+    (3) 证明：有限群有Kazhdan's property (T)。
+\end{enumerate}
+
+== 23春期末试卷(章嘉雯) ==
+
+\begin{center}
+    \textsize{24pt}{复旦大学数学科学学院\\
+    2022$\sim$2023学年第二学期期末考试试卷\\
+    $\text{A}$卷}
+\end{center}
+\begin{center}
+    \textsize{22pt}{课程名称：\ \ $\underline{\qquad现代分析基础\text{ II}\qquad}$课程代码：\ \ $\underline{\text{MATH130090}}$\\
+    开课院系：\ \ $\underline{\qquad\ \ 数学科学学院\qquad\ \ }$考试形式：\ \ $\underline{\qquad\ \ \ 开卷\qquad\ \ \ }$\\
+    姓\ \ 名：\ $\underline{\qquad\qquad\quad\ }$\ \ \ 学\ \ 号：\ $\underline{\qquad\qquad\quad\ }$\ \ \ 专\ \ 业：\ $\underline{\qquad\qquad\qquad}$}
+\end{center}
+
+\qquad 提示：请同学们秉持诚实守信宗旨，谨守考试纪律，摒弃考试作弊。
+学生如有违反学校考试纪律的行为，学校将按《复旦大学学生纪律处分条例》规定予以严肃处理。
+
+\begin{table}
+\begin{tabular}{|c|*{7}{C}|c|}
+题号 & 第一题 & 第二题 & 第三题 & 第四题 & 第五题 & 第六题 & 第七题 & 总分/100 \\
+得分 & & & & & & & & 
+\end{tabular}
+\end{table}
+
+
+\qquad 本张试卷，\textbf{每一题中的各小题}可能存在\textbf{逻辑关系，做后面的小题时可以直接应用前面小题的结论}。最终的卷面得分会折算成满分 100 分的得分。
+
+\begin{enumerate}
+    \item[一、]对于以下这些群，求其上的左、右 Haar 测度与模函数。
+    \item[(a)] $ G = \left\{ \begin{pmatrix} x & y \\ 0 & 1 \end{pmatrix} : x \in \mathbb{R} \setminus \{0\}, y \in \mathbb{R} \right\} $.
+    \item[(b)] $ G = GL(2, \mathbb{R}) $.
+
+    \item[二、]设 $ G $ 是一个\textbf{非}离散的局部紧群，$ \lambda $ 是左 Haar 测度。证明，存在 $ \lambda $ 不可测集。
+
+    \item[三、]设 $ G $ 不是单模的。
+    \item[(1)] 证明，存在 $ a \in G $，使得 $ \Delta (a^{-1}) \geq 2 $；
+    \item[(2)] 证明，存在 $ e $ 的一个对称邻域 $ U $，使得 $ U^2 \subset \{x \in G : \frac{1}{2} < \Delta (x) < 2\} $；
+    \item[(3)] 取一列 $ e $ 的邻域 $ W_k \subset U $，$ \lambda (W_k) \leq 2^{-k} $。必有一个递增的正整数列 $\{n_k\}$，满足 $ 2^{-n_{k+1}} \leq \lambda (W_k) $。记 $ W = \bigcup_{k=1}^{\infty} a^{n_k} W_k $，证明，$ \lambda (W) \leq 1, \lambda (W^{-1}) = +\infty $。
+
+    \item[四、]
+    证明下列群是顺从群：
+    \item[(a)] $ G = \{\sigma : \mathbb{N} \to \mathbb{N} \mid \sigma \text{ 是双射}, \text{ 且除有限个 } n \text{ 外都成立 } \sigma (n) = n\} $.
+    \item[(b)] Heisenberg 群 $ H = \left\{ \begin{pmatrix} 1 & x & y \\ 0 & 1 & z \\ 0 & 0 & 1 \end{pmatrix} : x, y, z \in \mathbb{R} \right\} $.
+    \item[(c)] $ G = \prod_{i \in I} G_i $，其中每个 $ G_i $ 都是有限集且满足 $\sup_{i \in I} |G_i| < +\infty$.
+
+    \item[五、]设 $ m $ 是 $ \ell^{\infty}(\mathbb{Z}) $ 上的一个不变平均 (invariant mean)。对于 $ n \in \mathbb{N} $，按如下定义 $ f_n \in \ell^1(\mathbb{Z})_{1,+} $:
+        \[
+        f_n(k) = 
+        \begin{cases} 
+        \frac{1}{2n+1}, & \text{如果 } |k| \leq n; \\
+        0, & \text{如果 } |k| > n.
+        \end{cases}
+        \]
+
+    \item[(a)] 假设存在 $(f_n)_n$ 的一个子列 $(f_{l(n)})_n$ 使其按照弱*-拓扑收敛到 $m$。证明：再次选取子列后，我们可以假设 $ l(n) \geq 3l(n-1) $ 对于 $ n \geq 2 $。
+    \item[(b)] 定义 $\mathbb{Z}$ 上的有界函数 $ g $ 满足 $ g(k) = 1 $ 如果 $ |k| \leq l(1) $，且 $ g(k) = (-1)^n $ 如果 $ l(n) < |k| \leq l(n+1) $ 其中 $ n \geq 1 $。证明：数列 $(f_{l(n)}(g))_n$ 发散。
+    \item[(c)] 证明：($f_n)_n$ 的任何子列按照弱*-拓扑都不会收敛到 $m$。
+
+    \item[六、]
+    \item[(a)] 设 $ f \in S(\mathbb{R}) $，求
+    \[
+    \int_{\mathbb{R}} x f(x) \overline{f'(x)} \, dx
+    \]
+    的实部，并证明
+    \[
+    \left( \int_{\mathbb{R}} x^2 |f(x)|^2 \, dx \right) \left( \int_{\mathbb{R}} t^2 |\hat{f}(t)|^2 \, dt \right) \geq \frac{1}{4}.
+    \]
+    \item[(b)] 设 $ G $ 是一个有限交换群，其上的 Haar 测度就是归一化的计数测度 $\mu(\{x\}) = \frac{1}{|G|}$。对于 $ G $ 上的非零函数 $ f $，证明
+    \[
+    |\operatorname{supp}(f)| \cdot |\operatorname{supp}(\hat{f})| \geq |G|.
+    \]
+    并确定等号成立的条件。
+    \item[(c)] 上面两个结论说明什么？
+
+    \item[七、]
+    \item[(a)] 设 $ A: \mathbb{C}^n \to \mathbb{C}^n $ 是一个线性变换，它在 $\bigwedge^{k} \mathbb{C}^n$ 上的延拓为 $\bigwedge^{k}(A)$。证明，
+    \[
+    \det(1 + A) = \sum_{k=0}^{n} \operatorname{Tr}\left(\bigwedge^{k}(A)\right).
+    \]
+    \item[(b)] 以下设 $ H $ 是一个无限维可分复 Hilbert 空间，$ T \in L^1(H) $ (假设它\textbf{不是}一个有限秩算子)。证明，$\bigwedge^{k}(T) \in L^1(\bigwedge^{k}(H))$，且
+    \[
+    \left\| \bigwedge^{k}(T) \right\|_1 = \sum_{j_1 < \cdots < j_k} \mu_{j_1}(T) \cdots \mu_{j_k}(T) \leq \frac{\|T\|_1^k}{k!}.
+    \]
+    由此, 我们定义
+    \[
+    \det(1 + T) = \sum_{k=0}^{\infty} \operatorname{Tr}\left(\bigwedge^{k}(T)\right) \quad \text{(这是一个绝对收敛级数)}.
+    \]
+    \item[(c)] 证明, 
+    \[
+    |\det(1 + T)| \leq \min \left( \det(1 + |T|)=  \prod_{k=1}^{\infty} (1 + \mu_k(T)), \exp(\|T\|_1) \right),
+    \]
+    \[
+    |\det(1 + T_1) - \det(1 + T_2)| \leq \|T_1 - T_2\|_1 \exp(\|T_1\|_1 + \|T_2\|_1 + 1).
+    \]
+    \item[(d)] 设 $ F $ 是 $ H $ 的一个有限维子空间，且 $ T $ 限制在 $ F^\perp $ 上是 $0$，$ T(F) \subset F $，则
+    \[
+    \det(1 + T) = \det_F (1 + T|_F),
+    \]
+    其中 $ \det_F $ 是有限维空间上的行列式。由此证明
+    \[
+    \det(1 + T_1 + T_2 + T_1 T_2) = \det(1 + T_1) \det(1 + T_2).
+    \]
+    \item[(e*)] 证明： 若 $ 1 + T $ 可逆，则 $ \det(1 + T) \neq 0 $;\\
+    若 $ 1 + T $ 不可逆，则 $-1$ 是一个特征值，且 $ f(z) = \det(1 + zT) $ 在 $ z = 1 $ 处有一个 $ l $ 阶零点(其中 $ l $ 是特征值 $-1$ 的阶数).
+    \item[(f)] 对于任意 $ \varepsilon > 0 $，证明存在常数 $ C_\varepsilon $，使得
+    \[
+    |f(z)| \leq C_\varepsilon e^{\varepsilon |z|}.
+    \]
+    \item[(g)] 函数 $ f(z) $ 的零点和 $ T $ 的特征值是一一对应的。利用
+    \[
+    \sum |\lambda_k(T)| \leq \sum \mu_k(T),
+    \]
+    来说明
+    \[
+    \sum \frac{1}{|z_n|} < +\infty.
+    \]
+    从而我们可以利用复变中的一个命题（强 Hadamard 分解定理）得到
+    \[
+    f(z) = f(0) \prod_{k=1}^{\infty} \left( 1 - \frac{z}{z_k} \right),
+    \]
+    即
+    \[
+    \det(1 + zT) = \prod_{k=1}^{\infty} (1 + z\lambda_k(T)).
+    \]
+    \item[(h)] 由此证明 $ \operatorname{Tr}(T) = \sum \lambda_k(T) $。
+
+
+
+\end{enumerate}
+
+
+== 21秋期末试卷(姚一隽) ==
+\begin{center}
+    \textsize{24pt}{复旦大学数学科学学院\\
+    2021$\sim$2022学年第一学期期末考试试卷\\
+    $\text{A}$卷}
+\end{center}
+\begin{center}
+    \textsize{22pt}{课程名称：\ \ $\underline{\qquad现代分析基础\text{ II}\qquad}$课程代码：\ \ $\underline{\text{MATH130090.01}}$\\
+    开课院系：\ \ $\underline{\qquad\ \ 数学科学学院\qquad\ \ }$考试形式：\ \ $\underline{\qquad\ \ \ 开卷\qquad\ \ \ }$\\
+    姓\ \ 名：\ $\underline{\qquad\qquad\quad\ }$\ \ \ 学\ \ 号：\ $\underline{\qquad\qquad\quad\ }$\ \ \ 专\ \ 业：\ $\underline{\qquad\qquad\qquad}$}
+\end{center}
+
+\qquad 提示：请同学们秉持诚实守信宗旨，谨守考试纪律，摒弃考试作弊。
+学生如有违反学校考试纪律的行为，学校将按《复旦大学学生纪律处分条例》规定予以严肃处理。
+
+\begin{table}
+\begin{tabular}{|c|c|c|c|}
+\ 题\ \ 号\ & 第一部分 & 第二部分 & 第三部分 & 总\ \ 分/300 & 折算分/100\\
+\ 得\ \ 分\ & & & & & 
+\end{tabular}
+\end{table}
+
+\qquad 本张试卷, 每一部分中的各题\textit{可能存在}逻辑关系, 
+做后面的小题时可以直接应用前面小题的结论. 最终的卷面得分会折算成满分 100 分的得分.
+
+\subsection*{第一部分}
+
+我们在区间 $(a, b)$ 上考虑 $(-i)^n \dfrac{d^n}{dx^n}$.
+
+\begin{itemize}
+    \item 定义在 $C_0^\infty(a, b)$ 上时, 记为 $T_{n,0}$;
+    \item 定义在 \[\{f, f\text{ 及其直到}\,n-2\,{次导数都是连续可微的}, 
+    f^{(n-1)} \text{ 是绝对连续的}, f^{(n)} \in L^2(a, b)\}\] 上时, 记为 $T_n$.
+\end{itemize}
+
+\begin{enumerate}
+    \item 证明，函数 $g \in C_0^\infty(a, b)$ 在 $T_{n,0}$ 的像集中，
+    当且仅当对于 $k = 0, 1, \ldots, n - 1$，都成立 
+    \[\int_a^b x^k g(x) dx = 0.\]
+    \item 证明，$T_{n,0}^* = T_n$.
+    \item 如果 $(a, b)$ 是整个实轴，证明 $\overline{T_{n,0}} = T_n^* = T_n$.
+    \item 此时，证明 $\sigma(T_{2n}) = [0, \infty)$，
+    而 $\sigma(T_{2n-1}) = \R$.
+    \item 如果 $(a, b) \neq \R$，证明 $\overline{T_{n,0}} \neq T_n$.
+\end{enumerate}
+
+\subsection*{第二部分}
+
+设 $T, S$ 是复 Hilbert 空间 $H$ 上的两个 (无界) 自伴算子。
+
+\begin{enumerate}
+    \item 证明, 在 $D(T + S)$ 上, \[\langle f, g \rangle_{T+S} 
+    = \langle f, (T + S)g \rangle_H\] 是一个完备的内积. 
+    记相应的范数为 $\| \cdot \|_{T+S}$.
+    \item 对于任意 $f \in D(T + S)$, 证明, 当 $t \to 0$ 时, 
+    \[\frac{1}{t} (e^{itT} e^{itS} - e^{it(T+S)}) f\] 弱收敛到 $0$.
+    \item 由此说明, 存在常数 $C$, 使得对于任意 $f \in D(T + S)$ 和任意非零的 $t$, 都成立 
+    \[\|\frac{1}{t} (e^{itT} e^{itS} - e^{it(T+S)}) f \| \leqslant C \| f \|_{T+S}.\]
+    \item 设 $T + S$ 对应的恒等映射的分解是 $\{E(t)\}$. 
+    证明, $(t^2 + 1)$ 关于 $d\|E(t) f \|^2$ 是可积的.
+    \item 由此证明, 对于任意 $f \in D(T+S)$, 当 $s' \to s$ 时, 
+    $\| e^{is(T+S)} f - e^{is'(T+S)} f \|_{T+S} \to 0$.
+    \item 证明, 对于任意 $f \in D(T + S)$, $r > 0$, 函数族 $(t \neq 0)$ 
+    \[\varphi_t(s) = t^{-1}(e^{itT} e^{itS} - e^{it(T+S)}) e^{is(T+S)} f\]
+    在 $[-r, r]$ 上是等度连续的.
+    \item 证明, 当 $t \to 0$ 时, $\varphi_t$ 在 $[-r, r]$ 上一致收敛到 $0$.
+    \item 证明, 对于任意 $f \in D(T+S)$, $[e^{i(t/n)T} e^{i(t/n)S}]^n f$ 
+    当 $n \to \infty$ 时收敛到 $e^{it(T+S)} f$.
+    \item 证明, $[e^{i(t/n)T} e^{i(t/n)S}]^n$ 当 $n \to \infty$ 时强收敛到 $e^{it(T+S)}$.
+\end{enumerate}
+
+\subsection*{第三部分}
+
+\subsection*{3.1 谐振子的准经典 (quasi--classical) 态}
+
+假设我们有一个谐振子, 质量为 $m$, 振动频率为 $\omega$.
+
+\begin{enumerate}
+    \item 写出经典物理中这个谐振子的能量.
+    \item 把能量表达式中的动量 $p$ 和位置 $x$ 改成相应的算子 $\hat{p}$ 和 $\hat{x}$, 
+    我们得到了这种情况下的 Hamilton 量 $\hat{H}$. 
+    记 $\hat{H}$ 的特征向量为 $\{|n\rangle\}$, 
+    我们直接承认: 本征态 $|n\rangle$ 对应的能量为 $E_n = (n + 1/2)\hbar \omega$.
+    
+    定义 $X = x\sqrt{\dfrac{m\omega}{\hbar}}$, 
+    $P = \dfrac{p}{\sqrt{m\hbar \omega}}$ (这是两个无量纲的量). 
+    写出相应的算子 $\hat{X}$, $\hat{P}$.
+    \item 我们记 \[\hat{a} = \frac{1}{\sqrt{2}}\left(\hat{X} + i\hat{P}\right), 
+    \hat{a}^\dagger = \frac{1}{\sqrt{2}}\left(\hat{X} - i\hat{P}\right), 
+    \hat{N} = \hat{a}^\dagger \hat{a}.\]
+    计算 $[\hat{X}, \hat{P}]$, $[\hat{a}, \hat{a}^\dagger]$. 
+    讨论 $\hat{N}$ 和 $\hat{H}$ 以及 $|n\rangle$ 的关系.
+    \item 计算 $[\hat{N}, \hat{a}]$, 证明 $\hat{a}|n\rangle$ 
+    和 $\sqrt{n}|n - 1\rangle$ 只差一个相位因子 (即一个模长为 $1$ 的复数). 
+    下面我们规定这个因子就是 $1$.
+    \item $n = 0$ 对应的本征态 (基态) 波函数 $\psi_0(X)$ 
+    及其 Fourier 变换 $\varphi_0(P)$ 具有怎样的形式?
+    \item 对于任意的复数 $\alpha$, 证明 
+    \[|\alpha\rangle = e^{-|\alpha|^2/2} 
+    \sum_n \frac{\alpha^n}{\sqrt{n!}} |n\rangle\]
+    是 $\hat{a}$ 的一个模长为 $1$ 的特征向量. 对应的特征值是什么?
+    \item 计算 $|\alpha\rangle$ 对应的能量, $\Delta x$ 和 $\Delta p$. 后两个量的乘积是多少?
+    \item 证明, $|n\rangle$ 也是算子 $\hat{W} = \hbar g(\hat{a}^\dagger \hat{a})^2$ 的特征向量, 这里 $g$ 是一个常数.
+\end{enumerate}
+
+\subsection*{3.2 理论的物理}
+
+我们假设 8. 中的 $g$ 非常非常大，$T > 0$ 满足 $\omega T$ 非常非常小。
+这样在时间区间 $[0, T]$ 上，系统的演化可以\textsize{20pt}{近似地}认为由 $\hat{W}$ 所决定。
+\begin{enumerate}
+    \item[9.] 设在 $t = 0$ 时，系统的波函数 $|\psi(0)\rangle = |\alpha\rangle$，
+    求 $T = \dfrac{\pi}{2g}$ 时 $|\psi(T)\rangle$ 的表达式。
+    
+    \item[10.] 设 9. 中的 $\alpha$ 是一个模长很大的纯虚数，定性地描述系统的 $P$ 值的分布。
+    
+    \item[11.] 现在假设物理学家 $A$ 制备了 $N \gg 1$ 个相互独立的上述物理系统，
+    然后来测量每一个系统的动量。用来测量动量的仪器具有精度 $\delta p$，满足
+    \[\sqrt{m\hbar\omega} \ll \delta p \ll |\alpha| \sqrt{2m\hbar\omega}.\]
+    定性地描述测量值的分布。
+    
+    \item[12.] 如果 $A$ 用一个精度为 $\delta x \ll \dfrac{1}{|\alpha|} \sqrt{\dfrac{\hbar}{m\omega}}$ 来测量这 $N$ 个系统的位置，会观测到怎样的图像？
+    
+    \item[13.] 由此说明，这的确是 $N$ 个 (宏观水平的) 量子物理系统，
+    而不是由 $N/2$ 个 $|\alpha\rangle$ 与 $N/2$ 个 $|-\alpha\rangle$ 做统计意义上的平均得到的。
+\end{enumerate}
+
+\subsection*{3.3 数值的例子}
+
+\quad 假设我们的谐振子是单摆，摆长 $1$ 米，质量为 $1$ 克。假设这个系统由一个准经典态描述，
+且 $t = 0$ 时，$\langle x_0 \rangle$ 位于距离经典的平衡位置 $1$ 毫米处，速度为 $0$。
+
+\begin{enumerate}[13]
+    \item[14.] 用两种方法表示系统的能量，
+    取 $\hbar = 6.62607015 \times 10^{-34}/2\pi \text{ J} \cdot \text{Hz}^{-1}$，计算 $\alpha(0)$。
+    \item[15.] 利用第 7 题，求位置 $x_0$ 的不确定性。
+    \item[16.] 对应到第 12 题，测量位置的仪器的精度要达到多少？
+\end{enumerate}

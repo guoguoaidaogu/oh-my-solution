@@ -1,0 +1,94 @@
+\theoremstyle{plain}\newtheorem*{1}{习题1}
+\theoremstyle{plain}\newtheorem*{2}{习题2}
+\theoremstyle{plain}\newtheorem*{3}{习题3}
+\theoremstyle{plain}\newtheorem*{4}{习题4}
+\theoremstyle{plain}\newtheorem*{5}{习题5}
+\theoremstyle{plain}\newtheorem*{6}{习题6}
+\theoremstyle{plain}\newtheorem*{7}{习题7}
+\theoremstyle{plain}\newtheorem*{8}{习题8}
+\theoremstyle{plain}\newtheorem*{9}{习题9}
+\theoremstyle{plain}\newtheorem*{10}{习题10}
+\def\E{\mathbb{E}}
+\def\R{\mathbb{R}}
+\def\N{\mathbb{N}}
+\def\B{\mathcal{B}}
+\def\M{\mathcal{M}}
+\def\prob{\mathbb{P}}
+\def\t{\underline{t}}
+\def\c{\underline{c}}
+
+\begin{definition}
+Random Matrix是取矩阵值的随机变量。\\
+一个矩阵 $A=(a_{ij})_{1\le i,j \le n}$，其中每个元素 $a_{ij}$ 均为随机变量或随机选择。
+\end{definition}
+
+\begin{example}[对称随机矩阵]
+考虑对称阵 $a_{ij}=a_{ji}$，且 $a_{ij} \in \{-1, 1\}$。
+\begin{itemize}
+    \item 当 $n=1$ 时: 有 2 种矩阵。
+    \item 当 $n=2$ 时: 有 8 种矩阵。
+\end{itemize}
+\end{example}
+
+Stochastic Matrix和Random Matrix不同，
+某种意义上可以理解为随机过程中的转移矩阵。
+
+
+\section{研究对象与现象}
+研究对象主要是随机矩阵的 (奇异) 特征值、特征向量。
+\begin{itemize}
+    \item \textbf{半圆律 (Semicircle Law)}: \\
+    对上述例子，将特征值数值绘制成直方图，在 N 很大时，会出现规律。当 $N \to \infty$，经过适当尺度化 (scaling) 后，特征值的密度函数趋向于 $\frac{1}{2\pi}\sqrt{4-x^2}$。
+
+    \item \textbf{普适性现象 (Universality)}: \\
+    特征值的宏观极限规律不依赖于矩阵元素的具体分布。例如，无论 $a_{ij}$ 是来自：
+    \begin{itemize}
+        \item $\{1,2,3,4\}$
+        \item Gauss 分布
+        \item 其他独立同分布
+    \end{itemize}
+    只要限制矩阵的对称性以保证实特征值，宏观现象是相似的。
+
+    \item \textbf{循环律 (Circular Law)}: \\
+    对于非对称的复矩阵 G，当 $N \to \infty$ 时，其特征值在复平面的单位圆内呈均匀分布。
+\end{itemize}
+
+\section{Ulam 问题}
+\begin{definition}
+令 $S_N := \{ \pi | \pi: \{1,2,...,N\} \to \{1,2,...,N\} \}$ 为 $N$ 阶置换群 (permutation group)。
+
+对于一个置换 $\pi \in S_N$，如果存在下标序列 $1 \le i_1 < i_2 < \dots < i_k \le N$ 使得 $\pi(i_1) < \pi(i_2) < \dots < \pi(i_k)$，则称序列 $(\pi(i_1), \dots, \pi(i_k))$ 为一个长度为 $k$ 的\textbf{增长子列}。
+
+$L_N(\pi)$ 定义为 $\pi$ 中\textbf{最长增长子列}的长度。
+\end{definition}
+
+\begin{example}
+对于 $N=5$，置换 $\pi: (1,2,3,4,5) \to (5,1,3,2,4)$。
+其增长子列有 (1,3,4), (1,2,4) 等。最长长度为 3，即 $L_5(\pi) = 3$。
+\end{example}
+
+在 $S_N$ 上赋予均匀分布, 即 $P(\pi) = \frac{1}{N!}$。此时 $L_N(\pi): S_N \to \mathbb{R}$ 成为一个随机变量。
+
+我们关心的问题是：当 $N \to \infty$ 时，$L_N$ 的分布是什么？ \\
+定义 $q_{n,N} := \text{Prob}(L_N(\pi) \le n) = \frac{f_{n,N}}{N!}$，其中 $f_{n,N} = \# \{ \pi \in S_N | L_N(\pi) \le n \}$。
+
+\subsection*{$L_N$ 与下列问题有关}
+\begin{itemize}
+    \item $S_N$ 的表示问题 (杨图，Young Tableaux)。
+    \item 统计力学的粒子系统。
+    \item 首达渗流问题、增长模型、排斥过程。
+    \item 曲面上的随机拓扑。
+    \item 排序问题: 对 N 本编号为 1~N 的书进行排序，需要操作的次数为 $n = N - L_N(\pi)$ 次才能恢复原始排序。
+\end{itemize}
+
+\subsection*{历史 (History)}
+\begin{itemize}
+    \item \textbf{1935}: Erdős-Szekeres, $E(L_N) \ge \frac{1}{2}\sqrt{N-1}$。
+    \item \textbf{1961}: Ulam 用蒙特卡洛方法，猜测极限 $\lim_{N \to \infty} \frac{E(L_N)}{\sqrt{N}} = C$ 存在。
+    \item \textbf{1968}: Hammersley, 猜测 $C=2$。
+    \item \textbf{1972}: Logan-Shepp, 证明了极限存在。
+    \item \textbf{1977}: Vershik-Kerov, 证明了 $C \ge 2$, 从而确认了 $C=2$。
+    \item \textbf{1999}: Baik-Deift-Johansson, 证明了 $L_N$ 的涨落分布：
+    \[ \frac{L_N - 2\sqrt{N}}{N^{1/6}} \xrightarrow{\text{dist}} \chi \]
+    其中 $\chi$ 是 Tracy-Widom (TW) 分布，该分布也描述了 GUE 随机矩阵最大特征值的分布。
+\end{itemize}

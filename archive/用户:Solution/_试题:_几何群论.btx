@@ -1,0 +1,31 @@
+\setdisplaytitle{试题：几何群论}
+\sethtmltitle{试题：几何群论}
+
+\section{25-26秋期末(伍晓磊)}
+说明：25-26秋季学期的几何群论课程授课老师为伍晓磊老师，教材为Petra Schwer的CAT(0) Cube Complexes - An Introduction，
+但是此教材错误过多，伍老师说之后再开课的话可能会改教材。考试形式为口试，每人20分钟，可选择中文或英文回答
+（选择用英文则会有一个外国助教一起听然后和伍老师商量给分，如果用中文则由伍老师一人给分），以下为部分口试题目。
+\begin{enumerate}
+    \item[1.] 给出度量空间和测地空间的定义。
+    \item[2.]
+    \begin{enumerate}
+        \item[(1)] 给出CAT(0)空间的定义。
+        \item[(2)] 为什么CAT(0)空间中测地三角形的比较三角形一定存在？
+        \item[(3)] 证明CAT(0)空间是唯一测地的。
+    \end{enumerate}
+    \item[3.]
+    \begin{enumerate}
+        \item[(1)] 给出群的Cayley图的定义。
+        \item[(2)] 给出一个群的Cayley图是CAT(0)空间的例子并证明。
+        \item[(3)] （因为我上一问回答了$\mathbb{F}_2$并用Gromov's Link Condition给出证明，因此追加这一问及下面一问）给出一个单纯复形是flag的定义。
+        \item[(4)] 一个有限生成的群的Cayley图一定是局部CAT(0)的吗？
+        \item[(5)] 如果一个群的Cayley图是CAT(0)的，更换生成集得到的新Cayley图一定还是CAT(0)的吗？（答案为否，考虑$\Z=\langle2,3\rangle$）
+        \item[(6)] 一个有限生成群的Cayley图有什么特征是不随生成集改变而改变的？
+    \end{enumerate}
+    \item[4.]
+    \begin{enumerate}
+        \item[(1)] 给出Coxeter群的定义。
+        \item[(2)] 两个Coxeter群的直积还是Coxeter群吗？两个Coxeter群的自由积还是Coxeter群吗？
+        \item[(3)] 如果一个Coxeter群的Coxeter图只有两个顶点，那么这个群具有什么样的形式？它可以properly discontinuous地等距作用在什么样的CAT(0) cube complex上？
+    \end{enumerate}
+\end{enumerate}

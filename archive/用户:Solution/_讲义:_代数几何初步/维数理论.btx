@@ -1,0 +1,584 @@
+\setdisplaytitle{维数理论}
+\sethtmltitle{维数理论}
+\section{簇与环的Krull维数}
+      \begin{definition}[拓扑空间的Kurll维数]
+       若$X$是一个拓扑空间, 则定义$X$的维数为不可约闭集升链的最大长度, 即
+       \[\dim_{\rm Krull}X:= \sup\{n \mid F_{0} \subsetneq F_{1} \subsetneq \cdots \subsetneq F_{n}, \, F_{i}\text{ 不可约闭}\}.\]
+       以下简记$\dim X$.
+      \end{definition}
+
+    这实际上是与我们的一般认知兼容的. 下文会证明$\dim \mathbb{A}^{n} =n$. 这与其作为线性空间的维数一致.
+    
+    \begin{proposition}
+        我们整理一些Krull维数的基本刻画：
+        \begin{enumerate}
+            \item[(1)] 若$Y \subset X$，则$\dim Y \leq \dim X$.
+            \item[(2)] 若$Y \subsetneq X$且$\dim X < \infty$，且$X$不可约，$Y$闭，则$\dim Y < \dim X$.
+            \item[(3)] 若$\{X_{i}\}_{i=1}^{n}$是$X$的开覆盖，
+                       则$\dim X = \max\limits_{1 \leq i \leq n}\{\dim X_{i}\}$.
+        \end{enumerate}
+    \end{proposition}
+    \begin{proof}
+        \begin{enumerate}
+            \item[(1)] 若$Y_{0} \subsetneq Y_{1} \subsetneq \cdots \subsetneq Y_{n}$是
+                       $Y$中不可约闭集升链，则
+                       $\overline{Y_{0}} \subsetneq \overline{Y_{1}} \subsetneq \cdots \subsetneq \overline{Y_{n}}$
+                       是$X$中不可约闭集升链. 因而$\dim Y \leq \dim X$.
+            \item[(2)] 若$Y_{0} \subsetneq Y_{1} \subsetneq \cdots \subsetneq Y_{n}$是
+                       $Y$中不可约闭集升链，则
+                       $Y_{0} \subsetneq Y_{1} \subsetneq \cdots \subsetneq Y_{n} \subset X$
+                       是$X$中的不可约闭集升链. 因而$\dim Y < \dim X$.
+            \item[(3)] 显然$\dim X \geq \max\limits_{1 \leq i \leq n}\{\dim X_{i}\}$.
+                       若$Y_{0} \subsetneq Y_{1} \subsetneq \cdots \subsetneq Y_{n}$是
+                       $X$中不可约闭集升链，则存在$X_{j}$使得$X_{j} \cap Y_{0} \neq \varnothing$.
+                       故$X_{j} \cap Y_{0}$是$Y_{0}$的开子集，故不可约. 
+                       而$X_{j} \cap Y_{0}$是$X_{j}$的闭子集，
+                       故$X_{j} \cap Y_{0} \subset X_{j} \cap Y_{1} \subset \cdots \subset X_{j} \cap Y_{n}$
+                       是$X_{j}$中的闭子集升链. 该升链事实上是严格的，
+                       因为$Y_{i} \cap X_{j}$在$Y_{i}$中的闭包即$X$中的闭包（由于$Y_{i}$闭）.
+                       且由不可约性，$\overline{Y_{i} \cap X_{j}}=Y_{i}$. 
+                       这说明了$\dim X \leq \dim X_{j}$. 这证明了反向的不等式.\qedhere
+        \end{enumerate}
+    \end{proof}
+
+    \begin{proposition}
+        若$X$是零维簇，则$|X| < \infty$.
+    \end{proposition}
+    \begin{proof}
+        令$X=\bigcup_{i=1}^{n}X_{i}$为不可约分解，则$\dim X_{i}=0$. 
+        若$X_{i}$不是单点集，则取$p \in X$，则$p$是$X_{i}$的真闭子集，故而$\dim X < 0$，矛盾！
+        故而$|X_{i}|=1$，进而$|X|=n < \infty$.
+    \end{proof}
+
+    \begin{definition}[等维数空间（Space of Pure Dimension）]
+        称$X$是等维数的，若其不可约分支具有相等的维数.
+    \end{definition}
+
+    \begin{example}
+        如$\mathcal{V}(XY)=\mathcal{V}(X)\cup\mathcal{V}(Y)$.
+    \end{example}
+
+    \begin{definition}[局部维数（Local Dimension）]
+        对于拓扑空间$X$，我们可以定义$p \in X$处的局部维数为
+        $\dim_{p}X:=\sup\{n \mid {p} \subsetneq F_{1} \subsetneq \cdots \subsetneq F_{n}, \, F_{i}\text{ 不可约闭}\}$.
+    \end{definition}
+
+    \begin{remark}
+        局部维数显然不高于拓扑空间的维数. （注：这里不使用“整体维数”一词，
+        因为其在同调代数中另有所指.）
+    \end{remark}
+
+    我们也可以定义环的Krull维数.
+    \begin{definition}[交换幺环的Krull维数]
+        定义$\dim_{\rm Krull} R = \sup\{n \mid \mathfrak{p_{0}} \subsetneq \mathfrak{p_{1}} \subsetneq \cdots \subsetneq \mathfrak{p_{n}}, \, \mathfrak{p_{i}} \in \operatorname{Spec}R\}$.
+        (为了避免两个Krull维数的混肴，以及环存在别的维数，下文将不省略下标的``Krull''.)
+    \end{definition}
+
+    一则大定理告诉我们两个Krull维数间的关系.
+    \begin{theorem}
+        若$X$是不可约仿射簇，则$\dim X = \dim A(X)$.
+    \end{theorem}
+
+    而计算环的Krull维数又有另一则结论.
+    \begin{theorem}
+        若$R$是一个有限生成$k$-代数，且是整环，则有
+        $\dim R = \operatorname{tr.deg}_{k} R$.
+    \end{theorem}
+
+    \begin{proposition}
+        若$X$是簇，且$\dim X < \infty$. 若$U$是$X$的稠密开子集，则$\dim U =\dim X$.
+    \end{proposition}
+    
+    \begin{example}
+        \begin{enumerate}
+            \item[(1)] $\dim \mathbb{A}^{n} = n$. 
+                       因为$A(\mathbb{A}^{n})=k[X_{1},\cdots,X_{n}]$. 而其超越度显然是$n$.
+            \item[(2)] $\dim \mathbb{P}^{n} = n$.
+                       因为标准开集$U_{i} \cong \mathbb{A}^{n}$稠密.
+            \item[(3)] $\dim (\mathbb{P}^{n} \times \mathbb{P}^{m}) = n+m$.
+                       因为标准开集的乘积簇$U_{i} \times V_{j} \cong \mathbb{A}^{n}\times\mathbb{A}^{m} \cong \mathbb{A}^{n+m}$仍不可约，开，且稠密.
+        \end{enumerate}
+    \end{example}
+
+    以下是交换代数中的一个大定理——Hauptidealsatz，翻译过来即“主理想定理”.
+
+    \begin{theorem}[Krull主理想定理]
+        若$R$是一个有限生成$k$-代数，且是整环，则对于其中非零主理想$\left<f\right>$，
+        若$\mathfrak{p}$是包含$\left<f\right>$的极小素理想，
+        则$\dim R/\mathfrak{p} = \dim R - 1$.
+    \end{theorem}
+    \begin{proof}
+        以局部化$R_{\mathfrak{p}}$代替$R$，可假设$\mathfrak{p}$是极大的，
+        且$\dim_{\rm Krull} R/\mathfrak{p}=0$. 那么这等价于证明$\dim_{\rm Krull}R=0$. 
+        这即证若$\mathfrak{q} \subsetneq \mathfrak{p}$，则$\mathfrak{q}=0$.
+        考虑环$R/\left<f\right>$，则$R/\left<f\right>$是一个Artin局部环（由于零维诺特）.
+        定义形式$n$次幂$\mathfrak{q}^{(n)}:=\{r \in R\mid \text{存在 }s \notin \mathfrak{q}\text{ 使 }rs\in\mathfrak{q}^{n}\}$. 
+        显然$\mathfrak{q}^{(k+1)} \subset \mathfrak{q}^{(k)}$，故降链
+        $\mathfrak{q}^{(1)}/\left<f\right> \supset \cdots \supset \mathfrak{q}^{(k)}/\left<f\right> \supset \cdots$.
+        由Artin性，存在$n\in \N$使得$\mathfrak{q}^{(n)}/\left<f\right>=\mathfrak{q}^{(n+1)}/\left<f\right>$.
+        故而$\mathfrak{q}^{(n)} \subset \mathfrak{q}^{(n+1)}+\left<f\right>$.
+        故任取$r \in \mathfrak{q}^{(n)}$，存在$s \in \mathfrak{q}^{(n+1)}$及$a \in R$，
+        使得$r=s+af$，从而$af=f-g \in \mathfrak{q}^{(n)}$. 由定义$a \in \mathfrak{q}^{(n)}$
+        故$\mathfrak{q}^{(n)} \subset f\mathfrak{q}^{(n)}+\mathfrak{q}^{(n+1)}$，
+        从而$\mathfrak{q}^{(n)}/\mathfrak{q}^{(n+1)}=f\mathfrak{q}^{(n)}/\mathfrak{q}^{(n=1)}$. 
+        由中山引理，$\mathfrak{q}^{(n)}=\mathfrak{q}^{(n+1)}$.
+        这即是说$\mathfrak{q}^{n}R_{\mathfrak{q}}=\mathfrak{q}^{(n+1)}R_{\mathfrak{q}}$，
+        而这又即$(\mathfrak{q}_{\mathfrak{q}})^{n}=(\mathfrak{q}_{\mathfrak{q}})^{n+1}$. 
+        再由中山引理得，$(\mathfrak{q}_{\mathfrak{q}})^{n}=0$. 故$R_{\mathfrak{q}}$是零维的，也即$\mathfrak{q}=0$.
+    \end{proof}
+
+    \begin{remark}
+        Krull主理想定理的一般形式为：诺特环中，若$\mathfrak{p} \supset 
+        \left<f_{1},\cdots,f_{r}\right>$，则$\operatorname{ht}\mathfrak{p}\leq r$.
+        并且其具有逆定理：诺特环中，若素理想$\mathfrak{p}$满足$\operatorname{ht}\mathfrak{p} = r$，
+        则存在$f_{1},\cdots,f_{r}\in R$使得$\mathfrak{p}$是包含
+        $\left<f_{1},\cdots,f_{r}\right>$的极小素理想.
+    \end{remark}
+
+    \begin{theorem}
+        若$X$是$\mathbb{P}^{N}$中的拟射影簇，且$f_{1},\cdots,f_{r}$是
+        $r$个$n+1$元齐次多项式，
+        则
+        \begin{enumerate}
+            \item[(1)] 若$X$等维数，且维数为$n$，则$X \cap \mathcal{V}(f_{1},\cdots,f_{r})$
+                       的任一不可约分支维数不小于$n-r$.
+            \item[(2)] 若$X$是$n$维射影簇，且$n \geq r$，
+                       则$X \cap \mathcal{V}(f_{1},\cdots,f_{r}) \neq \varnothing$.
+        \end{enumerate}
+    \end{theorem}
+    \begin{proof}
+        \begin{enumerate}
+            \item[(1)] 我们对多项式的个数$r$做归纳. 初始情形$r=0$是显然的.
+                       若$Z$是$X \cap \mathcal{V}(F_{1},\cdots,F_{r})$，
+                       则$Z$被$X \cap \mathcal{V}(F_{1},\cdots,F_{r-1})$的
+                       一个不可约分支$Y$.
+                       由归纳假设，我们有$\dim Y \geq n - r + 1$.
+                       则$Z$是$Y \cap \mathcal{V}(F_{r})$的连通分支. \par
+                       若$Y \subset \mathcal{V}(F_{r})$，则$Z = Y$，从而
+                       $\dim Z = \dim Y \geq n - r + 1 > n - r$. \par
+                       否则$x \in Z \subset Y$. 令$U$是$Y$中包含$x$的
+                       一个仿射开邻域，且不妨设其被包含在$\mathbb{P}^{N}$的
+                       第$i$个标准开集中. 由于$Y$不可约，
+                       故$U \cap (Y \backslash \mathcal{V}(F_{r})) \neq \varnothing$，
+                       故而$U \not\subset \mathcal{V}(U)$. 
+                       令$U$上的正则函数$f_{r}=\dfrac{F_{r}}{X_{i}^{\deg_{X_{i}} F_{r}}}$，
+                       则$f_{r} \neq 0 \in A(U)$. 且$Z \cap U$是
+                       $U \cap \mathcal{V}(F_{r}) = U \cap (Y \cap \mathcal{V}(F_{r}))$的
+                       不可约分支.
+                       故$Z \cap U$对应了$A(U)$中的一个包含$f_{r}$的极小素理想$\mathfrak{p}_{Z}$. 
+                       由Krull主理想定理，$\dim(Z \cap U) = \dim(U) - 1$.
+                       而$\dim(Z \cap U) = \dim Z$，且$\dim Y = \dim U$. 
+                       故$\dim Z = \dim Y - 1 \geq n - r$. 
+            \item[(2)] 不妨设$X$不可约. 仍归纳. \par
+                       对于$r=1$，由于$\dim X \geq 1$，$X$非单点集，故$X \cap \mathcal{V}(f_{1}) \neq \varnothing$.
+                       而对于$r$，由归纳假设，$X \cap \mathcal{V}(F_{1},\cdots,F_{r-1}) \neq \varnothing$.
+                       取其中不可约分支$Y$，则由上一命题，$\dim Y \geq n - r + 1 \geq 1$.
+                       故由$r=1$的证明类似得$Y \cap \mathcal{V}(f_{r}) \neq \varnothing$.
+                       故$X \cap \mathcal{V}(F_{1},\cdots,F_{r}) \neq \varnothing$.\qedhere
+        \end{enumerate}
+    \end{proof}
+
+    \begin{corollary}
+        $\mathbb{A}^{n}$或$\mathbb{P}^{n}$中的超曲面即对应空间的$n-1$维的等维数子簇.
+    \end{corollary}
+    \begin{proof}
+        只证仿射情形. 
+        若$X \subset \mathbb{A}^{n}$，其中$X=\mathcal{V}(F)$，$\deg F \geq 1$.
+        则由Krull主理想定理，对于任意不可约分支$X_{i}$，$\dim X_{i} = n - 1$. 
+        故$\dim X = n - 1$. \par
+        反之，若$X$是$n-1$维的等维数子簇，则不妨设$X$不可约（否则即是定义多项式的乘积），
+        则对于任意非零$f \in \mathcal{I}(X)$，将$f$分解为不可约多项式的乘积
+        $f_{1}\cdots f_{r}$. 则存在$j$使$f_{j} \in \mathcal{I}(X)$. 这意味着
+        $\left< f_{j} \right> \subset \mathcal{I}(X)$. 
+        故而$X \subset \mathcal{V}(f_{j})$. 
+        但此时，$\dim \mathcal{V}(f_{j}) = \dim X = n - 1$. 
+        故$X = \mathcal{V}(f_{j})$.
+    \end{proof}
+
+
+\section{一般有限态射}
+    有限映射是一类重要的态射：
+    \begin{definition}[一般有限映射（Finite Map）]
+        称拟射影簇间的态射$f\colon X \rightarrow Y$有限，
+        若$f^{*}\colon k(Y) \rightarrow k(X)$是有限环扩张.
+    \end{definition}
+
+    容易知道，有限映射的复合仍是有限映射.
+    
+    \begin{theorem}
+        若$f\colon X \rightarrow Y$是不可约拟射影簇的支配态射，
+        则存在稠密开集$V \subset Y$使得对于任意$y \in V$都有$f^{-1}(y)$都是有限集
+        \textbf{当且仅当}$f^{*}\colon k(Y) \rightarrow k(X)$是代数的有限同态
+        （即$k(X)$是$f(k(Y))$的有限扩张. 由于$f$是支配态射，且$X$，$Y$都
+        不可约，故$f^{*}$是域之间的单射.）这也即$f$是有限映射. \par
+        在此情形下，显然有$\dim X = \dim Y$，并且
+        对于$y \in V$，我们有$|f^{-1}(y)| \leq [k(X):f(k(Y))]$.
+        该等号成立当且仅当$k(Y)/k(X)$可分.
+    \end{theorem}
+    \begin{proof}
+        先设$X \subset \mathbb{A}^{n}$与$Y \subset \mathbb{A}^{m}$是代数簇，且
+        以$f$的图像$\Gamma \subset \mathbb{A}^{n+m}$代替$X$. 
+        当原先的$X \subset \mathbb{A}^{1}$时，则以图像代替后，
+        我们可以认为$A(X)$是由$A(Y)$添加一个超越元$X$得到的.
+        这样就有
+        \begin{cd}
+            X \ar[d, "f"'] \ar[r, hook] & \mathbb{A}^{m+1} \ar[d, "\pi"] & x \ar[d, maps to] \ar[r, maps to] & {(x,f(x))} \ar[d, maps to] \\
+            Y \ar[r, hook]              & \mathbb{A}^{m}                 & f(x) \ar[r, maps to]              & f(x)                         
+        \end{cd}
+        若$x$在$k(Y)$是代数的，则令$G(T) \in k(Y)[T]$是$x$的极小多项式.
+        令$d=[k(X):k(Y)]=\deg G(T)$，则令$G(T)=a_{d}(Y)T^{d}+\cdots+a_{0}(Y)$.
+        其中$a_{i}(y)\in A(Y)$. 对于$y \in Y$，若$a_{d}(y) \neq 0$，则
+        $G_{y}(T)=a_{d}(y)T^{d}+\cdots+a_{0}(y)$有至多$d$个互不相同的解.
+        且$f^{-1}(y)\subset\{(x,y)\mid G_{y}(x)=0\}$，故$|f^{-1}(y)|\leq d$.
+
+        若$k(X)/k(Y)$可分，则$G(T)$是$k(Y)$的可分多项式. 
+        这等价于说$G(T)$与$G'(T)$在$k(Y)[T]$中互素，故存在$A(T),B(T) \in k(Y)[T]$使得
+        $A(T)G(T)+B(T)G'(T)=1$. 乘以公分母后，存在$C(T) \in A(Y)[T]$使得
+        $a(T)G(T)+b(T)G'(T)=c(T)$，其中$a(T),b(T) \in A(Y)[T]$.
+        如此一来，存在$y \in Y$使得$C(y) \neq 0$. 故$G_{y}(T)$与$G_{y}'(T)$在$k[T]$中互素.
+        次数$G_{y}(T)$正好有$d$个互不相同的解，即$|f^{-1}(y)|=d$.
+
+        反之，若$[k(Y):k(X)]=\infty$，则取$F \in \mathcal{I}(X)$，记
+        $F(x,Y)=b_{e}(Y)x^{e}+\cdots+b_{0}(Y)$，则$F=0 \in k(X)=k(Y)(x)$.
+        由$x$超越，对于所有$y \in Y$，$b_{i}(y)=0$，即
+        $b_{i}(Y)$在$Y$上为$0$. 故$b_{i}(Y) \in \mathcal{I}(Y)$，且
+        $F(y,x)=0$对任意$x\in k$与$y \in Y$成立，故$\pi^{-1}(Y)=X$，即$X \cong Y \times \mathbb{A}^{1}$.
+        这即完成了对$n=1$维情况的证明.
+
+        对于一般情形，我们对$n$做归纳. 我们可以将映射$f$分解为如下情形:
+        \begin{cd}
+            X=X_{n} \ar[r] \ar[d, hook]              & X_{n-1} \ar[r] \ar[d, hook]       & \cdots \ar[r]          & X_{1} \ar[r, hook] \ar[d, hook]    & X_{0}=Y \ar[d, hook] \\
+            \mathbb{A}^{m+n} \ar[r]                  & \mathbb{A}^{m+n-1} \ar[r]         & \cdots \ar[r]          & \mathbb{A}^{m+1} \ar[r]            & \mathbb{A}^{m}          \\
+            {(y,x_{1},\cdots,x_{n})} \ar[r, maps to] & {(y,x_{1},\cdots,x_{n-1})} \ar[r,mapsto] & \cdots \ar[r, maps to] & {(y,x_{1})} \ar[r, maps to]        & y                      
+        \end{cd}
+        其中$X_{k+1} \rightarrow X_{k}$为对前$k$个分量的投影. 
+        那么存在开集$V \subset Y=X_{0}$使得任意$y \in V$上的纤维$f^{-1}(y)$有限等价于
+        任一$X_{k+1} \rightarrow X_{k}$的纤维一般有限（即存在$V_{k} \in X_{k}$使得
+        任意$y \in V_{k}$，$y$上的纤维有限）. 依据$n=1$的情形，这等价于
+        $k(X_{k+1})/k(X_{k})$都是有限扩张，也等价于$k(X)/k(Y)$有限. 
+        而$k(X)/k(Y)$可分也等价于诸$k(X_{k+1})/k(X_{k})$可分，
+        也等价于诸$X_{k+1} \rightarrow X_{k}$的纤维元素个数等于$[k(X_{k+1}):k(X_{k})]$.
+
+        现在回到一般情形，令$V \subset Y$是仿射开集，则$f\colon f^{-1}(V) \rightarrow V$是支配态射.
+        现取仿射开集$U \subset f^{-1}(V)$（自动也是$X$的仿射开集），
+        则可对$f\mid_{U}\colon U \rightarrow V$运用仿射情形的结论. 
+        由于$X$，$Y$均不可约，故$U$和$V$均在对于的簇中稠密. 
+        而由于$k(Y)=k(V)$，且$k(X)=k(U)$，
+        故存在这样的开集$V$可推出$k(Y)/k(X)$有限. 
+
+        而这种情况下，$\operatorname{trdeg}k(X)=\operatorname{trdeg}k(Y)$，故而$\dim X =\dim Y$.
+    \end{proof}
+
+    \begin{corollary}
+        若$X$是$n$维不可约拟射影簇，则存在有限支配态射$f\colon X \rightarrow \mathbb{P}^{n}$.
+    \end{corollary}
+    \begin{proof}
+        不妨设$X$是射影簇（否则取闭包），则$X \subset \mathbb{P}^{N}$是闭集.  
+        若$n=N$，则无需证明. 否则$\dim X \leq n-1$.
+
+        否则取$p \in \mathbb{P}^{N}\backslash X$.
+        考虑沿着投影$\pi_{p}\colon\mathbb{P}^{N} \dashrightarrow \mathbb{P}^{N-1}$.
+        那我们有$\pi_{p}\colon\mathbb{P}^{N}\backslash p \dashrightarrow \mathbb{P}^{N-1}$.
+        那么$\pi_{x_{0}}\mid_{X}$像闭，且对于$q \in \mathbb{P}^{N-1}$，
+        $(\pi_{x_{0}}\mid_{X})^{-1}(q) \subsetneq l_{q}$，其中$l_{q}$是
+        连接$p$与$q \in \mathbb{P}^{N-1}$的直线，
+        故$\dim(\pi_{x_{0}}\mid_{X})^{-1}(p)=0$. 
+        这意味着$|(\pi_{x_{0}}\mid_{X})^{-1}(p)| < \infty$，
+        即$\pi_{x_{0}}\mid_{X}$有有限纤维.
+
+        如此一来，考虑映射$f\colon X \rightarrow \mathbb{P}^{N-1} \rightarrow \mathbb{P}^{n}$.
+        由于其中每一步都是有限的，故$f$是有限的. 由上一命题，$n=\dim X=\dim f(X)$. 
+        而$f(X)$是$\mathbb{P}^{n}$中的闭子集，故$f(X) = \mathbb{P}^{n}$. 
+        故$f$是支配态射. 取上述构造的$f$即可. 
+    \end{proof}
+
+    \begin{corollary}
+        对于拟射影簇$X$与$Y$，其具有$\dim (X \times Y) = \dim X + \dim Y$.
+    \end{corollary}
+    \begin{proof}
+        不妨设$X,Y$都不可约. 取支配有限态射$f\colon X \rightarrow \mathbb{P}^{m}$，
+        $g\colon Y \rightarrow \mathbb{P}^{n}$，则
+        $f \times g\colon X \times Y \rightarrow \mathbb{P}^{m} \times \mathbb{P}^{n}$是有限映射.
+        故$\dim(X \times Y)=\dim(\mathbb{P}^{m}\times\mathbb{P}^{n})=m+n$.
+    \end{proof}
+
+    \begin{corollary}
+        若$X,Y \subset \mathbb{P}^{n}$是拟射影簇.
+        \begin{enumerate}
+            \item[(1)] 若$X,Y$都不可约，则
+                       $\dim(X \cap Y) \geq \dim X + \dim Y -n$.
+            \item[(2)] 若$X$与$Y$都闭，且$\dim X + \dim Y \geq n$，则$X \cap Y \neq \varnothing$.
+        \end{enumerate}
+    \end{corollary}
+    \begin{proof}
+        \begin{enumerate}
+            \item[(1)] 考虑仿射锥$\mathcal{C}X$与$\mathcal{C}Y$. 
+                       那么$\dim\mathcal{C}X=\dim X+1$
+                       且$\dim\mathcal{C}Y=\dim Y+1$.
+                       故$\dim(\mathcal{C}X \times \mathcal{C}Y) =\dim\mathcal{C}X + \dim\mathcal{C}Y = \dim X + \dim Y + 2$.
+                       且$\dim(\mathcal{C}X \times \mathcal{C}Y) \leq \dim(\mathbb{A}^{n+1}\times\mathbb{A}^{n+1}) = 2n+2$.
+                       而注意到$\mathcal{C}(X \cap Y)=\mathcal{C}X \cap \mathcal{C}Y \cong (\mathcal{C}X \times \mathcal{C}Y) \cap \Delta$，
+                       其中$\Delta$是$\mathbb{A}^{n+1}\times\mathbb{A}^{n+1}$中的对角线.
+                       注意到$\Delta$是由$n+1$个线性方程定义的，
+                       故$(\mathcal{C}X \times \mathcal{C}Y) \cap \Delta$中的每个不可约分支$Z$（自动等维数）均有维数
+                       $\dim Z \geq \dim X + \dim Y + 2 - (n+1) = \dim X + \dim Y - n + 1$.
+                       这说明$\dim(\mathcal{C}(X \cap Y)) = \dim((\mathcal{C}X \times \mathcal{C}Y) \cap \Delta) \geq \dim X + \dim Y - n + 1$，
+                       故$\dim(X \cap Y) \geq \dim X + \dim Y - n$.
+            \item[(2)] 此时$\dim(\mathcal{C}X \times \mathcal{C}Y) >0$，且
+                       $\dim((\mathcal{C}X \times \mathcal{C}Y) \cap \Delta) \geq \dim X + \dim Y - n + 1
+                       \geq 1$，
+                       故$\mathcal{C}(X \cap Y) \cong (\mathcal{C}X \times \mathcal{C}Y) \cap \Delta$有正维数，
+                       从而$X \cap Y \neq \varnothing$.\qedhere
+        \end{enumerate}
+    \end{proof}
+
+
+\section{纤维的维数}
+    先做一个记号约定：对于簇的态射$\varphi\colon X \rightarrow Y$及$x \in X$，
+    $X_{x}:=\varphi^{-1}(\varphi(x))$.
+
+    \begin{lemma}
+        若$Y$是等维数$d$维代数簇，且$y \in Y$，
+        则存在$Y$上的正则函数$f_{1},\cdots,f_{d}$
+        使得$y$是$\mathcal{V}(f_{1},\cdots,f_{d})$的孤立不可约分支（即单点不可约分支），
+        且此时有$\dim Y\cap\mathcal{V}(f_{1},\cdots,f_{d}) = 0$.
+    \end{lemma}
+    \begin{proof}
+        假设$Y=\bigcup_{i} Y_{i}$是不可约分解，且$Y \subset \mathbb{A}^{n}$.
+        简便起见，不妨设$y$是原点，
+        那么可取$\mathcal{f_{1}}$是不包含任一$Y$的其他不可约分支的超平面，
+        即可保证存在 $y\in Y_{i}$ 使得 $f(y)\neq 0$. 
+        这样我们得到一个更小的闭子簇 
+        $Y^{(1)}:=Y\cap \mathcal{f_{1}},\dim Y^{(1)}=d-1$，同样的步骤做归纳即得
+        $Y=Y^{(0)}\supsetneq Y^{(1)}\supsetneq \cdots \supsetneq Y^{(d)}$，
+        其中$ Y^{(k)}=Y\cap \mathcal{V}(f_{1},\cdots,f_{k})$.
+    \end{proof}
+
+    \begin{theorem}
+        若$\varphi\colon X \rightarrow \mathbb{P}^{n}$是拟射影簇的态射，则映射
+        \[ \delta\colon X \rightarrow \Z_{\geq 0};x \mapsto \dim_{x}X_{x}\]
+        是上半连续的. 这即是说$\delta^{-1}(\Z_{\geq n}) \subset X$都是闭子集.
+
+        进一步地，若$X$不可约，则
+        $\dim X = \dim \overline{\varphi(X)} + \min\limits_{x \in X}\delta(x)$.
+    \end{theorem}
+    \begin{proof}
+        不妨设$X$不可约. 否则取不可约分解$X = \bigcup_{i=1}^{n}X_{i}$，
+        我们有$\delta^{-1}(\Z_{\geq r}) 
+        = \bigcup_{i=1}^{n}\{x \in X_{i} \mid \dim_{x}(X_{i}) \geq r\}$. 
+        由不可约情形的闭性即得一般情形的闭性.
+
+        在不可约的假设下，
+        令$Y = \overline{\varphi(X)} \subset \mathbb{P}^{n}$，
+        则$\varphi\colon X \rightarrow Y$是支配态射.
+        对$y \in \varphi(X)$，取$y$包含在$Y$中的仿射开邻域$V$，
+        则存在$V$上的正则函数$f_{1},\cdots,f_{d}$使得
+        $y$是$\mathcal{V}(f_{1},\cdots,f_{d})$的孤立不可约分支.
+        令$y=f\varphi(x)$，则以适当的仿射开邻域替代$Y$，可认为
+        $X_{x}=\mathcal{V}(\varphi^{*}f_{1},\cdots,\varphi^{*}f_{d})$.
+        故$\delta(x) \geq \dim X - d = \dim X - \dim Y$.
+
+        我们断言存在$U \subset X$开，使得$x \in U$就有$\delta(x)=\dim X -\dim Y$.
+        由于这是一个局部的断言，故我们只需考虑$X,Y$均仿射的情形即可.
+        假设$X \subset \mathbb{A}^{m}$，且$Y \subset \mathbb{A}^{n}$，
+        则以$\varphi$的图像替代$X$，我们有$X \subset \mathbb{A}^{n+m}$.
+        则$\varphi\colon X \rightarrow Y$是$\mathbb{A}^{m+n} \rightarrow \mathbb{A}^{n}$的
+        投影. 
+
+        考虑$\varphi_{i+1}\colon X_{i+1} \rightarrow X_{i};(y,x_{1},\cdots,x_{i+1}) \mapsto (y,x_{1},\cdots,x_{i})$.
+        其中$X_{m+n}=X$. 若$x_{i+1}$在$k(X_{i})$上代数，则存在$V_{i} \subset X_{i}$开，
+        使得$x \in V_{i}$就有$\varphi_{i+1}^{-1}(x)$有限. 此时$\dim X_{i+1} = \dim X_{i}$.
+        反之，$X_{i+1}=X_{i}\times\mathbb{A}^{1}$，
+        故$\dim X_{i+1} = \dim X_{i} + 1$.
+
+        若$J=\{0 \leq i \leq m-1 \mid x_{i+1}\text{ 在 }k(X_{i})\text{ 上超越}\}$，则$\dim X - \dim Y=|J|$.
+        令$U = \bigcap_{i \notin J}(\varphi_{m}^{-1}\cdots\varphi_{i+1}^{-1}(V_{i}))$，
+        则这是$X$中的开集，故任意$U$中的点都满足$\dim_{x}X_{x}=|J|$，
+        则$\dim X - \dim Y =\delta(x)$对于任意$x \in U$都成立.
+
+        最后证明$\delta^{-1}(\Z_{\geq r})$闭. 
+        若$r \leq \dim X - \dim Y$，则$\delta^{-1}(\Z_{\geq r})=X$，那么命题成立.
+        若$r > \dim X -\dim Y$，则$F = U^{c}$闭，故$\dim F < \dim X$.
+        记$F(r):=\{x \in F \mid \dim_{x}F \geq r\}$. 
+        则显然$F(r) \subset \delta^{-1}(\Z_{\geq r})$.
+        另一方面，对于任意$x \in \delta^{-1}(\Z_{\geq r})$以及
+        不可约分支$X'$满足$\dim X' \geq r$，有$x \in X' \subset F$.
+        故$\dim_{x}F_{x} \geq r$，故$x \in F_{r}$，
+        故$\delta^{-1}(\Z_{\geq r}) \subset F(r)$.
+        所以$\delta^{-1}(\Z_{\geq r}) = F(r)$闭.
+    \end{proof}
+
+    \begin{corollary}
+        若$X$是不可约拟射影簇，且$\varphi\colon X \rightarrow \mathbb{P}^{n}$是簇的态射. 
+        记$Y:= \overline{\varphi(X)}$，则
+        \begin{enumerate}
+            \item[(1)] 对于任意$y \in \varphi(X)$，
+                       $\varphi^{-1}(y)$的任一不可约分支维数不小于$\dim X - \dim Y$.
+            \item[(2)] 存在$Y$中的稠密开集，使得对于任意$y \in Y$，有
+                       $\dim \varphi^{-1}(y) = \dim X - \dim Y$.
+        \end{enumerate}
+    \end{corollary}
+    \begin{proof}
+        \begin{enumerate}
+            \item[(1)] 令$X'$是$\varphi^{-1}(y)$的不可约分支，则存在$x \in X'$
+                       使得$x$不含在$\varphi^{-1}(y)$的其他不可约分支中. 
+                       令$\delta_{0} = \dim X - \dim Y$，
+                       则$\dim X' = \dim_{x}X_{x} \geq \dim X -\dim Y$.
+            \item[(2)] 由于$\delta^{-1}(\delta_{0}+1)$闭，
+                       故只需证明对于$\delta^{-1}(\delta_{0}+1)$的任一
+                       不可约分支$Z$，有$\overline{\varphi(Z)} \subsetneq Y$.
+                       取$x \in Z$使得$x$不被包含在任意其它不可约分支中，
+                       则存在$X_{x}$的不可约分支$X'$使得$\dim X' \geq \delta_{0}+1$.
+                       故$X' \subset \delta^{-1}(\delta_{0}+1)$，从而
+                       $X' \in Z$. 
+                       故$\dim Z - \dim \overline{\varphi(Z)} \geq \delta_{0}$.
+                       由于$\dim Z \leq \dim X -1$，
+                       故$\dim \overline{\varphi(Z)} \leq
+                       \dim X - 1 - \delta_{0} = \dim Y -1$.
+                       这说明$\overline{\varphi(Z)} \subsetneq Y$. 取其补集即可.\qedhere
+        \end{enumerate}
+    \end{proof}
+
+    \begin{proposition}
+        若$\varphi\colon X \rightarrow Y$是闭态射，则$\delta\colon Y \rightarrow \Z_{\geq 0};\dim \varphi^{-1}(y)$
+        是上半连续的.
+    \end{proposition}
+    \begin{proof}
+        令$Y(r):=\{y \in Y \mid \dim \varphi^{-1}(y) \geq r\}$，
+        则$Y(r)=\varphi(\delta^{-1}(\Z_{\geq r}))$. 由于$\varphi$闭，
+        故$Y(r)$也闭.
+    \end{proof}
+
+    \begin{remark}
+        上述命题中，$\varphi$闭是重要的. 
+        考虑$\varphi\colon\mathbb{A}^{3} \rightarrow \mathbb{A}^{3};(x,y,z) \mapsto (x,(xy-1)y,(xy-1)z)$.
+        那么可验证$\varphi$不闭，且$Y(1)=\varphi(\delta^{-1}(\Z_{\geq 1}))=\{(a,0,0) \mid a \neq 0\}$
+        显然不闭.
+    \end{remark}
+
+    \begin{proposition}
+        若$\varphi\colon X \rightarrow Y$是支配闭态射，且$Y$不可约，
+        且$\varphi$的任一纤维不可约，且维数相等（记为$r$）.
+        那么$X$也不可约，且$\dim X = \dim Y + r$.
+    \end{proposition}
+    \begin{proof}
+        令$X=\bigcup_{i=1}^{k}X_{i}$为$X$的不可约分解，则考虑
+        $\varphi_{i} = \varphi\mid_{X_{i}}$. 
+        这些也是闭映射. 
+        令$d_{i}(y)=\dim \varphi_{i}^{-1}(y)$，则由题设，
+        对于任意$y \in Y$，我们有
+        $\max\limits_{1 \leq i \leq k}d_{i}(y) = r$.
+        由于$Y_{i}(r):=\{y \in Y \mid d_{i}(y) \geq r\}$闭，
+        故存在$i_{0}$使得$Y_{i_0}(r)=Y$.
+        故$\dim \varphi_{i_{0}}^{-1}(y) = \dim \varphi^{-1}(y) = r$.
+        由于$\varphi_{i_{0}}^{-1}(y)$是$\varphi^{-1}(y)$的闭子簇，
+        故$\varphi^{-1}(y) = \varphi_{i_{0}}^{-1}(y)$.
+        这即是说$X_{i}=\varphi^{-1}(y) = \varphi_{i_{0}}^{-1}(y)=X$，故$X$不可约.
+        由上半连续性定理知$\dim X = \dim Y + r$.
+    \end{proof}
+
+    \begin{theorem}[刚性引理（Rigidity Lemma）]
+        若$X$是不可约射影簇，$Y$是不可约拟射影簇. 若$y_{0} \in Y$，
+        若$\varphi\colon X \times Y \rightarrow Z$是簇的态射，且$\varphi(X \times y_{0})$
+        是单点集，则对于任意$y \in Y$都有$\varphi(X \times y)$为单点集.
+    \end{theorem}
+    \begin{proof}
+        令$\Gamma$为$\varphi$的图像. 
+        考虑后两个分量的投影$q\colon X \times Y \times Z \rightarrow Y \times Z$.
+        由于$X$是射影簇，且$q$是闭映射，故$q(\Gamma) \subset Y \times Z$闭.
+        由于$Z$分量上的投影$p\colon Y \times Z \rightarrow Z$. 若$\varphi(X \times y_{0})=z_{0}$.
+        则$p^{-1}(y_{0})=(y_{0},z_{0})$，则$\min\limits_{(y,z)} \delta(y,z)=0$.
+        由上面引理，这即是说$\dim q(\Gamma) = \dim Y$. 且对于任意$w=(y,z) \in q(\Gamma)$，
+        则$\dim q^{-1}(w) \geq \dim \Gamma - \dim q(\Gamma) = \dim X + \dim Y - \dim Y = \dim X$.
+        即$q^{-1}(w)=X$. 故而$\varphi(X \times y)=z$.
+    \end{proof}
+
+    \begin{remark}
+        这件事是高度非平凡的. 其一般版本为$X$是紧合（七字经：拟紧泛闭有限型），几何整
+        的不可约簇，而$Y$是不可约簇. 详情见Vakil.10.3.12. 下面是该定理的强大应用. 
+    \end{remark}
+
+
+\section{应用：Abel簇}
+    \begin{definition}[代数群（Algebraic Group）]
+        设$X$为簇. 
+        若存在簇的态射$m\colon X \times X \rightarrow X$，
+        $\operatorname{inv}\colon X \rightarrow X$
+        以及$e \in X$（并记相应的包含映射为$i$）使得下图交换：
+        \begin{cd}
+          V \times V \times V \ar[r, "\operatorname{id} \times m"] \ar[d, "m \times \operatorname{id}"'] & V \times V \ar[d, "m"] \\
+          V  \times V \ar[r, "m"]                                                                        & V                        
+        \end{cd} 
+        \begin{cd}
+          V \ar[r, "{(\operatorname{id},\operatorname{inv})}"] \ar[d] & V \times V \ar[d, "m"] & V \ar[l, "{(\operatorname{inv},\operatorname{id})}"'] \ar[d] \\
+          e \ar[r]                                                    & V                      & e \ar[l]                                                       
+        \end{cd}
+        \begin{cd}
+          e \times V \ar[r, "i \times \operatorname{id}"] \ar[rd, "\pi_{V}"'] & V \times V \ar[d, "m"] & V \times e \ar[l, "\operatorname{id} \times i"'] \ar[ld, "\pi_{V}"] \\
+                                                                   & V                         &                                                                    
+        \end{cd}
+        则称$(V,m,\operatorname{inv},e)$为一个代数群.
+    \end{definition}
+
+    \begin{definition}[代数群的态射]
+        设$G_{1}$与$G_{2}$是代数群. 
+        称簇的映射$\varphi\colon G_{1} \mapsto G_{2}$是代数群的态射，若$\varphi$还是一个群同态.
+    \end{definition}
+
+    \begin{example}
+        \begin{enumerate}
+            \item[(1)] 全体可逆方阵$\mathrm{GL}_{n}(k)$是一个拟射影簇，且乘法与取逆均为正规态射，故是一个代数群.
+                       同理，$\mathrm{SL}_{n}(k)$，即行列式为$1$的方阵全体，也是一个代数群. 称$\mathrm{GL}_{n}(k)$的闭子群为\textbf{线性代数群}.
+            \item[(2)] 椭圆曲线. 详情参见相关条目，这是一个非线性代数群.
+        \end{enumerate}
+    \end{example}
+    
+    在$k=\mathbb{C}$的情形下，线性代数群已被完全分类.
+
+    \begin{definition}[Abel簇（Abelian Variety）]
+        称不可约的射影代数群为Abel簇. (即作为簇是射影簇的代数群)
+    \end{definition}
+    
+    \begin{theorem}
+        Abel簇都是交换代数群.
+    \end{theorem}
+    \begin{proof}
+        令$X$是Abel簇，定义$u\colon X \times X \rightarrow X; (x,y) \mapsto x^{-1}y^{-1}xy$.
+        注意到$u(X \times e)=e$，故由上述命题知$u(X \times \{y\})$都是单点集. 
+        但$u(e \times \{y\})=e$，故这意味着$x^{-1}y^{-1}xy=1$对于任意$x,y \in X$成立. 
+        这即$X$交换.
+    \end{proof}
+
+    一维的复Abel簇就是椭圆曲线，故上述命题证明椭圆曲线上的群结构是交换的.
+
+\section{可构造集}
+    \begin{definition}[可构造集（Constructible Set）]
+      称拓扑空间$X$的子集$Y$是可构造的，若$Y$是有限个相对闭集的并. 
+      这也即$Y = \bigcup_{i=1}^{n} U_{i} \cap V_{i}$，其中$U_{i}$开而$V_{i}$闭.
+    \end{definition}
+
+    \begin{remark}
+        开闭集显然都是可构造集.
+    \end{remark}
+
+    \begin{theorem}[Chevalley]
+        若$\varphi\colon X \rightarrow Y$是簇的态射，则$\varphi$保持可构造集. 
+        作为推论，簇的像是可构造的.
+    \end{theorem}
+    \begin{proof}
+        由于可构造集对有限并封闭，故不妨设$X$不可约. 
+        由于$X$的相对闭集也是簇，故只需证$\varphi(X)$可构造. 
+        若$\varphi$不是支配态射，则将$Y$缩小至$\overline{\varphi(X)}$. 
+        对$\dim Y =0$，命题显然成立. 若命题对维数小于$\dim\varphi(X)$成立.
+        由上述内容知，存在开集$V \subset Y$使得对于任意$y \in V$有
+        $\dim \varphi^{-1}(y) = \dim X - \dim Y$.
+        令$Z = \varphi^{-1}(V)^{c}$，则由不可约性有$\varphi(X)=\varphi(Z) \cup U$. 
+        那么由归纳假设，$\varphi(Z)$是可构造的，故而$\varphi(X)$可构造. 
+        故归纳假设成立，命题得证.
+    \end{proof}
+
+    \begin{example}
+        Chevalley定理证明了代数群的像都是闭子群. 这是因为代数子群的闭性等价于可构造性. 
+        而若$\varphi\colon G_{1} \rightarrow G_{2}$是代数群的态射，
+        那么$\varphi(G_{1})$依Chevalley定理是可构造的，故而在$G_{2}$中闭.
+    \end{example}

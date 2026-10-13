@@ -1,0 +1,67 @@
+\newcommand{\spec}{\operatorname{Spec}}
+\newcommand{\Div}{\operatorname{Div}}
+\newcommand{\scO}{\mathscr{O}}
+\newcommand{\scL}{\mathscr{L}}
+\newcommand{\fm}{\mathfrak{m}}
+
+\section{Riemann-Hurwitz公式}
+\begin{definition}
+    设$X$与$Y$为正规代数簇. 
+    我们称有限满射$\pi:X \to Y$为$Y$的\textbf{有限覆盖}，且定义$\pi$
+    的次数为$\deg(\pi) := [K(X):K(Y)]$.
+\end{definition}
+
+对于$X$上的素除子$D \in \Div(X)$，记$x$为$D$的一般点，
+那么$\scO_{X,x}$是$1$维正则局部环，也即离散赋值环.
+有限覆盖$\pi:X \to Y$诱导了局部环的局部同态
+$\pi_{x}^{*}:\scO_{Y,f(x)} \to \scO_{X,x}$. 
+设$\fm_{x} = (f)$，$\fm_{y} = (g)$，则$\pi^{*}(g) = c \cdot f^{\nu}$，
+其中$c \in \scO_{X,x}^{*}$.
+
+定义$D$的\textbf{分歧指数}为$e(D) := \nu \in \N$. 
+对于有限覆盖$\pi:X \to Y$，定义\textbf{分歧除子}
+$R := \sum_{D \in \Div(X)素除子}(e(D) - 1)D$. 我们有如下定理：
+
+
+\begin{theorem}[Riemann-Hurwitz]
+    设$\pi:X \to Y$是光滑射影代数簇之间的有限态射，
+    则$\omega_{X} \cong \pi^{*}\omega_{Y} \otimes \scO_{X}(R)$.
+\end{theorem}
+
+\begin{proposition}
+    设$\pi:X \to Y$是光滑射影代数簇之间的$n$次有限态射.
+    若存在$Y$上的线丛$\scL$使得$\pi^{*}\scL \cong \scO_{X}$，
+    则$\scL^{\otimes n} \cong \scO_{Y}$.
+\end{proposition}
+\begin{proof}
+    由投影公式知$\pi_{*}\pi^{*}\scL \cong \scL \otimes \pi_{*}\scO_{X} \cong \pi_{*}\scO_{X}$.
+    两边取$n$次外积得
+    $\scL^{\otimes} \otimes \bigwedge\nolimits^{n}\pi_{*}\scO_{X}
+    \cong \bigwedge\nolimits^{n}\pi_{*}\scO_{X}$，即
+    $\scL^{\otimes n} \cong \scO_{Y}$.
+\end{proof}
+
+\section{循环覆盖}
+\begin{definition}
+    设$X$是正规代数簇，而$\mathscr{L}$是其上阶为$m$的挠线丛（即$\mathscr{L}^{\otimes m} \cong \mathscr{O}_{X}$），
+    则称$X_{m,\mathscr{L}} := \underline{\mathrm{Spec}}_{X}(\mathscr{A}) \to X$为
+    \textbf{循环覆盖}，其中$\mathscr{A} = \bigoplus_{i=0}^{m-1}\mathscr{L}^{\otimes -i}$.
+\end{definition}
+
+\begin{example}
+    设$Y = \mathbb{P}^{1}$，$\mathscr{L} = \mathscr{O}_{\mathbb{P}^{1}}(a)$，
+    则$\mathscr{L}^{\otimes 2} = \mathscr{O}_{\mathbb{P}^{1}}(2a)$.
+    令$B = \sum_{i=1}^{2a}p_{i}$，其中$p_{i}$（$1 \leq i \leq 2n$）为点. 
+\end{example}
+
+\begin{example}
+    设$T$是Abel曲面，则$K_{T} \sim 0$. 从而$p_{g}(T) = 1$. 
+    由于$T$是复环面，故其Euler示性数即
+    $\chi_{\scO_{T}} = 1 - 2 + 1 = 0$.
+    对于$T$上的$n$-挠除子$\eta \in \operatorname{Pic}^{0}(T)$，
+    我们有$H^{0}(T,N\eta) = \mathbb{C}$.
+    以$(n\eta,\eta)$作$n$次循环覆盖$\pi:S \to T$，则$\pi$是平展覆盖，
+    且$K_{S} = \pi^{*}K_{T}$，故$K_{S}$数值有效. 从而$S$是极小曲面.
+    
+
+\end{example}

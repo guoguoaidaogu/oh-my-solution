@@ -1,0 +1,286 @@
+\setdisplaytitle{第三章\ 热方程}
+\sethtmltitle{第三章\ 热方程}
+\renewcommand\thesection{3.\arabic{section}}
+\section{方程的物理背景和定解问题}
+\begin{itemize}
+\item[1.] 来算一下
+\[\ln u=-\frac{n}{2}\ln t-\frac{|x|^2}{4t}-C,\]
+这里$C=\frac{n}{2}\ln(4\pi)$是一个无关紧要的常数。这样就有
+\[\frac{\partial_tu}{u}=\partial_t(\ln u)=-\frac{n}{2t}+\frac{|x|^2}{4t^2},\]
+且有\[\frac{\partial_{x_i}u}{u}=\partial_{x_i}(\ln u)=-\frac{x_i}{2t},\]
+进而
+\[\frac{\partial_{x_i}^2u}{u}=-\frac{\partial_{x_i}(x_iu)}{2tu}
+=-\frac{u+x_i\partial_{x_i}u}{2tu}=-\frac{1}{2t}+\frac{x_i^2}{4t^2},\]
+对$i=1,\cdots,n$求和得
+\[\frac{\Delta u}{u}=-\frac{n}{2t}+\frac{|x|^2}{4t^2}.\]
+
+\item[2.] 热量的增量等于边界上流入的热量加上内部热源产生的热量，即
+\[\int_V\rho c\partial_tu\,dx=\int_Vk\Delta u\,dx+\int_VF\,dx.\]
+由区域$V$的任意性，得到
+\[\partial_tu=\frac{k}{\rho c}\Delta u+\frac{F}{\rho c}=a^2\Delta u+f.\]
+\end{itemize}
+
+\section{分离变量法和初边值问题解的存在性}
+\begin{itemize}
+\item[5.]
+令$v(t,x)=u(t,x)-\cos x$，满足齐次方程
+\[
+    \left\{\begin{aligned}
+        \partial_tv-\partial_x^2v&=0,\\
+        v(0,x)&=\cos2x-\cos x,\\
+        \partial_xv(t,0)&=\partial_xv(t,2\pi)=0.
+    \end{aligned}\right.
+\]
+解为\[
+    v(t,x)=\sum_{k=0}^\infty a_k e^{-\left(\frac{k}{2}\right)^2t}\cos\frac{kx}{2},
+\]
+其中
+\[
+    a_k=\frac{2}{2\pi}\int_0^{2\pi} (\cos2x-\cos x)\cos\frac{kx}{2} \,dx
+    =\delta_{2,\frac{k}{2}}-\delta_{1,\frac{k}{2}}
+    =\begin{cases}-1,&k=2\\\ \ 1,&k=4\\\ \ 0,&\ \text{其它}\end{cases}.
+\]
+所以
+$$u(t,x)=(1-e^{-t})\cos x+e^{-4t}\cos2x.$$
+
+\item[6.]
+令$\varphi(x)$满足方程
+\[
+    \left\{\begin{aligned}
+        \varphi''(x)-\varphi(x)&=0,\\
+        \varphi(0)&=0,\\
+        \varphi'(L)+\varphi(L)&=\alpha,
+    \end{aligned}\right.
+\]
+解得$\varphi(x)=\frac{\alpha}{2}\big(e^{x-L}-e^{-x-L}\big)$. 
+令$v(t,x)=e^t\big(u(t,x)-\varphi(x)\big)$，则$v$满足方程
+\[
+    \left\{\begin{aligned}
+        \partial_t v -\partial_x^2 v&=0,\\
+        v(0,x)&=-\varphi(x),\\
+        v(t,0)&=0,\\
+        \partial_x v(t,L)&+v(t,L)=0.
+    \end{aligned}\right.
+\]
+用分离变量法来求解. 寻找非零特解$v(t,x)=T(t)X(x)$，
+代入方程得到$\frac{T'(t)}{T(t)}=\frac{X''(x)}{X(x)}=-\lambda$，
+再考虑边界条件得到
+\[
+    \left\{\begin{aligned}
+        -X''(x)&= \lambda X(x),\\
+        X(0)&=0,\\
+        X'(L)&+X(L)=0.
+    \end{aligned}\right.
+\]
+由Sturm-Liouville定理，$\big\{\!\sin \sqrt{\lambda_k} x\big\}_{k=1}^\infty$
+构成$L^2(0,L)$的完备正交基，其中$\lambda_k$是方程
+$\sqrt{\lambda}\cos \sqrt{\lambda}L +\sin \sqrt{\lambda}L=0$的第$k$个正根. 从而得到
+\[
+    v(t,x)=\sum_{k=1}^\infty a_k e^{-\lambda_k t}\sin\sqrt{\lambda_k}x,
+\]
+其中
+\[
+    a_k=\frac{\int_0^L -\varphi(x) \sin\sqrt{\lambda_k}x \,dx}{\int_0^L \sin^2\!\sqrt{\lambda_k}x \, dx}
+    =\frac{4\alpha e^{-L}}{\lambda_k+1} \frac{\lambda_k\sinh L \cos\sqrt{\lambda_k}L-\sqrt{\lambda_k}\cosh L \sin \sqrt{\lambda_k }L}{2\sqrt{\lambda_k}L -\sin 2\sqrt{\lambda_k}L}.
+\]
+最后，$$u(t,x)=\varphi(x)+v(t,x)e^{-t}.$$
+\end{itemize}
+
+\section{Fourier变换和Cauchy问题解的存在性}
+\begin{itemize}
+\item[5.]
+(1) 把$$\!u(t,x)=\frac{1}{(4\pi t)^\frac{n}{2}}\int_{\R}\varphi(y)e^{-\frac{|x-y|^2}{4t}}dy,\quad t>0,x\in\R$$延拓为
+$$\,u(t,z)=\frac{1}{(4\pi t)^\frac{n}{2}}\int_{\R}\varphi(y)e^{-\frac{|z-y|^2}{4t}}dy,\quad t>0,z\in\mathbb{C}\ ,$$
+这是关于$z$的全纯函数，限制回$\R$仍是解析函数。
+
+\item[6.]
+(1) $\alpha=1$.
+
+(2) 设$\xi=x/\sqrt{t}$，算出
+\[\partial_tu=\frac{-\xi f'(\xi)-f(\xi)}{2t\sqrt{t}},
+\quad\partial_x^2u=\frac{f''(\xi)}{t\sqrt{t}},\]
+代入热方程得到$f$满足
+\[f(\xi)+\xi f'(\xi)+2f''(\xi)=0.\]
+表达式$H(t,x)=\frac{1}{\sqrt{4\pi t}}e^{-\left(\frac{x}{\sqrt{t}}\right)^2/4}$
+启示我们可以设
+\[f(\xi)=\frac{1}{\sqrt{4\pi}}e^{-\frac{\xi^2}{4}}g(\xi),\]
+进而算出
+\begin{align*}
+    \xi f'(\xi)&=\frac{1}{\sqrt{4\pi}}e^{-\frac{\xi^2}{4}}\left(-\frac{\xi^2g(\xi)}{2}+\xi g'(\xi)\right),\\
+    2f''(\xi)&=\frac{1}{\sqrt{4\pi}}e^{-\frac{\xi^2}{4}}\left(\ \frac{\xi^2g(\xi)}{2}-2\xi g'(\xi)-g(\xi)+2g''(\xi)\right),
+\end{align*}
+代入化简得到$-\frac{\xi}{2}g'(\xi)+g''(\xi)=0$，
+即$\big(e^{-\frac{\xi^2}{4}}g'(\xi)\big)'=0$，从而
+\[g(\xi)=C\int_0^\xi e^\frac{s^2}{4}ds+C'.\]
+由$\lim\limits_{\xi\rightarrow\infty}f'(\xi)=0$得$C=0$，
+由$\int_\R f(\xi)\,d\xi=1$得$C'=1$，因此$f(\xi)=\frac{1}{\sqrt{4\pi}}e^{-\frac{\xi^2}{4}}$.
+
+\item[7.] 可参考\cite{Evans} 2.3.1 Theorem 1 \& 2 (pp.47--51)，
+或\cite{Han} Theorem 5.2.3 \& 5.2.11 (pp.160--2,173--4)。
+
+\item[8.] \textbf{方法I.} 由(3.23)与命题3.3.4，
+\begin{align*}
+    \big(H(t,\cdot)*H(s,\cdot)\big)(x-z)
+    &=\big(F^{-1}[e^{-|\cdot|^2t}]*F^{-1}[e^{-|\cdot|^2s}]\big)(x-z)\\
+    &=F^{-1}[e^{-|\cdot|^2(t+s)}](x-z)=H(t+s,x-z).
+\end{align*}
+
+\textbf{方法II.} 记左式积分为$I$, 可展开为
+\begin{align*}
+I&=\int_{\R^n}H(t,x-y) H(s,y-z) \,dy\\
+&=\int_{\R^n}\frac{\exp \left(-\frac{(x-y)^2}{4t}-\frac{(y-z)^2}{4s}\right)}
+{(4\pi t)^{\frac{n}{2}}(4\pi s)^{\frac{n}{2}}}\,dy\\
+&=D\int_{\R^n}\exp\,(-(Ay^2-By+C))\,dy,
+\end{align*}
+其中定义
+$$
+D=\frac{1}{(4\pi t)^{\frac{n}{2}}(4\pi s)^{\frac{n}{2}}},\quad 
+A=\frac{1}{4t}+\frac{1}{4s},\quad B=\frac{x}{2t}+\frac{z}{2s},\quad 
+C=\frac{x^2}{4t}+\frac{z^2}{4s}.
+$$
+考虑配凑平方有
+\begin{align*}
+I&=D\exp \left(\frac{B^2}{4A}-C\right) \int_{\mathbb{R}^n}{\exp \left(-A\left(y-\frac{B}{2A}\right)^2\right) \,dy}\\
+&=D\exp \left(\frac{B^2}{4A}-C\right) \left(\int_{\mathbb{R}}{\exp \left(-Ay^2\right) dy}\right)^n\\
+&=D\left(\frac{\sqrt{\pi}}{\sqrt{A}}\right)^n\exp \left(\frac{B^2}{4A}-C\right).
+\end{align*}
+分别计算
+\begin{align*}
+D\left(\frac{\pi}{A}\right)^{\frac{n}{2}}
+&=\frac{1}{(4\pi t)^{\frac{n}{2}}(4\pi s)^{\frac{n}{2}}}
+\left(\frac{4\pi}{\frac{s+t}{st}}\right)^{\frac{n}{2}}
+=\frac{1}{(4\pi(s+t))^{\frac{n}{2}}},
+\\
+\frac{B^2}{4A}-C&=\frac{\left(\frac{x}{2t}+\frac{z}{2s}\right)^2}{\frac{1}{t}+\frac{1}{s}}
+-\left(\frac{x^2}{4t}+\frac{z^2}{4s}\right) 
+=-\frac{(x-z)^2}{4(s+t)},
+\end{align*}
+可见计算结果正是$H(s+t,x-z)$.
+
+\item[9.]\ \begin{align*}
+    \int_0^\infty H(t,x-y)\,dt
+    &=\int_0^\infty \frac{1}{(4\pi t)^{\frac{n}{2}}}e^{-\frac{|x-y|^2}{4t}}dt\\
+    &=\int_0^\infty \frac{1}{\big(\pi \frac{|x-y|^2}{s}\big)^{\frac{n}{2}}}e^{-s}d\frac{|x-y|^2}{4s}\\
+    &=\frac{\varGamma\big(\frac{n}{2}-1\big)}{4\pi^\frac{n}{2}|x-y|^{n-2}}\\
+    &=\frac{\varGamma\big(\frac{n}{2}\big)}{(n-2)2\pi^\frac{n}{2}|x-y|^{n-2}}\\
+    &=\frac{1}{(n-2)\omega_{n-1}|x-y|^{n-2}}.
+\end{align*}
+
+\item[11.] 把$\R$上的函数
+\[\hat{u}(\xi)=\int_\R u(x)e^{-{\rm i}\xi x}\,dx, \quad \xi\in\R\]
+延拓为全纯函数
+\[\hat{u}(z)=\int_\R u(x)e^{-{\rm i}zx}\,dx, \quad z\in\mathbb{C},\]
+由全纯函数的零点离散及$\hat{u}(\xi)$具有紧支集得$\hat{u}\equiv0$，于是$u\equiv0$。
+\end{itemize}
+
+\section{极值原理及其应用}
+\begin{itemize}
+\item[1.] 令$v=e^{-c_0t}u$，$v_\varepsilon=v-\varepsilon t,\varepsilon>0$.
+
+假设$\max\limits_{\overline{\varOmega_T}}v_\varepsilon>0$，
+由于在$\varGamma_T$有$v_\varepsilon\leqslant0$，
+$\max\limits_{\overline{\varOmega_T}}v_\varepsilon$在$\varOmega_T$内某点取到。
+
+在该点$\partial_t v_\varepsilon\geqslant0$，$\Delta v_\varepsilon\leqslant0$，
+
+然而$(\partial_t-\Delta)v_\varepsilon
+=e^{-c_0t}(\partial_t-\Delta+c)u-(c+c_0)v-\varepsilon<0$，矛盾。
+
+因此$v_\varepsilon\leqslant0$，令$\varepsilon\rightarrow0$得$v\leqslant0$，从而$u\leqslant0$。
+
+\item[2.] 本题是\cite{Han} Theorem 5.3.8 (pp.185--6)。
+
+\item[3.] 本题是\cite{Han} Theorem 5.3.9 (pp.186--8)。
+要让\begin{equation*}\left\{
+\begin{aligned}
+    (\partial_t-\Delta+c)(\pm u)&\leqslant(\partial_t-\Delta+c)w,&\quad(t,x)&\in(B_R)_T,\\
+    \pm u&\leqslant w,&\quad(t,x)&\in\ \varGamma_T,
+\end{aligned}\right.\end{equation*}
+
+只需\begin{equation*}
+    \left\{
+\begin{aligned}
+    0&\leqslant(\partial_t-\Delta+c)(e^{c_0t}v_R),&\quad(t,x)&\in (B_R)_T,\\
+    |u|&\leqslant v_R,&\quad(t,x)&\in(0,T]\times\partial B_R,\\
+    0&\leqslant v_R(0,x),&\quad x&\in B_R.
+\end{aligned}\right.
+\end{equation*}
+
+可以取
+$$v_R=\frac{\sup\limits_{(0,T]\times\partial B_R}|u|}{R^2}(|x|^2+2nt).$$
+
+\item[7.] 把$u_0(t)=e^{-\frac{1}{t^\alpha}},t>0$
+延拓为全纯函数$u_0(z)=e^{-\frac{1}{z^\alpha}},\operatorname{Re}z>0$。
+
+取$c\in(0,1)$很小使得对于$|z-t|=ct$有
+$\operatorname{Re}\left(-\frac{1}{z^\alpha}\right)<-\frac{1}{2t^\alpha}$，
+由Cauchy积分公式，
+$$u_0^{(k)}(t)=\frac{k!}{2\pi{\rm i}}\int_{|z-t|=ct}\frac{e^{-\frac{1}{z^\alpha}}}{(z-t)^{k+1}}\,dz.$$
+于是
+$$|u_0^{(k)}(t)|\leqslant k!\frac{\min\limits_{|z-t|=ct}e^{\operatorname{Re}\left(-\frac{1}{z^\alpha}\right)}}{(ct)^{k}}
+<\frac{k!}{(ct)^{k}}e^{-\frac{1}{2t^\alpha}}.$$
+
+\item[8.] (1) $\partial_tu=\Delta u=\Delta(\varphi*H)=(\Delta\varphi)*H\geqslant0$.
+
+(2) 对给定的$x\in\R^n$，
+\begin{align*}
+    \Delta u=\partial_t u=\varphi*(\partial_tH)
+    &=\varphi*\Big(\Big(\frac{|x|^2}{4t^2}-\frac{n}{2t}\Big)H\Big)\\
+    &\leqslant C\left\|\Big(\frac{|x|^2}{4t^2}-\frac{n}{2t}\Big)H\right\|_{L^1}
+    \leqslant\frac{C'}{t}\rightarrow0
+\end{align*}
+当$t\rightarrow+\infty$，且这个收敛在$x$的有界集上是一致的。那么，对于
+$$\frac{1}{|\partial B_R(x^0)|}\int_{\partial B_R(x^0)}u(t,x)\,dS_x-u(t,x^0)
+=\frac{1}{w_{n-1}}\int_0^R\int_{B_r(x^0)}\Delta u\,dxdr$$
+(见定理2.2.1的证明)，令$t\rightarrow+\infty$得到$v$满足平均值性质。
+
+(3) Liouville定理。
+
+\item[9.] 把$t$限制在$(0,T]$上。考虑辅助函数$v=e^{-\mu t}\phi(x_n)$。若有
+\[(\partial_t-\Delta)v=e^{-\mu t}(-\mu\phi-\phi'')\geqslant0,\tag{1}\]
+且
+\[\pm u-v=\begin{cases}
+    \pm u_0(x)-\phi(x_n)\leqslant0, & t=0,x\in\varOmega,\\ \\
+    -e^{-\mu t}\phi(x_n)\leqslant0, & t>0,x\in\partial\varOmega,\tag{2}
+\end{cases}\]
+那么对$\pm u-v$用本节习题1的结论 (其中$c(x)=0$)，由
+\[\begin{cases}
+    (\partial_t-\Delta)(\pm u-v)\leqslant0,&(t,x)\in\varOmega_T,\\
+    \pm u-v\leqslant0,&(t,x)\in\varGamma_T,
+\end{cases}\]
+就能得出
+\[|u(t,x)|\leqslant v(t,x)=e^{-\mu t}\phi(x_n)
+\leqslant Ce^{-\mu t}\sup_\varOmega|u_0|.\tag{3}\]
+为了令$(1),(2),(3)$成立，需要构造满足
+\[\left\{\begin{matrix}
+    \!\!\!\!\!\!\!\!\!\!\!\!\phi''\leqslant-\mu\phi\\
+    \!\!\phi\geqslant\sup\limits_\varOmega|u_0|\\
+    \!\!\quad\phi\leqslant C\sup\limits_\varOmega|u_0|
+\end{matrix}\right.\]
+的$\phi$。例如
+\[\phi(x_n)=\big(\!-x_n^2+\sup_\varOmega x_n^2+1\big)\sup_\varOmega|u_0|,\]
+只需要$-2\leqslant-\mu\big(\sup\limits_\varOmega x_n^2+1\big),C=\sup\limits_\varOmega x_n^2+1$。
+
+\item[10.]
+见\cite{John} 7.1(d)，(1)于pp.224--6，(2)于pp.222--4.
+\end{itemize}
+
+\section{能量方法和解的唯一性}
+
+太简单了。
+
+\subsection**{参考文献}
+\begin{references}
+    \bibitem[Evans]{Evans}
+        L. C. Evans.
+        \textit{Partial Differential Equations}.
+        Graduate Studies in Mathematics 19. Amer. Math. Soc, 2010.
+    \bibitem[Han]{Han}
+        Q. Han.
+        \textit{A Basic Course in Partial Differential Equations}.
+        Graduate Studies in Mathematics 120. Amer. Math. Soc, 2011.
+    \bibitem[John]{John}
+        F. John.
+        \textit{Partial Differential Equations}.
+        Applied Mathematical Sciences 1. Springer, 1991.
+\end{references}

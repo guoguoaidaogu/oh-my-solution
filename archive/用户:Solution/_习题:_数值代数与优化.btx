@@ -1,0 +1,190 @@
+\section{24-25学年第二学期第一周习题}
+\begin{enumerate}[leftmargin=*]
+  
+\item[Problem 1.] [10 pt] For $x\in\mathbb{R}^{m}$ and $A\in\mathbb{R}^{m\times n}$, verify the following inequalities and give examples of a
+nonzero vector or matrix for which equality is achieved.
+\begin{enumerate}
+\item[(a)] $\|x\|_{\infty} \leq \|x\|_2 \leq \sqrt{m}\|x\|_{\infty}$
+\item[(b)] $\frac{1}{\sqrt{n}}\|A\|_{\infty} \leq \|A\|_2 \leq \sqrt{m}\|A\|_{\infty}$
+\item[(c)] Show equivalence between induced matrix norms $\|\cdot\|_p$ and $\|\cdot\|_q$ for $1 \leq p < q \leq \infty$
+\end{enumerate}
+
+\item[Problem 2.] [10 pt] For each of the following statement, find an example matrix.
+\begin{enumerate}
+\item[(a)] a matrix whose singular values are the same as its eigenvalues;
+\item[(b)] a matrix whose singular values are the same as the absolute values of its eigenvalues (the matrix has
+at least one negative eigenvalue);
+\item[(c)]  a matrix whose singular values are not the same as the absolute values of its eigenvalues;
+\end{enumerate}
+
+\item[Theorem I.] Let $A\in\mathbb{R}^{m\times n}$ with SVD $\{\sigma_i, u_i, v_i\}_{i=1}^{\min(m,n)}$. For $0 \leq r \leq \min(m,n)$,
+the matrix $A_r$ as defined,$$A_r = \sum_{i=1}^r u_i\sigma_iv_i^*$$
+satisfies
+$$\|A - A_r\|_{\mathrm{F}} = \inf_{\substack{B\in\mathbb{C}^{m\times n} \\ \mathrm{rank}(B) \leq r}} \|A - B\|_{\mathrm{F}}.$$
+
+\item[Problem 3.] [20 pt] Prove the Theorem I.
+
+\item[Problem 4.] [15 pt] For nonzero projector $P\in\mathbb{C}^{m\times m}$, show that $\|P\|_2 \geq 1$ with equality iff $P$ is an orthogonal projector.
+
+\item[Problem 5.] [20 pt] Implement a matrix-matrix multiplication algorithm in C++.
+
+\item[Problem 6.] [10 pt] Call “dgemm” function in LAPACK for a matrix-matrix multiplication in C++.
+
+\item[Problem 7.] [10 pt] Apply your code in Problem 5 and Problem 6 to two random matrices of size 5000×5000
+and compare their runtime.
+\end{enumerate}
+
+\section{Homework 1}
+\subsection*{Due Mar 22, 2023}
+\begin{enumerate}[label=\textbf{Problem \arabic*.}]
+    \item [10 pt] If \(u\) and \(v\) are \(m\)-vectors, the matrix \(A=I-uv^{*}\) is known as a rank-one perturbation of the identity. Show that if \(A\) is nonsingular, \(A^{-1}\) is also a rank-one perturbation of the identity. For what \(u\) and \(v\) is \(A\) singular? If it is singular, what is its null space?
+    \item [10 pt] For \(x\in\mathbb{R}^{m}\) and \(A\in\mathbb{R}^{m\times n}\), verify the following inequalities and give examples of a nonzero vector or matrix for which equality is achieved.
+    \begin{itemize}
+        \item (a) \(\|x\|_{\infty}\leq\|x\|_{2}\leq\sqrt{m}\,\|x\|_{\infty}\);
+        \item (b) \(\frac{1}{\sqrt{n}}\,\|A\|_{\infty}\leq\|A\|_{2}\leq\sqrt{m}\,\|A\|_{\infty}\);
+        \item (c) Show the equivalence between induced matrix norms \(\|\cdot\|_{p}\) and \(\|\cdot\|_{q}\) for \(1\leq p<q\leq\infty\).
+    \end{itemize}
+    \item [10 pt] For each of the following statement, find an example matrix.
+    \begin{itemize}
+        \item (a) a matrix whose singular values are the same as its eigenvalues;
+        \item (b) a matrix whose singular values are the same as the absolute values of its eigenvalues (the matrix has at least one negative eigenvalue);
+        \item (c) a matrix whose singular values are not the same as the absolute values of its eigenvalues;
+    \end{itemize}
+    \item [10 pt] Complete the proof for the uniqueness of the singular value decomposition.
+    
+    \textbf{Theorem I.} Given a matrix \(A\in\mathbb{R}^{m\times n}\). The singular values of \(A\) are denoted as \(\{{\sigma}_{i}\}_{i=1}^{\min(m,n)}\) with their corresponding left and right singular vectors being \(\{u_{i}\}_{i=1}^{\min(m,n)}\) and \(\{v_{i}\}_{i=1}^{\min(m,n)}\). For any \(r\) with \(0\leq r\leq\min(m,n)\), the matrix \(A_{r}\) as defined,
+    \[A_{r}=\sum_{i=1}^{r}u_{i}{\sigma}_{i}v_{i}^{*},\]
+    satisfies
+    \[\|A-A_{r}\|_{\mathrm{F}}=\inf_{\begin{subarray}{c}B\in\mathbb{C}^{m \times n}\\ \operatorname{rank}(B)\leq r\end{subarray}}\|A-B\|_{\mathrm{F}}\,.\]
+    \item [20 pt] Prove the Theorem I.
+    \item [15 pt] Let \(P\in\mathbb{C}^{m\times m}\) be a nonzero projector. Show that \(\|P\|_{2}\geq 1\), with equality if and only if \(P\) is an orthogonal projector.
+    \item [15 pt] Implement Classical Gram-Schmidt (CGS) algorithm.
+    \item [15 pt] Implement Modified Gram-Schmidt (MGS) algorithm.
+    \item [15 pt] Generate a matrix with exponentially graded singular values. Apply your own CGS, and MGS to the matrix. Plot the computed \(r_{j}j\) verses \(j\) in logy style.
+\end{enumerate}
+
+
+\section{Homework 2}
+\subsection*{Due May 26, 2023}
+\begin{enumerate}[label=\textbf{Problem \arabic*.}]
+    \item [20 pt] (a) The Wine Quality Data Set (\url{https://archive-beta.ics.uci.edu/dataset/186/wine+quality}) contains two datasets related to red and white variants of the Portuguese "Vinho Verde" wine. The goal here is to model \textbf{white wine} quality based on physicochemical tests. Assume the white wine quality linearly depends on the results of physicochemical tests. Solving a least square problem,
+    \[\min_{\beta}\|X\beta-y\|_{2}\]
+    establishes the relation between physicochemical tests and wine quality, where \(X\in\mathbb{R}^{4898\times 11}\) is the input variables, \(y\in\mathbb{R}^{4898}\) is the output variable, and \(\beta\in\mathbb{R}^{11}\) is the unknown coefficient vector. Use the QR method (your modified Gram-Schmidt implementation) to solve the least square problem and show the coefficient vector \(\beta\) and the corresponding error \(\|X\beta-y\|_{2}\).
+
+    (b) For the same dataset, we modify the least square problem,
+    \[\min_{\beta,c}\|(X\beta+c)-y\|_{2}\,,\]
+    where \(c\) is a scalar. Adding a scalar to a vector means that the scalar is added to each entry of the vector. Use the QR method again (your modified Gram-Schmidt implementation) to solve the least square problem and show the coefficient vector \(\beta\), the scalar \(c\) and the corresponding error \(\|X\beta+c-y\|_{2}\).
+    \item [15 pt] Implement Householder QR algorithm and Implicit \(Q\) and \(Q^{*}\) application, i.e., calculating \(Qx\) and \(Q^{*}x\).
+    \item [15 pt] Describe an algorithm for QR factorization based on Givens rotations. And show that the Givens-QR is asymptotically 50\% more expensive than Householder QR.
+    \item [20 pt] Let \(A\in\mathbb{R}^{m\times k},B\in\mathbb{R}^{k\times n}\) and \(C=AB\). Show that there exists \(\delta C\) such that,
+    \[\widetilde{C}=AB+\delta C,\]
+    and an upper bound for \(\delta C\) (element-wise or matrix norm upper bound, you could also show both).
+    
+    \textbf{Lemma A.} Let \(P\) be an exact Householder transformation, and \(\widehat{P}\) be the computed one. Then
+    \[\operatorname{\text{fl}}(\widehat{P}A)=P(A+E)\]
+    with
+    \[\|E\|_{2}=\|A\|_{2}\,O(\epsilon_{\text{machine}}).\]
+    \item [20 pt] Prove Lemma A.
+\end{enumerate}
+
+\section{Homework 3}
+\subsection*{Due Mar 30, 2023}
+\begin{enumerate}[label=\textbf{Problem \arabic*.}]
+    \item [20 pt] Implement a memory-efficient LU factorization with partial pivoting, i.e., store \(L\) and \(U\) together in a \(m\times m\) matrix and permutation matrix \(P\) as a vector of size \(m\).
+    \item [10 pt] Implement the solve function associated with the memory-efficient LU factorization with partial pivoting.
+    \item [5 pt] Apply your LU factorization code to the following matrices,
+    \[A=\begin{pmatrix}1&&&&&&1\\ -1&1&&&&&1\\ -1&-1&1&&&&1\\ \vdots&\vdots&\vdots&\ddots&&\vdots\\ -1&-1&-1&\cdots&-1&1&1\\ -1&-1&-1&\cdots&-1&-1&1\end{pmatrix}\]
+    of size \(8\times 8\) and \(100\times 100\).
+    \item [20 pt] Given an \((m+n)\times(m+n)\) symmetric positive definite matrix \(A\) of block form,
+    \[A=\begin{pmatrix}A_{11}&A_{12}\\ A_{21}&A_{22}\end{pmatrix},\]
+    where \(A_{11}\) is of size \(m\times m\) and \(A_{22}\) is of size \(n\times n\).
+    \begin{enumerate}
+        \item Find a matrix \(L\) such that
+        \[LAL^{\top}=\begin{pmatrix}A_{11}&\\ &A_{22}-A_{21}A_{11}^{-1}A_{12}\end{pmatrix}.\]
+        The bottom-right block is known as the \textit{Schur complement} of \(A_{11}\) in \(A\).
+        \item Show that the Schur complement is the same as \(m\) steps of Cholesky factorization algorithm.
+    \end{enumerate}
+    \item [10 pt] Let \(A\) be a nonsingular square matrix and let \(A=QR\) and \(A^{*}A=U^{*}U\) be QR and Cholesky factorizations, respectively, with the usual normalizations \(r_{jj},u_{jj}\geq 0\). Is it true or false that \(R=U\)?
+    \item [20 pt] Implement an LDLT factorization with pivoting. Verify the correctness of your implementation using a random matrix of size \(10\times 10\).
+\end{enumerate}
+
+
+\section{Homework 4}
+\subsection*{Due Apr 16, 2023}
+\begin{enumerate}[label=\textbf{Problem \arabic*.}]
+    \item [20 pt] Implement a Householder reduction to Hessenberg form for Hermitian matrices. Your implementation should fully explore the Hermitian property. Verify the correctness of your implementation using a random matrix of size \(10\times 10\).
+    \item [20 pt] Let \(A\in\mathbb{C}^{m\times m}\) be tridiagonal and hermitian, with all its sub- and super diagonal entries nonzero. Prove that the eigenvalues of \(A\) are distinct.
+    \item [40 pt] Implement a QR algorithm for the eigenvalue problem of hermitian matrices. Wilkinson shift should be adopted (shift calculated by the eigenvalues of the bottom right \(2\times 2\) submatrix). Your function should return both eigenvalues and eigenvectors of the input matrix.
+    \item [10 pt] Generate a random \(10\times 10\) Hermitian matrix and calculate the eigenvalue decomposition using both your own implementation and system default function (either "eig" in Matlab or "cheevd" in Lapack). Compare the two outputs and validate that your implementation gives correct eigenvalue decomposition of the input matrices.
+    \item [30 pt] Let \(A\) be a symmetric matrix, \(x\) be a unit vector, \(\rho(x,A)=\frac{x^{\top}Ax}{x^{\top}x}\) be the Rayleigh quotient. Let \(r=Ax-\rho(x,A)x\) and \(\alpha\) be the eigenvalue of \(A\) closest to \(\rho(x,A)\). Prove,
+    \[|\alpha-\rho(x,A)|\leq\frac{\|r\|_{2}^{2}}{\min_{\alpha_{i}\neq\alpha}|\alpha_{j }-\rho(x,A)|},\]
+    where \(\alpha_{j}\)s are eigenvalues of \(A\).
+\end{enumerate}
+
+
+\section{Homework 5}
+\subsection*{Due Apr 27, 2023}
+\begin{enumerate}[label=\textbf{Problem \arabic*.}]
+    \item [10 pt] Let \(A\in\mathbb{R}^{n\times n}\) be a \textit{general} square matrix and \(x,b\in\mathbb{R}^{n}\) be vectors. Compute the gradient and Hessian of \(f_{1}(x)=b^{\top}x\) and \(f_{2}(x)=x^{\top}Ax\).
+    \item [20 pt] Let \(A\in\mathbb{R}^{n\times n}\) be a \textit{general} square matrix and \(X,B\in\mathbb{R}^{n\times k}\) be two matrices. Compute the gradient of \(f_{1}(X)=\operatorname{tr}(B^{\top}X)\), \(f_{2}(X)=\operatorname{tr}(X^{\top}AX)\), and \(f_{3}(X)=\operatorname{tr}(BX^{\top}AXX^{\top}BX^{\top})\).
+    \item [20 pt] Show that the following conditions are equivalent for \(\mu>0\).
+    \begin{enumerate}
+        \item \(g(x)=f(x)-\frac{\mu}{2}\left\|x\right\|^{2}\) is convex for all \(x\);
+        \item \((\nabla f(x)-\nabla f(y))^{\top}\left(x-y\right)\geq\mu\left\|x-y\right\|^{2}\) for all \(x,y\);
+        \item \(f(\alpha x+(1-\alpha)y)\leq\alpha f(x)+(1-\alpha)f(y)-\frac{\alpha(1-\alpha) \mu}{2}\left\|x-y\right\|^{2}\) for all \(x,y\) and \(\alpha\in[0,1]\).
+    \end{enumerate}
+    \item [10 pt] Suppose that \(f\) is a convex function. Show that the set of global minimizers of \(f\) is a convex set.
+    \item [30 pt] Consider the following minimization problem,
+    \[\min_{x\in\mathbb{R}^{n}}f(x)=\frac{1}{2}x^{\top}Ax-x^{\top}b,\]
+    where \(A\in\mathbb{R}^{n\times n}\) is a positive definite matrix, and \(b\in\mathbb{R}^{n}\) is a vector. We apply the steepest descent method with a fixed stepsize to address the minimization problem, i.e.,
+    \[x_{k+1}=x_{k}-\alpha\nabla f(x_{k}),\]
+    where \(\alpha\) is the constant stepsize. Please find a range for \(\alpha\) such that the steepest descent method converges. For a fixed stepsize in the range, please prove that \(x_{k}\) converges to \(x^{*}=A^{-1}b\) linearly.
+\end{enumerate}
+
+\section{Homework 6}
+\subsection*{Due May 7, 2022}
+\begin{enumerate}[label=\textbf{Problem \arabic*.}]
+    \item [30 pt] Given a particular \(A\) and \(b\). Suppose a breakdown of the Arnoldi iteration appear, i.e., \(h_{k+1,k}=0\).
+    \begin{enumerate}
+        \item Show that \(K_{k}\) is an invariant subspace of \(A\), i.e., \(AK_{k}\subset K_{k}\).
+        \item Show that \(K_{k}=K_{k+1}\).
+        \item Show that each eigenvalue of \(Q^{\top}_{k}AQ_{k}\) is an eigenvalue of \(A\).
+        \item Show that if \(A\) is nonsingular, then the solution \(x\) to the system of equations \(Ax=b\) lies in \(K_{k}\).
+    \end{enumerate}
+    \item [10 pt] Show that if one wishes to start GMRES with an arbitrary initial guess \(x_{0}\), this can be accomplished by an easy modification of the right-hand side \(b\).
+    \item [15 pt] Show that when applied to a quadratic function, with exact line searches, the Hestenes-Stiefel formula reduce to the Fletcher-Reeves formula.
+    \item [25 pt] Implement a GMRES using Givens QR for \(H_{k}\). Apply your implementation to a real symmetric matrix \(A\) of size 805 (with eigenvalues being 1.00,1.01,1.02,\(\ldots\),8.99,9.00, and also 10,12,16,24). Check the number of iterations to reduce the initial error \(\|e_{0}\|\) by a factor of \(10^{6}\).
+    \item [10 pt] Implement a GMRES with restart. Apply GMRES(20) to the symmetric matrix in Problem 4.
+\end{enumerate}
+
+\section{Homework 7}
+\subsection*{Due May 18, 2023}
+\begin{enumerate}[label=\textbf{Problem \arabic*.}]
+    \item [10 pt] Show that if \(f\) is strongly convex, then we have \(s_{k}^{\top}y_{k}\geq 0\) holds for any vectors \(x_{k}\) and \(x_{k+1}\).
+    \item [10 pt] Using the updating equation of \(H_{k}\) in BFGS, derive the updating equation of \(B_{k}\).
+    \item [10 pt] Show that the determinant of \(B_{k+1}\) admits,
+    \[\det(B_{k+1})=\det(B_{k})\frac{y_{k}^{\top}s_{k}}{s_{k}^{\top}B_{k}s_{k}}.\]
+    for \(B_{k}\) defined as in previous problem.
+    \item [30 pt] Self-study Limited-memory BFGS method (L-BFGS) and implement the method with a backtracking linesearch.
+    \item [10 pt] Apply your L-BFGS to an objective function \(f(x)=\frac{1}{2}x^{\top}Ax-x^{\top}b\) with SPD \(A\) and vector \(b\) randomly generated. Try a few different \(m\) (number of columns) and plot the convergence curves for various \(m\) on the same figure.
+    \item [0 pt] Think about the connection between L-BFGS and CG method on quadratic polynomials as above.
+\end{enumerate}
+
+\section{Homework 8}
+\subsection*{Due Jun 4, 2023}
+\begin{enumerate}[label=\textbf{Problem \arabic*.}]
+    \item [20 pt] Given an constraint optimization problem,
+    \[\min_{x\in\Omega}f(x),\]
+    where \(f(x)\) is a convex function and the feasible set \(\Omega\) is also convex. Show that all local solutions are also global solutions. In addition, the set of global solutions is convex.
+    \item [15 pt] Let \(v:\mathbb{R}^{n}\to\mathbb{R}^{m}\) be a smooth vector function and consider the unconstrained nonsmooth optimization problem,
+    \[\min_{x\in\mathbb{R}^{n}}\max_{i=1,2,\ldots,m}|v_{i}(x)|\,.\]
+    Reformulate this problem as a smooth constrained optimization problem.
+    \item [15 pt] Prove that when the KKT conditions and the LICQ are satisfied at a point \(x^{*}\), the Lagrange multiplier \(\lambda^{*}\) is unique.
+    \item [20 pt] Suppose that all constraints \(c_{i}(x)\) are linear functions. Show that \(T_{\Omega}(x)=\mathcal{F}(x)\) for all \(x\) in feasible set.
+    \item [20 pt] Prove that if the linear programming has solutions, then at least one such solution is a basic optimal point.
+    \item [0 pt] Consider the subproblem in trust-region method,
+    \[\min_{\begin{subarray}{c}p\in\mathbb{R}^{n}\\ \|p\|\leq\Delta\end{subarray}}f+g^{\top}p+\frac{1}{2}p^{\top}Bp.\]
+    \(p^{*}\) is a global solution of the subproblem if and only if \(p^{*}\) is feasible and there is a scalar \(\lambda\geq 0\) such that the following conditions are satisfied,
+    \[(B+\lambda I)p^{*}=-g,\] \[\lambda(\Delta-\|p^{*}\|)= 0,\] \[(B+\lambda I)\;\text{ is positive semidefinite.}\]
+    [Hint: Using KKT conditions and Problem 1]
+\end{enumerate}

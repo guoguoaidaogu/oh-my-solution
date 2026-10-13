@@ -1,0 +1,52 @@
+\setdisplaytitle{试卷: 数学金融学}
+\sethtmltitle{试卷: 数学金融学}
+
+== 2025--2026学年 秋季学期期末 ==
+\begin{enumerate}
+    \item[一、](1)尽可能多地写出市场无套利的数学定义。
+
+    (2)单一价格定律和无占优策略的关系和区别。
+
+    (3)举满足单一价格定律但有占优策略的例子。
+
+    \item[二、](1)给定$S_0,B_1,S_2,S_2$在
+    $\omega_1,\omega_2,\omega_3$上的取值的条件下($B_1(\omega_1)=1,
+    B_2(\omega_2)=\frac98,B_3(\omega_3)=\frac{10}9$)，验证市场是否是完全的。
+
+    (2)
+    \[A=\begin{pmatrix}1 & \Delta S_1^*(\omega_1) &\cdots &\Delta S_1^*(\omega_k)\\
+    \vdots &\vdots &\ddots &\vdots\\
+    1 & \Delta S_n^*(\omega_1)&\cdots &\Delta S_n^*(\omega_k)\end{pmatrix}\]
+
+    $A$满足什么条件和市场完备等价？
+
+    \item[三、]在
+    \begin{align}
+        &C_0+\mathbb{E}_Q[C_1|B_1]=V\\
+        &C_0\ge 0,C_1\ge 0
+    \end{align}
+    的条件下，求\(\max \{3\sqrt[3]{C_0}+3\mathbb{E}_p[\sqrt[3]{C_1}]\}\).
+    \item[四、](1)写出鞅测度的数学定义和经济含义。
+
+    (2)证明：自融资策略的折扣获利过程在鞅测度下是鞅。
+
+    \item[五、]已知$0\le t\le T,u,d,S_0$ (都是参数，是最一般的情况)。求：
+    
+    (1) $S_t$在风险中性概率下的分布。
+
+    (2)若$u=d^{-1}$,求在给定执行价格$e$时，欧式回看看涨期权在$t=0$时的价格。
+
+    \item[六、]给定美式期权二叉树：
+    \[S_0(\omega_1)=S_0(\omega_2)=S_0(\omega_3)=S_0(\omega_4)=10,\]
+    \[S_1(\omega_1)=S_2(\omega_2)=12,S_1(\omega_3)=S_1(\omega_4)=4,\]
+    \[S_2(\omega_1)=13,S_2(\omega_2)=7,S_2(\omega_3)=5,S_2(\omega_4)=2.\]
+    $e=8$.美式看跌期权$S_1$到$S_2$的分红是$1$.
+
+    (1)求风险中性测度。
+
+    (2)计算$Z_0,Z_1,Z_2$.
+
+    (3)判断这个美式期权是否可以复制。
+
+
+\end{enumerate}

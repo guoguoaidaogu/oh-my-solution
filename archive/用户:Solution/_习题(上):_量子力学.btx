@@ -1,0 +1,1303 @@
+\newcommand{\B}{\mathfrak{B}}
+\newcommand{\RR}{\mathfrak{R}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\norm}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+\theoremstyle{plain}\newtheorem*{1}{习题1}
+\theoremstyle{plain}\newtheorem*{2}{习题2}
+\theoremstyle{plain}\newtheorem*{3}{习题3}
+\theoremstyle{plain}\newtheorem*{4}{习题4}
+\theoremstyle{plain}\newtheorem*{5}{习题5}
+\theoremstyle{plain}\newtheorem*{6}{习题6}
+\theoremstyle{plain}\newtheorem*{7}{习题7}
+\theoremstyle{plain}\newtheorem*{8}{习题8}
+\theoremstyle{plain}\newtheorem*{9}{习题9}
+\theoremstyle{plain}\newtheorem*{10}{习题10}
+
+
+
+\section{24--25春\quad 物理部分}
+{{comment|这份答案对应2024--2025学年第二学期量子力学1物理部分习题，主要参考书为格里菲斯的《量子力学概论》，课本为肖江老师自编讲义。}}
+\subsection{HW1}
+\begin{1}
+    在上海中心做想象物理实验
+
+* 从上海中心顶部挂一个到地面的重垂线，请估算重垂线方向和重锤指向地心方向的夹角。
+
+* 若从上海中心顶部自由释放一重物（Never Do That！！！），那么重物落地点与上面重锤指向的点是否有偏差？若有，估算偏差方向和距离？
+
+\end{1}
+\begin{proof}
+    (1)取地心参考系（惯性系），铅锤随地球一起绕地轴转动，向心加速度指向地轴，而引力则指向地心，二者不平行；垂线对铅锤的拉力与引力一起提供了向心加速度。
+
+$$F_{G}=m g$$
+$m$ 是铅锤的质量，$g=9.8 \mathrm{~N} / \mathrm{kg}$，这里简单起见直接用了重力公式，用万有引力公式可能更加严格一点，因为重力本身是包含向心力的贡献的，但作为估算差别不大。
+
+铅锤的向心加速度是
+$$a=\omega^{2} r=\left(\frac{2 \pi}{T}\right)^{2} R \cos \alpha 
+\approx 0.029 \mathrm{~m} / \mathrm{s}^{2}$$
+
+这里 $R=6378 \mathrm{~km}$ 是地球半径，$\alpha=31^{\circ}$ 是上海所处的纬度，$T=1$ day $=86400 \mathrm{~s}$ 是地球自转周期。
+
+上述力的三角形中，$\theta$ 即为垂线与引力方向的夹角，解三角形可得 $\theta$ 的大小，或者，作为一个估计
+$$\theta \approx \frac{m a \sin 31^{\circ}}{m g} \approx 0.0015 \text{ rad}$$
+
+单位是弧度，折算为角度 $\theta \approx 0.087^{\circ}$
+
+
+
+(2)选取地心参考系。由于整栋大厦跟随地球一起自西向东运动，楼顶的线速度要大于底楼的线速度，
+不难想象位于楼顶的重物相对于地面有一个向东的速度，因此重物掉落到地面后会向东偏离。
+
+$$L_{0}=m v_{\|}(R+h) \cos \alpha=m \omega_{0}(R+h)^{2} \cos \alpha^{2}$$
+$\omega=2 \pi / 1$ day是地球自转的角速度，$h=631 \mathrm{~m}$ 是上海中心大厦的高度；
+由于大厦垂直于地面而不垂直于地轴，所以要考虑上海地处的纬度 $\alpha=31^{\circ}$。
+
+下落至距离地面 $y$ 处时
+$$L(t)=m \omega(t)(R+y(t))^{2} \cos \alpha^{2}$$
+
+由角动量守恒可知
+$$
+\begin{gathered}
+L(t)=L_{0} \\
+\omega(t)=\omega_{0} \frac{(R+h)^{2}}{(R+y(t))^{2}} \approx \frac{\omega_{0}}{R^{2}}\left(R^{2}+2 R(h-y(t))\right)
+\end{gathered}
+$$
+
+重物与地面的角速度差为
+$$\Delta \omega(t)=\omega(t)-\omega_{0}=\frac{\omega_{0}}{R} 2(h-y(t))$$
+
+代入自由落体的位移 $h-y(t)=\frac{1}{2} g t^{2}$ 得
+$$\Delta \omega(t)=\frac{\omega_{0}}{R} g t^{2}$$
+
+积分即得重物相对于地球的角位移
+$$\Delta \theta(t)=\frac{\omega_{0}}{R} \frac{1}{3} g t^{3}$$
+
+落地需要的时间是
+$$t=\sqrt{\frac{2h}{g}}$$
+
+将落地后的角位移折算为线位移即得
+$$\Delta x_{\|}=\Delta \theta(t) R \cos \alpha
+=\frac{1}{3} \omega g t^{2} \cos \alpha$$
+
+
+
+\textbf{另解：}在地面系下，下落的物体受到科里奥利力
+$$\mathbf{F}_{K}=2 m \omega \times \mathbf{v}$$
+
+当速度指向地面时，科氏力指向东面，大小为 $F_{K}=2 \omega m g t \cos \alpha$。
+因此，落地时，平行于地面的速度为
+$$v_{\|}=\int_{0}^{t} \frac{F_{K}}{m} \mathrm{~d} t^{\prime}
+=\omega g t^{2} \cos \alpha$$
+
+再次积分即得平行于地面的位移：
+$$x_{\|}=\frac{1}{3} \omega g t^{3} \cos \alpha
+=\frac{2}{3} \sqrt{\frac{2h}{g}} \omega h \cos \alpha \approx 0.30 \mathrm{~m}\qedhere$$
+\end{proof}
+\begin{2}
+    不会变分如何计算•
+
+利用最小作用量原理证明伽利略从比萨斜塔上释放物体自由落体时是作匀加速运动。注：假设不会做变分计算，因此用不了欧拉--拉格朗日方程。
+\end{2}
+\begin{proof}
+自由落体的作用量是
+$$S=\int_{t_{1}}^{t_{2}} \mathrm{~d} t\left(\frac{1}{2} m \dot{y}^{2}-m g y\right)$$
+
+由于 $y(t)$ 是 $t$ 的单调函数，可以做一次换元 $\mathrm{d} t=\frac{\mathrm{d} y}{\dot{y}}$
+$$S=\int_{y_{1}}^{y_{2}} \mathrm{~d} y\left(\frac{1}{2} m \dot{y}-m g \frac{y}{\dot{y}}\right)$$
+
+在自由落体过程中，速度是朝下的，$\dot{y}<0$；假设初始位置 $y_{1}=0$，于是 $y<0$；因此上述积分号内的两项是负定的，可以用不等式放缩
+$$S \leq-\int_{y_{1}}^{y_{2}} \mathrm{~d} y \sqrt{-\frac{1}{2} m \dot{y}} \sqrt{m g \frac{y}{\dot{y}}}$$
+
+取等号的条件是：
+$$-\frac{1}{2} m \dot{y}=m g \frac{y}{\dot{y}}$$
+
+因此有 $\dot{y}=-\sqrt{-2 y g}$，这正是自由落体的速度与位置的关系，不难解出自由落体的位移为
+$$y=-\frac{1}{2} g t^{2}\qedhere$$
+\end{proof}
+
+\begin{3}
+    
+如果哈密顿量不显含时间 $(\partial H / \partial t=0): ~ H(q, p, t)=H(q, p)$，证明哈密顿量是守恒量：$d H / d t=0$。
+\end{3}
+\begin{proof}
+对哈密顿量求时间倒导数
+$$\frac{\mathrm{d} H}{\mathrm{~d} t}=\frac{\partial H}{\partial q} \dot{q}+\frac{\partial H}{\partial p} \dot{p}+\frac{\partial H}{\partial t}$$
+
+其中，最后一项是 $0$；在前两项中代入哈密顿运动方程 $\dot{p}=-\frac{\partial H}{\partial q}, \dot{q}=\frac{\partial H}{\partial p}$，即得：
+$$\frac{\mathrm{d} H}{\mathrm{~d} t}
+=\frac{\partial H}{\partial q} \frac{\partial H}{\partial p}
++\frac{\partial H}{\partial p}\left(-\frac{\partial H}{\partial q}\right)=0$$
+
+对于不止一个自由度的体系，证明是也类似的。
+\end{proof}
+
+\begin{4}
+亥姆霍兹漩涡定理•
+
+在哈密顿力学演化下，证明环路积分守恒
+$$\Gamma=\oint \sum_{i=1}^n p_i d q_i$$
+\end{4}
+\begin{proof}
+直接对 $\Gamma$ 求时间导数
+$$
+\begin{aligned}
+\frac{\mathrm{d} \Gamma}{\mathrm{~d} t} & =\sum_{i} \frac{\mathrm{~d}}{\mathrm{~d} t} \oint p_{i} \mathrm{~d} q_{i} \\
+& =\sum_{i} \oint \frac{\mathrm{~d}}{\mathrm{~d} t}\left(p_{i} \mathrm{~d} q_{i}\right) \\
+& =\sum_{i} \oint\left(\dot{p}_{i} \mathrm{~d} q_{i}+p_{i} \mathrm{~d} \dot{q}_{i}\right)
+\end{aligned}
+$$
+
+代入哈密顿运动方程 $\dot{p}_{i}=-\frac{\partial H}{\partial q_{i}}, \dot{q}_{i}=\frac{\partial H}{\partial p_{i}}$，得到
+$$
+\begin{aligned}
+\frac{\mathrm{d} \Gamma}{\mathrm{~d} t} & =\sum_{i} \oint\left(-\frac{\partial H}{\partial q_{i}} \mathrm{~d} q_{i}+p_{i} \mathrm{~d}\left(\frac{\partial H}{\partial p_{i}}\right)\right) \\
+& =\sum_{i} \oint\left(-\frac{\partial H}{\partial q_{i}} \mathrm{~d} q_{i}-\frac{\partial H}{\partial p_{i}} \mathrm{~d} p_{i}+\frac{\partial H}{\partial p_{i}} \mathrm{~d} p_{i}+p_{i} \mathrm{~d}\left(\frac{\partial H}{\partial p_{i}}\right)\right) \\
+& =\sum_{i} \oint\left(-\mathrm{d} H+\mathrm{d}\left(p_{i} \frac{\partial H}{\partial p_{i}}\right)\right)=0
+\end{aligned}
+$$
+
+我们在积分号内凑出了全微分，因此环路积分等于 $0$。也就是说 $\Gamma$ 不随时间变化，是一个守恒量。
+\end{proof}
+
+\begin{5}
+   斯特潘--玻尔兹曼定律$\bullet$
+
+一个黑体表面单位面积在单位时间内辐射出的总能量（称为物体的辐射度或能量通量密度）与黑体本身的热力学温度的四次方成正比：
+$$E_T=\sigma T^4.$$
+* 证明该定律，并给出 $\sigma$ 的数值；
+
+* 估算人体的辐射总功率；
+
+* 估算太阳的辐射功率；
+
+* 估算地球上每平方米收到的太阳能功率；
+
+* 估算地球的温度。
+
+\end{5}
+\begin{proof}
+(1)由黑体辐射定律，温度为 $T$ 的黑体，在频率 $\nu$ 附近的黑体辐射场的能量密度为
+$$u(\nu) \mathrm{d} \nu=\frac{8 \pi h \nu^{3}}{c^{3}} \frac{1}{1-\mathrm{e}^{-h \nu / k T}} \mathrm{~d} \nu$$
+
+对不同频率的辐射功率积分，即可得到黑体辐射的总能量密度
+$$
+\begin{aligned}
+U & =\int_{0}^{\infty}\left(\frac{8 \pi h \nu^{3}}{c^{3}} \frac{1}{1-\mathrm{e}^{-h \nu / k T}}\right) \mathrm{d} \nu \\
+& =\frac{8 \pi(k T)^{4}}{(h c)^{3}} \int_{0}^{\infty}\left(\frac{h \nu}{k T}\right)^{3} \frac{1}{\mathrm{e}^{h \nu / k T}-1} \mathrm{~d}\left(\frac{h \nu}{k T}\right) \\
+& =\frac{8 \pi(k T)^{4}}{(h c)^{3}} \frac{\pi^{4}}{15}
+\end{aligned}
+$$
+
+现在我们想象某时刻位于某个小区域 $\mathrm{d} \varepsilon$ 内的辐射场，其具有能量 $U \mathrm{~d} \varepsilon$，
+由于黑体辐射是各项同性的，这些辐射场将以光速 $c$ 均匀地向各个方向传播，那么朝着某一球面角 $\mathrm{d} \Omega$ 传播的能流就是
+$$I(\Omega) \mathrm{d} \varepsilon=\frac{c U}{4 \pi} \mathrm{~d} \Omega \mathrm{~d} \varepsilon$$
+
+这里的 $I(\Omega)$ 是某一方向上的能流密度，也就是光强。
+
+
+对于黑体表面的一个面元 $\mathrm{d} \mathbf{A}=\mathbf{n d} A$，
+它受到各个方向辐照，虽然来自各个方向的辐射的光强一样，但有效的截面积不一样，总功率是
+$$E_{T}^{\mathrm{in}} \mathrm{~d} A=\mathrm{d} A \int_{\text{上半球}} \mathrm{d} \Omega I(\Omega) \mathbf{l}(\Omega) \cdot \mathbf{n}$$
+
+其中 $\mathbf{l}(\Omega)$ 是入射光的方向，只需对半个球面积分，不用考虑从面元背面入射的辐射；于是单位面积的受到的辐照功率是
+$$
+\begin{aligned}
+E_{T}^{\text{in }} & =\int_{0}^{\frac{\pi}{2}} \mathrm{~d} \theta \int_{0}^{2 \pi} \sin \theta \mathrm{~d} \phi \cos \theta \frac{c U}{4 \pi} \\
+& =\frac{c U}{4} \\
+& =\frac{2 \pi^{5}(k T)^{4}}{15 h^{3} c^{2}}=\sigma T^{4}
+\end{aligned}
+$$
+
+注意，我们这里算的黑体吸收辐射的功率，也就是辐射场对黑体做功的功率；但当黑体与辐射场达到热平衡时，黑体的吸收功率等于其辐射功率，这与黑体的材料与形状无关：
+$$E_{T}^{\text{out }}=E_{T}^{\text {in }}=\sigma T^{4}$$
+
+其中 $\sigma=\frac{2 \pi^{5} k^{4}}{15 h^{3} c^{2}}=5.67 \times 10^{-8} \mathrm{~W} / \mathrm{m}^{2} \cdot \mathrm{~K}^{4}$ 称为斯特潘--玻尔兹曼常数。
+
+(2)
+人的皮肤面积大概是 $2 \mathrm{~m}^{2}$，皮肤温度大概在 $30^{\circ} \mathrm{C}$ 上下，约等于 $300 \text{K}$，于是，人体的黑体辐射总功率是
+$$P=A_{\text{皮肤 }} \sigma T_{\text{皮肤 }}^{4} \approx 933 \mathrm{~W} \approx 1 \mathrm{~kW}$$
+
+
+
+(3)$\sim$(5)太阳的黑体辐射总功率为
+$$P_{\text{太阳 }}=\sigma T_{\text{太阳 }}^{4} 4 \pi R_{\text{太阳 }}^{2}$$
+
+太阳表面温度大约是 $6000 \text{K}$，太阳半径取 $7 \times 10^{8} \mathrm{~m}$
+
+估算得
+$$P_{\text {太阳 }} \approx 4 \times 10^{26} \mathrm{~W}$$
+
+地球截取到的太阳辐射正比于地球的截面积，反比于地球所在天球的表面积
+$$P_{\text {地球 }}=P_{\text{太阳 }} \frac{\pi R_{\text{地球 }}^{2}}{4 \pi R_{\text{地日 }}^{2}}$$
+
+地球半径取 $6 \times 10^{6} \mathrm{~m}$，地日间距取 $1.5 \times 10^{11} \mathrm{~m}$，代入估算得
+$$P_{\text{地球 }} \approx 1.7 \times 10^{17} W$$
+
+地球温度达到平衡时，其辐射功率等于接收太阳辐射的功率，
+$$P_{\text{地球 }}=\sigma T_{\text{地球 }}^{4} 4 \pi R_{\text{地球 }}^{2}$$
+
+估算得
+$$T_{\text {地球 }} \approx 280 K \approx 7^{\circ} \mathrm{C}\qedhere$$
+\end{proof}
+
+\begin{6}
+   康普顿散射的角度依赖 $\bullet$
+
+当光子被自由电子散射时，散射光子的波长由于能量损失而变长。利用散射过程的能量动量守恒，计算光子波长的变化与光子散射角 $\phi$ 的关系。
+\end{6}
+\begin{proof}
+当光子被自由电子散射时，散射光子的波长由于能量损失而变长。利用散射过程的能量动量守恒，计算光子波长的变化与光子散射角 $\phi$ 的关系。
+
+假设散射前后，光子的能动量分别为 $(E, \mathbf{p})$ 与 $(E^{\prime}, \mathbf{p}^{\prime})$，
+电子散射前静止，能动量为 $(E_{e}, 0)$，散射后为 $(E_{e}^{\prime}, \mathbf{p}_{e}^{\prime})$
+
+写出动量守恒
+$$
+\begin{gathered}
+\mathbf{p}-\mathbf{p}^{\prime}=\mathbf{p}_{e}^{\prime} \\
+p^{2}+p^{\prime 2}-2 p p^{\prime} \cos \theta=p_{e}^{\prime 2}
+\end{gathered}
+$$
+
+代入爱因斯坦质能关系 $E^{2} c^{2}=p^{2} c^{2}+\left(m c^{2}\right)^{2}$
+$$E^{2}+E^{\prime 2}-2 E E^{\prime} \cos \theta
+=E_{e}^{\prime 2}-\left(m_{e} c^{2}\right)^{2}$$
+
+这里 $m_{e}$ 是电子的静止质量，而光子的静止质量是 $0$；随后代入能量守恒
+$$E+m_{e} c^{2}=E^{\prime}+E_{e}^{\prime}$$
+
+得到
+$$E^{2}+E^{\prime 2}-2 E E^{\prime} \cos \theta
+=\left(E+m_{e} c^{2}-E^{\prime}\right)^{2}-\left(m_{e} c^{2}\right)^{2}$$
+
+解得
+$$E^{\prime}=\frac{E}{1+\frac{E}{m_{e} c^{2}}(1-\cos \theta)}$$
+
+利用光子的能量--波长的关系 $E=h \nu=\frac{h c}{\lambda}$，整理后得到
+$$\lambda^{\prime}-\lambda=\frac{h}{m_{e} c}(1-\cos \theta)$$
+
+这就是康普顿散射公式。
+\end{proof}
+
+\begin{7}
+   经典原子稳定性•
+    
+估算经典的氢原子行星模型的原子寿命。
+\end{7}
+\begin{proof}
+在经典的电磁理论中，加速运动的电荷会因为辐射电磁波耗散能量，其耗散功率正比于加速度的平方，有拉莫公式
+$$P=\frac{2}{3} \frac{e^{2} a^{2}}{4 \pi \varepsilon_{0} c^{3}}$$
+
+在氢原子的行星模型中，电子绕核做匀速圆周运动。设电子轨道半径为 $r$，速度为 $v$，则向心力由库仑力提供：
+$$\frac{m_{e} v^{2}}{r}=\frac{e^{2}}{4 \pi \varepsilon_{0} r^{2}}$$
+
+向心加速度为：
+$$a=\frac{v^{2}}{r}=\frac{e^{2}}{4 \pi \varepsilon_{0} m_{e} r^{2}}$$
+
+代入 $P$ 的表达式，即得电子因辐射而耗散的功率。
+处在半径 $r$ 的圆轨道上的电子的能量为
+$$E=\frac{1}{2} m_{e} v^{2}-\frac{e^{2}}{4 \pi \varepsilon_{0} r}
+=-\frac{e^{2}}{8 \pi \varepsilon_{0} r}$$
+
+于是有
+$$
+\begin{gathered}
+\frac{\mathrm{d} E}{\mathrm{~d} t}=-P \\
+\frac{e^{2}}{8 \pi \varepsilon_{0} r^{2}} \frac{\mathrm{~d} r}{\mathrm{~d} t}=\frac{2}{3} \frac{e^{2}}{4 \pi \varepsilon_{0} c^{3}}\left(\frac{e^{2}}{4 \pi \varepsilon_{0} m_{e} r^{2}}\right)^{2}
+\end{gathered}
+$$
+
+整理得
+$$\frac{\mathrm{d} r}{\mathrm{~d} t}
+=-\frac{4}{3} \frac{e^{4}}{(4 \pi \varepsilon)^{2} m_{e}^{2} c^{3} r^{2}}$$
+
+两端对时间积分，有
+$$\int_{r_{0}}^{0} r^{2} \mathrm{~d} r
+=-\frac{4}{3} \frac{e^{4}}{(4 \pi \varepsilon)^{2} m_{e}^{2} c^{3}} \int_{0}^{\tau} \mathrm{d} t$$
+
+解得电子落入原子核需要的时间是
+$$\tau=\frac{(4 \pi \varepsilon)^{2} m_{e}^{2} e^{3} r_{0}^{3}}{4 e^{4}}$$
+$r_{0}$ 取氢原子的波尔半径 $r_{0}=5.29 \times 10^{-11} \mathrm{~m}$，其他常数的值我就不罗列了，结论是
+$$\tau \approx 10^{-11} \mathrm{~s}\qedhere$$
+\end{proof}
+
+
+
+
+\subsection{HW2}
+\begin{1}
+归一化的自洽性•证明归一化常数确实是``常数''，即不随时间变化。
+\end{1}
+\begin{proof}
+    假设未归一化的波函数是 $\psi(\mathbf{x}, t)$，归一化的波函数为 $\tilde{\psi}(\mathbf{x}, t)=A \psi(\mathbf{x}, t)$，有
+$$\int_{\mathbb{R}^{3}}|\tilde{\psi}(\mathbf{x}, t)|^{2} \mathrm{~d}^{3} x
+=|A|^{2} \int_{\mathbb{R}^{3}}|\psi(\mathbf{x}, t)|^{2} \mathrm{~d}^{3} x=1$$
+
+要证明 $|A|^{2}$ 是常数，就是要证明 $\int_{\mathbb{R}^{3}}|\psi(\mathbf{x}, t)|^{2} \mathrm{~d} \mathbf{x}$ 不随时间变化。对这一积分求时间导数：
+$$\frac{\mathrm{d}}{\mathrm{~d} t} \int_{\mathbb{R}^{3}}|\psi(\mathbf{x}, t)|^{2} \mathrm{~d}^{3} x
+=\int_{\mathbb{R}^{3}}\left[\psi^{*}(\mathbf{x}, t) \partial_{t} \psi(\mathbf{x}, t)
++\psi(\mathbf{x}, t) \partial_{t} \psi^{*}(\mathbf{x}, t)\right] \mathrm{d}^{3} x$$
+
+代入薛定谔方程及其复共轭
+$$
+\begin{aligned}
+\mathrm{i} \hbar \partial_{t} \psi(\mathbf{x}, t) & =-\frac{\hbar^{2}}{2 m} \nabla^{2} \psi(\mathbf{x}, t)+V \psi(\mathbf{x}, t) \\
+-\mathrm{i} \hbar \partial_{t} \psi^{*}(\mathbf{x}, t) & =-\frac{\hbar^{2}}{2 m} \nabla^{2} \psi^{*}(\mathbf{x}, t)+V \psi^{*}(\mathbf{x}, t)
+\end{aligned}
+$$
+
+有
+$$
+\begin{aligned}
+& \quad\ \frac{\mathrm{d}}{\mathrm{~d} t} \int_{\mathbb{R}^{3}}|\psi(\mathbf{x}, t)|^{2} \mathrm{~d}^{3} x \\
+&= \frac{1}{\mathrm{i} \hbar} \int_{\mathbb{R}^{3}}\bigg[\psi^{*}(\mathbf{x}, t)\left(-\frac{\hbar^{2}}{2 m} \nabla^{2} \psi(\mathbf{x}, t)+V \psi(\mathbf{x}, t)\right) \\
+& \quad\ -\psi(\mathbf{x}, t)\left(-\frac{\hbar^{2}}{2m} \nabla^{2} \psi^{*}(\mathbf{x}, t)+V \psi^{*}(\mathbf{x}, t)\right)\bigg] \mathrm{d}^{3} x \\
+&= \frac{\mathrm{i} \hbar}{2m} \int_{\mathbb{R}^{3}}\left(\psi^{*}(\mathbf{x}, t) \nabla^{2} \psi(\mathbf{x}, t)-\psi(\mathbf{x}, t) \nabla^{2} \psi^{*}(\mathbf{x}, t)\right) \mathrm{d}^{3} x \\
+&= \frac{\mathrm{i} \hbar}{2m} \int_{\mathbb{R}^{3}} \nabla \cdot\left(\psi^{*}(\mathbf{x}, t) \nabla \psi(\mathbf{x}, t)-\psi(\mathbf{x}, t) \nabla \psi^{*}(\mathbf{x}, t)\right) \mathrm{d}^{3} x \\
+&= \frac{\mathrm{i} \hbar}{2m} \int_{S}\left(\psi^{*}(\mathbf{x}, t) \nabla \psi(\mathbf{x}, t)-\psi(\mathbf{x}, t) \nabla \psi^{*}(\mathbf{x}, t)\right) \cdot \mathrm{d} \mathbf{S}
+\end{aligned}
+$$
+
+在最后一行中，我们用三维空间的高斯定律将体积分转化为了边界上的面积分，积分号内其实就是波函数的概率流；
+由于束缚态波函数在无穷远处趋于零， $\lim_{x \rightarrow \infty} \psi(\mathbf{x}, t)=0$，因此概率流在无穷远边界上的积分是 $0$。
+\end{proof}
+\begin{2}证明：
+\[[\hat{p}, f(x)]=-i \hbar \frac{d f(x)}{d x}, \quad[x, f(\hat{p})]=i \hbar \frac{d f(\hat{p})}{d \hat{p}}\]
+
+\end{2}
+\begin{remark}
+这里假设$f$拥有你想到的所有美好性质，比如解析。在后面诸多问题中也会有这样的理想化假设。
+\end{remark}
+
+
+\begin{proof}
+    算符的（解析）函数是用级数定义的
+$$
+\begin{aligned}
+& f(x)=\sum_{n} \frac{1}{n!} f_{n} x^{n}, \\
+& f(\hat{p})=\sum_{n} \frac{1}{n!} f_{n} \hat{p}^{n} .
+\end{aligned}
+$$
+
+此外先证明一个对易关系的性质
+$$
+\begin{aligned}
+{\left[\hat{p}, x^{n}\right] } & =[\hat{p}, x] x^{n-1}+x\left[\hat{p}, x^{n-1}\right] \\
+& =-\mathrm{i} \hbar x^{n-1}+x\left[\hat{p}, x^{n-1}\right] \\
+& =-\mathrm{i} \hbar x^{n-1}+x\left(-\mathrm{i} \hbar x^{n-2}+x\left[\hat{p}, x^{n-2}\right]\right) \\
+& =\cdots \\
+& =-n \mathrm{i} \hbar x^{n-1}
+\end{aligned}
+$$
+
+类似地有 $\left[x, \hat{p}^{n}\right]=n \mathrm{i} \hbar \hat{p}^{n-1}$。
+因此
+$$
+\begin{aligned}
+{[\hat{p}, f(x)] } & =\left[\hat{p}, \sum_{n} \frac{1}{n!} f_{n} x^{n}\right] \\
+& =\sum_{n} \frac{1}{n!} f_{n}\left[\hat{p}, x^{n}\right] \\
+& =\sum_{n} \frac{1}{n!} f_{n}\left(-n \mathrm{i} \hbar x^{n-1}\right) \\
+& =-\mathrm{i} \hbar \frac{\mathrm{~d}}{\mathrm{~d} x} \sum_{n} \frac{1}{n!} x^{n} \\
+& =-\mathrm{i} \hbar \frac{\mathrm{~d}}{\mathrm{~d} x} f(x)
+\end{aligned}
+$$
+
+类似可证明 $[\hat{x}, f(\hat{p})]=\mathrm{i} \hbar \frac{\mathrm{d}}{\mathrm{d} p} f(\hat{p})$。
+\end{proof}
+\begin{3}
+牛顿第二定律•
+
+将牛顿第二定律中物理量的值视为相应算符的期望值，从薛定谔方程推导牛顿第二定律
+$$\frac{d}{d t}\langle\hat{p}\rangle
+=\left\langle-\frac{\partial V(x)}{\partial x}\right\rangle=F$$
+\end{3}
+\begin{proof}
+在某个波函数 $\psi(\mathbf{x}, t)$ 下，动量算符的期望值
+$$\langle\hat{\mathbf{p}}\rangle
+=\int_{V} \psi^{*}(-\mathrm{i} \hbar \nabla) \psi \mathrm{d}^{3} x$$
+
+对其求时间导数，并代入薛定谔方程
+$$
+\begin{aligned}
+& \quad\ \frac{\mathrm{d}}{\mathrm{~d} t}\langle\hat{\mathbf{p}}\rangle \\
+&= -\mathrm{i} \hbar \int_{V}\left[\left(\partial_{t} \psi^{*}\right)(\nabla \psi)+\psi^{*}\left(\partial_{t} \nabla \psi\right)\right] \mathrm{d}^{3} x \\
+&= \int_{V}\left[\left(-\frac{\hbar^{2}}{2m} \nabla^{2} \psi^{*}+V \psi^{*}\right) \nabla \psi-\psi^{*} \nabla\left(-\frac{\hbar^{2}}{2m} \nabla^{2} \psi+V \psi\right)\right] \mathrm{d}^{3} x \\
+&= \int_{V}\bigg[\left(-\frac{\hbar^{2}}{2m} \nabla^{2} \psi^{*}\right) \nabla \psi-\nabla\left(-\psi^{*} \frac{\hbar^{2}}{2m} \nabla^{2} \psi\right)+\left(\nabla \psi^{*}\right)\left(-\frac{\hbar^{2}}{2m} \nabla^{2} \psi\right) \\
+& \quad\ +V \psi^{*} \psi-\psi^{*} \nabla(V \psi)\bigg] \mathrm{d}^{3} x \\
+&= \int_{V}-\psi^{*}(\nabla V) \psi \mathrm{d}^{3} x=\langle-\nabla V\rangle
+\end{aligned}
+$$
+
+这就证明了，力学量的期望值符合牛顿定律。
+
+或者可以利用厄米算符的性质
+$$
+\begin{aligned}
+\frac{\mathrm{d}}{\mathrm{~d} t}\langle\hat{p}\rangle & =\left(\frac{\mathrm{d}}{\mathrm{~d} t}\langle\psi|\right) \hat{p}|\psi\rangle+\langle\psi| \hat{p}\left(\frac{\mathrm{~d}}{\mathrm{~d} t}|\psi\rangle\right) \\
+& =-\frac{1}{\mathrm{i} \hbar}(\langle\hat{H} \psi \mid \hat{p} \psi\rangle-\langle\psi \mid \hat{p} \hat{H} \psi\rangle) \\
+& =-\frac{1}{\mathrm{i} \hbar}\langle\psi \mid[\hat{H}, \hat{p}] \psi\rangle
+\end{aligned}
+$$
+
+由于 $\hat{H}=\frac{\hat{p}^{2}}{2 m}+V(\hat{x})$ 中的动能部分与动量对易，只有势能部分不对易，因此
+$$
+\begin{aligned}
+{[\hat{H}, \hat{p}] } & =[V(\hat{x}), \hat{p}] \\
+& =\mathrm{i} \hbar \frac{\partial V(\hat{x})}{\partial \hat{x}}
+\end{aligned}
+$$
+\end{proof}
+
+
+\begin{4}
+平移算符•
+
+定义算符 $\hat{T}=e^{i \hat{p} a / \hbar}$，证明这个算子将波函数平移 $a$，即 $\hat{T} \psi(x)=\psi(x+a)$。
+\end{4}
+\begin{proof}
+根据算符函数的级数定义
+$$\hat{T}=\mathrm{e}^{\mathrm{i} \hat{p} a / \hbar}
+=\sum_{n} \frac{1}{n!}(\mathrm{i} \hat{p} a / \hbar)^{n}
+=\sum_{n} \frac{a^{n}}{n!}\left(\frac{\partial}{\partial x}\right)^{n}$$
+
+我们认为波函数 $\psi(x, t)$ 在我们需要的区域内是解析的，因此
+$$\hat{T} \psi(x, t)=\sum_{n} \frac{a^{n}}{n!} \frac{\partial^{n}}{\partial x^{n}} \psi(x, t)=\psi(x+a, t).\qedhere$$
+\end{proof}
+
+
+
+\begin{5}
+机械波中的能流•
+
+类似推导薛定谔方程的概率流，推导下面一根弦上的经典机械波动方程的能量流表达式，并解释所推导表达式的物理意义，
+其中 $v=\sqrt{T / \rho}$ 是弦上的波速，$\rho$ 是弦的线密度，$T$是弦上的张力。
+$$\frac{\partial^2 u}{\partial t^2}=v^2 \frac{\partial^2 u}{\partial x^2}$$
+\end{5}
+\begin{proof}
+要得到能量流，就是要写出能流守恒方程
+$$\frac{\partial \varepsilon}{\partial t}=-\nabla \cdot \mathbf{J}$$
+
+一维情况就是
+$$\frac{\partial \varepsilon}{\partial t}=-\frac{\partial J}{\partial x}$$
+
+其中 $\varepsilon$ 是能量密度，$J$ 是能量流。
+
+先推导能量密度的表达式。对于一段琴弦上的微元 $\Delta x$，
+假设其在横向上的位移为 $u(x, t)$，则此处的斜率为 $\frac{\Delta u}{\Delta x} \approx \partial_{x} u$，
+因此沿着琴弦的张力 $T$ 在横向上的分力为 $T \frac{\Delta u}{\Delta x}$。
+于是，使得这段琴弦微元产生 $\Delta u$ 的相对位移所作的功是
+$$W=\int_{0}^{\Delta u} T \frac{\Delta y}{\Delta x} \mathrm{~d}(\Delta y)
+=\frac{1}{2} T \frac{\Delta u^{2}}{\Delta x}$$
+
+而于是单位长度的势能密度是
+$$\frac{W}{\Delta x}=\frac{1}{2} T \frac{\Delta u^{2}}{\Delta x^{2}} 
+\approx \frac{1}{2} T\left(\frac{\partial u}{\partial x}\right)^{2}$$
+
+而琴弦微元的动能密度是
+$$\frac{1}{2} \rho\left(\frac{\partial u}{\partial t}\right)^{2}$$
+
+因此琴弦的能量密度是
+$$\varepsilon=\frac{1}{2} \rho\left(\frac{\partial u}{\partial t}\right)^{2}+\frac{1}{2} T\left(\frac{\partial u}{\partial x}\right)^{2}$$
+
+对能量密度求时间导数：
+$$\frac{\partial \varepsilon}{\partial t}=\rho \frac{\partial u}{\partial t} \frac{\partial^{2} u}{\partial t^{2}}+T \frac{\partial u}{\partial t} \frac{\partial^{2} u}{\partial t \partial x}$$
+
+代入波动方程
+$$
+\begin{aligned}
+\frac{\partial \varepsilon}{\partial t} & =\rho \frac{\partial u}{\partial t}\left(v^{2} \frac{\partial^{2} u}{\partial x^{2}}\right)+T \frac{\partial u}{\partial t} \frac{\partial^{2} u}{\partial t \partial x} \\
+& =T \frac{\partial}{\partial x}\left(\frac{\partial u}{\partial t} \frac{\partial u}{\partial x}\right)
+\end{aligned}
+$$
+
+因此，由流守恒方程的形式 $\partial_{t} \varepsilon=-\nabla \cdot \mathbf{J}$，我们看出机械波的能流为
+$$J=-T \frac{\partial u}{\partial t} \frac{\partial u}{\partial x}$$
+
+可以进一步解释这个结论：注意到 $\partial_{t} u$ 是琴弦微元的速度（不是波速），
+而 $\partial_{x} u$ 是这一琴弦微元附近的应变——即形变程度，
+根据连续体的胡克定律，有应力（回复力）正比于应变
+$$f=-T \frac{\partial u}{\partial x}$$
+
+这里的 $f$ 是琴弦上的回复力（密度），因此能流就等于力（密度）乘以速度，也就是通常的功率的计算方法。
+\end{proof}
+
+
+
+
+\begin{6}
+说明下面算符的厄米性，如非厄米则计算其厄米共轭:
+
+(1) 空间微分算符：$\hat{D}=\frac{d}{d x}$
+
+(2) 位置算符与动量算符乘积：$x \hat{p}$
+
+(3) 角动量算符：$\hat{L}=\mathbf{r} \times \hat{\mathbf{p}}$
+\end{6}
+\begin{proof}
+    (1)从厄米共轭的定义出发
+$$
+\begin{aligned}
+\langle\psi| \hat{D}|\psi\rangle & =\int_{-\infty}^{\infty} \psi^{*} \frac{\partial}{\partial x} \psi \mathrm{~d} x \\
+& =\left.\left(\psi^{*} \psi\right)\right|_{-\infty} ^{\infty}-\int_{-\infty}^{\infty}\left(\frac{\partial}{\partial x} \psi^{*}\right) \psi \mathrm{d} x \\
+& =0-\langle\hat{D} \psi \mid \psi\rangle
+\end{aligned}
+$$
+
+根据束缚态的性质，边界项等于 $0$。可知 $\hat{D}$ 不是厄米算符，其共轭算符是
+$$\hat{D}^{\dagger}=-\hat{D}$$
+
+也可以从已知 $\hat{p}=-i \hbar \hat{D}$ 是厄米算符出发，
+由于 ${\rm i}$ 的共轭是 $-{\rm i}$，可知 $\hat{D}^{\dagger}=-\hat{D}$。
+
+
+(2)
+由厄米共轭具有性质 $(\hat{A} \hat{B})^{\dagger}=\hat{B}^{\dagger} \hat{A}^{\dagger}$，因此
+$$(\hat{x} \hat{p})^{\dagger}
+=\hat{p}^{\dagger} \hat{x}^{\dagger}=\hat{p} \hat{x}$$
+
+由于 $\hat{x}$ 和 $\hat{p}$ 不对易，所以 $\hat{x} \hat{p}$ 不是厄米算符。
+
+(3)写出角动量的分量
+$$\hat{L}_{i}=\varepsilon_{i j k} \hat{x}_{j} \hat{p}_{k}$$
+
+这里 $i, j, k=1,2,3$ 标记空间的三个方向，$\varepsilon_{i j k}$ 是Levi-Civita符号，取值为 $0, \pm 1$，并且关于下标全反对称。因此有
+$$\hat{L}_{i}-\hat{L}_{i}^{\dagger}=\varepsilon_{i j k} \hat{x}_{j} \hat{p}_{k}
+-\varepsilon_{i j k} \hat{p}_{k}^{\dagger} \hat{x}_{j}^{\dagger}
+=\varepsilon_{i j k}\left[\hat{x}_{j}, \hat{p}_{k}\right]
+=\mathrm{i} \hbar \varepsilon_{i j k} \delta_{j k}=0$$
+
+其中 $\delta_{i j}$ 是Kronecker符号，关于下标对称。因为角动量中只包含不懂方向的动量和位置的乘积，而不同方向的动量和位置算符是对易的，因此 $\hat{\mathbf{L}}$ 是厄米算符。
+\end{proof}
+
+\begin{7}
+对于波函数 $\psi(x)$，位置算符和动量算符分别为 $\hat{x}=x, \hat{p}=-i \hbar \frac{d}{d x}$。现如果将波函数 $\psi(x)$ 离散化：
+$$\psi(x) \rightarrow(\ldots, \psi(-a), \psi(0), \psi(a), \ldots, \psi(na))$$
+
+以矩阵形式写出在离散化版本的位置算符和动量算符。
+\end{7}
+\begin{proof}
+在空间离散化后，位置算符是对角阵
+$$\hat{x}=\begin{pmatrix}
+-n a & & & & & \\
+& -(n-1) a & & & & \\
+& & \ddots & & & \\
+& & 0 & & \\
+& & & \ddots & \\
+& & & & & n a
+\end{pmatrix}$$
+
+动量算符的空间微分会变成空间差分
+$$(\hat{p} \psi)_{l}=-\frac{\mathrm{i} \hbar}{a}[\psi(l a)-\psi((l-1) a)]$$
+
+写成矩阵形式是
+$$\hat{p}=-\frac{\mathrm{i} \hbar}{a}\begin{pmatrix}
+1 & & & & & \\
+-1 & 1 & & & & \\
+& -1 & 1 & & & \\
+& & \ddots & \ddots & & \\
+& & & -1 & 1 & \\
+& & & & -1 & 1
+\end{pmatrix}$$
+
+看起来不是对称的，但是如果根据束缚态的假定，忽略边界项，那 $\hat{p}$ 的矩阵仍可以看作是厄米的。
+
+或者我们可以采用中心差分
+$$(\hat{p} \psi)_{l}=-\frac{\mathrm{i} \hbar}{2a}[\psi((l+1)a)-\psi((l-1)a)]$$
+
+这样矩阵形式是
+$$\hat{p}=-\frac{\mathrm{i} \hbar}{2a}\begin{pmatrix}
+0 & 1 & & & & \\
+-1 & 0 & 1 & & & \\
+& -1 & 0 & 1 & & \\
+& & \ddots & \ddots & \ddots & \\
+& & & -1 & 0 & 1 \\
+& & & & -1 & 0
+\end{pmatrix}$$
+
+\end{proof}
+\begin{8}
+•证明下面两种不同的厄米算符定义是等价的：
+
+\[\langle\psi \mid \hat{A} \psi\rangle=\langle\hat{A} \psi \mid \psi\rangle \quad 
+\Leftrightarrow \quad\langle\phi \mid \hat{A} \psi\rangle
+=\langle\hat{A} \phi \mid \psi\rangle \quad \forall\, \phi, \psi.\]
+
+\end{8}
+\begin{proof}
+从右到左是显然的，我们证明从左到右。
+
+令 $\psi=f+\mathrm{i} g$，则有
+$$\langle f+\mathrm{i} g \mid \hat{A}(f+\mathrm{i} g)\rangle
+=\langle\hat{A}(f+\mathrm{i} g) \mid f+\mathrm{i} g\rangle$$
+
+由内积的双线性
+$$
+\begin{gathered}
+\langle f \mid \hat{A} f\rangle-\mathrm{i}\langle g \mid \hat{A} f\rangle+\mathrm{i}\langle f \mid \hat{A} g\rangle+\langle g \mid \hat{A} g\rangle \\
+=\langle\hat{A} f \mid f\rangle-\mathrm{i}\langle\hat{A} g \mid f\rangle+\mathrm{i}\langle\hat{A} f \mid g\rangle+\langle\hat{A} g \mid g\rangle \\
+\Leftrightarrow \\
+-\mathrm{i}\langle g \mid \hat{A} f\rangle+\mathrm{i}\langle f \mid \hat{A} g\rangle=-\mathrm{i}\langle\hat{A} g \mid f\rangle+\mathrm{i}\langle\hat{A} f \mid g\rangle
+\end{gathered}
+$$
+
+另取 $\psi=f+g$，类似可得
+$$\langle g \mid \hat{A} f\rangle+\langle f \mid \hat{A} g\rangle
+=\langle\hat{A} g \mid f\rangle+\langle\hat{A} f \mid g\rangle$$
+
+解上面两条线性方程，可得
+$$
+\begin{aligned}
+\langle g \mid \hat{A} f\rangle & =\langle\hat{A} g \mid f\rangle \\
+\langle f \mid \hat{A} g\rangle & =\langle\hat{A} f \mid g\rangle
+\end{aligned}
+$$
+
+这样就证明了结论。
+
+或者可以直接应用极化恒等式
+$$
+\begin{aligned}
+\langle f \mid \hat{A} g\rangle & = \frac{1}{4}(\langle f+g \mid \hat{A}(f+g)\rangle+\mathrm{i}\langle f+\mathrm{i} g \mid \hat{A}(f+\mathrm{i} g)\rangle \\
+& \quad\ -\mathrm{i}\langle f-\mathrm{i} g \mid \hat{A}(f-\mathrm{i} g)\rangle-\langle f-g \mid \hat{A}(f-g)\rangle) \\
+& = \frac{1}{4}(\langle\hat{A}(f+g) \mid f+g\rangle+\mathrm{i}\langle\hat{A}(f+\mathrm{i} g) \mid f+\mathrm{i} g\rangle \\
+& \quad\ -\mathrm{i}\langle\hat{A}(f-\mathrm{i} g) \mid f-\mathrm{i} g\rangle-\langle\hat{A}(f-g) \mid f-g\rangle) \\
+& = \langle\hat{A} f \mid g\rangle.
+\end{aligned}
+$$
+\end{proof}
+
+
+\subsection{HW3}
+\begin{1}
+计算位置表象下的动量算符矩阵元：$\langle x| \hat{p}\left|x^{\prime}\right\rangle$。
+\end{1}
+\begin{proof}
+    不妨利用上次作业中定义的空间平移算符 $\hat{T}=e^{-i \hat{p} a / \hbar}$，我们利用狄拉克记号重新证明一遍其性质。
+    首先我们来计算 $\mathrm{e}^{-\mathrm{i} \hat{p} a / \hbar}|x\rangle$，
+    这里 $|x\rangle$ 是位置算符 $\hat{x}$ 的本征态，本征值为 $x$。我们将 $\hat{x}$ 作用到这一态上
+$$\hat{x} \mathrm{e}^{-\mathrm{i} \hat{p} a / \hbar}|x\rangle
+=\mathrm{e}^{-\mathrm{i} \hat{p} a / \hbar} \hat{x}|x\rangle
++\left[\hat{x}, \mathrm{e}^{-\mathrm{i} \hat{p} a / \hbar}\right]|x\rangle$$
+
+为了计算第二项中的对易子，可以利用结论 $[\hat{x}, f(\hat{p})]=\mathrm{i} \hbar \frac{\mathrm{d} f(\hat{p})}{\mathrm{d} \hat{p}}$（这一结论只需要用到正则对易关系 $[\hat{x}, \hat{p}]=\mathrm{i} \hbar$，不依赖于 $\hat{p}$ 在具体表象下的表示），
+因此有 $\left[\hat{x}, \mathrm{e}^{-\mathrm{i} \hat{p} a / \hbar}\right]=a \mathrm{e}^{-\mathrm{i} \hat{p} a / \hbar}$，于是
+$$
+\begin{aligned}
+\hat{x} \mathrm{e}^{-\mathrm{i} \hat{p} a / \hbar}|x\rangle & =\mathrm{e}^{-\mathrm{i} \hat{p} a / \hbar}(\hat{x}+a)|x\rangle \\
+& =(x+a) \mathrm{e}^{-\mathrm{i} \hat{p} a / \hbar}|x\rangle
+\end{aligned}
+$$
+
+这是一个本征方程，可知 $\mathrm{e}^{-\mathrm{i} \hat{p} a / \hbar}|x\rangle$ 是 $\hat{x}$ 的本征态，本征值为 $x+a$，也就是说
+$$\mathrm{e}^{-\mathrm{i} \hat{p} a / \hbar}|x\rangle=|x+a\rangle$$
+
+这样我们就得到了平移算符 $\hat{T}=\mathrm{e}^{-\mathrm{i} \hat{p} a / \hbar}$ 的性质，它将位置本征态 $|x\rangle$ 平移为另一个位置本征态 $|x+a\rangle$。
+与上次作业不同的是，我们没有用到任何一中表象就证明了这个结论。
+
+为了得到动量算符的在位置表象下的矩阵元，我们将上式改写成
+$$\mathrm{e}^{-\mathrm{i} \hat{p}\left(x^{\prime}-x\right) / \hbar}|x\rangle
+=\left|x^{\prime}\right\rangle$$
+
+对参量 $x^{\prime}$ 求偏导数
+$$-\frac{\mathrm{i}}{\hbar} \hat{p} \mathrm{e}^{-\mathrm{i} \hat{p}\left(x^{\prime}-x\right) / \hbar}|x\rangle
+=\frac{\partial}{\partial x^{\prime}}\left|x^{\prime}\right\rangle$$
+
+整理得：
+$$\hat{p}\left|x^{\prime}\right\rangle
+=\mathrm{i} \hbar \frac{\partial}{\partial x^{\prime}}\left|x^{\prime}\right\rangle$$
+
+与 $|x\rangle$ 做内积：
+$$
+\begin{aligned}
+\langle x| \hat{p}\left|x^{\prime}\right\rangle & =\mathrm{i} \hbar\langle x| \frac{\partial}{\partial x^{\prime}}\left|x^{\prime}\right\rangle \\
+& =\mathrm{i} \hbar \frac{\partial}{\partial x^{\prime}}\left\langle x \mid x^{\prime}\right\rangle \\
+& =\mathrm{i} \hbar \frac{\partial}{\partial x^{\prime}} \delta(x-x^{\prime}) \\
+& =-\mathrm{i} \hbar \frac{\partial}{\partial x} \delta(x-x^{\prime})
+\end{aligned}
+$$
+
+这就是动量算符 $\hat{p}$ 在位置表象下的矩阵元。
+从矩阵元可以重建动量算符 $\hat{p}$ 对位置空间波函数 $\psi(x)=\langle x \mid \psi\rangle$ 的作用；利用位置本征态 $|x\rangle$ 的完备性可得
+$$
+\begin{aligned}
+\hat{p} \psi(x) & =\langle x| \hat{p}|\psi\rangle \\
+& =\int\langle x| \hat{p}\left|x^{\prime}\right\rangle\left\langle x^{\prime} \mid \psi\right\rangle \mathrm{d} x^{\prime} \\
+& =\int-\mathrm{i} \hbar \frac{\partial}{\partial x} \delta(x-x^{\prime}) \psi(x^{\prime}) \mathrm{d} x^{\prime}
+\end{aligned}
+$$
+
+仍然假设波函数性质足够好，交换对 $x$ 的导数和对 $x^{\prime}$ 的积分：
+$$\hat{p} \psi(x)=-\mathrm{i} \hbar \frac{\partial}{\partial x} \int \delta(x^{\prime}-x) \psi(x^{\prime}) \mathrm{d} x^{\prime}
+=-\mathrm{i} \hbar \frac{\partial}{\partial x} \psi(x)\qedhere$$
+\end{proof}
+\begin{2}
+   计算无限深势阻中处于基态的粒子对势阱壁的压力。 
+\end{2}
+\begin{proof}
+    假设粒子处于基态，改变势阱宽度 $a$ 将使基态能量将发生变化，这部分改变的能量来自于移动墙壁时克服压力所作的功
+$$-F \mathrm{~d} a=\mathrm{d} E_{0}$$
+
+因此
+$$F=-\frac{\mathrm{d} E_{0}}{\mathrm{~d} a}=\frac{\pi^{2} \hbar^{2}}{m a^{3}}$$
+
+这一结论也可用经典力学的模型得到。假设一个动能为 $\frac{\pi^{2} \hbar^{2}}{2m a^{2}}$ 的粒子在距离为 $a$ 的两堵墙之间往返运动，
+其动量为 $p=\frac{\pi \hbar}{a}$，速度为 $v=\frac{\pi \hbar}{m a}$，其往返运动一次的周期是 $T=2a/v=\frac{2m a^{2}}{\pi \hbar}$；
+每次往返，粒子会在右侧墙壁上反弹，对墙壁传递的冲量为 $I=2 p=\frac{2 \pi \hbar}{a}$，由冲量定理，可知粒子对右侧墙壁的平均作用力为
+$$F=\frac{I}{T}=\frac{ \pi^{2} \hbar^{2}}{m a^{3}}\qedhere$$
+\end{proof}
+\begin{3}
+    $ t<0$ 时，粒子处于无限深势阻中的基态，在 $t=0$ 时，瞬间把势阱壁撤除变成平坦自由空间，计算并画出之后波函数的随时间演化动画。
+\end{3}
+\begin{proof}
+    在 $t<0$ 时，例子处于无限深势阱的基态，定态波函数为
+$$\psi_{0}(x)=\sqrt{\frac{2}{a}} \cos \frac{\pi x}{a}, 
+\quad\left(-\frac{a}{2} \leq x \leq \frac{a}{2}\right)$$
+
+为方便起见，这里把波函数写成偶函数的形式。撤除势阱后，粒子不再处于定态，而是按照自由空间中的含时薛定谔方程演化：
+$$\mathrm{i} \hbar \frac{\partial}{\partial t} \Psi(x, t)
+=-\frac{\hbar^{2}}{2 m} \frac{\partial^{2}}{\partial x^{2}} \Psi(x, t)$$
+
+其本征态为平面波 $\frac{1}{2 \pi} \mathrm{e}^{\mathrm{i} k x-\mathrm{i} E_{k} t / \hbar}$，
+其中 $E_{k}=\frac{\hbar^{2} k^{2}}{2m}=\frac{p^{2}}{2m}$ 为自由粒子的能量。将平面波叠加可得方程的通解：
+$$\Psi(x, t)=\frac{1}{2 \pi} \int_{-\infty}^{\infty} c_{k} \mathrm{e}^{\mathrm{i} k x-\mathrm{i} E_{k} t / \hbar} \mathrm{d} k$$
+
+叠加系数 $c_{k}$ 可由 $0$ 时刻的波函数决定：
+$$
+\begin{aligned}
+c_{k} & =\int_{-\infty}^{\infty} \psi_{0}(x) \mathrm{e}^{-\mathrm{i} k x} \mathrm{~d} x \\
+& =\int_{-a/2}^{a/2} \sqrt{\frac{2}{a}} \cos \frac{\pi x}{a} \mathrm{e}^{-\mathrm{i} k x} \mathrm{~d} x \\
+& =\frac{2 \sqrt{2a} \pi \cos \frac{a k}{2}}{\pi^{2}-(a k)^{2}}
+\end{aligned}
+$$
+
+在极点 $a k=\pi$ 处理解为取极限值。可见越大的 $k$ 所贡献的叠加系数越小，这是由波函数的局域性决定的；
+
+因此，在计算数值解时，可以将 $k$ 的积分上下限替换为有限值。
+\end{proof}
+\begin{4}
+    简谐振子基态 $\bullet$
+
+* 确认简谐振子基态可以触及不确定性原理的下限：$\Delta x \Delta p=\hbar/2$。
+
+* 在简谐振子基态中，在经典允许区域外找到粒子的概率是多少？
+
+提示：在经典力学中，谐振子的能量为 $E=\frac{1}{2} k a^{2}=\frac{1}{2} m \omega^{2} a^{2}$，其中 $a$ 是振幅。
+因此，对于能量为 $E$ 的振子，其``经典允许区域''为 
+$$x\in \big[\!-\!\sqrt{2E/m\omega^{2}},+\sqrt{2E/m\omega^{2}}\big].$$
+\end{4}
+\begin{proof}
+    谐振子的基态波函数是
+    \[\psi_{0}(x)=\left(\frac{m \omega}{\pi \hbar}\right)^{\frac{1}{4}} \mathrm{e}^{-m \omega x^{2} / 2 \hbar},\]
+    可得 $x^{2}$ 与 $\hat{p}^{2}$ 的期望值
+$$
+\begin{aligned}
+\left\langle x^{2}\right\rangle & =\int_{-\infty}^{\infty}|\psi_{0}|^{2} x^{2} \mathrm{~d} x=\frac{\hbar}{2 m \omega} \\
+\left\langle\hat{p}^{2}\right\rangle & =-\frac{\hbar}{2 m} \int_{-\infty}^{\infty} \psi_{0} \frac{\mathrm{~d}^{2}}{\mathrm{~d} x^{2}} \psi_{0} \mathrm{~d} x=\frac{\hbar m \omega}{2} \\
+\langle x\rangle & =\langle\hat{p}\rangle=0
+\end{aligned}
+$$
+
+于是可计算不确定度
+\[\Delta x=\sqrt{\left\langle x^{2}\right\rangle-\langle x\rangle^{2}}=\sqrt{\frac{\hbar}{2 m \omega}}, 
+\quad \Delta p=\sqrt{\frac{\hbar m \omega}{2}}.\]
+另一种方法是利用升降算符的代数，可以避免计算积分；
+记谐振子的能量本征态为 $|n\rangle$ $(n=0,1,2 \ldots)$，
+将位置与动量算符表示为上升下降算符的线性组合
+$$
+\begin{aligned}
+& \hat{x}=\sqrt{\frac{\hbar}{2 m \omega}}\left(\hat{a}_{+}+\hat{a}_{-}\right) \\
+& \hat{p}=\mathrm{i} \sqrt{\frac{\hbar m \omega}{2}}\left(\hat{a}_{+}-\hat{a}_{-}\right)
+\end{aligned}
+$$
+
+先来计算一阶矩
+$$
+\begin{aligned}
+& \langle 0| \hat{x}|0\rangle=\sqrt{\frac{\hbar}{2 m \omega}}\langle 0|\left(\hat{a}_{+}+\hat{a}_{-}\right)|0\rangle=\sqrt{\frac{\hbar}{2 m \omega}}\langle 0 \mid 1\rangle=0 \\
+& \langle 0| \hat{p}|0\rangle=\mathrm{i} \sqrt{\frac{\hbar m \omega}{2}}\langle 0|\left(\hat{a}_{+}-\hat{a}_{-}\right)|0\rangle=\mathrm{i} \sqrt{\frac{\hbar m \omega}{2}}\langle 0 \mid 1\rangle=0
+\end{aligned}
+$$
+
+这里用到了升降算符的性质：$\hat{a}_{-}|n\rangle=\sqrt{n}|n-1\rangle, \hat{a}_{+}|n\rangle=\sqrt{n+1}|n+1\rangle$（注意：
+$\left.\hat{a}_{-}|0\rangle=0\right)$，以及用到了能量本征态的正交归一性：$\langle n \mid m\rangle=\delta_{n, m}$。类似地，可计算二阶矩
+$$
+\begin{aligned}
+\langle 0| \hat{x}^{2}|0\rangle & =\frac{\hbar}{2 m \omega}\langle 0|\left(\hat{a}_{+}+\hat{a}_{-}\right)^{2}|0\rangle \\
+& =\frac{\hbar}{2 m \omega}\langle 0|\left(\hat{a}_{+}^{2}+\hat{a}_{+} \hat{a}_{-}+\hat{a}_{-} \hat{a}_{+}+\hat{a}_{-}^{2}\right)|0\rangle \\
+& =\frac{\hbar}{2 m \omega}\langle 0|(\sqrt{2}|2\rangle+0+|0\rangle+0) \\
+& =\frac{\hbar}{2 m \omega}
+\end{aligned}
+$$
+
+以及
+$$
+\begin{aligned}
+\langle 0| \hat{p}^{2}|0\rangle & =-\frac{\hbar m \omega}{2}\langle 0|\left(\hat{a}_{+}-\hat{a}_{-}\right)^{2}|0\rangle \\
+& =-\frac{\hbar m \omega}{2}\langle 0|\left(\hat{a}_{+}^{2}-\hat{a}_{+} \hat{a}_{-}-\hat{a}_{-} \hat{a}_{+}+\hat{a}_{-}^{2}\right)|0\rangle \\
+& =-\frac{\hbar m \omega}{2}\langle 0|(\sqrt{2}|2\rangle-0-|0\rangle+0) \\
+& =\frac{\hbar m \omega}{2}
+\end{aligned}
+$$
+
+于是可以验证不确定性原理
+$$\Delta x \Delta p=\sqrt{\frac{\hbar}{2 m \omega}} \sqrt{\frac{\hbar m \omega}{2}}=\frac{\hbar}{2}$$
+
+谐振子基态能量为 $E_{0}=\frac{1}{2} \hbar \omega$，其对应的经典振幅为 $a=\sqrt{\frac{\hbar}{m \omega}}$，在``经典区域''内发现粒子的概率为
+$$P=\int_{-\sqrt{\hbar / m \omega}}^{\sqrt{\hbar / m \omega}}|\psi_{0}|^{2} \mathrm{~d} x
+=\int_{-\sqrt{\hbar} / m \omega}^{\sqrt{\hbar / m \omega}}\left(\frac{m \omega}{\pi \hbar}\right)^{\frac{1}{2}} \mathrm{e}^{-m \omega x^{2} / \hbar} \mathrm{d} x=\operatorname{erf}(1)$$
+
+这里$\operatorname{erf}$是误差函数。在``经典区域''外发现粒子的概率为
+$$1-P \approx 0.16\qedhere$$
+\end{proof}
+\begin{5}
+    一个粒子处于谐振子的基态，其经典角频率为 $\omega$。此时，弹簧弹性常数突然变为原来的四倍（即 $\omega^{\prime}=2 \omega$），但没有改变粒子原来的波函数。
+    问：如果对新谐振子的能量进行测量，其值为 $E_{n}^{\prime}=(n+1/2) \hbar \omega^{\prime}=(2n+1) \hbar \omega$（新谐振子的能量本征值）的概率是多少？可以使用如下恒等式：
+$$1+\sum_{n=0}^{\infty} \frac{1}{a^{n+1}} \frac{(2n+1)!!}{(2n+2)!!}
+=\sqrt{\frac{a}{a-1}}.$$
+\end{5}
+\begin{proof}
+    可以利用谐振子升降算符的代数来较为方便地解这道题。
+首先要注意到升降算符的定义与谐振子频率 $\omega$ 有关，
+\[\hat{a}_{ \pm}=\sqrt{\frac{m \omega}{2 \hbar}} \hat{x} \mp i \frac{1}{\sqrt{2 \hbar m \omega}} \hat{p},\]
+当频率突变为 $\omega^{\prime}=2 \omega$，新的谐振子哈密顿量所对应的升降算符也会发生变化，将新的升降算符命名为 $\hat{b}_{ \pm}$
+$$\hat{b}_{ \pm}=\sqrt{\frac{m \omega^{\prime}}{2 \hbar}} \hat{x} \mp i \frac{1}{\sqrt{2 \hbar m \omega^{\prime}}} \hat{p}
+=\sqrt{2} \sqrt{\frac{m \omega}{2 \hbar}} \hat{x} \mp \frac{i}{\sqrt{2}} \frac{1}{\sqrt{2 \hbar m \omega}} \hat{p}$$
+
+注意位置和动量仍然可以用旧的升降算符表示 
+\[\sqrt{\frac{m \omega}{2 \hbar}} \hat{x}=\frac{1}{2}\left(\hat{a}_{-}+\hat{a}_{+}\right), 
+\quad i \frac{1}{\sqrt{2 \hbar m \omega}} \hat{p}=\frac{1}{2}\left(\hat{a}_{-}-\hat{a}_{+}\right),\]
+将其代入新的升降算符 $\hat{b}_{ \pm}$的表达式，即可将 $\hat{b}_{ \pm}$表示为 $\hat{a}_{ \pm}$的线性组合
+$$
+\begin{aligned}
+& \hat{b}_{-}=\frac{3 \sqrt{2}}{4} \hat{a}_{-}+\frac{\sqrt{2}}{4} \hat{a}_{+} \\
+& \hat{b}_{+}=\frac{\sqrt{2}}{4} \hat{a}_{-}+\frac{3 \sqrt{2}}{4} \hat{a}_{+}
+\end{aligned}
+$$
+
+或者可以反过来将 $\hat{a}_{ \pm}$表示为 $\hat{b}_{ \pm}$的线性组合
+$$
+\begin{aligned}
+& \hat{a}_{-}=\frac{3 \sqrt{2}}{4} \hat{b}_{-}-\frac{\sqrt{2}}{4} \hat{b}_{+}, \\
+& \hat{a}_{+}=-\frac{\sqrt{2}}{4} \hat{b}_{-}+\frac{3 \sqrt{2}}{4} \hat{b}_{+} .
+\end{aligned}
+$$
+
+由于不论是新的还是旧的能量本征态都是正交完备的，所有我们总能将旧的基态 $|0\rangle_{a}$ 表示为新的能量本征态 $|n\rangle_{b}$ 的线性组合
+$$|0\rangle_{a}=\sum_{n=0} c_{n}|n\rangle_{b}.$$
+$c_{n}$ 为组合系数。基态是会被下降算符湮灭的态：$\hat{a}_{-}|0\rangle_{a}=0$，
+因此我们可以写出方程 $\hat{a}_{-} \sum_{n=0} c_{n}|n\rangle_{b}=0$，即
+$$\left(\frac{3 \sqrt{2}}{4} \hat{b}_{-}-\frac{\sqrt{2}}{4} \hat{b}_{+}\right) \sum_{n=0} c_{n}|n\rangle_{b}=0$$
+
+将新的上升下降算符 $\hat{b}_{ \pm}$作用到求和号中，利用性质
+\[\hat{b}_{-}|n\rangle_{b}=\sqrt{n}|n-1\rangle_{b}, 
+\quad \hat{b}_{+}|n\rangle_{b}=\sqrt{n+1}|n+1\rangle_{b},\]
+可得
+$$
+\begin{aligned}
+& \frac{3 \sqrt{2}}{4} \sum_{n=1} \sqrt{n} c_{n}|n-1\rangle_{b}-\frac{\sqrt{2}}{4} \sum_{n=0} \sqrt{n+1} c_{n}|n+1\rangle_{b}=0 \\
+& \quad \Rightarrow \sum_{n=0}\left(\frac{3 \sqrt{2}}{4} \sqrt{n+1} c_{n+1}-\frac{\sqrt{2}}{4} \sqrt{n} c_{n-1}\right)|n\rangle_{b}=0
+\end{aligned}
+$$
+$$c_{n+1}=\frac{1}{3} \sqrt{\frac{n}{n+1}} c_{n-1}$$
+
+由于谐振子的量子数 $n$ 的奇偶性等于波函数的奇偶性，而基态是偶函数，因此其只能由 $n$ 为偶数本征态叠加而成。偶数项的通项为
+$$c_{2m}=\left(\frac{1}{3}\right)^{m} \sqrt{\frac{(2m-1)!!}{(2m)!!}} c_{0}$$
+
+由归—化条件可知 $\sum_{m=0} c_{2 m}{ }^{2}=1$，因此
+$$c_{0}^{2}+\sum_{m=1} \frac{1}{9^{m}} \frac{(2m-1)!!}{(2m)!!} c_{0}^{2}=1$$
+
+利用题目提示的恒等式
+\[1+\sum_{m=1} \frac{1}{a^{m}} \frac{(2 m-1)!!}{(2 m)!!}=\sqrt{\frac{a}{a-1}},\]
+可得 $c_{0}{ }^{2}=\frac{2 \sqrt{2}}{3}$，于是我们得到了 $|0\rangle_{a}$ 在新本征态下的展开式
+$$|0\rangle_{a}=\left(\frac{2 \sqrt{2}}{3}\right)^{\frac{1}{2}} \sum_{m=0}\left(\frac{1}{3}\right)^{m} \sqrt{\frac{(2m-1)!!}{(2m)!!}}|2 m\rangle_{b}$$
+
+而在能量本征态 $|n\rangle_{b}$ 发现粒子的概率是
+$$P_{n}= \begin{cases}\frac{2 \sqrt{2}}{3}, & n=0 \\ \frac{2 \sqrt{2}}{3} \frac{1}{9^{m}} \frac{(2m-1)!!}{(2m)!!}, & n=2m \\ 0, & n \text { is odd }\end{cases}$$
+\textbf{另解：}注意到:
+\[
+    \psi_0=\left(\frac{m\omega}{\pi\hbar}\right)^{\frac{1}{4}}e^{-m\omega x^2/2\hbar}
+\]
+由于$\omega'=2\omega$，并作坐标变换使得$\xi=\sqrt{\frac{m\omega}{\hbar}}x$，我们知道新的基态波函数为:
+\[
+    \phi_0=\left(\frac{2m\omega}{\pi\hbar}\right)^{\frac{1}{4}}e^{-\xi^2}
+\]
+对应的其他本征态的波函数为:
+\[
+    \phi_n=\left(\frac{2m\omega}{\pi\hbar}\right)^{\frac{1}{4}}\frac{1}{\sqrt{2^n n!}}H_n(\xi)e^{-\xi^2}
+\]
+其中$H_n$是第$n$个Hermite多项式. 
+令:
+\[
+    c_k=\langle\psi_0^*|\phi_k\rangle
+\]
+由于$n$为奇数时, $H_n$为奇函数, 因此
+\[
+    c_{2k+1}=0 \ \ \ \forall k\in \mathbb{N}
+\]
+而对于$n$是偶数的情况, 由$H_{n+2}(\xi)=2\xi H_{n+1}(\xi)-2(n+1)H_n(\xi)$
+\begin{align*}
+    &c_{n+2}=\langle\psi_0^*|\phi_k\rangle=\int_{-\infty}^\infty \frac{1}{\sqrt{2^{n+2} (n+2)!\pi}} H_{n+2}(\xi)e^{-3\xi^2/2}\textnormal{d}\xi \\
+    =&\int_{-\infty}^\infty \frac{1}{\sqrt{2^{n+2} (n+2)!\pi}} (2\xi H_{n+1}(\xi)-2(n+1)H_n(\xi))e^{-3\xi^2/2}\textnormal{d}\xi \\
+    =& \frac{1}{\sqrt{2^{n+2} (n+2)!\pi}} \left(\int_{-\infty}^\infty 2\xi H_{n+1}(\xi)e^{-3\xi^2/2}\textnormal{d}\xi-\int_{-\infty}^\infty2(n+1)H_n(\xi)e^{-3\xi^2/2}\textnormal{d}\xi \right) \\
+    =&\frac{1}{\sqrt{2^{n+2} (n+2)!\pi}} \left( \left.-\frac{2}{3} H_{n+1}(\xi)e^{-3\xi^2/2}\right|^\infty_{-\infty}+\int_{-\infty}^\infty\frac{8}{3}(n+1)H_n(\xi)e^{-3\xi^2/2}\textnormal{d}\xi-\int_{-\infty}^\infty2(n+1)H_n(\xi)e^{-3\xi^2/2}\textnormal{d}\xi \right)\\
+    &=\sqrt{\frac{2n+1}{9(2n+2)}}\int_{-\infty}^\infty \frac{1}{\sqrt{2^{n} (n)!\pi}} H_{n}(\xi)e^{-3\xi^2/2}\textnormal{d}\xi
+\end{align*}
+
+因此$c_{2k+2}=\sqrt{\frac{2k+1}{9(2k+2)}}c_{2k}$, 递推可知$c_{2n}=\sqrt{\frac{(2n+1)!!}{9^{n+1}(2n+2)!!}}c_0$. 
+
+综上，由于$\psi_0$的范数自动为$1$，有:
+\[
+    \sum_{n=0}^\infty c_n^2=1
+\]
+即
+\[
+    \left(1+\sum_{n=0}^\infty\frac{(2n+1)!!}{9^{n+1}(2n+2)!!}\right)c_0=1
+\]
+由等式知道$c_0=\sqrt{\frac{2\sqrt{2}}{3}}$, 因此其值为$E_n'$的概率为
+\[
+    P_n=\left\{
+        \begin{array}{ll} 
+            \sqrt{\dfrac{2\sqrt{2}}{3}}     \ \ \  &n=0 \\
+            \sqrt{\dfrac{2\sqrt{2}(2n+1)!!}{3^{2n+3}(2n+2)!!}}\ \ \  &n=2k+2 \\
+            0 &n=2k+1
+        \end{array}
+    \right.
+\]
+\end{proof}
+\begin{6}
+    量子相干态 •
+
+(1)证明：简谐振子基态通过在动量空间中平移后得到的态 $|\psi\rangle=e^{\lambda\left(a_{+}+\hat{a}_{-}\right)}|0\rangle$是降算符的本征态（即所谓的相干态），满足 $\hat{a}_{-}|\psi\rangle=\lambda|\psi\rangle$ 
+
+(2)验证上式中的相干态用的简谐振子能量本征态 $|n\rangle$ 展开具有如下形式：
+$$
+|\psi\rangle=\sum_{n=0}^{\infty} c_{n}|n\rangle=e^{-\lambda^{2} / 2} \sum_{n} \frac{\lambda^{n}}{\sqrt{n!}}|n\rangle
+$$
+
+(3)如果将处于第 $n$ 个能级的简谐振子视作具有 $n$ 个``粒子''（如光子），粒子数对应的算符为：$\hat{n}=\hat{a_{+}} \hat{a}_{-}$，计算上述相干态的平均粒子数 $\langle\hat{n}\rangle$ 和粒子数的不确定度 $\Delta n$。
+\end{6}
+\begin{proof}
+    动量空间的``平移算符''定义为 $\hat{T}_{p}=\mathrm{e}^{\mathrm{i} p \hat{x} / \hbar}$（注意这里 $p$ 是参数不是算符）。
+    定义量子相干态 $|\lambda\rangle$ 为动量平移算符作用在谐振子基态上所得到的态：$|\lambda\rangle=\mathrm{e}^{\mathrm{i} p \hat{x} / \hbar}|0\rangle$，
+    参数 $\lambda=i \frac{p}{\sqrt{2 \hbar m \omega}}$。现证明 $|\lambda\rangle$ 是降算符 $\hat{a}_{-}$的本征态，且本征值就是 $\lambda$。
+
+将 $\hat{a}_{-}$作用到相干态上：
+$$
+\begin{aligned}
+\hat{a}_{-}|\lambda\rangle & =\left(\sqrt{\frac{m \omega}{2 \hbar}} \hat{x}+i \frac{1}{\sqrt{2 \hbar m \omega}} \hat{p}\right) \mathrm{e}^{\mathrm{i} p \hat{x} / \hbar}|0\rangle \\
+& =\left[\sqrt{\frac{m \omega}{2 \hbar}} \mathrm{e}^{\mathrm{i} p \hat{x} / \hbar} \hat{x}+i \frac{1}{\sqrt{2 \hbar m \omega}}\left(\mathrm{e}^{\mathrm{i} p \hat{x} / \hbar} \hat{p}+\left[\hat{p}, \mathrm{e}^{\mathrm{i} p \hat{x} / \hbar}\right]\right)\right]|0\rangle
+\end{aligned}
+$$
+
+其中，$\hat{x}$ 显然与 $\mathrm{e}^{\mathrm{i} p \hat{x} / \hbar}$ 显然对易，
+$\hat{p}$ 与 $\mathrm{e}^{\mathrm{i} p \hat{x} / \hbar}$ 不对易，对易子为
+$$\left[\hat{p}, \mathrm{e}^{\mathrm{i} p \hat{x} / \hbar}\right]
+=-\mathrm{i} \hbar \frac{\partial}{\partial \hat{x}} \mathrm{e}^{\mathrm{i} p \hat{x} / \hbar}
+=p \mathrm{e}^{\mathrm{i} p \hat{x} / \hbar}$$
+
+因此有
+$$
+\begin{aligned}
+\hat{a}_{-}|\lambda\rangle & =\mathrm{e}^{\mathrm{i} p \hat{x} / \hbar}\left(\sqrt{\frac{m \omega}{2 \hbar}} \hat{x}+i \frac{1}{\sqrt{2 \hbar m \omega}} \hat{p}\right)|0\rangle+i \frac{1}{\sqrt{2 \hbar m \omega}} p \mathrm{e}^{\mathrm{i} p \hat{x} / \hbar}|0\rangle \\
+& =\mathrm{e}^{\mathrm{i} p \hat{x} / \hbar} \hat{a}_{-}|0\rangle+i \frac{1}{\sqrt{2 \hbar m \omega}} p|\lambda\rangle \\
+& =i \frac{1}{\sqrt{2 \hbar m \omega}} p|\lambda\rangle
+\end{aligned}
+$$
+
+这里再次用到 $\hat{a}_{-}|0\rangle=0$。由此可见 $|\lambda\rangle=\hat{T}_{p}|0\rangle$ 是降算符 $\hat{a}_{-}$的本征态，
+本征值为 $\lambda=i \frac{p}{\sqrt{2 \hbar m \omega}}$
+
+上面利用的是 $\hat{x},\hat{p}$ 的代数证明了结论，其实也可以直接用升降算符的代数证明。
+利用 $\hat{x}=\sqrt{\frac{\hbar}{2 m \omega}}\left(\hat{a}_{+}+\hat{a}_{-}\right)$，
+可以将相干态的定义写作 $|\lambda\rangle=\mathrm{e}^{\lambda\left(\hat{a}_{+}+\hat{a}_{-}\right)}|0\rangle$。
+下面利用Baker--Campbell--Hausdorff 公式：对于算符 $\hat{A}, \hat{B}$，有以下关系
+$$\mathrm{e}^{\lambda \hat{A}} \mathrm{e}^{\lambda \hat{B}}
+=\exp \left(\lambda \hat{A}+\lambda \hat{B}+\frac{\lambda^{2}}{2!}[\hat{A}, \hat{B}]+o(\lambda^{3})\right)$$
+
+特别地，若 $[\hat{A},[\hat{A}, \hat{B}]]=[[\hat{A}, \hat{B}], \hat{B}]=0$，有恒等式
+$$\mathrm{e}^{\hat{A}+\hat{B}}
+=\mathrm{e}^{-\frac{1}{2}[\hat{A}, \hat{B}]} \mathrm{e}^{\hat{A}} \mathrm{e}^{\hat{B}}$$
+
+由于升降算符满足 $\left[\hat{a}_{-}, \hat{a}_{+}\right]=1$，因此有
+$$\mathrm{e}^{\lambda\left(\hat{a}_{+}+\hat{a}_{-}\right)}
+=\mathrm{e}^{\frac{\lambda^{2}}{2}} \mathrm{e}^{\lambda \hat{a}_{+}} \mathrm{e}^{\lambda \hat{a}_{-}}$$
+
+将其作用在谐振子基态上，注意到 $\mathrm{e}^{\lambda \hat{a}_{-}}|0\rangle=\left(1+\lambda \hat{a}_{-}+\ldots\right)|0\rangle$ 只有第一项不是 $0$，因此
+$$|\lambda\rangle=\mathrm{e}^{\lambda\left(\hat{a}_{+}+\hat{a}_{-}\right)}|0\rangle
+=\mathrm{e}^{\frac{\lambda^{2}}{2}} \mathrm{e}^{\lambda \hat{a}_{+}} \mathrm{e}^{\lambda \hat{a}_{-}}|0\rangle
+=\mathrm{e}^{\frac{\lambda^{2}}{2}} \mathrm{e}^{\lambda \hat{a}_{+}}|0\rangle$$
+
+由基本对易关系 $\left[\hat{a}_{-}, \hat{a}_{+}\right]=1$，利用上次作业中用到的方法，可证明以下关系
+$$\left[\hat{a}_{-}, f(\hat{a}_{+})\right]
+=\frac{\mathrm{d} f(\hat{a}_{+})}{\mathrm{d} \hat{a}_{+}}$$
+
+于是有 $\left[\hat{a}_{-}, \mathrm{e}^{\lambda \hat{a}_{+}}\right]=\lambda \mathrm{e}^{\lambda \hat{a}_{+}}$，因此
+$$\hat{a}_{-}|\lambda\rangle
+=\mathrm{e}^{\frac{\lambda^{2}}{2}} \mathrm{e}^{\lambda \hat{a}_{+}} \hat{a}_{-}|0\rangle
++\lambda \mathrm{e}^{\frac{\lambda^{2}}{2}} \mathrm{e}^{\lambda \hat{a}_{+}}|0\rangle
+=\lambda \mathrm{e}^{\frac{\lambda^{2}}{2}} \mathrm{e}^{\lambda \hat{a}_{+}}|0\rangle$$
+
+再次证明了结论。
+
+为了将量子相干态 $|\lambda\rangle$ 展开成谐振子本征态的叠加，可再次利用上面的结论 $|\lambda\rangle=e^{\frac{\lambda^{2}}{2}} e^{\lambda \hat{a}_{+}}|0\rangle$，将指数函数展开，有
+$$
+|\lambda\rangle=\mathrm{e}^{\frac{\lambda^{2}}{2}} \sum_{n=0} \frac{\lambda^{n}}{n!}\left(\hat{a}_{+}\right)^{n}|0\rangle
+$$
+
+利用上升算符的性质 $\left(\hat{a}_{+}\right)^{n}|0\rangle=\sqrt{n!}|n\rangle$，于是
+$$
+|\lambda\rangle=e^{\frac{-|\lambda|^{2}}{2}} \sum_{n=0} \frac{\lambda^{n}}{\sqrt{n!}}|n\rangle
+$$
+（注意 $\lambda=i \frac{p}{\sqrt{2 \hbar m \omega}}$ 是纯虚的，因此写成模平方后添了一个符号）
+
+玻色子可以看成是简谐振动的``量子''，比如电磁场的简谐振动的量子是光子，而机械振动的量子则是``声子''。
+定义声子数算符 $\hat{n}=\hat{a}_{+} \hat{a}_{-}$，不难看出谐振子能量本征态 $|n\rangle$ 是 $\hat{n}$ 的本征态
+$$\hat{n}|n\rangle=\hat{a}_{+} \hat{a}_{-}|n\rangle
+=\hat{a}_{+} \sqrt{n}|n-1\rangle=n|n\rangle$$
+
+因此，谐振子的第 $n$ 个能量本征态可以看作是具有 $n$ 个声子的状态，每个声子具有能量 $\hbar \omega$，此外真空也具有能量 $\frac{1}{2} \hbar \omega$。
+由于我们已将相干态 $|\lambda\rangle$ 展开成 $|n\rangle$ 的叠加，因此叠加系数的模平方就是探测到 $n$ 个声子的概率
+$$P_{n}=\mathrm{e}^{-|\lambda|^{2}} \frac{|\lambda|^{2n}}{n!}, \quad(n=0,1,2, \ldots)$$
+
+这正好是参数为 $|\lambda|^{2}$ 的泊松分布，泊松分布的均值和方差为
+$$
+\begin{gathered}
+\langle n\rangle=|\lambda|^{2} \\
+\left\langle n^{2}\right\rangle-\langle n\rangle^{2}=|\lambda|^{2}
+\end{gathered}
+$$
+
+不确定度为
+$$\Delta n=|\lambda|=\sqrt{\langle n\rangle}\qedhere$$
+\end{proof}
+\subsection{HW4}
+\begin{1}
+考虑一维 $\delta$ 势阱：
+$$V(x)=-\alpha \delta(x), \quad \alpha>0$$
+(1) 推导波函数在 $x=0$ 处的边界条件；
+
+(2) 求解束缚态的能量 $E<0$ 和波函数 $\psi(x)$；
+
+(3) 对散射态（能量 $E>0$），求透射率 $T$ 和反射率 $R$。
+
+(4)将透射率或反射率在针对实波矢 $k$ 空间中解析延拓至复波矢平面，说明对比复平面上的奇点与束缚态能量的关系。
+\end{1}
+\begin{proof}
+    定态薛定谔方程：
+$$-\frac{\hbar^{2}}{2m} \frac{\mathrm{~d}^{2}}{\mathrm{~d} x^{2}} \psi(x)-\alpha \delta(x) \psi(x)=E \psi(x)$$
+
+首先我们写出 $x=0$ 附近的连接条件。波函数总是连续的：
+$$\psi(0^{+})=\psi(0^{-})$$
+
+由于势能不是有限的，因此波函数的空间导数不连续，对定态薛定谔方程在 $x=0$ 附近一个小区间积分：
+$$\int_{-\varepsilon}^{\varepsilon}\left[-\frac{\hbar^{2}}{2m} \psi^{\prime \prime}(x)-\alpha \delta(x) \psi(x)\right] \mathrm{d} x
+=\int_{-\varepsilon}^{\varepsilon} E \psi(x) \mathrm{d} x$$
+
+当 $\varepsilon$ 很小时，由于波函数连续，等号右边的积分是零：
+$$-\frac{\hbar^{2}}{2m}\left[\psi^{\prime}(0^{+})
+-\psi^{\prime}(0^{-})\right]-\alpha \psi(0)=0$$
+
+于是得到波函数导数的连接条件：
+$$\psi^{\prime}(0^{+})-\psi^{\prime}(0^{-})
+=-\frac{2m \alpha}{\hbar^{2}} \psi(0)$$
+
+在除了 $x=0$ 处以外的空间，波函数满足自由空间的定态薛定谔方程 $-\frac{\hbar^{2}}{2m} \frac{\mathrm{~d}^{2}}{\mathrm{~d} x^{2}} \psi(x)=E \psi(x)$，
+对于束缚态 $E<0$，在左半实轴和右半实轴可以分别写出通解
+$$\psi(x)=\begin{cases}
+A \mathrm{e}^{\kappa x}, & (x<0) \\
+B \mathrm{e}^{-\kappa x}, & (x>0)
+\end{cases}$$
+
+其中 $\kappa=\frac{\sqrt{-2mE}}{\hbar}$。出于波函数的归一性，在左侧和右侧我们分别舍去了不可归一的解。
+注意，这里 $E$是一个待定的参数，我们要通过束缚态波函数的性质将可能的 $E$ 的值确定下来。将通解代入波函数及其导数的连接条件：
+$$
+\begin{gathered}
+A=B=\psi(0) \\
+-\kappa B-\kappa A=-\frac{2 m \alpha}{\hbar^{2}} \psi(0)
+\end{gathered}
+$$
+
+即 $\kappa=\frac{m \alpha}{\hbar^{2}}$，因此束缚态能量为
+$$E=-\frac{\hbar^{2} \kappa^{2}}{2 m}=-\frac{m \alpha}{2 \hbar^{2}}$$
+
+束缚态波函数为 $\psi(x)=A \mathrm{e}^{-\kappa|x|}$，
+利用波函数的归一化条件 $\int_{\mathbb{R}}|\psi(x)|^{2} \mathrm{~d} x=1$，可以将波函数的形式确定下来
+$$\psi(x)=\sqrt{\kappa} \mathrm{e}^{-\kappa|x|}, 
+\quad \kappa=\frac{m \alpha}{\hbar}$$
+
+对于散射态 $E>0$，在 $x=0$ 以外的区域，通解为平面波 $\mathrm{e}^{\mathrm{i} k x}$ 和 $\mathrm{e}^{-\mathrm{i} k x}$，
+我们假设行波从势阱左侧入射，因此左侧有右行的入射波和左行的反射波，而势阱右侧只有右行的透射波：
+$$
+\begin{array}{ll}
+\psi(x)=A \mathrm{e}^{\mathrm{i} k x}+B \mathrm{e}^{-\mathrm{i} k x}, & (x<0) \\
+\psi(x)=C \mathrm{e}^{\mathrm{i} k x}, & (x>0)
+\end{array}
+$$
+
+代入波函数的连续性条件有：
+$$A+B=C$$
+
+再代入波函数导数的连接条件
+$$\mathrm{i} k C-\mathrm{i} k A+\mathrm{i} k B=-\frac{2 m \alpha}{\hbar^{2}} C$$
+
+由于我们的对象是散射态，无需考虑波函数的归一化，而透射和反射系数分别是 $t=\frac{C}{A}, r=\frac{B}{A}$，故不妨直接令 $A=1$，这样
+$$
+\begin{aligned}
+1+r & =t \\
+\mathrm{i} k(t-1+r) & =-\frac{2 m \alpha}{\hbar^{2}} t
+\end{aligned}
+$$
+
+解得
+$$r=-\frac{m \alpha / \hbar^{2}}{\mathrm{i} k+m \alpha / \hbar^{2}}, 
+\quad t=\frac{\mathrm{i} k}{\mathrm{i} k+m \alpha / \hbar^{2}}$$
+
+二者取模平方即得反射率和投射率
+$$R=|r|^{2}=\frac{\left(m \alpha / \hbar^{2}\right)}{k^{2}+\left(\left(m \alpha / \hbar^{2}\right)\right)}, 
+\quad T=|t|^{2}=\frac{k^{2}}{k^{2}+\left(\left(m \alpha / \hbar^{2}\right)\right)}$$
+
+如果允许波矢 $k$ 取复数值，不难发现，在 $r$ 和 $t$ 的极点处 $k=\mathrm{i} \frac{m \alpha}{\hbar^{2}}=\mathrm{i} \kappa$ 正好对应束缚态的能量 $E=-\frac{\hbar^{2} \kappa^{2}}{2 m}$
+\end{proof}
+\begin{2}
+    考虑宽度 $L$、高度 $V_{0}$ 的一维方势垒。现假定入射粒子能量正好等于势垒高度 $E=V_{0}$，计算反射和透射概率。
+\end{2}
+\begin{proof}
+    不妨先假设入射波能量低于势垒，再考虑另能量趋近势垒高度的情况。
+假设入射波从势垒左侧而来，因而势垒左侧的自由区域有入射波和反射波，我们直接写出通解：
+$$\psi(x)=\mathrm{e}^{\mathrm{i} k x}+r \mathrm{e}^{-\mathrm{i} k x}, \quad(x<0)$$
+
+其中 $k=\frac{\sqrt{2 m E}}{\hbar}$。
+这里我们直接将入射波的振幅设为 $1$，则反射波的振幅就是反射系数 $r$。
+在势垒区域，由于粒子的能量低于势垒，因此通解为衰逝波：
+$$\psi(x)=C \mathrm{e}^{\kappa x}+D \mathrm{e}^{-\kappa x}, \quad(0<x<L)$$
+
+其中 $\kappa=\frac{\sqrt{2 m\left(V_{0}-E\right)}}{\hbar}$，
+不难验证上式是势垒区域定态薛定谔方程的通解。在势垒右侧，有透射波
+$$\psi(x)=t \mathrm{e}^{\mathrm{i} k(x-L)}, \quad(x>L)$$
+
+由于势垒是有限高的，因此波函数及其导数均连续，在势垒的两个端点应用连续性条件：
+
+\[x=0: \quad 1+r=C+D, \quad \mathrm{i} k-\mathrm{i} k r=\kappa C-\kappa D,\]
+
+\[x=L: \quad C \mathrm{e}^{\kappa L}+D \mathrm{e}^{-\kappa L}=t, 
+\kappa C \mathrm{e}^{\kappa L}-\kappa D \mathrm{e}^{-\kappa L}=\mathrm{i} k t\]
+
+解上述线性方程组，可得
+$$
+\begin{aligned}
+r & =\frac{\left(k^{2}+\kappa^{2}\right) \sinh (L \kappa)}{2 \mathrm{i} k \kappa \cosh (L \kappa)+\left(k^{2}-\kappa^{2}\right) \sinh (L \kappa)} \\
+t & =\frac{2 \mathrm{i} k \kappa}{2 \mathrm{i} k \kappa \cosh (L \kappa)+\left(k^{2}-\kappa^{2}\right) \sinh (L \kappa)}
+\end{aligned}
+$$
+
+当入射波能量趋近势垒高度时，即当 $\kappa=\frac{\sqrt{2 m\left(V_{0}-E\right)}}{\hbar} \rightarrow 0$，求上述二式的极限可得
+$$
+\begin{aligned}
+\lim_{\kappa \rightarrow 0} r & =\frac{kL}{2\mathrm{i}+kL} \\
+\lim_{\kappa \rightarrow 0} t & =\frac{2\mathrm{i}}{2\mathrm{i}+kL}
+\end{aligned}
+$$
+\end{proof}
+\begin{3}
+    讲义中推导了宽度 $L$ 、高度 $V_{0}$ 的一维方势垒的反射系数
+$$r=\frac{B}{A}=\frac{\left(k^{2}+\kappa^{2}\right) \sinh (\kappa L)}{2 i k \kappa \cosh (\kappa L)
++\left(k^{2}-\kappa^{2}\right) \sinh (\kappa L)},$$
+(1) 假设势垒宽度 $L \rightarrow \infty$ 时，证明反射概率 $R=|r|^{2}=1$，即全反射；
+
+(2)在 $L \rightarrow \infty$ 反射系数 $r=e^{i \phi}$，给出 $\phi$ 的表达式；
+
+(3) 用相位 $\phi$ 来说明当粒子在势垒边界发生反射时进入势垒内部的等效穿入深度。
+\end{3}
+\begin{proof}
+    $L \rightarrow \infty$ 时，有
+$$\lim_{L \rightarrow \infty} r=\frac{\left(k^{2}+\kappa^{2}\right)}{2 \mathrm{i} k \kappa+\left(k^{2}-\kappa^{2}\right)}
+=\frac{k-\mathrm{i} \kappa}{k+\mathrm{i} \kappa}=\mathrm{e}^{\mathrm{i} \phi}$$
+
+其中 $\phi=-2 \arctan \frac{\kappa}{k}$，显然，反射概率 $R=|r|^{2}=1$，即全反射。
+假设势垒是无限高的，$V \rightarrow \infty$，则隧穿深度为 $0$，则入射波在垒壁上立刻反弹，反射系数 $r=-1=\mathrm{e}^{\mathrm{i} \pi}$。
+当势垒不是无限高时，入射波以衰逝波的形式隧穿入势垒一段距离，可将其等效为波额外自由传播了一段距离 $\lambda$，在一个相对靠右的无限高势垒壁上反射，
+由于来回走了两次 $\lambda$，因此积累的相位为 $\mathrm{e}^{\mathrm{i} \pi-2 \mathrm{i} k \lambda}$，即
+$$\mathrm{e}^{\mathrm{i} \phi}
+=\mathrm{e}^{\mathrm{i} \pi-2 \mathrm{i} k \lambda}$$
+
+因此有等效隧穿深度
+$$\lambda=\frac{1}{k} \operatorname{arccot} \frac{\kappa}{k}\qedhere$$
+
+\end{proof}
+\begin{4}
+    一个双原子分子的合理模型（忽略分子的振动自由度）是一个转动惯量为I的刚性转子。计算该系统的能量本征值和本征函数。
+    每个能级的简并度（即具有相同本征能量的独立本征态的数目）是多少？
+\end{4}
+\begin{proof}
+自由的双原子分子的哈密顿量是
+$$H=\frac{\hat{p}_{1}^{2}}{2m_{1}}+\frac{\hat{p}_{2}^{2}}{2m_{2}}+V(r_{1}-r_{2})$$
+
+考虑变量代换，质心坐标 $R=\frac{m_{1} r_{1}+m_{2} r_{2}}{m_{1}+m_{2}}$，相对坐标 $r=r_{1}-r_{2}$，
+相应的总动量 $\hat{P}=\hat{p}_{1}+\hat{p}_{2}$ 与约化动量 $\hat{p}=\frac{m_{2} \hat{p}_{1}-m_{1} \hat{p}_{2}}{m_{1}+m_{2}}$，
+可以证明 $R$ 与 $\hat{P}$，以及 $r$ 与 $\hat{p}$ 分别满足正则对易关系，因而确实是位置算符与动量算符。哈密顿量是
+$$H=\frac{\hat{P}^{2}}{2 M}+\frac{\hat{p}^{2}}{2 \mu}+V(r)$$
+
+其中 $M=m_{1}+m_{2}$ 是总质量，$\mu=\frac{m_{1} m_{2}}{m_{1}+m_{2}}$ 是约化质量。
+第一项与后两项涉及不同的自由度，这就完成了分离变量。
+现在我们只关心相对运动的自由度，可舍去第一项。
+利用球极坐标可对相对运动自由度进一步分离变量，有：
+$$H=\frac{\hat{L}^{2}}{2 \mu r^{2}}+\frac{\hat{p}_{r}^{2}}{2 \mu}+V(r)$$
+
+第一项为角动量提供的动能，后二项为径向方向的能量。如果认为原子间的链接是刚性的，那我们只需关心转动自由度。总之，最后有效的哈密顿量是
+$$H_{\mathrm{eff}}=\frac{\hat{L}^{2}}{2 \mu r^{2}}$$
+
+角动量平方算符 $\hat{L}^{2}$ 在球坐标系下是拉普拉斯算符的角向部分
+$$\hat{L}^{2}=-\hbar^{2}\left[\frac{1}{\sin \theta} \frac{\partial}{\partial \theta}\left(\sin \theta \frac{\partial}{\partial \theta}\right)+\frac{1}{\sin^{2} \theta} \frac{\partial^{2}}{\partial \phi^{2}}\right]=-\hbar^{2} \nabla_{\theta, \phi}^{2}$$
+
+其能量本征态是球谐函数 $Y_{l}{ }^{m}$，满足
+$$\nabla_{\theta, \phi}^{2} Y_{l}^{m}=-l(l+1) Y_{l}^{m}$$
+
+角向哈密顿量的能量本征值是
+$$E_{l, m}=\frac{\hbar^{2}}{2 \mu r^{2}} l(l+1)\qedhere$$
+\end{proof}
+\begin{5}
+    Schiwinger Boson Model of Angular Momentum $\bullet$ 考虑两个独立的简谐振子：
+$$\hat{H}_{a}=\hbar \omega_{a}\left(\hat{a}_{+} \hat{a}_{-}+\frac{1}{2}\right), 
+\quad \hat{H}_{b}=\hbar \omega_{b}\left(\hat{b}_{+} \hat{b}_{-}+\frac{1}{2}\right)$$
+
+其中 $\hat{a}_{ \pm}, \hat{b}{ }_{ \pm}$分别为各自的升降算符，满足对易关系：$[\hat{a}_{-}, \hat{a}_{+}]=1, [\hat{b}_{-}, \hat{b}_{+}]=1,[\hat{a}_{\pm}, \hat{b}_{\pm}]=0$。现定义以下算符：
+$$\hat{J}_{x}=\frac{\hbar}{2}\left(\hat{a}_{+} \hat{b}_{-}+\hat{b}_{+} \hat{a}_{-}\right), 
+\quad \hat{J}_{y}=\frac{\hbar}{2}\left(\hat{a}_{+} \hat{b}_{-}-\hat{b}_{+} \hat{a}_{-}\right), 
+\quad \hat{J}_{z}=\frac{\hbar}{2}\left(\hat{a}_{+} \hat{a}_{-}-\hat{b}_{+} \hat{b}_{-}\right).$$
+
+证明 $\hat{J}_{x, y, z}$ 算符满足角动量算符的对易关系。
+$$\left[\hat{J}_{i}, \hat{J}_{j}\right]
+=\mathrm{i} \hbar \varepsilon_{i j k} \hat{J}_{k}$$
+\end{5}
+\begin{proof}
+直接代入Schiwinger boson表示即可证明
+$$
+\begin{aligned}
+{\left[\hat{J}_{x}, \hat{J}_{y}\right] } & =\left[\frac{\hbar}{2}\left(\hat{a}_{+} \hat{b}_{-}+\hat{a}_{-} \hat{b}_{+}\right), \frac{\hbar}{2 \mathrm{i}}\left(\hat{a}_{+} \hat{b}_{-}-\hat{a}_{-} \hat{b}_{+}\right)\right] \\
+& =\frac{\hbar^{2}}{4 \mathrm{i}}\left(-\left[\hat{a}_{+} \hat{b}_{-}, \hat{a}_{-} \hat{b}_{+}\right]+\left[\hat{a}_{-} \hat{b}_{+}, \hat{a}_{+} \hat{b}_{-}\right]\right) \\
+& =\frac{\hbar^{2}}{4 \mathrm{i}}\left(-\hat{a}_{+} \hat{a}_{-}+\hat{b}_{-} \hat{b}_{+}-\hat{a}_{-} \hat{a}_{+}+\hat{b}_{+} \hat{b}_{-}\right) \\
+& =\mathrm{i} \frac{\hbar^{2}}{2}\left(\hat{a}_{+} \hat{a}_{-}-\hat{b}_{+} \hat{b}_{-}\right) \\
+& =\mathrm{i} \hbar \hat{J}_{z}
+\end{aligned}
+$$
+
+其余两个对易子的证明是类似的。
+一个理解这一变换的视角，是注意到 $\hat{J}_{z}$ 正比于两个谐振子的量子数的差，或者等价地说，正比于两种``玻色子''的数目差。
+$$\hat{J}_{z}=\frac{\hbar}{2}\left(\hat{a}_{+} \hat{a}_{-}-\hat{b}_{+} \hat{b}_{-}\right)
+=\frac{\hbar}{2}\left(\hat{N}_{a}-\hat{N}_{b}\right)$$
+
+可以写出 $z$ 方向角动量的升降算符
+$$
+\begin{aligned}
+& \hat{J}_{+}=\hat{J}_{x}+\mathrm{i} \hat{J}_{y}=\hat{a}_{+} \hat{b}_{-} \\
+& \hat{J}_{-}=\hat{J}_{x}-\mathrm{i} \hat{J}_{y}=\hat{a}_{-} \hat{b}_{+}
+\end{aligned}
+$$
+
+可以看到升降算符事实是是在两种不同的玻色子之间搬运玻色子，
+当玻色子集中于 $a$ 模式中时，对应于 $z$方向角动量最大的状态，
+反之，玻色子集中于 $b$ 模式中时，对应于 $-z$ 方向角动量最大。可以看出以下对应关系
+$$l \rightarrow \frac{N_{a}+N_{b}}{2}, 
+\quad m_{z} \rightarrow \frac{N_{a}-N_{b}}{2}.\qedhere$$
+\end{proof}

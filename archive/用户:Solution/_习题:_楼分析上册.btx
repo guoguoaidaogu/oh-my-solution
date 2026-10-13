@@ -1,0 +1,640 @@
+\section{实数}
+\subsection*{1.1.A.2}
+注意到$S=\left\{\frac{1}{2},\frac{1}{3},...,\frac{1}{n},...\right\}$与
+$\tilde{S}=\{0,1\}\cup\left\{\frac{1}{2},\frac{1}{3},\frac{1}{4},...,\frac{1}{n},...\right\}$
+等势。
+
+\subsection*{1.1.B.6}
+只需当$(p,q)$使得$|x-\frac{q}{p}|\le 1$时给出正常数$A$
+（$A_1=1$时对$(p,q)$使得$|x-\frac{q}{p}|> 1$已经成立所需的不等式），
+不妨设$\frac{q}{p}$是既约分数。
+若$\frac{q}{p}$与$x$均为题中所述的$n$次整系数多项式$f(t)$的零点，
+给出相应的正常数$A_2$是容易的（这样的$\frac{q}{p}$仅有有限个）。
+若$\frac{q}{p}$不是$f(t)$的零点，对$f(t)$作因式分解$f(t)=a_n (t-x) g(t)$
+（其中$a_n$是$f(t)$的$n$次项非零整系数），
+在其中令$t=\frac{q}{p}$，我们想找$|f(\frac{q}{p})|$的下界与$|g(\frac{q}{p})|$的上界，
+前者由$p^n\cdot f(\frac{q}{p})$是非零整数完成（$\frac{q}{p}$不是$f(t)$的零点），
+后者由$|\frac{q}{p}|\le |x|+1$完成（$g(t)$的系数和$x$是固定的，
+进而用绝对值三角不等式即可），从而可以给出相应的正常数$A_3$。
+最后令$A$为$A_1,A_2,A_3$的最小值。
+
+\subsection*{1.3.B.1}
+见\url{https://www.zhihu.com/question/374296210}中Yuz.Scarlet给出的例子。
+
+Remark:善用搜索，尤其是要求举反例的题目。
+
+\section{序列极限}
+\subsection*{2.1.B.1}
+必要性的证明可以取$w_n=\mathop{\sup}\limits_{k\ge n}|a_k|$。
+
+\subsection*{2.1.B.2}
+本题本质上是要求计算$\sum\limits_{i=0}^{n-1}\binom{kn}{ki+p}$的闭形式表达。
+
+记$k$次单位根$e^{\frac{2\pi i}{k}}=w$，
+由$(1+z)^{kn}=\sum\limits_{l=0}^{kn}\binom{kn}{l}z^{l}=\sum\limits_{q=0}^{k-1}\sum\limits_{i=0}^{n-1}\binom{kn}{ki+q}z^{ki+q}$，
+在该式中对$z$依次赋值为$1,w,w^2,\cdot\cdot\cdot,w^{k-1}$可得$(1+w^{j})^{kn}=\sum\limits_{q=0}^{k-1}\sum\limits_{i=0}^{n-1}\binom{kn}{ki+q}w^{qj}$，$0\le j \le k-1$。
+
+$\sum\limits_{q=0}^{k-1}w^{qj}\sum\limits_{i=0}^{n-1}\binom{kn}{ki+q}=(1+w^{j})^{kn}$，$0\le j \le k-1$是一个线性方程组，
+利用$1+w^{j}+w^{2j}+\cdot\cdot\cdot+w^{(k-1)j}=0$，$1\le j \le k-1$的性质依次解出$\sum\limits_{i=0}^{n-1}\binom{kn}{ki},\sum\limits_{i=0}^{n-1}\binom{kn}{ki+1},\cdot\cdot\cdot,\sum\limits_{i=0}^{n-1}\binom{kn}{ki+k-1}$。
+最后容易得到$\forall\,0\le p \le k-1$，待求的极限均为$\frac{1}{k}$。
+
+\subsection*{2.2.A.2}
+$p=0$时显然。$p\neq 0$时变形为
+$\mathop{\lim}\limits_{n\to \infty}\frac{(1+\frac{1}{n})^{p}-1}{\frac{1}{n}}=p$，
+由L'Hôpital法则和Heine定理这是显然的。
+
+\subsection*{2.2.A.5}
+令$S_{n}=\sum\limits_{k=1}^{n}x_{k}^2$。
+易证$\lim\limits_{n \to \infty}x_{n}=0$，$\lim\limits_{n \to \infty}S_{n}=+\infty$，$\lim\limits_{n \to \infty}\frac{S_{n+1}}{S_{n}}=1$。
+
+由$\lim\limits_{n \to \infty}x_{n}S_{n}=1$，
+则要证$\lim\limits_{n \to \infty}(3n)^{\frac{1}{3}}x_{n}=1$只需$\lim\limits_{n \to \infty}\frac{S_{n}}{(3n)^{\frac{1}{3}}}=1$，
+这等价于$\lim\limits_{n \to \infty}\frac{S_{n}^3}{n}=3$，
+由Stolz定理只需$\lim\limits_{n \to \infty}S_{n+1}^3-S_{n}^3=3$
+即$\lim\limits_{n \to \infty}(S_{n+1}-S_{n})(S_{n+1}^2+S_{n}S_{n+1}+S_{n}^2)=3$。
+$\lim\limits_{n \to \infty}x_{n}S_{n}=1$推出$\lim\limits_{n \to \infty}(S_{n}-S_{n-1})S_{n}^2=1$即$\lim\limits_{n \to \infty}(S_{n+1}-S_{n})S_{n+1}^2=1$，
+结合$\lim\limits_{n \to \infty}\frac{S_{n+1}}{S_{n}}=1$知
+$\lim\limits_{n \to \infty}(S_{n+1}-S_{n})(S_{n+1}^2+S_{n}S_{n+1}+S_{n}^2)=3$成立。
+
+\subsection*{2.2.A.6}
+利用推论2.2.4（iii）与$e^x=\mathop{\lim}\limits_{t\to \infty}\big(1+\frac{x}{t}\big)^t$，
+$\forall\,x \in \mathbb{R}$。
+
+\subsection*{2.3.A.1}
+利用习题2.2.A.8的结论。
+
+\subsection*{2.3.B.1}
+注意到$\mathbb{R}^n$中以有理点为球心、正有理数为半径的开球组成的集族是可列
+的，由选择公理，对任意与$E$的交非空的以有理点为球心、正有理数为半径的开球$B$，
+都可取出$E\cap B$中的⼀个点$\left\{\mathbf{x}\right\}$，将所有这样的
+$\left\{\mathbf{x}\right\}$并起来可以得到$E$的⼀个至多可列子集，它符合题目的要求。
+
+\subsection*{2.4.A.5}
+$0\le c \le 1$时$\left\{x_n\right\}$单增有界；
+$-3\le c<0$时有$-\sqrt{c}<x_n<0$，$\forall\,n \in \Z_{+}$，
+由于$\frac{c}{2}+\frac{x^2}{2}$在$[-\sqrt{c},0]$上连续单减，
+则有$\varlimsup\limits_{n\to \infty}x_n=\frac{c}{2}+\frac{1}{2}
+\big(\varliminf\limits_{n\to \infty}x_n\big)^2$
+和$\varliminf\limits_{n\to \infty}x_n
+=\frac{c}{2}+\frac{1}{2}\big(\varlimsup\limits_{n\to \infty}x_n\big)^2$。
+
+\subsection*{2.4.A.7}
+由习题2.2.A.8的结论，存在一列$\left\{\mathbf{x}_{k},\mathbf{y}_{k}\right\}_{k=1}
+^{\infty}$（其中$\mathbf{x}_{k}\in E$，$\mathbf{y}_{k}\in F$）使得
+$\mathop{\lim}\limits_{k\to \infty}|\mathbf{x}_{k}-\mathbf{y}_{k}|=d(E,F)$，
+显然可要求$|\mathbf{x}_{k}-\mathbf{y}_{k}|
+\le d(E,F)+1$，$\forall k \in \mathbb{N}_{+}$，
+此时由$E$在$\mathbb{R}^n$中有界，
+可知$\left\{\mathbf{x}_{k},\mathbf{y}_{k}\right\}_{k=1}^{\infty}$
+是$\mathbb{R}^{2n}$中的有界列，再用Bolzano--Weierstrass定理即可。
+
+\subsection*{2.4.A.8}
+在每个$E_n$中取⼀个点$\mathbf{x}_{n}$然后用Bolzano--Weierstrass定理，
+验证$\bigcap\limits_{n=1}^{\infty}E_{n}$非空。
+
+\subsection*{2.4.A.11}
+假设$E,F$均为非空闭集使得$E\cap F=\emptyset$，$E\cup F=[a,b]$，
+由习题2.4.A.7的结论知$d(E,F)>0$（否则将与$E\cap F=\emptyset$矛盾），
+此时考虑$|\mathbf{x}-\mathbf{y}|=d(E,F)>0$（其中$\mathbf{x}\in E$，$\mathbf{y}\in F$），
+考察点$\frac{\mathbf{x}+\mathbf{y}}{2}$，可以发现它既不属于$E$亦不属于$F$，矛盾。
+
+\subsection*{2.4.A.13}
+假设$E,F$均为非空闭集使得$E\cap F=\emptyset$，$E\cup F=\mathbb{R}^n$。
+对于$\mathbb{R}^n$的非空闭子集$E$和$\mathbb{R}^n$中任意⼀点$\mathbf{x}$，
+存在$\mathbf{y}_{0}\in E$ s.t.$|\mathbf{x}-\mathbf{y}_{0}|=\mathop{\inf}
+\limits_{\mathbf{y}\in E}|\mathbf{x}-\mathbf{y}|$（证明方法同习题2.4.A.7）。
+现取$\mathbf{x}\in F$，
+记$r=\mathop{\inf}\limits_{\mathbf{y}\in E}|\mathbf{x}-\mathbf{y}|$，
+由$E\cap F=\emptyset$知$r>0$，考虑开球$B_{r}(\mathbf{x}) \subseteq F$，
+注意到$|\mathbf{x}-\mathbf{y}_{0}|=r$则知$\mathbf{y}_{0}$属于$B_{r}(\mathbf{x})$的闭包，
+而$B_{r}(\mathbf{x}) \subseteq F$则$B_{r}(\mathbf{x})$的闭包包含于$F$的闭包
+（而$F$的闭包即$F$本身），则有$\mathbf{y}_{0}\in F$，矛盾。
+
+\subsection*{2.4.B.3}
+对角线法。
+
+\subsection*{2.4.B.9}
+$x_0=2$时平凡。$0 \le x_0 <2$时使用$x_{n}=2\cos\limits(\theta_{n})$
+（其中$0<\theta_{n} \le \frac{\pi}{2}$）的代换求解通项公式，
+类似地$x_0>2$时使用双曲余弦代换求解通项公式。
+然后类似习题2.2.A.2使用L'Hôpital法则和Heine定理计算。
+
+\subsection*{2.4.B.12}
+$\forall\,\mathbf{x}\in E$，$\exists$开集$V\in \mathscr{U}$ s.t.
+$\mathbf{x}\in V$，对于此$\!\mathbf{x}$，
+$\exists\,r(\mathbf{x})>0$ s.t.$B_{r(\mathbf{x})}(\mathbf{x})\subseteq V$。
+现在对$E$的开覆盖$\left\{B_{\frac{1}{2} r(\mathbf{x})}(\mathbf{x})|
+\mathbf{x}\in E \right\}$使用Heine--Borel有限覆盖定理，设从中取出了$m$个开球
+$B_{\frac{1}{2} r(\mathbf{x}_{k})}(\mathbf{x}_{k})(1 \le k \le m)$，
+令$\lambda=\mathop{\min}\limits_{1 \le k \le m} \frac{1}{2} r(\mathbf{x}_{k})>0$，
+验证$\lambda$是$E$的开覆盖$\mathscr{U}$的Lebesgue数。
+
+\subsection*{2.4.B.16}
+考虑$U$非空的情形。令$x_{1}=\mathop{\inf} \left\{x\in \mathbb{R}|(x,x_{0}) 
+\subseteq U \right\}$，$x_{2}=\mathop{\sup} \left\{x\in \mathbb{R}|(x_{0},x) 
+\subseteq U \right\}$，验证$(x_1,x_2)$是$U$关于$x_0$的构成区间并且说明$U$关于
+$x_0$的构成区间的唯⼀性。验证$U$的任意两个构成区间或者相同或者不交，从而由
+选择公理可以得到$U$的全体构成区间组成的集族映到$\mathbb{Q}$的⼀个单射。
+
+\subsection*{2.4.B.17}
+$E$是无处稠密集的证明是容易的，使用$\mathbb{R}$上的Lebesgue测度则易得
+$E$是非空的（$E$的Lebesgue测度大于$0$）。
+
+\subsection*{2.4.B.18}
+参见《数学分析 要点 · 难点 · 拓展》（楼红卫著）第26章“无处稠密集和贝尔纲定理”例26.1。
+
+\subsection*{2.4.B.19}
+此即Baire纲定理，参见《数学分析 要点 · 难点 · 拓展》（楼红卫著）第26章
+“无处稠密集和贝尔纲定理”定理26.1
+或参考\url{https://www.zhihu.com/question/22747068}
+中XXLU的回答。
+
+\subsection*{2.5.A.4}
+易见$na_{1}-(n-1)\le a_{n} \le na_{1}+(n-1)$，
+则$\left\{ \frac{a_{n}}{n} \right\}$是有界数列，其上极限有限。
+
+Key Trick:固定$m\ge 1$，将$n$作关于$m$的带余除法$n=k_{n}m+r_{n}$，其中
+$k_{n}\ge 0$，$0 \le r_{n} \le m-1$。易见
+$$k_{n}a_{m}+r_{n}a_{1}-k_{n}-r_{n}+1 \le 
+a_{n} \le k_{n}a_{m}+r_{n}a_{1}+k_{n}+r_{n}-1,$$
+对该不等式的左边、中间、右边同时
+除以$n$，然后关于$n$取上极限。显然有$\lim\limits_{n \to \infty}\frac{k_{n}}{n}
+=\frac{1}{m}$，$\lim\limits_{n \to \infty}\frac{r_{n}}{n}=0$，
+由上极限的保号性我们得到
+$\frac{a_{m}}{m}-\frac{1}{m} \le \varlimsup\limits_{n\to \infty}\frac{a_{n}}{n} 
+\le \frac{a_{m}}{m}+\frac{1}{m}$。
+
+\subsection*{2.5.A.6}
+类似例2.2.3用Stolz定理计算，或者对$a_{n}=b_{n}-qa_{n+1}$⼀式使用上、下极限论证。
+
+\subsection*{2.5.B.4}
+假设$\varlimsup\limits_{n\to \infty} n\big(\frac{1+x_{n+1}}{x_{n}}-1\big)<1$，
+则存在正整数$N$ s.t. $n\ge N$时$n\big(\frac{1+x_{n+1}}{x_{n}}-1\big)<1$恒成立，
+进而得到$\frac{x_{n}}{n}-\frac{x_{n+1}}{n+1}>\frac{1}{n+1}$，
+则有$x_{1}-\frac{x_{n}}{n}>H_{n}-1$对任意大于$1$的正整数$n$成立，
+其中$H_{n}$是调和级数的前$n$项和，注意到调和级数发散，
+则对充分大的$n$，$\frac{x_{n}}{n}<0$，即$x_{n}<0$，
+这与$\left\{x_{n}\right\}$是正数列⽭盾。
+
+\subsection*{2.6.A.4}
+注意到$\left\{a_{n}\right\}$单调减，由定理2.6.7，$\sum\limits_{n=0}^{\infty} 2^{n}
+a_{2^{n}}$收敛，则$\lim\limits_{n \to \infty} 2^{n}a_{2^{n}}=0$，结合$\left\{a_{n}
+\right\}$单调减知$\lim\limits_{n \to \infty} na_{n}=0$。
+\subsection*{2.6.A.6}
+由Wallis公式$\left\{ \frac{(2n-1)!!}{(2n)!!} \right\}$与
+$\left\{ \frac{1}{\sqrt{n}} \right\}$同阶，用比较判别法的极限形式。
+
+\subsection*{2.6.A.7}
+只需考虑$\alpha>0$的情形。先由$\alpha$是正整数的情形猜测⼀般情况下都有题述数
+列与$\left\{ \frac{1}{n^{\alpha}} \right\}$同阶。
+
+注意到$$\frac{\prod\limits_{k=1}^{n}\frac{k+\alpha}{k}}{n^{\alpha}}
+=e^{\big(\sum\limits_{k=1}^{n}\ln(1+\frac{\alpha}{k})\big)-\alpha\ln(n)},$$
+其中$$\bigg(\sum\limits_{k=1}^{n}\ln\Big(1+\frac{\alpha}{k}\Big)\bigg)-\alpha\ln(n)
+=\alpha\bigg(\sum\limits_{k=1}^{n}\frac{1}{k}-\ln(n)\bigg)
+-\sum\limits_{k=1}^{n}\bigg(\frac{\alpha}{k}-\ln\Big(1+\frac{\alpha}{k}\Big)\bigg).$$
+使用$0<x-\ln(1+x)<\frac{1}{2}x^2$，若$x>0$；$\sum\limits_{n=1}^{\infty}\frac{1}
+{n^2}<+\infty$以及$\lim\limits_{n \to \infty}\sum\limits_{k=1}^{n}\frac{1}{k}-
+\ln(n)=\gamma$。
+
+\subsection*{2.7.A.1}
+第2小题使用Stirling公式，第3、4小题类似例2.7.3。
+
+\subsection*{2.7.A.7}
+设$\sum\limits_{n=0}^{\infty}a_{n}$绝对收敛到$A$，$\sum\limits_{n=0}^{\infty}
+b_{n}$收敛到$B$。目标是证明$\sum\limits_{n=0}^{\infty}\sum\limits_{i=0}^{n}a_{i}
+b_{n-i}$收敛到$AB$。注意到如果$\lim\limits_{k \to \infty}\sum\limits_{n=0}^{k}
+\sum\limits_{i=0}^{n}a_{i}b_{n-i}$存在，则有
+$$\sum\limits_{n=0}^{\infty}
+\sum\limits_{i=0}^{n}a_{i}b_{n-i}=\lim\limits_{k \to \infty}\sum\limits_{n=0}^{k}
+\sum\limits_{i=0}^{n}a_{i}b_{n-i}=\lim\limits_{k \to \infty}\sum\limits_{i=0}^{k}a_{i}
+\sum\limits_{n=i}^{k}b_{n-i}=\lim\limits_{k \to \infty}\sum\limits_{i=0}^{k}a_{i}
+\sum\limits_{n=0}^{k-i}b_{n}.$$
+因此只需证明$\lim\limits_{k \to \infty}
+\sum\limits_{i=0}^{k}a_{i}\Big(\sum\limits_{n=0}^{\infty}b_{n}-\sum\limits_{n=0}^{k-i}
+b_{n}\Big)=\lim\limits_{k \to \infty}\sum\limits_{i=0}^{k}a_{i}\sum\limits_{n=k-i+1}^{\infty}
+b_{n}=0$即得$\sum\limits_{n=0}^{\infty}\sum\limits_{i=0}^{n}a_{i}b_{n-i}$收敛到
+$AB$。由$\sum\limits_{n=0}^{\infty}b_{n}$收敛到$B$，易知
+$\left\{\sum\limits_{n=m}^{\infty}b_{n}\right\}_{m=0}^{\infty}$有界，不妨设$C>0$ s.t.
+$\Big|\sum\limits_{n=m}^{\infty}b_{n}\Big|<C \; \forall m\ge 0$。补充定义$b_{n}=0$若$n<0$。
+
+固定正整数$k$与$N$，则有
+\begin{align*}
+    \bigg|\sum\limits_{i=0}^{k}a_{i}\sum\limits_{n=k-i+1}^{\infty}b_{n}\bigg| 
+    &\le \sum\limits_{i=0}^{k}|a_{i}|\bigg|\sum\limits_{n=k-i+1}^{\infty}b_{n}\bigg| 
+    \le \sum\limits_{i=0}^{\infty}|a_{i}|\bigg|\sum\limits_{n=k-i+1}^{\infty}b_{n}\bigg|\\
+    &=\sum\limits_{i=0}^{N}|a_{i}|\bigg|\sum\limits_{n=k-i+1}^{\infty}b_{n}\bigg|
+    +\sum\limits_{i=N+1}^{\infty}|a_{i}|\bigg|\sum\limits_{n=k-i+1}^{\infty}b_{n}\bigg|\\
+    &\le \sum\limits_{i=0}^{N}|a_{i}|\bigg|\sum\limits_{n=k-i+1}^{\infty}b_{n}\bigg|
+    +C\sum\limits_{i=N+1}^{\infty}|a_{i}|.
+\end{align*}
+由$\sum\limits_{n=0}^{\infty}b_{n}$收敛，令$k \to \infty$并取上极限可得
+$\varlimsup\limits_{k\to \infty}\Big|\sum\limits_{i=0}^{k}a_{i}\sum\limits_{n=k-i+1}^{\infty}
+b_{n}\Big|\le C\sum\limits_{i=N+1}^{\infty}|a_{i}|$，由$\sum\limits_{n=0}^{\infty}|a_{n}|
+$收敛，令$N \to \infty$并取极限可知$\varlimsup\limits_{k\to \infty}\Big|\sum\limits_{i=0}
+^{k}a_{i}\sum\limits_{n=k-i+1}^{\infty}b_{n}\Big|=0$。
+
+\subsection*{2.7.A.8}
+注意到以下两个事实：⼀是若$N$个级数$\sum\limits_{n=1}^{\infty}a_{in}(i=1,2,...,N)
+$均收敛，则$\sum\limits_{n=1}^{\infty}\sum\limits_{i=1}^{N}a_{in}$收敛并且$
+\sum\limits_{n=1}^{\infty}\sum\limits_{i=1}^{N}a_{in}=\sum\limits_{i=1}^{N}
+\sum\limits_{n=1}^{\infty}a_{in}$；⼆是对⼆维正项数列$\left\{ a_{ij} \right\}$，$
+\sum\limits_{n=1}^{\infty}\sum\limits_{i=1}^{N}a_{in}=\sum\limits_{i=1}^{N}
+\sum\limits_{n=1}^{\infty}a_{in}$总是成立（两边允许取值$+\infty$）。
+
+当$\sum\limits_{k=0}^{\infty}\sum\limits_{j=0}^{\infty}a_{kj}$绝对收敛时容易证明$
+\sum\limits_{j=0}^{\infty}\sum\limits_{k=0}^{\infty}a_{kj}$绝对收敛。再证$
+\sum\limits_{k=0}^{\infty}\sum\limits_{j=0}^{\infty}a_{kj}=\sum\limits_{j=0}^{\infty}
+\sum\limits_{k=0}^{\infty}a_{kj}$：事实上只需考虑$\left\{ a_{kj} \right\}$是正项数列的
+情形，⼀般地只需分别考虑$\left\{ a_{kj} \right\}$的正部和负部然后相减即可。当
+$\left\{ a_{kj} \right\}$是正项数列时，$\sum\limits_{k=0}^{N}\sum\limits_{j=0}^{\infty}a_{kj}
+=\sum\limits_{j=0}^{\infty}\sum\limits_{k=0}^{N}a_{kj}\le \sum\limits_{j=0}^{\infty}
+\sum\limits_{k=0}^{\infty}a_{kj}$对任意正整数$N$成立，则有$\sum\limits_{k=0}
+^{\infty}\sum\limits_{j=0}^{\infty}a_{kj}\le \sum\limits_{j=0}^{\infty}\sum\limits_{k=0}
+^{\infty}a_{kj}$，同理有反向的不等式成立，从而$\sum\limits_{k=0}^{\infty}
+\sum\limits_{j=0}^{\infty}a_{kj}=\sum\limits_{j=0}^{\infty}\sum\limits_{k=0}^{\infty}
+a_{kj}$。
+
+\subsection*{2.7.A.9}
+Cauchy乘积发散的例子：$\sum\limits_{n=1}^{\infty}\frac{(-1)^{n-1}}{\sqrt{n}}$
+与自身的Cauchy乘积，该Cauchy乘积内的每⼀项的绝对值都不小于$1$，因此该Cauchy乘积发散。
+Cauchy乘积收敛的例子：$\sum\limits_{n=1}^{\infty}\frac{(-1)^{n-1}}{n}$
+与自身的Cauchy乘积，由Leibniz判别法知该Cauchy乘积收敛。
+
+\subsection*{2.7.A.11}
+直观上应有
+$$\sum\limits_{n=1}^{\infty}\sum\limits_{m=1}^{\infty}\frac{1}{(m+n)^{p}}
+=\sum\limits_{\substack{m+n=2,\\ m\ge 1,n\ge 1}}^{\infty}\frac{1}{(m+n)^{p}}=\sum\limits_{k=2}
+^{\infty}\frac{k-1}{k^{p}}.$$
+下面对该式进行严格化。
+
+对⼆维正项数列$\left\{ a_{ij} \right\}$和任意$\mathbb{N} \times \mathbb{N}$映到$
+\mathbb{N}$的双射$\varphi$，总成立$\sum\limits_{j=0}^{\infty}\sum\limits_{i=0}
+^{\infty}a_{ij}=\sum\limits_{n=0}^{\infty}a_{\varphi^{-1}(n)}$（两边允许取值$+
+\infty$）。易见$\sum\limits_{j=0}^{\infty}\sum\limits_{i=0}^{\infty}a_{ij}\ge 
+\sum\limits_{n=0}^{\infty}a_{\varphi^{-1}(n)}$，下证$\sum\limits_{j=0}^{\infty}
+\sum\limits_{i=0}^{\infty}a_{ij}\le \sum\limits_{n=0}^{\infty}a_{\varphi^{-1}(n)}$。
+
+固定正整数$N$，$\forall\,\varepsilon>0$，易知存在正整数$K$ s.t.
+$\sum\limits_{i=0}^{\infty}a_{ij} \le \sum\limits_{i=0}^{K}a_{ij}+\varepsilon$
+对$0 \le j \le N$均成立，由于$\varphi$是$\mathbb{N} \times \mathbb{N}$
+映到$\mathbb{N}$的双射，可取正整数$L$充分大s.t.
+$\left\{(i,j)|0\le i \le K,0\le j \le N \right\}
+\subseteq \left\{ \varphi^{-1}(n) \right\}_{n=0}^{L}$，从而有
+$$\sum\limits_{j=0}^{N}\sum\limits_{i=0}^{\infty}a_{ij}\le 
+\sum\limits_{j=0}^{N}\sum\limits_{i=0}^{K}a_{ij}+(N+1)\varepsilon 
+\le \sum\limits_{n=0}^{L}a_{\varphi^{-1}(n)}+(N+1)\varepsilon 
+\le \sum\limits_{n=0}^{\infty}a_{\varphi^{-1}(n)}+(N+1)\varepsilon,$$
+由$\varepsilon$的任意性和$N$的任意性即得
+$\sum\limits_{j=0}^{\infty}\sum\limits_{i=0}^{\infty}a_{ij}
+\le \sum\limits_{n=0}^{\infty}a_{\varphi^{-1}(n)}$。
+
+将$\mathbb{N} \times \mathbb{N}$映到$\mathbb{N}$的双射取成类似定理1.1.4证明
+过程中那张图的排列方法（确切地说：$(0,0)$对应$0$，$(1,0)$对应$1$，$(0,1)$对应$2$，
+$(2,0)$对应$3$，$(1,1)$对应$4$，$(0,2)$对应$5$，......），从而
+$$\sum\limits_{n=1}^{\infty}
+\sum\limits_{m=1}^{\infty}\frac{1}{(m+n)^{p}}=\sum\limits_{j=0}^{\infty}
+\sum\limits_{i=0}^{\infty}\frac{1}{(i+j+2)^{p}}=\sum\limits_{n=0}^{\infty}
+a_{\varphi^{-1}(n)}=\lim\limits_{k \to \infty}\sum\limits_{n=0}^{\frac{k(k+1)}{2}-1}
+a_{\varphi^{-1}(n)}=\lim\limits_{k \to \infty}\sum\limits_{l=0}^{k-1}\frac{l+1}{(l+2)^{p}}
+=\sum\limits_{k=2}^{\infty}\frac{k-1}{k^{p}}.$$
+然后对$\sum\limits_{k=2}^{\infty}\frac{k-1}{k^{p}}$用比较判别法的极限形式。
+
+\subsection*{2.7.A.12}
+该级数条件收敛。注意到$\left\{ \frac{1}{n} \right\}$单调减收敛到$0$，由
+$$\sum\limits_{k=1}^{n}\sin(k)\sin(k^2)
+=\frac{1}{2}\sum\limits_{k=1}^{n}\big(\!\cos(k(k-1))-\cos(k(k+1))\big)
+=\frac{1}{2}\big(1-\cos(n(n+1))\big)$$
+知$\sum\limits_{n=1}^{\infty}\sin(n)\sin(n^2)$的部分和有界，
+使用Dirichlet判别法知该级数收敛。
+
+该级数不绝对收敛的证明需要组合的手法。考虑正项数列
+$$\left\{|\sin(n)||\sin(n^2)|+|\sin(n+1)||\sin((n+1)^2)|
++|\sin(n+3)||\sin((n+3)^2)|\right\}_{n=1}^{\infty},$$
+我们断⾔该数列有⼀个正下界$C$，此时由
+\begin{align*}
+    3\sum\limits_{n=1}^{\infty}\frac{|\sin(n)||\sin(n^2)|}{n} 
+    &\ge \sum\limits_{n=1}^{\infty}\bigg(\frac{|\sin(n)||\sin(n^2)|}{n}
+    +\frac{|\sin(n+1)||\sin((n+1)^2)|}{n+1}
+    +\frac{|\sin(n+3)||\sin((n+3)^2)|}{n+3}\bigg) \\
+    &\ge \sum\limits_{n=1}^{\infty}\frac{|\sin(n)||\sin(n^2)|+
+    |\sin(n+1)||\sin((n+1)^2)|+|\sin(n+3)||\sin((n+3)^2)|}{n+3} \\
+    &\ge C\sum\limits_{n=1}^{\infty}\frac{1}{n+3}
+\end{align*}可知$\sum\limits_{n=1}^{\infty}\frac{|\sin(n)||\sin(n^2)|}{n}$
+发散。
+
+令集合$A=\left\{k\pi\right\}_{k \in \mathbb{Z}}$，对任意正整数$m$，记$\|m\|
+=d(m,A)=\min\limits_{k\in \mathbb{Z}}|m-k\pi|$。假设前述正项数列没有正下界，则对
+$\varepsilon=0.0001>0$，存在充分大的正整数$n$使得：$\|n\|<\varepsilon$与$\|n^2\|
+<\varepsilon$至少有⼀个成立，$\|n+1\|<\varepsilon$与$\|(n+1)^2\|<\varepsilon$至少有⼀个成
+立，$\|n+3\|<\varepsilon$与$\|(n+3)^2\|<\varepsilon$⾄少有⼀个成立。由此得到8种可能
+性，然而这8种可能均能导出矛盾。
+
+例如：当$\|n^2\|<\varepsilon$、$\|(n+1)^2\|
+<\varepsilon$、$\|(n+3)^2\|<\varepsilon$时，设$n^2=k_{1}\pi+\varepsilon_{1}$，
+$(n+1)^2=k_{2}\pi+\varepsilon_{2}$，$(n+3)^2=k_{3}\pi+\varepsilon_{3}$
+（其中$|\varepsilon_{1}|<\varepsilon$，$|\varepsilon_{2}|<\varepsilon$，
+$|\varepsilon_{3}|<\varepsilon$，$k_{1},k_{2},k_{3}$是整数），
+则$6=2n^2-3(n+1)^2+(n+3)^2=
+(2k_{1}-3k_{2}+k_{3})\pi+(2\varepsilon_{1}-3\varepsilon_{2}+\varepsilon_{3})$
+即有等式$6=(2k_{1}-3k_{2}+k_{3})\pi+(2\varepsilon_{1}-3\varepsilon_{2}+\varepsilon_{3})$。
+如果$|2k_{1}-3k_{2}+k_{3}|\le 1$，则右边的绝对值小于$\pi+0.0006$；
+如果$|2k_{1}-3k_{2}+k_{3}|\ge 2$，则右边的绝对值大于$2\pi-0.0006$，
+总之$6=(2k_{1}-3k_{2}+k_{3})\pi+(2\varepsilon_{1}-3\varepsilon_{2}+\varepsilon_{3})$
+不可能成立。类似可得另外7种可能亦不可能成立，从而前述正项数列存在正下界。
+
+\subsection*{2.7.B.1}
+$$\sum\limits_{k=1}^{n}a_{k}^{2}=a_{n}\bigg(\sum\limits_{k=1}^{n}a_{k}\bigg)
++\sum\limits_{k=1}^{n-1}\bigg(\sum\limits_{i=1}^{k}a_{i}\bigg)(a_{k}-a_{k+1})
+\le a_{n}\bigg(\sum\limits_{k=1}^{n}b_{k}\bigg)
++\sum\limits_{k=1}^{n-1}\bigg(\sum\limits_{i=1}^{k}b_{i}\bigg)(a_{k}-a_{k+1})
+=\sum\limits_{k=1}^{n}a_{k}b_{k},$$
+再由Cauchy不等式$$\bigg(\sum\limits_{k=1}^{n}a_{k}b_{k}\bigg)^2
+\le \bigg(\sum\limits_{k=1}^{n}a_{k}^{2}\bigg)
+\bigg(\sum\limits_{k=1}^{n}b_{k}^{2}\bigg).$$
+
+\subsection*{2.7.B.3}
+⾸先，$\forall\,\alpha>0$，由Leibniz判别法知$\sum\limits_{n=1}^{\infty}
+\frac{(-1)^{n-1}}{n^{\alpha}}$收敛。则有$\sum\limits_{n=1}^{\infty}\frac{(-1)^{n-1}}
+{n^{\alpha}}=1-\sum\limits_{n=1}^{\infty}\big(\frac{1}{(2n)^{\alpha}}-\frac{1}
+{(2n+1)^{\alpha}}\big)$。
+
+容易证明下⾯的命题：
+
+\textbf{Proposition.} 对整数$a_{0}$与任意整数$N>a_{0}$，假设$x\ge a_{0}$时
+$f$是单调减的⾮负实值函数（则$\lim\limits_{x \to \infty}f(x)$存在有限），成立
+$$0 \le \sum\limits_{n=a_{0}}^{N-1}f(n)-\int_{a_{0}}^{N}f(x)\,dx 
+\le f(a_{0})-f(N),$$
+且极限$$\lim\limits_{N \to \infty}\bigg(\sum\limits_{n=a_{0}}^{N-1}f(n)
+-\int_{a_{0}}^{N}f(x)\,dx\bigg)$$存在有限并满足
+$$0 \le \lim\limits_{N \to \infty}\bigg(\sum\limits_{n=a_{0}}^{N-1}f(n)
+-\int_{a_{0}}^{N}f(x)\,dx\bigg) \le f(a_{0})-\lim\limits_{N \to \infty}f(N).$$
+
+回到原题，目标是$\lim\limits_{\alpha \to 0+}\sum\limits_{n=1}^{\infty}\big(\frac{1}
+{(2n)^{\alpha}}-\frac{1}{(2n+1)^{\alpha}}\big)=\frac{1}{2}$。
+固定$\alpha>0$，在Proposition中取$a_{0}=1$，
+考虑函数$f(x)=\frac{1}{(2x)^{\alpha}}-\frac{1}{(2x+1)^{\alpha}}$，
+求导易证$f$在$[1,+\infty)$上单调减且非负。由Proposition可知
+$$0\le \sum\limits_{n=1}^{\infty}
+\Big(\frac{1}{(2n)^{\alpha}}-\frac{1}{(2n+1)^{\alpha}}\Big)
+-\int_{1}^{+\infty}\Big(\frac{1}{(2x)^{\alpha}}-\frac{1}{(2x+1)^{\alpha}}\Big)\,dx 
+\le \frac{1}{2^{\alpha}}-\frac{1}{3^{\alpha}},$$
+从而目标转化为
+$$\lim\limits_{\alpha \to 0+}\int_{1}^{+\infty}\Big(\frac{1}{(2x)^{\alpha}}
+-\frac{1}{(2x+1)^{\alpha}}\Big)\,dx=\frac{1}{2}.$$
+
+固定$0<\alpha<1$，$\displaystyle{\int_{1}^{+\infty}\Big(\frac{1}{(2x)^{\alpha}}
+-\frac{1}{(2x+1)^{\alpha}}\Big)\,dx
+=\int_{1}^{+\infty}\frac{(1+\frac{1}{2x})^{\alpha}-1}{(2x+1)^{\alpha}}\,dx}$，
+容易证明
+$$\frac{\alpha}{2x}-\frac{\alpha(1-\alpha)}{8x^2}
+<\Big(1+\frac{1}{2x}\Big)^{\alpha}-1<\frac{\alpha}{2x}，\forall x\ge 1$$
+（先用Taylor展式再严格证明），
+则只需考察
+$\displaystyle{\int_{1}^{+\infty}\frac{\frac{\alpha}{2x}}{(2x+1)^{\alpha}}\,dx}$
+与$\displaystyle{\int_{1}^{+\infty}\frac{\frac{\alpha(1-\alpha)}{8x^2}}{(2x+1)^{\alpha}}\,dx}$。
+
+对后者有
+$$0\le \int_{1}^{+\infty}\frac{\frac{\alpha(1-\alpha)}{8x^2}}{(2x+1)^{\alpha}}\,dx 
+\le \frac{\alpha(1-\alpha)}{8\cdot 3^{\alpha}}\int_{1}^{+\infty}\frac{1}{x^2}\,dx \to 0,
+\quad\alpha \to 0^+.$$
+对前者有
+$$\int_{1}^{+\infty}\frac{\frac{\alpha}{2x}}{(2x+1)^{\alpha}}\,dx
+=\int_{1}^{+\infty}\frac{\alpha}{(2x)^{\alpha+1}}\,dx
+-\int_{1}^{+\infty}\frac{\alpha}{2x}
+\frac{(1+\frac{1}{2x})^{\alpha}-1}{(2x+1)^{\alpha}}\,dx,
+\int_{1}^{+\infty}\frac{\alpha}{(2x)^{\alpha+1}}\,dx
+=\frac{1}{2^{\alpha+1}}\to \frac{1}{2},\quad\alpha \to 0^+;$$
+$$0 \le \int_{1}^{+\infty}\frac{\alpha}{2x}
+\frac{(1+\frac{1}{2x})^{\alpha}-1}{(2x+1)^{\alpha}}\,dx 
+\le \int_{1}^{+\infty}\frac{\alpha}{2x}
+\frac{(\frac{3}{2})^{\alpha}-1}{(2x)^{\alpha}}\,dx
+=\int_{1}^{+\infty}\frac{\alpha((\frac{3}{2})^{\alpha}-1)}{(2x)^{\alpha+1}}\,dx
+=\frac{(\frac{3}{2})^{\alpha}-1}{2^{\alpha+1}}\to 0,\quad\alpha \to 0^+.$$
+
+\subsection*{2.7.B.4}
+⾸先，鉴于教材中没有对多重级数及其收敛进行定义，此处以二重级数为例进行定义，
+读者可以毫无困难地将下述定义扩展到$n$重级数上。
+
+称二重级数$\sum\limits_{i,j=0}^{\infty}a_{ij}$收敛，如果$\lim\limits_{k \to \infty}
+\sum\limits_{i,j=0}^{k}a_{ij}$存在并且有限。称二重级数$\sum\limits_{i,j=0}^{\infty}
+a_{ij}$绝对收敛，如果二重级数$\sum\limits_{i,j=0}^{\infty}|a_{ij}|$收敛。
+
+容易证明，对两个正项级数$\sum\limits_{n=0}^{\infty}a_{n}$和$\sum\limits_{n=0}
+^{\infty}b_{n}$，总成⽴$\Big(\sum\limits_{n=0}^{\infty}a_{n}\Big) 
+\Big(\sum\limits_{n=0}^{\infty}b_{n}\Big)=\sum\limits_{i,j=0}^{\infty}a_{i}b_{j}$
+（两边允许取值$+\infty$）。对任意有限个正项级数成立类似的等式。
+
+现在开始证明原题。我们先不妨设$\left\{p_{n}\right\}$是全体素数从小到大排列而成
+的，在这个假设下我们证明了Euler乘积公式之后，由于$\sum\limits_{n=1}^{\infty}
+\frac{1}{n^{s}}<+\infty$对任意$s>1$成立，则知无穷乘积$\prod\limits_{n=1}^{\infty}
+\frac{1}{1-\frac{1}{p_{n}^{s}}}$绝对收敛。类似于绝对收敛级数重排后和不变，绝对收
+敛无穷乘积重排后积不变，从而当$\left\{p_{n}\right\}$是全体素数的任⼀排列时结论都
+成立。
+
+（同样鉴于教材中没有对无穷乘积的收敛及绝对收敛进行严格的定义，此处进行补充：
+不妨只考虑$\left\{a_{n}\right\}$的每⼀项均大于$0$的情形，
+当$\lim\limits_{n \to \infty}\prod\limits_{k=1}^{n}a_{k}$存在
+且$0<\lim\limits_{n \to \infty}\prod\limits_{k=1}^{n}a_{k}<+\infty$时
+称无穷乘积收敛并定义$\prod\limits_{n=1}^{\infty}a_{n}
+=\lim\limits_{n \to \infty}\prod\limits_{k=1}^{n}a_{k}$，否则称无穷乘积发散。
+易见$\prod\limits_{n=1}^{\infty}a_{n}$收敛等价于
+$\sum\limits_{n=1}^{\infty}\ln(a_{n})$收敛。
+称$\prod\limits_{n=1}^{\infty}a_{n}$绝对收敛，
+如果$\sum\limits_{n=1}^{\infty}|\ln(a_{n})|$收敛。）
+
+现设$\left\{p_{n}\right\}$是全体素数从小到大排列而成，
+对任意正整数$n$，$0<\frac{1}{p_{n}^{s}}<1$，有
+$\frac{1}{1-\frac{1}{p_{n}^{s}}}
+=\sum\limits_{e=0}^{\infty}\frac{1}{p_{n}^{e\cdot s}}$，
+记$Q_{n}=\prod\limits_{k=1}^{n}\frac{1}{1-\frac{1}{p_{k}^{s}}}$，
+$\left\{Q_{n}\right\}$单调增，且
+$\prod\limits_{n=1}^{\infty}\frac{1}{1-\frac{1}{p_{n}^{s}}}$
+等于$\lim\limits_{n \to \infty}Q_{n}$。
+固定正整数$N$，$Q_{N}=\prod\limits_{k=1}^{N}\frac{1}{1-\frac{1}{p_{k}^{s}}}
+=\sum\limits_{e_{1},e_{2},...,e_{N}=0}^{\infty}\frac{1}{\big(p_{1}^{e_{1}}p_{2}^{e_{2}}
+\cdot \cdot \cdot p_{N}^{e_{N}}\big)^{s}}$，
+令集合$A_{N}=\left\{n|n\text{ 是正整数，}
+n\text{ 的全体素因子均不大于 }p_{N}\right\}$，容易证明$Q_{N}
+=\sum\limits_{e_{1},e_{2},...,e_{N}=0}^{\infty}\frac{1}{\big(p_{1}^{e_{1}}p_{2}^{e_{2}}
+\cdot \cdot \cdot p_{N}^{e_{N}}\big)^{s}}=\sum\limits_{n \in A_{N}}\frac{1}{n^{s}}$，则
+$0\le \zeta(s)-Q_{N}=\sum\limits_{\substack{n\text{含有大于}\\ p_{N}\text{的素因子}}}\frac{1}{n^{s}}
+\le \sum\limits_{n>p_{N}}\frac{1}{n^{s}}$。
+令$N \to +\infty$，则$p_{N} \to \infty$，
+注意到$\sum\limits_{n=1}^{\infty}\frac{1}{n^{s}}$收敛，
+则$\sum\limits_{n>p_{N}}\frac{1}{n^{s}} \to 0$，$N \to +\infty$。
+则$\prod\limits_{n=1}^{\infty}\frac{1}{1-\frac{1}{p_{n}^{s}}}
+=\lim\limits_{N \to \infty}Q_{N}=\zeta(s)$。
+
+\subsection*{2.7.B.5}
+题中等式可以用Weierstrass因子分解定理的⼀个推论导出，参见《复变函数》（史济怀著）
+第5章定理5.7.3和例5.7.6。
+
+\section{函数极限与连续}
+\subsection*{3.1.A.1}
+必要性显然，下证充分性：由Heine定理，只需$E\setminus\left\{\mathbf{x}_{0}\right\}$中
+任意一个趋于$\mathbf{x}_{0}$的点列$\left\{\mathbf{x}_{k}\right\}_{k=1}^{\infty}$，
+极限$\lim\limits_{k \to \infty}\mathbf{f}(\mathbf{x}_{k})$均相等。
+对于$E\setminus\left\{\mathbf{x}_{0}\right\}$中两个趋于$\mathbf{x}_{0}$的点列
+$\left\{\mathbf{x}_{k,1}\right\}_{k=1}^{\infty}$
+与$\left\{\mathbf{x}_{k,2}\right\}_{k=1}^{\infty}$，
+取点列$\left\{\mathbf{y}_{k}\right\}_{k=1}^{\infty}$
+满足$\mathbf{y}_{2k-1}=\mathbf{x}_{k,1}$，$\mathbf{y}_{2k}=\mathbf{x}_{k,2}$。
+则$\left\{\mathbf{y}_{k}\right\}_{k=1}^{\infty}$亦是
+$E\setminus\left\{\mathbf{x}_{0}\right\}$中一个趋于$\mathbf{x}_{0}$的点列，
+则知$\lim\limits_{k \to \infty}\mathbf{f}(\mathbf{x}_{k,1})
+=\lim\limits_{k \to \infty}\mathbf{f}(\mathbf{y}_{k})
+=\lim\limits_{k \to \infty}\mathbf{f}(\mathbf{x}_{k,2})$。
+
+\subsection*{3.1.A.5}
+设$f$、$g$是定义在$(0,+\infty)$上的周期函数，
+满足$\lim\limits_{x \to +\infty}(f(x)-g(x))=0$。
+记$f$的周期为$T_{1}$，$g$的周期为$T_{2}$。
+假设对某个$x>0$有$f(x)\neq g(x)$，则必存在正整数$m$使得$g(x+mT_{1})\neq g(x)$，
+否则将与$\lim\limits_{x \to +\infty}(f(x)-g(x))=0$矛盾。此时考虑正整数$L$充分大时，
+\begin{equation*}
+\begin{aligned}
+|g(x+mT_{1})-g(x)|&=|g(x+mT_{1}+LT_{2})-g(x+LT_{2})| \\
+&=|g(x+mT_{1}+LT_{2})-f(x+mT_{1}+LT_{2})-(g(x+LT_{2})-f(x+LT_{2}))|\\
+&\le |g(x+mT_{1}+LT_{2})-f(x+mT_{1}+LT_{2})|+|g(x+LT_{2})-f(x+LT_{2})|,
+\end{aligned}
+\end{equation*}
+左边是一个大于$0$的常量，最后一式在$L$趋于正无穷时趋于$0$，显然矛盾。
+
+\subsection*{3.1.B.1}
+$$\prod\limits_{n=1}^{k}\cos \frac{x}{2^n}
+=\frac{2\sin \frac{x}{2^k}\prod\limits_{n=1}^{k}\cos \frac{x}{2^n}}{2\sin \frac{x}{2^k}}
+=\frac{\sin x}{2^k \sin \frac{x}{2^k}} \to \frac{\sin x}{x},\quad k \to \infty.$$
+
+\subsection*{3.2.A.3}
+利用推论2.2.4 (iii)。
+
+\subsection*{3.2.A.7}
+$\forall\,\varepsilon>0$，$\exists\,\delta>0$ 
+s.t. $|x|<\delta$时$|f(2x)-f(x)|<\varepsilon|x|$。
+则$\forall\,|x|<\delta$，$\forall\,k\in \mathbb{N+}$，
+$$\Big|f(x)-f\Big(\frac{x}{2^k}\Big)\Big|\le \sum\limits_{i=1}^{k}
+\Big|f\Big(\frac{x}{2^{i-1}}\Big)-f\Big(\frac{x}{2^{i}}\Big)\Big|<\varepsilon|x|,$$
+在上式中令$k \to +\infty$得$\forall\,|x|<\delta$，$|f(x)|\le \varepsilon|x|$。
+
+\subsection*{3.2.A.8}
+利用下述结论：有界点列$\left\{\mathbf{x}_n\right\}$的任意收敛子列收敛到$\mathbf{a}$，则该点列自身也收敛到$\mathbf{a}$。
+
+\subsection*{3.2.B.2}
+不妨设$I$是开区间，$f$单调增，任取$x_0\in I$，
+成立$\lim\limits_{x\to x_{0}^-}f(x)\le f(x_{0})\le \lim\limits_{x\to x_{0}^+}f(x)$，
+从而$f$的间断点只可能是跳跃间断点。即开区间上实值单调函数的间断点只可能是跳跃间断点。
+下证：对开区间$I$上任一实值函数$f$，集合
+$\left\{x_0\in I\bigg|\text{$f$ 在 $x_0$ 点处不连续，但 }
+\lim\limits_{x\to x_{0}^-}f(x)
+\text{ 在 $\mathbb{\overline{R}}$ 中存在}\right\}$是至多可列集。
+
+由于\\
+$\left\{x_0\in I\bigg|\text{$f$ 在 $x_0$ 点处不连续，但 }
+\lim\limits_{x\to x_{0}^-}f(x)=+\infty\right\}=$
+$\left\{x_0\in I\bigg|\text{$\arctan \circ f$ 在 $x_0$ 点处不连续，但 }
+\lim\limits_{x\to x_{0}^-}\arctan \circ f(x)=\frac{\pi}{2}\right\}$。\\
+因此只需$\left\{x_0\in I\bigg|\text{$f$ 在 $x_0$ 点处不连续，但 }\lim\limits_{x\to x_{0}^-}f(x)\text{ 在 $\mathbb{R}$ 中存在}\right\}$是至多可列集（习题6.3.B.10）。
+
+易见集合\\
+$\left\{x_0\in I|\text{$f$ 在 $x_0$ 点处连续}\right\}=$
+$\bigcap\limits_{n=1}^{\infty}\left\{x_0\in I|\text{存在 $\delta>0$ 使得 
+$|f(x)-f(y)|<\frac{1}{n}$ 对任意 $x,y\in(x_0-\delta,x_0+\delta)$ 成立}\right\}$,
+从而\\
+$\left\{x_0\in I\bigg|\text{$f$ 在 $x_0$ 点处不连续，但 }
+\lim\limits_{x\to x_{0}^-}f(x)\text{ 在 $\mathbb{R}$ 中存在}\right\}=$
+$\bigcup\limits_{n=1}^{\infty}\left\{x_0\in I\bigg|
+\lim\limits_{x\to x_{0}^-}f(x)\text{ 在 $\mathbb{R}$ 中存在，且任意 $\delta>0$，
+存在 $x,y\in(x_0-\delta,x_0+\delta)$ 使得 $|f(x)-f(y)|\ge \frac{1}{n}$}\right\}$。
+
+$\forall n\in \mathbb{N+}$，记\\
+$E_{n}=\left\{x_0\in I\bigg|\lim\limits_{x\to x_{0}^-}f(x)\text{ 在 $\mathbb{R}$ 中存在，
+且任意 $\delta>0$，存在 $x,y\in(x_0-\delta,x_0+\delta)$ 使得 $|f(x)-f(y)|\ge \frac{1}{n}$}\right\}$，
+下证$E_{n}$是至多可列集。任取$x_0\in E_{n}$，
+由$\lim\limits_{x\to x_{0}^-}f(x)$在$\mathbb{R}$中存在易知存在$\delta_{0}>0$使得
+$|f(x)-f(y)|<\frac{1}{n}$，$\forall x,y\in(x_0-\delta_{0},x_0)$，
+则易见此时$(x_0-\delta_{0},x_0)\cap E_{n}=\emptyset$。
+由选择公理可作单射$\phi:E_{n}\to J_{n};x_{0}\mapsto(x_0-\delta_{0},x_0)$，
+其中$J_{n}=\left\{(x_0-\delta_{0},x_0)|x_{0}\in E_{n}\right\}$。
+又易见$x_{1},x_{2}\in E_{n}$而$x_{1}\neq x_{2}$时
+$(x_1-\delta_{1},x_1)\cap(x_2-\delta_{2},x_2)=\emptyset$，
+从而知$E_{n}$是至多可列集。
+
+同理可知：对开区间$I$上任一实值函数$f$，
+集合$\left\{x_0\in I\bigg|\text{$f$ 在 $x_0$ 点处不连续，但}
+\lim\limits_{x\to x_{0}^+}f(x)\text{ 在 $\mathbb{\overline{R}}$ 中存在}\right\}$
+是至多可列集。
+由此我们可以得到：对开区间$I$上任一实值函数$f$，$f$的跳跃间断点至多可列，
+$f$的本性间断点中的无穷间断点至多可列，$f$的可去间断点至多可列（习题6.3.B.11）。我们一并证明了习题6.3.B.10与习题6.3.B.11。
+
+\subsection*{3.2.B.3}
+任取$\mathbb{R}$中异于$\left\{x_{k}\right\}_{k=1}^{\infty}$的一个实数$x_0$，
+下证$f$在$x_0$处连续，只需$\forall \,\varepsilon>0,\exists\,\delta>0$ s.t. 
+$$\sum\limits_{x_0 \le x_{k}<x_0+\delta}\frac{1}{2^k}<\varepsilon$$
+与$$\sum\limits_{x_0-\delta \le x_{k}<x_0}\frac{1}{2^k}<\varepsilon$$
+（不妨更进一步考虑$\sum\limits_{x_0-2\delta<x_{k}\le x_0}\frac{1}{2^k}
+<\varepsilon$）。不失一般性，只需考虑
+$$\sum\limits_{x_0 \le x_{k}<x_0+\delta}\frac{1}{2^k}<\varepsilon.$$
+
+只考虑这样的情形：$\forall\,\delta>0$，
+$\left\{k \in \Z_+|x_0 \le x_{k}<x_0+\delta\right\}$非空
+（否则，若存在$\delta>0$使得
+$\left\{k \in \Z_+|x_0 \le x_{k}<x_0+\delta\right\}$是空集，
+易见$\sum\limits_{x_0 \le x_{k}<x_0+\delta}\frac{1}{2^k}<\varepsilon$平凡地成立）。
+
+令$\delta_{0}=1$，$m_{0}=\min\left\{k \in \Z_+|x_0 \le x_{k}<x_0+1\right\}$，
+对正整数$n\ge 1$，定义$\delta_{n}=x_{m_{n-1}}-x_0$，
+$m_{n}=\min\left\{k \in \Z_+|x_0 \le x_{k}<x_0+\delta_{n}\right\}$。
+易见$x_0<x_{m_{n}}<x_{m_{n-1}}$，$m_{n}>m_{n-1}$，$\forall\,n\ge 1$。
+从而$\left\{m_{n}\right\}_{n=0}^{\infty}$是严格单调增的无上界的正整数列，
+$\delta_{n}>0$，$\forall\,n\ge 1$。
+
+$\forall\,\varepsilon>0$，取$\left\{m_{n}\right\}_{n=0}^{\infty}$中
+充分大的一个正整数$m_{s}$ s.t. $$\frac{1}{2^{m_{s}-1}}<\varepsilon,$$
+
+令$\delta=\delta_{s}$，注意到
+$m_{s}=\min\left\{k \in \Z_+|x_0 \le x_{k}<x_0+\delta_{s}\right\}$，从而
+$$\sum\limits_{x_0 \le x_{k}<x_0+\delta_{s}}\frac{1}{2^k}\le \sum\limits_{k=m_{s}}^{\infty}\frac{1}{2^k}=\frac{1}{2^{m_{s}-1}}<\varepsilon.$$
+
+$f$在$\left\{x_{k}\right\}_{k=1}^{\infty}$的任一点处不连续，以及
+$\left\{x_{k}\right\}_{k=1}^{\infty}$在$\mathbb{R}$中稠密时$f$严格单增的证明是容易的。
+
+\subsection*{3.2.B.4}
+容易证明$f$在$(0,1)$内所有的有限小数（即$(0,1)$内$\frac{p}{q}$全体，其中$p,q$是正整数，
+$(p,q)=1$，$q$的素因子只可能为$2$或$5$）处不连续，在$(0,1)$内所有的无限小数处连续。
+
+\subsection*{3.2.B.5}
+由上、下极限的Stolz定理知$1=\varliminf\limits_{n \to \infty}a_{n}
+\le \varliminf\limits_{n \to \infty}\frac{\sum\limits_{k=1}^{n}a_{k}}{n}$，
+则只需$\varlimsup\limits_{n \to \infty}\frac{\sum\limits_{k=1}^{n}a_{k}}{n}\le 1$。
+
+$\lim\limits_{n \to \infty}\Big(\prod\limits_{k=1}^{n}a_{k}\Big)^{\frac{1}{n}}=1$
+等价于$\lim\limits_{n \to \infty}\frac{\sum\limits_{k=1}^{n}\ln(a_{k})}{n}=0$。
+
+固定任一$\varepsilon>0$，记$K(n)=\#\left\{1\le k \le n|a_{k}\ge 1+\varepsilon\right\}$。
+$\forall\,\delta>0$，由$\varliminf\limits_{n \to \infty}a_{n}=1$知
+存在正整数$m$使得$a_{k}\ge 1-\delta$，$\forall\,k\ge m$。
+记$s=\#\left\{1\le k \le m-1|a_{k}<1+\varepsilon\right\}$。考虑$n$充分大，
+固定$\delta$与$m$，
+$$\frac{\sum\limits_{k=1}^{n}\ln(a_{k})}{n}
+\ge \frac{K(n)\ln(1+\varepsilon)}{n}+\frac{(n-K(n)-s)\ln(1-\delta)}{n}
++\frac{\sum\limits_{\substack{1\le k\le m-1\\a_{k}<1+\varepsilon}}\ln(a_{k})}{n}.$$
+令$n\to +\infty$取上极限得
+$$0\ge (\ln(1+\varepsilon)-\ln(1-\delta))\cdot
+\varlimsup\limits_{n\to \infty}\frac{K(n)}{n}+\ln(1-\delta),$$
+再令$\delta\to 0^+$得
+$0\ge \ln(1+\varepsilon)\cdot\varlimsup\limits_{n\to \infty}\frac{K(n)}{n}$，
+即$\varlimsup\limits_{n\to \infty}\frac{K(n)}{n}\le 0$，
+从而$\lim\limits_{n\to \infty}\frac{K(n)}{n}=0$。
+
+由$\varlimsup\limits_{n \to \infty}a_{n}=2$知$\left\{a_{n}\right\}$有上界，
+设$a_{n}\le M$，$\forall\,n \ge 1$。固定$\varepsilon>0$，
+$$\frac{\sum\limits_{k=1}^{n}a_{k}}{n}\le \frac{(n-K(n))(1+\varepsilon)}{n}+\frac{MK(n)}{n},$$
+两边令$n\to +\infty$取上极限得$\varlimsup\limits_{n \to \infty}\frac{\sum\limits_{k=1}^{n}a_{k}}{n}\le 1+\varepsilon$，
+再令$\varepsilon\to 0^+$得$\varlimsup\limits_{n \to \infty}\frac{\sum\limits_{k=1}^{n}a_{k}}{n}\le 1$。
+
+\subsection*{3.2.B.6}
+记$\mathbb{R}$上实连续函数全体组成的集合为$A$，
+易见$\left\{y=a|a\in \mathbb{R}\right\}$的势是$\aleph$，则$\#(A)\ge \aleph$；
+另一方面，对任一$\mathbb{R}$上的实连续函数$f$，$f$在$\mathbb{R}$上的取值由$f$在$\mathbb{Q}$上的取值决定，
+从而$\#(A)\le \aleph^{\aleph_{0}}=\aleph$（参见定理1.1.11）。

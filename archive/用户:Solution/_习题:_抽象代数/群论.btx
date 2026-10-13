@@ -1,0 +1,2024 @@
+\setdisplaytitle{第一章\ 群论}
+\sethtmltitle{第一章\ 群论}
+\newenvironment{solution}{\begin{proof}[解答]}{\end{proof}}
+
+\textbf{注} \quad 习题来自《抽象代数》(陈猛,王庆雪,李志远) (高等教育出版社2025年9月第1版)
+
+\section{群与子群}
+
+\begin{enumerate}
+\item 证明 $\left(\mathbb{Z}, +\right)$ 的所有子群形如$m\mathbb{Z} = \left\{mt \mid t \in \mathbb{Z}\right\}$,这里 $m \in \mathbb{Z}_{\geqslant 0}$.
+\begin{solution}
+    设 $H$ 为 $\left(\mathbb{Z}, +\right)$ 的子群, 
+    令 $x$ 为 $H$ 中绝对值最小的元素, 记 $m=|x|$. 
+    若存在 $y\in H\backslash m\mathbb{Z}$, 将 $y$ 对 $m$ 作带余除法得, 
+    存在整数 $q,r$, 其中 $r\in\{0,1,\dots,m-1\}$, 使得 $y=qm+r$. 
+    由于 $H$ 是群, 故 $r=y\plusmn qx \in H$, 而 $|r|<m$, 与 $m$ 的最小性矛盾. 
+\end{solution}
+
+\item 在$\mathbb{R}_{>0}$里构造两个不同的乘法子群.
+\begin{solution}
+    考虑 $G_1=\{1\}$, $G_2=\mathbb{Q}_{>0}$, 它们都是 $\mathbb{R}_{>0}$ 的乘法子群. 
+\end{solution}
+
+\item 设$K$是一个数域, $n>1$,在 $\mathrm{GL}_{n}(K)$ 中尽可能多地找出有限阶元素.能否写出所有有限阶元素?
+\begin{solution}
+    设 $A\in\mathrm{GL}_{n}(K)$ 是一个有限阶元, 则存在 $m\in\mathbb{Z}_{>0}$ 使得 $A^m=I_n$. 
+    令 $f(X)=X^m-1$, 则 $f(A)=0$, 从而 $A$ 的极小多项式 $p_A$ 整除 $f$. 
+    故 $A$ 一定形如 $R^{-1}QR$, 其中 $Q$ 是 极小多项式整除 $X^m-1$ 的某个有理标准型, $R\in\mathrm{GL}_{n}(K)$.
+    另一方面, 所有这样的 $R^{-1}QR$ 的矩阵 $A$ 都是 $\mathrm{GL}_n(K)$ 的有限阶元. 
+\end{solution}
+
+\item 在群 $G$ 中, 设 $H_1<G$ 且 $H_2<G$, 定义 $H_1H_2\triangleq\left\{h_1h_2 \mid h_1 \in H_1,\ h_2 \in H_2\right\}$. 
+举例说明, 一般情形下, $H_1H_2$ 不再是子群. 
+\begin{solution}
+    考虑 $G=S_3$, $H_1=\{e,(12)\}$, $H_2=\{e,(13)\}$,
+    则 $H_1H_2=\{e,(12),(13),(132)\}$ 不是 $G$ 的子群. 
+\end{solution}
+
+\item 设 $G$ 是群, $H_{1},H_{2}$ 是子群,证明 $H_{1} \cup H_{2}$ 是子群当且仅当 $H_{1} \supseteq H_{2}$ 或$H_{2} \supseteq H_{1}$.
+\begin{solution}
+    记 $H\triangleq H_1\cup H_2$.
+    一方面,
+    若 $H_1\supseteq H_2$ 或 $H_2\supseteq H_1$,
+    则 $H=H_1$ 或 $H=H_2$,
+    $H$ 是 $G$ 的子群.
+    另一方面,
+    若 $H$ 是 $G$ 的子群,
+    假设 $H_1\not\supseteq H_2$,
+    则存在 $x\in H_1\backslash H_2$.
+    对任何 $y\in H_2$,
+    由于 $H_1\cup H_2$ 是 $G$ 的子群,
+    故 $xy\in H_1\cup H_2$,
+    从而 $xy\in H_1$ 或 $xy\in H_2$.
+    但 $x\notin H_2$,
+    故 $xy\notin H_2$ (否则 $x=(xy)y^{-1}\in H_2$),
+    则 $xy\in H_1$. 
+    进而 $y=x^{-1}(xy)\in H_1$.
+    再由 $y$ 的任意性知 $H_2\subseteq H_1$. 
+\end{solution}
+
+\item 设 $G$ 是有限群, $G \supset H \neq \varnothing$,若 $H$ 关于 $G$ 乘法封闭,则 $H<G$.
+\begin{solution}
+    只需证明 $H$ 对取逆元封闭.
+    任取 $a\in H$.
+    由于 $G$ 是有限群,
+    故 $a,a^2,a^3,\dots$ 中有重复的元素,
+    不妨设 $a^i=a^j$, $i<j$.
+    则 $a^{-1}=a^{j-i-1}$.
+    由于 $i<j$, 故 $j-i-1\geqslant 0$,
+    从而 $a^{-1}=a^{j-i-1}\in H$. 
+\end{solution}
+
+\item 设 $G$ 是一个含幺半群.
+若对任意 $a \in G$, 存在 $b \in G$,
+使 $ba=e$ ($e$ 是 $G$ 的恒等元), 则 $G$ 必是一个群.
+\begin{solution}
+    只需证明 $G$ 中任何元素都有逆元.
+    任取 $a\in G$,
+    由假设知存在 $b\in G$ 使得 $ba=e$,
+    从而 $ab=a(ba)b=(ab)(ab)$.
+    由假设知存在 $c\in G$ 使得 $c(ab)=e$,
+    从而 $ab=e(ab)=(c(ab))(ab)=c((ab)(ab))=c(ab)=e$.
+    故 $b\in G$ 是 $a$ 的逆元. 
+\end{solution}
+
+\item 设 $G$ 为有限群,证明:对任意两个不同元素$a,b \in G$, $o(ab)=o(ba)$.
+\begin{solution}
+    设 $n=o(ab)$, $m=o(ba)$.
+    则 $(ba)^{n+1}=b(ab)^na=ba$,
+    从而 $o(ba)\leqslant n$.
+    同理有 $o(ab)\leqslant m$.
+    故 $m=n$. 
+\end{solution}
+
+\item 求解下列问题: 
+\begin{enumerate}
+\item[(1)] 设 $G$ 是一个群, $g \in G$是有限阶元,其阶 $o(g)=n$.
+记 $r$ 是一个正整数, $d=\gcd(r,n)$ 是 $r,n$ 的最大公约数.
+证明: $g^r$ 的阶 $o(g^r)=\frac{n}{d}$;
+\begin{solution}
+    对任何正整数 $t$,
+    由于 $o(g)=n$,
+    故 $\left(g^r\right)^t=e$ 当且仅当 $n|rt$.
+    设 $r=da$, $n=db$, $\gcd(a,b)=1$,
+    则 $n|rt$ 当且仅当 $b|at$.
+    由于 $a,b$ 互素,
+    故后者当且仅当 $b|t$.
+    故 $o(g^r)=b=\frac{n}{d}$. 
+\end{solution}
+\item[(2)] 设$G$为$m$阶循环群($m>1$),试确定$G$的所有生成元.
+\begin{solution}
+    固定一个生成元 $x_0\in G$. \\
+    对任何 $x\in G$,
+    $x$ 是生成元当且仅当 $o(x)=|G|$.
+    同时, 设 $x=x_0^n$,
+    则由(1)知 $o(x)=\frac{|G|}{\gcd(n,|G|)}$.
+    故 $x$ 是生成元当且仅当 $\gcd(n,|G|)=1$.
+    即, $G$ 的所有生成元为 $\left\{x_0^n|\gcd(n,|G|)=1\right\}$. 
+\end{solution}
+\end{enumerate}
+
+\item 设 $G$ 是一个$10$阶群,证明在 $G$ 中最多只有$4$个非平凡的$5$阶元素.
+\begin{solution}
+    假设 $G$ 中存在$5$个$5$阶元素 $x_1,\dots,x_5$.
+    令 $H_1=\langle x_1\rangle$.
+    由于 $H_1$ 中只有$4$个非平凡元素,
+    故 $x_2,\dots,x_5$ 中必有一个不在 $H_1$ 中,
+    不妨设 $x_5\notin H_1$.
+    令 $H_2=\langle x_5 \rangle$.
+    设 $y\in H_1\cap H_2$,
+    若 $y\not= e$,
+    则 $y=x_1^a=x_5^b$, 其中 $a,b\in\{1,2,3,4\}$,
+    则 $x_5=\left(x_5^b\right)^{b^3}=\left(x_1^a\right)^{b^3} \in H_1$, 矛盾.
+    故 $H_1\cap H_2=\{e\}$.
+    任取 $a,b,c,d\in\{0,1,2,3,4\}$,
+    若 $x_1^ax_5^b=x_1^cx_5^d$,
+    则 $x_1^{a-c}=x_5^{d-b}$,
+    从而由 $H_1\cap H_2=\{e\}$ 知 $a=c$, $b=d$.
+    令 $M=H_1H_2$,
+    由上述讨论知 $|M|=25>10=|G|$,
+    这与 $M\subseteq G$ 矛盾.
+\end{solution}
+
+\item 设$U$是半群, $u \notin U$, 令$G = U \cup \{u\}$, 
+试将$G$做成一个含幺半群并使$u$成为该含幺半群的恒等元,并使$U$成为该含幺半群的子半群.
+如果$U$本身含恒等元$e_{U}$,问$e_{U}$在新构造的含幺半群$G$中是否还是恒等元?
+\begin{solution}
+    在 $G$ 上定义乘法
+    \begin{align*}
+        M:\ G \times G &\to G\\
+        (x,y) &\mapsto \left\{
+            \begin{aligned}
+                xy &, \quad x,y\in U\\
+                x &, \quad y=u\\
+                y &, \quad x=u
+            \end{aligned}
+        \right.
+    \end{align*}
+    容易验证 $M$ 满足结合律. 
+
+    即便 $U$ 本身含恒等元 $e_U$, 它在 $G$ 中也不是恒等元,
+    因为 $e_Uu=e_U$,
+    而不是 $u$. 
+\end{solution}
+
+\item 设 $\mathbb{R}$ 是实数集, $\mathbb{R}^{*} = \mathbb{R}\backslash\{0\}$.
+对任意 $a \in \mathbb{R}^{*}, b \in \mathbb{R}$, 定义映射$f_{a,b}: \mathbb{R} \rightarrow \mathbb{R}$如下:
+\[f_{a,b}(x) = ax+b,\quad\forall\, x \in \mathbb{R}.\]
+设$G = \left\{f_{a,b} \mid a \in \mathbb{R}^{*}, b \in \mathbb{R}\right\}$是上述映射的全体.求解下列问题:
+\begin{enumerate}
+\item[(1)] 证明$G$在映射的复合下构成一个群;
+\begin{solution}
+    对任意的 $f_{a,b},f_{c,d},f_{s,t}\in G$, 有: 
+    \begin{enumerate}
+        \item[(i)]
+        $f_{a,b}\circ f_{c,d}=f_{ac,ad+b}\in G$
+        \item[(ii)]
+        $f_{a,b} \circ \left( f_{c,d} \circ f_{s,t} \right)  = f_{acs,act+ad+b} = \left( f_{a,b} \circ  f_{c,d} \right) \circ f_{s,t}$
+        \item[(iii)]
+        $f_{a,b} \circ f_{\frac{1}{a},-\frac{b}{a}} = f_{\frac{1}{a},-\frac{b}{a}} \circ f_{a,b} = f_{1,0}$
+        \item[(iv)]
+        $f_{1,0} \circ f_{a,b} = f_{a,b} \circ f_{1,0} = f_{a,b}$
+    \end{enumerate}
+    故 $(G,\circ)$ 构成一个群. 
+\end{solution}
+\item[(2)] 求出$G$的中心$C(G)$.
+\begin{solution}
+    由定义, 
+    \begin{align*}
+        C(G) &= \left\{ f_{a,b}:\ f_{a,b} \circ f_{c,d} = f_{c,d} \circ f_{a,b},\ \forall\, f_{c,d} \in G \right\} \\
+        &= \left\{ f_{a,b}:\ f_{ac,ad+b} = f_{ac,bc+d},\ \forall\, c \in \mathbb{R}^*,\ d\in \mathbb{R} \right\} \\
+        &= \left\{ f_{a,b}:\ ad+b=bc+d,\ \forall\, c \in \mathbb{R}^*,\ d \in \mathbb{R} \right\} \\
+        &= \left\{f_{1,0}\right\}. 
+    \end{align*}
+\end{solution}
+\end{enumerate}
+
+\end{enumerate}
+
+\section{对称群}
+\begin{enumerate}
+\item 补全命题2.1的证明.
+\begin{solution}
+    书上已给出存在性的证明, 我们只需证明分解的唯一性.
+
+    当 $n=1$ 时, 这个分解显然是唯一的.
+
+    假设已经证明 $n=k$ 时该分解的唯一性, 下面证明 $n=k+1$ 时的唯一性. \\
+    设
+    $$\sigma=\prod_{i=1}^m\sigma_i=\prod_{i=1}^r\tau_i$$
+    是两种分解.
+    若 $\sigma(n)=n$, 则 $\sigma$ 可以被视为一个 $S_{n-1}$ 中的元素, 由归纳假设得证.
+    若 $\sigma(n)\not=n$,
+    不妨设 $n$ 出现(且仅出现)在 $\sigma_1$ 和 $\tau_1$ 中,
+    设 $\sigma_1=(a_1a_2\dots a_t)$, 其中 $a_t=n$.
+    令 $\pi=(a_{t-1}n)$,
+    则 $\pi\sigma_1=(a_1a_2\dots a_{t-1})$.
+    设 $\tau_1=(b_1b_2\dots b_s)$, 其中 $b_s=n$,
+    由于 $\sigma(a_{t-1})=n=\sigma(b_{s-1})$,
+    故 $a_{t-1}=b_{s-1}$,
+    从而 $\pi\tau_1=(b_1b_2\dots b_{s-1})$.
+    而
+    $$\pi\prod_{i=1}^m\sigma_i=\pi\prod\limits_{i=1}^r\tau_i,$$
+    即
+    $$(a_1a_2\dots a_{t-1})\prod_{i=2}^m\sigma_i=(b_1b_2\dots b_{s-1})\prod\limits_{i=2}^r\tau_i,$$
+    这又是 $\pi\sigma\in S_{n-1}$ 的分解,
+    故由归纳假设知 $m=r$ 且 $\{(a_1a_2\dots a_{t-1})\sigma_2,\dots,\sigma_m\}=\{(b_1b_2\dots b_{s-1}),\tau_2,\dots,\tau_r\}$.
+    由于 $a_{t-1}=b_{s-1}$ 且这些轮换互不相交,
+    故 $\sigma_1=\tau_1$, 且 $\sigma_2,\dots,\sigma_m$ 是 $\tau_2,\dots,\tau_r$ 的一个排列. 
+\end{solution}
+
+\item 给出$\sigma = (1357)(2345)(567) \in S_{7}$的轮换分解
+\begin{solution}
+    轮换分解为 $\sigma=(1347256)$. 
+\end{solution}
+
+\item 设$\sigma = (1762)(563)(347) \in S_{7}$,给出$\sigma^{-2}$的轮换分解.
+\begin{solution}
+    轮换分解为 $\sigma^{-2}=(15)(27)(346)$. 
+\end{solution}
+
+\item 设
+$\sigma = \begin{pmatrix}
+  1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
+  8 & 3 & 5 & 6 & 7 & 1 & 2 & 4 \\
+\end{pmatrix}$,
+$\tau = \begin{pmatrix}
+  1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
+  7 & 1 & 8 & 5 & 6 & 2 & 4 & 3 \\
+\end{pmatrix}$,给出$\sigma \circ \tau$的轮换分解.
+\begin{solution}
+    轮换分解为 $\sigma\tau=(1285)(3476)$. 
+\end{solution}
+
+\item 设$\sigma \in S_{n}$ $(n>2)$分解为互不相交的轮换因子的长度分别为$r_{1}, \cdots, r_{k}$,求$\sigma$的阶$o(\sigma)$.
+\begin{solution}
+    由题, $\sigma=\prod\limits_{i=1}^k \sigma_i$, 其中 $\sigma_i$ 长度为 $r_i$.
+    对正整数 $m$,
+    $\sigma^m=\prod\limits_{i=1}^k \sigma_i^m$.
+    又 $\sigma_1,\dots,\sigma_k$ 两两不交,
+    故 $\sigma^m=e$ 当且仅当 $\sigma_1^m=\cdots=\sigma_k^m=e$.
+    而 $o(\sigma_i)=r_i$,
+    故 $\sigma_i^m=e$ 当且仅当 $r_i|m$,
+    从而 $\sigma^m=e$ 当且仅当 $\operatorname{lcm}(r_1,\dots,r_k)|m$. 
+    故 $o(\sigma)=\operatorname{lcm}(r_1,\dots,r_k)$. 
+\end{solution}
+
+\item 设
+$\sigma = \begin{pmatrix}
+  1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+  3 & 7 & 5 & 4 & 1 & 6 & 2 \\
+\end{pmatrix} \in S_{7}$,求$\sigma^{2024}$.
+\begin{solution}
+    由于 $\sigma=(135)(27)$,
+    故 $\sigma^{2024}=(135)^{2024}(27)^{2024}=(153)(27)$. 
+\end{solution}
+
+\item 举例说明,置换$\sigma \in S_{n}$ $(n>2)$分解为对换之积的方式不唯一.
+\begin{solution}
+    注意到 $(12)(23)=(23)(13)$. 
+\end{solution}
+
+\item 设$n>2$,求解下列问题:
+\begin{enumerate}
+\item[(1)] 将二面体群$D_{n}$中把顶点对$(1,2)$映为$(2,3)$的变换记为$r$;把顶点对$(1,2)$映为$(2,1)$的变换记为$s$.
+证明: $D_n=\langle r, s\rangle$,且$r^{n}=s^{2}=r s r s= e$;
+\begin{solution}
+    将 $D_n$ 视为 $S_n$ 的子群,
+    在此观点下,
+    $r=(12\dots n)$, $s=(12)$. 
+    直接计算有 $r^n=s^2=rsrs=e$.
+    考虑 $e,r,r^2,\dots,r^{n-1},s,rs,r^2s,\dots,r^{n-1}s\in D_n$,
+    我们证明它们互不相同.
+    \begin{enumerate}
+        \item[(i)]
+        由于 $r^i(1)=i$, 故 $e,r,r^2,\dots,r^{n-1}$ 互不相同
+        \item[(ii)]
+        由于 $r^is(1)=i+1$, 故 $s,r,r^2,\dots,r^{n-1}$ 互不相同
+        \item[(iii)]
+        若 $r^i=r^js$, 其中 $i,j\in\{0,1,\dots,n-1\}$, 则 $i=r^i(1)=r^js(1)=j+1\mod n$ 且 $i+1\mod n=r^i(2)=r^js(2)=j$, 即 $2\equiv 0 \mod n$, 即 $n=2$, 矛盾. 
+    \end{enumerate}
+    但 $|D_n|=2n$, 故上述已经是 $D_n$ 的全部元素, 从而 $D_n=\langle r,s \rangle$. 
+\end{solution}
+
+\item[(2)] 找出二面体群$D_{n}$中的所有 $2$ 阶元和 $n$ 阶元.
+\begin{solution}
+    由(1), 设 $s^ir^j\in D_{n}$ 是 $2$ 阶或 $n$ 阶元, 其中 $i\in\{0,1\}$, $j\in\{0,1,\dots,n-1\}$.
+
+    若 $i=0$, 则 $s^ir^j=r^j$,
+    此时由\textbf{习题1.1.8(1)}知, 它是 $2$ 阶元当且仅当 $j=\frac{n}{2}$,
+    是 $n$ 阶元当且仅当 $\gcd(j,n)=1$.
+
+    若 $i=1$, 则 $s^ir^js^ir^j=r^{n(n-1)}=e$ 总成立, 故 $sr^j$ 总是$2$阶元.
+
+    故 $D_n$ 的所有 $2$ 阶元为: (若 $n$ 为奇数)
+    $$\{s,sr,\dots,sr^{n-1}\},$$
+    或 (若 $n$ 为偶数)
+    $$\{s,sr,\dots,sr^{n-1},r^{n/2}\},$$
+    所有 $n$ 阶元为:
+    $$\{r^j:\ \gcd(n,j)=1\}.$$
+\end{solution}
+\end{enumerate}
+
+
+\item 求出$S_{10}$中具有轮换结构$\left[2^2 3^2\right]$的置换个数.
+\begin{solution}
+    这样的置换个数为
+    $${10 \choose 2}(2-1)!{8 \choose 2}(2-1)!{6 \choose 3}(3-1)!{3 \choose 3}(3-1)!=100800.$$
+\end{solution}
+
+\item 求出 $S_8$ 中阶为 $6$ 的置换个数.
+\begin{solution}
+    由\textbf{习题1.2.5},
+    若 $\sigma\in S_8$ 的阶数为 $6$,
+    则 $\sigma$ 轮换分解中每个轮换分量的长度之最小公倍数为 $6$,
+    故 $\sigma$ 的轮换结构为 $[6^1]$, $[2^1 6^1]$, $[2^1 3^1]$, $[2^2 3^1]$ 或 $[2^13^2]$,
+    分别有 ${8 \choose 6}(6-1)!$, ${8 \choose 6}(6-1)!{2 \choose 2}(2-1)!$, ${8 \choose 3}(3-1)!{5 \choose 2}(2-1)!$, $\frac{1}{2!}{8 \choose 3}(3-1)!{5 \choose 2}(2-1)!{3 \choose 2}(2-1)!$, $\frac{1}{2!}{8 \choose 2}(2-1)!{6 \choose 3}(3-1)!{3 \choose 3}(3-1)!$ 种轮换,
+    其总和为 $10640$ 个. 
+\end{solution}
+
+\item 求出 $A_8$ 中阶为 $4$ 的置换个数.
+\begin{solution}
+    由\textbf{习题1.2.5},
+    若 $\sigma\in S_8$ 的阶数为 $4$,
+    则 $\sigma$ 轮换分解中每个轮换分量的长度之最小公倍数为 $4$,
+    故 $\sigma$ 的轮换结构为 $[4^1]$, $[4^2]$, $[2^1 4^1]$ 或 $[2^2 4^1]$,
+    而 $\sigma\in A_8$, 故只能是 $[4^2]$ 或 $[2^1 4^1]$, 
+    分别有 $\frac{1}{2!}{8 \choose 4}(4-1)!{4 \choose 4}(4-1)!$, ${8 \choose 4}(4-1)!{4 \choose 2}(2-1)!$ 种轮换,
+    其总和为 $3780$ 个. 
+\end{solution}
+
+\end{enumerate}
+
+\section{陪集,正规子群,商群}
+\begin{enumerate}
+\item 证明引理3.4.
+\begin{solution}
+    \begin{enumerate}
+        \item[(1)]
+        由定义,
+        \begin{align*}
+            (HK)J &= \left\{ xj:\ x \in HK,\ j \in J \right\} \\
+            &= \left\{ hkj:\ h \in H,\ k \in K,\ j \in J \right\} \\
+            &= \left\{ hy:\ h \in H,\ y \in KJ \right\} \\
+            &= H(KJ). 
+        \end{align*}
+        \item[(2)]
+        由定义,
+        \begin{align*}
+            (HK)^{-1} &= \left\{ x^{-1}:\ x \in HK \right\} \\
+            &= \left\{ (hk)^{-1}:\ h \in H,\ k \in K \right\} \\
+            &= \left\{ k^{-1}h^{-1}:\ h \in H,\ k \in K \right\} \\
+            &= K^{-1}H^{-1}. 
+        \end{align*}
+    \end{enumerate}
+\end{solution}
+
+\item 证明命题3.7.
+\begin{solution}
+    设 $a,b,c\in G$. \\
+    \begin{enumerate}
+        \item[(1)] 结合律.
+        由定义,
+        $\left( aH \cdot bH \right) \cdot cH = (ab)H \cdot cH = (abc)H$. 
+        \item[(2)] 幺元.
+        由定义, 
+        $eH \cdot aH = (ea)H = aH$, $aH \cdot eH = (ae)H = aH$. 
+        \item[(3)] 逆元.
+        由于 $aH \cdot a^{-1}H = (a a^{-1})H = eH$,
+        同理 $a^{-1}H \cdot aH = eH$,
+        故 $a^{-1}H$ 为 $aH$ 的逆元. 
+    \end{enumerate}
+\end{solution}
+
+\item 证明命题3.8.
+\begin{solution}
+    \begin{enumerate}
+        \item[(1)$\Rightarrow$(2): ]
+        对任何 $a \in G$, 由定义有 $a^{-1}Ha \subseteq H$. \\
+        故对任何 $h \in H$ 有 $a h a^{-1} \in H$,
+        从而 $h=a^{-1}(aha^{-1})a \in a^{-1}Ha$.
+        由 $h$ 的任意性知 $H \subseteq a^{-1}Ha$,
+        从而 $H=a^{-1}Ha$. 
+        \item[(2)$\Rightarrow$(3): ]
+        对任何 $a \in G$, $h \in H$, 有 $ah=aha^{-1}\cdot a$.
+        由于 $aha^{-1} \in aHa^{-1}=H$, 故 $ah \in Ha$.
+        故由 $h$ 的任意性知 $aH\subseteq Ha$. \\
+        同理有 $Ha\subseteq aH$. 故 $aH=Ha$. 
+        \item[(3)$\Rightarrow$(4): ]
+        显然. 
+        \item[(4)$\Rightarrow$(5): ]
+        由 $aH\subseteq Ha$ 知
+        $a^{-1}(aH)a^{-1} \subset a^{-1}(Ha)a^{-1}$,
+        即 $Ha^{-1} \subset a^{-1}H$. \\
+        由于 $a$ 遍历 $G$, 故 $a^{-1}$ 遍历 $G$. 
+        故 $Ha \subset aH$ 对任何 $a$ 均成立. 
+        \item[(5)$\Rightarrow$(3): ]
+        与(4)$\Rightarrow$(5)同理可得,
+        对任何 $a\in G$, 都有 $aH \subset Ha$,
+        从而 $aH=Ha$ 对任何 $a\in G$ 均成立. \\
+        \item[(3)$\Rightarrow$(1): ]
+        对任何 $a\in G$, $h\in H$,
+        由于 $a^{-1}H = Ha^{-1}$,
+        故存在 $h_1\in H$ 使得 $a^{-1}h=h_1a^{-1}$,
+        即 $a^{-1}ha=h_1 \in H$. \\
+        由 $h$ 的任意性知 $H \triangleleft G$. \qedhere
+    \end{enumerate}
+\end{solution}
+
+\item 设$G$是群, $A$是$G$的一个非空子集,定义 $\left[A,G\right] = \langle a^{-1}g^{-1}ag \mid a \in A, g \in G \rangle$,证明$\left[A,G\right] \triangleleft G$.
+\begin{solution}
+    任取 $h\in G$.
+    任取 $a^{-1}g^{-1}ag \in [A,G]$, 其中 $a\in A$, $g\in G$.
+    注意 
+    $$h^{-1}a^{-1}g^{-1}agh = \left( a^{-1}h^{-1}ah \right)^{-1} a^{-1}\left(gh\right)^{-1}a(gh) \in [A,G].$$
+    任取 $x\in [A,G]$,
+    则 $x=x_1x_2\cdots x_n$,
+    其中 $x_i \in [A,G]$.
+    由上述讨论知 $h^{-1}x_ih \in [A,G]$, 从而
+    $$h^{-1}xh=\prod_{i=1}^n h^{-1}x_i h \in [A,G].$$
+    故 $[A,G] \triangleleft G$. 
+\end{solution}
+
+\item 若$S$是群$G$关于群$H$的左陪集代表元系,即$G = \coprod\limits_{a \in S} aH$,
+证明$S^{-1}$是群$G$关于$H$的右陪集代表元系,即$G = \coprod\limits_{a' \in S^{-1}} Ha'$.
+\begin{solution}
+    首先, 对任何 $a,b\in S^{-1}$,
+    若 $Ha=Hb$,
+    则 $ab^{-1}\in H$,
+    从而 $ba^{-1}\in H$,
+    进而 $a^{-1}H=b^{-1}H$,
+    故 $a^{-1}H=b^{-1}H$,
+    与 $S$ 是 $G$ 关于 $H$ 的左陪集代表元系矛盾.
+
+    其次, 对任何 $g \in G$,
+    由于 $G=\coprod\limits_{a\in S} aH$,
+    故存在 $h\in H$ 及 $a\in S$ 使得 $g^{-1}=ah$,
+    从而 $g=\left(ah\right)^{-1}=h^{-1}a^{-1}\in \bigcup\limits_{a^\prime \in S^{-1}}Ha^\prime$.
+
+    故 $G=\coprod\limits_{a' \in S^{-1}} Ha'$. 
+\end{solution}
+
+\item 设$N$是群$G$的一个正规子群,若商群$G / N$是有限群且$|G / N|=n$,证明:对任意$a \in G$, $a^n \in N$.
+\begin{solution}
+    对任何 $a \in G$,
+    记 $\overline{a}=aN$,
+    则由 $|G/N|=n$ 知 $\overline{a}^n=eN$.
+    又 $\overline{a}^n=\overline{a^n}$,
+    故 $a^nN=eN$,
+    即 $a^n\in N$. 
+\end{solution}
+
+\item 设 $G$ 是有限群, $K \triangleleft H \triangleleft G$, 且 $\gcd(|K|,|H / K|)=1$, 证明: $K \triangleleft G$.
+\begin{solution}
+    任取 $g \in G$, $k \in K$, 记 $x = g^{-1} k g$.
+    由于 $H \triangleleft G$, 故 $x \in H$.
+    记 $n=|K|$, $m=|H/K|$,
+    则由 Lagrange 定理, $x^n=g^{-1}k^n g=e$.
+    由\textbf{习题1.3.6}, $x^m \in K$.
+    由 Bezout 定理, 存在 $a,b\in\mathbb{Z}$ 使得 $an+bm=\gcd(n,m)=1$,
+    从而 $x = x^{an}\cdot x^{bm} = \left( x^n \right)^a \in K$. 故 $K\triangleleft G$. 
+\end{solution}
+
+\item 设$G$是一个群, $N$是$G$的一个正规子群, 问:
+\begin{enumerate}[label=(\arabic*)]
+\item 如果$N$与$G/N$都是循环群,那么$G$是否一定是Abel群?
+\begin{solution}
+    否. 考虑 $G=S_3$, $N=A_3$,
+    则 $G/N$ 为二阶群,
+    它与 $N$ 都是循环群,
+    但 $G$ 不是循环群. 
+\end{solution}
+\item 如果 $N<C(G)$, 且 $G/N$ 是循环群, 那么 $G$ 是否一定是Abel群?
+
+如果是,给出证明;否则,给出反例.
+\begin{solution}
+    是.
+    设 $G/N$ 的一个生成元为 $xN$.
+    任取 $g,h \in G$,
+    则存在 $a,b \in \mathbb{N}$ 使得 $g\in x^aN$, $h\in x^bN$,
+    从而存在 $n,m\in N$ 使得 $g=x^an$, $h=x^bm$. 
+    于是, 由 $N\subseteq C(G)$ 知,
+    $$gh = x^a (n x^b) m = x^{a+b} (n m) = x^b (x^a m) n = (x^b m)(x^a n) = hg.$$
+    故 $G$ 是 Abel 群.
+\end{solution}
+\end{enumerate}
+
+
+\item 设$G$是群, $H,K < G$. 证明:
+\begin{enumerate}[label=(\arabic*)]
+\item $H$的左陪集与$K$的左陪集的交要么为空集,要么为$H \cap K$的左陪集;
+\begin{solution}
+    设 $aH, bK$ 分别是任意的 $H, K$ 的左陪集.
+    假设 $aH\cap bK\not= \varnothing$,
+    则存在 $x\in aH \cap bK$.
+
+    设 $x=ah=bk$, 其中 $h\in H$, $k\in K$.    
+    一方面, 对任何 $y \in x(H \cap K)$,
+    设 $y=xt$, $t\in H \cap K$,
+    则 $y=aht=bkt$, 从而 $y\in aH\cap bK$.
+    故 $x(H\cap K) \subseteq aH\cap bK$.
+    另一方面, 对任何 $z\in aH\cap bK$,
+    设 $z=ah_1=bk_1$, 其中 $h_1\in H$, $k_1\in K$,
+    则 $x^{-1}z=h^{-1}h_1=k^{-1}k_1\in H\cap K$,
+    从而 $z\in x(H\cap K)$,
+    故 $aH\cap bK\subseteq x(H\cap K)$.
+    故 $aH\cap bK = x(H\cap K)$.
+\end{solution}
+
+\item $H \cap K$的左陪集必为$H$的左陪集与$K$的左陪集的交;
+\begin{solution}
+    对任何 $x\in G$, 我们证明 $x(H\cap K) = (xH) \cap (xK)$.
+    一方面, 对任何 $y \in x(H\cap K)$,
+    设 $y=xt$, 其中 $t\in H\cap K$,
+    则 $y\in xH$, $y\in xK$. 
+    另一方面, 对任何 $z\in (xH) \cap (xK)$,
+    设 $z=xh=xk$, 其中 $h\in H$, $k\in K$,
+    则 $h=k$, 从而 $h\in H\cap K$,
+    进而 $z\in x(H\cap K)$.
+    故 $x(H\cap K)=(xH) \cap (xK)$. 
+\end{solution}
+
+\item 若$G$关于$H$和$K$的指数均有限,则$G$关于$H \cap K$的指数也有限.
+\begin{solution}
+    设 $G=\coprod\limits_{a\in S}a(H \cap K)$ 为 $G$ 的一个陪集分解,
+    其中 $S\subseteq G$. \\
+    由(1)(2), 所有 $a(H\cap K)$ 均是 $H$ 的陪集与 $K$ 的陪集之交,
+    由假设, 后者只有有限多种情况, 故前者也只有有限多种情况,
+    从而 $|S|<+\infty$, 即 $[G:H\cap K]<+\infty$. 
+\end{solution}
+\end{enumerate}
+
+\item 证明下列命题:
+\begin{enumerate}[label=(\arabic*)]
+\item 任取非零自然数$n$, $\big\langle \frac{1}{n} + \mathbb{Z}\big\rangle$是$\mathbb{Q}/\mathbb{Z}$中唯一的$n$阶子群;
+\begin{solution}
+    设 $H$ 是 $\mathbb{Q}/\mathbb{Z}$ 的一个 $n$ 阶子群,
+    由于 $H$ 为有限群,
+    故 $H$ 中存在一个元素 $q+\mathbb{Z}$,
+    使得 $q$ 的最简分数形式的分母在所有的 $H$ 中的元素中最大.
+    设 $q=\frac{c}{d}$, $\gcd(c,d)=1$,
+    则 $\frac{1}{d}\in H$, 且 $o\left(q+\mathbb{Z}\right)=d$,
+    进而由 Lagrange 定理知 $d|n$,
+    从而 $\big\langle\frac{1}{d}+\mathbb{Z}\big\rangle \subseteq H$.
+    若 $H$ 中有不在 $\big\langle\frac{1}{d}+\mathbb{Z}\big\rangle$ 中的元素 $t$,
+    设 $t=\frac{x}{y}$, 其中 $\gcd(x,y)=1$.
+    由于 $t\notin \big\langle\frac{1}{d}+\mathbb{Z}\big\rangle$,
+    故 $y\not| d$,
+    则 $t+\frac{1}{d}=\frac{\frac{y+xd}{\gcd(d,y)}}{\operatorname{lcm}(d,y)} \in H$,
+    但由于 $y\not| d$,
+    故 $\operatorname{lcm}(d,y) > d$,
+    与其最大性矛盾.
+    故 $H=\big\langle\frac{1}{d}+\mathbb{Z}\big\rangle$,
+    又 $|H|=n$, 故 $d=n$. 
+\end{solution}
+\item $\mathbb{Q}/\mathbb{Z}$的由有限个元素生成的子群是循环群.
+\begin{solution}
+    设某个有限生成子群 $H$ 的生成元为 $g_1,\dots,g_m$.
+    由于 $\mathbb{Q}/\mathbb{Z}$ 中的元素均为有限阶元,
+    故 $\left|H\right| \leqslant \prod\limits_{i=1}^m o(g_i)$,
+    从而由(1)知 $H$ 是循环群. 
+\end{solution}
+
+\end{enumerate}
+
+\item 设$A,B$是有限群$G$的两个非空子集.证明若$|A|+|B|>|G|$,则$G = AB$.
+\begin{proof}
+    对任何的$g \in G$，集合$A^{-1}g$与$A$的基数相同，故$|A^{-1}g|+|B|>|G|$。
+    这说明$A^{-1}g \cap B\ne\varnothing$，
+    即有$a \in A$和$b \in B$使得$a^{-1}g=b$，因而$g=ab \in AB$。
+\end{proof}
+\item 设$G$是有限群, $H$是$G$的真子群. 形如$gHg^{-1}$ $(g \in G)$的子群称为$H$的共轭子群.证明:
+\begin{enumerate}[label=(\arabic*)]
+\item $H$共有$\left[G: N_{G}(H)\right]$个共轭子群;
+
+\item $H$的共轭子群全体必不能覆盖整个群$G$.
+
+\end{enumerate}
+\begin{proof}
+    \begin{enumerate}[label=(\arabic*)]
+    \item 记$\varLambda$为$H$的全部共轭子群, 考察映射
+    \[\varphi:G/N_G(H)\to\varLambda,\quad gN_G(H) \mapsto gHg^{-1},\]
+    易知$\varphi$是良定的双射，故$|\varLambda|=|G/N_G(H)|=[G:N_G(H)]$.
+    \item 如果$H$是$G$的正规子群，那么$\varLambda=\{H\}$，真子群$H$不能覆盖整个$G$。
+    
+    如果$H$不是$G$的正规子群，即$N_G(H) \ne G$，$|\varLambda|>1$，
+    由于$H$的共轭子群都有单位元$e$，可知
+    \[|\cup\varLambda|\leqslant|\varLambda||H|-(|\varLambda|-1)<|\varLambda||H|,\]
+    那么由(1)和$H \subseteq N_G(H)$推出
+    \[|\cup\varLambda|<[G:N_G(H)]|H|\leqslant[G:H]|H|=|G|.\qedhere\]
+    \end{enumerate}
+\end{proof}
+\end{enumerate}
+
+\section{单群,交错群}
+\begin{enumerate}
+\item 给出两个其他类型的单群例子.
+\begin{solution}
+    素数阶循环群 $\Z_p$ 都是单群. 更多例子可参考[[有限单群分类]].
+\end{solution}
+
+\item 设$G$是$S_{2024}$的一个子群,且$G$中存在一个$n$-轮换,其中$n \geqslant 4$是偶数.证明: $G$不是单群.
+\begin{solution}
+    由于 $n$ 是偶数, 故该 $n$-轮换不在 $A_{2024}$ 中,
+    $G\cap A_{2024}$ 是 $G$ 的真子群.
+    令 $H=G\cap A_{2024}$.
+    又 $n\geqslant 4$,
+    则 $G$ 的 $n$-轮换的平方不是单位元, 而其又在 $H$ 中,
+    故 $H$ 非平凡. 
+    
+    任取 $g\in G$,
+    则 $gHg^{-1}\subseteq G$,
+    又由 $A_{2024}\triangleleft S_{2024}$ 知 $gA_{2024}g^{-1}\subseteq A_{2024}$,
+    特别地, $gHg^{-1}\subseteq A_{2024}$,
+    从而, $gHg^{-1}\subseteq G\cap A_{2024} = H$.
+    故 $H\triangleleft G$.
+    从而 $G$ 不是单群. 
+\end{solution}
+
+\item 设$\sigma = (12345)(1234) \in S_{5}$和$\tau = (321)(21)(514) \in S_{5}$.
+\begin{enumerate}[label=(\arabic*)]
+\item 计算$\tau^{-1}\sigma\tau$.
+\begin{solution}
+    计算得 $\tau^{-1}\sigma\tau = (245)(13)$. 
+\end{solution}
+\item 给出一个$\xi \in S_{5}$使得$\xi\sigma\xi^{-1} = \sigma^{-1}$.
+\begin{solution}
+    注意到 $\xi = (35)$ 满足要求. 
+\end{solution}
+
+\end{enumerate}
+
+\item 求出以下两个$S_{5}$的子群的结构:
+\begin{enumerate}[label=(\arabic*)]
+\item $\langle (12)(34), (12345) \rangle$;
+\begin{solution}
+    记 $H=\langle (12)(34), (12345) \rangle$.
+    注意 $(245)=(12)(34)(12345) \in H$.
+    又 $o\left( (245) \right)=3$, $o\left( (12)(34) \right)=2$, $o\left( (12345) \right)=5$,
+    故由 Lagrange 定理知 $2,3,5\bigl| |H| \bigr.$,
+    即 $30\bigl| |H| \bigr.$.
+    由于 $(12)(34),(12345) \in A_5$,
+    故 $H \geqslant A_5$,
+    进而 $|H|=30$ 或 $60$.
+    但 $A_5$ 是单群, 故 $|H|=60$
+    (根据1.3节例3 (1), 指数为 $2$ 的子群必是正规子群),
+    从而 $H=A_5$. 
+\end{solution}
+
+\item $\langle (12)(35), (12345) \rangle$.
+\begin{tikzpicture}
+    \draw(0,1)to(0.95,0.31)to(0.59,-0.81)to(-0.59,-0.81)to(-0.95,0.31)to(0,1);
+    \draw[->,>=stealth](0.2,0)arc(0:-270:0.2);\draw (0,1.2) node {$1$};
+    \draw (1.13,0.3) node {$5$};\draw (-1.13,0.3) node {$2$};
+    \draw (0.7,-1) node {$4$};\draw (-0.7,-1) node {$3$};
+    \draw[dashed](-0.9,1.24)to(0.9,-1.24)
+\end{tikzpicture}
+\begin{solution}
+    将 $1,2,3,4,5$ 视为正五边形的五个顶点,
+    则 $(12345)$ 对应于顺时针旋转 $72^\circ$,
+    $(12)(35)$ 对应于关于过 $4$ 的对称轴反射,
+    故 $\langle (12)(35), (12345) \rangle \cong D_5$. 
+\end{solution}
+
+\end{enumerate}
+
+\item 设$A_{4}$是$4$个文字的交错群.
+\begin{enumerate}[label=(\arabic*)]
+\item 设$N$是$A_{4}$的一个正规子群且含有一个$3$-轮换, 证明: $N$包含所有$3$-轮换;
+\begin{solution}
+    设 $x$ 是 $N$ 中的一个 $3$-轮换, 不妨设 $x=(123)$,
+    则 $y=(132)=x^{-1}\in N$. 那么:
+    \begin{enumerate}
+        \item[]$(134)=(24)(13)(123)(13)(24) \in N$
+        \item[]$(143)=(134)^{-1} \in N$
+        \item[]$(124)=(12)(34)(132)(34)(12) \in N$
+        \item[]$(142)=(124)^{-1} \in N$
+        \item[]$(234)=(14)(23)(132)(23)(14) \in N$
+        \item[]$(243)=(234)^{-1} \in N$
+    \end{enumerate}
+    从而 $N$ 包含所有 $3$-轮换. 
+\end{solution}
+
+\item 求$A_{4}$的所有正规子群,说明理由.
+\begin{solution}
+    设 $H$ 为 $A_4$ 的一个正规子群. 
+
+    若 $H$ 包含一个$3$-轮换, 则由 (1) 知 $H$ 包含所有$3$-轮换,
+    从而 $H=A_4$. 
+
+    若 $H$ 不包含$3$-轮换,
+    则 $H\subseteq\left\{ e,(12)(34),(13)(24),(14)(23) \right\}$.
+    又由于 $(123)(12)(34)(132)=(14)(23)$, $(124)(12)(34)(143)=(13)(24)$,
+    且 $H$ 是正规子群,
+    故 $H=\left\{ e,(12)(34),(13)(24),(14)(23) \right\}\triangleq V$. 
+
+    综上所述, $A_4$ 的所有正规子群为: $\{e\}$, $V$, $A_4$. 
+\end{solution}
+
+\end{enumerate}
+
+\item 对任何正整数$n \geqslant m \geqslant 2$,自然地视$A_{m}$为$A_{n}$的子群.
+令$A_{\infty} = \bigcup\limits_{n=2}^{\infty} A_{n}$.
+\begin{enumerate}[label=(\arabic*)]
+\item 说明 $A_{\infty}$ 上有一个自然的群结构, 使得对任意的 $n \geqslant 2$, $A_n<A_{\infty}$;
+\begin{solution}
+    在 $A_{\infty}$ 上定义乘法如下:
+    对 $x,y\in A_{\infty}$,
+    由 $A_{\infty}$ 的定义,
+    存在 $n\geqslant 2$ 使得 $x,y\in A_n$,
+    定义 $x\cdot_{A_{\infty}}y \coloneqq x\cdot_{A_n}y$.
+    由于每一个 $A_m$ 上均有群结构,
+    且群的定义中每一条公理均只涉及有限个元素,
+    故 $A_{\infty}$ 在此乘法下构成群.
+    由于 $A_n$ 本身就是群,
+    故 $A_n$ 当然是 $A_{\infty}$ 的子群. 
+\end{solution}
+
+\item 证明 $A_{\infty}$ 是单群.
+\begin{solution}
+    假设 $H \triangleleft A_{\infty}$.
+    令 $K_n = H \cap A_n$,
+    则 $K_n \triangleleft A_n$.
+    而当 $n\geqslant 5$ 时 $A_n$ 是单群,
+    故此时 $K_n=A_n$ 或 $K_n=\{e\}$. 下证$H=\{e\}$或$A_\infty$。
+    \begin{itemize}
+    \item 若存在任意大的 $n$ 使得 $K_n=\{e\}$, 则 $H = \{e\}$. 
+    \item 若从某个 $n$ 开始均有 $K_n=A_n$,
+    则对任何 $n\geqslant 5$ 均有 $H \supseteq A_n$,
+    从而 $H = A_{\infty}$.\qedhere
+    \end{itemize}
+\end{solution}
+\end{enumerate}
+
+\item 描述 $S_n$ $(n \geqslant 1)$ 的所有正规子群.
+\begin{solution}
+    \begin{enumerate}
+        \item[(1)]
+        当 $n=1$ 时:
+        所有正规子群为 $\{e\}$.
+        \item[(2)]
+        当 $n=2$ 时:
+        所有正规子群为 $\{e\},S_2$.
+        \item[(3)]
+        当 $n=3$ 时:
+        所有正规子群为 $\{e\},\{e,(123),(132)\},S_3$. 
+        \item[(4)]
+        当 $n=4$ 时:
+        所有正规子群为 $\{e\},\{e,(12)(34),(13)(24),(14)(23)\},A_4,S_4$.
+        \item[(5)]
+        当 $n\geqslant 5$ 时:
+        假设 $H$ 是 $S_n$ 的正规子群.
+        令 $K = H \cap A_n$,
+        则 $K \triangleleft A_n$.
+        而 $A_n$ 是单群,
+        故 $K = \{e\}$ 或 $K = A_n$.
+        若 $K = A_n$,
+        则 $H \supseteq A_n$,
+        从而 $H = A_n$ 或 $H = S_n$,
+        它们均为 $S_n$ 的正规子群.
+        若 $K=\{e\}$,
+        则 $h A_n$ ($h\in H$) 互不相交,
+        从而 $|H|\leqslant [S_n: A_n] = 2$.
+        若 $|H|=2$, 则 $H$ 包含一个$2$阶元,
+        进而包含它的所有共轭元, 矛盾.
+        故 $H=\{e\}$. 
+        综上所述, $S_n\ (n\geqslant 5)$ 的所有正规子群为
+        $\{e\},A_n,S_n$.\qedhere
+    \end{enumerate}
+\end{solution}
+
+\item 设 $n \geqslant 2$ 为正整数.
+\begin{enumerate}[label=(\arabic*)]
+\item 设 $G_n=\left[S_n, S_n\right]$, 证明当 $n \geqslant 3$ 时, $G_n=A_n$;
+\begin{solution}
+    由于奇置换和奇置换的复合, 偶置换与偶置换的复合均为偶置换,
+    故 $[S_n,S_n]\subseteq A_n$.
+    又注意到 $(xyz) = (xzy)(xy)(xyz)(xy) \in [S_n,S_n]$,
+    故 $[S_n,S_n]$ 含有所有$3$-轮换,
+    从而 $[S_n,S_n]=A_n$. 
+\end{solution}
+\item 求 $\left[A_n, A_n\right]$.
+\begin{solution}
+    对任何群 $G$,
+    有 $[G,G]\triangleleft G$.
+
+    若 $n\geqslant 5$, 由于 $A_n$ 是单群且不是交换群,
+    故 $[A_n,A_n]=A_n$.
+
+    若 $n=4$, 直接计算得 $[A_4,A_4]=V$.
+
+    若 $n=2,3$, 由于 $A_n$ 是交换群, 故 $[A_n,A_n]=\{e\}$.
+\end{solution}
+\end{enumerate}
+
+\item 对 $n \geqslant 2$,确定所有的数字 $i$ $(2 \leqslant i \leqslant n)$,
+使得 $S_n=\langle(1 i),(12 \cdots n)\rangle$.
+\begin{solution}
+    所有满足条件的 $i$ 为 $\{i:\ \gcd(n,i-1)=1\}$. 理由如下.
+    记 $H=\langle(1 i),(12 \cdots n)\rangle$. 
+
+    一方面, 设 $\gcd(n,i-1)=1$.
+    记 $g=(1i)(12 \cdots n)=(1\cdots (i-1))(i\cdots n)$.
+    由中国剩余定理, 以下关于 $m$ 的同余方程组分别有解:
+    $$\left\{\begin{aligned}
+        1+m &\equiv 1 \mod (i-1)\\
+        i+m &\equiv i+1 \mod (n-i+1)
+    \end{aligned}\right.,
+    \quad
+    \left\{\begin{aligned}
+        1+m &\cong 0 \mod (i-1)\\
+        i+m &\cong i \mod (n-i+1)
+    \end{aligned}\right.,$$
+    记它们的解分别为 $m=a$ 和 $m=b$.
+    则对 $1<k<i$, 有 $(ki)=g^{ka}(1i)g^{-ka}\in H$;
+    对 $i<k \leqslant n$, 有 $(1k)=g^{(k-i)b}(1i)g^{-(k-i)b} \in H$.
+    进而对 $1<k<i$ 有 $(1k)=(ki)(1i)(ki)^{-1} \in H$.
+    从而 $(12),(13),\dots,(1n)\in H$, 故 $H=S_n$.
+
+    另一方面, 若 $\gcd(n,i-1)>1$,
+    假设 $H=S_n$, 则 $H$ 包含所有对换.
+    记 $\sigma=(12\cdots n)$, $\tau=(1i)$.
+    设对换 $(xy)\in H$,
+    由于 $S_n$ 中的对换两两共轭, 且 $H=S_n$,
+    故存在正整数 $m$ 及整数 $a_1,b_1,a_2,b_2,\dots,a_m,b_m$ 使得
+    $$(xy)=\tau^{-b_m}\sigma^{-a_m}\cdots\tau^{-b_1}\sigma^{-a_1}(1i)\sigma^{a_1}\tau^{b_1}\cdots\sigma^{a_m}\tau^{b_m}.$$
+    而 $\sigma^{-1}(uv)\sigma=(\overline{u+1}\overline{v+1})$,
+    其中 $\overline{t}$ 表示 $1,2,\dots,n$ 中与 $t$ 模 $n$ 同余的唯一整数,
+    $$\tau^{-1}(uv)\tau=\left\{\begin{aligned}
+        (uv)&,\quad (uv)=(1i) \text{ or } \{u,v\}\cap \{1,i\}=\varnothing\\
+        ((u-i+1)v)&,\quad u=i \\
+        ((u+i-1)v)&,\quad u=1 \\
+        (u(v-i+1))&,\quad v=i \\
+        (u(v+i-1))&,\quad v=1
+    \end{aligned}\right..$$
+    注意到以上两个共轭作用要么保持 $\overline{v-u}$ 不变,
+    要么将 $\overline{v-u}$ 变为 $\overline{v-u\plusmn(i-1)}$.
+    而 $\overline{t}=t+nq$ 对某个整数 $q$ 总成立,
+    故关于 $(xy)$ 的等式蕴含 $y-x$ 是 $i-1$ 与 $n$ 的整系数线性组合.
+    特别地, 令 $x=1$, $y=2$, 则存在整数 $c,d$ 使得 $c(i-1)+dn=1$,
+    由 Bezout 定理, 这等价于 $\gcd(i-1,n)=1$. 
+\end{solution}
+
+\item 求解下列问题:
+\begin{enumerate}[label=(\arabic*)]
+\item 证明:当 $n \geqslant 5$ 为奇数时, $A_n=\langle(123),(12 \cdots n)\rangle=\langle(12)(34),(12 \cdots n)\rangle$;
+\begin{solution}
+    注意到
+    $$(123)(123)(12\cdots n) = (34\cdots n) \triangleq \sigma,$$
+    而 $\sigma^a (123)\sigma^{-a} = (12(3+a))$,
+    故 $(123),(124),\dots,(12n) \in \langle (123),(12\cdots n) \rangle$,
+    从而 $A_n = \langle (123),(12\cdots n) \rangle$.
+
+    记 $\alpha = (12)(34)$, $\beta = (12\cdots n)$, 注意到
+    $$(123) = \beta \left( \prod_{i=0}^{\frac{n-3}{2}} \beta^{2i} \alpha \beta^{-2i} \right) \beta^{-1},$$
+    故 $\langle(12)(34),(12 \cdots n)\rangle = \langle(123),(12 \cdots n)\rangle = A_n$. 
+\end{solution}
+
+\item 说明 $A_5$ 可被一个 $2$ 阶元和一个 $3$ 阶元生成.
+\begin{solution}
+    由 (1) 得 $A_5 = \langle (12)(34), (245) \rangle$. 
+\end{solution}
+
+\end{enumerate}
+
+\item 设 $n$ 是正整数.证明 $\sigma, \tau \in S_n$ 是共轭的当且仅当 $\sigma, \tau$ 有相同的轮换结构.
+\begin{proof}
+    设$\sigma=(i_1 i_2 \cdots i_d)\cdots(j_1 j_2 \cdots j_r)$。
+    若$\sigma$把$i$映成$j$，则其共轭$\tau=\xi\sigma\xi^{-1}$就把$\xi(i)$映成$\xi(j)$，
+    因此$\sigma$的共轭$\tau=\xi\sigma\xi^{-1}$就是
+    \[(\xi(i_1)\xi(i_2)\cdots\xi(i_d))\cdots(\xi(j_1)\xi(j_2)\cdots\xi(j_r)),\]
+    其轮换结构与$\tau$相同。反过来，
+    如果$\tau=(i_1' i_2' \cdots i_d')\cdots(j_1' j_2' \cdots j_r')$的轮换结构与$\sigma$相同，
+    那么只要令\[\xi=\begin{pmatrix}i_1&i_2&\cdots&i_d&\cdots&j_1&j_2&\cdots&j_r\\
+    i_1'&i_2'&\cdots&i_d'&\cdots&j_1'&j_2'&\cdots&j_r'\end{pmatrix},\]
+    就有$\tau=(\xi(i_1)\xi(i_2)\cdots\xi(i_d))\cdots(\xi(j_1)\xi(j_2)\cdots\xi(j_r))=\xi\sigma\xi^{-1}$。
+\end{proof}
+\end{enumerate}
+
+\section{群的同态与同构}
+
+\begin{enumerate}
+\item 设 $f: G_1 \rightarrow G_2$ 为群同态,证明 $f$ 为群同构当且仅当存在群同态 $g: G_2 \rightarrow G_1$ 使得 $g \circ f=\mathrm{id}_{G_1},f \circ g=\mathrm{id}_{G_2}$.
+\begin{solution}
+    一方面, 若 $f$ 为群同构, 则 $f$ 是双射, 
+    故 $f^{-1}$ 是良定的从集合到集合的映射. 由于
+    $$f\left( f^{-1}(xy) \right) = xy = f\left( f^{-1}(x)) \right) f\left( f^{-1}(y) \right) = f\left( f^{-1}(x)) f^{-1}(y) \right),$$
+    故 $f^{-1}(xy)=f^{-1}(x)f^{-1}(y)$, 即 $f^{-1}$ 是群同态.
+
+    另一方面, 若存在 $g: G_2 \to G_1$ 使得 $g\circ f =\operatorname{id}$ 
+    且 $f\circ g =\operatorname{id}$, 则 $f$ 既单又满, 故 $f$ 为同构.
+\end{solution}
+
+\item 举例说明:如果 $f: G_1 \rightarrow G_2$ 为群同态, $\operatorname{Im} f$ 不一定是 $G_2$ 的正规子群.
+\begin{solution}
+    考虑 $G_1=S_4$, $G_2=S_5$, $f$ 为自然的嵌入,
+    则 $\operatorname{Im} f = S_4$ 不是 $S_5$ 的正规子群. 
+\end{solution}
+
+\item 设 $f: G \rightarrow H$ 是一个群同态, $a \in G$ 是一个有限阶元.证明 $f(a)$ 的阶整除 $a$ 的阶.
+\begin{solution}
+    记 $n=o_G(a)$. 注意 $e_H=f(e_G)=f(a^n)=f(a)^n$, 故 $o_H(a) | n=o_G(a)$.
+\end{solution}
+
+\item 设 $f: S_n \rightarrow G$ 是群同态, $G$ 为 Abel 群,证明: $|\operatorname{Im} f| \leqslant 2$.
+\begin{solution}
+    由于 $G$ 是Abel群,
+    故 $\operatorname{Ker} f \supseteq [S_n,S_n]$,
+    由第一同构定理知
+    $\#\operatorname{Im} f = \#\left( S_n / [S_n,S_n] \right)$.
+    又由\textbf{习题1.4.8}(1),
+    当 $n\geqslant 3$ 时, $[S_n,S_n]=A_n$,
+    故 $\#\operatorname{Im} f \leqslant 2$. 
+\end{solution}
+
+\item 若 $G$ 是一个群,映射 $f: G \rightarrow G$ 由 $f(x)=x^{-1}$ $(\forall\, x \in G)$ 给出.
+\begin{enumerate}[label=(\arabic*)]
+\item 给出 $f$ 是群同态的一个充分必要条件;
+\begin{solution}
+    我们证明 $f$ 是群同态当且仅当 $G$ 是交换群. 
+
+    一方面, 若 $G$ 是交换群,
+    则 $f(xy)=(xy)^{-1}=y^{-1}x^{-1}=f(y)f(x)=f(x)f(y)$,
+    故 $f$ 是群同态. 
+
+    另一方面, 若 $f$ 是群同态, 则
+    $$yx = \left( x^{-1}y^{-1} \right)^{-1} = f\left( x^{-1}y^{-1} \right) = f\left( x^{-1} \right) f\left( y^{-1} \right) = xy$$
+    对任何 $x,y\in G$ 均成立, 从而 $G$ 是交换群. 
+\end{solution}
+
+\item 若 $G$ 是有限群且 $|\operatorname{Aut}(G)|=1$, 证明 $|G| \leqslant 2$.
+\begin{solution}
+    由 (1) 及 \textbf{习题1.5.4} 即得. 
+\end{solution}
+
+\end{enumerate}
+\item 若群 $G$ 满足 $C(G)=\{e\}$, 则 $C(\operatorname{Aut}(G))=\{\operatorname{id}\}$.
+\begin{solution}	
+    设$\varphi \in C(\operatorname{Aut}(G))$,对于任意$a\in G$,
+    共轭作用$g\mapsto aga^{-1}$也是$\operatorname{Aut}(G)$的元素,
+    由$\varphi \in C(\operatorname{Aut}(G))$,
+    对于任意$g\in G$,有$\varphi(aga^{-1})=a\varphi(g)a^{-1}$.
+ 	整理得$a^{-1}\varphi(a)\varphi(g)=\varphi(g)a^{-1}\varphi(a)$,
+    由于$\varphi$是自同构, $\varphi(g)$可以取遍$G$的所有元素,
+    于是有$a^{-1}\varphi(a) \in C (G)$,从而$a=\varphi(a)$,
+    由$a$的任意性,有$\varphi=\operatorname{id}$.	
+\end{solution}
+
+\item 设 $G$ 是有限群,使得 $|G|=p_1 p_2 \cdots p_s$,其中 $p_i$ 为互异素数,
+设 $G$ 的正规子群的个数为 $n$,证明 $n \leqslant 2^s$.
+\begin{proof}
+    设$H,K$都是$G$的阶为$p_{i_1} \cdots p_{i_t}$的正规子群，则$HK$亦为$G$的子群，其阶
+    \[\frac{|H||K|}{|H \cap K|}=\frac{p_{i_1}^2 \cdots p_{i_t}^2}{|H \cap K|}\]
+    整除不含平方因子的$|G|=p_1 p_2 \cdots p_s$，这说明$|H \cap K|=p_{i_1} \cdots p_{i_t}$，
+    也就是$H=K$。现在知道$G$的给定阶数的正规子群的数量至多为$1$，从而$n$不超过$|G|$的因子数量$2^s$。
+\end{proof}
+\item 设 $\phi: S_n \rightarrow S_n$ 是对称群 $S_n$ 的一个自同构,且 $n \neq 6$.证明:
+\begin{enumerate}[label=(\arabic*)]
+\item $\phi$ 将 $S_n$ 中的对换映为对换;
+\begin{solution}
+    设 $\sigma\in S_n$ 是对换.
+    则 $\phi(\sigma)^2=\phi\big(\sigma^2\big)=\phi(e)=e$,
+    又 $\phi$ 是同构, 故 $\phi(\sigma)$ 是$2$阶元,
+    从而 $\phi(\sigma)$ 是不交的对换的乘积.
+    故命题对 $n=1,2,3$ 成立. 
+
+    记 $H_m$ 为 $S_n$ 中由所有 $m$ 个不交的对换的乘积构成的集合,
+    则由于 $\phi$ 是同构, 故将共轭类映为共轭类.
+    由于 $S_n$ 中所有$2$阶元均在某个 $H_i$ 中,
+    故 $\phi(H_1)=H_k$ 对某个 $k\leqslant\frac{n}{2}$ 成立.
+    而
+    \begin{align*}
+        |H_1| &= \binom{n}{2}, \\
+        |H_k| &= \frac{1}{k!}\prod_{j=0}^{k-1}\binom{n-2j}{2},
+    \end{align*}
+    当 $n=4$, 时, $|H_1| = 6$, $|H_2| = 3$, 故 $k=1$,
+    从而 $\phi$ 将对换映为对换. 
+    当 $n=5$ 或 $n\geqslant 7$ 时, 
+    \begin{align*}
+        \frac{1}{k!}\prod_{j=0}^{k-1}\binom{n-2j}{2}
+        &\geqslant \frac{1}{2^{k-1}k!}\binom{n}{2}\prod_{j=n-2k+1}^{n-2}j \\
+        &\geqslant \binom{n}{2}\frac{(2k-3)!!}{k} \\
+        &> \binom{n}{2},
+    \end{align*}
+    故 $k=1$. 
+\end{solution}
+\item $\operatorname{Aut}S_n \cong S_n$.
+\begin{solution}
+    对 $i\in\{2,3,\cdots,n\}$, 设 $\phi((1i))=(xy_i)$.
+    令
+    $$\tau_{\phi} = 
+    \begin{pmatrix}
+        1 & 2 & \cdots & n \\
+        x & y_2 & \cdots & y_n
+    \end{pmatrix}, $$
+    则 $\phi(\sigma)=\tau_\phi\sigma\tau_\phi^{-1}$ 对任何 $\sigma\in S_n$ 成立.
+    定义
+    \begin{align*}
+        \psi:\ \operatorname{Aut}(S_n) &\to S_n \\
+        \phi &\mapsto \tau_{\phi}, 
+    \end{align*}
+    我们证明 $\psi$ 是群同构.
+    \begin{itemize}
+        \item
+        设 $\phi_1,\phi_2\in\operatorname{Aut}(S_n)$,
+        则 $\tau_{\phi_1}\tau_{\phi_2}\sigma\tau_{\phi_1}^{-1}\tau_{\phi_2}^{-1} = \phi_1(\phi_2(\sigma)) = (\phi_1\circ\phi_2)(\sigma) = \tau_{\phi_1\circ\phi_2}\sigma\tau_{\phi_1\circ\phi_2}^{-1}$ 对任何 $\sigma\in S_n$ 成立,
+        故 $\tau_{\phi_1}\tau_{\phi_2}=\tau_{\phi_1\circ\phi_2}$,
+        从而 $\psi$ 是群同态. 
+        \item
+        显然 $\psi$ 是单射.
+        \item 若设 $\tau\in S_n$, 令 $\phi(\sigma)=\tau\sigma\tau^{-1}$,
+        则 $\phi\in\operatorname{Aut}S_n$, 故 $\psi$ 是满射.
+    \end{itemize}
+    故 $\psi$ 是群同构. 
+\end{solution}
+\end{enumerate}
+\item 求解下列问题:
+\begin{enumerate}[label=(\arabic*)]
+\item $\mathbb{R} / \mathbb{Q}, \mathbb{R} / \mathbb{Z}, \mathbb{Q} / \mathbb{Z}$ 作为加法群是否两两同构？
+\item 群 $(\mathbb{R},+)$ 与群 $\left(\mathbb{R}_{>0}, \times\right)$ 是否同构？与 $(\mathbb{R} \backslash\{0\}, \times)$ 是否同构？
+\end{enumerate}
+\begin{solution}
+\begin{enumerate}[label=(\arabic*)]
+ 	\item 三个群互不同构.
+ 	\begin{enumerate}
+ 	\item[$\mathbb{R} / \mathbb{Q}\ncong \mathbb{R} / \mathbb{Z}$] $\mathbb{R} / \mathbb{Z}$有$2$阶元$1/2$,
+ 	而$\mathbb{R} / \mathbb{Q}$没有, 因为如果$2a\in\mathbb{Q}$, 那么$a\in\mathbb{Q}$.
+ 	\item[$\mathbb{R} / \mathbb{Q}\ncong \mathbb{Q} / \mathbb{Z}$] 前者不可数, 后者可数.
+ 	\item[$\mathbb{R} / \mathbb{Z}\ncong \mathbb{Q} / \mathbb{Z}$] 理由同上.
+ 	\end{enumerate}
+ 	\item $(\mathbb{R},+) \cong \left(\mathbb{R}_{>0}, \times\right)$, 同构由指数映射$x \mapsto \mathrm{e}^{x}$给出.
+ 	$(\mathbb{R},+) \ncong (\mathbb{R} \backslash\{0\}, \times)$, 后者有$2$阶元$-1$, 前者没有.\qedhere
+\end{enumerate}
+\end{solution}
+\item 求解下列问题:
+\begin{enumerate}[label=(\arabic*)]
+\item 设群 $G$ 的正规子群满足升链条件(ACC),即若有正规子群 $H_i \triangleleft G$使得
+\[H_1 \triangleleft H_2 \triangleleft \cdots \triangleleft H_s \triangleleft \cdots \triangleleft G,\]
+则存在$n_0 \in \mathbb{N}$,使得对任意$n \geqslant n_0$有$H_n = H_{n+1}$. 证明:若$f: G \rightarrow G$是满同态,则$f$为同构;
+\item 设$G$为Abel群,且$G$的正规子群满足降链条件(DCC),即若有正规子群$H_i \triangleleft G$使得
+\[\cdots \triangleleft H_s \triangleleft \cdots \triangleleft H_2 \triangleleft H_1 \triangleleft G,\]
+则存在$n_0 \in \mathbb{N}$,使得对任意$n \geqslant n_0$有$H_n = H_{n+1}$. 证明:若$f: G \rightarrow G$是单同态,则$f$为同构.
+\item 试问若不要求$G$是Abel群, (2)中结论是否仍然成立?说明理由. (提示:可以利用习题1.4第6题中的例子.)
+\end{enumerate}
+\begin{proof}[解答]
+\begin{enumerate}[label=(\arabic*)]
+    \item 若$f$不是单射，即存在$a \in G$使得$a\ne0$且$f(a)=0$，
+    因为$f$是满同态，存在$b \in G$使得$a=f(b)$，
+    即$f(b)\ne0$且$f^2(b)=0$，以此类推可得严格升链
+    \[0 \triangleleft \ker(f) \triangleleft \ker(f^2) \triangleleft \cdots 
+    \triangleleft \ker(f^s) \triangleleft \cdots \triangleleft G,\]
+    从而$G$不Noether。
+    \item 若$f$不是满射，即存在$a \in G$使得$a\notin\operatorname{Im}(f)$，
+    因为$f$是单同态，进而有$f(a)\notin\operatorname{Im}(f^2)$ 
+    (不然$f(a)=f^2(b)$就有$a=f(b)$)，以此类推可得严格降链
+    \[\cdots \triangleleft \operatorname{Im}(f^s) \triangleleft \cdots 
+    \triangleleft \operatorname{Im}(f^2) 
+    \triangleleft \operatorname{Im}(f) \triangleleft G,\]
+    从而$G$不Artin。
+    \item 不成立，取$G=A_\infty$是单群，
+    单同态$f$把$(i_1 i_2 \cdots i_d)\cdots(j_1 j_2 \cdots j_r)$
+    映成$(2i_1 \, 2i_2 \cdots 2i_d)\cdots(2j_1 \, 2j_2 \cdots 2j_r)$，
+    易见$f$不是满的。\qedhere
+\end{enumerate}
+\end{proof}
+\item 设 $f: G \rightarrow G'$ 是群同态,证明:
+\begin{enumerate}[label=(\arabic*)]
+\item $f$ 为单同态当且仅当对任意群 $H$ 和群同态 $g_i : H \rightarrow G$ $(i = 1,2)$ 使得 $f \circ g_1 = f \circ g_2$, 都有 $g_1 = g_2$;
+\item $f$ 为满同态当且仅当对任意群 $H$ 和群同态 $h_i : G' \rightarrow H$ $(i = 1,2)$ 使得 $h_1 \circ f = h_2 \circ f$, 都有 $h_1 = h_2$.
+\end{enumerate}
+\end{enumerate}
+
+\section{群的直积}
+
+\begin{enumerate}
+\item 写出两个不同于例1的内直积的等价命题.
+\item 有理数加法群 $\mathbb{Q}$ 与 $\mathbb{Q} \times \mathbb{Z}_2$ 是否同构?说明理由.
+
+\item 设 $n>1$, 若 $n$ 为奇数,证明 $D_{2n} \cong D_{n} \times \mathbb{Z}_2$.说明当 $n$ 为偶数时上述结论不成立.
+
+\item 设 $G_1 , G_2$ 是有限群,使得 $\gcd(|G_{1}|, |G_{2}|) = 1$.证明 $\operatorname{Aut}(G_1 \times G_2) \cong  \operatorname{Aut}(G_1) \times  \operatorname{Aut}(G_2)$.
+
+\item 求解下列问题:
+\begin{enumerate}[label=(\arabic*)]
+\item 给出一个满足以下条件的例子: $H < G_{1} \times G_{2}$ 且 $H$ 不能写成 $H_{1}$ $(H_{1} < G_{1})$ 与 $H_{2}$ $(H_{2} < G_{2})$ 的直积;
+\item 设 $G_{1}, G_{2}$ 是群.证明: $G_{1} \times G_{2}$ 的任意子群都形如 $H_{1} \times H_{2}$ $(H_i < G_i , i = 1,2)$ 
+当且仅当对任意 $g_{1} \in G_{1}, g_{2} \in G_{2}$, $g_{1}, g_{2}$ 均为有限阶且 $\gcd(o(g_1), o(g_2)) = 1$. 
+\end{enumerate}
+\begin{proof}[解答]
+    \begin{enumerate}[label=(\arabic*)]
+    \item 比如说$\Z_2\times\Z_2$中由$(1,1)$生成的$2$阶子群就不是$\Z_2$的两个子群的直积。
+    \item 简写$o_1=o(g_1),o_2=o(g_2)$。如果对任何的$g_1 \in G_1,g_2 \in G_2$
+    都有$o_1,o_2<\infty$且$\operatorname{gcd}(o_1,o_2)=1$，
+    设$H$是$G_1 \times G_2$的子群，令
+    \[H_1 \times \{e_2\}=(G_1 \times \{e_2\}) \cap H,
+    \qquad\{e_1\} \times H_2=(\{e_1\} \times G_2) \cap H,\]
+    容易说明$H_1,H_2$是$G_1,G_2$的子群。对于$(g_1,g_2) \in H$，
+    设整数$n_1,n_2$使得$n_1o_1+n_2o_2=1$，那么
+    \[(g_1,e_2)=(g_1,g_2)^{n_2o_2} \in H_1 \times \{e_2\},
+    \qquad(e_1,g_2)=(g_1,g_2)^{n_1o_1} \in \{e_1\} \times H_2,\]
+    即$g_1 \in H_1,g_2 \in H_2$，也就是说$(g_1,g_2) \in H_1 \times H_2$，
+    这说明$H=H_1 \times H_2$。反过来，如果这个性质不成立，
+    那么有$3$种情况（要补充$G_1,G_2$都不是单位元群这个条件）
+    \begin{itemize}
+    \item 有$g_1 \in G_1$使得$o_1=\infty$，任取$g_2 \in G_2\setminus\{e_2\}$，
+    考察$(g_1,g_2)$生成的子群$H$。假定$H$是$G_1,G_2$的子群的直积，
+    那么只能是$\langle g_1 \rangle\times\langle g_2 \rangle$，
+    可是$(g_1,e_2)$属于$\langle g_1 \rangle\times\langle g_2 \rangle$却不属于$H$；
+    \item 有$g_2 \in G_2$使得$o_2=\infty$，同上；
+    \item 有$g_1 \in G_1,g_2 \in G_2$使得$o_1,o_2<\infty$
+    且$\operatorname{gcd}(o_1,o_2)>1$，考察$(g_1,g_2)$生成的子群$H$。
+    假定$H$是直积的话只能是$\langle g_1 \rangle\times\langle g_2 \rangle$，
+    可是$H$是$\operatorname{lcm}(o_1,o_2)$阶循环群，
+    其阶数小于$\langle g_1 \rangle\times\langle g_2 \rangle$的阶数$o_1o_2$。\qedhere
+    \end{itemize}
+    \end{enumerate}
+\end{proof}
+\item 设 $G$ 是群,且满足:对任意 $x \in G$, $x^2 = e$.
+\begin{enumerate}[label=(\arabic*)]
+\item 证明 $G$ 是 Abel 群;
+\item 如果 $G$ 是有限群,证明存在非负整数 $n$ 使得 $G \cong \bigoplus\limits_{n} \mathbb{Z}_2$ (即 $n$ 个 $\mathbb{Z}_2$ 的直和).
+\end{enumerate}
+\begin{proof}
+    \begin{enumerate}[label=(\arabic*)]
+    \item 注意到对于$x,y \in G$，都有
+    \[xyx^{-1}y^{-1}=x\big(yx^{-1}\big)^{-1}y^{-1}=xxy^{-1}y^{-1}=e.\]
+    \item 由(1)和第二章定理9.5，$G$的结构为$\Z_{d_1}\oplus\cdots\oplus\Z_{d_n}$，
+    其中$d_n \mid\cdots\mid d_1$，易见$d_n=\cdots=d_1=2$。\qedhere
+    \end{enumerate}
+\end{proof}
+\item 求解下列问题;
+\begin{enumerate}[label=(\arabic*)]
+\item 设 $G = G_1 \times \cdots \times G_n$ 是群的直积, 
+$p_i : G \rightarrow G_i$ 为到第 $i$ 个分量的投影映射, 
+$\phi_i : S \rightarrow G_i$ 是群同态,其中 $i = 1,\cdots, n$,
+证明存在唯一的群同态 $\phi : S \rightarrow G$,
+使得对任意 $i = 1, \cdots, n$,都有 $p_i \circ \phi = \phi_i$. 
+
+\item 设 $G = G_1 \times \cdots \times G_n$, 
+$j_i : G_i \rightarrow G$ 为自然同态, 
+$\psi_i : G_i \rightarrow S$ 是群同态,其中 $i = 1, \cdots, n$.
+举例说明未必存在唯一的群同态 $\psi : G \rightarrow S$,
+使得对任意 $i = 1,\cdots,n$,都有 $\psi \circ j_i = \psi_i$.
+\begin{proof}[解答]
+    \begin{enumerate}[label=(\arabic*)]
+    \item 容易说明$\phi$只能是$(\phi_1,\cdots,\phi_n)$，并且要说明这是群同态，即
+    \begin{align*}
+        \phi(s)\phi(t)&=\big(\phi_1(s),\cdots,\phi_n(s)\big)\big(\phi_1(t),\cdots,\phi_n(t)\big)\\
+        &=\big(\phi_1(s)\phi_1(t),\cdots,\phi_n(s)\phi_n(t)\big)\\
+        &=\big(\phi_1(st),\cdots,\phi_n(st)\big)=\phi(st).
+    \end{align*}
+    \begin{cd}
+    & & S \ar[ddll,"\phi_i"'] \ar[ddrr,"\phi_j"] \ar[dd,dashed,"\phi"] & & \\ \\
+    G_i & & G \ar[ll,"p_i"] \ar[rr,"p_j"'] & & G_j
+    \end{cd}
+    \item $\psi$未必存在的本质原因在于$G_1 \times \cdots \times G_n$的各个分量是交换的，
+    通过$\psi$进入的群$S$却不是那么地交换。比如说$G_1=G_2=\Z_2$，
+    群同态$\psi_1,\psi_2$把两者的生成元分别映为$S=S_3$中的对换$(12)$和$(13)$，
+    从而假定$\psi$存在的话会有相互矛盾的式子
+    \begin{align*}
+        \psi(1,1)&=\psi(1,0)\psi(0,1)=(12)(13)=(132),\\
+        \psi(1,1)&=\psi(0,1)\psi(1,0)=(13)(12)=(123).
+    \end{align*}
+    \begin{cd}
+    & S_3 & \\ \\
+    \Z_2 \ar[r,"j_1"'] \ar[uur,"\psi_1"] & \Z_2\times\Z_2 \ar[uu,"\psi"] & \Z_2 \ar[l,"j_2"] \ar[uul,"\psi_2"']
+    \end{cd}
+    \end{enumerate}
+\end{proof}
+\end{enumerate}
+\item 设 $G_1 , G_2$ 是群, $K < G_1 \times G_2$,使得投影映射 $p_1 : K \rightarrow G_1 , p_2 : K \rightarrow G_2$ 均为满同态.
+\begin{enumerate}[label=(\arabic*)]
+\item 记 $N = \operatorname{Ker}p_1$,证明 $N$ 可视作 $G_2$ 的一个正规子群;
+\item 记 $H = G_{2}/N$, $f_2 : G_2 \rightarrow H$ 是自然投射.试构造一个自然的满同态 $f_1 : G_1 \rightarrow H$,使得 $f_1 \circ p_1 = f_2 \circ p_2$;
+\item 定义
+\[G_1 \times_{H}G_2 \triangleq \{(g_1 , g_2) \in G_1 \times G_2 \mid f_{1}(g_1) = f_{2}(g_2)\},\]
+称其为$G_1$与$G_2$在$H$上的纤维积(fiber product).证明: $K = G_1 \times_{H}G_2$.
+\end{enumerate}
+\item 设 $\left\{G_{\alpha}\right\}_{\alpha \in I}$ 是以 $I$ 为指标集的一族群.
+对正整数 $n$,我们称 $n$-元组 $a = (x_1 , x_2 , \cdots , x_n)$ 为 $\left\{G_{\alpha}\right\}$ 上的一个长度为 $n$ 的字,
+其中 $x_i \in \coprod\limits_{\alpha \in I}G_{\alpha}$.\footnote{这里的表述有较大的缺陷。
+首先，实际上$\bigcup\limits_{\alpha \in I}G_\alpha$并不是无交并，
+相反，各个$G_\alpha$要共用同一个单位元$e$，尽管在此之外就不再相交了
+(不过这不意味着若干个有着非平凡的共同元素的群就不能进行自由积了，
+比如说就算$G_1 \cap G_2$不止是$\{e\}$，也可以用
+\[\underline{G_1}=\big((G_1\setminus\{e\})\times\{1\}\big)\cup\{e\},\quad
+\underline{G_2}=\big((G_2\setminus\{e\})\times\{2\}\big)\cup\{e\}\]
+来替换两者，$G_1*G_2$的意思其实是$\underline{G_1}*\underline{G_2}$)。
+更要紧的问题在于，$\coprod$这个符号常用于指一族对象在相应的范畴中的余积，
+即满足本题第(2)问中的泛性质的（同构意义下）唯一的那个对象；
+这也就是说群范畴中的余积就是自由积，因此这个符号上的混乱更为不合适。}
+约定一个长度为$0$的空字,记作 $e$.
+\printfootnotes
+\begin{enumerate}[label=(\arabic*)]
+\item 在 $\left\{G_{\alpha}\right\}$ 上的字的全体构成的集合上构造一个等价关系 $\sim$ 如下:
+\begin{enumerate}[label=(\alph*)]
+\item 记 $e_{\alpha}$ 为 $\left\{G_{\alpha}\right\}$ 上的恒等元,则
+\[(x_1 , \cdots , x_{i-1}, e_{\alpha}, x_{i+1}, \cdots, x_n) \sim (x_1 , \cdots , x_{i-1}, x_{i+1}, \cdots, x_n);\]
+\item 如果 $x_{i}, x_{i+1}$ 同属于某个 $G_{\alpha}$,则有
+\[(x_1 , \cdots , x_{i}, x_{i+1}, \cdots, x_n) \sim (x_1 , \cdots , x_{i}x_{i+1}, \cdots, x_n).\]
+记字 $a$ 所在的等价类为 $\left[a\right]$.对字 $a = (x_1 , x_2 , \cdots , x_n), b = (y_1 , y_2 , \cdots , y_m)$,定义它们的乘积为
+\[ab = (x_1 , \cdots , x_n , y_1 , \cdots , y_m).\] 
+\end{enumerate}
+记 $\left\{G_{\alpha}\right\}$ 上的字的等价类全体为 $* _{\alpha \in I} G_{\alpha}$.
+证明可以定义 $* _{\alpha \in I} G_{\alpha}$ 上的乘法 $\left[a\right]\left[b\right] = \left[ab\right]$ 使得其构成一个群,
+称为 $\left\{G_{\alpha}\right\}_{\alpha \in I}$ 的自由积(free product).
+\item 设 $G = G_1 * \cdots * G_n$ 是群的自由积, $q_i : G_i \rightarrow G$ 将 $x_i$ 映为 $\left[(x_i)\right]$, 
+$\psi_i : G_i \rightarrow S$ 是群同态,其中 $i = 1,\cdots,n$.
+证明存在唯一的群同态 $\psi : G \rightarrow S$,使得对任意$i=1,\cdots,n$,都有$\psi \circ q_i = \psi_i$.
+\end{enumerate}
+\begin{proof}
+\begin{enumerate}[label=(\arabic*)]
+    \item 在自由群中的所谓的字就是把来自于不同的群的元素依次排列在一起，这样的形式上的乘积带来了充分的非交换性，
+    比如说如果``上''和``海''是不同的群中的元素，那么``上海''和``海上''就是两个不同的字 (其实``字''（word）应当译为``词'')。
+    两条规则(a), (b)是说同一个群中的元素就像同一个颜色的珠子一样连在一起视为一个整体，彼此相邻的不同颜色的珠子串则形同陌路互不影响，如下图所示。
+    \begin{center}{{image|illustration of free product of groups.jpeg|400px}}\end{center}
+    $*_{\alpha \in I}G_\alpha$中两个字的乘法就是组字成词，如果有相邻的元素互逆就令它们消失，可多次重复直至相邻的互逆元素不再出现，比如
+    \[[在上海中学][学^{-1}中^{-1}学数学]=[在上海学数学].\]
+    有了这样的形象就容易理解群的自由积是怎么回事了，也就不必一板一眼地检验各条群的公理了，只要在脑海中想象一下其乘法是什么样的，就能确信这是个群了。
+    \item 这是显然的，直观地看，如果对于$i=1,2,3,4$，第$i$声调的汉字都属于群$G_i$，那么容易说明$\psi$的作用只能是形如
+    \begin{align*}
+        \psi(在上海中学)&=\psi_4(在上)\psi_3(海)\psi_1(中)\psi_2(学),\\
+        \psi(学^{-1}中^{-1}学数学)&=\psi_2(学)^{-1}\psi_1(中)^{-1}\psi_2(学)\psi_4(数)\psi_2(学),\\
+        \psi(在上海学数学)&=\psi_4(在上)\psi_3(海)\psi_2(学)\psi_4(数)\psi_2(学),
+    \end{align*}
+    从而$\psi$是存在且唯一的。更为形式化的表述参考\cite{Ro} Chapter 11的Free Products一节。
+    \begin{cd}
+    & & S & & \\ \\
+    G_i \ar[rr,"q_i"'] \ar[uurr,"\psi_i"] & & G \ar[uu,"\psi"] & & G_j \ar[ll,"q_j"] \ar[uull,"\psi_j"']
+    \end{cd}
+\end{enumerate}
+\end{proof}
+\item 设 $S$ 为一个非空集合,对于 $\alpha \in S$,记
+\[G_{\alpha} = \left\{\cdots , \alpha^{-1}, e_{\alpha} = \alpha^{0}, \alpha = \alpha^{1}, \alpha^{2}, \cdots\right\}\]
+为 $\alpha$ 生成的无限循环群.称 $*_{\alpha \in S} G_{\alpha}$ 为 $S$ 生成的自由群,记为 $F(S)$.
+设 $R$ 为 $F(S)$ 的子集, $N$ 为 $F(S)$ 的包含 $R$ 的最小的正规子群,
+令 $G = F(S)/N$,称 $G$ 为生成元集 $S$ 在生成关系 $R$ 下生成的群,也记 $G = \langle S \mid R \rangle$.
+若 $S = \{s_1 , \cdots , s_n\}, R = \{r_1 , \cdots , r_m\}$,则可更详细地记
+\[\langle S \mid R \rangle = \langle s_1 , \cdots , s_n \mid r_1 = \cdots = r_m = e \rangle.\]
+特别地,在 $r_i = \alpha^{-i}\beta^{j}$ 时,关系 $r_i = e$ 也可记为 $\alpha^i = \beta^j$.
+\begin{enumerate}[label=(\arabic*)]
+\item 确定群 $\langle r,s \mid r^n = s^2 = e, s^{-1}rs = r^{-1} \rangle$ 与 $\langle i,j \mid i^4 = e, i^2 = j^2, j^{-1}ij = i^{-1} \rangle$的结构;
+
+\item 写出 $\mathbb{Z} \times \mathbb{Z}$ 与 $S_4$ 的一种可能的生成元与生成关系.
+
+\end{enumerate}
+\end{enumerate}
+
+
+\section{群在集合上的作用}
+
+\begin{enumerate}
+\item 求解下列群的共轭类的个数及每个共轭类中元素的个数.对每个共轭类,请写出一个代表元:
+\begin{enumerate}[label=(\arabic*)]
+\item 二面体群 $D_4$;
+\item 二面体群 $D_5$;
+\item 交错群 $A_4$;
+\item 交错群 $A_5$.
+\end{enumerate}
+\item 设群 $\mathrm{GL}_{3}(\mathbb{R})$ 按矩阵乘法作用于列向量空间 $\mathbb{R}^3$ (看成是集合)上.求解下列问题:
+\begin{enumerate}[label=(\arabic*)]
+\item 证明列向量 $(1,0,0)^t$ 与 $(0,1,0)^t$ 处于同一轨道中;
+\item 该群作用是否为可迁的?说明理由;
+\item 求稳定子群 $H = \operatorname{Stab}((0,0,1)^t)$.
+\end{enumerate}
+\begin{proof}[解答]
+    (1) 这是因为$\begin{pmatrix}0&*&*\\1&*&*\\0&*&*\end{pmatrix}
+    \begin{pmatrix}1\\0\\0\end{pmatrix}=\begin{pmatrix}0\\1\\0\end{pmatrix}$。
+
+    (2) 当然不是，$(0,0,0)^t$和非零的向量处于不同的轨道中。
+
+    (3) $H$是${\rm GL}_3(\R)$中所有形如
+    $\begin{pmatrix}*&*&0\\*&*&0\\*&*&1\end{pmatrix}$的方阵全体。
+\end{proof}
+\item 设 $R$ 是 $\mathbb{R}$ 上以 $x_1 , x_2 , x_3 , x_4$ 为未定元的四元多项式全体. 
+$S_4$ 自然地作用在 $R$ 上:对任意 $\sigma \in S_4 , p(x_1 , x_2 , x_3 , x_4) \in R$,
+\[\sigma \cdot p(x_1 , x_2 , x_3 , x_4) = p\big(x_{\sigma(1)}, x_{\sigma(2)}, x_{\sigma(3)}, x_{\sigma(4)}\big).\]
+\begin{enumerate}[label=(\arabic*)]
+\item 设 $q = x_1 x_2 - x_3 x_4 \in R$,求 $\operatorname{Stab}(q), \operatorname{Stab}(q^2)$ 并确定它们的结构;
+\item 试给出一个 $r \in R$ 使得 $\operatorname{Stab}(r) = A_4$.
+\end{enumerate}
+\begin{proof}[解答]
+    (1) 容易说明$\operatorname{Stab}(q)$是由$(12)$和$(34)$生成的子群，
+    结构为$\Z_2\times\Z_2$。由于$\sigma(q^2)=q^2$当且仅当$\sigma(q)^2=q^2$
+    当且仅当$\sigma(q)=\pm q$，可知$\operatorname{Stab}(q^2)$
+    中的元素除了$e,(12),(34),(12)(34)$外还有
+    \[\begin{pmatrix}1&2&3&4\\3&4&1&2\end{pmatrix},\quad
+    \begin{pmatrix}1&2&3&4\\4&3&1&2\end{pmatrix},\quad
+    \begin{pmatrix}1&2&3&4\\3&4&2&1\end{pmatrix},\quad
+    \begin{pmatrix}1&2&3&4\\4&3&2&1\end{pmatrix},\]
+    那就恰好是如下正方形的对称群了，结构为$D_4$。
+    \begin{tikzpicture}
+    \draw(1,1)to(1,-1)to(-1,-1)to(-1,1)to(1,1);
+    \draw(1.22,1.1)node{$x_3$};\draw(-1.2,1.1)node{$x_1$};
+    \draw(1.22,-1.13)node{$x_2$};\draw(-1.2,-1.13)node{$x_4$}
+    \end{tikzpicture}
+    (2) 取$\displaystyle r=\prod_{1\leqslant i<j \leqslant4}(x_i-x_j)$，
+    则$\sigma(r)=\operatorname{sign}(\sigma)r$，
+    从而有$\operatorname{Stab}(r)=A_4$。
+\end{proof}
+\item 已知 $G$ 是一个 $n$ 阶群.设 $p$ 是 $n$ 的最小素因子, $H$ 是 $G$ 的一个指数为 $p$ 的子群.求证: $H$ 是 $G$ 的正规子群.
+\begin{proof}
+    $G$通过左乘作用在$G/H$上，带来了同态$\pi:G\to\operatorname{Sym}(G/H)=S_p$，
+    则$G/\ker\pi$同构于$S_p$的一个子群，从而$|G/\ker\pi|$整除$p!$。
+    由于$\ker\pi$是$H$的子群，记$k=[H:\ker\pi]$，通过
+    \[pk=[G:H][H:\ker\pi]=[G:\ker\pi] \mid p!\]
+    得出$k$整除$(p-1)!$。可是$k$也整除$|G|$，从而没有小于$p$的素因子，
+    因此$k=1$，这样$H=\ker\pi$是$G$的正规子群。
+\end{proof}
+\item 设群 $G$ 作用于集合 $X$,若对任意满足下列条件的元素 $g \in G$: $gx = x$ $(\forall\, x \in X)$,都有 $g = e$,则称群 $G$ 在 $X$ 上的作用是忠实的(faithful).
+若对满足等式 $gx = x$ 的元素 $x \in X$ 和 $g \in G$,总有 $g = e$,则称群 $G$ 在集合 $X$ 上的作用是自由的(free).试判断以下群作用是否忠实,是否自由:
+\begin{enumerate}[label=(\arabic*)]
+\item 二面体群 $D_4$ 共轭作用在自身上;
+\item $\mathrm{SO}_{n}(\mathbb{R})$ 作用在 $\mathbb{R}^n \backslash \left\{0\right\}$ 上 $(n \geqslant 2)$.
+\end{enumerate}
+\item 将正八面体的每一个面染上给定的$8$种不同颜色,
+要求每个面只染一种颜色,且每个面的颜色互不相同.
+请问在旋转同构的意义下,共有多少种不同的染色方式?
+\begin{proof}[解答]
+    首先对摆好的正八面体染色，有$8!$种方式；然后旋转后相同的算同一种，
+    由本节习题9 (2)，每种染色方式有$|F_8|=24$种同分异构体，
+    因此模去旋转后的不同染色方式有$8\cdot7\cdot6\cdot5=1680$种。
+\end{proof}
+\item 记 $S^1$ 为 $\mathbb{C}$ 中的单位圆关于复数乘法构成的群,
+记 $S^3$ 为 $\mathbb{C}^2$ 中的单位球面.考虑如下群的作用:
+\[
+\begin{aligned}
+S^1 \times S^3 & \rightarrow S^3 \\
+\left(\mathrm{e}^{\mathrm{i} \theta},\left(z_1, z_2\right)\right) & \mapsto\left(\mathrm{e}^{\mathrm{i} \theta} z_1, \mathrm{e}^{\mathrm{i} \theta} z_2\right)
+\end{aligned}
+\]
+\begin{enumerate}[label=(\arabic*)]
+\item 证明此作用是一个不可迁的自由作用;
+\item 证明此作用的轨道等价类集合与 $\mathbb{R}^3$ 中的单位球面 $S^2$ 一一对应.
+\end{enumerate}
+\begin{proof}
+    (1) 这是显然的。
+
+    (2) 这样的问法其实太随意了，因为两个集合之间有一一对应从字面意思看就是基数相同而已，
+    那么既然两者的基数都是连续统，就能有一一对应，然而这道题肯定不是要问这个；
+    本题的实际意思大概是要给出这个等价类集合与$S^2$之间的一个起码不太人为的一一映射。
+    不过这样讲还是很模糊，还是没说清楚到底是要干些什么；
+    可能一个比较好的问法是再要求这个映射保持某种额外的结构，比如说构造一个两者之间的同胚。
+
+    尽管如此，本题究竟是什么意思还是能大致猜出来的；
+    归根结底就是个脑筋急转弯，而且是要转两次的那种。
+    一方面，球面$S^2$通过球极投影变成了射影复平面$\mathbb{CP}^1=\mathbb{C}\cup\{\infty\}$；
+    另一方面，$S^3=\{(z_1,z_2)\in\mathbb{C}^2\bigm||z_1|^2+|z_2|^2=1\}$
+    相当于$\mathbb{C}^2\setminus\{(0,0)\}$商掉长度的伸缩$(z_1,z_2)\sim(rz_1,rz_2)$，
+    那么继续商掉$e^{{\rm i}\theta}$的群作用后就等于是$\mathbb{C}^2\setminus\{(0,0)\}$
+    商掉$\mathbb{C}\setminus\{0\}=\{re^{{\rm i}\theta} \mid r>0\}$，也就是射影复平面$\mathbb{CP}^1$。
+\end{proof}
+\item 记 $U_n$ 为 $n$ 阶酉矩阵全体关于矩阵乘法构成的群, 
+$S^{2n-1}$ 为 $\mathbb{C}^n$ 中的单位球面.
+将 $U_n$ 自然作用在 $S^{2n-1}$ 上 $(n \geqslant 2)$.
+\begin{enumerate}[label=(\arabic*)]
+\item 证明此作用可迁;
+\item 固定 $S^{2n-1}$ 上的一个点,证明此点的稳定子群同构于 $U_{n-1}$.
+\end{enumerate}
+\begin{proof}
+    (1) 即对于任意两点$u_1,v_1 \in S^{2n-1}$，要找酉阵$A$使得$Au_1=v_1$。
+    这只要把$u_1$和$v_1$各自扩展为一组$\mathbb{C}^n$的规范正交基
+    $\{u_1,\cdots,u_n\}$和$\{v_1,\cdots,v_n\}$，
+    接着令$Au_1=v_1,\cdots,Au_n=v_n$即可。
+    这时对于任何向量$u=c_1u_1+\cdots+c_nu_n$都有
+    $\|Au\|^2=\|c_1v_1+\cdots+c_nv_n\|^2=|c_1|^2+\cdots+|c_n|^2=\|u\|^2$，
+    从而$A$是酉阵。
+
+    (2) $U_n$就是$\mathbb{C}^n$中所有的``旋转''，现在固定了一个点也就是锁定了一根轴，
+    这时能进行的旋转就是像地球仪一样绕着这根轴在余下的$n-1$维子空间内转动，
+    因此是$U_{n-1}$。用更正式的语言来表述就是，记固定的这个点为$v$，
+    将全空间正交分解为$\mathbb{C}^n=\mathbb{C}v \oplus W$，
+    设$A$属于$\operatorname{Stab}(v)$，则对于$w \in W$来说
+    $v$垂直于$w$意味着$Av$垂直于$Aw$，从而有$Aw \in W$，
+    这说明$A$是$\mathbb{C}v$上的单位阵和$W$上的线性变换$A|_W$的直和，$A|_W$无疑也是酉阵；
+    反过来，$\mathbb{C}v$上的单位阵直和一个$W$上的酉阵也是$V$上的酉阵且固定$v$不动，
+    因此$\operatorname{Stab}(v)$就是$\mathbb{C}v$上的单位阵直和$W$上的酉群，
+    故同构于$W$上的酉群$U_{n-1}$。
+\end{proof}
+\item 记 $n$ 阶实正交矩阵全体为
+\[
+\mathrm{O}_n(\mathbb{R}) \triangleq \{M \in M_n(\mathbb{R}) \mid M^t M=I\},
+\]
+它在矩阵乘法下构成一个群,称为 $n$ 阶正交群.设
+\[
+\mathrm{SO}_n(\mathbb{R}) \triangleq \{M \in \mathrm{O}_n(\mathbb{R}) \mid \operatorname{det} M=1\},
+\]
+它在矩阵乘法下同样构成一个群,称为 $n$ 阶特殊正交群.
+\begin{enumerate}[label=(\arabic*)]
+\item 证明：$\mathrm{SO}_n(\mathbb{R}) \triangleleft \mathrm{O}_n(\mathbb{R})$,
+且 $\left[\mathrm{O}_n(\mathbb{R}): \mathrm{SO}_n(\mathbb{R})\right]=2$.
+
+称 $\mathbb{R}^3$ 中的正 $n$ 面体的自同构全体关于复合映射构成的群为正 $n$ 面体对称群, 记作 $E_n$, 其中 $n=4,6,8,12,20$;
+将 $E_n$ 视作正交群 $\mathrm{O}_3(\mathbb{R})$ 的子群.称 $E_n \cap \mathrm{SO}_3(\mathbb{R})$ 为正 $n$ 面体旋转群,记作 $F_n$,其中 $n=4,6,8,12,20$.
+\item 对于 $n=4,6,8,12,20$分别求出 $E_n, F_n$ 的阶;
+\item 证明 $F_4 \cong A_4$;
+\item 证明 $F_6 \cong F_8 \cong S_4$;
+\item 证明 $F_{12} \cong F_{20} \cong A_5$.
+\end{enumerate}
+\begin{proof}[解答]
+    下面的过程参考了\cite{Ar} Chapter 1,\,7,\,8，有所改进和补充。
+    \begin{enumerate}[label=(\arabic*)]
+    \item 容易说明正交群${\rm O}_n(\R)$就是特殊正交群${\rm SO}_n(\R)$和负的特殊正交群$-{\rm SO}_n(\R)$的并。
+    \item 在第二同构定理$HK/H \cong K/(H \cap K)$中取$H={\rm SO}_3(\R),K=E_n$，得到
+    \[{\rm O}_3(\R)/{\rm SO}_3(\R) \cong E_n/F_n,\]
+    从而$|E_n|=2|F_n|$，只需要求出$|F_n|$即可。
+    由于$F_n$的作用是可迁的，记$V$为正$n$面体的全体顶点，$v$是任何一个顶点，
+    由命题7.2 (2)有$|V|=[F_n:\operatorname{Stab}(v)]$。
+    当$n=4$时$\operatorname{Stab}(v)$就是旋转含顶点$v$的$3$个面，
+    从而$4=|F_4|/3$，即$|F_4|=12$；类似地有
+    \[8=|F_6|/3,\quad6=|F_8|/4,\quad20=|F_{12}|/3,\quad12=|F_{20}|/5,\]
+    即$|F_6|=|F_8|=24$，$|F_{12}|=|F_{20}|=60$。
+    \item 记东西南北四个顶点的编号是$1,2,3,4$，令置换群$S_4$作用于其上。
+    绕竖直的轴旋转$120^\circ$保持上面的顶面不动而旋转底面的三角形，从而带来了轮换$(123)$；
+    取顶点分别为$1,4$和$2,3$的两边的中点连线，绕其旋转$180^\circ$恰好调转了这两条边的方向，
+    从而带来了双对换$(14)(23)$，这说明$F_4$含有同构于$A_4$的子群。
+    不过这两个群都是$12$阶的，因此$F_4$同构于$A_4$。
+    \begin{tikzpicture}
+    \filldraw[draw=lightgray!40!black,line width=1,fill=lightgray!60](-2.8,-1)to(-0.2,-3)to(2.6,-1.2)to(0,2)to(-2.8,-1);
+    \draw[white,line width=1.5,dashed](0,2)to(0,-1.7);
+    \draw[white,line width=1.5,dashed](-1.5,-2)to(1.3,0.4);
+    \draw[lightgray!40!black,line width=1](0,2)to(-0.2,-3);
+    \draw[lightgray!40!black,dashed](-2.8,-1)to(2.6,-1.2);
+    \draw[darkgray,thick,->,>=stealth](-0.3,2)arc(180:450:0.3 and 0.2);
+    \draw[darkgray,thick,->,>=stealth](1.6,0.2) .. controls (1.45,0.45) .. (1.2,0.7);
+    \fill[purple](0,2)circle(0.06);\fill[purple](-2.8,-1)circle(0.06);
+    \fill[purple](-0.2,-3)circle(0.06);\fill[purple](2.6,-1.2)circle(0.06)
+    \end{tikzpicture}
+    \item 观察到正$6$面体 (也就是立方体) 和正$8$面体是互相对偶的，
+    即其中一者的诸面中心恰好形成了另一者的各顶点，
+    可知两者的旋转群$F_6$和$F_8$同构，那么只需说明立方体的旋转群是$S_4$即可。
+    \begin{tikzpicture}
+    \fill[orange!20](-2.8,1.2)to(-2.8,-2.4)to(0.8,-2.4)to(2.4,-1.2)to(2.4,2.4)to(-1.2,2.4)to(-2.8,1.2);
+    \filldraw[draw=yellow!40!black,line width=1,fill=yellow!60](-0.2,1.8)to(-2,0)to(-0.2,-1.8)to(1.6,0)to(-0.2,1.8);
+    \draw[yellow!40!black,line width=1](-2,0)to(-0.5,-0.6)to(1.6,0);
+    \draw[yellow!40!black,line width=1](-0.2,1.8)to(-0.5,-0.6)to(-0.2,-1.8);
+    \draw[yellow!40!black,dashed](-0.2,1.8)to(0.6,0.6)to(-0.2,-1.8);
+    \draw[yellow!40!black,dashed](-2,0)to(0.6,0.6)to(1.6,0);
+    \draw[orange!40!black](-2.8,1.2)to(0.8,1.2)to(2.4,2.4)to(-1.2,2.4)to(-2.8,1.2);
+    \draw[orange!40!black](-2.8,1.2)to(0.8,1.2)to(0.8,-2.4)to(-2.8,-2.4)to(-2.8,1.2);
+    \draw[orange!40!black](2.4,2.4)to(2.4,-1.2)to(0.8,-2.4)to(0.8,1.2)to(2.4,2.4);
+    \draw[orange!40!black,dashed](-1.2,2.4)to(-1.2,-1.2)to(2.4,-1.2);
+    \draw[orange!40!black,dashed](-2.8,-2.4)to(-1.2,-1.2)
+    \end{tikzpicture}
+    这次选取立方体的四条主对角线为作用的对象，
+    记图中的两个蝴蝶结所涉的两条主对角线分别为$1,2$和$3,4$。
+    绕着以$1,2$为边的蝴蝶结的角平分线旋转$180^\circ$把它翻了个面，
+    而这条角平分线垂直于以$3,4$为边的另一个蝴蝶结，
+    从而带来了对换$(12)$；保持底面不动的某个旋转则带来了轮换$(1234)$。
+    由引理4.2 (1)，即$(12),(1234)$生成了整个$S_4$，得出$F_6$含有同构于$S_4$的子群。
+    不过这两个群都是$24$阶的，因此$F_6$同构于$S_4$。
+    \begin{tikzpicture}
+    \fill[purple!15](-1.2,-1.2)to(-2.8,-2.4)to(2.4,2.4)to(0.8,1.2)to(-1.2,-1.2);
+    \fill[purple!15](-1.2,2.4)to(-2.8,1.2)to(2.4,-1.2)to(0.8,-2.4)to(-1.2,2.4);
+    \draw(-2.8,1.2)to(0.8,1.2)to(2.4,2.4)to(-1.2,2.4)to(-2.8,1.2);
+    \draw(-2.8,1.2)to(0.8,1.2)to(0.8,-2.4)to(-2.8,-2.4)to(-2.8,1.2);
+    \draw(2.4,2.4)to(2.4,-1.2)to(0.8,-2.4)to(0.8,1.2)to(2.4,2.4);
+    \draw[dashed](-1.2,2.4)to(-1.2,-1.2)to(2.4,-1.2);
+    \draw[dashed](-2.8,-2.4)to(-1.2,-1.2);
+    \draw[red,line width=1](0.8,1.2)to(-1.2,-1.2);
+    \draw[red,line width=1](-1.2,2.4)to(0.8,-2.4);
+    \draw[red,line width=1](-2.8,1.2)to(2.4,-1.2);
+    \draw[red,line width=1](-2.8,-2.4)to(2.4,2.4);
+    \draw[violet,line width=1.5,dotted](-2,1.8)to(1.6,-1.8)
+    \end{tikzpicture}
+    \item 正$12$面体有$20$个顶点，正$20$面体有$12$个顶点，
+    可以发现两者亦在顶点和面的关系上互相对偶，
+    因而$F_{12}$和$F_{20}$是同构的，那么只需说明正十二面体的旋转群是$A_5$即可。
+    \begin{tikzpicture}
+    \filldraw[draw=green!40!black,line width=1,fill=green!60](0,-4)to(1.7,-3.5)to(2.7,-1.7)to(2.5,0.2)to(1.2,1.6)to(-0.9,2.1)to(-2.3,1.2)to(-3.5,-0.5)to(-2.9,-2.2)to(-2,-3.8)to(0,-4);
+    \draw[green!40!black,line width=1](-2.3,1.2)to(-0.9,2.1)to(-1.1,1)to(-3,-0.8)to(-1.8,-3.2)to(0.7,-3)to(1.3,-0.4)to(-1.1,1);
+    \draw[green!40!black,line width=1](-3,-0.8)to(-3.5,-0.5);
+    \draw[green!40!black,line width=1](-2,-3.8)to(-1.8,-3.2);
+    \draw[green!40!black,line width=1](2.5,0.2)to(1.3,-0.4);
+    \draw[green!40!black,line width=1](1.7,-3.5)to(0.7,-3);
+    \draw[green!40!black,dashed](-1.2,0.4)to(0.7,0.6)to(1.5,-1.2)to(0.1,-2.5)to(-1.6,-1.6)to(-1.2,0.4);
+    \draw[green!40!black,dashed](-2.3,1.2)to(-1.2,0.4);
+    \draw[green!40!black,dashed](1.2,1.6)to(0.7,0.6);
+    \draw[green!40!black,dashed](1.5,-1.2)to(2.7,-1.7);
+    \draw[green!40!black,dashed](0.1,-2.5)to(0,-4);
+    \draw[green!40!black,dashed](-2.9,-2.2)to(-1.6,-1.6)
+    \end{tikzpicture}
+    \begin{tikzpicture}
+    \filldraw[draw=cyan!40!black,line width=1,fill=cyan!60](-1,3.4)to(-3.4,0.8)to(-2.6,-2.8)to(0.8,-3.3)to(3.5,-1.1)to(2.5,2.4)to(-1,3.4);
+    \draw[cyan!40!black,line width=1](-2.6,0)to(-1,3.4)to(1.8,1.2);
+    \draw[cyan!40!black,line width=1](-2.6,-2.8)to(-2.6,0)to(1.8,1.2)to(3.5,-1.1);
+    \draw[cyan!40!black,line width=1](-3.4,0.8)to(-2.6,0)to(0.6,-3.1)to(1.8,1.2)to(2.5,2.4);
+    \draw[cyan!40!black,line width=1](0.6,-3.1)to(0.8,-3.3);
+    \draw[cyan!40!black,line width=1](-2.6,-2.8)to(0.6,-3.1)to(3.5,-1.1);
+    \draw[cyan!40!black,dashed](-0.5,2)to(1.8,-0.3)to(0.7,-3)to(-1.3,-1.1)to(-0.5,2);
+    \draw[cyan!40!black,dashed](-3.4,0.8)to(-0.5,2)to(2.5,2.4)to(1.8,-0.3)to(-1.3,-1.1)to(-3.4,0.8);
+    \draw[cyan!40!black,dashed](-1.3,-1.1)to(-2.6,-2.8)to(0.7,-3)to(3.5,-1.1)to(1.8,-0.3);
+    \draw[cyan!40!black,dashed](-1,3.4)to(-0.5,2);
+    \draw[cyan!40!black,dashed](0.8,-3.3)to(0.7,-3)
+    \end{tikzpicture}
+    如图中所示，正十二面体中能找到内接的立方体，且数量为$5$，
+    这是因为每个立方体正好把每个五边形面的五条对角线之一作为边。
+    每个顶点都以其$3$条邻边为三叉戟，其旋转带来了这$5$个正方体所构成的集合上的$3$-轮换，
+    以$10$对顶点的连线为轴，各有$2$个旋转，乘起来有$20$个旋转，
+    并且$5$元集上的$3$-轮换也是$\binom{5}{3}\cdot2=20$个，因此这些旋转给出了所有的$3$-轮换。
+    由引理4.2 (2)，即$3$-轮换全体可生成整个交错群$A_5$，得出$F_{12}$含有同构于$A_5$的子群。
+    不过这两个群都是$60$阶的，因此$F_{12}$同构于$A_5$。
+    \begin{tikzpicture}
+    \filldraw[draw=red,line width=1.2,fill=red!25](-2.3,1.2)to(-3,-0.8)to(-2,-3.8)to(1.7,-3.5)to(1.5,-1.2)to(1.2,1.6)to(-2.3,1.2);
+    \draw(-1.1,1)to(1.3,-0.4)to(0.7,-3)to(-1.8,-3.2)to(-3,-0.8)to(-1.1,1);
+    \draw(0,-4)to(1.7,-3.5)to(0.7,-3)to(-1.8,-3.2)to(-2,-3.8)to(0,-4);
+    \draw(2.7,-1.7)to(1.7,-3.5)to(0.7,-3)to(1.3,-0.4)to(2.5,0.2)to(2.7,-1.7);
+    \draw(1.2,1.6)to(-0.9,2.1)to(-1.1,1)to(1.3,-0.4)to(2.5,0.2)to(1.2,1.6);
+    \draw(-2.3,1.2)to(-0.9,2.1)to(-1.1,1)to(-3,-0.8)to(-3.5,-0.5)to(-2.3,1.2);
+    \draw(-2.9,-2.2)to(-2,-3.8)to(-1.8,-3.2)to(-3,-0.8)to(-3.5,-0.5)to(-2.9,-2.2);
+    \draw[dashed](-1.2,0.4)to(0.7,0.6)to(1.5,-1.2)to(0.1,-2.5)to(-1.6,-1.6)to(-1.2,0.4);
+    \draw[dashed](-2.3,1.2)to(-1.2,0.4);\draw[dashed](1.2,1.6)to(0.7,0.6);
+    \draw[dashed](1.5,-1.2)to(2.7,-1.7);\draw[dashed](0.1,-2.5)to(0,-4);
+    \draw[dashed](-2.9,-2.2)to(-1.6,-1.6);
+    \draw[red,line width=1.2](1.3,-0.4)to(1.7,-3.5);
+    \draw[red,line width=1.2](-3,-0.8)to(1.3,-0.4)to(1.2,1.6);
+    \draw[red,line width=1,dashed](-2.3,1.2)to(-1.6,-1.6)to(1.5,-1.2);
+    \draw[red,line width=1,dashed](-2,-3.8)to(-1.6,-1.6)
+    \end{tikzpicture}
+\end{enumerate}
+\end{proof}
+\end{enumerate}
+
+\section{Sylow子群和Sylow定理}
+
+\begin{enumerate}
+\item 证明 $35$ 阶群为循环群.
+\begin{proof}
+    $m_5$整除$7$且模$5$余$1$，从而$m_5=1$，其Sylow $5$-子群是唯一的从而正规；
+    $m_7$整除$5$且模$7$余$1$，从而$m_7=1$，其Sylow $7$-子群是唯一的从而正规。
+    这样，本节例6和定理6.1说明$35$阶群必为$\Z_5\times\Z_7\cong\Z_{35}$。
+\end{proof}
+\item 证明 $40$ 阶群和 $3 \cdot 7^{1905}$ 阶群不是单群.
+\begin{proof}
+    对于$40$阶群，$m_5$整除$8$且模$5$余$1$，从而$m_5=1$。
+    对于$3\cdot7^{1905}$阶群，$m_7$整除$3$且模$7$余$1$，从而$m_7=1$。
+\end{proof}
+\item 讨论 $14$ 阶群中 Sylow $2$-子群, Sylow $7$-子群的个数.
+\item 计算 $A_6$ 中 $9$ 阶子群的个数.
+\begin{proof}[解答]
+    $9$阶非循环群的结构必为$\Z_3\times\Z_3$，
+    即由两个不相交的$3$-轮换$(ijk)$和$(\ell mn)$生成，
+    从而本题求的就是$6$个数划分成两组$3$个数有几种方法，答案是$\binom{6}{3}/2=10$。
+\end{proof}
+\item 设 $n$ 为正整数, $p$ 为奇素数,满足 $2^n > (p-1)!$.证明阶为 $2^n p$ 的群不是单群.
+\begin{proof}
+    设$G$为$2^np$阶群，由Sylow定理，$m_2$整除$p$，若$m_2=1$的话就完事了，下面设$m_2=p$。
+    这时$G$可迁地共轭作用在其$p$个Sylow $2$-子群上，带来群同态$\rho:G \to S_p$，
+    由于$|G|=2^np>p!=|S_p|$，可知$\rho$不是单射，从而$\ker\rho$是非平凡的正规子群。
+\end{proof}
+\item 证明 $24$ 阶群, $36$ 阶群, $48$ 阶群不是单群.
+\begin{proof}
+    只要说明$36$阶群不是单群即可，其余两个是上题的特殊情况。
+    套路是差不多的，设$G$为$36$阶群，由Sylow定理，$m_3$整除$4$且模$3$余$1$，
+    若$m_3=1$的话就完事了，下面设$m_3=4$。
+    这时$G$可迁地共轭作用在其$4$个Sylow $3$-子群上，带来群同态$\rho:G \to S_4$，
+    由于$|G|=36>24=|S_4|$，可知$\rho$不是单射，从而$\ker\rho$是非平凡的正规子群。
+\end{proof}
+\item 证明 $56$ 阶群和 $pqr$ 阶群($p<q<r$ 均为素数)不是单群.
+\begin{proof}
+    设$G$为$56$阶群，由Sylow定理，$m_7$整除$8$且模$7$余$1$，
+    若$m_2=1$的话就完事了，下面设$m_7=8$。
+    这时，$G$的$8$个Sylow $7$-子群两两之间的共用元素只有单位元$e$ 
+    (这里能看出为何要优先考察Sylow $7$-子群而不是Sylow $2$-子群)，
+    这些子群占据了除了$e$外的$8(7-1)=48$个元素。
+    这样一来，Sylow $2$-子群的原材料就只有余下的$56-48=8$个元素了，
+    这恰好说明$m_2=1$，系Sylow $2$-子群正规。
+
+    设$G$为$pqr$阶群，由Sylow定理，(i) $m_r$整除$pq$且模$r$余$1$，则$m_r=1$或$pq$，
+    (ii) $m_q$整除$pr$且模$q$余$1$，则$m_q=1$或$r$或$pr$，
+    (iii) $m_p$整除$qr$，则$m_p=1$或$q$或$r$或$pr$。
+    若$m_r,m_q,m_p$中有哪个是$1$就完事了，下面假定三者都大于$1$，要推出矛盾。
+
+    首先，$G$的$pq$个Sylow $r$-子群两两之间的共用元素只有单位元$e$，
+    这些子群占据了除了$e$外的$pq(r-1)$个元素；
+    接着，Sylow $q$-子群不少于$r$个，占据了除了$e$外的不少于$r(q-1)$个元素；
+    再者，Sylow $p$-子群不少于$q$个，占据了除了$e$外的不少于$q(p-1)$个元素。
+    这样一来，$G$起码要有$pq(r-1)+r(q-1)+q(p-1)+1=pqr+(r-1)(q-1)>pqr$个元素，
+    再精打细算也不够用。
+
+    本题至此就做出来了，不过上面的放缩是比较宽松的，改进后能得出更确切的结果。
+    事实上假定$m_r,m_q$都大于$1$就能推出矛盾了，
+    这时$G$起码有$pq(r-1)+r(q-1)+p=pqr+(r-p)(q-1)>pqr$个元素。
+    这也就是说，$G$的Sylow $r$-子群和Sylow $q$-子群至少有一个是正规的。
+
+    更进一步，甚至能说明$G$的Sylow $r$-子群必定正规。
+    记$R$是$G$的某个$r$阶子群，$Q$是$G$的某个$q$阶子群，
+    现在已知$R,Q$之一是正规子群，那么只需要考虑$Q$正规的情况。
+    这时商去$Q$得到$pr$阶群$G/Q$，由Cauchy定理知$G/Q$有$r$阶子群$H/Q$，
+    则$H$是$G$的$qr$阶子群，进而第7节习题4说明$H$是$G$的正规子群。
+    接着$H$又有$r$阶子群$N$，可以说明$N$是$G$的正规Sylow $r$-子群。
+    这是因为对$g \in G$，注意到$gNg^{-1}$同样是$gHg^{-1}=H$的子群，
+    并且$H$的Sylow $r$-子群是唯一的，从而有$gNg^{-1}=N$。
+\end{proof}
+\item 设 $G$ 是 $715$ 阶群, $P$ 是 $G$ 的 Sylow $13$-子群.证明: $P < C(G)$.
+\begin{proof}
+    由Sylow定理，$m_{13}$整除$55$且模$13$余$1$，从而$m_{13}=1$，即$P$是$G$的正规子群。
+    那么$G$中的元素可以通过共轭作用带来$P$的自同构，即
+    \[\theta:G\to\operatorname{Aut}(P), \quad g\mapsto\theta_g(p)=g^{-1}pg,\]
+    故$G/\ker\theta$同构于$\operatorname{Aut}(P)$的一个子群。
+    $P$身为$13$阶群是循环的，其自同构群为$(\Z_{13})^*\cong\Z_{12}$，
+    从而$[G:\ker\theta]$整除$|\operatorname{Aut}(P)|=12$。
+    不过$[G:\ker\theta]$也整除$|G|=715$，因此$[G:\ker\theta]=1$，
+    即$\ker\theta$是整个$G$。这就是说$G$的元素都和$P$的元素交换，也就是$P<C(G)$。
+\end{proof}
+\item 在有限群 $G$ 中, $H$ 为 $G$ 的一个 Sylow $p$-子群.设 $L<G$ 且 $p \mid |L|$.证明:存在 $g \in G$ 使得 $gHg^{-1} \cap L$ 是 $L$ 的一个 Sylow $p$-子群.
+\begin{proof}
+    容易说明下述为$G$上的等价关系：$g \sim g'$是说存在$\ell \in L,h \in H$
+    使得$g'=\ell gh$。据此把$G$拆成等价类的无交并$\coprod\limits_{g\in\varLambda}LgH$，
+    其中$LgH=\{\ell gh\mid\ell \in L,h \in H\}$，$\varLambda$是$g$的代表元集。
+
+    对任意固定的$g\in\varLambda$，设$LgH$是$H$的多个左陪集$gH,\ell gH,\ell'gH,\cdots$的无交并，即
+    \[\textstyle LgH=gH\coprod\ell gH\coprod\ell'gH\coprod\cdots.\]
+    考察$L$在集合$O=\{gH,\ell gH,\ell'gH,\cdots\}$上可迁的左乘作用，$gH$的稳定子群为
+    \[\operatorname{Stab}(gH)=\{a \in L \mid agH=gH\}=gHg^{-1} \cap L,\]
+    注意$H$是$p$-群意味着$gHg^{-1} \cap L$也是$p$-群。对轨道$O$的长度进行算两次，可知
+    \[\frac{|LgH|}{|H|}=[L:\operatorname{Stab}(gH)]=\frac{|L|}{|gHg^{-1} \cap L|},\]
+    接着对$g\in\varLambda$求和，得出
+    \[\frac{|G|}{|H|}=\sum_{g\in\varLambda}\frac{|L|}{|gHg^{-1} \cap L|},\]
+    上式左边不整除$p$，则右边有项不整除$p$，
+    即存在$g\in\varLambda$使得$|gHg^{-1} \cap L|$穷尽了$|L|$中$p$的幂次，
+    从而$gHg^{-1} \cap L$是$L$的Sylow $p$-子群。
+\end{proof}
+\item 设 $G$ 为 $p^2 q$ 阶群,其中 $p,q$ 为素数且 $p<q$.证明 $G$ 有正规的 Sylow $q$-子群,或者 $G \cong A_4$.
+\begin{proof}
+    由Sylow定理，$m_q$整除$p^2$且模$q$余$1$，
+    当$m_q=1$时$G$的Sylow $q$-子群是正规的，并且$m_q=p$是不可能的，
+    这样一来本题的目标其实是证明$m_q=p^2$时$G \cong A_4$。
+    群的阶数是容易求出的，$p^2$模$q$余$1$表明$p$模$q$余$\pm1$，
+    唯一的可能是$p=q-1$，即$p=2,q=3$，关键在于求出$12$阶群$G$的结构。
+
+    设$H$是$G$的$4$个Sylow $3$-子群之一，$G$左乘作用在$H$的$4$个左陪集上，
+    带来了同态$\pi:G \to S_4$，且$\ker\pi$是$H$的子群。
+    注意$\ker\pi=H$的假定下$H$会是正规的Sylow $3$-子群，不符合条件；
+    因此$\ker\pi=\{e\}$，即$G$同构于$S_4$的某个子群。
+    不难说明$S_4$的$12$阶子群只有$A_4$，故$G \cong A_4$。
+\end{proof}
+\item 设 $G$ 是 $60$ 阶单群,证明 $G$ 同构于 $A_5$. (提示:可以假设 $G$ 不同构于 $A_5$,证明存在 $G$ 的两个不同的 Sylow $2$-子群 $P,Q$ 满足 $|N_{G} (P \cap Q)| \geqslant 12$,从而导出矛盾.)
+
+结合 1.7 节的例 6, 1.8 节例 3 的结论,习题 1.8 中的第 2,6,7 题以及 1.9 节的例 2 中的结论,
+可知阶最小的非素数阶循环群的单群一定是 $60$ 阶群,且同构于 $A_5$.
+\begin{proof}
+    第一步，先来看一个值得记住的小结论：设有限阶单群$G$有真子群$H$，
+    则$|G|$整除$[G:H]!$。特别地，$60$阶单群的真子群的指数不小于$5$。
+
+    这是因为$G$通过左乘可迁地作用在$G/H$上，
+    带来了同态$\pi:G\to\operatorname{Sym}(G/H)$，
+    可知$\ker\pi$作为$G$的正规子群只能是$\{e\}$，
+    从而$G$同构于$\operatorname{Sym}(G/H)$的一个子群，故两者的阶有整除关系。
+    特别地，$60$整除$[G:H]!$说明$[G:H]\geqslant5$。
+
+    第二步，对$m_2$分类讨论来说明$60$阶单群$G$必有指数为$5$的子群。
+
+    由Sylow定理有$m_2$整除$15$，且$G$是单群要求$m_2$不是$1$或$3$ 
+    (当$m_2=3$时，$G$在这$3$个Sylow $2$-子群上的共轭作用带来的到$S_3$的同态不是单射)，
+    从而$m_2=5$或$15$。如果$m_2=5$，取一个Sylow $2$-子群$H$，
+    则其正规化子的指数为$[G:N_G(H)]=m_2=5$。下面处理难度更大的$m_2=15$的情形。
+
+    这时存在两个不同的Sylow $2$-子群$P,Q$的交不止于单位元$e$。
+    不然的话Sylow $2$-子群用了除$e$外的$15(4-1)=45$个元素，
+    并且因为$m_5$整除$12$且模$5$余$1$且不是$1$，有$m_5=6$，
+    这些Sylow $5$-子群用了除$e$外的$6(5-1)=24$个元素，
+    截至目前$G$的元素个数已起码是$24+45+1=70>60$，超过上限了。
+
+    现在来看$N_G(P \cap Q)$，简写$n=|N_G(P \cap Q)|$。
+    首先，$P \cap Q$是其正规子群，从而$N_G(P \cap Q)$不是整个$G$，
+    进而根据第一步有$60/n\geqslant5$，即$n\leqslant12$；
+    接着，$P$和$Q$是其$4$阶子群，从而$4$整除$n$；
+    再者，由$P,Q$生成的群亦为其子群且阶数大于$4$，从而$n>4$。
+    因此$n=12$，指数$60/n$为$5$。
+
+    第三步，通过指数为$5$的子群$N$的存在得出$G$同构于$A_5$。
+
+    $G$通过左乘可迁地作用在$G/N$上，带来了同态$\rho:G \to S_5$，
+    可知$\ker\rho=\{e\}$，这样$G$同构于$S_5$的子群，且指数为$5!/60=2$，
+    从而其为正规子群 (第3节例3的(1))，只能是$A_5$。
+\end{proof}
+\item 设 $G$ 是 $360$ 阶单群,下面我们用反证法求 $G$ 的 Sylow $3$-子群的个数:
+\begin{enumerate}[label=(\arabic*)]
+\item 假设 $G$ 有 $40$ 个 Sylow $3$-子群,证明存在 $G$ 的两个 Sylow $3$-子群 $P \neq Q$,使 $|P \cap Q| > 1$;
+\item 在 (1) 的假设下,记 $H = P \cap Q$.证明 $C_G(H)/H \cong A_4$, 以及$C_{G}(H)$ 有正规的 Sylow $2$-子群 $K$,
+其中 $C_{G}(H) = \left\{g \in G \mid \forall\,h \in H, hg = gh\right\}$ 是 $H$ 在 $G$ 中的中心化子;
+\item 在 (1) 的假设下,证明 $|N_{G}(K)| \geqslant 72$,导出矛盾;
+\item 求 $G$ 的 Sylow $3$-子群的个数.
+\end{enumerate}
+\begin{proof}[解答]
+    实际上$360$阶单群的结构必定是交错群$A_6$，参考\cite{Wa}命题2.4.6。
+    \begin{enumerate}[label=(\arabic*)]
+    \item 由Sylow定理，$m_5$模$5$余$1$且整除$72$，则$m_5=6$或$36$。
+    如果$m_5=6$，令$G$共轭作用在其$6$个Sylow $5$-子群上，可知$G$同构于$S_6$的一个子群，
+    且指数为$6!/360=2$，只能$G \cong A_6$；
+    然而$A_6$的Sylow $3$-子群的数量为$10$个，不是题目说的$40$个。
+    因此$m_5=36$，那么这些Sylow $5$-子群占据了除了$e$外的$36(5-1)=144$个元素；
+    假定$G$的各个Sylow $3$-子群的交也仅限于$e$，
+    则这些子群还要占据除了$e$外的$40(9-1)=320$个元素，实在是太多了。
+    这说明$G$有两个Sylow $3$-子群$P,Q$使得$|P \cap Q|=3$。
+    \item 简写$n=|C_G(H)|$，显然$C_G(H)$不是整个$G$ (不然$H$是$G$的正规子群)，
+    由上一题的第一步有$|G|$整除$[G:C_G(H)]!$，得出$360/n\geqslant6$，即$n\leqslant60$；
+    由于$9$阶群$P,Q$必定交换，可知两者是$C_G(H)$的子群，从而$9$整除$n$。
+
+    接着，记$C_G(H)$的Sylow $p$-子群的数量为$s_p$。
+    首先，$P,Q$都是$C_G(H)$的Sylow $3$-子群，从而$s_3>1$。
+    接着，由Sylow定理，$s_3$模$3$余$1$且整除$n/9$继而整除$40$，则$s_3=4$或$10$或$40$。
+    $s_3=10$或$40$的话$10$整除$n/9$，同$n\leqslant60$矛盾；因此$s_3=4$，推出$n=36$。
+
+    这表明$C_G(H)/H$是$12$阶群，并且$P/H,Q/H$都是其Sylow $3$-子群，
+    用第10题可知$C_G(H)/H \cong A_4$。假定$C_G(H)$的Sylow $2$-子群不正规，即$s_2>1$，
+    商掉$H$后$A_4$就有不止$1$个Sylow $2$-子群，这当然是不可能的，
+    因此$C_G(H)$有正规的Sylow $2$-子群$K$。
+    \item 注意到$4$阶群$K$包含于$G$的某个Sylow $2$-子群$T$中且指数为$2$，
+    从而$T$是$N_G(K)$的子群，那么$8$整除$|N_G(K)|$；
+    $C_G(H)$也是$N_G(K)$的子群，从而$36$整除$|N_G(K)|$。
+    结合两者得到$|N_G(K)|\geqslant72$；
+    然而$N_G(K)$不是整个$G$ (不然$K$是$G$的正规子群)，这要求$|N_G(K)|\leqslant60$，矛盾。
+    \item 由Sylow定理，$m_3$模$3$余$1$且整除$40$，则$m_3=4$或$10$或$40$。
+    由于$G \to S_4$不能是单射，可知$m_3$不是$4$，
+    并且前三问排除了$m_3=40$的可能性，因此$m_3=10$。\qedhere
+    \end{enumerate}
+\end{proof}
+\end{enumerate}
+
+\section{可解群,半直积及群的进一步讨论}
+
+\begin{enumerate}
+\item 请验证 (1.4) 式可导出合成群列 (1.5).
+\item 证明有限 Abel 单群必是素数阶循环群.
+\item 证明命题 9.4 中的映射 $f$ 是群同态.
+\item 验证 ${\rm GL}_{3}(\mathbb{C})$ 中三阶可逆上三角形矩阵全体构成的子群是可解群.
+\begin{proof}
+    记$G_0$为${\rm GL}_3(\mathbb{C})$中的上三角阵全体构成的群，以及其子群
+    \[G_1=\left\{\begin{pmatrix}1&*&*\\ &1&*\\ & &1\end{pmatrix}\right\},
+    \quad G_2=\left\{\begin{pmatrix}1& &*\\ &1& \\ & &1\end{pmatrix}\right\},\]
+    那么可以验证$G_0 \triangleright G_1 \triangleright G_2 \triangleright \{e\}$，并且
+    \[G_0/G_1\cong\left\{\begin{pmatrix}*& & \\ &*& \\ & &*\end{pmatrix}\in{\rm GL}_3(\mathbb{C})\right\}, \quad G_1/G_2\cong\left\{\begin{pmatrix}1&*& \\ &1&*\\ & &1\end{pmatrix}\right\}\]
+    都是交换群。这固然可以通过计算方阵的乘法来验证，不过会掩盖掉背后本质的原理。
+    
+    事实上，想到如上的$G_1,G_2$的真正理由在于，如果令
+    \[V_0=\left\{\begin{pmatrix}*\\*\\*\end{pmatrix}\right\},
+    \quad V_1=\left\{\begin{pmatrix}*\\*\\0\end{pmatrix}\right\},
+    \quad V_2=\left\{\begin{pmatrix}*\\0\\0\end{pmatrix}\right\},
+    \quad V_3=\left\{\begin{pmatrix}0\\0\\0\end{pmatrix}\right\}\]
+    (其中引入$V_3$是为了后续的表述中能更好地保持队形)，再令$e$为单位方阵，则
+    \begin{align*}
+    (G_1-e)V_0&=\left\{\begin{pmatrix} &*&*\\ & &*\\ & & \end{pmatrix}\right\}\left\{\begin{pmatrix}*\\*\\*\end{pmatrix}\right\}=\left\{\begin{pmatrix}*\\*\\0\end{pmatrix}\right\}=V_1,\\
+    (G_1-e)V_1&=\left\{\begin{pmatrix} &*&*\\ & &*\\ & & \end{pmatrix}\right\}\left\{\begin{pmatrix}*\\*\\0\end{pmatrix}\right\}=\left\{\begin{pmatrix}*\\0\\0\end{pmatrix}\right\}=V_2,\\
+    (G_1-e)V_2&=\left\{\begin{pmatrix} &*&*\\ & &*\\ & & \end{pmatrix}\right\}\left\{\begin{pmatrix}*\\0\\0\end{pmatrix}\right\}=\left\{\begin{pmatrix}0\\0\\0\end{pmatrix}\right\}=V_3,\\
+    (G_2-e)V_0&=\left\{\begin{pmatrix}\ &\ &*\\ & & \\ & & \end{pmatrix}\right\}\left\{\begin{pmatrix}*\\*\\*\end{pmatrix}\right\}=\left\{\begin{pmatrix}*\\0\\0\end{pmatrix}\right\}=V_2,\\
+    (G_2-e)V_1&=\left\{\begin{pmatrix}\ &\ &*\\ & & \\ & & \end{pmatrix}\right\}\left\{\begin{pmatrix}*\\*\\0\end{pmatrix}\right\}=\left\{\begin{pmatrix}0\\0\\0\end{pmatrix}\right\}=V_3,\\
+    \end{align*}
+    换句话说，$G_1,G_2$中的元素在合适的子空间的商空间下其实是恒同映射，这才是其为正规子群的根源所在。
+    
+    下面避开矩阵的表述来重写一遍过程，这在变得更加抽象的同时，也成为了一个完全无需运算的做法。令
+    \[\mathbb{C}^3=V_0 \supset V_1 \supset V_2 \supset V_3=\{0\}\]
+    为一列子空间的降链，任何两个相邻空间的维数均相差$1$。考察
+    \[G_0=\{g\in{\rm GL}(V_0) \mid g(V_1) \subset V_1,\,g(V_2) \subset V_2\}\]
+    和同态
+    \[\varphi_0:G_0\to{\rm GL}(V_0/V_1)\oplus{\rm GL}(V_1/V_2)\oplus{\rm GL}(V_2/V_3)\cong(\mathbb{C}^*)^3,\]
+    $\varphi_0$把$G_0$中的元素$g$映成其在相应的空间上的限制兼商映射，从而
+    \[\ker\varphi_0=\{g \in G_0\mid(g-e)(V_0) \subset V_1,\,(g-e)(V_1) \subset V_2,\,(g-e)(V_2) \subset V_3\}.\]
+    接下来取$G_1=\ker\varphi_0$，再令同态
+    \[\varphi_1:G_1\to{\rm GL}(V_0/V_1,V_1/V_2)\oplus{\rm GL}(V_1/V_2,V_2/V_3)\cong(\mathbb{C}^*)^2\]
+    (其中非标准的记号${\rm GL}(V_i/V_{i+1},V_j/V_{j+1})$是指在对同构的线性空间
+    \[V_i/V_{i+1} \cong V_j/V_{j+1} \cong \mathbb{C}\]
+    三者不加区分时形成的$1$维一般线性群${\rm GL}(\mathbb{C})\cong\mathbb{C}^*$)，
+    $\varphi_1$把$G_1$中的元素$g$映成其在相应的空间上的限制兼商映射，从而
+    \[\ker\varphi_1=\{g \in G_1\mid(g-e)(V_0) \subset V_2,\,(g-e)(V_1) \subset V_3\}.\]
+    最后取$G_2=\ker\varphi_1$，可知合成群列$G_0 \triangleright G_1 \triangleright G_2 \triangleright \{e\}$的每个商因子均交换，这是因为
+    \[G_0/G_1\cong\operatorname{im}\varphi_0\cong(\mathbb{C}^*)^3,
+    \quad G_1/G_2\cong\operatorname{im}\varphi_1\cong(\mathbb{C}^*)^2\]
+    以及
+    \[G_2\cong{\rm GL}(V_0/V_1,V_2/V_3)\cong\mathbb{C}^*.\qedhere\]
+\end{proof}
+\item 证明可解群的子群和商群还是可解群.
+\begin{proof}
+    设可解群$G$有子群$H$和可解群列
+    \[G=G_0 \triangleright G_1 \triangleright\cdots\triangleright G_n=\{e\},\]
+    那么
+    \[H \triangleright H \cap G_1 \triangleright\cdots\triangleright H \cap G_n\]
+    就是$H$的可解群列。这是因为对于同态
+    \[\varphi:H \cap G_i \to G_i/G_{i+1}, \quad h \mapsto hG_{i+1}\]
+    来说，有
+    \[\ker\varphi=(H \cap G_i) \cap G_{i+1}=H \cap G_{i+1},\]
+    得出商群$H \cap G_i/H \cap G_{i+1}$同构于交换群$G_i/G_{i+1}$的某个子群，从而亦交换。
+
+    设可解群$G$有正规子群$N$和记号同上的可解群列，
+    那么$G/N$可解是因为第一同构定理表明其有可解群列
+    $G/N \triangleright G_1/N \triangleright\cdots\triangleright G_n/N$。
+\end{proof}
+\item 设 $G$ 是一个群, $N \triangleleft G$.若 $N$ 与 $G/N$ 都是可解群,证明 $G$ 是可解群.
+\begin{proof}
+    设$N$和$G/N$分别有可解群列
+    \[N \triangleright N_1 \triangleright\cdots\triangleright N_m=\{e\}\]
+    和
+    \[G/N \triangleright G_1/N \triangleright\cdots\triangleright G_n/N=\{e\},\]
+    那么第一同构定理表明
+    \[G \triangleright G_1 \triangleright\cdots\triangleright G_n
+    =N \triangleright N_1 \triangleright\cdots\triangleright N_m=\{e\}\]
+    是$G$的可解群列。
+\end{proof}
+\item 设 $G$ 是有限群.
+\begin{enumerate}[label=(\arabic*)]
+\item 证明 $G$ 包含唯一的最大可解正规子群;
+\item 若任取 $G$ 的子群 $A,B$,均有 $AB$ 是 $G$ 的子群,证明 $G$ 是可解群.
+\end{enumerate}
+\begin{proof}
+    \begin{enumerate}[label=(\arabic*)]
+    \item 关键在于如果$H,K$都是$G$的可解正规子群，那么$HK$也是$G$的可解正规子群。
+    这是因为第二同构定理表明$HK$是$G$的子群且$HK/H \cong K/(H \cap K)$，
+    通过上面两题可得$HK$是可解群，另外非常容易说明$HK$也是正规的。
+    有了这个结论，设$H_1,\cdots,H_n$是$G$的所有可解正规子群，
+    那么$H_1 \cdots H_n$同样是$G$的可解正规子群，由其构造显然是唯一最大的。
+    \item 有个著名的定理是说$p$-群都是可解群。
+    这是因为可以对其阶数进行归纳，记这个群为$P$，由1.7节例6有$|C(P)|>1$，
+    从而按照归纳假设，阶数更小的$P/C(P)$就是可解群，
+    而$C(P)$是交换的当然也可解，进而由上一题有$P$可解。
+    回到本题，可以发现$G$的Sylow $p$-子群必然是唯一的，
+    不然的话假如$G$有不同的Sylow $p$-子群$P$和$Q$，
+    根据条件，$PQ$理应也是$G$的子群，可是$|PQ|=|P||Q|/|P \cap Q|>|P|$，
+    即$PQ$是$G$的阶数更大的$p$-子群了，矛盾；
+    那么由1.8节例6，$G$是其Sylow $p$-子群的直积，从而亦可解。\qedhere
+\end{enumerate}
+\end{proof}
+\item 设 $G,H$ 是群, $\alpha : G \rightarrow H$ 是群同态,
+设存在群同态 $\beta : H \rightarrow G$ 满足 $\alpha \circ \beta = \operatorname{id}_{H}$,
+证明: $G = \operatorname{Ker} \alpha \rtimes \operatorname{Im} \beta$.
+\begin{proof}
+    $\operatorname{Ker}\alpha$是$G$的正规子群是显然的，
+    $\operatorname{Ker}\alpha\cap\operatorname{Im}\beta=\{e_G\}$也是容易的，
+    因为如果$\beta(h)$满足$\alpha(\beta(h))=e_H$，那么$h=e_H$，从而$\beta(h)=e_G$。
+    由于$\alpha(g)=\alpha(\beta(\alpha(g)))$，
+    得到$g\,\big(\beta(\alpha(g))\big)^{-1}\in\operatorname{Ker}\alpha$，
+    从而通过$G$中的元素$g$能写成$g\,\big(\beta(\alpha(g))\big)^{-1}$
+    和$\beta(\alpha(g))$的乘积得出$G=\operatorname{Ker}\alpha\,\operatorname{Im}\beta$。
+\end{proof}
+\item 求解下列问题:
+\begin{enumerate}[label=(\arabic*)]
+\item 给定群 $N,H$ 及群同态 $f: H \rightarrow \operatorname{Aut}(N)$, $f(x) = f_x$.
+在 $N \times H$ 上定义二元运算 $(x_1 , y_1)(x_2 , y_2) = (x_1 f_{y_1}(x_2), y_1 y_2)$,
+证明 $N \times H$ 在此运算下构成一个群,称为 $N$ 与 $H$ 关于 $f$ 的外半直积,记作 $N \rtimes_{f} H$;
+\item 仿照 1.6 节关于内外直积结构的讨论,说明外半直积结构和本节正文定义的半直积结构一致.
+\end{enumerate}
+\begin{proof}[解答]
+    \begin{enumerate}[label=(\arabic*)]
+    \item 为了简化符号，把群$N,H$的单位元皆写成$e$ (尽管严格来说要用$e_N,e_H$来区分开)。首先，由于
+    \begin{align*}
+        (x,y)(e,e)=(xf_y(e),ye)=(x,y),\\
+        (e,e)(x,y)=(ef_e(x),ey)=(x,y),
+    \end{align*}
+    得出$(e,e)$是$N\rtimes_fH$的单位元。接着，$(x,y)$的逆元是$\big(f_{y^{-1}}(x^{-1}),y^{-1}\big)$，这是因为\begin{align*}
+        (x,y)\big(f_{y^{-1}}(x^{-1}),y^{-1}\big)&=\big(xf_y(f_{y^{-1}}(x^{-1})),yy^{-1}\big)=(e,e),\\
+        \big(f_{y^{-1}}(x^{-1}),y^{-1}\big)(x,y)&=\big(f_{y^{-1}}(x^{-1})f_{y^{-1}}(x),y^{-1}y\big)=(e,e).
+    \end{align*}
+    再来验证结合律，即
+    \begin{align*}
+        \big[(x_1,y_1)(x_2,y_2)\big](x_3,y_3)&=\big(x_1f_{y_1}(x_2),y_1y_2\big)(x_3,y_3)
+        =\big(x_1f_{y_1}(x_2)f_{y_1y_2}(x_3),y_1y_2y_3\big),\\
+        (x_1,y_1)\big[(x_2,y_2)(x_3,y_3)\big]&=(x_1,y_1)\big(x_2f_{y_2}(x_3),y_2y_3\big)
+        =\big(x_1f_{y_1}(x_2f_{y_2}(x_3)),y_1y_2y_3\big).
+    \end{align*}
+    \item 设$G=N \rtimes H$是$N$和$H$的半直积，对于命题9.4中的同态
+    \[f:H\to\operatorname{Aut}(N), \quad y \mapsto r_y(x)=yxy^{-1},\]
+    映射
+    \[\varphi:N\rtimes_fH \to G,\quad(x,y) \mapsto xy\]
+    是同构，这是因为显然$\varphi$是双射，只需再检验$\varphi$是同态，即
+    \begin{align*}
+        &\varphi(x_1,y_1)\varphi(x_2,y_2)=(x_1y_1)(x_2y_2)\\
+        &=x_1\big(y_1x_2y_1^{-1}\big)y_1y_2=x_1r_{y_1}(x_2)y_1y_2\\
+        &=\varphi(x_1r_{y_1}(x_2),y_1y_2)=\varphi((x_1,y_1)(x_2,y_2)),
+    \end{align*}
+    从而半直积在上述意义下成为了外半直积。
+    
+    反过来，外半直积亦可视为半直积，换句话说$N\rtimes_fH$有
+    同构于$N$的正规子群$\underline{N}$和同构于$H$的子群$\underline{H}$，使得
+    \[\underline{N}\cap\underline{H}=\{e\},
+    \quad\underline{N}\underline{H}=N\rtimes_fH.\]
+    事实上，令
+    \[\underline{N}=\{(x,e) \mid x \in N\},
+    \quad\underline{H}=\{(e,y) \mid y \in H\},\]
+    通过
+    \[(x_1,e)(x_2,e)=(x_1x_2,e),\quad(e,y_1)(e,y_2)=(e,y_1y_2)\]
+    可知$\underline{N}$是同构于$N$的子群且$\underline{H}$是同构于$H$的子群。
+    要说明$\underline{N}$正规，只需发现对于投影
+    \[\pi:N\rtimes_fH \to H,\quad(n,h) \mapsto h\]
+    有$\underline{N}=\ker\pi$。
+    显然有$\underline{N}\cap\underline{H}=\{(e,e)\}$，最后
+    \[(x,e)(e,y)=(x,y)\]
+    说明$\underline{N}\underline{H}=N\rtimes_fH$。
+    本质上这就把$f$变成了$\underline{H}$在$\underline{N}$上的共轭作用，这是因为
+    \[(e,y)(x,e)(e,y)^{-1}=(f_y(x),y)(e,y^{-1})=(f_y(x),e).\qedhere\]
+    \end{enumerate}
+\end{proof}
+\item 设 $G$ 是由两个元素 $x,y$ 生成的群,且 $x,y$ 满足下列关系式:
+\[x^8 = x^4 y^2 = xy^{-1}xy = e,\]
+$e \in G$ 为恒等元.证明 $|G| \leqslant 16$.
+\begin{proof}
+    $G$中的元素都形如$x^ay^bx^cy^d\cdots$，其中$a,b,c,d,\cdots$是整数。通过
+    \begin{align*}
+        y^{-1}x^k&=(y^{-1}x^ky)y^{-1}=(y^{-1}xy)^ky^{-1}=x^{-k}y^{-1},\\
+        yx^k&=y^2(y^{-1}x^k)=x^4(x^{-k}y^{-1})=x^{4-k}y^{-1}
+    \end{align*}
+    把出现在$x^k$左边的$y^{\pm1}$一个个挪到右边去，那么$G$中元素就形如$x^my^n$了；
+    再把$y^{\pm2}$换成$x^4$，最后把$x^{\pm8}$消掉，
+    可以限定$n=0,1$和$m=0,1,\cdots,7$。因此$|G|\leqslant2\cdot8=16$。
+\end{proof}
+\item $1183$ 阶群是否一定是交换群?说明理由.
+\begin{proof}[解答]
+    不一定。令$V$为$2$维$\mathbb{F}_{13}$-向量空间，视作$13^2$阶加法群，
+    那么$\operatorname{Aut}(V)$就是${\rm GL}_2(\mathbb{F}_{13})$，
+    这个群的阶是$(13^2-1)(13^2-13)$ (参考2.8节例9或3.7节习题8的解答)，
+    由Cauchy定理知其中有$7$阶元$a$，
+    则外半直积$V\rtimes\langle a \rangle$是$1183=13^2\cdot7$阶非交换群。
+\end{proof}
+\item 设群 $G = \langle x,y \mid x^5 = y^4 = e , yx = x^2 y \rangle$,
+即由两个元素 $x,y$ 在关系 $yx = x^2 y$ 下生成的群.求解下列问题:
+\begin{enumerate}[label=(\arabic*)]
+\item 证明 $G$ 是其两个真子群的半直积;
+\item 求出 $G$ 的所有子群.
+\end{enumerate}
+\begin{proof}[解答]
+    这个群常称为 \href{https://groupprops.subwiki.org/wiki/General_affine_group:GA(1,5)}{$20$阶Frobenius群}，更多性质参考蓝色的链接。
+
+    (1) 易知$G$是其$5$阶子群$\langle x \rangle$和$4$阶子群$\langle y \rangle$的半直积。
+    直观地看，$G$其实是$\mathbb{F}_5$上的$1$阶可逆仿射变换全体在复合运算下构成的群，记为
+    \[{\rm AGL}(1,\mathbb{F}_5)=\big\{f(t)=at+b \mid a\in\mathbb{F}_5^*,b\in\mathbb{F}_5\big\},\]
+    其中$x$对应于$x(t)=t+1$，$y$对应于$y(t)=2t$，相应地，$yx=x^2y$就是
+    \[(y \circ x)(t)=(x \circ x \circ y)(t)=2t+2.\]
+    
+    (2) $G$中的元素可按阶分类为
+    \[\begin{array}{|c|c|c|c|}
+        \hline \text{阶数} & \text{元素} & \text{对应的仿射变换} & \text{数目}\\
+        \hline 1 & e & \!\!\!\!\!\!e(t)=t & 1\\ \\
+        2 & \ \ x^by^2\ (b\in\mathbb{F}_5) & x^by^2(t)=-t+b & 5\\ \\
+        4 & x^by^{\pm1}\ (b\in\mathbb{F}_5) & x^by^{\pm1}(t)=\pm2t+b & 10\\ \\
+        5 & \ \ \ \ \ \ x^b\ (b\in\mathbb{F}_5^*) & \,x^b(t)=t+b & 4\\
+    \hline\end{array}\]
+    容易说明，对于$G$的子群$H$来说，
+    \begin{itemize}
+        \item 如果$H$含有$x$，那么$H$是$5$阶循环群$\langle x \rangle$或二面体群$\langle x,y^2 \rangle$或者是$G$本身，
+        \item 如果$H$不含$x$，那么$H$是$4$阶循环群$\langle x^by \rangle$或$2$阶循环群$\langle x^by^2 \rangle$或者是$\{e\}$，
+    \end{itemize}
+    其包含关系可用下图表示
+    \[\begin{cd}
+    & G \ar[dl,dash]\ar[dr,dash] &\\
+    \langle x^by \rangle\cong\Z_4 \ar[dd,dash] & & \langle x,y^2 \rangle \cong D_5 \ar[dd,dash]\\ \\
+    \langle x^{3b}y^2 \rangle\cong\Z_2 \ar[uurr,dash] & & \langle x \rangle\cong\Z_5\\
+    & \{e\} \ar[ul,dash]\ar[ur,dash] &
+    \end{cd}\]
+    其中$b\in\mathbb{F}_5$，且
+    \[(x^by)^2=x^b\big(yx^b\big)y=x^b\big(x^{2b}y\big)y=x^{3b}y^2,\]
+    共有$5\cdot2+4=14$个子群。
+\end{proof}
+\item 设 $G$ 为 $105$ 阶群,证明:
+\begin{enumerate}[label=(\arabic*)]
+\item $G$ 是可解群;
+\item $G$ 有一个正规 Sylow $7$-子群和一个正规 Sylow $5$-子群.
+\end{enumerate}
+\begin{proof}
+    \begin{enumerate}[label=(\arabic*)]
+    \item 由第8节习题7，$G$有正规的Sylow $7$-子群$R$，
+    那么$G/R$是$15$阶群，同第8节习题1可得$15$阶群为循环群，从而$G$可解。
+    \item 设$Q$是$G$的一个Sylow $5$-子群，只需说明$Q$是正规子群即可。
+    注意到$QR$是$G$的指数为$3$的子群，由第7节习题4得到$QR$正规，
+    并且第8节习题1表明这个$35$阶群是循环群，
+    记其生成元为$a$，那么其$5$阶子群$Q$就是由$a^7$生成的。
+    由于对于$g \in G$有$ga^7g^{-1}=(gag^{-1})^7$，
+    其中$gag^{-1} \in QR$，得出$(gag^{-1})^7 \in Q$，这说明$Q$正规。\qedhere
+    \end{enumerate}
+\end{proof}
+\item 设 $p,q$ 为互异素数,利用 Sylow 定理和群的半直积理论分类 $pq$ 阶群.
+\begin{proof}[解答]
+    不妨设$p<q$，由Sylow定理$m_q$整除$p$且模$q$余$1$，则$m_q=1$，
+    即$G$有个正规的$q$阶子群$Q$。记$P$为$G$的一个$p$阶子群，
+    那么$P,Q$就能生成整个$G$，从而$G$的结构可以由$P$在$Q$上的共轭作用
+    \[\theta:P\to\operatorname{Aut}(Q), \quad h\mapsto\theta_h(g)=h^{-1}gh\]
+    唯一决定。由于$q$阶循环群$Q$的自同构群同构于$(\Z_q)^*\cong\Z_{q-1}$，
+    可知当$p$不整除$q-1$时$\theta$只能把整个$P$映成$\{e\}$，
+    因此$G \cong P \times Q$；下面设$p$整除$q-1$。
+    
+    这时，在同构的意义下$\theta$就是加法群$\Z_p\to\Z_{pk}$的同态，
+    其中$k=(q-1)/p$，映射$\theta$只取决于$\theta([1])$，
+    唯一需要满足的条件是$\theta([p])=[0]$，即$pk$整除$p\theta([1])$，
+    也就是说$\theta([1])=jk$，其中$j=0,1,\cdots,p-1$。
+    不过这并不意味着$G$就有$p$种不同的结构：
+
+    * $j=0$时，$G$依然是$P,Q$的直积；
+    * $j=1$时，$G$是$P,Q$的半直积；
+    * $j=2,\cdots,p-1$时，$P\cong\Z_p$的生成元可以改为$[j]$，
+    从而$P,Q$的半直积同构于$j=1$的情形。
+    
+    总之，当$p$整除$q-1$时$G$有$2$种群结构。
+\end{proof}
+\end{enumerate}
+
+\subsection**{参考文献}
+\begin{references}
+    \bibitem[Ar]{Ar}
+        M.A. Armstrong. \textit{Groups and Symmetry}.
+        Undergraduate Texts in Mathematics. Springer, 1988.
+    \bibitem[Ro]{Ro}
+        Joseph J. Rotman. \textit{An Introduction to the Theory of Groups}.
+        Graduate Texts in Mathematics 148. Springer, 1995.
+    \bibitem[Wa]{Wa}
+        王杰. 典型群引论. 北京大学数学教学系列丛书. 北京大学出版社, 2015.
+\end{references}

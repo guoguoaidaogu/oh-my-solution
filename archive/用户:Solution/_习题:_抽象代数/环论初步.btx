@@ -1,0 +1,1114 @@
+\setdisplaytitle{第二章\ 环论初步}
+\sethtmltitle{第二章\ 环论初步}
+\newenvironment{solution}{\begin{proof}[解]}{\end{proof}}
+
+\textbf{注} \quad 习题来自《抽象代数》(陈猛,王庆雪,李志远) (高等教育出版社2025年9月第1版)
+
+\section{环的概念及基本性质}
+
+\begin{enumerate}
+\item 给出命题 1.1 的证明.
+
+\item 设 $ S $ 是集合, $\mathcal{P}$ 为 $ S $ 的幂集 ($ S $ 的全体子集构成的集合).对 $ A, B \in \mathcal{P}$,定义
+\[
+A \triangle B = (A \cup B) \setminus (A \cap B)
+\]
+为集合 $ A, B $ 的对称差.验证 $(\mathcal{P}, \triangle, \cap)$ 是含幺交换环.
+
+\item 设 $ R $ 是一个环且对任意 $ a \in R $ 都有 $ a^2 = a $.证明:
+\begin{enumerate}[label=(\arabic*)]
+    \item 对任意 $ a \in R $,有 $ 2a = a + a = 0 $;
+    \item $ R $ 是交换环.
+\end{enumerate}
+
+\item 设 $ R $ 是一个含幺环.如果对任意的 $ a, b \in R $,都有 $ (a + b)^2 = a^2 + b^2 $,证明 $ R $ 是交换环.
+
+\item 设 $ R $ 是一个含幺环, $ a, b \in R $.证明 $ 1 - ab $ 可逆当且仅当 $ 1 - ba $ 可逆.
+
+\item 证明复数域上的 $ n $ 阶矩阵环的中心 $ Z(M_n(\mathbb{C})) = \{\lambda \cdot I_n \mid \lambda \in \mathbb{C}\} $.
+
+\item 设 $R$ 为环, $n \in \mathbb{N}$, $M_n(R)$ 为 $R$ 上 $n$ 阶矩阵环.
+若 $n \geqslant 2$, 证明 $M_n(R)$ 是交换环当且仅当对任意 $a, b \in R$, $ab = 0$.
+
+\item 计算 $ \mathbb{Z} \times \mathbb{Z} $ 中包含 $ (2, 0) $ 的最小含幺子环.
+
+\item 求解下列问题:
+\begin{enumerate}[label=(\arabic*)]
+    \item 如果 $ R $ 是交换环,且 $ a, b \in R $ 是幂零元,证明 $ a + b $ 也是幂零元;
+    \item 试举例说明:在非交换环中,两个非零的幂零元之和可以不是幂零的.
+\end{enumerate}
+\begin{proof}[解答]
+    \begin{enumerate}[label=(\arabic*)]
+    \item 设$m,n\in\N$使得$a^m=b^n=0$，由于$(a+b)^{m+n}$的展开式中
+    「$a$的幂次不小于$m$」和「$b$的幂次不小于$n$」至少有一个成立，
+    得到其每项均是$0$，从而整体也是$0$。
+    \item $M_2(\R)$中有幂零元
+    \[A=\begin{pmatrix}0&1\\ \\0&0\end{pmatrix}, 
+    \quad B=\begin{pmatrix}0&0\\ \\1&0\end{pmatrix},\]
+    并且$(A+B)^2=I$表明$A+B$不幂零。\qedhere
+    \end{enumerate}
+\end{proof}
+
+\item 设 $ R $ 是含幺环, $ a \in R $.若 $ b \in R $ 使得 $ ba = 1 $,则称 $ b $ 是 $ a $ 的左逆元.
+\begin{enumerate}[label=(\arabic*)]
+    \item 若 $ a $ 有唯一的左逆元 $ b $,证明 $ ab = 1 $;
+    \item 若 $ a $ 有两个不同的左逆元,证明 $ a $ 有无穷多个左逆元.
+\end{enumerate}
+\begin{proof}
+    \begin{enumerate}[label=(\arabic*)]
+    \item 注意到$(b+ab-1)a=ba+a(ba)-a=1$，说明$b+ab-1=b$，即$ab=1$。
+    \item 注意到$b+a^n(ab-1)$都是$a$的左逆元，且它们互不相同。若不然，有$m>n$使得
+    \[a^m(ab-1)=a^n(ab-1),\]
+    两边左乘$b^m$得到
+    \[ab-1=b^{m-n}(ab-1)=b^{m-n-1}(ba-1)b=0,\]
+    即$ab=1$；这样的话，$ca=1$能推出$b=cab=c$，即$a$的左逆元唯一。\qedhere
+    \end{enumerate}
+\end{proof}
+
+\item 设 $ R $ 是含幺环, $ a_1, \cdots, a_n \in R $.记 $ I = \{1, 2, \cdots, n\} $, $ S_n $ 是对称群.证明:
+\[
+(-1)^n \sum_{\sigma \in S_n} a_{\sigma(1)} \cdots a_{\sigma(n)} = \sum_{J \subset I} (-1)^{|J|} \left( \sum_{j \in J} a_j \right)^n.
+\]
+\begin{proof}
+    对任何的$i \in I$，子集$J \subset I$可分为两类：不包含$i$的和包含$i$的，因而
+    \begin{align*}
+        \sum_{J \subset I}(-1)^{|J|}\left(\sum_{j \in J}a_j\right)^n
+        &=\sum_{J \subset I\setminus\{i\}}(-1)^{|J|}\left(\sum_{j \in J}a_j\right)^n
+        +\sum_{J \subset I\setminus\{i\}}(-1)^{1+|J|}\left(a_i+\sum_{j \in J}a_j\right)^n\\
+        &=\sum_{J \subset I\setminus\{i\}}(-1)^{|J|}\left[\left(\sum_{j \in J}a_j\right)^n-\left(a_i+\sum_{j \in J}a_j\right)^n\right].
+    \end{align*}
+    方括号中不含$a_i$的项会消掉，最终留存下来的项都是含有$a_i$的。
+    既然每个单项的次数皆是$n$，并且留存下来的项要包含所有的$a_i$，
+    那就必然是$a_{\sigma(1)} \cdots a_{\sigma(n)}$的形式了，
+    它的来源是$\displaystyle(-1)^{|I|}\left(\sum_{j \in I}a_j\right)^n$，
+    那么前面的系数为$(-1)^n$。
+\end{proof}
+\end{enumerate}
+
+\section{整环,可除环和域}
+
+\begin{enumerate}
+\item 设 $ A $ 是可除环, $ B $ 是 $ A $ 的有限非零子环.证明 $ B $ 也是可除环.
+
+\item 设 $ R $ 是有限含幺环,证明 $ R $ 中元素或者是零因子,或者是可逆元.
+
+\item 设 $ m \in \mathbb{N} $,则 $ \mathbb{Z}_m $ 在模 $ m $ 同余的加法、乘法运算下构成环.
+在 Abel 群 $ (\mathbb{Z}_2)^{\oplus 3} $ 上定义二元运算 ``$\star$'':
+对 $ a, b, c, x, y, z \in \mathbb{Z}_2 $,定义
+\[
+(a, b, c) \star (x, y, z) = (ax + bz + cy, ay + bx + bz + cy + cz, az + by + cx + cz),
+\]
+验证 $((\mathbb{Z}_2)^{\oplus 3}, +, \star)$ 是一个域.
+
+\item 考虑高斯整数环 $ \mathbb{Z}[\mathrm{i}] = \{a + b\mathrm{i} \mid a, b \in \mathbb{Z}\} \subset \mathbb{C} $.
+对 $ x = a + b\mathrm{i} \in \mathbb{Z}[\mathrm{i}] $,
+定义 $N(x) = x \bar{x} = a^2 + b^2$.证明:
+\begin{enumerate}[label=(\arabic*)]
+    \item 对任意 $x, y \in \mathbb{Z}[\mathrm{i}]$, $N(xy) = N(x)N(y)$;
+    \item $ x \in \mathbb{Z}[\mathrm{i}]^* $ 当且仅当 $N(x) = 1$; $\mathbb{Z}[\mathrm{i}]^* = \{1, -1, \mathrm{i}, -\mathrm{i}\}$.
+\end{enumerate}
+
+\item 设 $ A = \mathbb{Z}[\sqrt{2}] = \{a + b\sqrt{2} \mid a, b \in \mathbb{Z}\} \subset \mathbb{R} $.
+对 $ x = a + b\sqrt{2} \in \mathbb{Z}[\sqrt{2}] $,定义 $N(x) = a^2 - 2b^2$.
+证明:
+\begin{enumerate}[label=(\arabic*)]
+    \item $ A $ 是实数域 $\mathbb{R}$ 的子环;
+    \item $ x \in \mathbb{Z}[\sqrt{2}]^* $ 当且仅当 $ N(x) = \pm 1 $;
+    \item 单位群 $\mathbb{Z}[\sqrt{2}]^*$ 是无限群.
+\end{enumerate}
+\begin{proof}
+    \begin{enumerate}[label=(\arabic*)]
+        \item 注意到$(a + b\sqrt{2})(c + d\sqrt{2})=ac+2bd+(ad+bc)\sqrt{2}$即可.
+        \item 若$x$可逆,记$x$的逆元为$x^{-1}$.
+        易见$\forall x,y \in A,N(xy)=N(x)N(y)$,于是$N(x)N(x^{-1})=N(xx^{-1})=1$,
+        但是$N(x),N(x^{-1})\in\mathbb{Z}$,于是有$N(x)=\pm1$.
+
+        反之,若$N(x)=\pm1$,设$x=a+b\sqrt{2}$,则$a^2-2b^2=\pm 1$,
+        于是$(a+b\sqrt{2})(a-b\sqrt{2})=\pm 1$,
+        所以$x^{-1}=\pm (a-b\sqrt{2})\in A$,即$x$可逆.
+        \item 只需证Pell方程$a^2-2b^2=1$有无限多组整数解即可,
+        事实上,固定一组解非平凡解$(a,b)$ (例如$(3,2)$),
+        有$(a + b\sqrt{2})(a - b\sqrt{2})=1$,两边平方,得到
+        $$1=(a + b\sqrt{2})^2(a - b\sqrt{2})^2=(a^2+2b^2)^2-2(2ab)^2$$
+        从而得到一组新的解$(a^2+2b^2,2ab)$,重复下去即可得到无限多组解.
+              
+        注：对于数域（即$\mathbb{Q}$的有限扩张$K$）的整数环
+        （即$\mathcal{O}_K=\{\alpha \in K\mid\alpha\text{ 是某个整系数多项式的根}\}$）
+        的单位群的结构的更为一般的刻画称为Dirichlet单位定理，可参考\cite{FeK}第三章\S\,2.\qedhere
+    \end{enumerate}
+\end{proof}
+
+\item 设 $\mathbb{H} = \{a + b\mathrm{i} + c\mathrm{j} + d\mathrm{k} \mid a, b, c, d \in \mathbb{R}\}$ 是四元数体.
+\begin{enumerate}[label=(\arabic*)]
+    \item 求 $\mathbb{H}$ 的中心;
+    \item 求方程 $x^2 + 1 = 0$ 在 $\mathbb{H}$ 中的解集合;说明它是有限集还是无限集.
+\end{enumerate}
+
+\item 设 $\mathbb{H}$ 是四元数体.对 $x = a + b\mathrm{i} + c\mathrm{j} + d\mathrm{k} \in \mathbb{H}$,
+定义 $\bar{x} = a - b\mathrm{i} - c\mathrm{j} - d\mathrm{k}$,
+\[|x| = \sqrt{a^2 + b^2 + c^2 + d^2}.\]证明:
+\begin{enumerate}[label=(\arabic*)]
+    \item $x\bar{x} = \bar{x}x = |x|^2$;
+    \item 对任意 $x \in \mathbb{H}, x \neq 0$, $x$ 是乘法可逆元;
+    \item 对 $x, y \in \mathbb{H}$,有 $\overline{x + y} = \bar{x} + \bar{y}, \overline{xy} = \bar{y}\bar{x}$;
+    \item 对 $x, y \in \mathbb{H}$,有 $|xy| = |x||y|$;
+    \item 设 $S = \{n \in \mathbb{N} \mid n \text{ 是 } 4 \text{ 个整数的平方和}\}$,若 $x, y \in S$,证明 $xy \in S$.
+\end{enumerate}
+
+\item 设 $Q_8 = \{\pm 1, \pm \mathrm{i}, \pm \mathrm{j}, \pm \mathrm{k}\}$ 是四元数体 $\mathbb{H}$ 的乘法群的子集.证明:
+\begin{enumerate}[label=(\arabic*)]
+    \item $Q_8$ 是其子群;
+    \item 求 $Q_8$ 的中心 $C(Q_8)$;
+    \item 证明 $Q_8$ 的每个子群都是正规子群,但 $Q_8$ 不是 Abel 群.
+\end{enumerate}
+
+\item 设 $D$ 是可除环, $a \in D$.证明:
+\begin{enumerate}[label=(\arabic*)]
+    \item 若 $a$ 与任意形如 $xy - yx$ $(x, y \in D)$ 的元素乘法可交换,则 $a \in Z(D)$;
+    \item 若 $a$ 与任意形如 $x^{-1}y^{-1}xy$ $(x, y \in D^*)$ 的元素乘法可交换,则 $a \in Z(D)$.
+\end{enumerate}
+(提示:在 $D$ 中如下等式在两边有意义时成立:
+\[
+b(b^{-1}aba^{-1} - c^{-1}aca^{-1}) = 1 - c^{-1}aca^{-1},
+\]
+其中 $c = b - 1$.)
+\begin{proof}
+    (1) 对于任何$x \in D$，注意到
+    \begin{align*}
+        xa(xa-ax)&=x(xa-ax)a=\big(x(xa)-(xa)x\big)a\\
+        &=a\big(x(xa)-(xa)x\big)=ax(xa-ax),
+    \end{align*}
+    即$(xa-ax)^2=0$，因此$xa-ax=0$。
+
+    (2) 照着提示。
+\end{proof}
+\end{enumerate}
+
+\section{理想与商环}
+
+\begin{enumerate}
+
+\item 给出命题 3.1 的证明.
+
+\item 给出命题 3.9 的证明.
+
+\item 设 $n \geqslant 2$ 是正整数, $R = M_n(\mathbb{C})$ 是 $n$ 阶复矩阵环, $I$ 是 $R$ 的理想.证明 $I = 0$ 或 $I = R$.
+\begin{proof}
+    设$I$不为$0$,则存在$A\in I$为非零矩阵,设$A$的第$i$行$j$列上的元素$a_{ij}$不为$0$,
+    记$E_{kl}$为第$k$行$l$列为$1$、\,其余分量为$0$的矩阵,
+    由于$E_{ki}AE_{jl}=a_{ij}E_{kl}$,得到$E_{kl} \in I$,
+    进而有$I_n=\sum\limits_{k=1}^nE_{kk} \in I$,也就是说$I$包含单位元,这意味着$I=R$.
+\end{proof}
+\item 设 $R$ 为交换环, $I \subset R$ 是一个理想,定义 $\sqrt{I} = \left\{ r \in R \mid \text{存在正整数 } n \text{ 使得 } r^n \in I \right\}$.验证 $\sqrt{I}$ 是一个理想.
+
+\item 列举\footnote{``列举''是指逐个举出，这里用得不恰当。}一个非交换环 $R$ 中的极大理想 $I$,但 $I$ 不是 $R$ 的素理想.\printfootnotes
+\begin{proof}[解答]
+    设$n\geqslant2$，$M_n(\mathbb{C})$中$0$是极大理想 (本节习题3)，并且易见不是素理想。
+\end{proof}
+
+\item 设 $A, B, C$ 是环 $R$ 的理想.
+\begin{enumerate}[label=(\arabic*)]
+    \item 证明 $(AB)C = A(BC) = ABC$, $A(B + C) = AB + AC$, $(A + B)C = AC + BC$;
+    \item $A \cap (B + C) = (A \cap B) + (A \cap C)$ 是否成立?说明理由.
+\end{enumerate}
+\begin{proof}[解答]
+    (1) 这些都是显然的。
+
+    (2) 不成立，取$R=\Z\times\Z$及其中由$(1,1),(1,0),(0,1)$各自生成的主理想$A,B,C$，
+    则$A\cap(B+C)=A \cap R=A$，同时$(A \cap B)+(A \cap C)=0+0=0$。
+\end{proof}
+
+\item 考虑实数域的子环 $A = \mathbb{Z}[\sqrt{2}] = \left\{a + b\sqrt{2} \mid a, b \in \mathbb{Z}\right\}, I = \left\{a + b\sqrt{2} \in A \mid 3 \mid a, 3 \mid b\right\}$ 是 $A$ 的子集.证明：
+\begin{enumerate}[label=(\arabic*)]
+    \item $I$ 是 $A$ 的主理想;
+    \item $I$ 是 $A$ 的极大理想.
+\end{enumerate}
+\begin{proof}
+    \begin{enumerate}[label=(\arabic*)]
+        \item 对于任意$a+b\sqrt{2}\in I$,记$a=3c,b=3d$,有$c,d\in\mathbb{Z}$则$a+b\sqrt{2}=(c+d\sqrt{2})3\in(3)$,即$I\subset(3)$,反之,由定义即知$(3)\subset I$.从而$I=(3)$是主理想.
+        \item 考虑环$\mathbb{F}_3[\sqrt{2}]=\{a+b\sqrt{2}|a,b\in\mathbb{F}_3\}$ (即向$\mathbb{F}_3$添加方程$x^2-2=0$的根得到的环),易见这是一个域,且$A/I\cong \mathbb{F}_3[\sqrt{2}]$,从而$I$是极大理想.
+        
+              注:一个不用求商环$A/I$的办法如下:如果$I$不是极大理想,那么存在一个元素$x=c+d\sqrt{2}\in A-I$使得$I+(x)$是真理想,不妨设$0\leqslant c,d\leqslant2$,通过将$x$与$I$中的元素辗转相除,可以证明$1\in(x)+I$,从而导出矛盾.\qedhere
+    \end{enumerate}
+\end{proof}
+
+\item 设 $R$ 是环,记 $\operatorname{Nil}(R) = \left\{a \in R \mid a \text{ 是幂零元}\right\}$.
+\begin{enumerate}[label=(\arabic*)]
+    \item 设 $R$ 满足性质:若 $a^2 = 0$,则 $a = 0$,证明 $\mathrm{Nil}(R) = \left\{0\right\}$;
+    \item 设 $R$ 是交换环,证明 $\operatorname{Nil}(R)$ 是理想;
+    \item 举例说明在非交换环中, $\operatorname{Nil}(R)$ 可以不是理想.
+\end{enumerate}
+\begin{proof}
+    \begin{enumerate}[label=(\arabic*)]
+    \item 对$a\in\operatorname{Nil}(R)$，有$n\in\N$使得$a^n=0$，
+    取$2^k \geqslant n$，则$a^{2^k}=0$，由条件得$a^{2^{k-1}}=0$，以此类推得出$a=0$。
+    \item 参考第1节习题9 (1)。
+    \item 参考第1节习题9 (2)。\qedhere
+    \end{enumerate}
+\end{proof}
+
+\item 设 $R$ 是含幺环. $\{I_i\}_{i \in \varLambda}$ 是 $R$ 的一族理想, $\varLambda$ 是非空指标集.
+如果对任意 $i, j \in \varLambda$,总有 $I_i \subseteq I_j$ 或 $I_j \subseteq I_i$,
+证明 $\bigcup\limits_{i \in \varLambda} I_i$ 是 $R$ 的理想.
+\begin{proof}
+    记$I=\bigcup\limits_{i \in \varLambda} I_i$，
+    对于任意$a,b\in I$，存在$i,j\in \varLambda$，使得$a\in I_i,b\in I_j$，
+    由题设，不妨设$I_i\subset I_j$，从而$a,b\in I_j$，于是$a+b\in I_j\subset I$.
+    对于任意$r\in R$，$rx\in I_i\subset I$，从而$I$满足理想的公理，得证.
+\end{proof}
+\end{enumerate}
+
+\section{环的同态与同构}
+
+\begin{enumerate}
+
+\item 设 $ R $ (不一定含幺元) 和 $ S $ 均为环, $ f : R \to S $ 为环同态, 证明: $ f : R \to S $ 为环同构当且仅当存在环同态 $ g : S \to R $ 使得 $ g \circ f = \mathrm{id}_R $ 且 $ f \circ g = \mathrm{id}_S $.
+
+\item 如果 $ R_1, R_2 $ 为不一定含有幺元的环, 设 $ f : R_1 \to R_2 $ 是环同态. 证明定理4.2的结论仍然成立.
+
+\item 设 $ R $ 是含幺交换环, $ I_1, I_2, I_3 $ 是 $ R $ 的理想.
+\begin{enumerate}[label=(\arabic*)]
+    \item 如果 $ I_1 $ 与 $ I_2 $ 互素, 证明 $ I_1 I_2 = I_1 \cap I_2 $;
+    \item 如果 $ I_1 $ 与 $ I_3 $ 互素, $ I_2 $ 也与 $ I_3 $ 互素, 证明 $ I_1 I_2 $ 与 $ I_3 $ 互素;
+    \item 证明定理 4.7.
+\end{enumerate}
+
+\item 求解下列问题:
+\begin{enumerate}[label=(\arabic*)]
+    \item 设 $ R_1, R_2 $ 是非零含幺环. 如果 $ R_1 $ 与 $ R_2 $ 同构, 证明它们的单位群 $ R_1^* $ 与 $ R_2^* $ 也同构;
+    \item 设 $ R_1, R_2, \cdots, R_n $ 是非零含幺环. 对它们的直积证明:
+    \[
+    (R_1 \times R_2 \times \cdots \times R_n)^* = R_1^* \times R_2^* \times \cdots \times R_n^*.
+    \]
+\end{enumerate}
+
+\item 求最小的正整数 $ a $, 满足 $ a \equiv 1 \pmod{4}, a \equiv 4 \pmod{5}, a \equiv 3 \pmod{6} $.
+
+\item 设 $ n > 1 $ 是正整数, 记 $ \varphi(n) $ 是单位群 $ (\mathbb{Z}/n\mathbb{Z})^* $ 的阶; 定义 $ \varphi(1) = 1 $.
+\begin{enumerate}[label=(\arabic*)]
+    \item 证明 $ (\mathbb{Z}/n\mathbb{Z})^* = \{\bar{a} \mid \gcd(a,n) = 1, 1 \leqslant a \leqslant n\} $;
+    \item 设 $ p $ 是素数, $ r $ 是正整数, 证明 $ \varphi(p^r) = p^r - p^{r-1} $;
+    \item 设 $ m, n $ 互素, 证明 $ \varphi(mn) = \varphi(m)\varphi(n) $;
+    \item 设 $ n = p_1^{e_1} p_2^{e_2} \cdots p_t^{e_t} $ 是 $ n $ 的素因子分解, 证明
+    \[
+    \varphi(n) = n \prod_{i=1}^t (1 - p_i^{-1}).
+    \]
+\end{enumerate}
+
+\item 设 $ R, S $ 是含幺环, $ f : R \to S $ 是一个非零环同态. 求解下列问题:
+\begin{enumerate}[label=(\arabic*)]
+    \item 如果 $ I $ 是 $ S $ 的素理想,那么 $ f^{-1}(I) $ 是 $ R $ 的素理想;
+    \item 如果 $ J $ 是 $ R $ 的素理想, $ f(J) $ 是否是 $ S $ 的素理想?请说明理由;
+    \item 如果 $ I $ 是 $ S $ 的极大理想, $ f^{-1}(I) $ 是否是 $ R $ 中的极大理想?请说明理由;
+    \item 如果 $ J $ 是 $ R $ 的极大理想, $ f(J) $ 是否是 $ S $ 中的极大理想?请说明理由.
+\end{enumerate}
+\begin{proof}[解答]
+    \begin{enumerate}[label=(\arabic*)]
+    \item 如果$ab \in f^{-1}(I)$，即$f(a)f(b)=f(ab) \in I$，
+    那么$f(a)$或$f(b) \in I$，即$a$或$b \in f^{-1}(I)$；
+    \item 取$f$为$\Z$到$\mathbb{Q}$的嵌入映射，$p$是素数，$J=p\Z$，
+    而$f(J)=p\Z$都不是$\mathbb{Q}$的理想，遑论素理想；
+    \item 映射同上，令$I=0$，而$0$不是$\Z$中的极大理想；
+    \item 同(2)。\qedhere
+    \end{enumerate}
+\end{proof}
+
+\item 设交换群 $ A = \mathbb{Z} \times \mathbb{Z} $,定义
+\[
+\mathrm{End}(A) \triangleq \{ f : A \to A \text{ 是群同态} \}.
+\]
+\begin{enumerate}[label=(\arabic*)]
+    \item 证明 $\mathrm{End}(A)$ 上存在自然的环结构,并指出其加法与乘法运算,求出 $\mathrm{End}(A)$ 的零元和乘法幺元;
+    \item 证明 $\mathrm{End}(A)$ 同构于由整数二阶方阵组成的环.
+\end{enumerate}
+
+\item 设 $ f : R \to S $ 是环同态, $ I, J $ 分别是环 $ R, S $ 的理想,且 $ f(I) \subset J $.定义
+\[
+\bar{f} : R/I \to S/J,\ \quad\ a + I \mapsto f(a) + J.
+\]
+\begin{enumerate}[label=(\arabic*)]
+    \item 证明 $\bar{f}$ 是有意义的映射且为环同态;
+    \item 证明 $\bar{f}$ 是环同构当且仅当 $ f(R) + J = S $ 且 $ f^{-1}(J) = I $.
+\end{enumerate}
+
+\item 设 $ R = 
+\left\{
+\begin{pmatrix}
+\alpha & \beta \\ \\
+-\bar{\beta} & \bar{\alpha}
+\end{pmatrix}
+\middle|\alpha, \beta \in \mathbb{C} \right\}$.
+证明 $ R $ 是 $ M_2(\mathbb{C}) $ 的子环,且环 $ R $ 同构于四元数体 $ \mathbb{H} $.
+\begin{proof}
+    $R$显然对加法封闭，再验证一下其对乘法封闭，即
+    \[\begin{pmatrix}\alpha&\beta\\ \\-\bar{\beta}&\bar{\alpha}\end{pmatrix}
+    \begin{pmatrix}\gamma&\delta\\ \\-\bar{\delta}&\bar{\gamma}\end{pmatrix}
+    =\begin{pmatrix}\alpha\gamma-\beta\bar{\delta}&\alpha\delta+\beta\bar{\gamma}\\ \\
+    -\,\overline{\alpha\delta+\beta\bar{\gamma}}&\overline{\alpha\gamma-\beta\bar{\delta}}\end{pmatrix}.\]
+    设$\alpha=a+b\sqrt{-1},\beta=c+d\sqrt{-1}$，构造映射$\varphi:R\to\mathbb{H}$为
+    \[\varphi\begin{pmatrix}\alpha&\beta\\ \\-\bar{\beta}&\bar{\alpha}\end{pmatrix}
+    =a+b{\rm i}+c{\rm j}+d{\rm k},\]
+    易知$\varphi$是一一映射并且保持加法，再说明$\varphi$也保持乘法就行了。
+
+    设$\gamma=a'+b'\sqrt{-1},\delta=c'+d'\sqrt{-1}$，那么
+    \begin{align*}
+        \alpha\gamma-\beta\bar{\delta}
+        &=\big(a+b\sqrt{-1}\big)\big(a'+b'\sqrt{-1}\big)
+        -\big(c+d\sqrt{-1}\big)\big(c'-d'\sqrt{-1}\big)\\
+        &=(aa'-bb'-cc'+dd')+(ab'+a'b+cd'-c'd)\sqrt{-1},\\
+        \alpha\delta+\beta\bar{\gamma}
+        &=\big(a+b\sqrt{-1}\big)\big(c'+d'\sqrt{-1}\big)
+        +\big(a'-b'\sqrt{-1}\big)\big(c+d\sqrt{-1}\big)\\
+        &=(ac'+a'c+b'd-bd')+(ad'+a'd+bc'-b'c)\sqrt{-1},
+    \end{align*}
+    同2.2节例3中的表达式比对一下即可。
+\end{proof}
+\item 设 $ R $ 是含幺环, $ M_n(R) $ 是 $ R $ 上 $ n $ 阶矩阵环.
+若 $ I $ 是 $ R $ 的理想,记 $ M_n(I) $ 为各元素均属于 $ I $ 的 $ n $ 阶矩阵全体.证明:
+\begin{enumerate}[label=(\arabic*)]
+    \item $ M_n(I) $ 是 $ M_n(R) $ 的理想;
+    \item $ M_n(R) $ 的每个理想均形如 $ M_n(J) $, $ J $ 是 $ R $ 的某个理想;
+    \item 有环同构 $ M_n(R)/M_n(I) \cong M_n(R/I) $.
+\end{enumerate}
+\begin{proof}
+    (1)是显然的，(3)是因为对于满的环同态
+    \[\pi:M_n(R) \to M_n(R/I),\quad(a_{ij})\mapsto(a_{ij}+I)\]
+    有$\ker\pi=M_n(I)$。唯一有难度的是(2)，设$I$是$M_n(R)$的理想，
+    令$J$为$I$中所有方阵左上角 (即$(1,1)$处) 的元素构成的集合，
+    易知$J$是$R$的理想，下面说明$I=M_n(J)$。一方面，对于$I$中的方阵$A$，
+    通过$E_{i1}AE_{1j}=a_{11}E_{ij}$能将$J$中的元素$a_{11}$挪到任何一个位置 (即$(i,j)$处)，
+    得到$JE_{ij} \subseteq I$，那么$M_n(J)=\sum\limits_{i,j=1}^{n}JE_{ij} \subseteq I$；
+    另一方面，通过$E_{1i}AE_{j1}=a_{ij}E_{11}$也能将$I$中的方阵$A$的任何位置的元素$a_{ij}$挪到左上角，
+    这意味着如果$A \in I$就有$a_{ij}E_{11} \in I$，从而$a_{ij} \in J$，也就是说$I \subseteq M_n(J)$。
+\end{proof}
+\item 设 $ R $ 是环,如果 $ e \in R $ 满足 $ e^2 = e $,则称 $ e $ 是幂等元.若幂等元 $ e \in Z(R) $,则称 $ e $ 为中心幂等元.
+\begin{enumerate}[label=(\arabic*)]
+    \item 设 $ R $ 是含幺环, $ e \notin \{0,1\} $ 为 $ R $ 的中心幂等元.证明 $ 1-e $ 也是中心幂等元,且主理想 $(e), (1-e)$ 均是含幺环,使得 $ R \cong (e) \times (1-e) $. $ (e) $ 是否为 $ R $ 的子环?
+    \item 设 $ R $ 是含幺环,证明下列条件等价:
+    \begin{enumerate}[label=(\alph*)]
+        \item $ R \cong R_1 \times R_2 \times \cdots \times R_n $,其中 $ R_1, R_2, \cdots, R_n $ 均为含幺环. (注意, $ R_i $ 的幺元不是 $ R $ 的幺元.换言之, $ R_i $ 不是含幺子环.)
+        \item $ R $ 有中心幂等元 $ e_1, e_2, \cdots, e_n $ 满足 $ e_i \notin \{0,1\}, e_i e_j = 0$ $(1 \leqslant i, j \leqslant n, i \neq j) $,且 $ e_1 + e_2 + \cdots + e_n = 1 $.
+    \end{enumerate}
+\end{enumerate}
+\begin{proof}[解答]
+    (1) 由于$(1-e)e=0$，得到$(1-e)^2=1-e$，
+    并且对$r \in R$有$r(1-e)=r-re=r-er=(1-e)r$，故$1-e$是中心幂等元。
+    容易说明$R \subseteq (e)+(1-e)$和$(e)+(1-e) \subseteq R$，
+    并且对于$r=r_1e=r_2(1-e)$有$r=r_1e^2=r_2(1-e)e=0$，即$(e)\cap(1-e)=\{0\}$，
+    因此$R=(e)\oplus(1-e)$。显然$e,1-e$分别是$(e),(1-e)$的幺元，
+    由此可知$r_1e+r_2(1-e)\mapsto(r_1e,r_2(1-e))$
+    是内直和$(e)\oplus(1-e)$到直积$(e)\times(1-e)$的同构。最后，$(e)$是$R$的子环。
+
+    (2) (a)推(b)只要取$e_i$是$(0,\cdots,0,1_i,0,\cdots,0)$在$R$中的对应元素即可，
+    其中$1_i$是$R_i$的幺元。由于$(1_1,\cdots,1_n)$是$R_1 \times\cdots\times R_n$的幺元，
+    其在$R$中的对应元素$e_1+\cdots+e_n$也就是$R$的幺元$1$。
+    反过来，(b)推(a)也是容易的，令$R_i=(e_i)$，
+    容易说明$R \subseteq (e_1)+\cdots+(e_n)$和$(e_1)+\cdots+(e_n) \subseteq R$，
+    并且对于$r=r_1e_1=r_2e_2+\cdots+r_ne_n$有$r=r_1e_1^2=(r_2e_2+\cdots+r_ne_n)e_1=0$，
+    因此$R=(e_1)\oplus\cdots\oplus(e_n)$。由于$e_i$都是$(e_i)$的幺元，
+    可知$(e_1)\oplus\cdots\oplus(e_n)\cong(e_1)\times\cdots\times(e_n)$。
+\end{proof}
+\end{enumerate}
+
+\section{多项式环}
+
+\begin{enumerate}
+\item 验证命题 5.1.
+
+\item 验证命题 5.4.
+
+\item 求解下列问题:
+\begin{enumerate}[label=(\arabic*)]
+    \item 构造环 $ R $ 及多项式 $ f(x) \in R[x] $, 使得 $ f(x) $ 在 $ R $ 上的根的个数小于它的次数;
+    \item 构造一个 $ \mathbb{Z}/4\mathbb{Z} $ 上的二次多项式 $ f(x) $, 满足 $ f(x) $ 在 $ \mathbb{Z}/4\mathbb{Z} $ 上有 $4$ 个根, 从而 $ f(x) $ 的根的个数严格大于它的次数 (从而命题 5.9中 $ F $ 是域的条件不可缺少).
+\end{enumerate}
+\begin{proof}[解答]
+    \begin{enumerate}[label=(\arabic*)]
+    \item 令$R=\Z/4\Z$，取$f(x)=x^2+x+1$，则$f(x)$没有根。
+    \item 取$f(x)=2x^2+2x$。\qedhere
+    \end{enumerate}
+\end{proof}
+
+\item 求解下列问题:
+\begin{enumerate}[label=(\arabic*)]
+    \item 证明 $ \mathbb{R}[x]/(x^2 + 1) $ 同构于复数域 $ \mathbb{C} $;
+    \item 证明商环 $ \mathbb{Z}[x]/(x^2 + 1) $ 同构于高斯整数环 $ \mathbb{Z}[\mathrm{i}] = \{a + b\mathrm{i} \mid a, b \in \mathbb{Z}\} $.
+\end{enumerate}
+
+\item 设 $ p $ 是素数, $ \mathbb{Z}[x] $ 是整系数一元多项式环, $ \mathbb{F}_p = \mathbb{Z}/p\mathbb{Z} $, $ \mathbb{Z}[\mathrm{i}] $ 是高斯整数环. 证明下列环同构:
+\begin{enumerate}[label=(\arabic*)]
+    \item $ \mathbb{Z}[\mathrm{i}]/(1 + \mathrm{i}) \cong \mathbb{Z}/2\mathbb{Z} $;
+    \item $ \mathbb{Z}[x]/(p) \cong (\mathbb{Z}/p\mathbb{Z})[x] $;
+    \item $ \mathbb{Z}[x]/(p, x) \cong \mathbb{F}_p $.
+\end{enumerate}
+
+\item 设 $ g(x) = x^6 + x^5 + 5x^4 - 6x^3 - 10x^2 - 5 $, $ f(x) = x^3 - x^2 + 4 $. 分别在 $\mathbb{F}_3, \mathbb{F}_5, \mathbb{F}_7$ 上计算 $ f(x) $ 除 $ g(x) $ 的商式和余式.
+
+\item 设 $ f(x) = x^4 + 1 $, 分别讨论 $ f(x) $ 在 $ \mathbb{Q}[x] $ 与 $ \mathbb{R}[x] $ 中是否是不可约多项式，说明理由.
+
+\item 设环 $ A = \mathbb{Z}[\sqrt{2}] = \{ a + b\sqrt{2} \mid a, b \in \mathbb{Z} \} $.
+\begin{enumerate}[label=(\arabic*)]
+    \item 设 $ I = (x^2) \subseteq A[x] $ 是由 $ x^2 $ 生成的理想，商环 $ A[x]/I $ 是否是整区?说明理由;
+    \item $ A[x] $ 的理想 $ J = (4, x) $ 是否为主理想?说明理由.
+\end{enumerate}
+
+\item 设 $ R, S $ 是含幺交换环，$ R[x] $ 是以 $ R $ 为系数的一元多项式环.
+给定非零环同态 $ f : R \to S $ 与 $ s \in S $，
+证明存在唯一的环同态 $ \tilde{f} : R[x] \to S $ 
+使得 $ \tilde{f}(x) = s $, $ \tilde{f}(r) = f(r), \forall \, r \in R $.
+
+\item 设 $ A, B $ 是含幺交换环. $\varphi : A \to B$ 是一个环同态.
+定义映射 $\tilde{\varphi} : A[x] \to B[x]$ 如下:
+设 $ f(x) = a_0 + a_1 x + \cdots + a_n x^n \in A[x] $，
+则 $\tilde{\varphi}(f(x)) = \varphi(a_0) + \varphi(a_1)x + \cdots + \varphi(a_n)x^n $.证明:
+\begin{enumerate}[label=(\arabic*)]
+    \item $\tilde{\varphi}$ 是环同态;
+    \item 若 $\varphi$ 是环同构，则 $\tilde{\varphi}$ 也是环同构.
+\end{enumerate}
+
+\item 求解下列问题:
+\begin{enumerate}[label=(\arabic*)]
+    \item 求 $ \mathbb{C}[x] $ 与 $ \mathbb{R}[x] $ 的所有极大理想;
+    \item 给出 $ \mathbb{R}[x,y] $ 的一个极大理想 $ M $，使得 $ \mathbb{R}[x,y]/M \not \cong \mathbb{R} $.
+\end{enumerate}
+\begin{proof}
+    \begin{enumerate}[label=(\arabic*)]
+        \item 由于$ \mathbb{C}[x] , \mathbb{R}[x] $的理想都是主理想，
+        而$(f(x))\subset(g(x))$当且仅当$g(x) \mid f(x)$，
+        从而$ \mathbb{C}[x] $和$ \mathbb{R}[x] $的极大理想正是那些由不可约多项式生成的理想.
+
+        由代数学基本定理，$\mathbb{C}[x]$中的不可约多项式只有一次多项式，
+        而$\mathbb{R}[x]$中的不可约多项式是一次多项式和无实根的二次多项式，
+        于是$\mathbb{C}[x]$的所有极大理想为$\{(x-a)|a\in\mathbb{C}\}$，
+        $\mathbb{R}[x]$的所有极大理想为$\{(x-a)|a\in\mathbb{R}\}\cup\{(x^2+bx+c)|b,c\in\mathbb{R},b^2-4c<0\}$.
+        \item $\mathbb{R}[x,y]/(x^2+1,y)\cong \mathbb{R}[x]/(x^2+1)\cong \mathbb{C}$.\qedhere
+    \end{enumerate}
+\end{proof}
+
+\item 设 $ F $ 是域，证明 $ F[x] $ 中存在无穷多个不可约的首一多项式.
+\begin{proof}
+    类似于Euclid证明有无限多个素数一样,我们用反证法.
+
+    若$F[x]$中只有有限多个不可约首一多项式，记它们全体为$\{f_i(x)\}_{i=1}^n$，
+    令$g(x)=\prod\limits_{i=1}^nf_i(x)+1$，令$h(x)$为$g(x)$的一个首一不可约因子，
+    根据$g(x)$的构造知$h(x)$不是任何一个$f_i(x)$，矛盾.
+\end{proof}
+
+\item 设 $ R $ 是含幺交换环，$ R[x] $ 是 $ R $ 上的一元多项式环.设 $ f = a_n x^n + \cdots + a_1 x + a_0 \in R[x], a_i \in R, 0 \leqslant i \leqslant n, a_n \neq 0 $.证明:
+\begin{enumerate}[label=(\arabic*)]
+    \item $ f $ 是 $ R[x] $ 中可逆元当且仅当 $ a_0 \in R $ 为可逆元，且 $ a_1, \cdots, a_n $ 为 $ R $ 中幂零元;
+    \item $ f $ 是 $ R[x] $ 中幂零元当且仅当 $ a_0, a_1, \cdots, a_n $ 均为幂零元;
+    \item $ f $ 是 $ R[x] $ 中零因子当且仅当存在 $ a \in R \setminus \{0\} $ 使得 $ af = 0 $.
+\end{enumerate}
+\begin{proof}
+    本题来自\cite{AM}的第1章习题2。
+    \begin{enumerate}[label=(\arabic*)]
+    \item 后推前是容易的，$a_1,\cdots,a_n$均幂零说明$y=-(a_nx^n+\cdots+a_1x)$幂零，
+    因此$(a_0-y)(a_0^{m-1}+a_0^{m-2}y+\cdots+y^{m-1})=a_0^m-y^m$
+    在$m$充分大时是$a_0^m$从而可逆，进而$f=a_0-y$亦可逆。
+
+    下面进行前推后。设$g=b_mx^m+\cdots+b_1x+b_0$是$f$的逆元，那么$a_0b_0=1$说明$b_0$可逆，
+    并且可以归纳证明$a_n^{r+1}b_{m-r}=0$对$0 \leqslant r \leqslant m$成立。
+    $r=0$时这是$a_nb_m=0$，设命题对$0,\cdots,r-1$都成立，
+    其中$1 \leqslant r \leqslant m$，对$fg=1$提取$x^{n+m-r}$的系数可知
+    \[a_nb_{m-r}+a_{n-1}b_{m-r+1}+\cdots+a_{n-r}b_m=0,\]
+    乘上$a_n^r$，得出
+    \[a_n^{r+1}b_{m-r}+a_{n-1}\big(a_n^rb_{m-r+1}\big)+\cdots+a_{n-r}a_n^{r-1}(a_nb_m)=0,\]
+    括号内的皆是$0$，进而$a_n^{r+1}b_{m-r}=0$，也就是命题对$r$成立。
+    当$r=m$时$a_n^{m+1}b_0=0$，其中$b_0$可逆，故$a_n$幂零。
+
+    接下来，$f-a_nx^n$是可逆元减幂零元从而亦可逆，
+    对其重复上面的操作可得最高次项系数$a_{n-1}$幂零，以此类推，最终得到$a_1$幂零和$a_0$可逆。
+    \item 太简单了，略。
+    \item 后推前显然，下面来前推后，关键的一步在于对这个结论换种表述方法：
+    如果$g=b_mx^m+\cdots+b_1x+b_0$是$\operatorname{Ann}(f)$中次数最小的非零元素，那么$m=0$。
+    假设$m\geqslant1$，分两种情况：(i) $a_ng=\cdots=a_1g=a_0g=0$，
+    则$a_nb_m=\cdots=a_1b_m=a_0b_m=0$，从而$fb_m=0$，同假设矛盾；
+    (ii) 存在$j=\max\{i \mid a_ig\ne0\}$，则$0=fg=(a_jx^j+\cdots+a_1x+a_0)g$，
+    其最高次项系数$a_jb_m=0$，进而$\deg(a_jg)<\deg g$，可是$f(a_jg)=a_j(fg)=0$，
+    也就是说$a_jg$是$\operatorname{Ann}(f)$中次数更小的非零元素，同条件矛盾。\qedhere
+    \end{enumerate}
+\end{proof}
+
+\end{enumerate}
+
+\section{分式域,欧氏整区和 PID}
+
+\begin{enumerate}
+
+\item 设 $ R $ 为整区, $ F $ 是域.记 $ i : R \to {\rm K}(R) $, 
+$ i(a) = \frac{a}{1} $ ($ \forall \, a \in R $) 为自然嵌入, $f : R \to F$ 是单的环同态.
+证明存在唯一的环同态 $ \bar{f} : {\rm K}(R) \to F $ 使得 $\bar{f} \circ i = f$.
+
+\item 设 $ R $ 是整区, $ m, n $ 是正整数,且 $ \gcd(m, n) = 1 $.设 $ x, y \in R $ 满足 $ x^m = y^m, x^n = y^n $.问是否一定有 $ x = y $?说明理由.
+\begin{proof}[解答]
+    是的，设$s,t\in\N$使得$ms-nt=1$，那么$x^{1+ms}=xy^{ms}=(xy)(y^n)^t=(yx)(x^n)^t=yx^{ms}$，消去$x^{ms}$即可。
+\end{proof}
+
+\item 设 $ p $ 是素数, $ F $ 是一个特征为 $ p $ 的有限域.定义映射 $ f : F \rightarrow F: f(a) = a^p, \forall \, a \in F $.证明 $ f $ 是域同构.
+
+\item 设 $ R $ 是含幺交换环,考虑由整数环 $ \mathbb{Z} $ 到 $ R $ 的环同态 $ f : \mathbb{Z} \rightarrow R, f(n) = n \cdot 1 $.
+如果 $\operatorname{Ker} f = m\mathbb{Z}$，$m$ 是一个非负整数，则称 $m$ 是 $R$ 的特征.
+\begin{enumerate}[label=(\arabic*)]
+    \item 设 $ R $ 是整区,证明 $ R $ 的特征是素数或$0$;
+    \item 设 $ R $ 是含幺交换环,其特征是一个素数 $ p $.证明对任意 $ a, b \in R $ 及正整数 $ n $ 有
+    \[ (a + b)^{p^n} = a^{p^n} + b^{p^n}. \]
+\end{enumerate}
+
+\item 验证 $ \mathbb{Z}[\sqrt{2}] = \{ a + b\sqrt{2} \mid a, b \in \mathbb{Z} \} $ 和 $ \mathbb{Z}[\sqrt{-2}] = \{ a + b\sqrt{-2} \mid a, b \in \mathbb{Z} \} $ 均为欧氏整区.
+\begin{proof}
+    不难验证函数$\varphi(a+b\sqrt{2})=|a^2-2b^2|$
+    是从$\mathbb{Q}[\sqrt{2}]^*$到$\mathbb{Q}^*$的乘法同态，即
+    \begin{align*}
+        \varphi\big((a+b\sqrt{2})(c+d\sqrt{2})\big)
+        &=\big|(ac+2bd)^2-2(ad+bc)^2\big|\\
+        &=\big|a^2c^2+4b^2d^2-2a^2d^2-2b^2c^2\big|\\
+        &=\big|a^2-2b^2\big|\big|c^2-2d^2\big|\\
+        &=\varphi(a+b\sqrt{2})\varphi(c+d\sqrt{2}).
+    \end{align*}
+    记$u+v\sqrt{2}\in\mathbb{Q}[\sqrt{2}]$和$q=m+n\sqrt{2}\in\Z[\sqrt{2}]$使得
+    \[\frac{a+b\sqrt{2}}{c+d\sqrt{2}}=u+v\sqrt{2},\qquad
+    |m-u|\leqslant\frac{1}{2},\quad|n-v|\leqslant\frac{1}{2},\]
+    那么
+    \[\varphi\left(\frac{a+b\sqrt{2}}{c+d\sqrt{2}}-q\right)
+    =\big|(m-u)^2-2(n-v)^2\big|
+    \leqslant\max\left\{\frac{1}{4},\frac{2}{4}\right\}<1,\]
+    从而
+    \[\varphi\big((a+b\sqrt{2})-q(c+d\sqrt{2})\big)<\varphi(c+d\sqrt{2}).\]
+    以上证明了$\Z[\sqrt{2}]$是欧氏整区；$\Z[\sqrt{-2}]$的情况大同小异，
+    只需改为$\varphi(a+b\sqrt{-2})=a^2+2b^2$，并得到估计
+    \[\varphi\left(\frac{a+b\sqrt{-2}}{c+d\sqrt{-2}}-q\right)
+    \leqslant\frac{1}{4}+\frac{2}{4}<1.\qedhere\]
+\end{proof}
+
+\item 设 $ (R, \varphi) $ 是欧氏整区但不是域,记 $ R_0 $ 为 $ R $ 中非零且不可逆的元素全体,
+设 $ a \in R_0 $ 使得 $ \varphi(a) = \min\limits_{b \in R_0} \varphi(b) $.
+证明:商环 $ R/(a) = \{ r + (a) \mid r \in R^* \cup \{0\} \} $,特别地, $ R/(a) $ 是域.
+\begin{proof}
+    $R$中的元素都可以写成$aq+r$的形式，其中$r=0$或$\varphi(r)<\varphi(a)$。
+    因为对$b \in R_0$都有$\varphi(b)\geqslant\varphi(a)$，
+    可知$r \in R\setminus R_0=R^*\cup\{0\}$。
+\end{proof}
+
+\item 设 $ R $ 是 PID, $ S $ 是含幺环, $ f : R \rightarrow S $ 是满的环同态,
+证明 $ S $ 的所有理想都是主理想. $ S $ 是否一定是 PID?
+
+\item 给出本节例 6 的详细证明:
+\begin{enumerate}[label=(\arabic*)]
+    \item 在环 $ \mathbb{Z}[\sqrt{-5}] $ 中,理想 $ (2, 1 + \sqrt{-5}) $ 不是主理想;
+    \item 在环 $ \mathbb{Z}[x] $ 中,理想 $ (2, x) $ 不是主理想.
+\end{enumerate}
+\begin{proof}
+    \begin{enumerate}[label=(\arabic*)]
+    \item 假设$(2,1+\sqrt{-5})$是主理想$(d)$，令$\varphi(a+\sqrt{-5}b)=a^2+5b^2$，
+    则$\varphi(d)$整除$\varphi(2)=4$和$\varphi(1+\sqrt{-5})=6$，故$\varphi(d)=1$或$2$。
+
+    如果$\varphi(d)=1$，即$d=\pm1$，存在$\alpha,\beta\in\Z[\sqrt{-5}]$使得$2\alpha+(1+\sqrt{-5})\beta=1$，
+    两边同乘$1-\sqrt{-5}$得到$2[(1-\sqrt{-5})\alpha+3\beta]=1-\sqrt{-5}$，可是$2$不整除$1-\sqrt{-5}$；
+    并且$\varphi(d)=2$也不可能，因为$a^2+5b^2=2$无整数解。
+    \item 假设$(2,x)$是主理想$(d)$，则$d$整除$2$和$x$，只能是$\pm1$。
+    那么存在$f(x),g(x)\in\Z[x]$使得$2f(x)+xg(x)=1$，左边的常数项是偶数而右边是奇数。\qedhere
+    \end{enumerate}
+\end{proof}
+
+\item 设 $ F $ 是域.记
+\[ F[[x]] = \left\{ \sum_{n=0}^{\infty} a_n x^n \,\middle|\, a_n \in F \right\} \]
+为 $ F $ 上形式幂级数全体.
+\begin{enumerate}[label=(\arabic*)]
+    \item 对 $ f = \sum\limits_{n=0}^{\infty} a_n x^n, g = \sum\limits_{n=0}^{\infty} b_n x^n \in F[[x]] $,
+    定义 $ f + g = \sum\limits_{n=0}^{\infty} (a_n + b_n)x^n, fg = \sum\limits_{n=0}^{\infty} \left( \sum\limits_{i=0}^{n} a_i b_{n-i} \right) x^n $.
+    验证 $ F[[x]] $ 在上述加法和乘法下构成一个含幺交换环;
+    \item 求 $ F[[x]] $ 的单位全体;
+    \item 求 $ F[[x]] $ 的理想全体,其中哪些是素理想、\,极大理想?证明 $ F[[x]] $ 是PID;
+    \item 求分式域 $ {\rm K}(F[[x]]) $.
+\end{enumerate}
+
+\item 设 $ R = \mathbb{Z} \left[ \frac{1 + \sqrt{-19}}{2} \right] = \left\{ a + b \left( \frac{1 + \sqrt{-19}}{2} \right) \,\middle|\, a, b \in \mathbb{Z} \right\} \subset \mathbb{C} $.通过以下步骤证明 $ R $ 不是欧氏整区.
+\begin{enumerate}[label=(\arabic*)]
+    \item 假设 $ R $ 是欧氏整区,则存在函数 $ \varphi : R \setminus \{0\} \to \mathbb{Z}_{\geqslant 0} $ 满足欧氏整区定义的条件.记 $ R_0 $ 为 $ R $ 中非零且不可逆的元素全体,设 $ a \in R_0 $ 使得
+    $\varphi(a) = \min\limits_{b \in R_0} \varphi(b)$.证明 $|R/(a)| \leqslant 3$;
+    \item 验证 $ f(x) = x^2 - x + 5 \in R[x] $ 在 $ R $ 中有根,但 $ \bar{f}(x) \in (R/(a))[x] $ 在 $ R/(a) $ 中无根,导出矛盾;
+    \item 验证 $ \mathbb{Z} \Big[ \frac{1 + \sqrt{-43}}{2} \Big],\,\mathbb{Z} \Big[ \frac{1 + \sqrt{-67}}{2} \Big],\,\mathbb{Z} \Big[ \frac{1 + \sqrt{-163}}{2} \Big] $ 均不是欧氏整区.
+\end{enumerate}
+
+\textbf{注} \quad 实际上, $ R $ 是一个 PID.因而 $ R $ 提供了一个是 PID 但不是欧氏整区的例子.读者可参阅 David S. Dummit 与 Richard M. Foote 所著的 $Abstract$ $Algebra$ 第 282 页的例子.
+\begin{proof}
+    \begin{enumerate}[label=(\arabic*)]
+    \item 由本节第6题可知$|R/(a)|\leqslant|R^*\cup\{0\}|$，
+    因此试着考察$R^*$来得出结论。令
+    \[N\left(a+b\left(\frac{1+\sqrt{-19}}{2}\right)\right)
+    =\left(a+\frac{b}{2}\right)^2+19\left(\frac{b}{2}\right)^2
+    =a^2+ab+5b^2,\]
+    那么如果$r \in R^*$，就有$N(r)$整除$N(1)=1$。
+    当$b\ne0$时$N(r)\geqslant\big(\frac{1}{2}\big)^2+19\big(\frac{1}{2}\big)^2=5$，
+    故只能$b=0$，进而$r=\pm1$，即$R^*=\{\pm1\}$。
+    \item $f(x)$在$R$中有根$\frac{1+\sqrt{-19}}{2}$，
+    而$\bar{f}(x)$在$(R/(a))[x]=\mathbb{F}_2[x]$中取值为$1$，
+    或在$(R/(a))[x]=\mathbb{F}_3[x]$中取值为$1$和$2$。
+    \item 对于$\Z\Big[\frac{1+\sqrt{-d}}{2}\Big]$，
+    简写$k=\frac{1+d}{4}$，同前两问取
+    \[N\left(a+b\left(\frac{1+\sqrt{-d}}{2}\right)\right)
+    =a^2+ab+kb^2, \quad f(x)=x^2-x+k,\]
+    当$d=43,67,163$时$k=11,17,41$皆模$6$余$5$，从而可以直接照搬上面的过程。\qedhere
+    \end{enumerate}
+\end{proof}
+\end{enumerate}
+
+\section{整区上的因式分解}
+
+\begin{enumerate}
+
+\item 证明引理 7.2.
+
+\item 在高斯整数环 $ \mathbb{Z}[\mathrm{i}] $ 中, 求出所有的 $ a \in \mathbb{Z}[\mathrm{i}] $ 使得 $(a) = (31 - 21\mathrm{i}, -5 + 9\mathrm{i})$.
+
+\item 考虑复数域的子环 $ \mathbb{Z}[\sqrt{-3}] = \{a + b\sqrt{-3} \mid a, b \in \mathbb{Z}\} $. 设 $ x = a + b\sqrt{-3} \in \mathbb{Z}[\sqrt{-3}] $, 记 $ N(x) = a^2 + 3b^2 $.
+\begin{enumerate}[label=(\arabic*)]
+    \item 证明: 乘法群 $ \mathbb{Z}[\sqrt{-3}]^* = \{x \in \mathbb{Z}[\sqrt{-3}] \mid N(x) = 1\} = \{1, -1\}; $
+    \item 证明: $2, 1 + \sqrt{-3}, 1 - \sqrt{-3}$ 是 $ \mathbb{Z}[\sqrt{-3}] $ 的两两不相伴的不可约元;
+    \item 证明: $ \mathbb{Z}[\sqrt{-3}] $ 不是 UFD;
+    \item 设 $ x = 4, y = 2(1 + \sqrt{-3}) $, 证明 $ x, y $ 在 $ \mathbb{Z}[\sqrt{-3}] $ 中没有最大公因子;
+    \item 设 $ I = (2, 1 + \sqrt{-3}) $, 证明 $ I $ 不是 $ \mathbb{Z}[\sqrt{-3}] $ 的主理想.
+\end{enumerate}
+
+\item 设 $ n $ 是一个无平方因子的正整数且 $ n > 3 $. 证明环 $ \mathbb{Z}[\sqrt{-n}] $ 不是 UFD.
+\begin{proof}
+    对于$x=a+b\sqrt{-n}\in\Z[\sqrt{-n}]$，令$N(x)=a^2+nb^2$。
+    一个关键的估计是当$x\in\Z[\sqrt{-n}]$且$x\notin\Z$时，即$b\ne0$，成立
+    \[N(x)=a^2+nb^2\geqslant0^2+n\cdot1^2=n.\]
+    首先，注意到$\sqrt{-n}$是$\Z[\sqrt{-n}]$中的不可约元，
+    这是因为设$xy=\sqrt{-n}$，则有$N(x)$整除$N(\sqrt{-n})=n$。
+    如果$x$不是整数，那么$N(x) \geqslant n$说明$N(x)$只能是$n$，
+    从而$N(y)=1$，进而$y=\pm1$是单位；
+    如果$x$是整数，那么$N(x)=a^2$整除$n$，由于$n$无平凡因子，
+    只能是$a^2=1$，进而$x=\pm1$是单位。
+    
+    接着，注意到$1+\sqrt{-n}$也是$\Z[\sqrt{-n}]$中的不可约元，
+    这是因为设$xy=1+\sqrt{-n}$，则有$N(x)$整除$N(1+\sqrt{-n})=1+n$。
+    如果$x$不是整数，那么$N(x) \geqslant n$说明$N(x)$只能是$n+1$，
+    从而$N(y)=1$，进而$y=\pm1$是单位；
+    如果$x$是整数，那么$x$整除$1+\sqrt{-n}$从而整除其整数部分$1$，进而$x=\pm1$是单位。
+    
+    现在对$n$分类讨论来说明$\Z[\sqrt{-n}]$中的不可约分解不唯一。
+    当$n$是偶数时，$n$可以分解为不可约元$\sqrt{-n}$和$-\sqrt{-n}$的乘积；
+    另外$n$也可以分解为$2$和$n/2$的乘积，由于$\pm\sqrt{-n}$不是$2$的因子，
+    可知从后者出发的不可约分解不同于前者。
+    当$n$是奇数时，$1+n$可以分解为不可约元$1+\sqrt{-n}$和$1-\sqrt{-n}$的乘积；
+    另外$1+n$也可以分解为$2$和$(1+n)/2$的乘积，由于$1\pm\sqrt{-n}$不是$2$的因子，
+    可知从后者出发的不可约分解不同于前者。
+\end{proof}
+
+\item 设 $ R $ 是整区, $ a, b \in R $ 是非零元.
+\begin{enumerate}[label=(\arabic*)]
+    \item 设 $ d \in R $ 是 $ a, b $ 的一个最大公因子, $ c \in R $ 是 $ a, b $ 的一个最小公倍式.证明 $ ab $ 与 $ cd $ 相伴;
+    \item 如果 $ \mathrm{lcm}(a, b) $ 存在, 证明 $ \gcd(a, b) $ 也存在.
+\end{enumerate}
+\begin{proof}
+    由于$ab$是$a,b$的公倍数，「最小公倍数」的定义表明有$k \in R$使得$ab=ck$，
+    下面说明$k$是$a,b$的一个最大公因子。首先，设$r,s \in R$使得$c=ra=sb$，
+    代入$ab=ck$并消去$a$或$b$得出$b=rk$和$a=sk$，即$k$是$a,b$的公因子。
+    接着，设$t$是$a,b$的公因子，即存在$x,y \in R$使得$a=xt,b=yt$，
+    现在要说明$t$整除$k$。由于$xyt$是$a,b$的公倍数，得到$c$整除$xyt$，
+    记$h \in R$使得$xyt=ch$，那么$ab=xyt^2=cht$，最后消去$c$得出$k=ht$。
+\end{proof}
+
+\item 设 $ R = \mathbb{Z}[\sqrt{-5}] = \{a + b\sqrt{-5} \mid a, b \in \mathbb{Z}\}, x = 2, y = 1 + \sqrt{-5} $. 
+证明: 在 $ R $ 中, $ \gcd(x, y) $ 存在, 但 $ \mathrm{lcm}(x, y) $ 不存在.
+\begin{proof}
+    简写$d=\operatorname{gcd}(x,y),c=\operatorname{lcm}(x,y)$，
+    令$N(a+b\sqrt{-5})=a^2+5b^2$。
+    
+    先说明$d$就是$\pm1$。这是因为，一方面，$\pm1$当然整除$x$和$y$；
+    另一方面，如果$t$是$x,y$的公因子，那么$N(t)$就整除$N(x)=4$和$N(y)=6$，
+    从而$N(t)=1$或$2$，进而$t$只能是$\pm1$。
+    
+    再说明$c$不存在。注意到$2(1+\sqrt{-5})$和$6$都是$x$和$y$的公倍数，
+    因此假定$c$存在的话$c$就要整除这两者，推出$N(c)$整除$24$和$36$，
+    结合$4$和$6$都整除$N(c)$得到$N(c)=12$，可是$12$无法写为$a^2+5b^2$的形式，矛盾。
+\end{proof}
+
+\item (Eisenstein 判别法) 设 $ R $ 是 UFD, $ F $ 是 $ R $ 的分式域, $ f(x) \in R[x] $ 是本原多项式, $ p $ 是 $ R $ 的一个不可约元.
+记 $ f(x) = a_n x^n + \cdots + a_1 x + a_0 $, 若 $ p \nmid a_n $, $ p \mid a_i $, $ 0 \leqslant i \leqslant n-1 $, $ p^2 \nmid a_0 $, 证明 $ f(x) $ 是 $ F[x] $ 中的不可约多项式.
+
+\item 求解下列各题:
+\begin{enumerate}[label=(\arabic*)]
+    \item 设 $ A $ 是 UFD, $ a_1, a_2, \cdots, a_n, b \in A \setminus \{0\} $, 
+    若 $ a_i \mid b, 1 \leqslant i \leqslant n $, 
+    且 $ \gcd(a_i, a_j) = 1, 1 \leqslant i \neq j \leqslant n $, 
+    证明 $ (a_1 a_2 \cdots a_n) \mid b $;
+    \item 设 $ F $ 是一个域, $ 0 \neq f(x) \in F[x] $, 设 $ a_1, a_2, \cdots, a_m \in F $ 是 $ f(x) $ 在 $ F $ 上的不同的零点, 
+    设零点 $ a_i $ 的重数是 $n_i$，$1 \leqslant i \leqslant m$，则 $ f(x) $ 在 $ F[x] $ 中有分解
+    \[
+    f(x) = (x - a_1)^{n_1} (x - a_2)^{n_2} \cdots (x - a_m)^{n_m} g(x),
+    \]
+    这里 $ g(x) \in F[x] $ 且 $ g(a_i) \neq 0, 1 \leqslant i \leqslant m $.
+    特别地, $ n_1 + n_2 + \cdots + n_m \leqslant \deg f $.
+\end{enumerate}
+
+\item 判断以下陈述是否成立,给出证明或举出反例.
+\begin{enumerate}[label=(\arabic*)]
+    \item 如果 $ I $ 是 $ \mathbb{Q}[X] $ 中的一个非零素理想,那么 $ \mathbb{Q}[X]/I $ 是唯一分解整环;
+    \item 如果 $ I $ 是 $ \mathbb{Z}[X] $ 中的一个非零素理想,那么 $ \mathbb{Z}[X]/I $ 是唯一分解整环.
+\end{enumerate}
+\begin{proof}
+    \begin{enumerate}[label=(\arabic*)]
+        \item 成立.由于$\mathbb{Q}[X]$是Euclid整区,非零素理想$I$一定是极大理想,从而$\mathbb{Q}[X]/I$是域,进而是唯一分解整环.
+        \item 不成立.考虑$I=(X^2+5)$,则$\mathbb{Z}[X]/I \cong \mathbb{Z}[\sqrt{-5}]$不是唯一分解整环(考虑$6$的因式分解即可).\qedhere
+    \end{enumerate}
+\end{proof}
+
+\item 若 $ R $ 是一个 UFD,证明 $ R $ 是 PID 当且仅当对 $ R $ 中任意两个主理想 $(a), (b)$,其和 $(a) + (b)$ 也是主理想.
+\begin{proof}
+    $\Rightarrow$显然.
+
+    $\Leftarrow$ 由于$(a,b)=(a)+(b)$是主理想,根据归纳法可见$R$中任何有限生成的理想都是主理想,下证$R$中所有理想都是有限生成的即可.
+
+    设$I\subset R$是一个理想,考虑$I$全体子主理想构成的集合$P_I=\{(a)\subset I\}$,
+    断言$P_I$的每条主理想升链都有限长:
+    
+    设$(a_1)\subset(a_2)\subset(a_3)\subset\cdots$是一条$P_I$中的主理想升链,则有$a_2|a_1,a_3|a_2,\cdots$,
+    考虑$a_1$的素因子分解$a_1=p_1^{k^{(1)}_1}p_2^{k^{(1)}_2}\cdots p_n^{k^{(1)}_n}$,
+    则由整除关系,可知对于每个$m$, $a_m$的素因子分解在相差一个单位下一定形如$a_m=p_1^{k^{(m)}_1}p_2^{k^{(m)}_2}\cdots p_n^{k^{(m)}_n}$,
+    并且对于每个$i$,非负整数列$\big\{k^{(m)}_i\big\}$都关于$m$单调不增,从而一定存在最小值,记作$k_i$,
+    令$a=p_1^{k_1}p_2^{k_2}\cdots p_n^{k_n}$,可见$(a)$是这条链的上界.
+    进一步, 由于$\bigcup\limits_{i\geqslant1}(a_i)=(a)$, 
+    一定存在某个$(a_n)$, 使得$a\in(a_n)$, 于是$(a_n)=(a)$, 故这条链会在第$n$步停止.
+    
+    断言$P_I$有极大元: 若不然,任取一个$(a_1)$, 可以找到一个$(a_2)$使得$(a_1)\subset(a_2)$, 
+    重复下去就得到一条无限长的升链, 与前断言矛盾. 记一个极大元为$(b)$, 只需说明$(b)=I$即可,
+    若不然,存在$c\in I,c\notin (b)$,记$(d)=(c)+(b)$,则$(b)\subset(d)\subset I$,与$(b)$的极大性矛盾.
+\end{proof}
+
+\item 设 $ R $ 是 PID, $ I $ 是 $ R $ 的非零理想.证明 $ R/I $ 仅有有限多个理想.
+\begin{proof}
+    根据理想对应定理, $R/I$的理想与$R$中包含$I$的理想一一对应,
+    于是只需说明$R$中只有有限个理想包含$I$即可.
+    记$I=(a)$,考虑$(a)$的素因子分解$a=p_1^{k_1}p_2^{k_2}\cdots p_n^{k_n}$,
+    则整除$a$的元素在相差一个单位下一定形如$p_1^{l_1}p_2^{l_2}\cdots p_n^{l_n}$,
+    其中$0\leqslant l_i\leqslant k_i$对所有$i$成立,
+    可见在相差一个单位的意义下只有有限多个元素整除$a$,由这些元素各自生成的理想就是所有包含$(a)$的理想.
+\end{proof}
+
+\item 设 $ R $ 是整区, $ p \in R \setminus \{0\} $.若由 $ p $ 生成的主理想 $(p)$ 是素理想,则称 $ p $ 是一个素元.
+\begin{enumerate}[label=(\arabic*)]
+    \item 证明：$ p $ 是一个素元当且仅当对 $ a, b \in R $,若 $ p \mid ab $,则有 $ p \mid a $ 或 $ p \mid b $;
+    \item 证明：素元一定是不可约元;
+    \item 问不可约元是否一定是素元?说明理由.
+\end{enumerate}
+\begin{proof}[解答]
+    \begin{enumerate}[label=(\arabic*)]
+    \item 这是显然的，毕竟$p \mid ab$就是$p\in(ab)$。
+    \item 相当于证明可约元不可能是素元。设$a=bc \in R$且$b,c \notin R^*$，
+    那么$a \mid bc$的同时$a \nmid b$且$a \nmid c$。
+    \item 不一定。比如说$R$是$\R[x]$中常数项为有理数的多项式全体构成的子环，
+    即$R=x\R[x]+\mathbb{Q}$，那么不可约元$x$不是素元，
+    这是因为尽管$x$整除$x^2=(\pi x)(x/\pi)$，却既不整除$\pi x$也不整除$x/\pi$；
+    另一个例子是$\Z[\sqrt{-5}]$中的不可约元$3$，
+    由于$3$整除$(2+\sqrt{-5})(2-\sqrt{-5})$
+    却既不整除$2+\sqrt{-5}$也不整除$2-\sqrt{-5}$，得到$3$不是素元。\qedhere
+    \end{enumerate}
+\end{proof}
+
+\item 设 $ F $ 是域, $ f(x, y, z) = xz - y^2 \in F[x, y, z] $, $ I $ 是由 $ f $ 生成的主理想.
+\begin{enumerate}[label=(\arabic*)]
+    \item 证明商环 $ F[x, y, z]/I $ 是整区;
+    \item $ F[x, y, z]/I $ 是否是 UFD?说明理由.
+\end{enumerate}
+\begin{proof}[解答]
+    \begin{enumerate}[label=(\arabic*)]
+    \item 由命题3.9，要说明的就是$I=(xz-y^2)$是素理想。
+    由定理7.8可知$F[x,y,z]$是UFD，那么由命题7.4 (3)，只需说明$xz-y^2$是不可约元。
+    由于$F[x,y,z]$实际上也是以$F[x,z]$为系数和$y$为不定元的多项式环，
+    对其中的多项式$\tilde{f}(y)=xz-y^2$和不可约元$x$运用Eisenstein判别法
+    可得$\tilde{f}(y)$是$(F[x,z])[y]$中的不可约多项式，
+    即$f(x,y,z)$是$F[x,y,z]$中的不可约多项式。
+    \item 不是。命题7.4 (3)是说UFD中的不可约元都是素元，
+    记$\bar{\cdot}$为$\cdot \in F[x,y,z]$在商环$F[x,y,z]/I$中的投影。
+    不难发现$\bar{x}$整除$\overline{xz}=\overline{y^2}$却不整除$\bar{y}$或$\bar{y}$，
+    这表明$\bar{x}$不是素元，那么下面再说明$\bar{x}$是不可约元即可。
+
+    简单来说方法是，$F[x,y,z]$是分次环，
+    并且由其中的齐次多项式$xz-y^2$生成的理想$I$是分次理想，
+    这样一来$F[x,y,z]/I$亦是分次环 (即在其中依然有着``次数''的概念)，
+    通过次数可知$1$次的多项式$\bar{x}$是不可约的。
+    翻译成更初等的表述就是，对于$g(x,y,z) \in F[x,y,z]$，
+    按照次数从低到高写成$g=g_0+g_1+\cdots+g_k$的形式，
+    再逐项模掉$I$成为$\bar{g}=\bar{g}_0+\bar{g}_1+\cdots+\bar{g}_k$，
+    其中最大的使得$\bar{g}_d\ne\bar{0}$的次数$d$就是$\bar{g}$的次数。比如说如果
+    \[g(x,y,z)=x+xy+xyz+z^2(xz-y^2),\]
+    那么
+    \[\bar{g}(\bar{x},\bar{y},\bar{z})=\bar{x}+\overline{xy}+\overline{xyz}
+    :=\bar{g}_1+\bar{g}_2+\bar{g}_3,\]
+    其次数$d$是$3$而不是$4$。现在设$F[x,y,z]$中
+    $\bar{x}$能分解为$\bar{u}$和$\bar{v}$的乘积，记
+    \[\bar{u}=\bar{u}_0+\bar{u}_1+\cdots+\bar{u}_m,
+    \quad\bar{v}=\bar{v}_0+\bar{v}_1+\cdots+\bar{v}_n,\]
+    由于$I$是素理想，当$\bar{u}_m\ne\bar{0},\bar{v}_n\ne\bar{0}$时
+    有$\bar{u}_m\bar{v}_n\ne\bar{0}$，从而
+    \[\bar{x}=\overline{uv}=\cdots+\bar{u}_m\bar{v}_n\]
+    的次数就是$1=m+n$，这说明$m,n$中的一个为$0$，即$\bar{u},\bar{v}$中的一个是常数。\qedhere
+    \end{enumerate}
+\end{proof}
+
+\item $ I \subset \mathbb{Z}[x] $ 是一个素理想,证明 $ I $ 的生成元至多只有两个.进一步找出所有 $ \mathbb{Z}[x] $ 的素理想.
+\begin{proof}
+    本题的关键在于理想在分式环中的扩张和局限的如下结论，
+    更一般的表述及其证明见\cite{Bo} 1.2节Proposition 5 \& Corollary 6。
+
+    引理. 对于嵌入映射$\phi:\Z[x]\hookrightarrow\mathbb{Q}[x]$，
+    定义$\Z[x]$中的理想$I$的扩张理想$I^e$为$\phi(I)$在$\mathbb{Q}[x]$中生成的理想，
+    $\mathbb{Q}[x]$中的理想$J$的局限理想$J^c$为原象$\phi^{-1}(J)$，即
+    \[I^e=\left\{\frac{f(x)}{m}\ \middle|\ f(x) \in I,m\in\Z\setminus\{0\}\right\},
+    \qquad J^c=J\cap\Z[x],\]
+    则扩张和局限是
+    \[\big\{P\in\operatorname{Spec}\Z[x]\bigm|P\cap\Z=\{0\}\big\}
+    \rightleftharpoons\operatorname{Spec}\mathbb{Q}[x]\]
+    之间互逆的映射，即$P^{ec}=P,Q^{ce}=Q$。
+
+    引理的证明. 分四个步骤来证明。
+    \begin{enumerate}[label=(\roman*)]
+    \item 对于$\Z[x]$的素理想$P$，下面说明$P\cap\Z=\{0\}$可以推出
+    $P^e$的确是$\mathbb{Q}[x]$中的素理想。
+    
+    首先，$P$中的多项式次数都是正的，从而$P^e$中的多项式次数当然也都是正的，
+    故$P^e$不是整个$\mathbb{Q}[x]$；
+    接着，设$f(x)/m,g(x)/n\in\mathbb{Q}[x]$的乘积在$P^e$中，即
+    \[\frac{f(x)}{m}\frac{g(x)}{n}=\frac{h(x)}{k},
+    \quad f(x),g(x)\in\Z[x],\ \ h(x) \in P,\ \ m,n,k\in\Z\setminus\{0\},\]
+    那么$kf(x)g(x)=mnh(x) \in P$，由于$P$是素理想，
+    $k \notin P$蕴含着$f(x)$和$g(x)$之一在$P$中，
+    从而$f(x)/m$和$g(x)/n$之一在$P^e$中。
+    \item 对于$\mathbb{Q}[x]$中的素理想$Q$，要说明$Q^c$的确是$\Z[x]$中的素理想
+    且的确有$Q^c\cap\Z=\{0\}$。
+    
+    设$f(x),g(x)\in\Z[x]$的乘积在$Q^c$中，那么$f(x)g(x)$当然也属于$Q$，
+    从而$f(x),g(x)$之一在$Q$中，进而亦在$Q^c$中。另外，假定$Q^c$中有非零整数$a$，
+    则$a$亦属于$Q$且能生成整个$\mathbb{Q}[x]$，从而$Q$不是素理想。
+    \item 现在来说明$P^{ec}=P$。注意到$P^{ec} \supseteq P$是显然成立的，
+    下面说明$P^{ec} \subseteq P$。
+
+    设$f(x)$是$P^{ec}$中的元素，即$f(x)\in\Z[x]$且能写成$g(x)/n$，
+    其中$g(x) \in P,n\in\Z\setminus\{0\}$，那么$nf(x)=g(x)$，
+    由于$P$是素理想，$n \notin P$蕴含着$f(x) \in P$。
+    \item 最后要说明$Q^{ce}=Q$。注意到$Q^{ce} \subseteq Q$是显然成立的，
+    下面说明$Q^{ce} \supseteq Q$。
+
+    对于$Q$中的元素$f(x)/m$，其中$f(x)\in\Z[x],m\in\Z\setminus\{0\}$，
+    有$f(x) \in Q^c$，进而$f(x)/m \in Q^{ce}$。
+    \end{enumerate}
+    回到原题. 对于$\Z[x]$中的素理想$P$，考察其（在$\Z$中的局限理想）$P\cap\Z$。
+    容易说明$P\cap\Z$是$\Z$中的素理想，那么就是$\{0\}$或$p\Z$，其中$p$是素数。
+    \begin{enumerate}[label=(\arabic*)]
+    \item 如果$P\cap\Z=\{0\}$，
+    那么引理表明$P$必然是$\mathbb{Q}[x]$中某个素理想$Q$的局限。
+    当$Q=\{0\}$时$P=Q^c=\{0\}$；下设$Q\ne\{0\}$。
+    这时$Q$由某个非零的不可约多项式$f(x)\in\mathbb{Q}[x]$生成，
+    通过对$f(x)$乘上一个有理数，不妨设$f(x)$是$\Z[x]$中的本原多项式。
+    现在来看$Q^c$中有哪些元素，
+    也就是说$Q=\{f(x)q(x) \mid q(x)\in\mathbb{Q}[x]\}$中有哪些整系数多项式。
+    由命题7.7 (1)，当$f(x)q(x)\in\Z[x]$时有$r,s\in\mathbb{Q}$
+    使得$rf(x),sq(x)\in\Z[x]$且$rs=1$，
+    $f(x)$是本原的说明$r$是整数，进而$q(x)=r(sq(x))\in\Z[x]$；
+    反过来，$q(x)\in\Z[x]$时当然有$f(x)q(x)\in\Z[x]$。
+    由此可知$P=Q^c$就是本原多项式$f(x)$在$\Z[x]$中生成的理想。
+    \item 如果$P\cap\Z=p\Z$，类似于定理3.6不难说明「商掉$I$」及「取原象」是
+    \[\{P\in\operatorname{Spec}(R) \mid P \supseteq I\}
+    \rightleftharpoons\operatorname{Spec}(R/I)\]
+    之间的一一对应，取$R=\Z[x],I=(p)$可知这时$P$
+    是$\Z[x]/(p)\cong\mathbb{F}_p[x]$中的素理想$Q$的原象。
+    当$Q=\{\bar{0}\}$时$P=(p)$；下设$Q\ne\{\bar{0}\}$。
+    这时$Q$在同构意义下由$\mathbb{F}_p[x]$中的不可约多项式$\bar{f}(x)$生成，
+    那么$P=(p,f(x))$。
+    \end{enumerate}
+    最终的答案是，$\Z[x]$的素理想有四类：$\{0\}$，由素数$p$生成的主理想$(p)$，
+    由不可约的本原多项式$f(x)$生成的主理想$(f(x))$，
+    以及由素数$p$和模$p$后不可约的多项式$f(x)$生成的理想$(p,f(x))$。
+    值得一提的是\cite{Mu}在II.1节的Example H中为这个$2$维概型画了一幅耐人寻味的图示，
+    对其中微言大义的解读可参考\href{http://www.neverendingbooks.org/mumfords-treasure-map/}{Mumford的藏宝图}。
+\end{proof}
+
+\item 找出高斯整数环 $ \mathbb{Z}[\mathrm{i}] $ 的所有素理想,并给出证明.
+\begin{proof}
+    首先，设$\pi$是$\Z[{\rm i}]$中的素元，那么$\pi$整除某个素数$p$。
+    这可以通过对嵌入$\Z\hookrightarrow\Z[{\rm i}]$
+    取$(\pi)$的局限素理想$(\pi)\cap\Z=p\Z$得到，
+    也可以由$\pi$整除$N(\pi)=\pi\bar{\pi}=p_1 \cdots p_k$
+    得出$\pi$整除$p_1,\cdots,p_k$之一，其中$p_1,\cdots,p_k$是可重复的素数。
+    下面对这个素数$p$分类讨论。
+    \begin{itemize}
+    \item 当$p=2$时，由于$2\sim(1+{\rm i})^2$，得出$\pi\sim1+{\rm i}$。
+    \item 当$p$模$4$余$3$时，可以用两种方法说明$\pi \sim p$。
+    * 其一，假如$p$能继续分解为两个$\Z[{\rm i}]$中的数的乘积，
+    那它们就是一对共轭虚数$x \pm y{\rm i}$，从而$p=x^2+y^2$，
+    可是完全平方数模$4$余$0$或$1$，无法成立。
+    * 其二，取范数可知$N(\pi)$整除$N(p)=p^2$，同上有$N(\pi) \ne p$，
+    只能是$N(\pi)=N(p)$，由2.2节习题4 (2)可知$\pi \sim p$。
+
+    \item 当$p$模$4$余$1$时，可以用多种方法说明$p$不是素元。
+    * 其一是首先单独证明这样的素数能写成两个平方数的和，即$p=x^2+y^2$。
+    （比如\cite{FeZ} 5.3节例1收录了两个运用无穷递降或抽屉原理的初等方法，
+    \cite{Co} Proposition 2.5.20用Jacobi和建立了这个结论及更多类似的结论.）
+    这就表明$N(x \pm y{\rm i})=p$，进而$x \pm y{\rm i}$是素元。
+    * 其二是注意到$-1$是模$p$的二次剩余，即存在整数$a$使得$p$整除$a^2+1$；
+    尽管如此，$p$却既不整除$a+{\rm i}$也不整除$a-{\rm i}$，因此$p$不是素元。
+    （这里$-1$是二次剩余是因为$\mathbb{F}_p^*$是$p-1$阶循环群，生成元为原根$g$，
+    那么$-1$就是原根$g^\frac{p-1}{2}$，从而是$a=g^\frac{p-1}{4}$的平方；
+    或者取$a=\big(\frac{p-1}{2}\big)!$，由Wilson定理得到模$p$意义下
+    $a^2=a\big[(-1)^{\frac{p-1}{2}}a\big]=\big[1\cdot2\cdots\frac{p-1}{2}\big]
+    \big[\big(p-\frac{p-1}{2}\big)\cdots(p-1)\big]=(p-1)!=-1$.）
+    既然如此，由$N(p)=p^2$只有$2$个素因子可知$p$是$2$个素元$x \pm y{\rm i}$的乘积，
+    也同时揭示出了$p$能写成$x^2+y^2$的形式的本质原因。
+    \end{itemize}
+
+    最终的答案是，$\Z[{\rm i}]$的素理想有三类：$(1+{\rm i})$，
+    由模$4$余$3$的素数$p$生成的理想$(p)$，
+    以及由模$4$余$1$的素数$p=x^2+y^2$带来的理想$(x \pm y{\rm i})$。
+\end{proof}
+\end{enumerate}
+
+\section{模}
+
+\begin{enumerate}
+
+\item 证明定理 8.2.
+
+\item 设 $ R $ 是含幺环, $ M $ 是一个 $ R $-模, $\{M_i\}_{i \in I}$ 是 $ M $ 的一族子模, 证明 $\bigcap\limits_{i \in I} M_i$ 是 $ M $ 的 $ R $-子模.
+
+\item 设 $ R $ 是含幺环, $ M $ 是一个 $ R $-模, $ M_1, M_2 $ 是 $ M $ 的子模.
+\begin{enumerate}[label=(\arabic*)]
+    \item 证明: 有 $ R $-模同构 $(M_1 + M_2)/M_1 \cong M_2/(M_1 \cap M_2)$; 
+    \item 设 $ T, N $ 是 $ M $ 的子模且 $ T \subseteq N $. 证明: 有 $ R $-模同构 $(M/T)/(N/T) \cong M/N$.
+\end{enumerate}
+
+\item 证明命题 8.8.
+
+\item 证明命题 8.9.
+
+\item 设 $ R = \mathbb{C}[t] $, $ S $ 是 $ R $ 的一个包含 $ \mathbb{C} $ 但不等于 $ \mathbb{C} $ 的子环, 证明 $ R $ 是一个有限生成 $ S $-模.
+
+\item 设 $ R $ 是含幺环, $ M $ 是 $ R $ 上的一个有限生成模, $ N $ 是 $ M $ 的子模. 请说明 $ M/N $ 和 $ N $ 是否也是有限生成的.
+\begin{proof}[解答]
+    商模$M/N$必然是有限生成的，子模$N$不一定。
+    回想一下上节习题12 (3)的解答中遇见过的那个奇怪的环，
+    即由常数项为有理数的实系数多项式构成的环$R=x\R[x]+\mathbb{Q}$，这里再用一次这个例子。
+    令$M$是这个$R$本身，$N$是$M$中常数项为$0$的多项式构成的子模，即$N=x\R[x]$，
+    那么$M$当然是$R$上的有限生成模，然而$N$不是有限生成的$R$-模，
+    毕竟给定$N$中的有限个元素$f_1(x),\cdots,f_n(x)$，它们所生成的多项式的一次项系数
+    只能是这$n$个多项式的一次项系数的$\mathbb{Q}$-线性组合，覆盖不了整个$\R$。
+\end{proof}
+
+\item 设 $ R $ 是含幺环. 证明 $ M $ 是 $ R $ 上的一个有限生成模当且仅当存在一个正整数 $ r $ 与 $ R $-模满同态 $ R^r \to M $.
+
+\item 设 $ R $ 为 PID, $ B $ 是一个 $ R $-模, $ p \in R $ 是不可约元. 记 $ \mathrm{Ann}(B) = \{r \in R \mid ru = 0, \forall \, u \in B\} $. 如果存在 $ B $ 中非零元 $ b $ 使得 $ pb = 0 $, 证明 $ \mathrm{Ann}(B) \subseteq (p) $.
+
+\item 设 $ R $ 为含幺交换环, $ M $ 是一个 $ R $-模. 令 $ \mathrm{End}_R(M) \triangleq \{f : M \to M \text{ 为 } R\text{-模同态}\} $ 为 $ M $ 的 $ R $-模自同态全体构成的集合. 证明 $ \mathrm{End}_R(M) $ 有一个自然的 $ R $-模结构, 以及 $ \mathrm{End}_R(R) \cong R $.
+
+\item 设 $ R $ 是 PID. 证明有限生成自由 $ R $-模的子模仍然是自由的.
+\begin{proof}
+    设$M$是有限生成的自由$R$-模，其一组基为$a_1,\cdots,a_m$，
+    对$m$归纳来证明$M$的子模$N$同样是自由$R$-模。
+    当$m=0$时结论是显然的，下设$m\geqslant1$。令$T$是由$a_2,\cdots,a_m$生成的$M$的子模，
+    那么$M$中元素可以唯一地写成$ra_1+t$的形式，其中$r \in R,t \in T$；
+    把$N$中元素这样表示时用到的所有系数$r$收集起来，记其全体为集合$I$，易见$I$是$R$的理想。
+    如果$I=\{0\}$的话$N$就是$T$的子模，直接用归纳假设即可；
+    下设$I$不止是$\{0\}$，由于$R$是PID，$I$可由某个元素$d \in R\setminus\{0\}$生成，
+    相应地记$t_0 \in T$使得$da_1+t_0 \in N$。
+    现在来看$N \cap T$，这是$T$的子模，由归纳假设得到$N \cap T$有一组基$b_1,\cdots,b_n$，
+    下面说明$da_1+t_0,b_1,\cdots,b_n$是$N$的一组基。
+    这是因为$N$中元素都能写成$ra_1+t$的形式，其中$r=sd \in I,t \in T$，
+    从而$ra_1+t=s(da_1+t_0)+(t-st_0)$，
+    继续把$N \cap T$中的$t-st_0$拆成$b_1,\cdots,b_n$的$R$-线性组合即可；
+    并且，要是$r_0(da_1+t_0)+r_1b_1+\cdots+r_nb_n=0$，
+    由$M$中元素能唯一写成$a_1$的倍数加上$T$中的元素且$r_0t_0+r_1b_1+\cdots+r_nb_n \in T$
+    可知$a_1$前的系数$r_0d=0$，从而$r_0=0$，进而$r_1=\cdots=r_n=0$。
+\end{proof}
+\item 设 $ K $ 是域, $ K[x] $ 是 $ K $ 上的一元多项式环. 设 $ A = \{M \mid M \text{ 是 } K[x] \text{-模}\}, B = \{(V, \alpha) \mid V \text{ 是 } K \text{-向量空间, } \alpha \in \mathrm{End}_K(V)\} $. 证明: $ A $ 与 $ B $ 之间有自然的双射.
+
+\item 设 $ R $ 是含幺环, $ M $ 是 $ R $-模. 若 $ M $ 满足: $ M \neq 0 $ 并且 $\{0\}$ 和 $ M $ 是 $ M $ 仅有的子模, 则称 $ M $ 是不可约 $ R $-模 (或单 $ R $-模). 求解下列各题:
+\begin{enumerate}[label=(\arabic*)]
+    \item $ M $ 是不可约的当且仅当对任意非零元 $ s \in M $ 都有 $ M = \langle s\rangle $;
+    \item 确定所有不可约 $ \mathbb{Z} $-模.
+\end{enumerate}
+
+\item 设 $ D $ 是一个整区, $ F $ 是 $ D $ 的子环且是一个域.
+如果 $ D $ 作为 $ F $-向量空间是有限维的,证明 $ D $ 是一个域.
+
+\item 设 $ F $ 是域, $ V_1, V_2 $ 是 $ F $-向量空间, 
+$ f : V_1 \to V_2 $ 是 $ F $-线性映射, $ W $ 是 $ V_1 $ 的子空间.
+如果 $ W \subset \operatorname{Ker} f $,
+证明:存在唯一的线性映射 $ \tilde{f} : V_1 / W \to V_2 $ 
+使得 $ f = \tilde{f} \circ j $,这里 $ j : V_1 \to V_1 / W $ 是商映射.
+
+\end{enumerate}
+
+\section{有限生成 Abel 群的结构}
+
+\begin{enumerate}
+
+\item 设 $ G $ 是有限 Abel 群, $ |G| = 100 $.求 $ G $ 的所有同构类.
+
+\item 设 $ G $ 是有限 Abel 群, $ |G| = n $.设 $ m $ 是正整数且 $ m \mid n $,证明 $ G $ 有 $ m $ 阶子群.
+
+\item 设 $ G $ 为有限 Abel 群, $ p $ 为 $ |G| $ 的一个素因子.证明 $ G $ 的 $ p $ 阶子群的个数与指数为 $ p $ 的子群的个数相同.
+
+\item 找出群 $ \mathbb{Z}/1905\mathbb{Z} \times \mathbb{Z}/2025\mathbb{Z} $ 中 $25$ 阶元的个数.
+
+\item 设 $ (\mathbb{Q}, +) $ 是有理数加法群,证明它不是有限生成 Abel 群.
+
+\item 设 $ (\mathbb{Q}^* = \mathbb{Q} \setminus \{0\}, \times) $ 是有理数乘法群.问它是否是有限生成 Abel 群?它是否是自由 Abel 群?说明理由.
+
+\item 设 $ F $ 是一个域, $ F^* = F \setminus \{0\} $ 是其乘法群, $ G $ 是 $ F^* $ 的有限子群.证明 $ G $ 是循环群. (提示：定理 9.5 与命题 5.9)
+\begin{proof}
+    由定理9.5，$G$的结构为$\Z_{d_1}\oplus\cdots\oplus\Z_{d_m}$，
+    其中$d_m \mid\cdots\mid d_1$。
+    一方面，$G$中所有元素均是$x^{d_1}-1$在$F$中的零点；
+    另一方面，命题5.9说$x^{d_1}-1$的零点至多有$d_1$个。
+    结合两者有$|G| \leqslant d_1$，那么$G$只能是循环群$\Z_{d_1}$。
+\end{proof}
+\item 证明不存在 $ \mathbb{Q} $ 上的 $3$ 阶方阵 $ A $ 满足 $ A^8 = I $ 但 $ A^4 \neq I $.这里 $ I $ 表示单位矩阵.
+\begin{proof}
+    设$f(x)$是$A$在$\mathbb{Q}[x]$上的极小多项式，
+    记$p(x)=\det(xI-A)$为$A$的特征多项式，
+    $A \in M_3(\mathbb{Q})$确保了$p(x)\in\mathbb{Q}[x]$。
+    由Caylay--Hamilton定理可知$f(x)$整除$p(x)$，
+    从而$\deg f(x)\leqslant\deg p(x)=3$。
+    如果$A^8=I$的话$f(x)$亦整除$x^8-1=(x^4+1)(x^4-1)$，
+    容易说明$x^4+1$是$\mathbb{Q}$上的不可约多项式，
+    因此$f(x)$同$x^4+1$在$\mathbb{Q}[x]$中互素，
+    这说明$f(x)$整除$x^4-1$，也就是说$A^4=I$。
+\end{proof}
+\end{enumerate}
+
+\section{环的进一步讨论}
+
+\begin{enumerate}
+
+\item 对正整数 $ m, n > 1 $,证明：如果 $(x^m - 1) \mid (x^n - 1)$,那么 $ m \mid n $.
+
+\item 对正整数 $ a, m, n > 1 $,证明：如果 $(a^m - 1) \mid (a^n - 1)$,那么 $ m \mid n $.
+
+\item 设 $ \mathbb{C} $ 是复数域, $ f(x_1, \cdots, x_n) \in \mathbb{C}[x_1, \cdots, x_n] $, 
+$ n \geqslant 2 $, $ \deg f \geqslant 1 $,证明 $ f(x_1, \cdots, x_n) $ 的零点集 $ V(f) $ 是无限集.
+
+\end{enumerate}
+
+\subsection**{参考文献}
+\begin{references}
+    \bibitem[AM]{AM}
+        M. F. Atiyah, I. G. MacDonald. 
+        \textit{Introduction to Commutative Algebra}.
+        Addison--Wesley, 1969.
+    \bibitem[Bo]{Bo}
+        Siegfried Bosch. \textit{Algebraic Geometry and Commutative Algebra}.
+        Universitext. Springer, 2013.
+    \bibitem[Co]{Co}
+        Henri Cohen. \textit{Number Theory (Volume I: Tools and Diophantine Equations)}.
+        Graduate Texts in Mathematics 239. Springer, 2007.
+    \bibitem[FeK]{FeK}
+        冯克勤. 代数数论. 中国科学院研究生教学丛书. 科学出版社, 2000.
+    \bibitem[FeZ]{FeZ}
+        冯志刚. 初等数论. 命题人讲座. 上海科技教育出版社, 2009.
+    \bibitem[Mu]{Mu}
+        David Mumford, \textit{The Red Book of Varieties and Schemes}.
+        Lecture Notes in Mathematics 1358, Springer, 1999.
+\end{references}

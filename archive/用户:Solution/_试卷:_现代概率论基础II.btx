@@ -1,0 +1,88 @@
+\setdisplaytitle{试卷：现代概率论基础 II}
+\sethtmltitle{试卷：现代概率论基础 II}
+
+== 26春期末试题 ==
+\begin{enumerate}
+    \item 叙述正交序列的定义，以及关于正交序列部分和的极大不等式；叙述 Poincar\'e 回复定理.
+    \item 设 \(\{\xi_i\}_{i\ge1}\) 是随机变量列，\(\{\mu_i\}_{i\ge1}\) 是其诱导的概率测度列.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 叙述概率测度列胎紧的定义，以及随机变量列依概率有界的定义.
+        \item 证明 \(\{\mu_i\}_{i\ge1}\) 胎紧当且仅当 \(\{\xi_i\}_{i\ge1}\) 依概率有界.
+        \item 设 \(\{\xi_i\}_{i\ge1}\) 依概率有界，\(f:\R\to\R\) 为连续函数. 证明 \(\{f(\xi_i)\}_{i\ge1}\) 依概率有界.
+    \end{enumerate}
+    \item 设 \(\{X_i\}_{i\geq 1}\) 独立同分布，且
+    \[\mathbb{P}(X_i=1)=p, \qquad \mathbb{P}(X_i=-1)=q, \qquad p<q.\]
+    令 \(S_n=X_1+\cdots+X_n\). 证明
+    \[\mathbb{P}\left(\sup_{k\ge1}S_k<+\infty\right)=1.\]
+    \item 考虑状态空间可数的离散时间马氏链.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 叙述不变测度的定义，以及不变测度唯一性的含义.
+        \item 证明不可约常返马氏链有唯一的不变测度.
+        \item 不可约暂留马氏链一定有不变测度吗？若有，是否一定唯一？请简要说明.
+    \end{enumerate}
+    \item 设 \(\{X_t\}_{t\ge0}\) 是状态空间 \(E\) 可数的连续时间马氏链，其标准转移函数为
+    \[P(t)=\{p_{xy}(t)\}_{x,y\in E}.\]
+    证明对任意 \(x \in E\)，极限
+    \[\lim_{t\downarrow0}\frac{1-p_{xx}(t)}{t}\]
+    存在 (允许取 \(+\infty\)).
+    \item 结合侯振挺老师在 \(Q\)-过程唯一性方面的工作，谈谈你对连续时间马氏链的理解.
+\end{enumerate}
+
+== 25春期末试题 ==
+\begin{enumerate}
+    \item (20) 设 $X = (X_t)_{t \in \mathbb{R}}$ 是随机过程. 
+    (1) 如果 $A \in \sigma(X_t: t \in \mathbb{R})$，
+    证明：存在可数子集 $S \subset \mathbb{R}$ 使得 $A \in \sigma(X_t: t \in S)$. 
+    (2) 如果随机变量 $\xi$ 关于 $\sigma(X_t: t \in \mathbb{R})$ 可测，
+    证明：存在可数子集 $S \subset \mathbb{R}$ 使得 $\xi$ 关于 $\sigma(X_t: t \in S)$ 可测.
+    \item (30) 设 $X$ 是 $E$ 上转移概率为 $(p_{x,y})$ 的马氏链. 
+    (1) 证明：如果 $E$ 有限，那么 $X$ 必有常返态但没有零常返态；
+    (2) 证明：对任何 $x \in E$，$\frac{1}{n} \sum_{j=1}^n p_{x,x}^{(j)}$ 存在.
+    \item (10) 设 $N = (N_t)$ 是参数为$1$的 Poisson 过程，$(S_n)$ 是其跳跃时间，
+    对于 $t > 0$，求 $X := S_{N_t + 1} - t$ 的分布. 证明它与 $N_t$ 独立.
+    \item (20) 设 $B = (B_t)$ 是标准布朗运动，
+    (1) $D = (t_i: 0 \leqslant i \leqslant n)$ 是区间 $[0,1]$ 的划分. 
+    证明当 $D$ 趋于零时，和 $\sum_i t_i (B_{t_i} - B_{t_{i-1}})$ 几乎处处收敛. 
+    记极限为 $X$. 求 $X$ 的期望与方差. 
+    (2) 证明上述和 $L^2$ 收敛 (不能应用现存定理，必须完整证明).
+    \item (20) 设 $X$ 是 Blackwell 的马氏过程，
+    满足条件$A,B,q(x,y) = p_0'(x,y),x,y \in S$. 
+    (1) 设 $x \in S$ 且非零，求 $q(0,x)$. 
+    (2) 对任何 $t > 0$，证明在区间 $(0,t)$ 上几乎所有轨道，有无穷多 $X_t$ 曾经改变状态.
+\end{enumerate}
+
+== 24春期末试题 ==
+\begin{enumerate}
+\item 设 $E$ 是二维整数格点。
+\begin{enumerate}[label=(\alph*)]
+\item 证明：二维格点上的简单对称随机游动是常返的。
+\item 设 $X$ 总是以概率 $1/4,1/4,1/3,1/6$ 分别往上下左右邻居转移，证明：$X$ 是暂留的。
+\item 设 $X$ 总是以概率 $1/3,1/3,1/6,1/6$ 分别往上下左右邻居转移，问 $X$ 是常返的吗？为什么？
+\end{enumerate}
+\item 设马氏链 $X$ 的转移函数图如下，（1）问哪些状态暂留，常返，零常返，正常返？
+（2）求 $\lim_n p_{1,1}^{(n)}, \lim_n p_{6,1}^{(n)}$。
+\begin{tikzcd}
+    \textcircled{1} \ar[ddd,bend left,"\frac{1}{2}"']\ar[loop left,"\frac{1}{2}"]
+    & &\textcircled{3} \ar[loop left,"\frac{1}{5}"]\ar[rr,bend left,"\frac{4}{5}"]
+    & &\textcircled{5} \ar[loop right,"\frac{2}{5}"]\ar[ll,bend left, "\frac{3}{5}"]\\ \\ \\
+    \textcircled{2} \ar[uuu,bend left,"\frac{3}{5}"]\ar[loop left,"\frac{2}{5}"]
+    & &\textcircled{4} \ar[rr,bend left,"\frac{1}{4}"]\ar[ll,"\frac{1}{4}"']\ar[uuull,"\frac{1}{4}"']\ar[uuurr,"\frac{1}{4}"]
+    & &\textcircled{6} \ar[loop right,"\frac{2}{5}"]\ar[ll,bend left,"\frac{1}{5}"]\ar[uuu,"\frac{1}{5}"']\ar[llll,bend left,"\frac{1}{5}"]
+\end{tikzcd}
+\item 设 $\{X_i=(X_i(t)): i \geqslant 1\}$ 是一列独立的以 $\{0,1\}$ 为状态空间的右连续马氏链。
+对任何 $i \geqslant 1$，$X_i$ 的 $Q$-矩阵是
+\[\begin{bmatrix}
+-a_i & a_i \\ \\
+b_i & -b_i
+\end{bmatrix},\]
+其中 $a_i>0, b_i>0$。令 $X(t):=(X_i(t): i \geqslant 1)$。
+它是一个右连续随机过程，状态空间是 $\{0,1\}^\N$，不可数的紧集，称为 Blackwell 过程。现在取其可数子集
+\[S=\{x=(x_i: i \in \N) \in\{0,1\}^\N: \sum x_i<\infty\},\]
+即其中仅有有限个非零分量的全体。假设条件 A：
+\[\sum_i \frac{a_i}{a_i+b_i}<\infty,\]
+（1）证明对 $t>0, x \in S$, $\mathbb{P}^x(X(t) \in S)=1$，其中 $\mathbb{P}^x$ 表示从 $x$ 出发的概率。
+（2）证明 $p_t(x,y)=\mathbb{P}^x(X_t=y), x, y \in S$，是 $S$ 上的标准转移函数。
+\item 对于一维标准布朗运动，证明：（1）几乎所有轨道的零点集是没有孤立点的无处稠的闭集。
+（2）$A=\{1/n: n \geqslant 1\}$, $T_A$ 是 $A$ 的首中时。则 $\mathbb{P}^0(T_A=0)=1$。
+\item 证明：对于二维布朗运动来说，任何一个 Borel 集或者是极集或者是常返集。
+\end{enumerate}

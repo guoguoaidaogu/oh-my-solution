@@ -1,0 +1,501 @@
+本文是应坚刚概率论部分习题解答，来自李利平的pdf.
+
+\section{初等概率论}
+
+25．
+（a）用  $y=-1$ 代替 $x$ 轴，
+使用反射原理来讨论．答案是 $1-\frac{C_{m+n}^{m-1}}{C_{m+n}^{m}}$。
+
+\section{概率空间和随机变量}
+
+25. 对于任何 $ε>0$, 存在 $R$ 使得$F(−R)<\varepsilon,F(R) > 1−\varepsilon$, 
+再利用 $F$ 在 $[−R,R]$ 上的一致连续性.
+
+\section{条件概率与全概率公式}
+17．记 $A$ 为第 $k$ 张是前 $k$ 张中最大的这个事件，$B$ 为第 $k$ 张标号是 $m$ 这个事件．
+要计算的概率是 $ \mathbb{P}(B \mid A)$．根据 Bayes 公式，
+
+$$\mathbb{P}(B \mid A)=\frac{\mathbb{P}(A \mid B) \mathbb{P}(B)}{\mathbb{P}(A)}$$
+
+显然，  $\mathbb{P}(A \mid B)=1, \mathbb{P}(B)=\frac{(m-1)!}{m!}=\frac{1}{m} $。
+前  $k$  张卡片构成的集合有  $C_{m}^{k} $ 种不同的可能性，记出现各种可能性的事件分别为 $ \Omega_{1}, \cdots, \Omega_{N}\left(N=C_{m}^{k}\right) $．
+对于任何  $1 \leq i \leq N $，当 $\Omega_{i}$ 发生时，这 $k$ 张卡片中最大标号的那张是明确的，它出现在第$  k $ 张的概率是 $ \frac{(k-1)!}{k!}=\frac{1}{k} $，即
+
+$$\mathbb{P}\left(A \mid \Omega_{i}\right)=\frac{1}{k}, \quad 1 \leq i \leq N.$$
+
+利用全概率公式就能够得到  $\mathbb{P}(A)=\sum_{i=1}^{N} \mathbb{P}(A \mid \Omega_{i}) \mathbb{P}(\Omega_{i})=\frac{1}{k}  $。代入 Bayes 公式，我们最终有
+
+\[\mathbb{P}(B \mid A)=\frac{k}{m}.\]
+
+32．记第 $n$ 个人进的房间编号为 $ \xi_{n}$。
+那么， $\left\{\xi_{n}: n \geq 1\right\} $ 构成一列独立同分布的序列，其分布为
+
+\[\mathbb{P}(\xi=k)=p_{k}, \quad k \geq 1.\]
+
+不妨设 $ p_{k}>0, \forall k \geq 1 $。（否则将这个房间去掉。）要考察的事件概率是
+
+$$q_{n}=\mathbb{P}(\xi_{n} \notin\{\xi_{1}, \cdots, \xi_{n-1}\}).$$
+
+为方便起见，标记随机集合  $\Xi_{n}:=\{\xi_{1}, \cdots, \xi_{n}\}$.
+
+我们先说明：对于任何固定的正整数 $ K $，
+$\displaystyle \lim_{n \rightarrow+\infty} \mathbb{P}(\{1, \cdots, K\} \nsubseteq \Xi_{n})=0$.
+
+事实上，左边这个事件的概率等于
+\begin{equation}
+\begin{aligned}
+  \mathbb{P}\left(\bigcup_{k=1}^{K}\left\{k \notin \Xi_{n}\right\}\right)  &\leq \sum_{k=1}^{K} \mathbb{P}(\xi_{1} \neq k, \cdots, \xi_{n} \neq k) \\
+ &=\sum_{k=1}^{K}\left(1-p_{k}\right)^{n} \rightarrow 0, \quad n \rightarrow+\infty
+  
+\end{aligned}
+\label{eq3.1.1}
+\end{equation}
+
+最后的极限用到了事实  $p_{k}>0$。下面来证明  $q_{n} \rightarrow 0$。
+
+任取  $\varepsilon>0$, 由于 $\sum_{k \geq 1} p_{k}=1$，因而存在正整数 $K$ 使得 $ \sum_{k \geq K} p_{k}<\varepsilon$．
+
+对  $K$  应用\eqref{eq3.1.1}, 知存在 $N\in \N$, 满足：
+
+\begin{equation}
+  \mathbb{P}(\{1, \cdots, K\} \nsubseteq \Xi_{n})<\varepsilon, \quad \forall n \geq N.
+  \label{eq3.1.2}
+\end{equation}
+
+下面固定 $ n \geq N+1 $,用全概率公式，
+\begin{equation}
+   \begin{aligned}
+q_{n} & =\sum_{A \subset \mathbb{N}} \mathbb{P}(\xi_{n} \notin \Xi_{n-1} \mid \Xi_{n-1}=A) \mathbb{P}(\Xi_{n-1}=A) \\
+& =\sum_{A \subset \mathbb{N}} \mathbb{P}(\xi_{n} \notin A) \mathbb{P}(\Xi_{n-1}=A),
+ \end{aligned}
+ \label{eq3.1.3}
+\end{equation}
+
+其中， $A$  取遍  $\mathbb{N} $ 的（包含最多  $n-1$  个元素的）子集。
+当  $\{1, \cdots, K\} \subset A $时，
+
+\[\mathbb{P}(\xi_{n} \notin A) \leq \sum_{k>K} p_{k}<\varepsilon,\]
+
+于是，利用\eqref{eq3.1.2}和\eqref{eq3.1.3}，
+
+\begin{align}
+q_{n}= & \sum_{\{1, \cdots, K\} \subset A} \mathbb{P}(\xi_{n} \notin A) \mathbb{P}(\Xi_{n-1}=A) + \sum_{\{1, \cdots, K\} \nsubseteq A} \mathbb{P}(\xi_{n} \notin A) \mathbb{P}(\Xi_{n-1}=A) \\
+& \leq \varepsilon+\sum_{\{1, \cdots, K\} \nsubseteq A} \mathbb{P}(\Xi_{n-1}=A) \\
+& \leq \varepsilon+\mathbb{P}(\{1, \cdots, K\} \nsubseteq \Xi_{n-1}) \\
+& <2 \varepsilon .
+\end{align}
+从而欲证的极限得证!
+
+\begin{remark}
+    事实上，我们可以具体计算
+
+$$q_{n}=\sum_{k \geq 1} \mathbb{P}(\xi_{1} \neq k, \cdots, \xi_{n-1} \neq k, \xi_{n}=k)=\sum_{k \geq 1}\left(1-p_{k}\right)^{n-1} p_{k}.$$
+
+后续证明  $q_{n} \rightarrow 0 $ 的讨论是类似的．
+\end{remark}
+
+\section{数学期望}
+9. 
+对于  $1 \leq i \leq 14  $，当  $i, i+1$ 是异性时，定义 $\eta_{i}(\omega)=1  $；否则定义  $\eta_{i}(\omega)=0  $．
+
+那么， $\xi=\sum_{i=1}^{14} \eta_{i} \Rightarrow \mathbb{E} \xi=\sum_{i} \mathbb{E} \eta_{i}=\sum_{i} \mathbb{P}\left(\eta_{i}=1\right)  $．
+
+显然，不用区分同性别的人。不难计算:
+
+$$\mathbb{P}(\eta_{i}=1)=\frac{C_{13}^{6} C_{2}^{1}}{C_{15}^{7}} \Rightarrow \mathbb{E} \xi=\frac{28 C_{13}^{6}}{C_{15}^{7}}=\frac{112}{15}.$$
+
+20.
+
+(a) $\mathbb{E}(|\xi| ;|\xi| \leq N) \leq N \mathbb{P}(|\xi| \leq N) \leq N  $．
+
+(b) 用积分  $\mathbb{E} \xi  $的绝对连续性;
+
+(c) 用Chebyshev 不等式．
+反例如下：在 Lebesgue 测度空间 $(0,1)$ 上考虑  $\xi(x):=x^{-1 / \alpha}$。
+
+21.
+
+根据 Fubini 定理，
+
+$$\mathbb{E}|\xi|=\mathbb{E} \int_{0}^{|\xi|} \mathrm{d} t
+=\int_{0}^{\infty} \mathbb{P}(|\xi| \geq t) \mathrm{d} t,$$
+
+于是
+
+$$\mathbb{E}|\xi|=\sum_{n=1}^{\infty} \int_{n-1}^{n} \mathbb{P}(|\xi| \geq t) d t \geq \sum_{n=1}^{\infty} \mathbb{P}(|\xi| \geq n).$$
+
+以及
+
+$$\mathbb{E}|\xi|=\int_{0}^{1} \mathbb{P}(|\xi| \geq t) \mathrm{d} t + \sum_{n=1}^{\infty} \int_{n}^{n+1} \mathbb{P}(|\xi| \geq t) \mathrm{d} t \leq 1+\sum_{n=1}^{\infty} \mathbb{P}(|\xi| \geq n) .$$
+
+因此，  $\mathbb{E}|\xi|<+\infty $ 等价于  $\sum_{n=1}^{\infty} \mathbb{P}(|\xi| \geq n)<+\infty$.
+
+22.
+
+我们有:
+
+ $$\mathbb{P}(\lim_{n} A_{n})= \mathbb{P}\left(\bigcup_{k \geq 1} \bigcap_{n \geq k} A_{n}\right)=\lim_{k} \mathbb{P}\left(\bigcap_{n \geq k} A_{n}\right) \leq \lim_k \sup_{n \geq k} \mathbb{P}\left(A_{n}\right). $$
+
+另一个不等式类似.
+
+23.
+
+考虑一列独立同分布的 Bernoulli 随机变量  $\left\{\xi_{n}: n \geq 1\right\}$，
+成功概率为 $x$，即  $\mathbb{P}(\xi_{n}=1)=x$.
+
+记  $\displaystyle S_{n}=\sum_{k=1}^{n} \xi_{k}$，它服从二项分布。
+于是，$f_{n}(x)=\mathbb{E} f\left(\frac{S_{n}}{n}\right),$
+进而任取  $\delta>0  $，有
+
+\begin{align}
+\left|f_{n}(x)-f(x)\right| & \leq \mathbb{E}\left|f\left(\frac{S_{n}}{n}\right)-f(x)\right| \\
+& \leq \mathbb{E}\left(\left|f\left(\frac{S_{n}}{n}\right)-f(x)\right| ;\left|S_{n} / n-x\right|>\delta \mid+w_{f}(\delta)\right. \\
+& \leq \frac{2\|f\|_{u}}{n^{2} \delta^{2}} \mathbb{E}\left(S_{n}-n x\right)^{2}+w_{f}(\delta) \\
+& =\frac{2\|f\|_{u} x(1-x)}{n \delta^{2}}+w_{f}(\delta),
+\end{align}
+
+其中，$w_{f}$ 是 $f$ 的连续模, 即$w_f(\delta) = \sup_{|x|,|y|\leq \delta} |f(x) - f(y)|$,
+由一致连续性, $\displaystyle \lim_{\delta \to 0} w_f(\delta) = 0$.
+
+后续讨论是容易的。
+
+24.
+
+我们先来证明：
+
+$$\mathbb{E}|\xi-m|=\inf_{x \in \mathbb{R}} \mathbb{E}|\xi-x|.$$
+
+记  $h(x):=\mathbb{E}|\xi-x|$, 用 Fubini 定理，我们有:
+
+\begin{align}
+h(x) & =\mathbb{E}\left((\xi-x) 1_{\{\xi \geq x\}}\right)+\mathbb{E}\left((x-\xi) 1_{\{\xi \leq x\}}\right) \\
+& =\mathbb{E} \int_{x}^{\xi} 1_{\{\xi \geq x\}} \mathrm{d} t+\mathbb{E} \int_{\xi}^{x} 1_{\{\xi \leq x\}} \mathrm{d} t \\
+& =\int_{x}^{\infty} \mathbb{P}(\xi \geq t) \mathrm{d} t+\int_{-\infty}^{x} \mathbb{P}(\xi \leq t) \mathrm{d} t \\
+& =\int_{x}^{\infty}(1-F(t)) \mathrm{d} t+\int_{-\infty}^{x} F(t) d t .
+\end{align}
+
+由于 $F$连续，因而  $h  $连续可微，且  $h^{\prime}(x)=2 F(x)-1$．
+因此，$h$ 在  $(-\infty, m)$上递减，在  $(m,+\infty)  $上递增．
+
+特别地，根据上面的结论，
+
+\begin{align}
+|\mu-m| & =|\mathbb{E}(\xi-m)| \leq \mathbb{E}|\xi-m| \\
+& \leq \mathbb{E}|\xi-\mu| \leq\left(\mathbb{E}|\xi-\mu|^{2}\right)^{1 / 2}=|\sigma| .
+\end{align}
+从而得证！
+
+25.
+
+$$RHS \geq \frac{\mathbb{E}(g(\xi) ; \xi \geq x)}{g(x)} \geq \frac{g(x) \mathbb{P}(\xi \geq x)}{g(x)} \geq \mathbb{P}(\xi \geq x).$$
+
+26.
+
+按照提示，应该先利用上一题的技巧，取  $g(x)=(x+a)^{2}$， 再对  $a$  取值为  $\frac1x$.
+具体来说，
+
+$$\mathbb{P}(\xi \geq x) \leq \frac{\mathbb{E}\left(\left(\xi+\frac{1}{x}\right)^{2} ; \xi \geq x\right)}{\left(x+\frac{1}{x}\right)^{2}} \leq \frac{\mathbb{E}\left(\xi+\frac{1}{x}\right)^{2}}{\left(x+\frac{1}{x}\right)^{2}}=\frac{1}{1+x^{2}},$$
+
+例子（注意， $\xi$  与  $x$有关）：  
+
+$$\mathbb{P}(\xi=x)=\frac{1}{1+x^{2}}, \mathbb{P}\left(\xi=-\frac{1}{x}\right)=\frac{x^{2}}{1+x^{2}}．$$
+
+\section{连续型随机变量}
+\begin{itemize}
+\item[5.]
+
+当  $\eta $ 是  $\sigma(\xi) $-可测的简单函数时，结论显然成立. 
+
+对非负的$\eta \in \sigma(\xi)$，
+找一列简单函数  $\eta_{n}=f_{n}(\xi)  $满足  $\eta_{n} \uparrow \eta$．
+令  $f_{1}:=\varlimsup_{n \rightarrow+\infty} f_{n}$
+及  $f:=f_{1} \cdot 1_{\left\{f_{1}<+\infty\right\}}$.
+由  $f_{n}$  Borel 可测得  $f$ Borel 可测．
+验证  $\eta=f(\xi)$即可．
+
+对一般的  $\eta$，拆成$\eta = \eta^+ - \eta^-$分别讨论即可．
+
+\item[21.]
+
+令  $\xi$  是  $F$的实现,
+那么由Fubini 定理，左边等于
+
+\begin{align}
+\int_{\mathbb{R}} \mathbb{P}(x<\xi \leq x+a) \mathrm{d} x & =\int_{\mathbb{R}} \mathbb{E} 1_{\{\xi-a \leq x<\xi\}} \mathrm{d} x \\
+& =\mathbb{E} \int_{\xi-a}^{\xi} \mathrm{d} x=a.
+\end{align}
+\end{itemize}
+\section{随机向量}
+\begin{itemize}
+  
+\item[4．]
+
+对于任何  $x \geq 0, a, b>0  $，
+
+\begin{align}
+\mathbb{P}(\inf (a X, b Y)>x) & =\mathbb{P}(a X>x, b Y>x)=(1-F(x / a))(1-F(x / b)) \\
+& =\mathbb{P}\left(\frac{a b}{a+b} X>x\right)=1-F(x / a+x / b)
+\end{align}
+
+记  $G(t):=1-F(t), t \geq 0$，
+右连续单调递减， $G(0)=1$，且  $0 \leq G(t) \leq 1$.根据上式可知
+
+$$G(t) G(s)=G(t+s), \quad \forall t, s \geq 0,$$
+
+由此可得  $G(t)=\mathrm{e}^{t \log G(1)} $.（验证  $t$  是正整数,进而对任何正有理数均成立,再利用右连续性来得证）
+
+\item[13．]
+
+球面上的均匀分布可以用角坐标随机向量  $(\Theta, \Phi) \in[0, \pi] \times[0,2 \pi]$来实现，
+它的联合密度函数是  $f(\theta, \varphi)=\frac{1}{4 \pi} \sin \theta  $.
+进而，
+
+$$\xi_{1}=\cos \Theta, \quad \xi_{2}=\sin \Theta \cos \Phi, \quad \xi_{3}=\sin \Theta \sin \Phi,$$
+
+于是，对于任何  $t \in[-1,1]$,
+
+$$\mathbb{P}\left(\xi_{1} \leq t\right)=\int_{\cos \theta \leq t,(\theta, \varphi) \in[0, \pi] \times[0,2 \pi]} f(\theta, \varphi) \mathrm{d} \theta \mathrm{~d} \varphi=\frac{1}{2}(1+t).$$
+
+从而可得 $\xi_{1}$  服从  $[-1,1]$上的均匀分布．
+
+\item[22.]
+
+记固定向量为  $\alpha=\left(\alpha_{1}, \cdots, \alpha_{n}\right) \neq 0  $.
+不妨设 $\alpha$是单位向量，即  $|\alpha|=1$．
+
+那么  $\Psi=\arccos \frac{\alpha \cdot X}{|\alpha| \cdot\|X\|}=\arccos \frac{\alpha \cdot X}{\|X\|} \in[0, \pi]$．
+注意到  $\xi:=\alpha \cdot X\sim N(0,1)$，并且根据教材例 6.3.4, 存在标准正态随机向量  $Y=\left(Y_{1}, \cdots, Y_{n}\right) $满足
+
+$$Y_{1}=\xi, \quad\|Y\|^{2}=\|X\|^{2}. $$
+
+因此$\cos \Psi=\frac{Y_{1}}{\|Y\|},$从而
+对于  $x \in[0, \pi]$,
+$$\mathbb{P}(\Psi \leq x)=\mathbb{P}\left(\cos x \leq \frac{Y_{1}}{\|Y\|}\right).$$
+
+分两种情况： $x \in[0, \frac{\pi}{2}] $和  $x \in[\frac{\pi}{2}, \pi]$讨论．
+
+对于第一种情况，  $\cos x \geq  0$．于是,
+
+$$\cos x \leq \frac{Y_{1}}{\|Y\|} \quad \Leftrightarrow \quad t_{n-1} \stackrel{\mathrm{d}}{=} \frac{Y_1}{\sqrt{\frac{Y_{2}^{2}+\cdots+Y_{n}^{2}}{n-1}}} \geq \sqrt{n-1} \cot x.$$
+
+因此,
+
+$$\mathbb{P}(\Psi \leq x)=\frac{\Gamma\left(\frac{n}{2}\right)}{\sqrt{\pi(n-1)} \Gamma\left(\frac{n-1}{2}\right)} \int_{[\sqrt{n-1} \cot x,+\infty)}\left(1+\frac{t^{2}}{n-1}\right)^{-\frac{n}{2}} \mathrm{~d} t.$$
+
+求导得到密度函数:
+
+\begin{equation}
+f_{\Psi}(x)=\frac{\Gamma\left(\frac{n}{2}\right)}{\sqrt{\pi} \Gamma\left(\frac{n-1}{2}\right)} \sin ^{n-2} x.
+\label{eq6.1.1}
+  
+\end{equation}
+
+对于第二种情况，  $\cos x \leq 0$，
+以及  $\mathbb{P}(\Psi \leq x)=\mathbb{P}\left(Y_{1} \geq 0\right)+\mathbb{P}(\cos x \leq   \left.Y_{1} /\|Y\| \leq 0\right)$.而
+
+$$\cos x \leq \frac{Y_{1}}{\|Y\|} \leq 0 \quad \iff \quad \sqrt{n-1} \cot x \leq \frac{Y_{1}}{\sqrt{\frac{Y_{2}^{2}+\cdots+Y_{n}^{2}}{n-1}}} \leq 0,$$
+
+我们仍然有
+
+$$\mathbb{P}(\Psi \leq x)=\mathbb{P}\left(\frac{Y_{1}}{\sqrt{\frac{Y_{2}^{2}+\cdots+Y_{n}^{2}}{n-1}}} \geq \sqrt{n-1} \cot x\right).$$
+
+因此， $f_{\Psi}(x)$的表达式\eqref{eq6.1.1}
+对于  $x \in [\frac{\pi}{2}, \pi]  $也成立.
+显然，在  $[0, \pi]$   之外, $ f_{\Psi} (x) = 0$. 故得证!
+
+\item[补充题]
+设  $\left\{\xi_{n}: n \geq 1\right\}$
+是一列独立且服从参数为 $1$ 的指数分布，
+令  $X_{n}=   \max \left\{\xi_{1}, \cdots, \xi_{n}\right\}$. 
+证明：
+\begin{itemize}
+    \item[(1)]$\sup _{n} \mathbb{E} X_{n}=+\infty$;
+
+    \item[(2)]$\sup _{n} D X_{n}<+\infty$.
+\end{itemize} 
+
+\begin{proof}
+    根据例 6.3.8 的讨论,
+    对于每个 $n\in \N$，
+    存在一列独立的指数分布随机变量  $\eta_{1}, \cdots, \eta_{n}$,
+    参数分别为  $n, n-1, \cdots, 1  $,满足:
+
+$$X_{n}=\sum_{k=1}^{n} \eta_{k},$$
+
+ $(\eta_{1}$ 
+ 即  $\xi_{(1)}, \eta_{2}$
+ 是  $\xi_{1^{\prime}}-\xi_{(1)}, \cdots, \xi_{(n-1)^{\prime}}-\xi_{(1)}  $的最小统计量,以此类推$)$
+ 
+ 由此容易计算:
+
+$$\mathbb{E} X_{n}=\sum_{k=1}^{n} \frac{1}{k}, \quad D X_{n}=\sum_{k=1}^{n} \frac{1}{k^{2}}.$$
+
+因此结论显然成立．
+\end{proof}
+
+\end{itemize}
+
+\section{随机序列的收敛}
+
+\begin{itemize}
+
+\item[1.]
+反证法.
+注意  $\xi=\sum_{n=1}^{\infty} 1_{A_{n}} \Rightarrow \mathbb{E} \xi=\sum_{n=1}^{\infty} \mathbb{P}\left(A_{n}\right)$.
+用 Borel--Cantelli 第二引理,
+
+\item[2.]
+
+存在  $\varepsilon_{0}>0$
+使得对于任何  $\varepsilon<\varepsilon_{0}, \mathbb{P}\left(\left|\xi_{1}\right| \geq \varepsilon\right)>0  $.
+
+注意到:
+
+$$\left\{\sum_{n \geq 1} \xi_{n} \text{ 收敛 }\right\} \subset\left\{\lim _{n} \xi_{n}=0\right\} \subset \bigcap_{0<\varepsilon<\varepsilon_{0}} \bigcup_{N \geq 1} \bigcap_{n \geq N}\left\{\left|\xi_{n}\right|<\varepsilon\right\} .$$
+
+对于任何  $\varepsilon<\varepsilon_0$,
+由  $\sum_{n=1}^{\infty} \mathbb{P}\left(\left|\xi_{n}\right| \geq \varepsilon\right)=+\infty$及 Borel--Cantelli 第二引理可得
+
+$$\mathbb{P}\left(\bigcup_{N \geq 1} \bigcap_{n \geq N}\left\{\left|\xi_{n}\right|<\varepsilon\right\}\right)=0.$$
+
+\item[3.]
+
+见第四章 22 题.
+
+\item[4.]
+
+由单调收敛定理可知,  $\eta:=\sum_{n=1}^{\infty}\left|\xi_{n}\right|$可积.
+
+因而  $\eta<+\infty , a.  s.$
+于是由 Cauchy 收敛准则得到  $\xi:=\sum_{n=1}^{\infty} \xi_n$
+几乎处处收敛,并根据控制收敛定理可得  $\xi$  可积，以及  $\mathbb{E} \xi=\sum_{n=1}^{\infty} \mathbb{E} \xi_{n}$.
+
+\item[5.]
+
+由Egoroff定理, 以概率收敛一定存在子列 $a.s.$收敛．显然，$a.  s.$收敛极限唯一．
+
+\item[6.]
+
+只需要证明充分性．用反证法．如若不然，存在  $\varepsilon_{0} > 0$, 使得:
+
+$$\varlimsup_{n} \mathbb{P}(\left|\xi_{n}-\xi\right|>\varepsilon_{0})>0,$$
+
+从而存在子列  $\left\{\xi_{n_{k}}\right\}$满足
+
+$$\lim_{k \to +\infty} \mathbb{P}(\left|\xi_{n_{k}}-\xi\right|>\varepsilon_{0})>0,$$
+
+这个子列存在 $a. \ s.$收敛(因而依概率收敛)的子列,矛盾.
+
+\item[7.]
+
+第一部分用事实
+
+$$\left\{\left|\xi_{n}+\eta_{n}-\xi-\eta\right|>\varepsilon\right\} \subset\left\{\left|\xi_{n}-\xi\right|>\frac{\varepsilon}{2}\right\} \cup\left\{\left|\eta_{n}-\eta\right|>\frac{\varepsilon}{2}\right\}.$$
+
+第二部分用事实
+
+$$\left\{\left|\xi_{n} \eta_{n}-\xi \eta\right|>\varepsilon\right\} \subset\left\{\left|\xi_{n}-\xi\right| \cdot\left|\eta_{n}\right|>\varepsilon / 2\right\} \cup\left\{|\xi| \cdot\left|\eta_{n}-\eta\right|>\varepsilon / 2\right\}.$$
+
+右边两个集合类似处理, 比如处理第一个集合, 对于任何  $A>0$,
+
+$$\left\{\left|\xi_{n}-\xi\right| \cdot\left|\eta_{n}\right|>\varepsilon / 2\right\} \subset\left\{\left|\xi_{n}-\xi\right|>\frac{\varepsilon}{2 A}\right\} \cup\left\{\left|\eta_{n}\right|>A\right\},$$
+
+于是,
+
+$$\varlimsup_{n} \mathbb{P}\left(\left|\xi_{n}-\xi\right| \cdot\left|\eta_{n}\right|>\frac{\varepsilon}{2}\right) \leq \lim \mathbb{P}\left(\left|\xi_{n}-\xi\right|>\frac{\varepsilon}{2 A}\right)+\varlimsup_{n} \mathbb{P}(\left|\eta_{n}\right|>A),$$
+
+由于以概率收敛推出弱收敛,因此除去至多可列个$A$,剩余集合内有:
+$$ \varlimsup_n  \mathbb{P}(\left|\eta_{n}\right|>A)=\mathbb{P}(|\eta|>  A).$$
+取$A$足够大就能完成证明．
+\end{itemize}
+
+\section{特征函数}
+
+\section{中心极限定理}
+
+\section{单调方法类与条件期望}
+\begin{enumerate}
+\item[28] 先证明一个引理：$N$ 个人至少有一个人拿对了信封的概率是
+$$\sum_{k=1}^{N} \frac{(-1)^{(k-1)}}{k!}$$
+
+记 $A_{i}$ 表示第 $i$ 个人拿到对的信封， $\mathbb{P}\left(A_{i}\right)=\frac{1}{N}$, 
+$\mathbb{P}\left(A_{i} A_{j}\right)=\frac{1}{N(N-1)}$，其余同理，则引理所求事件的概率为
+$$\mathbb{P}\left(\bigcup_{i=1}^{N} A_{i}\right)=\sum_{i=1}^{N} \frac{(-1)^{(i-1)}}{i!}$$
+（用容斥原理，略）
+接下来考虑 $N_{n}=k$, $n$ 封信中挑出 $k$ 个有 $\binom{n}{k}$ 种取法，
+对于指定的 $k$ 个人拿对信封的概率为 $\frac{1}{n(n-1) \cdots(n-k+1)}$，
+对于剩下的 $n-k$ 个人，利用引理，可知他们都没拿对的概率为
+$$1-\sum_{i=1}^{n-k} \frac{(-1)^{(i-1)}}{i!}=\sum_{i=0}^{n-k} \frac{(-1)^{i}}{i!}$$
+于是
+$$\mathbb{P}\left(N_{n}=k\right)=\binom{n}{k} \frac{1}{n(n-1) \cdots(n-k+1)} \sum_{i=0}^{n-k} \frac{(-1)^{i}}{i!}$$
+
+令 $n \rightarrow \infty, \mathbb{P}\left(N_{n}=k\right) \rightarrow \frac{e^{-1}}{k!}$.
+
+\item[30] 由上极限定义
+
+\item[31] 考虑 $A_{n, t}=\left\{X_{n} \geq t a_{n}\right\}$，其中 $a_{n}=-\log _{q} n$。
+$$\sum_{n=1}^{\infty} \mathbb{P}\left(A_{n, t}\right)=q^{\left[t a_{n}\right]},$$
+将 $a_{n}$ 写成以 $e$ 为底的形式，可以发现当 $t>1$ 时，级数收敛；当 $t \leq 1$ 时，级数发散。
+根据BC引理，再结合 10.30 的结论可得到关于上极限的结论。
+
+接下来，因为 $\max \left\{X_{1}, X_{2} \ldots X_{n}\right\} \geq X_{n}$，同除 $a_{n}$，令 $n \rightarrow \infty$，得到下极限对应的结论。
+
+\item[40]
+先证明一个初等的引理，$a, b \in[0,1]$，则 $(1-a-b)^{n} \leq(1-a)^{n}(1-b)^{n}$（数学归纳法是可以做出来的，略）
+设值域为 $S$，记 $p_{x}=\mathbb{P}\left(X_{1}=x\right)$，
+$$\begin{gathered}
+R_{n}=\sum_{x \in S} 1_{x \in\left\{X_{1}, \cdots X_{n}\right\}} \\
+\mathbb{E} R_{n}=\sum_{x \in S}\left(1-\left(1-p_{x}\right)^{n}\right) \\
+\operatorname{Var}\left(R_{n}\right)=\sum_{x \in S, y \in S} \operatorname{Cov}\left(1_{x \in\left\{X_{1} \ldots X_{n}\right\}}, 1_{y \in\left\{X_{1} \ldots X_{n}\right\}}\right) \\
+=\sum_{x \in S} \operatorname{Var}\left(1_{x \in\left\{X_{1} \ldots X_{n}\right\}}\right)+\sum_{x \neq y} \operatorname{Cov}\left(1_{x \in\left\{X_{1} \ldots X_{n}\right\}}, 1_{y \in\left\{X_{1} \ldots X_{n}\right\}}\right)
+\end{gathered}$$
+
+记 $A_{x}=\left\{x \notin\left\{X_{1} \cdots X_{n}\right\}\right\}$，下面利用引理和 $n=2$ 的容斥原理，易证交叉项非正（不严谨地说，交叉项的两个事件是负相关的）
+由 $\mathbb{E} R_{n}$ 的表达式，易验证满足定理10.3.2条件。
+
+\item[42]
+（1）直接计算 $\mathbb{E} S_{n}$
+（2）此处符合定理10.3.2。
+
+\item[44]
+考虑第 $n$ 次合成时候，$X_{n}$ 表示消耗的仙果数，$\mathbb{P}(X_{n}=2)=p$, 
+$\mathbb{P}\left(X_{n}=1\right)=1-p$, $Y_{n}$ 表示合成的仙丹数，写出它的分布律，然后考虑相应的部分和，做除法，再令 $n \rightarrow \infty$，由强大数律，得 $\frac{p}{p+1}$.
+
+\item[55]
+先证一个引理，单边Chebyshev不等式 即10.48。只用证明 $\mathbb{P}(X<x) \geq \frac{x^{2}}{1+x^{2}}$
+$$x=\mathbb{E}[x-X] \leq \mathbb{E}\left[(x-X) 1_{X<x}\right] \leq \sqrt{\mathbb{E}(x-X)^{2}} \sqrt{\mathbb{P}(X<x)}$$
+
+整理即可。
+凸集在线性变换下仍为凸集，故不妨设期望为 $0$，协方差阵为 $I_{n}$。只用证
+$$\mathbb{P}(X \in S) \leq \frac{1}{1+\inf \left\{x^{T} x, x \in S\right\}}$$
+
+当右边为 $1$ 时，显然。当 $c^{2}:=\inf \left\{x^{T} x, x \in S\right\}>0$ 时，存在超平面分离 $S$ 和以 $c$ 为半径，$0$ 为心的球，此时做一次正交变换（不改变右式），使得超平面为 $x_{1} \geq c$，此时满足引理的条件。
+\end{enumerate}
+
+\section{标题}
+\begin{enumerate}
+\item[14]
+它的特征函数是一个无穷乘积，注意到它在 $t \rightarrow \infty$ 时，并不趋于 $0$，
+所以它不可能是连续型（Riemann--Lebesgue引理）。
+
+\item[25]
+先证明一个初等的引理，$\forall t$，
+$$\operatorname{Re}(1-f(t)) \geq \frac{1}{4} \operatorname{Re}(1-f(2 t))$$
+需要将一些特征函数零点附近的性质推出去，可以利用这个。
+
+\item[32]
+具体计算一下截断之后的一阶矩（$0$）和二阶矩（$\frac{2 n}{\pi b_{n}}$），
+定理11.3.3中Linderberg条件成立（很容易验证成立，题目中 $\frac{n}{b_{n}}$ 凑得好）
+
+\item[31]
+（3）$\sigma_{n}$ 的收敛性是由于模的收敛；对于 $\mu_{n}$，
+首先说明它有界，否则不妨设 $\mu_{n} \rightarrow \infty$，
+$$\frac{e^{i t \mu_{n}}-1}{i \mu_{n}}=\int_{0}^{t} e^{i s \mu_{n}} d s \rightarrow \int_{0}^{t} \phi(s) d s(\text { 控制收敛 })$$
+
+其中 $\phi(s)=\frac{f(s)}{|f(s)|}$, $f$ 为 $Y$ 的特征函数。
+但是左边的式子趋于 $0$，故由Lebesgue微分定理，$\phi(s)=0$，a.e. 这与 $\phi$ 的模为 $1$ 矛盾，当 $\mu_{n}$ 有界 $M$，取 $t_{0}=\frac{\pi}{4 m}$，则 $\left|t_{0} \mu_{n}\right| \leq \pi / 2$，此时利用 $\arcsin$ 可得 $\mu_{n}$ 是收敛的。
+
+\item[33]
+两两独立对于强大数律是可以的（高阶矩加条件），但是对于CLT两两独立是不够的。
+按定义验证
+\end{enumerate}

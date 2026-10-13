@@ -1,0 +1,61 @@
+\newcommand{\dis}{\displaystyle}
+
+==习题A==
+\begin{enumerate}     
+    \item 求下列 $\mathbb{R}^2$ 中子集的内部、边界与闭包：
+    \begin{enumerate}
+        \item[(1)] $S = \{(x,y) \mid x > 0, y \neq 0\}$；
+        \item[(2)] $S = \{(x,y) \mid 0 < x^2 + y^2 \leq 1\}$；
+        \item[(3)] $S = \left\{(x,y) \mid 0 < x \leq 1, y = \dis\sin\frac{1}{x}\right\}$。
+    \end{enumerate}
+    
+    \item 求下列点集的全部聚点（极限点）：
+    \begin{enumerate}
+        \item[(1)] $S =\dis \left\{(-1)^k \frac{k}{k+1} \mid k = 1,2,\cdots\right\}$；
+        \item[(2)] ($\star$) $S = \left\{\sin(k) \mid k = 1,2,\cdots\right\}$；
+        \item[(3)] $S =\dis \left\{\left(\cos\frac{2k\pi}{5}, \sin\frac{2k\pi}{5}\right) \mid k = 1,2,\cdots\right\}$；
+        \item[(4)] $S = \{(x,y) \mid (x^2 + y^2)(y^2 - x^2 + 1) \leq 0\}$.
+    \end{enumerate}
+
+    \item 设 $(X,d)$ 为度量空间，证明以下四个命题相互等价(TFAE)：
+    \begin{enumerate}
+    \item[(a)] $X$ 是\textbf{紧空间}：$X$ 的任意开覆盖都存在有限子覆盖；
+    \item[(b)] $X$ 是\textbf{列紧空间}：$X$ 中的任意点列都存在收敛于 $X$ 中点的子列；
+    \item[(c)] $X$ 是\textbf{完备且全有界的}：$X$ 完全有界，且所有Cauchy列都收敛；
+    \item[(d)] $X$ 满足\textbf{有限交性质}：$X$ 中任意具有有限交性质的非空闭集族，其交集非空（注：闭集族 $\dis\{F_\lambda\}_{\lambda\in\Lambda}$ 具有有限交性质，
+    是指对任意有限子集 $\dis\Lambda_0\subset\Lambda$，都有 $\dis\bigcap_{\lambda\in\Lambda_0}F_\lambda\neq\emptyset$).
+    \end{enumerate}
+    \end{enumerate}
+
+==习题B==
+\begin{enumerate}     
+    \item (\textbf{压缩映射原理/Banach不动点定理}) 给定非空完备度量空间$(X,d_X)$及其上的映射$T:X\to X$，若$T$是压缩的，即存在实数$\lambda \in (0,1)$使得对任意$x_1,x_2\in X$成立
+    \[
+    d_X(T(x_1), T(x_2)) \le \lambda\, d_X(x_1,x_2),
+    \]
+    则映射有\textbf{唯一}的不动点$x_*$，即$T(x_*) = x_*$。
+    \item 设$\{x_k\}$是完备度量空间$(X,d_X)$中的点列，证明：若 $\dis\sum_{k=1}^{+\infty} d_X (x_{k}, x_{k+1})$ 收敛，则 $\{x_k\}$ 为收敛点列.
+    \item 三维空间的单位球面记为 $S^2=\{(x,y,z)\in\mathbb{R}^3:x^2+y^2+z^2=1\}$
+    \begin{enumerate}  
+    \item[(1)] 证明：$S^2$ 在球面距离（过两点大圆的短弧的长度）下是完备度量空间.
+    \item[(2)] $S^2$ 在Euclid距离（即继承 $\mathbb{R}^3$ 上的 Euclid 距离）下是否是完备度量空间？说明理由.
+    \end{enumerate}
+\end{enumerate}
+
+==习题C==
+\textbf{有限维向量空间上的范数等价性}
+
+设 \( V \) 是一个\textbf{实线性空间}，若函数 \( \|\cdot\|: V \to \mathbb{R} \) 满足以下三条公理，则称 \( \|\cdot\| \) 是 \( V \) 上的一个\textbf{范数}：
+\begin{enumerate}
+    \item[(a)] \textbf{正定性}：对任意 \( x \in V \)，有 \( \|x\| \geq 0 \)，且 \( \|x\| = 0 \iff x = 0 \)（\( 0 \) 表示 \( V \) 中的零向量）；
+    \item[(b)] \textbf{正齐次性}：对任意 \( x \in V \) 和任意实数 \( \lambda \in \mathbb{R} \)，有 \( \|\lambda x\| = |\lambda| \cdot \|x\| \)；
+    \item[(c)] \textbf{三角不等式（次可加性）}：对任意 \( x, y \in V \)，有 \( \|x + y\| \leq \|x\| + \|y\| \)。
+\end{enumerate}
+
+设 \( \|\cdot\|_1 \) 和 \( \|\cdot\|_2 \) 是实线性空间 \( V \) 上的两个范数，若存在\textbf{全局正的常数} \( C_1 > 0 \) 和 \( C_2 > 0 \)，使得对\textbf{所有}向量 \( x \in V \)，都有：
+\[
+C_1 \cdot \|x\|_1 \leq \|x\|_2 \leq C_2 \cdot \|x\|_1
+\]
+则称 \( \|\cdot\|_1 \) 与 \( \|\cdot\|_2 \) 是 \( V \) 上的\textbf{等价范数}.
+
+\textbf{证明}：有限维实线性空间\( V \) 上的任意两个范数都是等价的.

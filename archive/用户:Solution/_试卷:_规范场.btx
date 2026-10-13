@@ -1,0 +1,73 @@
+== Example Sheet ==
+
+\qquad Question 1. Let $\mathbb{K}=\mathbb{R}, \mathbb{C}$ and identify the Lie algebra of an embedded Lie subgroup of $\operatorname{GL}(n, \mathbb{K})$ with a Lie subalgebra of $\operatorname{Mat}(n \times n, \mathbb{K})$. Prove that
+\begin{itemize}
+\item The Lie bracket on the Lie subalgebra of $\operatorname{Mat}(n \times n, \mathbb{K})$ is the standard commutator of matrices.
+\item The Lie algebras of classical groups are the following Lie subalgebras of $\operatorname{Mat}(n \times n, \mathbb{K})$.
+
+- The Lie algebras of the special linear groups $\operatorname{SL}(n, \mathbb{K})$ read
+\[\mathfrak{sl}(n, \mathbb{K})=\{M \in \operatorname{Mat}(n \times n, \mathbb{K}): \operatorname{tr}(M)=0\}.\]
+- The Lie algebras of the orthogonal groups $\mathrm{O}(n)$ read
+\[\mathfrak{o}(n)=\left\{M \in \operatorname{Mat}(n \times n, \mathbb{R}): M+M^T=0\right\}.\]
+- The Lie algebras of the unitary groups $\mathrm{U}(n)$ read
+\[\mathfrak{u}(n)=\left\{M \in \operatorname{Mat}(n \times n, \mathbb{C}): M+M^{\dagger}=0\right\}.\]
+- The Lie algebras of the special orthogonal groups $\operatorname{SO}(n)$ read
+\[\mathfrak{so}(n)=\mathfrak{o}(n).\]
+- The Lie algebras of the special unitary groups $\operatorname{SU}(n)$ read
+\[\mathfrak{su}(n)=\left\{M \in \operatorname{Mat}(n \times n, \mathbb{C}): M+M^{\dagger}=0, \operatorname{tr}(M)=0\right\}.\]
+\end{itemize}
+[Hint: Use the fact that `If $H$ is an embedded Lie subgroup of $G$, then $\mathfrak{h}$ is an embedded Lie subalgebra of $\mathfrak{g}$' and compute the dimension of each matrix group.]
+
+\qquad Question 2. Let $(E, \pi, M ; F)$ be a fibre bundle. Prove that the bundle is isomorphic to a trivial bundle if and only if there exists a smooth map $\tau: E \rightarrow F$ such that the restrictions
+\[\tau|_{E_x}: E_x \longrightarrow F\]
+are diffeomorphisms for all $x \in M$.
+
+\qquad Question 3. Let $s_i: U_i \rightarrow P$ and $s_j: U_j \rightarrow P$ be local gauges with $U_i \cap U_j \neq \emptyset$ and $g_{i j}: U_i \cap U_j \rightarrow G$ transition functions. 
+Prove that the local curvature $2$-forms $F_{s_i}, F_{s_j}$ transform as
+\[F_{s_i}=\operatorname{Ad}_{g_{ji}^{-1}} \circ F_{s_j} \quad \text { on } U_i \cap U_j.\]
+In particular, when $G$ is a matrix Lie group, prove that
+\[F_{s_i}=g_{ji}^{-1} \cdot F_{s_j} \cdot g_{ji}.\]
+[Hint: Adapt the proof of the analogous theorem for local connection $1$-forms.]
+
+\qquad Question 4. Show that the exterior covariant derivative $d_A$ satisfies
+\begin{align*}
+d_A(\omega+\omega^{\prime}) & =d_A \omega+d_A \omega^{\prime} & \quad & \forall \omega, \omega^{\prime} \in \Omega^k(M, E) \\
+d_A(\sigma \otimes e) & =d \sigma \otimes e+(-1)^k \sigma \wedge \nabla^A e & \quad & \forall \sigma \in \Omega^k(M), e \in \Gamma(E) \\
+d_A(\sigma \wedge \omega) & =d \sigma \wedge \omega+(-1)^k \sigma \wedge d_A \omega & \quad & \forall \sigma \in \Omega^k(M), \omega \in \Omega^l(M, E) .
+\end{align*}
+[Hint: Invoke the local expression of the exterior covariant derivative.]
+
+\qquad Question 5. We live in the following geometry.
+\begin{itemize}
+\item $(\mathbb{R}^4, g)$: the Minkowski spacetime with signature $(+,-,-,-)$,
+\item $G$: a compact Lie group (say $\mathrm{U}(1) \times \mathrm{SU}(2) \times \mathrm{SU}(3)$) with a Lie algebra $\mathfrak{g}$,
+\item $P \rightarrow M$: a principal $G$-bundle,
+\item $\operatorname{Ad}(P)$: the adjoint bundle with bundle metric $\langle\cdot, \cdot\rangle_{\operatorname{Ad}(P)}$,
+\item $E \rightarrow M$: an associated vector bundle with representation $\rho$ and Hermitian bundle metric $\langle\cdot, \cdot\rangle_E$.
+\end{itemize}
+Denote
+\begin{itemize}
+\item $A$: connection $1$-forms on $P$,
+\item $F_A$: curvature $2$-forms on $P$ with respect to $A$,
+\item $\Phi$: smooth sections of $E$,
+\item $d_A$: the exterior covariant derivative on the adjoint bundle $\operatorname{Ad}(P)$,
+\item $d_{A, \rho}$: the exterior covariant derivative on the associated vector bundle $E$ with representation $\rho$,
+\[d_{A, \rho}: \Omega^k(M, E) \longrightarrow \Omega^{k+1}(M, E).\]
+\end{itemize}
+Consider the Yang--Mills--Higgs Lagrangian
+\[\mathscr{L}_{\mathrm{YMH}}[\Phi, A]=\langle d_{A, \rho}\Phi, d_{A, \rho}\Phi \rangle_E
+-V(\langle\Phi, \Phi\rangle_E)-\frac{1}{2}\langle F_A, F_A\rangle_{\mathrm{Ad}(P)}\]
+with a function $V(x)=x^2/2-1$ on $\mathbb{R}$.
+\begin{itemize}
+\item Prove that variation of $\Phi$ leads to the field equation
+\[d_{A, \rho}^* d_{A, \rho} \Phi=V^{\prime}(\langle\Phi, \Phi\rangle_E).\tag{1}\]
+\item Prove that variation of $A$ leads to the field equation
+\[d_A^* F_A \Phi=J_\rho(A, \Phi),\]
+where $J_\rho(A, \Phi) \in \Omega^1(\mathbb{R}^4, \operatorname{Ad}(P))$ is a twisted $1$-form defined by
+\[\langle\alpha, J_\rho(A, \Phi)\rangle_{\operatorname{Ad}(P)}
+=2 \Re\,(\langle d_{A, \rho} \Phi, \alpha \cdot \Phi \rangle_E), 
+\quad \forall \alpha \in \Omega^1(\mathbb{R}^4, \operatorname{Ad}(P)).\tag{2}\]
+\end{itemize}
+[Background in physics: The system (1)-(2) is called the \textbf{Yang--Mills--Higgs equation}. 
+It is used in Higgs mechanism to explain how gauge bosons $A$ gain mass through interactions with Higgs bosons $\Phi$. 
+The Higgs bosons were proposed in 1960s and finally detected at CERN in 2012.]

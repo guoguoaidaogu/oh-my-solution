@@ -1,0 +1,199 @@
+\setdisplaytitle{试卷：控制理论基础 (G)}
+\sethtmltitle{试卷：控制理论基础 (G)}
+
+== 2025--2026学年秋季学期期末 ==
+第一题$10$分，其余每题$15$分。
+\begin{enumerate}
+
+\item[一、]叙述控制系统能检性的定义。
+
+\item[二、]根据结构图，给出复合系统的传递函数。
+\begin{tikzpicture}
+    \draw(0,0)rectangle(2,1);\draw(4,0)rectangle(6,1);
+    \draw(8,0)rectangle(10,1);\draw(4,1.5)rectangle(6,2.5);
+    \draw(8,1.5)rectangle(10,2.5);\draw(8,3)rectangle(10,4);
+    \draw[->,>=stealth](-1,0.5)to(-0.4,0.5);\draw(-0.5,0.5)to(0,0.5);
+    \draw[->,>=stealth](2,0.5)to(2.6,0.5);
+    \draw[->,>=stealth](2.5,0.5)to(3.6,0.5);\draw(3.5,0.5)to(4,0.5);
+    \draw[->,>=stealth](6,0.5)to(6.6,0.5);
+    \draw[->,>=stealth](6.5,0.5)to(7.6,0.5);\draw(7.5,0.5)to(8,0.5);
+    \draw[->,>=stealth](10,0.5)to(10.6,0.5);\draw(10.5,0.5)to(11,0.5);
+    \draw(3,2)to(4,2);\draw[->,>=stealth](3,2)to(3,1.2);\draw(3,1.3)to(3,0.5);
+    \draw(6.5,2)to(6,2);\draw[->,>=stealth](7,2)to(7,1.2);\draw(7,1.3)to(7,0.5);
+    \draw[->,>=stealth](7.5,2)to(6.4,2);\draw[->,>=stealth](8,2)to(7.4,2);
+    \draw[->,>=stealth](7,2)to(7,2.8);\draw(7,2.7)to(7,3.5);
+    \draw[->,>=stealth](7,3.5)to(7.6,3.5);\draw(7.5,3.5)to(8,3.5);
+    \draw[->,>=stealth](11,0.5)to(11,1.3);\draw(11,1.2)to(11,3.5)to(10.5,3.5);
+    \draw[->,>=stealth](10,3.5)to(10.6,3.5);\draw(10,2)to(10.5,2);
+    \draw[->,>=stealth](11,2)to(10.4,2);
+    \draw[->,>=stealth](11,2)to(11.6,2);\draw(11.5,2)to(12,2);
+    \draw (9,3.5) node {$F_1$};\draw (9,2) node {$F_3$};
+    \draw (5,2) node {$F_2$};\draw (1,0.5) node {$F_4$};
+    \draw (5,0.5) node {$F_5$};\draw (9,0.5) node {$F_6$};
+\end{tikzpicture}
+\begin{tikzpicture}
+    \draw(2,-0.5)rectangle(4,0.5);\draw(2,1.5)rectangle(4,2.5);
+    \draw(2,3.5)rectangle(4,4.5);\draw (7,0) node {$F_7$};
+    \draw(6,-0.5)rectangle(8,0.5);\draw(6,1.5)rectangle(8,2.5);
+    \draw(6,3.5)rectangle(8,4.5);\draw(6,5.5)rectangle(8,6.5);
+    \draw[->,>=stealth](0,4)to(1.6,4);\draw(1.5,4)to(2,4);
+    \draw[->,>=stealth](4,4)to(4.6,4);
+    \draw[->,>=stealth](4.5,4)to(5.6,4);\draw(5.5,4)to(6,4);
+    \draw[->,>=stealth](8,4)to(8.6,4);
+    \draw[->,>=stealth](8.5,4)to(9.6,4);
+    \draw(9.5,4)to(10,4)to(10,2)to(9.5,2);
+    \draw[->,>=stealth](2,0)to(1.4,0);\draw(1.5,0)to(1,0);
+    \draw[->,>=stealth](1,0)to(1,1.1);
+    \draw[->,>=stealth](1,1)to(1,3.1);\draw(1,3)to(1,4);
+    \draw[->,>=stealth](6,0)to(4.9,0);\draw(5,0)to(4,0);
+    \draw[->,>=stealth](2,2)to(1.4,2);\draw(1.5,2)to(1,2);
+    \draw[->,>=stealth](5,2)to(4.4,2);\draw(4.5,2)to(4,2);
+    \draw[->,>=stealth](5,2)to(5.6,2);\draw(5.5,2)to(6,2);
+    \draw[->,>=stealth](8,2)to(8.6,2);
+    \draw[->,>=stealth](8.5,2)to(9.6,2);
+    \draw[->,>=stealth](9,2)to(9,0.9);\draw(9,2)to(9,0)to(8,0);
+    \draw[->,>=stealth](10,3)to(10.6,3);\draw(10.5,3)to(11,3);
+    \draw[->,>=stealth](9,4)to(9,5.1);\draw(9,5)to(9,6)to(8,6);
+    \draw(6,6)to(5,6);\draw[->,>=stealth](5,6)to(5,4.9);
+    \draw[->,>=stealth](5,5)to(5,2.9);\draw(5,3)to(5,2);
+    \draw (3,4) node {$F_1$};\draw (3,2) node {$F_2$};
+    \draw (7,6) node {$F_3$};\draw (7,4) node {$F_4$};
+    \draw (7,2) node {$F_5$};\draw (3,0) node {$F_6$};
+\end{tikzpicture}
+
+\item[三、]已知矩阵$F(s)=\begin{pmatrix}\sin \frac{1}{s}&\frac{1}{s}+\frac{1}{s^3}\\ \\
+    \frac{1}{s}+\frac{1}{s^3}&\ln\big(1+\frac{1}{s}\big)
+\end{pmatrix}$.问$F(s)$是否存在线性系统实现，是否存在有限阶线性系统实现，请说明理由。
+
+\item[四、]已知$LQ$问题中
+\[A=\begin{pmatrix}1&0\\0&2\end{pmatrix},B=\begin{pmatrix}
+3&0\\0&2
+\end{pmatrix},Q=\begin{pmatrix}8&0\\0&5\end{pmatrix},
+R=\begin{pmatrix}
+3&0\\
+0&4
+\end{pmatrix}.\]
+写出Riccati方程，并计算出$P$.
+
+\item[五、]证明：系统$\dot{x}(t)=Ax(t)+Bu(t)$能稳$\iff$
+存在$C>0$, s.t.对任何实部非负的$\lambda$及$\psi\in \mathbb{R}^n$,有
+\[\|\psi\|\le C(\|(\lambda I-A^*)\psi\|+\|B^*\psi\|).\]
+
+
+\item[六、]系统$\dot{x}(t)=Ax(t)$满足$\|x(t)\|\le Me^{-\delta t}$.
+对任意矩阵$\mathcal{E}$满足$\|\mathcal{E}\|<\frac{\delta}{M}$,
+证明：系统$\dot{x}(t)=Ax(t)+\mathcal{E} x(t)$也是稳定的。
+
+
+
+\item[七、]给定稳定多项式
+\(f(\lambda)=\lambda^{2n+1}+a\lambda^{2n}+\cdots\ (a>0).\)
+将其写成$f(\lambda)=g(\lambda^2)+\lambda h(\lambda^2).$
+给出一个条件使得$\delta_1,\delta_2$满足该条件时，多项式族
+\[\{(g(\lambda^2)+\delta_1h(\lambda^2))+\lambda (h(\lambda^2)+\delta_2g(\lambda^2))\}_{\delta_1,\delta_2}\]
+稳定。
+
+\end{enumerate}
+\begin{proofc}[提示]
+    \begin{itemize}
+    \item[三、]有限阶线性系统的传递矩阵的各个元素是有理函数。
+
+    \item[五、]考察矩阵$\begin{pmatrix}
+(\bar{\lambda} I-A)^*\\
+B^*
+\end{pmatrix}$,
+
+该矩阵的秩小于$n$等价于该矩阵的零空间维度大于$0$,易得充分性.
+
+必要性只需存在$D>0$ s.t. $\forall \|\psi\|=1,\operatorname{Re} \lambda\geq 0$，
+\[\|(\bar{\lambda} I-A)^*\psi\|+\|B^*\psi\|\geq D.\]
+
+取常数$M>2\|A^*\|$. $\forall \|\psi\|=1, |\lambda|>M$, 有
+\[\|(\bar{\lambda} I-A)^*\psi\|+\|B^*\psi\|\geq 
+\|\lambda \cdot\psi\|-\|A^*\psi\|\geq|\lambda|-\|A^*\|>M-\|A^*\|>0,\]
+
+然后注意到$\{\lambda\in \mathbb{C}|\operatorname{Re}\lambda\geq 0,|\lambda|\leq M\}\times \{\psi\in \mathbb{R}^{n}| \|\psi\|=1\}$是紧集,易得$D$存在.
+
+\item[六、]积分形式的Gronwall不等式。\qedhere
+
+\end{itemize}
+\end{proofc}
+
+
+
+== 2024--2025学年秋季学期期末 ==
+一、已知一个控制系统的传递矩阵 \( F \)，何为最小实现？
+
+二、设  
+\[A = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{pmatrix}, \quad B = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}, \quad K = \ker(1, 0, 0)\]
+
+试求 \(\sup J(A, B; K)\)。
+
+三、讨论以下$2$阶控制系统  
+\[\frac{d}{dt} x(t) = \begin{pmatrix} 0 & -\omega \\ \omega & 0 \end{pmatrix} x(t) + \begin{pmatrix} b_1 \\ b_2 \end{pmatrix} u(t)\]
+
+能控性与能稳性两者之间的关系。
+
+四、假定矩阵 \( A \in \mathbb{R}^{n \times n} \) 稳定（特征根都在复左半平面内），则有正定矩阵 \( P \in \mathbb{R}^{n \times n} \) 满足以下方程：  
+\[PA + A^{\rm T} P = -I_{n \times n},\]
+
+其中 \( I_{n \times n} \) 是单位阵。试用 \( P \) 估计系统 \( \dot{x}(t) = Ax(t) \) 的衰减指数（即为 \(\|x(t)\| \leq Me^{-\rho t} \|x(0)\|\) 中的 \(\rho\)）。
+
+五、给定 \( A, B \in \mathbb{R}^{3 \times 3} \)，且 \( |A| = |B| = -1 \)。若系统  
+\[\dot{x}(t) = Ax(t) \quad \dot{y}(t) = By(t),\]
+
+都稳定，试问  
+\[\dot{z}(t) = (A + B)z(t)\]
+
+是否稳定？肯定，证明；否定，举反例。
+
+六、给定两个向量 \(\xi_1, \xi_2\)，若存在 \(\lambda_1 \geq 0, \lambda_2 \geq 0, \lambda_1 + \lambda_2 \neq 0\) 满足  
+\[\lambda_1 \xi_1 + \lambda_2 \xi_2 = 0,\]
+
+则称对于两个向量 \(\xi_1, \xi_2\) 线性负相关。考虑两个 \( n \) 阶的常微分方程
+
+\[\frac{d^n}{dt^n}y_j(t) + a_{j,1}\frac{d^{n-1}}{dt^{n-1}}y_j(t) + \cdots + a_{j,(n-1)}\frac{d}{dt}y_j(t) + a_{j,n}y_j(t) = 0, \quad j=1,2.\]
+
+将其化为一阶常微分方程组，分别记对应的系数矩阵为 \(A_1, A_2 \in \mathbb{R}^{n \times n}\)。现假设对于任意的实数 \(\omega\)，两个向量
+
+\[\begin{pmatrix}
+\text{Re}(|i\omega I_{n \times n} - A_1|) \\
+\text{Im}(|i\omega I_{n \times n} - A_1|)
+\end{pmatrix}, \qquad \begin{pmatrix}
+\text{Re}(|i\omega I_{n \times n} - A_2|) \\
+\text{Im}(|i\omega I_{n \times n} - A_2|)
+\end{pmatrix}\]
+
+在 \(\mathbb{R}^2\) 内非线性负相关。试证明：如果矩阵 \(A_1, A_2\) 都稳定，则 \(A_1, A_2\) 的任意凸组合也稳定。
+
+七、给定 \(A \in \mathbb{R}^{n \times n}, B \in \mathbb{R}^{n \times m}, C \in \mathbb{R}^{p \times n}\) 以及 \(\alpha \in \mathbb{R}^p\)。考虑控制系统
+
+\[\begin{cases}
+\dot{x}(t) = Ax(t) + Bu(t), \quad t \geq 0 \\
+x(0) = x_0 \in \mathbb{R}^n, \\
+y(t) = Cx(t), \hspace{4.72em} t \geq 0
+\end{cases}\]
+
+记上述问题的解为 \(y(\cdot; 0, x_0, u)\)。分析以下问题有解的条件：
+
+\[\forall\, x_0 \in \mathbb{R}^n\ \exists\, u \in L^2_{loc}(0, +\infty; \mathbb{R}^m)
+\ \exists\, T > 0\ \text{ so that } y(t ; 0, x_0, u) \equiv \alpha \text{ holds for any } t \geq T.\]
+
+
+== 2023--2024学年秋季学期期末 ==
+一、判断多项式$\lambda^4+5\lambda^3+7\lambda^2+5\lambda+1$是否稳定。
+
+二、判断多项式族$\lambda^4+a_1\lambda^3+a_2\lambda^2+a_3\lambda+1$,其中$ a_1\in [2,4],a_2\in [3,5],a_3\in[2,4]$是否稳定。
+
+三、矩阵$H=(1+3^{2i+j-3})_{ij}$是否为Hankel矩阵且有有限维实现，若有，给出最小实现。
+
+四、$A\in \mathbb{R}^{n\times n},C\in \mathbb{R}^{n\times n}$.
+给定$\mathbb{R}^n$中一个线性子空间，给出“存在矩阵$L\in \mathbb{R}^{n\times p}$,使得$(A+LC)V\subset V$”的判据。
+
+五、$A_1,A_2\in\mathbb{R}^{n\times n},B_1,B_2\in\mathbb{R}^{n\times n}$,
+将两个系统并联，给出并联后系统能达的判据。
+
+六、$(A,B)$能控且$A$稳定，$B\in\mathbb{R}^{n\times m}$.
+是否对任意初值$x_0$,存在$u\in L^2(0,+\infty,\bar{B_1})$,
+使得在某个时刻$T$,系统的状态达到零。
+此处$\bar{B_1}$是$\mathbb{R}^m$中的单位闭球。

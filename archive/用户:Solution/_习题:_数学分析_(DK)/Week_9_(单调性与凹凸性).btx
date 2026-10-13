@@ -1,0 +1,410 @@
+\newenvironment{solution}{\begin{proofc}[解答]}{\end{proofc}}
+
+== 习题A ==
+
+\begin{enumerate}
+    \item[1.]求下列函数的极值点,并确定它们的单调区间:
+    \begin{enumerate}
+        \item[(a)]$\displaystyle y = x + \sin x$;
+        \item[(b)]$\displaystyle y = \sqrt{x}\ln x$;
+        \item[(c)]$\displaystyle y = x^{n}e^{-x} \quad (n\in \mathbb{N}^{+})$;
+        \item[(d)]$\displaystyle y = \arctan x - x$;
+        \item[(e)]$\displaystyle y = 2e^{x} + e^{-x}$;
+        \item[(f)]$\displaystyle y = 2 - \sqrt[3]{(x - 1)^{2}}$.
+    \end{enumerate}
+    \item[2.]求下列曲线的拐点,并确定函数的保凸区间:
+    \begin{enumerate}
+        \item[(a)]$\displaystyle y = x + \sin x$;
+        \item[(b)]$\displaystyle y = xe^{-x}$;
+        \item[(c)]$\displaystyle y = \frac{1 - x}{1 + x^{2}}$;
+        \item[(d)]$\displaystyle y = \arctan x - x$;
+        \item[(e)]$\displaystyle y = x + \sqrt{x - 1}$.
+    \end{enumerate}
+    \item[3.]求下列函数在 \(x\rightarrow +\infty\) 时的渐近线:
+    \begin{enumerate}
+        \item[(a)]$\displaystyle y = \sqrt{6x^{2} - 8x + 3}$;
+        \item[(b)]$\displaystyle y = (2 + x)e^{\frac{1}{x}}$;
+        \item[(c)]$\displaystyle y = \sqrt[3]{(x - 2)(x + 1)^{2}}$.
+    \end{enumerate}
+    \item[4.]计算下列极限:
+    \begin{enumerate}
+        \item[(a)]$\displaystyle \lim_{x\to \pi}(\pi -x)\tan {\frac{x}{2}}$;
+        \item[(b)]$\displaystyle \lim_{x\to 0^{+}}\left(\frac{1}{x}\right)^{\tan x}$;
+        \item[(c)]$\displaystyle \lim_{x\to 0}\left(\frac{1}{x} -\frac{1}{e^{x} - 1}\right)$;
+        \item[(d)]$\displaystyle \lim_{x\to 1}x^{\frac{1}{1 - x}}$.
+    \end{enumerate}
+    \item[5.]设函数 \(f(x)\) 满足 \(f(0) = 0\) , 且 \(f'(0)\) 存在, 证明 \(\displaystyle \lim_{x \to 0^+} x^{f(x)} = 1\) .
+    \item[6.]设函数 \(f(x)\) 在 \(\displaystyle(a, +\infty)\) 上可导, 且 \(\displaystyle\lim_{x \to +\infty} [f(x) + f'(x)] = k\), 
+    证明 \(\displaystyle\lim_{x \to +\infty} f(x) = k\).
+    \begin{solution}
+        \[
+        \lim_{x\to +\infty}f(x)=\lim_{x\to +\infty}\frac{e^xf(x)}{e^x}\overset{\mathrm{L'Hospital}}{=}\lim_{x\to +\infty}\frac{e^x(f(x)+f'(x))}{e^x}=\lim_{x\to +\infty}[f'(x)+f(x)]=k. \quad \square
+        \]
+    \end{solution}
+\end{enumerate}
+
+== 习题B ==
+
+\begin{enumerate}
+    \item[1.]证明: 开区间上凸函数必是连续函数, 并且每点处都存在左、右导数 (不一定相等).
+    \begin{solution}
+        设 \( f \) 是定义在开区间 \( I \) 上的凸函数.\\
+        取任意 \( x_0 \in I \)，由于 \( I \) 是开区间，$\exists$ \( a, b \in I \) 使得 \( a < x_0 < b \).\\
+        由凸函数的定义，$\forall$ \( x, y \in I \) 和 \( \lambda \in [0,1] \)，有：
+        \[
+        f(\lambda x + (1-\lambda) y) \leq \lambda f(x) + (1-\lambda) f(y).
+        \]
+        考虑差商 \( \displaystyle Q(x) = \frac{f(x) - f(x_0)}{x - x_0} \)，其中\( x \in (a, b) \setminus \{x_0\} \).\\
+        对于 \( a < x < x_0 < y < b \)，由凸性可得：
+        \[
+        \frac{f(x) - f(x_0)}{x - x_0} \leq \frac{f(y) - f(x_0)}{y - x_0}.
+        \]
+        故差商 \( Q(x) \) 在 \( x \to x_0^- \) 时单调递增且有上界(由上界 \(\displaystyle \frac{f(y) - f(x_0)}{y - x_0} \) 给出)，因此左导数 \( f'_-(x_0) \) 存在.\\
+        类似地，在 \( x \to x_0^+ \) 时，差商 \( Q(x) \) 单调递减且有下界，因此右导数 \( f'_+(x_0) \) 存在.\\  
+        下证函数在 \( x_0 \) 处连续.\\
+        由左导数存在知：
+        \[
+        \lim_{x \to x_0^-} \frac{f(x) - f(x_0)}{x - x_0} = f'_-(x_0).
+        \]
+        这意味着：
+        \[
+        \lim_{x \to x_0^-} [f(x) - f(x_0)] = \lim_{x \to x_0^-} \frac{f(x) - f(x_0)}{x - x_0} \cdot (x - x_0) = f'_-(x_0) \cdot 0 = 0.
+        \]
+        所以 
+        \[
+        \lim_{x \to x_0^-} f(x) = f(x_0).
+        \]
+        类似地，由于右导数存在，有
+        \[
+        \lim_{x \to x_0^+} f(x) = f(x_0).
+        \]
+        因此，函数在 \( x_0 \) 处连续.\\
+        综上，开区间上的凸函数是连续的，并且每点处都存在左、右导数，但左、右导数不一定相等，例如 $f(x)=\left| x \right|$ 在 $x=0$ 处.
+    \end{solution}
+
+    \item[2.]证明: 不存在三次或三次以上的奇次多项式为凸函数.
+    \item[3.]设 \(f(x)\) 在 \((a,b)\) 上取正值, 且为凹函数. 求证: \(\displaystyle\frac{1}{f(x)}\) 是在 \((a,b)\) 上的凸函数.
+    \begin{solution}
+        对于 $x_1,\,x_2\in(a,b)$ 和 $\lambda\in[0,1]$，由 $f(x)$ 的凹性可知
+        \[
+        f(\lambda x_1+(1-\lambda)x_2)\geq \lambda f(x_1)+(1-\lambda)f(x_2).
+        \]
+        又由 $f(x)$ 为正值函数，可知
+        \[
+        \frac{1}{f(\lambda x_1+(1-\lambda)x_2)}\leq \frac{1}{\lambda f(x_1)+(1-\lambda)f(x_2)}\leq \lambda\frac{1}{f(x_1)}+(1-\lambda)\frac{1}{f(x_2)}.
+        \]
+        (上式展开即知成立.)\\
+        因此 $\displaystyle\frac{1}{f(x)}$ 为凸函数.
+    \end{solution}
+
+    \item[4.]已知定义在 \(\mathbb{R}\) 上的函数 \(f(x)\) 满足 \(\displaystyle\lambda \leq f'' \leq \Lambda\), 
+    其中 \(\displaystyle 0 < \lambda \leq \Lambda\) 给定. 对 \(x \in \mathbb{R}\), \(h > 0\), 定义 \(S_{x,h}\) 为使得
+    \(\displaystyle f(y) \leq f(x) + f'(x) \cdot (y - x) + h\) 的点 \(y\) 的集合. 
+    证明: \(\displaystyle S_{x,h}\) 为有界闭区间, 并给出 \(S_{x,h}\) 的长度的最优上下界 (用 \(\displaystyle \lambda, \Lambda, h\) 表示).
+    \begin{solution}
+        考虑函数 \(g(y) = f(y) - [f(x) + f'(x)(y - x)]\)，则由集合定义，\(S_{x,h} = \{ y \in \mathbb{R} \mid g(y) \leq h \}\). \\
+        由于 \(f\) 二次可微且 \(f''(y) \geq \lambda > 0\)，函数 \(f\) 是严格凸函数. \\
+        由 \(g''(y) = f''(y) \geq \lambda > 0\)可知， \(g\) 也是严格凸函数. \\
+        又\(g(x) = 0\)， \(g'(x) = f'(x) - f'(x) = 0\)，故 \(x\) 是 \(g\) 的唯一最小值点. \\
+        由于 \(g\) 严格凸且 \(g(x) = 0\)，当 \(|y| \to +\infty\) 时，$g'(y)=f'(y)-f'(x)\geq f'(y_0)-f'(x)=k>0$ 恒成立，
+        其中 $y_0$ 为随着$x$变化而变化且始终满足 $y_0>x$ 的变量，从而\(g(y) \to +\infty\). \\
+        因此，$\forall$ \(h > 0\)，集合 \(\{ y \mid g(y) \leq h \}\) 是有界的. \\
+        又因为 \(g\) 是连续函数，该集合是闭集，故 \(S_{x,h}\) 是有界闭区间.
+
+        接下来，估计 \(S_{x,h}\) 的长度. \\
+        由 Taylor 公式，$\forall$ \(y \in \mathbb{R}\)，$\exists$ \(\eta\) 介于 \(x\) 和 \(y\) 之间，使得
+        \[
+        g(y) = \frac{1}{2} f''(\eta) (y - x)^2.
+        \]
+        由于 \(\lambda \leq f''(\eta) \leq \Lambda\)，我们有
+        \[
+        \frac{\lambda}{2} (y - x)^2 \leq g(y) \leq \frac{\Lambda}{2} (y - x)^2.
+        \]
+
+        若 \(y \in S_{x,h}\)，即 \(g(y) \leq h\)，则由左边不等式
+        \[
+        \frac{\lambda}{2} (y - x)^2 \leq h \quad \Rightarrow \quad |y - x| \leq \sqrt{\frac{2h}{\lambda}}.
+        \]
+        所以 \(\displaystyle S_{x,h} \subseteq \left[ x - \sqrt{\frac{2h}{\lambda}}, x + \sqrt{\frac{2h}{\lambda}} \right]\)，故 \(S_{x,h}\) 的长度 \(L\) 满足 \(\displaystyle L \leq 2 \sqrt{\frac{2h}{\lambda}}\).\\
+        另一方面，若 \(\displaystyle |y - x| \leq \sqrt{\frac{2h}{\Lambda}}\)，则由右边不等式
+        \[
+        g(y) \leq \frac{\Lambda}{2} (y - x)^2 \leq \frac{\Lambda}{2} \cdot \frac{2h}{\Lambda} = h.
+        \]
+        所以 \(y \in S_{x,h}\)，即 \(\displaystyle \left[ x - \sqrt{\frac{2h}{\Lambda}}, x + \sqrt{\frac{2h}{\Lambda}} \right] \subseteq S_{x,h}\)，故 \(\displaystyle L \geq 2 \sqrt{\frac{2h}{\Lambda}}\).\\
+        因此，\(S_{x,h}\) 的长度 \(L\) 满足
+        \[
+        2 \sqrt{\frac{2h}{\Lambda}} \leq L \leq 2 \sqrt{\frac{2h}{\lambda}}.
+        \]
+        当 \(f''(y) \equiv \Lambda\) 时，取 \(\displaystyle f(y) = \frac{\Lambda}{2} y^2\)(适当平移即可)，则 \(\displaystyle g(y) = \frac{\Lambda}{2} (y - x)^2\)，所以 \(\displaystyle S_{x,h} = \left[ x - \sqrt{\frac{2h}{\Lambda}}, x + \sqrt{\frac{2h}{\Lambda}} \right]\)，长度恰好为 \(\displaystyle 2 \sqrt{\frac{2h}{\Lambda}}\). \\
+        当 \(f''(y) \equiv \lambda\) 时，取 \(\displaystyle f(y) = \frac{\lambda}{2} y^2\)，则 \(\displaystyle g(y) = \frac{\lambda}{2} (y - x)^2\)，所以 \(\displaystyle S_{x,h} = \left[ x - \sqrt{\frac{2h}{\lambda}}, x + \sqrt{\frac{2h}{\lambda}} \right]\)，长度恰好为 \(\displaystyle 2 \sqrt{\frac{2h}{\lambda}}\).
+    \end{solution}
+
+    \item[5.]设 \(f(x)\) 在 \([a, +\infty)\) 上二次可微, \(\displaystyle f''(x) \geq 0\), \(\displaystyle\lim_{x \to +\infty} f(x) = 0\). 
+    求证: \(\displaystyle \lim_{x \to +\infty} f'(x) = 0\).
+    \item[6.]设 \(\displaystyle f \in D^1 (a,b)\) (注意: 不一定有二阶导数). 证明: \(f\) 是凸函数, 当且仅当对任意 \(x,y \in (a,b)\) 成立
+    \[f(y) \geq f(x) + f'(x)(y - x).\]
+    \begin{solution}
+        \begin{enumerate}
+        \item[i.] 假设 \( f \) 是凸函数.\\
+        取任意 \( x, y \in (a,b) \)，且 \( x \neq y \).\\
+        对于 \( \lambda \in (0,1] \)，由凸性知：
+        \[
+        f(x + \lambda (y - x))=f((1-\lambda)x+\lambda y) \leq (1-\lambda)f(x)+\lambda f(y) =f(x) + \lambda (f(y) - f(x)).
+        \]
+        即：
+        \[
+        f(x + \lambda (y - x)) - f(x) \leq \lambda (f(y) - f(x)).
+        \]
+        两边除以 \( \lambda>0 \)：
+        \[
+        \frac{f(x + \lambda (y - x)) - f(x)}{\lambda} \leq f(y) - f(x).
+        \]
+        令 \( \lambda \to 0^+ \)，则由 $f$ 一阶可导可知左边趋于 \( f'(x)(y - x) \).\\
+        因此：
+        \[
+        f'(x)(y - x) \leq f(y) - f(x),
+        \]
+        即：
+        \[
+        f(y) \geq f(x) + f'(x)(y - x).
+        \]
+
+        \item[ii.] 假设$\forall$ \( x,y \in (a,b) \)，有 \( f(y) \geq f(x) + f'(x)(y - x) \).\\
+        需要证明 \( f \) 是凸函数，即$\forall$ \( x,z \in (a,b) \) 和 \( \lambda \in [0,1] \)，令 \( y = \lambda x + (1-\lambda) z \)，有：
+        \[
+        f(y) \leq \lambda f(x) + (1-\lambda) f(z).
+        \]
+        由假设，我们有：
+        \[
+        f(x) \geq f(y) + f'(y)(x - y), \quad f(z) \geq f(y) + f'(y)(z - y).
+        \]
+        将第一个不等式乘以 \( \lambda \)，第二个乘以 \( (1-\lambda) \)，然后相加：
+        \[
+        \begin{aligned}
+        \lambda f(x) + (1-\lambda) f(z) &\geq \lambda [f(y) + f'(y)(x - y)] + (1-\lambda) [f(y) + f'(y)(z - y)] \\
+        &= f(y) + f'(y) [\lambda (x - y) + (1-\lambda)(z - y)].
+        \end{aligned}
+        \]
+        但 \( y = \lambda x + (1-\lambda) z \)，所以 \( \lambda (x - y) + (1-\lambda)(z - y) = \lambda x + (1-\lambda) z - y = 0 \)。  
+        因此：
+        \[
+        \lambda f(x) + (1-\lambda) f(z) \geq f(y),
+        \]
+        即 \( f \) 是凸函数.
+        \end{enumerate}
+    \end{solution}
+
+    \item[7.](\textbf{Jensen 不等式}) 设 \(f(x)\) 是区间 \(I\) 上的凸函数, 即对任意 \(\displaystyle x_1, x_2 \in I\) 和 \(\lambda \in [0,1]\), 有
+
+\[\displaystyle f(\lambda x_1 + (1 - \lambda)x_2) \leq \lambda f(x_1) + (1 - \lambda)f(x_2).\]
+
+    证明: 对于任意 \(\displaystyle x_1, x_2, \cdots , x_n \in I\) 和 \(\displaystyle\lambda_1, \lambda_2, \cdots , \lambda_n \geq 0\) 满足 \(\displaystyle\sum_{i=1}^{n} \lambda_i = 1\), 有
+
+\[\displaystyle f\left(\sum_{i=1}^{n} \lambda_i x_i\right) \leq \sum_{i=1}^{n} \lambda_i f(x_i)\]
+    \begin{solution}
+        用数学归纳法.\\
+        当 $n=1$ 或 $n=2$ 时，由凸函数的定义即知成立.\\
+        假设当 $n=m\in\mathbb{N}_{+}$ 时结论成立，则当 $n=m+1$ 时，即证
+        \[
+        f\left(\sum_{i=1}^{m+1}\lambda_{i}x_{i}\right)\leq \sum_{i=1}^{m+1}\lambda_{i}f(x_{i}).
+        \]
+        令 $\displaystyle\eta_{i}=\frac{\lambda_{i}}{1-\lambda_{m+1}}>0$.\\
+        则
+        \[
+        \begin{aligned}
+        LHS&=f\left(\lambda_{m+1}x_{m+1}+\sum_{i=1}^{m}\lambda_{i}x_{i}\right)\\
+        &=f\left(\lambda_{m+1}x_{m+1}+(1-\lambda_{m+1})\sum_{i=1}^{m}\eta_{i}x_{i}\right)\\
+        &\overset{n=2}{\leq}\lambda_{m+1}f(x_{m+1})+(1-\lambda_{m+1})f\left(\sum_{i=1}^{m}\eta_{i}x_{i}\right)\\
+        &\overset{n=m}{\leq}\lambda_{m+1}f(x_{m+1})+(1-\lambda_{m+1})\sum_{i=1}^{m}\eta_{i}f(x_i)\\
+        &=\sum_{i=1}^{m+1}\lambda_{i}x_{i}=RHS.
+        \end{aligned}
+        \]
+        由数学归纳法知，结论成立.
+    \end{solution}
+\end{enumerate} 
+
+== 习题C ==
+设 \(\displaystyle f: \mathbb{R} \to \mathbb{R} \cup \{+\infty \}\) 是一个\textbf{正常函数} (proper function), 
+即不恒等于 \(+\infty\) 且至少在一点取有限值. 定义其 Legendre- Fenchel 共轭 (凸共轭) 为:
+
+\[\displaystyle f^{*}(y) = \sup_{x \in \mathbb{R}} \{(y,x) - f(x)\}.\]
+
+\begin{enumerate}
+    \item[1.]证明: 对任意 \(\displaystyle x,y \in \mathbb{R}\), 成立 Fenchel-Young 不等式:
+    \[\displaystyle f(x) + f^{*}(y) \geq \langle x,y \rangle .\]
+    并阐述等号成立的充要条件.
+    \begin{solution}
+        由 Legendre-Fenchel 共轭的定义：
+        \[
+        f^*(y) = \sup_{z \in \mathbb{R}} \{ \langle y, z \rangle - f(z) \}.
+        \]
+        $\forall$ \( x , y\in\mathbb{R} \)，由上确界的定义可知：
+        \[
+        f^*(y) \geq \langle y, x \rangle - f(x).
+        \]
+        即
+        \[
+        f(x) + f^*(y) \geq \langle x, y \rangle.
+        \]
+        等号成立当且仅当 \( x \) 在 \( f^*(y) \) 的定义中达到上确界，即：
+        \[
+        f^*(y) \equiv \langle y, x \rangle - f(x).
+        \]
+        这等价于 \( y \in \partial f(x) \)(\( f \) 在 \( x \) 处的\textbf{次微分}).\\
+        若 \( f \) 可微，则等号成立当且仅当 \( y = f'(x) \).
+
+        \textbf{次微分}：函数 $u(x)$ 的次微分 $\partial u(x)$ 定义为集合 $\partial u(x)=\{y\in\mathbb{R}^n\mid u(x)+\langle z-x,\,y \rangle\leq u(z)\}$.\\ 
+        次微分显然有三个特点：\\
+        1. $\partial u(x)\neq \varnothing$; \\
+        2. 对任意定义域中的 $x$，$\partial u(x)$ 为凸集; \\
+        3. 若 $\partial u(x_0)$ 的元素个数为 1，则 $u$ 在点 $x_0$ 处可微.
+    \end{solution}
+
+    \item[2.]证明: 无论 \(f\) 是否为凸函数, \(f^{*}\) 总是凸函数.
+    \begin{solution}
+        即证 $\forall y_1, y_2 \in \mathbb{R}$ 和 \( \lambda \in [0,1] \)，有：
+        \[
+        f^*(\lambda y_1 + (1-\lambda) y_2) \leq \lambda f^*(y_1) + (1-\lambda) f^*(y_2).
+        \]
+        考虑任意仿射函数 \(\displaystyle  h(y) = \langle y, x \rangle - c \)，其中 \( x, c \) 是常数.
+        $\forall$ \( y_1, y_2 \in \mathbb{R} \) 和 \( \lambda \in [0,1] \)，有：
+        \[
+        \begin{aligned}
+            h(\lambda y_1 + (1-\lambda) y_2) &= \langle \lambda y_1 + (1-\lambda) y_2, x \rangle - c \\
+            &= \lambda \langle y_1, x \rangle + (1-\lambda) \langle y_2, x \rangle - [\lambda c + (1-\lambda) c] \\
+            &= \lambda [\langle y_1, x \rangle - c] + (1-\lambda) [\langle y_2, x \rangle - c] \\
+            &= \lambda h(y_1) + (1-\lambda) h(y_2)
+        \end{aligned}
+        \]
+        因此，仿射函数是凸函数.
+        由定义：
+        \[
+        f^*(y) = \sup_{x \in \mathbb{R}} \{ \langle y, x \rangle - f(x) \}.
+        \]
+        对于每个固定的 \( x \)，定义函数：
+        \[
+        g_x(y) = \langle y, x \rangle - f(x).
+        \]
+        这是一个仿射函数，从而每个 \( g_x(y) \) 都是凸函数.\\
+        设 \( \{ h_i \}_{i \in I} \) 是一族凸函数，定义 \( \displaystyle H(y) = \underset{{i \in I}}{\sup} \,h_i(y) \).\\
+        $\forall$\( y_1, y_2 \in \mathbb{R} \) 和 \( \lambda \in [0,1] \)，有：
+        \[
+        \begin{aligned}
+            H(\lambda y_1 + (1-\lambda) y_2) &= \sup_{i \in I} h_i(\lambda y_1 + (1-\lambda) y_2) \\
+            &\leq \sup_{i \in I} [\lambda h_i(y_1) + (1-\lambda) h_i(y_2)] \\
+            &\leq \lambda \sup_{i \in I} h_i(y_1) + (1-\lambda) \sup_{i \in I} h_i(y_2) \\
+            &= \lambda H(y_1) + (1-\lambda) H(y_2).
+        \end{aligned}
+        \]
+        因此，\( H \) 是凸函数.\\
+        由于 \(\displaystyle  f^*(y) = \underset{{x \in \mathbb{R}}}{\sup}\, g_x(y) \)，而每个 \( g_x(y) \) 是凸函数，因此\( f^* \) 是凸函数.\\
+        所以，无论 \( f \) 是否为凸函数，其Legendre-Fenchel共轭 \( f^* \) 总是凸函数.
+    \end{solution}
+
+    \item[3.]$(\star)$ 证明 Fenchel- Moreau 定理: 如果 \(f\) 是闭凸函数 (下半连续凸函数), 则 \(\displaystyle f^{**}=f\).
+    \begin{solution}
+        \begin{enumerate}
+        \item[i.] \textbf{首先证明 \( f^{**} \leq f \)}.\\
+        由 Fenchel-Young 不等式，$\forall$ \( x, y \in \mathbb{R} \)，有：
+        \[
+        f(x) + f^*(y) \geq \langle x, y \rangle.
+        \]
+        即
+        \[
+        f(x) \geq \langle x, y \rangle - f^*(y).
+        \]
+        由于这对所有 \( y \) 都成立，因此取上确界得：
+        \[
+        f(x) \geq \sup_{y\in\mathbb{R}} \{ \langle x, y \rangle - f^*(y) \} = f^{**}(x).
+        \]
+        因此，\( f^{**} \leq f \).
+        
+        \item[ii.] \textbf{其次证明 \( f^{**} \geq f \)}.\\
+        由 \( f \) 是闭凸函数知，其可以表示为所有在其下方的仿射函数的上确界：
+        \[
+        f(x) = \sup \{ \langle x, y \rangle - c : \langle \cdot, y \rangle - c \leq f \}.
+        \]
+        其中 \( \langle \cdot, y \rangle - c \leq f \) 表示 $\forall  z $，有 \( \langle z, y \rangle - c \leq f(z) \).\\
+        考虑任意仿射函数 \( \langle \cdot, y \rangle - c \) 满足 \( \langle z, y \rangle - c \leq f(z) \) 对所有 \( z \) 成立.
+        这意味着：
+        \[
+        \forall z\in\mathbb{R},\,c \geq \langle z, y \rangle - f(z).
+        \]
+        因此：
+        \[
+        c \geq \sup_{z\in\mathbb{R}} \{ \langle z, y \rangle - f(z) \} = f^*(y).
+        \]
+        于是：
+        \[
+        \langle x, y \rangle - c \leq \langle x, y \rangle - f^*(y) \leq f^{**}(x).
+        \]
+        由这对所有满足 \( \langle \cdot, y \rangle - c \leq f \) 的仿射函数都成立，取上确界得：
+        \[
+        f(x) = \sup \{ \langle x, y \rangle - c \mid \langle \cdot, y \rangle - c \leq f \} \leq f^{**}(x)
+        \]
+        因此， \( f^{**} = f \).
+        \end{enumerate}
+    \end{solution}
+    
+    \item[4.]举例说明当 \(f\) 不是凸函数时, \(f^{**}\) 是 \(f\) 的凸闭包(处处不大于 \(f\) 的最大的闭凸函数).
+    \begin{solution}
+        考虑函数 \( f(x) = \begin{cases} 0 & |x| \geq 1 \\ 1 & |x| < 1 \end{cases} \).\\
+        接下来，计算 \( f^*(y) = \underset{x\in\mathbb{R}}{\sup} \{ x y - f(x) \} \).\\ 
+        \begin{enumerate}
+        \item[i.] 对于 \( |x| \geq 1 \)，\( f(x) = 0 \)，所以\(\displaystyle f^*(y) = \underset{x\in\mathbb{R}}{\sup} \{ x y - f(x) \}=\underset{x\in\mathbb{R}}{\sup}\{xy-0\}=\underset{x\in\mathbb{R}}{\sup}\{xy\} \).\\
+        \item[ii.] 对于 \( |x| < 1 \)，\( f(x) = 1 \)，所以\(\displaystyle f^*(y) = \underset{x\in\mathbb{R}}{\sup} \{ x y - f(x) \}=\underset{x\in\mathbb{R}}{\sup}\{xy-1\}\).\\
+        \end{enumerate}
+        如果 \( y = 0 \)，则 \(\displaystyle f^*(0) = \underset{x\in\mathbb{R}}{\sup} \{ -f(x) \} = 0 \).\\ 
+        如果 \( y \neq 0 \)，则由 \( x y \) 无界可知\(\displaystyle f^*(y) = +\infty \).\\
+        因此，\(\displaystyle f^*(y) = \begin{cases} 0 & y=0 \\ +\infty & y \neq 0 \end{cases} \).\\
+        现在计算 \(\displaystyle f^{**}(x) = \sup_y \{ x y - f^*(y) \} \).\\ 
+        由于对于 \( y \neq 0 \)，\( f^*(y) = +\infty \)，上确界仅在 \( y=0 \) 处达到：
+        \[
+        f^{**}(x) = x \cdot 0 - f^*(0) = 0.
+        \]
+        故 $\forall x\in\mathbb{R}$, \( f^{**}(x) = 0 \).\\ 
+        这是 \( f \) 的凸闭包，因为它是最大的闭凸函数且处处不大于 \( f \).\\
+        任何满足 \( g \leq f \)的凸函数 \( g \) 都必须满足 \( g \leq 0 \)  (因为 \( f \) 在 \( |x| \geq 1 \) 处为 0)，所以 \( f^{**} = 0 \) 是最大的这样的函数.
+    \end{solution}
+    
+    \item[5.]假设 \(f\) 是严格凸的可微函数,且 \(\displaystyle \lim_{|x| \to +\infty} \frac{f(x)}{|x|} = +\infty\). 
+    证明:对任意 \(\displaystyle y \in \mathbb{R}\) ,上确界 \(\displaystyle \sup_{x} \{(y, x) - f(x)\}\) 在唯一一点 \(x_{y}\) 处达到,且满足 \(\displaystyle y = f'(x_{y})\).
+    \begin{solution}
+        考虑函数 \( g(x) = yx - f(x) \).\\
+        由于 \( f \) 是严格凸的，\( g \) 是严格凹的.\\
+        由 \(\displaystyle \underset{{|x|\to+\infty}}{\lim}\frac{f(x)}{|x|}=+\infty \)，有 \( \lim_{|x|\to+\infty} g(x) = -\infty \) (因为 \( f(x) \) 增长快于 \( y x \)).\\
+        由于 \( g \) 是严格凹的且当 \( |x| \to +\infty \) 时趋于 \( -\infty \)，其存在唯一最大值点 \( x_y \).\\  
+        在 \( x_y \) 处，由于 \( g \) 可微，有 \( g'(x_y) = 0 \)，即 \( y - f'(x_y) = 0 \)，所以 \( y = f'(x_y) \).
+    \end{solution}
+    
+    \item[6.]在上一问条件下,证明梯度映射的对偶性: \(\displaystyle(f^{*})^{\prime} = 1 / f^{\prime}\) ,即 \(\displaystyle(f^{*})^{\prime}(y)\) 是使得 \(\displaystyle f^{\prime}(x) = y\) 的唯一解 \(x\).
+    \begin{solution}
+        由上一问，$\forall$ \( y\in\mathbb{R} \)，$\exists \,!$ \( x_y \) 使得 \( f'(x_y) = y \) 且 \( f^*(y) = y x_y - f(x_y) \).\\
+        对 \( f^*(y) \) 求导有：
+        \[
+        (f^*)'(y) = \frac{\mathrm{d}}{\mathrm{d}y} [ y x_y - f(x_y) ] = x_y + y \frac{\mathrm{d} x_y}{\mathrm{d}y} - f'(x_y) \frac{\mathrm{d} x_y}{\mathrm{d}y}.
+        \]
+        由于 \(\displaystyle f'(x_y) = y \)，后两项抵消得到：
+        \[
+        (f^*)'(y) = x_y.
+        \]
+        因此，\(\displaystyle (f^*)'(y) = x_y \)，即 \(\displaystyle (f^*)'(y) \) 是 \( f'(x) = y \) 的唯一解，所以 \( (f^*)' = (f')^{-1} \).
+    \end{solution}
+    
+    \item[7.]\((\star)\) 进一步地,在第5问假设下,用 \(f(x)\) 的各阶导数的信息,写出 \(\displaystyle(f^{*})^{\prime \prime}\) 的表达式.
+    \begin{solution}
+        由上一问，\( (f^*)'(y) = x_y \)，其中 \( x_y \) 由 \( f'(x_y) = y \) 定义.\\
+        对两边求导：
+        \[
+        (f^*)''(y) = \frac{\mathrm{d} x_y}{\mathrm{d}y}.
+        \]
+        由 \( f'(x_y) = y \)，对 \( y \) 求导：
+        \[
+        f''(x_y) \frac{\mathrm{d} x_y}{\mathrm{d}y} = 1 \quad \Rightarrow \quad \frac{\mathrm{d} x_y}{\mathrm{d}y} = \frac{1}{f''(x_y)}.
+        \]
+        因此：
+        \[
+        (f^*)''(y) = \frac{1}{f''(x_y)} = \frac{1}{f''((f^*)'(y))}=\frac{1}{f''(x_y)}.
+        \]
+    \end{solution}
+\end{enumerate}

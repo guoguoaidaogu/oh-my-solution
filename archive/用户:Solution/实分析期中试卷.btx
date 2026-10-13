@@ -1,0 +1,10 @@
+\begin{center}2022—2023春期中\end{center}
+一、设$E$为$\mathbb{R}$中的有界闭集,$f:E\to \mathbb{R}$是连续函数,满足:$\forall x\in\mathbb{R},f^{-1}(x)$至多包含两个元素.记$B_n=\{x\in\mathbb{R}\mid |f^{-1}(x)|=n\}(n=0,1,2)$.证明:$\forall n\in \{0,1,2\},B_n$为Borel集.\\
+二、(i)叙述Egoroff定理.\\
+(ii)给定有限测度空间$(X,\mathcal{X},\mu)$,设$f_n:X\to\mathbb{R}$为可测函数,满足:$\limsup\limits_{n\to\infty} f_n\le 0$.证明:$\forall \varepsilon >0,\exists E\in\mathcal{X}$和$N\in\mathbb{N}^*,$使得$\mu(X\backslash E)<\varepsilon$且
+$\forall x\in E, n\ge N,f_n(x)<\varepsilon.$\\
+三、测度空间$(X,\mathcal{X},\mu)$满足:$\forall E\in \mathcal{X},$要么$\mu(E)=0$要么$\mu(X\backslash E)=0.$设$f:X\to\mathbb{R}$为可测函数,证明:$\exists\: c\in\mathbb{R},f(x)=c \quad a.e.$\\
+四、求
+$$ \lim_{n\to\infty} \int_0^n \frac{x^\frac{1}{n} \sin \pi x}{1+x^{2n}} \mathrm{d} x$$.\\
+五、(i)叙述Carathédory条件.\\
+(ii)设$U_i(i=1,2,\ldots,n)$是一列互不相交的开集,$A_i \subset U_i$,是否有$\mu^*(\bigcup\limits_{i=1}^n A_i)=\sum\limits_{i=1}^n \mu^*(A_i)成立?$若是,请证明;若否,请举出反例.

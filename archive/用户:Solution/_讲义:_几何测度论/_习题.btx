@@ -1,0 +1,149 @@
+\setdisplaytitle{几何测度论/2025年春季习题}
+\sethtmltitle{几何测度论/2025年春季习题}
+
+\section{Dimensions}
+
+\begin{enumerate}
+    \item Let $\mathcal{A}\subset2^{X}$ and $\mu:\mathcal{A}\rightarrow[0,\infty]$ be such that $\emptyset\in\mathcal{A},$ $X\in\mathcal{A}$ and $\mu(\emptyset)=0$. For any set $A\subset X,$ define
+    $$\mu^{*}(A)=\inf\left\{\sum_{j=1}^{\infty}\mu(E_{j}):E_{j}\in\mathcal{A}\text{ and }A\subset\bigcup_{j=1}^{\infty}E_{j}\right\}.$$
+    Show that $\mu^{*}$ is an outer measure.
+    \item Show that if $\mu$ is a measure, $A\subset B,$ $B$ is $\mu$-measurable and $\mu(A)=\mu(B)<\infty$, then $\mu(A\cap C)=\mu(B\cap C)$ for all $\mu$-measurable sets $C$.
+    \item A nonempty collection of subsets $P\subseteq2^{X}$ is a $\pi$-system provided $A,B\in P$ implies
+    $$A\cap B\in P.$$
+    A collection of subsets $\mathcal{L}\subseteq2^{X}$ is a $\lambda$-system provided
+    \begin{enumerate}
+        \item[(i)] $X\in\mathcal{L};$
+        \item[(ii)] $A,B\in\mathcal{L}$ and $B\subseteq A$ implies $A\backslash B\in\mathcal{L}$
+        \item[(iii)] if $A_{k}\in\mathcal{L}$ and $A_{k}\subseteq A_{k+1}$ for $k=1,\dots,$ then
+        $$\bigcup_{k=1}^{\infty}A_{k}\in\mathcal{L}.$$
+    \end{enumerate}
+    Prove the following results:
+    \begin{enumerate}
+    \item[(i)] If $P$ is a $\pi$-system and $\mathcal{L}$ is a $\lambda$-system with $P\subseteq\mathcal{L}$, then
+    $$\sigma(P)\subseteq\mathcal{L}.$$
+    \item[(ii)] Let $\mu$ and $\nu$ be two finite Borel measures on $\mathbb{R}^{n}$ such that
+    $$\mu(R)=\nu(R)$$
+    for all closed ``rectangles''
+    $$R:=\{x\in\mathbb{R}^{n}|-\infty\le a_{i}\le x_{i}\le b_{i}\le\infty(i=1,\dots,n)\}$$
+    Then
+    $$\mu(B)=\nu(B)$$
+    for all Borel sets $B\subseteq\mathbb{R}^{n}$.
+\end{enumerate}
+\end{enumerate}
+
+\section{Orthogonal Projections}
+
+
+\begin{enumerate}
+    \item[1.] Let $X$ be a locally compact Hausdorff space,
+    $K$ a compact subset of $X$, and $\{U_i\}_{i=1}^n$
+    an open covering of $K$. Show that there is a partition
+    of unity on $K$ subordinate to $\{U_i\}_{i=1}^n$ consisting
+    of compactly supported functions.
+    \item[2.] Let $\mu$ be an $\alpha$-Frostman measure
+    on $\mathbb{R}^n$ with $\alpha>n-1$, and
+    $B(0,R):=\left\{ x\in \mathbb{R}^n: \left| x \right|\le R \right\}.$
+    Show that
+    $$
+        \mu (\partial B(0,R))=0.
+    $$
+    \item[3.] Suppose $\mu$ is an $\alpha$-Frostman measure. Let
+    $\psi\in \mathcal{C}_c^\infty (\mathbb{R}^n)$ satisfy
+    $\psi\ge 0$ and $\int \psi =1$. Show that $\mu_\varepsilon :=\psi_\varepsilon * \mu$
+    are $\alpha$-Frostman measures (uniformly in $\varepsilon$).
+    \item[4.] Suppose that $\mu$ is an $\alpha$-Frostman measure on $E$.
+    Show that there exist two compact subsets $K_1$ and $K_2$
+    with $\operatorname{dist}(K_1,K_2)>0$ such that
+    $\mu|_{K_1}$ and $\mu|_{K_2}$ are $\alpha$-Frostman measures.
+    \item[5.] Let $\mu$ and $\nu$ be finite Radon measures on $\mathbb{R}^n$.
+    Show that $\mu*\nu$ is a Radon measure.
+\end{enumerate}
+
+\section{Differentiation of measures}
+
+\begin{enumerate}
+    \item Let $\varepsilon > 0$ and $N \in \mathbb{N}$. Show that there exist disjoint balls 
+    $\{B_j\}$ in $\mathbb{R}$ such that 
+    \[
+        \sum_j \chi_{(1+\varepsilon)B_j} \ge N
+    \]
+    on a set of positive Lebesgue measure.
+
+    \item Let $\mu$ and $\lambda$ be Radon measures on $\mathbb{R}^n$. Show that 
+    $D(\mu,\lambda,x)$ is a Borel function.
+
+    \item Let $\mu$ and $\lambda$ be Radon measures on $\mathbb{R}^n$. Suppose that 
+    $\mu \ll \lambda$. Show that 
+    \[
+        \int D(\mu,\lambda,x)^2 \, d\lambda x
+        =
+        \int D(\mu,\lambda,x) \, d\mu x.
+    \]
+
+    \item Let $\mu$ and $\lambda$ be Radon measures on $\mathbb{R}^n$.  
+    Find $\mu$ and $\lambda$ such that 
+    \[
+        \int_B D(\mu,\lambda,x) \, d\lambda x < \mu(B)
+    \]
+    for some Borel set $B$.
+
+\end{enumerate}
+
+\section{Fourier Transforms}
+\begin{enumerate}[label=\arabic*.]
+    \item \textbf{(du Bois Reymond lemma)} Suppose that $f \in L^1_{loc}(\mathbb{R}^n)$ and
+    \begin{equation}
+        \int f \varphi = 0 \quad \forall \varphi \in C^\infty_c(\mathbb{R}^n).
+    \end{equation}
+    Then $f = 0$ a.e. In particular, if $f$ is further assumed to be continuous, then $f = 0$.
+
+    \item Let $f(x) = e^{-\pi|x|^2}$ with $x \in \mathbb{R}^n$. Show that $\widehat{f}(\xi) = f(\xi)$.
+
+    \item Let $\mu \in M(\mathbb{R}^n)$. If there exists a constant $C$ such that, for some $s > 0$, we have
+    \[
+        \mu(B(x,r)) \ge C r^s \quad \forall x \in \operatorname{supp} \mu, \quad 0 < r < 1.
+    \]
+    Show that, for $R > 1$,
+    \[
+        \int_{B(0,R)} |\widehat{\mu}(\xi)|^2 d\xi \ge C R^{n-s}.
+    \]
+
+    \item \textbf{[Steinhaus’s Theorem]} Let $E$ be a measurable subset of $\mathbb{R}$ such that its Lebesgue measure is positive. Then
+    \[
+        \Delta'(E) := \{x-y : x,y \in E\}
+    \]
+    contains an open interval containing 0.
+
+    \item Suppose $\mu, \mu_\varepsilon, \varepsilon > 0$ are Radon measures on $\mathbb{R}^n$, and $\mu_\varepsilon \rightharpoonup \mu$. Show the following results.
+    \begin{enumerate}[label=(\roman*)]
+        \item Let $K$ be a compact subset of $\mathbb{R}^n$. Then $\sup_{\varepsilon>0} \mu_\varepsilon(K) < \infty$.
+        \item $\mu_\varepsilon \times \mu_\varepsilon \rightharpoonup \mu \times \mu$.
+    \end{enumerate}
+
+    \item Let $\mathcal{H}_k$ be the Hankel transform
+    \[
+        \mathcal{H}_k(F)(t)= \int_0^\infty J_k(tr)f(r)r\,\mathrm{d}r.
+    \]
+    Show that
+    \[
+        \mathcal{H}_k\mathcal{H}_k f=f.
+    \]
+\end{enumerate}
+
+\section{Self-similar sets}
+\begin{enumerate}
+    \item Let $0 < \varepsilon < \delta$. Show that $\overline{A^{(\varepsilon)}} \subset A^{(\delta)}$, where $A^{(\varepsilon)} := \{x \in X : d(x,A) < \varepsilon\}$.
+
+    \item Let $\{\ell_j\}$ be a sequence of lines in $\mathbb{R}^2$ such that
+    \begin{itemize}
+        \item[(i)] $\ell_j \cap B(0, 1) \neq \emptyset$ for any $j$,
+        \item[and (ii)] $\ell'_j := \ell_j \cap B(0,2)$ is convergent under the Hausdorff metric.
+    \end{itemize}
+    Show that the limit of $\ell'_j$ is of the form $\ell \cap B(0,2)$ for some line $\ell$.
+
+    \item Let $\Lambda$ be a finite set. For $i, j \in \Lambda^{\mathbb{N}}$, we define $d(i, j) = 2^{-N}$, where $N$ is the largest number such that
+    \[
+    i_1 \cdots i_N = j_1 \cdots j_N.
+    \]
+    Let $\tau_d$ be the topology on $\Lambda^{\mathbb{N}}$ induced by $d$, and $\tau$ the standard product topology on $\Lambda^{\mathbb{N}}$. Show that $\tau = \tau_d$.
+\end{enumerate}

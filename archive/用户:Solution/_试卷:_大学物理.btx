@@ -1,0 +1,183 @@
+\setdisplaytitle{试卷：大学物理}
+\sethtmltitle{试卷：大学物理}
+\def\cm{\text{cm}}
+\def\Wbmt{\text{Wb/m}^2}
+\def\kg{\text{kg}}
+\def\col{\text{C}}
+\def\Mev{\text{MeV}}
+
+==2025--2026学年第二学期大学物理B（上）期末试卷==
+
+\begin{itemize}
+    \item[一、]用开普勒第一、第二定律和机械能守恒、角动量守恒证明开普勒
+    第三定律。
+
+    \item[二、]如图，光滑水平面上有一根质量为$m$的均匀细杆，
+    现有一质量为$m$的质点，以速度$v_0$垂直撞击杆的右端位置
+    ，碰撞为完全弹性碰撞。求碰撞后质点的速度。
+\begin{tikzpicture}[line cap=round,line join=round,scale=1]
+\draw[line width=1pt]
+  (-3,2.2) rectangle (3,2.55);
+\coordinate (O) at (3,0);
+\draw[line width=1pt] (O) circle (0.38);
+\fill (O) circle (1.2pt);
+\draw[->,line width=1pt] (3.75,-0.2) -- (3.75,1.25);
+\end{tikzpicture}
+
+\item[三、]
+一根均匀细杆 $AB$，
+左端 $A$ 置于光滑水平地面上，右端 $B$ 靠在光滑竖直墙壁上。
+初始时杆与地面的夹角为 $60^\circ$，且杆由静止释放。
+设运动过程中地面和墙壁均无摩擦。
+求杆的右端 $B$ 脱离墙壁时，杆与地面的夹角。
+
+\begin{tikzpicture}[line cap=round,line join=round,scale=1.1]
+\coordinate (A) at (-3,0);
+\coordinate (B) at (0,5.196);
+\coordinate (O) at (0,0);
+\draw[line width=1pt] (-3.8,0)--(0.7,0);
+\draw[line width=1pt] (0,-0.3)--(0,5.8);
+\foreach \x in {-3.6,-3.2,...,0.4}{\draw[line width=0.35pt] (\x,0)--++(-0.16,-0.16);}
+\foreach \y in {0.2,0.6,...,5.6}{\draw[line width=0.35pt] (0,\y)--++(0.16,0.16);}
+\draw[line width=2.6pt] (A)--(B);
+\fill (A) circle (1.8pt);
+\fill (B) circle (1.8pt);
+\pic[draw,line width=0.8pt,angle radius=0.7cm,"$60^\circ$"{xshift=0.45cm,yshift=0.08cm}] {angle=O--A--B};
+\node[above left] at (A) {$A$};
+\node[right] at (B) {$B$};
+\end{tikzpicture}
+
+\item[四、]一艘潜艇在海水中向左做匀速直线运动，其左侧有一固定峭壁。潜艇向左发射频率为 $\nu_1$ 的声波，声波经峭壁反射后被潜艇接收，接收到的频率为 $\nu_2$。已知声波在海水中的传播速度为 $v$，求潜艇的运动速度。
+
+\item[五、]描述粘性在液体和气体中的物理性质以及其随温度变化的
+关系。
+
+    \item[六、] 已知两个恒温热源的温度分别为
+\[
+T_1=27^\circ\mathrm{C},\qquad T_2=18^\circ\mathrm{C},
+\]
+其中 $T_1$ 为较高温热源，$T_2$ 为较低温热源。两热源之间有一台制冷机。在一次循环过程中，制冷机从较低温热源吸收热量
+\[
+Q=1000\,\mathrm{J}.
+\]
+\begin{itemize}
+    \item[(1)] 若该循环为可逆循环，求制冷系数以及外界对制冷机工作物质所做的功。
+    \item[(2)] 若该循环过程中总熵增加为 $1\,\mathrm{J/K}$，求制冷系数以及外界对制冷机工作物质所做的功。
+\end{itemize}
+
+    \item[七、]画出卡诺循环的 $T-S$ 图，并说明循环中各过程的吸热、放热关系。
+
+    \item[八、]写出三维情形气体的Maxwell-Boltzmann分布。
+    \begin{itemize}
+        \item[(1)]求均方速率。
+        \item[(2)]求平均速率。
+        \item[(3)]求最大概然速率。
+    \end{itemize}
+\end{itemize}
+
+==2024--2025学年第二学期大学物理B（下）期中试卷==
+
+\textbf{一、\ 选择题：（6题，每题3分，共18分）}
+\begin{itemize}
+    \item[1、]一张气泡室照片表明，质子的运动轨迹是一半径为$10\,\cm$的圆弧，
+    运动轨迹平面与磁感应强度大小为$0.3\,\Wbmt$的磁场垂直。该质子动能为（$\qquad$）\\
+    备注：已知质子的质量$m = 1.67 \times 10^{-27}\,\kg$, 电量$e = 1.6 \times 10^{-19}\,\col$. 
+    \begin{center}
+    (A) $0.043\,\Mev$.\quad (B) $0.43\,\Mev$.\quad (C) $4.3\,\Mev$.\quad (D) $43\,\Mev$.
+    \end{center}
+    \item[2、]质量为$m$、\,电量为$q$的粒子，以速率$v$与均匀磁场$B$成$\theta$角射入磁场，轨迹为一螺旋线，若要增大螺距，则应（$\qquad$）
+    \begin{center}
+    (A) 增大带电量$q$.\quad (B) 减小磁感应强度$B$.\quad (C) 增大$\theta$角.\quad (D) 减小速率$v$.
+    \end{center}
+    \begin{center}
+        {{image|1.png|300px}}
+    \end{center}
+    \item[3、]有一由$N$匝细导线绕成的平面正三角形线圈，边长为$a$，通有电流$I$，置于均匀外磁场$B$中，
+    当线圈平面的法向与外磁场同向时，该线圈所受的磁力矩$\boldsymbol{M}_{\!m}$值为（$\qquad$）
+    \begin{center}
+    (A) $\sqrt{3}Na^2IB/2$.\quad (B) $\sqrt{3}Na^2IB/4$.\quad (C) $\sqrt{3}Na^2IB\sin60^{\circ}$.\quad (D) $0$.
+    \end{center}
+    \item[4、]充电后的平行板电容器，$A$板带正电，$B$板带负电，开关$K$合上时，
+    $A$、$B$位移电流方向为【按图上所标$x$，$y$轴正方向回答】（$\qquad$）
+    \begin{center}
+    (A) $x$轴正方向.\quad (B) $x$轴负方向.\quad (C) $y$轴正方向.\quad (D) $y$轴负方向.
+    \end{center}
+    \begin{center}
+        {{image|2.png|300px}}
+    \end{center}
+    \item[5、]圆形线圈在均匀磁场中做下列运动时，会产生感应电流的是（$\qquad$）
+    \begin{center}
+    (A) 沿垂直磁场方向平移.\quad (B) 以直径为轴转动，轴跟磁场垂直.\\
+    (C) 沿平行磁场方向平移.\quad (D) 以直径为轴转动，轴跟磁场平行.
+    \end{center}
+    \item[6、]物体作简谐振动，振动方程为$x = A \cos(\omega t-\pi/3)$。
+    在$t = T/3$（$T$为周期）时刻，物体的加速度为（$\qquad$）
+    \begin{center}
+    (A) $\dfrac{1}{2}A\omega^2$.\quad (B) $-\dfrac{1}{2}A\omega^2$.\quad (C) $\dfrac{1}{2}A$.\quad (D) $-\dfrac{1}{2}A$.
+    \end{center}
+\end{itemize}
+\textbf{二、\ 填空题：（6题，共24分）}
+\begin{itemize}
+    \item[1、]边长为$a$的正方形导线回路载有电流为$I$，则其中心处的磁感应强度为$\underline{\qquad\quad}$；
+    直径为$a$的圆形导线回路载有电流为$I$，则其中心处的磁感应强度为$\underline{\qquad\quad}$。（3分${\!}^*$2) [备注：真空磁导率为$\mu_0$]
+    \item[2、]电荷$q$在静电场$E$中沿闭合曲线移动一周（半径为$R$），电场力做功为$\underline{\qquad\quad}$，
+    电荷$q$在磁场$B$中沿着相同闭合曲线移动一周，磁场力做功为$\underline{\qquad\quad}$。（2分${\!}^*$2)
+    \item[3、]产生动生电动势的非静电场力本质上是$\underline{\qquad\quad}$（某种力），
+    产生感生电动势的非静电场力本质上来自于$\underline{\qquad\quad}$（某种场），
+    激发感生电场的场源是$\underline{\qquad\quad}$（某种场）。（1分${\!}^*$3)
+    \item[4、]面积为$S$的平面线圈置于磁感应强度为$B$的均匀磁场中。
+    若线圈以匀角速度$\omega$绕位于线圈平面内且垂直于$B$方向的固定轴旋转，在$t = 0$时$B$与线圈平面垂直。
+    则任意时刻$t$时通过线圈的磁通量为$\underline{\qquad\quad}$，线圈中的感应电动势为$\underline{\qquad\quad}$。
+    若均匀磁场$B$是由通有电流$I$的线圈所产生，且$B = k \cdot I$（$k$为常量），
+    则旋转线圈相对于产生磁场的线圈最大互感系数为$\underline{\qquad\quad}$。（2分${\!}^*$3)
+    \item[5、]如图RLC振荡电路中，$L$为可变电感，电路提供的电源电动势为$\varepsilon(t) = \varepsilon_0 \cos(\omega t)$，
+    在调节$L$的过程中，电路系统中电流模值最大为$\underline{\qquad\quad}$，此时可变电感$L$满足$\underline{\qquad\quad}$条件。（2分)
+    \begin{center}
+        {{image|3.png|300px}}
+    \end{center}
+    \item[6、]两个同方向，不同频率的振动相互叠加，其振动强度分别为$A_1$和$A_2$，频率分别为$\omega_1$和$\omega_2$，$\omega_1$略大于$\omega_2$，其振动为强度在$\underline{\qquad\quad}$和$\underline{\qquad\quad}$变化的$\underline{\qquad\quad}$。（3分）
+\end{itemize}
+\textbf{三、\ 简答题：（4题，每题6分，共24分）}
+\begin{itemize}
+    \item[1、]简述磁性材料顺磁性和抗磁性的来源。
+    \item[2、]对于磁场中运动金属棒$ab$两端产生的动生电动势，简述其中的能量过程以及洛伦兹力在整个过程中起到的作用。
+    \begin{center}
+        {{image|4.png|300px}}
+    \end{center}
+    \item[3、]请简述稳恒情况下安培定理在非稳恒情况下直接扩展遇到的困难，以及Maxwell对于非稳恒情况下的安培环路定理的具体解决方案。
+    \begin{center}
+        {{image|5.png|300px}}
+    \end{center}
+    \item[4、]从能量角度简述简谐振动行为的普遍性。
+\end{itemize}
+\textbf{四、\ 解答题：（3题，共34分）}
+\begin{itemize}
+    \item[1、]（10分）在半径为$R$的无限长半圆柱形金属薄片中，自上而下地有电流$I$通过，电流分布均匀，如图所示。试求圆柱轴线任一点$P$处的磁感应强度。
+    \begin{center}
+        {{image|6.png|300px}}
+    \end{center}
+    \item[2、]（12分）设有两个带正电的点电荷$q_1$和$q_2$，分别以速率$v_1$和$v_2$运动（不考虑相对论效应）。
+    在某一时刻，$q_1$运动到原点$O$，$q_2$运动到$x$轴上$O$点右侧距离$a$处。试求如下情况时，每个点电荷所受到的洛伦兹力的大小和方向：\\
+    A、\ $v_1$和$v_2$均垂直于$x$轴，且二者之间夹角为$\theta$（$\theta<\pi/2$），如下图(a)；
+    \begin{center}
+        {{image|7.png|300px}}
+    \end{center}
+    B、\ $v_1$和$v_2$平行，且均与$x$轴夹角为$\theta$，如下图(b)；
+    \begin{center}
+        {{image|8.png|300px}}
+    \end{center}
+    C、\ $v_1$和$v_2$在同一平面内，与$x$轴夹角分别为$\theta_1$和$\pi - \theta_2$，如下图(c)。
+    \begin{center}
+        {{image|9.png|300px}}
+    \end{center}
+    \item[3、]（12分）如图所示，导体棒$MN$的质量为$m$，置于两条水平光滑金属导轨上，两导轨间距离为$l$，导轨间分布有均匀磁感应强度$B$，其方向垂直纸面向下。
+    导轨左端足够远处接有电阻$R$，除此之外回路中所有电阻均忽略，且不考虑回路自感。
+    导体棒通过弹性系数为$k$的弹簧与一固定点$A$连接，设导体棒的运动总是处在磁场中，且在$A$的右侧。
+    以弹簧原长时导体棒的位置为坐标原点$O$，向右为$x$轴正方向。\\
+    A、\ 试用导体棒沿导轨的瞬时速度$\mathrm{d}x/\mathrm{d}t$写出其所受的安培力$F_I$。\\
+    B、\ 导体棒仅受弹簧弹力和安培力，根据牛顿第二定律写出导体棒沿$x$轴的运动方程，并证明导体棒偏离平衡位置时会产生阻尼振动。利用题干中给出的已知量写出其本征频率$\omega_0$和阻尼系数$\delta$。\\
+    C、\ 试用导体棒的瞬时速度$\mathrm{d}x/\mathrm{d}t$写出安培力的功率$P_I$，动生电动势对电流做功的功率$P_k$和电阻$R$上消耗的电功率$P_R$，并说明导体棒做阻尼振动时不断减少的机械能是通过什么形式消耗了。
+    \begin{center}
+        {{image|10.png|300px}}
+    \end{center}
+\end{itemize}

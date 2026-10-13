@@ -1,0 +1,237 @@
+\theoremstyle{plain}\newtheorem*{1}{习题1}
+\theoremstyle{plain}\newtheorem*{2}{习题2}
+\theoremstyle{plain}\newtheorem*{3}{习题3}
+\theoremstyle{plain}\newtheorem*{4}{习题4}
+\theoremstyle{plain}\newtheorem*{5}{习题5}
+\theoremstyle{plain}\newtheorem*{6}{习题6}
+\theoremstyle{plain}\newtheorem*{7}{习题7}
+\theoremstyle{plain}\newtheorem*{8}{习题8}
+\theoremstyle{plain}\newtheorem*{9}{习题9}
+\theoremstyle{plain}\newtheorem*{10}{习题10}
+\def\E{\mathbb{E}}
+\def\R{\mathbb{R}}
+\def\N{\mathbb{N}}
+\def\B{\mathcal{B}}
+\def\M{\mathcal{M}}
+\def\prob{\mathbb{P}}
+\def\t{\underline{t}}
+\def\c{\underline{c}}
+\newtheorem{prop}{性质}
+
+\section{随机矩阵的定义及基本性质}
+
+设 \(\mathbb{K} = \mathbb{R}\) 或 \(\mathbb{C}\)。
+
+\( (\text{Mat}_n(K), \|\cdot\|_{\text{op}})\)：取$\mathbb{K}$值的的 \(n\) 维矩阵空间。
+\begin{equation*}
+\forall X \in \text{Mat}_n(\mathbb{K}), \quad \|X\|_{\text{op}} = \sup \{ \|Xv\|, v \in \mathbb{K}^n, \|v\|=1 \}.
+\end{equation*}
+这里\(\|\cdot\|\)：\(\mathbb{K}^n\) 上的范数，\(\|\cdot\|_{\text{op}}\)：算子范数。
+\begin{equation*}
+X_m \rightarrow X, \, m \rightarrow \infty,\text{即} \quad X_m(i,j) \rightarrow X(i,j), \, m \rightarrow \infty
+\end{equation*}
+\(X^*\) 为$X$的伴随(adjoint)（当 \(\mathbb{K} = \mathbb{R}\) 时，\(X^* = X^T\)；当 \(\mathbb{K} = \mathbb{C}\) 时，\(X^* = (\bar{X})^T\)）。
+
+若 \(X = X^*\)，则称 \(X\) 为自伴的(self adjoint)。
+
+\(\text{SMat}_n(\mathbb{K})\)：\(\text{Mat}_n(\mathbb{K})\) 中自伴矩阵全体，是$Mat_n(\mathbb{K})$中的闭子集。
+
+
+定义迹运算：$\forall X \in \text{Mat}_n(\mathbb{K}), \quad Tr( X) = \sum\limits_{t=1}^n X(t,t)$.
+
+\begin{lemma}
+    迹运算在是\((\text{Mat}_n(\mathbb{K}), \|\cdot\|_{\text{op}})\) 中的连续线性泛函，且满足以下性质：
+
+\begin{equation*}
+\forall X, S \in \text{Mat}_n(\mathbb{K}), \quad S \text{ 可逆}, \quad Tr(X) = Tr(SXS^{-1})
+\end{equation*}
+\end{lemma}
+\begin{lemma}
+     \(\forall X \in \text{SMat}_n(\mathbb{K})\)，存在可逆矩阵 \(S\)，使得
+\[X = S \ diag(\lambda_1^*, \ldots, \lambda_n^*)  S^{-1}, \quad\text{其中} \lambda_1^* \leq \cdots \leq \lambda_n^*.\]
+
+\end{lemma}
+
+\begin{theorem}
+     \(\forall n \in \mathbb{N}\)，\(X, Y \in \text{SMat}_n(\mathbb{K})\)，有
+\begin{equation*}
+\sum_{i=1}^n (\lambda_i^X - \lambda_i^Y)^2 \leq Tr[(X-Y)^*(X-Y)] = Tr[(X-Y)^2]
+\end{equation*}
+\end{theorem}
+
+\begin{corollary}
+    \(n \in \mathbb{N}\)，\(l \in \{1, \ldots, n\}\)，映射
+
+\begin{equation*}
+\begin{aligned}
+    {Eig}_l : \text{SMat}_n(\mathbb{K}) &\to \mathbb{R}\\
+    X &\mapsto \lambda_X^l
+\end{aligned}
+\end{equation*}
+
+是连续的。
+\end{corollary}
+
+\begin{proof}
+    设 \((X_m)\) 和 \(X\) 是 \(\text{SMat}_n(\mathbb{K})\) 中的元素，且$X_m \xrightarrow{m \to \infty} X$,则
+\begin{equation*}
+|\lambda_l^{X_m} - \lambda_l^X |^2 \leq \sum_{l=1}^n |\lambda_l^{X_m} - \lambda_l^X|^2 \leq Tr(X_m - X)^2 \xrightarrow{m \to \infty} 0
+\end{equation*}
+\end{proof}
+\begin{definition}
+     \( (\Omega,\mathcal{A},\mathbb{P}) \) 是概率空间，\( n \in \mathbb{N} \)。则一个 \(n\) 阶自伴随机矩阵是一个可测映射
+\begin{equation*}
+X : (\Omega, \mathcal{A}) \to (\text{SMat}_n (\mathbb{K}), \mathcal{B}_S^{(n^2)})
+\end{equation*}
+这里 \(\mathcal{B}_S^{(n^2)}\) 表示 \(\text{SMat}_n(\mathbb{K})\) 上的 Borel \(\sigma\)-代数。
+\end{definition}
+
+\begin{remark}
+    映射可测 \(\Leftrightarrow\) 每个 \(X(i,j): (\Omega, \mathcal{A}) \to (\mathbb{K}, \mathcal{B})\) 可测。
+
+    今后提及“随机矩阵”不加强调时一般均表示自伴随机矩阵。
+\end{remark}
+若 \(X \)是\( (\Omega,\mathcal{A},\mathbb{P})\) 上的随机矩阵，则 \(\forall \omega \in \Omega\)，\(X(\omega) \in \text{SMat}_n(K)\)，且有特征值
+\(\lambda_1^{X(\omega)} \leq \ldots \leq \lambda_n^{X(\omega)}\).
+\begin{lemma}
+     \(X \)是\( (\Omega,\mathcal{A},\mathbb{P})\) 上的$n$阶随机矩阵，则映射
+\begin{equation*}
+\begin{aligned}
+    \lambda_i^X : (\Omega, \mathcal{A}) &\to (\mathbb{R}, \mathcal{B})\\
+    \omega &\mapsto \lambda_i^{X(\omega)}
+\end{aligned}
+\end{equation*}
+是可测的，即 \(\lambda_l^X\) 是实值随机变量。
+\end{lemma}
+\begin{proof}
+    
+\(Eig_l: \text{SMat}_n(\mathbb{K}) \to \mathbb{R}\)，\(X \mapsto \lambda_l^X\) 连续，而
+\(X : \Omega \to \text{SMat}_n(\mathbb{K}) \)可测.故二者复合$\lambda_l^X = \text{Eig}_l \circ X $可测.
+
+\end{proof}
+
+\section{特征值的经验分布(empirical distribution)}
+\begin{definition}
+   X 是 \((\Omega, \mathcal{A}, \mathbb{P})\) 上的 n 阶随机矩阵，则 X 的经验谱分布(ESD)是 \((\mathbb{R}, \B)\) 上的随机概率测度：
+
+\begin{equation*}
+\begin{aligned}
+    \sigma_n : \Omega \times \B &\to [0, 1]\\
+    (\omega, B) &\mapsto\sigma_n (\omega, B) = \frac{1}{n} \sum_{i=1}^n \delta_{\lambda_i^{X(\omega)}} (B)
+\end{aligned}
+\end{equation*}
+\(\sigma_n(I)\)表示$n$ 个特征值落在区间 $I$ 中的比例。 
+\end{definition}
+
+\subsection{Wigner半圆律}
+\begin{definition}{(Wigner semicircle law)}
+
+    半圆分布 \(\sigma\) 是 \((\mathbb{R}, \B)\) 中的概率测度且
+
+\begin{equation*}
+d\sigma(x) = \frac{1}{2\pi} \sqrt{4-x^2} \, dx, \quad x \in [-2, 2]
+\end{equation*}
+\end{definition}
+\begin{definition}
+    设 \(\sigma_n\) 是随机矩阵 \((X_n)_n\) 的 ESD，若
+    \begin{equation*}
+        \begin{aligned}
+            \sigma_n &\to \sigma \quad \text{weakly in expectation;}\\
+            \sigma_n &\to \sigma \quad \text{weakly in prob;}\\
+            \sigma_n &\to \sigma \quad \text{weakly a.s,}
+        \end{aligned}
+    \end{equation*}
+    则称半圆律对$\sigma_n$依期望/概率/a.s成立。
+\end{definition}
+\begin{definition}{(Wigner 矩阵)}
+
+\(W_n = \left( \frac{1}{\sqrt{n}} X_n(i,j) \right)_{i,j=1}^n\),若 \(X_n(i,j)\) 满足
+
+(1) 具有一致有界的绝对矩：
+\begin{equation*}
+\forall q \in \N, \exists L_q < \infty, \text{ s.t. } \E(|X_n(i,j)|^q) < L_q.
+\end{equation*}
+
+(2) 随机变量是标准化的：\(\E(X_n(i,j)) = 0\), \(Var(X_n(i,j)) = 1\).
+
+(3) \(X_n^T = X_n\)
+
+(4) 独立性：随机变量 \(X_n(i,j)\) (\(i \leq j\)) 都是独立的。
+
+则 \(W_n\) 称为 Wigner 矩阵。
+    
+\end{definition}
+\begin{theorem}
+    半圆律对 Wigner 矩阵 a.s. 成立。
+\end{theorem}
+
+\subsection{Marchenko-Pastur律}
+
+设\(\vec{x}_i\)为p 维列向量($p$为特征的个数)，\(i=1,\ldots,n\).
+
+我们的数据矩阵为：
+
+\begin{equation*}
+X_n = \left( \vec{x}_1, \cdots, \vec{x}_n \right)_{p \times n}
+\end{equation*}
+记 \(\vec{{x}} = \frac{1}{n} \sum\limits_{i=1}^n \vec{x}_i.\)样本协方差矩阵为：
+\begin{equation*}
+\begin{aligned}
+    \tilde{s}_n &:= \frac{1}{n-1} \sum_{k=1}^n (\vec{x}_k - \vec{{x}}) (\vec{x}_k - \vec{{x}})^\top\\
+    &= \frac{n}{n-1} \left( \frac{1}{n} \sum_{k=1}^n \vec{x}_k \vec{x}_k^T - \vec{{x}} \vec{{x}}^T \right)
+\end{aligned}
+\end{equation*}
+
+
+假定样本取自 \(\R^p\) 值随机向量 \(X\)，则 \(\tilde{s}_n\) 是协方差矩阵
+
+\begin{equation*}
+\E \left( (X-\E X)(X-\E X)^T \right) =
+\begin{pmatrix}
+Var(X^{(1)}) & \cdots & Cov(X^{(1)}, X^{(p)}) \\
+\vdots & \ddots & \vdots \\
+Cov(X^{(p)}, X^{(1)}) & \cdots & Var(X^{(p)})
+\end{pmatrix}
+\end{equation*}
+的无偏估计。
+
+设 \(p = p_n\)，满足 \(\frac{p_n}{n} \to y\)(这非常重要).
+
+\begin{definition}{(Marchenko-Pastur分布)}
+\begin{equation*}
+    \begin{aligned}
+        d_\mu y=\frac{1}{2\pi x y} \sqrt{((1+\sqrt{y})^2-x)(x-(1-\sqrt{y})^2)} \chi_{[0,+\infty)}dx+(1-\frac 1y)\delta_0\ \chi_{\{y>1\}}
+    \end{aligned}
+\end{equation*}
+
+\end{definition}
+
+\begin{definition}{(MP矩阵)}
+
+\(若V_n = \frac{1}{n} X_n X_n^T, \quad \text{其中} \quad X_n = \left( X_n(i,j) \right)_{i \in [p], j \in [n]}\)且 \(X_n(i,j)\) 满足：
+
+(1) 具有有界的绝对矩
+
+\begin{equation*}
+\forall q, \exists L_q \geq 0, \text{ s.t. } \E\left( |X_n(i,j)|^q \right) \leq L_q
+\end{equation*}
+
+(2) 标准化
+
+\begin{equation*}
+\E\left( X_n(i,j) \right) = 0, \quad Var\left( X_n(i,j) \right) = 1
+\end{equation*}
+
+(3) 独立性
+
+\begin{equation*}
+X_n(i,j), \quad i \in [p], j \in [n] \quad \text{独立}
+\end{equation*}
+
+(4) \(\frac{p_n}{n} \to y, \quad n \to \infty\)
+
+\end{definition}
+
+\begin{theorem}
+    $(V_n)_n$的ESD几乎处处弱收敛于MP律。
+\end{theorem}

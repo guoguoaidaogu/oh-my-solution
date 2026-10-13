@@ -1,0 +1,450 @@
+\begin{itemize}
+    \item[2.]
+    $\varphi _1\circ \varphi_2^{-1}(y_1,\cdots, y_n)
+    =\big(\frac{y_1}{\sum y_i^2},\cdots, \frac{y_n}{\sum y_i^2}\big)$为光滑函数，
+    类似可证$\varphi_2\circ \varphi_1^{-1},\varphi^{\pm}_\alpha\circ\varphi_2,
+    \varphi_2\circ(\varphi_\alpha^{\pm})^{-1}$光滑，
+    因此$U_i,i=1,2$与$\varphi^{\pm}_\alpha$光滑相容，因此给出了同一个光滑结构.
+
+    \item[5.]
+    $f(x,y,z)=(\sqrt{x^2+y^2}-R)^2+z^2-R^2$
+    为$\mathbf{R}^3$到$\mathbf{R}$的光滑映射，
+    $\triangledown f=\big(\frac{x}{\sqrt{x^2+y^2}},\frac{y}{\sqrt{x^2+y^2}},2z\big)\neq0$
+    说明它的秩处处为$1$，由定理5.4（P103），$f^{-1}(0)$是一个$2$维光滑流形。
+
+    \item[7.]
+    设$p,f(p)$处的局部坐标卡为$(U,\psi_1),(V,\psi_2)$，
+    取$v:h\mapsto \frac{\mathrm{d}}{\mathrm{d}t}(h\circ \gamma(t))$，其中$\gamma\subset U$为一条道路.\\
+    由$f_*=0$可知$\frac{\mathrm{d}}{\mathrm{d}t}(\psi_2^i\circ f \circ \gamma(t))=0$（其中$\psi_2=(\psi_2^1,\psi_2^2)$），
+    由$U$道路连通可知，$f$在$U$上为常值，由$M$的连通性可知$f$在$M$上为常值.
+
+    \item[9.]
+    $f^*$在自然基底下的矩阵就是（见P78-80）
+    \[ 
+        J_f=\left(
+        \begin{matrix}
+            \frac{\partial y_1}{\partial x_1} & \frac{\partial y_1}{\partial x_2}\\
+            \frac{\partial y_2}{\partial x_1} & \frac{\partial y_2}{\partial x_2}
+        \end{matrix}
+        \right)
+        =
+        \left(
+        \begin{matrix}
+            e^{x_2} & x_1e^{x_2}+1\\
+            e^{x_2} & x_1e^{x_2}-1
+        \end{matrix}
+        \right).
+    \]
+    $f_*$在自然基底下的矩阵是其转置矩阵$J_f^T$.
+
+    显然有$f$光滑，由$\det J=2e^{x_2}\neq0$得$f$是光滑同胚.
+
+    Remark:经典错误是认为$f^*$和$f_*$的表示矩阵都是$J_f$,这种错误出现的原因大概是看了陈维桓的课本中的相关表述而没有理解.实际上由对偶性,显然它们互为转置.
+
+    \item[11.]
+    (1) $\forall v\in T_p(X)$，
+    \[
+        (g\circ f)_*(v)=v(\cdot\circ g\circ f)
+        =f_*(v(\cdot\circ g))=g_*\circ f_*(v).
+    \]
+
+    (2) $\forall \alpha\in T_{g\circ f(p)}^*(X)$，
+    \[
+        (g\circ f)^*(\alpha)=\alpha((g\circ f)_*\circ\cdot)
+        \overset{(1)}{=}\alpha(f_*\circ g_*\circ\cdot)
+        =f^*(\alpha(g_*\circ\cdot))=f^*\circ g^*(\alpha).
+    \]
+
+    \item[12.]
+    假设$f$的秩（即$f_*$的秩）处处为$n$，则$f(M)$是开集，
+    又由$M$是紧集且$f$连续得$f(M)$是紧集，矛盾。
+
+    \item[13.]
+    $\sigma$在每个平面$\left\{x_3=a\right\}$上是一个旋转，
+    因此$\sigma|_{S^2}$给出$S^2$到它自身的双射。\\
+    从$\sigma|_{S^2}$与$\sigma|_{S^2}^{-1}$的表达式
+    容易看出它们都是光滑映射，
+    故$\sigma|_{S^2}$是光滑同胚。
+    \item[14.]
+    设$p:\mathbb{R}^2\rightarrow T^2$为投影映射，则对于小邻域$U$，$p|_U$为同胚，因此$p|_U^{-1}\circ \varphi \circ \operatorname{id}_{\mathbb{R}}(t)=(\sqrt{2}t,t)+(a,b)$,可见$\varphi $光滑.\\
+    由Dirichlet逼近定理可知，$\sqrt{2}\mathbb{Z}$在$[0,1)$中稠密，于是对于$\overline{(x,y)}\in T^2$，$\forall \varepsilon>0$，存在$k\in\mathbb{Z}$使得$\vert \sqrt{2}(y+k)-x\vert \operatorname{mod}1<\varepsilon$, 因此$d((x,y),\varphi(y+k))<\varepsilon$，于是$\varphi(\mathbb{R})$稠密.
+
+    \item[15.]
+    由连续函数的开集的逆像为开集，由$M$移植的拓扑细于$N$诱导的拓扑。
+    
+    \item[16.]
+    参考$\S$4例2,3（P83,84），取$M$为
+    \[G:\mathbf{R} \rightarrow \mathbf{R}^2,
+    t \mapsto (2\cos(2\operatorname{arctan}t-\frac{\pi}{2}),\sin(2(2\operatorname{arctan}t-\frac{\pi}{2})))\]
+    的像（附带微分结构），
+    $N$为
+    \[F:\mathbf{R} \rightarrow \mathbf{R}^2,t \mapsto (2\cos(t-\frac{\pi}{2}),\sin(2(t-\frac{\pi}{2})))\]
+    的像（附带微分结构），
+    曲线$\gamma$为$F$限制在$(\pi-1,\pi+1)$上。\\
+    $t=\pi$时$\gamma(\pi)=(0,0)$，$\gamma'(0)=(-2,-2)$，
+    而$T_{\gamma(0)}M$为直线$y=-x$，故$\gamma'(0)\notin T_{\gamma(0)}M$。
+    
+    \item[17.]
+    由于$\varphi$是同胚，不妨设$\varphi$为包含映射$i$，
+    $M=\varphi (M)\subseteq N$，否则取$f\circ\varphi^{-1}$即可。
+    \\
+    对任意一点$p\in N$，由定理2.3，存在$N$在$p$的邻域$U_p$
+    以及$g_p\in C^\infty(N)$使得$g_p|_{U_p\cap M}=g|_{U_p\cap M}$。
+    由于$\left\{U_p\mid p\in M\right\}$再加上$N\backslash M$是$N$的开覆盖，
+    由单位分解定理，存在$N$上局部有限项非零的光滑函数
+    $\left\{f_i\right\}_{i=0}^\infty$使得
+    $0\leq f_i\leq1$，$\sum\limits_{i=0}^\infty f_i=1$，
+    且对$i\geq1$，$\operatorname{supp}f_i\subset U_{p_i}$，
+    以及$\operatorname{supp}f_0\subset N\backslash M$，
+    故在$M$上$\sum\limits_{i=1}^\infty f_i=1$。
+    \\
+    令$f=\sum\limits_{i=1}^\infty f_ig_{p_i}\in C^\infty(N)$，
+    由$\operatorname{supp}f_i\cap M\subset U_{p_i}\cap M
+    \subset\left\{q\in M\mid g_{p_i}=g\right\}$得到
+    实际上$f_ig_{p_i}=f_ig$，所以在$M$上
+    \[
+    f=\sum\limits_{i=1}^\infty f_ig_{p_i}
+    =\sum\limits_{i=1}^\infty f_ig=g.
+    \]
+    
+    \item[18.]
+    由$f_1,f_2$光滑得$f$也光滑，
+    由切映射$f_{1*},f_{2*}$非退化得$f_*=(f_{1*},f_{2*})$非退化，
+    即$f$也是浸入，
+    由$f_1,f_2$是同胚得$f$也是同胚，所以$(f,M_1\times M_2)$是嵌入子流形。
+    
+    \item[19.]
+    沿用$\S1$例4（P59）的记号。
+    $\pi$显然是满射，且对任意$1\leq\alpha\leq n+1$，
+    $(\psi_\alpha\circ\pi)(x^1,\cdots,x^{n+1})
+    =\big(\frac{x^1}{x^\alpha},\cdots,\frac{x^{\alpha-1}}{x^\alpha},
+    \frac{x^{\alpha+1}}{x^\alpha},\cdots,\frac{x^{n+1}}{x^\alpha}\big)$
+    是光滑的，其Jacobi矩阵有子方阵
+    \[
+        \Big(\frac{\partial(\psi_\alpha\circ\pi)^i}
+        {\partial x^j}\Big)_{\begin{subarray}{c}1\leq i\leq n,\\1\leq j\leq n+1, j\neq\alpha\end{subarray}}
+        =\frac{1}{x_\alpha}I_n,
+    \]
+    故$\operatorname{rk}(\psi_\alpha\circ\pi)=n$，所以$\pi$是淹没。
+    
+    \item[20.]
+    设$U$是$M$中的开集，由于对任意$p \in U$，由定理4.1（P81）得存在其邻域$V$
+    使得$f(V)$是$f(p)$的邻域，得到$f(U)$是开集，即$f$是开映射。
+    
+    \item[21.]
+    假设存在这样的$f$，由于$f$是$1-1$的，任取一点$p\in M$，
+    有$f(M\backslash\left\{p\right\})=\mathbf{R}\backslash\left\{f(p)\right\}$，
+    但是$\dim M\geq2$表明$M\backslash\left\{p\right\}$是连通的，
+    它在连续映射$f$下的像也是连通的，矛盾。
+    
+    \item[22.]
+    笛卡尔叶形线$f_1(x,y)=x^3+xy+y^3=0$，
+    在$(0,0)$点自交，在该点附近任何嵌入映射关于叶形线（作为流形）的拓扑
+    和$\mathbf{R}^2$的子空间拓扑不同胚，所以不是嵌入子流形。
+    \\
+    对$f_2(x,y)=x^3+xy+y^3-f(\frac{1}{3},\frac{1}{3})=0$，
+    不难验证$\frac{\partial f_2}{\partial x}=3x^2+y\neq0$，
+    由隐函数定理，存在可逆的连续递增函数$g$使得$y=g(x)$，
+    所以$(i,f^{-1}(f((\frac{1}{3},\frac{1}{3}))))$是嵌入子流形。
+    \\
+    注意到$f_3(x,y)=x^3+xy+y^3-f(-\frac{1}{3},-\frac{1}{3})=0$
+    能因式分解为$(x+y+\frac{1}{3})\big((x+\frac{1}{3})^2
+    -(x+\frac{1}{3})(y+\frac{1}{3})+(y+\frac{1}{3})^2\big)=0$，
+    有孤立点$(-\frac{1}{3},-\frac{1}{3})$，不是流形，更不是嵌入子流形。
+
+    \item[23.]
+    对于$x_{0}=(x_{0}^{1},\ldots,x_{0}^{n}) \in g^{-1}(c)$，
+    不妨设$\dfrac{\partial g}{\partial x^{n}}(x_{0}^{1},\ldots,x_{0}^{n}) \ne 0$，
+    由隐函数定理，存在$(x_{0}^{1},\ldots,x_{0}^{n-1})$的邻域$V$，
+    在其上有连续可微的函数$\varphi(x^{1},\ldots,x^{n-1})$
+    使得$g(x^{1},\ldots,x^{n-1},\varphi_{0}(x^{1},\ldots,x^{n-1}))=c$.
+    故对于$(x_{0}^{1},\ldots,x_{0}^{n}) \in g^{-1}(c)$，
+    其在$g^{-1}(c)$上有邻域
+    $$\tilde{V}=\{(x^{1},\ldots,x^{n-1},\varphi(x^{1},\ldots,x^{n-1})) 
+    \mid (x^{1},\ldots,x^{n-1}) \in V\}$$
+    有$\tilde{V}$与$V$同胚，从而$g^{-1}(0)$为$n-1$维子流形.
+    由于$$
+    \dfrac{\partial (x^{1},\ldots,x^{n-1},\varphi(x^{1},\ldots,x^{n-1}))}{\partial (x^{1},\ldots,x^{n-1})}
+    $$
+    \[
+        \Big(\frac{\partial(x^i,\varphi)}{\partial x^j}\Big)_{1\leq i,j\leq n-1}
+    \]
+    秩为$n-1$，$g^{-1}(c)$为$U$的浸入.
+    $g^{-1}(c) \hookrightarrow U$的单一性自然成立，
+    且对于$(x_{0}^{1},\ldots,x_{0}^{n}) \in U$，取局部坐标
+    \begin{align*}
+        y^{i}&=  x^{i}-x_{0}^{i}, \qquad 1 \leq i \leq n-1, \\
+        y^{n}&=  x^{n}-\varphi(x^{1},\ldots,x^{n}),   
+    \end{align*}
+    得到$g^{-1}(c)$为嵌入.
+    
+    \item[24.]
+    将$W$与$i(W)$视作同一流形.设$\dim M=m, \dim N=n, \dim W=w$.
+    对于$p\in M$，有$N$中局部坐标系$V,\{y^{i}\}$使得
+    $$y^{i}(f(p))=0, \forall\ 1 \leq i \leq n,$$
+    $$W\cap V = \{s\in V\mid y^{i}(s)=0,\forall\ w+1\leq i \leq n\},$$
+    $f$作为$M\to N$光滑，即$f^{i}$对$1\leq i \leq n$光滑，从而自然对$1 \leq i \leq w$光滑.故$f$作为$M\to W$光滑.
+
+    \item[25.]
+    任取一点$p\in S^{n}$，不妨设$p=(x_{0}^{1},\ldots,x_{0}^{n+1}), x_{0}^{n+1}>0$.
+    分别取$p$在$S^{n}$中局部坐标$(U,\varphi)$和$f(p)$在$\mathbf{RP}^{n}$中局部坐标$(V,\psi)$使得$f(U) \subset V$并且
+    \begin{align*}
+        \varphi(x^{1},\ldots,x^{n+1})&=(x^{1},\ldots,x^{n}),\\
+        \psi([(x^{1} \cdots x^{n+1})])&=\Big(\dfrac{x^{1}}{x^{n+1}}\cdots \dfrac{x^{n}}{x^{n+1}}\Big),
+    \end{align*}
+    从而得证. 而其秩处处为$n$可由直接计算得知.
+
+    \item[26.]
+    对于$x,y\in\mathbf{R}$，对$\tilde{a}<a<x<y<b<\tilde{b}$，
+    存在$\varphi\in C^\infty(\mathbf{R})$使得
+    \[
+    \varphi|_{[a,b]}=1,\varphi|_{\mathbf{R}\backslash(\tilde{a},\tilde{b})}=0.
+    \]
+    取$\lambda<1$足够小，使得对
+    $\varphi_\lambda(t):=\varphi(\lambda(t-\frac{a+b}{2})+\frac{a+b}{2})$有
+    $|\varphi_\lambda'(t)|<\frac{1}{y-x}$.
+    取
+    \[f(t)=t+(y-x)\varphi_\lambda(t),\]
+    由
+    \[f'(t)\geq 1-(y-x)|\varphi_\lambda'(t)|>0\]
+    得到$f$是同胚.
+    \\
+    而对于$x,y\in\mathbf{R}^n$，令$f^{i}:\mathbf{R}\to\mathbf{R}$为
+    使得$f^{i}(x^{i})=y^{i}$的函数.
+    令
+    \[f(t)=(f^{1}(t^{1})\cdots f^{n}(t^{n})),\]
+    那么光滑同胚$f:\mathbf{R}^n\to\mathbf{R}^n$满足$f(x)=y$，
+    并且保持一个有界开集之外的点不动.
+
+    \item[27.]
+    若$x,y$处于同一个局部坐标内，由上一题，可构造光滑同胚$f:M\to M$使得$f(x)=y$.
+    \\
+    对一般的情况，由$M$的连通性，存在道路$\gamma:[0,1]\to M,\gamma(0)=x, \gamma(1)=y$，
+    取$\gamma$的有限开覆盖$\{U_{i}\}_{i=1}^{N}$使得$x\in U_{1},y\in U_{N}$，
+    且$U_{i}\cap U_{i+1} \ne \varnothing$.
+    \\
+    取一系列点$\{p_{i}\}_{i=1}^{N-1}$使得$p_{i}\in U_{i}\cap U_{i+1}$，
+    并且令$p_{0}=x,p_{N}=y$.
+    取光滑同胚$f_{i}:M\to M,f_{i}(p_{i})=p_{i+1}$，$0\leq i\leq N-1$，
+    再令$f=f_{N-1}\circ f_{N-2} \circ \cdots \circ f_{0}$即可.
+    
+    \item[28.]
+    $C^{1}$- 浸入子流形。
+    \\
+    不是子流形。
+    \\
+    $C^{\infty}$- 浸入子流形。
+
+    Remark:(3):Need reconsideration.
+
+    \item[29.]
+        对任意点$p\in X$, 存在$n$条曲线$\gamma_1(t),\cdots,\gamma_n(t)$: $(-\varepsilon,\varepsilon)\rightarrow X$ 使得$\{\gamma_1'(0),\cdots,\gamma_n'(0)\}$是$T_pX$的一组基.\par
+        因此$\eta_1(t)=\varphi(\gamma_1(t)),\cdots,\eta_n(t)=\varphi(\gamma_n(t))$是$Y$中的$n$条曲线, 且$\{\eta_1'(0),\cdots,\eta_n'(0)\}=\{d\varphi_p(\gamma_1'(0)),\cdots,d\varphi_p(\gamma_n'(0)\}$是$T_{\varphi(p)}Y$中的一组线性无关向量.\par
+        注意到$\dim X=\dim Y$, 因此$\{\eta_1'(0),\cdots,\eta_n'(0)\}$是$T_{\varphi(p)}Y$中的一组基.\par
+        赋予$X$一个Riemann结构, 自然地, $\varphi$在$Y$上诱导了一个Riemann结构. 因此, $\exp_p$和$\exp_{\varphi(p)}$良定.\par
+        因为$\exp_p$是从$T_pX$到$X$的局部微分同胚, 所以存在$0$附近的邻域$U$使得$\exp_p|_U$是一个微分同胚.\par
+        而$d\varphi_p$是从$T_pX$到$T_{\varphi(p)}Y$的线性变换, 因此$d\varphi_p(U)$是开的, 且存在开子集$V\subset d\varphi_p(U)$使得$\exp_{\varphi(p)}|_V$是微分同胚.\par
+        如此, 我们得到从$\exp_p(d\varphi^{-1}_p(V))$到$\exp_{\varphi(p)}(V)$的微分同胚 
+            $$g=\exp_{\varphi(p)}\circ d\varphi_p \circ \exp_p^{-1}.$$
+        所以, 对每个点$p$, 存在一个开邻域$U_p\subset X$使得$\varphi(U_p)$在$Y$中是开集.\par
+        因此$\varphi(X)=\bigcup\limits_{p\in X}\varphi(U_p)$是$Y$中的开子集.
+    
+     \item[30.]
+    设$X$为$k$维流形，$(U_{\alpha},\phi_{\alpha})$
+    为其局部坐标，则有如下图表，
+    
+    \begin{tikzcd}
+      U_{\alpha} \rar["\varphi"] \dar["\phi_\alpha"]& \mathbf{R}^n \dar["\pi"]\\
+      \mathbf{R}^k \rar & \mathbf{R}^m
+    \end{tikzcd}
+    
+    $\pi\circ\varphi\circ\phi_{\alpha}^{-1}$: 
+    $\mathbf{R}^k\rightarrow \mathbf{R}^m, $
+    $(x_1,x_2,\cdots,x_k)\mapsto (y_1,y_2,\cdots,y_m),$
+    $$\operatorname{rk}(\frac{\partial{y_{j}}}{\partial{x_{i}}})_{1\leq i \leq k}^{1\leq j\leq m}=k.$$
+    所以$$\operatorname{rk}(\frac{\partial{y_{j}}}{\partial{x_{i}}})_{1\leq i \leq k}^{1\leq j\leq n}=k,$$
+    所以$X$为浸入子流形。
+
+
+    \item[31.]
+    错误示范:由于任意一条有向直线由其到原点距离以及其方向确定，
+    故这个集合可看作$S^1\times R$,其中$S^{1}$表示方向，
+    $R$表示其到原点的距离（带方向，所以可正可负），
+    显然这是一个$2$维可定向光滑流形。
+    
+    Remark:经典错误,默认所有向量丛都是平凡丛.不能排除Mobius丛.应当具体构造坐标覆盖来说明.
+
+    \item[32.]
+    错误示范:设$（v_1,v_2\cdots,v_m)$为$\mathbf{R}^{n}$中$m$个线性无关向量，
+    则$\operatorname{span}(v_1,v_2\cdots,v_m)$为$m$维平面，
+    设$（u_1,u_2\cdots,u_m)$为另一组基，其过渡矩阵为$A_{m\times m}$。
+    在$F(m,n)$中构造等价关系$u=v\times A$,若$\det A> 0$,则$uRv$。
+    令$L(m,n)=F(m,n)/R$,由书中对Grassman流形的讨论可知这是一个$A2，T2$空间，
+    以下给出其光滑结构，令$U_{i_1,i_2\cdots,i_m}=\{v\in F(m,n)$，
+    其由$i_1,i_2,\cdots,i_m$行构成的主子式非$0\}$，
+    则$U_{i_1,i_2\cdots,i_m}$为其开覆盖，
+    由(5.7)（P93）类似可得其转换矩阵光滑，$L(m,n)$为$m(n-m)$维流形。
+
+    Remark:显然是错误的,和31题的结论都不符合.问题在于默认所有平面过原点.正确的维数应该是$(m+1)(n-m)$.
+
+    \item[33.]
+    (1) $n=1$时，$S^1$为可定向流形，$n>1$时，$S^n$可由两个开集覆盖，且$U_{\alpha}\cap U_{\beta}$连通
+    （其中$U_{\alpha}=S^n-(0,0\cdots,0,1),U_{\beta}=S^n-(0,0\cdots,0,-1)$，故$S^n$为可定向流形。
+    
+    (2)考虑将$S^n$嵌入$\mathbf{R}^{n+1}$,给定$S^n$的定向等价于给出 
+      $\mathbf{R}^{n+1}$中$n$个线性无关的单位向量$v_1,v_2,\cdots,v_n$，则必存在一个法向量$v$，使得这$n+1$个向量在$\mathbf{R}^{n+1}$标准坐标下行列式$>0$,$n$为奇数时，$n+1$为偶数,
+      此时$p\circ v_1,p\circ v_2\cdots,p\circ v$行列式仍大于$0$，
+      而$n$为奇数时,行列式小于$0$，改变了定向。
+
+    \item[34.]
+    $\forall {\alpha}\in M$，由于$M$连通故道路连通，所以可以通过$[0,1]:p\rightarrow {\alpha}$的连续延拓给出${\alpha}$的定向，故以下仅需说明${\alpha}$处的定向与道路的选取无关即可。
+    设$t_1,t_2$为两条不同的道路，且在$\alpha$出有不同的定向，则逆转$t_2$在${\alpha}$出的定向记作$-t_2$，考虑则$-t_2^{-1}\circ t_1$为经过$p$的闭道，
+    且逆转了$p$点的定向，与条件矛盾，故$\alpha$处的定向与道路选取无关，故$M$可定向（由P112的说明可得）。
+
+    \item[35.]
+    当$n$为奇数时，$S^n$的对径映射是保定向的，所以由$S^n$到$RP^n$的商映射自然诱导了一个$RP^n$的定向。
+    当$n$为偶数时，对径映射反转定向，从而在$RP^n$上通过继承$S^n$结构得到的定向不能自洽，所以不可定向.
+
+    Remark 1：由Hatcher, $Algebraic$ $Topology$, P238 Corollary 3.28，一个$n$维紧致无边流形$M$是可定向的当且仅当$H_{n-1}(M)$的扭子群（torsion subgroup）是平凡的,
+    又由Hatcher P144 Example 2.42有$H_{n-1}(\mathbf{RP}^n)$的扭子群平凡当且仅当$n-1$为偶数。
+
+    Remark 2：或使用这一结论：对$n$维连通闭流形$M$，$H_n(M)=\begin{cases}\Z,M\text{ 可定向}\\
+    0,M\text{ 不可定向}\end{cases}$（见Hatcher P236 Theorem 3.26）。
+
+    Remark 3：由Poincaré对偶定理（见Hatcher P241 Theorem 3.30），容易说明当$n$为偶数时$RP^n$不可定向.
+
+    Remark 4：还可以使用$n$次微分形式（等价地，$n$次de Rham上同调群）分析最高次微分形式在对径变换下的良定义性,类似可得结论.
+
+    \item[36.]
+    沿$S^2$的水平的大圆（作为一条给定方向的闭路径）
+    取标架场$\left\{p;e_1,e_2\right\}$，
+    使得$e_1$是该路径的切向量，$e_2$竖直向上，
+    那么粘合对径点后，在同一点两个$e_1$方向相反
+    而两个$e_2$方向相同，也就是说沿该路径传播得到了相反的定向，
+    由推论6.2（P113），$\mathbf{RP}^2$是不可定向的。
+
+    \item[37.]
+    参看$\S$5例2（P98）的图，沿右图中的路径取标架场$\left\{p;e_1,e_2\right\}$，
+    使得$e_1$是该路径的切向量，$e_2$对应到左下图中是竖直向上的，
+    即从$A$指向$D$，从$B$指向$C$，
+    那么粘合成Klein瓶后，在$A(=B=C=D)$点$e_2$翻转了方向而$e_1$的方向良定，
+    沿该路径传播得到了相反的定向，
+    由推论6.2，Klein瓶是不可定向的。
+    
+    注：一个更简单的方法是，假设$\mathbf{RP}^2$或Klein瓶可定向，
+    如下图在$\mathbf{RP}^2$上剪一个洞，或沿图中路径剪开Klein瓶，
+    就得到了Möbius带以及限制于其上的定向，但例1已证明Möbius带不可定向，矛盾。
+
+    \begin{tikzpicture}
+        \draw[->](1,1)--(1,0);\draw(1,0)--(1,-1);
+        \draw[->](-1,-1)--(-1,0);\draw(-1,0)--(-1,1);
+        \draw[->](-1,1)--(-0.3,1);\draw(-0.3,1)--(-0.12,1);
+        \draw[->](0.12,1)--(0.4,1);\draw(0.4,1)--(1,1);
+        \draw(-1,-1)--(-0.4,-1);\draw[<-](-0.4,-1)--(-0.12,-1);
+        \draw(0.12,-1)--(0.3,-1);\draw[<-](0.3,-1)--(1,-1);
+        \draw(-0.06,1)--(0.06,1);\draw(0.06,-1)--(-0.06,-1);
+        \draw(-0.2,1)arc(180:360:0.2);\draw(0.2,-1)arc(0:180:0.2);
+    \end{tikzpicture}
+
+    \item[38.]
+    只需验证全纯函数作为复变量的实部与虚部的函数的Jacobi行列式大于$0$。
+    \\
+    设$f(x+iy)\triangleq F(x,y)=u(x,y)+iv(x,y)$是全纯函数，由Cauchy-Riemann方程，
+    \[
+    J_F=\left|\begin{array}{cc}
+     \frac{\partial u}{\partial x} & \frac{\partial u}{\partial y} \\
+    \frac{\partial v}{\partial x} & \frac{\partial v}{\partial y}
+    \end{array}\right|
+    =\left|\begin{array}{cc}
+     \frac{\partial u}{\partial x} & \frac{\partial u}{\partial y} \\
+    -\frac{\partial u}{\partial y} & \frac{\partial u}{\partial x}
+    \end{array}\right|
+    =\Big(\frac{\partial u}{\partial x}\Big)^2
+    +\Big(\frac{\partial u}{\partial y}\Big)^2>0.
+    \]
+
+    \item[39.]
+    \begin{enumerate}
+    \item[(1)] 对于使$g(q)>c$的$q\in\mathbf{R}^n$，
+    由$g$的连续性得存在$q$的邻域$U$使得$g|_U>c$，
+    即$U\subset\operatorname{Int}M$；
+    \\
+    对于$q\in g^{-1}(c)$，由$\triangledown g(q)\neq0$，
+    可取合适的光滑函数$y^1=y^1(x),\cdots, y^{n-1}=y^{n-1}(x)$
+    使得对$y^n=g(x)-c$有$\det\big(\frac{\partial y^i}{\partial x^j}\big)|_q\neq0$，
+    由隐函数定理，存在$\mathbf{R}^n$在$q$的邻域$U$使得$(U,y^i)$
+    是与原坐标系$(M,x^j)$ $C^\infty$- 相关的坐标卡。
+    在这一坐标卡下，$p\in M$等价于$y_n(p)=g(p)-c\geq0$，即$p$的坐标属于$H^n$，
+    所以$M$在$q$的邻域$U\cap M$光滑同胚于$H^n$的一个开子集，且$q\in\partial M$。
+    \\
+    因此，$M$是一个$n$维带边流形。
+    
+    \item[(2)] 由推论5.5（P103）得到$g^{-1}(c)$是$n-1$维无边流形；
+    \\
+    由（1）知$g^{-1}(c)=\partial M$，所以$M$上的定向
+    （可由$\mathbf{R}^n$的定向限制得到）诱导出$\partial M$上的定向。
+    \end{enumerate}
+
+    \item[40.]
+    \begin{enumerate}
+        \item[(1)] 设$\left\{(U_\alpha,\varphi_\alpha)\right\}$是$M$的一个定向，
+    $\left\{(V_\beta,\phi_\beta)\right\}$是$N$的一个定向，
+    那么$\left\{(U_\alpha\times V_\beta,(\varphi_\alpha,\phi_\beta))\right\}$
+    （包含于的定向相符的极大容许坐标卡集）就是$M\times N$的一个定向，
+    这是因为当$(U_\alpha\times V_\beta)\cap(U_{\alpha'}\times V_{\beta'})\neq\varnothing$时，
+    \[
+    \det\Big(\frac{\partial((\varphi_{\alpha'},\phi_{\beta'})
+    \circ((\varphi_\alpha,\phi_\beta)^{-1})^{i}}
+    {\partial (x_{\alpha}^j,y_{\beta}^k)}\Big)
+    =\det\Big(\frac{\partial(\varphi_{\alpha'}\circ\varphi_\alpha^{-1})^{i}}{\partial x_\alpha^j}\Big)
+    \det\Big(\frac{\partial(\phi_{\beta'}\circ\phi_\beta^{-1})^{i}}{\partial y_\beta^k}\Big)>0.
+    \]
+
+    \item[(2)] 即证明若$M\times N$是可定向的，则$M,N$都是可定向的。
+    \\
+    设$\left\{(W_\gamma,\psi_\gamma)\right\}$是$M\times N$的一个定向，
+    $\left\{(U_\alpha\times V_\beta,(\varphi_\alpha,\phi_\beta))\right\}$
+    为其中全体这种形式的元素，显然有$M=
+    \bigcup\limits_{\alpha}U_\alpha,N=\bigcup\limits_{\beta}V_\beta$。
+    注意到当$U_\alpha\cap U_{\alpha'}\neq\varnothing$时，任取一个$\beta$，
+    $$\det\Big(\frac{\partial(\varphi_{\alpha'}
+    \circ\varphi_\alpha^{-1})^{i}}{\partial x_{\alpha}^j}\Big)
+    =\det\Big(\frac{\partial((\varphi_{\alpha'},\phi_\beta)
+    \circ(\varphi_\alpha,\phi_\beta)^{-1})^{i}}
+    {\partial(x_\alpha^j,y_\beta^k)}\Big)>0,$$
+    所以$\left\{(U_\alpha,\varphi_\alpha)\right\}$是$M$的一个定向，
+    同理$\left\{(V_\beta,\phi_\beta)\right\}$是$N$的一个定向。
+    
+    \item[(3)] 设$\left\{(U_\alpha,\varphi_\alpha)\right\}$是带边流形$M$的微分结构，
+    $\left\{(V_\beta,\phi_\beta)\right\}$是流形$N$的微分结构，
+    那么$\left\{(U_\alpha\times V_\beta,(\varphi_\alpha,\phi_\beta))\right\}$
+    是带边流形$M\times N$的微分结构，
+    这是因为$(\varphi_\alpha,\phi_\beta)$是$U_\alpha\times V_\beta$
+    到$H^m\times\mathbf{R}^n=H^{m+n}$的开子集的同胚
+    （这里$m=\dim M,n=\dim N$，$H^{m+n}=\left\{x\in\mathbf{R}^{m+n}\mid x_m\geq0\right\}$），
+    且$(p,q)\in\partial(M\times N)$当且仅当
+    存在坐标卡使$(\varphi_\alpha(p),\phi_\beta(q))\in\partial H^{m+n}$，
+    当且仅当$\varphi_\alpha(p)\in\partial H^m$，当且仅当$p\in\partial M$，
+    所以$\partial(M\times N)= \partial M\times N$。
+    \end{enumerate}
+
+    \item[41.]
+    称为光滑Urysohn定理，是单位分解定理（定理2.7，P66）的一个推论。
+    \\
+    $\left\{M\backslash A,M\backslash B\right\}$是$M$的一个开覆盖，
+    根据单位分解定理，存在局部有限的加细开覆盖
+    $\left\{V_i\right\}_{i=1}^\infty$
+    以及光滑函数$\left\{f_i\right\}_{i=1}^\infty$使得
+    $0\leq f_i\leq1$，$\sum\limits_{i=1}^\infty f_i=1$，
+    且$\operatorname{supp}f_i\subset V_i\subset M\backslash A$或$M\backslash B$，
+    也就是说$f_i|_A\equiv0$或$f_i|_B\equiv0$。
+    \\
+    令$\psi=\sum\limits_{f_i|_B\equiv0}f_i$，则$0\leq\psi\leq1$，$\psi|_B\equiv0$，
+    且由于若$f_i|_B\not\equiv0$就有$f_i|_A\equiv0$，
+    得
+    \[
+    \psi|_A=\Big(\sum_i f_i-\sum_{f_i|_B\not\equiv0}f_i\Big)\Big|_A\equiv1,
+    \]
+    而且$\left\{V_i\right\}_{i=1}^\infty$局部有限表明
+    $\psi=\sum\limits_{f_i|_B\equiv0}f_i$局部为有限个非零$f_i$之和，所以$\psi$也光滑。
+\end{itemize}

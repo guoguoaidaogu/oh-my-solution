@@ -1,0 +1,626 @@
+\setdisplaytitle{试卷：高等代数}
+\sethtmltitle{试卷：高等代数}
+
+
+
+== 26春高等代数（英才班）期末试题==
+
+\textbf{第一题，计算题，共 20 分。$\underline{不需要写计算过程}$。}
+
+令
+\[A =
+\begin{pmatrix}
+0 & 0 & 0 & 0 \\
+1 & 0 & 0 & 0 \\
+0 & -2 & 0 & 0 \\
+0 & 0 & 3 & 0
+\end{pmatrix},
+\qquad
+B =
+\begin{pmatrix}
+1 & 2 & 1 \\
+1 & 0 & 2 \\
+0 & 0 & 3
+\end{pmatrix}.\]
+\begin{enumerate}
+\item (5 分) 求 $A$ 的 Jordan 标准型, 写为下三角的形式.
+\item (5 分) 求 $A$ 的所有非零奇异值.
+\item (10 分) 求实方阵 $Q,R$, 使得 $B=QR$, 
+其中 $Q$ 是正交阵, $R$ 是对角元都是正数的上三角阵.
+\end{enumerate}
+\textbf{第二题，快速判断题，共 20 分。
+判断下列命题的真假，在对应的方格内画圈（$\bigcirc$）。}
+$\underline{\textbf{答对得 2 分，答错倒扣 1 分，扣完为止}}$。
+
+\begin{center}\begin{tabular}{lcc}
+命题 & \,真\, & \,假\, \\
+(示例) 在自然数中 $1+1=1$ & & $\bigcirc$ \\
+$T$ 有循环向量的充要条件是其特征多项式没有重根. & & \\
+半正定实对称阵的特征值全部是非负实数. & & \\
+若 $f$ 是非退化对称双线性型，$V_0$ 是 $V$ 的子空间，则 $V=V_0\oplus V_0^\perp$. & & \\
+若 $f$ 是反对称双线性型，则 $\dim V$ 是偶数. & & \\
+幂零阵的 Jordan 标准型中的 Jordan 块个数等于该矩阵的零空间的维数. & & \\
+$V\otimes W=\{\alpha\otimes\beta\mid \alpha\in V,\beta\in W\}$. & & \\
+$\dim(V\otimes W)=\dim V+\dim W$. & & \\
+若 $A$ 是对称阵且正负惯性指数分别为 $p,q$, 则 $\operatorname{tr}(A)=p-q$. & & \\
+若 $T$ 有循环向量, 则 $V$ 除 $\{0\}$ 与 $V$ 之外没有其他 $T$ 不变子空间. & & \\
+正定实对称阵是可逆的, 且其逆也是正定实对称阵. & & 
+\end{tabular}\end{center}
+\textbf{第三题，共 20 分。}
+\begin{enumerate}
+\item (10 分) 设 $A\in\mathbb{C}^{n\times n}$ 是可逆的正规阵, 
+证明存在正规阵 $B\in\mathbb{C}^{n\times n}$ 使得 $e^B=A$.
+\item (10 分) 若 $C\in\mathbb{C}^{n\times n}$ 满足 $e^C$ 是正规阵, 
+能否推出 $C$ 是正规阵? 若能, 证明这个结论; 若否, 给出反例并给出必要解释.
+\end{enumerate}
+
+\textbf{第四题，共 20 分。} 设 $V$ 是有限维实线性空间, $f$ 是 $V$ 上的非退化双线性型, $T:V\to V$ 是 $V$ 上的线性映射. 定义 $T$ 关于 $f$ 的伴随为满足如下条件的线性映射 $T^*:V\to V$：
+\[f(T\alpha,\beta)=f(\alpha,T^*\beta),\quad \text{对任意}\ \alpha,\beta\in V.\]
+\begin{enumerate}
+\item (10 分) 证明: $T^*$ 存在且唯一.
+\item (10 分) 证明: $T$ 与 $T^*$ 有相同的特征多项式.
+\end{enumerate}
+\textbf{第五题，共 20 分。}
+
+设 $V$ 是 $4$ 维复线性空间, 给定非零的 $\alpha\in V,\varphi\in V^\vee$. 定义两个线性映射
+\[T:\bigwedge{}^2V\to\bigwedge{}^3V,\qquad S:\bigwedge{}^3V\to\bigwedge{}^2V,\]
+满足对任意 $\beta_1,\beta_2,\beta_3\in V$，
+\[T(\beta_1\wedge\beta_2)=\beta_1\wedge\beta_2\wedge\alpha,\]
+\[S(\beta_1\wedge\beta_2\wedge\beta_3)=\varphi(\beta_1)\beta_2\wedge\beta_3
++a\varphi(\beta_2)\beta_1\wedge\beta_3+b\varphi(\beta_3)\beta_1\wedge\beta_2.\]
+其中 $a,b\in\mathbb{C}$ 是待定常数.
+\begin{enumerate}
+\item (4 分) 写出 $\bigwedge^2V$ 的的一组基.
+\item (8 分) 求 $a,b$ 使得 $S$ 是良定的 (即满足条件的 $S$ 存在且唯一), 并给出必要解释.
+\item (8 分) 设 $S$ 是良定的且 $\varphi(\alpha)=0$, 求 $ST$ 的 Jordan 标准型.
+\end{enumerate}
+\textbf{第六题，附加题，共 20 分。}
+
+设实对称阵 $A=(a_{ij})\in\mathbb{R}^{n\times n}$ 满足 $a_{ij}\ge0,\ 1\le i,j\le n$. 
+设对任意 $\alpha,\beta\in(\mathbb{R}_{\ge0})^{n\times1}$, 恒有
+\[(\alpha^{\rm T}A\alpha)(\beta^{\rm T}A\beta)\le(\alpha^{\rm T}A\beta)^2.\]
+其中 $(\mathbb{R}_{\ge0})^{n\times1}$ 表示各分量都是非负实数的 $n$ 维列向量全体构成的集合.
+
+证明: $A$ 的正惯性指数不超过 $1$.
+
+== 26春高等代数（英才班）期中试题==
+
+\textbf{第一题，计算题，共 20 分，每题 5 分。$\underline{不需要写计算过程}$。}
+
+设
+\(A = \begin{pmatrix} 1 & 0 & 0 \\ 1 & 2 & 0 \\ 0 & -1 & 2 \end{pmatrix} \in \mathbb{R}^{3\times 3}\).
+
+\begin{enumerate}
+\item
+  写出 $A$ 的特征多项式 \(f_{A}(x)\) 和极小多项式 \(p_{A}(x)\).
+\item
+  求 $A$ 的 (下三角) Jordan 标准型 $J$, 且特征值从小到大排列.
+\item
+  计算矩阵指数 (exponential) \(e^{J}\).
+\item
+  给出一个可逆矩阵 \(P \in \mathbb{R}^{3 \times 3}\) 
+  使得 \(P^{-1}AP = J\), 且 \(P\) 形如
+  \(\begin{pmatrix} * & * & *\\ \\-1 & 1 & *\\ \\* & -1 & * \end{pmatrix}\), 
+  其中 \(*\) 代表待定的复数.
+\end{enumerate}
+
+\textbf{第二题，快速判断题，共 20
+分。判断下列命题的真假，在对应的方格内画圈(○)。}
+$\underline{\textbf{答对得 2 分，答错倒扣 1 分，扣完为止。}}$
+
+以下若未做特殊说明, 均假设 \(V\) 是有限维复内积空间, \(T\) 是 \(V\) 上任给的线性算子, 
+\(A, B \in \mathbb{C}^{n \times n}\) 为任给的 \(n\) 阶复方阵.
+
+\begin{center}\begin{tabular}{lcc}
+命题 & \,真\, & \,假\, \\
+(示例)在自然数中$0 \neq 1$ & $\bigcirc$ & \\
+若$A$相似于 $\bar{A}$,则$A$的特征值都是实数. ($\bar{A}$表示将$A$中的元都取复数的共轭得到的矩阵.) & & \\
+若$A,B,AB$都是正规阵,则$AB=BA$. & & \\
+若$A$的有理标准型与Jordan标准型相同,则$A^{n}=0$. & & \\
+若$A,B \in \mathbb{C}^{4 \times4}$有相同的特征多项式及相同的极小多项式,则它们相似. & & \\
+若$T$的所有特征值均为实数,则$T$是自伴算子. & & \\
+若$A$是正规阵且$A^{2026}=I_{n}$,则$A$是酉阵. & & \\
+若$T$是正规算子且$T^{2}=I$,则$T$是正交投影. & & \\
+$\operatorname{Im}(T)$与 $\operatorname{Ker}(T^*)$互为正交补. & & \\
+若$W$是$T$不变子空间,则$W^{\perp}$也是$T$不变子空间. & & \\
+存在$V$的一组规范正交基 $\mathcal{B}$使得${[}T{]}_{ \mathcal{B}}$是有理标准型. & & 
+\end{tabular}\end{center}
+
+\textbf{第三题，共 20 分。}设 \(V = \R^{2 \times 1}\)，
+定义其上的内积 \(\langle -, - \rangle\) 为：
+
+\[\left\langle \left(u_{1}, u_{2}\right)^{\mathsf{T}}, \left(v_{1}, v_{2}\right)^{\mathsf{T}} \right\rangle := 2u_{1}v_{1} + u_{2}v_{2}.\]
+
+设线性算子 \(T: V \to V\) 在标准基
+\(\{\epsilon_1 = (1,0)^{\mathsf{T}}, \epsilon_2 = (0,1)^{\mathsf{T}}\}\)
+下的表示矩阵为：
+
+\[A = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}.\]
+
+\begin{enumerate}
+\item
+  使用 Gram-Schmidt 正交化过程, 将标准基 \(\{\epsilon_1, \epsilon_2\}\)
+  转化为关于内积 \(\langle -, - \rangle\) 的规范正交基 \(\{\alpha_1, \alpha_2\}\) .
+\item
+  求 \(T\) 关于该内积 \(\langle -, - \rangle\) 的伴随算子 \(T^{*}\)
+  在标准基 \(\{\epsilon_1, \epsilon_2\}\) 下的表示矩阵.
+\end{enumerate}
+
+\textbf{第四题，共 20 分。}设 $V$ 是有限维实线性空间，$T$ 是 $V$ 上的线性算子，
+其特征多项式为 \(f_{T}(x) = (x^{2} + 1)^{2}(x^{2} + 2)\)，
+极小多项式为 \(p_{T}(x) = (x^{2} + 1)(x^{2} + 2)\).
+
+\begin{enumerate}
+\item
+  写出 $T$ 的有理标准型 (不需要过程).
+\item
+  证明: 存在 \(V\) 的一组有序基 \(\mathcal{B}\) 
+  使得 \([T]_{\mathcal{B}}\) 是一个有如下分块形式的正规矩阵:
+
+\[[T]_{\mathcal{B}} = \begin{pmatrix} B_{1} & & \\ \\ & B_{2} & \\ \\ & & B_{3} \end{pmatrix},\]
+
+其中 \(B_{1}, B_{2}, B_{3} \in \mathbb{R}^{2 \times 2}\). 
+并求出这样的一组 \(B_{1}, B_{2}, B_{3}\).
+
+\item
+  证明存在 \(V\) 上的 (实) 内积 \(\langle -, - \rangle\), 使得 \(T\) 为正规算子.
+\end{enumerate}
+
+\textbf{第五题，共 20 分。}设 \(A \in \mathbb{C}^{n \times n}\) 是正定阵.
+
+\begin{enumerate}
+\item
+  若 \(H \in \mathbb{C}^{n \times n}\) 是正定阵, 证明 $AHAHA$ 也是正定阵.
+\item
+  证明 \(H \mapsto AHAHA\) 定义了 \(n\) 阶正定阵全体构成的集合到自身的一个双射.
+\end{enumerate}
+
+\textbf{第六题，共20分。}设 \(A \in \mathbb{C}^{n \times n}\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  若 $A$ 是正规阵, 证明 $A$ 的所有特征值的实部构成的集合 (记重数) 
+  与 \(\frac{1}{2}(A + A^{*})\) 的所有特征值构成的集合 (记重数) 相同.
+\item
+  反之, 若 $A$ 的所有特征值的实部构成的集合 (记重数) 
+  与 \(\frac{1}{2}(A+A^{*})\) 的所有特征值构成的集合 (记重数) 相同, 
+  证明 $A$ 是正规阵.
+\end{enumerate}
+
+== 25春高等代数（英才班）期末试题==
+\textbf{第一题，填空题，共 20 分，每题 5 分。将答案依次写在下面空白处。不需要写过程。}
+
+设$$A=\begin{pmatrix}
+-1 & -1 & 4 \\ \\
+0 & 1 & 1 \\ \\
+0 & -1 & 3
+\end{pmatrix}.$$
+\begin{enumerate}
+\item $A$ 的特征多项式与极小多项式分别为 $\underline{\qquad\qquad\quad}$。
+\item $A$ 的一个 Jordan 标准型为 $\underline{\qquad\qquad\quad}$。
+\item $A$ 的有理标准型为 $\underline{\qquad\qquad\quad}$。
+\item 若要 $C=\begin{pmatrix}1 & * & * \\ \\ 2 & * & * \\ \\ * & * & *\end{pmatrix}$ 
+使得 $C^{-1} A C$ 是 $A$ 的一个 Jordan 标准型，其中 $*$ 表示待定的复数，
+则 $C$ 可以取作 $\underline{\qquad\qquad\quad}$。\\
+[注：我们约定 Jordan 标准型中对角线以外的 $1$ 位于对角线下方.]\\
+[注：第 4 小题中写出一个符合条件的 $C$ 即可.]
+\end{enumerate}
+\textbf{第二题，判断题，共 20+5 分，每题 5 分。判断以下命题是否正确，若正确，简要说明理由；若错误，举出反例并给出必要解释。}
+\begin{enumerate}
+\item 判断：若 $H$ 是幂零的 Hermite 阵，则 $H=0$。
+\item 判断：若实对称矩阵 $A$ 的任何顺序主子式都非负，则 $A$ 是半正定的。
+\item 判断：设 $V$ 是有限维复线性空间，$\omega, \eta \in \bigwedge^{k} V$，则 $\omega \wedge \eta=-\eta \wedge \omega$。
+\item 判断：设 $T$ 是有限维复线性空间 $V$ 上的线性算子，$\alpha, \beta \in V$。
+若 $\alpha+\beta$ 是关于 $T$ 的循环向量，
+则 $\alpha, \beta$ 中至少有一个也是关于 $T$ 的循环向量。
+\item (附加题) 判断：若 $A \in \mathbb{C}^{n \times n}$，
+$A^{T} A=I_{n}$，则 $A$ 相似于对角阵。
+其中 $I_{n}$ 表示 $n$ 阶单位阵，$A^{T}$ 表示 $A$ 的转置。
+\end{enumerate}
+\textbf{第三题 (共 20 分)} 设 $T$ 是有限维复内积空间 $V$ 上的线性算子。
+\begin{enumerate}
+\item (5 分) 陈述 $T$ 的伴随 $T^{*}$ 的定义；
+\item (5 分) 用关于 $T$ 和 $T^{*}$ 的等式给出 $T$ 是正规算子的定义；
+\item (10 分) 证明：$T$ 是正规算子的充要条件是对 $T$ 的每个特征值 $\lambda$，
+都有 $\operatorname{Ker}(T-\lambda I) \perp \operatorname{Im}(T-\lambda I)$。
+\end{enumerate}
+\textbf{第四题 (共 15 分)} 设 $V, W$ 是有限维线性空间，$\gamma \in V \otimes W$，
+$\gamma=\sum_{i=1}^{k} \alpha_{i} \otimes \beta_{i}$，
+其中 $\alpha_{1}, \ldots, \alpha_{k} \in V, \beta_{1}, \ldots, \beta_{k} \in W$，且 $\gamma$ 不能写成少于 $k$ 个单张量之和。
+\begin{enumerate}
+\item (5 分) 证明 $\alpha_{1}, \ldots, \alpha_{k}$ 线性无关。
+\item (10 分) 若另有 $\widetilde{\alpha}_{1}, \ldots, \widetilde{\alpha}_{k} \in V, \widetilde{\beta}_{1}, \ldots, \widetilde{\beta}_{k} \in W$ 
+使得 $\gamma=\sum_{i=1}^{k} \widetilde{\alpha}_{i} \otimes \widetilde{\beta}_{i}$，
+证明 $\operatorname{Span}\{\alpha_{1}, \ldots, \alpha_{k}\}=\operatorname{Span}\{\widetilde{\alpha}_{1}, \ldots, \widetilde{\alpha}_{k}\}$。
+\end{enumerate}
+\textbf{第五题 (共 25 分)} 设 $V$ 是 $2n$ 维实线性空间，$f: V \times V \rightarrow \mathbb{R}$ 是非退化的对称双线性型。
+一个子空间 $W \subset V$ 被称为是迷向的 (isotropic)，若 $f(\alpha, \beta)=0$ 对任何 $\alpha, \beta \in W$ 成立。
+设 $W_{1}, W_{2}, W_{3} \subset V$ 是 $n$ 维迷向子空间且任何两者的交是 $\{0\}$。
+\begin{enumerate}
+\item (5 分) 给出非退化的任一等价定义。
+\item (5 分) 定义 $T: W_{1} \rightarrow W_{2}^{\vee}, T(\alpha)(\beta)=f(\alpha, \beta), \alpha \in W_{1}, \beta \in W_{2}$。证明 $T$ 是线性同构。
+\item (5 分) 求 $f$ 的正、负惯性指数，并证明你的结论。
+\item (10 分) 证明 $n$ 是偶数。[提示：我们学过什么量一定是偶数？]
+\end{enumerate}
+
+== 25春高等代数（英才班）期中试题 ==
+\textbf{第一题，填空题，共 10 分，将答案按次序写在答题纸空白处。}
+
+设
+$$A=\begin{pmatrix}0 & 1 \\0 & -1\end{pmatrix}.$$
+将 $A$ 视作复矩阵，设 $A=HU$ 是它的一个极分解，其中 $U$ 为酉阵。
+\begin{enumerate}
+\item $H$ 的所有可能的值为$\underline{\ (1)\ }$。
+\item $U$ 的所有可能的值为$\underline{\ (2)\ }$。
+\end{enumerate}
+
+\textbf{第二题，判断题，共 20 分，每题 5 分。判断以下命题是否正确，若正确，简要说明理由；若错误，举出反例并给出必要解释。}
+\begin{enumerate}
+\item 判断：两个正规阵的和还是正规阵。
+\item 判断：设 $A \in \mathbb{C}^{n \times n}$，如果 $AA^{*}=-A^{*}A$ 则 $A$ 可以酉对角化。
+\item 判断：任何正规的复方阵都酉相似于其有理标准型。
+\item 判断：复方阵的特征值模长最小值一定小于等于最小奇异值。
+\end{enumerate}
+
+\textbf{第三题 (共 20 分)} 设线性映射 $T: \mathbb{R}^{5} \rightarrow \mathbb{R}^{2}$ 在标准基下的矩阵为
+$$\begin{pmatrix}1 & 0 & 0 & 1 & 0 \\2 & 1 & 1 & 0 & 1\end{pmatrix}$$
+设 $E: \mathbb{R}^{5} \rightarrow \mathbb{R}^{5}$ 
+为往 $\operatorname{Ker}(T)$ 上的正交投影，求 $E$ 在标准基下的矩阵表示。
+
+\textbf{第四题 (共20分)} 设 $A \in \mathbb{C}^{6 \times 6}, A$ 的特征值多项式为
+$$f_{A}(x)=x^{4}(x-1)^{2}.$$
+如果 $\operatorname{rank}(A^{2}(A-I))=2$，
+求 $A$ 所有可能的Jordan标准型与有理标准型，并将它们对应起来，
+即指出哪个Jordan标准型与哪个有理标准型是相似的。
+
+\textbf{第五题 (共 15 分)} 对 $n$ 阶实或复方阵 $X$，定义
+$$\sin (X)=\sum_{k=0}^{\infty} (-1)^{k} \frac{X^{2k+1}}{(2k+1)!}.$$
+设 $n$ 阶实方阵 $A$ 的全体特征值都是实数，且在开区间 $(-1,1)$ 内，
+证明关于 $X$ 的矩阵方程 $\sin X=A$ 必有实矩阵解。
+
+[附加题 (5分)：如果将开区间改为闭区间，何时还有实矩阵解？为什么？]
+
+\textbf{第六题 (共15分)} 设 $A$ 是Hermite正定阵，$A=PDQ$ 为 $A$ 的一个奇异值分解，证明 $P=Q^{*}$。
+
+== 24秋高等代数（英才班）期末试题 ==
+\textbf{第一题，计算题，共 20 分，每题 5 分。不需要写计算过程。将解答按序号写在试题下方空白处。}
+
+设 $A=\begin{pmatrix}0 & 1 & 0 \\ \\ -4 & 3 & 2 \\ \\ -3 & 1 & 3\end{pmatrix} \in \mathbb{C}^{3 \times 3}, 
+\ B=\begin{pmatrix}2024 & a & 0 & 0 \\ \\ 0 & 0 & b & 0 \\ \\ 0 & 0 & 2024 & c \\ \\ 0 & 0 & 0 & 0\end{pmatrix} \in \mathbb{C}^{4 \times 4}$。
+\begin{enumerate}
+\item $A$ 的所有特征值为 $\underline{\qquad\qquad}$。
+\item 使得 $P^{-1}AP$ 为对角阵的一个可逆矩阵 $P \in \mathbb{C}^{3 \times 3}$ 为 $\underline{\qquad\qquad}$。
+\item 分块矩阵 $\begin{pmatrix}A & I \\ \\ -I & A\end{pmatrix}$ 的行列式为 $\underline{\qquad\qquad}$。
+\item 使得 $B$ 可对角化的 $(a, b, c)$ 的全部取值为 $\underline{\qquad\qquad}$。
+\end{enumerate}
+
+\textbf{第二题，判断题，共 15 分，每题 5 分。判断下列命题的叙述是否总成立。若成立，给出简要的解释；若不成立，给出反例及简要的解释。}
+\begin{enumerate}
+\item 若 $V$ 是有限维 $\mathbb{C}$ 线性空间，$T$ 是 $V$ 上的线性映射，则 $V=\operatorname{Ker}(T)+\operatorname{Im}(T)$。
+\item 设 $n$ 是正整数，$T: \mathbb{R}^{n} \rightarrow \mathbb{R}^{n}$ 是线性映射，
+$\mathcal{B}$ 是 $\mathbb{R}^{n}$ 的有序基，$\mathcal{B}^{*}$ 是 $\mathcal{B}$ 的对偶基，
+$A$ 为 $T$ 关于 $\mathcal{B}$ 的表示矩阵，$B$ 为 $T^{\mathsf{T}}$ 关于 $\mathcal{B}^{*}$ 的表示矩阵，则 $A=B$。
+\item 若 $A, B \in \mathbb{C}^{2 \times 2}$ 都可对角化，则 $AB$ 可对角化。
+\end{enumerate}
+
+\textbf{第三题（共 18 分）}设 $n$ 是正整数，
+$$A:=\begin{pmatrix}
+0 & 0 & \cdots & 0 & 1 \\
+1 & 0 & \cdots & 0 & 0 \\
+0 & 1 & \cdots & 0 & 0 \\
+\vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & \cdots & 1 & 0
+\end{pmatrix} \in \mathbb{C}^{n \times n}.$$
+\begin{enumerate}
+\item（5 分）求 $A$ 的所有特征值，并说明理由。
+\item（5 分）求 $A$ 的极小多项式，并说明理由。
+\item（8 分）设 $\sigma \in \mathfrak{S}_{n}$ 是一个置换。
+定义 $\mathbb{C}^{n \times n}$ 上的线性映射 $T$ 使得
+$$T\begin{pmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\ \\
+a_{21} & a_{22} & \cdots & a_{2n} \\ \\
+\vdots & \vdots & \ddots & \vdots \\ \\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{pmatrix}=\begin{pmatrix}
+a_{1\sigma(1)} & a_{1\sigma(2)} & \cdots & a_{1\sigma(n)} \\ \\
+a_{2\sigma(1)} & a_{2\sigma(2)} & \cdots & a_{2\sigma(n)} \\ \\
+\vdots & \vdots & \ddots & \vdots \\ \\
+a_{n\sigma(1)} & a_{n\sigma(2)} & \cdots & a_{n\sigma(n)}
+\end{pmatrix}.$$
+问：$T$ 是否总是可对角化？说明理由。
+\end{enumerate}
+
+\textbf{第四题（共 17 分）}设 $V$ 是有限维 $\mathbb{C}$ 线性空间。设 $T$ 是 $V$ 上的线性映射。
+\begin{enumerate}
+\item（5 分）用定义直接验证：对任意 $c \in \mathbb{C}$，$\operatorname{Ker}(T-cI)$ 是 $T$ 不变子空间。
+\item（12 分，（b）推（a）4 分）证明以下两个命题等价：
+
+（a）对任意 $c \in \mathbb{C}$，$\dim \operatorname{Ker}(T-cI) \leq 1$；
+
+（b）存在线性泛函 $f \in V^{*}$，使得对任意非零 $T$ 不变子空间 $W$，$f|_{W}$ 不恒为 $0$。
+\end{enumerate}
+
+\textbf{第五题（共 20 分）}对 $A \in \mathbb{C}^{n \times n}$，若存在正整数 $k$ 使得 $A^{k}=0$，则称 $A$ 是幂零矩阵。
+\begin{enumerate}
+\item（5 分）若 $A \in \mathbb{C}^{n \times n}$ 是幂零矩阵，证明：$\operatorname{tr}(A)=\det(A)=0$。
+\item（5 分）若 $A \in \mathbb{C}^{2 \times 2}$ 满足 $\operatorname{tr}(A)=\det(A)=0$，证明：$A$ 是幂零矩阵。
+\item（10 分）设 $V \subseteq \mathbb{C}^{n \times n}$ 是由 $\mathbb{C}^{n \times n}$ 中所有幂零矩阵张成的 $\mathbb{C}$ 线性子空间。
+计算 $V$ 的维数，并说明理由。
+\end{enumerate}
+
+\textbf{第六题（共 30 分）}设 $F$ 是域，$n, k \geq 2$ 是正整数。
+\begin{enumerate}
+\item（10 分）叙述并证明 Cayley--Hamilton 定理。
+\item（20 分）设 $A_{1}, A_{2}, \ldots, A_{k}, B_{1}, B_{2}, \ldots, B_{k} \in F^{n \times n}$，
+满足 $B_{i} B_{j}=B_{j} B_{i}, 1 \leq$ $i \neq j \leq k$，且 $\sum_{i=1}^{k} A_{i} B_{i}=0$。
+定义 $p(x_{1}, x_{2}, \ldots, x_{k})=\det\left(\sum_{i=1}^{k} A_{i} x_{i}\right)$。
+证明：$p(B_{1}, B_{2}, \ldots, B_{k})=0$。（证明 $k=2, B_{1}=A_{2}, B_{2}=-A_{1}$ 的特殊情形，可得 10 分。）
+\end{enumerate}
+
+== 24秋高等代数（英才班）期中试题 ==
+
+    \textbf{第一题，计算题，共15分。}
+    
+    不需要写计算过程。将解答按序号写在试卷下方空白处。
+
+    记矩阵$A=\begin{pmatrix}1&1&7&1\\-1&1&3&0\\2&3&19&1\\3&2&16&1\end{pmatrix}\in\mathbb{R}^{4\times 4},Y=\begin{pmatrix}2\\0\\5\\5\end{pmatrix}\in\mathbb{R}^{4\times1}$.
+    \begin{enumerate}
+    \item（5分）与$A$行等价的行简化阶梯矩阵为$\underline{\quad(1)\quad}$.
+    \item（5分）线性方程组$AX=Y$的解集为$\underline{\quad(2)\quad}$. 将解集表述成集合
+    $$\left\{ X\in\mathbb{R}^{n\times 1}\mid X=\gamma_0+c_1\gamma_1+\cdots+c_k\gamma_k,c_1,\ldots,c_k\in\mathbb{R} \right\}$$
+    的形式.
+    \item（5分）记$T:\mathbb{R}^{4\times1}\rightarrow\mathbb{R}^{4\times1}$由$X\mapsto AX$给出,
+    记$e_1,\ldots,e_4$是$\mathbb{R}^{4\times1}$的标准基.
+    则$T$在有序基$\left\{ e_3,e_2,e_1,e_4 \right\}$下的表示矩阵是$\underline{\quad(3)\quad}$.
+    \end{enumerate}
+    \textbf{第二题，判断题，共15分。}
+    
+    判断下列命题的叙述是否总成立。若成立，给出简要的解释；若不成立，给出反例及简要的解释。
+    \begin{enumerate}
+    \item（5分）任意秩为$2$的矩阵$A\in\mathbb{R}^{3\times3}$总可以通过一系列初等行变换变为
+    $\begin{pmatrix}1&0&0\\0&1&0\\0&0&0\end{pmatrix}$.
+    \item（5分）对任意矩阵$A\in\mathbb{R}^{2\times 2}$,总有$A^TA=AA^T$.
+    \item（5分）对任意线性映射$T:\mathbb{R}^{2\times 2}\rightarrow\mathbb{R}^{2\times 2}$,
+    总存在$P,Q\in\mathbb{R}^{2\times 2}$使得对于任意的$X\in\mathbb{R}^{2\times 2}$均有$T(X)=PXQ$.
+    \end{enumerate}
+    \textbf{第三题(共25分)}
+    
+    给定$n\in\mathbb{N}$, $\mathbb{R}$上的$n$维线性空间$V$.
+    设$f,g$是$V$到$\mathbb{R}$上的$\mathbb{R}$线性映射，且$f,g\neq 0$.
+    \begin{enumerate}
+    \item（5分）求$N(f)$的维数，并证明你的结论.
+    \item（5分）证明：$\dim(N(f)\cap N(g))\geq n-2$.
+    \item（10分）证明下列三个命题等价:\\
+        \quad (a) $\dim(N(f)\cap N(g))= n-2$;\\
+        \quad (b) $f,g$是$\mathbb{R}$线性无关的;\\
+        \quad (c) $\dim(N(f)+ N(g))= n$.\\
+    \item（5分）若$f,g$是$\mathbb{R}$线性无关的，
+    证明：对任意$\alpha\in V$,均存在$\beta,\gamma\in V$,
+    使得$\alpha=\beta+\gamma,f(\alpha)=f(\beta),g(\alpha)=g(\gamma)$.
+    \end{enumerate}
+    \textbf{第四题(共25分)}
+    
+    给定$n$为正整数，给定$\mathbb{R}$上的$n$维线性空间$V$与$\alpha\in V$.
+    设$\mathcal{B}=\left\{ \alpha_1,\ldots,\alpha_n \right\}$是其一组有序基，
+    设$T$是$V$上的$\mathbb{R}$线性映射，使得$T\alpha_i=\alpha_{i+1}$对$1\leq i\leq n-1$,且$T\alpha_n=0$.
+    \begin{enumerate}
+    \item（5分）写出$[T]_{\mathcal{B}}$.
+    \item（10分）对任意正整数$k$,求$\operatorname{rank}(T^k)$，并证明你的结论.
+    \item（10分）记$L(V)$是$V$上的$\mathbb{R}$线性映射全体组成的线性空间，求子空间
+    $$\left\{ S\in L(V) \mid ST=TS \right\}$$
+    的维数，并证明你的结论.
+    \end{enumerate}
+    \textbf{第五题(共20分)}
+    
+    设$n$是正整数，$F$是域，设矩阵$A\in F^{n\times n}$满足$A^2=0$.
+    \begin{enumerate}
+    \item（10分）设$V,W$是$F$线性空间，其中$W$有限维，设$S,T$是$V$到$W$的线性映射。
+    证明：$\text{rank}(T+S)\leq\text{rank}(T)+\text{rank}(S)$，
+    并给出：``等号成立当且仅当$\text{Im}(S)\bigcap\text{Im}(T)=\{0\}$”这个命题的反例''。
+    \item（$^*$）（5分）设$F=\mathbb{R}$，证明：$\operatorname{rank}(A^T+A)=2\operatorname{rank}A$。
+    \item（5分）设$n$是正奇数，证明：$A+A^T$不是可逆矩阵。 
+    \end{enumerate}
+    \textbf{第六题(共20分)}
+    
+    给定$n\geq 3$,设$V$是域$F$上的$n$维线性空间.
+    设$V_1\subseteq V_2\subseteq\cdots\subseteq V_r$是$V$的一列子空间.
+    \begin{enumerate}
+    \item（5分）证明：存在$V$的一组基$\mathcal{B}$,使得任何一个$V_i$都能由$\mathcal{B}$中的若干元素张成.
+    \item（$^*$）（10分）设$W_1\subseteq W_2\subseteq\cdots\subseteq W_s$是$V$的第二列子空间。
+    证明：存在一组基$\mathcal{B}'$，使得每一个$V_i,W_j$均能由$\mathcal{B}'$中的若干个元素张成。
+    \item（5分）设$U_1\subseteq U_2\subseteq\cdots\subseteq U_t$是$V$的第三列子空间，
+    问：是否总存在$V$的一组基$\mathcal{B}''$，
+    使得每个$V_i,W_j,U_k$均能由$\mathcal{B}''$中的若干个元素张成？
+    \end{enumerate}
+
+== 24春高等代数（英才班）期末试题 ==
+\textbf{第一题，计算题，共 20 分。不需要写计算过程。}
+\begin{enumerate}
+\item 设 $A=\begin{pmatrix}-1 & 0 & 2 \\ \\ 0 & 1 & -2 \\ \\ 2 & -2 & 0\end{pmatrix}$，
+求 $A$ 的奇异值分解。（提示：注意 $A$ 是一个对称阵.）
+\item 设 $B=\begin{pmatrix}0 & 1 & -1 \\ \\ 0 & 1 & 1 \\ \\ 1 & 2 & 3\end{pmatrix}$，
+求 $B$ 的 $QR$ 分解，即求一个实正交阵 $Q$ 和一个对角线上都为正数的上三角阵 $R$ 使得 $B=QR$。
+\end{enumerate}
+
+\textbf{第二题，共 15 分。}设 $A=(a_{ij})$ 为 $n$ 阶复正规方阵。
+设 $A$ 的特征值为 $\lambda_{1}, \lambda_{2}, \cdots, \lambda_{n}$。证明
+$$\max_{1 \leq i, j \leq n}|a_{ij}| \leq \max_{1 \leq k \leq n}|\lambda_{k}|.$$
+
+\textbf{第三题，共 20 分。}设 $V$ 是 $n$ 维复线性空间，$\omega \in \bigwedge^{2} V^{*}$。
+记 $\omega^{k}=\omega \wedge \cdots \wedge \omega$ (共 $k$ 个)。
+若 $\omega^{k} \neq 0$，且 $\omega^{k+1}=0$，
+求 $\omega$ 作为 $V$ 上的反对称二次型的秩，并证明你的结论。
+
+\textbf{第四题，共 15 分。}令 $H_{n}$ 是全体 $n$ 阶 Hermite 阵的集合，
+$P_{n}$ 是全体 $n$ 阶 Hermite正定阵的集合。
+定义映射 $f: H_{n} \rightarrow P_{n} ; f(A)=e^{A}$，
+其中 $e^{A}=\sum_{i=0}^{\infty} \frac{A^{i}}{i!}$。证明：$f$是一个双射。
+
+\textbf{第五题，共 15 分。}设 $V$ 和 $W$ 是 $2$ 维复线性空间。
+若线性映射 $T: V \rightarrow V$ 和 $S: W \rightarrow W$ 
+在 $V$ 的基 $\alpha_{1}, \alpha_{2}$ 以及 $W$ 的基 $\beta_{1}, \beta_{2}$ 下的表示矩阵均为 
+$\begin{pmatrix}2024 & 2025 \\ \\ 0 & 2024\end{pmatrix}$。
+\begin{enumerate}
+\item (5 分) 利用 $\{\alpha_{i}\}$ 和 $\{\beta_{i}\}$ 及其相关的对象给出张量积空间 $V^{*} \otimes W$ 的一组基，其中 $V^{*}$ 是 $V$ 的对偶空间；
+\item (10 分) 定义映射 $f: L(V, W) \rightarrow L(V, W), f(U)(\alpha)=S(U(T(\alpha))), U \in L(V, W), \alpha \in V$。求 $f$ 的表示矩阵的 Jordan 标准型。
+\end{enumerate}
+\textbf{第六题，共 15 分。}设 $V$ 为有限维复线性空间，$\{\alpha_{1}, \ldots, \alpha_{n}\}$ 为 $V$ 的一组基。设 $W \subset V$ 为子空间。
+\begin{enumerate}
+\item 写出张量积 $W \otimes V$ 所满足的泛性质 (也称``万有性质'')。
+\item 证明 $(W \otimes V) \cap (V \otimes W)=W \otimes W$。
+（注意这里 $W \otimes V$ 等皆可自然地视作 $V \otimes V$ 的子空间，而此等号的意思是两边作为子空间相等.）
+\item 若 $\alpha_{1} \otimes \alpha_{1}+\alpha_{2} \otimes \alpha_{2}+\cdots+\alpha_{n} \otimes \alpha_{n} \in W \otimes V$，证明 $W=V$。
+\end{enumerate}
+
+== 23秋高等代数（英才班）期末试题 ==
+\textbf{第一题, 填空题, 共 15 分, 每题 5 分。}
+
+将答案按序号写在答题纸上, 不要写在原题目上。
+
+考虑 $A=\begin{pmatrix}2 & a & b \\ 0 & 1 & c \\ 0 & 0 & 2\end{pmatrix} \in \mathbb{C}^{3 \times 3}$。其中 $a, b, c$ 为参数。
+
+\begin{enumerate}
+  \item 考虑多项式 $f(x)=x^{2023}+1$, 则矩阵 $f(A)$ 的行列式为$\underline{\quad(1)\quad} 。$
+  \item $A$ 可对角化的充要条件是 $\underline{\quad(2)\quad} 。$
+  \item 当 $A$ 可对角化时, 写出 $\mathbb{C}^{3 \times 1}$ 中由 $A$ 的特征向量组成的一组基为 $\underline{\quad(3)\quad} 。$
+\end{enumerate}
+
+\textbf{第二题，举例题，共 15 分，每题 5 分。}
+
+分别举出满足如下条件的 $2$ 阶复矩阵的例子。
+\begin{enumerate}
+  \item $A$ 不可对角化。
+  \item $B$ 和 $C$ 是可对角化矩阵，但是 $B$ 和 $C$ 不可同时对角化。
+  \item $D$ 是对角阵， $E$ 不是对角阵，但是 $D$ 和 $E$ 可同时对角化。
+\end{enumerate}
+
+\textbf{第三题（共 15 分）}
+
+给定正整数 $n$。设 $V$ 是 $n$ 维 $\mathbb{C}$-线性空间，设 $T: V \rightarrow V$ 是线性映射。\\
+\begin{enumerate}
+  \item （5 分）证明：存在 $V$ 的 $1$ 维线性子空间 $W_{1}$ 满足 $T(W_{1}) \subset W_{1}$。
+  \item （5 分）证明：存在 $V$ 的 $n-1$ 维线性子空间 $W_{n-1}$ 满足 $T(W_{n-1}) \subset W_{n-1}$。
+  \item (5 分) 判断：对任意整数 $0 \leq m \leq n$，
+  是否存在 $V$ 的 $m$ 维线性子空间 $W_{m}$满足 $T(W_{m}) \subset W_{m}$? 
+  若成立请给出证明，若不成立请举出反例。
+\end{enumerate}
+
+\textbf{第四题（共 20 分）}
+
+给定 $A \in \mathbb{C}^{n \times n}$。定义如下线性映射 $T: \mathbb{C}^{n \times n} \rightarrow \mathbb{C}^{n \times n}$,
+$$T(X)=A X A+A X+X A.$$
+假设 $A$ 是幂零的（即存在一个正整数 $r$, 使得 $A^{r}=0$）。
+\begin{enumerate}
+  \item (10 分) 证明： $T$ 也是幂零的。
+  \item (10 分) 求 $T$ 的特征多项式。
+\end{enumerate}
+
+\textbf{第五题（共 20 分）}
+
+给定正整数 $n>m$。设 $V$ 是 $n$ 维 $\mathbb{C}$-线性空间， 
+$T: V \rightarrow V$ 是 $\mathbb{C}$-线性映射。
+假设 $T(W) \subset W$ 对任意 $m$ 维线性子空间 $W \subset V$ 成立。
+\begin{enumerate}
+\item（10 分）证明： $T(W^{\prime}) \subset W^{\prime}$ 对任意 $1$ 维线性子空间 $W^{\prime} \subset V$ 成立。\\
+\item (10 分) 求出所有满足条件的 $T$。
+\end{enumerate}
+
+\textbf{第六题（共 15 分）}
+
+设 $V$ 是域 $F$ 上的线性空间， $T$ 是 $V$ 上的线性映射。
+\begin{enumerate}
+\item（10 分）设 $f \in F[x]$ 是一个多项式使得 $f(T)=0$，且 $f=g^{r} h$，
+其中 $g$ 和 $h$ 是互素的多项式， $r$ 是正整数。
+证明： $N(g^{r}(T))=N(g^{s}(T))$ 对任意正整数 $s \geq r$ 成立。其中 $N(-)$ 表示零空间。
+\item（5 分）进一步，设 $V$ 是有限维线性空间， $p$ 是 $T$ 的极小多项式，
+且 $p= p_{1}^{r_{1}} p_{2}^{r_{2}} \cdots p_{m}^{r_{m}}$ 是 $F[x]$ 中的不可约分解。
+对任意 $1 \leq i \leq m$，取定正整数 $s_{i} \geq r_{i}$，
+且令 $V_{i}=N(p_{i}^{s_{i}}(T))$。证明:
+$$V=V_{1} \oplus V_{2} \oplus \cdots \oplus V_{m}.$$
+\end{enumerate}
+
+
+== 23秋高等代数（英才班）期中试题 ==
+\textbf{第一题, 填空题, 共 15 分, 每题 5 分。}
+
+将答案按序号写在答题纸上, 不要写在原题目上。
+
+\begin{enumerate}
+  \item 考虑实矩阵 $A=\begin{pmatrix}1 & 2 & 3 & 4 \\ 2 & 1 & 1 & 1 \\ -1 & 1 & 1 & 2\end{pmatrix}$。
+  使得 $C A$ 是行简化阶梯矩阵 (RREF) 的一个可逆实矩阵 $C=\underline{\quad(1)\quad} 。$
+
+  \item 考虑 1 中的 $A$，实系数线性方程组
+$$A\begin{pmatrix}x_{1} \\x_{2} \\x_{3} \\x_{4}\end{pmatrix}
+=\begin{pmatrix}2 \\1 \\1\end{pmatrix}$$
+的解集是$\underline{\quad(2)\quad} $（答案应当表示为列向量空间 $\mathbb{R}^{4 \times 1}$ 中的带自由参数的集合）$。$
+
+\item 考虑 $T: \mathbb{R}^{2 \times 2} \rightarrow \mathbb{R}^{2 \times 2}$ 由 $T(X)=C X C$ 给出，
+其中 $C=\begin{pmatrix}1 & 2 \\ 3 & 0\end{pmatrix}$。
+考虑有序基 $\mathcal{B}=\left\{\begin{pmatrix}1 & 0 \\ 0 & 0\end{pmatrix},
+\begin{pmatrix}0 & 1 \\ 0 & 0\end{pmatrix},
+\begin{pmatrix}0 & 0 \\ 1 & 0\end{pmatrix},
+\begin{pmatrix}0 & 0 \\ 0 & 1\end{pmatrix}\right\}$。
+则 $T$ 在 $\mathcal{B}$ 下的表示矩阵是$\underline{\quad(3)\quad} 。$
+\end{enumerate}
+
+\textbf{第二题，判断题，共 12 分，每题 4 分。}
+
+判断下列叙述是否正确。若正确，简要说明理由。若错误，举出反例并简要说明。
+
+\begin{enumerate}
+  \item 设 $V$ 是 $F$ 线性空间且 $V_{1}, V_{2}, W$ 是 $V$ 的子空间。
+  如果 $V_{1}+W=V_{2}+W$ 且 $V_{1} \cap W=V_{2} \cap W=\{0\}$，则 $V_{1}=V_{2}$。
+  \item 对任意矩阵 $A, B \in \mathbb{R}^{n \times n}$, $A B$ 和 $B A$ 相似。
+  \item 若矩阵 $A, B \in \mathbb{R}^{n \times n}$ 满足 $s A+t B$ 对任意 $s, t \in F$ 都不可逆，
+  则存在一个非零的 $\alpha \in \mathbb{R}^{n \times 1}$ 使得 $B \alpha=A \alpha=0$。
+\end{enumerate}
+
+\textbf{第三题（共 18 分）}
+
+\qquad 给定有限维 $\mathbb{R}$ 线性空间 $V$ 及两个 $V$ 中的子空间 $V_{1} \subset V_{2} \subset V$。
+求最大的整数 $k$ （表示成关于已知空间的维数的函数），使得存在 $V$ 的 $k$ 维子空间 $W$ 满足 $W \cap V_{2}=V_{1}$，并给出一种 $W$ 的构造方法。
+
+\textbf{第四题（共 10 分）}
+
+\qquad 给定一个 $n$ 维 $\mathbb{R}$ 线性空间 $V$ 及 $V$ 中的 $m$ 维子空间 $W$。考虑
+\[U=\{T: V \rightarrow V \mid T \text { 是线性映射且对任意 } \alpha \in W \text { 都有 } T \alpha \in W\} .\]
+\qquad 将 $U$ 视为 $L(V)$ 的子空间。计算 $U$ 的维数。
+
+\textbf{第五题（共 20 分）}
+
+\qquad 将 $\mathbb{R}^{n \times n}$ 视为自然的 $\mathbb{R}$ 线性空间。
+对给定的矩阵 $A, B \in \mathbb{R}^{n \times n}$,
+定义线性映射 $T: \mathbb{R}^{n \times n} \rightarrow \mathbb{R}^{n \times n}, T(X)=A X-X B$。
+\begin{enumerate}
+  \item (10 分) 令 $\mathcal{B}$ 是 $\mathbb{R}^{n \times n}$ 的一组有序基, 
+  计算 $[T]_{\mathcal{B}}$ 的迹（即对角线上元素之和）,
+  用 $A=(A_{i j}), B=(B_{i j})$ 中的元表示。
+  \item（10分）令 $A=B=\operatorname{diag}(d_{1}, \ldots, d_{n})$ 是对角矩阵，其中 $d_{i}$ 是两两不同的实数。计算 $T$ 的像空间的维数。
+\end{enumerate}
+
+\textbf{第六题（共 20 分）}
+
+\qquad 给定 $\mathbb{R}^{n \times n}$ 的一个线性子空间 $V$，
+使得对任意的 $A \in V$ 及任意的初等矩阵 $P \in \mathbb{R}^{n \times n}$ 都有 $P A \in V$。
+记 $r_{V}=\max \{\operatorname{rank}(A) \mid A \in V\}$。
+\begin{enumerate}
+  \item (8 分) 求所有使 $r_{V}=n$ 的 $V$。
+  \item（12 分）给出 $\operatorname{dim} V$ 的计算公式，用 $r_{V}$ 表示。
+\end{enumerate}
+
+\textbf{第七题（共 15 分）}
+
+\qquad 设$n$和$k$是正整数。
+\begin{enumerate}
+  \item (10 分) 设$V$是一个$n$维$\mathbb{Q}$线性空间
+  且$\alpha_1,\dots,\alpha_k$是$V$中的非零元。
+  证明：存在一个$V$的$n-1$维子线性空间$W$，
+  使得$\alpha_i \notin W$对任意$1 \le i \le k$成立。
+  \item（10 分）设$x_1,x_2,\dots,x_{2n-1}\notin\mathbb{Q}$是$2n-1$个无理数。
+  求证：存在指标集$\{1,2,\dots,2n-1\}$的子集$S$使得$|S| \ge n$，
+  并且对$S$的任意非空子集$S' \subset S$，求和$\sum_{i \in S'}x_i$是无理数。
+\end{enumerate}
+
+
+{{comment|\textbf{更多历年试卷载于[[用户:Solution/临时页面 3|这里]]。}}}

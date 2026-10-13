@@ -1,0 +1,922 @@
+\def\pa{\partial}
+\def\textRe{\operatorname{Re}}
+\def\textIm{\operatorname{Im}}
+\def\Arg{\operatorname{Arg}}
+
+== 共形映射 ==
+
+\subsection*{1.1 正规族}
+\begin{itemize}
+\item[1.] 取分式线性变换$h(z) = \frac{z-1}{z+1}$,其将右半平面映成单位圆盘.
+记具有正实部的解析函数族为$\{f\}$, 则$\{h\circ f\}$值域在单位开圆盘内. 
+由Montel定理知$\{h\circ f\}$是欧氏度量下的正规族, 
+又因为有界情形下欧式度量和球面度量互相控制,故其亦为球面度量下的正规族.
+注意到$h$保持球面度量, 得$\{f\}$也是球面度量下的正规族.
+
+\item[2.]
+(1) $\{z^n\}$在$\mathbb{D}$上是欧式度量下正规族：
+由 $|z^n|\le 1$及Montel定理得到其正规性.
+
+(2) $\{z^n\}$在$\mathbb{C}\backslash \mathbb{D}$上是球面度量下正规族: 
+考虑 $f_n(z) = z^n$的球面导数
+$f^{\#}_{n}(z) = \frac{2n|z|^{n-1}}{1+|z|^{2n}}$. 
+因为 $|z|>1$, 球面导数 $\{f^{\#}_n\}$内闭一致有界.
+由Marty定理, $\{z^n\}$在球面度量下正规.
+
+(3) 在含单位圆周的任一邻域上不正规: 只需考虑其球面导数$\{f^{\#}_n\}$, 在单位圆周上 $\{f^{\#}_n(re^{i\theta})\}
+ =\{n\}$, 故在含单位圆周上一点的任意闭邻域上球面导数不一致有界,由Marty定理说明其不具备正规性.
+
+\item[3.]
+ 充分性: 若 $f$是多项式, 现选取序列 $\{c_n\}$, 若该序列有界, 
+ 则必有收敛子列 $\{c_{n_k}\}$, 显然 $\{f(c_{n_k}z)\}$内闭一致收敛; 
+ 若序列$\{c_n\}$无界, 取 $\{c_{n_k}\}$发散至无穷, 此时 $c_{n_k}z$内闭一致发散至无穷, 
+ 由多项式性质知$\{f(c_{n_k}z)\}$亦内闭一致收敛至无穷(球面度量意义下). 
+ 从而序列 $\{f(c_n z)\}$总有内闭一致的收敛子列,说明其正规性.
+
+必要性: 若$\{f(c z)\}$是正规族, 则考虑一无界序列 $\{c_n\}$,
+在闭环 $\{r_1+\delta\le |z|\le r_2-\delta\}$($\delta$充分小)上, 
+存在子列$\{c_{n_k}\}$使得$\{f(c_{n_k}z)\}$收敛至某一亚纯函数 $g$.
+若该子序列$\{c_{n_k}\}$收敛,则说明 $f$ 亚纯, 
+也就是$\infty$是 $f$的极点或者可去奇点, 亦即 $f$是多项式. 
+下面考虑子序列$\{c_{n_k}\}$发散至无穷的情形, 不妨记该子序列为 $\{c_n\}$. 
+
+(1)若$g$为亚纯函数, 由极点的孤立性,可选取闭环
+$\{r_3\le |z|\le r_4\}\subseteq \{r_1+\delta\le |z|\le r_2-\delta\}$ 
+使得 $g$在$\{r_3\le |z|\le r_4\}$上有界, 
+这说明$\{f(c_{n}z)\}$在$\{r_3\le |z|\le r_4\}$上一致收敛至$g$, 
+这推出 $f$在 $\pa B(0,c_{n}r_3)$上有界.
+由最大模原理, 其在$B(0,c_{n}r_3)$上有界, 又$\{c_n\}$无界, 
+这说明 $f$一致有界,由Liouville定理知 $f$为常数.
+
+(2)若 $g\equiv \infty$, 则断言 $\infty$不是 $f$ 的本性奇点, 
+否则取 $z_n \to \infty$ 而 $f(z_n)$ 有界, 
+不妨令$c_n$满足 $r_1+\delta\le c_n|z_n|\le r_2-\delta$, 
+此时有 $\infty =\lim_{n \to \infty}|f(c_{n}z_{n})|<\infty$, 矛盾. 
+故$\infty$是 $f$的极点或者可去奇点, 亦即 $f$是多项式.
+
+\item[4.]
+给定 $z_0 \in \mathbb{C}$,以下分情况讨论.
+
+(1) 若 $f(z_0)$不为 $\infty$, 则由有限情形下球面度量和欧式度量可互相控制, 
+知在 $z_0$的一个邻域$B(z_0,\delta)$上 $f_n$按欧式度量内闭一致收敛于 $f$, 
+由Weierstrass定理知 $f$在$B(z_0,\delta)$上解析, 
+并且 $f^{\#}_n$在$B(z_0,\delta)$上内闭一致收敛于$f^{\#}$.
+
+(2) 若 $f(z_0)=\infty$, 考虑 $\frac{1}{f}$, 
+由(1)在 $z_0$的一个 邻域$B(z_0,\delta)$上 $\frac{1}{f_n}$
+按欧式度量内闭一致收敛于 $\frac{1}{f}$,  
+并且$(\frac{1}{f_n})^{\#} = f^{\#}_n$在$B(z_0,\delta)$上
+内闭一致收敛于$(\frac{1}{f})^{\#} =f^{\#}$.
+注意到变换 $z\mapsto \frac{1}{z}$保持球面度量, 
+知该邻域上$f_n$按球面度量内闭一致收敛于 $f$.
+
+\item[5.]
+由Arzela--Ascoli定理, “亚纯函数族 $\mathcal{M}$正规”
+等价于“$\mathcal{M}$的关于球面度量内闭一致有界和等度连续”.
+球面度量本身有界,故后一命题等价于“$\mathcal{M}$的关于球面度量内闭一致有界”. 注意到公式
+$$d(f(z_1),f(z_2)) = \int_{\gamma}f^{\#}(z)|\mathrm{d}z|,$$
+显然有“$\mathcal{M}$的关于球面度量内闭一致有界”等价于
+“$\mathcal{M}$的球面导数内闭一致有界”.
+\end{itemize}
+
+\subsection*{1.2 Riemann映射定理}
+\begin{itemize}
+\item[1.] 由定义, $\mathbb{D}\subseteq r(f)^{-1}f(\Omega)$, 
+考虑Riemann映射 $\varphi:\Omega\to \mathbb{D}$
+和$f_0 = \frac{\varphi}{\varphi'(a)}$, 
+则有单射 $g = \varphi\circ (r(f)^{-1}f)^{-1}: 
+\mathbb{D} \to \mathbb{D},\ g(0) = 0$. 
+由Schwarz引理,有 $|g'(0)|\le 1$, 亦即
+$$|g'(0)| = |r(f) f'(a)^{-1} \varphi'(a) |\le 1 \Rightarrow r(f)
+\le \frac{f'(a)}{\varphi'(a)} = \frac{1}{\varphi'(a)} = r(\Omega,a). $$
+
+等号成立当且仅当 $\varphi\circ (r(f)^{-1}f)^{-1} = \text{id}_{\mathbb{D}}$, 
+此时 $r(f) = \varphi'(a)^{-1}$, 
+有 $f = r(f)\varphi = \frac{\varphi}{\varphi'(a)} = f_0$.
+
+\item[2.]
+考虑关于原点的Riemann映射 $\psi:\mathbb{D}\to  f(\Omega),
+\ \varphi:\Omega\to \mathbb{D}$, 
+则$g = \varphi\circ f^{-1} \circ \psi: \mathbb{D}\to \mathbb{D}$
+满足 $g(0) = 0$,  由Schwarz引理,有 $|g'(0)|\le 1$, 亦即
+$$|g'(0)| =|\psi'(0) f'(a)^{-1} \varphi'(a)|\le 1
+\Rightarrow |\psi'(0)|\le \frac{1}{\varphi'(a)}.$$
+注意到 $\Delta |\psi'(z)|^2\ge 0$, 由次调和函数性质有
+$$M(f) = \text{Area}(f(\Omega)) 
+= \int_{\mathbb{D}}|\psi'(z)|^2\mathrm{d}u\mathrm{d}v 
+\ge \pi |\psi'(0)|^2 =\frac{\pi}{\varphi'(a)^2}  = M(f_0).$$
+
+等号成立时必有$g = \text{id}_{\mathbb{D}}$
+并且 $|\psi'(z)|^2 \equiv |\psi'(0)|^2$, 
+这说明 $f(\Omega)$是一个圆,显然有$f = f_0$.
+
+\item[3.]
+由开映射性质,知存在一条从原点出发且与圆周相交的射线,其上没有落在 $f(\mathbb{D})$中的点.
+
+考虑映射 $\varphi_1(z) = \frac{f(z)-a}{1-af(z)}$, 
+由前述性质,可取 $\log\varphi_1(z)$其中一个单值分支使得 $\log\varphi_1(0) = \log a$, 
+记$\varphi_2(z) =(\log \frac{1}{a})^{-1} \log\varphi_1(z)$, 
+其值域在左半平面内,并且 $\varphi_2(0) = -1$. 
+再考虑映射 $\varphi_3(z) = \frac{\varphi_2(z)+1}{\varphi_2(z)-1}$, 
+其值域落在 $\mathbb{D}$中. 显然有$\varphi_3(0) = 0$, 
+由Schwarz引理, $|\varphi_3'(0)|\le 1$,计算可得
+\begin{align*}
+    &\varphi'_1(0) = (1-a^2)f'(0),\\
+    &\varphi'_2(0) = \frac{\varphi'_1(0)}{\varphi_1(0)\log \frac{1}{a} } = \frac{(1-a^2)f'(0)}{-a\log \frac{1}{a} },\\
+    &\varphi'_3(0) = \frac{2\varphi'_2(0)}{(\varphi_2(0)-1)^2} = \frac{(1-a^2)f'(0)}{-2a\log \frac{1}{a} }.
+\end{align*}
+
+由$|\varphi_3'(0)|\le 1$得到
+$$|f'(0)|\le \frac{2a\log \frac{1}{a}}{1-a^2}.$$
+
+等号当且仅当 $\varphi_3(z) = e^{i\theta}z,\ \theta\in \mathbb{R}$, 
+代入计算可得到题示等号成立条件.
+
+\item[4.]
+首先证明连通分支 $E$必定为单连通的. 
+若否, 则存在 $z_0 \in \mathbb{C}\backslash E$和 $E$中
+简单闭曲线 $\gamma_0$,使得 $z_0$位于 $\gamma_0$的内部. 
+另外由 $E$的定义, 对 $x \in \pa E$, 其任意小的邻域内
+必然存在 $w_0 \in  \Omega$ (否则该邻域并上 $E$是一个更大的连通集,
+与 $E$连通分支的定义矛盾). 由 $\gamma\subseteq E$,
+可以在$\gamma_0$外部选取这样的 $w_0$ .
+现在考虑 $z_0$的归属: 若 $z_0 \in \Omega$, 
+则$z_0$与 $w_0$被 $\gamma_0$分割,与 $\Omega$的连通性相矛盾; 
+若 $z_0 \not\in \Omega$, 
+其属于 $\Omega$的另一个含于$\gamma_0$的内部的有界余连通分支 $E'$ ,
+类似于$E$同样可以取 $w'_0 \in \Omega$位于 $E'$边界的附近且含于 $\gamma_0$
+(即便$E'$边界与 $\gamma_0$重合也可以, $w'_0$也落在 $\gamma_0$内部,
+因为 $\gamma_0 \subseteq E$),
+其又与 $\Omega$的连通性相矛盾. 故这样的 $z_0$不存在, $E$是一个单连通集.
+
+其次对 $\pa E$上任一点 $z$ 必然存在邻域$B(z,\delta)$ 
+使得其上没有其它 $\Omega$的余分支中的点, 否则与连通分支的定义矛盾.
+于是这样的 $\{B(z,\delta)\}$组成了 $\pa E$的开覆盖,
+由其有界性可取其有限开覆盖 $\{B(z_i,\delta_i)\}_{1\le i\le n}$. 
+因此$\tilde{E} = \bigcup_{i}B(z_i,\frac{\delta_i}{2})\cup E$是单连通的, 
+其边界 $\gamma$为Jordan曲线, 
+$E$在其内部而$\mathbb{C}\backslash (\Omega\cup E)$在其外部.
+由辐角原理, 可适当选取定向使得若 $z\in E,\ n(\gamma,z)=1,
+\ z\in \mathbb{C}\backslash(\Omega\cup E),\ n(\gamma,z)=0$.
+\end{itemize}
+
+\subsection*{1.3.1 边界对应定理}
+\begin{itemize}
+\item[1.]
+由$D$是有界的,知 
+$$\text{diam}(D) = \sup_{z,z' \in \pa D}|z-z'|.$$
+又因为 $D$是连通分支, 对$z\in \partial D$,其任意小的邻域内必然存在 $w \in  E$ 
+(否则该邻域并上 $D$是一个更大的连通集,与 $D$连通分支的定义矛盾),
+因此对 $\varepsilon>0$和 $z,z' \in \pa D$, 总存在$w,w'\in E$, 
+使得 $|w-w'|\ge |z-z'|-\varepsilon$, 
+关于 $z,z'$取 $\sup$ 并且令 $\varepsilon\to 0$就得到 
+$\text{diam}(D)\le \text{diam}(E)$.
+
+\item[2.]
+注意到在Wolff引理的证明中,将 $\mathbb{D},\ \Omega$分别换成有界区域 
+$\Omega,\ \Omega'$仍然成立, 于是对 $z_0 \in \pa \Omega$ 和
+弧线 $\gamma_r = \pa B(z_0,r)\cap \Omega,\ \Gamma_r = f(\gamma_r)$, 有
+$$\inf_{\sqrt{\rho}<r<\rho}\ell(\Gamma_r)\lesssim \frac{1}{\log(\frac{1}{\rho})},$$
+从而存在 $r_n \to 0^+$使得 $\ell(\Gamma_{r_n})\to 0$. 对 $z\to z_0$, 
+不妨设其落在 $\left\{r_n\le |z-z_0|\le r_{n+1}  \right\}$之中,
+再考虑以 $z$为原点的球 $B(z,r)$,其边界恰好
+与 $\pa \Omega$, $\gamma_{r_n}$ 或 $\gamma_{r_{n+1}}$之一相交. 
+不妨假设其恰好与 $\gamma_{r_{n+1}}$相交, 如下图所示. 
+\begin{center}    
+    \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+    \draw    (196,179) .. controls (236,149) and (217.67,134.22) .. (257.67,104.22) ; 
+    \draw    (257.67,104.22) .. controls (297.67,74.22) and (342.33,130.44) .. (382.33,100.44) ;
+    \draw    (382.33,100.44) .. controls (422.33,70.44) and (389.67,237.22) .. (429.67,207.22) ;
+    \draw   (284,104.61) .. controls (284,82.3) and (302.08,64.22) .. (324.39,64.22) .. controls (346.7,64.22) and (364.78,82.3) .. (364.78,104.61) .. controls (364.78,126.92) and (346.7,145) .. (324.39,145) .. controls (302.08,145) and (284,126.92) .. (284,104.61) -- cycle ;
+    \draw   (221.27,104.61) .. controls (221.27,47.65) and (267.44,1.48) .. (324.39,1.48) .. controls (381.35,1.48) and (427.52,47.65) .. (427.52,104.61) .. controls (427.52,161.56) and (381.35,207.73) .. (324.39,207.73) .. controls (267.44,207.73) and (221.27,161.56) .. (221.27,104.61) -- cycle ;
+    \draw    (324.39,104.61) -- (335.05,86.85) -- (344.36,71.32) ;
+    \draw [shift={(345.39,69.61)}, rotate = 120.96] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    \draw    (324.39,104.61) -- (420.75,75.58) ;
+    \draw [shift={(422.67,75)}, rotate = 163.23] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ; 
+    \draw  [color={rgb, 255:red, 253; green, 3; blue, 3 }  ,draw opacity=1 ][line width=3] [line join = round][line cap = round] (324.43,103.89) .. controls (324.43,103.89) and (324.43,103.89) .. (324.43,103.89) ; 
+    \draw  [color={rgb, 255:red, 253; green, 3; blue, 3 }  ,draw opacity=1 ][line width=3] [line join = round][line cap = round] (324.43,172.89) .. controls (324.43,172.89) and (324.43,172.89) .. (324.43,172.89) ;
+    \draw  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ] (296.68,172.71) .. controls (296.68,157.41) and (309.08,145) .. (324.39,145) .. controls (339.7,145) and (352.1,157.41) .. (352.1,172.71) .. controls (352.1,188.02) and (339.7,200.43) .. (324.39,200.43) .. controls (309.08,200.43) and (296.68,188.02) .. (296.68,172.71) -- cycle ; 
+    \draw    (324.39,172.71) -- (344.8,158.05) ;
+    \draw [shift={(346.43,156.89)}, rotate = 144.31] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+    \draw (317,105.4) node [anchor=north west][inner sep=0.75pt]    {$z_{0}$};
+    \draw (304,73.4) node [anchor=north west][inner sep=0.75pt]    {$r_{n+1}$};
+    \draw (365,73.4) node [anchor=north west][inner sep=0.75pt]    {$r_{n}$};
+    \draw (303,119.4) node [anchor=north west][inner sep=0.75pt]    {$\gamma _{r_{n+1}}$};
+    \draw (326.39,214.13) node [anchor=north west][inner sep=0.75pt]    {$\gamma _{r_{n}}$};
+    \draw (236,175.4) node [anchor=north west][inner sep=0.75pt]    {$\Omega $};
+    \draw (306,167.4) node [anchor=north west][inner sep=0.75pt]    {$z$};
+    \draw (331,166.4) node [anchor=north west][inner sep=0.75pt]    {$r$};
+    \end{tikzpicture}
+    \end{center}
+    
+由 $f$共形, 在 $r_n \to 0$时其在圆 $B(z,r)$上的像 $f(B(z,r))$
+也近似为一个圆 $B(f(z),r')$, 且边界与 $\gamma_{r_{n+1}}$相交,
+同时在 $r_n \to 0$时有
+$$r'^2\lesssim\text{Area}(B(f(z),r'))
+\le \int_{\Omega\cap\{|z-z_0|\le r_n\}}|f'(z)|^2\mathrm{d}x\mathrm{d}y \to 0,$$
+
+因此当 $\text{dist}(z,\pa \Omega)\to 0$时,按上述推理有
+$$\text{dist}(f(z),\pa \Omega')\le r' + \ell(\gamma_{n+1})\to 0.$$
+
+\item[3.]
+由 $\Omega$是一个Jordan区域并且 $f$在 $\pa \Omega$ 上是单射,
+可知 $f(\pa \Omega)$是 Jordan曲线. 适当选取Jordan曲线的定向, 
+对任一 $w \in \text{Ext}f(\pa \Omega)$,有 $n(f(\pa \Omega),w) = 0$, 
+由辐角原理知 $f(z)-w$在 $\Omega$内无解,
+这说明 $f(\Omega)\subseteq \text{Int}f(\pa \Omega) \cup f(\pa \Omega)$. 
+由开映射定理可知 $f(\Omega)\cap f(\pa \Omega) =\varnothing$, 
+从而$f(\Omega)\subseteq \text{Int}f(\pa \Omega)$. 
+考虑任一$w \in \text{Int}f(\pa \Omega)$,有 $n(f(\pa \Omega),w) = 1$, 
+由辐角原理知 $f(z)-w$在 $\Omega$内有唯一解, 
+这说明 $f$单叶并且$f(\Omega)=\text{Int}f(\pa \Omega)$.
+
+\item[4.]
+取另一Riemann映射$\psi:\Omega\to \mathbb{D}$, 
+使用边界对应定理让其连续延拓至边界成为同胚, 
+记 $(w'_1,w'_2,w'_3) = (\psi(w_1), \psi(w_2), \psi(w_3))$, 问题等价于:
+证明存在唯一的Riemann映射 $\varphi:\mathbb{D}\to \mathbb{D}$
+使其连续延拓到边界后满足 
+$(\varphi(z_1), \varphi(z_2), \varphi(z_3)) = (w'_1,w'_2,w'_3)$.
+
+事实上连续延拓后的$\varphi : \overline{\mathbb{D}}\to \overline{\mathbb{D}}$, 
+经由反射原理可进一步延拓为 $\mathbb{C}_{\infty}$上的自同构, 
+而复球面上自同构由其在三个不同点上的取值唯一确定,由此证明命题.
+
+\item[5.]
+由 $\Omega$单连通知其为 Jordan区域, 则由边界对应定理知
+有连续延拓后得到的同胚 $g^{-1}:\overline{\mathbb{D}} \to \overline{\Omega}$, 
+从而有$\lim_{t \to 1^-}g(\gamma(t)) 
+= g(\lim_{t \to 1^-}\gamma(t)) = g(w_0) \in \pa \mathbb{D}$.
+\end{itemize}
+
+\subsection*{1.3.2 连续延拓}
+\begin{itemize}
+\item[1.]
+(1) 连通性: 若否, 则 $\varphi(A) = B\cup C$, $B,\ C$均为即开又闭的集合, 
+则由连续映射定义,  $\varphi^{-1}(B),\ \varphi^{-1}(C)$也都即开又闭,
+并且 $A = \varphi^{-1}(B)\cup \varphi^{-1}(C)$, 与 $A$的连通性相矛盾. 故 $A$ 连通.
+
+(2) 紧性: 由 $A$紧知其有界且闭, 从而 $\varphi(A)$有界且闭, 由Henie--Borel性质知其为紧集.       
+
+(3) 局部连通性: 已知 $\varphi(A)$为连通紧集, 
+对 $w = \varphi(z) \in \varphi(A)$和 $\varepsilon>0$, 
+由映射连续性知存在 $\delta>0$使得 $\varphi(B(z,\delta))\subseteq B(w,\varepsilon)$.
+再由 $A$的局部连通性, 存在 $z$的连通邻域 $E\subseteq B(z,\delta')$, 
+由连通性在连续映射下保持不变, 知 $\varphi(E)$是 $w$的连通邻域
+并且 $\varphi(E)\subseteq B(w,\varepsilon)$,此即 $\varphi(A)$的局部连通性.
+
+\item[2.]
+由1.2节第4题的解答, 可知 $\mathbb{C}\backslash A$的连通分支 $E$是单连通的, 
+并且对 $z \in \pa E$, 总能找到其充分小的邻域$B(z,\delta)$
+使得其与$\mathbb{C}\backslash (A\cup E)$的连通分支无交.
+由 $E$的单连通性,知 $\tilde{E} = E\cap B(z,\delta)$也是单连通的. 
+
+取Riemann映射 $\varphi:\mathbb{D}\to \tilde{E}$, 
+下面按定理1.14的方法证明其能延拓成 $\overline{\mathbb{D}}\to \overline{\tilde{E}}$
+的连续满射. 事实上只需略微修改定理1.14的证明过程即可: 
+在1.14中的“(2) $\Rightarrow$(1)” 证明中, 令 $\Omega = \tilde{E}$. 
+对位于 $\pa \Omega = \pa \tilde{E}$上的 $\zeta'_n,\ \zeta''_{n}\to \zeta_0$, 
+由 $A$的为局部连通的连通紧集,知 $\zeta'_n,\ \zeta''_{n},\ \zeta_0 \in A$
+并且存在 $\zeta_0$在 $A$中的连通紧邻域 $E_n$包含此三点, 余下推理仍然成立.
+
+由 $\varphi$的连续性,容易得到 $\pa \tilde{E} \cap \pa \tilde{E}$是局部连通紧集, 
+而 $z\in  \pa\tilde{E}\cap \pa \tilde E$, 由引理1.12知 $\pa E$是局部连通的.
+\end{itemize}
+
+== 单叶函数 ==
+
+\subsection*{2.1 偏差定理}
+\begin{itemize}
+\item[1.] Koebe函数可被视为如下共形映射的复合,其中 
+$\varphi_1(z) = \frac{1+z}{1-z},
+\varphi_2(z) = z^2, 
+\varphi_3(z) = \frac{z-1}{4}$.
+\begin{align*}
+    k_0: \ \mathbb{D} &\stackrel{\varphi_1}\longrightarrow \left\{ \text{Re}z>0 \right\} \stackrel{\varphi_2}\longrightarrow \mathbb{C}\backslash (-\infty,0]\stackrel{\varphi_3}\longrightarrow \mathbb{C}\backslash (-\infty,-\frac{1}{4}],\\
+    z &\stackrel{\varphi_1}\longmapsto \frac{1+z}{1-z}\stackrel{\varphi_2}\longmapsto \left( \frac{1+z}{1-z} \right)^2 \stackrel{\varphi_3}\longmapsto \frac{z}{(1-z)^2}.
+\end{align*}
+
+\item[2.]
+(1) $\mathcal{S}$类函数族是正规族: 
+由de Brange 定理, 对$f = z+\sum_{n\ge 2}a_n z^n$, 有 $|a_n|\le n$.
+由于对 $r<1$, $\sum_{n\ge 1}nr^n$收敛,
+从而在 $\mathbb{D}$中 $\mathcal{S}$函数族内闭一致有界.
+由 Montel定理得到其正规性.
+
+(2) $\Sigma$函数族不正规的反例. 取该函数族中的子列 $\{f_n\}=\{z+z^{-n}\}$, 
+其球面导数 $f^{\#}_n(z) = \frac{2|1+nz^{n+1}|}{1+|z+z^{-n}|^2}$
+在圆周附近并不内闭一致有界, 由Marty定理说明其不具备正规性.
+
+\item[3.]
+记 $f = z+b_0 + \sum_{n\ge 1}b_n z^{-n}$, 在Gronwall面积定理的证明中,实际上得到了
+$$\text{Area}(\mathbb{C}\backslash f(\mathbb{C}\backslash \overline{\mathbb{D}}))
+=\text{Area}(\text{Int}f(\pa \mathbb{D})) = \pi (1-\sum_{n\ge 1}n|b_n|^2).$$
+
+另一方面,由于 $g(\mathbb{D})\subseteq 
+\mathbb{C}\backslash f(\mathbb{C}\backslash \overline{\mathbb{D}})$, 
+经过简单计算得到
+$$\pi (1-\sum_{n\ge 1}n|b_n|^2) \ge  \text{Area}(\mathbb{C}
+\backslash f(\mathbb{C}\backslash \overline{\mathbb{D}}))
+\ge \text{Area}(g(\mathbb{D}))= \pi\sum_{n\ge 1}n|a_n|^2.$$
+
+由此 $|a_1|\le 1$.等号成立时上述不等号全部为等号,
+此时对$n\ge 1$,总有 $|a_{n}| = |b_n| = 0$. 
+于是 $g(z) = e^{i\varphi}z, f(z) = z+b_{0}$. 
+再由 $f(\mathbb{C}\backslash \mathbb{D})\cap g(\mathbb{D}) = \varnothing$, 
+得到 $b_0=0$. 
+因此等号成立当且仅当 $g(z) = e^{i\varphi}z,\ f(z) = z$.
+
+\item[4.]
+对给定的 $z$,取其Koebe变换
+$$h(\zeta) = \frac{f(\frac{\zeta+z}{1+\overline{z}\zeta})-f(z)}{(1-|z|^2)f'(z)},$$
+
+容易验证其为 $\mathbb{D}$上的单叶函数并且 $h(0)=0,\ h'(0)=1$, 
+则有 $h \in \mathcal{S}$. 则推论2.8等价于
+$$\frac{1}{4}\le d(0,\pa h(\mathbb{D}))\le 1,$$
+此不等式已经在推论2.6中证明.
+
+\item[5.]
+取和上一题一样的Koebe变换 $h$, 此时由$h \in \mathcal{S}$, 对其使用式(2.5)得到
+$$\frac{|z|}{(1+|z|)^2}\le |h(-z)|\le \frac{|z|}{(1-|z|)^2}.$$
+
+注意到 $h(-z)= -\frac{f(z)}{(1-|z|^2)f'(z)}$, 将其代入上述不等式可得
+$$\frac{1-|z|}{1+|z|}\le \frac{|zf'(z)|}{|f(z)|}\le \frac{1+|z|}{1-|z|}.$$
+
+\item[6.]
+不妨令 $a<0$（否则在 $f$上多作用一个旋转变化）, 考虑 $g = k_0\circ f$,
+由于 $\frac{a}{(a-1)^2}\ge -\frac{1}{4}$,得到
+$g(\mathbb{D}) \subseteq \mathbb{C}
+\backslash((-\infty,-\frac{1}{4}]\cup\{\frac{a}{(a-1)^2}\}).$ 
+使用推论2.6得到
+$$\frac{1}{4}|g'(0)|\le d(0,\pa g(\mathbb{D})),$$
+由 $g(\mathbb{D})$的范围知 $d(0,\pa g(\mathbb{D}))\le \frac{-a}{(a-1)^2}$.
+又 $g'(0) = k_0'(0)f'(0)$, 得到
+$$|f'(0)|\le  \frac{-4a}{(a-1)^2}.$$
+显然当 $f =\frac{-4a}{(a-1)^2}k_0 $时上述等号可以取到.
+因此 $A=\frac{-4a}{(a-1)^2}$.
+\end{itemize}
+
+\subsection*{2.2 单叶函数序列}
+\begin{itemize}
+\item[1.]
+(1) 先说明 $\Omega_n\subseteq \text{ker}_{w_0}(\Omega_n)$. 
+对 $w\in \Omega_n$, 存在其邻域 $U$使得 
+$U\subseteq \Omega_n\subseteq \Omega_k,\ k\ge n$. 
+而区域 $\Omega_n$是含 $w_0$的连通区域,
+从而$\Omega_n\subseteq \text{ker}_{w_0}(\Omega_n).$ 
+最后由区域序列的单调递增性得到 $\Omega\subseteq\text{ker}_{w_0}(\Omega_n)$,
+另一个方向是显然的.
+
+(2) 若 $\text{Int}(\bigcap_n \Omega_n)$为空, 
+则对 $w\not =w_0$, 其任一邻域不能都含于 $\Omega_n(n\ge N)$之中,
+于是$\text{ker}_{w_0}(\Omega_n) = \{w_0\}.$
+ 
+若 $\text{Int}(\bigcap_n \Omega_n)$不为空, 记其含 $w_0$的连通分支为 $E$, 
+对 $w\in \text{ker}_{w_0}(\Omega_n)$, 存在 $N$和 $w$的开邻域 $U$,
+使得 $U$含于 $\Omega_n(n\ge N)$中含 $w_0$的连通分支.
+由序列单调递减性,这等价于 $U$含于$\bigcap_n \Omega_n$中包含 $w_0$的连通分支. 
+又 $U$是开的,这继续等价于$U$含于
+$\text{Int}( \bigcap_n \Omega_n)$中包含 $w_0$的连通分支.
+此即 $\text{ker}_{w_0}(\Omega_n)$含于
+$ \text{Int}( \bigcap_n \Omega_n)$中包含 $w_0$的连通分支.
+另一个方向是显然的.
+
+\item[2.]
+若 $\bigcup_m \text{Int}\bigcap_{n\ge m}(\Omega_n) $为空, 
+则对 $w\not =w_0$, 其任一邻域不能都含于 $\Omega_n(n\ge N)$之中,
+于是$\text{ker}_{w_0}(\Omega_n) = \{w_0\}.$
+
+若 $\bigcup_m \text{Int}\bigcap_{n\ge m}(\Omega_n) $不为空,  
+对 $w\in \text{ker}_{w_0}(\Omega_n)$, 存在 $N$和 $w$的开邻域 $U$,
+使得 $U$含于 $\Omega_n(n\ge N)$中含 $w_0$的连通分支. 
+这等价于 $U$含于$\bigcap_{n\ge N} \Omega_n$中包含 $w_0$的连通分支. 
+又 $U$是开的,这继续等价于:存在 $N$使得 $U$含于
+$\text{Int}( \bigcap_{n\ge N} \Omega_n)$中包含 $w_0$的连通分支.
+此即 $\text{ker}_{w_0}(\Omega_n)$含于
+$\bigcup_{N}\text{Int}( \bigcap_{n\ge N} \Omega_n)$中包含 $w_0$的连通分支.
+另一个方向是显然的.
+\end{itemize}
+
+== 调和函数 ==
+
+\subsection*{3.1 调和函数}
+\begin{itemize}
+\item[1.]
+
+记 $f(z) =u(z)+iv(z) $,直接验证如下
+\begin{align*}
+    \Delta \log|f(z)|& = \frac{1}{2}\Delta \log(u^2 + v^2) = \nabla\cdot \frac{u\nabla u+v \nabla v}{u^2+v^2}\\
+    & = \frac{(u^2+v^2)(u\Delta u+ v\Delta v+ 4|\nabla u|^2) -2(u_x u + v_x v)^2-2(u_y u + v_y v)^2  }{(u^2+v^2)^2}\\
+    &= \frac{-4uv(u_x v_x + u_y v_y) }{(u^2+v^2)^2} = 0.
+\end{align*}
+
+\item[2.]
+
+假设 $u$为复平面上非常值调和函数,取其一个共轭调和函数 $v$
+得到复平面上解析函数 $f = u + iv$, 
+由 $u>0$知$f(\mathbb{C})\subseteq \{\text{Re}z>0\}$.
+考虑复函数 $g(z) =   \frac{f(z)-1}{f(z)+1}$, 
+则 $g(\mathbb{C})\subseteq \mathbb{D}$, 
+由Liouville定理 $g \equiv  C$,也就是 $f\equiv C$.
+
+\item[3.]
+
+设 $\Omega$是 $n$连通区域, 其有界余分支依次为 $\{E_i\}_{i=1}^{n-1}$, 
+按1.2第4题,有界余分支 $E_i$单连通,
+并且存在 $\Omega$中Jordan曲线 $\gamma_i$分割 $E_i$与其它有界余分支. 
+这样的一组 $\{\gamma_i\}_{i=1}^{n-1}$构成了一组同调基.
+
+\item[4.]
+
+ (1)必要性: 若 $F'(z) = f(z)$, 则对任一简单闭曲线 $\gamma \subseteq \Omega$
+ 都有 $\int_\gamma f(z)\mathrm{d}z = \int_\gamma \mathrm{d}F(z) = 0$.
+
+ (2)充分性: 取定 $z_0 \in \Omega$, 定义 $F(z) := \int{\gamma_z}f(z)\mathrm{d}z$,
+ 其中 $\gamma_z$ 是 $\Omega$中任一条连接 $z_0$和 $z$的曲线. 
+ 若能说明该定义与曲线的选取无关,便能说明 $f$存在原函数. 
+ 这等价于证明对任一条闭曲线  $\gamma$, 都有 $\int_\gamma f(z)\mathrm{d}z = 0$. 
+
+ 记 $\Omega$的不同有界余分支为 $\{E_i\}$,  对应的一组同调基 为$\{\gamma_i\}$. 
+ 并记 $k_i = n(\gamma,w_i),\ w_i \in E_i$. 
+ 则由 $f$解析, 知 $\gamma$在进行同伦变换时沿着曲线  $\gamma$的积分保持不变,于是
+ $$\int_\gamma f(z)\mathrm{d}z = \sum_i k_i \int_{\gamma_i}f(z)\mathrm{d}z = 0,$$
+ 由此说明 $F(z)$是良定义的解析函数.
+
+\item[5.]
+
+ 由Stokes公式,
+ $$\int_{\gamma}u_1 \mathrm{d}^{*}u_2 - u_{2} \mathrm{d}^{*}u_1 
+ = \int_{\text{Int}\gamma} (u_1 \Delta u_2 - u_2 \Delta u_1) \mathrm{d}x\mathrm{d}y= 0.$$
+
+ 现将其推广到多连通情形.  记 $\Omega$的不同有界余分支为 $\{E_i\}$, 
+ 对应的一组同调基 为$\{\gamma_i\}$. 并记 $k_i = n(\gamma,w_i),\ w_i \in E_i$. 
+ 注意到 
+ $$d(u_1 \mathrm{d}^{*}u_2 - u_{2} \mathrm{d}^{*}u_1) 
+ =( u_1 \Delta u_2 - u_2 \Delta u_1 )\mathrm{d}x \mathrm{d}y \equiv 0,$$
+ 也就是其为闭形式, 则其道路积分在同伦变换下保持不变.因此
+ $$\int_\gamma u_1 \mathrm{d}^{*}u_2 - u_{2} \mathrm{d}^{*}u_1 
+ = \sum_i k_i \int_{\gamma_i}u_1 \mathrm{d}^{*}u_2 - u_{2} \mathrm{d}^{*}u_1.$$
+
+\item[6.]
+
+ 由有界性, 知$u$可以延拓成 $B(0,R)$上调和函数. 
+ 又因为 $u|_{\pa B(0,R)}\equiv 0$, 由极值原理立得 $u\equiv 0.$ 
+ 
+\item[7.]
+
+ 按3.1节的讨论,可取形如 $f(z) = e^{A(u(z)+iv(z))}$且于 
+ $\mathbb{C}\backslash \{0\}$上解析的函数, 其中 $A\in \mathbb{R}$. 
+ 又 $u>0$,这说明对 $|f(z)| = e^{Au(z)}$要么 $|f(z)|>1$要么$|f(z)|<1.$
+
+ 后一种情况下 $0$ 是$f(z)$的可去奇点, 则 $f$可延拓成全平面上的有界函数,则恒为常数, 
+ 说明 $u\equiv c$； 前一种情况只需要考虑 $g  = \frac{1}{f}$而后同理推导即可.
+\end{itemize} 
+
+\subsection*{3.2 均值公式和Poisson公式}
+
+\begin{itemize}
+\item[1.] 
+
+ 对任意的 $z \in \Omega\backslash B(z_0,r)$, 选取一条曲线 $\gamma$连接 $z$和 $z_0$. 
+ 不妨设 $r<d(\gamma,\Omega)$, 由紧性可以选取其开覆盖 $\{B(z_i,r)\}_{i=1}^{n}$, 
+ 并且 $B(z_i,r)\subseteq \Omega,\ z_{i+1}\in B(z_i,r)$.
+ 显然 $\bigcup_i B(z_i,r)$是单连通的, 在其上可以取 $u$的共轭调和函数 $v$. 
+ 考虑解析函数 $f = u+iv$, 由其在 $B(z_0,r)\cap \bigcup_i B(z_i,r)$上恒为$0$,
+ 知其零点有聚点,说明其恒为$0$,从而 $u(z)=0$.
+
+ 例子: $\textIm z$ 在实轴上恒为$0$.
+
+\item[2.]
+
+由偶函数性质
+ $$\int_0^\pi \log(1-2r\cos\theta+r^2)\mathrm{d}\theta 
+ = \frac{1}{2}\int_{-\pi}^\pi \log(1-2r\cos\theta+r^2)\mathrm{d}\theta.$$
+
+令 $z = re^{i\theta}$, 注意到 $\log(1-2r\cos\theta+r^2) = 2\log|1-z|$
+在 $\mathbb{D}$上是调和的,对 $r<1$, 由平均值公式，
+$$\frac{1}{2}\int_{-\pi}^\pi \log(1-2r\cos\theta+r^2)\mathrm{d}\theta 
+=\frac{1}{2} 2\log(1-2r\cos\theta+r^2)|_{z=0} = 0.$$
+
+\item[3.]
+
+ (1)证明(3.21): 记 $$\tilde{f}(z) = \frac{1}{2\pi}\int_0^{2\pi}
+ u(z_0+\rho e^{i\theta})\frac{\rho e^{i\theta}+z-z_0}{\rho e^{i\theta}-z+z_0}\mathrm{d}\theta,$$
+ 则 $u(z) = \textRe\tilde{f}(z)$. 
+ 于是 $\textIm\tilde{f}$ 与 $v$都是 $u$的共轭调和函数,两者相差一个常数. 注意到  
+ $$c\equiv v(z)-\textIm\tilde{f}(z) =  v(z)-\textIm\tilde{f}(z) |_{z = z_0} = v(z_0),$$
+ 进而
+ $$f = u+iv = \textRe\tilde{f}(z) + i(\textIm\tilde{f}(z) + v(z_0)) = \tilde{f}(z)+ iv(z_0).$$
+
+ (2)证明(3.22): 首先有
+ $$ \frac{1}{\pi i}\int_{|\zeta-z_0|=\rho}\frac{u(\zeta)}{\zeta-z}\mathrm{d}\zeta 
+ =\frac{1}{2\pi i}\int_{|\zeta-z_0|=\rho}\frac{f(\zeta)}{\zeta-z}\mathrm{d}\zeta 
+ +\frac{1}{2\pi i}\int_{|\zeta-z_0|=\rho}\frac{\overline{f(\zeta)}}{\zeta-z}\mathrm{d}\zeta 
+ = f(z) +\frac{1}{2\pi i}\int_{|\zeta-z_0|=\rho}\frac{\overline{f(\zeta)}}{\zeta-z}\mathrm{d}\zeta.$$
+
+又由泰勒展开式,在 $|\zeta-z_0| = \rho$上$\overline{f(\zeta)} 
+=\overline{f(z_0)}+\sum_{n\ge 1}\overline{f^{(n)}(z_0)}\rho^2\zeta^{-n}$,由此
+ $$\frac{1}{2\pi i}\int_{|\zeta-z_0|=\rho}\frac{\overline{f(\zeta)}}{\zeta-z}\mathrm{d}\zeta 
+ = \frac{1}{2\pi i} \sum_{n\ge 0}\int_{|\zeta-z_0|=\rho}\frac{\overline{f^{(n)}(z_0)}\rho^2}{(\zeta-z)\zeta^n}\mathrm{d}\zeta + \overline{f(z_0)} 
+ = \overline{f(z_0)}.$$
+
+ 这就是
+ $$f(z) = \frac{1}{\pi i}\int_{|\zeta-z_0|=\rho}\frac{u(\zeta)}{\zeta-z}\mathrm{d}\zeta-\overline{f(z_0)}. $$
+
+\item[4.]
+
+ 对  $\varepsilon>0$,记 $\rho = \text{diam}(\Omega)$, 
+ 令 $$v_\varepsilon(z) = \sum_{i} \log\frac{\rho}{|z-\zeta_i|},$$ 
+ 则 $v_\varepsilon(z)$为正调和函数. 
+ 由于对 $\{\zeta_i\}_i$之外的点都有 $\overline{\lim}_{\zeta \to z} u(z)\le M$
+ 且 $u$有界,可取$\delta$充分小使得
+ $$u(z)\le v_\varepsilon(z)+M,\ \ z \in \pa\{z \in \Omega| \text{dist}(z,\Omega)\ge \delta\}.$$
+由极值原理立得
+$$u(z)\le v_\varepsilon(z)+M,\ \ z \in \{z \in \Omega| \text{dist}(z,\Omega)\ge \delta\}.$$
+
+先令 $\varepsilon\to 0$,再让 $\delta\to 0$,得到 $u\le M$.
+
+\item[5.]
+
+直接计算得
+ \begin{align*}
+    u_\varphi(z) &= \frac{1}{2\pi}\textRe\int_{0}^{\pi}\frac{e^{i\theta}+z}{e^{i\theta}-z}\mathrm{d}\theta 
+    = \frac{1}{2\pi} \textRe\int_0^{\pi}\frac{-(e^{i\theta}-z)+2e^{i\theta}}{e^{i\theta}-z}\mathrm{d}\theta\\
+    & = -\frac{1}{2} +\frac{1}{\pi}\textIm\int_0^{-1} \frac{\mathrm{d}(\zeta-z)}{\zeta-z}\\
+    & = -\frac{1}{2}+ \frac{1}{\pi}\Arg\frac{-1-z}{1-z}.
+ \end{align*}
+
+\item[6.]
+
+取变换 $\varphi : \mathbb{H} \to \mathbb{D},\   z \mapsto \frac{z-i}{z+i}$, 
+令 $v(w) = u\circ\varphi^{-1}(w) $,  则知
+\begin{align*}
+    u(z) &= v\Big(\frac{z-i}{z+i}\Big) = \frac{1}{\pi}\int_{\pa \mathbb{D}}v(w')\textRe \frac{w'+\frac{z-i}{z+i}}{w'-\frac{z-i}{z+i}}\frac{\mathrm{d}w'}{iw'}\\
+    & =\frac{1}{\pi}\int_{\pa \mathbb{H}}u(z')\textRe 
+    \frac{\frac{z'-i}{z'+i}+\frac{z-i}{z+i}}{\frac{z'-i}{z'+i}-\frac{z-i}{z+i}}
+    \frac{\mathrm{d}\frac{z'-i}{z'+i}}{i\frac{z'-i}{z'+i}}\\
+    & = \frac{1}{\pi}\int_{-\infty}^{+\infty}u(t)\textRe 
+    \frac{\frac{t-i}{t+i}+\frac{z-i}{z+i}}{\frac{t-i}{t+i}-\frac{z-i}{z+i}}
+    \frac{\mathrm{d}\frac{t-i}{t+i}}{i\frac{t-i}{t+i}}\\
+    & = \frac{1}{\pi}\int_{-\infty}^{+\infty}u(t)\frac{y}{|z-t|^2}\mathrm{d}t.\\
+\end{align*}
+
+\item[7.]
+
+这是定理3.12的结果.
+\end{itemize} 
+
+== Dirichlet问题 ==
+
+\subsection*{4.1 次调和函数}
+\begin{itemize}
+\item[1.]
+
+ (1)取 $u$的磨光 $u_\varepsilon: = J_\varepsilon * u$, 
+ 显然 $u_\varepsilon$也满足局部次均值不等式, 并且其为光滑函数, 
+ 故 $\Delta u_\varepsilon \ge 0$.
+ 对 $v_\varepsilon = u_\varepsilon \circ \varphi$, 直接验证得到
+ $$\Delta v_\varepsilon = \Delta  u_\varepsilon \cdot |\varphi'(z)|^2 \ge 0,$$
+ 故 $v_\varepsilon$也是次调和的, 满足局部次调和不等式, 
+ 又因为 $u_\varepsilon$ 内闭一致收敛至 $u$, 
+ 故 $v_\varepsilon$亦内闭一致收敛至 $v$, 
+ 从而 $v$也满足局部均值不等式, 亦即 $v$是次调和的.
+ 
+(2)只证明 $\tilde{u} = \max\{u_1, u_2\}$的情形, 其余的可由归纳法得到.
+
+ 由定理4.2, 只需证明对任意 $B(z_0,\rho) \subseteq \Omega$ 和其上调和函数 $v$, 
+ $\tilde{u}-v = \max\{u_1,u_2\}-v$满足最大值性质.
+不妨设 $\sup_{z\in B(z_0,\rho)} \tilde{u}(z) = u_1(z_1)$, 
+则由 $u_1$次调和, $u_1(z_1)\le \sup_{z\in \pa B(z_0,\rho)} u_1(z)
+\le  \sup_{z\in \pa B(z_0,\rho)} \tilde{u}(z)$, 证毕.
+
+\item[2.]
+
+直接验证得到
+$$ \Delta e^{\sqrt{x^2+ y^2}} 
+= e^{\sqrt{x^2+ y^2}}\big(1+ (x^2 + y^2)^{-\frac{1}{2}}\big)\ge 0.$$
+
+\item[3.]
+
+直接验证:对任意 $B(z_0,\rho) \subseteq \Omega$, 有
+\begin{align*}
+    |u(z_0)|^\alpha &\le(2\pi)^{-\alpha}\Big|\int_{0}^{2\pi}
+    u(z_0+\rho e^{i\theta})\mathrm{d}\theta\Big|^\alpha \\
+    &\le (2\pi)^{-\alpha} (2\pi)^{\alpha-1} \int_{0}^{2\pi}
+    |u(z_0+\rho e^{i\theta})|^\alpha\mathrm{d}\theta  
+    =(2\pi)^{-1} \int_{0}^{2\pi}|u(z_0+\rho e^{i\theta})|^\alpha\mathrm{d}\theta. 
+\end{align*}
+
+对 $f$的证明是类似的.
+
+\item[4.] 
+
+直接验证: 对任意 $B(z_0,\rho) \subseteq \Omega$, 有
+\begin{align*}
+    g(u(z_0)) &\le g[(2\pi)^{-1}\int_{0}^{2\pi}
+    u(z_0+\rho e^{i\theta})\mathrm{d}\theta] \\
+    &\le (2\pi)^{-1} \int_{0}^{2\pi}
+    g ( u(z_0+\rho e^{i\theta}))\mathrm{d}\theta .
+\end{align*}
+
+\item[5.]
+
+由定理4.2, 只需证明对任意 $B(z_0,\rho) \subseteq \Omega$ 和其上调和函数 $v$, 
+$\tilde{u}-v = \sup_\alpha\ u_\alpha-v$满足最大值性质.
+不妨设 $\sup_{z\in B(z_0,\rho)} \tilde{u}(z) 
+\le u_{n_k}(z_{n_k})+\varepsilon_{n_k},\ \varepsilon_{n_k} \to 0$, 
+则由 $u_{n_k}$次调和, $\sup_{z\in B(z_0,\rho)} \tilde{u}(z)-\varepsilon_{n_k} 
+\le u_{n_k}(z_{n_k})\le \sup_{z\in \pa B(z_0,\rho)} u_{n_k}(z)
+\le \sup_{z\in \pa B(z_0,\rho)} \tilde{u}(z)$, 令 $\varepsilon_{n_k}\to 0$即可.
+
+\item[6.]
+
+定理4.2事实上证明了 $u$是调和函数当且仅当其满足在圆盘 $B(z_0,\rho)$内次 Possion公式, 
+这比次均值不等式更强, 故使用定理4.2证明定理4.4是显然的.
+
+\item[7.]
+
+考虑 $\{r<|z|<R\}$上的调和函数 
+$$v(z) = \frac{\log R - \log |z|}{\log R - \log r} \sup_{|z|= r} u 
++ \frac{\log |z| - \log r}{\log R - \log r} \sup_{|z|= R} u.$$
+
+在 $\pa \{r<|z|<R\}$上 $u(z) \le v(z)$, 则在 $\{r<|z|<R\}$上有 $u(z)\le v(z)$. 
+令 $R\to \infty$再令 $r \to 0$, 就得到 $u(z)\le  u(0)$, 另一方向的不等式同理可证, 
+这样就得到了 $u \equiv  \text{const}$.
+\end{itemize} 
+
+\subsection*{4.2 Perron 方法}
+
+\begin{itemize}
+\item[1.]
+
+下面证明 $u\equiv 0$. 若 $u$的最值在 $\mathbb{D}$内部取得, 则其为常数; 
+若$u$的最大值或最小值不在 $\mathbb{D}$内部取得, 且不为常数, 
+则在 $\mathbb{D}$内部必有奇点.
+由 $u$是关于 $\varphi(\zeta)$在 $\mathbb{D}\backslash \{0\}$上的 Perron 函数, 
+知此时$0$为 $u$ 的奇点. 再考虑到 $u(0)\le \varphi(0) =1$, 
+知 $z\to 0$时$u(z)\to -\infty$. 则知最大值在边界处取得,亦即 $u\le 0$.
+注意到 $\frac{u}{2} \in \mathcal{P}(\varphi,\mathbb{D}\backslash\{0\})$, 
+并且 $u<\frac{u}{2}$, 这与 $u$的定义矛盾. 因此 $u\equiv 0.$
+
+\item[2.]
+
+ 定理4.7是其充分性,下面说明其必要性.由该区域为Dirichlet区域, 
+ 存在该区域上的调和函数 $u$使得 $u|_{\pa \Omega} = |z-\zeta||_{\pa \Omega}$. 
+ 对任意的 $\delta>0$, 令 $t_\delta = \frac{u}{\inf_{|z-\zeta_0|=\delta}}$, 
+ 则其在 $U_{\delta}:=\Omega\cap B(\zeta_0,\delta)\cap\{t_{\delta}<1\}$
+ 上满足条件的闸函数.
+\end{itemize} 
+
+\subsection*{4.3 Green 函数和调和测度}
+
+\begin{itemize}
+\item[1.]
+
+(1)证明(4.9)是格林函数: 只需要证明 $c = 0,\ \rho = 1$的情形.
+
+($a$)非负调和性: 此时有
+$g(z,z_0) = -\log\left| \frac{z-z_0}{1-\overline{z_0}z} \right|$, 
+其中 $z \mapsto \frac{z-z_0}{1-\overline{z_0}z}$是单位圆盘上的自同构, 
+由3.1节第一题知 $g(z,z_0)$在 $\mathbb{D}\backslash \{z_0\}$上是调和函数, 
+其非负性是显然的.
+
+($b$)对数奇点: 这是显然的; 
+
+($c$)若另一函数 $h$满足 $(a),\ (b)$, 则 $h\ge g$: 
+该性质的证明和定理4.11中对该性质的证明完全一致, 不再赘述.
+
+(2)求半平面上格林函数: 对 $w,\ w_0 \in \mathbb{H}$, 
+取共形映射 $\varphi: \mathbb{H}\to \mathbb{D},\ w \mapsto \frac{w-i}{w+i}$, 
+由定理4.12知
+$$g_{\mathbb{H}}(w,w_0) = g_{\mathbb{D}}(\varphi(w),\varphi(w_0)) 
+= -\log\left| \frac{\frac{w-i}{w+i}-\frac{w_0-i}{w_0+i}}{1-\overline{\frac{w_0-i}{w_0+i}}\frac{w-i}{w+i}} \right| 
+=-\log\left| \frac{(w-w_0)(\overline{w_0}-i)}{(w-\overline{w_0})(w_0+i)} \right|. $$
+
+\item[2.]
+
+由 $g(\zeta, z_1),\ g(\zeta, z_2)$在 
+$\Omega\backslash(B(z_1,\varepsilon)\cup B(z_2,\varepsilon))$上调和,得到
+\begin{align*}
+    0 =\ &\int_{\Omega\backslash(B(z_1,\varepsilon)\cup B(z_2,\varepsilon))} g(\zeta,z_1)\Delta g(\zeta,z_2) - g(\zeta,z_2)\Delta g(\zeta,z_1) \\
+    =\ &\int_{\pa \Omega}  g(\zeta,z_1)\mathrm{d}^* g(\zeta,z_2) - g(\zeta,z_2)\mathrm{d}^* g(\zeta,z_1)\\
+    \ &-\int_{\pa B(z_1,\varepsilon)} g(\zeta,z_1)\mathrm{d}^* g(\zeta,z_2) - g(\zeta,z_2)\mathrm{d}^* g(\zeta,z_1)\\
+    \ & - \int_{\pa B(z_2,\varepsilon)} g(\zeta,z_1)\mathrm{d}^* g(\zeta,z_2) - g(\zeta,z_2)\mathrm{d}^* g(\zeta,z_1).
+\end{align*}
+
+因为 $g(\cdot, z_1)$在边界上为$0$, 因此得到
+$$\int_{\pa B(z_1,\varepsilon)} g(\zeta,z_1)\mathrm{d}^* g(\zeta,z_2) 
+- g(\zeta,z_2)\mathrm{d}^* g(\zeta,z_1) 
+= - \int_{\pa B(z_2,\varepsilon)} g(\zeta,z_1)\mathrm{d}^* g(\zeta,z_2) 
+- g(\zeta,z_2)\mathrm{d}^* g(\zeta,z_1).$$
+
+注意到 $\varepsilon\to 0$时,  对 $i \not = j$有
+$$\int_{\pa B(z_i,\varepsilon)} g(\zeta,z_i)\mathrm{d}^* g(\zeta,z_j)\to 0,
+\quad \int_{\pa B(z_1,\varepsilon)} g(\zeta,z_j)\mathrm{d}^* g(\zeta,z_i)\to -2\pi g(z_i,z_j),$$
+
+代入即得 $g(z_1,z_2) = g(z_2,z_1)$.
+
+\item[3.]
+
+(1) 由 $\omega(z,E)$是调和函数, 由最值定理和 
+$\omega(z,E)|_{z\in \pa \Omega} = \boldsymbol{1}_{E}$即可得到.
+
+(2) $v(z): = \omega(z,E) + \omega(z,E^{c})$是如下问题的解
+$$\begin{cases} \Delta v = 0, & \text{in}\ \Omega \\
+\ \ \ v\equiv 1 & \text{on}\ \pa\Omega\end{cases}$$
+ 
+显然由最值定理该问题只有唯一解 $v\equiv 1.$
+
+(3)这是因为 $\tilde{v} (z): = -\omega(z,E_1) + \omega(z,E_2) $仍为调和函数
+并且 $\tilde{v} (z)|_{\pa \Omega}\ge 0$, 从而 $v\ge 0$, 
+此即 $\omega(z,E_1)\le \omega(z,E_2).$
+
+(4)对 $v \in \mathcal{P}(\Omega_1, \boldsymbol{1}_{E})$, 
+令 $\tilde{v}$为 $v$ 在  $\Omega_2$上的零延拓, 显然 
+$\tilde{v}\in \mathcal{P}(\Omega_2, \boldsymbol{1}_{E}) $, 
+由调和测度可视为Perron函数, 得到  
+$\omega_{\Omega_1}(z,E)\le \omega_{\Omega_2}(z,E)$.
+
+\item[4.]
+
+在条状区域 $A = \{0<\textRe z<1\}$上, $\{\textRe z = 1\}$的
+调和测度为 $\omega_{A}(z,\{\textRe z = 1\}) = \textRe z$. 
+由调和测度的共形不变性,对任一区域 $\Omega$和其边界上集合 $E$, 
+若有共形映射 $\varphi: \Omega\to A$ 并且 
+$\varphi(\Omega\backslash E) = \{\textRe z = 0\},
+\ \varphi(E) = \{\text{Re}z = 1\}$,自然有
+$$\omega_{\Omega}(z,E) = \omega_{A}(\varphi(z),\{\textRe z = 1\}) 
+= \text{Re}\varphi(z).$$
+
+(1) 在 $\Omega = \mathbb{H}\cap \mathbb{D}$和 $E = [-1,1]$时,
+取满足前述讨论的共形映射 $\varphi$如下
+\begin{align*}
+    \varphi: \ \mathbb{H}\cap \mathbb{D} &\stackrel{\varphi_1}
+    \longrightarrow \left\{ \textRe z,\ \textIm z>0 \right\} 
+    \stackrel{\varphi_2}\longrightarrow \left\{ 0<\textIm z<\frac{\pi}{2}\right\}
+    \stackrel{\varphi_3}\longrightarrow A,\\
+    E  &\stackrel{\varphi_1}\longrightarrow \left\{ \textRe z\ge 0,\ \textIm z=0 \right\} 
+    \stackrel{\varphi_2}\longrightarrow \left\{ \textIm z=0\right\}
+    \stackrel{\varphi_3}\longrightarrow \{\textRe z = 1\},\\
+    z &\stackrel{\varphi_1}\longmapsto \frac{1+z}{1-z}
+    \stackrel{\varphi_2}\longmapsto \log\frac{1+z}{1-z} 
+    \stackrel{\varphi_3}\longmapsto 1+\frac{2i}{\pi} \log\frac{1+z}{1-z},
+\end{align*}
+由此得到  $\omega_{\Omega}(z,E) 
+= \text{Re}\left(   1+\frac{2i}{\pi} \log\frac{1+z}{1-z}\right)$.
+
+(2)在 $\Omega =\{r_1<|z|<r_2\}$和 $E = \{|z| = r_1\}$时,
+取满足前述讨论的共形映射 $\varphi$如下
+\begin{align*}
+    \varphi: \ \Omega &\stackrel{\varphi_1}
+    \longrightarrow \left\{ \log r_1 <\textRe z< \log r_2 \right\} 
+    \stackrel{\varphi_2} \longrightarrow A,\\
+    E  &\stackrel{\varphi_1}\longrightarrow \left\{ \textRe z= \log r_1\right\} 
+    \stackrel{\varphi_2}\longrightarrow \{\textRe z = 1\},\\
+    z &\stackrel{\varphi_1}\longmapsto \log |z| 
+    \stackrel{\varphi_2}\longmapsto \frac{\log r_2-\log |z|}{\log r_2 - \log r_1} ,
+\end{align*}
+由此得到  $\omega_{\Omega}(z,E) = \text{Re}\left(\frac{\log r_2-\log |z|}{\log r_2 - \log r_1}\right)$.
+
+\item[5.]
+
+此即讲义 (4.10)对应文段所述事实, 不再赘述.
+
+\item[6.]
+
+直接计算即可:
+
+\begin{align*}
+    f(z) &= -\frac{1}{2\pi}\int_{\pa \Omega} f(w) \frac{\pa g(z,w)}{\pa \bm{n}}\mathrm{d}s\\
+         & = \frac{1}{2\pi}\int_{\pa \Omega}g(w) \frac{\pa f(z,w)}{\pa \bm{n}} -  f(w) \frac{\pa g(z,w)}{\pa \bm{n}}\mathrm{d}s\\
+         & = \frac{1}{2\pi}\int_{ \Omega}g(w) \Delta_{w}f(z,w) - f(w) \Delta_{w} g(z,w)\mathrm{d}x \mathrm{d}y\\
+         & = -\frac{2}{\pi}\int_{ \Omega} f(w) \frac{\pa^2 g(z,w)}{\pa w \pa \overline{w}}\mathrm{d}x \mathrm{d}y 
+         = -\frac{2}{\pi}\int_{ \Omega} f(w) \frac{\pa^2 g(z,w)}{\pa z \pa \overline{w}}\mathrm{d}x \mathrm{d}y.  
+\end{align*}
+\end{itemize} 
+
+\subsection*{4.4 多连通 Riemann 映射定理}
+
+\begin{itemize}
+\item[1.]
+ 
+假若存在题中所述解析函数 $f(z)$, 则对任一 $w  \not = 0,1 $, 都有 
+$N(w, \pa f(A(r,R))) = N(w, f|_{\{|z| = r\}})+ N(w, f|_{\{|z| = R\}}) = 0$, 
+由辐角定理知 $f(A(r,R))\subseteq \{0,1\}$. 由开映射定理知 $f$是常数, 矛盾.
+
+\item[2.]
+
+ 取区域 $\Omega$的同调基 $\{\gamma_i\}$, 由 $d^*\omega(z,E_i)$ 是闭形式, 
+ 由其道路积分的同伦不变性以及  $\lim_{z \to \pa E_i} \omega_j(z) 
+ =\lim_{z \to \pa E_i} \omega_{\Omega}(z,E_{j}) = \delta_{ij} $, 得
+ $$\int_{\gamma_{i}}\mathrm{d}^*\sum_{k=1}^{n-1}\lambda_k\omega_k 
+ = \lambda_i\int_{\gamma_{i}}\mathrm{d}^*\omega_i = \lambda_i P_{i},$$
+ 此即  $\sum_{k=1}^{n-1}\lambda_k\omega_k$关于  $\gamma_i$的积分周期. 
+ 要使其具备共轭调和函数,  其积分周期均为$0$, 即 $\lambda_i P_{i} = 0$. 
+ 由定理4.17的证明过程可知 $P_i \not=0$, 因此  
+ $\lambda_i=0,\ \forall i \in \{1, \cdots ,n-1\}$.
+
+\item[3.]
+
+ 只需证明,若对  $R,R'>1$有双全纯映射$f: A(1,R) \to A(1,R')$, 必有  $R' = R$. 
+ 不妨设 $\lim_{|z| \to 1}|f(z)| = 1$(否则考虑 $\frac{R'}{f}$即可), 
+ 则定义 $f^{(1)}$为
+ $$f^{(1)}(z) = 
+ \begin{cases} (\overline{f(\overline{z}^{-1})})^{-1}, & z \in A(\frac{1}{R},1), \\
+ f(z), & z \in A(1,R).\end{cases}$$
+ 
+ 由反射原理, 知$f^{(1)}$可以连续的延拓为 $A(\frac{1}{R},R)$
+ 到 $A(\frac{1}{R'},R')$的双全纯映射. 
+ 则 $f^{(1)}$ 是$A(\frac{1}{R},R)$到 $A(\frac{1}{R'},R')$的双全纯映射, 
+ 并且 $\lim_{|z| \to \frac{1}{R}}|f(z)| = \frac{1}{R'}$,类似上述定义
+ $$f^{(2)}(z) = 
+ \begin{cases}  (R'^2\overline{f((R^2\overline{z})^{-1})})^{-1}, & z \in A(\frac{1}{R^3},\frac{1}{R}), \\
+ f^{(1)}(z),&  z \in A(\frac{1}{R},R),\end{cases}$$
+
+ 同样可以利用  $\lim_{|z| \to R}|f(z)| =R'$向外延拓, 如此归纳定义 $f^{(n)}$,
+ 令  $n\to \infty$就得到了 $\mathbb{C}\backslash\{0\}$上的全纯自同构 $f^*$, 
+ 并且 $\lim_{z \to 0} f^{*}(z) = 0, \lim_{|z| \to \infty}f^{*}(z) = \infty$. 
+ 这就意味着 $f$可以延拓为  $\mathbb{C}$上的全纯自同构,  $f^*(z)  = az +b$. 
+ 由$\lim_{|z| \to 1}|f(z)| = 1$和  $f^*(0) = 0$得到  $f^{*}(z) = e^{i\theta}z$,  
+ 从而 $R = R'$.
+ \end{itemize}
+ 
+ \section{Zeta函数和素数定理}
+ \subsection*{5.1 Gamma函数}
+ \begin{itemize}
+    \item[5.1.1]
+
+
+直接计算可得
+$$a_n(s) = \frac{1}{n !}\frac{\mathrm{d}^n}{\mathrm{d}z^n} \frac{1}{(1-z)^s}\Big|_{z = 0} = \frac{s(s+1)\cdots(s+n-1)}{n!}.$$
+
+由此在 $n\to \infty$时有
+$$a_n(s) \sim \frac{s(s+1)\cdots(s+n)}{n!n}\sim \frac{n! n^{s}}{\Gamma_{n}(s)n!n}  =  \frac{n^{s-1}}{\Gamma_{n}(s)}. $$
+
+
+    \item[5.1.2]
+ 
+
+按定义有 $\overline{\Gamma(s)} =\Gamma(\overline{s}), $由余元公式
+
+$$\Big|\Gamma\left(\frac{1}{2}+it  \right)\Big|^2 = \Gamma\left(\frac{1}{2}+it  \right)\Gamma\left(\frac{1}{2}-it  \right) = \frac{\pi}{\sin\left( \frac{\pi}{2}-i\pi t \right)} = \frac{\pi}{\cosh (\pi t)}.$$
+
+
+    \item[5.1.3]
+
+
+需要用到数分中的Wallis乘积公式
+$$\lim_{n \to \infty}\frac{(2n-1)!!\sqrt{n}}{(2n)!!} = \frac{1}{\sqrt{\pi}},$$
+可利用 $I_n = \int_0^{\frac{\pi}{2}}\sin^n x \mathrm{d}x$的递推式得到该式证明.
+
+现在使用乘积公式证明倍乘公式.
+
+\begin{align*}
+    \Gamma(s)\Gamma\left( s+\frac{1}{2} \right)& = \lim_{n \to \infty}\frac{n^{2s+\frac{1}{2}}(n!)^2}{s(s+1)\cdots(s+n)(s+\frac{1}{2})(s+\frac{3}{2})\cdots (s+\frac{2n+1}{2})}\\
+    & = \lim_{n \to \infty}\frac{n^{2s+\frac{1}{2}}2^{2n+2}(n!)^2}{2s(2s+1)\cdots(2s+2n+1)}.
+\end{align*}
+
+同样地
+$$\Gamma(2s) = \lim_{n \to \infty}\frac{(2n)^{2s}(2n)!}{2s(2s+1)\cdots(2s+2n)}.$$
+
+因此
+\begin{align*}
+    \frac{\Gamma(2s)}{\Gamma(s)\Gamma\left( s+\frac{1}{2} \right)} &= \lim_{n \to \infty} \frac{(2n)^{2s}(2n)! (2s+2n+1)}{n^{2s+\frac{1}{2}}2^{2n+2}(n!)^2} =\lim_{n \to \infty} \frac{2^{2s-1} \sqrt{n}(2n-1)!!}{(2n)!!} =  \frac{2^{2s-1}}{\sqrt{\pi}}.
+\end{align*}
+
+
+    \item[5.1.4]
+
+
+
+    \item[5.1.5]
+
+
+(1) $F(x)$可以写成
+$$F(x) = \int_{0}^{+\infty}\frac{e^{-y}}{x+y}\mathrm{d}y,\ x>0.$$
+
+现在考虑
+$$F(s) = \int_{0}^{+\infty}\frac{e^{-y}}{s+y}\mathrm{d}y, \ \text{Re} s>0.$$
+
+显然 $F(s)$的积分表达式 在 $\{\text{Re} s\ge \varepsilon>0\}$上内闭一致收敛, 由此得到 $F(s)$是右半平面上的解析函数, 并且 $F(s)$是 $F(x)$的延拓.
+
+(2) 分部积分即可得到
+ $$F(s) = \sum_{k=1}^n\frac{(-1)^{k-1}(k-1)!}{s^k}+ (-1)^{n-1}(n-1)! \int_0^{+\infty}\frac{e^{-y}}{(s+y)^{n+1}}\mathrm{d}y. $$
+
+ 由 $\text{Re}s\ge 0$, 当 $y\ge 0$时 $|s+y|^m\ge |s|^m$, 因此
+$$\left| \int_0^{+\infty}\frac{e^{-y}}{(s+y)^{n+1}}\mathrm{d}y \right| \le \frac{1}{|s|^{n+1}}\int_0^{+\infty}e^{-y}\mathrm{d}y =  \frac{1}{|s|^{n+1}}.$$
+
+由此 $\sigma =\text{Re}s \to +\infty$时, 显然有
+
+$$F(s) \sim \sum_{k=1}^n\frac{(-1)^{k-1}(k-1)!}{\sigma^k}+ O\left( \frac{1}{\sigma^{n+1}} \right). $$
+
+其发散性是显然的.
+
+
+    \item[5.1.6] 由Taylor级数有有限收敛半径, 知
+$$\overline{\lim_{n \to \infty}} \sqrt[n]{\frac{b_n}{n!}}\ge c>0.$$
+
+由此得到
+$$\overline{\lim_{n \to \infty}} \sqrt[n]{b_n}=+\infty.$$
+
+这说明幂级数 $\sum_n b_n x^n$的收敛半径是零, 从而渐进展开式中的级数一定是发散级数.
+\end{itemize}

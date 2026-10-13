@@ -1,0 +1,1018 @@
+\newenvironment{solution}{\begin{proofc}[解答]}{\end{proofc}}
+
+== 习题A ==
+\begin{enumerate}
+    \item[1.]讨论下列函数序列在所指定区间上的一致收敛性：
+    \begin{enumerate}
+        \item[(a)]\(\displaystyle S_n(x) = \frac{\sin x}{n}\).
+            \begin{enumerate}
+                \item[i.]\(x \in (0, 1)\);
+                \item[ii.]\(x \in (1, +\infty)\).
+            \end{enumerate}
+        \item[(b)]\(\displaystyle S_n(x) = \arctan nx\).
+            \begin{enumerate}
+                \item[i.]\(x \in (0, 1)\);
+                \item[ii.]\(x \in (1, +\infty)\).
+            \end{enumerate}
+        \item[(c)]\(\displaystyle S_n(x) = \sqrt{x^2 + \frac{1}{n^2}}\).
+            \begin{enumerate}
+                \item[i.]\(x \in (0, 1)\);
+                \item[ii.]\(x \in (1, +\infty)\).
+            \end{enumerate}
+        \item[(d)]\(\displaystyle S_n(x) = nx(1-x)^n\).
+            \begin{enumerate}
+                \item[i.]\(x \in (0, +\infty)\);
+                \item[ii.]\(x \in [\delta, +\infty), \delta > 0\).
+            \end{enumerate}
+        \item[(e)]\(\displaystyle S_n(x) = \frac{x}{n} \ln \frac{x}{n}\).
+            \begin{enumerate}
+                \item[i.]\(x \in (0, 1)\).
+            \end{enumerate}
+        \item[(f)]\(\displaystyle S_n(x) = \frac{x^n}{1+x^n}\).
+            \begin{enumerate}
+                \item[i.]\(x \in (0, 1)\);
+                \item[ii.]\(x \in (1, +\infty)\).
+            \end{enumerate}
+        \item[(g)]\(\displaystyle S_n(x) = (\sin x)^n\).
+            \begin{enumerate}
+                \item[i.]\(x \in (0, 1)\).
+            \end{enumerate}
+        \item[(h)]\(\displaystyle S_n(x) = (\sin x)^{\frac{1}{n}}\).
+            \begin{enumerate}
+                \item[i.]\(x \in (0, 1)\).
+            \end{enumerate}
+        \item[(i)]\(\displaystyle S_n(x) = \left(1 + \frac{x}{n}\right)^n\).
+            \begin{enumerate}
+                \item[i.]\(x \in (0, 1)\).
+            \end{enumerate}
+        \item[(j)]\(\displaystyle S_n(x) = n\left(\sqrt{x + \frac{1}{n}} - \sqrt{x}\right)\).
+            \begin{enumerate}
+                \item[i.]\(x \in (0, +\infty)\);
+                \item[ii.]\(x \in [\delta, +\infty), \delta > 0\).
+            \end{enumerate}
+    \end{enumerate}
+    \begin{solution}
+        \begin{enumerate}
+        \item 
+        \begin{enumerate}
+        \item[i.] $x\in(0,1).$\\
+        \textbf{点态极限：}令$n\to+\infty$，则$S(x)=0$.\\
+        \textbf{一致收敛性：}
+        \[
+        \sup_{x\in(0,1)}\left|S_n(x)-S(x)\right|=\sup_{x\in(0,1)}\left|\sin\frac{x}{n}\right|=\sin\frac{1}{n}\to 0 (n\to +\infty).
+        \]
+        因此，$\{S_n(x)\}$在$(0,1)$上一致收敛.
+        \item[ii.] $x\in(1\,+\infty).$\\
+        \textbf{点态极限：}令$n\to+\infty$，则$S(x)=0$.\\
+        \textbf{一致收敛性：}
+        \[
+        \sup_{x>1}\left|S_n(x)-S(x)\right|=\sup_{x>1}\left|\sin\frac{x}{n}\right|=\sin\frac{x}{n}=1\neq 0.
+        \]
+        取子列 $x_n=n+1,\,n\in\mathbb{N_{+}}$即可取到 1.\\
+        因此，$\{S_n(x)\}$在$(1,\,+\infty)$上不一致收敛.
+        \end{enumerate}
+
+        \item 
+        \begin{enumerate}
+        \item[i.] $x\in(0,1).$\\
+        \textbf{点态极限：}令$n\to+\infty$，则$S(x)=\frac{\pi}{2}$.\\
+        \textbf{一致收敛性：}
+        \[
+        \sup_{x\in(0,1)}\left|S_n(x)-S(x)\right|=\sup_{x\in(0,1)}\left(\frac{\pi}{2}-\arctan(nx)\right)=\frac{\pi}{2}\neq 0.
+        \]
+        取子列 $\displaystyle x_n=\frac{1}{n},\,n\in\mathbb{N_{+}}$ 即可取到 $\displaystyle\frac{\pi}{4}$.\\
+        因此，$\{S_n(x)\}$在$(0,1)$上不一致收敛.
+        \item[ii.] $x\in(1\,+\infty).$\\
+        \textbf{点态极限：}令 $n\to+\infty$，则 $\displaystyle S(x)=\frac{\pi}{2}$.\\
+        \textbf{一致收敛性：}
+        \[
+        \sup_{x>1}\left|S_n(x)-S(x)\right|=\sup_{x>1}\left(\frac{\pi}{2}-\arctan(nx)\right)=\frac{\pi}{2}-\arctan{n}\to 0 (n\to+\infty).
+        \]
+        因此，$\{S_n(x)\}$在$(1,\,+\infty)$上一致收敛.
+        \end{enumerate}
+
+        \item 
+        \begin{enumerate}
+        \item[i.] $x\in(0,1).$\\
+        \textbf{点态极限：}令 $n\to+\infty$，则$S(x)=x$.\\
+        \textbf{一致收敛性：}
+        \[
+        \begin{aligned}
+        \sup_{x\in(0,1)}\left|S_n(x)-S(x)\right|&=\sup_{x\in(0,1)}\left(\sqrt{x^2+\frac{1}{n^2}}-x\right)=\sup_{x\in(0,1)}\left(\frac{\frac{1}{n^2}}{\sqrt{x^2+\frac{1}{n^2}}+x}\right)\\
+        &=\frac{1}{n}\to 0 (n\to+\infty).
+        \end{aligned}
+        \]
+        因此，$\{S_n(x)\}$在$(0,1)$上一致收敛.
+        \item[ii.] $x\in(1\,+\infty).$\\
+        \textbf{点态极限：}令$n\to+\infty$，则$S(x)=x$.\\
+        \textbf{一致收敛性：}		
+        \[
+        \begin{aligned}
+        \sup_{x>1}\left|S_n(x)-S(x)\right|&=\sup_{x>1}\left(\sqrt{x^2+\frac{1}{n^2}}-x\right)=\sup_{x>1}\left(\frac{\frac{1}{n^2}}{\sqrt{x^2+\frac{1}{n^2}}+x}\right)\\
+        &=\frac{\frac{1}{n^2}}{1+\sqrt{1+\frac{1}{n^2}}}\to 0 (n\to+\infty).
+        \end{aligned}
+        \]
+        因此，$\{S_n(x)\}$在$(1,\,+\infty)$上一致收敛.\\
+        (\textbf{本题更简单的做法：}事实上，在$x\in\mathbb{R}$上，令$n\to+\infty$，$S(x)=\left|x\right|$.\\
+        由
+        \[
+        \left|S_n(x)-S(x)\right|=\sqrt{x^2+\frac{1}{n^2}}-\left|x\right|\leq \frac{1}{n}.
+        \]
+        可知
+        \[
+        \sup_{x\in\mathbb{R}}\left|S_n(x)-S(x)\right|\to 0(n\to +\infty).
+        \]
+        因此，$\{S_n(x)\}$在$\mathbb{R}$上一致收敛.)
+        \end{enumerate}
+
+        \item 
+        \begin{enumerate}
+        \item[i.] $x\in(0,\,+\infty).$\\
+        \textbf{点态极限：}当$x>1$时，令$n\to+\infty$，则$S(x)$不存在.\\
+        因此，$\{S_n(x)\}$在$(0,\,+\infty)$上不一致收敛.
+        \item[ii.] $x\in[\delta,+\infty)(\delta>0).$\\	\textbf{点态极限：}当$x>1$时，令$n\to+\infty$，则$S(x)$不存在.\\
+        因此，$\{S_n(x)\}$在$[\delta,\,+\infty)$上不一致收敛.
+        \end{enumerate}
+
+        \item 
+        $x\in(0,1).$\\
+        \textbf{点态极限：}令$n\to+\infty$，则$S(x)=0$.\\
+        \textbf{一致收敛性：}
+        由$S_n(0)=S(0+)=0$，且
+        \[
+        \frac{\mathrm{d}}{\mathrm{d}x}\left[S_n(x)-S(x)\right]=\frac{1}{n}\left(1+\ln\frac{x}{n}\right)<0(n>2).
+        \]
+        可知
+        \[
+        \sup_{x\in(0,1)}\left|S_n(x)-S(x)\right|=\frac{\ln{n}}{n}\to 0(n\to+\infty).
+        \]
+        因此，$\{S_n(x)\}$在$(0,1)$上一致收敛.
+
+        \item 
+        \begin{enumerate}
+        \item[i.] $x\in(0,1).$\\
+        \textbf{点态极限：}令$n\to+\infty$，则$S(x)=0$.\\
+        \textbf{一致收敛性：}
+        \[
+        S_n(1-\frac{1}{n})-S(1-\frac{1}{n})=\frac{\left(1-\frac{1}{n}\right)^n}{1+\left(1-\frac{1}{n}\right)^n}\nrightarrow 0(n\to+\infty).
+        \]
+        因此，$\{S_n(x)\}$在$(0,1)$上不一致收敛.
+        \item[ii.] $x\in(1\,+\infty).$\\
+        \textbf{点态极限：}令$n\to+\infty$，则$S(x)=1$.\\
+        \textbf{一致收敛性：}	
+        \[
+        S_n(1+\frac{1}{n})-S(1+\frac{1}{n})=\frac{\left(1+\frac{1}{n}\right)^n}{1+\left(1+\frac{1}{n}\right)^n}\nrightarrow 0(n\to+\infty).
+        \]
+        因此，$\{S_n(x)\}$在$(1,\,+\infty)$上不一致收敛.
+        \end{enumerate}
+
+        \item 
+        $x\in(0,1).$\\
+        \textbf{点态极限：}$\forall x\in(0,1)$，有$\sin{x}\in(0,\sin{1})\subset (0,1)$，则令$n\to+\infty$，则$S(x)=0$.\\	
+        \textbf{一致收敛性：}
+        \[
+        \sup_{x\in(0,1)}\left|S_n(x)-S(x)\right|=\left(\sin{1}\right)^n\to 0(n\to+\infty).
+        \]
+        因此，$\{S_n(x)\}$在$(0,1)$上一致收敛.
+
+        \item 
+        $x\in(0,1).$\\
+        \textbf{点态极限：}$\forall x\in(0,1)$，有$\sin{x}\in(0,\sin{1})\subset (0,1)$，则令$n\to+\infty$，则$S(x)=1$.\\	
+        \textbf{一致收敛性：}
+        \[
+        \sup_{x\in(0,1)}\left|S_n(x)-S(x)\right|=\sup_{x\in(0,1)}\left|S_n(x)-1\right|=\sup_{x\in(0,1)}\left(1-\left(\sin{x}\right)^{\frac{1}{n}}\right)=1\neq 0.
+        \]
+        因此，$\{S_n(x)\}$在$(0,1)$上不一致收敛.
+
+        \item 
+        $x\in(0,1).$\\
+        \textbf{点态极限：}令$n\to+\infty$，则$S(x)=e^x$.\\	
+        \textbf{一致收敛性：}
+        令 $\displaystyle f_n(x)=e^{-x}\left(1+\frac{x}{n}\right)^n$，其中 $x\in(0,1)$.\\
+        设 $\displaystyle g_n(x)=\ln f_n(x)$，则
+        \[
+        g'_n(x)=\frac{n}{n+x}-1<0,\,x\in(0,1).
+        \]
+        则
+        \[
+        \sup_{x\in(0,1)}\left|S_n(x)-S(x)\right|=\sup_{x\in(0,1)}\left|S_n(x)-e^x\right|=0.
+        \]
+        因此，$\{S_n(x)\}$ 在 $(0,1)$ 上一致收敛.
+
+        \item 
+        \begin{enumerate}
+        \item[i.] $x\in(0,+\infty).$\\
+        \textbf{点态极限：}令$n\to+\infty$，则
+        \[
+        S(x)=\lim_{n\to+\infty} n\left(\sqrt{x+\frac{1}{n}}-\sqrt{x}\right)=\lim_{n\to+\infty} \frac{1}{\sqrt{x+\frac{1}{n}}+\sqrt{x}}=\frac{1}{2\sqrt{x}}.
+        \]	
+        \textbf{一致收敛性：}
+        \[
+        S_n\left(\frac{1}{n}\right)-S\left(\frac{1}{n}\right)=\left(\sqrt{2}-\frac{3}{2}\right)\sqrt{n}\nrightarrow 0(n\to+\infty).
+        \]
+        因此，$\{S_n(x)\}$在$(0,+\infty)$上不一致收敛.
+        \item[ii.] $x\in [\delta,\,+\infty)(\delta >0 ).$\\
+        \textbf{点态极限：}令$n\to+\infty$，则
+        \[
+        S(x)=\lim_{n\to+\infty} n\left(\sqrt{x+\frac{1}{n}}-\sqrt{x}\right)=\lim_{n\to+\infty} \frac{1}{\sqrt{x+\frac{1}{n}}+\sqrt{x}}=\frac{1}{2\sqrt{x}}.
+        \]
+        \textbf{一致收敛性：}
+        \[
+        S_n(x)=n\left(\sqrt{x+\frac{1}{n}}-\sqrt{x}\right)=\frac{1}{\sqrt{x+\frac{1}{n}}+\sqrt{x}}<\frac{1}{2\sqrt{x}}=S(x).
+        \]
+        由
+        \[
+        \frac{\mathrm{d}}{\mathrm{d}x}\left[S_n(x)-S(x)\right]=\frac{-1}{2\sqrt{x\left(x+\frac{1}{n}\right)}\left(\sqrt{x}+\sqrt{x+\frac{1}{n}}\right)}+\frac{1}{4x^{\frac{3}{2}}}>0.
+        \]
+        可知
+        \[
+        \sup_{[\delta,\,+\infty)}\left|S_n(x)-S(x)\right|=\left|S_n(\delta)-S(\delta)\right|=-n\left(\sqrt{\delta+\frac{1}{n}}-\sqrt{\delta}\right)+\frac{1}{2\sqrt{\delta}}\to 0 (n\to+\infty).
+        \]
+        因此，$\{S_n(x)\}$在$[\delta,\,+\infty)$上一致收敛.
+        \end{enumerate}
+        \end{enumerate}
+    \end{solution}
+
+    \item[2.]讨论下列函数项级数在所指定区间上的一致收敛性：
+    \begin{enumerate}
+        \item[(a)]\(\displaystyle \sum_{n=0}^{\infty} x^3 e^{-nx^2},\quad x \in [0, +\infty)\).
+        \item[(b)]\(\displaystyle \sum_{n=0}^{\infty} x e^{-nx^2}\).
+            \begin{enumerate}
+                \item[i.]\(x \in [0, +\infty)\);
+                \item[ii.]\(x \in [\delta, +\infty)(\delta > 0)\).
+            \end{enumerate}
+        \item[(c)]\(\displaystyle\sum_{n=0}^{\infty} \frac{x}{1+n^3 x^2},\quad x \in (-\infty, +\infty)\).
+        \item[(d)]\(\displaystyle \sum_{n=1}^{\infty} \frac{\sin nx}{\sqrt[3]{n^4 + x^4}},\quad x \in (-\infty, +\infty)\).
+        \item[(e)]\(\displaystyle \sum_{n=1}^{\infty} (-1)^n(1-x)x^n,\quad x \in [0,\,1]\).
+        \item[(f)]\(\displaystyle \sum_{n=1}^{\infty} \frac{(-1)^n}{n+x^2},\quad x \in (-\infty, +\infty)\).
+        \item[(g)]\(\displaystyle \sum_{n=1}^{\infty} 2^n\sin\frac{1}{3^nx}\).
+            \begin{enumerate}
+                \item[i.]$x\in (0,\,+\infty)$;
+                \item[ii.]$x\in[\delta,\,+\infty),\,(\delta>0)$.
+            \end{enumerate}
+        \item[(h)]\(\displaystyle \sum_{n=1}^{\infty} \frac{\sin{x}\sin{nx}}{\sqrt{n}} ,\quad x \in (-\infty, +\infty)\).
+        \item[(i)]\(\displaystyle \sum_{n=1}^{\infty} \frac{x^2}{(1+x^2)^n} ,\quad x \in (-\infty, +\infty)\).
+        \item[(j)]\(\displaystyle \sum_{n=1}^{\infty} (-1)^n\frac{x^2}{(1+x^2)^n} ,\quad x \in (-\infty, +\infty)\).
+    \end{enumerate}
+    \begin{solution}
+        \begin{enumerate}
+        \item 设 $\displaystyle u_n(x)=x^3e^{-nx^2}$，则当 $n\geq 1$ 时，在$[0,\,+\infty)$上有
+        \[
+        0\leq u_n(x)\leq u_n\left(\sqrt{\frac{3}{2n}}\right)=\frac{K}{n^{\frac{3}{2}}}.
+        \] 
+        其中 $\displaystyle K=\frac{3\sqrt{6}}{4}e^{-\frac{3}{2}}>0$.\\
+        由于
+        \[
+        \sum_{n=0}^{+\infty}\frac{K}{n^{\frac{3}{2}}}.
+        \]
+        收敛，由 Weierstrass 判别法，
+        \[
+        \sum_{n=0}^{+\infty}x^3e^{-nx^2}.
+        \]
+        在$[0,\,+\infty)$上一致收敛.
+
+        \item 
+        \begin{enumerate}
+        \item[i.] $[0,\,+\infty).$\\
+        设 $\displaystyle u_n(x)=xe^{-nx^2}$，对任意的正整数 $N$，
+        取 $m=2n (n>N)$ 与 $\displaystyle x_n=\frac{1}{\sqrt{n}}\in [0,\,+\infty)$，则
+        \[
+        \begin{aligned}
+        \sum_{k=n+1}^{m}u_k(x_n)&=x_ne^{-(n+1)x_n^2}+x_ne^{-(n+2)x_n^2}+...+x_ne^{-2nx_n^2}\\
+        &>nx_ne^{-2nx_n^2}=\sqrt{n}e^{-2}\to+\infty(n\to+\infty).
+        \end{aligned}
+        \] 
+        所以
+        \[
+        \sum_{n=0}^{+\infty}xe^{-nx^2}.
+        \]
+        不满足一致收敛的 Cauchy 收敛原理的条件，由此可知
+        \[
+        \sum_{n=0}^{+\infty}xe^{-nx^2}.
+        \]
+        在$[0,\,+\infty)$上不一致收敛.
+        \item[ii.] $[\delta,\,+\infty),\delta>0.$\\
+        设 $\displaystyle u_n(x)=xe^{-nx^2}$，则当 $\displaystyle n>\frac{1}{2\delta^2}$时，
+        $u_n(x)$关于$x$在$[\delta,\,+\infty),\delta>0$上单调减少，\\
+        所以
+        \[
+        0\leq u_n(x)\leq \delta e^{-\delta^2n}.
+        \]
+        由于
+        \[
+        \sum_{n=0}^{+\infty}\delta e^{-\delta^2n}.
+        \]
+        收敛，由 Weierstrass 判别法，
+        \[
+        \sum_{n=0}^{+\infty}xe^{-nx^2}.
+        \]
+        在 $[\delta,\,+\infty),\delta>0$ 上一致收敛.
+        \end{enumerate}
+
+        \item 设 $\displaystyle u_n(x)=\frac{x}{1+n^3x^2}$，则当 $n\geq 1$ 时，
+        \[
+        \left|u_n(x)\right|\leq \frac{1}{2n^{\frac{3}{2}}}.
+        \]
+        由于
+        \[
+        \sum_{n=0}^{+\infty}\frac{1}{2n^{\frac{3}{2}}}.
+        \]
+        收敛，由 Weierstrass 判别法，
+        \[
+        \sum_{n=0}^{+\infty}\frac{x}{1+n^3x^2}.
+        \]
+        在 $\mathbb{R}$ 上一致收敛.
+
+        \item 
+        设 $\displaystyle u_n(x)=\frac{\sin{nx}}{\sqrt[3]{n^4+x^4}}$，则当 $n\geq 1$ 时，
+        \[
+        \left|u_n(x)\right|\leq \frac{1}{n^{\frac{4}{3}}}.
+        \]
+        由
+        \[
+        \sum_{n=0}^{+\infty}\frac{1}{n^{\frac{4}{3}}}.
+        \]
+        收敛，由 Weierstrass 判别法，
+        \[
+        \sum_{n=0}^{+\infty}\frac{\sin{nx}}{\sqrt[3]{n^4+x^4}}.
+        \]
+        在$\mathbb{R}$上一致收敛.
+
+        \item 设$a_n(x)=(1-x)x^n,\,b_n(x)=(-1)^n$，则$\{a_n(x)\}$对固定的$x\in[0,1]$关于$n$是单调的，且在$[0,1]$上一致收敛于0，同时
+        \[
+        \left|\sum_{k=0}^{n}b_k(x)\right|\leq 1.
+        \]
+        由 Dirichlet 判别法，
+        \[
+        \sum_{n=0}^{+\infty}(-1)^n(1-x)x^n.
+        \]
+        在$[0,1]$上一致收敛.
+
+        \item 设 $\displaystyle a_n(x)=\frac{1}{n+x^2},\,b_n(x)=(-1)^n$，
+        则$\{a_n(x)\}$对固定的$x\in\mathbb{R}$关于$n$是单调的，
+        且在$\mathbb{R}$上一致收敛于0，同时
+        \[
+        \left|\sum_{k=0}^{n}b_k(x)\right|\leq 1.
+        \]
+        由 Dirichlet 判别法，
+        \[
+        \sum_{n=1}^{+\infty}\frac{(-1)^n}{n+x^2}.
+        \]
+        在$\mathbb{R}$上一致收敛.
+
+        \item 
+        \begin{enumerate}
+        \item[i.] $(0,\,+\infty).$\\ 
+        设 $\displaystyle u_n(x)=2^n\sin\frac{1}{3^nx}$，取 $\displaystyle x_n=\frac{2}{3^n\pi}\in(0,\,+\infty)$，则
+        \[
+        u_n(x_n)=2^n\to+\infty.
+        \] 
+        即$\{u_n(x)\}$在$(0,\,+\infty)$上不一致收敛趋于0，所以
+        \[
+        \sum_{n=0}^{+\infty}2^n\sin\frac{1}{3^nx}.
+        \]
+        在$(0,\,+\infty)$上不一致收敛.
+        \item[ii.] $[\delta,\,+\infty),\delta>0.$\\
+        设 $\displaystyle u_n(x)=2^n\sin\frac{1}{3^nx}$，则当 $x\in [\delta,\,+\infty)$时，
+        \[
+        \left|u_n(x)\right|\leq \frac{1}{\delta}\left(\frac{2}{3}\right)^n.
+        \]
+        由于
+        \[
+        \sum_{n=0}^{+\infty}\frac{1}{\delta}\left(\frac{2}{3}\right)^n.
+        \]
+        收敛，由 Weierstrass 判别法，
+        \[
+        \sum_{n=0}^{+\infty}2^n\sin\frac{1}{3^nx}.
+        \]
+        在$[\delta,\,+\infty),\delta>0$上一致收敛.
+        \end{enumerate}
+
+        \item 
+        设 $\displaystyle a_n(x)=\frac{1}{\sqrt{n}},\,b_n(x)=\sin{x}\sin{nx}$，由于 $a_n(x)$ 与 $x$ 无关且单调趋于0，
+        所以 $\{a_n(x)\}$ 对固定的$x\in\mathbb{R}$关于$n$是单调的，且在$\mathbb{R}$上一致收敛于0，同时
+        \[
+        \left|\sum_{k=1}^{n}b_k(x)\right|=\left|\cos{\frac{x}{2}}\sum_{k=1}^{n}2\sin{\frac{x}{2}}\sin{kx}\right|=\left|\cos{\frac{x}{2}}\right|\cdot\left|\cos\left(n+\frac{1}{2}\right)x-\cos\frac{x}{2}\right|\leq 2.
+        \]
+        由 Dirichlet 判别法，
+        \[
+        \sum_{n=1}^{+\infty}\frac{\sin{x}\sin{nx}}{\sqrt{n}}.
+        \]
+        在$\mathbb{R}$上一致收敛.
+
+        \item 
+        设 $\displaystyle u_n(x)=\frac{x^2}{(1+x^2)^n}$，取 $\epsilon_0=\frac{1}{e^2}>0$，
+        对任意的正整数$N$，取 $m=2n(n>N)$ 与 $\displaystyle x_n=\frac{1}{\sqrt{n}}\in\mathbb{R}$，则
+        \[
+        \sum_{k=n+1}^{m}u_k(x_n)=\frac{x_n^2}{(1+x_n^2)^{n+1}}+\frac{x_n^2}{(1+x_n^2)^{n+2}}+...+\frac{x_n^2}{(1+x_n^2)^{2n}}>\frac{nx_n^2}{(1+x_n^2)^{2n}}>\frac{1}{e^2}=\epsilon_0.
+        \]
+        所以
+        \[
+        \sum_{n=0}^{+\infty}\frac{x^2}{(1+x^2)^n}.
+        \]
+        不满足一致收敛的 Cauchy 收敛原理的条件，由此可知
+        \[
+        \sum_{n=0}^{+\infty}\frac{x^2}{(1+x^2)^n}.
+        \]
+        在$\mathbb{R}$上不一致收敛.
+
+        \item 设 $\displaystyle a_n(x)=\frac{x^2}{(1+x^2)^n},\,b_n(x)=(-1)^n$，
+        则 $\{a_n(x)\}$ 对固定的 $x\in\mathbb{R}$ 关于 $n$ 是单调的，且在 $\mathbb{R}$ 上一致收敛于0，同时
+        \[
+        \left|\sum_{k=1}^{n}b_k(x)\right|\leq 1.
+        \]
+        由 Dirichlet 判别法，
+        \[
+        \sum_{n=0}^{+\infty}(-1)^n\frac{x^2}{(1+x^2)^n}.
+        \]
+        在$\mathbb{R}$上一致收敛.
+        \end{enumerate} 
+    \end{solution}
+\end{enumerate}
+
+== 习题B ==
+\begin{enumerate}
+    \item[1.]设对一切正整数 $n$，$u_n(x)$ 在 $x=a$ 右连续，且 $\displaystyle \sum_{n=1}^{+\infty}u_n(x)$ 在 $x=a$ 发散，证明：
+    对任意 $\delta>0$，$\displaystyle \sum_{n=1}^{+\infty}u_n(x)$ 在 $(a,\,a+\delta)$ 上必定非一致收敛.
+    \begin{solution}
+        用反证法，假设存在 $\delta>0$ 使得级数在 $(a,a+\delta)$ 上一致收敛.\\
+        则对任意 $\varepsilon>0$，存在正整数 $N$，当 $m>n>N$ 时，对一切 $x\in(a,a+\delta)$ 有 
+        \[
+        \left|\sum_{k=n+1}^{m} u_k(x)\right|<\varepsilon.
+        \]
+        由于每个 $u_k(x)$ 在 $x=a$ 右连续，令 $x\to a^+$，得到 
+        \[
+        \left|\sum_{k=n+1}^{m} u_k(a)\right|\le \varepsilon.
+        \]
+        这表明级数在 $x=a$ 处满足 Cauchy 收敛准则，从而
+        \[
+        \sum_{n=1}^{+\infty}u_k(x).
+        \]
+        在 $x=a$ 处收敛，与已知条件中提到的
+        \[
+        \sum_{n=1}^{+\infty}u_k(x).
+        \]
+        在 $x=a$ 处发散相矛盾.\\
+        因此，级数在 $(a,a+\delta)$ 上不一致收敛.
+    \end{solution}
+
+    \item[2.]证明: 函数项级数
+    \[\displaystyle\sum_{n = 2}^{+\infty}\ln \left(1 + \frac{x}{n\ln^{2}n}\right)\]
+    在 \((- 2\ln^{2}2,2\ln^{2}2)\) 上内闭一致收敛.
+    \begin{solution}
+        任取闭区间 $[a,b]\subset (-2\ln^2 2, 2\ln^2 2)$，令 $M=\max(|a|,|b|)<2\ln^2 2$.\\
+        当 $n>4$ 时，
+        \[
+        \frac{|x|}{n\ln^2 n}\le \frac{M}{n\ln^2 n}\le \frac{2\ln^2 2}{n\ln^2 n}<1.
+        \]
+        由不等式 $|\ln(1+t)|\le 2|t|$(当 $|t|\le \frac{1}{2}$ 时)，存在 正整数 $N$，当 $n>N$ 时，
+        \[
+        \frac{M}{n\ln^2 n}\le \frac{1}{2}.
+        \]
+        于是
+        \[
+        \left|\ln\left(1+\frac{x}{n\ln^2 n}\right)\right|\le \frac{2|x|}{n\ln^2 n}\le \frac{2M}{n\ln^2 n}.
+        \]
+        由积分判别法可知 
+        \[
+        \sum_{n=2}^{\infty} \frac{1}{n\ln^2 n}
+        \]
+        收敛，由 Weierstrass 判别法，级数
+        \[
+        \sum_{n=2}^{+\infty}\ln\left(1+\frac{x}{n\ln^2n}\right).
+        \]
+        在 $[a,b]$ 上一致收敛.\\
+        因此，级数
+        \[
+        \sum_{n=2}^{+\infty}\ln\left(1+\frac{x}{n\ln^2n}\right).
+        \]
+        在 $(-2\ln^2 2, 2\ln^2 2)$ 上内闭一致收敛.
+    \end{solution}
+    
+    \item[3.]设
+    \[\displaystyle f(x) = \sum_{n = 1}^{+\infty}\frac{1}{2^{n}}\tan \frac{x}{2^{n}}.\]
+    \begin{enumerate}
+        \item[(a)]证明: \(f(x)\) 在 \(\displaystyle \left[0, \frac{\pi}{2}\right]\) 上连续;
+        \item[(b)]计算 \(\displaystyle \int_{\frac{\pi}{6}}^{\frac{\pi}{2}} f(x) \mathrm{d}x\).
+    \end{enumerate}
+    \begin{solution}
+        \begin{enumerate}
+        \item[(a)] \textbf{连续性：} \\
+        当 $\displaystyle x\in [0,\frac{\pi}{2}]$ 时，$\displaystyle 0\le \frac{x}{2^n}\le \frac{\pi}{2^{n+1}}$. 当 $\displaystyle t\in [0,\,\frac{\pi}{4}]$ 时，$\tan t \le 2t$ .\\
+        当 $n\ge 2$ 时，$\displaystyle \frac{x}{2^n}\le \frac{\pi}{8}<\frac{\pi}{4}$，所以
+        \[
+        \left|\frac{1}{2^n}\tan\frac{x}{2^n}\right|\le \frac{1}{2^n}\cdot 2\cdot\frac{x}{2^n}\le \frac{\pi}{2^{2n-1}}.
+        \]
+        而 
+        \[
+        \sum_{n=2}^{+\infty} \frac{\pi}{2^{2n-1}}
+        \]
+        收敛，且 $n=1$ 对应的项有界，故由 Weierstrass 判别法，级数
+        \[
+        \sum_{n=1}^{+\infty}\frac{1}{2^n}\tan\frac{x}{2^n}.
+        \]
+        在 $\displaystyle [0,\frac{\pi}{2}]$ 上一致收敛. 由和函数中的每一项都连续可知，和函数连续. 
+
+        \item[(b)] \textbf{积分计算：} \\
+        由于级数一致收敛，可逐项积分：
+        \[
+        \int_{\frac{\pi}{6}}^{\frac{\pi}{2}} f(x) \mathrm{d}x = \sum_{n=1}^{+\infty} \frac{1}{2^n} \int_{\frac{\pi}{6}}^{\frac{\pi}{2}} \tan\frac{x}{2^n} \mathrm{d}x.
+        \]
+        计算积分：令 $\displaystyle t=\frac{x}{2^n}$，则
+        \[
+        \int_{\frac{\pi}{6}}^{\frac{\pi}{2}} \tan\frac{x}{2^n} \mathrm{d}x = 2^n \int_{\frac{\pi}{6\cdot 2^n}}^{\frac{\pi}{2^{n+1}}} \tan t \, \mathrm{d}t = 2^n \ln\frac{\cos\left(\frac{\pi}{6\cdot 2^n}\right)}{\cos\left(\frac{\pi}{2^{n+1}}\right)}.
+        \]
+        因此，
+        \[
+        \int_{\frac{\pi}{6}}^{\frac{\pi}{2}} f(x) \mathrm{d}x 
+        = \sum_{n=1}^{+\infty} \ln\frac{\cos\left(\frac{\pi}{6\cdot 2^n}\right)}{\cos\left(\frac{\pi}{2^{n+1}}\right)} 
+        = \ln\left( \prod_{n=1}^{+\infty} \frac{\cos\left(\frac{\pi}{6\cdot 2^n}\right)}{\cos\left(\frac{\pi}{2^{n+1}}\right)} \right).
+        \]
+        利用公式 
+        \[
+        \prod_{n=1}^{+\infty} \cos\frac{x}{2^n} = \frac{\sin x}{x}.
+        \]
+        计算得
+        \[
+        \prod_{n=1}^{+\infty} \cos\left(\frac{\pi}{6\cdot 2^n}\right) = \frac{\sin(\frac{\pi}{6})}{\frac{\pi}{6}} = \frac{3}{\pi}, \quad \prod_{n=1}^{+\infty} \cos\left(\frac{\pi}{2^{n+1}}\right) = \frac{2}{\pi}.
+        \]
+        所以乘积为 $\displaystyle \frac{\frac{3}{\pi}}{\frac{2}{\pi}} = \frac{3}{2}$，积分值为 $\displaystyle \ln\frac{3}{2}$.
+        \end{enumerate}
+    \end{solution}
+
+    \item[4.]设 \(\displaystyle f(x) = \sum_{n = 1}^{+\infty} \frac{\cos nx}{\sqrt{n^3 + n}}\).
+    \begin{enumerate}
+        \item[(a)]证明: \(f(x)\) 在 \((- \infty, + \infty)\) 上连续;
+        \item[(b)]记 \(\displaystyle F(x) = \int_{0}^{x}f(t)\mathrm{d}t\), 证明:
+        \[\displaystyle \frac{\sqrt{2}}{2} -\frac{1}{15} < F\left(\frac{\pi}{2}\right)< \frac{\sqrt{2}}{2}.\]
+    \end{enumerate}
+    \begin{solution}
+        \begin{enumerate}
+        \item[(a)] \textbf{连续性：} \\
+        由于 
+        \[
+        \left|\frac{\cos nx}{\sqrt{n^3+n}}\right| \le \frac{1}{n^{\frac{3}{2}}}.
+        \]
+        且 
+        \[
+        \sum_{n=1}^{+\infty} \frac{1}{n^{\frac{3}{2}}}.
+        \]
+        收敛，由 Weierstrass 判别法，级数
+        \[
+        \sum_{n=1}^{+\infty}\frac{\cos nx}{\sqrt{n^3+n}}.
+        \]
+        在 $\mathbb{R}$ 上一致收敛. 由和函数中的每一项都连续可知，和函数连续.
+
+        \item[(b)] \textbf{积分估计：} \\
+        由一致收敛性，使用逐项积分定理可得
+        \[
+        F(x) = \int_0^x f(t) \mathrm{d}t = \sum_{n=1}^{+\infty} \frac{\sin nx}{n\sqrt{n^3+n}}.
+        \]
+        所以
+        \[
+        F\left(\frac{\pi}{2}\right) = \sum_{n=1}^{+\infty} \frac{\sin(\frac{n\pi}{2})}{n\sqrt{n^3+n}}.
+        \]
+        当 $n$ 为偶数时，$\displaystyle \sin\left(\frac{n\pi}{2}\right)=0$；\\
+        当 $n$ 为奇数时，设 $n=2k+1$，则 $\displaystyle \sin\left(\frac{(2k+1)\pi}{2}\right)=(-1)^k$.\\
+        于是
+        \[
+        F\left(\frac{\pi}{2}\right) = \sum_{k=0}^{+\infty} \frac{(-1)^k}{(2k+1)\sqrt{(2k+1)^3+(2k+1)}} = \sum_{k=0}^{+\infty} \frac{(-1)^k}{(2k+1)\sqrt{2k+1}\sqrt{(2k+1)^2+1}}.
+        \]
+        这是交错级数，通项 
+        \[
+        a_k = \frac{1}{(2k+1)\sqrt{2k+1}\sqrt{(2k+1)^2+1}}.
+        \]
+        单调递减趋于 0.\\
+        由 Leibniz 判别法可知，级数收敛，且部分和满足 $\displaystyle S_1 = a_0 - a_1 < F(\frac{\pi}{2}) < a_0$.\\
+        计算
+        \[
+        a_0 = \frac{1}{1\cdot\sqrt{1}\cdot\sqrt{2}} = \frac{1}{\sqrt{2}} = \frac{\sqrt{2}}{2}, \quad a_1 = \frac{1}{3\sqrt{3}\sqrt{10}} = \frac{1}{3\sqrt{30}} < \frac{1}{15}.
+        \]
+        因此，
+        \[
+        \frac{\sqrt{2}}{2} - \frac{1}{15} < F\left(\frac{\pi}{2}\right) < \frac{\sqrt{2}}{2}. 
+        \]
+        \end{enumerate}
+    \end{solution}
+
+    \item[5.]设 \(\displaystyle S_{n}(x) = n^{\alpha}x e^{-n x}\) ,其中 \(\alpha\) 是参数.
+    求 \(\alpha\) 的取值范围, 使得 \(\displaystyle \{S_{n}(x)\}\) 在 \([0,1]\) 上
+    \begin{enumerate}
+        \item[(a)]一致收敛;
+        \item[(b)]积分运算与极限运算可以交换,即
+        \[\displaystyle \lim_{n\to \infty}\int_{0}^{1}S_{n}(x)\mathrm{d}x = \int_{0}^{1}\lim_{n\to \infty}S_{n}(x)\mathrm{d}x;\]
+        \item[(c)]求导运算与极限运算可以交换,即对一切 \(\displaystyle x\in [0,1]\) 成立
+        \[\displaystyle \lim_{n\to \infty}\frac{\mathrm{d}}{\mathrm{d}x} S_{n}(x) = \frac{\mathrm{d}}{\mathrm{d}x}\lim_{n\to \infty}S_{n}(x).\]
+    \end{enumerate}
+    \begin{solution}
+        \begin{enumerate}
+        \item \textbf{一致收敛：}\\
+        \textbf{点态极限：}对任意 $x\in[0,1]$，当 $x=0$ 时，$S_n(0)=0$；当 $x>0$ 时，$S_n(x)\to 0$.\\
+        故极限函数 $S(x)=0$. 计算上确界
+        \[
+        \sup_{x\in[0,1]} |S_n(x)| = n^\alpha \sup_{x\in[0,1]} x e^{-nx}.
+        \]
+        令 $\displaystyle f_n(x)=x e^{-nx}$，求导可得 $\displaystyle f_n'(x)=e^{-nx}(1-nx)$，其最大值在 $\displaystyle x=\frac{1}{n}$ 处取到，
+        最大值为 $\displaystyle f_n(\frac{1}{n})=\frac{1}{n}e^{-1}$. 所以
+        \[
+        \sup_{x\in[0,1]} |S_n(x)| = n^\alpha \cdot \frac{1}{n}e^{-1} = n^{\alpha-1}e^{-1}.
+        \]
+        故 $\{S_n(x)\}$ 一致收敛当且仅当 
+        \[
+        \lim_{n\to+\infty} n^{\alpha-1}=0.
+        \]
+        即 $\alpha<1$.
+        \item \textbf{积分运算与极限运算可交换性：}
+        \[
+        \int_0^1 S_n(x) \mathrm{d}x = n^\alpha \int_0^1 x e^{-nx} \mathrm{d}x = n^\alpha \cdot \frac{1}{n^2} \int_0^n t e^{-t} \mathrm{d}t = n^{\alpha-2} \left(1-(n+1)e^{-n}\right) \sim n^{\alpha-2}(n\to+\infty).
+        \]
+        而 
+        \[
+        \int_0^1 \lim_{n\to\infty} S_n(x) \mathrm{d}x = \int_0^1 0 \, \mathrm{d}x = 0.
+        \]
+        所以要使得积分运算与极限运算可交换，必须有 
+        \[
+        \lim_{n\to+\infty} \int_0^1 S_n(x) \mathrm{d}x = 0.
+        \]
+        即 $\alpha<2$.
+        \item \textbf{求导运算与极限运算可交换性：}
+        \[
+        S_n'(x) = n^\alpha e^{-nx}(1-nx).
+        \]
+        \textbf{点态极限：}
+        当 $x=0$ 时，$S_n'(0)=n^\alpha \to 0$ 当且仅当 $\alpha<0$；
+        当 $x>0$ 时，$S_n'(x)\to 0$.\\
+        故极限函数为 0.\\
+        要使得求导运算与极限运算可交换，需在 $x=0$ 处成立，此时 $\alpha<0$.\\
+        类似(a)可知 $S_n'(x)$ 在 $[0,1]$ 上一致收敛于 0 当且仅当 $\alpha<0$.
+        \end{enumerate}
+    \end{solution}
+
+    \item[6.]设 \(\displaystyle S^{\prime}(x)\) 在区间 \((a,b)\) 上连续,
+    \[\displaystyle S_{n}(x) = n\left[S\left(x + \frac{1}{n}\right) - S(x)\right],\]
+    证明: \(\displaystyle \{S_{n}(x)\}\) 在 \((a,b)\) 上内闭一致收敛于 \(\displaystyle S^{\prime}(x)\).
+    \begin{solution}
+        任取闭区间 $[c,d] \subset (a,b)$. 当 $n$ 充分大时，对任意 $x\in[c,d]$，有 $\displaystyle x+\frac{1}{n}\in(a,b)$.\\
+        由微分中值定理，可知存在 $\displaystyle \theta_n(x)\in(0,1)$ 使得
+        \[
+        S_n(x) = S'\left(x+\frac{\theta_n(x)}{n}\right).
+        \]
+        由于 $S'(x)$ 在 $[a,b]$ 上连续，从而 $S'(x)$ 在 $[c,d]$ 上一致连续，即对任意 $\varepsilon>0$，存在 $\delta>0$，使得当 $|h|<\delta$ 时，对任意 $y\in[c,d]$ 有 $|S'(y+h)-S'(y)|<\varepsilon$.\\
+        取正整数 $N$ 使得 $\displaystyle \frac{1}{N}<\delta$，则当 $n>N$ 时，$\displaystyle  \left|\frac{\theta_n(x)}{n}\right|<\delta$，
+        且 $\displaystyle x+\frac{\theta_n(x)}{n}\in[c,d+\delta]\subset(a,b)$.\\
+        于是
+        \[
+        |S_n(x)-S'(x)| = \left|S'\left(x+\frac{\theta_n(x)}{n}\right)-S'(x)\right| < \varepsilon.
+        \]
+        故 $S_n$ 在 $[c,d]$ 上一致收敛于 $S'$，从而在 $(a,b)$ 上内闭一致收敛.
+    \end{solution}
+
+    \item[7.]设 \(S_{0}(x)\) 在 \([0,a]\) 上连续, 令
+    \[\displaystyle S_{n}(x) = \int_{0}^{x}S_{n - 1}(t)\mathrm{d}t,\quad n = 1,2,\dots\]
+    证明: \(\displaystyle \{S_{n}(x)\}\) 在 \([0,a]\) 上一致收敛于0.
+    \begin{solution}
+        设 
+        \[
+        M = \max_{x\in[0,a]} |S_0(x)|.
+        \]
+        下用数学归纳法证明：
+        \[
+        |S_n(x)| \le M \frac{x^n}{n!} \le M \frac{a^n}{n!}.
+        \]
+        当 $n=0$ 时显然.\\
+        假设 
+        \[
+        |S_{n-1}(x)| \le M \frac{x^{n-1}}{(n-1)!}
+        \]
+        则
+        \[
+        0\leq |S_n(x)| \le \int_0^x |S_{n-1}(t)| \mathrm{d}t \le M \int_0^x \frac{t^{n-1}}{(n-1)!} \mathrm{d}t = M \frac{x^n}{n!} \le M \frac{a^n}{n!}.
+        \]
+        由于 
+        \[
+        \lim_{n\to+\infty} \frac{a^n}{n!}=0.
+        \]
+        所以由夹逼准则可知，$\{S_n(x)\}$一致收敛于 0.
+    \end{solution}
+
+    \item[8.]设 \(S(x)\) 在 \([0,1]\) 上连续,且 \(S(1) = 0\).
+    证明: \(\displaystyle\{x^{n}S(x)\}\) 在 \([0,1]\) 上一致收敛.
+
+    \item[9.]设 $\{b_{n}\}$ 为单调下降的正数列. 证明: 
+    \(\displaystyle \sum_{n = 1}^{+\infty} b_{n} \sin(nx)\) 在 \([- \pi,\pi ]\) 上一致收敛当且仅当 \(\displaystyle \lim_{n\to +\infty}n b_{n} = 0\).
+    \begin{solution}
+        \textbf{必要性：}\\
+        若级数
+        \[
+        \sum_{n=1}^{+\infty}b_n\sin nx.
+        \]
+        一致收敛，则通项一致趋于 0，即 
+        \[
+        \sup_{x\in[-\pi,\pi]} |b_n \sin nx| =\left|b_n\right|\to 0(n\to+\infty).
+        \]
+        取子列 $\displaystyle x_n=\frac{\pi}{2n},\,n\in\mathbb{N}_+$，则 $\displaystyle \sin nx = \sin\frac{\pi}{2}=1$，所以 $b_n\to 0$.\\
+        由 Cauchy 收敛准则，对任意 $\varepsilon>0$，存在正整数$N$，当$m>n>N$时，对任意 $x\in [-\pi,\,\pi]$，
+        \[
+        \left|\sum_{k=n+1}^{m} b_k \sin kx\right|<\varepsilon.
+        \]
+        取 $m=2n$，$\displaystyle x_n=\frac{\pi}{2n}$，则
+        \[
+        \left|\sum_{k=n+1}^{2n} b_k \sin\left(k\cdot\frac{\pi}{2n}\right)\right| \ge b_{2n} \sum_{k=n+1}^{2n} \sin\left(\frac{k\pi}{2n}\right).
+        \]
+        由和差化积公式可知
+        \[
+        \begin{aligned}
+        \sum_{k=n+1}^{2n}\sin\left(\frac{k\pi}{2n}\right)&=\frac{1}{\sin\left(\frac{\pi}{2n}\right)}\sum_{k=n+1}^{2n}\sin\left(\frac{k\pi}{2n}\right)\sin\left(\frac{\pi}{2n}\right)\\
+        &=\frac{1}{\sin\left(\frac{\pi}{2n}\right)}\left(\cos\left(\frac{n\pi}{2n}\right)-\cos\left(\frac{(2n+1)\pi}{2n}\right)\right)\\
+        &=\frac{\cos\left(\frac{\pi}{2n}\right)}{\sin\left(\frac{\pi}{2n}\right)}=\cot\left(\frac{\pi}{2n}\right)\sim \frac{\pi}{2n}(n\to +\infty).
+        \end{aligned}
+        \]
+        于是存在正常数$C>0$使得
+        \[
+        b_{2n} n \le C\varepsilon.
+        \]
+        从而 $n b_{2n}\to 0$，由夹逼准则可知 $n b_n\to 0$.\\
+        \textbf{充分性：}\\
+        设 
+        \[
+        \lim_{n\to+\infty} n b_n = 0.
+        \]
+        对任意 $\varepsilon>0$，存在正整数 $N$，当 $n>N$ 时，$n b_n < \varepsilon$.\\
+        对任意 $x\in[-\pi,\pi]$，分两种情况：
+        \begin{enumerate}
+        \item 当 $\displaystyle |x|\ge \frac{1}{n}$ 时，利用 Abel 变换：\\
+        设 
+        \[
+        B_n(x)=\sum_{k=1}^{n} \sin kx.
+        \]
+        则 
+        \[
+        |B_n(x)|\le \frac{\pi}{|x|}.
+        \]
+        于是对 $m>n>N$，
+        \[
+        \left|\sum_{k=n+1}^{m} b_k \sin kx\right| \le 2b_{n+1} \frac{\pi}{|x|} \le 2b_{n+1} \pi n \le 2\pi \varepsilon.
+        \]
+        \item 当 $\displaystyle |x|<\frac{1}{n}$ 时，由数学归纳法可知 $\left|\sin kx\right|\le k\left|x\right|$，从而有
+        \[
+        \left|\sum_{k=n+1}^{m} b_k \sin kx\right| \le |x| \sum_{k=n+1}^{m} k b_k \le |x| \cdot \varepsilon (m-n) \le \varepsilon \cdot \frac{1}{n} \cdot n = \varepsilon.
+        \]
+        \end{enumerate}
+        综上，级数
+        \[
+        \sum_{n=1}^{+\infty}b_n\sin nx.
+        \]
+        在 $[-\pi,\,\pi]$ 上满足一致收敛的Cauchy收敛准则，从而其在 $[-\pi,\,\pi]$ 上一致收敛.
+    \end{solution}
+
+    \item[10.]试举出一个函数列 \(\{f_{n}(x)\}\), 使得它同时满足以下性质:
+    \begin{enumerate}
+        \item[(a)]\(\displaystyle\{f_{n}(x)\}\) 在 \((- \infty, + \infty)\) 点态收敛;
+        \item[(b)]\(\displaystyle\{f_{n}(x)\}\) 在 \((- \infty, + \infty)\) 不一致收敛;
+        \item[(c)]\(\displaystyle \{f_{n}^{\prime}(x)\}\) 在 \((- \infty, + \infty)\) 一致收敛.
+    \end{enumerate}
+    \begin{solution}
+        取 
+        \[
+        f_n(x) = \frac{x}{n}.
+        \]则\\
+        (1) 对任意 $x\in\mathbb{R}$，
+        \[
+        \lim_{n\to+\infty} f_n(x)=0.
+        \]
+        故 $\{f_n(x)\}$ 在 $\mathbb{R}$ 上点态收敛于 0.\\
+        (2) 
+        \[
+        \sup_{x\in\mathbb{R}} |f_n(x)| = +\infty.
+        \]
+        故 $\{f_n(x)\}$ 在 $\mathbb{R}$ 上不一致收敛.\\
+        (3) $\displaystyle f_n'(x) = \frac{1}{n}$，$\{f'_n(x)\}$在$\mathbb{R}$上一致收敛于 0.\\
+        从而该函数符合题意.
+    \end{solution}
+\end{enumerate}
+
+== 习题C ==
+
+设
+\[
+\displaystyle f(x)=\sum_{n=1}^{\infty}2^{-n}\sin(3^{n}x),\quad x\in\R.
+\]
+
+\begin{enumerate}
+    \item[1.]证明级数 $\displaystyle\sum_{n=1}^{\infty}2^{-n}\sin(3^{n}x)$ 在 $\R$ 上一致收敛，从而 $f$ 在 $\R$ 上处处连续.
+    \item[2.]证明 $f$ 满足函数方程
+    \[
+    \displaystyle f(x)=2f\!\left(\frac{x}{3}\right)-\sin x,\quad\forall x\in\R.
+    \]
+    \item[3.]证明 $f$ 在 $x=0$ 处不可导.
+    \begin{enumerate}
+        \item[(a)] 令 $h_k=\dfrac{\pi}{3^k}$，证明
+        \[
+        \displaystyle f(h_k)=\sum_{n=1}^{k-1}2^{-n}\sin\!\left(\frac{\pi}{3^{k-n}}\right)=2^{-k}\sum_{j=1}^{k-1}2^{j}\sin\!\left(\frac{\pi}{3^{j}}\right).
+        \]
+        \item[(b)] 记 $S_k=\displaystyle\sum_{j=1}^{k}2^{j}\sin\!\left(\frac{\pi}{3^{j}}\right)$，
+        $S=\displaystyle\sum_{j=1}^{\infty}2^{j}\sin\!\left(\frac{\pi}{3^{j}}\right)$，
+        证明 $0<S<+\infty$，并由此说明
+        \[
+        \frac{f(h_k)-f(0)}{h_k}=\frac{f(h_k)}{h_k}=\frac{1}{\pi}\left(\frac{3}{2}\right)^kS_{k-1}
+        \xrightarrow{k\to+\infty}+\infty.
+        \]
+        从而 $f$ 在 $x=0$ 处不可导.
+    \end{enumerate}
+    \item[4.]证明 $f$ 在任意点 $x_0\in\R$ 处都不可导.
+    \begin{enumerate}
+        \item[(a)] 定义 $g_{x_0}(t)=f(x_0+t)-f(x_0)$。利用第 (2) 问的结果证明
+        \[
+        \displaystyle g_{x_0}(t)=2g_{x_0/3}\!\left(\frac{t}{3}\right)-\bigl(\sin(x_0+t)-\sin x_0\bigr).
+        \]
+        \item[(b)] 取 $\displaystyle t_k=\dfrac{\pi}{3^k}$，证明
+        \[
+        \displaystyle\frac{g_{x_0}(t_k)}{t_k}=\frac{f(x_0+t_k)-f(x_0)}{t_k}
+        \]
+        不收敛(甚至无界)，从而 $f$ 在 $x_0$ 处不可导.
+    \end{enumerate}
+    \item[5.]总结：函数 $\displaystyle f(x)=\sum_{n=1}^{\infty}2^{-n}\sin(3^n x)$ 在 $\R$ 上处处连续但处处不可导，是一个具体的 Weierstrass 型处处不可导函数.
+\end{enumerate}
+\begin{solution}
+    \begin{enumerate}[leftmargin=*,label=\arabic*.]
+    \item \textbf{(一致收敛与连续性.)}\\
+    由于 $\displaystyle |2^{-n} \sin(3^n x)| \leq 2^{-n}$ 且 $\displaystyle \sum_{n=1}^{+\infty} 2^{-n}$ 收敛，
+    由 Weierstrass 判别法，级数
+    \[
+    \sum_{n=1}^{+\infty}2^{-n}\sin(3^nx).
+    \]
+    在 \(\mathbb{R}\) 上一致收敛，从而定义了一个处处连续的函数$f$. 
+
+    \item \textbf{(自相似关系.)}\\
+    由
+    \[
+    2f\left(\frac{x}{3}\right) = 2 \sum_{n=1}^{+\infty} 2^{-n} \sin\left(3^n \cdot \frac{x}{3}\right) = 2 \sum_{n=1}^{+\infty} 2^{-n} \sin(3^{n-1} x) = \sum_{m=0}^{+\infty} 2^{-m} \sin(3^m x) = \sin x + f(x).
+    \]
+    可知
+    \[
+    f(x) = 2f\left(\frac{x}{3}\right) - \sin x. 
+    \] 
+
+    \item \textbf{(在$x=0$处不可导.)}
+    \begin{enumerate}
+    \item[(a)]
+    令 \(\displaystyle h_k \coloneqq \frac{\pi}{3^k} \). 则
+    \[
+    f(h_k) = \sum_{n=1}^{+\infty} 2^{-n} \sin\left(\frac{\pi}{3^{k-n}}\right) = \sum_{n=1}^{k-1} 2^{-n} \sin\left(\frac{\pi}{3^{k-n}}\right) = 2^{-k} \sum_{j=1}^{k-1} 2^j \sin\left(\frac{\pi}{3^j}\right). 
+    \]
+
+    \item[(b)]
+    记
+    \[
+    S_k \coloneqq \sum_{j=1}^{k} 2^j \sin\left(\frac{\pi}{3^j}\right),\,S \coloneqq \lim_{k\to\infty} S_k.
+    \]
+    由 
+    \[
+    \sin\left(\frac{\pi}{3^j}\right) \sim \frac{\pi}{3^j}(j\to+\infty).
+    \]
+    可知 \( S \) 收敛且为正. \\
+    于是
+    \[
+    \frac{f(h_k)-f(0)}{h_k} =\frac{f(h_k)}{h_k}= \frac{2^{-k} S_{k-1}}{\frac{\pi}{3^k}} = \left(\frac{3}{2}\right)^k \frac{S_{k-1}}{\pi} \to +\infty \quad (k \to +\infty).
+    \]
+    所以 \( f \) 在 \( x=0 \) 处不可导. 
+    \end{enumerate}
+
+    \item \textbf{(在任意点处不可导.)}
+    \begin{enumerate}[leftmargin=*,label=(\alph*)]
+    \item[(a)] 已知
+    \[
+    f(x) = 2f\left(\frac{x}{3}\right) - \sin x,\,g_{x_0}(t)\coloneqq f(x_0+t)-f(x_0).
+    \]
+    由自相似关系可得
+    \[
+    g_{x_0}(t) = 2g_{x_0/3}\left(\frac{t}{3}\right) - [\sin(x_0+t) - \sin x_0]. 
+    \] 
+
+    \item[(b)] 
+    取 \(\displaystyle t_k=\dfrac{\pi}{3^k}\;(k\in\mathbb{N})\)，记差商
+    \[
+    D_k(x_0)=\frac{f(x_0+t_k)-f(x_0)}{t_k}=\frac{g_{x_0}(t_k)}{t_k}.
+    \]
+    由 (a) 中的递推关系，代入 \(t=t_k\) 得
+    \[
+    g_{x_0}(t_k)=2g_{x_0/3}\!\left(\frac{t_k}{3}\right)-\bigl[\sin(x_0+t_k)-\sin x_0\bigr].
+    \]
+    由于 \(\dfrac{t_k}{3}=t_{k+1}\)，两边除以 \(t_k\) 得到
+    \[
+    \frac{g_{x_0}(t_k)}{t_k}=2\cdot\frac{g_{x_0/3}(t_{k+1})}{3t_{k+1}}-\frac{\sin(x_0+t_k)-\sin x_0}{t_k},
+    \]
+    即
+    \[
+    D_k(x_0)=\frac{2}{3}D_{k+1}\!\left(\frac{x_0}{3}\right)-R_k(x_0),\quad 
+    R_k(x_0)=\frac{\sin(x_0+t_k)-\sin x_0}{t_k}.
+    \]
+    由微分中值定理，\(|R_k(x_0)|\le 1\)，且 \(R_k(x_0)\to \cos x_0\)，故 \(\{R_k(x_0)\}\) 有界. 从而可将上式改写为
+    \[
+    D_{k+1}\!\left(\frac{x_0}{3}\right)=\frac{3}{2}\bigl(D_k(x_0)+R_k(x_0)\bigr). \tag{1}
+    \]
+
+    现在用反证法证明 \(f\) 在任意 \(x_0\) 处不可导.\\
+    假设存在某个 \(x_0\) 使得 \(f\) 在 \(x_0\) 处可导，则差商 \(D_k(x_0)\) 收敛，从而有界：
+    存在 \(M>0\) 和 \(K\in\mathbb{N}\)，使得当 \(k\ge K\) 时 \(|D_k(x_0)|\le M\).\\
+    由 (1) 及 \(|R_k(x_0)|\le 1\) 得
+    \[
+    \left|D_{k+1}\!\left(\frac{x_0}{3}\right)\right|\le \frac{3}{2}(M+1),\quad \forall k\ge K.
+    \]
+    因此 \(\displaystyle \{D_{k+1}(\frac{x_0}{3})\}\) 也有界 (且界与 \(k\) 无关). \\
+    重复这一过程，对任意正整数 \(n\)，序列 \(\displaystyle \{D_{k+n}(\frac{x_0}{3^n}))\}\) 有界.\\ 
+    特别地，取 \(x_0=0\)，则得到 \(\{D_k(0)\}\) 有界。然而由第3问结论，
+    \[
+    D_k(0)=\frac{f(\pi/3^k)}{\pi/3^k}=\frac{1}{\pi}\left(\frac{3}{2}\right)^k S_{k-1}\to +\infty,
+    \]
+    矛盾. 故假设不成立，\(f\) 在任意 \(x_0\in\mathbb{R}\) 处不可导.
+    \end{enumerate}
+
+    \item 
+    综上，由第 1 问可知\( f(x) \) 在 \(\mathbb{R}\) 上处处连续，由第 3,4 问可知\( f(x) \) 在 \(\mathbb{R}\) 上处处不可导，
+    从而 $f$ 是一个 Weierstrass 型处处不可导函数. 
+    \end{enumerate}
+\end{solution}
+
+== 习题D ==
+
+设 
+\(\displaystyle a_0(x) = 
+\left\{ 
+    \begin{array}{ll}
+        x, & \displaystyle 0 \leq x \leq \frac{1}{2} \\ 
+        1 - x, & \displaystyle \frac{1}{2} < x \leq 1.
+    \end{array} 
+\right.\) 
+接着定义 \(a_1(x), a_2(x), \cdots\) 如下:
+\[\displaystyle a_k(x) = 2^{-k} a_0(\{2^k x\}).\]
+其中 \(\{x\}\) 代表 \(x\) 的小数部分. 令
+\[\displaystyle f(x) = \sum_{k = 0}^{\infty} a_k(x), \quad x \in [0, 1].\]
+可以类似习题 C 验证 \(f(x)\) 是 \([0, 1]\) 上的一个 "Weierstrass型" 处处连续但处处不可导的函数(本题目中无需验证这点).
+
+注意:由于函数处处不可导, 故在求 \(f(x)\) 的最值(闭区间上连续函数必然存在最值)时, 无法应用 Fermat 定理简化运算.
+
+\begin{enumerate}
+    \item[1.]求 \(f(x)\) 的最小值，并至少写出一个最小值点.
+    \item[2.]证明: \(f(x)\) 的最大值不可能在区间 \(\displaystyle\left[0, \frac{1}{4}\right]\) 
+    与 \(\displaystyle\left[\frac{3}{4}, 1\right]\) 上取到, 且 \(f(x)\) 在 
+    \(\displaystyle\left[\frac{1}{4}, \frac{1}{2}\right]\) 与 \(\displaystyle\left[\frac{1}{2}, \frac{3}{4}\right]\) 上的最大值相等.
+    \item[3.]求 \(f(x)\) 的最大值, 并至少写出一个最大值点. (提示:可以以类似第 2 问的方式排除更多区间, 进而压缩搜索范围.)
+\end{enumerate}
+\begin{solution}
+    \begin{enumerate}[leftmargin=*,label=\arabic*.]%自动编号数学符号
+    \item 
+    由于 \( a_k(x) \geq 0,\,k\in\mathbb{N} \), 故 \( f(x) \geq 0 \). 又 \( f(0)=0 \), \( f(1)=0 \), 所以最小值为 0, 最小值点有 \( x=0 \) 和 \( x=1 \).
+        
+    \item\\
+    (a) \textbf{对称性：}\\
+    由 \( a_0(x)=a_0(1-x) \) 可知 \( a_k(1-x)=a_k(x) \), 从而 \( f(1-x)=f(x) \), 即函数 $f(x)$ 关于直线 $\displaystyle x=\frac{1}{2}$ 对称.\\
+    (b) \textbf{最大值不在 \(\displaystyle \left[0,\frac{1}{4}\right]\) 和 \(\displaystyle \left[\frac{3}{4},1\right]\) 上：}\\
+    对任意 \(\displaystyle  x \in \left[0,\frac{1}{4}\right] \), 令 \(\displaystyle x' = \frac{1}{2} - x \in \left[\frac{1}{4},\frac{1}{2}\right] \). 
+    由自相似方程 \( \displaystyle f(x)=x+\frac{1}{2}f(2x),\, x\in\left[0,\frac{1}{2}\right] \)可知
+    \[
+    \begin{aligned}
+    f(x') - f(x) &=x'+\frac{1}{2}f(2x')-x-\frac{1}{2}f(2x)=x'+\frac{1}{2}f(1-2x)-x-\frac{1}{2}f(2x)\\
+    &=\left(\frac{1}{2}-x\right) - x = \frac{1}{2}-2x \geq 0.
+    \end{aligned}
+    \]
+    等号当且仅当 \(\displaystyle x=\frac{1}{4} \) 成立.\\
+    从而$\displaystyle \forall x\in \left[0,\,\frac{1}{4}\right]$，有 $\displaystyle f(x)\leq f\left(\frac{1}{2}-x\right)$，
+    且当 $\displaystyle x\in \left[0,\,\frac{1}{4}\right)$ 时该式取不到等号.\\
+    又 \(\displaystyle f(\frac{1}{3})=\frac{2}{3} > \frac{1}{2} = f(\frac{1}{4}) \), 
+    所以对任意 \(\displaystyle x \in \left[0,\frac{1}{4}\right] \) 有 \(\displaystyle f(x) < \frac{2}{3} \). \\
+    由对称性，对任意 \(\displaystyle x \in \left[\frac{3}{4},1\right] \) 也有 \(\displaystyle f(x) < \frac{2}{3} \). 故最大值不可能在这两个区间上取得.\\
+    (c) 由对称性，\( f \) 在 \(\displaystyle \left[\frac{1}{4},\frac{1}{2}\right]\) 与 \(\displaystyle\left[\frac{1}{2},\frac{3}{4}\right]\) 上的最大值相等. 
+
+    \item 
+    计算 \(\displaystyle f\left(\frac{1}{3}\right) \): 由自相似方程可知
+    \[
+    f\left(\frac{1}{3}\right) = \frac{1}{3} + \frac{1}{2} f\left(\frac{2}{3}\right) = \frac{1}{3} + \frac{1}{2} f\left(\frac{1}{3}\right)  \Rightarrow  f\left(\frac{1}{3}\right) = \frac{2}{3}.
+    \]
+    同理 \(\displaystyle f\left(\frac{2}{3}\right)=\frac{2}{3} \).
+
+    下证 \(\displaystyle f(x) \leq \frac{2}{3} \) 对所有 \( x \in [0,1] \) 成立.\\
+    设 
+    \[
+    M = \sup_{x\in[0,1]} f(x).
+    \]
+    当 $\displaystyle x\in\left[0,\,\frac{1}{4}\right]$时，
+    \[
+    \begin{aligned}
+    f(x)&=x+\frac{1}{2}f(2x)=x+\frac{1}{2}\left[a_0(2x)+\frac{1}{2}f(4x)\right]=x+\frac{1}{2}(2x)+\frac{1}{4}f(4x)=2x+\frac{1}{4}f(4x)\\&
+    \leq 2\times \frac{1}{4}+\frac{1}{4}M=\frac{1}{2}+\frac{M}{4}.
+    \end{aligned}
+    \]
+    当$\displaystyle x\in\left[\frac{1}{4},\,\frac{1}{2}\right]$时，
+    \[
+    \begin{aligned}
+    f(x)&=x+\frac{1}{2}f(2x)=x+\frac{1}{2}\left[a_0(2x)+\frac{1}{2}f(4x-1)\right]=x+\frac{1}{2}(1-2x)+\frac{1}{4}f(4x-1)\\
+    &=\frac{1}{2}+\frac{1}{4}f(4x-1)\leq \frac{1}{2}+\frac{M}{4}.
+    \end{aligned}
+    \]
+    从而对任意 $\displaystyle x\in\left[0,\,\frac{1}{2}\right]$，有 $\displaystyle f(x)\leq \frac{1}{2}+\frac{M}{4}$.\\
+    于是 \(\displaystyle M \leq \frac{1}{2} + \frac{M}{4} \), 解得 \(\displaystyle M \leq \frac{2}{3} \). 
+    由 \(\displaystyle f(\frac{1}{3})=\frac{2}{3} \), 得 \(\displaystyle M=\frac{2}{3} \).\\
+    因此，\( f(x) \) 的最大值为 \(\displaystyle \frac{2}{3} \), 最大值点有 \(\displaystyle x=\frac{1}{3} \) 和 \(\displaystyle x=\frac{2}{3} \).
+    \end{enumerate}
+\end{solution}

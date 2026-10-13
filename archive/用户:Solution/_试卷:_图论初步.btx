@@ -1,0 +1,129 @@
+\setdisplaytitle{试卷：图论初步}
+\sethtmltitle{试卷：图论初步}
+
+==24秋图论初步期末试卷(吴河辉)==
+
+ 试题共八道题，其中前四题每题 10 分，后面四题每题 20 分，选三题作答，
+并在上面方框中划去不做的题目。
+\begin{enumerate}
+    \item Which pair of graphs below are isomorphic? $\underline{\qquad\qquad}$
+    \begin{tikzpicture}
+    \filldraw (-2,0) circle (0.05);\filldraw (-4,0) circle (0.05);
+    \filldraw (-2.1,0.43) circle (0.05);\filldraw (-2.38,0.78) circle (0.05);
+    \filldraw (-2.78,0.97) circle (0.05);\filldraw (-3.9,0.43) circle (0.05);
+    \filldraw (-3.62,0.78) circle (0.05);\filldraw (-3.22,0.97) circle (0.05);
+    \filldraw (-2.1,-0.43) circle (0.05);\filldraw (-2.38,-0.78) circle (0.05);
+    \filldraw (-2.78,-0.97) circle (0.05);\filldraw (-3.9,-0.43) circle (0.05);
+    \filldraw (-3.62,-0.78) circle (0.05);\filldraw (-3.22,-0.97) circle (0.05);
+    \draw(-2,0)to(-2.1,0.43)to(-2.38,0.78)to(-2.78,0.97)to(-3.22,0.97)to(-3.62,0.78)to(-3.9,0.43)to(-4,0)to(-3.9,-0.43)to(-3.62,-0.78)to(-3.22,-0.97)to(-2.78,-0.97)to(-2.38,-0.78)to(-2.1,-0.43)to(-2,0);
+    \draw(-2,0)to(-3.62,0.78);\draw(-4,0)to(-2.38,0.78);\draw(-3.22,0.97)to(-3.62,-0.78);\draw(-2.78,0.97)to(-2.38,-0.78);\draw(-2.1,0.43)to(-3.22,-0.97);\draw(-3.9,0.43)to(-2.78,-0.97);\draw(-2.1,-0.43)to(-3.9,-0.43);
+    \filldraw (0.78,0.62) circle (0.05);\filldraw (0.97,-0.22) circle (0.05);
+    \filldraw (0.43,-0.9) circle (0.05);\filldraw (-0.43,-0.9) circle (0.05);
+    \filldraw (-0.97,-0.22) circle (0.05);\filldraw (-0.78,0.62) circle (0.05);
+    \filldraw (0,1) circle (0.05);\filldraw (0,0.65) circle (0.05);
+    \filldraw (0.507,0.403) circle (0.05);\filldraw (0.6305,-0.143) circle (0.05);
+    \filldraw (0.2795,-0.585) circle (0.05);\filldraw (-0.2795,-0.585) circle (0.05);
+    \filldraw (-0.6305,-0.143) circle (0.05);\filldraw (-0.507,0.403) circle (0.05);
+    \draw(0,1)to(0.78,0.62)to(0.97,-0.22)to(0.43,-0.9)to(-0.43,-0.9)to(-0.97,-0.22)to(-0.78,0.62)to(0,1);
+    \draw(0.507,0.403)to(-0.2795,-0.585)to(0,0.65)to(0.2795,-0.585)to(-0.507,0.403)to(0.6305,-0.143)to(-0.6305,-0.143)to(0.507,0.403);
+    \draw(0,1)to(0,0.65);\draw(0.78,0.62)to(0.507,0.403);\draw(0.97,-0.22)to(0.6305,-0.143);\draw(0.43,-0.9)to(0.2795,-0.585);
+    \draw(-0.78,0.62)to(-0.507,0.403);\draw(-0.97,-0.22)to(-0.6305,-0.143);\draw(-0.43,-0.9)to(-0.2795,-0.585);
+    \filldraw (3.1,0) circle (0.05);\filldraw (2.9,0) circle (0.05);
+    \filldraw (3.97,0.26) circle (0.05);\filldraw (3.71,0.71) circle (0.05);
+    \filldraw (3.26,0.97) circle (0.05);\filldraw (3.97,-0.26) circle (0.05);
+    \filldraw (3.26,-0.97) circle (0.05);\filldraw (3.71,-0.71) circle (0.05);
+    \filldraw (2.03,0.26) circle (0.05);\filldraw (2.29,0.71) circle (0.05);
+    \filldraw (2.74,0.97) circle (0.05);\filldraw (2.03,-0.26) circle (0.05);
+    \filldraw (2.74,-0.97) circle (0.05);\filldraw (2.29,-0.71) circle (0.05);
+    \draw(3.97,0.26)to(3.71,0.71)to(3.26,0.97)to(2.74,0.97)to(2.29,0.71)to(2.03,0.26)to(2.03,-0.26)to(2.29,-0.71)to(2.74,-0.97)to(3.26,-0.97)to(3.71,-0.71)to(3.97,-0.26)to(3.97,0.26);
+    \draw(2.03,0.26)to(3.97,0.26);\draw(3.71,0.71)to(2.74,-0.97);\draw(2.29,0.71)to(3.26,-0.97);\draw(3.1,0)to(2.29,-0.71);\draw(2.9,0)to(3.71,-0.71);
+    \draw(2.73,0.97)to(3.1,0)to(3.97,-0.26);\draw(3.26,0.97)to(2.9,0)to(2.03,-0.26)
+    \end{tikzpicture}
+    
+    \item How many isomorphism classes of $1204$-vertex trees with diameter $3$? $\underline{\qquad\qquad}$
+    
+    \item What is the minimum size of a maximal matching in the cycle \(C_{2024}\)? $\underline{\qquad\qquad}$
+    
+    \item What is the number of faces in a $100$-vertex plane graph with average degree $3.14$? $\underline{\qquad\qquad}$
+    
+    \item Let \(G\) be an \(r\)-connected graph of even order having no \(K_{1,r+1}\) as an induced subgraph. Prove that \(G\) has a $1$-factor.
+    
+    \item Prove that every subgraph of \(K_{n,n}\) having at least \(n(n-1)+2\) edges has cycles of all even lengths from $4$ through \(2n\).
+    
+    \item Prove that every triangle-free graph with at most \(\frac{t^2+3t-2}{2}\) vertices is \(t\)-colorable.
+    
+    \item Let \(G\) be a graph with \(\delta(G)=3\) and \(\bar{d}(G)<\frac{10}{3}\). Prove that \(G\) has a $3$-vertex whose neighbors have degree-sum at most $10$.
+\end{enumerate}
+
+==23秋图论初步期末试卷(吴河辉)==
+
+试题在六道题里选做五题，并在答题纸上划去不做的题目。
+
+\begin{enumerate}
+    \item For \( k > 2 \), prove that if the vertices of a \( k \)-regular graph partitions into sets \( A \) and \( B \) that each induces a tree, then \( |A| = |B| \).
+
+    \item Prove that every nontrivial tree has a maximum matching that covers every non-leaf vertex plus at least one leaf.
+
+    \item Prove or disprove: if \( G \) is a $2$-connected graph that is not a cycle, then it contains a cycle \( C \) such that \( G - V(C) \) is connected.
+
+    \item Place \( n \) vertices around a circle. Let \( G_n \) be the $4$-regular graph obtained by making each vertex adjacent to the two nearest vertices in each direction. For \( n \geq 5 \), prove that \( G_n \) is the union of two Hamiltonian cycles.
+
+    \item A \textbf{parity edge-coloring} of a graph \( G \) is an edge-coloring such that on every path, some color appears an odd number of times, let \( p(G) \) denote the minimum number of colors in a parity edge-coloring of \( G \). Show that \( p(K_5) = 7 \).
+
+    \item Prove that every plane triangulation with minimum degree $5$ has two $3$-faces sharing an edge such that the non-shared vertices have degree-sum at most $11$. (Hint: Use Vertex discharging, and each $5$-vertex get $1/5$ charge from each neighbor first.)
+\end{enumerate}
+
+== 22秋 图论初步期末试卷(吴河辉)==
+试题在六道题里选做五题，并在答题纸上标明不做的题目。
+
+\begin{enumerate}
+    \item Let \( E(A, V - A) \) be an edge cut of a graph \( G \) with even size, and \( v \) is an odd vertex of \( A \), show that there is another odd vertex \( u \) in \( A \).
+
+
+    \item Let \( x, y \) be two vertices in \( G \) with \( \kappa'(x, y) = 2k \) for some integer \( k \). Let  
+    \( X \) be the set of odd vertices in \( G \) and \( |X| = 2l \). Show that there exists a  
+    disjoint pairing \(\{(s_i, t_i) : 1 \leq i \leq l\}\) of \( X \), together with \( l \) edge-disjoint paths  
+    \(\{P_i : 1 \leq i \leq l\}\), where \( P_i \) joins \( s_i \) and \( t_i \) for each \( i \), such that after removing  
+    the edges \(\bigcup_{i=1}^l E(P_i)\) from \( G \), \( x \) and \( y \) are still \( 2k \) edge connected.
+
+
+    \item A mouse eats its way through a \( 3 \times 3 \times 3 \) cube of cheese by eating all the  
+    \( 1 \times 1 \times 1 \) subcubes. If it starts at a corner subcube and always moves on to an  
+    adjacent subcube (sharing a face of area $1$), can it do this and eat the center  
+    subcube last? Give a method or prove impossible. (Ignore gravity.)
+
+
+
+    \item Recall that a graph is Class 1 if \(\chi'(G) = \Delta(G)\). Let \(G\) be a Class 1 regular graph of even degree. Prove that \(|E(G)|\) is even.
+
+
+    \item The surface of a football is a planar graph with only $5$-faces and $6$-faces; Use  
+    graph theory to answer the following question (No credit without a proof).  
+   
+    (a) How many $5$-faces of it?  
+
+    (b) It is the smallest such planar graph with no adjacent $5$-faces. 
+    How many vertices, faces and edges of it?  
+
+    \item Prove that a graph is \( k \)-colorable if every vertex lies in fewer than \( \binom{k}{2} \) odd cycles. (Hint: Use induction on \( |V(G)| \)).  
+\end{enumerate}
+
+==21秋图论初步期末试卷(吴河辉)==
+\begin{enumerate}
+    \item For $k\in\N$, prove that every graph $G$ has a $k$-partite subgraph $H$ with at least $(1-1/k)|E(G)|$ edges.
+    \item Given a graph $G$, suppose that $S \subseteq V(G)$ is covered by some matching. Prove or disprove each statement below:
+    \begin{enumerate}[label=(\alph*)]
+        \item $S$ is covered by some maximum matching.
+        \item $S$ is covered by every maximum matching.
+    \end{enumerate}
+    \item Let $G$ be a $3$-regular graph whose edge set has exactly one partition into three perfect matchings. Prove that $G$ is Hamiltonian.
+    \item Prove that the graph on the right is not $2$-choosable.
+    \begin{tikzpicture}
+        \fill(-1,0)circle(0.05);\fill(-1,1)circle(0.05);
+        \fill(0,0)circle(0.05);\fill(0,1)circle(0.05);
+        \fill(1,0)circle(0.05);\fill(1,1)circle(0.05);
+        \draw(-1,0)to(1,0)to(1,1)to(-1,1)to(-1,0);\draw(0,0)to(0,1)
+    \end{tikzpicture}
+    \item Prove or disprove: If $G$ is a $k$-edge-connected graph with minimum degree greater than $k$, then some two vertices in $G$ are joined by more than $k$-edge-disjoint paths.
+    \item Let $G$ be a planar graph with minimum degree $5$. Let $e_{i,j}$ be the number of edges with endpoints of degrees $i$ and $j$. Prove that $e_{5,6}\ge60$ when $e_{5,5}=0$.
+\end{enumerate}

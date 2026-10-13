@@ -1,0 +1,19 @@
+\setdisplaytitle{几何测度论}
+\sethtmltitle{几何测度论}
+\theoremstyle{definition}
+\newtheorem*{goal}{Goal}
+
+讲义目前大修中。若在此期间发现讲义有明显错误，请耐心等待。
+
+本讲义是根据贺丹青老师2025年秋季的课程整理而成。
+若有错漏，多为整理者笔误或AI在调整markdown格式笔记为TeX格式时出错，敬请谅解。
+也可联系整理者(周铭杨, 邮箱：myzhou25@m.fudan.edu.cn)获取.md格式的笔记。
+
+\begin{structure}
+    \subpage!{\qquad Chapter 1 Measure Theory}
+    \subpage!{\qquad Chapter 2 Orthogonal Projection}
+    \subpage!{\qquad Chapter 3 Differentiation of Measures}
+    \subpage!{\qquad Chapter 4 Fourier Transforms}
+    \subpage!{\qquad Chapter 5 Self-similar Sets}
+    \subpage!{\qquad 习题}
+\end{structure}

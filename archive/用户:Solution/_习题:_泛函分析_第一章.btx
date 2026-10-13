@@ -1,0 +1,821 @@
+\theoremstyle{plain}\newtheorem*{1}{习题1}
+\theoremstyle{plain}\newtheorem*{2}{习题2}
+\theoremstyle{plain}\newtheorem*{3}{习题3}
+\theoremstyle{plain}\newtheorem*{4}{习题4}
+\theoremstyle{plain}\newtheorem*{5}{习题5}
+\theoremstyle{plain}\newtheorem*{6}{习题6}
+\theoremstyle{plain}\newtheorem*{7}{习题7}
+\theoremstyle{plain}\newtheorem*{8}{习题8}
+\theoremstyle{plain}\newtheorem*{9}{习题9}
+\theoremstyle{plain}\newtheorem*{10}{习题10}
+\theoremstyle{plain}\newtheorem*{11}{习题11}
+\theoremstyle{plain}\newtheorem*{12}{习题12}
+\theoremstyle{plain}\newtheorem*{13}{习题13}
+\theoremstyle{plain}\newtheorem*{14}{习题14}
+\theoremstyle{plain}\newtheorem*{15}{习题15}
+\theoremstyle{plain}\newtheorem*{17}{习题17}
+\theoremstyle{plain}\newtheorem*{23}{习题23}
+\theoremstyle{plain}\newtheorem*{24}{习题24}
+\theoremstyle{plain}\newtheorem*{25}{习题25}
+\theoremstyle{plain}\newtheorem*{26}{习题26}
+\def\Q{\mathbb{Q}}
+\setdisplaytitle{泛函分析\ 第一章解答}
+\sethtmltitle{泛函分析\ 第一章解答}
+\theoremstyle{remark}\newtheorem*{ack*}{Acknowledgements}
+
+\begin{quotation}
+    \begin{center}范数拓扑的极限\ \ \ 蕴含弱收敛\\
+        对偶空间的极限\ \ \ 叫弱$^*$收敛\\
+        热爱泛函分析的你\ \ \ 只能感叹神来之笔\\
+        你分不清泛函和函数\ \ \ 一次又一次觉得蚍蜉撼树\\
+        你认为度量等同范数\ \ \ 对不可赋范却又熟视无睹\\
+        很完蛋\ \ \ 测度学不全\ \ \ 积分算不完\ \ \ 范数不收敛\\
+        勇敢学泛函的狂热\ \ \ 那难忘的时刻\qquad\\
+        Riesz表示的定理\ \ \ 真的很神奇\qquad\ \ \ \\
+        \ \ \,对偶空间的泛函\ \ \ 表示很显然\qquad\ \ \ \\
+        热爱内积空间的你\ \ \ 实数复数域要注意\\
+        \ \ \ 在这独一无二分析学的时代\ \ \ 不怕算子来一场\ \ \ 线性的热爱\\
+        热爱线性算子的你\ \ \ 个个线性的分析人\\
+        \ \ \ 在这独一无二分析学的时代\ \ \ 不怕算子来一场\ \ \ 半群的热爱\\
+        热爱算子半群的你\ \ \ 个个发展的方程人\\
+        \\
+        哦你不知道泛函多可爱\ \ \ 延拓后的范数依然不更改\\
+        你总觉得是自己很菜\ \ \ 对算子的谱集只好胡乱瞎猜\\
+        很安心\ \ \ 当你对我说\ \ \ 开集开映射\ \ \ Hahn--Banach\\
+        勇敢构造出的反例\ \ \ 那是你的努力\qquad\\
+        Laplace的笑容\ \ \ 都没你的甜\qquad\\
+        \ Hilbert的曙光\ \ \ 都没你耀眼\qquad\\
+        热爱泛函分析的你\ \ \ 不得已又歇斯底里\\
+        \ \ \ 在这现代分析学发展的时代\ \ \ 不怕困难来一场\ \ \ 终极的热爱\\
+        热爱泛函分析的你\ \ \ 四大在未来等着你\\
+        \ \ \ 在这现代分析学发展的时代\ \ \ 每个人都有未来\ \ \ 不要怕失败\\
+        热爱泛函分析的你\ \ \ 一定要坚持到底\quad\\
+        \ \ \ 这是关于泛函分析的一首歌\ \ \ 这首歌已唱完了\ \ \ 却又没唱完\\
+        热爱泛函分析的你\ \ \ 一定要坚持到底\quad
+    \end{center}
+    \begin{flushright}
+    ——改动自\href{https://www.bilibili.com/video/BV1M44y1477f/?spm_id_from=333.337.search-card.all.click}
+    {\textcolor{666666}{《热爱泛函分析的你》}}
+    \end{flushright}
+\end{quotation}
+
+\begin{ack*}\\
+    \qquad本文件为101计划系列的泛函分析教材配套的习题解答，由李晓宇编写。
+    導来関手添加了1.2节习题4和7的解答，zxy和^_^指出了第三章解答中若干个现已得到修正的问题，
+    ZZB为4.1节习题20 (ii)改进了做法，在此一并致谢。
+\end{ack*}
+
+== 度量空间 ==
+
+\subsection{1.1 度量空间}
+\begin{9}
+    对复数$z$, $|z|<1$, 由复分析知识，
+    $\psi_{z}(w)=\dfrac{z-w}{1-\bar{z}w}$
+    是复平面单位圆盘
+    $\mathbb{D}=\{w\in\mathbb{C}:|w|<1\}$
+    的解析自同构。令
+    $$d(z,w)=\ln\frac{1+|\psi_{z}(w)|}{1-|\psi_{z}(w)|}.$$
+    \begin{enumerate}[label=(\roman*)]
+        \item 对于 $a,z,w\in\mathbb{D}$, 证明：
+        $d(z,w)=d(\psi_{a}(z),\psi_{a}(w))$.
+        \item 证明：$d$ 是 $\mathbb{D}$ 上的一个度量 (称为Poincaré（庞加莱）度量)。
+        \item 画出
+        $B\big(\frac{1}{2},10\big)=\{w\in\mathbb{D}:d\big(\frac{1}{2},w\big)\leqslant10\}$
+        的示意图。
+    \end{enumerate}
+\end{9}
+\begin{proof}
+    \begin{enumerate}[label=(\roman*)]
+    \item 这是因为
+    \begin{align*}
+        d(z,w) & =
+        \ln\frac{|1-\bar{z}w|+|z-w|}{|1-\bar{z}w|-|z-w|},\\
+        d(\psi_{a}(z),\psi_{a}(w)) & = 
+        \ln\frac{\left| 1-\frac{\bar{a}-\bar{z}}{1-a\bar{z}}
+        \cdot \frac{a-w}{1-\bar{a}w} \right|+\left| \frac{a-z}{1-\bar{a}z}-\frac{a-w}{1-\bar{a}w} \right|}
+        {\left| 1-\frac{\bar{a}-\bar{z}}{1-a\bar{z}}\cdot\frac{a-w}
+        {1-\bar{a}w} \right|-\left| \frac{a-z}{1-\bar{a}z}-\frac{a-w}{1-\bar{a}w} \right|} \\
+        & = \ln\frac{|1-\bar{z}w|+|z-w|}{|1-\bar{z}w|-|z-w|} \\
+        & = d(z,w).
+    \end{align*}
+    
+    \item $d(z,w)\geqslant\ln1=0$，取等时$\psi_z(w)=0$，即$z=w$；
+    $|\psi_z(w)|=|\psi_w(z)|$保证了$d(z,w)=d(w,z)$；接下来验证三角不等式。
+
+    \textbf{方法I.} 由(i)，通过解析自同构$\psi_a\colon a\mapsto0$，只需验证
+    $$
+        d(\psi_a(z),\psi_a(w))\leqslant d(\psi_a(z),0)+d(\psi_a(w),0), \quad \forall a,z,w\in \mathbb{D}.
+    $$
+    简写$\psi_a(z),\psi_a(w)$为$z,w$，换言之
+    \[d(z,w)\leqslant d(z,0)+d(w,0),\]
+    亦即
+    \[\ln\frac{|1-\bar{z}w|+|z-w|}{|1-\bar{z}w|-|z-w|}
+    \leqslant\ln\frac{1+|z|}{1-|z|}+\ln\frac{1+|w|}{1-|w|}
+    =\ln\frac{1+|zw|+|z|+|w|}{1+|zw|-|z|-|w|}.\]
+    由于$\ln\frac{1+x}{1-x}$单调递增，上式等价于
+    \[\frac{|z-w|}{|1-\bar{z}w|}\leqslant\frac{|z|+|w|}{1+|zw|},\]
+    即
+    \[|z-w|+|z\bar{z}w-w\bar{w}z|\leqslant|z-z\bar{z}w|+|w-w\bar{w}z|.\]
+    在下图中对两个蓝绿色的三角形用两边之和大于第三边，相加就有这个不等式。
+    \begin{tikzpicture}[scale=0.8]
+        \fill[violet!20](4,0)to(2.88,3.84)to(0,0)to(4,0);
+        \fill[lime!20!cyan](0.9,1.2)to(4,0)to(2.88,3.84)to(1.5,0)to(0.9,1.2);
+        \coordinate [label=center:$0$] (0) at (-0.2,-0.2);
+        \coordinate [label=center:$w\bar{w}z$] (wwz) at (1.5,-0.3);
+        \coordinate [label=center:$z\bar{z}w$] (zzw) at (0.44,1.44);
+        \coordinate [label=center:$z$] (z) at (4,-0.3);
+        \coordinate [label=center:$w$] (w) at (2.88,4.1);
+    \end{tikzpicture}
+    
+    \textbf{方法II.} 这一度量实际上是$\mathbb{D}$上的Poincaré度量$\frac{2|dz|}{1-|z|^2}$下测地线的长度。
+    设\[\gamma(s)=r(s)e^{i\theta(s)},\quad s\in[0,1]\]是连接$0,z$的分段光滑曲线，
+    则\[\.\gamma(s)=\big(\.r(s)+ir(s)\theta(s)\.\theta(s)\big)e^{i\theta(s)},\]
+    计算出$\gamma$的长度的最小值$\bar{d}(0,z)$为
+    \begin{align*}&\inf_{\gamma}\int_\gamma\frac{2|dz|}{1-|z|^2}
+    =\inf_{\gamma}\int_0^1\frac{2\sqrt{\.r(s)^2+\big(r(s)\theta(s)\.\theta(s)\big)^2}}{1-|r(s)|^2}\,ds\\
+    &\geqslant\inf_{\gamma}\int_0^1\frac{2|dr(s)|}{1-|r(s)|^2}
+    =\ln\frac{1+r(s)}{1-r(s)}\bigg|_{r(s)=0}^{|z|}=\ln\frac{1+|z|}{1-|z|},\end{align*}
+    等号成立时$(\theta(s)^2/2)'=\theta(s)\.\theta(s)\equiv0$，
+    即$\theta(s)$为常数，$\gamma$是连接$0$与$z$的线段。
+    根据Pick定理，Poincaré度量在解析自同构下不变，
+    于是$\bar{d}(z,w)=\bar{d}(\psi_a(z),\psi_a(w))$。
+    由(i)有$d(z,w)=d(\psi_a(z),\psi_a(w))$，
+    由上又有$d(0,z)=\bar{d}(0,z)$，故$d$就是$\bar{d}$。
+    按$\bar{d}$的定义，直接有(ii)成立。
+
+    \item[(iii)]
+    $d\big(\frac{1}{2},w\big)\leqslant10$就是$\psi_\frac{1}{2}(w)\leqslant\tanh5$，
+    也就是
+    $$\bigg|\frac{\frac{1}{2}-w}{2-w}\bigg|
+    \leqslant\frac{\tanh5}{2}\approx\frac{0.999909}{2}.$$
+    图形是一个相较于单位圆盘稍微小一点的Apollonius圆的内部与边界。\qedhere
+    \end{enumerate}
+\end{proof}
+
+
+\subsection{1.2 赋范线性空间及内积空间}
+\begin{4}
+    证明：赋范线性空间$C^{(k)}[a,b],L^\infty [a,b],l^\infty$是完备的。
+\end{4}
+\begin{proof}
+    设$\{[f_n]\}_{n=1}^{\infty}$是$L^\infty[a,b]$中的Cauchy列，
+    可测函数$f_n$为等价类$[f_n]$的一个代表元，则给定 $\varepsilon>0$，存在正整数$N$使得 
+    $$\|f_m-f_n\|_\infty<\varepsilon$$
+    对所有的$m,n\geqslant N$成立。令
+    $$F_{m,n}=\{x\in[a,b]:|f_m(x)-f_n(x)|>\|f_m-f_n\|_{\infty}\},$$
+    则对所有的$m,n\in\N$都有$\mu(F_{m,n})=0$。
+    令$F=\bigcup\limits_{m,n\in\N} F_{m,n}$，则$\mu(F)=0$。而
+    \begin{align*}
+        [a,b] \setminus F & = \bigcap_{m,n\in\N} \{x\in[a,b]:
+        |f_m(x)-f_n(x)|\leqslant\|f_m-f_n\|_{\infty}\} \\
+        & = \{x\in[a,b]:
+        |f_m(x)-f_n(x)|\leqslant\|f_m-f_n\|_{\infty},\forall m,n\in\N\},
+    \end{align*}
+    可知对于$x \notin F$，$\{f_n(x)\}$是Cauchy列，
+    由于$\R$是完备的，$\{f_n(x)\}$收敛于某极限。定义
+    $$f(x)=\begin{cases}
+        \lim\limits_{n\to\infty}f_n(x),&x \notin F, \\
+        0,&x\in F,
+    \end{cases}$$
+    则$f(x)$是一列可测函数的极限，也是可测的。在
+    $$|f_m(x)-f_n(x)|\leqslant\|f_m-f_n\|_{\infty}<\varepsilon$$
+    中令$m\rightarrow\infty$，并且对$x \in [a,b] \setminus F$取上确界，得
+    $$\|f-f_n\|_{\infty}=\operatorname{ess\ sup}|f-f_n|\leqslant\varepsilon,$$
+    故$\{f_n\}$在$L^\infty$范数下收敛到$f$。而
+    $$\|f\|_\infty\leqslant\|f_n\|_\infty+\|f-f_n\|_\infty
+    \leqslant\|f_n\|_\infty+\varepsilon<+\infty,$$
+    所以$f\in L^\infty[a,b]$。故$L^\infty[a,b]$是Banach空间。
+\end{proof}
+
+\begin{7}
+    证明：有界实数列全体所构成的赋范线性空间 $l^\infty$ 
+    与空间 $C_b(0,1]$（连续有界函数）的一个子空间是等距同构的。
+\end{7}
+\begin{proof}
+    定义 $F\colon l^\infty \to C_b(0,1],x=(x_n) \mapsto f_x$，
+    $f_x\big(\frac{1}{n}\big)=x_n$，
+    且 $f_x$ 在 $\big(\frac{1}{n+1},\frac{1}{n}\big]$ 上均是仿射线性函数。
+\end{proof}
+
+
+\subsection{1.3 Hilbert空间的正交系}
+\begin{5}
+    基本假设如例1.3.8，证明：
+    \begin{enumerate}[label=(\roman*)]
+    \item $\{h_n:n=0,1,\cdots\}$是一组标准正交系；\\
+    \item $\{h_n:n=0,1,\cdots\}$是一组标准正交基。
+    \end{enumerate}
+\end{5}
+\begin{proof}
+    分部积分有
+    \[\int_{-1}^{1}\frac{{\rm d}^n}{{\rm d}x^n}(x^2-1)^n\phi(x)\,{\rm d}x
+    =(-1)^n\int_{-1}^{1}(x^2-1)^n\phi^{(n)}(x)\,{\rm d}x,\]
+    对小于$n$次的多项式$\phi$有$\phi^{(n)}\equiv0$，
+    从而$\langle h_n,h_m \rangle=0$对$m<n$都成立。取$\phi=h_n$，得到
+    \[\|h_n\|^2=(-1)^n\frac{2n+1}{2^{2n+1}(n!)^2}(2n)!\int_{-1}^{1}(x^2-1)^n\,{\rm d}x,\]
+    其中$(2n)!$是$(x^2-1)^n$的$2n$阶导数。接着算出
+    \begin{align*}
+        \int_{-1}^{1}(x^2-1)^n\,{\rm d}x&=\int_{-1}^{1}(x-1)^n\frac{{\rm d}(x+1)^{n+1}}{n+1}\\
+        &=-\frac{1}{n+1}\int_{-1}^{1}(x+1)^{n+1}\,{\rm d}(x-1)^n\\
+        &=-\frac{n}{n+1}\int_{-1}^{1}(x+1)^{n+1}(x-1)^{n-1}\,{\rm d}x\\
+        &=\cdots=(-1)^n\frac{n!}{(2n)!/n!}\int_{-1}^{1}(x+1)^{2n}\,{\rm d}x\\
+        &=(-1)^n\frac{(n!)^2}{(2n)!}\frac{2^{2n+1}}{2n+1},
+    \end{align*}
+    代入得$\|h_n\|=1$。
+\end{proof}
+\begin{6}
+    设$\mathbb{D}=\{z\in\mathbb{C}:|z|<1\}$是复平面中的开单位圆盘。令
+    \[L_a^2(\mathbb{D})=\left\{f:f\text{ 在 }\mathbb{D}\text{ 中解析，并且 }
+    \frac{1}{\pi}\int_{\mathbb{D}}|f(z)|^2\,{\rm d}A(z)<+\infty\right\}.\]
+    在$L_a^2(\mathbb{D})$中定义内积
+    \[\langle f,g \rangle=\frac{1}{\pi}\int_{\mathbb{D}}f(z)\overline{g(z)}\,{\rm d}A(z).\]
+    证明$L_a^2(\mathbb{D})$是Hilbert空间 (称为Bergman空间)，并且有标准正交基：
+    \[e_n(z)=\sqrt{n+1}\,z^n, \quad n=0,1,2,\cdots.\]
+\end{6}
+\begin{proof}
+    设$\{f_n\}$是$L_a^2(\mathbb{D})$中的Cauchy列，留意到$L_a^2(\mathbb{D})$包含于完备的空间$L^2(\mathbb{D})$，
+    从而$\{f_n\}$有子列在$L^2$范数下收敛于$f \in L^2(\mathbb{D})$，仍旧写为$\{f_n\}$，接下来要说明$f$解析。
+
+    对给定的$z\in\mathbb{D}$，记$d=d(z,\partial\mathbb{D})=1-|z|$。$f_n-f_m$解析因而调和，根据平均值性质，
+    \begin{align*}|f_n(z)-f_m(z)|&=\bigg|\frac{1}{\pi d^2}\int_{D(z,d)} \big(f_n(\zeta)-f_m(\zeta)\big)\,\mathrm{d}A(\zeta)\bigg|\\
+    &\leqslant\bigg(\frac{1}{\pi d^2}\int_{D(z,d)} |f_n(\zeta)-f_m(\zeta)|^2\,\mathrm{d}A(\zeta)\bigg)^\frac{1}{2}
+    \leqslant\frac{1}{d}\|f_n-f_m\|_{L^2_a}.\end{align*}
+    由此有$\{f_n\}$内闭一致收敛于$f$，故$f$解析。
+
+    $\{e_n\}$是标准正交系，这是因为
+    \begin{align}
+        \langle e_n,e_m \rangle&=\frac{1}{\pi}\int_{\mathbb{D}}\sqrt{n+1}\sqrt{m+1}\,z^{n}\bar{z}^m\,{\rm d}A(z)\\
+        &=\frac{1}{\pi}\int_0^1\int_0^{2\pi}\sqrt{n+1}\sqrt{m+1}\,r^{n+m+1}e^{{\rm i}(n-m)\theta}\,{\rm d}r{\rm d}\theta\\
+        &=\frac{1}{\pi}\frac{2\pi\sqrt{n+1}\sqrt{m+1}}{n+m+2}\,\delta_{nm}=\delta_{nm}.
+    \end{align}
+    进一步，由Stone--Weierstrass定理可知$\{e_n\}$完备。
+\end{proof}
+\begin{10}
+    令$\displaystyle f_0=1+\sum_{n=1}^\infty\frac{1}{n}(\cos nx+\sin nx)$。
+    设$H$是$L^2[0,2\pi]$中由
+    $$\{f_0,\cos x,\sin x,\cdots,\cos nx,\sin nx,\cdots\}$$
+    张成的线性子空间。给出$H$中的一组完全标准正交系，但不是完备的。
+\end{10}
+\begin{proof}[解答]
+$$\mathfrak{F}=\{\sqrt{2}\cos x,\sqrt{2}\sin x,\cdots,\sqrt{2}\cos nx,\sqrt{2}\sin nx,\cdots\}$$
+是$H$中的一组完全标准正交系，这是因为对于$H$的任何元素
+$$f=a_0f_0+\sum_{n=1}^N(a_n\cos nx+b_n\sin nx),$$
+假如$f\perp\mathfrak{F}$，那么
+$$0=\langle f,\sqrt{2}\cos(N+1)x\rangle=\frac{a_0}{\sqrt{2}(N+1)}$$
+说明$a_0=0$，从而
+\[\langle f,\cos nx \rangle=\langle f,\sin nx \rangle=0\]
+说明各$a_n,b_n=0\ (n=1,\cdots,N)$，得$f=0$。
+然而$\mathfrak{F}$不是完备的，注意到
+$$\|f_0\|^2=1+\sum_{n=1}^\infty\frac{1}{n^2}>\sum_{n=1}^\infty\frac{1}{n^2}
+=\sum_{n=1}^\infty|\langle f_0,\sqrt{2}\cos nx\rangle|^2
++|\langle f_0,\sqrt{2}\sin nx\rangle|^2.\qedhere$$
+\end{proof}
+\begin{12}
+    设$\big\{x_0^i,x_1^i,\cdots,x_n^i\big\}$ $(i=1,2,\cdots,m)$是已知的实数组。
+    利用投影定理求实数$\alpha_1,\alpha_2,\cdots,\alpha_n$使得
+    \[\sum_{i=1}^m\left(x_0^i-\sum_{j=1}^nx_j^i\alpha_j\right)^2\]
+    达到极小。
+\end{12}
+\begin{proof}[解答]
+    本题来源于最小二乘法。设要研究如何从身高、\,体重、\,肺活量、\,坐位体前屈等多个因素
+    来预测一名同学的分析学水准。记这些因素为$X_1,\cdots,X_n$，分析学水准为$X_0$，
+    现在想要将$X_0$用$X_1,\cdots,X_n$的线性组合尽可能精确地拟合出来，
+    即寻找合适的$\alpha_1,\cdots,\alpha_n\in\R$使得
+    \[X_0\approx\sum_{j=1}^nX_j\alpha_j.\]
+    为此找了$m$名同学展开调查，对于某个因素$X_j$，记第$i$名同学这方面的分数为$x_j^i$，
+    把获得的数据写成$\R^m$中的向量$x_j=\big(x_j^1,\cdots,x_j^m\big)$的形式，
+    并且由这些同学的分析学水准组合成的向量为$x_0=\big(x_0^1,\cdots,x_0^m\big)$，
+    那么$x_0-\sum\limits_{j=1}^nx_j\alpha_j$写成分量形式就是
+    $\left(x_0^i-\sum\limits_{j=1}^nx_j^i\alpha_j\right)_{i=1,\cdots,m}$，
+    从而题目要最小化的表达式就是这个向量的长度的平方，即
+    \[\left\|x_0-\sum_{j=1}^nx_j\alpha_j\right\|^2
+    =\sum_{i=1}^m\left(x_0^i-\sum_{j=1}^nx_j^i\alpha_j\right)^2.\]
+    说了这么多无非就是为了把讨厌的上标$i$去掉，转化到抽象空间中研究问题。
+    记$M=\operatorname{span}\{x_1,\cdots,x_n\}$，这是$\R^m$的一个闭子空间，
+    那么就是要找$x=\sum\limits_{j=1}^nx_j\alpha_j \in M$来达到
+    \[\inf_{x \in M}\|x_0-x\|.\]
+    由投影定理，这样的$x \in M$是存在且唯一的；
+    尽管当$x_1,\cdots,x_n\in\R^m$线性相关时，系数$\alpha_1,\cdots,\alpha_n$并不唯一。
+    所求的$x \in M$可通过$x_0-x \perp M$来唯一确定，
+    即$\langle x_0-x,x_\ell \rangle=0$对所有的$\ell=1,\cdots,n$成立，展开成线性方程组的形式就是
+    \[\sum_{j=1}^n\langle x_j,x_\ell \rangle\alpha_j=\langle x_0,x_\ell \rangle,\qquad\ell=1,\cdots,n.\]
+    解这组线性方程就能得到$\alpha_1,\cdots,\alpha_n$的数值（或者解空间）了，
+    前面$x \in M$的存在性保证了这组方程一定是有解的 (从线性代数的角度亦可看出这点，想一想是为什么)。
+\end{proof}
+\begin{13}
+    举例说明投影定理1.3.4对于一般的内积空间不成立。
+\end{13}
+\begin{proof}[解答]
+    沿用习题10的记号，记$F$是$\mathfrak{F}$生成的线性空间。
+    注意$F$是$H$的闭子空间，原因是，设$F$的序列$\{f_k\}$收敛到
+    \[f=a_0f_0+\sum_{n=1}^N(a_n\cos nx+b_n\sin nx)\in H,\]
+    $\langle f_k,1 \rangle \equiv 0$推出$a_0=\langle f,1 \rangle=0$，系$f\in F$。
+    但是任意的$x\in H \setminus F$均不能分解成
+    $$x=x_0+x_1,\quad x_0\in F,\,x_1\in F^\perp=\{0\}.\qedhere$$
+\end{proof}
+
+\subsection{1.4 度量空间中的点集}
+\begin{1}
+    举例说明，存在度量空间$X$及点$x_1,x_2\in X$，使得$B(x_1,3)\subsetneqq O(x_2,2)$。
+\end{1}
+\begin{proof}[解答]
+    取$X=O(0,2)\subset\R$，$x_1=1.14514,x_2=0$，
+    则$B(x_1,3)=[-1.85486,2)\subsetneqq O(x_2,2)$。
+\end{proof}
+
+\begin{5}
+    设$f(x)$是度量空间$X$上的实函数。如果对于任意点$x_0 \in X$，有
+    \[\lim_{r\to0}\sup_{x \in O(x_0,r)}f(x) \leqslant f(x_0),\]
+    就称$f(x)$在$X$上是上半连续的。
+    证明：当$f(x)$是$X$上的上半连续函数时，对任何常数$a$，集合
+    \[X(f \geqslant a)\xlongequal{\text{def}}\{x:f(x) \geqslant a\}\]
+    是闭集。反之也真。
+\end{5}
+\begin{proof}
+    $f$在$X$上半连续即是说(I)对任意的$x_0 \in X$，若$a\in\R$使得$f(x_0)<a$，就有开球$O(x_0,r)$包含于$\{f(x)<a\}$，
+    也就是(II)对任意的$(x_0,a)\in\{X\times\R:f(x_0)<a\}$，都有开球$O(x_0,r)$包含于$\{f(x)<a\}$，
+    亦即(III)对任意的$a\in\R$，若$x_0 \in X$使得$f(x_0)<a$，就有开球$O(x_0,r)$包含于$\{f(x)<a\}$，
+    这就是说(IV)对任意的$a\in\R$，$\{f(x)<a\}$是开集，即(V)对任意的$a\in\R$，$\{f(x) \geqslant a\}$是闭集。
+\end{proof}
+
+\begin{6}
+    设$S_1,S_2$是度量空间$(X,d)$中两个子集，并且
+    \[d(S_1,S_2)\xlongequal{\text{def}}\inf_{x \in S_1,y \in S_2}d(x,y)>0.\]
+    构造$X$上一个具体的连续函数$f$，使得$0 \leqslant f \leqslant 1$，且满足
+    \[f(x)=\begin{cases}0,&x \in S_1,\\1,&x \in S_2.\end{cases}\]
+\end{6}
+\begin{proof}[解答]
+    取\[f(x)=\frac{d(x,S_1)}{d(x,S_1)+d(x,S_2)},\]
+    $x \in S_1$时$d(x,S_1)=0$则$f(x)=0$，$x \in S_2$时$d(x,S_2)=0$则$f(x)=1$。
+\end{proof}
+
+\begin{7}
+    设$X$是可分的度量空间，$A \subset X$，$\{O_\lambda:\lambda\in\varLambda\}$是$A$的可数开覆盖。
+    证明：可从$\{O_\lambda:\lambda\in\varLambda\}$中选出至多可列个开集$\{O_{\lambda_n}\}$，
+    使得$\bigcup\limits_nO_{\lambda_n} \supset A$。
+\end{7}
+\begin{proof}
+    由命题1.4.1，$A$是可分的，即其有稠密子集$\{a_m:m\in\N\}$。
+    对于每对$(m,k)\in\N\times\N$，如果球$O\big(a_m,\frac{1}{k}\big)$包含于某（几）个$O_\lambda$，
+    就把其中一个$O_\lambda$取出来 (即$O\big(a_m,\frac{1}{k}\big)$就算包含于多个$O_\lambda$也只取出其中的任意一个，
+    不同的$(m,k)$对应的$O_\lambda$可重复)。由于$\N\times\N$是可数集，
+    对应出的这些$O_\lambda$全体同样是至多可数集，记为$\{O_{\lambda_n}\}$。
+    
+    对任意的$a \in A$，$a$必定在某个$O_\lambda$中，由于$O_\lambda$是开集，
+    对某个很大的$k$有$O\big(a,\frac{2}{k}\big) \subset O_\lambda$。
+    由于$\{a_m:m\in\N\}$稠密，存在一个$m$使得$d(a,a_m)<\frac{1}{k}$，
+    从而$O\big(a_m,\frac{1}{k}\big) \subset O\big(a,\frac{2}{k}\big)$，
+    进而有$O\big(a_m,\frac{1}{k}\big) \subset O_\lambda$。
+    在上一段中的取法中，为这对$(m,k)$是要取出一个$O_{\lambda_n}$的，
+    故$a \in O\big(a_m,\frac{1}{k}\big) \subset O_{\lambda_n} \subset \bigcup\limits_nO_{\lambda_n}$。
+\end{proof}
+
+\begin{11}
+    证明：$L^p(\R)\,(1\leqslant p<\infty)$是可分空间。
+\end{11}
+\begin{proof}
+    可数集$\operatorname{span}_\Q\{\chi_{(q,q')}\mid q,q'\in\Q\}$
+    在$C_c(\R)$中稠密，这是因为紧集上的连续函数一致连续；$C_c(\R)$又在$L^p(\R)$中稠密。
+\end{proof}
+
+\begin{13}
+    设$H$是Hilbert空间，证明$H$可分等价于$H$存在一组可数的正交基。
+\end{13}
+\begin{proof}
+    设可分的Hilbert空间$H$有一组正交基$\{e_\lambda:\lambda\in\varLambda\}$，
+    $\|e_\lambda-e_{\lambda'}\|^2=2$蕴含$O\big(e_\lambda,\frac{\sqrt{2}}{2}\big)$互不相交，
+    因此$H$的稠密点集的基数不小于$\varLambda$的基数 
+    (每个$O\big(e_\lambda,\frac{\sqrt{2}}{2}\big)$中取一个稠密点集中的点，
+    这些点互不相同)，前者的基数可以是可数的，从而$\varLambda$可数。
+    \begin{tikzpicture}
+        \draw (-0.5,0.5) circle (0.7) node {$e_\lambda$};
+        \draw (0.5,-0.5) circle (0.7) node {$e_{\lambda'}$};
+        \foreach \i in {-1.6,-1.2,-0.8,-0.4,0,0.4,0.8,1.2,1.6} \foreach \j in {-1.2,-0.8,-0.4,0,0.4,0.8,1.2} \draw[fill=black] (\i,\j) circle (0.01);
+    \end{tikzpicture}
+    
+    反过来，设$H$存在一组可数的正交基$\{e_n:n\geqslant1\}$，
+    那么$\operatorname{span}_\Q\{e_n:n\geqslant1\}$是$H$中稠密的可数集。
+\end{proof}
+
+\begin{14}[Fourier变换的Riemann--Lebesgue引理]
+    对$f\in L^1(\R)$，证明：
+    $$\lim_{|t|\to\infty}\int_\R f(x)e^{-\mathrm{i}2\pi tx}\,{\rm d}x=0.$$
+\end{14}
+\begin{proof}
+    对于$f\in C_c^{(1)}(\R)$，分部积分得
+    $$\ell(f)\coloneqq\lim_{|t|\to\infty}\int_\R f(x)e^{-\mathrm{i}2\pi tx}\,{\rm d}x
+    =\lim_{|t|\to\infty}-\int_\R f'(x)\frac{e^{-\mathrm{i}2\pi tx}}{-\mathrm{i}2\pi t}\,{\rm d}x=0;$$
+    由于$|\ell(f)|\leqslant\|f\|_1$且在稠密子空间$C_c^{(1)}(\R)$上为$0$，
+    线性泛函$\ell$在整个$L^1(\R)$上同样是$0$。
+\end{proof}
+
+\begin{15}[平均连续性]
+    对$f\in L^p(\R),1\leqslant p<\infty$，证明：
+    $$\lim_{|h|\to0}\int_\R|f(x+h)-f(x)|^p\,{\rm d}x=0.$$
+\end{15}
+\begin{proof}
+    首先，由于紧支连续函数一致连续，对于$g\in C_c(\R)$命题成立；由于
+    $$\|f(x+h)-f(x)\|_p\leqslant\|g(x+h)-g(x)\|_p+2\|f-g\|_p,$$
+    命题在稠密子空间上成立表明在$L^p(\R)$上亦成立。
+\end{proof}
+
+\begin{17}
+    证明：$V[a,b],V_0[a,b]$是Banach空间 (见例1.2.10)。
+\end{17}
+\begin{proof}
+    参考\href{http://math.stackexchange.com/questions/73476/prove-the-normed-space-of-bounded-variation-functions-is-complete?r=SearchResults}{这个回答}。
+\end{proof}
+
+\begin{23}
+    证明：任何赋范线性空间都可以完备化成Banach空间，内积空间都可以完备化成Hilbert空间。
+\end{23}
+\begin{proof}
+    (1) 设$X$为赋范线性空间，其完备化空间$\overline{X}$是一切$X$中的Cauchy列$\{x_n\}$商掉等价关系$\sim$，
+    其中$\{x_n\}\sim\{x_n'\}$是说$\lim\limits_{n\to\infty}\|x_n-x_n'\|=0$。
+    自然地定义$\overline{X}$上的加法和数乘，
+    并定义$\{x_n\}$所在的等价类在$\overline{X}$中的范数为$\lim\limits_{n\to\infty}\|x_n\|$，
+    易见这是良定的，从而$\overline{X}$成为了赋范线性空间，下面来说明其是完备的。
+
+    记$x^k$为序列$\big\{x_n^k\big\}_n$所在的等价类，设$\{x^k\}_k$为$\overline{X}$中的Cauchy列。
+    对每个$k$，选取很大的$n_k$使得对$n>n_k$有$\|x_n^k-x_{n_k}^k\|<\frac{1}{k}$，
+    取$x$为序列$\big\{x_{n_p}^p\big\}_p$所在的等价类，
+    接下来要说明$\{x^k\}_k$在$\overline{X}$中收敛于$x$。
+    首先，$\big\{x_{n_p}^p\big\}_p$的确是Cauchy列，
+    这是因为对固定的$n>\max\{n_p,n_q\}$，有
+    \begin{align*}
+        \|x_{n_p}^p-x_{n_q}^q\|&\leqslant\|x_n^p-x_n^q\|+\|x_n^p-x_{n_p}^p\|+\|x_n^q-x_{n_q}^q\|\\
+        &<\|x_n^p-x_n^q\|+\tfrac{1}{p}+\tfrac{1}{q}\to0.
+    \end{align*}
+    接着，由$\overline{X}$中的范数的定义，
+    \begin{align*}
+        \|x-x^k\|_{\overline{X}}&=\lim_{p\to\infty}\|x_{n_p}^p-x_p^k\|\\
+        &\leqslant\lim_{p\to\infty}\|x_{n_p}^p-x_{n_k}^k\|+\lim_{p\to\infty}\|x_{n_k}^k-x_p^k\|\\
+        &\leqslant\lim_{p\to\infty}\|x_{n_p}^p-x_{n_k}^k\|+\tfrac{1}{k},
+    \end{align*}
+    从而有$\lim\limits_{k\to\infty}\|x-x^k\|_{\overline{X}}=0$。
+
+    (2) 设$H$为内积空间，由上可知其作为内积诱导的范数带来的赋范线性空间可完备化为Banach空间$\overline{H}$。
+    设$x,y\in\overline{H}$，$x$是$\{x_n\}$所在的等价类，$y$是$\{y_n\}$所在的等价类，其内积定义为
+    \[\langle x,y \rangle_{\overline{H}}=\lim_{n\to\infty}\langle x_n,y_n \rangle,\]
+    不难验证其良定且的确是内积，比如说如果$\langle x,x \rangle_{\overline{H}}=0$，
+    由定义有$\lim\limits_{n\to\infty}\langle x_n,x_n \rangle=0$，
+    从而$\lim\limits_{n\to\infty}x_n=0$，那么等价类$x$就是$0$。
+    这个内积同范数是一致的，即$\langle x,x \rangle_{\overline{H}}=\|x\|^2_{\overline{H}}$，这是因为
+    \[\langle x,x \rangle_{\overline{H}}=\lim_{n\to\infty}\langle x_n,x_n \rangle
+    =\lim_{n\to\infty}\|x_n\|^2=\|x\|^2_{\overline{H}}.\qedhere\]
+\end{proof}
+
+\begin{24}[再生核Hilbert空间]
+    设集合$X$上一族复值函数$\{K_x(\cdot):x \in X\}$满足：
+    \[\sum_{i,j=1}^{n}c_i\overline{c_j}K_{x_i}(x_j)>0,
+    \quad\forall n\in\N_+,\ c_i\in\mathbb{C},c_i\text{ 不全为零},
+    \ x_i \ne x_j\text{ 若 }i \ne j.\]
+    证明：存在Hilbert空间$(H,\langle\cdot,\cdot\rangle)$，使得
+    \begin{enumerate}
+    \item[(i)] $H$由$X$上的一些函数组成；
+    \item[(ii)] 对任意$f \in H,x \in X$，有$f(x)=\langle f,K_x \rangle$；
+    \item[(iii)] 线性空间$\operatorname{span}\{K_x(\cdot):x \in X\}$在$H$中稠密。
+    \end{enumerate}
+\end{24}
+\begin{proof}
+    见\cite{Guo} 附录B (pp.332--3)。
+\end{proof}
+
+\begin{25}
+    设$\{F_n\}\ (n=1,2,\cdots)$是完备度量空间$X$中一列单调下降的非空闭集，
+    且$F_n$的直径$d_n=\sup\limits_{x,y \in F_n}d(x,y)\to0$，
+    则$\bigcap\limits_{n=1}^\infty F_n$非空。
+\end{25}
+\begin{proof}
+    对所有的$n$，取$x_n \in F_n$，则对于$m,n \geqslant N$，
+    $d(x_m,x_n) \leqslant d_N\to0$，即$\{x_n\}$是Cauchy列，记其收敛于点$x \in X$。
+    $F_n$闭表明$x\in F_n$，故$x\in\bigcap\limits_{n=1}^\infty F_n$。
+\end{proof}
+
+\begin{26}
+    对于Banach空间$X$，若$\{B(x_n,r_n)\}$是一列单调下降的闭球，
+    证明：$\bigcap\limits_{n=1}^\infty B(x_n,r_n)\ne\varnothing$。
+\end{26}
+\begin{proof}
+    当$r_n\to0$，由闭球套定理，交集非空；当$r_n\nrightarrow0$，由于$r_n$递减，
+    记$r_n\to r>0$，取$N$大使得$r_N<\frac{3}{2}r$，则对所有的$n>N$，
+    $B(x_n,r_n)\subseteq B(x_N,r_N)$推出
+    $$|x_n-x_N|\leqslant r_N-r_n<\frac{3}{2}r-r
+    =r-\frac{r}{2}\leqslant r_n-\frac{r}{2},$$
+    即$B\big(x_N,\frac{r}{2}\big)\subseteq B(x_n,r_n)$，
+    因此$B\big(x_N,\frac{r}{2}\big)\subseteq\bigcap\limits_{n=1}^\infty B(x_n,r_n)$。
+\end{proof}
+
+\subsection{1.5 压缩映射原理}
+\begin{1}
+    若$T$是度量空间上的压缩映射，证明：对任意正整数$n\geqslant2$，$T^n$也是压缩映射。
+    并说明逆命题不一定成立。
+\end{1}
+\begin{proof}[解答]
+    前者略。后者的一个反例是，令$C[0,1]$上的有界线性算子$T$为
+    \[(T\varphi)(x)=\int_0^x\varphi(t)\,{\rm d}t.\]
+    取$\varphi_1,\varphi_2$为不相等的常数$c_1,c_2$，则
+    \[\|T\varphi_1-T\varphi_2\|=\max_{0 \leqslant x \leqslant 1}|c_1x-c_2x|
+    =|c_1-c_2|=\|\varphi_1-\varphi_2\|,\]
+    这说明$T$不是压缩映射。而对于任何$\varphi_1,\varphi_2 \in C[0,1]$都有
+    \begin{align}
+        \|T^2\varphi_1-T^2\varphi_2\|&=\max_{0 \leqslant x \leqslant 1}\left|\int_0^x\left(\int_0^t\varphi_1-\varphi_2\right){\rm d}t\right|\\
+        &\leqslant\max_{0 \leqslant x \leqslant 1}\int_0^xt\|\varphi_1-\varphi_2\|\,{\rm d}t=\|\varphi_1-\varphi_2\|/2,
+    \end{align}
+    类似可证$\|T^n\varphi_1-T^n\varphi_2\|\leqslant\|\varphi_1-\varphi_2\|/n!$，
+    则$n\geqslant2$时$T^n$都是压缩映射。
+
+    另一个反例甚至告诉我们$T$都不一定是连续的！令$[0,2]$上的映射$T$为
+    \[Tx=\begin{cases}0,& &x\in[0,1],\\1,& &x\in(1,2].\end{cases}\]
+    $T$在$x=1$处不连续，而$n\geqslant2$时$T^n$恒为零从而是压缩的。
+\end{proof}
+
+\begin{6}
+    设$F$是$n$维Euclid空间$\R^n$中的有界闭集，$\varphi$是$F$到自身的映射
+    并且满足如下条件：对于任何$x,y \in F\,(x \ne y)$，有
+    \[d(\varphi(x),\varphi(y))<d(x,y), \quad x \ne y.\]
+    证明：映射$\varphi$在$F$中存在唯一的不动点。对于不闭的有界集这个事实能否成立？
+\end{6}
+\begin{proof}
+    紧集$F$上的连续映射$x \mapsto d(x,\varphi(x))$在一点$x^*$处取到最小值，
+    这个最小值必定是$0$。若不然有$x^*\ne\varphi(x^*)$，进而
+    \[d(\varphi(x^*),\varphi^2(x^*))<d(x^*,\varphi(x^*)),\]
+    即这个映射在$\varphi(x^*)$处的值更小，矛盾。
+    故$x^*$是$\varphi$的不动点，唯一性是显然的。
+
+    不闭时未必成立，即使加强为压缩映射也是不对的。
+    比如说$\left\{1,\frac{1}{2},\frac{1}{4},\frac{1}{8},\cdots\right\}$
+    （或$(0,1]$也可以，反正不能有$0$）上的压缩映射$\varphi(x)=x/2$没有不动点。
+\end{proof}
+
+\begin{7}[Newton迭代法]
+    设$f$是定义在$[a,b]$上的二次连续可微实函数，
+    $[a,b]$中的点$x_0$满足$f(x_0)=0,f'(x_0)\ne0$。
+    证明：存在点$x_0$的一个邻域$U$，使得对任意$x \in U$，迭代序列
+    \[x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)},\quad n=0,1,2,\cdots\]
+    都收敛于$x_0$。
+\end{7}
+\begin{proof}
+    由Taylor展开式，
+    \begin{align*}
+        |x_{n+1}-x_0|&=\bigg|x_n-x_0-\frac{f(x_n)}{f'(x_n)}\bigg|\\
+        &=\bigg|\frac{f'(x_n)(x_n-x_0)-(f(x_n)-f(x_0))}{f'(x_n)}\bigg|\\
+        &=\bigg|\frac{f''(\theta)(x_n-x_0)^2}{2f'(x_n)}\bigg|
+        <\frac{1}{2}|x_n-x_0|,
+    \end{align*}
+    其中$\theta$是$x_n,x_0$间的一个数；为了最后一个不等号成立，即
+    \[|f''(\theta)(x_n-x_0)|<|f'(x_n)|,\]
+    只需限定
+    \[|x_n-x_0|<d:=\frac{\inf\limits_{V}|f'|}{\sup\limits_{V}|f''|},\]
+    其中$V$是$x_0$的一个小邻域，使得$\inf\limits_{V}|f'|>0$。
+    为此，取$U=O(x_0,d) \cap V$即可。
+\end{proof}
+
+\begin{8}[隐函数存在定理]
+    设函数$F:U \times V \to \R^m$，其中$U$和$V$分别是$\R^n$和$\R^m$中的开区域，
+    $(x_0,y_0) \in U \times V$。如果$F$在$U \times V$中连续，
+    并且对于任意的$x\in U$，$F(x,\cdot)$在$V$中是连续可微的，同时满足
+    \[F(x_0,y_0)=0,\quad\det\bigg(\frac{\partial F}{\partial y}\bigg)(x_0,y_0)\ne0.\]
+    其中$\frac{\partial F}{\partial y}$是$F$关于$y$的Jacobi矩阵。
+    对于$r>0$，令$C(B(x_0,r),\R^m)$表示定义在闭球$B(x_0,r)$上取值在$\R^m$中的向量值连续函数空间，它按范数
+    \[\|\phi\|=\max_{x\in B(x_0,r),i=1,2,\cdots,m}|\phi_i(x)|,\quad\forall\phi=(\phi_1,\phi_2,\cdots,\phi_m)\in C(B(x_0,r),\R^m)\]
+    构成了一个Banach空间。证明
+    \begin{enumerate}[label=(\roman*)]
+        \item 存在$r,\delta>0$，使得在$C(B(x_0,r),\R^m)$的子集
+        \[E\xlongequal{\text{def}}\{\phi\in C(B(x_0,r),\R^m):
+        \phi(x_0)=y_0,|\phi(x)-y_0|\leqslant\delta,\forall x\in B(x_0,r)\}\]
+        中，$(T\phi)(x)\xlongequal{\text{def}}\phi(x)
+        -\bigg(\dfrac{\partial F}{\partial y}(x_0,y_0)\bigg)^{-1}F(x,\phi(x))$是良定义的压缩映射。
+        \item 存在$x_0$的邻域$U_0\subset U$以及唯一的连续函数$\varphi\colon U_0\to\R^m$，满足
+        \[\begin{cases}
+            F(x,\varphi(x))\equiv0,\quad\forall x\in U_0,\\
+            \varphi(x_0)=y_0.
+        \end{cases}\]
+    \end{enumerate}
+\end{8}
+\begin{proof}
+    记\[G(x,y)=y-\bigg(\frac{\partial F}{\partial y}(x_0,y_0)\bigg)^{-1}F(x,y).\]
+    那么$(T\phi)(x)=G(x,\phi(x))$，且
+    \[\frac{\partial G}{\partial y}(x,y)
+    =I_m-\bigg(\frac{\partial F}{\partial y}(x_0,y_0)\bigg)^{-1}\frac{\partial F}{\partial y}(x,y),\]
+    从而\[\frac{\partial G}{\partial y}(x_0,y_0)=0.\tag{\#}\]
+    $\bullet$ 注意``良定义''是要验证$T\colon\phi \mapsto G(\cdot,\phi(\cdot))$
+    是$E$\textbf{到$E$}的映射，也就是说，对$x\in B(x_0,r)$，
+    $G(x,\cdot)$是$B(y_0,\delta)$\textbf{到$B(y_0,\delta)$}的映射。
+    既然如此，来计算$|G(x,y)-y_0|$的上界，其中$y\in B(y_0,\delta)$。拆成两项
+    \[|G(x,y)-y_0|\leqslant|G(x,y)-G(x,y_0)|+|G(x,y_0)-y_0|.\]
+    前一项
+    \begin{align*}\tag{1}
+        |G(x,y)-G(x,y_0)|&=\bigg|\int_0^1 \frac{\partial G}{\partial y}(x,ty+(1-t)y_0)\cdot(y-y_0)\,dt\bigg|\\
+        &\leqslant\sup_{\substack{x\in B(x_0,r),\\y\in B(y_0,\delta)}}\bigg\|\frac{\partial G}{\partial y}(x,y)\bigg\||y-y_0|
+        \leqslant\frac{\delta}{2},
+    \end{align*}
+    为了上式最后一个不等号成立，只需$r,\delta$都充分小就能令（别忘了$(\#)$）
+    \[\sup_{\substack{x\in B(x_0,r),\\y\in B(y_0,\delta)}}\bigg\|\frac{\partial G}{\partial y}(x,y)\bigg\|\leqslant\frac{1}{2};\]
+    后一项$|G(x,y_0)-y_0|$也能任意小，毕竟$G$关于$x$连续且$G(x_0,y_0)=y_0$，故只需$r$充分小就能令
+    \[\tag{2}|G(x,y_0)-y_0|\leqslant\frac{\delta}{2};\]
+    $(1),(2)$相加即有
+    \[|G(x,y)-y_0|\leqslant\delta.\]
+    $\bullet$ 检验完了良定义，现在去证明$T$是压缩算子。
+    直观上来讲，$C(B(x_0,r),\R^m)$上的算子$T$在$\phi$的Fréchet导数是此空间上的线性算子
+    \[T'(\phi)=I-\bigg(\frac{\partial F}{\partial y}(x_0,y_0)\bigg)^{-1}\frac{\partial F}{\partial y}(x,\phi(x)),\]
+    其范数在$r,\delta$很小时同样很小，故应是压缩的。严格地写出来就是，
+    \begin{align*}
+        |(T\phi)(x)-(T\tilde{\phi})(x)|&=|G(x,\phi(x))-G(x,\tilde{\phi}(x))|\\
+        &=\bigg|\phi(x)-\tilde{\phi}(x)-\bigg(\frac{\partial F}{\partial y}(x_0,y_0)\bigg)^{-1}[F(x,\phi(x))-F(x,\tilde{\phi}(x))]\bigg|\\
+        &=\bigg|\int_0^1\bigg[I_m-\underbrace{\bigg(\frac{\partial F}{\partial y}(x_0,y_0)\bigg)^{-1}
+        \bigg(\frac{\partial F}{\partial y}(x,t\phi(x)+(1-t)\tilde{\phi}(x))\bigg)}_{\approx\ I_m}\bigg]dt\cdot(\phi(x)-\tilde{\phi}(x))\bigg|\\
+        &<\frac{1}{2}|\phi(x)-\tilde{\phi}(x)|,
+    \end{align*}
+    其中最后一步也是因为$r,\delta$很小；对$x$取上确界，即有
+    \[\|T\phi-T\tilde{\phi}\|\leqslant\frac{1}{2}\|\phi-\tilde{\phi}\|.\]
+    因此，$T$存在唯一的不动点$\varphi\in E$。
+    $T\varphi=\varphi$表明$F(x,\varphi(x))\equiv0$，
+    $\varphi\in E$蕴含着$\varphi(x_0)=y_0$。
+\end{proof}
+\begin{9}
+    设$\operatorname{Iso}(\R^n)=\{f:f\text{ 是 }\R^n\text{ 上的等距双射}\}$是Euclid空间$\R^n$的自同构群，
+    一个群$G$在$\R^n$的作用即为一个群同态$\phi:G\to\operatorname{Iso}(\R^n)$。
+    我们首先来看Kakutani（角谷静夫）不动点定理的一个特殊情况。
+    \begin{itemize}
+    \item[(i)] 设$G$是一个有限群，$G$在$\R^n$的作用由群同态$\phi:G\to\operatorname{Iso}(\R^n)$给出。
+    取一点$v\in\R^n$。证明：函数$\displaystyle f(x)=\sum_{g \in G}d(x,\phi(g)v)$存在可达的最小值。
+    \item[(ii)] 设$G$是一个有限群，$G$在$\R^n$的作用由群同态$\phi:G\to\operatorname{Iso}(\R^n)$给出。
+    证明：存在点$v\in\R^n$，使得对任意$g \in G$有$\phi(g)v=v$。
+    \end{itemize}
+    称群$G$在$\R^n$的作用$\phi:G\to\operatorname{Iso}(\R^n)$是自由的，
+    是指对于$g \in G$，若存在$v\in\R^n$使得$\phi(g)v=v$，则$g$是$G$的单位元$e$。
+    称群$G$是无挠的，是指若$g \in G$且存在正整数$m$使得$g^m=e$，则$g=e$。
+    \begin{itemize}
+    \item[(iii)] 证明：若群$G$存在一个$\R^n$上的自由等距群作用，则$G$是无挠的。
+    \end{itemize}
+\end{9}
+\begin{proof}
+    \begin{itemize}
+    \item[(i)] 容易说明，当$x\to\infty$时$f(x)\to+\infty$的连续函数$f$都是有最小值的。
+    \item[(ii)] \textbf{错误解答.} 取定$\R^n$中的任意一点$w$，
+    令$\displaystyle v=\sum_{h \in G}\phi(h)w$，则有
+    \[\phi(g)v=\phi(g)\sum_{h \in G}\phi(h)w=\sum_{h \in G}\phi(gh)w=v.\]
+    可是$\phi(g)$不是同态，是不能和$\displaystyle\sum_{h \in G}$交换的。
+
+    \textbf{正确解答.} 取定$\R^n$中的任意一点$w$，令
+    \[F(x)=\sum_{h \in G}d^2(x,\phi(h)w).\]
+    同(i)可得$F$有最小值，且由于其为严格的凸函数，其最小值在某个点$v$唯一地取到。
+    由于$\phi(g)$是等距双射，若在作用了$\phi(g)$后的整个$\R^n$上再次考察$F$，即
+    \[F^{\phi(g)}(x)=\sum_{h \in G}d^2(x,\phi(gh)w),\]
+    其最小值就会在点$\phi(g)v$取到。不过$F^{\phi(g)}$和$F$实际上是同一个函数，
+    从而$\phi(g)v$和$v$是同一个点。
+    \item[(iii)] 设$g^m=e$，对$\phi$在$g$生成的子群$\{e,g,\cdots,g^{m-1}\}$上的限制用(ii)，
+    可知存在点$v$使得$\phi(g)v=v$。由于$g$的作用是自由的，只好是$g=e$。\qedhere
+    \end{itemize}
+\end{proof}
+\begin{10}
+    设$G=\Z_2*\Z_3$为$\Z_2$与$\Z_3$的自由积。容易验证，群$G$可如此显式表达：
+    取生成元集$S=\{a,b\}$，$G$中元素$u$可唯一写成有限长度的单词：
+    \[ab^{\varepsilon_1}ab^{\varepsilon_2}\cdots\text{ 或 }\,
+    b^{\varepsilon_1}ab^{\varepsilon_2}a\cdots,\,\varepsilon_i=\pm1,\]
+    单词长度正好为Cayley图上度量$d_S(e,u)$ (定义见习题1.1第6,\,10题)。
+    对于$u,v \in G$，它们的乘积为单词$uv$，
+    并对相邻$b$与$b$、\,$b^{-1}$与$b^{-1}$分别用$b^{-1},b$代替，
+    且消除相邻的$a$与$a$、\,$b$与$b^{-1}$。设$H$是$G$中的一个有限子群。
+    \begin{enumerate}[label=(\roman*)]
+    \item 画出Cayley图$\varGamma=(G,E)$中涉及顶点集$B(e,3)=\{u \in G:d_S(e,u)\leqslant3\}$的部分。
+    \item 对于$u \in G$，$d_S(e,u)\geqslant2$，设$v=a,b$或$b^{-1}$为连接$e,u$最短路径中的第一个顶点。
+    对顶点$P \in G$及正整数$r$，若$d_S(e,P) \leqslant r,d_S(u,P) \leqslant r$，证明：$d_S(v,P) \leqslant r-1$。
+    \item 令
+    \[r_0=\min\{r\in\N_+:\exists b \in G,H \subset B(b,r)\}.\]
+    令$B$为达到最小值的$G$中元素全体：$b \in B$当且仅当$H \subset B(b,r_0)$。
+    证明：$B$是$H$的一个（左作用）不变集，即$gB=B,\forall g \in H$。
+    \item 令$d_B=\max\{d_S(b_1,b_2):b_1,b_2 \in B\}$为集合$B$的直径。
+    证明：存在元素$b \in G$，使得其共轭子群$b^{-1}Hb \subset B(e,d_B)$。
+    \item 列举$d_B$可能的取值，由此证明：有限子群$H$必为$\{e\},\{e,a\}$或者$\{e,b,b^{-1}\}$的共轭子群。
+    \end{enumerate}
+    实际上，由几何群论可得，双曲群（Hyperbolic Group）均有类似的结果。
+\end{10}
+\begin{proof}[解答]
+    \begin{enumerate}[label=(\roman*)]
+    \item 画出来是一只甲壳虫。
+    \begin{cd}
+    & aba \ar[dddr,dash,bend right] & & & & & & ab^{-1}a \ar[dddl,dash,bend right] & \\
+    & & & & & & & & \\
+    & & & & & & & & \\
+    & & ab \ar[rrrr,dash,bend left] & & & & ab^{-1} & & \\
+    & & & & a \ar[ull,dash,bend left]\ar[urr,dash,bend right] \ar[d,dash] & & & & \\
+    & & & & e \ar[lldddddddd,dash,bend right=90]\ar[rrdddddddd,dash,bend left=90] & & & & \\
+    & & & & & & & & \\
+    & & & & & & & & \\
+    & & & & & & & & \\
+    & & & & & & & & \\
+    & & & & & & & & \\
+    & & & & & & & & \\
+    & & & & & & & & \\
+    & & b \ar[rrrr,dash,bend right] & & & & b^{-1} & & \\
+    & & & & & & & & \\
+    & ba \ar[uur,dash,bend left] & & & & & & b^{-1}a \ar[uul,dash,bend right] &\\
+    bab \ar[ur,dash,bend left] & & & & & & & & b^{-1}ab \ar[ul,dash,bend right]\\
+    bab^{-1} \ar[uur,dash,bend left]\ar[u,dash] & & & & & & & & b^{-1}ab^{-1} \ar[uul,dash,bend right]\ar[u,dash]\\
+    \end{cd}
+    \item 这里证明更一般的命题如下。对于$u_1,u_2 \in G$，$d_S(u_1,u_2)\geqslant2$，设
+    \[v=u_1a,\,u_1b\,\text{ 或 }\,u_1b^{-1}\]
+    为连接$u_1,u_2$最短路径中的第一个顶点。对顶点$P \in G$及正整数$r$，
+    若$d_S(u_1,P) \leqslant r,d_S(u_2,P) \leqslant r$，则有$d_S(v,P) \leqslant r-1$。
+    
+    这是因为设
+    \begin{align*}
+        u_2&=u_1\!\oslash_1\cdots\oslash_s, \quad s=d_S(u_1,u_2),\\
+        P&=u_1\boxminus_1\cdots\boxminus_t, \quad t=d_S(u_1,P),
+    \end{align*}
+    其中$\oslash_1,\cdots,\oslash_s$和$\boxminus_1,\cdots,\boxminus_t\in\{a,b,b^{-1}\}$且相邻两者无法开心消消乐，则$v=u_1\oslash_1$。
+
+    ➣ 如果$\oslash_1\ne\boxminus_1$，容易说明
+    \[d_S(\oslash_1\cdots\oslash_s,\boxminus_1\cdots\boxminus_t)=d_S(\oslash_1,\boxminus_1\cdots\boxminus_t)+(s-1),\]
+    即$d_S(u_2,P)=d_S(v,P)+(s-1)$，结合$s\geqslant2$和$d_S(u_2,P) \leqslant r$得到$d_S(v,P) \leqslant r-1$。
+
+    ➢ 如果$\oslash_1=\boxminus_1$，
+    * 当$t>0$时$P=v\boxminus_2\cdots\boxminus_t$，那么$d_S(v,P)=t-1 \leqslant r-1$，
+    * 当$t=0$时$P=u_1$，从而$2 \leqslant d_S(u_1,u_2)=d_S(u_2,P) \leqslant r$，那么$d_S(v,P)=1 \leqslant r-1$。
+
+    \item 对任何的$b \in B$，有$H=gH \subset gB(b,r_0)=B(gb,r_0)$，即$gb \in B$。
+    \item 随便取定一个$b \in B$，对任何的$g \in H$都有$gb \in B$，从而$d_S(e,b^{-1}gb)=d_S(b,gb) \leqslant d_B$。
+    \item 只需要说明$d_B=0$或$1$即可。假如$d_B\geqslant2$，即存在$b_1,b_2 \in B$使得$d_S(b_1,b_2)\geqslant2$，
+    设$c$为连接$b_1,b_2$最短路径中的第一个顶点，
+    则对所有的$P \in H$，由$d_S(b_1,P) \leqslant r_0,d_S(b_2,P) \leqslant r_0$
+    得到$d_S(c,P) \leqslant r_0-1$，即$H \subset B(c,r_0-1)$，矛盾。\qedhere
+    \end{enumerate}
+\end{proof}
+
+\subsection{1.6 列紧性}
+\begin{4}
+    若度量空间$(X,d)$中的子集$A$是完全有界的，证明：$A$的任一子集$B$也是完全有界的。
+\end{4}
+\begin{proof}
+    对任意的$\varepsilon>0$，$A$有$\frac{\varepsilon}{2}$网$\{a_1,\cdots,a_n\}$，
+    即$A\subset\bigcup\limits_{i=1}^{n}O\big(a_i,\frac{\varepsilon}{2}\big)$。
+    对$i=1,\cdots,n$，若$O\big(a_i,\frac{\varepsilon}{2}\big)$同$B$的交非空，
+    就取其中一点$b_i$出来，这些$b_i$放在一起就是$B$的$\varepsilon$网了。
+    这是因为对任何$b \in B$，其必属于某个$O\big(a_i,\frac{\varepsilon}{2}\big)$，
+    则这个球交$B$非空，从而其中取出过点$b_i$，
+    推出$|b-b_i|\leqslant|b-a_i|+|a_i-b_i|<\varepsilon$。
+\end{proof}
+
+\begin{10}[Grothendieck]
+    对Banach空间$X$中的相对列紧集$K$，证明：存在$X$中一个点列$\{x_n\}$，
+    使得$\lim\limits_{n\to\infty}x_n=0$且
+    \[K\subset\left\{\sum_{n=1}^{\infty}a_nx_n:\sum_{n=1}^{\infty}|a_n|\leqslant1\right\}.\]
+\end{10}
+\begin{proof}
+    取$K_1=K$的有限$\frac{1}{2}$网$\frac{F_1}{2}$，
+    即$K_1\subset\bigcup\limits_{x \in F_1}O\big(\frac{x}{2},\frac{1}{2}\big)$；
+    然后取$K_2=\big\{x \in K_1-\frac{F_1}{2}:\|x\|<\frac{1}{2}\big\}$的有限$\frac{1}{2^2}$网$\frac{F_2}{2^2}$，
+    即$K_2\subset\bigcup\limits_{x \in F_2}O\big(\frac{x}{2^2},\frac{1}{2^2}\big)$；
+    以此类推，取$K_n=\big\{x \in K_{n-1}-\frac{F_{n-1}}{2^{n-1}}:\|x\|<\frac{1}{2^{n-1}}\big\}$的有限$\frac{1}{2^n}$网$\frac{F_n}{2^n}$，
+    即$K_n\subset\bigcup\limits_{x \in F_n}O\big(\frac{x}{2^n},\frac{1}{2^n}\big)$。
+    令$\{x_n\}$为$\bigcup\limits_nF_n$中元素的罗列，则$\lim\limits_{n\to\infty}x_n=0$，
+    且对$x \in K$，有$x_1 \in F_1$使得$\big\|x-\frac{x_1}{2}\big\|<\frac{1}{2}$，
+    则$x-\frac{x_1}{2} \in K_2$，有$x_2 \in F_2$使得$\big\|x-\frac{x_1}{2}-\frac{x_2}{2^2}\big\|<\frac{1}{2^2}$，
+    最终有$x=\sum\limits_{n=1}^{\infty}\frac{x_n}{2^n}$。
+\end{proof}
+
+\begin{13}
+    设$F_1$是度量空间$X$的紧子集，$F_2$是$X$的闭子集，
+    $F_1 \cap F_2=\varnothing$。证明：
+    \[d(F_1,F_2)=\inf\{d(x,y):x\in F_1,y\in F_2\}\]
+    是一个正数。
+\end{13}
+\begin{proof}
+    假设有一列$\{x_n\},\{y_n\}$使得$d(x_n,y_n)\to0$。
+    由于$F_1$是紧集，$\{x_n\}$有子列（记为其本身）收敛于$x \in F_1$，
+    则$\{y_n\}$同样收敛于$x$，$F_2$闭说明$x \in F_2$，矛盾。
+\end{proof}
+
+\begin{14}
+    设$X$是Banach空间，$M$和$N$是$X$的闭线性子空间，其中$N$是有限维的，
+    那么$M+N$是$X$的闭线性子空间。
+\end{14}
+\begin{proof}
+    记商映射$\pi\colon X\to X/M$，$\pi(N)$的维数不大于$N$的维数，
+    所以$\pi(N)$是有限维空间故是闭的 (推论1.4.1, p.38)。
+    $\pi$是连续的，从而$M+N=\pi^{-1}(\pi(N))$也是闭的。
+\end{proof}
+
+\begin{17}[Dini定理]
+    设$X$为紧度量空间，$\{f_k\}_k$是$X$上一个实值的递增连续函数列：
+    对任意$x \in X$及正整数$k$，有$f_k(x) \leqslant f_{k+1}(x)$。
+    若$\{f_k\}$点态收敛于连续函数$f$，证明：$\{f_k\}$一致收敛于$f$。
+\end{17}
+\begin{proof}
+    不然有$\delta>0$及一列$\{f_{k_i}\}$与相应的$x_i \in X$，使得
+    \[f(x_i)-f_{k_i}(x_i)\geqslant\delta.\]
+    由于$X$是紧的，$\{x_i\}$有子列（记为其本身）收敛于$y \in X$。
+    对任意的$k$，当$i$很大时$k \leqslant k_i$，由于$f_k$递增，此时
+    \[f(x_i)-f_k(x_i) \geqslant f(x_i)-f_{k_i}(x_i)\geqslant\delta.\]
+    令$i\to\infty$，得$f(y)-f_k(y)\geqslant\delta$，
+    同$\{f_k(y)\}$收敛于$f(y)$矛盾。
+\end{proof}
+
+\subsection**{参考文献}
+\begin{references}
+    \bibitem[Guo]{Guo}
+        郭坤宇. 算子理论基础 (第二版). 复旦大学研究生数学基础课程系列教材. 
+        复旦大学出版社, 2022.
+\end{references}

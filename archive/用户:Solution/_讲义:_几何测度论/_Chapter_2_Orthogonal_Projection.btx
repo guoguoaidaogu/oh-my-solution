@@ -1,0 +1,509 @@
+\setdisplaytitle{2 Orthogonal Projection}
+\sethtmltitle{2 Orthogonal Projection}
+\theoremstyle{definition}
+
+The main references of this chapter are [Folland; Real Analysis, Chapter 4 and Chapter 7], [Evans, Gariepy; Measure theory and fine properties of functions, Chapter 1 ], [Mattila; Geometry of Sets and Measures in Euclidean Spaces-Fractals and Rectifiability, Chapter 1 and 8], and [Hochman; Lectures on fractal geometry and dynamics, Chapter 7]
+
+
+
+    % --- Converted from markdown ---
+    \section{Projections of Discrete Sets}
+    Given $e\in S^{1}:=\{ x \in \mathbb{R}^{2}:|x|=1 \}$, we define
+        \begin{equation*}
+            \pi _{e}(x):=(x\cdot e)e
+        \end{equation*}
+    which is the orthogonal projection of $x$ to
+        \begin{equation*}
+            \mathscr{l}_{e}:=\{ te: t \in \mathbb{R} \}
+        \end{equation*}
+    Let $P\subset \mathbb{R}^{2}$ be a finite set such that $|P|=N$. We want to estimate the size of the exceptional set
+        \begin{equation*}
+            E_{P}:=\left\{  e \in S^{1}: |\pi _{e}(P)|\leq \frac{N}{8}  \right\}
+        \end{equation*}
+
+    \begin{lemma}
+    $|E_{P}|\leq N^{2}$.
+    \end{lemma}
+    \begin{proof}
+        We may assume that directions in $E_{P}$ are not parallel. Fixing $e \in E_{P}$, there exist two points $p_{1},p_{2} \in P$ such that
+            \begin{equation*}
+                \pi _{e}(p_{1})=\pi _{e}(p_{2})
+            \end{equation*}
+        then the line through $p_{1}$ and $p_{2}$ is perpendicular to $\mathscr{l}_{e}$. Since $\mathscr{l}_{e}\neq \mathscr{l}_{e'}$ when $e\neq e'$, we obtain
+        \begin{align*}
+            |E_{P}| & =|\{ \mathscr{l}_{e}: e \in E_{P} \}| \\
+            & \leq|\{ (p_1,p_{2})\in P^{2}:p_{1}\neq p_{2} \}| \\
+            & \leq N^{2}.
+        \end{align*}
+    \end{proof}
+
+    \begin{theorem}
+    \label{thm:EP_64N}
+    $|E_{P}|\leq 64N$.
+    \end{theorem}
+    \begin{remark}
+        Theorem \ref{thm:EP_64N} is sharp in that there exists $P$ such that $|E_{P}|\geq C\cdot N$ for some $C>0$.
+    \end{remark}
+
+    \begin{proposition}[Weak Szemerédi-Trotter]
+        \label{prop:weak_ST}
+        Let $P\subset \mathbb{R}^{2}$ be finite and $\mathscr{L}$ a finite collection of lines in $\mathbb{R}^{2}$. Then
+            \begin{equation*}
+                |\mathscr{I}(P,\mathscr{L})|\leq 4\min\{ |P| |\mathscr{L}|^{1/2}+|\mathscr{L}|, |P|^{1/2} |\mathscr{L}|+|P|\}
+            \end{equation*}
+        where
+            \begin{equation*}
+                \mathscr{I}(P,\mathscr{L}):= \{ (p,\mathscr{l})\in P\times \mathscr{L}: p \in \mathscr{l} \}.
+            \end{equation*}
+    \end{proposition}
+    \begin{remark}
+        (Classic) Szemerédi-Trotter says
+            \begin{equation*}
+                |\mathscr{I}(P,\mathscr{L})|\lesssim |P|^{2/3}|\mathscr{L}|^{2/3}+|P|+|\mathscr{L}|.
+            \end{equation*}
+    \end{remark}
+    
+    % --- Continued conversion from markdown ---
+    \begin{proof}[Proof of Proposition~\ref{prop:weak_ST}]
+    We prove only
+        \begin{equation*}
+            |\mathscr{I}(P,\mathscr{L})|\leq 4(|P||\mathscr{L}|^{1/2}+|\mathscr{L}|).
+        \end{equation*}
+    Note that $|\mathscr{I}(P,\mathscr{L})|=\sum_{\mathscr{l}\in \mathscr{L}}|P\cap \mathscr{l}|$. By definition, we apply Cauchy-Schwarz to obtain
+        \begin{equation*}
+            |\mathscr{I}(P,\mathscr{L})|\leq |\mathscr{L}|^{1/2}\left( \sum_{\mathscr{l}\in \mathscr{L}}|P\cap \mathscr{l}|^{2} \right)^{1/2}.
+        \end{equation*}
+    By Fubini's theorem,
+    \begin{align*}
+        \sum_{\mathscr{l} \in \mathscr{L}}|P \cap \mathscr{l}|^{2} &= \sum_{\mathscr{l}\in \mathscr{L}}\sum_{p \in P}\sum_{q \in P}\chi_{p \in \mathscr{l}}\chi_{q \in \mathscr{l}} \\
+        &= \sum_{p \in P}\sum_{q \in P}\sum_{\mathscr{l}\in \mathscr{L}}\chi_{p \in \mathscr{l}}\chi_{q \in \mathscr{l}} \\
+        &= \sum_{p \in P}\sum_{\mathscr{l}\in \mathscr{L}} \chi_{p \in \mathscr{l}} + \sum_{p\neq q}\sum_{\mathscr{l}\in \mathscr{L}}\chi_{p \in \mathscr{l}}\chi_{q \in \mathscr{l}} \\
+        &= |\mathscr{I}(P,\mathscr{L})| + |P|^{2}.
+    \end{align*}
+    In summary,
+        \begin{equation*}
+            |\mathscr{I}(P,\mathscr{L})|\leq |\mathscr{L}|^{1/2}(|\mathscr{I}(P,\mathscr{L})|^{1/2}+|P|).
+        \end{equation*}
+    If the first term dominates, i.e., $|\mathscr{I}|^{1/2}\geq |P|$, then
+        \begin{equation*}
+            |\mathscr{I}(P,\mathscr{L})|\leq 4|\mathscr{L}|.
+        \end{equation*}
+    Otherwise,
+        \begin{equation*}
+            |\mathscr{I}(P,\mathscr{L})|\leq |P||\mathscr{L}|^{1/2}.\qedhere
+        \end{equation*}
+    \end{proof}
+
+    \begin{proof}[Proof of Theorem~\ref{thm:EP_64N}]
+    Fixing $e \in E_{P}$, define
+        \begin{equation*}
+            \mathscr{L}_{e}:=\{ \pi_{e}^{-1}(t): t \in \pi_{e}(P) \}
+        \end{equation*}
+    the family of lines perpendicular to $e$ and intersecting $P$. Obviously, $|\mathscr{I}(P,\mathscr{L}_{e})|=N$ as each point in $P$ is contained in exactly one line in $\mathscr{L}_{e}$.
+
+    Define
+        \begin{equation*}
+            \mathscr{L}:=\bigcup_{e\in E_{P}}\mathscr{L}_{e}
+        \end{equation*}
+    then $|\mathscr{L}|\leq |E_{P}| \frac{N}{8}$. By Proposition~\ref{prop:weak_ST},
+    \begin{align*}
+        |E_{P}|N &= |\mathscr{I}(P,\mathscr{L})| \\
+        &\leq 4(|P||\mathscr{L}|^{1/2}+|\mathscr{L}|) \\
+        &\leq 4\left( N\left( \frac{|E_{P}|N}{8} \right)^{1/2} + \frac{|E_{P}|N}{8} \right).
+    \end{align*}
+    Therefore $\left( \frac{1}{2}|E_{P}|N \right)^{2}\leq 2|E_{P}|N^{3}$, that is,
+        \begin{equation*}
+            |E_{P}|\leq 8N.\qedhere
+        \end{equation*}
+    \end{proof}
+
+    \begin{theorem}
+    Let
+        \begin{equation*}
+            P:=\{ (m,n)\in \mathbb{Z}^{2}:0\leq m,n\leq N \}
+        \end{equation*}
+    Let
+        \begin{equation*}
+            S(P):=\left\{  e_{mn}:=\frac{(m,n)}{|(m,n)|}\in S^{1}:0\leq m,n\leq \frac{N}{100}  \right\}
+        \end{equation*}
+    be a subset of directions generated by $P$. Then
+    \begin{align}
+        \pi_{e}(P) &\leq \frac{N^{2}}{10}\quad \forall e\in S(P),\label{eq:SP_proj} \\
+        |S(P)| &\gtrsim N^{2}.\label{eq:SP_size}
+        \end{align}
+    In particular,
+        \begin{equation}
+            |E(P)|\geq|S(P)|\gtrsim N^{2}.
+        \label{eq:EP_SP}
+        \end{equation}
+    \label{thm:SP}
+    \end{theorem}
+    \begin{proof}
+    Fix $e=e_{mn}=\frac{(m,n)}{|(m,n)|}$. Let $a_{j}=(m_{j},n_{j}),j=1,2,\dots$ in $P$. If $\pi_{e}(a_{1})\neq \pi_{e}(a_{2})$, then $m_{1}m+n_{1}n\neq m_{2}m+n_{2}n$, which implies that
+    \begin{align*}
+        0 &\neq |\pi_{e}(a_{1})-\pi_{e}(a_{2})| \\
+        &= \frac{|mm_{1}+nn_{1}-(mm_{2}+nn_{2})|}{|(m,n)|} \\
+        &\geq \frac{50}{N}.
+    \end{align*}
+    As a result, $\pi_{e}(P)$ is a $\frac{50}{N}$-separated subset of a segment of length $\leq 2N$. In particular,
+        \begin{equation*}
+            |\pi_{e}(P)|\leq \frac{N^{2}}{25}
+        \end{equation*}
+    which verifies \eqref{eq:SP_proj}.
+    We may assume $n\leq m$ by symmetry. Then $S(P)$ is the set of irreducible fractions $\frac{n}{m}$ with $n\leq m \leq \frac{N}{100}$, which is
+        \begin{equation}
+            \sum_{1\leq k\leq \frac{N}{100}}\varphi(k)\quad \label{eq:phi_sum}
+        \end{equation}
+    with $\varphi(k):=|\{ 1\leq m\leq k: \operatorname{gcd}(m,k)=1 \}|$.
+    It is known
+        \begin{equation*}
+            \sum_{1\leq k\leq \frac{N}{100}}\varphi(k) \sim N^{2}
+        \end{equation*}
+    i.e., \eqref{eq:SP_size} holds.
+    By \eqref{eq:SP_proj},
+        \begin{equation*}
+            S(P)\subset E_{P}
+        \end{equation*}
+    therefore \eqref{eq:EP_SP} follows from \eqref{eq:SP_size}.
+    \end{proof}
+
+    \begin{remark}
+    A set $A$ is $\delta$-separated if $|a_{1}-a_{2}|\geq \delta,\forall a_{1}\neq a_{2} \in A$.
+    \end{remark}
+
+    \section{Weak Convergence of Measures}
+
+    \begin{theorem}[Urysohn's Lemma]
+    If $X$ is an LCH space, and $K\subset U\subset X$, where $K$ is compact, and $U$ is open. Then $\exists f \in C(X,[0,1])$ such that
+        \begin{equation*}
+            K\prec f\prec U.
+        \end{equation*}
+    \label{thm:urysohn}
+    \end{theorem}
+
+    Let $C_{c}(X)$ be the space of continuous functions on $X$ with compact support. For $f \in C_{c}(X)$, define
+        \begin{equation*}
+            \|f\|_{u}:=\sup_{x \in X}|f(x)|.
+        \end{equation*}
+    A linear functional $I$ on $C_{c}(X)$ is called positive if $I(f)\geq 0$ whenever $f\geq 0$.
+
+    \begin{proposition}
+    Let $I$ be a positive linear functional on $C_{c}(X)$. Then, $\forall$ compact $K\subset X$, $\exists$ a constant $C_{k}$ s.t.
+        \begin{equation*}
+            |I(f)|\leq C_{k}\| f \| _{u}
+        \end{equation*}
+    $\forall f\in C_{c}(X)$ with $\operatorname{supp}f\subset K$.
+    \label{prop:lin_bound}
+    \end{proposition}
+    \begin{proof}
+    We may assume that $f$ is real-valued. Given $K$, $\exists \phi \in C_{c}(X,[0,1])$ s.t. $\phi=1$ on $K$. Suppose $\operatorname{supp}f \subset K$, then
+        \begin{equation*}
+            |f| \leq \|f\|_{u}\phi
+        \end{equation*}
+    i.e., $\phi\|f\|_{u}-f,\|f\|_{u}\phi+f\geq 0$.
+    As a result,
+        \begin{equation*}
+            I(\phi\|f\|_{u}-f),\ I(\|f\|_{u}\phi+f)\geq 0
+        \end{equation*}
+    i.e., $|I(f)|\leq I(\phi)\|f\|_{u}$.
+    \end{proof}
+
+    \begin{proposition}[Riesz Representation]
+    If $I$ is a positive linear functional on $C_{c}(\mathbb{R}^{n})$, then $\exists$ a unique Radon measure $\mu$ on $\mathbb{R}^{n}$ s.t.
+        \begin{equation*}
+            I(f)=\int f\mathrm{d}\mu,\quad \forall f \in C_{c}(\mathbb{R}^{n}).
+        \end{equation*}
+    Moreover, $\mu$ satisfies
+    \begin{itemize}
+        \item[(i)] $\mu(U)=\sup\{ I(f):f\in C_{c}(\mathbb{R}^{n}),f \prec U,U\text{ open} \}$,
+        \item[(ii)] $\mu(K)=\inf \{ I(f):f \in C_{c}(\mathbb{R}^{n}), \chi _{K}\leq f,K\text{ compact}\}$.
+    \end{itemize}
+    \label{prop:riesz}
+    \end{proposition}
+
+    \begin{definition}
+    Let $\mu,\mu _{k}(k=1,2,\dots)$ be Radon measures on $\mathbb{R}^{n}$. If
+        \begin{equation*}
+            \lim_{ k \to \infty } \int _{\mathbb{R}^{n}}f \mathrm{d}\mu _{k}=\int _{\mathbb{R}^{n}}f\mathrm{d}\mu,\quad\forall f \in C_{c}(\mathbb{R}^{n}),
+        \end{equation*}
+    then we say the measures $\{ \mu _{k} \}_{k={1}}^{\infty}$ converge weakly to $\mu$, written
+        \begin{equation*}
+            \mu _{k}\to \mu.
+        \end{equation*}
+    \end{definition}
+
+    \begin{example}
+    Let $\delta _{x}$ be the Dirac measure at $x$, which is defined by
+        \begin{equation*}
+            \delta _{x}(A)=\begin{cases}
+            1 & x \in A \\
+            0 & x \notin A
+            \end{cases}
+        \end{equation*}
+    Then $\delta _{i}\to 0$ as $i \to \infty$.
+    \end{example}
+
+    \begin{example}
+    Let $\mu _{k}=\frac{1}{k}\sum _{i=1}^{k}\delta _{\frac{i}{k}},$ then $\mu _{k}\to \mathcal{L}^{1}|_{[0,1]}$ as $k\to \infty$.
+    \end{example}
+
+    \begin{lemma}
+    $C_{c}(\mathbb{R}^{n})$ is separable under the norm $\| \cdot \|_{u}$.
+    \label{lem:Cc_sep}
+    \end{lemma}
+
+    \begin{theorem}
+    Let $\{ \mu _{k} \}_{k=1}^{\infty}$ be a sequence of Radon measures on $\mathbb{R}^{n}$ satisfying
+        \begin{equation*}
+            \sup_{k}\mu _{k}(K)<\infty \quad\forall \text{ compact }K\subset \mathbb{R}^{n}\tag{1}
+        \end{equation*}
+    Then $\exists$ a subsequence $\{ \mu _{k_{j}} \}_{j=1}^{\infty}$ and a Radon measure $\mu$ s.t.
+        \begin{equation*}
+            \mu _{k}\to \mu.
+        \end{equation*}
+    \label{thm:weakconv}
+    \end{theorem}
+    \begin{proof}
+    We consider first the case
+        \begin{equation*}
+            \sup_{k}\mu _{k}(\mathbb{R}^{n})<\infty. \tag{2}
+        \end{equation*}
+    Step 1:
+    By Lemma~\ref{lem:Cc_sep}, $\exists$ a countable dense subset $\{ f_{k} \}_{k=1}^{\infty}$ of $C_{c}(\mathbb{R}^{n})$. As (2) implies that $\left\{  \int f_{1}\mathrm{d}\mu _{j}  \right\}_{j}$ is bounded, we can find a subsequence $\{ \mu _{j}^{1} \}_{j=1}^{\infty}$ and $a_{1}\in \mathbb{R}$ s.t.
+        \begin{equation*}
+            \int f_{1}\mathrm{d}\mu _{j}^{1}\to a_{1}
+        \end{equation*}
+    Repeating this argument, we can find a subsequence $\{ \mu _{j}^{k} \}_{j}$ of $\{ \mu _{j}^{k-1} \}_{j}$ s.t.
+        \begin{equation*}
+            \int f_{k}\mathrm{d}\mu _{j}^{k}\to a_{k}\tag{3}
+        \end{equation*}
+    Setting $v_{j}:=\mu _{j}^{j}$, we obtain from (3) that, $\forall k$,
+        \begin{equation*}
+            \int f_{k}\mathrm{d}\mu _{j}\to a_{k}\quad\text{as}\quad j\to \infty.
+        \end{equation*}
+    Step 2:
+    Define a linear functional $L$ on $\operatorname{span}(\{ f_{k} \})$ by $L(f_{k})=a_{k}$. Then
+        \begin{equation*}
+            |L(f_{k})| \leq \| f_{k} \| _{u}M,
+        \end{equation*}
+    where $M:=\sup_{j}\mu _{j}(\mathbb{R}^{n})<\infty$. As a result, we can extend $L$ uniquely to a bounded linear functional $\bar{L}$ on $C_{c}(\mathbb{R}^{n})$. Moreover, $\bar{L}$ is positive. Actually, $\forall f\geq 0$ in $C_{c}(\mathbb{R}^{n})$, $\exists f_{k}$ s.t. $\| f_{k}-f \|_{u}< \frac{\epsilon}{M}$. Then
+        \begin{equation*}
+            \bar{L}(f)=\bar{L}(f-f_{k})+L(f_{k})\geq-\epsilon-\epsilon
+        \end{equation*}
+    Applying Proposition~\ref{prop:riesz}, $\exists$ a Radon measure $\mu$ on $\mathbb{R}^{n}$ s.t.
+        \begin{equation*}
+            \bar{L}(f)=\int _{\mathbb{R}^{n}}f \mathrm{d}\mu,\quad \forall f\in C_{c}(\mathbb{R}^{n}).
+        \end{equation*}
+    Step 3:
+    Fix $f\in C_{c}(\mathbb{R}^{n})$. $\forall \epsilon>0$, $\exists f_{k}$ s.t.
+        \begin{equation*}
+            \| f-f_{k} \| _{u}< \frac{\epsilon}{4M}
+        \end{equation*}
+    We choose $J$ large such that $\forall j>J$,
+        \begin{equation*}
+            \left| \int f_{k}\mathrm{d}\nu _{j}-\int f_{k}d\mu  \right| < \frac{\epsilon}{2}
+        \end{equation*}
+    Then $\forall j>J$, we have
+        \begin{equation*}
+            \left| \int f\mathrm{d}\nu _{j}-\int f\mathrm{d}\mu  \right| 
+            \leq \left| \int(f-f_{k})d\nu _{j}  \right| 
+            +\left| \int f_{k}\mathrm{d}\nu _{j}- \int f_{k}\mathrm{d}\mu  \right| 
+            +\left| \int(f_{k}-f)\mathrm{d}\mu  \right| <\epsilon.
+        \end{equation*}
+    Step 4:
+    We discuss below the case (2) fails, when we still have (1).  Denoting $\mu _{k,l}:=\mu _{k}|_{B(l)}$, where $B(l):=\{ x \in \mathbb{R}^{n}:|x|\leq l \}.$
+    By previous arguments, we can find $\{ \mu _{k}^{j} \}\subset \{ \mu _{k}^{j-1} \}$ s.t.
+        \begin{equation*}
+            \mu _{k,j}^{j}\to \sigma _{j}
+        \end{equation*}
+    Letting $\nu _{k}:=\mu _{k}^{k}$, we have
+        \begin{equation*}
+            \nu _{k,l}\to \sigma _{l},\quad \forall l.
+        \end{equation*}
+    $\forall f \in C_{c}(\mathbb{R}^{n})$ with $\operatorname{supp}f\subset B(l)$, when $l',l''\geq l$, we have
+    \begin{align*}
+        \int f\mathrm{d}\sigma _{l'} &=\lim_{ k \to \infty } \int f \mathrm{d}\nu _{k,l'} \\
+        &=\lim_{ k \to \infty } \int f\mathrm{d}\nu _{k} \\
+        &=\lim_{ k \to \infty } \int f\mathrm{d}\nu _{k,l''} \\
+        &=\int f\mathrm{d}\sigma _{l''}.
+    \end{align*}
+    Therefore, we can define
+        \begin{equation*}
+            L(f):=\lim_{ k \to \infty } \int f\mathrm{d}\nu _{k}
+        \end{equation*}
+    Applying Proposition~\ref{prop:riesz}, $\exists$ a Radon measure $\mu$ such that $L(f)=\int f \mathrm{d}\mu$, i.e., $\nu _{k}\to \mu$.
+    \end{proof}
+
+    \begin{definition}
+    Let $f$ and $g$ be real-valued, $\mu$ a Radon measure. The convolution of $f$ and $g$ is defined by
+    \begin{align}
+        (f*g)(x) & :=\int f(x-y)g(y)\mathrm{d}y \\
+        (f*\mu)(x) & := \int f(x-y)\mathrm{d}\mu(y) \\
+        \mu * \nu(A) & := \int \int 1_{A}(x+y)\mathrm{d}\mu(x)\mathrm{d}\nu(y).
+    \end{align}
+    ($\mathrm{d}\mu=g \mathrm{d}\mathcal{L}^{n}$) 
+    \end{definition}
+
+    % --- Inserted from 未命名.md (converted from Markdown) ---
+    \begin{remark}
+    $\mathrm{d}\mu(x)=g(x)\mathrm{d}x\Rightarrow f*\mu=f*g$.
+    \end{remark}
+
+    \begin{definition}
+    Let $\{ \psi_{\epsilon} \}_{\epsilon>0}$ be a family of non-negative continuous functions on $\mathbb{R}^{n}$. If $\forall \epsilon>0$,
+        \begin{equation*}
+            \operatorname{supp}\psi_{\epsilon} \subset B(0,\epsilon),
+        \end{equation*}
+    and
+        \begin{equation*}
+            \int \psi_{\epsilon} \,\mathrm{d}x = 1,
+        \end{equation*}
+    then we call $\{ \psi_{\epsilon} \}$ an approximate identity.
+    \end{definition}
+
+    \begin{example}
+    Let $\psi \in C_{c}^{\infty}(\mathbb{R}^{n})$ with $\operatorname{supp}\psi \subset B(0,1)$ and $\int \psi=1$. Let $\psi _{\epsilon}(x):=\epsilon ^{-n}\psi(\epsilon ^{-1}x)$. Then $\{ \psi _{\epsilon} \}$ is an approximate identity.
+    \end{example}
+
+    \begin{theorem}
+    \label{thm:ai}
+    Let $\{ \psi _{\epsilon} \}$ be an A.I., and $\mu$ a Radon measure on $\mathbb{R}^{n}$. Then
+        \begin{equation}
+        \psi _{\epsilon}*\mu \in C^{\infty}(\mathbb{R}^{n})
+        \label{eq:ai_smooth}
+        \end{equation}
+    and
+        \begin{equation*}
+        \psi _{\epsilon}*\mu\to \mu \quad\text{as }\epsilon\to 0,
+        \end{equation*}
+    i.e.
+        \begin{equation}
+        \int f(x)(\psi _{\epsilon}*\mu)(x)\,\mathrm{d}x\to \int f(x)\,\mathrm{d}\mu(x)\quad \forall f \in C_{c}(\mathbb{R}^{n}).
+        \label{eq:ai_conv}
+        \end{equation}
+    If $\mu(\mathbb{R}^{n})<\infty$, then \eqref{eq:ai_conv} also holds for all uniformly continuous bounded functions.
+    \end{theorem}
+
+    \begin{proof}
+    Equation~\eqref{eq:ai_smooth} follows from dominated convergence and smoothness of the mollifier. To prove Equation~\eqref{eq:ai_conv}, observe that
+    \begin{align*}
+     & \int f(x)(\psi _{\epsilon}*\mu)(x)\,\mathrm{d}x-\int f(y)\,\mathrm{d}\mu(y) \\
+    = & \int\left[\int f(x)\psi _{\epsilon}(x-y)\,\mathrm{d}x-\int f(y)\psi _{\epsilon}(x)\,\mathrm{d}x\right] \,\mathrm{d}\mu(y) \\
+    = & \int\left[\int f(x+y)\psi _{\epsilon}(x)\,\mathrm{d}x-\int f(y)\psi _{\epsilon}(x)\,\mathrm{d}x\right] \,\mathrm{d}\mu(y)  \\
+    = & \int \int (f(x+y)-f(y))\psi _{\epsilon}(x)\,\mathrm{d}x\,\mathrm{d}\mu(y).
+    \end{align*}
+    For $\epsilon$ small and $f$ uniformly continuous on a neighbourhood of $\operatorname{supp}f$, the inner difference is small; hence
+    \begin{equation*}
+        \left|\int f(x)(\psi _{\epsilon}*\mu)(x)\,\mathrm{d}x-\int f\,\mathrm{d}\mu\right|\leq \mu(\operatorname{supp}(f)+B(0,\epsilon_{0}))\delta,
+    \end{equation*}
+    which tends to $0$ as $\epsilon\to 0$.
+    \end{proof}
+
+    \begin{theorem}
+    \label{thm:weakconv_equiv}
+    Let $\mu,\mu _{k}(k=1,2,\dots)$ be Radon measures on $\mathbb{R}^{n}$. The following are equivalent:
+        \begin{itemize}
+            \item[(i)] $\mu _{k}\to \mu$;
+            \item[(ii)] $\limsup_{k\to \infty}\mu _{k}(K)\leq \mu(K)$ for all compact $K\subset \mathbb{R}^{n}$, and $\mu(U)\leq \liminf_{k\to \infty}\mu_{k}(U)$ for all open $U\subset \mathbb{R}^{n}$;
+            \item[(iii)] $\lim_{ k \to \infty }\mu _{k}(B)=\mu(B)$ for every bounded Borel set $B$ with $\mu(\partial B)=0$.
+        \end{itemize}
+    \end{theorem}
+
+    \begin{proof}
+    (i) $\Rightarrow$ (ii): Fix compact $K$ and open $U$. Choose $f\in C_{c}(\mathbb{R}^{n})$ with $K\prec f\prec U$ (Urysohn). Then
+    \begin{equation*}
+        \mu(K)\leq \int f\,\mathrm{d}\mu=\lim_{ k \to \infty } \int f\,\mathrm{d}\mu _{k}\leq \liminf_{k\to \infty}\mu _{k}(U),
+    \end{equation*}
+    and since $\mu$ is Radon we get $\mu(U)\leq \liminf_{k\to \infty}\mu _{k}(U)$. The other inclusion is similar.
+
+    (ii) $\Rightarrow$ (iii): Let $B^{\circ}$ denote the interior of $B$. By assumption $\mu(B^{\circ})=\mu(B)=\mu(\overline{B})$; hence
+    \begin{align*}
+        \mu(B) & =\mu(B^{\circ}) \\
+         & \leq \liminf_{k\to \infty} \mu _{k}(B^{\circ}) \\
+         & \leq \limsup_{ k \to \infty } \mu _{k}(\overline{B}) \\
+         & =\mu(\overline{B}) \\
+         & =\mu(B).
+    \end{align*}
+
+    (iii) $\Rightarrow$ (i): Standard approximation of $f\in C_{c}$ by simple functions. The proof follows by slicing the range of $f$ into small intervals and using sets with boundary of measure zero to pass to the limit (see text for details).
+    \end{proof}
+
+    \section{Frostman's Lemma}
+
+    \begin{definition}
+    Let $\mu$ be a Borel measure on $\mathbb{R}^{n}$. The support of $\mu$, denoted $\operatorname{supp}\mu$, is the smallest closed set $F$ with
+        \begin{equation*}
+            \mu(F^{c})=0.
+        \end{equation*}
+    Equivalently,
+        \begin{equation*}
+            \operatorname{supp}\mu:=\left(\bigsqcup\{ V \subset \mathbb{R}^{n}: V\text{ open},\ \mu(V)=0 \}\right)^{c}.
+        \end{equation*}
+    \end{definition}
+
+    \begin{remark}
+    \begin{itemize}
+        \item[(i)] If $f\in C_{c}(\mathbb{R}^{n})$, $f\geq 0$, and $\mathrm{d}\mu _{f}:=f \,\mathrm{d}\mathcal{L}^{n}$ then $\operatorname{supp}f=\operatorname{supp}\mu _{f}$.
+        \item[(ii)] If $\operatorname{supp}g\subset (\operatorname{supp}\mu)^{c}$ then $\int g\,\mathrm{d}\mu=0$.
+        \item[(iii)] $\operatorname{supp}\mu =\{ x:\forall r>0,\ \mu(B(x,r))>0\}$.
+        \item[(iv)] Example: enumerating rationals $Q=\{ q_{1},q_{2},\dots\}$ and setting $\mu=\sum 2^{-i}\delta_{q_{i}}$ yields $\operatorname{supp}\mu=\mathbb{R}$ while $\mu(\mathbb{R}\setminus\mathbb{Q})=0$.
+    \end{itemize}
+    \end{remark}
+
+    \begin{theorem}[Mass distribution principle]
+    \label{thm:mass_dist}
+    If $E$ supports a strictly positive Borel measure $\mu$ satisfying
+        \begin{equation*}
+            \mu(B(x,r))\leq C r^{s},\quad\forall x\in \mathbb{R}^{n},\ r>0,
+        \end{equation*}
+    where $s,C\in(0,\infty)$, then
+        \begin{equation*}
+            \mathcal{H}^{s}(E)\geq \mathcal{H}^{s}_{\infty}(E)\geq \frac{\mu(E)}{C}.
+        \end{equation*}
+    In particular, $\dim E\geq s$.
+    \end{theorem}
+
+    \begin{proof}
+    Let $\{U_{i}\}$ be a cover of $E$ and denote $r_{i}:=\operatorname{diam}(U_{i})$. Choose $x_{i}\in U_{i}$ so $U_{i}\subset B(x_{i},r_{i})$. Then
+        \begin{equation*}
+            \mu(U_{i})\leq \mu(B(x_{i},r_{i}))\leq C r_{i}^{s}.
+        \end{equation*}
+    Summing yields
+        \begin{equation*}
+            \sum r_{i}^{s}\geq \frac{1}{C}\sum \mu(U_{i})\geq \frac{\mu(E)}{C}.
+        \end{equation*}
+    Taking infimum over covers proves the claim.
+    \end{proof}
+
+    \begin{definition}
+    For $A\subset \mathbb{R}^{n}$ let
+        \begin{equation*}
+            M(A):=\{ \mu:\mu \text{ Radon, compactly supported},\ \operatorname{supp}\mu\subset A,\ 0<\mu(\mathbb{R}^{n})<\infty \}.
+        \end{equation*}
+    \end{definition}
+
+    \begin{definition}
+    An $s$-Frostman measure on $A$ is $\mu\in M(A)$ such that for some $C>0$,
+        \begin{equation*}
+            \mu(B(x,r))\leq C r^{s},\quad\forall x,r>0.
+        \end{equation*}
+    \end{definition}
+
+    \begin{definition}
+    A dyadic cube of scale $2^{-m}$ is
+        \begin{equation*}
+            \{x:\ k_{i}2^{-m}\le x_{i}<(k_{i}+1)2^{-m},\ i=1,\dots,n\}.
+        \end{equation*}
+    Denote by $\mathscr{D}_{m}$ the family of dyadic cubes of side length $2^{-m}$.
+    \end{definition}
+
+    \begin{theorem}[Frostman's Lemma]
+    \label{thm:frostman}
+    Let $B$ be Borel in $\mathbb{R}^{n}$. Then $\mathcal{H}^{s}(B)>0$ iff there exists an $s$-Frostman measure supported on $B$. Moreover $\mu(B)\ge c\,\mathcal{H}^{s}_{\infty}(B)$ for some $c=c(n)>0$.
+    \end{theorem}
+
+    \begin{proof}
+        \textbf{AI在此处进行了不当的简化。待完善}
+
+        We sketch the usual construction for compact $B$. Fix $Q_{0}\in\mathscr{D}_{m_{0}}$ with $B\subset Q_{0}$. For large $m\ge m_{0}$ define a preliminary measure $\mu_{m}^{m}$ by putting on each dyadic cube $Q\in\mathscr{D}_{m}$ meeting $B$ the mass $2^{-ms}$ distributed uniformly in $Q$, and $0$ otherwise. Iteratively renormalize on coarser dyadic grids so that no dyadic cube of side $2^{-k}$ carries mass exceeding $2^{-ks}$. Passing to a weak limit along $m\to\infty$ yields an $s$-Frostman measure; the estimates give $\mu(B)\gtrsim \mathcal{H}^{s}_{\infty}(B)$.
+    \end{proof}

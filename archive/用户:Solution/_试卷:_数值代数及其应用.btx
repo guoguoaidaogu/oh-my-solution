@@ -1,0 +1,31 @@
+== 2024年秋季学期 ==
+
+\begin{enumerate}
+\item[1.] Answer the following questions briefly.\\
+   - $A \in \R^{m\times n}$, $B \in \R^{n\times p}$, $C \in \R^{p\times q}$. How to compute $D = ABC$?\\
+   - $X$, $Y$ are $3\times 2$ matrices, and $X^\top X = Y^\top Y = I_2$. What is the angle of these two spaces spanned by $X,Y$?\\
+   - Compare \textbf{CGS, MGS, Givens, Householder} briefly when using them to compute QR factorization.\\
+   - What symmetry eigenvalue methods can not be applied to the non--symmetry case?\\
+   - Forgot :)
+
+\item[2.] If $A$ is column full rank, then prove:
+   $$\begin{pmatrix}I & A^\top\\A&0\end{pmatrix}
+   \begin{pmatrix}r\\x\end{pmatrix} = \begin{pmatrix}b\\0\end{pmatrix}$$
+   is equivalent to the least square problem of $(A,b)$.
+\item[3.] If $A$ is a strictly column dominate matrix, i.e., $\sum_{k\neq i}|A_{ki}| < |A_{ii}|$, then\\
+   - Please prove that in \textbf{gepp} to compute the $LU$ factorization of $A$, row exchanges never happen.\\
+   - Please give an upper bound of the condition number of $L$; you can choose any norm you like.
+
+\item[5.] Describe and prove the \textbf{Implicit Q Theorem}.
+
+\item[6.] If $A$ is an upper--triangular matrix with $A_{ii}\neq A_{jj}$ for all $i\neq j$, then please propose a pseudo--code to
+   compute the eigenvectors of $A$, i.e., compute $X, \Lambda$ such that
+   $$A = X\Lambda X^{-1}.$$
+
+\item[7.] In \textbf{Divide & Conquer} method to solve the eigenvalue problem of symmetric matrices, w.l.o.g., we assume that
+   $$D + uu^\top$$
+   - Elements in diag matrix $D$ are different from each other,\\
+   - $u_i\neq 0$.
+   
+   Please prove why this does not lose any generality.
+\end{enumerate}

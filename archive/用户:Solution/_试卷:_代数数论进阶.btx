@@ -1,0 +1,66 @@
+\setdisplaytitle{试卷：代数数论进阶}
+\sethtmltitle{试卷：代数数论进阶}
+
+
+\section{2025--26秋}
+\begin{enumerate}
+\item Judgement (Just write true or false)
+
+(1) $K$ is a number field. Every open subgroup of $C_K$ corresponds to a unique Galois extension of $K$. 
+
+(2) Local Artin map of a $p$-adic field is injective but not surjective. 
+
+(3) Let $G$ be a finite group with $|G|=m$. Then for any $G$-module $A$, $H^i(G,A)$ is $m$-torsion for every $i\geq 0$. 
+
+(4) Global Artin map is surjective but not injective. 
+
+(5) Let $E/K$ be a finite extension of number fields, then $\operatorname{Spl}_{E/K}$ is of density $1/[E:K]$. 
+
+\item 
+
+(1) Find all primes $p$ such that there exists a cubic abelian extention of $\mathbb Q$ s.t. $p$ is the only ramified prime. 
+
+(2) Classify such cubic abelian extensions in (1) and find their conductors. 
+
+
+\item 
+
+(1) Compute $H^i(\mathbb Q_p(\zeta_p)/\mathbb Q_p, \mathbb Z/p\mathbb Z)$ for $i=1,2$. 
+
+(2) Compute $H^i(\mathbb Q_p(\zeta_p), \mathbb Z/p\mathbb Z)$ for $i=1,2$. 
+
+(3) Prove that $H^i(\mathbb Q_p, \mathbb Z/p\mathbb Z)$ is finite for $i=1,2$. 
+
+\item
+
+(1) Prove that $N_{E/K}: C_E \longrightarrow C_K$ induces $N_{E/K}: \operatorname{Cl}(E) \longrightarrow \operatorname{Cl}(K)$. 
+
+(2) $E/K$ is a finite extension of number fields, let $L$ be the maximal unramified abelian extension in $E$ over $K$, 
+then $\operatorname{coker}(N_{E/K}: \operatorname{Cl}(E) \rightarrow \operatorname{Cl}(K))$ is isomorphic to $\operatorname{Gal}(L/K)$.
+
+(3) Prove that $|\operatorname{Cl}(\mathbb Q(\zeta_n))|$ divides $|\operatorname{Cl}(\mathbb Q(\zeta_n+\zeta_n^{-1}))|$.
+
+
+\item $K$ is a $p$-adic field containing a primitive $n$-th root of unity. 
+
+(1) Consider Hilbert symbol: $\langle-,-\rangle_n: K^* \times K^* \longrightarrow \mu_n$, fix $a\in K^*$, 
+$\forall b\in \mathcal{O}_K^*$, $\langle a,b\rangle_n=1$ iff $K(a^{\frac{1}n})$ is unramified over $K$. 
+
+(2) $K:=\mathbb Q_3[x]/(x^2+1)$, prove $K$ is a field. Compute the residue field of $K$. Compute $K^*/{K^*}^4$. 
+
+(3) Denote $i$ for $\bar{x} \in K$. Compute $\langle 3,i\rangle_4$, $\langle 3,1-i\rangle_4$ and $\langle 3,q\rangle_4$ for prime number $q$. 
+
+\item 
+
+(1) Let $E=K(\sqrt a)$, assume $\exists b,c \in \mathcal{O}_K$, s.t. $a=b^2-4c$. 
+Consider $\mathfrak p$ prime in $\mathcal{O}_K$, s.t., $2 \in \mathfrak p$, 
+and $a\notin \mathfrak p$. Prove that $\mathfrak p$ is unramified in $E/K$. 
+
+(2) For $K=\mathbb Q (\sqrt{-14})$, we have known that $h_K=4$. 
+Let $L=K(\alpha)$, where $\alpha=\sqrt{2\sqrt2 -1}$. 
+Prove that $L$ is the Hilbert class field of $K$. 
+
+(3) Prove for prime number $p$, $\exists x,y\in \Z$ s.t. $p=x^2+14y^2$ 
+iff $\big(\frac{-14}{p}\big)=1$ and $(x^2+1)^2\equiv 8 \pmod p$ has an integer root. 
+
+\end{enumerate}

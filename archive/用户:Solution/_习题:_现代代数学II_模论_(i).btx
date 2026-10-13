@@ -1,0 +1,598 @@
+{{warning|本系列是现代代数学II的作业全解，由20级多名同学写了初稿，21，22级几名同学有所修改。|
+每年的题目均略有增删，少量题目有表述上的调整，且题号是不同的，可自行更新。|
+题号$\alpha.\beta$表示作业与讨论$\alpha$的第$\beta$题，
+$\beta=0$是指往届曾布置过而今年未布置。|
+请今年选课的同学们把未布置的题目移动为$\alpha.0$，
+并补充新题的陈述与解答，谢谢。}}
+
+\section{Zorn引理}
+\begin{enumerate}
+    \item[1.0]
+        设$V$是域$k$上的一个无限维向量空间，$B$是其一组基，$T$是$V$的一个线性无关子集. 
+        证明：存在$B$的子集$C$,使得$T \cup C$是$V$的一组基.
+    \item[\textbf{证明:}]    
+        考虑$\Omega=\{C\subset B\mid T\cup C\text{ 线性无关}\}$.
+        易证其在包含关系下为非空递归集，因此存在极大元$C_0$.\\
+    由$C_0$的极大性可知$B\subset \operatorname{Span}(C_0\cup T)$，可见$C_0$为一组基. 
+
+    \item[1.1]
+        设$(X,\leq)$是一个非空递归偏序集. $x \in X$. 
+        记$S(x)=\{y \in X \mid x \leq y\}$. 
+        
+    \item[(1)] 证明：$(S(x),\leq)$是一个非空递归偏序集.
+    \item[\textbf{证明:}]   $\leq$由$(X,\leq)$诱导, 故其为偏序. 
+        $x\in S(X)$, 故$S(x)$非空.\par
+        考虑$S(X)$中任意一个非零全序子集$A$, 则因为$A\subset S(x) \subset X$, 
+        故$A$是$X$中的全序子集, 因此$A$在$X$中有上界$M$.\par
+        我们说$M\in S(X)$, 事实上, 任取$y\in A\subset S(x)$, 有$x\leq y$, 
+        而$y\leq M$, 因此$x\leq M$, 即有$M\in S(x)$.
+    
+    \item[(2)] 证明：存在$X$中的极大元$t$使得$x \leq t$.
+    \item[\textbf{证明:}]
+        因为$(S(x),\leq)$是非空递归偏序集, 故由Zorn引理, 
+        知存在$S(x)$中的极大元$t$, 下证$t$也是$X$中的极大元.\par
+        对于$X$中的任意元素$y$, 若$t\leq y$, 则$x\leq y$, 故$y\in S(x)$. 
+        但$t$是$S(x)$中的极大元且$t\leq y$, 因此$t=y$, 故$t$也是$X$中的极大元.
+
+        {{comment|这说明我们可以在指定一个元素的情况下, 找到一个可以与之相比较的极大元.}}
+
+    \item[(3)] 设$R$是环. $I$是$R$的左理想且$I \neq R$. 
+        证明：存在$R$的极大左理想$M$满足$M \supseteq I$.
+    \item[\textbf{证明:}]   由(1), (2)易得.
+    
+    \item[1.2]
+    设$R$是交换环. (a) 证明：$R$有极小素理想. 
+    （一个素理想$P$称为极小的，若有素理想$J$满足$J\subseteq P$则有$J=P$）.
+
+    (b) 设$J$是一个素理想。证明：存在$R$的极小素理想$P$满足$P\subseteq J$.
+
+    \item[\textbf{证明:}]
+        (a) 设$R$的素理想集合$\operatorname{Spec}(R)$上有序关系
+        $\mathfrak{p}\le\mathfrak{q}
+        \Leftrightarrow\mathfrak{p}\supseteq\mathfrak{q}$。
+        由于$R$是含幺交换环，必有一个极大理想，而极大理想也是素理想，
+        从而$\operatorname{Spec}(R)\neq \emptyset$。
+        对于全序链$\{\mathfrak{p}_\alpha\}$，
+        交集$\mathfrak{p}=\bigcap\limits_\alpha\mathfrak{p}_\alpha$是理想，
+        下面说明$\mathfrak{p}\in\operatorname{Spec}(A)$，
+        就有$\{\mathfrak{p}_\alpha\}$的一个上界$\mathfrak{p}$。
+
+        设$xy\in\mathfrak{p}$而$x\notin\mathfrak{p}$，
+        对任意$\alpha$，$xy\in\mathfrak{p}_\alpha$，
+        $\mathfrak{p}_\alpha$包含$x,y$之一，
+        且$x\notin\mathfrak{p}$就是说$x\notin\mathfrak{p}_\beta$对某个$\beta$。
+
+        那么对$\mathfrak{p}_\alpha\subseteq\mathfrak{p}_\beta$，
+        有$x\notin\mathfrak{p}_\alpha$，故$y\in\mathfrak{p}_\alpha$；
+        对$\mathfrak{p}_\alpha\supseteq\mathfrak{p}_\beta$，
+        $y\in\mathfrak{p}_\beta$，故$y\in\mathfrak{p}_\alpha$。
+
+        (b) $\operatorname{Spec}(R)$替换成
+        $\{\mathfrak{p}\in\operatorname{Spec}(R)\mid\mathfrak{p}\subseteq J\}$。
+
+    \item[1.3]
+        设$R$是交换环. $S$是$R$的一个非空子集且对乘法封闭,
+        即$ \forall s_{1},s_{2} \in S$,都有$s_{1}s_{2} \in S$.
+        
+    \item[(a)]设$0 \notin S$，$1 \in S$.
+        证明：存在素理想$P$，使得$P \cap S=\varnothing $.
+    \item[\textbf{证明:}]
+        考虑$X=\{I\mid I$是$R$的理想, 
+        且$I\cap S=\varnothing\} \supset \{0\}$, 因此非空. 
+        取偏序关系为集合的包含关系，即$I_1\subseteq I_2$.\par
+        则对于任意全序子集$\{I_j\}_{j\in J}$, 
+        有$\bigcap\limits_{j\in J} I_j$是$R$的理想, 且不交$S$, 
+        故其属于$X$. 因此$(X,\subseteq)$是非空递归偏序集, 
+        由Zorn引理, 存在极大元$P\in X$, 下面说明$P$是素理想.\par
+        对于任意$a\notin P, b\notin P$，因为$P$在$X$中极大, 
+        我们有$P+Ra$, $P+Rb$交$S$非空，\par
+        即存在$s_1, s_2\in S$, $r_1, r_2\in R$, $p_1, p_2\in P$, 
+        使得$\begin{cases}s_1=r_1a+p_1\\ s_2=r_2b+p_2\end{cases}$.\par
+        那么$s_1s_2=p_1p_2+r_2bp_1+r_1ap_2+r_1r_2ab\in S$, 
+        $S$与$P$不交, 但右式前三项均在$P$中, 故$ab\notin P$.
+
+    \item[(b)]$a \in R$称为幂零元，若存在正整数$n$使得$a^{n}=0$. 
+        记$r(0)$为$R$中幂零元的全体.证明：
+        \begin{itemize}
+            \item[(i)] $r(0)$ 是$R$的理想；
+            \item[(ii)] $r(0)$等于$R$的所有素理想的交集.
+        \end{itemize}
+        (Hint: 对$b \in R$非幂零元，考虑 $S=\left\{b^{n} \mid n=0,1,2,\cdots \right\}$.)
+
+    \item[\textbf{证明:}]
+        (i) 对$a,b\in r(0)$，设$a^n=0$，$b^m=0$，
+        则$(a+b)^{n+m}=\sum\limits_{i=0}^{n+m}
+        \binom{n+m}{i}a^i b^{n+m-i}=0$.
+        对$a\in r(0)$，$r\in R$，设$a^n=0$，则$(ra)^n=0$.
+
+        (ii)
+        设$R$的所有素理想的集合为$\operatorname{Spec}(R)$. 
+        对于任意素理想$P$, 任意$a\in r(0)$, 存在正整数$n$使得$a^n=0\in P$, 
+        因此$a\in P$, 故$r(0)\subseteq P$, 
+        进而$r(0)\subseteq \bigcap\limits_{P\in \operatorname{Spec}(R)} P$.\par
+        另一方面, 对于任意$b\notin r(0)$, 考虑集合$S_b=\{1,b,b^2,\cdots\}$. 
+        则$1\in S_b$, $0\notin S_b$, 由(a)知, 存在素理想$P_b$
+        使得$P_b\cap S_b=\varnothing$, 即$P_b\subset R\setminus S_b$，
+        故$\bigcap\limits_{P\in \operatorname{Spec}(R)} P
+        \subseteq \bigcap\limits_{b\notin r(0)} P_b
+        \subseteq R\setminus \Big(\bigcup\limits_{b\notin r(0)} S_b\Big)=r(0)$.
+
+    \item[1.4]
+    设$M$是有限生成$R$-模且$M \neq \{0\}$. 证明：$M$一定有极大子模.
+    \item[\textbf{证明:}]
+    令$X:=\{N\mid N\text{ 是 }M\text{ 的真子模}\}$. 
+    由$M\neq \{0\}$可知$\{0\}\in X$，因而$X$非空. 
+    取包含关系为偏序关系使$X$为偏序集.\par
+    考虑$X$的全序子集$\{N_i\}_{i \in I}$（其中约定$i\le j \Leftrightarrow N_i\subseteq N_j$）。
+    取$N:=\bigcup\limits_{i \in I}N_i$，不难验证$N$为$M$的子模(这里要用全序集的性质).\par
+    还要说明$N$是$\{N_i\}_{i \in I}$在$X$中的一个上界，即要说明$N$是真子模。
+    记$M=\langle t_1,\cdots,t_n\rangle$，假设$N=M$，
+    则$\forall 1 \leq i \leq n$，存在$s(i)\in I$使得$t_i \in N_{s(i)}$，
+    记$s=\max\limits_{1\le i\le n}s(i)$，则有$N_s=M$，这与$N_s \in X$相悖；
+    从而$N\in X$，即$\{N_i\}$在$X$中有上界.\par
+    综上可知$X$符合Zorn引理条件，因而存在极大元$N_0$，易见$N_0$即为极大子模.
+
+    \item[1.5]
+        证明:有理数的加法群$(\mathbb Q,+)$作为$\mathbb Z$-模不是有限生成的. 
+        $(\mathbb Q,+)$是否有极大子模?
+
+    \item[\textbf{证明:}]
+        (1)假设$(\mathbb Q,+)$是有限生成$\mathbb Z$-模, 
+        设$\frac{a_i}{b_i}$ $(1\leq i\leq n)$为其生成元, 
+        $a_i\in \mathbb Z$, $b_i\in \mathbb Z_+$. 
+        取素数$p>b_1+\cdots+b_n$, 则
+        $\frac{1}{p}\notin \big\langle \frac{a_1}{b_1},\cdots,\frac{a_n}{b_n}\big\rangle$, 矛盾. \par
+        
+
+        (2)$(\mathbb Q,+)$没有极大子模. 假设$M$是极大子模, 
+        取$\frac{a}{b}\in \mathbb Q\setminus M$, 则$\frac{1}{b}\notin M$. 
+        由$M$极大知$\langle \frac{1}{b},M\rangle=\mathbb Q$, 
+        故存在$c\in \mathbb Z$, $m\in M$使得$\frac{1}{b^2}=\frac{c}{b}+m$, 
+        从而$\frac{1}{b}=c+bm$. 由于$\frac{1}{b}\notin M$, $bm\in M$, 
+        故有$c\notin M$, 从而$c\neq 0$, 进而有$\frac{1}{n}\notin M$, $\forall n\in \mathbb Z_+$. \par
+        类似我们有$\langle \frac{1}{n},M\rangle=\mathbb Q$, 
+        从而存在$k_n\in \mathbb Z$, $m_n\in M$
+        使得$\frac{1}{n^2}=\frac{k_n}{n}+m_n$, 从而$1=nk_n+n^2m_n$. 
+        由于$1\notin M$, $n^2m_n\in M$, 故有$nk_n\notin M$, 从而$k_n\neq 0$, 
+        进而$\frac{n}{r}\notin M$, $\forall n\in \mathbb Z_+$, $r\in \mathbb Z$. 
+        故$M=\{0\}$, 但$\{0\}\subsetneq \mathbb Z\subsetneq \mathbb Q$, 
+        这意味着$M$不是极大子模, 矛盾. \qed
+    \item[\textbf{另证:}]
+        设$M$是极大子模，取$x\in \mathbb Q\backslash M,y\in M$，
+        设$\frac{x}{y}=\frac{b}{a},a,b\in\Z$，
+        由$M$的极大性可知存在$k\in \Z,m\in M$使得$\frac{x}{a}=kx+m$，
+        则$x=akx+am=kby+am\in M$，矛盾.
+    \item[\textbf{另证:}]
+        设$M$是极大子模,则$\mathbb{Q}/M$是单模.
+        由于$\mathbb{Z}-$单模一定同构于Abel单群$\mathbb{Z}/\mathbb{pZ}$,
+        因此对于任何$x\in\mathbb{Q}$, $px\in M$,这就得到了$M=\mathbb{Q}$,矛盾.
+    
+    \item[1.6]
+    考虑有理数的乘法群$(\mathbb{Q}^*=\mathbb{Q}\setminus\{0\},\times)$作为$\Z$-模。
+    设$\mathbb{Q}_{>0}^*=\{a\in\mathbb{Q}^*\mid a>0\}$. 
+    (i) 证明$\mathbb{Q}_{>0}^*$是$\mathbb{Q}^*$的一个极大子模；
+    (ii) $\mathbb{Q}^*$是不是有限生成$\Z$-模？说明理由。
+
+  \item[1.7]
+        设$R$ 是一个环, $M$ 是一个$R$-模.\\
+(a) 设 $M_1, M_2$ 是 $M$ 的子模. 证明: 有$R$-模同构 
+$(M_1 + M_2)/M_1\simeq M_2/(M_1 \cap M_2)$.\\
+(b) 设 $T$, $N$ 是 $M$ 的子模且 $T \subseteq N$. 
+证明: 有 $R$-模同构 $\frac{M/T}{N/T} \simeq M/N$.\\
+(c) 设 $N$ 是 $M$ 的子模. 设 $S$ 是商模 $M/N$ 的所有子模的集合，
+$T$ 是 $M$ 的所有包含 $N$ 的子模的集合. 证明：$S$ 与 $T$ 之间有自然的双射.
+\item[\textbf{证明:}]    
+    (a)考虑映射$M_2\rightarrow (M_1 + M_2)/M_1,m\mapsto m+M_1$，利用同构基本定理即可.\\
+    (b)考虑映射$M/T\rightarrow M/N,m+T\mapsto m+N$，利用同构基本定理即可.\\
+    (c)考虑映射$f:S\rightarrow T,P\mapsto \{q\mid q+N\in P\}$
+    及$g:T\rightarrow S,Q\mapsto \{p+N\mid p\in Q\}$，不难看出$f,g$互为逆映射.
+
+    \item[1.8]
+
+    \item[1.9]设$\R$是实数域，$V=\R^2$是$2$维实列向量空间。
+    $2$阶实方阵$A=\begin{pmatrix}0&-1\\1&0\end{pmatrix}$
+    通过矩阵乘法定义了$\alpha\in\operatorname{End}(V)$，
+    即$\alpha(y)=A \cdot y$，$\forall y\in V$。
+    由课上的讨论$(V,\alpha)$是$\R[x]$-模。
+    证明自同态环$\operatorname{End}_{\R[x]}(V)$同构于复数域$\mathbb{C}$。
+
+    \item[1.10]设$M$是$\Z$-模。证明$M$是单模当且仅当$M$是一个$p$阶循环群，$p$是一个素数。
+    \end{enumerate}
+    
+
+\section{环与模的一些性质}
+
+\begin{enumerate}
+    \item[2.0]
+        设$K$是域, $K[x]$是$K$上的一元多项式环. 
+        设$A=\{M\mid M\text{ 是 }K[x]\text{-模}\}$, 
+        $B=\{(V,\alpha)\mid V$是$K$-向量空间, 
+        $\alpha\in \operatorname{End}_K(V)\}$，
+        这里$\operatorname{End}_K(V)$是$V$的$K$-自同态的全体.\par
+        证明: $A$与$B$之间有自然的双射.\par
+        Hint: $\alpha(m)=x\cdot m$.
+    \item[\textbf{证明:}]
+        记$V_{\alpha}$为作为线性空间与$V$相同，而$k[x]$在其上作用为
+        $p(x)v:=p(\alpha)v$的$k[x]$-模，其中$\alpha \in \operatorname{End}(V)$. 
+        定义$f:B \rightarrow A; (V,\alpha) \rightarrow V_{\alpha}$，
+        那么$f$是单射，因为若$V_{\alpha} = V_{\beta}$，
+        则$V_{\alpha}$与$V_{\beta}$元素相同.
+        且$\beta \cdot v = x \cdot v = \alpha \cdot v$，
+        故$p(\alpha) \cdot v = p(\beta) \cdot v$，即$(V,\alpha)=(V,\beta)$. 
+        而 由于$k[x]$-模自动是一个$k$-模，故是$k$-线性空间. 
+        故$A$中元素皆形如$V_{\alpha}$，其中$\alpha(v) = x \cdot v$. 
+        故对于任意$M \in A$，$M = V_{\alpha} = f((V,\alpha))$. 
+        故$f$是$A$与$B$间的双射. \qed
+
+        （太长不看版:
+        $K[x]$-模由其$K$-模结构与左乘$x$的线性作用所确定，即$K$-向量空间与一个自同态.）
+
+    \item[2.0]
+        设$R$是一个环，$A,B,C$是$R$-模.
+    \item[(a)]证明：$A\cap(B+C)\supseteq A \cap B + A \cap C$.
+    \item[\textbf{证明}] 对于任意$b+c \in A\cap B+A\cap C$
+        满足$b \in A\cap B$且$c \in A\cap C$，有$b+c\in B+C$且$b+c \in A$，
+        可知$b+c \in A \cap(B+C)$，从而$A\cap(B+C)\supseteq A\cap B+A\cap C$.
+    \item[(b)]如果$A \supseteq B$，则$A \cap(B+C)=B+A\cap C$.
+    \item[\textbf{证明}]对于任意$b+c \in A\cap(B+C)$
+        满足$b \in B$且$c \in C$，可见$b \in B \subseteq A$，
+        $c=(b+c)-b \in A$即$c \in A \cap C$，从而$b+c \in A+A\cap C$. 
+        结合(a)可见$A\cap(B+C)=A\cap B+A\cap C$.
+    \item[(c)]举例说明$A \cap(B+C)$可以真包含$A\cap B+A\cap C$.
+    \item[\textbf{证明}]例一. $\mathbb{Z}$-模$\mathbb{Z}^2$有子模
+        $A=\{(n,n)\mid n \in \mathbb{Z}\}$，
+        $B=\{(n,0)\mid n \in \mathbb{Z}\}$，
+        $C=\{(0,n)\mid n \in \mathbb{Z}\}$.\par
+        那么$A\cap(B+C)=A$，$A\cap B=A\cap C=\{(0,0)\}$.
+
+        例二. $\Z$-模$A=\Z$，$B=\sqrt{2}\Z$，$C=(1-\sqrt{2})\Z$，\par
+        有$A\cap(B+C)=A$，$A\cap B=A\cap C=\{0\}$.
+        
+    \item[2.0]
+        设$R$是一个环, $M$是一个自由$R$-模, $A$, $B$是$M$的两组基. 
+        若$A$是有限集, 证明$B$也是有限集.
+
+    \item[\textbf{证明:}]
+        设$A=\{a_i\}_{i=1}^n$, $B=\{b_j\}_{j\in J}$, 其中$J$是指标集.\par
+        因为$B$是一组基, 则存在$r_i^j\in R$, 
+        使得$a_i=\sum\limits_{j\in J_i}r_i^j b_j$, 其中$J_i\subset J$是有限集.
+
+        考虑有限集$B':=\{b_j\mid j\in \bigcup\limits_{i=1}^n J_i\}\subset B$，
+        有$\langle B'\rangle \supset \langle A \rangle =M$, 
+        因此$B'=B$, 故$B$也是有限集.
+
+    \item[2.0]
+        (i)
+        设$R$是一个交换环. 证明$R$是域当且仅当$R$只有$\{0\}$与$R$两个理想.
+
+    \item[\textbf{证明:}]
+        若$R$是域, 设$I\neq \{0\}$是$R$的理想.\par
+        对于任意$0\neq a\in I$, 存在$a$的逆元$a^{-1}\in R$, 
+        故$1=a^{-1}\cdot a\in I$, 进而$I=R$.\par
+
+        若$R$只有$\{0\}$与$R$两个理想, 则$R$的极大理想为$\{0\}$, 进而$R=R/\{0\}$是域.
+
+    \item[\ ](ii)
+        设$R$是一个环. 证明$R$是可除环当且仅当$R$只有$\{0\}$与$R$两个左理想.
+
+    \item[\textbf{证明:}]
+        若$R$是域, 设$I\neq \{0\}$是$R$的左理想.\par
+        对于任意$0\neq a\in I$, 存在$a$的逆元$a^{-1}\in R$, 
+        故$1=a^{-1}\cdot a\in I$, 进而$I=R$.
+
+        若$R$只有$\{0\}$与$R$两个左理想.\par
+        则对于任意非零元$a\in R$, 有$R{a}=R$, 
+        故存在$r\in R$, 使得$r\cdot a=1$, 重新记$r=a^{-1}$.\par
+        对$a^{-1}$进行相同操作, 存在$b\in R$, 使得$b\cdot a^{-1}=1$.\par
+        而$b=b\cdot 1=b\cdot a^{-1}\cdot a=1\cdot a=a$, 因此$a$与$a^{-1}$互为逆元.
+
+    \item[2.0]
+        设$M_2(\mathbb{C})$是复数域$\mathbb{C}$上的$2$阶矩阵环. 
+        对每个复数$z$，$\bar{z}$表示其共轭.
+        设$\mathcal{H}=\{\begin{pmatrix}z&w\\
+            -\bar{w}&\bar{z}\end{pmatrix}\in M_2(\mathbb{C})
+            \mid z,w\in\mathbb{C}\}$.
+
+    \item[(a)]证明：$\mathcal{H}$是$M_2(\mathbb{C})$的子环且是一个可除环；
+        作为实向量空间，$\mathcal{H}$的维数等于$4$，并求出其一组基.
+    \item[\textbf{证明:}]
+        设$H\in\mathcal{H}$不可逆，有$\det H=|z|^2+|w|^2=0$，即$z=w=0$，$H=0$。
+        
+        $\dim_\R\mathcal{H}=2\dim_\mathbb{C}\mathcal{H}=4$，
+        $\begin{pmatrix}1&0\\0&1\end{pmatrix},
+        \begin{pmatrix}i&0\\0&-i\end{pmatrix},
+        \begin{pmatrix}0&1\\-1&0\end{pmatrix},
+        \begin{pmatrix}0&i\\i&0\end{pmatrix}$是一组基。
+
+    \item[(b)]证明：$\mathcal{H}$同构于四元数体.
+    \item[\textbf{证明:}]四元数体是$\operatorname{span}_\R\{1,i,j,k\}$，
+        $i^2=j^2=k^2=-1$，$ij=-ji=k,jk=-kj=i,ki=-ik=j$。对应关系为
+        $$1\leftrightarrow\begin{pmatrix}1&0\\0&1\end{pmatrix},\ \ 
+        i\leftrightarrow\begin{pmatrix}i&0\\0&-i\end{pmatrix},\ \ 
+        j\leftrightarrow\begin{pmatrix}0&1\\-1&0\end{pmatrix},\ \ 
+        k\leftrightarrow\begin{pmatrix}0&i\\i&0\end{pmatrix}.$$
+
+    \item[(c)]求方程$x^2+1=0$在$\mathcal{H}$中的解的集合，
+        这里$1$表示单位阵，$0$表示零矩阵.
+    \item[\textbf{证明:}]
+        $$\begin{pmatrix}z&w\\-\bar{w}&\bar{z}\end{pmatrix}^2
+        =\begin{pmatrix}z^2-|w|^2&(z+\bar{z})w\\
+        -(z+\bar{z})\bar{w}&-|w|^2+\bar{z}^2\end{pmatrix}
+        =\begin{pmatrix}-1&0\\0&-1\end{pmatrix}.$$
+        $(z+\bar{z})w=-(z+\bar{z})\bar{w}$等价于$z/i\in\R$或$w=0$.
+
+        当$z/i\in\R$，设$z=i\sin\theta$，$-\sin^2\theta-|w|^2=-1$，
+        则$w=e^{i\phi}\cos\theta$，
+        $H=\begin{pmatrix}i\sin\theta&e^{i\phi}\cos\theta\\
+        -e^{i\phi}\cos\theta&-i\sin\theta\end{pmatrix}$；
+
+        当$w=0$，$z=\pm i$，
+        $H=\pm\begin{pmatrix}i&0\\0&-i\end{pmatrix}$，蕴含于前者。
+
+    \item[(d)]求$\mathcal{H}$的中心$Z(\mathcal{H})$.
+    \item[\textbf{证明:}]
+        设$\begin{pmatrix}x&y\\-\bar{y}&\bar{x}\end{pmatrix}\in Z(\mathcal{H})$，
+        即$\forall\,z,w\in\mathbb{C}$，成立
+        $$\begin{pmatrix}z&w\\-\bar{w}&\bar{z}\end{pmatrix}
+        \begin{pmatrix}x&y\\-\bar{y}&\bar{x}\end{pmatrix}
+        =\begin{pmatrix}x&y\\-\bar{y}&\bar{x}\end{pmatrix}
+        \begin{pmatrix}z&w\\-\bar{w}&\bar{z}\end{pmatrix},$$
+        就是
+        $$\begin{pmatrix}zx-w\bar{y}&zy+w\bar{x}\\
+        -\bar{w}x-\overline{zy}&-\bar{w}y+\overline{zx}\end{pmatrix}
+        =\begin{pmatrix}zx-\bar{w}y&wx+\bar{z}y\\
+        -z\bar{y}-\overline{wx}&-w\bar{y}+\overline{zx}\end{pmatrix},$$
+        也就是
+        $$w\bar{y}\in\R,\quad (z-\bar{z})y=(x-\bar{x})w,$$
+        表明$y=0,x\in\R$。故$Z(\mathcal{H})=\R$。
+        
+    \item[2.0]
+        设$R$是环，$M$是左$R$-模.
+    \item[(i)]对$\lambda\in R$，$\forall f\in\operatorname{Hom}_R(M,R)$，
+        定义$\lambda f\colon M\rightarrow R$如下：
+        $(\lambda f)(x)=f(x)\lambda, \forall x\in M$. 
+        证明：$\lambda f\in\operatorname{Hom}_R(M,R)$，且在此作用下，
+        $\operatorname{Hom}_R(M,R)$是一个右$R$-模，称为$M$的对偶模，记为$M^*$；
+    \item[\textbf{证明:}]
+
+    \item[(ii)]对$\lambda\in R$，$\forall f\in\operatorname{Hom}_R(R,M)$，
+        定义$\lambda f\colon R\rightarrow M$如下：
+        $(\lambda f)(r)=f(r\lambda), \forall r\in R$. 
+        证明：$\lambda f\in\operatorname{Hom}_R(R,M)$，且在此作用下，
+        $\operatorname{Hom}_R(R,M)$是一个左$R$-模；
+        并证明作为左$R$-模，$\operatorname{Hom}_R(R,M)$同构于$M$.
+    \item[\textbf{证明:}]
+
+    \item[2.1] 求$\operatorname{Hom}_\mathbb{Z}(\mathbb{Z}/n\mathbb{Z},\mathbb{Z})$, 
+        $\operatorname{Hom}_\mathbb{Z}(\mathbb{Z}/n\mathbb{Z},\mathbb{Z}/m\mathbb{Z})$, 
+        这里$n,m>1$是正整数.
+        
+    \item[\textbf{证明:}]
+        对于任意$f\in \operatorname{Hom}_\mathbb{Z}(\mathbb{Z}/n\mathbb{Z},\mathbb{Z})$, 
+        设$f(\bar{1})=a\in \mathbb{Z}$.\par
+        则$0=f(\bar{0})=f(\bar{n})=nf(\bar{1})=na$, 进而$a=0$, 
+        因此$\operatorname{Hom}_\mathbb{Z}(\mathbb{Z}/n\mathbb{Z},\mathbb{Z})\simeq \{0\}$.\par
+
+        对于任意$f\in \operatorname{Hom}_\mathbb{Z}(\mathbb{Z}/n\mathbb{Z},\mathbb{Z}/m\mathbb{Z})$, 
+        设$f(\bar{1})=\bar{\bar{a}}\in \mathbb{Z}/m\mathbb{Z}$.\par
+        设$d=\operatorname{gcd}(m,n)$, $m=m_0d$, $n=n_0d$, 
+        则$\operatorname{gcd}(m_0,n_0)=1$.\par
+        $\bar{\bar{0}}=f(\bar{0})=f(\bar{n})=nf(\bar{1})=\overline{\overline{dn_0a}}$. 
+        于是有$dm_0 | dn_0a$, 即$m_0|n_0 a$, 进而$m_0 | a$.\par
+        故$\bar{\bar{a}}=\overline{\overline{km_0}}$，其中$k$可以是$0,1,\cdots,d-1$，
+        相应地有$f(\bar{t})=\overline{\overline{km_0t}}$，
+        $\overline{\overline{km_0n}}=\bar{\bar{0}}$保证了$f$良定. 
+        因此我们有同构$\operatorname{Hom}_\mathbb{Z}(\mathbb{Z}/n\mathbb{Z},\mathbb{Z}/m\mathbb{Z})
+        \simeq \mathbb{Z}/ \operatorname{gcd}(m,n)\mathbb{Z}$.
+        
+    \item[2.2]设$R$是一个主理想整区(PID).
+    \item[(a)] 设$p\in R$是不可约元，$x,y\in R$，若$p|xy$，证明：$p|x$或$p|y$.
+    \item[\textbf{证明:}] 即证明$(p)$是素理想，只需证明$(p)$是极大理想。
+        假设$R$的理想$I$使$(p)\subsetneq I$，
+        设$I=(a)$，则$p=ab$，$b$不是单位，就有$a$是单位，$I=R$。
+    \item[(b)] 设$I_1\subseteq I_2\subseteq\cdots\subseteq I_n\subseteq\cdots$
+        是$R$的一个理想升链。证明：存在一个正整数$N$，使得$I_m=I_N$，$\forall m\ge N$.
+    \item[\textbf{证明:}] 观察到$I=\bigcup_n I_n$是一个理想，
+        设$I=(a)$，$a\in I$是说$a\in$某个$I_N$，从而$I\subset I_N$，
+        于是$I=I_N$.
+    \item[(c)] 证明：$R$是唯一分解整区（UFD）.
+    \item[\textbf{证明:}] 假设存在不能写成有限个不可约元乘积的
+        不是$0$或单位的$a\in R$，由条件$a$不是不可约元，
+        设$a=bc$，$b,c$不是单位，由条件$b,c$之一不是不可约元，记为$b$，
+        再对$b$操作，不断分解下去得到无限长的理想升链
+        $(a)\subsetneq(b)\subsetneq\cdots$（用了选择公理），与(b)相违。
+
+        下面说明分解是唯一的，对$\max(m,n)$归纳证明：$p_1\cdots p_m=q_1\cdots q_n$
+        能推出$m=n$且重排下$p_i,q_i$相伴。$m=n=1$时显然；设$m>1$，
+        由(a)，$p_m$是素元，由于$p_m|q_1\cdots q_n$，不妨$p_m|q_n$，
+        $q_n$不可约表明$q_n=up_m$，$u$是单位，于是
+        $p_1\cdots p_{m-1}=uq_1\cdots q_{n-1}$，用归纳假设。
+
+    \item[2.3] 
+        设$R$是一个交换环（不假定含幺元）且$|R| \geq 2$. 
+        称$R$是一个欧式环，如果它满足下面的条件：
+        \begin{itemize}
+            \item[(1)] 对$R$中的任意非零元$a,b$，都有$ab \neq 0$;
+            \item[(2)] 设$\N_{\geq 0}=\{0,1,2,\cdots\}$是非负整数集合. 
+            存在映射$\delta\colon R\setminus\{0\} \rightarrow \N_{\geq 0}$
+            满足下面$2$个条件：
+            \begin{itemize}
+                \item[(i)] 对$R$中任意非零元$a,b$，有$\delta(a) \leq \delta(ab)$;
+                \item[(ii)] 对$R$中任意非零元$a,b$，存在$q,r \in R$，
+                使得$a=bq+r$且$r=0$或$\delta(r) <\delta(b)$.
+            \end{itemize}
+        \end{itemize}
+        设$R$是一个欧式环.
+    \item[(a)] 证明：$R$的每个理想都是主理想，即由一个元素生成；
+    \item[\textbf{证明:}] 
+        若$I=0$则已. 对$I\neq0$，设$\delta(d)=\min\limits_{I\backslash \{0\}} \delta$，
+        则有$I = (d)$，
+        这是因为对于$I$中非零元$a$，设$a=dq+r$且$r=0$或$\delta(r) <\delta(d)$，
+        由于对$r\neq0$有$\delta(r)\geq \delta(d)$，
+        只能$r=0$，即$a=dq\in(d)$. \qed
+    \item[(b)] 证明：$R$是含幺环；
+    \item[\textbf{证明:}]   
+        取$d$使得$\delta(d)=\min\limits_{R\backslash\{0\}}\delta$，
+        则完全类似上题论述可知$R=(d)_R$. 故存在$e \in R$使得$de=d$，
+        下证$e$为单位元. 任取$r \in R$，
+        由于$\delta(d)$的最小性,知$d|r$,亦即存在$s \in R$使得$r=sd$. 
+        那么$re = er = esd = sde =sd =r$，即证. \qed
+    \item[(c)] 设$a \in R^*$是乘法可逆元，$b \in R$是非零元. 
+        证明：$\delta(1)=\delta(a) \leq \delta(b)$；
+    \item[\textbf{证明:}]   
+        等号是因为$\delta(a) \leq \delta(aa^{-1}) = \delta(1) \leq \delta(1a) =\delta(a)$. 
+        不等号因为$\delta(b) = \delta(ba^{-1}a) \geq \delta(a)$. \qed
+    \item[(d)] 设$a,b \in R$是非零元. 证明：$\delta(a) = \delta(ab)$当且仅当$b\in R^*$是乘法可逆元. 
+        特别地，若$a,b \in R$是非零元且$b\notin R^*$，则有$\delta(a) < \delta(ab)$.
+    \item[\textbf{证明:}]  
+        “$\Leftarrow$”是因为$\delta(a) = \delta(ab) \leq \delta(abb^{-1}) =\delta(a)$. 
+
+        “$\Rightarrow$”证明如下.
+        显然$(a) \subseteq (ab)$. 若$(ab) \subsetneq (a)$，
+        则取$r \in (a)$且$r \notin (ab)$.
+        那么存在$k,s \in R$使得$r=abk+s$且$s=0$或$\delta(s) < \delta(ab)=\delta(a)$，
+        但$r\notin(ab)$说明$s\neq0$，
+        以及$s \in (a)$说明$\delta(a)\leq\delta(s)$，皆不成立.
+        因此，$(a)=(ab)$. 那么存在$b' \in R$使得$abb'=a$，
+        由$R$整且含幺知$bb'=1$，即$b$可逆. \qed
+
+    \item[2.4] 证明：整数环$\mathbb{Z}$，域上的一元多项式环$F[x]$，
+        Gauss整数环$\mathbb{Z}[i]=\{a+bi\mid a,b\in\mathbb{Z}\}$是欧式环.
+    \item[\textbf{证明:}]
+        只需找到上一题所述的映射$\delta$即可. 对于$\mathbb{Z}$，取$\delta(a)=|a|$；
+        对于$F[x]$，取$\delta(f)=\deg f$；
+        对于$\mathbb{Z}[i]$，取$\delta(a+bi)=a^2+b^2$.\qed
+
+        前两者中,都容易验证$\delta$确为Euclidean value,下验证Gauss整数环的情形.
+
+        首先容易验证$\delta$具有积性,
+        对于任意的$n,m\in \mathbb{Z}[i]$,不妨设$\delta(n)>\delta(m),$且$m\nmid n$,
+        希望验证存在$q,r\in\mathbb{Z}[i]$,使得$n=mq+r,\delta(r)<\delta(m)$.
+        
+        我们注意到:$\delta(r) = \delta(n-mq) =\delta(m)\delta(q-\frac{n}{m})$,
+        因此如果记$\frac{n}{m}= s+ti,s,t\in\mathbb{Q}$,则可以取合适的$c,d\in\{-1,0,1\}$,使得$|c-s| \leq \frac{1}{2},|d-t| \leq \frac{1}{2}$,
+        因而取$q = c+di$,便有$\delta(\frac{n}{m} - q) \leq \frac{1}{4}+ \frac{1}{4} = \frac{1}{2}<1$,得证!
+    \item[2.5]
+        设$R$是环，$n$是正整数，$M_n(R)$是$R$上的$n$阶矩阵环。
+        证明：$Z(M_n(R))=\{\lambda I_n\mid\lambda\in Z(R)\}$，
+        这里$Z(A)$表示$A$的中心。（Hint: 考虑初等方阵）
+    \item[\textbf{证明:}]
+
+    \item[2.2]
+        (i) $(\mathbb{Q},+)$是否是自由$\mathbb{Z}$-模？
+        (ii) 设$\mathbb{Q}_{>0}$表示正有理数的集合.
+        $\mathbb{Q}_{>0}$在数的乘法下是否是自由$\mathbb{Z}$-模？
+        \item[\textbf{证明:}]
+        不是，任意两个元素$\frac{p}{q},\frac{r}{s}\in\mathbb{Q}$都线性相关，
+        毕竟$rq\,\frac{p}{q}=ps\,\frac{r}{s}$，且$\mathbb{Q}$不能用一个元素生成。
+
+        是，$\mathbb{Q}_{>0}=\{p_1^{l_1}\cdots p_n^{l_n}\mid 
+        n\in\mathbb{N},p_1,\cdots,p_n\text{ 是素数},l_1,\cdots,l_n\in\Z\}$，
+        由全体素数为基。
+
+    \item[2.3]
+    设$n,m$是正整数. $R$是交换环.
+    \item[(a)] 设$A$是$R$上的一个$m\times n$矩阵, 
+        $B$是$R$上的一个$n\times m$矩阵, 
+        若$AB=I_m$且$BA=I_n$, 证明: $m=n$.
+
+    \item[\textbf{证明:}]
+    设$A=(a_i^j)_{m\times n}$，$B=(b_j^i)_{n\times m}$.
+    \begin{align*}
+        m=\operatorname{tr} I_m=\operatorname{tr} AB
+        &=\sum_{i=1}^m \sum_{j=1}^n a_j^ib_i^j\\
+        &=\sum_{j=1}^n \sum_{i=1}^m b_i^ja_j^i
+        =\operatorname{tr} BA=\operatorname{tr} I_n=n.
+    \end{align*}
+
+    \item[(b)] $R^m$与$R^n$作为$R$-模是同构的当且仅当$m=n$.
+
+    \item[\textbf{证明:}]
+        方法I. 设$R^m, R^n$的一组基分别为$\{e_i\}_{i=1}^m, \{e'_j\}_{j=1}^n$，
+        以及模同构$f: R^m\rightarrow R^n$.\par
+        设$f(e_i)=\sum\limits_{j=1}^n a_i^j e'_j$, 令$A=(a_i^j)_{m\times n}$. 
+        设$f^{-1}(e'_j)=\sum\limits_{i=1}^n b_j^i e_i$, 
+        令$B=(b_j^i)_{n\times m}$.\par
+        因为$f$是模同构, 有$AB=I_m$且$BA=I_n$, 由(a)知$m=n$.
+
+        方法II. 设$\phi\colon R^m\to R^n$是同构，取域$k=R/\mathfrak{m}$，
+        $\mathfrak{m}$为极大理想，
+        那么$1\otimes\phi\colon k\otimes R^m\to k\otimes R^n$是同构，
+        相当于有限维线性空间$k^m\to k^n$的同构，得$m=n$.
+
+    \item[(c)] 设$M$是一个有限生成的自由$R$-模，$B$是其一组基. 
+        设$C$是$M$的另一组基. 证明: $C$与$B$含有的元素个数相同.
+        （注：由此结果，对交换环上的有限生成自由模$M$，我们定义
+        $M$的\textbf{秩}等于它的一组基元素的个数，记为$\operatorname{rk}(M)$.）
+
+    \item[\textbf{证明:}]
+        (b)的直接推论.
+    
+    \item[2.4] $R$是交换环，$M$是有限生成自由$R$-模，$n=\operatorname{rk}(M)$.
+    设$B=\{b_1,\cdots,b_n\}$是$M$的一个$n$元子集.
+    \begin{itemize}
+        \item[(a)] 若由$B$生成的子模$\langle B\rangle=M$，
+        证明：$B$是$M$的一组基。
+        \item[(b)] 若$B$是一个$R$-线性无关子集，问$B$是否一定是$M$的一组基？
+    \end{itemize}
+    \item[\textbf{证明:}]
+    \item[(a)] 任取$M$的一组基$\{a_1,\cdots, a_n\}$,可以由$a_i \mapsto b_i$
+    定义自同态$\pi:M\to M$,
+
+    由于$\langle B\rangle = M$,得到$\pi$是满射,因此
+    $M/\ker \pi \simeq M$.
+    若$\ker \pi \neq 0$,则取$x\in \ker\pi$,利用同构第二定理得到:
+    \begin{align}
+        R^n  = M \simeq M/\ker \pi = \frac{M/\langle x\rangle}{\ker(\pi) / \langle x\rangle} \simeq R^{n-1}/(\ker(\pi)/\langle x\rangle).
+    \end{align}
+    由于$R^{n-1}$(的商模)不可能有到$R^n$的满射,因此得到矛盾.
+    \item[(b)]
+    不成立,取$M=R=\mathbb{Z}$, $B=\{2\}$即可.
+
+    \item[2.5]设$R$是环，$W,M_1,\cdots,M_n$是$R$-模，$n\ge2$。
+    设$a_i:W\to M_i,b_j:M_j\to W,1\le i,j\le n$是$R$-模同态
+    且满足下面的条件：
+
+    (i) $a_i\cdot b_i=\operatorname{id}_{M_i},\ \ 1\le i\le n$；\quad
+    (ii) $a_i\cdot b_j=0,\ \ 1\le i\ne j\le n$；\quad
+    (iii) $\displaystyle \sum_{i=1}^n b_i\cdot a_i=\operatorname{id}_W$.
+
+    证明：$W$与直和$\bigoplus_{i=1}^n M_i$同构。
+    \item[\textbf{证明:}]
+    记$\pi_i\colon \bigoplus_{i=1}^n M_i \to M_i$为提取第$i$个分量，同构是
+    \begin{align*}
+        W\xrightarrow{(a_i)_{1\le i\le n}}
+        \bigoplus_{i=1}^n M_i\xrightarrow{\sum_{i=1}^n b_i\pi_i} W,
+        &\quad \sum_{i=1}^n b_i\cdot a_i=\operatorname{id}_W;\\
+        \bigoplus_{i=1}^n M_i\xrightarrow{\sum_{i=1}^n b_i\pi_i} W
+        \xrightarrow{(a_i)_{1\le i\le n}} \bigoplus_{i=1}^n M_i,
+        &\quad \Big(\sum_{j=1}^n a_i\cdot b_j\Big)_{1\le i\le n}
+        =(\operatorname{id}_{M_i})_{1\le i\le n}.
+    \end{align*}
+
+    \item[2.6]设$R$是环，$M,N,T$是$R$-模。
+    (i) 设$f:M \to N$是满的模同态，$s:N \to M$是模同态且$f \circ s=\operatorname{id}_N$。
+    证明$M=\ker f\oplus\operatorname{Im}s$；
+
+    (ii) 设$g:T \to M$是单的模同态，$r:M \to T$是模同态且$f \circ s=\operatorname{id}_T$。
+    证明$M=\ker r\oplus\operatorname{Im}g$。
+
+    \item[2.7]设$V$是域$k$上的一个向量空间，$B$是一组基，而且$B$是一个无限可数集合。
+    令$R=\operatorname{End}_k(V)=\{g:V\to V\text{ 是线性变换}\}$是$V$的自同态环。
+    \item[(a)]证明：$R$是非交换环，且存在$x,y\in R$
+    满足$x\cdot y=1_V$，$y\cdot x\ne1_V$.
+    \item[(b)]证明：作为$k$-向量空间，$V$同构于直和$V\oplus V$.
+    \item[(c)] 作为$R$-模，证明：$R$同构于$R^2=R\oplus R$.
+    \item[\textbf{证明:}]
+    (a) $V\simeq k^\omega=\{(x_1,x_2,\cdots)\mid x_1,x_2,\cdots\in k\}$，令
+    $$x\colon(x_1,x_2,\cdots)\mapsto(x_2,x_3,\cdots),
+    \quad y\colon(x_1,x_2,\cdots)\mapsto(0,x_1,x_2,\cdots),$$
+    有$x\cdot y=1_V$，$y\cdot x\colon(x_1,x_2,\cdots)\mapsto(0,x_2,\cdots)$不是$1_V$.
+
+    (b) $V\simeq k^\omega=k^{\omega+\omega}
+    \simeq k^\omega\oplus k^\omega\simeq V\oplus V$.
+
+    (c) $R=\operatorname{End}(V)
+    \simeq\operatorname{Hom}_k(V,V) \simeq \operatorname{Hom}_k(V,V\oplus V)\simeq \operatorname{End}(V)\oplus\operatorname{End}(V)=R\oplus R$.
+    
+    \end{enumerate}

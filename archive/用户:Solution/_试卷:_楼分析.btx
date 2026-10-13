@@ -1,0 +1,794 @@
+\setdisplaytitle{试卷：楼分析}
+\sethtmltitle{试卷：楼分析}
+\newcommand{\x}{\mathbf{x}}\newcommand{\y}{\mathbf{y}}
+\newcommand{\U}{\mathbf{u}}\newcommand{\F}{\mathscr{F}}
+
+== 2025--2026春期末 ==
+\textbf{一、填空题（30分，每题6分）}
+
+\begin{enumerate}[label=(\arabic*)]
+    \item $D:=\{(x,y)|0\leq y\leq x^3,\,x\in[1,2]\}$ 绕 $x$ 轴旋转一周形成的旋转体的表面积为 $\underline{\qquad\quad}$.
+    \item $\displaystyle\iiint_{x^2+y^2+3z^2\leq1}|3x+4y|\mathrm dx\mathrm dy\mathrm dz=\underline{\qquad\quad}$.
+    \item 设 $S_n(x):=n|\ln(4x-4x^2)|^a\sin^n(\pi x)$，函数列 $S_n(\cdot)$ 在 $(0,1)$ 内一致收敛，则 $a\in\mathbb R$ 的取值范围为 $\underline{\qquad\quad}$.
+    \item $f$ 为以 $2\pi$ 为周期的函数，且 $\displaystyle f(x)=\frac{x^{\frac25}+x}{\ln(x+\sqrt{1+x^2})}\,(x\in(-\pi,\pi))$，则 $f$ 的 Fourier 级数在 $0$ 点处的部分和的极限为 $\underline{\qquad\quad}$.
+    \item 记 $\displaystyle\mathscr F(f)(x)=\int_{\mathbb R}f(t)e^{-2\pi itx}\mathrm dt, \mathscr F^n=\overbrace{\mathscr F\circ\mathscr F\circ\cdots\circ\mathscr F}^{n个}$，则对 $g(x):=x^2e^{-x^2}\,(x\in\mathbb R)$，$\displaystyle\int_{\mathbb R}\sum_{n=0}^{+\infty}\frac{\mathscr F^n(g)(x)}{n!}\mathrm dx=\underline{\quad\qquad}$.
+\end{enumerate}
+
+\\
+
+\textbf{二、（16分）}
+计算 $\displaystyle\lim_{n\to+\infty}\int_0^{+\infty}\frac{n^2\sin(nx^2)+n\sin^2(n^2x)}{(1+nx^2)^n}\mathrm dx$ 并说明理由.
+
+\\
+
+\textbf{三、（18分）}
+$f$ 为 $n$ 维单位球内的可积函数，证明：
+$$\displaystyle\int_{B_1(\mathbf 0)}\mathrm d\mathbf x\int_0^1f(s\mathbf x)s^{n+1}\mathrm ds=\int_{B_1(\mathbf 0)}\frac{1-|\mathbf x|^2}2f(\mathbf x)\mathrm d\mathbf x$$
+
+\\
+
+\textbf{四、（18分）}
+设 $\displaystyle F(x):=\int_{\mathbb R}\frac{e^{-2\pi xy}}{\mathrm{ch}(\pi y)}\mathrm dy$.
+\begin{enumerate}
+    \item 考察 $F$ 在 $\mathbb R$ 上的自然定义域并求其值.
+    \item 对于 $\displaystyle f(x)=\frac1{\mathrm{ch}(\pi x)}\,(x\in\mathbb R)$，证明：$f$ 的 Fourier 变换等于自身.
+\end{enumerate}
+
+\\
+
+\textbf{五、（18分）}
+$n\geq2$，$A,C$ 是 $n$ 阶实方阵，$C$ 正定，$A$ 可逆，$A,\,A^T,\,C$ 两两可交换. 考察矩阵方程：
+$$(\mathrm R):\left\{\begin{array}{l}
+    Y'(t)+AY(t)+Y(t)A^T+Y(t)CY(t)=0\\
+    Y(0)=I
+\end{array}\right.$$
+其中 $I$ 为单位阵. 证明：
+\begin{enumerate}
+    \item $e^{A+A^T},\,Ce^{A+A^T}$ 均正定.
+    \item $(\mathrm R)$ 的解 $Y(\cdot)$ 局部存在且在存在区间内唯一.
+    \item $Y(\cdot)$ 对称且与 $A,\,A^T,\,C$ 均可交换.
+    \item $Y(\cdot)$ 正定，且对于任意的 $t\geq0$，有 $e^{-t(A+A^T)}-Y(t)$ 半正定.
+    \item 设 $(\mathrm R)$ 的解的最大存在区间为 $(\alpha,\beta)$，则 $\beta=+\infty$.
+\end{enumerate}
+
+== 2025--2026春期中 ==
+\textbf{一、填空题（30分，每题6分）}
+
+\begin{enumerate}[label=(\arabic*)]
+    \item 计算 $\displaystyle\lim_{n\to+\infty}n\int_0^1\frac{x\sin^2n^2x+\arctan x}{x(1+x)^n}\mathrm{d}x=\underline{\qquad\quad}$.
+    \item $Oxy$ 平面中的 $y=\sin x\;(x\in[0,\pi])$ 图像与 $x$ 轴围成的区域$D$ 绕 $y$ 轴旋转一周形成的旋转体的体积为 $\underline{\qquad\quad}$.
+    \item 设实解析函数 $f$ 满足常微分方程 $(1-x^2)f'''(x)-3xf''(x)-f'(x)=0$ 以及初值条件 $f(0)=f''(0)=0,\;f'(0)=1$，则 $f$ 的MacLaurin 级数为（尽可能简洁）$\underline{\qquad\quad}$.
+    \item 设 $a$ 为实常数. 若函数项级数 $\displaystyle\sum_{n=2}^{\infty}\frac{\sin nx}{n^{a}+\cos nx}$ 关于 $x\in(0,2\pi)$ 内闭一致收敛，则 $a$ 的取值范围为 $\underline{\quad\qquad}$.
+    \item 计算 $\displaystyle\lim_{n\to+\infty}\prod_{k=1}^n\left(\cos\left(\frac1n\sin\frac{k\pi}n\right)+\sin\left(\frac1n\sin\frac{k\pi}n\right)\right)=\underline{\quad\qquad}$.
+\end{enumerate}
+
+\\
+
+\textbf{二、（16分）}
+设 $f\in L_{loc}^1(\mathbb R)$，对于任何 $\varphi\in C_c^{\infty}(\mathbb R)$，有 $\displaystyle\int_{\mathbb R} f(x)\varphi'(x)\mathrm dx=0$，依次证明（若直接证明 $4$，则不必证明 $1\sim3$）
+\begin{enumerate}
+    \item 对于任何 $\varphi\in C_c^1(\mathbb R)$，有 $\displaystyle\int_{\mathbb R} f(x)\varphi'(x)\mathrm dx=0$.
+    \item 若 $\psi\in C[a,b]$，且 $\displaystyle\int_a^b\psi(x)\mathrm dx=0$，则 $\displaystyle\int_a^b f(x)\psi(x)\mathrm dx=0$.
+    \item 记 $\displaystyle\bar f_{a,b}=\frac1{b-a}\int_a^bf(x)\mathrm dx$，则对于任何 $\psi\in C[a,b]$，有 $\displaystyle\int_a^b (f(x)-\bar f_{a,b})\psi(x)\mathrm dx=0$.
+    \item $f$ 几乎处处恒等于常数.
+\end{enumerate}
+
+\\
+
+\textbf{三、（18分）}
+给定 $a,b,c>0$，$\Omega$ 为闭区域 $\displaystyle\frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2}\leq1$，$f,g\in C^2(\bar\Omega)$ 且 $f,g$ 在 $\partial\Omega$ 上为零.
+\begin{enumerate}
+    \item 若 $\displaystyle f(x,-y,z)=\frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2}-1-f(x,y,z)$，计算 $\displaystyle\iiint_\Omega x\frac{\partial f(x,y,z)}{\partial x}\mathrm dx\mathrm dy\mathrm dz$.
+    \item 证明：$\displaystyle\iiint_\Omega\left(g(x,y,z)\Delta f(x,y,z)-f(x,y,z)\Delta g(x,y,z)\right)\mathrm dx\mathrm dy\mathrm dz=0$，其中 $\displaystyle\Delta F:=\frac{\partial^2 F}{\partial x^2}+\frac{\partial^2 F}{\partial y^2}+\frac{\partial^2 F}{\partial z^2}$.
+\end{enumerate}
+
+\\
+
+\textbf{四、（18分）}
+已知 $\displaystyle\sum_{n=1}^\infty A_n\cos(nx+\theta_n)$ 在 $[a,b]$ 上绝对收敛.
+\begin{enumerate}
+    \item 设 $\displaystyle f(x):=\sum_{n=1}^\infty\left|A_n\cos(nx+\theta_n)\right|$，证明存在测度大于 $0$ 的集合 $F\in[a,b]$，使得 $f$ 在 $F$ 上有界.
+    \item 证明：存在 $N\geq1$，使得 $\displaystyle|F|\sum_{n=N}^\infty|A_n|\leq3\int_F f(x)\mathrm dx$，从而 $\displaystyle\sum_{n=1}^\infty|A_n|$ 收敛.
+\end{enumerate}
+
+\\
+
+\textbf{五、（18分）}
+$f\in C^\infty(\mathbb R)$，$\{f^{(n)}\}$ 在 $\mathbb R$ 上逐点收敛于 $\varphi$. 证明：
+\begin{enumerate}
+    \item 若 $\{f^{(n)}\}$ 在 $(a,b)$ 上一致收敛，则在 $(a,b)$ 上有 $\varphi'=\varphi$.
+    \item 对于 $\mathbb R$ 的任何非空闭子集 $E$，存在 $x_0\in E,\;\delta>0$，使得 $\{f^{(n)}\}$ 在 $E\cap(x_0-\delta,x_0+\delta)$ 上一致有界.
+    \item 任何 $\mathbb R$ 中的开区间都存在一个子区间，使得 $\{f^{(n)}\}$ 在这个子区间上一致收敛.
+    \item 存在常数 $C$ 使得 $\varphi(x)=Ce^x\;(\forall x\in\mathbb R)$.
+\end{enumerate}
+提示忘记抄下来了（划掉）
+
+== 2025--2026秋期末 ==
+\textbf{一、填空题（每题6分）}
+
+\begin{enumerate}
+    \item 已知函数 $f(x)$ 在 $0$ 附近二阶可导，$\displaystyle\lim_{x\to0}\frac{f(x)-\left(\frac{1+\tan x}{1+\arctan x}\right)^{1/\sin^2x}}{x^2}=1$，则 $\left(f(0),f'(0),f''(0)\right)=(\underline{\qquad},\underline{\qquad},\underline{\qquad})$.
+    \item $\displaystyle\int x\mathrm e^{2x}\sin^2x\,\mathrm dx=\underline{\qquad}\underline{\qquad}\underline{\qquad}$.
+    \item 函数 $f(x,y):=x^4+2x^3y+3x^2y^2+2xy^3+y^4$ 在 $x^4+y^4=1$ 的约束条件下的最小值和最大值分别为 $\underline{\qquad},\underline{\qquad}$.
+    \item 记 $F(x;f,g)=(f(x))^{(2g(x))^{(3f(x))^{\cdots^{(2025f(x))}}}},\psi(x)=\sin x,\varphi(x)=\cos x$，则极限 $\lim\limits_{x\to0^+}(F(x;\psi,\psi),F(x;\psi,\varphi),F(x;\varphi,\psi),F(x;\varphi,\varphi))=(\underline{\qquad},\underline{\qquad},\underline{\qquad},\underline{\qquad})$.
+    \item 方程 $\begin{cases}
+        x+2y+3u+4v=0\\
+        4x^2+3y^2+2u^4+v^4=7
+    \end{cases}$ 在 $(x,y,u,v)=(1,0,1,-1)$ 附近确定一个隐函数 $\begin{pmatrix}y\\u\end{pmatrix}=\begin{pmatrix}y(x,v)\\u(x,v)\end{pmatrix}$，则 $u_{xx}(1,-1)=\underline{\qquad}$.
+\end{enumerate} 
+\\
+\textbf{二、（16分）}
+定义在 $[1,+\infty)$ 上的函数 $f(x),g(x)$ 满足 $f''(x)+f'(x)+f(x)=2x^2-3x,g''(x)+g'(x)+g(x)=x^3\ln\left(1+\frac1{1+x}\right)+2\cos\frac1x$.
+
+\begin{enumerate}[label=(\arabic*)]
+    \item 写出 $f$ 的解析式.
+    \item 证明以下极限存在并求值：$A:=\lim\limits_{x\to+\infty}g''(x),B:=\lim\limits_{x\to+\infty}\left(g'(x)-Ax\right),C:=\lim\limits_{x\to+\infty}\left(g(x)-\frac A2x^2-Bx\right)$.
+\end{enumerate}
+\\
+\textbf{三、（18分）}
+已知 $f\in C^4[0,1]$ 是方程 $f^{(4)}(x)-10f''(x)+9f(x)=2\mathrm e^{x^2}-1$ 满足 $f(0)=f(1)=f''(0)=f''(1)=0$ 的解，证明：对于任意的 $x\in(0,1)$，有 $f(x)>0$.
+
+\\
+\textbf{四、（18分）}
+已知 $\Omega$ 是 $\mathbb R^n$ 中的区域，$\mathbf F\in C^1(\Omega;\mathbb R^n)$，
+求证：对于所有 $\Omega$ 的紧子集 $E$，存在连续模 $\omega\equiv\omega_E$ 
+(即 $\omega:[0,+\infty)\to[0,+\infty)$ 单调增加，且满足 $\omega(0^+)=\omega(0)=0$)，使得
+
+$$|\mathbf F(\boldsymbol{v})-\mathbf F(\boldsymbol{u})
+-\mathbf F_{\boldsymbol{x}}(\boldsymbol{u})(\boldsymbol{v}-\boldsymbol{u})|
+\leq|\boldsymbol{v}-\boldsymbol{u}|\omega(|\boldsymbol{v}-\boldsymbol{u}|),
+\quad\forall \boldsymbol{u},\boldsymbol{v}\in E.$$
+
+其中 $\mathbf F_{\boldsymbol{x}}$ 使用课程配套教材中的定义.
+
+\\
+\textbf{五、（18分）}
+给定整数 $m\geq1$，已知 $g\in C(\mathbb R),f\in C^{m+1}(\mathbb R)$，且满足 $f(x)=xg(x)$.
+
+\begin{enumerate}[label=(\arabic*)]
+    \item 证明：存在 $M>0$，使得 $\forall x\neq0$，有 $\displaystyle\left|g^{(m)}(x)\right|\leq M\cdot\max_{0\leq k\leq m}\left|\frac{f^{(k)}(x)}{x^{m-k+1}}\right|$.
+    \item 若 $f^{(k)}(0)=0$ $(0\leq k\leq m+1)$，证明：$g\in C^m(\mathbb R)$.
+    \item 一般地，证明 $g\in C^m(\mathbb R)$.
+    \item 已知 $g^2,g^3\in C^\infty(\mathbb R)$，且对任意实数 $x_0$，总存在非负整数 $k$ 及非零实数 $c$，
+    满足 $\displaystyle\lim_{x\to x_0}\frac{g(x)}{(x-x_0)^k}=c$，证明 $g\in C^\infty(\mathbb R)$.
+\end{enumerate}
+
+\textbf{注：}本题使用定积分将判零分.
+
+== 2025--2026秋期中 ==
+一、填空题(每空 6 分)
+\begin{enumerate}
+    \item[(1)]  已知正项数列 $a_n$ 满足 $a_n=\displaystyle\frac{a_{n+1}}{\sqrt[4]{1-a_{n+1}}}$，$A \equiv \displaystyle\lim _{n \to \infty} n a_n = \underline{\qquad}$，
+                $\displaystyle\lim_{n \to \infty} \frac{n}{\ln n} (n a_n - A) = \underline{\qquad}$.
+    \item[(2)] 
+    $f(x)= \begin{cases}e^{\frac{A}{x}+B} & x>0 \\ \alpha x^{2}+\beta x+\gamma & x \leq0\end{cases}$
+    在$\mathbb{R}$上连续、可导、连续可导的充要条件分别是$\underline{\qquad},\underline{\qquad},\underline{\qquad}$.
+    \item[(3)] $x, y \in [0,+\infty)$满足关系$e^{y}-1-y=x-\ln (x+1)$，求$y(0)=\underline{\qquad},y'_+(0)=\underline{\qquad}$.
+    \item[(4)] 级数$\displaystyle\sum_{n=2}^{\infty} \frac{(-1)^{n}}{n^{\alpha}+(-1)^{n}}$收敛、绝对收敛的充要条件分别是$\underline{\qquad},\underline{\qquad}$.
+    \item[(5)] $f(x) = x^{2023} \ln(1 + \sin x)$，求$f^{(2025)}(0) = \underline{\qquad\qquad}$.
+\end{enumerate}
+~\\
+二(15分)、我们称函数$f(x)$在$[a, b]$上局部满足Hölder 条件，
+如果$\forall x \in[a, b]$，$\exists \delta_{x}>0$，$M_{x}>0$，$\alpha_{x} \in(0,1)$
+使得$\forall s, t \in[x-\delta_{x}, x+\delta_{x}]\cap[a,b]$，$|f(s)-f(t)| \leq M_{x}|s-t|^{\alpha_{x}}$，
+由此条件证明：$f(x)$在$[a, b]$上满足Hölder 条件.
+
+~\\
+三(20分)、$x_{0}$，$x_{1}>0$，数列$\{x_{n}\}$满足$x_{n+2}=\displaystyle\frac{2}{x_{n}}+\displaystyle\frac{4}{x_{n}+x_{n+1}}$ $(n \geq0)$，证明$\{x_{n}\}$收敛并求出该极限.
+
+~\\
+四(20分)、$a>0$，$a^{2}+4 b<0$，$f(x):\mathbb{R}\to\mathbb{R}$具有介值性，且$f(f(x))=a f(x)+b x$，证明：
+\begin{enumerate}
+    \item [(1)] $f(x)$为单射且严格单增；
+    \item [(2)] $f(x)$为满射且连续；
+    \item [(3)] $\displaystyle\lim _{x \to \infty} \frac{f(x)}{x}$存在；
+    \item [(4)] 满足上述条件的$f(x)$不存在。
+\end{enumerate}
+~\\
+五(20分)、记$B_{\delta}(x) = \{ y \in \mathbb{R}^n \mid |x - y| < \delta,\ \delta \in \mathbb{R} \}$，
+$\mathcal{T} \coloneqq \{ B_{\delta}(x) \mid x \in \mathbb{Q}^n,\ \delta \in \mathbb{Q} \}$.
+设 $E$ 是 $\mathbb R^n$ 的一个不可列子集，称 $x_0$ 为 $E$ 的凝聚点，
+若 $\forall\delta>0,B_\delta(x_0)\cap E$ 均为不可列集合. $E$ 的凝聚点全体记为 $E^\Delta$. 证明：
+\begin{enumerate}
+    \item [(1)] $\mathcal{T}$为可列集；
+    \item [(2)]$V \subseteq \mathbb{R}^{n}$为开集，则$V=\bigcup\{A \in \mathcal{T} \mid A \subseteq V\}$；
+    \item [(3)] $E \setminus E^{\Delta}$为至多可列集；
+    \item [(4)] 存在$F \subseteq E$，使得 $F$ 不可列且没有孤立点.
+\end{enumerate}
+
+== 2024--2025春期末 ==
+一(30分)、填空题(每题 6 分)
+\begin{enumerate}[label=(\arabic*)]
+    \item 曲线 $x^6 + y^{\frac 6 5} = 1$围成的面积为$\underline{\qquad\quad}$.
+    \item $\displaystyle \iiint_{x^4+y^4+z^4\le1} \sqrt{|x^4 - y^4|} \, dx dy dz=\underline{\qquad\quad}$.
+    \item 设$f(x)=\displaystyle\int_0^1 e^{-s^3x^3}\sin(s^3x^3) \, ds$, 
+    则$f$的Maclaurin级数中$x^{2025}$的系数为$\underline{\qquad\quad}$.
+    \item 设$f(x):=\displaystyle\sum_{n=0}^{+\infty}\sum_{k=0}^n \dfrac{(-1)^kx^{n+k}}{(n-k)!(2k+1)!}$, 
+    则$\displaystyle\int_0^{\pi} xf(x) \,dx=\underline{\qquad\quad}$.
+    \item 极限$\displaystyle\lim_{n\to +\infty}\int_0^n \frac{|\cos x^2|}{x}\ln \Big(1-\frac{x^4}{n^4}\Big)\, dx=\underline{\qquad\quad}$.
+\end{enumerate}
+~\\
+二(14分)、设$f$以$2\pi$为周期，$\displaystyle f\big|_{(-\pi,\pi)}(x)=
+\operatorname{sgn}(x)\ln \Big(1-\cos \dfrac{x}{2-\operatorname{sgn}(x)}\Big)$. 
+证明：$f$的Fourier级数在$x=0$处收敛并求其和.
+~\\
+
+三(18分)、设$f\in C(\mathbb{R})$以$2\pi$为周期，
+$\{a_n\}, \{b_n\}$为$f$的Fourier系数.
+\begin{enumerate}[label=(\arabic*)]
+\item 进一步，若$f$连续可微，证明：$\lim \limits_{n\to +\infty}na_n
+=\lim \limits_{n\to +\infty}nb_n=0$.
+\item 若$f$是两个单调函数之和，证明它也是两个连续的单调函数之和.
+\item 设$g$在$\mathbb{R}$上连续、单增，证明：$\forall \, \varepsilon > 0$, 存在$h\in C^1[0,2\pi]$
+使得$g-h$在$[0,2\pi]$上单增，且$\max \limits_{x\in [0,2\pi]}|g(x)-h(x)|<\varepsilon$.
+\item 若$f$是两个单调函数之和，证明：$\lim \limits_{n\to +\infty}na_n
+=\lim \limits_{n\to +\infty}nb_n=0$.
+\end{enumerate}
+~\\
+四(18分)、设$n\ge 3$, $\displaystyle F(\mathbf{x}):=\int_{\mathbb{R}^n}f(\mathbf{x}-\mathbf{y})\psi(\mathbf{y})\, d\mathbf{y}$, 
+其中$f$是$\mathbb{R}^n$中的速降函数, $\psi(\mathbf{x})=|\mathbf{x}|^{2-n}$. 证明：
+\begin{enumerate}[label=(\arabic*)]
+    \item $\Delta \psi (\mathbf{x})=0$ $(\mathbf{x}\ne 0)$.
+    \item $\forall \, \mathbf{x}\in \mathbb{R}^n$, 有$\displaystyle
+    \Delta F(\mathbf{x})=\int_{\mathbb{R}^n}\nabla f(\mathbf{x}-\mathbf{y})\cdot \nabla
+    \psi (\mathbf{y}) \, d\mathbf{y}$.
+    \item $\forall \, \mathbf{x}\in \mathbb{R}^n$，有$\displaystyle \Delta F(\mathbf{x})=
+    n(n-2)\omega_n f(\mathbf{x})$, 其中$\omega_n$为$n$维单位球体积.
+\end{enumerate}
+~\\
+五(20分)、设$\mathbb{R}^2$上的连续函数$f$是$\{(x,y)\,\big|\,y\ne 0 \}$内的调和函数. 
+请给出以下问题的反例或证明.
+\begin{enumerate}[label=(\arabic*)]
+    \item 对于$x\in \mathbb{R}$及$r>0$, 是否必有$f(x,0)=\displaystyle \dfrac{1}{\pi r^2}\iint _{(t-x)^2+s^2\le r^2}f(t,s)\, dtds$?
+    \item $f$是否为整个$\mathbb{R}^2$上的调和函数？
+    \item 若$f\in C^1(\mathbb{R}^2)$, 则$f$是否为整个$\mathbb{R}^2$上的调和函数？
+    \item 若$f\in C^2(\mathbb{R}^2)$, 则$f$是否为整个$\mathbb{R}^2$上的调和函数？
+\end{enumerate}
+
+== 2024--2025春期中 ==
+一(30分)、填空题(每题 6 分)
+\begin{enumerate}[label=(\arabic*)]
+\item 计算$\displaystyle\lim_{n\to \infty}n^2\int_0^{\infty}\frac{n^2\sin x+\sin(n^2x)}{(1+n^2x^2)^2}\,\mathrm{d}x=\underline{\qquad\quad}$.
+\item 设物体$D=\left\{ (x,y,z) \,\big|\, 0 \le z\le \sqrt{x^2+y^2} \le 1\right\}$，它在$(x,y,z)\in D$处的密度为$\sqrt{x^2+y^2}e^{x^2+y^2}$,则其质量为$\underline{\qquad\quad}$.
+\item 设实函数$f$满足常微分方程$(1-x^2)f''(x)-xf'(x)-2=0$. 则$f$的MacLaurin 级数为$\underline{\qquad\quad}$.
+\item 设$a$为实常数.若函数项级数$\displaystyle\sum_{n=2}^{\infty}\frac{\sin nx}{n^{a}+(-1)^n+\sin nx}$关于$x\in (0,2\pi)$内闭一致收敛，则$a$的取值范围为$\underline{\quad\qquad}$.
+\item 计算$\displaystyle\lim_{n\to \infty}\prod_{k=1}^n\left(1+\dfrac{1}{n}\cos^2 \dfrac{2k\pi}{n}\right)=\underline{\quad\qquad}$.
+\end{enumerate}
+~\\
+二(12分)、设$E\subset \mathbb{R}^n$是可测集，$E$上的非负可测函数列$\{f_k\}$依测度收敛于$f\in L^1(E)$，且$\lim\limits_{k\to +\infty}\int_{E}f_k(x)\,\mathrm{d}x=\int_Ef(x)\,\mathrm{d}x$，
+求证：对于$E$的任何可测子集$F$，成立$\lim\limits_{k\to +\infty}\int_{F}f_k(x)\,\mathrm{d}x=\int_Ff(x)\,\mathrm{d}x$.
+
+~\\
+三(18分)、平面$\Sigma_1:x+2y+3z=0,\Sigma_2:3x+4y+7z=0,\Sigma_3:5x+6y+9z=0$以及$\Sigma_4:5x+4y+3z=12$交出了一个四面体$\Delta$，求$\Delta$的体积以及三角形$\Delta \cap \Sigma_4$的面积.
+
+~\\
+四(20分)、设$R>0$，实解析函数列$\{f_n\}$在$[-R,R]$上一致收敛于$f$.同时对于一切$n$，$f_n$的收敛半径大于$R$.
+\begin{enumerate}
+    \item 对于一切$n$，$f_n$的MacLaurin 级数在$[-R,R]$上等于$f_n$.
+    \item 证明或给出反例，$f$的MacLaurin级数在$0$的一个邻域内等于$f$.
+    \item 我们加强$2$的假设：如果$\{f_n\}$满足$\{f_n^{(k)}\}$在$[-R,R]$上一致收敛到$f^{(k)}$，判断此时2是否成立.
+\end{enumerate}
+注：若给出2的肯定证明，则不必做3；若给出3的反例，则不必做2.
+
+~\\
+五(20分)、对于矩阵$A$，定义矩阵范数$\|A\|=\max\limits_{\mathbf{|x|}=1}|A\mathbf{x}|$.当$\|A\|<1$时，定义$\ln (I+A)=\sum\limits_{k=0}^{\infty}\dfrac{(-1)^k}{k+1}A^{k+1}$.给定$k\ge 1,n\ge 2$，矩阵值函数$F(\cdot)\in C^k([0,1];\mathbb{R}^{n\times n})$满足$\|F(t)\|<1$对任意$t\in [0,1]$均成立.
+\begin{enumerate}
+    \item 已知对于一切$s,t\in[0,1]$，有$F(t),F(s)$可交换.求证：
+    $(\ln(I+F(t))'=(I+F(t))^{-1}F'(t)$对一切$t\in [0,1]$成立.
+    \item 已知$A,B$可交换，$\|A\|+\|B\|<\dfrac{4}{5}$，求证：$\ln(I+A)(I+B)=\ln(I+A)+\ln(I+B)$.
+    \item 对于$\|A\|<1$，求证：$e^{\ln (I+A)}=I+A$.
+    \item 尽你所能，给出矩阵$B$的充分条件，使得存在矩阵$A$，满足$e^A=B$.
+\end{enumerate}
+
+== 2024--2025秋期末 ==
+一(30分）、填空题(每题6分)
+\begin{enumerate}[label=(\arabic*)]
+\item 设$f(x)$在$0$点附近有两阶导数，$\displaystyle\lim_{x\rightarrow 0}\frac{f(x)-(1+\sin x)^{1/\sin x}}{x^2}=1$,
+则$\big(f(0),f'(0),f''(0)\big)=\underline{\qquad\quad}$.
+\item $\displaystyle\int\frac{\ln x}{(1+\ln x)^2}\mathrm{d}x=\underline{\qquad\quad}$.
+\item 设有$f$的测量值$f(0)=3.1,f(1)=3.1,f(2)=-2.05,f(3)=-0.9,f(4)=4$.
+现用函数$\varphi(x)\equiv\varphi(x;a,b,c):=a\sin\frac{\pi x}{2}+b\cos\frac{\pi x}{2}+c$去拟合$f(x)$,
+则使得$\displaystyle\sum_{k=0}^4|f(k)-\varphi(k)|^2$取得最小值的$(a,b,c)=\underline{\qquad\quad}$.
+\item 方程$f''(x)+3f'(x)+2f(x)=x+1$的通解是$\underline{\qquad\quad}$.
+\item 设$f$在$(0,+\infty)$上满足$f''(x)+3f'(x)+2f(x)=(x^2+x+1)\sin\dfrac{1}{x}$，
+则$\lim\limits_{x\rightarrow+\infty}f'(x)=\underline{\qquad\quad}$,
+$\lim\limits_{x\rightarrow+\infty}f''(x)=\underline{\qquad\quad}$.
+\end{enumerate}
+~\\
+二(14分)、设$f$在$\mathbb{R}$上连续可微，$g(x)=\sin f(x)$ $(x\in\R)$。若$|f'|\leq1$，证明：
+\begin{enumerate}[label=(\arabic*)]
+\item 对任何$x\neq y$，成立$|g(x)-g(y)|<|x-y|$.
+\item 对任何$x_0\in\R$，数列$\{g_n(x_0)\}$收敛，其中$g_n$表示$\overbrace{g\circ g\circ \cdots\circ g}^{n\text{ 个}}$。
+\end{enumerate}
+~\\
+三(14分)、设$\alpha\in(0,1)$为常数，$x_0\in\R$，非负函数$f$在$\R$上可导，
+满足：$\forall\,x>y$，有$f'(x)-f'(y)<x-y$，且$f'(x_0)>\sqrt{2\alpha f(x_0)}$。证明：
+
+(1) $f$在$\R$上连续可微.\qquad\qquad\qquad\qquad\qquad\quad
+(2) 存在$\xi<x_0$，使得$f'(\xi)=\sqrt{2\alpha f(\xi)}$.
+
+(3) 存在$\eta<x_0$，使得$\dfrac{f'(x_0)-f'(\eta)}{x_0-\eta}>\alpha$.\qquad
+(4) $f'\leq\sqrt{2f}$.
+
+~\\
+四(14分)、设数列$\{a_n\}$取值于$\{0,1\}$，设$\displaystyle S_n=\sum_{k=1}^n a_k$.
+证明：$\displaystyle\sum_{n=1}^\infty \frac{a_n}{\sqrt{n}}$收敛的充要条件是
+$\displaystyle\sum\limits_{n=1}^\infty \frac{S_n}{n\sqrt{n}}$收敛。
+
+~\\
+五(14分)、设实数列$\{x_n\},\{y_n\}$满足：
+$\begin{cases}
+    x_n^2+y_n^2+ny_n\sin\dfrac2n=2-\cos\dfrac1n,\\ \\
+    x_n+n^{\frac1n}y_n=1+e^{-n}.
+\end{cases}$\\
+证明：$\{x_n\},\{y_n\}$收敛，并求其极限.
+
+~\\
+六(14分)、设$f$在$\R^2$上二阶连续可微，$\lim\limits_{(x,y)\rightarrow\infty}f(x,y)=0$，且$\forall\,(x,y)\in\R^2$，有
+$$y^2f_{xx}(x,y)+x^2f_{yy}(x,y)-2xf_{x}(x,y)-2yf_{y}(x,y)=\big((x-1)^2+(y-1)^2+c\big)f(x,y).$$
+(1) 若$c=1$，证明：$f$恒等于零.\\
+(2) 若$c=0$，证明：$f$恒等于零.
+
+== 2023--2024春期末 ==
+一（30 分）、填空题（每题6分）：
+\begin{enumerate}[label=(\arabic*)]
+\item 设 $L$ 为曲线 $(x, y, z)=\left(-2t-\cos(t\pi), \cos(2t\pi)+t^{2}-t, t \sin \dfrac{5t\pi}{2}\right)$ 从 $t=0$ 到 $t=1$ 的那一段，
+则积分 $\displaystyle\int_{L} P \, dx+Q \, dy+R \, dz=\underline{\qquad\qquad}$，
+其中 $(P, Q, R)=e^{-y-z}\big(z \sin (x+y), z \sin (x+y)+z \cos (x+y),(z-1) \cos (x+y)\big)$。
+\item 考虑牟合方盖 $W:=\left\{(x, y, z) \,\big|\, x^{2}+y^{2} \leq 1, y^{2}+z^{2} \leq 1\right\}$，
+其表面积为 $\underline{\qquad\qquad}$。
+\item 设 $\displaystyle f(x)=\int_{0}^{x} \frac{x-t}{\sqrt{1-t^{3}}} \, dt$，
+则 $f$ 的 Maclaurin 级数中 $x^{2024}$ 的系数为 $\underline{\qquad\qquad}$。
+\item 设 $\alpha$ 为非零实数，$f$ 以 $2\pi$ 为周期，
+对于 $x \in[0,2\pi)$，$f(x)=|\sin (\alpha x)|^{\frac{1}{\alpha}}$。
+则 $f$的 Fourier 级数在 $[0,2\pi)$ 上一致收敛的充要条件是 $\alpha \in \underline{\qquad\qquad}$。
+\item 极限 $\displaystyle\lim_{n \rightarrow+\infty} \int_{0}^{1} \frac{|\sin nx|}{x} \ln (1-x) \, dx=\underline{\qquad\qquad}$。
+\end{enumerate}
+~\\
+二（14 分）、设 $f, g$ 是 $\mathbb{R}$ 上的速降函数，证明：$f * g$ 也是 $\mathbb{R}$ 上的速降函数。
+进一步，试给出一个较弱的条件，使得 $f * g$ 是速降函数。
+
+~\\
+三（14 分）、设 $\Sigma$ 为曲面 $x^{2}+x y+y^{2}+z^{2}=4$，取外侧。计算
+$$\iint\limits_{\Sigma} \frac{x \, dy dz+y \, dz dx+z \, dx dy}{(x^{2}+xy+y^{2}+z^{2})^{\frac{1}{2}}(x^{2}+y^{2}+z^{2})^{\frac{3}{2}}}.$$
+
+~\\
+四（14 分）、幂级数 $\displaystyle\sum_{n=0}^{\infty} a_{n} x^{n}$ 
+在 $[-1,1]$ 上绝对收敛与一致收敛的关系如何？请给出必要的证明或反例。
+
+~\\
+五（14 分）、证明或否定：
+$$\lim_{n \rightarrow+\infty} \sup_{x \in[0,1]}\left|\int_{0}^{\pi} \ln (x+t)\left(\frac{\sin \big(n+\frac{1}{20}\big) t}{\sin \frac{t}{24}}-\frac{24 \sin \big(n+\frac{1}{20}\big) t}{t}\right) d t\right|=0.$$
+
+~\\
+六（14 分）、设 $f(x)=e^{-x^{4}}, g(x)=e^{-x^{2}}(x \in \mathbb{R}), F=f+\widehat{f}$。
+\begin{enumerate}[label=(\arabic*)]
+\item 证明 $\widehat{F}=F$。
+\item 推导 $\widehat{f}$ 所满足的常微分方程。
+\item 证明不存在常数 $C$，使得 $F \equiv Cg$。
+\end{enumerate}
+
+== 2022--2023秋期末 ==
+一（30 分）、填空题（每题 6 分）：
+\begin{enumerate}[label=(\arabic*)]
+\item $\lim\limits_{x \rightarrow 0} \dfrac{\arctan (1+\tan \arcsin x)-\arctan (1+x)}{x^{3}}=\underline{\qquad\qquad}$。
+\item $\displaystyle\int\frac{2x^{3}+3x^{2}-4x+5}{(x+1)(2x^{2}+x+1)(x^{2}+x+2)}\,dx=\underline{\qquad\qquad}$。
+\item 在约束条件 $x^{2}+y^{2}+z^{2}=1$ 下，函数 $f(x, y, z)=x^{2}+4y^{2}+6z^{2}+4xy+10yz+6zx$的最大值落在区间 $[n, n+1)$ 中，则 $n=\underline{\qquad\qquad}$。
+\item 设 $f(x)=\dfrac{1}{(x^{2}+x+1)^{2}}$，则 $f^{(100)}(0)=\underline{\qquad\qquad}$。
+\item 常微分方程 $y^{(4)}-4y^{\prime \prime \prime}+5y^{\prime \prime}-4y^{\prime}+4 y=e^{2x}+x \cos x$ 的通解是 $\underline{\qquad\qquad\qquad\qquad}$。
+\end{enumerate}
+~\\
+二（14 分）、设 $E \subseteq \mathbb{R}^{n}$，证明存在至多可列集 $F \subseteq E$ 使得 $F$ 在 $E$ 中稠密。
+
+~\\
+三（14 分）、设 $P, Q, F$ 都是 $D=\{(x, y) \mid x^{2}+y^{2}<4\}$ 内的二元连续函数，
+对于 $(x, y) \in D, x^{2}+y^{2} \neq 1$，$\dfrac{\partial F}{\partial x}(x, y)=P(x, y), \dfrac{\partial F}{\partial y}(x, y)=Q(x, y)$。
+证明：$F$ 在 $D$ 内连续可微。
+
+~\\
+四 （14 分）、设 $f$ 在 $[0,+\infty)$ 上有三阶导数，$f^{\prime \prime \prime} \leq 1$ 且 $\lim\limits_{x \rightarrow+\infty} f(x)=0$。
+\begin{enumerate}[label=(\roman*)]
+\item 设 $a>s>0, \varepsilon \in \{-1,0,1\}$，证明：存在 $\xi \in (a-s, a+s)$ 使得
+$$f^{\prime \prime \prime}(\xi)=\frac{(2\varepsilon+1)f(a+s)+(2\varepsilon-1)f(a-s)-4\varepsilon f(a)
+-2sf^{\prime}(a+\varepsilon s)}{\big(\varepsilon^{2}-\frac{1}{3}\big)s^{3}}.$$
+\item 证明：$\lim\limits_{x \rightarrow+\infty} f^{\prime}(x)=0$。
+\end{enumerate}
+
+~\\
+五 （14 分）、设 $\mathbf{F}: \mathbb{R}^{n} \rightarrow \mathbb{R}^{n}$ 可微，$\|\mathbf{F}_{\mathbf{x}}\|<1$。
+对于 $k \geq 1$，记 $\mathbf{F}^{k}:=\overbrace{\mathbf{F} \circ \mathbf{F} \circ \cdots \circ \mathbf{F}}^{k\,个}$。
+\begin{enumerate}[label=(\roman*)]
+\item 若 $\mathbf{F}$ 没有不动点，证明：对 $\mathbb{R}^{n}$ 中任何有界集 $E$，
+有 $\sup\limits_{\mathbf{x} \in E} \dfrac{|\mathbf{F}^{2}(\mathbf{x})-\mathbf{F}(\mathbf{x})|}{|\mathbf{F}(\mathbf{x})-\mathbf{x}|}<1$。
+\item 若有 $\mathbf{x}_{1}, \mathbf{x}_{2} \in \mathbb{R}^{n}$ 使 $\{\mathbf{F}^{k}(\mathbf{x}_{1})+\mathbf{F}^{k}(\mathbf{x}_{2})\}$ 有界，
+证明：对任何 $\mathbf{x} \in \mathbb{R}^{n}$，$\{\mathbf{F}^{k}(\mathbf{x})\}$ 均收敛。
+\end{enumerate}
+
+~\\
+六（14 分）、设 $\{a_{n}\}$ 为有界的正数列，证明：级数 $\displaystyle\sum_{n=1}^{\infty} a_{n}$ 收敛
+当且仅当级数 $\displaystyle\sum_{n=1}^{\infty} \frac{a_{n}}{S_{n} \ln (S_{n}+1)}$ 收敛，
+其中 $\displaystyle S_{n}=\sum_{k=1}^{n} a_{k}$。
+
+== 2022--2023秋期中 ==
+一（30 分）、填空题（每题 6 分）：
+\begin{enumerate}[label=(\arabic*)]
+\item 设 $x_{0}>0, x_{n+1}=\dfrac{x_{n}}{1+x_{n}^{3}+x_{n}^{5}}$ $(n \geq 0)$。
+则 $\lim\limits_{n \rightarrow+\infty} \sqrt[3]{n} x_{n}=\underline{\qquad\qquad}$。
+\item 设 $f(x)=\begin{cases}x^{2}+(a+b)x+a^{2}-3a+2, & x<0, \\
+x+c, & x=0, \\ x^{a}\sin\frac{1}{x}, & x>0\end{cases}$ 
+是 $\mathbb{R}$ 上的可微函数，则 $(a, b, c)=\underline{\qquad\qquad}$。
+\item 设 $y=y(x)$ 由参数方程 $\begin{cases}x=t+\sin t, \\ y=e^{t}+\ln (1+t^{2})\end{cases}$ 确定。
+则 $\dfrac{d^{2} y(x)}{d x^{2}}\bigg|_{x=0}=\underline{\qquad\qquad}$。
+\item 使得级数 $\displaystyle\sum_{n=1}^{\infty}\left(e^{(-1)^{n}n^{a}}-1\right)$ 
+收敛的实数 $a$ 满足的充要条件是：$\underline{\qquad\qquad}$。
+\item 设 $f(x)=(x^{4}+x^{2}-2)^{2022}$，则 $f^{(2022)}(1)=\underline{\qquad\qquad}$。
+\end{enumerate}
+~\\
+二（16 分）、设数列 $\{x_{n}\},\{y_{n}\}$ 满足
+$$\begin{cases}
+\dfrac{x_{n}^{2}}{\sqrt[n]{n}}+\left(\cos\dfrac{x_{n}}{n}+3n\sin\dfrac{1}{n}\right) y_{n}^{2}=2x_{n}+16y_{n}, \\ \\
+e^{\frac{x_{n}}{n}}=1+\ln \left(1+\dfrac{9-8y_{n}}{n}\right)+\dfrac{25}{n}.
+\end{cases}$$
+证明$\{x_{n}\},\{y_{n}\}$ 收敛并求极限。
+
+~\\
+三（18 分）、设 $f: \mathbb{R}^{n} \rightarrow \mathbb{R}$ 可微，
+$\lim\limits_{|\mathbf{x}| \rightarrow+\infty} \nabla f(\mathbf{x})$ 存在。
+（1）证明：$f$ 在 $\mathbb{R}^{n}$ 上一致连续。
+（2）说明 $f$ 是否满足 Lipschitz 条件：
+即存在 $M>0$ 使得对任何 $\mathbf{x}, \mathbf{y} \in \mathbb{R}^{n}$，
+有 $|f(\mathbf{x})-f(\mathbf{y})| \leq M|\mathbf{x}-\mathbf{y}|$。
+
+~\\
+四（18 分）、分别说明是否存在 $\mathbb{R}$ 上的可微函数 $f, g, h$ 满足如下条件：
+\begin{enumerate}[label=(\arabic*)]
+\item $f^{\prime}(0)=1$，对任何 $\delta>0$，存在 $\xi \in(0, \delta)$ 以及 $\eta \in(0, \xi)$ 使得 $f(\xi)<f(\eta)$。
+\item $g^{\prime}(0)=1$，对任何 $\delta>0$，存在 $x \in(0, \delta)$ 使得 $g(x)<g\big(\frac{x}{2}\big)$。
+\item $h^{\prime}(0)=1$，对任何 $\delta>0$，存在 $x \in(0, \delta)$ 使得 $h(x)<h(x-x^{2})$。
+\end{enumerate}
+
+~\\
+五（18 分）、设 $[0,+\infty)$ 上实函数 $f$ 局部有界，$A \in \mathbb{R}$。
+\begin{enumerate}[label=(\arabic*)]
+\item 若 $\lim\limits_{x \rightarrow+\infty}\big(f(x+1)-f(x)\big)=A$。
+证明：$\lim\limits_{x \rightarrow+\infty} \dfrac{f(x)}{x}=A$。
+\item 若 $\lim\limits_{x \rightarrow+\infty}\Big(f\big(x+\dfrac{1}{x}+1\big)-f(x)\Big)=A$。
+证明：$\lim\limits_{x \rightarrow+\infty} \dfrac{f(x)}{x}=A$。
+\end{enumerate}
+
+== 2022--2023春期末 ==
+一（30 分）、填空题（每题 6 分）：
+\begin{enumerate}[label=(\arabic*)]
+\item 设 $L$ 为曲线 $x^{2}+4 y^{2}=1$ $(y \geq 0)$，方向为从点 $(-1,0)$ 到点 $(1,0)$。
+则积分 $\displaystyle\int_{L}\left(x^{2}+\sin x+y^{3}\right) d x+\left(x^{3}+\cos x+e^{y}\right) dy=\underline{\qquad\qquad}$。
+\item 上半球面 $x^{2}+y^{2}+z^{2}=1$ $(z \geq 0)$ 被柱面 $2 x^{2}+y^{2}=1$ 所围的那一部分曲面的面积为 $\underline{\qquad\qquad}$。
+\item 在 $\left(-\frac{1}{3},\frac{1}{3}\right)$ 内，定义 $\displaystyle f(x)=\int_{0}^{x} \frac{2t+1}{(1-t^{3})(1-3t^{2}+9t^{4})} \, dt$，
+则 $f$ 的 Maclaurin 级数中 $x^{2023}$ 的系数为$\underline{\qquad\qquad}$。
+\item 设 $a,b>0$，则积分 $\displaystyle\int_{0}^{+\infty} \sin \left(x^{a}+\frac{1}{x^{b}}\right) dx$ 收敛的充要条件是 $\underline{\qquad\qquad}$。
+\item 极限 $\lim\limits_{s \rightarrow+\infty} \frac{\displaystyle\int_{0}^{+\infty} x^{3} e^{-sx^{-2}e^{x}} dx}{\displaystyle\int_{0}^{+\infty} e^{-sx^{-2}e^{x}} dx}=\underline{\qquad\qquad}$。
+\end{enumerate}
+~\\
+二（14 分）、计算 $\displaystyle\lim_{x \rightarrow 0^{+}} \sum_{k,j=1}^{\infty} \frac{k^{2}x^{2}}{(1+k^{4}x^{4}+j^{4}x^{4}) \sqrt{k^{4}+j^{4}}}$ 并说明理由。
+
+~\\
+三（14 分）、记 $z=x+iy, dz=dx+idy$。试计算第二型曲线积分 $\displaystyle\int_{C} \frac{z^{2}+3}{z^{2}(1+z^{2})} \, dz$，
+其中 $C$ 为曲线 $x^{2}+4xy+7y^{2}=2023$，沿逆时针方向行进。
+
+~\\
+四（14 分）、用 $\displaystyle\bar{u}=\frac{1}{b-a} \int_{a}^{b} u(x) \, dx$ 表示 $u \in L^{1}[a,b]$ 在 $[a,b]$ 上的平均值。
+现设 $f \in L^{1}[a,b]$ 满足如下条件：$\forall \, \varphi \in C_{0}^{1}[a,b]$，
+有 $\displaystyle\int_{a}^{b} f(x) \varphi^{\prime}(x) \, dx=0$。证明：
+\begin{enumerate}
+\item 对任何 $\psi \in C[a,b]$，有 $\displaystyle\int_{a}^{b}(f(x)-\bar{f}) \psi(x) \, dx=0$。
+\item $f=\bar{f}$ 在 $[a,b]$ 上几乎处处成立。
+\end{enumerate}
+~\\
+五（14 分）、设 $f \in C^{\infty}(\mathbb{R})$ 在 $\mathbb{R}$ 上有界。
+\begin{enumerate}
+\item 证明：对任何 $n \geq 0$，成立 $\displaystyle\lim_{s \rightarrow+\infty} s^{2n+1}\left(\int_{\mathbb{R}} f(x) e^{-s^{2}x^{2}} dx-\sum_{k=0}^{n} \frac{f^{(2k)}(0) \sqrt{\pi}}{4^{k}k!s^{2k+1}}\right)=0$。
+\item 求 $A_{0}, A_{1}, \ldots, A_{4}$ 使得 $\displaystyle\lim_{s \rightarrow+\infty} s^{4}\left(\int_{0}^{+\infty} e^{-s^{2}x^{2}} \sin x \, dx-\sum_{k=0}^{4} \frac{A_{k}}{s^{k}}\right)=0$。
+\end{enumerate}
+~\\
+六（14 分）、设 $f$ 以 $1$ 为周期，$f(x)=x^{2}(1-x)^{2}$ $(x \in[0,1])$，
+$f$ 的 Fourier 级数为 $\displaystyle\frac{a_{0}}{2}+\sum_{n=1}^{\infty}(a_{n} \cos 2n \pi x+b_{n} \sin 2n \pi x)$。
+考虑方程 $H: \begin{cases}u_{t}(t,x)=u_{xx}(t,x), & t \geq 0,\ x \in \mathbb{R}, \\ \\ u(0, x)=f(x), & x \in \mathbb{R}.\end{cases}$
+\begin{enumerate}
+\item 若方程 $H$ 的解 $u$ 存在且 $u, u_{t}, u_{x}, u_{xx} \in C([0,+\infty) \times \mathbb{R})$，
+证明：$F(t):=\int_{0}^{1} u^{2}(t,x) \, dx$ 在 $[0,+\infty)$ 上单减。
+\item 令 $u(t, x)=a_{0}+\sum\limits_{n=1}^{\infty} e^{-4n^{2}\pi^{2}t}(a_{n} \cos 2n \pi x+b_{n} \sin 2n \pi x)$，
+证明：$u$ 为方程 $H$ 满足 $u, u_{t}, u_{x}, u_{xx} \in C([0,+\infty) \times \mathbb{R})$ 的唯一解。
+\end{enumerate}
+
+
+== 2022--2023春期中 ==
+一（30 分）、填空题（每题6分）：
+\begin{enumerate}[label=(\arabic*)]
+\item $\displaystyle\int_{0}^{\pi} \frac{x \sin x}{3+\cos 2x} \, dx=\underline{\qquad\qquad}$。
+\item 设 $D:=\left\{(x, y) \,\bigg|\, 1 \leq x^{2}+\dfrac{y^{2}}{4} \leq 4, x^{2} \leq y \leq 2 x^{2}, x \geq 0\right\}$。
+则 $\displaystyle\iint\limits_{D} \frac{(2x^{2}+y^{2})}{x^{3}(4x^{2}+y^{2})} \, dx dy=\underline{\qquad\qquad}$。
+\item 设实函数 $f$ 满足 $f^{\prime \prime}(x)=x^{2} \arctan (x^{2})$ $(x \in \mathbb{R}), f(0)=1, f^{\prime}(0)=0$。
+则 $f$ 的 MacLaurin 级数为 $\underline{\qquad\qquad}$。
+\item 设 $a$ 为实常数。若函数项级数 $\displaystyle\sum_{n=2}^{+\infty} \frac{\sin nx}{n^{ax}+\sin nx}$ 关于 $x \in[4\pi,+\infty)$ 一致收敛，
+则 $a$的取值范围是 $\underline{\qquad\qquad}$。
+\item $\displaystyle\lim_{n \rightarrow+\infty} \sum_{k=1}^{n} \sin \left(\frac{1}{n} \sin \frac{k\pi}{n}\right)=\underline{\qquad\qquad}$。
+\end{enumerate}
+~\\
+二（16 分）、证明：方程 $\begin{cases}y^{\prime}=3x^{2} y-e^{y}+1, \\ \\ y(0)=2\end{cases}$ 的解 $y=y(x)$ 在 $[0,+\infty)$ 上存在唯一。
+
+~\\
+三（18 分）、计算以下极限并说明理由：
+\[\lim_{n \rightarrow+\infty}\frac{\int_{0}^{1}(1-x^{2})^{n}\,dx}{\int_{0}^{\frac{1}{2}}\left(1-x^{2}\right)^{n} dx}, \quad 
+\lim_{n \rightarrow+\infty}\frac{\int_{0}^{1}(1-x^{2})^{n}\,dx}{\int_{0}^{1}\big(1-\frac{x^{2}}{2023}\big)^{n}\,dx}, \quad 
+\lim_{n \rightarrow+\infty}\frac{\int_{0}^{1}\frac{\sin^{n} x}{x^{n}}\,dx}{\int_{0}^{1}\frac{x^{n}}{\tan^{n}x}\,dx}.\]
+
+~\\
+四（18 分）、设 $k \geq 1, n \geq 2$，矩阵值函数 $A(\cdot) \in C^{k}([0,1] ; \mathbb{R}^{n \times n})$ 满足 $\|A(\cdot)\|<1$。
+证明：存在矩阵值函数 $G(\cdot) \in C^{k}([0,1];\mathbb{R}^{n \times n})$ 使得：$G^{2}(\cdot)=I-A(\cdot)$ 以及 $\|G(\cdot)\| \geq \sqrt{1-\|A(\cdot)\|}$，其中 $I$ 是 $n$ 阶单位矩阵。
+
+~\\
+五（18 分）、设 $h_{n}(x)=\sin (nx) \chi_{[0,2\pi]}(x)$ $(n \geq 1)$。
+\begin{enumerate}[label=(\arabic*)]
+\item 若 $L^{2}(\mathbb{R})$ 中函数列 $\{f_{n}\}$ 收敛于 $f$，
+则 $\|f\|_{2}=\lim\limits_{n \rightarrow+\infty}\|f_{n}\|_{2}$，且对任何 $g \in L^{2}(\mathbb{R})$，
+有 $\lim\limits_{n \rightarrow+\infty} \int_{\mathbb{R}} f_{n}(x) g(x) \, dx=\int_{\mathbb{R}} f(x) g(x) \, dx$。
+\item 证明：$\{h_{n}\}$ 是 $L^{2}(\mathbb{R})$ 中有界列，但没有收敛子列。
+\end{enumerate}
+
+~\\
+附加题（20 分）、设 $X=\bigcup\limits_{n=1}^{\infty}\left\{f \chi_{[-n,n]} \,\big|\, f \in \mathscr{P}\right\}$，
+其中 $\mathscr{P}$ 为 $\mathbb{R}$ 上的有理系数多项式全体。
+\begin{enumerate}[label=(\arabic*)]
+\item 证明：对任何 $f \in L^{2}(\mathbb{R})$，
+成立 $\inf\limits_{g \in X}\|g-f\|_{L^{2}(\mathbb{R})}=0$。
+\item 设 $\{f_{n}\}$ 是 $L^{2}(\mathbb{R})$ 中的有界列。
+证明存在 $\{f_{n}\}$ 的子列 $\{f_{n_{k}}\}$ 使得对任何 $g \in L^{2}(\mathbb{R})$，
+$\displaystyle\lim_{k \rightarrow+\infty} \int_{\mathbb{R}} f_{n_{k}}(x)g(x) \, dx$ 存在。
+\end{enumerate}
+
+== 2021--2022秋期中 ==
+一(30分）、填空题(每题6分)
+\begin{enumerate}[label=(\arabic*)]
+\item 设$x_{n+1}=x_n-x_n^4\ (n\ge0)$。若实数$a$和正数$b$使得$\lim\limits_{n\to+\infty}n^\alpha x_n=b$，则$b=\underline{\qquad\quad}$.\\
+\item 设$f(x)=\begin{cases}ae^x+b\sin 2x,&x<0\\cx^2+\ln(1+x)+x,&x\ge0\end{cases}$是$\R$上二阶连续可导函数，则$a=\underline{\qquad\quad}$，$b=\underline{\qquad\quad}$，$c=\underline{\qquad\quad}$.\\
+\item 设$\R$上的二阶可导函数$f(x)$满足$x+\pi e^{xf(x)}+f(x)-\sin f(x)=0$。则$f''(0)=\underline{\qquad\quad}$.\\
+\item 使得级数$\displaystyle \sum\limits_{n=1}^{\infty} n^\alpha\Big[\Big(1+\frac{1}{n}\Big)^n-1\Big]$收敛的实数$\alpha$满足的充要条件是：$\underline{\qquad\quad}$.\\
+\item 设$f(x)=x^{2019}e^{2020x}\sin x$，则$f^{(2021)}(0)=\underline{\qquad\quad}$.\\
+\end{enumerate}
+~\\
+二(10分)、试构造$\R$上的实函数$f$使得它仅在$0,1$两点连续，且$f'(0)=1$，$f'(1)=0$。
+
+~\\
+三(20分)、设$f$为$\R$上可导的实函数，恒成立$|f'(x)|\le1$，且$\{x\in\R\,\big|\,f'(x)=1\}$无内点。
+记$f_n(x)$为$\overbrace{f\circ f\circ \cdots\circ f}^{n\text{ 次}}(x)$，$\{f_n(0)\}$收敛于$\xi$。
+\begin{enumerate}[label=(\arabic*)]
+\item 证明：对任意$x<y$，$|f(x)-f(y)|<|x-y|$。
+\item 对于确定的$x\in\R$，若$\{f_n(x)\}$的子列$\{f_{n_k}(x)\}$收敛，证明：$\{f_{(n_{k}+1)}(x)\}$收敛。
+\item 证明：对任何$x\in\R$，$\{f_n(x)\}$收敛于$\xi$。
+\end{enumerate}
+
+~\\
+四(20分)、\\
+（1）对于给定的$\alpha>0$，构造数列$\{a_n\},\{b_n\}$满足$\displaystyle a_n\le\sum_{k=n}^\infty\frac{1}{k^{1+\alpha}}\le b_n$，且$\displaystyle \lim_{n\to\infty}\frac{b_n}{a_n}=1$.\\
+（2）证明：$\displaystyle \lim_{\alpha\to0^+}\sum_{n=1}^\infty\frac{\alpha}{n^\alpha}\ln\Big(1+\frac{1}{n}\Big)=\lim_{\alpha\to0^+}\sum_{n=1}^\infty\frac{\alpha}{n^{\alpha+1}}$.\\
+（3）计算：$\displaystyle \lim_{\alpha\to0^+}\sum_{n=1}^\infty\frac{\alpha}{n^\alpha}\ln\Big(1+\frac{2}{n}+\frac{3}{n^2}\Big)$.
+
+~\\
+五(20分)、设$E\subseteq\R^n$为非空集，$f$为$E$上的实函数。证明：$f$局部有界当且仅当$f$在$E$的任何紧子集上有界。
+
+
+== 2021--2022秋期末 ==
+一(30分）、填空题(每题5分)
+\begin{enumerate}[label=(\arabic*)]
+\item 设$\displaystyle f(x)=\frac{1}{4\sqrt{2}}\ln\frac{\sqrt{1+x^4}+\sqrt{2}x}{\sqrt{1+x^4}-\sqrt{2}x}-\frac{1}{2\sqrt{2}}\arctan\frac{\sqrt{1+x^4}}{\sqrt{2}x}$，则$f'(x)=\underline{\qquad\quad}$.\\
+\item $\displaystyle \int\frac{\sqrt{1+x^4}}{1-x^4} \,\mathrm{d}x=\underline{\qquad\quad}$.\\
+\item $\lim\limits_{x \to 0}\dfrac{\ln(1+\sin\tan x)-\ln(1+\tan x)}{x^3}=\underline{\qquad\quad}$.\\
+\item 设$f(x,y)=2x^2+y^2+xy-6x-5y$，则$f$在$[0,+\infty)\times[0,+\infty)$上的最小值为$\underline{\qquad\quad}$.\\
+\item 设在$0$点附近，$f(x):=\ln(1+x)+\frac{1}{2}\arcsin x^2$，$f(\varphi(x)) \equiv x$，则$f$和$\varphi$的带Peano型余项的四阶MacLaurin展式依次为：
+$f(x)=\underline{\qquad\qquad}$和$\varphi(x)=\underline{\qquad\qquad}$。
+\item 常微分方程$y^{(5)}(x)+2y^{(3)}(x)+y'(x)=xe^{2x}+\sin x$的通解是$\underline{\qquad\qquad\qquad}$.\\
+\end{enumerate}
+~\\
+二(14分)、设$\Omega \subset \mathbb{R}^n$为有界区域，$f:\overline{\Omega}\to \mathbb{R}$连续，且$f$在$\Omega$内可微，
+对任何$\mathbf{x}\in \Omega$，$\nabla f(\mathbf{x})\ne \mathbf{0}$。
+进一步存在$\mathbf{x}_0 \in \Omega$满足$|f(\mathbf{x}_0)|\le \min\limits_{\mathbf{x}\in \partial\Omega}|f(\mathbf{x})|$。
+证明：$f$在$\Omega$内有零点。
+
+~\\
+三(14分)、已知非负数列$\{x_n\},\{y_n\}$满足
+\[\begin{cases}
+\displaystyle x_n^{\frac{2n+2021}{n}}+x_n+y_n=\cos\frac{1}{2n},\\
+\displaystyle 3y_n^{\frac{n+2}{n}}+4x_n+y_n=4n^{\frac{2}{n}}+\tan\frac{1}{n}.
+\end{cases}\]
+证明：$\{x_n\},\{y_n\}$收敛，并求其极限。
+
+~\\
+四(14分)、\\
+\quad\ (1) 实函数$y$在$(0,+\infty)$上两阶可导，满足$(1+x^2)y''(x)+4xy'(x)+2y(x)=0$。
+试用代换$z(x)=\dfrac{1+x^2}{1+x}y(x)$导出$z$的微分方程并求解，进而求$y$的通解。
+
+\quad\ (2) 设实函数$f(x)$在$[0,3]$上连续，在$(0,3)$内两阶可导，$f(0)=f(1)=1,f(3)=\dfrac{2}{5}$。
+证明：存在$\xi \in (0,3)$使得$(1+\xi^2)f''(\xi)+4\xi f'(\xi)+2f(\xi)=0$.
+
+~\\
+五(14分)、设$\displaystyle f(x)=\ln(1+x)+\frac{1}{2}\arcsin x^2$。
+试分别构造满足如下条件的实数列$\{a_n\}$，或说明这样的数列不存在。\\
+\quad\ (1) $\displaystyle \sum\limits_{n=1}^{\infty}a_n$收敛，
+而$\displaystyle \sum\limits_{n=1}^{\infty}f(a_n)$发散。\\
+\quad\ (2) $\displaystyle \sum\limits_{n=1}^{\infty}a_n$发散，
+而$\displaystyle \sum\limits_{n=1}^{\infty}f(a_n)$收敛。
+
+~\\
+六(14分)、设$E \subseteq \mathbb{R}^n$。
+(1) 证明：$(E')' \subseteq E'$。(2) 试给出$(E')' \neq E'$的例子。
+
+
+== 2021--2022春期末 ==
+一(30分）、填空题(每题5分)
+\begin{enumerate}[label=(\arabic*)]
+\item 积分$\displaystyle \int_0^1 \frac{\ln(1-x+x^2)}{x} \,\mathrm{d}x=\underline{\qquad\quad}$.
+\item 曲面$z=x^2+2y^2$落在区域$x^2+4y^2\le 4$内的那一部分的面积为$\underline{\qquad\quad}$.
+\item 函数$\displaystyle \frac{1}{(1+x)(1+2x+4x^2)}$的Maclaurin级数中$x^{2022}$项的系数为$\underline{\qquad\quad}$.
+\item 使得函数项级数$\displaystyle \sum\limits_{n=2022}^{+\infty} (-1)^nx^n\Big(1+\frac{ax}{n}\Big)^{-n^2}$关于$x\in[1,+\infty)$一致收敛的实常数$a$的取值范围是$\underline{\qquad\quad}$.
+\item 设$f$为$\R$上的实值速降函数，$\displaystyle g(x)=\int_\mathbb{R} yf(2y)e^{-2\pi \mathrm{i}xy} \,\mathrm{d}y\ \ (x\in\R)$。
+若$\displaystyle \int_\mathbb{R}|g(x)|^2 \,\mathrm{d}x=1$，则$\displaystyle \int_\mathbb{R} x^3f(x)f'(x) \,\mathrm{d}x=\underline{\qquad\quad}$.
+\item 极限$\lim\limits_{n\to\infty} \frac{\displaystyle \int_0^1 \frac{\ln^n(1+x)}{x^n} \,\mathrm{d}x}{\displaystyle \int_0^1 \frac{\sin^n x}{x^{n-1}} \,\mathrm{d}x}=\underline{\qquad\quad}$.
+\end{enumerate}
+~\\
+二(14分)、设$1\leq p<+\infty$，$f\in L^p(\mathbb{R}^n)$. 依次证明：\\
+\quad\ 1. 对任意$\varepsilon >0$，存在$g\in C_c(\mathbb{R}^n)$使得$\displaystyle \int_{\R^n}|g(\x)-f(\x)|^p\,\mathrm{d}\x\leq\varepsilon.$\\
+\quad\ 2. $\displaystyle \lim_{\U\to\mathbf{0}}\int_{\R^n} |f(\x+\U)-f(\x)|^p\,\mathrm{d}\x =0.$\\
+\quad\ 3. $\displaystyle \lim_{\delta\to0^+}\int_{\R^n} \Big(\frac{1}{|B_\delta(\x)|}\int_{B_\delta(\x)}|f(\y)-f(\x)|^p \,\mathrm{d}\y\Big)\,\mathrm{d}\x=0.$
+
+~\\
+三(14分)、设$f$在复区域$D$内解析（即$f$在$D$内任一点附近可以展开为幂级数），且$f$的零点有聚点$z_0\in D$。证明：$f$在$D$内恒为零。
+
+~\\
+四(14分)、计算$\displaystyle \lim_{R\to+\infty}\iint\limits_{x^2+y^2\le R^2} \frac{\sin(x^2+xy+y^2)}{x^2+xy+y^2} \,\mathrm{d}x\mathrm{d}y$并说明计算过程的正确性.
+
+~\\
+五(14分)、对于具有正实部的复数$z$，定义$\Gamma(z)=\int_0^{+\infty}x^{z-1}e^{-x}\,dx$。
+证明(若仅证明了$z$为实数情形时的结果，计10分)：对任何复数$z$，有$\displaystyle \lim\limits_{x\to+\infty}\frac{\Gamma(x+z)}{x^z\Gamma(x)}=1$.
+
+~\\
+六(14分)、设$f$以$2\pi$为周期，$f|_{[0,2\pi]}\in L^1[0,2\pi]$，$f$的Fourier级数为$\displaystyle \frac{a_0}{2}+\sum_{n=1}^\infty(a_n\cos nx+b_n\sin nx)$。记
+$$S_n(f;x)=\frac{a_0}{2}+\sum_{k=1}^n(a_k\cos kx+b_k\sin kx),\quad \sigma_n(f;x)=\frac{1}{n}\sum_{k=0}^{n-1}S_k(f;x).$$
+\quad\ 1.证明：对于$n\ge1$，以及$x\in\R$，有$\displaystyle \sigma_n(f;x)=\frac{1}{2n\pi}\int_{-\pi}^\pi f(x+t)\bigg(\frac{\sin\frac{nt}{2}}{\sin\frac{t}{2}}\bigg)^2 \,\mathrm{d}t.$\\
+\quad\ 2.若$f$连续，则$\sigma_n(f;x)$关于$x\in\R$一致收敛.
+
+
+== 2020--2021秋期中 ==
+一(30分）、填空题(每题6分)
+\begin{enumerate}[label=(\arabic*)]
+\item 设$x_0\in(0,2)$，$\displaystyle x_{n+1}=x_n-\frac{x_n^3}{6}\ (n\ge0)$。若实数$a$和正数$b$使得$\lim\limits_{n\to+\infty}n^\alpha x_n=b$，则$b=\underline{\qquad\quad}$.
+\item 设$f(x)=\begin{cases}ax^2+b\cos x,&x<0\\e^x+\ln(1+x)+cx,&x\ge0\end{cases}$是$\R$上二阶连续可导函数，则$a=\underline{\qquad\quad}$，$b=\underline{\qquad\quad}$，$c=\underline{\qquad\quad}$.
+\item 设$\R$上的函数$f(x)$满足$x+f(x)+\sin f(x)=0$。则$f'''(0)=\underline{\qquad\quad}$.
+\item 使得级数$\displaystyle \sum\limits_{n=1}^{\infty} \Big(1-\frac{x}{\sqrt{n}}\Big)^n$收敛的实数$x$满足的充要条件是：$\underline{\qquad\quad}$.
+\item 设$f(x)=e^x\cos x$，则$f^{(2020)}(0)=\underline{\qquad\quad}$.
+\end{enumerate}
+~\\
+二(10分)、试构造$\R$上的实函数$f$使得它仅在$0$点连续，且在$0$点的导数为$1$。
+
+~\\
+三(20分)、若$f(x_0)=x_0$，则称$x_0$为$f$的不动点。现设$f$为$[0,1]$上处处可导的实函数，
+$0$和$1$均为$f$的不动点，且$f'(0)>1$，$f'(1)>1$。证明：
+\begin{enumerate}[label=(\arabic*)]
+\item $f$在$(0,1)$中也有不动点。
+\item 存在$f$的不动点$\xi\in(0,1)$使得$f'(\xi)\le1$。
+\end{enumerate}
+~\\
+四(20分)、证明：
+\begin{enumerate}[label=(\arabic*)]
+\item 对于任何$\alpha>0$以及$n\ge1$，成立$n^{-\alpha}+(n+2)^{-\alpha}\ge2(n+1)^{-\alpha}$。
+\item 对于任何$\alpha>0$以及非负整数$m$，级数$\displaystyle \sum_{n=1}^\infty\frac{(-1)^{n-1}}{(n+m)^\alpha}$收敛.
+\item 对于任何非负整数$m$，级数$\displaystyle \varliminf_{\alpha\to0^+}\sum_{n=1}^\infty\frac{(-1)^{n-1}}{(n+m)^\alpha}\ge\frac{1}{2}$.
+\item $\displaystyle \lim_{\alpha\to0^+}\sum_{n=1}^\infty\frac{(-1)^{n-1}}{n^\alpha}=\frac{1}{2}$.
+\end{enumerate}
+~\\
+五(20分)、设$E\subseteq\R^n$为非空集，$\alpha\in(0,1)$，$f$为$E$上的实函数。
+称$f\in C^\alpha(E)$，如果存在常数$M>0$使得对任何$x,y\in E$成立$|f(x)-f(y)|\le M|x-y|^\alpha$。
+现设$D$为单位闭方体$[0,1]^n$，$B_\delta(x_0)$表示$\R^n$中以$x_0$为心$\delta$为半径的球体。
+\begin{enumerate}[label=(\arabic*)]
+\item 设$\alpha\in(0,1)$，若$f\in C^\alpha_{loc}(D)$，即对任何$x_0\in D$，
+存在$\delta>0$使得$f\in C^\alpha(B_\delta(x_0)\cap D)$。证明：$f\in C^\alpha(D)$.\\
+\item 若对于任何$x_0\in D$，存在$\alpha\in(0,1)$以及$\delta>0$
+使得$f\in C^\alpha(B_\delta(x_0)\cap D)$。证明或举例否定：
+存在$\beta\in(0,1)$使得$f\in C^\beta(D)$.
+\end{enumerate}
+
+
+== 2020--2021秋期末 ==
+一(30分）、填空题(每题5分)
+\begin{enumerate}[label=(\arabic*)]
+\item 设$f(x,y)=x^2+2y^2-2xy+3x-9y$，则$f(x,y)$在$[0,+\infty)\times[0,+\infty)$上的最小值为$\underline{\qquad\quad}$.
+\item $\displaystyle \int xe^x\cos x\,dx=\underline{\qquad\quad}$.
+\item $\displaystyle \lim\limits_{x\to0} \frac{(1+\tan x)^\frac{1}{\tan x}-(1+x)^\frac{1}{x}}{x^3}=\underline{\qquad\quad}$.\\
+\item 对于$n\geq6$，设$\displaystyle \xi_n\in\Big(0,\frac{1}{n}\Big)$满足$\displaystyle \sin\xi_n=\frac{1}{n}e^{\xi_n}$，
+则$\lim\limits_{n\to\infty}n\xi_n=\underline{\qquad\quad}$.
+\item 设函数$f$在$x=0$附近有三阶导数，且其带Peano型余项的三阶MacLaurin展式为$f(x)=x+3x^2+4x^3+o(x^3)\ \ (x\to0)$，
+则$f$的反函数$g$的带Peano型余项的三阶MacLaurin展式为：$g(x)=\underline{\qquad\qquad\qquad}$.
+\item 常微分方程$y'''-3y'+2y=xe^x+\cos x$的通解是$\underline{\qquad\quad}$.
+\end{enumerate}
+~\\
+二(12分)、试构造$\R^2$上的二元函数$f$使得$\mathbf{0}$点不是它的极小值点，但对任何$\alpha\in[0,2\pi]$，
+$g(t):=f(t\cos\alpha,t\sin\alpha)$在$t=0$取到严格极小值。进一步，能否取到这样的一个$f$使得它在$\R^2$上连续？请证明你的结论。
+
+~\\
+三(18分)、设$y=y(x)$由参数方程$\begin{cases}x=e^t+t,\\y=\cos t-3t\end{cases}$确定。\\
+（1）计算$\displaystyle\frac{d^2y}{dx^2}$.\qquad （2）计算$\displaystyle \int y(x)\,dx$.\\
+（3）固定$x_0\ne1$，定义$x_{n+1}=y(x_n)\ (n\ge0)$。试讨论$\{x_n\}$的有界性与收敛性。
+
+~\\
+四(14分)、设实函数$f$在$[0,1]$上连续，在$(0,1)$内两阶可导，$f(0)=0$，$f(\frac{1}{2})=\frac{\pi}{6}$，$f(1)=\frac{\pi}{2}$。
+证明：存在$\xi\in(0,1)$使得$\displaystyle f''(\xi)=\frac{\xi}{1-\xi^2}f'(\xi)$。
+
+~\\
+五(14分)、设$a_n\ne1\,(n\ge1)$，$\lim\limits_{n\to+\infty}a_n=0$，无穷乘积$\displaystyle \prod_{n=1}^\infty(1+a_n)$收敛。\\
+（1）举例说明级数$\displaystyle\sum_{n=1}^\infty a_n$收敛和发散的情形都有可能发生。\\
+（2）证明级数$\displaystyle\sum_{n=1}^\infty a_n$收敛当且仅当$\displaystyle\sum_{n=1}^\infty a_n^2$收敛。
+
+~\\
+六(12分)、设$\R^n$上连续函数列$\{f_k(\x)\}$对于每一个$\x\in\R^n$都是有界的。
+证明：存在内点非空的集合$E\subset\R^n$使得$\{f_k\}$在$E$上一致有界，即存在与$k$无关的常数$M>0$使得
+$$|f_k(\x)|\le M,\quad\ \forall\,k\ge1,\x\in E.$$
+
+
+== 2020--2021春期中 ==
+一(30分）、填空题(每题6分)
+\begin{enumerate}[label=(\arabic*)]
+\item $\displaystyle \int_0^\pi\frac{x\sin x}{1+\sin x}\,dx=\underline{\qquad\quad}$.
+\item $\displaystyle \iiint\limits_{x^2+4y^2\leq2x+4y}(x^2+y^2)\,dxdy=\underline{\qquad\quad}$.
+\item 设$\alpha\in\R$为给定常数，则使得函数项级数$\displaystyle \sum_{n=1}^{\infty} (1-x)^\alpha x^{n^2}$在$[0,1]$上一致收敛的$\alpha$的取值范围是$\underline{\qquad\quad}$.
+\item 设$D\subseteq(0,+\infty)\times(0,+\infty)$，若函数项级数$\displaystyle \sum_{n=1}^{\infty}\frac{\sin\big(n+\frac{1}{n^\beta}\big)}{n^\alpha+\sin n}$关于$(\alpha,\beta)\in D$内闭一致收敛，则满足上述条件的最大的集合$D$是$\underline{\qquad\quad}$.
+\item $\displaystyle \lim_{n\to+\infty} \sum_{k=1}^n\ln\Big(1+\frac{\ln k}{n\ln n}\Big)=\underline{\qquad\quad}$.
+\end{enumerate}
+~\\
+二(10分)、设$E\subset\R^n$是Jordan可测的有界集，$f\colon E\rightarrow\R$有界。
+证明：$f$在$E$上Riemann可积当且仅当$f$在$E$的内部$E^o$中Riemann可积。
+
+~\\
+三(20分)、计算以下极限并说明理由：
+
+（1）$\displaystyle \lim_{n\to+\infty} \frac{\int_0^\frac{1}{2} x^{nx}\,dx}{\int_\frac{1}{2}^1 x^{nx}\,dx}$.\qquad
+（2）$\displaystyle \lim_{n\to+\infty} \frac{\int_0^1 \frac{x^{nx}}{1+x^2}\,dx}{\int_0^1 x^{nx}\,dx}$.
+
+~\\
+四(20分)、已知对于$\alpha\in(0,1)$成立$\displaystyle \sum_{n=1}^\infty\frac{1}{n^2-\alpha^2}=\frac{1}{2\alpha^2}-\frac{\pi\cot(\alpha\pi)}{2\alpha}$。
+证明：对于任何实数$\alpha$成立$\displaystyle \sum_{n=1}^\infty\frac{1}{n^2+\alpha^2}=-\frac{1}{2\alpha^2}+\frac{\pi}{2\alpha\tanh(\alpha\pi)}$.
+
+~\\
+五(20分)、对于$A\in\R^{n\times n}$，定义$\|A\|:=\sup\limits_{\begin{subarray}{c}
+\x\in\R^n \\ |\x|=1 \end{subarray}}|A\x|$。记$X:=\{A\in\R^{n\times n}\big|\|A\|<1\}$。
+进一步，对于$A\in X$，定义$\displaystyle \arcsin A:=\sum_{n=0}^\infty\frac{C_{2n}^n}{4^n(2n+1)}A^{2n+1}$。
+\begin{enumerate}[label=(\arabic*)]
+\item 证明：$X$是$\R^{n\times n}$中的区域。
+\item 证明：$\arcsin A$在$X$中任意次连续可微。
+\item 若$A\in X$是对称阵，$1\le k\le n$，证明：$\lambda$是$A$的$k$重特征根当且仅当$\arcsin\lambda$是$\arcsin A$的$k$重特征根。
+\end{enumerate}
+
+== 2020--2021春期末 ==
+一(30分）、填空题(每题5分)
+\begin{enumerate}[label=(\arabic*)]
+\item 积分$\displaystyle \iiint\limits_{x^2+4y^2+9z^2\leq4x+8y+6z}(x^2+y^2+z^2)\,dxdydz=\underline{\qquad\quad}$.\\
+\item 使得函数项级数$\displaystyle \sum_{n=2}^{+\infty} \frac{\sin nx}{n^{ax}}$关于$x\in[\pi,+\infty)$一致收敛的实常数$a$的取值范围是$\underline{\qquad\quad}$.\\
+\item $\displaystyle \int_0^{+\infty}\frac{1}{(1+x^8)^2}\,dx=\underline{\qquad\quad}$.\\
+\item 设$i$为虚数单位，$C$为椭圆周$x^2+4y^2=16$，方向为逆时针，则曲线积分$\displaystyle \int_C\frac{dx+idy}{(x+iy)^2+1}=\underline{\qquad\quad}$.\\
+\item 通过将函数$f(x):=e^{x/2}\ (x\in[0,2\pi])$展开成Fourier级数，可得$\displaystyle \sum_{n=1}^\infty\frac{1}{4n^2+1}=\underline{\qquad\quad}$.\\
+\item 极限$\displaystyle \lim_{n\to\infty} \int_0^1e^x|\sin nx|\,dx=\underline{\qquad\quad}$.\\
+\end{enumerate}
+~\\
+二(14分)、设$f$为$\R$上的实函数，在$\R$的任何有界区间上，$(f^+)^2$与$(f^-)^2$的广义积分均收敛。证明：对于任何有界闭区间$[a,b]$，成立
+$$\lim_{\delta\to0^+}\int_a^b \Big|f(x)-\frac{1}{2\delta}\int_{-\delta}^\delta f(x+t)\,dt\Big|^2\,dx=0.$$
+~\\
+三(14分)、设$\{b_n\}$为单调下降的正数列，证明：$\displaystyle \sum_{n=1}^\infty b_n\sin nx$在$[-\pi,\pi]$上一致收敛的充要条件是$\lim\limits_{n\rightarrow\infty}nb_n=0$.
+
+~\\
+四(14分)、计算$\displaystyle \lim\limits_{n\to+\infty}n\sqrt{n}\int_0^{+\infty} \frac{\sin x^2}{(1+x^2)^n} \,dx$并说明计算过程的正确性.
+
+~\\
+五(14分)、设$f\in C^2(\R^n)$，且$\Delta f(\x)\le0\,(\,\forall\,\x\in\R^n)$。
+令$F(r):=\frac{1}{r^{n-1}}\int\limits_{|\x|=r}f(\x)\,dS\,(r>0)$。证明$F$在$(0,+\infty)$上单调下降。
+
+~\\
+六(14分)、对于$\R^n$上的速降函数$f$，用$\F(f)$表示其Fourier变换。定义$g(\x):=e^{-\pi|\x|^2}\,(\x\in\R^n)$。
+1. 证明$\F(g)=g$。2. 对于$\R^n$上的速降函数$f$，证明：$\F^4(f)\equiv\F(\F(\F(\F(f))))=f$。
+进而尝试构造满足$\F(f)=f$且$f(\x)e^{\pi|\x|^2}$不为常数的函数$f$。

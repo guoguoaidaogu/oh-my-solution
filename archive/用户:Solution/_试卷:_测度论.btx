@@ -1,0 +1,110 @@
+\setdisplaytitle{测度论\ 试卷}
+\sethtmltitle{测度论\ 试卷}
+
+== 2025--2026 学年春季学期期末 (张国华) ==
+\begin{enumerate}
+  \item[一、] (10分)
+   设$(I, \prec)$是一定向集, $(\mu_{i},i\in I)$是$\sigma$-代数$\mathcal{F}$上的一族测度, 满足$i \prec j \Longrightarrow \mu_{i} \leq \mu_{j}$. 令
+   \begin{equation*}
+    \mu(A)=\sup_{i}\mu_{i}(A), \ A \in \mathcal{F}
+   \end{equation*}
+    则$\mu$是$\mathcal{F}$上的测度.
+
+  \item[二、] (10分)
+  设$(X ,\mathcal{F},\mu)$为一有限测度空间, $\mathcal{C}$为生成$\mathcal{F}$的一个代数. 若$A \in \mathcal{F}$, 则$\forall \varepsilon >0$, 
+  存在$B \in \mathcal{C}$使得$\mu(A\,\triangle\,B)< \varepsilon$.
+
+  \item[三、] (15分)
+  设$f_n,g_n,f,g$是实值可测函数.
+  \begin{enumerate}[label=(\arabic*)]
+    \item 叙述依测度收敛的定义.
+    \item 设$\{f_n\}$依测度收敛到$f$, 且$\{f_n\}$依测度收敛到$g$, 证明$f=g, a.e.$.
+  \end{enumerate}
+ 
+  \item[四、] (15分)
+  判断下面两组等价性命题的正确性, 若正确, 请给出证明；若不正确, 请举出反例.
+  \begin{enumerate}[label=\arabic*.]
+    \item
+    \begin{enumerate}
+        \item[(1)] $\{f_n\}$依测度收敛于$f$;
+        \item[(2)] 对$\{f_n\}$的任一子列$\{f_{n_k}\}$, 该子列存在子列$\{f_{n_{k_j}}\}$依测度收敛于$f$.
+    \end{enumerate}
+    \item
+    \begin{enumerate}
+        \item[(3)] $\{f_n\}$几乎处处收敛于$f$;
+        \item[(4)] 对$\{f_n\}$的任一子列$\{f_{n_k}\}$, 该子列存在子列$\{f_{n_{k_j}}\}$几乎处处收敛于$f$.
+    \end{enumerate}
+  \end{enumerate}
+
+  \item[五、] (10分)
+  设$(X, \mathcal{F}, \mu)$为一测度空间，$f$是其上可积函数. 证明: 对任意$\varepsilon >0$, 
+  存在$\delta >0$, 对任意$A \in \mathcal{F}$, $\mu(A)< \delta$时, 就有
+  \begin{equation*}
+   \int_{A} |f|d\mu < \varepsilon
+  \end{equation*}
+
+  \item[六、] (10分)
+  设$(X ,\mathcal{F},\mu)$为一测度空间, $\nu$为$\mathcal{F}$上的有限符号测度. 证明下面命题等价
+  \begin{enumerate}[label=(\arabic*)]
+    \item $\nu \ll \mu$;
+    \item $\forall \varepsilon >0, \exists \delta >0$, 使得$A \in \mathcal{F}$, $\mu(A)<\delta \Longrightarrow |\nu|(A)< \varepsilon $.
+  \end{enumerate}
+
+  \item[七、] (15分)
+  设$m$是$[0,4]$上的Lebesgue测度, 考虑
+\begin{align*}
+    f_1 &=3\times\boldsymbol{1}_{(0,1)}+5 \times \boldsymbol{1}_{(1,2)}-7 \times \boldsymbol{1}_{(2,3)}-11\times \boldsymbol{1}_{(3,4)}\\
+    f_2 &=2\times\boldsymbol{1}_{(0,1)}-4\times\boldsymbol{1}_{(1,2)}+6\times \boldsymbol{1}_{(2,3)}-8 \times \boldsymbol{1}_{(3,4)}\\
+    f_3 &=4 \times \boldsymbol{1}_{(0,3)}-\boldsymbol{1}_{(3,4)}
+\end{align*}
+记$m_1= f_{1}.m, m_2= f_{2 }.m, m_1= f_{3}.m$.
+\begin{enumerate}[label=(\arabic*)]
+    \item 求$m_1, m_2 ,m_3$的Jordan分解;
+    \item 求Radon--Nikodym导数$\frac{d m_1}{d m_2}, \frac{d m_2}{d m_3}$ (只需写出结果, 无需说明过程).
+\end{enumerate}
+
+ \item[八、] (15分)
+ 设$(X, \mathcal{F}, \mu)$为一测度空间，$f,g $均关于$\mu$的积分存在，证明:
+ \begin{enumerate}[label=(\arabic*)]
+    \item 若$f,g$均关于$\mu$可积, 且存在代数$\mathcal{S} \subset \mathcal{F}, \sigma(\mathcal{S})=\mathcal{F}$, 使得
+    $\mu(f \boldsymbol{1}_{A}) \leq \mu(g \boldsymbol{1}_{A}), \forall A \in \mathcal{S}$, 则$f \overset{a.e.}{\leq} g$;
+    \item $\forall A \in \mathcal{F}$, $\mu(f \boldsymbol{1}_{A}) \leq \mu(g \boldsymbol{1}_{A})$. 
+   且对$A \in \mathcal{F}, \mu(A)>0, \exists B \in \mathcal{F}, B \subset A, 0<\mu(B)<\infty$, 则$f \overset{a.e.}{\leq} g$.
+ \end{enumerate}
+\end{enumerate}
+
+== 2024--2025 学年春季学期期末 (张国华) ==
+\begin{enumerate}
+    \item (10分) 在以下若干概念中任选两个\textbf{精确叙述}它们的定义：测度、外测度、符号测度。
+    \item (10分) 在以下若干定理中任选两个\textbf{精确叙述}它们的内容：
+    Carath\'eodory测度扩张定理、Jordan--Hahn分解定理、Lebesgue分解定理。
+    \item (12分) 
+    \begin{enumerate}[label=(\arabic*)]
+        \item 设在代数$\mathcal{A}$上有一个$\sigma$可加的集函数$\mu:\mathcal{A}\to\R\cup\{-\infty,+\infty\}$，
+        满足$\mu(\varnothing)=0$。设$A\in\mathcal{A}$，$\{A_n:n\in\N\}\subseteq\mathcal{A}$满足$A_n\nearrow A$，
+        证明：$\lim\limits_{n\to\infty}\mu(A_n)=\mu(A)$。
+        \item 利用上述结论证明：若$\mathcal{C}$为一个$\pi$类，在$\sigma(\mathcal{C})$上有两个$\sigma$可加的集函数
+        $\mu_1,\mu_2:\sigma(\mathcal{C})\to\R$，满足$\mu_1(C)=\mu_2(C),\forall C\in\mathcal{C}$，
+        则$\mu_1(D)=\mu_2(D),\forall D\in\sigma(\mathcal{C})$。
+    \end{enumerate}
+    \item (10分) 设$(X,\mathcal{F},\mu)$为一有限测度空间，$B\in\mathcal{F}$，$\{B_n:n\in\N\}\subseteq\mathcal{F}$
+    满足$1_{B_n}$依测度$\mu$收敛到$1_B$，试判断$1_{B_n}$是否一定几乎处处收敛到$1_B$并说明理由。
+    \item (10分) 设$(X,\mathcal{F},\mu)$为一测度空间，$f$为$X$上一个非负广义实值$\mathcal{F}$可测函数，
+    试\textbf{利用定义}证明：\[\mu(f)=\sup\{\mu(g):g\leqslant f,\,g\text{ 为 $X$ 上一个非负简单 $\mathcal{F}$ 可测函数}\}.\]
+    \item (12分) 设$(X,\mathcal{F})$为一可测空间，$\mu$为其上一个符号测度，$f$是$X$上一个实值$\mathcal{F}$可测函数。
+    对于$X$上的实值$\mathcal{F}$可测函数$g$，定义$g$关于$\mu$的积分存在，若$\mu^+(g^+)+\mu^-(g^-)$和
+    $\mu^+(g^-)+\mu^-(g^+)$中至少一者有限，此时定义\[\mu(g)=[\mu^+(g^+)+\mu^-(g^-)]-[\mu^+(g^-)+\mu^-(g^+)].\]
+    现假设$f$关于$\mu^+,\mu^-$的积分都存在，请在下列情况下分别讨论$f$关于$\mu$的积分是否存在；若存在，请求出$\mu(f)$的值。
+    \begin{enumerate}[label=(\arabic*)]
+        \item $\mu^+(f)=+\infty$，$\mu^-(f)=+\infty$；
+        \item $\mu^+(f)=+\infty$，$\mu^-(f)=-\infty$。
+    \end{enumerate}
+    \item (36分) 设$(X,\mathcal{F})$为一可测空间，$\mu,\nu$为其上两个符号测度。
+    \begin{enumerate}[label=(\arabic*)]
+        \item 试叙述$\nu\perp\mu$，$\nu\ll\mu$，$\nu\sim\mu$的\textbf{精确定义}。
+        \item 设$\mu,\nu$为两个相互奇异的有限测度，求出$(\mu-\nu)^+$与$(\mu-\nu)^-$并说明理由。
+        \item 设$\mu,\nu$为两个相互奇异的实值符号测度，求出$(\mu-\nu)^+$与$(\mu-\nu)^-$并说明理由。
+        \item 设$\nu$为$\sigma$有限的符号测度，依定义易见$\nu\sim|\nu|$，试利用$\nu$的Hahn分解计算
+        Radon--Nikodym导数$\frac{{\rm d}|\nu|}{{\rm d}\nu}$与$\frac{{\rm d}\nu}{{\rm d}|\nu|}$并说明理由。
+    \end{enumerate}
+\end{enumerate}

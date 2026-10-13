@@ -1,0 +1,36 @@
+\setdisplaytitle{几何测度论/2025年春季习题}
+\sethtmltitle{几何测度论/2025年春季习题}
+
+\section{Dimensions}
+The main references of this chapter are [Bishop, Peres; Fractals in Probability
+and Analysis, Chapter 1], [Evans, Gariepy; Measure theory and fine properties
+of functions, Chapter 1 and 2], and [Mattila; Geometry of Sets and Measures in
+Euclidean Spaces-Fractals and Rectifiability, Chapter 3 and 4].
+
+\begin{enumerate}
+    \item Let $\mathcal{A}\subset2^{X}$ and $\mu:\mathcal{A}\rightarrow[0,\infty]$ be such that $\emptyset\in\mathcal{A},$ $X\in\mathcal{A}$ and $\mu(\emptyset)=0$. For any set $A\subset X,$ define
+    $$\mu^{*}(A)=\inf\left\{\sum_{j=1}^{\infty}\mu(E_{j}):E_{j}\in\mathcal{A}\text{ and }A\subset\bigcup_{j=1}^{\infty}E_{j}\right\}.$$
+    Show that $\mu^{*}$ is an outer measure.
+    \item Show that if $\mu$ is a measure, $A\subset B,$ $B$ is $\mu$-measurable and $\mu(A)=\mu(B)<\infty$, then $\mu(A\cap C)=\mu(B\cap C)$ for all $\mu$-measurable sets $C$.
+    \item A nonempty collection of subsets $P\subseteq2^{X}$ is a $\pi$-system provided $A,B\in P$ implies
+    $$A\cap B\in P.$$
+    A collection of subsets $\mathcal{L}\subseteq2^{X}$ is a $\lambda$-system provided
+    \begin{enumerate}
+        \item[(i)] $X\in\mathcal{L};$
+        \item[(ii)] $A,B\in\mathcal{L}$ and $B\subseteq A$ implies $A\backslash B\in\mathcal{L}$
+        \item[(iii)] if $A_{k}\in\mathcal{L}$ and $A_{k}\subseteq A_{k+1}$ for $k=1,\dots,$ then
+        $$\bigcup_{k=1}^{\infty}A_{k}\in\mathcal{L}.$$
+    \end{enumerate}
+    Prove the following results:
+    \begin{enumerate}
+    \item[(i)] If $P$ is a $\pi$-system and $\mathcal{L}$ is a $\lambda$-system with $P\subseteq\mathcal{L}$, then
+    $$\sigma(P)\subseteq\mathcal{L}.$$
+    \item[(ii)] Let $\mu$ and $\nu$ be two finite Borel measures on $\mathbb{R}^{n}$ such that
+    $$\mu(R)=\nu(R)$$
+    for all closed ``rectangles''
+    $$R:=\{x\in\mathbb{R}^{n}|-\infty\le a_{i}\le x_{i}\le b_{i}\le\infty(i=1,\dots,n)\}$$
+    Then
+    $$\mu(B)=\nu(B)$$
+    for all Borel sets $B\subseteq\mathbb{R}^{n}$.
+\end{enumerate}
+\end{enumerate}

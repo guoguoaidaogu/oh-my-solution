@@ -1,0 +1,483 @@
+\newenvironment{solution}{\begin{proofc}[解答]}{\end{proofc}}
+
+== 习题A ==
+
+\begin{enumerate}
+    \item[1.]讨论下列级数的收敛性. 若收敛, 试求出级数之和.
+    \begin{enumerate}
+        \item[(a)]$\displaystyle \sum_{n=1}^{\infty}\frac{1}{n(n+2)}$;
+        \item[(b)]$\displaystyle \sum_{n=1}^{\infty}\frac{1}{\sqrt[n]{n}}$;
+        \item[(c)]$\displaystyle \sum_{n=1}^{\infty}\frac{2n}{3n+1}$;
+        \item[(d)]$\displaystyle \sum_{n=1}^{\infty}\frac{5^{n-1}+4^{n+1}}{3^{2n}}$;
+        \item[(e)]$\displaystyle \sum_{n=1}^{\infty}\frac{1}{n(n+1)(n+2)}$;
+        \item[(f)]$\displaystyle \sum_{n=1}^{\infty}(\sqrt{n+2}-2\sqrt{n+1}+\sqrt{n})$;
+        \item[(g)]$\displaystyle \sum_{n=1}^{\infty}\left(\frac{1}{2^{n}}-\frac{1}{3^{n}}\right)$;
+        \item[(h)]$\displaystyle \sum_{n=1}^{\infty}\frac{2n-1}{3^{n}}$.
+    \end{enumerate}
+
+    \item[2.]设 \(\displaystyle x_{n} \geq 0\), \(\displaystyle \lim_{n \to +\infty} x_{n} = 0\), 
+    问交错级数 \(\displaystyle\sum_{n=1}^{\infty} (-1)^{n+1} x_{n}\) 是否收敛?
+    \begin{solution}
+        不一定收敛. 反例：令
+        \[\displaystyle
+        x_n = \begin{cases}
+            \frac{1}{k}, & n=2k-1, \\
+            \frac{1}{k^2}, & n=2k.
+        \end{cases}
+        \] 则 $x_n \geq 0$ 且 $x_n \to 0$.\\
+        交错级数的部分和为
+        \[
+        S_{2N} = \sum_{k=1}^{N} \left(\frac{1}{k} - \frac{1}{k^2}\right).
+        \]
+        由于调和级数发散，而
+        \[
+        \sum_{n=1}^{+\infty} \frac{1}{k^2}.
+        \] 收敛，故 $\displaystyle S_{2N} \to \infty(N\to +\infty)$，级数发散.
+    \end{solution}
+
+    \item[3.]若级数 \(\displaystyle\sum_{n=1}^{+\infty} x_{n}\) 收敛, \(\displaystyle\lim_{n \to +\infty} \frac{x_{n}}{y_{n}} = 1\), 
+    问级数 \(\displaystyle\sum_{n=1}^{\infty} y_{n}\) 是否收敛?
+    \begin{solution}
+        不一定收敛. 反例：令
+        \[x_n = \frac{(-1)^n}{\sqrt{n}}.\]
+        则由 Leibniz 判别法可知 
+        \[
+        \sum_{n=1}^{+\infty} x_n.
+        \] 收敛.\\
+        令 $\displaystyle y_n = x_n + \frac{1}{n}$，则由调和级数性质知
+        $\displaystyle \sum_{n=1}^{+\infty} y_n$ 发散.
+        但
+        $\displaystyle \frac{x_n}{y_n} = \frac{1}{1 + \frac{1}{n x_n}}$，其中 $\displaystyle n x_n = (-1)^n \sqrt{n}$
+        的绝对值趋于无穷，故\[\displaystyle 
+        \frac{1}{n x_n} \to 0, \quad \lim_{n\to+\infty} \frac{x_n}{y_n} = 1.\]
+    \end{solution}
+
+    \item[4.]若 \(\displaystyle\sum_{n=2}^{+\infty} (x_{n} - x_{n-1})\) 绝对收敛, \(\displaystyle\sum_{n=1}^{+\infty} y_{n}\) 收敛, 
+    则级数 \(\displaystyle\sum_{n=1}^{+\infty} x_{n} y_{n}\) 收敛.
+    \begin{solution}
+        由
+        \[
+        \sum_{n=2}^{+\infty} |x_n - x_{n-1}| < +\infty.
+        \]
+        知
+        \[
+        \sum_{n=2}^{+\infty} (x_n - x_{n-1}).
+        \]
+        收敛，故 $\{x_n\}$ 收敛(设极限为 $x$)，且有界 (设 $|x_n| \leq M$).\\
+        又
+        \[
+        \sum_{n=1}^{+\infty} y_n.
+        \] 
+        收敛，记其部分和为 
+        \[
+        S_n^y = \sum_{k=1}^n y_k.
+        \]
+        则 $\{S_n^y\}$ 有界 (设 $|S_n^y| \leq L$).\\
+        利用Abel变换：
+        \[
+        \sum_{n=1}^N x_n y_n = x_N S_N^y - \sum_{n=1}^{N-1} (x_{n+1} - x_n) S_n^y.
+        \]
+        由于 $x_N \to x$，$S_N^y$ 收敛，故第一项收敛. 同时，第二项级数绝对收敛，因为
+        \[
+        \sum_{n=1}^{+\infty} |(x_{n+1} - x_n) S_n^y| \leq L \sum_{n=1}^{+\infty} |x_{n+1} - x_n| < +\infty.
+        \]
+        因此 
+        \[
+        \sum_{n=1}^{+\infty} x_n y_n.
+        \] 收敛.
+    \end{solution}
+
+    \item[5.]设 \(\displaystyle x_{n} > 0\) , \(\displaystyle \lim_{n \to +\infty} n \left(\frac{x_{n}}{x_{n+1}} -1\right) > 0\) , 
+    证明: 交错级数 \(\displaystyle\sum_{n=1}^{\infty} (-1)^{n+1} x_{n}\) 收敛.
+    \begin{solution}
+        设 
+        \[
+        L = \lim_{n\to\infty} n \left( \frac{x_n}{x_{n+1}} - 1 \right) > 0.
+        \]
+        则存在 $N_0$，当 $n \ge N_0$ 时，
+        \[
+        n \left( \frac{x_n}{x_{n+1}} - 1 \right) > \frac{L}{2} > 0.
+        \]
+        从而 
+        \[
+        \frac{x_n}{x_{n+1}} > 1 + \frac{L}{2n} > 1
+        \]
+        故 $x_n > x_{n+1}$，即 $\{x_n\}$ 单调递减.\\
+        下证 $x_n \to 0$：\\
+        设 
+        \[
+        \lim_{n\to\infty} x_n = a \ge 0.
+        \]
+        若 $a > 0$，则
+        \[
+        x_n - x_{n+1} > x_{n+1} \cdot \frac{L}{2n} \ge a \cdot \frac{L}{2n}.
+        \]
+        对 $n = N_0, \dots, M$ 求和得
+        \[
+        \sum_{n=N_0}^{M} (x_n - x_{n+1}) > a \frac{L}{2} \sum_{n=N_0}^{M} \frac{1}{n}.
+        \]
+        令 $M\to+\infty$，则上式左边有界，右边发散，矛盾.\\
+        故 $a = 0$，从而由 Leibniz 判别法可知，交错级数收敛.
+    \end{solution}
+
+    \item[6.]利用级数的 Cauchy 乘积证明:
+    \begin{enumerate}
+        \item[(a)]$\displaystyle \sum_{n = 0}^{\infty}\frac{1}{n!}\cdot \sum_{n = 0}^{\infty}\frac{(-1)^{n}}{n!} = 1$;
+        \item[(b)]$\displaystyle \left(\sum_{n = 0}^{\infty}q^{n}\right)\left(\sum_{n = 0}^{\infty}q^{n}\right) = \sum_{n = 0}^{\infty}(n + 1)q^{n} = \frac{1}{(1 - q)^{2}}\quad (|q|< 1).$
+    \end{enumerate}
+    
+    \item[7.]设 \(a\) 是任意实数, 令 \(\displaystyle s_{n}(a) = 1^{a} + 2^{a} + \dots + n^{a}\) . 确定下列极限:
+    \[\displaystyle \lim_{n \to \infty} \frac{s_{n}(a+1)}{n s_{n}(a)}.\]
+    (需考虑 \(a\) 为正数、负数以及 \(a = 0\) 的情况.)
+    \begin{solution}
+        利用 Stolz 定理. 令 $a_n = s_n(a+1)$，$b_n = n s_n(a)$.\\
+        显然 $\{b_n\}$ 严格递增且趋于无穷。因此
+        \[
+        \lim_{n\to\infty} \frac{a_n}{b_n} = \lim_{n\to\infty} \frac{a_n - a_{n-1}}{b_n - b_{n-1}}.
+        \]
+        只要右端极限存在，计算可知：
+        \[
+        a_n - a_{n-1} = n^{a+1}, \quad b_n - b_{n-1} = n s_n(a) - (n-1) s_{n-1}(a) = s_{n-1}(a) + n^{a+1}.
+        \]
+        于是
+        \[
+        \frac{a_n - a_{n-1}}{b_n - b_{n-1}} = \frac{n^{a+1}}{s_{n-1}(a) + n^{a+1}} = \frac{1}{\dfrac{s_{n-1}(a)}{n^{a+1}} + 1}.
+        \]
+        下面求 $\displaystyle\lim_{n\to\infty} \frac{s_{n-1}(a)}{n^{a+1}}$.
+        \begin{enumerate}
+        \item[i.]当 $a > -1$ 时，$s_n(a) \sim \dfrac{n^{a+1}}{a+1}(n\to+\infty)$，故 $\dfrac{s_{n-1}(a)}{n^{a+1}} \to \dfrac{1}{a+1}(n\to+\infty)$，从而原极限为 $\displaystyle\frac{1}{\frac{1}{a+1} + 1} = \frac{a+1}{a+2}$.\\
+        \item[ii.]当 $a = -1$ 时，$s_n(-1) = H_n \sim \ln n(n\to+\infty)$，而 $n^{a+1} = 1$，故 $\dfrac{s_{n-1}(-1)}{1} \to +\infty(n\to+\infty)$，从而原极限为 $0$.\\
+        \item[iii.]当 $a < -1$ 时，$s_n(a)$ 收敛于正常数 
+        \[
+        C \coloneqq \sum_{k=1}^{+\infty} k^a.
+        \]
+        又因为 $a+1 < 0$，所以 $n^{a+1} \to 0$，故 $\dfrac{s_{n-1}(a)}{n^{a+1}} \to +\infty$，从而原极限为 $0$.\\
+        \end{enumerate}
+        综上所述，
+        \[
+        \lim_{n \to \infty} \frac{s_n(a+1)}{n s_n(a)} = 
+        \begin{cases}
+            \dfrac{a+1}{a+2}, & a > -1, \\[8pt]
+            0, & a \le -1.
+        \end{cases}
+        \]
+    \end{solution}
+
+    \item[8.]
+    \begin{enumerate}
+        \item[(a)]如果 \(p\) 和 \(q\) 是固定的整数, 且 \(\displaystyle p \geq q \geq 1\) , 证明:
+        \[\displaystyle\lim_{n \to +\infty} \sum_{k = q n}^{p n} \frac{1}{k} = \ln \frac{p}{q}.\]
+        \item[(b)]下面的级数是交错调和级数的一个重排，其中交替出现三个正项后跟两个负项：
+        \[\displaystyle 1 + \frac{1}{3} + \frac{1}{5} -\frac{1}{2} -\frac{1}{4} + \frac{1}{7} + \frac{1}{9} + \frac{1}{11} -\frac{1}{6} -\frac{1}{8} + \cdots\]
+        证明该级数收敛，且其和为\(\displaystyle\frac{1}{2} \ln{6}\).
+    \end{enumerate}
+    \begin{solution}
+        \begin{enumerate}
+        \item[(a)] 利用积分估计：
+        \[
+        \int_{qn}^{pn+1} \frac{\mathrm{d}x}{x} \le \sum_{k=qn}^{pn} \frac{1}{k} \le \int_{qn-1}^{pn} \frac{\mathrm{d}x}{x}.
+        \]
+        计算积分：
+        \[
+        \int_{qn}^{pn+1} \frac{\mathrm{d}x}{x} = \ln{\frac{pn+1}{qn}}, \quad \int_{qn-1}^{pn} \frac{\mathrm{d}x}{x} = \ln{\frac{pn}{qn-1}}.
+        \]
+        令 $n\to+\infty$，由夹逼准则即得结论
+        \[
+        \lim_{n\to+\infty}\sum_{k=qn}^{pn}\frac{1}{k}=\ln\frac{p}{q}. \quad \square
+        \]
+
+        \item[(b)]
+        观察规律可知，每 $5$ 项为一组：第 $m$ 组为
+        \[
+        \frac{1}{6m-5} + \frac{1}{6m-3} + \frac{1}{6m-1} - \frac{1}{4m-2} - \frac{1}{4m}.
+        \]
+        前 $5M$ 项的部分和为
+        \[
+        S_{5M} = \sum_{m=1}^{M} \left( \frac{1}{6m-5} + \frac{1}{6m-3} + \frac{1}{6m-1} \right) - \sum_{m=1}^{M} \left( \frac{1}{4m-2} + \frac{1}{4m} \right)
+        \]
+        利用公式 
+        \[
+        \sum_{k=1}^{n} \frac{1}{2k-1} = H_{2n} - \frac{1}{2} H_n.
+        \]
+        其中 
+        \[
+        H_n = \sum_{k=1}^{n} \frac{1}{k}.
+        \]
+        可得
+        \[
+        S_{5M} = H_{6M} - \frac{1}{2} H_{3M} - \frac{1}{2} H_{2M}.
+        \]
+        由 $H_n = \ln n + \gamma + o(1)(n\to+\infty)$，代入得
+        \[
+        S_{5M} = \ln(6M) - \frac{1}{2} \ln(3M) - \frac{1}{2} \ln(2M) + o(1) = \ln 6 - \frac{1}{2} \ln 3 - \frac{1}{2} \ln 2 + o(1) = \frac{1}{2} \ln 6 + o(1).
+        \]
+        故级数收敛于 $\displaystyle \frac{1}{2}\ln{6}$.
+        \end{enumerate}
+    \end{solution}
+\end{enumerate}
+
+== 习题B ==
+\begin{enumerate}
+    \item[1.]讨论下列函数序列或函数项级数在所指定区间上的一致收敛性：
+    \begin{enumerate}
+        \item[(a)]\(\displaystyle S_n(x) = e^{-nx}\).
+            \begin{enumerate}
+                \item[i.]\(x \in (0, 1)\);
+                \item[ii.]\(x \in (1, +\infty)\).
+            \end{enumerate}
+        \item[(b)]\(S_n(x) = xe^{-nx}\quad,x \in (0, +\infty)\).
+        \item[(c)]\(\displaystyle\sum_{n=0}^{\infty} (1-x)x^n\quad ,x \in [0, 1]\).
+        \item[(d)]\(\displaystyle\sum_{n=0}^{\infty} (1-x)^2 x^n\quad, x \in [0, 1]\).
+    \end{enumerate}
+\end{enumerate}
+\begin{solution}
+    \begin{enumerate}
+    \item  
+    $S_n(x)=e^{-nx}$，其点态极限为 $f(x)=0$.\\
+    i. 在 $(0,1)$ 上，由
+    \[
+    \sup_{x\in(0,1)} |S_n(x)-f(x)| = \sup_{x\in(0,1)} e^{-nx} = 1\neq 0.
+    \]
+    可知不一致收敛.\\
+    ii. 在 $(1,+\infty)$ 上，由
+    \[
+    \sup_{x>1} e^{-nx} = e^{-n} \to 0(n\to+\infty).
+    \]
+    可知一致收敛. 
+
+    \item 
+    $S_n(x)=xe^{-nx}$，其点态极限为 $f(x)=0$.\\
+    求导可知 $S_n(x)$ 的最大值在 $\displaystyle x=\frac{1}{n}$ 处取到，对应的值为 $\displaystyle  \frac{1}{n e}$，故由
+    \[
+    \sup_{x>0} |S_n(x)-f(x)| = \frac{1}{n e} \to 0(n\to+\infty).
+    \]
+    可知一致收敛.
+
+    \item 
+    函数项级数
+    \[
+    \sum_{n=0}^{+\infty}(1-x)x^n,\,x\in[0,\,1].
+    \]
+    部分和 $S_N(x) = 1 - x^{N+1}$（$x \neq 1$），$S_N(1)=0$.\\
+    点态极限函数为
+    \[
+    f(x) = 
+    \begin{cases}
+        1, & x \in [0,1), \\
+        0, & x=1.
+    \end{cases}
+    \]
+    当 $x \in [0,1)$ 时，$|S_N(x)-f(x)| = x^{N+1}$；$x=1$ 时差为 $0$.\\
+    故 $\displaystyle \sup_{x\in[0,1]} |S_N(x)-f(x)| = 1$，不一致收敛.
+
+    \item 
+    函数项级数
+    \[
+    \sum_{n=0}^{+\infty}(1-x)^2x^n,\,x\in[0,\,1].
+    \]
+    部分和 $S_N(x) = (1-x)(1-x^{N+1})$，点态极限函数为 
+    $f(x)=
+    \begin{cases}
+        1-x &, x \in [0,1)
+        0 &, x=1.
+    \end{cases}$，则
+    \[
+    |S_N(x)-f(x)| = x^{N+1}(1-x).
+    \]
+    最大值在 $\displaystyle x=\frac{N+1}{N+2}$ 处取到，
+    对应的值为 $\displaystyle \left(\frac{N+1}{N+2}\right)^{N+1} \cdot \frac{1}{N+2} \sim \frac{e^{-1}}{N+2} \to 0(n\to+\infty)$，故一致收敛.    
+    \end{enumerate}
+\end{solution}
+
+== 习题C ==
+
+（\textbf{重要：}重指标非负级数的Fubini–Tonelli 定理）
+
+设 \(\displaystyle(a_{m,n})_{m,n\geq 1}\) 是双指标非负数序列，即 \(\displaystyle a_{m,n} \geq 0\). 记
+\[\displaystyle S^* := \sup\left\{\sum_{(m,n)\in F} a_{m,n} : F \subset \mathbb{N}^2 \text{ 为有限集}\right\}.\]
+注：右侧可以是无穷大，此时记 \(\displaystyle S^* = +\infty\).
+
+\begin{enumerate}
+    \item[1.]\textbf{有限部分和与矩形部分和}
+    \begin{enumerate}
+        \item[(a)]证明：对任意有限集 \(\displaystyle F \subset \mathbb{N}^2\)，存在整数 \(M, N\)，
+        使得\(\displaystyle F \subset \{1, \cdots, M\} \times \{1, \cdots, N\}\).
+        \item[(b)]记矩形部分和
+        \[\displaystyle S_{M,N} := \sum_{m=1}^M \sum_{n=1}^N a_{m,n},\]
+        证明：
+        \[\displaystyle S^* = \sup_{M,N\geq 1} S_{M,N}.\]
+    \end{enumerate}
+
+    \item[2.]\textbf{重排求和与 \(S^*\)}
+
+    设 \(\displaystyle\sigma : \mathbb{N} \to \mathbb{N}^2\) 为任意双射，定义
+    \[\displaystyle S_N(\sigma) := \sum_{k=1}^N a_{\sigma(k)}.\]
+    \begin{enumerate}
+        \item[(a)]证明： \(\displaystyle S_N(\sigma)\) 随 \(N\) 单调不减，因此极限
+        \[\displaystyle \sum_{k=1}^{\infty} a_{\sigma(k)} := \lim_{N\to\infty} S_N(\sigma)\]
+        存在于 \(\displaystyle [0, +\infty] = [0, +\infty)\cup \{+\infty\}\).
+        \item[(b)]利用第1题，证明：
+        \[\displaystyle\sum_{k=1}^{\infty} a_{\sigma(k)} = S^*,\]
+        特别地，该值与双射 \(\sigma\) 的选择无关.
+    \end{enumerate}
+
+    \item[3.]\textbf{累次求和：先对 \(n\) 再对 \(m\)}
+
+    对每个固定的 \(m\)，定义
+    \[\displaystyle b_m(N) := \sum_{n=1}^N a_{m,n},\quad b_m := \sum_{n=1}^{\infty} a_{m,n} := \sup_{N\geq 1} b_m(N).\]
+    \begin{enumerate}
+        \item[(a)]对给定的正整数 \(M\)，证明：
+        \[\displaystyle\sup_{N\geq 1} \sum_{m=1}^M \sum_{n=1}^N a_{m,n} = \sum_{m=1}^M b_m.\]
+        \item[(b)]利用第1题和上述等式，证明：
+        \[\displaystyle S^* = \sup_{M\geq 1} \sum_{m=1}^M b_m = \sum_{m=1}^{\infty} b_m = \sum_{m=1}^{\infty} \left( \sum_{n=1}^{\infty} a_{m,n} \right).\]
+    \end{enumerate}
+
+    \item[4.]\textbf{总结与思考(选做)}
+
+    若 \(a_{m,n}\) 不再假设非负，而只要求
+    \[\displaystyle\sum_{m,n=1}^{\infty} |a_{m,n}| < +\infty.\]
+    上述结论是否仍然成立？
+    若只假设 \(\displaystyle\sum_{m,n} a_{m,n}\) 条件收敛（不绝对收敛），结论是否仍然成立？
+    试给出理由或反例.
+\end{enumerate}
+\begin{solution}
+    \begin{enumerate}[leftmargin=*,label=\arabic*.]%自动编号数学符号
+    \item
+    \begin{enumerate}[leftmargin=*,label=(\alph*)]
+    \item[(a)] 取 $M = \max\{m : (m,n) \in F\}$，$N = \max\{n : (m,n) \in F\}$ 即可.
+
+    \item[(b)]
+    一方面 $S_{M,N} \le S^*$，故 $\displaystyle \sup_{M,N} S_{M,N} \le S^*$；\\
+    另一方面，对任意有限集 $F$，由 (a) 知存在 $M,N$ 使 $F \subset \{1,\cdots,M\}\times\{1,\cdots,N\}$，故 
+    \[
+    \sum_{(m,\,n)\in F} a_{m,n} \le S_{M,N} \le \sup_{M,N} S_{M,N}.
+    \]
+    取上确界得 
+    \[
+    S^* \le \sup_{M,N\geq 1} S_{M,N}
+    \]
+    从而二者相等. 
+    \end{enumerate}
+
+    \item 
+    \begin{enumerate}
+    \item[(a)] 由 $a_{m,n} \ge 0$ 知 $S_{N+1}(\sigma) \ge S_N(\sigma)$，单调不减数列极限存在. 
+
+    \item[(b)]
+    对任意有限集 $F$，存在 $N$ 使 $F \subset \{\sigma(1),\cdots,\sigma(N)\}$，故 
+    \[
+    \sum_{(m,n)\in F} a_{m,n} \le S_N(\sigma) \le \sum_{k=1}^{+\infty} a_{\sigma(k)}.
+    \]
+    取上确界得 
+    \[
+    S^* \le \sum_{k=1}^{+\infty} a_{\sigma(k)}.
+    \]
+    反之，对任意 $N$，$\{\sigma(1),\cdots,\sigma(N)\}$ 有限，故 $S_N(\sigma) \le S^*$，令 $N\to+\infty$ 得反方向的不等式，
+    因此二者相等，原命题成立，而且该值与双射的选择无关. 
+    \end{enumerate}
+
+    \item 
+    \begin{enumerate}[leftmargin=*,label=(\alph*)]
+    \item[(a)] 固定 $M$，令 
+    \[
+    T_N = \sum_{m=1}^M b_m(N).
+    \]
+    则 $T_N$ 单调不减，故 
+    \[
+    \sup_N T_N = \lim_{N\to+\infty} T_N = \sum_{m=1}^M b_m. 
+    \]
+
+    \item[(b)] 由习题 C 的第一题 (b) 问和习题 C 的第三题的 (a) 问可知
+    \[
+    S^* = \sup_{M,N} S_{M,N} = \sup_{M} \sup_{N} S_{M,N} = \sup_{M} \sum_{m=1}^{M} b_m = \sum_{m=1}^{\infty} b_m.
+    \]
+    即得. 
+    \end{enumerate}
+
+    \item
+    若 $a_{m,n}$ 不非负，但 
+    \[
+    \sum_{m,n} |a_{m,n}| < +\infty.
+    \]结论仍成立，这是因为绝对收敛能够保证级数重排与累次求和可交换.\\
+    由 Fubini 定理可知
+    \begin{enumerate}
+    \item[i.] 任意重排求和收敛且和相同。即对任意双射 $\sigma: \mathbb{N} \to \mathbb{N}^2$，级数 
+    \[
+    \sum_{k=1}^{+\infty} a_{\sigma(k)}.
+    \]收敛，且和与 $\sigma$ 无关.
+    \item[ii.] 累次求和可交换，即
+        \[
+        \sum_{m=1}^{+\infty} \left( \sum_{n=1}^{+\infty} a_{m,n} \right) = \sum_{n=1}^{+\infty} \left( \sum_{m=1}^{+\infty} a_{m,n} \right) = \sum_{m,n} a_{m,n}.
+        \]
+    \end{enumerate}
+    因此，绝对收敛时结论仍成立.\\
+    若仅假设条件收敛而非绝对收敛，那么结论不一定成立.\\
+    反例：
+    \[
+    a_{m,n} = \begin{cases}
+        \dfrac{1}{m}, & n = 1, \\[6pt]
+        -\dfrac{1}{m}, & n = 2, \\[6pt]
+        0, & n \geq 3.
+    \end{cases}
+    \]
+    即只有两列非零：第一列为正，第二列为负，其余为零.
+    \begin{enumerate}
+        \item[i.] \textbf{二重和（按矩形求和）：}\\
+        对于 $N \geq 2$，矩形部分和
+        \[
+        S_{M,N} = \sum_{m=1}^{M} \sum_{n=1}^{N} a_{m,n} = \sum_{m=1}^{M} \left( \frac{1}{m} - \frac{1}{m} \right) = 0.
+        \]
+        故 $\displaystyle \lim_{M,N \to +\infty} S_{M,N} = 0$，即二重级数收敛到 $0$.
+        
+        \item[ii.] \textbf{累次求和(先对 $m$ 后对 $n$)：}\\
+        固定 $n = 1$，
+        \[
+        \sum_{m=1}^{+\infty} a_{m,1} = \sum_{m=1}^{+\infty} \frac{1}{m}.
+        \]发散；\\
+        固定 $n = 2$，
+        \[
+        \sum_{m=1}^{+\infty} a_{m,2} = -\sum_{m=1}^{+\infty} \frac{1}{m}.
+        \]发散.\\
+        因此 
+        \[
+        \sum_{n=1}^{+\infty} \sum_{m=1}^{+\infty} a_{m,n}.
+        \]
+        发散.
+        
+        \item[iii.] \textbf{累次求和(先对 $n$ 后对 $m$)：}\\
+        固定 $m$，
+        \[
+        \sum_{n=1}^{+\infty} a_{m,n} = \frac{1}{m} - \frac{1}{m} = 0.
+        \]
+        故 
+        \[
+        \sum_{m=1}^{+\infty} \sum_{n=1}^{+\infty} a_{m,n} = 0.
+        \]
+        
+        可见两个累次求和一个发散，一个收敛到 $0$，不相等.
+        
+        \item[iv.] \textbf{重排求和的不唯一性：}
+        按行优先重排：取
+        \[
+        a_{1,1}, a_{1,2}, a_{2,1}, a_{2,2}, a_{3,1}, a_{3,2}, \dots
+        \]
+        得到单指标级数
+        \[
+        \frac{1}{1}, -\frac{1}{1}, \frac{1}{2}, -\frac{1}{2}, \frac{1}{3}, -\frac{1}{3}, \dots
+        \]
+        该级数收敛到 $0$.
+        
+        但若将所有正项提前：
+        \[
+        a_{1,1}, a_{2,1}, a_{3,1}, \dots, a_{1,2}, a_{2,2}, a_{3,2}, \dots
+        \]
+        得到级数
+        \[
+        \frac{1}{1}, \frac{1}{2}, \frac{1}{3}, \dots, -\frac{1}{1}, -\frac{1}{2}, -\frac{1}{3}, \dots
+        \]
+        该级数发散(正部发散至 $+\infty$).
+        
+        因此，不同的重排可能导致收敛到不同值或发散.
+    \end{enumerate}
+    \end{enumerate}
+\end{solution}

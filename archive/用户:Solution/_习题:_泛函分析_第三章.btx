@@ -1,0 +1,1038 @@
+\newcommand{\B}{\mathfrak{B}}
+\newcommand{\RR}{\mathfrak{R}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\norm}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+\theoremstyle{plain}\newtheorem*{1}{习题1}
+\theoremstyle{plain}\newtheorem*{2}{习题2}
+\theoremstyle{plain}\newtheorem*{3}{习题3}
+\theoremstyle{plain}\newtheorem*{4}{习题4}
+\theoremstyle{plain}\newtheorem*{5}{习题5}
+\theoremstyle{plain}\newtheorem*{6}{习题6}
+\theoremstyle{plain}\newtheorem*{7}{习题7}
+\theoremstyle{plain}\newtheorem*{8}{习题8}
+\theoremstyle{plain}\newtheorem*{9}{习题9}
+\theoremstyle{plain}\newtheorem*{10}{习题10}
+\theoremstyle{plain}\newtheorem*{11}{习题11}
+\theoremstyle{plain}\newtheorem*{12}{习题12}
+\theoremstyle{plain}\newtheorem*{13}{习题13}
+\theoremstyle{plain}\newtheorem*{14}{习题14}
+\theoremstyle{plain}\newtheorem*{15}{习题15}
+\theoremstyle{plain}\newtheorem*{16}{习题16}
+\theoremstyle{plain}\newtheorem*{17}{习题17}
+\theoremstyle{plain}\newtheorem*{18}{习题18}
+\theoremstyle{plain}\newtheorem*{19}{习题19}
+\theoremstyle{plain}\newtheorem*{20}{习题20}
+\theoremstyle{plain}\newtheorem*{21}{习题21}
+\theoremstyle{plain}\newtheorem*{22}{习题22}
+\theoremstyle{plain}\newtheorem*{23}{习题23}
+\theoremstyle{plain}\newtheorem*{24}{习题24}
+\theoremstyle{plain}\newtheorem*{25}{习题25}
+\theoremstyle{plain}\newtheorem*{26}{习题26}
+\theoremstyle{remark}\newtheorem*{remark*}{注}
+\setdisplaytitle{泛函分析\ 第三章解答}
+\sethtmltitle{泛函分析\ 第三章解答}
+
+\setcounter{section}{2}
+
+== 有界线性算子的基本定理 ==
+
+\subsection{3.1 Baire纲定理}
+\begin{3}
+    设$A$是区间$[a,b]$中的非空完全集 (即$A'=A$，这也是说$A$无孤立点)。证明：$A$不是可数集。
+\end{3}
+\begin{proof}
+    以下证明更强的结论：$A$具有连续统势；证明来自\cite{KT} Chapter 5 Problem 21。
+    
+    构造$A$的两个不相交的非空完全子集$A_0,A_1$如下：
+    取两点$a_0,a_1 \in A$，令$A_0=B(a_0,r_0) \cap A,A_1=B(a_1,r_0) \cap A$，
+    其中$r_0<1$。接着构造$A_0$的两个不相交的非空完全子集$A_{00},A_{01}$如下：
+    取两点$a_{00},a_{01} \in A_0$，令$A_{00}=B(a_{00},r_1) \cap A_0,A_{01}=B(a_{01},r_1) \cap A_0$，
+    其中$r_1<1/2$；同理构造$A_1$的两个不相交的非空完全子集$A_{10},A_{11}$。
+    $A$中的点皆是聚点确保了$a_{\varepsilon_0,\varepsilon_1,\cdots,\varepsilon_n}$
+    ($\varepsilon_0,\varepsilon_1,\cdots,\varepsilon_n\in\{0,1\}$) 一直存在，
+    从而这一过程能不断延续下去。
+    
+    对每一个无穷序列$\varepsilon=(\varepsilon_0,\varepsilon_1,\cdots)\in\{0,1\}^\omega$，
+    由闭球套定理，$\bigcap\limits_{n}A_{\varepsilon_0,\varepsilon_1,\cdots,\varepsilon_n}$
+    确定了唯一的点$x_\varepsilon \in A$，故有$2^{\alef_0}=|\{0,1\}^\omega|\leqslant|A|$。
+    又有$|A|\leqslant|[a,b]|=2^{\alef_0}$，所以$|A|=2^{\alef_0}$。
+\end{proof}
+\begin{remark*}
+(i) 上述证明对$\R^n$完全适用，故$\R^n$的非空完全集同样都具有连续统势。
+
+(ii) 由此不难证明$\R^n$的闭集要么至多可数，要么具有连续统势；见\cite{KT} Chapter 5 Problem 22。
+
+(iii) 这让Cantor猜想连续统假设成立，即：不可数的实数集的势均为$2^{\alef_0}$，也就是说$2^{\alef_0}=\alef_1$。
+\end{remark*}
+
+\begin{4}
+    证明无限维的Banach空间不能分解成可列个相对列紧集的并集。
+\end{4}
+\begin{proof}
+    无限维的Banach空间的球不是紧的，所以列紧集无内点，
+    即相对列紧集是疏朗集，与Baire纲定理矛盾。
+\end{proof}
+
+\begin{7}
+    设$[0,1]$上的连续函数序列$f_n$点态收敛于$f$。
+    \begin{enumerate}[label=(\roman*)]
+        \item 对于$x\in[0,1]$，令$w_f(x)=\lim\limits_{\delta\to0}\sup\limits_{y,z\in O(x,\delta)}|f(y)-f(z)|$。
+        证明：$f$在$x$处连续当且仅当$w_f(x)=0$。
+        \item 对于$\varepsilon>0$，证明：$\{x\in[0,1]:w_f(x)<\varepsilon\}$是$[0,1]$的一个开集。
+        \item 证明：$f$的不连续点全体是一个第一纲集。
+    \end{enumerate}
+\end{7}
+\begin{proof}
+    以下(iii)的过程来自\cite{Ox} Theorem 7.3 (p.32)。
+    \begin{enumerate}[label=(\roman*)]
+        \item 没什么好证的。
+        \item 同样是显然的。设$w_f(x)<\varepsilon$，
+        则存在$\delta>0$使得对于$y,z \in O(x,\delta)$有$|f(y)-f(z)|<\varepsilon$，
+        这意味着对任何的$v \in O(x,\delta/2)$，对于$y,z \in O(v,\delta/2) \subset O(x,\delta)$
+        亦有$|f(y)-f(z)|<\varepsilon$，从而$w_f(v)<\varepsilon$。
+        \item 由(i), (ii)，$f$的不连续点全体是一列闭集的并
+        $\bigcup\limits_{k}\{x\in[0,1]:w_f(x)\geqslant1/k\}$，
+        故只需说明$F=\{x\in[0,1]:w_f(x)\geqslant1/k\}$均无内点即可。
+
+        简写$\varepsilon=1/5k$，并且令
+        \[E_n=\bigcap_{i,j \geqslant n}\{x\in[0,1]:|f_i(x)-f_j(x)|\leqslant\varepsilon\}.\]
+        易有$E_n$都是闭集，$E_n \subset E_{n+1}$，
+        且$\{f_n\}$点态收敛于$f$说明$[0,1]=\bigcup\limits_{n}E_n$。
+        考虑$[0,1]$任意的闭子区间$I$，有$I=\bigcup\limits_{n}(E_n \cap I)$，
+        则必有一个$E_n \cap I$是有内点的，即在某个区间$J$上$|f_i(x)-f_j(x)|\leqslant\varepsilon$对于$i,j \geqslant n$皆成立；
+        令$j=n$与$i\to\infty$，得到在$J$上$|f(x)-f_n(x)|\leqslant\varepsilon$。
+        对于任意固定的$x_0 \in J$，由于$f_n$是连续的，存在$x_0$的邻域$U \subset J$
+        使得对$x \in U$有$|f_n(x)-f_n(x_0)|\leqslant\varepsilon$。
+        那么对$x \in U$，两式相加有$|f(x)-f_n(x_0)|\leqslant2\varepsilon$，
+        进一步推出$w_f(x_0)\leqslant4\varepsilon<1/k$。由此证明了对任意闭区间$I$，
+        都存在一段区间$J \subset I \setminus F$，此即$F$无内点。\qedhere
+    \end{enumerate}
+\end{proof}
+
+\begin{8}
+    设$L$是线性空间，$p$是$L$上函数，如果满足
+    \begin{enumerate}[label=(\arabic*)]
+        \item $p(x)\geqslant0$，$p(x)=0$当且仅当$x=0$；
+        \item $p(x+y)\leqslant p(x)+p(y)$；
+        \item $p(-x)=p(x)$，并且$\lim\limits_{\alpha_n\to0}p(\alpha_nx)=0$，
+        $\lim\limits_{p(x_n)\to0}p(\alpha x_n)=0$ ($\alpha_n,\alpha$是数)，
+    \end{enumerate}
+    则称$p$是拟范数，$(L,p)$是拟赋范空间。
+
+    (iii)$^{*}$ 如果$\lim\limits_{n\to\infty}\alpha_n=\alpha$，
+        $\lim\limits_{n\to\infty}p(x_n-x)=0$，
+        证明：$\lim\limits_{n\to\infty}p(\alpha_nx_n-\alpha x)=0$.
+\end{8}
+\begin{proof}
+    由于\[p(\alpha_nx_n-\alpha x)
+    \leqslant p(\alpha_n(x_n-x))+p((\alpha_n-\alpha)x),\]
+    $\alpha_n-\alpha\to0$说明$p((\alpha_n-\alpha)x)\to0$，
+    那么要说明的是$p(\alpha_n(x_n-x))\to0$。
+
+    作$\mathbb{K}$上的函数$f_n(\beta)=p(\beta(x_n-x))$。因为
+    \[\lim_{\beta_i-\beta\to0}p((\beta_i-\beta)(x_n-x))=0,\]
+    $f_n$皆是连续函数；并且，$\lim\limits_{n\to\infty}p(x_n-x)=0$和
+    \[\lim_{p(x_n-x)\to0}p(\beta(x_n-x))=0\]
+    是说$n\to\infty$时$f_n$点态收敛到$0$。
+    由Egoroff定理，$f_n$在一个正测集$E$上一致收敛到$0$。
+
+    由于$E-E$含含$0$的区间，也就是存在$\sigma_0>0$使得
+    当$|\sigma|\leqslant\sigma_0$时$\sigma$皆能写成$e-e'\ (e,e'\in E)$，得
+    \[f_n(\sigma)\leqslant f_n(e)+f_n(e')\to0,\]
+    且这个趋于$0$是关于$\sigma$一致的。
+    由于$\{\alpha_n\}$是有界的，取正整数$N$使得对所有的$n$都有
+    $|\alpha_n/N|\leqslant\sigma_0$，于是
+    \[p(\alpha_n(x_n-x))=f_n(\alpha_n)
+    \leqslant Nf_n(\alpha_n/N)\to0.\qedhere\]
+\end{proof}
+
+\subsection{3.2 开映射定理、逆算子定理、闭图像定理和共鸣定理}
+\begin{1}
+    设$X,Y$是Banach空间，$T\in\B(X,Y)$。证明：$\RR(T)$是闭的当且仅当存在$c>0$，
+    使得对任意$x\in X$，有$c\|Tx\|\geqslant d(x,\ker T)$。
+\end{1}
+\begin{proof}
+    注意$d(x,\ker T)$即是$X/\ker T$里面$[x]$的范数。当$\RR(T)$是闭的，
+    \[[T]\colon X/\ker T \to Y,\quad[x] \mapsto Tx\]
+    是单射，$\RR([T])=\RR(T)$同样是闭的，
+    由定理3.2.4，$c\|Tx\|\geqslant\|[x]\|=d(x,\ker T)$。
+
+    当$c\|Tx\|\geqslant d(x,\ker T)$，
+    对于$Tx_n \to y \in Y$，通过取子列，可使得
+    \[\sum_{n=1}^\infty\|Tx_n-Tx_{n+1}\|<\infty,\]
+    再取$z_n\in X$使$z_n-(x_n-x_{n+1})\in\ker T$且
+    \[\|z_n\|\leqslant2d(x_n-x_{n+1},\ker T).\]
+    这样$\sum\limits_{n=1}^\infty\|z_n\|<\infty$，
+    因而$\sum\limits_{n=1}^\infty z_n$收敛，于是
+    \[T\left(x_1-\sum_{n=1}^\infty z_n\right)
+    =Tx_1-\sum_{n=1}^\infty(Tx_n-Tx_{n+1})=y,\]
+    从而$y\in\RR(T)$。
+\end{proof}
+
+\begin{2}
+    用范数等价定理证明：$C[0,1]$按范数
+    \[\|f\|_1=\int_{[0,1]}|f(t)|\,\mathrm{d}m(t)\]
+    不是Banach空间。
+\end{2}
+\begin{proof}
+    只需说明不存在$c>0$使得$\|\cdot\|_{C[0,1]} \leqslant c\|\cdot\|_1$成立。
+    对$0<a<1$，取\[f(x)=\begin{cases}1-x/a,&0 \leqslant x \leqslant a\\
+    0,&a \leqslant x \leqslant 1\end{cases},\]
+    有$\|f\|_{C[0,1]}=1$，而$\|f\|_1=a/2$任意小。
+\end{proof}
+
+\begin{3}
+    对于Lebesgue可测函数$\varphi \in L^\infty[0,1]$，
+    定义$L^2[0,1]$上的有界线性算子$M_\varphi$为
+    \[M_\varphi f=\varphi f,\quad\forall f \in L^2[0,1].\]
+    证明：$\|M_\varphi\|=\|\varphi\|_\infty$，并且$M_\varphi$是可逆算子
+    当且仅当存在正数$c>0$，使得对几乎处处的$x\in[0,1]$，成立不等式$|\varphi(x)|>c$。
+\end{3}
+\begin{proof}
+    一方面，由于$\|M_\varphi f\|_2\leqslant\|\varphi\|_\infty\|f\|_2$，
+    有$\|M_\varphi\|\leqslant\|\varphi\|_\infty$；
+    另一方面，对任何$d<\|\varphi\|_\infty$，
+    令$D=\{|\varphi| \geqslant d\}$，那么$\chi_D$不几乎处处为$0$，
+    从而$\|M_\varphi\|\geqslant\|\varphi\chi_D\|_2/\|\chi_D\|_2 \geqslant d$，
+    由$d$的任意性进而有$\|M_\varphi\|\geqslant\|\varphi\|_\infty$。
+
+    形式上看，$M_\varphi$的逆算子为$M_{1/\varphi}$，其有界相当于$1/\varphi \in L^\infty$，
+    即$1/\varphi$几乎处处有界，亦即$|\varphi|$有几乎处处意义上的正下界。
+\end{proof}
+
+\begin{4}
+    设$X,Y$是Banach空间，$T\in\B(X,Y)$，$T$是满射。
+    $T$是否一定为闭映射 (即$T$将$X$中的闭集映成$Y$中的闭集)？说明理由。
+\end{4}
+\begin{proof}[解答]
+    不一定。让$Y$的维数很小就容易做到满射，极端来说就是$Y$是数域，$T$是泛函；
+    要让$T$不是闭映射，只需要各分量上的系数趋于某上界却达不到即可。取
+    \[T\colon l^1\to\R,\quad(a_1,a_2,\cdots)\mapsto0.9a_1+0.99a_2+\cdots,\]
+    则$T$将单位闭球$\{|a_1|+|a_2|+\cdots\leqslant1\}$映成开区间$(-1,1)$。
+
+    另一个例子是，$X=\R^2$中有闭集$\{(x,\arctan x):x\in\R\}$，$T$是到纵坐标轴$Y=\R$的投影，
+    则$T$将这个函数图像映成开区间$\big(\!-\!\frac{\pi}{2},\frac{\pi}{2}\big)$。
+\end{proof}
+
+\begin{5}
+    设$X,Y$是Banach空间，$T\in\B(X,Y)$，并且$TX=Y$。证明：存在常数$N$，
+    使得对$Y$中任何收敛于$y_0$的点列$\{y_n\}$，都可找到$X$中的一个点列$\{x_n\}$，
+    $\|x_n\|\leqslant N\|y_n\|$，$Tx_n=y_n\ (n=0,1,2,\cdots)$，且$x_n\to x_0$。
+\end{5}
+\begin{proof}
+    设对$n\geqslant N$有$\|y_0\|\leqslant 2\|y_n\|$，由注3.2.1，
+    存在一个点列$\{x_n\}_{0\leqslant n<N}$，使得$Tx_n=y_n,\|x_n\|\leqslant M\|y_n\|$，
+    以及点列$\{z_n\}_{n\geqslant N}$，使得$Tz_n=y_n-y_0,\|z_n\|\leqslant M\|y_n-y_0\|$。
+    由$y_n-y_0\to0$，有$z_n\to0$。对$n\geqslant N$，令$x_n=x_0+z_n$，
+    那么$x_n\to x_0$，$Tx_n=y_n$，
+    且$\|x_n\|\leqslant M(\|y_0\|+\|y_n-y_0\|)\leqslant5M\|y_n\|$。
+\end{proof}
+
+\begin{6}
+    设$X,Y$是Banach空间，$T\in\B(X,Y)$。若存在$Y$的一个闭线性子空间$M$
+    使得$\RR(T)\cap M=\{0\}$，$\RR(T)+M=Y$，证明：$T$的值域$\RR(T)$是闭的。
+\end{6}
+\begin{proof}
+    众所周知的是
+    \[\tilde{T}\colon X/\ker T\to\RR(T),\quad[x] \mapsto Tx\]
+    是线性空间的同构。把这个映射扩展为
+    \begin{align*}
+        \tilde{T} \oplus I\colon (X/\ker T) \times M&\to\RR(T) \oplus M=Y,\\
+        ([x],m)&\mapsto Tx+m
+    \end{align*}
+    也是线性空间的同构。这样一来$\tilde{T} \oplus I$就是可逆的算子，
+    因此，$\RR(T)$作为闭集$(X/\ker T)\times0$的像就也是闭集。
+\end{proof}
+
+\begin{7}
+    在习题2.5第6题中证明了Fourier变换$\mathcal{F}:f\to\hat{f}$
+    是从$L^1(\R)$到$c_0(\R)$的单射。
+    \begin{itemize}
+    \item[(i)] 令$f(x)=\chi_{[-n,n]}(x)\sin x$，计算它的Fourier变换$\hat{f}$。
+    \item[(ii)] 证明：$\mathcal{F}:f\to\hat{f}$不是满射。
+    \end{itemize}
+\end{7}
+\begin{proof}
+    (i) 计算有
+    \begin{align*}
+        \hat{f}(t)&=\int_{-n}^n\sin x\,e^{-\mathrm{i}2\pi tx}{\rm d}x
+        =\int_0^n\sin x(e^{-\mathrm{i}2\pi tx}-e^{\mathrm{i}2\pi tx})\,{\rm d}x
+        =-2\mathrm{i}\int_0^n\sin x\sin2\pi t\,{\rm d}x\\
+        &=\mathrm{i}\int_0^n\cos(2\pi t+1)x-\cos(2\pi t-1)x\,{\rm d}x
+        =\mathrm{i}\left[\frac{\sin(2\pi t+1)n}{2\pi t+1}
+        -\frac{\sin(2\pi t-1)n}{2\pi t-1}\right].
+    \end{align*}
+    (ii) ➢ \textbf{泛函分析的方法.} 下面的例2来自\cite{Da} Theorem 3.1.15 (p.74)。
+    
+    假如$\mathcal{F}$是满射，由逆算子定理，
+    $\|\cdot\|_1$与$\|\hat{\,\cdot\,}\|_\infty$应当等价。
+    既然$\|\hat{\,\cdot\,}\|_\infty\leqslant\|\cdot\|_1$是成立的，
+    那么要试着找函数使得$\|\cdot\|_1$很大而$\|\hat{\,\cdot\,}\|_\infty$不大，
+    就能得出反方向的不等式不能成立，即得矛盾。
+
+    \textbf{例1.} 算一下$\chi_{[-1,1]}(t)$的Fourier逆变换为
+    \[\int_{-1}^1e^{{\rm i}2\pi tx}{\rm d}t
+    =\frac{e^{{\rm i}2\pi x}-e^{-{\rm i}2\pi x}}{{\rm i}2\pi x}
+    =\frac{\sin2\pi x}{\pi x},\]
+    也就是说我们有Fourier变换
+    \[f(x)=\frac{\sin2\pi x}{\pi x},\quad\hat{f}(t)=\chi_{[-1,1]}(t).\]
+    现在有$\|f\|_1=\infty,\|\hat{f}\|_\infty=1$，那么已经差不多做出来了。
+    不过严格来说$f \notin L^1(\R)$，尚不算是反例。
+    为此，要对$f$乘上个衰减项$\phi_\varepsilon(x)=e^{-\pi(\varepsilon x)^2}$，
+    就有$f\phi_\varepsilon \in L^1(\R)$，
+    且$\varepsilon\to0$时$\phi_\varepsilon$点态收敛于$1$，
+    得出$\|f\phi_\varepsilon\|_1\to\infty$。
+    然后要算$\|\widehat{f\phi_\varepsilon}\|_\infty$，
+    由于对$\phi(x)=e^{-\pi x^2}$有$\hat{\phi}=\phi$，可得
+    \begin{align}
+        \widehat{\phi_\varepsilon}(t)&=\int_\R\phi(\varepsilon x)e^{-{\rm i}2\pi tx}{\rm d}x\\
+        &=\int_\R\phi(\varepsilon x)e^{-{\rm i}2\pi(t/\varepsilon)(\varepsilon x)}{\rm d}(\varepsilon x)/\varepsilon
+        =\hat{\phi}(t/\varepsilon)/\varepsilon=\phi(t/\varepsilon)/\varepsilon,
+    \end{align}
+    从而
+    \[\|\widehat{\phi_\varepsilon}\|_1
+    =\int_\R\phi(t/\varepsilon)\,{\rm d}(t/\varepsilon)=\|\phi\|_1=1,\]
+    进而
+    \[\|\widehat{f\phi_\varepsilon}\|_\infty
+    =\|\hat{f}*\widehat{\phi_\varepsilon}\|_\infty
+    \leqslant\|\hat{f}\|_\infty\|\widehat{\phi_\varepsilon}\|_1=1.\]
+
+    \textbf{例2.} 对$\alpha>1$，算一下$t^{\alpha-1}e^{-t}\chi_{(0,+\infty)}$的Fourier逆变换为
+    \begin{align*}
+        \int_0^{+\infty}t^{\alpha-1}e^{-(1-{\rm i}2\pi x)t}{\rm d}t
+        &=(1-{\rm i}2\pi x)^{-\alpha}\int_0^{(1-{\rm i}2\pi x)+\infty}t^{\alpha-1}e^{-t}{\rm d}t\\
+        &=(1-{\rm i}2\pi x)^{-\alpha}\int_0^{+\infty}t^{\alpha-1}e^{-t}{\rm d}t
+        =(1-{\rm i}2\pi x)^{-\alpha}\varGamma(\alpha)
+    \end{align*}
+    (中间的等号是对扇形围道积分)，也就是说我们有Fourier变换
+    \[f_\alpha(x)=(1-{\rm i}2\pi x)^{-\alpha}\varGamma(\alpha),
+    \quad\widehat{f_\alpha}(t)=t^{\alpha-1}e^{-t}\chi_{(0,+\infty)}.\]
+    容易说明$\alpha\to1^+$时$\|f_\alpha\|_1\to\infty$且$\|\widehat{f_\alpha}\|_\infty\to1$。
+    
+    ➣ \textbf{不用泛函分析的方法.} 本解法来自\cite{Gr}习题2.2.9 (c)。
+
+    \textbf{引理1.} 对$0<a<b$，有
+    \[\bigg|\int_a^b \frac{\sin t}{t} \,{\rm d}t\bigg|\leqslant\pi.\]
+    \textbf{证明.} 通过比较在各段区间$[k\pi,(k+1)\pi)$上的积分之差 $(k\in\Z)$，容易说明
+    \[0\leqslant\int_0^a \frac{\sin t}{t} \,{\rm d}t
+    \leqslant\int_0^\pi \frac{\sin t}{t} \,{\rm d}t\leqslant\pi.\]
+
+    \textbf{引理2.} 设$f \in L^1(\R)$是奇函数，$0<a<b$，则有
+    \[\bigg|\int_a^b \frac{\hat{f}(t)}{t} \,{\rm d}t\bigg|\leqslant\pi\|f\|_1.\]
+    \textbf{证明.} $f$是奇函数推出
+    \[\hat{f}(t)=-{\rm i}\int_\R f(x)\sin(2\pi tx)\,{\rm d}x,\]
+    从而用引理1可知
+    \begin{align*}\bigg|\int_a^b\frac{\hat{f}(t)}{t}\,{\rm d}t\bigg|
+    &=\bigg|\int_a^b\int_\R f(x)\frac{\sin(2\pi tx)}{t}\,{\rm d}x\,{\rm d}t\bigg|\\
+    &=\bigg|\int_\R f(x) \int_a^b \frac{\sin(2\pi tx)}{t}\,{\rm d}t\,{\rm d}x\bigg|
+    \leqslant\pi\|f\|_1.\end{align*}
+
+    \textbf{定理.} 设奇函数$g$在$t \geqslant 2$时等于$1/\log t$，
+    则其不是任何$L^1(\R)$函数的Fourier变换。
+
+    \textbf{证明.} 若不然，$g$是$f \in L^1(\R)$的Fourier变换，
+    由于$f(-x)$的Fourier变换是$g(-t)$，也就是$-g(t)$，
+    由Fourier变换是单射知$f$是奇函数。用引理2得出
+    \[\pi\|f\|_1\geqslant\int_2^b\frac{g(t)}{t}\,{\rm d}t
+    =\int_2^b\frac{{\rm d}t}{t\log t}=[\log(\log t)]\big|_2^b,\]
+    令$b\to\infty$即得矛盾。
+\end{proof}
+
+\begin{8}
+    设$\{x_n\}$是Banach空间$X$中的点列，如果对任意的$x\in X$，
+    都存在唯一数列$\{\alpha_i(x)\}$，使得
+    $$\lim_{n\to\infty}\left\|x-\sum_{i=1}^n\alpha_ix_i\right\|=0,
+    \quad\text{也即 }x=\sum_{i=1}^\infty\alpha_ix_i,$$
+    则称$\{x_n\}$为$X$的Schauder基，并称$X$是具有基的Banach空间。
+    证明：在有基$\{x_n\}$的Banach空间$X$中，
+    展开式$x=\sum\limits_{i=1}^\infty\alpha_i(x)x_i$中的$\alpha_i(x)\in X^*$。
+\end{8}
+\begin{proof}
+    以下证明来自\cite{Ca} Theorem 3.1 (pp.26--7).
+    
+    在$X$上作新范数
+    $\norm{x}=\sup\limits_\ell\left\|\sum\limits_{i=1}^\ell\alpha_ix_i\right\|$，
+    下面说明$(X,\norm{\,\cdot\,})$也是一个Banach空间。
+    
+    设$\{y^n\}$是$(X,\norm{\,\cdot\,})$中的Cauchy列，任务是论证其收敛于某个$y$。
+    记其展开式为$\Big\{y^n=\sum\limits_{i=1}^\infty\alpha_i^{n}x_i\Big\}$，
+    并且记$y^n_\ell=\sum\limits_{i=1}^\ell\alpha_i^{n}x_i$，
+    那么$\norm{y^n}=\sup\limits_\ell\|y^n_\ell\|$。
+    由于$y^n-y^m$的展开式就是$\sum\limits_{i=1}^\infty(\alpha_i^n-\alpha_i^m)x_i$，
+    即$(y^n-y^m)_\ell=y^n_\ell-y^m_\ell$，得出对所有的$\ell$有
+    \[\|y^n_\ell-y^m_\ell\|\leqslant\norm{y^n-y^m},\]
+    这说的是在$\|\cdot\|$下$\{y^n_\ell\}$是关于$\ell$\textbf{一致}的Cauchy列，
+    所以$\{y^n_\ell\}$关于$\ell$\textbf{一致}地收敛于某个$y_\ell$，即$n\to\infty$时
+    \[\sup_\ell\|y^n_\ell-y_\ell\|\to0.\tag{$\blacklozenge$}\]
+    接下来说明$\{y_\ell\}$收敛于一个$y$，
+    最后证明$\{y^n\}$同样收敛于这个$y$；也就是说，思路如下：
+    \[\begin{matrix}
+              &\vdots  &      &\vdots     &   &\vdots\\
+        \cdots&y^n_\ell&\cdots&y^n_{\ell'}&\to&y^n   \\
+              &\vdots  &      &\vdots     &   &\vdots\\
+        \cdots&y^m_\ell&\cdots&y^m_{\ell'}&\to&y^m   \\
+              &        &      &           &   &      \\
+        &\color{cyan}{\downarrow}& &\color{cyan}{\downarrow}& &\color{gold}{\downarrow}\\
+        \cdots&y_\ell  &\cdots&y_{\ell'}  &\color{cyan}{\to}&y
+    \end{matrix}\]
+    把$y_\ell-y_{\ell'}$拆成三项：
+    \[\|y_\ell-y_{\ell'}\|\leqslant\|y^n_\ell-y_\ell\|
+    +\|y^n_{\ell'}-y_{\ell'}\|+\|y^n_\ell-y^n_{\ell'}\|,\]
+    由$(\blacklozenge)$可知$n\to\infty$时前两项
+    （关于$\ell,\ell'$\textbf{一致}地）趋于$0$
+    (即给定了$\varepsilon>0$后，就有对应的$n$使得
+    $\|y^n_\ell-y_\ell\|,\|y^n_{\ell'}-y_{\ell'}\|<\varepsilon$，
+    这里的$n$要有多大同$\ell,\ell'$无关)，
+    且对这个\textbf{固定}的$n$令$\ell,\ell'\to\infty$
+    有$y^n_\ell,y^n_{\ell'} \to y^n$，从而末项亦趋于$0$；
+    这说明了$\{y_\ell\}$是Cauchy列，记其收敛于$y$。
+    现在$y$找到了，下面再说明$\{y^n\}$亦收敛于$y$即可。
+
+    由于对所有的$i$，\[\lim_{n\to\infty}\alpha_i^nx_i
+    =\lim_{n\to\infty}(y^n_i-y^n_{i-1})=y_i-y_{i-1},\]
+    可设$\lim\limits_{n\to\infty}\alpha_i^n=\alpha_i$。
+    注意到这推出$\{x_1,\cdots,x_\ell\}$张成的有限维空间上序列$\{y^n_\ell\}$的收敛：
+    \[y^n_\ell=\sum_{i=1}^\ell\alpha_i^nx_i
+    \to\sum_{i=1}^\ell\alpha_ix_i=y_\ell,\]
+    而$\{y_\ell\}$又收敛于$y$，所以有$y=\sum\limits_{i=1}^\infty\alpha_ix_i$，
+    则这恰恰是$y$在Schauder基下的展开式！这是因为Schauder基下的展开式是唯一的，
+    既然$y$能写成这个无穷求和，那就表明$y$的展开式即是此。
+
+    那么终于能算$\norm{y^n-y}$了：$y$的这个展开式以及$(\blacklozenge)$直接带来了
+    \[\norm{y^n-y}=\sup_{\ell}\|y^n_\ell-y_\ell\|\to0,\]
+    故$(X,\norm{\,\cdot\,})$是Banach空间。
+    由范数等价定理有$\norm{y} \leqslant c\|y\|$，故
+    \[\|\alpha_ix_i\|=\|y_i-y_{i-1}\|
+    \leqslant2\norm{y}\leqslant2c\|y\|.\qedhere\]
+\end{proof}
+
+\begin{9}
+    设$X$为线性空间，$P$为$X$上幂等算子。
+    \begin{enumerate}[label=(\roman*)]
+        \item 证明：$I-P$也是$X$上幂等算子。
+        \item 记$L_P=\{x:Px=x,x \in X\},L_{(I-P)}=\{x:Px=0,x \in X\}$。证明：
+        \[X=L_P \oplus L_{(I-P)}.\]
+        \item 设$E,L$是$X$的线性子空间，并且$X=E \oplus L$，
+        作$X$上的算子$P_E$：当$x=y+z$时，规定$P_Ex=y$。
+        证明：$P_E$是$X$上幂等算子，并且$E=\RR(P_E),L=\ker P_E$。
+    \end{enumerate}
+\end{9}
+\begin{proof}
+    过于简单；见\cite{Xia} \S5.4习题5 (pp.473--4)。
+\end{proof}
+
+\begin{10}
+    设$X$是赋范线性空间。
+    \begin{itemize}
+        \item[(i)] 设$P$是幂等算子 (按定义，它是有界线性算子，并且$P^2=P$)。
+        证明：$L_P,L_{(I-P)}$都是$X$的闭线性子空间。
+        \item[(ii)] 当$E,F$是Banach空间$X$的两个闭线性子空间，并且$X=E \oplus F$时，
+        按第9题(iii)的方式定义算子$P_E$和$P_F$。
+        证明：算子$P_E,P_F$是$X$上的幂等算子，并且$I=P_E+P_F$。
+    \end{itemize}
+\end{10}
+\begin{proof}
+    \begin{itemize}
+        \item[(i)] 根据上一题的(ii)，$L_P=\ker(I-P),L_{(I-P)}=\ker P$，
+        有界线性算子的核空间都是闭的。
+        \item[(ii)] 主要就是证明$P_E,P_F$有界。
+        $X$上不仅有本来的范数$\|x\|$，还有作为直和$E \oplus F$的范数$\|y\|+\|z\|$
+        (其中$x=y+z$，$y \in E,z \in F$)，且$\|x\|\leqslant\|y\|+\|z\|$。
+        由范数等价定理，$\|y\|,\|z\|$亦为$\|x\|$控制，即是说$P_E,P_F$有界。\qedhere
+    \end{itemize}
+\end{proof}
+\begin{remark*}
+    不少人以为非零幂等算子的范数一定是$1$，实际上不是的。比如说
+    \[P(x,y)=(x+\lambda y,0)\]
+    是幂等算子，在范数$\|(x,y)\|=\sqrt{|x|^2+|y|^2}$下，
+    $\|P\|=\sqrt{1+|\lambda|^2}$。
+\end{remark*}
+
+\begin{11}
+    试举一例：$X$是Banach空间，$E$是$X$的闭线性子空间，$F$是$X$的线性子空间，
+    并且$X=E \oplus F$，但$F$不是闭线性子空间。
+\end{11}
+\begin{proof}
+    取无限维Banach空间$X$，$f$是$X$上的无界线性泛函。
+    令$F=\ker f$，这是不闭的子空间；任取$y \notin F$，令$E=\mathbb{K}y$。
+    显然$E \cap F=\{0\}$，并且任何$x \in X$都能分解成
+    $f(x)y/f(y)+[x-f(x)y/f(y)] \in E \oplus F$。
+\end{proof}
+
+\begin{12}
+    设$X,Y$都是Banach空间，$T$是$X$到$Y$的线性算子，证明：如果对每个$f\in Y^*$，
+    $f(Tx)$作为空间$X$上的泛函是连续线性泛函，那么$T\in\B(X,Y)$。
+\end{12}
+\begin{proof}
+    \textbf{方法I.} $\{f(T\,\cdot\,):f\in Y^*,\|f\|=1\}$是从$X$到$\mathbb{K}$的一族有界线性算子，
+    对每个$x\in X$有$\sup\limits_{\|f\|=1}|f(Tx)|=\|Tx\|<\infty$。
+    那么$\|f(T\,\cdot\,)\|$是一致有界的，设为$c$，
+    即$\sup\limits_{\|f\|=1}|f(Tx)|=\|Tx\|\leqslant c\|x\|$对所有$x\in X$成立。
+    
+    \textbf{方法II.} 设$(x_n,Tx_n)\to(x,y)$，
+    那么对每个$f \in Y^*$都有$f(Tx)=\lim\limits_{n\to\infty}f(Tx_n)=f(y)$，
+    则$Tx=y$，由闭图像定理知$T$有界。
+\end{proof}
+
+\begin{13}
+    设$(E,\|\cdot\|)$是Banach空间，$(F,\|\cdot\|_1)$是赋范线性空间。
+    若$F$上有第二个范数$\|\cdot\|_2$使得$(F,\|\cdot\|_2)$是Banach空间，
+    且$\|\cdot\|_2$强于$\|\cdot\|_1$，
+    证明：任何$E\to(F,\|\cdot\|_1)$的有界线性算子$T$
+    也是$E\to(F,\|\cdot\|_2)$的有界线性算子。
+\end{13}
+\begin{proof}
+    这样的$T$是$E\to(F,\|\cdot\|_2)$的闭算子，推理如下：
+    \[\text{设}\begin{Bmatrix}x_n \to x\text{ 于 }E\qquad\ \ \ &\Longrightarrow&Tx_n \to Tx\text{ 于 }(F,\|\cdot\|_1)\\
+    &&\\Tx_n \to y\text{ 于 }(F,\|\cdot\|_2)&\Longrightarrow&\,Tx_n \to y\ \ \text{ 于 }(F,\|\cdot\|_1)\,\end{Bmatrix}
+    \Longrightarrow Tx=y.\]
+    上方的推导用的是$T\colon E\to(F,\|\cdot\|_1)$是有界线性算子，
+    下方的推导是用了$\|\cdot\|_2$强于$\|\cdot\|_1$。
+\end{proof}
+
+\begin{14}
+    设$T$是$L^2[0,1]$上有界线性算子。如果$T$把$L^2[0,1]$中连续函数映射成连续函数，
+    证明：$T$是$C[0,1]$上有界线性算子。
+\end{14}
+\begin{proof}
+    只需验证$T$是$C[0,1]$上的闭算子。
+    设$(x_n,Tx_n)\stackrel{C[0,1]}{\longrightarrow}(x,y)$，
+    $L^2[0,1]$范数不超过$C[0,1]$范数表明
+    $(x_n,Tx_n)\stackrel{L^2}{\longrightarrow}(x,y)$，
+    由$T$有界又有$Tx_n\stackrel{L^2}{\longrightarrow}Tx$，这样$Tx=y$。
+
+    另一种方法是直接用上一题的结论：$(C[0,1],\|\cdot\|_2)$是赋范线性空间，
+    $C[0,1]$上有第二个范数$\|\cdot\|_\infty$使得$(C[0,1],\|\cdot\|_\infty)$是Banach空间，
+    且$\|\cdot\|_\infty$强于$\|\cdot\|_2$，
+    这样任何$(C[0,1],\|\cdot\|_\infty)\to(C[0,1],\|\cdot\|_2)$的有界线性算子
+    也是$(C[0,1],\|\cdot\|_\infty)\to(C[0,1],\|\cdot\|_\infty)$的有界线性算子。
+    现在把本题的$L^2[0,1]$上的算子$T$限制于$C[0,1]$，
+    由于$\|Tx\|_2 \leqslant c\|x\|_2 \leqslant c\|x\|_\infty$，
+    限制后的$T$也是$(C[0,1],\|\cdot\|_\infty)\to(C[0,1],\|\cdot\|_2)$的有界算子，
+    由上一题的结论知命题成立。
+\end{proof}
+
+\begin{15}
+    设$X$为线性空间，$\|\cdot\|_1,\|\cdot\|_2$是$X$上的两个范数。
+    如果凡对$\|\cdot\|_1$为连续的线性泛函，也为$\|\cdot\|_2$连续，
+    那么存在数$c>0$，使得对一切$x\in X$，$\|\cdot\|_1\leqslant c\|\cdot\|_2$。
+\end{15}
+\begin{proof}
+    对于$i=1,2$，记$\|f\|_i$是$f$在$(X,\|\cdot\|_i)^*$中的范数。
+    由条件，$\{f\in(X,\|\cdot\|_1)^*:\|f\|_1=1\}$
+    是从$(X,\|\cdot\|_2)$到$\mathbb{K}$的一族有界线性算子，
+    对每个$x\in X$有$\sup\limits_{\|f\|_1=1}|f(x)|=\|x\|_1<\infty$。
+    那么$\|f\|_2$是一致有界的，设为$c$，
+    即$\sup\limits_{\|f\|_1=1}|f(x)|=\|x\|_1\leqslant c\|x\|_2$对所有$x\in X$成立。
+
+    ⚠️ 可惜这是个错误的做法，原因在于$(X,\|\cdot\|_2)$未必是Banach空间。
+    不过，赋范空间的对偶空间一定是Banach空间，于是正确的证明如下：
+
+    $\{x^{**}:x \in X,\|x\|_2=1\}$
+    是从$(X,\|\cdot\|_1)^*$到$\mathbb{K}$的一族有界线性算子，
+    由条件，对每个$f\in(X,\|\cdot\|_1)^*$，$f$也属于$(X,\|\cdot\|_2)^*$，从而有
+    \[\sup_{\|x\|_2=1}|x^{**}(f)|=\sup_{\|x\|_2=1}|f(x)|=\|f\|_2<\infty.\]
+    那么$\|x^{**}\|$是一致有界的，设为$c$，
+    即$\sup\limits_{\|x\|_2=1}\|x^{**}\|_{(X,\|\,\cdot\,\|_1)^{**}}
+    =\sup\limits_{\|x\|_2=1}\|x\|_1\leqslant c$成立。
+\end{proof}
+
+\begin{16}
+    举例说明共鸣定理中空间完备性的假设不可除去。
+\end{16}
+\begin{proof}[解答]
+    取 $X=c_c(\R)$ (即有限项非零的实数列全体)，配以 $l^\infty$ 范数，这是不完备的赋范空间.
+    
+    对于每个$n \geqslant 1$，作$X$上的有界线性泛函
+    \[f_n(x_1,x_2,\cdots)=x_1+x_2+\cdots+x_n,\]
+    则对于每个$x\in X$，
+    \[\sup_n|f_n(x)|\leqslant\sum_n|x_n|<+\infty,\]
+    但是$\|f_n\|=n$不一致有界。
+\end{proof}
+
+\begin{17}
+    设$\{e_\lambda\}_{\lambda\in\varGamma}$是Hilbert空间$H$的一组标准正交基。
+    对$H$中的一个点列，证明：$x_n$弱收敛于一点$x$当且仅当点列$\{x_n\}$有界且
+    \[\lim_{n\to\infty}\la x_n,e_\lambda \ra=\la x,e_\lambda \ra,
+    \quad\forall\lambda\in\varGamma.\]
+\end{17}
+\begin{proof}
+    前推后显然。后推前如下：对任意$f \in H$，
+    设$f=\sum\limits_{\lambda\in\varGamma}a_\lambda e_\lambda$，有
+    \[\textstyle\la x_n-x,f \ra=\la x_n-x,\sum\limits_{\lambda\in\varGamma \setminus F}a_\lambda e_\lambda \ra
+    +\sum\limits_{\lambda \in F}\bar{a}_\lambda\la x_n-x,e_\lambda \ra,\]
+    其中$F$为有限子集；先取定$F$让$\Big\|\sum\limits_{\lambda\in\varGamma \setminus F}a_\lambda e_\lambda\Big\|$小，
+    再令$n$大，即有$\la x_n-x,f \ra$充分小。
+\end{proof}
+
+\begin{18}
+    设$X$是Banach空间，$Y,Z$都是赋范线性空间，$\varPhi(x,y)$是$X \times Y$到$Z$的双线性映射，
+    即：固定$x$，$\varPhi(x,y)$是$Y$到$Z$的线性映射，固定$y$，$\varPhi(x,y)$是$X$到$Z$的线性映射。
+    若$\varPhi(x,y)$对变量$x,y$是分别连续的：
+    对$x \in X$，$\varPhi(x,\cdot)\in\B(Y,Z)$；
+    对$y \in Y$，$\varPhi(\cdot,y)\in\B(X,Z)$，
+    证明：存在常数$M$，使得$\|\varPhi(x,y)\| \leqslant M\|x\|\|y\|$。
+\end{18}
+\begin{proof}
+    $\{\varPhi(\cdot,y)\}_{\|y\|=1}$是$X$到$Z$的一族有界线性算子，且对任意的$x \in X$,
+    \[\sup_{\|y\|=1}\|\varPhi(x,y)\|=\|\varPhi(x,\cdot)\|_{Y \to Z}<\infty,\]
+    则$\{\|\varPhi(\cdot,y)\|_{X \to Z}\}_{\|y\|=1}$是一致有界的，
+    即$\|\varPhi(x,y)\| \leqslant M\|x\|$对某个$M>0$及一切$\|y\|=1$成立。
+\end{proof}
+
+\begin{19}[Gel'fand引理]
+    设$X$是Banach空间，$p(x)$是$X$上的泛函，它满足下面的条件：
+    \begin{enumerate}[label=(\roman*)]
+    \item $p(x)\geqslant0$；
+    \item 当$\alpha$为非负数时，$p(\alpha x)=\alpha p(x)$；
+    \item $p(x+y)\leqslant p(x)+p(y)$，$\forall x,y\in X$；
+    \item 当$x,x_n(n=1,2,\cdots)\in X$，$\lim\limits_{n\to\infty}x_n=x$时，
+    $\varliminf\limits_{n\to\infty}p(x_n)\geqslant p(x)$，
+    \end{enumerate}
+    证明：存在正数$M$，使得对一切$x\in X$，$p(x)\leqslant M\|x\|$。
+    这个结果说明了Banach空间吸收的闭凸子集的什么性质？
+\end{19}
+\begin{proof}
+    令$\norm{x}=\|x\|+\sup\limits_{\theta}p(e^{{\rm i}\theta}x)$，
+    $p$的性质说明$\norm{\,\cdot\,}$是一个范数，比如说
+    \begin{align*}
+        \norm{0}&=p(0)\leqslant\varliminf_{n\to\infty}p(x/n)
+        =\varliminf\limits_{n\to\infty}p(x)/n=0,\\
+        \norm{\alpha x}&=\|\alpha x\|+\sup_{\theta}p(e^{{\rm i}\theta}\alpha x)
+        =|\alpha|\|x\|+|\alpha|\sup_{\theta}p(e^{{\rm i}\theta}x)
+        =|\alpha|\norm{x}.
+    \end{align*}
+    接下来说明$X$关于$\norm{\,\cdot\,}$完备。
+    设$\{x_n\}$是$\norm{\,\cdot\,}$的Cauchy列，
+    则也是$\|\cdot\|$的Cauchy列，记$\lim\limits_{n\to\infty}x_n=x$，
+    那么当$n\to\infty$时，由条件有
+    $$p(e^{{\rm i}\theta}(x_n-x))\leqslant
+    \varliminf_{m\to\infty}p(e^{{\rm i}\theta}(x_n-x_m)),$$
+    推出
+    $$p(e^{{\rm i}\theta}(x_n-x))\leqslant
+    \varliminf_{m\to\infty}\sup_{\theta}p(e^{{\rm i}\theta}(x_n-x_m)),$$
+    进而
+    $$\sup_{\theta}p(e^{{\rm i}\theta}(x_n-x))\leqslant
+    \varliminf_{m\to\infty}\sup_{\theta}p(e^{{\rm i}\theta}(x_n-x_m)),$$
+    得$\norm{x_n-x}\to0$。故由范数等价定理，
+    存在$M$使得$\norm{x}\leqslant M\|x\|$，
+    更有$p(x)\leqslant M\|x\|$。
+
+    对吸收的闭凸子集$N$，Minkowski泛函$p_N(x)$符合题中条件，
+    于是$p_N(x)=\inf\limits_{\begin{subarray}{c}\alpha>0,\\\alpha^{-1}x\in N\end{subarray}}\alpha\leqslant M\|x\|$，
+    得$x/(M\|x\|)\in N$，也就是$B(0,1/M)\subset N$，即$0$是$N$的内点。
+\end{proof}
+
+\begin{20}
+    设$C_{2\pi}$是直线上周期为$2\pi$的连续函数全体组成的Banach空间。
+    对于任意的$x(t)\in C_{2\pi}$，
+    令$\displaystyle a_n=\frac{1}{\pi}\int_0^{2\pi}x(t)\cos nt\,\mathrm{d}t$，
+    $\displaystyle b_n=\frac{1}{\pi}\int_0^{2\pi}x(t)\sin nt\,\mathrm{d}t\ (n=0,1,2,\cdots)$，
+    则$x(t)$有Fourier展开：
+    $$x(t)\sim\frac{a_0}{2}+\sum_{n=1}^\infty(a_n\cos nt+b_n\sin nt).$$
+    记部分和$\displaystyle S_n(x)(t)=\frac{a_0}{2}+\sum_{k=1}^n(a_k\cos kt+b_k\sin kt)$，证明：
+    \begin{enumerate}[label=(\roman*)]
+    \item $\displaystyle S_n(x)(s)=\frac{1}{2\pi}\int_0^{2\pi}x(t)
+    \frac{\sin\big[(2n+1)\frac{t-s}{2}\big]}{\sin\frac{t-s}{2}}\,\mathrm{d}t$。
+    \item $S_{n}$是从$C_{2\pi}$到$C_{2\pi}$的有界线性算子，
+    并且$\displaystyle \|S_n\|=\frac{1}{\pi}\int_0^{\pi}
+    \bigg|\frac{\sin(2n+1)t}{\sin t}\bigg|\,\mathrm{d}t$。
+    \item $\lim\limits_{n\to\infty}\|S_n\|=\infty$。
+    \item 存在连续周期函数，其Fourier级数不是一致收敛的。
+    \item 将$S_n$看成从$L^1[0,2\pi]$到$L^1[0,2\pi]$的线性算子，利用同样的方法证明：
+    存在可积函数，其Fourier级数在$L^1[0,2\pi]$中不是收敛的。
+    \end{enumerate}
+\end{20}
+\begin{proof}
+    \begin{enumerate}[label=(\roman*)]
+    \item 代入$a_k,b_k$运算即可。
+    \begin{align*}
+    &S_n(x)(s)=\frac{a_0}{2}+\sum_{k=1}^n(a_k\cos ks+b_k\sin ks)\\
+    &=\frac{1}{2\pi}\int_0^{2\pi}x(t)\,{\rm d}t
+    +\sum_{k=1}^n\left(\frac{1}{\pi}\int_0^{2\pi}x(t)\cos kt\,{\rm d}t\cos ks
+    +\frac{1}{\pi}\int_0^{2\pi}x(t)\sin kt\,{\rm d}t\sin ks\right)\\
+    &=\frac{1}{2\pi}\int_0^{2\pi}x(t)\left(1+\sum_{k=1}^n2\cos k(t-s)\right)\,{\rm d}t\\
+    &=\frac{1}{2\pi}\int_0^{2\pi}x(t)\left(1+\sum_{k=1}^n
+    \frac{\sin\big(k+\frac{1}{2}\big)(t-s)-\sin\big(k-\frac{1}{2}\big)(t-s)}{\sin\frac{t-s}{2}}\right)\,{\rm d}t\\
+    &=\frac{1}{2\pi}\int_0^{2\pi}x(t)
+    \frac{\sin\big(n+\frac{1}{2}\big)(t-s)}{\sin\frac{t-s}{2}}\,{\rm d}t.
+    \end{align*}
+    \item 对任何固定的数$s\in[0,2\pi]$，有
+    \[|S_n(x)(s)|\leqslant\frac{1}{2\pi}\|x\|_\infty
+    \int_0^{2\pi}\left|\frac{\sin\big(n+\frac{1}{2}\big)(t-s)}{\sin\frac{t-s}{2}}\right|\,{\rm d}t,\]
+    当$x(t)=\operatorname{sgn}
+    \dfrac{\sin\big(n+\frac{1}{2}\big)(t-s)}{\sin\frac{t-s}{2}}$时是等号，并且算出
+    \begin{align*}
+    c_n&=\frac{1}{2\pi}\int_0^{2\pi}\left|\frac{\sin\big(n+\frac{1}{2}\big)(t-s)}{\sin\frac{t-s}{2}}\right|\,{\rm d}t\\
+    &=\frac{1}{\pi}\int_{-\frac{s}{2}}^\frac{\pi-s}{2}\left|\frac{\sin(2n+1\big)\frac{t-s}{2}}{\sin\frac{t-s}{2}}\right|\,{\rm d}\tfrac{t-s}{2}\\
+    &=\frac{1}{\pi}\int_{-\frac{s}{2}}^\frac{\pi-s}{2}\left|\frac{\sin(2n+1\big)t}{\sin t}\right|\,{\rm d}t\\
+    &=\frac{1}{\pi}\int_0^{\pi}\left|\frac{\sin(2n+1)t}{\sin t}\right|\,{\rm d}t.
+    \end{align*}
+    不过上面的$x(t) \notin C_{2\pi}$，
+    为此，令$\{x_m(t)\}$为一列点态收敛于$x(t)$的取值于$[-1,1]$间的连续函数，则
+    \begin{align*}
+    |S_n(x_m)(s)|&=\frac{1}{2\pi}\int_0^{2\pi}x_m(t)
+    \frac{\sin\big(n+\frac{1}{2}\big)(t-s)}{\sin\frac{t-s}{2}}\,{\rm d}t\\
+    &\to\frac{1}{2\pi}\int_0^{2\pi}x(t)
+    \frac{\sin\big(n+\frac{1}{2}\big)(t-s)}{\sin\frac{t-s}{2}}\,{\rm d}t=c_n,
+    \end{align*}
+    从而有
+    \[\|S_n\|\geqslant\lim_{m\to\infty}\frac{\|S_n(x_m)\|_\infty}{\|x_m\|_\infty}
+    \geqslant\lim_{m\to\infty}\frac{|S_n(x_m)(s)|}{\|x_m\|_\infty}=c_n.\]
+    \item 注意$\frac{1}{t}-\frac{1}{\sin t}$是
+    $\big[0,\frac{\pi}{2}\big]$上的有界函数，于是
+    \begin{align*}
+    \|S_n\|&=\frac{1}{\pi}\int_0^{\pi}\left|\frac{\sin(2n+1)t}{\sin t}\right|\,{\rm d}t\\
+    &=\frac{2}{\pi}\int_0^{\frac{\pi}{2}}\left|\frac{\sin(2n+1)t}{\sin t}\right|\,{\rm d}t\\
+    &=\frac{2}{\pi}\int_0^{\frac{\pi}{2}}\left|\frac{\sin(2n+1)t}{t}\right|\,{\rm d}t+O(1)\\
+    &=\frac{2}{\pi}\int_0^{\left(n+\frac{1}{2}\right)\pi}\left|\frac{\sin t}{t}\right|\,{\rm d}t+O(1)\\
+    &=\frac{2}{\pi}\sum_{k=1}^n\frac{1}{k\pi}\int_0^{\pi}\sin t\,{\rm d}t+O(1)\\
+    &=\frac{4}{\pi^2}\log n+O(1)\to\infty.
+    \end{align*}
+    \item 不然对所有$x(t)\in C_{2\pi}$，$\{S_n(x)\}_{n\geqslant1}$一致收敛从而一致有界，
+    则$\{\|S_n\|\}_{n\geqslant1}$一致有界，与(iii)矛盾。
+    \item 由于
+    \[S_n(x)=x*\frac{\sin\big(n+\frac{1}{2}\big)t}{\sin\frac{t}{2}}:=x*\phi_n,\]
+    可知
+    \[\|S_n(x)\|_1\leqslant\|x\|_1\|\phi_n\|_1,\]
+    故$S_n$作为$L^1[0,2\pi]$上算子的范数不超过
+    \[\|\phi_n\|_1=\frac{1}{\pi}\int_0^{\pi}\bigg|\frac{\sin(2n+1)t}{\sin t}\bigg|\,{\rm d}t.\]
+    接下来试着找合适的$x(t)$让上面的不等号成为等号。这无疑是十分高的要求，因为
+    \[\int_0^{2\pi}\left|\int_0^{2\pi} x(t)\phi_n(t-s)\,{\rm d}t\right|{\rm d}s
+    \leqslant\int_0^{2\pi}|x|\int_0^{2\pi}|\phi_n|\]
+    要取到等号的话，对所有的$s$，$x(t)$和$\phi_n(t-s)$的正负号必须一直保持一致或自始至终相反 
+    (否则会在对$t$积分的过程中有损耗)。可是$\phi_n$是时正时负的，
+    绝不可能不管平移了多少长度的$s$后两者都能默契到天衣无缝。
+    因此，我们不得不取特殊的$x(t)$------随便给定某点$\nu\in[0,2\pi]$，令$x(t)$为Dirac函数
+    \[\delta_\nu(t)=\begin{cases}\infty,&t=\nu\\0,&t\ne\nu\end{cases}.\]
+    形式上有$\|\delta_\nu\|_1=\infty\cdot|\{\nu\}|=1$，那么
+    \[\left|\int_0^{2\pi} \delta_\nu(t)\phi_n(t-s)\,{\rm d}t\right|=|\phi_n(\nu-s)|,\]
+    因而
+    \[\|\delta_\nu*\phi_n\|_1=\int_0^{2\pi}|\phi_n(\nu-s)|\,{\rm d}s=\|\phi_n\|_1.\]
+    不过这里还是遇上了同样的问题，那就是$\delta_\nu$不是$L^1$函数。
+    对此，解决方法是选取一族（真正的）函数$\{x_\varepsilon\}$
+    ``弱收敛''于$\delta_\nu$，用来模拟出Dirac函数。令
+    \[x_\varepsilon(t)=\dfrac{1}{\varepsilon}k\left(\frac{t-\nu}{\varepsilon}\right),\]
+    其中$k$是紧支于$0$附近的函数且$\|k\|_1=1$。容易说明$\|x_\varepsilon\|_1=1$，且
+    \[\lim_{\varepsilon\to0^+}\|x_\varepsilon*\phi_n\|_1=\|\phi_n\|_1,\]
+    从而
+    \[\|S_n\|\geqslant\lim_{\varepsilon\to0^+}\frac{\|S_n(x_\varepsilon)\|_1}{\|x_\varepsilon\|_1}
+    =\|\phi_n\|_1=c_n.\]
+    由此可知$\|S_n\|=c_n$，即(ii)中的$C_{2\pi}$改成$L^1[0,2\pi]$后结论不变。
+    (iii),\,(iv)和原来完全相同。\qedhere
+    \end{enumerate}
+\end{proof}
+
+\begin{21}
+    在习题2.5第6题与习题2.5第15题中证明了Fourier级数$f\mapsto\{\hat{f}(n)\}_{n\in\Z}$
+    是从$L^1([0,2\pi])$到$c_0(\Z)$的单射，证明这个映射不是满射。
+\end{21}
+\begin{proof}
+    搬运自\cite{Ru} Theorem 5.15。
+    
+    对任意的$n\in\Z$，$|\hat{f}(n)|\leqslant\|f\|_1$，
+    也就是$\|\hat{f}(n)\|_{\infty} \leqslant \|f\|_1$，
+    即这是个范数不大于$1$的有界映射。现有这个映射是单的，
+    假设其还是满的，则逆算子定理说明存在$c>0$使得
+    \[\|\hat{f}(n)\|_{\infty} \geqslant c\|f\|_1.\]
+    为了推出矛盾，考虑Dirichlet核\[D_N(\theta)=\sum_{n=-N}^{N}e^{\mathrm{i}n\theta}.\]
+    一方面，其Fourier级数从$-N$项至$N$项均为$1$，其余项为$0$，
+    有$\|\hat{D}_N\|_\infty=1$；另一方面，注意到
+    \[D_N(\theta)\big(e^{\mathrm{i}\frac{\theta}{2}}-e^{-\mathrm{i}\frac{\theta}{2}}\big)
+    =e^{\mathrm{i}(N+\frac{1}{2})\theta}-e^{-\mathrm{i}(N+\frac{1}{2})\theta},\]
+    从而\[D_N(\theta)=\frac{\sin\big(N+\frac{1}{2}\big)\theta}{\sin\frac{\theta}{2}},\]
+    上一题的(iii)是说$\lim\limits_{N\to\infty}\|D_N\|_1=\infty$。
+\end{proof}
+
+\begin{22}
+    设$\{e_1,e_2,\cdots,e_n,\cdots\}$是Hilbert空间$H$的一组标准正交基，
+    $L_n$是$e_n$生成的线性子空间，$P_n$是$H$到$L_n$上的投影。
+    证明：当$n$趋于无穷时，$P_n$强算子收敛于$0$，
+    $\displaystyle\sum_{i=1}^{n}P_i$强算子收敛于$I$。
+\end{22}
+\begin{proof}
+    由于
+    \[\|x\|^2=\sum_{n=1}^{\infty}|\langle x,e_n \rangle|^2
+    =\sum_{n=1}^{\infty}\|P_nx\|^2,\]
+    当$n\to\infty$时有$\|P_nx\|\to0$，即$P_n$强算子收敛于$0$。
+    \[x=\sum_{n=1}^{\infty}\langle x,e_n\rangle e_n
+    =\sum_{n=1}^{\infty}P_nx\]
+    说的就是$\displaystyle\sum_{i=1}^{n}P_i$强算子收敛于$I$。
+\end{proof}
+
+\begin{23}
+    设Hilbert空间$H$上有界线性算子列$\{A_n\},\{B_n\}$分别强算子收敛于$A,B$。
+    证明：算子列$\{A_nB_n\}$强算子收敛于$AB$。
+    在弱算子收敛下，相应的结论是否成立？并说明理由。
+\end{23}
+\begin{proof}[解答]
+    证明是很简单的，拆成
+    \[\|A_nB_nx-ABx\|\leqslant\|A_n\|\|B_nx-Bx\|+\|(A_n-A)(Bx)\|\to0\]
+    即可。弱算子收敛下不成立，如$L^2(\R)$上令$A_n$为乘$e^{\mathrm{i}nx}$，
+    $B_n$为乘$e^{-\mathrm{i}nx}$，则$A_nB_n$均为恒等算子，
+    而$A_n,B_n$都弱算子收敛于$0$，理由如下：对$f \in L^2(\R)$，
+    $g \in L^2(\R)^* \simeq L^2(\R)$，有$fg \in L^1(\R)$，
+    则由Riemann--Lebesgue引理（习题1.4第14题）有
+    \[\la fe^{\pm\mathrm{i}nx},g \ra
+    =\int_{\R}f(x)g(x)\,e^{\pm\mathrm{i}nx}\,\mathrm{d}x\to0.\qedhere\]
+\end{proof}
+\textbf{继续思考.} 改成$\{A_n\}$弱算子收敛于$A$，$\{B_n\}$强算子收敛于$B$，
+是否有$\{A_nB_n\}$弱算子收敛于$AB$？
+若$\{A_n\}$强算子收敛于$A$，$\{B_n\}$弱算子收敛于$B$，情况又如何？
+\begin{proofc}[解答]
+    前者成立，证明很简单从略；
+    后者不对，取$A_n,B_n$为$l^2$上的左、右位移$n$位的算子，
+    不难验证$\{A_n\}$强算子收敛于$0$，$\{B_n\}$弱算子收敛于$0$，而$\{A_nB_n\}$恒为$I$。
+\end{proofc}
+
+\begin{24}
+    使用下面的方法给出$L^2[0,1]$是$L^1[0,1]$的第一纲子集的两种不同的证明。
+    \begin{itemize}
+    \item[(i)] $\{f \in L^2[0,1]:\|f\|_2 \leqslant n\}$
+    在$L^1[0,1]$中是不含内点的闭子集。
+    \item[(ii)] 从$L^2[0,1]$到$L^1[0,1]$的嵌入映射不是满的。
+    \end{itemize}
+\end{24}
+\begin{proof}
+    (i) 记这个集合为$E_n$，先说明$E_n$是闭的。设$\{f_k\}$是$E_n$中的序列，
+    即$\|f_k\|_2 \leqslant n$，如果$f_k\stackrel{L^1}{\rightarrow}f$，
+    要证明$\|f\|_2 \leqslant n$。由Riesz--Fischer定理，
+    其有子列$\{f_{k_m}\}$几乎处处收敛到$f$，由Fatou引理，
+    $\|f\|_2 \leqslant \varliminf\limits_{m\to\infty}\|f_{k_m}\|_2 \leqslant n$。
+
+    再说明$E_n$没有内点。假设$f$是$E_n$的内点，记$\varphi_k=k^\frac{3}{2}\chi_{[0,k^{-2}]}$，
+    由于$\|\varphi_k\|_1=k^{-\frac{1}{2}}\to0$，对充分大的$k$当有$f+\varphi_k \in E_n$。
+    可是$\|\varphi_k\|_2=k^\frac{1}{2}\to\infty$，矛盾。
+    因此$E_n$都是疏朗集，从而$L^2[0,1]=\bigcup\limits_n E_n$是第一纲的。
+
+    (ii) 记这个嵌入映射为$\imath$，$\|\ \ \|_1\leqslant\|\ \ \|_2$表明$\imath$是连续的。
+    由注3.2.2，如果$\imath$的像$L^2[0,1]$是第二纲集，那么$\imath$是满的。
+    可是$\imath$并非满的，比如说$L^1[0,1]$的元素$\varphi(x)=x^{-\frac{1}{2}}$就不在$\imath$的像中。
+\end{proof}
+
+\begin{25}[Toeplitz]
+    对于一个无穷阶数值矩阵$A=(a_{ij})_{1 \leqslant i,j < \infty}$，可引入$A$-求和法：
+    令$s_n=x_1+\cdots+x_n$为数项级数$\sum\limits_{n=1}^\infty x_n$的部分和。若Cauchy和
+    \[\sigma_n=a_{n1}s_1+a_{n2}s_2+\cdots\tag{3.4}\]
+    都存在，且$\lim\limits_{n\to\infty}\sigma_n$收敛，
+    则称其极限$\sigma$为数项级数$\sum\limits_{n=1}^\infty x_n$按求和矩阵$A$的广义和，
+    记为$A-\sum\limits_{n=1}^\infty x_n$。证明下面两个条件是等价的：
+    \begin{itemize}
+        \item[(i)] $A$-求和法是正则的，即：若$\sum\limits_{n=1}^\infty x_n$收敛，
+        则$A-\sum\limits_{n=1}^\infty x_n$存在且与$\sum\limits_{n=1}^\infty x_n$相等。
+        \item[(ii)] $\lim\limits_{n\to\infty}a_{nj}=0$，
+        $\lim\limits_{n\to\infty}\sum\limits_{j=1}^\infty a_{nj}=1$，
+        且$b\xlongequal{\text{def}}\sup\limits_n\sum\limits_{j=1}^\infty|a_{nj}|<\infty$。
+    \end{itemize}
+    同时证明：由(3.4)式定义的线性变换$T(\{s_n\})=\{\sigma_n\}$是$c$上的有界线性算子，且$\|T\|=b$。
+\end{25}
+\begin{proof}
+    见\cite{Xia} \S5.4例4定理5.4.9 (pp.169--72).
+\end{proof}
+
+\begin{26}[Grothendieck]
+    设$1\leqslant p<\infty$，$E$是$L^p[0,1]$的闭线性子空间，
+    且$E$是$L^\infty[0,1]$的子集。
+    \begin{enumerate}[label=(\roman*)]
+    \item 证明：$E$也是$L^\infty[0,1]$的一个闭线性子空间。
+    \item 证明：存在$C>0$使得$\|f\|_\infty\leqslant C\|f\|_p$。
+    \item 证明：存在$A>0$使得$\|f\|_\infty\leqslant A\|f\|_2$。
+    \item 固定$E$中的一个标准正交系$\{f_1,f_2,\cdots,f_n\}$。
+    证明：存在常数$A$以及$[0,1]$中的Lebesgue可测集$H$，$m(H)=1$，
+    使得对满足$|a_1|^2+|a_2|^2+\cdots+|a_n|^2=1$的数组$(a_1,a_2,\cdots,a_n)$和$x\in H$，有
+    $$|a_1f_1(x)+a_2f_2(x)+\cdots+a_nf_n(x)|\leqslant A.$$
+    \item 固定$E$中的一个标准正交系$\{f_1,f_2,\cdots,f_n\}$。
+    证明：存在常数$B$，使得对几乎处处的$x\in[0,1]$，
+    都有$\displaystyle\sum_{i=1}^n|f_i(x)|^2\leqslant B^2$。
+    \item 证明：$E$是有限维的。
+    \end{enumerate}
+\end{26}
+    \begin{proof}
+    \begin{enumerate}[label=(\roman*)]
+    \item 对$E$的序列$f_n\stackrel{L^\infty}{\longrightarrow}f\in L^p[0,1]$，
+    有$f_n\stackrel{L^p}{\longrightarrow}f$，从而$f\in E$。
+    \item $\operatorname{id}\colon(E,\|\cdot\|_\infty)\to(E,\|\cdot\|_p)$
+    是连续的双射，故其逆算子亦有界。
+    \item $p\leqslant2$时$\|f\|_\infty\leqslant C\|f\|_p\leqslant C\|f\|_2$；
+
+    $p>2$时$\|f\|_\infty\leqslant C\|f\|_p\leqslant 
+    C\|f\|_2^\frac{2}{p}\|f\|_\infty^{1-\frac{2}{p}}$，
+    那么$\|f\|_\infty\leqslant C^\frac{p}{2}\|f\|_2$。
+    \item $\|a_1f_1+\cdots+a_nf_n\|_\infty
+    \leqslant A\|a_1f_1+\cdots+a_nf_n\|_2\leqslant A$。
+    \item 令$a^{(j)}=\big(a_1^{(j)},\cdots,a_n^{(j)}\big)$
+    是可数个在单位球面$|a|=1$上稠密的数组，得
+    $$|a_1^{(j)}f_1(x)+\cdots+a_n^{(j)}f_n(x)|\leqslant A\quad\text{对 }x\in H_j,$$
+    其中$m(H_j)=1$。由连续性，对单位球面上的所有$a=(a_1,\cdots,a_n)$，
+    \[|a_1f_1(x)+\cdots+a_nf_n(x)|\leqslant A\]
+    对$x\in\bigcap\limits_jH_j\coloneqq H$成立。
+    取$\displaystyle a_i=\overline{f_i(x)}\bigg/\left(\sum_{i=1}^n|f_i(x)|^2\right)^{\frac{1}{2}}$，
+    得到$\displaystyle\left(\sum_{i=1}^n|f_i(x)|^2\right)^\frac{1}{2}\leqslant A$。
+    \item 取$E$中的一个标准正交基$\{f_1,f_2,\cdots,f_n\}$，
+    则$E$的维数$\displaystyle=n=\int_0^1\sum_{i=1}^n|f_i(x)|^2\,{\rm d}x \leqslant A^2$。\qedhere
+    \end{enumerate}
+    \begin{remark*}
+    (i) 容易发现$[0,1]$可换成任何有限测度空间.
+    
+    (ii) 把$L^{\infty}[0,1]$改为任何$L^q[0,1]\ (1\leqslant q<\infty)$后结论不再成立，
+    见\cite{SS} Chapter 4 Problem 6 (p.186).
+    \end{remark*}
+    \end{proof}
+
+\subsection{3.3 共轭算子}
+\begin{6}
+    设$U$是Hilbert空间$H$上的有界算子。证明：$U$是酉算子当且仅当
+    $U$是一个满射且$U$是等距 (即$\|Ux\|=\|x\|,\forall x \in H$)。
+\end{6}
+\begin{proof}
+    前推后显然，以下考虑后推前。展开$\|cUx+Uy\|^2=\|cx+y\|^2$得
+    \[\operatorname{Re}\big[c\big(\langle Ux,Uy \rangle-\langle x,y \rangle\big)\big]=0,\]
+    取合适的常数$c$即有$\langle Ux,Uy \rangle=\langle x,y \rangle$，
+    这说明$U^*U=I$。$U$是等距满射从而可逆，有$(U^{-1})^*=(U^*)^{-1}$，进而
+    \[I=(U^{-1})^*U^{-1}=(U^*)^{-1}U^{-1}=(UU^*)^{-1},\]
+    从而$UU^*=I$。
+\end{proof}
+
+\begin{7}
+    设$T$是复Hilbert空间$H$上的有界算子。
+    证明：$T$是自伴算子当且仅当对任意$x \in H$，$\la Tx,x \ra$都是实值的。
+\end{7}
+\begin{proof}
+    当$T$是自伴算子，$\la Tx,x \ra=\la T^*x,x \ra=\la x,Tx \ra
+    =\overline{\la Tx,x \ra}$，即$\la Tx,x \ra$是实数。
+    
+    当$\la Tx,x \ra$都是实数，那么
+    \[\bar{c}\la Tx,y \ra+c\la Ty,x \ra
+    =\la T(x+cy),x+cy \ra-\la Tx,x \ra-\la T(cy),cy \ra\in\R,\]
+    注意到
+    \[\bar{c}\la x,Ty \ra+c\la Ty,x \ra=\bar{c}\la x,Ty \ra+\overline{\bar{c}\la x,Ty \ra}\in\R,\]
+    对比两式可知$\bar{c}(\la Tx,y \ra-\la x,Ty \ra)\in\R$，
+    选取合适的复系数$c$得出$\la Tx,y \ra=\la x,Ty \ra$。
+\end{proof}
+
+\begin{9}
+    若$\{U_n\},U$都是Hilbert空间$H$上的酉算子。
+    证明：$U_n$强算子收敛于$U$当且仅当$U_n$弱算子收敛于$U$。
+\end{9}
+\begin{proof}
+    前推后显然，后推前是
+    \[\lim_{n\to\infty}\|U_nx-Ux\|^2
+    =\lim_{n\to\infty}\|U_nx\|^2+\|Ux\|^2-\la U_nx,Ux \ra-\la Ux,U_nx \ra
+    =2\|x\|^2-2\|Ux\|^2=0.\qedhere\]
+\end{proof}
+
+\begin{10}[Cotlar (科特勒)]
+    设$T_1,T_2,\cdots,T_m$是Hilbert空间$H$上的有界线性算子，
+    非负数组$\{\alpha_{1-m},\alpha_{2-m},\cdots,\alpha_{m-1}\},\{\beta_{1-m},\beta_{2-m},\cdots,\beta_{m-1}\}$满足
+    \[\|T_j^*T_k\|\leqslant\alpha_{j-k}^2,\ \|T_jT_k^*\|\leqslant\beta_{j-k}^2,\ 1 \leqslant j,k \leqslant m.\]
+    记$\displaystyle A=\sum_{k=1-m}^{m-1}\alpha_k$，$\displaystyle B=\sum_{k=1-m}^{m-1}\beta_k$，
+    $C=\sup\limits_{1 \leqslant k \leqslant m}\|T_k\|$，$T=T_1+T_2+\cdots+T_m$。
+    \begin{itemize}
+    \item[(i)] 对任意正整数$n=2^k$，证明$\|(T^*T)^n\| \leqslant mCA^nB^{n-1}$。
+    \item[(ii)] 证明$\|T\|\leqslant\sqrt{AB}$。
+    \end{itemize}
+\end{10}
+\begin{proof}
+    (i) 记$\gamma=\|T^*_{j_1}T_{k_1}T^*_{j_2}T_{k_2}\cdots T^*_{j_n}T_{k_n}\|$，则有
+    \[\gamma\leqslant\|T^*_{j_1}T_{k_1}\|\cdots\|T^*_{j_n}T_{k_n}\|\leqslant\alpha^2_{j_1-k_1}\cdots\alpha^2_{j_n-k_n},\]
+    且有
+    \[\gamma\leqslant\|T^*_{j_1}\|\beta^2_{k_1-j_2}\cdots\beta^2_{k_{n-1}-j_n}\|T_{k_n}\|
+    \leqslant C^2\beta^2_{k_1-j_2}\cdots\beta^2_{k_{n-1}-j_n},\]
+    两者相乘开平方，得出
+    \[\gamma\leqslant C\alpha_{j_1-k_1}\cdots\alpha_{j_n-k_n}\beta_{k_1-j_2}\cdots\beta_{k_{n-1}-j_n}.\]
+    对$k_n$求和，得
+    \[\sum_{k_n}\gamma\leqslant CA\alpha_{j_1-k_1}\cdots\alpha_{j_{n-1}-k_{n-1}}\beta_{k_1-j_2}\cdots\beta_{k_{n-1}-j_n},\]
+    再对$j_n$求和，得
+    \[\sum_{j_n}\sum_{k_n}\gamma\leqslant CAB\alpha_{j_1-k_1}\cdots\alpha_{j_{n-1}-k_{n-1}}\beta_{k_1-j_2}\cdots\beta_{k_{n-2}-j_{n-1}},\]
+    依次对$k_{n-1},j_{n-1},\cdots,k_2,j_2,k_1$求和，得
+    \[\sum_{k_1}\sum_{j_2}\sum_{k_2}\cdots\sum_{j_n}\sum_{k_n}\gamma\leqslant CA^nB^{n-1},\]
+    最后，对$j_1$求和有
+    \[\sum_{j_1}\sum_{k_1}\sum_{j_2}\sum_{k_2}\cdots\sum_{j_n}\sum_{k_n}\gamma\leqslant mCA^nB^{n-1}.\]
+    (ii) 由(i)有
+    \[\|T\|^2=\|(T^*T)^n\|^\frac{1}{n}\leqslant(mC)^\frac{1}{n}AB^{1-\frac{1}{n}},\]
+    令$n\to\infty$即可。
+\end{proof}
+\begin{remark*}
+    (i)中的$n=2^k$是为了$\|(T^*T)^n\|=\|T\|^{2n}$，
+    不过实际上此式对一切$n$都是成立的：一方面，
+    \[\|(T^*T)^n\|\leqslant\|T\|^{2n}\]
+    是明显的；另一方面，取$2^k\geqslant2n$，则有
+    \[\|T\|^{2^k}=\|(T^*T)^{2^{k-1}}\|\leqslant\|(T^*T)^n\|\|T\|^{2^k-2n},\]
+    从而$\|T\|^{2n}\leqslant\|(T^*T)^n\|$。
+\end{remark*}
+
+\begin{11}
+    证明推论3.3.1。
+\end{11}
+\begin{proof}
+    设$T$可逆，则$(T^{-1})^*$就是$T^*$的逆算子。
+    设$T^*$可逆，闭值域定理的(iii), (iv)分别推出$T$是满射和单射，故$T$可逆；
+    亦可直接证明，过程如下：由开映射定理，存在$\delta>0$使得
+    $B_{X^*}(0,\delta) \subset T^*B_{Y^*}(0,1)$，那么对$x \in X$，
+    \begin{align*}
+        \|Tx\|&=\sup\{f(Tx):f \in B_{Y^*}(0,1)\}\\
+        &=\sup\{(T^*f)(x):f \in B_{Y^*}(0,1)\}\\
+        &\geqslant\sup\{g(x):g \in B_{X^*}(0,\delta)\}\\
+        &=\delta\|x\|,
+    \end{align*}
+    于是$T$是单射，且$\RR(T)$是闭的；
+    再用$\ker(T^*)=\RR(T)^\perp$得出$\RR(T)$稠密，从而$T$是满射。
+\end{proof}
+
+\begin{12}
+    设$X,Y$是Banach空间，$T\in\B(X,Y)$。证明：$T$是满射当且仅当$T^*$是下有界的，
+    即存在正数$c$使得对任意$y^* \in Y^*$，有$\|T^*y^*\| \geqslant c\|y^*\|$。
+\end{12}
+\begin{proof}
+    后推前用引理3.3.2就行；前推后如下：
+    \[T\text{ 满}\Longrightarrow
+    \begin{Bmatrix}^\perp\!\ker(T^*)\text{ 是全空间}&\Longrightarrow&T^*\text{ 单}\\
+    &&\\\RR(T)\text{ 闭}&\Longrightarrow&\RR(T^*)\text{ 闭}\end{Bmatrix}
+    \Longrightarrow T^*\text{ 下有界},\]
+    左边的推导是用$\RR(T)={ }^\perp\!\ker(T^*)$，中间下面的推导用的也是闭值域定理，
+    右边的推导用的是定理3.2.4。
+\end{proof}
+
+\begin{13}
+    举例说明：存在Banach空间$X$上的有界线性算子$T$，使得$T$是单射，
+    但是$T^*$的值域在$X^*$中不稠密。
+\end{13}
+\begin{proof}[例子]
+    令算子$T\colon l^1\to l^1,(a_n)\mapsto(a_n/n)$，
+    则$T^*\colon l^\infty\to l^\infty,(a_n)\mapsto(a_n/n)$，
+    $\RR(T^*)\subset c_0$不在$l^\infty$中稠密。
+\end{proof}
+
+\subsection**{参考文献}
+\begin{references}
+    \bibitem[Ca]{Ca}
+        N. L. Carothers. \textit{A Short Course on Banach Space Theory}. 
+        London Mathematical Society Student Texts 64. 
+        Cambridge University Press, 2004.
+    \bibitem[Da]{Da}
+        E. B. Davies. \textit{Linear Operators and their Spectra}. 
+        Cambridge Studies in Advanced Mathematics 106. 
+        Cambridge University Press, 2007.
+    \bibitem[Gr]{Gr}
+        L. Grafakos. \textit{Classical Fourier Analysis}. 
+        Graduate Texts in Mathematics 249. Springer, 2014.
+    \bibitem[KT]{KT}
+        P. Komjáth and V. Totik. 
+        \textit{Problems and Theorems in Classical Set Theory}. 
+        Problem Books in Mathematics. Springer, 2006.
+    \bibitem[Ox]{Ox}
+        J. C. Oxtoby. \textit{Measure and Category}. 
+        Graduate Texts in Mathematics 2. Springer, 1980.
+    \bibitem[Ru]{Ru}
+        W. Rudin. \textit{Real and Complex Analysis}. 
+        International Series in Pure and Applied Mathematics. 
+        McGraw--Hill, Inc, 1987.
+    \bibitem[SS]{SS}
+        E. M. Stein and R. Shakarchi. \textit{Functional Analysis}. 
+        Princeton Lectures in Analysis IV. 
+        Princeton University Press, 2011.
+    \bibitem[Xia]{Xia}
+        夏道行\ 等. 实变函数论与泛函分析（下册）.
+        现代数学基础 17. 高等教育出版社, 2010.
+\end{references}

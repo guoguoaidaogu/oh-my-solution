@@ -1,0 +1,130 @@
+\section{模群及其作用、模形式的定义}
+回忆模群$\mathrm{SL}_2(\mathbb{Z})$，其在上半平面$\mathbb{H}=\{\tau\in\mathbb{C}:\Im\tau>0\}$通过分式线性变换左作用:
+
+\begin{equation}若\ \gamma=\left[\begin{array}{cc}
+a & b \\
+c & d
+\end{array}\right]
+\in\mathrm{SL}_2(\mathbb{Z})，则\ \gamma(\tau):=\displaystyle\frac{a\tau+b}{c\tau+d}.\end{equation}
+那么$\mathrm{SL}_2(\mathbb{Z})$自然地在$\mathbb{H}$上的复值函数空间右作用：$(f\gamma)(\tau):=f(\gamma\tau)$.
+
+我们希望找一个在这个作用下不变的函数，但很遗憾，这样的函数并不好找.但我们可以退而求其次，给这个作用添加一个“无害”的乘积因子.这样,如果能找到两个在这种稍弱意义下不变的函数，它们的商或许就可满足我们的要求.具体说来：
+
+定义自守因子$j:\mathrm{SL}_2(\mathbb{Z})\times\mathbb{H}\rightarrow \mathbb{C}-\{0\}$为$j(\gamma,\tau):=c\tau+d$.
+利用自守因子，可以把上述的右作用twist成一个新的右作用：
+
+\begin{equation}设\ k\in\mathbb{Z}，定义\ f[\gamma]_k(\tau):=j(\gamma,\tau)^{-k}f(\gamma(\tau)).\end{equation}
+
+有了这个作用，我们就可以给出弱模形式的定义了.
+\begin{definition}
+    设$f$是$\mathbb{H}$上的亚纯函数，$k\in\mathbb{Z}_{\geq 0}$,称$f$是\textbf{权为k的弱模形式},若$\forall \gamma\in\mathrm{SL}_2(\mathbb{Z})$,成立$f[\gamma]_k=f$.
+\end{definition}
+我们尚未验证以上叙述的$\mathrm{SL}_2(\mathbb{Z})$的作用确实是一个作用，而这由以下的引理保证.
+\begin{lemma}
+    \begin{itemize}
+\item $j(\gamma\gamma',\tau)=j(\gamma,\gamma'(\tau))j(\gamma',\tau)$;
+\item $(\gamma\gamma')(\tau)=\gamma(\gamma'(\tau))$;
+\item $[\gamma\gamma']_k=[\gamma]_k[\gamma']_k$;
+\item $\displaystyle\frac{\mathrm{d}\gamma(\tau)}{\mathrm{d}\tau}=\frac{1}{j(\gamma,\tau)^2}$;
+\item $\Im(\gamma(\tau))=\displaystyle\frac{\Im(\tau)}{j(\gamma,\tau)^2}$.
+
+    \end{itemize}
+\end{lemma}
+\begin{proof}
+\end{proof}
+\begin{remark}
+\begin{itemize}
+    \item 第2,5条说明$\mathrm{SL}_2(\mathbb{Z})$通过分式线性变换在$\mathbb{H}$上左作用.
+    \item 第3条说明$\mathrm{SL}_2(\mathbb{Z})$通过$[\cdot]_k$在$\mathbb{H}$上的复值函数空间右作用.
+    \item 第1条说明$\mathrm{SL}_2(\mathbb{Z})\rightarrow \mathscr{O}(\mathbb{H})^{\times}:\gamma\mapsto j(\gamma,\cdot)$是群上同调理论中的1-cocycle.($\mathscr{O}(\mathbb{H})^{\times}$上带有$\mathrm{SL}_2(\mathbb{Z})$通过分式线性变换诱导的右作用.)
+
+事实上，这个观察可以引导我们使用上同调理论来诠释模形式，留待将来再叙.（这是深刻的，但一个初步的讨论可见Milne, Modular Functions and Modular Forms, Page 58-60.）
+\item 思考：自守因子$j$及其整数幂次们是否给出了所有上述的1-cocycles？
+\end{itemize}
+\end{remark}
+上述引理中的第3条启发我们，为验证弱模形式的条件，只需要在$\mathrm{SL}_2(\mathbb{Z})$的一族生成元上验证即可.为此，我们先确定$\mathrm{SL}_2(\mathbb{Z})$的一族生成元.
+\begin{lemma}
+    \begin{equation}\mathrm{SL}_2(\mathbb{Z})由\left[\begin{array}{cc}
+1 & 1 \\
+0 & 1
+\end{array}\right]和
+\left[\begin{array}{cc}
+0 & -1 \\
+1 & 0
+\end{array}\right]生成.\end{equation}
+\end{lemma}
+对这两个具体的生成元验证弱模形式的条件，即：
+\begin{itemize}
+    \item $f(\tau)=f(\tau+1)$;
+    \item $f(\tau)=\tau^k f(-\displaystyle\frac{1}{\tau})$.
+\end{itemize}
+特别地，由于$-I\in\mathrm{SL}_2(\mathbb{Z})$,可知$f(\tau)=(-1)^{-k}f(\tau)$.因此，当$k$为奇数时，权为$k$的弱模形式只有$f\equiv 0$.
+ 
+由上述的第1条，可以看出$f$是周期为1的周期函数. 因此，通过换元$q:=e^{2\pi i \tau}$,可以定义良定的函数$g$使得$g(q)=f(\tau)$.注意在此换元下$\mathbb{H}$的像为$D':=\{z\in\mathbb{C}:0<|z|<1\}$,因此$g$实际上是$D'$上的亚纯函数.
+
+如果这个$g$实际上是$D$上的全纯函数，那么$f$就正式成为了模形式. 具体写出即是如下定义:
+\begin{definition}
+    设$f$是$\mathbb{H}$上的复值函数，$k\in\mathbb{Z_{\geq0}}$,若其满足如下条件:
+    \begin{itemize}
+        \item $f$是权为k的弱模形式；
+        \item $f$在$\mathbb{H}$上全纯；
+        \item $f$在尖点$i\infty$处全纯($g$可全纯延拓至$D$上),
+    \end{itemize}
+    则称$f$是\textbf{权为k的模形式}.记全体权为$k$的模形式构成的$\mathbb{C}-$线性空间为$M_k(\mathrm{SL}_2(\mathbb{Z}))$.
+
+    特别地，权为0的模形式称为\textbf{模函数}.
+\end{definition}
+\begin{remark}
+    由Riemann可去奇点定理，第3条实际上等价于$g$在0的一个邻域内有界，因此也等价于当$f$在$\Im(\tau)$大于某个充分大的常数时有界.
+\end{remark}
+由上面知，一个模形式$f$可通过换元$q=e^{2\pi i \tau}$成为$D$上的全纯函数$g$.而$g$可以以0为中心展开成幂级数，相应地即为$f$的Fourier级数展开.
+\begin{definition}
+    设$f$是权为k的模形式，若$f(i\infty)=0$(等价地，$f$的Fourier级数展开的常数项为0)，则进一步称$f$是权为k的\textbf{尖点形式}.\\
+    所有权为k的尖点形式构成$\mathbb{C}-$线性空间$S_k(\mathrm{SL}_2(\mathbb{Z}))$.
+\end{definition}
+注意到若$f\in M_k(\mathrm{SL}_2(\mathbb{Z}))$,$g\in M_h(\mathrm{SL}_2(\mathbb{Z}))$,则$fg\in M_{k+h}(\mathrm{SL}_2(\mathbb{Z}))$.\\
+故若定义$M(\mathrm{SL}_2(\mathbb{Z})):=\bigoplus_{n\geq0}M_n(\mathrm{SL}_2(\mathbb{Z}))$,则其是一个分次交换$\mathbb{C}-$代数,而$S(\mathrm{SL}_2(\mathbb{Z})):=\bigoplus_{n\geq0}S_n(\mathrm{SL}_2(\mathbb{Z}))$是其一个理想.
+\section{实例：Eisenstein级数}
+Eisenstein级数是一类熟知的模形式，经常用于基本的例子用于和陌生的模形式进行比较，从而用其的简单运算表示出陌生的模形式.
+\begin{definition}
+设$k\in2\mathbb{Z},k>2$，定义\textbf{权为k的Eisenstein级数}为$G_k(\tau):=\displaystyle\sum_{(c,d)\in\mathbb{Z}^2-\{(0,0)\}}\frac{1}{(c\tau+d)^k},\tau\in\mathbb{H}$.
+\end{definition}
+\begin{proposition}
+    $G_k$是权为k的模形式.
+\end{proposition}
+\begin{proofc}
+    \begin{itemize}
+        \item \textbf{$\mathrm{SL}_2(\mathbb{Z})$的$[\cdot]_k$作用不变}：应用$\mathrm{SL}_2(\mathbb{Z})$在$\mathbb{Z}^2-\{(0,0)\}\subset\mathbb{H}$上的作用是到自身的双射来计算.
+        \item \textbf{在$\mathbb{H}\cup\{i\infty\}$上全纯}:对$A,B>0$,定义区域$\Omega=\{\tau\in\mathbb{H}:\Im(\tau)>B,-A<\Re(\tau)<A\}$则成立以下引理：(引理的证明是简单的，这里略去)
+        \begin{lemma}
+            $\forall\delta\in\mathbb{Q},\exist\eta>0$，使得$\forall\tau\in\Omega$,成立$|\tau+\delta|>\eta\sup(1,|\delta|)$.
+        \end{lemma}
+        由于$G_k(\tau)=\displaystyle2\sum_{d=1}^{\infty}\frac{1}{d^k}+\sum_{|c|\leq|d|}\frac{1}{(c\tau+d)^k}+\sum_{|c|>|d|}\frac{1}{(c\tau+d)^k}$,\\当$\tau\in\Omega$时，利用引理对第二项进行估计：\\
+        $\displaystyle\left|\sum_{|c|\leq|d|}\frac{1}{(c\tau+d)^k}\right|=\left|\sum_{|c|\leq|d|}\frac{1}{c^k}\frac{1}{(\tau+\frac{d}{c})^k}\right|\leq\sum_{|c|\leq|d|}\frac{1}{|c|^k}\frac{1}{\eta\left|\frac{d}{c}\right|^k}=2\sum_{d=1}^{\infty}\frac{2d+1}{\eta d^k}<+\infty$,\\
+        对第三项进行估计：\\
+        $\displaystyle\left|\sum_{|c|>|d|}\frac{1}{(c\tau+d)^k}\right|\leq2\sum_{c=1}^{\infty}\frac{2c+1}{\eta c^k}<+\infty$.\\
+        因此$G_k$在$\Omega$上一致地绝对收敛.由于$G_k$是以1为周期的周期函数，注意到$\Omega$的构造，于是$G_k$在$\mathbb{H}\cup{i\infty}$上全纯.
+    \end{itemize}
+\end{proofc}
+
+对于Eisenstein级数，其Fourier展开可以明确计算出来.
+\begin{proposition}
+    $G_k(\tau)=2\zeta(k)+\displaystyle\frac{2(2\pi i)^k}{(k-1)!}\sum_{n=1}^{\infty}\sigma_{k-1}(n)q^n$.
+    
+    其中$q=e^{2\pi i\tau}$，$\sigma_{k-1}(n)=\displaystyle\sum_{m|n,m\geq1}m^{k-1}$.
+\end{proposition}
+我们把Eisenstein级数的常数项归一，可以定义\textbf{规范化的Eisenstein级数}为$E_k:=\displaystyle\frac{G_k}{2\zeta(k)}$.
+
+给定权k，以后将会证明$\dim_\mathbb{C}M_k(\mathrm{SL}_2(\mathbb{Z}))<\infty$,且有明确的公式表达.而其中Eisenstein级数扮演了重要的角色，事实上$M(\mathrm{SL}_2(\mathbb{Z}))=\mathbb{C}[E_4,E_6]$.
+
+而给定权的模形式空间有限意味着,我们只需要确定一个陌生的模形式的有限多的信息(例如前几项系数)，就能通过Eisenstein级数或者其它一些熟知的模形式将其表达出来，这不仅有助于计算(椭圆曲线方程在有限域上的解数的生成函数可以和模形式产生联系，这样计算椭圆曲线方程在有限域上的解数，就只需要穷举有限多个有限域的解，然后即可通过模形式的系数计算了)，也在理论上有助于解决一些经典的数论问题，比如如下例子.
+\begin{proposition}
+    约定$\sigma_r(0)=0$，则当$n\geq1$时,成立
+    
+    $\sigma_7(n)=\sigma_3(n)+120\sum_{k=0}^{n}\sigma_3(k)\sigma_7(n-k)$.
+\end{proposition}
+\begin{proof}
+    以后将会证明$\dim_\mathbb{C}M_8(\mathrm{SL}_2(\mathbb{Z}))=1$.
+    
+    现有$E_8$和$E_4^2$均在其中，且常数项均为1，故必有$E_8=E_4^2$,比较系数即得结论.
+\end{proof}

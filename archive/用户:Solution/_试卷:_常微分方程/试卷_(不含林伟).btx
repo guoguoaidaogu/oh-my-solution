@@ -1,0 +1,201 @@
+\setdisplaytitle{试题：常微分方程（不含林伟）}
+\sethtmltitle{试题：常微分方程（不含林伟）}
+
+
+== 25--26年英才班期末试题（严军）==
+\begin{enumerate}
+    \item(10分)假设地球的半径为$R=6437$km，在地球表面所受到的重力加速度为$g=9.8$m/s$^2$.
+    现在我们要发射质量为$M$的火箭，假设其初速度为$v_0$.不妨火箭在发射过程中不受到空气阻力和其
+    他星球的引力，求火箭的逃逸速度，也即最小的能使其飞离地球的速度.
+
+    \item（20分）考虑微分方程\[
+    \frac{\mathrm{d}^2x}{\mathrm{d}t^2}+a_1\frac{\mathrm{d}x}{\mathrm{d}t}+a_2x=0
+    \]
+    请给出：
+    \begin{enumerate}
+        \item 当$t\to +\infty$的时候所有解$x$均满足$x(t)\to 0$的充要条件.
+        \item 存在非零周期解的充要条件.
+    \end{enumerate}
+
+    \item（20分）对于在区间$[a,b]$上的连续函数$u(t),v(t)$，其中$v(t)\ge 0$，其满足\[
+    u(t)\le u_0+\int_a^tu(s)v(s)\mathrm{d}s\qquad t\in [a,b]
+    \]证明：\[
+    u(t)\le u_0\exp(\int_a^tv(s)\mathrm{d}s)\qquad t\in[a,b]
+    \]
+
+
+    \item（20分）叙述并证明开普勒第一定律.（注：在考试中叙述并证明第二定律也是可以被接受的）
+
+    \item（10分）求解边值问题\[\begin{cases}
+         y''+\lambda y=0\\y(a)=0,y'(b)=0
+    \end{cases}
+    \]其中$a<b$是常数，而$\lambda$是参数.
+
+    \item（20分）求解初值问题\[\begin{cases}
+        \sqrt{x}\dfrac{\partial z}{\partial x}+\sqrt{y}\dfrac{\partial z}{\partial y}=\sqrt{z}\\ \text{通过初始曲线 }\Lambda:x=y=z
+    \end{cases}\]
+\end{enumerate}
+
+== 25--26年平行班期末试题（张国华）==
+\begin{enumerate}
+    \item 求下列方程所有的实解.
+    \begin{enumerate}[label=(\arabic*)]
+        \item $\frac{\text{d}^3x}{\text{d}t^3}-3\frac{\text{d}^2x}{\text{d}t^2}+2\frac{\text{d}x}{\text{d}t}=6t^2-18t+6$
+        \item $\frac{\text{d}y}{\text{d}x}=\frac{-x^3+xy^2+x}{x^2y+y^3+3y}$
+        \item $\begin{cases}
+            \frac{\text{d}x}{\text{d}t}=2x-y-z\\
+            \frac{\text{d}y}{\text{d}t}=3x-y+z\\
+            \frac{\text{d}z}{\text{d}t}=-y+z
+        \end{cases}$（注：系数与原题有出入）
+    \end{enumerate}
+    \item Riccati方程$$\frac{\text{d}x}{\text{d}t}=p(t)x^2+q(t)x+r(t)$$有一解为$a(t)$，求其所有解.
+    \item 求$\frac{\text{d}x}{\text{d}t}=x^2-1$的解的最大存在区间，其中$x\geqslant -1$.
+    \item 设$\Phi(x)$是$\frac{\text{d}y}{\text{d}x}=A(x)y$的基解矩阵，求证$\frac{\text{d}y}{\text{d}x}=A(x)y+f(x)$的解为$y=\Phi(x)(c+\int_{x_0}^x\Phi^{-1}(s)f(s)\text{d}s)$,初值问题$y(x_0)=y_0$下的解是什么？
+    并由此解方程$\frac{\text{d}^2y}{\text{d}x^2}+\beta^2y=f(x)$.
+    \item 有关于奇点类型和相图相轨线的问题.
+    \item 用Lyapunov直接方法判断零解的稳定性.
+\end{enumerate}
+
+== 24--25年英才班期末试题（严军） ==
+\begin{enumerate}
+    \item 船行水上，初速度为$v_0$，水的阻力为$f=kv$。问船何时停？总路程为多少？
+    \item 设连续函数$f(x)$在区间$(-\infty, +\infty)$上有界, 求证: 方程
+    $$y'+y = f(x)$$
+    在区间$(-\infty, +\infty)$内有且仅有一个有界解, 并求出这个有界解. 
+    并进而证明: 当$f(x)$是以$\omega$为周期的周期函数时, 
+    这个有界解同时也是以$\omega$为周期的周期函数.
+    \item 设$y$为关于$x$的连续可微函数，已知$y'+a(x) y \leqslant 0, \forall x > 0$，求证:
+    $$y(x) \leqslant y(0) \, e^{-\int_{0}^x a(s)\,{\rm d}s}, \quad \forall x \geqslant 0.$$
+    \item 设$x(t), y(t), z(t) \in C^1(\R)$, $\sigma, \rho, \beta > 0, \rho < 1$, 则如下方程:
+    $$\frac{\mathrm{d}}{\mathrm{d}t} \begin{pmatrix}x \\y \\z\end{pmatrix} 
+    = \begin{pmatrix}
+        -\sigma &\sigma &0 \\
+        \rho &-1 &0 \\
+        0 &0 &-\beta
+    \end{pmatrix}
+    \begin{pmatrix}x \\y \\z\end{pmatrix} 
+     + 
+    \begin{pmatrix}0\\-xy\\xz\end{pmatrix}$$
+     的解渐近稳定.
+
+     (提示:考虑Lyapunov函数$V = x^2 + y^2 + z^2$.)
+     \item 求解偏微分方程
+     $$(z-y)^2\frac{\partial z}{\partial x}-x\frac{\partial z}{\partial y}=0$$
+     过$x=0,y=z=s$的解。
+
+     \item 求波方程
+     $$\begin{cases}
+        x'' + \lambda x = 0\\
+        x(0) = x(1),\ x'(0) = x'(1)
+     \end{cases}$$
+     的特征值和对应的特征函数.
+\end{enumerate}
+
+== 23--24年英才班期末试题（严军） ==
+\begin{enumerate}
+    \item (10分)
+    设$y$为关于$x$的连续可微函数，已知$y'+a(x) y \leqslant 0, \forall x > 0$，求证:
+    $$y(x) \leqslant y(0) \, e^{-\int_{0}^x a(s)\,{\rm d}s}, \quad \forall x \geqslant 0.$$
+    
+    \item (15分)
+    设$\varphi_1, \cdots, \varphi_n$为一元$n$维实向量值连续函数, 
+    且其Wronsky行列式$L$恒不等于$0$. 
+    求证: 存在一个$n\times n$的矩阵值函数$A(t)$, 
+    使得关于$n$维连续可微的向量值函数$y$的常微分方程
+    $$\frac{\mathrm{d}y}{\mathrm{d}t} = A(t) y$$
+    的一组基本解为$\varphi_1, \cdots, \varphi_n$.
+    
+    \item (15分)
+    设$x(t)\in C^2(\R)$, $Q(t)$为$\R$上的恒正函数,则方程
+    $$\frac{\mathrm{d}^2x}{\mathrm{d}t^2} + Q(t) x  = 0$$
+    的任何解都有零点.
+
+    \item (15分)
+    设$x(t), y(t), z(t) \in C^1(\R)$, $\sigma, \rho, \beta > 0, \rho < 1$,则如下方程:
+    $$\frac{\mathrm{d}}{\mathrm{d}t} \begin{pmatrix}x \\y \\z\end{pmatrix} 
+    = \begin{pmatrix}
+        -\sigma &\sigma &0 \\
+        \rho &-1 &0 \\
+        0 &0 &-\beta
+    \end{pmatrix}
+    \begin{pmatrix}x \\y \\z\end{pmatrix} 
+     + 
+    \begin{pmatrix}0\\-xy\\xz\end{pmatrix}$$
+     的解全局渐近稳定.
+
+     (提示:考虑Lyapunov函数$V = x^2 + y^2 + z^2$.)
+    
+    \item (15分)
+    设$a(x), b(x)$在区间$I$上连续, $y \in C^1(\R)$, 求证:方程
+    $$y' = a(x) y + b(x)$$
+    的最大存在区间为$I$.
+
+    \item (15分)
+    求波方程
+    $$\begin{cases}
+        x'' + \lambda x = 0\\
+        x(0) = x(1),\ x'(0) = x'(1)
+    \end{cases}$$
+    的特征值和对应的特征函数.
+   
+    \item (15分)
+    设$D$为$\R^2$上的单连通区域, $h(x,y), P(x,y), Q(x,y) \in C^1(D)$, 
+    且$h$为恒正函数, $\dfrac{\partial}{\partial x} (hP) + \dfrac{\partial}{\partial y}(hQ) \neq 0$. 求证:方程
+    $$\begin{cases}
+            \dfrac{\mathrm{d}x}{\mathrm{d}t} = P(x, y)\\
+            \dfrac{\mathrm{d}y}{\mathrm{d}t} = Q(x, y)
+    \end{cases}$$
+    的解没有闭轨.
+ \end{enumerate}
+
+== 22--23年英才班期末试题（严军） ==
+\begin{enumerate}
+    \item (10分)
+    设连续函数$f(x)$在区间$(-\infty, +\infty)$上有界, 求证: 方程
+    $$y'+y = f(x)$$
+    在区间$(-\infty, +\infty)$内有且仅有一个有界解, 并求出这个有界解. 
+    并进而证明: 当$f(x)$是以$\omega$为周期的周期函数时, 
+    这个有界解同时也是以$\omega$为周期的周期函数.
+    \item (10分)
+    求证: 齐次方程$P(x,y)\mathrm{d}x+Q(x,y)\mathrm{d}y$有如下积分因子:
+    $$\mu = \frac{1}{xP+yQ}.$$
+    \item (20分)
+    设$f$在$[0,+\infty)$可微, $f(0) = 0$, 且有常数$k>0$使得:
+    $$|f'(x)| \leqslant k |f(x)| , \quad \forall x \in [0,+\infty).$$
+    证明：$f \equiv 0$.
+    \item (30分)
+    (1) 画出单摆方程
+    $$\frac{\mathrm{d}^2x}{\mathrm{d}t^2} + a^2\sin x = 0, \qquad(a \neq 0)$$
+    的相图并判断讨论不动点的稳定性.
+    
+    (2) 判断耗散的单摆方程
+    $$\frac{\mathrm{d}^2x}{\mathrm{d}t^2} + a^2\sin x + b \frac{\mathrm{d}x}{\mathrm{d}t}= 0, \qquad(a \neq 0, b > 0)$$
+    奇点的稳定性.
+    
+    \item (20分)
+    设$a(t), b(t)$在$0 \leqslant t \leqslant 1$上连续,求证:
+    $$x''+a(t)x' + b(t)x = 0$$
+    满足初值条件$x(0) = 0$的任意两个解都是线性相关的.
+    \end{enumerate}
+
+== 20--21年英才班期末试题（袁小平） ==
+
+\begin{enumerate}
+    \item (10分) 举例说明Picard存在唯一性定理中Lipschitz条件不可去。
+    \item (10分) 解方程\[\begin{cases}\dfrac{{\rm d}x}{{\rm d}t}=-3x-y,\\
+        \dfrac{{\rm d}y}{{\rm d}t}=4x+y.\end{cases}\]
+    \item (10分) 求$\dfrac{{\rm d}^2x}{{\rm d}t^2}=tx$的幂级数解。
+    \item (10分) 证明Hamilton系统的极小值点为Lyapunov稳定的但不为渐近稳定的。
+    \item (10分) 对自治系统$\.x=f(x)$的解$\varphi_t(\xi)$，
+    记$\gamma=\{\varphi_t(\xi) \mid t\in\R\}$。令$\omega(\xi)$为其$\omega$极限集。
+    若$\gamma$为有界集，证明：$\omega(\xi)$为非空闭集。
+    \item (15分) 证明系统\[\begin{cases}\dfrac{{\rm d}x}{{\rm d}t}=-y+x(x^2+y^2-1)+\dfrac{1}{100}x^3\\
+        \dfrac{{\rm d}y}{{\rm d}t}=x+y(x^2+y^2-1)\end{cases}\]有稳定的极限环。
+    \item (15分) 证明边值问题\[\begin{cases}
+        -\dfrac{{\rm d}^2y}{{\rm d}x^2}=\lambda y,\quad0<x<1\\
+        y(0)=0,\ y'(1)+y(1)=0
+    \end{cases}\]的特征值均为正实数且有可列个，
+    记它们为$\lambda_1<\lambda_2<\cdots<\lambda_k<\cdots$。
+    证明$\sqrt{\lambda_k}\in\big(\big(k-\frac12\big)\pi,k\pi\big)$。
+    \item (20分) 证明$\.x=f(x)$的周期解（非平衡点）不可能为Lyapunov渐近稳定的。
+\end{enumerate}

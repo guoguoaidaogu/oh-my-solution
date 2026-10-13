@@ -1,0 +1,90 @@
+\setdisplaytitle{拓扑学(II)\ 试卷}
+\sethtmltitle{拓扑学(II)\ 试卷}
+
+== 2025秋试卷 ==
+\begin{itemize}
+    \item[1.] (25分) (1) 对所有可定向与不可定向闭曲面$X$进行剖分，并计算各阶同调群$H_i(X)$。\\
+    (2) 计算$\Z_4$系数的同调群$H_i(X;\Z_4)$。\\
+    (2) 计算$\mathbb{Q}$系数的同调群$H_i(X;\mathbb{Q})$。\\
+    \item[2.] (15分) (1) 计算$n$维单位球面$\mathbb{S}^n$的同调群$H_i(\mathbb{S}^n)$。\\
+    (2) 证明Brouwer不动点定理。\\
+    (3) 设$A=(a_{ij})$是非异的$n$阶方阵，所有的$a_{ij}\ge0$，证明：$A$有正的特征值。
+    \item[3.] (15分) 设$f:\mathbb{S}^{2n}\to\mathbb{S}^{2n}$是连续映射，证明：$f$要么有不动点，要么将某点映为对径点。
+    \item[4.] (15分) 设$X$是道路连通的拓扑空间，它的双角锥$S(X)$是通过将$X\times[-1,1]$中
+    $X\times\{1\}$与$X\times\{-1\}$分别捏为一点得到的商空间。证明：对$p\geq2$，$H_p(S(X))\cong H_{p-1}(X)$。
+    （提示：使用Mayor-Vietoris序列）
+    \item[5.] (16分) (1) 叙述链映射$f:C=\{C_q,\partial_q\}\to D=\{D_q,\partial_q\}$的定义。\\
+    (2) 证明：对于链映射$f:C=\{C_q,\partial_q\}\to D=\{D_q,\partial_q\}$，它诱导了同调群之间的同态。\\
+    (3) 对两个链映射$f,g:C=\{C_q,\partial_q\}\to D=\{D_q,\partial_q\}$，叙述它们是链同伦的定义。\\
+    (4) 证明：若两个链映射$f,g:C=\{C_q,\partial_q\}\to D=\{D_q,\partial_q\}$是链同伦的，则它们诱导了相同的同调群之间的同态。
+    \item[6.] (14分) 设$\mathbb{S}_a^1$和$\mathbb{S}_b^1$是单位圆周$\mathbb{S}^1$的两个拷贝，$Y=\mathbb{S}_a^1\vee\mathbb{S}_b^1$是
+    通过将它们在一点$A$处粘连得到的空间，分别用$a$和$b$代表基点为$A$的$\mathbb{S}_a^1$和$\mathbb{S}_b^1$的闭道路，则$Y$的基本群可由$a$和$b$生成。
+    $f:\partial\mathbb{D}^2\cong\mathbb{S}^1\to Y$是连续映射，$f(\mathbb{S}^1)$在$Y$中的道路类是$a\ast a\ast b\ast a\ast a\ast\bar{b}$，
+    其中$\bar{b}$是$b$的逆道路。定义$W=Y\sqcup \mathbb{D}^2/\sim$，其中$x\sim y$当且仅当$x=f(y)$且$y\in\partial\mathbb{D}^2$。求$W$的同调群。
+\end{itemize}
+
+== 2024秋试卷 ==
+\begin{itemize}
+    \item[1.] 证明Euler--Poincaré公式。
+    \item[2.] 证明：$f$有单纯逼近等价于$f$具有星形性质。
+    \item[3.] 对可定向与不可定向闭曲面$X$进行剖分。再计算$H^*(X;\Z_{13})$。
+    \item[4.] $n$维单纯复形$K$，$L$是$K$的锥形。对任何Abel群$G$，求$H^*(L;G)$。
+    \item[5.] 设$f$是$S^1$到$S^3$的光滑嵌入，$f(S^1)$存在邻域$N\simeq  S^1\times D^2$。
+    令$W=S^3-\operatorname{Int}N$，有$\partial N=\partial W\simeq S^1\times S^1$。
+    已知$S^3$存在单纯剖分，相对应有$W,N$上的单纯剖分。求$W$的同调群。
+    \item[6.] \ (i)\, 给出上积、卡积的定义。\\
+    \,(ii) 证明上积诱导了上同调群的乘法。\\
+    (iii) 证明卡积诱导$H^q(X)\times H_{p+q}(X)\to H_p(X)$。
+\end{itemize}
+
+== 2023秋试卷 ==
+\begin{itemize}
+    \item[1.] 证明：任意抽象单纯复形都存在几何实现。
+    \item[2.] 设$K$是有限$n$维复形，底空间$|K|$为$n$维流形。证明：
+    \[H_n(K)=\begin{cases}\Z,&K\text{ 可定向}\\0,&K\text{ 不可定向}\end{cases}.\]
+    \item[3.] 设对径映射$r\colon S^n\to S^n$，
+    $r(x_1,\cdots,x_{n+1})=(-x_1,\cdots,-x_{n+1})$。求$\deg r$。
+    \item[4.] 对可定向与不可定向闭曲面$X$进行剖分。再计算$H^*(X;\Z_{11})$。
+    \item[5.] 计算$H_p(\R P^n),H_p(\mathbb{C}P^n)$。
+    \item[6.] 设整数$0<k<n$，证明：任意连续的$f\colon S^k\to S^n$零伦。
+\end{itemize}
+
+== 2022秋试卷 ==
+\begin{itemize}
+    \item[1.] 求同调群$H_*(S^1\times S^2)$。
+    \item[2.] 证明：任意$n$维抽象单纯复形都存在$\R^{2n+1}$中的几何实现。
+    \item[3.] 已知$f$有单纯逼近等价于$f$具有星形性质，试证单纯逼近定理。
+    \item[4.] 构造空间$X$，使得$H_0(X)=H_2(X)=H_3(X)=H_6(X)=\Z$，
+    且$H_1(X)=\Z\oplus\Z_2\oplus\Z_2$，其余阶的同调群平凡。
+    \item[5.] 设$D$是复平面上的单位圆盘，$p\ge 2$是一个固定的整数。
+    取等价关系$\sim$为：对于边缘上的两点$x,y$，
+    若$e^{\frac{2\pi i}{p}}x=y$，则$x \sim y$。求商空间的同调群。
+    \item[6.] 
+    \ (i)\, 给出上积、卡积的定义，说明其如何诱导链复形之间的映射。\\
+    \,(ii) 说明上积诱导了上同调群的乘法。\\
+    (iii) 陈述Poincaré对偶定理，并证明:对奇数维可定向闭流形$M$，Euler数$\chi(M)=0$。
+\end{itemize}
+
+== 2021秋试卷一 ==
+\begin{itemize}
+    \item[1.] 求亏格为$n$的可定向闭曲面的Euler数，亏格为$n$的不可定向闭曲面的Euler数。
+    \item[2.] 求同调群$H_*(\R P^n;\Z_2)$。
+    \item[3.] 对紧致无边$n$维流形$M$进行有限剖分。证明：
+    \[H_n(M)=\begin{cases}\Z,&M\text{ 可定向}\\0,&M\text{ 不可定向}\end{cases}.\]
+    \item[4.] 设$A=(a_{ij})$是非异的$n$阶方阵，
+    所有的$a_{ij}\ge0$，证明：$A$有正的特征值。
+    \item[5.] 同22年题6。
+    \item[6.] 设$f$是$S^1$到$S^3$的光滑嵌入，像$f(S^1)$存在邻域$N\simeq S^1\times D^2$。
+    令$W=S^3-\operatorname{Int}N$，有$\partial N=\partial W\simeq S^1\times S^1$。
+    求$W$的同调群。
+\end{itemize}
+
+== 2021秋试卷二 ==
+\begin{itemize}
+    \item[1.] 设$X=S^2\vee S^2\vee S^2$，求同调群$H_*(X)$。
+    \item[2.] 设$X$是$4$维单形的闭包复形的$2$维骨架，求同调群$H_*(X;\Z_3)$。
+    \item[3.] 证明：$f$有单纯逼近等价于$f$具有星形性质。
+    \item[4.] 证明：$n$维伪流形可定向等价于其$n$维同调群是$\Z$。
+    \item[5.] 用局部同调群证明：$X=S^1\vee S^2\vee S^1$与环面$T^2$不同胚。
+    \item[6.] 同22年题6。
+\end{itemize}

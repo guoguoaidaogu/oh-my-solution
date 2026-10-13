@@ -1,0 +1,122 @@
+\newcommand{\cov}{\operatorname{Cov}}
+\newcommand{\mor}{\operatorname{Mor}}
+\newcommand{\ob}{\operatorname{Ob}}
+\newcommand{\open}{\operatorname{Top}}
+\newcommand{\et}{\mathrm{ét}}
+\newcommand{\fppf}{\mathrm{fppf}}
+\newcommand{\fpqc}{\mathrm{fpqc}}
+\newcommand{\sch}[1]{\operatorname{Sch}_{#1}}
+\newcommand{\zar}{\mathrm{Zar}}
+
+\section{从拓扑到景}
+\subsection{Grothendieck拓扑与景}
+我们先回顾拓扑空间上的层论. 记$\open(X)$为拓扑空间$X$上的全体开集构成的范畴：
+其中的对象为$X$的开子集，而态射为开集的嵌入. 
+给定范畴$\mathcal{C}$，拓扑空间上的一个\textbf{预层}指的是
+一个反变函子$\mathscr{F}:\open(X)^{\mathrm{op}} \to \mathcal{C}$.
+这是说对于每个开集$U \subseteq X$，我们指定一个$\mathcal{C}$中的对象；
+而对于每一组开集的包含$i:V \hookrightarrow U$，在$\mathcal{C}$中有\textbf{限制态射}
+$\mathscr{F}(i):\mathscr{F}(U) \to \mathscr{F}(V)$. 
+且对于同构$U \xrightarrow{\cong} U$，其限制态射是恒等.
+
+而一个预层$\mathscr{F}$成为\textbf{层}的条件是如下粘结公理：
+对于任何开覆盖$\{U_{i}\}_{i \in I}$（记嵌入$\sigma_{i}:U_{i} \to U$）
+\[
+\begin{cd}
+    \mathscr{F}(U)
+    \xrightarrow{\prod_{i \in I}\mathscr{F}(\sigma_{i})}
+    \prod_i\mathscr{F}(U_i)
+    \ar[rr,shift left,"\prod_{i,j \in I}\mathscr{F}(\pi_{i,j}^{1})"]\ar[rr,shift right,"\prod_{i,j \in I}\mathscr{F}(\pi_{i,j}^{2})"']
+    &&\prod_{i,j}\mathscr{F}(U_i\cap U_j)
+\end{cd}\]
+是等化子图表，
+其中$\pi_{i,j}^{1}:U_{i} \cap U_{j} \to U_{i}$，
+$\pi_{i,j}^{2}:U_{i} \cap U_{j} \to U_{j}$. 
+
+注意到$U_{i} \cap U_{j} = U_{i} \times_{U} U_{j}$. 
+这个事实引导我们在一般的范畴上做拓扑时，对于“开集”来说，
+做交的正确对应是做纤维积. 另外，从上面我们看到，判定预层是否为层时，
+真正重要的并不是开集本身，而是开覆盖. 
+这些事实给了我们将“拓扑”推广到别的范畴上的范式：
+
+\begin{definition}
+    范畴$\mathcal{C}$上的一个\textbf{Grothendieck拓扑}
+    是指满足如下条件的映射
+    $\cov:\operatorname{Ob}(\mathcal{C}) \to \mathbf{2}^{\mor(\mathcal{C})}$：
+    \begin{itemize}
+        \item[(1)] 对于每个对象$X \in \mathcal{C}$，
+        $X$的\textbf{覆盖}$\cov(X)$是
+        幂集$\mathbf{2}^{\{U \to X \, :\, Y \in \mathcal{C}\}}$
+        的子集；
+
+        \item[(2)] （\textbf{平凡覆盖}）
+        若有同构$U \xrightarrow{\cong} X$，
+        则$\{U \xrightarrow{\cong} X\} \in \cov(X)$；
+
+        \item[(3)] （\textbf{加细}）
+        若$\{U_{i} \to X\}_{i \in I} \in \cov(X)$，
+        且$\{V_{ij} \to U_{i}\}_{j \in J_{i}} \in \cov(U_{i})$，
+        那么$\{V_{ij} \to U_{i} \to X\}_{i \in I,j \in J_{i}} \in \cov(X)$；
+
+        \item[(4)] （\textbf{基变换}）
+        若$\{U_{i} \to X\}_{i \in I}$，且有箭头$Y \to X$，
+        那么诸纤维积$Y \times_{X} U_{i}$存在，
+        且$\{Y \times_{X} U_{i} \to Y\}_{i \in I} \in \cov(Y)$.
+    \end{itemize}
+\end{definition}
+
+\begin{definition}
+    一个\textbf{景}是指一个范畴$\mathscr{C}$与其上的一个Grothendieck拓扑$\cov$
+    构成的二元数据$(\mathscr{C},\cov)$.
+
+\end{definition}
+
+\begin{example}
+    我们尝试将古典的Zariski拓扑兼并入Grothendieck拓扑的框架下.
+    对于概形$S$，考虑俯范畴$\sch{S}$. 
+    定义$S_{\zar}$为$(\sch{S},\cov)$，其中$\cov$定义为
+    \[\cov([X \to S]) = \{S-开浸入族\{\sigma_{i}:U_{i} \to X\}\}，
+    且\bigcup_{i}|\sigma(U_{i})| = X\}.
+    \]
+    该景称为\textbf{大Zariski景}. 
+    这其实是将开子集这一概念同开浸入等同起来的结果.
+\end{example}
+
+\subsection{几类态射的性质}
+\begin{definition}
+    一个概形态射$X \to Y$如果是\textbf{局部有限展示}的\textbf{忠实平坦}态射，
+    则称其是\textbf{fppf}的.
+\end{definition}
+
+\section{景上之层}
+
+\subsection{预层、层与层化}
+
+\subsection{例子}
+
+\section{代数空间}
+\begin{definition}
+    对于概形$S$与俯范畴$\sch{S}$上的一种Grothendieck拓扑$\tau$，
+    \textbf{$S$-空间}是指$(\sch{S})_{\tau}$上的一个层.
+\end{definition}
+
+$S$-空间的态射即层的态射.
+
+\begin{example}[概形视作层]
+    
+\end{example}
+
+\begin{definition}
+    对于概形$S$，其上的\textbf{代数空间}$\mathcal{X}$指的是
+    $(\sch{S})_{\et}$上满足如下两个条件的层：
+    \begin{itemize}
+        \item[(1)] 
+        对于任意两个概形$X,Y$以及$S$-空间态射$s:X \to \mathcal{X}$与
+        $y:Y \to \mathcal{X}$，层$X \times_{\mathcal{X}} Y$可被概形表出；
+
+        \item[(2)]
+        存在一个概形$U$以及一个平展满射$p:U to \mathcal{X}$，即对于
+        任何概形$Y$，$U \times_{\mathcal{X}} Y \to Y$是概形间的平展满射.
+        该态射$P:U \to \mathcal{X}$成为\textbf{坐标卡}.
+    \end{itemize}
+\end{definition}

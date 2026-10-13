@@ -1,0 +1,54 @@
+\setdisplaytitle{试卷：非交换几何}
+\sethtmltitle{试卷：非交换几何}
+
+\section{2025春}
+
+一、我们考虑单位圆周 \( S^1 = \{e^{it}\} \)，对于 \( h \in C^r(\mathbb{R}/2\pi\mathbb{Z}) \) (\( 0 < r < 1 \))，记
+\[
+[h]_{C^r} := \sup_{s \neq t} \frac{|h(t) - h(s)|}{|e^{it} - e^{is}|^r}.
+\]
+对于一般的 \( 0 \leqslant \alpha < +\infty \)，设 \(\alpha = m + r, \, m \in \mathbb{N}, \, 0 \leqslant r < 1 \)。
+对于 \( f \in C^\alpha(S^1) \)，记 \(\tilde{f}(t) := f(e^{it}) \in C^\alpha(\mathbb{R}/2\pi\mathbb{Z})\)，我们可以定义一个范数
+\[
+\|f\|_{C^\alpha} =
+\begin{cases}
+\displaystyle \sum_{k=0}^m \|\tilde{f}^{(k)}\|_{C^0} & r = 0, \\
+\displaystyle \sum_{k=0}^m \|\tilde{f}^{(k)}\|_{C^0} + [\tilde{f}^{(m)}]_{C^r} & 0 < r < 1.
+\end{cases}
+\]
+\( C^\alpha(S^1) \) 上的任何一个上圈/链都可以限制到 \( C^\infty(S^1) \) 上成为后者的一个上圈/链。
+我们记这个限制映射为 \( \rho_\alpha^* \)，它会诱导一个映射 \( \rho_\alpha^k : HC^k(C^\alpha(S^1)) \to HC^k(C^\infty(S^1)) \)。
+
+求所有的 \(\alpha\)，使得 \( \rho_\alpha^1 : HC^1(C^\alpha(S^1)) \to HC^1(C^\infty(S^1)) \) 是满射。
+
+
+二、记$$\phi_3(f_0, f_1, f_2, f_3) = \int_{S_1} \int_{S_1} \int_{S_1} f_0(z_0) \cdot \frac{f_1(z_0) - f_1(z_1)}{z_0-z_1} \cdot \frac{f_2(z_1) - f_2(z_2)}{z_1 - z_2}\cdot \frac{f_3(z_2) - f_3(z_0)}{z_2 - z_0} \mathrm{d}z_0 \mathrm{d} z_1 \mathrm{d} z_2.$$
+
+(1)对于整数$j,k,l,m$, 计算$\phi_3(z_j, z_k, z_l, z_m)$.
+
+(2)证明: $\phi_3$是一个循环上圈,且$[\phi_3]$是$HC^3(C^{\infty}(S^1))$的生成元.
+
+三、在课上声称
+$$\mathfrak{A}_{\theta}^{\star} = \{\varphi = \sum_{\mu\in \mathbb{Z}^2} a_{\mu} U^{\mu}, \ (a_{\mu})_{\mu}\,是缓增的复数序列 \}$$
+ (1) 写出缓增序列的定义与该同构的表达式.
+
+ (2) 设 $\varphi = \sum_{\mu\in \mathbb{Z}^2} a_{\mu} U^{\mu}$对应的$\mathfrak{A}_{\theta}$上的连续线性泛函为$l_{\varphi}$,写出$l_{\varphi}(U^{\mu})$与$a_{\mu}$的
+关系.
+
+ (3) 用局部凸拓扑线性空间上的连续线性泛函的定义,证明此同构。
+
+
+ 四、找到满足丢番图逼近和不满足丢番图逼近的两个无理数的例子并证明.
+
+ 五、记 \(\tau\) 是 \(A_\theta\) 上的典范迹，\(\delta_1\) 与 \(\delta_2\) 是导子，分别满足
+\[
+\delta_1(U^\nu) = 2\pi i n_1 U^\nu, \quad \delta_2(U^\nu) = 2\pi i n_2 U^\nu.
+\]
+
+证明下述两个 \(A_\theta\) 上的多线性泛函都是 Hochschild 上图，并且第一个还是循环的：
+\[
+\varphi_1(x^0, x^1, x^2) = \tau \left( x^0 \cdot (\delta_1(x^1)\delta_2(x^2) - \delta_2(x^1)\delta_1(x^2)) \right),
+\]
+\[
+\varphi_2(x^0, x^1, x^2) = \tau \left( x^0 \cdot (\delta_1 + i\delta_2)(x^1) \cdot (\delta_1 - i\delta_2)(x^2) \right).
+\]

@@ -1,0 +1,969 @@
+\setdisplaytitle{期中试题：常微分方程}
+\sethtmltitle{期中试题：常微分方程}
+
+\section{24--25年期中测验试卷（林伟）}
+
+\textbf{一、\ 计算题（本大题满分 36 分）本大题共有 6 题，每题满分 6 分。}
+
+\begin{enumerate}
+\item[1.]求解微分方程：\( \ddot{x} + \omega^2 x = \sin kt \)，
+这里参数 \( \omega, k > 0 \)，并判断参数的取值范围使得该方程存在无界解。
+
+\item[2.]试找到所有可能的 \(\lambda (\lambda \in \mathbb{R})\)，使得微分方程  
+\[
+\begin{cases} 
+x''(t) + \lambda x(t) = 0, \\ 
+x'(0) = x(\pi) = 0 
+\end{cases}
+\]
+存在非零解。
+
+
+\item[3.]已知微分方程 \( (t^2 + t) \ddot{x} - p(t)\dot{x} + x = -2 \) 有一个解为 \( x = t - 1 \)，这里 \( p(t) \) 为 \( (0, +\infty) \) 上的连续函数，求函数 \( p(t) \) 的值和方程的一切解。
+
+
+\item[4.]已知微分方程 \( p(t) \dot{x} - (2 + e^t)x + e^tx^2 = -e^{-t} - 2 \) 有一个解为 \( x = e^{-t} \)，其中 \( p(t) \) 为 \(\mathbb{R}\) 上的连续函数，求函数 \( p(t) \) 的值和方程的一切解。
+
+
+\item[5.]求解微分方程 \( y = x \dfrac{dy}{dx} + \left( \dfrac{dy}{dx} \right)^4 \)。
+
+
+\item[6.]求解$4$维线性微分方程
+
+\[
+\frac{d\boldsymbol{x}}{dt} =
+\begin{pmatrix}
+2 & 0 & 0 & -1 \\
+0 & -1 & 0 & 0 \\
+1 & -2 & 1 & -1 \\
+1 & -4 & 0 & 0
+\end{pmatrix}
+\boldsymbol{x}.
+\]
+\end{enumerate}
+\textbf{二、\ 解答题（本大题满分 64 分）本大题共有 4 题，解答下列各题并写出必要的步骤。}
+
+\begin{enumerate}
+\item[7.](本小题满分 16 分）设一元函数 \(\varphi(t), \psi(t)\) 都在 \([t_0, T]\) 上连续，且 \(\psi(t)\) 在 \([t_0, T]\) 上非负。如果
+\[
+\varphi(t) \leqslant \alpha + \int_{t_0}^t \psi(s)\varphi(s)ds, \quad \forall t \in [t_0, T]
+\]
+对于给定实常数 \(\alpha > 0\) 成立。试用\textbf{逐次逼近法}证明
+\[
+\varphi(t) \leqslant \alpha e^{\int_{t_0}^t \psi(s)ds}, \quad \forall t \in [t_0, T].
+\]
+
+
+\item[8.]（本题满分 16 分）本题共有 2 个小题，第 1 个小题满分 6 分，第 2 个小题满分 10 分
+
+记一个在单位圆上运动的质点的轨迹为 \( \boldsymbol{x}(t) = [\cos \theta (t), \sin \theta (t)] \)。
+
+
+(1) 若  
+\[
+\dot{\theta} = \frac{5}{10 + \sin \theta},
+\]
+试证明该质点作周期运动，并求出相应的最小正周期；
+
+(2) 若该质点按照\textbf{顺时针}运动，并且满足：  
+\[
+\ddot{\theta} = \sin \theta, \quad \lim_{t \to \pm \infty} \boldsymbol{x}(t) = [1, 0], \quad 
+\lim_{t \to \pm \infty} \dot{\boldsymbol{x}}(t) = [0, 0], \quad \boldsymbol{x}(0) = [-1, 0].
+\]
+试确定质点的运动轨迹 \( \boldsymbol{x}(t) \)。
+
+
+\item[9.](本题满分 16 分）本题共有 3 个小题，第 1 个小题满分 4 分，第 2 个小题满分 6 分，第 3 个小题满分 6 分。
+
+设 \( x = \varphi(t) \) 是二阶微分方程 \( \dot{x} + a(t)\dot{x} + b(t)x = f(t) \)，其中 \( a(t), b(t), f(t) \) 为 \([0, 10]\) 上的连续函数，且 \( b(t) < 0 \)。
+
+
+(1) 若 \( \varphi(t) \) 在 \( t^* \in (0, 10) \) 取极大值，证明：\( \varphi(t^*) \leq \dfrac{f(t^*)}{b(t^*)} \)。
+
+(2) 若 \( f(t) \equiv 0 \)，且 \( \varphi(0) = \varphi(10) = 0 \)，证明：\( \varphi(t) \equiv 0 \)。
+
+(3) 证明：存在唯一解 \( \varphi^* \) 使得 \( \varphi^*(0) = \varphi^*(10) = 0 \)。
+
+
+
+\item[10.]（本题满分 16 分）本题共有 2 个小题，第 1 小题满分 8 分，第 2 小题满分 8 分。  
+
+考察二阶微分方程 \( \ddot{x} + a_1 \dot{x} + a_2 x = f(t) \)，其中  
+
+\[
+f(t) = a_1 \left( \arctan t + \frac{\pi}{4} \right) + \frac{t^3 + a_2 t}{|t|^3 + 1}.
+\]
+
+在如下情形下，试分别确定实参数 \( a_1, a_2 \) 满足的充要条件：  
+
+(1) 上述微分方程的\textbf{一切}解都满足：  
+\[
+\lim_{t \to +\infty} x(t) = 2;
+\]
+(2) \( a_2 < 0 \) 且上述微分方程存在\textbf{唯一}的解 \(\varphi^*\) 满足：  
+\[
+\lim_{t \to \pm\infty} \varphi^*(t) = 2.
+\]
+\end{enumerate}
+
+\section{23--24年期中测验试卷（林伟）}
+\textbf{一、\ 计算题（本大题满分 40 分）本大题共有 4 题，每题满分 10 分。}
+\begin{enumerate}
+\item 求解微分方程 $y^{\prime \prime}+y^{\prime}+y=e^{2x} \cos x$。
+\begin{proof}[解]先求通解，原方程的特征方程为 $\lambda^{2}+\lambda+1=0$，
+有特征根 $\lambda_{1,2}=\dfrac{-1 \pm \sqrt{3} \mathrm{i}}{2}$，
+因此原方程的实值通解为
+\[y=e^{-\frac{x}{2}}\bigg(C_{1} \cos\bigg(\frac{\sqrt{3}x}{2}\bigg)
++C_{2} \sin\bigg(\frac{\sqrt{3}x}{2}\bigg)\bigg).\]
+再求特解，$(D^{2}+D+1)y=e^{2x} \cos x$，得：
+\[y=\frac{1}{D^{2}+D+1} e^{2x} \cos x.\]
+转化得：\[y=\dfrac{1}{D^{2}+D+1} e^{(i+2)x},\]
+由性质 4 得：\[y=\frac{1}{D^{2}+D+1} e^{(i+2)x}
+=\frac{1}{(i+2)^{2}+(i+2)+1} e^{(i+2)x}=\frac{1}{5i+6} e^{(i+2)x},\]
+从而有
+\begin{align*}
+y & =\frac{1}{5i+6} e^{(i+2)x}=e^{2x}\left(-\frac{5i}{61}+\frac{6}{61}\right)(\cos x+i\sin x) \\
+& =e^{2x}\left(\frac{6}{61} \sin x-\frac{5}{61} \cos x\right) i+e^{2x}\left(\frac{6}{61} \cos x+\frac{5}{61} \sin x\right).
+\end{align*}
+取实部得：
+\[y^{*}=e^{2x}\left(\frac{6}{61} \cos x+\frac{5}{61} \sin x\right),\]
+也即原方程的解为
+\[y=e^{-\frac{x}{2}}\bigg(C_{1} \cos \bigg(\frac{\sqrt{3}x}{2}\bigg)
++C_{2} \sin \bigg(\frac{\sqrt{3}x}{2}\bigg)\bigg)
++e^{2x}\left(\frac{6}{61} \cos x+\frac{5}{61} \sin x\right).\qedhere\]
+\end{proof}
+\item 试找到所有可能的 $\lambda$ $(\lambda \in \mathbb{R})$，
+使得微分方程 $\begin{cases}x^{\prime \prime}(t)+\lambda x(t)=0, \\ \\ x(0)=x(l)=0,\ l>0 \end{cases}$ 存在非平凡解。
+\begin{proof}[解]
+原方程的特征方程可写为 $r^{2}+\lambda=0$，其解为 $r= \pm \sqrt{-\lambda}$，我们分三种情况讨论：
+
+（1）当 $\lambda<0$ 时，方程的通解可写为：
+\[x(t)=C_{1} e^{\sqrt{-\lambda}t}+C_{2} e^{-\sqrt{-\lambda}t}, \quad C_{1}, C_{2} \in \mathbb{R}.\]
+要使其满足边界条件，需要满足：
+\[\begin{cases}C_{1}+C_{2}=0 \\ \\ C_{1} e^{\sqrt{-\lambda}l}+C_{2} e^{-\sqrt{-\lambda}l}=0\end{cases}.\]
+由于 $\begin{vmatrix}1 & 1 \\ e^{\sqrt{-\lambda}l} & e^{-\sqrt{-\lambda}l}\end{vmatrix} \neq 0$，
+只有当 $C_{1}=C_{2}=0$，所以此情况没有非平凡解；
+
+（2）当 $\lambda=0$ 时，方程的通解可写为：
+\[x(t)=C_{1}+C_{2}t, \quad C_{1}, C_{2} \in \mathbb{R}.\]
+此种情况为满足边界条件也只能有 $C_{1}=C_{2}=0$，无非平凡解；
+
+（3）当 $\lambda>0$ 时，方程的通解可写为：
+\[x(t)=C_{1}\cos\sqrt{\lambda}t+C_{2}\sin\sqrt{\lambda}t, \quad C_{1}, C_{2} \in \mathbb{R}.\]
+由 $x(0)=0$ 知 $C_{1}=0$，再由 $x(l)=C_{2} \sin \sqrt{\lambda} l=0$ 可知，
+为了使 $C_{2} \neq 0$，我们必须有：$\lambda=\lambda_{k}=\dfrac{k^{2}\pi^{2}}{l^{2}}$ $(k=1,2, \ldots)$。
+
+综上所述，$\lambda$ 的取值为：$\dfrac{\pi^{2}}{l^{2}}, \dfrac{4\pi^{2}}{l^{2}}, \dfrac{9\pi^{2}}{l^{2}}, \cdots, \dfrac{k^{2}\pi^{2}}{l^{2}}, \cdots$。
+\end{proof}
+\item 求解初值问题：
+\[\begin{cases}
+\dfrac{\mathrm{d}}{\mathrm{d} t}\begin{pmatrix}x \\ \\ y\end{pmatrix} 
+& =\begin{pmatrix}
+\cos^{2} t & -1+\sin t \cos t \\ \\ 
+1+\sin t \cos t & \sin^{2} t
+\end{pmatrix}\begin{pmatrix}x \\ \\ y\end{pmatrix}
++\begin{pmatrix}\cos t \\ \\ \sin t\end{pmatrix}, \\
+\begin{pmatrix}x(0) \\ \\ y(0)\end{pmatrix} & 
+=\begin{pmatrix}0 \\ \\ 1\end{pmatrix}.
+\end{cases}\]
+\begin{proof}[解]
+事实上，不难验证
+\[\begin{pmatrix}\mathrm{e}^{t} \cos t \\ \\ \mathrm{e}^{t} \sin t\end{pmatrix}, 
+\quad\begin{pmatrix}-\sin t \\ \\ \cos t\end{pmatrix}\]
+是上述齐次线性微分方程组 $-\infty<t<\infty$ 上的两个解；
+而且它们的朗斯基行列式 $W(t)$ 在 $t=0$ 处的值为
+\[W(0)=\begin{vmatrix}1 & 0 \\ \\ 0 & 1\end{vmatrix}=1 \neq 0.\]
+故通解为
+\[\begin{pmatrix}x \\ \\ y\end{pmatrix}
+=C_{1}\begin{pmatrix}\mathrm{e}^{t} \cos t \\ \\ \mathrm{e}^{t} \sin t\end{pmatrix}
++C_{2}\begin{pmatrix}-\sin t \\ \\ \cos t\end{pmatrix}.\]
+这代表相应齐次线性微分方程组有一个基解矩阵
+\[\Phi(t)=\begin{pmatrix}
+\mathrm{e}^{t}\cos t & -\sin t \\ \\
+\mathrm{e}^{t}\sin t & \cos t
+\end{pmatrix}.\]
+容易求出
+$$\Phi^{-1}(t)=\begin{pmatrix}
+\mathrm{e}^{-t} \cos t & \mathrm{e}^{-t} \sin t \\ \\
+-\sin t & \cos t\end{pmatrix}, 
+\quad \Phi^{-1}(0)=\begin{pmatrix}1 & 0 \\ \\0 & 1\end{pmatrix}.$$
+利用公式，就得到所求初值问题的解为
+\begin{align*}
+\begin{pmatrix}x \\ \\ y\end{pmatrix} & 
+=\Phi(t)\left[\begin{pmatrix}0 \\ \\ 1\end{pmatrix}
++\int_{0}^{t}\begin{pmatrix}
+\mathrm{e}^{-s} \cos s & \mathrm{e}^{-s} \sin s \\ \\
+-\sin s & \cos s\end{pmatrix}\begin{pmatrix}\cos s \\ \\ \sin s\end{pmatrix} \mathrm{d} s\right] \\
+& =\begin{pmatrix}(\mathrm{e}^{t}-1) \cos t-\sin t \\ \\(\mathrm{e}^{t}-1) \sin t+\cos t\end{pmatrix}.
+\end{align*}
+\end{proof}
+\item 求解齐次线性方程组
+\[\frac{\mathrm{d} \boldsymbol{x}}{\mathrm{d} t}
+=\begin{pmatrix}3 & 1 & 0 \\-4 & -1 & 0 \\4 & -8 & -2\end{pmatrix} \boldsymbol{x}.\]
+\begin{proof}[解]
+矩阵的 Jordan 标准型为：$\begin{pmatrix}-2 & 0 & 0 \\ 0 & 1 & 1 \\ 0 & 0 & 1\end{pmatrix}$, 
+$\lambda_{1}=-2$ 对应的特征向量可取为
+\[\eta_{1}=\begin{pmatrix}0 \\0 \\1\end{pmatrix}.\]
+对于二重特征根 $\lambda_{2}=1$，可以算出
+\[(\boldsymbol{A}-\lambda_{2}\boldsymbol{E})^{2}
+=\begin{pmatrix}
+2 & 1 & 0 \\
+-4 & -2 & 0 \\
+4 & -8 & -3
+\end{pmatrix}^{2}=\begin{pmatrix}
+0 & 0 & 0 \\
+0 & 0 & 0 \\
+28 & 44 & 9
+\end{pmatrix}.\]
+因此，方程 $(\boldsymbol{A}-\lambda_{2}\boldsymbol{E})^{2}r=0$ 有两个线性无关的解为
+\[r_{10}=\begin{pmatrix}11 \\-7 \\0\end{pmatrix}, 
+\quad r_{20}=\begin{pmatrix}3 \\-6 \\20\end{pmatrix}.\]
+把它们分别代入，并注意 $n_{i}=2$，就可得到
+\[r_{11}=\begin{pmatrix}2 & 1 & 0 \\-4 & -2 & 0 \\4 & -8 & -3\end{pmatrix}
+\begin{pmatrix}11 \\-7 \\0\end{pmatrix}
+=\begin{pmatrix}15 \\-30 \\100\end{pmatrix}\]
+和
+\[r_{21}=\begin{pmatrix}2 & 1 & 0 \\-4 & -2 & 0 \\4 & -8 & -3\end{pmatrix}
+\begin{pmatrix}3 \\-6 \\20\end{pmatrix}
+=\begin{pmatrix}0 \\0 \\0\end{pmatrix}.\]
+以上结果不唯一，只要符合广义特征向量要求即可，由此我们可得到一个基解矩阵
+\[\boldsymbol{\Phi}(t)=\begin{pmatrix}
+0 & (11+15t) \mathrm{e}^{t} & 3 \mathrm{e}^{t} \\ \\
+0 & (-7-30t) \mathrm{e}^{t} & -6 \mathrm{e}^{t} \\ \\
+\mathrm{e}^{-2t} & 100t \mathrm{e}^{t} & 20 \mathrm{e}^{t}
+\end{pmatrix}\]
+\[\boldsymbol{x}=\boldsymbol{\Phi}(t) \boldsymbol{c}\]
+其中 $\boldsymbol{c}$ 为任意常数列向量。这个通解也可以改写成下面更清晰的形式
+\[\boldsymbol{x}=C_{1}\begin{pmatrix}0 \\ \\ 0 \\ \\ 1\end{pmatrix} \mathrm{e}^{-2t}
++C_{2}\begin{pmatrix}11+15t \\ \\ -7-30t \\ \\ 100t\end{pmatrix} \mathrm{e}^{t}
++C_{3}\begin{pmatrix}3 \\ \\ -6 \\ \\ 20\end{pmatrix} \mathrm{e}^{t},\]
+其中 $C_{1}, C_{2}$ 和 $C_{3}$ 是任意常数。
+\end{proof}
+\end{enumerate}
+\textbf{二、\ 解答题（本大题满分 60 分）本大题共有 4 题，解答下列各题并写出必要的步骤。}
+
+\textbf{5.（本小题满分 10 分）本题共有 2 个小题，第 1 个小题满分 5 分，第 2 个小题满分 4 分。}
+
+考虑自治系统 $\dot{\boldsymbol{x}}=\boldsymbol{Ax}, \boldsymbol{A} \in \mathbb{R}^{n \times n}$，
+\begin{enumerate}[label=(\arabic*)]
+\item 若矩阵 $\boldsymbol{A}$ 是正定的，也就是对于任意非零向量 $\boldsymbol{x}$ 都有 $\boldsymbol{x}^{\mathrm{T}} \boldsymbol{A} \boldsymbol{x}>0$，
+证明 $\|\boldsymbol{x}\|_{\boldsymbol{A}}=\sqrt{\boldsymbol{x}^{\mathrm{T}} \boldsymbol{A} \boldsymbol{x}}$ 是一种范数（注意，正定矩阵不一定是对称矩阵）；
+\item 若矩阵 $\boldsymbol{A}$ 是严格对角占优的，也就是 $\displaystyle|a_{ii}|>\sum_{j=1, \ldots, n, j \neq i}|a_{ij}|, i=1, \ldots, n$，求出方程组的所有常值解。
+\end{enumerate}
+\begin{proof}[解]
+\begin{enumerate}[label=(\arabic*)]
+\item（i）正定性（1 分）：可由 $A$ 的正定性直接推出；
+
+（ii）齐次性（1 分）：$\forall x \in \mathbb{R}^{n}, \alpha \in \mathbb{R},\|\alpha x\|_{A}=\sqrt{(\alpha x)^{\mathrm{T}} A(\alpha x)}=|\alpha|\cdot\|x\|_{A}$；
+
+（iii）三角不等式：我们需要说明，对于任意 $x, y \in \mathbb{R}^{n},\|x+y\|_{A} \leq\|x\|_{A}+\|y\|_{A}$（1 分）。
+
+当 $A$ 为对称正定矩阵时（1 分），可考虑采用谱分解或 Cholesky 分解等方法证明。
+设 $A=L^{\mathrm{T}} L, L$ 是下三角矩阵，则 $\|x\|_{A}=\sqrt{(Lx)^{\mathrm{T}}(Lx)}=\|Lx\|_{2}$，
+可推出 $\|Lx+Ly\|_{2} \leq \|Lx\|_{2}+\|Ly\|_{2}$，所以三角不等式得证；
+
+当 $A$ 不是对称阵时（1 分），由于
+\[\|x\|_{A}=\sqrt{x^{\mathrm{T}}Ax}
+=\sqrt{\frac{1}{2}x^{\mathrm{T}}Ax+\frac{1}{2}x^{\mathrm{T}}A^{\mathrm{T}}x}
+=\|x\|_{\frac{A+A^{\mathrm{T}}}{2}},\]
+由于 $\dfrac{A+A^{\mathrm{T}}}{2}$ 是对称正定矩阵，所以此种情况也满足三角不等式。
+
+\item 证明严格对角占优矩阵非异即可（例如戈式圆盘定理证明特征值严格位于虚轴右侧，或直接证明 $Ax=0$ 仅有 $0$ 解，都是常规的高等代数方法）。\qedhere
+\end{enumerate}
+\end{proof}
+
+\textbf{6.（本题满分 16 分）本题共有 3 个小题，第 1 个小题满分 4 分，第 2 个小题满分 4 分，第 3 个小题满分 6 分。}
+
+解的存在唯一定理是常微分方程中最基本的定理，其最古典的证明中运用了逐次逼近法等数学思想。
+现考虑矩形区域 $R=[t_{0}-a,t_{0}+a] \times [x_{0}-b,x_{0}+b]$ 上的柯西问题 
+$\begin{cases}\dfrac{\mathrm{d}x}{\mathrm{d}t}=f(t,x) \\ x(t_{0})=x_{0}\end{cases}$，
+假设定理保证了微分方程在 $I=[t_{0}-h,t_{0}+h]$ 上解的存在唯一，
+\begin{enumerate}[label=(\arabic*)]
+\item 叙述定理中 $f(t,x)$ 应在矩形区域 $R$ 上满足的条件，
+进一步验证当 $f(t,x)=\begin{cases}x \ln |x|, & x \neq 0 \\ 0, & x=0\end{cases}$ 时
+是否在包含 $(t,0)$ 的矩阵区域上满足该条件，讨论此时微分方程的解是否存在唯一；
+\item 若给定矩形区域 $R_{1}$ 和 $R_{2}$，定理保证了微分方程在 $I_{1}$ 和 $I_{2}$ 上的解存在唯一，
+当 $R_{1} \varsubsetneqq R_{2}$ 时，是否能推得 $I_{1} \subset I_{2}$？请给出证明或举出反例；
+\item 运用逐次逼近法证明 $\displaystyle x(t)=e^{\sin t}+\int_{0}^{t} \arctan (t\cdot\tau) x(\tau) \mathrm{d}\tau$ 的解在 $t \geq 0$ 时存在唯一。
+\end{enumerate}
+\begin{proof}[解]
+\begin{enumerate}[label=(\arabic*)]
+\item $f(t,x)$ 应在矩形区域 $R$ 上连续（1 分）且对 $x$ 满足 Lipschitz 条件（1 分）。
+
+当 $f(t,x)=\begin{cases}x \ln |x|, & x \neq 0 \\ 0, & x=0\end{cases}$ 时，
+在包含 $(t,0)$ 的矩阵区域上不满足 Lipschitz 条件（1分），因为
+\[\frac{\partial f}{\partial x}=1+\ln |x| \rightarrow-\infty\quad(x \rightarrow 0),\]
+可以验证不存在这样的 Lipschitz 常数（1 分）。
+
+但是，原方程的解是存在唯一的（1 分），可以由分离变量法求得原方程的解：
+\[\int \frac{\mathrm{d} x}{x \ln |x|}=\ln (\ln |x|)\]
+（1 分）。（事实上是因为该方程满足 Osgood 条件，因此存在唯一，
+也可以通过分离变量法说明，但因会漏解，故严谨性略有不足。）
+
+\item 不能推得（2 分），可以举出如下反例（2 分）（反例合理即可）：
+
+考虑 $\begin{cases}\dfrac{\mathrm{d}x}{\mathrm{d}t}=t^{2}+x^{2} \\ x(0)=0\end{cases}$，
+考虑矩形区域 $R_{1}=[-1,1] \times[-1,1]$ 和矩形区域 $R_{2}=[-2,2] \times [-2,2]$，我们易求得
+\[h_{1}=\min \left(1, \frac{1}{2}\right)=\frac{1}{2}, \quad 
+h_{2}=\min \left(2, \frac{2}{8}\right)=\frac{1}{4},\]
+则 \[I_{1}=\left[-\frac{1}{2}, \frac{1}{2}\right], \quad 
+I_{2}=\left[-\frac{1}{4}, \frac{1}{4}\right],\]
+此时 $R_{1} \varsubsetneqq R_{2}$，但 $I_{2} \varsubsetneqq I_{1}$。
+
+\item 证明：（原试卷中误将 $e^{\sin t}$ 写成 $e^{\sin x}$，只要作答了相应部分都给分。）
+
+存在性（3 分）：
+我们可以发现，$e^{\sin t}$ 和 $\arctan (t \cdot \tau)$ 在定义域均为连续有界函数，即
+\[e^{\sin t} \leq e, \quad \arctan (t \cdot \tau) \leq \frac{\pi}{2},\]
+构造序列
+\[\begin{cases}\phi_{0}(t)=e^{\sin t} \\ \\ 
+\displaystyle\phi_{n}(t)=e^{\sin t}+\int_{0}^{t} \arctan (t \cdot \tau) \phi_{n-1}(\tau) \mathrm{d} \tau\end{cases},\]
+我们发现：
+\begin{align*}
+|\phi_{1}(t)-\phi_{0}(t)|&=\left|\int_{0}^{t} \arctan (t \cdot \tau) \phi_{0}(\tau) \mathrm{d}\tau\right| \\
+&\leq \int_{0}^{t}|\arctan (t \cdot \tau)| \cdot |e^{\sin t}| \mathrm{d}\tau \\
+&\leq \frac{\pi}{2} \cdot e \cdot t;
+\end{align*}
+\begin{align*}
+|\phi_{2}(t)-\phi_{1}(t)|&=\left|\int_{0}^{t} \arctan (t\cdot\tau)(\phi_{1}(\tau)-\phi_{0}(\tau))\mathrm{d} \tau\right| \\
+&\leq \int_{0}^{t}|\arctan (t\cdot\tau)| \cdot |\phi_{1}(\tau)-\phi_{0}(\tau)|\mathrm{d}\tau \\
+&\leq \frac{\pi}{2} \int_{0}^{t}|\phi_{1}(\tau)-\phi_{0}(\tau)|\mathrm{d}\tau \\
+&\leq \left(\frac{\pi}{2}\right)^{2} \cdot e \cdot \frac{t^{2}}{2!};
+\end{align*}
+依此类推，
+\begin{align*}
+|\phi_{n}(t)-\phi_{n-1}(t)|&=\left|\int_{0}^{t} \arctan (t \cdot \tau)(\phi_{n-1}(\tau)-\phi_{n-2}(\tau)) \mathrm{d}\tau\right| \\
+&\leq \ldots \leq\left(\frac{\pi}{2}\right)^{n} \cdot e \cdot \frac{t^{n}}{n!}.
+\end{align*}
+考虑级数 $\displaystyle\phi_{0}(t)+\sum_{n=1}^{\infty}(\phi_{n}(t)-\phi_{n-1}(t))$，因为
+\begin{align*}
+\phi_{0}(t)+\sum_{n=1}^{\infty}(\phi_{n}(t)-\phi_{n-1}(t)) 
+&\leq e+\sum_{n=1}^{\infty}\left(\frac{\pi}{2}\right)^{n} \cdot e \cdot \frac{t^{n}}{n!}\\
+&=e \cdot \sum_{n=0}^{\infty}\left(\frac{\pi t}{2}\right)^{n} \cdot \frac{1}{n!}\\
+&=e^{\frac{\pi t}{2}+1}<+\infty,
+\end{align*}
+所以 $\{\phi_{n}(t)\}$ 在 $[0,t]$ 一致收敛。所以对迭代序列两侧取极限，可保证解的存在性。
+
+唯一性（3 分）：
+设 $\phi^{1}(t)$ 和 $\phi^{2}(t)$ 是微分方程两个不同的解，我们有：
+\[\begin{cases}
+\displaystyle\phi^{1}(t)=e^{\sin t}+\int_{0}^{t} \arctan (t \cdot \tau) \phi^{1}(\tau)\mathrm{d}\tau \\ \\
+\displaystyle\phi^{2}(t)=e^{\sin t}+\int_{0}^{t} \arctan (t \cdot \tau) \phi^{2}(\tau)\mathrm{d}\tau
+\end{cases},\]
+由此我们有
+\begin{align*}
+|\phi^{2}(t)-\phi^{1}(t)|&=\left|\int_{0}^{t} \arctan (t \cdot \tau)(\phi^{2}(\tau)-\phi^{1}(\tau)) \mathrm{d}\tau\right| \\
+&\leq \frac{\pi t}{2}|\phi^{2}(t)-\phi^{1}(t)|,
+\end{align*}
+不断在积分号内迭代，可得
+\[|\phi^{2}(t)-\phi^{1}(t)| \leq \left(\frac{\pi t}{2}\right)^{n} \frac{1}{n!}|\phi^{2}(t)-\phi^{1}(t)|,\]
+由此可推得 $|\phi^{2}(t)-\phi^{1}(t)|=0$，从而唯一性得证。\qedhere
+\end{enumerate}
+\end{proof}
+
+\textbf{7.（本题满分 16 分）本题共有 3 个小题，第 1 个小题满分 4 分，第 2 个小题满分 6 分，第 3 个小题满分 6 分。}
+
+已知光滑映射 $\boldsymbol{Q}: \mathbb{R} \rightarrow O(3)$ 满足 $\boldsymbol{Q}(0)=\boldsymbol{I}_{3}$ 为三阶单位矩阵，这里 $O(3)$ 为 $\mathbb{R}^{3 \times 3}$上的正交矩阵组成的集合。
+若一个在 $\mathbb{R}^{3}$ 中运动质点轨迹满足 $\boldsymbol{x}(t)=\boldsymbol{Q}(t) \boldsymbol{b}$，其中 $\boldsymbol{b}$ 为 $\mathbb{R}^{3}$ 中的常值向量。
+\begin{enumerate}[label=(\arabic*)]
+\item 证明质点的运动轨迹满足线性微分方程 $\dot{\boldsymbol{x}}=\boldsymbol{A}(t) \boldsymbol{x}$，且系数矩阵 $\boldsymbol{A}(t)$ 是反对称阵。
+\item 若（1）中的系数矩阵 $\boldsymbol{A}(t) \equiv \boldsymbol{A}$，
+证明该质点在 $\mathbb{R}^{3}$ 中绕一根过原点的定轴旋转，
+即存在非零向量 $\boldsymbol{u} \in \mathbb{R}^{3}$，使得
+（a）质点运动速度 $\dot{\boldsymbol{x}}$ 与 $\boldsymbol{u}$ 垂直，
+（b）$\|\boldsymbol{x}-\boldsymbol{u}\|_{2}$ 关于 $t$ 不变。
+\item 若（1）中 $\boldsymbol{A}(t) \equiv\begin{bmatrix}0 & 3 & 4 \\ -3 & 0 & 0 \\ -4 & 0 & 0\end{bmatrix}$，试确定光滑映射 $\boldsymbol{Q}(t)$。
+\end{enumerate}
+\begin{proof}[解]
+\begin{enumerate}[label=(\arabic*)]
+\item 由于 $Q(t)$ 是正交矩阵，对于任意 $t$，我们由正交矩阵的性质有：$Q(t) Q^{\mathrm{T}}(t)=I_{3}$，两边对 $t$ 求导有：
+\[\dot{Q}(t) Q^{\mathrm{T}}(t)+Q(t) \dot{Q}^{\mathrm{T}}(t)=O,\]
+于是
+\[\dot{Q}(t) Q^{\mathrm{T}}(t)=-Q(t) \dot{Q}^{\mathrm{T}}(t).\]
+由 $x(t)=Q(t) b$，求导得 $\dot{x}(t)=\dot{Q}(t) b$，由此得
+\[\dot{x}(t)=\dot{Q}(t) Q^{\mathrm{T}}(t) b=-Q(t) \dot{Q}^{\mathrm{T}}(t) b,\]
+所以
+\[A(t)=\dot{Q}(t) Q^{\mathrm{T}}(t)=-Q(t) \dot{Q}^{\mathrm{T}}(t),\]
+所以 $A(t)$ 为反对称矩阵。
+
+\item（a）设
+\[A=\begin{pmatrix}0 & -c & b \\ c & 0 & -a \\ -b & a & 0\end{pmatrix}, 
+x=\begin{pmatrix}x_{1} \\ x_{2} \\ x_{3}\end{pmatrix}, 
+u=\begin{pmatrix}u_{1} \\ u_{2} \\ u_{3}\end{pmatrix},\]
+若 $u^{\mathrm{T}} \cdot \dot{x}=0$, $u^{\mathrm{T}} \cdot Ax=0$，
+\begin{align*}
+u^{\mathrm{T}} \cdot Ax&=(u_{1}\ u_{2}\ u_{3}) \cdot \begin{pmatrix}-cx_{2}+bx_{3} \\ \\ cx_{1}-ax_{3} \\ \\ -bx_{1}+a x_{2}\end{pmatrix}\\
+&=u_{1}(-cx_{2}+bx_{3})+u_{2}(cx_{1}-ax_{3})+u_{3}(-bx_{1}+ax_{2})\\
+&=x_{1}(cu_{2}-bu_{3})+x_{2}(-cu_{1}+au_{3})+x_{3}(bu_{1}-au_{2})=0.
+\end{align*}
+由 $x_1,x_2,x_3$ 的任意性可知
+\[\begin{cases}cu_{2}-bu_{3}=0\\
+-cu_{1}+au_{3}=0\\
+bu_{1}-au_{2}=0\end{cases},\]
+解得 $u=\begin{pmatrix}a\\ b\\ c\end{pmatrix}$，此时 $\dot{x}$ 关于 $u$ 垂直。
+
+（b）下面验证（a）中的 $u$ 关于 $t$ 不变，等价于说明 $\|x-u\|_{2}^{2}$ 对 $t$ 求导数为 $0$。
+\begin{align*}
+\frac{\partial}{\partial t}\|x-u\|_{2}^{2}
+&=\frac{\partial}{\partial t}(x^{\mathrm{T}}x-2u^{\mathrm{T}}x+u^{\mathrm{T}}u)\\
+&=2x^{\mathrm{T}}\dot{x}-2u^{\mathrm{T}}\dot{x}\\
+&=2(x^{\mathrm{T}}Ax+u^{\mathrm{T}}Ax),
+\end{align*}
+因为 $x^{\mathrm{T}}Ax=u^{\mathrm{T}} Ax=0$，所以 $\dfrac{\partial}{\partial t}\|x-u\|_{2}^{2}=0$。
+
+\item 由矩阵指数求解可得 $x(t)=e^{At}c$，满足初值条件 $x(0)=Q(0)b=b$，则 $c=b$。所以
+\begin{align*}
+Q(t)=e^{At}& =\begin{pmatrix}
+0 & 5i/4 & -5i/4 \\ \\
+-4/3 & 3/4 & 3/4 \\ \\
+1 & 1 & 1
+\end{pmatrix} \cdot\begin{pmatrix}
+1 & 0 & 0 \\ \\
+0 & e^{-5it} & 0 \\ \\
+0 & 0 & e^{5it}
+\end{pmatrix} \cdot\begin{pmatrix}
+0 & 5i/4 & -5i/4 \\ \\
+-4/3 & 3/4 & 3/4 \\ \\
+1 & 1 & 1
+\end{pmatrix}^{-1} \\
+& =\begin{pmatrix}
+5\cos 5t & 3\sin5t/5 & 4\sin 5t/5 \\ \\
+-3\sin 5t/5 & 9\cos 25t/25+16/25 & 12\cos 5t/25-12/25 \\ \\
+-4\sin 5t/5 & 12\cos 5t/25-12/25 & 16\cos 5t/25+9/25
+\end{pmatrix}.
+\end{align*}
+\end{enumerate}
+\end{proof}
+
+\textbf{8.（本题满分 18 分）本题共有 4 个小题，第 1 小题满分 5 分，第 2 小题满分 4 分，第 3 小题满分 4 分，第 4 小题满分 5 分。}
+
+考虑 $n$ 维线性周期常微分方程：$\dot{\boldsymbol{x}}=\boldsymbol{A}(t) \boldsymbol{x}$，
+其中 $\boldsymbol{A}(t)$ 是 $\mathbb{R}$ 上以 $T>0$ 为周期的连续矩阵值函数。
+\begin{enumerate}[label=(\arabic*)]
+\item 设上述方程的一个基本解方阵为 $\boldsymbol{\Phi}(t)$，证明存在一个可逆的常数矩阵 $\boldsymbol{B}$，
+使得 $\boldsymbol{\Phi}(t+T) \equiv \boldsymbol{\Phi}(t) \boldsymbol{B}$ 对 $t \in \mathbb{R}$ 恒成立。
+\item 设 $\boldsymbol{B}$ 的特征值为 $\rho_{1}, \rho_{2}, \ldots, \rho_{n}$，则称这 $n$ 个值为原方程的 Floquet 特征值。
+请证明上述定义是良定的，也即一个线性周期常微分方程的 Floquet 特征值与基本解方阵的选取无关。
+\item 证明：对于任意一个 Floquet 特征值 $\rho$，存在原方程的一个解 $\boldsymbol{x}=\boldsymbol{\phi}(t)$，
+使得 $\boldsymbol{\phi}(t+T)=\rho\boldsymbol{\phi}(t)$，
+并以此分析原方程的 Floquet 特征值两两不同的情况下所有解都有界的充要条件。
+\item 对于一个非线性的自治系统 $\dot{\boldsymbol{x}}=\boldsymbol{f}(\boldsymbol{x})$, 
+$\boldsymbol{f}=\left(f_{1}, \ldots, f_{n}\right), \boldsymbol{x} \in \mathbb{R}^{n}$，
+假设其有 $T$-周期解 $\boldsymbol{x}=\boldsymbol{\psi}(t)$。
+考虑周期解 $\boldsymbol{\psi}(t)$ 的摄动 $\boldsymbol{x}=\boldsymbol{\psi}+\boldsymbol{v}$ $(\|\boldsymbol{v}\| \ll\|\boldsymbol{\psi}\|$，
+且 $\boldsymbol{x}$ 满足 $\dot{\boldsymbol{x}}=\boldsymbol{f}(\boldsymbol{x}))$。
+那么 $\boldsymbol{v}$ 满足系统的变分方程 $\dot{\boldsymbol{v}}=\left(\dfrac{\partial f_{i}}{\partial x_{j}}\right)_{1 \leq i, j \leq n}\bigg|_{\boldsymbol{\psi}(t)} \boldsymbol{v}$，
+其中 $\left(\dfrac{\partial f_{i}}{\partial x_{j}}\right)_{1 \leq i, j \leq n}\bigg|_{\boldsymbol{\psi}(t)}$ 为原系统的 Jacobi 矩阵，请证明此线性方程有一个 Floquet 特征值为 $1$。
+\end{enumerate}
+\begin{proof}
+\begin{enumerate}[label=(\arabic*)]
+\item 先考虑 $\boldsymbol{\Phi}(t+T)$，记为 $\boldsymbol{Y}(t)$，则有
+\begin{align*}
+\boldsymbol{Y}^{\prime}(t)
+&=\boldsymbol{\Phi}^{\prime}(t+T)=A(t+T) \boldsymbol{\Phi}(t+T)\\
+&=A(t) \boldsymbol{\Phi}(t+T)=A(t) \boldsymbol{Y}(t),
+\end{align*}
+因此 $\boldsymbol{\Phi}(t+T)$ 依然为原方程的一个基解矩阵，
+由基解矩阵性质知，存在一个可逆的常数矩阵 $\boldsymbol{B}$，
+使得 $\boldsymbol{\Phi}(t+T) \equiv \boldsymbol{\Phi}(t) \boldsymbol{B}$ 对 $t \in \mathbb{R}$ 恒成立。
+
+\item 假设原方程的另一基解矩阵为 $\boldsymbol{\Psi}(t)$，
+则存在可逆常矩阵 $\boldsymbol{C}$ 使得 $\boldsymbol{\Psi}(t)=\boldsymbol{\Phi}(t) \boldsymbol{C}$，
+从而由（1）知存在可逆常数矩阵 $\bar{\boldsymbol{B}}$，
+使得 $\boldsymbol{\Psi}(t+T) \equiv \boldsymbol{\Psi}(t) \bar{\boldsymbol{B}}$，那么有：
+\[\bar{\boldsymbol{B}}=\boldsymbol{\Psi}^{-1}(t) \boldsymbol{\Psi}(t+T)
+=\boldsymbol{C}^{-1} \boldsymbol{\Phi}^{-1}(t) \boldsymbol{\Phi}(t+T) \boldsymbol{C}
+=\boldsymbol{C}^{-1} \boldsymbol{B} \boldsymbol{C},\]
+也即 $\bar{\boldsymbol{B}}$ 与 $\boldsymbol{B}$ 相似，
+自然拥有相同的特征值。这代表 Floquet 特征值的定义是良定的。
+
+\item 设 $\boldsymbol{b}$ 为 $\boldsymbol{B}$ 对应于特征值 $\rho$ 的特征向量，
+考虑原方程的解 $\phi(t)=\boldsymbol{\Phi}(t) \boldsymbol{b}$，我们有
+\[\phi(t+T)=\boldsymbol{\Phi}(t+T) \boldsymbol{b}
+=\boldsymbol{\Phi}(t) \boldsymbol{B} \boldsymbol{b}
+=\boldsymbol{\Phi}(t) \rho \boldsymbol{b}=\rho \phi(t),\]
+\[\phi(t-T)=\frac{1}{\rho} \phi(t).\]
+由此即知，若 Floquet 特征值两两不同，那么原方程所有解有界的充要条件是 $|\rho|=1, \forall \rho$（$|\rho| \leq 1$ 也得全分）。
+
+\item 对于摄动 $\boldsymbol{x}=\boldsymbol{\phi}+\boldsymbol{v}$，代回原方程有
+\[\dot{\boldsymbol{v}}=f(\boldsymbol{\phi}+\boldsymbol{v})-f(\boldsymbol{\phi})
+=\left(\frac{\partial f_{i}}{\partial x_{j}}\right)_{i,j} \boldsymbol{v}+o(\boldsymbol{v}).\]
+忽略高阶项的意义下，$\boldsymbol{v}$ 满足线性周期常微分方程
+$\dot{\boldsymbol{v}}=\left(\dfrac{\partial f_{i}}{\partial x_{j}}\right)_{i,j} \boldsymbol{v}$。
+
+注意到当 $\boldsymbol{v}=\boldsymbol{\phi}^{\prime}(t)$ 时（线性 ODE 的求解仅与``方向''相关，
+在这个解上除以一个足够大的数即可使得 $\|\boldsymbol{v}\|\ll\|\boldsymbol{\phi}\|$ 成立），有下式成立：
+\[\dot{\boldsymbol{v}}=\phi^{\prime \prime}(t)=\frac{\mathrm{d}}{\mathrm{d}t} f(\phi(t))
+=\left(\frac{\partial f_{i}}{\partial x_{j}}\right)_{i,j} \phi^{\prime}(t)
+=\left(\frac{\partial f_{i}}{\partial x_{j}}\right)_{i,j} \boldsymbol{v}.\]
+这代表周期解 $\phi^{\prime}(t)$ 为该（变分／线性）方程的解，从而这个方程有一个 Floquet 特征值为 $1$，证毕。\qedhere
+\end{enumerate}
+\end{proof}
+
+\section{17--18年期中测验试卷（林伟）}
+
+\textbf{一、\ \ 填空题。（本大题满分40分，每小题满分10分.）}
+\begin{enumerate}
+\item[1.] 设有常系数方程组 
+\[
+\frac{d}{dt}\begin{pmatrix} x \\ y \end{pmatrix} = 
+\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}
+\begin{pmatrix} x \\ y \end{pmatrix}
+\]
+若该方程组有一个首次积分 $e^{-2x^2-y^2}$，则 $a,b,c,d$ 满足的条件为
+$\underline{\qquad\qquad}$。
+
+\item[2.]
+设 
+\[
+A = \begin{bmatrix} 
+-1 & -1 & 1 \\ \\
+0 & \frac{3}{2} & -\frac{1}{2} \\ \\
+0 & \frac{1}{2} & \frac{1}{2} 
+\end{bmatrix}.
+\]
+求方程组 $\dot{\boldsymbol{x}} = \boldsymbol{Ax}$ 的通解。
+$\underline{\qquad\qquad\qquad\qquad}$。
+
+
+\item[3.]
+考虑以 $t$ 为参数的方程 
+\[
+x'' + \lambda x = t,
+\]
+满足边值条件 $x(0) = 0$, $x(1) = 1$。试确定 $\lambda \in \mathbb{R}$ 所有可行的取值以及对应的方程的通解。
+$\underline{\qquad\qquad\qquad\qquad}$。
+
+
+\item[4.]
+设向量函数 $V(x,y) = x^2(t) + y^2(t)$，且 $x'=-x+y,y'=-x-y$。
+已知该方程组的一个解$[x(t),y(t)]^{\rm T}$满足$x(0) = 2,y(0) = 1$，
+则$V(x(1),y(1))=\underline{\qquad\qquad}$。
+\end{enumerate}
+\textbf{二、\ \ （本大题满分60分）}
+\begin{enumerate}
+\item[5.]设区域 $\mathcal{R} = \{(t, x) \in \mathbb{R}^2; 0 \leqslant t \leqslant 1, |x| \leqslant 1\}$。
+在 $\mathcal{R}$ 上定义函数 $f(t, x) = t - x^2 \sin\left(\frac{\pi}{2}x^2\right)$。设有初值问题：
+\[
+\begin{cases}
+\dfrac{dx}{dt} = f(t, x), \\
+x(0) = 0.
+\end{cases}\tag{$\star$}
+\]
+试用\textbf{逐次逼近}法证明：在 $t \in [0, 1]$ 上，方程 $(\star)$ 的解存在唯一。
+
+\item[6.]给定正整数 $d$。$\mathbb{C}^d$ 上赋予范数为向量-$2$范数。
+$M_d(\mathbb{C})$ 表示 $d$ 阶复数值方阵全体，其上赋予范数为向量-$2$范数诱导的矩阵范数。
+现给定 $\boldsymbol{A}: \mathbb{R} \to M_d(\mathbb{C})$ 是连续映射。
+考虑实直线上连续映射 $\boldsymbol{x}$ 取值于 $\mathbb{C}^d$，
+即 $\boldsymbol{x}: \mathbb{R} \to \mathbb{C}^d$。
+微分方程组 $\dot{\boldsymbol{x}} = \boldsymbol{A}(t)\boldsymbol{x}$ 
+的基本解矩阵记为 $\boldsymbol{\Phi}: \mathbb{R} \to M_d(\mathbb{C})$，
+其满足 $\boldsymbol{\Phi}(0) = \boldsymbol{I}$，其中 $\boldsymbol{I}$ 是 $d$ 阶单位矩阵。
+
+(1)
+设 $\boldsymbol{Q} \in M_d(\mathbb{C})$，并令 $\boldsymbol{Y}(t) = \boldsymbol{\Phi}(t)\boldsymbol{Q}\boldsymbol{\Phi}(t)^{\rm T}$。
+证明：$\boldsymbol{Y}(t)$ 满足方程：
+\[
+\begin{cases}
+\dfrac{d\boldsymbol{Y}}{dt} = \boldsymbol{AY} + \boldsymbol{YA}^{\rm T}, \\
+\boldsymbol{Y}(0) = \boldsymbol{Q}.
+\end{cases}
+\]
+
+(2)
+设 $\boldsymbol{H}: \mathbb{R} \to M_d(\mathbb{C})$ 是连续映射，
+$\boldsymbol{Q} \in M_d(\mathbb{C})$。借助常数变易法，求解方程：
+\[
+\begin{cases}
+\dfrac{d\boldsymbol{Y}}{dt} = \boldsymbol{AY} + \boldsymbol{YA}^{\rm T} + \boldsymbol{H}, \\
+\boldsymbol{Y}(0) = \boldsymbol{Q}.
+\end{cases}
+\]
+其中 $\boldsymbol{Y}: \mathbb{R} \to M_d(\mathbb{C})$。
+
+(3)
+现设 $\boldsymbol{B} \in M_d(\mathbb{C})$，且 $\boldsymbol{B}$ 的所有特征值实部均小于 $0$。
+证明：存在 $\delta > 0$，对于任意 $\varepsilon \in (-\delta, \delta)$，矩阵值方程：
+\[
+\frac{d\boldsymbol{Y}}{dt} = (\boldsymbol{B} + \varepsilon \boldsymbol{I})\boldsymbol{Y} + \boldsymbol{YB}^{\rm T}
+\]
+的任意一个解 $\boldsymbol{Y}: \mathbb{R} \to M_d(\mathbb{C})$，均满足：
+\[
+\lim_{t \to +\infty} \| \boldsymbol{Y}(t) \| = 0.
+\]
+
+
+\item[7.]
+(1)
+设有方程 $\ddot{x} + p(t)\dot{x} + q(t)x = 0$，其中 $p, q$ 是实直线上的实值连续函数。
+该方程有两实值解 $\phi(t), \psi(t)$。令 $A(t) = [\phi(t), \dot{\phi}(t)]^{\rm T}$，
+$B(t) = [\psi(t), \dot{\psi}(t)]^{\rm T}$，落在平面 $\mathbb{R}^2$ 中，并记坐标原点 $O = [0, 0]^{\rm T}$。
+已知 $\phi(0) = 1$, $\dot{\phi}(0) = 1$, $\psi(0) = 0$, $\dot{\psi}(0) = 1$，$p(t) \equiv 1$，$q(t) = t^2 \cos(t)$。求三角形 $OA(1)B(1)$ 的面积。
+
+(2)
+设有方程 $\ddot{x} - 2\dot{x}\cos(2t) + 4x\sin(2t) = 4\sin(2t)$，$\phi(t) = e^{\sin(2t)} + 1$ 是该方程的一个解。求该方程的通解。(注：不能积出来的保留积分。)
+
+\begin{align*}
+W(0) &= 
+\begin{vmatrix}
+\phi(0) & \psi(0) \\
+\dot{\phi}(0) & \dot{\psi}(0)
+\end{vmatrix}
+= 1
+\end{align*}
+
+
+\item[8.]定义映射：$\| \cdot \|_* : \mathbb{R}^2 \to \mathbb{R}$，$\left\| \begin{bmatrix} x \\ y \end{bmatrix} \right\|_* = (2|x|^2 + |y|^2)^{\frac{1}{2}}$。
+令 $M_2(\mathbb{R})$ 为所有 $2$ 阶实值矩阵全体，即 $M_2(\mathbb{R}) = \left\{ \begin{bmatrix} a & b \\ c & d \end{bmatrix}, a, b, c, d \in \mathbb{R} \right\}$。
+
+(1)
+求证：$\| \cdot \|_*$ 是 $\mathbb{R}^2$ 上的范数。
+
+(2)
+令 $\boldsymbol{A} = \begin{bmatrix} -1 & 2 \\ 1 & 0 \end{bmatrix}$。
+由 $\mathbb{R}^2$ 上向量范数 $\| \cdot \|_*$ 诱导 $M_2(\mathbb{R})$ 上矩阵范数。计算 $\| \boldsymbol{A} \|_*$。
+
+(3)
+现有 $\boldsymbol{B} \in M_2(\mathbb{R})$，而且 $\boldsymbol{B}$ 的两个特征值 $\lambda_1, \lambda_2$ 均为实数。定义差分方程：
+\[
+\begin{cases}
+\boldsymbol{x}(n+1) - \boldsymbol{x}(n) = (\boldsymbol{B} - \boldsymbol{I})\boldsymbol{x}(n), \\
+\boldsymbol{x}(0) = \boldsymbol{\mu}.
+\end{cases}
+\]
+其中，$n \in \mathbb{Z}_{\geqslant 0}$, $\mu \in \mathbb{R}^2$，$\boldsymbol{I}$ 为 $2$ 阶单位阵。
+
+证明：该方程的解为 $\boldsymbol{x}(n) = \boldsymbol{B}^n\boldsymbol{\mu}$，
+并且 $\lim\limits_{n \to +\infty} (\| \boldsymbol{B}^n \|_*)^{\frac{1}{n}} = \max\{|\lambda_1|, |\lambda_2|\}$。
+\end{enumerate}
+\section{14--15年期中测验试卷（林伟）}
+\textbf{一、\ \ 填空题（本大题满分42分）本大题共有6题，
+根据题目要求把答案直接写在题中的横线上；其中第1、2、3、4题为解常微分方程，
+每题满分6分，第5题满分6分，第6题满分12分。}
+\begin{enumerate}
+\item[1.] $\dfrac{dy}{dx}=(x^2+1)(y^2+2)$.
+
+\item[2.] $y = x \dfrac{dy}{dx} + \sin\left(\dfrac{dy}{dx}\right)$.
+
+\item[3.] $\dfrac{d^2 y}{dx^2} \cdot \cos y - \sin y \cdot \left(\dfrac{dy}{dx}\right)^2 + \sin x = 0$.
+
+\item[4.] $t^3 \ddot{x} + 2t^2 \dot{x} + tx = \ln t \quad (t > 0)$.
+
+\item[5.] 考虑边值问题
+\[
+\begin{cases}
+X''(x) + \lambda X(x) = 0, \\ \\
+X(0) = X(\pi) = 0,\\ \\
+T'(t)+\lambda T(t) = 0,\\ \\
+u(t,x) = T(t)X(x)
+\end{cases}
+\]
+写出所有使 $u(t,x)$ 存在非零解对应的特征值 $\lambda$ 以及对应的 $u(t,x)$
+
+\item[6.] \[
+\boldsymbol{A} = \begin{bmatrix} 
+3 & -2 & 2 \\ \\
+1 & 0 & -2 \\ \\
+2 & 3 & -2
+\end{bmatrix}.
+\]
+求$\det(e^{\boldsymbol{A}t})=\underline{\qquad\qquad},\| \boldsymbol{A} \|_1=\underline{\qquad\qquad},
+\| \boldsymbol{A} \|_\infty=\underline{\qquad\qquad},\| \boldsymbol{A} \|_2^2=\underline{\qquad\qquad}$.
+\end{enumerate}
+\begin{enumerate}
+\item[7.] 已知 $h(t)$ 为 $(\alpha, \beta)$ 上的实值连续函数，
+$x_0 \in \mathbb{R}$, $t_0 \in (\alpha, \beta)$。用逐次逼近法证明以下初值问题
+\[
+\begin{cases}
+\dfrac{dx}{dt} = h(t)(x + t^2 \sin x + t), \\
+x(t_0) = x_0
+\end{cases}
+\]
+的解在 $(\alpha, \beta)$ 上存在且唯一。
+
+
+\item[8.]
+考虑 $n$ 维线性常微分方程：
+\[ 
+\dot{\boldsymbol{x}} + \boldsymbol{A}(t)\boldsymbol{x} = \boldsymbol{f}(t),
+\]
+其中 $\boldsymbol{A}(t)$ 与 $\boldsymbol{f}(t)$ 为 $\mathbb{R}$ 上的有界连续向量值函数。
+
+(1)
+若 $\boldsymbol{A}(t) \equiv \boldsymbol{A}$，试用常数变易公式写出上述方程满足初值条件
+\[
+\boldsymbol{x}(t_0) = \boldsymbol{x}_0 \quad (t_0 \in \mathbb{R}, \boldsymbol{x}_0 \in \mathbb{R}^n)
+\]
+的解。
+
+(2)
+在 (1) 的条件下，若 $A$ 的一切特征值都大于 $0$，证明该方程存在唯一在 $\mathbb{R}$ 上有界的解。
+
+(3)
+若 $n = 2$，
+\[
+\boldsymbol{A}(t) = 
+\begin{bmatrix}
+-\sin t & \dfrac{1}{t^2+1} \\ \\
+\arctan(t) & \cos 2t
+\end{bmatrix}, \quad \boldsymbol{f}(t) \equiv \boldsymbol{0}.
+\]
+证明存在 $\boldsymbol{x}_0 \in \mathbb{R}^2$，使得该方程满足初值条件
+$\boldsymbol{x}(0) = \boldsymbol{x}_0$
+的解满足
+$\boldsymbol{x}(t) \nrightarrow 0$ $(t \to +\infty)$。
+
+\item[9.]
+考虑线性方程 $n$ 维线性常微分方程：$\dot{\boldsymbol{x}} = \boldsymbol{A}(t)\boldsymbol{x}$，
+其中 $\boldsymbol{A}(t)$ 为 $\mathbb{R}$ 上以 $T\,(T > 0)$ 为周期的连续矩阵值函数。
+
+(1)
+设上述方程的一个基本解方阵为 $\boldsymbol{\phi}(t)$，证明存在一个可逆常值矩阵 $\boldsymbol{B}$，使得
+\[
+\boldsymbol{\phi}(t + T) = \boldsymbol{\phi}(t) \cdot \boldsymbol{B}.
+\]
+
+(2)
+如果已知存在 $n$ 阶矩阵 $\boldsymbol{C}$ 使得 $e^{\boldsymbol{C}T} = \boldsymbol{B}$，
+我们对原方程进行坐标变换 $\boldsymbol{y}(t) = e^{-\boldsymbol{C}t}\boldsymbol{\phi}^{-1}(t)\boldsymbol{x}(t)$。
+证明在此坐标变换下，存在常数 $C_1, C_2 > 0$ 使得
+\[
+C_2\|\boldsymbol{x}(t)\| \leq \|\boldsymbol{y}(t)\| \leq C_1\|\boldsymbol{x}(t)\|,
+\]
+对于 $t \in \mathbb{R}$ 成立，并求出 $\boldsymbol{y}(t)$ 满足的微分方程。
+
+(3)
+若 (2) 中得到的矩阵 $\boldsymbol{C}$ 的一切特征值实部都小于 $0$，
+设 $\boldsymbol{H}(t)$ 为 $\mathbb{R}$ 上的 $n$ 阶有界连续矩阵值函数，
+证明存在 $\varepsilon_0 > 0$，当 $0 < \varepsilon < \varepsilon_0$ 时，
+方程 $\dot{\boldsymbol{x}} = [\boldsymbol{A}(t) + \varepsilon \boldsymbol{H}(t)]\boldsymbol{x}$ 
+的一切解在 $t \to +\infty$ 时趋于 $\boldsymbol{0}$。
+
+
+\item[10.] 求方程 $\ddot{x} - e^{2x} + e^{-2x} = 0$ $(t>0)$ 的一个\textbf{非常值}解，使得
+$\lim\limits_{t \to +\infty} x(t) = 0$。
+\end{enumerate}
+\section{11--12年期中测验试卷（林伟）}
+
+\textbf{复旦大学数学科学学院\\
+2011～2012学年第一学期常微分方程期中考试试卷}
+
+\textbf{一、填空题（本大题满分36分）
+本大题共有4题，每题满分9分，根据题目要求把答案直接写在题中的横线上。}
+
+\begin{enumerate}[label=\arabic*.]
+    \item 已知线性微分方程组 $\dot{x}(t) = Ax(t) + b$，其中 $A = \begin{pmatrix} 1 & 2 \\ -2 & 1 \end{pmatrix}$, $b = (0, 1)^T$，则该方程组满足初值条件 $x(0) = (0, 0)^T$ 的解为
+    
+    \item 二阶微分方程 $\ddot{x} \cos^2 t = 2x$ 的一切解为
+    
+    \item 已知二阶微分方程 $x^2y'' + xy' + y = 0$ 在坐标系 $x - O - y$ 中的某条积分曲线与坐标轴不重合，并与 $x$ 轴相交于 $(1, 0)$ 和 $(h, 0)(h > 1)$，则该积分曲线的方程为
+    
+    \item 分别考虑两个矩阵值函数：$X_1(t) = \begin{pmatrix} e^{t-1} & e^{-t+1} \\ e^{-t+1} & e^{t-1} \end{pmatrix}$ 和 $X_2(t) = \begin{pmatrix} e^t & e^{-t} \\ -e^t & e^{-t} \end{pmatrix}$，当矩阵值函数为常系数微分方程组 $\dot{x} = Ax$ 的基本解方阵时，分别计算 $A$、$\|A\|_1$ 和 $e^{At}$。
+\end{enumerate}
+
+\textbf{二、解答题（本大题满分64分）
+本大题共有4题，解答下列各题必须写出必要的步骤。}
+
+5. （本题满分18分）
+设实值函数 $p(t)$ 与 $q(t)$ 在区间 $(\alpha, \beta)$ 上连续，实值函数 $f(x)$ 在 $\mathbb{R}$ 上连续且满足 Lipschitz 条件，其中 Lipschitz 常数为 $L > 0$，利用逐次逼近法证明：初值问题
+\[
+\begin{cases}
+\dfrac{dx}{dt} = p(t)f(x) + q(t) \\
+x(t_0) = x_0, \alpha < t_0 < \beta,
+\end{cases}
+\]
+的解在区间 $(\alpha, \beta)$ 上存在且唯一。
+
+6. (本题满分16分)
+本题共有2小题，第1小题满分10分，第2小题满分6分。
+
+已知线性微分方程组 $\dot{x}(t) = W(t)x(t)$，其中 $W(t)$ 是 $\mathbb{R}$ 上的$3$阶连续有界的矩阵值函数。
+
+(1) 证明：存在正数 $\delta$，使得 $\|x(t)\|_2 = o(e^{\delta t}), t \to +\infty$
+
+(2) 若 $W(t)$ 为一常值矩阵，并且满足 $W = -W^T$，证明：存在非零的向量 $v$，使得 $v^T x(t)$ 和 $\|x(t) - v\|_2$ 均与 $t$ 无关。
+
+7. (本题满分16分)
+本题共有2小题，第1小题满分8分，第2小题满分8分。
+
+已知二阶方程 $\ddot{x} + p(t)\dot{x} + q(t)x = f(t)$，其中 $p(t), q(t), f(t)$ 是 $[0, 1]$ 上连续的实值函数。
+
+(1) 若 $f(t) \equiv 0$，证明：上述方程满足条件 $x(0) = x(1) = 0$ 的任意两个解都是线性相关的。
+
+(2) 若 $f(t) \not\equiv 0$，则上述方程满足条件 $x(0) = x(1) = 0$ 有唯一解的充要条件是否是对应的齐次方程满足条件 $x(0) = x(1) = 0$ 的只有零解？论证你的结论。
+
+8. (本题满分14分)
+
+考虑微分方程 $\dfrac{dr}{dt} = r^2 - r^6$，证明：当 $r(0) > 0$ 时，$\lim\limits_{t \to +\infty}[r(t) - 1] = 0$。
+
+\section{10--11年期中测验试卷（林伟）}
+
+\textbf{复旦大学数学科学学院\\
+2010～2011学年第一学期常微分方程期中考试试卷}
+
+一、填空题（本大题满分30分）
+本大题共有4题，根据题目要求把答案直接写在题中的横线上：第1、2、3题每题满分7分，第4题满分9分。
+
+\begin{enumerate}
+    \item 微分方程 $\dfrac{d^2 x}{dt^2} - t \dfrac{d^3 x}{dt^3} + \left(\dfrac{d^3 x}{dt^3}\right)^3 = 0$ 的通解为$\underline{\qquad\qquad}$。
+    
+    \item 若 $x = t$ 是二阶微分方程 $(t^2 + 1) \ddot{x} - 2t \dot{x} + 2x = 0$ 的一个特解，则该方程的通解为$\underline{\qquad\qquad}$。
+    
+    \item 若 $y(x)$ 是二阶微分方程 $\ddot{y} + \lambda y = 0$ 的解且当 $|x| \to +\infty$ 时 $y(x)$ 有界，其中 $\lambda$ 为参数，则该方程的特征函数为$\underline{\qquad\qquad}$。
+    
+    \item 若 $A = \begin{bmatrix}
+    \alpha & \beta \\ \\
+    -\beta & \alpha
+    \end{bmatrix}$ 则 $e^{A}=\underline{\qquad\qquad}$, $\det(e^{A})=\underline{\qquad\qquad}$, $\|A\|_2=\underline{\qquad\qquad}$。
+\end{enumerate}
+
+二、解答题（本大题满分70分）
+本大题共有4题，解答下列各题必须写出必要的步骤。
+
+5. （本题满分14分）
+设 $u(t)$ 是 $[a,b]$ 上的连续函数，$c \geq 0$ 为常数。若 $u(t) \leq c + \int_a^t k(s) u(s) ds$，
+其中 $k(s)$ 是 $[a,b]$ 上的非负连续函数，写出 $u(t)$ 满足的Gronwall不等式，并用逐次逼近法进行证明。
+
+6. （本题满分22分）
+本题共有2小题：第一小题满分14分，第二小题满分8分。
+
+对于 $n$ 阶线性微分方程组 $\dot{x} = Ax$，其中 $A$ 是 $n$ 阶常方阵。
+记 $x = x(t; v)$ 是该方程组以 $x(0) = v \in \mathbb{R}^n$ 为初值条件的解，并记指数
+\[
+l_v = \lim_{t \to +\infty} \frac{\ln\|x(t; v)\|}{t},
+\]
+其中，$\|\cdot\|$ 表示 $\mathbb{R}^n$ 中$1$-范数。
+
+(1) 若 $A = \begin{pmatrix}
+-3 & -1 & -3 \\ \\
+4 & 2 & 3 \\ \\
+4 & 1 & 4
+\end{pmatrix}$，求方程组的通解，并确定集合 $\mathcal{L} = \{ l_v \mid v \in \mathbb{R}^n, v \neq 0 \}$。
+
+(2) 证明：对于任意给定的矩阵 $A$，集合 $\mathcal{L}$ 是非空的有限集。
+若将上述指数定义中的$1$-范数换作其它任意一个 $\mathbb{R}^n$ 中的范数，
+集合 $\mathcal{L}$ 的确定是否会随之变化？论证你的结论。
+
+7. (本题满分16分)
+本题共有2小题，第1小题满分8分，第2小题满分8分。
+
+已知线性微分方程组：
+\[
+\dot{x} = -p(t)y, \quad \dot{y} = q(t)x
+\]
+其中 $p(t), q(t)$ 是 $[0, +\infty)$ 上的非常值连续函数。记 $z(t) = [x(t), y(t)]^T$。$A(t)$ 为方程组的系数矩阵，$z(0) = z_0 \in \mathbb{R}^2$ 为方程组的初值条件。
+
+(1) 证明：存在 $z_0 \neq 0$ 成立 $z(t) \to 0 \ (t \to +\infty)$。
+
+(2) 若 $p(t) \equiv q(t)$，则 $\xi(t) \triangleq \exp\left(\int_0^t A(s)ds\right)z_0$ 是否是方程组的解？论证你的结论。
+
+8. （本题满分18分）
+本题共有3小题，第1小题满分5分，第2小题满分5分，第3小题满分8分。
+
+已知 $n$ 阶实系数线性方程组 $\dot{x} = Ax + f(t)$，其中 $A$ 是 $n$ 阶常方阵，$f(t): \mathbb{R} \to \mathbb{R}^n$ 是连续的向量值函数。
+
+(1) 设 $f(t)$ 是以 $\omega > 0$ 为周期的周期函数，$\varphi(t)$ 是方程组的解，证明：$\varphi(t)$ 是以 $\omega$ 为周期的周期解的充要条件是 $\varphi(0) = \varphi(\omega)$。
+
+(2) 在上小题的条件下，若 $A$ 的所有特征值均满足 $\lambda \neq \dfrac{2k\pi i}{\omega}$ ($k \in \mathbb{Z}$，$i$ 为虚数单位)，则方程组是否存在唯一的周期解？论证你的结论。
+
+(3) 设 $f(t) = B(t)x(t)$ 且 $\lim\limits_{t \to +\infty} \|B(t)\| = 0$。当矩阵 $A$ 特征值满足什么条件时，该条件成为方程组一切解有界的充要条件？论证你的结论。
+
+\section{23--24年平时测验试卷（林伟）}
+\textbf{一、\ 解下列各微分方程（组）（本大题满分 60 分）本大题共有 6 题，每题满分 10 分。}
+\begin{enumerate}
+\item $\dfrac{{\rm d}^{4}x}{\mathrm{d}t^{4}}=x+a_{3}t^{3}+a_{2}t^{2}+a_{1}t+a_{0}$，其中 $a_{0}, a_{1}, a_{2}, a_{3} \in \mathbb{R}$。
+\item $(axy) {\rm d}x+(x^{2}+y^{2}-1) {\rm d}y=0$，其中 $a \in \mathbb{R}, a \neq 0$。
+\item $\begin{cases}\dfrac{{\rm d} x}{{\rm d}t}=\dfrac{t(x^{2}+y^{2})}{y}, \\ 
+\dfrac{{\rm d}y}{{\rm d}t}=\dfrac{t(x^{2}+y^{2})}{x}.\end{cases}$
+\item $\dfrac{{\rm d}^{3}x}{{\rm d}t^{3}}+\dfrac{1}{t}\dfrac{{\rm d}^{2}x}{{\rm d}t^{2}}-\dfrac{4}{t^{2}}\dfrac{{\rm d}x}{{\rm d}t}=\dfrac{3}{t}$.
+\item $\displaystyle x=t\Bigg(\frac{{\rm d}x}{{\rm d}t}+\sqrt{1+\left(\frac{{\rm d}x}{{\rm d}t}\right)^{2}}\Bigg)$.
+\item $\displaystyle x+t\frac{{\rm d}x}{{\rm d}t}=\frac{tx-3}{t-1}+\tan\left(\frac{tx-3t}{t-1}\right)$。[答案未必表示为 $x=x(t)$ 的显式形式.]
+\end{enumerate}
+\textbf{二、\ 解答题（本大题满分 40 分）本大题共有 3 题，解答下列各题并写出必要的步骤。}
+\begin{enumerate}\setcounter{enum-{list-level}}{6}
+\item \textbf{（本题满分 12 分）本题共有 2 个小题，第 1 小题满分 6 分，第 2 小题满分 6 分。}
+
+设 $g(t)$ 是以 $T \in \mathbb{R}^{+}$为周期的连续函数，考虑以下非齐次线性方程：
+$$\frac{{\rm d}x}{{\rm d}t}=-x+g(t).$$
+（1）证明：若这个方程有解 $\varphi(t)$，且满足 $\varphi(T)=\varphi(0)$，则 $\varphi(t)$ 是以 $T$ 为周期的周期函数；
+
+（2）试给出一个使（1）中的周期解 $\varphi(t)$ 唯一存在的充分条件，并说明理由。
+
+\item \textbf{（本题满分 14 分）本题共有 2 个小题，第 1 小题满分 6 分，第 2 小题满分 8 分。}
+
+考虑微分方程 $\dfrac{{\rm d}x}{\mathrm{d}t}+ax=f(t)$，其中 $a \in \mathbb{R}$，$f(t)$ 为 $[0,+\infty)$ 上的连续函数，试证明：
+
+（1）当 $a=1$，且 $f(t)$ 有界时，微分方程一切解 $x=x(t)$ 均在 $[0,+\infty)$ 上有界；
+
+（2）当 $a>0$，且 $\lim\limits_{t \rightarrow+\infty} f(t)=b \in \mathbb{R}$ 时，
+微分方程一切解 $x=x(t)$ 均有 $\lim\limits_{t \rightarrow+\infty} x(t)=\dfrac{b}{a}$。
+
+\item \textbf{（本题满分 14 分）本题共有 3 个小题，第 1 小题满分 4 分，第 2 小题满分 4 分，第 3 小题满分 6 分。}
+
+微分方程的具体形式通常反映了系统的结构特征。例如，单变量一阶线性常微分方程 $\dfrac{{\rm d}x}{{\rm d}t}=ax, a \in \mathbb{R}$ 与系统结构有如下对应关系，
+\begin{enumerate}[label=(\roman*)]
+\item $a>0 \Leftrightarrow \textcircled{x} \leftarrow \textcircled{x}$；\\
+\item $a<0 \Leftrightarrow \textcircled{x} \ \vdash\, \textcircled{x}$；\\
+\item $a=0 \Leftrightarrow \textcircled{x} \ \ \quad \textcircled{x}$。
+\end{enumerate}
+这样的关系可以自然地推广至由多变量线性常微分方程组描述的系统。现考虑方程组
+$$\begin{cases}
+\dfrac{{\rm d}x}{{\rm d}t}=ay, \\ \\
+\dfrac{{\rm d}y}{{\rm d}t}=bx+cy,
+\end{cases} \quad(a, b, c \in \mathbb{R},\ ab \neq 0).$$
+（1）证明：若方程组的一切解 $(x(t),y(t))$ 均满足 $\lim\limits_{t \rightarrow+\infty}(x(t),y(t))=(0,0)$，
+则系统必有``$\textcircled{y}\vdash\textcircled{y}$''结构；
+
+（2）证明：若方程组除零解外的一切解在 $t \in(0,+\infty)$ 均无界，
+则系统必有``$\textcircled{y}\leftarrow\textcircled{y}$''结构；
+
+（3）画出所有能使方程组存在非常值周期解的系统结构，并说明理由。
+\end{enumerate}
+
+\section{平时测验试卷（林伟）（年份未知）}
+
+一、计算题（本大题满分60分）
+本大题共有6题，每题满分10分，写出必要的计算过程。
+
+\begin{enumerate}
+    \item 解微分方程：$(t^2 - 1)\dot{x}- 2tx = \dfrac{t}{x}$
+    
+    \item 解微分方程：$y^2dx + (e^x - y)dy = 0$
+
+    \item 解微分方程：$2t\dot{x}-x=\ln\dot{x}$
+    
+    \item 解微分方程：$\ddot{x}-2\dfrac{\dot{x}}{t}+\dfrac{x}{t^2}=\ln t$
+    
+    \item 解微分方程：$t\dot{x}-(2t+1)x+x^2=-t^2$
+    
+    \item 解微分方程：$\dfrac{dx(t)}{dt} = x(\pi - t)$
+    
+\end{enumerate}
+
+二、解答题（本大题满分40分）
+本大题共有3题，解答下列各题必须写出必要的步骤。
+
+7（本题满分12分）
+设函数 $\varphi(t)$ 在 $t \geq 0$ 上连续，$\varphi'(0)$ 存在，且对于任意的 $s, t \geq 0$ 成立
+\[
+\varphi(t + s) = \frac{\varphi(t) + \varphi(s)}{1 - \varphi(t)\varphi(s)}
+\]
+试确定 $\varphi(t)$。
+
+8（本题满分14分）
+已知微分方程 $\dot{x} + ax = f(t)$，其中 $a$ 为非零参数，$f(t)$ 是 $-\infty < t < +\infty$ 连续的周期为$1$的非常值周期函数。
+
+(1) 求上述微分方程在 $-\infty < t < +\infty$ 上的周期解。
+
+(2) 除上述周期解外，上述微分方程是否还有 $-\infty < t < +\infty$ 上的有界解？论证你的结论。
+
+9. （本题满分14分）
+已知微分方程 $\dot{x} = p(t, x)$，并设 $x = \psi(t)$ 是此微分方程满足初值条件 $\psi(0) = x_0$ 的特解。
+
+A) 设 $p(t, x) = \sin x$，分别画出 $x_0 = 0$ 时和 $x_0 = \dfrac{\pi}{2}$ 对应解 $\psi(t)$ 的大致积分曲线图。
+
+B) 设 $p(t, x) = p(t) \sin x$，其中 $p(t)$ 为连续函数，且 $x_0 = 0$，则特解 $\psi(t) \equiv 0$ 是否一定成立？试论证你的结论。

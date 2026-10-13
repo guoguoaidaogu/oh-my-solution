@@ -1,0 +1,930 @@
+\setdisplaytitle{试卷：解析几何}
+\sethtmltitle{试卷：解析几何}
+\newcommand{\e}{\mathbf{e}}
+\newcommand{\bs}{\mathbf{S}}
+
+\begin{center}
+    \textsize{24pt}{复旦大学数学科学学院\\
+    2025$\sim$2026学年第一学期期末考试试卷\\
+    $\square$ $\text{A}$ 卷} 
+\end{center}
+
+\textbf{一、\ \ 必做题(每题11分，共55分)}
+
+\qquad 以下，如果没有特殊说明, $[O;\e_1,\e_2]$指平面右手直角坐标系, 
+$[O;\e_1,\e_2,\e_3]$指空间右手直角坐标系.
+\begin{itemize}
+    \item[1.] 设$\mathbf{a},\mathbf{b},\mathbf{c}$是空间中三个向量.
+    \begin{itemize}
+        \item[(a)] 求证: $\mathbf{a}\times (\mathbf{b}\times\mathbf{c})=(\mathbf{a}\cdot\mathbf{c})\mathbf{b}-(\mathbf{a}\cdot\mathbf{b})\mathbf{c}$.
+        \item[(b)] 在什么条件下, $\mathbf{a}\times (\mathbf{b}\times\mathbf{c})=(\mathbf{a}\times \mathbf{b})\times\mathbf{c}$成立?证明你的结论.
+    \end{itemize}
+    \item[2.] 设$l,m$为空间中的两条直线,在$[O;\e_1,\e_2,\e_3]$下的方程分别为
+    $\frac{x_1+1}{2}=\frac{x_2-3}{3}=\frac{x_3-1}{4}$和$\frac{x_1+2}{0}=\frac{x_2-1}{1}=\frac{x_3-3}{1}$.
+    \begin{itemize}
+        \item[(a)] 证明: $l,m$为异面直线.
+        \item[(b)] 证明: $l,m$的公垂线存在且唯一.
+        \item[(c)] 求$l,m$之间的距离.
+    \end{itemize}
+    \item[3.] 设二次曲线$\gamma$在$[O;\e_1,\e_2]$下的方程为\[(x+2y-1)(2y+\lambda x+1)=1,\] 
+    其中$\lambda$为参数.
+    \begin{itemize}
+        \item[(a)] 判断$\gamma$的类型.
+        \item[(b)] 当$\lambda=1$时, $\gamma$是否为轴对称图形?若是, 求$\gamma$的对称轴的方程.
+    \end{itemize}
+    \item[4.] 证明: 空间中的曲面$\Gamma$是柱面, 当且仅当$\Gamma$在某个单参数平移变换群的作用下保持不变.
+    \item[5.] 证明:
+    \begin{itemize}
+        \item[(a)]设$P_1,P_2,P_3$和$Q_1,Q_2,Q_3$是平面上不共线的两组点,则存在唯一的仿射变换$\sigma$,使得$\sigma(P_i)=Q_i$对$i=1,2,3$成立.
+        \item[(b)]设$P_1,P_2,P_3,P_4$和$Q_1,Q_2,Q_3,Q_4$是射影平面上处于一般位置的两组点
+        (也就是说,点列$P_1,P_2,P_3,P_4$中的任意三个点均不共线, $Q_1,Q_2,Q_3,Q_4$亦然),则存在唯一的射影变换$\sigma$, 使得$\sigma(P_i)=Q_i$对$i=1,2,3,4$成立.
+    \end{itemize}
+\end{itemize}
+
+\textbf{二、\ \ 选做题(从以下六小题中选择三题作答,第6题和11题至多只能选择一题,每题15分,共45分)}
+\begin{itemize}
+    \item[6.] 数学家M. Klein说：``数学是一种理性的精神，
+    使人类的思维得以运用到最完善的程度。''你认同他关于数学本质的观点吗？请论述理由。
+    \item[7.] 如图,已知$\triangle ABC$,边$AB$与$AC$不相等.过$A$作$\angle A$的角平分线,过$BC$ 的中点$D$作$BC$的垂线,两条直线交于$O$点.再过$O$作$AB,AC$的垂线,其垂足分别为$E, F$.
+    则根据“角角边”定理得$\triangle AEO\cong\triangle AFO$,因此$OE$与$OF$相等.根据“边角边”定理得$\triangle OBD\cong\triangle OCD$,因此$OB$与$OC$相等.
+    考察直角三角形 $\triangle OBE$和$\triangle OCF$,由于它们的斜边相等,其中一条对应的直角边也相等,故 $\triangle OBE\cong\triangle OCF$.最后,由于$AE$与$AF$相等, $BE$与$CF$相等,
+    即可推出$AB$与$AC$相等.这是一个荒谬的结论.
+    \begin{tikzpicture}[scale=1.3]
+        \coordinate (B) at (-2.5,0);
+        \coordinate (C) at (2.5,0);
+        \coordinate (A) at (-0.5,3.5);
+        \coordinate (D) at (0,0);
+        \coordinate (O) at (0,0.8);
+        \coordinate (E) at (-1.45, 1.52);
+        \coordinate (F) at (0.93, 1.6);
+        \draw (A) node[above] {$A$} -- (B) node[below left] {$B$} -- (C) node[below right] {$C$} -- cycle;
+        \draw (A) -- (O) node[right=2pt, below] {$O$};
+        \draw[dashed] (O) -- (D) node[below] {$D$};
+        \draw[dashed] (O) -- (E) node[left] {$E$};
+        \draw[dashed] (O) -- (F) node[right] {$F$};
+        \draw (O) -- (B);
+        \draw (O) -- (C);
+        \node at (-0.4, 2.2) {I};
+        \node at (0.2, 2.2) {I};
+        \node at (-1.5, 0.6) {II};
+        \node at (1.5, 0.6) {II};
+        \node at (-0.8, 0.25) {III};
+        \node at (0.8, 0.25) {III};
+        \draw (0.15,0) -- (0.15,0.15) -- (0,0.15);
+        \draw[rotate around={60:(E)}] (E) rectangle +(0.15,0.15);
+        \draw[rotate around={-51:(F)}] (F) rectangle +(-0.15,0.15);
+    \end{tikzpicture}
+    请指出上述论证的错误之处, 并证明你的结论.
+    \item[8.] 设椭球面$S$在$[O;\e_1,\e_2,\e_3]$下的方程为$\frac{x_1^2}{a^2}+\frac{x_2^2}{b^2}+\frac{x_3^2}{c^2}=1(a>b>c>0)$.
+     $P,Q$是$S$内部的两个点, $\alpha$和$\beta$分别是过$P,Q$的平面, 与$S$的交线分别为$\gamma_1$和$\gamma_2$.
+    \begin{itemize}
+        \item[(a)] 判断下列命题是否正确: “若$\alpha\parallel\beta$, 则$\gamma_1$为圆当且仅当$\gamma_2$为圆”.证明你的结论.
+        \item[(b)] 当$\gamma_1$为圆时, 求$\alpha$的法向量.
+    \end{itemize}
+    \item[9.] 设$\gamma$是平面上给定的一个椭圆,
+    $$G=\{\sigma\text{ 是平面上的仿射变换}: \sigma(\gamma)=\gamma\}.$$
+    \begin{itemize}
+        \item[(a)] 证明: $G$是一个群.
+        \item[(b)] 设$P,Q$是$\gamma$上的两个点. 存在多少个$G$中的变换, 把$P$映为$Q$?证明你的结论.
+    \end{itemize}
+    \item[10.] 
+    \begin{itemize}
+        \item[(a)] 证明:设直线$a$与$\triangle ABC$三边所在直线$BC,AC,AB$分别交于$D,E,F$点,且三点都不与
+        顶点$A,B,C$重合,则$\frac{|AF|}{|FB|}\cdot\frac{|BD|}{|DC|}\cdot\frac{|CE|}{|EA|}=1$.
+        \item[(b)] 设$A,B,C$是射影平面上不共线的三点, $D,E,F$分别落在射影直线$BC,AC,AB$上,
+        且三点都不与$A,B,C$重合.试给出$D,E,F$三点共线的充要条件,并证明你的结论.
+    \end{itemize}
+    \item[11.] 非Euclid几何的产生在数学界引起了极大的震动.
+    有些数学家认为:真理具有唯一性;
+    如果我们承认``过直线外一点有且只有一条直线与已知直线不相交'',
+    就不能接受``过直线外一点有无穷多条直线与已知直线不相交'';
+    也就是说,如果Euclid几何是真理,非Euclid几何就不是真理.
+    另一些数学家认为:既然我们可以用模型论的方法证明,
+    如果Euclid几何的公理系统是相容的,则非Euclid几何的公理系统也是相容的，
+    那么Euclid几何和非Euclid几何都应该看作真理,
+    只不过它们是``可选择性''的真理.请论述你对此问题的观点和看法.
+\end{itemize}
+~\\
+
+
+
+
+\begin{center}
+    \textsize{24pt}{复旦大学数学科学学院\\
+    2023$\sim$2024学年第一学期期末考试试卷\\
+    $\square$ $\text{A}$ 卷} 
+\end{center}
+
+\textbf{一、\ \ 必做题（每题11分，共55分）}
+\begin{enumerate}
+    \item 设 $\boldsymbol{a}, \boldsymbol{b}$ 为空间中两个相互垂直的非零向量。
+    \begin{enumerate}
+        \item[(a)] 求证：存在唯一的向量 $\boldsymbol{x}$，使得 $\boldsymbol{a}\cdot \boldsymbol{x}=1, \boldsymbol{a}\times \boldsymbol{x}=\boldsymbol{b}$。
+        \item[(b)] 当 $\boldsymbol{a}=(1,-2,0), \boldsymbol{b}=(-2,-1,-3)$ 时，求 $\boldsymbol{x}$ 的坐标。
+    \end{enumerate}
+
+    \item 设四面体的 $4$ 个顶点 $A,B,C,D$ 的位置向量分别为 $\boldsymbol{a}, \boldsymbol{b}, \boldsymbol{c}, \boldsymbol{d}$。
+    \begin{enumerate}
+        \item[(a)] 求证：对于空间中的任意点 $P$，其位置向量为 $\boldsymbol{x}$，则存在唯一的有序实数组 $(\lambda_{1},\lambda_{2},\lambda_{3},\lambda_{4})$，满足
+        \[
+        \begin{cases}
+        \lambda_{1}+\lambda_{2}+\lambda_{3}+\lambda_{4}=1, \\
+        \boldsymbol{x}=\lambda_{1}\boldsymbol{a}+\lambda_{2}\boldsymbol{b}+\lambda_{3}\boldsymbol{c}+\lambda_{4}\boldsymbol{d}.
+        \end{cases}
+        \]
+        称 $(\lambda_{1},\lambda_{2},\lambda_{3},\lambda_{4})$ 为 $P$ 关于四面体 $ABCD$ 的重心坐标。
+        \item[(b)] 若四面体的四个面，即 $\triangle BCD, \triangle ACD, \triangle ABD, \triangle ABC$ 的面积分别为 $1, 2, 3, 4$，求它的内切球球心的重心坐标。
+    \end{enumerate}
+
+    \item 设二次曲线 $\gamma$ 在 $[O;\boldsymbol{e}_{1},\boldsymbol{e}_{2}]$ 下的方程为
+    \[ (x+3y-2)(2x-\lambda y-1)=1 \]
+    其中 $\lambda$ 为参数。
+    \begin{enumerate}
+        \item[(a)] 判断 $\gamma$ 的类型。
+        \item[(b)] 当 $\lambda=-6$ 时，$\gamma$ 是否是中心对称的？若是，求 $\gamma$ 的对称中心坐标。
+        \item[(c)] 当 $\lambda=2$ 时，$\gamma$ 是否是轴对称的？若是，求 $\gamma$ 的对称轴方向向量。
+    \end{enumerate}
+
+    \item 设 $\Gamma: \frac{x_{1}^{2}}{a^{2}}+\frac{x_{2}^{2}}{b^{2}}+\frac{x_{3}^{2}}{c^{2}}=1 \, (a>b>c>0)$ 为椭球面。
+    过原点是否存在平面 $\Sigma$，与 $\Gamma$ 的交截线为圆？如果存在，求平面 $\Sigma$ 的法向量。
+
+    \item 把四边形的任何一边向两端延长，其他各边都在其延长所得直线的同一侧，这样的四边形称为凸四边形。
+    \begin{enumerate}
+        \item[(a)] 求证：``凸四边形''是仿射概念，也就是说，仿射变换把凸四边形映为凸四边形。
+        \item[(b)] 所有凸四边形由哪些仿射等价类构成？证明你的结论。
+    \end{enumerate}
+    \end{enumerate}
+
+    \textbf{二、\ \ 选做题（从以下6题中选做3题，第6题和第11题至多只能选做1题，每题15分，共45分）}
+    \begin{enumerate}\setcounter{enum-{list-level}}{5}
+    \item 数学家M. Klein说：``数学是一种理性的精神，
+    使人类的思维得以运用到最完善的程度。''你认同他关于数学本质的观点吗？请论述理由。
+    \item 设 $k_1, k_2$ 是平面上从点 $O$ 出发的两条射线，它们不在同一条直线上。设 $\mathcal{L}$ 为所有从 $O$ 出发，且位于 $\angle(k_{1},k_{2})$ 内部的射线全体，$\mathcal{L}_{1},\mathcal{L}_{2}$ 为 $\mathcal{L}$ 的子集，满足：
+    \begin{itemize}
+        \item $\mathcal{L}_{1}\ne\emptyset, \mathcal{L}_{2}\ne\emptyset$;
+        \item $\mathcal{L}=\mathcal{L}_{1}\cup\mathcal{L}_{2}$;
+        \item 对任意 $l_1 \in \mathcal{L}_{1}, l_{2}\in\mathcal{L}_{2}$， $l_{1}$ 位于 $\angle(k_{1},l_{2})$ 的内部。
+    \end{itemize}
+    求证：存在 $\mathcal{L}$ 中唯一的射线 $m$，使得对任意 $l\in\mathcal{L}$，$l$ 在 $\angle(k_{1},m)$ 内部蕴涵 $l\in\mathcal{L}_{1}$，而在 $\angle(m,k_{2})$ 内部蕴涵 $l\in\mathcal{L}_{2}$。
+
+    \item 当 $T$ 为 $3$ 阶特殊正交阵（满足 $T^{t}T=I_{3}, |T|=1$），$v_{0}$ 为 $3$ 阶列向量时，形如
+    \[ \begin{pmatrix} T & v_{0} \\ \\ 0 & 1 \end{pmatrix} \]
+    的矩阵称为特殊 Euclid 矩阵。求证：
+    \begin{enumerate}
+        \item[(a)] 任意两个空间直角坐标系之间的过渡矩阵为特殊 Euclid 矩阵。
+        \item[(b)] 给定一个空间直角坐标系 $[O;\boldsymbol{e}_{1},\boldsymbol{e}_{2},\boldsymbol{e}_{3}]$ 以及特殊 Euclid 矩阵 $P$，
+        则存在唯一的空间直角坐标系 $[O^{\prime};\boldsymbol{f}_{\!1},\boldsymbol{f}_{\!2},\boldsymbol{f}_{\!3}]$ 
+        使得 $[O;\boldsymbol{e}_{1},\boldsymbol{e}_{2},\boldsymbol{e}_{3}]$ 和 $[O^{\prime};\boldsymbol{f}_{\!1},\boldsymbol{f}_{\!2},\boldsymbol{f}_{\!3}]$ 之间的过渡矩阵为 $P$。
+        \item[(c)] 所有的特殊 Euclid 矩阵构成一个群。
+    \end{enumerate}
+
+    \item 设 $l_{1},l_{2},l_{3},l_{4}$ 是平面上过点 $O$ 的 $4$ 条直线，与 $O$ 外的一条直线 $l$ 分别交于 $A,B,C,D$。求证：
+    \begin{enumerate}
+        \item[(a)] $l_{3},l_{4}$ 不被 $l_{1},l_{2}$ 所分离，当且仅当四条直线的交比 $(l_{1},l_{2}|l_{3},l_{4})>0$；
+        \item[(b)] $(l_{1},l_{2}|l_{3},l_{4})=\frac{(B,C,D)}{(A,C,D)}$，其中 $(\cdot,\cdot,\cdot)$ 表示共线点的分比；
+        \item[(c)] “共线点的交比”是仿射不变量。
+    \end{enumerate}
+
+    \item 设 $\gamma$ 是射影平面上的一条圆锥曲线，$P,Q,R$ 是 $\gamma$ 上的 $3$ 个点。判断“设 $\sigma$ 是射影平面上的射影变换，若 $\sigma(\gamma)=\gamma$，且 $P,Q,R$ 均为 $\sigma$ 的不动点，则 $\sigma$ 为恒等变换”这一命题是否正确，并证明你的结论。
+
+    \item 非Euclid几何的产生在数学界引起了极大的震动。
+    有些数学家认为：真理具有唯一性；
+    如果我们承认``过直线外一点有且仅有一条直线与已知直线不相交''，
+    就不能接受``过直线外一点有无穷多条直线与已知直线不相交''；
+    也就是说，如果Euclid几何是真理，非Euclid几何就不是真理。
+    另一些数学家认为：既然我们可以用模型论的方法证明，
+    如果Euclid几何的公理系统是相容的，则非Euclid几何的公理系统也是相容的，
+    那么Euclid几何和非Euclid几何都应该看作真理，
+    只不过它们是``可选择性''的真理。请论述你对此问题的观点和看法。
+\end{enumerate}
+~\\
+
+
+
+
+
+\begin{center}
+    \textsize{24pt}{复旦大学数学科学学院\\
+    2022$\sim$2023学年第一学期期末考试试卷\\
+    $\square$ $\text{A}$ 卷}
+
+    \textsize{22pt}{课程名称：\ \ $\underline{\qquad\ \ 解析几何\qquad\ \ }$课程代码：\ \ $\underline{\text{MATH120010}}$\\
+    开课院系：\ \ $\underline{\quad\ \ \,数学科学学院\quad\ \ }$考试形式：\ \ $\underline{\qquad闭卷\qquad\,}$\\
+    姓\ \ 名：\ $\underline{\qquad\quad\ \ \ }$\ \ \ 学\ \ 号：\ $\underline{\qquad\quad\ \ \ }$\ \ \ 专\ \ 业：\ $\underline{\qquad\qquad\quad\ \ \ \,}$}
+\end{center}
+
+\qquad 提示：请同学们秉持诚实守信宗旨，谨守考试纪律，摒弃考试作弊。
+学生如有违反学校考试纪律的行为，学校将按《复旦大学学生纪律处分条例》规定予以严肃处理。
+
+
+\textbf{一、\ \ 必做题（每题11分，共55分）}
+
+\qquad 以下，如果没有特殊说明，$[O; \mathbf{e}_1, \mathbf{e}_2]$ 指平面右手直角坐标系，$[O; \mathbf{e}_1, \mathbf{e}_2, \mathbf{e}_3]$ 指空间右手直角坐标系。
+
+\begin{enumerate}
+    \item 设点 $A, B$ 在 $[O; \mathbf{e}_1, \mathbf{e}_2, \mathbf{e}_3]$ 下的坐标分别为 $(1,-2,2)$ 和 $(3,-2,1)$，$B$ 绕 $\overrightarrow{OA}$ 逆时针 $\frac{\pi}{2}$ 旋转得到点 $C$。
+    \begin{enumerate}
+        \item[(a)] 求 $\angle AOB$。
+        \item[(b)] 求 $C$ 的坐标。
+    \end{enumerate}
+
+    \item 设直线 $l_1: \frac{x_1-2}{2} = \frac{x_2}{-1} = \frac{x_3}{-2}$， $l_2: \frac{x_1+3}{2} = \frac{x_2}{3} = \frac{x_3+2}{2}$。
+    \begin{enumerate}
+        \item[(a)] 求证：$l_1, l_2$ 是异面直线。
+        \item[(b)] 求 $l_1$ 和 $l_2$ 的公垂线的方程。
+        \item[(c)] 求 $l_1$ 和 $l_2$ 之间的距离。
+    \end{enumerate}
+
+    \item 设二次曲线 $\gamma$ 在 $[O; \mathbf{e}_1, \mathbf{e}_2]$ 下的方程为
+    \[ (x+3y-2)^2 + (2x-\lambda y -4)^2 = 1 \]
+    其中 $\lambda$ 为参数。
+    \begin{enumerate}
+        \item[(a)] 判断 $\gamma$ 的类型。
+        \item[(b)] 当 $\lambda=2$ 时，求 $\gamma$ 的对称中心的坐标。
+        \item[(c)] 若 $\gamma$ 为一对平行直线，求它们之间的距离。
+    \end{enumerate}
+
+    \item 如果直线 $l$ 与曲面 $\Sigma$ 不相交，但当动点 $P$ 沿直线 $l$ 无限远离原点时，$P$ 和 $\Sigma$ 的距离趋近于 $0$，则称 $l$ 为 $\Sigma$ 的渐近线。
+    现设 $\Sigma: \frac{x_1^2}{a^2} + \frac{x_2^2}{b^2} - \frac{x_3^2}{c^2} = -1$ 为双叶双曲面，则过原点的所有渐近线构成一张曲面 $C$，称为 $\Sigma$ 的渐近锥面。
+    \begin{enumerate}
+        \item[(a)] 求 $C$ 的方程。
+        \item[(b)] 在什么条件下 $C$ 为圆锥面？证明你的结论。
+    \end{enumerate}
+
+    \item 与抛物线的对称轴平行的直线称为抛物线的直径。求证：若仿射变换 $\sigma$ 把抛物线 $\gamma_1$ 映为抛物线 $\gamma_2$，并且 $l$ 为 $\gamma_1$ 的直径，则 $\sigma(l)$ 为 $\gamma_2$ 的直径。
+\end{enumerate}
+
+\textbf{二、\ \ 选做题（从以下6题中选做3题，第6题和第11题至多只能选做1题，每题15分，共45分）}
+
+\begin{enumerate}\setcounter{enum-{list-level}}{5}
+    
+    \item 数学家 M. Klein 说：“数学是一种理性的精神，使人类的思维得以运用到最完善的程度。”你认同他关于数学本质的观点吗？请论述理由。
+
+    \item 求证：
+    \begin{enumerate}
+        \item[(a)] 给定 $\triangle ABC$ 和 $\triangle A'B'C'$，若 $\angle A = \angle A'$, $\angle B = \angle B'$，则 $\frac{|AB|}{|AC|} = \frac{|A'B'|}{|A'C'|}$。
+        \item[(b)] 对任意向量 $\mathbf{a}, \mathbf{b}$ 和实数 $\lambda$，有 $\lambda(\mathbf{a}+\mathbf{b}) = \lambda \mathbf{a} + \lambda \mathbf{b}$。
+    \end{enumerate}
+
+    \item 求椭球面 $\Sigma: \frac{x_1^2}{a^2} + \frac{x_2^2}{b^2} + \frac{x_3^2}{c^2} = 1$ 的外切正方体的边长。
+
+    \item 平面上保持任意三角形面积不变的仿射变换称为等积仿射变换，判断下列命题是否成立并证明你的结论。
+    \begin{enumerate}
+        \item[(a)] 平面上的所有等积仿射变换构成一个群。
+        \item[(b)] 设 $\sigma$ 为等积仿射变换，$\gamma$ 为一条直角双曲线，则 $\sigma(\gamma)$ 仍为直角双曲线。
+        \item[(c)] 设 $\gamma$ 为一条给定的直角双曲线，若仿射变换 $\tau$ 满足 $\tau(\gamma)=\gamma$，则 $\tau$ 为等积仿射变换。
+    \end{enumerate}
+
+    \item 设 $\bar{l}_1, \bar{l}_2, \bar{l}_3, \bar{l}_4$ 是射影平面上通过给定点 $P$ 的射影直线束，
+    $\bar{m}$ 是不通过 $P$ 的射影直线，与 $\bar{l}_i$ 交于 $Q_i$ 点 $(i=1,2,3,4)$。
+    定义线束 $\bar{l}_1, \bar{l}_2, \bar{l}_3, \bar{l}_4$ 的交比为点列 $Q_1, Q_2, Q_3, Q_4$ 的交比，即
+    \[ (\bar{l}_1, \bar{l}_2 | \bar{l}_3, \bar{l}_4) = (Q_1, Q_2 | Q_3, Q_4). \]
+    求证：
+    \begin{enumerate}
+        \item[(a)] 上述定义与 $\bar{m}$ 的选取无关。
+        \item[(b)] 设 $A_1, A_2, A_3, A_4, B, C$ 是椭圆$\gamma$上的 $6$ 个点，
+        则线束 $BA_1, BA_2, BA_3, BA_4$ 的交比与线束 $CA_1, CA_2, CA_3, CA_4$ 的交比相等。
+    \end{enumerate}
+
+    \item 非 Euclid 几何的产生在数学界引起了极大的震动。
+    有些数学家认为：真理具有唯一性；
+    如果我们承认“过直线外一点有且仅有一条直线与已知直线不相交”，
+    就不能接受“过直线外一点有无穷多条直线与已知直线不相交”；
+    也就是说，如果 Euclid 几何是真理，非 Euclid 几何就不是真理。
+    另一些数学家认为：既然我们可以用模型论的方法证明，
+    如果 Euclid 几何的公理系统是相容的，则非 Euclid 几何的公理系统也是相容的，
+    那么 Euclid 几何和非 Euclid 几何都应该看作真理，只不过它们是“可选择性”的真理。
+    请论述你对此问题的观点和看法。
+\end{enumerate}
+~\\
+
+\begin{center}
+    \textsize{24pt}{复旦大学数学科学学院\\
+    2021$\sim$2022学年第一学期期末考试试卷\\
+    $\square$ $\text{A}$ 卷}
+
+    \textsize{22pt}{课程名称：\ \ $\underline{\qquad\ \ 解析几何\qquad\ \ }$课程代码：\ \ $\underline{\text{MATH120010}}$\\
+    开课院系：\ \ $\underline{\quad\ \ \,数学科学学院\quad\ \ }$考试形式：\ \ $\underline{\qquad闭卷\qquad\,}$\\
+    姓\ \ 名：\ $\underline{\qquad\quad\ \ \ }$\ \ \ 学\ \ 号：\ $\underline{\qquad\quad\ \ \ }$\ \ \ 专\ \ 业：\ $\underline{\qquad\qquad\quad\ \ \ \,}$}
+\end{center}
+
+\qquad 提示：请同学们秉持诚实守信宗旨，谨守考试纪律，摒弃考试作弊。
+学生如有违反学校考试纪律的行为，学校将按《复旦大学学生纪律处分条例》规定予以严肃处理。
+
+\begin{table}
+\begin{tabular}{|c|c|c|c|}
+题\ \ 目 &\quad$1$\quad&\quad$2$\quad&\quad$3$\quad&\quad$4$\quad&\quad$5$\quad&\quad$6$\quad\\
+得\ \ 分 & & & & & & \\
+题\ \ 目 &\quad$7$\quad&\quad$8$\quad&\quad$9$\quad&\ \ \ $10$\ \ \ &\ \ \ $11$\ \ \ &\ \ 总分\ \ \\
+得\ \ 分 & & & & & & 
+\end{tabular}
+\end{table}
+
+\textbf{一、\ \ 必做题(每题11分，共55分)}
+
+\qquad 以下，如果没有特殊说明，$[O;\e_1,\e_2]$指平面右手直角坐标系，
+$[O;\e_1,\e_2,\e_3]$指空间右手直角坐标系。
+\begin{itemize}
+    \item[1.] 设向量$\mathbf{a},\mathbf{b},\mathbf{c}$
+    在坐标系$[O;\e_1,\e_2,\e_3]$下的坐标
+    分别为$(1,0,-2)$, $(-1,2,2)$和$(3,4,0)$。
+    \begin{itemize}
+        \item[(a)] 求$\mathbf{a}$关于$\mathbf{b}$的内射影和外射影的坐标。
+        \item[(b)] 求$\mathbf{a},\mathbf{b},\mathbf{c}$的混合积。
+    \end{itemize}
+    \item[2.] 设直线$l_1:\frac{x_1-1}{2}=\frac{x_2+1}{1}=\frac{x_3-3}{-2}$，
+    $l_2:\frac{x_1+1}{3}=\frac{x_2-2}{0}=\frac{x_3+1}{-4}$，$P:(-2,5,1)$。
+    \begin{itemize}
+        \item[(a)] 求证：过$P$点存在唯一一条直线$l$，与$l_1,l_2$均相交。
+        \item[(b)] 求$l$与$l_1$的交点的坐标。
+    \end{itemize}
+    \item[3.] 设二次曲线$\gamma$的方程为
+    \[(x+2y-3)^2+2x-\lambda y+4=0,\]
+    其中$\lambda$为参数。
+    \begin{itemize}
+        \item[(a)] 判断$\gamma$的类型。
+        \item[(b)] 若$\gamma$为抛物线，求$\gamma$的对称轴的方向向量。
+    \end{itemize}
+    \item[4.] 求证：$\Gamma$是旋转曲面，当且仅当存在坐标系$[O;\e_1,\e_2,\e_3]$，
+    使得$\Gamma$在此坐标系下的方程为$G(\sqrt{x_1^2+x_2^2},x_3)=0$，
+    其中$G$是定义在半平面$\{(x,y):x\ge0\}$上的二元函数。
+    \item[5.] 求证：平面上的所有双曲线构成一个仿射等价类。
+\end{itemize}
+\textbf{二、\ \ 选做题(从以下6题中选做3题(第6题和第11题至多只能选做1题)，每题15分，共45分)}
+\begin{itemize}
+    \item[6.] 数学家M. Klein说：``数学是一种理性的精神，
+    使人类的思维得以运用到最完善的程度。''你认同他关于数学本质的观点吗？请论述理由。
+    \item[7.] 求证：
+    \begin{itemize}
+        \item[(a)] 四面体的任三个面的面积之和大于第四个面的面积。
+        \item[(b)] 设$S_1,S_2,S_3,S_4$是四个正数，任意三个数之和大于第四个数，
+        则存在四面体，使得它的四个面的面积分别为$S_1,S_2,S_3,S_4$。
+    \end{itemize}
+    \item[8.] 已知单叶双曲面$\Gamma:\frac{x_1^2}{a^2}+\frac{x_2^2}{b^2}
+    -\frac{x_3^2}{c^2}=1$，其中$a>b>c>0$.
+    \begin{itemize}
+        \item[(a)] $\Gamma$与平面的交线是什么类型的二次曲线？证明你的结论。
+        \item[(b)] 设$\alpha$是通过原点的平面，
+        $\Gamma$与$\alpha$的交线是一个圆，求$\alpha$的法向量。
+    \end{itemize}
+    \item[9.] $P$点在$\triangle ABC$内部。当$P$满足什么条件时，
+    存在平面上的仿射变换$\sigma$，使得$P'$是$\triangle A'B'C'$的内心？
+    这里$A'=\sigma(A),B'=\sigma(B),C'=\sigma(C),P'=\sigma(P)$。
+    \item[10.] 给定平面上的$4$个点，当这$4$个点满足什么条件时，
+    存在通过这$4$个点的抛物线？这样的抛物线是否唯一？证明你的结论。
+    \item[11.] 非Euclid几何的产生在数学界引起了极大的震动。
+    有些数学家认为：真理具有唯一性；
+    如果我们承认``过直线外一点有且仅有一条直线与已知直线不相交''，
+    就不能接受``过直线外一点有无穷多条直线与已知直线不相交''；
+    也就是说，如果Euclid几何是真理，非Euclid几何就不是真理。
+    另一些数学家认为：既然我们可以用模型论的方法证明，
+    如果Euclid几何的公理系统是相容的，则非Euclid几何的公理系统也是相容的，
+    那么Euclid几何和非Euclid几何都应该看作真理，
+    只不过它们是``可选择性''的真理。请论述你对此问题的观点和看法。
+\end{itemize}
+~\\
+
+\begin{center}
+    \textsize{24pt}{复旦大学数学科学学院\\
+    2020$\sim$2021学年第一学期期末考试试卷\\
+    $\square$ $\text{A}$ 卷}
+
+    \textsize{22pt}{课程名称：\ \ $\underline{\qquad\ \ 解析几何\qquad\ \ }$课程代码：\ \ $\underline{\text{MATH120010}}$\\
+    开课院系：\ \ $\underline{\quad\ \ \,数学科学学院\quad\ \ }$考试形式：\ \ $\underline{\qquad闭卷\qquad\,}$\\
+    姓\ \ 名：\ $\underline{\qquad\quad\ \ \ }$\ \ \ 学\ \ 号：\ $\underline{\qquad\quad\ \ \ }$\ \ \ 专\ \ 业：\ $\underline{\qquad\qquad\quad\ \ \ \,}$}
+\end{center}
+
+\qquad 提示：请同学们秉持诚实守信宗旨，谨守考试纪律，摒弃考试作弊。
+学生如有违反学校考试纪律的行为，学校将按《复旦大学学生纪律处分条例》规定予以严肃处理。
+
+\begin{table}
+\begin{tabular}{|c|c|c|c|}
+题\ \ 目 &\quad$1$\quad&\quad$2$\quad&\quad$3$\quad&\quad$4$\quad&\quad$5$\quad&\quad$6$\quad\\
+得\ \ 分 & & & & & & \\
+题\ \ 目 &\quad$7$\quad&\quad$8$\quad&\quad$9$\quad&\ \ \ $10$\ \ \ &\ \ \ $11$\ \ \ &\ \ 总分\ \ \\
+得\ \ 分 & & & & & & 
+\end{tabular}
+\end{table}
+
+\textbf{一、\ \ 必做题(共55分)}
+\begin{itemize}
+    \item[1.] (10分) 设向量$\mathbf{a},\mathbf{b}$
+    在空间右手直角坐标系$[O;\e_1,\e_2,\e_3]$下的坐标分别为$(1,2,2)$和$(2,-1,-2)$，
+    向量$\mathbf{c}$的长度为$5$，与$\mathbf{a},\mathbf{b}$的夹角
+    分别为$\arccos(-1/3)$和$\arccos(2/3)$，
+    求$(\mathbf{a}\times\mathbf{b})\times\mathbf{c}$。
+    \item[2.] (10分) 设直线$l$在空间右手直角坐标系$[O;\e_1,\e_2,\e_3]$下的普通方程为
+    \begin{equation*}\left\{\begin{aligned}
+        3x_1+x_2-x_3&=4\\x_1-2x_2+2x_3&=-1
+    \end{aligned}\right.\end{equation*}
+    平面$\alpha$的普通方程为$\lambda x_2+x_3=-2$ (其中$\lambda$为参数)。
+    则当$\lambda$取何值时，$l$与$\alpha$平行？并求出$l$与$\alpha$之间的距离。
+    \item[3.] (14分) 设二次曲线$\gamma$在平面直角坐标系$[O;\e_1,\e_2]$下的方程为
+    \[(x-y)^2+x+\lambda y-1=0,\]
+    其中$\lambda$为参数。
+    \begin{itemize}
+        \item[(a)] 判断$\gamma$的类型；
+        \item[(b)] 当$\lambda=2$时，求$\gamma$的对称轴的方程。
+    \end{itemize}
+    \item[4.] (9分) 给定双曲抛物面$\Gamma$，是否存在$\Gamma$的$3$条直母线
+    均与某一平面平行？如果存在，平面的法向量是什么？证明你的结论。
+    \item[5.] (12分) 设$A,B,C,D$为平面上某一梯形的$4$个顶点，记
+    \[G=\{\sigma\text{ 为平面上的仿射变换}:
+    \{\sigma(A),\sigma(B),\sigma(C),\sigma(D)\}=\{A,B,C,D\}\}.\]
+    \begin{itemize}
+        \item[(a)] 求证：$G$是一个群；
+        \item[(b)] 求$G$中的元素个数。
+    \end{itemize}
+\end{itemize}
+二、\ \ 选做题(从以下6小题中选做3题(第6题和第11题至多只能选做1题)，每题15分，共45分)
+\begin{itemize}
+    \item[6.] 古希腊思想家Plato说：``哲学家也要学数学，
+    因为他必须跳出浩如烟海的万变现象而抓住真正的实质，
+    又因为这是使灵魂过渡到真理和永存的捷径。''
+    \footnote{上传者注：这并非Plato的原话，最为接近的是其在《理想国》第七卷的以下论述：
+    （Plato, \textit{Rep}. VII.525b-c; Cf. \textit{The Republic of Plato}, 
+    trans. by Allan Bloom, Basic Books, 1991, p.204)\\
+        \quad (It's necessary) for a philosopher 
+        (to learn the arts of calculation and number) 
+        because he must rise up out of becoming 
+        and take hold of being or else never become skilled at calculating.
+        $\cdots$ (Then it would be fitting) to persuade those 
+        who are going to participate in the greatest things in the city 
+        to go to calculation and to take it up $\cdots$ to stay with it 
+        until they come to the contemplation of the nature of numbers 
+        with intellection itself, $\cdots$ for ease of 
+        turning the soul itself around from becoming to truth and being.}
+    你是否赞同这种观点？请阐述理由。
+    \printfootnotes
+    \item[7.] 空间三角形$ABC$的有向面积定义为$\bs_{\triangle ABC}
+    =\frac{1}{2}\overrightarrow{AB}\times\overrightarrow{AC}$。
+    \begin{itemize}
+        \item[(a)] 求证：对四面体$OABC$，有$\bs_{\triangle ABC}
+        =\bs_{\triangle OAB}+\bs_{\triangle OBC}+\bs_{\triangle OCA}$。
+        \item[(b)] 设$\bs_1,\bs_2,\bs_3,\bs_4$为空间中的$4$个向量，
+        其中任意$2$个向量均不平行，并且$\bs_1=\bs_2+\bs_3+\bs_4$。
+        是否存在四面体$OABC$，使得$\bs_{\triangle ABC}=\bs_1$，
+        $\bs_{\triangle OAB}=\bs_2$，$\bs_{\triangle OBC}=\bs_3$，
+        $\bs_{\triangle OCA}=\bs_4$？证明你的结论。
+    \end{itemize}
+    \item[8.] 椭球面$\frac{x_1^2}{a^2}+\frac{x_2^2}{b^2}+\frac{x_3^2}{c^2}=1
+    \big(0<a<b<c\big)$的外切柱面$\Gamma$为圆柱面，求$\Gamma$的直母线的方向向量和半径。
+    \item[9.] 过平面上处于一般位置的$5$个点（也就是说，其中任意$3$个点都不共线）
+    的圆锥曲线是否唯一存在？证明你的结论。
+    \item[10.] 设$ABCD$是圆内接四边形，射影直线$AB$与$CD$交于$E$点，
+    射影直线$AD$与$BC$交于$F$点，过$A$的切线与过$C$的切线交于$G$点。
+    求证：$E,F,G$在一条射影直线上，并且这条射影直线与圆相离。
+    \item[11.] 非Euclid几何的产生在数学界引起了极大的震动。
+    有些数学家认为：真理应该是具有唯一性的；
+    如果我们承认``过直线外一点有且仅有一条直线与已知直线不相交''，
+    就不能接受``过直线外一点有无穷多条直线与已知直线不相交''；
+    也就是说，如果Euclid几何是真理，非Euclid几何就不是真理。
+    而另一些数学家认为：既然我们可以用模型论的方法证明，
+    如果Euclid几何的公理系统是相容的，则非Euclid几何的公理系统也是相容的，
+    那么Euclid几何和非Euclid几何都应该看作真理，
+    只不过它们是``可选择性''的真理。请论述你对此问题的观点和看法。
+\end{itemize}
+~\\
+
+
+\begin{center}
+    \textsize{24pt}{复旦大学数学科学学院\\
+    2019$\sim$2020学年第一学期期末考试试卷\\
+    $\square$ $\text{A}$ 卷}
+
+    \textsize{22pt}{课程名称：\ \ $\underline{\qquad\ \ 解析几何\qquad\ \ }$课程代码：\ \ $\underline{\text{MATH120010}}$\\
+    开课院系：\ \ $\underline{\quad\ \ \,数学科学学院\quad\ \ }$考试形式：\ \ $\underline{\qquad闭卷\qquad\,}$\\
+    姓\ \ 名：\ $\underline{\qquad\quad\ \ \ }$\ \ \ 学\ \ 号：\ $\underline{\qquad\quad\ \ \ }$\ \ \ 专\ \ 业：\ $\underline{\qquad\qquad\quad\ \ \ \,}$}
+\end{center}
+
+\qquad 提示：请同学们秉持诚实守信宗旨，谨守考试纪律，摒弃考试作弊。
+学生如有违反学校考试纪律的行为，学校将按《复旦大学学生纪律处分条例》规定予以严肃处理。
+
+\begin{table}
+\begin{tabular}{|c|c|c|c|}
+题\ \ 目 &\quad$1$\quad&\quad$2$\quad&\quad$3$\quad&\quad$4$\quad&\quad$5$\quad&\quad$6$\quad\\
+得\ \ 分 & & & & & & \\
+题\ \ 目 &\quad$7$\quad&\quad$8$\quad&\quad$9$\quad&\ \ \ $10$\ \ \ &\ \ \ $11$\ \ \ &\ \ 总分\ \ \\
+得\ \ 分 & & & & & & 
+\end{tabular}
+\end{table}
+
+\textbf{一、\ \ 必做题（共55分）}
+\begin{enumerate}
+\item（12分）设 $\mathbf{e}$ 为非零向量，任意向量 $\mathbf{a}$ 绕 $\mathbf{e}$ 逆时针旋转 $\theta$ 角所得向量记为 $R_{\mathbf{e}, \theta}(\mathbf{a})$。
+\begin{itemize}
+\item[(a)] 对于任意向量 $\mathbf{a}, \mathbf{b}$，$R_{\mathbf{e}, \theta}(\mathbf{a}) \cdot R_{\mathbf{e}, \theta}(\mathbf{b})$ 是否等于 $\mathbf{a} \cdot \mathbf{b}$？证明你的结论．
+\item[(b)] 设 $\mathbf{e}, \mathbf{a}$ 在空间右手直角坐标系 $[O ; \mathbf{e}_{1}, \mathbf{e}_{2}, \mathbf{e}_{3}]$ 下的坐标分别为 $(1,2,-2),(2,1,0)$，
+$\theta=90^{\circ}$，求 $R_{\mathbf{e}, \theta}(\mathbf{a})$。
+\end{itemize}
+\item（6分）设 $l_{1}, l_{2}$ 为一对异面直线。
+求证：存在唯一的一对平行平面 $\alpha_{1}, \alpha_{2}$，
+使得 $l_{1}, l_{2}$ 分别落在 $\alpha_{1}, \alpha_{2}$ 上。
+并且 $l_{1}, l_{2}$ 之间的距离等于 $\alpha_{1}, \alpha_{2}$ 之间的距离。
+\item（15分）设二次曲线 $\gamma$ 在平面直角坐标系 $[O ; \mathbf{e}_{1}, \mathbf{e}_{2}]$ 下的方程为
+$$(\lambda x+2 y-1)^{2}-(2 x-y+2)^{2}=1.$$
+其中 $\lambda$ 为参数。
+\begin{itemize}
+\item[(a)] 判断 $\gamma$ 的类型；
+\item[(b)] 当 $\lambda$ 取什么值时，$\gamma$ 为直角双曲线（即渐近线相互垂直）？
+求 $\gamma$ 的中心坐标和对称轴的方程。
+\end{itemize}
+\item（10分）设旋转单叶双曲面 $\Gamma$ 在空间直角坐标系 $\left[O ; \mathbf{e}_{1}, \mathbf{e}_{2}, \mathbf{e}_{3}\right]$ 下的方程为 $x_{1}^{2}+x_{2}^{2}-x_{3}^{2}=1$，
+$l_{1}, l_{2}$ 是 $\Gamma$ 上的两条相互平行的直母线，求 $l_{1}$ 和 $l_{2}$ 之间的距离的取值范围．
+
+\item（12分）把给定的一个平行四边形映为自身的仿射变换是否一定是等距变换？证明你的结论。
+\end{enumerate}
+
+\textbf{二、\ \ 选做题（从以下 6 小题中选做 3 题
+(第 6 题和第 11 题至多只能选做 1 题)，每题 15 分，共 45 分）}
+\begin{enumerate}\setcounter{enum-{list-level}}{5}
+\item 数学家M. Klein说：``数学是一种理性的精神，使人类的思维得以运用到最完善的程度。''你是否赞同这种观点？请阐述理由。
+
+\item 平面 $\alpha$ 与一个边长为 $2$ 的正方体相截，
+其截面到正方体某一表面的正投影为下图中的阴影部分：
+\begin{tikzpicture}[scale=0.7]
+    \draw (0,0)to(4,0)to(4,4)to(0,4)to(0,0);
+    \draw (0.9,4)to(0,3.6)to(3.6,0)to(4,0.2);\draw (1.4,4)to(4,1.4);
+    \draw (0.4,3.2)to(1.6,3.8);\draw(0.8,2.8)to(2,3.4);
+    \draw (1.2,2.4)to(2.4,3);\draw(1.6,2)to(2.8,2.6);
+    \draw (2,1.6)to(3.2,2.2);\draw(2.4,1.2)to(3.6,1.8);
+    \draw (2.8,0.8)to(4,1.4);\draw(3.2,0.4)to(4,0.8);
+    \draw (-0.3,4.3) node {$A$};\draw (4.3,4.3) node {$B$};
+    \draw (-0.3,-0.3) node {$D$};\draw (4.3,-0.3) node {$C$};
+    \draw (1.4,4.4) node {$E$};\draw (4.4,1.4) node {$F$};
+    \draw (-0.4,3.6) node {$H$};\draw (3.6,-0.4) node {$G$}
+\end{tikzpicture}
+其中 $|AE|=|CF|=\frac{3}{4},|DG|=\frac{7}{4}$。求截面的面积。
+
+\item 记 $\mathbb{R}^{2}$ 为平面上所有向量构成的 $2$ 维线性空间。
+设 $\gamma$ 为一椭圆，中心在 $O$ 点。
+\begin{itemize}
+\item[(a)] 求证：存在 $\mathbb{R}^{2}$ 上唯一的正定内积 $(\cdot, \cdot)$，
+使得 $(\overrightarrow{OP}, \overrightarrow{OP})=1$ 当且仅当 $P \in \gamma$。
+\item[(b)] 对于任意 $P, Q \in \gamma$，$(\overrightarrow{OP}, \overrightarrow{OQ})$ 
+与椭圆扇形 $OPQ$ 的面积有什么关系？证明你的结论。
+\end{itemize}
+\textbf{注。}设 $\mathbf{a}, \mathbf{b}, \mathbf{c} \in \mathbb{R}^{2}, \lambda \in \mathbb{R}$，如果
+* $(\mathbf{a}, \mathbf{b})=(\mathbf{b}, \mathbf{a})$；
+* $(\lambda \mathbf{a}, \mathbf{b})=\lambda(\mathbf{a}, \mathbf{b})$；
+* $(\mathbf{a}, \mathbf{b}+\mathbf{c})=(\mathbf{a}, \mathbf{b})+(\mathbf{a}, \mathbf{c})$；
+* $(\mathbf{a}, \mathbf{a}) \geq 0$，等号成立当且仅当 $\mathbf{a}=\mathbf{0}$。
+
+则称 $(\cdot, \cdot)$ 为 $\mathbb{R}^{2}$ 上的正定内积。
+
+\item 设 $\sigma$ 是 Euclid 空间到自身的双射，
+如果对于空间中的任意 $3$ 个点 $A, B, C$，
+$A, B, C$ 共线当且仅当 $\sigma(A), \sigma(B), \sigma(C)$ 共线，则称 $\sigma$ 为空间仿射变换。
+记 $\sigma_{*}$ 为 $\sigma$ 诱导的仿射向量变换，则不难证明，
+给定空间仿射坐标系 $[O ; \mathbf{e}_{1}, \mathbf{e}_{2}, \mathbf{e}_{3}]$ 
+和 $[O^{\prime} ; \mathbf{f}_{1}, \mathbf{f}_{2}, \mathbf{f}_{3}]$，
+存在唯一的空间仿射变换，使得 $\sigma(O)=O^{\prime}, \sigma_{*}(\mathbf{e}_{i})=\mathbf{f}_{i}$ 对 $i=1,2,3$ 都成立。求证：
+\begin{itemize}
+\item[(a)] 空间仿射变换把二次曲面映为二次曲面。
+\item[(b)] 所有的椭圆抛物面构成一个仿射等价类。
+\end{itemize}
+\item 射影平面上 $4$ 条通过同一点的射影直线 $\bar{l}_{1}, \bar{l}_{2}, \bar{l}_{3}, \bar{l}_{4}$ 构成一个 $4$-线束，
+记全体 $4$-线束构成的集合为 $\mathcal{L}_{4}$。求证：
+\begin{itemize}
+\item[(a)] 存在 $\mathcal{L}_{4}$ 上的唯一函数
+$$(\bar{l}_{1}, \bar{l}_{2}, \bar{l}_{3}, \bar{l}_{4}) 
+\mapsto (\bar{l}_{1}, \bar{l}_{2} \mid \bar{l}_{3}, \bar{l}_{4}),$$
+使得对于任意不通过 $\bar{l}_{1}, \bar{l}_{2}, \bar{l}_{3}, \bar{l}_{4}$ 的公共点的射影直线 $\bar{l}$，
+$(\bar{l}_{1}, \bar{l}_{2} \mid \bar{l}_{3}, \bar{l}_{4})$ 
+恰好等于点列 $P_{1}, P_{2}, P_{3}, P_{4}$ 的交比 $(P_{1}, P_{2} \mid P_{3}, P_{4})$，
+这里 $P_{i}$ 为 $\bar{l}_{i}$ 和 $\bar{l}$ 的交点。
+称 $(\bar{l}_{1}, \bar{l}_{2} \mid \bar{l}_{3}, \bar{l}_{4})$ 为 $4$-线束的交比。
+\item[(b)] 设 $(\bar{l}_{1}, \bar{l}_{2}, \bar{l}_{3}, \bar{l}_{4})$ 
+和 $(\bar{m}_{1}, \bar{m}_{2}, \bar{m}_{3}, \bar{m}_{4})$ 为 $2$ 个$4$-线束，
+存在射影变换 $\sigma$，使得 $\sigma(\bar{l}_{i})=\bar{m}_{i}$ $(\forall i=1,2,3,4)$ 的充要条件是 
+$(\bar{l}_{1}, \bar{l}_{2} \mid \bar{l}_{3}, \bar{l}_{4})
+=(\bar{m}_{1}, \bar{m}_{2} \mid \bar{m}_{3}, \bar{m}_{4})$。
+\end{itemize}
+\item 非Euclid几何的产生在数学界引起了极大的震动。
+有些数学家认为：真理应该是具有唯一性的；
+如果我们承认``过直线外一点有且仅有一条直线与已知直线不相交''，
+就不能接受``过直线外一点有无穷多条直线与已知直线不相交''；
+也就是说，如果Euclid几何是真理，非Euclid几何就不是真理。
+而另一些数学家认为：既然我们可以用模型论的方法证明，
+如果Euclid几何的公理系统是相容的，则非Euclid几何的公理系统也是相容的，
+那么Euclid几何和非Euclid几何都应该看作真理，只不过它们是``可选择性''的真理。
+还有一些数学家认为，我们无法在Euclid几何公理系统的基础上证明它本身是相容的，
+因此我们永远也无法知道Euclid几何和非Euclid几何是否为真理。请论述你对此问题的观点和看法。
+\end{enumerate}
+~\\
+
+
+\begin{center}
+    \textsize{24pt}{复旦大学数学科学学院\\
+    2018$\sim$2019学年第一学期期末考试试卷\\
+    $\square$ $\text{A}$ 卷}
+
+    \textsize{22pt}{课程名称：\ \ $\underline{\qquad\ \ 解析几何\qquad\ \ }$课程代码：\ \ $\underline{\text{MATH120010}}$\\
+    开课院系：\ \ $\underline{\quad\ \ \,数学科学学院\quad\ \ }$考试形式：\ \ $\underline{\qquad闭卷\qquad\,}$\\
+    姓\ \ 名：\ $\underline{\qquad\quad\ \ \ }$\ \ \ 学\ \ 号：\ $\underline{\qquad\quad\ \ \ }$\ \ \ 专\ \ 业：\ $\underline{\qquad\qquad\quad\ \ \ \,}$}
+\end{center}
+
+\qquad 提示：请同学们秉持诚实守信宗旨，谨守考试纪律，摒弃考试作弊。
+学生如有违反学校考试纪律的行为，学校将按《复旦大学学生纪律处分条例》规定予以严肃处理。
+
+\begin{table}
+\begin{tabular}{|c|c|c|c|}
+题\ \ 目 &\quad$1$\quad&\quad$2$\quad&\quad$3$\quad&\quad$4$\quad&\quad$5$\quad&\quad$6$\quad\\
+得\ \ 分 & & & & & & \\
+题\ \ 目 &\quad$7$\quad&\quad$8$\quad&\quad$9$\quad&\ \ \ $10$\ \ \ &\ \ \ $11$\ \ \ &\ \ 总分\ \ \\
+得\ \ 分 & & & & & & 
+\end{tabular}
+\end{table}
+
+\textbf{一、\ \ 必做题（共55分）}
+\begin{enumerate}
+\item（12分）设 $[O ; \mathbf{e}_{1}, \mathbf{e}_{2}, \mathbf{e}_{3}]$ 是空间右手直角坐标系，
+$[O^{\prime} ; \mathbf{f}_{1}, \mathbf{f}_{2}, \mathbf{f}_{3}]$ 是空间仿射坐标系。
+$[O^{\prime}, \mathbf{f}_{1}, \mathbf{f}_{2}, \mathbf{f}_{3}]$ 
+在 $[O ; \mathbf{e}_{1}, \mathbf{e}_{2}, \mathbf{e}_{3}]$ 下的坐标分别为 $(1,0,0),(0,1,0),(-1,-2,0),(0,3,2)$。
+设 $A, B, C$ 是空间中的 $3$ 个点，在 $[O^{\prime} ; \mathbf{f}_{1}, \mathbf{f}_{2}, \mathbf{f}_{3}]$ 下的坐标分别为 $(1,0,0),(1,1,0),(0,1,1)$。求：
+\begin{itemize}
+\item[(a)] $A, B, C$ 在 $[O ; \mathbf{e}_{1}, \mathbf{e}_{2}, \mathbf{e}_{3}]$ 下的坐标。
+\item[(b)] $\overrightarrow{OA}$ 与 $\overrightarrow{OB}$ 的夹角。
+\item[(c)] 四面体 $OABC$ 的体积。
+\end{itemize}
+\item（11分）设 $[O ; \mathbf{e}_{1}, \mathbf{e}_{2}, \mathbf{e}_{3}]$ 是空间右手直角坐标系，
+$l: \frac{x_{1}-1}{2}=\frac{x_{2}+1}{-1}=\frac{x_{3}-2}{3}$ 为一条直线。
+$\alpha^{+}, \beta^{+}$均是以 $l$ 为边界的半平面。
+$A(-2,1,-5), B(3,2,1)$ 分别落在 $\alpha^{+}$和 $\beta^{+}$上。
+\begin{itemize}
+\item[(a)] 求 $\alpha^{+}$和 $\beta^{+}$构成的二面角的角度。
+\item[(b)] $P(x_{1}, x_{2}, x_{3})$ 落在此二面角内部的充要条件是什么？证明你的结论。
+\end{itemize}
+\item（12分）设二次曲线 $\gamma$ 在平面直角坐标系 $[O ; \mathbf{e}_{1}, \mathbf{e}_{2}]$ 下的方程为
+$$4x^{2}+y^{2}-4xy+2x-6y+5=0$$
+\begin{itemize}
+\item[(a)] 证明 $\gamma$ 是抛物线。
+\item[(b)] 求 $\gamma$ 的对称轴的方向向量。
+\item[(c)] 求 $\gamma$ 的顶点的坐标。
+\end{itemize}
+\item（10分）设 $\Gamma$ 为双曲柱面，若 $\Gamma$ 与平面 $\alpha$ 的交集非空，
+则 $\Gamma \cap \alpha$ 是何种类型的二次曲线？证明你的结论。
+\item（10分）求证：
+\begin{itemize}
+\item[(a)] 平面上的所有双曲线构成一个仿射等价类。
+\item[(b)] ``双曲线的渐近线''是仿射概念。
+\end{itemize}
+\end{enumerate}
+
+\textbf{二、\ \ 选做题（从以下 6 小题中选做 3 题 
+(第 6 题和第 11 题至多只能选做 1 题)，每题 15 分，共 45 分）}
+\begin{enumerate}\setcounter{enum-{list-level}}{5}
+\item 数学家M. Klein说：``从最广泛的意义上说，数学是一种精神，一种理性的精神。''你是否赞同这种观点？请阐述理由。
+
+\item 连接四面体顶点和它的对面（每个面都是一个三角形）的重心的直线称为四面体的中线，
+四面体的四条中线交于一点，称为四面体的重心。四面体的内切球的球心称为内心。
+``重心和内心重合的四面体必为正四面体''这一结论是否成立？
+若成立，请证明；若不成立，请举一个反例。
+
+\item 设 $S_{1}=\begin{pmatrix}A_{1} & b_{1} \\ \\ b_{1}^{t} & c_{1}\end{pmatrix}, 
+S_{2}=\begin{pmatrix}A_{2} & b_{2} \\ \\ b_{2}^{t} & c_{2}\end{pmatrix}$ 为 $4$ 阶实对称阵，
+其中 $A_{1}, A_{2}$ 为 $3$ 阶实对称阵，$b_{1}, b_{2}$ 为 $3$ 阶列向量，$c_{1}, c_{2}$ 为实数。
+如果存在特殊 Euclid 矩阵 $P$，使得 $S_{2}=P^{t} S_{1} P$，
+则称 $S_{1}$ 和 $S_{2}$ 是 $SE$-相似的，记为 $S_{1} \sim S_{2}$。
+\begin{itemize}
+\item[(a)] 求证：若 $|A_{1}|,|S_{1}|$ 不全为 $0$，
+则 $S_{1} \sim S_{2}$ 当且仅当 $A_{1}$ 与 $A_{2}$ 的特征值相同，
+并且 $|S_{1}|=|S_{2}|$。
+\item[(b)] 举例说明，若 $|A_{1}|=|S_{1}|=0$，则上述结论不一定成立。
+\end{itemize}
+\item 设 $\sigma$ 是空间到自身的双射，如果 $A, B, C$ 三点共线当且仅当 
+$\sigma(A), \sigma(B), \sigma(C)$ 三点共线，则称 $\sigma$ 为空间仿射变换。求证：
+\begin{itemize}
+\item[(a)] 空间仿射变换把一对平行直线映为一对平行直线。
+\item[(b)] 空间中的所有向量构成 $3$ 维线性空间 $\mathbb{R}^{3}$，
+若存在 $\mathbb{R}^{3}$ 上的线性同构 $\phi$，
+使得 $\overrightarrow{\sigma(P) \sigma(Q)}=\phi(\overrightarrow{PQ}), \forall P, Q$，
+则 $\sigma$ 为空间仿射变换。
+\item[(c)] 设 $A, B, C, D$ 为四面体的四个顶点，
+$A^{\prime}, B^{\prime}, C^{\prime}, D^{\prime}$ 为另一个四面体的四个顶点，
+则存在唯一的空间仿射变换 $\sigma$，使得 $\sigma(A)=A^{\prime}, \sigma(B)=B^{\prime}, \sigma(C)=C^{\prime}, \sigma(D)=D^{\prime}$。
+\end{itemize}
+\item 设 $ABCD$ 为椭圆外切凸四边形，其中 $AB$ 切椭圆于 $P$，$BC$ 切椭圆于 $Q$。
+射影直线 $AQ, PC, BD$ 是否交于同一点？若交于同一点，这一点是否落在椭圆内部？证明你的结论。
+
+\item 非Euclid几何给数学界带来了极大的震动。
+有些数学家认为，真理应该是具有唯一性的，
+如果我们认为``过直线外一点有且只有一条直线与已知直线不相交''，
+就不能认同``过直线外一点有无穷多条直线与已知直线不相交''，
+也就是说，如果Euclid几何是真理，非Euclid几何就不是真理。
+有些数学家认为，既然我们可以用模型论的方法证明，
+如果Euclid几何的公理系统是相容的，则非Euclid几何的公理系统也是相容的，
+则二者都应该看作真理。你对此问题的看法怎样呢？
+\end{enumerate}
+~\\
+
+
+\begin{center}
+    \textsize{24pt}{复旦大学数学科学学院\\
+    2017$\sim$2018学年第一学期期末考试试卷\\
+    $\square$ $\text{A}$ 卷}
+
+    \textsize{22pt}{课程名称：\ \ $\underline{\qquad\ \ 解析几何\qquad\ \ }$课程代码：\ \ $\underline{\text{MATH120010}}$\\
+    开课院系：\ \ $\underline{\quad\ \ \,数学科学学院\quad\ \ }$考试形式：\ \ $\underline{\qquad闭卷\qquad\,}$\\
+    姓\ \ 名：\ $\underline{\qquad\quad\ \ \ }$\ \ \ 学\ \ 号：\ $\underline{\qquad\quad\ \ \ }$\ \ \ 专\ \ 业：\ $\underline{\qquad\qquad\quad\ \ \ \,}$}
+
+    \begin{table}
+    \begin{tabular}{|c|c|c|c|}
+        题\ \ 目 &\quad$1$\quad&\quad$2$\quad&\quad$3$\quad&\quad$4$\quad&\quad$5$\quad&\quad$6$\quad&\quad$7$\quad&\quad$8$\quad&\ \ 总分\ \ \\
+        得\ \ 分 & & & & & & & & & 
+    \end{tabular}
+    \end{table}
+\end{center}
+
+\textbf{一、\ \ 必做题（共55分）}
+\begin{enumerate}
+\item（12分）设 $[O ; \mathbf{e}_{1}, \mathbf{e}_{2}, \mathbf{e}_{3}]$ 为空间右手直角坐标系。
+$A, B, C, D$ 三点在此坐标系下的坐标分别为 $(2,1,2),(-2,2,1),(2,2,3)$ 和 $(-3,5,-1)$，求：
+\begin{itemize}
+\item[(a)] 向量 $\overrightarrow{AB}$ 和 $\overrightarrow{AC}$ 之间的夹角。
+\item[(b)] $\triangle BCD$ 的面积。
+\item[(c)] 四面体 $ABCD$ 的体积。
+\end{itemize}
+\item（11分）设直线 $l_{1}, l_{2}$ 在空间直角坐标系下的方程分别为
+$$\begin{cases}
+A_{1} x_{1}+A_{2} x_{2}+A_{3} x_{3}=c \\
+B_{1} x_{1}+B_{2} x_{2}+B_{3} x_{3}=d
+\end{cases}$$
+和
+$$\begin{cases}
+A_{1}^{\prime} x_{1}+A_{2}^{\prime} x_{2}+A_{3}^{\prime} x_{3}=c^{\prime} \\
+B_{1}^{\prime} x_{1}+B_{2}^{\prime} x_{2}+B_{3}^{\prime} x_{3}=d^{\prime}
+\end{cases}$$
+\begin{itemize}
+\item[(a)] 求证：如果 $l_{1}$ 与 $l_{2}$ 相交，则
+$$\begin{vmatrix}
+A_{1} & A_{2} & A_{3} & c \\ \\
+B_{1} & B_{2} & B_{3} & d \\ \\
+A_{1}^{\prime} & A_{2}^{\prime} & A_{3}^{\prime} & c^{\prime} \\ \\
+B_{1}^{\prime} & B_{2}^{\prime} & B_{3}^{\prime} & d^{\prime}
+\end{vmatrix}=0\tag{$*$}$$
+\item[(b)] 反之，如果 $(*)$ 成立，$l_{1}$ 与 $l_{2}$ 一定相交吗？
+如果不一定，请给出 $l_{1}$ 与 $l_{2}$ 相交的充要条件。
+\end{itemize}
+\item（12分）设二次曲线 $\gamma$ 在平面直角坐标系 $\left[O ; \mathbf{e}_{1}, \mathbf{e}_{2}\right]$ 下的方程为
+$$x^{2}+2xy+3y^{2}-4x-8y+4=0.$$
+\begin{itemize}
+\item[(a)] 求证：$\gamma$ 为椭圆。
+\item[(b)] 计算 $\gamma$ 的长半轴和短半轴。
+\item[(c)] 计算 $\gamma$ 的中心的坐标。
+\end{itemize}
+\item（10分）设 $O$ 为Euclid空间中的固定点，$\alpha_{1}, \alpha_{2}, \alpha_{3}$ 为过点 $O$ 的 $3$ 张平面，
+是否存在以 $O$ 为顶点的圆锥 $C$，使得 $C$ 与 $\alpha_{1}, \alpha_{2}, \alpha_{3}$ 均相切？这样的圆锥是否唯一？证明你的结论。
+\item（10分）设 $l_{1}, l_{2}, l_{3}, l_{4}$ 是平面上 $4$ 条过 $O$ 点的直线，
+$m_{1}, m_{2}, m_{3}, m_{4}$ 是平面上 $4$ 条过 $O^{\prime}$ 的直线。
+\begin{itemize}
+\item[(a)] 求证：存在平面仿射变换 $\sigma$，使得 $\sigma(l_{i})=m_{i}$ 对 $i=1,2,3,4$ 都成立的充要条件是 
+$(l_{1} l_{2} \mid l_{3} l_{4})=(m_{1} m_{2} \mid m_{3} m_{4})$。
+\item[(b)] 这样的仿射变换有多少个？证明你的结论。
+\end{itemize}
+\end{enumerate}
+\textbf{二、\ \ 选做题（从以下 6 小题中选做 3 题 
+(第 1 题和第 6 题至多只能选做 1 题)，每题 15 分，共 45 分）}
+\begin{enumerate}
+\item 物理学家Einstein说：``数学之所以比一切其它科学受到尊重，
+一个理由是因为它的命题是绝对可靠和无可争辩的，
+而其它的科学经常处于被新发现的事实推翻的危险。''你同意这个观点吗？请阐述理由。
+
+\item 以下是``任何三角形都是等腰三角形的证明''：
+\begin{tikzpicture}[scale=1.5]
+    \draw (-2,0)to(2,0)to(1,2)to(-2,0);
+    \draw (0,-1)to(0,1.5);\draw[red] (1,2)to(0,-0.7);
+    \draw[cyan] (-2,0)to(0,-0.7)to(2,0);
+    \draw[green] (-0.94,0.71)to(0,-0.7)to(1.88,0.24);
+    \draw (1,2.2) node {$A$};\draw (-2.2,0) node {$B$};
+    \draw (2.2,0) node {$C$};\draw (0.2,-0.9) node {$O$};
+    \draw (-1.1,0.9) node {$M$};\draw (2.1,0.4) node {$N$};
+\end{tikzpicture}
+如图，已知 $\triangle ABC$，做 $\angle A$ 的平分线，
+与边 $BC$ 的垂直平分线交于 $O$ 点。
+过 $O$ 作边 $AB$ 和 $AC$ 的垂线，垂足为 $M$ 和 $N$。
+由 AAS 判定法则知 $\triangle AOM$ 与 $\triangle AON$ 全等，
+因此 $|AM|=|AN|,|OM|=|ON|$。
+由于线段的垂直平分线上的每一点到两个端点的距离相等，$|OB|=|OC|$。
+由 HL 判定法则知 $\triangle OBM$ 与 $\triangle OCN$ 全等，因此 $|BM|=|CN|$。
+综上所述，有 $|AB|=|AM|+|MB|=|AN|+|NC|=|AC|$。
+
+这个证明的错误之处在哪里呢？
+
+\item 双曲抛物面与平面的交线是何种类型的二次曲线？证明你的结论．
+
+\item 设 $\sigma$ 是空间到自身的双射，若 $l$ 是直线当且仅当 $\sigma(l)$ 是直线，
+则称 $\sigma$ 为空间仿射变换。求证：
+\begin{itemize}
+\item[(a)] 仿射变换 $\sigma$ 把一对平行直线映为一对平行直线；
+\item[(b)] 对于不共线的两组点 $P_{1}, P_{2}, P_{3}, P_{4}$ 和 $Q_{1}, Q_{2}, Q_{3}, Q_{4}$，
+若 $\sigma(P_{i})=Q_{i}$ $(i= 1,2,3,4)$，则 $Q_{1}, Q_{2}, Q_{3}, Q_{4}$ 共面当且仅当 $P_{1}, P_{2}, P_{3}, P_{4}$ 共面。
+\item[(c)] 若 $\sigma$ 把单位球映为单位球，则 $\sigma$ 为等距变换。
+\end{itemize}
+\item 设 $\gamma$ 为平面 $\alpha$ 上的圆。
+$\bar{\alpha}$ 为 $\alpha$ 加上一条无穷远直线之后得到的射影平面。
+设 $P_{1}, P_{2}, P_{3}$ 和 $Q_{1}, Q_{2}, Q_{3}$ 是 $\gamma$ 上的两组点。
+是否存在 $\bar{\alpha}$ 上的射影变换 $\sigma$，使得 $\sigma(\gamma)=\gamma$，
+并且 $\sigma(P_{i})=Q_{i}$ 对 $i=1,2,3$ 都成立？
+这样的射影变换是否唯一？证明你的结论。
+\item 非Euclid几何的产生在数学界引起了极大的震动。
+有些数学家认为：真理应该是具有唯一性的；
+如果我们承认``过直线外一点有且仅有一条直线与已知直线不相交''，
+就不能接受``过直线外一点有无穷多条直线与已知直线不相交''；
+也就是说，如果Euclid几何是真理，非Euclid几何就不是真理。
+另一些数学家认为：既然我们可以用模型论的方法证明，
+如果Euclid几何的公理系统是相容的，则非Euclid几何的公理系统也是相容的，
+那么Euclid几何和非Euclid几何都应该看作真理，只不过它们是``可选择性''的真理。
+还有一些数学家认为，我们无法在Euclid几何公理的基础上证明它本身是相容的，
+因此我们永远也无法知道Euclid几何和非Euclid几何是否为真理。请论述你对此问题的观点和看法。
+\end{enumerate}
+~\\
+
+
+\begin{center}
+    \textsize{24pt}{复旦大学数学科学学院\\
+    2016$\sim$2017学年第一学期期末考试试卷\\
+    $\square$ $\text{A}$ 卷}
+
+    \textsize{22pt}{课程名称：\ \ $\underline{\qquad\ \ 解析几何\qquad\ \ }$课程代码：\ \ $\underline{\text{MATH120010}}$\\
+    开课院系：\ \ $\underline{\quad\ \ \,数学科学学院\quad\ \ }$考试形式：\ \ $\underline{\qquad闭卷\qquad\,}$\\
+    姓\ \ 名：\ $\underline{\qquad\quad\ \ \ }$\ \ \ 学\ \ 号：\ $\underline{\qquad\quad\ \ \ }$\ \ \ 专\ \ 业：\ $\underline{\qquad\qquad\quad\ \ \ \,}$}
+
+    \begin{table}
+    \begin{tabular}{|c|c|c|c|}
+        题\ \ 目 &\quad$1$\quad&\quad$2$\quad&\quad$3$\quad&\quad$4$\quad&\quad$5$\quad&\quad$6$\quad&\quad$7$\quad&\quad$8$\quad&\ \ 总分\ \ \\
+        得\ \ 分 & & & & & & & & & 
+    \end{tabular}
+    \end{table}
+\end{center}
+
+\textbf{一、\ \ 必做题(共55分)}
+\begin{itemize}
+    \item[1.] (12分) 设$[O;\e_1,\e_2,\e_3]$为空间右手直角坐标系。
+    $A,B,C$三点在此坐标系下的坐标分别为$(2,-1,2),(-2,2,1)$和$(-3,4,1)$，求：
+    \begin{itemize}
+        \item[(a)] 向量$\overrightarrow{OA}$和$\overrightarrow{OB}$之间的夹角。
+        \item[(b)] $\triangle ABC$的面积。
+        \item[(c)] 四面体$OABC$的体积。
+    \end{itemize}
+    \item[2.] (12分) 设$[O;\e_1,\e_2,\e_3]$是空间仿射坐标系，
+    $\alpha:Ax_1+Bx_2+Cx_3=1$，$\beta:Ax_1+Bx_2+Cx_3=-1$
+    为一对平行平面 ($A,B,C$不全为$0$)，
+    $l:\frac{x_1}{a}=\frac{x_2}{b}=\frac{x_3}{c}$
+    为通过$O$点的直线 ($a,b,c$不全为$0$)。
+    \begin{itemize}
+        \item[(a)] 当$A,B,C,a,b,c$满足什么条件时，$l$与$\alpha$平行？证明你的结论。
+        \item[(b)] 若$l$与平面$\alpha,\beta$分别相交于$A,B$两点，求$\frac{|OA|}{|OB|}$。
+    \end{itemize}
+    \item[3.] (11分) 设二次曲线$\gamma$在平面直角坐标系$[O;\e_1,\e_2]$下的方程为
+    \[x^2+4xy+\lambda y^2-2x-4y+3=0,\]
+    其中$\lambda$为参数。
+    \begin{itemize}
+        \item[(a)] 判断$\gamma$的类型。
+        \item[(b)] 当$\lambda$取什么值时，$\gamma$为双曲线，且两条渐近线之间的夹角为$60^\circ$？
+    \end{itemize}
+    \item[4.] (10分) 设二次曲线$\Gamma$在空间直角坐标系$[O;\e_1,\e_2,\e_3]$下的方程为
+    \[(4-\lambda)x_1^2+(1-2\lambda)x_2^2+(3+\lambda)x_3^2=1,\]
+    其中$\lambda$为参数。
+    \begin{itemize}
+        \item[(a)] 当$\lambda$取什么值时，$\Gamma$为旋转曲面？求转轴和母线的方程。
+        \item[(b)] 当$\lambda$取什么值时，$\Gamma$为直纹面？求准线的方程。
+    \end{itemize}
+    \item[5.] (10分) 设$\gamma$为平面$\alpha$上的单位圆，
+    $\alpha$添加一条无穷远直线$l_\infty$后得到射影平面$\bar{\alpha}$。
+    \begin{itemize}
+        \item[(a)] 设仿射变换$\sigma:\alpha\to\alpha$
+        满足$\sigma(\gamma)=\gamma$，证明$\sigma$一定是等距变换。
+        \item[(b)] 设$A\in\alpha$为$\gamma$外的一个固定点，
+        $\bar{\sigma}:\bar{\alpha}\to\bar{\alpha}$为射影变换，
+        满足$\bar{\sigma}(\gamma)=\gamma$，$\bar{\sigma}(A)=A$，
+        $\bar{\sigma}$是否一定是恒等变换？如果不一定，
+        这样的射影变换是有限多个还是无限多个？证明你的结论。
+    \end{itemize}
+\end{itemize}
+\textbf{二、\ \ 选做题(从以下6小题中选做3题(第1题和第6题至多只能选做1题)，每题15分，共45分)}
+\begin{itemize}
+    \item[1.] 数学家M. Klein说：``从最广泛的意义上说，
+    数学是一种精神，一种理性的精神。''你是否赞同这种观点？请阐述理由。
+    \item[2.] 用Dedekind分割理论证明：长为$a$，宽为$b$的矩形的面积
+    为单位正方形（即边长为$1$的正方形）的面积的$ab$倍。
+    \item[3.] 给定平面上的$5$个点，过这$5$个点的圆锥曲线是否存在并唯一？证明你的结论。
+    \item[4.] 设$l_1$和$l_2$是两条相互垂直的异面直线，
+    与$l_1$和$l_2$的距离之比等于正常数$k$的点的轨迹是否构成一张二次曲面？
+    如果是，请判断二次曲面的类型；如果不是，请说明理由。
+    \item[5.] 设$\gamma$为射影平面上的一条圆锥曲线，$P$位于$\gamma$外部。
+    $l_1,l_2$是两条通过$P$的射影直线。$l_i(i=1,2)$与$\gamma$交于$G_i,H_i$两点。
+    设$A$为射影直线$G_1G_2$和$H_1H_2$的交点，$B$为射影直线$G_1H_2$和$G_2H_1$的交点。
+    证明：射影直线$AB$与$\gamma$交于$C_1,C_2$两点，
+    并且射影直线$PC_1,PC_2$均与$\gamma$相切。
+    \item[6.] 非Euclid几何的产生在数学界引起了极大的震动。
+    有些数学家认为：真理应该是具有唯一性的；
+    如果我们承认``过直线外一点有且仅有一条直线与已知直线不相交''，
+    就不能接受``过直线外一点有无穷多条直线与已知直线不相交''；
+    也就是说，如果Euclid几何是真理，非Euclid几何就不是真理。
+    而另一些数学家认为：既然我们可以用模型论的方法证明，
+    如果Euclid几何的公理系统是相容的，则非Euclid几何的公理系统也是相容的，
+    那么Euclid几何和非Euclid几何都应该看作真理，
+    只不过它们是``可选择性''的真理。请论述你对此问题的观点和看法。
+\end{itemize}

@@ -1,0 +1,521 @@
+\newcommand{\d}{\mathrm{d}}
+
+\setdisplaytitle{试卷：微分几何}
+\sethtmltitle{试卷：微分几何}
+
+== 25秋微分几何（嵇庆春） ==
+
+	\begin{enumerate}
+		\item 计算$\R^{3}$中曲线$\gamma(t)=\left(\cos\dfrac{t}{\sqrt{2}},\sin\dfrac{t}{\sqrt{2}},\dfrac{t}{\sqrt{2}}\right)$的曲率和挠率,其中$t\in\R$(15分).
+        \begin{proofc}
+            \begin{align*}
+				\gamma'&=\frac{1}{\sqrt{2}}\left(-\sin\frac{t}{\sqrt{2}},\cos\frac{t}{\sqrt{2}},1\right)\\
+				|\gamma'|&\equiv 1\\
+				\gamma''&=\frac{1}{2}\left(-\cos\frac{t}{\sqrt{2}},-\sin\frac{t}{\sqrt{2}},0\right)\\
+				\kappa&=|\gamma''|=\frac{1}{2}\\
+				N&=\frac{\gamma''}{\kappa}=\left(-\cos\frac{t}{\sqrt{2}},-\sin\frac{t}{\sqrt{2}},0\right)\\
+				B&=\gamma'\times N=\frac{1}{\sqrt{2}}\left(\sin\frac{t}{\sqrt{2}},-\cos\frac{t}{\sqrt{2}},1\right)\\
+				\tau&=N'\cdot B=\frac{1}{2}
+			\end{align*}
+        \end{proofc}
+		\item 设$f\in C^{\infty}(D)$是平面区域$D$上的光滑函数,计算$f$的图的高斯曲率和平均曲率(15分).
+		\begin{proofc}
+            \begin{align*}
+				\phi(u)&=\bigl(u,f(u)\bigr)\\
+				\phi_{1}&=(1,0,f_{1}),\quad\phi_{2}=(0,1,f_{2})\\
+				g_{11}&=1+f_{1}^{2},\quad g_{12}=g_{21}=f_{1}f_{2},\quad g_{22}=1+f_{2}^{2}\\
+				h_{ij}&=\frac{f_{ij}}{\sqrt{1+f_{1}^{2}+f_{2}^{2}}}\\
+				K&=\frac{f_{11}f_{22}-f_{12}^{2}}{(1+f_{1}^{2}+f_{2}^{2})^{2}}\\
+				H&=\frac{(1+f_{1}^{2})f_{22}+(1+f_{2}^{2})f_{11}-2f_{1}f_{2}f_{12}}{2(1+f_{1}^{2}+f_{2}^{2})^{\frac{3}{2}}}
+			\end{align*}
+        \end{proofc}
+        \item 判断如下$\Sigma_{r}\subseteq \R^{3}$是否是$\R^{3}$中的曲面:
+		$$
+		\Sigma_{r}=\left\{(x,y,z)\in\R^{3}\bigm|xy-z^{2}=r\right\}\text{的连通分支},\text{其中}r\in\R\text{是任意常数}.
+		$$
+		当$\Sigma_{r}$是$\R^{3}$中的曲面时,进一步判断$\Sigma_{r}$是否可定向(10分).
+		\begin{proofc}
+            $r\neq 0$时, $\Sigma_{r}\subseteq \R^{3}$是可定向曲面:
+			$$
+			\nabla\varphi\neq 0 \text{在}\Sigma\text{上成立}, \varphi:=xy-z^{2}-r.
+			$$
+			$r=0$时, $\Sigma_{r}\subseteq \R^{3}$不是曲面:隐函数定理.
+        \end{proofc}
+        \item 设$\Sigma\subseteq \R^{3}$是可定向曲面, $n:\Sigma\to S^{2}$为$\Sigma$的高斯映射.取$\gamma:[0,L]\to\Sigma$是弧长参数化的曲线并且曲率处处非零.记$\kappa_{n}$\,、 $\kappa_{g}$\,、 $\tau_{g}$为$\gamma:[0,L]\to\Sigma$关于$n$的法曲率\,、测地曲率\,、测地挠率, $\kappa$\,、 $\tau$为$\gamma:[0,L]\to\R^{3}$的曲率\,、挠率.证明:
+		\begin{enumerate}[label= (\arabic*) ]
+			\item\label{1} 存在$\theta\in C^{\infty}[0,L]$使得$\kappa_{n}=\kappa\sin\theta$, $\kappa_{g}=\kappa\cos\theta$, $\tau_{g}=\tau-\dfrac{\d\theta}{\d s}$(10分).
+			\begin{proofc}
+                由映射提升定理, $\exists\theta\in C^{\infty}(I)$使得
+				$$
+				\begin{cases}
+					N=\cos\theta n \times T+\sin\theta\nu\\
+					B=-\sin\theta n\times T+\cos\theta\nu
+				\end{cases}
+				$$
+				由标架运动方程可得
+				\begin{align*}
+					&-\kappa T-\tau\sin\theta \nu\times T+\tau\cos\theta\nu\\
+					&=\cdots\\
+					&=-(\kappa_{n}\sin\theta+\kappa_{g}\cos\theta)T-(\tau_{g}+\theta')\sin\theta\nu\times T+(\tau_{g}+\theta')\cos\theta\nu
+				\end{align*}
+				以及
+				\begin{align*}
+					&-\tau\cos\theta\nu\times T-\tau\sin\theta\nu\\
+					&=\cdots\\
+					&=(\kappa_{g}\sin\theta-\kappa_{n}\cos\theta)T-(\theta'+\tau_{g})\cos\theta\nu\times T-(\tau_{g}+\theta')\sin\theta\nu
+				\end{align*}
+				比较系数即得.
+            \end{proofc}
+            \item 当$\Sigma=S^{2}$且$n=\operatorname{Id}$时, $\kappa_{n}=-1$, $\kappa_{g}^{2}=\kappa^{2}-1$, $\tau_{g}=0$, $\dfrac{\d\kappa_{g}}{\d s}=\kappa^{2}\tau$(5分).
+            \begin{proofc}
+                由于$S^{2}$的(关于外法向)的法曲率$\equiv-1$,由 \ref{1} 可得
+				$$
+				\kappa_{g}^{2}+1=\kappa^{2}.
+				$$
+				类似地, $\tau_{g}=\left(T,\nu,\dfrac{\d\nu}{\d s}\right)=(T,\nu,T)=0$.
+				\begin{align}
+					\kappa_{g}=\kappa\cos\theta&\Rightarrow\kappa_{g}'=\kappa'\cos\theta-\kappa\tau\sin\theta(0=\tau_{g}=\tau-\theta')(1)\\
+					-1=\kappa\sin\theta&\Rightarrow0=\kappa'\sin\theta+\kappa\tau\cos\theta(2)
+				\end{align}
+				\begin{align*}
+					\Rightarrow-\frac{1}{\kappa}\kappa_{g}'=\sin\theta\kappa_{g}'&\overset{(1)}{=}\kappa'\cos\theta\sin\theta-\kappa\tau\sin^{2}\theta\\
+					&\overset{(2)}{=}-\kappa\tau\cos^{2}\theta-\kappa\tau\sin^{2}\theta=-\kappa\tau.
+				\end{align*}
+            \end{proofc}
+        \end{enumerate}
+		\item 设曲面$\Sigma\subseteq \R^{3}$具有常高斯曲率和常平均曲率,证明: $\Sigma$是平面\,、球面或正圆柱面的开子集(20分).
+		\begin{proofc}
+            只要在非脐点处取坐标使得
+			$$
+			g_{11}=g_{22}=\frac{1}{\sqrt{H^{2}-K}},\quad g_{12}=0
+			$$
+			$$
+			h_{11}=\frac{H}{\sqrt{H^{2}-K}}-1,\quad h_{22}=\frac{H}{\sqrt{H^{2}-K}}+1,h_{12}=0.
+			$$
+			而这只要取曲率线坐标并应用Codazzi方程.
+        \end{proofc}
+        \item 证明:非球面的紧曲面$\Sigma\subseteq \R^{3}$的高斯曲率$K$\,、面积$A(\Sigma)$以及欧拉数$\chi(\Sigma)$满足
+		$$
+		4\pi^{2}\chi(\Sigma)^{2}<A(\Sigma)\int_{\Sigma}K^{2}\d A \text{(6分)}.
+		$$
+		\begin{proofc}
+            Gauss-Bonnet+H\"{o}lder$\Rightarrow “\leqslant”$\\
+			再次应用Gauss-Bonnet和紧曲面上正高斯曲率点的存在性可得$“<”$.
+        \end{proofc}
+        \item 证明:极小曲面的高斯曲率至多有离散零点,除非为平面的开子集(9分).
+		\begin{proofc}
+            由共形坐标$\phi$下
+			$$
+			K=\frac{|\Phi\times\Phi_{z}|^{2}}{|\Phi|^{2}}
+			$$
+			和全纯函数唯一性可得,其中$\Phi=\partial_{z}\phi$.
+        \end{proofc}
+        \item 设紧曲面$\Sigma\subseteq \R^{3}$的高斯曲率和平均曲率满足$H=rK$,其中$r\in\R$是常数,证明: $\Sigma$是球面(10分).
+        \begin{proofc}
+            首先$r\neq 0$($\exists$正曲率点), 至多改变定向可设$r>0$.\\
+			由$H=rK$可知$\dfrac{1}{k_{1}}+\dfrac{1}{k_{2}}=2r>0$在$K>0$处成立,而上式说明$\left\{x\in\Sigma\bigm|K>0\right\}\subseteq\Sigma$是闭集.从而$K>0$在$\Sigma$上成立.从而$\dfrac{1}{k_{1}}+\dfrac{1}{k_{2}}=2r$在$\Sigma$上成立.再由Gauss-Codazzi方程即得.
+        \end{proofc}
+    \end{enumerate}
+
+== 24秋微分几何（嵇庆春） ==
+
+\begin{itemize}
+    \item[1.]设$\gamma:[0,L]\to\mathbb{R}^3$是弧长参数化的曲线, $\kappa>0$和$\tau$分别是$\gamma$的曲率和挠率, $\{\mathrm{T},\mathrm{N},\mathrm{B}\}$是$\gamma$的Frenet标架场.证明:
+    \begin{itemize}
+        \item[(1)]$\dfrac{\mathrm{d}^3\gamma}{\mathrm{d}s^3}=-\kappa^2 \mathrm{T}+\dfrac{\mathrm{d}\kappa}{\mathrm{d}s}\mathrm{N}+\kappa\tau \mathrm{B}$ (3分).
+        \begin{proofc}
+            \begin{align*}
+                \frac{d^{3}\gamma}{ds^{3}}&=\frac{d}{ds}\frac{d^{2}\gamma}{ds^{2}}=\frac{d}{ds}\frac{dT}{ds}=\frac{d}{ds}(\kappa N)\\
+                &=\frac{d\kappa}{ds}N+\kappa(-\kappa T+\kappa\tau B)\\
+                &=-\kappa^{2}T+\frac{d\kappa}{ds}N+\kappa\tau B.
+            \end{align*}
+        \end{proofc}
+        \item[(2)]$\left( \dfrac{\mathrm{d}\gamma}{\mathrm{d} s},\dfrac{\mathrm{d}^2\gamma}{\mathrm{d}s^2},\dfrac{\mathrm{d}^3\gamma}{\mathrm{d}s^3} \right)=\kappa^2\tau$,其中$(\cdot,\cdot,\cdot)$表示混合积(4分).
+        \begin{proofc}
+            $$
+                \Bigl( \frac{d\gamma}{ds},\frac{d^{2}\gamma}{ds^{2}},\frac{d^{3}\gamma}{ds^{3}} \Bigr)=\Bigl( T,\kappa N,-\kappa^{2}T+\frac{d\kappa}{ds}N+\kappa\tau B \Bigr)=\kappa^{2}\tau.
+            $$
+        \end{proofc}
+        \item[(3)]$\left( \dfrac{\mathrm{d}^2\gamma}{\mathrm{d}s^2},\dfrac{\mathrm{d}^3\gamma}{\mathrm{d}s^3}, \dfrac{\mathrm{d}^4\gamma}{\mathrm{d}s^4}\right)={\kappa^5}\dfrac{\mathrm{d}}{\mathrm{d}s}\dfrac{\tau}{\kappa}$ (5分).
+        \begin{proofc}
+            \begin{align*}
+                \frac{d^{4}\gamma}{ds^{4}}=\frac{d}{ds}\frac{d^{3}\gamma}{ds^{3}}&\overset{(1)}{=}-2\kappa\frac{d\kappa}{ds}T+\frac{d\kappa}{ds}(-\kappa T+\tau B)+\frac{d(\kappa\tau)}{ds}B \mod N\\
+                &=-3\kappa\frac{d\kappa}{ds}T+\Bigl( 2\frac{d\kappa}{ds}\tau+\kappa\frac{d\tau}{ds} \Bigr)B\\
+                \Bigl( \frac{d^{2}\gamma}{ds^{2}},\frac{d^{3}\gamma}{ds^{3}},\frac{d^{4}\gamma}{ds^{4}} \Bigr)&=\Bigl( \kappa N,-\kappa^{2}T+\kappa\tau B,-3\kappa\frac{d\kappa}{ds}T+\Bigl( 2\frac{d\kappa}{ds}\tau+\kappa\frac{d\tau}{ds} \Bigr) B\Bigr)\\
+                &=\kappa^{3}\Bigl( 2\frac{d\kappa}{ds}\tau+\kappa\frac{d\tau}{ds} \Bigr)-3\kappa^{3}\tau\frac{d\kappa}{ds}\\
+                &=\kappa^{3}\Bigl( \kappa\frac{d\tau}{ds}-\frac{d\kappa}{ds}\tau \Bigr)\\
+                &=\kappa^{5}\frac{d}{ds}\Bigl( \frac{\tau}{\kappa} \Bigr).
+            \end{align*}
+        \end{proofc}
+        \item[(4)]$\gamma$为一般螺线当且仅当$\left( \dfrac{\mathrm{d}^2\gamma}{\mathrm{d}s^2},\dfrac{\mathrm{d}^3\gamma}{\mathrm{d}s^3}, \dfrac{\mathrm{d}^4\gamma}{\mathrm{d}s^4}\right)=0$,其中“一般螺线”是指: $\gamma$的切向量$\mathrm{T}$与$\mathbb{R}^{3}$中某个非零常向量成固定夹角(3分).
+        \begin{proofc}
+            $\gamma$是一般螺线$\Leftrightarrow\tau/\kappa=$常数$\overset{(3)}{\Leftrightarrow}\Bigl( \frac{d^{2}\gamma}{ds^{2}},\frac{d^{3}\gamma}{ds^{3}},\frac{d^{4}\gamma}{ds^{4}} \Bigr)=0$.    
+        \end{proofc}    
+    \end{itemize}
+
+    \item[2.]计算$\mathbb{R}^{3}$中半径为$r>0$的球面的平均曲率和高斯曲率(10分). 
+    \begin{proofc}[解]
+            按定义计算可知: $K=\dfrac{1}{r^{2}},H=\pm\dfrac{1}{r}$ (取决于定向).
+    \end{proofc}
+    \item[3.]判断$\Sigma=\{(x,y,z)\in \mathbb{R}^3\mid x^2+y^3-z^4=r\}$是否是$\mathbb{R}^3$中的曲面,其中$r\in \mathbb{R}$是任意常数.当$\Sigma$是$\mathbb{R}^3$中的曲面时,判断$\Sigma$是否可定向(10分).
+    \begin{proofc}
+            $r=0$时, $\Sigma$在原点附近不是任何坐标平面上的图,从而不是$\mathbb{R}^{3}$中曲面.\\
+            $r\neq 0$时, $\phi=x^{2}+y^{3}-z^{4}-r$在$\Sigma=\phi^{-1}(0)$上有非零梯度, 由隐函数定理可知, $\Sigma$是$\mathbb{R}^{3}$中曲面, 并且有处处非零法向量场$\nabla\phi$从而可定向.
+    \end{proofc}
+    \item[4.]设$\Sigma$是$\mathbb{R}^3$中具有非负高斯曲率$K$的紧曲面,证明:
+    \begin{itemize}
+        \item[(1)]$\Sigma$上任何一条简单闭测地线都将$\Sigma$分成两个单连通区域$\Sigma_1$和$\Sigma_2$,并且
+        \[  
+            \int_{\Sigma_1}K\mathrm{d}A=\int_{\Sigma_2}K\mathrm{d}A=2\pi
+        \]
+        (8分).
+        \begin{proofc}
+            由Gauss--Bonnet定理, $\Sigma$微分同胚于$S^{2}$,再由局部Gauss--Bonnet公式可知$\int_{\Sigma_{i}}KdA=2\pi$.
+        \end{proofc}
+        \item[(2)]$\Sigma$上任何两条不交的简单闭测地线必然围成一个高斯曲率处处为零的非空区域(7分).
+        \begin{proofc}
+            由(1)和$\int_{\Sigma}KdA=4\pi$可知, $K$在所围区域上的积分为$0$,再由$K\geq 0$可得结论.
+        \end{proofc}
+    \end{itemize}
+    \item[5.]设$D \subseteq \mathbb{R}^2$是单连通区域, $u\in C^\infty(D)$,满足
+    $$
+        \Delta u=e^{-u},
+    $$
+    其中$\Delta$是$\mathbb{R}^{2}$上的拉普拉斯算子, $\theta\in\mathbb{R}$.证明:存在正则参数化曲面$\phi:D\to\mathbb{R}^{3}$具有如下第一、二基本型系数
+    $$
+        g_{11}=g_{22}=e^u,g_{12}=g_{21}=0,h_{11}=-h_{22}=\dfrac{cos\theta}{\sqrt{2}},h_{12}=h_{21}=\dfrac{sin\theta}{\sqrt{2}}(10分).
+    $$
+    \begin{proofc}
+            直接检验Gauss--Codazzi方程应用曲面论基本定理可得结论.
+    \end{proofc}
+    \item[6.]设$u\in C^\infty(\mathbb{R}^2)$,记$\phi(x)=(x,u(x)),x \in \mathbb{R}^2$.证明:
+    \begin{itemize}
+        \item[(1)]$\phi$的平均曲率$H=-\dfrac{\mathrm{div V}}{2}$，其中$\mathrm{V}=-\dfrac{\nabla u}{\sqrt{1+|\nabla u|^2}}$, $\nabla$和$\mathrm{div}$分别是$\mathbb{R}^{2}$上的梯度和散度算子(10分).
+        \begin{proofc}
+            由平均曲率的定义作直接计算可得.
+        \end{proofc}
+        \item[(2)]$\min\limits_{D_r}{|H|} \leq \dfrac{1}{r}$,其中$D_r=\{x\in\mathbb{R}^{2}||x|<r\}$, $r>0$ (10分).
+        \begin{proofc}
+            不妨设$\min\limits_{D_{r}}|H|>0$,再适当选取定向可设$H\big|_{D_{r}}<0$.
+            \begin{align*}
+                \min_{D_{r}}(-H)\cdot \pi r^{2}&\leq \int_{D_{r}}(-H)dA=\frac{1}{2}\int_{D_{r}}\mathrm{div} V dA\\
+                &=\frac{1}{2}\int_{\partial D_{r}}\langle V,\nu\rangle\leq \frac{1}{2}\cdot 1\cdot 2\pi r,
+            \end{align*}
+            $\nu$是$\partial D_{r}$的单位外法向.
+        \end{proofc}
+    \end{itemize}
+
+    \item[7.]$\Sigma$是$\mathbb{R}^3$中的曲面具有高斯曲率$K\equiv 0$,证明:
+    \begin{itemize}
+        \item[(1)]$\Sigma$在任何一点处均存在坐标表示使得测地线方程的解都是一次函数(10分).
+        \begin{proofc}
+            先取测地极坐标,写出Gauss方程:
+            $$
+                \partial_{\rho}^{2}\sqrt{g_{22}}=0.
+            $$
+            再由$\sqrt{g_{22}}$在$\rho=0$处渐近性质确定$\sqrt{g_{22}}=\rho$.然后用法坐标$u^{1}=\rho\cos\theta,u^{2}=\rho\sin\theta$写出$g_{ij}$可知联络系数$\Gamma_{ij}^{k}=0$.
+        \end{proofc}
+        \item[(2)]$\Sigma$有坐标覆盖$\{(\Sigma_\lambda;\phi_\lambda:D_\lambda\to \Sigma_\lambda)\}_{\lambda\in \Lambda}$满足:当$\Sigma_\lambda\cap \Sigma_\mu$非空时,坐标转移映射$\phi^{-1}_\mu\circ \phi_\lambda:\phi^{-1}_\lambda(\Sigma_\lambda\cap \Sigma_\mu)\to \phi^{-1}_\mu (\Sigma_\lambda\cap \Sigma_\mu)$是仿射映射,即线性映射和平移的复合映射,其中$\lambda,\mu\in\Lambda$ (10分).
+        \begin{proofc}
+            这是(1)的直接推论,只要注意到测地线方程不依赖于坐标选择.
+        \end{proofc}
+    \end{itemize}
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+== 23秋微分几何（谢纳庆、嵇庆春）==
+\begin{itemize}
+    \item[一] (1) (5分) 设$\Gamma$是$\R^3$中一条具有固定挠率$\tau$ ($\tau\ne0$) 的正则曲线。
+    求证：空间曲线$\tilde{\Gamma} \colon s\mapsto\frac{1}{\tau}\mathbf{N}(s)
+    -\int_0^s\mathbf{B}(u){\rm d}u$具有固定的曲率$\tilde{\kappa}=|\tau|$。
+    这里$s$是曲线$\Gamma$的弧长参数，$\mathbf{N}$与$\mathbf{B}$分别是曲线$\Gamma$的主法向量与副法向量。\\
+    \begin{proofc}[解]
+        计算导数:
+			$$
+			\frac{d\widetilde{\Gamma}}{ds}=\frac{1}{\tau}\frac{dN}{ds}-B(s).
+			$$
+			由Frenet标架的运动方程:
+			$$
+			\frac{dN}{ds}=-\kappa T+\tau B
+			$$
+			可得:
+			\begin{align*}
+				\frac{d\widetilde{\Gamma}}{ds}&=\frac{1}{\tau}(-\kappa T+\tau B)-B\\
+				&=-\frac{\kappa}{\tau}T.
+			\end{align*}
+			立即得到：
+			$$
+			\left|\frac{d\widetilde{\Gamma}}{ds}\right|=\frac{\kappa}{|\tau|}.
+			$$
+			进一步
+			\begin{align*}
+				\frac{d^{2}\widetilde{\Gamma}}{ds^{2}}&=-\frac{1}{\tau}\frac{d \kappa}{ds}T-\frac{\kappa}{\tau}\frac{dT}{ds}\\
+				&=-\frac{1}{\tau}\frac{d \kappa}{ds}T-\frac{\kappa^{2}}{\tau}N.
+			\end{align*}
+			于是,
+			\begin{align*}
+				\frac{d\widetilde{\Gamma}}{ds}\times\frac{d^{2}\widetilde{\Gamma}}{ds^{2}}&=\frac{\kappa^{3}}{\tau^{2}}T\times N\\
+				&=\frac{\kappa^{3}}{\tau^{2}}B.
+			\end{align*}
+			即$\left|\dfrac{d\widetilde{\Gamma}}{ds}\times\dfrac{d^{2}\widetilde{\Gamma}}{ds^{2}}\right|=\dfrac{\kappa^{3}}{\tau^{2}}$,故:
+			$$
+			\tilde{\kappa}=\frac{\left|\dfrac{d\widetilde{\Gamma}}{ds}\times\dfrac{d^{2}\widetilde{\Gamma}}{ds^{2}}\right|}{\left|\dfrac{d\widetilde{\Gamma}}{ds}\right|^{3}}=|\tau|.
+			$$
+    \end{proofc}
+    (2) (5分) 计算空间曲线$\boldsymbol{r}(t)=(4a\cos^3t,4a\sin^3t,3b\cos(2t))$
+    ($0<t<\frac{\pi}{2}$，$a$与$b$是正的常数)的挠率。
+    \begin{proofc}[解]
+        计算可得:
+        $$
+            \frac{d\boldsymbol{r}}{dt}=-6\sin(2t)(a\cos t,-a\sin t,b)\\
+
+            \frac{d^{2}\boldsymbol{r}}{dt^{2}}=-12\cos(2t)(a\cos t,-a\sin t,b)+6\sin(2t)(a\sin t,a\cos t,0)
+        $$
+        $$
+            \frac{d^{3}\boldsymbol{r}}{dt^{3}}=24\sin(2t)(a\cos t,-a\sin t,b)+24\cos(2t)(a\sin t,a\cos t,0)\\
+            +6\sin(2t)(a\cos t,-a\sin t,0)
+        $$
+        于是:
+        \begin{align*}
+            \Big(\frac{d\boldsymbol{r}}{dt},\frac{d^{2}\boldsymbol{r}}{dt^{2}},\frac{d^{3}\boldsymbol{r}}{dt^{3}} \Big)&=\Big(-6\sin(2t)(a\cos t,-a\sin t,b),6\sin(2t)(a\sin t,a\cos t,0),6\sin(2t)(a\cos t,-a\sin t,0)  \Big)\\
+            &=-6^{3}\sin^{3}(2t)\det
+            \begin{pmatrix}
+                a\cos t&a\sin t&a\cos t\\
+                -a\sin t&a\cos t&-a\sin t\\
+                b&0&0
+            \end{pmatrix}\\
+            &=6^{3}a^{2}b\sin^{3}(2t)
+        \end{align*}
+        另一方面:
+        \begin{align*}
+            \frac{d\boldsymbol{r}}{dt}\times\frac{d^{2}\boldsymbol{r}}{dt^{2}}&=-6^{2}\sin^{2}(2t)(a\cos t,-a\sin t,b)\times(a\sin t,a\cos t,0)\\
+            &=-6^{2}a\sin^{2}(2t)(-b\cos t,b\sin t,a)
+        \end{align*}
+        故挠率:
+        \begin{align*}
+            \tau_{\boldsymbol{r}}(t)&=\frac{\Big(\frac{d\boldsymbol{r}}{dt},\frac{d^{2}\boldsymbol{r}}{dt^{2}},\frac{d^{3}\boldsymbol{r}}{dt^{3}} \Big)}{\Big|\frac{d\boldsymbol{r}}{dt}\times\frac{d^{2}\boldsymbol{r}}{dt^{2}}\Big|^{2}}\\
+            &=\frac{6^{3}a^{2}b\sin^{3}(2t)}{6^{4}a^{2}(a^{2}+b^{2})\sin^{4}(2t)}\\
+            &=\frac{b}{6(a^{2}+b^{2})\sin(2t)}
+        \end{align*}
+    \end{proofc}
+    \item[二] (1) (10分) 求曲面$2z=5x^2+4xy+2y^2$在坐标原点的主曲率。\\
+    \begin{proofc}[解]
+        记曲面为$\phi(x,y)=(x,y,\frac{5}{2}x^{2}+2xy+y^{2})$,计算可知:
+        $$
+            \phi_{1}=(1,0,5x+2y)\quad \phi_{2}=(0,1,2x+2y)\\
+            \phi_{11}=(0,0,5)\quad\phi_{12}=\phi_{21}=(0,0,2)\quad\phi_{22}=(0,0,2)\\
+            \phi_{1}\times\phi_{2}=(-5x-2y,-2x-2y,1)
+        $$
+        代入原点可得:
+        $$
+        \phi_{1}(0,0)=(1,0,0)\quad\phi_{2}(0,0)=(0,1,0)\\
+        \phi_{11}(0,0)=(0,0,5)\quad\phi_{12}(0,0)=\phi_{21}(0,0)=(0,0,2)\quad\phi_{22}(0,0)=(0,0,2)\\
+        \phi_{1}\times\phi_{2}(0,0)=(0,0,1)\\
+        \nu(0,0)=\frac{\phi_{1}\times\phi_{2}(0,0)}{|\phi_{1}\times\phi_{2}(0,0)|}=(0,0,1)
+        $$
+        于是:
+        $$
+            g(0,0)=
+            \begin{pmatrix}
+                1&0\\
+                0&1
+            \end{pmatrix}\\
+        $$
+        利用$h_{ij}(0,0)=\phi_{ij}(0,0)\cdot\nu(0,0)$可得:
+        $$
+            h(0,0)=
+            \begin{pmatrix}
+                5&2\\
+                2&2
+            \end{pmatrix}
+        $$
+        故Weingarten变换矩阵为:
+        $$
+            W(0,0)=h(0,0)\cdot g(0,0)^{-1}=
+            \begin{pmatrix}
+                5&2\\
+                2&2
+            \end{pmatrix}
+        $$
+        计算其特征值可得原点处的主曲率为$k_{1}(0,0)=1,k_{2}(0,0)=6$.
+    \end{proofc}
+    (2) (10分) 求证：正则曲面$F(x,y,z)$的主方向决定于微分方程
+    $$
+        F_x\frac{{\rm d}x}{{\rm d}t}+F_y\frac{{\rm d}y}{{\rm d}t}+F_z\frac{{\rm d}z}{{\rm d}t}=0
+    $$
+    与
+    \[\det\begin{pmatrix}
+        \frac{{\rm d}x}{{\rm d}t}&\frac{{\rm d}y}{{\rm d}t}&\frac{{\rm d}z}{{\rm d}t}\\
+         & & \\F_x&F_y&F_z\\ & & \\
+        \frac{{\rm d}F_x}{{\rm d}t}&\frac{{\rm d}F_y}{{\rm d}t}&\frac{{\rm d}F_z}{{\rm d}t}
+    \end{pmatrix}=0.\]
+    \begin{proofc}
+        记$\gamma(t)=(x(t),y(t),z(t))$为满足题设条件的某一正则曲线,我们来考虑其切向量.
+        由于
+        \begin{equation}
+            F_{x}\frac{dx}{dt}+F_{y}\frac{dy}{dt}+F_{z}\frac{dz}{dt}=0,
+        \end{equation}
+        有
+        $$
+            F\circ\gamma(t)\equiv C.
+        $$
+        上式表明在经过某一平移后,可使曲线落在曲面上.由于我们考虑的是切向量,不妨设$C=0$,即曲线落在曲面上,考虑曲线上某点,此时
+        $$
+            \frac{d\gamma}{dt}=\Big(\frac{dx}{dt},\frac{dy}{dt},\frac{dz}{dt}\Big)\subset T_{\gamma}F.
+        $$
+        另外,易得在该点处单位法向量为
+        $$
+            \nu\circ\gamma=\frac{1}{\sqrt{F_{x}^{2}+F_{y}^{2}+F_{z}^{2}}}(F_{x},F_{y},F_{z}).
+        $$
+        由于
+        \begin{equation}
+            \det\begin{pmatrix}
+               \frac{{\rm d}x}{{\rm d}t}&\frac{{\rm d}y}{{\rm d}t}&\frac{{\rm d}z}{{\rm d}t}\\
+               & & \\F_x&F_y&F_z\\ & & \\
+                \frac{{\rm d}F_x}{{\rm d}t}&\frac{{\rm d}F_y}{{\rm d}t}&\frac{{\rm d}F_z}{{\rm d}t}
+            \end{pmatrix}=0,
+        \end{equation}
+        有
+        \begin{align*}
+            0&=\Big((F_{x},F_{y},F_{z}),\Big(\frac{dF_{x}}{dt},\frac{dF_{y}}{dt},\frac{dF_{z}}{dt}\Big),\Big(\frac{dx}{dt},\frac{dy}{dt},\frac{dz}{dt}\Big)\Big)\\
+            &=\Bigg(\frac{1}{\sqrt{F_{x}^{2}+F_{y}^{2}+F_{z}^{2}}}(F_{x},F_{y},F_{z}),\frac{d}{dt}\Big(\frac{1}{\sqrt{F_{x}^{2}+F_{y}^{2}+F_{z}^{2}}}\Big)(F_{x},F_{y},F_{z})+\frac{1}{\sqrt{F_{x}^{2}+F_{y}^{2}+F_{z}^{2}}}\Big(\frac{dF_{x}}{dt},\frac{dF_{y}}{dt},\frac{dF_{z}}{dt}\Big),\Big(\frac{dx}{dt},\frac{dy}{dt},\frac{dz}{dt}\Big)\Bigg)\\
+            &=\Big(\nu\circ\gamma(t),\frac{d(\nu\circ\gamma(t))}{dt},\frac{d\gamma}{dt}\Big)\\
+            &=\Big(\nu\circ\gamma(t),W\Big(\frac{d\gamma}{dt}\Big),\frac{d\gamma}{dt}\Big),
+        \end{align*}
+        即
+        $$
+            \Big(\nu\circ\gamma(t),W\Big(\frac{d\gamma}{dt}\Big),\frac{d\gamma}{dt}\Big)=0.
+        $$
+        而$\nu\circ\gamma(t)\perp T_{\gamma}F$, $W\big(\frac{d\gamma}{dt}\big)$与$\frac{d\gamma}{dt}\subset T_{\gamma}F$, 
+        故只能是$W\big(\frac{d\gamma}{dt}\big)$与$\frac{d\gamma}{dt}$共线, 即
+        $$
+            W\Big(\frac{d\gamma}{dt}\Big)=k\frac{d\gamma}{dt},
+        $$
+        可得$\frac{d\gamma}{dt}$为主方向.综上,主方向决定于微分方程(1)(2).
+    \end{proofc}
+    \item[三] (10分) 设正则曲面的第一基本形式为${\rm d}s^2=({\rm d}u)^2+G(u,v)({\rm d}v)^2$，
+    并且函数$G(u,v)$满足条件$G(0,v)=1,G_u(0,v)=0$。求证：
+    \[G(u,v)=1-u^2K(0,v)+o(u^2),\]
+    其中$K(u,v)$是曲面的Gauss曲率。
+    \begin{proofc}
+        由于此时$g_{12}=g_{21}\equiv 0$,故该曲面是正交参数化的,由正交参数化的Gauss方程,有:
+        \begin{align*}
+            K&=\frac{-1}{2\sqrt{g_{11}g_{22}}}\Big(\partial_{1}\Big(\frac{\partial_{1}g_{22}}{\sqrt{g_{11}g_{22}}}\Big)+\partial_{2}\Big(\frac{\partial_{2}g_{11}}{\sqrt{g_{11}g_{22}}}\Big)\Big)\\
+            &=\frac{-1}{2\sqrt{G}}\partial_{1}\Big(\frac{G_{u}}{\sqrt{G}}\Big)\\
+            &=-\frac{G_{uu}}{2G}+\frac{G_{u}^{2}}{G\sqrt{G}}
+        \end{align*}
+        代入$u=0$可得:
+        $$
+            K(0,v)=-\frac{G_{uu}(0,v)}{2}
+        $$
+        于是在$u=0$点对$G(u,v)$进行Taylor展开可得:
+        \begin{align*}
+            G(u,v)&=G(0,v)+G_{u}(0,v)u+\frac{1}{2}G_{uu}(0,v)u^{2}+o(u^{2})\\
+            &=1-u^{2}K(0,v)+o(u^{2})
+        \end{align*}
+    \end{proofc}
+    \item[四] (1) (5分) 什么是可展曲面？
+    \begin{proofc}[解]
+        可展曲面是Gauss曲率恒为零的直纹面.
+    \end{proofc}
+    (2) (10分) 求证：若直纹面上存在两族交于定角的测地线，则它是可展曲面。
+    \begin{proofc}
+        只需去说明曲面的Gauss曲率恒为$0$. 
+        若曲面上存在Gauss曲率不为$0$的点，在该点充分小邻域$D$内Gauss曲率定号. 
+        取$D$内由这两族测地线围成的某``平行四边形'' $\Omega$ (对边为同一族测地线), 
+        在$\Omega$内, 由局部Gauss--Bonnet公式,有:
+        $$
+            \int_{\Omega}KdA+\sum_{i=1}^{4}\theta_{i}=2\pi.
+        $$
+        其中$\theta_{i}$为这四条测地线所交的外角,因为这两族测地线交于定角,故$\sum\limits_{i=1}^{4}\theta_{i}=2\pi$,于是:
+        $$
+            \int_{\Omega}KdA = 0,
+        $$
+        与该点附近Gauss曲率定号矛盾!于是该曲面Gauss曲率恒为$0$,即为可展曲面.
+    \end{proofc}
+    (3) (10分) 求证：可展曲面与平面局部等距。
+    \begin{proofc}
+        由[[用户:Solution/_习题:_嵇庆春_微分几何简明教程#两类特殊参数化 | 嵇庆春《微分几何简明教程》 练习8.1]], 存在一个参数化$(u^1,u^2)\in D$使得 $g_{ij} \equiv \delta_{ij}, \forall (u^1,u^2)\in D$.
+        此即与平面局部等距. 
+    \end{proofc}
+    \item[五] (1) (10分) 设伪球面$S$的参数表示为
+    \[\boldsymbol{r}:(u,v)\mapsto\begin{pmatrix}
+    \cos v\cos u\\ \\\cos v\sin u\\ \\\log(\sec v+\tan v)-\sin v\end{pmatrix},\]
+    其中$0\le v<\frac{\pi}{2},0\le u<2\pi$。计算$S$上纬线($v=v_0=$常数)的测地曲率。
+    \begin{proofc}[解]
+        设该纬线为:
+        $$
+            \gamma(t)=(\cos v_{0}\cos t,\cos v_{0}\sin t,\log(\sec v_{0}+\tan v_{0})-\sin v_{0})
+        $$
+        则:
+        $$
+            \frac{d\gamma}{dt}=\cos v_{0}(-\sin t,\cos t,0)
+        $$
+        $$
+            \frac{d^{2}\gamma}{dt^{2}}=-\cos v_{0}(\cos t,\sin t,0)
+        $$
+        又因为:
+        $$
+            \boldsymbol{r}_{1}=\cos v(-\sin u,\cos u,0)\\
+            \boldsymbol{r}_{2}=\sin v(-\cos u,-\sin u,\tan v)\\
+            \boldsymbol{r}_{1}\times\boldsymbol{r}_{2}=\cos v\sin v(\cos u\tan v,\sin u\tan v,-1)
+        $$
+        单位化后得:
+        $$
+            \nu =(\cos u\sin v,\sin u\sin v,-\cos v).
+        $$
+        在纬线上:
+        $$
+            n=(\cos t\sin v_{0},\sin t\sin v_{0},-\cos v_{0}),
+        $$
+        于是测地曲率:
+        \begin{align*}
+            \kappa_{g}(t)&=\Big(n,\frac{d\gamma}{dt},\frac{d^{2}\gamma}{dt^{2}}\Big)\bigg/\Big|\frac{d\gamma}{dt}\Big|^{3}\\
+            &=\frac{-\cos^{2}v_{0}}{\cos^{3}v_{0}}\det
+            \begin{pmatrix}
+                \cos u\sin v_{0}& \sin t\sin v_{0}&-\cos v_{0}\\
+                -\sin t& \cos t&0\\
+                \cos t&\sin t & 0
+            \end{pmatrix}\\
+            &=-1.
+        \end{align*}
+    \end{proofc}
+    (2) (10分) 设$\Sigma$为Gauss曲率处处为正的紧致连通定向曲面。
+    求证：如果$\Sigma$上有两条简单闭测地线，则它们必相交。
+    \begin{proofc}
+        设$\gamma_{1}$与$\gamma_{2}$是曲面上的两条闭测地线,
+        若其不相交,设其围住了曲面上两个不相交的部分$\Omega_{1}$与$\Omega_{2}$,
+        则由局部Gauss--Bonnet定理，有
+        $$
+            \int_{\Omega_{1}}KdA=2\pi,\quad\int_{\Omega_{2}}KdA=2\pi.
+        $$
+        而由于Gauss曲率恒正,利用整体Gauss--Bonnet定理可知
+        $$
+            4\pi=\int_{\Sigma}KdA>\int_{\Omega_{1}}KdA+\int_{\Omega_{2}}KdA=4\pi,
+        $$
+        推出矛盾!故$\gamma_{1}$与$\gamma_{2}$一定相交.
+    \end{proofc}
+    (3) (15分) 设$C$是标准单位球面$S^2$上的一条简单光滑闭曲线，
+    $\boldsymbol{v}$是$S^2$上的光滑向量场，而且$\boldsymbol{v}$的轨线从不与$C$相切。
+    求证：由$C$决定的$S^2$的两个区域中的每一个都至少含有$\boldsymbol{v}$的一个奇点。
+    \begin{proofc}
+        首先, 球面上的光滑向量场至少存在一个奇点$q$, 由题设, $q$不在曲线$C$上, 在 $C$ 所决定的两个区域中的其中一个内部.
+        在$q$点把球面戳破, 比如, 通过球极投影映射, $\pi \colon S^2\backslash \{q\} \to \mathbb{R}^2$ 是微分同胚, 它把$C$与向量场$X$都映到 $\mathbb{R}^2$ 上, 记为 $\gamma$ 和 $Y$.
+        现在有 $\mathbb{R}^2$ 上的简单闭曲线 $\gamma$ 与向量场 $Y$, 满足$Y$从不与$\gamma$相切, 只需证明 $Y$ 在$\gamma$围成的区域内部一定存在一个奇点. 
+
+        由指标定理, 只需证明$Y$沿着曲线$\gamma$走一圈, 转角的变化量不为$0$.
+        取参考方向为$\mathbb{R}^2$中的$x$-轴正方向, 不妨设$\gamma \colon [0,1]\to \mathbb{R}^2, \gamma(0) = \gamma(1)$为曲线的参数化. 
+        记 $\alpha(t)$为$\gamma'(t)$与$x$-轴正方向的夹角, $\beta(t)$为$Y(t) := Y(\gamma(t))$与$x$-轴正方向的夹角.
+        不妨设 $\alpha(0) = 0, \beta(0)\in (0,\pi)$, 由于$Y$从不与$\gamma$相切, 有 $\alpha(t) < \beta(t) < \alpha(t) + \pi, \forall t\in [0,1]$.
+        但由于 $\gamma$ 是简单闭曲线, 必有 $\alpha(1) = -2\pi$, 故 $ -2\pi < \beta(1) < -\pi$. 从而 $\beta(1) - \beta(0) < -\pi < 0$, 即转角不可能等于 $0$.
+        故向量场 $Y$ 在 $\gamma$围成的区域内部一定存在一个奇点. 通过球极投影 $\pi$ 返回到球面上, 就知道 $X$ 在 $C$ 所决定的另一个区域内必有一个奇点.
+    \end{proofc}
+\end{itemize}

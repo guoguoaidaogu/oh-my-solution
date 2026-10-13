@@ -1,0 +1,220 @@
+\newenvironment{solution}{\begin{proofc}[解答]}{\end{proofc}}
+
+== 习题A ==
+\begin{enumerate}
+    \item[1.]验证 $\textbf{Machin 公式}$:
+    \[\displaystyle\frac{\pi}{4} = 4\arctan {\frac{1}{5}} - \arctan {\frac{1}{239}}.\]
+    
+    \item[2.]设 \(k\) 是自然数,证明: 
+    \(\displaystyle \sum_{n = k}^{+\infty}\binom{n}{k} x^{n} = \frac{x^{k}}{(1 - x)^{k + 1}}.\)
+    \begin{solution}
+        注意到对 $\displaystyle \frac{1}{1-x}=\sum_{n=0}^{+\infty}x^n$ 
+        两侧关于 $x$ 求导 $k$ 次有 $\displaystyle \frac{k!}{(1-x)^{k+1}}=\sum_{n=k}^{+\infty}\frac{n!}{(n-k)!}x^{n-k}$，
+        即 $\displaystyle \frac{x^k}{(1-x)^{k+1}}=\sum_{n = k}^{+\infty}\binom{n}{k} x^{n}$.\\
+        (注：也可以使用数学归纳法或者组合意义.)
+    \end{solution}
+    
+    \item[3.]Fibonacci数列 \(\{F_{n}\}_{n\geq 0} = (0,1,1,2,3,5,\cdots)\) 的生成函数为 
+    \(\displaystyle F(x) = \frac{x}{1 - x - x^{2}}.\)
+    \begin{solution}
+        令 $\displaystyle F(x)=\frac{x}{1-x-x^2} = a_0+a_1x+a_2x^2+\cdots$, 则 $x = (1-x-x^2)(a_0+a_1x+a_2x^2+\cdots)$. 则 
+        \[
+            \begin{aligned}
+                [0]=0&\Rightarrow a_0=0.\\
+                [x]=1&\Rightarrow a_1=1.\\
+                [x^2]=0&\Rightarrow a_2-a_1-a_0=0.\\
+                [x^n]=0&\Rightarrow a_n-a_{n-1}-a_{n-2}=0,\,n\geq 2.
+            \end{aligned}
+        \]
+        这推出的 $\{a_n\}$ 与 Fibonacci 数列的定义一致.
+    \end{solution}
+
+    \item[4.]设 \(F_{n}\) 是Fibonacci数列,证明: \(F_{2n}\) 的生成函数是 \(\displaystyle \frac{x}{1 - 3x + x^{2}}.\)
+    \begin{solution}
+        可以令 $G_n=F_{2n}$，则 $G_n=F_{2n}=F_{2n-1}+F_{2n-2}=F_{2n-2}+F_{2n-3}+F_{2n-2}=2F_{2n-2}+F_{2n-2}-F_{2n-4}=3G_{n-1}-G_{n-2}$，
+        之后的过程可以类比上一题.\\
+        在这里，我们使用另一种方法. 
+        \[
+            \begin{aligned}
+            \frac{x}{1-x-x^2}&=F_0+F_1x+F_2x^2+\cdots\\
+            \frac{-x}{1+x-x^2}&=F_0-F_1x+F_2x^2-\cdots.
+            \end{aligned}
+        \]
+        其中第二个式子是将第一个式子中的 $x$ 换为 $-x$ 得到的.\\
+        从而 $\displaystyle G(x^2)=\frac{1}{2}\left[ F(x)+F(-x) \right]=\frac{x^2}{1-3x^2+x^4}$，
+        从而 $\displaystyle G(x)=\frac{x}{1-3x+x^2},\,\forall x\geq 0$.\\
+        由 $G(x)$ 为解析函数可知 $\displaystyle G(x)=\frac{x}{1-3x+x^2}$.
+    \end{solution}
+    
+    \item[5.]设 \(m,n\) 是整数,且 \(0\leq m< n\) ,证明:
+    \[\displaystyle\sum_{k = m + 1}^{n}(-1)^{k}\binom{n}{k}\binom{k - 1}{m} = (-1)^{m + 1}.\]
+    \begin{solution}
+        固定 $m$，对 $n$ 归纳. \\
+        当 $n=m+1$ 时，$\displaystyle (-1)^{m+1}\binom{m+1}{m+1}\binom{m}{m}=(-1)^{m+1}$，结论成立.\\
+        假设当 $n=u$ 时结论成立，即有 $\displaystyle \sum_{k=m+1}^{u}(-1)^{k}\binom{u}{k}\binom{k - 1}{m}=(-1)^{m+1}$.\\
+        则当 $n=u+1$ 时，
+        \[
+            \begin{aligned}
+                \sum_{k = m + 1}^{u+1}(-1)^{k}\binom{u+1}{k}\binom{k - 1}{m}
+                &\overset{\mathrm{Pascal}}{=} \sum_{k = m + 1}^{u+1}(-1)^{k}\binom{u}{k}\binom{k - 1}{m}
+                +\sum_{k = m + 1}^{u+1}(-1)^{k}\binom{u}{k-1}\binom{k - 1}{m}\\
+                &\overset{\text{归纳假设}}{=}(-1)^{m+1}+\sum_{k = m + 1}^{u+1}(-1)^{k}\frac{u!}{(k-1)!(u-k+1)!}\cdot\frac{(k-1)!}{m!(k-1-m)!}\\
+                &=(-1)^{m+1}+\sum_{k = m + 1}^{u+1}(-1)^{k}\frac{u!}{m!(u-m)!}\cdot\frac{(u-m)!}{(u-k+1)!(k-1-m)!}\\
+                &=(-1)^{m+1}+\sum_{k = m + 1}^{u+1}(-1)^{k}\binom{u}{m}\cdot\binom{u-m}{k-1-m}\\
+                &\overset{t=k-m-1}{=}(-1)^{m+1}+\binom{u}{m}\sum_{t=0}^{u-m}(-1)^{t+m+1}\binom{u-m}{t}\\
+                &\overset{\text{二项式定理}}{=}(-1)^{m+1}+\binom{u}{m}\cdot(-1)^{1-u}\cdot(1-1)^{u-m}\\
+                &=(-1)^{m+1}.
+            \end{aligned}
+        \]
+        从而由数学归纳法和 $m$ 在自然数集合上的任意性知结论成立.
+    \end{solution}
+
+    \item[6.]设 \(n\) 是正整数,证明:
+    \[\displaystyle\sum_{k = 0}^{n}\binom{k + n}{k} 2^{-k} = 2^{n}.\]
+    \begin{solution}
+        这道题显然可以类似上一题使用数学归纳法进行证明, 即证 $\displaystyle \sum_{k = 0}^{n}\binom{k + n}{k} 2^{-n-k-1} = \frac{1}{2}$. \\
+        在这里，我们使用另一种方法，即\textbf{组合意义}. 我们考虑一个事件发生的概率. \\
+        已知有一个质地均匀的硬币，抛这枚硬币得到正面或者反面的概率均为 $\displaystyle \frac{1}{2}$.\\
+        设随机变量 $X$ 表示连续抛 $2n+1$ 次硬币，硬币正面朝上的次数, 则 $\displaystyle X\sim B\left( 2n+1,\frac{1}{2} \right)$.\\
+        定义事件 $A\coloneqq \{X : X\geq n+1\}$(即至少 $n+1$ 次正面), $B\coloneqq \{X : X\leq n\}$(即至少 $n+1$ 次反面, 
+        因为反面朝上次数为 $2n+1-X\geq n+1$ 等价于 $X\leq n$). 由对称性可知 $\mathbb{P}(A)=\mathbb{P}(B)$.\\
+        由于 $A,\,B$ 互为对立事件(即 $A\cup B=\Omega,\,A\cap B =\varnothing$.), 故 $\mathbb{P}(A)+\mathbb{P}(B)=1$, 
+        因此 $\displaystyle \mathbb{P}(A)=\mathbb{P}(B)=\frac{1}{2}$.\\
+        接下来，我们从另一个视角来看事件 $A$.\\
+        考虑“第 \(n+1\) 次正面出现的抛掷序号”.\\
+        显然第 \(n+1\) 次正面一定发生在第 \(n+1\) 次至第 \(2n+1\) 次抛掷之间.\\
+        设第 \(n+1\) 次正面出现在第 \(n+k+1\) 次抛掷，其中 \(k\) 为非负整数.
+        显然 \(k\) 必须满足 \(0\le k\le n\) (因为第 \(n+1\) 次正面最晚在第 \(2n+1\) 次出现，此时 \(n+k+1=2n+1 \Rightarrow k=n\)).\\
+        固定 \(k\in\{0,1,\cdots,n\}\)，定义事件
+        \[
+        E_k = \{\text{前 }n+k\text{ 次抛掷中恰有 }n\text{ 次正面，且第 }n+k+1\text{ 次抛掷为正面}\}.
+        \]
+        由于硬币独立且均匀，计算得
+        \[
+        \mathbb{P}(E_k) = \binom{n+k}{n} \left(\frac12\right)^{n+k} \cdot \frac12
+        = \binom{n+k}{n} 2^{-(n+k+1)}. \tag{2}
+        \]
+        事件 \(E_k\) 互不相交(因为第 \(n+1\) 次正面出现的时刻唯一确定)，并且
+        \[
+        A = \bigcup_{k=0}^{n} E_k.
+        \]
+        因此
+        \[
+        \begin{aligned}
+            \mathbb{P}(A) &= \sum_{k=0}^{n} \mathbb{P}(E_k)= \sum_{k=0}^{n} \binom{n+k}{n} 2^{-(n+k+1)}\\
+        &= 2^{-(n+1)} \sum_{k=0}^{n} \binom{n+k}{n} 2^{-k}=\sum_{k=0}^{n} \binom{n+k}{n} 2^{-n-k-1}.
+        \end{aligned}
+        \]
+        从而 $\displaystyle \sum_{k=0}^{n} \binom{n+k}{n} 2^{-n-k-1}=\frac{1}{2}$.
+    \end{solution}
+    
+    \item[7.]$(\star)$ 设 \(\displaystyle u(x)\in C^{1}([-1,1])\) 满足 \(u(0) = 0\) 且
+    在 \((-1,1)\) 上满足 \(\displaystyle u^{\prime}(x) = F(u(x))\) ,其中 \(F(t)\) 在 \(t = 0\) 的一个固定邻域(与 \(k\) 无关)内满足 \(\displaystyle|F^{(k)}|\leq k!\).
+    证明: \(u(x)\) 在 \(x = 0\) 的一个邻域内解析. (提示:可以归纳地估计 \(|u^{(k)}|\) 在 \(x = 0\) 的某一邻域的上界.)
+\end{enumerate}
+
+== 习题B ==
+
+(拓展练习:推导 \textbf{Lagrange 反演定理})
+
+设函数 \(\displaystyle w = f(z)\) 在 \(z = 0\) 的某邻域内解析, 满足 \(f(0) = 0\) 且 \(\displaystyle f^{\prime}(0)\neq 0\).
+记其解析反函数为 \(\displaystyle z = g(w)\), 满足 \(g(0) = 0\).
+我们要用分析的方法证明 Lagrange 反演公式:
+\[\displaystyle g(w) = \sum_{n = 1}^{\infty}\frac{w^{n}}{n!}\left[\frac{\mathrm{d}^{n - 1}}{\mathrm{d}z^{n - 1}}\left(\frac{z}{f(z)}\right)^{n}\right]_{z = 0}.\]
+请按以下步骤证明.
+
+\begin{enumerate}
+    \item[1.]定义 \(\displaystyle F(z) = \frac{z}{f(z)}\), 验证 \(F(z)\) 在 \(z = 0\) 解析, 且 \(\displaystyle F(0) = \frac{1}{f^{\prime}(0)}\neq 0\).
+    \item[2.]证明 \(g(w)\) 满足函数方程: \(\displaystyle g(w) = wF(g(w))\).
+    \item[3.]设 \(\displaystyle F(z) = \sum_{k = 0}^{\infty}a_{k}z^{k}\) , \(\displaystyle g(w) = \sum_{n = 1}^{\infty}b_{n}w^{n}\) 
+    (注意 \(g(0) = 0\) ), 证明:
+    \[\displaystyle b_{n} = \sum_{k = 0}^{n - 1}a_{k}\cdot [w^{n - 1}]\left(\sum_{m = 1}^{\infty}b_{m}w^{m}\right)^{k}, \quad n\geq 1.\]
+    其中 \([w^{j}](\cdot)\) 表示提取 \(w^{j}\) 项的系数.
+    \item[4.]利用上式计算 \(b_{1}\) 和 \(b_{2}\), 用 \(\displaystyle a_{0},a_{1}\) 表示.
+    \item[5.]设 \(\displaystyle  u = g(w)\), 则 \(\displaystyle w = \frac{u}{F(u)}\). 利用反函数求导公式证明:
+    \[\displaystyle \frac{\mathrm{d}g}{\mathrm{d}w} = \left(\frac{\mathrm{d}w}{\mathrm{d}g}\right)^{-1} = \frac{F(g)^{2}}{F(g) - gF'(g)}.\]
+    \item[6.]验证形式关系:
+    \[\displaystyle[w^{n}]g(w) = \frac{1}{n} [u^{n - 1}]F(u)^{n},\]
+    即 \(\displaystyle b_{n} = \frac{1}{n} [z^{n - 1}]F(z)^{n}\).
+    \item[7.]已知幂级数 \(\displaystyle \Phi (z) = \sum_{k = 0}^{\infty}c_{k}z^{k}\), 证明:
+    \[\displaystyle [z^{n - 1}]\Phi (z)^{n} = \frac{1}{(n - 1)!}\left[\frac{d^{n - 1}}{dz^{n - 1}}\Phi (z)^{n}\right]_{z = 0}.\]
+    \item[8.]证明:
+    \[\displaystyle b_{n} = \frac{1}{n!}\left[\frac{d^{n - 1}}{dz^{n - 1}} F(z)^{n}\right]_{z = 0}.\]
+    \item[9.]将 \(\displaystyle F(z) = \frac{z}{f(z)}\) 代入第 8 小问, 即得
+    \[\displaystyle g(w) = \sum_{n = 1}^{\infty}\frac{w^{n}}{n!}\left[\frac{\mathrm{d}^{n - 1}}{\mathrm{d}z^{n - 1}}\left(\frac{z}{f(z)}\right)^{n}\right]_{z = 0}.\]
+    请简要说明为什么此级数在 \(w = 0\) 的某个邻域内收敛.
+    \item[10.]$(\star)$ 若 \(f(z)\) 满足 \(\displaystyle f(0) = 0,f^{\prime}(0)\neq 0\) ,且 \(h(z)\) 在 \(z = 0\) 解析, 试仿照上述方法推导:
+    \[\displaystyle h(g(w)) = h(0) + \sum_{n = 1}^{\infty}\frac{w^{n}}{n!}\left[\frac{\mathrm{d}^{n - 1}}{\mathrm{d}z^{n - 1}}\left(h^{\prime}(z)\left(\frac{z}{f(z)}\right)^{n}\right)\right]_{z = 0}.\]
+    \item[11.]$(\star)$ 设 \(\displaystyle f(z) = ze^{-z}\), 求其反函数 \(g(w)\) 在 \(w = 0\) 处的幂级数展开的前三项.
+\end{enumerate}
+
+== 习题C ==
+
+\begin{enumerate}
+    \item[1.]计算如下级数的和:
+    \begin{enumerate}
+        \item[(a)]$\displaystyle \sum_{n = 0}^{+\infty}\frac{(-1)^{n}}{4n + 1}$;
+        \item[(b)]$\displaystyle \sum_{n = 0}^{+\infty}\frac{(-1)^{n}}{3n + 2}$;
+        \item[(c)]$\displaystyle \sum_{n = 0}^{+\infty}\frac{(2n + 1)!!}{(2n)!!}\frac{1}{(2n + 1)^{2}}$;
+        \item[(d)]$\displaystyle \sum_{n = 0}^{+\infty}n^{3}x^{n},x\in (-1,1)$;
+        \item[(e)]$\displaystyle \sum_{n = 0}^{+\infty}\frac{x^{2n}}{4n - 1}, x\in (-1,1).$
+    \end{enumerate}
+
+    \item[2.]利用幂级数计算积分 \(\displaystyle \int_{0}^{1}\frac{\ln(1 - x)}{x} \mathrm{d}x.\)
+    \begin{solution}
+        \[
+            \frac{\ln(1-x)}{x}=-\frac{1}{x}\sum_{k=1}^{+\infty}\frac{x^k}{k}=-\sum_{k=1}^{+\infty}\frac{x^{k-1}}{k}.
+        \]
+        \[
+            \begin{aligned}
+                \int_0^1\frac{\ln(1-x)}{x}\mathrm{d}x
+                &=\lim_{\epsilon\to0^+}\int_0^{1-\epsilon}\frac{\ln(1-x)}{x}\mathrm{d}x =\lim_{\epsilon\to0^+}\int_0^{1-\epsilon}\left( -\sum_{k=1}^{+\infty}\frac{x^{k-1}}{k} \right)\mathrm{d}x\\
+                &=\lim_{\epsilon\to0^+}\left.-\sum_{k=1}^{+\infty}\frac{x^{k}}{k^2}\right|_0^{1-\epsilon} =-\sum_{k=1}^{+\infty}\frac{1}{k^2}=-\frac{\pi^2}{6}.
+            \end{aligned}
+        \]
+    \end{solution}
+    
+    \item[3.]设 \(\displaystyle \sum_{n = 0}^{+\infty}a_{n}\) 的 Abel 和是 \(A\). 证明: \(\displaystyle \sum_{n = 0}^{+\infty}a_{n}\) 收敛的充要条件是
+    \[\displaystyle\lim_{n\to +\infty}\frac{a_{1} + 2a_{2} + \cdots +na_{n}}{n} = 0.\]
+    \begin{solution}
+        必要性显然. 只证明充分性.\\
+        由 $\displaystyle \sum_{n = 0}^{+\infty}a_{n}$ 的 Abel 和是 \(A\) 可知
+        \[
+            \forall \epsilon>0,\,\exists N_1>0,\,\forall n>N_1 : \left|\sum_{k=0}^{+\infty}a_k\left( 1-\frac{1}{n} \right)^k -A \right|\leq \epsilon.
+        \]
+        由 $\displaystyle\lim_{n\to +\infty}\frac{a_{1} + 2a_{2} + \cdots +na_{n}}{n} = 0$ 可知
+        \[
+            \forall \epsilon>0,\,\exists N_2>0,\,\forall n>N_2 : \left| \frac{a_{1} + 2a_{2} + \cdots +na_{n}}{n} \right|\leq \epsilon.
+        \]
+        又对于正整数 $n$, $\displaystyle \left( 1-\frac{1}{n} \right)^n$ 单调递增且有极限 $\displaystyle \frac{1}{e}$, 即
+        \[
+            \forall n\in\mathbb{N}_{+},\,\left( 1-\frac{1}{n} \right)^n\leq\frac{1}{e}<\frac{1}{2.7}\eqqcolon q.
+        \]
+        从而取 $N\coloneqq \max\{N_1,N_2\}$, 有
+        \[
+            \begin{aligned}
+                \left| \sum_{k=0}^n a_k-A \right|
+                &\leq \left| \sum_{k=0}^n a_k - \sum_{k=0}^{+\infty}a_k\left( 1-\frac{1}{n} \right)^k \right|+\left| \sum_{k=0}^{+\infty}a_k\left( 1-\frac{1}{n} \right)^k -A \right|\\
+                &\leq \left| \sum_{k=0}^n a_k - \sum_{k=0}^{+\infty}a_k\left( 1-\frac{1}{n} \right)^k \right|+\epsilon\\
+                &\leq \left| \sum_{k=0}^n a_k\left[ 1-\left( 1-\frac{1}{n} \right)^k \right] \right|+\left| \sum_{k=n+1}^{+\infty} a_k\left[ 1-\left( 1-\frac{1}{n} \right)^k \right] \right|+\epsilon\\
+                &\overset{\mathrm{Bernoulli}}{\leq}\left| \frac{a_1+2a_2+\cdots+na_n}{n} \right|+ \left( 1-\frac{1}{n} \right)^n\sum_{k=n+1}^{+\infty}a_k\left( 1-\frac{1}{n} \right)^{k-n}+\epsilon\\
+                &\leq 2\epsilon + q\sum_{p=1}^{+\infty}\sum_{k=pn+1}^{(p+1)n}a_{k}\cdot q^{p-1}\\
+                &(\text{这里\,} pn+1\leq k\leq (p+1)n\Rightarrow (p-1)n+1\leq k-n \leq pn.)\\
+                &\leq 2\epsilon + \sum_{p=1}^{+\infty} q^p \sum_{k=pn+1}^{2pn}\frac{ka_n}{pn}\\
+                &\leq 2\epsilon + 2\sum_{p=1}^{+\infty} q^p \sum_{k=pn+1}^{2pn}\frac{ka_n}{2pn}\\
+                &(\text{这里\,} n \text{\,充分大也有\,} \displaystyle \sum_{k=pn+1}^{2pn}\frac{ka_n}{2pn}\leq \epsilon.)\\
+                &\leq \displaystyle 2\epsilon + 2\epsilon\cdot\frac{q}{1-q}.
+            \end{aligned}
+        \]
+    \end{solution}
+    
+    \item[4.]设 \(\displaystyle |a_{n}|< \frac{\pi}{4}\), 级数 \(\displaystyle\sum_{n = 0}^{+\infty}a_{n}\) 绝对收敛. 证明:无穷乘积 \(\displaystyle\prod_{n = 1}^{+\infty}\tan \left(\frac{\pi}{4} +a_{n}\right)\) 收敛.
+    \item[5.]验证复幂级数 \(\displaystyle f(z) = \sum_{n = 0}^{\infty}a_{n}z^{n}\) 在收敛半径内满足 Cauchy-Riemann 方程, 
+    即若将 \(f(z)\) 写作 \(\displaystyle u(x,y) + \mathrm{i}v(x,y)\), 其中 \(x,y,u,v\in \mathbb{R}\), 则 \(\displaystyle u_{x} = v_{y}\) 与 \(\displaystyle u_{y} = -v_{x}\) 在 \(z = 0\) 的一个邻域内成立. 
+    (可以假设级数的求导法则对偏导数也成立.)
+    \item[6.]运用复幂级数与复数的极坐标表示验证如下导数交换法则: 若 Fourier 级数 \(\displaystyle f(\theta) = \sum_{n = 1}^{\infty}a_{n}\sin (n\theta)\) 满足 \(\displaystyle \lim_{n\to +\infty}\sup \sqrt[n]{|a_{n}|} < 1\), 
+    则 \(f(\theta)\) 可导且 \(\displaystyle f'(\theta) = \sum_{n = 1}^{\infty}na_{n}\cos (n\theta)\). 
+    (同样假设级数的求导法则对复函数也成立.)
+    \item[7.]对上一题的 \(f(\theta)\) 验证 \textbf{Wirtinger 不等式} \(\displaystyle \int_{0}^{2\pi}|f'(\theta)|^{2}\mathrm{d}\theta \geq \int_{0}^{2\pi}|f(\theta)|^{2}\mathrm{d}\theta\). 
+    (提示: 若正整数 \(m\neq n\), 则 \(\displaystyle \sin (mx)\sin (nx)\) 在 $[0,\,2\pi]$ 的积分等于 0.)
+\end{enumerate}

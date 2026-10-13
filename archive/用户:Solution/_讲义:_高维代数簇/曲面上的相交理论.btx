@@ -1,0 +1,88 @@
+\section{光滑曲面上的相交配对}
+在光滑代数簇上，Weil除子与Cartier除子等价，
+所以以下我们一律称“除子”，
+并记全体除子构成的Abel群为$\operatorname{Div}(X)$.
+我们希望在光滑射影曲面$S$上做相交理论.
+ 具体来说，我们需要在$\operatorname{Div}(S)$定义一个$\Z$-对称双线性的配对
+\[\operatorname{Div}(S) \times \operatorname{Div}(S) \longrightarrow \Z\]
+满足如下条件：
+\begin{itemize}
+    \item[(1)] 数相交数：若$C,D \subseteq S$是两条整曲线，则$C.D = \# C \cap D$.
+    这里$\# C \cap D$是带有重数的. 具体来说，
+    \[\# C \cap D := \sum_{p \in |C \cap D|}\dim_{\mathbb{C}}\mathscr{O}_{X,p}
+    /(\mathscr{I}_{C,p},\mathscr{I}_{D,p})；\]
+
+    \item[(2)] 模线性等价：给定除子$C_{1},C_{2},D$.
+    若$C_{1} \sim_{L} C_{2}$，则$C_{1}.D = C_{2}.D$；
+
+    \item[(3)] 平凡性：$0.D = 0$；
+
+    \item[(4)] 分配律：给定除子$C_{1},C_{2},D$，
+    则有$(C_{1} + C_{2}).D = C_{1}.D + C_{2}.D$.
+\end{itemize}
+
+一则定理是，上述的相交理论存在且唯一. 我们着手构造这样的相交理论.
+\begin{lemma}
+   对于整曲线$C$与$D$，$\# C \cap D = \deg \mathscr{O}_{C}(D)$.  
+\end{lemma}
+\begin{proof}
+    待补充.
+\end{proof}
+
+这则引理使我们可以将具体的相交数接入相交理论的框架. 
+对于$C,D \in \operatorname{Div}(S)$我们定义
+\[C.D := \chi(\mathscr{O}_{S}) - \chi(\mathscr{O}_{S}(-C)) 
+- \chi(\mathscr{O}_{S}(-D)) + \chi(\mathscr{O}_{S}(-C - D)).\]
+
+\begin{lemma}
+    对于整曲线$C$与$D$，$C.D = \deg \mathscr{O}_{C}(D)$.
+\end{lemma}
+\begin{proof}
+    待补充.
+\end{proof}
+
+上述构造显然是模线性等价的，因为该定义并不关心具体的除子，而是只涉及除子定义的层.
+但分配律并不能直接由定义得到.
+\begin{proposition}
+    对于上述建立的相交理论，分配律成立.
+\end{proposition}
+\begin{proof}
+    待补充.
+\end{proof}
+
+有了分配律，我们便已经完成了相交理论存在性的证明. 
+非常优雅的是，这样的相交理论是唯一的.
+\begin{proposition}
+    满足(1)$\sim$(4)的相交理论若存在，则唯一.
+\end{proposition}
+\begin{proof}
+    待补充.
+\end{proof}
+
+综上述，我们建立了光滑曲面上的相交理论.
+\begin{theorem}
+    在光滑曲面上，存在唯一满足(1)$\sim$(4)的相交理论.
+\end{theorem}
+
+\section{Néron-Severi群}
+
+\section{光滑曲面上的Riemann-Roch定理}
+
+\section{Hodge指标定理}
+
+\section{习题}
+\begin{itemize}
+    \item[2.1] 设$S$为光滑射影曲面，而
+    $C = C_{1} + \cdots + C_{r}$
+    为$S$上的广义曲线，其中$C_{i}$（$1 \leq i \leq r$）为整曲线.
+    证明：$p_{a}(C) = 0$\textbf{当且仅当}如下三个条件同时成立：
+    \begin{itemize}
+        \item[(1)] 对于$i \leq j$，有$(C_{i} \cdot C_{j}) \leq 1$；
+        \item[(2)] $C$的Dynkin图不含圈；
+        \item[(3)] 对于互不相同的$i,j,k$，
+            有$|C_{i}| \cap |C_{j}| \cap |C_{k}| = \varnothing$.
+    \end{itemize}
+    \begin{proofc}[解答]
+
+    \end{proofc}
+\end{itemize}

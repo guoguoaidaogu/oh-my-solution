@@ -1,0 +1,57 @@
+\setdisplaytitle{试卷：现代微分几何基础}
+\sethtmltitle{试卷：现代微分几何基础}
+
+注. 这里可与页面《微分流形 (H) 》的试题相互参考, 那里有相同课程的往年题目.
+
+== 2025--2026秋季学期东瑜昕《现代微分几何基础》期末试题(12.22) ==
+\begin{itemize}
+    \item[1.]
+    \begin{enumerate}
+        \item[(1)]叙述微分流形定义.
+        \item[(2)]证明$S^2\times\R^{k}$是$k+2$维光滑流形.
+    \end{enumerate}
+    
+    \item[2.]设$f: \R^n \rightarrow \R^k$ 为光滑函数, 定义\[\Gamma(f)
+    \triangleq\{(x,y)\ |\ x\in\R^n,\ y=f(x)\}.\]证明$\Gamma(f)$为$\R^{n+k}$的$n$维$C^\infty$子流形.
+
+    \item[3.]
+    设 $M$ 和 $N$ 分别是 $m$ 维和 $n$ 维的 $C^{\infty}$-微分流形, 
+$F: M \rightarrow N$ 是 $C^{\infty}$-微分流形之间的光滑映照。
+对于 $p \in M$ 以及 $q=F(p) \in N$, $F$ 自然地确定了一个余切空间的拉回映照 $F_{q}^{*}: T_{q}^{*} N \rightarrow T_{p}^{*} M$。
+如果 $p$ 处有局部坐标 $\left(U, x^{i}\right)$, $q$ 处有局部坐标 $\left(V, y^{\alpha}\right)$，
+它们分别给出了 $T_{p}^{*} M$ 和 $T_{q}^{*} N$ 的自然基 $\{(\mathrm{d} x^{i})_{p}\}$ 和 $\{(\mathrm{d} y^{\alpha})_{q}\}$。
+    \begin{enumerate}
+        \item[(1)]写出 $F_{q}^{*}$ 在该基下的矩阵表示.
+        \item[(2)]当 $F$ 是微分同胚时，证明上述 $F_{q}^{*}$ 是线性同构.
+    \end{enumerate}
+    
+    \item[4.]定义映射$f:\R^2\to\R^2$如下:
+    \[y_1=2x_1e^{x_2}+3x_2,\quad y_2=2x_1e^{x_2}-x_2.\]
+    证明$f$为光滑微分同胚，并给出切映射$f_*$在$\R^2$自然基下的矩阵表示.
+    
+    \item[5.] 
+    设$V$为$n$维向量空间.
+    \begin{enumerate}
+        \item[(1)]写出$\Lambda^r(V^*)$的基和维数.
+        \item[(2)]$\omega \in \Lambda^r(V^*),\sigma \in \Lambda^s(V^*)$，
+        证明 $\omega \wedge \sigma=(-1)^{rs}\sigma \wedge \omega$.
+    \end{enumerate}
+    
+    \item[6.]
+    \begin{enumerate}
+        \item[(1)]叙述Frobenius定理.
+        \item[(2)]设$M$为$n$维光滑流形，给定其上光滑向量场$X,Y$如下：
+        \[
+        X=\sum_iX^i\frac{\partial}{\partial x^i},\quad Y=\sum_iY^i\frac{\partial}{\partial x^i}.
+        \]
+        给出Lie括号$[X,Y]$在基$\displaystyle\left\{\frac{\partial}{\partial x^i}\right\}$下的表示.
+    \end{enumerate}
+    
+    \item[7.]证明紧子流形一定是正则子流形.
+    
+    \item[8.]
+    \begin{enumerate}
+        \item[(1)]叙述微分流形上微分形式的积分的定义, 并说明其与单位分解的选择无关;
+        \item[(2)]叙述流形的Stokes公式.
+    \end{enumerate}
+\end{itemize}

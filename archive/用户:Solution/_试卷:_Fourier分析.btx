@@ -1,0 +1,33 @@
+\begin{center}\textsize{24pt}{2022学年期末试卷}\end{center}
+\begin{itemize}
+    \item[一、]（15分）\ 习题1.3.7.
+    \item[二、]（30分）\ 习题2.1.11.
+    \item[三、]（10分）\ 习题2.3.10.
+    \item[四、]（15分）\ 习题2.2.12.
+    \item[五、]（30分）\ $m_\alpha(x):=(1+4\pi^2\vert x\vert ^2)^{-\alpha},\alpha\in(0,1)$，
+    求$m_\alpha$的Fourier变换（不必给出显式表达），
+    并以此证明$m_\alpha(x)$是一个$L^p$ Fourier乘子，$1\leqslant p\leqslant\infty$.
+\end{itemize}
+{{comment|可以直接把作业纸交上去；可以提前交卷。}}
+{{comment|第五题这样做：由GTM250 Proposition 1.2.5，
+$m_\alpha^\vee>0$，且$\|m_\alpha^\vee\|_{L^1}=1$。
+由GTM249 Exercise 2.5.8，$\|m_\alpha\|_{\mathscr{M}_p}=1$。}}
+
+~\\
+
+\begin{center}\textsize{24pt}{2023学年期末试卷}\end{center}
+\begin{itemize}
+    \item[一、]（20分）\ 习题1.1.12.
+    \item[二、]（10分）\ 习题1.3.7.
+    \item[三、]（10分）\ 习题2.2.14.
+    \item[四、]（5+5分）\ 习题2.3.12.
+    \item[五、]（6+9分）\ 习题2.5.6.
+    \item[六、]（15分）\ 对半正定阵$ A $，求$ \exp(-\langle Ax,x\rangle) $的Fourier变换.
+    \item[七、]（5+15分）\ 对$ f\in\mathcal{S} $,以及缓增分布$ u $, 
+    有$ (I-\Delta)u=f $, 证明：$ u\in\mathcal{S} $。
+    
+    对$ 1<p<\infty $, 证明：存在常数$ A_{p} $, 
+    使得$ \forall f \in \mathcal{C} _{c}^{\infty} , \forall 1\le i,j \le n $, 
+    都有$ \| \partial_{i}\partial_{j}u \|_{L^p} \le A_{p} \| f \|_{L^p} $成立.
+\end{itemize}
+{{comment|第六题见课上习题栏目。}}

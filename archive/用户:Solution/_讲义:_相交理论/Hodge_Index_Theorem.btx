@@ -1,0 +1,170 @@
+
+
+\begin{theorem}
+Suppose $X$ is an irreducible smooth projective surface over a field $k$. Let $\mathcal{L}, \mathcal{H} \in \text{Pic}(X)$ be line bundles such that $\mathcal{H} \cdot \mathcal{H} > 0$ and $\mathcal{L} \cdot \mathcal{H} = 0$. Then:
+\begin{enumerate}
+    \item[(a)] $\mathcal{L} \cdot \mathcal{L} \leq 0$.
+    \item[(b)] $\mathcal{L} \cdot \mathcal{L} = 0$ if and only if $\mathcal{L} \equiv_{\text{num}} 0$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[\textbf{Proof}]
+The proof proceeds in several steps.
+
+\textbf{Step 1:}
+\begin{lemma}
+If $\mathcal{H}$ is an ample line bundle and $\mathcal{M}$ is a line bundle such that $(\mathcal{M} \cdot \mathcal{H}) > (\omega_X \cdot \mathcal{H})$, then $h^2(X, \mathcal{M}) = 0$.
+\end{lemma}
+
+\begin{proof}[Proof of Lemma 1]
+By Serre duality, we have $h^2(X, \mathcal{M}) = h^0(X, \omega_X \otimes \mathcal{M}^\vee)$. We prove this by contradiction. Suppose that $h^0(X, \omega_X \otimes \mathcal{M}^\vee) \neq 0$. Then there exists an effective divisor $D$ such that $\mathcal{O}(D) \cong \omega_X \otimes \mathcal{M}^\vee$. 
+
+By the ampleness of $\mathcal{H}$ and the effectiveness of $D$, we must have $(\mathcal{H} \cdot D) > 0$. On the other hand, since $D \equiv \omega_X - \mathcal{M}$, this implies $(\omega_X \cdot \mathcal{H}) > (\mathcal{M} \cdot \mathcal{H})$. This directly contradicts our initial assumption! Thus, $h^2(X, \mathcal{M}) = 0$.
+\end{proof}
+
+\textbf{Step 2:}
+\begin{lemma}
+If $\mathcal{H}$ is an ample line bundle, and $\mathcal{L}$ is a line bundle with $\mathcal{L} \cdot \mathcal{L} > 0$ and $\mathcal{L} \cdot \mathcal{H} > 0$, then for $n \gg 0$, the tensor power $\mathcal{L}^{\otimes n}$ has a non-zero global section (i.e., $h^0(X, \mathcal{L}^{\otimes n}) > 0$).
+\end{lemma}
+
+\begin{proof}[Proof of Lemma 2]
+Since $\mathcal{L} \cdot \mathcal{H} > 0$, we can find a sufficiently large integer $n \gg 0$ such that $n(\mathcal{L} \cdot \mathcal{H}) > (\omega_X \cdot \mathcal{H})$. By Lemma 1, this implies $h^2(X, \mathcal{L}^{\otimes n}) = 0$.
+
+Applying the Riemann-Roch theorem for surfaces to $\mathcal{L}^{\otimes n}$, we obtain:
+\begin{align*}
+h^0(X, \mathcal{L}^{\otimes n}) - h^1(X, \mathcal{L}^{\otimes n}) &= \chi(X, \mathcal{L}^{\otimes n}) \\
+&= \frac{n^2}{2}(\mathcal{L} \cdot \mathcal{L}) - \frac{n}{2}(\mathcal{L} \cdot \omega_X) + \chi(X, \mathcal{O}_X).
+\end{align*}
+Since $\mathcal{L} \cdot \mathcal{L} > 0$, the quadratic term $\frac{n^2}{2}(\mathcal{L} \cdot \mathcal{L})$ strictly dominates the expression for large $n$. Therefore, for $n \gg 0$, the right-hand side approaches infinity, which implies $h^0(X, \mathcal{L}^{\otimes n}) - h^1(X, \mathcal{L}^{\otimes n}) > 0$. Since $h^1(X, \mathcal{L}^{\otimes n}) \geq 0$, it immediately follows that $h^0(X, \mathcal{L}^{\otimes n}) > 0$.
+\end{proof}
+
+\textbf{Step 3:}
+We now prove the main theorem for the specific case where $\mathcal{H}$ is ample. 
+
+For $n \gg 0$, the line bundle $\mathcal{L} \otimes \mathcal{H}^{\otimes n}$ becomes ample (or very ample). Let us denote this ample line bundle by $\mathcal{H}'$. We proceed to prove the theorem by contradiction. Suppose that $\mathcal{L} \cdot \mathcal{L} > 0$. 
+Compute the intersection:
+\[
+(\mathcal{L} \cdot \mathcal{H}') = (\mathcal{L} \cdot (\mathcal{L} \otimes \mathcal{H}^{\otimes n})) = (\mathcal{L} \cdot \mathcal{L}) + n(\mathcal{L} \cdot \mathcal{H}) = (\mathcal{L} \cdot \mathcal{L}) > 0.
+\]
+By Lemma 2, since $\mathcal{H}'$ is ample, $(\mathcal{L} \cdot \mathcal{L}) > 0$, and $(\mathcal{L} \cdot \mathcal{H}') > 0$, the line bundle $\mathcal{L}^{\otimes m}$ must have a non-zero global section for some integer $m \gg 0$. Let $D \in |\mathcal{L}^{\otimes m}|$ be the corresponding effective divisor. Since $\mathcal{H}$ is ample, its intersection with any effective divisor is strictly positive, hence $(D \cdot \mathcal{H}) > 0$. This implies $\frac{1}{m}(D \cdot \mathcal{H}) = (\mathcal{L} \cdot \mathcal{H}) > 0$.
+This directly contradicts our initial assumption that $(\mathcal{L} \cdot \mathcal{H}) = 0$! Therefore, we must have $(\mathcal{L} \cdot \mathcal{L}) \leq 0$.
+
+
+\textbf{Step 4: The case $(\mathcal{L} \cdot \mathcal{L}) = 0$ when $\mathcal{H}$ is ample.}
+Suppose $(\mathcal{L} \cdot \mathcal{L}) = 0$. We wish to prove that $\mathcal{L} \equiv_{\text{num}} 0$.
+We proceed by contradiction and suppose $\mathcal{L} \not\equiv_{\text{num}} 0$. By definition, there exists a line bundle $\mathcal{Q}$ such that $(\mathcal{Q} \cdot \mathcal{L}) \neq 0$.
+Consider the line bundle (written additively):
+\[
+\mathcal{R} := (\mathcal{H} \cdot \mathcal{H})\mathcal{Q} - (\mathcal{Q} \cdot \mathcal{H})\mathcal{H}.
+\]
+We can verify the following intersections:
+\[
+(\mathcal{R} \cdot \mathcal{H}) = (\mathcal{H} \cdot \mathcal{H})(\mathcal{Q} \cdot \mathcal{H}) - (\mathcal{Q} \cdot \mathcal{H})(\mathcal{H} \cdot \mathcal{H}) = 0.
+\]
+\[
+(\mathcal{R} \cdot \mathcal{L}) = (\mathcal{H} \cdot \mathcal{H})(\mathcal{Q} \cdot \mathcal{L}) - (\mathcal{Q} \cdot \mathcal{H})(\mathcal{H} \cdot \mathcal{L}) = (\mathcal{H} \cdot \mathcal{H})(\mathcal{Q} \cdot \mathcal{L}) \neq 0.
+\]
+Now, define $\mathcal{L}' := \mathcal{R} \otimes \mathcal{L}^{\otimes m}$ (additively $\mathcal{R} + m\mathcal{L}$). We have:
+\[
+(\mathcal{L}' \cdot \mathcal{H}) = (\mathcal{R} \cdot \mathcal{H}) + m(\mathcal{L} \cdot \mathcal{H}) = 0 + 0 = 0.
+\]
+By the conclusion of Step 3, since $(\mathcal{L}' \cdot \mathcal{H}) = 0$, it must follow that $(\mathcal{L}' \cdot \mathcal{L}') \leq 0$.
+However, let us compute $(\mathcal{L}' \cdot \mathcal{L}')$ directly:
+\[
+(\mathcal{L}' \cdot \mathcal{L}') = (\mathcal{R} \cdot \mathcal{R}) + 2m(\mathcal{R} \cdot \mathcal{L}) + m^2(\mathcal{L} \cdot \mathcal{L}) = (\mathcal{R} \cdot \mathcal{R}) + 2m(\mathcal{R} \cdot \mathcal{L}).
+\]
+Because $(\mathcal{R} \cdot \mathcal{L}) \neq 0$, the term $2m(\mathcal{R} \cdot \mathcal{L})$ is a non-constant linear function of $m$. We can choose some integer $m \in \mathbb{Z}$ such that $(\mathcal{R} \cdot \mathcal{R}) + 2m(\mathcal{R} \cdot \mathcal{L}) > 0$.
+This yields $(\mathcal{L}' \cdot \mathcal{L}') > 0$, which contradicts the conclusion $(\mathcal{L}' \cdot \mathcal{L}') \leq 0$.
+Therefore, $\mathcal{L} \equiv_{\text{num}} 0$. This completes the proof of the Hodge Index Theorem for the case where $\mathcal{H}$ is ample.
+
+\textbf{Step 5: The general case.}
+Now suppose $\mathcal{H}$ is not necessarily ample, but only satisfies $(\mathcal{H} \cdot \mathcal{H}) > 0$.
+Let $\mathcal{A}$ be an arbitrary ample line bundle on $X$.
+If $(\mathcal{A} \cdot \mathcal{L}) = 0$, then by applying the established ample case to $\mathcal{A}$, we immediately get $(\mathcal{L} \cdot \mathcal{L}) \leq 0$ (and $(\mathcal{L} \cdot \mathcal{L}) = 0$ if and only if $\mathcal{L} \equiv_{\text{num}} 0$). The theorem holds.
+If $(\mathcal{A} \cdot \mathcal{L}) \neq 0$, then trivially $\mathcal{L} \not\equiv_{\text{num}} 0$.
+Also, note that if $(\mathcal{A} \cdot \mathcal{H}) = 0$, applying the ample case to $\mathcal{A}$ would yield $(\mathcal{H} \cdot \mathcal{H}) \leq 0$, which contradicts the given condition $(\mathcal{H} \cdot \mathcal{H}) > 0$. Thus, we must have $(\mathcal{A} \cdot \mathcal{H}) \neq 0$.
+Consider the line bundle:
+\[
+\mathcal{M} := (\mathcal{A} \cdot \mathcal{L})\mathcal{H} - (\mathcal{A} \cdot \mathcal{H})\mathcal{L}.
+\]
+Intersecting with $\mathcal{A}$, we get:
+\[
+(\mathcal{A} \cdot \mathcal{M}) = (\mathcal{A} \cdot \mathcal{L})(\mathcal{A} \cdot \mathcal{H}) - (\mathcal{A} \cdot \mathcal{H})(\mathcal{A} \cdot \mathcal{L}) = 0.
+\]
+Since $\mathcal{A}$ is ample and $(\mathcal{A} \cdot \mathcal{M}) = 0$, we can apply the ample case to deduce that $(\mathcal{M} \cdot \mathcal{M}) \leq 0$.
+Let us expand $(\mathcal{M} \cdot \mathcal{M})$ using the bilinearity of the intersection form:
+\[
+(\mathcal{M} \cdot \mathcal{M}) = (\mathcal{A} \cdot \mathcal{L})^2 (\mathcal{H} \cdot \mathcal{H}) - 2(\mathcal{A} \cdot \mathcal{L})(\mathcal{A} \cdot \mathcal{H})(\mathcal{H} \cdot \mathcal{L}) + (\mathcal{A} \cdot \mathcal{H})^2 (\mathcal{L} \cdot \mathcal{L}) \leq 0.
+\]
+Since $(\mathcal{L} \cdot \mathcal{H}) = 0$ by assumption, the middle cross-term vanishes, leaving:
+\[
+\underbrace{(\mathcal{A} \cdot \mathcal{L})^2}_{> 0} \underbrace{(\mathcal{H} \cdot \mathcal{H})}_{> 0} + \underbrace{(\mathcal{A} \cdot \mathcal{H})^2}_{> 0} (\mathcal{L} \cdot \mathcal{L}) \leq 0.
+\]
+The first term is strictly positive because $(\mathcal{A} \cdot \mathcal{L}) \neq 0$ and $(\mathcal{H} \cdot \mathcal{H}) > 0$. The coefficient $(\mathcal{A} \cdot \mathcal{H})^2$ is also strictly positive. For the entire sum to be non-positive, we must necessarily have:
+\[
+(\mathcal{L} \cdot \mathcal{L}) < 0.
+\]
+This concludes the proof of the Hodge Index Theorem for the general case.
+
+\end{proof}
+
+
+
+We introduce the following interesting consequence:
+
+\begin{lemma}[Neron–Severi group]
+    $N_1(X):= \mathrm{Div}(X)/\sim$, where $\sim$ is the numerical equivalence relation.
+Then $N_1(X)$ is a free abelian group of finite rank.
+\end{lemma}
+
+\begin{corollary}
+    Let $X$ be an irreducible smooth projective surface over a field $k$. Let $\rho$ be the Picard number of $X$. 
+\begin{enumerate}
+    \item[(a)] In the rational N\'eron-Severi space $N^1(X)_\mathbb{Q} = ( \text{Pic}(X) / \equiv_{\text{num}} ) \otimes \mathbb{Q}$, there exists an orthogonal basis $e_1, e_2, \dots, e_\rho$ such that the intersection form is diagonal with exactly one strictly positive entry and $\rho-1$ strictly negative entries.
+    \item[(b)] In the real N\'eron-Severi space $N^1(X)_\mathbb{R} = N^1(X)_\mathbb{Q} \otimes_\mathbb{Q} \mathbb{R}$, there exists an orthogonal basis $u_1, u_2, \dots, u_\rho$ such that the intersection matrix is exactly $\text{diag}(1, -1, \dots, -1)$.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}[\textbf{Proof}]
+\textbf{Proof of (a): The $N^1(X)_\mathbb{Q}$ case.}
+
+Since $X$ is a projective surface, there exists an ample line bundle $\mathcal{H}$. Let $e_1 = [\mathcal{H}] \in N^1(X)_\mathbb{Q}$ be its numerical class. Because $\mathcal{H}$ is ample, its self-intersection is strictly positive, meaning $e_1 \cdot e_1 > 0$.
+
+We define the orthogonal complement of $e_1$ in $N^1(X)_\mathbb{Q}$ with respect to the intersection form:
+\[
+e_1^\perp = \{ D \in N^1(X)_\mathbb{Q} \mid D \cdot e_1 = 0 \}.
+\]
+Because $e_1 \cdot e_1 \neq 0$, the intersection form is non-degenerate along the one-dimensional subspace spanned by $e_1$. Therefore, we have an orthogonal direct sum decomposition of the $\rho$-dimensional vector space $N^1(X)_\mathbb{Q}$:
+\[
+N^1(X)_\mathbb{Q} = \mathbb{Q}e_1 \oplus e_1^\perp.
+\]
+The dimension of $e_1^\perp$ is exactly $\rho - 1$. 
+
+By the Hodge Index Theorem, for any non-zero element $L \in e_1^\perp$, we have $L \cdot e_1 = 0$ and $L \not\equiv_{\text{num}} 0$. The theorem guarantees that $L \cdot L < 0$. This implies that the restriction of the intersection form to the subspace $e_1^\perp$ is strictly negative definite.
+
+Since every definite symmetric bilinear form over a field of characteristic zero admits an orthogonal basis (via the Gram-Schmidt orthogonalization process), there exists an orthogonal basis $e_2, \dots, e_\rho$ for $e_1^\perp$. 
+
+Therefore, $\{e_1, e_2, \dots, e_\rho\}$ forms an orthogonal basis for the entire space $N^1(X)_\mathbb{Q}$. Under this basis, the intersection matrix is diagonal. The diagonal entries are $e_1 \cdot e_1 > 0$ and $e_i \cdot e_i < 0$ for $i = 2, \dots, \rho$. Thus, the signature of the intersection form is $(+, -, \dots, -)$.
+
+\textbf{Proof of (b): The $N^1(X)_\mathbb{R}$ case.}
+
+We now extend the scalars to the real numbers, considering the space $N^1(X)_\mathbb{R}$. The orthogonal basis $\{e_1, e_2, \dots, e_\rho\}$ found in part (a) naturally serves as an orthogonal basis for $N^1(X)_\mathbb{R}$.
+
+Over the real numbers, we can normalize these basis vectors because every positive real number has a well-defined real square root. We define a new basis $\{u_1, u_2, \dots, u_\rho\}$ by scaling the previous basis vectors:
+\[
+u_1 = \frac{1}{\sqrt{e_1 \cdot e_1}} e_1,
+\]
+and for $i = 2, \dots, \rho$,
+\[
+u_i = \frac{1}{\sqrt{-(e_i \cdot e_i)}} e_i.
+\]
+We can compute the self-intersections of this new basis. For $u_1$, we have:
+\[
+u_1 \cdot u_1 = \left( \frac{1}{\sqrt{e_1 \cdot e_1}} \right)^2 (e_1 \cdot e_1) = \frac{e_1 \cdot e_1}{e_1 \cdot e_1} = 1.
+\]
+For $i \geq 2$, since $e_i \cdot e_i < 0$, the quantity $-(e_i \cdot e_i)$ is strictly positive, so its real square root is well-defined. We have:
+\[
+u_i \cdot u_i = \left( \frac{1}{\sqrt{-(e_i \cdot e_i)}} \right)^2 (e_i \cdot e_i) = \frac{e_i \cdot e_i}{-(e_i \cdot e_i)} = -1.
+\]
+Since scaling vectors does not affect their mutual orthogonality, $\{u_1, \dots, u_\rho\}$ is an orthogonal basis for $N^1(X)_\mathbb{R}$. Under this normalized basis, the intersection matrix is exactly the diagonal matrix $\text{diag}(1, -1, \dots, -1)$.
+\end{proof}

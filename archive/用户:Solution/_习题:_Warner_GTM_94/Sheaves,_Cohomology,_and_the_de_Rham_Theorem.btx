@@ -1,0 +1,242 @@
+\setdisplaytitle{Chapter 5 Sheaves, Cohomology, and the de Rham Theorem}
+\sethtmltitle{Chapter 5 Sheaves, Cohomology, and the de Rham Theorem}
+\begin{enumerate}
+\item (Following Lecture 1, Proposition 1 of \cite{6}) 
+Let $f$ be the $0$-section, $x \in X$ and let $G$ be an open set containing $f(x)=0_{x}$. 
+Then there is an open set $G_{1}$ such that $0_{x} \in G_{1} \subset G$ and $\pi|_{G_{1}}$ is a homeomorphism of $G_{1}$ onto open $\pi(G_{1})$. 
+Since $0_{x}+0_{x}=0_{x}$, and addition is continuous, 
+there exist open sets $H, K$ with $0_{x} \in H$, $0_{x} \in K$ such that $H+K \subset G_{1}$. 
+Let $L=G_{1} \cap H \cap K$, then $L$ is open, $0_{x} \in L$ and $\pi|_{L}$ is a homeomorphism of $L$ onto open $\pi(L)$. 
+Clearly $x=\pi(0_{x}) \in \pi(L)$. If $y \in \pi(L)$ there exists $q \in L$ with $\pi(q)=y$. 
+Then $q \in H \cap K \cap \mathcal{S}_{y}$, so $q+q \in G_{1} \cap \mathcal{S}_{y}$. 
+However, since $q \in G_{1}$ and $\pi(G_{1})$ is 1-1, $\{q\}=\mathcal{S}_{y} \cap G_{1}$. 
+Therefore $q+q=q$, which means $q=0_{y}$. 
+Thus if $y \in \pi(L)$, $f(y)=0_{y} \in L$. 
+Since $\pi|_{L}\colon L \rightarrow \pi(L)$ is a homeomorphism, 
+and $f|_{\pi(L)}$ is its inverse, it is also continuous. 
+Since $x \in X$ is arbitrary, $f$ is continuous on $X$.
+\item If $f\colon U \rightarrow \mathcal{S}$ is a section and $x \in U$, 
+then there exists an open set $f(x) \in V$ s.t. $\pi|_{V}\colon V \rightarrow \pi(V)$ is a homeomorphism and $\pi(V) \subset U$. 
+Since $f$ is continuous, $f^{-1}(V)$ is open, and $x \in f^{-1}(V) \subset \pi(V) \subset$ $U$. 
+Let $W=\pi^{-1} f^{-1}(V) \cap V$. Then it is an open neighborhood of $f(x)$, 
+and $\pi(W) \subset f^{-1}(V)$. Also $f(f^{-1}(V)) \subset W$. 
+But since $\pi \circ f|_{f^{-1}(V)}=\operatorname{id}_{f^{-1}(V)}, \pi(W)=f^{-1}(V)$. 
+Also, $\pi|_{W}\colon W \rightarrow \pi(W)=f^{-1}(V)$ is a homeomorphism, $f(f^{-1}(V))=W$. 
+Since $f|_{f^{-1}(V)}$ is continuous with a continuous inverse $\pi|_{W}$, it is a homeomorphism. 
+Therefore $f$ is a local homeomorphism and hence an open map.
+\item Let $f, g$ be two sections and $f(x)=g(x)$. 
+Then there exist an open set $x \in U$ and $x \in V$ s.t. $f\colon U \rightarrow f(U)$ and $g\colon V \rightarrow g(V)$ are local homeomorphisms. 
+Since $f(x)=g(x) \in f(U) \cap g(V)$, $f(U) \cap g(V)$ is nonempty. 
+Also, on $W=\pi(f(U) \cap g(V))$, which is an open neighborhood of $x$, 
+$f(y)=(f \circ(\pi \circ g))(y)=((f \circ \pi) \circ g)(y)=g(y)$ if $y \in W$. 
+Therefore $f=g$ on $W$. Since $0$-section is continuous (and indeed a section) by Exercise 1, the second statement follows.
+\item It is because $f_{x}=0$ does not mean only $f(x)=0$, 
+but ``$f$ is zero on the neighborhood of $x$''. 
+If $f\colon \mathbb{R} \rightarrow \mathbb{R}, x \mapsto x$, $f(0)=0$ but $f_{0} \neq 0$.
+\item It is because projection of sheaves are local homeomorphisms and a sheaf mapping is locally equal to the composition of a projection and the inverse of another projection.
+\item Let $\pi_{1}\colon \mathcal{S}_{1} \rightarrow X$ and $\pi_{2}\colon \mathcal{S}_{2} \rightarrow X$ be two sheaves on $X$ 
+and $\varphi, \psi\colon \mathcal{S}_{1} \rightarrow \mathcal{S}_{2}$ be two sheaf mappings. Suppose $\varphi(x)=\psi(x)$. 
+There exists an open set $U \ni x$ such that $\pi_{1}\colon U \rightarrow \pi_{1}(U)$ is a local homeomorphism. 
+Also, contracting $U$ if necessary, we can assume that $\varphi\colon U \rightarrow \varphi(U), \psi\colon U \rightarrow \psi(U), \pi_{2}\colon \varphi(U) \rightarrow \pi_{2}(\varphi(U)), \pi_{2}\colon \psi(U) \rightarrow \pi_{2}(\varphi(U))$ are local homeomorphisms. 
+Since $\varphi(x)=\psi(x) \in \varphi(U) \cap \psi(U)$, $\varphi(U) \cap \psi(U)$ is nonempty. 
+Also, on $W=\pi_{1}^{-1}(\pi_{2}(\varphi(U) \cap \psi(U)))$, 
+which is an open neighborhood of $x$ since $\pi_{1}(U) \supset \pi_{2}(\varphi(U) \cap \psi(U))$, 
+$\varphi(y)=\big(\varphi \circ(\pi_{1}^{-1} \circ \pi_{2} \circ \psi)\big)(y)
+=\big((\varphi \circ \pi_{1}^{-1} \circ \pi_{2}) \circ \psi\big)(y)=\psi(y)$ if $y \in W$. 
+Therefore $\varphi=\psi$ on $W$.
+By the way, if $\psi$ is a ``$0$-sheaf-mapping'', then it is the composition of the $0$-section and the projection map, hence continuous. 
+Therefore, it is a sheaf mapping indeed and the second statement follows.
+\item First, a lemma:
+
+\textit{Lemma.} Let $\pi\colon \mathcal{S} \rightarrow X$ be a sheaf and $\mathcal{R} \subset \mathcal{S}$ be a subsheaf. 
+If $f\colon U \rightarrow \mathcal{S}$ is a section, then $\mathcal{R} \cap \pi^{-1}(U)+f(U)$ is open in $\mathcal{S}$.
+
+\textit{Proof.} Let $p_{x} \in \mathcal{R} \cap \pi^{-1}(U)+f(U)$ and $\pi(p_{x})=x$. 
+By definition, there exist $q_{x} \in \mathcal{R}$ and $r_{x} \in f(U)$ s.t. $p_{x}=q_{x}+r_{x}$. 
+Let $U$ be an open neighborhood of $p_{x}$ which is locally homeomorphic to $\pi(U)$. Since addition is continuous, 
+there exist $V \subset \mathcal{R} \cap \pi^{-1}(U)$ and $W \subset f(U)$ neighborhoods of $q_{x}$ and $r_{x}$ respectively, s.t. $\pi(V)=\pi(W), V+W \subset U$, and $\pi|_{V}\colon V \rightarrow \pi(V), \pi|_{W}\colon W \rightarrow \pi(W)$ are homeomorphisms. 
+Let $Y=\pi(V)=\pi(W)$. Then $V+W \subset U \cap \pi^{-1}(Y)$. 
+Also, $y \in U \cap \pi^{-1}(Y)$, then there exists $a_{\pi(y)} \in V \cap \mathcal{S}_{\pi(y)}$ and $b_{\pi(y)} \in W \cap \mathcal{S}_{\pi(y)}$. 
+Then $a_{\pi(y)}+b_{\pi(y)} \in U \cap \mathcal{S}_{\pi(y)}$. 
+But since $\pi|_{U}\colon U \rightarrow \pi(U)$ is 1-1, 
+$y=a_{\pi(y)}+b_{\pi(y)} \in V+W$. Therefore $V+W=U \cap \pi^{-1}(Y)$ is open. 
+But it means $p_{x} \in V+W \subset \mathcal{R} \cap \pi^{-1}(U)+f(U)$, 
+so $\mathcal{R} \cap \pi^{-1}(U)+f(U)$ is open.
+
+Now come back to the question. First, we need to show that $\bar{\pi}\colon \mathcal{T} \rightarrow M$ is a sheaf.
+
+1) For $x \in \mathcal{T}$, there exists a $y \in \mathcal{S}$ s.t. $\varphi(y)=x$ 
+and $y \in U$ s.t. $\pi|_{U}\colon U \rightarrow \pi(U)$ is a homeomorphism. 
+Let $f\colon \pi(U) \rightarrow U$ be the inverse of $\left.\pi\right|_{U}$, which is a section. 
+Since $\varphi^{-1}(\varphi(U))=U+\mathcal{R} \cap \pi^{-1}(\pi(U))$ and it is open in $\mathcal{S}$ by the Lemma, $\varphi(U)$ is open. 
+Also if $W \subset \varphi(U)$, $\varphi^{-1}(W)=f^{-1}(\bar{\pi}(W))+\mathcal{R} \cap \pi^{-1}(\bar{\pi}(W))$ is also open in $U$ by Lemma. 
+Therefore $\varphi\colon U \rightarrow \varphi(U)$ is continuous. It is clearly onto, and 1-1 since $\varphi$ preserves fibers. 
+Also, if $V \subset U$ is open, $\varphi^{-1}(\varphi(V))=V+\mathcal{R} \cap \pi^{-1}(\pi(V))$ is open by the Lemma, so $\varphi(V)$ is open. 
+It means $\varphi^{-1}$ is also continuous. Therefore, $\varphi|_{U}$ is a homeomorphism, and $\bar{\pi}|_{\varphi(U)}=\pi \circ \varphi|_{U}^{-1}$ is a homeomorphism also. 
+Clearly $x \in \varphi(U)$. Therefore $\bar{\pi}\colon \mathcal{R} \rightarrow M$ is a local homeomorphism.
+
+2) $\bar{\pi}^{-1}(m)$ is clearly a $K$-module.
+
+3) $\varphi \times \varphi\colon \mathcal{S} \times \mathcal{S} \rightarrow \mathcal{T} \times \mathcal{T}$ is also a quotient map, and restricting to $\mathcal{S} \circ \mathcal{S}$, 
+we obtain a quotient map $\varphi \circ \varphi\colon \mathcal{S} \circ \mathcal{S} \rightarrow \mathcal{T} \circ \mathcal{T}$. 
+Let $\psi\colon \mathcal{S} \circ \mathcal{S} \rightarrow \mathcal{S}$ be a composition map. 
+Then $\bar{\psi}\colon \mathcal{T} \circ \mathcal{T} \rightarrow \mathcal{T}$ is a composition map on $\mathcal{T}$. 
+To check that it is continuous, we need to verify that $\bar{\psi}^{-1}(U)$ is open in $\mathcal{T} \circ \mathcal{T}$ for an open set $U \subset \mathcal{T}$. 
+But it is by definition equal to whether $(\varphi \circ \varphi)^{-1}(\bar{\psi}^{-1}(U))$ is open, 
+and it is open since $(\varphi \circ \varphi)^{-1}(\bar{\psi}^{-1}(U))=\psi^{-1}(\varphi^{-1}(U))$. 
+Therefore the composition map is continuous.
+Therefore $\bar{\pi}\colon \mathcal{T} \rightarrow M$ is a sheaf. 
+It remains to show that $\varphi$ is a sheaf homomorphism, but it follows from the proof of 1).
+
+\item Let $\varphi\colon \beta(\alpha(\mathcal{S})) \rightarrow \mathcal{S}, \rho_{p, U} f \rightarrow f(p)$.
+
+1) If $\rho_{p, U} f=\rho_{p^{\prime}, U^{\prime}}^{\prime} f^{\prime}, p=p^{\prime}$, 
+and $\exists V \subset U \cap U^{\prime}$ and $p \in V$ s.t. $f_{V}=f_{V}^{\prime}$. 
+Therefore $f(p)=f^{\prime}(p^{\prime})$ and $\varphi$ is well-defined.
+
+2) Let $s \in \mathcal{S}$ and $s \in V$ s.t. $\pi|_{V}\colon V \rightarrow \pi(V)$ be a homeomorphism. 
+If $\varphi(\rho_{p, u} f) \in V$, $f(p) \in V$, 
+therefore $f(p) \in f(U) \cap V \neq \varnothing$, which is open. 
+Also $\pi(f(U) \cap V) \subset U \cap \pi(V)$ is open. 
+Then it means $\rho_{p, U} f \in\{\rho_{q, \pi(f(U) \cap V)} f|_{\pi(f(U) \cap V)} |q \in \pi(f(U) \cap V)\} \subset \varphi^{-1}(V)$. Thus $\varphi$ is continuous.
+
+3) It clearly preserves fibers and composition.
+On the other hand, let $\psi\colon \mathcal{S} \rightarrow \beta(\alpha(\mathcal{S})), f(p) \mapsto \rho_{p, u} f$. 
+(Since $\pi$ is a local homeomorphism, we can find a section $f=\pi|_{U}^{-1}$ and $p \in M$ s.t. $f(p)=x$, $\forall x \in \mathcal{S}$.)
+
+1) If $f(p)=f^{\prime}(p^{\prime})$ for $f \in \Gamma(\mathcal{S}, U)$ 
+and $f^{\prime} \in \Gamma(\mathcal{S}, U^{\prime})$, $p=p^{\prime} \in U \cap U^{\prime}$, 
+and $\exists V \subset U \cap U^{\prime}$ s.t. $f|_{V}=f^{\prime}|_{V}$ by Exercise 3. 
+Therefore $\rho_{p, U} f=\rho_{p^{\prime}, U^{\prime}} f^{\prime}$ and $\psi$ is well-defined.
+
+2) For $O_{f}=\{\rho_{p, U} f \mid p \in U\}$, $\psi^{-1}(O_{f})=f(U)$, 
+which is open. Therefore $\psi$ is continuous.
+
+3) It clearly preserves fibers and composition.
+
+Then it is certain that $\varphi$ and $\psi$ are inverses to each other. 
+Therefore $\beta(\alpha(\mathcal{S}))$ is isomorphic to $\mathcal{S}$.
+\item $(\mathcal{S} \otimes \mathcal{T})_{m}=\underrightarrow{\lim}_{m \in U}(\alpha(\mathcal{S}) \otimes \alpha(\mathcal{T}))_{U}
+=\underrightarrow{\lim}_{m \in U} \alpha(\mathcal{S})_{U} \otimes \alpha(\mathcal{T})_{U}
+=\underrightarrow{\lim}_{m \in U} \Gamma(\mathcal{S}, U) \otimes \Gamma(\mathcal{T}, U)
+=\underrightarrow{\lim}_{m \in U} \Gamma(\mathcal{S}, U) \otimes \underrightarrow{\lim}_{m \in U} \Gamma(\mathcal{T}, U)
+=\mathcal{S}_{m} \otimes \mathcal{T}_{m}$, 
+since direct limit and tensor product commute. 
+The last equality follows from $\beta(\alpha(\mathcal{S})) \simeq \mathcal{S}$ by Exercise 8 .
+
+\item Let $\mathbb{C}_{p}$ and $\mathbb{C}_{q}$ be two skyscraper sheaves with $p \neq q$. 
+Then $\mathbb{C}_{p} \otimes \mathbb{C}_{q}$ is a zero sheaf, 
+but $\Gamma(\mathbb{C}_{p}, M) \otimes \Gamma(\mathbb{C}_{q}, M) \simeq \mathbb{C} \otimes \mathbb{C}$, which is not zero.
+\item Let $M=\mathbb{R}$, and $\varphi\colon M \rightarrow \mathbb{R}, x \mapsto x$. 
+Denote the given mapping of the exercise as $\Phi$ and the $0$-section as $f$. 
+Then $f(M) \subset \mathscr{C}^{\infty}(M)$ is open, 
+but $\Phi^{-1}(f(M))=f(M) \cap \mathscr{C}^{\infty}(M)_{0}$, which is not open.
+\item Let $t \in \Gamma_{\Phi}(\mathcal{T})$. 
+Since $\operatorname{supp}(t) \in \Phi$, 
+$\exists U_{1}, U_{2}, U_{3}$ s.t. $\operatorname{supp}(t) \subset U_{1} \subset \overline{U_{1}} \subset U_{2} \subset \overline{U_{2}} \subset U_{3} \subset \overline{U_{3}}$ 
+and $\overline{U_{1}}, \overline{U_{2}}, \overline{U_{3}} \in \Phi$. 
+Using the process of Theorem 5.12, we can find $s \in \mathcal{S}_{U_{3}}$ s.t. $t|_{U_{3}}$ is the image of $s$. 
+Then $s|_{U_{3} \backslash \overline{U_{1}}}$ has a zero image, 
+so it is in $\mathcal{R}_{U_{3} \backslash \overline{U_{1}}}$. 
+Now consider a cover $U_{2},{\overline{U_{1}}}^{c}$. 
+Since $\mathcal{R}$ is fine, there exists an endomorphism $\varphi$ s.t. $\operatorname{supp}(\varphi) \subset{\overline{U_{1}}}^{c}$ and $\varphi=1$ on $U_{2}^{c}$. 
+Also, $\operatorname{supp}(\varphi \circ s|_{U_{3} \backslash \overline{U_{1}}}) \subset{\overline{U_{1}}}^{c}$, 
+so we can extend it to all over $U_{3}$ which is valued zero on $\overline{U_{1}}$. 
+Denote it $s^{\prime} \in \mathcal{S}_{U_{3}}$. 
+Then the image of $s-s^{\prime}$ is also $t|_{U_{3}}$ and by construction $s-s^{\prime}|_{U_{3} \backslash U_{2}^{c}}=0$, 
+so $\operatorname{supp}(s-s^{\prime}) \subset \overline{U_{2}} \subset U_{3}$. 
+Thus one can extend it to all over $M$ which is valued zero on $U_{3}^{c}$, 
+and $s-s^{\prime} \in \Gamma_{\Phi}(\mathcal{S})$. 
+Also, $t$ is the image of $s-s^{\prime}$. The statement is proved.
+\item \[\ldots \longrightarrow H^{q-1}(E^*) 
+\stackrel{\partial}{\longrightarrow} H^{q}(C^*) 
+\stackrel{f}{\longrightarrow} H^{q}(D^*) 
+\stackrel{g}{\longrightarrow} H^{q}(E^*) 
+\stackrel{\partial}{\longrightarrow} H^{q+1}(C^*) \longrightarrow \ldots\]
+\begin{cd}
+    0 \ar[r] & C^{q-1} \ar[r]\ar[d] & D^{q-1} \ar[r]\ar[d] & E^{q-1} \ar[r]\ar[d] & 0 \\
+    0 \ar[r] & C^{q} \ar[r]\ar[d] & D^{q} \ar[r]\ar[d] & E^{q} \ar[r]\ar[d] & 0 \\
+    0 \ar[r] & C^{q+1} \ar[r] & D^{q+1} \ar[r] & E^{q+1} \ar[r] & 0 \\
+\end{cd}
+1) $f \partial=0$. Let $[e] \in E^{q-1}$ for $e \in Z(E^{q-1})$ and $d \in D^{q-1}, d^{\prime} \in D^{q}, c \in C^{q}$ s.t. $d \mapsto e, d \mapsto d^{\prime}, c \mapsto d^{\prime}$. 
+Then by definition of $\partial$, $f \partial[e]=f[c]=[d^{\prime}]=0 \in H^{q}(D^{*})$.
+
+2) $\operatorname{im}\partial \supset \ker f$. 
+Let $c \in Z(C^{q})$ and $d^{\prime} \in D^{q}$ s.t. $c \mapsto d^{\prime}$. 
+If $f[c]=[d^{\prime}]=0$, $\exists d \in D^{q-1}$ s.t. $d \mapsto d^{\prime}$. 
+Let $e \in E^{q-1}$ s.t. $d \mapsto e$. Then $e \mapsto 0 \in E^{q}$ since $c \mapsto d^{\prime} \mapsto 0 \in E^{q}$. 
+Therefore $e \in Z(E^{q-1})$, and $\partial[e]=[c]$ by definition of $\partial$.
+
+3) $g f=0$. Since the original sequence is exact.
+
+4) $\operatorname{im} f \supset \ker g$. Let $d \in Z(D^{q})$ and $d \mapsto e \in E^{q}$. 
+If $g[d]=[e]=0, \exists e^{\prime} \in E^{q-1}$ s.t. $e^{\prime} \mapsto e$. 
+Let $d^{\prime} \in D^{q-1}$ s.t. $d^{\prime} \mapsto e^{\prime}$ and $\tilde{d} \in D^{q}$ s.t. $d^{\prime} \mapsto \tilde{d}$. 
+Then $d-\tilde{d} \mapsto 0 \in E^{q}$, so $\exists c \in C^{q}$ s.t. $c \mapsto d-\tilde{d}$. 
+Now let $c^{\prime} \in C^{q+1}$ s.t. $c \mapsto c^{\prime}$. 
+Then $c^{\prime} \mapsto 0 \in D^{q+1}$ since $d-\tilde{d} \mapsto 0 \in D^{q+1}$, so $c^{\prime}=0$ since $C^{q+1} \rightarrow D^{q+1}$ is injective. 
+Therefore $c \in Z(C^{q})$, and $f[c]=[d-\tilde{d}]=[d]$.
+
+5) $\partial g=0$. Let $d \in Z(D^{q}), e \in E^{q}$ s.t. $d \mapsto e$. 
+Then $d \mapsto 0 \in D^{q+1}$, so $e \mapsto 0 \in E^{q+1}$, which means $e \in Z(E^{q})$. 
+Also, $\partial g[d]=\partial[e]=0$ by definition of $\partial$, since $0 \in C^{q+1} \mapsto 0 \in D^{q+1}$.
+
+6) $\operatorname{im} g \supset \ker \partial$. Let $e \in Z(E^{q}), d \in D^{q}, d^{\prime} \in D^{q+1}, c^{\prime} \in C^{q+1}$ s.t. $d \mapsto e, d \mapsto d^{\prime}, c^{\prime} \mapsto d^{\prime}$. 
+Then $\partial[e]=[c^{\prime}]=0$ means $\exists c \in C^{q}$ s.t. $c \mapsto c^{\prime}$. Let $\tilde{d} \in D^{q}$ s.t. $c \mapsto \tilde{d}$. 
+Then $d-\tilde{d} \mapsto 0 \in D^{q+1}$, so$d-\tilde{d} \in Z(D^{q})$. Also, $g[d-\tilde{d}]=[e].$
+\item
+(a) Since $Z(\Gamma(\mathscr{C}_{0} \otimes \mathscr{S}))=\Gamma(\mathscr{K} \otimes \mathscr{S})=Z(\Gamma(\tilde{\mathscr{C}}_{0} \otimes \mathscr{S}))$, 
+$\varphi|_{Z(\Gamma(\mathscr{C}_{0} \otimes \mathscr{S}))}=\operatorname{id}_{\Gamma(\mathscr{K} \otimes \mathscr{S})}$. 
+Hence condition (a) is satisfied.
+\begin{cd}
+    0 \ar[r] & \Gamma(\mathscr{K} \otimes \mathscr{S}) \ar[r]\ar[d,"\operatorname{id}"] & \Gamma(\mathscr{C}_0 \otimes \mathscr{S})\ar[r]\ar[d,"\varphi_0"] & \Gamma(\mathscr{C}_1 \otimes \mathscr{S}) \ar[r]\ar[d,"\varphi_1"] & \Gamma(\mathscr{C}_2 \otimes \mathscr{S}) \ar[r]\ar[d,"\varphi_2"] & \ldots\\
+    0 \ar[r] & \Gamma(\mathscr{K} \otimes \mathscr{S}) \ar[r] & \Gamma(\tilde{\mathscr{C}_0} \otimes \mathscr{S}) \ar[r] & \Gamma(\tilde{\mathscr{C}_1} \otimes \mathscr{S}) \ar[r] & \Gamma(\tilde{\mathscr{C}_2} \otimes \mathscr{S}) \ar[r] & \ldots
+\end{cd}
+
+(b) Since the following diagram commutes:
+\begin{cd}
+    \mathscr{C}_q \otimes \mathscr{S} \ar[r]\ar[d] & \mathscr{C}_q \otimes \mathscr{T} \ar[d]\\
+    \tilde{\mathscr{C}_q} \otimes \mathscr{S} \ar[r] & \tilde{\mathscr{C}_q} \otimes \mathscr{T}
+\end{cd}
+(c) By using 5.17.
+\item If $U=\bigcup_{i} V_{i}, f_{i} \in A^{p}(V_{i})$ s.t. $f_{i}=f_{j}$ on $V_{i} \cap V_{j}$, 
+then set $f \in A^{p}(U)$ s.t. $f(x_{1}, \ldots, x_{p+1})=f_{i}(x_{1}, \ldots, x_{p+1})$ if $x_{1}, \ldots, x_{p+1} \in V_{i}$ and otherwise $f=0$. 
+Then $f$ is well-defined, and $f|_{V_{i}}=f_{i}$.
+However, if $U=\mathbb{R}, V_{1}=(-\infty, 1), V_{2}=(-1, \infty)$, 
+and $f \in A^{1}(U)$ s.t. $f(2,-2)=1$ and otherwise $f=0$, 
+then $f|_{V_{1}}=0$ and $f|_{V_{2}}=0$, but $f \neq 0$.
+\item \[0 \longrightarrow \mathbb{Z} / 2 \mathbb{Z} \stackrel{\times 2}{\longrightarrow} \mathbb{Z} / 4 \mathbb{Z} \stackrel{\pi}{\longrightarrow} \mathbb{Z} / 2 \mathbb{Z} \longrightarrow 0\]
+is exact, but
+\[0 \longrightarrow \mathbb{Z} / 2 \mathbb{Z} \otimes \mathbb{Z} / 2 \mathbb{Z} \stackrel{\times 2 \otimes \operatorname{id}=0}{\longrightarrow} \mathbb{Z} / 4 \mathbb{Z} \otimes \mathbb{Z} / 2 \mathbb{Z} \stackrel{\pi \otimes \operatorname{id}}{\longrightarrow} \mathbb{Z} / 2 \mathbb{Z} \otimes \mathbb{Z} / 2 \mathbb{Z} \longrightarrow 0\]
+is not exact.
+\item Choose any sheaf $\mathscr{K}$ which is not fine and consider the sheaf of germs of discrete sections of $\mathscr{K}$ which is fine.
+\item Since exactness is a local property, we only need to consider the module cases. 
+However, since stalks of torsionless sheaves are flat, the result follows. 
+Or a long exact sequence can be divided into short exact sequences, and use Proposition 5.15.
+\item Naturally $f\colon M \rightarrow N$ induces $f_{*}\colon H_{\Delta}^{p}(N ; G) \rightarrow H_{\Delta}^{p}(M ; G)$ s.t. $f_{*}([\varphi])(\sigma)=\varphi(f(\sigma))$ which is well-defined. 
+Also that it satisfies functorial properties is straightforward. 
+Therefore the last statement follows from a basic property of a functor.
+\item Denote the given map $\varphi\colon H_{\Delta^{\infty}}^{p}(M ; \mathbb{R}) \rightarrow { }_{\infty} H_{p}(M ; \mathbb{R})^{*}$. 
+Let $[f] \in \ker \varphi$. Then $f(\sigma)=0$ for any cycle $\sigma$. 
+Now set $g \in S^{p-1}(M, \mathbb{R})$ s.t. for $(p-1)$-boundary $\partial \tau$, 
+$g(\partial \tau)=f(\tau)$ and otherwise $0$. 
+It is well-defined since if $\partial \tau=\partial \tau^{\prime}$ then $\tau-\tau^{\prime}$ is a cycle, so $f(\tau-\tau^{\prime})=0$. 
+Then $d g=f$, so $[f]=0$. Therefore $\varphi$ is injective.
+By the way, if $g \in{ }_{\infty} H_{p}(M ; \mathbb{R})^{*}$, 
+set $f \in S^{p}(M, \mathbb{R})$ s.t. $f(\sigma)=g([\sigma])$. 
+Then it is well-defined, and $d f(\tau)=f(\partial \tau)=g([\partial \tau])=0$, so $f$ is a cocycle. 
+Also, $\varphi(f)=g$ by the setting. Hence $\varphi$ is surjective.
+\item If the periods of $\sigma$ and $\tau$ are all integer-valued, 
+they must be zero since $\{\sigma\}(\{a z\})=a\{\sigma\}(\{z\})$ for all $a \in \mathbb{R}$ and $p$-cycle $z$, and similarly for $\tau$. 
+Therefore, $\sigma \wedge \tau$ is exact and has integer periods, i.e. zero. 
+(Maybe the purpose of this exercise is to consider the cohomology theory over $\mathbb{Z}$, but I am not sure.)
+\end{enumerate}
+\textbf{References}
+\begin{references}
+\bibitem[1]{1} Allen Hatcher, \textit{Algebraic Topology}, Cambridge University Press, 2002.
+\bibitem[2]{2} Daniel Murfet, \textit{Automorphisms of Power Series Rings}, in his \href{http://therisingsea.org}{blog}, 2005.
+\bibitem[3]{3} Frank W. Warner, \textit{Foundations of Differentiable Manifolds and Lie Groups}, Springer, 1983.
+\bibitem[4]{4} John M. Lee, \textit{Introduction to Smooth Manifolds}, 2nd ed., Springer, 2010.
+\bibitem[5]{5} Paul Loya, \textit{An introductory course in differential geometry and the Atiyah--Singer index theorem}, Binghamton University, 2005.
+\bibitem[6]{6} C. H. Dowker, \textit{Lectures on Sheaf Theory}, Tata Institute of Fundamental Research, 1956.
+\end{references}

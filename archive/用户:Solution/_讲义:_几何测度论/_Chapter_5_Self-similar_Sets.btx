@@ -1,0 +1,371 @@
+\setdisplaytitle{5 Self-similar Sets}
+\sethtmltitle{5 Self-similar Sets}
+
+The main references of this chapter are [Hochman; Lectures on fractal geometry
+and dynamics, Chapter 5], [Bishop, Peres; Fractals in Probability and Analysis,
+Chapter 2], [Mattila; Fourier analysis and Hausdorff dimension, Chapter 9], and
+[Shen; Lectures on Bernoulli Convolution]
+
+\section{Hausdorff metric}
+
+Let $(X,d)$ be a metric space. $\forall \varepsilon>0$, we define
+\[
+A^{(\varepsilon)}:=\{ x \in X: d(x,A)<\varepsilon \}.
+\]
+we say that $A$ is $\varepsilon$-dense in $B$ if $B \subset A^{(\varepsilon)}$.
+
+\textbf{Definition} Let $\operatorname{Cpt}(X)$ be the collection of compact non-empty subsets of $X$. We define the Hausdorff metric between $A$ and $B$ by
+\[
+d_{\mathcal{H}}(A,B):=\inf\{ \varepsilon>0:A \subset B^{(\varepsilon)},B\subset A^{\varepsilon} \}.
+\]
+
+\textbf{Example} $A=\left\{  \frac{1}{2}  \right\}, B=[0,1]$. Then $d(A,B)=0$, $d_{\mathcal{H}}(A,B)=\frac{1}{2}$.
+
+\begin{lemma}\label{lem:1.1}
+Let $\varepsilon<\delta$. Then $\overline{A^{(\varepsilon)}}\subset A^{(\delta)}$.
+\end{lemma}
+
+\begin{proof}
+    Exercise.
+\end{proof}
+
+\begin{theorem}\label{thm:1.2}
+Let $E \subset X$. Then the followings are equivalent:
+\begin{enumerate}[label=(\roman*)]
+    \item $E$ is complete and totally bounded.
+    \item Every subsequence in $E$ has a subsequence convergent to a point in $E$.
+    \item $E$ is compact.
+\end{enumerate}
+(Remark: $E$ is defined to be totally bounded if, for all $\varepsilon>0$, $E$ can be covered by finitely many balls of radius $\varepsilon$.)
+\end{theorem}
+
+\begin{theorem}\label{thm:1.3}
+Let $(X,d)$ be a metric space.
+\begin{enumerate}[label=(\roman*)]
+    \item $d_{\mathcal{H}}$ is a metric on $\operatorname{Cpt}(X)$.
+    \item \label{thm:1.3.ii} If $\{ A_{n} \}\subset \operatorname{Cpt}(X)$ and $A_{1}\supset A_{2}\supset \dots$, then \[A_{n}\xrightarrow{d_{\mathcal{H}}}\bigcap _{n=1}^{\infty}A_{n}.\]
+    \item \label{thm:1.3.iii} If $(X,d)$ is complete, then $(\operatorname{Cpt}(X),d_{\mathcal{H}})$ is complete.
+    \item If $A_{n}\xrightarrow{d_{\mathcal{H}}}A$, then $A$ is the set of limits \[a=\lim_{ n \to \infty }a_{n}\]of convergent sequence $a_{n}\in A_{n}$.
+    \item \label{thm:1.3.v} $(X,d)$ is totally bounded $\implies$ $(\operatorname{Cpt}(X),d_{\mathcal{H}})$ is totally bounded.
+    \item $(X,d)$ is compact $\implies$ $(\operatorname{Cpt}(X),d_{\mathcal{H}})$ is compact.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}[label=(\roman*)]
+    \item By definition, \[d_{\mathcal{H}}\geq 0,\qquad d_{\mathcal{H}}(A,B)=d_{\mathcal{H}}(B,A).\]
+    Suppose $A\neq B$. WLOG, we assume $\exists x \in A\setminus B$. Since $B$ is compact, we have \[d(x,B)=\delta>0.\]
+    This implies \[x \not\in B^{(\varepsilon)},\qquad \forall \varepsilon<\delta.\]
+    As a result, $d_{\mathcal{H}}(A,B)\geq \delta>0$.
+    For the triangle inequality, suppose $d_{\mathcal{H}}(A,B)=d_{1}$, $d_{\mathcal{H}}(B,C)=d_{2}$. Then, $\forall \varepsilon>0$, 
+    \[A\subset B^{(d_{1}+\varepsilon)},\quad B\subset C^{(d_{2}+\varepsilon)}.\]
+    This implies that $A\subset C^{(d_{1}+d_{2}+2\varepsilon)}$. 
+    Similarly, $C\subset A^{(d_{1}+d_{2}+2\varepsilon)}$. Therefore 
+    \[d_{\mathcal{H}}(A,C)\leq d_{1}+d_{2}=d_{\mathcal{H}}(A,B)+d_{\mathcal{H}}(B,C).\]
+   
+    \item Let $\displaystyle A:=\bigcap _{n=1}^{\infty}A_{n}\subset A_{n}$. 
+    It suffices to show that, $\forall \varepsilon>0$, $\exists N$ such that 
+    \[n>N\implies A_{n}\subset A^{(\varepsilon)}.\]
+    Suppose not, i.e., $\exists \varepsilon>0$ and infinitely many $A_{n_{k}}$ 
+    such that $A_{n_{k}}\setminus A^{(\varepsilon)}\neq \varnothing$. 
+    Let $\displaystyle A':=\bigcap _{k=1}^{\infty}(A_{n_{k}}\setminus A^{(\varepsilon)})\subset(A^{(\varepsilon)})^{c}$, 
+    which is nonempty since $A_{n_{k}}\setminus A^{(\varepsilon)}$ is compact. On the other hand, 
+    \[A'\subset \bigcap _{k=1}^{\infty}A_{n_{k}}=\bigcap _{n=1}^{\infty}A_{n}=A \subset A^{\varepsilon},\] 
+    which leads to a contradiction.
+    
+    \item Suppose $\{ A_{n} \}$ is Cauchy in $(\operatorname{Cpt}(X),d_{\mathcal{H}})$. Let 
+    \[B_{n}:=\overline{\bigcup _{k=n}^{\infty}A_{k}}.\]
+    Claim: $B_{n}$ is compact.
+    Since $(X,d)$ is complete, and $B_{n}$ is closed, $B_{n}$ is complete. 
+    By \textbf{Theorem \ref{thm:1.2}}, it suffices to show that $B_{n}$ is totally bounded. 
+    $\forall \varepsilon>0$, $\exists N\geq n$ such that if $k\geq N$, then 
+    \[d_{\mathcal{H}}(A_{k},A_{N})\leq \frac{\varepsilon}{4}.\]
+    In particular, $A_{k}\subset(A_{N})^{(\varepsilon/4)}$. 
+    We can cover $\displaystyle \bigcup _{k=n}^{\infty}A_{k}$ by finitely many balls $B\big( x_{k}, \frac{\varepsilon}{2} \big),j=1,\dots,J$. Therefore 
+    \[B_{n}=\overline{\bigcup _{k=n}^{\infty}A_{k}}\subset \bigcup _{j=1}^{J}B(x_{j},\varepsilon),\]
+    i.e., $B_{n}$ is totally bounded. Hence $B_{n}$ is compact.
+    As $B_{n}$ is decreasing and compact, we can apply \ref{thm:1.3.ii} to show 
+    \[B_{n}\xrightarrow{d_{\mathcal{H}}}\bigcap _{n=1}^{\infty}B_{n}:=A.\] 
+    We can obtain $A_{n}\xrightarrow{d_{\mathcal{H}}}A$ if we have 
+    \[d_{\mathcal{H}}(A,B)\to 0.\] 
+    As $A_{n}\subset B_{n}$, it suffices to show that $B_{n}\subset (A_{n})^{(\varepsilon)}$ for all large $n$. Recalling that $\{ A_{m} \}$ is a Cauchy sequence, $\forall \varepsilon>0$, $\exists N$ such that 
+    \[m,n\geq N\implies A_{m}\subset A_{n}^{(\varepsilon/2)}.\]
+    In particular, by \textbf{Lemma \ref{lem:1.1}}, 
+    \[B_{n}:= \overline{\bigcup _{k=n}^{\infty}A_{k}}\subset\overline{A_{n}^{(\varepsilon/2)}}\subset A_{n}^{(\varepsilon)}.\]
+   
+    \item Let $A'$ be the set of limit points of convergence sequence $\{ a_{n} \}$ with $a_{n}\in A_{n}$. It is easy to see that 
+    \[B_{n}:= \overline{\bigcup _{k=n}A_{k}}\supset A' \cup\left( \bigcup _{k=n}^{\infty}A_{k} \right),\]
+    which together with that $\displaystyle A= \bigcap _{n=1}^{\infty}B_{n}$ implies that $A'\subset A$. 
+    Now suppose $x \in A\setminus A'$. As $A_{n}\xrightarrow{d_{\mathcal{H}}}A$, $\forall k>0$, $\exists N_{k}$ such that 
+   
+    \item Let $\varepsilon>0$. As $X$ is totally bounded, we can find a finite set $X_{\varepsilon}\subset X$ such that $X_{\varepsilon}$ is $\varepsilon$-dense in $X$.
+    \textbf{Claim}: The power set $\mathcal{P}(X_{\varepsilon})$ is $\varepsilon$-dense in $(\operatorname{Cpt}(X),d_{\mathcal{H}})$.
+    It suffices to show that, $\forall A \in \operatorname{Cpt}(X)$, $\exists E \in \mathcal{P}(X_{\varepsilon})$ such that $d_{\mathcal{H}}(A,E)<\varepsilon$. We fix $A$, and define 
+    \[E:=X_{\varepsilon}\cap A^{(\varepsilon)},\]
+    then $E \subset A^{(\varepsilon)}$. Now for all $a \in A$, there exists $x_{a}\in X_{\varepsilon}$ such that $d(a,x_{a})<\varepsilon$, therefore $x_{a}\in A^{(\varepsilon)}$. 
+    This means $x_{a} \in A^{(\varepsilon)}\cap X_{\varepsilon}=E$. In summary, 
+    \[A\subset E^{(\varepsilon)}\implies d_{\mathcal{H}}(A,E)<\varepsilon.\]
+   
+    \item Apply \ref{thm:1.3.iii}, \ref{thm:1.3.v}, and \textbf{Theorem \ref{thm:1.2}}.\qedhere
+\end{enumerate}
+\end{proof}
+
+\section{Iterated function system}
+Let $(X,d)$ be a metric space. $f:X\to X$ is a contraction if $\exists 0\leq \rho< 1$ such that
+\[
+d(f(x),f(y))\leq \rho d(x,y)\quad \forall x,y \in X.
+\]
+$\rho$ is called \textbf{contraction constant}.
+
+\begin{theorem}\label{thm:2.1}
+Let $(X,d)$ be a complete metric space. Suppose $f:X\to X$ is a contraction with $\rho<1$, then
+\begin{enumerate}[label=(\roman*)]
+    \item $\exists! x \in X$ such that $f(x)=x$.
+    \item If $y \in X$, we have \[d(x,f^{k}(y))\leq \rho ^{k}d(x,y).\]In particular, $f^{k}(y)\to x$ as $k\to \infty$.
+\end{enumerate}
+\end{theorem}
+
+\textbf{Definition} An \textbf{iterated function system}(IFS) on $(X,d)$ is a finite family
+\[
+\phi:= \{ \varphi _{i} \}_{i \in \Lambda}
+\]
+of contractions. We say that $\phi$ has contraction constant $\rho$ if each $\varphi _{i}$ has contraction constant $\rho<1$.
+
+\textbf{Example}(Middle-$\alpha$ Cantor set) Let $\rho= \frac{1-\alpha}{2}$, and consider the IFS $\phi = \{ \varphi_{0},\varphi_{1} \}$, where $\varphi_{0}(x)=\rho x$, $\varphi_{1}(x)=\rho x + (1-\rho)$. Alternatively, we can write for $i=0,1$,
+\[
+\varphi _{i}(x)=\rho x+i(1-\rho).
+\]
+$I=[0,1]$
+
+$I_{0}=[0,\rho]=\varphi_{0}(I)$, $I_{1}=[1-\rho,1]=\varphi_{1}(I)$
+
+$i_{1},i_{2},\dots,i_{n}\in \{ 0,1 \}$
+
+$I_{i_{1}i_{2}\dots i_{n}}=\varphi _{i_{1}}\circ \varphi _{i_2}\circ\dots\circ \varphi _{i_{n}}(I)$.
+
+$\displaystyle C_{\alpha,n}:= \bigcup _{i_{1},\dots,i_{n}}I_{i_{1}\dots i_{n}}$
+
+$C_{\alpha,n+1}=\varphi_{0}(C_{\alpha,n})\cup \varphi_{1}(C_{\alpha,n})$
+
+$\displaystyle C_{\alpha}=\bigcap _{n}C_{\alpha,n}$
+
+$\implies C_{\alpha}=\varphi_{0}(C_{\alpha})\bigcup \varphi_{1}(C_{\alpha})$.
+
+$\phi(A):=\varphi_{0}(A)\cup \varphi_{1}(A)$
+
+$\phi(C_{\alpha})=C_{\alpha}$.
+
+Fix $x \in C_{\alpha}$, and let $I^{(n)}(x)$ be the stage-$n$ interval containing $x$, i.e.,
+\[
+x \in I^{(n)}(x)=I_{i_{1}\dots i_{n}}=\varphi _{i_{1}\dots i_{n}}(I).
+\]
+Then $I_{i_{1}\dots i_{n}}\to x$ as $n\to \infty$.
+Now
+\begin{align*}
+\varphi _{i_{1}i_{2}\dots i_{n}} & =\varphi _{i_{1}}(\varphi _{i_{2}\dots i_{n}}(y)) \\
+ & =\rho \varphi _{i_{2}\dots i_{n}}(y)+i_{1}(1-\rho) \\
+ & =\rho(\varphi _{i_{3}\dots i_{n}}(y)+i_{2}(1-\rho))+i_{1}(1-\rho) \\
+ & =i_{1}(1-\rho)+i_{2}\rho(1-\rho)+\rho^{2}\varphi _{i_{3}\dots i_{n}}(y) \\
+ & =\dots \\
+ & = \sum _{k=1}^{n}i_{k}(1-\rho)\rho ^{k-1} +\rho ^{n}y
+\end{align*}
+$\displaystyle \implies x=\lim_{ n \to \infty }\varphi _{i_{1}\dots i_{n}}(y)= \sum _{k=1}^{\infty}i_{k}(1-\rho)\rho ^{k-1}$.
+
+\[
+C_{\alpha}=\left\{  (1-\rho)\sum _{k=1}^{\infty}i_{k}\rho ^{k-1}:i_{k}\in \{ 0,1 \}  \right\}.
+\]
+$\alpha=0$: $\rho=\frac{1}{2},C_{\alpha}=[0,1]$.
+
+$\alpha=\frac{1}{3}$: $\rho=\frac{1}{3}$, $x \in C_{\alpha}$ if and only if $x$ is of the form $\displaystyle \sum _{k=1}^{\infty}a_{k}3^{-k}, a_{k}\in \{ 0,2 \}$.
+
+Let $\phi=\{ \varphi _{i} \}_{i \in \Lambda}$ be an IFS with contraction constant $\rho$. Define
+\[
+\tilde{\phi}(A):= \bigcup _{i \in \Lambda}\varphi _{i}(A): \mathcal{P}(X)\to \mathcal{P}(X).
+\]
+
+\begin{theorem}\label{thm:2.2}
+Let $(X,d)$ be a complete metric space and $\phi$ an IFS with contraction constant $\rho<1$. Then there exists a unique compact $K\subset X$ such that
+\begin{equation}\label{eq:1}
+\tilde{\phi}(K)=K.
+\end{equation}
+Moreover, for all compact $E \subset X$, 
+\[
+(\tilde{\phi})^{n}(E)\xrightarrow{d_{\mathcal{H}}}K
+\]
+exponentially fast. If in addition $\tilde{\phi}(E)\subset E$, then
+\[
+K=\bigcap _{n=1}^{\infty}(\tilde{\phi})^{n}(E).
+\]
+\end{theorem}
+
+\begin{proof}
+As $\varphi _{i}$ is continuous and $\Lambda$ is finite, $\tilde{\phi }$ is a map from $\operatorname{Cpt}(X)$ to $\operatorname{Cpt}(X)$. \eqref{eq:1} means that $K$ is a fixed point of $\tilde{\phi}$. By \textbf{Theorem \ref{thm:2.1}}, it suffices to show that $\tilde{\phi}$ is a contraction. Let $\rho:= \max_{i \in \Lambda}\rho _{i}<1$. Suppose $d_{\mathcal{H}}(A,B)<\varepsilon$, then for all $i \in \Lambda$, 
+\[
+\varphi _{i}(A)\subset \varphi _{i}(B^{(\varepsilon)})\subset[\varphi _{i}(B)]^{(\rho \varepsilon)},
+\]
+which implies further that
+\[
+\tilde{\phi}(A)\subset[\tilde{\phi}(B)]^{(f\varepsilon)}.
+\]
+In summary,
+\[
+d_{\mathcal{H}}(\tilde{\phi}(A),\tilde{\phi}(B))\leq \rho \varepsilon,
+\]
+i.e., $\tilde{\phi}$ is a contraction.
+It is easy to see that
+\begin{equation}\label{eq:2}
+d_{\mathcal{H}}(K,(\tilde{\phi})^{n}(E))\leq \rho ^{n}d_{\mathcal{H}}(K,E),
+\end{equation}
+which yields the exponential convergence.
+Note that, by assumption, we have a decreasing sequence
+\[
+E\supset \tilde{\phi}(E)\supset  (\tilde{\phi})^{2}(E)\supset \dots \supset (\tilde{\phi})^{n}(E)\supset \dots,
+\]
+therefore
+\[
+(\tilde{\phi})^{n}(E)\xrightarrow{d_{\mathcal{H}}}\bigcap _{n=1}^{\infty}(\tilde{\phi})^{n}(E).
+\]
+On the other hand, by \eqref{eq:2}, $(\tilde{\phi})^{n}(E)\to K$. Hence $\displaystyle K=\bigcap _{n=1}^{\infty}(\tilde{\phi})^{n}(E)$.
+\end{proof}
+
+\textbf{Definition} Let $\phi=\{ \varphi _{i} \}_{i \in \Lambda}$ be an IFS. The compact set $K$ satisfying
+\[
+(\tilde{\phi})(K)=K
+\]
+is called an \textbf{attractor} of $\phi$.
+
+Denote $i=i_{1}\dots i_{n}\in \Lambda ^{n}$, and $\varphi _{i}=\varphi _{i_{1}}\circ\dots\circ \varphi _{i_{n}}$. Given $i \in \Lambda ^{n}$, we have $\varphi _{i_{1}\dots i_{n}}K\subset \varphi _{i_{1}\dots i_{n-1}}K$ as $\varphi _{i_{n}}(K)\subset K$. Using that $\varphi _{i_{1}\dots i_{n}}$ has contraction constant $\rho ^{n}$, we obtain that $\displaystyle \bigcap _{n=1}^{\infty}\varphi _{i_{1}\dots i_{n}}(K)$ is non empty and consists of a single point $x$, which is denoted by $\phi(i)$, i.e., $\forall y \in K$,
+\begin{equation}\label{eq:star}
+\phi(i)=\lim_{ n \to \infty } \varphi _{i_{1}\dots i_{n}}(y).
+\end{equation}
+It follows from the inequality $d(\varphi _{i_{1}\dots i_{n}}(y),\varphi _{i_{1}\dots i_{n}}(z))\leq \rho ^{n}d(y,z)$ that \eqref{eq:star} holds for any $z \in X$.
+As $(\tilde{\phi})^{n}(K)\to K$, we see that $\phi:\Lambda ^{\mathbb{N}}\to K$ is surjective.
+
+\begin{proposition}\label{prop:2.3}
+Let $y \in X$, $\forall \varepsilon>0$, $\exists N$ such that
+\[
+n \geq N\implies d(\varphi _{i}(y),K)<\varepsilon, \forall i \in \Lambda ^{n}.
+\]
+\end{proposition}
+
+\begin{proof}
+Fix $x \in K$. Then $\varphi _{i}(X)\in K$, $\forall i \in \Lambda ^{n}$. Choose $N$ large enough such that
+\[
+\rho ^{N}\sup_{z \in K}d(y,z)<\varepsilon.
+\]
+Then $\forall n\geq N$, $\forall i \in \Lambda ^{n}$, we have
+\[
+d(\varphi _{i}(y),\varphi _{i}(x))\leq \rho ^{n}d(y,x)\leq \rho ^{N}\sup_{z \in K}d(y,z) <\varepsilon.
+\]
+Since $\varphi _{i}(x) \in K$, this shows $d(\varphi _{i}(y),K)<\varepsilon$.
+\end{proof}
+
+\textbf{Definition} For $i,j \in \Lambda ^{\mathbb{N}}$, let $N=N(i,j)$ be the largest number such that $i_{1}\dots i_{N}=j_{1}\dots j_{N}$. We define $d(i,j)=2^{-N}$.
+View $\Lambda$ as a discrete space, there exists a natural product topology $\tau$ on $\Lambda ^{\mathbb{N}}$.
+
+\begin{proposition}\label{prop:2.4}
+Let $\tau _{d}$ be the topology induced by $d$. Then $\tau _{d}=\tau$.
+\end{proposition}
+
+\begin{proposition}\label{prop:2.5}
+Fix $i,j \in \Lambda ^{\mathbb{N}}$, and denote $N=N(i,j)$. Then
+\[
+d(\phi(i),\phi (j))\leq \rho ^{N}\operatorname{diam}(K).
+\]
+In particular, $\phi$ is Hölder continuous.
+\end{proposition}
+
+\begin{proof}
+Fix $x \in K$. $\forall n\geq N$, we have
+\begin{align*}
+& \hspace{1.3em} d(\varphi_{i_{1}\dots i_{n}}(x),\varphi_{j_{1}\dots j_{n}}(x)) \\
+& = d(\varphi_{i_{1}\dots i_{N}}(\varphi_{i_{N+1}\dots i_{n}}(x)),\varphi _{i_{1}\dots i_{N}}(\varphi_{j_{N+1}\dots j_{n}}(x))) \\
+& \leq \rho^{N}d(\varphi_{i_{N+1}\dots i_{n}}(x),\varphi_{j_{N+1}\dots j_{n}}(x)) \\
+& \leq \rho^{N}\operatorname{diam}(K).
+\end{align*}
+\end{proof}
+
+Given $i=i_{1}\dots i_{k}\in \Lambda ^{k}$, we define the cylinder set $[i]\subset \Lambda ^{\mathbb{N}}$ by
+\[
+[i]:=\{ j \in \Lambda ^{\mathbb{N}}:j_{1}\dots j_{k}=i_{1}\dots i_{k} \}.
+\]
+
+\begin{lemma}\label{lem:2.6}
+For all $[i]$ with $i \in \Lambda ^{k}$, we have
+\begin{enumerate}[label=(\roman*)]
+    \item $[i]$ is both open and closed in $\Lambda ^{\mathbb{N}}$;
+    \item $\operatorname{diam}([i])=2^{-k}$;
+    \item $[i]=B_{2^{-k}}(j),\forall j\in [i]$;
+    \item The family of all cylinder sets forms a basis for the topology on $\Lambda ^{\mathbb{N}}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\begin{enumerate}[label=(\roman*)]
+    \item Since (by the definition of product topology) $\pi _{k}:\Lambda ^{\mathbb{N}}\to \Lambda ^{k}$ is continuous and $[i]=\pi _{k}^{-1}(i)$, $[i]$ is both open and closed;
+    \item $\forall j,j' \in[i]$, we have \[d(j,j')\leq 2^{-k},\]and \[d(i i_{k+1},ij_{k+1})=2^{-k}\]when $i_{k+1}\neq j_{k+1}$;
+    \item The proof is contained in $(ii)$;
+    \item omit.\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{lemma}\label{lem:2.7}
+$\forall j \in \Lambda$, define a map $\tilde{\varphi}_{j}:\Lambda ^{N}\to \Lambda ^{\mathbb{N}}$ by
+\[
+\tilde{\varphi}_{j}(i_{1}i_{2}\cdots)=ji_{1}i_{2}\cdots .
+\]
+Then, $\forall j \in \Lambda$ and $\forall i \in \Lambda ^{\mathbb{N}}$, we have
+\[
+\phi(\tilde{\varphi}_{j}(i))=\varphi _{j}(\phi(i)) \in X.
+\]
+\end{lemma}
+
+\begin{proof}
+We recall that $\phi(i)=x$ means that
+\[
+\lim_{ n \to \infty } \varphi _{i_{1}\dots i_{n}}(y)=x \in K.
+\]
+Therefore, since $\varphi _{j}$ is continuous,
+\begin{align*}
+\varphi _{j}(\phi(i)) & =\varphi _{j}(\lim_{ n \to \infty } \varphi _{i_{1}\dots i_{n}}(y)) \\
+ & =\lim_{ n \to \infty } \varphi _{ji_{1}\dots i_{n}}(y) \\
+ & =\phi(\tilde{\varphi}_{j}(i)).
+\end{align*}
+\end{proof}
+
+Recall that
+\[
+\operatorname{supp}\mu:= X\setminus \bigcup U, U\in \{ U: U \text{ open, }\mu(U)=0 \}.
+\]
+\textbf{Definition} A vector $p=(p_{i})_{i\in \Lambda}$ is called a \textbf{probability vector} if $p_{i}\geq 0$, $\forall i \in \Lambda$, and $\displaystyle \sum _{i \in \Lambda}p_{i}=1$. We say $p$ is \textbf{positive} if $p_{i}>0$ for all $i \in \Lambda$.
+
+\begin{theorem}\label{thm:2.8}
+Let $p=(p_{i})_{i \in \Lambda}$ be a probability vector. Then there exists a unique Borel probability measure $\mu:=\mu _{\phi,p}$ on $K$ such that
+\[
+\mu=\sum _{i \in \Lambda}p_{i}\cdot \varphi _{i}\mu,
+\]
+where $\varphi _{i}\mu=(\varphi _{i})_{\sharp}$. If $p$ is positive, then $\operatorname{supp}\mu=K$.
+\end{theorem}
+
+\begin{proof}
+Let $p$ be a Borel probability measure on $\Lambda$ with $p(\{ i \})=p_{i}, \forall i \in \Lambda$. Then there exists a unique Borel measure $\tilde{\mu}$ on $\Lambda ^{\mathbb{N}}$ such that for all $n_{1},\dots,n_{k}\in \mathbb{N}$ and $E\subset \Lambda ^{k}$, we have
+\[
+\tilde{\mu}(\pi ^{-1}_{(n_{1},\dots,n_{k})}(E))=\underbrace{(p\times \cdots\times p)}_{k \text{ times}}(E),
+\]
+where $\pi _{(n_{1},\dots,n_{k})}(j)=j_{n_{1}}\dots j_{n_{k}},\forall j \in \Lambda ^{\mathbb{N}}$. As $\displaystyle E=\bigcup _{i \in \Lambda}\tilde{\varphi}_{i}\tilde{\varphi}_{i}^{-1}(E)$, we have
+\begin{equation}\label{eq:starstar}
+\tilde{\mu}(E)=\sum _{i \in \Lambda}p_{i}\cdot \tilde{\mu}(\tilde{\varphi}_{i}^{-1}(E))
+\end{equation}
+for all cylinder sets $E$. Since the $\sigma$-algebra of $\Lambda ^{\mathbb{N}}$ is generated by cylinder sets, \eqref{eq:starstar} holds for all Borel sets $E\subset \Lambda ^{\mathbb{N}}$. Recalling that $\phi:\Lambda ^{\mathbb{N}}\to K$, we denote
+\[\mu:= \phi  \tilde{\mu}=(\phi)_{\sharp}\tilde{\mu}\]
+Apply $\phi$ to \eqref{eq:starstar} to obtain
+\[
+\tilde{\mu}(\phi ^{-1}(F))=\sum _{i \in \Lambda}p_{i} \tilde{\mu}(\tilde{\varphi}_{i}^{-1}\phi ^{-1}(F)),
+\]
+i.e.,
+\[
+\mu=\sum _{i \in \Lambda}p_{i}\phi  \tilde{\varphi _{i}}\tilde{\mu}
+\xlongequal{\text{Lemma 2.7}}\sum _{i \in \Lambda}p_{i}\varphi _{i}\phi  \tilde{\mu}
+=\sum _{i \in \Lambda}p_{i} \varphi _{i}\mu.\qedhere
+\]
+\end{proof}

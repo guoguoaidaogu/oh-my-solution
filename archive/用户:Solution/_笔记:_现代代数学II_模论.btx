@@ -1,0 +1,1843 @@
+\newcommand{\Ker}{\operatorname{Ker}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\End}{\operatorname{End}}
+\newtheorem{exercise}{练习}
+\newtheorem*{books}{参考书}
+
+\begin{center}
+\textsize{36pt}{现代代数学II}
+\end{center}
+
+\begin{books}
+\begin{itemize}
+    \item[①] S. Lang, \textit{Algebra}, GTM 211, Chapter III.\\
+    \item[②] N. Jacobson, \textit{Basic Algebra I}, Chapter 3; 
+    \textit{Basic Algebra II}, Chapter 3,5.\\
+    \item[③] W. Fulton, J. Harris, \textit{Representation Theory}, 
+    GTM 129, Part I.\\
+    \item[④] J. Serre, \textit{Linear Representations of Finite Groups}, 
+    GTM 42, Part I,\,II.
+\end{itemize}
+\end{books}
+{{warning|
+本讲义的大量命题待证明，诚邀各位一同完善。|
+记号请遵从并模仿已有内容。|
+目前排版尚十分混乱，不少表述也极为草率，请尽量尝试改进。}}
+
+\section{Zorn引理}
+
+\begin{definition} \textbf{关系}\par
+		$X$是非空集, $X$的一个关系指$X \times X$的子集$R$，对$a,b \in X$，
+        用$aRb$表示$(a,b) \in R$. 关系$R$称为一个等价关系，若它满足以下三个性质：\par
+		\qquad (1) （自反性）$\forall a \in X$, $aRa$, \par
+		\qquad (2) （对称性）$\forall a,b \in X$,若 $aRb$, 则 $bRa$, \par
+		\qquad (3) （传递性）$\forall a,b,c \in X$,若 $aRb$, $bRc$,则 $aRc$.
+
+	\end{definition}
+
+\begin{example}
+		$\mathbb{Z}$上可定义等价关系：$aRb \Leftrightarrow a\equiv b\ (\operatorname{mod}n)$.
+	\end{example}
+
+	\begin{example}
+		群$G$上可定义等价关系：$aRb \Leftrightarrow a^{-1}b \in H , H \leqslant  G$.
+	\end{example}
+
+    \begin{definition} \textbf{等价类}\par
+		设$R$为$X$上的等价关系，$a \in X$，定义$\left[a\right] = \overline{a} =\{b \in X \mid aRb\,\}$.
+
+	\end{definition}
+
+	\begin{proposition} $\forall a,b \in X$，
+        或者 $\left[a\right]=\left[b\right]$，
+        或者 $\left[a\right]\cap \left[b\right]=\varnothing $  
+        （故$X=\bigsqcup\limits_{某些a}\left[a\right]$）.
+	\end{proposition}
+
+
+	\begin{definition} \textbf{偏序关系}\par
+		$X$上的关系$R$是一个偏序关系（partial ordering），
+        若它满足以下三个性质:\par
+			\qquad (1) （自反性）$\forall a \in X$, $aRa$, \par
+			\qquad (2) （反对称性）$\forall a,b \in X$, 若 $aRb$ 且 $bRa$ 则$a=b$, \par
+            \qquad (3) （传递性）$\forall a,b,c \in X$, 若 $aRb$ 且 $bRc$ ,则 $aRc$.
+	\end{definition}
+
+    \begin{example}
+        $\mathbb{R}$中元素关于$\leqslant$构成一个偏序集.
+    \end{example}
+
+    \begin{example}
+        $X$为非空集，$P(X)=2^{X}=\left\{X \text{的子集}\right\}$，
+        定义偏序关系$A \leqslant B$为$A\subseteq B$.
+    \end{example}
+
+    \begin{proposition}
+        设$(X,\leqslant)$是偏序集，$Y \subseteq X$，则$(Y,\leqslant)$是偏序集.
+    \end{proposition}
+
+	\begin{definition}
+        设$(X,\leqslant)$是偏序集.\par
+            \qquad (1) 称 $(X,\leqslant)$是全序集，若$\forall a,b \in X$,或者$a\leqslant b$,或者$b\leqslant a$, \par
+            \qquad (2) 设$Y \subseteq X$, $a \in X$称为$Y$的一个上界(或下界),若$\forall y \in Y$,有$y \leqslant a$(或$a\leqslant y$), \par
+            \qquad (3) $m \in X$称为一个极大元(或极小元),若$\forall a \in X$满足 $m \leqslant a$(或$a \leqslant m$),都有$m=a$, \par
+            \qquad (4) 称$(X,\leqslant)$是\textbf{递归的}（inductively ordered），
+            若$X$的每个全序子集都有上界.
+    \end{definition}
+
+	\begin{theorem} \textbf{Zorn引理}\par
+        设$(X,\leqslant)$是一个递归的偏序集，则$X$有极大元.
+
+    \end{theorem}
+
+	\begin{definition} \textbf{良序}\par
+		称$(X,\leqslant)$是良序的(well-ordered)，若: \par
+            \qquad (1) $(X,\leqslant)$全序, \par
+            \qquad (2) $\forall \varnothing \neq Y \subset X$, $Y$有极小元.
+
+    \end{definition}
+
+	\begin{theorem} \textbf{良序定理}\par
+		设$X$非空,则$X$上有一个良序关系.
+	\end{theorem}
+
+	\begin{theorem}
+        选择公理、Zorn引理、良序定理三者相互等价.
+    \end{theorem}
+
+	\begin{proposition} （Zorn引理的应用）\par
+        (1)设$k$是一个域，$V$为$k$-向量空间，则$V$有一组基. \par
+        (2)设$B_1,B_2$是$k$-向量空间的两组基，则存在双射$f : B_1 \rightarrow B_2$.
+
+    \end{proposition}
+\begin{proof}
+	$V=\{0\}$易证.
+	
+	若$V\neq\{0\}$，令$X=\{T\subseteq V\mid T\text{ 线性无关}\}$.
+	
+	定义偏序关系$T_1\leq T_2\Longleftrightarrow T_1\subseteq T_2 $.
+
+    断言$X$递归.设$\{T_i\}_{i\in I}$是全序子集，令$T_0=\bigcup_{i\in I}T_i.$
+    
+    下证：$T_0\in X$.否则，存在线性相关的$t_1,\cdots,t_m,t_i\neq t_j$.
+    设$t_k\in T_{i_k}$，由全序性，$T_{i_1},\cdots,T_{i_m}$中有最大的，
+    不妨设$t_1,\cdots,t_m\in T_{i_s}$.与$T_{i_s}\in X$矛盾.
+    
+    由$Zorn$引理，存在极大元$B$.下证$B$是基.
+    
+    否则$\operatorname{span} B\subsetneq V$，
+    $\exists v\in V\backslash \operatorname{span} B\rightarrow v\notin B$，
+    令$\tilde{B}=B\cup\{v\}$，与$B$的极大性矛盾.
+\end{proof}
+
+
+\section{模的定义}
+模（module）的概念既可看作向量空间的推广，又可看作Abel群的推广。
+事实上$R$-模$M$就是环$R$上的“向量空间”，换言之，$R$的元素线性地作用在加法群$M$上；
+而19世纪时“模”的意思就是Abel群，也就是$\Z$-模.
+	\begin{definition} \textbf{模}\par
+        \qquad 设$R$是环, $M$是Abel群, 称$M$为左$R$-模, 若存在映射$f:R\times M\rightarrow M$满足:\par
+
+		\qquad \qquad (1) $r(m_1+m_2)=rm_1+rm_2$,\par
+		\qquad \qquad (2) $(r_1+r_2)m=r_1m+r_2m$（这说明$0\cdot x=0$）,\par
+		\qquad \qquad (3) $(r_1r_2)m=r_1(r_2m)$,\par
+		\qquad \qquad (4) (若$R$含幺元) $1\cdot m=m$。\par
+		
+	
+        \qquad 类似可以定义右$R$-模.
+    \end{definition}
+
+    \begin{proposition}
+        左$R$-模上可以自然地定义右$R^{\operatorname{op}}$-模结构.\par
+       \qquad 若$R$是交换环, 左$R$-模上可以自然地定义右$R$-模结构.
+    \end{proposition}
+		
+	\begin{example}
+		$R$为域, $M$是$R$-线性空间.
+	\end{example}
+	
+	\begin{example}
+		Abel群都是$\Z$-模. $n\in\Z$作用在Abel群$M$上, 
+        把$m$映到$m+\cdots+m\,(n$个$m),n\geq0$或$-m-\cdots-m\,(-n$个$m),n<0$.
+	\end{example}
+	
+	\begin{proposition} 
+        $M$是Abel群, 则$M$有唯一的$\Z$-模结构. 这是因为
+        $nm=(1+\cdots+1)m=1m+\cdots+1m=m+\cdots+m\ (n$个$m),n\geq0$. $n<0$时类似.
+	\end{proposition}
+	
+	\begin{example}
+		$R$本身为左$R$-模(左正则模). $R$在$R$上的左作用就是左乘.
+	\end{example}
+
+    \begin{example}
+        $R$的左理想$I$是左$R$-模. $R$在$I$上的左作用就是左乘.
+    \end{example}
+		
+	\begin{example}
+		$K$是域, $K[x]$为$K$上多项式环, 若$M$为左$K[x]$-模，则$M$自然成为一个左$K$-模, $K$在$M$上的左作用是$K[x]$在$M$上的左作用在$K$(即常数项)的限制.
+	\end{example}
+		
+	\begin{definition} \textbf{子模}\par
+		$M$为$R$-模, $N$为非空子集, 称$N$为$M$的子模（submodule）, 若\par
+			\qquad (1) $N$是$M$的加法子群，\par
+			\qquad(2) $\forall r\in R, x\in N$, 有$r\cdot x\in N$.（即$RN\subset N$）
+	\end{definition}
+
+    \begin{definition}
+        设$R$是一个环, $M$是一个$R$-模, $N$是$M$的一个子模.
+        称$N$是一个\textbf{极大子模}，若不存在子模$T$使得$N\subsetneq T\subsetneq M$.\par
+    \end{definition}
+
+    %\begin{exercise}
+    %设$M$是有限生成$R$-模且$M \neq \left\{0\right\}$. 证明:$M$一定有极大子模.\par
+        %Hint: Zorn引理.\par
+        %出处: 作业1.
+    %\end{exercise}
+		
+	\begin{definition} \textbf{商模}\par
+		$M$为$R$-模, $N$为$M$的子模, 商群$$M/N:=\{[m]\ \big|\ m\in M, m_1\sim m_2\iff m_1-m_2\in N\}.$$
+    有自然的模结构, 称为商模（quotient module，或factor module）.\par
+        定义商映射$j:M\rightarrow M/N$, $j(m)=\overline{m}$.
+	\end{definition}
+
+	\begin{definition} \textbf{$R$-模同态}\par
+		$A, B$为$R$-模, 称同态$f:A\rightarrow B$为$R$-模同态, 若\par
+		\qquad (1) $f(a_1+a_2)=f(a_1)+f(a_2)$, $\forall a_1,a_2\in A$,\par
+		\qquad (2) $f(ra)=rf(a)$.\par
+        换言之，$R$-模同态就是$R$-线性映射.\par
+        易得$\operatorname{Ker}f$为$A$的子模, $\operatorname{Im}f$为$B$的子模.\par
+        称$f:A\rightarrow B$是模同构，若存在$g:B\rightarrow A$
+        使得$f\circ g=i_B$，$g\circ f=i_A$.\par
+        不难证明，模同构等价于模同态且双射，也就是说其逆映射也是模同态.
+	\end{definition}
+	
+	\begin{proposition}
+		设$f:A\rightarrow B$为$R$-模同态, 则$f$诱导出自然的模同构
+			$$\tilde{f}: A/\operatorname{Ker} f
+            \rightarrow\operatorname{Im}f.$$
+	此时定义$\operatorname{Coker}f=B/\operatorname{Im}f$，称为\textbf{余核}（cokernel）.
+	\end{proposition}
+	
+	\begin{proposition}
+		$\{N_\alpha\}$是一簇$M$的子模, 
+        则$\bigcap\limits_\alpha N_\alpha$仍为子模.
+	\end{proposition}
+	
+	\begin{remark}
+		$\bigcup\limits_\alpha N_\alpha$不一定是$M$的子模. 例如, 考虑$\mathbb{Z}$-模$\mathbb{Z}/6\mathbb{Z}$中由$[2]$生成的子模和由$[3]$生成的子模, 它们的并$\{[0],[2],[3],[4]\}$并不构成子模.
+	\end{remark}
+	
+	\begin{definition} \textbf{生成}\par
+		$M$为$R$-模, $S$为子集, $T(S):=\{N$是$M$的子模且$S\subset N\}$.\par
+		称$\langle S\rangle=\bigcap\limits_{N\in T(S)} N$为由$S$生成的子模, 
+        当$\langle S\rangle=M$时, 称$S$为\textbf{生成元集}（a set of generators）.\par
+		若$|S|<+\infty$, 则称$\langle S\rangle$为\textbf{有限生成$R$-模}
+        （finitely generated $R$-module）.  
+        由一个元素生成的模称为\textbf{循环模}（cyclic module，或principal module）.
+	\end{definition}
+		
+	\begin{proposition}
+		$\langle S\rangle=\Big\{\sum\limits_{i=1}^{n} r_i s_i\ \Big|\ r_i\in R, s_i\in S, n\in \N \Big\}.$
+	\end{proposition}	
+		
+	\begin{definition} 
+		设$M$为模, $\{N_\alpha\}$是$M$的一簇子模, 
+        定义$\sum\limits_\alpha N_\alpha
+        :=\big\langle\bigcup\limits_\alpha N_\alpha\big\rangle
+        =\Big\{\sum\limits_{\alpha\in S}t_{\alpha}\ \Big|\ 
+        t_{\alpha}\in N_{\alpha},|S|<+\infty\Big\}$.
+	\end{definition}
+		
+	\begin{definition} \textbf{单模}\par
+		称$M$为单模（simple module）, 若(1) $M\neq 0$，(2) $M$只有平凡子模.
+	\end{definition}
+	
+	\begin{proposition} 
+		$M$为单$\Z$-模当且仅当$M=\Z/p\Z$，其中$p$是素数.
+	\end{proposition}	
+
+    \begin{proof}
+        假设$M$不是循环模, 则选取一个非零元所张成的循环模, 就是一个非平凡的子模, 矛盾.
+
+        如果$M$是$a$生成的无限循环模, 则有非平凡子模$2a$, 矛盾.
+
+        如果$M$同构于$\Z/qr\Z$, 其中$q,r\neq1$, 则有$[q]$张成的非平凡子模, 矛盾.
+
+        所以$M=\Z/p\Z$.
+
+        反之显然.
+    \end{proof}
+	
+	\begin{definition} \textbf{基}\par
+		称$B\subset M$是$M$的一组基（basis），若
+        (i) $\langle B\rangle=M$，(ii) $B$是$R$-线性无关的.
+	\end{definition}
+	
+	\begin{definition} \textbf{自由$R$-模}\par
+		称$M$为自由$R$-模（free $R$-module）, 若它存在一组基.
+	\end{definition}
+	
+	\begin{example}
+		$K$是域, 则$K$-模是自由模.
+	\end{example}
+	
+	\begin{example}
+		有限$\Z$-模不是自由模.
+	\end{example}
+	
+	\begin{example}
+		$R$是环, $R^n$是自由模, $\{e_i=(0,\cdots,0,1,0,\cdots,0)\}$是一组基.
+	\end{example}	
+	
+	\begin{exercise}
+		$D$是可除环, $V$是$D$-模, 则$V$是自由模.
+	\end{exercise}
+	
+	\begin{definition}
+		$M,N$是$R$-模, 定义
+        $\operatorname{Hom}_R(M,N)=\{f:M\rightarrow N\mid f$是模同态$\}$.
+	\end{definition}
+	
+	\begin{proposition} $\operatorname{Hom}_R(M,N)$是Abel群.\par
+        \qquad 若$R$是交换环, 则$(rf)(x)=rf(x)=f(rx)$赋予了
+        $\operatorname{Hom}_R(M,N)$左$R$-模结构.一般来说，交换条件是必要的：
+        $$r_1\cdot(r_2\cdot f)(x)=(r_2\cdot f)(r_1x)=f(r_2r_1x).$$
+    	\end{proposition}
+	
+	\begin{proposition}
+		$F$是自由$R$-模, $B\neq \varnothing$是一组基. 对于任意$R$-模$N$, 
+			\begin{align*}
+			r: \operatorname{Hom}_R(F,N)&\rightarrow \operatorname{Map}(B,N)\\
+			 f&\mapsto r(f)=f|_{B}
+			\end{align*}
+	是双射.\par
+        \qquad 简而言之, 基的态像可以决定模同态.
+	\end{proposition}
+	
+	\begin{proposition}
+		$F$是$R$-模, $B$是$F$的非空子集. 若对于任意$R$-模$N$,
+			$$r: \operatorname{Hom}_R(F,N)\rightarrow \operatorname{Map}(B,N)$$
+	是双射, 则$B$是一组基, 进而$F$是自由$R$-模.
+	\end{proposition}
+	
+	如何构造自由模?\par
+	\begin{proposition}
+		设$S$是非空集, $R^{(S)}:=\{f: S\rightarrow R\mid 
+        \operatorname{supp}(f)\text{ 有限}\}$是自由$R$-模.\par
+		$\forall t\in S$, 定义$\delta_t:S\rightarrow R$, 
+        $\delta_t(x)=\begin{cases} 1,\ x=t\\ 0,\ x\neq t\end{cases}$, 
+        则$\delta_t\in R^{(S)}$.\par
+		定义$i:S\rightarrow R^{(S)}$, $i(s)=\delta_s$是单射, 
+        且$i(S)$是$R^{(S)}$的一组基.
+	\end{proposition}
+	
+	\begin{definition}
+		称$R^{(S)}$是以$S$为基的自由$R$-模, $\forall f\in R^{(S)}$, 
+        $\operatorname{supp}(f)=\{s_1,\cdots,s_n\}$, $\lambda_i=f(s_i)$, 
+        记$f=\sum\limits_{i=1}^{n} \lambda_i \delta_{s_i}$(形式和).
+		$$R^{(S)}=\Big\{\sum\limits_{i=1}^m \lambda_i\delta_{s_i}\Bigm| \lambda_i\in R, s_i\in S, 1\leq i\leq m, m\in N\Big\}.$$
+        若$S=\{s_1,\cdots,s_n\}$, 则$R^{(S)}=R^n$.
+	\end{definition}
+	
+	\begin{proposition}
+		设$(F,\tilde{i})$, $F$为自由$R$-模, 
+        $\tilde{i}:S\rightarrow F$是单射且$\tilde{i}(S)$是$F$的一组基, 
+        则存在唯一的同构$\alpha: R^{(S)}\rightarrow F$, 
+        使得$\tilde{i}=\alpha \circ i$.
+	\end{proposition}
+	
+	\begin{example} \textbf{群环}\par
+	$R$为环，$G$为群，$R[G]:=R^{(G)}$是以$G$为基的自由$R$-模.\par
+	$R[G]=\Big\{\sum\limits_{g\in G} \lambda_g \cdot g\Bigm| \lambda_g=0$，
+    除有限多个$g$以外$\Big\}
+    =\{f:G\rightarrow R\mid \operatorname{supp}(f)<+\infty\}$.\par
+	对于$f=\sum \lambda_s\cdot s$, $h=\sum \mu_t\cdot t$, 定义
+    $$(f\cdot h)(g)=\sum\limits_{s\cdot t=g} \lambda_s\cdot \mu_t 
+    =\sum\limits_{s} \lambda_s\cdot \mu_{s^{-1}\cdot g}
+    =\sum\limits_{t} \lambda_{g\cdot t^{-1}}\cdot \mu_t.$$
+	
+	称$R[G]$是以$R$为系数的群环. $(R[G],+,\,\cdot\,,0,1=1_R\cdot 1_G)$是一个含幺环.\par
+	$i:G\rightarrow R[G]$, $i(g)=1_R\cdot g$是单的， 
+    $i(g_1\cdot g_2)=i(g_1)\cdot i(g_2)$是群同态.\par
+	$i_R:R\rightarrow R[G]$，$i_R(\lambda)=\lambda \cdot 1_G$是环同态.
+	\end{example}
+	
+	\begin{proposition} 
+		$M$为$R$-模, 则$M$同构于自由模的商模.
+	\end{proposition}
+\begin{proof}
+	取$M$的一组生成元的集合$S$，$\langle S\rangle=M$，
+    $R^{(S)}$是以$S$为基的自由模. $i:S\rightarrow M$为嵌入.
+	
+	由自由模性质，存在$R$-模同态$f$：$R^{(S)}\rightarrow M,f_{|_S}=i$.
+	
+	由$f$是满射结合同态基本定理得到$M\cong  R^{(S)}/\operatorname{Ker}f$.
+\end{proof}
+	\begin{definition}
+		设$\{M_i\}$为$R$-模，$I\neq \varnothing$是指标集.
+        定义$\{M_i\}$的\textbf{直积}（direct product）为
+		$$\prod_{i\in I} M_i:=\{(x_i)_{i\in I}\mid x_i\in M_i, i\in I\}
+        =\{f: I\rightarrow \bigcup_{i\in I} M_i\mid f(i)\in M_i\},$$
+		令$(x_i)+(y_i):=(x_i+y_i)$, $\lambda\cdot (x_i):=(\lambda \cdot x_i)$, 
+        则$\prod\limits_{i\in I} M_i$是$R$-模.
+	\end{definition}
+	
+	\begin{proposition}
+		对于任意$R$-模$T$，\begin{align*}
+			u: \operatorname{Hom}_R\Big(T,\prod\limits_{i\in I} M_i\Big) 
+            &\rightarrow \prod\limits_{i\in I} \operatorname{Hom}_R(T, M_i)\\
+			f &\mapsto (p_i\circ f)
+		\end{align*} 是同构.
+	
+	\end{proposition}
+	
+	\begin{proposition}
+		设$W$为$R$-模，$\tilde{p}_j: W\rightarrow M_j$，$j\in I$为模同态，满足
+        对任意$R$-模$T$, 
+			\begin{align*}
+				u: \operatorname{Hom}_R(T,W) &\rightarrow \prod\limits_{j\in I} \operatorname{Hom}_R(T, M_j)\\
+					f &\mapsto (\tilde{p}_j\circ f)
+				\end{align*} 是同构，则存在唯一的同构$\alpha:W\rightarrow \prod\limits_{j\in I} M_j$使得$\tilde{p}_j=p_j\circ \alpha$.
+	
+	\end{proposition}
+	
+	\begin{definition}
+		设$\{M_i\}$是$R$-模, $I\neq \varnothing$是指标集.\par
+		\qquad $\bigoplus\limits_{i\in I} M_i=\{(x_i)_{i\in I} \in \prod\limits_{i\in I} M_i\ \big|$ 仅有限个$x_i\neq0\}$.\par
+		\qquad $\bigoplus\limits_{i\in I} M_i$是$\prod\limits_{i\in I} M_i$的子模.
+	\end{definition}
+	
+	\begin{definition}
+		$\forall j\in I$,
+		\begin{align*}
+		q_j:M_j&\rightarrow \bigoplus\limits_{i\in I} M_i\\
+		m&\mapsto (x_i)_{i\in I},\ \ x_i=\begin{cases} m,\ &i=j\\ 0,\ &i\neq j \end{cases}
+		\end{align*}是单$R$-模同态.
+	
+	\end{definition}
+	
+	\begin{proposition}
+	对于任意$R$-模$T$,
+		\begin{align*}
+			u:\operatorname{Hom}_R\Big(\bigoplus\limits_{i\in I} M_i,T\Big) &\rightarrow \prod\limits_{i\in I} \operatorname{Hom}_R(M_i,T)\\
+			f &\mapsto (f\circ q_i)_{i\in I}
+		\end{align*}
+	是同构.
+	\end{proposition}
+
+    \begin{proposition}
+        设$W$, $M_i$是$R$-模, $\tilde{q}_j:M_j \rightarrow W$是$R$-模同态. 若
+        \begin{align*}
+			u:\operatorname{Hom}_R(W,T) &\rightarrow \prod\limits_{i\in I} \operatorname{Hom}_R(M_i,T)\\
+			f &\mapsto (f\circ \tilde{q}_i)_{i\in I}
+		\end{align*}
+    是同构.\par
+        \qquad 则存在唯一的同构$\alpha: \bigoplus\limits_{i\in I} M_i \rightarrow W$, 使得$\tilde{q}_j=\alpha\circ q_j$.
+
+        \begin{tikzcd}
+            & \bigoplus\limits_{i\in I} M_i \dar["\alpha"]\\
+            M_j \urar["q_j"] \rar["\tilde{q}_j"] & W
+        \end{tikzcd}
+
+    \end{proposition}
+
+	
+	
+	\begin{definition}
+		设$\{M_i\}$是$M$的子模，$I\neq \varnothing$是指标集.
+		$$\sum_{i\in I} M_i=\{x_{i_1}+\cdots +x_{i_n}\mid x_{i_s}\in M_{i_s}, 
+        1\leq s\leq n, n\in \N\}=\big\langle\bigcup_{i\in I} M_i\big\rangle.$$
+        $q_i:M_i\rightarrow \sum\limits_{i\in I} M_i$, 
+        称$\sum\limits_{i\in I} M_i$为\textbf{直和}（direct sum）, 若对于任意$R$-模$T$, 
+			\begin{align*}
+			u:\operatorname{Hom}_R\Big(\sum\limits_{i\in I} M_i,T\Big) &\rightarrow \prod\limits_{i\in I} \operatorname{Hom}_R(M_i,T)\\
+			f &\mapsto (f\circ q_i)_{i\in I}
+		\end{align*}
+	是同构, 记为$\bigoplus\limits_{i\in I} M_i$.
+	\end{definition}
+	
+	\begin{proposition}	
+		设$\{M_i\}$是$M$的子模.下列命题等价：\par
+		(1) $\sum\limits_{i\in I} M_i$是直和.\par
+		(2) $\forall i\in I$, 记$N_i=\sum\limits_{j\neq i,\ j\in I} M_j
+        =\big\langle\bigcup\limits_{j\neq i} M_j\big\rangle$, 
+        则$M_i\cap N_i=\{0\}$.\par
+		(3) 对于任意有限子集$\{ i_1,i_2,\cdots,i_k\}\subset I$, 
+        $m_{i_s}\in M_{i_s}$, $1\leq s \leq k$, 
+        若$m_{i_1}+\cdots +m_{i_k}=0$, 则$m_{i_1}=\cdots=m_{i_k}=0$.\par
+		(4) $\forall 0\neq x\in \sum\limits_{i\in I} M_i$, 
+        存在唯一有限子集$\{ i_1,i_2,\cdots,i_k\}\subset I$和$m_{i_s}\in M_{i_s}$, 
+        $1\leq s \leq k$, 使得$x=m_{i_1}+\cdots +m_{i_k}$.
+	\end{proposition}
+	
+	
+	\begin{example}
+		对于有限指标集$I=\{1,2,\cdots,n\}$, $\bigoplus\limits_{i=1}^n M_i=\prod\limits_{i=1}^n M_i$.
+	\end{example}
+	
+	\begin{definition}
+		设$\{M_i\}_{i\in I}$是$M$的子模, 称$M$是$\{M_i\}$的直和, 若\par
+		\qquad (1) $M=\sum\limits_{i\in I} M_i$. (2) $\sum\limits_{i\in I} M_i$是直和.\par
+	此时记$M=\bigoplus\limits_{i\in I} M_i$.
+	
+	\end{definition}
+    \section{PID上有限生成模的结构}
+
+    \begin{lemma}
+        $R$为交换环，$F$为自由$R$-模，$B_1,B_2$为两组基，若$\vert B_1\vert =n$,则$\vert B_2\vert =n$.
+    \end{lemma}
+    \begin{definition}
+        $R$为交换环，$F$为自由$R$-模，$B$为基，
+        定义$\operatorname{rk}F=\vert B\vert$，称为$F$的秩.
+    \end{definition}
+    \begin{theorem}
+        $R$为$\operatorname{PID}$，$F$为自由$R$-模，$\operatorname{rk}F=n$，
+        设$N$为$F$的子模，则$N$是自由模，且$\operatorname{rk}N\leq n$.
+    \end{theorem}
+
+\begin{proof}
+	
+	$W\neq\{0\}$.对$n$归纳.当$n=1$时，$\langle \alpha \rangle =M\cong R$作为$R$-模，由$R$是PID知结论成立.
+	
+	假设命题对$n-1$时成立，$M\cong R^n$作为$R$-模，取$M=R^n$.
+	
+	设$f:R^n\rightarrow R,f(r_1,\cdots,r_n)=r_n$，
+    则$\operatorname{Ker}f\cong  R^{n-1}$.设$W$是$R^n$子模.
+	
+	$f_{|_W}：W\rightarrow R $是$R$-模同态，
+    $\operatorname{Ker} f_{|_W}=\operatorname{Ker}f \cap W$是$\operatorname{Ker}f$子模。
+    由归纳假设是有限生成子模$R$-模且$m=\operatorname{rk}(\operatorname{Ker} f_{|_W})\leq n-1$.
+	
+	1.$\operatorname{Im}f_{|_W}=\{0\}\rightarrow W=\operatorname{Ker} f_{|_W}$，结论成立.
+	2.$\operatorname{Im}f_{|_W}\neq\{0\}$.由$R$是PID，$\exists t,\operatorname{Im}f_{|_W}=(t)$.
+	
+	设$\{b_1,\cdots,b_m\}$是$\Ker f_{|_W}$的基，$b_{m+1}\in W,f(b_{m+1})=t$.
+	
+	容易验证$\{b_1,\cdots,b_{m+1}\}$是$\operatorname{Ker}f_{|_W}$的基.
+	
+\end{proof}
+    \begin{theorem}
+        $R$为$\operatorname{PID}$，$M$为有限生成$R$-模，$N$为其子模，则$N$是有限生成的.
+    \end{theorem}
+\begin{proof}
+	设$\{x_1,\cdots,x_n\}$是$M$的生成元，则有满$R$-模同态$f:R^n\rightarrow M,f(e_i)=x_i$.
+	
+	$f^{-1}(W)$是$R^n$的子模,由前述定理,$f^{-1}(W)$为自由模,因此取一组基$\{t_1,\cdots,t_m\}=B$.
+	
+	容易验证$f$为满同态,则$W=f(f^{-1}(W))$，则$\{f(t_1),\cdots,f(t_n)\}$是$W$的生成元.
+	
+\end{proof}
+    \begin{definition}
+        $R$为整区，$M$为$R$-模，称$x\in M$为\textbf{挠元}（torsion element），
+        若存在非零元$r \in R$使得$rx=0$.\\
+        $\operatorname{Ann}(x):=\{ r\in R\mid rx=0\}$称为$x$的\textbf{化零子}（annihilator），
+        不难验证它是$R$的理想.\\
+        $T(M):=\{ x\in M\mid x$为挠元$\}$称为$M$的\textbf{扭子模}（torsion submodule）.\\
+        称$M$是\textbf{无挠的}（torsion free），若$T(M)=\{0\}$.（即若$r\neq0, x\neq 0$,则$rx\neq0$）
+
+    \end{definition}
+    \begin{definition}
+        $\operatorname{Ann}(M):=\bigcap\limits_{x\in M}\operatorname{Ann}(x).$
+    \end{definition}
+    \begin{proposition}
+        设$R$为整区，$M$为$R$-模，则$T(M)$是$M$的子模.
+    \end{proposition}
+    \begin{definition}
+        $M$为$R-$模，称$M$为\textbf{挠模}（torsion module），若$M=T(M)$.
+    \end{definition}
+    \begin{proposition}
+        $R$为整区，$M$为$R$-模，则$M/T(M)$无挠.
+
+    \end{proposition}
+    \begin{proposition}
+        $R$为$\operatorname{PID}$，$M$为有限生成$R$-模，若$M$无挠, 则$M$是自由$R$-模, 且$\operatorname{rk} M<+\infty$.
+    \end{proposition}
+\begin{proof}
+	
+	设$M=\langle  t_1,\cdots,t_m\rangle$.由$M$无挠，则任意$x\in M,\{x\}$线性无关.
+	
+	于是$\langle  t_1,\cdots,t_m\rangle$存在极大线性无关子集，设为$\langle  t_1,\cdots,t_s\rangle$.
+	
+	令$W=\langle  t_1,\cdots,t_s\rangle$，则$W$自由，$\operatorname{rk}(W)=s$.
+	
+	由极大性，$\forall s+1\leq i\leq m,\exists r_1,\cdots,r_s,r_i,r_1t_1+\cdots+r_st_s+r_it_i=0$.
+    令$r=r_{s+1}\cdots r_m$，则$\forall t_j,rt_j\in W $.
+    定义$f:M\rightarrow W,f(x)=rx$为$R$-模同态.
+    由$M$无挠，$\operatorname{Ker}f=0$.
+    由同态基本定理$M\cong \operatorname{Im}f\subset W$，则$M$自由.
+\end{proof}
+    \begin{theorem}
+        $R$为$\operatorname{PID}$，$M$为有限生成$R$-模，则存在自由子模$F$，
+        满足$M=F\oplus T(M)$，且$F\cong M/T(M)$.
+    \end{theorem}
+\begin{proof}
+	$M/T(M)$是有限生成无挠$R$-模，则$M/T(M)$是有限生成自由$R$-模.
+	
+	商同态：$j:M\rightarrow M/T(M)$.设$\{b_1,\cdots,b_n\}$是$M/T(M)$的基，设$\{x_1,\cdots,x_n\},j(x_i)=b_i$.
+	
+	$M/T(M)$自由$\{b_i\}$基，存在模同态$g:M/T(M)\rightarrow M,g(b_i)=x_i,j\circ g=\operatorname{id}_{M/T(M)}$.
+	
+	练习: $M=\operatorname{Ker}j\oplus \operatorname{Im}g$.
+\end{proof}
+    \begin{lemma}
+        设$M,N$是$R$-模, $f:M\rightarrow N, g:N\rightarrow M$是$R$-模同态, 且$f\circ g=1_N$, 则\par
+        \qquad (1) $f$是满的, $g$是单的.\par
+        \qquad (2) $M=\operatorname{Ker} f\oplus \operatorname{Im} g$, $\operatorname{Im}\cong N$.
+    \end{lemma}
+    \begin{definition}
+        $R$为$\operatorname{PID}$，$A,B\in M_{mn}(R)$，称$A$与$B$相抵，
+        若存在$P\in \mathrm{GL}_m(R),Q\in \mathrm{GL}_n(R)$，使得$A=PBQ$.
+    \end{definition}
+    \begin{theorem}
+        $A\in M_{mn}(R)$，则$A$相抵于
+        $\operatorname{diag}(d_1,\cdots d_r,0,\cdots,0),d_i\neq0,d_1\vert d_2\vert\cdots \vert d_r.$\\
+        若$\operatorname{diag}(\widetilde{d_1},\cdots \widetilde{d_s},0,\cdots,0)$
+        相抵于$\operatorname{diag}(d_1,\cdots d_r,0,\cdots,0)$，
+        则$r=s,(\widetilde{d_i})=(d_i).$
+    \end{theorem}
+    \begin{corollary}
+        $R$为$\operatorname{PID}$，$M$为自由模，$\operatorname{rk}M=n$，
+        $N$是$M$的子模($\operatorname{rk}N=m\leq n$)，
+        则存在$M$的一组基$\{ e_1,\cdots,e_n\},d_1,\cdots d_m\in R\backslash {0},d_1\vert \cdots \vert d_m$，
+        使得$\{d_1e_1,\cdots,d_me_m\}$为$N$的一组基.
+    \end{corollary}
+    
+    \begin{theorem}\label{PID上模基本定理}
+        $R$为$\operatorname{PID}$，$M\neq 0$为有限生成$R$-模，
+        则存在$y_1,\cdots y_l\in M$，记$\operatorname{Ann}(y_i)=(d_i)$，
+        满足：
+        \begin{itemize}
+
+        \item[(1)]$M=\bigoplus\limits_{i=1}^l\langle y_i\rangle$,\\
+        \item[(2)]$(d_1)=\cdots=(d_r)=\{0\},$\\
+        \item[(3)]$(d_{r+1})\subset \cdots \subset(d_l)\neq R$.\\
+        \end{itemize}
+        此时$M\cong R^r\oplus T(M)$，
+        $T(M)=\bigoplus\limits_{i=r+1}^l\langle y_i\rangle$，
+        $\operatorname{rk}M/T(M)=r.$\\
+        这一分解是唯一的，即对于两种分解
+        $M=\bigoplus\limits_{i=1}^l\langle y_i\rangle
+        =\bigoplus\limits_{i=1}^{l'}\langle y'_i\rangle$，
+        有$l=l'$且$(d_i)=(d'_i),\forall 1\leq i \leq l$. 
+    \end{theorem}
+    \begin{example}
+        给定$\mathbb{Z}$-模$M=\langle t_1,t_2,t_3\rangle$，
+        满足$\begin{pmatrix}2&5&0\\4&-3&2\end{pmatrix}
+        \begin{pmatrix}t_1\\t_2\\t_3\end{pmatrix}=0$，
+        则该模结构可表示为$M \cong \mathbb{Z}\oplus\mathbb{Z}/2\mathbb{Z}$.
+
+        定义同态$f:\mathbb{Z}^3=\langle e_1,e_2,e_3\rangle \rightarrow M$, 
+        使得$f(e_i)=t_i$, 这是满的，\par
+        则$M\cong \mathbb{Z}^3/\operatorname{Ker} f$, 
+        其中$\operatorname{Ker} f=\langle2e_1+5e_2,4e_1-3e_2+2e_3\rangle$.\par
+        
+        $\begin{pmatrix}f_1\\f_2\end{pmatrix}
+        =\begin{pmatrix}2&5&0\\4&-3&2\end{pmatrix}
+        \begin{pmatrix}e_1\\e_2\\e_3\end{pmatrix}$, 而
+
+        $\begin{pmatrix}2&5&0\\4&-3&2\end{pmatrix}\sim
+        \begin{pmatrix}2&1&0\\4&-11&2\end{pmatrix}\sim
+        \begin{pmatrix}1&2&0\\-11&4&2\end{pmatrix}\sim
+        \begin{pmatrix}1&0&0\\-11&26&2\end{pmatrix}\sim
+        \begin{pmatrix}1&0&0\\0&26&2\end{pmatrix}\sim
+        \begin{pmatrix}1&0&0\\0&2&26\end{pmatrix}\sim
+        \begin{pmatrix}1&0&0\\0&2&0\end{pmatrix}$.\par
+
+        因此可以找到$\{u_1,u_2,u_3\}$是$\mathbb{Z}^3$的一组基, 
+        使得$\{u_1,2u_2\}$是$\operatorname{Ker}f$的一组基.\par
+        进而$M=(\langle u_1 \rangle \oplus \langle u_2 \rangle \oplus \langle u_3 \rangle)
+        / (\langle u_1 \rangle\oplus \langle 2u_2 \rangle) 
+        \cong\mathbb{Z}\oplus \mathbb{Z}/2\mathbb{Z}$.
+    \end{example}
+    \begin{theorem}
+        $R$为$\operatorname{PID}$，则有：
+        \begin{enumerate}[label=(\arabic*)]
+        \item 若$a,b \in R$满足$\gcd(a,b)=1$，给定$R$-模$M$与$x\in M$，
+        若$ax=bx=0$，则$x=0$.
+        \item $M\neq 0$为有限生成$R$-挠模. 
+        设$M=\langle t_1,\cdots,t_n\rangle$，$\operatorname{Ann}(t_i)=(d_i)$，
+        则$\operatorname{Ann}(M)=\bigcap\limits_{i=1}^n\operatorname{Ann}(t_i)=(d)$，
+        其中$d=\operatorname{lcm}(d_1,\cdots,d_n)$.
+        \item 设$d=P_1^{e_1}\cdots P_l^{e_l}$满足对任意$1 \leq i\neq j\leq l$
+        有$(P_i)\neq (P_j)$且$e_i\geq 1$. 
+        令$M(P_i):=\{u\in M\mid$存在$t>0$满足$P_i^tu=0\}$，
+        则$M(P_i)$总为$M$子模且$M=\bigoplus\limits_{i=1}^l M(P_i)$.
+        \end{enumerate}
+    \end{theorem}
+    \begin{proof}
+        (3) $M(P_i)$是子模易知.\par
+        \qquad 令$q_i=\frac{d}{P_i^{e_i}}$, 则
+        $\operatorname{gcd}(q_1,\cdots,q_l)=1$, 故由Bezout定理, 
+        存在$r_1,\cdots,r_l \in R$, 使得$r_1q_1+\cdots+r_lq_l=1$,\par
+        \qquad 对于任意$x\in M$, $x=1\cdot x=r_1q_1x+\cdots+r_lq_l x$.\par
+        \qquad 我们说$r_iq_ix\in M(P_i)$, 这是因为$P_i^{e_i}r_iq_ix=r_i dx=0$, 
+        因此$M=\sum\limits_{i=1}^l M(P_i)$\par
+        \qquad 另一方面, 若存在$u_i\in M(P_i)$, 使得$u_1+\cdots+u_l=0$, 
+        i.e. $u_1=-u_2-\cdots-u_l$.\par
+        \qquad 设$t_1,\cdots,t_i$满足$P_i^{t_i}u_i=0$, 则$P_1^{t_1}u_1=0$, 
+        且$\prod\limits_{i\neq 1}P_i^{t_i}u_1=0$, 
+        而$\operatorname{gcd}(P_1,\prod\limits_{i\neq 1}P_i^{t_i})=1$, 
+        由(a)知$u_1=0$. 同理$u_i=0$.
+    \end{proof}
+    \begin{theorem}
+        $R$为$\operatorname{PID}$，则有：
+        \begin{itemize}
+        \item[(1)] $R$-模$M=\langle u\rangle$，$\operatorname{Ann}(u)=\langle d_1d_2 \rangle$
+        满足$\gcd(d_1,d_2)=1$，则存在$u_1,u_2\in M$满足$M=\langle u_1\rangle\oplus\langle u_2 \rangle$
+        且$\operatorname{Ann}(u_i)=\langle d_i\rangle$.\\
+        \item[(2)] $R$-模$M=\langle u\rangle$，$\operatorname{Ann}(u)=\langle P_1^{e_1}\cdots P_l^{e_l} \rangle$
+        满足对任意$1 \leq i\neq j\leq l$有$(P_i)\neq (P_j)$，
+        $P_i$不可约且$e_i\geq 1$，
+        则存在$u_1,\cdots,u_l\in M$满足$M=\langle u_1\rangle\oplus\cdots\oplus\langle u_l \rangle$且$\operatorname{Ann}(u_i)=\langle P_i^{e_i} \rangle$.\\
+        \item[(3)] 设$R$-模$M=\langle u_1\rangle\oplus\langle u_2 \rangle$
+        满足$\operatorname{Ann}(u_i)=\langle d_i\rangle$且$\gcd(d_1,d_2)=1$，
+        则存在$u\in M$满足$M=\langle u\rangle$且
+        $\operatorname{Ann}(u)=\langle d_1d_2 \rangle$.
+        \end{itemize}
+    \end{theorem}
+    \begin{example}
+        $A\neq 0$为有限生成Abel群，则存在正整数$d_1|\cdots|d_s>1$与$r\geq 0$
+        使得$A \cong \Z^r\oplus \mathbb{Z}/d_1\mathbb{Z}\oplus\cdots \oplus\mathbb{Z}/d_s\mathbb{Z}$，
+        且$(r,d_1,\cdots,d_s)$在同构意义下唯一确定了$A$，记为$A$的不变因子.
+    \end{example}
+    \begin{definition}
+        已知域$F$，记$R=F[\lambda]$且设$V$为有限维$F$-向量空间，$n=\operatorname{dim}_FV$，$\alpha \in \operatorname{End}_F(V)$，则可诱导出$V$上的$F[\lambda]$-模结构满足$\lambda v=\alpha(v)$对任意$v \in V$.
+    \end{definition}
+    \begin{proposition}
+        沿用上述记号，则$V$是有限生成$F[\lambda]$-挠模，
+        且存在$v_1,\cdots,v_l \in V$满足
+        $V=F[\lambda]v_1\oplus\cdots \oplus F[\lambda]v_l$，
+        $\operatorname{Ann}(v_i)=\langle d_i(\lambda) \rangle$，
+        其中每一个直和项均为$\alpha$的不变子空间.
+    \end{proposition}
+    \begin{proposition}
+        设$W=F[\lambda]v$为$V$的循环$F[\lambda]$-模，
+        $\operatorname{Ann}(v)=\langle d(\lambda)\rangle$，
+        则作为$F[\lambda]$-模有
+        $F[\lambda]v \cong F[\lambda]/\langle d(\lambda)\rangle$.
+    \end{proposition}
+    \begin{proposition}
+        沿用上一定理记号，令$d(\lambda)=\lambda^m+a_{m-1}\lambda^{m-1}\cdots+a_1\lambda+a_0$,有$\operatorname{dim}_F F[\lambda]/\langle d(\lambda)\rangle=\operatorname{deg} d=m$，且$\{1,\lambda,\cdots,\lambda^{m-1}\}$构成一组基.\\
+        此时有$\mathscr{B}=\{v,\alpha(v),\alpha^2(v),\cdots,\alpha^{m-1}(v)\}$是$F[\lambda]v$的一组$F$-基. $\alpha$在$\mathscr{B}$下表示矩阵$B(d(\lambda))$满足\\
+        $\alpha \begin{pmatrix}v\\\alpha(v)\\\vdots\\\alpha^{m-1}(v)\end{pmatrix}=\begin{pmatrix}0&1&0&\cdots&0\\0&0&1&\cdots&0\\\vdots&\vdots&\vdots&\ddots&\vdots\\0&0&0&\cdots&1\\-a_0&-a_1&-a_2&\cdots&-a_{m-1}\end{pmatrix}\begin{pmatrix}v\\\alpha(v)\\\vdots\\\alpha^{m-1}(v)\end{pmatrix}:=D(d(\lambda))\begin{pmatrix}v\\\alpha(v)\\\vdots\\\alpha^{m-1}(v)\end{pmatrix}$.\\
+    \end{proposition}
+    \begin{theorem}
+        在域$F$上，有限维$F$-线性空间$V$总存在一组基$\mathscr{B}$与首一多项式$d_1(\lambda)|\cdots|d_l(\lambda)\neq 0$使得满足$\alpha$的矩阵表示为$\operatorname{diag}(B(d_1(\lambda)),\cdots,B(d_l(\lambda)))$，称为有理标准型.\\
+        此时$d_l(\lambda)$为$\alpha$的极小多项式，
+        $\operatorname{char}_{\alpha}(\lambda)=\operatorname{det}(\lambda I-A)
+        =d_1(\lambda)\cdots d_l(\lambda)$为特征多项式.
+    \end{theorem}
+    \begin{definition}
+        $A \in M_n(F)$，$V=F^n$，$\mathscr{A}:V\rightarrow V$
+        满足$\mathscr{A}(x)=xA$，此时$\mathscr{A}\in\operatorname{End}_F(F^n)$
+        且在标准基$\mathscr{B}=\{e_1,\cdots,e_n\}$下表示矩阵为$A$，
+        则$(\mathscr{A},F^n)$的有理标准型定义为$A$的有理标准型.
+    \end{definition}
+    \begin{theorem}
+        $A,B\in M_n(F)$，则以下命题等价：
+        \begin{itemize}
+        \item[(1)] $A$与$B$相似（共轭）.
+        \item[(2)] $(F^n,\mathscr{A})$与$(F^n,\mathscr{B})$作为$F[\lambda]$-模同构.
+        \item[(3)] $\lambda I_n-A$与$\lambda I_n-B$在$M_n(F[\lambda])$中相抵.
+        \item[(4)] $A$与$B$有相同的有理标准型.
+        \end{itemize}
+    \end{theorem}
+    \begin{definition}
+        沿用前文记号，当$F$为代数闭域时可进一步分解为
+        $V=\bigoplus\limits_{i=1}^s\bigoplus\limits_{j=1}^t F[\lambda]v_{ij}$
+        满足$\operatorname{Ann}(v_{ij})=\langle(\lambda-r_j)^{e_{ij}}\rangle$，其中$r_j$为特征值，
+        从而有$F[\lambda]v_{ij}\cong F[\lambda]/\langle(\lambda-r_j)^{e_{ij}}\rangle$.
+        因而可以推得$\{v_{ij},(\alpha-r_j)v_{ij},\cdots,(\alpha-r_j)^{e_{ij}-1}v_{ij}\}$是$F[\lambda]v_{ij}$的一组基，
+        由此拼出$V$的一组基，$\alpha$在这组基下的表示矩阵称为Jordan标准型.
+    \end{definition}
+
+
+
+
+\section{张量积}
+
+\begin{definition} \textbf{正合}\par
+    \qquad 称$R$-模同态$M\xrightarrow{\alpha}N\xrightarrow{\beta}T$
+在$N$处正合（exact）, 若$\operatorname{Ker} \beta=\operatorname{Im} \alpha$.\par
+    \qquad 称$$M_k \xrightarrow{d_k} M_{k+1} \xrightarrow{d_{k+1}}\cdots\xrightarrow{d_{k+r-1}}M_r$$正合， 
+    若它在$M_{k+1},\cdots,M_{r-1}$处均正合.
+\end{definition}
+
+\begin{example}
+    $0\rightarrow M\xrightarrow{\alpha} N$正合
+     $\iff$ $\operatorname{Ker}\alpha=0$, 即$\alpha$单.\par
+\end{example}
+
+\begin{remark}
+    exact一词的来源是，微分形式$\omega$称为恰当的（exact），
+    若存在微分形式$\tau$使得$\omega=d\tau$.
+\end{remark}
+
+\begin{example}
+    $M \xrightarrow{\alpha} N\rightarrow 0$正合 $\iff$ $\operatorname{Im}\alpha=N$, 即$\alpha$满.\par
+\end{example} 
+
+\begin{example}
+    $0\rightarrow M \xrightarrow{\alpha} N\rightarrow 0$正合 $\iff$ $\alpha$是同构.\par
+\end{example}
+
+\begin{example}
+    $\alpha:M\rightarrow N$是同态, 则\par
+    \qquad (i) $0\rightarrow \operatorname{Ker}\alpha 
+    \rightarrow M \rightarrow \operatorname{Im}\alpha \rightarrow 0$正合.\par
+    \qquad (ii) $0\rightarrow \operatorname{Im}\alpha 
+    \rightarrow N \rightarrow \operatorname{Coker}\alpha \rightarrow 0$正合.
+\end{example}
+
+\begin{definition}
+    称正合列$0\rightarrow M \xrightarrow{\alpha} N \xrightarrow{\beta} T \rightarrow 0$
+    为\textbf{短正合列}（short exact sequence）.
+\end{definition}
+
+\begin{proposition}
+    $T\cong N/\operatorname{Ker} \beta =N/ \operatorname{Im} \alpha$.\par
+    \qquad  记$N'=\operatorname{Im} \alpha \cong M$, 则短正合列等价为
+        $$0\rightarrow N' \rightarrow N \rightarrow N/N' \rightarrow 0.$$
+\end{proposition}
+
+\begin{example}
+    $0\rightarrow M \xrightarrow{i} M\oplus N \xrightarrow{\pi} N \rightarrow 0,
+    i(m)=(m,0),\pi(m,n)=n$是短正合列.
+\end{example}
+
+
+\begin{example}
+    $0\rightarrow \mathbb{Z} \xrightarrow{f} \mathbb{Z} \xrightarrow{j} Z/n\mathbb{Z} \rightarrow 0,
+    f(a)=na,j(a)=\bar{a}$是短正合列.\par
+    注意到$\mathbb{Z}\ncong \mathbb{Z}\oplus \mathbb{Z}/n \mathbb{Z}$.
+\end{example}
+
+\begin{definition}
+    称$0\rightarrow M \xrightarrow{\alpha} N \xrightarrow{\beta} T \rightarrow 0$是\textbf{可裂的}(split), 若存在子模$C$, 
+使得$N=\operatorname{Im} \alpha \oplus C$, 且$N\cong M\oplus T$.
+\end{definition}
+
+\begin{theorem}
+    设$0\rightarrow M \xrightarrow{\alpha} N \xrightarrow{\beta} T \rightarrow 0$是短正合列, 则下列命题等价：\par
+    \qquad (1) 此短正合列可裂.\par
+    \qquad (2) 存在模同态$g:T\rightarrow N$, 使得$\beta \circ g=1_T$.\par
+    \qquad (3) 存在模同态$f:N\rightarrow M$, 使得$f\circ \alpha=1_M$.
+\end{theorem}
+
+\begin{definition}  \textbf{$R$-平衡映射}\par
+    \qquad $R$为环, $M_R$是右$R$-模, $_RN$是左$R$-模, $A$为Abel群, 
+    称映射$f:M\times N \rightarrow A$是一个$R$-平衡映射, 若其满足\par
+    \qquad (i) $f(m_1+m_2,n)=f(m_1,n)+f(m_2,n)$,\par
+    \qquad (ii) $f(m,n_1+n_2)=f(m,n_1)+f(m,n_2)$,\par
+    \qquad (iii) $f(m\cdot r,n)=f(m,r\cdot n)$. (此时只要求$A$有群结构, 因此$r$不能提出去）\par
+    \qquad $\operatorname{Bal}(M,N,A):=\{f:M\times N\rightarrow A$是$R$-平衡映射$\!\}$是一个Abel群.
+\end{definition}
+
+\begin{proposition}
+    存在$(M \otimes_R N,i)$, $M \otimes_R N$是Abel群, 
+    $i:M\times N\rightarrow M\otimes_R N$是一个$R$-平衡映射, 
+    满足万有性质（或称泛性质，universal property）:\par
+    \qquad 对于任意Abel群$A$, 任意$f\in \operatorname{Bal}(M,N,A)$, 
+    存在唯一的\textbf{群}同态$\tilde{f}:M\otimes_R N\rightarrow A$, 
+    使得$f=\tilde{f}\circ i$.
+
+\begin{tikzcd}
+      & M\otimes_R N \dar["\tilde{f}"]\\
+      M\times N \urar["i"] \rar["f"] & A
+\end{tikzcd}
+\end{proposition}
+
+\begin{definition}  \textbf{张量积}\par
+    \qquad 称$(M \otimes_R N,i)$为$M_R$与$_RN$的张量积（tensor product）.\par
+    \qquad 记$m\otimes n=i(m,n)$, 显然有性质:\par
+    \qquad \qquad (i) $(m_1+m_2)\otimes n=m_1\otimes n+m_2\otimes n$,\par
+    \qquad \qquad (ii) $m\otimes (n_1+n_2)=m\otimes n_1+m\otimes n_2$,\par
+    \qquad \qquad (iii) $(m\cdot r)\otimes n=m \otimes (r\cdot n)$.
+\end{definition}
+
+\begin{proposition}
+    $\{m\otimes n\mid m\in M, n\in N\}$是$M \otimes_R N$的一组生成元.
+\end{proposition}
+
+\begin{proposition}
+    设$f:M_1\rightarrow M_2$, $g:N_1\rightarrow N_2$是$R$-同态， 
+    则有同态$f\otimes g: M_1\otimes_R N_1\rightarrow M_2 \otimes_R N_2$, 
+$(f\otimes g)(m\otimes n)=f(m)\otimes g(n)$.
+\end{proposition}
+
+\begin{remark}
+    $f\otimes g$只是一个记号，并非真的是$f$和$g$的张量积.
+\end{remark}
+
+\begin{proposition}
+    $M_1\xrightarrow{f_1} M_2 \xrightarrow{f_2} M_3$, 
+    $N_1\xrightarrow{g_1} N_2\xrightarrow{g_2} N_3$, 则有
+    $$(f_2\circ f_1)\otimes (g_2\circ g_1)
+    =(f_2\otimes g_2)\circ (f_1\otimes g_1).$$
+\end{proposition}
+
+\begin{proposition}
+    取定$M_R$, 设$0 \rightarrow N_1\xrightarrow{\alpha} N_2 \xrightarrow{\beta} N_3\rightarrow 0$是短正合列, 则
+        $$M\otimes_R N_1 \xrightarrow{1\otimes \alpha} M\otimes_R N_2 \xrightarrow{1\otimes \beta} M \otimes_R N_3 \rightarrow 0$$
+正合.
+\end{proposition}
+
+\begin{proposition}
+    取定$_RN$, 设$0 \rightarrow M_1\xrightarrow{\alpha} M_2 \xrightarrow{\beta} M_3\rightarrow 0$是短正合列, 则
+        $$M_1\otimes_R N \xrightarrow{\alpha \otimes 1} M_2\otimes_R N \xrightarrow{\beta \otimes 1} M_3 \otimes_R N \rightarrow 0$$
+正合.
+\end{proposition}
+
+\begin{proposition} $\{M_i\}_{i\in I}$是右$R$-模, $N$是左$R$-模, 则有自然同构
+    \begin{align*}
+        \alpha: \Big(\bigoplus\limits_i M_i\Big) \otimes_R N &\xrightarrow{\cong} \bigoplus\limits_i (M_i \otimes_R N)\\
+        (m_i)_{i\in I}\otimes n &\mapsto (m_i\otimes n)_{i\in I}.
+    \end{align*}
+对称地, 有
+    $$M\otimes_R \Big(\bigoplus\limits_i N_i\Big)\cong \bigoplus\limits_i (M\otimes_R N_i).$$
+\end{proposition}
+
+\begin{definition}  \textbf{双模}\par
+    \qquad 设$R$, $S$为含幺环, $M$为Abel群, 称$M$为一个$(R,S)$-双模（bimodule）, 若\par
+    \qquad \qquad (i) $M$是一个左$R$-模, 也是一个右$S$-模.\par
+    \qquad \qquad (ii) 对于任意$r\in R$, $s\in S$, $m\in M$, 
+    有$(r\cdot m)\cdot s=r\cdot (m\cdot s)$.\par
+将$M$简记为$_RM_S$.
+\end{definition}
+
+\begin{remark}
+    第二个条件表明$rms$是没有歧义的.
+\end{remark}
+
+\begin{example}
+    $R$是一个$(R,R)$-双模.
+\end{example}
+
+\begin{example}
+    $_RM$是$_RM_\mathbb{Z}$, $M_R$是$_\mathbb{Z}M_R$.
+\end{example}
+
+\begin{example}
+    若$R$交换, 则左$R$-模有$(R,R)$-双模结构.
+\end{example}
+
+\begin{proposition}
+    设$S,R,T$是含幺环, $_SM_R$, $_RN_T$, 则$M\otimes_R N$是一个$(S,T)$-双模, 满足:\par
+    \qquad 对于任意$s\in S$, $t\in T$, $m\in M$, $n\in N$, 
+    有$s\cdot (m\otimes n)=(s\cdot m)\otimes n$, 
+    $(m\otimes n) \cdot t=m \otimes (n\cdot t)$.
+\end{proposition}
+
+\begin{corollary}
+    若$R$交换, $M,N$是左$R$-模, 则$M\otimes_R N$也是$R$-模, 
+    且对于任意$r\in R$, $m\in M$, $n\in N$, 有
+    $$r\cdot (m\otimes n)=(r\cdot m)\otimes n=m\otimes (r\cdot n).$$
+\end{corollary}
+
+\begin{proposition}
+    $_RM$, $N_R$, 则有自然$R$-模同构$\alpha: R\otimes_R M \xrightarrow{\cong} M$, 
+    $\beta: N\otimes_R R \xrightarrow{\cong} N$, 使得
+    $\alpha(r\otimes m)=r\cdot m$, $\beta(n\otimes r)=n\cdot r$，
+    此处将$R$视为$(R,R)$-双模.
+\end{proposition}
+
+\begin{corollary}
+    $\alpha: R\otimes_R R\xrightarrow{\cong} R$是$R$-模同构, 
+    $\alpha(r_1\otimes r_2)=r_1\cdot r_2$.\par
+    \qquad 进而$R\otimes_R R$是自由$R$-模, $\{1\otimes 1\}$是其基.
+\end{corollary}
+
+\begin{proposition}
+    $A_R$, $_RB_S$, $_S C_T$, 则有自然同构
+        \begin{align*}
+            \alpha: (A \otimes_R B) \otimes_S C &\xrightarrow{\cong} 
+            A \otimes_R (B \otimes_S C),\\
+            (a\otimes b)\otimes c &\mapsto a\otimes (b\otimes c).
+        \end{align*}
+\end{proposition}
+
+\begin{corollary}
+    $R$是交换环, $A$, $B$, $C$是$R$-模, 则有自然同构
+        \begin{align*}
+            \alpha: (A \otimes_R B) \otimes_R C &\xrightarrow{\cong} A \otimes_R (B \otimes_R C),\\
+            (a\otimes b)\otimes c &\mapsto a\otimes (b\otimes c).
+        \end{align*}
+\end{corollary}
+
+\begin{proposition}
+    $M_R$, $_RN$, 有自然同构
+        \begin{align*}
+            \alpha: M\otimes_R N &\xrightarrow{\cong} N\otimes_{R^{\operatorname{op}}} M,\\
+            m\otimes n &\mapsto n\otimes m.
+        \end{align*}
+\end{proposition}
+
+\begin{corollary}
+    $R$是交换环, $M,N$是$R$-模, 则有$R$-模同构
+        \begin{align*}
+            \alpha: M\otimes_R N &\xrightarrow{\cong} N\otimes_{R} M,\\
+            m\otimes n &\mapsto n\otimes m.
+        \end{align*}
+\end{corollary}
+
+\begin{definition} \textbf{$R$-双线性映射}\par
+    \qquad 设$R$是交换环, $M,N$是$R$-模, $T$是$R$-模, 
+    称映射$f: M\times N\rightarrow T$是$R$-双线性的, 若\par
+    \qquad \qquad (i) $f(m_1+m_2,n)=f(m_1,n)+f(m_2,n)$,\par
+    \qquad \qquad (ii) $f(m,n_1+n_2)=f(m,n_1)+f(m,n_2)$,\par
+    \qquad \qquad (iii) $f(r\cdot m, n)=f(m, r\cdot n)=r\cdot f(m,n)$.
+\end{definition}
+
+\begin{remark}
+    $R$-双线性映射远强于$R$-平衡映射.
+\end{remark}
+
+\begin{proposition}
+    记号同上, $i:M\times N\rightarrow M\otimes_R N$, $i(m,n)=m\otimes n$是双线性的.
+\end{proposition}
+
+\begin{proposition}
+    记号同上, $(M\otimes_R N,i)$满足万有性质:\par
+    \qquad 对于任意$R$-模$T$, $R$-双线性映射$f: M\times N\rightarrow T$, 
+    存在唯一的$R$-模同态$\tilde{f}: M\otimes_R N\rightarrow T$, 
+    使得$f=\tilde{f}\circ i$.
+
+\begin{tikzcd}
+      & M\otimes_R N \dar["\tilde{f}"]\\
+      M\times N \urar["i"] \rar["f"] & T
+\end{tikzcd}
+\end{proposition}
+
+\begin{example}
+    $G_m=\langle g\rangle$是$m$阶循环群，$A$为Abel群，
+    则$G_m\otimes_\Z A\cong A/mA$.
+\end{example}
+
+\begin{example}
+    $R$为交换环，$A,B$是自由$R$-模，$\{a_i\},\{b_j\}$为$A,B$的基，
+    则$A\otimes_R B$是自由$R$-模，且$\{a_i\otimes b_j\}$是它的一组基.
+\end{example}
+
+\begin{example}
+    设$\alpha:R\rightarrow S$为环同态，其中$R,S$是含幺环. 对于$r\in R,s\in S$，
+    定义$r\cdot s=\alpha(r)\cdot s$，
+    则$S$可看成$(R,S)$-双模. 类似地, $s\cdot r=s\cdot \alpha(r)$给出$(S,R)$-双模结构. 
+    在后一意义下，对于左$R$-模$M$，$S\otimes_R M$是左$S$-模.
+\end{example}
+
+\begin{example}
+    $A$为有限生成Abel群，那么$A\simeq A_{\textup{tor}}\oplus\Z^r$，
+    于是$$A\otimes \mathbb{Q}\simeq
+    (A_{\textup{tor}}\otimes\mathbb{Q})\oplus(\Z\otimes\mathbb{Q})^r
+    \simeq\mathbb{Q}^r.$$
+\end{example}
+
+\begin{proposition}
+    $R$为环，$I$为$R$的理想，则有$R$-模同构$\alpha:(R/I)\otimes_R M\simeq M/IM$, 使得
+$\alpha(\overline{r}\otimes m)=\overline{rm}$.\par
+\qquad 此处$IM$是由$\{a\cdot m\mid a\in I, m\in M\}$生成
+的子模, 事实上$IM=\Big\{\sum\limits_{i=1}^n a_i\cdot m_i\Bigm| a_i\in I, m_i\in M\Big\}$（此处用到了$I$是理想）.
+\end{proposition}
+
+\begin{example}
+    $$0\rightarrow \Z \xrightarrow{f} \Z \xrightarrow{j} \Z/2\Z \rightarrow 0,
+    \ f(a)=2a,\,j(a)=\bar{a}$$是正合列，但在和$\Z/2\Z$作张量积之后不再是正合列：
+
+    事实上$\Z\otimes\Z/2\Z\xrightarrow{f\otimes1}\Z\otimes\Z/2\Z$
+    是零映射而$\Z\otimes\Z/2\Z\neq0$，所以不是单射.
+\end{example}
+
+\begin{proposition}
+    设$k$为域，$V_1,W_1,V_2,W_2$分别为$n,m,s,r$维向量空间，
+    $f:V_1\rightarrow W_1$，$g:V_2\rightarrow W_2$为线性映射.\par
+    \qquad 设$f$关于$\{x_1,\cdots,x_n\},\{y_1,\cdots,y_m\}$的矩阵为$A$，
+    $g$关于$\{z_1,\cdots,z_s\},\{w_1,\cdots,w_r\}$的矩阵为$B$，
+    即$(f(x_1),\cdots, f(x_n))=(y_1,\cdots,y_m)A$, 
+    $(g(z_1),\cdots,g(z_s))=(w_1,\cdots,w_r)B$.\par
+    \qquad 则$f\otimes g$关于$\{x_1\otimes z_1,\cdots,x_1\otimes z_s, x_2\otimes z_1,\cdots, x_n\otimes z_s\},
+    \{y_1\otimes w_1,\cdots,y_1\otimes w_r, y_2\otimes w_1,\cdots,y_m\otimes w_r\}$的矩阵为$A\otimes B$，即
+    $$(f\otimes g)(x_1\otimes z_1,\cdots, x_n\otimes z_s)=(y_1\otimes w_1,\cdots,y_m\otimes w_r) A\otimes B,$$
+    其中$A\otimes B=\left(\begin{matrix}
+        a_{11}B&\cdots&a_{1n}B\\
+        \vdots&\ddots&\vdots\\
+        a_{m1}B&\cdots&a_{mn}B
+    \end{matrix}\right)$.
+\end{proposition}
+
+\begin{definition}\textbf{平坦模}\par
+    设$R$为环，$M$是左$R$-模。称$M$是\textbf{平坦的}（flat），若对任何短正合列
+    $0\rightarrow N_1 \xrightarrow{\alpha} N_2 \xrightarrow{\beta} N_3 \rightarrow 0$
+    都有$0\rightarrow N_1\otimes M \xrightarrow{\alpha\otimes1} N_2\otimes M \xrightarrow{\beta\otimes1} N_3\otimes M \rightarrow 0$
+    也是正合列.
+\end{definition}
+
+\begin{theorem}\label{平坦单}
+    $M$是平坦的，等价于对于任何单射$\alpha:N_1\rightarrow N_2$都有
+    $\alpha\otimes1:N_1\otimes_R M\rightarrow N_2\otimes_R M$也是单射。
+\end{theorem}
+
+\begin{proposition}
+    若$M\cong T$，则$M$平坦当且仅当$T$平坦。
+\end{proposition}
+
+\begin{proposition}\label{自由平坦}
+    自由模都是平坦的。
+\end{proposition}
+
+\begin{lemma}
+    设$M$是左$R$-模，$\alpha:N_1\rightarrow N_2$是单射，
+    $\alpha\otimes1:N_1\otimes_R M\rightarrow N_2\otimes_R M$。
+    设$x\in\operatorname{Ker}(\alpha\otimes1)$，
+    则存在$M$的一个有限生成子模$M_0$与
+    $\tilde{x}\in\operatorname{Ker}(\alpha\otimes1_{M_0})$使得
+    $x=(1_{N_1}\otimes i)\tilde{x}$。
+\end{lemma}
+
+\begin{theorem}\label{有限生成平坦}
+    若$M$的每个有限生成子模都平坦，则$M$平坦。
+\end{theorem}
+
+\begin{proposition}
+    设$R$为$\operatorname{PID}$，$M$为$R$-模，则$M$平坦当且仅当$T(M)=0$。
+\end{proposition}
+\begin{proof}
+    设$T(M)=0$，对$M$的每个有限生成子模$M'$也有$T(M')=0$，
+    根据定理~\ref{PID上模基本定理}，$M'$是自由模，
+    再由命题~\ref{自由平坦}得$M'$平坦，那么由定理~\ref{有限生成平坦}，$M$平坦.
+
+    反过来，\textcolor{a9a9a9}{[方法I]} 设$M$平坦，记$k$为$R$的分式域.\par
+    对于嵌入$i:R\rightarrow k$，由定理~\ref{平坦单}知
+    $i\otimes1:M\cong R\otimes_R M\rightarrow k\otimes_R M$也是单射，
+    其中$k\otimes_R M$是左$k$-模，即$k$-向量空间.\par
+    那么对$r\in R,x\in M$，若$r\neq0,x\neq0$，
+    由于$\frac{r}{1}\otimes x=\frac{r}{1}(1\otimes x)\neq0$及$i\otimes1$是单射，
+    得$rx\neq0$，这说明$T(M)=0$.\par
+
+    \textcolor{a9a9a9}{[方法II]} 若$M$平坦，但存在$0\neq x\in T(M)$，
+    设$\operatorname{Ann}(x)=(d)$, 其中$0\neq d\in R^*$.\par
+    考虑映射$f:R\rightarrow R,a\mapsto d\cdot a$，则$f$是单的.\par
+    考虑$f\otimes 1_M: R\otimes_R M \rightarrow R\otimes_R M$，
+    这是零映射，不是单的，与$M$平坦矛盾.
+\end{proof}
+
+\begin{definition} \textbf{代数}\par
+    $R$为含幺交换环, 称含幺环$A$为$R$-代数, 若
+        \begin{itemize}
+            \item[(1)] $A$为一个$R$-模.
+            \item[(2)] $\forall \lambda \in R, a,b\in A$, 
+            有$(\lambda a)\cdot b=a\cdot (\lambda b)=\lambda(AB)$.
+        \end{itemize}
+\end{definition}
+
+\begin{example} $R$是含幺交换环（之后$R$-代数内容均假设此条件），\par
+    \begin{itemize}
+        \item[1.] $R$是$R$-代数.
+        \item[2.] 环$A$是一个$\mathbb{Z}$-代数.
+        \item[3.] $R[x_1,\cdots,x_n]$是多项式代数.
+        \item[4.] $M_n(R)$.
+        \item[5.] $A=\operatorname{End}_R(M)$.
+        \item[6.] $R[G]=\Big\{\sum\limits_{g\in G} \lambda_g g\Bigm| \lambda_g\in R$只有有限个不为$0\Big\}$.
+    \end{itemize}
+\end{example}
+
+\begin{proposition}
+    $A$为$R$-代数, 定义$\rho:R\rightarrow A$, $\rho(\lambda)=\lambda\cdot 1_A$, 则
+        \begin{itemize}
+            \item[1.] $\rho$是环同态.
+            \item[2.] $\operatorname{Im} \rho \subset C(A)=\{a\in A\mid ab=ba, \forall b\in A\}$
+        \end{itemize}
+\end{proposition}
+
+\begin{proposition}
+    反之, $A$为含幺环环, 若$\rho:R\rightarrow A$是环同态, 
+    $\operatorname{Im} \rho\subset C(A)$, 则$A$是$R$-代数.
+\end{proposition}
+
+\begin{definition}\textbf{子代数}\par
+    子代数是原代数的子环且子模.
+
+\end{definition}
+
+\begin{proposition}
+    $A$是$R$-代数, $I$是$A$的理想, 则$I,A/I$均为$R$-代数.
+\end{proposition}
+
+\begin{definition} \textbf{代数同态}\par
+    $f:A\rightarrow B$称为代数同态, 若
+        \begin{itemize}
+            \item[(1)] $f$是环同态，
+            \item[(2)] $f(\lambda a)=\lambda f(a)$, 
+            $\forall \lambda\in R, a\in A$.
+        \end{itemize}
+    称双射的代数同态为代数同构.
+\end{definition}
+
+\begin{proposition}
+    $A, B$为$R$-代数, 则$A\otimes_R B$为$R$-代数, 
+    且$(a_1\otimes b_1)(a_2\otimes b_2)=a_1a_2\otimes b_1b_2$.
+\end{proposition}
+
+\begin{example} $k$是域, 
+    \begin{itemize} 
+        \item[1.] $k[x_1,\cdots,x_n]\otimes_k k[y_1,\cdots, y_m]\cong k[x_1,\cdots,x_n,y_1,\cdots,y_m]$.
+        \item[2.] $M_n(k)\otimes_k M_m(k)\cong M_{mn}(k)$.
+        \item[3.] $k[G_1\times G_2]=k[G_1]\otimes_k k[G_2]$. 
+    \end{itemize}
+\end{example}
+
+
+\section{投射模和内射模}
+ \begin{definition}
+    设$\varphi:N_1\rightarrow N_2$为模同态，
+    定义$\varphi_*:\operatorname{Hom}(M,N_1)\rightarrow 
+    \operatorname{Hom}(M,N_2),\varphi_*(f)=\varphi\circ f$.
+    \begin{tikzcd}
+      M \rar["f"] \drar[swap,"\varphi_*(f)"] & N_1 \dar["\varphi"]\\
+      & N_2
+    \end{tikzcd}
+\end{definition}
+    \begin{proposition}
+        设$0\rightarrow N_1\xrightarrow{\alpha}N_2\xrightarrow{\beta}N_3
+        \rightarrow0$为短正合列，则$0\rightarrow \operatorname{Hom}(M,N_1)
+        \xrightarrow{\alpha_*}\operatorname{Hom}(M,N_2)
+        \xrightarrow{\beta_*}\operatorname{Hom}(M,N_3)$为正合列.
+    \end{proposition}
+\begin{proof}
+1.$\alpha_*$单射
+
+$\forall u\in \Ker\alpha_*$，则$\alpha_* u=\alpha\circ u=0$.
+$\forall m\in M$，$\alpha u(m)=0$，由$\alpha$为单射，则$u(m)=0$，由此知$u=0$.
+
+2.$\Im\alpha_*=\Ker\beta_*$.
+
+由$\Im\alpha=\Ker\beta \rightarrow\beta \alpha=0\rightarrow \beta_*\alpha_*=0
+\Rightarrow \Im\alpha_*\subset \beta_*$.
+
+$\forall g \in \Ker\beta_*$，$\beta g=0$，则$\Im g \subset \Ker\beta =\Im\alpha$.
+
+$\forall x \in M$，$g(x)=\alpha(t)$，$t\in N_1$，由$\alpha$为单射知$t$唯一性.
+
+定义$\tilde{g}:M\rightarrow N_1$，$\tilde{g}(x)=t$，容易验证良定义.
+
+下证$\tilde{g}$为$R$-模同态.设$g(x_1)=t_1,g(x_2)=t_2,\alpha(t_1)=x_1,\alpha(t_2)=x_2$，则$\alpha(t_1+t_2)=x_1+x_2$，从而$\tilde{g}(x_1+x_2)=t_1+t_2$，可验证$\forall r \in R,\tilde g(rx)=r\tilde{g}(x)$.
+
+由此知$\Ker\beta_*\subset \Im\alpha_*$，从而$\Ker\beta_*= \Im\alpha_*$，即证正合列.
+\end{proof}
+    \begin{definition}\textbf{投射模}\\
+        称$R$-模$M$为投射模（projective module），
+        若对任意短正合列$0\rightarrow N_1\xrightarrow{\alpha}N_2
+        \xrightarrow{\beta}N_3\rightarrow0$，
+        都有$0\rightarrow \operatorname{Hom}(M,N_1)
+        \xrightarrow{\alpha_*}\operatorname{Hom}(M,N_2)
+        \xrightarrow{\beta_*}\operatorname{Hom}(M,N_3)\rightarrow0$为正合列.
+    \end{definition}
+
+    \begin{proposition}
+        自由模是投射的.
+    \end{proposition}
+\begin{proof}
+设$F$是自由$R$模，$B=\{b_i\}_{i\in I}$是$F$的一组基.
+
+$\forall f \in \Hom(F,N_3)$，设$x_i=f(b_i)$，由$\beta$为满射，
+则存在$y_i \in N_2$，满足$\beta(y_i)=x_i$.
+
+定义$\tilde f:B\rightarrow N_2$，$\tilde f(b_i)=y_i$，
+则由自由模万有性质可以延拓成$F\rightarrow N_2$的模同态，
+且容易验证$f=\beta\circ \tilde f$.
+则有$\beta_*$为满射，$F$为自由模.
+\end{proof}
+    \begin{proposition}以下命题等价：
+        \begin{itemize}
+            \item[1.]$M$为投射$R$-模.
+            \item[2.]任意短正合列$0\rightarrow A\xrightarrow{\alpha}B
+            \xrightarrow{\beta}M\rightarrow0$可裂.
+            \item[3.]$M$为自由模的直和项.
+        \end{itemize}
+        
+
+    \end{proposition}
+\begin{proof}
+(1)$\Rightarrow$(2)：
+考虑正合列：$0\rightarrow A\xrightarrow[]{\alpha} B \xrightarrow[]{\beta}  M\rightarrow 0$，
+$\operatorname{id}_M \in \Hom(M,M)$，由$M$为投射模，存在$s\in \Hom(M,B)$，
+满足$\beta \circ s=\operatorname{id}_M$，由此知正合列可裂.
+
+(2)$\Rightarrow$(3)：
+存在自由$R$-模$ F $和满$R$-模同态$\beta$构成正合列
+$0\rightarrow \Ker\beta \xrightarrow{i} F\xrightarrow{\beta}M\rightarrow0$.
+由正合列可裂性知$F\cong \Ker\beta\oplus M$.
+
+(3)$\Rightarrow$(1)：
+
+$ M $是自由模的直和项，存在$ N $为$ R $-模，使得$M\oplus N$为自由模，进而为投射模.
+
+$\forall f \in \Hom(M,C)$，令$i_M$为$M\oplus N\rightarrow M$的投影映射，
+$j_M$为$M\rightarrow M\oplus N$的嵌入映射，则$f\circ i_M\in \Hom(M\oplus N,C)$，
+由投射性，存在$g\in \Hom(M\oplus N,B)$，使得$\beta \circ g=f\circ i_M$.
+
+令$\tilde{f}=g\circ j_M \in \Hom(M,B)$，
+此时$\beta \circ \tilde{f}=\beta \circ g\circ j_M=f\circ i_M \circ j_M=f$，
+即证$ M $是投射模. 
+\end{proof}
+    \begin{proposition}
+        投射模是平坦的.
+    \end{proposition}
+\begin{proof}
+$ M $投射$\xrightarrow{\exists N}M\oplus N$自由 
+$\rightarrow M\oplus N$平坦 $\rightarrow M$平坦.
+\end{proof}
+    \begin{proposition}
+        对$R$-模$\{M_i\}_{i\in I}$，$\bigoplus\limits_{i\in I}M_i$投射当且仅当$M_i$投射，$i\in I$.
+    \end{proposition}
+\begin{proof}
+$\bigoplus\limits_{i\in I} M_i$投射
+$\xrightarrow{\exists N}\big(\bigoplus\limits_{i\in I} M_i\big)\oplus N$自由
+$\rightarrow M_i\oplus\big(\big(\bigoplus\limits_{j\neq i} M_j\big)\oplus N\big)$自由
+$\rightarrow M_i$投射.
+
+$M_i$投射$\xrightarrow{\exists N_i}M_i\oplus N_i$自由
+$\rightarrow\bigoplus\limits_{i\in I}(M_i\oplus N_i)
+=\big(\bigoplus\limits_{i\in I} M_i\big)\oplus\big(\bigoplus\limits_{i\in I} N_i\big)$自由
+$\rightarrow\bigoplus\limits_{i\in I} M_i$投射.
+\end{proof}
+\begin{proposition}
+    PID上的投射模自由.
+\end{proposition}
+\begin{proof}
+$ M $投射$\xrightarrow{\exists N}M\oplus N$自由，$ M $是$ M\oplus N $的子模，
+PID上自由模的子模还是自由模(有限维已证明+\textit{Zorn}引理)，所以$ M $是自由模.
+\end{proof}
+    \begin{example}
+        $R=\mathbb{Z}/{6\mathbb{Z}}$作为$R$-正则模，
+        $R=\langle\tilde{2}\rangle\oplus\langle\tilde{3}\rangle$，
+        而$\langle\tilde{2}\rangle$非自由，因为自由$R$-模至少有$6$个元素.
+
+    \end{example}
+    \begin{proposition}
+        $R$为含幺交换环，$P,Q$投射，则$P\otimes _R Q$投射.
+    \end{proposition}
+\begin{proof}
+$P,Q$投射$\xrightarrow{\exists M,N}P\oplus M,Q\oplus N$自由
+$\rightarrow (P\oplus M)\otimes(Q\oplus N)
+\cong (P\otimes Q)\oplus(P\otimes N \oplus Q\otimes M \oplus Q\otimes N )$自由
+$\rightarrow P\times Q$投射.
+\end{proof}
+    \begin{definition}
+        设$N$为$R$-模，$\alpha:M_1\rightarrow M_2$，
+        定义$\alpha^*:\operatorname{Hom}(M_2,N)\rightarrow
+        \operatorname{Hom}(M_1,N),\alpha^*(f)=f\circ \alpha .$
+    \end{definition}
+    \begin{proposition}
+        对于$R$-模$N$,$0\rightarrow M_1\xrightarrow{\alpha}M_2
+        \xrightarrow{\beta}M_3\rightarrow0$为短正合列，
+        则$0\rightarrow \operatorname{Hom}(M_3,N)
+        \xrightarrow{\beta_*}\operatorname{Hom}(M_2,N)
+        \xrightarrow{\alpha_*}\operatorname{Hom}(M_1,N)$为正合列.
+    \end{proposition}
+    \begin{definition}\textbf{内射模}\\
+        称$N$为内射模（injective module），若对于任意短正合列
+        $0\rightarrow M_1\xrightarrow{\alpha}M_2
+        \xrightarrow{\beta}M_3\rightarrow0$,
+        都有$0\rightarrow \Hom(M_3,N)\xrightarrow{\beta_*}\Hom(M_2,N)
+        \xrightarrow{\alpha_*}\Hom(M_1,N)\rightarrow 0$为正合列.
+    \end{definition}
+    \begin{theorem}\textbf{Baer}\\
+        对含幺环$R$，$R$-模$N$为内射模当且仅当
+        对任意左理想$I\xrightarrow{i}R$及$f\in \operatorname{Hom}_R(I,N)$,
+        存在$\tilde{f}\in \operatorname{Hom}_R(R,N)$使得$f=\tilde{f}\circ i$.
+        \begin{tikzcd}
+        I \rar ["i"] \dar[swap,"f"] & R \dlar["\tilde{f}"]\\
+        N & 
+        \end{tikzcd}
+    \end{theorem}
+\begin{proof}
+$ N $是内射$ R $-模时，结论显然成立.
+
+当$ N $满足题设条件时，设$\alpha:A\rightarrow B$为单$ R $-模同态，$g\in \Hom(A,N)$.
+
+考虑$X=\{(T,u)\big|T\text{ 是 }B\text{ 中包含 }\Im\alpha\text{ 的子模}.u\in \Hom(B,N),u\alpha=g\}$.
+
+定义其上的偏序关系:$(T_1,u_1)\preceq(T_2,u_2) \Longleftrightarrow T_1 \subset T_2 ,u_2 |_{T_1}=u_1$.
+
+容易验证偏序关系，下面验证递归性.设$\{(T_i,u_i)\}_{i\in I}$为$ X $的全序子集，
+令$T=\bigcup\limits_{i\in I}T_i$为$B$中包含$\Im\alpha$的子模.
+
+$\forall t\in T,\exists i_0\in I,t\in T_{i_0}$，
+定义$u:T \rightarrow N,u(t)=u_{i_0}(t)$，由全序性易知良定义且$g=u\circ \alpha$.
+容易验证$(T,u)$为$\{(T_i,u_i)\}_{i\in I}$的上界.
+
+由Zorn引理，$X$存在上界$(W,h)$.断言$W=B$.
+
+否则，$\exists b \in B,b\notin W$，令$  \tilde W=W+Rb\subsetneq W$.
+
+令$I_b=\{r\in R|rb\in W\}$为$R$的理想.
+定义$\beta: I_b\rightarrow N,\beta(r)=h(rb)$，则$\beta \in \Hom(I,N)$.
+由条件知，$\exists \tilde{\beta}\in \Hom(R,N),\tilde \beta |_{I_b}=\beta$.
+
+$\forall x \in \tilde{W}$，设$x=x_1+rb,x_1\in W$.
+定义$\tilde{h}:\tilde{W}\rightarrow N,\tilde{h}(x)=h(x_1)+\tilde{\beta}(r)$.
+
+先证良定义.若$x_1+rb=y_1+sb$，则$(s-r)b\in W\rightarrow s-r\in I_b$.
+
+$h(x_1)+\tilde{\beta}(r)-h(x_2)-\tilde h(s)=h(x_1-y_1)-\tilde{\beta}(s-r)
+=h(x_1-y_1)-\beta(s-r)=h(x_1-x_2)-h((s-r)b)=0$.
+则$(\tilde{W},\tilde{h})$与$(W,h)$极大性矛盾，从而$W=B$，即证！
+\end{proof}
+    \begin{proposition}
+        设$R$为整环，$N$为内射模，则对$0\neq r\in R$，有$rN=N$.
+    \end{proposition}
+\begin{proof}
+$0\neq a\in R$，考虑$Ra=Ia$，由整环$I_a$是自由$R$-模，$\{a\}$是基.
+
+$\forall m \in N $，定义$f\in \Hom(I_a,N),f(a)=m$，由内射模性质，
+$\exists \tilde{f}\in \Hom(R,N),\tilde{f}|_{I_a}=f$，
+则$m=f(a)=\tilde{f}(a)=\tilde{f}(a\cdot1)=a\tilde{f}(1)\in aN$，则有$N$可除.
+\end{proof}
+    \begin{definition}
+        设$R$为含幺环，$N$为$R$模，称$N$是可除模，若对$0\neq r\in R$，有$rN=N$.
+    \end{definition}
+    \begin{example}
+        $_{\mathbb{Z}}\mathbb{Q},_{\mathbb{Z}}\mathbb{Q}/{\mathbb{Z}}$为可除模.
+    \end{example}
+    \begin{proposition}
+        \begin{itemize}
+            \item[1]$\{N_i\}_{i\in I}$可除,则$\bigoplus\limits_{i\in I}N_i,\prod \limits_{i\in I}N_i$可除.
+            \item[2]$N$可除，则$N$的商模可除.
+        \end{itemize}
+    \end{proposition}
+    \begin{proposition}
+        若$R$满足主理想条件(每个左理想为主理想),则$R$上的可除模是内射的.\\
+        PID上内射模等价于可除模.
+    \end{proposition}
+\begin{proof}
+任取$I$为$R$的左理想，则$I$为主理想，设$I=Ra$.$\forall f\in \Hom(Ra,N)$，
+设$f(a)=m$，由可除性，$\exists t \in N,at=m$，
+定义$\tilde{f}:R\rightarrow N,\tilde{f}(1)=t$，
+则$\tilde{f}(a)=a\tilde{f}(1)=at=m$，即$\tilde{f}|_{I_a}=f$.
+\end{proof}
+    \begin{example}
+        域上的向量空间是可除的.\\
+        可除环上的向量空间是自由、平坦、内射的.
+
+    \end{example}
+    \begin{proposition}
+        $\operatorname{Hom}_R(_RM_S,_RN)$有左$S$-模结构：
+        $(s\cdot f)(\,\cdot\,)=f((\,\cdot\,)s)$. 
+        类似地，$\operatorname{Hom}_S(_RM_S,N_S)_R,\operatorname{Hom}_R(_RM,_RN_S)_S,_R\operatorname{Hom}_S(M_S,_RN_S)$.
+    \end{proposition}
+    \begin{example}
+        对左$R$-模$_RM$，$M_R^*=\operatorname{Hom}_R(_RM,_RR_R)_R$为右$R$-模，
+        $_RM^{**}=\operatorname{Hom}_R(M_R^*,_RR_R)_R$为左$R$-模. 
+        $j:M\rightarrow M^{**},j(m)(f)=f(m)$为$R$-模同态.
+    \end{example}
+    \begin{proposition}
+        $M\cong _R\operatorname{Hom}_R(_RR_R,_RM)$.
+    \end{proposition}
+\begin{proof}
+定义$\alpha:\Hom_R(R,M)\rightarrow M,\alpha(f)=f(1)$
+
+$\beta:M\rightarrow \Hom_R(R,N),\beta(n)(r)=rn$.验证$\alpha,\beta$互逆.
+\end{proof}
+    \begin{proposition}
+        有自然同构$\operatorname{Hom}_S(_SN_R{\otimes }_RM,_SP)\cong \operatorname{Hom}_R(_RM,\operatorname{Hom}_S(_SN_R,_SP)).$
+    \end{proposition}
+    \begin{proposition}
+        $R$含幺环，$N$为内射$\mathbb{Z}$-模，则$\operatorname{Hom}_{\mathbb{Z}}(_{\mathbb{Z}}R_R,_{\mathbb{Z}}N)$为内射$R$-模.
+
+    \end{proposition}
+\begin{proof}
+设$ I $是$ R $的左理想，$g\in \Hom(I,\Hom_{\mathbb Z}(R,A))$.
+
+由性质2，$\alpha : \Hom_{\mathbb Z}(R,A)\rightarrow A,\alpha(f)=f(1)$为同构，
+记$h=\alpha\circ g \in \Hom(I,A)$是$\mathbb Z$模同态，
+由$A$是内射$\mathbb Z$模，
+存在$\tilde{h}:R\rightarrow A$是$\mathbb Z$模同态，且$\tilde{h}|_I=R$.
+
+定义$\tilde g:R\rightarrow \Hom_{\mathbb{Z}}(R,A),\forall r,t\in R,
+\tilde{g}(r)(t)=\tilde{h}(tr)$，需要验证$\tilde{g}(r)\in \Hom_{\mathbb Z}(R,A)$.
+
+下证：$\tilde{g}|_I=g,\forall a \in I,t\in R$.
+$\tilde{g}(a)(t)=\tilde h(ta)=h(ta)=g(ta)(1)=tg(a)(a)=g(a)(t)$.
+利用Baer判据则知命题成立.
+\end{proof}
+    \begin{proposition}
+        每个$R$-模同构于某个内射$R$-模的子模.
+    \end{proposition}
+\begin{proof}
+引理：$ A $是$ \mathbb Z $-模，则存在内射$ \mathbb Z $-模$ J $
+和单模同态$\alpha :A\rightarrow J$.
+
+设$ S $是$ A $的一个生成元集，$\mathbb Z^{\langle s\rangle}$是
+以$ s $为基的自由Abel群.
+
+存在满同态$f:\mathbb Z^{\langle s\rangle}\rightarrow A $，
+则$A\cong \mathbb Z^{\langle s\rangle}/\Ker f$.
+
+设$Q^{\langle s\rangle}$为以$ s $为基的$ Q $-向量空间，$ Q $是可除$ \mathbb Z $-模
+知$Q^{\langle s\rangle}$是可除$ \mathbb Z $-模.
+记$i:\mathbb Z^{\langle s\rangle}\rightarrow Q^{\langle s\rangle}$为嵌入，
+诱导出$\tilde i :\mathbb Z^{\langle s\rangle}/\Ker f
+\rightarrow Q^{\langle s\rangle}/\Ker f$，注意到可除模的商模可除，
+则$Q^{\langle s\rangle}/\Ker f$可除，进而内射，即证.
+
+将$M$看成$\mathbb Z$模，存在内射$\mathbb Z$模$J$
+和单$\mathbb Z$-模同态$\beta:M\rightarrow T$.
+
+$M\cong \Hom_R(R,M)\rightarrow \Hom_{\mathbb Z}(R_R,M)
+\xrightarrow{\beta_*}\Hom_{\mathbb Z}(R,J)$
+
+第一个为$R$模同构，第二个为单$R$模同态，第三个为单群同态.
+只需验证$\beta _*$为单$R$模同态：设$u\in \Hom_Z(R,M) ,\forall r\in R,t\in R$，
+$\beta \circ(ru)(t)=\beta(ru(t))=\beta(u(tr)),
+r(\beta u)(t)=(\beta u)(tr)=\beta(u(tr))$，
+则有$\beta (ru)=r(\beta u)$，即$\beta_*(ru)=r\beta_*(u)$.
+\end{proof}
+    \begin{proposition}以下等价：
+        \begin{itemize}
+        \item[(1)] $N$内射.
+        \item[(2)]任意短正合列$0\rightarrow N\xrightarrow{\alpha}A\xrightarrow{\beta}B\rightarrow0$可裂.
+\end{itemize}
+    \end{proposition}
+\begin{proof}
+(1)$\Rightarrow$(2) $N$内射，$\exists s\in \Hom(A,N),
+s\circ \alpha=\operatorname{id}_N$，由此知短正合列可裂.
+
+(2)$\Rightarrow$(1) 存在$T$为内射$R$-模和$u\in \Hom(N,T)$为单模同态.
+$\forall g \in \Hom(M_1,N)$，令$h=u\circ g$.
+由$T$内射，$\exists \tilde h \in \Hom(M_2,T),\tilde{h}\circ \alpha=h$.
+
+考虑短正合列:$0\rightarrow N\xrightarrow{u}T\xrightarrow{j} N/\Im u \rightarrow 0$，
+由可裂性知$\exists s\in \Hom(T,N),s\circ u =\operatorname{id}_T$.
+定义$\tilde{g}=s\circ \tilde{h}\in \Hom(M_2,N)$，
+此时$\tilde{g}\circ \alpha=s\circ\tilde{h}\circ \alpha
+=s\circ h=s\circ u\circ g=g$.
+\end{proof}
+\section{半单模}
+\begin{definition}
+    $R$为含幺环, $_RM$, 称$M$为单模, 若$M$只有平凡子模且$M\neq \{0\}$.
+\end{definition}
+
+\begin{proposition} 下列命题等价:\par
+    \qquad 1. $M$是单模.\par
+    \qquad 2. $M\neq \{0\}$且$\forall 0\neq m\in M$, 
+    $M=\langle m\rangle=R\cdot m$.\par
+    \qquad 3. $M\cong R/I$, 其中$I$是$R$的一个极大左理想.
+
+\end{proposition}
+\begin{proof}
+(1)$\Rightarrow$(2)
+$\forall 0\neq m\in M,\langle m\rangle$是$M$子模，则有$\langle m\rangle=M$.
+
+(2)$\Rightarrow$(3)
+取$0\neq m_0,M=\langle m_0\rangle$，定义$f\in \Hom(R,\langle m_0\rangle),f(r)=rm_0$，
+记$I=\Ker f$，则$R/I\cong M$.
+
+设$I\subset J$为左理想，若$I\subsetneq J$，则$\exists s\in J\backslash I,
+0\neq sm_0\in M\Rightarrow \langle sm_0\rangle=\langle m_0\rangle
+\Rightarrow \exists r\in R,m_0=rsm_0$，则$(1-rs)m_0=0$，
+则有$1-rs\in I \subset J$，注意到$rs\in J$，于是$1\in J,J=R$.所以$I$为$R$的极大理想.
+
+(3)$\Rightarrow$(1)
+注意到$R/I$为单$R$-模，$R/I \cong M$，于是$M$为单模.
+\end{proof}
+\begin{example}
+    $R=F$是域, 单模是$1$维$F$-向量空间. 可除环同理.
+\end{example}
+
+\begin{example}
+    单$\mathbb{Z}$-模$\mathbb{Z}/p\mathbb{Z}$，其中$p$是素数.
+\end{example}
+
+\begin{example}
+    $D$为可除环，$V$为$D$-模，$R=\End_D(V)$是自同态环，则$V$是单$\End_D(V)$-模.
+\end{example}
+
+\begin{proposition} \label{simple}
+    $M$是单$R$-模, $T$是$R$-模, 则\par
+    \qquad 1. 设$f:M\rightarrow T$是模同态, 则$f=0$或$f$是单的.\par
+    \qquad 2. 设$g:T\rightarrow M$是模同态, 则$g=0$或$g$是满的.\par
+    \qquad 3. $\End_R(M)$是可除环.
+\end{proposition}
+\begin{proof}
+1.$\Ker f$是$M_1$子模，则$\Ker f={0}$或者$M_1$，前者对应单射，后者对应$0$.
+
+2.$\Im f$是$M_2$子模，则$\Im f={0}$或者$M_2$，前者对应$0$，后者对应满射.
+\end{proof}
+\begin{proposition} $M$是$R$-模, 下列命题等价:\par
+    \qquad 1. $M$是单子模的和.
+    \qquad 2. $M$是单子模的直和.
+    \qquad 3. $M$的每个子模都是$M$的直和项.
+\end{proposition}
+\begin{proof}
+引理：$M$-$R$模，$M_1$是单子模，$T$是$M$子模，
+则要么$T \cap M_1={0}$，要么$M_1\subset T$.
+
+$T \cap M_1$是$M_1$子模，则$T \cap M_1={0}$或者$M_1$，
+前者对应$T \cap M_1={0}$，后者对应$M_1\subset T$.
+
+(1)$\Rightarrow$(2)设$M \neq0$，$S=\{J\subset I\mid\sum\limits_{j\in J}M_j\text{ 是直和} \}$，
+定义$S$上的偏序关系为包含关系，容易验证偏序.
+下证递归关系，设$\{J_\lambda\}_{\lambda \in \Lambda}$是全序子集，
+令$J=\cup J_\lambda$，断言$J\subset S$，即$\sum\limits_{j\in J}M_j$是直和.
+
+设$j_1,j_2\cdots j_s\in J,m_i\in M_{j_i}$，$m_1+\cdots+m_s$，
+$\exists\lambda_1,\cdots,\lambda_s,s.t.j_i\in J_{\lambda_i}$，
+由全序性，知$\exists \lambda_{i_0},s.t.J_{\lambda_i}\in J_{\lambda_{i_0}}$.
+由$\sum\limits_{J_{\lambda_{i_0}}}M_j$的全序性，知$m_1=\cdots =m_s=0$，断言成立.
+
+于是$S$存在极大元$J_0$，断言$M=\sum\limits_{j\in J_0}M_j=\bigoplus\limits_{j\in J_0}M_j$.
+
+否则$\exists i_0,M_{i_0}\nsubseteq\bigoplus\limits_{j\in J_0}M_j$，
+由引理知$M_{i_0}\cap \bigoplus\limits_{j\in J_0}M_j=0$，
+则$J_0\cup{i_0}\in S$与极大性矛盾！
+
+(2)$\Rightarrow$(3) $M=\bigoplus M_i$，$N$是$M$子模，$N\neq0,N\neq M$，
+设$S=\{J\subset I|N+(\bigoplus\limits_{j\in J}M_j) \text{ 是直和}\}$.
+其上的偏序关系为包含关系，同样验证为偏序集且递归.
+
+存在极大元$J_0$，断言$M=N\oplus(\bigoplus\limits_{j\in J_0}M_j)$，
+否则存在$\exists i_0,M_{i_0}\nsubseteq N\oplus(\bigoplus\limits_{j\in J_0}M_j)$，
+则$M_{i_0}\cap N\oplus(\bigoplus\limits_{j\in J_0}M_j)={0}$，
+则$ M_{i_0}\oplus N\oplus(\bigoplus\limits_{j\in J_0}M_j) $是直和，与极大性矛盾！
+
+(3)$\Rightarrow$(1) 引理：$M$满足(3)的条件，则$M$的子模和商模也满足.
+
+$N$是$M$的子模，$K$是$N$的子模，则$K$是$M$的子模，
+则存在$M$的子模$T$，使得$M=K\oplus T$.
+
+断言$N=K\oplus (N\cap T)$，一方面$K\cup (N\cup T)\subset T=0$，
+另一方面，设$n=k+t,k\in K,t\in T$，则$t=n-k\in N,t\in N\cup T$，
+由此$N\subset K+(N\cap T)$，即证！
+
+考虑$M$的商模$M/N$，$M=N\oplus T\rightarrow M/N=(N\oplus T)/T\cong T/N\cap T=T$，
+$T$是$M$的子模，从而满足条件(3)，则$M/N$也满足.
+
+注意到有限生成非零$R$-模有极大子模，$\forall 0\neq m\in M,\langle m \rangle=Rm$有极大子模$T$，
+则$\langle m\rangle  /T$是单模.
+
+考虑$S=\{M\text{ 的所有单子模}\}$非空，$M_0=\sum\limits_{W\in S}W$.
+
+要证$M_0=M$，否则$M_0\subsetneq M$，则存在子模$Q\neq 0$使得$M=M_0\oplus Q$.
+
+取$0\neq v \in Q$，$\langle v \rangle$有单子模$\tilde{T}$
+则$\tilde{T}\subset M_0\cap Q=\{0\}$，矛盾！
+\end{proof}
+\begin{definition}\textbf{半单模, 半单环}\par
+    \qquad 称满足上述命题的模是半单模（semisimple module）. 
+    若$_RR$是半单$R$-模，称其为半单环（semisimple ring）.
+\end{definition}
+
+\begin{proposition}
+    设$M$是半单模, 则$M$的任意子模$N$, $N$与$M/N$都是半单模.
+\end{proposition}
+
+\begin{proposition}
+    若$R$可除, 则$R$半单.
+\end{proposition}
+
+\begin{proposition}
+    设$\{M_i\}_{i\in I}$是$R$-模, 则$\bigoplus\limits_{i\in I} M_i$是半单的, 
+    等价于每个$M_i$是半单的.
+\end{proposition}
+\begin{proof}
+$\bigoplus N_i$是半单模，则$N_i$是$\bigoplus N_i$是子模模进而半单.
+
+$N_i$都是半单模，则$N_i=\bigoplus\limits_{i\in I}M_{ij},
+\bigoplus N_i=\bigoplus(\bigoplus\limits_{i\in I}M_{ij})$为半单模.
+\end{proof}
+\begin{proposition}
+    $R$是半单环, 等价于每个$R$-模都是半单的.
+\end{proposition}
+
+\begin{proposition}
+    $R$是环， 以下命题等价:\par
+    \qquad 1. $R$半单.\par
+    \qquad 2. 每个$R$-模半单.\par
+    \qquad 3. 每个短正合列可裂.\par
+    \qquad 4. 每个$R$-模投射.\par
+    \qquad 5. 每个$R$-模内射.
+\end{proposition}
+\begin{proof}
+1$\Rightarrow$2：$M$是$R$-模，$M\cong R^{\langle S\rangle/K}$，
+$R^{\langle S\rangle}\cong \bigoplus\limits_{i\in S}R$是半单模，则$M$是半单模.
+
+2$\Rightarrow$3：短正合列$0\rightarrow A\xrightarrow{\alpha}B
+\xrightarrow{\beta}C\rightarrow 0$.
+$B$半单模，$\Im \alpha$是$B$的子模从而是直和项，$B=\Im\alpha\oplus T$，则可裂.
+
+3$\Rightarrow$4：$0\rightarrow A\rightarrow B\rightarrow C\rightarrow 0$可裂
+则$M$投射.
+
+4$\Rightarrow$5：$0\rightarrow M\rightarrow N\rightarrow T\rightarrow 0$，
+由$T$投射知短正合列可裂则$M$投射.
+
+5$\Rightarrow$1：$I$是左理想是内射模，$0\rightarrow I \rightarrow R\rightarrow R/I\rightarrow 0$可裂，
+则$R=I\oplus T$，则$R$半单.
+\end{proof}
+\begin{proposition}
+    $R$是含幺环, 且$_RR=\bigoplus\limits_{i\in I}M_i$, $M_i$是左理想, 
+    则$M_i=\{0\}$除了有限多个$i$.
+\end{proposition}
+\begin{proof}
+存在$e_i\in M_{\alpha _i},\alpha_i\neq \alpha_j ,1=e_1+\cdots+e_m$.
+
+$\forall r\in M_{\alpha},\alpha\neq \alpha_i,
+r=r\cdot1+\cdots+r\cdot e_m\in \sum M_{\alpha_i}$，由直和性质$r=0$.
+\end{proof}
+\begin{corollary}
+    设$R$是半单环, 则存在有限多个极小左理想$M_1,\cdots,M_n$
+    使得$_RR=M_1\oplus \cdots \oplus M_n$, 且存在$e_i\in M_i$使得\par
+    \qquad 1. $1=e_1+\cdots+e_n$.\par
+    \qquad 2. $e_ie_j=\delta_{ij}e_i$.\par
+    \qquad 3. $M_i=\langle e_i\rangle=Re_i$.
+\end{corollary}
+\begin{proof}
+沿用记号$e_i=e_ie_1+\cdots+e_ie_m$，由直和性质$e_i^2=e_i,e_ie_j=0,\forall i\neq j$.
+$Re_i\subset M_i$由极小性$Re_i= M_i$.
+\end{proof}
+\begin{proposition}
+    $D$是可除环, $V$是$D$-向量空间, $n=\dim_D V$, 
+    $R=\End_D(V)$, 则$V$是$R$-单模, 且\par
+    \qquad 1. $_RR\cong nV$, 则$R$是半单环.\par
+    \qquad 2. 设$M$是单$R$-模, 则$M\cong V$.
+\end{proposition}
+
+\begin{proposition}
+    $M$是非零单模，$ R $是半单环且$_R R=\bigoplus M_i$，则存在$i_0\in I,M\cong M_i$.
+\end{proposition}
+\begin{proof}
+$0\neq m\in M,M=Rm$.定义满模同态$f:R\rightarrow \langle m\rangle,f(r)=rm$.
+
+由$ R $是半单环，短正合列$0\rightarrow \Ker f\rightarrow R\rightarrow M$可裂.
+
+存在$_R R$左理想$T$，使得$R=\Ker f\oplus T,T\cong R/\Ker f\cong M $.则$T$是单模.
+
+考虑投影$T: _RR=\bigoplus M_i \xrightarrow{p_i} M_i$.
+由命题~\ref{simple}，$\alpha _i$为零同态或者同构.
+若$\alpha _i$均是零同态，则$T=\{0\}$矛盾，存在$i_0,M\cong T\cong M_{i_0}$.
+\end{proof}
+\begin{corollary}
+    设$R$是半单环, $_RR=M_1\oplus \cdots \oplus M_l$, $M_i$是单子模, 
+    设$T$是单$R$-模, 则存在$i_0$使得$T\cong M_{i_0}$.
+\end{corollary}
+\begin{proof}
+    $0\neq m\in M,M=Rm$.定义满模同态$f:R\rightarrow \langle m\rangle,f(r)=rm$.
+
+由$ R $是半单环，短正合列$0\rightarrow \Ker f\rightarrow R\rightarrow M$可裂.
+
+存在$_RR$左理想$T$，使得$R=\Ker f\oplus T,T\cong R/\Ker f\cong M $.则$T$是单模.
+
+考虑$\alpha_i:T\xrightarrow{i}{}_RR=\bigoplus M_i \xrightarrow{p_i} M_i$.
+由性质13，$\alpha _i$为零同态或者同构.
+若$\alpha _i$均是零同态，则$T=\{0\}$矛盾，存在$i_0,M\cong T\cong M_{i_0}$.
+\end{proof}
+
+\begin{proposition}
+    $R_1,\cdots,R_n$是半单环, 则$R=R_1\times \cdots\times R_n$是半单环.
+\end{proposition}
+
+\begin{proposition}
+    $R=M_{n_1}(D_1)\times \cdots \times M_{n_l}(D_l)$是半单环, 其中$D_i$是可除环.\par
+    \qquad $D_i^{n_i}$是$R$的所有两两不同构的单模.
+\end{proposition}
+
+\begin{proposition}
+    $R$为环, 则$R$是半单环等价于存在可除环$D_1,\cdots,D_l$, $n_1,\cdots,n_l\in \mathbb{N}$, 使得$R\cong M_{n_1}(D_1)\times\cdots\times M_{n_l}(D_l)$.
+\end{proposition}
+\begin{proof}
+$\Longrightarrow$设$R$是半单环，存在$t\in N,I_1,\cdots ,I_t$为$R$的左理想，
+$R=I_1\oplus \cdots\oplus I_t$，不妨设$I_1,\cdots ,I_s$为极大两两不同构组
+($I_1,\cdots, I_s$两两不同构，且$I_{s+1},\cdots ,I_n$中任意一个
+都与$I_1,\cdots ,I_s$中一个同构).
+则$_RR\cong n_1I_1\oplus \cdots\oplus n_sI_s,n_i\in N$.
+记此同构为$\alpha:{}_RR\rightarrow n_1I_1\oplus \cdots\oplus n_sI_s$
+
+此时$R^{op}\cong \End_R(_RR)\cong \End_R(n_1I_1\oplus \cdots\oplus n_sI_s)
+\cong \End_R(n_1I_1)\times\cdots \times \End_R(n_sI_s)
+\cong  \prod_{i=1}^{s} M_{n_i}(D_i),D_i=\End_R(I_i)$.
+
+第一个同构已给出，第二个同构是$f\rightarrow \alpha\circ f\circ (\alpha)^{-1}\alpha$，
+第三个同构由下给出：$n_jI_j\xrightarrow{q_j} n_1I_1\oplus \cdots\oplus n_sI_s\xrightarrow{f} n_1I_1\oplus \cdots\oplus n_sI_s\xrightarrow{p_i}n_iI_i$，
+记$f_{ij}=p_i\circ f\circ q_j:n_jI_j\rightarrow n_iI_i$，
+由$I_i,I_j$为单模且不同构知$f_{ij}=0,i\neq j$.
+构造同构$f\in \End_R(n_1I_1\oplus \cdots\oplus n_sI_s) \rightarrow 
+(p_i\circ f\circ q_i)_i\in \End_R(n_1I_1)\times\cdots \times \End_R(n_sI_s)$.
+
+
+容易验证$M_n(R)^{op}\cong M_n(R^{op}),A\rightarrow A^{T}$.
+
+此时$R=(R^{op})^{op}\cong (\prod_{i=1}^{s} M_{n_i}(D_i))^{op}\cong \prod_{i=1}^{s} M_{n_i}(D_i)^{op}\cong \prod_{i=1}^{s} M_{n_i}(D_i^{op}) $，即证！
+\end{proof} 
+\begin{proposition}
+    $R^{\mathrm{op}}\cong \End_R(R)$是环同构.
+\end{proposition}
+\begin{proof}
+定义$\alpha:\End_R(_RR)\rightarrow R,\alpha(f)=f(1)$.
+	
+$\alpha (f_1+f_2)=(f_1+f_2)(1)=f_1(1)+f_2(1)=\alpha f_1+\alpha f_2,
+\alpha(fg)=(fg)(1)=f(g(1)\cdot1)=g(1)f(1)=f(1)\cdot_{op}g(1)$，
+即证$\alpha$是环同态，容易验证是双射.
+\end{proof}
+\begin{corollary}
+    $R$是交换半单环等价于$R=F_1\times \cdots\times F_s$, 其中$F_i$是域.
+\end{corollary}
+
+\begin{corollary}
+    $_RR$是半单的, 等价于$R_R$是半单的.
+\end{corollary}
+
+\begin{definition}\textbf{Jacobson根}\par
+    \qquad $R$是环, 称$J(R)=\{r\in R\mid\forall\text{ 左单模 }M, r\cdot m=0, \forall m\in M\}$是$R$的Jacobson根.\par
+    \qquad $J(R)=\bigcap\limits_{M单}\operatorname{Ann}_R(M)$.
+\end{definition}
+
+\begin{proposition}
+    $J(R)=\bigcap\limits_{I极大单边理想}I$.
+\end{proposition}
+
+\begin{example}
+    \begin{itemize}
+    \item[(1)] $D$是可除环, $J(D)=\{0\}$, $J(M_n(D))=\{0\}$.
+    \item[(2)] $J(\mathbb{Z})=\bigcap\limits_{p是素数} p\mathbb{Z}=\{0\}$.
+    \item[(3)] $R$是PID. $J(R)=\bigcap\limits_{a不可约}\langle a\rangle=\{0\}$.
+    \item[(4)] $J(\mathbb{Z}/p^n\mathbb{Z})=p\mathbb{Z}/p^n\mathbb{Z}$.
+    \end{itemize}
+\end{example}
+
+\begin{proposition}
+    $J(R/J(R))=\{0\}$, $J(M_n(R))=M_n(J(R))$, $J(\prod_{i \in I} R_i) = \prod_{i \in I}(J (R_i))$.
+\end{proposition}
+
+\begin{definition} \textbf{$\operatorname{Artin}$环}\par
+    \qquad $R$为环, 称$R$是左$\operatorname{Artin}$环, 若$R$的每个非空左理想集合有极小元.
+\end{definition}
+
+\begin{proposition}
+    $R$是半单环, 等价于$R$是左$\operatorname{Artin}$环且$J(R)=\{0\}$.
+\end{proposition}
+\begin{proof}
+    $\Rightarrow$ 
+
+    $R$半单$\Rightarrow$ $\displaystyle R = \oplus_{\text{极小左理想}}I$,因此
+    $\displaystyle J(R) = \oplus J(I) = \oplus \{0\} = \{0\}$,
+    并且容易验证降链条件$d.c.c.$,
+
+    $\Leftarrow$
+
+    由于$R$是Artin环,由Zorn引理可以得出左极小理想的存在性.故不妨可以记$\{I_l\}_{l\in L}$为全体极小左理想,易见它们均不交.
+    对于每一个$I_l$,由于$J(R) = 0$,因此存在极大左理想$M_l$,使得$I_l \nsubseteq M_l$,那么
+    由$M_l$的极大性有$R = I_l + M_l$,由$I_l$的极小性有$I_l \cap M_l = \{0\}$
+    (否则$I_l \cap M_l \subseteq I_l$是更小的左理想),因此$R = I_l \oplus M_l$.
+
+    取$R = I_1 \oplus M_1$,然后找包含于$M_1$的极小左理想$I_2$,可以有分解$R = I_2 \oplus M_2 = I_1 \oplus I_2 \oplus (M_1 \cap M_2)$,
+    
+    这样一直下去,由于$R$是Artin环,故这个步骤会在有限步内结束.
+    亦即$R$可以写成$R = \oplus_{i = 1}^n I_i$,这就得出了$R$是半单环.
+
+
+\end{proof}
+\begin{corollary}
+    $R$是左$\operatorname{Artin}$环, 则$R/J(R)$是半单环.
+\end{corollary}

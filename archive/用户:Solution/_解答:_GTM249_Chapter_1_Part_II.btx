@@ -1,0 +1,422 @@
+\setdisplaytitle{Solution\ to\ GTM249\ Chapter\ 1\ Part\ II}
+\sethtmltitle{Solution\ to\ GTM249\ Chapter\ 1\ Part\ II}
+
+\newcommand{\norm}[1]{\Vert #1 \Vert}
+\newcommand{\norml}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 
+   \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+
+\section*{1.3 Interpolation}
+
+\begin{enumerate}
+\item[1.3.1.]
+   This just requires some tiny changes in the proof of the original theorem.
+
+\item[1.3.2. ]
+   Interpolating between $L^{1}$ and $L^{r}$ using Marcinkiewicz, we have
+   \begin{equation*}\begin{aligned}
+   \norm{T}_{L^\frac{p+1}{2}\to L^\frac{p+1}{2}} &\leq 2\bigg(\frac{\frac{p+1}{2}}{\frac{p+1}{2}-1} + \frac{\frac{p+1}{2}}{r-\frac{p+1}{2}}\bigg)^{\frac{1}{p}}A_{0}^{\frac{\frac{2}{p+1}-\frac{1}{r}}{1-\frac{1}{r}}}A_{1}^{\frac{1-\frac{2}{p+1}}{1-\frac{1}{r}}}
+   \\&= 2\bigg(\frac{p+1}{p-1} + \frac{p+1}{2r-p-1}\bigg)^{\frac{1}{p}}A_{0}^{\frac{2r-p-1}{(r-1)(p+1)}}A_{1}^{\frac{r(p-1)}{(p+1)(r-1)}}.
+   \end{aligned}\end{equation*}
+   Then using Riesz--Thorin to interpolate between $L^{\frac{p+1}{2}}$ and $L^{r}$, we have
+   \begin{equation*}\begin{aligned}
+   \norm{T}_{L^p\to L^p} &\leq \bigg(2\bigg(\frac{p+1}{p-1} + \frac{p+1}{2r-p-1}\bigg)^{\frac{1}{p}}A_{0}^{\frac{2r-p-1}{(r-1)(p+1)}}A_{1}^{\frac{r(p-1)}{(p+1)(r-1)}}\bigg)^{1-\theta}A_{1}^{\theta},
+   \end{aligned}\end{equation*}
+   where $\theta = \frac{r(1-p)}{p(p+1-2r)}$ by solving $\frac{1}{p} = \frac{2(1-\theta)}{p+1} + \frac{\theta}{r}$. Thus
+   \begin{equation*}\begin{aligned}
+    \norm{T}_{L^p\to L^p} &\leq 2^{\frac{(p-r)(1+p)}{p(p+1-2r)}}\bigg(\frac{p+1}{p-1} + \frac{p+1}{2r-p-1}\bigg)^{\frac{(r-p)(p+1)}{p^{2}(2r-p-1)}}A_{0}^{\frac{\frac{1}{p}-\frac{1}{r}}{1-\frac{1}{r}}}A_{1}^{\frac{1-\frac{1}{p}}{1-\frac{1}{r}}}.
+    \end{aligned}\end{equation*}
+   Now we come to estimate the constant. Note that $p>1$ implies $\frac{p}{p+1}>\frac12$, 
+   we have then $\frac{r - p}{2r - p - 1} < \frac{1}{2}$. Thus
+   \[\frac{(p-r)(1+p)}{p(p+1-2r)} = \frac{1+p}{p} \frac{r - p}{2r - p - 1} < 2 \cdot \frac{1}{2} = 1,\]
+   \[\frac{p+1}{p-1} + \frac{p+1}{2r-p-1} < \frac{2(p+1)}{p-1}.\]
+   With these estimates, we have
+   \begin{equation*}\begin{aligned}
+   \norm{T}_{L^p\to L^p} &< 2\bigg(\frac{2(p+1)}{p-1}\bigg)^{\frac{1}{p}}A_{0}^{\frac{\frac{1}{p}-\frac{1}{r}}{1-\frac{1}{r}}}A_{1}^{\frac{1-\frac{1}{p}}{1-\frac{1}{r}}}\\
+   &< 8(p-1)^{-\frac{1}{p}}A_{0}^{\frac{\frac{1}{p}-\frac{1}{r}}{1-\frac{1}{r}}}A_{1}^{\frac{1-\frac{1}{p}}{1-\frac{1}{r}}},
+   \end{aligned}\end{equation*}
+   with the use of $2(p+1)=4\big(\frac{p-1}{2}+1\big)
+   <4\cdot e^\frac{p-1}{2}<4\cdot4^{p-1}=4^p$.
+
+\item[1.3.3.]
+   \begin{enumerate}
+   \item[(a)] It is a special case of (b). To be specific, take $p_0=1$ in (b), 
+   then the norm becomes
+   \begin{align*}
+   &p^{1+\frac{1}{p}}\bigg[\frac{B(2,p-1)}{(p-1)^{p-1}}\bigg]^\frac{1}{p}A_0^\frac{1}{p}A_1^{1-\frac{1}{p}}\\
+   &=p^{1+\frac{1}{p}}\bigg[\frac{\varGamma(2)\varGamma(p-1)}{\varGamma(p+1)(p-1)^{p-1}}\bigg]^\frac{1}{p}A_0^\frac{1}{p}A_1^{1-\frac{1}{p}}\\
+   &=p^{1+\frac{1}{p}}\bigg[\frac{1}{p(p-1)^p}\bigg]^\frac{1}{p}A_0^\frac{1}{p}A_1^{1-\frac{1}{p}}
+   =\frac{p}{p-1}A_0^\frac{1}{p}A_1^{1-\frac{1}{p}}.
+   \end{align*}
+
+   \item[(b)] It suffices to study the case of $f\geq0$ due to the assumption $|T(f)|\leq T(|f|)$. 
+   For $\alpha > 0$, write $f=f_{0}+f_{1}$, where $f_{0} = (f-\frac{\lambda\alpha}{A_{1}})\chi_{f \geq \frac{\lambda\alpha}{A_{1}}}$, 
+   then we have the relation \[\{|T(f)| > \alpha\} 
+   \subseteqq \{|T(f_{0})|>(1-\lambda)\alpha\}\] 
+   since \[\norm{T(f_{1})}_{L^\infty} \leq \norm{T}_{L^{\infty} \to L^{\infty}} \norm{f_1}_{L^\infty}
+   \leq A_{1} \frac{\lambda\alpha}{A_{1}} = \lambda\alpha.\] Thus
+   \begin{equation*}\begin{aligned}
+   \norm{T(f)}_{L^p}^{p} &= p\int_{0}^{\infty}\alpha^{p-1}d_{T(f)}(\alpha)\,d\alpha 
+   \\&\leq p\int_{0}^{\infty}\alpha^{p-1}d_{T(f_{0})}((1-\lambda)\alpha)\,d\alpha 
+   \\&\leq \frac{pA_{0}^{p_{0}}}{(1-\lambda)^{p_{0}}}
+   \int_{0}^{\infty}\alpha^{p-p_{0}-1}\norm{f_{0}}_{L^{p_0}}^{p_{0}}d\alpha 
+   \\&= \frac{pA_{0}^{p_{0}}}{(1-\lambda)^{p_{0}}}\int_{0}^{\infty}\alpha^{p-p_{0}-1}
+   \int_{f \geq \frac{\lambda\alpha}{A_{1}}}\Big(f-\frac{\lambda\alpha}{A_{1}}\Big)^{p_{0}}d\mu d\alpha
+   \\&= \frac{pA_{0}^{p_{0}}}{(1-\lambda)^{p_{0}}}
+   \int_{X}\int_{0}^{\frac{A_{1}f(x)}{\lambda}}\alpha^{p-p_{0}-1}
+   \Big(f-\frac{\lambda\alpha}{A_{1}}\Big)^{p_{0}} d\alpha d\mu
+   \\&= \frac{pA_{0}^{p_{0}}A_{1}^{p-p_{0}}}{(1-\lambda)^{p_{0}}\lambda^{p-p_{0}}}\int_{X}\int_{0}^{f(x)}\alpha^{p-p_{0}-1}(f-\alpha)^{p_{0}}d\alpha d\mu 
+   \\&= \frac{pA_{0}^{p_{0}}A_{1}^{p-p_{0}}}{(1-\lambda)^{p_{0}}\lambda^{p-p_{0}}}B(p_{0}+1,p-p_{0})\int_{X}|f|^{p}\,d\mu
+   \\&= \frac{pA_{0}^{p_{0}}A_{1}^{p-p_{0}}}{(1-\lambda)^{p_{0}}\lambda^{p-p_{0}}}B(p_{0}+1,p-p_{0}) \norm{f}_{L^p}^{p}.
+   \end{aligned}\end{equation*}
+   Now take $\lambda=1-\frac{p_{0}}{p}$ to end this proof.
+
+   \item[(c)] Again, write $f=f_{0}+f_{1}$, where $f_{0} = (f-\frac{\delta\alpha}{A_{1}})\chi_{f \geq \frac{\delta\alpha}{A_{1}}}$. Thus
+   \begin{equation*}\begin{aligned}
+   \norm{T(f)}_{L^p}^{p} &= p\int_{0}^{\infty}\alpha^{p-1}d_{T(f)}(\alpha)\,d\alpha
+   \\&\leq p\int_{0}^{\infty}\alpha^{p-1}d_{T(f_{0})}((1-\lambda)\alpha)\,d\alpha 
+   + p\int_{0}^{\infty}\alpha^{p-1}d_{T(f_{1})}(\lambda\alpha)\,d\alpha
+   \\&= \frac{pA_{0}^{p_{0}}}{(1-\lambda)^{p_{0}}}
+   \int_{0}^{\infty}a^{p-p_{0}-1}\norm{f_{0}}_{L^{p_0}}^{p_{0}}d\alpha 
+   + \frac{pA_{1}^{p_{1}}}{\lambda^{p_{1}}}
+   \int_{0}^{\infty}\alpha^{p-p_{1}-1}\norm{f_{0}}_{L^{p_0}}^{p_{0}}d\alpha
+   \\&= \frac{pA_{0}^{p_{0}}}{(1-\lambda)^{p_{0}}} 
+   \int_{0}^{\infty}\alpha^{p-p_{0}-1}
+   \int_{f \geq \delta\alpha}(f - \delta\alpha)^{p_{0}}d\alpha 
+   \\&\quad + \frac{pA_{1}^{p_{1}}}{\lambda^{p_{1}}} \int_{0}^{\infty}\alpha^{p-p_{1}-1}\bigg(\int_{f \geq \delta\alpha}\delta^{p_{1}}\alpha^{p_{1}}d\mu + \int_{f < \delta\alpha}f^{p_{1}}d\mu\bigg)d\alpha
+   \\&= \frac{pA_{0}^{p_{0}}}{(1-\lambda)^{p_{0}}} \int_{X}\int_{0}^{\frac{f(x)}{\delta}}\alpha^{p-p_{0}-1}(f - \delta\alpha)^{p_{0}}d\alpha d\mu
+   \\&\quad + \frac{pA_{1}^{p_{1}}}{\lambda^{p_{1}}} \bigg(\int_{X}\int_{0}^{\frac{f(x)}{\delta}}\alpha^{p-1}\delta^{p_{1}}d\alpha d\mu + \int_{X}\int_{\frac{f(x)}{\delta}}^{\infty}\alpha^{p-p_{1}-1}f^{p_{1}}d\alpha d\mu\bigg)
+   \\&= \frac{pA_{0}^{p_{0}}}{(1-\lambda)^{p_{0}}} \int_{X}\int_{0}^{1}\Big(\frac{f}{\delta}\alpha\Big)^{p-p_{0}-1}(f - f\alpha)^{p_{0}}d\Big(\frac{f}{\delta}\alpha\Big) d\mu
+   \\&\quad + \frac{pA_{1}^{p_{1}}}{\lambda^{p_{1}}}
+   \bigg(\delta^{p_{1}-p}\int_{X}f^{p}\,d\mu 
+   + \frac{\delta^{p_{1}-p}}{p_{1}-p}\int_{X}f^{p}\,d\mu\bigg)
+   \\&= \norm{f}_{L^p}^{p}\bigg(\frac{pA_{0}^{p_{0}}}
+   {(1-\lambda)^{p_{0}}\delta^{p-p_{0}}}B(p-p_{0},p_{0}+1) 
+   + \frac{pA_{1}^{p_{1}}\delta^{p_{1}-p}}{\lambda^{p_{1}}}
+   \frac{p_{1}-p-1}{p_{1}-p}\bigg).
+   \end{aligned}\end{equation*}
+   Now take $\delta$ such that $\frac{A_{0}^{p_{0}}}{\delta^{p-p_{0}}} = \frac{A_{1}^{p_{1}}}{\delta^{p-p_{1}}}$ and optimize over $\lambda$ to end the estimate.
+   \end{enumerate}
+
+\item[1.3.7.]
+   Write $$f=\sum_{k=0}^{\infty}f\chi_{S_{k}},$$
+   where $S_{k}=\{2^{k} \leq |f| < 2^{k+1}\}$ when $k>1$ 
+   and $S_{0}=\{|f|<2\}$. Using Hölder's inequality and the hypotheses on $T$, we obtain that
+   \begin{equation*}\begin{aligned}
+   \int_{Y}|T(f\chi_{S_{k}})|\,d\nu 
+   &\leq \bigg(\int_{Y}d\nu\bigg)^{\frac{1}{k+1}}
+   \bigg(\int_{Y}|Tf|^{\frac{k+1}{k}}\chi_{S_{k}}d\nu\bigg)^{\frac{k}{k+1}}
+   \\&\leq \nu(Y)^{\frac{1}{k+1}}A\Big(\frac{k+1}{k}-1\Big)^{-\alpha}
+   \bigg(\int_{S_{k}}|f|^{\frac{k+1}{k}}d\mu\bigg)^{\frac{k}{k+1}}
+   \\&\leq 2^{k+1}\nu(Y)^{\frac{1}{k+1}}Ak^{\alpha}\mu(S_{k})^{\frac{k}{k+1}}.
+   \end{aligned}\end{equation*}
+   If $\mu(S_{k}) \leq \frac{1}{3^{k+1}}$, then 
+   \begin{equation*}\begin{aligned}
+   2^{k+1}\nu(Y)^{\frac{1}{k+1}}Ak^{\alpha}\mu(S_{k})^{\frac{k}{k+1}} 
+   \leq 2\nu(Y)^{\frac{1}{k+1}}Ak^{\alpha}\Big(\frac{2}{3}\Big)^{k}.
+   \end{aligned}\end{equation*}
+   If $\mu(S_{k}) \geq \frac{1}{3^{k+1}}$, then
+   \begin{equation*}\begin{aligned}
+   \int_{Y}|T(f\chi_{S_{k}})|\,d\nu 
+   &\leq \nu(Y)^{\frac{1}{k+1}}Ak^{\alpha}\mu(S_k)^{-\frac{1}{k+1}}\int_{S_{k}}|f|\,d\mu\\
+   &\leq 3\nu(Y)^{\frac{1}{k+1}}A\int_{S_{k}}|f|k^{\alpha}\,d\mu\\
+   &\leq 3\nu(Y)^{\frac{1}{k+1}}A\int_{S_{k}}|f|(\log_{2}^{+}|f|)^{\alpha}\,d\mu.
+   \end{aligned}\end{equation*}
+   For $S_{0}$, we have
+   \begin{equation*}\begin{aligned}
+   \int_{Y}|T(f\chi_{S_{0}})|\,d\nu 
+   &\leq \bigg(\int_{Y}d\nu\bigg)^{\frac{1}{2}}
+   \bigg(\int_{Y}|T(f\chi_{S_{0}})|^{2}d\nu\bigg)^{\frac{1}{2}}\\
+   &\leq\nu(Y)^{\frac{1}{2}}A\cdot2\mu(X)^{\frac{1}{2}}.
+   \end{aligned}\end{equation*}
+   Add the three parts together and use the countable subadditivity of $T$, 
+   we then conclude that
+   \begin{equation*}\begin{aligned}
+   \int_{Y}|T(f)|\,d\nu &\leq\sum_{k=0}^\infty\int_Y|T(f\chi_{S_k})|\,d\nu\\
+   &\leq 6A\max(1,\nu(Y))^\frac{1}{2}\bigg[\int_{X}|f|(\log_{2}^{+}|f|)^{\alpha}d\mu
+   +\sum_{k=1}^\infty k^\alpha\Big(\frac{2}{3}\Big)^k+\mu(X)^{\frac{1}{2}}\bigg]\\
+   &\leq 6A(1+\nu(Y))^\frac{1}{2}
+   \bigg[\int_{X}|f|(\log_{2}^{+}|f|)^{\alpha}d\mu
+   +C_{\alpha}+\mu(X)^{\frac{1}{2}}\bigg].
+   \end{aligned}\end{equation*}
+
+\item[1.3.8.]
+   Use the change of variables $s=e^{\pi t}\in(0,\infty)$, and the first integral becomes
+   \begin{align*}&\ \ \ \ \,\frac{\sin(\pi x)}{2}\int_{-\infty}^{+\infty}\frac{1}{\cosh(\pi t)+\cos(\pi x)}\,dt\\
+   &=\sin(\pi x)\int_0^\infty\frac{1}{s+s^{-1}+2\cos(\pi x)}\frac{ds}{\pi s}\\
+   &=\frac{\sin(\pi x)}{\pi}\int_0^\infty\frac{ds}{(s+\cos(\pi x))^2+\sin^2(\pi x)}\\
+   &=\frac{1}{\pi}\int_0^\infty\frac{d\big(\frac{s}{\sin(\pi x)}\big)}{\big(\frac{s}{\sin(\pi x)}+\cot(\pi x))^2+1}\\
+   &=\frac{1}{\pi}\int_{\cot(\pi x)}^\infty\frac{du}{u^2+1}=x.\end{align*}
+   For the second one,
+   \begin{align*}&\ \ \ \ \,\frac{\sin(\pi x)}{2}\int_{-\infty}^{+\infty}\frac{1}{\cosh(\pi t)-\cos(\pi x)}\,dt\\
+   &=\sin(\pi x)\int_0^\infty\frac{1}{s+s^{-1}-2\cos(\pi x)}\frac{ds}{\pi s}\\
+   &=\frac{\sin(\pi x)}{\pi}\int_0^\infty\frac{ds}{(s-\cos(\pi x))^2+\sin^2(\pi x)}\\
+   &=\frac{1}{\pi}\int_0^\infty\frac{d\big(\frac{s}{\sin(\pi x)}\big)}{\big(\frac{s}{\sin(\pi x)}-\cot(\pi x))^2+1}\\
+   &=\frac{1}{\pi}\int_{-\cot(\pi x)}^\infty\frac{du}{u^2+1}=1-x.\end{align*}
+\end{enumerate}
+
+\section*{1.4 Lorentz Spaces}
+
+\begin{enumerate}
+\item[1.4.1.]
+   \begin{enumerate}
+   \item[(a)] Since
+   \begin{equation*}\begin{aligned}
+   \int_{A}g\,d\mu = \int_{X}g\chi_{A}\,d\mu 
+   = \int_{0}^{\infty}(g\chi_{A})^{*}(t)\,dt 
+   = \int_{0}^{\mu(A)}(g\chi_{A})^{*}(t)\,dt 
+   \leq \int_{0}^{\mu(A)}g^{*}(t)\,dt.
+   \end{aligned}\end{equation*}
+
+   \item[(b)] Since
+   \begin{equation*}\begin{aligned}
+   \int_{X}|fg|\,d\mu
+   &= \int_{X}\int_{0}^{\infty}\int_{0}^{\infty}\chi_{\{|f| \geq s\}}\chi_{\{|g| \geq t\}}\,dtdsd\mu 
+   \\&= \int_{X}\int_{0}^{\infty}\int_{0}^{\infty}\chi_{\{|f| \geq s \} \cap \{ |g| \geq t\}}\,dtdsd\mu
+   \\&= \int_{0}^{\infty}\int_{0}^{\infty}\mu(\{|f| \geq s \} \cap \{ |g| \geq t\})\,dtds 
+   \\&\leq \int_{0}^{\infty}\int_{0}^{\infty}\min(\mu(\{|f| \geq s \}),\mu(\{ |g| \geq t\}))\,dtds
+   \\&= \int_{0}^{\infty}\int_{0}^{\infty}\min(\mu(\{f^{*} \geq s \}),\mu(\{g^{*} \geq t\}))\,dtds
+   \\&= \int_{0}^{\infty}\int_{0}^{\infty}\int_{0}^{\infty}\chi_{\{f^{*} \geq s \}}(u)\chi_{\{g^{*} \geq t\}}(u)\,dudtds
+   \\&= \int_{0}^{\infty}f^{*}(u)g^{*}(u)\,du.
+   \end{aligned}\end{equation*}
+\end{enumerate}
+
+\item[1.4.2.]
+   We omit the proof of the $s=\infty$ case 
+   since $L^{p,\infty}(X) \subset L^{p,q}(X)$ always holds for $0<q<\infty$. 
+   Now for $q_{1}<\infty$ case, write $\gamma d_{f}(\gamma)^{\frac{1}{q_{0}}} \leq C_{1}$ 
+   and $\gamma d_{f}(\gamma)^{\frac{1}{q_{1}}} \leq C_{2}$. 
+   Since $q \in (q_{0},q_{1})$, we may always find $\delta_{1} \in (0,1)$ and $\delta_{2}>1$, such that
+   \[\frac{1}{q}=\frac{r_{i}}{q_{0}}+\frac{\delta_{i}-r_{i}}{q_{1}}\]
+   for each $i=0,1$ and some $r_{i} \in (0,\delta_{i})$. Thence we may continue our estimate as follows:
+   \begin{equation*}\begin{aligned}
+   \int_{0}^{\infty}(d_{f}(\gamma)^{\frac{1}{q}}\gamma)^{s}\frac{d\gamma}{\gamma}
+   &= \int_{0}^{1}(d_{f}(\gamma)^{\frac{1}{q}}\gamma)^{s}\frac{d\gamma}{\gamma} + \int_{1}^{\infty}(d_{f}(\gamma)^{\frac{1}{q}}\gamma)^{s}\frac{d\gamma}{\gamma}\\
+   &\leq \int_{0}^{1}\bigg(\frac{C_{1}^{r_{1}}C_{2}^{\delta_{1}-r_{1}}}{\gamma^{\delta_{1}}}\gamma\bigg)^{s}\frac{d\gamma}{\gamma} 
+   + \int_{1}^{\gamma}\bigg(\frac{C_{1}^{r_{2}}C_{2}^{\delta_{2}-r_{2}}}{\gamma^{\delta_{2}}}\gamma\bigg)^{s}\frac{d\gamma}{\gamma}\\
+   &=\frac{C_{1}^{r_{1}}C_{2}^{\delta_{1}-r_{1}}}{s(1-\delta_{1})} + \frac{C_{1}^{r_{2}}C_{2}^{\delta_{2}-r_{2}}}{s(\delta_{2}-1)}.
+   \end{aligned}\end{equation*}
+   Thus
+   \[\norm{f}_{L^{q,s}} \leq q^{\frac{1}{s}}
+   \bigg(\frac{C_{1}^{r_{1}}C_{2}^{\delta_{1}-r_{1}}}{s(1-\delta_{1})} 
+   + \frac{C_{1}^{r_{2}}C_{2}^{\delta_{2}-r_{2}}}{s(\delta_{2}-1)}\bigg)^{\frac{1}{s}}.\]
+   For the $q_{1} = \infty$ case, suppose $|f| \leq C_{2}$ a.e., 
+   then $d_{f}(\gamma)=0$ for $\gamma > C_{2}$. Then
+   \begin{equation*}\begin{aligned}
+   \int_{0}^{\infty}(d_{f}(\gamma)^{\frac{1}{q}}\gamma)^{s}\frac{d\gamma}{\gamma}
+   &= \int_{0}^{C_{2}}(d_{f}(\gamma)^{\frac{1}{q}}\gamma)^{s}\frac{d\gamma}{\gamma}
+   \\&\leq \int_{0}^{C_{2}}(d_{f}(\gamma)^{\frac{1}{q}}\gamma^{\frac{q_{0}}{q}}\gamma^{\frac{q-q_{0}}{q}})^{s}\frac{d\gamma}{\gamma}
+   \\&\leq \int_{0}^{C_{2}}C_{1}^{\frac{s}{q}}\frac{d\gamma}{\gamma^{\frac{q(1-s)+q_{0}s}{q}}}
+   = \frac{q}{s(q-q_{0})}C_{1}^{\frac{s}{q}}C_{2}^{\frac{s(q-q_{0})}{q}}.
+   \end{aligned}\end{equation*}
+   Thus 
+   \[\norm{f}_{L^{q,s}} \leq \bigg(\frac{q^{2}}{s(q-q_{0})}C_{1}^{\frac{s}{q}}C_{2}^{\frac{s(q-q_{0})}{q}}\bigg)^{\frac{1}{s}}.\]
+
+\item[1.4.3.]
+   \begin{enumerate}
+   \item[(a)] For $t < \mu(X)$, we have
+   \begin{equation*}\begin{aligned}
+   ((f+g)^{**}(t))^{r} &= \sup_{\mu(E) \geq t} \frac{1}{\mu(E)}\int_{E}|f+g|^{r}d\mu \\
+   &\leq \sup_{\mu(E) \geq t} \frac{1}{\mu(E)}\int_{E}|f|^{r}d\mu 
+   + \sup_{\mu(E) \geq t} \frac{1}{\mu(E)}\int_{E}|g|^{r}d\mu \\
+   &= (f^{**}(t))^{r} + (g^{**}(t))^{r}
+   \end{aligned}\end{equation*}
+   since $r \leq 1$. Otherwise,
+   \begin{equation*}\begin{aligned}
+   ((f+g)^{**}(t))^{r} &= \frac{1}{t}\int_{X}|f+g|^{r} \leq \frac{1}{t}\int_{X}|f|^{r} + \frac{1}{t}\int_{X}|g|^{r} 
+   \\&= (f^{**}(t))^{r} + (g^{**}(t))^{r}.
+   \end{aligned}\end{equation*}
+   For the second part, since $\frac{q}{r}>1$, we have
+   \begin{equation*}\begin{aligned}
+   \norml{f+g}_{L^{p,q}}^{r} &= \bigg(\int_{0}^{\infty}(t^{\frac{1}{p}}(f+g)^{**}(t))^{q}\frac{dt}{t}\bigg)^{\frac{r}{q}} 
+   = \bigg(\int_{0}^{\infty}(t^{\frac{r}{p}-\frac{r}{q}}((f+g)^{**}(t))^{r})^{\frac{q}{r}}\frac{dt}{t}\bigg)^{\frac{r}{q}}
+   \\&\leq \bigg(\int_{0}^{\infty}(t^{\frac{r}{p}-\frac{r}{q}}((f^{**}(t))^{r}+(g^{**}(t))^{r}))^{\frac{q}{r}}\frac{dt}{t}\bigg)^{\frac{r}{q}}
+   \\&\leq \bigg(\int_{0}^{\infty}(t^{\frac{r}{p}-\frac{r}{q}}(f^{**}(t))^{r})^{\frac{q}{r}}\frac{dt}{t}\bigg)^{\frac{r}{q}} 
+   + \bigg(\int_{0}^{\infty}(t^{\frac{r}{p}-\frac{r}{q}}(g^{**}(t))^{r})^{\frac{q}{r}}\frac{dt}{t}\bigg)^{\frac{r}{q}}
+   \\&= \norml{f}_{L^{p,q}}^{r} + \norml{g}_{L^{p,q}}^{r}.
+   \end{aligned}\end{equation*}
+   When $r=1$, we have the property of scalar multiplication, whence $\norml{\,\cdot\,}_{L^{p,q}}^{r}$ is a norm.
+
+   \item[(b)] The first inequality holds since $f^{*}(t) \leq f^{**}(t)$. 
+   This is quite obvious when $t \geq \mu(X)$, since $f^{*}(t)=0$ in this case. 
+   For $t < \mu(X)$, take $s=f^{*}(t)$, then $d_{f}(s) \leq t$. 
+   Then $\forall\, \varepsilon>0$, we have $d_{f}(s-\varepsilon)>t$ by definition. 
+   Set $\tilde{E}:=\{|f| \geq s-\varepsilon\}$, we have
+   \begin{equation*}\begin{aligned}
+   f^{**}(t) \geq \bigg(\frac{1}{\tilde{E}}\int_{\tilde{E}}|f|^{r}d\mu\bigg)^{\frac{1}{r}} \geq s-\varepsilon.
+   \end{aligned}\end{equation*}
+   Since $\varepsilon$ is arbitrary, we have
+   \[f^{**}(t) \geq s = f^{*}(t).\]
+   Thus
+   \begin{equation*}\begin{aligned}
+   \norml{f}_{L^{p,q}} &= \bigg(\int_{0}^{\infty}(t^{\frac{1}{p}}f^{**}(t))^{q}\frac{dt}{t}\bigg)^{\frac{1}{q}} 
+   \geq \bigg(\int_{0}^{\infty}(t^{\frac{1}{p}}f^{*}(t))^{q}\frac{dt}{t}\bigg)^{\frac{1}{q}} = \norm{f}_{L^{p,q}}.
+   \end{aligned}\end{equation*}
+   For the second inequality, we may seek for a proof for 
+   $f^{**}(t) \leq \big(\frac{p}{p-r}\big)^{\frac{1}{r}}f^{*}(t)$, 
+   but unfortunately this is untrue. (For $t> \mu(X)$, 
+   the right--hand side is definitely zero but unnecessarily for the left.) 
+   Note that the $f^{**}$ defined is controlled by 
+   $\big(\frac{1}{t}\int_{0}^{t}|f^{*}(s)|^{r}ds\big)^{\frac{1}{r}}$. 
+   We just show the case of $0 \leq t \leq \mu(X)$. This is because
+   \begin{equation*}\begin{aligned}
+   \sup_{\mu(E) \geq t}\bigg(\frac{1}{\mu(E)}\int_{\mu(E)}|f|^{r}d\mu\bigg)^{\frac{1}{r}} 
+   &= \sup_{\mu(E) \geq t}\bigg(\frac{1}{\mu(E)}\int_{\mu(E)}|f\chi_{E}|^{r}d\mu\bigg)^{\frac{1}{r}}\\ 
+   &= \sup_{\mu(E) \geq t}\bigg(\frac{1}{\mu(E)}\int_{0}^{\mu(E)}(f\chi_{E})^{*}(s)^{r}ds\bigg)^{\frac{1}{r}}\\
+   &\leq \sup_{\mu(E) \geq t}\bigg(\frac{1}{\mu(E)}\int_{0}^{\mu(E)}f^{*}(s)^{r}ds\bigg)^{\frac{1}{r}}\\
+   &\overset{\text{decreasing}}{\leq} \bigg(\frac{1}{t}\int_{0}^{t}f^{*}(s)^{r}ds\bigg)^{\frac{1}{r}}.
+   \end{aligned}\end{equation*}
+   Thus,
+   \begin{equation*}\begin{aligned}
+   \norml{f}_{L^{p,q}} &\leq \bigg(\int_{0}^{\infty}\bigg(t^{\frac{1}{p}}\bigg(\frac{1}{t}\int_{0}^{t}(f^{*}(t))^{r}ds)^{\frac{1}{r}}\bigg)^{q}\frac{dt}{t}\bigg)^{\frac{1}{q}}\\
+   &\leq \bigg(\bigg(\int_{0}^{\infty}\bigg(\frac{1}{t}\int_{0}^{t}(f^{*}(t))^{r}ds\bigg)^{\frac{q}{r}}\bigg)^{q}t^{\frac{q}{p}-\frac{q}{r}}\frac{dt}{t}\bigg)^{\frac{r}{q}}\bigg)^{\frac{1}{r}}\\
+   &\overset{\text{Hardy}}{\leq} \bigg(\frac{\frac{q}{r}}{\frac{q}{p}-\frac{q}{r}}\bigg)^{\frac{1}{r}}\bigg(\int_{0}^{\infty}(t(f^{*}(t))^{r}\bigg)^{\frac{q}{r}}t^{\frac{q}{p}-\frac{q}{r}}\frac{dt}{t}\bigg)^{\frac{1}{q}}
+   = \bigg(\frac{p}{p-r}\bigg)^{\frac{1}{r}}\norm{f}_{L^{p,q}}.
+   \end{aligned}\end{equation*}
+
+   \item[(c)] When $p,q>1$, we may take $r=1$, then $\norm{\cdot}_{L^{p,q}}$ 
+   will be equivalent to the norm $\norml{\,\cdot\,}_{L^{p,q}}$.
+   \end{enumerate}
+
+\item[1.4.4.]
+   \begin{enumerate}
+   \item[(a)] Write $f = \sum_{n \in \Z} f\chi_{(2^{n},2^{n+1}]}$ and $f_{n}=f\chi_{(2^{n},2^{n+1}]}$. 
+   Since $\gamma d_{f}(\gamma)^{\frac{1}{p}} \leq C < \infty$, 
+   we may fix a $q < \infty$, then
+   \begin{equation*}\begin{aligned}
+   \norm{f_{n}}_{L^{p,q}}^{q} &= p\int_{0}^{\infty}(\gamma d_{f_{n}}(\gamma)^{\frac{1}{p}})^{q}\frac{d\gamma}{\gamma} \\
+   &\leq p\int_{2^{n}}^{2^{n+1}}C^{q}\frac{d\gamma}{\gamma} = pC^{q}\log 2.
+   \end{aligned}\end{equation*}
+   Thus, for any $f_{n}$, choose finitely combined simple functions $\phi_{n,\varepsilon}$ such that
+   \[\norm{f_{n}-\phi_{n,\varepsilon}}_{L^{p,q}} \leq \frac{\varepsilon}{2^{|n|+1}}\Big(\frac{p}{q}\Big)^{\frac{1}{q}}.\]
+   Then the estimate follows that (for $p>1$, using the fact that $L^{p,\infty}$ is actually metrizable)
+   \begin{equation*}\begin{aligned}
+   \norm{f-\sum_{n \in \Z}\phi_{n,\varepsilon}}_{L^{p,\infty}} &\leq \sum_{n \in \Z}\norm{f_n-\phi_{n,\varepsilon}}_{L^{p,\infty}}\\ 
+   &\leq \Big(\frac{q}{p}\Big)^{\frac{1}{q}}\sum_{n \in \Z}\frac{\varepsilon}{2^{|n|+1}}\Big(\frac{p}{q}\Big)^{\frac{1}{q}} <\varepsilon.
+   \end{aligned}\end{equation*}
+   For $0< p \leq 1$, just take the power of $r$ for some suitable $0 < r <p$ 
+   described in [Ex.1.1.12], and make some necessary changes to get the same estimate.
+
+   \item[(b)] Write $s= \sum_{i=1}^{n}a_{i}\chi_{A_{i}}$ and $A=\bigcup_{i=1}^{n}A_{i}$. 
+   Set $M=\max s=\max_{1\le i\le n}{a_{i}}$, then we have 
+   \[\{|s-h|>\gamma\}\supseteqq\{h>\gamma+s\}\supseteqq\{h>\gamma+M\},\]
+   which implies
+   \[\big||s-h|>\gamma\big|\ge\big|h>\gamma+M\big|=(\gamma+M)^{-p}.\]
+   For this reason,
+   \[\norm{s-h}_{L^{p,\infty}} = \sup_{\gamma > 0} \gamma \big||s-h|>\gamma\big|^{1/p}
+   \ge \sup_{\gamma > 0} \gamma/(\gamma+M)=1.\]
+   \end{enumerate}
+
+\item[1.4.10.]
+   \begin{enumerate}
+   \item[(a)] Take $u_{n}=f_{n}\chi_{|f_{n}|\leq\frac{\alpha}{2}}$, 
+   $v_{n}=f_{n}\chi_{|f_{n}|>\frac{\alpha}{2\lambda_{n}}}$ 
+   and $w_{n}=f_{n}\chi_{\frac{\alpha}{2}<|f_{n}|\leq\frac{\alpha}{2\lambda_{n}}}$. 
+   Thus by setting $u=\sum_{n}\lambda_{n}u_{n}$, $v=\sum_{n}\lambda_{n}v_{n}$ 
+   and $w=\sum_{n}\lambda_{n}w_{n}$, we obtain a decomposition $f=u+v+w$. 
+   Clearly $|u|\leq\frac{\alpha}{2}$. For $v$, we have
+   \begin{equation*}\begin{aligned}
+   \mu(\{v \neq 0\}) &\leq \sum_{n}\mu(|f_{n}|>\frac{\alpha}{2\lambda_{n}}) 
+   = \sum_{n}\mu(|\lambda_{n}f_{n}|>\frac{\alpha}{2})\\
+   &\leq \sum_{n} \frac{2\lambda{n}}{\alpha} \leq \frac{2}{\alpha}.
+   \end{aligned}\end{equation*}
+   Plus, for $\{|w|>\frac{\alpha}{2}\}$, we have 
+   \begin{equation*}\begin{aligned}
+   \frac{\alpha}{2}\mu(\{|w|>\frac{\alpha}{2}\}) 
+   &\leq \int_{\{|w|>\frac{\alpha}{2}\}}|w|\,d\mu \leq \int_{X}|w|\,d\mu\\
+   &\leq \sum_{n}\int_{X}|f_{n}|\chi_{\frac{\alpha}{2}<|f_{n}|\leq\frac{\alpha}{2\lambda_{n}}}d\mu\\
+   &\leq \sum_{n}\lambda_{n}\bigg(
+   \int_{\frac{\alpha}{2}}^{\frac{\alpha}{2\lambda_{n}}}d_{f_{n}}(t)\,dt 
+   + \int_{0}^{\frac{\alpha}{2}}d_{f_{n}}\Big(\frac{\alpha}{2}\Big)\,dt\bigg)\\
+   &\leq \sum_{n}\lambda_{n}\bigg(
+   \int_{\frac{\alpha}{2}}^{\frac{\alpha}{2\lambda_{n}}}\frac{dt}{t} 
+   + \int_{0}^{\frac{\alpha}{2}}\frac{2}{\alpha}dt\bigg)\\
+   &\leq \sum_{n}\lambda_{n}(\log(\lambda_{n})+1) \leq K+1.
+   \end{aligned}\end{equation*}
+   Now combined together, we have
+   \begin{equation*}\begin{aligned}
+   \mu(\{|f|>\alpha\}) &\leq \mu(\{|u|>\frac{\alpha}{2}\}) + \mu(\{v \neq 0\}) + \mu(\{|w|>\frac{\alpha}{2}\})
+   \\&\leq 0 + \frac{2}{\alpha} + \frac{2}{\alpha}(K+1) = \frac{2(K+2)}{\alpha},
+   \nonumber\end{aligned}\end{equation*}
+   which is exactly $\norm{f}_{L^{1,\infty}} \leq 2(K+2)$.
+
+   \item[(b)] Since 
+   \begin{equation*}\begin{aligned}
+   \norm{Tf}_{L^{1,\infty}} &= \norm{\sum_{n}\lambda_{n}T_{n}f}_{L^{1,\infty}} 
+   \\&\leq 2(K+2)\sup\limits_{n}\norm{T_{n}f}_{L^{1,\infty}} \leq 2B(K+2)\norm{f}_{L^{1}}.
+   \end{aligned}\end{equation*}
+
+   \item[(c)] Since
+   \begin{equation*}\begin{aligned}
+   \mu(\{\sum_{n=1}^{\infty}2^{-\delta n}f_{n}>\alpha\}) 
+   &\leq \sum_{n=1}^{\infty}\mu(\{2^{-\delta n}f_{n}>(2^{\varepsilon}-1)2^{-\varepsilon n}\alpha\})\\
+   &\leq \sum_{n=1}^{\infty} \frac{2^{-\delta n}}{(2^{\varepsilon}-1)2^{-\varepsilon n}\alpha} 
+   = \sum_{n=1}^{\infty} \frac{2^{(\varepsilon-\delta)n}}{(2^{\varepsilon}-1)\alpha}\\
+   &\leq \frac{2^{\delta-\varepsilon}-1}{(2^{\varepsilon}-1)\alpha}.
+   \end{aligned}\end{equation*}
+   \end{enumerate}
+
+\item[1.4.11.]
+   First we show
+   \begin{enumerate}
+   \item[(a)] (Fatou's Lemma in $L^{p,q}$) 
+   \item[(b)] We know 
+   \[\sup_{\alpha >0} \alpha d_{g_{n}-g}(\alpha)^{\frac{1}{s}} \leq \Big(\frac{s}{q}\Big)^{\frac{1}{s}}\norm{g_{n}-g}_{L^{q,s}}\]
+   Since $g_{n} \overset{L^{q,s}}{\to} g$, we have by this control that $g_{n} \to g$ in measure. 
+   Now choose a subsequence $g_{n_{k}}$ such that $g_{n_{k}} \to g$ a.e. 
+   \end{enumerate}
+
+\item[1.4.13.]
+   (Dyadic Decomposition)  
+   Set $c_{n}=2^{\frac{n}{p}}f^{*}(2^{n})$, 
+   $A_{n}:=\{f^{*}(2^{n+1}) \leq |f| \leq f^{*}(2^{n})\}$ 
+   and $f_{n}=c_{n}^{-1}f\chi_{A_{n}}$. 
+   Obviously, we have $f=\sum_{n \in \Z}f_{n}$. 
+   Since $f^{*}$ is decreasing, we have
+   \begin{equation*}\begin{aligned}
+   |f_{n}| \leq 2^{-\frac{n}{p}}f^{*}(2^{n})^{-1}f^{*}(2^{n}) = 2^{-\frac{n}{p}}.
+   \end{aligned}\end{equation*}
+   Clearly, $\operatorname{support}(f_{n}) \subset A_{n}$, whose measure is $2^{n}$. 
+   For the last matter, set $E_{n}=[2^{n},2^{n+1}]$. Thus
+   \begin{equation*}\begin{aligned}
+   \norm{f}_{L^{p,q}}^{q} &= \int_{0}^{\infty}(t^{\frac{1}{p}}f^{*}(t))^{\frac{1}{q}}\frac{dt}{t} 
+   = \sum_{n \in \Z} \int_{E_{n}}(t^{\frac{1}{p}}f^{*}(t))^{\frac{1}{q}}\frac{dt}{t}
+   \\&\geq \sum_{n \in \Z} 2^{\frac{nq}{p}}f^{*}(2^{n+1})^{q}\int_{E_{n}}\frac{dt}{t} 
+   = \log 2 \sum_{n \in \Z} 2^{\frac{(n-1)q}{p}}f^{*}(2^{n})^{q}
+   \\&= 2^{-\frac{q}{p}}\log 2 \norm{\{c_{k}\}_{k}}_{l^{q}},
+   \end{aligned}\end{equation*}
+   which is enough to show the boundedness of $\norm{\{c_{k}\}_{k}}_{l^{q}}$. 
+   Another direction follows from the estimate on each $E_{n}$ 
+   that $f^{*}(t) \leq f^{*}(2^{n})$ and $t \leq 2^{n+1}$ and use a shift.
+
+\item[1.4.14. ]
+   \begin{enumerate}
+   \item[(a)] Take $E'=E \cap \{|f| \leq A(1-\gamma)^{-\frac{1}{p}}\mu(E)^{-\frac{1}{p}}\}$, then 
+   $$d_{f}(A(1-\gamma)^{-\frac{1}{p}}\mu(E)^{-\frac{1}{p}}) 
+   \leq (1-\gamma)\mu(E)$$ 
+   by the definition of $A$. Thus
+   \begin{equation*}\begin{aligned}
+   \bigg|\int_{E'}f\,d\mu\bigg| &\leq \int_{E'}|f|\,d\mu \\
+   &\leq \mu(E)A(1-\gamma)^{-\frac{1}{p}}\mu(E)^{-\frac{1}{p}} \\
+   &= A(1-\gamma)^{-\frac{1}{p}}\mu(E)^{1-\frac{1}{p}}.
+   \end{aligned}\end{equation*}
+   
+   \item[(b)] Since $\{|f|>\alpha\} \subset \{\operatorname{Re} f > \frac{\alpha}{\sqrt{2}}\} 
+   \cup \{\operatorname{Re} f < -\frac{\alpha}{\sqrt{2}}\} 
+   \cup \{\operatorname{Im} f > \frac{\alpha}{\sqrt{2}}\} 
+   \cup \{\operatorname{Im} f < -\frac{\alpha}{\sqrt{2}}\} 
+   = \bigcup_{i=1}^{4}F_{i}$, 
+   set $E_{n,i} = X_{n} \cap F_{i}$, where $\{X_{n}\}$ is an ascending chain of 
+   finite measure subspace with union equal to $X$. Then by condition, we have
+   \begin{equation*}\begin{aligned}
+   \bigg|\int_{E'_{n,i}}f\,d\mu\bigg| 
+   \geq \frac{\alpha}{\sqrt{2}}\gamma\mu(E_{n,i}).
+   \end{aligned}\end{equation*}
+   Thus $\alpha \mu(E_{n})^{\frac{1}{p}} \leq B\sqrt{2}\gamma^{-1}$. 
+   Let $n \to \infty$, then 
+   $\alpha\mu(F_{i})^{\frac{1}{p}} \leq B\sqrt{2}\gamma^{-1}$. Thus,
+   \begin{equation*}\begin{aligned}
+   \alpha^{p} \mu(\{|f|>\alpha\}) \leq \sum_{i=1}^{4}\alpha^{p}\mu(F_{i}) \leq 4B^{p}\sqrt{2}^{p}\gamma^{-p},
+   \end{aligned}\end{equation*}
+   which means $\norm{f}_{L^{p,\infty}} \leq B4^{\frac{1}{p}}\sqrt{2}\gamma^{-1}$.
+   \end{enumerate}
+\end{enumerate}

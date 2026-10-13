@@ -1,0 +1,207 @@
+\setdisplaytitle{试卷：广义相对论}
+\sethtmltitle{试卷：广义相对论}
+
+== 2024--2025 Semester 1 数学广义相对论(谢纳庆)==
+
+1. (30 Points) (1) We assume that $\xi^\eta$ is a Killing field, that is,
+\begin{equation}
+    \nabla_\alpha\xi_\beta+\nabla_\beta\xi_\alpha=0.
+\end{equation}
+We also assume that $c$ is a timelike geodesic with unit tangent vector $p^\alpha$. Show that along $c$, $p^\alpha\xi_\alpha$ is constant.
+
+(2) Give $10$ examples of Killing fields of Minkowski space $\mathbb{R}^{3,1}$.
+
+2. (30 Points) For the Schwarzschild solution 
+\begin{equation}
+    g=-\left(1-\frac{2M}{r}\right)dt^2+\left(-\frac{2M}{r}\right)^{-1}dr^2+r^2(d\theta^2+\sin^2\theta d\phi^2),
+\end{equation}
+the Komar mass coincides with the ADM mass.
+
+3. (40 Points) (1) If all the $g_{\alpha\beta}$'s are independent of the fixed $x^\mu$, show that the equation of the energy momentum tensor $T^\nu_{\;\,\mu;\nu}=0$ is equivalent to
+\begin{equation}
+    \frac{1}{\sqrt{-g}}(\sqrt{-g}T^\nu_{\;\,\mu})_{,\nu}=0.
+\end{equation}
+
+(2) Assume further that for each fixed $x_0$, the set of $(x_1,x_2,x_3)$ such that $T^\nu_{\;\,\mu}\neq0$ for some $\mu,\nu$ is bounded. Show with equation (3) that
+\begin{equation}
+    \int_{x^0={\rm const}}T^\nu_{\;\,\mu}\sqrt{-g}n_\nu d^3x
+\end{equation}
+is independent of $x^0$, where $n_\nu$ is the unit cotangent vector of the constant time surface.
+
+(3) Consider the Minkowski spacetime with polar coordinates $(t,r,\theta,\phi)$, show with equation (4) that
+\begin{equation}
+    J=\int_{t={\rm const}}T^0_{\;\,\phi}r^2\sin\theta drd\theta d\phi
+\end{equation}
+is independent of $t$.
+
+(4) Change equation (5) into the rectangular coordinates $(t,x,y,z)$ to conclude that
+\begin{equation}
+    J=\int(xT^{y0}-yT^{x0})dxdydz
+\end{equation}
+is independent of $t$.
+
+
+==2025-2026 Semester 2 广义相对论(PHYS60019)==
+
+1.Consider a 3D spacetime with the following metric
+\[
+\mathrm{d}s^{2} = -c^{2}\mathrm{d}t^{2} + a^{2}\left(\frac{\mathrm{d}r^{2}}{1 - kr^{2}} + r^{2}\mathrm{d}\phi^{2}\right),
+\]
+where $a = a(t)$ is a function of $t$ and $k$ is a constant.
+
+\begin{enumerate}
+    \item[(a)] (5 points) Calculate all non-vanishing Christoffel symbols:
+    \[
+    \Gamma_{\nu \rho}^{\mu} = \frac{1}{2} g^{\mu \sigma}(\partial_{\nu}g_{\sigma \rho} + \partial_{\rho}g_{\nu \sigma} - \partial_{\sigma}g_{\nu \rho}).
+    \]
+
+    \item[(b)] (5 points) Write the Lagrangian of a free point-like massive particle in this metric.
+
+    \item[(c)] (5 points) Write the constants of motion of a free point-like massive particle in this metric.
+
+    \item[(d)] (5 points) Calculate the relation between the proper time of a static observer ($r$ and $\phi$ constant) and the time coordinate $t$.
+
+    \item[(e)] (5 points) Calculate the relation between the proper time of an observer moving along a circle of radius $R$ with angular frequency $\Omega$ ($\Omega = \mathrm{d}\phi / \mathrm{d}t$) and the time coordinate $t$.
+
+    \item[(f)] (5 points) Write the vierbeins $E_{(\alpha)}^{\mu}$ to move to a locally Minkowski reference frame (i.e., $dx^{\mu} \to d\hat{x}^{(\alpha)} = E_{\mu}^{(\alpha)}dx^{\mu}$ such that $g_{\mu\nu} \to \eta_{(\alpha)(\beta)}$).
+
+    \item[(g)] (10 points) Let us now assume the specific case $a = 3$ (independent of $t$) and $k = 0$. Write all non-vanishing coefficients of the Ricci tensor:
+    \[
+    R_{\mu \nu} = \partial_{\lambda}\Gamma_{\mu \nu}^{\lambda} - \partial_{\nu}\Gamma_{\mu \lambda}^{\lambda} + \Gamma_{\mu \nu}^{\kappa}\Gamma_{\kappa \lambda}^{\lambda} - \Gamma_{\mu \lambda}^{\kappa}\Gamma_{\nu \kappa}^{\lambda}.
+    \]
+
+    \item[(h)] (5 points) Still assuming $a = 3$ and $k = 0$, calculate the Einstein tensor: $G_{\mu \nu} = R_{\mu \nu} - \frac{1}{2} g_{\mu \nu}R$.
+\end{enumerate}
+
+
+2.(15 points)The field equation for a scalar field $\phi$ in Cartesian coordinates in flat spacetime is (in units $\hbar = c = 1$)
+\[
+(\square - m^{2})\phi = 0,
+\]
+where $\square = \partial_{\mu}\partial^{\mu} = -\partial_{t}^{2} + \partial_{x}^{2} + \partial_{y}^{2} + \partial_{z}^{2}$ and $m$ is the mass of the scalar field.
+
+Write this equation in spherical coordinates.
+
+3.(20 points)The Global Positioning System (GPS) is the most famous global navigation satellite system. It consists of a constellation of satellites orbiting at an altitude $h \approx 20,000 \text{ km}$ from the ground and with an orbital speed $v \approx 14,000 \text{ km/hr}$. GPS satellites carry stable atomic clocks and continually broadcast a signal that includes their current time and position. From the signal of at least four satellites, a GPS receiver on Earth ($h \approx 0 \text{ km}$) can determine its position.
+
+Calculate the difference between the time of the clock of the GPS receiver and the time of the clocks of the GPS satellites after $24 \text{ hr}$.
+
+4.(20 points)Consider a Cartesian coordinate system of an inertial reference frame in which we measure a constant uniform electric field $\mathbf{E} = (E,0,0)$.
+
+Calculate the electric field measured in the inertial reference frame moving with constant velocity $\mathbf{v} = (v,0,0)$ with respect to the former.
+
+
+== 2025--2026 Semester 2 广义相对论期末(PHYS60019)==
+
+
+1. (16 Points) The Penrose diagram appended below describes an asymptotically flat spacetime in which a star $S$ collapses and forms a black hole, and then the black hole completely evaporates by Hawking radiation.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.78,line cap=round,line join=round]
+\coordinate (iminus) at (0,0);
+\coordinate (junc) at (1.9,3.8);
+\coordinate (iplus) at (1.9,5.7);
+\coordinate (izero) at (3.8,3.8);
+\draw[very thick] (iminus) -- (izero) -- (iplus);
+\draw[very thick] (junc) -- (iplus);
+\draw[very thick] (0,0) -- (0,3.8);
+\draw[very thick] (0.74,3.8) .. controls (1.05,2.65) and (0.72,0.80) .. (0,0);
+\draw[thick] (0,0.35) -- (0.25,0.35);
+\draw[thick] (0,0.70) -- (0.42,0.70);
+\draw[thick] (0,1.05) -- (0.57,1.05);
+\draw[thick] (0,1.40) -- (0.68,1.40);
+\draw[thick] (0,1.75) -- (0.76,1.75);
+\draw[thick] (0,2.10) -- (0.82,2.10);
+\draw[thick] (0,2.45) -- (0.84,2.45);
+\draw[thick] (0,2.80) -- (0.82,2.80);
+\draw[thick] (0,3.15) -- (0.78,3.15);
+\draw[thick] (0,3.50) -- (0.75,3.50);
+\draw[very thick] (0,3.8)--(0.11,3.92)--(0.22,3.8)--(0.33,3.92)--(0.44,3.8)--(0.55,3.92)--(0.66,3.8)--(0.77,3.92)--(0.88,3.8)--(0.99,3.92)--(1.10,3.8)--(1.21,3.92)--(1.32,3.8)--(1.43,3.92)--(1.54,3.8)--(1.65,3.92)--(1.76,3.8)--(1.87,3.92)--(1.9,3.8);
+\draw[red,very thick] (0,1.95) -- (junc);
+\node at (0.38,1.75) {$S$};
+\node[left] at (-1.25,4.65) {$r=0$};
+\draw[->,very thick] (-0.55,5.00) .. controls (0.45,5.20) and (1.25,5.05) .. (1.86,4.75);
+\draw[->,very thick] (-0.48,4.45) .. controls (0.35,4.35) and (0.95,4.08) .. (1.27,3.88);
+\draw[->,very thick] (-1.05,4.35) .. controls (-1.08,3.00) and (-0.45,2.35) .. (-0.03,2.55);
+\node[above] at (iplus) {$i^{+}$};
+\node[below] at (iminus) {$i^{-}$};
+\node[right] at (izero) {$i^{0}$};
+\node[above right] at (2.75,4.72) {$\mathscr I^{+}$};
+\node[below right] at (2.25,1.55) {$\mathscr I^{-}$};
+\end{tikzpicture}
+
+Figure 1: Penrose diagram for Question 1
+\end{center}
+
+(1) Indicate clearly the $5$ asymptotic regions: future time-like infinity, past time-like infinity, spatial infinity, future null infinity, past null infinity. [8 Points]
+
+(2) Indicate clearly the black hole horizon and the singularity of the spacetime. [8 Points]
+
+2. (24 Points) Let us now consider the Penrose diagram appended below.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.78,line cap=round,line join=round]
+\coordinate (iminus) at (0,0);
+\coordinate (junc) at (1.9,3.8);
+\coordinate (iplus) at (1.9,5.7);
+\coordinate (izero) at (3.8,3.8);
+\draw[very thick] (iminus) -- (izero) -- (iplus);
+\draw[very thick] (junc) -- (iplus);
+\draw[very thick] (0,0) -- (0,3.8);
+\draw[very thick] (0.74,3.8) .. controls (1.05,2.65) and (0.72,0.80) .. (0,0);
+\draw[thick] (0,0.35) -- (0.25,0.35);
+\draw[thick] (0,0.70) -- (0.42,0.70);
+\draw[thick] (0,1.05) -- (0.57,1.05);
+\draw[thick] (0,1.40) -- (0.68,1.40);
+\draw[thick] (0,1.75) -- (0.76,1.75);
+\draw[thick] (0,2.10) -- (0.82,2.10);
+\draw[thick] (0,2.45) -- (0.84,2.45);
+\draw[thick] (0,2.80) -- (0.82,2.80);
+\draw[thick] (0,3.15) -- (0.78,3.15);
+\draw[thick] (0,3.50) -- (0.75,3.50);
+\draw[very thick] (0,3.8)--(0.11,3.92)--(0.22,3.8)--(0.33,3.92)--(0.44,3.8)--(0.55,3.92)--(0.66,3.8)--(0.77,3.92)--(0.88,3.8)--(0.99,3.92)--(1.10,3.8)--(1.21,3.92)--(1.32,3.8)--(1.43,3.92)--(1.54,3.8)--(1.65,3.92)--(1.76,3.8)--(1.87,3.92)--(1.9,3.8);
+\draw[red,very thick] (0,1.95) -- (junc);
+\node at (0.38,1.75) {$S$};
+\node[left] at (-1.25,4.65) {$r=0$};
+\draw[->,very thick] (-0.55,5.00) .. controls (0.45,5.20) and (1.25,5.05) .. (1.86,4.75);
+\draw[->,very thick] (-0.48,4.45) .. controls (0.35,4.35) and (0.95,4.08) .. (1.27,3.88);
+\draw[->,very thick] (-1.05,4.35) .. controls (-1.08,3.00) and (-0.45,2.35) .. (-0.03,2.55);
+\node[above] at (iplus) {$i^{+}$};
+\node[below] at (iminus) {$i^{-}$};
+\node[right] at (izero) {$i^{0}$};
+\node[above right] at (2.75,4.72) {$\mathscr I^{+}$};
+\node[below right] at (2.25,1.55) {$\mathscr I^{-}$};
+\node[text=red,scale=1.35] at (1.30,2.20) {$\star$};
+\node[below] at (1.30,1.78) {$A$};
+\end{tikzpicture}
+
+Figure 2: Penrose diagram for Question 2
+\end{center}
+
+(1) We consider the coordinate system of an observer at infinity $(t,r,\theta,\phi)$. At time $t=t_0$, a spacecraft is at point $A$. Draw the trajectory of the spacecraft from $t=t_0$ to $t=\infty$ assuming that the spacecraft travels at the constant velocity $v=0.999999999c$ ($c=$ speed of light) with $dr/dt>0$. Is the trajectory of the spacecraft a time-like geodesic? [8 Points]
+
+(2) Let us now assume that at time $t=t_0$ the spacecraft is still at point $A$ but it is orbiting around the star $S$. The orbit is circular $(dr/dt=0)$ and remains circular. Draw the trajectory of the spacecraft from $t=t_0$ to $t=\infty$. [8 Points]
+
+(3) Suppose that the spacecraft at point $A$ emits an electromagnetic signal. Draw the trajectory of such an electromagnetic signal. [8 Points]
+
+3. (60 Points) Let us consider the following line element
+\begin{equation}
+ds^2=-dt^2+a^2\left(\frac{dr^2}{1-r^2}+r^2d\theta^2+r^2\sin^2\theta d\phi^2\right),
+\end{equation}
+where $a=a(t)=\sqrt{t-t^2}$ is a function of $t$.
+
+(1) Is this a universe filled with matter, radiation, or vacuum energy? Please explain how you can infer the matter content or why you cannot answer this question. [10 Points]
+
+(2) Write the energy $E$ and the axial component of the angular momentum $L_z$ of a test-particle in this spacetime. Are $E$ and $L_z$ constants of motion? [5 Points]
+
+(3) Assuming that the spacetime has a trivial topology, is the $3$-volume finite or infinite? [5 Points]
+
+(4) At the time $t=0.1$, an atom emits a photon of energy $E=5\,\mathrm{eV}$. What is the photon energy at the time $t=0.3$? Can a photon be blueshifted in this spacetime and why? [8 Points]
+
+(5) Does the spacetime have an ergoregion? In the case of positive answer, where? [8 Points]
+
+(6) Does the spacetime have curvature singularities? In the case of positive answer, where? [8 Points]
+
+(7) Write the vierbeins $E^\mu{}_{(\alpha)}$. [8 Points]
+
+(8) Is the spacetime asymptotically flat? In the case of positive answer, draw its Penrose diagram. [8 Points]

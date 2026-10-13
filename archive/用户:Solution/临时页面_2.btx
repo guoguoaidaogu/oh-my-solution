@@ -1,0 +1,442 @@
+\theoremstyle{remark}\newtheorem{a}{A}
+\theoremstyle{remark}\newtheorem{b}{B}
+\pdef\(#+1\){\@setfalse{math-display}\@@enter{math}\displaystyle{#1}\@@exit{math}}
+\def\ee{\mathrm{e}}
+\setcounter{section}{5}
+\theoremstyle{remark}\newtheorem*{6a}{习题$2.6.\mathcal{A}$}
+\theoremstyle{remark}\newtheorem*{6b}{习题$2.6.\mathcal{B}$}
+\theoremstyle{remark}\newtheorem*{7a}{习题$2.7.\mathcal{A}$}
+\theoremstyle{remark}\newtheorem*{7b}{习题$2.7.\mathcal{B}$}
+
+\section{正项级数}
+\subsection{正项级数,正项级数收敛的基本定理,比较判别法, Cauchy判别法, D'Alembert判别法, Raabe判别法,收敛得更慢与发散得更慢的级数}
+\begin{6a}
+\begin{enumerate}
+\item ${}^*$设\(\{a_n\}\)为一正数列. 证明:\[\varliminf_{n\rightarrow\infty}\frac{a_{n+1}}{a_n}\leqslant\varliminf_{n\rightarrow\infty}\sqrt[n]{a_n}\leqslant\varlimsup_{n\rightarrow\infty}\sqrt[n]{a_n}\leqslant\varlimsup_{n\rightarrow\infty}\frac{a_{n+1}}{a_n}.\] 
+\begin{proof}
+设\(\varlimsup_{n\rightarrow\infty}\frac{a_{n+1}}{a_n}=a<\infty\), 
+证明\(\varlimsup_{n\rightarrow\infty}\sqrt[n]{a_n}\geqslant a\).
+\end{proof}
+\item 讨论以下级数的收敛性: \\
+\begin{center}\begin{tabular}{ll}
+\((1)\,\sum_{n=1}^{\infty}\frac{n^3+2n+5}{n^4+4n+7}\);&\((2)\,\sum_{n=1}^{\infty}\frac{1}{n^2-100n+1}\cos\frac{1}{n}\);\\
+\((3)\,\sum_{n=1}^{\infty}\ln\left(1+\frac{1}{n^2}\right)\);&\((4)\,\sum_{n=1}^{\infty}\left(\frac{(2n-1)!!}{(2n)!!}\right)^{\alpha}\).
+\end{tabular}\end{center}
+\begin{proof}[解答]
+(1)由于\(\frac{n^3+2n+5}{n^4+4n+7}\sim\frac{1}{n}\), 
+故\(\sum_{n=1}^{\infty}\frac{n^3+2n+5}{n^4+4n+7}\)发散.
+
+(2)由于\(\frac{1}{n^2-100n+1}\cos\frac{1}{n}\leqslant\frac{1}{n^2-100n+1}\sim\frac{1}{n^2}\), 
+故\(\sum_{n=1}^{\infty}\frac{1}{n^2-100n+1}\cos\frac{1}{n}\)收敛; 
+
+(3)由于\(\ln\left(1+\frac{1}{n^2}\right)\leqslant\frac{1}{n^2}\), 
+故\(\sum_{n=1}^{\infty}\ln\left(1+\frac{1}{n^2}\right)\)收敛;
+
+(4)注意到\[\begin{matrix}
+3=\frac{2+4}{2}>\sqrt{2\times 4},&\qquad &2=\frac{1+3}{2}>\sqrt{1\times 3},\\
+5=\frac{4+6}{2}>\sqrt{4\times 6},&\qquad &4=\frac{3+5}{2}>\sqrt{3\times 5},\\
+\vdots&\qquad&\vdots\\
+2n-1=\frac{(2n-2)+2n}{2}>\sqrt{(2n-2)\cdot 2n},&\qquad&2n=\frac{(2n-1)+(2n+1)}{2}>\sqrt{(2n-1)(2n+1)},
+\end{matrix}\]于是有\[\left(\frac{1}{2\sqrt{n}}\right)^\alpha<\left(\frac{(2n-1)!!}{(2n)!!}\right)^{\alpha}<\left(\frac{1}{\sqrt{2n+1}}\right)^\alpha,\]于是当\(\alpha>2\)时, \(\sum_{n=1}^{\infty}\left(\frac{(2n-1)!!}{(2n)!!}\right)^{\alpha}\)收敛, 其余情况发散.
+\end{proof}
+\item 举例说明, 当\(\varlimsup_{n\rightarrow+\infty}\sqrt[n]{a_n}=1\)时,  
+正项级数\(\sum_{n=1}^{\infty}a_n\)既可能收敛也可能发散.
+\begin{proof}[解答]
+对于\(\sum_{n=1}^{\infty}\frac{1}{n}\)与\(\sum_{n=1}^{\infty}\frac{1}{n^2}\)均有\(\varlimsup_{n\rightarrow+\infty}\sqrt[n]{a_n}=1\), 但前者发散而后者收敛.
+\end{proof}
+\item 设\(a_1\geqslant a_2\geqslant a_3\geqslant\cdots\geqslant 0\). 
+证明: 若\(\sum_{n=0}^{\infty}a_n\)收敛, 则\(\lim_{n\rightarrow\infty}na_n=0.\)
+\begin{proof}
+对于任何\(m\)与\(n>m\), 我们有\[(n-m)a_n<a_{m+1}+a_{m+2}+\cdots+a_n<\alpha_m,\]
+其中\(\alpha_m\)为该收敛级数的余式, 由此得\(na_n<\frac{n}{n-m}\alpha_m.\) 
+由于级数\(\sum_{n=0}^{\infty}a_n\)收敛, 故对于任给的\(\varepsilon>0\), 则存在\(M\)使得\(\alpha_{M}<\varepsilon\). 
+其次, 由于\(\lim_{n\rightarrow\infty}\frac{n}{n-M}=1\), 故存在\(N>M\), 使得\(n\geqslant N\)时有\(\frac{n}{n-M}<2\). 
+于是, 当\(n\geqslant N\)时, 有\(0<na_n<2\varepsilon\), 因此\(\lim_{n\rightarrow\infty}na_n=0.\)
+
+另解:注意到$\left\{a_{n}\right\}$单调减，由定理2.6.7，$\sum\limits_{n=0}^{\infty} 2^{n}
+a_{2^{n}}$收敛，则$\lim\limits_{n \to \infty} 2^{n}a_{2^{n}}=0$，结合$\left\{a_{n}
+\right\}$单调减知$\lim\limits_{n \to \infty} na_{n}=0$.
+\end{proof}
+\item 设正项级数\(\sum_{n=1}^{\infty}a_n\)收敛, \(\lim_{n\rightarrow\infty}na_n=a\). 证明：\(a=0\).
+\begin{proof}
+反证法. 若\(a\ne 0\), 则由\(a_n>0\)知\(a>0\), 结合\(\lim_{n\rightarrow\infty}na_n=a\)可知\(\forall 0<\varepsilon<a\), 存在\(N\), 使得\(n>N\)时有\[na_n>a-\varepsilon,\quad\text{即}\quad a_n>\frac{a-\varepsilon}{n},\]由于\(\sum_{n=1}^{\infty}a_n\)收敛, 由此推知\(\sum_{n=1}^{\infty}\frac{1}{n}\)收敛, 矛盾.
+\end{proof}
+\item 讨论级数\(\left(\frac{1}{2}\right)^p+\left(\frac{1\cdot 3}{2\cdot 4}\right)^p+\left(\frac{1\cdot 3\cdot 5}{2\cdot 4\cdot 6}\right)^p+\cdots\)的收敛性.
+\begin{proof}[解答]
+该题与2.6.\(\boldsymbol{\mathcal{A}}\)第\(\boldsymbol{2}\)题的第(4)题是完全相同的. 
+这里给出另一种方法. 由于\(\frac{a_n}{a_{n+1}}=\left(\frac{2n+2}{2n+1}\right)^p,\) 
+于是\[\lim_{n\rightarrow\infty}n\left(\frac{a_n}{a_{n+1}}-1\right)
+=\lim_{n\rightarrow\infty}\frac{\left(\displaystyle\frac{2n+2}{2n+1}\right)^p-1}{\displaystyle\frac{1}{n}}=\lim_{n\rightarrow\infty}\frac{1+\displaystyle\frac{p}{2n+1}+o\left(\frac{1}{n}\right)-1}{\displaystyle\frac{1}{n}}=\frac{p}{2},\]
+由Raabe判别法, 知当\(p>2\)时, 级数收敛.
+\end{proof}
+\item 研究数列\(\left\lbrace\frac{1}{1+\alpha}\,\frac{2}{2+\alpha}\,\cdots\,\frac{n}{n+\alpha}\right\rbrace \)当\(n\)趋于无穷时候的阶, 其中\(\alpha\)是一个非负常数.
+\begin{proof}[解答]
+当\(n\)趋于无穷时, 由String公式可得
+\[\prod_{k=1}^{n}\left(\frac{k}{k+\alpha}\right)
+=\frac{\Gamma(1+\alpha)\Gamma(n+1)}{\Gamma(n+\alpha+1)}\sim\frac{\Gamma(\alpha+1)\sqrt{2\pi n}(n/e)^n}{\sqrt{2\pi(n+\alpha)}((n+\alpha)/e)^{n+\alpha}}\sim\frac{\Gamma(\alpha+1)}{n^\alpha}.\qedhere\]
+\end{proof}
+\item 研究级数\(\sum_{n=10}^{\infty}\frac{1}{n^p(\ln n)^q(\ln\ln n)^r}\)的敛散性, 
+其中\(p,q,r\)为实数.
+\begin{proof}[解答]
+当\(p>1\)时, 令\(p=1+2\varepsilon,\varepsilon>0\), 则
+\[\frac{n^{1+\varepsilon}}{n^p(\ln n)^q(\ln\ln n)^r}
+=\frac{n^{1+\varepsilon}}{n^{1+2\varepsilon}(\ln n)^q(\ln\ln n)^r}
+=\frac{1}{n^\varepsilon(\ln n)^q(\ln\ln n)^r}\rightarrow 0,\quad n\rightarrow+\infty,\]
+由\(\sum_{n=10}^{\infty}\frac{1}{n^{1+\varepsilon}}\)收敛
+可知\(\sum_{n=10}^{\infty}\frac{1}{n^p(\ln n)^q(\ln\ln n)^r}\)收敛.
+
+当\(p<1\)时, 令\(p=1-2\varepsilon,\varepsilon>0\), 则
+\[\frac{n^{1-\varepsilon}}{n^p(\ln n)^q(\ln\ln n)^r}
+=\frac{n^{1-\varepsilon}}{n^{1-2\varepsilon}(\ln n)^q(\ln\ln n)^r}
+=\frac{n^{\varepsilon}}{(\ln n)^q(\ln\ln n)^r}\rightarrow+\infty,\quad n\rightarrow+\infty,\]
+由\(\sum_{n=10}^{\infty}\frac{1}{n^{1-\varepsilon}}\)发散
+可知\(\sum_{n=10}^{\infty}\frac{1}{n^p(\ln n)^q(\ln\ln n)^r}\)发散.
+
+当\(p=1\)时.
+\end{proof}
+\end{enumerate}
+\end{6a}
+\begin{6b}
+\begin{enumerate}
+\item 给定\(0\leqslant \ell\leqslant 1\leqslant L\leqslant+\infty\), 
+是否存在收敛或发散的正项级数\(\sum_{n=0}^{\infty}a_n\)
+使得\(\varlimsup_{n\rightarrow+\infty}\frac{a_{n+1}}{a_n}=L\), 
+且\(\varliminf_{n\rightarrow+\infty}\frac{a_{n+1}}{a_n}=\ell\) ?
+\begin{proof}[解答]
+存在, 可取\(a_n=\begin{cases}
+\frac{1}{2^n},n=2k,\\
+\frac{1}{4^n},n=2k+1
+\end{cases},k\in\Z\), 于是\(\varlimsup_{n\rightarrow+\infty}\frac{a_{n+1}}{a_n}=+\infty\), 且\(\varliminf_{n\rightarrow+\infty}\frac{a_{n+1}}{a_n}=0\).
+\end{proof}
+\item 利用与级数\(\sum_{n=3}^{\infty}\frac{1}{n\ln^p n}\)比较, 仿Raabe判别法给出一个判别定理.
+\begin{proof}[解答]
+根据例2.6.4, 我们已经知道, 级数\(\sum_{n=3}^{\infty}\frac{1}{n\ln^p n}\)
+当且仅当\(p>1\)时收敛. 于是我们有\[\begin{split}
+&\text{正项级数 }\sum_{n=0}^{\infty}a_n\text{ 收敛.}\\
+\Longleftarrow & \exists p>1,M>0,N\geqslant 3,\mathrm{s.t.}\,\forall n\geqslant N,\quad a_n\leqslant\frac{M}{n\ln^pn}\\
+\Longleftrightarrow & \exists p>1,M>0,N\geqslant 3,\mathrm{s.t.}\,\forall n\geqslant N,\quad p\leqslant\frac{\ln M-\ln n-\ln a_n}{\ln\left(\ln n\right)}\\
+\Longleftrightarrow &\varliminf_{n\rightarrow\infty}\frac{-\ln n-\ln a_n}{\ln\left(\ln n\right)}>1\\
+\Longleftrightarrow&\varliminf_{n\rightarrow\infty}\frac{\ln n+\ln a_n-\ln(n+1)-\ln a_{n+1}}{\ln\left(\ln(n+1)\right)-\ln\left(\ln n\right)}>1\\
+\Longleftrightarrow&\varliminf_{n\rightarrow\infty}\displaystyle\frac{\displaystyle\ln\frac{n}{n+1}+\ln\displaystyle\frac{a_n}{a_{n+1}}}{\ln\left(\displaystyle\frac{\ln(n+1)}{\ln n}\right)}>1\Longleftrightarrow\varliminf_{n\rightarrow\infty}\displaystyle\frac{-\displaystyle\frac{1}{n}+\frac{a_n}{a_{n+1}}-1}{\displaystyle\frac{\ln(n+1)}{\ln n}-1}>1\\
+\Longleftrightarrow&\varliminf_{n\rightarrow\infty}\frac{\ln n\left(n\left(\displaystyle\frac{a_n}{a_{n+1}}-1\right)-1\right)}{n\ln\left(1+\displaystyle\frac{1}{n}\right)}>1\Longleftrightarrow\varliminf_{n\rightarrow\infty}\ln n\left(n\left(\frac{a_n}{a_{n+1}}-1\right)-1\right)>1.
+\end{split}\]
+同理可证\(\varlimsup_{n\rightarrow\infty}\ln n\left(n\left(\frac{a_n}{a_{n+1}}-1\right)-1\right)<1\)时\(\sum_{n=0}^{\infty}a_n\)发散.
+\end{proof}
+\item 试考察不可数个正数的和.
+\begin{proof}[解答]
+    参考Conway, \textit{A Course in Functional Analysis}, GTM 96, Chapter I, Definition 4.11 (p.16).
+\end{proof}
+\end{enumerate}
+\end{6b}
+
+\section{任意项级数}
+\subsection{任意项级数,绝对收敛,条件收敛, Abel变换, Abel判别法, Dirichlet判别法,交错级数, Leibniz判别法,幂级数,幂级数的收敛半径, Cauchy--Hadamard公式, Cauchy乘积, Mertens定理,级数的重排,累级数,无穷乘积的收敛性}
+\begin{theorem}[Mertens 定理]\label{C24}
+设级数\(\sum_{n=1}^{\infty}a_n\)绝对收敛到\(A\), 级数\(\sum_{n=1}^{\infty}b_n\)收敛到\(B\), 则它们的Cauchy乘积\(\sum_{n=1}^{\infty}c_n\)收敛到\(AB\).
+\end{theorem}
+\begin{7a}
+\begin{enumerate}
+\item 讨论以下级数的收敛性(包括绝对收敛性):\\
+\begin{center}\begin{tabular}{ll}
+\((1)\,\sum_{n=1}^{\infty}\frac{1}{n}\ln\left(1+\frac{(-1)^{n-1}}{n}\right)\);&\((2)\,\sum_{n=1}^{\infty}\frac{n^nx^n}{n!}\);\\
+\((3)\,\sum_{n=1}^{\infty}\frac{1}{\sqrt{n}}\sin\left(n+\frac{1}{n}\right)\);&\((4)\,\sum_{n=1}^{\infty}\frac{\cos(n+(-1)^n)}{n}\).
+\end{tabular}\end{center}
+\begin{proof}[解答]
+(1)由于\[\frac{1}{n}\ln\left(1+\frac{(-1)^n}{n}\right)
+=\frac{(-1)^{n-1}}{n^2}-\frac{1}{2n^3}+o\left(\frac{1}{n^3}\right),\]
+故该级数收敛且绝对收敛.
+
+(2)记\(a_{n}=\frac{n^n}{n!}\), 则\(\lim_{n\rightarrow\infty}\frac{a_{n+1}}{a_{n}}
+=\lim_{n\rightarrow\infty}\left(1+\frac{1}{n}\right)^n=e.\) 
+从而\(x\in\left(-\frac{1}{e},\frac{1}{e}\right)\)时该级数收敛, 并且绝对收敛. 
+当\(x=\frac{1}{e}\)时, 有\[\frac{n^n}{n!e^n}=\frac{n^n}{\sqrt{2\pi n}(n/e)^n e^n}\sim\frac{1}{\sqrt{2\pi n}},\]
+从而该级数发散. 当\(x=-\frac{1}{e}\), 易见其为Leibniz级数, 即得条件收敛.
+
+(3)注意到\(\sin\left(n+\frac{1}{n}\right)\sim\sin n\), 而\[\begin{split}
+\sum_{k=1}^{n}\sin k=\frac{\displaystyle\sum_{k=1}^{n}2\sin k\sin(1/2)}{2\sin(1/2)}
+=\frac{\displaystyle\sum_{k=1}^{n}\left(\cos\frac{2k-1}{2}-\cos\frac{2k+1}{2}\right)}{2\sin(1/2)}
+=\frac{\displaystyle\cos\frac{1}{2}-\cos\frac{2n+1}{2}}{2\sin(1/2)},
+\end{split}\]故\(\sum_{n=1}^{\infty}\sin n\)部分和有界, \(\left\lbrace \frac{1}{\sqrt{n}}\right\rbrace \)单调递减趋于零, 故由Dirichlet判别法知该级数收敛. 但
+\[\left|\frac{1}{\sqrt{n}}\sin\left(n+\frac{1}{n}\right)\right|\sim\left|\frac{\sin n}{\sqrt{n}}\right|>\left|\frac{\sin n}{n}\right|,\]
+后者发散, 故为条件收敛.
+
+(4)条件收敛.
+\end{proof}
+\item 证明对于任何\(x\), 级数\(\sin x-\sin\sin x+\sin\sin\sin x-\sin\sin\sin\sin x+\cdots\)收敛.
+\begin{proof}
+不妨设\(a_0=x\in(0,\pi),a_{n+1}=\sin a_n\ (n\geqslant 1)\), 
+于是原级数即为\(\sum_{n=1}^{\infty}(-1)^{n+1}a_n\), 
+易见\(\{a_{n}\}\)单调递减趋于零, 由Leibniz判别法可知该级数收敛. 
+若\(a_0=x\in(-\pi,0)\), 则\(-x\in(0,\pi)\), 
+原级数即为\(\sum_{n=1}^{\infty}(-1)^{n}a_n\), 同理可获结论. 
+结合\(\sin x\)的周期性易见对于任何\(x\), 结论成立.
+\end{proof}
+\item 设有级数\(\sum_{n=1}^{\infty}a_n\). 级数\(\sum_{n=1}^{\infty}A_n\)由级数\(\sum_{n=1}^{\infty}a_n\)加括号得到, 即\( A_n=\sum_{k=p_n}^{p_{n+1}-1}a_k\), 其中\(\{p_n\}\)是严格单增的正整数列, \(p_1=1\). 证明:
+\begin{enumerate}[label=(\arabic*)]
+\item 若\(\sum_{n=1}^{\infty}a_n\)收敛, 则\(\sum_{n=1}^{\infty}A_n\)收敛.
+\item 若\(\lim_{n\rightarrow\infty}a_n=0\), \(\{p_{n+1}-p_n\}\)有界, \(\sum_{n=1}^{\infty}A_n\)收敛, 则\(\sum_{n=1}^{\infty}a_n\)收敛.
+\end{enumerate}
+\item 级数\(1+\frac{1}{2}+\frac{1}{3}-\frac{1}{4}-\frac{1}{5}-\frac{1}{6}+\frac{1}{7}+\frac{1}{8}+\frac{1}{9}+\cdots\)是否收敛?
+\begin{proof}[解答]
+易见\[1,1,1,-1,-1,-1,1,1,1,-1,\cdots,\]部分和有界, 而\(\left\lbrace\frac{1}{n}\right\rbrace \)单调递减趋于\(0\), 依Dirichlet判别法知其收敛.
+\end{proof}
+\item 设\(\sum_{n=1}^{\infty}a_n\)条件收敛, 证明: \(\sum_{n=1}^{\infty}a_n\)通过重排可以发散到\(+\infty\)以及\(-\infty\).
+\begin{proof}
+由\(\sum_{n=1}^{\infty}a_n\)条件收敛, 可知\(\sum_{n=1}^{\infty}a_n^+\)与\(\sum_{n=1}^{\infty}a_n^-\)都发散到正无穷, 且\(\lim_{n\rightarrow+\infty}a_n^+=\lim_{n\rightarrow+\infty}a_n^-=0\). 
+我们这样排列: 先按原来的顺序选取若干正项, 使其和大于$1$, 然后添加第一个负项, 
+然后在余下的正项中继续选取, 使得整个和大于$2$, 然后添加第二个负项, 依此类推. 
+由于\(\lim_{n\rightarrow+\infty}a_n^-=0\), 故\(n\)充分大时\(a_n^-\)可以任意小, 
+从而可知由上法得到的级数将发散到\(+\infty\), 相似的操作方式可使其发散到\(-\infty\).
+\end{proof}
+\item 试利用Dirichlet判别法证明Abel判别法.
+\begin{proof}
+若数列\(\{b_n\}\)单调有界且\(\sum_{n=1}^{\infty}a_n\)收敛, 
+则由单调收敛定理可知\(\{b_n\}\)收敛, 
+不妨记\(\lim_{n\rightarrow+\infty}b_n=b\), 从而\(\{b_n-b\}\)单调趋于零. 
+根据Dirichlet判别法知级数\(\sum_{n=1}^{\infty}a_n(b_n-b)\)收敛, 于是由
+\[\sum_{n=1}^{\infty}a_nb_n=\sum_{n=1}^{\infty}a_n(b_n-b)+b\sum_{n=1}^{\infty}a_n\]
+可知, 级数\(\sum_{n=1}^{\infty}a_nb_n\)收敛.
+\end{proof}
+\item 证明Mertens定理, 即定理\ref{C24}.
+\begin{proof}
+记\[A_n=\sum_{k=1}^{n}a_k,\quad B_n=\sum_{k=1}^{n}b_k,\quad C_n=\sum_{k=1}^{\infty}c_k.\]
+我们要证\(\lim_{n\rightarrow+\infty}C_n=AB\), 易见\[\begin{split}
+C_n&=a_1b_1+(a_1b_2+a_2b_1)+(a_1b_3+a_2b_2+a_3b_1)+\cdots+\left(a_1b_n+a_2b_{n-1}+\cdots a_nb_1\right)\\&=a_1\left(b_1+b_2+\cdots+b_n\right)+a_2(b_1+b_2+\cdots+b_{n-1})+\cdots+a_nb_1\\&=a_1B_n+a_2B_{n-1}+\cdots+a_nB_1.
+\end{split}\]如果令\(\beta_n=B_n-B\), 则\(\beta_n\rightarrow 0\ (n\rightarrow+\infty)\), 于是
+\[C_n=A_nB-\gamma_n,\]
+其中\[\gamma_n=\sum_{\ell=1}^{n}a_1\beta_{n+1-\ell}=a_1\beta_n+a_2\beta_{n-1}+\cdots+a_n\beta_1,\]
+这样的问题就归结于证\(\lim_{n\rightarrow+\infty}\gamma_n=0\).
+
+由于\(\lim_{n\rightarrow+\infty}\beta_n=0\), 故对任意的\(\varepsilon>0\), 存在\(N\in\mathbb{N}_+\), 当\(n>N\)时有\(|\beta_n|<\varepsilon\). 于是由\(\gamma_n\)的定义可得\[\begin{split}
+|\gamma_n|&\leqslant\left|a_1\beta_n+\cdots a_{n-N}\beta_{N+1}\right|+\left|a_{n-N+1}\beta_{N}+\cdots+\cdots a_n\beta_1\right|\\&<\varepsilon M+\left|a_{n-N+1}\beta_{N}+\cdots+\cdots a_n\beta_1\right|,
+\end{split}\]其中\(M=\sum_{n=1}^{\infty}|a_n|<+\infty\). 
+在上式中固定\(N\), 令\(n\rightarrow+\infty\), 即得
+\[\varlimsup_{n\rightarrow+\infty}|\gamma_n|\leqslant\varepsilon M,\]
+由此可知\(\lim_{n\rightarrow+\infty}\gamma_n=0\), 
+从而\(\lim_{n\rightarrow+\infty}C_n=AB.\)
+\end{proof}
+\item 设\(\sum_{k=0}^{\infty}\sum_{j=0}^{\infty}a_{kj}\)绝对收敛, 
+证明: \(\sum_{j=0}^{\infty}\sum_{k=0}^{\infty}a_{kj}\)绝对收敛, 
+且\(\sum_{j=0}^{\infty}\sum_{k=0}^{\infty}a_{kj}
+=\sum_{k=0}^{\infty}\sum_{j=0}^{\infty}a_{kj}\).
+\begin{proof}
+不妨设\(\sum_{j=0}^{\infty}|a_{ij}|=|A_i|,\sum_{i=0}^{\infty}|A_i|=A\)，
+那么，$\forall\varepsilon>0,\exists N\geqslant 1$，使得任意的$n>N$，有：
+\[A-\varepsilon\leqslant\sum_{i=0}^{n}|A_i|\leqslant A.\]
+由于其绝对收敛，我们交换求和次序，有：
+\[\sum_{j=1}^{\infty}\sum_{i=1}^{n}|a_{ij}|=\sum_{i=0}^{n}|A_i|,\]
+进而存在$N'\geqslant N$,使得对于任意的$n>N'$,均有：
+\[A-2\varepsilon\leqslant\sum_{j=1}^{n}\sum_{i=1}^{n}|a_{ij}|\leqslant A.\]
+由于\(\sum_{i=1}^{\infty}|a_{ij}|\leqslant A\)，
+那么由单调收敛定理，其存在极限，我们不妨设其为$|B_j|$，那么：
+\[A-2\varepsilon\leqslant\sum_{j=1}^{n}\sum_{i=1}^{n}|a_{ij}|
+\leqslant\sum_{j=1}^{n}|B_{j}|\leqslant A,\]
+故\(\sum_{j=0}^{\infty}\sum_{i=0}^{\infty}|a_{ij}|
+=\sum_{j=0}^{\infty}|B_j|\)绝对收敛，且收敛到$A$.
+那么，考查\(\sum_{j=0}^{\infty}\sum\limits_{i=0}^{\infty}a_{ij}\)时，
+分别考虑其正部和负部，发现均有：
+\[\sum_{j=0}^{\infty}\sum_{i=0}^{\infty}a_{ij}^+
+=\sum_{i=0}^{\infty}\sum_{j=0}^{\infty}a_{ij}^+,
+\quad \sum_{j=0}^{\infty}\sum_{i=0}^{\infty}a_{ij}^-
+=\sum_{i=0}^{\infty}\sum_{j=0}^{\infty}a_{ij}^-,\]
+自然地\(\sum_{i=0}^{\infty}\sum\limits_{j=0}^{\infty}a_{ij}
+=\sum_{j=0}^{\infty}\sum\limits_{i=0}^{\infty}a_{ij}\).
+\end{proof}
+\item 举例说明两个条件收敛的级数的Cauchy乘积有可能收敛, 也有可能发散.
+\begin{proof}[解答]
+取\(a_n=b_n=\frac{(-1)^n}{n}\), 则\(\sum_{n=1}^{\infty}a_n\)与\(\sum_{n=1}^{\infty}b_n\)条件收敛,
+
+取\(a_n=b_n=\frac{(-1)^n}{\sqrt{n}}\), 
+则\(\sum_{n=1}^{\infty}a_n\)与\(\sum_{n=1}^{\infty}b_n\)条件收敛, 
+但这对于其Cauchy乘积\(\sum_{n=1}^{\infty}c_n\)有
+\[|c_n|=\sum_{i+j=n+1}\frac{1}{\sqrt{ij}}\geqslant\sum_{i+j=n+1}\frac{2}{i+j}=\frac{2n}{n+1}\geqslant 1,\]
+从而\(\sum_{n=1}^{\infty}c_n\)发散.
+\end{proof}
+\item 按绝对收敛, 条件收敛, 发散分类, 穷举两个级数的Cauchy乘积收敛性的各种可能性. 并给出必要的证明与反例.
+\item 确定实数\(p\)的取值区间, 使在该区间内的二重级数\(\sum_{n=1}^{\infty}\sum_{m=1}^{\infty}\frac{1}{(m+n)^p}\)收敛.
+\begin{proof}[解答]
+直观上应有
+$$\sum_{n=1}^{\infty}\sum_{m=1}^{\infty}\frac{1}{(m+n)^{p}}
+=\sum_{k=2}^{\infty}\sum_{\substack{m+n=k,\\ m\geqslant 1,n\geqslant 1}}\frac{1}{(m+n)^{p}}
+=\sum_{k=2}^{\infty}\frac{k-1}{k^{p}}.$$
+下面对该式进行严格化.
+
+对⼆维正项数列$\left\{ a_{ij} \right\}$和任意$\mathbb{N} \times \mathbb{N}$映到$
+\mathbb{N}$的双射$\varphi$，总成立\(\sum_{j=0}^{\infty}\sum_{i=0}
+^{\infty}a_{ij}=\sum_{n=0}^{\infty}a_{\varphi^{-1}(n)}\)（两边允许取值$+
+\infty$）.易见\(\sum_{j=0}^{\infty}\sum_{i=0}^{\infty}a_{ij}
+\geqslant\sum_{n=0}^{\infty}a_{\varphi^{-1}(n)}\)，下证
+\(\sum_{j=0}^{\infty}\sum_{i=0}^{\infty}a_{ij}
+\leqslant \sum_{n=0}^{\infty}a_{\varphi^{-1}(n)}\).
+
+固定正整数$N$，$\forall\,\varepsilon>0$，易知存在正整数$K$ s.t.
+\(\sum_{i=0}^{\infty}a_{ij} \leqslant \sum_{i=0}^{K}a_{ij}+\varepsilon\)
+对$0 \leqslant j \leqslant N$均成立，由于$\varphi$是$\mathbb{N} \times \mathbb{N}$
+映到$\mathbb{N}$的双射，可取正整数$L$充分大s.t.
+\[\left\{(i,j)|0\leqslant i \leqslant K,0\leqslant j \leqslant N \right\}
+\subseteq \left\{ \varphi^{-1}(n) \right\}_{n=0}^{L},\]从而有
+$$\sum_{j=0}^{N}\sum_{i=0}^{\infty}a_{ij}\leqslant 
+\sum_{j=0}^{N}\sum_{i=0}^{K}a_{ij}+(N+1)\varepsilon 
+\leqslant \sum_{n=0}^{L}a_{\varphi^{-1}(n)}+(N+1)\varepsilon 
+\leqslant \sum_{n=0}^{\infty}a_{\varphi^{-1}(n)}+(N+1)\varepsilon,$$
+由$\varepsilon$的任意性和$N$的任意性即得
+\(\sum_{j=0}^{\infty}\sum_{i=0}^{\infty}a_{ij}
+\leqslant \sum_{n=0}^{\infty}a_{\varphi^{-1}(n)}\).
+
+将$\mathbb{N} \times \mathbb{N}$映到$\mathbb{N}$的双射取成类似定理1.1.4证明
+过程中那张图的排列方法（确切地说：$(0,0)$对应$0$，$(1,0)$对应$1$，$(0,1)$对应$2$，
+$(2,0)$对应$3$，$(1,1)$对应$4$，$(0,2)$对应$5$，......），从而
+$$\sum_{n=1}^{\infty}\sum_{m=1}^{\infty}\frac{1}{(m+n)^{p}}
+=\sum_{j=0}^{\infty}\sum_{i=0}^{\infty}\frac{1}{(i+j+2)^{p}}
+=\sum_{n=0}^{\infty}a_{\varphi^{-1}(n)}
+=\lim_{k \to \infty}\sum_{n=0}^{\frac{k(k+1)}{2}-1}a_{\varphi^{-1}(n)}
+=\lim_{k \to \infty}\sum_{l=0}^{k-1}\frac{l+1}{(l+2)^{p}}
+=\sum_{k=2}^{\infty}\frac{k-1}{k^{p}}.$$
+然后对\(\sum_{k=2}^{\infty}\frac{k-1}{k^{p}}\)用比较判别法的极限形式.
+
+\end{proof}
+\item 考察\(\sum_{n=1}^{\infty}\frac{\sin n\sin n^2}{n}\)的敛散性.
+\begin{proof}[解答]
+我们有\[\sin n\sin n^2=\frac{1}{2}\left(\cos (n^2-n)-\cos(n^2+n)\right),\]
+而\[\left|\frac{1}{2}\sum_{k=1}^{N}\left(\cos (k^2-k)-\cos(k^2+k)\right)\right|
+=\frac{1}{2}\left|\cos 0-\cos (N^2+N)\right|\leqslant 1,\]
+又\(\left\lbrace\frac{1}{n}\right\rbrace\)单调递减趋于$0$. 
+依Dirichlet判别法, 知\(\sum_{n=1}^{\infty}\frac{\sin n\sin n^2}{n}\)收敛.
+
+该级数不绝对收敛:考虑正项数列
+$$\left\{|\sin(n)||\sin(n^2)|+|\sin(n+1)||\sin((n+1)^2)|
++|\sin(n+3)||\sin((n+3)^2)|\right\}_{n=1}^{\infty},$$
+断言该数列有⼀个正下界$C$，此时由
+\begin{align*}
+    3\sum_{n=1}^{\infty}\frac{|\sin(n)||\sin(n^2)|}{n} 
+    &\geqslant \sum_{n=1}^{\infty}\bigg(\frac{|\sin(n)||\sin(n^2)|}{n}
+    +\frac{|\sin(n+1)||\sin((n+1)^2)|}{n+1}
+    +\frac{|\sin(n+3)||\sin((n+3)^2)|}{n+3}\bigg) \\
+    &\geqslant \sum_{n=1}^{\infty}\frac{|\sin(n)||\sin(n^2)|+
+    |\sin(n+1)||\sin((n+1)^2)|+|\sin(n+3)||\sin((n+3)^2)|}{n+3} \\
+    &\geqslant C\sum_{n=1}^{\infty}\frac{1}{n+3}
+\end{align*}可知\(\sum_{n=1}^{\infty}\frac{|\sin(n)||\sin(n^2)|}{n}\)
+发散.
+
+令集合$A=\left\{k\pi\right\}_{k \in \mathbb{Z}}$，对任意正整数$m$，记$\|m\|
+=d(m,A)=\min\limits_{k\in \mathbb{Z}}|m-k\pi|$.假设前述正项数列没有正下界，则对
+$\varepsilon=0.0001>0$，存在充分大的正整数$n$使得：$\|n\|<\varepsilon$与$\|n^2\|
+<\varepsilon$至少有⼀个成立，$\|n+1\|<\varepsilon$与$\|(n+1)^2\|<\varepsilon$至少有⼀个成
+立，$\|n+3\|<\varepsilon$与$\|(n+3)^2\|<\varepsilon$⾄少有⼀个成立.由此得到8种可能
+性，然而这8种可能均能导出矛盾.
+
+例如：当$\|n^2\|<\varepsilon,\|(n+1)^2\|<\varepsilon,\|(n+3)^2\|<\varepsilon$时，
+设$n^2=k_{1}\pi+\varepsilon_{1}$，$(n+1)^2=k_{2}\pi+\varepsilon_{2}$，
+$(n+3)^2=k_{3}\pi+\varepsilon_{3}$
+（其中$|\varepsilon_{1}|<\varepsilon$，$|\varepsilon_{2}|<\varepsilon$，
+$|\varepsilon_{3}|<\varepsilon$，$k_{1},k_{2},k_{3}$是整数），
+则$6=2n^2-3(n+1)^2+(n+3)^2=
+(2k_{1}-3k_{2}+k_{3})\pi+(2\varepsilon_{1}-3\varepsilon_{2}+\varepsilon_{3})$
+即有等式$6=(2k_{1}-3k_{2}+k_{3})\pi+(2\varepsilon_{1}-3\varepsilon_{2}+\varepsilon_{3})$。
+如果$|2k_{1}-3k_{2}+k_{3}|\leqslant 1$，则右边的绝对值小于$\pi+0.0006$；
+如果$|2k_{1}-3k_{2}+k_{3}|\geqslant 2$，则右边的绝对值大于$2\pi-0.0006$，
+总之$6=(2k_{1}-3k_{2}+k_{3})\pi+(2\varepsilon_{1}-3\varepsilon_{2}+\varepsilon_{3})$
+不可能成立。类似可得另外7种可能亦不可能成立，从而前述正项数列存在正下界.
+
+\end{proof}
+\end{enumerate}
+\end{7a}
+\begin{7b}
+\begin{enumerate}
+\item 利用Abel变换证明\textbf{钟开莱不等式}: 
+设\(a_1\geqslant a_2\geqslant\cdots\geqslant a_n>0\), 
+\[\sum_{k=1}^{m}b_k\geqslant \sum_{k=1}^{m}a_k,\qquad\forall\, m=1,2,\cdots,n.\]
+则\(\sum_{k=1}^{n}a_k^2\leqslant\sum_{k=1}^{n}b_k^2.\)
+\begin{proof}
+记\(A_m=\sum_{k=1}^{m}a_k,B_m=\sum_{k=1}^{m}b_m\), 则由Abel变换
+\[\sum_{k=1}^{n}a_k^2=a_nA_n+\sum_{k=1}^{n-1}A_k(a_k-a_{k+1})
+\leqslant a_nB_n+\sum_{k=1}^{n-1}B_k(a_{k}-a_{k-1})=\sum_{k=1}^{n}a_kb_k,\]
+即\[\sum_{k=1}^{n}a_k^2\leqslant\sum_{k=1}^{n}a_kb_k
+\leqslant\sqrt{\sum_{k=1}^{n}a_k^2\cdot\sum_{k=1}^{n}b_k^2}\Rightarrow\sum_{k=1}^{n}a_k^2\leqslant\sum_{k=1}^{n}b_k^2,\]从而结论成立.
+\end{proof}
+\item 设\(\sum_{n=1}^{\infty}A_n\)收敛. 试证明存在\(\{a_n\},\,\{b_n\}\)使得\(A_n=a_nb_n\ (n\geqslant 1)\), \(\sum_{n=1}^{\infty}a_n\)部分和有界, 而\(\{b_n\}\)单调下降趋于零.
+\begin{proof}
+
+\end{proof}
+\item 证明: \(\lim_{\alpha\rightarrow 0^+}\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n^\alpha}=\frac{1}{2}\).
+\begin{proof}
+令\(a_n(\alpha)=\frac{1}{n^\alpha},B_0=0,\Delta B_{n-1}=B_n-B_{n-1}=(-1)^{n-1}\), 则
+\[\Delta a_n=\frac{1}{(n+1)^\alpha}-\frac{1}{n^\alpha},\]且
+\[B_n=\sum_{k=1}^{n}\left(B_k-B_{k-1}\right)
+=\sum_{k=1}^{n}(-1)^{k-1}=\frac{1-(-1)^{n}}{2},\]
+于是\(\forall m\in\Z^+\), 有\[\begin{split}
+\sum_{n=1}^{m}\frac{(-1)^{n-1}}{n^\alpha}&=\sum_{n=1}^{m}a_n(\alpha)\Delta B_{n-1}=a_m(\alpha)B_m-\sum_{n=1}^{m-1}B_n\Delta a_n(\alpha)\\
+&=\frac{1}{m^\alpha}\frac{1-(-1)^n}{2}+\sum_{n=1}^{m-1}\frac{1-(-1)^n}{2}\left(\frac{1}{n^\alpha}-\frac{1}{(n+1)^\alpha}\right).
+\end{split}\]
+由于\(\forall\alpha\in(0,+\infty)\), 级数\(\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n^\alpha}\)都收敛, 所以令\(m\rightarrow+\infty\), 由上面的等式可得\[\begin{split}
+\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n^\alpha}
+&=\sum_{n=1}^{\infty}\frac{1-(-1)^n}{2}\left(\frac{1}{n^\alpha}-\frac{1}{(n+1)^\alpha}\right)\\
+&=\frac{1}{2}\sum_{n=1}^{\infty}\left(\frac{1}{n^\alpha}-\frac{1}{(n+1)^\alpha}\right)
+-\frac{1}{2}\sum_{n=1}^{\infty}(-1)^n\left(\frac{1}{n^\alpha}-\frac{1}{(n+1)^\alpha}\right)\\
+&=\frac{1}{2}-\frac{1}{2}\sum_{n=1}^{\infty}(-1)^n\left(\frac{1}{n^\alpha}-\frac{1}{(n+1)^\alpha}\right).
+\end{split}\]
+
+下面证明级数\(\sum_{n=1}^{\infty}(-1)^n\left(\frac{1}{n^\alpha}-\frac{1}{(n+1)^\alpha}\right)\)
+在\(\left[0,+\infty\right)\)上一致收敛. 
+令\(b_n(\alpha)=-\Delta a_n(\alpha)\,(n\in\Z^+)\), 则由
+\[b_n(\alpha)=\frac{1}{n^\alpha}-\frac{1}{(n+1)^\alpha}
+=\frac{1}{n^\alpha}\left(1-\frac{1}{\left(1+\displaystyle\frac{1}{n}\right)^\alpha}\right)\]
+可知, 对于任何\(\alpha\in\left[0,+\infty\right)\), 
+\(\{b_n(\alpha)\}\)关于\(n\)单调减少, 并且当\(x\in[0,1]\)时, 有
+\[\left|b_n(\alpha)\right|\leqslant 1-\frac{1}{\displaystyle\left(1+\frac{1}{n}\right)^x}\leqslant 1-\frac{1}{\displaystyle 1+\frac{1}{n}}=\frac{1}{n+1},\]
+当\(\alpha>1\)时, 有\[\left|b_n(\alpha)\right|\leqslant\frac{1}{n^\alpha}<\frac{1}{n},\]于是数列\(\{b_n(\alpha)\}\)在\(\left[0,+\infty\right)\)上一致收敛于零.故由Dirichlet判别法知该级数一致收敛, 于是
+\begin{align*}
+\lim_{\alpha\rightarrow 0^+}\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n^\alpha}
+&=\lim_{\alpha\rightarrow0^+}\left(\frac{1}{2}-\frac{1}{2}\sum_{n=1}^{\infty}(-1)^n\left(\frac{1}{n^\alpha}-\frac{1}{(n+1)^\alpha}\right)\right)\\
+&=\frac{1}{2}-\frac{1}{2}\sum_{n=1}^{\infty}(-1)^n\lim_{\alpha\rightarrow0^+}\left(\frac{1}{n^\alpha}-\frac{1}{(n+1)^\alpha}\right)=\frac{1}{2}.
+\end{align*}
+\end{proof}
+\item 对于\(s>1\), \textbf{Riemann (黎曼) \(\zeta\)函数}定义为: 
+\(\zeta(s)=\sum_{n=1}^{\infty}\frac{1}{n^s}\). 
+设\(\{p_n\}_{n=1}^{\infty}\)为所有素数, 证明\textbf{Euler乘积公式}: 
+\(\zeta(s)=\prod_{n=1}^{\infty}\frac{1}{1-1/p_n^s}\).
+\begin{proof}
+直观上来讲，
+\[\zeta(s)=\sum_{\alpha_1,\alpha_2,\cdots\in\N}\frac{1}{(p_1^s)^{\alpha_1}(p_2^s)^{\alpha_2}\cdots}
+=\prod_{n=1}^{\infty}\bigg(1+\frac{1}{p_n^s}+\frac{1}{(p_n^s)^2}+\cdots\bigg)
+=\prod_{n=1}^{\infty}\frac{1}{1-1/p_n^s},\]不过要严格化这个过程才行。
+试着算\[\bigg(1-\frac{1}{2^s}\bigg)\zeta(s)=\sum_{n=1}^\infty\frac{1}{n^s}
+-\sum_{n=1}^\infty\frac{1}{(2n)^s}=\sum_{2 \nmid n}\frac{1}{n^s},\]
+继续算\[\bigg(1-\frac{1}{3^s}\bigg)\bigg(1-\frac{1}{2^s}\bigg)\zeta(s)
+=\sum_{2 \nmid n}\frac{1}{n^s}-\sum_{2\nmid n,3\mid n}\frac{1}{(2n)^s}
+=\sum_{2 \nmid n,3\nmid n}\frac{1}{n^s},\]
+类推有
+\[\bigg(1-\frac{1}{p_k^s}\bigg)\cdots\bigg(1-\frac{1}{2^s}\bigg)\zeta(s)
+=\sum_{2 \nmid n,\cdots,p_k \nmid n}\frac{1}{n^s}.\]
+随着$p_k$的增大，\(\sum_{n=1}^{\infty}\frac{1}{n^s}\)中留下来的项越来越少了，
+除了首项$1$是始终孤悬西北的归义军，其余的只能从\(\frac{1}{p_{k+1}^s}\)开始留了；
+由于这是收敛的级数，对任意$\varepsilon>0$，$p_{k+1}$很大时有
+\[0<\sum_{2 \nmid n,\cdots,p_k \nmid n}\frac{1}{n^s}-1
+<\sum_{n \geqslant p_{k+1}}\frac{1}{n^s}<\varepsilon,\]
+也就是\[\lim_{k\to\infty}\bigg(1-\frac{1}{p_k^s}\bigg)\cdots\bigg(1-\frac{1}{2^s}\bigg)\zeta(s)=1,\]
+此即所求。
+\end{proof}
+注：这个公式对$\operatorname{Re}s>1$亦成立。
+\item Euler最早根据\(\sin \pi x\)的零点为\(0,\pm 1,\pm 2,\cdots\)而猜测如下的\textbf{Euler公式}: 
+\[\sin \pi x=\pi x\prod_{n=1}^{\infty}\left(1-\frac{x^2}{n^2}\right).\]试按如下步骤证明Euler公式:
+\begin{enumerate}[label=(\arabic*)]
+\item 对于\(n\geqslant 0\)以及\(t\in (-1,1)\), 证明:
+\[\sin\left((2n+1)\arcsin t\right)=(2n+1)t\prod_{k=1}^{n}\left(1-\frac{t^2}{\sin^2\frac{k\pi}{2n+1}}\right).\]
+\item 证明: \(|x|\leqslant n+\frac{1}{2}\)时,
+\[\sin \pi x=(2n+1)\sin\frac{\pi x}{2n+1}\prod_{k=1}^{n}\left(1-\frac{\sin^2\frac{\pi x}{2n+1}}{\sin^2\frac{k\pi}{2n+1}}\right).\]
+\item 固定\(x\in\R\), 对于\(m>K>|\pi x|\), 成立
+\[\begin{split}
+\prod_{k=K}^{m}\left(1-\frac{x^2}{k^2}\right)\cdot\prod_{k=m+1}^{\infty}\left(1-\frac{\pi^2x^2}{4k^2}\right)&\leqslant\varliminf_{n\rightarrow+\infty}\prod_{k=K}^{n}\left(1-\frac{\sin^2\frac{\pi x}{2n+1}}{\sin^2\frac{k\pi}{2n+1}}\right)\\&\leqslant\varlimsup_{n\rightarrow+\infty}\prod_{k=K}^{n}\left(1-\frac{\sin^2\frac{\pi x}{2n+1}}{\sin^2\frac{k\pi}{2n+1}}\right)\\&\leqslant\prod_{k=K}^{m}\left(1-\frac{x^2}{k^2}\right). \end{split}\]
+\item 证明对任何\(x\in\R\), 成立\[\lim_{n\rightarrow+\infty}\prod_{k=1}^{n}\left(1-\frac{\sin^2\frac{\pi x}{2n+1}}{\sin^2\frac{k\pi}{2n+1}}\right)=\prod_{k=1}^{\infty}\left(1-\frac{x^2}{k^2}\right).\]
+\end{enumerate}
+\begin{proof}
+
+\end{proof}
+\item 证明: \(\cos \pi x=\prod_{n=0}^{\infty}\left(1-\frac{x^2}{\left(n+1/2\right)^2}\right)\).
+\begin{proof}用Euler公式，得
+\[2\cos\pi x=\frac{\sin2\pi x}{\sin\pi x}
+=2\pi x\prod_{n=1}^{\infty}\left(1-\frac{x^2}{(n/2)^2}\right)\bigg/
+\pi x\prod_{n=1}^{\infty}\left(1-\frac{x^2}{n^2}\right).\qedhere\]
+\end{proof}
+\end{enumerate}
+\end{7b}

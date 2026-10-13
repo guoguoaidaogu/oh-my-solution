@@ -1,0 +1,701 @@
+\setdisplaytitle{第2章\ 序列极限}
+\sethtmltitle{第2章\ 序列极限}
+\theoremstyle{remark}\newtheorem*{1a}{习题$2.1.\mathcal{A}$}
+\theoremstyle{remark}\newtheorem*{1b}{习题$2.1.\mathcal{B}$}
+\theoremstyle{remark}\newtheorem*{2a}{习题$2.2.\mathcal{A}$}
+\theoremstyle{remark}\newtheorem*{2b}{习题$2.2.\mathcal{B}$}
+\theoremstyle{remark}\newtheorem*{3a}{习题$2.3.\mathcal{A}$}
+\theoremstyle{remark}\newtheorem*{3b}{习题$2.3.\mathcal{B}$}
+\newcommand{\inp}[1]{\langle #1 \rangle}
+\pdef\(#+1\){\@setfalse{math-display}\@@enter{math}\displaystyle{#1}\@@exit{math}}
+
+\section{数列极限}
+\subsection{数列极限,无穷级数,无穷乘积,数列极限的性质,夹逼准则}
+\begin{1a}
+\begin{enumerate}
+\item  用定义证明\(\lim_{n\rightarrow +\infty}\frac{3n^3+4n^2-100}{2n^3-9n-11}=\frac{3}{2}.\)
+\begin{proof}
+\(\forall \varepsilon >0\), 要使得
+\[\left|\frac{3n^3+4n^2-100}{2n^3-9n-11}-\frac{3}{2}\right|<\varepsilon,\]
+即\[\left|\frac{4n^2+\frac{27}{2}n-\frac{167}{2}}{2n^3-9n-11}\right|<\varepsilon.\]
+当\(n>100\)且\(>5/\varepsilon\)时
+\[\left|\frac{4n^2+\frac{27}{2}n-\frac{167}{2}}{2n^3-9n-11}\right|
+<\left|\frac{4n^2+n^2}{2n^3-n^3}\right|=\left|\frac{5}{n}\right|<\varepsilon,\]
+于是\(\lim_{n\rightarrow +\infty}\frac{3n^3+4n^2-100}{2n^3-9n-11}=\frac{3}{2}.\)
+\end{proof}
+\item 用定义证明\(\lim_{n\rightarrow +\infty}\lg \left(1+\frac{1}{n}\right)=0.\)
+\begin{proof}
+注意到\(x>0\)时\(\lg(1+x)<x\), 于是由\(\forall \varepsilon>0\), 
+取\(N=\left[\frac{1}{\varepsilon}\right]\), 则\(n>N\)时有
+\[\left|\lg\left(1+\frac{1}{n}\right)\right|<\frac{1}{n}<\varepsilon.\]
+从而\(\lim_{n\rightarrow +\infty}\lg \left(1+\frac{1}{n}\right)=0.\)
+\end{proof}
+\end{enumerate}
+\end{1a}
+\begin{1b}
+\begin{enumerate}
+\item 证明：\(\lim_{n\rightarrow +\infty}a_n=0\)的充要条件是
+存在单调下降且无正下界的正数列\(\{\omega_n\}\)使得\(\forall n\geqslant 1\)成立\(\left|a_n\right|\leqslant \omega_n\).
+
+\begin{proof}
+\(\left( \Longleftarrow \right)\) 是显然的. 
+为证明 \(\left( \Longrightarrow \right)\), 令
+\[\omega_n = \begin{cases}
+    \sup\limits_{k\geqslant n} {\left| a_k \right|}, 
+    & \sup\limits_{k\geqslant n} {\left| a_k \right|} \ne 0, \\[8px]
+    \dfrac12 \omega_{n-1}, 
+    & \sup\limits_{k\geqslant n} {\left| a_k \right|} = 0,
+\end{cases}\]
+并规定 \(\omega_0=1\). 
+此时显然有 \(\omega_n>0\) 和 \(\omega_n \geqslant \left| a_n \right|\).
+
+证 \(\left\{ \omega_n \right\}\) 单调下降: 
+\(\forall n\geqslant2\), 
+若 \(\sup\limits_{k\geqslant n} {\left| a_k \right|} \ne 0\), 注意到 
+\[\sup\limits_{k\geqslant n-1} {\left| a_k \right|} \geqslant \sup\limits_{k\geqslant n} {\left| a_k \right|} > 0, \]
+即 \(\omega_{n-1} \geqslant \omega_{n}\).
+若 \(\sup\limits_{k\geqslant n} {\left| a_k \right|} =0\), 
+有 \(\omega_n = \dfrac12 \omega_{n-1} < \omega_{n-1}\).
+
+证 \(\left\{ \omega_n \right\}\) 无正下界:
+\(\forall \varepsilon>0\), 由 \(\lim_{n\rightarrow +\infty}a_n=0\) 
+有 \(\exists N, \forall k\geqslant N, \left| a_k \right|<\varepsilon\). 
+若 \(\sup\limits_{k\geqslant N} {\left| a_k \right|} \ne 0\), 
+立刻有 \(\omega_N=\sup\limits_{k\geqslant N} {\left| a_k \right|}\leqslant\varepsilon\).
+若 \(\sup\limits_{k\geqslant N} {\left| a_k \right|} = 0\), 因为
+\[\sup\limits_{k\geqslant n} {\left| a_k \right|} \geqslant \sup\limits_{k\geqslant n+1} {\left| a_k \right|},\] 
+归纳知 \(n \geqslant N\) 时都有 \(\sup\limits_{k\geqslant n} {\left| a_k \right|}=0\), 
+于是 \(\omega_{n+1}=\dfrac12 \omega_n\), 
+此时 \(\left\{ \omega_n \right\}_{n=N}^\infty\) 无正下界.
+\end{proof}
+
+\item 设\(0\leqslant p\leqslant k-1\), 求\( \lim_{n\rightarrow +\infty}\frac{C_{kn}^{p}+C_{kn}^{p+k}+\cdots+C_{kn}^{p+(n-1)k}}{2^{kn}}\).
+\begin{proof}[解答]
+假设有这样一套装置, 用\(kn\)个开关共同控制\(k\)个灯泡: 
+开关或开或闭, 灯泡按\(0,1,\cdots,k-1\)的编号来编号. 
+对于编号为\(p(p=0,1,\cdots,k-1)\)的灯泡来说, 当且仅当闭合开关总数模\(k\)余\(p\)时亮起. 
+这编号\(p\)的灯泡亮起的概率即为\(\frac{\displaystyle\sum_{i=0}^{n-1}C_{kn}^{p+ik}}{2^{kn}}\).
+
+很显然, 这\(k\)个灯泡中有且仅有一个灯泡亮起. 当\(n\rightarrow\infty\)时, 每个灯泡都有相同的机会亮起, 编号为\(p\)的灯泡亮起的概率也为\(1/k\). 即得
+\[\lim_{n\rightarrow +\infty}\frac{C_{kn}^{p}+C_{kn}^{p+k}+\cdots+C_{kn}^{p+(n-1)k}}{2^{kn}}=\frac{1}{k}.\]
+这道题还有其他解法如下，来自\href{https://mp.weixin.qq.com/s/cyeyDYmMhctg56YVSE4SWQ}{这里}。
+
+设\(S_{n,p}=\frac{1}{2^{kn}}\sum_{i=0}^{n-1}\binom{kn}{ki+p}\)，
+求极限\(a_p=\lim_{n\to\infty}S_{n,p}\)。
+
+记$k$次单位根$e^{\frac{2\pi i}{k}}=w$。展开
+\[(1+z)^{kn}=\sum_{\ell=0}^{kn}\binom{kn}{\ell}z^{\ell}
+=\sum_{p=0}^{k-1}\sum_{i=0}^{n-1}\binom{kn}{ki+p}z^{ki+p},\]
+在上式中对$z$依次赋值为$1,w,w^2,\cdots,w^{k-1}$可得
+\[(1+w^{j})^{kn}=\sum_{p=0}^{k-1}\sum_{i=0}^{n-1}\binom{kn}{ki+p}w^{pj},\quad0\leqslant j \leqslant k-1.\]
+两边同时除以$2^{kn}$，就获得了关于$S_{n,0},S_{n,1},\cdots,S_{n,k-1}$的线性方程组
+\[\sum_{p=0}^{k-1}w^{pj}S_{n,p}=\left(\frac{1+w^{j}}{2}\right)^{kn},\quad0\leqslant j \leqslant k-1.\]
+现在进行一步不严格的操作：令$n\to\infty$，由于$j=1,\cdots,k-1$时$|1+w^j|<2$，
+得到\(b_{n,j}=\left(\frac{1+w^j}{2}\right)^{kn}\)的极限$\lim\limits_{n\to\infty}b_{n,j}=0$，从而
+\[\sum_{p=0}^{k-1}w^{pj}a_p=\begin{cases}1,&j=0,\\0,&j=1,\cdots,k-1,\end{cases}\]
+且不难留意到如果$a_p$均为$1/k$上式就成立了。
+
+幸运的是，这离严格的操作并不远，因为$\boldsymbol{A}=(w^{pj})_{p,j=0,\cdots,k-1}$是$k$阶可逆常数方阵，
+为了取极限只需要改动表述即可：将$\boldsymbol{A}$移到右边，
+记$\boldsymbol{b}_n=(b_{n,j})_{j=0,\cdots,k-1}$，也就是
+\[(S_{n,p})_{p=0,\cdots,k-1}=\boldsymbol{A}^{-1}\boldsymbol{b}_n,\]
+一方面$\lim\limits_{n\to\infty}\boldsymbol{b}_n=(1,0,\cdots,0)$，
+另一方面前面说明了$\boldsymbol{A}\big(\frac{1}{k},\cdots,\frac{1}{k}\big)=(1,0,\cdots,0)$，
+两者结合最终得出
+\[(a_p)_{p=0,\cdots,k-1}=\lim_{n\to\infty}\boldsymbol{A}^{-1}\boldsymbol{b}_n
+=\left(\tfrac{1}{k},\cdots,\tfrac{1}{k}\right).\qedhere\]
+\end{proof}
+\end{enumerate}
+\end{1b}
+\section{无穷大量, 无穷小量, Stolz 公式}
+\subsection{无穷大量,无穷小量,小\(o\),大\(O\),等价,同阶,不定型, Stolz--Ces\'{a}ro定理}
+\begin{theorem}[Stolz--Ces\'{a}ro定理]\label{C20}
+  设\(\{x_n\}\)和\(\{y_n\}\)是两个实数列, 若
+  \begin{enumerate}[label=(\roman*)]
+    \item \(\{y_n\}\)严格单增,
+    \item \(\lim_{n\rightarrow\infty}y_n=+\infty\),
+    \item \(\lim_{n\rightarrow+\infty}\frac{x_{n+1}-x_n}{y_{n+1}-y_n}=\ell\), 
+    其中\(\ell\)可能为有限数、\,\(+\infty\)或\(-\infty\),   
+  \end{enumerate}则\[\lim_{n\rightarrow+\infty}\frac{x_n}{y_n}=\ell.\]  
+\end{theorem}
+\begin{theorem}\label{C21}
+  设\(\{x_n\}\)和\(\{y_n\}\)是两个实数列, 若
+  \begin{enumerate}[label=(\roman*)]
+    \item \(\{y_n\}\)严格单调减少,
+    \item \(\lim_{n\rightarrow+\infty}x_n=\lim_{n\rightarrow+\infty}y_n=0\),
+    \item \(\lim_{n\rightarrow+\infty}\frac{x_n-x_{n+1}}{y_{n}-y_{n+1}}=\ell\), 
+    其中\(\ell\)可能为有限数、\,\(+\infty\)或\(-\infty\),   
+  \end{enumerate}则\[\lim_{n\rightarrow+\infty}\frac{x_n}{y_n}=\ell.\]  
+\end{theorem}
+\begin{2a}
+\begin{enumerate}
+\item 证明: \(\{a_n\}\)的极限为\(L\)当且仅当\(\{a_{2n}\}\)与\(\{a_{2n+1}\}\)的极限\(L\), 
+其中\(L\)为有限数, \(+\infty\), \(-\infty\)或\(\infty\).
+\begin{proof}
+必要性. 由于\(\lim_{n\rightarrow\infty}a_n=L\). 若\(|L|<+\infty\). 
+则对\(\forall\varepsilon>0\), 有\(N>0\)使得\(n>N\)时有\[|a_n-L|<\varepsilon,\]
+特别地, \(2n>N\)时也有\[|a_{2n}-L|<\varepsilon,\quad|a_{2n+1}-L|<\varepsilon.\]
+若\(L=+\infty\), 则对\(\forall A>0\), 有\(N>0\)使得\(n>N\)时有\(a_n>A\), 
+特别地, 当\(2n>N\)时也有\(a_n>A\), 其余情况类似. 
+
+充分性. 先说明\(L\)有限的情况, 由于\(\lim_{n\rightarrow+\infty}a_{2n}=L\), 
+则对\(\forall\varepsilon>0\), 有\(N_1\in\Z_+\)使得\(n>N_1\)时有
+\[|a_{2n}-L|<\varepsilon,\]同理由\(\lim_{n\rightarrow+\infty}a_{2n-1}=L\), 
+有\(N_2\in\Z_+\)使得\(n>N_2\)时有\[|a_{2n+1}-L|<\varepsilon,\]
+取\(N=(2N_1)\vee(2N_2+1)\), 那么当\(n>N\)时, 都有\(|a_n-L|<\varepsilon\). 
+\(L\)无穷时情况类似.
+\end{proof}
+\item 设\(p\)为有理数, 证明\(\lim_{n\rightarrow+\infty}\frac{(n+1)^p-n^p}{n^{p-1}}=p\).
+\begin{proof}
+\(\lim_{n\rightarrow+\infty}\frac{(n+1)^p-n^p}{n^{p-1}}
+=\lim_{n\rightarrow+\infty}n\left(\left(1+\frac{1}{n}\right)^p-1\right)=p.\)\qedhere
+\end{proof}
+\item 证明定理\ref{C21}.
+\begin{proof}
+当\(\ell\in\R\)时, 由条件知\(\forall\varepsilon>0\), 
+均存在\(N_1\in\N_+\)使得\(n>N_1\)时有
+\[\ell-\varepsilon<\frac{x_{n}-x_{n+1}}{y_n-y_{n+1}}<\ell+\varepsilon,\]
+注意到\(\{y_n\}\)单调递减, 故有
+\[(\ell-\varepsilon)(y_{n-1}-y_n)<x_{n-1}-x_{n}<(\ell+\varepsilon)(y_{n-1}-y_n),\]
+取\(m>n>N_1\), 并将上面的不等式中的\(n\)依次换成\(n+1,n+2,\cdots,m\), 然后把这些不等式相加得到
+\[(\ell-\varepsilon)(y_n-y_m)<x_n-x_m<(\ell+\varepsilon)(y_n-y_m),\]
+也即\[\left|\frac{x_n-x_m}{y_n-y_m}-\ell\right|<\varepsilon,\quad\forall m>n>N_1,\]
+现令\(m\rightarrow\infty\), 则由\(\lim_{m\rightarrow\infty}x_m=\lim_{m\rightarrow\infty}y_m=0\)得到
+\[\left|\frac{x_n}{y_n}-\ell\right|\leqslant \varepsilon,\qquad\forall n>N_1,\]
+这说明\(\lim_{n\rightarrow\infty}\frac{x_n}{y_n}=\ell.\)
+
+若\(\ell=+\infty\), 则当\(n\)充分大时有\(\frac{x_{n}-x_{n-1}}{y_{n}-y_{n-1}}>0\), 
+故此时\(\{x_n\}\)严格单调递减趋于$0$. 另外, 我们有
+\[\textcolor{red}{\lim_{n\rightarrow\infty}\frac{y_n-y_{n-1}}{x_{n}-x_{n-1}}=0,}\]
+从而由上一段讨论知\(\lim_{n\rightarrow\infty}\frac{y_n}{x_n}=0.\) 
+因此\(\lim_{n\rightarrow\infty}\frac{x_n}{y_n}=+\infty.\)
+
+若\(\ell=-\infty\), 我们记\(z_n=-x_n\), 于是\(\lim_{n\rightarrow\infty}z_n=0\)且
+\[\lim_{n\rightarrow\infty}\frac{z_n-z_{n-1}}{y_n-y_{n-1}}=+\infty,\]
+由上一段的讨论知\(\lim_{n\rightarrow\infty}\frac{z_n}{y_n}=+\infty\), 
+从而\(\lim_{n\rightarrow\infty}\frac{x_n}{y_n}=-\infty.\)
+\end{proof}
+\item 设\(x_1=a,\,x_2=b,\,x_{n+2}=\frac{1}{2}(x_{n+1}+x_n)\,(n=1,2,3,\cdots)\). 试证明\(\{x_n\}\)收敛, 并求其极限.
+\begin{proof}[解答]
+递推数列有特征方程
+\[\lambda^2=\frac{1}{2}(\lambda+1),\quad\text{即}\quad 2\lambda^2-\lambda-1=0,\]
+解得\(\lambda_1=1,\lambda_2=-\frac{1}{2}\). 
+即设原数列有通项公式\(x_n=C_1+C_2\lambda_2^n\). 代入\(x_1=a,x_2=b\)解得
+\[C_1=\frac{2b-a}{3},C_2=\frac{4b-4a}{3}.\] 
+即\[x_n=\frac{2b-a}{3}+\frac{4b-4a}{3}\cdot\left(-\frac{1}{2}\right)^n.\] 
+易见\(\{x_n\}\)收敛, 极限为\(\frac{2b-a}{3}\).
+\end{proof}
+\item 设\(\{x_n\}\)满足\(\lim_{n\rightarrow+\infty}x_{n}\sum_{k=1}^{n}x_k^2=1\), 
+证明\(\lim_{n\rightarrow+\infty}\sqrt[3]{3n}\,x_{n}=1\).
+\begin{proof}
+设\(S_n=\sum_{k=1}^{n}x_k^2\), 显然\(\{S_n\}\)单调递增. 
+并且\(\frac{1}{x_n}\sim S_n\,(n\rightarrow+\infty)\), 
+若\(\lim_{n\rightarrow+\infty}S_n=S\)有限, 
+则有\(\lim_{n\rightarrow+\infty}x_n=1/S\ne 0\), 这与\(S_n\)收敛矛盾, 
+从而\[\lim_{n\rightarrow+\infty}S_n=+\infty,\quad\lim_{n\rightarrow+\infty}x_n=0.\]
+结合Stolz定理, 我们有\[\lim_{n\rightarrow\infty}\frac{1}{(3n)x_n^3}
+=\lim_{n\rightarrow\infty}\frac{S_n^3}{3n}
+=\lim_{n\rightarrow\infty}\frac{S_n^3-S_{n-1}^3}{3},\]
+于是我们仅需证明\(\lim_{n\rightarrow\infty}\left(S_n^3-S_{n-1}^3\right)=3\). 
+注意到\[\begin{aligned}
+S_n^3-S_{n-1}^3&=(S_n-S_{n-1})\left(S_n^2+S_nS_{n-1}+S_{n-1}^2\right)\\
+&=x_n^2\left(S_n^2+S_n\left(S_n-x_n^2\right)+\left(S_n-x_n^2\right)^2\right)\\
+&=3\left(x_nS_n\right)^2-3x_n^4S_n+x_n^6\\
+&=3\left(x_nS_n\right)^2-3x_n^3\left(x_nS_n\right)+x_n^6\rightarrow3\quad (n\rightarrow +\infty).
+\end{aligned}\]
+\end{proof}
+\item 设\(a\)和\(d\)是给定的正数. 对于\(n=1,2,3,\cdots\), 
+由等差数列\(a,\,a+d,\,\cdots,a+(n-1)d\) 形成的算术平均数\(A_n\)和几何平均数\(G_n\), 
+试求\(\lim_{n\rightarrow+\infty}\frac{G_n}{A_n}\).
+\begin{proof}[解答]
+由题设\[G_n=\sqrt[n]{\prod_{k=0}^{n-1}\left(a+kd\right)},
+\quad A_n=\frac{\displaystyle\sum_{k=0}^{n-1}\left(a+kd\right)}{n}=a+\frac{n-1}{2},\] 
+记\(t=\frac{a}{d}\). 于是
+\[\begin{aligned}
+\lim_{n\rightarrow+\infty}\frac{G_n}{A_n}
+&=\lim_{n\rightarrow+\infty}\frac{\sqrt[n]{\displaystyle\prod_{k=0}^{n-1}\left(a+kd\right)}}{(n-1)d/2}\cdot\frac{(n-1)d/2}{a+(n-1)d/2}\\
+&=\lim_{n\rightarrow+\infty}\sqrt[n]{\prod_{k=0}^{n-1}(t+k)}\cdot\frac{2}{n-1}\\
+&=\lim_{n\rightarrow+\infty}\sqrt[n]{\frac{\Gamma(t+n)}{\Gamma(t)}}\cdot\frac{2}{n-1}\\
+&=\lim_{n\rightarrow+\infty}\sqrt[n]{\frac{1}{\Gamma(t)}}\sqrt[n]{\left(\frac{t+n}{e}\right)^n\sqrt{2\pi(t+n)}}\cdot\frac{2}{n-1}\\
+&=\lim_{n\rightarrow+\infty}\frac{t+n}{e}\frac{2}{n+1}=\frac{2}{e}.
+\end{aligned}\]
+\end{proof}
+\item 令\(a_{n,k}=\frac{k}{n-k+1}\ (n\geqslant k\geqslant 1)\). 证明:
+\begin{enumerate}[label=(\arabic*)]
+\item 对于固定的\(k\geqslant 1\), \(\{a_{n,k}\}\)是无穷小.
+\item \( A_n=\prod_{k=1}^{n}a_{n,k}\)不是无穷小.
+\end{enumerate}
+\begin{proof}
+易见\[\lim_{n\rightarrow+\infty}a_{n,k}=\lim_{n\rightarrow+\infty}\frac{k}{n-k+1}=0,\]
+并且\[\lim_{n\rightarrow+\infty}A_n=\lim_{n\rightarrow+\infty}\prod_{k=1}^{n}a_{n,k}=1,\]
+从而结论得证.
+\end{proof}
+\item 设\(E\subseteq\mathbb{R}\)为非空集. 
+证明: 存在\(E\)中点列\(\{x_k\}\)使得\(\lim_{k\rightarrow+\infty}x_k=\sup E\), 
+这里\(\sup E\)可以是\(+\infty\).
+
+\textbf{注: }对于\(f:D\rightarrow\mathbb{R}\), 
+满足\(\lim_{k\rightarrow+\infty}f(x_k)=\sup_{x\in D}f(x)\left(\inf_{x\in D}f(x)\right)\)的\(D\)中的点列\(\{x_k\}\)称为\(f\)在\(D\)上的\textbf{极大化序列(极小化序列)}.
+\begin{proof}
+若\(\sup E=+\infty\), 则对于任意给定的正数\(M\), 都有\(x_1\in E, x_1\geqslant M\); 
+同理对于\(M+1\), 也有\(x_2\in E, x_2\geqslant M+1\), 
+依次类推, 此时有\(\lim_{k\rightarrow+\infty}x_k=+\infty=\sup E\).
+
+否则\(\sup E<+\infty\), 任取\(E\)的一个上界\(M\)与\(x_0\in E\), 
+令\(E_1=[x_0,M]\), \(T=(x_0+M)/2\), 这样区间\(E_1\)被\(T\)二分, 
+优先考察右侧的集合\([T,M]\), 若\([T,M]\cap E\ne\varnothing\), 
+则令\(E_2=[T,M]\), 否则令\(E_2=[x_0,T]\), 
+继续将\(E_2\)二分, 并仿上法选择\(E_3\), 以此类推. 
+易见\(\{E_k\}\)形成一列闭区间套, 设\(x_k\in E_k\), 
+则\(\lim_{k\rightarrow+\infty}x_k=\sup E\).
+\end{proof}
+\end{enumerate}
+\end{2a}
+\begin{2b}
+\begin{enumerate}
+\item \textbf{(Toeplitz (特普利茨)定理)} 设有无穷下三角矩阵\((t_{nm})_{n\geqslant m}\):
+    \[\left(\begin{matrix}
+      t_{11}& & & \\
+      t_{21}&t_{22}&&\\
+      t_{31}&t_{32}&t_{33}&\\
+      \vdots&\vdots&\vdots&\ddots\\
+    \end{matrix}\right)\]满足下列条件：
+\begin{enumerate}[label=(\roman*)]
+\item 每一列元素趋于零, 即\(\lim_{n\rightarrow+\infty}t_{nm}=0\).
+\item 各行元素的绝对值之和有界, 即\(\forall\, n\in \mathbb{Z}_+\), 
+\[\left|t_{n1}\right|+\left|t_{n2}\right|+\cdots+\left|t_{nn}\right|\leqslant K<+\infty.\]  
+\end{enumerate}
+记\(y_n=t_{n1}x_1+t_{n2}x_2+\cdots+t_{nn}x_n\).证明:
+\begin{enumerate}[label=(\roman*)]
+\item 若\(\lim_{n\rightarrow+\infty}x_{n}=0\), 则\(\lim_{n\rightarrow+\infty}y_{n}=0\).
+\item 记\(T_{n}=t_{n1}+t_{n2}+\cdots+t_{nn}\). 若\(\lim_{n\rightarrow+\infty}T_{n}=1\), 
+且\(\lim_{n\rightarrow+\infty}x_{n}=a\)有限, 则\(\lim_{n\rightarrow+\infty}y_{n}=a\).
+\end{enumerate}
+\begin{proof}
+(i)由\(\lim_{n\rightarrow+\infty}x_{n}=0\)知存在\(M>0\)使得
+\[|x_n|<M,\qquad n=1,2,\cdots,\]
+并且对\(\forall\varepsilon>0,\exists N\in\mathbb{N}_+\), 
+使得\(n>N\)时, 有\[|x_n|<\frac{\varepsilon}{2K}.\]
+
+对于上述的\(\varepsilon\)与\(N\), 由\(\lim_{n\rightarrow\infty}t_{nm}=0\)可知
+\(\exists N_1\in\mathbb{N}_+\), 使得\(N_1>N\), 且当\(n>N_1\)时有
+\[|t_{nm}|<\frac{\varepsilon}{2NM},\qquad m=1,2,\cdots,N,\]
+从而当\(n>N_1\)时, 由\(y_n\)的定义得\[\begin{split}
+|y_n|&=|t_{n1}x_1+t_{n2}x_2+\cdots+t_{nn}x_n|\leqslant|t_{n1}x_1|+|t_{n2}x_2|+\cdots+|t_{nn}x_n|\\
+&\leqslant\frac{\varepsilon}{2NM}\cdot NM+\left(|t_{n(N+1)}|+|t_{n(N+2)}|+\cdots+|t_{nn}|\right)\frac{\varepsilon}{2K}\\
+&<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon.
+\end{split}\]即\(\lim_{n\rightarrow\infty}y_n=0.\)
+
+(ii)由题设知\(\lim_{n\rightarrow\infty}\left(x_n-a\right)=0\), 而
+\[z_n:=t_{n1}(x_1-a)+t_{n2}(x_2-a)+\cdots+t_{nn}(x_n-a)=y_n-aT_n,\]
+由前面的结论知\(\lim_{n\rightarrow n\rightarrow}z_n=0\), 
+于是\(\lim_{n\rightarrow\infty}y_n=\lim_{n\rightarrow\infty}z_n+a\lim_{n\rightarrow\infty}T_n=a.\)
+\end{proof}
+\item 试考察Stolz定理和Toeplitz定理的关系.
+
+由Toeplitz定理可以推导出Stolz定理\ref{C20}, 理由如下.
+
+记号如同问题 \(\boldsymbol{1}\). 令上述的无穷下三角矩阵的元素为\(t_{nm}=\frac{y_{m+1}-y_{m}}{y_{m+1}}\), 
+容易验证其满足定理条件, 又记\(a_n=\frac{x_{n+1}-x_n}{y_{n+1}-y_n}\), 于是
+\[b_n:=t_{n1}a_1+t_{n2}a_2+\cdots+t_{nn}a_n=\frac{x_{n+1}-x_1}{y_{n+1}}.\]
+由Toeplitz定理知\(\lim_{n\rightarrow\infty}b_n=\ell\), 
+易见\(\lim_{n\rightarrow\infty}\frac{x_n}{y_n}=\ell.\)
+%\tcblower
+%\textcolor{red}{
+%\woe 设\(a_1\in(0,1)\), 且有\[a_{n+1}=a_n+\left(\frac{a_n}{n}\right)^k,\quad n=1,2,\cdots,\]其中\(k>1\). 证明: \(\{a_n\}\)有界.}
+\end{enumerate}
+\end{2b}
+
+\section{Euclid空间中的基本概念}
+\subsection{线性空间,赋范线性空间,度量空间, Euclid距离,平行四边形法则,范数,内点,邻域,外点,边界点,聚点,开集,闭集,闭包,稠密,无处稠密/疏朗集,内积空间}
+\begin{definition}\label{C22}
+  设\(X\)为非空集, 映射\(d:X\times X\rightarrow\mathbb{R}\)称为\(X\)上的\textbf{度量}, 又称\textbf{距离}, 如果对任何\(x,y,z\in X\)成立:
+  \begin{enumerate}[label=(\roman*)]
+    \item \textbf{非负性.} \(d(x,y)\geqslant 0\), 且等号当且仅当\(x=y\)时成立.
+    \item \textbf{对称性.} \(d(x,y)=d(y,x)\).
+    \item \textbf{三角不等式.} \(d(x,z)\leqslant d(x,y)+d(y,z)\).
+  \end{enumerate}
+  此时, 称\((X,d)\) (或简称\(X\))为\textbf{度量空间}或\textbf{距离空间}, 
+  称\(d(x,y)\)为\(x\)与\(y\)间的距离.
+\end{definition}
+\begin{3a}
+\begin{enumerate}
+\item ${}^*$设\(E\subseteq \R\)为非空有界闭集. 
+证明\(E\)有最大值最小值, 即\(\sup E\in E,\,\inf E\in E\).
+\begin{proof}
+利用习题2.2.$\mathcal{A}$.8的结论.
+\end{proof}
+\item \textbf{(距离的等价定义)}. 在定义\ref{C22}中, 由(ii)---(iii)可以得到: (iii\('\)) 对任何\(x,y,z\in X\), 成立\(d(x,z)\leqslant d(y,x)+d(y,z)\).
+证明: (i)---(iii)与(i), (iii\('\))等价.
+\item 设\(E\)为\(\R\)中的无理数全体. 证明\(\overline{E}=\mathbb{R}\).
+\item 称\(\mathbb{R}^n\)中各分量均为有理数的点为\textbf{有理点}. 
+证明\(\R^n\)中有理点的全体的闭包为\(\R^n\).
+\end{enumerate}
+\end{3a}
+\begin{3b}
+\begin{enumerate}
+\item 设\(E\)为\(\mathbb{R}^n\)中的闭集, 证明存在集合\(F\)使得\(F\)的导集为\(E\).
+\begin{proof}
+注意到$\mathbb{R}^n$中以有理点为球心、正有理数为半径的开球组成的集族是可列
+的，由选择公理，对任意与$E$的交非空的以有理点为球心、正有理数为半径的开球$B$，
+都可取出$E\cap B$中的⼀个点$\left\{\boldsymbol{x}\right\}$，将所有这样的
+$\left\{\boldsymbol{x}\right\}$并起来可以得到$E$的⼀个至多可列子集，它符合题目的要求.
+\end{proof}
+
+
+\item 下表穷举了集合的内部、导集、边界和闭包和闭包的内部、导集、边界和闭包之间的关系. 
+请证明每一格中的结果, 对于非等式的情形, 举出等式成立以及不成立的例子. 进一步, 思考能否得出其他的关系式.
+    \begin{table}
+      \begin{tabular}{ccccc}
+        \hline
+        集合  &  内部  &  导集  &  边界  &  闭包\\\hline
+        \(E^\circ\)  &  \((E^\circ)^\circ=E^\circ\)  &  \((E^\circ)'=\overline{E^\circ}\)  &  \(\partial(E^\circ)\subseteq\partial E\cap E'\)  &  \(\overline{E^\circ}\subseteq E'\)\\
+        \(E'\)  &  \((E')^\circ=\overline{E}^\circ\supseteq E^\circ\)  &  \((E')'\subseteq E'\)  &  \(\partial (E')\subseteq \partial E\cap E'\)  &  \(\overline{E'}=E'\)\\
+        \(\partial E\)  &  \((\partial E)^\circ=(\overline{E}\cap \overline{\mathscr{C}E})^\circ\)  &  \((\partial E)'\subseteq\partial E\cap E'\)  &  \(\partial(\partial E)\subseteq \partial E\)  &  \(\overline{\partial E}=\partial E\)\\
+        \(\overline{E}\)  &  \((\overline{E})^\circ\supseteq E^\circ\)  &  \((\overline{E})'=E'\)  &  \(\partial(\overline{E})\subseteq \partial E\)  &  \(\overline{\left(\overline{E}\right)}=\overline{E}\)
+      \end{tabular}
+    \end{table}
+\begin{proof}
+    以下均在 $\mathbb{R}^n$ 中讨论.
+
+\textbf{预备引理.}
+
+\textbf{引理1（内部与单调性）.}
+\[
+(A^\circ)^\circ=A^\circ,
+\qquad
+A\subseteq B\Longrightarrow A'\subseteq B',\ A^\circ\subseteq B^\circ,\ \overline{A}\subseteq \overline{B}.
+\]
+
+\textbf{引理2（闭包的闭性）.}
+$\overline{A}$ 是闭集.
+
+\begin{proofc}
+由教材中的定义 2.3.9，$\overline{A}$ 是包含 $A$ 的最小闭集，等价地
+\[
+\overline{A}=\bigcap\{F\mid A\subseteq F,\ F\text{闭}\}.
+\]
+而任意闭集的交仍为闭集，故 $\overline{A}$ 闭.
+\end{proofc}
+\textbf{引理3（导集的闭性）.}
+$A'$ 是闭集.
+
+\begin{proofc}
+只需证 $(A')'\subseteq A'$.
+任取 $x\in (A')'$，下证 $x\in A'$.
+对任意 $\delta>0$，由 $x\in (A')'$，可取
+\[
+y\in A'\cap B_{\delta/2}(x),\quad y\neq x.
+\]
+令
+\[
+\varepsilon:=\min\left\{\frac{\delta}{2}-|x-y|,\ \frac{|x-y|}{2}\right\}>0.
+\]
+由 $y\in A'$，可取
+\[
+z\in A\cap B_{\varepsilon}(y),\quad z\neq y.
+\]
+于是
+\[
+|z-x|\le |z-y|+|y-x|<\varepsilon+|y-x|<\delta,
+\]
+且由 $|z-y|<\frac{|x-y|}{2}$ 可知 $z\neq x$.
+故任意 $\delta>0$ 下，$B_\delta(x)$ 都含有异于 $x$ 的 $A$ 中点，故 $x\in A'$.
+从而 $(A')'\subseteq A'$，即 $A'$ 闭.
+\end{proofc}
+\textbf{引理4（闭包的常用表示）.}
+\[
+\overline{A}=A\cup A'=A\cup\partial A=A^\circ\cup\partial A=\mathscr{C}(\mathscr{C}A)^o.
+\]
+
+\begin{proofc}
+由教材定义 2.3.9，
+\[
+\overline{A}=\bigcap\{F\mid A\subseteq F,\ F\text{闭}\}.
+\]
+先证 $\overline{A}=A\cup A'$.
+任取闭集 $F$ 且 $A\subseteq F$.
+若 $x\in A$，则 $x\in F$；若 $x\in A'$ 且 $x\notin F$，因为 $F$ 闭，所以 $\mathscr{C}F$ 开，存在 $r>0$ 使 $B_r(x)\subseteq\mathscr{C}F$.
+又 $A\subseteq F$，故 $B_r(x)\cap A=\varnothing$，这与 $x\in A'$ 矛盾.
+故 $x\in F$.
+因此 $A\cup A'\subseteq F$ 对所有这样的闭集 $F$ 都成立，故
+\[
+A\cup A'\subseteq\bigcap\{F\mid A\subseteq F,\ F\text{闭}\}=\overline{A}.
+\]
+
+反过来，证 $A\cup A'$ 是闭集且含 $A$.
+显然 $A\subseteq A\cup A'$.
+若 $x\notin A\cup A'$，则 $x\notin A$ 且 $x\notin A'$.
+由 $x\notin A'$，存在 $r>0$ 使 $B_r(x)\cap(A\setminus\{x\})=\varnothing$.
+结合 $x\notin A$，得 $B_r(x)\cap A=\varnothing$.
+对任意 $y\in B_{r/2}(x)$，有 $B_{r/2}(y)\subseteq B_r(x)$，故 $B_{r/2}(y)\cap A=\varnothing$.
+于是 $y\notin A$，且 $y\notin A'$.
+故 $B_{r/2}(x)\subseteq\mathscr{C}(A\cup A')$.
+因此 $\mathscr{C}(A\cup A')$ 开，从而 $A\cup A'$ 闭.
+由于 $A\cup A'$ 是包含 $A$ 的闭集，由闭包的最小性知
+\[
+\overline{A}\subseteq A\cup A'.
+\]
+综上，$\overline{A}=A\cup A'$.
+
+再证 $A\cup A'=A\cup\partial A$.
+若 $x\in A'$，则若 $x\in A$，当然有 $x\in A\cup\partial A$；若 $x\notin A$，则任意 $r>0$，$B_r(x)$ 都含有异于 $x$ 的 $A$ 中点，而 $x\in\mathscr{C}A$，故 $x\in\partial A$.
+故 $A'\subseteq A\cup\partial A$.
+反过来，若 $x\in\partial A$，则任意 $r>0$，$B_r(x)$ 同时与 $A$ 和 $\mathscr{C}A$ 相交.
+若 $x\in A$，则 $x\in A\cup A'$；若 $x\notin A$，则 $B_r(x)\cap A$ 中的点都异于 $x$，故 $x\in A'$.
+于是 $\partial A\subseteq A\cup A'$.
+因此 $A\cup A'=A\cup\partial A$.
+
+再证 $A\cup\partial A=A^\circ\cup\partial A$.
+显然 $A^\circ\subseteq A$，故 $A^\circ\cup\partial A\subseteq A\cup\partial A$.
+反过来任取 $x\in A$.
+若 $x\in A^\circ$，则 $x\in A^\circ\cup\partial A$；若 $x\notin A^\circ$，因 $x\in A$，任意 $r>0$ 有 $B_r(x)\cap A\neq\varnothing$，又由 $x\notin A^\circ$ 得任意 $r>0$，$B_r(x)\cap\mathscr{C}A\neq\varnothing$，故 $x\in\partial A$.
+于是 $A\subseteq A^\circ\cup\partial A$，从而 $A\cup\partial A\subseteq A^\circ\cup\partial A$.
+因此 $A\cup\partial A=A^\circ\cup\partial A$.
+
+最后证 $\overline{A}=\mathscr{C}(\mathscr{C}A)^o$.
+对任意 $x$，有
+\[
+x\in\mathscr{C}(\mathscr{C}A)^o
+\Longleftrightarrow x\notin (\mathscr{C}A)^o
+\Longleftrightarrow \forall r>0,\ B_r(x)\not\subseteq\mathscr{C}A
+\Longleftrightarrow \forall r>0,\ B_r(x)\cap A\neq\varnothing
+\Longleftrightarrow x\in\overline{A}.
+\]
+故 $\overline{A}=\mathscr{C}(\mathscr{C}A)^o$.
+\end{proofc}
+\textbf{引理5（边界表达式）.}
+\[\partial A=\overline{A}\setminus A^\circ=\overline{A}\cap\overline{\mathscr{C}A}.\]
+
+\begin{proofc}
+由引理4，$\overline{A}=A^\circ\cup\partial A$.
+
+先证 $\partial A=\overline{A}\setminus A^\circ$.
+由边界点定义知 $A^\circ\cap\partial A=\varnothing$.
+故
+\[\overline{A}\setminus A^\circ=(A^\circ\cup\partial A)\setminus A^\circ=\partial A.\]
+
+再证 $\partial A=\overline{A}\cap\overline{\mathscr{C}A}$.
+由边界点定义，$x\in\partial A$ 当且仅当任意 $r>0$，$B_r(x)$ 同时与 $A$ 和 $\mathscr{C}A$ 相交；这与 $x\in\partial(\mathscr{C}A)$ 等价，故 $\partial(\mathscr{C}A)=\partial A$.
+再由引理4，$\overline{A}=A\cup\partial A$ 且 $\overline{\mathscr{C}A}=\mathscr{C}A\cup\partial A$.
+故
+\[\overline{A}\cap\overline{\mathscr{C}A}
+=(A\cup\partial A)\cap(\mathscr{C}A\cup\partial A)
+\subseteq \partial A\cup (A\cap\mathscr{C}A)=\partial A.\]
+而 $\partial A\subseteq\overline{A}$ 且 $\partial A\subseteq\overline{\mathscr{C}A}$ 显然成立，所以 $\partial A\subseteq\overline{A}\cap\overline{\mathscr{C}A}$.
+因此
+\[\partial A=\overline{A}\cap\overline{\mathscr{C}A}.\]
+
+特别地，$\partial A$ 是闭集.
+\end{proofc}
+
+\textbf{(1) 行 $E^\circ$:}
+\begin{align*}
+&(E^\circ)^\circ=E^\circ,\\
+&(E^\circ)'=\overline{E^\circ},\\
+&\partial(E^\circ)\subseteq \partial E\cap E',\\
+&\overline{E^\circ}\subseteq E'.
+\end{align*}
+第一式由引理1.
+
+第二式证明如下：记 $G:=E^\circ$.
+因 $G$ 开，任取 $x\in G$，存在 $r>0$ 使 $B_r(x)\subseteq G$.
+取 $y\in B_{r/2}(x),\ y\neq x$，则 $y\in G$，故 $x\in G'$.
+于是 $G\subseteq G'$.
+再由引理4中 $\overline{G}=G\cup G'$，得
+\[
+\overline{G}=G\cup G'=G'.
+\]
+即 $(E^\circ)'=\overline{E^\circ}$.
+
+对第三式：若 $x\in\partial(E^\circ)$，则 $x\in\overline{E^\circ}$ 且 $x\in\overline{\mathscr{C}(E^\circ)}$.
+由 $E^\circ\subseteq E$ 得 $x\in\overline{E}$；由 $\mathscr{C}E\subseteq \mathscr{C}(E^\circ)$ 得
+$x\in\overline{\mathscr{C}E}$，故 $x\in\partial E$.
+又 $x\in\overline{E^\circ}=(E^\circ)'\subseteq E'$，故结论成立.
+
+第四式由 $\overline{E^\circ}=(E^\circ)'\subseteq E'$ 立得.
+
+\textbf{(2) 行 $E'$:}
+\begin{align*}
+&(E')^\circ=\overline{E}^\circ\supseteq E^\circ,\\
+&(E')'\subseteq E',\\
+&\partial(E')\subseteq \partial E\cap E',\\
+&\overline{E'}=E'.
+\end{align*}
+
+$(E')^\circ=\overline{E}^\circ$:
+一方面 $E'\subseteq\overline{E}\Rightarrow (E')^\circ\subseteq\overline{E}^\circ$.
+另一方面设 $x\in\overline{E}^\circ$，取 $r>0$ 使 $B_r(x)\subseteq\overline{E}$.
+记 $S_E$ 为 $E$ 的孤立点集，并利用事实
+\[
+\overline{E}=S_E\cup E'.
+\]
+下证 $B_r(x)\subseteq E'$.
+任取 $y\in B_r(x)$，若 $y\notin E'$，则 $y\in S_E$.
+由 $y$ 是孤立点，存在 $\delta>0$ 使
+\[
+B_\delta(y)\cap E=\{y\}.
+\]
+取 $0<\eta<\min\{\delta/2,\ r-|x-y|\}$，并取 $z\in B_\eta(y),\ z\neq y$.
+则 $z\in B_r(x)\subseteq\overline{E}$.
+另一方面，由 $\eta<\delta/2$ 可得某个以 $z$ 为心的小球包含于
+$B_\delta(y)\setminus\{y\}$，从而该小球与 $E$ 不相交，故 $z\notin\overline{E}$，矛盾.
+故 $y\in E'$.
+于是 $B_r(x)\subseteq E'$，从而 $x\in(E')^\circ$.
+再由 $E\subseteq\overline{E}$ 得 $E^\circ\subseteq\overline{E}^\circ=(E')^\circ$.
+
+$(E')'\subseteq E'$ 与 $\overline{E'}=E'$ 均因 $E'$ 为闭集.
+
+再证 $\partial(E')\subseteq\partial E\cap E'$:
+由 $E'$ 闭知 $\partial(E')\subseteq E'$.
+又
+\[
+\partial(E')=E'\setminus(E')^\circ
+=E'\setminus\overline{E}^\circ
+\subseteq \overline{E}\setminus\overline{E}^\circ
+=\partial(\overline{E})\subseteq\partial E.
+\]
+
+\textbf{(3) 行 $\partial E$:}
+\begin{align*}
+& (\partial E)^\circ=(\overline{E}\cap\overline{\mathscr{C}E})^\circ,\\
+& (\partial E)'\subseteq\partial E\cap E',\\
+& \partial(\partial E)\subseteq\partial E,\\
+& \overline{\partial E}=\partial E.
+\end{align*}
+
+第一式由 $\partial E=\overline{E}\cap\overline{\mathscr{C}E}$ 直接代入.
+
+第二式：因 $\partial E$ 闭，$(\partial E)'\subseteq\partial E$.
+下证 $(\partial E)'\subseteq E'$：任取 $x\in(\partial E)'$.
+对任意 $\delta>0$，可取 $y\in\partial E\cap B_{\delta/2}(x),\ y\ne x$.
+又因 $y\in\partial E$，可取 $z\in E$ 使
+\[
+0<|z-y|<\min\left\{\frac{\delta}{2}-|x-y|,\ \frac{|x-y|}{2}\right\}.
+\]
+于是 $z\ne x$ 且 $|z-x|<\delta$，故 $x\in E'$.
+合并即得 $(\partial E)'\subseteq\partial E\cap E'$.
+
+第三、四式同样由 $\partial E$ 闭立得：
+$\partial(\partial E)\subseteq\partial E$，$\overline{\partial E}=\partial E$.
+
+\textbf{(4) 行 $\overline{E}$:}
+\begin{align*}
+& (\overline{E})^\circ\supseteq E^\circ,\\
+& (\overline{E})'=E',\\
+& \partial(\overline{E})\subseteq\partial E,\\
+& \overline{\overline{E}}=\overline{E}.
+\end{align*}
+
+第一式由单调性 $E\subseteq\overline{E}$.
+第二式证明如下：显然 $E'\subseteq(\overline{E})'$.
+反过来若 $x\in(\overline{E})'$，取 $x_k\in\overline{E}\setminus\{x\}$ 且 $x_k\to x$.
+由 $x_k\in\overline{E}$，可取 $y_k\in E$ 使 $|y_k-x_k|<|x_k-x|$，则 $y_k\to x$且$y_k\neq x$，故 $x\in E'$.
+于是 $(\overline{E})'=E'$.
+第三式由
+\[
+\partial(\overline{E})=\overline{E}\setminus(\overline{E})^\circ
+\subseteq \overline{E}\setminus E^\circ
+=\partial E.
+\]
+第四式因闭包本身闭.
+
+\textbf{非等式处的等号成立/不成立例子（统一给出）:}
+
+取以下常用集合：
+\[
+E_1=(0,1),\quad E_2=\mathbb{Q},\quad E_3=\mathbb{Q}\cap(0,1),\quad E_4=\{1/n:n\in\mathbb{N}\}
+\]
+
+\begin{itemize}
+\item $\partial(E^\circ)\subseteq\partial E\cap E'$:
+对 $E_1$ 取等；对 $E_2$ 严格（左边 $\varnothing$，右边 $\mathbb{R}$）.
+
+\item $\overline{E^\circ}\subseteq E'$:
+对 $E_1$ 取等；对 $E_2$ 严格（左边 $\varnothing$，右边 $\mathbb{R}$）.
+
+\item $(E')^\circ\supseteq E^\circ$:
+对 $E_1$ 取等；对 $E_2$ 严格（$\mathbb{R}\supsetneq\varnothing$）.
+
+\item $(E')'\subseteq E'$:
+对 $E_1$ 取等（$[0,1]'=[0,1]$）；对 $E_4$ 严格（$E_4'=\{0\},\ (E_4')'=\varnothing$）.
+
+\item $\partial(E')\subseteq\partial E\cap E'$:
+对 $E_1$ 取等；对 $E_2$ 严格（左边 $\varnothing$，右边 $\mathbb{R}$）.
+
+\item $(\partial E)'\subseteq\partial E\cap E'$:
+对 $E_2$ 取等（均为 $\mathbb{R}$）；对 $E_1$ 严格（左边 $\varnothing$，右边 $\{0,1\}$）.
+
+\item $\partial(\partial E)\subseteq\partial E$:
+对 $E_1$ 取等（均为 $\{0,1\}$）；对 $E_3$ 严格（$\partial E_3=[0,1],\ \partial(\partial E_3)=\{0,1\}$）.
+
+\item $(\overline{E})^\circ\supseteq E^\circ$:
+对 $E_1$ 取等；对 $E_2$ 严格（$\mathbb{R}\supsetneq\varnothing$）.
+
+\item $\partial(\overline{E})\subseteq\partial E$:
+对 $E_1$ 取等；对 $E_3$ 严格（$\partial(\overline{E_3})=\{0,1\},\ \partial E_3=[0,1]$）.
+\end{itemize}
+
+\end{proof}
+\item 设\(X\)为线性空间, 称映射\(\inp{\cdot,\cdot}:X\times X\rightarrow \mathbb{R}\)为\(X\)上的内积, 
+如果它满足: 对于任何\(x,y,z\in X\)以及\(\alpha\in \mathbb{R}\),
+\begin{enumerate}[label=(\arabic*)]
+    \item \textbf{非负性.} \(\inp{x,x}\geqslant 0\), 且等号成立当且仅当\(x=0\)时成立.
+    \item \textbf{线性性.} \(\inp{x,y+z}=\inp{x,y}+\inp{x,z}\). \textcolor{999966}{[上传者注：``线性性''是语义冗余的表述，宜用``线性''.]}
+    \item \textbf{关于数乘线性.} \(\inp{\alpha x,y}=\alpha\inp{x,y}\).
+    \item \textbf{对称性.} \(\inp{x,y}=\inp{y,x}\).
+\end{enumerate}
+此时称\(X\)为\textbf{(实)内积空间}. 令\(\left\|x\right\|=\sqrt{\inp{x,x}}\). 
+证明\(\left\|\cdot\right\|\)为\(X\)上的范数------称为由该内积诱导的范数, 且该范数满足平行四边形法则:
+\[\left\|x+y\right\|^2+\left\|x-y\right\|^2=2\left\|x\right\|^2+2\left\|y\right\|^2.\]
+\begin{proof}
+容易验证按上述规则定义的范数满足非负性和齐次性, 下证其满足三角不等式, 
+在此之前, 我们先证明Cauchy--Schwarz不等式: 即\(\left|\inp{x,y}\right|\leqslant\left\|x\right\|\cdot\left\|y\right\|\), 等号成立当且仅当\(x,y\)线性相关.
+
+首先, 当\(x=0\)或\(y=kx\)时(即\(x,y\)线性相关), 我们有\[\begin{split}
+|\inp{x,y}|&=|\inp{0,y}|=|0\inp{0,y}|=0=\|0\|\cdot\|y\|=\|x\|\cdot\|y\|,\\
+|\inp{x,y}|&=|\inp{x,kx}|=|k\inp{x,x}|=|k|\|x\|^2=\|x\|\cdot\|kx\|=\|x\|\cdot\|y\|.
+\end{split}\]当\(x,y\)线性无关时, 即对任何实数\(k\), 都有\(y\ne kx\), 也即\(kx-y\ne 0\), 于是由内积的非负性有
+\[0<\inp{kx-y,kx-y}=\|x\|^2k^2-2\inp{x,y}k+\|y\|^2,\]
+这意味着关于\(k\)的一元二次方程\(\|x\|^2k^2-2\inp{x,y}k+\|y\|^2=0\)无实根, 
+即\(\Delta=4\inp{x,y}-4\|x\|\cdot\|y\|<0\), 
+即\(|\inp{x,y}|\leqslant\|x\|\cdot\|y\|\). 
+这个不等式也称为Cauchy--Buniakowsky--Schwarz (柯西--布尼亚科夫斯基--施瓦茨)不等式.
+
+利用Cauchy--Schwarz不等式\[\|x+y\|^2=\|x\|^2+2\inp{x,y}+\|y\|^2
+\leqslant\|x\|^2+2\|x\|\|y\|+\|y\|^2=\left(\|x\|+\|y\|\right)^2,\]
+即\(\|x+y\|\leqslant\|x\|+\|y\|\).
+
+易见\begin{align*}
+\left\|x+y\right\|^2+\left\|x-y\right\|^2&=\inp{x+y,x+y}+\inp{x-y,x-y}\\
+&=\inp{x,x}+2\inp{x,y}+\inp{y,y}+\inp{x,x}-2\inp{x,y}+\inp{y,y}\\
+&=2\inp{x,x}+2\inp{y,y}=2\left\|x\right\|^2+2\left\|y\right\|^2.
+\end{align*}
+\end{proof}
+\item 设\((X,\left\|\cdot\right\|)\)为赋范线性空间, 
+若范数\(\left\|\cdot\right\|\)满足平行四边形法则, 
+令\(\inp{x,y}=\frac{\left\|x+y\right\|^2-\left\|x-y\right\|^2}{4}\). 
+验证\(\inp{\cdot,\cdot}\)为\(X\)上的内积.
+\begin{proof}[解答]
+即该范数满足\(\|x+y\|^2+\|x-y\|^2=2\|x\|^2+2\|y\|^2.\) 下面对上题所给内积性质进行逐一验证:
+\begin{enumerate}[label=(\arabic*)]
+    \item 非负性. 由\[\inp{x,x}=\frac{\|x+x\|^2-\|x-x\|^2}{4}=\|x\|^2\geqslant 0,\]
+    且等号成立当且仅当\(x=0\). 故而非负性成立.
+    \item 线性.由\[\inp{x,y+z}=\frac{\|x+(y+z)\|^2-\|x-(y+z)\|^2}{4},\]
+    结合平行四边形法则有\[\begin{split}
+    &\quad\frac{1}{4}\cdot\frac{\|x+(y+z)\|^2-\|x-(y+z)\|^2}{2}\\
+    &=\frac{\|x+y+z\|^2+\|x+y-z\|^2-\left(\|x+y-z\|^2+\|x-y-z\|^2\right)}{4\times2}\\
+    &=\frac{\|x+y\|^2+\|z\|^2-\|x-z\|^2-\|y\|^2}{4},\\
+    &\quad\frac{1}{4}\cdot\frac{\|x+(y+z)\|^2-\|x-(y+z)\|^2}{2}\\
+    &=\frac{\|x+y+z\|^2+\|x+z-y\|^2-\left(\|x+z-y\|^2+\|x-y-z\|^2\right)}{4\times 2}\\
+    &=\frac{\|x+z\|^2+\|y\|^2-\|x-y\|^2-\|z\|^2}{4},
+    \end{split}\]上面两式相加, 便得\[\inp{x,y+z}=\frac{\|x+y\|^2-\|x-y\|^2}{4}+\frac{\|x+z\|^2-\|x-z\|^2}{4}=\inp{x,y}+\inp{x,z},\]故而线性成立.
+    \item 关于数乘线性与对称性是显然成立的.\qedhere
+\end{enumerate}
+\end{proof}
+\item 试构造\(\mathbb{R}\)中一列非空集\(\{E_k\}\)使得\(E_{k+1}=E'_k\subset E_k\ (k\geqslant 1)\).
+\end{enumerate}
+\end{3b}
+
+请移步[[User:Solution/临时页面|这里]]，不知道为什么后面的部分一放上去就爆炸。
+正所谓：再多一眼看一眼就会爆炸，再近一点靠近点就会融化。

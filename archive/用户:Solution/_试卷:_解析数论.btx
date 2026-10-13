@@ -1,0 +1,24 @@
+
+\section{2024-2025学年秋解析数论期末试题(石荣刚)}
+
+\begin{itemize}
+    \item[1.](20分)考虑函数$f(x,y) = x^2 y$, 求证对于任何$\mathbb{R}^2$的格$\Lambda$, 都有$\inf\limits_{(x,y) \in \Lambda \backslash \{0\}} |f(x,y)| = 0$.
+
+    \item[2.](20分)求证:对于任何$\epsilon > 0$, 方程 $q|q \frac{1+\sqrt 5}{2} + p| \leq \frac{1}{\sqrt{5} + \epsilon}$都至多只有有限组解$(p,q) \in \Z \times \N$.
+
+    \item[3.](20分)设$k$是一个数域,$[k:\mathbb{Q}] = n+1 \geq 2$,且$\{1,\theta_1, \cdots, \theta_n\}$是$k$的一组$\mathbb{Q}$-基,那么向量$(\theta_1, \cdots, \theta_n)^{tr}$是劣态逼近的，i.e. 
+    $\exists c  > 0, s.t.  \forall q\in \N, p_1 \cdots, p_n \in \Z$,有:
+    \[
+    |q|^{\frac{1}{n}} \cdot \max \{ |q\theta_1 + p_1| , \cdots  , |q\theta_n+ p_n|\} \geq c.
+    \]
+
+    \item[4.](20分)记$\theta(x) = \sum\limits_{p \leq x} \log p,\pi(x) = \sum\limits_{p \leq x} 1$,其中$p$为素数. 求证: $\theta(x) \sim x $当且仅当$ \pi(x) \sim \frac{x}{\log x}$,其中$\theta(x) \sim x $指$\lim\limits_{x\rightarrow\infty}\frac{\theta(x)}{x}=1$.
+
+    \item[5.](20分)设$g\in\text{SL}_{n}(\mathbb{R})$,考虑$n$个线性型的乘积$L_{g}$,令$N(L_{g})=\inf\limits_{x\in\mathbb{Z}^{n}\backslash 0}|L_{g}(x)|$,$\kappa_{n}=\inf\limits_{g\in\text{SL}_{n}(\mathbb{R})}N(L_{g})^{-1}$,证明:
+    \begin{itemize}
+        \item[(1)]$\kappa_{n}\leq \inf\{d_{k}^{\frac{1}{2}}\big|[k:\mathbb{Q}]=n,k\text{为完全实域}\}$.
+
+        \item[(2)]存在某$g \in \text{SL}_{n}(\mathbb{R})$使得$\kappa_{n}=N(L_{g})^{-1}$.
+    \end{itemize}
+    
+\end{itemize}

@@ -1,0 +1,1337 @@
+\setdisplaytitle{习题：实分析（徐胜芝）}
+\sethtmltitle{习题：实分析（徐胜芝）}
+\theoremstyle{plain}\newtheorem*{1}{习题1}
+\theoremstyle{plain}\newtheorem*{2}{习题2}
+\theoremstyle{plain}\newtheorem*{3}{习题3}
+\theoremstyle{plain}\newtheorem*{4}{习题4}
+\theoremstyle{plain}\newtheorem*{5}{习题5}
+\theoremstyle{plain}\newtheorem*{6}{习题6}
+\theoremstyle{plain}\newtheorem*{7}{习题7}
+\theoremstyle{plain}\newtheorem*{8}{习题8}
+\theoremstyle{plain}\newtheorem*{9}{习题9}
+\theoremstyle{plain}\newtheorem*{10}{习题10}
+\theoremstyle{plain}\newtheorem*{11}{习题11}
+\theoremstyle{plain}\newtheorem*{12}{习题12}
+\theoremstyle{plain}\newtheorem*{13}{习题13}
+\theoremstyle{plain}\newtheorem*{14}{习题14}
+\theoremstyle{plain}\newtheorem*{15}{习题15}
+
+\newenvironment{solution}
+    {\textbf{解答:}}
+    {}
+
+\newenvironment{hint}
+    {\textbf{提示:}}
+    {}
+
+\renewcommand{\qed}{\quad\qedsymbol}
+
+本文档是复旦大学徐胜芝老师的实变函数课程教材（《基础实分析》科学出版社, 徐胜芝编著）的\textbf{部分}习题解答, 内容主要来自本人作业、习题课讲解、助教解答等.因本人能力有限, 所以内容\textbf{难免出现疏漏错误}, 敬请谅解.也请尽量自行思考, 不要一抄了之, 毕竟徐老师的考试还是比较注重作业题的（笑）.祝实变高分！
+
+\section{关系与相关性}
+\subsection{集合算术}
+
+\begin{2}
+用枚举法将以下各行符号各写于一个集合并求其计数.
+\begin{enumerate}[label=(\arabic*)]
+\item $\mathcal{A}, \mathcal{B}, \mathcal{C}, \mathcal{D}, \mathcal{E}, \mathcal{F}, \mathcal{G}, \mathcal{H}, \mathcal{I}, \mathcal{J}, \mathcal{K}, \mathcal{L}, \mathcal{M}, \mathcal{N}, \mathcal{O}, \mathcal{P}, \mathcal{Q}, \mathcal{R}, \mathcal{S}, \mathcal{T}, \mathcal{U}, \mathcal{V}, \mathcal{W}, \mathcal{X}, \mathcal{Y}, \mathcal{Z}$.
+\item $\mathbf{A}, \mathbf{B}, \mathbf{C}, \mathbf{D}, \mathbf{E}, \mathbf{F}, \mathbf{G}, \mathbf{H}, \mathbf{I}, \mathbf{J}, \mathbf{K}, \mathbf{L}, \mathbf{M}, \mathbf{N}, \mathbf{O}, \mathbf{P}, \mathbf{Q}, \mathbf{R}, \mathbf{S}, \mathbf{T}, \mathbf{U}, \mathbf{V}, \mathbf{W}, \mathbf{X}, \mathbf{Y}, \mathbf{Z}$.
+\item $\mathfrak{A}, \mathfrak{B}, \mathfrak{C}, \mathfrak{D}, \mathfrak{E}, \mathfrak{F}, \mathfrak{G}, \mathfrak{H}, \mathfrak{I}, \mathfrak{J}, \mathfrak{K}, \mathfrak{L}, \mathfrak{M}, \mathfrak{N}, \mathfrak{D}, \mathfrak{P}, \mathfrak{Q}, \mathfrak{R}, \mathfrak{S}, \mathfrak{T}, \mathfrak{U}, \mathfrak{V}, \mathfrak{W}, \mathfrak{X}, \mathfrak{Y}, \mathfrak{Z}$.
+\item $\mathbb{A}, \mathbb{B}, \mathbb{C}, \mathbb{D}, \mathbb{E}, \mathbb{F}, \mathbb{G}, \mathbb{H}, \mathbb{I}, \mathbb{J}, \mathbb{K}, \mathbb{L}, \mathbb{M}, \mathbb{N}, \mathbb{O}, \mathbb{P}, \mathbb{Q}, \mathbb{R}, \mathbb{S}, \mathbb{T}, \mathbb{U}, \mathbb{V}, \mathbb{W}, \mathbb{X}, \mathbb{Y}, \mathbb{Z}$.
+\item $\alpha, \beta, \gamma, \delta, \epsilon, \varepsilon, \zeta, \eta, \theta, \vartheta, \iota, \kappa, \lambda, \mu, \nu, \xi, o, \pi, \varpi, \rho, \varrho, \sigma, \varsigma, \tau, v, \phi, \varphi, \chi, \psi, \omega$.
+\item $\mathfrak{a}, \mathfrak{b}, \mathfrak{c}, \mathfrak{d}, \mathfrak{e}, \mathfrak{f}, \mathfrak{g}, \mathfrak{h}, \mathfrak{i}, \mathfrak{j}, \mathfrak{k}, \mathfrak{l}, \mathfrak{m}, \mathfrak{n}, \mathfrak{o}, \mathfrak{p}, \mathfrak{q}, \mathfrak{r}, \mathfrak{s}, \mathfrak{t}, \mathfrak{u}, \mathfrak{v}, \mathfrak{w}, \mathfrak{x}, \mathfrak{y}, \mathfrak{z}, \textmd{\ss}$.
+\item $\sim, \equiv, \simeq, \asymp, \approx, \cong, \backsim, \backsimeq, \doteq, \bowtie, \Bumpeq, \bumpeq, \sharp, \clubsuit, \lozenge, \heartsuit, \spadesuit, \eqcirc, \risingdotseq, \circeq, \fallingdotseq, \triangleleft, \triangleright$.
+\item $\unlhd, \unrhd, \vDash, \Vdash, \Vvdash, \smile, \lessdot, \gtrdot, \lll, \ggg, \doteqdot, \Subset, \Supset, \sqsubset, \sqsupset, \preccurlyeq, \succcurlyeq, \curlyeqprec, \curlyeqsucc, \propto, \between, \pitchfork, \shortparallel$.
+\end{enumerate}
+\end{2}
+\begin{solution}
+是不是latex开了特殊字符的限时免费？
+\end{solution}
+\begin{4}
+用区间运算表达标准$3$进制小数表示中含数字$1$的$x \in [0, 1) $全体$A$和$3$进制小数表示中不含数字$1$的$x \in (0, 1) $全体$B$（如$0.1=0.022\cdots$和$0.122\cdots=0.2$不含$1$）.
+\end{4}
+\begin{solution}
+对于标准三进制表示$x = (0.a_1a_2\cdots)_3 (\forall n,  \exists i \geqslant n : a_i \neq 2)$,
+
+$x \in A \iff (\exists n:a_n=1)\land (\forall i<n:a_i\neq1)$,
+
+即$x \in [0.a_1 \cdots a_{n-1}1, 0.a_1 \cdots a_{n-1}2)$,
+
+所以$A=\coprod\limits_{n \geqslant 1}\coprod\limits_{a_i \neq 1}[0.a_1 \cdots a_{n-1}1, 0.a_1 \cdots a_{n-1}2)$,
+
+
+$x\in (0, 1)\setminus B \iff x$有个$3$进制小数表示含数字$1$,
+
+但由约定, $\exists n:0.a_1 \cdots a_{n-1}1<x<0.a_1 \cdots a_{n-1}2$ $(a_i\neq 1)$,
+
+所以$(0, 1)\setminus B=\coprod\limits_{n \geqslant 1}\coprod\limits_{a_i \neq 1}(0.a_1 \cdots a_{n-1}1, 0.a_1 \cdots a_{n-1}2)$,
+
+由此$B=(0, 1)\setminus\coprod\limits_{n \geqslant 1}\coprod\limits_{a_i \neq 1}(0.a_1 \cdots a_{n-1}1, 0.a_1 \cdots a_{n-1}2)$.
+\end{solution}
+
+
+\subsection{二元关系}
+\begin{2}
+证明： $f_{\bullet}$可逆当且仅当$f$可逆.
+
+\end{2}
+
+\begin{solution}
+充分性显然,因此只证必要性.
+
+$f$是单射：$f(x_1)=f(x_2)$时, $f_{\bullet}(\{x_1\})=f_{\bullet}(\{x_2\})$, 故$\{x_1\}=\{x_2\}$, $x_1=x_2$,
+
+$f$是满射：对于$y\in Y$, 设$f_{\bullet}(A)=\{y\}$, 则$x\in A$使得$f(x)=y$.
+\end{solution}
+
+\begin{3}
+证明： $f^{\bullet}$可逆当且仅当$f$可逆.
+\end{3}
+\begin{solution}
+只证必要性.
+
+$f$是满射：设$f^{\bullet}(\{y\})=A$, 又$f^{\bullet}(\varnothing)=\varnothing$, 故$A\neq \varnothing$, 从而$x\in A$使$f(x)=y$,
+
+$f$是单射：要证$A$是单点集.当$A$有分解$A_1\uplus A_2$时, $A_i=f^{\bullet}(B_i)$, 
+由$\varnothing=A_1 \cap A_2=f^{\bullet}(B_1 \cap B_2)$及$f$的满性可知, 
+$B=\varnothing$.又$f^{\bullet}(B_1 \uplus B_2)=$$f^{\bullet}(B_1 )\uplus f^{\bullet}(B_2)=A=f^{\bullet}(\{y\})$, 
+故$\{y\}=B_1 \uplus B_2$, 可设$B_2=\varnothing$, 则$A_2=\varnothing$, 可见$A$只含一点$x$.
+\end{solution}
+
+
+\begin{6}
+形式地命$A(m, n)=\{[a_{ij}]_{m\times n}|a_{ij}\in A\}$且$A(n)=A(n, n)$. 
+当$A$是个环且有幺元 $1$ 时, 某个$x\in A(m, n)$可逆指有个$y\in A(n, m)$使$xy$和$yx$各是$m$阶幺阵 $1_m$和$n$ 阶幺阵$1_n$. 
+将$n$阶可逆阵全体记为$\mathrm{GL}_n(A)$. 称方阵$a$和$b$相似指有可逆阵$x$使$xax^{-1}=b$.
+
+(1)设$n$阶方阵$p$是幂等阵(即$p^2=p)$, 则$p^\perp:=1_n-p$也是幂等的.
+
+(2)（任意阶）幂等阵全体$E$上有等价关系使$p \sim q$表示有矩阵$u$和$v$使得$vu=p$且$uv=q$.此时可要求$u=up=qu$且$v=pv=vq$.
+
+(3)两个幂等阵$p$与$q$相似当且仅当$p \sim q$且$p^{\perp}\sim q^{\perp}$.
+\end{6}
+\begin{solution}
+
+(2)$vu=p$且$uv=q$时, 令$v_1=pvq, u_{1}=qup$,
+则$v_{1}u_{1}=pvq^{2}up=pvuvup=p^4=p$, $u_{1}v_{1}=qup^{2}vq=quvuvq=q^{4}=q$,
+
+又$pv_{1}=p^{2}vq=pvq=v_{1}, v_{1}q=pvq^{2}=pvq=v_1$,
+
+类似知$qu_{1}=u_{1}=u_{1}p$.以$u_{1}v_{1}$各替代$u, v$即可.
+
+(3)必要性：设$xpx^{-1}=q$, $q$为$n$阶的, 则$(xp)(px^{-1})=q$, $(px^{-1})(xp)=p$, $p \sim q$.又$xp^{\perp}x^{-1}=q^{\perp}$, 故$p^{\perp}\sim q^{\perp}$,
+
+充分性：设$vu=p, uv=q, v=pvq, u=qup.$
+
+$v^{\prime}u^{\prime}=p^{\perp}, u^{\prime}v^{\prime}=q^{\perp}, v^{\prime}=p^{\perp}v^{\prime}q^{\perp}, u^{\prime}=q^{\perp}u^{\prime}p^{\perp}. $
+
+令$x=u+u^{\prime}$且$y=v+v^{\prime}$, 则
+$$xy=uv+uv^{\prime}+u^{\prime}v+u^{\prime}v^{\prime}=
+q+0+0+q^{\perp}=1_m. $$
+
+类似知$yx=1_n$, 又
+$xpy=\left(up+u^{\prime}p\right)\left(v+v^{\prime}\right)$
+$=upv+upv^{\prime}=uv=q.$
+
+$uv^{\prime}=upp^{\perp}v^{\prime}=0, u^{\prime}v=0, vu^{\prime}=0, v^{\prime}u=0.$
+
+$u^{\prime}p=u^{\prime}p^{\perp}p=0, pv^{\prime}=pp^{\perp}v^{\prime}=0.$
+
+\end{solution}
+
+\begin{10}用Zorn引理证明线性空间$X$的线性集$L$都有个线性补$M$
+（它是线性集使$L\cap M=\{0\}$且$X=L+M$.此时记$X=L\oplus M$）, 它不必唯一.
+\end{10}
+
+\begin{solution}
+令$\mathfrak{M}=\{\text{线性集 }N\subseteq X\mid L\cap N=\{0\}\}$, 
+它依“$\subseteq$”为偏序集, 所找$M$应是$\mathfrak{M}$中极大成员.
+
+任取$\mathfrak{M}$的全序子集$\mathfrak{N}$, 令$N_{0}=\bigcup_{N\in \mathfrak{N}}N$.
+对于$x_{i}\in N_{0}$及$a_i\in\mathbb{K}$, 有$N_{i}\in \mathfrak{N}$使得$x_i\in N_i.$可设$N_1\subseteq N_2$, 故$x_1a_1+x_2a_2\in N_1+N_2 \subseteq N_2.$
+
+又$L\cap N_0=\bigcup\{L\cap N | N\in \mathfrak{N}\}$$=\bigcup\{\{0\}| N\in \mathfrak{N}\}$$=\{0\}.$故$N_0 \in \mathfrak{M}$是$\mathfrak{N}$的一个上界.
+
+用Zorn引理得$\mathfrak{M}$的一个极大成员$M.$若$X\neq L+M$, 取$x_1\in X\setminus (L+M).$令$M_1=M+x_1\mathbb{K}  .$诸$x\in L\cap M_1$形如$x^{\prime}+x_1a$使$x^{\prime}\in M, a\in \mathbb{K}.$若$a\neq 0$, 则$X_1=\frac{x-x^{\prime}}{a}\in L-M=L+M_1$, 矛盾, 故$a=0$, $x\in L\cap M=\{0\}.$因此$M_1\in \mathfrak{M}$, 与$M$的最大性矛盾.
+
+在$\mathbb{K}^2$中, 令$L=\mathbb{K}\times\{0\}$, $M_a=[a, 1]^T\mathbb{K}(a\in\mathbb{K})$, 则$\mathbb{K}^2=L\oplus M_a$, $a\neq a^{\prime}$, 所以$M_a\neq M_{a^{\prime}}$
+\end{solution}
+
+
+\subsection{基数算术}
+\begin{1}
+证明以下各集可列：
+
+(1)有理系数多项式环$\mathbb{Q}[x]$.系数为有理数的有理函数域$\mathbb{Q}(x).$
+\end{1}
+\begin{solution}
+$\mathbb{Q}(x)=\{\frac{f(x)}{g(x)}\vert f(x), g(x)\in\mathbb{Q}[x], g\neq0\}=\{\frac{f(x)}{g(x)}|f(x), g(x)\in\mathbb{Z}[x], f$与$g$互素, $g$的首系数$>0\}$
+
+令$A=\{(f(x), g(x))|f(x), g(x)\in\mathbb{Z}[x]\text{ 互素}, g(x)\text{ 的首系数}>0\}$, 
+那么$\mathbb{Z}[x]\times\{1\}\subset A\subset\mathbb{Z}[x]\times\mathbb{Z}[x]$, 
+因$\mathbb{Z}[x]$可列, 故 $A$可列, 
+从$A$到$\mathbb{Q}(x)$有双射$(f(x), g(x))\mapsto f(x)/g(x)$, 因此$\mathbb{Q}(x)$可列.
+\end{solution}
+
+
+\begin{4}
+以下陈述是否正确？对于错误者, 请举反例.
+
+(1)如果$A\simeq B, C\simeq D$且$A\subset C, B\subset D$, 则$C\setminus A\simeq D\setminus B.$
+
+(2)如果$A\simeq B$且$A\cup B\subset C$, 则$C\setminus A\simeq C\setminus B$
+
+(3)如果$A\simeq B$且$C\subseteq A\cap B$, 则$A\setminus C\simeq B\setminus C.$
+
+(4)如果$A\times B\simeq A\times C$或$B^A\simeq C^A$或$A^B\simeq A^C$, 则$B\simeq C.$
+
+(5)可数集$X$上有个偏序$\preceq$使$X$的非空子集都有最小元.
+   \end{4}
+\begin{solution}
+(1)$\times$
+(2)$\times$
+(3)$\times$
+(4)$\times$:令$A=\varnothing, B=\{1\}, C=\{1, 2\}$, 
+则$A\times B\simeq A\times C$, $B^{A}\simeq  C^{A}$, 
+$\varnothing =A^{B}\simeq A^{C}=\varnothing$, 但$B\ncong  C$.
+
+(5)存在单射$f:X\rightarrow \mathbb{N}$, 因此可以定义$X$上偏序：$x\leq x^{\prime}$表示$f(x)\leq f(x^{\prime})$. 
+对于$\varnothing\neq S\subseteq X$, $f(S)(\subseteq \mathbb{N})$有最小数$f(x_0)$, 故$x_0$是$S$的最小元.
+\end{solution}
+
+\begin{5}
+求以下集合的基数:
+
+(1) $10$进制有限小数全体, $10$ 进制无限小数全体和 $10$ 进制无限循环小数全体.
+
+(2) $10$进制无限小数中没有数字 $7$ 的小数全体和有数字 $7$ 的小数全体.
+
+(3) 严格递增的正整数列全体与严格递减的有理数列全体.
+
+(4) 至少有两项不同的序列$(x_n)_{n\geqslant1}$的子列全体$\{(x_{k_n})_{n\geqslant1}|1\leqslant k_1<k_2<\cdots\}.$
+
+(5)连续函数 $f:\mathbb{R}\to\mathbb{R}$ 全体和连续函数列 $(f_n:\mathbb{R}\to\mathbb{R})_n\geqslant1$ 全体.
+
+(6) 实系数多项式全体和系数为超越数的多项式全体.
+
+(7) 连续统的有限子集全体与可列子集全体.
+\end{5}
+
+\begin{solution}
+
+(3) $A=\{(k_{n\geqslant1})|k_n\in \mathbb{Z}_+, k_1<k_2<\cdots\}$
+
+令$A_1=\{(k_{n\geqslant1})|k_n\in \mathbb{Z}_+\}=\mathbb{Z}_+^{\mathbb{Z}_+}$
+
+从$A$至$A_1$有个双射$(k_{n\geqslant1})\mapsto(k_1, k_2-k_1, \cdots, k_n-k_{n-1}, \cdots)$, 故$|A|=|A_1|=\aleph_0^{\aleph_0}=\aleph.$
+
+(5) $C(\mathbb{R}, \mathbb{R})=\{$连续$f:\mathbb{R}\rightarrow\mathbb{R}\}$
+
+它至$\mathbb{R}^{\mathbb{Q}}=\{$函数$g:\mathbb{Q}\rightarrow\mathbb{R}\}$有个单射$f\rightarrow f|_{\mathbb{Q}}.$
+
+$f_1|_{\mathbb{Q}}=f_2|_{\mathbb{Q}}$时, 任取$x\in \mathbb{R}$, 有列$x_n\in\mathbb{Q}$趋近于$x$.
+
+由$f_{1}(x_{n})=f_{2}(x_{n})$得$f_{1}(x)=f_{2}(x)$,
+因此$|C(\mathbb{R}, \mathbb{R})|\leqslant|\mathbb{R}^{\mathbb{Q}}|=\aleph^{\aleph_0}=\aleph.$
+
+又由$C(\mathbb{R}, \mathbb{R})\supseteq\{a+\exp|a\in\mathbb{R}\}$知$|C(\mathbb{R}, \mathbb{R})|\geqslant|\mathbb{R}|=\aleph.$
+
+可见$|\{(f_{n\geqslant1})|f_{n}\in C(\mathbb{R}, \mathbb{R})\}=C(\mathbb{R}, \mathbb{R})^{\mathbb{Z}_+}|=\aleph^{\aleph_0}=\aleph.$
+
+(6)令$A=\left\{\sum\limits_{n\geqslant0}a_{n}x^{n}\Big|a_{n}\in\mathbb{R}, \left\{n|a_{n}\neq 0\right\}\text{有限}\right\}$,
+
+$A$至$\mathbb{R}^{\mathbb{N}}$有个单射$\sum\limits_{n\geqslant0}a_{n}x^{n}1\mapsto(a_{n\geqslant0})$, 故$|A|\leqslant\aleph^{\aleph_0}=\aleph.$
+
+又$A\supseteq\mathbb{R}$, 故$|A|\geqslant\aleph$.
+
+(7)
+$F_{1}=\{\text{有限 }A\subseteq \mathbb{R}\}=\{\{x_{1}<\cdots<x_{n}\}|x_{k}\in \mathbb{R}, n\geqslant 1\}$,
+
+$F=\{\text{有限 }A\subset \mathbb{R} \}=F_1\cup\{\varnothing\}$.
+
+有单射$F_1\to\mathbb{R}^{\mathbb{Z}_+}:\{x_1<\cdots<x_n\}\mapsto(x_1, \cdots, x_n, x_n, \cdots)$, 从而$|F_1|\leqslant\aleph^{\aleph_0}=\aleph.$
+
+又由$F_1\supseteq\{\{x\}|x\in \mathbb{R}\}$知$|F_1|\geqslant\aleph$, 可见$|F|=|F_1|+1=\aleph+1=\aleph$.
+
+令$G=\{\text{可列集 }A\subset\mathbb{R}\}$, 从$\mathbb{R}^{\mathbb{N}}\to A$有个满射$(x_{n\geqslant 0})\mapsto\{x_{n\geqslant0}\}$, 从而$|G|\leqslant\aleph^{\aleph_0}=\aleph$.
+
+又$G\supseteq\{a+\mathbb{Z}|0<a<1\}$, 故$|G|\geqslant \aleph$. 所以$|G|=\aleph$.
+\end{solution}
+
+\begin{8}
+Euclid 空间$\mathbb{R}^n$ 共有多少个开集? 多少个闭集? 多少个紧集?
+\end{8}   
+\begin{solution}
+令$T=\left\{\text{开集 }B\subseteq \mathbb{R}^{n}\right\}$, 且$\psi(B)=\left\{\left(x,r\right)\in\left(\mathbb{Q}^{n}\times \mathbb{Q}_{+}\right)|O(x,r)\subseteq B\right\}$,
+
+则$B=\bigcup\left\{O(x,r)\right|\left(x,r\right)\in\psi(B)\}$,
+
+$\forall x^{\prime}\in B,\exists r^{\prime}>0:O(x^{\prime},r^{\prime})\subseteq B$
+$;\exists x\in\mathbb{Q}^{n},r\in\mathbb{Q}_+:|x^{\prime}-x|<r\leqslant\frac{r^{\prime}}{2}$
+
+故$x^{\prime}\in O(x,r)\subseteq O(x^{\prime},r^{\prime})\subseteq B$.
+
+可见$\psi:T\to 2^{\mathbb{Q}^n\times\mathbb{Q}_+}$是个单射,从而$|T|\leqslant 2^{\aleph_0^n\aleph_0}=2^{\aleph_0}=\aleph.$
+
+又$T\supseteq\{O(x,1)|x\in\mathbb{R}^n\}$,则$|T|\geqslant\aleph$, 所以$|T|=\aleph$.
+\end{solution}
+
+\begin{10}
+将$\mathbb{R}$自然地视为$\mathbb{Q}$上线性空间,求其维数.
+以$M$记$\mathbb{Q}$-线性函数$f:\mathbb{R}\to\mathbb{Q}$
+依通常如法与数乘所成的$\mathbb{Q}$上线性空间,求其维数.
+   \end{10}
+\begin{solution}
+首先, $|\mathbb{Q}|\leqslant \dim_{\mathbb{Q}}\mathbb{R}$, 
+否则$\mathbb{R}$是有限维$\mathbb{Q}$-线性空间,即$\mathbb{R}\simeq\mathbb{Q}^n(n\in\mathbb{Z}_+),|\mathbb{R}|=\aleph_0^n=\aleph_0,$矛盾.
+
+其次, $\dim_{\mathbb{Q}}\mathbb{R}=|\mathbb{R}|=\aleph.$
+
+令$M=\{$有理线性$f:\mathbb{R}\to\mathbb{Q}\},$则$|\mathbb{Q}|\leqslant\dim_{\mathbb{Q}}M.$故$\dim_{\mathbb{Q}}M=|M|.$
+
+取$\mathbb{R}$的一个基$B$, 诸$f\in\mathbb{R}$由$f|_B$唯一确定.故$M$至$\mathbb{Q}_B$有个双射$f\mapsto f|_B.$
+
+从而$|M|=\aleph_0^{|B|}=\aleph_0^{\dim_{\mathbb{Q}}\mathbb{R}}=\aleph_0^{\aleph}=2^{\aleph}.$
+
+\end{solution}
+
+\begin{13}
+集列$(A_n)_{n\in\mathbb{N}}$之并是连续统时,某个$A_n$是连续统.
+\end{13}
+\begin{solution}
+仿照p32定理8的证明.
+\end{solution}
+
+
+\subsection{完备序集}
+\begin{4}
+正整数集$\mathbb{Z}_+$上有偏序$|$使$a|b$表示$a$整除$b$. 
+依此偏序, $\mathbb{Z}_+$不满足三歧性但是上下定向,其有界集必有限且有上下确界.
+\end{4}
+\begin{solution}
+
+(1)\quad $a|a;$
+
+$(a|b)\land(b|c)\Rightarrow a|c;$
+
+$(a|b)\land (b|a)\Rightarrow a=b.$
+
+(2) $2\nmid 3,$故$(\mathbb{Z}_+,|)$非全序的,对于$a_1,a_2\in \mathbb{Z}_+$,令$a_0=1$且$a=a_1a_2,$则$a_0|a_i$且$a_i|a_0,$从而$(\mathbb{Z}_+,|)$是上下定向的.
+
+(3) $S\subseteq (\mathbb{Z}_+,|)$有个上界$C$时,令$C=p_1^{k_1}\cdots p_n^{k_n}($使素数$p_1<p_2<\cdots<p_n,\{k_1,\cdots,k_n\}\subseteq\mathbb{Z}_+).$
+
+诸$a\in S$整除$C$,便形如$p_1^{l_1(a)}\cdots p_n^{l_n(a)}$, 
+使得$\{l_1(a),\cdots,l_n(a)\}\subseteq\mathbb{N}$且$l_i(a)\leqslant k_i$.
+
+可见$S$至$\{0,\cdots,k_1\}\times\cdots\times\{0,\cdots,k_n\}$有单射$a\mapsto(l_1(a),\cdots,l_n(a)),S$便有限.
+
+令$l_i=\max\{l_i(a)|a\in S\}$且$b=p_1^{l_1}\cdots p_n^{l_n}$,则$b$是$S$的一个上界.
+
+若$b^{\prime}$也是$S$的一个上界, $b^{\prime}=p_1^{l_1^{\prime}}\cdots p_n^{l_n^{\prime}}\cdots p_m^{l_m^{\prime}}(l_{n+1}^{\prime},\cdots,l_m^{\prime}\in \mathbb{N})$, 
+则$k_i(a)\leqslant l_i^{\prime}$, 从而$l_i \leqslant l_i^{\prime}$. 
+由此, $b|b^{\prime}$. 故$b$是$S$的最小上界.
+\end{solution}
+\begin{5}
+(Tarski不动点定理)  设完备序集$(L,\leqslant)$有最大元$b$和最小元$a$. 
+设$f:L\to L$是递增映射, 则有$x\in L$使$f( x) = x$(此类$x$和$f$称为$f$的不动点).
+   \end{5}
+\begin{solution}
+令$F= \left\{ x\in L| x\leqslant f( x) \right\}$含$a$且 有 上 界 $b$.
+
+令$x_1= \sup f$,诸$x\in F$使得$x\leqslant x_1$有$x\leqslant f(x)\leqslant f( x_1)$.
+
+ 依$x$取上确界,得$x_1\leqslant f(x_1)\Rightarrow x_1\in F$且$f(x_1)\leqslant f(f(x_1))$
+ 
+ $\Rightarrow f(x_1)\in F \Rightarrow f(x_1)\in x_1\Rightarrow f(x_1)=x_1$.
+\end{solution}
+
+
+\begin{10}
+求可能的基数：
+$\textcircled{1}$间断集恰是有理数域的函数$f:\mathbb{R}\to\mathbb{C}$全体$X;$
+$\textcircled{2}$间断集
+可数的函数$g:\overline{\mathbb{R}}\to\overline{\mathbb{R}}$全体$X;$
+$\textcircled{3}$ $X\subseteq\overline{\mathbb{R}}$的左孤立点全体$L$和右孤立点全体$R.$
+\end{10}   
+\begin{solution}
+
+$\textcircled{1}$ 从$X$至$\mathbb{C}^{\mathbb{Q}}$有单射$\psi :f\mapsto f|_{\mathbb{Q}}.$
+
+当$\psi(f_1)=\psi(f_2)$时,诸$x\in\mathbb{Q}$使$f_1(x)=f_2(x);$诸$x\in \mathbb{R}\setminus\mathbb{Q}$被某有理数列$(x_{n\geqslant 1})$逼近.
+
+由$f_1(x_n)=f_2(x_n)$和$f_i$在$x$的连续性得$f_1=f_2$, 故$|X|\leqslant |\mathbb{C}^{\mathbb{Q}}|=\aleph^{\aleph_0}=\aleph$.
+
+又由$X\supseteq\{a$黎曼函数$|a\in \mathbb{C}\}$知$|X|\geqslant \aleph$.
+
+$\textcircled{2}$ 从$X$至$ctm(\overline{\mathbb{R}},\overline{\mathbb{R}}) $有单射$\psi:f\mapsto gr(f|_{\mathbb{Q}\cup D_f}),D_f$是$f$的间断集（可数）.
+
+当$\psi(f_1)=\psi(f_2)$时, $f_1|_{\mathbb{Q}\cup D_f}=f_2|_{\mathbb{Q}\cup D_f}.$
+
+诸$x\in \overline{\mathbb{R}}\setminus(\mathbb{Q}\cup D_{f_i}) $被某有理点列$(x_{n\geqslant1})$逼近,
+由$f_1(x_n)=f_2(x_n)$和$f_i$在$x$的连续性得$f_1=f_2$,
+故$|X|\leqslant|ctm(\overline{\mathbb{R}},\overline{\mathbb{R}})|=\aleph$ (见p34题5(7)).
+
+又由$X\supseteq\{a$黎曼函数$|a\in \mathbb{C}\}$知$|X|\geqslant \aleph.$
+
+$\textcircled{3}$ $x\in\overline{\mathbb{R}}$是$X$的右孤立点$\iff\exists x^\prime>x:X\cap[x,x^{\prime})=\{x\}.$
+此类$x^{\prime}$的最大者记成$b(x)$.
+
+当$x_1\in R$使$ x<x_1$时, $x_1 \notin [x,b(x))$.
+
+故$b(x)\leqslant x_1$, 因此 $\left\{(x,b(x))|x\in R\right\}$是一族互斥非退化区间.
+
+取个有理数$C(x)\in[x,b(x))$, 则$C:R\rightarrow\mathbb{Q}$为单射, 从而$|R|\leqslant \aleph$.
+
+(i) $X=[0,+\infty]$, 则$R=\varnothing ,|R|=0;$
+
+(ii) $X=\coprod\limits_{k=1}^n(2k-1,2k]$, 则$|R|=n;$
+
+(iii) $X=\coprod\limits_{k\in\mathbb{Z}}(2k-1,2k]$, 则$|R|=\aleph_0.$
+\end{solution}
+
+    
+\section{测度和可测性}
+
+\subsection{可列加性}
+\begin{3}
+在$\mathbb{R}^n$中,紧集全体$\mathcal{K}$对于有限并与任意交运算封闭,但非半环.
+
+(1)命$\mathcal{K}_1=\{E\setminus F|E,F\in\mathcal{K}\}$,它是半环.
+
+(2)找个拓扑空间 $X$ 使其紧集全体 $\mathcal{M}$ 是个集环.
+ \end{3}  
+\begin{solution}
+$\R^{n}$中紧集特征是有界闭集,因此$\mathcal{K}$对于有限并任意交运算封闭.
+
+令$E=[0,1]\times[0,1]^{n-1}$, $F=[0,\frac{1}{2}]\times[0,1]^{n-1}$,
+则$E\setminus F$不是闭集, 因此$\mathcal{K}$不是半环.
+
+(1) $\mathcal{K}_1=\{E\setminus F|E,F\in \mathcal{K}\}$ (可设$F\subseteq E$). 于是
+
+\begin{align*}
+(E_1\setminus F_{1})\setminus(E_{2}\setminus F_{2})
+&=(E_{1}\cap F_{1}^{c})\cap(E_{2}\cap F_{2}^{c})^{c}\\
+&=E_{1}\cap F_{1}^{c}\cap(E_{2}^{c}\cup F_{2})\\
+&=(E_{1}\cap F_{1}^c\cap E_{2}^{c})\cup\left(E_{1}\cap F_{1}^{c}\cap F_{2}\right)\\
+&=\left(E_{1}\setminus (F_{1}\cup F_{2})\right)\cup\left((E_{1}\cap F_{2})\setminus F_{1}\right)\\
+&\overset{\rm def}{=}A_1\cup A_2
+\end{align*}
+
+又$A_1\cap A_2=(E_1\cap F_2)\setminus(F_1\cup E_2)$,易$\mathcal{K}$是集环.
+
+(2) $X$是离散空间, $\mathcal{K}=finX$,它是集环.
+\end{solution}
+\begin{5}
+作$2^{\mathbb{N}}$上测度$\rho_n:E\mapsto\dfrac{|\{i\in E |i<n\}|_0}{n}$(它反映了$E$在前$n$个自然数的分布情况)和密度$\rho:E\mapsto\varlimsup\limits_{n\to\infty}\rho_n(E)$(它反映了$E$于$\mathbb{N}$的分布情况).
+
+(1)求$\rho(\mathbb{P})$ (用素数定理:$\lim\limits_{n\to\infty}\rho_n(\mathbb{P})\log n=1$. 这由 15岁的 Gauss 根据一张素数表猜出并终由 Hadamard 和 de la Vallée-Poussin 于 1896 年证明).
+
+(2)证明$\rho$是个外容度.当$0<t<1$时,有子集$E$使$\lim\limits_{n\to\infty}\rho_n(E)=t$ (提示:命$l_n$为$nt$的下整部分而$k_n=l_n-l_{n-1}$,考察$\{i\in\mathbb{N}|k_i=1\}$).
+
+(3)求$\rho(\{k\})(k\in\mathbb{N})$和$\rho(\mathbb{N})$,并判断$\rho$是否满足可列次加性. 
+  \end{5} 
+\begin{solution}
+
+(2)\quad$\textcircled{1}$ $\rho(\varnothing)=\lim\limits_{n\to\infty}\rho_{n}(\varnothing)=0.$
+
+$\textcircled{2}$ $E\subseteq E^{\prime}\Rightarrow \rho_{n}(\epsilon)
+\leqslant \rho_{n}(E^{\prime})\Rightarrow \rho(E)\leqslant \rho(E^{\prime}).$
+
+$\textcircled{3}$ $E=E_{1}\bot E_{2}$,则$\rho_{n}(E)=\rho_{n}(E_{1})+\rho_{n}(E_{2})\Rightarrow \rho(E)\leqslant \rho(E_{1})+\rho(E_{2})$
+
+令$nt=l_{n}+r_{n}$ $(0\leqslant r_{n}<1,l_{n}\in\mathbb{N}),E=\left\{i\in \mathbb{N}|l_{i}-l_{i-1}=1\right\}$,
+
+则$i\notin E\Leftrightarrow l_{i}-l_{i-1}=0$,
+
+故$|\{i\in E|i<n\}|_0=\sum\limits_{i=1}^{n-1}(l_{i}-l_{i-1})=l_{n-1}\Rightarrow \rho_{n}(E)=\frac{l_{n-1}}{n},\rho(E)=t.$
+
+(3)\quad$\rho_{n}(\{k\})=\frac{1}{n}(n>k),\rho_{n}(\mathbb{N})=1$
+
+$\therefore \rho(\{k\})=0,\rho(N)=1.$
+
+故$\rho(\mathbb{N})>\sum\limits_{k\in \mathbb{N}}\rho(\{k\})$, $\rho$ 不满足可列次加性.
+\end{solution}
+
+
+\begin{7}
+设半环$\mathcal{P}$上有族测度$\mu_i(i\in\alpha)$,以下所作$\mathcal{P}$上集函数$\mu$是否为测度？
+
+$\textcircled{1}$ $\mu ( E) = \sum\limits_{i\in \alpha }\mu_{i}.
+\quad\qquad$  $\textcircled{2}$ $( \mu _{i})_{i\uparrow \alpha }$ 是递减网时, $\mu(E)=\inf\limits_{i\in\alpha}\mu_{i}(E).$
+
+$\textcircled{3}$ $\mu(E)=\sup\limits_{i\in\alpha}\mu_i(E).
+\quad$ $\textcircled{4}$ $\left(\mu_i\right)_{i\uparrow\alpha}$ 是递增网时, $\mu(E)=\sup\limits_{i\in\alpha}\mu_i(E).$
+\end{7}  
+\begin{solution}
+\begin{enumerate}
+\item[$\textcircled{1}$] $\mu$ 是测度, $E=\coprod\limits_{j\in\mathbb{N}}E_{j}$时, 
+$\mu_{i}(E)=\sum\limits_{j\in\mathbb{N}}\mu_{i}(E_j)$,
+
+\begin{align*}
+    \mu(E)&=\sum_{i\in\alpha}\sum_{j\in \mathbb{N}}\mu_{i}(E_{j})\\
+    &=\sum_{j\in \mathbb{N}}\sum_{i\in \alpha}\mu_{i}(E_j)\left(\text{1.4 命题 7(4)}\right)\\
+    &=\sum_{j\in \mathbb{N}}\mu({E}).\left(\text{又 }\mu(\varnothing)=0,\mu\geq0\right)  
+\end{align*}
+
+\item[$\textcircled{2}$] $\mu$ 不必是测度. 令$\mu_{i}:2^{\mathbb{N}}\to\overline{\R},E\mapsto \frac{|E|_{0}}{n},$
+
+则$(\mu_{n\geqslant1})$递减且$\mu(E)=\begin{cases}0:E\text{ is finite}\\+\infty :E\text{ is infinite}\end{cases}$,
+$\mu(\mathbb{N})>\sum\limits_{n\in \mathbb{N}}\mu(\{n\})$.
+
+\item[$\textcircled{3}$] $\mu $不必是测度,令$\mu_{n}:2^{\mathbb{N}}=\overline{\R},E\mapsto1-\chi_{E}(n),$
+
+则 $\mu(E)=\sup\limits_{n\in\mathbb{N}}\chi_{E}(n)=\begin{cases}1:E\neq\varnothing,\\0:E=\varnothing.\end{cases},\mu(\mathbb{N})<\sum\limits_{n\in\mathbb{N}}\mu(\{n\})$.
+
+\item[$\textcircled{4}$] $\mu $是测度, $E=\coprod\limits_{j\in \mathbb{N}}E_j$时, $\mu_{i}(E)=\sum\limits_{j\in\mathbb{N}}\mu_{i}(E_j)$.
+
+因$\mu_{i}(\cdot)$依$i$递增, 由1.4命题7(2)知$\mu(E)=\sum\limits_{j\in\mathbb{N}}\sup\limits_{i\in\alpha}\mu_{i}(E_{j})=\sum\limits_{j\in\mathbb{N}}\mu(E_{j})$. (又$\mu(\varnothing)=0,\mu\geqslant0.)$
+\end{enumerate}
+\end{solution}
+
+
+\subsection{集族扩张}
+
+\begin{1}
+(Borel--Cantelli 引理) 设$\mu$是$ \sigma$-环上外测度使$\sum\limits_{n\geqslant1}\mu(E_n)$可和,则
+$$\mu\Big(\varlimsup_{n\to\infty}E_n\Big)=0.$$
+\end{1}
+\begin{solution}
+$\varlimsup\limits_{n\to\infty}E_{n}=\bigcap\limits_{n\geqslant1}\bigcup\limits_{k\geqslant n}E_{k}$,
+
+故 $\mu\Big(\varlimsup\limits_{n\to\infty}E_{n}\Big)\leqslant\mu\Big(\bigcup\limits_{k\geqslant n}E_{k}\Big)
+\leqslant\sum\limits_{k\geqslant n}\mu(E_{k})\rightarrow0\quad\mathrm{as~}n\rightarrow\infty$
+\end{solution}
+
+\begin{4}
+对于$X$上集族$\mathcal{E}$,命$\mathcal{A} = \{ E, E^{\mathrm{c} }| E\in \mathcal{E} \}$.
+将$X$上包含集族$\mathcal{E}$的所有$\sigma$-代数之交$\sigma(\mathcal{E})$称为$\mathcal{E}$生成的$\sigma$-代数——含$\mathcal{E}$的最小$\sigma$-代数.
+
+(1)当$\mathcal{E}$是个$\sigma$-环时,证明$\mathcal{A}$是个$\sigma$-代数. 
+一般地, $\sigma(\mathcal{E})=\{E,X\setminus E|E\in\mathcal{S}(\mathcal{E})\}.$
+
+(2)诸$E\in\mathcal{S}(\mathcal{A})$落于(与$E$有关的)某可数族$\mathcal C\subseteq\mathcal{A}$生成的$\sigma$-环.
+\end{4}
+\begin{hint}
+
+注意是先给的$E$再找的可数族$\mathcal{C}$,因此结论并不是说 $\mathcal{S}(\mathcal{A})=\mathcal{S}(\mathcal{C})$,事实上取$\mathcal{A}$为$\mathbb{R}$上的可数-补可数代数,如果它是可数生成的,可设它由$\{X_n\}$ 生成,每个$X_n$可数,因为如果$X_n^c$可数,把这个$X_n$替换成它的补集即可.
+
+记$X=\bigcup\limits_{n\geqslant1}X_n$,再记$\mathcal{B}=\{A\subseteq\mathbb{R}:A\subseteq X$ or $A^c\subseteq X\}.$可以证明$\mathcal{B}$ 是包含诸$X_n$的$\sigma$-代数,但是$\mathcal{A}\subseteq\mathcal{B}$并不成立——请注意$\mathcal{A}$由$\{X_n\}$生成, 意味着任何包含诸$X_n$的$\sigma$-代数必须包含$\mathcal{A}.$
+
+现阶段要避免描述 $\mathcal{S}(\mathcal{A})$中的元素,
+想要讨论其中任一集合长成什么样涉及到序数与超限归纳法的一些基本知识 (对于熟悉者并不困难),
+其中的元素确实可以通过所谓“可数次运算”得到,
+但是首先要清楚什么叫一次运算,其次参与运算的集合是什么.
+从$\mathcal{A}_0:=\mathcal{A}$出发,
+定义$\mathcal{A}_{1a}$为所有形如$\mathcal{A}_0$中集合的可数并全体(含有限并), 
+$\mathcal{A}_{1b}$为$\mathcal{A}_{1a}$中集合的补集全体,
+然后作$\mathcal{A}_1=\mathcal{A}_{1a}\cap\mathcal{A}_{1b}$.
+这种操作可以归纳地去做,但是仅对所有自然数做这种操作是不够的,
+需要对所有小于极小不可数序数的序数去做,然后全部并起来.
+这是可数个集族的并 (但本身未必是可数的),可以证明它就是 $\mathcal{S}(\mathcal{A})$.
+
+从上述讨论中, 讨论一个概念必须先有明确的定义,“可数次运算”这种模棱两可、模糊不清的描述不是能被承认的数学证明,而后者使用序数的证明是明确的,含义清晰的,清楚表达了“可数次运算”这个想法. 
+讨论数学的前提首先是有明确的定义,基于明确的定义才能有合理的推理.
+\end{hint}
+
+\begin{solution}
+
+既然我们现阶段很难准确描述 $\sigma$-环中的元素,那就要取巧,
+利用好 $\mathcal{S}(\mathcal{A})$最小性.我们考虑这样一个集族
+$$\mathcal{B}:=\{E\in\mathcal{S}(\mathcal{A}):\text{存在可数族 }\mathcal{C}\subset\mathcal{A}\text{ 使得 }E\in\mathcal{S}(\mathcal{C})\}.$$
+如果我们证明了$\mathcal{B}=\mathcal{S}(\mathcal{A})$,那就证明了命题.
+显然有$\mathcal{A}\subseteq\mathcal{B}$,于是只要证明$\mathcal{B}$是$\sigma$-环就好了,
+即只需要按照定义验证 $\mathcal{B}$ 对于可数并封闭、对于差运算封闭.
+\end{solution}
+
+
+\begin{5}
+当偏序集$(P,\preceq)$有最小元$a$时, 称$P\setminus\{a\}$的极小元为$P$的原子. 
+设集族$\mathcal{A}$含空集且对有限交运算封闭,则其中包含关系下不同原子互斥.
+
+(1)设集合$X$上 $\sigma$-环$S$有可数生成系$\{A_n|n\geqslant1\}$,
+则$S$中原子都形如$\bigcap\limits_{n\geqslant1}H_n$使诸$H_n$形如$A_n$或补集$A_n^\mathrm{c}$.
+而$S$中非空成员$B$都是一些原子之并.
+
+(2)当$X$是$\mathbb{R}^n$的 Borel 集时, $\mathfrak{B}(X)$的原子都是单点集.
+ \end{5}  
+\begin{solution}
+当$E_{1},E_{2}$是$\mathcal{A}$的原子时, $E_1\cap E_2\in\mathcal{A} $比$E_i$小, 
+故$E_{1}\cap E_{2}=\varnothing, E_1=E_{1}\cap E_{2}=E_{2}$.
+
+(1)令$\mathcal{E}=\{\bigcap\limits_{n\geqslant1}H_{n}|H_{n}=A_{n}\text{ 或 }H_{n}=A_{n}^C\}(\subseteq \mathcal{J})$,则$\mathcal{E}$中成员互斥:
+
+$E=\bigcap\limits_{n\geqslant1}H_n$与$E^{\prime}=\bigcap\limits_{n\geqslant1}H^{\prime}_n$不等时,某个$H_{n}\neq H_{n}^{\prime}$,
+则$E\cap E^{\prime}\subseteq H_{n}\cap H_{n}^{\prime}=A_{n}\cap A_n^C=\varnothing$.
+
+令$\mathcal{F}=\{\coprod \mathcal{D}|\mathcal{D}\subseteq\mathcal{E}\}$,
+则易证$\mathcal{D}$是个$\sigma$-环.
+因$A_{n}=\coprod\{F\in\mathcal{F}|F\subseteq A_{n}\}$
+
+故$\{A_n|n\geqslant 1\}\subseteq\mathcal{F}\Rightarrow\mathcal{S}\subseteq\mathcal{F}$. 
+显然诸$E\in \mathcal{E}\setminus\{\varnothing\}$是$\mathcal{S}$的原子.
+
+(2)单点集$\{x\}\subseteq X$是闭集, 便是Borel集,它在$\mathcal{B}(X)\setminus\{\varnothing\}$中极小,便是原子,
+
+反之原子 $A\in \mathcal{B}(x)$中点$x(\in A)$使$\{x\}=A$, 故 $A=\{x\}$.
+\end{solution}
+
+\begin{7}
+设$\mu$是集环$\mathcal{A}$上外容度,则$\mu$-零集全体$\mathcal{A}_0:=\{E\in\mathcal{A}|\mu(E)=0\}$是个集环.
+
+(1)证明$\mu$-有限集全体$\mathcal{A}_1:=\{E\in\mathcal{A}|\mu(E)<+\infty\}$是个集环.
+
+(2)当$\mu$是个容度时,诸$E\in\mathcal{A}_1$使$\{x\in E|\{x\}\in\mathcal{A},\mu\{x\}>0\}$可数
+
+(3)证明$\mathcal{B}:=\{E\in\mathcal{A}|F\in\mathcal{A}\Rightarrow\mu(F)=\mu(F\cap E)+\mu(F\setminus E)\}$是个集环
+且$\mu|_{\mathcal{B}}$是个容度.
+
+(4)当$\mu$是个外测度且$\mathcal{A}$是个单调环时, $\mathcal{A}_i$和$\mathcal{B}$是否为单调环？
+\end{7}   
+\begin{solution}
+$E_{1},E_{2}\in \mathcal{A}_0:\mu(E_{2}\setminus E_{1})\leqslant\mu(E_{2})=0;\mu(E_{1}\cap E_{2})\leqslant\mu(E_{1})+\mu(E_{2})=0.$
+
+(1)$E_1,E_2\in \mathcal{A}_1:\mu(E_2\setminus E_1)\leqslant\mu(E_2)<+\infty;\mu(E_1\cup E_2)\leqslant\mu(E_1)+\mu(E_2)<+\infty$
+
+(2)令$E_0=\{x\in E|\mu(\{x\})>0\},E_{n}=\{x\in E_{0}|\mu(\{x\})\geqslant\frac{1}{n}\}$,
+
+任取有限$F\subseteq E_n$,则$\mu(F)=\sum\limits_{x\in F}\mu(\{x\})\geqslant\frac{|F|_{0}}{n}$,
+
+故$|F|_0\leqslant n\cdot\mu(E)$, $E_{n}$有限$(E_n\subseteq E\in\mathcal{A}_1)$, 
+$E_{0}=\bigcup\limits_{n\geqslant1} E_{n}$, 可数.
+\end{solution}
+
+\subsection{测度扩张}
+\begin{1}
+设 $\mu$ 是半环 $\mathcal{P}$ 上一个测度,以下 $F\in\mathcal{H}(\mathcal{P})$ 且 $E\in\mathcal{P}^*$ (可带上下标).
+\begin{enumerate}[label=(\arabic*)]
+\item $\mu^*(E\cup F)+\mu^*(E\cap F)=\mu^*(E)+\mu^*(F).$
+
+\item $\mu^*(F_1\cup F_2)+\mu^*(F_1\cap F_2)\leqslant\mu^*(F_1)+\mu^*(F_2).$
+
+\item 设$E_n\subseteq F\subseteq E_n^{\prime}$且$\lim\limits_{n\to\infty}\mu^*(E_n^{\prime}\setminus E_n)=0$,则$F$是$\mu^*$-可测集.
+
+\item 设$E_n(n\geqslant1)$互斥且$F_n\subseteq E_n$,则$\mu^*\left(\bigcup\limits_{n\geqslant1}F_n\right)=\sum\limits_{n\geqslant1}\mu^*(F_n).$ 
+
+\item $E$的子集$H$是$\mu^*$-可测集当且仅当它能分割测量$E$中诸$\mu^*$-可测集.
+
+\item 设$E\subseteq F$使$\mu^*(E)=\mu^*(F)<+\infty$ (下同),则$F$是$\mu^*$-可测集.
+
+\item 子集$D\subseteq E$是$\mu^*$-可测集当且仅当$\mu^*(E)=\mu^*(D)+\mu^*(E\setminus D).$
+
+\item $F_{1}$和$F_2$都是$\mu^*$-可测的一个充分条件是$F_1\cup F_2$是$\mu^*$-可测集且
+$$\mu^*(F_1)+\mu^*(F_2)=\mu^*(F_1\cup F_2)<+\infty.$$
+\end{enumerate}
+\end{1}   
+
+\begin{solution}
+(1)
+\begin{align*}
+    \mu^{*}(E\cup F)+\mu^{*}(E\cap F)&=\mu^{*}((E\cup F)\cap E)+\mu^{*}((E\cup F)\setminus E)+\mu^*(E\cap F)\\
+    &=\mu^{*}(E)+\mu^{*}(F\setminus E)+\mu^{*}(F\cap E)\\
+    &=\mu^{*}(E)+\mu^{*}(F).
+\end{align*}
+
+(2)有个$E_i\in \mathcal{S}(\mathcal{P})$使 $F_i\subseteq E_i$且$\mu^{* }( F_{i}) = \mu^{* }( E_{i})$.
+
+由$F_1\cup F_2\subseteq E_1\cup E_2,F_1\cap F_2\subseteq E_1\cap E_2$, 知
+
+\begin{align*}
+    \mu^*(F_{1}\cup F_{2})+\mu^*(F_{1}\cap F_{2})&\leqslant \mu^*(E_{1}\cup E_{2})+\mu^*(E_{1}\cap E_{2})\\
+    &=\mu^*(E_{1})+\mu^*(E_{2})\\
+    &=\mu^*(F_{1})+\mu^*(F_{2})
+\end{align*}
+
+(3)令$E=\bigcup\limits_{k\geqslant1}E_k$且$E^{\prime}=\bigcap\limits_{k\geqslant1}E^{\prime}_k$,
+
+则$E\subseteq F\subseteq E^{\prime}$且$E^{\prime}\setminus E\subseteq E_n^{\prime}\setminus E_n(n\geqslant1)$,故$\mu^*(E^\prime\setminus E)=0$.
+
+由$F\setminus E\subseteq E^{\prime}\setminus E$知$\mu^*(F\setminus E)=0.$
+
+又$F=E\uplus(F\setminus E)$,它是$\mu^*$-可测集.
+
+(4)令$F=\bigcup\limits_{n\geqslant1}F_{n}$,则$\mu^{*}(F)=\mu^{*}(F\cap E_{1})+\mu^{*}(F\setminus E_{1})=\mu^{*}(F_{1})+\mu^{*}(S_{2})$,
+
+\begin{align*}
+    S_n&=\bigcup_{n\geqslant1}\{F_k|k\geqslant n\}\\
+    &=\mu^*(F_{1})+\mu^*(S_{2}\cap E_{2})+\mu^*(S_{2}\setminus E_2)\\
+    &=\mu^*(F_{1})+\mu^*(F_{2})+\mu^*(S_{3})+\cdots\\
+    &=\sum_{k=1}^n\mu^{*}(F_{k})+\mu^{*}(S_{n+1})\\
+    &\geqslant\sum_{k=1}^n\mu^{*}(F_{k})\xrightarrow{\text{令 }n\to\infty}
+    \sum_{k\geqslant1}\mu^{*}(F_{k})\geqslant\mu^{*}(F)
+\end{align*}
+
+(5)诸$E^{\prime}\in\mathcal{P}$,使
+
+\begin{align*}
+    \mu^{*}(E^{\prime}\cap H)+\mu^{*}(E^{\prime}\cap H^{C})&=\mu^{*}(E^{\prime}\cap H\cap E)+\mu^{*}(E^{\prime}\cap H\cap E^{C})\\
+    &\quad+\mu^{*}(E^{\prime}\cap H^C\cap H)+\mu^{*}(E^{\prime}\cap H^C\cap E^{C})\\
+    &=\mu^{*}((E^{\prime}\cap E)\cap H)+\mu^{*}((E^{\prime}\cap E)\cap H^{C})+\mu^*(E^{\prime}\cap E^{C})\\
+    &=\mu^{*}(E^{\prime}\cap E)+\mu^{*}(E^{\prime}\cap E^{c})\\
+    &=\mu^{*}(E^{\prime}).
+\end{align*}
+
+可见$H$是$\mu^*$-可测集(定理2).
+
+(6) $\mu^{*}(F)=\mu^{*}(F\cap E)+\mu^{*}(F\cap E^C)=\mu^{*}(E)+\mu^{*}(F\setminus E)$
+
+$\Rightarrow \mu^{*}(F\setminus E)=0$.又$F=E\uplus(F\setminus E).$
+
+(7)诸$E^{\prime}\subseteq E$使$E$有分解$\left\{E_1=E_1^{\prime},E_2=E\setminus E^{\prime}\right\}$.
+
+现在$E_1^{C}\cap F=E_2\cap F,\mu^*(E_1)\leqslant\mu^*(E_1\cap D)+\mu^*(E_1\cap D^C),\mu^*(E_2)\leqslant\mu^*(E_2\cap D^C)$
+
+$\Rightarrow\mu^*(E)\leqslant\mu^*(D)+\mu^*(E\setminus D)=\mu^*(E)$
+
+$\Rightarrow\mu^*(E^{\prime})=\mu^*(E^{\prime}\cap D)+\mu^*(E^{\prime}\cap D^C)$,用(5)即可.
+
+(8)令$E=F_{1}\cup F_{2}$,则$\mu^*(E)=\mu^*(F_{1})+\mu^*(F_{2})\geqslant \mu^*(F_{1})+\mu^*(F_{2}\setminus F_1)\geqslant\mu^*(E).$
+
+用(7)知$F_1$是$\mu^*$-可测集,类似知$F_2$是$\mu^*$-可测集.
+\end{solution}
+
+
+\begin{3}
+设 $\mu$ 是 $\sigma$-环 $\mathcal{P}$ 上一个测度, 
+则 $\mu$ 的 $\sigma$-有限集全体 $\mathcal{S}_\sigma$ 是个 $\sigma$-环.
+\end{3}   
+\begin{solution}
+$\mathcal{S}_{\sigma}=\{E\in\mathcal{P}|\exists A_k\in\mathcal{P}:\mu(A_k)<\infty$且$E\subseteq\bigcup\limits_{k\geqslant1}A_k\}$.
+
+任取$\mathcal{S}_{\sigma}$中序列$(E_{n\geqslant1})$, 
+有$\mathcal{P}$中可数个序列$(A_{nk})_{k\geqslant1}$使$E_n\subseteq\bigcup\limits_{k\geqslant1}A_{nk}$且$\mu(A_{nk})<\infty.$
+
+现在$E_2\setminus E_1\subseteq\bigcup\limits_{n\geqslant1}E_n\subseteq\bigcup\limits_{n,k\geqslant1}A_{nk}$. 
+故$E_2\setminus E_1$和$\bigcup\limits_{n\geqslant1}E_n$在$\mathcal{S}_{\sigma}$中.
+\end{solution}
+
+
+\begin{4}
+设$(\mu_k)_{k\geqslant1}$是集环$\mathcal{P}$上一列$\sigma$-有限测度,只考察它们在 $\mathcal{S}(\mathcal{P})$上的测度扩张. 
+
+(1)对于$n\geqslant1$,诸$E\in\mathcal{P}$是$\mathcal{P}$中某递增序列$(E_k)_{k\geqslant1}$的极限使$\mu_i(E_k)(i\leqslant n;k\geqslant1)$都有限.
+
+(2)设$(a_i)_{i\geqslant1}$是非负实数组,则$\sum\limits_{i=1}^na_i\mu_i$都是$\sigma$-有限测度且其测度扩张是$\sum\limits_{i=1}^na_i\mu_i^*$.
+
+(3)当$\mu_1\leqslant\mu_{2}$时, $\mu_1^*\leqslant\mu_{2}^*$. 
+当$\mu_n$递增至$\mu$时, $\mu_n^*$递增至$\mu^*$吗？
+\end{4}   
+\begin{solution}
+(1)有$\mathcal{P}$中序列$E_{i,k}\nearrow E(1\leqslant i\leqslant n)$使$\mu_i(E_k)\leqslant\mu_i(E_{i,k})<+\infty$.
+
+令$E_k=\bigcap\limits_{i=1}^nE_{i,k}$,则$E_k\nearrow E$
+且$\mu_i(E_k)\leqslant\mu_i(E_{i,k})<+\infty$.
+
+(3)令$\mathfrak{M}=\{E\in\mathcal{S}(\mathcal{P})|\mu_1^*(E\cap H)\leqslant\mu^*_2(E\cap H),H\in\mathcal{P},\mu_2(H)<\infty\}$.
+
+这是含$\mathcal{P}$的单调类,从而$\mathfrak{M}=\mathcal{S}(\mathcal{P})$.
+
+又有$\mathcal{P}$中递增序列$H_{n\geqslant1}$使$E\subseteq\bigcup H_{n\geqslant1}$. 
+由$\mu^*(E\cap H_n)$和从下连续性知$\mu_1^*(E)\leqslant\mu_2^*(E)$.
+
+当$\mu_n\nearrow\mu$时, $\mu_n^*$未必$\nearrow\mu^*$:令$\mathcal{P}=\mathcal{R}(\mathcal{T_1}),\mu_n(E)=n|E|_1$,则$\mu(E)=\begin{cases}
+    +\infty:E\neq\varnothing,\\
+    0:E=\varnothing.
+\end{cases}$.
+
+现在$\mu_n^*(\{x\})=0$但$\mu^*(\{x\})=+\infty$.
+\end{solution}
+
+
+\subsection{常用测度}
+\begin{1}
+设$x\in S(\subseteq[0,1))$有此特征：在$x$的十进制标准表示中,数字 $3$ 出现时,
+其第一次晚于数字$2$的第一次. 证明$S$是 Borel 集并求其 Lebesgue 测度.
+\end{1}   
+\begin{solution}
+令$x=10$进制标准数$(0.a_{1}\cdots a_{n}\cdots)_{10}$,
+
+则$x\in S\Leftrightarrow(\forall n:a_{n}\neq3)\lor\left(\exists n:a_{n}=3,(\forall i<n:a_n=3)\land(\exists j<n,a_j=2)\right)$,
+
+可见$x\in[0,1)\setminus S\Leftrightarrow\left(\exists n:a_{n}=3,(\forall i<n:a_{n}\neq3)\land(\forall j<n,a_{j}\ne2)\right)$,
+
+故$[0,1)\setminus S=\coprod\{[0.a_{1}\cdots a_{n-1}3,0.a_1\cdots a_{n-1},4)|\forall i<n:a_{i}\neq2,3\}$,
+
+可见$S$是Borel集且$|[0,1)\setminus S|_1=\sum\limits_{n\geqslant1}\frac{8^{n-1}}{10^{n}}=\frac{1}{2},|S|_{1}=\frac{1}{2}.$
+\end{solution}
+
+
+
+\begin{2}
+证明 1.1 节练习 4 中各集是 Borel 集并求其 Lebesgue 测度.下设$0<r<1$.
+
+(1)移去位于$\mathbb{I}$中间且长度为$r$的开区间,在剩下两个闭区间$F_1$和$F_2$中间移去长为$r\mathfrak{m}(F_i)$的开区间,各剩下两个闭区间.如此下去剩下一个 Cantor 型集$G_{r}$,求其 Lebesgue 测度.
+
+(2)设$s=r/(1+2r)$且$J$是实轴中长度有限的区间,移去位于$J$中间位置长为$s\mathfrak{m}(J)$的开区间, 剩下两个等长区间$J_1$和$J_2$. 
+移去各位于$J_1$和$J_2$中间位置两个长为$s^2\mathfrak{m}(J)$的开区间, 各剩下两个等长区间. 
+如此下去剩个集$J(r)$, 求其Lebesgue测度并证其构成区间都是退化的.
+
+(3)作$\mathbb{R}$的 Borel 集$E$使非退化区间$T$都满足 $\mathfrak{m}(T\cap E)\mathfrak{m}(T\setminus E)>0.$
+\end{2}
+\begin{solution}
+
+(2)令$J[r]=J-J(r)$,则$|J[r]|_{1}=r|J|_{1}.$
+
+(3)当$J$取遍开集$V$的构成区间时,令$V[r]=\coprod J[r].$
+
+令$V=\coprod\{(k-1,k)|k\in\mathbb{Z}\},r_{n}=1-\frac{1}{2^{n}}(n\geqslant1),V_{n}=V[r_{1}][r_{2}]\cdots[r_{n}]$
+
+则$V_{n}$的构成区间的最大长度为$s_{1}\cdots s_{n}(\to0, n\to\infty)$.
+
+令$E=\bigcap\{V_{n}|n\geqslant1\}$, 
+某个$V_n$的构成区间$J$落于$T=\left(a,b\right)\left(-\infty<a<b<-\infty\right)$, 于是
+
+\begin{align*}
+    T\supseteq J[r_{n+1}]\cdots[r_{n+k}],|T\cap E|_{1}&=\lim_{k\to\infty}|T\cap V_{n+k}|_{1}\\
+&\geqslant\lim_{k\to\infty}|J[r_{n+1}]\cdots[r_{n+k}]|_{1}\\
+&=|J|_{1}\prod_{i>n} r_i>0.
+\end{align*}
+
+
+又知 $J(r_{n+1})\subseteq T\setminus V_{n+1}\subseteq T\setminus E,$
+从而$0<|J(r_{n+1})|_1\leqslant|T\setminus E|_1.$
+\end{solution}
+
+
+\begin{3}
+证明$\mathbb{G}+\mathbb{G}=[0,2]\text{ 且 }\mathbb{G}-\mathbb{G}=[-1,1]\text{ 及 }\left\{\sum\limits_{n\in\beta}2/3^{n+1}\Big|\beta\subseteq\mathbb{N}\right\}=\mathbb{G}.$
+\end{3}
+\begin{solution}
+
+(1) $x\in[0,2],\frac{x}{2}=(0.a_1\cdots a_n\cdots)_3,$
+
+$a_i(=0,1,2)\rightarrow a_i^{\prime}(=0,0,2)$且$a_i^{\prime\prime}(=0,2,2)$,
+
+则$x^\cdot=(0.a_1^\cdot\cdots a_n^\cdot\cdots)_3\in\mathbb{G}$,
+则$x=x^\prime+x^{\prime\prime}$.
+
+(2) $x\in\mathbb{G}\Rightarrow\left.
+\begin{aligned}
+    &x=(0.a_1\cdots a_n\cdots)_3\quad(a_i\neq1)\\
+    &1-x=(0.a_1^\prime\cdots a_n^\prime\cdots)_3\quad(a_n^\prime=2-a_n)\in\mathbb{G}
+\end{aligned}\right\}$
+$\Rightarrow 1-\mathbb{G}=\mathbb{G},$
+
+故$[-1,1]=[0,2]-1=(\mathbb{G}+\mathbb{G})-1=\mathbb{G}-(1-\mathbb{G})=\mathbb{G}-\mathbb{G}.$
+
+\end{solution}
+
+
+\begin{4}
+设诸$a_r>0$使$\sum\limits_{r\in\mathbb{Q}}a_r$可和,作实轴中开集$B=\bigcup\limits_{r\in\mathbb{Q}}(r-a_r,r+a_r)$.证明$B$是
+无界的,但其 Lebesgue 测度是有限的.当$E$是实轴中闭集时, $\mathfrak{m}(B\triangle E)>0.$
+\end{4}
+\begin{solution}
+$|B\triangle E|_{1}=|B\setminus E|_{1}+|E\setminus B|_{1}.$
+
+当$|B\setminus E|_{1}>0$时, OK;
+
+当$|B\setminus E|_{1}=0$时, 则开集$B\setminus E=\varnothing,B\subseteq E$,
+
+故$E\supset\mathbb{Q},E=\mathbb{R},|E\setminus B|_{1}=|\mathbb{R}|_{1}-|B|_{1}=+\infty,$
+
+从而$|B\triangle E|_{1}=+\infty$, $B\supset $无界$\mathbb{Q}.$
+\end{solution}
+
+
+\begin{7}
+求平面上点集 $E:=\{(x,y)|x-y\in\mathbb{Q}\}$ 的 Lebesgue 测度.
+\end{7}   
+\begin{solution}
+令$E_{r}=\left\{\left(x,y\right)|y-x=r\right\}$, 其中$r\in\mathbb{Q}$,
+
+则平移$E_{r}=E_{0}+\left(0,r\right)$有正交变换$T:\mathbb{R}^{2}\to \mathbb{R}^{2}$,使$T(E_{0})=\mathbb{R}\times\{0\}$
+
+可见$\left|\det T\right|\left|E_{0}\right|_{2}=(+\infty)\times0=0,\left|E_{0}\right|_{2}=0,\left|E_{r}\right|_{2}=0.$
+\end{solution}
+
+
+\begin{10}
+在闭方体 $\mathbb{I}^n$ 中移去中间边长为 $1/3$ 的开方体, 剩下 $3^n-1$ 个等大闭方体. 
+移去它们中间边长为 $1/3^2$的开方体, 剩下$(3^n-1)^2$个等大闭方体. 
+如此下去, 剩下集$E_n$. 求其Lebesgue 测度并用三进制数刻画其点. 
+称$E_{2}$为 Sierpinski地毯而$E_{3}$为 Menger 海绵.
+\end{10}
+
+\begin{solution}
+第一次挖去$(0.1,0.2)\times\cdots\times(0.1,0.2)$,
+
+第二次挖去$(0.a_1^j1,0.a_1^j2)\times\cdots\times(0.a_1^j1,0.a_1^j2),a_1^j\neq1$(重复挖),
+
+$\cdots$第$k$次挖去$(0.a_1^j\cdots a_{k-1}^j1,0.a_1^j\cdots a_{k-1}^j2)\times\cdots\times(0.a_1^j\cdots a_{k-1}^j1,0.a_1^j\cdots a_{k-1}^j2),a_i^j\neq1$.
+
+因此$x\in\mathbb{I}^n$在挖去的开集$\iff \exists k:x$的诸分量$x_j=0.a_1^j\cdots a_{k-1}^j1\cdots(\exists a_i\neq0,i>k)$,
+
+而$x$在剩下的集$E\iff x$的某分量$x_j$形如$0.a_1^j\cdots a_{k-1}^j\cdots(a_i^j\neq1,\forall i)$.
+\end{solution}
+
+
+
+\begin{11}
+子集$E\subseteq\mathbb{R}^n$是 Lebesgue 零集当且仅当$n$维区间$I$都使$|E\cap I|_n^*\leqslant|I|_n/2.$
+此时对于$x\in\mathbb{R}^n$和$r>0$,有$z\in\mathbb{R}^n\setminus E$使$|z-x|<r$.
+\end{11}
+\begin{solution}
+只证充分性.
+
+$E=\coprod\limits_{k\geqslant1}E_k,E_k$有界,
+
+$|E_k|^*_n<+\infty,|E_k\cap I|^*_n\leqslant|E\cap I|^*_n\leqslant \frac{1}{2}| I|^*_n$,
+
+$\forall\epsilon>0,\exists$覆盖$E_k$的区间列$I_j\geqslant1$, 使得
+
+\begin{align*}
+    \sum_{j\geqslant1}|I_j|_n&<|E_k|^*_n+\epsilon\\
+    &\leqslant\sum_{j\geqslant1}|E_k\cap I_j|^*_n+\epsilon\\
+    &\leqslant\sum_{j\geqslant1}\frac{|I_j|_n}{2}+\epsilon,
+\end{align*}
+
+从而$\sum\frac{|I_j|_n}{2}<\epsilon=\frac{|E_k|^*_n}{2}$.
+
+若$|E_k|^*_n>0,\epsilon=\frac{|E_k|^*_n}{2}>0$则矛盾$\Rightarrow|E_k|^*_n=0\Rightarrow|E|^*_n=0.$
+
+否则$\mathbb{R}^n\setminus E$不稠密, $\exists x\in\mathbb{R}^n,\forall r>0,\exists x^\prime\in\mathbb{R}^n\setminus E:|x^\prime-x|\geqslant r$,
+
+i.e. $o(x,r)\subseteq E,|E|_n>0$, 矛盾.
+\end{solution}
+
+\begin{12}[Brunn--Minkowski不等式]
+    设$A$和$B$是$\R^n$的Lebesgue可测集使$A+B$也Lebesgue可测，
+    则$|A|_n^\frac{1}{n}+|B|_n^\frac{1}{n}\leqslant|A+B|_n^\frac{1}{n}$。
+\end{12}
+\begin{proof}
+    See Elias M. Stein \& Rami Shakarchi, \textit{Real Analysis: Measure Theory, Integration, and Hilbert Spaces}, 
+    Princeton Lectures in Analysis III, Princeton University Press, 2005, Chapter 1 Section 5, pp.34--7.
+\end{proof}
+
+
+\subsection{可测映射}
+  {2.5.4}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+
+  {2.5.5}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+  {2.5.6}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+  {2.5.7}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+  {2.5.8}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+  {2.5.9}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+  {2.5.12}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+
+  {2.5.13}
+
+   
+\begin{solution}
+
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{函数序列}
+  {2.6.2}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+
+
+  {2.6.3}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+  {2.6.6}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+
+  {2.6.11}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+  {2.6.14}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+  {2.6.16}
+
+   
+\begin{solution}
+
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+\section{积分与可积性}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{微量累积}
+  {3.1.1}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+  {3.1.2}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+  {3.1.3}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+  {3.1.4}
+
+   
+\begin{solution}
+
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{极限定理}
+  {3.2.2}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+
+  {3.2.3}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+  {3.2.6}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+  {3.2.7}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+  {3.2.8}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+  {3.2.9}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+  {3.2.13}
+
+   
+\begin{solution}
+
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{累次积分}
+  {3.3.2}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+  {3.3.5}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+  {3.3.7}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+  {3.3.10}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+  {3.3.11}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+\subsection{平均收敛}
+  {3.4.5}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+\begin{6}
+设概率空间$(X,\mu)$上实值可测函数$f$使$\sup f(X)<+\infty$,证明:
+\begin{equation*}
+    \lim_{p\to0+}\|\exp f\|_{p}=\exp\left(\int_{X}fd\mu\right).
+\end{equation*}
+   \end{6}
+\begin{solution}
+
+    \begin{align*}
+        LHS&= \lim_{p\to 0^+} \left(\int_X(\exp f)^pd\mu\right)^{\frac{1}{p}}\\
+        &= \lim_{p\to 0^+} \left(\int_X\left(1+f+o(f)\right)^pd\mu\right)^{\frac{1}{p}}\\
+        &= \lim_{p\to 0^+} \left(\int_X(1+pf+o(f))d\mu\right)^{\frac{1}{p}}\\
+        &= \lim_{p\to 0^+} \left(1+p\int_Xfd\mu+o(f)\right)^{\frac{1}{p}}\\
+        &= \lim_{p\to 0^+} \left(1+p\int_Xfd\mu\right)^{\frac{1}{p}}\\
+        &=\exp\left(\int_{X}fd\mu\right)=RHS
+    \end{align*}
+\end{solution}
+
+
+\subsection{广义测度}
+  {3.5.2}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+
+  {3.5.4}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+  {3.5.5}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+  {3.5.6}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+
+  {3.5.8}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+    
+\section{导数与可导性}
+
+\subsection{囿变函数}
+  {4.1.5}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+
+  {4.1.8}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+
+  {4.1.9}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+
+  {4.1.12}
+
+   
+\begin{solution}
+
+\end{solution}
+
+
+\subsection{不定积分}
+  {4.2.1}
+
+   
+\begin{solution}
+
+\end{solution}
+
+\begin{4}
+函数$f:[a,b]\to\mathbb{R}$是下凸函数当且仅当$(\overline Df)(x_1)\leqslant(\underline{D}f)(x_2)$在$x_1<x_2$时成
+立. 进而,连续下凸函数$f:[a,b]\to\mathbb{R}$都是绝对连续函数.
+  \end{4} 
+\begin{solution}
+ 必要性：
+下凸$\iff \forall x_1<x_0<x_2,$有$\Delta(x_1,x_0)\leqslant\Delta(x_2,x_0)$. (这里$\Delta(x,y)=\frac{f(x)-f(y)}{x-y})$
+
+$(\overline D f)(x_1)=D^+f(x_1)\lor D^-f(x_1)=\varlimsup\limits_{\hat{x}\to x_1+}\Delta(x_1,\hat{x})\lor\varlimsup\limits_{\hat{x}\to x_1-}\Delta(x_1,\hat{x})$
+
+$(\underline D f)(x_2)=D_+f(x_2)\lor D_-f(x_2)=\varliminf\limits_{\hat{x}\to x_2+}\Delta(x_2,\hat{x})\lor\varliminf\limits_{\hat{x}\to x_2-}\Delta(x_2,\hat{x})$
+
+由于函数下凸,不难看出$(\overline D f)(x_1)=D^+f(x_1),(\underline D f)(x_2)=D_-f(x_2).$
+
+令$x_0$分别靠近$x_1+,x_2-$,得到$D^+f(x_1)\leqslant \Delta(x_1,x_2)\leqslant D_-f(x_2)$,得证.
+
+充分性:令$g=f+\epsilon x^2(\epsilon>0)$,
+
+则有$(\overline D g)(x_1)=2x_1+(\overline D f)(x_1)$,
+$(\underline D g)(x_2)=2x_2+(\underline D f)(x_2)$,
+
+所以$(\overline D g)(x_1)<(\underline D g)(x_2).$
+
+反设$g$不是下凸的,则存在$x_0\in(a,b)$满足$\frac{g(x_0)-g(a_0)}{x_0-a_0}>\frac{g(x_0)-g(b_0)}{x_0-b_0}$. (之后都用$a_0,b_0$来表示$a,b)$
+
+取$c_0$为$a_0,x_0$的中点,则有
+
+\begin{align*}
+    LHS&=\frac{g(x_0)-g(c_0)+g(c_0)-g(a_0)}{x_0-a_0}\\
+    &=\frac{g(x_0)-g(c_0)}{x_0-a_0}+\frac{g(c_0)-g(a_0)}{x_0-a_0}\\
+    &\leqslant 2\max \left\{\frac{g(x_0)-g(c_0)}{x_0-a_0},\frac{g(c_0)-g(a_0)}{x_0-a_0}\right\}\\
+    &\overset{\rm def}{=}2\cdot\frac{g(c_1)-g(a_1)}{c_1-a_1}
+    \qquad\text{(这里用 }[a_1,c_1]\text{ 代替那个较大的区间.)}
+\end{align*}
+
+同理,取$d_0$为$x_0,b_0$的中点,则有
+
+\begin{align*}
+    RHS&\geqslant 2\min \left\{\frac{g(x_0)-g(d_0)}{x_0-d_0},\frac{g(d_0)-g(b_0)}{d_0-b_0}\right\}\\
+    &\overset{\rm def}{=}2\cdot\frac{g(d_1)-g(b_1)}{d_1-b_1}
+    \qquad\text{(这里用 }[d_1,b_1]\text{ 代替那个较小的区间.)}
+\end{align*}
+
+两边重复取中点,取斜率较大（小）的二分区间代替整个区间,如此重复下去,
+由闭区间套定理,两边的闭区间套各有唯一极限点$c,d$,
+使得$(\overline D g)(c)<(\underline D g)(d)$(注意这里极限有上下的区分),
+由此,与假设矛盾.因此$f$应当是下凸函数.
+
+绝对连续:事实上,下凸性质使得存在某个$\delta>0$满足$|f(y)-f(x)|<\delta|y-x|$,进一步结合连续性便可得到绝对连续性,请自行证明.
+\end{solution}
+
+\subsection{非匀测度}
+  {4.3.7}
+
+   
+\begin{solution}
+
+\end{solution}

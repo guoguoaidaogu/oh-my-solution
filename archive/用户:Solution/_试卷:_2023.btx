@@ -1,0 +1,97 @@
+\setdisplaytitle{试卷：2023年博资考}
+\sethtmltitle{试卷：2023年博资考}
+\newtheorem{problem}{问题}
+
+{{comment|这份题目不全。}}
+
+\section{概率论}
+
+
+设 \( X \) 服从参数为 $1$ 的指数分布，密度函数为 \( e^{-x}1_{\{x\geq 0\}} \)。
+
+\begin{problem}
+    令 \( Y_k = 1_{\{X \geq k\}}, S_n = \sum_{k=1}^n Y_k \)。
+    \begin{enumerate}
+        \item 证明 \( S_n \) 几乎处处收敛到某个随机变量 \( S \)。
+        \item 是否有 \( S_n \overset{L^1}{\longrightarrow} S \)？
+        \item 求 \( S \) 的分布。
+    \end{enumerate}
+\end{problem}
+\begin{problem}
+    设 \( X_1, X_2, X_3, \ldots \) 独立同分布，均服从参数为 $1$ 的指数分布，
+    \( M_n = \max\limits_{1\leq i \leq n} X_i \)，
+    证明 \(\{M_n - \log n\}\) 依分布收敛并给出这个分布。
+\end{problem}
+
+\section{泛函分析}
+
+\begin{problem}
+    叙述 Baire 纲定理。对完备度量空间 \( X \) 和 \( X \) 上的实函数 \( f \)，令  
+    \[
+    C_f = \{x : f \text{ 在 } x \text{ 处连续}\}, \quad D_f = \{x : f \text{ 在 } x \text{ 处间断}\},
+    \]
+    证明：若 \( C_f \) 在 \( X \) 中稠密，则 \( D_f \) 是第一纲的。
+  \end{problem}
+  \begin{problem} 
+    在 \( X = \ell_{\mathbb{R}}^{\infty}(\mathbb{N}_0) \) 上定义平移算子  
+    \[
+    T : (x_0, x_1, x_2, \ldots) \mapsto (x_1, x_2, x_3, \ldots)
+    \]
+    证明：\( X \) 上有连续线性泛函 \( F \)，满足：
+    \begin{enumerate}
+        \item 对 \( x \in X \)，\(\lim\limits_{n \to \infty} x_n\) 存在时，\( F(x) = \lim\limits_{n \to \infty} x_n \)。
+        \item \(\varliminf\limits_{n\to\infty} x_n \leq F(x) \leq \varlimsup\limits_{n\to\infty} x_n\)。
+    \end{enumerate}
+\end{problem}
+
+\section{优化}
+
+\begin{problem}
+写出半定规划的拉格朗日函数、对偶问题、最优性条件。
+\end{problem}
+
+\section{ODE}
+
+\begin{problem}
+证明 Gronwall 不等式。
+\end{problem}
+
+\section{微分几何}
+
+\begin{problem}
+    设 \( F : M \to N \) 为 \( C^\infty \) 同胚，
+    证明：\(\forall p \in M, q = F(p)\)，
+    \( F_{*p} : T_pM \to T_qN \) 为线性同构。这个结论反过来是否成立？
+\end{problem}
+\begin{problem} 
+    叙述嵌入子流形的定义。设 \( F : M \to N \) 为子流形，
+    且 \( M \) 是紧的，则 \((M, F)\) 一定是嵌入子流形。
+\end{problem}
+
+\section{控制论}
+
+\begin{problem}
+    考虑线性定常受控系统
+    \[
+    \begin{cases} 
+    \frac{dy(t)}{dt} = Ay(t) + Bu(t), \\ 
+    y(t_0) = y_0, 
+    \end{cases}
+    \]
+    其中控制约束为 \(\mathcal{U} = \{u(\cdot) \mid u^{\rm T}u \leq 1, \forall t \in [t_0, +\infty)\}\)。
+    
+    令 \(\mathcal{T} = \{t \in [t_0, +\infty) \mid \exists u \in \mathcal{U}, \text{ s.t. } y(t) = 0\}\)，已知 \(A\) 稳定，\([A, B]\) 能控，证明 \(\mathcal{T}\) 非空。
+ \end{problem}
+ \begin{problem}
+    考虑线性定常受控系统
+    \[
+    \begin{cases} 
+    \frac{dy(t)}{dt} = Ay(t) + B(tb_1 + b_0), \\ 
+    y(t_0) = y_0,
+    \end{cases}
+    \]
+    其中 \( A \in \mathbb{R}^{n \times n}, B \in \mathbb{R}^{n \times m}, b_1, b_0 \in \mathbb{R}^m \)。$A$稳定，证明存在 \( a_1, a_0 \)，使得
+    \[
+    \lim_{t \to \infty} [y(t; t_0, y_0, b_1, b_0) - (a_1 t + a_0)] = 0.
+    \]
+\end{problem}

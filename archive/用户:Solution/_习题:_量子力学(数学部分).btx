@@ -1,0 +1,267 @@
+\theoremstyle{plain}\newtheorem*{1}{习题1}
+\theoremstyle{plain}\newtheorem*{2}{习题2}
+\theoremstyle{plain}\newtheorem*{3}{习题3}
+\theoremstyle{plain}\newtheorem*{4}{习题4}
+\theoremstyle{plain}\newtheorem*{5}{习题5}
+\theoremstyle{plain}\newtheorem*{6}{习题6}
+\theoremstyle{plain}\newtheorem*{7}{习题7}
+\theoremstyle{plain}\newtheorem*{8}{习题8}
+\theoremstyle{plain}\newtheorem*{9}{习题9}
+\theoremstyle{plain}\newtheorem*{10}{习题10}
+
+\section{24--25春\quad 数学部分}
+{{comment|这份习题对应2024--2025学年第二学期量子力学1
+数学部分习题，主要参考书为姚一隽老师翻译的《谱理论讲义》，以及
+\textit{Quantum Theory for Mathematicians} (GTM 267)。
+习题反馈是数学部分的助教崔世勋给出的，以供参考。}}
+
+\subsection*{习题1}
+
+这里 $H$ 都指的是一个可分复 Hilbert 空间。
+\begin{1}
+（1）设 $A, B \in \mathcal{B}(H)$，满足 $AB=BA$。设 $A$ 不可逆，证明 $AB$ 也不可逆。
+
+（2）举例说明，若没有 $AB=BA$ 这一条，则上一小题的结论不成立。
+\end{1}
+\begin{enumerate}
+    \item[(1)] 用定义即可解决.
+    \item[(2)] 在 $H=\mathbb{C}^2$ 中就可以举出反例.
+\end{enumerate}
+
+
+\begin{2}
+（1）设 $A \in \mathcal{B}(H)$ 是一个自伴算子，且 $\sigma(A) \subset[0,+\infty)$。
+证明，对于任意 $\psi \in H$，$\langle\psi, A \psi\rangle \geqslant 0$。
+
+（2）举例说明，如果 $A$ 不是自伴的，那么 $\sigma(A) \subset[0,+\infty)$ 
+并不能保证对于任意 $\psi \in H$，$\langle\psi, A \psi\rangle \geqslant 0$。
+\end{2}
+注意 $\mathcal{B}(H)$ 本身就是全体有界线性算子构成的集合, 不需要讨论 $A$ 是否有界.
+\begin{enumerate}
+    \item[(1)] 可以利用函数演算构造 $B\in\mathcal{B}(H)$ 使得 $A=B^*B$. 
+    \item[(2)] 在 $H=\mathbb{C}^2$ 中可以举出反例. 
+
+    有一个我个人一直常用的例子: $H=L^2[0,1]$ 上考虑积分算子 
+    $$(Tf)(x)=\int_0^xf(t)\mathrm{d}t.$$
+    可以验证 $T$ 是紧算子 (实际上是 Hilbert--Schmidt 算子), 谱集是 $\{0\}$, 且 $0$ 不是特征值, 不自伴.
+    
+    如果有兴趣, 可以证明对于\textbf{复} Hilbert 空间上的有界线性算子 $T$, 有 
+    $$\langle \psi,T\psi\rangle\geqslant 0, \forall\psi\in H
+    \ \ \Longrightarrow\ \ T \text{ 自伴且 } \sigma(T)\subset[0,\infty).$$
+    \end{enumerate}
+
+\begin{3}
+设 $A \in \mathcal{B}(H)$ 是一个自伴算子，$V$ 是 $H$ 的一个闭子空间，$A V \subset V$。
+
+（1）证明，$\sigma(A) \subset \mathbb{R}$。
+
+（2）证明，实数 $\lambda \in \sigma(A)$ 当且仅当存在一列非零向量 $\psi_{n} \in H$ 使得
+$$\lim_{n \rightarrow \infty} \frac{\|A \psi_{n}-\lambda \psi_{n}\|}{\|\psi_{n}\|}=0.$$
+（3）证明，$A$ 在 $V$ 上的限制的谱是 $\sigma(A)$ 的子集。
+
+（4）设 $f$ 是 $\sigma(A)$ 上的一个有界可测函数，定义 $f(A)$。
+证明$f(A) V \subset V$。并且有 $f(A)|_{V}=f(A|_{V})$。
+
+（5）设 $\lambda$ 是 $A$ 的一个特征值，$\psi$ 是一个非零特征向量。证明，$f(A) \psi= f(\lambda) \psi$。
+\end{3}
+\begin{enumerate}
+    \item[(1)] 注意一个实用的引理: 若 $T$ 是 $H$ 上的 (无界) 线性算子, 且 $T$ 下有界
+    \footnote{即存在 $C>0$ 使得 $\|Tx\|\geqslant C\|x\|,\forall x\in\mathrm{Dom}(T)$.}, 同时满足 $T$ 是闭算子, 则 $T$ 是单射, 且 $T$ 的像集是闭集.
+    
+    这个引理会使用很多次, 并且常常结合另一个引理使用: 对于 $H$ 上的稠定线性算子 $T$, 有 $\ker(T^*)=(\mathrm{ran}(T))^\perp$. 这两个引理请自行证明练习一下, 难度并不高.
+
+    在本题中, 对于 $\lambda=a+bi,b\not=0$, 可以将 $\langle(A-\lambda)x,(A-\lambda)x\rangle$ 展开得到下有界的估计, 然后用上述引理. 注意到按定义, 有界线性算子总是闭算子.
+
+    \item[(2)] 利用上述引理是比较方便的办法: 注意到在本题情形中, $\lambda\in\sigma(A)$ 当且仅当 $A-\lambda \cdot\mathrm{id}$ 不是下有界的.
+    \item[(3)] 利用 (2), 注意到 $A|_V$ 仍然是 $V$ 上的有界自伴算子, 
+    那么 $\lambda\in\sigma(A|_V)$ 等价于将 (2) 中后半句话的 $\psi_n\in H$ 改成 $\psi_n\in V$.
+    \item[(4)] 回顾有界 Borel 可测函数演算的定义方法: 先有连续函数演算, 然后利用 Riesz 表示定理给出 Borel 测度, 用以定义 Borel 演算. 
+    定义好连续函数演算后, 考虑包含全体连续函数, 并且对“关于一致有界的点态收敛函数序列的极限”封闭的函数类, 
+    证明其是全体有界 Borel 可测函数 (先证明包含简单函数). 
+    结合谱测度, 就能证明“一致有界的点态收敛函数序列 $f_n$ 的极限 $f$”满足定义的 $f_n(A)$ 强算子收敛到 $f(A)$. 
+
+    最后, 注意到 $V$ 是闭不变子空间这一性质关于强算子收敛封闭. 对于 $f(A|_V)=f(A)|_V$, 考虑满足这一性质的函数 $f$, 
+    同上, 先证明其包含多项式函数, 然后也对“关于一致有界的点态收敛函数序列的极限”封闭, 进而包含全体有界 Borel 可测函数.
+    \item[(5)] 注意到 $Y:=\mathbb{C}\psi$ 是 $A$ 的不变闭子空间, 且 $A|_Y=\lambda\cdot \mathrm{id}_Y$.
+\end{enumerate}
+
+
+\begin{4}
+以下假设 $A$ 是 $H$ 上的一个对称算子：$A: \operatorname{Dom}(A) \rightarrow H$，
+对于任意 $\psi \in H,\langle A \psi$，$\psi\rangle=\langle\psi, A \psi\rangle$。
+
+（1）假设 $A$ 是本性自伴的（即 $\bar{A}$ 是自伴的）。证明，$A^{*}=\bar{A}$。
+
+（2）接上题，证明，$\sigma(\bar{A}) \subset \mathbb{R}$，并由此证明，$A+i I$ 的像集是 $H$ 的稠密子空间。
+（一般地，对于一个无界算子 $A$，我们称 $\lambda \notin \sigma(A)$，若存在一个有界算子 $B$，满足：
+（a）对于任意 $\psi \in H$，$B \psi \in \operatorname{Dom}(A)$，且 $(A-\lambda I) B \psi=\psi$；
+（b）对于任意 $\psi \in \operatorname{Dom}(A)$，$B(A-\lambda I) \psi=\psi$.）
+
+（3）反之，假设 $A$ 是对称算子，且 $A+i I$ 和 $A-i I$ 的像集是 $H$ 的稠密子空间。
+证明， $\bar{A}$ 是对称算子，且对于任意 $\psi \in H$，$\|(\bar{A}-i I) \psi\|^{2} \geqslant \|\psi\|^{2}$，
+由此证明 $\bar{A}-i I$ 是单射。并证明 $\bar{A}-i I$ 的像集就是 $H$。
+
+（4）接上题，假设 $\bar{A}^{*} \neq \bar{A}$，证明 $\bar{A}^{*}+i I$ 不是单射。
+由此证明，$A-i I$ 的像集不是稠密的，从而推出矛盾。
+
+（5）取 $H=L^{2}(0, \infty), A=-i d/dx, \operatorname{Dom}(A)=C_{c}^{\infty}(0, \infty)$。
+证明，$A$ 是对称的，$A^{*}+i I$ 的像集是稠密的，但 $A^{*}-i I$ 的像集不是稠密的。
+\end{4}
+请一定注意, \textcolor{cc0000}{一个无界算子 $T$ 是闭算子, \textbf{不}意味着 $T$ 的像集是闭集.} 
+定义中从未表明这一点, 事实上也存在例子使得无界闭算子 $T$ 的像集不是闭集.
+\begin{enumerate}
+    \item[(1)] 回顾一些基本事实. 
+
+    只要 $A$ 是稠定算子 (这使得 $A^*$ 有定义), 就有 $A^*$ 是闭算子; 
+    当 $A^*$ 也稠定时, 有 $A$ 是可闭的算子, 且 $\overline{A}=(A^*)^*=:A^{**}$. 
+    当 $A$ 是稠定的\textbf{对称}算子时, 
+    \footnote{稠定性假设是一个基础假设, 这使得伴随算子可定义, 且在实际应用中常常满足, 以至于人们常常在研究时将稠定性作为对称算子定义的一部分, 但这一般而言不意味着 $A^*$ 稠定.} 
+    $A^*$ 自动是稠定的, 因此 $A$ 是可闭的. 这是研究对称算子时的一个方便之处.
+
+    在下面的 (3) 中, 你们实际上证明了当 $A$ 是稠定对称算子时, $\overline{A}$ 也是对称算子. 而在 (5) 中, 将可以看到 $A^*$ 未必是对称算子.
+
+    在连续取伴随时, 可以证明取多次伴随是有“结合律”的, 例如 $(A^{**})^*=(A^*)^{**}$. 
+    这可以用图像方法看出: $A^*$ 的图像是 $A$ 的图像经某个酉变换 $J$ 后在 $H\times H$ 中的正交补.\footnote{自行思考 $J$ 是什么.}
+
+    回到本题. 由于 $\overline{A}$ 是自伴的闭算子, 有 $A^{**}=A^{***}$. 
+    而 $A^*$ 总是闭算子, 因此 $A^*=\overline{A^*}=A^{***}$. 因此 $A^*=A^{**}=\overline{A}$.
+    \item[(2)] 前一部分与第 3 题的 (1) 是相同的, 过程中一定会证明到“下有界”, “单射”, “满射” 三个部分才算完整. 
+    后一部分用到 $(\mathrm{ran}(A+iI))^\perp=\ker(A^*-iI)$, 而 $i\notin\sigma(A^*)=\sigma(\overline{A})$.
+    \item[(3)] 证明 $\overline{A}$ 对称的办法是利用图像的闭包关系, 找到对 $(x,\overline{A}x),x\in\mathrm{Dom}(\overline{A})$ 的逼近. 
+    中间的证明不等式与单射与第 3 题相同. 最后的证明 $\overline{A}-iI$ 的像集是 $H$, 
+    \textcolor{cc0000}{典型的\textbf{错误}是声称$\overline{A}-iI$ 的像集是 $A-iI$ 的像集的闭包, 这并不是算子的闭包能够推出的结论而且一般情形下也未必正确.} 
+    合理的做法仍然是利用前述的引理, 要同时用闭算子和下有界性推出 $\overline{A}-iI$ 的像集是闭的.
+
+    这一问的结论当然对 $\overline{A}+iI$ 也成立, 两者目前为止是互不干涉的. 同时假设 $\overline{A}\pm iI$ 的条件是为了 (4).
+
+    \item[(4)] 已经证明 $\overline{A}$ 是对称的, 因此反证假设表明了定义域的真包含关系. 
+    那么由于 $\overline{A}+iI$ 已是满射, 对于 $\mathrm{Dom}(\overline{A}^*)\setminus\mathrm{Dom}(\overline{A})$ 中的向量 $x$, 
+    用满射, 知存在 $y\in\mathrm{Dom}(\overline{A})$ 使得 $\overline{A}y+iy=\overline{A}^*x+ix$, 因此 $\overline{A}^*+iI$ 不是单射. 
+    然后再用前述引理的像集与核的关系, 得到 $\overline{A}-iI$ 的像不稠密.
+
+    \item[(5)] $A$ 的对称性由分部积分可得. 后面两问题目打错了, 这两个空间实际上都是稠密的. 
+    按我和姚老师的沟通, 他的本意是\textcolor{cc0000}{证明 $A-iI$ 不是单的, $A+iI$ 是单的; 或者更进一步, $A^*-iI$ 不是单的, $A^*+iI$ 是单的.} 后者困难一些.
+    
+    如果熟悉一些 Sobolev 空间的定义, 那么我们可以直接写出 $A^*$ 和 $\overline{A}$, 并借此发现一些定义域对算子对称性的影响. 
+    $A^*$ 和 $\overline{A}$ 这两个算子的表达式都是 $-i\mathrm{d}/\mathrm{d}x$, 定义域分别是 $H^1(0,+\infty)$ 和 $H_0^1(0,+\infty)$.
+
+    $H^1(0,+\infty)$ 是由满足 $f\in L^2(0,+\infty)$ 且 $f$ 在任意紧子区间上绝对连续 (这使得 $f'$ 作为可测函数是良定义的), 
+    且满足 $f'\in L^2(0,+\infty)$ 的全体函数 $f$ (的几乎处处相等的函数类) 组成的. 
+    而 $H_0^1(0,+\infty)$ 是由还满足 $\lim\limits_{x\to 0+}f(x)=0$ 的那些 $f$ 组成的. 
+    同时它们也有等价定义, 例如熟悉分布理论的同学会知道, $H^1$ 的分布定义实际上就等价于求导算子的伴随算子的定义域.
+
+    这体现出两件事: $A^*$ 不是对称的, 因为在验证对称算子时, 做分部积分的时候, 对于 $H^1$ 中的函数, 边界项将不再是 $0$; 
+    $\overline{A}$ 不是自伴的, 由 (1) 的逆否命题就知道. 
+    如果进一步仔细求解常微分方程并确定常数, 或者利用像集与核的关系, 
+    我们会有如下结论: $A^*\pm iI$ 的像集均稠密, 
+    $\overline{A}+ iI$ 的像集不稠密, $\overline{A}-iI$ 的像集稠密.
+
+    更进一步的, $A$ 事实上不存在任何自伴扩张. 这由一个更一般的“亏指数”理论得到, 
+    \footnote{我不确定中译名是什么, 这是我随便翻译的, 请以中文教科书为准.} 
+    当 $A$ 是对称的闭算子时, $A^*\pm iI$ 的 kernel 的维数是否相等 
+    (在讨论可分 Hilbert 空间时, 可以同时为无穷) 
+    是判断 $A$ 是否存在自伴扩张的等价判据. 
+    这里, 这两个维数分别为 $0$ 和 $1$, 因此 $A$ 不存在自伴扩张.
+\end{enumerate}
+
+
+\subsection*{习题2}
+这里 $H$ 都指的是一个可分复 Hilbert 空间。
+\begin{1}
+设 $T: \operatorname{Dom} T \subset H \rightarrow H$ 是一个无界自伴算子．记它的图像为
+$$
+G=\{(x, T x), x \in \operatorname{Dom} T\} \subset H \oplus H .
+$$
+（1）证明，$G$ 在 $H \oplus H$ 中的正交补 $G^{\perp}=\{(T x,-x), x \in \operatorname{Dom} T\}.$ 
+
+（2）证明， $1+T^{2}$ 是从 $\operatorname{Dom} T^{2}$ 到 $H$ 的双射。
+
+（3）证明，$S=(1+T^{2})^{-1} \in B(H)$ ，范数不超过 $1$，而且是自伴的。
+
+（4）证明，在 $\operatorname{Dom} T^{3}$ 上成立 $T(1+T^{2})=(1+T^{2})T$。
+从而若记 $W=T(1+T^{2})^{-1}$，则 $W$ 和 $S$ 是可交换的。
+
+（5）记 $q_{\lambda}=\mathbb{1}_{(-\infty, \lambda]}(S)$，证明，$q_{0}=0$。
+
+（6）记 $f_{n}(\lambda)=\mathbb{1}_{(1/(n+1), 1/n]} / \lambda, R_{n}=S f_{n}(S)$。
+证明，$R_{n}(H) \subset \operatorname{Dom} T, T(R_{n}(H)) \subset R_{n}(H)$，
+且 $T_{n}=T|_{R_{n}(H)}$ 是 $R_{n}(H)$ 上的有界自共轭算子。
+
+（7）给出记号 $\oplus_{n} R_{n}(H)$ 的一种合理的解释，
+使得在这种解释（定义）之下，$\oplus_{n} R_{n}(H)=H$.
+
+（8）给出记号 $\oplus_{n} T_{n}$ 的一种合理的解释，并记为 $T^{\prime}$。
+记 $T^{\prime}$ 在所有 $R_{n}(H)$ 的代数直和上的限制为 $T^{\prime \prime}$。
+证明，$T^{\prime}$ 是自伴的，且 $T^{\prime}=\overline{T^{\prime \prime}}$。
+
+（9）由此证明 $T=T^{\prime}$。
+
+（10）构造 $H$ 上的一族投影算子 $p_{\lambda}$，
+使得当 $\lambda \in(1/(n+1), 1/n]$ 时，
+$p_{\lambda}(H) \supset \oplus_{k=1}^{n-1} R_{k}(H)$，且
+$$\left(\left(I_{H}-\bigoplus_{k=1}^{n-1} R_{k}\right)-p_{\lambda}\right)
+=\mathbb{1}_{(\lambda, 1/n]}(T_{n}).$$
+
+（11${ }^*$）证明，对于 $H$ 上的任意有界线性算子 $X$，它与 $T$ 可交换当且仅当它与每一个 $p_{\lambda}$ 可交换。
+\end{1}
+\begin{enumerate}
+    \item[(1)] 要证明右端的集合是 $G$ 的正交补, 
+    不仅要证明右侧集合与 $G$ 正交, 还要证明与 $G$ 正交的任意向量都在右侧集合中.
+    \item[(2)] 对于无界自伴算子 $T$, 要证明 $T^2$ 也自伴并不是显然的事情. 
+    本题不需要这一点就可以证明. 首先观察到
+    $$\langle (1+T^2)x,x\rangle=\|x\|^2+\|Tx\|^2,\quad\forall x\in\mathrm{Dom}(T).$$ 由此可见单射. 
+    而后利用 (1), 知道对于任意 $(x,y)\in H\times H$,
+    存在 $z_1,z_2\in\mathrm{Dom}(T)$ 使得 $(x,y)=(z_1,Tz_1)+(Tz_2,-z_2)$. 令 $y=0$ 即得.
+    \item[(3)] 同样可以给出一个不依赖谱积分的办法. 设 $x=Sy,y\in H$, 则有 $x\in\mathrm{Dom}(T^2)$. 展开计算
+    $$\langle y,y\rangle=\langle (1+T^2)x,(1+T^2)x\rangle=\|x\|^2+\|T^2x\|^2+2\|Tx\|^2. $$
+    由此可见 $S$ 范数不超过 $1$.
+    对于有界算子的自伴性, 只需要验证 $$\langle Sy_1,y_2\rangle=\langle y_1,Sy_2\rangle,\quad\forall y_1,y_2\in H.$$
+    \item[(4)] 前半句显然. \textcolor{red}{后半句是要证明的, 不是让你们直接用的.} 
+    后半句的证明, 首先注意这里的交换性是有界算子的交换性, \footnote{无界自伴算子 $A,B$ 交换的定义并不是 $AB=BA$.} 
+    因此先证明 $W$ 有界, 方法也是用上面的范数展开. 然后验证对任意 $y\in H$, 都有 $WSy=SWy$.
+    \item[(5)] 这道题要注意的是, 对谱测度的积分要建立正确的直觉, 
+    尽管 $\{0\}$ 是 Borel 零测集, 但对于一般的自伴算子 $A$ 而言, $\chi_{\{0\}}(A)$ 未必是 $0$. 
+    在零测集上的谱积分并不总是能忽略. 在本题中, 需要证明 $\chi_{\{0\}}(S)=0$. 
+    一个一般的结论是, 对于自伴算子 $A$ 而言, $\chi_{\{\lambda\}}(A)$ 是到 $\ker(A-\lambda I)$ 的正交投影.
+    \item[(6)] 第一句 $R_n(H)\subset \mathrm{Dom}(T)$ 可以用谱定理中的一部分 
+    $$\mathrm{Dom}(T)=\left\{f\in H:\int |t|^2\mathrm{d}\rho_f(t)<\infty\right\},$$ 
+    其中 $\rho_f(t)=\|E_t(f)\|^2$. \footnote{我的记号可能与上课的不同, 以上课为准. 
+    $E_t$ 指的是 $T$ 对应的恒等算子分解 (也称谱投影).}
+    对于 $f=R_n(g),g\in H$, 可以发现 $\rho_f(t)$ 在一个紧区间之外是常值的, 
+    因此上述积分实际上是有限区间上的有界函数积分, 因此有限. 
+    另一种办法是利用 $$\mathrm{Dom}(f(T)g(T))=\mathrm{Dom}(g(T))\cap\mathrm{Dom}((fg)(T)),$$ 
+    发现此处有 $TR_n$ 是定义在全空间上的有界线性算子, 
+    因此 $R_n(H)\subset\mathrm{Dom}(T)$.
+    \footnote{尽管这个证明从某种程度上算倒果为因, 关于定义域的这个式子也并不平凡, 
+    可见 Weidmann 所著的 \href{https://link.springer.com/book/10.1007/978-1-4612-6027-1}{\textit{Linear Operators in Hilbert Spaces} (GTM 68)} 中 Theorem 7.14. 这是一本适合查阅但不适合学习的书.}
+
+    随后, 注意交换性与不变子空间的关系, 这是高等代数里就应该很熟悉的内容. 
+    我们有在 $\mathrm{Dom}(T)$ 上成立 $R_nT=TR_n$, 得到第二句.
+
+    最后一句与第一句是相同的: 将 $R_n(H)$ 包含进 $H$ 后, 有 $T_n=R_nTR_n$, 而 $TR_n=TSf_n(S)=Wf_n(S)$ 是有界的. 自伴性显然.
+    \item[(7)] 可以观察到 $\sum R_n$ 在强算子拓扑下收敛到 $I$. 考虑到完备性, 可定义
+    $$\oplus_n R_n(H)=\left\{\sum_n x_n: x_n\in R_n(H),\sum_n\|x_n\|^2<\infty\right\}.$$
+    要证明这确实是 $H$, 就利用强算子收敛, 以及各 $R_n(H)$ 是两两正交的事实.
+    \item[(8)] 第一个关键是考虑 $T'$ 的定义域应当是什么. 
+    首先容易知道当 $x\in R_n(H)$ 时应有 $T'x=T''x=Tx$. 此时 $T''$ 已被确定. 
+    注意到在 $R_n(H)$ 上, 有 $n-1\leqslant T_n^2\leqslant n$. 因此可以定义 
+    $$\mathrm{Dom}(\oplus_nT_n)=\left\{\sum_n x_n:x_n\in R_n(H),\sum_n n\|x_n\|^2<\infty\right\},$$
+    以及 $$(\oplus_nT_n)\left(\sum_n x_n\right)=\sum_n T_nx_n.$$
+    根据定义域的选取, 此定义有效 ($\sum_n T_nx_n$ 依范数收敛). 这作为 $T'$.
+
+    容易验证 $T',T''$ 的对称性. 证明 $T'=\overline{T''}$ 也是很简单的, 
+    先按定义证明 $T'$ 是闭算子, 然后只需要应用“收敛级数被部分和逼近”证明闭包关系. 
+    最后证明 $T''\pm i$ 的像集是稠密的 (像空间至少包含 $R_n(H)$ 的代数直和), 
+    这样就知道它本质自伴, 进而 $T'$ 自伴. \footnote{可能有更好的证法.}
+    \item[(9)] 根据上一题的构造, 有 $T''\subset T$, 
+    由于 $T$ 是闭算子, 有 $T'\subset T$. 
+    而两者都是自伴算子, 故 $T=T^*\subset (T')^*=T'$. 
+    此类论证说明了自伴算子没有真自伴扩张; 如果一个对称算子的闭包自伴, 则它的自伴扩张只有一个.
+    \item[(10)] \textcolor{red}{题目有误, 疑似是自变量有混淆之处.} 
+    \item[(11)] 首先注意到 $X$ 与 $T$ 交换当且仅当 $X$ 的实部和虚部分别和 $T$ 交换. 
+    然后两个 (无界) 自伴算子交换的定义是它们对应的谱投影族两两交换, 
+    本题是证明了其中一个有界时, 直观上的定义和“正确”的定义符合. 
+    但是由于上一问有点问题, 我得先想好上面怎么改, 然后才可以改这里的. 
+    实在不行可对这一问不予理会, 先记住交换性的定义. 
+\end{enumerate}
+\printfootnotes

@@ -1,0 +1,433 @@
+\newcommand{\B}{\mathfrak{B}}
+\newcommand{\RR}{\mathfrak{R}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\norm}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+\theoremstyle{plain} 
+\newtheorem*{namedthminner}{} 
+
+\newenvironment{namedthm}[1]
+  {\begin{namedthminner}[#1]}
+  {\end{namedthminner}}
+
+{{comment|这份答案对应钱忠民、应坚刚老师的《随机分析引论》第二版，主要由
+李利平老师于2024-2025学年第二学期随机分析课程给出。部分题目的题干需要结合课本理解；
+有的答案写明在某参考书上，请翻阅对应的参考书，后续读者可以帮忙加上。}}
+
+{{comment|答案编写尚未完成}}
+\section{第一章\quad  预备知识}
+\begin{namedthm}{练习1.1.1}
+    验证下列性质：
+（1）$f^{-1}\left(\Omega^{\prime}\right)=\Omega, f^{-1}(\varnothing)=\varnothing$ ；
+（2）$f^{-1}\left[\left(A^{\prime}\right)^{c}\right]=\left[f^{-1}\left(A^{\prime}\right)\right]^{c}$ ；
+（3）对任何子集列 $\left\{A_{i}^{\prime}\right\}, f^{-1}\left(\bigcup_{i} A_{i}^{\prime}\right)=\bigcup_{i} f^{-1}\left(A_{i}^{\prime}\right)$ ．
+设 $\mathscr{A}^{\prime}$ 是 $\Omega^{\prime}$ 的一个子集类，令
+$$
+f^{-1}\left(\mathscr{A}^{\prime}\right):=\left\{f^{-1}\left(A^{\prime}\right): A^{\prime} \in \mathscr{A}^{\prime}\right\}
+$$
+
+则由上述性质，如果 $\mathscr{A}^{\prime}$ 是 $\Omega^{\prime}$ 上 $\sigma$－代数，$f^{-1}\left(\mathscr{A}^{\prime}\right)$ 是 $\Omega$ 上 $\sigma$－代数。
+\end{namedthm}
+\begin{namedthm}{练习1.1.2}
+设 $\Omega, \Omega^{\prime}$ 是两个非空集合，$f$ 是 $\Omega$ 到 $\Omega^{\prime}$ 的一个映射，设 $\mathscr{A}^{\prime}$ 是 $\Omega^{\prime}$ 的一个子集类．证明：$\sigma\left[f^{-1}\left(\mathscr{A}^{\prime}\right)\right]=f^{-1}\left[\sigma\left(\mathscr{A}^{\prime}\right)\right]$ ．
+\end{namedthm}
+
+
+\begin{namedthm}{练习1.1.3}
+    任何测度空间在下面的意义下可以完备化．设 $(\Omega, \mathscr{F}, \mu)$ 是测度空间．记
+$$
+\begin{aligned}
+\mathscr{N} & :=\left\{N \subset \Omega: \text { 存在 } N^{\prime} \in \mathscr{F} \text { 使得 } N \subset N^{\prime}, \mu\left(N^{\prime}\right)=0\right\}, \\
+\mathscr{F}^{\mu} & :=\sigma(\mathscr{F} \cup \mathscr{N}) .
+\end{aligned}
+$$
+$\mathscr{N}$ 中的集合通常称为 $\mu$－零测集，那么 $\mathscr{F}^{\mu}=\{A \cup N: A \in \mathscr{F}, N \in \mathscr{N}\}$ 。这样 $\mu$ 自动地延拓到 $\mathscr{F}^{\mu}$ 上：$\mu(A \cup N):=\mu(A)$ ．读者需要验证定义无歧义．证明： $\left(\Omega, \mathscr{F}^{\mu}, \mu\right)$ 是一个完备测度空间，称为是原测度空间的完备化．
+\end{namedthm}
+
+\begin{namedthm}{练习1.1.4}
+   设 $\mathscr{F}_{n}$ 是 $\sigma$－代数且关于 $n$ 递增，证明 $\bigcup_{n} \mathscr{F}_{n}$ 是一个代数。
+\end{namedthm}
+
+\begin{namedthm}{练习1.1.5}
+    证明： $\mathbb{R}$ 的左开右闭区间的有限并的全体 $\mathscr{A}$ 是一个代数，它总可以写成不交的有限并．定义
+$$
+m\left(\bigcup_{i=1}^{n}\left(a_{i}, b_{i}\right]\right)=\sum_{i=1}^{n}\left(b_{i}-a_{i}\right)
+$$
+
+证明 $m$ 是 $\mathscr{A}$ 上的测度．
+\end{namedthm}
+
+\begin{namedthm}{练习1.1.6}
+    设 $\mu$ 是 $\Omega$ 的代数 $\mathscr{F}_{0}$ 上的一个非负的有限可加的集函数且 $\mu(\Omega)<\infty$ 。如果对任何递减趋于空集的集列 $\left\{A_{n}\right\} \subset \mathscr{F}_{0}$ 有 $\mu\left(A_{n}\right) \downarrow 0$ ，证明：$\mu$ 是 $\mathscr{F}_{0}$ 上的测度．
+\end{namedthm}
+
+\begin{namedthm}{练习1.1.7}
+验证 $\mu \circ f^{-1}$ 是一个测度．
+\end{namedthm}
+
+\begin{namedthm}{练习1.1.8}
+    设 $\mu, \nu$ 是 $(\Omega, \mathscr{F})$ 上两个测度，$\nu$ 是有限的．证明：$\nu \ll \mu$ 当且仅当对任何 $\varepsilon>0$ ，存在 $\delta>0$ ，使得 $\mu(A)<\delta$ 蕴含着 $\nu(A)<\varepsilon$ 。
+\end{namedthm}
+
+
+\begin{namedthm}{练习1.2.1}
+    下面是两个一致可积的充分条件：
+（1）被一个可积随机变量控制的随机变量集 $\left\{\xi_{i}: i \in I\right\}$ 一致可积；
+（2）设 $\left\{\xi_{n}\right\}$ 是随机变量列，存在 $p>1$ 使得 $\sup _{n} \mathbb{E}\left[\left|\xi_{n}\right|^{p}\right]<\infty$ ，证明：$\left\{\xi_{n}\right\}$ 是一致可积的．
+\end{namedthm}
+
+\begin{namedthm}{练习1.3.1}
+设 $n=1$ ．证明：$\hat{\mu}$ 在零点两次可导当且仅当
+$$
+\int_{\mathbb{R}} x^{2} \mu(\mathrm{~d} x)<\infty
+$$
+\end{namedthm}
+
+\begin{namedthm}{练习1.3.2}
+设 $\xi, \eta$ 是随机变量，后者可积．如果对任何 $x \in \mathbb{R}^{n}$ 有
+$$
+\mathbb{E}\left[\eta \cdot \mathrm{e}^{\mathrm{i}(x, \xi)}\right]=0
+$$
+
+证明： $\mathbb{E}[\eta \mid \xi]=0$ ．
+特征函数最后一个重要性质是连续性，尽管它在本讲义中并没有真正被使用．说一个有限测度列 $\mu_{n}$ 弱收玫于 $\mu$ ，如果对任何有界连续函数 $f$ 有
+$$
+\mu_{n}(f) \longrightarrow \mu(f)
+$$
+\end{namedthm}
+
+\begin{namedthm}{练习1.3.3}
+设 $\left\{\xi_{n}\right\}$ 是平方可积的独立同分布随机序列， $\mathbb{E} \xi_{n}=0, \mathbb{E} \xi_{n}^{2}=1$ ．证明： $\sum_{i=1}^{n} \xi_{i} / \sqrt{n}$ 的分布弱收敛于标准正态分布．
+\end{namedthm}
+
+\begin{namedthm}{练习1.4.1}
+    这里给出存在性的另外一个证明．
+1．如果 $\xi \in L^{2}(\Omega, \mathscr{F}, \mathbb{P})$ ，令 $M:=L^{2}(\Omega, \mathscr{A}, \mathbb{P})$ ，证明： $\mathbb{E}[\xi \mid \mathscr{A}]$ 是 $\xi$ 在闭子空间 $M$ 上的正交投影．
+
+2．利用 $L^{2}(\Omega, \mathscr{F}, \mathbb{P})$ 在 $L^{1}(\Omega, \mathscr{F}, \mathbb{P})$ 中的稠密性，证明条件数学期望的存在性．
+\end{namedthm}
+
+\begin{namedthm}{习题1.5.1}
+（Kolmogorov 0－1 律）设 $\xi_{1}, \cdots, \xi_{n}, \cdots$ 是独立随机变量序列，令
+$$
+\mathscr{F}:=\sigma\left(\xi_{1}, \xi_{2}, \cdots\right), \mathscr{A}:=\bigcap_{n} \sigma\left(\xi_{n}, \xi_{n+1}, \cdots\right)
+$$
+
+证明： $\mathscr{F}$ 与 $\mathscr{A}$ 独立，且对任何 $A \in \mathscr{A}, \mathbb{P}(A)=0$ 或 1 ．
+\end{namedthm}
+
+\begin{namedthm}{习题1.5.2}
+    设 $\xi_{n}, \xi$ 是非负可积随机变量，$\xi_{n} \xrightarrow{\mathrm{p}} \xi, \mathbb{E}\left[\xi_{n}\right] \longrightarrow \mathbb{E}[\xi]$ ．证明：$\xi_{n} \xrightarrow{L^{1}} \xi$ ．
+\end{namedthm}
+
+\begin{namedthm}{习题1.5.3}
+    设 $\xi$ 是随机变量，证明：$\xi$ 与子 $\sigma$－代数 $\mathscr{A}$ 独立当且仅当对任何有界 Borel可测函数 $g$ 有 $\mathbb{E}[g(\xi) \mid \mathscr{A}]=\mathbb{E}[g(\xi)]$ ，也等价于对任何 $x \in \mathbb{R}$ 有
+$$
+\mathbb{E}\left[\mathrm{e}^{\mathrm{i} x \xi} \mid \mathscr{A}\right]=\mathbb{E}\left[\mathrm{e}^{\mathrm{i} x \xi}\right]
+$$
+\end{namedthm}
+
+\begin{namedthm}{习题1.5.4}
+    设 $\left\{\mathscr{F}_{\alpha}: \alpha \in \Sigma\right\}$ 是一个子 $\sigma$－代数族，证明：若 $\xi$ 是可积随机变量，则 $\left\{\mathbb{E}\left[\xi \mid \mathscr{F}_{\alpha}\right]: \alpha \in \Sigma\right\}$ 一致可积．
+\end{namedthm}
+
+\begin{namedthm}{习题1.5.5}
+    对两个可积且乘积也可积的随机变量 $\xi, \eta$ 证明： $\mathbb{E}[\xi \mathbb{E}[\eta \mid \mathscr{A}]]=\mathbb{E}[\eta \mathbb{E}[\xi \mid \mathscr{A}]]$ ．
+\end{namedthm}
+
+\begin{namedthm}{习题1.5.6}
+    设 $X, Y$ 独立可积且 $\mathbb{E} X=\mathbb{E} Y=0$ ，证明： $\mathbb{E}[|X|] \leq \mathbb{E}[|X+Y|]$ ．
+\end{namedthm}
+
+\begin{namedthm}{习题1.5.7}
+    设 $\xi, \eta$ 为可积随机变量且 $\mathbb{E}[\xi \mid \eta]=\eta, \mathbb{E}[\eta \mid \xi]=\xi$ ，证明：$\xi=\eta$ a．s．
+\end{namedthm}
+
+\begin{namedthm}{习题1.5.8}
+    设 $\left(\xi_{t}: t \in I\right)$ 是概率空间 $(\Omega, \mathscr{F}, \mathbb{P})$ 上随机变量族，证明：对任何 $A \in \sigma\left(\xi_{i}\right.$ ： $i \in I)$ ，存在可列子集 $S \subset I$ 使得 $A \in \sigma\left(\xi_{i}: i \in S\right)$ ．
+\end{namedthm}
+
+
+\begin{namedthm}{习题1.5.9}
+    设 $\left(\xi_{t}: t \in I\right)$ 是概率空间 $(\Omega, \mathscr{F}, \mathbb{P})$ 上随机变量族，$\xi$ 是可积随机变量．证明：存在可列集 $S \subset I$ 使得
+$$
+\mathbb{E}\left[\xi \mid \xi_{i}: i \in I\right]=\mathbb{E}\left[\xi \mid \xi_{i}: i \in S\right]
+$$
+\end{namedthm}
+
+\section{第二章 \quad 鞅论基础}
+\begin{namedthm}{练习2.1.1}
+如果 $X=\left\{X_{n}\right\}$ 关于流 $\left(\mathscr{F}_{n}\right)$ 是鞅，且流 $\left(\mathscr{F}_{n}\right)$ 与 $\sigma-$ 域 $\mathscr{G}$ 独立，令 $\mathscr{F}_{n}^{\prime}$ 是由 $\mathscr{F}_{n}$ 和 $\mathscr{G}$ 生成的 $\sigma-$ 域，证明：$X$ 关于流（ $\mathscr{F}_{n}^{\prime}$ ）也是鞅。
+\end{namedthm}
+
+\begin{namedthm}{练习2.1.2}
+    如果 $\tau, \sigma$ 是停时，那么取小 $\tau \wedge \sigma$ 也是停时．
+\end{namedthm}
+
+\begin{namedthm}{练习2.1.3}
+    （1）证明定理 2．1．3；（2）设 $X$ 是可积适应过程，如果对任何有界停时 $\sigma \leq \tau$ 有
+$$
+\mathbb{E} X_{\sigma} \leq \mathbb{E} X_{\tau}
+$$
+
+证明 $X$ 是一个下鞅且
+$$
+\mathbb{E}\left[X_{\tau} \mid \mathscr{F}_{\sigma}\right] \geq X_{\sigma} .
+$$
+\end{namedthm}
+
+\begin{namedthm}{练习2.1.4}
+    找适当的鞅计算上面例子中 $\tau$ 的母函数．
+\end{namedthm}
+
+\begin{namedthm}{练习2.2.1}
+    证明：$\tau$ 是 $\left(\mathscr{F}_{t+}\right)$ 停时当且仅当对任何 $t$ ，有 $\{\tau<t\} \in \mathscr{F}_{t}$ ．
+\end{namedthm}
+
+\begin{namedthm}{练习2.2.2}
+    证明：
+1． $\mathscr{F}_{\tau}$ 是一个 $\sigma$－代数；
+2．$\tau$ 是 $\mathscr{F}_{\tau}$ 可测的；
+3．如果 $\tau \equiv t$ 时， $\mathscr{F}_{\tau}=\mathscr{F}_{t}$ ；
+4．一个随机变量 $\xi$ 是 $\mathscr{F}_{\tau}$ 可测当且仅当对任何 $t \in \mathrm{~T}, \xi \cdot 1_{\{\tau \leq t\}}$ 是 $\mathscr{F}_{t}$ 可测的．
+\end{namedthm}
+
+\begin{namedthm}{习题2.4.1}
+    设 $\left(Y_{n}: n \geq 1\right)$ 是一个具有有限状态空间 $E$ 的 Markov 链， $\mathbf{P}=(p(x, y))$ ： $x, y \in E$ 是转移矩阵，即对任何 $n \geq 1$ 及 $y \in E$ ，有
+$$
+\mathbb{P}\left(Y_{n}=y \mid Y_{n-1}, \cdots, Y_{1}, Y_{0}\right)=p\left(Y_{n-1}, y\right)
+$$
+$\alpha: E \rightarrow \mathbb{R}$ 是 $\mathbf{P}$ 的从属于特征值 $\lambda$ 的特征向量： $\mathbf{P} \alpha=\lambda \alpha$ ．令 $X_{n}:=$ $\lambda^{-n} \alpha\left(Y_{n}\right)$ ，证明：$\left(X_{n}: n \geq 1\right)$ 是一个鞅．
+\end{namedthm}
+
+\begin{namedthm}{习题2.4.2}
+    设 $X$ 是零均值平方可积的独立增量过程，证明：存在唯一的 T 上初值为零的递增函数 $F$ ，使得 $\left(X_{t}^{2}-F(t)\right)$ 是一个鞅．
+\end{namedthm}
+
+\begin{namedthm}{习题2.4.3}
+    （Wald 鞅）设 $\left\{Y_{n}: n \geq 1\right\}$ 是独立同分布随机序列使得 $\phi(t):=\mathbb{E}\left[\mathrm{e}^{t Y_{n}}\right]$ 对某个 $t \neq 0$ 有限．令
+$$
+X_{n}:=\phi(t)^{-n} \exp \left[t\left(Y_{1}+\cdots+Y_{n}\right)\right]
+$$
+
+证明：$\left\{X_{n}: n \geq 1\right\}$ 是鞅．
+\end{namedthm}
+
+\begin{namedthm}{习题2.4.4}
+    一个袋子中在时刻 0 有一个红球与一个白球．随机地从袋子中取一个球，然后将它放回并放入一个相同颜色的球，无限地重复此过程．记 $X_{n}$ 为 $n$ 次后袋中白球数与总球数之比．证明：$\left\{X_{n}\right\}$ 是鞅．
+
+\end{namedthm}
+
+\begin{namedthm}{习题2.4.5}
+    设 $\left\{Y_{n}: n \geq 1\right\}$ 是独立同分布随机序列，$f_{0}, f_{1}$ 是两个概率密度函数，$f_{0}>0$ ．令
+$$
+X_{n}:=\frac{f_{1}\left(Y_{1}\right) f_{1}\left(Y_{2}\right) \cdots f_{1}\left(Y_{n}\right)}{f_{0}\left(Y_{1}\right) f_{0}\left(Y_{2}\right) \cdots f_{0}\left(Y_{n}\right)}
+$$
+
+证明：如果 $f_{0}$ 是 $Y_{n}$ 的密度函数，那么 $\left(X_{n}\right)$ 是鞅．
+\end{namedthm}
+
+\begin{namedthm}{习题2.4.6}
+    设 $\left\{X_{n}: n \geq 0\right\}$ 是 $\left(\mathscr{F}_{n}\right)$ 适应的可积随机序列，满足
+$$
+\mathbb{E}\left(X_{n+1} \mid \mathscr{F}_{n}\right)=\alpha X_{n}+\beta X_{n-1}, n \geq 1,
+$$
+
+其中 $\alpha>0, \beta>0, \alpha+\beta=1$ ．问 $a$ 为何值时，序列 $Y_{0}:=X_{0}, Y_{n}:=$ $a X_{n}+X_{n-1}$ 是 $\left(\mathscr{F}_{n}\right)$ 鞅？
+\end{namedthm}
+
+\begin{namedthm}{习题2.4.7}
+    设 Markov 链 $\left\{X_{n}: n \geq 0\right\}$ 的状态空间为 $\{0,1, \cdots, N\}$ ，转移概率为
+$$
+p_{i j}=\binom{N}{j} \pi_{i}^{j}\left(1-\pi_{i}\right)^{N-j}, 0 \leq i, j \leq N,
+$$
+
+其中 $\pi_{i}=\frac{1-\mathrm{e}^{-2 a \frac{i}{N}}}{1-\mathrm{e}^{-2 a}}$ ．验证：$Z_{n}:=\mathrm{e}^{-2 a X_{n}}$ 是鞅．
+\end{namedthm}
+
+\begin{namedthm}{习题2.4.8}
+    设 $\left\{Y_{n}\right\}$ 是独立同分布正随机变量序列使得 $\mathbb{E} Y_{n}=1$ ．记 $X_{n}:=Y_{1} Y_{2} \cdots Y_{n}$ ．
+（a）证明：$\left(X_{n}\right)$ 是鞅且几乎处处收敛于一个随机变量 $X$ ；
+（b）设 $Y_{n}$ 以概率 $1 / 2$ 分别取值 $1 / 2$ 与 $3 / 2$ ．验证 $X=0$ a．s．因此
+$$
+\mathbb{E} \prod_{n \geq 1} Y_{n} \neq \prod_{n \geq 1} \mathbb{E} Y_{n}
+$$
+\end{namedthm}
+
+\begin{namedthm}{习题2.4.9}
+    （Doob 分解）证明：下鞅（ $X_{n}$ ）可唯一分解为 $X_{n}=Y_{n}+Z_{n}$ ，其中（ $Y_{n}$ ）是鞅， $\left(Z_{n}\right)$ 是从 0 出发的非负可预料的增过程： $0=Z_{1} \leq Z_{2} \leq \cdots$ ．
+\end{namedthm}
+
+\begin{namedthm}{习题2.4.10}
+    （Riesz 分解）证明：上鞅 $\left(X_{n}\right)$ 可分解为 $X_{n}=Y_{n}+Z_{n}$ ，其中 $Y$ 是鞅，$Z$ 是位势（即 $Z$ 是上鞅且 $\lim _{n} \mathbb{E} Z_{n}=0$ ）当且仅当 $\left\{\mathbb{E} X_{n}\right\}$ 有界。这时此分解唯一。
+\end{namedthm}
+
+\begin{namedthm}{习题2.4.11}
+    设 $\left\{X_{n}\right\}$ 是鞅且 $\left|X_{0}(\omega)\right|,\left|X_{n}(\omega)-X_{n-1}(\omega)\right|$ 被一个与 $\omega$ 及 $n$ 无关的常数控制．如果 $\tau$ 是一个具有有限均值的停时，证明：$X_{\tau}$ 可积且 $\mathbb{E} X_{\tau}=\mathbb{E} X_{0}$ ．
+\end{namedthm}
+
+\begin{namedthm}{习题2.4.12}
+    设 $\left\{X_{n}: n \geq 0\right\}$ 是例 2．1．4 中定义的从 $a$ 出发的随机游动，$\tau$ 是首次到达 $\{0, b\}$ 的时间．证明：当 $p=q$ 时，$X_{n}^{2}-n$ 是鞅．并由此求 $\mathbb{E} \tau$ ．
+\end{namedthm}
+
+\begin{namedthm}{习题2.4.13}
+    设 $\left\{X_{n}: n \geq 0\right\}$ 是例 2．1．1 说的随机游动，$p>q$ ．取整数 $b>0$ ，令 $\sigma:=$ $\min \left\{n: X_{n}=b\right\}$ ．求停时 $\sigma$ 的母函数并由此计算 $\sigma$ 的均值与方差．
+\end{namedthm}
+
+\begin{namedthm}{习题2.4.14}
+    设 $\xi_{1}, \xi_{2}, \cdots, \xi_{n}, \cdots$ 是独立同分布可积随机变量．对 $k \geq 1$ ，令 $S_{k}:=\xi_{1}+\cdots+$ $\xi_{k}$ ，证明：$\left\{\cdots, S_{k} / k, S_{k-1} /(k-1), \cdots, S_{2} / 2, S_{1}\right\}$ 是鞅。由此证明 Kolmogorov强大数定律．
+
+提示．只需证明
+$$
+\mathbb{E}\left(S_{1} \mid S_{n}, S_{n+1}, \cdots\right)=\mathbb{E}\left(S_{1} \mid S_{n}\right)=\frac{S_{n}}{n}
+$$
+
+就足够了。
+\end{namedthm}
+
+\begin{namedthm}{习题2.4.15}
+    如果 $X$ 是非负上鞅，那么
+$$
+\mathbb{P}\left(\left\{X_{N}>0, \inf _{n \leq N} X_{n}=0\right\}\right)=0
+$$
+\end{namedthm}
+
+\begin{namedthm}{习题2.4.16}
+    设 $\left\{X_{n}: n \geq 0\right\}$ 是鞅，$\tau$ 是停时．如果
+（a） $\mathbb{P}(\tau<\infty)=1$ ；
+（b） $\mathbb{E}\left|X_{\tau}\right|<\infty$ ；
+（c） $\lim _{n} \mathbb{E}\left[X_{n} ;\{\tau>n\}\right]=0$ ；那么 $\mathbb{E}\left[X_{\tau}\right]=\mathbb{E}\left[X_{0}\right]$ ．
+\end{namedthm}
+
+\begin{namedthm}{习题2.4.17}
+    （Kolmogorov 三级数定理）设 $\left\{X_{n}\right\}$ 是独立随机序列．那么 $\sum X_{n}$ 几乎处处收玫当且仅当对某个 $A>0$ 下面三个条件成立：
+（a） $\mathbb{P}\left(\left|X_{n}\right|>A\right)$ 收敛；
+（b）设 $Y_{n}:=X_{n} 1_{\left\{\left|X_{n}\right| \leq A\right\}}$ ，那么 $\sum \mathbb{E}\left(Y_{n}\right)$ 收敛；
+（c）$\sum D\left(Y_{n}\right)$ 收敛．
+\end{namedthm}
+
+\begin{namedthm}{习题2.4.18}
+    设 $X$ 是一个 $\left(\mathscr{F}_{t}\right)$ 适应的，右连续并具有左极限的过程．令 $A$ 是使得 $X$ 在 $[0, t)$ 上连续的样本全体．证明：$A \in \mathscr{F}_{t}$ ．
+
+证明．令 $Y_{t}=\left(X_{t-}, X_{t}\right)$ ，当然 $Y=\left(Y_{t}\right)$ 也是 $\left(\mathscr{F}_{t}\right)$ 适应的．定义
+$$
+\tau=\inf \left\{t \geq 0: Y_{t} \notin d\right\}
+$$
+
+其中 $d$ 是状态空间 $E \times E$ 的对角线，那么 $\tau$ 是开集的首中时，故是（ $\mathscr{F}_{t+}$ ）－停时，因此 $A=\{\tau \geq t\}=\{\tau<t\}^{c} \in \mathscr{F}_{t}$ 。
+\end{namedthm}
+
+\begin{namedthm}{习题2.4.19}
+    设 $\tau$ 是个停时，$\sigma$ 是随机时间且 $\sigma \geq \tau$ ．证明：如果 $\sigma$ 是 $\mathscr{F}_{\tau}$ 可测的，则 $\sigma$ 是个停时．
+\end{namedthm}
+
+\begin{namedthm}{习题2.4.20}
+    设 $\tau$ 是 $\left(\mathscr{F}_{t}\right)$ 停时，证明： $\mathscr{F}_{\tau+}=\bigcap_{\sigma>\tau} \mathscr{F}_{\sigma}$ ，其中 $\sigma$ 是停时．
+\end{namedthm}
+
+\begin{namedthm}{习题2.4.21}
+    设 $\tau, \sigma$ 是 $\left(\mathscr{F}_{t}\right)$ 停时，则 $\mathscr{F}_{\tau \wedge \sigma}=\mathscr{F}_{\tau} \cap \mathscr{F}_{\sigma}$ ，且事件 $\{\tau<\sigma\},\{\tau \leq \sigma\} \in \mathscr{F}_{\tau} \cap \mathscr{F}_{\sigma}$ ．
+\end{namedthm}
+
+\begin{namedthm}{习题2.4.22}
+    （Föllmer 引理）设 $X=\left(X_{t}: t \in \mathrm{~T}\right)$ 是一个下鞅，$D$ 是 T 的一个可列稠子集，对正整数 $K>0$ ，令 $D_{K}:=[0, K] \cap(D \cup\{0, K\})$ ，则
+（a）对几乎所有的 $\omega \in \Omega$ ，从 $D$ 到 $\mathbb{R}$ 的映射 $t \mapsto X_{t}(\omega)$ 对任何 $K>0$ 在 $D_{K}$ 上是有界的且在每个点 $t \in \mathrm{~T}$ 有右极限
+$$
+X_{t+}^{D}(\omega):=\lim _{s \in D, s \downarrow \downarrow t} X_{s}(\omega)
+$$
+
+及左极限
+$$
+X_{t-}^{D}(\omega):=\lim _{s \in D, s \uparrow \uparrow t} X_{s}(\omega) .
+$$
+
+序列 $s_{n} \uparrow \uparrow t$ 表示对任何 $n \geq 1, s_{n}<t$ 且 $s_{n} \uparrow t . \downarrow \downarrow$ 类似理解；
+（b）对所有 $t \in \mathrm{~T}, X_{t+}^{D}$ 是可积的且 $X_{t} \leq \mathbb{E}\left(X_{t+}^{D} \mid \mathscr{F}_{t}\right)$ ．如果 $t \mapsto \mathbb{E} X_{t}$ 右连续，则 $X_{t}=\mathbb{E}\left(X_{t+}^{D} \mid \mathscr{F}_{t}\right)$ ；
+（c）过程 $X_{+}^{D}=\left(X_{t+}^{D}: t \in \mathrm{~T}\right)$ 是关于右极限流 $\left(\mathscr{F}_{t+}\right)$ 的右连续下鞅，当 $X$是鞅时，$X_{+}^{D}$ 也是一个鞅．
+\end{namedthm}
+
+\begin{namedthm}{习题2.4.23}
+    设 $\left(X_{t}\right)$ 是一个关于 $\left(\mathscr{F}_{t}\right)$ 的右连续非负上鞅．证明：当 $t \rightarrow \infty$ 时，$X_{t}$ 几乎处处收玫于一个可积随机变量，记为 $X_{\infty}$ ，且 $\left(X_{t}: 0 \leq t \leq+\infty\right)$ 是 $\left(\mathscr{F}_{t}\right)$ 上鞅．
+\end{namedthm}
+
+\begin{namedthm}{习题2.4.24}
+    证明：一个鞅是一致可积鞅当且仅当它是右闭鞅（Doob 鞅）．
+
+\end{namedthm}
+
+\section{第三章 \quad Brown运动}
+\begin{namedthm}{练习3.1.1}
+    
+\end{namedthm}
+
+\begin{namedthm}{练习3.1.2}
+    
+\end{namedthm}
+
+\begin{namedthm}{练习3.1.3}
+    
+\end{namedthm}
+
+\begin{namedthm}{练习3.1.4}
+    
+\end{namedthm}
+
+
+
+
+\section*{参考书目}
+[B71] Benes, V. E. (1971). Existence of optimal stochastic control laws. SIAM J. Control 9 446-472.
+
+[C68] Chung, K. L. (1968). A course in probability theory. Academic Press.
+
+[C82] Chung, K. L. (1982). Lectures from Markov processes to Brownian motion. vol 249 Springer-Verlag, New York-Berlin.
+
+[CW74] Chung, K. L. and Walsh, J. B. (1974). Meyer's theorem on predictability. Z. Wahrscheinlichkeitstheorie Verwandte Geb. 29 253-256.
+
+[CW83] Chung, K. L. and Williams, R. J. (1983). Introduction to stochastic integration. vol 4 Birkhauser Boston, Inc., Boston, MA, Boston, MA.
+
+[D10] Durrett, R. (2010). Probability: Theory and examples. Cambridge University Press, Cambridge, Cambridge.
+
+[EK46] Erdös, P. and Kac, M. (1946). On certain limit theorems of the theory of probability. Bull. Am. Math. Soc. 52 292-302.
+
+[F99] Folland, G. B. (1999). Real analysis. John Wiley \& Sons, Inc., New York.
+
+[FV10] Friz, P. K. and Victoir, N. B. (2010). Multidimensional stochastic processes as rough paths: Theory and applications. Cambridge University Press, Cambridge, UK; New York.
+
+[HWY92] He, S. W., Wang, J. G. and Yan, J. A. (1992). Semimartingale theory and stochastic calculus. Kexue Chubanshe (Science Press), Beijing; CRC Press, Boca Raton, FL.
+
+[H84] Horst, H. J. T. (1984). Riemann-Stieltjes and Lebesgue-Stieltjes integrability. Am. Math. Mon. 91 551-559.
+
+[IK81] Ikeda, N. and Watanabe, S. (1981). Stochastic differential equations and diffusion processes. vol 24 North-Holland Publishing Co., Amsterdam-New York; Kodansha, Ltd., Tokyo.
+
+[K96] Kallenberg, O. (1996). On the existence of universal functional solutions to classical SDE's. Ann. Probab. 24 196-205.
+
+[K02] Kallenberg, O. (2002). Foundations of modern probability. Springer-Verlag, New York, New York, NY.
+
+[K17] Kallenberg, O. (2017). Random measures, theory and applications. vol 77 Springer International Publishing, Cham.
+
+[KS88] Karatzas, I. and Shreve, S. E. (1988). Brownian motion and stochastic calculus. vol 113 Springer-Verlag, New York, New York, NY.
+
+[M66] Meyer, P. A. (1966). Probability and potentials. Blaisdell Publishing Company.
+
+[M72] Meyer, P.-A. (1972). Martingales and stochastic integrals I. vol 284 Springer Berlin Heidelberg, Berlin, Heidelberg.
+
+[N12] Nourdin, I. (2012). Selected aspects of fractional Brownian motion. Springer Milan, Milano.
+
+[RW87] Rogers, L. C. G. and Williams, D. (1987). Diffusions, Markov processes, and martingales. Vol. 2. John Wiley \& Sons, Inc., New York.
+
+[RY99] Revuz, D. and Yor, M. (1999). Continuous martingales and Brownian motion. vol 293 Springer-Verlag, Berlin, Berlin, Heidelberg.
+
+[SP12] Schilling, R. L. and Partzsch, L. (2012). Brownian motion: An introduction to stochastic processes. De Gruyter.
+
+[S88] Sharpe, M. (1988). General theory of Markov processes. vol 133 Academic Press, Inc., Boston, MA.
+
+［S66］Shepp，L．A．（1966）．Radon－Nikodym derivatives of Gaussian measures．Ann．Math．Stat． 37 321－354．
+
+［SV79］Stroock，D．W．and Varadhan，S．R．S．（1979）．Multidimensional diffusion processes． Springer－Verlag，Berlin．
+
+［L25］李利平．（2025）．概率论习题参考解答．
+
+［Y24］应坚刚．（2024）随机过程基础．复旦大学出版社．
+
+［YH23］应坚刚，何萍．概率论．复旦大学出版社．

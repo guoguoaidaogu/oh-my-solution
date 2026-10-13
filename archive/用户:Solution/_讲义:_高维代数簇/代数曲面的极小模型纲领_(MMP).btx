@@ -1,0 +1,128 @@
+\newcommand{\codim}{\operatorname{codim}}
+
+\section{极小代数曲面}
+\begin{definition}
+    设$S$为光滑射影曲面. 
+    若对于任一光滑射影曲面的双有理态射$\pi:S \to S'$都是同构，
+    则称$S$为\bf{极小代数曲面}.
+\end{definition}
+
+在这一讲，我们的目标是证明极小曲面的一则等价刻画：“曲面上无$(-1)$曲线”.
+这是意大利数学家Guido Castelnuovo的工作。
+
+\begin{example}
+    如$\mathbb{P}^{2}$与$\mathbb{P}^{1} \times \mathbb{P}^{1}$.
+    两者上的所有不可约曲线自交数都非负，因而极小.
+\end{example}
+
+\section{Zariski主定理}
+\begin{definition}
+    设$f:X \dashrightarrow Y$是射影簇间的双有理映射，
+    定义域为$U_{0}$. 
+    记$\Gamma_{0} = \{(x,f(x)) \mid x \in U_{0}\} \subseteq X \times Y$.
+    称$\overline{\Gamma_{0}}$（在$X \times Y$内取闭包）为$f$的图像. 
+
+    若$D$是$X$的闭子集，则作$f(D) := (\pi_{2}^{-1} \circ \pi_{1})(D)$.
+    称为$D$的\textbf{完全形变}.
+    
+    若$f$在$p \in X$处无定义，则称$p$为$f$的\textbf{基本点}. 
+    此时$f(p)$定义为其完全形变.
+\end{definition}
+
+\begin{lemma}\label{basefinite}
+    设$X$，$Y$为射影簇，且$X$是正规的. 
+    对于双有理映射$f:X \dashrightarrow Y$，设定义域为$U_{0}$，
+    则$\codim_{X}(X - U_{0}) \geq 2$.
+\end{lemma}
+
+\begin{theorem}
+    设$X$是正规射影簇，$f\colon X \dashrightarrow Y$是射影簇间的双有理映射，
+    $p \in X$是基本点，则$f(p)$是连通的，且$\dim f(p) \geq 1$.
+\end{theorem}
+
+\section{Castelnuovo定理}
+\begin{theorem}\label{factor}
+    设$f\colon X' \to X$是光滑射影簇间的双有理态射，且非同构.
+    若$p$是$f^{-1}\colon X \dashrightarrow X'$的基本点，
+    则$f$穿过以$p$为中心的爆破.
+\end{theorem}
+\begin{proof}
+    设$\pi\colon \tilde{X} \to X$是以$p$为中心的爆破，例外除子为$E$.
+    记双有理映射$g = \pi^{-1} \circ f:X' \dashrightarrow \tilde{X}$，
+    我们证明$T$是态射.
+    否则，取$p‘ \in X'$为$T$的基本点，则$f(p') = p$
+    （由于$\pi^{-1}$在$p$以外皆有定义，而$f$是态射）. 
+
+    故$g(p') = E$.
+    令$U' = X' \backslash f^{-1}(p)$，而$U = X \backslash p$，
+    那么$\pi^{-1}|_{U}:U \to U'$是态射，
+\end{proof}
+
+\begin{corollary}
+    设$f:X' \to X$是光滑射影曲面间的双有理态射.
+    记$n(f)$为被$f$收缩成点的不可约曲线的条数，
+    则$f$可被分解为$n(f)$个单点爆破的复合.
+\end{corollary}
+\begin{proof}
+    由引理\ref{basefinite}，$f^{-1}$的基本点有限，故$n(f) < \infty$.
+    我们以归纳完成该证明.
+
+    若$n(f) = 0$，那么$f$是拟有限的分离双有理态射. 
+    由于是光滑情形，故由Zariski主定理知$f$是同构.
+
+    若$n(f) > 0$，那么取$f^{-1}$的基本点$p$，并如定理\ref{factor}
+    分解$f$为$\pi \circ g$，其中$\pi = \mathrm{Bl}_{p}$，并
+    记例外除子为$E$. 
+    对于$X'$上的不可约曲线$C$，若$g(C)$是单点，那么$f(C)$亦是单点，
+    从而$n(g) \leq n(f)$. 下面我们证明这里的不等号是严格的.
+    若$f$将$X'$上的曲线$D$压缩至点$q \neq p$，则$\pi^{-1}(q)$
+    也是单点. 由于$g^{-1}(E)$是$\tilde{X}$中有限条不可约曲线的有限和
+    （记$g^{-1}(E) = k_{1}C_{1} + \dots + k_{r}C_{r}$），且$g$是打满$E$的，
+    故至少有一条$C_{i}$被$g$映为$E$. 而Zariski主定理告诉我们$E$中
+    任意一点的原像都是连通的，故$g$恰好把一条$C_{i}$映为$E$.
+    那么该$C_{i}$就是可被$f$收缩，但无法被$g$收缩的曲线. 所以$n(g) < n(f)$.
+    由归纳证毕.
+\end{proof}
+
+\begin{theorem}
+    设$f:X' \dashrightarrow X$是光滑射影曲面间的双有理态射，
+    则$f$可分解为有限个单点爆破及其逆的复合.    
+\end{theorem}
+
+\begin{theorem}
+    设$X$是光滑射影曲面. 
+    若$X$上有$(-1)$-曲线$E$，则存在光滑射影曲面$X_{1}$及单点爆破
+    $\sigma:X \to X_{1}$使得其例外除子为$E$.
+\end{theorem}
+
+\begin{corollary}
+    \begin{itemize}
+        \item[(1)] 光滑射影曲面极小\bf{当且仅当}其上无$(-1)$-曲线；
+        \item[(2)] 任何光滑射影曲面都有极小模型.
+    \end{itemize}
+\end{corollary}
+
+\section{极小模型的唯一性}
+\begin{definition}
+    设$X$为光滑代数簇. 定义$X$的小平维数为
+    \[\kappa(X) = 
+    \begin{cases}
+        -\infty & ，h^{0}(mK_{X}) = 0 \forall m \in \N \\
+        0       & ，h^{0}(mK_{X}) \leq 1 \forall m \in \N，
+        且存在m \in \N使得h^{0}(mK_{X}) = 1 \\
+        \max\{\dim \overline{\phi_{|mK_{X}|}(X)}\} & ，其余情况
+    \end{cases}.\]
+\end{definition}
+
+\begin{lemma}
+    设$S$是光滑射影曲面，$\kappa(S) \geq 0$，则$S$是极小曲面
+    \textbf{当且仅当}$K_{S}$是nef的.
+\end{lemma}
+
+当曲面$S$的小平维数为$-\infty$时，$S$的极小模型一定是直纹面，
+即存在到光滑曲线的约化$f:S \to B$，使得对于任意$b \in B$，
+$f^{-1}(b) \cong \mathbb{P}^{1}$.
+
+\begin{theorem}
+    设$S$为光滑射影曲面，且$\kappa(S) \geq 0$，则$S$有唯一极小模型.
+\end{theorem}

@@ -1,0 +1,513 @@
+{{comment|研究生课是wgz老师开的，因笔者能力有限已放弃旁听，欢迎补充.}}
+
+\newtheorem{defn}{定义}
+\newtheorem{theo}{定理}
+\newtheorem{exam}{例子}
+\newtheorem{prop}{命题}
+\newtheorem{exer}{习题}
+\newtheorem{rem}{注}
+\theoremstyle{definition}
+\newtheorem*{prf}{证明}
+\newcommand{\id}{\operatorname{id}}
+
+
+\section{第一周}
+		
+	同伦论：两个苹果、两个香蕉。长得不像的东西，内在有某种相似之处，就可以抽象出来。\\
+	
+	20世纪主题：\\
+	1. 问题在何种意义下是\textcolor{red}{不变的}.\\
+	2. 把不变的概念抽象出来.\\
+	3. \textcolor{red}{分类}，在不变的意义下分类.\par
+	\qquad 群的分类、流形分类、表示的分类、代数簇分类\\
+	
+	同伦论：同伦意义下的分类\par
+	\qquad 计数：方程解的个数\par
+	\qquad 方程的指标\par
+	\qquad \qquad Riemann-Roch 定理\par
+	\qquad \qquad 流形的符号差\par
+	\qquad \qquad 亏格$g$\par
+	
+	
+	同伦：\par
+	\qquad $X, Y$是拓扑空间，称两个连续映射$p,q: X\rightarrow Y$同伦，记做$p\sim q$，若存在连续映射$h: X\times I \rightarrow Y$, 其中$I=[0,1]$, 使得
+				$$h|_{X\times \{0\}} =p,$$
+				$$h|_{X\times \{1\}} =q.$$
+	\\
+	
+	同伦论：同伦等价意义下，连续映射如何分类？\\ \par
+	
+	定端同伦：\par
+	\qquad $X, Y$是带基点的拓扑空间，$x\in X, y\in Y$，也记做$(X,x), (Y,y)$. 考虑保基点映射$p:(X,x)\rightarrow (Y,y)$, 使得$p(x)=y$. 称$p, q$保基点同伦，若存在连续映射$h: X\times I \rightarrow Y$, 使得$h(x,t)=y,\ \forall t\in I$, 且
+				$$h|_{X\times \{0\}} =p$$
+				$$h|_{X\times \{1\}} =q$$
+	\par
+	
+	\qquad 从$X$到$Y$的所有保基点同伦类的集合：$[X,Y]$.\par
+	
+	\begin{exer}
+	同伦是等价关系（自反、对称、传递）
+	\end{exer}
+	
+	\begin{exer}
+	$X_+=X \cup *$，无交并，取$*$为基点，则$[X_+,Y]$等价于$X\rightarrow Y$的同伦类集合.
+	\end{exer}
+	
+	
+	
+	
+	基本群：$[\mathbb{S}^1,Y]$.\par
+	\qquad $\mathbb{S}^1=I/0\sim 1$, 取$0\in I$为基点. $Y$是带基点空间，$\pi_1(Y)=[\mathbb{S}^1, Y]$.
+		$$\pi_1(Y)=\{I\xrightarrow{f} Y,\ f(0)=f(1)=y\}/\sim$$
+	图示，$I\times I$，竖边表示$Y$，横边是函数.
+	
+	\begin{theo}
+		$\pi_1(Y)$是一个群.
+	\end{theo}
+	
+	\begin{prf}
+		幺元：到$y$的常值映射$c_y$.\par
+		复合：$f:I\rightarrow Y$, $g:I\rightarrow Y$. （两倍速）\par
+			$$g\circ f(t)=\begin{cases}
+						f(2t), &0\leq t\leq \frac{1}{2},\\
+						g(2t-1),&\frac{1}{2}<t\leq 1.
+						\end{cases}$$
+		和幺元的复合：$f\circ c_y\cong f\cong c_y\circ f$.\par
+		结合律：$h\circ (g\circ f)=(h\circ g)\circ f$.
+		逆元构造，收缩.
+	\end{prf}
+	
+	\begin{exam}
+		$\pi_1(\mathbb{R})=0$.\par
+		$I\xrightarrow{f} \mathbb{R}$, $I$上的函数，$f(0)=f(1)=0$，乘以越来越小的系数.
+	\end{exam}
+	
+	\begin{exam}
+		$\pi_1(\mathbb{S}^1)=0$.\par
+		\qquad $I\xrightarrow{f} \mathbb{S}^1$, $\mathbb{S}^1$作参数化：$e^{2\pi it}, t\in[0,1]$.
+	\end{exam}
+	
+	\begin{exer}
+		$\tilde{f}=\frac{\log f}{2\pi i}: I\rightarrow \mathbb{R}$可单值化.
+	\end{exer}
+	
+		\qquad $\tilde{f}:I\rightarrow \mathbb{R}$, $f=e^{2\pi i \tilde{f}}$.\par
+		\qquad \qquad 1. $\tilde{f}|_{0,1}\in \mathbb{Z}$.\par
+		\qquad \qquad 2. $\tilde{f}$和$\tilde{f}+c$对应同一个$f$, 其中$c\in \mathbb{Z}$.\par
+		
+		\qquad 1. 固定$f$，每个代表类中恰有一个$\tilde{f}$, 使得$\tilde{f}|_0=0$.\par
+		\qquad 2. $\tilde{f}(1)-\tilde{f}(0)$是一个不变量.\par
+		\qquad 3. 起点与终点相同的$\tilde{f}$相互同伦.~\\ ~\\ \par
+		
+	
+	基本群的函子性.\par
+		\qquad $f:(X,x)\rightarrow (Y,y)$是保基点连续映射.\par
+		\qquad 定义$f_*:\pi_1(X,x)\rightarrow \pi_1(Y,y)$.\par
+		\qquad $f_*(h)=h\circ f$，其中$h: I\rightarrow X$, $f_*(h): I\xrightarrow{h} X\xrightarrow{f} Y$.\par
+		
+	\begin{exer}
+		$f_*$良定、是群同态.
+	\end{exer}
+	
+	
+	基本群对基点的依赖.
+	
+	\begin{theo}
+		设道路$a:I\rightarrow X$, $a(0)=x$和$a(1)=y$. 定义映射$\gamma_a:\pi_1(X,x)\rightarrow \pi_1(X,y)$, 
+					$$\gamma_a(f)=[a\circ f\circ a^{-1}].$$
+	\end{theo}
+	
+	\begin{exer}
+		$\gamma_a$良定性、是群同态. $\gamma_a$只依赖于$a$的定端同伦类.
+	\end{exer}
+	
+		
+	\begin{exer}
+	$\gamma_a$和$\gamma_{a^{-1}}$互逆. 进而$\gamma_a$是群同构.
+	\end{exer}
+	
+	\begin{rem}
+		这个群同构依赖于$a$的选取.
+	\end{rem}
+	~\\
+	
+	同伦不变性.\par
+	\begin{prop}
+	\qquad $f,g: (X,x)\rightarrow (Y,y)$是保基点的同伦，则$f_*=g_*:\pi_1(X,x)\rightarrow \pi_1(Y,y)$.
+	\end{prop}
+	\begin{prf}
+		$[h]\in \pi_1(X,x)$, $f_*(h)=f\circ h$. $H:X\times I\rightarrow Y$, $H|_{X\times \{0\}}=f, H|_{X\times \{1\}}=g$. 则$H\circ h: f_*(h)\sim g_*(h)$.
+	\end{prf}
+	
+	\begin{exer}
+		$H\circ h: f_*(h)\sim g_*(h)$.
+	\end{exer}
+	
+	\begin{prop}
+		若$f, g:X\rightarrow Y$是不保基点的同伦，由$H$实现. 则$a=H(x): I\rightarrow Y$是连接$f(x)$和$g(x)$的一条线.\par
+		\qquad 我们有$g_*=\gamma_a\circ f_*$.
+	\end{prop}
+	
+	\begin{exer}
+		证明上一条性质.
+	\end{exer}
+	
+	总结：\par
+	\qquad 1. 具有群结构（代数）
+	\qquad 2. 函子性（范畴论）
+	\qquad 3. 同伦不变性（同伦论特点）
+	
+	
+	\begin{exam}
+		Brouwer不动点定理.\par
+		\qquad 任何连续映射$f:D^2\rightarrow D^2$一定有不动点.
+	\end{exam}
+	
+	\begin{prf}
+		设$f$没有不动点. 连接并延长$f(x)$与$x$，交圆周于点$r(x)$，对于任意$x\in D^2$. 
+        良定性由$f$没有不动点保证. 注意到$r|_{\mathbb{S}^1}=\id$.\par
+		\qquad 取$1\in \mathbb{S}^1$作为基点. $\mathbb{S}^1\rightarrow D^2\xrightarrow{r} \mathbb{S}^1$, 两个映射复合是恒同映射. 利用$\pi_1$的函子性，有$\pi_1(\mathbb{S}^1)=\mathbb{Z} \rightarrow \pi_1(D^2)=0\xrightarrow{r_*}=\pi_1(\mathbb{S}^1)=\mathbb{Z}$，两个映射的复合是恒同映射，矛盾.
+	\end{prf}
+	
+	\begin{rem}
+		不等式推等式.
+	\end{rem}
+	
+	\begin{exam}
+		代数学基本定理：任何复多项式都有根.
+	\end{exam}
+	
+	\begin{prf}
+			$f:\mathbb{C}\rightarrow \mathbb{C}$是多项式，若$f$没有根，考虑$g=\frac{f}{|f|}:\mathbb{C}\rightarrow \mathbb{S}^1$.\par
+			\qquad $C_i=\{z\mid |z|=i\}$, 注意到$g|_{C_i}$都是同伦等价的. $g|_{C_0}:\mathbb{S}^1\rightarrow \mathbb{S}^1$是常值.\par
+			\qquad 考虑其基本群. 从$\mathbb{S}^1$通过不同的$g|_{C_i}$打到$\mathbb{S}^1$，又$(g|_{C_0})_*=0$, 则$(g|_{C_N})_*=0, N\to +\infty$. 但$\frac{f}{|f|}$在$z$足够大时，只需考虑最高次项，得到转$n$圈，矛盾.
+	\end{prf}
+	
+	
+	
+	
+	范畴论. $\mathscr{C}$. \par
+	\qquad 1. 一簇对象 $obj(\mathscr{C})$.\par
+	\qquad 2. $\forall A, B, C\in obj(\mathscr{C})$, 集合$\tau(A,B)$ 态射.\par
+	\qquad 3. 复合.\par
+	\qquad 4. 恒同态射.\par
+	\qquad 5. 结合律.\\ \par
+	
+	“大范畴”\par
+	\qquad set, group, manifold, ring.\par
+	
+	“小范畴”：对象构成集合.~\\ \par
+	
+	函子：$F:\mathscr{C} \rightarrow \mathscr{D}$范畴之间的“态射”\par
+	\qquad 1. 对象映射：$obj(\mathscr{C})\rightarrow obj(\mathscr{D})$.\par
+	\qquad 2. 态射映射：$\mathscr{C}(A,B)\rightarrow \mathscr{D}(F(A),F(B))$.\par
+	\qquad 3. 保恒同：$F(\id_A)=\id_{F(A)}$.\par
+	\qquad 4. 保复合：$F(f\circ g)=F(f)\circ F(g)$.~\\ \par
+	
+	忘性函子：$\pi_1$：带基点的拓扑空间$\rightarrow$群（降级）\par
+	自由函子：集合$\rightarrow$ 向量空间（自由升级）~\\ \par
+	
+	同构：$A, B\in obj(\mathscr{C})$，称$A,B$同构，
+    如果存在$f:A\rightarrow B$, $g:B\rightarrow A$，
+    使得$f\circ g=\id_B$, $g\circ f=\id_A$.~\\ \par
+	
+	范畴中对象的分类.\par
+	\qquad 同构类$=obj(\mathscr{C})$/同构.\par
+	\qquad 函子保同构类，因为函子保复合.~\\ \par
+	
+	自然变换：函子之间的“态射”.\par
+	\qquad $F, G:\mathscr{C}\rightarrow \mathscr{D}$，自然变换$\alpha:F\rightarrow G$.\par
+	\qquad \qquad $\forall A\in obj(\mathscr{C})$, $\alpha_A:F(A)\rightarrow G(A)$.\par
+	\qquad \qquad 使得$\forall f\in \mathscr{C}(A,B)$，下图交换。
+    \begin{tikzcd}
+        F(A) \rar["F(f)"] \dar["\alpha_A",swap] & F(B) \dar["\alpha_B"]\\
+        G(A) \rar["G(f)"] & G(B)
+    \end{tikzcd}
+	\qquad 示例：没看懂\\ \par
+	
+	“所有的”“范畴”构成一个2-范畴：函子——1态射，自然变换——2态射.\par
+	“所有的”$\mathscr{C}$到$\mathscr{D}$的函子构成一个“范畴”.\\ \par
+	
+	
+	自然同构：函子范畴中的同构，即$\forall A$, $\alpha_A$是同构.\par
+	范畴同构：$F:\mathscr{C}\rightarrow \mathscr{D}$, $G:\mathscr{D}\rightarrow \mathscr{C}$，
+    有$F\circ G=\id$, $G\circ F=\id$, 其中$\id$是恒同函子.\par
+	范畴等价：$F\circ G$, $G\circ F$自然同构于恒同函子.(\textcolor{red}{常用})
+	
+	\begin{exam} $\mathscr{C}$: $k$域上的有限线性空间. $\mathscr{D}$: 对象：自然数集. 态射：$Mor(m,n):=M_{m\times n}(k)$.\par
+		\qquad 1. $\mathscr{D}\rightarrow \mathscr{C}: n\mapsto k^n$.\par
+		\qquad 2. Fully faithful: $\forall (m,n)$, $Mor(m,n)\rightarrow Mor(k^m,k^n)$是双射.\par
+		\qquad 3. 本质满射：对象的同构类上满
+	\end{exam}
+	
+	
+	\begin{exer} 函子$F$.\par
+		\qquad 1. fully faithful. \qquad 2. 本质满射.\par
+		进而$F$是范畴等价.
+	\end{exer}
+
+
+
+
+
+
+
+\section{第二周}
+
+
+
+
+
+\qquad 拓扑空间的同伦范畴$\mathrm{hT}$（记拓扑空间范畴为$\mathrm{T}$）
+
+\qquad 对象：拓扑空间
+
+\qquad 态射：$\mathrm{Hom}_{\mathrm{hT}}(X,Y) = \mathrm{Hom}_{\mathrm{T}}(X,Y)/\sim$
+
+\qquad 在$\mathrm{hT}$中同构的例子:
+\begin{example}
+$\mathrm{pt}$、闭区间与闭圆盘.
+\end{example}
+
+\qquad 带基点的拓扑空间的同伦范畴$\mathrm{hT}_{*}$
+
+\qquad 对象：$(X,x)$，其中$x \in X$
+
+\qquad 态射：$\mathrm{Hom}_{\mathrm{hT}_{*}}(X,Y) = [X,Y]$.
+
+\begin{remark}
+我们可以这样描述基本群同伦不变性：函子$\pi_{1}:\mathrm{T} \to \mathrm{Grp}$穿过$\mathrm{hT}_{*}$.
+\end{remark}
+
+\begin{theorem}
+同伦范畴的万有性质：
+设有函子$F:\mathrm{T} \to \mathscr{C}$，满足同伦不变性：
+若$f \sim g:X \to Y$，则$F(f) = F(g)$.
+那么$F$存在唯一分解
+\begin{center}
+\begin{tikzcd}
+\mathrm{T} \arrow[r] \arrow[rr, "F", bend right] & \mathrm{hT} \arrow[r, "{\exists! \, \tilde{F}}", dotted] & \mathscr{C}
+\end{tikzcd}
+\end{center}
+\end{theorem}
+\begin{proof}
+唯一性显然，我们构造$\tilde{F}$为$\tilde{F}(X) = F(X)$，而$\tilde{F}([f]) = F(f)$即可.
+态射层面的良定义是容易的.
+\end{proof}
+
+\qquad 若$X$与$Y$在$\mathrm{hT}_{*}$中同构，则$\pi_{1}(X) = \pi_{1}(Y)$.
+
+\begin{exer}
+不考虑基点的拓扑空间中，若$f:X \to Y$是同伦等价，则$\pi_{1}(X,x) = \pi_{1}(Y,f(x))$.
+\end{exer}
+
+\qquad 动机：复代数簇的基本群：\par
+\qquad 复代数簇$X^{2} + Y^{2} + 1 = 0$，那么$\Z/2\Z$在其上有共轭作用，但是其没有实基点.
+
+\qquad 群的特点：任意对象可以复合.
+
+\qquad 范畴的特点：只有首尾相连的态射才能复合.
+
+\qquad 量子力学：氢的光谱，谱线不可乱复合（需要符合$\frac{1}{n^{2}} - \frac{1}{m^{2}}$）.
+
+\begin{definition}[群胚]
+所有态射的都可逆的范畴.
+\end{definition}
+
+\begin{example} 
+\begin{enumerate}
+\item
+群$G$可看成单点范畴$\mathscr{G}$，其对象为单点$p$，而态射Hom集为$\mathrm{Hom}_{\mathscr{G}}(p,p) = G$. 这是一个群胚.
+
+\item
+基本群胚 
+
+\qquad 设$X$是一个拓扑空间. 定义$\Pi(X)$的对象$X$中的点，而态射为
+    $$\mathrm{Hom}_{\Pi(X)}(x,y) = \{f \in \mathrm{Hom}(I,X) \mid f(0) = x,f(1) = y\}/\sim.$$
+\end{enumerate}
+\end{example}
+
+\qquad 注意：拓扑空间同伦，但其基本群胚不一定相同. 考虑单点集与闭圆盘.
+
+\begin{exer}
+怎么描述$\Pi(X)$的同伦不变性？
+\end{exer}
+
+\qquad 群胚也可以定义同构（对象一一对应，保持态射复合）.
+但还有一种更弱一些的关系叫作“等价”.
+
+
+\qquad 连通的群胚可以表述为
+即任意两个对象的Hom集非空. 在连通的情形下，我们可以讨论点自同构群$G = \mathrm{Hom}(x,x)$. 由于连通，故$G$是对整个群胚定义的（不同的点以共轭相联系，故每个点的自同构群都同构）.
+
+
+
+\begin{proposition}
+连通群胚和其点自同构群的群胚是范畴等价.
+\end{proposition}
+\begin{proof}
+考虑函子$M:\mathscr{C} \to \mathscr{G}$. 对象层面上，其将$\mathscr{C}$的对象都映成$\mathscr{G}$中的单点. 而态射$f:y_{1} \to y_{2}$映为$f_{y_{x}} \circ f \circ f_{y_{x}}^{-1}:x \to x$. 态射层面上需要选择公理，即选一个$f_{y} \in \mathrm{Hom}_{\mathscr{C}}(y,x)$
+\begin{center}
+\begin{tikzcd}
+G \arrow[r, "L"] \arrow[rr, "\operatorname{id}", bend right]           & \mathscr{C} \arrow[r, "M"] & G           \\
+\mathscr{C} \arrow[r, "M"] \arrow[rr, "\operatorname{id}", bend right] & G \arrow[r, "L"]           & \mathscr{C}
+\end{tikzcd}
+\end{center}
+我们验证$L \circ M$与$\operatorname{id}$是自然等价. 对于任意$y$，定义$\alpha_{y}:L \circ M(y) \to y;x \mapsto y$.
+\end{proof}
+
+\begin{example}
+考虑复平面以及复的数乘，定义范畴$\mathscr{C}$的对象为所有复数，而$\mathrm{Hom}(x,y) = \{z \in \mathscr{C}^{*} \mid zx = y\}$. 这是个不连通的范畴. 因为$x,y$不全为零时，$\mathrm{Hom}(x,y)$是单点；而$x=y=0$时，$\mathrm{Hom}(x,y) = \mathscr{C}^{*}$. 从而$\mathscr{C}$是不连通的.
+\end{example}
+
+\qquad 极限与余极限
+
+\begin{example}
+考虑Abel群的极限：
+\[\Z/2\Z \hookrightarrow \Z/4\Z \hookrightarrow \Z/8\Z \hookrightarrow \Z/16\Z \hookrightarrow \cdots.\]
+
+那么就会变成$2$-进有限小数$\Z[\frac{1}{2}]/\Z$.
+这是一个正向极限，即$\varinjlim \Z/2^{n}\Z = \bigcup \Z/2^{n}\Z = \coprod \Z/2^{n}\Z / (x \to i(x))$. 其中$i$表示一个嵌入.
+
+我们也可以考虑逆向极限
+\[\Z/2\Z \leftarrow \Z/4\Z \leftarrow \Z/8\Z \leftarrow \Z/16\Z \leftarrow \cdots.\]
+这得到$2$-进整数$\Z_{2} = \varprojlim \Z/2^{n}\Z = \prod \Z/2^{n}\Z / p(x_{n}) = x_{n+1}$.
+\end{example}
+
+\qquad 一般的极限：考虑范畴$\mathscr{C}$中的一个图：设$\mathscr{D}$是一个小范畴，$F:\mathscr{D} \to \mathscr{C}$称为$\mathscr{C}$中的一个$\mathscr{D}$形图.
+
+\qquad 定义$F$的极限为一个$\mathscr{C}$中的对象$A$ \\
+\qquad \qquad + （对于任意$\alpha \in \mathscr{D}$）一个态射$\alpha:A \to F(\alpha)$ \\
+\qquad \qquad + 交换性（对于任何$\alpha_{1},\alpha_{2}$及$f:\alpha_{1} \to \alpha_{2}$，下图交换）
+\begin{center}
+\begin{tikzcd}
+A \arrow[rd] \arrow[r] & F(\alpha_{1}) \arrow[d, "F(f)"] \\
+                       & F(\alpha_{2})                  
+\end{tikzcd}
+\end{center}
+\\
+\qquad \qquad +对于任意别的$A'$满足上述三条性质，存在唯一$A' \to A$使得下图交换.
+\begin{center}
+\begin{tikzcd}
+A' \arrow[r] \arrow[rd] & A \arrow[d] \\
+                        & F(\alpha)  
+\end{tikzcd}
+\end{center}
+
+\qquad 随后验证了一通$2$-进整数满足逆向极限的泛性质.
+
+\qquad 而余极限即$\varprojlim(F) = \varinjlim(F^{\mathrm{op}})$.
+
+\begin{example}
+\begin{itemize}
+\item
+离散范畴（只存在恒等态射），那么其定义的逆向极限即是积. 换成余极限即是余积.
+
+\item
+若一个范畴$D$只有俩对象与一个非平凡箭头，则定义的逆向极限是态射的原像.
+
+\item 等化子 \\
+\qquad 若一个范畴$D$只有俩对象与俩方向相同的非平凡箭头，则定义的逆向极限是等化子. 类似定义余等化子.
+集合论上，即$\{x \mid f(x) = g(x)\}$. 
+记录者留的习题：怎么定义$\ker$和$\operatorname{coker}$
+
+\item
+纤维积 \\
+\qquad 即下图定义的逆向极限
+\begin{center}
+\begin{tikzcd}
+                & X_{1} \arrow[d] \\
+X_{2} \arrow[r] & X_{3}          
+\end{tikzcd}
+\end{center}
+类似定义余纤维积.
+
+\item 
+终对象 \\
+\qquad $\mathscr{D}$为空范畴. 那么该逆向极限的表述即为“别的对象到其都有唯一态射”. 类似定义始对象.
+\end{itemize}
+\end{example}
+
+
+
+\qquad 范畴完备性：
+\begin{definition}[范畴完备性]
+称范畴$\mathscr{C}$完备，若对于任意小范畴$\mathscr{D}$，都有$F:D \to C$的极限存在.
+\end{definition}
+
+\qquad 将上述定义中极限改为余极限，则可定义余完备.
+
+\begin{exer}
+极限若存在，则在同构意义下唯一.
+\end{exer}
+
+\begin{example}
+集合范畴$\mathrm{Set}$是完备且余完备的.
+\end{example}
+
+\begin{exer}
+完备 = 直积 + 等化子存在；余完备 = 余积 + 余等化子存在.
+\end{exer}
+
+\begin{exer}
+证明：交换幺环$R$上的交换代数范畴$R-\mathrm{Alg}$是余完备的，并由此推出交换幺环范畴$\mathrm{Ring}$是余完备的.
+\end{exer}
+
+\begin{example}
+群范畴$\mathrm{Grp}$：直积即直积，余积即自由积. 
+\end{example}
+
+\qquad Van-Kampen定理.
+\begin{theorem}[抽象的Van-Kampen]
+设$O = \{U\}$是$X$的开覆盖. 且$O$关于有限交封闭，以及$U$都道路连通.
+将$O$看成一个范畴，态射$\mathrm{Hom}_{O}{U,V} = \begin{cases}* &, U \subset V \\ \varnothing &, U \not\subset V\end{cases}$.
+那么$\Pi(X) = \varinjlim \Pi(U)$. 即以$O$为框架粘起来.
+\end{theorem}
+\begin{proof}
+由于有图
+\begin{center}
+\begin{tikzcd}
+\Pi_{1}(X) \arrow[r] \arrow[rd] & \Pi_{1}(U) \arrow[d] \\
+                                & \Pi_{1}(V)          
+\end{tikzcd}
+\end{center}
+故只需验证$\Pi_{1}(X)$的泛性质：对于任意$\mathrm{Grp}$的子范畴$\mathscr{C}$，若有交换图
+\begin{center}
+\begin{tikzcd}
+\Pi(U) \arrow[r] \arrow[d] & \mathscr{C} \arrow[ld] \\
+\Pi(V)                     &                       
+\end{tikzcd}
+\end{center}
+则存在唯一$F:\Pi(X) \to \mathscr{C}$使得
+\begin{center}
+\begin{tikzcd}
+\Pi(X) \arrow[r, "F"] \arrow[d] & \mathscr{C} \arrow[ld] \\
+\Pi(U)                          &                       
+\end{tikzcd}
+\end{center}
+对象上：没来得及记.\\
+态射上：对于$x_{1}$与$x_{2}$间的道路$p$，我们先细分$p$为许多段的并$p_{n} \circ \cdots \circ p_{1}$使得每一段都落在某个$U$中.
+那么定义$F(p) = F_{U_{n}}(p_{n}) \circ \cdots \circ F_{U_{1}}$.
+良定义：若$p_{i}$同时落在$U,V$中，则$F_{U}(p_{i}) = F_{V}(P_{i})$.
+若换了个道路的剖分，那么考虑加细即可.
+而同伦不变的部分可以抄Hatcher，来不及画图.
+\end{proof}
+
+$U$的连通性用在哪？例子：计算$\pi_{1}(S^{1})$，取标准的坐标覆盖（加细为有限交封闭）.
+
+\begin{theorem}[具体的Van-Kampen]
+若$X$有开覆盖$\{U\}$，且对有限交封闭. 若$U$道路连通，且基点$x$在所有覆盖的开集中，那么$\pi_{1}(X,x) \cong \varinjlim\limits_{\mathrm{Grp}}\pi_{1}(\pi_{1}(U),x)$.
+\end{theorem}
+
+\begin{example}
+若$X$被$U,V$覆盖，且$U \cap V$连通，那么$\pi_{1}(X) \cong \pi_{1}(U) * \pi_{1}(V)/x \in \pi_{1}(U \cap V), f(x) \sim g(x)$. 其中
+\begin{center}
+\begin{tikzcd}
+                                                   & \pi_{1}(U) \\
+\pi_{1}(U \cup V) \arrow[ru, "f"] \arrow[rd, "g"'] &            \\
+                                                   & \pi_{1}(U)
+\end{tikzcd}
+\end{center}
+
+若$U \cap V$还是单连通的，那么$\pi_{1}(X) = \pi_{1}(U) * \pi_{1}(V)$.
+\end{example}

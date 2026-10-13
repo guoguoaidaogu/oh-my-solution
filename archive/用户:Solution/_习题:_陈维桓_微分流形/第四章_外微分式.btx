@@ -1,0 +1,324 @@
+\begin{itemize}
+
+\item[2.] 
+在$S^n$上有标准Riemann度量,该度量在对径映射下不变， 
+$\mathbf{RP} ^n$ 作为其在对径映射下的商空间，
+可自然诱导出 $\mathbf{RP} ^n$ 上的一个黎曼度量，下面给出该度量的局部坐标：
+
+只给出在$U=\{[x_1,\dots,x_{n+1}]\mid x_{n+1}>0,\sum (x_i)^2=1\},\phi([x_1,\dots,x_{n+1}])=[x_1,\dots,x_n]$
+的局部坐标下的黎曼度量，其他一个局部坐标可类似给出。
+
+局部上$U$的黎曼度量与$S^n$相同，我们将$S^n$视作$\mathbb{R}^{n+1}$的子流形. 
+任意$U$上的点$p$,该点处有切空间的一组基$\{\frac{\partial}{\partial x_i}\mid i=1,\dots,n\}$, 且有$\frac{\partial}{\partial x_k}=(0,\cdots,1,\cdots,0,\frac{-x_k}{\sqrt{1-\sum x_i^2}})$, 故我们定义$g_{kk}=1+\frac{x_k^2}{1-\sum x_i^2}$, 对于$k=1,2,\cdots,n$. $g_{ij}=0$, 对于$i\neq j$.
+,这样就给出了$U$上的黎曼度量，进而可给出全空间上的黎曼度量。
+
+体积元素即流形上大范围定义的正的$n$次外微分式（不一定要用黎曼度量来定义），
+这等价于流形是可定向的（定理1.4，P178），
+故当且仅当$n$为奇数时$\mathbf{RP}^n$上能定义体积元素。
+
+\item[3.] 
+    \begin{enumerate}
+        \item[(1)]
+        由$\varphi$是反对称的$r$重线性映射
+        得$i(X)\varphi$是反对称的$r-1$重线性映射，
+        且对每个$X_i$是$C^\infty(M)$ - 线性的，
+        故$i(X)\varphi\in A^{r-1}(M)$。
+    
+        \item[(2)] 
+        同第一章第44题(1)。
+        \item[(3)] 
+        同第一章第44题(2)。
+    \end{enumerate}
+
+\item[4.]
+    \begin{enumerate}
+        \item[(1)]
+        
+
+        \begin{align*}
+            [(i(X) \circ d)(\omega)](Y_1,\dots Y_r)
+             = &[i(X)(d\omega)](Y_1,\dots Y_r)\\
+             = &d\omega(X,Y_1,\cdots Y_r)\\
+             = &X(\omega(Y_1,\cdots,Y_r)) + \sum\limits_{\lambda = 1}^{r}(-1)^r Y_{\lambda}(\omega(X,Y_1,\cdots,\hat{Y_{\lambda}},\cdots,Y_r))\\
+             &+ \sum_{\lambda < \mu} (-1)^{\lambda + \mu + 1} \omega (X,[Y_{\lambda},Y_{\mu}],Y_1,\dots,\hat{Y_{\lambda}},\cdots,\hat{Y_{\mu}},\cdots，Y_r)\\
+             &+ \sum_{\lambda = 1}^{\lambda = r}(-1)^{\lambda} \omega([X,Y_{\lambda}],Y_1,\cdots,\hat{Y_{\lambda}},\dots,Y_r).
+        \end{align*}
+
+        记$i(X)(\omega) = \phi \in A^{r-1}(M)$，
+
+        \begin{align*}
+            [(d \circ i(X))(\omega)](Y_1,\dots Y_r) 
+            =& d\phi(Y_1,\dots Y_r)\\
+            =& \sum\limits_{\lambda = 1}^{r}(-1)^{r+1}Y_{\lambda}(\phi(Y_1,\dots,\hat{Y_{\lambda}},\dots,Y_r)) + \sum_{\lambda < \mu} (-1)^{\lambda + \mu} \phi ([Y_{\lambda},Y_{\mu}],Y_1,\dots,\hat{Y_{\lambda}},\cdots,\hat{Y_{\mu}},\dots，Y_r)\\
+            =& \sum\limits_{\lambda = 1}^{r}(-1)^{r+1}Y_{\lambda}(\omega(X,Y_1,\dots,\hat{Y_{\lambda}},\dots,Y_r)) + \sum_{\lambda < \mu} (-1)^{\lambda + \mu} \omega (X,[Y_{\lambda},Y_{\mu}],Y_1,\dots,\hat{Y_{\lambda}},\cdots,\hat{Y_{\mu}},\cdots，Y_r)
+        \end{align*}
+
+        $$[(i(X) \circ d + d \circ i(X))(\omega)](Y_1,\cdots Y_r)= X(\omega(Y_1,\cdots,Y_r)) + \sum\limits_{\lambda = 1}^{r}(-1)^{\lambda} \omega([X,Y_{\lambda}],Y_1,\cdots,\hat{Y_{\lambda}},\cdots,Y_r)$$
+        
+        $$(\mathscr{L}_X(\omega))= \lim\limits_{t \to 0} \frac{(\Phi_{t})^*(\omega)-\omega}{t}.$$
+
+        仿照定理3.5（P146）即可证明。
+
+        \item[(2)]
+        $\mathscr{L}_X \circ d = (i(X) \circ d + d \circ i(X))\circ d = d\circ i(X) \circ d = d \circ (i(X) \circ d + d \circ i(X)) = d \circ \mathscr{L}_X$。
+
+        \item[(3)]
+        $\mathscr{L}_X(\varphi \wedge \psi) = (i(X) \circ d + d \circ i(X))(\varphi \wedge \psi)$。
+
+        已知：
+        $$d(\varphi \wedge \psi) = (d\varphi)\wedge \psi + (-1)^r\varphi \wedge (d\psi),$$
+        $$i(X)(\varphi \wedge \psi) = (i(X)\varphi)\wedge \psi + (-1)^r\varphi \wedge (i(X)\psi),$$
+
+        \begin{align*}
+        (i(X) \circ d)(\varphi \wedge \psi) &= (i(X))((d\varphi)\wedge \psi + (-1)^r\varphi \wedge (d\psi))\\
+        &= [(i(X) \circ d)\varphi]\wedge \psi + (-1)^r(d\varphi)\wedge(i(X)\psi)+ (-1)^r(i(X)\varphi)\wedge d\psi + \varphi \wedge[(i(X) \circ d)\psi]
+        \end{align*}
+
+        \begin{align*}
+        (d \circ i(X))(\varphi \wedge \psi) &= d \circ ((i(X)\varphi)\wedge \psi + (-1)^r\varphi \wedge (i(X)\psi))\\
+        &= [(d \circ i(X))\varphi]\wedge \psi + (-1)^r(i(X)\varphi)\wedge d\psi+ (-1)^r(d\varphi)\wedge (i(X)(\psi)) + \varphi \wedge[(d \circ i(X))\psi]
+        \end{align*}
+
+        \begin{align*}
+          & \mathscr{L}_X(\varphi \wedge \psi)\\
+         =& [(i(X) \circ d)\varphi]\wedge \psi + \varphi \wedge[(i(X) \circ d)\psi] + [(d \circ i(X))\varphi]\wedge \psi + \varphi \wedge[(d \circ i(X))\psi]\\
+         =& \mathscr{L}_X(\varphi)\wedge \psi + \varphi \wedge \mathscr{L}_X(\psi)
+        \end{align*}
+    \end{enumerate}
+
+\item[5.] 
+    \begin{enumerate}
+        \item[(1)] $xdy\wedge dx-(1+z)dy\wedge dz.$
+        \item[(2)] $-2yzdz\wedge dy-2dx\wedge dz.$
+        \item[(3)] $(2x^2-x-xz-2xy^2z+2z)dx\wedge dy \wedge dz.$
+        \item[(4)] $f^*\omega = (6u^2+2uv+u^3v^2-9u^3-3u^2v)du+(u^4v-3u^3-u^2v)dv,$
+        \\
+        $f^*(d \omega) =(2u^3v-2u-6u^2-2uv)du\wedge dv$. 
+    \end{enumerate}
+
+
+\item[6.] 
+    $\omega = x_{r+1}dx_1\wedge dx_2\dots \wedge dx_r$
+    在$x_{r+1}=0$ 上某点为$0$, 但该点$d\omega \neq 0$。
+
+\item[7.] 
+    注意到$\omega=d\big(\dfrac{1}{2}\ln(x^2+y^2)\big)$，
+    即$\omega$是恰当微分式，于是也是闭微分式。
+
+\item[8.]
+    \begin{enumerate}
+        \item[(1)] $d\omega= \sum\limits_{i=1}^{n} \dfrac{\partial f_i}{\partial x^i} dx_1\wedge dx_2 \dots \wedge dx_n$
+        $=\dfrac{n-m}{(\sum\limits_{i=1}^{n} (x^i)^2)^{\frac{m}{2}}}dx_1\wedge dx_2 \dots \wedge dx_n$。
+        \item[(2)] 由(1)，$m=n$。
+        \item[(3)] 假设$\omega = df$，则在平面 $x^3=x^4=\dots =x^n=0$ 上，
+        $\omega = \dfrac{x^1dx^2-x^2dx^1}{((x^1)^2+(x^2)^2)^{\frac{n}{2}}}\wedge dx^3 \wedge \dots \wedge dx^n$.
+
+        在无边子流形$U=\{(\cos t,\sin t,x^3,\cdots,x^n)\mid 0\leq t\leq 2\pi, 0\leq x^k\leq 1, k=3,4,\cdots,n\}$上对$\omega$ 积分，计算知：
+        $$\int_{\gamma} \omega =2\pi \ne 0,$$
+        
+        由Stokes公式，知与$\omega$是恰当微分式矛盾。
+    \end{enumerate}
+
+\item[9.] 
+    $\forall p$，取 $p\in V\subseteq \overline{V} \subseteq W \subseteq \overline{W} \subseteq U$，
+    其中$\overline{V}$是紧致的，
+    由第二章引理2.2（P63），存在函数 $\varphi\in C^{\infty}(M): \varphi|_V=1, \varphi|_{M\setminus \overline{W}}=0$。
+    令$\tilde{\omega}=\omega\cdot\varphi(x) $便得到了想要的微分形式。
+
+\item[10.] 
+    \begin{enumerate}
+        \item[(1)] 
+        不难验证$|v|=1$。又$\forall w \in T_pM$ ($p=f(u^1,\dots,u^n)$), $w=\dfrac{d}{dt}f(u^1(t),\dots,u^n(t))$,
+        内积$|\langle v,w\rangle|=|\sum (-1)^{i+1}A^i\dfrac{d}{dt}f^i(u^1(t),\dots,u^n(t))|$
+        $=|d\dfrac{1}{A}\det(M)|=0$。
+        其中$M$是$n+1$阶方阵，后$n$行为$f$关于$u_i$的Jacobi矩阵的转置，
+        第一行是$\sum_{i = 2}^{n+1}  $ 第i行$\cdot \dfrac{\partial u_{i-1}}{\partial t}$ 
+        
+        \item[(2)] 
+        $\mathbf{R}^{n+1}$上的黎曼度量是$\sum dx^i \otimes dx^i$，其在$M$上诱导度量为：
+        $$g=\sum_\alpha  \dfrac{\partial f^\alpha}{\partial u^i}\dfrac{\partial f^\alpha}{\partial u^j}du^i\otimes du^j.$$
+        
+        \item[(3)] 
+        $g_{ij}=\sum\limits_\alpha  \dfrac{\partial f^\alpha}{\partial u^i}\dfrac{\partial f^\alpha}{\partial u^j}du^i\otimes du^j$，
+        所以矩阵$(g_{ij})_{n\times n}=(a_{ik})_{n\times (n+1)}(a_{ik})^t_{(n+1)\times n}$,其中$a_{ik}=\dfrac{\partial f^k}{\partial u^i}$，
+        由Guass—Binet公式计算知$M$的单位元素为
+        $$Adu^1\wedge du^2\wedge \dots \wedge du^n.$$
+        
+        现在用第3题(3)]来计算$i(v)(dx^1\wedge \dots \wedge dx^{n+1})$，事实上原式
+        \begin{align*}
+            =&\sum_\alpha (-1)^{\alpha +1}dx^1\wedge \dots i(v)(dx^\alpha)\wedge \dots \wedge dx^{n+1}\\
+            =&\sum_\alpha (-1)^{\alpha +1}dx^\alpha(v)dx^1\wedge \dots \wedge dx^{n+1}\\
+            =&\sum_\alpha (-1)^{\alpha +1}v^\alpha A^\alpha du^1\wedge \dots \hat{du^\alpha} \wedge \dots \wedge du^{n+1}\\
+            =&Adu^1\wedge du^2\wedge \dots \wedge du^n.
+        \end{align*}
+\end{enumerate}
+
+\item[11.] 
+    对于$\mathbf{R}^{n+1}$中$n+1$个线性无关向量$v_1,\dots,v_{n+1}，其中v_{n+1}$为其余$n$个向量法向量，
+    若它们在标准基下表示矩阵行列式$>0$，称$v_{n+1}$为前$n$个向量的正法向量，否则称为负法向量。因此：
+    
+    $(f,M)$上存在光滑处处非零法向量$v$，
+    
+    $\Leftrightarrow (f,M)$存在局部坐标系使得存在法向量$v$，相对于各点切空间的标准基嵌入$\mathscr{R}$ 后得到的$n$个向量处处为正法向量，
+    
+    $\Leftrightarrow (f,M)$存在局部坐标系使得转移函数Jacobi矩阵恒正，
+    （$\Rightarrow:$是显然的；$\Leftarrow:$由单位法向量只有两个，分别相对同一组向量为正、负法向量，$v$定义为该点相对局部坐标的正单位法向量；可看出其良定性，光滑性则由法向量是曲面方程的梯度得知）
+    
+    $\Leftrightarrow M$可定向。
+
+\item[13.] 
+    $\mathbf{RP}^3=S^3/_{x~-x}$，且与$S^3$为局部光滑同胚，
+    故可以在$S^3$上构造后通过商映射诱导出$\mathbf{RP}^3$上的1次微分，并证明其良定性。\\
+    $$\S^3=\left\{(x_1,x_2,x_3,x_4)\mid\sum (x_i)^2=1\right\}，\omega(x_1,x_2,x_3,x_4)\triangleq x_2dx_1-x_1dx_2+x_4dx_3-x_3dx_4,$$
+    只需验证$\omega(x)=\omega(-x)$即得诱导微分形式的良定性，
+    诱导得到的$\overline{\omega}$符合题意。
+
+\item[14.]
+    见$\S$2例2（P194）。
+    \\
+    然而在$M$上存在函数$f=-\operatorname{arctan}\frac{x}{y}$
+    使$df=\omega$，故$\omega$是恰当的。
+
+\item[15.]
+    \begin{enumerate}
+        \item[(1)]
+        设$\alpha$是$r$次外微分式，由$d\alpha=d\beta=0$，得
+        $d(\alpha \wedge \beta) = d\alpha \wedge \beta + (-1)^r\alpha \wedge d\beta = 0$。
+        \item[(2)]
+        设$\alpha$是$r$次外微分式，$\beta = d\gamma$，由$d\alpha=0$，
+        得$d((-1)^r\alpha \wedge \gamma) = \alpha \wedge d\gamma = \alpha \wedge \beta$。
+    \end{enumerate}
+
+\item[16.]
+    $I$的线性从$\omega$继承。$I$是单射，因为
+    若$I(\zeta) = 0$，即$\forall \eta \in T_xM$，
+    $\omega(\zeta,\eta) =(I(\zeta))(\eta)= 0$，
+    由$\omega$非退化得$\zeta = 0$。
+    又$\dim T_xM = \dim T_x^{*}M$，故$I$是同构。
+
+\item[17.]
+    容易计算$d\omega = 0$。
+    在$\mathbf{R}^{2n}$自然坐标系诱导的切空间的基底下，
+    $\omega = \sum\limits_i dp^i \wedge dq^i$的矩阵为$\bigoplus\limits_i I_i$，
+    $I_i$具有以下形式：
+    $$
+        \begin{pmatrix}
+            0&1\\
+            -1&0
+        \end{pmatrix}
+    $$
+    容易验证这个矩阵是非退化的。
+
+\item[18.]
+    考虑$\wedge^n \omega \in \mathscr{A}^{2n}$,
+    由$\omega$的非退化性得到$\wedge^n \omega \neq 0$点点成立。
+
+\item[19.]
+    \begin{enumerate}
+        \item[(1)]
+        $(i(X_f)\omega)(Y) = \omega(X_f,Y) = df(Y)$，即$ i(X_f) \omega = df$。
+        \item[(2)]
+        $\frac{d}{dt}(f \circ \gamma _x (t)) = \gamma_x(f) = X_f(x)(f) = X_f(f)(x) = df(X_f)(x) = \omega (X_f,X_f) = 0$。
+        \item[(3)]
+        $\mathscr{L}_{X_f}(\omega) =i(X_f)(d\omega) + d(i(X_f)(\omega)) = i(X_f)(d\omega) + d \circ df = i(X_f)(d\omega)$。
+        \\
+        而$[i(X_f)(d\omega)](Y,Z) = d\omega(X_f,Y,Z) = 0$，
+        因此$[\mathscr{L}_{X_f}(\omega)](Y,Z) = 0$，$\forall Y,Z \in \mathscr{X}(M)$，
+        即$\mathscr{L}_{X_f}(\omega) = 0$。
+    \end{enumerate}
+
+\item[20.] 
+\begin{enumerate}
+    \item[(1)] 
+    由于$\{f,g\}=\omega(X_{f},X_{g})=-i(X_{f})i(X_{g})\omega=-i(X_{f})dg=\mathscr{L}_{X_{g}}f=-\mathscr{L}_{X_{f}}g.$
+    \item[(2)] 
+    由于$\{g\circ \varphi_{t}\} = \mathscr{L}_{X_{f}}(g\circ \varphi_{t}) = X_{f}(g \circ \varphi_{t}) = \dfrac{d}{dt}(g\circ \varphi_{t}).$
+    \item[(3)] 
+    首先，$C^{\infty}(M)$关于Poisson括号的封闭性显然。
+    线性与反交换性是简单的，只验证Jacobi恒等式。由第19题(3)知
+    \begin{equation*}\begin{aligned}
+        \{f,\{g,h\}\} &= X_{f}(\{g,h\}) = \mathscr{L}_{X_{f}}\{g,h\} = \mathscr{L}_{X_{f}}(\omega(X_{g},X_{H})) \\
+        &= (\mathscr{L}_{X_{f}}\omega)(X_{g},X_{h}) + \omega(\mathscr{L}_{X_{f}}X_{g},X_{h}) + \omega(X_{g},\mathscr{L}_{X_{f}}X_{h}) \\
+        &= 0 - \omega(X_{h},[X_{f},X_{g}]) + \omega(X_{g},[X_{f},X_{h}]) \\
+        &= \{g,\{f,h\}\} - \{h,\{f,g\}\}\} .
+    \end{aligned}\end{equation*}
+    \item[(4)] 
+    只证封闭性：令$i_{X}\omega=df$，$i_{Y}\omega=dg$，$i_{Z}\omega=dh$，则有
+    \begin{equation*}\begin{aligned}
+        i_{X+cY}\omega=df + cdg=d(f+cg),
+    \end{aligned}\end{equation*}
+    以及由第19题(3)知
+    \begin{equation*}\begin{aligned}
+        i_{[X,Y]}\omega &= \mathscr{L}_{X}(i_{Y}\omega) - i_{Y}(\mathscr{L}_{X}\omega) = \mathscr{L}_{X}(dg)-i_{Y}(0) \\
+        &= d(\mathscr{L}_{X}g) = d(i_{X}(dg))=d(i_{X}(i_{Y}\omega)) = d(\omega(Y,X)).
+    \end{aligned}\end{equation*}
+    而线性，反交换律以及Jacobi恒等式直接继承向量场的李括号。
+\end{enumerate}
+
+\item[21.] 
+    由Gauss公式直接有
+    \begin{equation*}
+        \begin{aligned}
+        \int_{S^{2}(r_{0})}\omega = \int_{r_{0}B^{3}}d\omega = \frac{1}{r_{0}^{3}}\int_{r_{0}B^{3}}3dx\wedge dy \wedge dz = \frac{1}{r_{0}^{3}}\cdot 3 \cdot \frac{4}{3}\pi r_{0}^{3}=4\pi.
+        \end{aligned}
+    \end{equation*}
+
+\item[22.] 
+    直接计算得$f^{*}\omega(\dfrac{\partial}{\partial u},\dfrac{\partial}{\partial v})
+    = v\cdot (-2u) + u(u^{2}+v^{2}+1)\cdot 2v = 2uv(u^{2}+v^{2})$。那么
+    \begin{equation*}
+        \begin{aligned}
+            \int_{D}f^{*}\omega = \int_{D}2uv(u^{2}+v^{2})dudv=\frac{1}{2}.
+        \end{aligned}
+    \end{equation*}
+
+\item[23.] 
+    由于$(-1)^{k}\omega\wedge d\eta + d\omega\wedge \eta = d(\omega\wedge\eta)$及$M$无边知
+    \begin{equation*}
+        \begin{aligned}
+            \int_{M}(-1)^{k}\omega\wedge d\eta + d\omega\wedge \eta=\int_{M}d(\omega\wedge\eta)=\int_{\partial M}\omega\wedge\eta=0,
+        \end{aligned}
+    \end{equation*}
+    而此即
+    \begin{equation*}\begin{aligned}
+        \int_{M}d\omega\wedge\eta = (-1)^{k+1}\int_{M}\omega\wedge d\eta.
+    \end{aligned}\end{equation*}
+
+\item[24.] 
+简便起见，定义$\tilde{A}=\displaystyle{\int_{0}^{1}tA(tx,ty,tz)dt}$
+以及$\tilde{A}_{x}=\displaystyle{\int_{0}^{1}t^{2}\frac{\partial A}{\partial x}(tx,ty,tz)}$，
+类似定义$\tilde{A}_{y}$，$\tilde{B}_{x}$等。由
+\begin{equation*}\begin{aligned}
+d(A(ydz-zdy))
+&= (y\tilde{A}_{x}dx+(y\tilde{A}_{y}+\tilde{A})dy)\wedge dz - (z\tilde{A}_{x}dx+(z\tilde{A}_{z}+\tilde{A})dz)\wedge dy \\
+&= -z\tilde{A}_{x}dx \wedge dy + (y\tilde{A}_{y}+z\tilde{A}_{z}+2A)dy \wedge dz - y\tilde{A}_{x}dz \wedge dx
+\end{aligned}\end{equation*}
+可得
+\begin{equation*}\begin{aligned}
+d\alpha =& 
+(x\tilde{C}_{x} + y\tilde{C}_{y} + 2\tilde{C} - z\tilde{A}_{x} - z\tilde{B}_{y})dx \wedge dy + 
+\\&(y\tilde{A}_{y} + z\tilde{A}_{z} + 2\tilde{A} - z\tilde{B}_{y} - x\tilde{C}_{z})dy \wedge dz + 
+\\&(x\tilde{B}_{x} + z\tilde{B}_{z} + 2\tilde{B} - y\tilde{A}_{x} - y\tilde{C}_{z})dz \wedge dx.
+\end{aligned}\end{equation*}
+逐一计算，如
+\begin{equation*}\begin{aligned}
+&y\tilde{A}_{y} + z\tilde{A}_{z} + 2\tilde{A} - z\tilde{B}_{y} - x\tilde{C}_{z} \\
+=&\int_{0}^{1} t^{2}y\frac{\partial A}{\partial y}dt
++\int_{0}^{1} t^{2}z\frac{\partial A}{\partial z}dt
++\int_{0}^{1}2tAdt
+-\int_{0}^{1} t^{2}x\frac{\partial B}{\partial y}dt
+-\int_{0}^{1} t^{2}x\frac{\partial C}{\partial z}dt,
+\end{aligned}\end{equation*}
+由$\omega$闭知$\dfrac{\partial A}{\partial x}+\dfrac{\partial B}{\partial y}+\dfrac{\partial C}{\partial z}=0$，代入得上式即
+\begin{equation*}\begin{aligned}
+\int_{0}^{1} t^{2}(x\frac{\partial A}{\partial x}+y\frac{\partial A}{\partial y}+z\frac{\partial A}{\partial z})dt
++\int_{0}^{1}2tAdt
+=\int_{0}^{1}\frac{\partial(t^{2}A)}{\partial t}dt = A,
+\end{aligned}\end{equation*}
+同理得另两项，合并则有
+$d\alpha = Adx \wedge dy + Bdy \wedge dz + Cdz \wedge dx = \omega$。
+\begin{remark}
+    这是书上定理2.5计算过程的特例。
+\end{remark}
+
+\end{itemize}

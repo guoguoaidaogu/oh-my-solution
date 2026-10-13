@@ -1,0 +1,800 @@
+\setdisplaytitle{习题：拓扑学 II}
+\sethtmltitle{习题：拓扑学 II}
+
+\section{第一周作业及解答}
+\begin{enumerate}
+\item (242.6)\quad$n$维单形共有多少个面?
+\begin{proofc}[解答]
+设$n$维单形的顶点指标集为 $\{1,2,\cdots,n\}$,则任何一个指标集的真子集对应的顶点集都对应单形的一个面.
+从而答案是$2^{n+1}-1$.
+\end{proofc}
+\item (242.10)\quad设$K$是$\operatorname{Cl}\sigma^5$的二维骨架,证明: $|K|$是两个射影平面拼成的.
+\begin{proofc}[解答]
+考虑将$\operatorname{Cl}\sigma^5$的$20$个二维单形分为以下两组:
+\begin{itemize}
+\item[(a)]$\{(a_0,a_1,a_3),(a_0,a_1,a_5),(a_0,a_2,a_3),(a_0,a_2,a_4),(a_0,a_4,a_5),$\\
+\ \ $(a_1,a_2,a_4),(a_1,a_2,a_5),(a_1,a_3,a_4),(a_2,a_3,a_5),(a_3,a_4,a_5)\}$
+\item[(b)]$\{(a_0,a_1,a_2),(a_0,a_1,a_4),(a_0,a_2,a_5),(a_0,a_3,a_4),(a_0,a_3,a_5),$\\
+\ \ $(a_1,a_2,a_3),(a_1,a_3,a_5),(a_1,a_4,a_5),(a_2,a_3,a_4),(a_1,a_4,a_5)\}$
+\end{itemize}
+两组与$\operatorname{Cl}\sigma^5$的一、二维单形之并具有如下结构:
+\begin{tikzpicture}[scale=0.5]
+% --- 只定义坐标点,不产生任何可见的标记或文字 ---
+\coordinate (a2) at (-1.73, 3);
+\coordinate (a1) at (1.73, 3);
+\coordinate (a0) at (-2*1.73, 0);
+\coordinate (a0r) at (2*1.73, 0);
+\coordinate (a3) at (0, 1);
+\coordinate (a3r) at (-1.73/2,-1/2);
+\coordinate (a4) at (1.73/2,-1/2);
+\coordinate (a1r) at (-1.73,-3);
+\coordinate (a2r) at (1.73, -3);
+%标坐标
+\node[vertex, label=above:$a_2$] at (a2) {};
+\node[vertex, label=above:$a_1$] at (a1) {};
+\node[vertex, label=left:$a_0$] at (a0) {};
+\node[vertex, label=right:$a_0$] at (a0r) {};
+\node[vertex, label=above:$a_3$] at (a3) {};
+\node[vertex, label=below left:$a_3$] at (a3r) {};
+\node[vertex, label=below right:$a_4$] at (a4) {};
+\node[vertex, label=below:$a_1$] at (a1r) {};
+\node[vertex, label=below:$a_2$] at (a2r) {};
+%连线,注意要形成闭合回路来保证图形
+\draw (a1) --(a2) -- (a0) --(a1r)--(a2r)--(a0r)--(a1);
+\draw (a1)--(a2)--(a3)--(a1);
+\draw (a3r)--(a4)--(a3)--(a3r);
+\draw (a3r)--(a4)--(a1r)--(a3r);
+\draw (a0r)--(a4)--(a2r)--(a0r);
+\draw (a0)--(a2)--(a3r)--(a0);
+\draw (a0r)--(a1)--(a3)--(a0r);
+\end{tikzpicture}
+\begin{tikzpicture}[scale=0.5]
+% --- 只定义坐标点,不产生任何可见的标记或文字 ---
+\coordinate (a2) at (-1.73, 3);
+\coordinate (a1) at (1.73, 3);
+\coordinate (a0) at (-2*1.73, 0);
+\coordinate (a0r) at (2*1.73, 0);
+\coordinate (a3) at (0, 1);
+\coordinate (a3r) at (-1.73/2,-1/2);
+\coordinate (a4) at (1.73/2,-1/2);
+\coordinate (a1r) at (-1.73,-3);
+\coordinate (a2r) at (1.73, -3);
+%标坐标
+\node[vertex, label=above:$a_5$] at (a2) {};
+\node[vertex, label=above:$a_1$] at (a1) {};
+\node[vertex, label=left:$a_0$] at (a0) {};
+\node[vertex, label=right:$a_0$] at (a0r) {};
+\node[vertex, label=above:$a_4$] at (a3) {};
+\node[vertex, label=below left:$a_2$] at (a3r) {};
+\node[vertex, label=below right:$a_3$] at (a4) {};
+\node[vertex, label=below:$a_1$] at (a1r) {};
+\node[vertex, label=below:$a_5$] at (a2r) {};
+%连线,注意要形成闭合回路来保证图形
+\draw (a1) --(a2) -- (a0) --(a1r)--(a2r)--(a0r)--(a1);
+\draw (a1)--(a2)--(a3)--(a1);
+\draw (a3r)--(a4)--(a3)--(a3r);
+\draw (a3r)--(a4)--(a1r)--(a3r);
+\draw (a0r)--(a4)--(a2r)--(a0r);
+\draw (a0)--(a2)--(a3r)--(a0);
+\draw (a0r)--(a1)--(a3)--(a0r);
+\end{tikzpicture}
+而这恰好是射影平面的三角剖分.
+\end{proofc}
+\item (243.12)\quad设 $\sigma = (a_0, \cdots, a_p)$ 和 $\tau = (b_0, \cdots, b_q)$ 是 $\mathbb{R}^n$ 中两个单形, 
+如果 $p+q+2$ 个点 $\{a_0, \cdots, a_p, b_0, \cdots, b_q\}$ 几何独立, 则称它们可统联, 
+它们的统联是 $p+q+1$ 维单形 $\sigma * \tau = (a_0, \cdots, a_p, b_0, \cdots, b_q)$. 
+如果 $K$ 中任意单形 $\sigma$ 和 $L$ 中任意单形 $\tau$ 可统联, 且对任意 $\sigma, \sigma' \in K, \tau, \tau' \in L$, 
+有 $\sigma * \tau \cap \sigma' * \tau' = (\sigma \cap \sigma') * (\tau \cap \tau')$, 
+则称 $\mathbb{R}^n$ 中两个复形 $K$ 和 $L$ 为可统联的. $K$ 和 $L$ 的统联是下述复形:
+\[
+K * L = K \cup L \cup \{\sigma * \tau \mid \sigma \in K, \tau \in L\}.
+\]
+\begin{proofc}[解答]
+\begin{enumerate}[label=(\arabic*)]
+ \item 先说明：$(a_0, \dots, a_k, b_0, \dots, b_{p-1-k}) \neq (a'_0, \dots, a'_{k'}, b'_0, \dots, b'_{p-1-k'})$.
+    若不然,则 $k=k'$ 且 $a_i=a'_i, b_i=b'_i$.
+    反证相等,则顶点一一重合.不妨设 $k \geqslant k'$.
+    由于 $(a_0, \dots, a_k)$ 与 $(b'_0, \dots, b'_{p-1-k'})$ 可统联,故点数互异.从而 $k=k'$.
+    $(a_0, \dots, a_k)$ 两两不同.
+    故 $K$ 中的 $p$ 维单形, $L$ 中的 $p$ 维单形, $\{\sigma * \tau \mid \sigma \in K, \tau \in L\}$ 中的 $p$ 维单形,三者两两不同.
+    故 \[d_p(K*L) = d_p(K) + \sum_{q=0}^{p-1} d_{p-q-1}(K) d_q(L) + d_p(L).\]
+
+    \item $\tau * \sigma = \langle b_0, \dots, b_q, a_0, \dots, a_p \rangle$.
+    交换为 $\langle a_0, \dots, a_p, b_0, \dots, b_q \rangle$ 需历 $(p+1)(q+1)$ 次.
+    故 $\sigma * \tau = (-1)^{(p+1)(q+1)} \tau * \sigma$.
+
+    \item 此时,由于 $K \cup L \cup \{\sigma * \tau \mid \sigma \in K, \tau \in L\}$ 与 $M$ 可统联,故 $K$ 与 $M$ 可统联.
+    同 (1) 知：$(K*L)*M$ 的 $p$ 维单形为 $(a_0, \dots, a_{k_1}, b_0, \dots, b_{k_2}, c_0, \dots, c_{k_3})$.
+    与 $K*(L*M)$ 相同.
+    故 $(K*L)*M = K*(L*M)$.\qedhere
+\end{enumerate}
+\end{proofc}
+\end{enumerate}
+
+\section{第二周作业及解答}
+\begin{enumerate}
+\item(243.13) 设$K$是复形, $\sigma \in K$, $\sigma$的环绕复形定义为
+\[L_k(\sigma)=\{\tau \in K\mid\sigma*\tau \in K\}.\]
+\begin{itemize}
+
+    \item[(1)] 验证 $L_k(\sigma)$ 是 $K$ 的子复形;
+    \begin{center}
+        \begin{tikzpicture}
+            % 定义四个顶点坐标,左边顶点命名为 L
+            \coordinate (T) at (0, 1.2); % Top
+            \coordinate (B) at (0, -1.2); % Bottom
+            \coordinate (R) at (2, 0);   % Right
+            \node[circle, fill, inner sep=1.2pt, label=left:{$a_0$}] (L) at (-2, 0) {}; % Left
+            % 用斜线图案填充左边的三角形 (τ)
+            \fill[pattern=north east lines,color=lightgray] (L.center) -- (T) -- (B) -- cycle;
+            \draw (L.center) -- (T) -- (R) -- (B) -- cycle;
+            \draw (T) -- (B);
+            % 在两个三角形内部添加标签
+            \node at (-1, 0) {$\tau$};
+            \node at (1, 0) {$\sigma$};
+        \end{tikzpicture}
+    \end{center}
+    
+    \item[(2)] 对上图所给的 $2$ 维复形, 求 $L_k(\sigma)$, $L_k(\tau)$ 和 $L_k(a_0)$.
+    
+\end{itemize}
+\begin{proofc}[解答]
+\begin{itemize}
+    \item[(1)] 已知 $L_k(\sigma) \subset K$.故只需证 $L_k(\sigma)$ 为复形.
+    
+    设 $\tau \in L_k(\sigma)$, 即 $\sigma * \tau \in K$.设 $\tau'$ 是 $\tau$ 的任一面.
+    由于 $\sigma * \tau'$ 是 $\sigma * \tau$ 的一个面, 且 $\sigma * \tau \in K$, 而 $K$ 是复形, 故 $\sigma * \tau' \in K$.
+    根据定义, $\tau' \in L_k(\sigma)$.
+    
+    设 $\tau_1, \tau_2 \in L_k(\sigma)$.因 $L_k(\sigma) \subset K$ 且 $K$ 是复形, 故 $\tau_1 \cap \tau_2$ 是 $\tau_1$ 和 $\tau_2$ 的公共面（或为空集）.
+    
+    故 $L_k(\sigma)$ 为 $K$ 的子复形.
+
+    \item[(2)] 
+    \begin{center}
+        \begin{tikzpicture}
+            % 定义顶点
+            \coordinate (a1) at (0, 1.2);
+            \coordinate (a2) at (0, -1.2);
+            \coordinate (a3) at (2, 0);
+            \node[label=left:{$a_0$}] (a0) at (-2, 0) {};
+            % 绘制外框和分割线
+            \draw (a0.center) -- (a1) -- (a3) -- (a2) -- cycle;
+            \draw (a1) -- (a2);
+            % 添加标签
+            \node at (-1, 0) {$\tau$};
+            \node at (1, 0) {$\sigma$};
+            % 添加顶点名称
+            \node[above] at (a1) {$a_1$};
+            \node[below] at (a2) {$a_2$};
+            \node[right] at (a3) {$a_3$};
+        \end{tikzpicture}
+    \end{center}
+    
+    $K = \{ a_0, a_1, a_2, a_3, (a_0, a_1), (a_0, a_2), (a_1, a_3), (a_2, a_3), (a_1, a_2), (a_0, a_1, a_2), (a_1, a_2, a_3) \}$
+    
+    可与 $\sigma$ 统联的单形有 $a_0$, 且统联 $\in K$.故 $L_k(\sigma) = \{a_0\}$.
+    
+    可与 $\tau$ 统联的单形为空.故 $L_k(\tau) = \emptyset$.
+    
+    可与 $a_0$ 统联的单形有 $a_1, a_2, \sigma, (a_1, a_2), (a_1, a_3), \dots$\qedhere
+\end{itemize}
+
+\end{proofc}
+\end{enumerate}
+
+\begin{enumerate}
+\item(243.15)给出 $\mathbb{R}^4$ 中单纯复形 $K$ 和 $L$, 使得 $|K| \cong P^2$, $|L|$ 和 Klein 瓶同胚.
+
+\begin{proofc}[解答]
+$K$的构造:我们在四维欧几里得空间 $\mathbb{R}^4$ 中定义6个顶点：\par
+\begin{itemize}
+    \item $v_1 = (1, 0, 0, 0)$
+    \item $v_2 = (0, 1, 0, 0)$
+    \item $v_3 = (0, 0, 1, 0)$
+    \item $v_4 = (0, 0, 0, 1)$
+    \item $v_5 = (1, 1, 0, 0)$
+    \item $v_6 = (0, 0, 1, 1)$
+\end{itemize}
+$K$ 的结构由它的10个二维单纯形(三角形)完全确定.这10个三角形是：
+
+$K_2 =\{
+(v_1, v_2, v_3),  (v_1, v_2, v_4),  (v_1, v_3, v_5),  (v_1, v_4, v_6),  (v_1, v_5, v_6), \\
+(v_2, v_3, v_6),  (v_2, v_4, v_5),  (v_2, v_5, v_6),  (v_3, v_4, v_5),  (v_3, v_4, v_6)
+\}$
+
+
+$L$的构造:\begin{itemize}
+    \item $v_1 = (1, 0, 1, 0)$
+    \item $v_2 = (1, 0, 0, 1)$
+    \item $v_3 = (1, 0, -1, 0)$
+    \item $v_4 = (0, 1, 1, 0)$
+    \item $v_5 = (0, 1, 0, 1)$
+    \item $v_6 = (0, 1, -1, 0)$
+    \item $v_7 = (-1, 0, 1, 0)$
+    \item $v_8 = (-1, 0, 0, 1)$
+    \item $v_9 = (-1, 0, -1, 0)$
+\end{itemize}
+$L$ 的结构由它的18个二维单纯形(三角形)完全确定.这18个三角形是：\\
+$L_2 =\{(v_1, v_2, v_4),(v_2, v_5, v_4),(v_2, v_3, v_5),(v_3, v_6, v_5),(v_3, v_1, v_6),  (v_1, v_4, v_6),\\
+(v_4, v_5, v_7),(v_5, v_8, v_7),(v_5, v_6, v_8),(v_6, v_9, v_8),  (v_6, v_4, v_9),  (v_4, v_7, v_9),\\
+(v_7, v_8, v_1),(v_8, v_2, v_1),(v_8, v_9, v_2),(v_9, v_3, v_2),  (v_9, v_7, v_3),  (v_7, v_1, v_3)\}$
+
+\end{proofc}
+
+\end{enumerate}
+
+\section{第三周作业及解答}
+\begin{enumerate}
+\item(243.19)\quad给出 Möbius 带和 Klein 瓶的剖分, 计算其同调群.
+\begin{proofc}[解答]
+
+
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+    \node (a0) at (0,0) {$a_0$}; \node (a1) at (1,0) {$a_1$}; \node (a2) at (2,0) {$a_2$}; \node (a3) at (3,0) {$a_3$};
+    \node (a4) at (0,1) {$a_4$}; \node (a5) at (1,1) {$a_5$}; \node (a6) at (2,1) {$a_6$}; \node (a7) at (3,1) ($a_7$);
+    \node (a8) at (0,2) {$a_3$}; \node (a9) at (1,2) {$a_2$}; \node (b) at (3,2) {$a_1$}; \node (c) at (4,2) {$a_1$};
+\end{tikzpicture}
+\end{center}
+
+当 $n<0$ 或 $n \geqslant 2$ 时, $H_n = 0$.
+由于 Möbius 带连续, 故 $H_0 = \mathbb{Z}$.
+
+对 $\forall \sigma \in Z_2$, 设
+\[
+\begin{aligned}
+\sigma = & \ g_1 \langle a_1, a_5, a_4 \rangle + g_2 \langle a_2, a_4, a_5 \rangle + g_3 \langle a_1, a_2, a_5 \rangle \\
+         & + g_4 \langle a_1, a_6, a_5 \rangle + g_5 \langle a_1, a_2, a_6 \rangle + g_6 \langle a_0, a_6, a_7 \rangle \\
+         & + g_7 \langle a_0, a_5, a_4 \rangle + g_8 \langle a_0, a_6, a_5 \rangle + g_9 \langle a_5, a_1, a_6 \rangle \\
+         & + g_{10} \langle a_1, a_6, a_0 \rangle + g_{11} \langle a_6, a_2, a_7 \rangle + g_{12} \langle a_2, a_7, a_3 \rangle
+\end{aligned}
+\]
+可知 $g_1=g_2=\dots=g_{12}=g$.
+由于 $\langle a_0, a_4 \rangle$ 只属于 $\langle a_0, a_1, a_4 \rangle$, 故 $\partial\sigma=0 \Rightarrow g=0$.即 $Z_2=0$.
+故 $H_2=0$.
+
+设 $\sigma \in Z_1$.
+若 $\sigma$ 中含有 $\langle a_1, a_4 \rangle$, 则 $\exists g \in \mathbb{Z}, \text{s.t.} \sigma - g \cdot \partial \langle a_1, a_4, a_0 \rangle = \sigma_1$, $\sigma_1$ 中不含 $\langle a_1, a_4 \rangle$.
+同理, $\partial[\langle a_2, a_5, a_4 \rangle + \langle a_3, a_6, a_5 \rangle]$ 为 $\partial$ 的边链的组合.
+故 $\exists \sigma'' \text{s.t.} \sigma - \partial \sigma' = \sigma''$, $\sigma''$ 中不含 $\langle a_i, a_j \rangle$.
+
+故 $\partial^3 \sigma'' = g_1 \langle a_3, a_4 \rangle + g_2 \langle a_4, a_0 \rangle + g_3 \langle a_0, a_2 \rangle + g_4 \langle a_2, a_5 \rangle + g_5 \langle a_5, a_6 \rangle + g_6 \langle a_6, a_3 \rangle + g_7 \langle a_6, a_7 \rangle + g_8 \langle a_0, a_7 \rangle + g_9 \langle a_1, a_0 \rangle + g_{10} \langle a_2, a_1 \rangle$.
+
+考虑 $a_5, a_6$, 故 $g_5 = g_4 = x$.
+考虑 $a_1, a_2$, 故 $g_8 = g_9 = g_{10} = y$.
+考虑 $a_2, a_0, a_4, a_7$, 有 $g_1-g_4-g_{10}=0, g_8-g_2-g_3=0, g_2-g_1+g_5=0, g_4-g_3-g_7=0$.
+即 $y-g_2=y, g_2-g_3=y, g_4-g_2=x, g_4-g_3-g_7=0$.
+
+考虑 $\langle a_4, a_5 \rangle + \langle a_5, a_6 \rangle + \langle a_6, a_3 \rangle + \langle a_3, a_7 \rangle + \langle a_7, a_0 \rangle + \langle a_0, a_4 \rangle \sim 0$.
+故 $\sigma''' \sim \sigma'' \text{ s.t. } S_1\langle a_1, a_4 \rangle + S_2\langle a_2, a_5 \rangle + S_3\langle a_3, a_6 \rangle + S_5\langle a_0, a_4 \rangle + S_6\langle a_1, a_2 \rangle + S_7\langle a_2, a_3 \rangle$.
+从而 $S_3=S_4, S_1=S_2, \dots, S_6=S_7+S_5$.
+从而 $\partial \sigma''' \sim (S_4+S_5)\langle a_0, a_4 \rangle + \langle a_0, a_7 \rangle + (S_5-2S_7)\langle a_0, a_7 \rangle + \dots$
+$\dots = (2S_4+S_5)(\langle a_0, a_7 \rangle + \langle a_7, a_3 \rangle - \langle a_0, a_1 \rangle - \langle a_1, a_2 \rangle - \langle a_2, a_3 \rangle)$.
+故 $\forall \sigma \in Z_1$, 均有 $\sigma \sim \eta Z_1$.故 $Z_1/B_1 = H_1 \cong \mathbb{Z}$.
+
+% ===== 内容分割: 克莱因瓶 =====
+
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+    \node (a0) at (0,0) {$a_0$}; \node (a1) at (1,0) {$a_1$}; \node (a2) at (2,0) {$a_2$};
+    \node (a3) at (0,1) {$a_3$}; \node (a4) at (1,1) {$a_4$}; \node (a5) at (2,1) {$a_5$};
+    \node (a6) at (0,2) {$a_6$}; \node (a7) at (1,2) {$a_7$}; \node (a8) at (2,2) {$a_8$};
+    \draw[step=1.0,black,thin] (0,0) grid (2,2);
+    \draw (0,0)--(1,1)--(2,2); \draw (0,1)--(1,2); \draw (1,0)--(2,1); \draw (0,1)--(1,0);
+    \draw (1,1)--(2,0); \draw (0,2)--(1,1); \draw (1,2)--(2,1);
+\end{tikzpicture}
+\end{center}
+
+对 $n<0$ 或 $n \ge 2$, 有 $H_n = 0$.
+$\forall \sigma \in Z_2$, 设 $\sigma=g_1 \langle a_0, a_4, a_5 \rangle + g_2 \langle a_0, a_1, a_4 \rangle + \dots$
+可知每个1-单纯形均作为两个2-单纯形的边.考虑 $\langle a_0, a_4 \rangle$, 知 $g_1=-g_6$.
+故均为0, 故 $H_2=0$.
+
+$\forall \sigma \in Z_1$, 同Mobius, $\sigma$ 不含纯内边的组合, 从 $\sigma \sim \sigma'$.
+故 $\sigma \sim \sigma''$, $\sigma''$ 只由边界的边组成.
+设 $\sigma'' = g_1 \langle a_0, a_1 \rangle + g_2 \langle a_1, a_2 \rangle + g_3 \langle a_2, a_0 \rangle + g_4 \langle a_0, a_3 \rangle + g_5 \langle a_3, a_4 \rangle + g_6 \langle a_4, a_0 \rangle$.
+$\partial \sigma''=0$, 故 $g_1=g_2, g_1=g_3$.$g_4=g_5, g_4=g_6$.
+即 $\sigma'' = g_1 [ \langle a_0, a_1 \rangle + \langle a_1, a_2 \rangle + \langle a_2, a_0 \rangle ] + g_4 [ \langle a_0, a_3 \rangle + \langle a_3, a_4 \rangle + \langle a_4, a_0 \rangle ]$.
+定义为 $g_1 w_1 + g_4 w_2$.
+$w_1$ 为2倍环路, $w_2$ 为标准环路.
+故 $H_1 \cong \{\pm 1\} \oplus \mathbb{Z}$.
+\end{proofc}
+
+\item(244.20)\quad给出上面图形的剖分, 计算其同调群:
+    \begin{itemize}
+        \item[(1)] 按图 (a) 所示方式将六边形的边选合;
+        \item[(2)] 将 $S^2$ 上 $n$ 个不同的点选合;
+        \item[(3)] 按图 (b) 所示方式将三角形的三边选合.
+    \end{itemize}
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}
+    % --- 图 (a) 六边形 ---
+    \begin{scope}[xshift=-4cm]
+        \node at (-2.5, 0) {(a)};
+        % 定义六边形的六个顶点坐标
+        \coordinate (v1) at (90:2);
+        \coordinate (v2) at (150:2);
+        \coordinate (v3) at (210:2);
+        \coordinate (v4) at (270:2);
+        \coordinate (v5) at (330:2);
+        \coordinate (v6) at (30:2);
+        \draw (v1)--(v2)--(v3)--(v4)--(v5)--(v6)--cycle;
+        % 绘制带箭头的边
+        \draw[edge_arrow] (v1) -- node[above]{$a_1$} (v6);
+        \draw[edge_arrow] (v2) -- node[left]{$a_4$} (v1);
+        \draw[edge_arrow] (v3) -- node[left]{$a_1^{-1}$} (v2);
+        \draw[edge_arrow] (v4) -- node[below]{$a_3$} (v3);
+        \draw[edge_arrow] (v5) -- node[right]{$a_4^{-1}$} (v4);
+        \draw[edge_arrow] (v6) -- node[right]{$a_2$} (v5);
+    \end{scope}
+    \end{tikzpicture}
+    \begin{tikzpicture}
+    % --- 图 (b) 三角形 ---
+    \begin{scope}[xshift=4cm]
+        \node at (-2.5, 0.5) {(b)};
+        % 定义三角形的三个顶点坐标
+        \coordinate (t1) at (-1.8, 0);
+        \coordinate (t2) at (1.8, 0);
+        \coordinate (t3) at (0, 3);
+        % 填充并绘制三角形
+        \draw (t1)--(t2)--(t3)--cycle;        
+        % 绘制带箭头的边
+        \draw[edge_arrow] (t1) -- node[below]{$b$} (t2);
+        \draw[edge_arrow] (t2) -- node[right]{$a$} (t3);
+        \draw[edge_arrow] (t3) -- node[left]{$a^{-1}$} (t1);
+    \end{scope}
+\end{tikzpicture}
+\end{center}
+\end{figure}
+
+\item(244.21)\quad将正方形诸边分成两组迭合, 可得哪几种紧曲面? 计算它们的同调群.
+
+\end{enumerate}
+
+\section{第四周作业及解答}
+\begin{enumerate}
+    \item (244.24). 设 $K$ 是连通的 $2$ 维复形, 按以下条件计算 $K$ 的同调群:
+$$
+\chi(K) = 1,\ \ Z_1(K) \cong \mathbb{Z} \oplus \mathbb{Z} \oplus \mathbb{Z} \oplus \mathbb{Z},\ \ B_1(K) \cong \mathbb{Z} \oplus \mathbb{Z},
+$$
+设 $Z_1(K)$ 和 $B_1(K)$ 的母元组分别为 $\{z_1, z_2, z_3, z_4\}$ 和 $\{y_1, y_2, y_3\}$, 它们满足 $y_1 = z_1 + z_2, y_2 = z_2 - z_4, y_3 = z_1 + 2z_3 + z_4$.
+    \begin{proofc}[解答]
+        将 $B_1(K)$ 视为 $Z_1(K)$ 的子群. 知 $\operatorname{rank} H_1(K) = 1$. 由 Euler--Poincaré 公式知 $H_2(K)\cong \mathbb{Z} \quad (\text{因为 } K \text{ 连通})$.
+$H_0(K) \cong \mathbb{Z}$
+
+在$M_{3 \times 4}(\mathbb{Z})$中考虑: $\begin{bmatrix} 1 & 0 & 0 & 0\\ 0& 1 & 0 & -1 \\ 1 & 0 & 2 & 1 \end{bmatrix}$ 的相抵. 其 $\sim\begin{bmatrix} 1 & 1 & 0 & 0 \\ 0 & 1 & 0 & -1 \\ 0 & -1 & 2 & 1 \end{bmatrix}
+\sim \begin{bmatrix} 1 & 0 & 0 & 1 \\ 0 & 1 & 0 & -1 \\ 0 & 0 & 2 & 0 \end{bmatrix} \sim \begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 2 & 0 \end{bmatrix}$
+
+故 $Z_1(K) / B_1(K) \cong \mathbb{Z} \oplus \mathbb{Z} / 2\mathbb{Z}$
+$= H_1(K)$
+    \end{proofc}
+
+    \item(244.28) 设 $K_1$ 和 $K_2$ 是复形 $K$ 的子复形. 证明:
+$$
+\chi(K_1 \cup K_2) = \chi(K_1) + \chi(K_2) - \chi(K_1 \cap K_2).
+$$
+    \begin{proofc}
+    任取 $K_1 \cup K_2$ 的一个 $p$ 维单形. 它只能处于以下三种情况之一:
+    \begin{itemize}
+    \item[(1)]在 $K_1$ 中但不在$K_2$中;
+    \item[(2)]在 $K_2$中但不在$ K_2$ 中;
+    \item[(3)]在$K_1\cap K_2$中.
+    \end{itemize}
+故 $K_1 \cup K_2$ 的 $p$ 维单形个数 = $K_1$ 中的 $p$ 维单形个数 + $K_2$ 中的 $p$ 维单形个数
+ - $K_1 \cap K_2$ 中的 $p$ 维单形个数.
+
+从而 $\chi(K_1 \cup K_2) = \chi(K_1) + \chi(K_2) - \chi(K_1 \cap K_2)$    
+    
+    \end{proofc}
+    
+    \item (245.34a) 设 $S_p^n$ 是 $S^n$ 上挖去 $2p$ 个不相交的 $n$ 维开圆盘, 接上 $p$ 个 $n$ 维“环柄”$S^{n-1} \times I$.计算 $\chi(S_p^n)$;
+    \begin{proofc}
+        令$M$为$S^n$挖去$2p$个开圆盘，由 T28 知: 
+        \begin{align*}
+        \chi(S_p^n) &= \chi(M) + p \cdot \chi(S^{n-1} \times I) - 2p \chi(S^n)\\
+        &= \chi(S^n) - 2p \chi(D^n) + 2p \chi(S^{n-1}) + p \chi(S^{n-1} \times I)-2p\chi(S^{n-1})\\
+        &= \chi(S^n) - 2p \chi(D^n) + p \chi(S^{n-1}) \\
+        &= 1 + (-1)^n - 2p + p(1 + (-1)^{n-1})\\
+        &= 1 + (-1)^n - p + p(-1)^{n-1}\\
+        &= [1 + (-1)^n] (1 - p)\\
+    \end{align*}
+    \end{proofc}
+
+\end{enumerate}
+
+
+\section{第五周作业及解答}
+\begin{enumerate}
+\item(245.36). 设 $K, L$ 和 $M$ 都是由 $n$ 个顶点组成的非空零维复形, $K$ 和 $L, K * L$ 和 $M$ 都可联(见题 12). 证明:
+\begin{enumerate}
+    \item[(a)] $H_1(K * L * M) = 0$;
+    \item[(b)] $\chi(K * L * M) = 3n - 3n^2 + n^3$;
+    \item[(c)] $H_2(K * L * M) \cong \underbrace{\mathbb{Z} \oplus \dots \oplus \mathbb{Z}}_{(n-1)^3 \text{个}}$.
+\end{enumerate}
+\begin{proofc}[解答]
+    \begin{itemize}
+        \item[(a)]我们有
+        $$Z_1(K*L*M)=Z_1(K*L)\cup Z_1(K*M)\cup Z_1(L*M)$$
+        若某个$(k_i,k_j)\in Z_1(K*L)$,则$k_i=l_j$,矛盾.从而$Z_1(K*L*M)\cong0$.故$H_1(K*L*M)=0$.
+        \item[(b)]~$\alpha_0=3n,\alpha_1=3n^2,\alpha_2=n^3$.从而$\chi(K * L * M) = 3n - 3n^2 + n^3$.
+        \item[(c)]~$3n - 3n^2 + n^3=\beta_0-\beta_1+\beta_2$.而$\beta_0=1,\beta_1=0$,故$\beta_2=(n-1)^3$.又因为二维复形的$H_2$无挠系数,故$H_2(K * L * M) \cong \underbrace{\mathbb{Z} \oplus \dots \oplus \mathbb{Z}}_{(n-1)^3 \text{个}}$.
+    \end{itemize}
+\end{proofc}
+
+
+
+
+\item(245.37). 设 $K = \operatorname{Cl}\sigma^n$, 
+$n > 0$, $K^m$ 是 $K$ 的 $m$ 维骨架. 证明:
+$$
+H_p(K^m) \cong \begin{cases}
+\mathbb{Z}, & p = 0, \\
+0, & 0 < p < m, \\
+\mathbb{Z} \oplus \dots \oplus \mathbb{Z}, & p = m.
+\end{cases}
+$$
+其中直和项是 $C_n^{m+1}$ 个 $\mathbb{Z}$ 的直和, $C_n^{m+1}$ 是组合数.
+\begin{proofc}[解答]
+    由25可知$H_p(K^m)\cong H_p(K)\cong0,0<p<m$.又因为$H_0(K^m)\cong\mathbb{Z}$连通,故$\beta_0=1,\beta_2=\cdots=\beta_{m-1}=0$.\\
+    由$\alpha_0=1,\alpha_k=C^k_{n+1}(0\leqslant k\leqslant m)$,可归纳得$\chi(K^m)=\sum\limits^m_{k=0}C^k_{n+i}(-1)^k=1+(-1)^mC^{m+1}_n$.\\
+    从而$\beta_0+(-1)^m\beta_m=\chi(K^m)=1+(-1)^mC^{m+1}_n$,从而$\beta_m=C_n^{m+1}$.\\
+    再由$H_m(K^m)$无挠系数可知它是$C^{m+1}_n$个$\mathbb{Z}$的直和.
+\end{proofc}
+\end{enumerate}
+
+\section{第六周作业及解答}
+\begin{enumerate}
+
+    
+    \item (245.38)设 $f: K \to L$ 是单纯映射, $L_0$ 是 $L$ 的子复形. 试证: 存在 $K$ 的子复形 $K_0$, 使得 $|K_0| = f^{-1}(|L_0|)$.
+    \begin{proofc}[解答]
+        对$f^{-1}(|L_0|)$,只需验证其为$K$的子复形即可.定义$f^{-1}(|L_0|)=\{K_0\in K|f(K_0)\in L_0\}$:\\
+        \begin{itemize}
+            \item[(a)] $f^{-1}(|L_0|)\subset K$,显然.
+            \item[(b)] 对单形$\sigma\in f^{-1}(|L_0|)$,记$\sigma=(a_0,a_1,\cdots,a_m)$,则$f(a_k)\in L°,\forall k$.
+            因此对其任意面$\hat{\sigma}$,有$f(\hat{a})=L$.
+            \item[(c)] 对单形$\sigma_1,\sigma_2\in f^{-1}(|L_0|)$,要么$\sigma_1\bigcap\sigma_2=\varnothing$,
+            要么$\forall a_0\in (\sigma_1\bigcap\sigma_2)°,f(a_0)\in L°$.从而$\sigma_1\bigcap\sigma_2\in L°$,知$\sigma_1\bigcap\sigma_2$是$\sigma_1$和$\sigma_2$的公共面.
+        \end{itemize}
+        综上,存在 $K$ 的子复形 $K_0$, 使得 $|K_0| = f^{-1}(|L_0|)$.
+    \end{proofc}
+    \item (245.39)设下图中 $K$ 和 $L$ 分别是 $S^1$ 和 $T$ 的剖分, $f^0$ 把 $K$ 的顶点 $a_i$ 映成 $L$ 的顶点 $b_i$. 试求 $f_0$ 决定的单纯映射 $f: K \to L$ 的诱导同态 $f_{*p}: H_p(K) \to H_p(L)$.
+    \begin{tikzpicture}[line join=round,line cap=round,thick,every node/.style={font=\small}]
+% 左：六边形
+\begin{scope}[shift={(0,0)}]
+\def\R{1.8}
+\coordinate (A1) at ({\R*cos(60)},{\R*sin(60)});
+\coordinate (A2) at ({\R*cos(0)},{\R*sin(0)});
+\coordinate (A3) at ({\R*cos(-60)},{\R*sin(-60)});
+\coordinate (A4) at ({\R*cos(-120)},{\R*sin(-120)});
+\coordinate (A5) at ({\R*cos(180)},{\R*sin(180)});
+\coordinate (A6) at ({\R*cos(120)},{\R*sin(120)});
+\draw (A1)--(A2)--(A3)--(A4)--(A5)--(A6)--cycle;
+\node[above right=-1pt] at (A1) {$a_1$};
+\node[right=-1pt]       at (A2) {$a_3$};
+\node[below right=-1pt] at (A3) {$a_2$};
+\node[below left=-1pt]  at (A4) {$a_4$};
+\node[left=-1pt]        at (A5) {$a_6$};
+\node[above left=-1pt]  at (A6) {$a_5$};
+\node at (0,-2.6) {$K$};
+\end{scope}
+% 中：箭头
+\draw[->,very thick] (2.6,0) -- node[above=2pt] {$f$} (4.6,0);
+% 右：3x3 方格 + 贴点标注
+\begin{scope}[shift={(6.2,-1.8)}]
+\def\s{1.25}
+\draw (0,0) rectangle (3*\s,3*\s);
+\foreach \i in {1,2}{\draw (\i*\s,0)--(\i*\s,3*\s);\draw (0,\i*\s)--(3*\s,\i*\s);}
+% 关键点坐标
+\coordinate (TM) at (1*\s,1*\s);
+\coordinate (BM) at (0,1*\s);
+\coordinate (LM) at (1*\s,2*\s);
+\coordinate (RM) at (2*\s,3*\s);
+\coordinate (CT) at (2*\s,1*\s);
+\coordinate (C)  at (2*\s,0*\s);
+\coordinate (CB) at (3*\s,1*\s);
+% 小黑点
+\foreach \P in {TM,BM,LM,RM,CT,C,CB}{\fill (\P) circle (1.1pt);}
+\node[right=1.2pt] at (TM) {$b_0$};
+\node[below=1.2pt] at (BM) {$b_1$};
+\node[left=1.4pt]  at (LM) {$b_2$};
+\node[above=1.4pt] at (RM) {$b_0$};
+\node[right=2pt] at (CT) {$b_5$};
+\node[right=2pt] at (C)  {$b_2$};
+\node[right=2pt] at (CB) {$b_4$};
+% 箭头：避开 b0 文字
+%\draw[-{Latex[length=2.0mm]},thick] ($(C)+(0,0.22*\s)$) -- ($(C)+(0,0.70*\s)$);
+\end{scope}
+\end{tikzpicture}
+
+\item (246.41)对下列 $K$ 和 $L$, $f^{0}$ 决定单纯映射 $f$, 试求 $f$ 的诱导同态 $f_{*p}: H_p(K)\to H_p(L)$：
+\begin{itemize}
+\item[(1)] $K=\operatorname{Bd}(a_0,a_1,a_2,a_3)=L,\ f^{0}(a_0)=a_0,\ f^{0}(a_1)=a_1,\ f^{0}(a_2)=a_3,\ f^{0}(a_3)=a_2;$\\
+\item[(2)] $K$ 和 $L$ 是如下图所示的 $1$ 维复形, $f^{0}(a_i)=b_i\ (0\leqslant i\leqslant4),\ f^{0}(a_5)=b_0$.
+\end{itemize}
+\begin{center}
+\begin{tikzpicture}[line join=round,line cap=round,thick,every node/.style={font=\small}]
+\begin{scope}[shift={(0,0)}]
+\coordinate (A0) at (0,0);\coordinate (A4) at (4.2,0);\coordinate (A5) at (2.1,2.9);
+\draw (A0)--(A4)--(A5)--cycle;
+\path (A0)--(A4) coordinate[midway] (M14);\path (A0)--(A5) coordinate[midway] (M05);\path (A4)--(A5) coordinate[midway] (M45);
+\fill (M14) circle (0.9pt);\fill (M05) circle (0.9pt);\fill (M45) circle (0.9pt);
+\node[below=2pt] at (M14) {$a_1$};\node[left=2pt] at (M05) {$a_3$};\node[right=2pt] at (M45) {$a_5$};
+\node[below left=2pt] at (A0) {$a_0$};\node[below=2pt] at (A4) {$a_2$};\node[above=2pt] at (A5) {$a_4$};
+\node[below=12pt] at (M14) {$K$};
+\end{scope}
+\draw[->,very thick] (5.2,1.25)--node[above=2pt]{$f$}(7.9,1.25);
+\begin{scope}[shift={(9.4,0)}]
+\coordinate (L1) at (0,0);\coordinate (L2) at (0,2.9);\coordinate (R1) at (3.4,0);\coordinate (R2) at (3.4,2.9);\coordinate (C0) at (1.7,1.45);
+\draw (L1)--(L2);\draw (R1)--(R2);\draw (L2)--(C0)--(R2);\draw (L1)--(C0)--(R1);
+\fill (L1) circle (0.9pt);\fill (L2) circle (0.9pt);\fill (R1) circle (0.9pt);\fill (R2) circle (0.9pt);\fill (C0) circle (0.9pt);
+\node[left=1.2pt] at (L2) {$b_2$};\node[left=1.2pt] at (L1) {$b_1$};\node[right=1.2pt] at (R2) {$b_4$};\node[right=1.2pt] at (R1) {$b_3$};\node[below right=1pt] at (C0) {$b_0$};
+\node[left=8pt] at ($(L1)!0.5!(L2)$) {$L$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+\begin{proofc}[解答]
+(1) $p<0$或$p>2$时, $f_{*p}=0$.\\
+$p=0$时, $H_0(K)\cong\mathbb{Z}$.由$f_{*0}([a_0])=[f(a_0)]=[a_0]$.
+可知$f_{*0}=1_{H_0(K)}$.\\
+$p=1$时, $f_{*1}=0$.\\
+$p=2$时, $f_{*2}([(a_1,a_2,a_3)])=[(a_1,a_3,a_2)]=-[(a_1,a_2,a_3)]$.
+可知$f_{*0}=1_{H_0(K)}$.\\
+(2)
+\end{proofc}
+\end{enumerate}
+
+\section{第七周作业及解答}
+\begin{enumerate}
+    \item(246.45) 设 $K$ 是复形, 证明: $\{\operatorname{st} a \mid a \in K^0\}$ 是 $|K|$ 的开覆盖.
+    
+    \item(246.46) 设 $K$ 是复形, 证明:
+    \begin{itemize}
+        \item[(1)] $\operatorname{Sd} K$ 是复形, 且 $|\operatorname{Sd} K| = |K|$, $\dim \operatorname{Sd} K = \dim K$;
+        \item[(2)] 若 $L$ 是 $K$ 的子复形, 则 $\operatorname{Sd} L$ 是 $\operatorname{Sd} K$ 的子复形.
+    \end{itemize}
+    
+    \item(246.47) 设 $\sigma = (a_0, \cdots, a_p)$ 是 $p$ 维单形, 
+    $b_i$ 是 $(a_0, \cdots, a_i)$ 的重心, 令 $\tau = (b_0, \cdots, b_p)$. 
+    设 $x \in \tau$. 在 $\sigma$ 和 $\tau$ 中的重心坐标分别为 
+    $\lambda = (\lambda_0, \cdots, \lambda_p)^T$ 
+    和 $\mu = (\mu_0, \cdots, \mu_p)^T$. 求矩阵 $A$, 使得 $\lambda = A\mu$.
+    \begin{proofc}[解答]
+        $\bar{x}=\frac{1}{p+1}\sum\limits^p_{i=0}\lambda_ia_i=\frac{1}{p+1}\sum\limits^p_{i=0}\mu_ib_i$\\
+        又因为$\sum\limits^p_{i=0}\mu_ib_i=\sum\limits^p_{i=0}\sum\limits^i_{j=0}\mu_i\frac{a_j}{j+1}=\sum\limits^p_{i=0}a_i(\sum\limits^p_{j=i}\frac{\mu_j}{j+1})$\\
+        所以$x_i=\sum\limits^p_{j=i}\frac{\mu_j}{j+1}$.\\
+        从而$A=\begin{pmatrix}
+            1 & \frac{1}{2} & \frac{1}{3} & \cdots & \frac{1}{p+1}\\
+              & \frac{1}{2} & \frac{1}{3} & \cdots & \frac{1}{p+1}\\
+              & & \frac{1}{3} & \cdots & \frac{1}{p+1}\\
+              & & & \ddots &\vdots\\
+              & & & & \frac{1}{p+1}
+        \end{pmatrix}$
+
+    \end{proofc}
+    \item(246.48) 设 $K$ 是复形, $\tau = (\check{\sigma}_0, \cdots, \check{\sigma}_p)$ 是 $\operatorname{Sd} K$ 中的单形, $x \in \tau$. 
+    又设 $K$ 中包含 $x$ 的开单形 $g$ 的顶点中有一个是 $\check{\sigma}_0$, 
+    证明: $x$ 关于 $\sigma$ 的重心坐标中相应于 $\check{\sigma}_0$ 的那个为最大.
+    \begin{proofc}
+        $\check{\sigma_0}$为单顶点,可设$\sigma_0=\langle a_0\rangle,\cdots,\sigma_p=\langle a_0,\cdots,a_p\rangle$.\\
+        则有$x=\sum\limits_{k=0}^pb_k\check{\sigma_k}=\sum\limits_{k=0}^pb_k(\sum\limits_{j=0}^ka_j)\frac{1}{k}=\sum\limits_{j=0}^pa_j(\sum\limits_{k=0}^j\frac{b_k}{k+1})$\\
+        比较各分量系数可知$a_0$分量系数最大,也就是说$a_0=\sigma_0=\check{\sigma}_0$分量系数最大.
+    \end{proofc}
+\end{enumerate}
+
+\section{第八周作业及解答}
+\begin{enumerate}
+    \item(246.42)对于环面的“标准”剖分 $K$ (见 $\S$ 3.1.2), 设 $H_1(K) \cong \mathbb{Z} \oplus \mathbb{Z}$ 的两个母元为 $[z_1]$ 和 $[z_2]$.
+    \begin{itemize}
+        % 将嵌套列表的标签定义为 1°, 2° 的形式
+        \item[(1)] 求单纯映射 $f: K \to K$, 使得 $f_{*1}([z_1]) = [z_2], f_{*1}([z_2]) = [z_1].$ 这种单纯映射是否唯一, 若不唯一则再求一个;
+        
+        \item[(2)] 求单纯映射 $g, h: K \to K$, 使得 $g_{*1}(a[z_1] + b[z_2]) = a[z_1], h_{*1}(a[z_1] + b[z_2]) = (a+b)[z_1]$, $g$ 和 $h$ 分别对应怎样的连续映射 $\varphi, \psi: T \to T?$
+    \end{itemize}
+    \begin{proofc}[解答]
+        \begin{center}
+    \begin{tikzpicture}[scale=1.2]
+        \begin{scope}[xshift=-5cm]
+            \draw (0,0) grid (3,3);
+            \node[left] at (0, 0) {$a_0$};
+            \node[left] at (0, 1) {$a_1$};
+            \node[left] at (0, 2) {$a_2$};
+            \node[left] at (0, 3) {$a_0$};
+            \node[above] at (1, 3) {$a_1$};
+            \node[above] at (2, 3) {$a_2$};
+            \node[right] at (3, 3) {$a_0$};
+            \node[right] at (3, 2) {$a_2$};
+            \node[right] at (3, 1) {$a_1$};
+            \node[right] at (3, 0) {$a_0$};
+            \node[below] at (1, 0) {$a_1$};
+            \node[below] at (2, 0) {$a_2$};
+            \draw (0,0) -- (1,1);
+            \draw (0,1) -- (1,2);
+            \draw (0,2) -- (1,3);
+            \draw (1,0) -- (2,1);
+            \draw (1,1) -- (2,2);
+            \draw (1,2) -- (2,3);
+            \draw (2,0) -- (3,1);
+\draw (2,1) -- (3,2);
+\draw (2,2) -- (3,3);
+            \end{scope}
+        \end{tikzpicture}
+        \end{center}
+    (1)
+        用$\{(x,y) | x,y \in \{0,1,2,3\}\}\}$给上述$K$的标准剖分标号,
+        我们给出$f:K^0 \to K^0, (x,y) \mapsto (y,x)$,然后延拓到整个$K$,容易验证$f$为单纯映射,
+        且:$$f_{\star 1} ([z_1]) = f_{\star 1}(\langle(0,0),(1,0)\rangle 
+        + \langle(1,0),(2,0)\rangle + \langle(2,0),(0,0)\rangle) 
+        = \langle(0,0),(0,1)\rangle + \langle(0,1),(0,2)\rangle 
+        + \langle(0,2),(0,0)\rangle = [z_2].$$
+
+        同理$f_{\star 1}([z_2]) = [z_1]$,
+        因此$f$为满足条件的单纯映射;
+
+        我们任取$r \in \mathrm{Aut}(S^1)$ (比如将$S^1$的顶点三轮换旋转),然后取
+        $$f : (x, y) \mapsto (y, r(x)),$$
+        则$f$是另一个满足条件的单纯映射.
+
+
+    (2)
+    我们给出$g:K^0 \to K^0, (x,y) \mapsto (x,0)$,
+    $h:K^0 \to K^0, (x,y) \mapsto ((y-x)(\mod 3),0)$
+    然后将其延拓到整个$K$,容易验证$g,h$均为符合条件的单纯映射.
+        
+        
+
+    \end{proofc}
+
+    
+    \item(247.50)设 $\sigma^p$ 是 $p$ 维有向单形, $\sigma^i$ 是 $\sigma^p$ 的任意 $i$ 维面 (取一个定向). 证明:
+    \[
+        \text{sd}_p \sigma^p = \sum [\sigma^p, \sigma^{p-1}][\sigma^{p-1}, \sigma^{p-2}] \cdots [\sigma^1, \hat{\sigma}^1][\hat{\sigma}^1, \hat{\sigma}^0, \cdots, \sigma^0],
+    \]
+    其中 $\sum$ 是对所有可能的真面序列 $\sigma^0 < \sigma^1 < \dots < \sigma^{p-1} < \sigma^p$ 求和. 据此直接验证 $\pi_p \text{sd}_p = 1_{C_p(K)}$, 其中 $\pi_p$ 的定义见附录 E.
+\end{enumerate}
+
+
+\section{第九周作业及解答}
+\begin{enumerate}
+\item(247.51)证明: 任何连续映射 $f: S^2 \to T$ 的诱导同态 $f_{*2}: H_2(S^2) \to H_2(T)$ 是平凡的. 
+反之, 对任意整数 $n$, 试作出连续映射 $g: T \to S^2$, 使得 $g_{*2}([z]) = n[w]$, 
+其中 $[z]$ 和 $[w]$ 分别是 $H_2(T)$ 和 $H_2(S^2)$ 的母元, $g_{*2}$ 是 $g$ 的诱导同态.
+\begin{proofc}[解答]
+    $f$是定义在$S^2$上的函数,且$S^2$上的任何曲线$g:[0,1]\rightarrow S^2$是零伦的,
+    从而任何映射$S^2\to S^1$都是零伦的,从而$f:S^2 \to S^1 \times S^1$是零伦的.
+    又由(247.50), $H_2(S^2)\rightarrow H_2(T)$必为零同态.\\
+    反之,若$n=0$,取$g$零伦,使$g_{*2}$是零同态即可.\\
+    若$n\geq1$,
+    \begin{center}
+    \begin{tikzpicture}[scale=1.2]
+        % --- 左侧的 3x3 网格 ---
+        \begin{scope}[xshift=-5cm]
+            \draw (0,0) grid (3,3);
+            \node[left] at (0, 0) {$a_0$};
+            \node[left] at (0, 1) {$a_1$};
+            \node[left] at (0, 2) {$a_2$};
+            \node[left] at (0, 3) {$a_0$};
+            \node[above] at (1, 3) {$a_1$};
+            \node[above] at (2, 3) {$a_2$};
+            \node[right] at (3, 3) {$a_0$};
+            \node[right] at (3, 2) {$a_2$};
+            \node[right] at (3, 1) {$a_1$};
+            \node[right] at (3, 0) {$a_0$};
+            \node[below] at (1, 0) {$a_1$};
+            \node[below] at (2, 0) {$a_2$};
+            \foreach \x in {0.5, 1.5, 2.5} {
+                \foreach \y in {0.5, 1.5, 2.5} {
+                    \draw[->, >=Stealth, thick] (\x-0.3, \y-0.3) to[bend right=45] (\x+0.3, \y+0.3);
+                }
+            }
+        \end{scope}
+        % --- 中间的箭头 f ---
+        \draw[->, thick, >=Stealth] (0.5, 1.5) -- node[above, font=\Large] {$f$} (2.5, 1.5);
+        % --- 正确透视的四面体 ---
+        \begin{scope}[xshift=5cm, scale=1.2]
+            \coordinate (A) at (-1.5, 0);
+            \coordinate (B) at (1.5, -0.3);
+            \coordinate (C) at (0.2, -0.8);
+            \coordinate (T) at (0, 2);
+            \draw (A) -- (B) -- (T) -- cycle;
+            \draw (A) -- (C) -- (B);
+            \draw[dashed] (C) -- (T);
+            \node at (0, 0.6) {$[w]$};
+        \end{scope}
+    \end{tikzpicture}
+\end{center}
+\end{proofc}
+\item(247.53)下面各组不变量是不是紧曲面的完全组? 如不是, 举例说明
+    \[
+        \{ \chi, \beta_0 \}; \{ \chi, \beta_1 \}; \{ \chi, \beta_2 \}; \{ \beta_0, \beta_1 \}; \{ \beta_0, \beta_2 \}; \{ \beta_1, \beta_2 \}; \{ \beta_0, \beta_1, \beta_2 \}.
+    \]
+\begin{proofc}[解答]
+\begin{itemize}
+    \item $\{\chi,\beta_0\}$不是.举例: $T$与$2P^2$.
+    \item $\{\chi,\beta_1\}$是.
+    \item $\{\chi,\beta_2\}$是.
+    \item $\{\beta_0,\beta_1\}$不是.举例: $T$与$P^2$.
+    \item $\{\beta_0,\beta_2\}$不是.举例: $T$与$T$.
+    \item $\{\beta_1,\beta_2\}$是.
+    \item $\{\beta_0,\beta_1,\beta_2\}$是.\qedhere
+\end{itemize}
+\end{proofc}
+\end{enumerate}
+
+\section{第十周作业及解答}
+\begin{enumerate}
+
+    \item(247.57) 设 $(K, \varphi)$ 是紧曲面 $S$ 的剖分, 
+    $F$ 是三角形的个数, $\overline{m}$ 是交于一个顶点的棱的平均数. 
+    证明: $\lim\limits_{F\to\infty} \overline{m} = 6$.
+    \begin{proofc}[解答]
+        设每个顶点$x_i$处的棱数为$d(x_i)$,则有$\sum\limits^n_{i=1}d(x_i)=2E$,故$\overline{m}=\frac{2E}{n}$.\par
+        又由三角剖分的性质, $2E=3F$.再由$n-E+F=\chi(K)$,可得$n-\frac{F}{2}=\chi(K)$.\par
+        从而$\lim\limits_{F\to\infty} \overline{m} = \lim\limits_{F\to\infty}\frac{3F}{\chi(K)+\frac{F}{2}}$
+    \end{proofc}
+    \item(247.58) 计算紧曲面的同调群和模 $2$ 同调群.
+    \begin{proofc}[解答]
+        由$D_6$定理,只需研究$S^2,mT,nP^2$.下面给出同调群和模$2$同调群.\par
+        同调群:
+        \begin{center}
+\begin{tabular}{|c|c|c|} % l=左对齐, c=居中, r=右对齐, |=竖线
+    \hline
+      & $S^2$ & $mT$ & $nP^2$ \\
+    \hline
+    $H_0$ & $\mathbb{Z}$ & $\mathbb{Z}$ & $\mathbb{Z}$\\
+    \hline
+    $H_1$ & $0$ & $\mathbb{Z}^{2m}$ & $\mathbb{Z}^{n+1}\oplus\mathbb{Z}_2$ \\
+    \hline
+    $H_2$ & $\mathbb{Z}$ & $\mathbb{Z}$ & $0$ 
+\end{tabular}
+\end{center}
+模$2$同调群:
+\begin{center}
+\begin{tabular}{|c|c|c|} % l=左对齐, c=居中, r=右对齐, |=竖线
+    \hline
+      & $S^2$ & $mT$ & $nP^2$ \\
+    \hline
+    $H_0(\cdot,\mathbb{Z}_2)$ & $\mathbb{Z}_2$ & $\mathbb{Z}_2$ & $\mathbb{Z}_2$\\
+    \hline
+    $H_1(\cdot,\mathbb{Z}_2)$ & $0$ & $\mathbb{Z}_2^{2m}$ & $\mathbb{Z}_2^{n}$ \\
+    \hline
+    $H_2(\cdot,\mathbb{Z}_2)$ & $\mathbb{Z}_2$ & $\mathbb{Z}_2$ & $\mathbb{Z}_2$ 
+    \hline
+\end{tabular}
+\end{center}
+    \end{proofc}
+    \item(247.59) 证明: 紧曲面 $S_1$ 和 $S_2$ 同胚的充要条件为 $H_1(S_1) \cong H_1(S_2)$.
+    
+    \item(247.60) 设 $S'$ 是能定向紧曲面 $S$ 上挖去一个开圆盘. 证明: $H_1(S_1) \cong H_1(S')$. 同构 $\pi_1(S) \cong \pi_1(S')$ 是否必定存在?
+    
+\end{enumerate}
+
+\section{第十一周作业及解答}
+\begin{enumerate}
+    \item(247.63) 设 $\rho$ 是 $1, 2, \cdots, n$ 的一个排列, 令 $f: S^{n-1} \to S^{n-1}$ 由 $f(x_1, \cdots, x_n) = (x_{\rho(1)}, \cdots, x_{\rho(n)})$ 给出. 证明:
+    \[
+        \deg f = \begin{cases}
+            1 & \rho \text{ 是偶排列} \\
+            -1 & \rho \text{ 是奇排列}.
+        \end{cases}
+    \]
+    \begin{proofc}[解答]
+        将$S^n$视为$\operatorname{Bd}\sigma^{n+1}$.因为$\sigma^{n+1}$关于原点对称,所以$H_n(S^n)$生成元即为$\partial\sigma^{n+1}$.\par
+        记$f_{ij}$为将第$i$个位置和第$j$个位置的元素互换,易知$\deg f_{ij}=-1$.
+    \end{proofc}
+    \item(247.64) 设 $f: S^n \to S^n$ 是连续映射, $f$ 无不动点. 
+    证明: $f$ 同伦于对径映射 $r$ (即 $r(x) = -x$).
+    \begin{proofc}[解答]
+        $$f_t(x)=\frac{(1-t)f(x)-tx}{\|(1-t)f(x)-tx\|}$$
+        为$f_0=f$到$f_1=r$的同伦.
+
+    \end{proofc}
+    \item(247.65) 设 $f, g: S^n \to S^n$ 是连续映射, 对所有 $x \in S^n, f(x) \neq g(x)$, 证明: $\deg f + (-1)^n \deg g = 0$.
+    \begin{proofc}[解答]
+        $$h_t(x)=\frac{(1-t)f(x)-tg(x)}{\|(1-t)f(x)-tg(x)\|}$$
+        为$h_0=f$到$h_1=-g$的同伦.
+
+    \end{proofc}
+\end{enumerate}
