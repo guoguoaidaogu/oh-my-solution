@@ -3,62 +3,97 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>oh-my-solution · The Legacy of FDUer</title>
-<meta http-equiv="refresh" content="0; url=archive/%E7%94%A8%E6%88%B7%3ASolution.html">
-<meta name="robots" content="noindex">
+<title>oh-my-solution</title>
+<!-- Generated from README.md (GitHub Flavored Markdown). Do not edit directly. -->
 <style>
-  :root { color-scheme: light dark; }
-  body {
-    margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
-    background: #f6f8fa; color: #1f2328; line-height: 1.7;
-  }
-  .card {
-    max-width: 42rem; margin: 2rem; padding: 2.5rem 2.75rem;
-    background: #fff; border: 1px solid #d0d7de; border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(140, 149, 159, .2);
-  }
-  h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
-  .sub { color: #59636e; margin: 0 0 1.5rem; }
-  a.primary {
-    display: inline-block; padding: .6rem 1.25rem; border-radius: 8px;
-    background: #1f883d; color: #fff; text-decoration: none; font-weight: 600;
-  }
-  a.primary:hover { background: #1a7f37; }
-  .links { margin-top: 1.5rem; font-size: .9rem; color: #59636e; }
-  .links a { color: #0969da; }
-  blockquote {
-    margin: 1.5rem 0 0; padding: .5rem 0 .5rem 1rem; border-left: 3px solid #d0d7de;
-    color: #59636e; font-size: .9rem;
-  }
-  @media (prefers-color-scheme: dark) {
-    body { background: #0d1117; color: #e6edf3; }
-    .card { background: #161b22; border-color: #30363d; box-shadow: none; }
-    .sub, .links, blockquote { color: #9198a1; }
-    a.primary { background: #238636; }
-    a.primary:hover { background: #2ea043; }
-    .links a { color: #4493f8; }
-    blockquote { border-left-color: #30363d; }
-  }
+    :root { color-scheme: light dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 2rem 1rem 4rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial,
+                   "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-size: 16px; line-height: 1.6; color: #1f2328; background: #ffffff;
+      -webkit-text-size-adjust: 100%; word-wrap: break-word;
+    }
+    .markdown-body { max-width: 980px; margin: 0 auto; }
+    .markdown-body h1, .markdown-body h2 {
+      margin: 1.5em 0 .75em; padding-bottom: .3em; font-weight: 600; line-height: 1.25;
+      border-bottom: 1px solid #d1d9e0;
+    }
+    .markdown-body h1 { font-size: 2em; }
+    .markdown-body h2 { font-size: 1.5em; }
+    .markdown-body h3 { font-size: 1.25em; }
+    .markdown-body h3, .markdown-body h4, .markdown-body h5, .markdown-body h6 {
+      margin: 1.5em 0 .75em; font-weight: 600; line-height: 1.25;
+    }
+    .markdown-body p { margin: 0 0 1em; }
+    .markdown-body a { color: #0969da; text-decoration: none; }
+    .markdown-body a:hover { text-decoration: underline; }
+    .markdown-body strong { font-weight: 600; }
+    .markdown-body code {
+      padding: .2em .4em; margin: 0; font-size: 85%; border-radius: 6px;
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      background: #818b981f;
+    }
+    .markdown-body pre {
+      padding: 1rem; overflow: auto; border-radius: 6px; background: #818b981f;
+      margin: 0 0 1em;
+    }
+    .markdown-body pre code { padding: 0; background: transparent; font-size: 100%; }
+    .markdown-body blockquote {
+      margin: 0 0 1em; padding: 0 1em; color: #59636e; border-left: .25em solid #d1d9e0;
+    }
+    .markdown-body blockquote > :last-child { margin-bottom: 0; }
+    .markdown-body hr {
+      height: .25em; padding: 0; margin: 1.5em 0; background: #d1d9e0; border: 0;
+    }
+    .markdown-body ul, .markdown-body ol { margin: 0 0 1em; padding-left: 2em; }
+    .markdown-body li + li { margin-top: .25em; }
+    .markdown-body img { max-width: 100%; }
+    .markdown-body table { border-collapse: collapse; margin: 0 0 1em; display: block; overflow: auto; }
+    .markdown-body th, .markdown-body td { padding: 6px 13px; border: 1px solid #d1d9e0; }
+    @media (prefers-color-scheme: dark) {
+      body { color: #f0f6fc; background: #0d1117; }
+      .markdown-body h1, .markdown-body h2 { border-bottom-color: #3d444d; }
+      .markdown-body a { color: #4493f8; }
+      .markdown-body blockquote { color: #9198a1; border-left-color: #3d444d; }
+      .markdown-body hr { background: #3d444d; }
+      .markdown-body th, .markdown-body td { border-color: #3d444d; }
+    }
 </style>
 </head>
 <body>
-  <main class="card">
-    <h1>oh-my-solution</h1>
-    <p class="sub">（旧版）香蕉空间 · The Legacy of FDUer 静态归档</p>
-    <p><a class="primary" href="archive/%E7%94%A8%E6%88%B7%3ASolution.html">立即访问 →</a></p>
-    <p class="links">
-      <a href="archive/%E7%94%A8%E6%88%B7%3ASolution.html">archive/用户:Solution.html</a>
-      &nbsp;·&nbsp;
-      <a href="README.md">README.md</a>
-      &nbsp;·&nbsp;
-      <a href="https://github.com/guoguoaidaogu/oh-my-solution">GitHub 仓库</a>
-      &nbsp;·&nbsp;
-      <a href="https://bananaspace.org/legacy/wiki/%E7%94%A8%E6%88%B7:Solution">原始归档链接</a>
-    </p>
-    <blockquote>
-      快照时间：2026 年 10 月 13 日下午。仅供过渡时期学习交流使用；如有侵权，请联系删除。
-    </blockquote>
-  </main>
+<article class="markdown-body">
+<h1 dir="auto">oh-my-solution</h1>
+<h1 dir="auto"><a href="http://oms.shertist.fun/archive/%E7%94%A8%E6%88%B7:Solution.html" rel="nofollow">立即访问</a></h1>
+<p dir="auto">本仓库归档了<a href="https://bananaspace.org/legacy/" rel="nofollow">（旧版）香蕉空间</a>上 The Legacy of FDUer 的内容，快照时间为 2026 年 10 月 13 日下午。</p>
+<p dir="auto">The Legacy of FDUer 中的所有页面均收录于本仓库 <code class="notranslate">archive</code> 目录，并保持原有文件结构，既包括原始最终版本的 <code class="notranslate">bTeX</code> 文件 <code class="notranslate">*.btx</code>，也包括在本地编译生成的“纯净版” <code class="notranslate">html</code> 文件。</p>
+<p dir="auto">受时间与能力所限，这里仅保存了静态的最终版本，未能一并备份各页面创建与修改的历史记录。在此向每一位贡献者致以诚挚歉意。</p>
+<p dir="auto">本仓库仅供过渡时期学习交流使用；如有侵权，请联系删除。</p>
+<hr>
+<p dir="auto">节选自 <a href="https://github.com/banana-space/banana/blob/332a454cff4a9658ee699a570c303506fc705e1e/content/_index.md"><code class="notranslate">banana-space/banana</code>（Github）</a>：</p>
+<blockquote>
+<h2 dir="auto">迁移说明*</h2>
+<p dir="auto">香蕉空间刚刚迁移自<a href="https://bananaspace.org/legacy/" rel="nofollow">旧版网站</a>，<br>
+原网站的内容已转换为新网站基于 <a href="https://github.com/banana-space/banana/blob/332a454cff4a9658ee699a570c303506fc705e1e/content/help/%E6%A0%BC%E5%BC%8F%E6%89%8B%E5%86%8C/_index.md">Markdown</a> 的格式。<br>
+由于转换过程借助 AI 工具而可能出错，<br>
+如果发现问题，请直接编辑相应页面，或在 <a href="https://github.com/banana-space/banana">GitHub</a> 报告问题。</p>
+<p dir="auto">旧版网站计划于 2026 年底停用。如果你在旧版网站上存有数据，请及时备份。</p>
+</blockquote>
+<hr>
+<p dir="auto">节选自 The Legacy of FDUer 维护者发布的公告：</p>
+<blockquote>
+<p dir="auto">【重要公告】</p>
+<p dir="auto">复旦数学资料库今日起由于香蕉空间网站的变动而不再能更新，并且香蕉空间原址将于年末彻底关停，新版网站的功能亦有显著的削弱，不再能承载复旦数学资料收集整理的功能，请数学学院以及其它学院对相关资料有需求的同学留意。我们正在加紧建立新的独立网站系统，尽早完成资料的搬迁和功能的重建，后续访问方式会在落成后发布，在此期间对访问和编辑资料造成的困难敬请谅解。正如阿伦特在《人的境况》中所言，</p>
+<p dir="auto"><code class="notranslate">The reality and reliability of the human world rest primarily on the fact that we are surrounded by things more permanent than the activity by which they were produced, and potentially even more permanent than the lives of their authors.</code></p>
+<p dir="auto">我们会在废墟之上尽快重建我们的城邦，尽力完成公共领域的新结构转型。谢谢大家的关注～</p>
+</blockquote>
+<hr>
+<p dir="auto">另请见：<a href="https://bananaspace.org/legacy/wiki/%E7%94%A8%E6%88%B7:Solution" rel="nofollow">原始归档链接：The Legacy of FDUer（存活性未知）</a>。</p>
+<p dir="auto">PR 或需要 <code class="notranslate">bTeX</code> 源码等请到：<a href="https://github.com/guoguoaidaogu/oh-my-solution">本仓库（Github）</a>。</p>
+<hr>
+<p dir="auto"><strong>祝 The Legacy of FDUer 早日康复！</strong></p>
+<p dir="auto"><strong>祝您学习考试顺利，RP++！</strong></p>
+</article>
 </body>
 </html>
