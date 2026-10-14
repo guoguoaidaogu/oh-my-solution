@@ -1,0 +1,567 @@
+{
+  "count": 23,
+  "pages": [
+    "用户:Solution/_讲义:_几何测度论/_Chapter_1_Measure_Theory",
+    "用户:Solution/讲义:_现代代数学_II/前言",
+    "用户:Solution/讲义:_现代代数学_II/基本概念",
+    "用户:Solution/讲义:_现代代数学_II/特征标理论"
+  ],
+  "entries": [
+    {
+      "index": 1,
+      "page_title": "用户:Solution/_讲义:_几何测度论/_Chapter_1_Measure_Theory",
+      "html_file": "archive/用户:Solution/_讲义:_几何测度论/_Chapter_1_Measure_Theory.html",
+      "html_line": 762,
+      "html_column": 844811,
+      "html_context": "\"katex-html\" aria-hidden=\"true\">s<n. (ii)Apply Theorem 4.5 and Theorem ??. (iii)It suffices to show that Hn</span",
+      "btx_file": "archive/用户:Solution/_讲义:_几何测度论/_Chapter_1_Measure_Theory.btx",
+      "btx_line": 575,
+      "ref_label": "thm:radon-restriction",
+      "ref_kind": "Theorem",
+      "btx_context": "\\item[(ii)] Apply Theorem~\\ref{thm:hausdorff-borel-regular} and Theorem~\\ref{thm:radon-restriction}.",
+      "status": "dangling",
+      "defined_in": [],
+      "suggestions": []
+    },
+    {
+      "index": 1,
+      "page_title": "用户:Solution/讲义:_现代代数学_II/前言",
+      "html_file": "archive/用户:Solution/讲义:_现代代数学_II/前言.html",
+      "html_line": 762,
+      "html_column": 1041,
+      "html_context": "…可约, 于是只需搞清楚群代数上的不可约模以及不可约模之间的同态即可. (2) 介绍群表示的特征标的概念和基本性质, 特征标作为精巧的数值不变量, 它不仅易计算把握, 且承载了充分多的表示信息. 例如, 我们会说明复数域上任意两个有限维表示等价当且仅当它们特征标一致 (见 [推论 ??]). 并且有限维复表示的不可约性可通过计算特征标复内积判别 (见 [推论 ??]), 这与第一部分提到的研究群复表示的根本任务是研究不可约表示以及不可约表示间的联系呼应. 并且用特征标理论不仅可证明对任给阶为两个不同素数正整数幂乘积的群不是单群 (见 [推论 ??]), 也可给…",
+      "btx_file": "archive/用户:Solution/讲义:_现代代数学_II/前言.btx",
+      "btx_line": 29,
+      "ref_label": "CrefdEqifftcharae",
+      "ref_kind": "推论",
+      "btx_context": "(见[推论\\ref{CrefdEqifftcharae}]).",
+      "status": "cross-page",
+      "defined_in": [
+        {
+          "file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.btx",
+          "line": 297,
+          "env": "corollary",
+          "env_cn": "推论",
+          "snippet": "有限群$G$的两个有限维复表示等价当且仅当它们有相同的特征标"
+        }
+      ],
+      "suggestions": []
+    },
+    {
+      "index": 2,
+      "page_title": "用户:Solution/讲义:_现代代数学_II/前言",
+      "html_file": "archive/用户:Solution/讲义:_现代代数学_II/前言.html",
+      "html_line": 762,
+      "html_column": 1201,
+      "html_context": "…可约, 于是只需搞清楚群代数上的不可约模以及不可约模之间的同态即可. (2) 介绍群表示的特征标的概念和基本性质, 特征标作为精巧的数值不变量, 它不仅易计算把握, 且承载了充分多的表示信息. 例如, 我们会说明复数域上任意两个有限维表示等价当且仅当它们特征标一致 (见 [推论 ??]). 并且有限维复表示的不可约性可通过计算特征标复内积判别 (见 [推论 ??]), 这与第一部分提到的研究群复表示的根本任务是研究不可约表示以及不可约表示间的联系呼应. 并且用特征标理论不仅可证明对任给阶为两个不同素数正整数幂乘积的群不是单群 (见 [推论 ??]), 也可给…",
+      "btx_file": "archive/用户:Solution/讲义:_现代代数学_II/前言.btx",
+      "btx_line": 31,
+      "ref_label": "ireCribyCpcharraincor",
+      "ref_kind": "推论",
+      "btx_context": "(见[推论\\ref{ireCribyCpcharraincor}]),",
+      "status": "cross-page",
+      "defined_in": [
+        {
+          "file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.btx",
+          "line": 303,
+          "env": "corollary",
+          "env_cn": "推论",
+          "snippet": "[复表示的不可约性关于内积的判别] 设有限群$G$有有限维复表示$\\rho:G\\to GL(V)$"
+        }
+      ],
+      "suggestions": []
+    },
+    {
+      "index": 3,
+      "page_title": "用户:Solution/讲义:_现代代数学_II/前言",
+      "html_file": "archive/用户:Solution/讲义:_现代代数学_II/前言.html",
+      "html_line": 762,
+      "html_column": 1414,
+      "html_context": "…可约, 于是只需搞清楚群代数上的不可约模以及不可约模之间的同态即可. (2) 介绍群表示的特征标的概念和基本性质, 特征标作为精巧的数值不变量, 它不仅易计算把握, 且承载了充分多的表示信息. 例如, 我们会说明复数域上任意两个有限维表示等价当且仅当它们特征标一致 (见 [推论 ??]). 并且有限维复表示的不可约性可通过计算特征标复内积判别 (见 [推论 ??]), 这与第一部分提到的研究群复表示的根本任务是研究不可约表示以及不可约表示间的联系呼应. 并且用特征标理论不仅可证明对任给阶为两个不同素数正整数幂乘积的群不是单群 (见 [推论 ??]), 也可给…",
+      "btx_file": "archive/用户:Solution/讲义:_现代代数学_II/前言.btx",
+      "btx_line": 34,
+      "ref_label": "paqbnotsimcor",
+      "ref_kind": "推论",
+      "btx_context": "(见[推论\\ref{paqbnotsimcor}]), 也可给出Burnside定理一个较为简单证明.",
+      "status": "cross-page",
+      "defined_in": [
+        {
+          "file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.btx",
+          "line": 974,
+          "env": "corollary",
+          "env_cn": "推论",
+          "snippet": "设$p,q$是不同的素数, $a,b\\in\\mathbb{N}_{\\geq 1}$, 那么阶为$p^{a}q^{b}$的群不是单群"
+        }
+      ],
+      "suggestions": []
+    },
+    {
+      "index": 1,
+      "page_title": "用户:Solution/讲义:_现代代数学_II/基本概念",
+      "html_file": "archive/用户:Solution/讲义:_现代代数学_II/基本概念.html",
+      "html_line": 762,
+      "html_column": 481093,
+      "html_context": "m;\">V 是不可约模, 称该表示是不可约的. 若 V 是完全可约左 kG-模, 称该表示是完全可约的. 一般地, 即使有限 Abel 群在复数域上都可能不存在忠实的不可约表示 (见 [例 ??]).下面的结果被称为 Maschke 定理. 该定理在复数域上的特殊情形由 H. Maschke(德国, 1853-1908), 这里呈现的版本由 L.E.Dickson(美国, 1874-1954) 先注意到.定理 1.26 (Maschke 定理). 设 G 是有限群, 对…",
+      "btx_file": "archive/用户:Solution/讲义:_现代代数学_II/基本概念.btx",
+      "btx_line": 410,
+      "ref_label": "egnotcyclicabirecfarep",
+      "ref_kind": "例",
+      "btx_context": "(见[例\\ref{egnotcyclicabirecfarep}]).",
+      "status": "cross-page",
+      "defined_in": [
+        {
+          "file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.btx",
+          "line": 176,
+          "env": "example",
+          "env_cn": "例",
+          "snippet": "设$G$是有限Abel群, 且$G$不是循环群. 那么$G$不存在忠实不可约复表示"
+        }
+      ],
+      "suggestions": []
+    },
+    {
+      "index": 1,
+      "page_title": "用户:Solution/讲义:_现代代数学_II/特征标理论",
+      "html_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.html",
+      "html_line": 762,
+      "html_column": 40055,
+      "html_context": "ase\">GL(V′), 它们次数均正. 在 [例 ??] 中我们已经看到若取定 V 的基 B={<s",
+      "btx_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.btx",
+      "btx_line": 55,
+      "ref_label": "exm:tensorpdefpg",
+      "ref_kind": "例",
+      "btx_context": "在[例\\ref{exm:tensorpdefpg}]中我们已经看到若取定$V$的基",
+      "status": "cross-page",
+      "defined_in": [
+        {
+          "file": "archive/用户:Solution/讲义:_现代代数学_II/基本概念.btx",
+          "line": 298,
+          "env": "example",
+          "env_cn": "例",
+          "snippet": "[表示的张量积"
+        }
+      ],
+      "suggestions": []
+    },
+    {
+      "index": 2,
+      "page_title": "用户:Solution/讲义:_现代代数学_II/特征标理论",
+      "html_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.html",
+      "html_line": 762,
+      "html_column": 171538,
+      "html_context": "an>. 反之, 如果 g∈Z(G), 那么 [引理 ??] 表明 g 所诱导的 V 上线性变换是 C</sp",
+      "btx_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.btx",
+      "btx_line": 161,
+      "ref_label": "lem:acffdireEndk",
+      "ref_kind": "引理",
+      "btx_context": "反之, 如果$g\\in Z(G)$, 那么[引理\\ref{lem:acffdireEndk}]",
+      "status": "dangling",
+      "defined_in": [],
+      "suggestions": [
+        {
+          "label": "acffdireEndk",
+          "reason": "去掉前缀",
+          "file": "archive/用户:Solution/讲义:_现代代数学_II/基本概念.btx",
+          "line": 547,
+          "env": "lemma",
+          "env_cn": "引理",
+          "snippet": "设$\\mathbb{k}$是代数闭域, $A$是$\\mathbb{k}$-代数, $_{A}M$是有限维不可约模, 则有$\\mathbb{k}$-代数同构$\\text{End}_{A}(M)\\cong\\mathbb{k}$"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "page_title": "用户:Solution/讲义:_现代代数学_II/特征标理论",
+      "html_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.html",
+      "html_line": 762,
+      "html_column": 297246,
+      "html_context": "b mtight\">k​Y 上通过表示的张量积可知有一个左 kG-模结构 (见 [例 ??]), 对 Homk​<",
+      "btx_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.btx",
+      "btx_line": 248,
+      "ref_label": "exm:tensorpdefpg",
+      "ref_kind": "例",
+      "btx_context": "有一个左$\\mathbb{k}G$-模结构(见[例\\ref{exm:tensorpdefpg}]),",
+      "status": "cross-page",
+      "defined_in": [
+        {
+          "file": "archive/用户:Solution/讲义:_现代代数学_II/基本概念.btx",
+          "line": 298,
+          "env": "example",
+          "env_cn": "例",
+          "snippet": "[表示的张量积"
+        }
+      ],
+      "suggestions": []
+    },
+    {
+      "index": 4,
+      "page_title": "用户:Solution/讲义:_现代代数学_II/特征标理论",
+      "html_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.html",
+      "html_line": 762,
+      "html_column": 368896,
+      "html_context": "en\">(g).当 i=j 时, [引理 ??] 说上式等号左边的维数是 1. 当 i<",
+      "btx_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.btx",
+      "btx_line": 284,
+      "ref_label": "lem:acffdireEndk",
+      "ref_kind": "引理",
+      "btx_context": "当$i=j$时, [引理\\ref{lem:acffdireEndk}]说上式等号左边的维数是$1$.",
+      "status": "dangling",
+      "defined_in": [],
+      "suggestions": [
+        {
+          "label": "acffdireEndk",
+          "reason": "去掉前缀",
+          "file": "archive/用户:Solution/讲义:_现代代数学_II/基本概念.btx",
+          "line": 547,
+          "env": "lemma",
+          "env_cn": "引理",
+          "snippet": "设$\\mathbb{k}$是代数闭域, $A$是$\\mathbb{k}$-代数, $_{A}M$是有限维不可约模, 则有$\\mathbb{k}$-代数同构$\\text{End}_{A}(M)\\cong\\mathbb{k}$"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "page_title": "用户:Solution/讲义:_现代代数学_II/特征标理论",
+      "html_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.html",
+      "html_line": 762,
+      "html_column": 409214,
+      "html_context": "eight: 2.7em;\">ρ​⟩=∣G∣ (回忆 [推论 ??]).推论 2.21. 给定有限群族 {Gi",
+      "btx_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.btx",
+      "btx_line": 312,
+      "ref_label": "cor:sumcoAcFssGo",
+      "ref_kind": "推论",
+      "btx_context": "(回忆[推论\\ref{cor:sumcoAcFssGo}]).",
+      "status": "cross-page",
+      "defined_in": [
+        {
+          "file": "archive/用户:Solution/讲义:_现代代数学_II/基本概念.btx",
+          "line": 580,
+          "env": "corollary",
+          "env_cn": "推论",
+          "snippet": "…{(1)})$, 那么$|G|=\\text{dim}_{\\mathbb{k}}\\mathbb{k}G =\\sum\\limits_{i=1}^{r}m_{i}^{2}\\text{dim}_{\\mathbb{k}}\\Delta_{i}$. 若进一步要求$\\mathbb{k}$是代数闭域, 则$|G|=\\sum\\limits_{i=1}^{r}m_{i}^{2}$"
+        }
+      ],
+      "suggestions": []
+    },
+    {
+      "index": 6,
+      "page_title": "用户:Solution/讲义:_现代代数学_II/特征标理论",
+      "html_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.html",
+      "html_line": 762,
+      "html_column": 485412,
+      "html_context": "m;\">ρr​} 所对应的复特征标 (我们已经从 [推论 ??] 中看到 r 就是 CG 上所有不可约模等价类的数目), 每个 <span class=\"mord mathnorma",
+      "btx_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.btx",
+      "btx_line": 350,
+      "ref_label": "cor:acfirmicneqCcN",
+      "ref_kind": "推论",
+      "btx_context": "(我们已经从[推论\\ref{cor:acfirmicneqCcN}]中看到",
+      "status": "cross-page",
+      "defined_in": [
+        {
+          "file": "archive/用户:Solution/讲义:_现代代数学_II/基本概念.btx",
+          "line": 653,
+          "env": "corollary",
+          "env_cn": "推论",
+          "snippet": "…ong V_{i}^{(l)},\\forall k,l\\in\\{1,2,...,m_{i}\\}$, 只要$i\\neq j$, 就有$V_{i}^{(k)}\\not\\cong V_{j}^{(l)}$. 那么群$G$的共轭类总数$\\text{dim}_{\\mathbb{k}}Z(\\mathbb{k}G)=r$ 就是$\\mathbb{k}G$上不可约模同构类总数"
+        }
+      ],
+      "suggestions": []
+    },
+    {
+      "index": 7,
+      "page_title": "用户:Solution/讲义:_现代代数学_II/特征标理论",
+      "html_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.html",
+      "html_line": 762,
+      "html_column": 538953,
+      "html_context": "G​}), 是 ∣G∣.在 [例 ??] 中引入了正则表示, 它相当于是对群 G 利用群代数上的模结构给出一个表示. 在 [推论 ??] 中我们也看到若有限群 G 与代数闭域 <span class=\"strut\" style=\"height:",
+      "btx_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.btx",
+      "btx_line": 375,
+      "ref_label": "exm:rgpeg",
+      "ref_kind": "例",
+      "btx_context": "在[例\\ref{exm:rgpeg}]中引入了正则表示, 它相当于是对群$G$利用群代数上的模结构给出一个表示.",
+      "status": "cross-page",
+      "defined_in": [
+        {
+          "file": "archive/用户:Solution/讲义:_现代代数学_II/基本概念.btx",
+          "line": 103,
+          "env": "example",
+          "env_cn": "例",
+          "snippet": "[正则表示] 设$V=\\mathbb{k}G$是群代数, 则有忠实表示$\\rho:G\\to GL(V),g\\mapsto g_{l}$, 其中 $g_{l}$指$g$决定的左乘变换. 我们把该表示$\\rho$称为群$G$的\\textbf{正则表示"
+        }
+      ],
+      "suggestions": []
+    },
+    {
+      "index": 8,
+      "page_title": "用户:Solution/讲义:_现代代数学_II/特征标理论",
+      "html_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.html",
+      "html_line": 762,
+      "html_column": 539347,
+      "html_context": "/span>, 是 ∣G∣.在 [例 ??] 中引入了正则表示, 它相当于是对群 G 利用群代数上的模结构给出一个表示. 在 [推论 ??] 中我们也看到若有限群 G 与代数闭域 k 使 chark</spa",
+      "btx_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.btx",
+      "btx_line": 376,
+      "ref_label": "cor:sumcoAcFssGo",
+      "ref_kind": "推论",
+      "btx_context": "在[推论\\ref{cor:sumcoAcFssGo}]中我们也看到若有限群$G$",
+      "status": "cross-page",
+      "defined_in": [
+        {
+          "file": "archive/用户:Solution/讲义:_现代代数学_II/基本概念.btx",
+          "line": 580,
+          "env": "corollary",
+          "env_cn": "推论",
+          "snippet": "…{(1)})$, 那么$|G|=\\text{dim}_{\\mathbb{k}}\\mathbb{k}G =\\sum\\limits_{i=1}^{r}m_{i}^{2}\\text{dim}_{\\mathbb{k}}\\Delta_{i}$. 若进一步要求$\\mathbb{k}$是代数闭域, 则$|G|=\\sum\\limits_{i=1}^{r}m_{i}^{2}$"
+        }
+      ],
+      "suggestions": []
+    },
+    {
+      "index": 9,
+      "page_title": "用户:Solution/讲义:_现代代数学_II/特征标理论",
+      "html_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.html",
+      "html_line": 762,
+      "html_column": 613041,
+      "html_context": "ht: 0.1667em;\">...,r.证明. 必要性是明显的, 只证充分性. 通过 [引理 2.22] 我们看到群在复数域上群代数作为 Artin 半单代数的结构完全由不可约表示等价类数目以及不可约表示的次数决定.□在 [例 ??] 中我们看到有限 Abel 群 G 在代数闭域 k 上的不可约表示都是 1 次的, 所以群代数 <span class=\"katex-html\"",
+      "btx_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.btx",
+      "btx_line": 420,
+      "ref_label": "acfofAbgirepeg",
+      "ref_kind": "例",
+      "btx_context": "在[例\\ref{acfofAbgirepeg}]中我们看到有限Abel群$G$",
+      "status": "dangling",
+      "defined_in": [],
+      "suggestions": [
+        {
+          "label": "exm:acfofAbgirepeg",
+          "reason": "补上前缀",
+          "file": "archive/用户:Solution/讲义:_现代代数学_II/基本概念.btx",
+          "line": 679,
+          "env": "example",
+          "env_cn": "例",
+          "snippet": "[有限Abel群的不可约表示] 设$\\mathbb{k}$是代数闭域"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "page_title": "用户:Solution/讲义:_现代代数学_II/特征标理论",
+      "html_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.html",
+      "html_line": 762,
+      "html_column": 617297,
+      "html_context": "r\"> 的共轭类总数是 p(3)=3(回忆 [例 ??]), 所以可设 S3​<span cla",
+      "btx_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.btx",
+      "btx_line": 427,
+      "ref_label": "exm:Sncomppartrg",
+      "ref_kind": "例",
+      "btx_context": "例如对称群$S_{3}$的共轭类总数是$p(3)=3$(回忆[例\\ref{exm:Sncomppartrg}]),",
+      "status": "cross-page",
+      "defined_in": [
+        {
+          "file": "archive/用户:Solution/讲义:_现代代数学_II/基本概念.btx",
+          "line": 676,
+          "env": "example",
+          "env_cn": "例",
+          "snippet": "…字$i(2\\leq i\\leq n)$出现$\\alpha_{i}$次), 我们把正整数$n$的拆分数记作$p(n)$(例如, $p(1)=1,p(2)=2,p(3)=3,p(4)=5$), 那么$p(n)$也就是$S_{n}$共轭类的数目. 所以$\\mathbb{C}S_{n}$不可约模同构类, 或者说$S_{n}$的不可约复表示等价类, 数目是$p(n)$"
+        }
+      ],
+      "suggestions": []
+    },
+    {
+      "index": 11,
+      "page_title": "用户:Solution/讲义:_现代代数学_II/特征标理论",
+      "html_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.html",
+      "html_line": 762,
+      "html_column": 821762,
+      "html_context": "style=\"height: 1em; vertical-align: -0.25em;\">[G,G]=Z(G).(2) 根据 [命题 ??], 群 G 的 1 次不可约复表示同构类数目就是 G/[G<spa",
+      "btx_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.btx",
+      "btx_line": 547,
+      "ref_label": "pro:1repGandGqGGprop",
+      "ref_kind": "命题",
+      "btx_context": "(2)根据[命题\\ref{pro:1repGandGqGGprop}], 群$G$的$1$次不可约复表示同构类数目",
+      "status": "cross-page",
+      "defined_in": [
+        {
+          "file": "archive/用户:Solution/讲义:_现代代数学_II/基本概念.btx",
+          "line": 738,
+          "env": "proposition",
+          "env_cn": "命题",
+          "snippet": "设$G$是群, $\\mathbb{k}$是域, 那么$G$在$\\mathbb{k}$上的$1$次表示等价类 与$G/[G,G]$在$\\mathbb{k}$上的$1$次表示等价类间有标准双射 (注意含幺环上有限生成模同构类全体构成集合, 故群的$1$次表示等价类全体也构成集合"
+        }
+      ],
+      "suggestions": []
+    },
+    {
+      "index": 12,
+      "page_title": "用户:Solution/讲义:_现代代数学_II/特征标理论",
+      "html_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.html",
+      "html_line": 762,
+      "html_column": 823566,
+      "html_context": "\"mspace\" style=\"margin-right: 0.2778em;\">=G/Z(G) 的 1 次不可约复表示同构类数目. 结合 [例 ??] 便知 G 的 1 次不可约复表示同构类数目是 ∣G/[<span class=\"mor",
+      "btx_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.btx",
+      "btx_line": 549,
+      "ref_label": "exm:acfofAbgirepeg",
+      "ref_kind": "例",
+      "btx_context": "结合[例\\ref{exm:acfofAbgirepeg}]便知$G$的$1$次不可约复表示同构类数目是$|G/[G,G]|=4$.",
+      "status": "cross-page",
+      "defined_in": [
+        {
+          "file": "archive/用户:Solution/讲义:_现代代数学_II/基本概念.btx",
+          "line": 679,
+          "env": "example",
+          "env_cn": "例",
+          "snippet": "[有限Abel群的不可约表示] 设$\\mathbb{k}$是代数闭域"
+        }
+      ],
+      "suggestions": []
+    },
+    {
+      "index": 13,
+      "page_title": "用户:Solution/讲义:_现代代数学_II/特征标理论",
+      "html_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.html",
+      "html_line": 762,
+      "html_column": 843908,
+      "html_context": "/span> 个不可约复表示同构类, 其中 4 个次数为 1; 剩下的次数为 2.(3) 通过 [推论 ??] 我们看到 G 的共轭类总数是 5, 设 G 所有共轭类为<span class",
+      "btx_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.btx",
+      "btx_line": 558,
+      "ref_label": "cor:acfirmicneqCcN",
+      "ref_kind": "推论",
+      "btx_context": "(3)通过[推论\\ref{cor:acfirmicneqCcN}]我们看到$G$的共轭类总数是$5$,",
+      "status": "cross-page",
+      "defined_in": [
+        {
+          "file": "archive/用户:Solution/讲义:_现代代数学_II/基本概念.btx",
+          "line": 653,
+          "env": "corollary",
+          "env_cn": "推论",
+          "snippet": "…ong V_{i}^{(l)},\\forall k,l\\in\\{1,2,...,m_{i}\\}$, 只要$i\\neq j$, 就有$V_{i}^{(k)}\\not\\cong V_{j}^{(l)}$. 那么群$G$的共轭类总数$\\text{dim}_{\\mathbb{k}}Z(\\mathbb{k}G)=r$ 就是$\\mathbb{k}G$上不可约模同构类总数"
+        }
+      ],
+      "suggestions": []
+    },
+    {
+      "index": 14,
+      "page_title": "用户:Solution/讲义:_现代代数学_II/特征标理论",
+      "html_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.html",
+      "html_line": 762,
+      "html_column": 980355,
+      "html_context": "t-r\">8​ 是不同构的非交换群. 所以不同构的有限群可能有相同的复特征标表. 不过 [定理 2.23] 告诉我们两个有限群只要有相同的复特征标表, 至少它们在复数域上群代数同构.一些算术性质 本节我们着眼于不可约复特征标的一些算术性质. [引理 ??] 表明代数闭域 k 上代数上的有限维不可约表示的自同态都是基域内某个元素的数乘, 因此对有限群 G 的不可约表示 ρ<span class",
+      "btx_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.btx",
+      "btx_line": 619,
+      "ref_label": "acffdireEndk",
+      "ref_kind": "引理",
+      "btx_context": "本节我们着眼于不可约复特征标的一些算术性质. [引理\\ref{acffdireEndk}]表明",
+      "status": "cross-page",
+      "defined_in": [
+        {
+          "file": "archive/用户:Solution/讲义:_现代代数学_II/基本概念.btx",
+          "line": 547,
+          "env": "lemma",
+          "env_cn": "引理",
+          "snippet": "设$\\mathbb{k}$是代数闭域, $A$是$\\mathbb{k}$-代数, $_{A}M$是有限维不可约模, 则有$\\mathbb{k}$-代数同构$\\text{End}_{A}(M)\\cong\\mathbb{k}$"
+        }
+      ],
+      "suggestions": []
+    },
+    {
+      "index": 15,
+      "page_title": "用户:Solution/讲义:_现代代数学_II/特征标理论",
+      "html_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.html",
+      "html_line": 762,
+      "html_column": 1017577,
+      "html_context": "eight: 2.7em;\">j​)​是代数整数. 证明. 沿用 [命题 ??] 中的记号, 对每个 1≤i≤<span style=\"margin-right: 0.0278em;\" class",
+      "btx_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.btx",
+      "btx_line": 643,
+      "ref_label": "pro:propcogclasNeqdimcent",
+      "ref_kind": "命题",
+      "btx_context": "\\begin{proof}沿用[命题\\ref{pro:propcogclasNeqdimcent}]中的记号,",
+      "status": "dangling",
+      "defined_in": [],
+      "suggestions": [
+        {
+          "label": "propcogclasNeqdimcent",
+          "reason": "去掉前缀",
+          "file": "archive/用户:Solution/讲义:_现代代数学_II/基本概念.btx",
+          "line": 625,
+          "env": "proposition",
+          "env_cn": "命题",
+          "snippet": "…leq r$, 置$c_{i}=\\sum\\limits_{g\\in C_{i}}g$, 那么$\\{c_{1},...,c_{r}\\}$是群代数$\\mathbb{k}G$中心 $Z(\\mathbb{k}G)$作为$\\mathbb{k}$-线性空间的一个基, 特别地, $\\text{dim}_{\\mathbb{k}}Z(\\mathbb{k}G)=r$为共轭类个数"
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "page_title": "用户:Solution/讲义:_现代代数学_II/特征标理论",
+      "html_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.html",
+      "html_line": 762,
+      "html_column": 1134375,
+      "html_context": "\" style=\"top: -2.55em; margin-left: -0.1389em; margin-right: 0.05em;\">i​ 上 CG-模自同构, 所以 [引理 ??] 表明存在唯一的 γi​<s",
+      "btx_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.btx",
+      "btx_line": 700,
+      "ref_label": "acffdireEndk",
+      "ref_kind": "引理",
+      "btx_context": "所以[引理\\ref{acffdireEndk}]表明存在唯一的$\\gamma_{i}(c)\\in\\mathbb{C}^{*}$",
+      "status": "cross-page",
+      "defined_in": [
+        {
+          "file": "archive/用户:Solution/讲义:_现代代数学_II/基本概念.btx",
+          "line": 547,
+          "env": "lemma",
+          "env_cn": "引理",
+          "snippet": "设$\\mathbb{k}$是代数闭域, $A$是$\\mathbb{k}$-代数, $_{A}M$是有限维不可约模, 则有$\\mathbb{k}$-代数同构$\\text{End}_{A}(M)\\cong\\mathbb{k}$"
+        }
+      ],
+      "suggestions": []
+    },
+    {
+      "index": 17,
+      "page_title": "用户:Solution/讲义:_现代代数学_II/特征标理论",
+      "html_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.html",
+      "html_line": 762,
+      "html_column": 1187847,
+      "html_context": "unct\">,G]=P 为 p 阶群. 由 [命题 ??], G 的 1 次不可约复表示等价类数与 q 阶循环群 <sp",
+      "btx_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.btx",
+      "btx_line": 728,
+      "ref_label": "1repGandGqGGprop",
+      "ref_kind": "命题",
+      "btx_context": "由[命题\\ref{1repGandGqGGprop}],",
+      "status": "dangling",
+      "defined_in": [],
+      "suggestions": [
+        {
+          "label": "pro:1repGandGqGGprop",
+          "reason": "补上前缀",
+          "file": "archive/用户:Solution/讲义:_现代代数学_II/基本概念.btx",
+          "line": 738,
+          "env": "proposition",
+          "env_cn": "命题",
+          "snippet": "设$G$是群, $\\mathbb{k}$是域, 那么$G$在$\\mathbb{k}$上的$1$次表示等价类 与$G/[G,G]$在$\\mathbb{k}$上的$1$次表示等价类间有标准双射 (注意含幺环上有限生成模同构类全体构成集合, 故群的$1$次表示等价类全体也构成集合"
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "page_title": "用户:Solution/讲义:_现代代数学_II/特征标理论",
+      "html_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.html",
+      "html_line": 762,
+      "html_column": 1606938,
+      "html_context": ".6833em;\">V 作为左 kH-模可分解为一些不可约左 kH-模的直和, 而 [例 ??] 说有限 Abel 群在代数闭域上的不可约表示都是 1 次的, 所以 V 可以分解为一些 1 维左 <span class=\"katex",
+      "btx_file": "archive/用户:Solution/讲义:_现代代数学_II/特征标理论.btx",
+      "btx_line": 1058,
+      "ref_label": "acfofAbgirepeg",
+      "ref_kind": "例",
+      "btx_context": "而[例\\ref{acfofAbgirepeg}]说有限Abel群在代数闭域上的不可约表示都是$1$次的,",
+      "status": "dangling",
+      "defined_in": [],
+      "suggestions": [
+        {
+          "label": "exm:acfofAbgirepeg",
+          "reason": "补上前缀",
+          "file": "archive/用户:Solution/讲义:_现代代数学_II/基本概念.btx",
+          "line": 679,
+          "env": "example",
+          "env_cn": "例",
+          "snippet": "[有限Abel群的不可约表示] 设$\\mathbb{k}$是代数闭域"
+        }
+      ]
+    }
+  ]
+}

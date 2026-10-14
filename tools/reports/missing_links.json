@@ -1,0 +1,131 @@
+{
+  "archive": "/Users/cheng/Documents/Repos/oh-my-solution/archive",
+  "html_files": 345,
+  "missing_links": 114,
+  "page_not_found": 91,
+  "unresolved_reference": 23,
+  "other_missing": 0,
+  "findings": [
+    {
+      "source": "archive/用户:Solution/_习题:_楼分析/Fourier级数.html",
+      "line": 762,
+      "column": 1322258,
+      "text": "习题 2.2.11",
+      "target": "用户: Solution/ 解答: GTM249 Chapter 2 Part I",
+      "match_level": "fuzzy",
+      "page_file": "用户:Solution/_解答:_GTM249_Chapter_2_Part_I.html"
+    },
+    {
+      "source": "archive/用户:Solution/_习题:_楼分析/Riemann积分.html",
+      "line": 762,
+      "column": 2247229,
+      "text": "第十一章",
+      "target": "User:Solution/  习题: 楼分析/曲线积分与曲面积分",
+      "match_level": "fuzzy",
+      "page_file": "用户:Solution/_习题:_楼分析/曲线积分与曲面积分.html"
+    },
+    {
+      "source": "archive/用户:Solution/_习题:_楼分析/函数列与函数项级数.html",
+      "line": 762,
+      "column": 2140949,
+      "text": "转存",
+      "target": "User:Solution/转存",
+      "match_level": "namespace",
+      "page_file": "用户:Solution/转存.html"
+    },
+    {
+      "source": "archive/用户:Solution/_习题:_楼分析/导数与微分.html",
+      "line": 762,
+      "column": 1322234,
+      "text": "数理方程第二章",
+      "target": "User:Solution/  习题: 数理方程第一章",
+      "match_level": "fuzzy",
+      "page_file": "用户:Solution/_习题:_数理方程第一章.html"
+    },
+    {
+      "source": "archive/用户:Solution/_习题:_楼分析/广义积分与含参变量广义积分.html",
+      "line": 762,
+      "column": 2590519,
+      "text": "这里",
+      "target": "User:Solution/临时库房",
+      "match_level": "namespace",
+      "page_file": "用户:Solution/临时库房.html"
+    },
+    {
+      "source": "archive/用户:Solution/_习题:_楼分析/序列极限.html",
+      "line": 762,
+      "column": 1249288,
+      "text": "这里",
+      "target": "User:Solution/临时页面",
+      "match_level": "namespace",
+      "page_file": "用户:Solution/临时页面.html"
+    },
+    {
+      "source": "archive/用户:Solution/_习题:_楼分析/微分中值定理和Taylor展式.html",
+      "line": 762,
+      "column": 1628486,
+      "text": "链接🔗",
+      "target": "用户:Solution/ 习题: 数理方程第二章",
+      "match_level": "fuzzy",
+      "page_file": "用户:Solution/_习题:_数理方程第二章.html"
+    },
+    {
+      "source": "archive/用户:Solution/_习题:_泛函分析续论.html",
+      "line": 762,
+      "column": 206843,
+      "text": "泛函分析 3.2 节习题 7 (ii)",
+      "target": "用户: Solution/  习题: 泛函分析 第三章",
+      "match_level": "fuzzy",
+      "page_file": "用户:Solution/_习题:_泛函分析_第三章.html"
+    },
+    {
+      "source": "archive/用户:Solution/_试卷:_微分几何.html",
+      "line": 762,
+      "column": 811497,
+      "text": "嵇庆春《微分几何简明教程》练习 8.1",
+      "target": "用户:Solution/_习题:_嵇庆春_微分几何简明教程",
+      "match_level": "exact",
+      "page_file": "用户:Solution/_习题:_嵇庆春_微分几何简明教程.html"
+    },
+    {
+      "source": "archive/用户:Solution/_试卷:_表示论基础_(H).html",
+      "line": 762,
+      "column": 61,
+      "text": "之前的试卷",
+      "target": "User:Solution/  试卷: 现代代数学II",
+      "match_level": "fuzzy",
+      "page_file": "用户:Solution/_试卷:_现代代数学II.html"
+    },
+    {
+      "source": "archive/用户:Solution/_试卷:_高等代数_(英才班).html",
+      "line": 762,
+      "column": 736075,
+      "text": "这里",
+      "target": "用户:Solution/临时页面 3",
+      "match_level": "whitespace",
+      "page_file": "用户:Solution/临时页面_3.html"
+    },
+    {
+      "source": "archive/用户:Solution/临时页面.html",
+      "line": 762,
+      "column": 1960075,
+      "text": "这里",
+      "target": "User:Solution/临时页面 2",
+      "match_level": "whitespace",
+      "page_file": "用户:Solution/临时页面_2.html"
+    },
+    {
+      "source": "archive/用户:Solution.html",
+      "line": 762,
+      "column": 80,
+      "text": "页面指南",
+      "target": "User:Solution/页面指南",
+      "match_level": "namespace",
+      "page_file": "用户:Solution/页面指南.html"
+    }
+  ],
+  "unresolved_targets": [
+    "??"
+  ],
+  "min_level": "fuzzy"
+}

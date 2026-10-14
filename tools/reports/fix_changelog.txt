@@ -1,0 +1,51 @@
+--- archive/用户:Solution/_习题:_楼分析/Fourier级数.html:762:1322258  [fuzzy]
+-<span class="btex-link missing" title="page not found: 用户: Solution/ 解答: GTM249 Chapter 2 Part I">习题 2.2.11</span>
++<a class="btex-link" href="../_%E8%A7%A3%E7%AD%94%3A_GTM249_Chapter_2_Part_I.html">习题 2.2.11</a>
+
+--- archive/用户:Solution/_习题:_楼分析/Riemann积分.html:762:2247229  [fuzzy]
+-<span class="btex-link missing" title="page not found: User:Solution/  习题: 楼分析/曲线积分与曲面积分">第十一章</span>
++<a class="btex-link" href="%E6%9B%B2%E7%BA%BF%E7%A7%AF%E5%88%86%E4%B8%8E%E6%9B%B2%E9%9D%A2%E7%A7%AF%E5%88%86.html">第十一章</a>
+
+--- archive/用户:Solution/_习题:_楼分析/函数列与函数项级数.html:762:2140949  [namespace]
+-<span class="btex-link missing" title="page not found: User:Solution/转存">转存</span>
++<a class="btex-link" href="../%E8%BD%AC%E5%AD%98.html">转存</a>
+
+--- archive/用户:Solution/_习题:_楼分析/导数与微分.html:762:1322234  [fuzzy]
+-<span class="btex-link missing" title="page not found: User:Solution/  习题: 数理方程第一章">数理方程第二章</span>
++<a class="btex-link" href="../_%E4%B9%A0%E9%A2%98%3A_%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8B%E7%AC%AC%E4%B8%80%E7%AB%A0.html">数理方程第二章</a>
+
+--- archive/用户:Solution/_习题:_楼分析/广义积分与含参变量广义积分.html:762:2590519  [namespace]
+-<span class="btex-link missing" title="page not found: User:Solution/临时库房">这里</span>
++<a class="btex-link" href="../%E4%B8%B4%E6%97%B6%E5%BA%93%E6%88%BF.html">这里</a>
+
+--- archive/用户:Solution/_习题:_楼分析/序列极限.html:762:1249288  [namespace]
+-<span class="btex-link missing" title="page not found: User:Solution/临时页面">这里</span>
++<a class="btex-link" href="../%E4%B8%B4%E6%97%B6%E9%A1%B5%E9%9D%A2.html">这里</a>
+
+--- archive/用户:Solution/_习题:_楼分析/微分中值定理和Taylor展式.html:762:1628486  [fuzzy]
+-<span class="btex-link missing" title="page not found: 用户:Solution/ 习题: 数理方程第二章">链接🔗</span>
++<a class="btex-link" href="../_%E4%B9%A0%E9%A2%98%3A_%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8B%E7%AC%AC%E4%BA%8C%E7%AB%A0.html">链接🔗</a>
+
+--- archive/用户:Solution/_习题:_泛函分析续论.html:762:206843  [fuzzy]
+-<span class="btex-link missing" title="page not found: 用户: Solution/  习题: 泛函分析 第三章">泛函分析 3.2 节习题 7 (ii)</span>
++<a class="btex-link" href="_%E4%B9%A0%E9%A2%98%3A_%E6%B3%9B%E5%87%BD%E5%88%86%E6%9E%90_%E7%AC%AC%E4%B8%89%E7%AB%A0.html">泛函分析 3.2 节习题 7 (ii)</a>
+
+--- archive/用户:Solution/_试卷:_微分几何.html:762:811497  [exact]
+-<span class="btex-link missing" title="page not found: 用户:Solution/_习题:_嵇庆春_微分几何简明教程">嵇庆春《微分几何简明教程》练习 8.1</span>
++<a class="btex-link" href="_%E4%B9%A0%E9%A2%98%3A_%E5%B5%87%E5%BA%86%E6%98%A5_%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.html">嵇庆春《微分几何简明教程》练习 8.1</a>
+
+--- archive/用户:Solution/_试卷:_表示论基础_(H).html:762:61  [fuzzy]
+-<span class="btex-link missing" title="page not found: User:Solution/  试卷: 现代代数学II">之前的试卷</span>
++<a class="btex-link" href="_%E8%AF%95%E5%8D%B7%3A_%E7%8E%B0%E4%BB%A3%E4%BB%A3%E6%95%B0%E5%AD%A6II.html">之前的试卷</a>
+
+--- archive/用户:Solution/_试卷:_高等代数_(英才班).html:762:736075  [whitespace]
+-<span class="btex-link missing" title="page not found: 用户:Solution/临时页面 3"><b>这里</b></span>
++<a class="btex-link" href="%E4%B8%B4%E6%97%B6%E9%A1%B5%E9%9D%A2_3.html"><b>这里</b></a>
+
+--- archive/用户:Solution/临时页面.html:762:1960075  [whitespace]
+-<span class="btex-link missing" title="page not found: User:Solution/临时页面 2">这里</span>
++<a class="btex-link" href="%E4%B8%B4%E6%97%B6%E9%A1%B5%E9%9D%A2_2.html">这里</a>
+
+--- archive/用户:Solution.html:762:80  [namespace]
+-<span class="btex-link missing" title="page not found: User:Solution/页面指南">页面指南</span>
++<a class="btex-link" href="%E7%94%A8%E6%88%B7%3ASolution/%E9%A1%B5%E9%9D%A2%E6%8C%87%E5%8D%97.html">页面指南</a>

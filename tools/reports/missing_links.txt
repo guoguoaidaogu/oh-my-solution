@@ -1,0 +1,87 @@
+扫描目录        : /Users/cheng/Documents/Repos/oh-my-solution/archive
+HTML 文件数     : 345
+missing 链接总数: 114
+  page not found: 91
+  unresolved ref: 23
+  其它 missing  : 0
+
+发现 13 条「可访问却标记为 missing」的链接：
+====================================================================================================
+
+[exact] 1 条
+  来源  : archive/用户:Solution/_试卷:_微分几何.html:762:811497
+  显示  : 嵇庆春《微分几何简明教程》练习 8.1
+  标记名: 用户:Solution/_习题:_嵇庆春_微分几何简明教程
+  实际页: archive/用户:Solution/_习题:_嵇庆春_微分几何简明教程.html
+
+
+[namespace] 4 条
+  来源  : archive/用户:Solution/_习题:_楼分析/函数列与函数项级数.html:762:2140949
+  显示  : 转存
+  标记名: User:Solution/转存
+  实际页: archive/用户:Solution/转存.html
+
+  来源  : archive/用户:Solution/_习题:_楼分析/广义积分与含参变量广义积分.html:762:2590519
+  显示  : 这里
+  标记名: User:Solution/临时库房
+  实际页: archive/用户:Solution/临时库房.html
+
+  来源  : archive/用户:Solution/_习题:_楼分析/序列极限.html:762:1249288
+  显示  : 这里
+  标记名: User:Solution/临时页面
+  实际页: archive/用户:Solution/临时页面.html
+
+  来源  : archive/用户:Solution.html:762:80
+  显示  : 页面指南
+  标记名: User:Solution/页面指南
+  实际页: archive/用户:Solution/页面指南.html
+
+
+[whitespace] 2 条
+  来源  : archive/用户:Solution/_试卷:_高等代数_(英才班).html:762:736075
+  显示  : 这里
+  标记名: 用户:Solution/临时页面 3
+  实际页: archive/用户:Solution/临时页面_3.html
+
+  来源  : archive/用户:Solution/临时页面.html:762:1960075
+  显示  : 这里
+  标记名: User:Solution/临时页面 2
+  实际页: archive/用户:Solution/临时页面_2.html
+
+
+[fuzzy] 6 条
+  来源  : archive/用户:Solution/_习题:_楼分析/Fourier级数.html:762:1322258
+  显示  : 习题 2.2.11
+  标记名: 用户: Solution/ 解答: GTM249 Chapter 2 Part I
+  实际页: archive/用户:Solution/_解答:_GTM249_Chapter_2_Part_I.html
+
+  来源  : archive/用户:Solution/_习题:_楼分析/Riemann积分.html:762:2247229
+  显示  : 第十一章
+  标记名: User:Solution/  习题: 楼分析/曲线积分与曲面积分
+  实际页: archive/用户:Solution/_习题:_楼分析/曲线积分与曲面积分.html
+
+  来源  : archive/用户:Solution/_习题:_楼分析/导数与微分.html:762:1322234
+  显示  : 数理方程第二章
+  标记名: User:Solution/  习题: 数理方程第一章
+  实际页: archive/用户:Solution/_习题:_数理方程第一章.html
+
+  来源  : archive/用户:Solution/_习题:_楼分析/微分中值定理和Taylor展式.html:762:1628486
+  显示  : 链接🔗
+  标记名: 用户:Solution/ 习题: 数理方程第二章
+  实际页: archive/用户:Solution/_习题:_数理方程第二章.html
+
+  来源  : archive/用户:Solution/_习题:_泛函分析续论.html:762:206843
+  显示  : 泛函分析 3.2 节习题 7 (ii)
+  标记名: 用户: Solution/  习题: 泛函分析 第三章
+  实际页: archive/用户:Solution/_习题:_泛函分析_第三章.html
+
+  来源  : archive/用户:Solution/_试卷:_表示论基础_(H).html:762:61
+  显示  : 之前的试卷
+  标记名: User:Solution/  试卷: 现代代数学II
+  实际页: archive/用户:Solution/_试卷:_现代代数学II.html
+
+----------------------------------------------------------------------------------------------------
+附：unresolved reference 共 23 条，1 个不同标签：
+  - ??
+
+JSON 报告已写入：tools/reports/missing_links.json
